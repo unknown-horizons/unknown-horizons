@@ -6,9 +6,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
-"POT-Creation-Date: 2012-01-09 15:56+0100\n"
-"PO-Revision-Date: 2011-12-19 03:03+0200\n"
-"Last-Translator: Christopher <eoc.eoc.eoc@gmail.com>\n"
+"POT-Creation-Date: 2012-01-19 20:39+0100\n"
+"PO-Revision-Date: 2012-01-07 07:52+0200\n"
+"Last-Translator: Christopher Oelmueller <chris.oelmueller+uh@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: ro\n"
 "MIME-Version: 1.0\n"
@@ -30,6 +30,11 @@ msgstr "O nouă colonie a fost fondată de ${player}."
 #: database files sql
 msgid "A new world has been created."
 msgstr "O nouă lume a fost creată."
+
+#. This is a database entry: a messagewidget message (left part of the screen).
+#: database files sql
+msgid "One of your fields requires a farm to harvest its crops."
+msgstr ""
 
 # 97%
 #. This is a database entry: a messagewidget message (left part of the screen).
@@ -85,10 +90,12 @@ msgstr "O salvare automată a fost efectuată."
 msgid "Your game has been quicksaved."
 msgstr "O salvare rapidă a fost efectuată."
 
+# 86%
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
+#, fuzzy
 msgid "Your game has been saved."
-msgstr ""
+msgstr "O salvare automată a fost efectuată."
 
 # 77%
 # 97%
@@ -436,109 +443,109 @@ msgid "Configured language {lang} could not be loaded"
 msgstr "Limba aleasă {lang} la locația {place} nu a putut fi încărcată"
 
 #. There was a problem during the 'save game' procedure.
-#: horizons/gui/gui.py:168 horizons/gui/ingamegui.py:515
+#: horizons/gui/gui.py:171 horizons/gui/ingamegui.py:512
 #: horizons/gui/modules/multiplayermenu.py:119
 #, python-format
 msgid "Error"
 msgstr "eroare"
 
-#: horizons/gui/gui.py:168
+#: horizons/gui/gui.py:171
 msgid "Failed to save."
 msgstr "Eșec la salvare."
 
-#: horizons/gui/gui.py:195
+#: horizons/gui/gui.py:198
 msgid "Are you sure you want to quit Unknown Horizons?"
 msgstr "Sunteți sigur că vreți să părăsiți Unknown Horizons?"
 
-#: horizons/gui/gui.py:196
+#: horizons/gui/gui.py:199
 msgid "Quit Game"
 msgstr "ieșire joc"
 
-#: horizons/gui/gui.py:202
+#: horizons/gui/gui.py:205
 msgid "Are you sure you want to abort the running session?"
 msgstr "Sunteți sigur că vreți să abandonați sesiunea în curs?"
 
-#: horizons/gui/gui.py:204
+#: horizons/gui/gui.py:207
 msgid "Quit Session"
 msgstr "ieșire sesiune"
 
-#: horizons/gui/gui.py:253
+#: horizons/gui/gui.py:256
 msgid "No saved games"
 msgstr "niciun joc salvat"
 
 # 96%
-#: horizons/gui/gui.py:253
+#: horizons/gui/gui.py:256
 msgid "There are no saved games to load."
 msgstr "Nu există salvări de joc pentru încărcare."
 
 #. (text of widget: loadgame)
 #. (text of widget: loadgame) Open a widget to select which game to load
-#: horizons/gui/gui.py:260 horizons/gui/gui.py:261
-#: horizons/i18n/guitranslations.py:701 horizons/i18n/guitranslations.py:727
+#: horizons/gui/gui.py:263 horizons/gui/gui.py:264
+#: horizons/i18n/guitranslations.py:703 horizons/i18n/guitranslations.py:729
 msgid "Load game"
 msgstr "încarcă joc"
 
 #. (text of widget: savegame)
-#: horizons/gui/gui.py:260 horizons/gui/gui.py:261
-#: horizons/i18n/guitranslations.py:705
+#: horizons/gui/gui.py:263 horizons/gui/gui.py:264
+#: horizons/i18n/guitranslations.py:707
 msgid "Save game"
 msgstr "salvează joc"
 
-#: horizons/gui/gui.py:320
+#: horizons/gui/gui.py:323
 msgid "No filename given"
 msgstr "Niciun nume de fișier dat"
 
-#: horizons/gui/gui.py:320
+#: horizons/gui/gui.py:323
 msgid "Please enter a valid filename."
 msgstr "Introduceți un nume de fișier valid."
 
 #. reshow dialog
 #. savegamename already exists
-#: horizons/gui/gui.py:325
+#: horizons/gui/gui.py:328
 #, python-format
 msgid "A savegame with the name '{name}' already exists."
 msgstr "O salvare de joc cu numele '{name}' există deja."
 
-#: horizons/gui/gui.py:326
+#: horizons/gui/gui.py:329
 msgid "Overwrite it?"
 msgstr "Înlocuiți?"
 
-#: horizons/gui/gui.py:327
+#: horizons/gui/gui.py:330
 msgid "Confirmation for overwriting"
 msgstr "confirmare pentru rescriere"
 
-#: horizons/gui/gui.py:335
+#: horizons/gui/gui.py:338
 msgid "Please select a savegame or click on cancel."
 msgstr "Alegeți o salvare de joc sau apăsați anulare."
 
 #. ok button has been pressed, but no savegame was selected
-#: horizons/gui/gui.py:335
+#: horizons/gui/gui.py:338
 msgid "Select a savegame"
 msgstr "alegeți o salvare de joc"
 
 #. (text of widget: scenario_details) More text describing the scenario
 #. (text of widget: headline_details_label) More text describing the savegame
-#: horizons/gui/gui.py:415 horizons/i18n/guitranslations.py:545
-#: horizons/i18n/guitranslations.py:872
+#: horizons/gui/gui.py:418 horizons/i18n/guitranslations.py:545
+#: horizons/i18n/guitranslations.py:874
 msgid "Details:"
 msgstr "detalii:"
 
-#: horizons/gui/gui.py:416
+#: horizons/gui/gui.py:419
 msgid "Error:"
 msgstr "eroare:"
 
-#: horizons/gui/gui.py:531
+#: horizons/gui/gui.py:540
 msgid "Unknown savedate"
 msgstr "data salvării necunoscută"
 
 # 76%
-#: horizons/gui/gui.py:534
+#: horizons/gui/gui.py:543
 #, python-format
 msgid "Saved at {time}"
 msgstr "Salvat la {time}"
 
 #. N_ takes care of plural forms for different languages
-#: horizons/gui/gui.py:541
+#: horizons/gui/gui.py:550
 #, python-format
 msgid "Saved {amount} time"
 msgid_plural "Saved {amount} times"
@@ -546,74 +553,74 @@ msgstr[0] "Salvat o dată"
 msgstr[1] "Salvat de două ori"
 msgstr[2] "Salvat de {amount} ori"
 
-#: horizons/gui/gui.py:551
+#: horizons/gui/gui.py:560
 #, python-format
 msgid "Savegame version {version}"
 msgstr "Versiunea salvării de joc {version}"
 
-#: horizons/gui/gui.py:555
+#: horizons/gui/gui.py:564
 #, python-format
 msgid "WARNING: Incompatible version {version}!"
 msgstr "ATENȚIE: versiunea {version} incompatibilă!"
 
-#: horizons/gui/gui.py:558
+#: horizons/gui/gui.py:567
 #, python-format
 msgid "Required version: {required}!"
 msgstr "Versiune necesară: {required}!"
 
-#: horizons/gui/gui.py:561
+#: horizons/gui/gui.py:570
 msgid "Incompatible version"
 msgstr "Versiune incompatibilă"
 
-#: horizons/gui/gui.py:578
+#: horizons/gui/gui.py:587
 msgid "No file selected"
 msgstr "niciun fișier selectat"
 
 # 97%
-#: horizons/gui/gui.py:578
+#: horizons/gui/gui.py:587
 msgid "You need to select a savegame to delete."
 msgstr "Trebuie să selectați o salvare de joc pentru ștergere."
 
 # 84%
-#: horizons/gui/gui.py:582
+#: horizons/gui/gui.py:591
 #, python-format
 msgid "Do you really want to delete the savegame '{name}'?"
 msgstr "Sigur doriți să ștergeți salvarea de joc '{name}'?"
 
-#: horizons/gui/gui.py:584
+#: horizons/gui/gui.py:593
 msgid "Confirm deletion"
 msgstr "confirmare ștergere"
 
-#: horizons/gui/gui.py:589
+#: horizons/gui/gui.py:598
 msgid "Error!"
 msgstr "Eroare!"
 
-#: horizons/gui/gui.py:589
+#: horizons/gui/gui.py:598
 msgid "Failed to delete savefile!"
 msgstr "Eșec la ștergerea salvării de joc!"
 
 #. i18n this defines how each line in our help looks like. Default: '[C] = Chat'
-#: horizons/gui/gui.py:602
+#: horizons/gui/gui.py:616
 #, python-format
 msgid "[{key}] = {text}"
 msgstr ""
 
 #. e.g. when the pirate is disabled
 #. this dialog is pretty useless in this case
-#: horizons/gui/ingamegui.py:330
+#: horizons/gui/ingamegui.py:327
 msgid "No diplomacy possible"
 msgstr "Nu este posibilă diplomația"
 
-#: horizons/gui/ingamegui.py:331
+#: horizons/gui/ingamegui.py:328
 msgid "Cannot do diplomacy as there are no other players."
 msgstr "Nu este posibilă diplomația deoarece nu există alți jucători."
 
-#: horizons/gui/ingamegui.py:512
+#: horizons/gui/ingamegui.py:509
 #, python-format
 msgid "Valid map names are in the following form: {expression}"
 msgstr "Numele de hărți valide au următoarea formă: {expression}"
 
-#: horizons/gui/ingamegui.py:514
+#: horizons/gui/ingamegui.py:511
 #, python-format
 msgid "Try a name that only contains letters and numbers."
 msgstr ""
@@ -696,127 +703,127 @@ msgstr ""
 
 # 79%
 #: horizons/gui/modules/multiplayermenu.py:300
-#: horizons/gui/modules/singleplayermenu.py:68
+#: horizons/gui/modules/singleplayermenu.py:92
 #, python-format
 msgid "Recommended number of players: {number}"
 msgstr "Număr recomandat de jucători: {number}"
 
-#: horizons/gui/modules/singleplayermenu.py:106
-#: horizons/gui/modules/singleplayermenu.py:121
+#: horizons/gui/modules/singleplayermenu.py:130
+#: horizons/gui/modules/singleplayermenu.py:145
 #: horizons/gui/widgets/choose_next_scenario.py:44
 #, python-format
 msgid "Difficulty: {difficulty}"
 msgstr "Dificultate: {difficulty}"
 
-#: horizons/gui/modules/singleplayermenu.py:108
-#: horizons/gui/modules/singleplayermenu.py:123
+#: horizons/gui/modules/singleplayermenu.py:132
+#: horizons/gui/modules/singleplayermenu.py:147
 #: horizons/gui/widgets/choose_next_scenario.py:45
 #, python-format
 msgid "Author: {author}"
 msgstr "Autor: {author}"
 
-#: horizons/gui/modules/singleplayermenu.py:110
-#: horizons/gui/modules/singleplayermenu.py:125
+#: horizons/gui/modules/singleplayermenu.py:134
+#: horizons/gui/modules/singleplayermenu.py:149
 #: horizons/gui/widgets/choose_next_scenario.py:46
 #, python-format
 msgid "Description: {desc}"
 msgstr "Descriere: {desc}"
 
-#: horizons/gui/modules/singleplayermenu.py:144
+#: horizons/gui/modules/singleplayermenu.py:167
 msgid "Invalid player name"
 msgstr "nume de jucător invalid"
 
 # 97%
-#: horizons/gui/modules/singleplayermenu.py:144
+#: horizons/gui/modules/singleplayermenu.py:167
 msgid "You entered an invalid playername."
 msgstr "Ați introdus un nume de jucător invalid."
 
-#: horizons/gui/modules/singleplayermenu.py:202
+#: horizons/gui/modules/singleplayermenu.py:225
 msgid "Map size:"
 msgstr "mărimea hărții:"
 
-#: horizons/gui/modules/singleplayermenu.py:211
+#: horizons/gui/modules/singleplayermenu.py:234
 msgid "Water:"
 msgstr "apă:"
 
-#: horizons/gui/modules/singleplayermenu.py:219
+#: horizons/gui/modules/singleplayermenu.py:242
 msgid "Max island size:"
 msgstr "dimensiune maximă a insulei:"
 
-#: horizons/gui/modules/singleplayermenu.py:227
+#: horizons/gui/modules/singleplayermenu.py:250
 msgid "Preferred island size:"
 msgstr "dimensiune preferată a insulei:"
 
-#: horizons/gui/modules/singleplayermenu.py:235
+#: horizons/gui/modules/singleplayermenu.py:258
 msgid "Island size deviation:"
 msgstr "devierea la mărimea insulei:"
 
-#: horizons/gui/modules/singleplayermenu.py:257
+#: horizons/gui/modules/singleplayermenu.py:281
 msgid "Resource density:"
 msgstr "densitatea resurselor:"
 
-#: horizons/gui/modules/singleplayermenu.py:284
+#: horizons/gui/modules/singleplayermenu.py:308
 msgid "Invalid scenario file"
 msgstr "numele scenariului invalid"
 
-#: horizons/gui/modules/singleplayermenu.py:285
+#: horizons/gui/modules/singleplayermenu.py:309
 msgid "The selected file is not a valid scenario file."
 msgstr "Fișierul selectat nu este un scenariu valid."
 
-#: horizons/gui/modules/singleplayermenu.py:286
+#: horizons/gui/modules/singleplayermenu.py:310
 msgid "Error message:"
 msgstr "mesaj eroare:"
 
-#: horizons/gui/modules/singleplayermenu.py:287
+#: horizons/gui/modules/singleplayermenu.py:311
 msgid "Please report this to the author."
 msgstr "Raportați asta autorului."
 
 #. (text of widget: headline)
 #. set translated building name in gui
-#: horizons/gui/mousetools/buildingtool.py:129
+#: horizons/gui/mousetools/buildingtool.py:130
 #: horizons/i18n/guitranslations.py:56
 msgid "Build"
 msgstr "construcție"
 
-#: horizons/gui/mousetools/navigationtool.py:71
+#: horizons/gui/mousetools/navigationtool.py:73
 #, fuzzy
 msgid "Press H to remove this hint"
 msgstr "Apăsați H să înlăturați acest ajutor"
 
-#: horizons/gui/tabs/boatbuildertab.py:43
+#: horizons/gui/tabs/boatbuildertab.py:42
 msgid "Boat builder overview"
 msgstr "sumar constructor de ambarcațiuni"
 
 #: horizons/gui/tabs/boatbuildertab.py:93
 #, python-format
-msgid "(place in queue: {place})"
+msgid "{ship} (place in queue: {place})"
 msgstr ""
 
-#: horizons/gui/tabs/boatbuildertab.py:155
+#: horizons/gui/tabs/boatbuildertab.py:157
 msgid "Resources still needed:"
 msgstr "resurse încă necesare:"
 
-#: horizons/gui/tabs/boatbuildertab.py:232
+#: horizons/gui/tabs/boatbuildertab.py:234
 msgid "Fisher boats"
 msgstr "ambarcațiuni de pescuit"
 
 #. (text of widget: headline)
-#: horizons/gui/tabs/boatbuildertab.py:242
+#: horizons/gui/tabs/boatbuildertab.py:244
 #: horizons/i18n/guitranslations.py:161
 msgid "Trade boats"
 msgstr "ambarcațiuni de comerț"
 
 #. (text of widget: headline)
-#: horizons/gui/tabs/boatbuildertab.py:250
+#: horizons/gui/tabs/boatbuildertab.py:252
 #: horizons/i18n/guitranslations.py:178
 msgid "War boats"
 msgstr "ambarcațiuni de război"
 
-#: horizons/gui/tabs/boatbuildertab.py:257
+#: horizons/gui/tabs/boatbuildertab.py:259
 msgid "War ships"
 msgstr "nave de război"
 
-#: horizons/gui/tabs/boatbuildertab.py:274
+#: horizons/gui/tabs/boatbuildertab.py:276
 msgid "Confirm order"
 msgstr "confirmare ordin"
 
@@ -824,7 +831,33 @@ msgstr "confirmare ordin"
 msgid "Build related fields"
 msgstr "Construiește câmpurile asociate"
 
-#: horizons/gui/tabs/buildtabs.py:125
+#: horizons/gui/tabs/buildtabs.py:93
+msgid "Residents and infrastructure"
+msgstr "locuitori și infrastructură"
+
+#: horizons/gui/tabs/buildtabs.py:94 horizons/gui/tabs/buildtabs.py:100
+#: horizons/gui/tabs/buildtabs.py:107
+msgid "Services"
+msgstr "servicii"
+
+#: horizons/gui/tabs/buildtabs.py:95 horizons/gui/tabs/buildtabs.py:98
+#: horizons/gui/tabs/buildtabs.py:105
+msgid "Companies"
+msgstr "companii"
+
+#: horizons/gui/tabs/buildtabs.py:99 horizons/gui/tabs/buildtabs.py:106
+msgid "Fields"
+msgstr "câmpii"
+
+#: horizons/gui/tabs/buildtabs.py:101
+msgid "Military"
+msgstr ""
+
+#: horizons/gui/tabs/buildtabs.py:104
+msgid "Mining"
+msgstr "exploatare minieră"
+
+#: horizons/gui/tabs/buildtabs.py:128
 #, fuzzy
 msgid "Increment {increment}"
 msgstr "etapă de dezvoltare"
@@ -832,11 +865,11 @@ msgstr "etapă de dezvoltare"
 #. i18n In English, this is Sailors, Pioneers, Settlers.
 #. TODO what formatting to use? getting names from DB and adding
 #. '... buildings' will cause wrong declinations all over :/
-#: horizons/gui/tabs/buildtabs.py:134
+#: horizons/gui/tabs/buildtabs.py:137
 msgid "{incr_inhabitant_name}"
 msgstr ""
 
-#: horizons/gui/tabs/buildtabs.py:149 horizons/util/uhdbaccessor.py:150
+#: horizons/gui/tabs/buildtabs.py:155 horizons/util/uhdbaccessor.py:150
 #, python-format
 msgid "{building}: {description}"
 msgstr ""
@@ -865,7 +898,7 @@ msgstr "sumar plasament principal"
 
 #. (text of widget: headline)
 #: horizons/gui/tabs/mainsquaretabs.py:120
-#: horizons/gui/tabs/overviewtab.py:409 horizons/i18n/guitranslations.py:231
+#: horizons/gui/tabs/overviewtab.py:408 horizons/i18n/guitranslations.py:231
 msgid "Settler overview"
 msgstr "sumar colonist"
 
@@ -897,72 +930,74 @@ msgid "Settlers"
 msgstr "coloniști"
 
 #. (text of widget: headline)
-#: horizons/gui/tabs/overviewtab.py:58 horizons/gui/tabs/overviewtab.py:454
+#: horizons/gui/tabs/overviewtab.py:57 horizons/gui/tabs/overviewtab.py:453
 #: horizons/i18n/guitranslations.py:415
 msgid "Overview"
 msgstr "sumar"
 
-#: horizons/gui/tabs/overviewtab.py:115 horizons/gui/tabs/overviewtab.py:471
+# 94%
+#: horizons/gui/tabs/overviewtab.py:114 horizons/gui/tabs/overviewtab.py:470
+#, fuzzy
 msgid "Warehouse overview"
-msgstr ""
+msgstr "sumar sucursală"
 
-#: horizons/gui/tabs/overviewtab.py:145 horizons/gui/tabs/overviewtab.py:273
+#: horizons/gui/tabs/overviewtab.py:144 horizons/gui/tabs/overviewtab.py:272
 msgid "Ship overview"
 msgstr "sumar navă"
 
-#: horizons/gui/tabs/overviewtab.py:153
+#: horizons/gui/tabs/overviewtab.py:152
 msgid "The ship needs to be close to an island to found a settlement."
 msgstr ""
 "Nava trebuie să fie în apropierea unei insule pentru a stabili o colonie."
 
-#: horizons/gui/tabs/overviewtab.py:158
+#: horizons/gui/tabs/overviewtab.py:157
 msgid "You already have a settlement on this island."
 msgstr "Aveți deja o colonie pe această insulă."
 
 #. (tooltip of widget: found_settlement)
-#: horizons/gui/tabs/overviewtab.py:166 horizons/i18n/guitranslations.py:452
+#: horizons/gui/tabs/overviewtab.py:165 horizons/i18n/guitranslations.py:452
 #: horizons/i18n/guitranslations.py:463
 msgid "Build settlement"
 msgstr "stabilește o colonie"
 
 # 91%
-#: horizons/gui/tabs/overviewtab.py:190
+#: horizons/gui/tabs/overviewtab.py:189
 msgid "Load/Unload"
 msgstr "Încarcă/Descarcă"
 
 # 88%
-#: horizons/gui/tabs/overviewtab.py:193
+#: horizons/gui/tabs/overviewtab.py:192
 msgid "Buy/Sell"
 msgstr "Cumpără/Vinde"
 
-#: horizons/gui/tabs/overviewtab.py:202
+#: horizons/gui/tabs/overviewtab.py:201
 #, fuzzy
 msgid "Too far from the nearest warehouse"
 msgstr "Prea departe de sucursală"
 
 # 94%
-#: horizons/gui/tabs/overviewtab.py:208
+#: horizons/gui/tabs/overviewtab.py:207
 msgid "Cannot equip trade ship with weapons"
 msgstr "Ambarcațiunile de comerț nu pot fi echipate cu arme"
 
 # 98%
-#: horizons/gui/tabs/overviewtab.py:209
+#: horizons/gui/tabs/overviewtab.py:208
 msgid "It is not possible to equip a trade ship with weapons."
 msgstr "Nu este posibilă echiparea unei ambarcațiuni de comerț cu arme."
 
-#: horizons/gui/tabs/overviewtab.py:243
+#: horizons/gui/tabs/overviewtab.py:242
 msgid "Equip weapon"
 msgstr "echipare arme"
 
-#: horizons/gui/tabs/overviewtab.py:247
+#: horizons/gui/tabs/overviewtab.py:246
 msgid "Unequip weapon"
 msgstr "dezarmare"
 
-#: horizons/gui/tabs/overviewtab.py:280
+#: horizons/gui/tabs/overviewtab.py:279
 msgid "Unit overview"
 msgstr "sumar unități"
 
-#: horizons/gui/tabs/overviewtab.py:299 horizons/gui/tabs/overviewtab.py:401
+#: horizons/gui/tabs/overviewtab.py:298 horizons/gui/tabs/overviewtab.py:400
 msgid "Production overview"
 msgstr "sumar producție"
 
@@ -971,7 +1006,7 @@ msgid "Selected Units"
 msgstr "unități selecționate"
 
 #: horizons/gui/widgets/buysellinventory.py:83
-#: horizons/gui/widgets/inventory.py:106
+#: horizons/gui/widgets/inventory.py:115
 #, python-format
 msgid "Limit: {amount}t per slot"
 msgstr "Limită: {amount}t pe slot"
@@ -986,13 +1021,13 @@ msgstr "Nu e nimic înscris în jurnalul de bord!"
 
 #. (text of widget: headline_graphics)
 #: horizons/gui/widgets/pickbeltwidget.py:89
-#: horizons/i18n/guitranslations.py:803
+#: horizons/i18n/guitranslations.py:805
 msgid "Graphics"
 msgstr "Grafică"
 
 #. (text of widget: headline_sound)
 #: horizons/gui/widgets/pickbeltwidget.py:90
-#: horizons/i18n/guitranslations.py:813
+#: horizons/i18n/guitranslations.py:815
 msgid "Sound"
 msgstr "Sunet"
 
@@ -1032,20 +1067,20 @@ msgid "Production overview of {settlement}"
 msgstr "Sumar producție {settlement}"
 
 #. (tooltip of widget: start_route) Trade route
-#: horizons/gui/widgets/routeconfig.py:76 horizons/i18n/guitranslations.py:560
+#: horizons/gui/widgets/routeconfig.py:77 horizons/i18n/guitranslations.py:560
 msgid "Start route"
 msgstr "începe rută"
 
-#: horizons/gui/widgets/routeconfig.py:80
+#: horizons/gui/widgets/routeconfig.py:81
 msgid "Stop route"
 msgstr "oprește rută"
 
-#: horizons/gui/widgets/routeconfig.py:129
+#: horizons/gui/widgets/routeconfig.py:130
 msgid "Click on a settlement to add a waypoint!"
 msgstr ""
 
 # 83%
-#: horizons/gui/widgets/routeconfig.py:257
+#: horizons/gui/widgets/routeconfig.py:258
 #, fuzzy
 msgid "Select a resource:"
 msgstr "selecționați resursele:"
@@ -1205,7 +1240,7 @@ msgstr "scrieți mesaj:"
 
 #. (text of widget: headline)
 #. (text of widget: lbl_CHAT)
-#: horizons/i18n/guitranslations.py:124 horizons/i18n/guitranslations.py:642
+#: horizons/i18n/guitranslations.py:124 horizons/i18n/guitranslations.py:640
 msgid "Chat"
 msgstr "șuetă"
 
@@ -1324,17 +1359,17 @@ msgid "Cannons"
 msgstr "Tunuri"
 
 #. (text of widget: ally_label) Diplomacy state of player
-#: horizons/i18n/guitranslations.py:197 horizons/world/__init__.py:301
+#: horizons/i18n/guitranslations.py:197 horizons/world/__init__.py:302
 msgid "ally"
 msgstr "aliat"
 
 #. (text of widget: enemy_label) Diplomacy state of player
-#: horizons/i18n/guitranslations.py:199 horizons/world/__init__.py:303
+#: horizons/i18n/guitranslations.py:199 horizons/world/__init__.py:304
 msgid "enemy"
 msgstr "inamic"
 
 #. (text of widget: neutral_label) Diplomacy state of player
-#: horizons/i18n/guitranslations.py:201 horizons/world/__init__.py:305
+#: horizons/i18n/guitranslations.py:201 horizons/world/__init__.py:306
 msgid "neutral"
 msgstr "neutru"
 
@@ -1793,89 +1828,88 @@ msgstr "Ține poziția"
 msgid "Passive"
 msgstr "Pasiv"
 
-#. (text of widget: fife_and_uh_team)
-#: horizons/i18n/guitranslations.py:634
-#, fuzzy
-msgid "The FIFE and Unknown Horizons development teams"
-msgstr "Echipa de developare FIFE și Unknown Horizons"
-
 #. (text of widget: have_fun)
-#: horizons/i18n/guitranslations.py:636
+#: horizons/i18n/guitranslations.py:634
 msgid "Have fun."
 msgstr "Distracție plăcută!"
 
 #. (text of widget: headline)
-#: horizons/i18n/guitranslations.py:638
+#: horizons/i18n/guitranslations.py:636
 #, fuzzy
 msgid "Key bindings"
 msgstr "Asociere de taste"
 
 #. (text of widget: lbl_BUILD_TOOL)
-#: horizons/i18n/guitranslations.py:640
+#: horizons/i18n/guitranslations.py:638
 msgid "Show build menu"
 msgstr "Afișează meniul construcție"
 
 #. (text of widget: lbl_CONSOLE)
-#: horizons/i18n/guitranslations.py:644
+#: horizons/i18n/guitranslations.py:642
 msgid "Toggle console on/off"
 msgstr "Activează/Dezactivează consola"
 
 #. (text of widget: lbl_COORD_TOOLTIP)
-#: horizons/i18n/guitranslations.py:646
+#: horizons/i18n/guitranslations.py:644
 msgid "Show coordinate values (Debug)"
 msgstr "Afișează valorile coordonatelor (mod de testare / Debug)"
 
 #. (text of widget: lbl_DESTROY_TOOL)
-#: horizons/i18n/guitranslations.py:648
+#: horizons/i18n/guitranslations.py:646
 msgid "Enable destruct mode"
 msgstr "Activează modul distrucție"
 
 #. (text of widget: lbl_DOWN)
-#: horizons/i18n/guitranslations.py:650
+#: horizons/i18n/guitranslations.py:648
 #, fuzzy
 msgid "Scroll down"
 msgstr "Deplasare în jos"
 
 #. (text of widget: lbl_GRID)
-#: horizons/i18n/guitranslations.py:652
+#: horizons/i18n/guitranslations.py:650
 msgid "Toggle grid on/off"
 msgstr "Activează/Dezactivează grila"
 
 #. (text of widget: lbl_HELP)
-#: horizons/i18n/guitranslations.py:654
+#: horizons/i18n/guitranslations.py:652
 msgid "Display help"
 msgstr "Afișează ajutorul"
 
 #. (text of widget: lbl_LEFT)
-#: horizons/i18n/guitranslations.py:656
+#: horizons/i18n/guitranslations.py:654
 #, fuzzy
 msgid "Scroll left"
 msgstr "Deplasare în dreapta"
 
 #. (text of widget: lbl_LOGBOOK)
-#: horizons/i18n/guitranslations.py:658
+#: horizons/i18n/guitranslations.py:656
 msgid "Toggle Captain's log"
 msgstr "Afișează jurnalul de bord"
 
 #. (text of widget: lbl_PAUSE)
-#: horizons/i18n/guitranslations.py:660
+#: horizons/i18n/guitranslations.py:658
 msgid "Pause game"
 msgstr "Suspendă jocul"
 
 #. (text of widget: lbl_PLAYERS_OVERVIEW)
-#: horizons/i18n/guitranslations.py:662
+#: horizons/i18n/guitranslations.py:660
 msgid "Show player scores"
 msgstr "Afișează scorurile jucătorilor"
 
 #. (text of widget: lbl_QUICKLOAD)
-#: horizons/i18n/guitranslations.py:664
+#: horizons/i18n/guitranslations.py:662
 msgid "Quickload"
 msgstr "Încărcare rapidă"
 
 #. (text of widget: lbl_QUICKSAVE)
-#: horizons/i18n/guitranslations.py:666
+#: horizons/i18n/guitranslations.py:664
 msgid "Quicksave"
 msgstr "Salvare de joc rapidă"
+
+#. (text of widget: lbl_REMOVE_SELECTED)
+#: horizons/i18n/guitranslations.py:666
+msgid "Remove selected units / buildings"
+msgstr ""
 
 #. (text of widget: lbl_RIGHT)
 #: horizons/i18n/guitranslations.py:668
@@ -1944,403 +1978,409 @@ msgstr "Deplasare în sus"
 
 #. (tooltip of widget: okButton)
 #. (tooltip of widget: cancelButton)
-#: horizons/i18n/guitranslations.py:694 horizons/i18n/guitranslations.py:831
+#: horizons/i18n/guitranslations.py:694 horizons/i18n/guitranslations.py:833
 #, fuzzy
 msgid "Return"
 msgstr "Anulează"
 
+#. (text of widget: fife_and_uh_team)
+#: horizons/i18n/guitranslations.py:696
+#, fuzzy
+msgid "The FIFE and Unknown Horizons development teams"
+msgstr "Echipa de developare FIFE și Unknown Horizons"
+
 #. (text of widget: help)
 #. (text of widget: help) Main / in-game menu entry
-#: horizons/i18n/guitranslations.py:699 horizons/i18n/guitranslations.py:725
+#: horizons/i18n/guitranslations.py:701 horizons/i18n/guitranslations.py:727
 msgid "Help"
 msgstr "Ajutor"
 
 #. (text of widget: quit)
-#: horizons/i18n/guitranslations.py:703
+#: horizons/i18n/guitranslations.py:705
 msgid "Cancel game"
 msgstr "Abandonează partida"
 
 #. (text of widget: settings)
 #. (text of widget: settings) Main / in-game menu entry
-#: horizons/i18n/guitranslations.py:707 horizons/i18n/guitranslations.py:731
+#: horizons/i18n/guitranslations.py:709 horizons/i18n/guitranslations.py:733
 msgid "Settings"
 msgstr "Parametri"
 
 #. (text of widget: start)
-#: horizons/i18n/guitranslations.py:709
+#: horizons/i18n/guitranslations.py:711
 msgid "Return to game"
 msgstr "Reîntoarcere la partidă"
 
 #. (text of widget: loading_label)
-#: horizons/i18n/guitranslations.py:714
+#: horizons/i18n/guitranslations.py:716
 msgid "Loading ..."
 msgstr "Se încarcă ..."
 
 #. (text of widget: chimebell)
-#: horizons/i18n/guitranslations.py:721
+#: horizons/i18n/guitranslations.py:723
 msgid "Attention please!"
 msgstr "Atenție!"
 
 #. (text of widget: credits)
-#: horizons/i18n/guitranslations.py:723
+#: horizons/i18n/guitranslations.py:725
 #, fuzzy
 msgid "Credits"
 msgstr "Credit"
 
 #. (text of widget: quit) Completely shut down UH
-#: horizons/i18n/guitranslations.py:729
+#: horizons/i18n/guitranslations.py:731
 msgid "Quit"
 msgstr "Renunță"
 
 #. (text of widget: start) Opens widget to create singleplayer games (campaigns, scenarios, random maps, free play)
-#: horizons/i18n/guitranslations.py:733
+#: horizons/i18n/guitranslations.py:735
 #, fuzzy
 msgid "Singleplayer"
 msgstr "Joc singur"
 
 #. (text of widget: start_multi) Opens widget to join or create multiplayer games
-#: horizons/i18n/guitranslations.py:735
+#: horizons/i18n/guitranslations.py:737
 #, fuzzy
 msgid "Multiplayer"
 msgstr "Joc de rețea"
 
 #. (text of widget: create_game_lbl)
-#: horizons/i18n/guitranslations.py:742 horizons/i18n/guitranslations.py:776
+#: horizons/i18n/guitranslations.py:744 horizons/i18n/guitranslations.py:778
 msgid "Create game:"
 msgstr "Crează o partidă:"
 
 #. (text of widget: exit_to_mp_menu_lbl)
-#: horizons/i18n/guitranslations.py:744
+#: horizons/i18n/guitranslations.py:746
 msgid "Back:"
 msgstr "Înapoi:"
 
 #. (text of widget: headline)
-#: horizons/i18n/guitranslations.py:746
+#: horizons/i18n/guitranslations.py:748
 msgid "Choose a map:"
 msgstr "Alegeți o hartă:"
 
 #. (text of widget: headline)
-#: horizons/i18n/guitranslations.py:748
+#: horizons/i18n/guitranslations.py:750
 #, fuzzy
 msgid "Create game - Multiplayer"
 msgstr "Crează o partidă de rețea"
 
 #. (text of widget: mp_player_limit_lbl)
-#: horizons/i18n/guitranslations.py:750
+#: horizons/i18n/guitranslations.py:752
 msgid "Player limit:"
 msgstr "Limita de jucători:"
 
 #. (tooltip of widget: create)
-#: horizons/i18n/guitranslations.py:752
+#: horizons/i18n/guitranslations.py:754
 #, fuzzy
 msgid "Create this new game"
 msgstr "Crează această nouă partidă"
 
 #. (tooltip of widget: cancel)
-#: horizons/i18n/guitranslations.py:754
+#: horizons/i18n/guitranslations.py:756
 msgid "Exit to multiplayer menu"
 msgstr "Renunță la meniul jocului de rețea"
 
 #. (text of widget: exit_to_mp_menu_lbl)
-#: horizons/i18n/guitranslations.py:759
+#: horizons/i18n/guitranslations.py:761
 msgid "Leave:"
 msgstr "Renunță:"
 
 #. (text of widget: game_start_notice)
-#: horizons/i18n/guitranslations.py:761
+#: horizons/i18n/guitranslations.py:763
 msgid "The game will start as soon as enough players have joined."
 msgstr "Jocul va începe când vor fi suficienți jucători."
 
 #. (text of widget: headline)
-#: horizons/i18n/guitranslations.py:763
+#: horizons/i18n/guitranslations.py:765
 msgid "Chat:"
 msgstr "Discuție:"
 
 #. (text of widget: headline)
-#: horizons/i18n/guitranslations.py:765
+#: horizons/i18n/guitranslations.py:767
 msgid "Gamelobby"
 msgstr "Așteptare partidă"
 
 #. (text of widget: startmessage)
-#: horizons/i18n/guitranslations.py:767
+#: horizons/i18n/guitranslations.py:769
 msgid "Game details:"
 msgstr "Detaliile partidei:"
 
 #. (tooltip of widget: cancel)
-#: horizons/i18n/guitranslations.py:769
+#: horizons/i18n/guitranslations.py:771
 #, fuzzy
 msgid "Exit gamelobby"
 msgstr "Ieșire din așteptarea de partidă"
 
 #. (text of widget: active_games_lbl)
-#: horizons/i18n/guitranslations.py:774
+#: horizons/i18n/guitranslations.py:776
 msgid "Active games:"
 msgstr "Partide active:"
 
 #. (text of widget: exit_to_main_menu_lbl)
 #. (text of widget: main_menu_label)
-#: horizons/i18n/guitranslations.py:778 horizons/i18n/guitranslations.py:885
+#: horizons/i18n/guitranslations.py:780 horizons/i18n/guitranslations.py:887
 msgid "Main menu:"
 msgstr "Meniu principal:"
 
 #. (text of widget: game_showonlyownversion)
-#: horizons/i18n/guitranslations.py:780
+#: horizons/i18n/guitranslations.py:782
 msgid "Only show games with the same version:"
 msgstr "Afișează doar partide cu aceeași versiune:"
 
 #. (text of widget: headline_left)
-#: horizons/i18n/guitranslations.py:782
+#: horizons/i18n/guitranslations.py:784
 msgid "New game - Multiplayer"
 msgstr "Nouă partidă - Joc de rețea"
 
 #. (text of widget: join_game_lbl)
-#: horizons/i18n/guitranslations.py:784
+#: horizons/i18n/guitranslations.py:786
 msgid "Join game"
 msgstr "Înscrieți-vă la partidă"
 
 #. (text of widget: refr_gamelist_lbl)
-#: horizons/i18n/guitranslations.py:786
+#: horizons/i18n/guitranslations.py:788
 #, fuzzy
 msgid "Refresh list:"
 msgstr "Actualizare listă:"
 
 #. (tooltip of widget: create)
-#: horizons/i18n/guitranslations.py:788
+#: horizons/i18n/guitranslations.py:790
 msgid "Create a new game"
 msgstr "Creează o nouă partidă"
 
 #. (tooltip of widget: join)
-#: horizons/i18n/guitranslations.py:790
+#: horizons/i18n/guitranslations.py:792
 msgid "Join the selected game"
 msgstr "Înscrieți-vă la partida selecționată"
 
 #. (tooltip of widget: cancel)
-#: horizons/i18n/guitranslations.py:792 horizons/i18n/guitranslations.py:899
+#: horizons/i18n/guitranslations.py:794 horizons/i18n/guitranslations.py:901
 msgid "Exit to main menu"
 msgstr "ieșire la meniul principal"
 
 #. (tooltip of widget: refresh)
-#: horizons/i18n/guitranslations.py:794
+#: horizons/i18n/guitranslations.py:796
 msgid "Refresh list of active games"
 msgstr "Actualizați lista partidelor active"
 
 #. (text of widget: autosave_interval_label)
-#: horizons/i18n/guitranslations.py:799
+#: horizons/i18n/guitranslations.py:801
 msgid "Autosave interval in minutes:"
 msgstr "Intervalul salvărilor de joc automate în minute:"
 
 #. (text of widget: effect_volume_label)
-#: horizons/i18n/guitranslations.py:801
+#: horizons/i18n/guitranslations.py:803
 msgid "Effects volume:"
 msgstr "Volumul efectelor sonore:"
 
 #. (text of widget: headline_language)
-#: horizons/i18n/guitranslations.py:805
+#: horizons/i18n/guitranslations.py:807
 msgid "Language"
 msgstr "Limbă"
 
 #. (text of widget: headline_mouse)
-#: horizons/i18n/guitranslations.py:807
+#: horizons/i18n/guitranslations.py:809
 #, fuzzy
 msgid "Mouse"
 msgstr "case"
 
 #. (text of widget: headline_network)
-#: horizons/i18n/guitranslations.py:809
+#: horizons/i18n/guitranslations.py:811
 msgid "Network"
 msgstr "Rețea"
 
 #. (text of widget: headline_saving)
-#: horizons/i18n/guitranslations.py:811
+#: horizons/i18n/guitranslations.py:813
 msgid "Saving"
 msgstr "Salvează"
 
 #. (text of widget: language_label)
-#: horizons/i18n/guitranslations.py:815
+#: horizons/i18n/guitranslations.py:817
 msgid "Select language:"
 msgstr "Selecție limbă:"
 
 #. (text of widget: music_volume_label)
-#: horizons/i18n/guitranslations.py:817
+#: horizons/i18n/guitranslations.py:819
 msgid "Music volume:"
 msgstr "Volum muzică:"
 
 #. (text of widget: number_of_autosaves_label)
-#: horizons/i18n/guitranslations.py:819
+#: horizons/i18n/guitranslations.py:821
 msgid "Number of autosaves:"
 msgstr "Număr de salvări automate:"
 
 #. (text of widget: number_of_quicksaves_label)
-#: horizons/i18n/guitranslations.py:821
+#: horizons/i18n/guitranslations.py:823
 msgid "Number of quicksaves:"
 msgstr "Număr de salvări de joc rapide:"
 
 #. (text of widget: screen_fullscreen_text)
-#: horizons/i18n/guitranslations.py:823
+#: horizons/i18n/guitranslations.py:825
 msgid "Full screen:"
 msgstr "Tot ecranul:"
 
 #. (text of widget: screen_resolution_label)
-#: horizons/i18n/guitranslations.py:825
+#: horizons/i18n/guitranslations.py:827
 #, fuzzy
 msgid "Screen resolution:"
 msgstr "Rezoluția ecranului:"
 
 #. (text of widget: sound_enable_opt_text)
-#: horizons/i18n/guitranslations.py:827
+#: horizons/i18n/guitranslations.py:829
 msgid "Enable sound:"
 msgstr "Activează sunetul:"
 
 #. (tooltip of widget: okButton)
-#: horizons/i18n/guitranslations.py:829
+#: horizons/i18n/guitranslations.py:831
 msgid "Apply"
 msgstr "Aplicare"
 
 #. (tooltip of widget: defaultButton)
-#: horizons/i18n/guitranslations.py:833
+#: horizons/i18n/guitranslations.py:835
 msgid "Reset to default settings"
 msgstr "Restaurare setări inițiale"
 
 #. (text of widget: auto_unload_label)
-#: horizons/i18n/guitranslations.py:835
+#: horizons/i18n/guitranslations.py:837
 msgid "Auto-unload ship:"
 msgstr ""
 
 #. (text of widget: color_depth_label)
-#: horizons/i18n/guitranslations.py:837
+#: horizons/i18n/guitranslations.py:839
 #, fuzzy
 msgid "Color depth:"
 msgstr "Calitatea culorii:"
 
 #. (text of widget: edge_scrolling_label)
-#: horizons/i18n/guitranslations.py:839
+#: horizons/i18n/guitranslations.py:841
 msgid "Scroll at map edge:"
 msgstr ""
 
 #. (text of widget: minimap_rotation_label)
-#: horizons/i18n/guitranslations.py:841
+#: horizons/i18n/guitranslations.py:843
 msgid "Rotate minimap with map:"
 msgstr ""
 
 #. (text of widget: mouse_sensitivity_label)
-#: horizons/i18n/guitranslations.py:843
+#: horizons/i18n/guitranslations.py:845
 #, fuzzy
 msgid "Mouse sensitivity:"
 msgstr "densitatea resurselor:"
 
 #. (text of widget: network_port_lbl)
-#: horizons/i18n/guitranslations.py:845
+#: horizons/i18n/guitranslations.py:847
 msgid "Network port:"
 msgstr "Port de rețea:"
 
 #. (text of widget: uninterrupted_building_label)
-#: horizons/i18n/guitranslations.py:847
+#: horizons/i18n/guitranslations.py:849
 #, fuzzy
 msgid "Uninterrupted building:"
 msgstr "Construcție neîntreruptă:"
 
 #. (text of widget: use_renderer_label)
-#: horizons/i18n/guitranslations.py:849
+#: horizons/i18n/guitranslations.py:851
 #, fuzzy
 msgid "Used renderer:"
 msgstr "Motor de randare folosit:"
 
 #. (tooltip of widget: auto_unload_label)
-#: horizons/i18n/guitranslations.py:851
+#: horizons/i18n/guitranslations.py:853
 msgid "Whether to unload the ship after founding a settlement"
 msgstr ""
 
 #. (tooltip of widget: color_depth_label)
-#: horizons/i18n/guitranslations.py:853
+#: horizons/i18n/guitranslations.py:855
 msgid "If set to 0, use the driver default"
 msgstr ""
 
 #. (tooltip of widget: edge_scrolling_label)
-#: horizons/i18n/guitranslations.py:855
+#: horizons/i18n/guitranslations.py:857
 msgid "Whether to move the viewport when the mouse pointer is close to map edges"
 msgstr ""
 
 #. (tooltip of widget: minimap_rotation_label)
-#: horizons/i18n/guitranslations.py:857
+#: horizons/i18n/guitranslations.py:859
 msgid "Whether to also rotate the minimap whenever the regular map is rotated"
 msgstr ""
 
 #. (tooltip of widget: mouse_sensitivity_label)
-#: horizons/i18n/guitranslations.py:859
+#: horizons/i18n/guitranslations.py:861
 #, fuzzy
 msgid "0 is default system settings"
 msgstr "restaurează setări inițiale"
 
 #. (tooltip of widget: network_port_lbl)
-#: horizons/i18n/guitranslations.py:861
+#: horizons/i18n/guitranslations.py:863
 msgid "If set to 0, use the router default"
 msgstr ""
 
 #. (tooltip of widget: uninterrupted_building_label)
-#: horizons/i18n/guitranslations.py:863
+#: horizons/i18n/guitranslations.py:865
 msgid "When enabled, do not exit the build mode after successful construction"
 msgstr ""
 
 #. (tooltip of widget: use_renderer_label)
-#: horizons/i18n/guitranslations.py:865
+#: horizons/i18n/guitranslations.py:867
 msgid "SDL is only meant as unsupported fallback and might cause problems!"
 msgstr ""
 
 #. (text of widget: enter_filename_label)
-#: horizons/i18n/guitranslations.py:870
+#: horizons/i18n/guitranslations.py:872
 msgid "Enter filename:"
 msgstr "Intrare nume de fișier:"
 
 #. (text of widget: headline_saved_games_label)
-#: horizons/i18n/guitranslations.py:874
+#: horizons/i18n/guitranslations.py:876
 #, fuzzy
 msgid "Your saved games:"
 msgstr "Partidele dumneavoastră salvate:"
 
 #. (tooltip of widget: cancelButton)
-#: horizons/i18n/guitranslations.py:876
+#: horizons/i18n/guitranslations.py:878
 msgid "Cancel"
 msgstr "Anulare"
 
 #. (tooltip of widget: deleteButton)
-#: horizons/i18n/guitranslations.py:878
+#: horizons/i18n/guitranslations.py:880
 msgid "Delete selected savegame"
 msgstr "Ștergeți salvarea de joc selecționată"
 
 #. (text of widget: headline)
-#: horizons/i18n/guitranslations.py:883
+#: horizons/i18n/guitranslations.py:885
 #, fuzzy
 msgid "New game - Singleplayer"
 msgstr "partidă nouă - joc singur"
 
 #. (text of widget: start_game_label)
-#: horizons/i18n/guitranslations.py:887
+#: horizons/i18n/guitranslations.py:889
 #, fuzzy
 msgid "Start game:"
 msgstr "Începere partidă:"
 
 #. (text of widget: campaign)
-#: horizons/i18n/guitranslations.py:889
+#: horizons/i18n/guitranslations.py:891
 msgid "Campaign"
 msgstr "Campanie"
 
 #. (text of widget: free_maps)
-#: horizons/i18n/guitranslations.py:891
+#: horizons/i18n/guitranslations.py:893
 msgid "Free play"
 msgstr "Partidă liberă"
 
 #. (text of widget: random)
-#: horizons/i18n/guitranslations.py:893
+#: horizons/i18n/guitranslations.py:895
 msgid "Random map"
 msgstr "Hartă aleatorie"
 
 #. (text of widget: scenario)
-#: horizons/i18n/guitranslations.py:895
+#: horizons/i18n/guitranslations.py:897
 msgid "Scenario"
 msgstr "Scenariu"
 
 #. (tooltip of widget: okay)
-#: horizons/i18n/guitranslations.py:897
+#: horizons/i18n/guitranslations.py:899
 #, fuzzy
 msgid "Start game"
 msgstr "Începere partidă"
@@ -2348,51 +2388,46 @@ msgstr "Începere partidă"
 #. (text of widget: choose_map_lbl)
 #. (text of widget: headline_choose_map_lbl)
 #. (text of widget: choose_map_lbl)
-#: horizons/i18n/guitranslations.py:904 horizons/i18n/guitranslations.py:909
-#: horizons/i18n/guitranslations.py:919
+#: horizons/i18n/guitranslations.py:906 horizons/i18n/guitranslations.py:911
+#: horizons/i18n/guitranslations.py:921
 msgid "Choose a map to play:"
 msgstr "Alegeți o hartă:"
 
 #. (text of widget: headline_map_settings_lbl)
-#: horizons/i18n/guitranslations.py:914
+#: horizons/i18n/guitranslations.py:916
 #, fuzzy
 msgid "Map settings:"
 msgstr "Setări de hartă:"
 
 #. (text of widget: ai_players_label)
-#: horizons/i18n/guitranslations.py:924
+#: horizons/i18n/guitranslations.py:926
 msgid "AI players:"
 msgstr "Jucător IA:"
 
 #. (text of widget: headline_game_settings_lbl)
-#: horizons/i18n/guitranslations.py:929
+#: horizons/i18n/guitranslations.py:931
 msgid "Game settings:"
 msgstr "Setări de joc:"
 
 #. (text of widget: lbl_free_trader) Whether to create this kind of player in the game.
-#: horizons/i18n/guitranslations.py:931
+#: horizons/i18n/guitranslations.py:933
 msgid "Free Trader"
 msgstr "Negustor independent"
 
 #. (text of widget: lbl_pirates) Whether to create this kind of player in the game.
-#: horizons/i18n/guitranslations.py:933
+#: horizons/i18n/guitranslations.py:935
 msgid "Pirates"
 msgstr "Pirați"
 
 #. (text of widget: color_label)
-#: horizons/i18n/guitranslations.py:938
+#: horizons/i18n/guitranslations.py:940
 msgid "Color:"
 msgstr "Culoare:"
 
 #. (text of widget: player_label)
-#: horizons/i18n/guitranslations.py:940
+#: horizons/i18n/guitranslations.py:942
 msgid "Player name:"
 msgstr "Nume de jucător:"
-
-#. (text of widget: selectedcolor)
-#: horizons/i18n/guitranslations.py:942
-msgid " "
-msgstr ""
 
 #. name of buildings:boatbuilder
 #: horizons/i18n/objecttranslations.py:45
@@ -2785,11 +2820,14 @@ msgid "Needed for collecting goods."
 msgstr "Potecă: necesar pentru transportul mărfurilor."
 
 #. name of buildings:tree
-#. tooltip_text of buildings:tree
 #: horizons/i18n/objecttranslations.py:301
-#: horizons/i18n/objecttranslations.py:303
 msgid "Tree"
 msgstr "arbore"
+
+#. tooltip_text of buildings:tree
+#: horizons/i18n/objecttranslations.py:303
+msgid "Provides lumber. Chopped down by lumberjacks."
+msgstr ""
 
 #. name of buildings:villageschool
 #: horizons/i18n/objecttranslations.py:308
@@ -2862,6 +2900,16 @@ msgid "To see the changes, either always start UH with the current arguments or 
 msgstr ""
 "Ca schimbările să se aplice, mereu porniți UH cu argumentele curente sau "
 "editați fișierul {filename}."
+
+#. if this is reached, we are screwed. Something went wrong in the simulation,
+#. but we don't know what. Stop the game.
+#: horizons/manager.py:182
+msgid "The games have run out of sync. This indicates an unknown internal error, the game cannot continue."
+msgstr ""
+
+#: horizons/manager.py:183
+msgid "We are very sorry and hope to have this bug fixed in a future version."
+msgstr ""
 
 #: horizons/mpsession.py:53 horizons/mpsession.py:67 horizons/mpsession.py:69
 #: horizons/mpsession.py:71 horizons/mpsession.py:73
@@ -2965,7 +3013,7 @@ msgstr "Fișier utilizat de un alt proces"
 msgid "The savegame file is currently used by another program."
 msgstr "Fișierul salvării de joc este utilizat de alt program."
 
-#: horizons/util/checkupdates.py:71
+#: horizons/util/checkupdates.py:70
 #, fuzzy
 msgid "New version of Unknown Horizons"
 msgstr "Sunteți sigur că vreți să părăsiți Unknown Horizons?"
@@ -2999,57 +3047,57 @@ msgstr "Nu vă puteți permite să cumpărați asta."
 msgid "The trade partner does not sell more of this."
 msgstr "Partenerul de comerț nu vinde mai mult."
 
-#: horizons/world/component/tradepostcomponent.py:210
+#: horizons/world/component/tradepostcomponent.py:209
 msgid "The trade partner does not buy this."
 msgstr "Partenerul de comerț nu cumpără asta."
 
-#: horizons/world/component/tradepostcomponent.py:221
+#: horizons/world/component/tradepostcomponent.py:220
 msgid "You do not possess this."
 msgstr "Nu aveți asta."
 
-#: horizons/world/component/tradepostcomponent.py:228
+#: horizons/world/component/tradepostcomponent.py:227
 msgid "The trade partner can not store more of this."
 msgstr "Partenerul de comerț nu poate stoca mai mult din asta."
 
-#: horizons/world/component/tradepostcomponent.py:235
+#: horizons/world/component/tradepostcomponent.py:234
 msgid "The trade partner can not afford to buy this."
 msgstr "Partenerul de comerț nu-și permite să cumpere asta."
 
-#: horizons/world/component/tradepostcomponent.py:242
+#: horizons/world/component/tradepostcomponent.py:241
 msgid "The trade partner does not buy more of this."
 msgstr "Partenerul de comerț nu cumpără mai mult din asta."
 
-#: horizons/world/units/ship.py:278
+#: horizons/world/traderoute.py:268
 #, python-format
 msgid "Trade route: going to {location}"
 msgstr "Rută comercială: deplasare la {location}"
 
-#: horizons/world/units/ship.py:282
+#: horizons/world/traderoute.py:272
 #, python-format
 msgid "Trade route: waiting at {position}"
 msgstr "Rută comercială: așteptare la {location}"
 
-#: horizons/world/units/ship.py:488
+#: horizons/world/units/ship.py:242
 #, python-format
 msgid "Going to {location}"
 msgstr "Deplasare la {location}"
 
-#: horizons/world/units/ship.py:490
+#: horizons/world/units/ship.py:244
 #, python-format
 msgid "Going to {x}, {y}"
 msgstr "Deplasare prin {x}, {y}"
 
-#: horizons/world/units/ship.py:495
+#: horizons/world/units/ship.py:249
 #, python-format
 msgid "Idle at {location}"
 msgstr "În repaos la {location}"
 
-#: horizons/world/units/ship.py:497
+#: horizons/world/units/ship.py:251
 #, python-format
 msgid "Idle at {x}, {y}"
 msgstr "În repaos la {x}, {y}"
 
-#: horizons/world/units/ship.py:514
+#: horizons/world/units/ship.py:268
 msgid "Trader"
 msgstr "negustor"
 
@@ -3164,26 +3212,11 @@ msgstr ""
 #~ msgid "Sheep"
 #~ msgstr "oaie"
 
-#~ msgid "Companies"
-#~ msgstr "companii"
-
 #~ msgid "Sailor buildings"
 #~ msgstr "bastiment"
 
-#~ msgid "Residents and infrastructure"
-#~ msgstr "locuitori și infrastructură"
-
-#~ msgid "Services"
-#~ msgstr "servicii"
-
 #~ msgid "Trail (R): Needed for collecting goods."
 #~ msgstr "Potecă (R): necesară pentru colectarea bunurilor."
-
-#~ msgid "Fields"
-#~ msgstr "câmpii"
-
-#~ msgid "Mining"
-#~ msgstr "exploatare minieră"
 
 #~ msgid "Show pause menu"
 #~ msgstr "Afișează meniul-pauză"
