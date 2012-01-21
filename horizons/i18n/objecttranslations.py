@@ -214,6 +214,11 @@ def set_translations():
 		"tooltip_text"                : _("Protects your settlement."),
 		},
 
+	"content/objects/buildings/ruinedtent.yaml" : {
+		# name of buildings:ruinedtent
+		"name"                        : _("Ruined Tent"),
+		},
+
 	"content/objects/buildings/saltponds.yaml" : {
 		# name of buildings:saltponds
 		"name"                        : _("Salt Ponds"),
@@ -261,11 +266,6 @@ def set_translations():
 		"name"                        : _("Tent"),
 		# tooltip_text of buildings:tent
 		"tooltip_text"                : _("Houses your inhabitants."),
-		},
-
-	"content/objects/buildings/tentruin.yaml" : {
-		# name of buildings:tentruin
-		"name"                        : _("Tent Ruin"),
 		},
 
 	"content/objects/buildings/tobaccofield.yaml" : {
