@@ -75,23 +75,23 @@ class StatusIcon(object):
 class SettlerUnhappyStatus(StatusIcon):
 	# threshold is the inhabitants decrease level
 	def __init__(self):
-		super(SettlerUnhappyStatus, self).__init__( 1700, "content/gui/icons/building_status_icon/settler_unhappy.png")
+		super(SettlerUnhappyStatus, self).__init__( 1700, "as_attention_please+idle+45")
 
 class InventoryFullStatus(StatusIcon):
 	def __init__(self, reslist):
 		"""
 		@param reslist: list of integers describing the resources
 		"""
-		super(InventoryFullStatus, self).__init__( 1200, "content/gui/icons/building_status_icon/inventory_full.png")
+		super(InventoryFullStatus, self).__init__( 1200, "as_inventory_full+idle+45")
 		self.reslist = reslist
 
 class ProductivityLowStatus(StatusIcon):
 	"""Terminology: productivity = capacity utilisation"""
 	threshold = 0.25 # display when productivity lower than this
 	def __init__(self):
-		super(ProductivityLowStatus, self).__init__( 400, "content/gui/icons/building_status_icon/productivity_low.png")
+		super(ProductivityLowStatus, self).__init__( 400, "as_attention_please+idle+45")
 
 class DecommissionedStatus(StatusIcon):
 	"""Terminology: productiviy = capacity utilisation"""
 	def __init__(self):
-		super(DecommissionedStatus, self).__init__( 800, "content/gui/icons/building_status_icon/decommissioned.png")
+		super(DecommissionedStatus, self).__init__( 800, "as_decommissioned+idle+45")
