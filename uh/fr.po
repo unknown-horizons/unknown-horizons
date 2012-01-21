@@ -803,10 +803,11 @@ msgstr "Appuyez sur H pour enlever cette aide"
 msgid "Boat builder overview"
 msgstr "Sommaire du constructeur de bateaux"
 
+# 78%
 #: horizons/gui/tabs/boatbuildertab.py:93
-#, python-format
+#, python-format, fuzzy
 msgid "{ship} (place in queue: {place})"
-msgstr ""
+msgstr "(poste en attente: {place})"
 
 #: horizons/gui/tabs/boatbuildertab.py:157
 msgid "Resources still needed:"
