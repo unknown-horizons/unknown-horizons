@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2012-01-19 20:39+0100\n"
-"PO-Revision-Date: 2012-01-22 22:41+0200\n"
+"PO-Revision-Date: 2012-01-19 21:57+0200\n"
 "Last-Translator: Sebastien (seblabel) <sebastiencharpentier@laposte.net>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: fr\n"
@@ -2287,9 +2287,8 @@ msgstr "Tourner la mini-carte avec la carte :"
 # 76%
 #. (text of widget: mouse_sensitivity_label)
 #: horizons/i18n/guitranslations.py:845
-#, fuzzy
 msgid "Mouse sensitivity:"
-msgstr "Densité des ressources :"
+msgstr "Sensibilité de la souris:"
 
 #. (text of widget: network_port_lbl)
 #: horizons/i18n/guitranslations.py:847
@@ -2499,9 +2498,8 @@ msgstr "Meule de charbonnier"
 
 #. tooltip_text of buildings:charcoalburning
 #: horizons/i18n/objecttranslations.py:75
-#, fuzzy
 msgid "Burns a lot of boards."
-msgstr "Charbonnier : Produit du charbon de bois."
+msgstr "Brûle beaucoup de planches."
 
 #. name of buildings:claydeposit
 #: horizons/i18n/objecttranslations.py:80
@@ -2515,9 +2513,8 @@ msgstr "Carrière d'argile"
 
 #. tooltip_text of buildings:claypit
 #: horizons/i18n/objecttranslations.py:87
-#, fuzzy
 msgid "Gets clay from deposit."
-msgstr "Carrière d'argile : Extrait l'argile d'un gisement."
+msgstr "Extrait l'argile d'un gisement."
 
 #. name of buildings:distillery
 #: horizons/i18n/objecttranslations.py:92
@@ -2537,9 +2534,8 @@ msgstr "Médecin"
 
 #. tooltip_text of buildings:doctor
 #: horizons/i18n/objecttranslations.py:101
-#, fuzzy
 msgid "Treats diseases. Consumes herbs."
-msgstr "Médecin : Traite les maladies. Utilise des plantes médicinales."
+msgstr "Traite les maladies. Utilise des plantes médicinales."
 
 # Building
 #. name of buildings:farm
@@ -2565,9 +2561,8 @@ msgstr "Tente du pêcheur"
 
 #. tooltip_text of buildings:fishermanstent
 #: horizons/i18n/objecttranslations.py:120
-#, fuzzy
 msgid "Fishes the sea, produces food."
-msgstr "Pêche en mer et fournit de la nourriture."
+msgstr "Pêche en mer, fournit de la nourriture."
 
 #. name of buildings:gravelpath
 #: horizons/i18n/objecttranslations.py:125
@@ -2581,9 +2576,8 @@ msgstr "Herboristerie"
 
 #. tooltip_text of buildings:herbary
 #: horizons/i18n/objecttranslations.py:132
-#, fuzzy
 msgid "Produces herbs. Needs a farm."
-msgstr "Herboristerie : Produit des plantes médicinales. Nécessite une ferme."
+msgstr "Produit des plantes médicinales. Nécessite une ferme."
 
 #. name of buildings:hunterstent
 #: horizons/i18n/objecttranslations.py:137
@@ -2592,9 +2586,8 @@ msgstr "Tente du chasseur"
 
 #. tooltip_text of buildings:hunterstent
 #: horizons/i18n/objecttranslations.py:139
-#, fuzzy
 msgid "Hunts wild forest animals, produces food."
-msgstr "Chasse des animaux sauvages et fournit de la nourriture."
+msgstr "Chasse des animaux en forêt et fournit de la nourriture."
 
 #. name of buildings:ironmine
 #: horizons/i18n/objecttranslations.py:144
@@ -2604,9 +2597,8 @@ msgstr "Mine de fer"
 # I think it's good like that
 #. tooltip_text of buildings:ironmine
 #: horizons/i18n/objecttranslations.py:146
-#, fuzzy
 msgid "Gets iron ore from deposit."
-msgstr "Mine de fer : Extrait le minerai de fer d'un gisement."
+msgstr "Extrait le minerai de fer d'un gisement."
 
 #. name of buildings:log
 #: horizons/i18n/objecttranslations.py:151
@@ -2616,7 +2608,7 @@ msgstr "Protocole"
 #. tooltip_text of buildings:log
 #: horizons/i18n/objecttranslations.py:153
 msgid "Road across a river."
-msgstr ""
+msgstr "Route traversant une rivière."
 
 #. name of buildings:lookout
 #: horizons/i18n/objecttranslations.py:158
@@ -2626,7 +2618,7 @@ msgstr "Tour de guet"
 #. tooltip_text of buildings:lookout
 #: horizons/i18n/objecttranslations.py:160
 msgid "Increases the player's sight."
-msgstr ""
+msgstr "Augmente la vue du joueur."
 
 #. name of buildings:lumberjackcamp
 #: horizons/i18n/objecttranslations.py:165
@@ -2662,11 +2654,8 @@ msgstr "Pré"
 
 #. tooltip_text of buildings:pasture
 #: horizons/i18n/objecttranslations.py:186
-#, fuzzy
 msgid "Raises sheep. Produces wool. Needs a farm."
-msgstr ""
-"Pâturage : Permet l'élevage de moutons et fournit de la laine. Nécessite une "
-"ferme."
+msgstr "Élève des moutons. Fournit de la laine. Nécessite une ferme."
 
 #. name of buildings:pavilion
 #: horizons/i18n/objecttranslations.py:191
@@ -2698,10 +2687,8 @@ msgstr "Champs de pommes de terre"
 
 #. tooltip_text of buildings:potatofield
 #: horizons/i18n/objecttranslations.py:207
-#, fuzzy
 msgid "Yields food. Needs a farm."
-msgstr ""
-"Champ de pommes de terre : Produit de la nourriture. Nécessite une ferme."
+msgstr "Produit de la nourriture. Nécessite une ferme."
 
 #. name of buildings:rampart
 #: horizons/i18n/objecttranslations.py:212
@@ -2766,11 +2753,8 @@ msgstr "Champ de canne à sucre"
 
 #. tooltip_text of buildings:sugarfield
 #: horizons/i18n/objecttranslations.py:249
-#, fuzzy
 msgid "Used in liquor production. Needs a farm."
-msgstr ""
-"Champ de canne à sucre : Utilisée pour la production d'alcool. Nécessite une "
-"ferme."
+msgstr "Utilisée pour la production d'alcool. Nécessite une ferme."
 
 #. name of buildings:tavern
 #: horizons/i18n/objecttranslations.py:254
@@ -2841,9 +2825,8 @@ msgstr "Sentier"
 
 #. tooltip_text of buildings:trail
 #: horizons/i18n/objecttranslations.py:296
-#, fuzzy
 msgid "Needed for collecting goods."
-msgstr "Sentier : Nécessaire au transport des marchandises."
+msgstr "Nécessaire au transport des marchandises."
 
 #. name of buildings:tree
 #: horizons/i18n/objecttranslations.py:301
@@ -2853,7 +2836,7 @@ msgstr "Arbre"
 #. tooltip_text of buildings:tree
 #: horizons/i18n/objecttranslations.py:303
 msgid "Provides lumber. Chopped down by lumberjacks."
-msgstr ""
+msgstr "Fournit des planches. Produites par les bûcherons."
 
 #. name of buildings:villageschool
 #: horizons/i18n/objecttranslations.py:308
@@ -2868,9 +2851,8 @@ msgstr "Assure l'éducation."
 
 #. name of buildings:warehouse
 #: horizons/i18n/objecttranslations.py:315
-#, fuzzy
 msgid "Warehouse"
-msgstr "maisons"
+msgstr "Comptoir"
 
 # The word "tisseur" is more common than "tisserand"
 #. name of buildings:weaverstent
@@ -2932,10 +2914,14 @@ msgstr ""
 #: horizons/manager.py:182
 msgid "The games have run out of sync. This indicates an unknown internal error, the game cannot continue."
 msgstr ""
+"Le jeu est désynchronisé. Ceci indique une erreur interne inconnue, la "
+"partie ne peut continuer."
 
 #: horizons/manager.py:183
 msgid "We are very sorry and hope to have this bug fixed in a future version."
 msgstr ""
+"Nous sommes vraiment désolé et espérons fixer ce bogue dans une prochaine "
+"version."
 
 #: horizons/mpsession.py:53 horizons/mpsession.py:67 horizons/mpsession.py:69
 #: horizons/mpsession.py:71 horizons/mpsession.py:73
@@ -3047,22 +3033,23 @@ msgstr ""
 "Le fichier de sauvegarde est actuellement utilisé par un autre programme."
 
 #: horizons/util/checkupdates.py:70
-#, fuzzy
 msgid "New version of Unknown Horizons"
-msgstr "Démarrer Unknown Horizons"
+msgstr "Nouvelle version d'Unknown Horizons"
 
 #: horizons/util/checkupdates.py:72
 #, python-format
 msgid "There is a more recent release of Unknown Horizons ({new_version}) than the one you are currently using ({old_version})."
 msgstr ""
+"Il y a une version plus récente d'Unknown Horizons ({new_version}) que celle "
+"que vous utilisé ({old_version})."
 
 #: horizons/util/checkupdates.py:76
 msgid "Click to download"
-msgstr ""
+msgstr "Cliquez pour télécharger"
 
 #: horizons/util/checkupdates.py:80
 msgid "A page has been opened in your browser."
-msgstr ""
+msgstr "Une page a été ouverte dans votre navigateur."
 
 #: horizons/world/component/tradepostcomponent.py:163
 msgid "The trade partner does not sell this."
