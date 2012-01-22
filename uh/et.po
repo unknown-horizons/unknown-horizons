@@ -7,8 +7,8 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2012-01-19 20:39+0100\n"
-"PO-Revision-Date: 2012-01-15 17:41+0200\n"
-"Last-Translator: Christopher Oelmueller <chris.oelmueller+uh@gmail.com>\n"
+"PO-Revision-Date: 2012-01-22 03:34+0200\n"
+"Last-Translator: ussikene <ussikene@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: et\n"
 "MIME-Version: 1.0\n"
@@ -31,7 +31,7 @@ msgstr "Uus maailm on loodud."
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
 msgid "One of your fields requires a farm to harvest its crops."
-msgstr ""
+msgstr "Üks sinu põldudest vajab saagi koristamiseks farmi."
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
@@ -776,9 +776,9 @@ msgstr "Paadiehitaja ülevaade"
 
 # 78%
 #: horizons/gui/tabs/boatbuildertab.py:93
-#, python-format, fuzzy
+#, python-format, 
 msgid "{ship} (place in queue: {place})"
-msgstr "(koht järjekorras: {place})"
+msgstr "{ship}(koht järjekorras: {place})"
 
 #: horizons/gui/tabs/boatbuildertab.py:157
 msgid "Resources still needed:"
