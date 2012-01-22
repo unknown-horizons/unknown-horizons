@@ -7,8 +7,8 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2012-01-19 20:39+0100\n"
-"PO-Revision-Date: 2012-01-12 13:51+0200\n"
-"Last-Translator: Antoine <antoinepernot@mailoo.org>\n"
+"PO-Revision-Date: 2012-01-22 22:41+0200\n"
+"Last-Translator: Sebastien (seblabel) <sebastiencharpentier@laposte.net>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: fr\n"
 "MIME-Version: 1.0\n"
@@ -33,7 +33,7 @@ msgstr "Un nouveau monde a été créé."
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
 msgid "One of your fields requires a farm to harvest its crops."
-msgstr ""
+msgstr "Un de vos champs à besoin d'un ferme pour sa récolte."
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
@@ -609,7 +609,7 @@ msgstr "Échec lors de l'effacement de la sauvegarde !"
 #: horizons/gui/gui.py:616
 #, python-format
 msgid "[{key}] = {text}"
-msgstr ""
+msgstr "[{key}] = {text}"
 
 #. e.g. when the pirate is disabled
 #. this dialog is pretty useless in this case
@@ -805,9 +805,9 @@ msgstr "Sommaire du constructeur de bateaux"
 
 # 78%
 #: horizons/gui/tabs/boatbuildertab.py:93
-#, python-format, fuzzy
+#, python-format, 
 msgid "{ship} (place in queue: {place})"
-msgstr "(poste en attente: {place})"
+msgstr "{ship} (poste: {place})"
 
 #: horizons/gui/tabs/boatbuildertab.py:157
 msgid "Resources still needed:"
@@ -869,16 +869,15 @@ msgid "Mining"
 msgstr "Exploitation minière"
 
 #: horizons/gui/tabs/buildtabs.py:128
-#, fuzzy
 msgid "Increment {increment}"
-msgstr "Niveau"
+msgstr "Niveau {increment}"
 
 #. i18n In English, this is Sailors, Pioneers, Settlers.
 #. TODO what formatting to use? getting names from DB and adding
 #. '... buildings' will cause wrong declinations all over :/
 #: horizons/gui/tabs/buildtabs.py:137
 msgid "{incr_inhabitant_name}"
-msgstr ""
+msgstr "{incr_inhabitant_name}"
 
 #: horizons/gui/tabs/buildtabs.py:155 horizons/util/uhdbaccessor.py:150
 #, python-format
@@ -957,9 +956,8 @@ msgstr "Sommaire"
 # An "apercu" is more a preview than an overview.
 # 94%
 #: horizons/gui/tabs/overviewtab.py:114 horizons/gui/tabs/overviewtab.py:470
-#, fuzzy
 msgid "Warehouse overview"
-msgstr "Sommaire du marché"
+msgstr "Sommaire de l’entrepôt"
 
 # An "apercu" is more a preview than an overview.
 #: horizons/gui/tabs/overviewtab.py:144 horizons/gui/tabs/overviewtab.py:272
@@ -1943,7 +1941,7 @@ msgstr "Sauvegarde rapide"
 #. (text of widget: lbl_REMOVE_SELECTED)
 #: horizons/i18n/guitranslations.py:666
 msgid "Remove selected units / buildings"
-msgstr ""
+msgstr "Supprimer les unités / bâtiments sélectionnés"
 
 #. (text of widget: lbl_RIGHT)
 #: horizons/i18n/guitranslations.py:668
@@ -2207,9 +2205,8 @@ msgstr "Langue"
 
 #. (text of widget: headline_mouse)
 #: horizons/i18n/guitranslations.py:809
-#, fuzzy
 msgid "Mouse"
-msgstr "maisons"
+msgstr "Souris"
 
 #. (text of widget: headline_network)
 #: horizons/i18n/guitranslations.py:811
