@@ -65,10 +65,7 @@ class Production(ChangeListener):
 		self.__start_finished = start_finished
 		self.__init(inventory, owner_inventory, prod_id, prod_data, PRODUCTION.STATES.none, Scheduler().cur_tick)
 
-		# don't set call_listener_now to true, adding/removing changelisteners wouldn't be atomic any more
-		self.inventory.add_change_listener(self._check_inventory, call_listener_now=False)
-		if self.__class__.USES_GOLD:
-			self.owner_inventory.add_change_listener(self._check_inventory, call_listener_now=False)
+		self._add_listeners()
 
 
 	def start(self):
@@ -131,9 +128,7 @@ class Production(ChangeListener):
 			Scheduler().add_new_object(self._get_producing_callback(), self, db_data[1])
 		elif self._state == PRODUCTION.STATES.waiting_for_res or \
 				 self._state == PRODUCTION.STATES.inventory_full:
-			self.inventory.add_change_listener(self._check_inventory)
-			if self.__class__.USES_GOLD:
-				self.owner_inventory.add_change_listener(self._check_inventory)
+			self._add_listeners()
 
 		self._state_history = db.get_production_state_history(worldid)
 
@@ -201,10 +196,7 @@ class Production(ChangeListener):
 			if self._state in (PRODUCTION.STATES.waiting_for_res, \
 												 PRODUCTION.STATES.inventory_full):
 				# just restore watching
-				# don't set call_listener_now to true, adding/removing changelisteners wouldn't be atomic any more
-				self.inventory.add_change_listener(self._check_inventory)
-				if self.__class__.USES_GOLD:
-					self.owner_inventory.add_change_listener(self._check_inventory)
+				self._add_listeners()
 				self._check_inventory()
 
 			elif self._state == PRODUCTION.STATES.producing:
@@ -388,11 +380,14 @@ class Production(ChangeListener):
 		self.on_production_finished()
 		if continue_producing:
 			self.state = PRODUCTION.STATES.waiting_for_res
-			# don't set call_listener_now to true, adding/removing changelisteners wouldn't be atomic any more
-			self.inventory.add_change_listener(self._check_inventory)
-			if self.__class__.USES_GOLD:
-				self.owner_inventory.add_change_listener(self._check_inventory)
+			self._add_listeners()
 			self._check_inventory()
+
+	def _add_listeners(self):
+		# don't set call_listener_now to true, adding/removing changelisteners wouldn't be atomic any more
+		self.inventory.add_change_listener(self._check_inventory)
+		if self.__class__.USES_GOLD:
+			self.owner_inventory.add_change_listener(self._check_inventory)
 
 	def _give_produced_res(self):
 		"""Put produces goods to the inventory"""
@@ -428,7 +423,6 @@ class Production(ChangeListener):
 		else:
 
 			return "UninitializedProduction()"
-
 
 class ChangingProduction(Production):
 	"""Same as Production, but can changes properties of the production line"""
@@ -521,9 +515,7 @@ class ProgressProduction(Production):
 		# check if there were res
 		if removed_res == 0:
 			# watch inventory for new res
-			self.inventory.add_change_listener(self._check_inventory)
-			if self.__class__.USES_GOLD:
-				self.owner_inventory.add_change_listener(self._check_inventory)
+			self._add_listeners()
 			self._state = PRODUCTION.STATES.waiting_for_res
 			self._changed()
 			return
