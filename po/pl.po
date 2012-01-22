@@ -1244,7 +1244,6 @@ msgstr "Zmień nazwę"
 
 #. (tooltip of widget: okButton)
 #: horizons/i18n/guitranslations.py:117
-#, fuzzy
 msgid "Apply the new name"
 msgstr "Zastosuj nową nazwę"
 
@@ -1548,7 +1547,6 @@ msgstr "Złoże zasobu"
 
 #. (text of widget: res_dep_description_lbl)
 #: horizons/i18n/guitranslations.py:362
-#, fuzzy
 msgid "This is a resource deposit where you can build a mine to dig up resources."
 msgstr "To jest złoże zasobu. Możesz tu zbudować kopalnie, aby je eksploatować."
 
@@ -1872,7 +1870,6 @@ msgstr "Pokaż menu budowania"
 
 #. (text of widget: lbl_CONSOLE)
 #: horizons/i18n/guitranslations.py:642
-#, fuzzy
 msgid "Toggle console on/off"
 msgstr "Włącz/Wyłącz konsolę"
 
@@ -1893,7 +1890,6 @@ msgstr "Przesuń w dół"
 
 #. (text of widget: lbl_GRID)
 #: horizons/i18n/guitranslations.py:650
-#, fuzzy
 msgid "Toggle grid on/off"
 msgstr "Włącz/Wyłącz siatkę"
 
@@ -1944,13 +1940,11 @@ msgstr "Przesuń w prawo"
 
 #. (text of widget: lbl_ROAD_TOOL)
 #: horizons/i18n/guitranslations.py:670
-#, fuzzy
 msgid "Enable road building mode"
 msgstr "Włącz tryb budowanie dróg"
 
 #. (text of widget: lbl_ROTATE_LEFT)
 #: horizons/i18n/guitranslations.py:672
-#, fuzzy
 msgid "Rotate building or map counterclockwise"
 msgstr "Obracanie budynków lub mapy zgodnie w lewo"
 
@@ -1997,7 +1991,6 @@ msgstr "Podświetl tereny zamieszkane"
 
 #. (text of widget: lbl_TRANSLUCENCY)
 #: horizons/i18n/guitranslations.py:690
-#, fuzzy
 msgid "Toggle translucency of ambient buildings"
 msgstr "Włącz/Wyłącz przeźroczystość otoczenia budynków"
 
@@ -2296,7 +2289,6 @@ msgstr "Port sieciowy:"
 
 #. (text of widget: uninterrupted_building_label)
 #: horizons/i18n/guitranslations.py:849
-#, fuzzy
 msgid "Uninterrupted building:"
 msgstr "Nieprzerwane budowanie:"
 
@@ -2330,10 +2322,12 @@ msgstr ""
 msgid "0 is default system settings"
 msgstr "0 - domyślne ustawienie"
 
+# 88%
 #. (tooltip of widget: network_port_lbl)
 #: horizons/i18n/guitranslations.py:863
+#, fuzzy
 msgid "If set to 0, use the router default"
-msgstr ""
+msgstr "Jeśli ustawisz 0, użyje domyślnego sterownika"
 
 #. (tooltip of widget: uninterrupted_building_label)
 #: horizons/i18n/guitranslations.py:865
@@ -2463,7 +2457,6 @@ msgstr "Cegielnia"
 
 #. tooltip_text of buildings:brickyard
 #: horizons/i18n/objecttranslations.py:54
-#, fuzzy
 msgid "Turns clay into bricks."
 msgstr "Zmienia glinę w cegły."
 
@@ -2479,13 +2472,11 @@ msgstr "Rzeźnik: Wymaga świń lub bydła. Produkuje jedzenie."
 
 #. name of buildings:cattlerun
 #: horizons/i18n/objecttranslations.py:66
-#, fuzzy
 msgid "Cattle Run"
 msgstr "Bydło Biega"
 
 #. tooltip_text of buildings:cattlerun
 #: horizons/i18n/objecttranslations.py:68
-#, fuzzy
 msgid "Raises cattle. Needs a farm."
 msgstr "Aby rozwijać bydło. Wymagana jest farma."
 
@@ -2497,7 +2488,6 @@ msgstr "Wypalanie Węgla Drzewnego"
 
 #. tooltip_text of buildings:charcoalburning
 #: horizons/i18n/objecttranslations.py:75
-#, fuzzy
 msgid "Burns a lot of boards."
 msgstr "Spala bardzo dużo desek."
 
@@ -2514,7 +2504,6 @@ msgstr "Kopalnia gliny"
 
 #. tooltip_text of buildings:claypit
 #: horizons/i18n/objecttranslations.py:87
-#, fuzzy
 msgid "Gets clay from deposit."
 msgstr "Dostarcza gliny ze złóż."
 
@@ -2525,7 +2514,6 @@ msgstr "Destylarnia"
 
 #. tooltip_text of buildings:distillery
 #: horizons/i18n/objecttranslations.py:94
-#, fuzzy
 msgid "Turns sugar into liquor."
 msgstr "Zmienia cukier w alkohol."
 
@@ -2547,7 +2535,6 @@ msgstr "Farma"
 
 #. tooltip_text of buildings:farm
 #: horizons/i18n/objecttranslations.py:108
-#, fuzzy
 msgid "Grows field crops and raises livestock."
 msgstr "Pozwala na uprawę roślin i chów zwierząt."
 
@@ -2563,7 +2550,6 @@ msgstr "Namiot rybaka"
 
 #. tooltip_text of buildings:fishermanstent
 #: horizons/i18n/objecttranslations.py:120
-#, fuzzy
 msgid "Fishes the sea, produces food."
 msgstr "Łowi ryby, dostarcza jedzenie."
 
@@ -2590,7 +2576,6 @@ msgstr "Namiot myśliwego"
 
 #. tooltip_text of buildings:hunterstent
 #: horizons/i18n/objecttranslations.py:139
-#, fuzzy
 msgid "Hunts wild forest animals, produces food."
 msgstr "Poluje na zwierzęta, dostarcza jedzenie."
 
@@ -2601,7 +2586,6 @@ msgstr "Kopalnia żelaza"
 
 #. tooltip_text of buildings:ironmine
 #: horizons/i18n/objecttranslations.py:146
-#, fuzzy
 msgid "Gets iron ore from deposit."
 msgstr "Wydobywa żelazo ze złoża."
 
@@ -2612,7 +2596,6 @@ msgstr "Dziennik"
 
 #. tooltip_text of buildings:log
 #: horizons/i18n/objecttranslations.py:153
-#, fuzzy
 msgid "Road across a river."
 msgstr "Droga przechodzi przez rzekę."
 
@@ -2624,7 +2607,6 @@ msgstr "Punkt obserwacyjny"
 
 #. tooltip_text of buildings:lookout
 #: horizons/i18n/objecttranslations.py:160
-#, fuzzy
 msgid "Increases the player's sight."
 msgstr "Zwiększa zasięg wzroku gracza."
 
@@ -2636,7 +2618,6 @@ msgstr "Obóz drwali"
 
 #. tooltip_text of buildings:lumberjackcamp
 #: horizons/i18n/objecttranslations.py:167
-#, fuzzy
 msgid "Chops down trees and turns them into boards."
 msgstr "Ścina drzewa i wytwarza z nich deski."
 
@@ -2647,7 +2628,6 @@ msgstr "Rynek główny"
 
 #. tooltip_text of buildings:mainsquare
 #: horizons/i18n/objecttranslations.py:174
-#, fuzzy
 msgid "Supplies citizens with goods."
 msgstr "Zapewnia obywatelom możliwość wymiany dóbr."
 
@@ -2664,7 +2644,6 @@ msgstr "Pastwisko"
 
 #. tooltip_text of buildings:pasture
 #: horizons/i18n/objecttranslations.py:186
-#, fuzzy
 msgid "Raises sheep. Produces wool. Needs a farm."
 msgstr "Używane do hodowli owiec. Dostarcza wełnę. Wymaga farmy."
 
@@ -2675,7 +2654,6 @@ msgstr "Kaplica"
 
 #. tooltip_text of buildings:pavilion
 #: horizons/i18n/objecttranslations.py:193
-#, fuzzy
 msgid "Fulfills religious needs of sailors."
 msgstr "Wypełnia religijne potrzeby obywateli."
 
@@ -2686,7 +2664,6 @@ msgstr "Chlew"
 
 #. tooltip_text of buildings:pigsty
 #: horizons/i18n/objecttranslations.py:200
-#, fuzzy
 msgid "Raises pigs. Needs a farm."
 msgstr "Chodowla świń. Wymagana farma."
 
@@ -2698,7 +2675,6 @@ msgstr "Pole ziemniaczane"
 
 #. tooltip_text of buildings:potatofield
 #: horizons/i18n/objecttranslations.py:207
-#, fuzzy
 msgid "Yields food. Needs a farm."
 msgstr "Dostarcza jedzenie. Wymaga farmy."
 
@@ -2710,7 +2686,6 @@ msgstr "Mur obronny"
 
 #. tooltip_text of buildings:rampart
 #: horizons/i18n/objecttranslations.py:214
-#, fuzzy
 msgid "Protects your settlement."
 msgstr "Drewniana wieża obronna."
 
@@ -2721,7 +2696,6 @@ msgstr "Basen solny"
 
 #. tooltip_text of buildings:saltponds
 #: horizons/i18n/objecttranslations.py:221
-#, fuzzy
 msgid "Evaporates salt. Built on sea coast."
 msgstr "Odparowuje sól. Wybuduj na brzegu morza."
 
@@ -2733,7 +2707,6 @@ msgstr "Ogień sygnalizacyjny"
 
 #. tooltip_text of buildings:signalfire
 #: horizons/i18n/objecttranslations.py:228
-#, fuzzy
 msgid "Allows the player to trade with the free trader."
 msgstr "Pozwala osadzie na handel z wolnym handlarzem."
 
@@ -2744,7 +2717,6 @@ msgstr "Formiarnia"
 
 #. tooltip_text of buildings:smeltery
 #: horizons/i18n/objecttranslations.py:235
-#, fuzzy
 msgid "Refines all kind of ores."
 msgstr "Oczyszcza wszelkiego rodzaju rudy kopalniane."
 
@@ -2756,7 +2728,6 @@ msgstr "Namiot składowy"
 
 #. tooltip_text of buildings:storagetent
 #: horizons/i18n/objecttranslations.py:242
-#, fuzzy
 msgid "Extends stock and provides collectors."
 msgstr "Zwiększa możliwość przechowywania zapasów."
 
@@ -2778,7 +2749,6 @@ msgstr "Tawerna"
 
 #. tooltip_text of buildings:tavern
 #: horizons/i18n/objecttranslations.py:256
-#, fuzzy
 msgid "Provides get-together."
 msgstr "Zapewnia spotkania."
 
@@ -2789,7 +2759,6 @@ msgstr "Namiot"
 
 #. tooltip_text of buildings:tent
 #: horizons/i18n/objecttranslations.py:263
-#, fuzzy
 msgid "Houses your inhabitants."
 msgstr "Daje schronienie mieszkańcom."
 
@@ -2806,7 +2775,6 @@ msgstr "Pole tytoniu"
 
 #. tooltip_text of buildings:tobaccofield
 #: horizons/i18n/objecttranslations.py:275
-#, fuzzy
 msgid "Produces tobacco. Needs a farm."
 msgstr "Produkcja tytoniu. Wymagana farma."
 
@@ -2817,7 +2785,6 @@ msgstr ""
 
 #. tooltip_text of buildings:tobacconist
 #: horizons/i18n/objecttranslations.py:282
-#, fuzzy
 msgid "Produces tobaccos out of tobacco."
 msgstr "Wytwarza tytoń z liści tytoniu."
 
@@ -2828,7 +2795,6 @@ msgstr "Kowal"
 
 #. tooltip_text of buildings:toolmaker
 #: horizons/i18n/objecttranslations.py:289
-#, fuzzy
 msgid "Produces tools out of iron."
 msgstr "Wytwarza narzędzia z żelaza."
 
@@ -2860,7 +2826,6 @@ msgstr "Szkoła wiejska"
 
 #. tooltip_text of buildings:villageschool
 #: horizons/i18n/objecttranslations.py:310
-#, fuzzy
 msgid "Provides education."
 msgstr "Zapewnia edukację."
 
@@ -2876,7 +2841,6 @@ msgstr "Namiot tkacki"
 
 #. tooltip_text of buildings:weaverstent
 #: horizons/i18n/objecttranslations.py:322
-#, fuzzy
 msgid "Turns lamb wool into cloth."
 msgstr "Wytwarza ubrania z wełny owczej."
 
@@ -2887,7 +2851,6 @@ msgstr "Drewniana wieża"
 
 #. tooltip_text of buildings:woodentower
 #: horizons/i18n/objecttranslations.py:329
-#, fuzzy
 msgid "Defends your settlement."
 msgstr "Drewniana wieża obronna."
 
@@ -2957,10 +2920,11 @@ msgstr ""
 msgid "Error: don't know how to handle condition type {condition}"
 msgstr "Błąd: Nie można przechwycić zdarzenia typu {condition}"
 
+# 81%
 #: horizons/savegamemanager.py:371 horizons/savegamemanager.py:377
-#, python-format
+#, python-format, fuzzy
 msgid "Error: Cannot find campaign '{name}'."
-msgstr ""
+msgstr "Błąd: Nie można znaleźć scenariusza '{name}'."
 
 #: horizons/savegamemanager.py:396 horizons/savegamemanager.py:402
 #, python-format
@@ -3070,13 +3034,17 @@ msgstr "Nie możesz tego zmagazynować."
 msgid "You can not afford to buy this."
 msgstr ""
 
+# 82%
 #: horizons/world/component/tradepostcomponent.py:190
+#, fuzzy
 msgid "The trade partner does not sell more of this."
-msgstr ""
+msgstr "Partner handlowy nie sprzedaje aktualnie tego."
 
+# 89%
 #: horizons/world/component/tradepostcomponent.py:209
+#, fuzzy
 msgid "The trade partner does not buy this."
-msgstr ""
+msgstr "Partner handlowy nie sprzedaje aktualnie tego."
 
 #: horizons/world/component/tradepostcomponent.py:220
 msgid "You do not possess this."
@@ -3090,9 +3058,11 @@ msgstr ""
 msgid "The trade partner can not afford to buy this."
 msgstr ""
 
+# 77%
 #: horizons/world/component/tradepostcomponent.py:241
+#, fuzzy
 msgid "The trade partner does not buy more of this."
-msgstr ""
+msgstr "Partner handlowy nie sprzedaje aktualnie tego."
 
 #: horizons/world/traderoute.py:268
 #, python-format

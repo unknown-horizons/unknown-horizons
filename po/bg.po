@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2012-01-19 20:39+0100\n"
-"PO-Revision-Date: 2012-01-07 07:49+0200\n"
+"PO-Revision-Date: 2012-01-21 02:12+0200\n"
 "Last-Translator: Christopher Oelmueller <chris.oelmueller+uh@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: bg\n"
@@ -830,9 +830,8 @@ msgid "Mining"
 msgstr ""
 
 #: horizons/gui/tabs/buildtabs.py:128
-#, fuzzy
 msgid "Increment {increment}"
-msgstr "Приръст"
+msgstr "Приръст {increment}"
 
 #. i18n In English, this is Sailors, Pioneers, Settlers.
 #. TODO what formatting to use? getting names from DB and adding
@@ -2394,57 +2393,52 @@ msgstr "Име на играч:"
 #. name of buildings:boatbuilder
 #: horizons/i18n/objecttranslations.py:45
 msgid "Boat Builder"
-msgstr ""
+msgstr "Корабостроител"
 
 #. tooltip_text of buildings:boatbuilder
 #: horizons/i18n/objecttranslations.py:47
-#, fuzzy
 msgid "Builds boats and small ships. Built on coast."
-msgstr "Корабостроител: Изгражда лодки и малки кораби. Построен на брега."
+msgstr "Изгражда лодки и малки кораби. Построен на брега."
 
 #. name of buildings:brickyard
 #: horizons/i18n/objecttranslations.py:52
 msgid "Brickyard"
-msgstr ""
+msgstr "Тухларна"
 
 #. tooltip_text of buildings:brickyard
 #: horizons/i18n/objecttranslations.py:54
-#, fuzzy
 msgid "Turns clay into bricks."
-msgstr "Тухларна: Оформя глината в тухли."
+msgstr "Оформя глината в тухли."
 
 #. name of buildings:butchery
 #: horizons/i18n/objecttranslations.py:59
 msgid "Butchery"
-msgstr ""
+msgstr "Кланица"
 
 #. tooltip_text of buildings:butchery
 #: horizons/i18n/objecttranslations.py:61
-#, fuzzy
 msgid "Needs pigs or cattle. Produces food."
-msgstr "Кланица: Нужни са прасета или добитък. Произвежда храна."
+msgstr "Нужни са прасета или добитък. Произвежда храна."
 
 #. name of buildings:cattlerun
 #: horizons/i18n/objecttranslations.py:66
 msgid "Cattle Run"
-msgstr ""
+msgstr "Кравеферма"
 
 #. tooltip_text of buildings:cattlerun
 #: horizons/i18n/objecttranslations.py:68
-#, fuzzy
 msgid "Raises cattle. Needs a farm."
-msgstr "Кравеферма: Отглежда говеда. Нуждае се от ферма."
+msgstr "Отглежда говеда. Нуждае се от ферма."
 
 #. name of buildings:charcoalburning
 #: horizons/i18n/objecttranslations.py:73
 msgid "Charcoal Burning"
-msgstr ""
+msgstr "Изгаряне на въглища"
 
 #. tooltip_text of buildings:charcoalburning
 #: horizons/i18n/objecttranslations.py:75
-#, fuzzy
 msgid "Burns a lot of boards."
-msgstr "Изгаряне на въглища: Гори много дъски."
+msgstr "Гори много дъски."
 
 #. name of buildings:claydeposit
 #: horizons/i18n/objecttranslations.py:80
@@ -2454,35 +2448,32 @@ msgstr ""
 #. name of buildings:claypit
 #: horizons/i18n/objecttranslations.py:85
 msgid "Clay Pit"
-msgstr ""
+msgstr "Глинена кариера"
 
 #. tooltip_text of buildings:claypit
 #: horizons/i18n/objecttranslations.py:87
-#, fuzzy
 msgid "Gets clay from deposit."
-msgstr "Глинена кариера: Взима глина от залеж."
+msgstr "Взима глина от залеж."
 
 #. name of buildings:distillery
 #: horizons/i18n/objecttranslations.py:92
 msgid "Distillery"
-msgstr ""
+msgstr "Дестилационна фабрика"
 
 #. tooltip_text of buildings:distillery
 #: horizons/i18n/objecttranslations.py:94
-#, fuzzy
 msgid "Turns sugar into liquor."
-msgstr "Дестилационна фабрика: Превръща захар в алкохол."
+msgstr "Превръща захар в алкохол."
 
 #. name of buildings:doctor
 #: horizons/i18n/objecttranslations.py:99
 msgid "Doctor"
-msgstr ""
+msgstr "Доктор"
 
 #. tooltip_text of buildings:doctor
 #: horizons/i18n/objecttranslations.py:101
-#, fuzzy
 msgid "Treats diseases. Consumes herbs."
-msgstr "Доктор: Лекува болести. Използва билки."
+msgstr "Лекува болести. Използва билки."
 
 #. name of buildings:farm
 #: horizons/i18n/objecttranslations.py:106
@@ -2491,9 +2482,8 @@ msgstr "Ферма"
 
 #. tooltip_text of buildings:farm
 #: horizons/i18n/objecttranslations.py:108
-#, fuzzy
 msgid "Grows field crops and raises livestock."
-msgstr "Ферма: Отглежда полски култури и животни."
+msgstr "Отглежда полски култури и животни."
 
 #. name of buildings:fishdeposit
 #: horizons/i18n/objecttranslations.py:113
@@ -2503,13 +2493,12 @@ msgstr ""
 #. name of buildings:fishermanstent
 #: horizons/i18n/objecttranslations.py:118
 msgid "Fisherman's Tent"
-msgstr ""
+msgstr "Рибар"
 
 #. tooltip_text of buildings:fishermanstent
 #: horizons/i18n/objecttranslations.py:120
-#, fuzzy
 msgid "Fishes the sea, produces food."
-msgstr "Рибар: Лови в морето, произвежда храна."
+msgstr "Лови в морето, произвежда храна."
 
 #. name of buildings:gravelpath
 #: horizons/i18n/objecttranslations.py:125
@@ -2519,13 +2508,12 @@ msgstr ""
 #. name of buildings:herbary
 #: horizons/i18n/objecttranslations.py:130
 msgid "Herbary"
-msgstr ""
+msgstr "Дрогерия"
 
 #. tooltip_text of buildings:herbary
 #: horizons/i18n/objecttranslations.py:132
-#, fuzzy
 msgid "Produces herbs. Needs a farm."
-msgstr "Дрогерия: Произвежда билки. Нуждае се от ферма."
+msgstr "Произвежда билки. Нуждае се от ферма."
 
 #. name of buildings:hunterstent
 #: horizons/i18n/objecttranslations.py:137
@@ -2534,20 +2522,18 @@ msgstr "Палатката на ловеца"
 
 #. tooltip_text of buildings:hunterstent
 #: horizons/i18n/objecttranslations.py:139
-#, fuzzy
 msgid "Hunts wild forest animals, produces food."
-msgstr "Ловец: Лови диви животни, произвежда храна."
+msgstr "Лови диви животни, произвежда храна."
 
 #. name of buildings:ironmine
 #: horizons/i18n/objecttranslations.py:144
 msgid "Iron Mine"
-msgstr ""
+msgstr "Желязна мина"
 
 #. tooltip_text of buildings:ironmine
 #: horizons/i18n/objecttranslations.py:146
-#, fuzzy
 msgid "Gets iron ore from deposit."
-msgstr "Желязна мина: Добива желязна руда от залеж."
+msgstr "Добива желязна руда от залеж."
 
 #. name of buildings:log
 #: horizons/i18n/objecttranslations.py:151
@@ -2576,9 +2562,8 @@ msgstr "Лагерът на дървара"
 
 #. tooltip_text of buildings:lumberjackcamp
 #: horizons/i18n/objecttranslations.py:167
-#, fuzzy
 msgid "Chops down trees and turns them into boards."
-msgstr "Дървар: Реже дървета и ги оформя в дъски."
+msgstr "Реже дървета и ги оформя в дъски."
 
 #. name of buildings:mainsquare
 #: horizons/i18n/objecttranslations.py:172
@@ -2587,9 +2572,8 @@ msgstr "Централен площад"
 
 #. tooltip_text of buildings:mainsquare
 #: horizons/i18n/objecttranslations.py:174
-#, fuzzy
 msgid "Supplies citizens with goods."
-msgstr "Централния площад: Доставки на гражданите със стоки."
+msgstr "Доставки на гражданите със стоки."
 
 #. name of buildings:mountain
 #: horizons/i18n/objecttranslations.py:179
@@ -2603,9 +2587,8 @@ msgstr "Пасище"
 
 #. tooltip_text of buildings:pasture
 #: horizons/i18n/objecttranslations.py:186
-#, fuzzy
 msgid "Raises sheep. Produces wool. Needs a farm."
-msgstr "Пасище: Увеличава овце. Произвежда вълна. Нуждае се от ферма."
+msgstr "Увеличава овце. Произвежда вълна. Нуждае се от ферма."
 
 #. name of buildings:pavilion
 #: horizons/i18n/objecttranslations.py:191
@@ -2614,9 +2597,8 @@ msgstr "Палата"
 
 #. tooltip_text of buildings:pavilion
 #: horizons/i18n/objecttranslations.py:193
-#, fuzzy
 msgid "Fulfills religious needs of sailors."
-msgstr "Палата: Отговаря на религиозните потребности на моряците."
+msgstr "Отговаря на религиозните потребности на моряците."
 
 #. name of buildings:pigsty
 #: horizons/i18n/objecttranslations.py:198
@@ -2625,9 +2607,8 @@ msgstr "Кочина"
 
 #. tooltip_text of buildings:pigsty
 #: horizons/i18n/objecttranslations.py:200
-#, fuzzy
 msgid "Raises pigs. Needs a farm."
-msgstr "Кочина: Отглежда прасета. Нуждае се от ферма."
+msgstr "Отглежда прасета. Нуждае се от ферма."
 
 #. name of buildings:potatofield
 #: horizons/i18n/objecttranslations.py:205
@@ -2636,9 +2617,8 @@ msgstr "Картофено поле"
 
 #. tooltip_text of buildings:potatofield
 #: horizons/i18n/objecttranslations.py:207
-#, fuzzy
 msgid "Yields food. Needs a farm."
-msgstr "Картофено поле: Добива картофи. Нуждае се от ферма."
+msgstr "Добива картофи. Нуждае се от ферма."
 
 #. name of buildings:rampart
 #: horizons/i18n/objecttranslations.py:212
@@ -2649,7 +2629,7 @@ msgstr ""
 #: horizons/i18n/objecttranslations.py:214
 #, fuzzy
 msgid "Protects your settlement."
-msgstr "Преглед на продукцията на %(settlement)s"
+msgstr "Преглед на продукцията на ??"
 
 #. name of buildings:saltponds
 #: horizons/i18n/objecttranslations.py:219
@@ -2658,9 +2638,8 @@ msgstr ""
 
 #. tooltip_text of buildings:saltponds
 #: horizons/i18n/objecttranslations.py:221
-#, fuzzy
 msgid "Evaporates salt. Built on sea coast."
-msgstr "Солни езера: Отделят сол. Построй на брега."
+msgstr "Отделят сол. Построй на брега."
 
 #. name of buildings:signalfire
 #: horizons/i18n/objecttranslations.py:226
@@ -2669,9 +2648,8 @@ msgstr "Сигнален огън"
 
 #. tooltip_text of buildings:signalfire
 #: horizons/i18n/objecttranslations.py:228
-#, fuzzy
 msgid "Allows the player to trade with the free trader."
-msgstr "Сигнален огън: Позволява търговия със свободни търговци."
+msgstr "Позволява търговия със свободни търговци."
 
 #. name of buildings:smeltery
 #: horizons/i18n/objecttranslations.py:233
@@ -2680,9 +2658,8 @@ msgstr ""
 
 #. tooltip_text of buildings:smeltery
 #: horizons/i18n/objecttranslations.py:235
-#, fuzzy
 msgid "Refines all kind of ores."
-msgstr "Топилня: Рафинира всички видове руди."
+msgstr "Рафинира всички видове руди."
 
 #. name of buildings:storagetent
 #: horizons/i18n/objecttranslations.py:240
@@ -2691,9 +2668,8 @@ msgstr ""
 
 #. tooltip_text of buildings:storagetent
 #: horizons/i18n/objecttranslations.py:242
-#, fuzzy
 msgid "Extends stock and provides collectors."
-msgstr "Склад: Разширява запасите и осигурява събирачи."
+msgstr "Разширява запасите и осигурява събирачи."
 
 #. name of buildings:sugarfield
 #: horizons/i18n/objecttranslations.py:247
@@ -2702,11 +2678,8 @@ msgstr "Захарно поле"
 
 #. tooltip_text of buildings:sugarfield
 #: horizons/i18n/objecttranslations.py:249
-#, fuzzy
 msgid "Used in liquor production. Needs a farm."
-msgstr ""
-"Захарната тръстика поле: Използва се в производството на алкохол. Нуждае се "
-"от ферма."
+msgstr "Използва се в производството на алкохол. Нуждае се от ферма."
 
 #. name of buildings:tavern
 #: horizons/i18n/objecttranslations.py:254
@@ -2715,9 +2688,8 @@ msgstr "Таверна"
 
 #. tooltip_text of buildings:tavern
 #: horizons/i18n/objecttranslations.py:256
-#, fuzzy
 msgid "Provides get-together."
-msgstr "Таверна: Осигурява задружност."
+msgstr "Осигурява задружност."
 
 #. name of buildings:tent
 #: horizons/i18n/objecttranslations.py:261
@@ -2726,9 +2698,8 @@ msgstr "Палатка"
 
 #. tooltip_text of buildings:tent
 #: horizons/i18n/objecttranslations.py:263
-#, fuzzy
 msgid "Houses your inhabitants."
-msgstr "Палатка: Подслонява вашите жители."
+msgstr "Подслонява вашите жители."
 
 #. name of buildings:tentruin
 #: horizons/i18n/objecttranslations.py:268
@@ -2742,9 +2713,8 @@ msgstr "Тютюнево поле"
 
 #. tooltip_text of buildings:tobaccofield
 #: horizons/i18n/objecttranslations.py:275
-#, fuzzy
 msgid "Produces tobacco. Needs a farm."
-msgstr "Тютюнево поле: Произвежда тютюн. Нуждае се от ферма."
+msgstr "Произвежда тютюн. Нуждае се от ферма."
 
 #. name of buildings:tobacconist
 #: horizons/i18n/objecttranslations.py:280
@@ -2753,9 +2723,8 @@ msgstr ""
 
 #. tooltip_text of buildings:tobacconist
 #: horizons/i18n/objecttranslations.py:282
-#, fuzzy
 msgid "Produces tobaccos out of tobacco."
-msgstr "Тютюнопродавач: Произвежда тютюневи изделия."
+msgstr "Произвежда тютюневи изделия."
 
 #. name of buildings:toolmaker
 #: horizons/i18n/objecttranslations.py:287
@@ -2764,9 +2733,8 @@ msgstr "Стругар"
 
 #. tooltip_text of buildings:toolmaker
 #: horizons/i18n/objecttranslations.py:289
-#, fuzzy
 msgid "Produces tools out of iron."
-msgstr "Шлосер: Произвежда инструменти от желязо."
+msgstr "Произвежда инструменти от желязо."
 
 #. name of buildings:trail
 #: horizons/i18n/objecttranslations.py:294
@@ -2775,9 +2743,8 @@ msgstr ""
 
 #. tooltip_text of buildings:trail
 #: horizons/i18n/objecttranslations.py:296
-#, fuzzy
 msgid "Needed for collecting goods."
-msgstr "Trail: Нужен е за събиране на стоки."
+msgstr "Нужен е за събиране на стоки."
 
 #. name of buildings:tree
 #: horizons/i18n/objecttranslations.py:301
@@ -2796,9 +2763,8 @@ msgstr ""
 
 #. tooltip_text of buildings:villageschool
 #: horizons/i18n/objecttranslations.py:310
-#, fuzzy
 msgid "Provides education."
-msgstr "Селско училище: Осигурява образование."
+msgstr "Осигурява образование."
 
 #. name of buildings:warehouse
 #: horizons/i18n/objecttranslations.py:315
@@ -2813,9 +2779,8 @@ msgstr "Палатката на тъкача"
 
 #. tooltip_text of buildings:weaverstent
 #: horizons/i18n/objecttranslations.py:322
-#, fuzzy
 msgid "Turns lamb wool into cloth."
-msgstr "Тъкач: Превръща агнешката вълна в плат."
+msgstr "Превръща агнешката вълна в плат."
 
 #. name of buildings:woodentower
 #: horizons/i18n/objecttranslations.py:327
