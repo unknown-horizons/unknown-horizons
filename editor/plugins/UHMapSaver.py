@@ -19,10 +19,11 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
+import horizons.main # necessary so the correct load order of all modules is guaranteed
+
 from horizons.util.uhdbaccessor import UhDbAccessor, read_savegame_template, \
 	read_island_template
 import fife.extensions.savers as mapSavers
-import horizons.main # necessary so the correct load order of all modules is guaranteed
 import os.path
 import re
 import scripts.editor
@@ -40,13 +41,13 @@ class MapSaver:
 		self._model = engine.getModel()
 		self._map = map
 		self._mapDatabase = None
-	
+
 	def _extractPositionRotationFromInstance(self, instance):
 		"""Extracts the position and the rotation from an instance and returns it as a tuple"""
 		rotation = (instance.getRotation() + 45) % 360
 		position = instance.getLocationRef().getExactLayerCoordinates()
 		return (position, rotation)
-			
+
 	def _saveBuildings(self):
 		"""Saves all objects placed on the building layer"""
 		building_layer = self._map.getLayer(util.BUILDING_LAYER_NAME)
@@ -55,8 +56,8 @@ class MapSaver:
 			type = util.getBuildingId(instance.getObject().getId())
 			(position, rotation) = self._extractPositionRotationFromInstance(instance)
 			self._mapDatabase("INSERT INTO building VALUES (?, ?, ?, ?, ?, ?, ?)", type, position.x, position.y, 100, 1, rotation, 0)
-			
-	
+
+
 	def _saveIslands(self):
 		"""Saves all islands by calling _saveIsland on each of them and linking the generated islands to the MapFile"""
 		tiles = self._buildGroundTilesLayerArray()
@@ -65,10 +66,10 @@ class MapSaver:
 		for islandName in islandsToGroundtiles:
 			island_filename = os.path.basename(self._filepath)
 			relative_island_filepath = os.path.join('content', 'islands', island_filename + "_" + islandName + ".sqlite")
-			
+
 			self._saveIsland(islandName, relative_island_filepath, islandsToGroundtiles[islandName])
 			self._mapDatabase("INSERT INTO island VALUES (?, ?, ?)", 0, 0, relative_island_filepath)
-		
+
 
 	def _saveIsland(self, name, relative_island_filepath, tiles):
 		"""Writes an SQL file for an island"""
@@ -92,12 +93,12 @@ class MapSaver:
 		island_db("COMMIT TRANSACTION");
 
 		pass
-	
+
 	def _buildGroundTilesLayerArray(self):
 		"""Builds a tuple representation of all the ground tiles"""
 		# A representation of all the tiles, syntax is tiles(x, y, instance of groundtile)
 		tiles = {}
-		
+
 		# Builds an x,y representation of all groundtiles
 		ground_layer = self._map.getLayer(util.GROUND_LAYER_NAME)
 		instances = ground_layer.getInstances()
@@ -120,37 +121,37 @@ class MapSaver:
 			elif y < self.y_minimum:
 				self.y_minimum = y
 		return tiles
-	
+
 	def _partitionGroundtilesToIslands(self, tiles):
 		"""Builds partitions from the ground tiles so that an island consists of all connected groundtiles. Each groundtile is connected to an island"""
 		islandCounter = 1
 		for x in range(self.x_minimum, self.x_maximum + 1):
-			for y in range(self.y_minimum, self.y_maximum + 1): 
+			for y in range(self.y_minimum, self.y_maximum + 1):
 				try:
 					(connectedIsland, instance) = tiles[(x, y)]
 					isConnected = False
-					
+
 					try:
 						if tiles[(x - 1, y)] != None:
 							# Tile not yet connected
 							# Left connect of unconnected groundtile to existing island
-							(connectedIsland, tmpInstance) = tiles[(x - 1, y)] 
+							(connectedIsland, tmpInstance) = tiles[(x - 1, y)]
 							tiles[(x, y)] = (connectedIsland, instance)
 							isConnected = True
 					except KeyError:
 						pass
-					
+
 					try:
 						if tiles[(x, y - 1)] != None:
 							# Up connect of unconnected groundtile to existing island
 							if isConnected == False:
 								# Tile not yet connected
-								(connectedIsland, tmpInstance) = tiles[(x, y - 1)] 
+								(connectedIsland, tmpInstance) = tiles[(x, y - 1)]
 								tiles[(x, y)] = (connectedIsland, instance)
 								isConnected = True
-						
+
 							else:
-								# Tile already connected to other island this. 
+								# Tile already connected to other island this.
 								# -> Merge the two islands by replacing references of the first one with the second one.
 								(oldIsland, tmpInstance) = tiles[(x, y - 1)]
 								if oldIsland != connectedIsland:
@@ -158,15 +159,15 @@ class MapSaver:
 					except KeyError:
 						pass
 					if isConnected == False:
-						# Tile not yet connected						
+						# Tile not yet connected
 						# Create new island
 						tiles[(x, y)] = ("island_" + str(islandCounter), instance)
 						islandCounter += 1
 				except KeyError:
-					pass			
+					pass
 		return tiles
 
-	
+
 	def _updateExistingIslandName(self, tiles, oldIsland, newIsland):
 		"""Replaces occurrences from oldIsland to newIsland"""
 		for (x, y) in tiles:
@@ -174,8 +175,8 @@ class MapSaver:
 			if name == oldIsland:
 				tiles[(x, y)] = (newIsland, instance)
 		return tiles
-											
-	
+
+
 	def _partitionIslandsFromGroundTiles(self, tiles):
 		islandsToGroundtiles = {}
 		for (x, y) in tiles:
@@ -195,15 +196,15 @@ class MapSaver:
 		except IOError as exception:
 			print "Did not save map!"
 			raise exception
-		else:	
+		else:
 			# transaction save operations to gain performance
 			self._mapDatabase("BEGIN IMMEDIATE TRANSACTION")
 			self._saveBuildings()
 			self._saveIslands()
 			self._mapDatabase("COMMIT TRANSACTION");
-			
-			print "Successfully saved " + self._filepath 
-	
+
+			print "Successfully saved " + self._filepath
+
 	def _create_map_db(self, savepath):
 		"""Returns a dbreader instance, that is connected to the main game data dbfiles."""
 		horizons.main.PATHS.SAVEGAME_TEMPLATE = os.path.join(util.getUHPath(), horizons.main.PATHS.SAVEGAME_TEMPLATE)
@@ -211,15 +212,15 @@ class MapSaver:
 		db = UhDbAccessor(savepath)
 		read_savegame_template(db)
 		return db
-	
+
 	def _create_island_db(self, savepath):
 		"""Returns a dbreader instance for the creation of island dbfiles."""
 		horizons.main.PATHS.ISLAND_TEMPLATE = os.path.join(util.getUHPath(), horizons.main.PATHS.ISLAND_TEMPLATE)
-		
-		db = UhDbAccessor(savepath) 
+
+		db = UhDbAccessor(savepath)
 		read_island_template(db)
 		return db
-	
+
 class UHMapSaver(scripts.plugin.Plugin):
 	""" The {UHMapSaver} allows to save the UH map format in FIFEdit
 	"""
