@@ -3,47 +3,48 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2011-07-08 16:54+0200\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"PO-Revision-Date: 2012-01-22 20:20+0200\n"
+"Last-Translator: mezdap <muhammet.a@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: tr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Translate Toolkit 1.9.0\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"X-Generator: Pootle 2.1.5\n"
 
 msgid "build"
-msgstr ""
+msgstr "yapı"
 
 msgid "game"
-msgstr ""
+msgstr "oyun"
 
 msgid "building"
-msgstr ""
+msgstr "inşaat"
 
 msgid "tent"
-msgstr ""
+msgstr "çadır"
 
 msgid "resource"
-msgstr ""
+msgstr "kaynak"
 
 msgid "branch office"
-msgstr ""
+msgstr "şube"
 
 msgid "your"
-msgstr ""
+msgstr "senin"
 
 msgid "farm"
-msgstr ""
+msgstr "çiftlik"
 
 msgid "field"
-msgstr ""
+msgstr "alan"
 
 msgid "overview"
-msgstr ""
+msgstr "genel bakış"
 
 msgid "ship"
-msgstr ""
+msgstr "gemi"
 
 msgid "main"
 msgstr ""
