@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2012-01-19 20:39+0100\n"
-"PO-Revision-Date: 2012-01-07 07:52+0200\n"
+"PO-Revision-Date: 2012-01-23 19:21+0200\n"
 "Last-Translator: Christopher Oelmueller <chris.oelmueller+uh@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: fi\n"
@@ -2436,10 +2436,8 @@ msgstr "Veneenveistämö"
 
 #. tooltip_text of buildings:boatbuilder
 #: horizons/i18n/objecttranslations.py:47
-#, fuzzy
 msgid "Builds boats and small ships. Built on coast."
-msgstr ""
-"Veneenveistämö: Rakentaa veneitä ja pieniä laivoja. Rakennetaan rannikolle."
+msgstr "Rakentaa veneitä ja pieniä laivoja. Rakennetaan rannikolle."
 
 #. name of buildings:brickyard
 #: horizons/i18n/objecttranslations.py:52
@@ -2481,9 +2479,8 @@ msgstr "Puuhiilen polttamo"
 
 #. tooltip_text of buildings:charcoalburning
 #: horizons/i18n/objecttranslations.py:75
-#, fuzzy
 msgid "Burns a lot of boards."
-msgstr "Puuhiilen polttopaikka: Polttaa paljon lautoja."
+msgstr "Polttaa paljon lautoja."
 
 #. name of buildings:claydeposit
 #: horizons/i18n/objecttranslations.py:80
@@ -2584,9 +2581,8 @@ msgstr "Rautakaivos"
 
 #. tooltip_text of buildings:ironmine
 #: horizons/i18n/objecttranslations.py:146
-#, fuzzy
 msgid "Gets iron ore from deposit."
-msgstr "Rautakaivos: Kaivaa rautaa rautaesiintymästä."
+msgstr "Kaivaa rautaa rautaesiintymästä."
 
 #. name of buildings:log
 #: horizons/i18n/objecttranslations.py:151
@@ -2697,9 +2693,8 @@ msgstr "Suola-allas"
 
 #. tooltip_text of buildings:saltponds
 #: horizons/i18n/objecttranslations.py:221
-#, fuzzy
 msgid "Evaporates salt. Built on sea coast."
-msgstr "Suola-allas: Haihduttaa suolaa merivedestä. Rakennetaan rannikolle."
+msgstr "Haihduttaa suolaa merivedestä. Rakennetaan rannikolle."
 
 #. name of buildings:signalfire
 #: horizons/i18n/objecttranslations.py:226
@@ -2741,11 +2736,8 @@ msgstr "Sokeripelto"
 
 #. tooltip_text of buildings:sugarfield
 #: horizons/i18n/objecttranslations.py:249
-#, fuzzy
 msgid "Used in liquor production. Needs a farm."
-msgstr ""
-"Sokeriruokopelto: Tuottaa sokeria sokeripitoisia juomia varten. Tarvitsee "
-"maatilan."
+msgstr "Tuottaa sokeria sokeripitoisia juomia varten. Tarvitsee maatilan."
 
 #. name of buildings:tavern
 #: horizons/i18n/objecttranslations.py:254
@@ -2815,9 +2807,8 @@ msgstr "Polku"
 
 #. tooltip_text of buildings:trail
 #: horizons/i18n/objecttranslations.py:296
-#, fuzzy
 msgid "Needed for collecting goods."
-msgstr "Polku: Vaaditaan tavaroiden keräämiselle."
+msgstr "Vaaditaan tavaroiden keräämiselle."
 
 #. name of buildings:tree
 #: horizons/i18n/objecttranslations.py:301

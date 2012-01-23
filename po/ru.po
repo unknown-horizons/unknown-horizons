@@ -7,8 +7,8 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2012-01-19 20:39+0100\n"
-"PO-Revision-Date: 2012-01-07 07:54+0200\n"
-"Last-Translator: Christopher Oelmueller <chris.oelmueller+uh@gmail.com>\n"
+"PO-Revision-Date: 2012-01-23 20:44+0200\n"
+"Last-Translator: Вячеслав <slava.gostuhin@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: ru\n"
 "MIME-Version: 1.0\n"
@@ -33,7 +33,7 @@ msgstr "Новый мир был создан."
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
 msgid "One of your fields requires a farm to harvest its crops."
-msgstr ""
+msgstr "Одному из полей требуется ферма для сбора урожая."
 
 # 97%
 #. This is a database entry: a messagewidget message (left part of the screen).
@@ -88,9 +88,8 @@ msgstr "Быстрое сохранение успешно выполнено."
 # 86%
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
-#, fuzzy
 msgid "Your game has been saved."
-msgstr "Автосохранение прошло успешно."
+msgstr "Игра сохранена."
 
 # 97%
 #. This is a database entry: a messagewidget message (left part of the screen).
@@ -589,7 +588,7 @@ msgstr "Не удалось уничтожить файл сохранения!"
 #: horizons/gui/gui.py:616
 #, python-format
 msgid "[{key}] = {text}"
-msgstr ""
+msgstr "[{key}] = {text}"
 
 #. e.g. when the pirate is disabled
 #. this dialog is pretty useless in this case
@@ -609,7 +608,7 @@ msgstr "Допустимы имена карт в следующей форме:
 #: horizons/gui/ingamegui.py:511
 #, python-format
 msgid "Try a name that only contains letters and numbers."
-msgstr ""
+msgstr "В имени допускаются только буквы и цифры."
 
 #: horizons/gui/modules/multiplayermenu.py:40
 msgid "Unable to find pyenet"
@@ -782,7 +781,7 @@ msgstr "Обзор судостроителя"
 #: horizons/gui/tabs/boatbuildertab.py:93
 #, python-format
 msgid "{ship} (place in queue: {place})"
-msgstr ""
+msgstr "{ship} (place in queue: {place})"
 
 #: horizons/gui/tabs/boatbuildertab.py:157
 msgid "Resources still needed:"
@@ -853,7 +852,7 @@ msgstr "Увеличение"
 #. '... buildings' will cause wrong declinations all over :/
 #: horizons/gui/tabs/buildtabs.py:137
 msgid "{incr_inhabitant_name}"
-msgstr ""
+msgstr "{incr_inhabitant_name}"
 
 #: horizons/gui/tabs/buildtabs.py:155 horizons/util/uhdbaccessor.py:150
 #, python-format
@@ -1023,9 +1022,9 @@ msgstr "Выйти из игры"
 # 95%
 #: horizons/gui/widgets/playerssettlements.py:43
 #, python-format
-#, python-format, fuzzy
+#, python-format, 
 msgid "Settlements of {player}"
-msgstr "поселение игрока {player}"
+msgstr "Поселение игрока {player}"
 
 #. (text of widget: total_score)
 #: horizons/gui/widgets/playerssettlements.py:113
@@ -1891,7 +1890,7 @@ msgstr "Быстрое сохранение"
 #. (text of widget: lbl_REMOVE_SELECTED)
 #: horizons/i18n/guitranslations.py:666
 msgid "Remove selected units / buildings"
-msgstr ""
+msgstr "Удалить выделенные единицы/сооружения."
 
 #. (text of widget: lbl_RIGHT)
 #: horizons/i18n/guitranslations.py:668
@@ -1906,12 +1905,12 @@ msgstr "Вкл. режим строительства дорог"
 #. (text of widget: lbl_ROTATE_LEFT)
 #: horizons/i18n/guitranslations.py:672
 msgid "Rotate building or map counterclockwise"
-msgstr ""
+msgstr "Повернуть здание или карту против часовой стрелки."
 
 #. (text of widget: lbl_ROTATE_RIGHT)
 #: horizons/i18n/guitranslations.py:674
 msgid "Rotate building or map clockwise"
-msgstr ""
+msgstr "Повернуть здание или карту по часовой стрелке."
 
 #. (text of widget: lbl_SCREENSHOT)
 #: horizons/i18n/guitranslations.py:676
@@ -1926,7 +1925,7 @@ msgstr "Показать список поселений"
 #. (text of widget: lbl_SHIFT)
 #: horizons/i18n/guitranslations.py:680
 msgid "Hold to place multiple buildings"
-msgstr "Зажмите для множественных построек"
+msgstr "Удерживайте для возведения нескольких строений."
 
 #. (text of widget: lbl_SHIPS_OVERVIEW)
 #: horizons/i18n/guitranslations.py:682
@@ -2100,7 +2099,7 @@ msgstr "Главное меню:"
 #. (text of widget: game_showonlyownversion)
 #: horizons/i18n/guitranslations.py:782
 msgid "Only show games with the same version:"
-msgstr "Игры с версией как у вас:"
+msgstr "Показывать только совместимые версии:"
 
 #. (text of widget: headline_left)
 #: horizons/i18n/guitranslations.py:784
@@ -2125,7 +2124,7 @@ msgstr "Создать новую игру"
 #. (tooltip of widget: join)
 #: horizons/i18n/guitranslations.py:792
 msgid "Join the selected game"
-msgstr "Войти в выбранную игру"
+msgstr "Присоединиться к выбранной игре"
 
 #. (tooltip of widget: cancel)
 #: horizons/i18n/guitranslations.py:794 horizons/i18n/guitranslations.py:901
@@ -2154,9 +2153,8 @@ msgstr "Язык"
 
 #. (text of widget: headline_mouse)
 #: horizons/i18n/guitranslations.py:809
-#, fuzzy
 msgid "Mouse"
-msgstr "дома"
+msgstr "Мышь"
 
 #. (text of widget: headline_network)
 #: horizons/i18n/guitranslations.py:811
@@ -2196,12 +2194,12 @@ msgstr "Во весь экран:"
 #. (text of widget: screen_resolution_label)
 #: horizons/i18n/guitranslations.py:827
 msgid "Screen resolution:"
-msgstr "Размер экрана:"
+msgstr "Разрешение экрана:"
 
 #. (text of widget: sound_enable_opt_text)
 #: horizons/i18n/guitranslations.py:829
 msgid "Enable sound:"
-msgstr "Звук включен:"
+msgstr "Включить звук:"
 
 # 83%
 #. (tooltip of widget: okButton)
@@ -2217,7 +2215,7 @@ msgstr "Восстановить настройки по умолчанию"
 #. (text of widget: auto_unload_label)
 #: horizons/i18n/guitranslations.py:837
 msgid "Auto-unload ship:"
-msgstr ""
+msgstr "Авторазгрузка судна."
 
 #. (text of widget: color_depth_label)
 #: horizons/i18n/guitranslations.py:839
@@ -2237,9 +2235,8 @@ msgstr "Вращать миникарту вместе с картой:"
 # 76%
 #. (text of widget: mouse_sensitivity_label)
 #: horizons/i18n/guitranslations.py:845
-#, fuzzy
 msgid "Mouse sensitivity:"
-msgstr "Плотность месторождений:"
+msgstr "Чувствительность мыши:"
 
 #. (text of widget: network_port_lbl)
 #: horizons/i18n/guitranslations.py:847
@@ -2254,12 +2251,12 @@ msgstr "Непрерывное строительство:"
 #. (text of widget: use_renderer_label)
 #: horizons/i18n/guitranslations.py:851
 msgid "Used renderer:"
-msgstr "Рендерер:"
+msgstr "Пользовательская визуализация:"
 
 #. (tooltip of widget: auto_unload_label)
 #: horizons/i18n/guitranslations.py:853
 msgid "Whether to unload the ship after founding a settlement"
-msgstr ""
+msgstr "Разгружать судно сразу после основания поселения"
 
 #. (tooltip of widget: color_depth_label)
 #: horizons/i18n/guitranslations.py:855
@@ -2269,25 +2266,23 @@ msgstr "Если установлен 0, то использовать драй�
 #. (tooltip of widget: edge_scrolling_label)
 #: horizons/i18n/guitranslations.py:857
 msgid "Whether to move the viewport when the mouse pointer is close to map edges"
-msgstr ""
+msgstr "Прокрутка экрана при приближении курсора к краю карты."
 
 #. (tooltip of widget: minimap_rotation_label)
 #: horizons/i18n/guitranslations.py:859
 msgid "Whether to also rotate the minimap whenever the regular map is rotated"
-msgstr ""
+msgstr "Вращать миникарту, если вращается основная"
 
 #. (tooltip of widget: mouse_sensitivity_label)
 #: horizons/i18n/guitranslations.py:861
-#, fuzzy
 msgid "0 is default system settings"
-msgstr "Восстановить настройки по умолчанию"
+msgstr "0 - значение по умолчанию"
 
 # 88%
 #. (tooltip of widget: network_port_lbl)
 #: horizons/i18n/guitranslations.py:863
-#, fuzzy
 msgid "If set to 0, use the router default"
-msgstr "Если установлен 0, то использовать драйвер по умолчанию"
+msgstr "Если установлен 0, то используется маршрутизатор по умолчанию"
 
 #. (tooltip of widget: uninterrupted_building_label)
 #: horizons/i18n/guitranslations.py:865
@@ -2299,6 +2294,8 @@ msgstr ""
 #: horizons/i18n/guitranslations.py:867
 msgid "SDL is only meant as unsupported fallback and might cause problems!"
 msgstr ""
+"Используйте SDL только в качестве запасного варианта. Может работать "
+"нестабильно!"
 
 #. (text of widget: enter_filename_label)
 #: horizons/i18n/guitranslations.py:872
@@ -2308,7 +2305,7 @@ msgstr "Введите имя файла:"
 #. (text of widget: headline_saved_games_label)
 #: horizons/i18n/guitranslations.py:876
 msgid "Your saved games:"
-msgstr "Сохраненных игр:"
+msgstr "Сохраненные игры:"
 
 #. (tooltip of widget: cancelButton)
 #: horizons/i18n/guitranslations.py:878
@@ -2362,7 +2359,7 @@ msgstr "Начать игру"
 #: horizons/i18n/guitranslations.py:906 horizons/i18n/guitranslations.py:911
 #: horizons/i18n/guitranslations.py:921
 msgid "Choose a map to play:"
-msgstr "Выберите карту для игры:"
+msgstr "Выберите карту:"
 
 #. (text of widget: headline_map_settings_lbl)
 #: horizons/i18n/guitranslations.py:916
@@ -2406,9 +2403,8 @@ msgstr "Верфь"
 
 #. tooltip_text of buildings:boatbuilder
 #: horizons/i18n/objecttranslations.py:47
-#, fuzzy
 msgid "Builds boats and small ships. Built on coast."
-msgstr "Верфь: Строит корабли и не большие судна. Строится на побережье."
+msgstr "Верфь: Строит корабли и небольшие судна. Возводится на побережье."
 
 #. name of buildings:brickyard
 #: horizons/i18n/objecttranslations.py:52
@@ -2417,9 +2413,8 @@ msgstr "Кирпичный завод"
 
 #. tooltip_text of buildings:brickyard
 #: horizons/i18n/objecttranslations.py:54
-#, fuzzy
 msgid "Turns clay into bricks."
-msgstr "Кирпичный завод: Делает из глины кирпич."
+msgstr "Кирпичный завод: Производит кирпич из глины."
 
 #. name of buildings:butchery
 #: horizons/i18n/objecttranslations.py:59
@@ -2428,9 +2423,8 @@ msgstr "Бойня"
 
 #. tooltip_text of buildings:butchery
 #: horizons/i18n/objecttranslations.py:61
-#, fuzzy
 msgid "Needs pigs or cattle. Produces food."
-msgstr "Бойня: нуждается в свиньях или скоте. Производит пищу."
+msgstr "Бойня: для работы требует свиней или скот. Производит пищу."
 
 #. name of buildings:cattlerun
 #: horizons/i18n/objecttranslations.py:66
@@ -2439,9 +2433,8 @@ msgstr "Выгон скота"
 
 #. tooltip_text of buildings:cattlerun
 #: horizons/i18n/objecttranslations.py:68
-#, fuzzy
 msgid "Raises cattle. Needs a farm."
-msgstr "Выгон скота: разводит скот. Нуждается в ферме."
+msgstr "Выгон скота: разводит скот. Для работы требуется ферма."
 
 #. name of buildings:charcoalburning
 #: horizons/i18n/objecttranslations.py:73
@@ -2477,9 +2470,8 @@ msgstr "Винокуренный завод"
 
 #. tooltip_text of buildings:distillery
 #: horizons/i18n/objecttranslations.py:94
-#, fuzzy
 msgid "Turns sugar into liquor."
-msgstr "Винокуренный завод: Делает алкоголь из сахара."
+msgstr "Винокуренный завод: Производит алкоголь из сахара."
 
 #. name of buildings:doctor
 #: horizons/i18n/objecttranslations.py:99
@@ -2506,7 +2498,7 @@ msgstr "Ферма: Ухаживает за полями и скотом."
 #. name of buildings:fishdeposit
 #: horizons/i18n/objecttranslations.py:113
 msgid "Fish Deposit"
-msgstr "Район рыбной ловли"
+msgstr "Рыбное место"
 
 #. name of buildings:fishermanstent
 #: horizons/i18n/objecttranslations.py:118
@@ -2580,13 +2572,12 @@ msgstr ""
 #. name of buildings:lumberjackcamp
 #: horizons/i18n/objecttranslations.py:165
 msgid "Lumberjack Camp"
-msgstr "Лагерь дровосека"
+msgstr "Домик лесоруба"
 
 #. tooltip_text of buildings:lumberjackcamp
 #: horizons/i18n/objecttranslations.py:167
-#, fuzzy
 msgid "Chops down trees and turns them into boards."
-msgstr "Лесоруб: Рубит деревья и делает из них доски."
+msgstr "Лесоруб: рубит деревья и делает из них доски."
 
 #. name of buildings:mainsquare
 #: horizons/i18n/objecttranslations.py:172
@@ -2618,13 +2609,12 @@ msgstr "Пастбище: Выращивает овец. Производит ш
 #. name of buildings:pavilion
 #: horizons/i18n/objecttranslations.py:191
 msgid "Pavilion"
-msgstr "Павильон"
+msgstr "Святилище"
 
 #. tooltip_text of buildings:pavilion
 #: horizons/i18n/objecttranslations.py:193
-#, fuzzy
 msgid "Fulfills religious needs of sailors."
-msgstr "Павильон: Предоставляет морякам доступ к религии."
+msgstr "Святилище: Предоставляет морякам доступ к религии."
 
 #. name of buildings:pigsty
 #: horizons/i18n/objecttranslations.py:198
@@ -2726,9 +2716,8 @@ msgstr "Таверна"
 
 #. tooltip_text of buildings:tavern
 #: horizons/i18n/objecttranslations.py:256
-#, fuzzy
 msgid "Provides get-together."
-msgstr "Таверна: Предоставляет место для встреч."
+msgstr "Таверна: место, где жители собираются пообщаться."
 
 #. name of buildings:tent
 #: horizons/i18n/objecttranslations.py:261
@@ -2799,7 +2788,7 @@ msgstr "Дерево"
 #. tooltip_text of buildings:tree
 #: horizons/i18n/objecttranslations.py:303
 msgid "Provides lumber. Chopped down by lumberjacks."
-msgstr ""
+msgstr "Пилорама: производит пиломатериалы из срубленных деревьев."
 
 #. name of buildings:villageschool
 #: horizons/i18n/objecttranslations.py:308
@@ -2808,15 +2797,13 @@ msgstr "Деревенская школа"
 
 #. tooltip_text of buildings:villageschool
 #: horizons/i18n/objecttranslations.py:310
-#, fuzzy
 msgid "Provides education."
-msgstr "Деревенская школа: Предоставляет образование."
+msgstr "Деревенская школа: Обеспечивает образование населения."
 
 #. name of buildings:warehouse
 #: horizons/i18n/objecttranslations.py:315
-#, fuzzy
 msgid "Warehouse"
-msgstr "дома"
+msgstr "Склад"
 
 #. name of buildings:weaverstent
 #: horizons/i18n/objecttranslations.py:320
@@ -2825,9 +2812,8 @@ msgstr "Палатка ткача"
 
 #. tooltip_text of buildings:weaverstent
 #: horizons/i18n/objecttranslations.py:322
-#, fuzzy
 msgid "Turns lamb wool into cloth."
-msgstr "Ткач: Ткет из бараньей шерсти ткань."
+msgstr "Ткач: Производит ткань из бараньей шерсти."
 
 #. name of buildings:woodentower
 #: horizons/i18n/objecttranslations.py:327
@@ -2836,9 +2822,8 @@ msgstr "Деревянная башня"
 
 #. tooltip_text of buildings:woodentower
 #: horizons/i18n/objecttranslations.py:329
-#, fuzzy
 msgid "Defends your settlement."
-msgstr "Деревянная баншя: защищает ваше поселение."
+msgstr "Деревянная баншя: обеспечивает защиту поселения."
 
 #: horizons/main.py:282
 msgid "Failed to start/load the game"

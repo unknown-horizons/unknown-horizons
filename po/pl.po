@@ -867,7 +867,7 @@ msgstr "Jednostki militarne"
 
 #: horizons/gui/tabs/buildtabs.py:104
 msgid "Mining"
-msgstr ""
+msgstr "Górnictwo"
 
 #: horizons/gui/tabs/buildtabs.py:128
 msgid "Increment {increment}"
