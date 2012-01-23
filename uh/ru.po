@@ -7,8 +7,8 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2012-01-19 20:39+0100\n"
-"PO-Revision-Date: 2012-01-07 07:54+0200\n"
-"Last-Translator: Christopher Oelmueller <chris.oelmueller+uh@gmail.com>\n"
+"PO-Revision-Date: 2012-01-23 19:00+0200\n"
+"Last-Translator: Вячеслав <slava.gostuhin@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: ru\n"
 "MIME-Version: 1.0\n"
@@ -33,7 +33,7 @@ msgstr "Новый мир был создан."
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
 msgid "One of your fields requires a farm to harvest its crops."
-msgstr ""
+msgstr "Одному из полей требуется ферма для сбора урожая."
 
 # 97%
 #. This is a database entry: a messagewidget message (left part of the screen).
@@ -609,7 +609,7 @@ msgstr "Допустимы имена карт в следующей форме:
 #: horizons/gui/ingamegui.py:511
 #, python-format
 msgid "Try a name that only contains letters and numbers."
-msgstr ""
+msgstr "В имени допускаются только буквы и цифры."
 
 #: horizons/gui/modules/multiplayermenu.py:40
 msgid "Unable to find pyenet"
@@ -1023,9 +1023,9 @@ msgstr "Выйти из игры"
 # 95%
 #: horizons/gui/widgets/playerssettlements.py:43
 #, python-format
-#, python-format, fuzzy
+#, python-format, 
 msgid "Settlements of {player}"
-msgstr "поселение игрока {player}"
+msgstr "Поселение игрока {player}"
 
 #. (text of widget: total_score)
 #: horizons/gui/widgets/playerssettlements.py:113
@@ -1891,7 +1891,7 @@ msgstr "Быстрое сохранение"
 #. (text of widget: lbl_REMOVE_SELECTED)
 #: horizons/i18n/guitranslations.py:666
 msgid "Remove selected units / buildings"
-msgstr ""
+msgstr "Удалить выделенные единицы/сооружения."
 
 #. (text of widget: lbl_RIGHT)
 #: horizons/i18n/guitranslations.py:668
@@ -1906,12 +1906,12 @@ msgstr "Вкл. режим строительства дорог"
 #. (text of widget: lbl_ROTATE_LEFT)
 #: horizons/i18n/guitranslations.py:672
 msgid "Rotate building or map counterclockwise"
-msgstr ""
+msgstr "Повернуть здание или карту против часовой стрелки."
 
 #. (text of widget: lbl_ROTATE_RIGHT)
 #: horizons/i18n/guitranslations.py:674
 msgid "Rotate building or map clockwise"
-msgstr ""
+msgstr "Повернуть здание или карту по часовой стрелке."
 
 #. (text of widget: lbl_SCREENSHOT)
 #: horizons/i18n/guitranslations.py:676
@@ -2217,7 +2217,7 @@ msgstr "Восстановить настройки по умолчанию"
 #. (text of widget: auto_unload_label)
 #: horizons/i18n/guitranslations.py:837
 msgid "Auto-unload ship:"
-msgstr ""
+msgstr "Авторазгрузка судна."
 
 #. (text of widget: color_depth_label)
 #: horizons/i18n/guitranslations.py:839
@@ -2237,9 +2237,8 @@ msgstr "Вращать миникарту вместе с картой:"
 # 76%
 #. (text of widget: mouse_sensitivity_label)
 #: horizons/i18n/guitranslations.py:845
-#, fuzzy
 msgid "Mouse sensitivity:"
-msgstr "Плотность месторождений:"
+msgstr "Чувствительность мыши:"
 
 #. (text of widget: network_port_lbl)
 #: horizons/i18n/guitranslations.py:847
@@ -2269,12 +2268,12 @@ msgstr "Если установлен 0, то использовать драй�
 #. (tooltip of widget: edge_scrolling_label)
 #: horizons/i18n/guitranslations.py:857
 msgid "Whether to move the viewport when the mouse pointer is close to map edges"
-msgstr ""
+msgstr "Прокрутка экрана при приближении курсора к краю карты."
 
 #. (tooltip of widget: minimap_rotation_label)
 #: horizons/i18n/guitranslations.py:859
 msgid "Whether to also rotate the minimap whenever the regular map is rotated"
-msgstr ""
+msgstr "Вращать миникарту, если вращается основная"
 
 #. (tooltip of widget: mouse_sensitivity_label)
 #: horizons/i18n/guitranslations.py:861
