@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2012-01-19 20:39+0100\n"
-"PO-Revision-Date: 2012-01-23 19:26+0200\n"
+"PO-Revision-Date: 2012-01-23 19:27+0200\n"
 "Last-Translator: Вячеслав <slava.gostuhin@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: ru\n"
@@ -88,9 +88,8 @@ msgstr "Быстрое сохранение успешно выполнено."
 # 86%
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
-#, fuzzy
 msgid "Your game has been saved."
-msgstr "Автосохранение прошло успешно."
+msgstr "Игра сохранена."
 
 # 97%
 #. This is a database entry: a messagewidget message (left part of the screen).
@@ -1926,7 +1925,7 @@ msgstr "Показать список поселений"
 #. (text of widget: lbl_SHIFT)
 #: horizons/i18n/guitranslations.py:680
 msgid "Hold to place multiple buildings"
-msgstr "Зажмите для множественных построек"
+msgstr "Удерживайте для возведения нескольких строений."
 
 #. (text of widget: lbl_SHIPS_OVERVIEW)
 #: horizons/i18n/guitranslations.py:682
@@ -2100,7 +2099,7 @@ msgstr "Главное меню:"
 #. (text of widget: game_showonlyownversion)
 #: horizons/i18n/guitranslations.py:782
 msgid "Only show games with the same version:"
-msgstr "Игры с версией как у вас:"
+msgstr "Показывать только совместимые версии:"
 
 #. (text of widget: headline_left)
 #: horizons/i18n/guitranslations.py:784
@@ -2125,7 +2124,7 @@ msgstr "Создать новую игру"
 #. (tooltip of widget: join)
 #: horizons/i18n/guitranslations.py:792
 msgid "Join the selected game"
-msgstr "Войти в выбранную игру"
+msgstr "Присоединиться к выбранной игре"
 
 #. (tooltip of widget: cancel)
 #: horizons/i18n/guitranslations.py:794 horizons/i18n/guitranslations.py:901
@@ -2154,9 +2153,8 @@ msgstr "Язык"
 
 #. (text of widget: headline_mouse)
 #: horizons/i18n/guitranslations.py:809
-#, fuzzy
 msgid "Mouse"
-msgstr "дома"
+msgstr "Мышь"
 
 #. (text of widget: headline_network)
 #: horizons/i18n/guitranslations.py:811
@@ -2196,12 +2194,12 @@ msgstr "Во весь экран:"
 #. (text of widget: screen_resolution_label)
 #: horizons/i18n/guitranslations.py:827
 msgid "Screen resolution:"
-msgstr "Размер экрана:"
+msgstr "Разрешение экрана:"
 
 #. (text of widget: sound_enable_opt_text)
 #: horizons/i18n/guitranslations.py:829
 msgid "Enable sound:"
-msgstr "Звук включен:"
+msgstr "Включить звук:"
 
 # 83%
 #. (tooltip of widget: okButton)
@@ -2253,7 +2251,7 @@ msgstr "Непрерывное строительство:"
 #. (text of widget: use_renderer_label)
 #: horizons/i18n/guitranslations.py:851
 msgid "Used renderer:"
-msgstr "Рендерер:"
+msgstr "Пользовательская визуализация:"
 
 #. (tooltip of widget: auto_unload_label)
 #: horizons/i18n/guitranslations.py:853
@@ -2307,7 +2305,7 @@ msgstr "Введите имя файла:"
 #. (text of widget: headline_saved_games_label)
 #: horizons/i18n/guitranslations.py:876
 msgid "Your saved games:"
-msgstr "Сохраненных игр:"
+msgstr "Сохраненные игры:"
 
 #. (tooltip of widget: cancelButton)
 #: horizons/i18n/guitranslations.py:878
@@ -2361,7 +2359,7 @@ msgstr "Начать игру"
 #: horizons/i18n/guitranslations.py:906 horizons/i18n/guitranslations.py:911
 #: horizons/i18n/guitranslations.py:921
 msgid "Choose a map to play:"
-msgstr "Выберите карту для игры:"
+msgstr "Выберите карту:"
 
 #. (text of widget: headline_map_settings_lbl)
 #: horizons/i18n/guitranslations.py:916
@@ -2500,7 +2498,7 @@ msgstr "Ферма: Ухаживает за полями и скотом."
 #. name of buildings:fishdeposit
 #: horizons/i18n/objecttranslations.py:113
 msgid "Fish Deposit"
-msgstr "Район рыбной ловли"
+msgstr "Рыбное место"
 
 #. name of buildings:fishermanstent
 #: horizons/i18n/objecttranslations.py:118
@@ -2574,13 +2572,12 @@ msgstr ""
 #. name of buildings:lumberjackcamp
 #: horizons/i18n/objecttranslations.py:165
 msgid "Lumberjack Camp"
-msgstr "Лагерь дровосека"
+msgstr "Домик лесоруба"
 
 #. tooltip_text of buildings:lumberjackcamp
 #: horizons/i18n/objecttranslations.py:167
-#, fuzzy
 msgid "Chops down trees and turns them into boards."
-msgstr "Лесоруб: Рубит деревья и делает из них доски."
+msgstr "Лесоруб: рубит деревья и делает из них доски."
 
 #. name of buildings:mainsquare
 #: horizons/i18n/objecttranslations.py:172
@@ -2612,13 +2609,12 @@ msgstr "Пастбище: Выращивает овец. Производит ш
 #. name of buildings:pavilion
 #: horizons/i18n/objecttranslations.py:191
 msgid "Pavilion"
-msgstr "Павильон"
+msgstr "Святилище"
 
 #. tooltip_text of buildings:pavilion
 #: horizons/i18n/objecttranslations.py:193
-#, fuzzy
 msgid "Fulfills religious needs of sailors."
-msgstr "Павильон: Предоставляет морякам доступ к религии."
+msgstr "Святилище: Предоставляет морякам доступ к религии."
 
 #. name of buildings:pigsty
 #: horizons/i18n/objecttranslations.py:198
