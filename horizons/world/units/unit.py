@@ -96,8 +96,8 @@ class Unit(MovingObject):
 		width = int(50 * zoom)
 		y_pos = int(self.health_bar_y * zoom)
 		# coord separating health (green) from damaged (red)
-		relative_up = fife.Point(width * health // max_health - width/2, y_pos - height)
-		relative_dn = fife.Point(width * health // max_health - width/2, y_pos)
+		relative_up = fife.Point(int(width * health // max_health - width/2), y_pos - height)
+		relative_dn = fife.Point(int(width * health // max_health - width/2), y_pos)
 		mid_node_up = fife.RendererNode(self._instance, relative_up)
 		mid_node_down = fife.RendererNode(self._instance, relative_dn)
 
