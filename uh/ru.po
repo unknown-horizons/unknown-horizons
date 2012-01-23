@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2012-01-19 20:39+0100\n"
-"PO-Revision-Date: 2012-01-23 19:27+0200\n"
+"PO-Revision-Date: 2012-01-23 20:44+0200\n"
 "Last-Translator: Вячеслав <slava.gostuhin@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: ru\n"
@@ -2716,9 +2716,8 @@ msgstr "Таверна"
 
 #. tooltip_text of buildings:tavern
 #: horizons/i18n/objecttranslations.py:256
-#, fuzzy
 msgid "Provides get-together."
-msgstr "Таверна: Предоставляет место для встреч."
+msgstr "Таверна: место, где жители собираются пообщаться."
 
 #. name of buildings:tent
 #: horizons/i18n/objecttranslations.py:261
@@ -2789,7 +2788,7 @@ msgstr "Дерево"
 #. tooltip_text of buildings:tree
 #: horizons/i18n/objecttranslations.py:303
 msgid "Provides lumber. Chopped down by lumberjacks."
-msgstr ""
+msgstr "Пилорама: производит пиломатериалы из срубленных деревьев."
 
 #. name of buildings:villageschool
 #: horizons/i18n/objecttranslations.py:308
@@ -2798,15 +2797,13 @@ msgstr "Деревенская школа"
 
 #. tooltip_text of buildings:villageschool
 #: horizons/i18n/objecttranslations.py:310
-#, fuzzy
 msgid "Provides education."
-msgstr "Деревенская школа: Предоставляет образование."
+msgstr "Деревенская школа: Обеспечивает образование населения."
 
 #. name of buildings:warehouse
 #: horizons/i18n/objecttranslations.py:315
-#, fuzzy
 msgid "Warehouse"
-msgstr "дома"
+msgstr "Склад"
 
 #. name of buildings:weaverstent
 #: horizons/i18n/objecttranslations.py:320
@@ -2815,9 +2812,8 @@ msgstr "Палатка ткача"
 
 #. tooltip_text of buildings:weaverstent
 #: horizons/i18n/objecttranslations.py:322
-#, fuzzy
 msgid "Turns lamb wool into cloth."
-msgstr "Ткач: Ткет из бараньей шерсти ткань."
+msgstr "Ткач: Производит ткань из бараньей шерсти."
 
 #. name of buildings:woodentower
 #: horizons/i18n/objecttranslations.py:327
@@ -2826,9 +2822,8 @@ msgstr "Деревянная башня"
 
 #. tooltip_text of buildings:woodentower
 #: horizons/i18n/objecttranslations.py:329
-#, fuzzy
 msgid "Defends your settlement."
-msgstr "Деревянная баншя: защищает ваше поселение."
+msgstr "Деревянная баншя: обеспечивает защиту поселения."
 
 #: horizons/main.py:282
 msgid "Failed to start/load the game"
