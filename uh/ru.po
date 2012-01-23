@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2012-01-19 20:39+0100\n"
-"PO-Revision-Date: 2012-01-23 19:00+0200\n"
+"PO-Revision-Date: 2012-01-23 19:26+0200\n"
 "Last-Translator: Вячеслав <slava.gostuhin@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: ru\n"
@@ -589,7 +589,7 @@ msgstr "Не удалось уничтожить файл сохранения!"
 #: horizons/gui/gui.py:616
 #, python-format
 msgid "[{key}] = {text}"
-msgstr ""
+msgstr "[{key}] = {text}"
 
 #. e.g. when the pirate is disabled
 #. this dialog is pretty useless in this case
@@ -782,7 +782,7 @@ msgstr "Обзор судостроителя"
 #: horizons/gui/tabs/boatbuildertab.py:93
 #, python-format
 msgid "{ship} (place in queue: {place})"
-msgstr ""
+msgstr "{ship} (place in queue: {place})"
 
 #: horizons/gui/tabs/boatbuildertab.py:157
 msgid "Resources still needed:"
@@ -853,7 +853,7 @@ msgstr "Увеличение"
 #. '... buildings' will cause wrong declinations all over :/
 #: horizons/gui/tabs/buildtabs.py:137
 msgid "{incr_inhabitant_name}"
-msgstr ""
+msgstr "{incr_inhabitant_name}"
 
 #: horizons/gui/tabs/buildtabs.py:155 horizons/util/uhdbaccessor.py:150
 #, python-format
@@ -2258,7 +2258,7 @@ msgstr "Рендерер:"
 #. (tooltip of widget: auto_unload_label)
 #: horizons/i18n/guitranslations.py:853
 msgid "Whether to unload the ship after founding a settlement"
-msgstr ""
+msgstr "Разгружать судно сразу после основания поселения"
 
 #. (tooltip of widget: color_depth_label)
 #: horizons/i18n/guitranslations.py:855
@@ -2277,16 +2277,14 @@ msgstr "Вращать миникарту, если вращается осно�
 
 #. (tooltip of widget: mouse_sensitivity_label)
 #: horizons/i18n/guitranslations.py:861
-#, fuzzy
 msgid "0 is default system settings"
-msgstr "Восстановить настройки по умолчанию"
+msgstr "0 - значение по умолчанию"
 
 # 88%
 #. (tooltip of widget: network_port_lbl)
 #: horizons/i18n/guitranslations.py:863
-#, fuzzy
 msgid "If set to 0, use the router default"
-msgstr "Если установлен 0, то использовать драйвер по умолчанию"
+msgstr "Если установлен 0, то используется маршрутизатор по умолчанию"
 
 #. (tooltip of widget: uninterrupted_building_label)
 #: horizons/i18n/guitranslations.py:865
@@ -2298,6 +2296,8 @@ msgstr ""
 #: horizons/i18n/guitranslations.py:867
 msgid "SDL is only meant as unsupported fallback and might cause problems!"
 msgstr ""
+"Используйте SDL только в качестве запасного варианта. Может работать "
+"нестабильно!"
 
 #. (text of widget: enter_filename_label)
 #: horizons/i18n/guitranslations.py:872
@@ -2405,9 +2405,8 @@ msgstr "Верфь"
 
 #. tooltip_text of buildings:boatbuilder
 #: horizons/i18n/objecttranslations.py:47
-#, fuzzy
 msgid "Builds boats and small ships. Built on coast."
-msgstr "Верфь: Строит корабли и не большие судна. Строится на побережье."
+msgstr "Верфь: Строит корабли и небольшие судна. Возводится на побережье."
 
 #. name of buildings:brickyard
 #: horizons/i18n/objecttranslations.py:52
@@ -2416,9 +2415,8 @@ msgstr "Кирпичный завод"
 
 #. tooltip_text of buildings:brickyard
 #: horizons/i18n/objecttranslations.py:54
-#, fuzzy
 msgid "Turns clay into bricks."
-msgstr "Кирпичный завод: Делает из глины кирпич."
+msgstr "Кирпичный завод: Производит кирпич из глины."
 
 #. name of buildings:butchery
 #: horizons/i18n/objecttranslations.py:59
@@ -2427,9 +2425,8 @@ msgstr "Бойня"
 
 #. tooltip_text of buildings:butchery
 #: horizons/i18n/objecttranslations.py:61
-#, fuzzy
 msgid "Needs pigs or cattle. Produces food."
-msgstr "Бойня: нуждается в свиньях или скоте. Производит пищу."
+msgstr "Бойня: для работы требует свиней или скот. Производит пищу."
 
 #. name of buildings:cattlerun
 #: horizons/i18n/objecttranslations.py:66
@@ -2438,9 +2435,8 @@ msgstr "Выгон скота"
 
 #. tooltip_text of buildings:cattlerun
 #: horizons/i18n/objecttranslations.py:68
-#, fuzzy
 msgid "Raises cattle. Needs a farm."
-msgstr "Выгон скота: разводит скот. Нуждается в ферме."
+msgstr "Выгон скота: разводит скот. Для работы требуется ферма."
 
 #. name of buildings:charcoalburning
 #: horizons/i18n/objecttranslations.py:73
@@ -2476,9 +2472,8 @@ msgstr "Винокуренный завод"
 
 #. tooltip_text of buildings:distillery
 #: horizons/i18n/objecttranslations.py:94
-#, fuzzy
 msgid "Turns sugar into liquor."
-msgstr "Винокуренный завод: Делает алкоголь из сахара."
+msgstr "Винокуренный завод: Производит алкоголь из сахара."
 
 #. name of buildings:doctor
 #: horizons/i18n/objecttranslations.py:99

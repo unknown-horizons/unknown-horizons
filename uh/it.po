@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2012-01-19 20:39+0100\n"
-"PO-Revision-Date: 2012-01-07 07:53+0200\n"
+"PO-Revision-Date: 2012-01-23 19:24+0200\n"
 "Last-Translator: Christopher Oelmueller <chris.oelmueller+uh@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: it\n"
@@ -38,9 +38,8 @@ msgstr ""
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
 #, python-format
-#, fuzzy
 msgid "Screenshot has been saved to {file}."
-msgstr "Screenshot è stato salvato in ${file}."
+msgstr "Screenshot è stato salvato in {file}."
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
@@ -66,9 +65,8 @@ msgstr ""
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
 #, python-format
-#, fuzzy
 msgid "You need more {resource} to build this building."
-msgstr "Necessiti più ${resource} per costruire questo edificio."
+msgstr "Necessiti più {resource} per costruire questo edificio."
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
@@ -353,9 +351,8 @@ msgstr "lana"
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
 #, python-format
-#, fuzzy
 msgid "{player1} and {player2} are now {status}"
-msgstr "${player1} e ${player2} sono ora ${status}"
+msgstr "{player1} e {player2} sono ora {status}"
 
 #: horizons/command/misc.py:30
 #, python-format
@@ -2445,9 +2442,8 @@ msgstr "Bruciatore di carbone"
 
 #. tooltip_text of buildings:charcoalburning
 #: horizons/i18n/objecttranslations.py:75
-#, fuzzy
 msgid "Burns a lot of boards."
-msgstr "Bruciatore di carbone: Brucia le assi."
+msgstr "Brucia le assi."
 
 #. name of buildings:claydeposit
 #: horizons/i18n/objecttranslations.py:80
@@ -2483,9 +2479,8 @@ msgstr "Dottore"
 
 #. tooltip_text of buildings:doctor
 #: horizons/i18n/objecttranslations.py:101
-#, fuzzy
 msgid "Treats diseases. Consumes herbs."
-msgstr "Dottore : Cura le malattie. Consuma erbe."
+msgstr "Cura le malattie. Consuma erbe."
 
 # Building
 #. name of buildings:farm
@@ -2527,9 +2522,8 @@ msgstr "Erboristeria"
 
 #. tooltip_text of buildings:herbary
 #: horizons/i18n/objecttranslations.py:132
-#, fuzzy
 msgid "Produces herbs. Needs a farm."
-msgstr "Erboristeria : Produce erbe. Ha bisogno di una fattoria."
+msgstr "Produce erbe. Ha bisogno di una fattoria."
 
 #. name of buildings:hunterstent
 #: horizons/i18n/objecttranslations.py:137
@@ -2549,9 +2543,8 @@ msgstr "Miniera di ferro"
 
 #. tooltip_text of buildings:ironmine
 #: horizons/i18n/objecttranslations.py:146
-#, fuzzy
 msgid "Gets iron ore from deposit."
-msgstr "Miniera di ferro: Ottiene ferro dal deposito."
+msgstr "Ottiene ferro dal deposito."
 
 #. name of buildings:log
 #: horizons/i18n/objecttranslations.py:151
@@ -2708,11 +2701,8 @@ msgstr "Campo di zucchero"
 
 #. tooltip_text of buildings:sugarfield
 #: horizons/i18n/objecttranslations.py:249
-#, fuzzy
 msgid "Used in liquor production. Needs a farm."
-msgstr ""
-"Campo di canna da zucchero: Usato per la produzione di liquori. Richiede una "
-"fattoria."
+msgstr "Usato per la produzione di liquori. Richiede una fattoria."
 
 #. name of buildings:tavern
 #: horizons/i18n/objecttranslations.py:254
@@ -2782,9 +2772,8 @@ msgstr "Sentiero"
 
 #. tooltip_text of buildings:trail
 #: horizons/i18n/objecttranslations.py:296
-#, fuzzy
 msgid "Needed for collecting goods."
-msgstr "Sentiero: Necessario per raccogliere prodotti."
+msgstr "Necessario per raccogliere prodotti."
 
 #. name of buildings:tree
 #: horizons/i18n/objecttranslations.py:301
