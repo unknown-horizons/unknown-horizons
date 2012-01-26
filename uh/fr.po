@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2012-01-19 20:39+0100\n"
-"PO-Revision-Date: 2012-01-22 22:57+0200\n"
+"PO-Revision-Date: 2012-01-22 23:01+0200\n"
 "Last-Translator: Sebastien (seblabel) <sebastiencharpentier@laposte.net>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: fr\n"
@@ -989,7 +989,6 @@ msgid "Buy/Sell"
 msgstr "Achat/Vente"
 
 #: horizons/gui/tabs/overviewtab.py:201
-#, fuzzy
 msgid "Too far from the nearest warehouse"
 msgstr "Trop loin du comptoir le plus proche"
 
@@ -2523,7 +2522,6 @@ msgstr "Distillerie"
 
 #. tooltip_text of buildings:distillery
 #: horizons/i18n/objecttranslations.py:94
-#, fuzzy
 msgid "Turns sugar into liquor."
 msgstr "Transforme la canne à sucre en alcool."
 
@@ -2545,7 +2543,6 @@ msgstr "Ferme"
 
 #. tooltip_text of buildings:farm
 #: horizons/i18n/objecttranslations.py:108
-#, fuzzy
 msgid "Grows field crops and raises livestock."
 msgstr "Cultive les champs et élève du bétail."
 
@@ -2627,7 +2624,6 @@ msgstr "Camp de bûcherons"
 
 #. tooltip_text of buildings:lumberjackcamp
 #: horizons/i18n/objecttranslations.py:167
-#, fuzzy
 msgid "Chops down trees and turns them into boards."
 msgstr "Coupe des arbres et les transforme en planches."
 
@@ -2638,7 +2634,6 @@ msgstr "Place principale"
 
 #. tooltip_text of buildings:mainsquare
 #: horizons/i18n/objecttranslations.py:174
-#, fuzzy
 msgid "Supplies citizens with goods."
 msgstr "Fournit les biens aux citoyens."
 
@@ -2664,7 +2659,6 @@ msgstr "Pavillon"
 
 #. tooltip_text of buildings:pavilion
 #: horizons/i18n/objecttranslations.py:193
-#, fuzzy
 msgid "Fulfills religious needs of sailors."
 msgstr "Réponds aux besoins religieux des marins."
 
@@ -2675,7 +2669,6 @@ msgstr "Porcherie"
 
 #. tooltip_text of buildings:pigsty
 #: horizons/i18n/objecttranslations.py:200
-#, fuzzy
 msgid "Raises pigs. Needs a farm."
 msgstr "Élève des porcs. Nécessite une ferme."
 
@@ -2697,7 +2690,6 @@ msgstr "Rempart"
 
 #. tooltip_text of buildings:rampart
 #: horizons/i18n/objecttranslations.py:214
-#, fuzzy
 msgid "Protects your settlement."
 msgstr "Défend votre colonie."
 
@@ -2708,7 +2700,6 @@ msgstr "Salines"
 
 #. tooltip_text of buildings:saltponds
 #: horizons/i18n/objecttranslations.py:221
-#, fuzzy
 msgid "Evaporates salt. Built on sea coast."
 msgstr "Produit du sel. Construire en bord de mer."
 
@@ -2720,7 +2711,6 @@ msgstr "Phare"
 # free-trader is hard to translate, i think "bateau-marchand" is more understandable in the context. In addition, i used it in the tutorial
 #. tooltip_text of buildings:signalfire
 #: horizons/i18n/objecttranslations.py:228
-#, fuzzy
 msgid "Allows the player to trade with the free trader."
 msgstr "Permet au joueur de commercer avec le marchand indépendant."
 
@@ -2731,7 +2721,6 @@ msgstr "Fonderie"
 
 #. tooltip_text of buildings:smeltery
 #: horizons/i18n/objecttranslations.py:235
-#, fuzzy
 msgid "Refines all kind of ores."
 msgstr "Raffine tout type de minerais."
 
@@ -2742,7 +2731,6 @@ msgstr "Tente de dépôt"
 
 #. tooltip_text of buildings:storagetent
 #: horizons/i18n/objecttranslations.py:242
-#, fuzzy
 msgid "Extends stock and provides collectors."
 msgstr "Agrandit la capacité de stockage et fournit des livreurs."
 
@@ -2764,7 +2752,6 @@ msgstr "Taverne"
 # 'Satisfait le besoin de communauté.' ça c'est vraiment pas joli ! comment traduire get-together ? je propose 'rapproche les hommes!'
 #. tooltip_text of buildings:tavern
 #: horizons/i18n/objecttranslations.py:256
-#, fuzzy
 msgid "Provides get-together."
 msgstr "Rapproche la communauté."
 
@@ -2775,7 +2762,6 @@ msgstr "Tente"
 
 #. tooltip_text of buildings:tent
 #: horizons/i18n/objecttranslations.py:263
-#, fuzzy
 msgid "Houses your inhabitants."
 msgstr "Abrite vos habitants."
 
@@ -2792,7 +2778,6 @@ msgstr "Champ de tabac"
 
 #. tooltip_text of buildings:tobaccofield
 #: horizons/i18n/objecttranslations.py:275
-#, fuzzy
 msgid "Produces tobacco. Needs a farm."
 msgstr "Produit du tabac. Nécessite une ferme."
 
@@ -2803,7 +2788,6 @@ msgstr "Buraliste"
 
 #. tooltip_text of buildings:tobacconist
 #: horizons/i18n/objecttranslations.py:282
-#, fuzzy
 msgid "Produces tobaccos out of tobacco."
 msgstr "Produit des cigares à partir de tabac."
 
@@ -2814,7 +2798,6 @@ msgstr "Forgeron"
 
 #. tooltip_text of buildings:toolmaker
 #: horizons/i18n/objecttranslations.py:289
-#, fuzzy
 msgid "Produces tools out of iron."
 msgstr "Forge des outils á partir de fer."
 
@@ -2845,7 +2828,6 @@ msgstr "École de village"
 
 #. tooltip_text of buildings:villageschool
 #: horizons/i18n/objecttranslations.py:310
-#, fuzzy
 msgid "Provides education."
 msgstr "Assure l'éducation."
 
@@ -2862,7 +2844,6 @@ msgstr "Tente du tisseur"
 
 #. tooltip_text of buildings:weaverstent
 #: horizons/i18n/objecttranslations.py:322
-#, fuzzy
 msgid "Turns lamb wool into cloth."
 msgstr "Transforme la laine en tissu."
 
@@ -2873,7 +2854,6 @@ msgstr "Tour de Bois"
 
 #. tooltip_text of buildings:woodentower
 #: horizons/i18n/objecttranslations.py:329
-#, fuzzy
 msgid "Defends your settlement."
 msgstr "Défend votre colonie."
 
