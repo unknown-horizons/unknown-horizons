@@ -7,8 +7,8 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2012-01-19 20:39+0100\n"
-"PO-Revision-Date: 2012-01-23 19:21+0200\n"
-"Last-Translator: Christopher Oelmueller <chris.oelmueller+uh@gmail.com>\n"
+"PO-Revision-Date: 2012-01-30 17:15+0200\n"
+"Last-Translator: Aleksi <aleksi.kinnunen@ovi.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: fi\n"
 "MIME-Version: 1.0\n"
@@ -31,7 +31,7 @@ msgstr "Uusi maailma luotu."
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
 msgid "One of your fields requires a farm to harvest its crops."
-msgstr ""
+msgstr "Yksi pelloistasi tarvitsee maatilan lähistölleen."
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
@@ -434,7 +434,7 @@ msgstr ""
 #: horizons/engine/settingshandler.py:262
 #, python-format
 msgid "Configured language {lang} could not be loaded"
-msgstr ""
+msgstr "Valittua kieltä {lang} ei pystytä lataamaan"
 
 #. There was a problem during the 'save game' procedure.
 #: horizons/gui/gui.py:171 horizons/gui/ingamegui.py:512
@@ -618,12 +618,12 @@ msgstr "Muita pelaajia ei ole, joten diplomatia on tarpeetonta."
 #: horizons/gui/ingamegui.py:509
 #, python-format
 msgid "Valid map names are in the following form: {expression}"
-msgstr ""
+msgstr "Oikeat kartannimet ovat tällaisessa muodossa: {expression}"
 
 #: horizons/gui/ingamegui.py:511
 #, python-format
 msgid "Try a name that only contains letters and numbers."
-msgstr ""
+msgstr "Käytä nimeä jossa on vain kirjaimia ja numeroita."
 
 #: horizons/gui/modules/multiplayermenu.py:40
 #, fuzzy
@@ -695,6 +695,10 @@ msgstr "Väärä versio"
 #, python-format
 msgid "The game's version differs from your version. Every player in a multiplayer game must use the same version. This can be fixed by every player updating to the latest version. Game version: {game_version} Your version: {own_version}"
 msgstr ""
+"Pelissä käytettävä versio ei ole sama kuin omasi. Jokaisella moninpelin "
+"jäsenellä tulee olla käytössään pelin sama versio. Tämä voidaan korjata "
+"päivittämällä peli jokaisella osapuolella uusimpaan versioon. Vaadittu "
+"versio: {game_version} Oma versiosi: {own_version}"
 
 # 79%
 #: horizons/gui/modules/multiplayermenu.py:300
@@ -854,9 +858,8 @@ msgid "Mining"
 msgstr "Kaivostoiminta"
 
 #: horizons/gui/tabs/buildtabs.py:128
-#, fuzzy
 msgid "Increment {increment}"
-msgstr "Taso"
+msgstr "Taso {increment}"
 
 #. i18n In English, this is Sailors, Pioneers, Settlers.
 #. TODO what formatting to use? getting names from DB and adding
@@ -1000,7 +1003,7 @@ msgstr "Tuotannon yleiskatsaus"
 
 #: horizons/gui/tabs/selectmultitab.py:55
 msgid "Selected Units"
-msgstr ""
+msgstr "Valitut yksiköt"
 
 #: horizons/gui/widgets/buysellinventory.py:83
 #: horizons/gui/widgets/inventory.py:115
@@ -1350,8 +1353,9 @@ msgstr "Raha"
 
 #. (tooltip of widget: costs_003)
 #: horizons/i18n/guitranslations.py:169 horizons/i18n/guitranslations.py:186
+#, fuzzy
 msgid "Cloth"
-msgstr ""
+msgstr "Kangas"
 
 #. (text of widget: headline_BB_war1_ship1)
 #: horizons/i18n/guitranslations.py:180
@@ -1528,7 +1532,7 @@ msgstr "Ostot"
 #. (text of widget: selling_label)
 #: horizons/i18n/guitranslations.py:337 horizons/i18n/guitranslations.py:428
 msgid "Selling"
-msgstr ""
+msgstr "Myynti"
 
 #. (text of widget: lbl_weapon_storage)
 #: horizons/i18n/guitranslations.py:342
@@ -1745,13 +1749,14 @@ msgstr "Valitse tämä skenaario"
 
 #. (text of widget: lbl_wait_at_load) Trade route setting: Whether to wait until all goods could be loaded.
 #: horizons/i18n/guitranslations.py:554
+#, fuzzy
 msgid "Wait at load:"
-msgstr ""
+msgstr "Odota lastausta:"
 
 #. (text of widget: lbl_wait_at_unload) Trade route setting: Whether to wait until all goods could be unloaded.
 #: horizons/i18n/guitranslations.py:556
 msgid "Wait at unload:"
-msgstr ""
+msgstr "Odota purkamista:"
 
 #. (tooltip of widget: okButton)
 #: horizons/i18n/guitranslations.py:558
@@ -1923,7 +1928,7 @@ msgstr "Pikatallennus"
 #. (text of widget: lbl_REMOVE_SELECTED)
 #: horizons/i18n/guitranslations.py:666
 msgid "Remove selected units / buildings"
-msgstr ""
+msgstr "Poista valitut yksiköt/rakennukset"
 
 #. (text of widget: lbl_RIGHT)
 #: horizons/i18n/guitranslations.py:668
@@ -1938,12 +1943,12 @@ msgstr ""
 #. (text of widget: lbl_ROTATE_LEFT)
 #: horizons/i18n/guitranslations.py:672
 msgid "Rotate building or map counterclockwise"
-msgstr ""
+msgstr "Käännä rakennusta tai karttaa vastapäivään"
 
 #. (text of widget: lbl_ROTATE_RIGHT)
 #: horizons/i18n/guitranslations.py:674
 msgid "Rotate building or map clockwise"
-msgstr ""
+msgstr "Käännä rakennusta tai karttaa myötäpäivään"
 
 #. (text of widget: lbl_SCREENSHOT)
 #: horizons/i18n/guitranslations.py:676
@@ -2026,7 +2031,7 @@ msgstr "Jatka peliä"
 #. (text of widget: loading_label)
 #: horizons/i18n/guitranslations.py:716
 msgid "Loading ..."
-msgstr "Ladataan ..."
+msgstr "Ladataan..."
 
 #. (text of widget: chimebell)
 #: horizons/i18n/guitranslations.py:723
