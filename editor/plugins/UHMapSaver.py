@@ -44,8 +44,9 @@ class MapSaver:
 
 	def _extractPositionRotationFromInstance(self, instance):
 		"""Extracts the position and the rotation from an instance and returns it as a tuple"""
-		rotation = (instance.getRotation() + 45) % 360
+		rotation = instance.getRotation()
 		position = instance.getLocationRef().getExactLayerCoordinates()
+		print "get", rotation
 		return (position, rotation)
 
 	def _saveBuildings(self):

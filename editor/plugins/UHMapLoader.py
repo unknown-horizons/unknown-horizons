@@ -102,7 +102,8 @@ class MapLoader:
 		fife.GenericRenderer.getInstance(cam).activateAllLayers(map)
 		
 	def act(self, action, rotation, instance, layer, x, y):
-		instance.setRotation((rotation-45) % 360)
+		print "set", rotation
+		instance.setRotation(rotation)
 
 		facing_loc = fife.Location(layer)
 		layer_coords = list((x, y, 0))
@@ -133,7 +134,6 @@ class MapLoader:
 			position = fife.ModelCoordinate(x, y, 0)
 			inst = ground_layer.createInstance(ground_tile, position)
 			self.act(action_id+"_"+str(groundTileName), rotation, inst, ground_layer, x, y)
-			inst.setRotation(rotation)
 			fife.InstanceVisual.create(inst)
 
 	def _loadBuildings(self, building_layer, model, db):
@@ -198,6 +198,7 @@ class MapLoader:
 				return None
 			
 			inst = building_layer.createInstance(object, fife.ModelCoordinate(*instance_coords))
+			print "set3", rotation
 			inst.setRotation(rotation)
 			facing_loc.setLayerCoordinates(fife.ModelCoordinate(*layer_coords))
 			fife.InstanceVisual.create(inst)
