@@ -102,7 +102,7 @@ class MapLoader:
 		fife.GenericRenderer.getInstance(cam).activateAllLayers(map)
 		
 	def act(self, action, rotation, instance, layer, x, y):
-		instance.setRotation(rotation)
+		instance.setRotation((rotation-45) % 360)
 
 		facing_loc = fife.Location(layer)
 		layer_coords = list((x, y, 0))

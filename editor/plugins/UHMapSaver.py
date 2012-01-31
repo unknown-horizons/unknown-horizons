@@ -89,6 +89,7 @@ class MapSaver:
 			# TODO (MMB) a bit of a hack to only get the name without a possible _ts_curved etc. suffix
 			action_id = re.sub("_ts.*", "", action_id)
 			(position, rotation) = self._extractPositionRotationFromInstance(instance)
+			print "rotation" + str(rotation)
 			island_db("INSERT INTO ground VALUES (?, ?, ?, ?, ?)", position.x, position.y, type, action_id, rotation)
 		island_db("COMMIT TRANSACTION");
 
