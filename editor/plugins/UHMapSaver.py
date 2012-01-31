@@ -19,18 +19,16 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-import fife.extensions.savers as mapSavers
-
 import horizons.main # necessary so the correct load order of all modules is guaranteed
 
-from horizons.util.uhdbaccessor import UhDbAccessor, read_savegame_template
-
+from horizons.util.uhdbaccessor import UhDbAccessor, read_savegame_template, \
+	read_island_template
+import fife.extensions.savers as mapSavers
+import os.path
+import re
 import scripts.editor
 import scripts.plugin
-
-import os.path
 import shutil
-
 import util
 
 TEMPLATE_DATAFORMAT_PATH = os.path.join(util.getUHPath(), 'content', 'savegame_template.sql')
@@ -43,64 +41,188 @@ class MapSaver:
 		self._model = engine.getModel()
 		self._map = map
 		self._mapDatabase = None
-		pass
-			
+
+	def _extractPositionRotationFromInstance(self, instance):
+		"""Extracts the position and the rotation from an instance and returns it as a tuple"""
+		rotation = (instance.getRotation() + 45) % 360
+		position = instance.getLocationRef().getExactLayerCoordinates()
+		return (position, rotation)
+
 	def _saveBuildings(self):
+		"""Saves all objects placed on the building layer"""
 		building_layer = self._map.getLayer(util.BUILDING_LAYER_NAME)
 		instances = building_layer.getInstances()
 		for instance in instances:
 			type = util.getBuildingId(instance.getObject().getId())
-			rotation = (instance.getRotation() + 45) % 360
-			position = instance.getLocationRef().getExactLayerCoordinates()
+			(position, rotation) = self._extractPositionRotationFromInstance(instance)
 			self._mapDatabase("INSERT INTO building VALUES (?, ?, ?, ?, ?, ?, ?)", type, position.x, position.y, 100, 1, rotation, 0)
-			
-	def _saveGroundTiles(self):
-		print "Saving ground tiles ..."
+
+
+	def _saveIslands(self):
+		"""Saves all islands by calling _saveIsland on each of them and linking the generated islands to the MapFile"""
+		tiles = self._buildGroundTilesLayerArray()
+		tiles = self._partitionGroundtilesToIslands(tiles)
+		islandsToGroundtiles = self._partitionIslandsFromGroundTiles(tiles)
+		for islandName in islandsToGroundtiles:
+			island_filename = os.path.basename(self._filepath)
+			relative_island_filepath = os.path.join('content', 'islands', island_filename + "_" + islandName + ".sqlite")
+
+			self._saveIsland(islandName, relative_island_filepath, islandsToGroundtiles[islandName])
+			self._mapDatabase("INSERT INTO island VALUES (?, ?, ?)", 0, 0, relative_island_filepath)
+
+
+	def _saveIsland(self, name, relative_island_filepath, tiles):
+		"""Writes an SQL file for an island"""
+		island_filepath = os.path.join(util.getUHPath(), relative_island_filepath)
+		print "Saving island " + island_filepath
+		if os.path.exists(island_filepath):
+			os.remove(island_filepath)
+		island_db = self._create_island_db(island_filepath)
+		island_db("BEGIN IMMEDIATE TRANSACTION")
+
+		for instance in tiles:
+			type = util.getGroundTileId(instance.getObject().getId())
+			# TODO (MMB) "default action id = 0"
+			action_id = instance.getObject().getActionIds()[0]
+			if instance.getCurrentAction() != None:
+				action_id = instance.getCurrentAction().getId()
+			# TODO (MMB) a bit of a hack to only get the name without a possible _ts_curved etc. suffix
+			action_id = re.sub("_ts.*", "", action_id)
+			(position, rotation) = self._extractPositionRotationFromInstance(instance)
+			island_db("INSERT INTO ground VALUES (?, ?, ?, ?, ?)", position.x, position.y, type, action_id, rotation)
+		island_db("COMMIT TRANSACTION");
+
+		pass
+
+	def _buildGroundTilesLayerArray(self):
+		"""Builds a tuple representation of all the ground tiles"""
+		# A representation of all the tiles, syntax is tiles(x, y, instance of groundtile)
+		tiles = {}
+
+		# Builds an x,y representation of all groundtiles
 		ground_layer = self._map.getLayer(util.GROUND_LAYER_NAME)
 		instances = ground_layer.getInstances()
+		self.x_minimum = 0
+		self.x_maximum = 0
+		self.y_minimum = 0
+		self.y_maximum = 0
 		for instance in instances:
-			position = instance.getPosition()
-			self._islandDatabase("INSERT INTO ground VALUES (?, ?, ?, ?, ?)", position.x, position.y, instance.getObject().getId(), "straight", 45)
-		pass
-			
-	def _saveIsalnds(self):
-		# write function for figuring out if ground tiles are connected to one 
-		# island
-		
-		# write all islands into own file
-		
-		# connect islands into DB
-		pass
+			type = util.getGroundTileId(instance.getObject().getId())
+			(position, rotation) = self._extractPositionRotationFromInstance(instance)
+			x = int(position.x)
+			y = int(position.y)
+			tiles[(x, y)] = ("island_0", instance)
+			if x < self.x_minimum:
+				self.x_minimum = x
+			elif x > self.x_maximum:
+				self.x_maximum = x
+			if y > self.y_maximum:
+				self.y_maximum = y
+			elif y < self.y_minimum:
+				self.y_minimum = y
+		return tiles
+
+	def _partitionGroundtilesToIslands(self, tiles):
+		"""Builds partitions from the ground tiles so that an island consists of all connected groundtiles. Each groundtile is connected to an island"""
+		islandCounter = 1
+		for x in range(self.x_minimum, self.x_maximum + 1):
+			for y in range(self.y_minimum, self.y_maximum + 1):
+				try:
+					(connectedIsland, instance) = tiles[(x, y)]
+					isConnected = False
+
+					try:
+						if tiles[(x - 1, y)] != None:
+							# Tile not yet connected
+							# Left connect of unconnected groundtile to existing island
+							(connectedIsland, tmpInstance) = tiles[(x - 1, y)]
+							tiles[(x, y)] = (connectedIsland, instance)
+							isConnected = True
+					except KeyError:
+						pass
+
+					try:
+						if tiles[(x, y - 1)] != None:
+							# Up connect of unconnected groundtile to existing island
+							if isConnected == False:
+								# Tile not yet connected
+								(connectedIsland, tmpInstance) = tiles[(x, y - 1)]
+								tiles[(x, y)] = (connectedIsland, instance)
+								isConnected = True
+
+							else:
+								# Tile already connected to other island this.
+								# -> Merge the two islands by replacing references of the first one with the second one.
+								(oldIsland, tmpInstance) = tiles[(x, y - 1)]
+								if oldIsland != connectedIsland:
+									tiles = self._updateExistingIslandName(tiles, oldIsland, connectedIsland)
+					except KeyError:
+						pass
+					if isConnected == False:
+						# Tile not yet connected
+						# Create new island
+						tiles[(x, y)] = ("island_" + str(islandCounter), instance)
+						islandCounter += 1
+				except KeyError:
+					pass
+		return tiles
+
+
+	def _updateExistingIslandName(self, tiles, oldIsland, newIsland):
+		"""Replaces occurrences from oldIsland to newIsland"""
+		for (x, y) in tiles:
+			(name, instance) = tiles[(x, y)]
+			if name == oldIsland:
+				tiles[(x, y)] = (newIsland, instance)
+		return tiles
+
+
+	def _partitionIslandsFromGroundTiles(self, tiles):
+		islandsToGroundtiles = {}
+		for (x, y) in tiles:
+			(islandName, instance) = tiles[(x, y)]
+			try:
+				islandsToGroundtiles[islandName].append(instance)
+			except KeyError:
+				islandsToGroundtiles[islandName] = [instance, ]
+		return islandsToGroundtiles
 
 	def saveResource(self):
 		try:
-			savepath = self._filepath + '.saved.sqlite'
-			if os.path.exists(savepath):
-				os.remove(savepath)
-			self._mapDatabase = self._create_db(savepath)
+			if os.path.exists(self._filepath):
+				backuppath = self._filepath + "_backup.sqlite"
+				shutil.move(self._filepath, backuppath)
+			self._mapDatabase = self._create_map_db(self._filepath)
 		except IOError as exception:
 			print "Did not save map!"
 			raise exception
-		else:	
+		else:
 			# transaction save operations to gain performance
 			self._mapDatabase("BEGIN IMMEDIATE TRANSACTION")
 			self._saveBuildings()
+			self._saveIslands()
 			self._mapDatabase("COMMIT TRANSACTION");
-			
-			print "Successfully saved " + savepath 
-	
-	def _create_db(self, savepath):
-		"""Returns a dbreader instance, that is connected to the main game data dbfiles.
-		NOTE: This data is read_only, so there are no concurrency issues"""
+
+			print "Successfully saved " + self._filepath
+
+	def _create_map_db(self, savepath):
+		"""Returns a dbreader instance, that is connected to the main game data dbfiles."""
 		horizons.main.PATHS.SAVEGAME_TEMPLATE = os.path.join(util.getUHPath(), horizons.main.PATHS.SAVEGAME_TEMPLATE)
 
 		db = UhDbAccessor(savepath)
 		read_savegame_template(db)
 		return db
 
-	
+	def _create_island_db(self, savepath):
+		"""Returns a dbreader instance for the creation of island dbfiles."""
+		horizons.main.PATHS.ISLAND_TEMPLATE = os.path.join(util.getUHPath(), horizons.main.PATHS.ISLAND_TEMPLATE)
+
+		db = UhDbAccessor(savepath)
+		read_island_template(db)
+		return db
+
 class UHMapSaver(scripts.plugin.Plugin):
-	""" The {UHMapSaver} allows to load the UH map format in FIFEdit
+	""" The {UHMapSaver} allows to save the UH map format in FIFEdit
 	"""
 
 	def __init__(self):

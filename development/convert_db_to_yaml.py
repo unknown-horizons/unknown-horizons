@@ -39,7 +39,7 @@ init_environment()
 import horizons.main
 from horizons.constants import UNITS, SETTLER
 
-db = horizons.main._create_db()
+db = horizons.main._create_map_db()
 
 
 def construct_ordered_mapping(self, node, deep=False):
