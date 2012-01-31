@@ -35,7 +35,7 @@ import scripts.plugin
 
 import util
 
-YamlCache.sync_sheduled = True
+YamlCache.sync_scheduled = True
 
 class UHObjectLoader(scripts.plugin.Plugin):
 	""" The B{UHObjectLoader} allows to load the UH objects into the FIFEdit object selector """
