@@ -31,28 +31,52 @@ class SingleplayerMenu(object):
 		"""
 		@param show: string, which type of games to show
 		"""
-		assert show in ('random', 'scenario', 'campaign', 'free_maps')
 		# save player name before removing playerdata container
 		self._save_player_name()
 		self.hide()
-		# reload since the gui is changed at runtime
+
+		# start with default single player settings
 		self.widgets.reload('singleplayermenu')
 		self._switch_current_widget('singleplayermenu', center=True)
+		self.activeRightSide = None
+
+		for spShow in ('random', 'scenario', 'campaign', 'free_maps'):
+			self.widgets.reload('sp_%s' % spShow)
+			right_side = self.widgets['sp_%s' % spShow]
+			self.current.findChild(name="right_side_box").addChild(right_side)
+			right_side.parent.hideChild(right_side)
+
+		# create and add permanent left side widgets
+		self.current.playerdata = PlayerDataSelection(self.current, self.widgets)
+		self.current.aidata = AIDataSelection(self.current, self.widgets)
+
+		self.__select_single(show)		
+
+	def __select_single(self, show):
+		assert show in ('random', 'scenario', 'campaign', 'free_maps')
+		self.hide()
 		eventMap = {
 			'cancel'    : Callback.ChainedCallbacks(self._save_player_name, self.show_main),
 			'okay'      : self.start_single,
-			'scenario'  : Callback(self.show_single, show='scenario'),
-			'campaign'  : Callback(self.show_single, show='campaign'),
-			'random'    : Callback(self.show_single, show='random'),
-			'free_maps' : Callback(self.show_single, show='free_maps')
+			'scenario'  : Callback(self.__select_single, show='scenario'),
+			'campaign'  : Callback(self.__select_single, show='campaign'),
+			'random'    : Callback(self.__select_single, show='random'),
+			'free_maps' : Callback(self.__select_single, show='free_maps')
 		}
 
 		# init gui for subcategory
-		show_ai_options = False
 		del eventMap[show]
-		self.current.findChild(name=show).marked = True
 		right_side = self.widgets['sp_%s' % show]
-		self.current.findChild(name="right_side_box").addChild(right_side)
+		show_ai_options = False
+		self.current.findChild(name=show).marked = True
+		self.current.aidata.hide()
+
+		# hide previous widget, unhide new right side widget 
+		if self.activeRightSide is not None:
+			self.activeRightSide.parent.hideChild(self.activeRightSide)
+		right_side.parent.showChild(right_side)
+		self.activeRightSide = right_side
+
 		if show == 'random':
 			show_ai_options = True
 			self.__setup_random_map_selection(right_side)
@@ -130,9 +154,8 @@ class SingleplayerMenu(object):
 
 		self.current.mapEvents(eventMap)
 
-		self.current.playerdata = PlayerDataSelection(self.current, self.widgets)
 		if show_ai_options:
-			self.current.aidata = AIDataSelection(self.current, self.widgets)
+			self.current.aidata.show()
 		self.current.show()
 		self.on_escape = self.show_main
 
@@ -166,13 +189,13 @@ class SingleplayerMenu(object):
 				horizons.main.start_singleplayer(map_file, playername, playercolor, is_scenario=is_scenario)
 			except InvalidScenarioFileFormat as e:
 				self.__show_invalid_scenario_file_popup(e)
-				self.show_single(show = 'scenario')
+				self.__select_single(show = 'scenario')
 		elif is_campaign:
 			campaign_info = SavegameManager.get_campaign_info(filename = map_file)
 			if not campaign_info:
 				# TODO : an "invalid campaign popup"
 				self.__show_invalid_scenario_file_popup(e)
-				self.show_single(show = 'campaign')
+				self.__select_single(show = 'campaign')
 			scenario = campaign_info.get('scenarios')[0].get('level')
 			map_file = campaign_info.get('scenario_files').get(scenario)
 			# TODO : why this does not work ?
@@ -249,8 +272,9 @@ class SingleplayerMenu(object):
 
 	def __setup_game_settings_selection(self):
 		widget = self.widgets['game_settings']
-		if self.current.findChild(name = widget.name) is None:
-			self.current.findChild(name = 'game_settings_box').addChild(widget)
+		if widget.parent is not None:
+			widget.parent.removeChild(widget)
+		self.current.findChild(name = 'game_settings_box').addChild(widget)
 
 		resource_density_slider = widget.findChild(name = 'resource_density_slider')
 		def on_resource_density_slider_change():

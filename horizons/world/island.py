@@ -69,6 +69,8 @@ class Island(BuildingOwner, WorldObject):
 		@param session: reference to Session instance
 		"""
 		super(Island, self).__init__(worldid=islandid)
+		from horizons.session import Session
+		assert isinstance(session, Session)
 		self.session = session
 
 		x, y, filename = db("SELECT x, y, file FROM island WHERE rowid = ? - 1000", islandid)[0]

@@ -48,7 +48,7 @@ class PlayerDataSelection(object):
 
 		# need the id to save it as int in settings file.
 		for color_id, color in enumerate(Color):
-			label = Label(name = '{color}'.format(color=color.name),
+			label = Label(name = u'{color}'.format(color=color.name),
 			              text = u"    ",
 			              max_size = (20,20),
 			              min_size = (20,20),

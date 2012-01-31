@@ -53,7 +53,7 @@ class SettingsDialog(Setting):
 
 	def setDefaults(self):
 		title = _("Restore default settings")
-		msg = _("This will delete all changes to the settings you made so far.") + \
+		msg = _("Restoring the default settings will delete all changes to the settings you made so far.") + \
 			u" " + _("Do you want to continue?")
 		try:
 			confirmed = horizons.main._modules.gui.show_popup(title, msg, \

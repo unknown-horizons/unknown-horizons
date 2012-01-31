@@ -51,7 +51,7 @@ class TabWidget(object):
 		if position is None:
 			# add positioning here
 			self.widget.position = (
-				horizons.main.fife.engine_settings.getScreenWidth() - 303,
+				horizons.main.fife.engine_settings.getScreenWidth() - 290,
 				209
 			)
 		else:

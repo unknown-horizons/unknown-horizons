@@ -214,6 +214,11 @@ def set_translations():
 		"tooltip_text"                : _("Protects your settlement."),
 		},
 
+	"content/objects/buildings/ruinedtent.yaml" : {
+		# name of buildings:ruinedtent
+		"name"                        : _("Ruined Tent"),
+		},
+
 	"content/objects/buildings/saltponds.yaml" : {
 		# name of buildings:saltponds
 		"name"                        : _("Salt Ponds"),
@@ -263,11 +268,6 @@ def set_translations():
 		"tooltip_text"                : _("Houses your inhabitants."),
 		},
 
-	"content/objects/buildings/tentruin.yaml" : {
-		# name of buildings:tentruin
-		"name"                        : _("Tent Ruin"),
-		},
-
 	"content/objects/buildings/tobaccofield.yaml" : {
 		# name of buildings:tobaccofield
 		"name"                        : _("Tobacco Field"),
@@ -300,7 +300,7 @@ def set_translations():
 		# name of buildings:tree
 		"name"                        : _("Tree"),
 		# tooltip_text of buildings:tree
-		"tooltip_text"                : _("Tree"),
+		"tooltip_text"                : _("Provides lumber. Chopped down by lumberjacks."),
 		},
 
 	"content/objects/buildings/villageschool.yaml" : {

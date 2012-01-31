@@ -80,6 +80,7 @@ class World(BuildingOwner, LivingObject, WorldObject):
 		@param session: instance of session the world belongs to.
 		"""
 		self.inited = False
+		assert isinstance(session, horizons.session.Session)
 		self.session = session
 		super(World, self).__init__(worldid=GAME.WORLD_WORLDID)
 

@@ -48,6 +48,8 @@ class ConcreteObject(WorldObject):
 		@param session: Session instance this obj belongs to
 		"""
 		super(ConcreteObject, self).__init__(**kwargs)
+		from horizons.session import Session
+		assert isinstance(session, Session)
 		self.session = session
 		self.__init()
 

@@ -41,6 +41,7 @@ Manthus (Matthias Dittrich)
 inken
 orakeldel
 lmg
+Daniel Stephens
 
 
 == Patchers
@@ -71,6 +72,8 @@ hoffi (GUI improvements)
 riidom (Tent and hut variations)
 abeaumont (Two renitent segfaults)
 mtfk (Voice internationalization)
+
+= 2012
 
 
 == Translators

@@ -46,6 +46,7 @@ class Speech:
 	DIPLOMACY_STATUS_CHANGED = None
 	MAX_INCR_REACHED = None
 	YOU_HAVE_WON = None
+	FIELD_NEEDS_FARM = None
 
 DEFAULT_LANG="en"
 DEFAULT_VARIATION=0
@@ -99,4 +100,5 @@ def eval_category_name(category):
 		cat_name = getattr(Speech, category)
 	except:
 		print "Incorrect name of speech category: %s" % category
+		print "You might want to add this here in voice.py."
 	return cat_name

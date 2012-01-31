@@ -35,7 +35,6 @@ from horizons.i18n.voice import get_speech_file
 class MessageWidget(LivingObject):
 	"""Class that organizes the messages. Displayed on left screen edge.
 	It uses Message instances to store messages and manages the archive.
-	@param x, y: int position where the widget is placed on the screen.
 	"""
 
 	BG_IMAGE_MIDDLE = 'content/gui/images/background/widgets/message_bg_middle.png'
@@ -50,10 +49,9 @@ class MessageWidget(LivingObject):
 	_DUPLICATE_TIME_THRESHOLD = 10 # sec
 	_DUPLICATE_SPACE_THRESHOLD = 8 # distance
 
-	def __init__(self, session, x, y):
+	def __init__(self, session):
 		super(MessageWidget, self).__init__()
 		self.session = session
-		self.x_pos, self.y_pos = x, y
 		self.active_messages = [] # for displayed messages
 		self.archive = [] # messages, that aren't displayed any more
 		self.widget = load_uh_widget(self.ICON_TEMPLATE)
@@ -63,13 +61,15 @@ class MessageWidget(LivingObject):
 
 		self.text_widget = load_uh_widget(self.MSG_TEMPLATE)
 		self.text_widget.position = (self.widget.x + self.widget.width, self.widget.y)
-		self.widget.show()
+
 		self.current_tick = 0
-		self.position = 0 # number of current message
+		self.widget.show()
+		self.item = 0 # number of current message
 		ExtScheduler().add_new_object(self.tick, self, loops=-1)
 		# buttons to toggle through messages
 
 		self._last_message = {} # used to detect fast subsequent messages in add()
+		self.draw_widget()
 
 	def add(self, x, y, string_id, message_dict=None, sound_file=True, check_duplicate=False):
 		"""Adds a message to the MessageWidget.
@@ -129,7 +129,7 @@ class MessageWidget(LivingObject):
 		button_space = self.widget.findChild(name="button_space")
 		button_space.removeAllChildren() # Remove old buttons
 		for index, message in enumerate(self.active_messages):
-			if (self.position + index) < len(self.active_messages):
+			if (self.item + index) < len(self.active_messages):
 				button = pychan.widgets.ImageButton()
 				button.name = str(index)
 				button.up_image = message.up_image
@@ -160,7 +160,7 @@ class MessageWidget(LivingObject):
 		assert isinstance(index, int)
 		ExtScheduler().rem_call(self, self.hide_text) # stop hiding if a new text has been shown
 		label = self.text_widget.findChild(name='text')
-		text = unicode(self.active_messages[self.position+index].message)
+		text = unicode(self.active_messages[self.item+index].message)
 		text = text.replace(r'\n', self.CHARS_PER_LINE*' ')
 		text = text.replace(r'[br]', self.CHARS_PER_LINE*' ')
 		text = textwrap.fill(text, self.CHARS_PER_LINE)
@@ -218,9 +218,9 @@ class MessageWidget(LivingObject):
 	def load(self, db):
 		return # function disabled for now cause it crashes
 		for message in db("SELECT id, x, y, read, created, display, message FROM message_widget_active"):
-			self.active_messages.append(Message(x, y, id, created, True if read==1 else False, display, message))
+			self.active_messages.append(Message(x, y, id, created, bool(read), display, message))
 		for message in db("SELECT id, x, y, read, created, display, message FROM message_widget_archive"):
-			self.archive.append(Message(self.x, self.y, id, created, True if read==1 else False, display, message))
+			self.archive.append(Message(self.x, self.y, id, created, bool(read), display, message))
 		self.draw_widget()
 
 
@@ -253,5 +253,5 @@ class Message(object):
 				self.message = msg.format(**message_dict if message_dict is not None else {})
 			except KeyError as err:
 				self.message = msg
-				print "Warning: Unsubstituted string {err} in {id} message \"{msg}\", dict {dic}".format(
+				print u"Warning: Unsubstituted string {err} in {id} message \"{msg}\", dict {dic}".format(
 				       err=err, msg=msg, id=id, dic=message_dict)

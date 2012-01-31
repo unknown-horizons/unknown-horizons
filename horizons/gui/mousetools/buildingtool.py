@@ -123,7 +123,7 @@ class BuildingTool(NavigationTool):
 			self.gui = load_uh_widget("place_building.xml")
 			top_bar = self.gui.findChild(name='top_bar')
 			top_bar.position = (self.gui.size[0]/2 - top_bar.size[0]/2 -16, 50)
-			self.gui.position_technique = "right-14:top+157"
+			self.gui.position_technique = "right-1:top+157"
 		self.gui.mapEvents( { "rotate_left" : self.rotate_left,
 				              "rotate_right": self.rotate_right } )
 		# set translated building name in gui
@@ -189,9 +189,7 @@ class BuildingTool(NavigationTool):
 		settlement = None # init here so we can access it below loop
 		neededResources, usableResources = {}, {}
 		# check if the buildings are buildable and color them appropriatly
-		for item in enumerate(self.buildings):
-			i, building = item
-
+		for i, building in enumerate(self.buildings):
 			# get gfx for the building
 			# workaround for buildings like settler, that don't use the current level of
 			# the player, but always start at a certain lvl
@@ -257,8 +255,7 @@ class BuildingTool(NavigationTool):
 				self.renderer.addColored(self.buildings_fife_instances[building], \
 				                         *self.not_buildable_color)
 		self.session.ingame_gui.resourceinfo_set( \
-			self.ship if self.ship is not None else settlement, neededResources, usableResources, \
-			res_from_ship = bool(self.ship))
+			self.ship if self.ship is not None else settlement, neededResources, usableResources)
 		self._add_listeners(self.ship if self.ship is not None else settlement)
 
 	def _make_surrounding_transparent(self, building_position):

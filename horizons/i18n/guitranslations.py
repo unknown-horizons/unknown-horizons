@@ -940,7 +940,5 @@ def set_translations():
 		("color_label"                 , "text"    ): _("Color:"),
 		# (text of widget: player_label)
 		("player_label"                , "text"    ): _("Player name:"),
-		# (text of widget: selectedcolor)
-		("selectedcolor"               , "text"    ): _(" "),
 		},
 	}

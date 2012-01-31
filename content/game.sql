@@ -149,6 +149,7 @@ INSERT INTO "message" VALUES('You won!',1,60.0,NULL,'YOU_HAVE_WON');
 INSERT INTO "message" VALUES('Your mine has run out of resources.',1,30.0,NULL,'MINE_EMPTY');
 INSERT INTO "message" VALUES('You can also drag roads.',1,20.0,NULL,'DRAG_ROADS_HINT');
 INSERT INTO "message" VALUES('{player1} and {player2} are now {status}',1,10.0,NULL,'DIPLOMACY_STATUS_CHANGED');
+INSERT INTO "message" VALUES('One of your fields requires a farm to harvest its crops.',1,30.0,NULL,'FIELD_NEEDS_FARM');
 INSERT INTO "message" VALUES('You have reached the current maximum increment. Your inhabitants will not upgrade further.',1,45.0,NULL,'MAX_INCR_REACHED');
 CREATE TABLE ai (client_id TEXT NOT NULL, class_package TEXT NOT NULL, class_name TEXT NOT NULL);
 INSERT INTO "ai" VALUES('AIPlayer','aiplayer','AIPlayer');

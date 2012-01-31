@@ -92,7 +92,7 @@ class MultiplayerMenu(object):
 		NetworkInterface().register_game_details_changed_callback(self.__update_game_details)
 		NetworkInterface().register_game_prepare_callback(self.__prepare_game)
 		NetworkInterface().register_game_starts_callback(self.__start_game)
-		NetworkInterface().register_error_callback(self.__on_error)
+		NetworkInterface().register_error_callback(self._on_error)
 		NetworkInterface().register_player_joined_callback(self.__player_joined)
 		NetworkInterface().register_player_left_callback(self.__player_left)
 		NetworkInterface().register_player_changed_name_callback(self.__player_changed_name)
@@ -107,7 +107,7 @@ class MultiplayerMenu(object):
 			return False
 		return True
 
-	def __on_error(self, exception, fatal=True):
+	def _on_error(self, exception, fatal=True):
 		"""Error callback"""
 		if fatal and self.session is not None:
 			self.session.timer.ticks_per_second = 0
@@ -266,16 +266,16 @@ class MultiplayerMenu(object):
 		chatbox.selected = len(chatbox.items) - 1
 
 	def __player_joined(self, game, player):
-		self.__print_event_message("{player} has joined the game".format(player=player.name))
+		self.__print_event_message(u"{player} has joined the game".format(player=player.name))
 
 	def __player_left(self, game, player):
-		self.__print_event_message("{player} has left the game".format(player=player.name))
+		self.__print_event_message(u"{player} has left the game".format(player=player.name))
 
 	def __player_changed_name(self, game, plold, plnew, myself):
 		if myself:
-			self.__print_event_message("You are now known as {new_name}".format(new_name=plnew.name))
+			self.__print_event_message(u"You are now known as {new_name}".format(new_name=plnew.name))
 		else:
-			self.__print_event_message("{player} is now known as {new_name}".format(player=plold.name, new_name=plnew.name))
+			self.__print_event_message(u"{player} is now known as {new_name}".format(player=plold.name, new_name=plnew.name))
 
 	def __show_create_game(self):
 		"""Shows the interface for creating a multiplayer game"""

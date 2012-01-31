@@ -102,7 +102,7 @@ class IngameGui(LivingObject):
 		# self.widgets['minimap'] is the guichan gui around the actual minimap,
 		# which is saved in self.minimap
 		minimap = self.widgets['minimap']
-		minimap.position_technique = "right-14:top+4"
+		minimap.position_technique = "right+0:top+0"
 
 		icon = minimap.findChild(name="minimap")
 		self.minimap = Minimap(icon, self.session, \
@@ -132,8 +132,7 @@ class IngameGui(LivingObject):
 		self.widgets['status'].child_finder = PychanChildFinder(self.widgets['status'])
 		self.widgets['status_extra'].child_finder = PychanChildFinder(self.widgets['status_extra'])
 
-		self.message_widget = MessageWidget(self.session, \
-		                                    cityinfo.position[0] + cityinfo.size[0], 5)
+		self.message_widget = MessageWidget(self.session)
 		self.widgets['status_gold'].show()
 		self.widgets['status_gold'].child_finder = PychanChildFinder(self.widgets['status_gold'])
 		self.widgets['status_extra_gold'].child_finder = PychanChildFinder(self.widgets['status_extra_gold'])
@@ -254,9 +253,7 @@ class IngameGui(LivingObject):
 			self.update_settlement()
 			settlement.add_change_listener(self.update_settlement)
 
-	def resourceinfo_set(self, source, res_needed = None, res_usable = None, res_from_ship = False):
-		city = source if not res_from_ship else None
-		self.cityinfo_set(city)
+	def resourceinfo_set(self, source, res_needed = None, res_usable = None):
 		if source is not self.resource_source:
 			if self.resource_source is not None:
 				self.resource_source.remove_change_listener(self.update_resource_source)

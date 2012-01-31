@@ -20,6 +20,7 @@
 # ###################################################
 
 from horizons.command import Command
+from horizons.world.component.storagecomponent import StorageComponent
 
 """
 Commands for ingame upgrades of objects (usually buildings).
@@ -65,7 +66,7 @@ def change_runnning_costs(obj, costs_diff):
 	obj.running_costs += costs_diff
 
 def change_storage_space(obj, res, amount_diff):
-	obj.inventory.change_resource_slot_size(res, amount_diff)
+	obj.get_component(StorageComponent).inventory.change_resource_slot_size(res, amount_diff)
 
 
 # TODO:

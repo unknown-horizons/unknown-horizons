@@ -177,6 +177,11 @@ class MPManager(LivingObject):
 		if tick % self.HASH_EVAL_DISTANCE == 0:
 			if self.checkuphashmanager.are_checkup_hash_values_equal(tick, self.hash_value_diff) == False:
 				self.log.error("MPManager: Hash values generated in tick %s are not equal" % str(tick - self.HASHDELAY))
+				# if this is reached, we are screwed. Something went wrong in the simulation,
+				# but we don't know what. Stop the game.
+				msg = _("The games have run out of sync. This indicates an unknown internal error, the game cannot continue.") + "\n" + \
+				  _("We are very sorry and hope to have this bug fixed in a future version.")
+				self.session.gui._on_error(msg, fatal=True)
 			else:
 				#self.log.debug("MPManager: Hash values are equal")
 				pass

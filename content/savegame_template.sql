@@ -11,7 +11,7 @@ CREATE TABLE `view` (`zoom` FLOAT NOT NULL  DEFAULT '', `rotation` FLOAT NOT NUL
 CREATE TABLE "selected" (`group` INTEGER DEFAULT '', `id` INTEGER NOT NULL  DEFAULT '');
 CREATE TABLE `command` (`tick` INTEGER NOT NULL , `issuer` INTEGER NOT NULL , `data` TEXT NOT NULL );
 ANALYZE sqlite_master;
-CREATE TABLE "building" ("type" INTEGER,"x" INTEGER,"y" INTEGER,"health" FLOAT,"location" INTEGER, "rotation" INTEGER, "level" INTEGER NOT NULL  DEFAULT 0);
+CREATE TABLE "building" ("type" INTEGER,"x" INTEGER,"y" INTEGER,"location" INTEGER, "rotation" INTEGER, "level" INTEGER NOT NULL  DEFAULT 0);
 CREATE TABLE "storage_properties" ("object" INTEGER NOT NULL ,"name" TEXT NOT NULL , "value" TEXT);
 CREATE TABLE "trade_buy" (object INTEGER NOT NULL, "resource" INTEGER NOT NULL , "trade_limit" INTEGER NOT NULL);
 CREATE TABLE "trade_sell" (object INTEGER NOT NULL, "resource" INTEGER NOT NULL , "trade_limit" INTEGER NOT NULL);

@@ -76,7 +76,7 @@ class Unit(MovingObject):
 		location.setExactLayerCoordinates(fife.ExactModelCoordinate( \
 			self.position.x + self.position.x - self.last_position.x, \
 			self.position.y + self.position.y - self.last_position.y, 0))
-		if action.getId() != ('move_'+self._action_set_id):
+		if action.getId() != ('move_' + self._action_set_id):
 			self.act(self._action, self._instance.getFacingLocation(), True)
 		else:
 			self.act(self._action, location, True)
@@ -96,18 +96,14 @@ class Unit(MovingObject):
 		width = int(50 * zoom)
 		y_pos = int(self.health_bar_y * zoom)
 		# coord separating health (green) from damaged (red)
-		mid_node_up = fife.RendererNode(self._instance, \
-									fife.Point(-width/2+int(((health/max_health)*width)),\
-		                                       y_pos-height)
-		                            )
-		mid_node_down = fife.RendererNode(self._instance, \
-		                                         fife.Point(
-		                                             -width/2+int(((health/max_health)*width))
-		                                             ,y_pos)
-		                                         )
+		relative_up = fife.Point(int(width * health // max_health - width/2), y_pos - height)
+		relative_dn = fife.Point(int(width * health // max_health - width/2), y_pos)
+		mid_node_up = fife.RendererNode(self._instance, relative_up)
+		mid_node_down = fife.RendererNode(self._instance, relative_dn)
+
 		if health != 0: # draw healthy part of health bar
 			renderer.addQuad("health_" + str(self.worldid), \
-			                fife.RendererNode(self._instance, fife.Point(-width/2, y_pos-height)), \
+			                fife.RendererNode(self._instance, fife.Point(-width/2, y_pos - height)), \
 			                fife.RendererNode(self._instance, fife.Point(-width/2, y_pos)), \
 			                mid_node_down, \
 			                mid_node_up, \
@@ -117,7 +113,7 @@ class Unit(MovingObject):
 			                 mid_node_up, \
 			                 mid_node_down, \
 			                 fife.RendererNode(self._instance, fife.Point(width/2, y_pos)), \
-			                 fife.RendererNode(self._instance, fife.Point(width/2, y_pos-height)), \
+			                 fife.RendererNode(self._instance, fife.Point(width/2, y_pos - height)), \
 			                 255, 0, 0)
 
 	def hide(self):
@@ -164,9 +160,9 @@ class Unit(MovingObject):
 		# check if we were able to get the planed amount
 		ret = amount if amount < abs(ret) else abs(ret)
 		# put res to transfer_to
-		ret = transfer_to.get_component(StorageComponent).inventory.alter(res_id, amount-ret)
+		ret = transfer_to.get_component(StorageComponent).inventory.alter(res_id, amount - ret)
 		self.get_component(StorageComponent).inventory.alter(res_id, ret) # return resources that did not fit
-		return amount-ret
+		return amount - ret
 
 	def get_random_location(self, in_range):
 		"""Returns a random location in walking_range, that we can find a path to
