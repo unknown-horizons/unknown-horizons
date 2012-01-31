@@ -55,7 +55,7 @@ class MapSaver:
 		for instance in instances:
 			type = util.getBuildingId(instance.getObject().getId())
 			(position, rotation) = self._extractPositionRotationFromInstance(instance)
-			self._mapDatabase("INSERT INTO building VALUES (?, ?, ?, ?, ?, ?, ?)", type, position.x, position.y, 100, 1, rotation, 0)
+			self._mapDatabase("INSERT INTO building VALUES (?, ?, ?, ?, ?, ?)", type, position.x, position.y, 1, rotation, 0)
 
 
 	def _saveIslands(self):
@@ -89,7 +89,6 @@ class MapSaver:
 			# TODO (MMB) a bit of a hack to only get the name without a possible _ts_curved etc. suffix
 			action_id = re.sub("_ts.*", "", action_id)
 			(position, rotation) = self._extractPositionRotationFromInstance(instance)
-			print "rotation" + str(rotation)
 			island_db("INSERT INTO ground VALUES (?, ?, ?, ?, ?)", position.x, position.y, type, action_id, rotation)
 		island_db("COMMIT TRANSACTION");
 
