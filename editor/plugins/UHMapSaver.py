@@ -42,9 +42,26 @@ class MapSaver:
 		self._map = map
 		self._mapDatabase = None
 
+	def _fixRotation(self, rotation):
+		"""
+		Fixes FIFEs botched handling of rotations.
+		Rotations are a) 0, 90, 180 or 270 and b) sometimes
+		off by one.
+		"""
+		rotation = rotation % 360
+		if (0 <= rotation and rotation < 45) or (315 <= rotation and rotation < 360):
+			rotation = 45
+		elif 45 <= rotation and rotation < 135:
+			rotation = 135
+		elif 135 <= rotation and rotation < 225:
+			rotation = 225
+		elif 225 <= rotation and rotation < 315:
+			rotation = 315
+		return rotation
+
 	def _extractPositionRotationFromInstance(self, instance):
 		"""Extracts the position and the rotation from an instance and returns it as a tuple"""
-		rotation = instance.getRotation()
+		rotation = self._fixRotation(instance.getRotation())
 		position = instance.getLocationRef().getExactLayerCoordinates()
 		print "get", rotation
 		return (position, rotation)
