@@ -123,6 +123,7 @@ class Production(ChangeListener):
 		self._state = PRODUCTION.STATES[db_data[0]]
 		self._pause_old_state = None if db_data[2] is None else PRODUCTION.STATES[db_data[2]]
 		if self._state == PRODUCTION.STATES.paused:
+			self._remove_listeners()
 			self._pause_remaining_ticks = db_data[1]
 		elif self._state == PRODUCTION.STATES.producing:
 			Scheduler().add_new_object(self._get_producing_callback(), self, db_data[1])
@@ -133,10 +134,7 @@ class Production(ChangeListener):
 		self._state_history = db.get_production_state_history(worldid)
 
 	def remove(self):
-		# depending on state, a check_inventory listener might be active
-		self.inventory.discard_change_listener(self._check_inventory)
-		if self.__class__.USES_GOLD:
-			self.owner_inventory.discard_change_listener(self._check_inventory)
+		self._remove_listeners()
 		Scheduler().rem_all_classinst_calls(self)
 		super(Production, self).remove()
 
@@ -212,10 +210,7 @@ class Production(ChangeListener):
 
 			if self._pause_old_state in (PRODUCTION.STATES.waiting_for_res, \
 												           PRODUCTION.STATES.inventory_full):
-				# just stop watching for new res
-				self.inventory.discard_change_listener(self._check_inventory)
-				if self.__class__.USES_GOLD:
-					self.owner_inventory.discard_change_listener(self._check_inventory)
+				self._remove_listeners()
 			elif self._pause_old_state == PRODUCTION.STATES.producing:
 				# save when production finishes and remove that call
 				self._pause_remaining_ticks = \
@@ -388,6 +383,12 @@ class Production(ChangeListener):
 		self.inventory.add_change_listener(self._check_inventory)
 		if self.__class__.USES_GOLD:
 			self.owner_inventory.add_change_listener(self._check_inventory)
+
+	def _remove_listeners(self):
+		# depending on state, a check_inventory listener might be active
+		self.inventory.discard_change_listener(self._check_inventory)
+		if self.__class__.USES_GOLD:
+			self.owner_inventory.discard_change_listener(self._check_inventory)
 
 	def _give_produced_res(self):
 		"""Put produces goods to the inventory"""
