@@ -274,15 +274,21 @@ class Settler(SelectableBuilding, BuildableRect, CollectingProducerBuilding, Bas
 
 	def level_up(self, production = None):
 		"""Actually level up (usually called when the upgrade material has arrived)"""
-		# NOTE: production is unused, but gets passed by the production code
-		self.level += 1
-		self.log.debug("%s: Levelling up to %s", self, self.level)
-		self._update_level_data()
-		# notify owner about new level
-		self.owner.notify_settler_reached_level(self)
-		# reset happiness value for new level
-		self.get_component(StorageComponent).inventory.alter(RES.HAPPINESS_ID, self.__get_data("happiness_init_value") - self.happiness)
-		self._changed()
+
+		# just level up later that tick, it could disturb other code higher in the call stack
+
+		def _do_level_up():
+			# NOTE: production is unused, but gets passed by the production code
+			self.level += 1
+			self.log.debug("%s: Levelling up to %s", self, self.level)
+			self._update_level_data()
+			# notify owner about new level
+			self.owner.notify_settler_reached_level(self)
+			# reset happiness value for new level
+			self.get_component(StorageComponent).inventory.alter(RES.HAPPINESS_ID, self.__get_data("happiness_init_value") - self.happiness)
+			self._changed()
+
+		Scheduler().add_new_object(_do_level_up, self, run_in=0)
 
 	def level_down(self):
 		if self.level == 0: # can't level down any more
