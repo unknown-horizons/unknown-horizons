@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2011-07-08 16:54+0200\n"
-"PO-Revision-Date: 2012-01-08 14:53+0200\n"
+"PO-Revision-Date: 2012-01-08 15:02+0200\n"
 "Last-Translator: ussikene <ussikene@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: et\n"
@@ -312,6 +312,9 @@ msgstr "ava"
 msgid "stop"
 msgstr "stopp"
 
+# släng! meeskond(mitte just parim variant)/võistkond(imelik)???
+# Rühm oleks ka veidi imelik.
+#, fuzzy
 msgid "team"
 msgstr "tiim"
 
@@ -450,6 +453,8 @@ msgstr "alustab"
 msgid "trade partner"
 msgstr "kaubanduspartner"
 
+# üle kontrollida mängus!
+#, fuzzy
 msgid "yields"
 msgstr "saagikus"
 
