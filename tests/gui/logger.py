@@ -230,7 +230,7 @@ class TestCodeGenerator(object):
 		Output test code to press the key.
 		"""
 		self._add([
-			'gui.pressKey(gui.Key.%s)' % KEY_NAME_LOOKUP[keycode],
+			'gui.press_key(gui.Key.%s)' % KEY_NAME_LOOKUP[keycode],
 			''
 		])
 

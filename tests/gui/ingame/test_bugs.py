@@ -118,11 +118,11 @@ def test_ticket_1362(gui):
 	"""
 	yield
 
-	gui.pressKey(gui.Key.F5)	# quicksave
+	gui.press_key(gui.Key.F5)	# quicksave
 	for i in gui.run(seconds=2):
 		yield
 
-	gui.pressKey(gui.Key.F9)	# quickload
+	gui.press_key(gui.Key.F9)	# quickload
 	while gui.find(name='loadingscreen'):
 		yield
 
@@ -133,7 +133,7 @@ def test_ticket_1362(gui):
 
 	# quicksave
 	with gui.handler(func):
-		gui.pressKey(gui.Key.F5)
+		gui.press_key(gui.Key.F5)
 
 	yield TestFinished
 

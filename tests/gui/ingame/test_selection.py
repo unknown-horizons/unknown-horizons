@@ -64,7 +64,7 @@ def test_selectmultitab(gui):
 	for _ in gui.run(seconds=0.1):
 		yield
 
-	gui.pressKey(gui.Key.DELETE)
+	gui.press_key(gui.Key.DELETE)
 	assert gui.find('tab_base') is None
 	for _ in gui.run(seconds=0.1):
 		yield

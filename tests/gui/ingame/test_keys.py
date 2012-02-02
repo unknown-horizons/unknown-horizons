@@ -30,9 +30,9 @@ def test_ticket_1342(gui):
 	yield # test needs to be a generator for now
 
 	assert gui.find(name='ships_list') is None
-	gui.pressKey(gui.Key.F4)
+	gui.press_key(gui.Key.F4)
 	assert gui.find(name='ships_list')
-	gui.pressKey(gui.Key.F4)
+	gui.press_key(gui.Key.F4)
 	assert gui.find(name='ships_list') is None
 
 	yield TestFinished
