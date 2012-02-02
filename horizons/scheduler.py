@@ -51,7 +51,7 @@ class Scheduler(LivingObject):
 		self.schedule = {}
 		self.additional_cur_tick_schedule = [] # jobs to be executed at the same tick they were added
 		self.calls_by_instance = {} # for get_classinst_calls
-		self.cur_tick = 0
+		self.cur_tick = -1
 		self.timer = timer
 		self.timer.add_call(self.tick)
 
