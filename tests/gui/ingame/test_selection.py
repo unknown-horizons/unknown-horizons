@@ -24,7 +24,7 @@ from horizons.constants import UNITS
 
 from tests.gui import gui_test, TestFinished
 
-@gui_test(use_dev_map=True)
+@gui_test(use_dev_map=True, timeout=60)
 def test_select_ship(gui):
 	"""
 	Select a ship.
@@ -45,7 +45,7 @@ def test_select_ship(gui):
 
 	yield TestFinished
 
-@gui_test(use_dev_map=True)
+@gui_test(use_dev_map=True, timeout=60)
 def test_selectmultitab(gui):
 	"""
 	Select two frigates and delete them.

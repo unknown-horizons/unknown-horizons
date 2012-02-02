@@ -32,7 +32,7 @@ from tests.gui import TestFinished, gui_test
 # 	ai_players=1			- Game launches with --ai-players=1
 # 	timeout=3				- Game will be killed after 3 seconds
 #
-@gui_test()
+@gui_test(timeout=60)
 def test_example(gui):
 	"""
 	Documented example test.

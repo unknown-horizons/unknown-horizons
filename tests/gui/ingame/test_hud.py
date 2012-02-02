@@ -22,7 +22,7 @@
 from tests.gui import gui_test, TestFinished
 
 
-@gui_test(use_dev_map=True)
+@gui_test(use_dev_map=True, timeout=60)
 def test_hud(gui):
 	"""
 	Click on some buttons at the ingame menu.

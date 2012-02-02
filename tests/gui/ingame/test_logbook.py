@@ -22,7 +22,7 @@
 from tests.gui import TestFinished, gui_test
 
 
-@gui_test(use_dev_map=True)
+@gui_test(use_dev_map=True, timeout=60)
 def test_logbook(gui):
 	"""
 	Open the (empty) logbook.

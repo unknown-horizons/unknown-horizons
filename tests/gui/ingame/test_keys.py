@@ -22,7 +22,7 @@
 from tests.gui import gui_test, TestFinished
 
 
-@gui_test(use_dev_map=True)
+@gui_test(use_dev_map=True, timeout=120)
 def test_ticket_1342(gui):
 	"""
 	Ship list widget (F4) crashes game on access.

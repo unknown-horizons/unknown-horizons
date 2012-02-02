@@ -25,7 +25,7 @@ from tests.gui import TestFinished, gui_test
 from tests.gui.helper import get_player_ship
 
 
-@gui_test(use_dev_map=True)
+@gui_test(use_dev_map=True, timeout=120)
 def test_ticket_1352(gui):
 	"""
 	Clicking on a frigate crashes the game.
@@ -51,7 +51,7 @@ def test_ticket_1352(gui):
 	yield TestFinished
 
 
-@gui_test(use_dev_map=True, ai_players=3)
+@gui_test(use_dev_map=True, ai_players=3, timeout=120)
 def test_ticket_1368(gui):
 	"""
 	Selecting a warehouse from an ai player crashes.
@@ -75,7 +75,7 @@ def test_ticket_1368(gui):
 	yield TestFinished
 
 
-@gui_test(use_fixture='ai_settlement')
+@gui_test(use_fixture='ai_settlement', timeout=60)
 def test_ticket_1369(gui):
 	"""
 	Ship tab closed when moving away from another player's warehouse after trading.
@@ -111,7 +111,7 @@ def test_ticket_1369(gui):
 	yield TestFinished
 
 
-@gui_test(use_dev_map=True)
+@gui_test(use_dev_map=True, timeout=120)
 def test_ticket_1362(gui):
 	"""
 	Saving a game, loading it again and attempting to save it again will crash.
@@ -138,7 +138,7 @@ def test_ticket_1362(gui):
 	yield TestFinished
 
 
-@gui_test(use_dev_map=True)
+@gui_test(use_dev_map=True, timeout=120)
 def test_ticket_1371(gui):
 	"""
 	Build related tab becomes invisible.

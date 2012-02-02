@@ -27,7 +27,7 @@ from tests.gui import TestFinished, gui_test
 from tests.gui.helper import get_player_ship
 
 
-@gui_test(use_dev_map=True)
+@gui_test(use_dev_map=True, timeout=60)
 def test_found_settlement(gui):
 	"""
 	Found a settlement.

@@ -24,7 +24,7 @@ from tests.gui import gui_test, TestFinished
 from tests.gui.helper import get_player_ship
 
 
-@gui_test(use_dev_map=True)
+@gui_test(use_dev_map=True, timeout=120)
 def test_build_a_settlement(gui):
 	"""
 	Build a settlement. Generated with gui logger.
