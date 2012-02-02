@@ -22,6 +22,7 @@
 from horizons.util.gui import load_uh_widget
 from horizons.util import Callback
 from horizons.util.changelistener import metaChangeListenerDecorator
+from horizons.world.component.ambientsoundcomponent import AmbientSoundComponent
 
 
 
@@ -128,6 +129,7 @@ class LogBook(object):
 		if new_cur < 0 or new_cur >= len(self._messages):
 			return # invalid scroll
 		self._cur_entry = new_cur
+		AmbientSoundComponent.play_special('flippage')
 		self._redraw()
 
 	def _init_gui(self):
