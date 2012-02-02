@@ -48,12 +48,21 @@ the test will be further exhausted:
 """
 
 import os
+import signal
 import subprocess
 import sys
 from functools import wraps
 
 from tests import RANDOM_SEED
 from tests.gui.helper import GuiHelper
+
+# check if SIGALRM is supported, this is not the case on Windows
+# we might provide an alternative later, but for now, this will do
+try:
+	from signal import SIGALRM
+	TEST_TIMELIMIT = True
+except ImportError:
+	TEST_TIMELIMIT = False
 
 
 # path where test savegames are stored (tests/gui/ingame/fixtures/)
@@ -133,12 +142,13 @@ class TestRunner(object):
 			pass
 
 
-def gui_test(use_dev_map=False, use_fixture=None, ai_players=0):
+def gui_test(use_dev_map=False, use_fixture=None, ai_players=0, timeout=0):
 	"""Magic nose integration.
 
 	use_dev_map		-	starts the game with --start-dev-map
 	use_fixture		-	starts the game with --load-map=fixture_name
 	ai_players		-	starts the game with --ai_players=<number>
+	timeout			-	test will be stopped after X seconds passed (0 = disabled)
 
 	Each GUI test is run in a new process. In case of an error, stderr will be
 	printed. That way it will appear in the nose failure listing.
@@ -176,7 +186,17 @@ def gui_test(use_dev_map=False, use_fixture=None, ai_players=0):
 				stderr = subprocess.PIPE
 				nose_captured = True
 
+			# Start game
 			proc = subprocess.Popen(args, stdout=stdout, stderr=stderr)
+
+			if TEST_TIMELIMIT and timeout:
+				# Install timeout kill
+				def handler(signum, frame):
+					proc.kill()
+					raise Exception('Test run exceeded %ds time limit' % timeout)
+				signal.signal(signal.SIGALRM, handler)
+				signal.alarm(timeout)
+
 			stdout, stderr = proc.communicate()
 			if proc.returncode != 0:
 				if nose_captured:
