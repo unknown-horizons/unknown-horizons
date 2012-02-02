@@ -119,14 +119,14 @@ class Production(ChangeListener):
 		super(Production, self).load(db, worldid)
 
 		db_data = db.get_production_by_id_and_owner(self.prod_id, worldid)
-		self._creation_tick = db_data[3]
+		self._creation_tick = db_data[5]
 		self._state = PRODUCTION.STATES[db_data[0]]
-		self._pause_old_state = None if db_data[2] is None else PRODUCTION.STATES[db_data[2]]
+		self._pause_old_state = None if db_data[4] is None else PRODUCTION.STATES[db_data[4]]
 		self._remove_listeners()
 		if self._state == PRODUCTION.STATES.paused:
-			self._pause_remaining_ticks = db_data[1]
+			self._pause_remaining_ticks = db_data[3]
 		elif self._state == PRODUCTION.STATES.producing:
-			Scheduler().add_new_object(self._get_producing_callback(), self, db_data[1])
+			Scheduler().add_new_object(self._get_producing_callback(), self, db_data[3])
 		elif self._state == PRODUCTION.STATES.waiting_for_res or \
 				 self._state == PRODUCTION.STATES.inventory_full:
 			self._add_listeners()
