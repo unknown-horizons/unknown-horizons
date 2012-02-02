@@ -13,13 +13,8 @@ tooltip_text: _ Supplies citizens with goods.
 settler_level: 0
 buildingcosts: {1: 1000, 4: 5}
 components:
+# NOTE: don't add a producer component, it's currently not guaranteed to work flawlessly in combination with SettlementStorage
 - HealthComponent: {maxhealth: 1000}
-- ProducerComponent:
-    productionlines:
-      31:
-        produces:
-        - [19, 5]
-        time: 1
 - StorageComponent:
     inventory:
         SettlementStorage: {}
