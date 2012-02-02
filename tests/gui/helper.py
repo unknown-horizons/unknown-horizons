@@ -163,7 +163,21 @@ class GuiHelper(object):
 		old_exact = CursorTool.get_exact_world_location_from_event
 
 		def new(self, evt):
-			return Point(evt.getX(), evt.getY())
+			"""Typically we expect a Mock MouseEvent, genereated by `_make_mouse_event`.
+
+			However NavigationTool keeps track of the last event position, which is
+			an instance of fife.ScreenPoint.
+			"""
+			try:
+				# fife.MouseEvent
+				x = evt.getX()
+				y = evt.getY()
+			except AttributeError:
+				# fife.ScreenPoint
+				x = evt.x
+				y = evt.y
+
+			return Point(x, y)
 
 		CursorTool.get_world_location_from_event = new
 		CursorTool.get_exact_world_location_from_event = new
