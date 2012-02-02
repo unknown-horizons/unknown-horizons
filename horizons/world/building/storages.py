@@ -37,7 +37,6 @@ class StorageBuilding(SelectableBuilding, StorageResourceHandler, \
 	These objects don't have a storage themselves, but use the settlement storage.
 	"""
 	tabs = (WarehouseOverviewTab, InventoryTab, AccountTab)
-	has_own_inventory = False # we share island inventory
 	def __init__(self, x, y, owner, instance = None, **kwargs):
 		super(StorageBuilding, self).__init__(x = x, y = y, owner = owner, instance = instance, **kwargs)
 
