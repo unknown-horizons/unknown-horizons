@@ -51,6 +51,7 @@ from horizons.scheduler import Scheduler
 from horizons.spsession import SPSession
 from horizons.util import (Color, DbReader, Rect, WorldObject, LivingObject,
 						   SavegameAccessor, Point, DifficultySettings)
+from horizons.util.lastactiveplayersettlementmanager import LastActivePlayerSettlementManager
 from horizons.util.uhdbaccessor import read_savegame_template
 from horizons.world import World
 from horizons.world.component.namedcomponent import NamedComponent
@@ -170,6 +171,7 @@ class SPTestSession(SPSession):
 		# GUI
 		self.gui.session = self
 		self.ingame_gui = Dummy()
+		LastActivePlayerSettlementManager.create_instance(self)
 
 		self.selected_instances = set()
 		self.selection_groups = [set()] * 10 # List of sets that holds the player assigned unit groups.
