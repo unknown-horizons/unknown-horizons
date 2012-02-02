@@ -41,9 +41,8 @@ def test_ticket_1352(gui):
 	"""
 	# low-level selection
 	# disabled because it is difficult to select the ship
-	with gui.cursor_map_coords():
-		gui.cursor_move(x, y)
-		gui.cursor_click(x, y, 'left')
+	gui.cursor_move(x, y)
+	gui.cursor_click(x, y, 'left')
 	"""
 
 	gui.select([ship])
@@ -85,28 +84,27 @@ def test_ticket_1369(gui):
 	ship = get_player_ship(gui.session)
 	gui.select([ship])
 
-	with gui.cursor_map_coords():
-		# move ship near foreign warehouse and wait for it to arrive
-		gui.cursor_click(68, 23, 'right')
-		while (ship.position.x, ship.position.y) != (68, 23):
-			yield
+	# move ship near foreign warehouse and wait for it to arrive
+	gui.cursor_click(68, 23, 'right')
+	while (ship.position.x, ship.position.y) != (68, 23):
+		yield
 
-		# click trade button
-		gui.trigger('overview_trade_ship', 'trade/action/default')
+	# click trade button
+	gui.trigger('overview_trade_ship', 'trade/action/default')
 
-		# trade widget visible
-		assert gui.find(name='buy_sell_goods')
+	# trade widget visible
+	assert gui.find(name='buy_sell_goods')
 
-		# move ship away from warehouse
-		gui.cursor_click(77, 17, 'right')
-		while (ship.position.x, ship.position.y) != (77, 17):
-			yield
+	# move ship away from warehouse
+	gui.cursor_click(77, 17, 'right')
+	while (ship.position.x, ship.position.y) != (77, 17):
+		yield
 
-		# trade widget should not be visible anymore
-		assert gui.find(name='buy_sell_goods') is None
+	# trade widget should not be visible anymore
+	assert gui.find(name='buy_sell_goods') is None
 
-		# but the ship overview should be
-		assert gui.find(name='overview_trade_ship')
+	# but the ship overview should be
+	assert gui.find(name='overview_trade_ship')
 
 	yield TestFinished
 
@@ -158,43 +156,42 @@ def test_ticket_1371(gui):
 	ship = get_player_ship(gui.session)
 	gui.select([ship])
 
-	with gui.cursor_map_coords():
-		gui.cursor_click(59, 1, 'right')
-		while (ship.position.x, ship.position.y) != (59, 1):
-			yield
+	gui.cursor_click(59, 1, 'right')
+	while (ship.position.x, ship.position.y) != (59, 1):
+		yield
 
-		# Found settlement
-		gui.trigger('overview_trade_ship', 'found_settlement/action/default')
+	# Found settlement
+	gui.trigger('overview_trade_ship', 'found_settlement/action/default')
 
-		gui.cursor_click(56, 3, 'left')
+	gui.cursor_click(56, 3, 'left')
 
-		gui.trigger('mainhud', 'build/action/default')
+	gui.trigger('mainhud', 'build/action/default')
 
-		# Build lumberjack
-		gui.trigger('tab', 'button_5/action/default')
-		gui.cursor_click(52, 7, 'left')
+	# Build lumberjack
+	gui.trigger('tab', 'button_5/action/default')
+	gui.cursor_click(52, 7, 'left')
 
-		# Select lumberjack
-		# TODO selecting should work when clicking on the map
-		settlement = gui.session.world.player.settlements[0]
-		lumberjack = settlement.get_buildings_by_id(BUILDINGS.LUMBERJACK_CLASS)[0]
-		gui.select([lumberjack])
+	# Select lumberjack
+	# TODO selecting should work when clicking on the map
+	settlement = gui.session.world.player.settlements[0]
+	lumberjack = settlement.get_buildings_by_id(BUILDINGS.LUMBERJACK_CLASS)[0]
+	gui.select([lumberjack])
 
-		# Open build related tab
-		gui.trigger('tab_base', '1/action/default')
+	# Open build related tab
+	gui.trigger('tab_base', '1/action/default')
 
-		# Select tree
-		gui.trigger('farm_overview_buildrelated', 'build17/action/default')
+	# Select tree
+	gui.trigger('farm_overview_buildrelated', 'build17/action/default')
 
-		# Plant a tree (without uninterrupted building)
-		gui.cursor_click(49, 6, 'left')
-		assert gui.find(name='farm_overview_buildrelated')
+	# Plant a tree (without uninterrupted building)
+	gui.cursor_click(49, 6, 'left')
+	assert gui.find(name='farm_overview_buildrelated')
 
-		# Select tree again and plant it with uninterrupted building
-		gui.trigger('farm_overview_buildrelated', 'build17/action/default')
-		gui.cursor_click(49, 7, 'left', shift=True)
+	# Select tree again and plant it with uninterrupted building
+	gui.trigger('farm_overview_buildrelated', 'build17/action/default')
+	gui.cursor_click(49, 7, 'left', shift=True)
 
-		# Tab should still be there
-		assert gui.find(name='farm_overview_buildrelated')
+	# Tab should still be there
+	assert gui.find(name='farm_overview_buildrelated')
 
 	yield TestFinished

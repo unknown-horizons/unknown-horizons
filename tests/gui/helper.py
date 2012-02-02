@@ -42,6 +42,48 @@ def get_player_ship(session):
 	raise Exception('Player ship not found')
 
 
+class CursorToolsPatch(object):
+	"""Temporarly changes CursorTool to interpret mouse event coordinates
+	as map coordinates instead of window coordinates. Makes it easier to
+	write tests.
+
+	Example:
+		gui.cursor_map_coords.enable()
+		gui.cursor_move(2, 3)
+		gui.cursor_map_coords.disable()
+	"""
+	def __init__(self):
+		self.old = CursorTool.get_world_location_from_event
+		self.old_exact = CursorTool.get_exact_world_location_from_event
+
+		def patched_world_location_from_event(self, evt):
+			"""Typically we expect a Mock MouseEvent, genereated by `_make_mouse_event`.
+
+			However NavigationTool keeps track of the last event position, which is
+			an instance of fife.ScreenPoint.
+			"""
+			try:
+				# fife.MouseEvent
+				x = evt.getX()
+				y = evt.getY()
+			except AttributeError:
+				# fife.ScreenPoint
+				x = evt.x
+				y = evt.y
+
+			return Point(x, y)
+
+		self.patch = patched_world_location_from_event
+
+	def enable(self):
+		CursorTool.get_world_location_from_event = self.patch
+		CursorTool.get_exact_world_location_from_event = self.patch
+
+	def disable(self):
+		CursorTool.get_world_location_from_event = self.old
+		CursorTool.get_exact_world_location_from_event = self.old_exact
+
+
 class GuiHelper(object):
 
 	Key = fife.Key
@@ -51,6 +93,9 @@ class GuiHelper(object):
 		self._manager = self._pychan.manager
 		self._runner = runner
 		self.follow_mouse = True
+		# patch for using map coords with CursorTools is enabled by default
+		self.cursor_map_coords = CursorToolsPatch()
+		self.cursor_map_coords.enable()
 
 		self.disable_autoscroll()
 
@@ -148,42 +193,6 @@ class GuiHelper(object):
 
 		self.session.keylistener.keyPressed(evt)
 		self.session.keylistener.keyReleased(evt)
-
-	@contextlib.contextmanager
-	def cursor_map_coords(self):
-		"""Temporarly changes CursorTool to interpret mouse event coordinates
-		as map coordinates instead of window coordinates. Makes it easier to
-		write tests.
-
-		Example:
-			with gui.cursor_map_coords():
-				gui.cursor_move(2, 3)
-		"""
-		old = CursorTool.get_world_location_from_event
-		old_exact = CursorTool.get_exact_world_location_from_event
-
-		def new(self, evt):
-			"""Typically we expect a Mock MouseEvent, genereated by `_make_mouse_event`.
-
-			However NavigationTool keeps track of the last event position, which is
-			an instance of fife.ScreenPoint.
-			"""
-			try:
-				# fife.MouseEvent
-				x = evt.getX()
-				y = evt.getY()
-			except AttributeError:
-				# fife.ScreenPoint
-				x = evt.x
-				y = evt.y
-
-			return Point(x, y)
-
-		CursorTool.get_world_location_from_event = new
-		CursorTool.get_exact_world_location_from_event = new
-		yield
-		CursorTool.get_world_location_from_event = old
-		CursorTool.get_exact_world_location_from_event = old_exact
 
 	def cursor_move(self, x, y):
 		self.cursor.mouseMoved(self._make_mouse_event(x, y))

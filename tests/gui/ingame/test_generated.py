@@ -35,71 +35,70 @@ def test_build_a_settlement(gui):
 
 	gui.select([ship])
 
-	with gui.cursor_map_coords():
-		# Move ship
-		gui.cursor_click(57, 0, 'right')
+	# Move ship
+	gui.cursor_click(57, 0, 'right')
 
-		# Wait for ship to arrive
-		for i in gui.run(seconds=7): yield
+	# Wait for ship to arrive
+	for i in gui.run(seconds=7): yield
 
-		gui.trigger('overview_trade_ship', 'found_settlement/action/default')
+	gui.trigger('overview_trade_ship', 'found_settlement/action/default')
 
-		# Place warehouse
-		gui.cursor_click(56, 3, 'left')
+	# Place warehouse
+	gui.cursor_click(56, 3, 'left')
 
-		# Select buildmenu
-		gui.trigger('mainhud', 'build/action/default')
+	# Select buildmenu
+	gui.trigger('mainhud', 'build/action/default')
 
-		# Select fisher
-		gui.trigger('tab', 'button_26/action/default')
+	# Select fisher
+	gui.trigger('tab', 'button_26/action/default')
 
-		# Place fisher
-		gui.cursor_click(52, 3, 'left')
+	# Place fisher
+	gui.cursor_click(52, 3, 'left')
 
-		# Select path
-		gui.trigger('tab', 'button_21/action/default')
+	# Select path
+	gui.trigger('tab', 'button_21/action/default')
 
-		# Build some paths
-		# Has to be one by one, no mouse drag support yet
-		gui.cursor_click(52, 5, 'left')
-		gui.cursor_click(53, 5, 'left')
-		gui.cursor_click(54, 5, 'left')
-		gui.cursor_click(55, 5, 'left')
-		gui.cursor_click(56, 5, 'left')
-		gui.cursor_click(57, 5, 'left')
-		gui.cursor_click(54, 7, 'right')	# cancel
+	# Build some paths
+	# Has to be one by one, no mouse drag support yet
+	gui.cursor_click(52, 5, 'left')
+	gui.cursor_click(53, 5, 'left')
+	gui.cursor_click(54, 5, 'left')
+	gui.cursor_click(55, 5, 'left')
+	gui.cursor_click(56, 5, 'left')
+	gui.cursor_click(57, 5, 'left')
+	gui.cursor_click(54, 7, 'right')	# cancel
 
-		# Build lumberjack
-		gui.trigger('tab', 'button_5/action/default')
-		gui.cursor_click(52, 6, 'left')
+	# Build lumberjack
+	gui.trigger('tab', 'button_5/action/default')
+	gui.cursor_click(52, 6, 'left')
 
-		# Build main square
-		gui.trigger('tab', 'button_3/action/default')
-		gui.cursor_click(53, 11, 'left')
+	# Build main square
+	gui.trigger('tab', 'button_3/action/default')
+	gui.cursor_click(53, 11, 'left')
 
-		# Select path
-		gui.trigger('tab', 'button_21/action/default')
+	# Select path
+	gui.trigger('tab', 'button_21/action/default')
 
-		# Build some paths
-		gui.cursor_click(57, 6, 'left')
-		gui.cursor_click(57, 7, 'left')
-		gui.cursor_click(57, 8, 'left')
-		gui.cursor_click(57, 9, 'left')
-		gui.cursor_click(57, 10, 'left')
-		gui.cursor_click(57, 11, 'left')
-		gui.cursor_click(57, 12, 'left')
-		gui.cursor_click(57, 13, 'right')	# cancel
+	# Build some paths
+	gui.cursor_click(57, 6, 'left')
+	gui.cursor_click(57, 7, 'left')
+	gui.cursor_click(57, 8, 'left')
+	gui.cursor_click(57, 9, 'left')
+	gui.cursor_click(57, 10, 'left')
+	gui.cursor_click(57, 11, 'left')
+	gui.cursor_click(57, 12, 'left')
+	gui.cursor_click(57, 13, 'right')	# cancel
 
-		# Build a tent
-		gui.trigger('tab', 'button_1/action/default')
-		gui.cursor_click(58, 9, 'left')
+	# Build a tent
+	gui.trigger('tab', 'button_1/action/default')
+	gui.cursor_click(58, 9, 'left')
 
-		# Build a tent
-		gui.trigger('tab', 'button_1/action/default')
-		gui.cursor_click(58, 7, 'left')
+	# Build a tent
+	gui.trigger('tab', 'button_1/action/default')
+	gui.cursor_click(58, 7, 'left')
 
-		# Build a tent
-		gui.trigger('tab', 'button_1/action/default')
-		gui.cursor_click(58, 5, 'left')
+	# Build a tent
+	gui.trigger('tab', 'button_1/action/default')
+	gui.cursor_click(58, 5, 'left')
 
 	yield TestFinished
