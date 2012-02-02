@@ -39,7 +39,8 @@ class StorageComponent(Component):
 			self.create_inventory()
 		elif not self.has_own_inventory:
 			self.inventory = self.instance.settlement.get_component(StorageComponent).inventory
-			self.inventory.add_change_listener(self.instance._changed)
+
+		self.inventory.add_change_listener(self.instance._changed)
 
 	def remove(self):
 		super(StorageComponent, self).remove()
