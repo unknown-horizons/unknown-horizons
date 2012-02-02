@@ -156,7 +156,6 @@ class SPTestSession(SPSession):
 		AIPlayer.clear_caches()
 
 		# Game
-		self.current_tick = 0
 		self.random = self.create_rng(rng_seed)
 		self.timer = self.create_timer()
 		Scheduler.create_instance(self.timer)
@@ -238,8 +237,7 @@ class SPTestSession(SPSession):
 			ticks = self.timer.get_ticks(seconds)
 
 		for i in range(ticks):
-			Scheduler().tick(self.current_tick)
-			self.current_tick += 1
+			Scheduler().tick( Scheduler().cur_tick + 1 )
 
 
 def new_session(mapgen=create_map, rng_seed=RANDOM_SEED, human_player = True, ai_players = 0):
