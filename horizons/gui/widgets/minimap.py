@@ -482,6 +482,11 @@ class Minimap(object):
 
 	def _timed_update(self, force=False):
 		"""Regular updates for domains we can't or don't want to keep track of."""
+		if not self.world: # this cannot happen, but did happen once
+			print 'WARNING: impossible minimap timed update'
+			import traceback
+			traceback.print_stack()
+			return
 		# update ship dots
 		# OPTIMISATION NOTE: there can be pretty many ships, don't rely on the inner loop being rarely executed
 		self.minimap_image.set_drawing_enabled()

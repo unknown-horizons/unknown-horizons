@@ -312,7 +312,7 @@ class BuildingTool(NavigationTool):
 	def mouseMoved(self, evt):
 		self.log.debug("BuildingTool mouseMoved")
 		super(BuildingTool, self).mouseMoved(evt)
-		point = self._get_world_location_from_event(evt)
+		point = self.get_world_location_from_event(evt)
 		if self.start_point != point:
 			self.start_point = point
 		self._check_update_preview(point)
@@ -335,7 +335,7 @@ class BuildingTool(NavigationTool):
 	def mouseDragged(self, evt):
 		self.log.debug("BuildingTool mouseDragged")
 		super(BuildingTool, self).mouseDragged(evt)
-		point = self._get_world_location_from_event(evt)
+		point = self.get_world_location_from_event(evt)
 		if self.start_point is not None:
 			self._check_update_preview(point)
 		evt.consume()
@@ -346,7 +346,7 @@ class BuildingTool(NavigationTool):
 		if evt.isConsumedByWidgets():
 			super(BuildingTool, self).mouseReleased(evt)
 		elif fife.MouseEvent.LEFT == evt.getButton():
-			point = self._get_world_location_from_event(evt)
+			point = self.get_world_location_from_event(evt)
 
 			# check if position has changed with this event and update everything
 			self._check_update_preview(point)

@@ -61,7 +61,7 @@ class CursorTool(fife.IMouseListener):
 	def mouseDragged(self, evt):
 		pass
 
-	def _get_world_location_from_event(self, evt):
+	def get_world_location_from_event(self, evt):
 		"""Returns the coordinates of an event at the map.
 
 		Why roundhalfplus?
@@ -77,14 +77,21 @@ class CursorTool(fife.IMouseListener):
 		because both sides (-0.5 and 0.5) would be wrongly assigned to the other fields.
 
 		@return Point with int coordinates"""
-		screenpoint = fife.ScreenPoint(evt.getX(), evt.getY())
+		screenpoint = self._get_screenpoint(evt)
 		mapcoord = self.session.view.cam.toMapCoordinates(screenpoint, False)
 
 		return Point(roundhalfplus(mapcoord.x), roundhalfplus(mapcoord.y))
 
-	def _get_exact_world_location_from_event(self, evt):
+	def get_exact_world_location_from_event(self, evt):
 		"""Returns the coordinates of an event at the map.
 		@return FifePoint with float coordinates"""
-		screenpoint = fife.ScreenPoint(evt.getX(), evt.getY())
+		screenpoint = self._get_screenpoint(evt)
 		return self.session.view.cam.toMapCoordinates(screenpoint, False)
+
+	def _get_screenpoint(self, arg):
+		"""Python lacks polymorphism."""
+		if isinstance(arg, fife.ScreenPoint):
+			return arg
+		else:
+			return fife.ScreenPoint(arg.getX(), arg.getY())
 

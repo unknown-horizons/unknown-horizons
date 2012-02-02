@@ -252,7 +252,7 @@ class Scheduler(LivingObject):
 		@return int or possbile None if not assert_present"""
 		calls = self.get_classinst_calls(instance, callback)
 		if assert_present:
-			assert len(calls) == 1, 'got %i calls for %s %s' % (len(calls), instance, callback)
+			assert len(calls) == 1, 'got %i calls for %s %s: %s' % (len(calls), instance, callback, [str(i) for i in calls])
 			return calls.itervalues().next()
 		else:
 			return calls.itervalues().next() if calls else None

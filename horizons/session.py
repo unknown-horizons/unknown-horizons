@@ -39,6 +39,7 @@ from horizons.gui import Gui
 from horizons.world import World
 from horizons.entities import Entities
 from horizons.util import WorldObject, LivingObject, livingProperty, SavegameAccessor
+from horizons.util.lastactiveplayersettlementmanager import LastActivePlayerSettlementManager
 from horizons.world.component.namedcomponent import NamedComponent
 from horizons.savegamemanager import SavegameManager
 from horizons.scenario import ScenarioEventHandler
@@ -87,6 +88,7 @@ class Session(LivingObject):
 		self.savecounter = 0
 		self.is_alive = True
 
+		# misc
 		WorldObject.reset()
 		NamedComponent.reset()
 		AIPlayer.clear_caches()
@@ -107,6 +109,7 @@ class Session(LivingObject):
 		self.keylistener = IngameKeyListener(self)
 		self.coordinates_tooltip = None
 		self.display_speed()
+		LastActivePlayerSettlementManager.create_instance(self)
 
 		self.selected_instances = set()
 		self.selection_groups = [set()] * 10 # List of sets that holds the player assigned unit groups.
@@ -131,6 +134,9 @@ class Session(LivingObject):
 		self.log.debug("Ending session")
 		self.is_alive = False
 
+		LastActivePlayerSettlementManager().remove()
+		LastActivePlayerSettlementManager.destroy_instance()
+
 		self.gui.session = None
 
 		Scheduler().rem_all_classinst_calls(self)
@@ -153,6 +159,7 @@ class Session(LivingObject):
 		self.timer = None
 		self.scenario_eventhandler = None
 		Scheduler.destroy_instance()
+
 
 		self.selected_instances = None
 		self.selection_groups = None

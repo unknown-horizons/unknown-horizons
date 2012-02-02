@@ -24,6 +24,7 @@ from horizons.entities import Entities
 from horizons.gui.tabs.tabinterface import TabInterface
 from horizons.command.building import Build
 from horizons.util import Callback
+from horizons.util.lastactiveplayersettlementmanager import LastActivePlayerSettlementManager
 from horizons.util.python.roman_numerals import int_to_roman
 
 class BuildTab(TabInterface):
@@ -147,7 +148,7 @@ class BuildTab(TabInterface):
 		for position, building_id in self.__class__.image_data[tabindex].iteritems():
 			button = self.widget.child_finder('button_{position}'.format(position=position))
 			building = Entities.buildings[building_id]
-			settlement = self.session.cursor.last_hover_player_settlement
+			settlement = LastActivePlayerSettlementManager().get()
 
 			icon = self.widget.child_finder('icon_{position}'.format(position=position))
 

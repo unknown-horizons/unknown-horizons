@@ -184,7 +184,7 @@ class SelectionTool(NavigationTool):
 			self.select_begin = (evt.getX(), evt.getY())
 			self.session.ingame_gui.hide_menu()
 		elif evt.getButton() == fife.MouseEvent.RIGHT:
-			target_mapcoord = self._get_exact_world_location_from_event(evt)
+			target_mapcoord = self.get_exact_world_location_from_event(evt)
 			for i in self.session.selected_instances:
 				if i.movable:
 					Act(i, target_mapcoord.x, target_mapcoord.y).execute(self.session)
