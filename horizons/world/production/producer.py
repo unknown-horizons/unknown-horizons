@@ -403,7 +403,7 @@ class QueueProducer(Producer):
 			prod = self.create_production(production_line_id)
 			prod.add_production_finished_listener(self.on_queue_element_finished)
 			self.add_production( prod )
-			self.set_active(production=prod, active=True)
+			self.instance.set_active(production=prod, active=True)
 		else:
 			self.set_active(active=False)
 
