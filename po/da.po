@@ -1513,10 +1513,13 @@ msgstr ""
 msgid "This is the free trader's ship. It will visit you from time to time to buy or sell goods."
 msgstr ""
 
+# 75%
+# 80%
 #. (text of widget: name_label)
 #: horizons/i18n/guitranslations.py:402 horizons/i18n/guitranslations.py:417
+#, fuzzy
 msgid "Name:"
-msgstr ""
+msgstr "Luk Spillet"
 
 #. (tooltip of widget: collector_utilisation_label)
 #. (tooltip of widget: collector_utilisation) Percentage describing how busy the collectors were (100% = always going for / already carrying full load of goods)

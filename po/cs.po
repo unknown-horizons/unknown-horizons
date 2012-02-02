@@ -357,7 +357,7 @@ msgstr "{player1} a {player2} jsou teď {status}"
 #: horizons/command/misc.py:30
 #, python-format
 msgid "{name}: {chatmessage}"
-msgstr ""
+msgstr "{name}: {chatmessage}"
 
 #: horizons/engine/settingsdialog.py:50
 msgid "Restart required"
