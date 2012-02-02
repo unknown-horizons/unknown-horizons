@@ -122,8 +122,8 @@ class Production(ChangeListener):
 		self._creation_tick = db_data[3]
 		self._state = PRODUCTION.STATES[db_data[0]]
 		self._pause_old_state = None if db_data[2] is None else PRODUCTION.STATES[db_data[2]]
+		self._remove_listeners()
 		if self._state == PRODUCTION.STATES.paused:
-			self._remove_listeners()
 			self._pause_remaining_ticks = db_data[1]
 		elif self._state == PRODUCTION.STATES.producing:
 			Scheduler().add_new_object(self._get_producing_callback(), self, db_data[1])
