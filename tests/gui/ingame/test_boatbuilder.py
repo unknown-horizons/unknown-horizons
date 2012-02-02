@@ -91,11 +91,13 @@ def test_ticket_1294(gui):
 
 	# Wait until production ends
 	producer = boatbuilder.get_component(Producer)
-	while producer._get_current_state() != PRODUCTION.STATES.done:
+	while len(producer.get_productions()) > 1:
 		yield
 
-	# After some seconds it will crash
-	for i in gui.run(seconds=2):
+	# Unpause huker construction
+	gui.trigger('BB_main_tab', 'toggle_active_inactive/action/default')
+
+	while len(producer.get_productions()) > 0:
 		yield
 
 	yield TestFinished

@@ -398,12 +398,12 @@ class QueueProducer(Producer):
 	def start_next_production(self):
 		"""Starts the next production that is in the queue, if there is one."""
 		if self.check_next_production_startable():
-			self.set_active(active=True)
 			self._productions.clear() # Make sure we only have one production active
 			production_line_id = self.production_queue.pop(0)
 			prod = self.create_production(production_line_id)
 			prod.add_production_finished_listener(self.on_queue_element_finished)
 			self.add_production( prod )
+			self.set_active(production=prod, active=True)
 		else:
 			self.set_active(active=False)
 
