@@ -397,3 +397,6 @@ def set_trace():
 
 	from nose.tools import set_trace
 	set_trace()
+
+
+_multiprocess_can_split_ = True
