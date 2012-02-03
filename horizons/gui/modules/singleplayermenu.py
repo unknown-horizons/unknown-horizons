@@ -25,6 +25,7 @@ from horizons.util import Callback, random_map
 from horizons.savegamemanager import SavegameManager
 from horizons.gui.modules import AIDataSelection, PlayerDataSelection
 from horizons.constants import AI
+from horizons.gui.widgets.minimap import Minimap
 
 class SingleplayerMenu(object):
 	def show_single(self, show = 'scenario'): # tutorial
@@ -50,7 +51,8 @@ class SingleplayerMenu(object):
 		self.current.playerdata = PlayerDataSelection(self.current, self.widgets)
 		self.current.aidata = AIDataSelection(self.current, self.widgets)
 
-		self.__select_single(show)		
+		show = "free_maps"
+		self.__select_single(show)
 
 	def __select_single(self, show):
 		assert show in ('random', 'scenario', 'campaign', 'free_maps')
@@ -71,7 +73,7 @@ class SingleplayerMenu(object):
 		self.current.findChild(name=show).marked = True
 		self.current.aidata.hide()
 
-		# hide previous widget, unhide new right side widget 
+		# hide previous widget, unhide new right side widget
 		if self.activeRightSide is not None:
 			self.activeRightSide.parent.hideChild(self.activeRightSide)
 		right_side.parent.showChild(right_side)
@@ -90,6 +92,24 @@ class SingleplayerMenu(object):
 				#xgettext:python-format
 				self.current.findChild(name="recommended_number_of_players_lbl").text = \
 				    _("Recommended number of players: {number}").format(number=number_of_players)
+				minimap_icon = self.current.findChild(name="map_preview_minimap")
+				from horizons.world import World
+				from horizons.util import SavegameAccessor, WorldObject
+				WorldObject.reset()
+				world = World(session=None)
+				world.inited = True
+				world.load_raw_map( SavegameAccessor( self.__get_selected_map() ), preview=True )
+				self.minimap = Minimap(minimap_icon,
+				                  session=None,
+				                  view=None,
+				                  world=world,
+				                  targetrenderer=horizons.main.fife.targetrenderer,
+				                  imagemanager=horizons.main.fife.imagemanager,
+				                  cam_border=False,
+				                  use_rotation=False,
+				                  preview=True)
+				self.minimap.draw()
+
 			if len(maps_display) > 0:
 				# select first entry
 				self.current.distributeData({ 'maplist' : 0, })

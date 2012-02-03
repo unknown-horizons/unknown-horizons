@@ -80,7 +80,8 @@ class World(BuildingOwner, LivingObject, WorldObject):
 		@param session: instance of session the world belongs to.
 		"""
 		self.inited = False
-		assert isinstance(session, horizons.session.Session)
+		if False:
+			assert isinstance(session, horizons.session.Session)
 		self.session = session
 		super(World, self).__init__(worldid=GAME.WORLD_WORLDID)
 
@@ -164,52 +165,8 @@ class World(BuildingOwner, LivingObject, WorldObject):
 			self.log.warning('WARNING: Cannot autoselect a player because there are no \
 			or multiple candidates.')
 
-		# load islands
-		self.islands = []
-		for (islandid,) in savegame_db("SELECT rowid + 1000 FROM island"):
-			island = Island(savegame_db, islandid, self.session)
-			self.islands.append(island)
-
-		#calculate map dimensions
-		self.min_x, self.min_y, self.max_x, self.max_y = 0, 0, 0, 0
-		for i in self.islands:
-			self.min_x = i.rect.left if self.min_x is None or i.rect.left < self.min_x else self.min_x
-			self.min_y = i.rect.top if self.min_y is None or i.rect.top < self.min_y else self.min_y
-			self.max_x = i.rect.right if self.max_x is None or i.rect.right > self.max_x else self.max_x
-			self.max_y = i.rect.bottom if self.max_y is None or i.rect.bottom > self.max_y else self.max_y
-		self.min_x -= 10
-		self.min_y -= 10
-		self.max_x += 10
-		self.max_y += 10
-
-		self.map_dimensions = Rect.init_from_borders(self.min_x, self.min_y, self.max_x, self.max_y)
-
-		#add water
-		self.log.debug("Filling world with water...")
-		self.ground_map = {}
-		default_grounds = Entities.grounds[int(self.properties.get('default_ground', GROUND.WATER[0]))]
-		#default_grounds = Entities.grounds[90]
-
-		# extra world size that is added so that he player can't see the "black void"
-		border = 30
-		for x in xrange(self.min_x-border, self.max_x+border, 10):
-			for y in xrange(self.min_y-border, self.max_y+border, 10):
-				ground = default_grounds(self.session, x, y)
-				for x_offset in xrange(0,10):
-					if x+x_offset < self.max_x and x+x_offset>= self.min_x:
-						for y_offset in xrange(0,10):
-							if y+y_offset < self.max_y and y+y_offset >= self.min_y:
-								self.ground_map[(x+x_offset, y+y_offset)] = Entities.grounds[-1](self.session, x, y)
-
-		# remove parts that are occupied by islands, create the island map and the full map
-		self.island_map = {}
-		self.full_map = copy.copy(self.ground_map)
-		for island in self.islands:
-			for coords in island.ground_map:
-				if coords in self.ground_map:
-					self.full_map[coords] = island.ground_map[coords]
-					del self.ground_map[coords]
-					self.island_map[coords] = island
+		# all static data
+		self.load_raw_map(savegame_db)
 
 		# load world buildings (e.g. fish)
 		for (building_worldid, building_typeid) in \
@@ -316,6 +273,52 @@ class World(BuildingOwner, LivingObject, WorldObject):
 		"""TUTORIAL:
 		To dig deeper, you should now continue to horizons/world/island.py,
 		to check out how buildings and settlements are added to the map"""
+
+
+	def load_raw_map(self, savegame_db, preview=False):
+		# load islands
+		self.islands = []
+		for (islandid,) in savegame_db("SELECT rowid + 1000 FROM island"):
+			island = Island(savegame_db, islandid, self.session, preview=preview)
+			self.islands.append(island)
+
+		#calculate map dimensions
+		self.min_x, self.min_y, self.max_x, self.max_y = 0, 0, 0, 0
+		for i in self.islands:
+			self.min_x = i.rect.left if self.min_x is None or i.rect.left < self.min_x else self.min_x
+			self.min_y = i.rect.top if self.min_y is None or i.rect.top < self.min_y else self.min_y
+			self.max_x = i.rect.right if self.max_x is None or i.rect.right > self.max_x else self.max_x
+			self.max_y = i.rect.bottom if self.max_y is None or i.rect.bottom > self.max_y else self.max_y
+		self.min_x -= 10
+		self.min_y -= 10
+		self.max_x += 10
+		self.max_y += 10
+
+		self.map_dimensions = Rect.init_from_borders(self.min_x, self.min_y, self.max_x, self.max_y)
+
+		#add water
+		self.log.debug("Filling world with water...")
+		self.ground_map = {}
+
+		# extra world size that is added so that he player can't see the "black void"
+		border = 30
+		for x in xrange(self.min_x-border, self.max_x+border, 10):
+			for y in xrange(self.min_y-border, self.max_y+border, 10):
+				for x_offset in xrange(0,10):
+					if x+x_offset < self.max_x and x+x_offset>= self.min_x:
+						for y_offset in xrange(0,10):
+							if y+y_offset < self.max_y and y+y_offset >= self.min_y:
+								self.ground_map[(x+x_offset, y+y_offset)] = Entities.grounds[-1](self.session, x, y)
+
+		# remove parts that are occupied by islands, create the island map and the full map
+		self.island_map = {}
+		self.full_map = copy.copy(self.ground_map)
+		for island in self.islands:
+			for coords in island.ground_map:
+				if coords in self.ground_map:
+					self.full_map[coords] = island.ground_map[coords]
+					del self.ground_map[coords]
+					self.island_map[coords] = island
 
 	def _init_water_bodies(self):
 		""" This function runs the flood fill algorithm on the water to make it easy to recognise different water bodies """

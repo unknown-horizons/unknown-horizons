@@ -206,6 +206,9 @@ def start(command_line_arguments):
 		from tests.gui import TestRunner
 		TestRunner(fife, command_line_arguments.gui_test)
 
+	from horizons.entities import Entities
+	Entities.load_grounds( _create_map_db() )
+
 	fife.run()
 
 def quit():
@@ -493,6 +496,8 @@ def _create_map_db():
 		sql = "BEGIN TRANSACTION;" + f.read() + "COMMIT;"
 		_db.execute_script(sql)
 	return _db
+
+a = _create_map_db
 
 def preload_game_data(lock):
 	"""Preloads game data.
