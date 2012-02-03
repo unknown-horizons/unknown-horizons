@@ -114,9 +114,6 @@ def start(command_line_arguments):
 
 	db = _create_main_db()
 
-	from horizons.entities import Entities
-	Entities.load(db, load_now=False) # create all references
-
 	# init game parts
 
 	_init_gettext(fife)
@@ -141,6 +138,9 @@ def start(command_line_arguments):
 	fife.init()
 	_modules.gui = Gui()
 	SavegameManager.init()
+
+	from horizons.entities import Entities
+	Entities.load(db, load_now=False) # create all references
 
 	# for preloading game data while in main screen
 	preload_lock = threading.Lock()
