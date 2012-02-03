@@ -51,7 +51,6 @@ class BuildingClass(IngameType):
 		# Override name with translation here
 		self._name = object_translations[yaml_data['yaml_file']]['name']
 
-		self.button_name = yaml_data['button_name']
 		self.settler_level = yaml_data['settler_level']
 		try:
 			self.tooltip_text = object_translations[yaml_data['yaml_file']]['tooltip_text']
