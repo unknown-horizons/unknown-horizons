@@ -300,10 +300,15 @@ class World(BuildingOwner, LivingObject, WorldObject):
 		self.log.debug("Filling world with water...")
 		self.ground_map = {}
 
+		# big sea water tile class
+		default_grounds = Entities.grounds[int(self.properties.get('default_ground', GROUND.WATER[0]))]
+
 		# extra world size that is added so that he player can't see the "black void"
 		border = 30
 		for x in xrange(self.min_x-border, self.max_x+border, 10):
 			for y in xrange(self.min_y-border, self.max_y+border, 10):
+				# we don't need no references, we don't need no mem control
+				default_grounds(self.session, x, y)
 				for x_offset in xrange(0,10):
 					if x+x_offset < self.max_x and x+x_offset>= self.min_x:
 						for y_offset in xrange(0,10):
