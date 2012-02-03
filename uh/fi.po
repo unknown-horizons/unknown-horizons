@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2012-01-19 20:39+0100\n"
-"PO-Revision-Date: 2012-01-30 17:15+0200\n"
+"PO-Revision-Date: 2012-01-30 17:16+0200\n"
 "Last-Translator: Aleksi <aleksi.kinnunen@ovi.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: fi\n"
@@ -47,7 +47,6 @@ msgstr "Joillakin asukkaillasi ei ole keskustoria lähellään."
 # 77%
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
-#, fuzzy
 msgid "Some of your inhabitants just moved out."
 msgstr "Jotkut uudisasukkaasi muuttivat juuri pois."
 
@@ -626,7 +625,6 @@ msgid "Try a name that only contains letters and numbers."
 msgstr "Käytä nimeä jossa on vain kirjaimia ja numeroita."
 
 #: horizons/gui/modules/multiplayermenu.py:40
-#, fuzzy
 msgid "Unable to find pyenet"
 msgstr "Tiedostoa \"pyenet\" ei löydy"
 
@@ -683,7 +681,7 @@ msgstr "Pelaajat: {player_amount}/{player_limit}"
 
 #: horizons/gui/modules/multiplayermenu.py:175
 #, python-format
-#, fuzzy, python-format
+#, python-format
 msgid "Creator: {player}"
 msgstr "Tekijä: {player}"
 
@@ -794,10 +792,11 @@ msgstr "Piilota tämä vihje painamalla H"
 msgid "Boat builder overview"
 msgstr "Veneenveistämön yleiskatsaus"
 
+# 78%
 #: horizons/gui/tabs/boatbuildertab.py:93
-#, python-format
+#, python-format, fuzzy
 msgid "{ship} (place in queue: {place})"
-msgstr ""
+msgstr "(paikka jonossa: {place})"
 
 #: horizons/gui/tabs/boatbuildertab.py:157
 msgid "Resources still needed:"
@@ -1059,7 +1058,6 @@ msgstr "pelaajan {player} alukset"
 # 75%
 #. i18n There are no weapons equipped at the moment.
 #: horizons/gui/widgets/playersships.py:88
-#, fuzzy
 msgid "None"
 msgstr "ei mitään"
 
@@ -1387,14 +1385,13 @@ msgstr "puolueeton"
 msgid "Build fields"
 msgstr "Pystytä tuotantoa"
 
-# 95%
+# 95
 #. (tooltip of widget: capacity_utilisation_label)
 #. (tooltip of widget: capacity_utilisation)
 #. (tooltip of widget: capacity_utilisation_label)
 #. (tooltip of widget: capacity_utilisation)
 #: horizons/i18n/guitranslations.py:213 horizons/i18n/guitranslations.py:217
 #: horizons/i18n/guitranslations.py:349 horizons/i18n/guitranslations.py:353
-#, fuzzy
 msgid "Capacity utilization"
 msgstr "käyttöosuus"
 
@@ -1718,7 +1715,6 @@ msgstr "Poistu Kapteenin päiväkirjasta"
 # 80%
 #. (tooltip of widget: backwardButton) Entry of Captain's Log (logbook/diary used in scenarios)
 #: horizons/i18n/guitranslations.py:534
-#, fuzzy
 msgid "Read previous entries"
 msgstr "Edellinen merkintä"
 
@@ -2137,7 +2133,6 @@ msgstr "Päävalikko:"
 # 78%
 #. (text of widget: game_showonlyownversion)
 #: horizons/i18n/guitranslations.py:782
-#, fuzzy
 msgid "Only show games with the same version:"
 msgstr "Näytä vain saman version pelit:"
 
@@ -2451,7 +2446,6 @@ msgstr "Savenvalamo"
 
 #. tooltip_text of buildings:brickyard
 #: horizons/i18n/objecttranslations.py:54
-#, fuzzy
 msgid "Turns clay into bricks."
 msgstr "Muuttaa savea tiiliksi."
 
@@ -2462,7 +2456,6 @@ msgstr "Teurastamo"
 
 #. tooltip_text of buildings:butchery
 #: horizons/i18n/objecttranslations.py:61
-#, fuzzy
 msgid "Needs pigs or cattle. Produces food."
 msgstr "Tarvitsee sikoja tai karjaa. Tuottaa ruokaa."
 
@@ -2473,7 +2466,6 @@ msgstr "Karjalauma"
 
 #. tooltip_text of buildings:cattlerun
 #: horizons/i18n/objecttranslations.py:68
-#, fuzzy
 msgid "Raises cattle. Needs a farm."
 msgstr "Tarvitsee maatilan."
 
@@ -2499,7 +2491,6 @@ msgstr "Savikuoppa"
 
 #. tooltip_text of buildings:claypit
 #: horizons/i18n/objecttranslations.py:87
-#, fuzzy
 msgid "Gets clay from deposit."
 msgstr "Kaivaa savea savisesta maasta."
 
@@ -2511,7 +2502,6 @@ msgstr "Tislaamo"
 
 #. tooltip_text of buildings:distillery
 #: horizons/i18n/objecttranslations.py:94
-#, fuzzy
 msgid "Turns sugar into liquor."
 msgstr "Käyttää sokeria viinanpolttoon."
 
@@ -2532,7 +2522,6 @@ msgstr "Maatila"
 
 #. tooltip_text of buildings:farm
 #: horizons/i18n/objecttranslations.py:108
-#, fuzzy
 msgid "Grows field crops and raises livestock."
 msgstr "Kasvattaa peltojen satoa ja karjaa."
 
@@ -2548,7 +2537,6 @@ msgstr "Kalastajan teltta"
 
 #. tooltip_text of buildings:fishermanstent
 #: horizons/i18n/objecttranslations.py:120
-#, fuzzy
 msgid "Fishes the sea, produces food."
 msgstr "Kalastaa merellä, tuottaa ruokaa."
 
@@ -2564,7 +2552,6 @@ msgstr "Yrttitarha"
 
 #. tooltip_text of buildings:herbary
 #: horizons/i18n/objecttranslations.py:132
-#, fuzzy
 msgid "Produces herbs. Needs a farm."
 msgstr "Tuottaa tupakkaa. Tarvitsee maatilan."
 
@@ -2575,7 +2562,6 @@ msgstr "Metsästäjän teltta"
 
 #. tooltip_text of buildings:hunterstent
 #: horizons/i18n/objecttranslations.py:139
-#, fuzzy
 msgid "Hunts wild forest animals, produces food."
 msgstr "Metsästää metsän villieläimiä, tuottaa ruokaa."
 
@@ -2616,7 +2602,6 @@ msgstr "Puunhakkaajan leiri"
 
 #. tooltip_text of buildings:lumberjackcamp
 #: horizons/i18n/objecttranslations.py:167
-#, fuzzy
 msgid "Chops down trees and turns them into boards."
 msgstr "Kaataa puita ja tekee niistä lautoja."
 
@@ -2627,7 +2612,6 @@ msgstr "Keskustori"
 
 #. tooltip_text of buildings:mainsquare
 #: horizons/i18n/objecttranslations.py:174
-#, fuzzy
 msgid "Supplies citizens with goods."
 msgstr "Tarjoaa asukkaille tuotteita."
 
@@ -2643,7 +2627,6 @@ msgstr "Laidun"
 
 #. tooltip_text of buildings:pasture
 #: horizons/i18n/objecttranslations.py:186
-#, fuzzy
 msgid "Raises sheep. Produces wool. Needs a farm."
 msgstr "Kasvattaa lampaita ja tuottaa villaa. Tarvitsee maatilan."
 
@@ -2654,7 +2637,6 @@ msgstr "Kirkko"
 
 #. tooltip_text of buildings:pavilion
 #: horizons/i18n/objecttranslations.py:193
-#, fuzzy
 msgid "Fulfills religious needs of sailors."
 msgstr "Täyttää merenkävijöiden uskonnolliset tarpeet."
 
@@ -2665,7 +2647,6 @@ msgstr "Sikalauma"
 
 #. tooltip_text of buildings:pigsty
 #: horizons/i18n/objecttranslations.py:200
-#, fuzzy
 msgid "Raises pigs. Needs a farm."
 msgstr "Tarvitsee maatilan."
 
@@ -2676,7 +2657,6 @@ msgstr "Perunamaa"
 
 #. tooltip_text of buildings:potatofield
 #: horizons/i18n/objecttranslations.py:207
-#, fuzzy
 msgid "Yields food. Needs a farm."
 msgstr "Tuottaa ruokaa. Tarvitsee maatilan."
 
@@ -2687,7 +2667,6 @@ msgstr "Valli"
 
 #. tooltip_text of buildings:rampart
 #: horizons/i18n/objecttranslations.py:214
-#, fuzzy
 msgid "Protects your settlement."
 msgstr "Puolustaa siirtokuntaasi."
 
@@ -2708,7 +2687,6 @@ msgstr "Merkkituli"
 
 #. tooltip_text of buildings:signalfire
 #: horizons/i18n/objecttranslations.py:228
-#, fuzzy
 msgid "Allows the player to trade with the free trader."
 msgstr "Päästää pelaajan käymään kauppaa vapaakauppiaan kanssa."
 
@@ -2719,7 +2697,6 @@ msgstr "Sulattamo"
 
 #. tooltip_text of buildings:smeltery
 #: horizons/i18n/objecttranslations.py:235
-#, fuzzy
 msgid "Refines all kind of ores."
 msgstr "Jalostaa kaikenlaisia malmeja."
 
@@ -2730,7 +2707,6 @@ msgstr "Varastoteltta"
 
 #. tooltip_text of buildings:storagetent
 #: horizons/i18n/objecttranslations.py:242
-#, fuzzy
 msgid "Extends stock and provides collectors."
 msgstr "laajentaa valikoimaa ja tarjoaa kerääjiä."
 
@@ -2751,7 +2727,6 @@ msgstr "Taverna"
 
 #. tooltip_text of buildings:tavern
 #: horizons/i18n/objecttranslations.py:256
-#, fuzzy
 msgid "Provides get-together."
 msgstr "Järjestää juhlia ja pitoja."
 
@@ -2762,7 +2737,6 @@ msgstr "Teltta"
 
 #. tooltip_text of buildings:tent
 #: horizons/i18n/objecttranslations.py:263
-#, fuzzy
 msgid "Houses your inhabitants."
 msgstr "Tarjoaa asuinpaikan uudisasukkaillesi."
 
@@ -2779,7 +2753,6 @@ msgstr "Tupakkapelto"
 
 #. tooltip_text of buildings:tobaccofield
 #: horizons/i18n/objecttranslations.py:275
-#, fuzzy
 msgid "Produces tobacco. Needs a farm."
 msgstr "Tuottaa tupakkaa. Tarvitsee maatilan."
 
@@ -2790,7 +2763,6 @@ msgstr "Tupakkatehdas"
 
 #. tooltip_text of buildings:tobacconist
 #: horizons/i18n/objecttranslations.py:282
-#, fuzzy
 msgid "Produces tobaccos out of tobacco."
 msgstr "Valmistaa tupakkaa tupakanlehdistä."
 
@@ -2801,7 +2773,6 @@ msgstr "Työkalunvalmistaja"
 
 #. tooltip_text of buildings:toolmaker
 #: horizons/i18n/objecttranslations.py:289
-#, fuzzy
 msgid "Produces tools out of iron."
 msgstr "Valmistaa työkaluja raudasta."
 
@@ -2832,7 +2803,6 @@ msgstr "Kyläkoulu"
 
 #. tooltip_text of buildings:villageschool
 #: horizons/i18n/objecttranslations.py:310
-#, fuzzy
 msgid "Provides education."
 msgstr "Järjestää opetusta."
 
@@ -2849,7 +2819,6 @@ msgstr "Kutojan teltta"
 
 #. tooltip_text of buildings:weaverstent
 #: horizons/i18n/objecttranslations.py:322
-#, fuzzy
 msgid "Turns lamb wool into cloth."
 msgstr "Tekee lampaanvillasta vaatteita."
 
@@ -2860,7 +2829,6 @@ msgstr ""
 
 #. tooltip_text of buildings:woodentower
 #: horizons/i18n/objecttranslations.py:329
-#, fuzzy
 msgid "Defends your settlement."
 msgstr "Puolustaa siirtokuntaasi."
 
@@ -3049,9 +3017,12 @@ msgstr "Kauppakumppanisi ei myy tätä."
 msgid "You do not possess this."
 msgstr ""
 
+# 82%
+# 82%
 #: horizons/world/component/tradepostcomponent.py:227
+#, fuzzy
 msgid "The trade partner can not store more of this."
-msgstr ""
+msgstr "Kauppakumppanisi ei myy tätä."
 
 #: horizons/world/component/tradepostcomponent.py:234
 msgid "The trade partner can not afford to buy this."
