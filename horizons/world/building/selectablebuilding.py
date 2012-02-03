@@ -61,6 +61,9 @@ class SelectableBuilding(object):
 		renderer = self.session.view.renderer['InstanceRenderer']
 		renderer.removeOutlined(self._instance)
 		renderer.removeAllColored()
+		for fake_tile in self.__class__._selected_fake_tiles:
+			self.session.view.layers[LAYERS.FIELDS].deleteInstance(fake_tile)
+		self.__class__._selected_fake_tiles = []
 
 	def remove(self):
 		super(SelectableBuilding, self).remove()
@@ -90,7 +93,8 @@ class SelectableBuilding(object):
 
 	@classmethod
 	def deselect_building(cls, session):
-		"""@see select_building,
+		"""@see select_building
+		Used by building tool, allows incremental updates
 		@return list of tiles that were deselected."""
 		remove_colored = session.view.renderer['InstanceRenderer'].removeColored
 		for tile in cls._selected_tiles:
