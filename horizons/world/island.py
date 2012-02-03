@@ -62,25 +62,19 @@ class Island(BuildingOwner, WorldObject):
 	"""
 	log = logging.getLogger("world.island")
 
-	def __init__(self, db, islandid, session, preview=False):
+	def __init__(self, db, islandid, session):
 		"""
 		@param db: db instance with island table
 		@param islandid: id of island in that table
 		@param session: reference to Session instance
-		@param preview: flag, preview mode
 		"""
 		super(Island, self).__init__(worldid=islandid)
-
-		if False:
-			from horizons.session import Session
-			assert isinstance(session, Session)
+		from horizons.session import Session
+		assert isinstance(session, Session)
 		self.session = session
 
 		x, y, filename = db("SELECT x, y, file FROM island WHERE rowid = ? - 1000", islandid)[0]
-		self.__init(Point(x, y), filename, preview=preview)
-
-		if preview: # don't need rest for now
-			return
+		self.__init(Point(x, y), filename)
 
 		# create building indexers
 		from horizons.world.units.animal import WildAnimal
@@ -105,7 +99,7 @@ class Island(BuildingOwner, WorldObject):
 			return random_map.create_random_island(self.file)
 		return DbReader(self.file) # Create a new DbReader instance to load the maps file.
 
-	def __init(self, origin, filename, preview=False):
+	def __init(self, origin, filename):
 		"""
 		Load the actual island from a file
 		@param origin: Point
@@ -123,13 +117,8 @@ class Island(BuildingOwner, WorldObject):
 
 		self.ground_map = {}
 		for (rel_x, rel_y, ground_id, action_id, rotation) in db("SELECT x, y, ground_id, action_id, rotation FROM ground"): # Load grounds
-			if not preview: # actual game, need actual tiles
-				ground = Entities.grounds[ground_id](self.session, self.origin.x + rel_x, self.origin.y + rel_y)
-				ground.act(action_id, rotation)
-			else:
-				ground = Point(self.origin.x + rel_x, self.origin.y + rel_y)
-				ground.classes = tuple()
-				ground.settlement = None
+			ground = Entities.grounds[ground_id](self.session, self.origin.x + rel_x, self.origin.y + rel_y)
+			ground.act(action_id, rotation)
 			# These are important for pathfinding and building to check if the ground tile
 			# is blocked in any way.
 			self.ground_map[(ground.x, ground.y)] = ground
@@ -149,9 +138,8 @@ class Island(BuildingOwner, WorldObject):
 		max_y = max(zip(*self.ground_map.keys())[1])
 		self.position = Rect.init_from_borders(min_x, min_y, max_x, max_y)
 
-		if not preview:
-			# repopulate wild animals every 2 mins if they die out.
-			Scheduler().add_new_object(self.check_wild_animal_population, self, Scheduler().get_ticks(120), -1)
+		# repopulate wild animals every 2 mins if they die out.
+		Scheduler().add_new_object(self.check_wild_animal_population, self, Scheduler().get_ticks(120), -1)
 
 		"""TUTORIAL:
 		To continue hacking, you should now take off to the real fun stuff and check out horizons/world/building/__init__.py.
