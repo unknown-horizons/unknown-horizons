@@ -19,6 +19,8 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
+import random
+
 import horizons.main
 
 from horizons.util import Callback, random_map
@@ -78,8 +80,10 @@ class SingleplayerMenu(object):
 			self.activeRightSide.parent.hideChild(self.activeRightSide)
 		right_side.parent.showChild(right_side)
 		self.activeRightSide = right_side
+		self._current_mode = show
 
 		if show == 'random':
+			self.__cur_random_seed = random.random()
 			show_ai_options = True
 			self.__setup_random_map_selection(right_side)
 			self.__setup_game_settings_selection()
@@ -282,13 +286,19 @@ class SingleplayerMenu(object):
 		if hasattr(self, "_random_map_preview_update_scheduled"):
 			return
 		self._random_map_preview_update_scheduled = True
-		ExtScheduler().add_new_object(self._do_update_random_map_preview, self, 5)
+		ExtScheduler().add_new_object(self._do_update_random_map_preview, self, 0.5)
 
 	def _do_update_random_map_preview(self):
 		"""Actually update map preview of random map"""
-		del self._random_map_preview_update_scheduled
-		minimap_icon = self.current.findChild(name="map_preview_minimap")
-		self._update_map_preview(minimap_icon, self.__get_random_map_file())
+		if hasattr(self, "_random_map_preview_update_scheduled"):
+			del self._random_map_preview_update_scheduled
+		if self._current_mode == "random":
+			minimap_icon = self.current.findChild(name="map_preview_minimap")
+			def on_click(event, drag):
+				self.__cur_random_seed = random.random()
+				self._do_update_random_map_preview()
+			self._update_map_preview(minimap_icon, self.__get_random_map_file(),
+			                         tooltip=_("Click to regenerate"), on_click=on_click)
 
 	# game options
 	resource_densities = [0.5, 0.7, 1, 1.4, 2]
@@ -315,7 +325,7 @@ class SingleplayerMenu(object):
 		max_island_size = self.island_sizes[int(self.current.findChild(name = 'max_island_size_slider').value)]
 		preferred_island_size = self.island_sizes[int(self.current.findChild(name = 'preferred_island_size_slider').value)]
 		island_size_deviation = self.island_size_deviations[int(self.current.findChild(name = 'island_size_deviation_slider').value)]
-		return random_map.generate_map(None, map_size, water_percent, max_island_size, preferred_island_size, island_size_deviation)
+		return random_map.generate_map(self.__cur_random_seed, map_size, water_percent, max_island_size, preferred_island_size, island_size_deviation)
 
 	def __get_natural_resource_multiplier(self):
 		return self.resource_densities[int(self.widgets['game_settings'].findChild(name = 'resource_density_slider').value)]
@@ -338,7 +348,7 @@ class SingleplayerMenu(object):
 			playername = self.current.playerdata.get_player_name()
 			horizons.main.fife.set_uh_setting("Nickname", playername)
 
-	def _update_map_preview(self, minimap_icon, map_file):
+	def _update_map_preview(self, minimap_icon, map_file, tooltip=None, on_click=None):
 		from horizons.world import World
 		from horizons.util import SavegameAccessor, WorldObject, Rect, Point
 		WorldObject.reset()
@@ -355,5 +365,7 @@ class SingleplayerMenu(object):
 				                imagemanager=horizons.main.fife.imagemanager,
 				                cam_border=False,
 				                use_rotation=False,
+		                    tooltip=tooltip,
+		                    on_click=on_click,
 				                preview=True)
 		self.minimap.draw()

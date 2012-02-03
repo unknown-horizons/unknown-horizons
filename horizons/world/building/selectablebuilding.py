@@ -132,5 +132,4 @@ class SelectableBuilding(object):
 		renderer.addColored(tile.object._instance, *cls.selection_color)
 
 
-
 decorators.bind_all(SelectableBuilding)

@@ -76,7 +76,7 @@ class Minimap(object):
 	_instances = [] # all active instances
 
 	def __init__(self, position, session, world, view, targetrenderer, imagemanager, renderer=None,
-	             cam_border=True, use_rotation=True, on_click=None, preview=False):
+	             cam_border=True, use_rotation=True, on_click=None, preview=False, tooltip=None):
 		"""
 		@param position: a Rect or a Pychan Icon, where we will draw to
 		@param world: World object or fake thereof
@@ -88,6 +88,7 @@ class Minimap(object):
 		@param use_rotation: boolean, whether to use rotation (it must also be enabled in the settings)
 		@param on_click: function taking 1 argument or None for scrolling
 		@param preview: flag, whether to only show the map as preview
+		@param tooltip: always show this tooltip when cursor hovers over minimap
 		"""
 		if isinstance(position, Rect):
 			self.location = position
@@ -100,6 +101,7 @@ class Minimap(object):
 		self.world = world
 		self.view = view
 		self.rotation = 0
+		self.fixed_tooltip = tooltip
 
 		if on_click is not None:
 			self.on_click = on_click
@@ -303,21 +305,26 @@ class Minimap(object):
 
 	def _show_tooltip(self, event):
 		if hasattr(self, "icon"): # only supported for icon mode atm
-			coords = self._get_event_coord(event)
-			if not coords: # no valid/relevant event location
-				self.icon.hide_tooltip()
-				return
-
-			tile = self.world.get_tile( Point(*coords) )
-			if tile is not None and tile.settlement is not None:
-				new_tooltip = unicode(tile.settlement.get_component(NamedComponent).name)
-				if self.icon.tooltip != new_tooltip:
-					self.icon.tooltip = new_tooltip
-					self.icon.show_tooltip()
-				else:
-					self.icon.position_tooltip(event)
+			if self.fixed_tooltip != None:
+				self.icon.tooltip = self.fixed_tooltip
+				self.icon.position_tooltip(event)
+				#self.icon.show_tooltip()
 			else:
-				self.icon.hide_tooltip()
+				coords = self._get_event_coord(event)
+				if not coords: # no valid/relevant event location
+					self.icon.hide_tooltip()
+					return
+
+				tile = self.world.get_tile( Point(*coords) )
+				if tile is not None and tile.settlement is not None:
+					new_tooltip = unicode(tile.settlement.get_component(NamedComponent).name)
+					if self.icon.tooltip != new_tooltip:
+						self.icon.tooltip = new_tooltip
+						self.icon.show_tooltip()
+					else:
+						self.icon.position_tooltip(event)
+				else:
+					self.icon.hide_tooltip()
 
 	def highlight(self, tup, factor=1.0, speed=1.0, finish_callback=None, color=(0,0,0)):
 		"""Try to get the users attention on a certain point of the minimap.
