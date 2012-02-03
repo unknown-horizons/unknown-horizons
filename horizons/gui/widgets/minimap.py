@@ -156,10 +156,16 @@ class Minimap(object):
 			# add to global generic renderer with id specific to this instance
 			self.renderer.removeAll("minimap_image"+self._id)
 			self.minimap_image.reset()
-			node = fife.RendererNode( fife.Point(self.location.center().x, self.location.center().y) )
-			self.renderer.addImage("minimap_image"+self._id, node, self.minimap_image.image, False)
+			#node = fife.RendererNode( fife.Point(self.location.center().x, self.location.center().y) )
+			#self.renderer.addImage("minimap_image"+self._id, node, self.minimap_image.image, False)
+			node = fife.Point(self.location.origin.x, self.location.origin.y)
+			print node
+			self.renderer.addImage("minimap_image"+self._id, node, self.minimap_image.image)
+
+			print 'rend w/', self.renderer
 		else:
 			self.minimap_image.reset()
+			print 'set img'
 			self.icon.image = fife.GuiImage( self.minimap_image.image )
 
 		print 'do draw'
