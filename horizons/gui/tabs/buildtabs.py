@@ -67,6 +67,7 @@ class BuildTab(TabInterface):
 			 3 : 20,
 			 4 : 19,
 			 5 : 21,
+			 6 : 45,
 			21 : 7,
 			22 : 26,
 			23 : 18,
@@ -145,10 +146,10 @@ class BuildTab(TabInterface):
 		(columns as follows, left to right):
 		# 1,3,5,7.. | 2,4,6,8.. | 21,23,25,27.. | 22,24,26,28..
 		"""
+		settlement = LastActivePlayerSettlementManager().get()
 		for position, building_id in self.__class__.image_data[tabindex].iteritems():
 			button = self.widget.child_finder('button_{position}'.format(position=position))
 			building = Entities.buildings[building_id]
-			settlement = LastActivePlayerSettlementManager().get()
 
 			icon = self.widget.child_finder('icon_{position}'.format(position=position))
 

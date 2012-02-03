@@ -1,0 +1,17 @@
+id: 45
+name: _ Fire Brigade
+baseclass: prevention.FireService
+radius: 10
+cost: 15
+cost_inactive: 5
+size_x: 2
+size_y: 2
+inhabitants_start: 4
+inhabitants_max: 4
+tooltip_text: _ Extinguishes fires.
+settler_level: 1
+buildingcosts: {1: 750, 4: 3, 6: 2, 7: 5}
+components:
+- HealthComponent: {maxhealth: 1000}
+actionsets:
+  as_fireservice0: {level: 0}

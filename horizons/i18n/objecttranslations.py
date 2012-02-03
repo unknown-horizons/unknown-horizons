@@ -108,6 +108,13 @@ def set_translations():
 		"tooltip_text"                : _("Grows field crops and raises livestock."),
 		},
 
+	"content/objects/buildings/fireservice.yaml" : {
+		# name of buildings:fireservice
+		"name"                        : _("Fire Brigade"),
+		# tooltip_text of buildings:fireservice
+		"tooltip_text"                : _("Extinguishes fires."),
+		},
+
 	"content/objects/buildings/fishdeposit.yaml" : {
 		# name of buildings:fishdeposit
 		"name"                        : _("Fish Deposit"),

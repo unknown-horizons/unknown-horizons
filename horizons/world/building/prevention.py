@@ -25,3 +25,6 @@ from horizons.world.building.buildable import BuildableSingle
 
 class Doctor(SelectableBuilding, CollectingProducerBuilding, BuildableSingle, BasicBuilding):
 	pass
+
+class FireService(SelectableBuilding, BuildableSingle, BasicBuilding):
+	pass
