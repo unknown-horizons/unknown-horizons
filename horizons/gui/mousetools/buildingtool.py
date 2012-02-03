@@ -369,9 +369,11 @@ class BuildingTool(NavigationTool):
 					BuildingTool._last_road_built = BuildingTool._last_road_built[-3:]
 
 			# check how to continue: either build again or escape
-			if not self._class.id == BUILDINGS.WAREHOUSE_CLASS and (evt.isShiftPressed() or \
-						                                                horizons.main.fife.get_uh_setting('UninterruptedBuilding') or \
-						                                                not found_buildable or self._class.class_package == 'path'):
+			if (evt.isShiftPressed() or \
+			    (horizons.main.fife.get_uh_setting('UninterruptedBuilding') and not self._class.id == BUILDINGS.WAREHOUSE_CLASS) or \
+			    not found_buildable or \
+			    self._class.class_package == 'path'):
+				# build once more
 				self.start_point = point
 				self.highlight_buildable()
 				self.preview_build(point, point)
