@@ -28,6 +28,8 @@ from horizons.util.gui import get_res_icon
 
 class ImageFillStatusButton(pychan.widgets.Container):
 
+	DEFAULT_BUTTON_SIZE = (55, 50)
+
 	def __init__(self, up_image, down_image, hover_image, text, res_id, tooltip="", \
 	             filled=0, uncached=False, **kwargs):
 		"""Represents the image in the ingame gui, with a bar to show how full the inventory is for that resource
@@ -48,7 +50,7 @@ class ImageFillStatusButton(pychan.widgets.Container):
 		"""Inites the button to display the icons for res
 		@param db: dbreader to get info about res icon.
 		@param res: resource id
-		@param amount: int amount of res
+		@param amount: int amount of res (used to decide inactiveness and as text)
 		@param filled: percent of fill status (values are ints in [0, 100])
 		@param use_inactive_icon: wheter to use inactive icon if amount == 0
 		@param uncached: force no cache. see __init__()
@@ -63,7 +65,7 @@ class ImageFillStatusButton(pychan.widgets.Container):
 		           hover_image=icon_disabled if amount == 0 else icon,
 		           text=str(amount),
 		           tooltip=tooltip,
-		           size=(55, 50),
+		           size=cls.DEFAULT_BUTTON_SIZE,
 		           res_id = res,
 		           filled = filled,
 		           uncached = uncached,

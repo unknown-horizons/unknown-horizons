@@ -33,6 +33,7 @@ from horizons.util import Callback, WorldObject
 from horizons.util.gui import load_uh_widget, get_res_icon
 from horizons.world.component.storagecomponent import StorageComponent
 from horizons.world.component.tradepostcomponent import TradePostComponent
+from horizons.gui.widgets.imagefillstatusbutton import ImageFillStatusButton
 
 class BuySellTab(TabInterface):
 	"""
@@ -307,31 +308,46 @@ class BuySellTab(TabInterface):
 		"""
 		self.resources = load_uh_widget('select_trade_resource.xml')
 		self.resources.position = self.widget.position
-		button_width = 50
+		button_width = ImageFillStatusButton.DEFAULT_BUTTON_SIZE[0] # used for dummy button
 		vbox = self.resources.findChild(name="resources")
 		amount_per_line = vbox.width / button_width
-		current_hbox = pychan.widgets.HBox(name="hbox_0")
+		current_hbox = pychan.widgets.HBox(name="hbox_0", padding=0)
 		index = 1
-		resources = self.settlement.session.db.get_res_id_and_icon(True)
-		# Add the zero element to the beginning that allows to remove the currently
-		# sold/bought resource
+		resources = self.settlement.session.db.get_res(True)
 		buy_list = self.settlement.get_component(TradePostComponent).buy_list
 		sell_list = self.settlement.get_component(TradePostComponent).sell_list
-		for (res_id, icon) in [(0, self.dummy_icon_path)] + list(resources):
+		inventory = self.settlement.get_component(StorageComponent).inventory
+
+		# Add the zero element to the beginning that allows to remove the currently
+		# sold/bought resource
+		for res_id in [0] + list(resources):
+			# don't show resources that are already in the list
 			if res_id in buy_list or res_id in sell_list:
-				continue # don't show resources that are already in the list
-			button = TooltipButton( size=(button_width, button_width), \
-			                        name="resource_icon_%02d" % res_id )
-			button.up_image, button.down_image, button.hover_image = icon, icon, icon
+				continue
+			# create button (dummy one or real one)
 			if res_id == 0:
-				button.tooltip = u""
+				button = TooltipButton( size=(button_width, button_width), name="resource_icon_00")
+				button.up_image, button.down_image, button.hover_image = (self.dummy_icon_path,)*3
 			else:
-				button.tooltip = self.settlement.session.db.get_res_name(res_id)
-			button.capture(Callback(self.add_resource, res_id, slot_id))
+				res_name = self.settlement.session.db.get_res_name(res_id)
+				amount = inventory[res_id]
+				filled = int(float(inventory[res_id]) / float(inventory.get_limit(res_id)) * 100.0)
+				button = ImageFillStatusButton.init_for_res(self.settlement.session.db, res_id,
+				                                            amount=amount, filled=filled,
+				                                            use_inactive_icon=False)
+
+			# on click: add this res
+			cb = Callback(self.add_resource, res_id, slot_id)
+			if hasattr(button, "button"): # fofe imagefillstatusbuttons
+				button.button.capture( cb )
+			else:
+				button.capture( cb )
+
 			current_hbox.addChild(button)
 			if index % amount_per_line == 0 and index is not 0:
 				vbox.addChild(current_hbox)
-				current_hbox = pychan.widgets.HBox(name="hbox_%s" % (index / amount_per_line) )
+				current_hbox = pychan.widgets.HBox(name="hbox_%s" % (index / amount_per_line),
+				                                   padding=0)
 			index += 1
 #		current_hbox.addSpacer(pychan.widgets.layout.Spacer) #TODO: proper alignment
 		vbox.addChild(current_hbox)

@@ -6,7 +6,7 @@
 	<Label name="headline" text="Select resources:" position="50,7" />
 	<Icon image="content/gui/images/background/hr.png" position="20,30" />
 	<!-- Displays list of resources to select one for trade. -->
-	<VBox name="resources" size="200,0" position="20,35">
+	<VBox name="resources" size="220,0" position="15,35">
 	<Spacer />
 	</VBox>
 </Container>
