@@ -392,11 +392,14 @@ class RouteConfig(object):
 				if tile is not None and tile.settlement is not None:
 					self.append_warehouse( tile.settlement.warehouse )
 
-		self.minimap = Minimap(icon, self.session, \
-		                       horizons.main.fife.targetrenderer,
-		                       horizons.main.fife.imagemanager,
+		self.minimap = Minimap(icon, session=self.session,
+		                       world=self.session.world,
+		                       view=self.session.view,
+		                       targetrenderer=horizons.main.fife.targetrenderer,
+		                       imagemanager=horizons.main.fife.imagemanager,
 		                       cam_border=False,
 		                       use_rotation=False,
+		                       preview=True,
 		                       on_click=on_click)
 
 		resources = self.session.db.get_res_id_and_icon(True)

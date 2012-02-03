@@ -105,10 +105,12 @@ class IngameGui(LivingObject):
 		minimap.position_technique = "right+0:top+0"
 
 		icon = minimap.findChild(name="minimap")
-		self.minimap = Minimap(icon, self.session, \
-		                       horizons.main.fife.targetrenderer, \
-		                       horizons.main.fife.imagemanager, \
-		                       renderer=self.session.view.renderer['GenericRenderer'])
+		self.minimap = Minimap(icon,
+		                       targetrenderer=horizons.main.fife.targetrenderer,
+		                       imagemanager=horizons.main.fife.imagemanager,
+		                       session=self.session,
+		                       world=self.session.world,
+		                       view=self.session.view)
 		minimap.mapEvents({
 			'zoomIn' : self.session.view.zoom_in,
 			'zoomOut' : self.session.view.zoom_out,

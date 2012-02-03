@@ -75,15 +75,19 @@ class Minimap(object):
 	__ship_route_counter = get_counter()
 	_instances = [] # all active instances
 
-	def __init__(self, position, session, targetrenderer, imagemanager, renderer=None,
-	             cam_border=True, use_rotation=True, on_click=None):
+	def __init__(self, position, session, world, view, targetrenderer, imagemanager, renderer=None,
+	             cam_border=True, use_rotation=True, on_click=None, preview=False):
 		"""
 		@param position: a Rect or a Pychan Icon, where we will draw to
+		@param world: World object or fake thereof
+		@param view: View object for cam control. Can be None to disable this
 		@param renderer: renderer to be used if position isn't an icon
-		@param targetrenderer: target renderer to be used to draw directly into an image
+		@param targetrenderer: fife target rendererfor drawing on icons
+		@param imagemanager: fife imagemanager for drawing on icons
 		@param cam_border: boolean, whether to draw the cam border
 		@param use_rotation: boolean, whether to use rotation (it must also be enabled in the settings)
 		@param on_click: function taking 1 argument or None for scrolling
+		@param preview: flag, whether to only show the map as preview
 		"""
 		if isinstance(position, Rect):
 			self.location = position
@@ -93,6 +97,8 @@ class Minimap(object):
 			self.icon = position
 			self.use_overlay_icon(self.icon)
 		self.session = session
+		self.world = world
+		self.view = view
 		self.rotation = 0
 
 		if on_click is not None:
@@ -100,8 +106,8 @@ class Minimap(object):
 
 		self.cam_border = cam_border
 		self.use_rotation = use_rotation
+		self.preview = preview
 
-		self.world = None
 		self.location_center = self.location.center()
 
 		self._id = str(self.__class__.__minimap_id_counter.next()) # internal identifier, used for allocating resources
@@ -124,8 +130,8 @@ class Minimap(object):
 		but you can disable it with this and enable again with draw().
 		Stops all updates."""
 		ExtScheduler().rem_all_classinst_calls(self)
-		if self.session.view.has_change_listener(self.update_cam):
-			self.session.view.remove_change_listener(self.update_cam)
+		if self.view is not None and self.view.has_change_listener(self.update_cam):
+			self.view.remove_change_listener(self.update_cam)
 
 		if self in self.__class__._instances:
 			self.__class__._instances.remove(self)
@@ -135,16 +141,16 @@ class Minimap(object):
 		The world you specified is reused for every operation until the next draw().
 		@param recalculate: do a full recalculation
 		"""
-		if not self.world:
-			self.world = self.session.world # use this from now on
+		if self.world is None and self.session.world is not None:
+			self.world = self.session.world # in case minimap has been constructed before the world
 		if not self.world.inited:
 			return # don't draw while loading
 
 		self.__class__._instances.append(self)
 
 		# update cam when view updates
-		if not self.session.view.has_change_listener(self.update_cam):
-			self.session.view.add_change_listener(self.update_cam)
+		if self.view is not None and not self.view.has_change_listener(self.update_cam):
+			self.view.add_change_listener(self.update_cam)
 
 		if not hasattr(self, "icon"): #
 			# add to global generic renderer with id specific to this instance
@@ -156,20 +162,21 @@ class Minimap(object):
 			self.minimap_image.reset()
 			self.icon.image = fife.GuiImage( self.minimap_image.image )
 
+		print 'do draw'
 		self.update_cam()
 		self._recalculate()
-		self._timed_update(force=True)
-
-		ExtScheduler().rem_all_classinst_calls(self)
-		ExtScheduler().add_new_object(self._timed_update, self, \
-								               self.SHIP_DOT_UPDATE_INTERVAL, -1)
+		if not self.preview:
+			self._timed_update(force=True)
+			ExtScheduler().rem_all_classinst_calls(self)
+			ExtScheduler().add_new_object(self._timed_update, self, \
+			                              self.SHIP_DOT_UPDATE_INTERVAL, -1)
 
 	def _get_render_name(self, key):
 		return self.RENDER_NAMES[key] + self._id
 
 	def update_cam(self):
 		"""Redraw camera border."""
-		if not self.cam_border:
+		if not self.cam_border or self.view is None: # needs view
 			return
 		if self.world is None or not self.world.inited:
 			return # don't draw while loading
@@ -177,7 +184,7 @@ class Minimap(object):
 		self.minimap_image.set_drawing_enabled()
 		self.minimap_image.rendertarget.removeAll(self._get_render_name("cam"))
 		# draw rect for current screen
-		displayed_area = self.session.view.get_displayed_area()
+		displayed_area = self.view.get_displayed_area()
 		minimap_corners_as_point = []
 		for corner in displayed_area.get_corners():
 			# check if the corners are outside of the screen
@@ -241,6 +248,8 @@ class Minimap(object):
 		Scrolls screen to the point, where the cursor points to on the minimap.
 		Overwrite this method to your convenience.
 		"""
+		if self.preview:
+			return # we don't do anything in this mode
 		map_coord = event.map_coord
 		moveable_selecteds = [ i for i in self.session.selected_instances if i.movable ]
 		if moveable_selecteds and event.getButton() == fife.MouseEvent.RIGHT:
@@ -249,7 +258,10 @@ class Minimap(object):
 			for i in moveable_selecteds:
 				Act(i, *map_coord).execute(self.session)
 		elif event.getButton() == fife.MouseEvent.LEFT:
-			self.session.view.center(*map_coord)
+			if self.view is None:
+				print 'Warning: Can\'t handle minimap clicks since we have no view object'
+			else:
+				self.view.center(*map_coord)
 
 	def _on_click(self, event):
 		event.map_coord = self._get_event_coord(event)
@@ -294,7 +306,7 @@ class Minimap(object):
 				self.icon.hide_tooltip()
 				return
 
-			tile = self.session.world.get_tile( Point(*coords) )
+			tile = self.world.get_tile( Point(*coords) )
 			if tile is not None and tile.settlement is not None:
 				new_tooltip = unicode(tile.settlement.get_component(NamedComponent).name)
 				if self.icon.tooltip != new_tooltip:
@@ -394,8 +406,6 @@ class Minimap(object):
 		self.highlight(path[ -1 ], factor=0.4, speed= ( (1.0+math.sqrt(5) / 2) ), finish_callback=cleanup, color=color)
 
 		return True
-
-
 
 	def _recalculate(self, where = None):
 		"""Calculate which pixel of the minimap should display what and draw it
