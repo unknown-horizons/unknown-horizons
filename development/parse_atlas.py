@@ -130,7 +130,7 @@ print >> f, "CREATE TABLE tile_sets_atlas('file' TEXT NOT NULL, 'atlas_id' INTEG
 'xpos' INTEGER NOT NULL, 'ypos' INTEGER NOT NULL, \
 'width' INTEGER NOT NULL, 'height' INTEGER NOT NULL);";
 
-db = horizons.main._create_map_db()
+db = horizons.main._create_main_db_create_main_db()
 anims = db("SELECT file FROM animation")
 for (file,) in anims:
 	try:

@@ -112,7 +112,10 @@ def start(command_line_arguments):
 	if command_line_arguments.max_ticks:
 		GAME.MAX_TICKS = command_line_arguments.max_ticks
 
-	db = _create_map_db()
+	db = _create_main_db()
+
+	from horizons.entities import Entities
+	Entities.load(db, load_now=False) # create all references
 
 	# init game parts
 
@@ -205,9 +208,6 @@ def start(command_line_arguments):
 	if command_line_arguments.gui_test:
 		from tests.gui import TestRunner
 		TestRunner(fife, command_line_arguments.gui_test)
-
-	from horizons.entities import Entities
-	Entities.load_grounds( _create_map_db() )
 
 	fife.run()
 
@@ -487,7 +487,7 @@ def _load_last_quicksave():
 	load_game(savegame=save)
 	return True
 
-def _create_map_db():
+def _create_main_db():
 	"""Returns a dbreader instance, that is connected to the main game data dbfiles.
 	NOTE: This data is read_only, so there are no concurrency issues"""
 	_db = UhDbAccessor(':memory:')
@@ -497,8 +497,6 @@ def _create_map_db():
 		_db.execute_script(sql)
 	return _db
 
-a = _create_map_db
-
 def preload_game_data(lock):
 	"""Preloads game data.
 	Keeps releasing and acquiring lock, runs until lock can't be acquired."""
@@ -507,7 +505,7 @@ def preload_game_data(lock):
 		from horizons.entities import Entities
 		from horizons.util import Callback
 		log = logging.getLogger("preload")
-		mydb = _create_map_db() # create own db reader instance, since it's not thread-safe
+		mydb = _create_main_db() # create own db reader instance, since it's not thread-safe
 		preload_functions = [ ActionSetLoader.load, \
 		                      TileSetLoader.load,
 		                      Callback(Entities.load_grounds, mydb, load_now=True), \

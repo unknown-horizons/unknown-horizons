@@ -5,9 +5,7 @@
 		<ListBox name="maplist" />
 	</ScrollArea>
 	<Label name="recommended_number_of_players_lbl" text=""/>
-	<Label name="a" text="la"/>
-	<TooltipIcon name="map_preview_minimap" size="150,150" max_size="150,150" is_focusable="0"/> 
-	<Label name="b" text="le"/>
+	<TooltipIcon name="map_preview_minimap" size="130,130" max_size="130,130" is_focusable="0"/> 
 
 
 <!--

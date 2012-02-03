@@ -68,7 +68,7 @@ def setup_package():
 	fail only because a production now takes 1 second more in the game.
 	"""
 	global db
-	db = horizons.main._create_map_db()
+	db = horizons.main._create_main_db()
 
 
 def create_map():

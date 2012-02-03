@@ -51,7 +51,6 @@ class SingleplayerMenu(object):
 		self.current.playerdata = PlayerDataSelection(self.current, self.widgets)
 		self.current.aidata = AIDataSelection(self.current, self.widgets)
 
-		show = "free_maps"
 		self.__select_single(show)
 
 	def __select_single(self, show):
@@ -92,9 +91,7 @@ class SingleplayerMenu(object):
 				#xgettext:python-format
 				self.current.findChild(name="recommended_number_of_players_lbl").text = \
 				    _("Recommended number of players: {number}").format(number=number_of_players)
-				from fife import fife
 				minimap_icon = self.current.findChild(name="map_preview_minimap")
-				"""
 				from horizons.world import World
 				from horizons.util import SavegameAccessor, WorldObject, Rect, Point
 				WorldObject.reset()
@@ -103,47 +100,16 @@ class SingleplayerMenu(object):
 				world.load_raw_map( SavegameAccessor( self.__get_selected_map() ), preview=True )
 				if hasattr(self, "minimap"):
 					self.minimap.end()
-				r = Rect.init_from_topleft_and_size(0,0,200,200)
-				from fife import fife
-				#rend = fife.OffRenderer( horizons.main.fife.engine.getRenderBackend() )
-				rend = horizons.main.fife.engine.getOffRenderer()
-				print rend.isEnabled()
-				rend.setEnable(True)
-				print rend.isEnabled()
-				self.minimap = Minimap(r,
+				self.minimap = Minimap(minimap_icon,
 				                  session=None,
 				                  view=None,
 				                  world=world,
-				                  renderer=rend,
 				                  targetrenderer=horizons.main.fife.targetrenderer,
 				                  imagemanager=horizons.main.fife.imagemanager,
 				                  cam_border=False,
 				                  use_rotation=False,
 				                  preview=True)
 				self.minimap.draw()
-				"""
-				targetrenderer=horizons.main.fife.targetrenderer
-
-				imgman = horizons.main.fife.imagemanager
-				img = imgman.loadBlank(100,100)
-
-				rt = targetrenderer.createRenderTarget( img )
-				targetrenderer.setRenderTarget( rt.getTarget().getName(), False, 0 )
-
-				rt.addQuad( "foo",
-		                           fife.Point(0,0),
-		                           fife.Point(0, 100),
-		                           fife.Point(100, 100),
-		                           fife.Point(100, 0),
-		                           255,0,0)
-				rt.addLine("bar", fife.Point(10,10), fife.Point(10,50), 0, 255, 0)
-
-
-				#img = imgman.load('content/gui/images/cursors/cursor_pipette.png')
-				minimap_icon.image = fife.GuiImage(img)
-				print 'yay'
-
-
 			if len(maps_display) > 0:
 				# select first entry
 				self.current.distributeData({ 'maplist' : 0, })

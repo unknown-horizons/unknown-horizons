@@ -67,7 +67,7 @@ class Island(BuildingOwner, WorldObject):
 		@param db: db instance with island table
 		@param islandid: id of island in that table
 		@param session: reference to Session instance
-		@param preview: flag, preview mode
+		@param preview: flag, map preview mode
 		"""
 		super(Island, self).__init__(worldid=islandid)
 
@@ -79,24 +79,23 @@ class Island(BuildingOwner, WorldObject):
 		x, y, filename = db("SELECT x, y, file FROM island WHERE rowid = ? - 1000", islandid)[0]
 		self.__init(Point(x, y), filename, preview=preview)
 
-		if preview: # don't need rest for now
-			return
-
-		# create building indexers
-		from horizons.world.units.animal import WildAnimal
-		self.building_indexers = {}
-		self.building_indexers[BUILDINGS.TREE_CLASS] = BuildingIndexer(WildAnimal.walking_range, self, self.session.random)
+		if not preview:
+			# create building indexers
+			from horizons.world.units.animal import WildAnimal
+			self.building_indexers = {}
+			self.building_indexers[BUILDINGS.TREE_CLASS] = BuildingIndexer(WildAnimal.walking_range, self, self.session.random)
 
 		# load settlements
 		for (settlement_id,) in db("SELECT rowid FROM settlement WHERE island = ?", islandid):
 			settlement = Settlement.load(db, settlement_id, self.session, self)
 			self.settlements.append(settlement)
 
-		# load buildings
-		from horizons.world import load_building
-		for (building_worldid, building_typeid) in \
-		    db("SELECT rowid, type FROM building WHERE location = ?", islandid):
-			load_building(self.session, db, building_typeid, building_worldid)
+		if not preview:
+			# load buildings
+			from horizons.world import load_building
+			for (building_worldid, building_typeid) in \
+				  db("SELECT rowid, type FROM building WHERE location = ?", islandid):
+				load_building(self.session, db, building_typeid, building_worldid)
 
 	def _get_island_db(self):
 		# check if filename is a random map
@@ -140,8 +139,6 @@ class Island(BuildingOwner, WorldObject):
 		self.wild_animals = []
 		self.num_trees = 0
 
-		self.path_nodes = IslandPathNodes(self)
-
 		# define the rectangle with the smallest area that contains every island tile its position
 		min_x = min(zip(*self.ground_map.keys())[0])
 		max_x = max(zip(*self.ground_map.keys())[0])
@@ -150,6 +147,8 @@ class Island(BuildingOwner, WorldObject):
 		self.position = Rect.init_from_borders(min_x, min_y, max_x, max_y)
 
 		if not preview:
+			self.path_nodes = IslandPathNodes(self)
+
 			# repopulate wild animals every 2 mins if they die out.
 			Scheduler().add_new_object(self.check_wild_animal_population, self, Scheduler().get_ticks(120), -1)
 

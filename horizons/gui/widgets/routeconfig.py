@@ -399,7 +399,6 @@ class RouteConfig(object):
 		                       imagemanager=horizons.main.fife.imagemanager,
 		                       cam_border=False,
 		                       use_rotation=False,
-		                       preview=True,
 		                       on_click=on_click)
 
 		resources = self.session.db.get_res_id_and_icon(True)

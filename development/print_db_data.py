@@ -31,7 +31,7 @@ init_environment()
 import horizons.main
 from horizons.constants import UNITS, SETTLER
 
-db = horizons.main._create_map_db()
+db = horizons.main._create_main_db_create_main_db()
 
 def get_obj_name(obj):
 	global db

@@ -51,13 +51,13 @@ class Entities(object):
 	log = logging.getLogger('entities')
 
 	@classmethod
-	def load(cls, db):
+	def load(cls, db, load_now=False):
 		if cls.loaded:
 			return
 
-		cls.load_grounds(db)
-		cls.load_buildings(db)
-		cls.load_units()
+		cls.load_grounds(db, load_now)
+		cls.load_buildings(db, load_now)
+		cls.load_units(load_now)
 		cls.loaded = True
 
 	@classmethod

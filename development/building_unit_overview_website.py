@@ -36,7 +36,7 @@ from horizons.util.loaders.actionsetloader import ActionSetLoader
 from horizons.constants import UNITS
 
 global db, loader, query
-db = horizons.main._create_map_db()
+db = horizons.main._create_main_db()
 loader = ActionSetLoader()
 query = 'SELECT action_set_id FROM action_set WHERE object_id = ?'
 
