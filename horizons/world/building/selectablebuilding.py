@@ -20,13 +20,19 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
+from fife import fife
+
+import horizons.main
+
 from horizons.constants import GFX
+from horizons.constants import LAYERS
 from horizons.util import decorators
 
 class SelectableBuilding(object):
 	range_applies_only_on_island = True
 	selection_color = (255, 255, 0)
 	_selected_tiles = [] # tiles that are selected. used for clean deselect.
+	_selected_fake_tiles = []
 	is_selectable = True
 
 	def select(self, reset_cam=False):
@@ -93,6 +99,9 @@ class SelectableBuilding(object):
 				remove_colored(tile.object._instance)
 		selected_tiles = cls._selected_tiles
 		cls._selected_tiles = []
+		for fake_tile in cls._selected_fake_tiles:
+			session.view.layers[LAYERS.FIELDS].deleteInstance(fake_tile)
+		cls._selected_fake_tiles = []
 		return selected_tiles
 
 	@classmethod
@@ -111,21 +120,43 @@ class SelectableBuilding(object):
 			for tile in ground_holder.get_tiles_in_radius(position, cls.radius, include_self=False):
 				try:
 					if ( 'constructible' in tile.classes or 'coastline' in tile.classes ):
-						cls._add_selected_tile(tile, position, renderer)
+						cls._add_selected_tile(tile, renderer)
 				except AttributeError:
 					pass # no tile or no object on tile
 		else:
 			# we have to color water too
-			for tile in world.get_tiles_in_radius(position.center(), cls.radius):
-				try:
-					if settlement is None or tile.settlement is None or tile.settlement == settlement:
-						cls._add_selected_tile(tile, position, renderer)
-				except AttributeError:
-					pass # no tile or no object on tile
+			# since water tiles are huge, create fake tiles and color them
 
+			if not hasattr(cls, "_fake_tile_obj"):
+				# create object to create instances from
+				cls._fake_tile_obj = horizons.main.fife.engine.getModel().createObject('fake_tile_obj', 'ground')
+				fife.ObjectVisual.create(cls._fake_tile_obj)
+
+				img_path = 'content/gfx/base/water/fake_water.png'
+				img = horizons.main.fife.imagemanager.load(img_path)
+				for rotation in [45, 135, 225, 315]:
+					cls._fake_tile_obj.get2dGfxVisual().addStaticImage(rotation, img.getHandle())
+
+			layer = world.session.view.layers[LAYERS.FIELDS]
+			island = world.get_island(position.origin)
+			# color island or fake tile
+			for tup in position.get_radius_coordinates(cls.radius):
+				tile = island.get_tile_tuple(tup)
+				if tile is not None:
+					try:
+						cls._add_selected_tile(tile, renderer)
+					except AttributeError:
+						pass # no tile or no object on tile
+				else: # need extra tile
+					inst = layer.createInstance(cls._fake_tile_obj,
+					                            fife.ModelCoordinate(tup[0], tup[1], 0), "")
+					fife.InstanceVisual.create(inst)
+
+					cls._selected_fake_tiles.append(inst)
+					renderer.addColored(inst, *cls.selection_color)
 
 	@classmethod
-	def _add_selected_tile(cls, tile, position, renderer):
+	def _add_selected_tile(cls, tile, renderer):
 		cls._selected_tiles.append(tile)
 		renderer.addColored(tile._instance, *cls.selection_color)
 		# Add color to objects on tht tiles

@@ -33,7 +33,5 @@ class Housing(SelectableBuilding, BasicBuilding, BuildableSingle):
 
 
 class SignalFire(Housing):
-	# TODO: range_applies_only_on_island is disabled until #760 is fixed
-	# (Big sea tiles cause wrong range highlight)
-	#range_applies_only_on_island = False
+	range_applies_only_on_island = False
 	tabs = (SignalFireOverviewTab, )
