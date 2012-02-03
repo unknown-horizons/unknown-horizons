@@ -51,9 +51,10 @@ def setup_package():
 
 def teardown_package():
 	"""
-	Close database and remove the temporary directory.
+	Close database.
 	"""
-	db.close()
+	# TODO temporarily disabled, ProductionLine test breaks when using multiprocess
+	#db.close()
 
 
 class TestCase(unittest.TestCase):
@@ -70,3 +71,6 @@ class TestCase(unittest.TestCase):
 
 	def tearDown(self):
 		self.db('ROLLBACK TRANSACTION')
+
+
+_multiprocess_can_split_ = True

@@ -34,19 +34,6 @@ class TestTradePostComponent(TestCase):
 	TODO: buy_resource, sell_resource (needs ships and player concept)
 	"""
 
-	@classmethod
-	def setUpClass(cls):
-		class Timer(object):
-			def add_call(self, x):
-				pass
-			def get_ticks(self, x):
-				return 100
-		Scheduler.create_instance(timer=Timer())
-
-	@classmethod
-	def tearDownClass(cls):
-		Scheduler.destroy_instance()
-
 	def setUp(self):
 		self.inventory = GenericStorage()
 		self.owner_inventory = GenericStorage()
@@ -63,6 +50,16 @@ class TestTradePostComponent(TestCase):
 		self.tradepost.instance = Instance(self.inventory)
 		self.tradepost.instance.owner = Instance(self.owner_inventory)
 		self.tradepost.initialize()
+
+		class Timer(object):
+			def add_call(self, x):
+				pass
+			def get_ticks(self, x):
+				return 100
+		Scheduler.create_instance(timer=Timer())
+
+	def tearDown(self):
+		Scheduler.destroy_instance()
 
 	def test_buy(self):
 		self.owner_inventory.alter(RES.GOLD_ID, 1)
