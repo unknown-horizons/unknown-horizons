@@ -22,6 +22,7 @@
 import horizons.main
 
 from horizons.util import Callback, random_map
+from horizons.extscheduler import ExtScheduler
 from horizons.savegamemanager import SavegameManager
 from horizons.gui.modules import AIDataSelection, PlayerDataSelection
 from horizons.constants import AI
@@ -92,24 +93,7 @@ class SingleplayerMenu(object):
 				self.current.findChild(name="recommended_number_of_players_lbl").text = \
 				    _("Recommended number of players: {number}").format(number=number_of_players)
 				minimap_icon = self.current.findChild(name="map_preview_minimap")
-				from horizons.world import World
-				from horizons.util import SavegameAccessor, WorldObject, Rect, Point
-				WorldObject.reset()
-				world = World(session=None)
-				world.inited = True
-				world.load_raw_map( SavegameAccessor( self.__get_selected_map() ), preview=True )
-				if hasattr(self, "minimap"):
-					self.minimap.end()
-				self.minimap = Minimap(minimap_icon,
-				                  session=None,
-				                  view=None,
-				                  world=world,
-				                  targetrenderer=horizons.main.fife.targetrenderer,
-				                  imagemanager=horizons.main.fife.imagemanager,
-				                  cam_border=False,
-				                  use_rotation=False,
-				                  preview=True)
-				self.minimap.draw()
+				self._update_map_preview(minimap_icon, self.__get_selected_map())
 			if len(maps_display) > 0:
 				# select first entry
 				self.current.distributeData({ 'maplist' : 0, })
@@ -233,6 +217,8 @@ class SingleplayerMenu(object):
 				pirate_enabled = self.widgets['game_settings'].findChild(name = 'pirates').marked, \
 				natural_resource_multiplier = self.__get_natural_resource_multiplier())
 
+		ExtScheduler().rem_all_classinst_calls(self)
+
 	# random map options
 	map_sizes = [50, 100, 150, 200, 250]
 	water_percents = [20, 30, 40, 50, 60, 70, 80]
@@ -245,7 +231,7 @@ class SingleplayerMenu(object):
 			widget.findChild(name = 'map_size_lbl').text = _('Map size:') + u' ' + \
 				unicode(self.map_sizes[int(map_size_slider.value)])
 			horizons.main.fife.set_uh_setting("RandomMapSize", map_size_slider.value)
-			horizons.main.fife.save_settings()
+			self._on_random_map_parameter_changed()
 		map_size_slider.capture(on_map_size_slider_change)
 		map_size_slider.value = horizons.main.fife.get_uh_setting("RandomMapSize")
 
@@ -254,6 +240,7 @@ class SingleplayerMenu(object):
 			widget.findChild(name = 'water_percent_lbl').text = _('Water:') + u' ' + \
 				unicode(self.water_percents[int(water_percent_slider.value)]) + u'%'
 			horizons.main.fife.set_uh_setting("RandomMapWaterPercent", water_percent_slider.value)
+			self._on_random_map_parameter_changed()
 		water_percent_slider.capture(on_water_percent_slider_change)
 		water_percent_slider.value = horizons.main.fife.get_uh_setting("RandomMapWaterPercent")
 
@@ -262,6 +249,7 @@ class SingleplayerMenu(object):
 			widget.findChild(name = 'max_island_size_lbl').text = _('Max island size:') + u' ' + \
 				unicode(self.island_sizes[int(max_island_size_slider.value)])
 			horizons.main.fife.set_uh_setting("RandomMapMaxIslandSize", max_island_size_slider.value)
+			self._on_random_map_parameter_changed()
 		max_island_size_slider.capture(on_max_island_size_slider_change)
 		max_island_size_slider.value = horizons.main.fife.get_uh_setting("RandomMapMaxIslandSize")
 
@@ -270,6 +258,7 @@ class SingleplayerMenu(object):
 			widget.findChild(name = 'preferred_island_size_lbl').text = _('Preferred island size:') + u' ' + \
 				unicode(self.island_sizes[int(preferred_island_size_slider.value)])
 			horizons.main.fife.set_uh_setting("RandomMapPreferredIslandSize", preferred_island_size_slider.value)
+			self._on_random_map_parameter_changed()
 		preferred_island_size_slider.capture(on_preferred_island_size_slider_change)
 		preferred_island_size_slider.value = horizons.main.fife.get_uh_setting("RandomMapPreferredIslandSize")
 
@@ -278,6 +267,7 @@ class SingleplayerMenu(object):
 			widget.findChild(name = 'island_size_deviation_lbl').text = _('Island size deviation:') + u' ' + \
 				unicode(self.island_size_deviations[int(island_size_deviation_slider.value)])
 			horizons.main.fife.set_uh_setting("RandomMapIslandSizeDeviation", island_size_deviation_slider.value)
+			self._on_random_map_parameter_changed()
 		island_size_deviation_slider.capture(on_island_size_deviation_slider_change)
 		island_size_deviation_slider.value = horizons.main.fife.get_uh_setting("RandomMapIslandSizeDeviation")
 
@@ -286,6 +276,19 @@ class SingleplayerMenu(object):
 		on_max_island_size_slider_change()
 		on_preferred_island_size_slider_change()
 		on_island_size_deviation_slider_change()
+
+	def _on_random_map_parameter_changed(self):
+		"""Called to schedule an update of the map preview (only done after delay because expenseive)"""
+		if hasattr(self, "_random_map_preview_update_scheduled"):
+			return
+		self._random_map_preview_update_scheduled = True
+		ExtScheduler().add_new_object(self._do_update_random_map_preview, self, 5)
+
+	def _do_update_random_map_preview(self):
+		"""Actually update map preview of random map"""
+		del self._random_map_preview_update_scheduled
+		minimap_icon = self.current.findChild(name="map_preview_minimap")
+		self._update_map_preview(minimap_icon, self.__get_random_map_file())
 
 	# game options
 	resource_densities = [0.5, 0.7, 1, 1.4, 2]
@@ -334,3 +337,23 @@ class SingleplayerMenu(object):
 		if hasattr(self.current, 'playerdata'):
 			playername = self.current.playerdata.get_player_name()
 			horizons.main.fife.set_uh_setting("Nickname", playername)
+
+	def _update_map_preview(self, minimap_icon, map_file):
+		from horizons.world import World
+		from horizons.util import SavegameAccessor, WorldObject, Rect, Point
+		WorldObject.reset()
+		world = World(session=None)
+		world.inited = True
+		world.load_raw_map( SavegameAccessor( map_file ), preview=True )
+		if hasattr(self, "minimap"):
+			self.minimap.end()
+		self.minimap = Minimap(minimap_icon,
+				                session=None,
+				                view=None,
+				                world=world,
+				                targetrenderer=horizons.main.fife.targetrenderer,
+				                imagemanager=horizons.main.fife.imagemanager,
+				                cam_border=False,
+				                use_rotation=False,
+				                preview=True)
+		self.minimap.draw()

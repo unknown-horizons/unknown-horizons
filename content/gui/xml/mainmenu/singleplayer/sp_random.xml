@@ -33,6 +33,8 @@
 		</HBox>-->
 	</VBox>
 
+  <TooltipIcon name="map_preview_minimap" size="130,130" max_size="130,130" is_focusable="0"/>
+
 	<VBox name="game_settings_box" />
 
 <Spacer />
