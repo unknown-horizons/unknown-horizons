@@ -318,10 +318,6 @@ class IngameGui(LivingObject):
 		else:
 			self.show_menu(menu)
 
-	def _set_label_position(self, widget, lbl_name, icon_name, xoffset, yoffset):
-		icon  = self.widgets[widget].child_finder(icon_name)
-		label = self.widgets[widget].child_finder(lbl_name)
-		label.position = (icon.position[0] - label.size[0]/2 + xoffset, yoffset)
 
 	def save(self, db):
 		self.message_widget.save(db)
@@ -575,3 +571,7 @@ class OldOutdatedAndOnused(object):
 			else:
 				self._set_label_position('status', lbl_name, icon_name, 24, 31 + i*20)
 
+	def _set_label_position(self, widget, lbl_name, icon_name, xoffset, yoffset):
+		icon  = self.widgets[widget].child_finder(icon_name)
+		label = self.widgets[widget].child_finder(lbl_name)
+		label.position = (icon.position[0] - label.size[0]/2 + xoffset, yoffset)

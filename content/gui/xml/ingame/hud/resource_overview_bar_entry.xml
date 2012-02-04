@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<!--
+	This is a protype of a resource slot.
+	It will be used multiple times by python code as needed.
+	The idea behind it is to keep everything separated so that we can fix values here, and pychan will leave them like that. It's still pixel positioning, that is ugly in principle, but we only have to position these 3 elements.
+-->
+
+<Container size="70,80" position="10,10" name="status_gold">
+	<TooltipIcon name="gold_icon" tooltip="Gold"
+		image="content/gui/images/background/widgets/res_mon_bg.png" />
+	<Icon image="content/gui/icons/resources/32/001.png" position="17,12" />
+	<Label name="gold_available" text="a" />
+	<Label name="gold_needed" text="b" />
+</Container>
+
+<!--
+<HBox position="10,10">
+</HBox>
+<Container name="resource_overview_bar">
+	<HBox position="93,10" name="resource_overview_inventory">
+	</HBox>
+
+</Container>
+
+-->
