@@ -47,7 +47,9 @@ class UnitClass(IngameType):
 	def ensure_action_loaded(cls, action_set_id, action):
 		"""Called when an action is actually needed, makes sure it is loaded then"""
 		try:
-			cls._action_load_callbacks[action_set_id][action]()
+			# load for all instances, don't care for separating again per object
+			for i in cls._action_load_callbacks[action_set_id][action]:
+				i()
 			del cls._action_load_callbacks[action_set_id][action]
 		except KeyError:
 			pass
@@ -78,7 +80,13 @@ class UnitClass(IngameType):
 				action.get2dGfxVisual().addAnimation(int(rotation), anim)
 				action.setDuration(anim.getDuration())
 
+		#{ action_set : { action_id : [ load0, load1, ..., loadn ]}}
+		# (loadi are load functions of objects, there can be many per as_id and action)
 		for action_set_id in cls.action_sets:
-			cls._action_load_callbacks[action_set_id] = {}
+			if not action_set_id in cls._action_load_callbacks:
+				cls._action_load_callbacks[action_set_id] = {}
 			for action_id in action_sets[action_set_id].iterkeys():
-				cls._action_load_callbacks[action_set_id][action_id] = Callback(do_load, action_set_id, action_id)
+				if not action_id in cls._action_load_callbacks[action_set_id]:
+					cls._action_load_callbacks[action_set_id][action_id] = []
+				cls._action_load_callbacks[action_set_id][action_id].append(
+				  Callback(do_load, action_set_id, action_id))
