@@ -169,11 +169,12 @@ class ShipOverviewTab(OverviewTab):
 			self.widget.child_finder('found_settlement').set_inactive()
 			self.widget.child_finder('found_settlement').tooltip = tooltip
 
-		cb = Callback( self.instance.session.ingame_gui.resourceinfo_set, self.instance,
-			Entities.buildings[BUILDINGS.WAREHOUSE_CLASS].costs, {})
+		cb = Callback( self.instance.session.ingame_gui.resource_overview.set_construction_mode,
+		               self.instance,
+		               Entities.buildings[BUILDINGS.WAREHOUSE_CLASS].costs)
 		events['found_settlement/mouseEntered'] = cb
 
-		cb1 = Callback(self.instance.session.ingame_gui.resourceinfo_set, None) # hides the resource status widget
+		cb1 = Callback(self.instance.session.ingame_gui.resource_overview.close_construction_mode)
 		cb2 = Callback(self.widget.child_finder('found_settlement').hide_tooltip)
 		#TODO the tooltip should actually hide on its own. Ticket #1096
 		cb = Callback.ChainedCallbacks(cb1, cb2)
