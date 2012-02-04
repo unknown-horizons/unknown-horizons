@@ -26,7 +26,7 @@ import logging
 from fife import fife
 
 import horizons.main
-from horizons.util import ActionSetLoader
+from horizons.util import ActionSetLoader, Callback
 from horizons.world.ingametype import IngameType
 
 class UnitClass(IngameType):
@@ -35,11 +35,22 @@ class UnitClass(IngameType):
 	basepackage = 'horizons.world.units.'
 	classstring = 'Unit['
 
+	_action_load_callbacks = {}
+
 	def __init__(self, id, yaml_data):
 		"""
 		@param id: unit id.
 		"""
 		super(UnitClass, self).__init__(id, yaml_data)
+
+	@classmethod
+	def ensure_action_loaded(cls, action_set_id, action):
+		"""Called when an action is actually needed, makes sure it is loaded then"""
+		try:
+			cls._action_load_callbacks[action_set_id][action]()
+			del cls._action_load_callbacks[action_set_id][action]
+		except KeyError:
+			pass
 
 	def _loadObject(cls):
 		"""Loads the object with all animations.
@@ -55,13 +66,19 @@ class UnitClass(IngameType):
 		cls._real_object.setBlocking(False)
 		cls._real_object.setStatic(False)
 		action_sets = ActionSetLoader.get_sets()
+		# create load callbacks to be called when the actions are needed
+
+		def do_load(action_set_id, action_id):
+			action = cls._real_object.createAction(action_id+"_"+str(action_set_id))
+			fife.ActionVisual.create(action)
+			for rotation in action_sets[action_set_id][action_id].iterkeys():
+				anim = horizons.main.fife.animationloader.loadResource( \
+					str(action_set_id)+"+"+str(action_id)+"+"+ \
+					str(rotation) + ':shift:center+0,bottom+8')
+				action.get2dGfxVisual().addAnimation(int(rotation), anim)
+				action.setDuration(anim.getDuration())
+
 		for action_set_id in cls.action_sets:
+			cls._action_load_callbacks[action_set_id] = {}
 			for action_id in action_sets[action_set_id].iterkeys():
-				action = cls._real_object.createAction(action_id+"_"+str(action_set_id))
-				fife.ActionVisual.create(action)
-				for rotation in action_sets[action_set_id][action_id].iterkeys():
-					anim = horizons.main.fife.animationloader.loadResource( \
-						str(action_set_id)+"+"+str(action_id)+"+"+ \
-						str(rotation) + ':shift:center+0,bottom+8')
-					action.get2dGfxVisual().addAnimation(int(rotation), anim)
-					action.setDuration(anim.getDuration())
+				cls._action_load_callbacks[action_set_id][action_id] = Callback(do_load, action_set_id, action_id)

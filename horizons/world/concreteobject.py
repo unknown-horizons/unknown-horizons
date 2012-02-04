@@ -25,6 +25,7 @@ from horizons.scheduler import Scheduler
 from horizons.util import WorldObject, Callback, ActionSetLoader
 from horizons.gui.tabs import BuildRelatedTab
 from horizons.world.status import StatusIcon
+from horizons.world.units import UnitClass
 from random import randint
 
 class ConcreteObject(WorldObject):
@@ -111,6 +112,7 @@ class ConcreteObject(WorldObject):
 		if self._instance is not None:
 			if facing_loc is None:
 				facing_loc = self._instance.getFacingLocation()
+			UnitClass.ensure_action_loaded(self._action_set_id, action) # lazy
 			self._instance.act(action+"_"+str(self._action_set_id), facing_loc, repeating)
 		self._action = action
 
