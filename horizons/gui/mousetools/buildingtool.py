@@ -187,7 +187,7 @@ class BuildingTool(NavigationTool):
 		self.buildings_missing_resources.clear()
 
 		settlement = None # init here so we can access it below loop
-		neededResources = {}
+		neededResources, usableResources = {}, {}
 		# check if the buildings are buildable and color them appropriatly
 		for i, building in enumerate(self.buildings):
 			# get gfx for the building
@@ -235,6 +235,10 @@ class BuildingTool(NavigationTool):
 					building.buildable = False
 					# set missing info for gui
 					self.buildings_missing_resources[building] = missing_res
+					# building isn't buildable after all, assemble strange dict values for gui
+					for resource in self._class.costs:
+						usableResources[resource] = usableResources.get(resource, 0) + \
+							self._class.costs[resource]
 
 			if building.buildable:
 				# Tile might still have not buildable color -> remove it
@@ -250,11 +254,8 @@ class BuildingTool(NavigationTool):
 				self.renderer.removeOutlined(self.buildings_fife_instances[building])
 				self.renderer.addColored(self.buildings_fife_instances[building], \
 				                         *self.not_buildable_color)
-
-		self.session.ingame_gui.resource_overview.set_construction_mode(
-			self.ship if self.ship is not None else settlement,
-		  neededResources
-		)
+		self.session.ingame_gui.resourceinfo_set( \
+			self.ship if self.ship is not None else settlement, neededResources, usableResources)
 		self._add_listeners(self.ship if self.ship is not None else settlement)
 
 	def _make_surrounding_transparent(self, building_position):
@@ -302,7 +303,7 @@ class BuildingTool(NavigationTool):
 
 
 	def on_escape(self):
-		self.session.ingame_gui.resource_overview.close_construction_mode()
+		self.session.ingame_gui.resourceinfo_set(None)
 		self._build_logic.on_escape(self.session)
 		if self.gui is not None:
 			self.gui.hide()

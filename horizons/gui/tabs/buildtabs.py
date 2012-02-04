@@ -156,8 +156,8 @@ class BuildTab(TabInterface):
 			#xgettext:python-format
 			button.tooltip = _('{building}: {description}').format(building = _(building.name),
 			                                                    description = _(building.tooltip_text))
-			cb = Callback( self.session.ingame_gui.resource_overview.set_construction_mode,
-						settlement, building.costs )
+			cb = Callback( self.session.ingame_gui.resourceinfo_set,
+						settlement, building.costs, {})
 
 			enough_res = True # show all buildings by default
 			if settlement is not None:

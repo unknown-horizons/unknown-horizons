@@ -157,6 +157,10 @@ class World(BuildingOwner, LivingObject, WorldObject):
 				# the first player should be the human-ai hybrid
 				self.player = self.players[0]
 
+		if self.player is not None:
+			self.player.get_component(StorageComponent).inventory.add_change_listener(self.session.ingame_gui.update_gold, \
+			                                          call_listener_now=True)
+
 		if self.player is None and self.session.is_game_loaded():
 			self.log.warning('WARNING: Cannot autoselect a player because there are no \
 			or multiple candidates.')
@@ -664,6 +668,8 @@ class World(BuildingOwner, LivingObject, WorldObject):
 		player.initialize(inv)  # Componentholder init
 		if local:
 			self.player = player
+			self.player.get_component(StorageComponent).inventory.add_change_listener(self.session.ingame_gui.update_gold, \
+			                                          call_listener_now=True)
 		self.players.append(player)
 
 	def get_tile(self, point):

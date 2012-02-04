@@ -272,8 +272,6 @@ class Session(LivingObject):
 		Scheduler().before_ticking()
 		savegame_db.close()
 
-		self.ingame_gui.
-
 		assert hasattr(self.world, "player"), 'Error: there is no human player'
 		"""
 		TUTORIAL:
