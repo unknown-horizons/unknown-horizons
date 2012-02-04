@@ -19,10 +19,8 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-from horizons.constants import RES
 from horizons.world.component.storagecomponent import StorageComponent
 from horizons.util.gui import load_uh_widget
-from horizons.util import PychanChildFinder
 
 class ResourceOverviewBar(object):
 	"""The thing on the top left.
@@ -42,29 +40,16 @@ class ResourceOverviewBar(object):
 	Invariants:
 	- it should be obvious that the res bar can be configured
 	- it should be obvious that the res bar can be set per settlement
-
-	Has distinguished treatment of gold because it's distinguished by a bigger icon
-	and by being shown always.
 	"""
 
-	GOLD_ENTRY_GUI_FILE = "resource_overview_bar_gold.xml"
-	ENTRY_GUI_FILE = "resource_overview_bar_entry.xml"
-
 	def __init__(self, session):
-		from horizons.session import Session
-		assert isinstance(session, Session)
 		self.session = session
-		self.gold_gui = load_uh_widget(self.__class__.GOLD_ENTRY_GUI_FILE, style="resource_bar")
-		self.gold_gui.child_finder = PychanChildFinder(self.gold_gui)
-		self.gui = [] # list of slots
 
 	def load(self):
 		# called when any game (also new ones) start
 		# register at player inventory for gold updates
-		inv = self.session.world.player.get_component(StorageComponent).inventory
-		inv.add_change_listener(self._update_gold, call_listener_now=True)
-
-		self.gold_gui.show()
+		# TODO
+		pass
 
 	def set_inventory_instance(self, instance):
 		"""Display different inventory. May change resources that are displayed"""
@@ -84,18 +69,9 @@ class ResourceOverviewBar(object):
 		"""Return to normal configuration"""
 		print 'close construction mode'
 		# TODO
-		# hide gui
 		pass
 
 	def _update_gold(self):
-		"""Changelistener to upate player gold"""
-		# set gold amount
-		gold = self.session.world.player.get_component(StorageComponent).inventory[RES.GOLD_ID]
-		gold_available_lbl = self.gold_gui.child_finder("gold_available")
-		gold_available_lbl.text = text = unicode(gold)
-
-		# reposition according to magic forumula passed down from the elders in order to support centering
-		self.gold_gui.resizeToContent() # update label size
-		icon_position = self.gold_gui.child_finder(name="gold_icon").position
-		gold_available_lbl.position = (icon_position[0] - gold_available_lbl.size[0]/2 + 33,  51)
-
+		# TODO
+		# display self.session.world.player.get_component(StorageComponent).inventory gold
+		pass

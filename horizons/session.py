@@ -272,14 +272,13 @@ class Session(LivingObject):
 		Scheduler().before_ticking()
 		savegame_db.close()
 
+		self.ingame_gui.
+
 		assert hasattr(self.world, "player"), 'Error: there is no human player'
 		"""
 		TUTORIAL:
 		From here on you should digg into the classes that are loaded above, especially the world class.
-		(horizons/world/__inirmat(res=res))
--               foundlabel.text = unicode(value)
--               foundlabel.resizeToContent()
-t__.py). It's where the magic happens and all buildings and units are loaded.
+		(horizons/world/__init__.py). It's where the magic happens and all buildings and units are loaded.
 		"""
 
 	def speed_set(self, ticks, suggestion=False):
