@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2012-01-19 20:39+0100\n"
-"PO-Revision-Date: 2012-01-23 19:24+0200\n"
+"PO-Revision-Date: 2012-01-23 19:25+0200\n"
 "Last-Translator: Christopher Oelmueller <chris.oelmueller+uh@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: it\n"
@@ -2457,7 +2457,6 @@ msgstr "Cava di Argilla"
 
 #. tooltip_text of buildings:claypit
 #: horizons/i18n/objecttranslations.py:87
-#, fuzzy
 msgid "Gets clay from deposit."
 msgstr "Ottiene argilla dal deposito."
 
@@ -2468,7 +2467,6 @@ msgstr "Distilleria"
 
 #. tooltip_text of buildings:distillery
 #: horizons/i18n/objecttranslations.py:94
-#, fuzzy
 msgid "Turns sugar into liquor."
 msgstr "Converte lo zucchero in liquore."
 
@@ -2490,7 +2488,6 @@ msgstr "Fattoria"
 
 #. tooltip_text of buildings:farm
 #: horizons/i18n/objecttranslations.py:108
-#, fuzzy
 msgid "Grows field crops and raises livestock."
 msgstr "Coltiva campi, raccoglie ed alleva il bestiame."
 
@@ -2506,7 +2503,6 @@ msgstr "Tenda dei pescatori"
 
 #. tooltip_text of buildings:fishermanstent
 #: horizons/i18n/objecttranslations.py:120
-#, fuzzy
 msgid "Fishes the sea, produces food."
 msgstr "Pescare nel mare, produce cibo."
 
@@ -2532,7 +2528,6 @@ msgstr "Tenda dei cacciatori"
 
 #. tooltip_text of buildings:hunterstent
 #: horizons/i18n/objecttranslations.py:139
-#, fuzzy
 msgid "Hunts wild forest animals, produces food."
 msgstr "Cacciare animali selvaggi, produce cibo."
 
@@ -2573,7 +2568,6 @@ msgstr "Accampamento Tagliaboschi"
 
 #. tooltip_text of buildings:lumberjackcamp
 #: horizons/i18n/objecttranslations.py:167
-#, fuzzy
 msgid "Chops down trees and turns them into boards."
 msgstr "Raccoglie legna e la trasforma in assi."
 
@@ -2584,7 +2578,6 @@ msgstr "Piazza Principale"
 
 #. tooltip_text of buildings:mainsquare
 #: horizons/i18n/objecttranslations.py:174
-#, fuzzy
 msgid "Supplies citizens with goods."
 msgstr "Rifornisce i cittadini con beni."
 
@@ -2600,7 +2593,6 @@ msgstr "Pascolo"
 
 #. tooltip_text of buildings:pasture
 #: horizons/i18n/objecttranslations.py:186
-#, fuzzy
 msgid "Raises sheep. Produces wool. Needs a farm."
 msgstr "Alleva pecore. Produce lana. Necessita di una fattoria."
 
@@ -2611,7 +2603,6 @@ msgstr "Padiglione"
 
 #. tooltip_text of buildings:pavilion
 #: horizons/i18n/objecttranslations.py:193
-#, fuzzy
 msgid "Fulfills religious needs of sailors."
 msgstr "Soddisfa le esigenze religiose dei cittadini."
 
@@ -2622,7 +2613,6 @@ msgstr "Porcile"
 
 #. tooltip_text of buildings:pigsty
 #: horizons/i18n/objecttranslations.py:200
-#, fuzzy
 msgid "Raises pigs. Needs a farm."
 msgstr "Aumenta maiali. Ha bisogno di una fattoria."
 
@@ -2634,7 +2624,6 @@ msgstr "Campo di patate"
 
 #. tooltip_text of buildings:potatofield
 #: horizons/i18n/objecttranslations.py:207
-#, fuzzy
 msgid "Yields food. Needs a farm."
 msgstr "Produce cibo. Necessita di una fattoria."
 
@@ -2645,7 +2634,6 @@ msgstr "Bastione"
 
 #. tooltip_text of buildings:rampart
 #: horizons/i18n/objecttranslations.py:214
-#, fuzzy
 msgid "Protects your settlement."
 msgstr "Difende la tua base."
 
@@ -2656,7 +2644,6 @@ msgstr "Laghi salati"
 
 #. tooltip_text of buildings:saltponds
 #: horizons/i18n/objecttranslations.py:221
-#, fuzzy
 msgid "Evaporates salt. Built on sea coast."
 msgstr "il sale Evapora. Costruire sulla costa del mare."
 
@@ -2667,7 +2654,6 @@ msgstr "Segnale di fuoco"
 
 #. tooltip_text of buildings:signalfire
 #: horizons/i18n/objecttranslations.py:228
-#, fuzzy
 msgid "Allows the player to trade with the free trader."
 msgstr "Permette di commerciare con il libero commerciante."
 
@@ -2678,7 +2664,6 @@ msgstr "Fonderia"
 
 #. tooltip_text of buildings:smeltery
 #: horizons/i18n/objecttranslations.py:235
-#, fuzzy
 msgid "Refines all kind of ores."
 msgstr "Raffina tutti i tipi di minerali."
 
@@ -2689,7 +2674,6 @@ msgstr "Tenda d'immagazzinazione"
 
 #. tooltip_text of buildings:storagetent
 #: horizons/i18n/objecttranslations.py:242
-#, fuzzy
 msgid "Extends stock and provides collectors."
 msgstr "Amplia le scorte e fornisce esattori."
 
@@ -2711,7 +2695,6 @@ msgstr "Taverna"
 
 #. tooltip_text of buildings:tavern
 #: horizons/i18n/objecttranslations.py:256
-#, fuzzy
 msgid "Provides get-together."
 msgstr "Consente incontri."
 
@@ -2722,7 +2705,6 @@ msgstr "Tenda"
 
 #. tooltip_text of buildings:tent
 #: horizons/i18n/objecttranslations.py:263
-#, fuzzy
 msgid "Houses your inhabitants."
 msgstr "Alloggia gli abitanti."
 
@@ -2739,7 +2721,6 @@ msgstr "Campo di Tabacco"
 
 #. tooltip_text of buildings:tobaccofield
 #: horizons/i18n/objecttranslations.py:275
-#, fuzzy
 msgid "Produces tobacco. Needs a farm."
 msgstr "produce tabacco. Ha bisogno di fattoria."
 
@@ -2750,7 +2731,6 @@ msgstr "Tabaccaio"
 
 #. tooltip_text of buildings:tobacconist
 #: horizons/i18n/objecttranslations.py:282
-#, fuzzy
 msgid "Produces tobaccos out of tobacco."
 msgstr "produce tabacchi da tabacco."
 
@@ -2761,7 +2741,6 @@ msgstr "Produttore di utensili"
 
 #. tooltip_text of buildings:toolmaker
 #: horizons/i18n/objecttranslations.py:289
-#, fuzzy
 msgid "Produces tools out of iron."
 msgstr "Produce utensili dal ferro."
 
@@ -2793,7 +2772,6 @@ msgstr "Villagio scolastico"
 
 #. tooltip_text of buildings:villageschool
 #: horizons/i18n/objecttranslations.py:310
-#, fuzzy
 msgid "Provides education."
 msgstr "Fornisce educazione."
 
@@ -2810,7 +2788,6 @@ msgstr "Tenda del Tessitore"
 
 #. tooltip_text of buildings:weaverstent
 #: horizons/i18n/objecttranslations.py:322
-#, fuzzy
 msgid "Turns lamb wool into cloth."
 msgstr "Trasforma la lana di agnelli in abiti."
 
@@ -2821,7 +2798,6 @@ msgstr "Torre di Legno"
 
 #. tooltip_text of buildings:woodentower
 #: horizons/i18n/objecttranslations.py:329
-#, fuzzy
 msgid "Defends your settlement."
 msgstr "Difende la tua base."
 
