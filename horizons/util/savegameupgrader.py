@@ -48,6 +48,10 @@ class SavegameUpgrader(object):
 		db("DROP TABLE production_queue")
 		db("CREATE TABLE \"production_queue\" (object INTEGER NOT NULL, position INTEGER NOT NULL, production_line_id INTEGER NOT NULL)")
 
+	def _upgrade_to_rev49(self, db):
+		db("CREATE TABLE \"resource_overview_bar\" (object INTEGER NOT NULL, position INTEGER NOT NULL, resource INTEGER NOT NULL)")
+
+
 	def _upgrade(self):
 		# fix import loop
 		from horizons.savegamemanager import SavegameManager
@@ -68,6 +72,9 @@ class SavegameUpgrader(object):
 				self._upgrade_to_rev44(db)
 			if rev <= 45:
 				self._upgrade_to_rev45(db)
+			if rev < 49:
+				self._upgrade_to_rev49(db)
+
 
 			db.close()
 

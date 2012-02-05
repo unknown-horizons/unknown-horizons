@@ -82,13 +82,31 @@ class ResourceOverviewBar(object):
 		self.construction_mode = False
 		self._last_build_costs = None
 
-	def load(self):
+
+	def save(self, db):
+		for obj, config in self.resource_configurations.iteritems():
+			for position, res in enumerate(config):
+				db("INSERT INTO resource_overview_bar(object, position, resource) VALUES(?, ?, ?)",
+				   obj.worldid, position, res)
+
+	def load(self, db):
+		from horizons.util import WorldObject
+		for obj in db("SELECT DISTINCT object FROM resource_overview_bar"):
+			obj = obj[0]
+			l = []
+			for pos, res in db("SELECT position, resource FROM resource_overview_bar where object=?", obj):
+				l.append( (pos, res) )
+			obj = WorldObject.get_object_by_id(obj)
+			self.resource_configurations[obj] = [ i[1] for i in sorted(l) ]
+
 		# called when any game (also new ones) start
 		# register at player inventory for gold updates
 		inv = self.session.world.player.get_component(StorageComponent).inventory
 		inv.add_change_listener(self._update_gold, call_listener_now=True)
 		self.gold_gui.show()
 		self._update_gold() # call once more to make pychan happy
+
+		self.set_inventory_instance(None)
 
 	def set_inventory_instance(self, instance, keep_construction_mode=False, force_update=False):
 		"""Display different inventory. May change resources that are displayed"""

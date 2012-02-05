@@ -79,6 +79,7 @@ CREATE TABLE "player" ("color" INTEGER NOT NULL ,"name" TEXT NOT NULL ,"client_i
 CREATE TABLE "ai_mission_special_domestic_trade" ("source_settlement_manager" INTEGER NOT NULL , "destination_settlement_manager" INTEGER NOT NULL , "ship" INTEGER NOT NULL , "state" INTEGER NOT NULL );
 CREATE TABLE "production_queue" (object INTEGER NOT NULL, position INTEGER NOT NULL, production_line_id INTEGER NOT NULL);
 CREATE TABLE production_line(for_worldid INTEGER, type STRING, res INTEGER, amount INTEGER);
+CREATE TABLE "resource_overview_bar" (object INTEGER NOT NULL, position INTEGER NOT NULL, resource INTEGER NOT NULL);
 CREATE TABLE "settler" ("inhabitants" INTEGER, "last_tax_payed" INTEGER);
 CREATE TABLE "settlement_tiles" (data STRING);
 CREATE TABLE production_state_history (
