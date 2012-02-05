@@ -207,11 +207,7 @@ msgid "increment"
 msgstr "úroveň"
 
 # (poterminology) uh-tutorial/tutorial.pot (3)
-#
 # (poterminology) uh/unknownhorizons.pot (4)
-#
-#
-#
 msgid "select"
 msgstr "výběr"
 
