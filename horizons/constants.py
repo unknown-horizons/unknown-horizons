@@ -259,6 +259,9 @@ class GAME:
 	WORLD_WORLDID = 0 # worldid of World object
 	MAX_TICKS = None # exit after on tick MAX_TICKS (disabled by setting to None)
 
+class GUI:
+	CITYINFO_UPDATE_DELAY = 2 # seconds
+
 # Messagewidget and Logbook
 class MESSAGES:
 	CUSTOM_MSG_SHOW_DELAY = 6 # delay between messages when passing more than one

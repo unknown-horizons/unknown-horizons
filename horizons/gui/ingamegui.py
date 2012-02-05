@@ -35,8 +35,9 @@ from horizons.gui.widgets.playerssettlements import PlayersSettlements
 from horizons.gui.widgets.resourceoverviewbar import ResourceOverviewBar
 from horizons.gui.widgets.playersships import PlayersShips
 from horizons.gui.widgets.choose_next_scenario import ScenarioChooser
+from horizons.extscheduler import ExtScheduler
 from horizons.util.gui import LazyWidgetsDict
-from horizons.constants import BUILDINGS
+from horizons.constants import BUILDINGS, GUI
 from horizons.command.uioptions import RenameObject
 from horizons.command.misc import Chat
 from horizons.gui.tabs.tabinterface import TabInterface
@@ -75,6 +76,7 @@ class IngameGui(LivingObject):
 		cityinfo.child_finder = PychanChildFinder(cityinfo)
 
 		# special settings for really small resolutions
+		#TODO explain what actually happens
 		width = horizons.main.fife.engine_settings.getScreenWidth()
 		x = 'center'
 		y = 'top'
@@ -164,14 +166,35 @@ class IngameGui(LivingObject):
 		To hide cityname, set name to ''
 		@param settlement: Settlement class providing the information needed
 		"""
+		old_was_player_settlement = False
 		if settlement is self.settlement:
 			return
 		if self.settlement is not None:
 			self.settlement.remove_change_listener(self.update_settlement)
+			old_was_player_settlement = self.settlement.owner == self.session.world.player
+
+		# save reference to new "current" settlement in self.settlement
 		self.settlement = settlement
-		if settlement is None:
-			self.widgets['city_info'].hide()
-		else:
+
+		if settlement is None: # we want to hide the widget now (but perhaps delayed).
+			if old_was_player_settlement:
+				# Interface feature: Since players might need to scroll to an area not
+				# occupied by the current settlement, leave name on screen in case they
+				# want to e.g. rename the settlement which requires a click on cityinfo
+				ExtScheduler().add_new_object(self.widgets['city_info'].hide, self,
+				      run_in=GUI.CITYINFO_UPDATE_DELAY)
+				#TODO 'click to rename' tooltip of cityinfo can stay visible in
+				# certain cases if cityinfo gets hidden in tooltip delay buffer.
+			else:
+				# this happens if you have not hovered an own settlement,
+				# but others like AI settlements. Simply hide the widget.
+				self.widgets['city_info'].hide()
+
+		else:# we want to show the widget.
+			# do not hide cityinfo if we again hover the settlement
+			# before the delayed hide of the old info kicks in
+			ExtScheduler().rem_call(self, self.widgets['city_info'].hide)
+
 			self.widgets['city_info'].show()
 			self.update_settlement()
 			settlement.add_change_listener(self.update_settlement)
