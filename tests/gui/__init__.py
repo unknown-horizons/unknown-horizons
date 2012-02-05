@@ -48,9 +48,11 @@ the test will be further exhausted:
 """
 
 import os
+import shutil
 import signal
 import subprocess
 import sys
+import tempfile
 from functools import wraps
 
 from tests import RANDOM_SEED
@@ -73,6 +75,26 @@ TEST_FIXTURES_DIR = os.path.join(os.path.abspath(os.path.dirname(__file__)), 'in
 # Needed to distinguish between the original test and other generators used
 # for dialogs.
 TestFinished = 'finished'
+
+
+TEST_USER_DIR = None
+
+def setup_package():
+	"""
+	Create a temporary dictionary to use as user dictionary (settings, savegames etc.)
+	while the tests are running.
+	"""
+	global TEST_USER_DIR
+	TEST_USER_DIR = tempfile.mkdtemp()
+
+
+def teardown_package():
+	"""
+	Delete the user dictionary.
+	"""
+	global TEST_USER_DIR
+	shutil.rmtree(TEST_USER_DIR)
+	TEST_USER_DIR = None
 
 
 class TestRunner(object):
@@ -207,6 +229,7 @@ def gui_test(use_dev_map=False, use_fixture=None, ai_players=0, timeout=0):
 			# savegame could not be loaded (instead of showing an error popup)
 			env = os.environ.copy()
 			env['FAIL_FAST'] = '1'
+			env['UH_USER_DIR'] = TEST_USER_DIR
 
 			# Start game
 			proc = subprocess.Popen(args, stdout=stdout, stderr=stderr, env=env)

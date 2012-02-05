@@ -214,6 +214,9 @@ class Fife(ApplicationBase):
 	def get_fife_setting(self, settingname):
 		return self._setting.get(FIFE_MODULE, settingname)
 
+	def set_fife_setting(self, settingname, value):
+		return self._setting.set(FIFE_MODULE, settingname, value)
+
 	def get_uh_setting(self, settingname):
 		return self._setting.get(UH_MODULE, settingname)
 

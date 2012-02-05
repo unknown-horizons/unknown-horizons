@@ -22,7 +22,7 @@
 
 import ctypes
 import platform
-import os.path
+import os
 import locale
 
 from horizons.ext.enum import Enum
@@ -326,7 +326,11 @@ class LAYERS:
 ## PATHS
 # workaround, so it can be used to create paths within PATHS
 
-if platform.system() != "Windows":
+if 'UH_USER_DIR' in os.environ:
+	# Prefer the value from the environment. Used to override user dir when
+	# running GUI tests.
+	_user_dir = os.environ['UH_USER_DIR']
+elif platform.system() != "Windows":
 	_user_dir = os.path.join(os.path.expanduser('~'), '.unknown-horizons')
 else:
 	dll = ctypes.windll.shell32

@@ -134,6 +134,12 @@ def start(command_line_arguments):
 		from tests.gui.logger import setup_gui_logger
 		setup_gui_logger()
 
+	# GUI tests always run with sound disabled and SDL (so they can run under xvfb).
+	# Needs to be done before engine is initialized.
+	if command_line_arguments.gui_test:
+		fife.engine.getSettings().setRenderBackend('SDL')
+		fife.set_fife_setting('PlaySounds', False)
+
 	ExtScheduler.create_instance(fife.pump)
 	fife.init()
 	_modules.gui = Gui()
