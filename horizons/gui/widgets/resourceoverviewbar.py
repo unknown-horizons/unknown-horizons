@@ -134,7 +134,7 @@ class ResourceOverviewBar(object):
 		"""
 		if self.construction_mode and \
 		   resource_source_instance == self.current_instance() and \
-		   build_costs == self.last_build_costs:
+		   build_costs == self._last_build_costs:
 			return # now that's not an update
 
 		self._last_build_costs = build_costs
