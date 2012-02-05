@@ -186,8 +186,13 @@ def gui_test(use_dev_map=False, use_fixture=None, ai_players=0, timeout=0):
 				stderr = subprocess.PIPE
 				nose_captured = True
 
+			# Activate fail-fast, this way the game will stop running when for example the
+			# savegame could not be loaded (instead of showing an error popup)
+			env = os.environ.copy()
+			env['FAIL_FAST'] = '1'
+
 			# Start game
-			proc = subprocess.Popen(args, stdout=stdout, stderr=stderr)
+			proc = subprocess.Popen(args, stdout=stdout, stderr=stderr, env=env)
 
 			if TEST_TIMELIMIT and timeout:
 				# Install timeout kill

@@ -276,6 +276,9 @@ def start_singleplayer(map_file, playername = "Player", playercolor = None, is_s
 	except InvalidScenarioFileFormat as e:
 		raise
 	except Exception as e:
+		# don't catch errors when we should fail fast (used by tests)
+		if os.environ.get('FAIL_FAST', False):
+			raise
 		import traceback
 		print "Failed to load", map_file
 		traceback.print_exc()
