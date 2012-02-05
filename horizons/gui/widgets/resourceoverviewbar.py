@@ -19,6 +19,8 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
+from fife.extensions import pychan
+
 import weakref
 
 from horizons.constants import RES
@@ -62,21 +64,21 @@ class ResourceOverviewBar(object):
 	                      RES.BRICKS_ID,
 	                      RES.TEXTILE_ID ]
 
+	CONSTRUCTION_RESOURCES = [ RES.TOOLS_ID,
+	                           RES.BOARDS_ID,
+	                           RES.BRICKS_ID ]
+
 	def __init__(self, session):
 		from horizons.session import Session
 		assert isinstance(session, Session)
 		self.session = session
 
-		self.gold_gui = load_uh_widget(self.__class__.GOLD_ENTRY_GUI_FILE, style=self.__class__.STYLE)
-		self.gold_gui.child_finder = PychanChildFinder(self.gold_gui)
-		# set appropriate icon
-		self.gold_gui.findChild(name="res_icon").image = get_res_icon(RES.GOLD_ID)[4] # the 32 one
+		self.gold_gui = None # special slot because of special properties
 		self.gui = [] # list of slots
-
+		self._reset_gold_gui()
 		self.resource_configurations = weakref.WeakKeyDictionary()
-
 		self.current_instance = weakref.ref(self) # can't weakref to None
-
+		self.construction_mode = False
 
 	def load(self):
 		# called when any game (also new ones) start
@@ -86,13 +88,15 @@ class ResourceOverviewBar(object):
 		self.gold_gui.show()
 		self._update_gold() # call once more to make pychan happy
 
-	def set_inventory_instance(self, instance):
+	def set_inventory_instance(self, instance, keep_construction_mode=False):
 		"""Display different inventory. May change resources that are displayed"""
-		print 'set instance: ', instance
-		if self.current_instance() is instance:
+		print 'set inst u'
+		if self.current_instance() is instance and not self.construction_mode:
 			return # caller is drunk yet again
+		if self.construction_mode and not keep_construction_mode:
+			self.close_construction_mode(update_slots=False)
 
-		# TODO: optimise
+		# remove old gui
 		for i in self.gui:
 			i.hide()
 		self.gui = []
@@ -105,12 +109,12 @@ class ResourceOverviewBar(object):
 		self.current_instance = weakref.ref(instance)
 
 		# construct new slots (fill values later)
-		initial_offset = 100
-		offset = 55
+		initial_offset = 93
+		offset = 52
 		resources = self._get_current_resources()
 		for i, res in enumerate(resources):
 			entry = load_uh_widget(self.ENTRY_GUI_FILE, style=self.__class__.STYLE)
-			entry.findChild(name="entry").position = (initial_offset + offset * i, 10)
+			entry.findChild(name="entry").position = (initial_offset + offset * i, 17)
 			entry.findChild(name="res_icon").image = get_res_icon(res)[2] # the 24 one
 			entry.findChild(name="background_icon").tooltip = self.session.db.get_res_name(res)
 			self.gui.append(entry)
@@ -120,22 +124,67 @@ class ResourceOverviewBar(object):
 		inv = self.current_instance().get_component(StorageComponent).inventory
 		inv.add_change_listener(self._update_resources, call_listener_now=True)
 
-
 	def set_construction_mode(self, resource_source_instance, build_costs):
 		"""Show resources relevant to construction and build costs
 		@param resource_source_instance: object with StorageComponent
 		@param build_costs: dict, { res : amount }
 		"""
-		print 'set construction mode'
-		#TODO
-		pass
+		if self.construction_mode and \
+		   resource_source_instance == self.current_instance() and \
+		   build_costs == self.last_build_costs:
+			return # now that's not an update
 
-	def close_construction_mode(self):
+		self.last_build_costs = build_costs
+
+		self.construction_mode = True
+		self.set_inventory_instance(resource_source_instance, keep_construction_mode=True)
+
+		# label background icons
+		cost_icon_gold = "content/gui/images/background/widgets/res_mon_extra_bg.png"
+		cost_icon_res = "content/gui/images/background/widgets/res_extra_bg.png"
+
+		for res, amount in build_costs.iteritems():
+			assert res in self.__class__.CONSTRUCTION_RESOURCES or res == RES.GOLD_ID
+
+			cost_label = pychan.widgets.Label(text=u"-"+unicode(amount))
+			cost_label.stylize( self.__class__.STYLE )
+			# add icon below end of background icon
+			if res in self.__class__.CONSTRUCTION_RESOURCES:
+				entry = self.CONSTRUCTION_RESOURCES.index(res)
+				cur_gui = self.gui[ entry ]
+				reference_icon = cur_gui.findChild(name="background_icon")
+				below = reference_icon.size[1]
+				cost_icon = pychan.widgets.Icon(image=cost_icon_res,
+				                                position=(0, below))
+				cost_label.position = (15, below) # TODO: centering
+				cur_gui.addChild(cost_icon)
+				cur_gui.addChild(cost_label)
+			else: # must be gold
+				reference_icon = self.gold_gui.findChild(name="background_icon")
+				below = reference_icon.size[1]
+				cost_icon = pychan.widgets.Icon(image=cost_icon_gold,
+				                              position=(0, below) )
+				cost_label.position = (15, below) # TODO: centering
+				self.gold_gui.addChild(cost_icon)
+				self.gold_gui.addChild(cost_label)
+
+	def close_construction_mode(self, update_slots=True):
 		"""Return to normal configuration"""
-		print 'close construction mode'
-		# TODO
-		# hide gui
-		pass
+		self.construction_mode = False
+		if update_slots:
+			self.set_inventory_instance(None)
+		self._reset_gold_gui()
+		self._update_gold()
+		self.gold_gui.show()
+		self._update_gold()
+
+	def _reset_gold_gui(self):
+		if self.gold_gui is not None:
+			self.gold_gui.hide()
+		self.gold_gui = load_uh_widget(self.__class__.GOLD_ENTRY_GUI_FILE, style=self.__class__.STYLE)
+		self.gold_gui.child_finder = PychanChildFinder(self.gold_gui)
+		# set appropriate icon
+		self.gold_gui.findChild(name="res_icon").image = get_res_icon(RES.GOLD_ID)[4] # the 32 one
 
 	def _update_gold(self):
 		"""Changelistener to upate player gold"""
@@ -161,10 +210,12 @@ class ResourceOverviewBar(object):
 
 			# reposition according to magic forumula passed down from the elders in order to support centering
 			cur_gui.show() # show to update values size values
-			label.position = (24 - label.size[0]/2, 45)
+			label.position = (24 - label.size[0]/2, 44)
 
 	def _get_current_resources(self):
 		"""Return list of resources to display now"""
+		if self.construction_mode:
+			return self.__class__.CONSTRUCTION_RESOURCES
 		return self.resource_configurations.get(self.current_instance(),
 		                                        self.__class__.DEFAULT_RESOURCES)
 
