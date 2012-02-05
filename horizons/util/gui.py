@@ -24,7 +24,7 @@ import os
 from fife.extensions import pychan
 
 from horizons.i18n import translate_widget
-from horizons.util.python import decorators
+from horizons.util.python import decorators, Callback
 
 @decorators.cachedfunction
 def get_gui_files_map():
@@ -134,3 +134,60 @@ class LazyWidgetsDict(dict):
 		if widgetname in self:
 			del self[widgetname]
 		# loading happens automatically on next access
+
+
+def create_resource_selection_dialog(on_click, res_filter, inventory, db):
+	"""Returns a container containing resource icons
+	@param on_click: called with resource id as parameter on clicks
+	@param res_filter: callback to decide which icons to use
+	@param inventory: to determine fill status of resource slots
+	@param db: main db instance
+	"""
+	from horizons.gui.widgets.imagefillstatusbutton import ImageFillStatusButton
+	from horizons.gui.widgets.tooltip import TooltipButton
+	dummy_icon_path = "content/gui/icons/resources/none_gray.png"
+
+	dlg = load_uh_widget('select_trade_resource.xml')
+
+	button_width = ImageFillStatusButton.DEFAULT_BUTTON_SIZE[0] # used for dummy button
+	vbox = dlg.findChild(name="resources")
+	amount_per_line = vbox.width / button_width
+	current_hbox = pychan.widgets.HBox(name="hbox_0", padding=0)
+	index = 1
+	resources = db.get_res(True)
+
+	# Add the zero element to the beginning that allows to remove the currently
+	# sold/bought resource
+	for res_id in [0] + list(resources):
+		# don't show resources that are already in the list
+		if not res_filter(res_id):
+			continue
+		# create button (dummy one or real one)
+		if res_id == 0:
+			button = TooltipButton( size=(button_width, button_width), name="resource_icon_00")
+			button.up_image, button.down_image, button.hover_image = (dummy_icon_path,)*3
+		else:
+			amount = inventory[res_id]
+			filled = int(float(inventory[res_id]) / float(inventory.get_limit(res_id)) * 100.0)
+			button = ImageFillStatusButton.init_for_res(db, res_id,
+			                                            amount=amount, filled=filled,
+			                                            use_inactive_icon=False)
+
+		# on click: add this res
+		cb = Callback(on_click, res_id)
+		if hasattr(button, "button"): # for imagefillstatusbuttons
+			button.button.capture( cb )
+		else:
+			button.capture( cb )
+
+		current_hbox.addChild(button)
+		if index % amount_per_line == 0 and index is not 0:
+			vbox.addChild(current_hbox)
+			current_hbox = pychan.widgets.HBox(name="hbox_%s" % (index / amount_per_line),
+			                                   padding=0)
+		index += 1
+	#	current_hbox.addSpacer(pychan.widgets.layout.Spacer) #TODO: proper alignment
+	vbox.addChild(current_hbox)
+	vbox.adaptLayout()
+
+	return dlg

@@ -119,7 +119,8 @@ class ResourceOverviewBar(object):
 			entry = load_uh_widget(self.ENTRY_GUI_FILE, style=self.__class__.STYLE)
 			entry.findChild(name="entry").position = (initial_offset + offset * i, 17)
 			entry.findChild(name="res_icon").image = get_res_icon(res)[2] # the 24 one
-			entry.findChild(name="background_icon").tooltip = self.session.db.get_res_name(res)
+			background_icon = entry.findChild(name="background_icon")
+			background_icon.tooltip = self.session.db.get_res_name(res)
 			self.gui.append(entry)
 			# show it just when values are entered, this appeases pychan
 

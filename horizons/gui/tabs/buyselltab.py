@@ -20,20 +20,18 @@
 # ###################################################
 
 from fife import fife
-from fife.extensions import pychan
 import logging
+import functools
 
-from tabinterface import TabInterface
+from horizons.gui.tabs.tabinterface import TabInterface
 from horizons.extscheduler import ExtScheduler
 from horizons.command.uioptions import AddToBuyList, AddToSellList, RemoveFromBuyList, \
                                        RemoveFromSellList
 from horizons.gui.widgets.tradehistoryitem import TradeHistoryItem
-from horizons.gui.widgets.tooltip import TooltipButton
 from horizons.util import Callback, WorldObject
-from horizons.util.gui import load_uh_widget, get_res_icon
+from horizons.util.gui import load_uh_widget, get_res_icon, create_resource_selection_dialog
 from horizons.world.component.storagecomponent import StorageComponent
 from horizons.world.component.tradepostcomponent import TradePostComponent
-from horizons.gui.widgets.imagefillstatusbutton import ImageFillStatusButton
 
 class BuySellTab(TabInterface):
 	"""
@@ -306,53 +304,20 @@ class BuySellTab(TabInterface):
 		'None' resource which allows to delete slot actions.
 		The resources are ordered by their res_id.
 		"""
-		self.resources = load_uh_widget('select_trade_resource.xml')
-		self.resources.position = self.widget.position
-		button_width = ImageFillStatusButton.DEFAULT_BUTTON_SIZE[0] # used for dummy button
-		vbox = self.resources.findChild(name="resources")
-		amount_per_line = vbox.width / button_width
-		current_hbox = pychan.widgets.HBox(name="hbox_0", padding=0)
-		index = 1
-		resources = self.settlement.session.db.get_res(True)
+		# create dlg
 		buy_list = self.settlement.get_component(TradePostComponent).buy_list
 		sell_list = self.settlement.get_component(TradePostComponent).sell_list
+
+		res_filter = lambda res_id : res_id not in buy_list and res_id not in sell_list
+		on_click = functools.partial(self.add_resource, slot_id=slot_id)
 		inventory = self.settlement.get_component(StorageComponent).inventory
 
-		# Add the zero element to the beginning that allows to remove the currently
-		# sold/bought resource
-		for res_id in [0] + list(resources):
-			# don't show resources that are already in the list
-			if res_id in buy_list or res_id in sell_list:
-				continue
-			# create button (dummy one or real one)
-			if res_id == 0:
-				button = TooltipButton( size=(button_width, button_width), name="resource_icon_00")
-				button.up_image, button.down_image, button.hover_image = (self.dummy_icon_path,)*3
-			else:
-				res_name = self.settlement.session.db.get_res_name(res_id)
-				amount = inventory[res_id]
-				filled = int(float(inventory[res_id]) / float(inventory.get_limit(res_id)) * 100.0)
-				button = ImageFillStatusButton.init_for_res(self.settlement.session.db, res_id,
-				                                            amount=amount, filled=filled,
-				                                            use_inactive_icon=False)
+		self.resources = create_resource_selection_dialog(on_click, res_filter, inventory,
+		                                                  self.settlement.session.db)
 
-			# on click: add this res
-			cb = Callback(self.add_resource, res_id, slot_id)
-			if hasattr(button, "button"): # fofe imagefillstatusbuttons
-				button.button.capture( cb )
-			else:
-				button.capture( cb )
-
-			current_hbox.addChild(button)
-			if index % amount_per_line == 0 and index is not 0:
-				vbox.addChild(current_hbox)
-				current_hbox = pychan.widgets.HBox(name="hbox_%s" % (index / amount_per_line),
-				                                   padding=0)
-			index += 1
-#		current_hbox.addSpacer(pychan.widgets.layout.Spacer) #TODO: proper alignment
-		vbox.addChild(current_hbox)
-		vbox.adaptLayout()
+		self.resources.position = self.widget.position
 		self.hide() # hides tab that invoked the selection widget
-		self.resources.show() # show selection widget, still display old tab icons
 		self.settlement.session.ingame_gui.minimap_to_front()
+
+		self.resources.show() # show selection widget, still display old tab icons
 
