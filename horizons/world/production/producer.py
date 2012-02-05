@@ -354,7 +354,7 @@ class QueueProducer(Producer):
 		for i in enumerate(self.production_queue):
 			position, prod_line_id = i
 			db("INSERT INTO production_queue (object, position, production_line_id) VALUES(?, ?, ?)",
-			   self.worldid, position, prod_line_id)
+			   self.instance.worldid, position, prod_line_id)
 
 	def load(self, db, worldid):
 		super(QueueProducer, self).load(db, worldid)

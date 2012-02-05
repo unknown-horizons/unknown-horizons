@@ -55,7 +55,6 @@ class ResourceHandler(object):
 		super(ResourceHandler, self).initialize()
 		self.__init()
 
-
 	def save(self, db):
 		super(ResourceHandler, self).save(db)
 

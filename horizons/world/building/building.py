@@ -79,7 +79,7 @@ class BasicBuilding(ComponentHolder, ConcreteObject):
 		assert self.settlement is None or isinstance(self.settlement, Settlement)
 
 	def __init(self, origin, rotation, owner, level=None, remaining_ticks_of_month=None, action_set_id=None):
-		self.owner = owner
+		self.owner = owner # also set in load() as workaround
 		if level is None:
 			level = 0 if self.owner is None else self.owner.settler_level
 		self.level = level
@@ -145,11 +145,14 @@ class BasicBuilding(ComponentHolder, ConcreteObject):
 
 	def load(self, db, worldid):
 		self.island, self.settlement = self.load_location(db, worldid)
-		super(BasicBuilding, self).load(db, worldid)
 		x, y, location, rotation, level = db.get_building_row(worldid)
 
 		owner_id = db.get_settlement_owner(location)
 		owner = None if owner_id is None else WorldObject.get_object_by_id(owner_id)
+		# WORKAROUND: owner should actually be set in __init, but super().load() calls can require it
+		self.owner = owner
+
+		super(BasicBuilding, self).load(db, worldid)
 
 		remaining_ticks_of_month = None
 		if self.has_running_costs:

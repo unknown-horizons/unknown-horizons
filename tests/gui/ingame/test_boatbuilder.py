@@ -22,13 +22,12 @@
 import tempfile
 import os
 
-from horizons.constants import BUILDINGS, PRODUCTION, GAME_SPEED
-
-from horizons.constants import BUILDINGS, PRODUCTION, GAME_SPEED
+import horizons.main
 
 from horizons.constants import BUILDINGS, PRODUCTION, GAME_SPEED
 from horizons.world.production.producer import Producer
 from tests.gui import TestFinished, gui_test
+
 
 
 @gui_test(use_fixture='boatbuilder', timeout=120)
@@ -169,10 +168,10 @@ def test_cancel_ticket_1424(gui):
 
 	yield TestFinished
 
-@gui_test(use_fixture='boatbuilder', timeout=60)
-def test_save_ticket_1421(gui):
+@gui_test(use_fixture='boatbuilder', timeout=600)
+def test_save_load_ticket_1421(gui):
 	"""
-	Boatbuilder crashes when saving while a ship is being produced.
+	Boatbuilder crashes when saving/loading while a ship is being produced.
 	"""
 	yield # test needs to be a generator for now
 
@@ -196,6 +195,9 @@ def test_save_ticket_1421(gui):
 	fd, filename = tempfile.mkstemp()
 	os.close(fd)
 
-	assert settlement.session.save(savegamename=filename)
+	session = settlement.session
+	assert session.save(savegamename=filename)
+
+	horizons.main.load_game( savegame=filename )
 
 	yield TestFinished

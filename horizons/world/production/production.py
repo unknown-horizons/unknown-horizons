@@ -67,7 +67,6 @@ class Production(ChangeListener):
 
 		self._add_listeners()
 
-
 	def start(self):
 		if self.__start_finished:
 			self._give_produced_res()
