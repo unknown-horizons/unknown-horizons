@@ -156,11 +156,13 @@ class BuildTab(TabInterface):
 			#xgettext:python-format
 			button.tooltip = _('{building}: {description}').format(building = _(building.name),
 			                                                    description = _(building.tooltip_text))
-			cb = Callback( self.session.ingame_gui.resource_overview.set_construction_mode,
-						settlement, building.costs )
+			cb = None
 
 			enough_res = True # show all buildings by default
-			if settlement is not None:
+			if settlement is not None: # settlement is None when the mouse has never hovered over a settlement
+				cb = Callback( self.session.ingame_gui.resource_overview.set_construction_mode,
+						settlement, building.costs )
+
 				(enough_res, missing_res) = Build.check_resources({}, building.costs, settlement.owner, [settlement])
 			#check whether to disable build menu icon (not enough res available)
 			#TODO this does not refresh right now, the icons should get active
