@@ -49,7 +49,13 @@ class _Tooltip(object):
 			})
 		self.tooltip_shown = False
 
+		self._entered_callbacks = []
+		self._exited_callbacks = []
+
 	def position_tooltip(self, event):
+		if (event.getType() == fife.MouseEvent.ENTERED):
+			for i in self._entered_callbacks:
+				i()
 		if (event.getButton() == fife.MouseEvent.MIDDLE):
 			return
 		widget_position = self.getAbsolutePos()
@@ -97,11 +103,24 @@ class _Tooltip(object):
 			self.gui.size = (145, self.SIZE_BG_TOP + self.LINE_HEIGHT * line_count + self.SIZE_BG_BOTTOM)
 			self.gui.show()
 
-	def hide_tooltip(self):
+	def hide_tooltip(self, event=None):
+		if (event is None or event.getType() == fife.MouseEvent.EXITED):
+			for i in self._exited_callbacks:
+				i()
 		self.gui.hide()
 		ExtScheduler().rem_call(self, self.show_tooltip)
 		self.gui.removeAllChildren()
 		self.tooltip_shown = False
+
+	def add_entered_callback(self, cb):
+		"""Add a callback to always be called when the mouse enters the button (not the tooltip)"""
+		# if you already think that this is ugly, then i'll spare you
+		# from what my other solution to this problem would have looked like
+		self._entered_callbacks.append(cb)
+
+	def add_exited_callback(self, cb):
+		"""Add a callback to always be called when the mouse exits the button (not the tooltip)"""
+		self._exited_callbacks.append(cb)
 
 
 class TooltipIcon(_Tooltip, pychan.widgets.Icon):

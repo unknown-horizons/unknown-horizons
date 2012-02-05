@@ -72,14 +72,15 @@ def load_uh_widget(filename, style=None, center_widget=False):
 def get_res_icon(res):
 	"""Returns icons of a resource
 	@param res: resource id
-	@return: tuple: (icon_50_path, icon_disabled_path, icon_24_path, icon_16_path)
+	@return: tuple: (icon_50_path, icon_disabled_path, icon_24_path, icon_16_path, icon_32_path)
 	"""
 	ICON_PATH = 'content/gui/icons/resources/'
 	icon_50 = ICON_PATH + '50/%03d.png' % res
 	icon_disabled = ICON_PATH + '50/greyscale/%03d.png' % res
 	icon_24 = ICON_PATH + '24/%03d.png' % res
 	icon_16 = ICON_PATH + '16/%03d.png' % res
-	return (icon_50, icon_disabled, icon_24, icon_16)
+	icon_32 = ICON_PATH + '32/%03d.png' % res
+	return (icon_50, icon_disabled, icon_24, icon_16, icon_32)
 
 
 def create_resource_icon(res_id, db, size=50):

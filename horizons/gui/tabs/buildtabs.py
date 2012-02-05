@@ -19,6 +19,7 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
+from fife.extensions import pychan
 
 from horizons.entities import Entities
 from horizons.gui.tabs.tabinterface import TabInterface
@@ -156,11 +157,18 @@ class BuildTab(TabInterface):
 			#xgettext:python-format
 			button.tooltip = _('{building}: {description}').format(building = _(building.name),
 			                                                    description = _(building.tooltip_text))
-			cb = Callback( self.session.ingame_gui.resourceinfo_set,
-						settlement, building.costs, {})
 
 			enough_res = True # show all buildings by default
-			if settlement is not None:
+			if settlement is not None: # settlement is None when the mouse has never hovered over a settlement
+				res_overview =  self.session.ingame_gui.resource_overview
+				cbs = ( Callback( res_overview.set_construction_mode, settlement, building.costs),
+				       Callback( res_overview.close_construction_mode ) )
+
+				# can't use mapEvents since the events are taken by the tooltips.
+				# they do however provide an auxiliary way around this:
+				button.add_entered_callback(cbs[0])
+				button.add_exited_callback(cbs[1])
+
 				(enough_res, missing_res) = Build.check_resources({}, building.costs, settlement.owner, [settlement])
 			#check whether to disable build menu icon (not enough res available)
 			#TODO this does not refresh right now, the icons should get active
@@ -177,7 +185,6 @@ class BuildTab(TabInterface):
 				button.hover_image = path.format(mode='')
 			button.up_image = path.format(mode='')
 
-			button.mapEvents({'{button}/mouseEntered'.format(button=button.name) : cb})
 			button.capture(self.callback_mapping[building_id])
 
 	def update_text(self, tabindex):
