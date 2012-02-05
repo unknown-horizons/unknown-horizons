@@ -91,7 +91,6 @@ class ResourceOverviewBar(object):
 
 	def set_inventory_instance(self, instance, keep_construction_mode=False):
 		"""Display different inventory. May change resources that are displayed"""
-		print 'set inst u'
 		if self.current_instance() is instance and not self.construction_mode:
 			return # caller is drunk yet again
 		if self.construction_mode and not keep_construction_mode:
@@ -103,7 +102,8 @@ class ResourceOverviewBar(object):
 		self.gui = []
 
 		if self.current_instance() and self.current_instance() is not self: # our None value
-			self.current_instance().remove_change_listener(self._update_resources)
+			inv = self.current_instance().get_component(StorageComponent).inventory
+			inv.remove_change_listener(self._update_resources)
 
 		if instance is None: # show nothing instead
 			self.current_instance = weakref.ref(self) # can't weakref to None
