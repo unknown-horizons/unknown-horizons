@@ -51,10 +51,10 @@ class RemoveFromQueue(GenericComponentCommand):
 GenericComponentCommand.allow_network(RemoveFromQueue)
 
 
-class CancelCurrentProduction(GenericCommand):
+class CancelCurrentProduction(GenericComponentCommand):
 	"""Cancel the current production of a queueproducer.
 	Makes it proceed to the next one."""
 	def __init__(self, obj):
-		super(CancelCurrentProduction, self).__init__(obj, "cancel_current_production")
+		super(CancelCurrentProduction, self).__init__(obj, Producer.NAME, "cancel_current_production")
 
 GenericCommand.allow_network(CancelCurrentProduction)
