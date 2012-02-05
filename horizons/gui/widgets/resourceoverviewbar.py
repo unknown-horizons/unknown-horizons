@@ -36,12 +36,12 @@ class ResourceOverviewBar(object):
 	http://wiki.unknown-horizons.org/w/HUD
 
 	Features:
-	- display contents of currently relevant inventory (settlement/ship) [ ]
-	- always show gold of local player [ ]
-	- show costs of current build [ ]
+	- display contents of currently relevant inventory (settlement/ship) [x]
+	- always show gold of local player [x]
+	- show costs of current build [x]
 	- configure the resources to show [ ]
 		- per settlement [ ]
-		- switch displayed resources to construction relevant res on build [ ]
+		- switch displayed resources to construction relevant res on build [x]
 		- res selection consistent with other res selection dlgs [ ]
 			- goody: show available res
 
@@ -79,6 +79,7 @@ class ResourceOverviewBar(object):
 		self.resource_configurations = weakref.WeakKeyDictionary()
 		self.current_instance = weakref.ref(self) # can't weakref to None
 		self.construction_mode = False
+		self._last_build_costs = None
 
 	def load(self):
 		# called when any game (also new ones) start
@@ -101,8 +102,10 @@ class ResourceOverviewBar(object):
 			i.hide()
 		self.gui = []
 
-		if instance is None:
-			# show nothing instead
+		if self.current_instance() and self.current_instance() is not self: # our None value
+			self.current_instance().remove_change_listener(self._update_resources)
+
+		if instance is None: # show nothing instead
 			self.current_instance = weakref.ref(self) # can't weakref to None
 			return
 
@@ -134,7 +137,7 @@ class ResourceOverviewBar(object):
 		   build_costs == self.last_build_costs:
 			return # now that's not an update
 
-		self.last_build_costs = build_costs
+		self._last_build_costs = build_costs
 
 		self.construction_mode = True
 		self.set_inventory_instance(resource_source_instance, keep_construction_mode=True)
@@ -191,7 +194,7 @@ class ResourceOverviewBar(object):
 		# set gold amount
 		gold = self.session.world.player.get_component(StorageComponent).inventory[RES.GOLD_ID]
 		gold_available_lbl = self.gold_gui.child_finder("gold_available")
-		gold_available_lbl.text = text = unicode(gold)
+		gold_available_lbl.text = unicode(gold)
 
 		# reposition according to magic forumula passed down from the elders in order to support centering
 		self.gold_gui.resizeToContent() # update label size
@@ -200,6 +203,9 @@ class ResourceOverviewBar(object):
 
 	def _update_resources(self):
 		"""Same as _update_gold but for all other slots"""
+		if not self.current_instance(): # instance died
+			self.set_inventory_instance(None)
+			return
 		inv = self.current_instance().get_component(StorageComponent).inventory
 		for i, res in enumerate(self._get_current_resources()):
 			cur_gui = self.gui[i]

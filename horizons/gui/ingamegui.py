@@ -21,7 +21,6 @@
 
 import re
 import horizons.main
-from fife.extensions import pychan
 
 from horizons.entities import Entities
 from horizons.util import livingProperty, LivingObject, PychanChildFinder
@@ -37,12 +36,11 @@ from horizons.gui.widgets.resourceoverviewbar import ResourceOverviewBar
 from horizons.gui.widgets.playersships import PlayersShips
 from horizons.gui.widgets.choose_next_scenario import ScenarioChooser
 from horizons.util.gui import LazyWidgetsDict
-from horizons.constants import BUILDINGS, RES
+from horizons.constants import BUILDINGS
 from horizons.command.uioptions import RenameObject
 from horizons.command.misc import Chat
 from horizons.gui.tabs.tabinterface import TabInterface
 from horizons.world.component.namedcomponent import SettlementNameComponent
-from horizons.world.component.storagecomponent import StorageComponent
 
 class IngameGui(LivingObject):
 	"""Class handling all the ingame gui events.
@@ -206,6 +204,7 @@ class IngameGui(LivingObject):
 		cityinfo.adaptLayout()
 
 	def minimap_to_front(self):
+		"""Make sure the full right top gui is visible and not covered by some dialog"""
 		self.widgets['minimap'].hide()
 		self.widgets['minimap'].show()
 
@@ -452,7 +451,7 @@ class IngameGui(LivingObject):
 
 
 
-class OldOutdatedAndOnused(object):
+"""class OldOutdatedAndOnused(object):
 
 	def update_gold(self):
 		player_gold = self.session.world.player.get_component(StorageComponent).inventory[RES.GOLD_ID]
@@ -474,10 +473,10 @@ class OldOutdatedAndOnused(object):
 
 
 	def status_set(self, res, value):
-		"""Sets a value on the status bar (available res of the player/settlement).
+		""Sets a value on the status bar (available res of the player/settlement).
 		@param res: str containing the name of the label to be set (usually a resource name).
 		@param value: value the Label is to be set to.
-		"""
+		""
 		gui = self.widgets['status_gold'] if res == 'gold' else self.widgets['status']
 		# labels: tools_1 = inventory amount, tools_2 = cost of to-be-built building
 		foundlabel = gui.child_finder('{res}_1'.format(res=res))
@@ -486,10 +485,10 @@ class OldOutdatedAndOnused(object):
 		gui.resizeToContent()
 
 	def status_set_extra(self, res, value):
-		"""Sets a value on the extra status bar. (below normal status bar, needed res for build)
+		""Sets a value on the extra status bar. (below normal status bar, needed res for build)
 		@param res: str containing the name of the label to be set (usually a resource name).
 		@param value: value the Label is to be set to. Gets converted to unicode. None if empty.
-		"""
+		""
 		bg_icon_gold = "content/gui/images/background/widgets/res_mon_extra_bg.png"
 		bg_icon_res = "content/gui/images/background/widgets/res_extra_bg.png"
 
@@ -543,7 +542,7 @@ class OldOutdatedAndOnused(object):
 			self.widgets['status'].show()
 
 	def update_resource_source(self):
-		"""Sets the values for resource status bar as well as the building costs"""
+		""Sets the values for resource status bar as well as the building costs""
 		self.update_gold()
 		for res_id, res_name in {3 : 'textiles', 4 : 'boards', 5 : 'food', 6 : 'tools', 7 : 'bricks'}.iteritems():
 			inventory_res = self.resource_source.get_component(StorageComponent).inventory[res_id]
@@ -575,3 +574,5 @@ class OldOutdatedAndOnused(object):
 		icon  = self.widgets[widget].child_finder(icon_name)
 		label = self.widgets[widget].child_finder(lbl_name)
 		label.position = (icon.position[0] - label.size[0]/2 + xoffset, yoffset)
+
+		"""
