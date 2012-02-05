@@ -97,10 +97,27 @@ class TestRunner(object):
 		self._engine = engine
 		self._gui_handlers = []
 
+		self._filter_traceback()
 		test = self._load_test(test_path)
 		test_gen = test(GuiHelper(self._engine.pychan, self))
 		self._gui_handlers.append(test_gen)
 		self._start()
+
+	def _filter_traceback(self):
+		"""Remove test internals from exception tracebacks.
+
+		Makes them shorter and easier to read. The last trace of internals is
+		the call of `TestRunner._tick`
+		"""
+		def skip_internals(func):
+			def wrapped(exctype, value, tb):
+				while tb and 'TestRunner' not in tb.tb_frame.f_globals:
+					tb = tb.tb_next
+				tb = tb.tb_next
+				func(exctype, value, tb)
+			return wrapped
+
+		sys.excepthook = skip_internals(sys.excepthook)
 
 	def _load_test(self, test_name):
 		"""Import test from dotted path, e.g.:
