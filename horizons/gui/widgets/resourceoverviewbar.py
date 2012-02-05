@@ -82,7 +82,6 @@ class ResourceOverviewBar(object):
 		self.construction_mode = False
 		self._last_build_costs = None
 
-
 	def save(self, db):
 		for obj, config in self.resource_configurations.iteritems():
 			for position, res in enumerate(config):
@@ -135,13 +134,20 @@ class ResourceOverviewBar(object):
 		initial_offset = 93
 		offset = 52
 		resources = self._get_current_resources()
-		for i, res in enumerate(resources):
+		for i, res in enumerate( resources + [-1] ): # add dummy at end for adding stuff
 			entry = load_uh_widget(self.ENTRY_GUI_FILE, style=self.__class__.STYLE)
 			entry.findChild(name="entry").position = (initial_offset + offset * i, 17)
-			entry.findChild(name="res_icon").image = get_res_icon(res)[2] # the 24 one
 			background_icon = entry.findChild(name="background_icon")
-			background_icon.tooltip = self.session.db.get_res_name(res)
 			background_icon.add_entered_callback( Callback(self._show_resource_selection_dialog, i) )
+
+			if res != -1:
+				tooltip = self.session.db.get_res_name(res)
+				entry.findChild(name="res_icon").image = get_res_icon(res)[2] # the 24 one
+			else:
+				tooltip = _("Click to add a new slot")
+				entry.show() # this will not be filled as the other res
+			background_icon.tooltip = tooltip
+
 			self.gui.append(entry)
 			# show it just when values are entered, this appeases pychan
 
@@ -278,6 +284,7 @@ class ResourceOverviewBar(object):
 	def _set_resource_slot(self, slot_num, res_id):
 		"""Show res_id in slot slot_num
 		@param slot_num: starting at 0, will be added as new slot if greater than no of slots
+		@param res_id: a resource id or 0 for remove slot
 		"""
 		self._hide_resource_selection_dialog()
 		res_copy = self._get_current_resources()[:]
