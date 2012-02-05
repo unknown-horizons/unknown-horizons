@@ -22,11 +22,12 @@
 from fife.extensions import pychan
 
 import weakref
+import functools
 
 from horizons.constants import RES
 from horizons.world.component.storagecomponent import StorageComponent
-from horizons.util.gui import load_uh_widget, get_res_icon
-from horizons.util import PychanChildFinder
+from horizons.util.gui import load_uh_widget, get_res_icon, create_resource_selection_dialog
+from horizons.util import PychanChildFinder, Callback
 from horizons.util.python.decorators import cachedmethod
 
 
@@ -39,11 +40,11 @@ class ResourceOverviewBar(object):
 	- display contents of currently relevant inventory (settlement/ship) [x]
 	- always show gold of local player [x]
 	- show costs of current build [x]
-	- configure the resources to show [ ]
-		- per settlement [ ]
+	- configure the resources to show [x]
+		- per settlement [x]
+		- add new slots [ ]
 		- switch displayed resources to construction relevant res on build [x]
-		- res selection consistent with other res selection dlgs [ ]
-			- goody: show available res
+		- res selection consistent with other res selection dlgs [x]
 
 	Invariants:
 	- it should be obvious that the res bar can be configured
@@ -89,9 +90,9 @@ class ResourceOverviewBar(object):
 		self.gold_gui.show()
 		self._update_gold() # call once more to make pychan happy
 
-	def set_inventory_instance(self, instance, keep_construction_mode=False):
+	def set_inventory_instance(self, instance, keep_construction_mode=False, force_update=False):
 		"""Display different inventory. May change resources that are displayed"""
-		if self.current_instance() is instance and not self.construction_mode:
+		if self.current_instance() is instance and not self.construction_mode and not force_update:
 			return # caller is drunk yet again
 		if self.construction_mode and not keep_construction_mode:
 			self.close_construction_mode(update_slots=False)
@@ -99,10 +100,11 @@ class ResourceOverviewBar(object):
 		# remove old gui
 		for i in self.gui:
 			i.hide()
+		self._hide_resource_selection_dialog()
 		self.gui = []
 
-		if self.current_instance() and self.current_instance() is not self: # our None value
-			inv = self.current_instance().get_component(StorageComponent).inventory
+		inv = self._get_current_inventory()
+		if inv is not None:
 			inv.remove_change_listener(self._update_resources)
 
 		if instance is None: # show nothing instead
@@ -121,11 +123,12 @@ class ResourceOverviewBar(object):
 			entry.findChild(name="res_icon").image = get_res_icon(res)[2] # the 24 one
 			background_icon = entry.findChild(name="background_icon")
 			background_icon.tooltip = self.session.db.get_res_name(res)
+			background_icon.add_entered_callback( Callback(self._show_resource_selection_dialog, i) )
 			self.gui.append(entry)
 			# show it just when values are entered, this appeases pychan
 
 		# fill values
-		inv = self.current_instance().get_component(StorageComponent).inventory
+		inv = self._get_current_inventory()
 		inv.add_change_listener(self._update_resources, call_listener_now=True)
 
 	def set_construction_mode(self, resource_source_instance, build_costs):
@@ -207,7 +210,7 @@ class ResourceOverviewBar(object):
 		if not self.current_instance(): # instance died
 			self.set_inventory_instance(None)
 			return
-		inv = self.current_instance().get_component(StorageComponent).inventory
+		inv = self._get_current_inventory()
 		for i, res in enumerate(self._get_current_resources()):
 			cur_gui = self.gui[i]
 
@@ -226,6 +229,59 @@ class ResourceOverviewBar(object):
 		return self.resource_configurations.get(self.current_instance(),
 		                                        self.__class__.DEFAULT_RESOURCES)
 
+	def _get_current_inventory(self):
+		if not (self.current_instance() in (None, self)): # alive and set
+			return self.current_instance().get_component(StorageComponent).inventory
+		else:
+			return None
+
+
+	###
+	# Resource slot selection
+
+	def _show_resource_selection_dialog(self, slot_num):
+		"""Shows gui for selecting a resource for slot slot_num"""
+		self._hide_resource_selection_dialog()
+
+		inv = self._get_current_inventory()
+		on_click = functools.partial(self._set_resource_slot, slot_num)
+		cur_res = self._get_current_resources()
+		res_filter = lambda res_id : res_id not in cur_res
+		dlg = create_resource_selection_dialog(on_click, inv, self.session.db, res_filter)
+
+		# position dlg below slot
+		cur_gui = self.gui[slot_num]
+		background_icon = cur_gui.findChild(name="background_icon")
+		dlg.position = (cur_gui.position[0] + background_icon.position[0],
+		                cur_gui.position[1] + background_icon.position[1] + background_icon.size[1] )
+		dlg.show()
+		self._res_selection_dialog = dlg
+
+	def _set_resource_slot(self, slot_num, res_id):
+		"""Show res_id in slot slot_num
+		@param slot_num: starting at 0, will be added as new slot if greater than no of slots
+		"""
+		self._hide_resource_selection_dialog()
+		res_copy = self._get_current_resources()[:]
+		if slot_num < len(res_copy): # change existing slot
+			if res_id == 0: # remove it
+				del res_copy[slot_num]
+			else: # actual slot change
+				res_copy[slot_num] = res_id
+		else: # addition
+			if res_id == 0: # that would mean adding an empty slot
+				pass
+			else:
+				res_copy += [res_id]
+
+		self.resource_configurations[self.current_instance()] = res_copy
+
+		self.set_inventory_instance(self.current_instance(), force_update=True)
+
+	def _hide_resource_selection_dialog(self):
+		if hasattr(self, "_res_selection_dialog"):
+			self._res_selection_dialog.hide()
+			del self._res_selection_dialog
 
 
 	##

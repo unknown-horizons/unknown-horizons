@@ -136,12 +136,12 @@ class LazyWidgetsDict(dict):
 		# loading happens automatically on next access
 
 
-def create_resource_selection_dialog(on_click, res_filter, inventory, db):
+def create_resource_selection_dialog(on_click, inventory, db, res_filter=None):
 	"""Returns a container containing resource icons
 	@param on_click: called with resource id as parameter on clicks
-	@param res_filter: callback to decide which icons to use
 	@param inventory: to determine fill status of resource slots
 	@param db: main db instance
+	@param res_filter: callback to decide which icons to use. Default: show all
 	"""
 	from horizons.gui.widgets.imagefillstatusbutton import ImageFillStatusButton
 	from horizons.gui.widgets.tooltip import TooltipButton
@@ -160,7 +160,7 @@ def create_resource_selection_dialog(on_click, res_filter, inventory, db):
 	# sold/bought resource
 	for res_id in [0] + list(resources):
 		# don't show resources that are already in the list
-		if not res_filter(res_id):
+		if res_filter is not None and not res_filter(res_id):
 			continue
 		# create button (dummy one or real one)
 		if res_id == 0:

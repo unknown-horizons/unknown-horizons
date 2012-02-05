@@ -312,8 +312,9 @@ class BuySellTab(TabInterface):
 		on_click = functools.partial(self.add_resource, slot_id=slot_id)
 		inventory = self.settlement.get_component(StorageComponent).inventory
 
-		self.resources = create_resource_selection_dialog(on_click, res_filter, inventory,
-		                                                  self.settlement.session.db)
+		self.resources = create_resource_selection_dialog(on_click, inventory,
+		                                                  self.settlement.session.db,
+		                                                  res_filter=res_filter)
 
 		self.resources.position = self.widget.position
 		self.hide() # hides tab that invoked the selection widget
