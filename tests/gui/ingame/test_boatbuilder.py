@@ -168,7 +168,7 @@ def test_cancel_ticket_1424(gui):
 
 	yield TestFinished
 
-@gui_test(use_fixture='boatbuilder', timeout=600)
+@gui_test(use_fixture='boatbuilder', timeout=60)
 def test_save_load_ticket_1421(gui):
 	"""
 	Boatbuilder crashes when saving/loading while a ship is being produced.
