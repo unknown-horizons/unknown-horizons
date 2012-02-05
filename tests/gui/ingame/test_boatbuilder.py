@@ -19,6 +19,13 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
+import tempfile
+import os
+
+from horizons.constants import BUILDINGS, PRODUCTION, GAME_SPEED
+
+from horizons.constants import BUILDINGS, PRODUCTION, GAME_SPEED
+
 from horizons.constants import BUILDINGS, PRODUCTION, GAME_SPEED
 from horizons.world.production.producer import Producer
 from tests.gui import TestFinished, gui_test
@@ -135,7 +142,7 @@ def test_remove_from_queue(gui):
 @gui_test(use_fixture='boatbuilder', timeout=60)
 def test_cancel_ticket_1424(gui):
 	"""
-	Boatbuilder crashes when canceling a ship in the queue.
+	Boatbuilder crashes when canceling a ship build.
 	"""
 	yield # test needs to be a generator for now
 
@@ -159,5 +166,36 @@ def test_cancel_ticket_1424(gui):
 	# Cancel build completely -> crash
 	gui.trigger('BB_main_tab', 'BB_cancel_button/mouseClicked/default')
 
+
+	yield TestFinished
+
+@gui_test(use_fixture='boatbuilder', timeout=60)
+def test_save_ticket_1421(gui):
+	"""
+	Boatbuilder crashes when saving while a ship is being produced.
+	"""
+	yield # test needs to be a generator for now
+
+	settlement = gui.session.world.player.settlements[0]
+	boatbuilder = settlement.get_buildings_by_id(BUILDINGS.BOATBUILDER_CLASS)[0]
+
+	gui.select([boatbuilder])
+
+	# Select trade ships tab
+	gui.trigger('tab_base', '1/action/default')
+
+	# Build huker
+	gui.trigger('boatbuilder_trade', 'BB_build_trade_1/action/default')
+
+	# Select war ships tab
+	gui.trigger('tab_base', '2/action/default')
+
+	# Build frigate
+	gui.trigger('boatbuilder_war1', 'BB_build_war1_1/action/default')
+
+	fd, filename = tempfile.mkstemp()
+	os.close(fd)
+
+	assert settlement.session.save(savegamename=filename)
 
 	yield TestFinished
