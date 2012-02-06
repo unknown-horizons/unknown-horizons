@@ -153,7 +153,10 @@ class GuiHelper(object):
 
 		# if container is given by name, look it up first
 		if isinstance(root, basestring):
-			root = self.find(name=root)
+			root_name = root
+			root = self.find(name=root_name)
+			if not root:
+				raise Exception("Container '%s' not found" % root_name)
 
 		widget = root.findChild(name=widget_name)
 		if not widget:
