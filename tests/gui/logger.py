@@ -229,10 +229,12 @@ class TestCodeGenerator(object):
 		"""
 		Output test code to press the key.
 		"""
-		self._add([
-			'gui.press_key(gui.Key.%s)' % KEY_NAME_LOOKUP[keycode],
-			''
-		])
+		try:
+			code = 'gui.press_key(gui.Key.%s)' % KEY_NAME_LOOKUP[keycode * 10]
+		except KeyError:
+			code = '# Unknown key (code %s)' % keycode
+
+		self._add([code, ''])
 
 	def new_mousetool_event(self, tool_name, event_name, x, y, button):
 		"""
