@@ -7,8 +7,8 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2012-01-19 20:39+0100\n"
-"PO-Revision-Date: 2012-01-17 00:00+0200\n"
-"Last-Translator: Christopher Oelmueller <chris.oelmueller+uh@gmail.com>\n"
+"PO-Revision-Date: 2012-02-01 12:21+0200\n"
+"Last-Translator: naked.in.rain <martin.mezl@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: cs\n"
 "MIME-Version: 1.0\n"
@@ -1513,7 +1513,7 @@ msgstr ""
 #. (text of widget: lbl_weapon_storage)
 #: horizons/i18n/guitranslations.py:342
 msgid "Weapons:"
-msgstr ""
+msgstr "Zbraně:"
 
 # 76%
 #. (text of widget: headline)
