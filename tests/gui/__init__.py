@@ -306,3 +306,6 @@ def gui_test(use_dev_map=False, use_fixture=None, ai_players=0, timeout=15 * 60)
 	return deco
 
 gui_test.__test__ = False
+
+# FIXME GUI tests still don't work in parallel, this is needed for game/unit tests to work
+_multiprocess_can_split_ = True
