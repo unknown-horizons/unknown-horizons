@@ -49,9 +49,12 @@ class LastActivePlayerSettlementManager(object):
 
 		self._settlement = weakref.ref(settlement) if \
 		  settlement and settlement.owner == self.session.world.player else None
+
+		# set cityinfo for any settlement
 		self.session.ingame_gui.cityinfo_set(settlement)
 
-		self.session.ingame_gui.resource_overview.set_inventory_instance(settlement) # set for any settlement
+		# set res info only if it's a player settlement
+		self.session.ingame_gui.resource_overview.set_inventory_instance( self.get() )
 
 	def get(self):
 		"""The last settlement belonging to the player the mouse has hovered above"""
