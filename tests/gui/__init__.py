@@ -55,6 +55,8 @@ import sys
 import tempfile
 from functools import wraps
 
+from nose.plugins import Plugin
+
 from tests import RANDOM_SEED
 from tests.gui.helper import GuiHelper
 
@@ -76,6 +78,8 @@ TEST_FIXTURES_DIR = os.path.join(os.path.abspath(os.path.dirname(__file__)), 'in
 # for dialogs.
 TestFinished = 'finished'
 
+class TestFailed(Exception): pass
+
 
 TEST_USER_DIR = None
 
@@ -95,6 +99,48 @@ def teardown_package():
 	global TEST_USER_DIR
 	shutil.rmtree(TEST_USER_DIR)
 	TEST_USER_DIR = None
+
+
+class GuiTestPlugin(Plugin):
+	"""This plugin is used to improve the test failure display for gui tests.
+
+	Because nose runs in a different process than the real test, we cannot easily
+	show the traceback as if the exception occured here. The real traceback will
+	be used as message in an `TestFailed` exception, which we capture here and
+	remove the traceback (from the TestFailed raise) entirely, leaving us just
+	with the exception.
+
+	This:
+
+		------------------------
+		Traceback (most recent call last):
+			File "/path/to/nose/case.py", line 197, in runTest
+				self.test(*self.arg)
+			File "/path/to/tests/gui/__init__.py", line 273, in wrapped
+				raise TestFailed("\n\n" + error)
+		TestFailed:
+
+		[Real traceback]
+
+	Becomes:
+
+		------------------------
+		TestFailed:
+
+		[Real traceback]
+	"""
+	name = 'guitest'
+	enabled = True
+
+	def configure(self, options, conf):
+		pass
+
+	def formatError(self, test, err):
+		exc_type, value, traceback = err
+		if exc_type == TestFailed:
+			traceback = None
+
+		return exc_type, value, traceback
 
 
 class TestRunner(object):
@@ -238,17 +284,18 @@ def gui_test(use_dev_map=False, use_fixture=None, ai_players=0, timeout=15 * 60)
 				# Install timeout kill
 				def handler(signum, frame):
 					proc.kill()
-					raise Exception('Test run exceeded %ds time limit' % timeout)
+					raise TestFailed('\n\nTest run exceeded %ds time limit' % timeout)
 				signal.signal(signal.SIGALRM, handler)
 				signal.alarm(timeout)
 
 			stdout, stderr = proc.communicate()
 			if proc.returncode != 0:
 				if nose_captured:
-					print stdout
-					print '-' * 30
-					print stderr
-				assert False, 'Test failed'
+					if stdout:
+						print stdout
+					raise TestFailed('\n\n' + stderr)
+				else:
+					raise TestFailed()
 
 		# we need to store the original function, otherwise the new process will execute
 		# this decorator, thus spawning a new process..
