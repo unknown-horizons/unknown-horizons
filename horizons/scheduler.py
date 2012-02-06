@@ -101,8 +101,8 @@ class Scheduler(LivingObject):
 							pass # also the callback can be deleted by e.g. rem_call
 			del self.schedule[self.cur_tick]
 
-			# run jobs added in the loop above
-			self._run_additional_jobs()
+		# run jobs added in the loop above
+		self._run_additional_jobs()
 
 		assert (len(self.schedule) == 0) or self.schedule.keys()[0] > self.cur_tick
 
@@ -161,11 +161,11 @@ class Scheduler(LivingObject):
 			for key in self.schedule:
 				for i in xrange(0, self.schedule[key].count(callback_obj)):
 					self.schedule[key].remove(callback_obj)
-					self.calls_by_instance[callback_obj.instance].remove(callback_obj)
+					self.calls_by_instance[callback_obj.class_instance].remove(callback_obj)
 					removed_objs += 1
 
-		if not self.calls_by_instance[callback_obj.instance]:
-			del self.calls_by_instance[callback_obj.instance]
+		if not self.calls_by_instance[callback_obj.class_instance]:
+			del self.calls_by_instance[callback_obj.class_instance]
 
 		return removed_objs
 
@@ -199,7 +199,7 @@ class Scheduler(LivingObject):
 			callback_objects = self.schedule[key]
 			for i in xrange(len(callback_objects) - 1, -1, -1):
 				if callback_objects[i].class_instance is instance and callback_objects[i].callback == callback and \
-				   not hasattr(callback, "invalid"):
+				   not hasattr(callback_objects[i], "invalid"):
 					del callback_objects[i]
 					removed_calls += 1
 
