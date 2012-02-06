@@ -42,7 +42,9 @@ class BuySellTab(TabInterface):
 	log = logging.getLogger("gui")
 
 	buy_button_path =  "content/gui/images/tabwidget/buysell_buy.png"
+	buy_hover_button_path =  "content/gui/images/tabwidget/buysell_buy_hover.png"
 	sell_button_path = "content/gui/images/tabwidget/buysell_sell.png"
+	sell_hover_button_path = "content/gui/images/tabwidget/buysell_sell_hover.png"
 
 	dummy_icon_path = "content/gui/icons/resources/none_gray.png"
 
@@ -50,6 +52,13 @@ class BuySellTab(TabInterface):
 		"""
 		Sets up the GUI and game logic for the buyselltab.
 		"""
+
+
+		# TODO:
+		# this tab works only on the tradepost component. it should therefore only have
+		# a reference to this component.
+
+
 		super(BuySellTab, self).__init__(widget = 'buysellmenu.xml')
 		self.settlement = instance.settlement
 		self.init_values()
@@ -121,6 +130,10 @@ class BuySellTab(TabInterface):
 	def refresh(self):
 		self._refresh_trade_history()
 		# TODO: We don't refresh. Ticket #970
+		buy_list = self.settlement.get_component(TradePostComponent).buy_list
+		sell_list = self.settlement.get_component(TradePostComponent).sell_list
+		if not buy_list and not sell_list:
+			self._set_hint( _("Click on one of the resource slots to add a trade offer.") )
 
 	def add_slots(self, num):
 		"""
@@ -162,11 +175,18 @@ class BuySellTab(TabInterface):
 		self.log.debug("BuySellTab add_resource() resid: %s; slot_id %s; value: %s", \
 		                                          res_id,    slot_id,    value)
 
+		keep_hint = False
 		if self.resources is not None: # Hide resource menu
 			self.resources.hide()
 			self.show()
+			if res_id != 0: # new res
+				self._set_hint( _("Set to buy or sell by clicking on that label, then adjust the amount via the slider to the right.") )
+			else:
+				self._set_hint( u"" )
+			keep_hint = True
 		slot = self.slots[slot_id]
 		slider = slot.findChild(name="slider")
+
 		if value is None: # use current slider value if player provided no input
 			value = int(slider.value)
 		else: # set slider to value entered by the player
@@ -191,15 +211,20 @@ class BuySellTab(TabInterface):
 
 		button = slot.findChild(name="button")
 		fillbar = slot.findChild(name="fillbar")
+		# reset slot value for new res
 		if res_id == 0:
 			button.up_image, button.down_image, button.hover_image = [ self.dummy_icon_path ] * 3
 			button.tooltip = u""
 			slot.findChild(name="amount").text = u""
+			slot.findChild(name="slider").value = 0.0
 			slot.res = None
 			slider.capture(None)
 			# hide fillbar by setting position
 			icon = slot.findChild(name="icon")
 			fillbar.position = (icon.width - fillbar.width - 1, icon.height)
+			button = slot.findChild(name="buysell")
+			button.up_image = None
+			button.hover_image = None
 		else:
 			icons = get_res_icon(res_id)
 			button.up_image = icons[0]
@@ -216,19 +241,22 @@ class BuySellTab(TabInterface):
 			filled = float(inventory[res_id]) / inventory.get_limit(res_id)
 			fillbar.position = (icon.width - fillbar.width - 1,
 			                    icon.height - int(icon.height*filled))
+			# show buy action by default (set to sell and toggle)
+			slot.action = "sell"
+			self.toggle_buysell(slot_id, keep_hint=keep_hint)
 		slot.adaptLayout()
 
-	def toggle_buysell(self, slot, dont_use_commands=False):
+	def toggle_buysell(self, slot_id, dont_use_commands=False, keep_hint=False):
 		"""
 		Switches modes of individual resource slots between 'buy' and 'sell'.
 		"""
-		slot = self.slots[slot]
+		slot = self.slots[slot_id]
 		button = slot.findChild(name="buysell")
 		limit = int(slot.findChild(name="slider").value)
 		if slot.action is "buy":
 			# setting to sell
 			button.up_image = self.sell_button_path
-			button.hover_image = self.sell_button_path
+			button.hover_image = self.sell_hover_button_path
 			slot.action = "sell"
 			if slot.res is not None:
 				self.log.debug("BuySellTab: Removing res %s from buy list", slot.res)
@@ -240,7 +268,7 @@ class BuySellTab(TabInterface):
 		elif slot.action is "sell":
 			# setting to buy
 			button.up_image = self.buy_button_path
-			button.hover_image = self.buy_button_path
+			button.hover_image = self.buy_hover_button_path
 			slot.action = "buy"
 			if slot.res is not None:
 				self.log.debug("BuySellTab: Removing res %s from sell list", slot.res)
@@ -249,6 +277,9 @@ class BuySellTab(TabInterface):
 				else:
 					RemoveFromSellList(self.settlement, slot.res).execute(self.settlement.session)
 				self.add_buy_to_settlement(slot.res, limit, slot.id, dont_use_commands)
+
+		if not keep_hint:
+			self._update_hint(slot_id)
 
 	def add_buy_to_settlement(self, res_id, limit, slot, dont_use_commands=False):
 		"""
@@ -278,19 +309,23 @@ class BuySellTab(TabInterface):
 		else:
 			AddToSellList(self.settlement, res_id, limit).execute(self.settlement.session)
 
-	def slider_adjust(self, res_id, slot):
+	def slider_adjust(self, res_id, slot_id):
 		"""
 		Couples the displayed limit of this slot to the slider position.
 		"""
-		slider = self.slots[slot].findChild(name="slider")
-		if self.slots[slot].action is "buy":
-			self.add_buy_to_settlement(res_id, int(slider.value), slot)
-		elif self.slots[slot].action is "sell":
-			self.add_sell_to_settlement(res_id, int(slider.value), slot)
-		self.slots[slot].findChild(name="amount").text = unicode(int(slider.value))+'t'
-		self.slots[slot].adaptLayout()
+		slider = self.slots[slot_id].findChild(name="slider")
+		limit = int(slider.value)
+		action = self.slots[slot_id].action
+		if action == "buy":
+			self.add_buy_to_settlement(res_id, limit, slot_id)
+		elif action == "sell":
+			self.add_sell_to_settlement(res_id, limit, slot_id)
+		self.slots[slot_id].findChild(name="amount").text = unicode(limit)+u't'
+		self.slots[slot_id].adaptLayout()
+		self._update_hint(slot_id)
 
 	def handle_click(self, widget, event):
+		"""Clicks on resource slots. Left: change resource; Right: empty slot."""
 		if event.getButton() == fife.MouseEvent.LEFT:
 			self.show_resource_menu(widget.parent.id)
 		elif event.getButton() == fife.MouseEvent.RIGHT:
@@ -321,4 +356,24 @@ class BuySellTab(TabInterface):
 		self.settlement.session.ingame_gui.minimap_to_front()
 
 		self.resources.show() # show selection widget, still display old tab icons
+
+
+	def _update_hint(self, slot_id):
+		"""Sets default hint for last updated slot"""
+		slot = self.slots[slot_id]
+		limit = int( slot.findChild(name="slider").value )
+		action = slot.action
+		if action == "buy":
+			hint = _("Will buy {resource_name} whenever less than {limit}t are in stock.")
+		elif action == "sell":
+			hint = _("Will sell {resource_name} whenever more than {limit}t are available.")
+
+		hint = hint.format(limit=unicode(limit),
+		                   resource_name=_(self.settlement.session.db.get_res_name(slot.res)))
+		self._set_hint( hint )
+
+	def _set_hint(self, text):
+		lbl = self.widget.findChild(name="hint_label")
+		lbl.text = text
+		lbl.adaptLayout()
 

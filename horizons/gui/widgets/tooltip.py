@@ -72,7 +72,7 @@ class _Tooltip(object):
 			self.gui.show()
 
 	def show_tooltip(self):
-		if self.tooltip not in ["", None]:
+		if self.tooltip not in ("", None):
 			# recreate full tooltip since new text needs to be relayouted
 			self.gui.removeAllChildren()
 			translated_tooltip = _(self.tooltip)
