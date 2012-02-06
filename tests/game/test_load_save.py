@@ -30,7 +30,7 @@ from horizons.world.production.producer import Producer
 
 from tests.game import game_test, new_session, settle, load_session
 
-@game_test(timeout=0, manual_session=True)
+@game_test(manual_session=True)
 def test_load_inactive_production():
 	"""
 	create a savegame with a inactive production, load it
@@ -89,7 +89,7 @@ def create_lumberjack_production_session():
 	session = load_session(filename1)
 	return session
 
-@game_test(timeout=0, manual_session=True)
+@game_test(manual_session=True)
 def test_load_producing_production_fast():
 	"""Create a saved game with a producing production, load it, and try to save again very fast."""
 	session = create_lumberjack_production_session()
@@ -101,7 +101,7 @@ def test_load_producing_production_fast():
 	assert session.save(savegamename=filename2)
 	session.end()
 
-@game_test(timeout=0, manual_session=True)
+@game_test(manual_session=True)
 def test_load_producing_production_slow():
 	"""Create a saved game with a producing production, load it, and try to save again in a few seconds."""
 	session = create_lumberjack_production_session()

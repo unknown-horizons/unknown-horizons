@@ -181,7 +181,7 @@ class TestRunner(object):
 			pass
 
 
-def gui_test(use_dev_map=False, use_fixture=None, ai_players=0, timeout=0):
+def gui_test(use_dev_map=False, use_fixture=None, ai_players=0, timeout=15 * 60):
 	"""Magic nose integration.
 
 	use_dev_map		-	starts the game with --start-dev-map

@@ -28,7 +28,7 @@ from horizons.util.savegameaccessor import SavegameAccessor
 
 from tests.game import game_test
 
-@game_test(mapgen=partial(generate_map_from_seed, 2), human_player=False, ai_players=2, timeout=0)
+@game_test(mapgen=partial(generate_map_from_seed, 2), human_player=False, ai_players=2, timeout=120)
 def test_save_trivial(session, _):
 	"""
 	Let 2 AI players play for a while, then attempt to save the game.

@@ -330,7 +330,7 @@ def game_test(*args, **kwargs):
 	"""
 	no_decorator_arguments = len(args) == 1 and not kwargs and inspect.isfunction(args[0])
 
-	timeout = kwargs.get('timeout', 5)	# zero means no timeout
+	timeout = kwargs.get('timeout', 15 * 60)	# zero means no timeout, 15min default
 	mapgen = kwargs.get('mapgen', create_map)
 	human_player = kwargs.get('human_player', True)
 	ai_players = kwargs.get('ai_players', 0)
