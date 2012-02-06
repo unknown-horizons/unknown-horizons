@@ -59,15 +59,17 @@ class TestScheduler(TestCase):
 		self.assertEqual(3, self.scheduler.cur_tick)
 
 	def test_fail_when_missing_start_tick(self):
-		self.scheduler.before_ticking()
-		with self.assertRaises(Exception):
+		def tick():
 			self.scheduler.tick(2)
+		self.scheduler.before_ticking()
+		self.assertRaises(Exception, tick)
 
 	def test_fail_when_same_tick_twice(self):
+		def tick():
+			self.scheduler.tick(1)
 		self.scheduler.before_ticking()
 		self.scheduler.tick(1)
-		with self.assertRaises(Exception):
-			self.scheduler.tick(1)
+		self.assertRaises(Exception, tick)
 
 	def test_add_callback_before_first_tick(self):
 		self.scheduler.add_new_object(self.callback, None, run_in=0)

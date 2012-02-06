@@ -159,7 +159,7 @@ class Scheduler(LivingObject):
 		removed_objs = 0
 		if self.schedule is not None:
 			for key in self.schedule:
-				for i in xrange(0, self.schedule[key].count(callback_obj)):
+				while callback_obj in self.schedule[key]:
 					self.schedule[key].remove(callback_obj)
 					self.calls_by_instance[callback_obj.class_instance].remove(callback_obj)
 					removed_objs += 1
