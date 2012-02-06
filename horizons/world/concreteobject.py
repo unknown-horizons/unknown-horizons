@@ -68,7 +68,9 @@ class ConcreteObject(WorldObject):
 		self._status_icon_renderer = self.session.view.renderer['GenericRenderer']
 
 		# only buildings for now
-		if self.is_building and not self.id in self.session.db.get_status_icon_exclusions():
+		if self.is_building and \
+		   not self.id in self.session.db.get_status_icon_exclusions() and \
+		   self.owner == self.session.world.player: # and only for the player's buildings
 			self.has_status_icon = True
 			# update now
 			Scheduler().add_new_object(self._update_status, self, run_in=0)

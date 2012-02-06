@@ -63,9 +63,10 @@ class BasicBuilding(ComponentHolder, ConcreteObject):
 	@param action_set_id: use this action set id. None means choose one at random
 	"""
 	def __init__(self, x, y, rotation, owner, island, level=None, action_set_id=None, **kwargs):
+		self.owner = owner # set immediately, it is needed before __init
 		super(BasicBuilding, self).__init__(x=x, y=y, rotation=rotation, owner=owner, \
 								                        island=island, **kwargs)
-		self.__init(Point(x, y), rotation, owner, level, action_set_id=action_set_id)
+		self.__init(Point(x, y), rotation, level, action_set_id=action_set_id)
 		self.island = island
 
 		settlements = self.island.get_settlements(self.position, owner)
@@ -79,7 +80,6 @@ class BasicBuilding(ComponentHolder, ConcreteObject):
 		assert self.settlement is None or isinstance(self.settlement, Settlement)
 
 	def __init(self, origin, rotation, owner, level=None, remaining_ticks_of_month=None, action_set_id=None):
-		self.owner = owner # also set in load() as workaround
 		if level is None:
 			level = 0 if self.owner is None else self.owner.settler_level
 		self.level = level
@@ -149,8 +149,7 @@ class BasicBuilding(ComponentHolder, ConcreteObject):
 
 		owner_id = db.get_settlement_owner(location)
 		owner = None if owner_id is None else WorldObject.get_object_by_id(owner_id)
-		# WORKAROUND: owner should actually be set in __init, but super().load() calls can require it
-		self.owner = owner
+		self.owner = owner # set before super().load(), they need it
 
 		super(BasicBuilding, self).load(db, worldid)
 
