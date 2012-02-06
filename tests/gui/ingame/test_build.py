@@ -20,7 +20,6 @@
 # ###################################################
 
 from horizons.command.unit import Act
-from horizons.constants import GAME_SPEED
 from horizons.gui.mousetools.buildingtool import BuildingTool 
 from horizons.gui.mousetools.cursortool import CursorTool
 from tests.gui import TestFinished, gui_test
@@ -44,11 +43,8 @@ def test_found_settlement(gui):
 	Act(ship, *target)(player)
 
 	# wait until ship arrives
-	# FIXME speed game up, don't want to wait too long for the ship
-	gui.session.speed_set(GAME_SPEED.TICK_RATES[-1])
 	while (ship.position.x, ship.position.y) != target:
 		yield
-	gui.session.speed_set(GAME_SPEED.TICK_RATES[0])
 
 	gui.select([ship])
 	gui.trigger('overview_trade_ship', 'found_settlement/action/default')

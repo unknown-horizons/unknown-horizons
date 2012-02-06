@@ -24,7 +24,7 @@ import os
 
 import horizons.main
 
-from horizons.constants import BUILDINGS, PRODUCTION, GAME_SPEED
+from horizons.constants import BUILDINGS, PRODUCTION
 from horizons.world.production.producer import Producer
 from tests.gui import TestFinished, gui_test
 
@@ -92,8 +92,6 @@ def test_ticket_1294(gui):
 
 	# Build frigate
 	gui.trigger('boatbuilder_war1', 'BB_build_war1_1/action/default')
-
-	gui.session.speed_set(GAME_SPEED.TICK_RATES[-1]) # speed things up a bit
 
 	# Wait until production ends
 	producer = boatbuilder.get_component(Producer)

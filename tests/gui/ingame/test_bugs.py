@@ -20,7 +20,7 @@
 # ###################################################
 
 from horizons.command.unit import CreateUnit
-from horizons.constants import UNITS, GAME_SPEED, BUILDINGS
+from horizons.constants import UNITS, BUILDINGS
 from tests.gui import TestFinished, gui_test
 from tests.gui.helper import get_player_ship
 
@@ -60,8 +60,6 @@ def test_ticket_1368(gui):
 	speed later.
 	"""
 	yield # test needs to be a generator for now
-
-	gui.session.speed_set(GAME_SPEED.TICK_RATES[-1])
 
 	# Wait until ai has settled down
 	world = gui.session.world
@@ -150,8 +148,6 @@ def test_ticket_1371(gui):
      => tab itself is invisible, but buttons for choosing it aren't
 	"""
 	yield
-
-	gui.session.speed_set(GAME_SPEED.TICK_RATES[-1])
 
 	ship = get_player_ship(gui.session)
 	gui.select([ship])

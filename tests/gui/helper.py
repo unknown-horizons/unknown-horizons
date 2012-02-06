@@ -30,6 +30,7 @@ import mock
 
 import horizons.main
 from fife import fife
+from horizons.constants import GAME_SPEED
 from horizons.gui.mousetools.cursortool import CursorTool
 from horizons.scheduler import Scheduler
 from horizons.util import Point
@@ -98,6 +99,7 @@ class GuiHelper(object):
 		self.cursor_map_coords.enable()
 
 		self.disable_autoscroll()
+		self.speed_up()
 
 	@property
 	def session(self):
@@ -259,3 +261,8 @@ class GuiHelper(object):
 			# try to disable only if we're ingame already
 			# Tests starting in the menu need to do call `disable_autoscroll()` explicitly
 			self.session.view.autoscroll = mock.Mock()
+
+	def speed_up(self):
+		"""Run the test at maximum game speed."""
+		if self.session:
+			self.session.speed_set(GAME_SPEED.TICK_RATES[-1])
