@@ -374,6 +374,7 @@ class BuildingTool(NavigationTool):
 			    self._class.class_package == 'path'):
 				# build once more
 				self.start_point = point
+				self._build_logic.continue_build()
 				self.highlight_buildable()
 				self.preview_build(point, point)
 			else:
@@ -562,6 +563,9 @@ class ShipBuildingToolLogic(object):
 		instance.add_change_listener(building_tool.highlight_buildable)
 		instance.add_change_listener(building_tool.force_update)
 
+	def continue_build(self):
+		pass
+
 class SettlementBuildingToolLogic(object):
 	"""Helper class to seperate the logic needen when building from a settlement
 	from the main building tool"""
@@ -593,6 +597,9 @@ class SettlementBuildingToolLogic(object):
 	def add_change_listener(self, instance, building_tool):
 		instance.add_change_listener(building_tool.force_update)
 
+	def continue_build(self):
+		pass
+
 
 class BuildRelatedBuildingToolLogic(SettlementBuildingToolLogic):
 	"""Same as normal build, except quitting it drops to the build related tab."""
@@ -600,9 +607,15 @@ class BuildRelatedBuildingToolLogic(SettlementBuildingToolLogic):
 		# instance must be weakref
 		self.instance = instance
 
-	def on_escape(self, session):
+	def _reshow_tab(self):
 		from horizons.gui.tabs import BuildRelatedTab
 		self.instance().show_menu(jump_to_tabclass=BuildRelatedTab)
+
+	def on_escape(self, session):
+		self._reshow_tab()
+
+	def continue_build(self):
+		self._reshow_tab()
 
 
 decorators.bind_all(BuildingTool)
