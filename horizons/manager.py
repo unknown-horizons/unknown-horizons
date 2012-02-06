@@ -229,6 +229,7 @@ class MPManager(LivingObject):
 ################################################
 
 class MPPacketmanager(object):
+	log =  logging.getLogger("mpmanager")
 	def __init__(self, mpmanager):
 		self.mpmanager = mpmanager
 		self.command_packet_list = []
@@ -236,7 +237,11 @@ class MPPacketmanager(object):
 	def is_tick_ready(self, tick):
 		"""Check if packets from all players have arrived (necessary for tick to begin)"""
 		#print 'packets for tick: ',  list(str(x) for x in self.get_packets_for_tick(tick, remove_returned_commands=False))
-		return len(self.get_packets_for_tick(tick, remove_returned_commands=False)) == self.mpmanager.get_player_count()
+
+		ready = len(self.get_packets_for_tick(tick, remove_returned_commands=False)) == self.mpmanager.get_player_count()
+		if not ready:
+			self.log.debug("tick not ready, packets: " + str(list(str(x) for x in self.get_packets_for_tick(tick, remove_returned_commands=False))))
+		return ready
 
 	def get_packets_for_tick(self, tick, remove_returned_commands=True):
 		"""Returns packets that are to be executed at a certain tick"""
