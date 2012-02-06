@@ -339,6 +339,8 @@ class IngameGui(LivingObject):
 		}
 		self.main_gui.on_escape = self._hide_change_name_dialog
 		changename = self.widgets['change_name']
+		oldname = changename.findChild(name='old_name')
+		oldname.text =  unicode(instance.get_component(SettlementNameComponent).name)
 		newname = changename.findChild(name='new_name')
 		changename.mapEvents(events)
 		newname.capture(Callback(self.change_name, instance))
