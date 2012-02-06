@@ -45,6 +45,7 @@ def test_build_a_settlement(gui):
 
 	# Place warehouse
 	gui.cursor_click(56, 3, 'left')
+	assert gui.session.world.settlements
 
 	# Select buildmenu
 	gui.trigger('mainhud', 'build/action/default')
