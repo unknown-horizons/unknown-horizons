@@ -19,9 +19,6 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-import os
-import shutil
-import tempfile
 import unittest
 
 import horizons.main

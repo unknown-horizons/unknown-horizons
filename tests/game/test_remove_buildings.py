@@ -95,7 +95,7 @@ def remove(s, p, before_ticks, after_ticks, tear_index):
 		path = RoadPathFinder()(island.path_nodes.nodes, start.to_tuple(), dest.to_tuple())
 		assert path
 		for (x, y) in path:
-			a = Build(BUILDINGS.TRAIL_CLASS, x, y, island, settlement=settlement)(p)
+			Build(BUILDINGS.TRAIL_CLASS, x, y, island, settlement=settlement)(p)
 
 	s.run(seconds=before_ticks)
 	# Tear down a random building that is not a trail or tree.

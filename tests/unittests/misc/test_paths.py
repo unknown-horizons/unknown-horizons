@@ -64,7 +64,7 @@ class TestPaths(TestCase):
 
 		os.remove(os.path.join(inner, scenario_file))
 
-		a = SavegameManager.create_autosave_filename()
+		SavegameManager.create_autosave_filename()
 
 		os.rmdir(inner)
 		os.rmdir(inner2)
