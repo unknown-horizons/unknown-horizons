@@ -24,6 +24,7 @@ import horizons.main
 
 from horizons.util.living import LivingObject
 from horizons.constants import GAME_SPEED
+from horizons.scheduler import Scheduler
 
 class Timer(LivingObject):
 	"""
@@ -39,7 +40,7 @@ class Timer(LivingObject):
 	DEFER_TICK_ON_DELAY_BY = 0.4 # sec
 
 
-	def __init__(self, tick_next_id = 1, freeze_protection=False):
+	def __init__(self, tick_next_id = Scheduler.FIRST_TICK_ID, freeze_protection=False):
 		"""
 		NOTE: timer will not start until activate() is called
 		@param tick_next_id: int next tick id

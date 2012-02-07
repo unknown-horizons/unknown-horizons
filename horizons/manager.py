@@ -23,6 +23,7 @@ import operator
 import logging
 
 from horizons.timer import Timer
+from horizons.scheduler import Scheduler
 from horizons.util import WorldObject
 from horizons.util.living import LivingObject
 from horizons.command.building import Build
@@ -145,7 +146,7 @@ class MPManager(LivingObject):
 
 		# decide if tick can be calculated
 		# in the first few ticks, no data is available
-		if self.commandsmanager.is_tick_ready(tick) or tick < self.EXECUTIONDELAY:
+		if self.commandsmanager.is_tick_ready(tick) or tick < (Scheduler.FIRST_TICK_ID + self.EXECUTIONDELAY):
 			#self.log.debug("MPManager: check tick %s ready: yes", tick)
 			return Timer.TEST_PASS
 		else:
@@ -236,8 +237,6 @@ class MPPacketmanager(object):
 
 	def is_tick_ready(self, tick):
 		"""Check if packets from all players have arrived (necessary for tick to begin)"""
-		#print 'packets for tick: ',  list(str(x) for x in self.get_packets_for_tick(tick, remove_returned_commands=False))
-
 		ready = len(self.get_packets_for_tick(tick, remove_returned_commands=False)) == self.mpmanager.get_player_count()
 		if not ready:
 			self.log.debug("tick not ready, packets: " + str(list(str(x) for x in self.get_packets_for_tick(tick, remove_returned_commands=False))))
