@@ -97,7 +97,7 @@ class PlayersSettlements(StatsWidget):
 
 		rename_icon = TooltipIcon(name = 'rename_%d' % settlement.worldid)
 		rename_icon.image = "content/gui/images/background/rename_feather_20.png"
-		rename_icon.tooltip = _("Click to rename settlement")
+		rename_icon.tooltip = _("Click to change the name of your settlement.")
 
 		self._add_generic_line_to_gui(settlement.worldid, [sequence_number_label, name, rename_icon],
 			settlement.inhabitants, settlement.cumulative_taxes, settlement.cumulative_running_costs)
