@@ -3,11 +3,11 @@
 	 Special resource overview bar protoype for gold.
 -->
 
-<Container size="70,100" position="10,10">
+<AutoResizeContainer position="10,10">
 	<TooltipIcon name="background_icon" tooltip="Gold"
 		image="content/gui/images/background/widgets/res_mon_bg.png" />
 	<Icon name="res_icon" position="17,12" />
 	<Label name="gold_available" /> <!-- positioning via magic in order to have support for centering -->
 	<Label name="gold_needed" />
-</Container>
+</AutoResizeContainer>
 

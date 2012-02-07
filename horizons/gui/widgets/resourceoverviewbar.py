@@ -190,6 +190,7 @@ class ResourceOverviewBar(object):
 				cost_label.position = (15, below) # TODO: centering
 				cur_gui.addChild(cost_icon)
 				cur_gui.addChild(cost_label)
+				cur_gui.resizeToContent() # container needs to be bigger now
 			else: # must be gold
 				reference_icon = self.gold_gui.findChild(name="background_icon")
 				below = reference_icon.size[1]
@@ -198,6 +199,7 @@ class ResourceOverviewBar(object):
 				cost_label.position = (15, below) # TODO: centering
 				self.gold_gui.addChild(cost_icon)
 				self.gold_gui.addChild(cost_label)
+				self.gold_gui.resizeToContent()
 
 	def close_construction_mode(self, update_slots=True):
 		"""Return to normal configuration"""

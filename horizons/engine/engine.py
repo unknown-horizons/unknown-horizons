@@ -39,6 +39,7 @@ from horizons.constants import LANGUAGENAMES, PATHS
 from horizons.engine.settingshandler import SettingsHandler, get_screen_resolutions
 from horizons.engine.sound import Sound
 from horizons.engine.settingsdialog import SettingsDialog
+from horizons.engine.pychan_util import init_pychan
 from horizons.engine import UH_MODULE
 
 
@@ -173,27 +174,7 @@ class Fife(ApplicationBase):
 		self.pychan.setupModalExecution(self.loop, self.breakLoop)
 		self.console = self.pychan.manager.hook.guimanager.getConsole()
 
-		from horizons.gui.widgets.inventory import Inventory
-		from horizons.gui.widgets.buysellinventory import BuySellInventory
-		from horizons.gui.widgets.imagefillstatusbutton import  ImageFillStatusButton
-		from horizons.gui.widgets.progressbar import ProgressBar
-		from horizons.gui.widgets.toggleimagebutton import ToggleImageButton
-		from horizons.gui.widgets.tooltip import TooltipIcon, TooltipButton, TooltipLabel, TooltipProgressBar
-		from horizons.gui.widgets.imagebutton import CancelButton, DeleteButton, OkButton
-		from horizons.gui.widgets.icongroup import TabBG
-		from horizons.gui.widgets.stepslider import StepSlider
-		from horizons.gui.widgets.unitoverview import HealthWidget, StanceWidget, WeaponStorageWidget
-
-		widgets = [OkButton, CancelButton, DeleteButton,
-				   Inventory, BuySellInventory, ImageFillStatusButton,
-				   ProgressBar, StepSlider, TabBG, ToggleImageButton,
-				   TooltipIcon, TooltipButton, TooltipLabel, TooltipProgressBar,
-				   HealthWidget, StanceWidget, WeaponStorageWidget]
-		for widget in widgets:
-			pychan.widgets.registerWidget(widget)
-
-		for name, stylepart in horizons.gui.style.STYLES.iteritems():
-			self.pychan.manager.addStyle(name, stylepart)
+		init_pychan()
 
 		self._setting_handler.update_languages()
 
