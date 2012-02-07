@@ -21,7 +21,7 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-from unittest import TestCase 
+from unittest import TestCase
 from mock import Mock
 
 from horizons.scheduler import Scheduler
@@ -51,24 +51,24 @@ class TestScheduler(TestCase):
 
 	def test_multiple_sequential_ticks(self):
 		self.scheduler.before_ticking()
-		self.scheduler.tick(1)
-		self.assertEqual(1, self.scheduler.cur_tick)
-		self.scheduler.tick(2)
-		self.assertEqual(2, self.scheduler.cur_tick)
-		self.scheduler.tick(3)
-		self.assertEqual(3, self.scheduler.cur_tick)
+		self.scheduler.tick(Scheduler.FIRST_TICK_ID)
+		self.assertEqual(Scheduler.FIRST_TICK_ID, self.scheduler.cur_tick)
+		self.scheduler.tick(Scheduler.FIRST_TICK_ID+1)
+		self.assertEqual(Scheduler.FIRST_TICK_ID+1, self.scheduler.cur_tick)
+		self.scheduler.tick(Scheduler.FIRST_TICK_ID+2)
+		self.assertEqual(Scheduler.FIRST_TICK_ID+2, self.scheduler.cur_tick)
 
 	def test_fail_when_missing_start_tick(self):
 		def tick():
-			self.scheduler.tick(2)
+			self.scheduler.tick(Scheduler.FIRST_TICK_ID+1)
 		self.scheduler.before_ticking()
 		self.assertRaises(Exception, tick)
 
 	def test_fail_when_same_tick_twice(self):
 		def tick():
-			self.scheduler.tick(1)
+			self.scheduler.tick(Scheduler.FIRST_TICK_ID)
 		self.scheduler.before_ticking()
-		self.scheduler.tick(1)
+		self.scheduler.tick(Scheduler.FIRST_TICK_ID)
 		self.assertRaises(Exception, tick)
 
 	def test_add_callback_before_first_tick(self):
@@ -81,37 +81,37 @@ class TestScheduler(TestCase):
 		self.scheduler.before_ticking()
 		self.assertFalse(self.callback.called)
 
-		self.scheduler.tick(1)
+		self.scheduler.tick(Scheduler.FIRST_TICK_ID)
 		self.callback.assert_called_once_with()
 
 	def test_add_callback_only_triggered_once(self):
 		self.scheduler.before_ticking()
 		self.scheduler.add_new_object(self.callback, None, run_in=2)
-		self.scheduler.tick(1)
+		self.scheduler.tick(Scheduler.FIRST_TICK_ID)
 		self.assertFalse(self.callback.called)
 
-		self.scheduler.tick(2) # callback called here
+		self.scheduler.tick(Scheduler.FIRST_TICK_ID+1) # callback called here
 		self.callback.reset_mock()
-		
-		self.scheduler.tick(3)
+
+		self.scheduler.tick(Scheduler.FIRST_TICK_ID+2)
 		self.assertFalse(self.callback.called)
 
 	def test_started_ticking_then_add_callback_for_next_tick(self):
 		self.scheduler.before_ticking()
-		self.scheduler.tick(1)
+		self.scheduler.tick(Scheduler.FIRST_TICK_ID)
 		self.scheduler.add_new_object(self.callback, None, run_in=0)
 		self.assertFalse(self.callback.called)
-		
-		self.scheduler.tick(2)
+
+		self.scheduler.tick(Scheduler.FIRST_TICK_ID+1)
 		self.callback.assert_called_once_with()
 
 	def test_started_ticking_then_add_callback_for_future(self):
 		self.scheduler.before_ticking()
 		self.scheduler.add_new_object(self.callback, None, run_in=2)
-		self.scheduler.tick(1)
+		self.scheduler.tick(Scheduler.FIRST_TICK_ID)
 		self.assertFalse(self.callback.called)
-		
-		self.scheduler.tick(2)
+
+		self.scheduler.tick(Scheduler.FIRST_TICK_ID+1)
 		self.callback.assert_called_once_with()
 
 	def test_within_callback_add_new_callback_for_same_tick(self):
@@ -120,51 +120,51 @@ class TestScheduler(TestCase):
 		def add_callback():
 			self.scheduler.add_new_object(callback2, None, run_in=0)
 		self.callback.side_effect = add_callback
-		
+
 		self.scheduler.add_new_object(self.callback, None, run_in=1)
-		self.scheduler.tick(1)
+		self.scheduler.tick(Scheduler.FIRST_TICK_ID)
 		callback2.assert_called_once_with()
-		
+
 	def test_within_callback_add_new_callback_for_future_tick(self):
 		self.scheduler.before_ticking()
 		callback2 = Mock()
 		def add_callback():
 			self.scheduler.add_new_object(callback2, None, run_in=1)
 		self.callback.side_effect = add_callback
-		
+
 		self.scheduler.add_new_object(self.callback, None, run_in=1)
-		self.scheduler.tick(1)
+		self.scheduler.tick(Scheduler.FIRST_TICK_ID)
 		self.assertFalse(callback2.called)
-		self.scheduler.tick(2)
+		self.scheduler.tick(Scheduler.FIRST_TICK_ID+1)
 		callback2.assert_called_once_with()
 
 	def test_add_periodic_callback_called_every_tick_3_times(self):
 		self.scheduler.before_ticking()
-		self.scheduler.add_new_object(self.callback, None, run_in=1, loops=3)
-		for i in xrange(1, 4):
+		self.scheduler.add_new_object(self.callback, None, run_in=1, loops=4)
+		for i in xrange(Scheduler.FIRST_TICK_ID, 4):
 			self.scheduler.tick(i)
 			self.callback.assert_called_once_with()
 			self.callback.reset_mock()
-		
+
 		self.scheduler.tick(4)
 		self.assertFalse(self.callback.called)
-		
+
 	def test_add_periodic_callback_run_every_other_tick_3_times(self):
 		self.scheduler.before_ticking()
-		self.scheduler.tick(1)
+		self.scheduler.tick(Scheduler.FIRST_TICK_ID)
 		self.scheduler.add_new_object(self.callback, None, run_in=1, loops=3, loop_interval=2)
 
-		for i in xrange(2, 8):
+		for i in xrange(Scheduler.FIRST_TICK_ID+1, 7):
 			self.scheduler.tick(i)
-			if (i % 2 == 0):
+			if (i % 2 - 1 == 0):
 				self.callback.assert_called_once_with()
 				self.callback.reset_mock()
 			else:
-				self.assertFalse(self.callback.called)				
+				self.assertFalse(self.callback.called)
 
-		self.scheduler.tick(8)
+		self.scheduler.tick(7)
 		self.assertFalse(self.callback.called)
-				
+
 	def test_remove_call_from_instance(self):
 		self.scheduler.before_ticking()
 		instance1 = Mock()
@@ -172,9 +172,9 @@ class TestScheduler(TestCase):
 		self.scheduler.add_new_object(self.callback, instance1, run_in=1)
 		self.scheduler.add_new_object(self.callback, instance2, run_in=1)
 		self.scheduler.rem_call(instance1, self.callback)
-		self.scheduler.tick(1)
+		self.scheduler.tick(Scheduler.FIRST_TICK_ID)
 		self.callback.assert_called_once_with() # instance2 callback kept
-	
+
 	def test_list_and_manually_remove_all_classinstance_callbacks(self):
 		self.scheduler.before_ticking()
 		instance1 = Mock()
@@ -184,7 +184,7 @@ class TestScheduler(TestCase):
 		callbacks = self.scheduler.get_classinst_calls(instance1)
 		for callback in callbacks:
 			self.scheduler.rem_object(callback)
-		self.scheduler.tick(1)
+		self.scheduler.tick(Scheduler.FIRST_TICK_ID)
 		self.assertFalse(self.callback.called)
 
 	def test_remove_all_classinstance_callbacks(self):
@@ -194,27 +194,27 @@ class TestScheduler(TestCase):
 		self.scheduler.add_new_object(self.callback, instance1, run_in=1)
 
 		self.scheduler.rem_all_classinst_calls(instance1)
-		self.scheduler.tick(1)
+		self.scheduler.tick(Scheduler.FIRST_TICK_ID)
 		self.assertFalse(self.callback.called)
-		
+
 	def test_get_remaining_tick_until_callback(self):
 		self.scheduler.before_ticking()
 		instance = Mock()
-		self.scheduler.add_new_object(self.callback, instance, run_in=2)		
+		self.scheduler.add_new_object(self.callback, instance, run_in=2)
 		self.assertEqual(2, self.scheduler.get_remaining_ticks(instance, self.callback))
 
-		self.scheduler.tick(1)
+		self.scheduler.tick(Scheduler.FIRST_TICK_ID)
 		self.assertEqual(1, self.scheduler.get_remaining_ticks(instance, self.callback))
 
 	def test_get_remaining_tick_periodic_callback(self):
 		self.scheduler.before_ticking()
 		instance = Mock()
-		self.scheduler.add_new_object(self.callback, instance, run_in=1, loops=2, loop_interval=3)		
+		self.scheduler.add_new_object(self.callback, instance, run_in=1, loops=2, loop_interval=3)
 		self.assertEqual(1, self.scheduler.get_remaining_ticks(instance, self.callback))
-		
-		self.scheduler.tick(1) # first time fired
+
+		self.scheduler.tick(Scheduler.FIRST_TICK_ID) # first time fired
 		self.assertEqual(3, self.scheduler.get_remaining_ticks(instance, self.callback))
-		self.scheduler.tick(2)
+		self.scheduler.tick(Scheduler.FIRST_TICK_ID+1)
 		self.assertEqual(2, self.scheduler.get_remaining_ticks(instance, self.callback))
-		self.scheduler.tick(3)
+		self.scheduler.tick(Scheduler.FIRST_TICK_ID+2)
 		self.assertEqual(1, self.scheduler.get_remaining_ticks(instance, self.callback))

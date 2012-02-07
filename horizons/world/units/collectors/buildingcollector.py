@@ -69,7 +69,7 @@ class BuildingCollector(Collector):
 		# save job history
 		for tick, utilisation in self._job_history:
 				# pre-translate the tick number for the loading process
-			translated_tick = tick - current_tick + 1
+			translated_tick = tick - current_tick + Scheduler.FIRST_TICK_ID
 			db("INSERT INTO building_collector_job_history(collector, tick, utilisation) VALUES(?, ?, ?)", \
 				 self.worldid, translated_tick, utilisation)
 
@@ -90,8 +90,8 @@ class BuildingCollector(Collector):
 			#       fisher basically isn't a buildingcollector anymore.
 
 		# load job search failures
-		# the tick values were translated to assume that it is currently tick 0
-		assert Scheduler().cur_tick == 0
+		# the tick values were translated to assume that it is currently tick -1
+		assert Scheduler().cur_tick == Scheduler.FIRST_TICK_ID - 1
 		self._job_history = db.get_building_collector_job_history(worldid)
 
 	def register_at_home_building(self, unregister = False):
