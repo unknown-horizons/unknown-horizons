@@ -210,13 +210,13 @@ class BuildingTool(NavigationTool):
 				# (this is far from good when building lines, but suffices for our purposes, which is mostly single build)
 				self.buildings_action_set_ids[i] = action_set_id
 
+			settlement = self.session.world.get_settlement(building.position.origin)
+			if settlement is not None and settlement.owner != self.session.world.player:
+				settlement = None # no fraternising with the enemy, else there would be peace
 
-			if self._class.id == BUILDINGS.WAREHOUSE_CLASS:
-				settlement = self.session.world.get_settlement(building.position.center())
-			else:
+			if self._class.id != BUILDINGS.WAREHOUSE_CLASS:
 				# Player shouldn't be allowed to build in this case, else it can trigger
 				# a new_settlement notificaition
-				settlement = self.session.world.get_settlement(building.position.origin)
 				if settlement is None:
 					building.buildable = False
 
