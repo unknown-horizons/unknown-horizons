@@ -725,7 +725,7 @@ class World(BuildingOwner, LivingObject, WorldObject):
 		else:
 			islands = self.islands
 
-		for island in self.islands:
+		for island in islands:
 			for settlement in island.settlements:
 				warehouse = settlement.warehouse
 				if (radius is None or position is None or \
