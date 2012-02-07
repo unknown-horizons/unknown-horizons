@@ -22,7 +22,7 @@
 from fife.extensions.pychan import widgets
 
 from horizons.constants import GAME_SPEED
-from horizons.gui.widgets.tooltip import TooltipIcon
+from horizons.gui.widgets.tooltip import TooltipButton
 from horizons.gui.widgets.statswidget import StatsWidget
 from horizons.scheduler import Scheduler
 from horizons.util.python import decorators
@@ -95,8 +95,9 @@ class PlayersSettlements(StatsWidget):
 		name.text = unicode(settlement.get_component(NamedComponent).name)
 		name.min_size = name.max_size = (175, 20)
 
-		rename_icon = TooltipIcon(name = 'rename_%d' % settlement.worldid)
-		rename_icon.image = "content/gui/images/background/rename_feather_20.png"
+		rename_icon = TooltipButton(name = 'rename_%d' % settlement.worldid)
+		rename_icon.up_image = "content/gui/images/background/rename_feather_20.png"
+		rename_icon.hover_image = "content/gui/images/background/rename_feather_20_h.png"
 		rename_icon.tooltip = _("Click to change the name of your settlement.")
 
 		self._add_generic_line_to_gui(settlement.worldid, [sequence_number_label, name, rename_icon],
