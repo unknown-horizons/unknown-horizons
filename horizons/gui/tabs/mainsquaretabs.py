@@ -105,6 +105,15 @@ class MainSquareOverviewTab(AccountTab):
 		super(MainSquareOverviewTab, self).__init__(instance)
 		self.tooltip = _('Main square overview')
 		self.widget.child_finder('headline').text = unicode(self.settlement.get_component(NamedComponent).name)
+		self.widget.child_finder('headline').tooltip = _('Click to change the name of your settlement.')
+
+	def refresh(self):
+		self.widget.child_finder('headline').text = unicode(self.settlement.get_component(NamedComponent).name)
+		events = {
+				'headline': Callback(self.instance.session.ingame_gui.show_change_name_dialog, self.settlement)
+		         }
+		self.widget.mapEvents(events)
+		super(MainSquareOverviewTab, self).refresh()
 
 class MainSquareSettlerTabSettlerTab(MainSquareTab):
 	"""Displays information about the settlers on average as overview"""

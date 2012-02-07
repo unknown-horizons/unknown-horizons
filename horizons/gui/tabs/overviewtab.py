@@ -120,6 +120,10 @@ class WarehouseOverviewTab(OverviewTab):
 
 	def refresh(self):
 		self.widget.findChild(name="headline").text = unicode(self.instance.settlement.get_component(NamedComponent).name)
+		events = {
+				'headline': Callback(self.instance.session.ingame_gui.show_change_name_dialog, self.instance.settlement)
+		         }
+		self.widget.mapEvents(events)
 		self._refresh_collector_utilisation()
 		super(WarehouseOverviewTab, self).refresh()
 
@@ -425,6 +429,10 @@ class SettlerOverviewTab(OverviewTab):
 		self.widget.child_finder('taxes').text = unicode(self.instance.last_tax_payed)
 		self.update_consumed_res()
 		self.widget.findChild(name="headline").text = unicode(self.instance.settlement.get_component(NamedComponent).name)
+		events = {
+				'headline': Callback(self.instance.session.ingame_gui.show_change_name_dialog, self.instance.settlement)
+		         }
+		self.widget.mapEvents(events)
 		super(SettlerOverviewTab, self).refresh()
 
 	def update_consumed_res(self):
