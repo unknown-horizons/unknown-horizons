@@ -298,7 +298,7 @@ class SingleplayerMenu(object):
 				self.__cur_random_seed = random.random()
 				self._do_update_random_map_preview()
 			self._update_map_preview(minimap_icon, self.__get_random_map_file(),
-			                         tooltip=_("Click to regenerate"), on_click=on_click)
+			                         tooltip=_("Click to regenerate map preview"), on_click=on_click)
 
 	# game options
 	resource_densities = [0.5, 0.7, 1, 1.4, 2]

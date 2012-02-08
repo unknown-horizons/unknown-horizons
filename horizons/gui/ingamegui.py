@@ -203,7 +203,7 @@ class IngameGui(LivingObject):
 		cityinfo = self.widgets['city_info']
 		if self.settlement.owner == self.session.world.player: # allow name changes
 			cb = Callback(self.show_change_name_dialog, self.settlement)
-			tooltip = _("Click to change the name of your settlement.")
+			tooltip = _("Click to change the name of your settlement")
 		else: # no name changes
 			cb = lambda : 42
 			tooltip = u""

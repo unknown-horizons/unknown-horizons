@@ -105,7 +105,7 @@ class MainSquareOverviewTab(AccountTab):
 		super(MainSquareOverviewTab, self).__init__(instance=instance)
 		self.tooltip = _('Main square overview')
 		self.widget.child_finder('headline').text = unicode(self.settlement.get_component(NamedComponent).name)
-		self.widget.child_finder('headline').tooltip = _('Click to change the name of your settlement.')
+		self.widget.child_finder('headline').tooltip = _('Click to change the name of your settlement')
 
 	def refresh(self):
 		self.widget.child_finder('headline').text = unicode(self.settlement.get_component(NamedComponent).name)
