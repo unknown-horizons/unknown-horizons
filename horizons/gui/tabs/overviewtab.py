@@ -87,7 +87,9 @@ class OverviewTab(TabInterface):
 			self.instance.add_change_listener(self.refresh)
 		if not self.instance.has_remove_listener(self.on_instance_removed):
 			self.instance.add_remove_listener(self.on_instance_removed)
-		if hasattr(self.instance, 'settlement') and not self.instance.settlement.has_change_listener(self.refresh):
+		if hasattr(self.instance, 'settlement') and \
+		   self.instance.settlements is not None and \
+		   not self.instance.settlement.has_change_listener(self.refresh):
 			# listen for settlement name changes displayed as tab headlines
 			self.instance.settlement.add_change_listener(self.refresh)
 
@@ -98,7 +100,9 @@ class OverviewTab(TabInterface):
 				self.instance.remove_change_listener(self.refresh)
 			if self.instance.has_remove_listener(self.on_instance_removed):
 				self.instance.remove_remove_listener(self.on_instance_removed)
-		if hasattr(self.instance, 'settlement') and self.instance.settlement.has_change_listener(self.refresh):
+		if hasattr(self.instance, 'settlement') and \
+		   self.instance.settlements is not None and \
+		   self.instance.settlement.has_change_listener(self.refresh):
 			self.instance.settlement.remove_change_listener(self.refresh)
 
 	def on_instance_removed(self):
