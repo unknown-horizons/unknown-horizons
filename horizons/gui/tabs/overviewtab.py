@@ -50,6 +50,7 @@ class OverviewTab(TabInterface):
 		super(OverviewTab, self).__init__(widget)
 		self.instance = instance
 		self.init_values()
+		self._refresh_scheduled = False
 		self.button_up_image = icon_path % 'u'
 		self.button_active_image = icon_path % 'a'
 		self.button_down_image = icon_path % 'd'
@@ -64,6 +65,13 @@ class OverviewTab(TabInterface):
 			else:
 				self.widget.child_finder('player_emblem').image = \
 			    'content/gui/images/tabwidget/emblems/emblem_no_player.png'
+
+	def _schedule_refresh(self):
+		"""Schedule a refresh soon, dropping all other refresh request, that appear until then.
+		This saves a lot of CPU time, if you have a huge island, or play on high speed."""
+		if not self._refresh_scheduled:
+			self._refresh_scheduled = True
+			ExtScheduler().add_new_object(self.refresh, self, run_in=0.3)
 
 	def refresh(self):
 		if (hasattr(self.instance, 'name') or self.instance.has_component(NamedComponent)) and self.widget.child_finder('name'):
@@ -80,6 +88,7 @@ class OverviewTab(TabInterface):
 			    unicode( self.instance.running_costs )
 
 		self.widget.adaptLayout()
+		self._refresh_scheduled = False
 
 	def show(self):
 		super(OverviewTab, self).show()
@@ -88,10 +97,10 @@ class OverviewTab(TabInterface):
 		if not self.instance.has_remove_listener(self.on_instance_removed):
 			self.instance.add_remove_listener(self.on_instance_removed)
 		if hasattr(self.instance, 'settlement') and \
-		   self.instance.settlements is not None and \
-		   not self.instance.settlement.has_change_listener(self.refresh):
+		   self.instance.settlement is not None and \
+		   not self.instance.settlement.has_change_listener(self._schedule_refresh):
 			# listen for settlement name changes displayed as tab headlines
-			self.instance.settlement.add_change_listener(self.refresh)
+			self.instance.settlement.add_change_listener(self._schedule_refresh)
 
 	def hide(self):
 		super(OverviewTab, self).hide()
@@ -101,9 +110,9 @@ class OverviewTab(TabInterface):
 			if self.instance.has_remove_listener(self.on_instance_removed):
 				self.instance.remove_remove_listener(self.on_instance_removed)
 		if hasattr(self.instance, 'settlement') and \
-		   self.instance.settlements is not None and \
-		   self.instance.settlement.has_change_listener(self.refresh):
-			self.instance.settlement.remove_change_listener(self.refresh)
+		   self.instance.settlement is not None and \
+		   self.instance.settlement.has_change_listener(self._schedule_refresh):
+			self.instance.settlement.remove_change_listener(self._schedule_refresh)
 
 	def on_instance_removed(self):
 		self.on_remove()

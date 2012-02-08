@@ -27,7 +27,6 @@ from horizons.gui.tabs.overviewtab import OverviewTab
 from horizons.gui.widgets.productionoverview import ProductionOverview
 from horizons.gui.tabs.overviewtab import _setup_tax_slider
 
-from horizons.extscheduler import ExtScheduler
 from horizons.util import Callback
 from horizons.util.gui import create_resource_icon
 from horizons.command.uioptions import SetSettlementUpgradePermissions
@@ -40,7 +39,6 @@ class MainSquareTab(OverviewTab):
 	def __init__(self, instance, widget, icon_path):
 		super(MainSquareTab, self).__init__(instance=instance, widget=widget, icon_path=icon_path)
 		self.init_values()
-		self._refresh_scheduled = False
 
 	@property
 	def settlement(self):
@@ -58,18 +56,6 @@ class MainSquareTab(OverviewTab):
 		for building in self.settlement.buildings:
 			if building.has_change_listener(self._schedule_refresh):
 				building.remove_change_listener(self._schedule_refresh)
-
-	def _schedule_refresh(self):
-		"""Schedule a refresh soon, dropping all other refresh request, that appear until then.
-		This saves a lot of CPU time, if you have a huge island, or play on high speed."""
-		if not self._refresh_scheduled:
-			self._refresh_scheduled = True
-			ExtScheduler().add_new_object(self.refresh, self, run_in=0.3)
-
-	def refresh(self):
-		super(MainSquareTab, self).refresh()
-		self._refresh_scheduled = False
-
 
 class AccountTab(MainSquareTab):
 	"""Display basic income and expenses of a settlement"""
