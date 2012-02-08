@@ -1,8 +1,3 @@
-#. This is a database entry: a messagewidget message (left part of the screen).
-#: sql database files
-msgid "Your game has been autosaved."
-msgstr ""
-
 #. This is a database entry: the name of a resource.
 #: sql database files
 msgid "dagger"
@@ -165,11 +160,6 @@ msgstr ""
 msgid "charcoal"
 msgstr ""
 
-#. This is a database entry: the name of a resource.
-#: sql database files
-msgid "pigs for slaughter"
-msgstr ""
-
 #. This is a database entry: the name of an inhabitant increment (tier / level).
 #: sql database files
 msgid "citizen"
@@ -195,9 +185,9 @@ msgstr ""
 msgid "A new world has been created."
 msgstr ""
 
-#. This is a database entry: a messagewidget message (left part of the screen).
+#. This is a database entry: the name of a resource.
 #: sql database files
-msgid "Your game has been quicksaved."
+msgid "pigs for slaughter"
 msgstr ""
 
 #. This is a database entry: the name of a resource.

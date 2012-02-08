@@ -61,8 +61,6 @@ def set_translations():
 	"city_info.xml" : {
 		# (tooltip of widget: city_info_inhabitants)
 		("city_info_inhabitants"       , "tooltip" ): _("Inhabitants"),
-		# (tooltip of widget: city_name)
-		("city_name"                   , "tooltip" ): _("Click to change the name of your settlement."),
 		},
 
 	"minimap.xml" : {
@@ -90,22 +88,9 @@ def set_translations():
 		("zoomOut"                     , "tooltip" ): _("Zoom out"),
 		},
 
-	"status.xml" : {
-		# (tooltip of widget: boards_icon)
-		("boards_icon"                 , "tooltip" ): _("Boards"),
-		# (tooltip of widget: bricks_icon)
-		("bricks_icon"                 , "tooltip" ): _("Bricks"),
-		# (tooltip of widget: food_icon)
-		("food_icon"                   , "tooltip" ): _("Food"),
-		# (tooltip of widget: textiles_icon)
-		("textiles_icon"               , "tooltip" ): _("Textiles"),
-		# (tooltip of widget: tools_icon)
-		("tools_icon"                  , "tooltip" ): _("Tools"),
-		},
-
-	"status_gold.xml" : {
-		# (tooltip of widget: gold_icon)
-		("gold_icon"                   , "tooltip" ): _("Gold"),
+	"resource_overview_bar_gold.xml" : {
+		# (tooltip of widget: background_icon)
+		("background_icon"             , "tooltip" ): _("Gold"),
 		},
 
 	"change_name.xml" : {
@@ -113,6 +98,8 @@ def set_translations():
 		("enter_new_name_lbl"          , "text"    ): _("Enter new name:"),
 		# (text of widget: headline_change_name)
 		("headline_change_name"        , "text"    ): _("Change name"),
+		# (text of widget: old_name_label)
+		("old_name_label"              , "text"    ): _("Old name:"),
 		# (tooltip of widget: okButton)
 		("okButton"                    , "tooltip" ): _("Apply the new name"),
 		},
@@ -377,6 +364,8 @@ def set_translations():
 		("paid_taxes_label"            , "tooltip" ): _("Tax rate"),
 		# (tooltip of widget: residents_label)
 		("residents_label"             , "tooltip" ): _("Residents"),
+		# (tooltip of widget: headline)
+		("headline"                    , "tooltip" ): _("Click to change the name of your settlement"),
 		# (tooltip of widget: inhabitants)
 		("inhabitants"                 , "tooltip" ): _("Residents"),
 		# (tooltip of widget: tax_val_label)
@@ -406,6 +395,8 @@ def set_translations():
 		("running_costs_label"         , "tooltip" ): _("Running costs"),
 		# (tooltip of widget: collector_utilisation) Percentage describing how busy the collectors were (100% = always going for / already carrying full load of goods)
 		("collector_utilisation"       , "tooltip" ): _("Collector utilisation"),
+		# (tooltip of widget: headline)
+		("headline"                    , "tooltip" ): _("Click to change the name of your settlement"),
 		# (tooltip of widget: running_costs)
 		("running_costs"               , "tooltip" ): _("Running costs"),
 		},
@@ -445,7 +436,7 @@ def set_translations():
 
 	"overview_trade_ship.xml" : {
 		# (tooltip of widget: name)
-		("name"                        , "tooltip" ): _("Click to change the name of this ship."),
+		("name"                        , "tooltip" ): _("Click to change the name of this ship"),
 		# (tooltip of widget: configure_route)
 		("configure_route"             , "tooltip" ): _("Configure trading route"),
 		# (tooltip of widget: found_settlement)
@@ -456,7 +447,7 @@ def set_translations():
 
 	"overview_war_ship.xml" : {
 		# (tooltip of widget: name)
-		("name"                        , "tooltip" ): _("Click to change the name of this ship."),
+		("name"                        , "tooltip" ): _("Click to change the name of this ship"),
 		# (tooltip of widget: configure_route)
 		("configure_route"             , "tooltip" ): _("Configure trading route"),
 		# (tooltip of widget: found_settlement)
@@ -466,16 +457,10 @@ def set_translations():
 		},
 
 	"buysellmenu.xml" : {
-		# (text of widget: buy_label)
-		("buy_label"                   , "text"    ): _("Buy resources"),
-		# (text of widget: buysell_help_label)
-		("buysell_help_label"          , "text"    ): _("Click on slot icon to toggle mode:"),
 		# (text of widget: headline)
 		("headline"                    , "text"    ): _("Buy or sell resources"),
 		# (text of widget: headline_trade_history)
 		("headline_trade_history"      , "text"    ): _("Trade history"),
-		# (text of widget: sell_label)
-		("sell_label"                  , "text"    ): _("Sell resources"),
 		},
 
 	"select_trade_resource.xml" : {
@@ -486,8 +471,6 @@ def set_translations():
 	"tab_account.xml" : {
 		# (text of widget: buy_expenses_label)
 		("buy_expenses_label"          , "text"    ): _("Buying"),
-		# (text of widget: headline)
-		("headline"                    , "text"    ): _("Account"),
 		# (text of widget: headline_balance_label)
 		("headline_balance_label"      , "text"    ): _("Balance:"),
 		# (text of widget: headline_expenses_label)
@@ -500,6 +483,8 @@ def set_translations():
 		("sell_income_label"           , "text"    ): _("Sale"),
 		# (text of widget: taxes_label)
 		("taxes_label"                 , "text"    ): _("Taxes"),
+		# (text of widget: headline)
+		("headline"                    , "text"    ): _("Account"),
 		# (tooltip of widget: show_production_overview)
 		("show_production_overview"    , "tooltip" ): _("Show resources produced in this settlement"),
 		},

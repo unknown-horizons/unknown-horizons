@@ -364,8 +364,10 @@ class BuySellTab(TabInterface):
 		limit = int( slot.findChild(name="slider").value )
 		action = slot.action
 		if action == "buy":
+			#xgettext:python-format
 			hint = _("Will buy {resource_name} whenever less than {limit}t are in stock.")
 		elif action == "sell":
+			#xgettext:python-format
 			hint = _("Will sell {resource_name} whenever more than {limit}t are available.")
 
 		hint = hint.format(limit=unicode(limit),
