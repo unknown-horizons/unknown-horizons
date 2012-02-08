@@ -39,8 +39,10 @@ def setup_combat(s, ship):
 
 	p0 = Player(s, worldid, "p1", Color[1])
 	p1 = Player(s, worldid+1, "p2", Color[2])
-	p0.initialize(None)
-	p1.initialize(None)
+
+	for p in (p0, p1):
+		p.initialize(None)
+		s.world.players.append(p)
 
 	s0 = CreateUnit(p0.worldid, ship, 0, 0)(issuer=p0)
 	s1 = CreateUnit(p1.worldid, ship, 3, 3)(issuer=p1)
@@ -227,12 +229,12 @@ def test_combat_save_load():
 
 	# fight
 
-	AddEnemyPair(p0, p1).execute(s)
+	AddEnemyPair(p0, p1).execute(session)
 
-	Attack(s0, s1).execute(s)
-	Attack(s1, s0).execute(s)
+	Attack(s0, s1).execute(session)
+	Attack(s1, s0).execute(session)
 
-	s.run(seconds=60)
+	session.run(seconds=100)
 
 	# saveload
 	fd, filename = tempfile.mkstemp()
