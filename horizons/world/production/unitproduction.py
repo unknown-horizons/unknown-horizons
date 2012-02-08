@@ -19,7 +19,6 @@
 # Free Software Foundation, Inc.,
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
-import copy
 
 from horizons.world.production.production import ChangingProduction
 from horizons.constants import PRODUCTION, RES
@@ -34,14 +33,18 @@ class UnitProduction(ChangingProduction):
 		# We have to check manually now after initing because we set auto_start to false
 		self._check_inventory()
 
-	def __init(self, progress = 0):
-		self.original_prod_line = self._prod_line
-		self._prod_line = copy.deepcopy(self._prod_line)
-		self.progress = progress # float indicating current production progress
+	def __init(self):
+		self.original_prod_line = self._prod_line.get_original_copy()
 
-	def _load(self, db, worldid):
-		super(UnitProduction, self)._load(db, worldid)
+	def load(self, db, worldid):
+		super(UnitProduction, self).load(db, worldid)
 		self.__init()
+
+	@property
+	def progress(self):
+		still_needed =  sum(self._prod_line.consumed_res.itervalues())
+		all_needed = sum([amount for res, amount in self.original_prod_line.consumed_res.iteritems() if res != RES.GOLD_ID])
+		return 1 - float(still_needed) / all_needed
 
 	## PROTECTED METHODS
 	def _get_producing_callback(self):
@@ -110,12 +113,9 @@ class UnitProduction(ChangingProduction):
 		# do part of production and call this again when done
 		Scheduler().add_new_object(self._produce, self, prod_time)
 
-		# set new progress
-		self.progress += part_of_whole_production
 
 	def _finished_producing(self, **kwargs):
 		super(UnitProduction, self)._finished_producing(continue_producing=False, **kwargs)
 		self.state = PRODUCTION.STATES.done
-		self.progress = 0
 		# reset prodline
-		self._prod_line = copy.deepcopy(self.original_prod_line)
+		self._prod_line = self._prod_line.get_original_copy()

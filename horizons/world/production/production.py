@@ -392,7 +392,7 @@ class Production(ChangeListener):
 	def _give_produced_res(self):
 		"""Put produces goods to the inventory"""
 		for res, amount in self._prod_line.produced_res.iteritems():
-			ret = self.inventory.alter(res, amount)
+			self.inventory.alter(res, amount)
 
 	def _check_available_res(self):
 		"""Checks if all required resources are there.
@@ -426,16 +426,13 @@ class Production(ChangeListener):
 
 class ChangingProduction(Production):
 	"""Same as Production, but can changes properties of the production line"""
-	def _create_production_line(self, prod_line_id):
-		"""Returns a changeable production line instance"""
-		return ProductionLine(prod_line_id)
 
 	def save(self, db, owner_id):
 		super(ChangingProduction, self).save(db, owner_id)
 		self._prod_line.save(db, owner_id)
 
-	def _load(self, db, worldid):
-		super(ChangingProduction, self)._load(db, worldid)
+	def load(self, db, worldid):
+		super(ChangingProduction, self).load(db, worldid)
 		self._prod_line.load(db, worldid)
 
 
@@ -483,7 +480,7 @@ class ProgressProduction(Production):
 		# TODO
 		pass
 
-	def _load(self, db, worldid):
+	def load(self, db, worldid):
 		super(ProgressProduction, self).load(db, worldid)
 		self.__init()
 		# TODO
