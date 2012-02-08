@@ -53,6 +53,16 @@ def health(thing):
 	return thing.get_component(HealthComponent).health
 def max_health(thing):
 	return thing.get_component(HealthComponent).max_health
+def one_dead(wid1, wid2):
+	for wid in (wid1, wid2):
+		at_least_one_dead = False
+		try:
+			WorldObject.get_object_by_id(wid)
+		except WorldObjectNotFound:
+			at_least_one_dead = True
+	return at_least_one_dead
+
+
 
 
 @game_test
@@ -147,6 +157,23 @@ def test_diplo0(s, p):
 	# it's not specified which one should lose
 	assert health(s0) == 0 or health(s1) == 0
 
+@game_test
+def test_dying(s, p):
+	"""
+	Check if units actually are gone when they have died
+	"""
+	(p0, s0), (p1, s1) = setup_combat(s, UNITS.FRIGATE)
+
+	AddEnemyPair(p0, p1).execute(s)
+	Attack(s0, s1).execute(s)
+
+	s.run(seconds=60)
+
+	assert health(s0) < max_health(s0)
+	assert health(s1) < max_health(s1)
+
+	# it's not specified which one should lose
+	assert one_dead(s0.worldid, s1.worldid)
 
 @game_test
 def test_diplo1(s, p):
@@ -234,7 +261,7 @@ def test_combat_save_load():
 	Attack(s0, s1).execute(session)
 	Attack(s1, s0).execute(session)
 
-	session.run(seconds=100)
+	session.run(seconds=20)
 
 	# saveload
 	fd, filename = tempfile.mkstemp()
@@ -243,13 +270,6 @@ def test_combat_save_load():
 	session.end(keep_map=True)
 	session = load_session(filename)
 
-	at_least_one_dead = False
-	for wid in (s0_worldid, s1_worldid):
-		try:
-			WorldObject.get_object_by_id(wid)
-		except WorldObjectNotFound:
-			at_least_one_dead = True
-
-	assert at_least_one_dead
+	assert one_dead(s0_worldid, s1_worldid)
 
 	session.end()

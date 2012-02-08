@@ -28,7 +28,7 @@ class ChangeListener(object):
 	An object calls _changed everytime something has changed, obviously.
 	This function calls every Callback, that has been registered to listen for a change.
 	NOTE: ChangeListeners aren't saved, they have to be reregistered on load
-	NOTE: Removelisteners must not access the object, as it is in progress of being destroyed.
+	NOTE: RemoveListeners must not access the object, as it is in progress of being destroyed.
 	"""
 	def __init__(self, *args, **kwargs):
 		super(ChangeListener, self).__init__()
