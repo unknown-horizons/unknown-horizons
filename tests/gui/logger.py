@@ -230,7 +230,7 @@ class TestCodeGenerator(object):
 		Output test code to press the key.
 		"""
 		try:
-			code = 'gui.press_key(gui.Key.%s)' % KEY_NAME_LOOKUP[keycode * 10]
+			code = 'gui.press_key(gui.Key.%s)' % KEY_NAME_LOOKUP[keycode]
 		except KeyError:
 			code = '# Unknown key (code %s)' % keycode
 
