@@ -19,7 +19,11 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-from horizons.util import Color
+import tempfile
+import os
+
+from horizons.util import Color, WorldObject
+from horizons.util.worldobject import WorldObjectNotFound
 from horizons.command.unit import CreateUnit, Attack
 from horizons.command.diplomacy import AddEnemyPair, AddNeutralPair, AddAllyPair
 from horizons.command.uioptions import EquipWeaponFromInventory, UnequipWeaponToInventory
@@ -28,7 +32,7 @@ from horizons.world.player import Player
 from horizons.constants import UNITS, WEAPONS
 from horizons.world.component.healthcomponent import HealthComponent
 
-from tests.game import game_test
+from tests.game import game_test, new_session
 
 def setup_combat(s, ship):
 	worldid = 10000000
@@ -197,3 +201,53 @@ def test_unfair(s, p):
 	assert health(s0_1) > 0
 
 # TODO: stances
+
+@game_test(manual_session=True)
+def test_combat_save_load():
+	"""
+	create a savegame with combat units and actual combat, then save/load it
+	"""
+
+	session, player = new_session()
+	(p0, s0), (p1, s1) = setup_combat(session, UNITS.FRIGATE)
+
+	s0_worldid, s1_worldid = s0.worldid, s1.worldid
+
+	session.run(seconds=1)
+
+	# saveload
+	fd, filename = tempfile.mkstemp()
+	os.close(fd)
+	assert session.save(savegamename=filename)
+	session.end(keep_map=True)
+	session = load_session(filename)
+
+	s0 = WorldObject.get_object_by_id(s0_worldid)
+	s1 = WorldObject.get_object_by_id(s1_worldid)
+
+	# fight
+
+	AddEnemyPair(p0, p1).execute(s)
+
+	Attack(s0, s1).execute(s)
+	Attack(s1, s0).execute(s)
+
+	s.run(seconds=60)
+
+	# saveload
+	fd, filename = tempfile.mkstemp()
+	os.close(fd)
+	assert session.save(savegamename=filename)
+	session.end(keep_map=True)
+	session = load_session(filename)
+
+	at_least_one_dead = False
+	for wid in (s0_worldid, s1_worldid):
+		try:
+			WorldObject.get_object_by_id(wid)
+		except WorldObjectNotFound:
+			at_least_one_dead = True
+
+	assert at_least_one_dead
+
+	session.end()
