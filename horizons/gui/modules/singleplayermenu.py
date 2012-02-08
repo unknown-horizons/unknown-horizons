@@ -20,6 +20,8 @@
 # ###################################################
 
 import random
+import json
+import threading
 
 import horizons.main
 
@@ -31,7 +33,7 @@ from horizons.constants import AI
 from horizons.gui.widgets.minimap import Minimap
 
 class SingleplayerMenu(object):
-	def show_single(self, show = 'scenario'): # tutorial
+	def show_single(self, show = 'random'): # tutorial
 		"""
 		@param show: string, which type of games to show
 		"""
@@ -283,10 +285,70 @@ class SingleplayerMenu(object):
 
 	def _on_random_map_parameter_changed(self):
 		"""Called to schedule an update of the map preview (only done after delay because expenseive)"""
-		if hasattr(self, "_random_map_preview_update_scheduled"):
-			return
-		self._random_map_preview_update_scheduled = True
-		ExtScheduler().add_new_object(self._do_update_random_map_preview, self, 0.5)
+		#if hasattr(self, "_random_map_preview_update_scheduled"):
+		#	return
+		#self._random_map_preview_update_scheduled = True
+		#ExtScheduler().add_new_object(self._do_update_random_map_preview, self, 0.5)
+		#self._do_update_random_map_preview()
+
+		if not hasattr(self, "_running"):
+			self._running = False
+			self._dirty = False
+		if self._running:
+			self._dirty = True
+			return # todo
+		self._dirty = False
+		minimap_icon = self.current.findChild(name="map_preview_minimap")
+		params =  json.dumps(((minimap_icon.width, minimap_icon.height),
+		                      self.__get_random_map_parameters()))
+		class Data(object):
+			data = None
+			running = True
+
+
+		def run(params):
+			import subprocess
+			import sys
+			print 'run'
+			Data.data = subprocess.check_output([sys.executable, sys.argv[0], "--generate-minimap", params])
+			Data.running = False
+			print 'done'
+
+		calc_thread = threading.Thread(target=run, args=(params, ))
+		calc_thread.start()
+		self._running = True
+
+		def up():
+			print 'running ', Data.running
+			if Data.running:
+				ExtScheduler().add_new_object(up, self, 0.5)
+			else:
+				print 'drawing'
+				self._running = False
+				icon = self.current.findChild(name="map_preview_minimap")
+				def on_click(event, drag):
+					self.__cur_random_seed = random.random()
+					self._on_random_map_parameter_changed()
+				tooltip=_("Click to regenerate map preview")
+
+				if hasattr(self, "minimap"):
+					self.minimap.end()
+				self.minimap = Minimap(icon,
+				                session=None,
+				                view=None,
+				                world=None,
+				                targetrenderer=horizons.main.fife.targetrenderer,
+				                imagemanager=horizons.main.fife.imagemanager,
+				                cam_border=False,
+				                use_rotation=False,
+		                    tooltip=tooltip,
+		                    on_click=on_click,
+				                preview=True)
+				self.minimap.draw_data( Data.data )
+				icon.show()
+				if self._dirty:
+					self._on_random_map_parameter_changed()
+		ExtScheduler().add_new_object(up, self, 0.5)
 
 	def _do_update_random_map_preview(self):
 		"""Actually update map preview of random map"""
@@ -320,12 +382,19 @@ class SingleplayerMenu(object):
 		on_resource_density_slider_change()
 
 	def __get_random_map_file(self):
+		self.__generate_random_map( self.__get_random_map_parameters() )
+
+	@classmethod
+	def __generate_random_map(self, parameters):
+		return random_map.generate_map( *parameters )
+
+	def __get_random_map_parameters(self):
 		map_size = self.map_sizes[int(self.current.findChild(name = 'map_size_slider').value)]
 		water_percent = self.water_percents[int(self.current.findChild(name = 'water_percent_slider').value)]
 		max_island_size = self.island_sizes[int(self.current.findChild(name = 'max_island_size_slider').value)]
 		preferred_island_size = self.island_sizes[int(self.current.findChild(name = 'preferred_island_size_slider').value)]
 		island_size_deviation = self.island_size_deviations[int(self.current.findChild(name = 'island_size_deviation_slider').value)]
-		return random_map.generate_map(self.__cur_random_seed, map_size, water_percent, max_island_size, preferred_island_size, island_size_deviation)
+		return (self.__cur_random_seed, map_size, water_percent, max_island_size, preferred_island_size, island_size_deviation)
 
 	def __get_natural_resource_multiplier(self):
 		return self.resource_densities[int(self.widgets['game_settings'].findChild(name = 'resource_density_slider').value)]
@@ -349,23 +418,42 @@ class SingleplayerMenu(object):
 			horizons.main.fife.set_uh_setting("Nickname", playername)
 
 	def _update_map_preview(self, minimap_icon, map_file, tooltip=None, on_click=None):
+
+		print json.dumps(((minimap_icon.width, minimap_icon.height),
+		                  self.__get_random_map_parameters()))
+
+	@classmethod
+	def generate_minimap(cls, size, parameters ):
 		from horizons.world import World
 		from horizons.util import SavegameAccessor, WorldObject, Rect, Point
+
+
+		map_file = cls.__generate_random_map( parameters )
 		WorldObject.reset()
 		world = World(session=None)
 		world.inited = True
 		world.load_raw_map( SavegameAccessor( map_file ), preview=True )
-		if hasattr(self, "minimap"):
-			self.minimap.end()
-		self.minimap = Minimap(minimap_icon,
+		location = Rect.init_from_topleft_and_size_tuples( (0, 0), size)
+		from horizons.ext.dummy import Dummy
+		minimap = Minimap(location,
 				                session=None,
 				                view=None,
 				                world=world,
-				                targetrenderer=horizons.main.fife.targetrenderer,
-				                imagemanager=horizons.main.fife.imagemanager,
+				                targetrenderer=Dummy(),
+				                imagemanager=Dummy(),
 				                cam_border=False,
 				                use_rotation=False,
-		                    tooltip=tooltip,
-		                    on_click=on_click,
 				                preview=True)
-		self.minimap.draw()
+		# communicate via stdout
+		print minimap.dump_data()
+
+		"""
+		import subprocess
+		import sys
+		r = subprocess.check_output([sys.executable, sys.argv[0], '--help'])
+		print 'read ', r
+		"""
+
+
+if __name__ == '__main__':
+	print 'ici'

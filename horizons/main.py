@@ -33,8 +33,10 @@
    """
 
 import os
+import sys
 import os.path
 import random
+import json
 import threading
 import thread # for thread.error raised by threading.Lock.release
 import shutil
@@ -86,6 +88,11 @@ def start(command_line_arguments):
 		except ValueError:
 			print "Error: Invalid syntax in --mp-master commandline option. Port must be a number between 1 and 65535."
 			return False
+
+	if command_line_arguments.generate_minimap:
+		generate_minimap( command_line_arguments.generate_minimap )
+		sys.exit(0)
+
 
 	# init fife before mp_bind is parsed, since it's needed there
 	fife = Fife()
@@ -549,3 +556,12 @@ def preload_game_join(preloading):
 		except thread.error:
 			pass # due to timing issues, the lock might be released already
 
+
+def generate_minimap(arg):
+	global db
+	# init what we need
+	db = _create_main_db()
+	from horizons.entities import Entities
+	Entities.load(db, load_now=False) # create all references
+	from horizons.gui.modules import SingleplayerMenu
+	SingleplayerMenu.generate_minimap( * json.loads( arg ) )
