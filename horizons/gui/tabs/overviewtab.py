@@ -416,7 +416,7 @@ class FarmProductionOverviewTab(ProductionOverviewTab):
 	production_line_gui_xml = "overview_farmproductionline.xml"
 
 	def  __init__(self, instance):
-		super(ProductionOverviewTab, self).__init__(
+		super(FarmProductionOverviewTab, self).__init__(
 			widget = 'overview_farm.xml',
 			instance = instance
 		)
