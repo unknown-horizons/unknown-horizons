@@ -57,7 +57,7 @@ INSERT INTO "sounds" VALUES('content/audio/sounds/warehouse.ogg',5);
 INSERT INTO "sounds" VALUES('content/audio/sounds/main_square.ogg',6);
 INSERT INTO "sounds" VALUES('content/audio/sounds/chapel.ogg',7);
 INSERT INTO "sounds" VALUES('content/audio/sounds/ships_bell.ogg',8);
-INSERT INTO "sounds" VALUES('content/audio/sounds/ships_bell.ogg',9);
+INSERT INTO "sounds" VALUES('content/audio/sounds/invalid.ogg',9);
 INSERT INTO "sounds" VALUES('content/audio/sounds/flippage.ogg',10);
 CREATE TABLE "sounds_special" ("type" TEXT NOT NULL  DEFAULT '', "sound" INTEGER NOT NULL  DEFAULT '');
 INSERT INTO "sounds_special" VALUES('build',3);
