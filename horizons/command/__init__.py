@@ -69,15 +69,24 @@ class GenericCommand(Command):
 		return WorldObject.get_object_by_id(self.obj_id)
 
 class GenericComponentCommand(Command):
-	"""Code generator for trivial commands on an object.
-	It saves an object's world id, and executes a method specified as string on it in __call__
+	"""Code generator for trivial commands on a component."""
+	def __init__(self, component, method, *args, **kwargs):
+		self.obj_id = component.instance.worldid
+		self.method = method
+		self.component_name = component.NAME
+		self.args = args
+		self.kwargs = kwargs
 
-	Use like this to call obj.mymethod(42, 1337):
+	def __call__(self, issuer):
+		return getattr(self._get_object().get_component_by_name(self.component_name), self.method)(*self.args, **self.kwargs)
 
-	class MyCommand(GenericCommand):
-	  def __init__(self, obj):
-	    super(MyCommand,self).__init__(obj, "mymethod", 42, 1337)
-	 """
+	def _get_object(self):
+		return WorldObject.get_object_by_id(self.obj_id)
+
+class GenericComponentInstanceCommand(Command):
+	"""Code generator for trivial commands on a component. Passes instance.
+	Do not use anymore.
+	"""
 	def __init__(self, obj, component_name, method, *args, **kwargs):
 		self.obj_id = obj.worldid
 		self.method = method

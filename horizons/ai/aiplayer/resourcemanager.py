@@ -297,24 +297,25 @@ class ResourceManager(WorldObject):
 		buy_sell_list = sorted(buy_sell_list)[:3]
 		bought_sold_resources = zip(*buy_sell_list)[1]
 		# make sure the right resources are sold and bought with the right limits
-		sell_list = settlement.get_component(TradePostComponent).sell_list
-		buy_list = settlement.get_component(TradePostComponent).buy_list
+		tradepost = settlement.get_component(TradePostComponent)
+		sell_list = tradepost.sell_list
+		buy_list = tradepost.buy_list
 		for resource_id in managed_resources:
 			if resource_id in bought_sold_resources:
 				limit, sell = buy_sell_list[bought_sold_resources.index(resource_id)][2:]
 				if sell and resource_id in buy_list:
-					RemoveFromBuyList(settlement, resource_id).execute(session)
+					RemoveFromBuyList(tradepost, resource_id).execute(session)
 				elif not sell and resource_id in sell_list:
-					RemoveFromSellList(settlement, resource_id).execute(session)
+					RemoveFromSellList(tradepost, resource_id).execute(session)
 				if sell and (resource_id not in sell_list or sell_list[resource_id] != limit):
-					AddToSellList(settlement, resource_id, limit).execute(session)
+					AddToSellList(tradepost, resource_id, limit).execute(session)
 				elif not sell and (resource_id not in buy_list or buy_list[resource_id] != limit):
-					AddToBuyList(settlement, resource_id, limit).execute(session)
+					AddToBuyList(tradepost, resource_id, limit).execute(session)
 			else:
 				if resource_id in buy_list:
-					RemoveFromBuyList(settlement, resource_id).execute(session)
+					RemoveFromBuyList(tradepost, resource_id).execute(session)
 				elif resource_id in sell_list:
-					RemoveFromSellList(settlement, resource_id).execute(session)
+					RemoveFromSellList(tradepost, resource_id).execute(session)
 
 	def finish_tick(self):
 		"""Clear data used during a single tick."""

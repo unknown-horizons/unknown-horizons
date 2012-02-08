@@ -19,10 +19,10 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-from horizons.command import GenericCommand, GenericComponentCommand
+from horizons.command import GenericCommand, GenericComponentInstanceCommand
 from horizons.world.production.producer import Producer
 
-class ToggleActive(GenericComponentCommand):
+class ToggleActive(GenericComponentInstanceCommand):
 	"""Sets a production to active/inactive."""
 	def __init__(self, obj, production=None):
 		super(ToggleActive, self).__init__(obj, Producer.NAME, "toggle_active")
@@ -33,25 +33,25 @@ class ToggleActive(GenericComponentCommand):
 		obj = self._get_object().get_component_by_name(self.component_name)
 		return getattr(obj, self.method)( None if self._production is None else obj._get_production(self._production))
 
-GenericComponentCommand.allow_network(ToggleActive)
+GenericComponentInstanceCommand.allow_network(ToggleActive)
 
-class AddProduction(GenericComponentCommand):
+class AddProduction(GenericComponentInstanceCommand):
 	"""Add a production to a producer"""
 	def __init__(self, obj, production_line_id):
 		super(AddProduction, self).__init__(obj, Producer.NAME, "add_production_by_id", production_line_id)
 
-GenericComponentCommand.allow_network(AddProduction)
+GenericComponentInstanceCommand.allow_network(AddProduction)
 
 
-class RemoveFromQueue(GenericComponentCommand):
+class RemoveFromQueue(GenericComponentInstanceCommand):
 	"""Remove a production line id from a queueproducer's queue"""
 	def __init__(self, obj, production_line_id):
 		super(RemoveFromQueue, self).__init__(obj, Producer.NAME, "remove_from_queue", production_line_id)
 
-GenericComponentCommand.allow_network(RemoveFromQueue)
+GenericComponentInstanceCommand.allow_network(RemoveFromQueue)
 
 
-class CancelCurrentProduction(GenericComponentCommand):
+class CancelCurrentProduction(GenericComponentInstanceCommand):
 	"""Cancel the current production of a queueproducer.
 	Makes it proceed to the next one."""
 	def __init__(self, obj):
