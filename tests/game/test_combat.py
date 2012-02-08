@@ -32,7 +32,7 @@ from horizons.world.player import Player
 from horizons.constants import UNITS, WEAPONS
 from horizons.world.component.healthcomponent import HealthComponent
 
-from tests.game import game_test, new_session
+from tests.game import game_test, new_session, load_session
 
 def setup_combat(s, ship):
 	worldid = 10000000

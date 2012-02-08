@@ -558,7 +558,7 @@ class MovingWeaponHolder(WeaponHolder):
 	def save(self, db):
 		super(MovingWeaponHolder, self).save(db)
 		db("INSERT INTO stance(worldid, stance, state) VALUES(?, ?, ?)",
-			self.worldid, self.stance, self.get_component(self.stance).get_state())
+			self.worldid, self.stance.NAME, self.get_component(self.stance).get_state())
 
 	def load (self, db, worldid):
 		super(MovingWeaponHolder, self).load(db, worldid)
