@@ -143,6 +143,8 @@ def get_option_parser():
 	dev_group.add_option("--gui-log", dest="log_gui", action="store_true", default=False, help="Log gui interactions")
 	dev_group.add_option("--sp-seed", dest="sp_seed", metavar="<seed>", type="int", \
 	                           help="Use this seed for singleplayer sessions.")
+	dev_group.add_option("--generate-minimap", dest="generate_minimap", \
+	                     metavar="<parameters>", help="Generate a minimap for a map")
 	p.add_option_group(dev_group)
 
 	return p

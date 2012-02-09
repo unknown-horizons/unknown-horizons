@@ -294,16 +294,17 @@ class World(BuildingOwner, LivingObject, WorldObject):
 
 		# extra world size that is added so that he player can't see the "black void"
 		border = 30
+		fake_tile_class = Entities.grounds[-1]
 		for x in xrange(self.min_x-border, self.max_x+border, 10):
 			for y in xrange(self.min_y-border, self.max_y+border, 10):
-				# we don't need no references, we don't need no mem control
 				if not preview:
+					# we don't need no references, we don't need no mem control
 					default_grounds(self.session, x, y)
 				for x_offset in xrange(0,10):
 					if x+x_offset < self.max_x and x+x_offset>= self.min_x:
 						for y_offset in xrange(0,10):
 							if y+y_offset < self.max_y and y+y_offset >= self.min_y:
-								self.ground_map[(x+x_offset, y+y_offset)] = Entities.grounds[-1](self.session, x, y)
+								self.ground_map[(x+x_offset, y+y_offset)] = fake_tile_class(self.session, x, y)
 
 		# remove parts that are occupied by islands, create the island map and the full map
 		self.island_map = {}
