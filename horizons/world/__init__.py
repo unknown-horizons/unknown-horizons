@@ -105,7 +105,7 @@ class World(BuildingOwner, LivingObject, WorldObject):
 		self.bullets = None
 		super(World, self).end()
 
-	def _init(self, savegame_db, force_player_id):
+	def _init(self, savegame_db, force_player_id=None):
 		"""
 		@param savegame_db: Dbreader with loaded savegame database
 		@param force_player_id: the worldid of the selected human player or default if None (debug option)
