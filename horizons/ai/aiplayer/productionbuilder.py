@@ -481,7 +481,8 @@ class ProductionBuilder(AreaBuilder):
 	def manage_production(self):
 		"""Pauses and resumes production buildings when they have full input and output inventories."""
 		for building in self.production_buildings:
-			for production in building.get_component(Producer).get_productions():
+			producer = building.get_component(Producer)
+			for production in producer.get_productions():
 				if not production.get_produced_res():
 					continue
 				all_full = True
@@ -501,11 +502,11 @@ class ProductionBuilder(AreaBuilder):
 
 				if all_full:
 					if not production.is_paused():
-						ToggleActive(building, production).execute(self.land_manager.session)
+						ToggleActive(producer, production).execute(self.land_manager.session)
 						self.log.info('%s paused a production at %s/%d', self, building.name, building.worldid)
 				else:
 					if production.is_paused():
-						ToggleActive(building, production).execute(self.land_manager.session)
+						ToggleActive(producer, production).execute(self.land_manager.session)
 						self.log.info('%s resumed a production at %s/%d', self, building.name, building.worldid)
 
 	def handle_mine_empty(self, mine):

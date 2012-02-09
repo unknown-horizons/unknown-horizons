@@ -82,20 +82,3 @@ class GenericComponentCommand(Command):
 
 	def _get_object(self):
 		return WorldObject.get_object_by_id(self.obj_id)
-
-class GenericComponentInstanceCommand(Command):
-	"""Code generator for trivial commands on a component. Passes instance.
-	Do not use anymore.
-	"""
-	def __init__(self, obj, component_name, method, *args, **kwargs):
-		self.obj_id = obj.worldid
-		self.method = method
-		self.component_name = component_name
-		self.args = args
-		self.kwargs = kwargs
-
-	def __call__(self, issuer):
-		return getattr(self._get_object().get_component_by_name(self.component_name), self.method)(*self.args, **self.kwargs)
-
-	def _get_object(self):
-		return WorldObject.get_object_by_id(self.obj_id)

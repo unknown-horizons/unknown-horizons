@@ -383,7 +383,7 @@ class ProductionOverviewTab(OverviewTab):
 			# active toggle_active button
 			container.mapEvents( \
 			  { 'toggle_active': \
-			    Callback(ToggleActive(self.instance, production).execute, self.instance.session) \
+			    Callback(ToggleActive(self.instance.get_component(Producer), production).execute, self.instance.session) \
 			    } )
 			# NOTE: this command causes a refresh, so we needn't change the toggle_active-button-image
 			container.stylize('menu_black')

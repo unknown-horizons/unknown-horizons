@@ -19,7 +19,7 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-from horizons.command import GenericCommand, GenericComponentInstanceCommand, GenericComponentCommand
+from horizons.command import GenericCommand, GenericComponentCommand
 from horizons.world.component.tradepostcomponent import TradePostComponent
 from horizons.world.component.namedcomponent import NamedComponent
 
@@ -42,28 +42,28 @@ class AddToBuyList(GenericComponentCommand):
 	def __init__(self, tradepost, res_id, limit):
 		super(AddToBuyList, self).__init__(tradepost, 'add_to_buy_list', res_id, limit)
 
-GenericComponentInstanceCommand.allow_network(AddToBuyList)
+GenericComponentCommand.allow_network(AddToBuyList)
 
 class RemoveFromBuyList(GenericComponentCommand):
 	"""Removes a Resource from buy_list of TradePost"""
 	def __init__(self, tradepost, res_id):
 		super(RemoveFromBuyList, self).__init__(tradepost, 'remove_from_buy_list', res_id)
 
-GenericComponentInstanceCommand.allow_network(RemoveFromBuyList)
+GenericComponentCommand.allow_network(RemoveFromBuyList)
 
 class AddToSellList(GenericComponentCommand):
 	"""Adds a Resource to sell_list of TradePost"""
 	def __init__(self, tradepost, res_id, limit):
 		super(AddToSellList, self).__init__(tradepost, 'add_to_sell_list', res_id, limit)
 
-GenericComponentInstanceCommand.allow_network(AddToSellList)
+GenericComponentCommand.allow_network(AddToSellList)
 
 class RemoveFromSellList(GenericComponentCommand):
 	"""Removes a Resource from sell_list of TradePost"""
 	def __init__(self, tradepost, res_id):
 		super(RemoveFromSellList, self).__init__(tradepost, TradePostComponent.NAME, 'remove_from_sell_list', res_id)
 
-GenericComponentInstanceCommand.allow_network(RemoveFromSellList)
+GenericComponentCommand.allow_network(RemoveFromSellList)
 
 class TransferResource(GenericCommand):
 	"""Transfers an amount of a resource from one Storage to another"""
@@ -72,26 +72,26 @@ class TransferResource(GenericCommand):
 
 GenericCommand.allow_network(TransferResource)
 
-class SellResource(GenericComponentInstanceCommand):
-	"""The given settlement attempts to sell the given amount of resource to the ship"""
-	def __init__(self, settlement, ship, resource_id, amount):
-		super(SellResource, self).__init__(settlement, TradePostComponent.NAME, 'sell_resource', ship.worldid, resource_id, amount)
+class SellResource(GenericComponentCommand):
+	"""The given tradepost attempts to sell the given amount of resource to the ship"""
+	def __init__(self, tradepost, ship, resource_id, amount):
+		super(SellResource, self).__init__(tradepost, 'sell_resource', ship.worldid, resource_id, amount)
 
-GenericComponentInstanceCommand.allow_network(SellResource)
+GenericComponentCommand.allow_network(SellResource)
 
-class BuyResource(GenericComponentInstanceCommand):
-	"""The given settlement attempts to buy the given amount of resource from the ship"""
-	def __init__(self, settlement, ship, resource_id, amount):
-		super(BuyResource, self).__init__(settlement, TradePostComponent.NAME, 'buy_resource', ship.worldid, resource_id, amount)
+class BuyResource(GenericComponentCommand):
+	"""The given tradepost attempts to buy the given amount of resource from the ship"""
+	def __init__(self, tradepost, ship, resource_id, amount):
+		super(BuyResource, self).__init__(tradepost, 'buy_resource', ship.worldid, resource_id, amount)
 
-GenericComponentInstanceCommand.allow_network(BuyResource)
+GenericComponentCommand.allow_network(BuyResource)
 
-class RenameObject(GenericComponentInstanceCommand):
+class RenameObject(GenericComponentCommand):
 	"""Rename a NamedComponant"""
-	def __init__(self, obj, new_name):
-		super(RenameObject, self).__init__(obj, NamedComponent.NAME, "set_name", new_name)
+	def __init__(self, namedcomponent, new_name):
+		super(RenameObject, self).__init__(namedcomponent, "set_name", new_name)
 
-GenericComponentInstanceCommand.allow_network(RenameObject)
+GenericComponentCommand.allow_network(RenameObject)
 
 class EquipWeaponFromInventory(GenericCommand):
 	"""Equips a weapon to weapon storage from resource inventory"""

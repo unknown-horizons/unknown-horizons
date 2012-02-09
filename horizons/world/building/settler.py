@@ -136,7 +136,7 @@ class Settler(SelectableBuilding, BuildableRect, CollectingProducerBuilding, Bas
 		production = self._get_upgrade_production()
 		if production is not None:
 			if production.is_paused() == self.upgrade_allowed:
-				ToggleActive(self, production).execute(self.session, True)
+				ToggleActive(self.get_component(Producer), production).execute(self.session, True)
 
 	@property
 	def happiness(self):
@@ -267,7 +267,7 @@ class Settler(SelectableBuilding, BuildableRect, CollectingProducerBuilding, Bas
 			self.add_production(upgrade_material_production)
 			self.log.debug("%s: Waiting for material to upgrade from %s", self, self.level)
 			if not self.upgrade_allowed:
-				ToggleActive(self, upgrade_material_production).execute(self.session, True)
+				ToggleActive(self.get_component(Producer), upgrade_material_production).execute(self.session, True)
 		elif self.happiness < self.__get_data("happiness_level_down_limit"):
 			self.level_down()
 			self._changed()
