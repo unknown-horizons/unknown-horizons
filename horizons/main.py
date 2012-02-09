@@ -365,9 +365,11 @@ def _init_gettext(fife):
 ## GAME START FUNCTIONS
 
 def _start_dev_map(ai_players, human_ai):
-	# start the development map (it's the first one)
-	first_map = SavegameManager.get_maps()[0][0]
-	load_game(ai_players, human_ai, first_map)
+	# start the development map
+	for m in SavegameManager.get_maps()[0]:
+		if 'development' in m:
+			break
+	load_game(ai_players, human_ai, m)
 	return True
 
 def _start_map(map_name, ai_players=0, human_ai=False, is_scenario=False, campaign=None, pirate_enabled=True, trader_enabled=True):

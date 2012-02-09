@@ -221,7 +221,7 @@ class ShipOverviewTab(OverviewTab):
 			events['trade'] = None
 			self.widget.findChild(name='trade_bg').set_inactive()
 			self.widget.findChild(name='trade').set_inactive()
-			self.widget.findChild(name='trade').tooltip = _('Too far from the nearest warehouse')
+			self.widget.findChild(name='trade').tooltip = _('Too far from the nearest own or allied warehouse')
 
 	def _refresh_combat(self): # no combat
 		def click_on_cannons(button):
