@@ -561,7 +561,7 @@ def preload_game_join(preloading):
 
 def generate_minimap(arg):
 	global db
-	# init what we need
+	"""Standalong minimap generation tool."""
 	db = _create_main_db()
 	from horizons.entities import Entities
 	Entities.load(db, load_now=False) # create all references

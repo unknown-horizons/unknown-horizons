@@ -21,7 +21,10 @@
 
 import random
 import json
-import threading
+import subprocess
+import sys
+import tempfile
+import os
 
 import horizons.main
 
@@ -33,6 +36,10 @@ from horizons.constants import AI
 from horizons.gui.widgets.minimap import Minimap
 
 class SingleplayerMenu(object):
+
+	# game options
+	resource_densities = [0.5, 0.7, 1, 1.4, 2]
+
 	def show_single(self, show = 'random'): # tutorial
 		"""
 		@param show: string, which type of games to show
@@ -89,8 +96,10 @@ class SingleplayerMenu(object):
 			show_ai_options = True
 			self.__setup_random_map_selection(right_side)
 			self.__setup_game_settings_selection()
+			self._on_random_map_parameter_changed()
 		elif show == 'free_maps':
 			self.current.files, maps_display = SavegameManager.get_maps()
+			#TODO: free map preview
 
 			self.current.distributeInitialData({ 'maplist' : maps_display, })
 			def _update_infos():
@@ -98,7 +107,6 @@ class SingleplayerMenu(object):
 				#xgettext:python-format
 				self.current.findChild(name="recommended_number_of_players_lbl").text = \
 				    _("Recommended number of players: {number}").format(number=number_of_players)
-				minimap_icon = self.current.findChild(name="map_preview_minimap")
 				self._update_map_preview(minimap_icon, self.__get_selected_map())
 			if len(maps_display) > 0:
 				# select first entry
@@ -148,8 +156,7 @@ class SingleplayerMenu(object):
 						"""Fill in infos of selected campaign to label"""
 						campaign_info = SavegameManager.get_campaign_info(filename = self.__get_selected_map())
 						if not campaign_info:
-							# TODO : an "invalid campaign popup"
-							self.__show_invalid_scenario_file_popup(e)
+							self.__show_invalid_scenario_file_popup("Unknown error")
 							return
 						self.current.findChild(name="map_difficulty").text = \
 						        _("Difficulty: {difficulty}").format(difficulty=campaign_info.get('difficulty', '')) #xgettext:python-format
@@ -203,8 +210,7 @@ class SingleplayerMenu(object):
 		elif is_campaign:
 			campaign_info = SavegameManager.get_campaign_info(filename = map_file)
 			if not campaign_info:
-				# TODO : an "invalid campaign popup"
-				self.__show_invalid_scenario_file_popup(e)
+				self.__show_invalid_scenario_file_popup("Unknown Error")
 				self.__select_single(show = 'campaign')
 			scenario = campaign_info.get('scenarios')[0].get('level')
 			map_file = campaign_info.get('scenario_files').get(scenario)
@@ -283,57 +289,76 @@ class SingleplayerMenu(object):
 		on_preferred_island_size_slider_change()
 		on_island_size_deviation_slider_change()
 
+	def __get_random_map_parameters(self):
+		map_size = self.map_sizes[int(self.current.findChild(name = 'map_size_slider').value)]
+		water_percent = self.water_percents[int(self.current.findChild(name = 'water_percent_slider').value)]
+		max_island_size = self.island_sizes[int(self.current.findChild(name = 'max_island_size_slider').value)]
+		preferred_island_size = self.island_sizes[int(self.current.findChild(name = 'preferred_island_size_slider').value)]
+		island_size_deviation = self.island_size_deviations[int(self.current.findChild(name = 'island_size_deviation_slider').value)]
+		return (self.__cur_random_seed, map_size, water_percent, max_island_size, preferred_island_size, island_size_deviation)
+
+	def __setup_game_settings_selection(self):
+		widget = self.widgets['game_settings']
+		if widget.parent is not None:
+			widget.parent.removeChild(widget)
+		self.current.findChild(name = 'game_settings_box').addChild(widget)
+
+		resource_density_slider = widget.findChild(name = 'resource_density_slider')
+
+	def on_resource_density_slider_change():
+		widget.findChild(name = 'resource_density_lbl').text = _('Resource density:') + u' ' + \
+			unicode(self.resource_densities[int(resource_density_slider.value)]) + u'x'
+		horizons.main.fife.set_uh_setting("MapResourceDensity", resource_density_slider.value)
+		resource_density_slider.capture(on_resource_density_slider_change)
+		resource_density_slider.value = horizons.main.fife.get_uh_setting("MapResourceDensity")
+
+		on_resource_density_slider_change()
+	def __get_natural_resource_multiplier(self):
+		return self.resource_densities[int(self.widgets['game_settings'].findChild(name = 'resource_density_slider').value)]
+
+	def __get_selected_map(self):
+		"""Returns map file, that is selected in the maplist widget"""
+		return self.current.files[ self.current.collectData('maplist') ]
+
+	def __show_invalid_scenario_file_popup(self, exception):
+		"""Shows a popup complaining about invalid scenario file.
+		@param exception: Something that str() will convert to an error message"""
+		print "Error: ", unicode(str(exception))
+		self.show_error_popup(_("Invalid scenario file"), \
+		                description=_("The selected file is not a valid scenario file."),
+		                details=_("Error message:") + u' ' + unicode(str(exception)),
+		                advice=_("Please report this to the author."))
+
+	def _save_player_name(self):
+		if hasattr(self.current, 'playerdata'):
+			playername = self.current.playerdata.get_player_name()
+			horizons.main.fife.set_uh_setting("Nickname", playername)
+
 	def _on_random_map_parameter_changed(self):
-		"""Called to schedule an update of the map preview (only done after delay because expenseive)"""
-		#if hasattr(self, "_random_map_preview_update_scheduled"):
-		#	return
-		#self._random_map_preview_update_scheduled = True
-		#ExtScheduler().add_new_object(self._do_update_random_map_preview, self, 0.5)
-		#self._do_update_random_map_preview()
-
-		if not hasattr(self, "_running"):
-			self._running = False
-			self._dirty = False
-		if self._running:
-			self._dirty = True
-			return # todo
-		self._dirty = False
-		minimap_icon = self.current.findChild(name="map_preview_minimap")
-		params =  json.dumps(((minimap_icon.width, minimap_icon.height),
-		                      self.__get_random_map_parameters()))
-		class Data(object):
-			data = None
-			running = True
-
-
-		def run(params):
-			import subprocess
-			import sys
-			print 'run'
-			Data.data = subprocess.check_output([sys.executable, sys.argv[0], "--generate-minimap", params])
-			Data.running = False
-			print 'done'
-
-		calc_thread = threading.Thread(target=run, args=(params, ))
-		calc_thread.start()
-		self._running = True
-
+		"""Called to update the map preview"""
 		def up():
-			print 'running ', Data.running
-			if Data.running:
-				ExtScheduler().add_new_object(up, self, 0.5)
-			else:
-				print 'drawing'
-				self._running = False
-				icon = self.current.findChild(name="map_preview_minimap")
-				def on_click(event, drag):
-					self.__cur_random_seed = random.random()
-					self._on_random_map_parameter_changed()
-				tooltip=_("Click to regenerate map preview")
+			# checks up on calc process (see below)
+			if hasattr(self, "calc_proc"):
+				state = self.calc_proc.poll()
+				if state is None: # not finished
+					ExtScheduler().add_new_object(up, self, 0.1)
+				elif state != 0:
+					self._set_map_preview_status(u"An unknown error occured while generating the map preview")
+				else: # done
 
-				if hasattr(self, "minimap"):
-					self.minimap.end()
-				self.minimap = Minimap(icon,
+					data = open(self.calc_proc.output_filename, "r").read()
+					os.unlink(self.calc_proc.output_filename)
+					del self.calc_proc
+
+					icon = self.current.findChild(name="map_preview_minimap")
+					def on_click(event, drag):
+						self.__cur_random_seed = random.random()
+						self._on_random_map_parameter_changed()
+					tooltip = _("Click to regenerate map preview")
+
+					if hasattr(self, "minimap"):
+						self.minimap.end()
+					self.minimap = Minimap(icon,
 				                session=None,
 				                view=None,
 				                world=None,
@@ -344,11 +369,33 @@ class SingleplayerMenu(object):
 		                    tooltip=tooltip,
 		                    on_click=on_click,
 				                preview=True)
-				self.minimap.draw_data( Data.data )
-				icon.show()
-				if self._dirty:
-					self._on_random_map_parameter_changed()
-		ExtScheduler().add_new_object(up, self, 0.5)
+					self.minimap.draw_data( data )
+					icon.show()
+					self._set_map_preview_status(u"")
+
+		if hasattr(self, "calc_proc"):
+			self.calc_proc.kill() # process exists, therefore up is scheduled already
+		else:
+			ExtScheduler().add_new_object(up, self, 0.5)
+
+		minimap_icon = self._get_map_preview_icon()
+		params =  json.dumps(((minimap_icon.width, minimap_icon.height),
+		                      self.__get_random_map_parameters()))
+
+		args = args=(sys.executable, sys.argv[0], "--generate-minimap", params)
+		outfilename = tempfile.mkstemp()[1]
+		self.calc_proc = subprocess.Popen(args=args,
+		                                  stdout=open(outfilename, "w"))
+		self.calc_proc.output_filename = outfilename # attach extra info
+		self._set_map_preview_status(u"Generating preview...")
+
+
+	def _get_map_preview_icon(self):
+		"""Returns pychan icon for map preview"""
+		return self.current.findChild(name="map_preview_minimap")
+
+	def _set_map_preview_status(self, text):
+		self.current.findChild(name="map_preview_status_label").text = text
 
 	def _do_update_random_map_preview(self):
 		"""Actually update map preview of random map"""
@@ -362,24 +409,6 @@ class SingleplayerMenu(object):
 			self._update_map_preview(minimap_icon, self.__get_random_map_file(),
 			                         tooltip=_("Click to regenerate map preview"), on_click=on_click)
 
-	# game options
-	resource_densities = [0.5, 0.7, 1, 1.4, 2]
-
-	def __setup_game_settings_selection(self):
-		widget = self.widgets['game_settings']
-		if widget.parent is not None:
-			widget.parent.removeChild(widget)
-		self.current.findChild(name = 'game_settings_box').addChild(widget)
-
-		resource_density_slider = widget.findChild(name = 'resource_density_slider')
-		def on_resource_density_slider_change():
-			widget.findChild(name = 'resource_density_lbl').text = _('Resource density:') + u' ' + \
-				unicode(self.resource_densities[int(resource_density_slider.value)]) + u'x'
-			horizons.main.fife.set_uh_setting("MapResourceDensity", resource_density_slider.value)
-		resource_density_slider.capture(on_resource_density_slider_change)
-		resource_density_slider.value = horizons.main.fife.get_uh_setting("MapResourceDensity")
-
-		on_resource_density_slider_change()
 
 	def __get_random_map_file(self):
 		self.__generate_random_map( self.__get_random_map_parameters() )
@@ -387,46 +416,11 @@ class SingleplayerMenu(object):
 	@classmethod
 	def __generate_random_map(self, parameters):
 		return random_map.generate_map( *parameters )
-
-	def __get_random_map_parameters(self):
-		map_size = self.map_sizes[int(self.current.findChild(name = 'map_size_slider').value)]
-		water_percent = self.water_percents[int(self.current.findChild(name = 'water_percent_slider').value)]
-		max_island_size = self.island_sizes[int(self.current.findChild(name = 'max_island_size_slider').value)]
-		preferred_island_size = self.island_sizes[int(self.current.findChild(name = 'preferred_island_size_slider').value)]
-		island_size_deviation = self.island_size_deviations[int(self.current.findChild(name = 'island_size_deviation_slider').value)]
-		return (self.__cur_random_seed, map_size, water_percent, max_island_size, preferred_island_size, island_size_deviation)
-
-	def __get_natural_resource_multiplier(self):
-		return self.resource_densities[int(self.widgets['game_settings'].findChild(name = 'resource_density_slider').value)]
-
-	def __get_selected_map(self):
-		"""Returns map file, that is selected in the maplist widget"""
-		return self.current.files[ self.current.collectData('maplist') ]
-
-	def __show_invalid_scenario_file_popup(self, exception):
-		"""Shows a popup complaining about invalid scenario file.
-		@param exception: InvalidScenarioFile exception instance"""
-		print "Error: ", unicode(str(exception))
-		self.show_error_popup(_("Invalid scenario file"), \
-		                description=_("The selected file is not a valid scenario file."),
-		                details=_("Error message:") + u' ' + unicode(str(exception)),
-		                advice=_("Please report this to the author."))
-
-	def _save_player_name(self):
-		if hasattr(self.current, 'playerdata'):
-			playername = self.current.playerdata.get_player_name()
-			horizons.main.fife.set_uh_setting("Nickname", playername)
-
-	def _update_map_preview(self, minimap_icon, map_file, tooltip=None, on_click=None):
-
-		print json.dumps(((minimap_icon.width, minimap_icon.height),
-		                  self.__get_random_map_parameters()))
-
 	@classmethod
-	def generate_minimap(cls, size, parameters ):
+	def generate_minimap(cls, size, parameters):
+		"""Called as subprocess, calculates minimap data and passes it via string via stdout"""
 		from horizons.world import World
 		from horizons.util import SavegameAccessor, WorldObject, Rect, Point
-
 
 		map_file = cls.__generate_random_map( parameters )
 		WorldObject.reset()
@@ -446,14 +440,3 @@ class SingleplayerMenu(object):
 				                preview=True)
 		# communicate via stdout
 		print minimap.dump_data()
-
-		"""
-		import subprocess
-		import sys
-		r = subprocess.check_output([sys.executable, sys.argv[0], '--help'])
-		print 'read ', r
-		"""
-
-
-if __name__ == '__main__':
-	print 'ici'
