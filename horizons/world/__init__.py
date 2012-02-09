@@ -260,7 +260,7 @@ class World(BuildingOwner, LivingObject, WorldObject):
 
 			data = {'player1' : player1, 'player2' : player2, 'status' : status}
 
-			self.session.ingame_gui.message_widget.add(self.max_x/2, self.max_y/2,
+			self.session.ingame_gui.message_widget.add(None, None,
 			                                           'DIPLOMACY_STATUS_CHANGED', data)
 
 		self.diplomacy.add_diplomacy_status_changed_listener(notify_change)
