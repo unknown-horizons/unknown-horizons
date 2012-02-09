@@ -61,7 +61,7 @@ GenericComponentCommand.allow_network(AddToSellList)
 class RemoveFromSellList(GenericComponentCommand):
 	"""Removes a Resource from sell_list of TradePost"""
 	def __init__(self, tradepost, res_id):
-		super(RemoveFromSellList, self).__init__(tradepost, TradePostComponent.NAME, 'remove_from_sell_list', res_id)
+		super(RemoveFromSellList, self).__init__(tradepost, 'remove_from_sell_list', res_id)
 
 GenericComponentCommand.allow_network(RemoveFromSellList)
 
