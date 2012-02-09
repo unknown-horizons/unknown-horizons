@@ -48,7 +48,7 @@ from horizons.gui import Gui
 from horizons.extscheduler import ExtScheduler
 from horizons.constants import AI, COLORS, GAME, PATHS, NETWORK, SINGLEPLAYER, GAME_SPEED
 from horizons.network.networkinterface import NetworkInterface
-from horizons.util import ActionSetLoader, DifficultySettings, TileSetLoader, Color, parse_port, DbReader, Callback
+from horizons.util import ActionSetLoader, DifficultySettings, TileSetLoader, Color, parse_port, Callback
 from horizons.util.uhdbaccessor import UhDbAccessor, read_savegame_template
 
 # private module pointers of this module
@@ -564,6 +564,6 @@ def generate_minimap(arg):
 	"""Standalong minimap generation tool."""
 	db = _create_main_db()
 	from horizons.entities import Entities
-	Entities.load(db, load_now=False) # create all references
+	Entities.load_grounds(db, load_now=False) # create all references
 	from horizons.gui.modules import SingleplayerMenu
 	SingleplayerMenu.generate_minimap( * json.loads( arg ) )

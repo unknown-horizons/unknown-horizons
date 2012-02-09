@@ -22,14 +22,13 @@
 import random
 import tempfile
 import sys
-import shutil
 import re
 import string
 import copy
 
 from horizons.util import Circle, Rect, Point, DbReader
 from horizons.util.uhdbaccessor import read_savegame_template
-from horizons.constants import GROUND, PATHS
+from horizons.constants import GROUND
 
 # this is how a random island id looks like (used for creation)
 _random_island_id_template = "random:${creation_method}:${width}:${height}:${seed}"
@@ -448,8 +447,7 @@ def generate_map(seed, map_size, water_percent, max_island_size, preferred_islan
 			rect = Rect.init_from_topleft_and_size(x, y, width, height)
 			blocked = False
 			for existing_island in islands:
-				assert rect.distance(existing_island) == existing_island.distance(rect)
-				if rect.distance(existing_island) < min_island_separation:
+				if existing_island.distance_to_rect(rect) < min_island_separation:
 					blocked = True
 					break
 			if not blocked:

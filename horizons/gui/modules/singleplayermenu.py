@@ -417,6 +417,7 @@ class SingleplayerMenu(object):
 	@classmethod
 	def __generate_random_map(self, parameters):
 		return random_map.generate_map( *parameters )
+
 	@classmethod
 	def generate_minimap(cls, size, parameters):
 		"""Called as subprocess, calculates minimap data and passes it via string via stdout"""
