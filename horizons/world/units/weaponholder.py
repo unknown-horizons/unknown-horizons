@@ -288,6 +288,7 @@ class WeaponHolder(object):
 		@param targetid: world id of the unit that is to be attacked
 		"""
 		self.attack(WorldObject.get_object_by_id(targetid))
+		self.session.ingame_gui.minimap.show_unit_path(self)
 		self.on_user_attack_issued()
 
 	def is_attacking(self):

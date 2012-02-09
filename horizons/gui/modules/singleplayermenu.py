@@ -366,7 +366,7 @@ class SingleplayerMenu(object):
 					def on_click(event, drag):
 						self._cur_random_seed = random.random()
 						self._on_random_map_parameter_changed()
-					tooltip = _("Click to regenerate map preview")
+					tooltip = _("Click generate a different random map")
 
 					if hasattr(self, "minimap"):
 						self.minimap.end()
