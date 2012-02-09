@@ -157,7 +157,7 @@ class BasicBuilding(ComponentHolder, ConcreteObject):
 		if self.has_running_costs:
 			remaining_ticks_of_month = db("SELECT ticks FROM remaining_ticks_of_month WHERE rowid=?", worldid)[0][0]
 
-		self.__init(Point(x, y), rotation, owner, level=level, \
+		self.__init(Point(x, y), rotation, level=level, \
 		            remaining_ticks_of_month=remaining_ticks_of_month)
 
 
