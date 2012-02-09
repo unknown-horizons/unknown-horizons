@@ -383,7 +383,8 @@ class SingleplayerMenu(object):
 		                      self.__get_random_map_parameters()))
 
 		args = args=(sys.executable, sys.argv[0], "--generate-minimap", params)
-		outfilename = tempfile.mkstemp()[1]
+		handle, outfilename = tempfile.mkstemp()
+		os.close(handle)
 		self.calc_proc = subprocess.Popen(args=args,
 		                                  stdout=open(outfilename, "w"))
 		self.calc_proc.output_filename = outfilename # attach extra info
