@@ -246,22 +246,14 @@ class World(BuildingOwner, LivingObject, WorldObject):
 			self.diplomacy.load(self, savegame_db)
 
 		# add diplomacy notification listeners
-		def notify_change(caller, change_type, a, b):
+		def notify_change(caller, old_state, new_state, a, b):
 			player1 = u"%s" % a.name
 			player2 = u"%s" % b.name
 
-			#check if status really changed, if so update status string
-			if change_type == 'friend':
-				status = _('ally')
-			elif change_type == 'enemy':
-				status = _('enemy')
-			else:
-				status = _('neutral')
-
 			data = {'player1' : player1, 'player2' : player2, 'status' : status}
 
-			self.session.ingame_gui.message_widget.add(self.max_x/2, self.max_y/2,
-			                                           'DIPLOMACY_STATUS_CHANGED', data)
+			self.session.ingame_gui.message_widget.add(
+			  None, None, 'DIPLOMACY_STATUS_'+old_state.upper()+"_"+new_state.upper(), data)
 
 		self.diplomacy.add_diplomacy_status_changed_listener(notify_change)
 
@@ -709,13 +701,13 @@ class World(BuildingOwner, LivingObject, WorldObject):
 				break
 		return islands
 
-	def get_warehouses(self, position=None, radius=None, owner=None, include_friendly=False):
+	def get_warehouses(self, position=None, radius=None, owner=None, include_allied=False):
 		"""Returns all warehouses on the map. Optionally only those in range
 		around the specified position.
 		@param position: Point or Rect instance.
 		@param radius: int radius to use.
 		@param owner: Player instance, list only warehouses belonging to this player.
-		@param include_friendly also list the warehouses belonging to friends
+		@param include_allied also list the warehouses belonging to allies
 		@return: List of warehouses.
 		"""
 		warehouses = []
@@ -730,7 +722,8 @@ class World(BuildingOwner, LivingObject, WorldObject):
 				warehouse = settlement.warehouse
 				if (radius is None or position is None or \
 				    warehouse.position.distance(position) <= radius) and \
-				   (owner is None or warehouse.owner == owner or include_friendly):
+				   (owner is None or warehouse.owner == owner or
+				    (include_allied and self.diplomacy.are_allies(warehouse.owner, owner))):
 					warehouses.append(warehouse)
 		return warehouses
 

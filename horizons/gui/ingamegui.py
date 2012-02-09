@@ -42,6 +42,7 @@ from horizons.command.uioptions import RenameObject
 from horizons.command.misc import Chat
 from horizons.gui.tabs.tabinterface import TabInterface
 from horizons.world.component.namedcomponent import SettlementNameComponent
+from horizons.world.component.namedcomponent import NamedComponent
 
 class IngameGui(LivingObject):
 	"""Class handling all the ingame gui events.
@@ -382,7 +383,8 @@ class IngameGui(LivingObject):
 		new_name = self.widgets['change_name'].collectData('new_name')
 		self.widgets['change_name'].findChild(name='new_name').text = u''
 		if not (len(new_name) == 0 or new_name.isspace()):
-			RenameObject(instance, new_name).execute(self.session)
+			# different namedcomponent classes share the name
+			RenameObject(instance.get_component_by_name(NamedComponent.NAME), new_name).execute(self.session)
 		self._hide_change_name_dialog()
 
 	def show_save_map_dialog(self):

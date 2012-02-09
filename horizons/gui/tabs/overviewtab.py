@@ -221,7 +221,7 @@ class ShipOverviewTab(OverviewTab):
 			events['trade'] = None
 			self.widget.findChild(name='trade_bg').set_inactive()
 			self.widget.findChild(name='trade').set_inactive()
-			self.widget.findChild(name='trade').tooltip = _('Too far from the nearest warehouse')
+			self.widget.findChild(name='trade').tooltip = _('Too far from the nearest own or allied warehouse')
 
 	def _refresh_combat(self): # no combat
 		def click_on_cannons(button):
@@ -383,7 +383,7 @@ class ProductionOverviewTab(OverviewTab):
 			# active toggle_active button
 			container.mapEvents( \
 			  { 'toggle_active': \
-			    Callback(ToggleActive(self.instance, production).execute, self.instance.session) \
+			    Callback(ToggleActive(self.instance.get_component(Producer), production).execute, self.instance.session) \
 			    } )
 			# NOTE: this command causes a refresh, so we needn't change the toggle_active-button-image
 			container.stylize('menu_black')

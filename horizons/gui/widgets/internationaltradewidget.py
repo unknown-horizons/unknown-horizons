@@ -145,11 +145,11 @@ class InternationalTradeWidget(object):
 			if selling:
 				self.log.debug('InternationalTradeWidget : %s/%s is selling %d of res %d to %s/%s', \
 					self.instance.get_component(NamedComponent).name, self.instance.owner.name, self.exchange, res_id, settlement.get_component(NamedComponent).name, settlement.owner.name)
-				SellResource(settlement, self.instance, res_id, self.exchange).execute(self.instance.session)
+				SellResource(settlement.get_component(TradePostComponent), self.instance, res_id, self.exchange).execute(self.instance.session)
 			else:
 				self.log.debug('InternationalTradeWidget : %s/%s is buying %d of res %d from %s/%s', \
 					self.instance.get_component(NamedComponent).name, self.instance.owner.name, self.exchange, res_id, settlement.get_component(NamedComponent).name, settlement.owner.name)
-				BuyResource(settlement, self.instance, res_id, self.exchange).execute(self.instance.session)
+				BuyResource(settlement.get_component(TradePostComponent), self.instance, res_id, self.exchange).execute(self.instance.session)
 			# update gui
 			self.draw_widget()
 

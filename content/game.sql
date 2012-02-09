@@ -148,7 +148,12 @@ INSERT INTO "message" VALUES('Some of your inhabitants just moved out.',1,40.0,N
 INSERT INTO "message" VALUES('You won!',1,60.0,NULL,'YOU_HAVE_WON');
 INSERT INTO "message" VALUES('Your mine has run out of resources.',1,30.0,NULL,'MINE_EMPTY');
 INSERT INTO "message" VALUES('You can also drag roads.',1,20.0,NULL,'DRAG_ROADS_HINT');
-INSERT INTO "message" VALUES('{player1} and {player2} are now {status}',1,10.0,NULL,'DIPLOMACY_STATUS_CHANGED');
+INSERT INTO "message" VALUES('{player1} and {player2} have allied their forces.',1,10.0,NULL,'DIPLOMACY_STATUS_NEUTRAL_ALLY');
+INSERT INTO "message" VALUES('{player1} and {player2} have ended the war and are now allied.',1,10.0,NULL,'DIPLOMACY_STATUS_ENEMY_ALLY');
+INSERT INTO "message" VALUES('{player1} and {player2} have ended their alliance and are now in a state of war.',1,10.0,NULL,'DIPLOMACY_STATUS_ALLY_ENEMY');
+INSERT INTO "message" VALUES('{player1} and {player2} will fight each other to the death.',1,10.0,NULL,'DIPLOMACY_STATUS_NEUTRAL_ENEMY');
+INSERT INTO "message" VALUES('{player1} and {player2} have terminated their alliance.',1,10.0,NULL,'DIPLOMACY_STATUS_ALLY_NEUTRAL');
+INSERT INTO "message" VALUES('{player1} and {player2} have settled their hostility.',1,10.0,NULL,'DIPLOMACY_STATUS_ENEMY_NEUTRAL');
 INSERT INTO "message" VALUES('One of your fields requires a farm to harvest its crops.',1,30.0,NULL,'FIELD_NEEDS_FARM');
 INSERT INTO "message" VALUES('You have reached the current maximum increment. Your inhabitants will not upgrade further.',1,45.0,NULL,'MAX_INCR_REACHED');
 CREATE TABLE ai (client_id TEXT NOT NULL, class_package TEXT NOT NULL, class_name TEXT NOT NULL);

@@ -40,8 +40,11 @@ class DiplomacyTab(TabInterface):
 
 		self.widget.findChild(name='headline').text = unicode(player.name)
 		self.widget.mapEvents({
-			'ally_check_box' : self.add_friend,
+			'ally_label' : self.add_ally,
+			'ally_check_box' : self.add_ally,
+			'neutral_label' : self.add_neutral,
 			'neutral_check_box' : self.add_neutral,
+			'enemy_label' : self.add_enemy,
 			'enemy_check_box' : self.add_enemy})
 
 		self.check_diplomacy_state()
@@ -53,6 +56,11 @@ class DiplomacyTab(TabInterface):
 		self.button_hover_image = icon_path % color
 		self.tooltip = player.name
 
+		self.widget.stylize("default")
+		self.widget.findChild(name="ally_check_box").base_color = 80, 80, 80
+		self.widget.findChild(name="enemy_check_box").base_color = 80, 80, 80
+		self.widget.findChild(name="neutral_check_box").base_color = 80, 80, 80
+
 	def show(self):
 		super(DiplomacyTab, self).show()
 		# if diplomacy is changed by any player, change the checkbox
@@ -62,7 +70,7 @@ class DiplomacyTab(TabInterface):
 		super(DiplomacyTab, self).hide()
 		self.diplomacy.remove_diplomacy_status_changed_listener(Callback(self.check_diplomacy_state))
 
-	def add_friend(self):
+	def add_ally(self):
 		"""
 		Callback for setting ally status between local player and tab's player
 		"""
@@ -98,7 +106,7 @@ class DiplomacyTab(TabInterface):
 			'enemy_check_box' : False})
 
 		#get the name of the selected box
-		if self.diplomacy.are_friends(self.local_player, self.player):
+		if self.diplomacy.are_allies(self.local_player, self.player):
 			state = 'ally'
 		elif self.diplomacy.are_neutral(self.local_player, self.player):
 			state = 'neutral'

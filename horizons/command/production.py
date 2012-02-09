@@ -24,8 +24,8 @@ from horizons.world.production.producer import Producer
 
 class ToggleActive(GenericComponentCommand):
 	"""Sets a production to active/inactive."""
-	def __init__(self, obj, production=None):
-		super(ToggleActive, self).__init__(obj, Producer.NAME, "toggle_active")
+	def __init__(self, producer, production=None):
+		super(ToggleActive, self).__init__(producer, "toggle_active")
 		self._production = None if production is None else production.prod_id
 
 	def __call__(self, issuer):
@@ -35,18 +35,19 @@ class ToggleActive(GenericComponentCommand):
 
 GenericComponentCommand.allow_network(ToggleActive)
 
+
 class AddProduction(GenericComponentCommand):
 	"""Add a production to a producer"""
-	def __init__(self, obj, production_line_id):
-		super(AddProduction, self).__init__(obj, Producer.NAME, "add_production_by_id", production_line_id)
+	def __init__(self, producer, production_line_id):
+		super(AddProduction, self).__init__(producer, "add_production_by_id", production_line_id)
 
 GenericComponentCommand.allow_network(AddProduction)
 
 
 class RemoveFromQueue(GenericComponentCommand):
 	"""Remove a production line id from a queueproducer's queue"""
-	def __init__(self, obj, production_line_id):
-		super(RemoveFromQueue, self).__init__(obj, Producer.NAME, "remove_from_queue", production_line_id)
+	def __init__(self, producer, production_line_id):
+		super(RemoveFromQueue, self).__init__(producer, "remove_from_queue", production_line_id)
 
 GenericComponentCommand.allow_network(RemoveFromQueue)
 
@@ -54,7 +55,7 @@ GenericComponentCommand.allow_network(RemoveFromQueue)
 class CancelCurrentProduction(GenericComponentCommand):
 	"""Cancel the current production of a queueproducer.
 	Makes it proceed to the next one."""
-	def __init__(self, obj):
-		super(CancelCurrentProduction, self).__init__(obj, Producer.NAME, "cancel_current_production")
+	def __init__(self, producer):
+		super(CancelCurrentProduction, self).__init__(producer, "cancel_current_production")
 
 GenericCommand.allow_network(CancelCurrentProduction)

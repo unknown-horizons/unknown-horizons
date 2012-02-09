@@ -91,7 +91,7 @@ def test_decommissioned(session, player):
 	icons = lj.get_status_icons()
 	assert not any( isinstance(icon, DecommissionedStatus) for icon in icons )
 
-	ToggleActive(lj)(player)
+	ToggleActive(lj.get_component(Producer))(player)
 
 	icons = lj.get_status_icons()
 	assert any( isinstance(icon, DecommissionedStatus) for icon in icons )

@@ -151,7 +151,7 @@ class Scheduler(LivingObject):
 		@param run_in: int number of ticks after which the callback is called. Defaults to 1, run next tick.
 		@param loops: How often the callback is called. -1 = infinite times. Defautls to 1, run once.
 		@param loop_interval: Delay between subsequent loops in ticks. Defaults to run_in."""
-		callback_obj = CallbackObject(self, callback, class_instance, run_in, loops, loop_interval)
+		callback_obj = _CallbackObject(self, callback, class_instance, run_in, loops, loop_interval)
 		self.add_object(callback_obj)
 
 	def rem_object(self, callback_obj):
@@ -269,7 +269,7 @@ class Scheduler(LivingObject):
 		return self.timer.get_ticks(GAME.INGAME_TICK_INTERVAL)
 
 
-class CallbackObject(object):
+class _CallbackObject(object):
 	"""Class used by the TimerManager Class to organize callbacks."""
 	def __init__(self, scheduler, callback, class_instance, run_in, loops, loop_interval):
 		"""Creates the CallbackObject instance.

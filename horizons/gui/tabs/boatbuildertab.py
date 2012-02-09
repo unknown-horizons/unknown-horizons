@@ -30,7 +30,15 @@ from horizons.constants import PRODUCTIONLINES
 from horizons.world.production.producer import Producer
 from horizons.gui.widgets.tooltip import TooltipIcon
 
-class BoatbuilderTab(OverviewTab):
+class _BoatbuilderOverviewTab(OverviewTab):
+	"""Private class all classes here inherit."""
+	@property
+	def producer(self):
+		"""Abstract the instance, work only on components"""
+		return self.instance.get_component(Producer)
+
+
+class BoatbuilderTab(_BoatbuilderOverviewTab):
 
 	SHIP_THUMBNAIL = "content/gui/icons/unit_thumbnails/{type_id}.png"
 
@@ -53,7 +61,7 @@ class BoatbuilderTab(OverviewTab):
 		needed_res_container = self.widget.findChild(name="BB_needed_resources_container")
 
 		# a boatbuilder is considered active here if it build sth, no matter if it's paused
-		production_lines = self.instance.get_component(Producer).get_production_lines()
+		production_lines = self.producer.get_production_lines()
 
 		if production_lines:
 
@@ -70,7 +78,7 @@ class BoatbuilderTab(OverviewTab):
 				main_container.insertChildBefore( main_container.progress_container, self.widget.findChild(name="BB_needed_resources_container"))
 				progress_container = main_container.progress_container
 
-			progress = self.instance.get_component(Producer).get_production_progress()
+			progress = self.producer.get_production_progress()
 			self.widget.findChild(name='progress').progress = progress*100
 			self.widget.findChild(name='BB_progress_perc').text = unicode(math.floor(progress*100))+u"%"
 
@@ -83,7 +91,7 @@ class BoatbuilderTab(OverviewTab):
 				container_active = main_container.container_active
 
 			# Update boatbuilder queue
-			queue = self.instance.get_component(Producer).get_unit_production_queue()
+			queue = self.producer.get_unit_production_queue()
 			queue_container = container_active.findChild(name="queue_container")
 			queue_container.removeAllChildren()
 			for i in enumerate(queue):
@@ -98,13 +106,13 @@ class BoatbuilderTab(OverviewTab):
 				icon = TooltipIcon(name=icon_name, image=image, tooltip=tooltip)
 				queue_container.addChild( icon )
 				queue_container.capture(
-				  Callback(RemoveFromQueue(self.instance, place_in_queue).execute, self.instance.session),
+				  Callback(RemoveFromQueue(self.producer, place_in_queue).execute, self.instance.session),
 				  event_name="mouseClicked"
 				)
 
 			# Set built ship info
-			produced_unit_id = self.instance.get_component(Producer)._get_production(production_lines[0]).get_produced_units().keys()[0]
-			produced_unit_id = self.instance.get_component(Producer)._get_production(production_lines[0]).get_produced_units().keys()[0]
+			produced_unit_id = self.producer._get_production(production_lines[0]).get_produced_units().keys()[0]
+			produced_unit_id = self.producer._get_production(production_lines[0]).get_produced_units().keys()[0]
 			(name,) = self.instance.session.db("SELECT name FROM unit WHERE id = ?", produced_unit_id)[0]
 			container_active.findChild(name="headline_BB_builtship_label").text = _(name)
 			container_active.findChild(name="BB_cur_ship_icon").tooltip = "Storage: 4 slots, 120t \nHealth: 100"
@@ -113,7 +121,7 @@ class BoatbuilderTab(OverviewTab):
 			button_active = container_active.findChild(name="toggle_active_active")
 			button_inactive = container_active.findChild(name="toggle_active_inactive")
 
-			if not self.instance.get_component(Producer).is_active(): # if production is paused
+			if not self.producer.is_active(): # if production is paused
 				# remove active button, if it's there, and save a reference to it
 				if button_active is not None:
 					container_active.button_active = button_active
@@ -150,7 +158,7 @@ class BoatbuilderTab(OverviewTab):
 			upgrades_box.stylize('menu_black')
 
 			# Update needed resources
-			production = self.instance.get_component(Producer).get_productions()[0]
+			production = self.producer.get_productions()[0]
 			still_needed_res = production.get_consumed_resources()
 			# Now sort!
 			still_needed_res = sorted(still_needed_res.iteritems(), key=operator.itemgetter(1))
@@ -174,7 +182,7 @@ class BoatbuilderTab(OverviewTab):
 
 			cancel_button = self.widget.findChild(name="BB_cancel_button")
 			cancel_button.capture(
-			  Callback(CancelCurrentProduction(self.instance).execute, self.instance.session),
+			  Callback(CancelCurrentProduction(self.producer).execute, self.instance.session),
 			  event_name="mouseClicked"
 			)
 
@@ -211,10 +219,10 @@ class BoatbuilderTab(OverviewTab):
 # * pause production (keep order and "running" running costs [...] but collect no new resources)
 # * abort building process: delete task, remove all resources, display [start view] again
 
-class BoatbuilderSelectTab(OverviewTab):
+class BoatbuilderSelectTab(_BoatbuilderOverviewTab):
 
 	def __init__(self, instance, tabname):
-		super(BoatbuilderSelectTab, self).__init__(instance, widget = 'boatbuilder_' + str(tabname) + '.xml')
+		super(BoatbuilderSelectTab, self).__init__(instance=instance, widget = 'boatbuilder_' + str(tabname) + '.xml')
 		self.init_values()
 		bb_image_path = 'content/gui/icons/tabwidget/boatbuilder/'+str(tabname)+'_%s.png'
 		self.button_up_image = bb_image_path % 'u'
@@ -223,7 +231,7 @@ class BoatbuilderSelectTab(OverviewTab):
 		self.button_hover_image = bb_image_path % 'h'
 
 	def start_production(self, prod_line_id):
-		AddProduction(self.instance, prod_line_id).execute(self.instance.session)
+		AddProduction(self.producer, prod_line_id).execute(self.instance.session)
 		# show overview tab
 		self.instance.session.ingame_gui.get_cur_menu()._show_tab(0)
 
@@ -264,7 +272,7 @@ class BoatbuilderWar2Tab(BoatbuilderSelectTab):
 # * check: mark those ship's buttons as unbuildable (close graphics) which do not meet the specified requirements.
 #	the tooltips contain this info as well.
 
-class BoatbuilderConfirmTab(OverviewTab):
+class BoatbuilderConfirmTab(_BoatbuilderOverviewTab):
 
 	def __init__(self, instance):
 		super(BoatbuilderConfirmTab, self).__init__(
@@ -276,7 +284,7 @@ class BoatbuilderConfirmTab(OverviewTab):
 		self.tooltip = _("Confirm order")
 
 	def start_production(self):
-		AddProduction(self.instance, 15).execute(self.instance.session)
+		AddProduction(self.producer, 15).execute(self.instance.session)
 
 # this "tab" additionally requests functions for:
 # * get: currently ordered ship: name / image / type (fisher/trade/war)

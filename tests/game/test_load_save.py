@@ -57,10 +57,11 @@ def test_load_inactive_production():
 	loadedlj = WorldObject.get_object_by_id(worldid)
 
 	# Make sure it really is not active
-	assert not loadedlj.get_component(Producer).is_active()
+	producer = loadedlj.get_component(Producer)
+	assert not producer.is_active()
 
 	# Trigger bug #1359
-	ToggleActive(loadedlj).execute(session)
+	ToggleActive(producer).execute(session)
 
 	session.end()
 

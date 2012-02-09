@@ -82,6 +82,12 @@ def test_ticket_1369(gui):
 	ship = get_player_ship(gui.session)
 	gui.select([ship])
 
+	# ally players so they can trade
+	world = gui.session.world
+	for player in world.players:
+		if player is not ship.owner:
+			world.diplomacy.add_ally_pair( ship.owner, player )
+
 	# move ship near foreign warehouse and wait for it to arrive
 	gui.cursor_click(68, 23, 'right')
 	while (ship.position.x, ship.position.y) != (68, 23):

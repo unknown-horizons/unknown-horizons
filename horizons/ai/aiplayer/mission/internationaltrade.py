@@ -143,7 +143,7 @@ class InternationalTrade(ShipMission):
 		if self.sold_resource is not None:
 			sellable_amount = self._get_max_sellable_amount(self.ship.get_component(StorageComponent).inventory[self.sold_resource])
 			if sellable_amount > 0:
-				BuyResource(self.settlement, self.ship, self.sold_resource, sellable_amount).execute(self.owner.session)
+				BuyResource(self.settlement.get_component(TradePostComponent), self.ship, self.sold_resource, sellable_amount).execute(self.owner.session)
 				if self.bought_resource is None:
 					self.report_success('Sold %d of resource %d' % (sellable_amount, self.sold_resource))
 					return
@@ -155,7 +155,7 @@ class InternationalTrade(ShipMission):
 			self.report_failure('No resources can be bought')
 			return
 
-		SellResource(self.settlement, self.ship, self.bought_resource, buyable_amount).execute(self.owner.session)
+		SellResource(self.settlement.get_component(TradePostComponent), self.ship, self.bought_resource, buyable_amount).execute(self.owner.session)
 		self.log.info('%s bought %d of resource %d', self, buyable_amount, self.bought_resource)
 		self.state = self.missionStates.returning_to_my_settlement
 		self._return_to_my_settlement()
