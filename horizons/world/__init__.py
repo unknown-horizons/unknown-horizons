@@ -105,9 +105,10 @@ class World(BuildingOwner, LivingObject, WorldObject):
 		self.bullets = None
 		super(World, self).end()
 
-	def _init(self, savegame_db):
+	def _init(self, savegame_db, force_player_id):
 		"""
 		@param savegame_db: Dbreader with loaded savegame database
+		@param force_player_id: the worldid of the selected human player or default if None (debug option)
 		"""
 		#load properties
 		self.properties = {}
@@ -156,6 +157,9 @@ class World(BuildingOwner, LivingObject, WorldObject):
 			elif not human_players and self.players:
 				# the first player should be the human-ai hybrid
 				self.player = self.players[0]
+
+		# set the human player to the forced value (debug option)
+		self.set_forced_player(force_player_id)
 
 		if self.player is None and self.session.is_game_loaded():
 			self.log.warning('WARNING: Cannot autoselect a player because there are no \
@@ -556,6 +560,13 @@ class World(BuildingOwner, LivingObject, WorldObject):
 						# now we have the location, check if we can build here
 						if (fish_x, fish_y) in self.ground_map:
 							Build(FishDeposit, fish_x, fish_y, self, 45 + self.session.random.randint(0, 3) * 90, ownerless = True)(issuer = None)
+
+	def set_forced_player(self, force_player_id):
+		if force_player_id is not None:
+			for player in self.players:
+				if player.worldid == force_player_id:
+					self.player = player
+					break
 
 	def get_random_possible_ground_unit_position(self):
 		"""Returns a position in water, that is not at the border of the world"""

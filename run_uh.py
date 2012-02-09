@@ -114,6 +114,8 @@ def get_option_parser():
 	             help="Uses <ai_players> AI players (excludes the possible human-AI hybrid; defaults to 0).")
 	ai_group.add_option("--human-ai-hybrid", dest="human_ai", action="store_true", \
 	             help="Makes the human player a human-AI hybrid (for development only).")
+	ai_group.add_option("--force-player-id", dest="force_player_id", metavar="<force_player_id>", type="int", default=None, \
+	             help="Set the player with id <force_player_id> as the active (human) player.")
 	ai_group.add_option("--ai-highlights", dest="ai_highlights", action="store_true", \
 	             help="Shows AI plans as highlights (for development only).")
 	p.add_option_group(ai_group)
