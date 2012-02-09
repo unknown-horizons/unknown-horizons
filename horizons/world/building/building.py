@@ -79,7 +79,7 @@ class BasicBuilding(ComponentHolder, ConcreteObject):
 
 		assert self.settlement is None or isinstance(self.settlement, Settlement)
 
-	def __init(self, origin, rotation, owner, level=None, remaining_ticks_of_month=None, action_set_id=None):
+	def __init(self, origin, rotation, level=None, remaining_ticks_of_month=None, action_set_id=None):
 		if level is None:
 			level = 0 if self.owner is None else self.owner.settler_level
 		self.level = level
