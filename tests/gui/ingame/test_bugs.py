@@ -84,7 +84,6 @@ def test_ticket_1369(gui):
 
 	# ally players so they can trade
 	world = gui.session.world
-	print world.players
 	for player in world.players:
 		if player is not ship.owner:
 			world.diplomacy.add_ally_pair( ship.owner, player )
