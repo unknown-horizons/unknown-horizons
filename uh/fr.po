@@ -7,8 +7,8 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2012-02-08 02:09+0100\n"
-"PO-Revision-Date: 2012-01-22 23:01+0200\n"
-"Last-Translator: Sebastien (seblabel) <sebastiencharpentier@laposte.net>\n"
+"PO-Revision-Date: 2012-02-10 17:21+0200\n"
+"Last-Translator: Hugues <fafardh@hotmail.de>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: fr\n"
 "MIME-Version: 1.0\n"
@@ -370,6 +370,8 @@ msgstr "Restaurer les paramètres par défaut"
 #: horizons/engine/settingsdialog.py:56
 msgid "Restoring the default settings will delete all changes to the settings you made so far."
 msgstr ""
+"Le retour aux préférences pas défaut annulera tous les changements faits à "
+"date."
 
 #: horizons/engine/settingsdialog.py:57
 msgid "Do you want to continue?"
@@ -768,7 +770,7 @@ msgstr "Divergance de la taille des îles :"
 
 #: horizons/gui/modules/singleplayermenu.py:301
 msgid "Click to regenerate map preview"
-msgstr ""
+msgstr "Cliquez afin de générer un nouvel aperçu de la carte."
 
 # 76%
 #: horizons/gui/modules/singleplayermenu.py:314
@@ -899,22 +901,28 @@ msgstr "Commerce"
 
 #: horizons/gui/tabs/buyselltab.py:136
 msgid "Click on one of the resource slots to add a trade offer."
-msgstr ""
+msgstr "Cliquez sur un slot de ressource afin d'ajouter une offre de commerce."
 
 #. new res
 #: horizons/gui/tabs/buyselltab.py:183
 msgid "Set to buy or sell by clicking on that label, then adjust the amount via the slider to the right."
 msgstr ""
+"Sélectionez le mode de vente ou d'achat en cliquant sur l'icone respectif et "
+"ajustez la quantitée a l'aide du régulateur à droite."
 
 #: horizons/gui/tabs/buyselltab.py:368
 #, python-format
 msgid "Will buy {resource_name} whenever less than {limit}t are in stock."
 msgstr ""
+"Achètera {resource_name} à chaque fois vous en aurez moins que {limit}t en "
+"stock."
 
 #: horizons/gui/tabs/buyselltab.py:371
 #, python-format
 msgid "Will sell {resource_name} whenever more than {limit}t are available."
 msgstr ""
+"Vends {resource_name} à chaque fois qu'il y en aura plus que {limit}t en "
+"stock."
 
 #. (text of widget: headline)
 #: horizons/gui/tabs/inventorytab.py:38 horizons/i18n/guitranslations.py:211
