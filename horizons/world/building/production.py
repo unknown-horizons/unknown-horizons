@@ -63,16 +63,13 @@ class Lumberjack(SelectableBuilding, CollectingProducerBuilding, BuildableSingle
 class Refiner(SelectableBuilding, CollectingProducerBuilding, BuildableSingle, BasicBuilding):
 	pass
 
+class PastryShop(Refiner):
+	tabs = (FarmProductionOverviewTab,)
+
 class Hunter(SelectableBuilding, CollectingProducerBuilding, BuildableSingle, BasicBuilding):
 	pass
 
 class IronRefiner(SelectableBuilding, CollectingProducerBuilding, BuildableSingle, BasicBuilding):
-	pass
-
-class Smeltery(SelectableBuilding, CollectingProducerBuilding, BuildableSingle, BasicBuilding):
-	pass
-
-class CharcoalBurning(SelectableBuilding, CollectingProducerBuilding, BuildableSingle, BasicBuilding):
 	pass
 
 class SaltPond(SelectableBuilding, CollectingProducerBuilding, BuildableSingleOnCoast, BasicBuilding):

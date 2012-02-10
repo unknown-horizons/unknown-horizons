@@ -21,7 +21,7 @@
 
 
 from building import BasicBuilding, SelectableBuilding
-from buildable import BuildableSingleOnOcean
+from buildable import BuildableSingle, BuildableSingleOnOcean
 from horizons.gui.tabs import BoatbuilderTab, BoatbuilderFisherTab, BoatbuilderTradeTab, \
 			     BoatbuilderWar1Tab
 from horizons.world.building.buildingresourcehandler import UnitProducerBuilding
@@ -40,3 +40,9 @@ class BoatBuilder(SelectableBuilding, UnitProducerBuilding, CollectingBuilding, 
 	def initialize(self, **kwargs):
 		super(BoatBuilder, self).initialize( ** kwargs)
 		self.get_component(StorageComponent).inventory.limit = 10
+
+class Barracks(SelectableBuilding, UnitProducerBuilding, CollectingBuilding, BuildableSingle, BasicBuilding):
+	"""
+	Dummy class for now. Ground combat unit production.
+	"""
+	pass
