@@ -1,0 +1,29 @@
+id: 52
+name: _ Ropeyard
+baseclass: production.Refiner
+radius: 8
+cost: 10
+cost_inactive: 0
+size_x: 2
+size_y: 2
+inhabitants_start: 2
+inhabitants_max: 2
+tooltip_text: _ Produces ropes out of hemp fibers.
+settler_level: 2
+buildingcosts: {1: 1}
+components:
+- HealthComponent: {maxhealth: 1000}
+- ProducerComponent:
+    productionlines:
+      0:
+        produces:
+        - [49, 1]
+        consumes:
+        - [48, -2]
+        time: 15
+- StorageComponent:
+    inventory:
+      SlotsStorage:
+        slot_sizes: {48: 4, 49: 6}
+actionsets:
+  as_ropeyard0: {level: 0}

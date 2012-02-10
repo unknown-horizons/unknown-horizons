@@ -1,5 +1,5 @@
-id: 62
-name: _ Alvearies
+id: 49
+name: _ Spice Field
 baseclass: nature.Field
 radius: 0
 cost: 0
@@ -8,8 +8,8 @@ size_x: 3
 size_y: 3
 inhabitants_start: 0
 inhabitants_max: 0
-tooltip_text: _ Keeps bees. Produces honeycombs used for confectionery. Needs a farm.
-settler_level: 3
+tooltip_text: _ Grows spices. Needs a farm.
+settler_level: 2
 buildingcosts: {1: 150}
 components:
 - HealthComponent: {maxhealth: 10}
@@ -17,11 +17,11 @@ components:
     productionlines:
       0:
         produces:
-        - [59, 1]
+        - [45, 1]
         time: 30
 - StorageComponent:
     inventory:
       SlotsStorage:
-        slot_sizes: {59: 1}
+        slot_sizes: {45: 1}
 actionsets:
-  as_alvearies0: {level: 0}
+  as_spicefield0: {level: 0}

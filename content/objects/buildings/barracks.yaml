@@ -1,0 +1,27 @@
+id: 53
+name: _ Barracks
+baseclass: boatbuilder.Barracks
+radius: 6
+cost: 25
+cost_inactive: 10
+size_x: 4
+size_y: 4
+inhabitants_start: 6
+inhabitants_max: 6
+tooltip_text: _ Recruits units suitable for ground combat.
+settler_level: 1
+buildingcosts: {1: 1}
+components:
+- HealthComponent: {maxhealth: 1000}
+- UnitProducerComponent:
+    productionlines:
+      0:
+        consumes:
+        - [3, -1]
+        time: 60
+- StorageComponent:
+    inventory:
+      SlotsStorage:
+        slot_sizes: {3: 99, 4: 99}
+actionsets:
+  as_barracks0: {level: 0}

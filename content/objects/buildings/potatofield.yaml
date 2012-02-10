@@ -19,7 +19,7 @@ components:
       22:
         produces:
         - [15, 1]
-        time: 26
+        time: 41
 - StorageComponent:
     inventory:
       SlotsStorage:

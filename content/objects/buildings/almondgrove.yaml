@@ -1,0 +1,27 @@
+id: 61
+name: _ Almond Grove
+baseclass: nature.Field
+radius: 0
+cost: 0
+cost_inactive: 0
+size_x: 3
+size_y: 3
+inhabitants_start: 0
+inhabitants_max: 0
+tooltip_text: _ Produces almonds used for confectionery. Needs a farm.
+settler_level: 3
+buildingcosts: {1: 150}
+components:
+- HealthComponent: {maxhealth: 10}
+- ProducerComponent:
+    productionlines:
+      0:
+        produces:
+        - [57, 1]
+        time: 30
+- StorageComponent:
+    inventory:
+      SlotsStorage:
+        slot_sizes: {57: 1}
+actionsets:
+  as_almondgrove0: {level: 0}

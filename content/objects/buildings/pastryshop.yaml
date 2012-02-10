@@ -1,0 +1,53 @@
+id: 63
+name: _ Pastry Shop
+baseclass: production.Refiner
+radius: 8
+cost: 25
+cost_inactive: 10
+size_x: 2
+size_y: 2
+inhabitants_start: 4
+inhabitants_max: 4
+tooltip_text: _ Produces all kinds of confectionery.
+settler_level: 3
+buildingcosts: {1: 1}
+components:
+- HealthComponent: {maxhealth: 1000}
+- ProducerComponent:
+    productionlines:
+      0:
+        produces:
+        - [55, 1]
+        consumes:
+        - [18, -1]
+        - [54, -1]
+        time: 30
+      1:
+        produces:
+        - [55, 1]
+        consumes:
+        - [18, -1]
+        - [58, -1]
+        time: 30
+      2:
+        produces:
+        - [55, 1]
+        - [56, 1]
+        consumes:
+        - [60, -1]
+        - [54, -1]
+        time: 30
+      3:
+        produces:
+        - [55, 1]
+        - [56, 1]
+        consumes:
+        - [58, -1]
+        - [60, -1]
+        time: 30
+- StorageComponent:
+    inventory:
+      SlotsStorage:
+        slot_sizes: {18: 6, 54: 6, 55: 6, 56: 6, 58: 6, 60: 6}
+actionsets:
+  as_pastryshop0: {level: 0}

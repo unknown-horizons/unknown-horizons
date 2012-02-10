@@ -1,0 +1,29 @@
+id: 54
+name: _ Stone Pit
+baseclass: production.Mine
+radius: 0
+cost: 15
+cost_inactive: 5
+size_x: 3
+size_y: 3
+inhabitants_start: 1
+inhabitants_max: 1
+tooltip_text: _ Gets stone from a mountain.
+settler_level: 2
+buildingcosts: {1: 1}
+components:
+- HealthComponent: {maxhealth: 1000}
+- ProducerComponent:
+    productionlines:
+      0:
+        produces:
+        - [52, 1]
+        consumes:
+        - [51, -1]
+        time: 15
+- StorageComponent:
+    inventory:
+      SlotsStorage:
+        slot_sizes: {51: 1000000, 50: 8}
+actionsets:
+  as_stone_pit0: {level: 0}
