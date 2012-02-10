@@ -16,7 +16,7 @@ size_y: 2
 inhabitants_start: 1
 inhabitants_max: 1
 button_name: lumberjack-1
-tabs: [ProductionOverviewTab, InventoryTab]
+tabs: [ProductionOverviewTab]
 enemy_tabs: [EnemyBuildingOverviewTab,]
 tooltip_text: _ Chops down trees and turns them into boards.
 settler_level: 0
