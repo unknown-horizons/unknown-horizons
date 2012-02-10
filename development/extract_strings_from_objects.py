@@ -96,6 +96,8 @@ def list_all_files():
 def content_from_file(filename):
 	parsed = load(file(filename, 'r'), Loader=Loader)
 	object_strings = []
+	if not parsed:
+		return ''
 	for component, value in parsed.iteritems():
 		if isinstance(value, str) or isinstance(value, unicode):
 			if value.startswith('_ '):
