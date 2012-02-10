@@ -20,8 +20,8 @@
 # ###################################################
 
 
-from horizons.world.building.collectingproducerbuilding import CollectingProducerBuilding
-from horizons.world.building.buildingresourcehandler import ProducerBuilding
+from horizons.world.building.collectingbuilding import CollectingBuilding
+from horizons.world.building.buildingresourcehandler import BuildingResourceHandler
 from horizons.world.building.building import BasicBuilding, SelectableBuilding
 from horizons.world.building.buildable import BuildableSingle, BuildableSingleOnCoast, BuildableSingleOnDeposit
 from horizons.world.building.nature import Field
@@ -36,7 +36,7 @@ from horizons.world.production.producer import Producer
 from horizons.world.component.storagecomponent import StorageComponent
 
 
-class Farm(SelectableBuilding, CollectingProducerBuilding, BuildableSingle, BasicBuilding):
+class Farm(SelectableBuilding, CollectingBuilding, BuildableSingle, BasicBuilding):
 	max_fields_possible = 8 # only for utilisation calculation
 	tabs = (FarmProductionOverviewTab,)
 
@@ -57,31 +57,31 @@ class Farm(SelectableBuilding, CollectingProducerBuilding, BuildableSingle, Basi
 		result = max(result, 0.0)
 		return result
 
-class Lumberjack(SelectableBuilding, CollectingProducerBuilding, BuildableSingle, BasicBuilding):
+class Lumberjack(SelectableBuilding, CollectingBuilding, BuildableSingle, BasicBuilding):
 	pass
 
-class Refiner(SelectableBuilding, CollectingProducerBuilding, BuildableSingle, BasicBuilding):
+class Refiner(SelectableBuilding, CollectingBuilding, BuildableSingle, BasicBuilding):
 	pass
 
-class Hunter(SelectableBuilding, CollectingProducerBuilding, BuildableSingle, BasicBuilding):
+class Hunter(SelectableBuilding, CollectingBuilding, BuildableSingle, BasicBuilding):
 	pass
 
-class IronRefiner(SelectableBuilding, CollectingProducerBuilding, BuildableSingle, BasicBuilding):
+class IronRefiner(SelectableBuilding, CollectingBuilding, BuildableSingle, BasicBuilding):
 	pass
 
-class Smeltery(SelectableBuilding, CollectingProducerBuilding, BuildableSingle, BasicBuilding):
+class Smeltery(SelectableBuilding, CollectingBuilding, BuildableSingle, BasicBuilding):
 	pass
 
-class CharcoalBurning(SelectableBuilding, CollectingProducerBuilding, BuildableSingle, BasicBuilding):
+class CharcoalBurning(SelectableBuilding, CollectingBuilding, BuildableSingle, BasicBuilding):
 	pass
 
-class SaltPond(SelectableBuilding, CollectingProducerBuilding, BuildableSingleOnCoast, BasicBuilding):
+class SaltPond(SelectableBuilding, CollectingBuilding, BuildableSingleOnCoast, BasicBuilding):
 	pass
 
-class CannonBuilder(SelectableBuilding, CollectingProducerBuilding, BuildableSingle, BasicBuilding):
+class CannonBuilder(SelectableBuilding, CollectingBuilding, BuildableSingle, BasicBuilding):
 	pass
 
-class Fisher(SelectableBuilding, CollectingProducerBuilding, BuildableSingleOnCoast, BasicBuilding):
+class Fisher(SelectableBuilding, CollectingBuilding, BuildableSingleOnCoast, BasicBuilding):
 
 	@classmethod
 	def _do_select(cls, renderer, position, world, settlement):
@@ -123,7 +123,7 @@ class Fisher(SelectableBuilding, CollectingProducerBuilding, BuildableSingleOnCo
 			total += state_history[PRODUCTION.STATES.producing.index]
 		return total / float(len(productions))
 
-class SettlerServiceProvider(SelectableBuilding, CollectingProducerBuilding, BuildableSingle, BasicBuilding):
+class SettlerServiceProvider(SelectableBuilding, CollectingBuilding, BuildableSingle, BasicBuilding):
 	"""Class for Churches, School that provide a service-type res for settlers.
 	Also provides collectors for buildings that consume resources (tavern)."""
 	def get_status_icons(self):
@@ -132,7 +132,7 @@ class SettlerServiceProvider(SelectableBuilding, CollectingProducerBuilding, Bui
 		return [ i for i in super(SettlerServiceProvider, self).get_status_icons() if \
 		         not i.__class__ in banned_classes ]
 
-class Mine(SelectableBuilding, ProducerBuilding, BuildableSingleOnDeposit, BasicBuilding):
+class Mine(SelectableBuilding, BuildingResourceHandler, BuildableSingleOnDeposit, BasicBuilding):
 	def __init__(self, inventory, deposit_class, *args, **kwargs):
 		"""
 		@param inventory: inventory dump of deposit (collected by get_prebuild_data())
@@ -223,7 +223,7 @@ class Mine(SelectableBuilding, ProducerBuilding, BuildableSingleOnDeposit, Basic
 
 """ AnimalFarm is not used for now (code may not work anymore)
 
-class AnimalFarm(SelectableBuilding, CollectingProducerBuilding, BuildableSingleWithSurrounding, BasicBuilding):
+class AnimalFarm(SelectableBuilding, CollectingBuilding, BuildableSingleWithSurrounding, BasicBuilding):
 	_surroundingBuildingClass = 18
 	"" This class builds pasturage in the radius automatically,
 	so that farm animals can graze there ""

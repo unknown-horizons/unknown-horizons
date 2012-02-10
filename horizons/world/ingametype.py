@@ -19,6 +19,7 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
+from horizons.gui import tabs
 from horizons.constants import SETTLER
 
 class IngameType(type):
@@ -66,6 +67,15 @@ class IngameType(type):
 		self.action_sets = yaml_data['actionsets']
 		self.action_sets_by_level = self.action_sets_by_level(self.action_sets)
 		self._real_object = None # wrapped by _object
+		self.is_selectable = 'tabs' in yaml_data
+		if self.is_selectable:
+			# set tabs
+			resolve_tab = lambda tab_class_name : getattr(tabs, tab_class_name)
+			self.tabs = map(resolve_tab, yaml_data['tabs'])
+			self.enemy_tabs = map(resolve_tab, yaml_data['enemy_tabs'])
+			related_building = self.session.db.cached_query("SELECT building FROM related_buildings where building = ?", self.id)
+			if len(related_building) > 0:
+				self.tabs += (BuildRelatedTab,)
 
 		"""TUTORIAL: Now you know the basic attributes each type has. Further attributes
 		specific to buildings and units can be found in horizons/world/{buildings/units}/__init__.py
@@ -82,6 +92,7 @@ class IngameType(type):
 		* scenario: horizons/scenario. Condition-action system for scenarios and full campaigns
 		* automatic tests: tests/. Contains unit tests, gui tests and game (system) tests
 		* networking: horizons/network. Sending stuff over the wire
+		* concreteobject: horizons/world/concreteobject.py. Things with graphicals representation
 		* gui: horizons/gui. The ugly parts. IngameGui and Gui, tabs and widgets.
 		* production: horizons/world/production
 		** Producer: producer component, manages everything

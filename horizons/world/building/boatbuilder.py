@@ -24,15 +24,11 @@ from building import BasicBuilding, SelectableBuilding
 from buildable import BuildableSingleOnOcean
 from horizons.gui.tabs import BoatbuilderTab, BoatbuilderFisherTab, BoatbuilderTradeTab, \
 			     BoatbuilderWar1Tab
-from horizons.world.building.buildingresourcehandler import UnitProducerBuilding
+from horizons.world.building.buildingresourcehandler import BuildingResourceHandler
 from collectingbuilding import CollectingBuilding
 from horizons.world.component.storagecomponent import StorageComponent
 
-class BoatBuilder(SelectableBuilding, UnitProducerBuilding, CollectingBuilding, BuildableSingleOnOcean, BasicBuilding):
-	tabs = (BoatbuilderTab, BoatbuilderFisherTab)
-	tabs = (BoatbuilderTab, BoatbuilderTradeTab, BoatbuilderWar1Tab)
-# , BoatbuilderTradeTab, BoatbuilderWar1Tab, BoatbuilderWar2Tab, BoatbuilderConfirmTab)
-# not visible in release 2010.1
+class BoatBuilder(SelectableBuilding, CollectingBuilding, BuildableSingleOnOcean, BasicBuilding):
 
 	def __init__(self, **kwargs):
 		super(BoatBuilder, self).__init__(**kwargs)
@@ -40,3 +36,4 @@ class BoatBuilder(SelectableBuilding, UnitProducerBuilding, CollectingBuilding, 
 	def initialize(self, **kwargs):
 		super(BoatBuilder, self).initialize( ** kwargs)
 		self.get_component(StorageComponent).inventory.limit = 10
+

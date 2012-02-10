@@ -9,6 +9,8 @@ size_y: 2
 inhabitants_start: 1
 inhabitants_max: 1
 button_name: villageschool-1
+tabs: [ProductionOverviewTab]
+enemy_tabs: [EnemyBuildingOverviewTab,]
 tooltip_text: _ Provides education.
 settler_level: 1
 buildingcosts: {1: 500, 4: 4, 7: 4}

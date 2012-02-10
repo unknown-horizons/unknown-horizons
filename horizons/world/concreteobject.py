@@ -23,9 +23,10 @@ from fife import fife
 
 from horizons.scheduler import Scheduler
 from horizons.util import WorldObject, Callback, ActionSetLoader
-from horizons.gui.tabs import BuildRelatedTab
+from horizons.gui.tabs import BuildRelatedTab, ProductionOverviewTab
 from horizons.world.status import StatusIcon
 from horizons.world.units import UnitClass
+from horizons.world.production.producer import Producer
 from random import randint
 
 class ConcreteObject(WorldObject):
@@ -37,12 +38,9 @@ class ConcreteObject(WorldObject):
 	Assumes that object has a member _instance.
 	"""
 	movable = False # whether instance can move
-	tabs = tuple() # iterable collection of classes of tabs to show when selected
-	enemy_tabs = tuple() # same as tabs, but used when clicking on enemy's instances
 	is_unit = False
 	is_building = False
 	is_selectable = False
-	has_status_icon = False
 
 	def __init__(self, session, **kwargs):
 		"""
@@ -59,18 +57,14 @@ class ConcreteObject(WorldObject):
 		self._action = 'idle' # Default action is idle
 		self._action_set_id = self.get_random_action_set()[0]
 
-		related_building = self.session.db.cached_query("SELECT building FROM related_buildings where building = ?", self.id)
-
-		if len(related_building) > 0 and BuildRelatedTab not in self.__class__.tabs:
-			self.__class__.tabs += (BuildRelatedTab,)
-
-		self._status_icon_key = "status_"+str(self.worldid)
-		self._status_icon_renderer = self.session.view.renderer['GenericRenderer']
-
 		# only buildings for now
-		if self.is_building and \
-		   not self.id in self.session.db.get_status_icon_exclusions() and \
-		   self.owner == self.session.world.player: # and only for the player's buildings
+		self.has_status_icon = self.is_building and \
+		  not self.id in self.session.db.get_status_icon_exclusions() and \
+		  self.owner == self.session.world.player # and only for the player's buildings
+
+		if self.has_status_icon:
+			self._status_icon_key = "status_"+str(self.worldid)
+			self._status_icon_renderer = self.session.view.renderer['GenericRenderer']
 			self.has_status_icon = True
 			# update now
 			Scheduler().add_new_object(self._update_status, self, run_in=0)
@@ -83,8 +77,15 @@ class ConcreteObject(WorldObject):
 			Scheduler().add_new_object(self._update_status, self, run_in=run_in, loops=-1,
 				                         loop_interval = interval)
 
-		# status icons, that are expensive to decide, can be appended/removed here
-		self._registered_status_icons = []
+			# status icons, that are expensive to decide, can be appended/removed here
+			self._registered_status_icons = []
+
+	def set_tabs(self):
+		"""Sets hiterable collection of classes of tabs to show when selected"""
+		related_building = self.session.db.cached_query("SELECT building FROM related_buildings where building = ?", self.id)
+
+		if len(related_building) > 0:
+			self.tabs += (BuildRelatedTab,)
 
 	@property
 	def fife_instance(self):
@@ -138,9 +139,9 @@ class ConcreteObject(WorldObject):
 		from horizons.gui.tabs import TabWidget
 		tablist = None
 		if self.owner == self.session.world.player:
-			tablist = self.__class__.tabs
+			tablist = self.tabs
 		else: # this is an enemy instance with respect to the local player
-			tablist = self.__class__.enemy_tabs
+			tablist = self.enemy_tabs
 
 		if tablist:
 			tabs = [ tabclass(self) for tabclass in tablist if tabclass.shown_for(self) ]
@@ -182,7 +183,8 @@ class ConcreteObject(WorldObject):
 			status.render(self._status_icon_renderer, self._status_icon_key, node)
 
 	def _remove_status_icon(self):
-		self._status_icon_renderer.removeAll(self._status_icon_key)
+		if self.has_status_icon:
+			self._status_icon_renderer.removeAll(self._status_icon_key)
 
 	@classmethod
 	def get_random_action_set(cls, level=0, exact_level=False):

@@ -68,8 +68,6 @@ class StorageTent(StorageBuilding, BuildableSingle):
 
 class Warehouse(StorageBuilding, BuildableSingleFromShip):
 	tearable = False
-	tabs = (WarehouseOverviewTab, InventoryTab, BuySellTab, AccountTab)
-	enemy_tabs = (EnemyWarehouseOverviewTab,)
 	def __init__(self, *args, **kwargs):
 		super(Warehouse, self).__init__(*args, **kwargs)
 		self.settlement.warehouse = self # we never need to unset this since bo's are indestructible

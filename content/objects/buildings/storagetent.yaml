@@ -9,6 +9,8 @@ size_y: 2
 inhabitants_start: 1
 inhabitants_max: 1
 button_name: store-1
+tabs: [WarehouseOverviewTab, InventoryTab, AccountTab]
+enemy_tabs: [EnemyBuildingOverviewTab,]
 tooltip_text: _ Extends stock and provides collectors.
 settler_level: 0
 buildingcosts: {1: 350, 4: 4}

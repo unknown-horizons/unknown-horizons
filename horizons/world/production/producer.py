@@ -32,7 +32,9 @@ from horizons.world.component import Component
 from horizons.world.status import ProductivityLowStatus, DecommissionedStatus, InventoryFullStatus
 from horizons.world.production.unitproduction import UnitProduction
 from horizons.command.unit import CreateUnit
+from horizons.util.changelistener import metaChangeListenerDecorator
 
+@metaChangeListenerDecorator("production_finished")
 class Producer(Component):
 	"""Class for objects, that produce something.
 	@param auto_init: bool. If True, the producer automatically adds one
@@ -163,7 +165,14 @@ class Producer(Component):
 			self.log.debug('%s: added production line %s is active', self, production.get_production_line_id())
 			self._productions[production.get_production_line_id()] = production
 		production.add_change_listener(self._on_production_change, call_listener_now=False)
+		production.add_production_finished_listener(self._production_finished)
 		self.instance._changed()
+
+	def _production_finished(self, production):
+		"""Gets called when a production finishes. Intercepts call, adds info
+		and forwards it"""
+		produced_res = production.get_produced_res()
+		self.on_production_finished(produced_res)
 
 	def finish_production_now(self):
 		"""Cheat, makes current production finish right now (and produce the resources).
@@ -456,7 +465,7 @@ class UnitProducer(QueueProducer):
 		productions = self._productions.values()
 		for production in productions:
 			assert isinstance(production, UnitProduction)
-			self.instance.on_building_production_finished(production.get_produced_units())
+			self.on_production_finished(production.get_produced_units())
 			for unit, amount in production.get_produced_units().iteritems():
 				for i in xrange(0, amount):
 					radius = 1

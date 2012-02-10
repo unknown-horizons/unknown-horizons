@@ -30,7 +30,10 @@ class CollectingBuilding(BuildingResourceHandler):
 	to collect resources from other ResourceHolder objects. It is used to
 	organize Collector instances.
 	NOTE: Anything inheriting from this class must also inherit from the
-	Building class."""
+	Building class.
+
+	Base class for most producing/collecting buildings.
+	"""
 
 	## INIT/DESTRUCT
 	def __init__(self, **kwargs):

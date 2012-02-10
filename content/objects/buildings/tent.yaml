@@ -9,6 +9,8 @@ size_y: 2
 inhabitants_start: 1
 inhabitants_max: 2
 button_name: resident-1
+tabs: [SettlerOverviewTab,]
+enemy_tabs: [EnemyBuildingOverviewTab,]
 tooltip_text: _ Houses your inhabitants.
 settler_level: 0
 buildingcosts: {1: 100, 4: 2}

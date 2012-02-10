@@ -34,4 +34,4 @@ class Housing(SelectableBuilding, BasicBuilding, BuildableSingle):
 
 class SignalFire(Housing):
 	range_applies_only_on_island = False
-	tabs = (SignalFireOverviewTab, )
+

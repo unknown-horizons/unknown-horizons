@@ -8,6 +8,8 @@ size_x: 2
 size_y: 2
 inhabitants_start: 1
 inhabitants_max: 1
+tabs: [ProductionOverviewTab,]
+enemy_tabs: [EnemyBuildingOverviewTab,]
 button_name: church-1
 tooltip_text: _ Fulfills religious needs of sailors.
 settler_level: 0

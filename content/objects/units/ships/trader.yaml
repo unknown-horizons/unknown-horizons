@@ -3,6 +3,8 @@ id: 1000006
 name: Trader
 radius: 8
 velocity: 12.0
+tabs: [TraderShipOverviewTab,]
+enemy_tabs: [TraderShipOverviewTab,]
 components:
 - AmbientSoundComponent
 - StorageComponent:

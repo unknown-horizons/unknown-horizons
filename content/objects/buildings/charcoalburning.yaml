@@ -8,6 +8,8 @@ size_x: 2
 size_y: 3
 inhabitants_start: 1
 inhabitants_max: 1
+tabs: [ProductionOverviewTab,]
+enemy_tabs: [EnemyBuildingOverviewTab,]
 button_name: charcoal-burning-1
 tooltip_text: _ Burns a lot of boards.
 settler_level: 2

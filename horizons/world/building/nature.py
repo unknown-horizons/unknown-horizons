@@ -22,7 +22,7 @@
 from horizons.world.building.building import BasicBuilding
 from horizons.world.building.buildable import BuildableRect, BuildableSingleEverywhere
 from horizons.world.building.collectingbuilding import CollectingBuilding
-from horizons.world.building.buildingresourcehandler import ProducerBuilding
+from horizons.world.building.buildingresourcehandler import BuildingResourceHandler
 from horizons.entities import Entities
 from horizons.scheduler import Scheduler
 from horizons.constants import LAYERS, BUILDINGS
@@ -39,10 +39,11 @@ class NatureBuilding(BuildableRect, BasicBuilding):
 	def __init__(self, **kwargs):
 		super(NatureBuilding, self).__init__(**kwargs)
 
-class ProducerNatureBuilding(ProducerBuilding, NatureBuilding):
+class NatureBuildingResourceHandler(BuildingResourceHandler, NatureBuilding):
+	# sorry, but this class is to be removed soon anyway
 	pass
 
-class Field(ProducerNatureBuilding):
+class Field(NatureBuildingResourceHandler):
 	walkable = False
 	layer = LAYERS.FIELDS
 
@@ -95,7 +96,7 @@ class AnimalField(CollectingBuilding, Field):
 		self.animals = []
 		# units are loaded separatly
 
-class Tree(ProducerNatureBuilding):
+class Tree(NatureBuildingResourceHandler):
 	buildable_upon = True
 	layer = LAYERS.OBJECTS
 
@@ -108,8 +109,6 @@ class ResourceDeposit(SelectableBuilding, NatureBuilding):
 	"""Class for stuff like clay deposits."""
 	tearable = False
 	layer = LAYERS.OBJECTS
-	tabs = (ResourceDepositOverviewTab,)
-	enemy_tabs = (ResourceDepositOverviewTab,)
 	walkable = False
 
 	def __init__(self, *args, **kwargs):
@@ -124,7 +123,7 @@ class ResourceDeposit(SelectableBuilding, NatureBuilding):
 			for resource, min_amount, max_amount in self.session.db.get_resource_deposit_resources(self.id):
 				self.get_component(StorageComponent).inventory.alter(resource, self.session.random.randint(min_amount, max_amount))
 
-class Fish(BuildableSingleEverywhere, ProducerBuilding, BasicBuilding):
+class Fish(BuildableSingleEverywhere, BuildingResourceHandler, BasicBuilding):
 
 	def __init__(self, *args, **kwargs):
 		super(Fish,  self).__init__(*args, **kwargs)

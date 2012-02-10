@@ -20,7 +20,6 @@
 # ###################################################
 
 from horizons.world.resourcehandler import ResourceHandler
-from horizons.util.changelistener import metaChangeListenerDecorator
 from horizons.gui.tabs import ProductionOverviewTab
 from horizons.world.production.producer import Producer
 
@@ -63,30 +62,8 @@ class BuildingResourceHandler(ResourceHandler):
 				self.toggle_costs()
 		self._changed()
 
-@metaChangeListenerDecorator("building_production_finished")
-class ProducerBuilding(BuildingResourceHandler):
-	"""Class for buildings, that produce something.
-	Uses BuildingResourceHandler additionally to ResourceHandler, to enable building-specific
-	behaviour"""
-	tabs = (ProductionOverviewTab,) # don't show inventory, just production (i.e. running costs)
 
-	def __init__(self, start_finished=False, *args, **kwargs):
-		super(ProducerBuilding, self).__init__(*args, **kwargs)
-
-	def add_production(self, production):
-		self.get_component(Producer).add_production(production)
-		production.add_production_finished_listener(self._production_finished)
-
-	def _production_finished(self, production):
-		"""Gets called when a production finishes."""
-		produced_res = production.get_produced_res()
-		self.on_building_production_finished(produced_res)
-
-	def get_output_blocked_time(self):
-		""" gets the amount of time in range [0, 1] the output storage is blocked for the AI """
-		return max(production.get_output_blocked_time() for production in self.get_component(Producer).get_productions())
-
-class UnitProducerBuilding(ProducerBuilding):
+class UnitProducerBuilding(BuildingResourceHandler):
 	"""Class for building that produce units.
 	Uses a BuildingResourceHandler additionally to ResourceHandler to enable
 	building specific behaviour."""

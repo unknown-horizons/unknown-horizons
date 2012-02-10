@@ -30,8 +30,6 @@ class FightingShip(MovingWeaponHolder, Ship):
 	@param y: int y position
 	"""
 	health_bar_y = -190
-	tabs = (FightingShipOverviewTab, )
-	enemy_tabs = (EnemyShipOverviewTab, )
 
 	def __init__(self, x, y, **kwargs):
 		super(FightingShip, self).__init__(x=x, y=y, **kwargs)
