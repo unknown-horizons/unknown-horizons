@@ -540,10 +540,11 @@ INSERT INTO "resource" VALUES(0,'cocoa beans',2,53,1);
 INSERT INTO "resource" VALUES(1,'cocoa',2.5,54,1);
 INSERT INTO "resource" VALUES(1,'confectionery',10,55,1);
 INSERT INTO "resource" VALUES(1,'candles',10,56,1);
-INSERT INTO "resource" VALUES(0,'green almonds',2,57,1);
-INSERT INTO "resource" VALUES(1,'almonds',2.5,58,1);
+INSERT INTO "resource" VALUES(0,'vines',2,57,1);
+INSERT INTO "resource" VALUES(1,'grapes',2.5,58,1);
 INSERT INTO "resource" VALUES(0,'alvearies',2,59,1);
 INSERT INTO "resource" VALUES(1,'honeycombs',2.5,60,1);
+INSERT INTO "resource" VALUES(1,'sultanas',5,61,1);
 
 CREATE TABLE translucent_buildings(type INTEGER);
 INSERT INTO "translucent_buildings" VALUES(17);

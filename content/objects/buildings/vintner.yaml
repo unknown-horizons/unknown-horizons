@@ -1,0 +1,35 @@
+id: 65
+name: _ Vintner
+baseclass: production.Refiner
+radius: 8
+cost: 20
+cost_inactive: 5
+size_x: 2
+size_y: 2
+inhabitants_start: 3
+inhabitants_max: 3
+tooltip_text: _ Produces wine and sultanas out of grapes.
+settler_level: 3
+buildingcosts: {1: 1}
+components:
+- HealthComponent: {maxhealth: 1000}
+- ProducerComponent:
+    productionlines:
+      0:
+        produces:
+        - [22, 1]
+        consumes:
+        - [58, -2]
+        time: 15
+      1:
+        produces:
+        - [61, 1]
+        consumes:
+        - [58, -2]
+        time: 15
+- StorageComponent:
+    inventory:
+      SlotsStorage:
+        slot_sizes: {22: 6, 58: 8, 61: 6}
+actionsets:
+  as_vintner0: {level: 0}
