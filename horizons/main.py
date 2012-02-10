@@ -19,18 +19,14 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-"""This is the main game file, it used to store some global information and to handle
-   the main menu, as well as to initialize new gamesessions.
-	 <deprecated>horizons.main provides some globals
-   that can be used throughout the code just by importing 'horizons.main'. These are the
-   globals:</deprecated>.
-   * db - the horizons.dbreader instance, used to retrieve data from the database.
-   * fife - if a game is running. horizons.fife provides the running engine instance.
-   * session - horizons.session instance - check horizons/session.py for more information
+"""This is the main game file. It has grown over the years from a collection of global
+variables (sic!) to something holding mainly the main gui and game session, as well as
+a reference to the engine object (fife).
+The functions below are used to start different kinds of games
 
-   TUTORIAL:
-   Continue to horizons.session for further ingame digging.
-   """
+TUTORIAL:
+Continue to horizons.session for further ingame digging.
+"""
 
 import os
 import sys
@@ -62,7 +58,7 @@ _modules = Modules()
 __string_previewer = None
 
 def start(command_line_arguments):
-	"""Starts the horizons.
+	"""Starts the horizons. Will drop you to the main menu.
 	@param command_line_arguments: options object from optparse.OptionParser. see run_uh.py.
 	"""
 	global fife, db, debug, preloading

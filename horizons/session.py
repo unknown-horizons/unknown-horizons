@@ -48,21 +48,29 @@ from horizons.constants import GAME_SPEED, PATHS
 
 class Session(LivingObject):
 	"""Session class represents the games main ingame view and controls cameras and map loading.
+	It is alive as long as a game is running.
+	Many objects require a reference to this, which makes it a pseudo-global, from what we would
+	like to move away long-term. This is where we hope the components come into play, which
+	you will encounter later
 
 	This is the most important class if you are going to hack on Unknown Horizons, it provides most of
 	the important ingame variables.
 	Here's a small list of commonly used attributes:
-	* manager - horizons.manager instance. Used to execute commands that need to be tick,
-				synchronized check the class for more information.
-	* scheduler - horizons.scheduler instance. Used to execute timed events that do not effect
-	              network games but rather control the local simulation.
+
+	* world - horizons.world instance of the currently running horizons. Stores players and islands,
+		which store settlements, which store buildings, which have productions and collectors.
+		Therefore world deserves its name, it contains the whole game state.
+	* scheduler - horizons.scheduler instance. Used to execute timed events. Master of time in UH.
+	* manager - horizons.manager instance. Used to execute commands (used to apply user interactions).
+		There is a singleplayer and a multiplayer version. Our mp system works by the mp-manager not
+		executing the commands directly, but sending them to all players, where they will be executed
+		at the same tick.
 	* view - horizons.view instance. Used to control the ingame camera.
-	* ingame_gui - horizons.gui.ingame_gui instance. Used to controll the ingame gui.
-	* cursor - horizons.gui.{navigation/cursor/selection/building}tool instance. Used to controll
-			   mouse events, check the classes for more info.
+	* ingame_gui - horizons.gui.ingame_gui instance. Used to control the ingame gui framework.
+		(This is different from gui, which is the main menu and general session-independent gui)
+	* cursor - horizons.gui.{navigation/cursor/selection/building}tool instance. Used to handle
+			   mouse events.
 	* selected_instances - Set that holds the currently selected instances (building, units).
-	* world - horizons.world instance of the currently running horizons. Stores islands, players,
-	          for later access.
 
 	TUTORIAL:
 	For further digging you should now be checking out the load() function.
@@ -208,6 +216,10 @@ class Session(LivingObject):
 		@param is_scenario: Bool whether the loaded map is a scenario or not
 		@param force_player_id: the worldid of the selected human player or default if None (debug option)
 		"""
+		"""
+		TUTORIAL: Here you see how the vital game elements (and some random things that are also required)
+		are initialised
+		"""
 		if is_scenario:
 			# savegame is a yaml file, that contains reference to actual map file
 			self.scenario_eventhandler = ScenarioEventHandler(self, savegame)
@@ -277,6 +289,7 @@ class Session(LivingObject):
 		assert hasattr(self.world, "player"), 'Error: there is no human player'
 		"""
 		TUTORIAL:
+		That's it. After that, we call start() to activate the timer, and we're on live.
 		From here on you should digg into the classes that are loaded above, especially the world class.
 		(horizons/world/__init__.py). It's where the magic happens and all buildings and units are loaded.
 		"""

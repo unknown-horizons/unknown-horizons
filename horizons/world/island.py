@@ -34,7 +34,7 @@ from horizons.gui.widgets.minimap import Minimap
 
 class Island(BuildingOwner, WorldObject):
 	"""The Island class represents an Island by keeping a list of all instances on the map,
-	that belong to the island. The island variable is also set on every instance that belongs
+	that belong to the island. The island attribute is also set on every instance that belongs
 	to an island, making it easy to determine to which island the instance belongs, when
 	selected.
 	An Island instance is created at map creation, when all tiles are added to the map.
@@ -57,6 +57,7 @@ class Island(BuildingOwner, WorldObject):
 	function is not called. Rather the load function is called. So everything that new
 	classes and loaded classes share to initialize, comes into the __init() function.
 	This is the common way of doing this in Unknown Horizons, so better get used to it :)
+	NOTE: The components work a bit different, but this code here is mostly not component oriented.
 
 	To continue hacking, check out the __init() function now.
 	"""
@@ -153,7 +154,8 @@ class Island(BuildingOwner, WorldObject):
 			Scheduler().add_new_object(self.check_wild_animal_population, self, Scheduler().get_ticks(120), -1)
 
 		"""TUTORIAL:
-		To continue hacking, you should now take off to the real fun stuff and check out horizons/world/building/__init__.py.
+		The next step will be an overview of the component system, which you will need
+		to understand in order to see how our actual game object (buildings, units) work. Please proceed to horizons/world/componentholder.py
 		"""
 
 	def save(self, db):

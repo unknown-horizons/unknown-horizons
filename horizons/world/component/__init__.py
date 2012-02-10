@@ -20,6 +20,18 @@
 # ###################################################
 
 class Component(object):
+	"""
+	Base class for all components. Something like an interface.
+
+	TUTORIAL:
+	This is what all components share, basically only set up and tear down.
+	It would be advisable to look through all methods here,
+	and especially to see the difference between loading components (from
+	a savegame) and setting them up in a normal game.
+
+	Once you know how it works, please proceed to horizons/world/ingametype.py
+	where you'll see how the actual things in uh are created.
+	"""
 
 	#  Store the name of this component. This has to be overwritten in subclasses
 	NAME = None

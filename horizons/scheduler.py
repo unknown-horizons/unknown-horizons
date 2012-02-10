@@ -30,6 +30,7 @@ from horizons.constants import GAME
 
 class Scheduler(LivingObject):
 	""""Class providing timed callbacks.
+	Master of time.
 
 	TODO:
 	- Refactor to use a data structure that is suitable for iteration (ticking) as well as

@@ -1,3 +1,10 @@
+# TUTORIAL:
+# First, we define general properties, which are read by standard python code.
+# Below, there's then the list of components, which are fully specified here (no extra database needed)
+# The lumberjack has a HealthComponent in order to be destructible,
+# and a ProducerComponent to produce boards out of the raw wood the lumberjack unit collects.
+# The storage component has space for both raw wood and boards.
+# The actionsets define how the building looks like in the different settler levels.
 id: 8
 name: _ Lumberjack Camp
 baseclass: production.Lumberjack

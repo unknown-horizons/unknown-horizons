@@ -21,7 +21,7 @@
 
 from fife import fife
 
-STYLES= {
+STYLES = {
 'default': {
 		'default' : {
 			'border_size': 0,

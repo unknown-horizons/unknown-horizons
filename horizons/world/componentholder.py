@@ -32,6 +32,25 @@ class ComponentHolder(object):
 	"""
 	Class that manages Component plug-ins
 	It can be inherided by all objects that can hold components
+
+	TUTORIAL:
+	I can't explain component-oriented architecture to you here, but i can give you
+	an overview of how we use it:
+	Instead of putting all different features of entities into single classes,
+	as it's common in OOP, every feature is put into a component. This should
+	increase the encapsulation, and it's easier if an object consists of 15 independent
+	building blocks than if it were 15 classes, where many override the same function call
+	and fight about who gets called first.
+	Check class_mapping for a complete list of the different components we use.
+
+	The components are stored in a dict, the key is their name (a string).
+	This is necessary so objects can be defined as a collection of their components in
+	human r/w-able format. This is done via yaml files in our case in content/objects.
+	You could check out e.g. content/objects/buildings/lumberjackcamp.yaml to see what
+	it looks like in reality.
+
+	This class manages the components, it stores them at makes them accessible.
+	Check out the actual component class in horizons/world/component/__init__.py
 	"""
 
 	class_mapping = {
