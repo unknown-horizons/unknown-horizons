@@ -26,7 +26,8 @@ class IngameType(type):
 	@param id: int - building id in the database.
 	@param yaml_data: a dict containing all the data read from yaml files
 
-	Note this creates class types, NOT instances. These types are created at the beginning of a session
+	Note this creates class types, NOT instances.
+	These types are created at the beginning of a session
 	and are later used to create instances, when buildings are built.
 	The __new__() function uses quite some python magic to construct the new class.
 
@@ -70,8 +71,24 @@ class IngameType(type):
 		specific to buildings and units can be found in horizons/world/{buildings/units}/__init__.py
 		which contains the unit and building specific attributes and loading.
 
-		All units and buildings are implemented as ComponentHolders, which you should
-		check out next: horizons/world/componentholder.py
+		By now you should know the basic constructs used in uh, so we feel comfortable
+		stoping the tutorial here. Be sure to join our IRC channel and idle around there.
+		You'll find tasks for getting into the code in our trac.unknown-horizons.org
+
+		Other relevant parts of the code you might be interested in are:
+		* commands: horizons/commands. Abstracts all user interactions.
+		* scheduler: horizons/scheduler.py. Manages ingame time.
+		* extscheduler: horizons/extscheduler.py. Manages wall clock time.
+		* scenario: horizons/scenario. Condition-action system for scenarios and full campaigns
+		* networking: horizons/network. Sending stuff over the wire
+		* gui: horizons/gui. The ugly parts. IngameGui and Gui, tabs and widgets.
+		* production: horizons/world/production
+		** Producer: producer component, manages everything
+		** ProductionLine: keeps data about the different production lines.
+		** Production: the alive version of the production line.Used when a building
+		               actually produces something, stores progress and the li ke.
+		* engine: horizons/engine. Direct interface to fife.
+		* ai: horizons/ai/aiplayer. Way too big to describe here.
 		"""
 
 	@property

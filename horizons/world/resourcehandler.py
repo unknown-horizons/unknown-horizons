@@ -36,9 +36,6 @@ class ResourceHandler(object):
 	look at the uml digramm: development/uml/production_classes.png
 
 	A ResourceHandler must not have more than 1 production with the same prod line id.
-	TUTORIAL:
-	You should now look at some of the implementations of the ResourceHandler.
-	You will find some in world/production/producer.py
 	"""
 	tabs = (ProductionOverviewTab, InventoryTab)
 

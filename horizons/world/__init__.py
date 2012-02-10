@@ -55,22 +55,22 @@ from horizons.world.component.storagecomponent import StorageComponent
 class World(BuildingOwner, LivingObject, WorldObject):
 	"""The World class represents an Unknown Horizons map with all its units, grounds, buildings, etc.
 
+	It inherits amongst others from BuildingOwner, so it has building management capabilities.
+	There is always one big reference per building. It is stored either in the world, the island
+	or the settlement.
+
+	The world comprises amongst others:
 	   * players - a list of all the session's players - Player instances
 	   * islands - a list of all the map's islands - Island instances
 	   * grounds - a list of all the map's groundtiles
 	   * ground_map - a dictionary that binds tuples of coordinates with a reference to the tile:
 	                  { (x, y): tileref, ...}
-	                 This is important for pathfinding and quick tile fetching.z
-	   * full_map - a dictionary that binds tuples of coordinates with a reference to the tile (includes water and ground)
+	                 This is important for pathfinding and quick tile fetching.
 	   * island_map - a dictionary that binds tuples of coordinates with a reference to the island
 	   * ships - a list of all the ships ingame - horizons.world.units.ship.Ship instances
 	   * ship_map - same as ground_map, but for ships
-	   * fish_indexer - a BuildingIndexer for all fish on the map
 	   * session - reference to horizons.session.Session instance of the current game
-	   * water - Dictionary of coordinates that are water
-	   * water_body - Dictionary of water bodies {coords: area_number, ...}
-	   * sea_number - The water_body number of the sea
-	   * trader - The world's ingame free trader player instance
+	   * trader - The world's ingame free trader player instance (can control multiple ships)
 	   * pirate - The world's ingame pirate player instance
 	   TUTORIAL: You should now check out the _init() function.
 	"""
@@ -86,6 +86,7 @@ class World(BuildingOwner, LivingObject, WorldObject):
 		super(World, self).__init__(worldid=GAME.WORLD_WORLDID)
 
 	def end(self):
+		# destructor-like thing.
 		self.session = None
 		self.properties = None
 		self.players = None
@@ -109,6 +110,10 @@ class World(BuildingOwner, LivingObject, WorldObject):
 		"""
 		@param savegame_db: Dbreader with loaded savegame database
 		@param force_player_id: the worldid of the selected human player or default if None (debug option)
+		"""
+		"""
+		All essential and non-essential parts of the world are set up here, you don't need to
+		know everything that happens.
 		"""
 		#load properties
 		self.properties = {}
