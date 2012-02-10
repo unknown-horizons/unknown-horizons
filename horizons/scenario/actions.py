@@ -70,7 +70,7 @@ def do_win(session):
 	horizons.main.fife.play_sound('effects', "content/audio/sounds/events/scenario/win.ogg")
 
 	continue_playing = False
-	if session.campaign is None or not AUTO_CONTINUE_CAMPAIGN:
+	if not session.campaign or not AUTO_CONTINUE_CAMPAIGN:
 		continue_playing = session.gui.show_popup(_("You have won!"), \
 		                                          _("You have completed this scenario.") + u" " + \
 		                                          _("Do you want to continue playing?"), \

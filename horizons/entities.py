@@ -88,6 +88,10 @@ class Entities(object):
 				# This is needed for dict lookups! Do not convert to os.join!
 				full_file = root + "/" + filename
 				result = YamlCache.get_file(full_file)
+				if result is None: # discard empty yaml files
+					print "Empty yaml file {file} found, not loading!".format(file=full_file)
+					continue
+
 				result['yaml_file'] = full_file
 
 				building_id = int(result['id'])

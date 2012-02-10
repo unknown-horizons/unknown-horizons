@@ -105,9 +105,10 @@ class World(BuildingOwner, LivingObject, WorldObject):
 		self.bullets = None
 		super(World, self).end()
 
-	def _init(self, savegame_db):
+	def _init(self, savegame_db, force_player_id=None):
 		"""
 		@param savegame_db: Dbreader with loaded savegame database
+		@param force_player_id: the worldid of the selected human player or default if None (debug option)
 		"""
 		#load properties
 		self.properties = {}
@@ -156,6 +157,9 @@ class World(BuildingOwner, LivingObject, WorldObject):
 			elif not human_players and self.players:
 				# the first player should be the human-ai hybrid
 				self.player = self.players[0]
+
+		# set the human player to the forced value (debug option)
+		self.set_forced_player(force_player_id)
 
 		if self.player is None and self.session.is_game_loaded():
 			self.log.warning('WARNING: Cannot autoselect a player because there are no \
@@ -246,22 +250,14 @@ class World(BuildingOwner, LivingObject, WorldObject):
 			self.diplomacy.load(self, savegame_db)
 
 		# add diplomacy notification listeners
-		def notify_change(caller, change_type, a, b):
+		def notify_change(caller, old_state, new_state, a, b):
 			player1 = u"%s" % a.name
 			player2 = u"%s" % b.name
 
-			#check if status really changed, if so update status string
-			if change_type == 'friend':
-				status = _('ally')
-			elif change_type == 'enemy':
-				status = _('enemy')
-			else:
-				status = _('neutral')
-
 			data = {'player1' : player1, 'player2' : player2, 'status' : status}
 
-			self.session.ingame_gui.message_widget.add(self.max_x/2, self.max_y/2,
-			                                           'DIPLOMACY_STATUS_CHANGED', data)
+			self.session.ingame_gui.message_widget.add(
+			  None, None, 'DIPLOMACY_STATUS_'+old_state.upper()+"_"+new_state.upper(), data)
 
 		self.diplomacy.add_diplomacy_status_changed_listener(notify_change)
 
@@ -302,16 +298,17 @@ class World(BuildingOwner, LivingObject, WorldObject):
 
 		# extra world size that is added so that he player can't see the "black void"
 		border = 30
+		fake_tile_class = Entities.grounds[-1]
 		for x in xrange(self.min_x-border, self.max_x+border, 10):
 			for y in xrange(self.min_y-border, self.max_y+border, 10):
-				# we don't need no references, we don't need no mem control
 				if not preview:
+					# we don't need no references, we don't need no mem control
 					default_grounds(self.session, x, y)
 				for x_offset in xrange(0,10):
 					if x+x_offset < self.max_x and x+x_offset>= self.min_x:
 						for y_offset in xrange(0,10):
 							if y+y_offset < self.max_y and y+y_offset >= self.min_y:
-								self.ground_map[(x+x_offset, y+y_offset)] = Entities.grounds[-1](self.session, x, y)
+								self.ground_map[(x+x_offset, y+y_offset)] = fake_tile_class(self.session, x, y)
 
 		# remove parts that are occupied by islands, create the island map and the full map
 		self.island_map = {}
@@ -564,6 +561,13 @@ class World(BuildingOwner, LivingObject, WorldObject):
 						if (fish_x, fish_y) in self.ground_map:
 							Build(FishDeposit, fish_x, fish_y, self, 45 + self.session.random.randint(0, 3) * 90, ownerless = True)(issuer = None)
 
+	def set_forced_player(self, force_player_id):
+		if force_player_id is not None:
+			for player in self.players:
+				if player.worldid == force_player_id:
+					self.player = player
+					break
+
 	def get_random_possible_ground_unit_position(self):
 		"""Returns a position in water, that is not at the border of the world"""
 		offset = 2
@@ -709,13 +713,13 @@ class World(BuildingOwner, LivingObject, WorldObject):
 				break
 		return islands
 
-	def get_warehouses(self, position=None, radius=None, owner=None, include_friendly=False):
+	def get_warehouses(self, position=None, radius=None, owner=None, include_allied=False):
 		"""Returns all warehouses on the map. Optionally only those in range
 		around the specified position.
 		@param position: Point or Rect instance.
 		@param radius: int radius to use.
 		@param owner: Player instance, list only warehouses belonging to this player.
-		@param include_friendly also list the warehouses belonging to friends
+		@param include_allied also list the warehouses belonging to allies
 		@return: List of warehouses.
 		"""
 		warehouses = []
@@ -730,7 +734,8 @@ class World(BuildingOwner, LivingObject, WorldObject):
 				warehouse = settlement.warehouse
 				if (radius is None or position is None or \
 				    warehouse.position.distance(position) <= radius) and \
-				   (owner is None or warehouse.owner == owner or include_friendly):
+				   (owner is None or warehouse.owner == owner or
+				    (include_allied and self.diplomacy.are_allies(warehouse.owner, owner))):
 					warehouses.append(warehouse)
 		return warehouses
 

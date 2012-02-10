@@ -18,6 +18,8 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
+import json
+
 import horizons.main
 from fife import fife
 
@@ -175,6 +177,26 @@ class Minimap(object):
 			ExtScheduler().add_new_object(self._timed_update, self, \
 			                              self.SHIP_DOT_UPDATE_INTERVAL, -1)
 
+	def dump_data(self):
+		"""Returns a string representing the minimap data"""
+		return self._recalculate(dump_data=True)
+
+	def draw_data(self, data):
+		"""Display data from dump_data"""
+		# only icon mode for now
+		self.minimap_image.reset()
+		self.icon.image = fife.GuiImage( self.minimap_image.image )
+
+		self.minimap_image.set_drawing_enabled()
+		rt = self.minimap_image.rendertarget
+		render_name = self._get_render_name("base")
+		drawPoint = rt.addPoint
+		point = fife.Point()
+		for x, y, r, g, b in json.loads(data):
+			point.set(x, y)
+			drawPoint(render_name, point, r, g, b)
+
+
 	def _get_render_name(self, key):
 		return self.RENDER_NAMES[key] + self._id
 
@@ -268,13 +290,19 @@ class Minimap(object):
 				self.view.center(*map_coord)
 
 	def _on_click(self, event):
-		event.map_coord = self._get_event_coord(event)
-		if event.map_coord:
-			self.on_click(event, drag=False)
+		if self.world is not None: # supply world coords if there is a world
+			event.map_coord = self._get_event_coord(event)
+			if event.map_coord:
+				self.on_click(event, drag=False)
+		else:
+			self.on_click(event, drag=True)
 
 	def _on_drag(self, event):
-		event.map_coord = self._get_event_coord(event)
-		if event.map_coord:
+		if self.world is not None: # supply world coords if there is a world
+			event.map_coord = self._get_event_coord(event)
+			if event.map_coord:
+				self.on_click(event, drag=True)
+		else:
 			self.on_click(event, drag=True)
 
 	def _get_event_coord(self, event):
@@ -416,9 +444,10 @@ class Minimap(object):
 
 		return True
 
-	def _recalculate(self, where = None):
+	def _recalculate(self, where = None, dump_data=False):
 		"""Calculate which pixel of the minimap should display what and draw it
-		@param where: Rect of minimap coords. Defaults to self.location"""
+		@param where: Rect of minimap coords. Defaults to self.location
+		@param dump_data: Don't draw but return calculated data"""
 		self.minimap_image.set_drawing_enabled()
 
 		rt = self.minimap_image.rendertarget
@@ -442,7 +471,11 @@ class Minimap(object):
 		island_col = self.COLORS["island"]
 		location_left = self.location.left
 		location_top = self.location.top
-		rt_addPoint = rt.addPoint
+		if dump_data:
+			data = []
+			drawPoint = lambda name, fife_point, r, g, b : data.append( (fife_point.x, fife_point.y, r, g, b) )
+		else:
+			drawPoint = rt.addPoint
 		fife_point = fife.Point(0,0)
 
 		use_rotation = self._get_rotation_setting()
@@ -496,16 +529,14 @@ class Minimap(object):
 				else:
 					fife_point.set(x, y)
 
-				rt_addPoint(render_name, fife_point, *color)
+				drawPoint(render_name, fife_point, *color)
+
+		if dump_data:
+			return json.dumps( data )
 
 
 	def _timed_update(self, force=False):
 		"""Regular updates for domains we can't or don't want to keep track of."""
-		if not self.world: # this cannot happen, but did happen once
-			print 'WARNING: impossible minimap timed update'
-			import traceback
-			traceback.print_stack()
-			return
 		# update ship dots
 		# OPTIMISATION NOTE: there can be pretty many ships, don't rely on the inner loop being rarely executed
 		self.minimap_image.set_drawing_enabled()

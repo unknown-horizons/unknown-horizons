@@ -31,7 +31,7 @@ class AddAllyPair(GenericDiplomacyCommand):
 	def __call__(self, issuer):
 		player1 = WorldObject.get_object_by_id(self.player1_id)
 		player2 = WorldObject.get_object_by_id(self.player2_id)
-		player1.session.world.diplomacy.add_friend_pair(player1, player2)
+		player1.session.world.diplomacy.add_ally_pair(player1, player2)
 
 GenericCommand.allow_network(AddAllyPair)
 

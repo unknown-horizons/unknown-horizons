@@ -221,7 +221,7 @@ class ShipOverviewTab(OverviewTab):
 			events['trade'] = None
 			self.widget.findChild(name='trade_bg').set_inactive()
 			self.widget.findChild(name='trade').set_inactive()
-			self.widget.findChild(name='trade').tooltip = _('Too far from the nearest warehouse')
+			self.widget.findChild(name='trade').tooltip = _('Too far from the nearest own or allied warehouse')
 
 	def _refresh_combat(self): # no combat
 		def click_on_cannons(button):
@@ -311,14 +311,14 @@ class GroundUnitOverviewTab(OverviewTab):
 		self.add_remove_listener(stance_widget.remove)
 
 class ProductionOverviewTab(OverviewTab):
-	production_line_gui_xml = "overview_productionline.xml"
-
-	def  __init__(self, instance):
+	def  __init__(self, instance, widget='overview_productionbuilding.xml',
+		         production_line_gui_xml='overview_productionline.xml'):
 		super(ProductionOverviewTab, self).__init__(
-			widget = 'overview_productionbuilding.xml',
+			widget = widget,
 			instance = instance
 		)
 		self.tooltip = _("Production overview")
+		self.production_line_gui_xml = production_line_gui_xml
 
 		ExtScheduler().add_new_object(self.widget.adaptLayout, self, 0)
 
@@ -413,12 +413,11 @@ class ProductionOverviewTab(OverviewTab):
 		super(ProductionOverviewTab, self).on_instance_removed()
 
 class FarmProductionOverviewTab(ProductionOverviewTab):
-	production_line_gui_xml = "overview_farmproductionline.xml"
-
 	def  __init__(self, instance):
 		super(FarmProductionOverviewTab, self).__init__(
+			instance = instance,
 			widget = 'overview_farm.xml',
-			instance = instance
+			production_line_gui_xml = "overview_farmproductionline.xml"
 		)
 		self.tooltip = _("Production overview")
 

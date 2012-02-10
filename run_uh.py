@@ -114,6 +114,8 @@ def get_option_parser():
 	             help="Uses <ai_players> AI players (excludes the possible human-AI hybrid; defaults to 0).")
 	ai_group.add_option("--human-ai-hybrid", dest="human_ai", action="store_true", \
 	             help="Makes the human player a human-AI hybrid (for development only).")
+	ai_group.add_option("--force-player-id", dest="force_player_id", metavar="<force_player_id>", type="int", default=None, \
+	             help="Set the player with id <force_player_id> as the active (human) player.")
 	ai_group.add_option("--ai-highlights", dest="ai_highlights", action="store_true", \
 	             help="Shows AI plans as highlights (for development only).")
 	p.add_option_group(ai_group)
@@ -143,6 +145,8 @@ def get_option_parser():
 	dev_group.add_option("--gui-log", dest="log_gui", action="store_true", default=False, help="Log gui interactions")
 	dev_group.add_option("--sp-seed", dest="sp_seed", metavar="<seed>", type="int", \
 	                           help="Use this seed for singleplayer sessions.")
+	dev_group.add_option("--generate-minimap", dest="generate_minimap", \
+	                     metavar="<parameters>", help="Generate a minimap for a map")
 	p.add_option_group(dev_group)
 
 	return p
