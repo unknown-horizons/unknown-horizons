@@ -20,10 +20,11 @@
 # ###################################################
 
 from fife.extensions import pychan
-import tooltip
 from fife.extensions.pychan.widgets.common import Attr, UnicodeAttr
 
-class ToggleImageButton(tooltip.TooltipButton):
+from horizons.gui.widgets.tooltip import TooltipButton
+
+class ToggleImageButton(TooltipButton):
 	"""The ToggleImageButton is an extended ImageButton (Think decorator pattern).
 	It adds one extra attribute inactive_image. You can then set the button active
 	or inactive (only in code for now). Setting the ToggleImageButton to inactive
