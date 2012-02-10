@@ -72,7 +72,8 @@ class Settler(SelectableBuilding, BuildableRect, CollectingBuilding, BasicBuildi
 		happiness = self.__get_data("happiness_init_value")
 		if happiness is not None:
 			self.get_component(StorageComponent).inventory.alter(RES.HAPPINESS_ID, happiness)
-		self.get_component(StorageComponent).inventory.add_change_listener( self._update_status_icon )
+		if self.has_status_icon:
+			self.get_component(StorageComponent).inventory.add_change_listener( self._update_status_icon )
 		# give the user a month (about 30 seconds) to build a main square in range
 		if self.owner == self.session.world.player:
 			Scheduler().add_new_object(self._check_main_square_in_range, self, Scheduler().get_ticks_of_month())
@@ -330,14 +331,15 @@ class Settler(SelectableBuilding, BuildableRect, CollectingBuilding, BasicBuildi
 		pass
 
 	def _update_status_icon(self):
-		unhappy = self.happiness < self.__get_data("happiness_inhabitants_decrease_limit")
-		# check for changes
-		if unhappy and not hasattr(self, "_settler_status_icon"):
-			self._settler_status_icon = SettlerUnhappyStatus() # save ref for removal later
-			self._registered_status_icons.append( self._settler_status_icon )
-		if not unhappy and hasattr(self, "_settler_status_icon"):
-			self._registered_status_icons.remove( self._settler_status_icon )
-			del self._settler_status_icon
+		if self.has_status_icon:
+			unhappy = self.happiness < self.__get_data("happiness_inhabitants_decrease_limit")
+			# check for changes
+			if unhappy and not hasattr(self, "_settler_status_icon"):
+				self._settler_status_icon = SettlerUnhappyStatus() # save ref for removal later
+				self._registered_status_icons.append( self._settler_status_icon )
+			if not unhappy and hasattr(self, "_settler_status_icon"):
+				self._registered_status_icons.remove( self._settler_status_icon )
+				del self._settler_status_icon
 
 	def __str__(self):
 		try:
