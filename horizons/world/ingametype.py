@@ -80,6 +80,7 @@ class IngameType(type):
 		* scheduler: horizons/scheduler.py. Manages ingame time.
 		* extscheduler: horizons/extscheduler.py. Manages wall clock time.
 		* scenario: horizons/scenario. Condition-action system for scenarios and full campaigns
+		* automatic tests: tests/. Contains unit tests, gui tests and game (system) tests
 		* networking: horizons/network. Sending stuff over the wire
 		* gui: horizons/gui. The ugly parts. IngameGui and Gui, tabs and widgets.
 		* production: horizons/world/production
