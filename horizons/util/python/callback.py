@@ -35,6 +35,7 @@ class Callback(object):
 	def ChainedCallbacks(*args):
 		"""Named constructor for callbacks executed in a row.
 		Use Callback objects to pass arguments to the callbacks.
+		It is guaranteed that the callbacks are executed in order.
 		@param args: callables"""
 		callbacks = [ Callback(i) for i in args ]
 		def tmp():
