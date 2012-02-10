@@ -24,7 +24,7 @@ import tempfile
 from horizons.command.building import Build, Tear
 from horizons.world.component.storagecomponent import StorageComponent
 from horizons.world.production.producer import Producer, QueueProducer
-from horizons.constants import BUILDINGS, RES, PRODUCTIONLINES
+from horizons.constants import BUILDINGS, RES, PRODUCTIONLINES, GAME
 from horizons.util.worldobject import WorldObject
 
 from tests.game import settle, game_test, new_session, load_session
@@ -207,5 +207,31 @@ def test_ticket_1427():
 	assert expected_production == production_line_loaded.production
 	assert expected_progress == production_loaded.progress
 
+
+
+@game_test
+def test_settler_level(s, p):
+	"""
+	Verify that settler level up works.
+	"""
+	settlement, island = settle(s)
+
+	settler = Build(BUILDINGS.RESIDENTIAL_CLASS, 22, 22, island, settlement=settlement)(p)
+
+	# make it happy
+	inv = settler.get_component(StorageComponent).inventory
+	to_give = inv.get_free_space_for(RES.HAPPINESS_ID)
+	inv.alter(RES.HAPPINESS_ID, to_give)
+	level = settler.level
+
+	s.run(seconds=GAME.INGAME_TICK_INTERVAL)
+
+	# give upgrade res
+	inv.alter(RES.BOARDS_ID, 100)
+
+	s.run(seconds=GAME.INGAME_TICK_INTERVAL)
+
+	# should have leveled up
+	assert settler.level == level + 1
 
 

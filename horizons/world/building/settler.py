@@ -264,7 +264,7 @@ class Settler(SelectableBuilding, BuildableRect, CollectingBuilding, BasicBuildi
 			# drive the car out of the garage to make space for the building material
 			for res, amount in upgrade_material_production.get_consumed_resources().iteritems():
 				self.get_component(StorageComponent).inventory.add_resource_slot(res, abs(amount))
-			self.add_production(upgrade_material_production)
+			self.get_component(Producer).add_production(upgrade_material_production)
 			self.log.debug("%s: Waiting for material to upgrade from %s", self, self.level)
 			if not self.upgrade_allowed:
 				ToggleActive(self.get_component(Producer), upgrade_material_production).execute(self.session, True)
