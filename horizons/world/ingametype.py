@@ -73,9 +73,6 @@ class IngameType(type):
 			resolve_tab = lambda tab_class_name : getattr(tabs, tab_class_name)
 			self.tabs = map(resolve_tab, yaml_data['tabs'])
 			self.enemy_tabs = map(resolve_tab, yaml_data['enemy_tabs'])
-			related_building = self.session.db.cached_query("SELECT building FROM related_buildings where building = ?", self.id)
-			if len(related_building) > 0:
-				self.tabs += (BuildRelatedTab,)
 
 		"""TUTORIAL: Now you know the basic attributes each type has. Further attributes
 		specific to buildings and units can be found in horizons/world/{buildings/units}/__init__.py
