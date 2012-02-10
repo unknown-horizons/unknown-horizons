@@ -87,7 +87,20 @@ class BuildTab(TabInterface):
 			21 : 30,
 			22 : 31,
 			23 : 37,
+			24 : 50,
 			25 : 39,
+			26 : 49,
+			27 : 53,
+		      },
+		4 : {
+			 1 : 47,
+			 2 : 48,
+			 3 : 46,
+			 4 : 60,
+			21 : 65,
+			22 : 63,
+			23 : 61,
+			24 : 62,
 		      },
 		}
 
@@ -108,6 +121,11 @@ class BuildTab(TabInterface):
 			 3 : _('Companies'),
 			 5 : _('Fields'),
 			 7 : _('Services'),
+			27 : _('Military'),
+		      },
+		4 : {
+			 1 : _('Companies'),
+			 3 : _('Fields'),
 		      },
 		}
 

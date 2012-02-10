@@ -536,7 +536,25 @@ INSERT INTO "resource" VALUES(0,'medical herbs',2.5,38,0);
 INSERT INTO "resource" VALUES(0,'acorns',0,39,1);
 INSERT INTO "resource" VALUES(1,'cannon',100,40,1);
 INSERT INTO "resource" VALUES(0,'dagger',10,41,0);
-INSERT INTO "resource" VALUES(0,'fire',0,42,0);
+INSERT INTO "resource" VALUES(0,'grain',0,42,1); -- corn ears
+INSERT INTO "resource" VALUES(0,'corn',2,43,1);
+INSERT INTO "resource" VALUES(1,'flour',0,44,1);
+INSERT INTO "resource" VALUES(0,'spice plants',2,45,1);
+INSERT INTO "resource" VALUES(1,'spices',2.5,46,1);
+INSERT INTO "resource" VALUES(1,'condiments',10,47,1);
+INSERT INTO "resource" VALUES(0,'stone deposit',0,51,1);
+INSERT INTO "resource" VALUES(1,'stone tops',7.5,52,1);
+INSERT INTO "resource" VALUES(0,'cocoa beans',2,53,1);
+INSERT INTO "resource" VALUES(1,'cocoa',2.5,54,1);
+INSERT INTO "resource" VALUES(1,'confectionery',10,55,1);
+INSERT INTO "resource" VALUES(1,'candles',10,56,1);
+INSERT INTO "resource" VALUES(0,'vines',2,57,1);
+INSERT INTO "resource" VALUES(1,'grapes',2.5,58,1);
+INSERT INTO "resource" VALUES(0,'alvearies',2,59,1);
+INSERT INTO "resource" VALUES(1,'honeycombs',2.5,60,1);
+INSERT INTO "resource" VALUES(1,'sultanas',5,61,1);
+INSERT INTO "resource" VALUES(0,'fire',0,99,0); --
+
 CREATE TABLE translucent_buildings(type INTEGER);
 INSERT INTO "translucent_buildings" VALUES(17);
 INSERT INTO "translucent_buildings" VALUES(34);
