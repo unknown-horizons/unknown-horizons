@@ -53,7 +53,7 @@ class SingleplayerMenu(object):
 		# start with default single player settings
 		self.widgets.reload('singleplayermenu')
 		self._switch_current_widget('singleplayermenu', center=True)
-		self.activeRightSide = None
+		self.active_right_side = None
 
 		for spShow in ('random', 'scenario', 'campaign', 'free_maps'):
 			self.widgets.reload('sp_%s' % spShow)
@@ -70,7 +70,7 @@ class SingleplayerMenu(object):
 	def _select_single(self, show):
 		assert show in ('random', 'scenario', 'campaign', 'free_maps')
 		self.hide()
-		eventMap = {
+		event_map = {
 			'cancel'    : Callback.ChainedCallbacks(self._save_player_name, self.show_main),
 			'okay'      : self.start_single,
 			'scenario'  : Callback(self._select_single, show='scenario'),
@@ -80,17 +80,17 @@ class SingleplayerMenu(object):
 		}
 
 		# init gui for subcategory
-		del eventMap[show]
+		del event_map[show]
 		right_side = self.widgets['sp_%s' % show]
 		show_ai_options = False
 		self.current.findChild(name=show).marked = True
 		self.current.aidata.hide()
 
 		# hide previous widget, unhide new right side widget
-		if self.activeRightSide is not None:
-			self.activeRightSide.parent.hideChild(self.activeRightSide)
+		if self.active_right_side is not None:
+			self.active_right_side.parent.hideChild(self.active_right_side)
 		right_side.parent.showChild(right_side)
-		self.activeRightSide = right_side
+		self.active_right_side = right_side
 		self._current_mode = show
 
 		if show == 'random':
@@ -170,7 +170,7 @@ class SingleplayerMenu(object):
 				_update_infos()
 
 
-		self.current.mapEvents(eventMap)
+		self.current.mapEvents(event_map)
 
 		if show_ai_options:
 			self.current.aidata.show()
@@ -366,7 +366,7 @@ class SingleplayerMenu(object):
 					def on_click(event, drag):
 						self._cur_random_seed = random.random()
 						self._on_random_map_parameter_changed()
-					tooltip = _("Click generate a different random map")
+					tooltip = _("Click to generate a different random map")
 
 					if hasattr(self, "minimap"):
 						self.minimap.end()
