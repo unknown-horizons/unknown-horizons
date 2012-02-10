@@ -71,7 +71,10 @@ class OverviewTab(TabInterface):
 		This saves a lot of CPU time, if you have a huge island, or play on high speed."""
 		if not self._refresh_scheduled:
 			self._refresh_scheduled = True
-			ExtScheduler().add_new_object(self.refresh, self, run_in=0.3)
+			def unset_flag():
+				self._refresh_scheduled = False
+			ExtScheduler().add_new_object(Callback.ChainedCallbacks(unset_flag, self.refresh),
+			                              self, run_in=0.3)
 
 	def refresh(self):
 		if (hasattr(self.instance, 'name') or self.instance.has_component(NamedComponent)) and self.widget.child_finder('name'):
@@ -88,7 +91,6 @@ class OverviewTab(TabInterface):
 			    unicode( self.instance.running_costs )
 
 		self.widget.adaptLayout()
-		self._refresh_scheduled = False
 
 	def show(self):
 		super(OverviewTab, self).show()
@@ -113,6 +115,9 @@ class OverviewTab(TabInterface):
 		   self.instance.settlement is not None and \
 		   self.instance.settlement.has_change_listener(self._schedule_refresh):
 			self.instance.settlement.remove_change_listener(self._schedule_refresh)
+
+		if self._refresh_scheduled:
+			ExtScheduler().rem_all_classinst_calls(self)
 
 	def on_instance_removed(self):
 		self.on_remove()
