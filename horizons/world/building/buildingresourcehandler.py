@@ -82,6 +82,10 @@ class ProducerBuilding(BuildingResourceHandler):
 		produced_res = production.get_produced_res()
 		self.on_building_production_finished(produced_res)
 
+	def get_output_blocked_time(self):
+		""" gets the amount of time in range [0, 1] the output storage is blocked for the AI """
+		return max(production.get_output_blocked_time() for production in self.get_component(Producer).get_productions())
+
 class UnitProducerBuilding(ProducerBuilding):
 	"""Class for building that produce units.
 	Uses a BuildingResourceHandler additionally to ResourceHandler to enable
