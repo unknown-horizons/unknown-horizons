@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2012-02-08 02:09+0100\n"
-"PO-Revision-Date: 2012-02-10 17:21+0200\n"
+"PO-Revision-Date: 2012-02-10 20:09+0200\n"
 "Last-Translator: Hugues <fafardh@hotmail.de>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: fr\n"
@@ -914,7 +914,7 @@ msgstr ""
 #, python-format
 msgid "Will buy {resource_name} whenever less than {limit}t are in stock."
 msgstr ""
-"Achètera {resource_name} à chaque fois vous en aurez moins que {limit}t en "
+"Achètes {resource_name} à chaque fois vous en aurez moins que {limit}t en "
 "stock."
 
 #: horizons/gui/tabs/buyselltab.py:371
@@ -1128,7 +1128,7 @@ msgstr "Sommaire de production de {settlement}"
 
 #: horizons/gui/widgets/resourceoverviewbar.py:147
 msgid "Click to add a new slot"
-msgstr ""
+msgstr "Cliquez pour ajouter un nouveau slot."
 
 #. (tooltip of widget: start_route) Trade route
 #: horizons/gui/widgets/routeconfig.py:77 horizons/i18n/guitranslations.py:545
@@ -1261,7 +1261,7 @@ msgstr "Changer le nom"
 #. (text of widget: old_name_label)
 #: horizons/i18n/guitranslations.py:102
 msgid "Old name:"
-msgstr ""
+msgstr "Vieux nom:"
 
 #. (tooltip of widget: okButton)
 #: horizons/i18n/guitranslations.py:104
@@ -2552,12 +2552,12 @@ msgstr "Cultive les champs et élève du bétail."
 #. name of buildings:fireservice
 #: horizons/i18n/objecttranslations.py:113
 msgid "Fire Brigade"
-msgstr ""
+msgstr "Pompiers"
 
 #. tooltip_text of buildings:fireservice
 #: horizons/i18n/objecttranslations.py:115
 msgid "Extinguishes fires."
-msgstr ""
+msgstr "Éteints les feux."
 
 #. name of buildings:fishdeposit
 #: horizons/i18n/objecttranslations.py:120
@@ -2709,7 +2709,7 @@ msgstr "Défend votre colonie."
 #. name of buildings:ruinedtent
 #: horizons/i18n/objecttranslations.py:226
 msgid "Ruined Tent"
-msgstr ""
+msgstr "Tente en ruines"
 
 #. name of buildings:saltponds
 #: horizons/i18n/objecttranslations.py:231
