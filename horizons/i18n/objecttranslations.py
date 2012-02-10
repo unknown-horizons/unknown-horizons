@@ -40,6 +40,34 @@ def set_translations():
 	global object_translations
 	object_translations = {
 
+	"content/objects/buildings/alvearies.yaml" : {
+		# name of buildings:alvearies
+		"name"                        : _("Alvearies"),
+		# tooltip_text of buildings:alvearies
+		"tooltip_text"                : _("Keeps bees. Produces honeycombs used for confectionery. Needs a farm."),
+		},
+
+	"content/objects/buildings/bakery.yaml" : {
+		# name of buildings:bakery
+		"name"                        : _("Bakery"),
+		# tooltip_text of buildings:bakery
+		"tooltip_text"                : _("Consumes flour. Produces food."),
+		},
+
+	"content/objects/buildings/barracks.yaml" : {
+		# name of buildings:barracks
+		"name"                        : _("Barracks"),
+		# tooltip_text of buildings:barracks
+		"tooltip_text"                : _("Recruits units suitable for ground combat."),
+		},
+
+	"content/objects/buildings/blender.yaml" : {
+		# name of buildings:blender
+		"name"                        : _("Blender"),
+		# tooltip_text of buildings:blender
+		"tooltip_text"                : _("Produces condiments out of spices."),
+		},
+
 	"content/objects/buildings/boatbuilder.yaml" : {
 		# name of buildings:boatbuilder
 		"name"                        : _("Boat Builder"),
@@ -72,7 +100,7 @@ def set_translations():
 		# name of buildings:charcoalburning
 		"name"                        : _("Charcoal Burning"),
 		# tooltip_text of buildings:charcoalburning
-		"tooltip_text"                : _("Burns a lot of boards."),
+		"tooltip_text"                : _("Burns a lot of boards to charcoal."),
 		},
 
 	"content/objects/buildings/claydeposit.yaml" : {
@@ -85,6 +113,20 @@ def set_translations():
 		"name"                        : _("Clay Pit"),
 		# tooltip_text of buildings:claypit
 		"tooltip_text"                : _("Gets clay from deposit."),
+		},
+
+	"content/objects/buildings/cocoafield.yaml" : {
+		# name of buildings:cocoafield
+		"name"                        : _("Cocoa Field"),
+		# tooltip_text of buildings:cocoafield
+		"tooltip_text"                : _("Produces cocoa beans used for confectionery. Needs a farm."),
+		},
+
+	"content/objects/buildings/cornfield.yaml" : {
+		# name of buildings:cornfield
+		"name"                        : _("Corn Field"),
+		# tooltip_text of buildings:cornfield
+		"tooltip_text"                : _("Yields corn. Needs a farm."),
 		},
 
 	"content/objects/buildings/distillery.yaml" : {
@@ -186,6 +228,13 @@ def set_translations():
 		"name"                        : _("Mountain"),
 		},
 
+	"content/objects/buildings/pastryshop.yaml" : {
+		# name of buildings:pastryshop
+		"name"                        : _("Pastry Shop"),
+		# tooltip_text of buildings:pastryshop
+		"tooltip_text"                : _("Produces all kinds of confectionery."),
+		},
+
 	"content/objects/buildings/pasture.yaml" : {
 		# name of buildings:pasture
 		"name"                        : _("Pasture"),
@@ -245,6 +294,27 @@ def set_translations():
 		"name"                        : _("Smeltery"),
 		# tooltip_text of buildings:smeltery
 		"tooltip_text"                : _("Refines all kind of ores."),
+		},
+
+	"content/objects/buildings/spicefield.yaml" : {
+		# name of buildings:spicefield
+		"name"                        : _("Spice Field"),
+		# tooltip_text of buildings:spicefield
+		"tooltip_text"                : _("Grows spices. Needs a farm."),
+		},
+
+	"content/objects/buildings/stonemason.yaml" : {
+		# name of buildings:stonemason
+		"name"                        : _("Stonemason"),
+		# tooltip_text of buildings:stonemason
+		"tooltip_text"                : _("Carves stone tops into bricks."),
+		},
+
+	"content/objects/buildings/stonepit.yaml" : {
+		# name of buildings:stonepit
+		"name"                        : _("Stone Pit"),
+		# tooltip_text of buildings:stonepit
+		"tooltip_text"                : _("Gets stone from a mountain."),
 		},
 
 	"content/objects/buildings/storagetent.yaml" : {
@@ -317,6 +387,20 @@ def set_translations():
 		"tooltip_text"                : _("Provides education."),
 		},
 
+	"content/objects/buildings/vineyard.yaml" : {
+		# name of buildings:vineyard
+		"name"                        : _("Vineyard"),
+		# tooltip_text of buildings:vineyard
+		"tooltip_text"                : _("Produces grapes for use in wine and confectionery. Needs a farm."),
+		},
+
+	"content/objects/buildings/vintner.yaml" : {
+		# name of buildings:vintner
+		"name"                        : _("Vintner"),
+		# tooltip_text of buildings:vintner
+		"tooltip_text"                : _("Produces wine and sultanas out of grapes."),
+		},
+
 	"content/objects/buildings/warehouse.yaml" : {
 		# name of buildings:warehouse
 		"name"                        : _("Warehouse"),
@@ -327,6 +411,13 @@ def set_translations():
 		"name"                        : _("Weaver's Tent"),
 		# tooltip_text of buildings:weaverstent
 		"tooltip_text"                : _("Turns lamb wool into cloth."),
+		},
+
+	"content/objects/buildings/windmill.yaml" : {
+		# name of buildings:windmill
+		"name"                        : _("Windmill"),
+		# tooltip_text of buildings:windmill
+		"tooltip_text"                : _("Grinds corn into flour."),
 		},
 
 	"content/objects/buildings/woodentower.yaml" : {
