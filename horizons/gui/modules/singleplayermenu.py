@@ -96,7 +96,6 @@ class SingleplayerMenu(object):
 		self._current_mode = show
 
 		if show == 'random':
-			self._cur_random_seed = random.random()
 			show_ai_options = True
 			self._setup_random_map_selection(right_side)
 			self._setup_game_settings_selection()
@@ -242,7 +241,36 @@ class SingleplayerMenu(object):
 	island_sizes = [30, 40, 50, 60, 70]
 	island_size_deviations = [5, 10, 20, 30, 40]
 
+	def _generate_random_seed(self):
+		rand = random.Random(self.current.findChild(name = 'seed_string_field').text)
+		if rand.randint(0, 1) == 0:
+			# generate a random string of 1-5 letters a-z with a dash if there are 4 or more letters
+			seq = ''
+			for i in xrange(rand.randint(1, 5)):
+				seq += chr(97 + rand.randint(0, 25))
+			if len(seq) > 3:
+				split = rand.randint(2, len(seq) - 2)
+				seq = seq[:split] + '-' + seq[split:]
+			return unicode(seq)
+		else:
+			# generate a numeric seed
+			fields = rand.randint(1, 3)
+			if fields == 1:
+				# generate a five digit integer
+				return unicode(rand.randint(10000, 99999))
+			else:
+				# generate a sequence of 2 or 3 dash separated fields of integers 10-9999
+				parts = []
+				for i in xrange(fields):
+					power = rand.randint(1, 3)
+					parts.append(str(rand.randint(10 ** power, 10 ** (power + 1) - 1)))
+				return unicode('-'.join(parts))
+
 	def _setup_random_map_selection(self, widget):
+		seed_string_field = widget.findChild(name = 'seed_string_field')
+		seed_string_field.capture(self._on_random_map_parameter_changed)
+		seed_string_field.text = self._generate_random_seed()
+
 		map_size_slider = widget.findChild(name = 'map_size_slider')
 		def on_map_size_slider_change():
 			widget.findChild(name = 'map_size_lbl').text = _('Map size:') + u' ' + \
@@ -300,12 +328,13 @@ class SingleplayerMenu(object):
 		on_island_size_deviation_slider_change()
 
 	def _get_random_map_parameters(self):
+		seed_string = self.current.findChild(name = 'seed_string_field').text
 		map_size = self.map_sizes[int(self.current.findChild(name = 'map_size_slider').value)]
 		water_percent = self.water_percents[int(self.current.findChild(name = 'water_percent_slider').value)]
 		max_island_size = self.island_sizes[int(self.current.findChild(name = 'max_island_size_slider').value)]
 		preferred_island_size = self.island_sizes[int(self.current.findChild(name = 'preferred_island_size_slider').value)]
 		island_size_deviation = self.island_size_deviations[int(self.current.findChild(name = 'island_size_deviation_slider').value)]
-		return (self._cur_random_seed, map_size, water_percent, max_island_size, preferred_island_size, island_size_deviation)
+		return (seed_string, map_size, water_percent, max_island_size, preferred_island_size, island_size_deviation)
 
 	def _setup_game_settings_selection(self):
 		widget = self.widgets['game_settings']
@@ -348,7 +377,7 @@ class SingleplayerMenu(object):
 	def _on_random_map_parameter_changed(self):
 		"""Called to update the map preview"""
 		def on_click(event, drag):
-			self._cur_random_seed = random.random()
+			self.current.findChild(name = 'seed_string_field').text = self._generate_random_seed()
 			self._on_random_map_parameter_changed()
 		self.map_preview.update_random_map( self._get_random_map_parameters(), on_click )
 
