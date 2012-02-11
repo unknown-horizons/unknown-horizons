@@ -1,7 +1,7 @@
 id: 11
 name: _ Fisherman's Tent
 baseclass: production.Fisher
-radius: 20
+radius: 16
 cost: 5
 cost_inactive: 0
 size_x: 2

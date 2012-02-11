@@ -82,7 +82,10 @@ class CannonBuilder(SelectableBuilding, CollectingBuilding, BuildableSingle, Bas
 	pass
 
 class Fisher(SelectableBuilding, CollectingBuilding, BuildableSingleOnCoast, BasicBuilding):
+	range_applies_only_on_island = False
 
+
+	""" # old selection workaround, where only fish would be colored:
 	@classmethod
 	def _do_select(cls, renderer, position, world, settlement):
 		# Don't call super here, because we don't want to highlight the island
@@ -102,8 +105,8 @@ class Fisher(SelectableBuilding, CollectingBuilding, BuildableSingleOnCoast, Bas
 
 	@classmethod
 	def deselect_building(cls, session):
-		"""@see select_building,
-		@return list of tiles that were deselected."""
+		""@see select_building,
+		@return list of tiles that were deselected.""
 		remove_colored = session.view.renderer['InstanceRenderer'].removeColored
 		for tile in cls._selected_tiles:
 			remove_colored(tile._instance)
@@ -112,6 +115,7 @@ class Fisher(SelectableBuilding, CollectingBuilding, BuildableSingleOnCoast, Bas
 		# which isn't what we want. Therefore this workaround:
 		while cls._selected_tiles:
 			cls._selected_tiles.pop()
+	"""
 
 	def get_non_paused_utilisation(self):
 		total = 0
