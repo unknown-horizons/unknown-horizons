@@ -23,10 +23,8 @@ from fife import fife
 
 from horizons.scheduler import Scheduler
 from horizons.util import WorldObject, Callback, ActionSetLoader
-from horizons.gui.tabs import BuildRelatedTab, ProductionOverviewTab
 from horizons.world.status import StatusIcon
 from horizons.world.units import UnitClass
-from horizons.world.production.producer import Producer
 from random import randint
 
 class ConcreteObject(WorldObject):
@@ -40,7 +38,6 @@ class ConcreteObject(WorldObject):
 	movable = False # whether instance can move
 	is_unit = False
 	is_building = False
-	is_selectable = False
 
 	def __init__(self, session, **kwargs):
 		"""
@@ -79,13 +76,6 @@ class ConcreteObject(WorldObject):
 
 			# status icons, that are expensive to decide, can be appended/removed here
 			self._registered_status_icons = []
-
-	def set_tabs(self):
-		"""Sets hiterable collection of classes of tabs to show when selected"""
-		related_building = self.session.db.cached_query("SELECT building FROM related_buildings where building = ?", self.id)
-
-		if len(related_building) > 0:
-			self.tabs += (BuildRelatedTab,)
 
 	@property
 	def fife_instance(self):

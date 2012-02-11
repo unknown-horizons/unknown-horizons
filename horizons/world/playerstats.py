@@ -28,6 +28,7 @@ from horizons.entities import Entities
 from horizons.constants import SETTLER, BUILDINGS, PRODUCTION, RES, UNITS
 from horizons.util.python import decorators
 from horizons.world.component.storagecomponent import StorageComponent
+from horizons.world.component.selectablecomponent import SelectableComponent
 from horizons.world.production.producer import Producer
 
 class PlayerStats(WorldObject):
@@ -94,7 +95,7 @@ class PlayerStats(WorldObject):
 		for ship in self.player.session.world.ships:
 			if ship.owner is self.player:
 				ships[ship.id] += 1
-				if ship.is_selectable:
+				if ship.has_component(SelectableComponent):
 					for resource_id, amount in ship.get_component(StorageComponent).inventory:
 						available_resources[resource_id] += amount
 

@@ -22,7 +22,7 @@
 
 from horizons.world.building.collectingbuilding import CollectingBuilding
 from horizons.world.building.buildingresourcehandler import BuildingResourceHandler
-from horizons.world.building.building import BasicBuilding, SelectableBuilding
+from horizons.world.building.building import BasicBuilding
 from horizons.world.building.buildable import BuildableSingle, BuildableSingleOnCoast, BuildableSingleOnDeposit
 from horizons.world.building.nature import Field
 from horizons.util import Rect
@@ -36,7 +36,7 @@ from horizons.world.production.producer import Producer
 from horizons.world.component.storagecomponent import StorageComponent
 
 
-class Farm(SelectableBuilding, CollectingBuilding, BuildableSingle, BasicBuilding):
+class Farm(CollectingBuilding, BuildableSingle, BasicBuilding):
 	max_fields_possible = 8 # only for utilisation calculation
 	tabs = (FarmProductionOverviewTab,)
 
@@ -57,35 +57,35 @@ class Farm(SelectableBuilding, CollectingBuilding, BuildableSingle, BasicBuildin
 		result = max(result, 0.0)
 		return result
 
-class Lumberjack(SelectableBuilding, CollectingBuilding, BuildableSingle, BasicBuilding):
+class Lumberjack(CollectingBuilding, BuildableSingle, BasicBuilding):
 	pass
 
-class Refiner(SelectableBuilding, CollectingBuilding, BuildableSingle, BasicBuilding):
+class Refiner(CollectingBuilding, BuildableSingle, BasicBuilding):
 	pass
 
-class Hunter(SelectableBuilding, CollectingBuilding, BuildableSingle, BasicBuilding):
+class Hunter(CollectingBuilding, BuildableSingle, BasicBuilding):
 	pass
 
-class IronRefiner(SelectableBuilding, CollectingBuilding, BuildableSingle, BasicBuilding):
+class IronRefiner(CollectingBuilding, BuildableSingle, BasicBuilding):
 	pass
 
-class Smeltery(SelectableBuilding, CollectingBuilding, BuildableSingle, BasicBuilding):
+class Smeltery(CollectingBuilding, BuildableSingle, BasicBuilding):
 	pass
 
-class CharcoalBurning(SelectableBuilding, CollectingBuilding, BuildableSingle, BasicBuilding):
+class CharcoalBurning(CollectingBuilding, BuildableSingle, BasicBuilding):
 	pass
 
-class SaltPond(SelectableBuilding, CollectingBuilding, BuildableSingleOnCoast, BasicBuilding):
+class SaltPond(CollectingBuilding, BuildableSingleOnCoast, BasicBuilding):
 	pass
 
-class CannonBuilder(SelectableBuilding, CollectingBuilding, BuildableSingle, BasicBuilding):
+class CannonBuilder(CollectingBuilding, BuildableSingle, BasicBuilding):
 	pass
 
-class Fisher(SelectableBuilding, CollectingBuilding, BuildableSingleOnCoast, BasicBuilding):
+class Fisher(CollectingBuilding, BuildableSingleOnCoast, BasicBuilding):
+
 	"""
 	Old selection workaround (only color fish) removed in b69c72aeef0174c42dec4039eed7b81f96f6dcaa.
 	"""
-	range_applies_only_on_island = False
 
 	def get_non_paused_utilisation(self):
 		total = 0
@@ -97,8 +97,8 @@ class Fisher(SelectableBuilding, CollectingBuilding, BuildableSingleOnCoast, Bas
 			total += state_history[PRODUCTION.STATES.producing.index]
 		return total / float(len(productions))
 
-class SettlerServiceProvider(SelectableBuilding, CollectingBuilding, BuildableSingle, BasicBuilding):
-	"""Class for Pavilion, School, etc. that provide a service-type res for inhabitants.
+class SettlerServiceProvider(CollectingBuilding, BuildableSingle, BasicBuilding):
+	"""Class for Pavilion, School that provide a service-type res for settlers.
 	Also provides collectors for buildings that consume resources (tavern)."""
 	def get_status_icons(self):
 		banned_classes = (InventoryFullStatus, ProductivityLowStatus)
@@ -106,7 +106,7 @@ class SettlerServiceProvider(SelectableBuilding, CollectingBuilding, BuildableSi
 		return [ i for i in super(SettlerServiceProvider, self).get_status_icons() if \
 		         not i.__class__ in banned_classes ]
 
-class Mine(SelectableBuilding, BuildingResourceHandler, BuildableSingleOnDeposit, BasicBuilding):
+class Mine(BuildingResourceHandler, BuildableSingleOnDeposit, BasicBuilding):
 	def __init__(self, inventory, deposit_class, *args, **kwargs):
 		"""
 		@param inventory: inventory dump of deposit (collected by get_prebuild_data())
@@ -194,3 +194,4 @@ class Mine(SelectableBuilding, BuildingResourceHandler, BuildableSingleOnDeposit
 			# we can't check for this before changing activity, because the state is paused
 			# before. Therefore we have to react here and disable the mine again.
 			self.set_active(production, active=False)
+

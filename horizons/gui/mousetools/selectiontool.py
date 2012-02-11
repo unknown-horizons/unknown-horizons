@@ -26,6 +26,7 @@ from horizons.command.unit import Act
 from horizons.util import WorldObject
 from horizons.util.worldobject import WorldObjectNotFound
 from horizons.gui.mousetools.navigationtool import NavigationTool
+from horizons.world.component.selectablecomponent import SelectableComponent
 from horizons.constants import LAYERS
 
 class SelectionTool(NavigationTool):
@@ -40,7 +41,7 @@ class SelectionTool(NavigationTool):
 		# Deselect if needed while exiting
 		if self.deselect_at_end:
 			for i in self.session.selected_instances:
-				i.deselect()
+				i.get_component(SelectableComponent).deselect()
 		super(SelectionTool, self).remove()
 
 	def mouseDragged(self, evt):
@@ -81,7 +82,7 @@ class SelectionTool(NavigationTool):
 					i_id = instances[0].getId()
 					if i_id != '':
 						instance = WorldObject.get_object_by_id(int(i_id))
-						if instance.is_selectable:
+						if instance.has_component(SelectableComponent):
 							selectable.append(instance)
 				except WorldObjectNotFound:
 					pass
@@ -92,7 +93,7 @@ class SelectionTool(NavigationTool):
 						if i_id == '':
 							continue
 						instance = WorldObject.get_object_by_id(int(i_id))
-						if instance.is_selectable and instance.owner == self.session.world.player:
+						if instance.has_component(SelectableComponent) and instance.owner == self.session.world.player:
 							selectable.append(instance)
 					except WorldObjectNotFound:
 						pass
@@ -110,9 +111,9 @@ class SelectionTool(NavigationTool):
 			else:
 				selectable = set(self.select_old ^ frozenset(selectable))
 			for instance in self.session.selected_instances - selectable:
-				instance.deselect()
+				instance.get_component(SelectableComponent).deselect()
 			for instance in selectable - self.session.selected_instances:
-				instance.select()
+				instance.get_component(SelectableComponent).select()
 			self.session.selected_instances = selectable
 		elif (evt.getButton() == fife.MouseEvent.RIGHT):
 			pass
@@ -170,16 +171,16 @@ class SelectionTool(NavigationTool):
 			selectable = []
 			instances = self.get_hover_instances(evt)
 			for instance in instances:
-				if instance.is_selectable:
+				if instance.has_component(SelectableComponent):
 					selectable.append(instance)
 			if len(selectable) > 1:
 				selectable = selectable[0:0]
 			self.select_old = frozenset(self.session.selected_instances) if evt.isControlPressed() else frozenset()
 			selectable = set(self.select_old ^ frozenset(selectable))
 			for instance in self.session.selected_instances - selectable:
-				instance.deselect()
+				instance.get_component(SelectableComponent).deselect()
 			for instance in selectable - self.session.selected_instances:
-				instance.select()
+				instance.get_component(SelectableComponent).select()
 			self.session.selected_instances = selectable
 			self.select_begin = (evt.getX(), evt.getY())
 			self.session.ingame_gui.hide_menu()

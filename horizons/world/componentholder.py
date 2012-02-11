@@ -26,6 +26,7 @@ from horizons.world.component.namedcomponent import NamedComponent, SettlementNa
 from horizons.world.component.tradepostcomponent import TradePostComponent
 from horizons.world.component.ambientsoundcomponent import AmbientSoundComponent
 from horizons.world.component.healthcomponent import HealthComponent
+from horizons.world.component.selectablecomponent import SelectableComponent
 from horizons.world.production.producer import Producer, QueueProducer, UnitProducer
 
 class ComponentHolder(object):
@@ -64,7 +65,8 @@ class ComponentHolder(object):
 	    "HealthComponent": HealthComponent,
 	    'ProducerComponent': Producer,
 	    'QueueProducerComponent': QueueProducer,
-	    'UnitProducerComponent': UnitProducer
+	    'UnitProducerComponent': UnitProducer,
+	    'SelectableComponent': SelectableComponent,
 	}
 
 

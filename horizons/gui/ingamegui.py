@@ -41,8 +41,8 @@ from horizons.constants import BUILDINGS, GUI
 from horizons.command.uioptions import RenameObject
 from horizons.command.misc import Chat
 from horizons.gui.tabs.tabinterface import TabInterface
-from horizons.world.component.namedcomponent import SettlementNameComponent
-from horizons.world.component.namedcomponent import NamedComponent
+from horizons.world.component.namedcomponent import SettlementNameComponent, NamedComponent
+from horizons.world.component.selectablecomponent import SelectableComponent
 
 class IngameGui(LivingObject):
 	"""Class handling all the ingame gui events.
@@ -283,7 +283,7 @@ class IngameGui(LivingObject):
 
 	def deselect_all(self):
 		for instance in self.session.selected_instances:
-			instance.deselect()
+			instance.get_component(SelectableComponent).deselect()
 		self.session.selected_instances.clear()
 
 	def _build(self, building_id, unit = None):

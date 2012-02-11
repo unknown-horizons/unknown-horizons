@@ -24,6 +24,7 @@ import horizons.main
 
 from horizons.util.living import LivingObject
 from horizons.gui.keylisteners import KeyConfig
+from horizons.world.component.selectablecomponent import SelectableComponent
 
 class IngameKeyListener(fife.IKeyListener, LivingObject):
 	"""KeyListener Class to process key presses ingame"""
@@ -164,9 +165,9 @@ class IngameKeyListener(fife.IKeyListener, LivingObject):
 						group -= self.session.selection_groups[num]
 			else:
 				for instance in self.session.selected_instances - self.session.selection_groups[num]:
-					instance.deselect()
+					instance.get_component(SelectableComponent).deselect()
 				for instance in self.session.selection_groups[num] - self.session.selected_instances:
-					instance.select(reset_cam=True)
+					instance.get_component(SelectableComponent).select(reset_cam=True)
 				self.session.selected_instances = self.session.selection_groups[num]
 		elif action == _Actions.QUICKSAVE:
 			self.session.quicksave()

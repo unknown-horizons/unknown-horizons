@@ -20,15 +20,13 @@
 # ###################################################
 
 
-from building import BasicBuilding, SelectableBuilding
+from building import BasicBuilding
 from buildable import BuildableSingleOnOcean
-from horizons.gui.tabs import BoatbuilderTab, BoatbuilderFisherTab, BoatbuilderTradeTab, \
-			     BoatbuilderWar1Tab
 from horizons.world.building.buildingresourcehandler import BuildingResourceHandler
 from collectingbuilding import CollectingBuilding
 from horizons.world.component.storagecomponent import StorageComponent
 
-class BoatBuilder(SelectableBuilding, CollectingBuilding, BuildableSingleOnOcean, BasicBuilding):
+class BoatBuilder(CollectingBuilding, BuildableSingleOnOcean, BasicBuilding):
 
 	def __init__(self, **kwargs):
 		super(BoatBuilder, self).__init__(**kwargs)

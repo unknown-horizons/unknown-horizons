@@ -26,8 +26,6 @@ from horizons.world.building.buildingresourcehandler import BuildingResourceHand
 from horizons.entities import Entities
 from horizons.scheduler import Scheduler
 from horizons.constants import LAYERS, BUILDINGS
-from horizons.gui.tabs import ResourceDepositOverviewTab
-from horizons.world.building.building import SelectableBuilding
 from horizons.world.component.storagecomponent import StorageComponent
 from horizons.world.production.producer import Producer
 
@@ -105,7 +103,7 @@ class Tree(NatureBuildingResourceHandler):
 		if start_finished:
 			self.get_component(Producer).finish_production_now()
 
-class ResourceDeposit(SelectableBuilding, NatureBuilding):
+class ResourceDeposit(NatureBuilding):
 	"""Class for stuff like clay deposits."""
 	tearable = False
 	layer = LAYERS.OBJECTS

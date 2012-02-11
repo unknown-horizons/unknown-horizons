@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 # ###################################################
 # Copyright (C) 2012 The Unknown Horizons Team
 # team@unknown-horizons.org
@@ -24,30 +23,51 @@ from fife import fife
 
 import horizons.main
 
-from horizons.constants import GFX
-from horizons.constants import LAYERS
+from horizons.world.component import Component
 from horizons.util import decorators
+from horizons.constants import GFX, LAYERS
 
-class SelectableBuilding(object):
-	range_applies_only_on_island = True
+class SelectableComponent(Component):
+	"""Stuff you can select"""
+
+	NAME = "selectablecomponent"
+
+	@classmethod
+	def get_instance(cls, arguments):
+		# this can't be class variable because the classes aren't defined when
+		# it would be parsed
+		TYPES = { 'building' : SelectableBuildingComponent,
+		          'unit'     : SelectableUnitComponent,
+		          'ship'     : SelectableShipComponent }
+		t = arguments.pop('type')
+		return TYPES[ t ]( arguments )
+
+class SelectableBuildingComponent(SelectableComponent):
+
 	selection_color = (255, 255, 0)
+
+	# these smell like instance attributes, but sometimes have to be used in non-instance
+	# contexts (e.g. building tool).
 	_selected_tiles = [] # tiles that are selected. used for clean deselect.
 	_selected_fake_tiles = []
-	is_selectable = True
+
+	def __init__(self, range_applies_only_on_island=True):
+		super(SelectableComponent, self).__init__()
+		self.range_applies_only_on_island = range_applies_only_on_island
 
 	def select(self, reset_cam=False):
 		"""Runs necessary steps to select the building."""
 		self.set_selection_outline()
 		if reset_cam:
-			self.session.view.center(*self.position.origin.to_tuple())
-		renderer = self.session.view.renderer['InstanceRenderer']
-		self._do_select(renderer, self.position, self.session.world, self.settlement)
+			self.instance.session.view.center(*self.position.origin.to_tuple())
+		renderer = self.instance.session.view.renderer['InstanceRenderer']
+		self._do_select(renderer, self.position, self.instance.session.world, self.settlement)
 		self._is_selected = True
 
 	def set_selection_outline(self):
 		"""Only set the selection outline.
 		Useful when it has been removed by some kind of interference"""
-		renderer = self.session.view.renderer['InstanceRenderer']
+		renderer = self.instance.session.view.renderer['InstanceRenderer']
 		renderer.addOutlined(self._instance, self.selection_color[0], self.selection_color[1],
 		                     self.selection_color[2], GFX.BUILDING_OUTLINE_WIDTH,
 		                     GFX.BUILDING_OUTLINE_THRESHOLD)
@@ -58,20 +78,20 @@ class SelectableBuilding(object):
 		if not hasattr(self, "_is_selected") or not self._is_selected:
 			return # only deselect selected buildings (simplifies other code)
 		self._is_selected = False
-		renderer = self.session.view.renderer['InstanceRenderer']
+		renderer = self.instance.session.view.renderer['InstanceRenderer']
 		renderer.removeOutlined(self._instance)
 		renderer.removeAllColored()
 		for fake_tile in self.__class__._selected_fake_tiles:
-			self.session.view.layers[LAYERS.FIELDS].deleteInstance(fake_tile)
+			self.instance.session.view.layers[LAYERS.FIELDS].deleteInstance(fake_tile)
 		self.__class__._selected_fake_tiles = []
 
 	def remove(self):
-		super(SelectableBuilding, self).remove()
 		#TODO move this as a listener
-		if self in self.session.selected_instances:
-			self.session.selected_instances.remove(self)
-		if self.owner == self.session.world.player:
+		if self in self.instance.session.selected_instances:
+			self.instance.session.selected_instances.remove(self)
+		if self.owner == self.instance.session.world.player:
 			self.deselect()
+		super(SelectableBuildingComponent, self).remove()
 
 	@classmethod
 	def select_building(cls, session, position, settlement):
@@ -167,4 +187,44 @@ class SelectableBuilding(object):
 		renderer.addColored(tile.object._instance, *cls.selection_color)
 
 
-decorators.bind_all(SelectableBuilding)
+class SelectableUnitComponent(SelectableComponent):
+
+	def select(self, reset_cam=False):
+		"""Runs necessary steps to select the unit."""
+		self.instance.session.view.renderer['InstanceRenderer'].addOutlined(self._instance, 255, 255, 255, GFX.UNIT_OUTLINE_WIDTH, GFX.UNIT_OUTLINE_THRESHOLD)
+		self.instance.draw_health()
+
+	def deselect(self):
+		"""Runs necessary steps to deselect the unit."""
+		self.instance.session.view.renderer['InstanceRenderer'].removeOutlined(self._instance)
+		self.instance.session.view.renderer['GenericRenderer'].removeAll("health_" + str(self.worldid))
+		# this is necessary to make deselect idempotent
+		if self.instance.session.view.has_change_listener(self.instance.draw_health):
+			self.instance.session.view.remove_change_listener(self.instance.draw_health)
+
+
+class SelectableShipComponent(SelectableUnitComponent):
+
+	def select(self, reset_cam=False):
+		"""Runs necessary steps to select the ship."""
+		self.instance._selected = True
+		super(SelectableShipComponent, self).select(reset_cam=reset_cam)
+
+		# add a buoy at the ship's target if the player owns the ship
+		if self.instance.session.world.player == self.owner:
+			self.instance._update_buoy()
+
+		if self.owner is self.instance.session.world.player:
+			self.instance.session.ingame_gui.minimap.show_unit_path(self)
+
+	def deselect(self):
+		"""Runs necessary steps to deselect the ship."""
+		self.instance._selected = False
+		super(SelectableShipComponent, self).deselect()
+		self.instance.session.view.renderer['GenericRenderer'].removeAll("buoy_" + str(self.worldid))
+
+
+
+decorators.bind_all(SelectableBuildingComponent)
+decorators.bind_all(SelectableShipComponent)
+decorators.bind_all(SelectableUnitComponent)

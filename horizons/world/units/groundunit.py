@@ -27,9 +27,9 @@ from horizons.world.pathfinding import PathBlockedError
 from horizons.world.units.movingobject import MoveNotPossible
 from horizons.util import Point, Circle
 from unit import Unit
-from horizons.constants import GAME_SPEED, WEAPONS, GFX
+from horizons.constants import GAME_SPEED, WEAPONS
 from horizons.world.units.weaponholder import MovingWeaponHolder
-from horizons.gui.tabs import GroundUnitOverviewTab, EnemyShipOverviewTab
+from horizons.world.component.selectablecomponent import SelectableComponent
 
 class GroundUnit(Unit):
 	"""Class representing ground unit
@@ -44,7 +44,6 @@ class GroundUnit(Unit):
 	# self.enemy_tabs = (EnemyShipOverviewTab,)
 	pather_class = SoldierPather
 	health_bar_y = -70
-	is_selectable = True
 
 	def __init__(self, x, y, **kwargs):
 		super(GroundUnit, self).__init__(x=x, y=y, **kwargs)
@@ -53,7 +52,7 @@ class GroundUnit(Unit):
 
 	def remove(self):
 		if self in self.session.selected_instances:
-			self.deselect()
+			self.get_component(SelectableComponent).deselect()
 			self.session.selected_instances.remove(self)
 		super(GroundUnit, self).remove()
 		self.session.world.ground_units.remove(self)
@@ -74,22 +73,6 @@ class GroundUnit(Unit):
 
 		self.session.world.ground_unit_map[self.position.to_tuple()] = weakref.ref(self)
 		self.session.world.ground_unit_map[self._next_target.to_tuple()] = weakref.ref(self)
-
-	def select(self, reset_cam=False):
-		"""Runs necessary steps to select the unit."""
-		self.session.view.renderer['InstanceRenderer'].addOutlined(self._instance, 255, 255, 255, GFX.UNIT_OUTLINE_WIDTH, GFX.UNIT_OUTLINE_THRESHOLD)
-		self.draw_health()
-		if reset_cam:
-			self.session.view.center(*self.position.to_tuple())
-		self.session.view.add_change_listener(self.draw_health)
-
-	def deselect(self):
-		"""Runs necessary steps to deselect the unit."""
-		self.session.view.renderer['InstanceRenderer'].removeOutlined(self._instance)
-		self.session.view.renderer['GenericRenderer'].removeAll("health_" + str(self.worldid))
-		# this is necessary to make deselect idempotent
-		if self.session.view.has_change_listener(self.draw_health):
-			self.session.view.remove_change_listener(self.draw_health)
 
 	def go(self, x, y):
 		"""Moves the unit.

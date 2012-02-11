@@ -21,14 +21,14 @@
 
 from horizons.world.resourcehandler import StorageResourceHandler
 from horizons.world.building.collectingbuilding import CollectingBuilding
-from building import BasicBuilding, SelectableBuilding
+from building import BasicBuilding
 from buildable import BuildableSingle, BuildableSingleFromShip
 from horizons.world.component.storagecomponent import StorageComponent
 from horizons.world.building.production import SettlerServiceProvider
 from horizons.world.building.path import Path
 from horizons.world.status import InventoryFullStatus
 
-class StorageBuilding(SelectableBuilding, StorageResourceHandler, \
+class StorageBuilding(StorageResourceHandler, \
                       CollectingBuilding, BasicBuilding):
 	"""Building that gets pickups and provides them for anyone.
 	Inherited eg. by warehouse, storage tent.

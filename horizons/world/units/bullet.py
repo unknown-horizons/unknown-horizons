@@ -25,12 +25,13 @@ from fife import fife
 from horizons.constants import LAYERS
 from horizons.scheduler import Scheduler
 from horizons.util import WorldObject
+from horizons.world.componentholder import ComponentHolder
 
-class Bullet(WorldObject):
+class Bullet(ComponentHolder, WorldObject):
 	"""
-	Class for Bullet animation
+	Class for Bullet animation.
+	Has no components, but has_components is used by some code.
 	"""
-	is_selectable = False
 	_object = None
 	owner = None
 

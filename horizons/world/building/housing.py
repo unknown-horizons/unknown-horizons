@@ -19,11 +19,10 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-from horizons.gui.tabs import SignalFireOverviewTab
-from horizons.world.building.building import BasicBuilding, SelectableBuilding
+from horizons.world.building.building import BasicBuilding
 from horizons.world.building.buildable import BuildableSingle
 
-class Housing(SelectableBuilding, BasicBuilding, BuildableSingle):
+class Housing(BasicBuilding, BuildableSingle):
 
 	def save(self, db):
 		super(Housing, self).save(db)

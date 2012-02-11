@@ -29,6 +29,7 @@ import horizons.main
 from horizons.entities import Entities
 from horizons.util import ActionSetLoader, Point, decorators
 from horizons.command.building import Build
+from horizons.world.component.selectablecomponent import SelectableBuildingComponent, SelectableComponent
 from horizons.gui.mousetools.navigationtool import NavigationTool
 from horizons.command.sounds import PlaySound
 from horizons.util.gui import load_uh_widget
@@ -98,7 +99,7 @@ class BuildingTool(NavigationTool):
 			if settlement.owner == self.session.world.player:
 				for bid in related:
 					for building in settlement.get_buildings_by_id(bid):
-						building.select()
+						building.get_component(SelectableBuildingComponent).select()
 						self._related_buildings.append(building)
 
 	def _color_buildable_tile(self, tile):
@@ -243,8 +244,8 @@ class BuildingTool(NavigationTool):
 				                          self.buildable_color[0], self.buildable_color[1],\
 				                          self.buildable_color[2], GFX.BUILDING_OUTLINE_WIDTH,
 				                          GFX.BUILDING_OUTLINE_THRESHOLD)
-				if hasattr(self._class, "select_building"):
-					self._class.select_building(self.session, building.position, settlement)
+				if self._class.class_has_component(SelectableComponent):
+					SelectableBuildingComponent.select_building(self.session, building.position, settlement)
 			else: # not buildable
 				# must remove other highlight, fife does not support both
 				self.renderer.removeOutlined(self.buildings_fife_instances[building])
@@ -495,8 +496,8 @@ class BuildingTool(NavigationTool):
 
 	def _remove_building_instances(self):
 		"""Deletes fife instances of buildings"""
-		if hasattr(self._class, "deselect_building"):
-			deselected_tiles = self._class.deselect_building(self.session)
+		if self._class.class_has_component(SelectableComponent):
+			deselected_tiles = SelectableBuildingComponent.deselect_building(self.session)
 			# redraw buildables (removal of selection might have tampered with it)
 			self.highlight_buildable(deselected_tiles)
 		for inst_weakref in self._modified_instances:
@@ -519,7 +520,7 @@ class BuildingTool(NavigationTool):
 	def _remove_coloring(self):
 		"""Removes coloring from tiles, that indicate that the tile is buildable"""
 		for building in self._related_buildings:
-			building.deselect()
+			building.get_component(SelectableComponent).deselect()
 		self.renderer.removeAllOutlines()
 		self.renderer.removeAllColored()
 
@@ -555,7 +556,7 @@ class ShipBuildingToolLogic(object):
 
 	def on_escape(self, session):
 		session.selected_instances = set([self.ship])
-		self.ship.select()
+		self.ship.get_component(SelectableComponent).select()
 		self.ship.show_menu()
 
 	def add_change_listener(self, instance, building_tool):

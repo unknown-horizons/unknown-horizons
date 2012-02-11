@@ -30,6 +30,7 @@ from horizons.command.unit import CreateUnit
 from horizons.world.units.ship import PirateShip, TradeShip
 from horizons.world.units.movingobject import MoveNotPossible
 from horizons.world.component.namedcomponent import NamedComponent
+from horizons.world.component.selectablecomponent import SelectableComponent
 
 
 class Pirate(GenericAI):
@@ -65,7 +66,7 @@ class Pirate(GenericAI):
 		lowest_distance = None
 		nearest_ship = None
 		for ship in base_ship.find_nearby_ships():
-			if isinstance(ship, (PirateShip, TradeShip)) or not ship.is_selectable:
+			if isinstance(ship, (PirateShip, TradeShip)) or not ship.has_component(SelectableComponent):
 				continue # don't attack these ships
 			distance = base_ship.position.distance_to_point(ship.position)
 			if lowest_distance is None or distance < lowest_distance:

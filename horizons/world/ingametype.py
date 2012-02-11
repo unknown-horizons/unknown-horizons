@@ -67,8 +67,8 @@ class IngameType(type):
 		self.action_sets = yaml_data['actionsets']
 		self.action_sets_by_level = self.action_sets_by_level(self.action_sets)
 		self._real_object = None # wrapped by _object
-		self.is_selectable = 'tabs' in yaml_data
-		if self.is_selectable:
+		# TODO: move to selectable component
+		if 'tabs' in yaml_data:
 			# set tabs
 			resolve_tab = lambda tab_class_name : getattr(tabs, tab_class_name)
 			self.tabs = map(resolve_tab, yaml_data['tabs'])

@@ -20,21 +20,20 @@
 # ###################################################
 
 import weakref
-import copy
 from fife import fife
 
 import horizons.main
 
-from horizons.gui.tabs import TraderShipOverviewTab, EnemyShipOverviewTab, ShipOverviewTab
 from horizons.world.pathfinding.pather import ShipPather, FisherShipPather
 from horizons.world.pathfinding import PathBlockedError
 from horizons.world.units.movingobject import MoveNotPossible
 from horizons.util import Point, Circle
 from horizons.world.units.collectors import FisherShipCollector
 from unit import Unit
-from horizons.constants import LAYERS, GFX
+from horizons.constants import LAYERS
 from horizons.scheduler import Scheduler
 from horizons.world.component.namedcomponent import ShipNameComponent, NamedComponent
+from horizons.world.component.selectablecomponent import SelectableComponent
 from horizons.world.traderoute import TradeRoute
 
 class Ship(Unit):
@@ -45,7 +44,6 @@ class Ship(Unit):
 	pather_class = ShipPather
 	health_bar_y = -150
 	is_ship = True
-	is_selectable = True
 
 	has_health = True
 
@@ -90,6 +88,7 @@ class Ship(Unit):
 			self.in_ship_map = False
 		if self._selected:
 			self.deselect()
+			self.get_component(SelectableComponent).deselect()
 			if self in self.session.selected_instances:
 				self.session.selected_instances.remove(self)
 		super(Ship, self).remove()
@@ -115,32 +114,6 @@ class Ship(Unit):
 			# save current and next position for ship, since it will be between them
 			self.session.world.ship_map[self.position.to_tuple()] = weakref.ref(self)
 			self.session.world.ship_map[self._next_target.to_tuple()] = weakref.ref(self)
-
-	def select(self, reset_cam=False):
-		"""Runs necessary steps to select the unit."""
-		self._selected = True
-		self.session.view.renderer['InstanceRenderer'].addOutlined(self._instance, 255, 255, 255, GFX.SHIP_OUTLINE_WIDTH, GFX.SHIP_OUTLINE_THRESHOLD)
-		# add a buoy at the ship's target if the player owns the ship
-		if self.session.world.player == self.owner:
-			self._update_buoy()
-
-		self.draw_health()
-		if reset_cam:
-			self.session.view.center(*self.position.to_tuple())
-		self.session.view.add_change_listener(self.draw_health)
-
-		if self.owner is self.session.world.player:
-			self.session.ingame_gui.minimap.show_unit_path(self)
-
-	def deselect(self):
-		"""Runs necessary steps to deselect the unit."""
-		self._selected = False
-		self.session.view.renderer['InstanceRenderer'].removeOutlined(self._instance)
-		self.session.view.renderer['GenericRenderer'].removeAll("health_" + str(self.worldid))
-		self.session.view.renderer['GenericRenderer'].removeAll("buoy_" + str(self.worldid))
-		# this is necessary to make deselect idempotent
-		if self.session.view.has_change_listener(self.draw_health):
-			self.session.view.remove_change_listener(self.draw_health)
 
 	def go(self, x, y):
 		"""Moves the ship.
@@ -267,7 +240,6 @@ class FisherShip(FisherShipCollector, Ship):
 	"""Represents a fisher ship."""
 	pather_class = FisherShipPather
 	health_bar_y = -50
-	is_selectable = False
 
 	has_health = False
 

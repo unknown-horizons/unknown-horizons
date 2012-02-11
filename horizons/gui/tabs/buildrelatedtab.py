@@ -112,7 +112,7 @@ class BuildRelatedTab(OverviewTab):
 
 		# deselect all
 		for instance in self.instance.session.selected_instances:
-			instance.deselect()
+			instance.get_component(SelectableComponent).deselect()
 		self.instance.session.selected_instances.clear()
 
 		self.instance.session.set_cursor('building', Entities.buildings[building_id], \
