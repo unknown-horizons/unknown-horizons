@@ -3,6 +3,8 @@ id: 1000020
 name: Frigate
 radius: 5
 velocity: 12.0
+tabs: [FightingShipOverviewTab,]
+enemy_tabs: [EnemyShipOverviewTab,]
 components:
 - AmbientSoundComponent
 - StorageComponent:

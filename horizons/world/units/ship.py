@@ -43,8 +43,6 @@ class Ship(Unit):
 	@param y: int y position
 	"""
 	pather_class = ShipPather
-	tabs = (ShipOverviewTab, )
-	enemy_tabs = (EnemyShipOverviewTab, )
 	health_bar_y = -150
 	is_ship = True
 	is_selectable = True
@@ -252,12 +250,10 @@ class Ship(Unit):
 
 class PirateShip(Ship):
 	"""Represents a pirate ship."""
-	tabs = ()
+	pass
 
 class TradeShip(Ship):
 	"""Represents a trade ship."""
-	tabs = ()
-	enemy_tabs = (TraderShipOverviewTab, )
 	health_bar_y = -220
 	has_health = False
 
@@ -269,7 +265,6 @@ class TradeShip(Ship):
 
 class FisherShip(FisherShipCollector, Ship):
 	"""Represents a fisher ship."""
-	tabs = ()
 	pather_class = FisherShipPather
 	health_bar_y = -50
 	is_selectable = False

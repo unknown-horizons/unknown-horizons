@@ -36,9 +36,13 @@ class GroundUnit(Unit):
 	@param x: int x position
 	@param y: int y position
 	"""
+
+
+	# TODO:
+	# set these tabs in yaml as soon as there are ground units
+	# self.tabs = (GroundUnitOverviewTab,)
+	# self.enemy_tabs = (EnemyShipOverviewTab,)
 	pather_class = SoldierPather
-	tabs = (GroundUnitOverviewTab,)
-	enemy_tabs = (EnemyShipOverviewTab,)
 	health_bar_y = -70
 	is_selectable = True
 
@@ -56,6 +60,7 @@ class GroundUnit(Unit):
 		if self.session.view.has_change_listener(self.draw_health):
 			self.session.view.remove_change_listener(self.draw_health)
 		del self.session.world.ground_unit_map[self.position.to_tuple()]
+
 
 	def _move_tick(self, resume = False):
 		del self.session.world.ground_unit_map[self.position.to_tuple()]

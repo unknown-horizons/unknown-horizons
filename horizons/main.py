@@ -85,8 +85,11 @@ def start(command_line_arguments):
 			print "Error: Invalid syntax in --mp-master commandline option. Port must be a number between 1 and 65535."
 			return False
 
-	if command_line_arguments.generate_minimap:
-		generate_minimap( command_line_arguments.generate_minimap )
+	if command_line_arguments.generate_minimap: # we've been called as subprocess to generate a map preview
+		from horizons.gui.modules.singleplayermenu import MapPreview
+		MapPreview.generate_minimap( * json.loads(
+		  command_line_arguments.generate_minimap
+		  ) )
 		sys.exit(0)
 
 
@@ -557,13 +560,3 @@ def preload_game_join(preloading):
 			preloading[1].release()
 		except thread.error:
 			pass # due to timing issues, the lock might be released already
-
-
-def generate_minimap(arg):
-	global db
-	"""Standalong minimap generation tool."""
-	db = _create_main_db()
-	from horizons.entities import Entities
-	Entities.load_grounds(db, load_now=False) # create all references
-	from horizons.gui.modules import SingleplayerMenu
-	SingleplayerMenu.generate_minimap( * json.loads( arg ) )

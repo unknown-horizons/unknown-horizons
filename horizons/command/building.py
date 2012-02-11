@@ -113,9 +113,11 @@ class Build(Command):
 		  action_set_id=self.action_set_id, \
 		  **self.data
 		)
-		island.add_building(building, issuer)
-
 		building.initialize(**self.data)
+		# initialize must be called immediately after the construction
+		# the building is not usable before this call
+
+		island.add_building(building, issuer)
 
 
 		if self.settlement is not None:
@@ -191,8 +193,9 @@ class Tear(Command):
 		@param issuer: the issuer of the command
 		"""
 		building = WorldObject.get_object_by_id(self.building)
-		if building is None or not building.fife_instance:
+		if building is None or building.fife_instance is None:
 			self.log.warning("Tear: attempting to tear down a building that shouldn't exist %s", building)
+			print "Tear: attempting to tear down a building that shouldn't exist %s" % building
 		else:
 			self.log.debug("Tear: tearing down %s", building)
 			building.remove()

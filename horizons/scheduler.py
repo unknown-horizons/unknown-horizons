@@ -71,11 +71,12 @@ class Scheduler(LivingObject):
 		@param tick_id: int id of the tick.
 		"""
 		assert tick_id == self.cur_tick + 1
+		self.cur_tick = tick_id
+
 		if GAME.MAX_TICKS is not None and tick_id >= GAME.MAX_TICKS:
 			horizons.main.quit()
 			return
 
-		self.cur_tick = tick_id
 		if self.cur_tick in self.schedule:
 			self.log.debug("Scheduler: tick %s, cbs: %s", self.cur_tick, len(self.schedule[self.cur_tick]))
 

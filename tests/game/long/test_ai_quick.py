@@ -22,6 +22,9 @@
 from functools import partial
 from horizons.util.random_map import generate_map_from_seed
 from tests.game import game_test
+from horizons.command.building import Tear
+from horizons.constants import BUILDINGS
+from horizons.util.worldobject import WorldObject, WorldObjectNotFound
 
 
 def test_ai_quick():
@@ -38,6 +41,29 @@ def run_ai_quick(seed):
 		"""
 		session.run(seconds = 4 * 60)
 		assert session.world.settlements
+
+		# simple test for luck: storages are known to easily break on remove:
+		for settlement in session.world.settlements:
+			for stor in settlement.get_buildings_by_id(BUILDINGS.STORAGE_CLASS):
+				wid = stor.worldid
+				Tear(stor)(stor.owner)
+				try:
+					WorldObject.get_object_by_id(wid)
+				except WorldObjectNotFound:
+					pass
+				else:
+					assert False
+
+			session.run(seconds = 4)
+
+		# for the heck of it, tear the rest as well
+		for settlement in session.world.settlements:
+			for building in settlement.buildings[:]:
+				if building.id != BUILDINGS.WAREHOUSE_CLASS:
+					Tear(building)(building.owner)
+			assert len(settlement.buildings) == 1
+
+		session.run(seconds = 60)
 
 	test()
 

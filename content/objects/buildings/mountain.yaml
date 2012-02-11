@@ -8,6 +8,8 @@ size_x: 5
 size_y: 5
 inhabitants_start: 0
 inhabitants_max: 0
+tabs: [ResourceDepositOverviewTab,]
+enemy_tabs: [ResourceDepositOverviewTab,]
 button_name: null
 tooltip_text: null
 settler_level: 0

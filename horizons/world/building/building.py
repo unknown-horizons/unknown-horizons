@@ -49,8 +49,6 @@ class BasicBuilding(ComponentHolder, ConcreteObject):
 	tearable = True
 	show_buildingtool_preview_tab = True # whether to show the tab of the building. not shown for
 																			# e.g. paths. the tab hides a part of the map.
-	tabs = ()
-	enemy_tabs = (EnemyBuildingOverviewTab, )
 	layer = LAYERS.OBJECTS
 
 	log = logging.getLogger("world.building")
@@ -109,7 +107,6 @@ class BasicBuilding(ComponentHolder, ConcreteObject):
 				play_every = 15 + random.randint(0, 15)
 				for soundfile in self.get_component(AmbientSoundComponent).soundfiles:
 					self.get_component(AmbientSoundComponent).play_ambient(soundfile, True, play_every)
-
 
 	def toggle_costs(self):
 		self.running_costs , self.running_costs_inactive = \

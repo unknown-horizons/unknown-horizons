@@ -31,6 +31,7 @@ from horizons.world.componentholder import ComponentHolder
 from horizons.world.component.namedcomponent import SettlementNameComponent
 from horizons.world.component.storagecomponent import StorageComponent
 from horizons.world.component.tradepostcomponent import TradePostComponent
+from horizons.world.production.producer import Producer
 from horizons.world.storage import PositiveSizedSlotStorage
 
 class Settlement(ComponentHolder, WorldObject, ChangeListener):
@@ -218,8 +219,8 @@ class Settlement(ComponentHolder, WorldObject, ChangeListener):
 			self.buildings_by_id[building.id].append(building)
 		else:
 			self.buildings_by_id[building.id] = [building]
-		if hasattr(building, "add_building_production_finished_listener"):
-			building.add_building_production_finished_listener(self.settlement_building_production_finished)
+		if building.has_component(Producer):
+			building.get_component(Producer).add_production_finished_listener(self.settlement_building_production_finished)
 		if hasattr(self.owner, 'add_building'):
 			# notify interested players of added building
 			self.owner.add_building(building)
@@ -228,8 +229,8 @@ class Settlement(ComponentHolder, WorldObject, ChangeListener):
 		"""Properly removes a building from the settlement"""
 		self.buildings.remove(building)
 		self.buildings_by_id[building.id].remove(building)
-		if hasattr(building, "remove_building_production_finished_listener"):
-			building.remove_building_production_finished_listener(self.settlement_building_production_finished)
+		if building.has_component(Producer):
+			building.get_component(Producer).remove_production_finished_listener(self.settlement_building_production_finished)
 		if hasattr(self.owner, 'remove_building'):
 			# notify interested players of removed building
 			self.owner.remove_building(building)

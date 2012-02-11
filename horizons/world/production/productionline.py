@@ -23,7 +23,7 @@
 import horizons.main
 
 class ProductionLine(object):
-	"""Class that collects the production line data"""
+	"""Class that collects the production line data."""
 
 	def __init__(self, id, data={}):
 		"""Inits self from yaml data"""

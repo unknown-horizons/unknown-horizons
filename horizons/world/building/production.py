@@ -20,8 +20,8 @@
 # ###################################################
 
 
-from horizons.world.building.collectingproducerbuilding import CollectingProducerBuilding
-from horizons.world.building.buildingresourcehandler import ProducerBuilding
+from horizons.world.building.collectingbuilding import CollectingBuilding
+from horizons.world.building.buildingresourcehandler import BuildingResourceHandler
 from horizons.world.building.building import BasicBuilding, SelectableBuilding
 from horizons.world.building.buildable import BuildableSingle, BuildableSingleOnCoast, BuildableSingleOnDeposit
 from horizons.world.building.nature import Field
@@ -29,14 +29,14 @@ from horizons.util import Rect
 from horizons.util.shapes.radiusshape import RadiusRect
 from horizons.command.building import Build
 from horizons.scheduler import Scheduler
-from horizons.constants import BUILDINGS, PRODUCTION, RES
+from horizons.constants import BUILDINGS, PRODUCTION
 from horizons.gui.tabs import FarmProductionOverviewTab
 from horizons.world.status import InventoryFullStatus, ProductivityLowStatus
 from horizons.world.production.producer import Producer
 from horizons.world.component.storagecomponent import StorageComponent
 
 
-class Farm(SelectableBuilding, CollectingProducerBuilding, BuildableSingle, BasicBuilding):
+class Farm(SelectableBuilding, CollectingBuilding, BuildableSingle, BasicBuilding):
 	max_fields_possible = 8 # only for utilisation calculation
 	tabs = (FarmProductionOverviewTab,)
 
@@ -57,58 +57,29 @@ class Farm(SelectableBuilding, CollectingProducerBuilding, BuildableSingle, Basi
 		result = max(result, 0.0)
 		return result
 
-class Lumberjack(SelectableBuilding, CollectingProducerBuilding, BuildableSingle, BasicBuilding):
+class Lumberjack(SelectableBuilding, CollectingBuilding, BuildableSingle, BasicBuilding):
 	pass
 
-class Refiner(SelectableBuilding, CollectingProducerBuilding, BuildableSingle, BasicBuilding):
+class Refiner(SelectableBuilding, CollectingBuilding, BuildableSingle, BasicBuilding):
 	pass
 
 class PastryShop(Refiner):
 	tabs = (FarmProductionOverviewTab,)
 
-class Hunter(SelectableBuilding, CollectingProducerBuilding, BuildableSingle, BasicBuilding):
+class Hunter(SelectableBuilding, CollectingBuilding, BuildableSingle, BasicBuilding):
 	pass
 
-class IronRefiner(SelectableBuilding, CollectingProducerBuilding, BuildableSingle, BasicBuilding):
+class IronRefiner(SelectableBuilding, CollectingBuilding, BuildableSingle, BasicBuilding):
 	pass
 
-class SaltPond(SelectableBuilding, CollectingProducerBuilding, BuildableSingleOnCoast, BasicBuilding):
+class SaltPond(SelectableBuilding, CollectingBuilding, BuildableSingleOnCoast, BasicBuilding):
 	pass
 
-class CannonBuilder(SelectableBuilding, CollectingProducerBuilding, BuildableSingle, BasicBuilding):
+class CannonBuilder(SelectableBuilding, CollectingBuilding, BuildableSingle, BasicBuilding):
 	pass
 
-class Fisher(SelectableBuilding, CollectingProducerBuilding, BuildableSingleOnCoast, BasicBuilding):
-
-	@classmethod
-	def _do_select(cls, renderer, position, world, settlement):
-		# Don't call super here, because we don't want to highlight the island
-		# only fish deposits
-		for building in world.get_providers_in_range(RadiusRect(position, cls.radius), res=RES.FISH_ID):
-			renderer.addColored(building._instance, *cls.selection_color)
-			cls._selected_tiles.append(building)
-
-	def deselect(self):
-		# TODO: find out if deselect_building should be dropped in favor of deselect
-		# since the latter is faster, and the specific deselecting of the first doesn't
-		# seem to be needed anywhere
-		# if so, this can be removed
-		self.deselect_building(self.session)
-		renderer = self.session.view.renderer['InstanceRenderer']
-		renderer.removeOutlined(self._instance)
-
-	@classmethod
-	def deselect_building(cls, session):
-		"""@see select_building,
-		@return list of tiles that were deselected."""
-		remove_colored = session.view.renderer['InstanceRenderer'].removeColored
-		for tile in cls._selected_tiles:
-			remove_colored(tile._instance)
-		# this actually means SelectableBuilding._selected_tiles = []
-		# writing self._selected_tiles = [] however creates a new variable in this instance,
-		# which isn't what we want. Therefore this workaround:
-		while cls._selected_tiles:
-			cls._selected_tiles.pop()
+class Fisher(SelectableBuilding, CollectingBuilding, BuildableSingleOnCoast, BasicBuilding):
+	range_applies_only_on_island = False
 
 	def get_non_paused_utilisation(self):
 		total = 0
@@ -120,7 +91,7 @@ class Fisher(SelectableBuilding, CollectingProducerBuilding, BuildableSingleOnCo
 			total += state_history[PRODUCTION.STATES.producing.index]
 		return total / float(len(productions))
 
-class SettlerServiceProvider(SelectableBuilding, CollectingProducerBuilding, BuildableSingle, BasicBuilding):
+class SettlerServiceProvider(SelectableBuilding, CollectingBuilding, BuildableSingle, BasicBuilding):
 	"""Class for Churches, School that provide a service-type res for settlers.
 	Also provides collectors for buildings that consume resources (tavern)."""
 	def get_status_icons(self):
@@ -129,7 +100,7 @@ class SettlerServiceProvider(SelectableBuilding, CollectingProducerBuilding, Bui
 		return [ i for i in super(SettlerServiceProvider, self).get_status_icons() if \
 		         not i.__class__ in banned_classes ]
 
-class Mine(SelectableBuilding, ProducerBuilding, BuildableSingleOnDeposit, BasicBuilding):
+class Mine(SelectableBuilding, BuildingResourceHandler, BuildableSingleOnDeposit, BasicBuilding):
 	def __init__(self, inventory, deposit_class, *args, **kwargs):
 		"""
 		@param inventory: inventory dump of deposit (collected by get_prebuild_data())
@@ -217,40 +188,3 @@ class Mine(SelectableBuilding, ProducerBuilding, BuildableSingleOnDeposit, Basic
 			# we can't check for this before changing activity, because the state is paused
 			# before. Therefore we have to react here and disable the mine again.
 			self.set_active(production, active=False)
-
-""" AnimalFarm is not used for now (code may not work anymore)
-
-class AnimalFarm(SelectableBuilding, CollectingProducerBuilding, BuildableSingleWithSurrounding, BasicBuilding):
-	_surroundingBuildingClass = 18
-	"" This class builds pasturage in the radius automatically,
-	so that farm animals can graze there ""
-
-	def __init__(self, **kwargs):
-		super(AnimalFarm, self).__init__(**kwargs)
-
-	def create_collector(self):
-		self.animals = []
-
-		# NOTE: animals have to be created before the AnimalCollector
-		for (animal, number) in horizons.main.db("SELECT unit_id, count FROM animals \
-		                                    WHERE building_id = ?", self.id):
-			for i in xrange(0, number):
-				Entities.units[animal](self)
-
-		super(AnimalFarm, self).create_collector()
-
-	def save(self, db):
-		super(AnimalFarm, self).save(db)
-		for animal in self.animals:
-			animal.save(db)
-
-	def load(self, db, worldid):
-		super(AnimalFarm, self).load(db, worldid)
-		self.animals = []
-
-	def remove(self):
-		while len(self.animals) > 0:
-			self.animals[0].remove()
-		super(AnimalFarm, self).remove()
-"""
-
