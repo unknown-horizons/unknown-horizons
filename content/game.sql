@@ -541,7 +541,6 @@ INSERT INTO "resource" VALUES(0,'vines',2,57,1);
 INSERT INTO "resource" VALUES(1,'grapes',2.5,58,1);
 INSERT INTO "resource" VALUES(0,'alvearies',2,59,1);
 INSERT INTO "resource" VALUES(1,'honeycombs',2.5,60,1);
-INSERT INTO "resource" VALUES(1,'sultanas',5,61,1);
 
 CREATE TABLE translucent_buildings(type INTEGER);
 INSERT INTO "translucent_buildings" VALUES(17);
