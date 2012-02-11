@@ -55,9 +55,9 @@ class SingleplayerMenu(object):
 		self._switch_current_widget('singleplayermenu', center=True)
 		self.active_right_side = None
 
-		for spShow in ('random', 'scenario', 'campaign', 'free_maps'):
-			self.widgets.reload('sp_%s' % spShow)
-			right_side = self.widgets['sp_%s' % spShow]
+		for mode in ('random', 'scenario', 'campaign', 'free_maps'):
+			self.widgets.reload('sp_%s' % mode)
+			right_side = self.widgets['sp_%s' % mode]
 			self.current.findChild(name="right_side_box").addChild(right_side)
 			right_side.parent.hideChild(right_side)
 
