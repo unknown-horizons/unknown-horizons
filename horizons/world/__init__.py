@@ -259,7 +259,7 @@ class World(BuildingOwner, LivingObject, WorldObject):
 			player1 = u"%s" % a.name
 			player2 = u"%s" % b.name
 
-			data = {'player1' : player1, 'player2' : player2, 'status' : status}
+			data = {'player1' : player1, 'player2' : player2}
 
 			self.session.ingame_gui.message_widget.add(
 			  None, None, 'DIPLOMACY_STATUS_'+old_state.upper()+"_"+new_state.upper(), data)
@@ -348,11 +348,9 @@ class World(BuildingOwner, LivingObject, WorldObject):
 			n += 1
 
 	def init_fish_indexer(self):
-		self.fish_indexer = BuildingIndexer(16, self.full_map)
-		for tile in self.ground_map.itervalues():
-			if tile.object is not None and tile.object.id == BUILDINGS.FISH_DEPOSIT_CLASS:
-				self.fish_indexer.add(tile.object)
-		self.fish_indexer._update()
+		radius = Entities.buildings[ BUILDINGS.FISHERMAN_CLASS ].radius
+		buildings = self.provider_buildings.provider_by_resources[RES.FISH_ID]
+		self.fish_indexer = BuildingIndexer(radius, self.full_map, buildings=buildings)
 
 	def init_new_world(self, trader_enabled, pirate_enabled, natural_resource_multiplier):
 		"""
