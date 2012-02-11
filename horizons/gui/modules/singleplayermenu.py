@@ -65,6 +65,8 @@ class SingleplayerMenu(object):
 		self.current.playerdata = PlayerDataSelection(self.current, self.widgets)
 		self.current.aidata = AIDataSelection(self.current, self.widgets)
 
+		self.map_preview = MapPreview(lambda : self.current)
+
 		self._select_single(show)
 
 	def _select_single(self, show):
@@ -108,7 +110,7 @@ class SingleplayerMenu(object):
 				#xgettext:python-format
 				self.current.findChild(name="recommended_number_of_players_lbl").text = \
 					_("Recommended number of players: {number}").format(number=number_of_players)
-				self._update_map_preview(self._get_map_preview_icon(), self._get_selected_map())
+				self.map_preview.update_map(self._get_selected_map())
 			if len(maps_display) > 0:
 				# select first entry
 				self.current.distributeData({ 'maplist' : 0, })
@@ -345,30 +347,74 @@ class SingleplayerMenu(object):
 
 	def _on_random_map_parameter_changed(self):
 		"""Called to update the map preview"""
-		def up():
+		def on_click(event, drag):
+			self._cur_random_seed = random.random()
+			self._on_random_map_parameter_changed()
+		self.map_preview.update_random_map( self._get_random_map_parameters(), on_click )
+
+	def _get_random_map_file(self):
+		"""Used to start game"""
+		return self._generate_random_map( self._get_random_map_parameters() )
+
+	@classmethod
+	def _generate_random_map(cls, parameters):
+		return random_map.generate_map( *parameters )
+
+
+class MapPreview(object):
+	"""Semiprivate class dealing with the map preview icon"""
+	def __init__(self, get_widget):
+		"""
+		@param get_widget: returns the current widget (self.current)
+		"""
+		self.minimap = None
+		self.calc_proc = None # handle to background calculation process
+		self.get_widget = get_widget
+
+	def update_map(self, map_file):
+		"""Direct map preview update.
+		Only use for existing maps, it's too slow for random maps"""
+		if self.minimap is not None:
+			self.minimap.end()
+		world = self._load_raw_world(map_file)
+		self.minimap = Minimap(self._get_map_preview_icon(),
+			                     session=None,
+			                     view=None,
+			                     world=world,
+			                     targetrenderer=horizons.main.fife.targetrenderer,
+			                     imagemanager=horizons.main.fife.imagemanager,
+			                     cam_border=False,
+			                     use_rotation=False,
+			                     tooltip=None,
+			                     on_click=None,
+			                     preview=True)
+		self.minimap.draw()
+
+	def update_random_map(self, map_params, on_click):
+		"""Called when a random map parameter has changed.
+		@param map_params: _get_random_map() output
+		@param on_click: handler for clicks"""
+		def check_calc_process():
 			# checks up on calc process (see below)
-			if hasattr(self, "calc_proc"):
+			if self.calc_proc is not None:
 				state = self.calc_proc.poll()
 				if state is None: # not finished
-					ExtScheduler().add_new_object(up, self, 0.1)
+					ExtScheduler().add_new_object(check_calc_process, self, 0.1)
 				elif state != 0:
 					self._set_map_preview_status(u"An unknown error occured while generating the map preview")
 				else: # done
 
 					data = open(self.calc_proc.output_filename, "r").read()
 					os.unlink(self.calc_proc.output_filename)
-					del self.calc_proc
+					self.calc_proc = None
 
-					icon = self.current.findChild(name="map_preview_minimap")
+					icon = self._get_map_preview_icon()
 					if icon is None:
 						return # dialog already gone
 
-					def on_click(event, drag):
-						self._cur_random_seed = random.random()
-						self._on_random_map_parameter_changed()
 					tooltip = _("Click to generate a different random map")
 
-					if hasattr(self, "minimap"):
+					if self.minimap is not None:
 						self.minimap.end()
 					self.minimap = Minimap(icon,
 																 session=None,
@@ -385,14 +431,15 @@ class SingleplayerMenu(object):
 					icon.show()
 					self._set_map_preview_status(u"")
 
-		if hasattr(self, "calc_proc"):
+		if self.calc_proc is not None:
 			self.calc_proc.kill() # process exists, therefore up is scheduled already
 		else:
-			ExtScheduler().add_new_object(up, self, 0.5)
+			ExtScheduler().add_new_object(check_calc_process, self, 0.5)
 
+		# launch process in background to calculate minimap data
 		minimap_icon = self._get_map_preview_icon()
-		params =  json.dumps(((minimap_icon.width, minimap_icon.height),
-								          self._get_random_map_parameters()))
+
+		params =  json.dumps(((minimap_icon.width, minimap_icon.height), map_params))
 
 		args = (sys.executable, sys.argv[0], "--generate-minimap", params)
 		handle, outfilename = tempfile.mkstemp()
@@ -403,49 +450,18 @@ class SingleplayerMenu(object):
 		self._set_map_preview_status(u"Generating preview...")
 
 
-	def _get_map_preview_icon(self):
-		"""Returns pychan icon for map preview"""
-		return self.current.findChild(name="map_preview_minimap")
-
-	def _set_map_preview_status(self, text):
-		"""Sets small status label next to map preview"""
-		wdg = self.current.findChild(name="map_preview_status_label")
-		if wdg: # might show next dialog already
-			wdg.text = text
-
-	def _get_random_map_file(self):
-		"""Used to start game"""
-		return self._generate_random_map( self._get_random_map_parameters() )
-
-	@classmethod
-	def _generate_random_map(cls, parameters):
-		return random_map.generate_map( *parameters )
-
-	def _update_map_preview(self, minimap_icon, map_file):
-		"""Direct map preview update. Only use for existing maps, it's too slow for random maps"""
-		world = self._load_raw_world(map_file)
-		if hasattr(self, "minimap"):
-			self.minimap.end()
-		self.minimap = Minimap(minimap_icon,
-			                     session=None,
-			                     view=None,
-			                     world=world,
-			                     targetrenderer=horizons.main.fife.targetrenderer,
-			                     imagemanager=horizons.main.fife.imagemanager,
-			                     cam_border=False,
-			                     use_rotation=False,
-			                     tooltip=None,
-			                     on_click=None,
-			                     preview=True)
-		self.minimap.draw()
-
 	@classmethod
 	def generate_minimap(cls, size, parameters):
 		"""Called as subprocess, calculates minimap data and passes it via string via stdout"""
-		map_file = cls._generate_random_map( parameters )
+		# called as standalone basically, so init everything we need
+		from horizons.main import _create_main_db
+		from horizons.entities import Entities
+		from horizons.ext.dummy import Dummy
+		db = _create_main_db()
+		Entities.load_grounds(db, load_now=False) # create all references
+		map_file = SingleplayerMenu._generate_random_map( parameters )
 		world = cls._load_raw_world(map_file)
 		location = Rect.init_from_topleft_and_size_tuples( (0, 0), size)
-		from horizons.ext.dummy import Dummy
 		minimap = Minimap(location,
 											session=None,
 											view=None,
@@ -465,3 +481,13 @@ class SingleplayerMenu(object):
 		world.inited = True
 		world.load_raw_map( SavegameAccessor( map_file ), preview=True )
 		return world
+
+	def _get_map_preview_icon(self):
+		"""Returns pychan icon for map preview"""
+		return self.get_widget().findChild(name="map_preview_minimap")
+
+	def _set_map_preview_status(self, text):
+		"""Sets small status label next to map preview"""
+		wdg = self.get_widget().findChild(name="map_preview_status_label")
+		if wdg: # might show next dialog already
+			wdg.text = text
