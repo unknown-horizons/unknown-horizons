@@ -37,7 +37,7 @@ class BuildingIndexer(object):
 		@param radius: int, maximum required radius of the buildings
 		@param coords_list: list of tuples, the coordinates of the island
 		@param random: the rng of the session
-		@param builings: inital list of buildings. Will only be read.
+		@param buildings: initial list of buildings. Will only be read.
 		"""
 		self.radius = radius
 		self._map = {}
@@ -62,7 +62,7 @@ class BuildingIndexer(object):
 
 	def _update(self, add_buildings=None, initial=False):
 		"""
-		@param add_collection: Don't use unless you know why.
+		@param add_buildings: Don't use unless you know why.
 		@param initial: can be set on first call as optimisation
 		"""
 		for building in self._remove_set:
