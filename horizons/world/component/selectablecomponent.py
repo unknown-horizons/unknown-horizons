@@ -103,7 +103,7 @@ class SelectableBuildingComponent(SelectableComponent):
 	# these smell like instance attributes, but sometimes have to be used in non-instance
 	# contexts (e.g. building tool).
 	_selected_tiles = [] # tiles that are selected. used for clean deselect.
-	_selected_fake_tiles = []
+	_selected_fake_tiles = [] # fake tiles create over ocean to select (can't select ocean directly)
 
 	def __init__(self, tabs, enemy_tabs, range_applies_only_on_island=True):
 		super(SelectableBuildingComponent, self).__init__(tabs, enemy_tabs)
@@ -149,7 +149,7 @@ class SelectableBuildingComponent(SelectableComponent):
 		renderer.removeAllColored()
 		for fake_tile in self.__class__._selected_fake_tiles:
 			self.session.view.layers[LAYERS.FIELDS].deleteInstance(fake_tile)
-		self.__class__._selected_fake_tiles = []
+		del self.__class__._selected_fake_tiles[:] # delete inplace, assignment would operate on lowest class in hierarchy
 
 	def remove(self):
 		#TODO move this as a listener
@@ -190,10 +190,10 @@ class SelectableBuildingComponent(SelectableComponent):
 			if tile.object is not None:
 				remove_colored(tile.object._instance)
 		selected_tiles = cls._selected_tiles
-		cls._selected_tiles = []
+		del cls._selected_tiles[:] # delete inplace, assignment would operate on lowest class in hierarchy
 		for fake_tile in cls._selected_fake_tiles:
 			session.view.layers[LAYERS.FIELDS].deleteInstance(fake_tile)
-		cls._selected_fake_tiles = []
+		del cls._selected_fake_tiles[:] # delete inplace, assignment would operate on lowest class in hierarchy
 		return selected_tiles
 
 	@classmethod
