@@ -9,13 +9,14 @@ size_y: 1
 inhabitants_start: 1
 inhabitants_max: 1
 button_name: null
-tabs: [ProductionOverviewTab]
-enemy_tabs: [EnemyBuildingOverviewTab,]
 tooltip_text: _ Increases the player's sight.
 settler_level: 0
 buildingcosts: {1: 100, 4: 4}
 components:
-- SelectableComponent: {type: building}
+- SelectableComponent:
+    type: building
+    tabs: [ProductionOverviewTab]
+    enemy_tabs: [EnemyBuildingOverviewTab,]
 - HealthComponent: {maxhealth: 1000}
 - StorageComponent
 actionsets:

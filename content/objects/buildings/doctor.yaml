@@ -8,14 +8,15 @@ size_x: 2
 size_y: 2
 inhabitants_start: 2
 inhabitants_max: 3
-tabs: [ProductionOverviewTab,]
-enemy_tabs: [EnemyBuildingOverviewTab,]
 button_name: doctor-1
 tooltip_text: _ Treats diseases. Consumes herbs.
 settler_level: 2
 buildingcosts: {1: 500, 4: 3, 6: 3, 7: 3}
 components:
-- SelectableComponent: {type: building}
+- SelectableComponent:
+    type: building
+    tabs: [ProductionOverviewTab,]
+    enemy_tabs: [EnemyBuildingOverviewTab,]
 - HealthComponent: {maxhealth: 1000}
 - ProducerComponent:
     productionlines:

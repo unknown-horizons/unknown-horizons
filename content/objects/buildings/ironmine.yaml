@@ -9,13 +9,14 @@ size_y: 5
 inhabitants_start: 0
 inhabitants_max: 0
 button_name: iron-mine-1
-tabs: [ProductionOverviewTab]
-enemy_tabs: [EnemyBuildingOverviewTab,]
 tooltip_text: _ Gets iron ore from deposit.
 settler_level: 2
 buildingcosts: {1: 500, 4: 10, 6: 2}
 components:
-- SelectableComponent: {type: building}
+- SelectableComponent:
+    type: building
+    tabs: [ProductionOverviewTab]
+    enemy_tabs: [EnemyBuildingOverviewTab,]
 - HealthComponent: {maxhealth: 1000}
 - ProducerComponent:
     productionlines:

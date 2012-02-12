@@ -573,7 +573,7 @@ class ShipBuildingToolLogic(object):
 	def on_escape(self, session):
 		session.selected_instances = set([self.ship])
 		self.ship.get_component(SelectableComponent).select()
-		self.ship.show_menu()
+		self.ship.get_component(SelectableComponent).show_menu()
 
 	def add_change_listener(self, instance, building_tool):
 		# instance is self.ship here
@@ -626,7 +626,7 @@ class BuildRelatedBuildingToolLogic(SettlementBuildingToolLogic):
 
 	def _reshow_tab(self):
 		from horizons.gui.tabs import BuildRelatedTab
-		self.instance().show_menu(jump_to_tabclass=BuildRelatedTab)
+		self.instance().get_component(SelectableComponent).show_menu(jump_to_tabclass=BuildRelatedTab)
 
 	def on_escape(self, session):
 		self._reshow_tab()

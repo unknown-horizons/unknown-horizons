@@ -28,6 +28,7 @@ from horizons.util import Callback
 from horizons.world.component.tradepostcomponent import TradePostComponent
 from horizons.world.component.storagecomponent import StorageComponent
 from horizons.world.component.namedcomponent import NamedComponent
+from horizons.world.component.selectablecomponent import SelectableComponent
 
 class InternationalTradeWidget(object):
 	log = logging.getLogger("gui.internationaltradewidget")
@@ -99,7 +100,7 @@ class InternationalTradeWidget(object):
 		else:
 			# no partner in range any more
 			self.widget.hide()
-			self.instance.show_menu()
+			self.instance.get_component(SelectableComponent).show_menu()
 
 	def __remove_changelisteners(self):
 		self.instance.remove_change_listener(self.draw_widget)

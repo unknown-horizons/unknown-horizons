@@ -121,33 +121,6 @@ class ConcreteObject(WorldObject):
 		Scheduler().rem_all_classinst_calls(self)
 		super(ConcreteObject, self).remove()
 
-	def show_menu(self, jump_to_tabclass=None):
-		"""Shows tabs from self.__class__.tabs, if there are any.
-		@param jump_to_tabclass: open the first tab that is a subclass to this parameter
-		"""
-		# this local import prevents circular imports
-		from horizons.gui.tabs import TabWidget
-		tablist = None
-		if self.owner == self.session.world.player:
-			tablist = self.tabs
-		else: # this is an enemy instance with respect to the local player
-			tablist = self.enemy_tabs
-
-		if tablist:
-			tabs = [ tabclass(self) for tabclass in tablist if tabclass.shown_for(self) ]
-			tabwidget = TabWidget(self.session.ingame_gui, tabs=tabs)
-
-			if jump_to_tabclass:
-				num = None
-				for i in xrange( len(tabs) ):
-					if isinstance(tabs[i], jump_to_tabclass):
-						num = i
-						break
-				if num is not None:
-					tabwidget._show_tab(num)
-
-			self.session.ingame_gui.show_menu( tabwidget )
-
 	def get_status_icons(self):
 		"""Returns a list of StatusIcon instances"""
 		return self._registered_status_icons[:] # always add pushed icons

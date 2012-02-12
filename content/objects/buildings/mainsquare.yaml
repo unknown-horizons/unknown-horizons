@@ -9,14 +9,15 @@ size_y: 6
 inhabitants_start: 1
 inhabitants_max: 1
 button_name: main_square-1
-tabs: [MainSquareOverviewTab, MainSquareSailorsTab, MainSquarePioneersTab, MainSquareSettlersTab]
-enemy_tabs: [EnemyBuildingOverviewTab,]
 tooltip_text: _ Supplies citizens with goods.
 settler_level: 0
 buildingcosts: {1: 1000, 4: 5}
 components:
 # NOTE: don't add a producer component, it's currently not guaranteed to work flawlessly in combination with SettlementStorage
-- SelectableComponent: {type: building}
+- SelectableComponent:
+    type: building
+    tabs: [MainSquareOverviewTab, MainSquareSailorsTab, MainSquarePioneersTab, MainSquareSettlersTab]
+    enemy_tabs: [EnemyBuildingOverviewTab,]
 - HealthComponent: {maxhealth: 1000}
 - StorageComponent:
     inventory:

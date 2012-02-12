@@ -3,10 +3,11 @@ id: 1000006
 name: Trader
 radius: 8
 velocity: 12.0
-tabs: [TraderShipOverviewTab,]
-enemy_tabs: [TraderShipOverviewTab,]
 components:
-- SelectableComponent: { type: ship }
+- SelectableComponent:
+    type: ship
+    tabs: [TraderShipOverviewTab,]
+    enemy_tabs: [TraderShipOverviewTab,]
 - AmbientSoundComponent
 - StorageComponent:
    inventory:

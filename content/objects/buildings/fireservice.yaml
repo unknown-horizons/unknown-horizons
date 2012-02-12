@@ -8,13 +8,14 @@ size_x: 2
 size_y: 2
 inhabitants_start: 4
 inhabitants_max: 4
-tabs: [ProductionOverviewTab,]
-enemy_tabs: [EnemyBuildingOverviewTab,]
 tooltip_text: _ Extinguishes fires.
 settler_level: 1
 buildingcosts: {1: 750, 4: 3, 6: 2, 7: 5}
 components:
-- SelectableComponent: {type: building}
+- SelectableComponent:
+    type: building
+    tabs: [ProductionOverviewTab,]
+    enemy_tabs: [EnemyBuildingOverviewTab,]
 - HealthComponent: {maxhealth: 1000}
 actionsets:
   as_fireservice0: {level: 0}

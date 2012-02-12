@@ -8,14 +8,15 @@ size_x: 2
 size_y: 3
 inhabitants_start: 1
 inhabitants_max: 1
-tabs: [ProductionOverviewTab,]
-enemy_tabs: [EnemyBuildingOverviewTab,]
 button_name: charcoal-burning-1
 tooltip_text: _ Burns a lot of boards.
 settler_level: 2
 buildingcosts: {1: 250, 4: 2, 6: 1, 7: 3}
 components:
-- SelectableComponent: {type: building}
+- SelectableComponent:
+    type: building
+    tabs: [ProductionOverviewTab,]
+    enemy_tabs: [EnemyBuildingOverviewTab,]
 - HealthComponent: {maxhealth: 1000}
 - ProducerComponent:
     productionlines:

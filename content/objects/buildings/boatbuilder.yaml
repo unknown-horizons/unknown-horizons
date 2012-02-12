@@ -8,15 +8,16 @@ size_x: 3
 size_y: 3
 inhabitants_start: 2
 inhabitants_max: 2
-tabs: [BoatbuilderTab, BoatbuilderTradeTab, BoatbuilderWar1Tab]
-# , BoatbuilderTradeTab, BoatbuilderWar1Tab, BoatbuilderWar2Tab, BoatbuilderConfirmTab)
-enemy_tabs: [EnemyBuildingOverviewTab,]
 button_name: boat_builder-1
 tooltip_text: _ Builds boats and small ships. Built on coast.
 settler_level: 1
 buildingcosts: {1: 500, 4: 4, 6: 3}
 components:
-- SelectableComponent: {type: building}
+- SelectableComponent:
+    type: building
+    tabs: [BoatbuilderTab, BoatbuilderTradeTab, BoatbuilderWar1Tab]
+    # , BoatbuilderTradeTab, BoatbuilderWar1Tab, BoatbuilderWar2Tab, BoatbuilderConfirmTab)
+    enemy_tabs: [EnemyBuildingOverviewTab,]
 - HealthComponent: {maxhealth: 1000}
 - UnitProducerComponent:
     productionlines:

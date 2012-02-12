@@ -40,8 +40,9 @@ class GroundUnit(Unit):
 
 	# TODO:
 	# set these tabs in yaml as soon as there are ground units
-	# self.tabs = (GroundUnitOverviewTab,)
-	# self.enemy_tabs = (EnemyShipOverviewTab,)
+	# tabs = (GroundUnitOverviewTab,)
+	# enemy_tabs = (EnemyShipOverviewTab,)
+
 	pather_class = SoldierPather
 	health_bar_y = -70
 

@@ -3,10 +3,11 @@ id: 1000016
 name: Fisher
 radius: 5
 velocity: 12.0
-tabs: [ShipOverviewTab,]
-enemy_tabs: [EnemyShipOverviewTab,]
 components:
-- SelectableComponent: { type: ship }
+- SelectableComponent:
+    type: ship
+    tabs: [ShipOverviewTab,]
+    enemy_tabs: [EnemyShipOverviewTab,]
 - AmbientSoundComponent
 - StorageComponent:
    inventory:

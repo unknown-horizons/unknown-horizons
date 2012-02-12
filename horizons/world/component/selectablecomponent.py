@@ -29,7 +29,18 @@ from horizons.util import decorators
 from horizons.constants import GFX, LAYERS
 
 class SelectableComponent(Component):
-	"""Stuff you can select"""
+	"""Stuff you can select.
+	Has to be subdivided in buildings and units, which is further specialised to ships.
+
+	Provides:
+	show_menu(): shows tabs
+	select(): highlight instance visually
+	deselect(): inverse of select
+
+	show_menu() and select() are frequently used in combination.
+
+	The definitions must contain type, tabs and enemy_tabs.
+	"""
 
 	NAME = "selectablecomponent"
 
@@ -44,6 +55,47 @@ class SelectableComponent(Component):
 		t = arguments.pop('type')
 		return TYPES[ t ]( **arguments )
 
+	def __init__(self, tabs, enemy_tabs):
+		super(SelectableComponent, self).__init__()
+		# resolve tab
+		from horizons.gui import tabs as tab_classes
+		resolve_tab = lambda tab_class_name : getattr(tab_classes, tab_class_name)
+		self.tabs = map(resolve_tab, tabs)
+		self.enemy_tabs = map(resolve_tab, enemy_tabs)
+
+	def show_menu(self, jump_to_tabclass=None):
+		"""Shows tabs from self.__class__.tabs, if there are any.
+		@param jump_to_tabclass: open the first tab that is a subclass to this parameter
+		"""
+		from horizons.gui.tabs import TabWidget
+		tablist = None
+		if self.instance.owner == self.instance.session.world.player:
+			tablist = self.tabs
+		else: # this is an enemy instance with respect to the local player
+			tablist = self.enemy_tabs
+
+		if tablist:
+			tabs = [ tabclass(self.instance) for tabclass in tablist if
+			         tabclass.shown_for(self.instance) ]
+			tabwidget = TabWidget(self.instance.session.ingame_gui, tabs=tabs)
+
+			if jump_to_tabclass:
+				num = None
+				for i in xrange( len(tabs) ):
+					if isinstance(tabs[i], jump_to_tabclass):
+						num = i
+						break
+				if num is not None:
+					tabwidget._show_tab(num)
+
+			self.instance.session.ingame_gui.show_menu( tabwidget )
+
+	def select(self, reset_cam=False):
+		raise NotImplementedError()
+	def deselect(self):
+		raise NotImplementedError()
+
+
 class SelectableBuildingComponent(SelectableComponent):
 
 	selection_color = (255, 255, 0)
@@ -53,9 +105,20 @@ class SelectableBuildingComponent(SelectableComponent):
 	_selected_tiles = [] # tiles that are selected. used for clean deselect.
 	_selected_fake_tiles = []
 
-	def __init__(self, range_applies_only_on_island=True):
-		super(SelectableComponent, self).__init__()
+	def __init__(self, tabs, enemy_tabs, range_applies_only_on_island=True):
+		super(SelectableBuildingComponent, self).__init__(tabs, enemy_tabs)
+
 		self.range_applies_only_on_island = range_applies_only_on_island
+
+	def initialize(self):
+		# check for related buildings (defined in db, not yaml)
+		related_building = self.instance.session.db.get_related_building_ids(self.instance.id)
+		if len(related_building) > 0:
+			from horizons.gui.tabs import BuildRelatedTab
+			self.tabs += (BuildRelatedTab,)
+
+	def load(self, db, worldid):
+		self.initialize()
 
 	def select(self, reset_cam=False):
 		"""Runs necessary steps to select the building."""
