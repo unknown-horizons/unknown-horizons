@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2012-02-08 02:09+0100\n"
-"PO-Revision-Date: 2012-02-12 17:42+0200\n"
+"PO-Revision-Date: 2012-02-12 17:47+0200\n"
 "Last-Translator: probert <r.panovics@freemail.hu>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: hu\n"
@@ -2338,27 +2338,27 @@ msgstr "A kiválasztott mentés törlése"
 #. (text of widget: headline)
 #: horizons/i18n/guitranslations.py:870
 msgid "New game - Singleplayer"
-msgstr ""
+msgstr "Új játék - Egyjátékos mód"
 
 #. (text of widget: start_game_label)
 #: horizons/i18n/guitranslations.py:874
 msgid "Start game:"
-msgstr ""
+msgstr "Játék megkezdése:"
 
 #. (text of widget: campaign)
 #: horizons/i18n/guitranslations.py:876
 msgid "Campaign"
-msgstr ""
+msgstr "Hadjárat"
 
 #. (text of widget: free_maps)
 #: horizons/i18n/guitranslations.py:878
 msgid "Free play"
-msgstr ""
+msgstr "Szabad játék"
 
 #. (text of widget: random)
 #: horizons/i18n/guitranslations.py:880
 msgid "Random map"
-msgstr ""
+msgstr "Véletlen térkép"
 
 #. (text of widget: scenario)
 #: horizons/i18n/guitranslations.py:882
