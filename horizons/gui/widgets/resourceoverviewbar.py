@@ -25,6 +25,7 @@ import weakref
 import functools
 
 from horizons.constants import RES
+from horizons.extscheduler import ExtScheduler
 from horizons.world.component.storagecomponent import StorageComponent
 from horizons.util.gui import load_uh_widget, get_res_icon, create_resource_selection_dialog
 from horizons.util import PychanChildFinder, Callback
@@ -81,6 +82,7 @@ class ResourceOverviewBar(object):
 		self.current_instance = weakref.ref(self) # can't weakref to None
 		self.construction_mode = False
 		self._last_build_costs = None
+		self._do_show_dummy = False
 
 	def save(self, db):
 		for obj, config in self.resource_configurations.iteritems():
@@ -124,7 +126,7 @@ class ResourceOverviewBar(object):
 		if inv is not None:
 			inv.remove_change_listener(self._update_resources)
 
-		if instance is None: # show nothing instead
+		if instance in (None, self): # show nothing instead
 			self.current_instance = weakref.ref(self) # can't weakref to None
 			return
 
@@ -134,7 +136,8 @@ class ResourceOverviewBar(object):
 		initial_offset = 93
 		offset = 52
 		resources = self._get_current_resources()
-		for i, res in enumerate( resources + [-1] ): # add dummy at end for adding stuff
+		addition = [-1] if self._do_show_dummy else [] # add dummy at end for adding stuff
+		for i, res in enumerate( resources + addition ):
 			entry = load_uh_widget(self.ENTRY_GUI_FILE, style=self.__class__.STYLE)
 			entry.findChild(name="entry").position = (initial_offset + offset * i, 17)
 			background_icon = entry.findChild(name="background_icon")
@@ -230,7 +233,6 @@ class ResourceOverviewBar(object):
 		self.gold_gui.resizeToContent() # update label size
 		gold_available_lbl.position = (33 - gold_available_lbl.size[0]/2,  51)
 
-
 	def _update_resources(self):
 		"""Same as _update_gold but for all other slots"""
 		if not self.current_instance(): # instance died
@@ -268,6 +270,7 @@ class ResourceOverviewBar(object):
 	def _show_resource_selection_dialog(self, slot_num):
 		"""Shows gui for selecting a resource for slot slot_num"""
 		self._hide_resource_selection_dialog()
+		self._show_dummy_slot(True)
 
 		inv = self._get_current_inventory()
 		on_click = functools.partial(self._set_resource_slot, slot_num)
@@ -309,6 +312,21 @@ class ResourceOverviewBar(object):
 		if hasattr(self, "_res_selection_dialog"):
 			self._res_selection_dialog.hide()
 			del self._res_selection_dialog
+		self._show_dummy_slot(False)
+
+	def _show_dummy_slot(self, visible):
+		"""Whether to show the dummy button at the end to allow for addition of slots"""
+		if visible:
+			ExtScheduler().rem_call(self, self.__hide_dummy)
+			self._do_show_dummy = True
+			self.set_inventory_instance(self.current_instance(), force_update=True)
+		else: # fade out
+			ExtScheduler().add_new_object(self.__hide_dummy, self, 15)
+
+	def __hide_dummy(self):
+		self._do_show_dummy = False
+		self.set_inventory_instance(self.current_instance(), force_update=True)
+
 
 
 	##
