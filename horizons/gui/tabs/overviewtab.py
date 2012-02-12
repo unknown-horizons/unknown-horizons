@@ -325,8 +325,6 @@ class ProductionOverviewTab(OverviewTab):
 		self.tooltip = _("Production overview")
 		self.production_line_gui_xml = production_line_gui_xml
 
-		ExtScheduler().add_new_object(self.widget.adaptLayout, self, 0)
-
 	def refresh(self):
 		"""This function is called by the TabWidget to redraw the widget."""
 		self._refresh_utilisation()
