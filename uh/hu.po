@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2012-02-08 02:09+0100\n"
-"PO-Revision-Date: 2012-01-16 23:08+0200\n"
+"PO-Revision-Date: 2012-02-12 17:42+0200\n"
 "Last-Translator: probert <r.panovics@freemail.hu>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: hu\n"
@@ -2251,7 +2251,7 @@ msgstr "A térkép szélére görgetés:"
 #. (text of widget: minimap_rotation_label)
 #: horizons/i18n/guitranslations.py:828
 msgid "Rotate minimap with map:"
-msgstr ""
+msgstr "Minitérkép forgatása a térképpel:"
 
 #. (text of widget: mouse_sensitivity_label)
 #: horizons/i18n/guitranslations.py:830
@@ -2266,7 +2266,7 @@ msgstr "Hálózati port:"
 #. (text of widget: uninterrupted_building_label)
 #: horizons/i18n/guitranslations.py:834
 msgid "Uninterrupted building:"
-msgstr ""
+msgstr "Folyamatos építkezés:"
 
 #. (text of widget: use_renderer_label)
 #: horizons/i18n/guitranslations.py:836
@@ -2276,64 +2276,64 @@ msgstr ""
 #. (tooltip of widget: auto_unload_label)
 #: horizons/i18n/guitranslations.py:838
 msgid "Whether to unload the ship after founding a settlement"
-msgstr ""
+msgstr "A hajó kirakodása telep megalapítása után"
 
 #. (tooltip of widget: color_depth_label)
 #: horizons/i18n/guitranslations.py:840
 msgid "If set to 0, use the driver default"
-msgstr ""
+msgstr "0 esetében az alapértelmezettet meghajtót használja"
 
 #. (tooltip of widget: edge_scrolling_label)
 #: horizons/i18n/guitranslations.py:842
 msgid "Whether to move the viewport when the mouse pointer is close to map edges"
-msgstr ""
+msgstr "Nézőpont változtatása, mikor az egér a térkép széléhez ér"
 
 #. (tooltip of widget: minimap_rotation_label)
 #: horizons/i18n/guitranslations.py:844
 msgid "Whether to also rotate the minimap whenever the regular map is rotated"
-msgstr ""
+msgstr "A minitérkép forgatása, amikor a normál térkép is elfordul"
 
 #. (tooltip of widget: mouse_sensitivity_label)
 #: horizons/i18n/guitranslations.py:846
-#, fuzzy
 msgid "0 is default system settings"
-msgstr "Visszaállítás az eredeti beállításokra"
+msgstr "0 az alapértelmezett beállítás"
 
 #. (tooltip of widget: network_port_lbl)
 #: horizons/i18n/guitranslations.py:848
 msgid "If set to 0, use the router default"
-msgstr ""
+msgstr "0 esetében az alapértelmezett router-t használja"
 
 #. (tooltip of widget: uninterrupted_building_label)
 #: horizons/i18n/guitranslations.py:850
 msgid "When enabled, do not exit the build mode after successful construction"
-msgstr ""
+msgstr "Engedélyezve nem lép ki az építő üzemmódból sikeres építkezés után"
 
 #. (tooltip of widget: use_renderer_label)
 #: horizons/i18n/guitranslations.py:852
+#, fuzzy
 msgid "SDL is only meant as unsupported fallback and might cause problems!"
-msgstr ""
+msgstr "Az SDL nem támogatott tartalék és problémákat okozhat!"
 
 #. (text of widget: enter_filename_label)
 #: horizons/i18n/guitranslations.py:857
 msgid "Enter filename:"
-msgstr ""
+msgstr "Adja meg a fájl nevét:"
 
 # 76%
 #. (text of widget: headline_saved_games_label)
 #: horizons/i18n/guitranslations.py:861
 msgid "Your saved games:"
-msgstr "Nincsenek mentett játékok:"
+msgstr "A mentett játékaid:"
 
 #. (tooltip of widget: cancelButton)
 #: horizons/i18n/guitranslations.py:863
 msgid "Cancel"
-msgstr ""
+msgstr "Visszavon"
 
 #. (tooltip of widget: deleteButton)
 #: horizons/i18n/guitranslations.py:865
 msgid "Delete selected savegame"
-msgstr ""
+msgstr "A kiválasztott mentés törlése"
 
 #. (text of widget: headline)
 #: horizons/i18n/guitranslations.py:870
