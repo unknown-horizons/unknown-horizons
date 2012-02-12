@@ -21,6 +21,7 @@
 
 from horizons.command.unit import CreateUnit
 from horizons.constants import UNITS, BUILDINGS
+from horizons.world.component.selectablecomponent import SelectableComponent
 from tests.gui import TestFinished, gui_test
 from tests.gui.helper import get_player_ship
 
@@ -195,5 +196,37 @@ def test_ticket_1371(gui):
 
 	# Tab should still be there
 	assert gui.find(name='farm_overview_buildrelated')
+
+	yield TestFinished
+
+@gui_test(use_fixture='fife_exception_not_found', timeout=60)
+def test_ticket_1447(gui):
+	"""
+	Clicking on a sequence of buildings may make fife throw an exception.
+	"""
+	yield
+
+	lumberjack = gui.session.world.islands[0].ground_map[(23, 63)].object
+	assert(lumberjack.id == BUILDINGS.LUMBERJACK_CLASS)
+
+	fisher = gui.session.world.islands[0].ground_map[(20, 67)].object
+	assert(fisher.id == BUILDINGS.FISHERMAN_CLASS)
+
+	warehouse = gui.session.world.islands[0].ground_map[(18, 63)].object
+	assert(warehouse.id == BUILDINGS.WAREHOUSE_CLASS)
+
+	gui.select([fisher])
+	fisher.get_component(SelectableComponent).select()
+	yield
+
+	fisher.get_component(SelectableComponent).deselect()
+	gui.select([lumberjack])
+	lumberjack.get_component(SelectableComponent).select()
+	yield
+
+	lumberjack.get_component(SelectableComponent).deselect()
+	gui.select([warehouse])
+	warehouse.get_component(SelectableComponent).select()
+	yield # this could crash the game
 
 	yield TestFinished
