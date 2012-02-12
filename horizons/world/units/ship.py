@@ -156,7 +156,7 @@ class Ship(Unit):
 			# be executed after this, so draw the new buoy after move_callbacks have finished.
 			Scheduler().add_new_object(self._update_buoy, self, run_in=0)
 
-	def _update_buoy(self):
+	def _update_buoy(self, remove_only=False):
 		"""Draw a buoy at the move target if the ship is moving."""
 		move_target = self.get_move_target()
 
@@ -167,6 +167,9 @@ class Ship(Unit):
 		def tmp():
 			session.view.renderer['GenericRenderer'].removeAll("buoy_" + str(ship_id))
 		tmp() # also remove now
+
+		if remove_only:
+			return
 
 		if move_target != None:
 			# set remove buoy callback

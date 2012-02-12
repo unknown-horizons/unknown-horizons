@@ -6,6 +6,7 @@ velocity: 12.0
 tabs: [FightingShipOverviewTab,]
 enemy_tabs: [EnemyShipOverviewTab,]
 components:
+- SelectableComponent: { type: ship }
 - AmbientSoundComponent
 - StorageComponent:
    inventory:

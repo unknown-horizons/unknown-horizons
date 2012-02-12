@@ -20,6 +20,7 @@
 # ###################################################
 
 from fife import fife
+import copy
 
 import horizons.main
 
@@ -39,8 +40,9 @@ class SelectableComponent(Component):
 		TYPES = { 'building' : SelectableBuildingComponent,
 		          'unit'     : SelectableUnitComponent,
 		          'ship'     : SelectableShipComponent }
-		t = arguments['type']
-		return TYPES[ t ]( arguments )
+		arguments = copy.copy(arguments)
+		t = arguments.pop('type')
+		return TYPES[ t ]( **arguments )
 
 class SelectableBuildingComponent(SelectableComponent):
 
@@ -90,7 +92,7 @@ class SelectableBuildingComponent(SelectableComponent):
 		#TODO move this as a listener
 		if self in self.instance.session.selected_instances:
 			self.instance.session.selected_instances.remove(self)
-		if self.owner == self.instance.session.world.player:
+		if self.instance.owner == self.instance.session.world.player:
 			self.deselect()
 		super(SelectableBuildingComponent, self).remove()
 
@@ -201,7 +203,7 @@ class SelectableUnitComponent(SelectableComponent):
 	def deselect(self):
 		"""Runs necessary steps to deselect the unit."""
 		self.instance.session.view.renderer['InstanceRenderer'].removeOutlined(self.instance._instance)
-		self.instance.session.view.renderer['GenericRenderer'].removeAll("health_" + str(self.worldid))
+		self.instance.draw_health(remove_only=True)
 		# this is necessary to make deselect idempotent
 		if self.instance.session.view.has_change_listener(self.instance.draw_health):
 			self.instance.session.view.remove_change_listener(self.instance.draw_health)
@@ -215,17 +217,17 @@ class SelectableShipComponent(SelectableUnitComponent):
 		super(SelectableShipComponent, self).select(reset_cam=reset_cam)
 
 		# add a buoy at the ship's target if the player owns the ship
-		if self.instance.session.world.player == self.owner:
+		if self.instance.session.world.player == self.instance.owner:
 			self.instance._update_buoy()
 
-		if self.owner is self.instance.session.world.player:
-			self.instance.session.ingame_gui.minimap.show_unit_path(self)
+		if self.instance.owner is self.instance.session.world.player:
+			self.instance.session.ingame_gui.minimap.show_unit_path(self.instance)
 
 	def deselect(self):
 		"""Runs necessary steps to deselect the ship."""
 		self.instance._selected = False
 		super(SelectableShipComponent, self).deselect()
-		self.instance.session.view.renderer['GenericRenderer'].removeAll("buoy_" + str(self.worldid))
+		self.instance._update_buoy(remove_only=True)
 
 
 

@@ -81,15 +81,17 @@ class Unit(MovingObject):
 			self.act(self._action, location, True)
 		self.session.view.cam.refresh()
 
-	def draw_health(self):
+	def draw_health(self, remove_only=True):
 		"""Draws the units current health as a healthbar over the unit."""
 		if not self.has_component(HealthComponent):
+			return
+		renderer = self.session.view.renderer['GenericRenderer']
+		renderer.removeAll("health_" + str(self.worldid))
+		if remove_only:
 			return
 		health_component = self.get_component(HealthComponent)
 		health = health_component.health
 		max_health = health_component.max_health
-		renderer = self.session.view.renderer['GenericRenderer']
-		renderer.removeAll("health_" + str(self.worldid))
 		zoom = self.session.view.get_zoom()
 		height = int(5 * zoom)
 		width = int(50 * zoom)

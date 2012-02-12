@@ -925,7 +925,7 @@ class World(BuildingOwner, LivingObject, WorldObject):
 		else:
 			for instance in self.session.world.get_health_instances():
 				if self.session.view.has_change_listener(instance.draw_health) and not instance._selected:
-					self.session.view.renderer['GenericRenderer'].removeAll("health_" + str(instance.worldid))
+					instance.draw_health(remove_only=True)
 					self.session.view.remove_change_listener(instance.draw_health)
 
 

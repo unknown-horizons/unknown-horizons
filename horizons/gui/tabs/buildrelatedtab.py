@@ -26,6 +26,7 @@ from horizons.gui.tabs import OverviewTab
 from horizons.util.gui import load_uh_widget
 from horizons.util import Callback
 from horizons.entities import Entities
+from horizons.world.component.selectablecomponent import SelectableComponent
 
 class BuildRelatedTab(OverviewTab):
 	"""
