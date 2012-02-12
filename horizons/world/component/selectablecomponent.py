@@ -98,7 +98,7 @@ class SelectableComponent(Component):
 
 class SelectableBuildingComponent(SelectableComponent):
 
-	selection_color = (255, 255, 0)
+	selection_color = (255, 255, 100)
 
 	# these smell like instance attributes, but sometimes have to be used in non-instance
 	# contexts (e.g. building tool).
