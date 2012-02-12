@@ -69,7 +69,7 @@ class SelectableComponent(Component):
 		"""
 		from horizons.gui.tabs import TabWidget
 		tablist = None
-		if self.instance.owner == self.instance.session.world.player:
+		if self.instance.owner == self.session.world.player:
 			tablist = self.tabs
 		else: # this is an enemy instance with respect to the local player
 			tablist = self.enemy_tabs
@@ -77,7 +77,7 @@ class SelectableComponent(Component):
 		if tablist:
 			tabs = [ tabclass(self.instance) for tabclass in tablist if
 			         tabclass.shown_for(self.instance) ]
-			tabwidget = TabWidget(self.instance.session.ingame_gui, tabs=tabs)
+			tabwidget = TabWidget(self.session.ingame_gui, tabs=tabs)
 
 			if jump_to_tabclass:
 				num = None
@@ -88,7 +88,7 @@ class SelectableComponent(Component):
 				if num is not None:
 					tabwidget._show_tab(num)
 
-			self.instance.session.ingame_gui.show_menu( tabwidget )
+			self.session.ingame_gui.show_menu( tabwidget )
 
 	def select(self, reset_cam=False):
 		raise NotImplementedError()
@@ -112,7 +112,7 @@ class SelectableBuildingComponent(SelectableComponent):
 
 	def initialize(self):
 		# check for related buildings (defined in db, not yaml)
-		related_building = self.instance.session.db.get_related_building_ids(self.instance.id)
+		related_building = self.session.db.get_related_building_ids(self.instance.id)
 		if len(related_building) > 0:
 			from horizons.gui.tabs import BuildRelatedTab
 			self.tabs += (BuildRelatedTab,)
@@ -124,16 +124,16 @@ class SelectableBuildingComponent(SelectableComponent):
 		"""Runs necessary steps to select the building."""
 		self.set_selection_outline()
 		if reset_cam:
-			self.instance.session.view.center(*self.instance.position.origin.to_tuple())
-		renderer = self.instance.session.view.renderer['InstanceRenderer']
-		self._do_select(renderer, self.instance.position, self.instance.session.world,
+			self.session.view.center(*self.instance.position.origin.to_tuple())
+		renderer = self.session.view.renderer['InstanceRenderer']
+		self._do_select(renderer, self.instance.position, self.session.world,
 		                self.instance.settlement, self.instance.radius, self.range_applies_only_on_island)
 		self._is_selected = True
 
 	def set_selection_outline(self):
 		"""Only set the selection outline.
 		Useful when it has been removed by some kind of interference"""
-		renderer = self.instance.session.view.renderer['InstanceRenderer']
+		renderer = self.session.view.renderer['InstanceRenderer']
 		renderer.addOutlined(self.instance._instance, self.selection_color[0], self.selection_color[1],
 		                     self.selection_color[2], GFX.BUILDING_OUTLINE_WIDTH,
 		                     GFX.BUILDING_OUTLINE_THRESHOLD)
@@ -144,18 +144,18 @@ class SelectableBuildingComponent(SelectableComponent):
 		if not hasattr(self, "_is_selected") or not self._is_selected:
 			return # only deselect selected buildings (simplifies other code)
 		self._is_selected = False
-		renderer = self.instance.session.view.renderer['InstanceRenderer']
+		renderer = self.session.view.renderer['InstanceRenderer']
 		renderer.removeOutlined(self.instance._instance)
 		renderer.removeAllColored()
 		for fake_tile in self.__class__._selected_fake_tiles:
-			self.instance.session.view.layers[LAYERS.FIELDS].deleteInstance(fake_tile)
+			self.session.view.layers[LAYERS.FIELDS].deleteInstance(fake_tile)
 		self.__class__._selected_fake_tiles = []
 
 	def remove(self):
 		#TODO move this as a listener
-		if self in self.instance.session.selected_instances:
-			self.instance.session.selected_instances.remove(self)
-		if self.instance.owner == self.instance.session.world.player:
+		if self in self.session.selected_instances:
+			self.session.selected_instances.remove(self)
+		if self.instance.owner == self.session.world.player:
 			self.deselect()
 		super(SelectableBuildingComponent, self).remove()
 
@@ -260,16 +260,16 @@ class SelectableUnitComponent(SelectableComponent):
 
 	def select(self, reset_cam=False):
 		"""Runs necessary steps to select the unit."""
-		self.instance.session.view.renderer['InstanceRenderer'].addOutlined(self.instance._instance, 255, 255, 255, GFX.UNIT_OUTLINE_WIDTH, GFX.UNIT_OUTLINE_THRESHOLD)
+		self.session.view.renderer['InstanceRenderer'].addOutlined(self.instance._instance, 255, 255, 255, GFX.UNIT_OUTLINE_WIDTH, GFX.UNIT_OUTLINE_THRESHOLD)
 		self.instance.draw_health()
 
 	def deselect(self):
 		"""Runs necessary steps to deselect the unit."""
-		self.instance.session.view.renderer['InstanceRenderer'].removeOutlined(self.instance._instance)
+		self.session.view.renderer['InstanceRenderer'].removeOutlined(self.instance._instance)
 		self.instance.draw_health(remove_only=True)
 		# this is necessary to make deselect idempotent
-		if self.instance.session.view.has_change_listener(self.instance.draw_health):
-			self.instance.session.view.remove_change_listener(self.instance.draw_health)
+		if self.session.view.has_change_listener(self.instance.draw_health):
+			self.session.view.remove_change_listener(self.instance.draw_health)
 
 
 class SelectableShipComponent(SelectableUnitComponent):
@@ -280,11 +280,11 @@ class SelectableShipComponent(SelectableUnitComponent):
 		super(SelectableShipComponent, self).select(reset_cam=reset_cam)
 
 		# add a buoy at the ship's target if the player owns the ship
-		if self.instance.session.world.player == self.instance.owner:
+		if self.session.world.player == self.instance.owner:
 			self.instance._update_buoy()
 
-		if self.instance.owner is self.instance.session.world.player:
-			self.instance.session.ingame_gui.minimap.show_unit_path(self.instance)
+		if self.instance.owner is self.session.world.player:
+			self.session.ingame_gui.minimap.show_unit_path(self.instance)
 
 	def deselect(self):
 		"""Runs necessary steps to deselect the ship."""

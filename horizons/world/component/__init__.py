@@ -45,7 +45,10 @@ class Component(object):
 		"""
 		super(Component, self).__init__()
 		self.instance = None # Has to be set by the componentholder
-		self.session = None  # Has to be set by the componentholder
+
+	@property
+	def session(self):
+		return self.instance.session
 
 	def initialize(self):
 		"""
