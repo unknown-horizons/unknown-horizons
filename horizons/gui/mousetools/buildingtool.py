@@ -524,7 +524,8 @@ class BuildingTool(NavigationTool):
 				if not hasattr(fife_instance, "keep_translucency") or not fife_instance.keep_translucency:
 					fife_instance.get2dGfxVisual().setTransparency(0)
 		for building in self._related_buildings:
-			building.set_selection_outline() # restore selection, removeOutline can destroy it
+			# restore selection, removeOutline can destroy it
+			building.get_component(SelectableComponent).set_selection_outline()
 		self._modified_instances.clear()
 		for fife_instance in self.buildings_fife_instances.itervalues():
 			layer = fife_instance.getLocationRef().getLayer()
