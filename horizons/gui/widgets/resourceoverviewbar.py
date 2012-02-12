@@ -19,8 +19,9 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-from fife.extensions import pychan
 
+from fife import fife
+from fife.extensions import pychan
 import weakref
 import functools
 
@@ -145,7 +146,10 @@ class ResourceOverviewBar(object):
 
 			if res != -1:
 				tooltip = self.session.db.get_res_name(res)
-				entry.findChild(name="res_icon").image = get_res_icon(res)[2] # the 24 one
+				icon = entry.findChild(name="res_icon")
+				icon.num = i
+				icon.image = get_res_icon(res)[2] # the 24 one
+				icon.capture(self._on_res_slot_click, event_name = 'mouseClicked')
 			else:
 				tooltip = _("Click to add a new slot")
 				entry.show() # this will not be filled as the other res
@@ -327,7 +331,10 @@ class ResourceOverviewBar(object):
 		self._do_show_dummy = False
 		self.set_inventory_instance(self.current_instance(), force_update=True)
 
-
+	def _on_res_slot_click(self, widget, event):
+		"""Called when you click on a resource slot in the bar (not the selection dialog)"""
+		if event.getButton() == fife.MouseEvent.RIGHT:
+			self._set_resource_slot(widget.num, 0)
 
 	##
 	# CODE FOR REFERENCE
