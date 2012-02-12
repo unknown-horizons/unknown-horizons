@@ -39,7 +39,7 @@ class SelectableComponent(Component):
 		TYPES = { 'building' : SelectableBuildingComponent,
 		          'unit'     : SelectableUnitComponent,
 		          'ship'     : SelectableShipComponent }
-		t = arguments.pop('type')
+		t = arguments['type']
 		return TYPES[ t ]( arguments )
 
 class SelectableBuildingComponent(SelectableComponent):
@@ -59,16 +59,17 @@ class SelectableBuildingComponent(SelectableComponent):
 		"""Runs necessary steps to select the building."""
 		self.set_selection_outline()
 		if reset_cam:
-			self.instance.session.view.center(*self.position.origin.to_tuple())
+			self.instance.session.view.center(*self.instance.position.origin.to_tuple())
 		renderer = self.instance.session.view.renderer['InstanceRenderer']
-		self._do_select(renderer, self.position, self.instance.session.world, self.settlement)
+		self._do_select(renderer, self.instance.position, self.instance.session.world,
+		                self.instance.settlement, self.instance.radius, self.range_applies_only_on_island)
 		self._is_selected = True
 
 	def set_selection_outline(self):
 		"""Only set the selection outline.
 		Useful when it has been removed by some kind of interference"""
 		renderer = self.instance.session.view.renderer['InstanceRenderer']
-		renderer.addOutlined(self._instance, self.selection_color[0], self.selection_color[1],
+		renderer.addOutlined(self.instance._instance, self.selection_color[0], self.selection_color[1],
 		                     self.selection_color[2], GFX.BUILDING_OUTLINE_WIDTH,
 		                     GFX.BUILDING_OUTLINE_THRESHOLD)
 
@@ -79,7 +80,7 @@ class SelectableBuildingComponent(SelectableComponent):
 			return # only deselect selected buildings (simplifies other code)
 		self._is_selected = False
 		renderer = self.instance.session.view.renderer['InstanceRenderer']
-		renderer.removeOutlined(self._instance)
+		renderer.removeOutlined(self.instance._instance)
 		renderer.removeAllColored()
 		for fake_tile in self.__class__._selected_fake_tiles:
 			self.instance.session.view.layers[LAYERS.FIELDS].deleteInstance(fake_tile)
@@ -94,7 +95,8 @@ class SelectableBuildingComponent(SelectableComponent):
 		super(SelectableBuildingComponent, self).remove()
 
 	@classmethod
-	def select_building(cls, session, position, settlement):
+	def select_building(cls, session, position, settlement,
+	                    radius, range_applies_only_on_island):
 		"""Select a hypothecial instance of this class. Use Case: Buildingtool.
 		Only works on a subclass of BuildingClass, since it requires certain class attributes.
 		@param session: Session instance
@@ -109,7 +111,8 @@ class SelectableBuildingComponent(SelectableComponent):
 		print 'profile to ', outfilename
 		profile.runctx( "cls._do_select(renderer, position, session.world, settlement)", globals(), locals(), outfilename)
 		"""
-		cls._do_select(renderer, position, session.world, settlement)
+		cls._do_select(renderer, position, session.world, settlement,
+		               radius, range_applies_only_on_island)
 
 	@classmethod
 	def deselect_building(cls, session):
@@ -129,8 +132,9 @@ class SelectableBuildingComponent(SelectableComponent):
 		return selected_tiles
 
 	@classmethod
-	def _do_select(cls, renderer, position, world, settlement):
-		if cls.range_applies_only_on_island:
+	def _do_select(cls, renderer, position, world, settlement,
+	               radius, range_applies_only_on_island):
+		if range_applies_only_on_island:
 			island = world.get_island(position.origin)
 			if island is None:
 				return # preview isn't on island, and therefore invalid
@@ -141,7 +145,7 @@ class SelectableBuildingComponent(SelectableComponent):
 			else:
 				ground_holder = settlement
 
-			for tile in ground_holder.get_tiles_in_radius(position, cls.radius, include_self=False):
+			for tile in ground_holder.get_tiles_in_radius(position, radius, include_self=False):
 				try:
 					if ( 'constructible' in tile.classes or 'coastline' in tile.classes ):
 						cls._add_selected_tile(tile, renderer)
@@ -164,7 +168,7 @@ class SelectableBuildingComponent(SelectableComponent):
 			layer = world.session.view.layers[LAYERS.FIELDS]
 			island = world.get_island(position.origin)
 			# color island or fake tile
-			for tup in position.get_radius_coordinates(cls.radius):
+			for tup in position.get_radius_coordinates(radius):
 				tile = island.get_tile_tuple(tup)
 				if tile is not None:
 					try:
@@ -191,12 +195,12 @@ class SelectableUnitComponent(SelectableComponent):
 
 	def select(self, reset_cam=False):
 		"""Runs necessary steps to select the unit."""
-		self.instance.session.view.renderer['InstanceRenderer'].addOutlined(self._instance, 255, 255, 255, GFX.UNIT_OUTLINE_WIDTH, GFX.UNIT_OUTLINE_THRESHOLD)
+		self.instance.session.view.renderer['InstanceRenderer'].addOutlined(self.instance._instance, 255, 255, 255, GFX.UNIT_OUTLINE_WIDTH, GFX.UNIT_OUTLINE_THRESHOLD)
 		self.instance.draw_health()
 
 	def deselect(self):
 		"""Runs necessary steps to deselect the unit."""
-		self.instance.session.view.renderer['InstanceRenderer'].removeOutlined(self._instance)
+		self.instance.session.view.renderer['InstanceRenderer'].removeOutlined(self.instance._instance)
 		self.instance.session.view.renderer['GenericRenderer'].removeAll("health_" + str(self.worldid))
 		# this is necessary to make deselect idempotent
 		if self.instance.session.view.has_change_listener(self.instance.draw_health):

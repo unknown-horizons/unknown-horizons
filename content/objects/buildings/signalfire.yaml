@@ -15,6 +15,7 @@ tooltip_text: _ Allows the player to trade with the free trader.
 settler_level: 0
 buildingcosts: {1: 50, 4: 5}
 components:
+- SelectableComponent: {type: building, range_applies_only_on_island: False}
 - HealthComponent: {maxhealth: 1000}
 - StorageComponent
 actionsets:

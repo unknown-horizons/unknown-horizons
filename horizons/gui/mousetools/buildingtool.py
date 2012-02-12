@@ -244,8 +244,17 @@ class BuildingTool(NavigationTool):
 				                          self.buildable_color[0], self.buildable_color[1],\
 				                          self.buildable_color[2], GFX.BUILDING_OUTLINE_WIDTH,
 				                          GFX.BUILDING_OUTLINE_THRESHOLD)
-				if self._class.class_has_component(SelectableComponent):
-					SelectableBuildingComponent.select_building(self.session, building.position, settlement)
+				# get required data from component definition (instance doesn't not
+				# exist yet
+				try:
+					template = self._class.get_component_template(SelectableComponent.NAME)
+				except KeyError:
+					pass
+				else:
+					ran_on_isl = True
+					if 'range_applies_only_on_island' in template:
+						ran_on_isl =  template['range_applies_only_on_island']
+					SelectableBuildingComponent.select_building(self.session, building.position, settlement, self._class.radius, ran_on_isl)
 			else: # not buildable
 				# must remove other highlight, fife does not support both
 				self.renderer.removeOutlined(self.buildings_fife_instances[building])
@@ -496,10 +505,16 @@ class BuildingTool(NavigationTool):
 
 	def _remove_building_instances(self):
 		"""Deletes fife instances of buildings"""
-		if self._class.class_has_component(SelectableComponent):
+
+		try:
+			self._class.get_component_template(SelectableComponent.NAME)
+		except KeyError:
+			pass
+		else:
 			deselected_tiles = SelectableBuildingComponent.deselect_building(self.session)
 			# redraw buildables (removal of selection might have tampered with it)
 			self.highlight_buildable(deselected_tiles)
+
 		for inst_weakref in self._modified_instances:
 			fife_instance = inst_weakref()
 			if fife_instance:

@@ -14,6 +14,7 @@ tooltip_text: _ Defends your settlement.
 settler_level: 1
 buildingcosts: {1: 500, 4: 12, 6: 3}
 components:
+- SelectableComponent: {type: building}
 - HealthComponent: {maxhealth: 1000}
 - StorageComponent
 actionsets:

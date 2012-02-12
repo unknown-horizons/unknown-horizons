@@ -16,6 +16,7 @@ settler_level: 0
 buildingcosts: {1: 1000, 4: 5}
 components:
 # NOTE: don't add a producer component, it's currently not guaranteed to work flawlessly in combination with SettlementStorage
+- SelectableComponent: {type: building}
 - HealthComponent: {maxhealth: 1000}
 - StorageComponent:
     inventory:

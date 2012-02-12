@@ -15,6 +15,7 @@ tooltip_text: _ Evaporates salt. Built on sea coast.
 settler_level: 2
 buildingcosts: {1: 350, 4: 4, 6: 2}
 components:
+- SelectableComponent: {type: building}
 - HealthComponent: {maxhealth: 1000}
 - ProducerComponent:
     productionlines:

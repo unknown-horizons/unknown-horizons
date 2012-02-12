@@ -15,6 +15,7 @@ tooltip_text: null
 settler_level: 0
 buildingcosts: {}
 components:
+- SelectableComponent: {type: building}
 - HealthComponent: {maxhealth: 10}
 - StorageComponent:
     inventory:

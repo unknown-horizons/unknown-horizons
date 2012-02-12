@@ -15,6 +15,7 @@ tooltip_text: _ Fulfills religious needs of sailors.
 settler_level: 0
 buildingcosts: {1: 500, 4: 5, 6: 2}
 components:
+- SelectableComponent: {type: building}
 - HealthComponent: {maxhealth: 1000}
 - ProducerComponent:
     productionlines:

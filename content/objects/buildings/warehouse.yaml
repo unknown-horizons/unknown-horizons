@@ -15,6 +15,7 @@ tooltip_text: null
 settler_level: 0
 buildingcosts: {1: 1000, 4: 12}
 components:
+- SelectableComponent: {type: building}
 - HealthComponent: {maxhealth: 1000}
 # NOTE: productions in combinations with SettlementStorage are allowed here since there is only this one warehouse per settlement
 - ProducerComponent:

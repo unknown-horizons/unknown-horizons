@@ -14,6 +14,7 @@ tooltip_text: _ Extinguishes fires.
 settler_level: 1
 buildingcosts: {1: 750, 4: 3, 6: 2, 7: 5}
 components:
+- SelectableComponent: {type: building}
 - HealthComponent: {maxhealth: 1000}
 actionsets:
   as_fireservice0: {level: 0}

@@ -77,17 +77,14 @@ class BuildingClass(IngameType):
 		buildable_on_deposit_type = db("SELECT deposit FROM mine WHERE mine = ?", self.id)
 		if buildable_on_deposit_type:
 			self.buildable_on_deposit_type = buildable_on_deposit_type[0][0]
-		if self.class_has_component(SelectableComponent):
+		try:
+			self.get_component_template(SelectableComponent.NAME)
+		except KeyError:
+			pass
+		else:
 			related_building = db.cached_query("SELECT building FROM related_buildings where building = ?", self.id)
 			if len(related_building) > 0:
 				self.tabs += (BuildRelatedTab,)
-
-	def class_has_component(self, component):
-		"""Same as in ComponentHolder, but works on types rather than instances"""
-		return any( template_key.iterkeys().next() == component.NAME
-		            	if isinstance(template_key, dict) else
-		           	template_key == component
-		            	for template_key in self.component_templates )
 
 	def __str__(self):
 		return "Building[" + str(self.id) + "](" + self.name + ")"
