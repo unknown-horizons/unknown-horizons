@@ -191,23 +191,7 @@ class BuildingCollector(Collector):
 			self.move_home(callback=self.reached_home)
 		super(BuildingCollector, self).finish_working()
 
-	""" unused for now
-	def reroute(self):
-		""Reroutes the collector to a different job, or home if no job is found.
-		Can be called the current job can't be executed any more""
-		self.log.debug("%s reroute", self)
-		# Get a new job
-		job = self.get_job()
-		# Check if there is a new job
-		if job is not None:
-			# There is a new job!
-			self.job = job
-			self.begin_current_job()
-		else:
-			# There is no new job...
-			# Return home and end job
-			self.move_home(callback=self.reached_home)
-	"""
+	# unused reroute code removed in 2aef7bba77536da333360566467d9a2f08d38cab
 
 	def reached_home(self):
 		"""Exchanges resources with home and calls end_job"""

@@ -79,6 +79,9 @@ class CannonBuilder(SelectableBuilding, CollectingBuilding, BuildableSingle, Bas
 	pass
 
 class Fisher(SelectableBuilding, CollectingBuilding, BuildableSingleOnCoast, BasicBuilding):
+	"""
+	Old selection workaround (only color fish) removed in b69c72aeef0174c42dec4039eed7b81f96f6dcaa.
+	"""
 	range_applies_only_on_island = False
 
 	def get_non_paused_utilisation(self):
@@ -92,7 +95,7 @@ class Fisher(SelectableBuilding, CollectingBuilding, BuildableSingleOnCoast, Bas
 		return total / float(len(productions))
 
 class SettlerServiceProvider(SelectableBuilding, CollectingBuilding, BuildableSingle, BasicBuilding):
-	"""Class for Churches, School that provide a service-type res for settlers.
+	"""Class for Pavilion, School, etc. that provide a service-type res for inhabitants.
 	Also provides collectors for buildings that consume resources (tavern)."""
 	def get_status_icons(self):
 		banned_classes = (InventoryFullStatus, ProductivityLowStatus)

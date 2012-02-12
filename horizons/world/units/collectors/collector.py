@@ -383,12 +383,7 @@ class Collector(Unit):
 		assert remnant == 0, "%s couldn't give all of res %s; remnant: %s; inventory: %s" % \
 		       (self, res, remnant, self.get_component(StorageComponent).inventory)
 
-	""" unused for now
-	def reroute(self):
-		""Reroutes the collector to a different job.
-		Can be called the current job can't be executed any more""
-		raise NotImplementedError
-	"""
+	# unused reroute code removed in 2aef7bba77536da333360566467d9a2f08d38cab
 
 	def end_job(self):
 		"""Contrary to setup_new_job"""

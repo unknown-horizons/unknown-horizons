@@ -406,6 +406,10 @@ def create_random_island(id_string):
 	map_db("COMMIT")
 	return map_db
 
+def _simplify_seed(seed):
+	"""Return the simplified seed value. The goal of this is to make it easier for users to convey the seeds orally."""
+	return str(seed).lower().strip()
+
 def generate_map(seed, map_size, water_percent, max_island_size, preferred_island_size, island_size_deviation):
 	"""
 	Generates a random map.
@@ -420,7 +424,7 @@ def generate_map(seed, map_size, water_percent, max_island_size, preferred_islan
 	"""
 
 	max_island_size = min(max_island_size, map_size)
-	rand = random.Random(seed)
+	rand = random.Random(_simplify_seed(seed))
 	min_island_size = 20 # minimum chosen island side length (the real size my be smaller)
 	min_island_separation = 3 + map_size / 100 # minimum distance between two islands
 	max_island_side_coefficient = 4 # maximum value of island's max(side length) / min(side length)
