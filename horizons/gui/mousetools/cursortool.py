@@ -37,10 +37,18 @@ class CursorTool(fife.IMouseListener):
 		super(CursorTool, self).__init__()
 		assert isinstance(session, horizons.session.Session)
 		self.session = session
+		self.enable()
+
+	def enable(self):
+		"""Call this to get events."""
 		horizons.main.fife.eventmanager.addMouseListener(self)
 
-	def remove(self):
+	def disable(self):
+		"""Call this to not get events."""
 		horizons.main.fife.eventmanager.removeMouseListener(self)
+
+	def remove(self):
+		self.disable()
 
 	def mousePressed(self, evt):
 		pass

@@ -276,6 +276,11 @@ class ResourceOverviewBar(object):
 		self._hide_resource_selection_dialog()
 		self._show_dummy_slot(True)
 
+		# set mousetool to get notified on clicks outside the resbar area
+		if not isinstance(self.session.cursor, ResBarMouseTool):
+			self.session.cursor = ResBarMouseTool(self.session, self.session.cursor,
+			                                      self._hide_resource_selection_dialog)
+
 		inv = self._get_current_inventory()
 		on_click = functools.partial(self._set_resource_slot, slot_num)
 		cur_res = self._get_current_resources()
@@ -355,3 +360,20 @@ class ResourceOverviewBar(object):
 		gui = load_uh_widget( self.__class__.GOLD_ENTRY_GUI_FILE )
 		icon = gui.findChild(name="background_icon")
 		return icon.position
+
+
+from horizons.gui.mousetools import NavigationTool
+class ResBarMouseTool(NavigationTool):
+	"""Temporary mousetool for resource selection.
+	Terminates self on mousePressed and restores old tool"""
+	def __init__(self, session, old_tool, on_click):
+		super(ResBarMouseTool, self).__init__(session)
+		old_tool.disable()
+		self.old_tool = old_tool
+		self.on_click = on_click
+
+	def mousePressed(self, evt):
+		self.on_click()
+		self.session.cursor = self.old_tool
+		self.remove()
+		self.old_tool.enable()
