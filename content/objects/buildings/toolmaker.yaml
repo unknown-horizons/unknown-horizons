@@ -9,7 +9,7 @@ size_y: 2
 inhabitants_start: 1
 inhabitants_max: 1
 button_name: toolmaker-1
-tabs: [ProductionOverviewTab, InventoryTab]
+tabs: [ProductionOverviewTab]
 enemy_tabs: [EnemyBuildingOverviewTab,]
 tooltip_text: _ Produces tools out of iron.
 settler_level: 2

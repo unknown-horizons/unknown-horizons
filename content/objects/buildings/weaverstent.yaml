@@ -9,7 +9,7 @@ size_y: 2
 inhabitants_start: 2
 inhabitants_max: 2
 button_name: weaver-1
-tabs: [ProductionOverviewTab, InventoryTab]
+tabs: [ProductionOverviewTab ]
 enemy_tabs: [EnemyBuildingOverviewTab,]
 tooltip_text: _ Turns lamb wool into cloth.
 settler_level: 1

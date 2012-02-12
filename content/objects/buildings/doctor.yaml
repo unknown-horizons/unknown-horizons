@@ -8,7 +8,7 @@ size_x: 2
 size_y: 2
 inhabitants_start: 2
 inhabitants_max: 3
-tabs: [ProductionOverviewTab, InventoryTab]
+tabs: [ProductionOverviewTab,]
 enemy_tabs: [EnemyBuildingOverviewTab,]
 button_name: doctor-1
 tooltip_text: _ Treats diseases. Consumes herbs.

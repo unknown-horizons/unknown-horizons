@@ -9,7 +9,7 @@ size_y: 1
 inhabitants_start: 1
 inhabitants_max: 1
 button_name: null
-tabs: [ProductionOverviewTab, InventoryTab]
+tabs: [ProductionOverviewTab]
 enemy_tabs: [EnemyBuildingOverviewTab,]
 tooltip_text: _ Increases the player's sight.
 settler_level: 0

@@ -10,7 +10,7 @@ inhabitants_start: 1
 inhabitants_max: 2
 button_name: clay-pit-1
 tooltip_text: _ Gets clay from deposit.
-tabs: [ProductionOverviewTab, InventoryTab]
+tabs: [ProductionOverviewTab]
 enemy_tabs: [EnemyBuildingOverviewTab,]
 settler_level: 1
 buildingcosts: {1: 500, 4: 10, 6: 2}

@@ -9,7 +9,7 @@ size_y: 4
 inhabitants_start: 2
 inhabitants_max: 2
 button_name: smeltery-1
-tabs: [ProductionOverviewTab, InventoryTab]
+tabs: [ProductionOverviewTab]
 enemy_tabs: [EnemyBuildingOverviewTab,]
 tooltip_text: _ Refines all kind of ores.
 settler_level: 2

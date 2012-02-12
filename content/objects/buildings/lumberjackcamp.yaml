@@ -24,7 +24,6 @@ buildingcosts: {1: 250, 6: 2}
 components:
 - SelectableComponent: {type: building}
 - HealthComponent: {maxhealth: 1000}
-- SelectableComponent: {type: building}
 - ProducerComponent:
     productionlines:
       2:

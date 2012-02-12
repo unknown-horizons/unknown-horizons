@@ -13,7 +13,6 @@ tooltip_text: _ Provides lumber. Chopped down by lumberjacks.
 settler_level: 0
 buildingcosts: {1: 10}
 components:
-- SelectableComponent: {type: building}
 - HealthComponent: {maxhealth: 10}
 - ProducerComponent:
     productionlines:
