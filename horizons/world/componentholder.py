@@ -27,6 +27,7 @@ from horizons.world.component.tradepostcomponent import TradePostComponent
 from horizons.world.component.ambientsoundcomponent import AmbientSoundComponent
 from horizons.world.component.healthcomponent import HealthComponent
 from horizons.world.component.selectablecomponent import SelectableComponent
+from horizons.world.component.commandablecomponent import CommandableComponent
 from horizons.world.production.producer import Producer, QueueProducer, UnitProducer
 
 class ComponentHolder(object):
@@ -67,6 +68,7 @@ class ComponentHolder(object):
 	    'QueueProducerComponent': QueueProducer,
 	    'UnitProducerComponent': UnitProducer,
 	    'SelectableComponent': SelectableComponent,
+	    'CommandableComponent': CommandableComponent,
 	}
 
 

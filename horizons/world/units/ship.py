@@ -34,6 +34,7 @@ from horizons.constants import LAYERS
 from horizons.scheduler import Scheduler
 from horizons.world.component.namedcomponent import ShipNameComponent, NamedComponent
 from horizons.world.component.selectablecomponent import SelectableComponent
+from horizons.world.component.commandablecomponent import CommandableComponent
 from horizons.world.traderoute import TradeRoute
 
 class Ship(Unit):
@@ -73,6 +74,7 @@ class Ship(Unit):
 		self.session.world.ships.append(self)
 		if self.in_ship_map:
 			self.session.world.ship_map[self.position.to_tuple()] = weakref.ref(self)
+		commandable_component = self.get_component(CommandableComponent)
 
 	def set_name(self, name):
 		self.get_component(ShipNameComponent).set_name(name)
@@ -116,39 +118,14 @@ class Ship(Unit):
 			self.session.world.ship_map[self._next_target.to_tuple()] = weakref.ref(self)
 
 	def go(self, x, y):
-		"""Moves the ship.
-		This is called when a ship is selected and the right mouse button is pressed outside the ship"""
-		self.stop()
-
 		#disable the trading route
 		if hasattr(self, 'route'):
 			self.route.disable()
-
-		move_target = Point(int(round(x)), int(round(y)))
-		move_possible = False
-
-		try:
-			self.move(move_target)
-			move_possible = True
-		except MoveNotPossible:
-			# find a near tile to move to
-			surrounding = Circle(move_target, radius=1)
-			# try with smaller circles, increase radius if smaller circle isn't reachable
-			while surrounding.radius < 5:
-				try:
-					self.move(surrounding)
-					move_possible = True
-				except MoveNotPossible:
-					surrounding.radius += 1
-					continue
-				break
-
-		if not move_possible: # neither target nor surrounding possible
-			# TODO: give player some kind of feedback
+		if self.get_component(CommandableComponent).go(x, y) is None:
 			self._update_buoy()
 		else:
 			self.session.ingame_gui.minimap.show_unit_path(self)
-
+		
 	def move(self, *args, **kwargs):
 		super(Ship, self).move(*args, **kwargs)
 		if self._selected and self.session.world.player == self.owner: # handle buoy

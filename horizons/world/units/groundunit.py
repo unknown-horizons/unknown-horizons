@@ -30,6 +30,7 @@ from unit import Unit
 from horizons.constants import GAME_SPEED, WEAPONS
 from horizons.world.units.weaponholder import MovingWeaponHolder
 from horizons.world.component.selectablecomponent import SelectableComponent
+from horizons.world.component.commandablecomponent import CommandableComponent
 
 class GroundUnit(Unit):
 	"""Class representing ground unit
@@ -75,33 +76,6 @@ class GroundUnit(Unit):
 		self.session.world.ground_unit_map[self.position.to_tuple()] = weakref.ref(self)
 		self.session.world.ground_unit_map[self._next_target.to_tuple()] = weakref.ref(self)
 
-	def go(self, x, y):
-		"""Moves the unit.
-		This is called when a unit is selected and the right mouse button is pressed outside the unit"""
-		self.stop()
-
-		move_target = Point(int(round(x)), int(round(y)))
-		try:
-			self.move(move_target)
-		except MoveNotPossible:
-			# find a near tile to move to
-			surrounding = Circle(move_target, radius=1)
-			move_target = None
-			# try with smaller circles, increase radius if smaller circle isn't reachable
-			while surrounding.radius < 5:
-				try:
-					self.move(surrounding)
-				except MoveNotPossible:
-					surrounding.radius += 1
-					continue
-				# update actual target coord
-				move_target = self.get_move_target()
-				break
-
-		if move_target is None: # can't move
-			# TODO: give player some kind of feedback
-			return
-
 	def load(self, db, worldid):
 		super(GroundUnit, self).load(db, worldid)
 
@@ -121,7 +95,7 @@ class FightingGroundUnit(MovingWeaponHolder, GroundUnit):
 		self.name = map(lambda x: unicode(x[0], 'utf-8'), names)
 
 	def go(self, x, y):
-		super(FightingGroundUnit, self).go(x, y)
+		self.get_component(SelectableComponent).go(x, y)
 		self.stop_attack()
 
 	def act_attack(self, dest):

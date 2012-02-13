@@ -23,6 +23,7 @@ from horizons.gui.tabs import EnemyShipOverviewTab, FightingShipOverviewTab
 from horizons.constants import WEAPONS, GAME_SPEED
 from horizons.world.units.weaponholder import MovingWeaponHolder
 from horizons.world.units.ship import Ship
+from horizons.world.component.commandablecomponent import CommandableComponent
 
 class FightingShip(MovingWeaponHolder, Ship):
 	"""Class representing a fighting ship ship
@@ -38,7 +39,7 @@ class FightingShip(MovingWeaponHolder, Ship):
 			self.add_weapon_to_storage(WEAPONS.CANNON)
 
 	def go(self, x, y):
-		super(FightingShip, self).go(x, y)
+		self.get_component(CommandableComponent).go(x, y)
 		self.stop_attack()
 
 	def fire_all_weapons(self, dest, rotate = True, bullet_delay = GAME_SPEED.TICKS_PER_SECOND):
