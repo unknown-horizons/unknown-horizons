@@ -601,12 +601,14 @@ msgstr "Chyba při smazání uloženého souboru!"
 msgid "[{key}] = {text}"
 msgstr ""
 
+# 97%
 #. (tooltip of widget: headline)
 #: horizons/gui/ingamegui.py:206 horizons/gui/tabs/mainsquaretabs.py:108
 #: horizons/gui/widgets/playerssettlements.py:101
 #: horizons/i18n/guitranslations.py:368 horizons/i18n/guitranslations.py:399
+#, fuzzy
 msgid "Click to change the name of your settlement"
-msgstr ""
+msgstr "Klikněte pro změnu jména Vaší osady."
 
 #. e.g. when the pirate is disabled
 #. this dialog is pretty useless in this case
@@ -1789,10 +1791,12 @@ msgstr ""
 msgid "Status"
 msgstr ""
 
+# 87%
 #. (text of widget: weapons)
 #: horizons/i18n/guitranslations.py:601
+#, fuzzy
 msgid "Weapons"
-msgstr ""
+msgstr "Zbraně:"
 
 #. (tooltip of widget: aggressive) Description of combat stance (how units behave when fighting)
 #: horizons/i18n/guitranslations.py:608
