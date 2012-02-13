@@ -65,6 +65,7 @@ class IngameType(type):
 		self.component_templates = yaml_data['components']
 		self.action_sets = yaml_data['actionsets']
 		self.action_sets_by_level = self.action_sets_by_level(self.action_sets)
+		self.baseclass = yaml_data['baseclass'] # mostly only for debug
 		self._real_object = None # wrapped by _object
 
 		"""TUTORIAL: Now you know the basic attributes each type has. Further attributes
