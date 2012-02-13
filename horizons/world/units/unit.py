@@ -81,7 +81,7 @@ class Unit(MovingObject):
 			self.act(self._action, location, True)
 		self.session.view.cam.refresh()
 
-	def draw_health(self, remove_only=True):
+	def draw_health(self, remove_only=False):
 		"""Draws the units current health as a healthbar over the unit."""
 		if not self.has_component(HealthComponent):
 			return
