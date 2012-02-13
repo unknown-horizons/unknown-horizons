@@ -288,7 +288,9 @@ class ResourceOverviewBar(object):
 		on_click = functools.partial(self._set_resource_slot, slot_num)
 		cur_res = self._get_current_resources()
 		res_filter = lambda res_id : res_id not in cur_res
-		dlg = create_resource_selection_dialog(on_click, inv, self.session.db, res_filter)
+		dlg = create_resource_selection_dialog(on_click, inv, self.session.db,
+		                                       widget='resbar_resource_selection.xml',
+		                                       res_filter=res_filter)
 
 		# position dlg below slot
 		cur_gui = self.gui[slot_num]
