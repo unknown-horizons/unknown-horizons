@@ -26,7 +26,6 @@ import weakref
 import functools
 
 from horizons.constants import RES
-from horizons.extscheduler import ExtScheduler
 from horizons.world.component.storagecomponent import StorageComponent
 from horizons.util.gui import load_uh_widget, get_res_icon, create_resource_selection_dialog
 from horizons.util import PychanChildFinder, Callback
@@ -132,6 +131,7 @@ class ResourceOverviewBar(object):
 
 		if instance in (None, self): # show nothing instead
 			self.current_instance = weakref.ref(self) # can't weakref to None
+			self._do_show_dummy = False # don't save dummy value
 			return
 
 		self.current_instance = weakref.ref(instance)
@@ -281,12 +281,16 @@ class ResourceOverviewBar(object):
 		if inv is None:
 			return
 
-		self._show_dummy_slot(True)
+		self._show_dummy_slot()
 
 		# set mousetool to get notified on clicks outside the resbar area
 		if not isinstance(self.session.cursor, ResBarMouseTool):
+			def on_away_click():
+				self._hide_resource_selection_dialog()
+				self._hide_dummy_slot()
 			self.session.cursor = ResBarMouseTool(self.session, self.session.cursor,
-			                                      self._hide_resource_selection_dialog)
+			                                      on_away_click)
+
 
 		on_click = functools.partial(self._set_resource_slot, slot_num)
 		cur_res = self._get_current_resources()
@@ -325,26 +329,23 @@ class ResourceOverviewBar(object):
 
 		self.set_inventory_instance(self.current_instance(), force_update=True)
 
+		if isinstance(self.session.cursor, ResBarMouseTool):
+			self.session.cursor.reset()
+			self._hide_dummy_slot()
+
 	def _hide_resource_selection_dialog(self):
 		if hasattr(self, "_res_selection_dialog"):
 			self._res_selection_dialog.hide()
 			del self._res_selection_dialog
-		self._show_dummy_slot(False)
 
-	def _show_dummy_slot(self, visible):
-		"""Whether to show the dummy button at the end to allow for addition of slots"""
-		if visible:
-			if self._do_show_dummy:
-				return # already visible
-			ExtScheduler().rem_call(self, self.__hide_dummy)
-			self._do_show_dummy = True
-			self.set_inventory_instance(self.current_instance(), force_update=True)
-		else: # fade out
-			if not self._do_show_dummy:
-				return # already hidden
-			ExtScheduler().add_new_object(self.__hide_dummy, self, 15)
+	def _show_dummy_slot(self):
+		"""Show the dummy button at the end to allow for addition of slots"""
+		if self._do_show_dummy:
+			return # already visible
+		self._do_show_dummy = True
+		self.set_inventory_instance(self.current_instance(), force_update=True)
 
-	def __hide_dummy(self):
+	def _hide_dummy_slot(self):
 		self._do_show_dummy = False
 		self.set_inventory_instance(self.current_instance(), force_update=True)
 
@@ -386,6 +387,10 @@ class ResBarMouseTool(NavigationTool):
 
 	def mousePressed(self, evt):
 		self.on_click()
+		self.reset()
+
+	def reset(self):
+		"""Enable old tol again"""
 		self.session.cursor = self.old_tool
 		self.remove()
 		self.old_tool.enable()
