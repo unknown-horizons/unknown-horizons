@@ -23,8 +23,8 @@ import logging
 
 
 from horizons.world.component import Component
-from horizons.util import Point
-from horizons.world.units.movingobject import MoveNotPossible
+from horizons.util import Point, Circle
+
 
 
 class CommandableComponent(Component):
@@ -40,11 +40,12 @@ class CommandableComponent(Component):
 		super(CommandableComponent, self).__init__()
 		
 	def go(self, x, y):
+		from horizons.world.units.movingobject import MoveNotPossible
 		"""Moves the unit.
 		This is called when a unit is selected and the right mouse button is pressed outside the unit"""
 		move_target = Point(int(round(x)), int(round(y)))
 		try:
-			self.move(move_target)
+			self.instance.move(move_target)
 		except MoveNotPossible:
 			# find a near tile to move to
 			surrounding = Circle(move_target, radius=1)
@@ -52,12 +53,12 @@ class CommandableComponent(Component):
 			# try with smaller circles, increase radius if smaller circle isn't reachable
 			while surrounding.radius < 5:
 				try:
-					self.move(surrounding)
+					self.instance.move(surrounding)
 				except MoveNotPossible:
 					surrounding.radius += 1
 					continue
 				# update actual target coord
-				move_target = self.get_move_target()
+				move_target = self.instance.get_move_target()
 				break
 
 		if move_target is None: # can't move

@@ -17,6 +17,7 @@ components:
 - ShipNameComponent
 - HealthComponent:
    maxhealth: 200
+- CommandableComponent   
 
 actionsets:
    as_frigate0: {level: 0}

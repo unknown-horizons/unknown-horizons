@@ -76,9 +76,6 @@ class GroundUnit(Unit):
 		self.session.world.ground_unit_map[self.position.to_tuple()] = weakref.ref(self)
 		self.session.world.ground_unit_map[self._next_target.to_tuple()] = weakref.ref(self)
 
-	def go(self, x, y):
-		self.get_component(SelectableComponent).go(self, x, y)
-
 	def load(self, db, worldid):
 		super(GroundUnit, self).load(db, worldid)
 
@@ -98,7 +95,7 @@ class FightingGroundUnit(MovingWeaponHolder, GroundUnit):
 		self.name = map(lambda x: unicode(x[0], 'utf-8'), names)
 
 	def go(self, x, y):
-		super(FightingGroundUnit, self).go(x, y)
+		self.get_component(SelectableComponent).go(x, y)
 		self.stop_attack()
 
 	def act_attack(self, dest):
