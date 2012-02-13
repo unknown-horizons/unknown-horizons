@@ -277,6 +277,10 @@ class ResourceOverviewBar(object):
 	def _show_resource_selection_dialog(self, slot_num):
 		"""Shows gui for selecting a resource for slot slot_num"""
 		self._hide_resource_selection_dialog()
+		inv = self._get_current_inventory()
+		if inv is None:
+			return
+
 		self._show_dummy_slot(True)
 
 		# set mousetool to get notified on clicks outside the resbar area
@@ -284,7 +288,6 @@ class ResourceOverviewBar(object):
 			self.session.cursor = ResBarMouseTool(self.session, self.session.cursor,
 			                                      self._hide_resource_selection_dialog)
 
-		inv = self._get_current_inventory()
 		on_click = functools.partial(self._set_resource_slot, slot_num)
 		cur_res = self._get_current_resources()
 		res_filter = lambda res_id : res_id not in cur_res
