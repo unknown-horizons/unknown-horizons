@@ -23,7 +23,7 @@ from horizons.constants import SETTLER
 
 class IngameType(type):
 	"""Class that is used to create Ingame-Type-Classes from yaml data.
-	@param id: int - building id in the database.
+	@param id: building or unit type id
 	@param yaml_data: a dict containing all the data read from yaml files
 
 	Note this creates class types, NOT instances.

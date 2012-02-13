@@ -33,16 +33,16 @@ from horizons.world.buildingowner import BuildingOwner
 from horizons.gui.widgets.minimap import Minimap
 
 class Island(BuildingOwner, WorldObject):
-	"""The Island class represents an Island by keeping a list of all instances on the map,
-	that belong to the island. The island attribute is also set on every instance that belongs
-	to an island, making it easy to determine to which island the instance belongs, when
-	selected.
+	"""The Island class represents an island by keeping a list of all things on the map,
+	that belong to the island. This comprises ground tiles as well as buildings,
+	nature objects (which are buildings) and units.
+	All those objects have furthermore a reference to the island, making it easy to determine to which island the instance belongs.
 	An Island instance is created at map creation, when all tiles are added to the map.
 	@param origin: Point instance - Position of the (0, 0) ground tile.
 	@param filename: file from which the island is loaded.
 
 	Each island holds some important attributes:
-	* grounds - All grounds that belong to the island are referenced here.
+	* grounds - All ground tiles that belong to the island are referenced here.
 	* grounds_map -  a dictionary that binds tuples of coordinates with a reference to the tile:
 	                  { (x, y): tileref, ...}
 					  This is important for pathfinding and quick tile fetching.
@@ -110,6 +110,7 @@ class Island(BuildingOwner, WorldObject):
 		Load the actual island from a file
 		@param origin: Point
 		@param filename: String, filename of island db or random map id
+		@param preview: flag, map preview mode
 		"""
 		self.file = filename
 		self.origin = origin
@@ -147,7 +148,7 @@ class Island(BuildingOwner, WorldObject):
 		max_y = max(zip(*self.ground_map.keys())[1])
 		self.position = Rect.init_from_borders(min_x, min_y, max_x, max_y)
 
-		if not preview:
+		if not preview: # this isn't needed for previews, but it is in actual games
 			self.path_nodes = IslandPathNodes(self)
 
 			# repopulate wild animals every 2 mins if they die out.

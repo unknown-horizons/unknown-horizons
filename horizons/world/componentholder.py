@@ -46,7 +46,7 @@ class ComponentHolder(object):
 
 	The components are stored in a dict, the key is their name (a string).
 	This is necessary so objects can be defined as a collection of their components in
-	human r/w-able format. This is done via yaml files in our case in content/objects.
+	human readable format. This is done via yaml files in our case in content/objects.
 	You could check out e.g. content/objects/buildings/lumberjackcamp.yaml to see what
 	it looks like in reality.
 

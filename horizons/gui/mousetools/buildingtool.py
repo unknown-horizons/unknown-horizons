@@ -440,13 +440,23 @@ class BuildingTool(NavigationTool):
 							)
 				cmd.execute(self.session)
 			else:
-				# check whether to issue a missing res notification
-				# we need the localized resource name here
-				if building in self.buildings_missing_resources:
-					res_name = self.session.db.get_res_name( self.buildings_missing_resources[building] )
-					self.session.ingame_gui.message_widget.add(building.position.origin.x, \
-										                       building.position.origin.y, \
-										                       'NEED_MORE_RES', {'resource' : _(res_name)})
+				if len(self.buildings) == 1: # only give messages for single bulds
+					# first, buildable reasons such as grounds
+					# second, resources
+
+					if building.problem is not None:
+						msg = building.problem[1]
+						self.session.ingame_gui.message_widget.add_custom(
+						  building.position.origin.x, building.position.origin.y,
+						  msg)
+
+					# check whether to issue a missing res notification
+					# we need the localized resource name here
+					elif building in self.buildings_missing_resources:
+						res_name = self.session.db.get_res_name( self.buildings_missing_resources[building] )
+						self.session.ingame_gui.message_widget.add(
+						  building.position.origin.x, building.position.origin.y,
+						  'NEED_MORE_RES', {'resource' : _(res_name)})
 
 		if built:
 			PlaySound("build").execute(self.session, True)
