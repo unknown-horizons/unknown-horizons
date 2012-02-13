@@ -44,7 +44,7 @@ class ResourceOverviewBar(object):
 	- show costs of current build [x]
 	- configure the resources to show [x]
 		- per settlement [x]
-		- add new slots [ ]
+		- add new slots [x]
 		- switch displayed resources to construction relevant res on build [x]
 		- res selection consistent with other res selection dlgs [x]
 
@@ -61,12 +61,15 @@ class ResourceOverviewBar(object):
 
 	STYLE = "resource_bar"
 
-	DEFAULT_RESOURCES = [ RES.FOOD_ID,
-	                      RES.TOOLS_ID,
+	DEFAULT_RESOURCES = [ RES.TOOLS_ID,
 	                      RES.BOARDS_ID,
 	                      RES.BRICKS_ID,
-	                      RES.TEXTILE_ID ]
+	                      RES.FOOD_ID,
+	                      RES.TEXTILE_ID,
+	                      RES.SALT_ID,
+	                    ]
 
+	# order should match the above, else confuses players when in build mode
 	CONSTRUCTION_RESOURCES = [ RES.TOOLS_ID,
 	                           RES.BOARDS_ID,
 	                           RES.BRICKS_ID ]
