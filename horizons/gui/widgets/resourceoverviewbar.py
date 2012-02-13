@@ -329,10 +329,14 @@ class ResourceOverviewBar(object):
 	def _show_dummy_slot(self, visible):
 		"""Whether to show the dummy button at the end to allow for addition of slots"""
 		if visible:
+			if self._do_show_dummy:
+				return # already visible
 			ExtScheduler().rem_call(self, self.__hide_dummy)
 			self._do_show_dummy = True
 			self.set_inventory_instance(self.current_instance(), force_update=True)
 		else: # fade out
+			if not self._do_show_dummy:
+				return # already hidden
 			ExtScheduler().add_new_object(self.__hide_dummy, self, 15)
 
 	def __hide_dummy(self):
