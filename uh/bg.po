@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2012-02-08 02:09+0100\n"
-"PO-Revision-Date: 2012-01-21 02:12+0200\n"
+"PO-Revision-Date: 2012-01-21 02:15+0200\n"
 "Last-Translator: Christopher Oelmueller <chris.oelmueller+uh@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: bg\n"
@@ -577,12 +577,14 @@ msgstr "Неуспех при изтриване на запазена игра!
 msgid "[{key}] = {text}"
 msgstr ""
 
+# 97%
 #. (tooltip of widget: headline)
 #: horizons/gui/ingamegui.py:206 horizons/gui/tabs/mainsquaretabs.py:108
 #: horizons/gui/widgets/playerssettlements.py:101
 #: horizons/i18n/guitranslations.py:368 horizons/i18n/guitranslations.py:399
+#, fuzzy
 msgid "Click to change the name of your settlement"
-msgstr ""
+msgstr "Натисни за смяна на името на селището."
 
 #. e.g. when the pirate is disabled
 #. this dialog is pretty useless in this case
@@ -1042,11 +1044,13 @@ msgstr "Общо"
 msgid "Ships of {player}"
 msgstr ""
 
+# 97%
 #. (tooltip of widget: name)
 #: horizons/gui/widgets/playersships.py:82
 #: horizons/i18n/guitranslations.py:439 horizons/i18n/guitranslations.py:450
+#, fuzzy
 msgid "Click to change the name of this ship"
-msgstr ""
+msgstr "Натисни за да смениш името на този кораб."
 
 #. i18n There are no weapons equipped at the moment.
 #: horizons/gui/widgets/playersships.py:97
