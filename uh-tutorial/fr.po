@@ -7,8 +7,8 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: translate-uh@lists.unknown-horizons.org\n"
 "POT-Creation-Date: 2011-10-31 20:46+0100\n"
-"PO-Revision-Date: 2011-12-29 21:14+0200\n"
-"Last-Translator: Sebastien (seblabel) <sebastiencharpentier@laposte.net>\n"
+"PO-Revision-Date: 2012-02-13 11:47+0200\n"
+"Last-Translator: Traveler <guillaume.pascal43@laposte.net>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: fr\n"
 "MIME-Version: 1.0\n"
@@ -43,7 +43,7 @@ msgid ""
 "like the Free Trader."
 msgstr ""
 "Construisez un comptoir sur la côte, ainsi il sera facilement accessible aux "
-"autres navires comme ceux du Marchant Indépendant."
+"autres navires comme ceux du Marchand Indépendant."
 
 #. This is a logbook page heading. Space is VERY short, please only translate to strings that fit (roughly 30 characters max).
 #: po/tutorial.py:10
@@ -83,8 +83,8 @@ msgstr ""
 "nouveau.\n"
 "\n"
 "Pour toutes suggestions sur une meilleure rédaction, une incompréhension, ou "
-"pour nous rapporter un bug: N'hésitez pas à nous contacter et nous "
-"essaierons d'améliorer ce didacticiel!\n"
+"pour nous rapporter un bug : N'hésitez pas à nous contacter et nous "
+"essaierons d'améliorer ce didacticiel !\n"
 "\n"
 "Visitez www.unknown-horizons.org pour savoir comment contacter l'équipe!\n"
 "\n"
@@ -93,7 +93,7 @@ msgstr ""
 #. This is a logbook page heading. Space is VERY short, please only translate to strings that fit (roughly 30 characters max).
 #: po/tutorial.py:14
 msgid "NEW TASK: SETTLE ON AN ISLAND"
-msgstr "MISSION: COLONISER UNE ÎLE"
+msgstr "MISSION : COLONISER UNE ÎLE"
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:16
@@ -125,10 +125,10 @@ msgstr ""
 "\n"
 "Maintenant, un aperçu de votre comptoir devrait suivre votre curseur.\n"
 "\n"
-"Vous pouvez construire aux endroits où cet aperçu n’apparait pas en rouge.\n"
+"Vous pouvez construire aux endroits où cet aperçu n’apparaît pas en rouge.\n"
 "Cliquez à l'endroit où vous voulez placer votre première construction.\n"
 "\n"
-"MISSION: Construire un comptoir sur la côte."
+"MISSION : Construire un comptoir sur la côte."
 
 # I changed this to make it fit properly (seb)
 #. This is a logbook page heading. Space is VERY short, please only translate to strings that fit (roughly 30 characters max).
