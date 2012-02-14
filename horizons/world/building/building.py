@@ -190,13 +190,11 @@ class BasicBuilding(ComponentHolder, ConcreteObject):
 	def get_buildings_in_range(self):
 		# TODO Think about moving this to the Settlement class
 		buildings = self.settlement.buildings
-		ret_building = []
 		for building in buildings:
-			if building == self:
+			if building is self:
 				continue
 			if self.position.distance( building.position ) <= self.radius:
-				ret_building.append( building )
-		return ret_building
+				yield building
 
 	def update_action_set_level(self, level=0):
 		"""Updates this buildings action_set to a random actionset from the specified level

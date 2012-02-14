@@ -57,6 +57,11 @@ class SavegameUpgrader(object):
 		db("UPDATE stance set stance = \"flee_stance\" where stance =\"flee_stance\"")
 		db("UPDATE stance set stance = \"aggressive_stance\" where stance =\"aggressive\"")
 
+	def _upgrade_to_rev51(self, db):
+		# add fire slot to settlers. Use direct numbers since only these work and they must never change.
+		for (settler_id, ) in db("SELECT rowid FROM building WHERE type = ?", 3):
+			db("INSERT INTO storage_slot_limit(object, slot, value) VALUES(?, ?, ?)",
+			   settler_id, 42, 1)
 
 	def _upgrade(self):
 		# fix import loop
@@ -82,6 +87,9 @@ class SavegameUpgrader(object):
 				self._upgrade_to_rev49(db)
 			if rev < 50:
 				self._upgrade_to_rev50(db)
+			if rev < 51:
+				self._upgrade_to_rev51(db)
+
 
 
 

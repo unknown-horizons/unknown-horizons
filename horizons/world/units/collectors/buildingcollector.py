@@ -328,9 +328,12 @@ class FisherShipCollector(BuildingCollector):
 		reach = RadiusRect(self.home_building.position, self.home_building.radius)
 		return self.session.world.get_providers_in_range(reach, reslist=reslist)
 
+class DisasterRecoveryCollector(StorageCollector):
+	"""Collects disasters such as fire or pestilence."""
 
 decorators.bind_all(BuildingCollector)
 decorators.bind_all(FieldCollector)
 decorators.bind_all(FisherShipCollector)
 decorators.bind_all(SettlerCollector)
 decorators.bind_all(StorageCollector)
+decorators.bind_all(DisasterRecoveryCollector)

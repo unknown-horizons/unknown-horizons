@@ -171,9 +171,9 @@ def excepthook_creator(outfilename):
 		traceback.print_exception(exception_type, value, tb, file=f)
 		traceback.print_exception(exception_type, value, tb)
 		print
-		print _('Unknown Horizons crashed.')
+		print _('Unknown Horizons hash crashed.')
 		print
-		print _('We are very sorry for this, and want to fix this error.')
+		print _('We are very sorry for this and want to fix underlying error.')
 		print _('In order to do this, we need the information from the logfile:')
 		print outfilename
 		print _('Please give it to us via IRC or our forum, for both see unknown-horizons.org .')

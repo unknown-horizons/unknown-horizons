@@ -22,15 +22,20 @@
 
 from horizons.world.disaster import Disaster
 from horizons.world.status import SettlerUnhappyStatus
-from horizons.constants import GAME_SPEED
-from horizons.constants import BUILDINGS
+from horizons.constants import GAME_SPEED, BUILDINGS, RES
 from horizons.command.building import Tear
 from horizons.scheduler import Scheduler
 from horizons.util.python.callback import Callback
 
 class FireDisaster(Disaster):
+	"""Simulates a fire.
 
-	SEED_CHANCE = 0.2
+	Currently only affects settlers.
+	Starts at a certain building and will spread out over time.
+
+	"""
+
+	SEED_CHANCE = 0.9
 
 	EXPANSION_TIME = GAME_SPEED.TICKS_PER_SECOND * 10
 
@@ -42,6 +47,8 @@ class FireDisaster(Disaster):
 
 	TIME_BEFORE_HAVOC = GAME_SPEED.TICKS_PER_SECOND * 30
 
+	DISASTER_RES = RES.FIRE_ID
+
 	def __init__(self, settlement, manager):
 		super(FireDisaster, self).__init__(settlement, manager)
 		self._affected_buildings = []
@@ -49,10 +56,11 @@ class FireDisaster(Disaster):
 	def breakout(self):
 		possible_buildings = self._settlement.get_buildings_by_id(BUILDINGS.RESIDENTIAL_CLASS)
 		if len(possible_buildings) == 0:
+			self.log.debug("%s no buildings to breakout at", self)
 			return False
-		choice = self._settlement.session.random.randint(0, len(possible_buildings)-1)
-		building = possible_buildings[choice]
+		building = self._settlement.session.random.choice( possible_buildings )
 		self.infect(building)
+		self.log.debug("%s breakout out on %s at %s", self, building, building.position)
 		return True
 
 	@classmethod
@@ -62,6 +70,7 @@ class FireDisaster(Disaster):
 	def expand(self):
 		if not self.evaluate():
 			self._manager.end_disaster(self._settlement)
+			self.log.debug("%s ending", self)
 			# We are done here, time to leave
 			return
 		for building in self._affected_buildings:
@@ -76,6 +85,8 @@ class FireDisaster(Disaster):
 
 	def infect(self, building):
 		"""Infect a building with fire"""
+		self.log.debug("%s infecting %s at %s", self, building, building.position)
+		super(FireDisaster, self).infect(building)
 		building._registered_status_icons.append(SettlerUnhappyStatus())
 		self._affected_buildings.append(building)
 		Scheduler().add_new_object(Callback(self.wreak_havoc, building), self, run_in = self.TIME_BEFORE_HAVOC)
@@ -84,5 +95,6 @@ class FireDisaster(Disaster):
 		return len(self._affected_buildings) > 0
 
 	def wreak_havoc(self, building):
+		self.log.debug("%s wreak havoc %s at %s", self, building, building.position)
 		self._affected_buildings.remove(building)
 		Tear(building).execute(self._settlement.session)

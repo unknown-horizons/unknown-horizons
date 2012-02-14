@@ -20,6 +20,8 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
+import logging
+
 from horizons.world.disaster.firedisaster import FireDisaster
 from horizons.scheduler import Scheduler
 from horizons.constants import GAME_SPEED
@@ -28,6 +30,7 @@ class DisasterManager(object):
 	"""The disaster manager manages disasters. It seeds them into the
 	game world and makes all requirements for a disaster are met before
 	seeding it."""
+	log = logging.getLogger("world.disaster")
 
 	# Number of ticks between calls to run()
 	CALL_EVERY = GAME_SPEED.TICKS_PER_SECOND * 5
@@ -53,13 +56,17 @@ class DisasterManager(object):
 				if not settlement in self._active_disaster:
 					if self.session.random.random() <= disaster.SEED_CHANCE:
 						if disaster.can_breakout(settlement):
-							print "Seeding disaster:", disaster
+							self.log.debug("Seeding disaster: %s", disaster)
 							cata = disaster(settlement, self)
 							cata.breakout()
 							self._active_disaster[settlement] = cata
+						else:
+							self.log.debug("Disaster %s would breakout apply but can't breakout",
+							               disaster)
 
 	def end_disaster(self, settlement):
 		# End the disaster
+		self.log.debug("ending desaster in %s", settlement)
 		self._active_disaster[settlement].end()
 		del self._active_disaster[settlement]
 

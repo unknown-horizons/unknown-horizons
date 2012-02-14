@@ -20,12 +20,16 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
+import logging
+
 from horizons.world.settlement import Settlement
 from horizons.scheduler import Scheduler
 from horizons.constants import GAME_SPEED
+from horizons.world.component.storagecomponent import StorageComponent
 
 class Disaster(object):
 	"""Prototype class for disasters."""
+	log = logging.getLogger("world.disaster")
 
 	# Chance this disaster is seeded into a settlement in a tick of  the
 	# disaster manager
@@ -33,6 +37,10 @@ class Disaster(object):
 
 	# Time in ticks this disasters pauses between each expansion
 	EXPANSION_TIME = GAME_SPEED.TICKS_PER_SECOND * 5
+
+	# Resource to distribute to infected buildings
+	#	This is how preventory units (doctors) spot affected buildings.
+	DISASTER_RES = None
 
 	def __init__(self, settlement, manager):
 		"""
@@ -51,6 +59,12 @@ class Disaster(object):
 	def expand(self):
 		"""Called to make the disaster expand further"""
 		raise NotImplementedError()
+
+	def infect(self, building):
+		"""Used to expand disaster to this building. Usually called by expand and breakout"""
+		if self.DISASTER_RES is not None:
+			remnant = building.get_component(StorageComponent).inventory.alter(self.DISASTER_RES, 1)
+			assert remnant == 0
 
 	def breakout(self):
 		"""Picks (a) object(s) to start a breakout.
