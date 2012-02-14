@@ -218,7 +218,6 @@ class WeaponHolder(object):
 			storage.alter(weapon_id, number)
 		return storage
 
-
 	def attack_in_range(self):
 		"""
 		Returns True if the target is in range, False otherwise

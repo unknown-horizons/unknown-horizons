@@ -294,3 +294,6 @@ class FleeStance(StanceComponent):
 			return None
 
 		return min(enemies, key = lambda e: self.instance.position.distance(e.position) + e._max_range)
+
+
+DEFAULT_STANCES = [ HoldGroundStance, AggressiveStance, NoneStance, FleeStance ]
