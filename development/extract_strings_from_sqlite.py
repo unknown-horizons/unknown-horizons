@@ -20,6 +20,19 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
+###############################################################################
+#
+# == I18N DEV USE CASES: CHEATSHEET ==
+#
+# ** Refer to  development/copy_pofiles.sh  for help with building or updating
+#    the translation files for Unknown Horizons.
+#
+###############################################################################
+#
+# THIS SCRIPT IS A HELPER SCRIPT. DO NOT INVOKE MANUALLY!
+#
+###############################################################################
+
 import sqlalchemy
 import sqlalchemy.orm
 import sqlalchemy.ext.declarative

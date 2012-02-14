@@ -1,5 +1,14 @@
 #!/bin/sh
 
+###############################################################################
+#
+# == I18N DEV USE CASES: CHEATSHEET ==
+#
+# ** Refer to  development/copy_pofiles.sh  for help with building or updating
+#    the translation files for Unknown Horizons.
+#
+###############################################################################
+
 # Extract strings from a scenario file for easy translation in pootle.
 #
 # Usage: sh create_scenario_pot.sh scenario [po-directory]
@@ -155,7 +164,8 @@ print """
 # DON'T EDIT THIS FILE.
 
 # It was automatically generated with development/create_scenario_pot.sh using
-# translation files from pootle.
+# translation files from pootle. Documentation on this process is found here:
+#   development/copy_pofiles.sh
 """
 print yaml.dump(scenario, line_break=u'\n')
 END
