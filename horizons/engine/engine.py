@@ -32,6 +32,7 @@ from fife.extensions.serializers.simplexml import SimpleXMLSerializer
 
 from fife.extensions.fife_settings import FIFE_MODULE
 
+import horizons.gui.style
 from horizons.util import SQLiteAnimationLoader, SQLiteAtlasLoader
 from horizons.constants import LANGUAGENAMES, PATHS
 from horizons.engine.settingshandler import SettingsHandler, get_screen_resolutions
