@@ -25,14 +25,14 @@ else:
 	executable_path = 'bin'
 
 data = [
-        (executable_path, ('unknown-horizons', )),
-        ('share/pixmaps', ('content/unknown-horizons.xpm', )),
-        ('share/unknown-horizons', ('content/settings-template.xml', ))
-       ]
+  (executable_path, ('unknown-horizons', )),
+  ('share/pixmaps', ('content/unknown-horizons.xpm', )),
+  ('share/unknown-horizons', ('content/settings-template.xml', ))
+]
 
 for root, dirs, files in filter(lambda x: len(x[2]), os.walk('content')):
 	data.append(('share/unknown-horizons/%s' % root,
-		['%s/%s' % (root, f) for f in files]))
+				       ['%s/%s' % (root, f) for f in files]))
 
 packages = []
 for root, dirs, files in os.walk('horizons'):
@@ -51,9 +51,9 @@ class _build_i18n(distutils.cmd.Command):
 	"""
 	description = "integrate the gettext framework"
 	user_options = [('desktop-files=', None, '.desktop.in files that should be merged'),
-			('domain=', 'd', 'gettext domain'),
-			('po-dir=', 'p', 'directory that holds the i18n files'),
-			('bug-contact=', None, 'contact address for msgid bugs')]
+				          ('domain=', 'd', 'gettext domain'),
+				          ('po-dir=', 'p', 'directory that holds the i18n files'),
+				          ('bug-contact=', None, 'contact address for msgid bugs')]
 
 	def initialize_options(self):
 		self.desktop_files = []
@@ -115,7 +115,7 @@ class _build_i18n(distutils.cmd.Command):
 			cmd = ["msgfmt", po_file, "-o", mo_file]
 			po_mtime = os.path.getmtime(po_file)
 			mo_mtime = os.path.exists(mo_file) and \
-					os.path.getmtime(mo_file) or 0
+				os.path.getmtime(mo_file) or 0
 			if po_mtime > max_po_mtime:
 				max_po_mtime = po_mtime
 			if po_mtime > mo_mtime:
@@ -143,10 +143,10 @@ class _build_i18n(distutils.cmd.Command):
 					file_merged = os.path.join(build_target, file_merged)
 					cmd = ["intltool-merge", switch, self.po_dir, file, file_merged]
 					mtime_merged = os.path.exists(file_merged) and \
-							os.path.getmtime(file_merged) or 0
+						os.path.getmtime(file_merged) or 0
 					mtime_file = os.path.getmtime(file)
 					if mtime_merged < max_po_mtime or mtime_merged < mtime_file:
-						 # Only build if output is older than input (.po,.in)
+							# Only build if output is older than input (.po,.in)
 						self.spawn(cmd)
 					files_merged.append(file_merged)
 				data_files.append((target, files_merged))
@@ -161,7 +161,7 @@ class _build_i18n(distutils.cmd.Command):
 			if os.path.exists(os.path.join("content", "lang")):
 				rmtree(os.path.join("content", "lang"))
 			copytree(os.path.join("build", "mo"), \
-				os.path.join("content", "lang"))
+							 os.path.join("content", "lang"))
 
 build.sub_commands.append(('build_i18n', None))
 
@@ -174,26 +174,26 @@ class _build_man(build):
 			return
 
 		self.make_file(['doc/manpage.xml'], 'unknown-horizons.6', spawn, \
-		               (['xsltproc',
-		                 'http://docbook.sourceforge.net/release/xsl/current/manpages/docbook.xsl',
-		                 'doc/manpage.xml'],))
+								   (['xsltproc',
+								     'http://docbook.sourceforge.net/release/xsl/current/manpages/docbook.xsl',
+								     'doc/manpage.xml'],))
 		self.distribution.data_files.append(('share/man/man6', ('unknown-horizons.6',)))
 
 build.sub_commands.append(('build_man', None))
 
 cmdclass = {
-	'build_man': _build_man,
-	'build_i18n': _build_i18n,
+  'build_man': _build_man,
+  'build_i18n': _build_i18n,
 }
 
 setup(
-	name='UnknownHorizons',
-	version=VERSION.RELEASE_VERSION,
-	description='Realtime Economy Simulation and Strategy Game',
-	author='The Unknown Horizons Team',
-	author_email='team@unknown-horizons.org',
-	url='http://www.unknown-horizons.org',
-	packages=packages,
-	package_data=package_data,
-	data_files=data,
-	cmdclass=cmdclass)
+  name='UnknownHorizons',
+  version=VERSION.RELEASE_VERSION,
+  description='Realtime Economy Simulation and Strategy Game',
+  author='The Unknown Horizons Team',
+  author_email='team@unknown-horizons.org',
+  url='http://www.unknown-horizons.org',
+  packages=packages,
+  package_data=package_data,
+  data_files=data,
+  cmdclass=cmdclass)

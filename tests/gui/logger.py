@@ -114,7 +114,7 @@ class GuiHooks(object):
 		def deco3(func):
 			@wraps(func)
 			def wrapper(self, evt):
-				x, y = self._get_world_location_from_event(evt).to_tuple()
+				x, y = self.get_world_location_from_event(evt).to_tuple()
 				button = mouse_button.get(evt.getButton())
 				data = {
 					'tool_name': self.__class__.__name__,
@@ -221,8 +221,7 @@ class TestCodeGenerator(object):
 			log.debug('# %s' % path)
 
 			self._add([
-				"c = gui.find(name='%s')" % container.name,
-				"gui.trigger(c, '%s/%s/%s')" % (widget.name, event_name, group_name),
+				"gui.trigger('%s', '%s/%s/%s')" % (container.name, widget.name, event_name, group_name),
 				''
 			])
 
@@ -230,10 +229,12 @@ class TestCodeGenerator(object):
 		"""
 		Output test code to press the key.
 		"""
-		self._add([
-			'gui.pressKey(gui.Key.%s)' % KEY_NAME_LOOKUP[keycode],
-			''
-		])
+		try:
+			code = 'gui.press_key(gui.Key.%s)' % KEY_NAME_LOOKUP[keycode]
+		except KeyError:
+			code = '# Unknown key (code %s)' % keycode
+
+		self._add([code, ''])
 
 	def new_mousetool_event(self, tool_name, event_name, x, y, button):
 		"""

@@ -66,4 +66,4 @@ def get_fontdef_for_locale(locale):
 	fontdef_file = 'libertine'
 	if locale in FONTDEFS.iterkeys():
 		fontdef_file = FONTDEFS[locale]
-	return 'content/fonts/{filename}.fontdef'.format(filename = fontdef_file)
+	return u'content/fonts/{filename}.fontdef'.format(filename = fontdef_file)

@@ -24,13 +24,28 @@ events:
         \ abi saamiseks kuidas m\xE4ngu loojatega \xFChendust saada!\n\nJa n\xFC\xFC\
         d alustame m\xE4ngimisega."]
     type: logbook_w
-  - arguments: ["\xDCLESANNE: KOLONISEERI SAAR", "Laeva liigutamiseks vali laev vasakpoolse\
-        \ nupuga ja seej\xE4rel vali parempoolse nupuga uus asukoht.\n\nRannikule\
-        \ piisaval l\xE4hedale j\xF5udes aktiveerub ankru kujutisega nupp.\n\nNupule\
-        \ vajutades saad rannikule ehitada harukontori (nupu nimi Ehita Koloonia)\n\
-        \nVajutus j\xE4rgselt saad ehitist liigutada kasutades hiire kursorit.\n\n\
-        Ehitada saab igale kohale mis ei ole m\xE4rgitud punasega.\nEhitamiseks vajuta\
-        \ hiire nuppu.\n\n\xDCLESANNE: ehita harukontor rannikule.", 2]
+  - arguments: ["\xDCLESANNE: KOLONISEERI SAAR", !!python/unicode 'To move your ship,
+        select it with a left click and right click on the location you want it to
+        go to.
+
+
+        Once you are near the coast, the anchor-like button you see in the overview
+        tab will become active.
+
+
+        This indicates that you are able to build a warehouse there by pressing that
+        button (called ''Build Settlement'').
+
+
+        Now a preview of your building is dragged around when you move the cursor.
+
+
+        You can build on any spot where this preview is not shaded red.
+
+        Click where you want to place your first building.
+
+
+        TASK: Build a warehouse at the coast.', 2]
     type: logbook
   - arguments: [tutStepDone, 16]
     type: set_var
@@ -744,5 +759,5 @@ events:
     type: var_gt
 locale: et
 mapfile: development.sqlite
-translation_status: 15 translated messages, 50 untranslated messages.
+translation_status: 14 translated messages, 1 fuzzy translation, 50 untranslated messages.
 

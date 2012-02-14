@@ -19,7 +19,11 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-from horizons.util import WorldObject, Color
+import tempfile
+import os
+
+from horizons.util import Color, WorldObject
+from horizons.util.worldobject import WorldObjectNotFound
 from horizons.command.unit import CreateUnit, Attack
 from horizons.command.diplomacy import AddEnemyPair, AddNeutralPair, AddAllyPair
 from horizons.command.uioptions import EquipWeaponFromInventory, UnequipWeaponToInventory
@@ -28,15 +32,17 @@ from horizons.world.player import Player
 from horizons.constants import UNITS, WEAPONS
 from horizons.world.component.healthcomponent import HealthComponent
 
-from tests.game import game_test
+from tests.game import game_test, new_session, load_session
 
 def setup_combat(s, ship):
 	worldid = 10000000
 
 	p0 = Player(s, worldid, "p1", Color[1])
 	p1 = Player(s, worldid+1, "p2", Color[2])
-	p0.initialize(None)
-	p1.initialize(None)
+
+	for p in (p0, p1):
+		p.initialize(None)
+		s.world.players.append(p)
 
 	s0 = CreateUnit(p0.worldid, ship, 0, 0)(issuer=p0)
 	s1 = CreateUnit(p1.worldid, ship, 3, 3)(issuer=p1)
@@ -47,6 +53,16 @@ def health(thing):
 	return thing.get_component(HealthComponent).health
 def max_health(thing):
 	return thing.get_component(HealthComponent).max_health
+def one_dead(wid1, wid2):
+	for wid in (wid1, wid2):
+		at_least_one_dead = False
+		try:
+			WorldObject.get_object_by_id(wid)
+		except WorldObjectNotFound:
+			at_least_one_dead = True
+	return at_least_one_dead
+
+
 
 
 @game_test
@@ -141,6 +157,23 @@ def test_diplo0(s, p):
 	# it's not specified which one should lose
 	assert health(s0) == 0 or health(s1) == 0
 
+@game_test
+def test_dying(s, p):
+	"""
+	Check if units actually are gone when they have died
+	"""
+	(p0, s0), (p1, s1) = setup_combat(s, UNITS.FRIGATE)
+
+	AddEnemyPair(p0, p1).execute(s)
+	Attack(s0, s1).execute(s)
+
+	s.run(seconds=60)
+
+	assert health(s0) < max_health(s0)
+	assert health(s1) < max_health(s1)
+
+	# it's not specified which one should lose
+	assert one_dead(s0.worldid, s1.worldid)
 
 @game_test
 def test_diplo1(s, p):
@@ -197,3 +230,46 @@ def test_unfair(s, p):
 	assert health(s0_1) > 0
 
 # TODO: stances
+
+@game_test(manual_session=True)
+def test_combat_save_load():
+	"""
+	create a savegame with combat units and actual combat, then save/load it
+	"""
+
+	session, player = new_session()
+	(p0, s0), (p1, s1) = setup_combat(session, UNITS.FRIGATE)
+
+	s0_worldid, s1_worldid = s0.worldid, s1.worldid
+
+	session.run(seconds=1)
+
+	# saveload
+	fd, filename = tempfile.mkstemp()
+	os.close(fd)
+	assert session.save(savegamename=filename)
+	session.end(keep_map=True)
+	session = load_session(filename)
+
+	s0 = WorldObject.get_object_by_id(s0_worldid)
+	s1 = WorldObject.get_object_by_id(s1_worldid)
+
+	# fight
+
+	AddEnemyPair(p0, p1).execute(session)
+
+	Attack(s0, s1).execute(session)
+	Attack(s1, s0).execute(session)
+
+	session.run(seconds=20)
+
+	# saveload
+	fd, filename = tempfile.mkstemp()
+	os.close(fd)
+	assert session.save(savegamename=filename)
+	session.end(keep_map=True)
+	session = load_session(filename)
+
+	assert one_dead(s0_worldid, s1_worldid)
+
+	session.end()

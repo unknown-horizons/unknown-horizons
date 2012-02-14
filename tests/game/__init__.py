@@ -51,6 +51,7 @@ from horizons.scheduler import Scheduler
 from horizons.spsession import SPSession
 from horizons.util import (Color, DbReader, Rect, WorldObject, LivingObject,
 						   SavegameAccessor, Point, DifficultySettings)
+from horizons.util.lastactiveplayersettlementmanager import LastActivePlayerSettlementManager
 from horizons.util.uhdbaccessor import read_savegame_template
 from horizons.world import World
 from horizons.world.component.namedcomponent import NamedComponent
@@ -67,7 +68,7 @@ def setup_package():
 	fail only because a production now takes 1 second more in the game.
 	"""
 	global db
-	db = horizons.main._create_db()
+	db = horizons.main._create_main_db()
 
 
 def create_map():
@@ -155,7 +156,6 @@ class SPTestSession(SPSession):
 		AIPlayer.clear_caches()
 
 		# Game
-		self.current_tick = 0
 		self.random = self.create_rng(rng_seed)
 		self.timer = self.create_timer()
 		Scheduler.create_instance(self.timer)
@@ -170,6 +170,7 @@ class SPTestSession(SPSession):
 		# GUI
 		self.gui.session = self
 		self.ingame_gui = Dummy()
+		LastActivePlayerSettlementManager.create_instance(self)
 
 		self.selected_instances = set()
 		self.selection_groups = [set()] * 10 # List of sets that holds the player assigned unit groups.
@@ -236,8 +237,7 @@ class SPTestSession(SPSession):
 			ticks = self.timer.get_ticks(seconds)
 
 		for i in range(ticks):
-			Scheduler().tick(self.current_tick)
-			self.current_tick += 1
+			Scheduler().tick( Scheduler().cur_tick + 1 )
 
 
 def new_session(mapgen=create_map, rng_seed=RANDOM_SEED, human_player = True, ai_players = 0):
@@ -330,7 +330,7 @@ def game_test(*args, **kwargs):
 	"""
 	no_decorator_arguments = len(args) == 1 and not kwargs and inspect.isfunction(args[0])
 
-	timeout = kwargs.get('timeout', 5)	# zero means no timeout
+	timeout = kwargs.get('timeout', 15 * 60)	# zero means no timeout, 15min default
 	mapgen = kwargs.get('mapgen', create_map)
 	human_player = kwargs.get('human_player', True)
 	ai_players = kwargs.get('ai_players', 0)
@@ -397,3 +397,6 @@ def set_trace():
 
 	from nose.tools import set_trace
 	set_trace()
+
+
+_multiprocess_can_split_ = True

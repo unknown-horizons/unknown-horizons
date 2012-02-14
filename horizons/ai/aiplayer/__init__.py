@@ -71,6 +71,7 @@ from horizons.util import Callback, WorldObject
 from horizons.ext.enum import Enum
 from horizons.ai.generic import GenericAI
 from horizons.util.python import decorators
+from horizons.world.component.selectablecomponent import SelectableComponent
 
 class AIPlayer(GenericAI):
 	"""This is the AI that builds settlements."""
@@ -108,7 +109,7 @@ class AIPlayer(GenericAI):
 	def refresh_ships(self):
 		""" called when a new ship is added to the fleet """
 		for ship in self.world.ships:
-			if ship.owner == self and ship.is_selectable and ship not in self.ships:
+			if ship.owner == self and ship.has_component(SelectableComponent) and ship not in self.ships:
 				self.log.info('%s Added %s to the fleet', self, ship)
 				self.ships[ship] = self.shipStates.idle
 		self.need_more_ships = False
@@ -369,6 +370,6 @@ class AIPlayer(GenericAI):
 		Builder.cache.clear()
 
 	def __str__(self):
-		return 'AI(%s/%d)' % (self.name if hasattr(self, 'name') else 'unknown', self.worldid)
+		return 'AI(%s/%s)' % (self.name if hasattr(self, 'name') else 'unknown', self.worldid if hasattr(self, 'worldid') else 'none')
 
 decorators.bind_all(AIPlayer)

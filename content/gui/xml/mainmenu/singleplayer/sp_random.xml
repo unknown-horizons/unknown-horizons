@@ -3,6 +3,10 @@
 	<Label name="headline_map_settings_lbl" text="Map settings:" />
 
 	<VBox name="map_settings"  padding="15">
+		<HBox name="seed_string">
+			<Label name="seed_string_lbl" min_size="150,20" text="Seed:" />
+			<TextField name="seed_string_field" text="" max_size="250,20" min_size="125,20" />
+		</HBox>
 		<HBox name="map_size">
 			<Label name="map_size_lbl" min_size="150,20" text="" />
 			<StepSlider name="map_size_slider" size="125,20" scale_start="0" scale_end="4" step_length="1" marker_length="25" />
@@ -23,6 +27,7 @@
 			<Label name="island_size_deviation_lbl" min_size="150,20" text="" />
 			<StepSlider name="island_size_deviation_slider" size="125,20" scale_start="0" scale_end="4" step_length="1" marker_length="25" />
 		</HBox>
+
 		<!--<HBox><Label text="TODO: all values below this aren't implemented yet"/></HBox>
 		<HBox name="param_climate">
 			<Label name="climate_lbl" text="Climate zone:" />
@@ -33,7 +38,15 @@
 		</HBox>-->
 	</VBox>
 
+	<HBox>
+		<TooltipIcon name="map_preview_minimap" size="120,120" max_size="120,120" is_focusable="0"/>
+		<VBox>
+			<Spacer/>
+			<Label name="map_preview_status_label" is_focusable="0"/>
+		</VBox>
+	</HBox>
+
 	<VBox name="game_settings_box" />
 
-<Spacer />
+	<Spacer />
 </VBox>

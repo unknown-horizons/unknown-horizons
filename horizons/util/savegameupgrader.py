@@ -48,6 +48,16 @@ class SavegameUpgrader(object):
 		db("DROP TABLE production_queue")
 		db("CREATE TABLE \"production_queue\" (object INTEGER NOT NULL, position INTEGER NOT NULL, production_line_id INTEGER NOT NULL)")
 
+	def _upgrade_to_rev49(self, db):
+		db("CREATE TABLE \"resource_overview_bar\" (object INTEGER NOT NULL, position INTEGER NOT NULL, resource INTEGER NOT NULL)")
+
+	def _upgrade_to_rev50(self, db):
+		db("UPDATE stance set stance = \"hold_ground_stance\" where stance =\"hold_ground\"")
+		db("UPDATE stance set stance = \"none_stance\" where stance =\"none\"")
+		db("UPDATE stance set stance = \"flee_stance\" where stance =\"flee_stance\"")
+		db("UPDATE stance set stance = \"aggressive_stance\" where stance =\"aggressive\"")
+
+
 	def _upgrade(self):
 		# fix import loop
 		from horizons.savegamemanager import SavegameManager
@@ -68,6 +78,12 @@ class SavegameUpgrader(object):
 				self._upgrade_to_rev44(db)
 			if rev <= 45:
 				self._upgrade_to_rev45(db)
+			if rev < 49:
+				self._upgrade_to_rev49(db)
+			if rev < 50:
+				self._upgrade_to_rev50(db)
+
+
 
 			db.close()
 

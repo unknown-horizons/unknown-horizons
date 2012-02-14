@@ -19,8 +19,10 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
+import glob
 import os
 import os.path
+import random
 import time
 import tempfile
 import logging
@@ -51,6 +53,10 @@ class Gui(SingleplayerMenu, MultiplayerMenu):
 	  'ingamemenu': 'headline',
 	  'help': 'book',
 	  'singleplayermenu': 'book',
+	  'sp_random': 'book',
+	  'sp_scenario': 'book',
+	  'sp_campaign': 'book',
+	  'sp_free_maps': 'book',
 	  'multiplayermenu' : 'book',
 	  'multiplayer_creategame' : 'book',
 	  'multiplayer_gamelobby' : 'book',
@@ -72,6 +78,7 @@ class Gui(SingleplayerMenu, MultiplayerMenu):
 		self.dialog_executed = False
 
 		self.__pause_displayed = False
+		self._background_image = self._get_random_background()
 
 # basic menu widgets
 
@@ -468,12 +475,18 @@ class Gui(SingleplayerMenu, MultiplayerMenu):
 			self.hide()
 		self.log.debug("Gui: setting current to %s", new_widget)
 		self.current = self.widgets[new_widget]
+		# Set background image
+		bg = self.current.findChild(name='background')
+		if bg:
+			bg.image = self._background_image
+
 		if center:
 			self.current.position_technique = "automatic" # "center:center"
 		if event_map:
 			self.current.mapEvents(event_map)
 		if show:
 			self.current.show()
+
 		return old
 
 	@staticmethod
@@ -591,6 +604,11 @@ class Gui(SingleplayerMenu, MultiplayerMenu):
 		else: # player cancelled deletion
 			return False
 
+	def _get_random_background(self):
+		"""Randomly select a background image to use through out the game menu."""
+		available_images = glob.glob('content/gui/images/background/mainmenu/bg_*.png')
+		return random.choice(available_images)
+
 def build_help_strings(widgets):
 	"""
 	Loads the help strings from pychan object widgets (containing no key definitions)
@@ -620,3 +638,6 @@ def build_help_strings(widgets):
 		except KeyError:
 			keyname = ' '
 		lbl[0].text = HELPSTRING_LAYOUT.format(text=_(lbl[0].text), key=keyname.upper())
+
+	author_label = widgets.findChild(name='fife_and_uh_team')
+	author_label.tooltip = u"www.unknown-[br]horizons.org[br]www.fifengine.net"

@@ -13,6 +13,10 @@ tooltip_text: null
 settler_level: 0
 buildingcosts: {}
 components:
+- SelectableComponent:
+    type: building
+    tabs: [ResourceDepositOverviewTab,]
+    enemy_tabs: [ResourceDepositOverviewTab,]
 - HealthComponent: {maxhealth: 10}
 - StorageComponent:
     inventory:

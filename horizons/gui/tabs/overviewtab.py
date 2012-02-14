@@ -45,16 +45,21 @@ from horizons.world.production.producer import Producer
 
 
 class OverviewTab(TabInterface):
+	has_stance = False
 	def __init__(self, instance, widget = 'overviewtab.xml', \
 	             icon_path='content/gui/icons/tabwidget/common/building_overview_%s.png'):
 		super(OverviewTab, self).__init__(widget)
 		self.instance = instance
 		self.init_values()
+		self._refresh_scheduled = False
 		self.button_up_image = icon_path % 'u'
 		self.button_active_image = icon_path % 'a'
 		self.button_down_image = icon_path % 'd'
 		self.button_hover_image = icon_path % 'h'
 		self.tooltip = _("Overview")
+
+		if self.__class__.has_stance:
+			self.init_stance_widget()
 
 		# set player emblem
 		if self.widget.child_finder('player_emblem'):
@@ -64,6 +69,16 @@ class OverviewTab(TabInterface):
 			else:
 				self.widget.child_finder('player_emblem').image = \
 			    'content/gui/images/tabwidget/emblems/emblem_no_player.png'
+
+	def _schedule_refresh(self):
+		"""Schedule a refresh soon, dropping all other refresh request, that appear until then.
+		This saves a lot of CPU time, if you have a huge island, or play on high speed."""
+		if not self._refresh_scheduled:
+			self._refresh_scheduled = True
+			def unset_flag():
+				self._refresh_scheduled = False
+			ExtScheduler().add_new_object(Callback.ChainedCallbacks(unset_flag, self.refresh),
+			                              self, run_in=0.3)
 
 	def refresh(self):
 		if (hasattr(self.instance, 'name') or self.instance.has_component(NamedComponent)) and self.widget.child_finder('name'):
@@ -87,6 +102,11 @@ class OverviewTab(TabInterface):
 			self.instance.add_change_listener(self.refresh)
 		if not self.instance.has_remove_listener(self.on_instance_removed):
 			self.instance.add_remove_listener(self.on_instance_removed)
+		if hasattr(self.instance, 'settlement') and \
+		   self.instance.settlement is not None and \
+		   not self.instance.settlement.has_change_listener(self._schedule_refresh):
+			# listen for settlement name changes displayed as tab headlines
+			self.instance.settlement.add_change_listener(self._schedule_refresh)
 
 	def hide(self):
 		super(OverviewTab, self).hide()
@@ -95,11 +115,22 @@ class OverviewTab(TabInterface):
 				self.instance.remove_change_listener(self.refresh)
 			if self.instance.has_remove_listener(self.on_instance_removed):
 				self.instance.remove_remove_listener(self.on_instance_removed)
+		if hasattr(self.instance, 'settlement') and \
+		   self.instance.settlement is not None and \
+		   self.instance.settlement.has_change_listener(self._schedule_refresh):
+			self.instance.settlement.remove_change_listener(self._schedule_refresh)
+
+		if self._refresh_scheduled:
+			ExtScheduler().rem_all_classinst_calls(self)
 
 	def on_instance_removed(self):
 		self.on_remove()
 		self.instance = None
 
+	def init_stance_widget(self): # call for tabs with stances
+		stance_widget = self.widget.findChild(name='stance')
+		stance_widget.init(self.instance)
+		self.add_remove_listener(stance_widget.remove)
 
 
 class WarehouseOverviewTab(OverviewTab):
@@ -120,6 +151,10 @@ class WarehouseOverviewTab(OverviewTab):
 
 	def refresh(self):
 		self.widget.findChild(name="headline").text = unicode(self.instance.settlement.get_component(NamedComponent).name)
+		events = {
+				'headline': Callback(self.instance.session.ingame_gui.show_change_name_dialog, self.instance.settlement)
+		         }
+		self.widget.mapEvents(events)
 		self._refresh_collector_utilisation()
 		super(WarehouseOverviewTab, self).refresh()
 
@@ -169,11 +204,12 @@ class ShipOverviewTab(OverviewTab):
 			self.widget.child_finder('found_settlement').set_inactive()
 			self.widget.child_finder('found_settlement').tooltip = tooltip
 
-		cb = Callback( self.instance.session.ingame_gui.resourceinfo_set, self.instance,
-			Entities.buildings[BUILDINGS.WAREHOUSE_CLASS].costs, {}, res_from_ship = True)
+		cb = Callback( self.instance.session.ingame_gui.resource_overview.set_construction_mode,
+		               self.instance,
+		               Entities.buildings[BUILDINGS.WAREHOUSE_CLASS].costs)
 		events['found_settlement/mouseEntered'] = cb
 
-		cb1 = Callback(self.instance.session.ingame_gui.resourceinfo_set, None) # hides the resource status widget
+		cb1 = Callback(self.instance.session.ingame_gui.resource_overview.close_construction_mode)
 		cb2 = Callback(self.widget.child_finder('found_settlement').hide_tooltip)
 		#TODO the tooltip should actually hide on its own. Ticket #1096
 		cb = Callback.ChainedCallbacks(cb1, cb2)
@@ -198,7 +234,7 @@ class ShipOverviewTab(OverviewTab):
 			events['trade'] = None
 			self.widget.findChild(name='trade_bg').set_inactive()
 			self.widget.findChild(name='trade').set_inactive()
-			self.widget.findChild(name='trade').tooltip = _('Too far from the nearest warehouse')
+			self.widget.findChild(name='trade').tooltip = _('Too far from the nearest own or allied warehouse')
 
 	def _refresh_combat(self): # no combat
 		def click_on_cannons(button):
@@ -226,12 +262,11 @@ class ShipOverviewTab(OverviewTab):
 
 
 class FightingShipOverviewTab(ShipOverviewTab):
+	has_stance = True
 	def __init__(self, instance, widget = 'overview_war_ship.xml', \
 			icon_path='content/gui/icons/tabwidget/ship/ship_inv_%s.png'):
 		super(FightingShipOverviewTab, self).__init__(instance, widget, icon_path)
-		stance_widget = self.widget.findChild(name='stance')
-		stance_widget.init(self.instance)
-		self.add_remove_listener(stance_widget.remove)
+
 
 		#create weapon inventory, needed only in gui for inventory widget
 		self.weapon_inventory = self.instance.get_weapon_storage()
@@ -261,6 +296,14 @@ class FightingShipOverviewTab(ShipOverviewTab):
 		self.widget.child_finder('weapon_inventory').update()
 		self.refresh()
 
+class TowerOverviewTab(OverviewTab): # defensive tower
+	def __init__(self, instance):
+		super(TowerOverviewTab, self).__init__(
+			widget = 'overview_tower.xml',
+			instance = instance
+		)
+		self.widget.findChild(name="headline").text = unicode(self.instance.settlement.get_component(NamedComponent).name)
+		self.tooltip = _("Tower overview")
 
 class TraderShipOverviewTab(OverviewTab):
 	def __init__(self, instance):
@@ -272,6 +315,7 @@ class TraderShipOverviewTab(OverviewTab):
 		self.tooltip = _("Ship overview")
 
 class GroundUnitOverviewTab(OverviewTab):
+	has_stance = True
 	def __init__(self, instance):
 		super(GroundUnitOverviewTab, self).__init__(
 			widget = 'overview_groundunit.xml',
@@ -283,21 +327,16 @@ class GroundUnitOverviewTab(OverviewTab):
 		weapon_storage_widget = self.widget.findChild(name='weapon_storage')
 		weapon_storage_widget.init(self.instance)
 		self.add_remove_listener(weapon_storage_widget.remove)
-		stance_widget = self.widget.findChild(name='stance')
-		stance_widget.init(self.instance)
-		self.add_remove_listener(stance_widget.remove)
 
 class ProductionOverviewTab(OverviewTab):
-	production_line_gui_xml = "overview_productionline.xml"
-
-	def  __init__(self, instance):
+	def  __init__(self, instance, widget='overview_productionbuilding.xml',
+		         production_line_gui_xml='overview_productionline.xml'):
 		super(ProductionOverviewTab, self).__init__(
-			widget = 'overview_productionbuilding.xml',
+			widget = widget,
 			instance = instance
 		)
 		self.tooltip = _("Production overview")
-
-		ExtScheduler().add_new_object(self.widget.adaptLayout, self, 0)
+		self.production_line_gui_xml = production_line_gui_xml
 
 	def refresh(self):
 		"""This function is called by the TabWidget to redraw the widget."""
@@ -360,7 +399,7 @@ class ProductionOverviewTab(OverviewTab):
 			# active toggle_active button
 			container.mapEvents( \
 			  { 'toggle_active': \
-			    Callback(ToggleActive(self.instance, production).execute, self.instance.session) \
+			    Callback(ToggleActive(self.instance.get_component(Producer), production).execute, self.instance.session) \
 			    } )
 			# NOTE: this command causes a refresh, so we needn't change the toggle_active-button-image
 			container.stylize('menu_black')
@@ -390,12 +429,11 @@ class ProductionOverviewTab(OverviewTab):
 		super(ProductionOverviewTab, self).on_instance_removed()
 
 class FarmProductionOverviewTab(ProductionOverviewTab):
-	production_line_gui_xml = "overview_farmproductionline.xml"
-
 	def  __init__(self, instance):
-		super(ProductionOverviewTab, self).__init__(
+		super(FarmProductionOverviewTab, self).__init__(
+			instance = instance,
 			widget = 'overview_farm.xml',
-			instance = instance
+			production_line_gui_xml = "overview_farmproductionline.xml"
 		)
 		self.tooltip = _("Production overview")
 
@@ -424,6 +462,10 @@ class SettlerOverviewTab(OverviewTab):
 		self.widget.child_finder('taxes').text = unicode(self.instance.last_tax_payed)
 		self.update_consumed_res()
 		self.widget.findChild(name="headline").text = unicode(self.instance.settlement.get_component(NamedComponent).name)
+		events = {
+				'headline': Callback(self.instance.session.ingame_gui.show_change_name_dialog, self.instance.settlement)
+		         }
+		self.widget.mapEvents(events)
 		super(SettlerOverviewTab, self).refresh()
 
 	def update_consumed_res(self):
@@ -496,8 +538,14 @@ class ResourceDepositOverviewTab(OverviewTab):
 			widget = 'overview_resourcedeposit.xml',
 			instance = instance
 		)
+		res = self.instance.session.db.get_resource_deposit_resources(self.instance.id)
+		# type: [ (res, min_amount, max_amount)]
+		# let it display starting from 0, not min_amount, else it looks like there's nothing in it
+		# when parts of the ore have been mined already
+		res_range = 0, res[0][2]
 		self.widget.child_finder("inventory").init(self.instance.session.db, \
-		                                           self.instance.get_component(StorageComponent).inventory)
+		                                           self.instance.get_component(StorageComponent).inventory,
+		                                           ordinal=res_range)
 
 	def refresh(self):
 		super(ResourceDepositOverviewTab, self).refresh()

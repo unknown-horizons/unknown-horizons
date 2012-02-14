@@ -30,6 +30,7 @@ from horizons.constants import GAME
 
 class Scheduler(LivingObject):
 	""""Class providing timed callbacks.
+	Master of time.
 
 	TODO:
 	- Refactor to use a data structure that is suitable for iteration (ticking) as well as
@@ -43,6 +44,9 @@ class Scheduler(LivingObject):
 
 	log = logging.getLogger("scheduler")
 
+	# the tick with this id is actually executed, and no tick with a smaller number can occur
+	FIRST_TICK_ID = 0
+
 	def __init__(self, timer):
 		"""
 		@param timer: Timer obj
@@ -51,7 +55,7 @@ class Scheduler(LivingObject):
 		self.schedule = {}
 		self.additional_cur_tick_schedule = [] # jobs to be executed at the same tick they were added
 		self.calls_by_instance = {} # for get_classinst_calls
-		self.cur_tick = 0
+		self.cur_tick = self.__class__.FIRST_TICK_ID-1 # before ticking
 		self.timer = timer
 		self.timer.add_call(self.tick)
 
@@ -66,11 +70,13 @@ class Scheduler(LivingObject):
 		"""Threads main loop
 		@param tick_id: int id of the tick.
 		"""
+		assert tick_id == self.cur_tick + 1
+		self.cur_tick = tick_id
+
 		if GAME.MAX_TICKS is not None and tick_id >= GAME.MAX_TICKS:
 			horizons.main.quit()
 			return
 
-		self.cur_tick = tick_id
 		if self.cur_tick in self.schedule:
 			self.log.debug("Scheduler: tick %s, cbs: %s", self.cur_tick, len(self.schedule[self.cur_tick]))
 
@@ -100,8 +106,8 @@ class Scheduler(LivingObject):
 							pass # also the callback can be deleted by e.g. rem_call
 			del self.schedule[self.cur_tick]
 
-			# run jobs added in the loop above
-			self._run_additional_jobs()
+		# run jobs added in the loop above
+		self._run_additional_jobs()
 
 		assert (len(self.schedule) == 0) or self.schedule.keys()[0] > self.cur_tick
 
@@ -147,7 +153,7 @@ class Scheduler(LivingObject):
 		@param run_in: int number of ticks after which the callback is called. Defaults to 1, run next tick.
 		@param loops: How often the callback is called. -1 = infinite times. Defautls to 1, run once.
 		@param loop_interval: Delay between subsequent loops in ticks. Defaults to run_in."""
-		callback_obj = CallbackObject(self, callback, class_instance, run_in, loops, loop_interval)
+		callback_obj = _CallbackObject(self, callback, class_instance, run_in, loops, loop_interval)
 		self.add_object(callback_obj)
 
 	def rem_object(self, callback_obj):
@@ -158,13 +164,13 @@ class Scheduler(LivingObject):
 		removed_objs = 0
 		if self.schedule is not None:
 			for key in self.schedule:
-				for i in xrange(0, self.schedule[key].count(callback_obj)):
+				while callback_obj in self.schedule[key]:
 					self.schedule[key].remove(callback_obj)
-					self.calls_by_instance[callback_obj.instance].remove(callback_obj)
+					self.calls_by_instance[callback_obj.class_instance].remove(callback_obj)
 					removed_objs += 1
 
-		if not self.calls_by_instance[callback_obj.instance]:
-			del self.calls_by_instance[callback_obj.instance]
+		if not self.calls_by_instance[callback_obj.class_instance]:
+			del self.calls_by_instance[callback_obj.class_instance]
 
 		return removed_objs
 
@@ -198,7 +204,7 @@ class Scheduler(LivingObject):
 			callback_objects = self.schedule[key]
 			for i in xrange(len(callback_objects) - 1, -1, -1):
 				if callback_objects[i].class_instance is instance and callback_objects[i].callback == callback and \
-				   not hasattr(callback, "invalid"):
+				   not hasattr(callback_objects[i], "invalid"):
 					del callback_objects[i]
 					removed_calls += 1
 
@@ -252,7 +258,7 @@ class Scheduler(LivingObject):
 		@return int or possbile None if not assert_present"""
 		calls = self.get_classinst_calls(instance, callback)
 		if assert_present:
-			assert len(calls) == 1, 'got %i calls for %s %s' % (len(calls), instance, callback)
+			assert len(calls) == 1, 'got %i calls for %s %s: %s' % (len(calls), instance, callback, [str(i) for i in calls])
 			return calls.itervalues().next()
 		else:
 			return calls.itervalues().next() if calls else None
@@ -265,7 +271,7 @@ class Scheduler(LivingObject):
 		return self.timer.get_ticks(GAME.INGAME_TICK_INTERVAL)
 
 
-class CallbackObject(object):
+class _CallbackObject(object):
 	"""Class used by the TimerManager Class to organize callbacks."""
 	def __init__(self, scheduler, callback, class_instance, run_in, loops, loop_interval):
 		"""Creates the CallbackObject instance.

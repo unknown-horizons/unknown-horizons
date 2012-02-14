@@ -26,12 +26,33 @@ from horizons.world.component.namedcomponent import NamedComponent, SettlementNa
 from horizons.world.component.tradepostcomponent import TradePostComponent
 from horizons.world.component.ambientsoundcomponent import AmbientSoundComponent
 from horizons.world.component.healthcomponent import HealthComponent
+from horizons.world.component.selectablecomponent import SelectableComponent
+from horizons.world.component.commandablecomponent import CommandableComponent
 from horizons.world.production.producer import Producer, QueueProducer, UnitProducer
 
 class ComponentHolder(object):
 	"""
 	Class that manages Component plug-ins
 	It can be inherided by all objects that can hold components
+
+	TUTORIAL:
+	I can't explain component-oriented architecture to you here, but i can give you
+	an overview of how we use it:
+	Instead of putting all different features of entities into single classes,
+	as it's common in OOP, every feature is put into a component. This should
+	increase the encapsulation, and it's easier if an object consists of 15 independent
+	building blocks than if it were 15 classes, where many override the same function call
+	and fight about who gets called first.
+	Check class_mapping for a complete list of the different components we use.
+
+	The components are stored in a dict, the key is their name (a string).
+	This is necessary so objects can be defined as a collection of their components in
+	human readable format. This is done via yaml files in our case in content/objects.
+	You could check out e.g. content/objects/buildings/lumberjackcamp.yaml to see what
+	it looks like in reality.
+
+	This class manages the components, it stores them at makes them accessible.
+	Check out the actual component class in horizons/world/component/__init__.py
 	"""
 
 	class_mapping = {
@@ -45,7 +66,9 @@ class ComponentHolder(object):
 	    "HealthComponent": HealthComponent,
 	    'ProducerComponent': Producer,
 	    'QueueProducerComponent': QueueProducer,
-	    'UnitProducerComponent': UnitProducer
+	    'UnitProducerComponent': UnitProducer,
+	    'SelectableComponent': SelectableComponent,
+	    'CommandableComponent': CommandableComponent,
 	}
 
 
@@ -55,9 +78,10 @@ class ComponentHolder(object):
 
 	def initialize(self):
 		"""Has to be called every time an componentholder is created."""
-		self.__load_components()
+		for component in self.__create_components():
+			self.add_component(component)
 
-	def __load_components(self):
+	def __create_components(self):
 		tmp_comp = []
 		if hasattr(self, 'component_templates'):
 			for entry in self.component_templates:
@@ -70,8 +94,7 @@ class ComponentHolder(object):
 					tmp_comp.append(component)
 		# 'Resolve' dependencies by utilizing overloaded gt/lt
 		tmp_comp.sort()
-		for component in tmp_comp:
-			self.add_component(component)
+		return tmp_comp
 
 	def remove(self):
 		for component in self.components.values():
@@ -81,9 +104,10 @@ class ComponentHolder(object):
 	def load(self, db, worldid):
 		super(ComponentHolder, self).load(db, worldid)
 		self.components = {}
-		self.__load_components()
-		for component in sorted(self.components.itervalues()):
+		for component in self.__create_components():
+			component.instance = self
 			component.load(db, worldid)
+			self.components[component.NAME] = component
 
 	def save(self, db):
 		super(ComponentHolder, self).save(db)

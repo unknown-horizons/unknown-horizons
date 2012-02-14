@@ -22,35 +22,22 @@
 from tests.gui import gui_test, TestFinished
 
 
-@gui_test(use_dev_map=True)
+@gui_test(use_dev_map=True, timeout=60)
 def test_hud(gui):
 	"""
-	Example test generated with output from --gui-log.
+	Click on some buttons at the ingame menu.
 	"""
 	yield # test needs to be a generator for now
 
-	c = gui.find(name='mainhud')
-	gui.trigger(c, 'zoomOut/action/default')
+	gui.trigger('mainhud', 'zoomOut/action/default')
+	gui.trigger('mainhud', 'zoomIn/action/default')
+	gui.trigger('mainhud', 'rotateRight/action/default')
+	gui.trigger('mainhud', 'rotateLeft/action/default')
 
-	c = gui.find(name='mainhud')
-	gui.trigger(c, 'zoomIn/action/default')
+	gui.trigger('mainhud', 'logbook/action/default')
+	gui.trigger('captains_log', 'okButton/action/default')
 
-	c = gui.find(name='mainhud')
-	gui.trigger(c, 'rotateRight/action/default')
-
-	c = gui.find(name='mainhud')
-	gui.trigger(c, 'rotateLeft/action/default')
-
-	c = gui.find(name='mainhud')
-	gui.trigger(c, 'logbook/action/default')
-
-	c = gui.find(name='captains_log')
-	gui.trigger(c, 'okButton/action/default')
-
-	c = gui.find(name='mainhud')
-	gui.trigger(c, 'build/action/default')
-
-	c = gui.find(name='mainhud')
-	gui.trigger(c, 'diplomacyButton/action/default')
+	gui.trigger('mainhud', 'build/action/default')
+	gui.trigger('mainhud', 'diplomacyButton/action/default')
 
 	yield TestFinished

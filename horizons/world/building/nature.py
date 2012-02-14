@@ -22,11 +22,10 @@
 from horizons.world.building.building import BasicBuilding
 from horizons.world.building.buildable import BuildableRect, BuildableSingleEverywhere
 from horizons.world.building.collectingbuilding import CollectingBuilding
-from horizons.world.building.buildingresourcehandler import ProducerBuilding
+from horizons.world.building.buildingresourcehandler import BuildingResourceHandler
 from horizons.entities import Entities
-from horizons.constants import LAYERS
-from horizons.gui.tabs import ResourceDepositOverviewTab
-from horizons.world.building.building import SelectableBuilding
+from horizons.scheduler import Scheduler
+from horizons.constants import LAYERS, BUILDINGS
 from horizons.world.component.storagecomponent import StorageComponent
 from horizons.world.production.producer import Producer
 
@@ -38,12 +37,35 @@ class NatureBuilding(BuildableRect, BasicBuilding):
 	def __init__(self, **kwargs):
 		super(NatureBuilding, self).__init__(**kwargs)
 
-class ProducerNatureBuilding(ProducerBuilding, NatureBuilding):
+class NatureBuildingResourceHandler(BuildingResourceHandler, NatureBuilding):
+	# sorry, but this class is to be removed soon anyway
 	pass
 
-class Field(ProducerNatureBuilding):
+class Field(NatureBuildingResourceHandler):
 	walkable = False
 	layer = LAYERS.FIELDS
+
+	def initialize(self, **kwargs):
+		super(Field, self).initialize( ** kwargs)
+
+		if self.owner == self.session.world.player:
+			# make sure to have a farm nearby when we can reasonably assume that the crops are fully grown
+			prod_comp = self.get_component(Producer)
+			productions = prod_comp.get_productions()
+			if not productions:
+				print 'Warning: Field is assumed to always produce, but doesn\'t. ', self
+			else:
+				run_in = Scheduler().get_ticks(productions[0].get_production_time())
+				Scheduler().add_new_object(self._check_covered_by_farm, self, run_in=run_in)
+
+	def _check_covered_by_farm(self):
+		"""Warn in case there is no farm nearby to cultivate the field"""
+		farm_in_range = any( (farm.position.distance( self.position ) <= farm.radius) for farm in
+		                     self.settlement.get_buildings_by_id( BUILDINGS.FARM_CLASS ) )
+		if not farm_in_range:
+			pos = self.position.origin
+			self.session.ingame_gui.message_widget.add(pos.x, pos.y, "FIELD_NEEDS_FARM",
+			                                           check_duplicate=True)
 
 class AnimalField(CollectingBuilding, Field):
 	walkable = False
@@ -72,7 +94,7 @@ class AnimalField(CollectingBuilding, Field):
 		self.animals = []
 		# units are loaded separatly
 
-class Tree(ProducerNatureBuilding):
+class Tree(NatureBuildingResourceHandler):
 	buildable_upon = True
 	layer = LAYERS.OBJECTS
 
@@ -81,32 +103,25 @@ class Tree(ProducerNatureBuilding):
 		if start_finished:
 			self.get_component(Producer).finish_production_now()
 
-class ResourceDeposit(SelectableBuilding, NatureBuilding):
+class ResourceDeposit(NatureBuilding):
 	"""Class for stuff like clay deposits."""
 	tearable = False
 	layer = LAYERS.OBJECTS
-	tabs = (ResourceDepositOverviewTab,)
-	enemy_tabs = (ResourceDepositOverviewTab,)
 	walkable = False
 
-	def __init__(self, inventory=None, *args, **kwargs):
+	def __init__(self, *args, **kwargs):
 		super(ResourceDeposit, self).__init__(*args, **kwargs)
-		if inventory is not None:
-			self.reinit_inventory(inventory)
 
-	def reinit_inventory(self, inventory):
-		for res, amount in inventory.iteritems():
-			self.get_component(StorageComponent).inventory.alter(res, amount)
-
-
-	def initialize(self):
+	def initialize(self, inventory=None):
 		super(ResourceDeposit, self).initialize()
-		for resource, min_amount, max_amount in \
-		    self.session.db("SELECT resource, min_amount, max_amount FROM deposit_resources WHERE id = ?", \
-		                    self.id):
-			self.get_component(StorageComponent).inventory.alter(resource, self.session.random.randint(min_amount, max_amount))
+		if inventory:
+			for res, amount in inventory.iteritems():
+				self.get_component(StorageComponent).inventory.alter(res, amount)
+		else: # new one
+			for resource, min_amount, max_amount in self.session.db.get_resource_deposit_resources(self.id):
+				self.get_component(StorageComponent).inventory.alter(resource, self.session.random.randint(min_amount, max_amount))
 
-class Fish(BuildableSingleEverywhere, ProducerBuilding, BasicBuilding):
+class Fish(BuildableSingleEverywhere, BuildingResourceHandler, BasicBuilding):
 
 	def __init__(self, *args, **kwargs):
 		super(Fish,  self).__init__(*args, **kwargs)

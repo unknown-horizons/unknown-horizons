@@ -5,6 +5,8 @@
 		<ListBox name="maplist" />
 	</ScrollArea>
 	<Label name="recommended_number_of_players_lbl" text=""/>
+	<TooltipIcon name="map_preview_minimap" size="130,130" max_size="130,130" is_focusable="0"/> 
+
 
 <!--
 	<Label text="Choose your opponents:"  name="headline_choose_opponents_lbl" />

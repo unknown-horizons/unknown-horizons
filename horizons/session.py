@@ -30,6 +30,8 @@ import horizons.main
 from horizons.ai.aiplayer import AIPlayer
 from horizons.gui.ingamegui import IngameGui
 from horizons.gui.mousetools import SelectionTool, PipetteTool, TearingTool, BuildingTool, AttackingTool
+from horizons.command.building import Tear
+from horizons.command.unit import RemoveUnit
 from horizons.gui.keylisteners import IngameKeyListener
 from horizons.scheduler import Scheduler
 from horizons.extscheduler import ExtScheduler
@@ -38,28 +40,39 @@ from horizons.gui import Gui
 from horizons.world import World
 from horizons.entities import Entities
 from horizons.util import WorldObject, LivingObject, livingProperty, SavegameAccessor
+from horizons.util.lastactiveplayersettlementmanager import LastActivePlayerSettlementManager
 from horizons.world.component.namedcomponent import NamedComponent
+from horizons.world.component.selectablecomponent import SelectableComponent
 from horizons.savegamemanager import SavegameManager
 from horizons.scenario import ScenarioEventHandler
+from horizons.world.component.ambientsoundcomponent import AmbientSoundComponent
 from horizons.constants import GAME_SPEED, PATHS
 
 class Session(LivingObject):
 	"""Session class represents the games main ingame view and controls cameras and map loading.
+	It is alive as long as a game is running.
+	Many objects require a reference to this, which makes it a pseudo-global, from what we would
+	like to move away long-term. This is where we hope the components come into play, which
+	you will encounter later
 
 	This is the most important class if you are going to hack on Unknown Horizons, it provides most of
 	the important ingame variables.
 	Here's a small list of commonly used attributes:
-	* manager - horizons.manager instance. Used to execute commands that need to be tick,
-				synchronized check the class for more information.
-	* scheduler - horizons.scheduler instance. Used to execute timed events that do not effect
-	              network games but rather control the local simulation.
+
+	* world - horizons.world instance of the currently running horizons. Stores players and islands,
+		which store settlements, which store buildings, which have productions and collectors.
+		Therefore world deserves its name, it contains the whole game state.
+	* scheduler - horizons.scheduler instance. Used to execute timed events. Master of time in UH.
+	* manager - horizons.manager instance. Used to execute commands (used to apply user interactions).
+		There is a singleplayer and a multiplayer version. Our mp system works by the mp-manager not
+		executing the commands directly, but sending them to all players, where they will be executed
+		at the same tick.
 	* view - horizons.view instance. Used to control the ingame camera.
-	* ingame_gui - horizons.gui.ingame_gui instance. Used to controll the ingame gui.
-	* cursor - horizons.gui.{navigation/cursor/selection/building}tool instance. Used to controll
-			   mouse events, check the classes for more info.
+	* ingame_gui - horizons.gui.ingame_gui instance. Used to control the ingame gui framework.
+		(This is different from gui, which is the main menu and general session-independent gui)
+	* cursor - horizons.gui.{navigation/cursor/selection/building}tool instance. Used to handle
+			   mouse events.
 	* selected_instances - Set that holds the currently selected instances (building, units).
-	* world - horizons.world instance of the currently running horizons. Stores islands, players,
-	          for later access.
 
 	TUTORIAL:
 	For further digging you should now be checking out the load() function.
@@ -85,6 +98,7 @@ class Session(LivingObject):
 		self.savecounter = 0
 		self.is_alive = True
 
+		# misc
 		WorldObject.reset()
 		NamedComponent.reset()
 		AIPlayer.clear_caches()
@@ -106,6 +120,7 @@ class Session(LivingObject):
 		self.keylistener = IngameKeyListener(self)
 		self.coordinates_tooltip = None
 		self.display_speed()
+		LastActivePlayerSettlementManager.create_instance(self)
 
 		self.selected_instances = set()
 		self.selection_groups = [set()] * 10 # List of sets that holds the player assigned unit groups.
@@ -130,6 +145,9 @@ class Session(LivingObject):
 		self.log.debug("Ending session")
 		self.is_alive = False
 
+		LastActivePlayerSettlementManager().remove()
+		LastActivePlayerSettlementManager.destroy_instance()
+
 		self.gui.session = None
 
 		Scheduler().rem_all_classinst_calls(self)
@@ -152,6 +170,7 @@ class Session(LivingObject):
 		self.timer = None
 		self.scenario_eventhandler = None
 		Scheduler.destroy_instance()
+
 
 		self.selected_instances = None
 		self.selection_groups = None
@@ -193,11 +212,16 @@ class Session(LivingObject):
 	def save(self, savegame=None):
 		raise NotImplementedError
 
-	def load(self, savegame, players, trader_enabled, pirate_enabled, natural_resource_multiplier, is_scenario=False, campaign=None):
+	def load(self, savegame, players, trader_enabled, pirate_enabled, natural_resource_multiplier, is_scenario=False, campaign=None, force_player_id=None):
 		"""Loads a map.
 		@param savegame: path to the savegame database.
 		@param players: iterable of dictionaries containing id, name, color, local, ai, and difficulty
 		@param is_scenario: Bool whether the loaded map is a scenario or not
+		@param force_player_id: the worldid of the selected human player or default if None (debug option)
+		"""
+		"""
+		TUTORIAL: Here you see how the vital game elements (and some random things that are also required)
+		are initialised
 		"""
 		if is_scenario:
 			# savegame is a yaml file, that contains reference to actual map file
@@ -230,13 +254,14 @@ class Session(LivingObject):
 			self.random.setstate( rng_state_tuple )
 
 		self.world = World(self) # Load horizons.world module (check horizons/world/__init__.py)
-		self.world._init(savegame_db)
+		self.world._init(savegame_db, force_player_id)
 		self.view.load(savegame_db) # load view
 		if not self.is_game_loaded():
 			# NOTE: this must be sorted before iteration, cause there is no defined order for
 			#       iterating a dict, and it must happen in the same order for mp games.
 			for i in sorted(players, lambda p1, p2: cmp(p1['id'], p2['id'])):
 				self.world.setup_player(i['id'], i['name'], i['color'], i['local'], i['ai'], i['difficulty'])
+			self.world.set_forced_player(force_player_id)
 			center = self.world.init_new_world(trader_enabled, pirate_enabled, natural_resource_multiplier)
 			self.view.center(center[0], center[1])
 		else:
@@ -249,7 +274,7 @@ class Session(LivingObject):
 		for instance_id in savegame_db("SELECT id FROM selected WHERE `group` IS NULL"): # Set old selected instance
 			obj = WorldObject.get_object_by_id(instance_id[0])
 			self.selected_instances.add(obj)
-			obj.select()
+			obj.get_component(SelectableComponent).select()
 		for group in xrange(len(self.selection_groups)): # load user defined unit groups
 			for instance_id in savegame_db("SELECT id FROM selected WHERE `group` = ?", group):
 				self.selection_groups[group].add(WorldObject.get_object_by_id(instance_id[0]))
@@ -267,6 +292,7 @@ class Session(LivingObject):
 		assert hasattr(self.world, "player"), 'Error: there is no human player'
 		"""
 		TUTORIAL:
+		That's it. After that, we call start() to activate the timer, and we're on live.
 		From here on you should digg into the classes that are loaded above, especially the world class.
 		(horizons/world/__init__.py). It's where the magic happens and all buildings and units are loaded.
 		"""
@@ -302,7 +328,7 @@ class Session(LivingObject):
 
 	def speed_up(self):
 		if self.speed_is_paused():
-			# TODO: sound feedback to signal that this is an invalid action
+			AmbientSoundComponent.play_special('error')
 			return
 		if self.timer.ticks_per_second in GAME_SPEED.TICK_RATES:
 			i = GAME_SPEED.TICK_RATES.index(self.timer.ticks_per_second)
@@ -313,7 +339,7 @@ class Session(LivingObject):
 
 	def speed_down(self):
 		if self.speed_is_paused():
-			# TODO: sound feedback to signal that this is an invalid action
+			AmbientSoundComponent.play_special('error')
 			return
 		if self.timer.ticks_per_second in GAME_SPEED.TICK_RATES:
 			i = GAME_SPEED.TICK_RATES.index(self.timer.ticks_per_second)
@@ -353,6 +379,26 @@ class Session(LivingObject):
 		@return: True if game is loaded, else False
 		"""
 		return (self.savecounter > 0)
+
+	def remove_selected(self):
+		self.log.debug('Removing %s', self.selected_instances)
+		for instance in [inst for inst in self.selected_instances]:
+			if instance.is_building:
+				if instance.tearable and instance.owner is self.world.player:
+					self.log.debug('Attempting to remove building %s', inst)
+					Tear(instance).execute(self)
+					self.selected_instances.discard(instance)
+				else:
+					self.log.debug('Unable to remove building %s', inst)
+			elif instance.is_unit:
+				if instance.owner is self.world.player:
+					self.log.debug('Attempting to remove unit %s', inst)
+					RemoveUnit(instance).execute(self)
+					self.selected_instances.discard(instance)
+				else:
+					self.log.debug('Unable to remove unit %s', inst)
+			else:
+				self.log.error('Unable to remove unknown object %s', instance)
 
 	def save_map(self, prefix):
 		maps_folder = os.path.join(PATHS.USER_DIR, 'maps')

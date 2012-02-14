@@ -36,9 +36,6 @@ class ResourceHandler(object):
 	look at the uml digramm: development/uml/production_classes.png
 
 	A ResourceHandler must not have more than 1 production with the same prod line id.
-	TUTORIAL:
-	You should now look at some of the implementations of the ResourceHandler.
-	You will find some in world/production/producer.py
 	"""
 	tabs = (ProductionOverviewTab, InventoryTab)
 
@@ -54,7 +51,6 @@ class ResourceHandler(object):
 	def initialize(self):
 		super(ResourceHandler, self).initialize()
 		self.__init()
-
 
 	def save(self, db):
 		super(ResourceHandler, self).save(db)
@@ -164,19 +160,6 @@ class ResourceHandler(object):
 			# the user can take away res, even if a collector registered for them
 			# if this happens, a negative number would be returned. Use 0 instead.
 			return max(amount, 0)
-
-	def get_status_icons(self):
-		l = super(ResourceHandler, self).get_status_icons()
-
-		inventory_full_res = []
-		for res in self.get_produced_resources():
-			if (self.get_component(StorageComponent).inventory.get_free_space_for(res) == 0):
-				inventory_full_res.append(res)
-
-		if inventory_full_res:
-			l.append( InventoryFullStatus(inventory_full_res) )
-
-		return l
 
 	## PROTECTED METHODS
 	def _load_provided_resources(self):

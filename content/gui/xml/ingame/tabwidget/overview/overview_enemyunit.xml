@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <!-- Overview tab -->
-<Container  size="250,550">
+<Container  size="250,300">
 <TabBG amount="3"/>
 	<Icon name="player_emblem" position="25,50"/>
 

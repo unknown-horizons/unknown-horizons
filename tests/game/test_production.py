@@ -73,16 +73,16 @@ def test_basic_wood_production(session, player):
 	assert producer.is_active()
 	assert producer._get_current_state() == PRODUCTION.STATES.producing
 
-	# Finish work
-	session.run(seconds=4)
+	# Finish work partly
+	session.run(seconds=2)
 
-	assert storage.inventory[RES.BOARDS_ID] == 0
 	assert producer._get_current_state() == PRODUCTION.STATES.producing
+	assert storage.inventory[RES.BOARDS_ID] == 0
 	# Callback should not yet have been called
 	assert not production_finished[0]
 
-	# One more tick for payout
-	session.run(ticks=1)
+	# Finish work
+	session.run(seconds=10)
 
 	# out of res again, waiting for res
 	assert producer._get_current_state() == PRODUCTION.STATES.waiting_for_res

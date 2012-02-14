@@ -25,6 +25,7 @@ from horizons.scheduler import Scheduler
 from horizons.world.component.storagecomponent import StorageComponent
 from horizons.world.component import Component
 
+
 class TradePostComponent(Component):
 	"""This Class has to be inherited by every class that wishes to use BuySellTab and trade with
 	the free trader.
@@ -95,14 +96,11 @@ class TradePostComponent(Component):
 		for row in db("SELECT tick, player, resource_id, amount, gold FROM trade_history WHERE settlement = ? ORDER BY tick, player", worldid):
 			self.trade_history.append(row)
 
-	@property
-	def _owner_inventory(self):
+	def get_owner_inventory(self):
 		return self.instance.owner.get_component(StorageComponent).inventory
 
-	@property
-	def _inventory(self):
+	def get_inventory(self):
 		return self.instance.get_component(StorageComponent).inventory
-
 
 	def buy(self, res, amount, price, player_id):
 		"""Check if we can buy, and process actions to our inventory
@@ -113,15 +111,15 @@ class TradePostComponent(Component):
 		@return bool, whether we did buy it"""
 		assert price >= 0 and amount >= 0
 		if not res in self.buy_list or \
-		   self._owner_inventory[RES.GOLD_ID] < price or \
-		   self._inventory.get_free_space_for(res) < amount or \
-		   amount + self._inventory[res] > self.buy_list[res]:
+		   self.get_owner_inventory()[RES.GOLD_ID] < price or \
+		   self.get_inventory().get_free_space_for(res) < amount or \
+		   amount + self.get_inventory()[res] > self.buy_list[res]:
 			return False
 
 		else:
-			remnant = self._owner_inventory.alter(RES.GOLD_ID, -price)
+			remnant = self.get_owner_inventory().alter(RES.GOLD_ID, -price)
 			assert remnant == 0
-			remnant = self._inventory.alter(res, amount)
+			remnant = self.get_inventory().alter(res, amount)
 			assert remnant == 0
 			self.trade_history.append((Scheduler().cur_tick, player_id, res, amount, -price))
 			self.buy_history[ Scheduler().cur_tick ] = (res, amount, price)
@@ -138,14 +136,14 @@ class TradePostComponent(Component):
 		@return bool, whether we did sell it"""
 		assert price >= 0 and amount >= 0
 		if not res in self.sell_list or \
-			 self._inventory[res] < amount or \
-			 self._inventory[res] - amount < self.sell_list[res]:
+			 self.get_inventory()[res] < amount or \
+			 self.get_inventory()[res] - amount < self.sell_list[res]:
 			return False
 
 		else:
-			remnant = self._owner_inventory.alter(RES.GOLD_ID, price)
+			remnant = self.get_owner_inventory().alter(RES.GOLD_ID, price)
 			assert remnant == 0
-			remnant = self._inventory.alter(res, -amount)
+			remnant = self.get_inventory().alter(res, -amount)
 			assert remnant == 0
 			self.trade_history.append((Scheduler().cur_tick, player_id, res, -amount, price))
 			self.sell_history[ Scheduler().cur_tick ] = (res, amount, price)
@@ -156,44 +154,43 @@ class TradePostComponent(Component):
 	def sell_resource(self, ship_worldid, resource_id, amount):
 		""" Attempt to sell the given amount of resource to the ship, returns the amount sold """
 		ship = WorldObject.get_object_by_id(ship_worldid)
-		# TODO: add some kind of "ding" sound to all of these messages
 		if resource_id not in self.sell_list:
-			if ship.owner == self.instance.session.world.player:
-				self.instance.session.ingame_gui.message_widget.add_custom(ship.position.x, ship.position.y, \
+			if ship.owner == self.session.world.player:
+				self.session.ingame_gui.message_widget.add_custom(ship.position.x, ship.position.y, \
 				                                                  _("The trade partner does not sell this."))
 			return 0
 
-		price = int(self.instance.session.db.get_res_value(resource_id) * TRADER.PRICE_MODIFIER_BUY) # price per ton of resource
+		price = int(self.session.db.get_res_value(resource_id) * TRADER.PRICE_MODIFIER_BUY) # price per ton of resource
 		assert price > 0
 
 		# can't sell more than the ship can fit in its inventory
 		amount = min(amount, ship.get_component(StorageComponent).inventory.get_free_space_for(resource_id))
 		if amount <= 0:
-			if ship.owner == self.instance.session.world.player:
-				self.instance.session.ingame_gui.message_widget.add_custom(ship.position.x, ship.position.y, \
+			if ship.owner == self.session.world.player:
+				self.session.ingame_gui.message_widget.add_custom(ship.position.x, ship.position.y, \
 				                                                  _("You can not store this."))
 			return 0
 		# can't sell more than the ship's owner can afford
 		amount = min(amount, ship.owner.get_component(StorageComponent).inventory[RES.GOLD_ID] // price)
 		if amount <= 0:
-			if ship.owner == self.instance.session.world.player:
-				self.instance.session.ingame_gui.message_widget.add_custom(ship.position.x, ship.position.y, \
+			if ship.owner == self.session.world.player:
+				self.session.ingame_gui.message_widget.add_custom(ship.position.x, ship.position.y, \
 				                                                  _("You can not afford to buy this."))
 			return 0
 		# can't sell more than what we have
-		amount = min(amount, self._inventory[resource_id])
+		amount = min(amount, self.get_inventory()[resource_id])
 		# can't sell more than we are trying to sell according to the settings
-		amount = min(amount, self._inventory[resource_id] - self.sell_list[resource_id])
+		amount = min(amount, self.get_inventory()[resource_id] - self.sell_list[resource_id])
 		if amount <= 0:
-			if ship.owner == self.instance.session.world.player:
-				self.instance.session.ingame_gui.message_widget.add_custom(ship.position.x, ship.position.y, \
+			if ship.owner == self.session.world.player:
+				self.session.ingame_gui.message_widget.add_custom(ship.position.x, ship.position.y, \
 				                                                  _("The trade partner does not sell more of this."))
 			return 0
 
 		total_price = price * amount
-		assert self._owner_inventory.alter(RES.GOLD_ID, total_price) == 0
+		assert self.get_owner_inventory().alter(RES.GOLD_ID, total_price) == 0
 		assert ship.owner.get_component(StorageComponent).inventory.alter(RES.GOLD_ID, -total_price) == 0
-		assert self._inventory.alter(resource_id, -amount) == 0
+		assert self.get_inventory().alter(resource_id, -amount) == 0
 		assert ship.get_component(StorageComponent).inventory.alter(resource_id, amount) == 0
 		self.trade_history.append((Scheduler().cur_tick, ship.owner.worldid, resource_id, -amount, total_price))
 		self.sell_history[Scheduler().cur_tick] = (resource_id, amount, total_price)
@@ -202,50 +199,49 @@ class TradePostComponent(Component):
 
 	def buy_resource(self, ship_worldid, resource_id, amount):
 		""" Attempt to buy the given amount of resource from the ship, return the amount bought """
-		# TODO: add some kind of "ding" sound to all of these messages
 		ship = WorldObject.get_object_by_id(ship_worldid)
 		if resource_id not in self.buy_list:
-			if ship.owner == self.instance.session.world.player:
-				self.instance.session.ingame_gui.message_widget.add_custom(ship.position.x, ship.position.y, \
+			if ship.owner == self.session.world.player:
+				self.session.ingame_gui.message_widget.add_custom(ship.position.x, ship.position.y, \
 				                                                  _("The trade partner does not buy this."))
 			return 0
 
-		price = int(self.instance.session.db.get_res_value(resource_id) * TRADER.PRICE_MODIFIER_SELL) # price per ton of resource
+		price = int(self.session.db.get_res_value(resource_id) * TRADER.PRICE_MODIFIER_SELL) # price per ton of resource
 		assert price > 0
 
 		# can't buy more than the ship has
 		amount = min(amount, ship.get_component(StorageComponent).inventory[resource_id])
 		if amount <= 0:
-			if ship.owner == self.instance.session.world.player:
-				self.instance.session.ingame_gui.message_widget.add_custom(ship.position.x, ship.position.y, \
+			if ship.owner == self.session.world.player:
+				self.session.ingame_gui.message_widget.add_custom(ship.position.x, ship.position.y, \
 				                                                  _("You do not possess this."))
 			return 0
 		# can't buy more than we can fit in the inventory
-		amount = min(amount, self._inventory.get_free_space_for(resource_id))
+		amount = min(amount, self.get_inventory().get_free_space_for(resource_id))
 		if amount <= 0:
-			if ship.owner == self.instance.session.world.player:
-				self.instance.session.ingame_gui.message_widget.add_custom(ship.position.x, ship.position.y, \
+			if ship.owner == self.session.world.player:
+				self.session.ingame_gui.message_widget.add_custom(ship.position.x, ship.position.y, \
 				                                                  _("The trade partner can not store more of this."))
 			return 0
 		# can't buy more than we can afford
-		amount = min(amount, self._owner_inventory[RES.GOLD_ID] // price)
+		amount = min(amount, self.get_owner_inventory()[RES.GOLD_ID] // price)
 		if amount <= 0:
-			if ship.owner == self.instance.session.world.player:
-				self.instance.session.ingame_gui.message_widget.add_custom(ship.position.x, ship.position.y, \
+			if ship.owner == self.session.world.player:
+				self.session.ingame_gui.message_widget.add_custom(ship.position.x, ship.position.y, \
 				                                                  _("The trade partner can not afford to buy this."))
 			return 0
 		# can't buy more than we are trying to buy according to the settings
-		amount = min(amount, self.buy_list[resource_id] - self._inventory[resource_id])
+		amount = min(amount, self.buy_list[resource_id] - self.get_inventory()[resource_id])
 		if amount <= 0:
-			if ship.owner == self.instance.session.world.player:
-				self.instance.session.ingame_gui.message_widget.add_custom(ship.position.x, ship.position.y, \
+			if ship.owner == self.session.world.player:
+				self.session.ingame_gui.message_widget.add_custom(ship.position.x, ship.position.y, \
 				                                                  _("The trade partner does not buy more of this."))
 			return 0
 
 		total_price = price * amount
-		assert self._owner_inventory.alter(RES.GOLD_ID, -total_price) == 0
+		assert self.get_owner_inventory().alter(RES.GOLD_ID, -total_price) == 0
 		assert ship.owner.get_component(StorageComponent).inventory.alter(RES.GOLD_ID, total_price) == 0
-		assert self._inventory.alter(resource_id, amount) == 0
+		assert self.get_inventory().alter(resource_id, amount) == 0
 		assert ship.get_component(StorageComponent).inventory.alter(resource_id, -amount) == 0
 		self.trade_history.append((Scheduler().cur_tick, ship.owner.worldid, resource_id, amount, -total_price))
 		self.buy_history[Scheduler().cur_tick] = (resource_id, amount, total_price)

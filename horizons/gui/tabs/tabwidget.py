@@ -51,7 +51,7 @@ class TabWidget(object):
 		if position is None:
 			# add positioning here
 			self.widget.position = (
-				horizons.main.fife.engine_settings.getScreenWidth() - 303,
+				horizons.main.fife.engine_settings.getScreenWidth() - 290,
 				209
 			)
 		else:
@@ -117,6 +117,11 @@ class TabWidget(object):
 		# important to display the tabs correctly in front
 		self.widget.hide()
 		self.show()
+
+		# pychan layouting depends on time, it's usually in a better mood later.
+		# this introduces some flickering, but fixes #916
+		from horizons.extscheduler import ExtScheduler
+		ExtScheduler().add_new_object(new_tab.widget.adaptLayout, self, run_in=0)
 
 	def _draw_widget(self):
 		"""Draws the widget, but does not show it automatically"""

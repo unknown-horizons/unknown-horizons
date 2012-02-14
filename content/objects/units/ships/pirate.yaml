@@ -4,6 +4,10 @@ name: Pirate
 radius: 5
 velocity: 12.0
 components:
+- SelectableComponent:
+    type: ship
+    tabs: [ShipOverviewTab,]
+    enemy_tabs: [EnemyShipOverviewTab,]
 - AmbientSoundComponent
 - StorageComponent:
    inventory:

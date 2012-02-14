@@ -48,12 +48,25 @@ the test will be further exhausted:
 """
 
 import os
+import shutil
+import signal
 import subprocess
 import sys
+import tempfile
 from functools import wraps
+
+from nose.plugins import Plugin
 
 from tests import RANDOM_SEED
 from tests.gui.helper import GuiHelper
+
+# check if SIGALRM is supported, this is not the case on Windows
+# we might provide an alternative later, but for now, this will do
+try:
+	from signal import SIGALRM
+	TEST_TIMELIMIT = True
+except ImportError:
+	TEST_TIMELIMIT = False
 
 
 # path where test savegames are stored (tests/gui/ingame/fixtures/)
@@ -64,6 +77,70 @@ TEST_FIXTURES_DIR = os.path.join(os.path.abspath(os.path.dirname(__file__)), 'in
 # Needed to distinguish between the original test and other generators used
 # for dialogs.
 TestFinished = 'finished'
+
+class TestFailed(Exception): pass
+
+
+TEST_USER_DIR = None
+
+def setup_package():
+	"""
+	Create a temporary dictionary to use as user dictionary (settings, savegames etc.)
+	while the tests are running.
+	"""
+	global TEST_USER_DIR
+	TEST_USER_DIR = tempfile.mkdtemp()
+
+
+def teardown_package():
+	"""
+	Delete the user dictionary.
+	"""
+	global TEST_USER_DIR
+	shutil.rmtree(TEST_USER_DIR)
+	TEST_USER_DIR = None
+
+
+class GuiTestPlugin(Plugin):
+	"""This plugin is used to improve the test failure display for gui tests.
+
+	Because nose runs in a different process than the real test, we cannot easily
+	show the traceback as if the exception occured here. The real traceback will
+	be used as message in an `TestFailed` exception, which we capture here and
+	remove the traceback (from the TestFailed raise) entirely, leaving us just
+	with the exception.
+
+	This:
+
+		------------------------
+		Traceback (most recent call last):
+			File "/path/to/nose/case.py", line 197, in runTest
+				self.test(*self.arg)
+			File "/path/to/tests/gui/__init__.py", line 273, in wrapped
+				raise TestFailed("\n\n" + error)
+		TestFailed:
+
+		[Real traceback]
+
+	Becomes:
+
+		------------------------
+		TestFailed:
+
+		[Real traceback]
+	"""
+	name = 'guitest'
+	enabled = True
+
+	def configure(self, options, conf):
+		pass
+
+	def formatError(self, test, err):
+		exc_type, value, traceback = err
+		if exc_type == TestFailed:
+			traceback = None
+
+		return exc_type, value, traceback
 
 
 class TestRunner(object):
@@ -88,14 +165,31 @@ class TestRunner(object):
 		self._engine = engine
 		self._gui_handlers = []
 
+		self._filter_traceback()
 		test = self._load_test(test_path)
 		test_gen = test(GuiHelper(self._engine.pychan, self))
 		self._gui_handlers.append(test_gen)
 		self._start()
 
+	def _filter_traceback(self):
+		"""Remove test internals from exception tracebacks.
+
+		Makes them shorter and easier to read. The last trace of internals is
+		the call of `TestRunner._tick`
+		"""
+		def skip_internals(func):
+			def wrapped(exctype, value, tb):
+				while tb and 'TestRunner' not in tb.tb_frame.f_globals:
+					tb = tb.tb_next
+				tb = tb.tb_next
+				func(exctype, value, tb)
+			return wrapped
+
+		sys.excepthook = skip_internals(sys.excepthook)
+
 	def _load_test(self, test_name):
 		"""Import test from dotted path, e.g.:
-		
+
 			tests.gui.test_example.example
 		"""
 		path, name = test_name.rsplit('.', 1)
@@ -133,12 +227,13 @@ class TestRunner(object):
 			pass
 
 
-def gui_test(use_dev_map=False, use_fixture=None, ai_players=0):
+def gui_test(use_dev_map=False, use_fixture=None, ai_players=0, timeout=15 * 60):
 	"""Magic nose integration.
 
 	use_dev_map		-	starts the game with --start-dev-map
 	use_fixture		-	starts the game with --load-map=fixture_name
 	ai_players		-	starts the game with --ai_players=<number>
+	timeout			-	test will be stopped after X seconds passed (0 = disabled)
 
 	Each GUI test is run in a new process. In case of an error, stderr will be
 	printed. That way it will appear in the nose failure listing.
@@ -147,7 +242,7 @@ def gui_test(use_dev_map=False, use_fixture=None, ai_players=0):
 		@wraps(func)
 		def wrapped():
 			test_name = '%s.%s' % (func.__module__, func.__name__)
-			args = ['python', 'run_uh.py', '--sp-seed', str(RANDOM_SEED), '--gui-test', test_name]
+			args = [sys.executable, 'run_uh.py', '--sp-seed', str(RANDOM_SEED), '--gui-test', test_name]
 			if use_fixture:
 				path = os.path.join(TEST_FIXTURES_DIR, use_fixture + '.sqlite')
 				if not os.path.exists(path):
@@ -176,14 +271,31 @@ def gui_test(use_dev_map=False, use_fixture=None, ai_players=0):
 				stderr = subprocess.PIPE
 				nose_captured = True
 
-			proc = subprocess.Popen(args, stdout=stdout, stderr=stderr)
+			# Activate fail-fast, this way the game will stop running when for example the
+			# savegame could not be loaded (instead of showing an error popup)
+			env = os.environ.copy()
+			env['FAIL_FAST'] = '1'
+			env['UH_USER_DIR'] = TEST_USER_DIR
+
+			# Start game
+			proc = subprocess.Popen(args, stdout=stdout, stderr=stderr, env=env)
+
+			if TEST_TIMELIMIT and timeout:
+				# Install timeout kill
+				def handler(signum, frame):
+					proc.kill()
+					raise TestFailed('\n\nTest run exceeded %ds time limit' % timeout)
+				signal.signal(signal.SIGALRM, handler)
+				signal.alarm(timeout)
+
 			stdout, stderr = proc.communicate()
 			if proc.returncode != 0:
 				if nose_captured:
-					print stdout
-					print '-' * 30
-					print stderr
-				assert False, 'Test failed'
+					if stdout:
+						print stdout
+					raise TestFailed('\n\n' + stderr)
+				else:
+					raise TestFailed()
 
 		# we need to store the original function, otherwise the new process will execute
 		# this decorator, thus spawning a new process..
@@ -194,3 +306,6 @@ def gui_test(use_dev_map=False, use_fixture=None, ai_players=0):
 	return deco
 
 gui_test.__test__ = False
+
+# FIXME GUI tests still don't work in parallel, this is needed for game/unit tests to work
+_multiprocess_can_split_ = True

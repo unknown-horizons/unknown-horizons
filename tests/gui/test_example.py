@@ -29,8 +29,10 @@ from tests.gui import TestFinished, gui_test
 #
 # 	use_dev_map=True		- Game launches with --start-dev-map (no main menu)
 # 	use_fixture='name'		- Game launches with --load-map=tests/gui/ingame/fixtures/name.sqlite
+# 	ai_players=1			- Game launches with --ai-players=1
+# 	timeout=3				- Game will be killed after 3 seconds
 #
-@gui_test()
+@gui_test(timeout=60)
 def test_example(gui):
 	"""
 	Documented example test.
@@ -55,9 +57,9 @@ def test_example(gui):
 	gui.trigger(singleplayer_menu, 'okay/action/default') # start a game
 
 	# Hopefully we're ingame now
-	assert len(gui.active_widgets) == 4
-	gold_display = gui.find(name='status_gold')
-	assert gold_display.findChild(name='gold_1').text == '30000'
+	assert len(gui.active_widgets) > 0
+	gold_label = gui.find(name='gold_available')
+	assert gold_label.text == '30000'
 
 	# All commands above run sequentially, neither the engine nor the timer
 	# will be run. If you need the game to run for some time (or have to wait for
@@ -80,19 +82,18 @@ def test_example(gui):
 	# interactions.
 
 	# Open game menu
-	hud = gui.find(name='mainhud')
-	gui.trigger(hud, 'gameMenuButton/action/default')
-	game_menu = gui.find(name='menu')
+	gui.trigger('mainhud', 'gameMenuButton/action/default')
+
+	# gui.trigger accepts both a string (container name), or a object returned by gui.find
 
 	# Cancel current game
 	def dialog():
 		yield
-		popup = gui.find(name='popup_window')
-		gui.trigger(popup, 'okButton/action/__execute__')
+		gui.trigger('popup_window', 'okButton/action/__execute__')
 
 	# Dialog handling has to be done by a separate generator.
 	with gui.handler(dialog):
-		gui.trigger(game_menu, 'quit/action/default')
+		gui.trigger('menu', 'quit/action/default')
 
 	# Code execution will continue here once `dialog` has ended.
 

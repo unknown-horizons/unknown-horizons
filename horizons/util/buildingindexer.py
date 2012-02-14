@@ -19,8 +19,6 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-from horizons.util.shapes.point import Point
-from horizons.util.shapes.circle import Circle
 from horizons.util.python import decorators
 
 
@@ -33,20 +31,24 @@ class BuildingIndexer(object):
 	building that provides resource X in my range'.
 	"""
 
-	def __init__(self, radius, coords_list, random = None):
+	def __init__(self, radius, coords_list, random = None, buildings=None):
 		"""
 		Create a BuildingIndexer
 		@param radius: int, maximum required radius of the buildings
 		@param coords_list: list of tuples, the coordinates of the island
 		@param random: the rng of the session
+		@param buildings: initial list of buildings. Will only be read.
 		"""
-		self._offsets = Circle(Point(0, 0), radius).get_coordinates()
+		self.radius = radius
 		self._map = {}
 		for coords in coords_list:
 			self._map[coords] = BuildingIndex(coords, random)
 		self._add_set = set()
 		self._remove_set = set()
 		self._changed = False
+
+		if buildings:
+			self._update(add_buildings=buildings, initial=True)
 
 	def add(self, building):
 		self._remove_set.discard(building)
@@ -58,26 +60,31 @@ class BuildingIndexer(object):
 		self._remove_set.add(building)
 		self._changed = True
 
-	def _get_tuples_in_range(self, building):
-		# TODO: this should be improved to work better on buildings with more than one tile
-		for building_coords in building.position.tuple_iter():
-			for x_offset, y_offset in self._offsets:
-				coords = (building_coords[0] + x_offset, building_coords[1] + y_offset)
-				if coords in self._map:
-					yield coords
-
-	def _update(self):
+	def _update(self, add_buildings=None, initial=False):
+		"""
+		@param add_buildings: Don't use unless you know why.
+		@param initial: can be set on first call as optimisation
+		"""
 		for building in self._remove_set:
-			for coords in self._get_tuples_in_range(building):
-				index = self._map[coords]
+			for coords in building.position.get_radius_coordinates(self.radius, include_self=True):
+				try:
+					index = self._map[coords]
+				except KeyError:
+					continue # should be faster than contains check, since usually true
 				index._remove_set.add(building)
 				index._add_set.discard(building)
 				index._changed = True
 
-		for building in self._add_set:
-			for coords in self._get_tuples_in_range(building):
-				index = self._map[coords]
-				index._remove_set.discard(building)
+		if not add_buildings:
+			add_buildings = self._add_set
+		for building in add_buildings:
+			for coords in building.position.get_radius_coordinates(self.radius, include_self=True):
+				try:
+					index = self._map[coords]
+				except KeyError:
+					continue # should be faster than contains check, since usually true
+				if not initial:
+					index._remove_set.discard(building)
 				index._add_set.add(building)
 				index._changed = True
 

@@ -51,13 +51,13 @@ class Entities(object):
 	log = logging.getLogger('entities')
 
 	@classmethod
-	def load(cls, db):
+	def load(cls, db, load_now=False):
 		if cls.loaded:
 			return
 
-		cls.load_grounds(db)
-		cls.load_buildings(db)
-		cls.load_units()
+		cls.load_grounds(db, load_now)
+		cls.load_buildings(db, load_now)
+		cls.load_units(load_now)
 		cls.loaded = True
 
 	@classmethod
@@ -88,10 +88,15 @@ class Entities(object):
 				# This is needed for dict lookups! Do not convert to os.join!
 				full_file = root + "/" + filename
 				result = YamlCache.get_file(full_file)
+				if result is None: # discard empty yaml files
+					print "Empty yaml file {file} found, not loading!".format(file=full_file)
+					continue
+
 				result['yaml_file'] = full_file
 
 				building_id = int(result['id'])
 				cls.buildings.create_on_access(building_id, Callback(BuildingClass, db=db, id=building_id, yaml_data=result))
+				# NOTE: The current system now requires all building data to be loaded
 				if load_now or True:
 					cls.buildings[building_id]
 

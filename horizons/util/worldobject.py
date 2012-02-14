@@ -73,6 +73,7 @@ class WorldObject(ChangeListener):
 	def remove(self):
 		super(WorldObject, self).remove()
 		self.log.debug("Removing WorldObject %s %s", self.worldid, self)
+		del WorldObject.__objects[self.worldid]
 
 	def __lt__(self, other):
 		return self.worldid < other.worldid

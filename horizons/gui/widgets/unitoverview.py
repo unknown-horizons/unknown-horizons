@@ -27,7 +27,7 @@ from horizons.gui.widgets import TooltipIcon
 from horizons.command.unit import SetStance
 from horizons.extscheduler import ExtScheduler
 from horizons.world.component.healthcomponent import HealthComponent
-from horizons.world.component.stancecomponent import NoneStance, AggressiveStance, HoldGroundStance, FleeStance
+from horizons.world.component.stancecomponent import NoneStance, AggressiveStance, HoldGroundStance, FleeStance, DEFAULT_STANCES
 
 class StanceWidget(pychan.widgets.Container):
 	"""Widget used for setting up the stance for one instance"""
@@ -40,12 +40,8 @@ class StanceWidget(pychan.widgets.Container):
 	def init(self, instance):
 		self.instance = instance
 		self.toggle_stance()
-		self.mapEvents({
-			'aggressive': Callback(self.set_stance, AggressiveStance),
-			'hold_ground': Callback(self.set_stance, HoldGroundStance),
-			'none': Callback(self.set_stance, NoneStance),
-			'flee': Callback(self.set_stance, FleeStance)
-			})
+		events = dict( (i.NAME, Callback(self.set_stance, i) ) for i in DEFAULT_STANCES )
+		self.mapEvents( events )
 
 	def beforeShow(self):
 		super(StanceWidget, self).beforeShow()
@@ -69,10 +65,8 @@ class StanceWidget(pychan.widgets.Container):
 		self.toggle_stance()
 
 	def toggle_stance(self):
-		self.findChild(name='aggressive').set_inactive()
-		self.findChild(name='hold_ground').set_inactive()
-		self.findChild(name='none').set_inactive()
-		self.findChild(name='flee').set_inactive()
+		for stance in DEFAULT_STANCES:
+			self.findChild(name=stance.NAME).set_inactive()
 		self.findChild(name=self.instance.stance.NAME).set_active()
 
 class HealthWidget(pychan.widgets.Container):

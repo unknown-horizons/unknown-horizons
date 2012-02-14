@@ -67,10 +67,10 @@ def do_win(session):
 	"""Called when player won"""
 	session.speed_pause()
 	show_db_message(session, 'YOU_HAVE_WON')
-	horizons.main.fife.play_sound('effects', "content/audio/sounds/events/szenario/win.ogg")
+	horizons.main.fife.play_sound('effects', "content/audio/sounds/events/scenario/win.ogg")
 
 	continue_playing = False
-	if session.campaign is None or not AUTO_CONTINUE_CAMPAIGN:
+	if not session.campaign or not AUTO_CONTINUE_CAMPAIGN:
 		continue_playing = session.gui.show_popup(_("You have won!"), \
 		                                          _("You have completed this scenario.") + u" " + \
 		                                          _("Do you want to continue playing?"), \
@@ -95,7 +95,7 @@ def goal_reached(session, goal_number):
 def do_lose(session):
 	"""Called when player lost"""
 	show_message(session, 'You failed the scenario.')
-	horizons.main.fife.play_sound('effects', 'content/audio/sounds/events/szenario/loose.ogg')
+	horizons.main.fife.play_sound('effects', 'content/audio/sounds/events/scenario/loose.ogg')
 	# drop events after this event
 	Scheduler().add_new_object(session.scenario_eventhandler.drop_events, session.scenario_eventhandler)
 

@@ -19,11 +19,10 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-from horizons.gui.tabs import SignalFireOverviewTab
-from horizons.world.building.building import BasicBuilding, SelectableBuilding
+from horizons.world.building.building import BasicBuilding
 from horizons.world.building.buildable import BuildableSingle
 
-class Housing(SelectableBuilding, BasicBuilding, BuildableSingle):
+class Housing(BasicBuilding, BuildableSingle):
 
 	def save(self, db):
 		super(Housing, self).save(db)
@@ -33,7 +32,5 @@ class Housing(SelectableBuilding, BasicBuilding, BuildableSingle):
 
 
 class SignalFire(Housing):
-	# TODO: range_applies_only_on_island is disabled until #760 is fixed
-	# (Big sea tiles cause wrong range highlight)
-	#range_applies_only_on_island = False
-	tabs = (SignalFireOverviewTab, )
+	range_applies_only_on_island = False
+

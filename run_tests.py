@@ -88,5 +88,6 @@ if __name__ == '__main__':
 
 	setup_horizons()
 
-	nose.run(defaultTest='tests')
+	from tests.gui import GuiTestPlugin
+	nose.run(defaultTest='tests', addplugins=[GuiTestPlugin()])
 

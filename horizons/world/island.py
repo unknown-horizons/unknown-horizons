@@ -33,16 +33,16 @@ from horizons.world.buildingowner import BuildingOwner
 from horizons.gui.widgets.minimap import Minimap
 
 class Island(BuildingOwner, WorldObject):
-	"""The Island class represents an Island by keeping a list of all instances on the map,
-	that belong to the island. The island variable is also set on every instance that belongs
-	to an island, making it easy to determine to which island the instance belongs, when
-	selected.
+	"""The Island class represents an island by keeping a list of all things on the map,
+	that belong to the island. This comprises ground tiles as well as buildings,
+	nature objects (which are buildings) and units.
+	All those objects have furthermore a reference to the island, making it easy to determine to which island the instance belongs.
 	An Island instance is created at map creation, when all tiles are added to the map.
 	@param origin: Point instance - Position of the (0, 0) ground tile.
 	@param filename: file from which the island is loaded.
 
 	Each island holds some important attributes:
-	* grounds - All grounds that belong to the island are referenced here.
+	* grounds - All ground tiles that belong to the island are referenced here.
 	* grounds_map -  a dictionary that binds tuples of coordinates with a reference to the tile:
 	                  { (x, y): tileref, ...}
 					  This is important for pathfinding and quick tile fetching.
@@ -57,38 +57,46 @@ class Island(BuildingOwner, WorldObject):
 	function is not called. Rather the load function is called. So everything that new
 	classes and loaded classes share to initialize, comes into the __init() function.
 	This is the common way of doing this in Unknown Horizons, so better get used to it :)
+	NOTE: The components work a bit different, but this code here is mostly not component oriented.
 
 	To continue hacking, check out the __init() function now.
 	"""
 	log = logging.getLogger("world.island")
 
-	def __init__(self, db, islandid, session):
+	def __init__(self, db, islandid, session, preview=False):
 		"""
 		@param db: db instance with island table
 		@param islandid: id of island in that table
 		@param session: reference to Session instance
+		@param preview: flag, map preview mode
 		"""
 		super(Island, self).__init__(worldid=islandid)
+
+		if False:
+			from horizons.session import Session
+			assert isinstance(session, Session)
 		self.session = session
 
 		x, y, filename = db("SELECT x, y, file FROM island WHERE rowid = ? - 1000", islandid)[0]
-		self.__init(Point(x, y), filename)
+		self.__init(Point(x, y), filename, preview=preview)
 
-		# create building indexers
-		from horizons.world.units.animal import WildAnimal
-		self.building_indexers = {}
-		self.building_indexers[BUILDINGS.TREE_CLASS] = BuildingIndexer(WildAnimal.walking_range, self, self.session.random)
+		if not preview:
+			# create building indexers
+			from horizons.world.units.animal import WildAnimal
+			self.building_indexers = {}
+			self.building_indexers[BUILDINGS.TREE_CLASS] = BuildingIndexer(WildAnimal.walking_range, self, self.session.random)
 
 		# load settlements
 		for (settlement_id,) in db("SELECT rowid FROM settlement WHERE island = ?", islandid):
 			settlement = Settlement.load(db, settlement_id, self.session, self)
 			self.settlements.append(settlement)
 
-		# load buildings
-		from horizons.world import load_building
-		for (building_worldid, building_typeid) in \
-		    db("SELECT rowid, type FROM building WHERE location = ?", islandid):
-			load_building(self.session, db, building_typeid, building_worldid)
+		if not preview:
+			# load buildings
+			from horizons.world import load_building
+			for (building_worldid, building_typeid) in \
+				  db("SELECT rowid, type FROM building WHERE location = ?", islandid):
+				load_building(self.session, db, building_typeid, building_worldid)
 
 	def _get_island_db(self):
 		# check if filename is a random map
@@ -97,11 +105,12 @@ class Island(BuildingOwner, WorldObject):
 			return random_map.create_random_island(self.file)
 		return DbReader(self.file) # Create a new DbReader instance to load the maps file.
 
-	def __init(self, origin, filename):
+	def __init(self, origin, filename, preview=False):
 		"""
 		Load the actual island from a file
 		@param origin: Point
 		@param filename: String, filename of island db or random map id
+		@param preview: flag, map preview mode
 		"""
 		self.file = filename
 		self.origin = origin
@@ -115,8 +124,13 @@ class Island(BuildingOwner, WorldObject):
 
 		self.ground_map = {}
 		for (rel_x, rel_y, ground_id, action_id, rotation) in db("SELECT x, y, ground_id, action_id, rotation FROM ground"): # Load grounds
-			ground = Entities.grounds[ground_id](self.session, self.origin.x + rel_x, self.origin.y + rel_y)
-			ground.act(action_id, rotation)
+			if not preview: # actual game, need actual tiles
+				ground = Entities.grounds[ground_id](self.session, self.origin.x + rel_x, self.origin.y + rel_y)
+				ground.act(action_id, rotation)
+			else:
+				ground = Point(self.origin.x + rel_x, self.origin.y + rel_y)
+				ground.classes = tuple()
+				ground.settlement = None
 			# These are important for pathfinding and building to check if the ground tile
 			# is blocked in any way.
 			self.ground_map[(ground.x, ground.y)] = ground
@@ -127,8 +141,6 @@ class Island(BuildingOwner, WorldObject):
 		self.wild_animals = []
 		self.num_trees = 0
 
-		self.path_nodes = IslandPathNodes(self)
-
 		# define the rectangle with the smallest area that contains every island tile its position
 		min_x = min(zip(*self.ground_map.keys())[0])
 		max_x = max(zip(*self.ground_map.keys())[0])
@@ -136,11 +148,15 @@ class Island(BuildingOwner, WorldObject):
 		max_y = max(zip(*self.ground_map.keys())[1])
 		self.position = Rect.init_from_borders(min_x, min_y, max_x, max_y)
 
-		# repopulate wild animals every 2 mins if they die out.
-		Scheduler().add_new_object(self.check_wild_animal_population, self, Scheduler().get_ticks(120), -1)
+		if not preview: # this isn't needed for previews, but it is in actual games
+			self.path_nodes = IslandPathNodes(self)
+
+			# repopulate wild animals every 2 mins if they die out.
+			Scheduler().add_new_object(self.check_wild_animal_population, self, Scheduler().get_ticks(120), -1)
 
 		"""TUTORIAL:
-		To continue hacking, you should now take off to the real fun stuff and check out horizons/world/building/__init__.py.
+		The next step will be an overview of the component system, which you will need
+		to understand in order to see how our actual game object (buildings, units) work. Please proceed to horizons/world/componentholder.py
 		"""
 
 	def save(self, db):

@@ -22,30 +22,15 @@
 
 from unittest import TestCase
 
-from horizons.ext.dummy import Dummy
 from horizons.constants import RES
 from horizons.scheduler import Scheduler
 from horizons.world.storage import GenericStorage
 from horizons.world.component.tradepostcomponent import TradePostComponent
-from horizons.world.component.storagecomponent import StorageComponent
 
 class TestTradePostComponent(TestCase):
 	"""
 	TODO: buy_resource, sell_resource (needs ships and player concept)
 	"""
-
-	@classmethod
-	def setUpClass(cls):
-		class Timer(object):
-			def add_call(self, x):
-				pass
-			def get_ticks(self, x):
-				return 100
-		Scheduler.create_instance(timer=Timer())
-
-	@classmethod
-	def tearDownClass(cls):
-		Scheduler.destroy_instance()
 
 	def setUp(self):
 		self.inventory = GenericStorage()
@@ -63,6 +48,16 @@ class TestTradePostComponent(TestCase):
 		self.tradepost.instance = Instance(self.inventory)
 		self.tradepost.instance.owner = Instance(self.owner_inventory)
 		self.tradepost.initialize()
+
+		class Timer(object):
+			def add_call(self, x):
+				pass
+			def get_ticks(self, x):
+				return 100
+		Scheduler.create_instance(timer=Timer())
+
+	def tearDown(self):
+		Scheduler.destroy_instance()
 
 	def test_buy(self):
 		self.owner_inventory.alter(RES.GOLD_ID, 1)

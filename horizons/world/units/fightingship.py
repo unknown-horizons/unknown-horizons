@@ -23,6 +23,7 @@ from horizons.gui.tabs import EnemyShipOverviewTab, FightingShipOverviewTab
 from horizons.constants import WEAPONS, GAME_SPEED
 from horizons.world.units.weaponholder import MovingWeaponHolder
 from horizons.world.units.ship import Ship
+from horizons.world.component.commandablecomponent import CommandableComponent
 
 class FightingShip(MovingWeaponHolder, Ship):
 	"""Class representing a fighting ship ship
@@ -30,8 +31,6 @@ class FightingShip(MovingWeaponHolder, Ship):
 	@param y: int y position
 	"""
 	health_bar_y = -190
-	tabs = (FightingShipOverviewTab, )
-	enemy_tabs = (EnemyShipOverviewTab, )
 
 	def __init__(self, x, y, **kwargs):
 		super(FightingShip, self).__init__(x=x, y=y, **kwargs)
@@ -40,7 +39,7 @@ class FightingShip(MovingWeaponHolder, Ship):
 			self.add_weapon_to_storage(WEAPONS.CANNON)
 
 	def go(self, x, y):
-		super(FightingShip, self).go(x, y)
+		self.get_component(CommandableComponent).go(x, y)
 		self.stop_attack()
 
 	def fire_all_weapons(self, dest, rotate = True, bullet_delay = GAME_SPEED.TICKS_PER_SECOND):

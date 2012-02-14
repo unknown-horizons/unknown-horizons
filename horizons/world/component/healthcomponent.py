@@ -39,11 +39,20 @@ class HealthComponent(Component):
 		assert maxhealth is not None, "Can not add HealthComponent without maxhealth!"
 		self.max_health = float(maxhealth) if maxhealth is not None else None
 
-
 	def initialize(self):
 		self.health = float(self.max_health)
+		self._add_listeners()
+
+	def _add_listeners(self):
 		self.add_damage_dealt_listener(self.check_if_alive)
 		self.add_damage_dealt_listener(self.redraw_health)
+
+	def save(self, db):
+		db("INSERT INTO unit_health(owner_id, health) VALUES(?, ?)", self.instance.worldid, self.health)
+
+	def load(self, db, worldid):
+		self.health = db("SELECT health FROM unit_health WHERE owner_id = ?", worldid)[0][0]
+		self._add_listeners()
 
 	def deal_damage(self, weapon_id, damage):
 		#TODO retrieve modifiers from database by owner_id/weapon_id
@@ -54,12 +63,6 @@ class HealthComponent(Component):
 		self.log.debug("dealing damage %s to %s; new health: %s", scaling_factor*damage, self.instance, self.health)
 		self.on_damage_dealt()
 
-	def save(self, db):
-		db("INSERT INTO unit_health(owner_id, health) VALUES(?, ?)", self.instance.worldid, self.health)
-
-	def load(self, db, worldid):
-		self.health = db("SELECT health FROM unit_health WHERE owner_id = ?", worldid)[0][0]
-
 	def check_if_alive(self, caller = None):
 		if self.health <= 0:
 			self.log.debug("Unit %s dies, health: %s", self.instance, self.health)
@@ -68,7 +71,7 @@ class HealthComponent(Component):
 	def redraw_health(self, caller = None):
 		if not self.instance:
 			return
-		if self.instance in self.instance.session.selected_instances:
+		if self.instance in self.session.selected_instances:
 			if hasattr(self.instance, 'draw_health'):
 				self.instance.draw_health()
 

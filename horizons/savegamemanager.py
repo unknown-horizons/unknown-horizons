@@ -68,7 +68,7 @@ class SavegameManager(object):
 
 	# Use {{}} because this string is formatted twice and
 	# {timestamp} is replaced in the second format() call.
-	save_filename_timeformat = "{prefix}{{timestamp:.4f}}--%Y-%m-%d--%H-%M.{ext}"
+	save_filename_timeformat = u"{prefix}{{timestamp:.4f}}--%Y-%m-%d--%H-%M.{ext}"
 	autosave_filenamepattern = save_filename_timeformat.format(prefix=autosave_basename, ext=savegame_extension)
 	quicksave_filenamepattern = save_filename_timeformat.format(prefix=quicksave_basename, ext=savegame_extension)
 
@@ -104,9 +104,9 @@ class SavegameManager(object):
 
 		for f in files:
 			if f.startswith(cls.autosave_dir):
-				name = "Autosave {date}".format(date=get_timestamp_string(cls.get_metadata(f)))
+				name = u"Autosave {date}".format(date=get_timestamp_string(cls.get_metadata(f)))
 			elif f.startswith(cls.quicksave_dir):
-				name = "Quicksave {date}".format(date=get_timestamp_string(cls.get_metadata(f)))
+				name = u"Quicksave {date}".format(date=get_timestamp_string(cls.get_metadata(f)))
 			else:
 				name = os.path.splitext(os.path.basename(f))[0]
 
@@ -130,7 +130,7 @@ class SavegameManager(object):
 	@classmethod
 	def create_filename(cls, savegamename):
 		"""Returns the full path for a regular save of the name savegamename"""
-		name = "{directory}{sep}{name}.{ext}".format(directory=cls.savegame_dir,
+		name = u"{directory}{sep}{name}.{ext}".format(directory=cls.savegame_dir,
 		                                         sep=os.sep,
 		                                         name=savegamename,
 		                                         ext=cls.savegame_extension)
@@ -141,7 +141,7 @@ class SavegameManager(object):
 	def create_autosave_filename(cls):
 		"""Returns the filename for an autosave"""
 		prepared_filename = time.strftime(cls.autosave_filenamepattern.format(timestamp=time.time()))
-		name = "{directory}{sep}{name}".format(directory=cls.autosave_dir, sep=os.sep, name=prepared_filename)
+		name = u"{directory}{sep}{name}".format(directory=cls.autosave_dir, sep=os.sep, name=prepared_filename)
 		cls.log.debug("Savegamemanager: creating autosave-filename: %s", name)
 		return name
 
@@ -149,7 +149,7 @@ class SavegameManager(object):
 	def create_quicksave_filename(cls):
 		"""Returns the filename for a quicksave"""
 		prepared_filename = time.strftime(cls.quicksave_filenamepattern.format(timestamp=time.time()))
-		name = "{directory}{sep}{name}".format(directory=cls.quicksave_dir, sep=os.sep, name=prepared_filename)
+		name = u"{directory}{sep}{name}".format(directory=cls.quicksave_dir, sep=os.sep, name=prepared_filename)
 		cls.log.debug("Savegamemanager: creating quicksave-filename: %s", name)
 		return name
 
@@ -260,7 +260,7 @@ class SavegameManager(object):
 	@classmethod
 	def get_saves(cls, include_displaynames = True):
 		"""Returns all savegames"""
-		cls.log.debug("Savegamemanager: get saves from %s, %s, %s, %s", cls.savegame_dir,
+		cls.log.debug("Savegamemanager: get saves from %s, %s, %s", cls.savegame_dir,
 		              cls.autosave_dir, cls.quicksave_dir)
 		return cls.__get_saves_from_dirs([cls.savegame_dir, cls.autosave_dir, cls.quicksave_dir], include_displaynames, None, True)
 

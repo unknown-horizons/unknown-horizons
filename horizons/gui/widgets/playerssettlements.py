@@ -22,6 +22,7 @@
 from fife.extensions.pychan import widgets
 
 from horizons.constants import GAME_SPEED
+from horizons.gui.widgets.tooltip import TooltipButton
 from horizons.gui.widgets.statswidget import StatsWidget
 from horizons.scheduler import Scheduler
 from horizons.util.python import decorators
@@ -47,8 +48,10 @@ class PlayersSettlements(StatsWidget):
 		for settlement in sorted(self.session.world.settlements, key = lambda settlement: (settlement.get_component(NamedComponent).name, settlement.worldid)):
 			if settlement.owner is self.session.world.player:
 				sequence_number += 1
-				name_label = self._add_line_to_gui(settlement, sequence_number)
+				name_label, rename_icon = self._add_line_to_gui(settlement, sequence_number)
 				events['%s/mouseClicked' % name_label.name] = Callback(self._go_to_settlement, settlement)
+				cb = Callback(self.session.ingame_gui.show_change_name_dialog, settlement)
+				events['%s/mouseClicked' % rename_icon.name] = cb
 		self._gui.mapEvents(events)
 		self._add_summary_line_to_gui()
 		self._content_vbox.adaptLayout()
@@ -90,11 +93,16 @@ class PlayersSettlements(StatsWidget):
 
 		name = widgets.Label(name = 'name_%d' % settlement.worldid)
 		name.text = unicode(settlement.get_component(NamedComponent).name)
-		name.min_size = name.max_size = (200, 20)
+		name.min_size = name.max_size = (175, 20)
 
-		self._add_generic_line_to_gui(settlement.worldid, [sequence_number_label, name],
+		rename_icon = TooltipButton(name = 'rename_%d' % settlement.worldid)
+		rename_icon.up_image = "content/gui/images/background/rename_feather_20.png"
+		rename_icon.hover_image = "content/gui/images/background/rename_feather_20_h.png"
+		rename_icon.tooltip = _("Click to change the name of your settlement")
+
+		self._add_generic_line_to_gui(settlement.worldid, [sequence_number_label, name, rename_icon],
 			settlement.inhabitants, settlement.cumulative_taxes, settlement.cumulative_running_costs)
-		return name
+		return name, rename_icon
 
 	def _add_summary_line_to_gui(self):
 		people = 0

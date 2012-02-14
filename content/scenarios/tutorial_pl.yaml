@@ -681,7 +681,7 @@ events:
         The best results until now were achieved by joining our IRC channel, so you
         could try that out first (-;']
     type: logbook
-  - arguments: [!!python/unicode 'Thanks!', !!python/unicode '
+  - arguments: ["Dzi\u0119kuj\u0119!", !!python/unicode '
 
 
 
@@ -721,5 +721,6 @@ events:
     type: var_gt
 locale: pl
 mapfile: development.sqlite
-translation_status: 34 translated messages, 31 untranslated messages.
+translation_status: 35 translated messages, 2 fuzzy translations, 28 untranslated
+  messages.
 

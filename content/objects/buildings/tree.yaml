@@ -9,7 +9,7 @@ size_y: 1
 inhabitants_start: 0
 inhabitants_max: 0
 button_name: tree-1
-tooltip_text: _ Tree
+tooltip_text: _ Provides lumber. Chopped down by lumberjacks.
 settler_level: 0
 buildingcosts: {1: 10}
 components:

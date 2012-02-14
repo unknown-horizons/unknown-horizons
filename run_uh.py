@@ -21,10 +21,13 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-"""TUTORIAL: This is the Unknown Horizons launcher, it looks for FIFE and tries
-to start the game.
-Read all docstrings and get familiar with the functions and attributes.
-I will mark all tutorial instructions with 'TUTORIAL:'. Have fun :-)
+"""TUTORIAL: Welcome to the Unknown Horizons in-code tutorial!
+This is a guide for people who are interested in how the code works.
+All parts of it are marked with 'TUTORIAL', every entry contains a pointer
+to the next step. Have fun :-)
+
+This is the Unknown Horizons launcher, it looks for FIFE and tries
+to start the game. You usually don't need to work with this directly.
 If you want to dig into the game, continue to horizons/main.py. """
 
 __all__ = ['init_environment', 'get_fife_path']
@@ -93,8 +96,8 @@ def get_option_parser():
 				                    help="Starts <map>. <map> is the mapname.")
 	start_uh_group.add_option("--start-random-map", dest="start_random_map", action="store_true", \
 				                    help="Starts a random map.")
-	start_uh_group.add_option("--start-specific-random-map", dest="start_specific_random_map", \
-				                    type="int", metavar="<seed>", help="Starts a random map with seed <seed>.")
+	start_uh_group.add_option("--start-specific-random-map", dest="start_specific_random_map", metavar="<seed>", \
+									help="Starts a random map with seed <seed>.")
 	start_uh_group.add_option("--start-scenario", dest="start_scenario", metavar="<scenario>", \
 				                    help="Starts <scenario>. <scenario> is the scenarioname.")
 	start_uh_group.add_option("--start-campaign", dest="start_campaign", metavar="<campaign>", \
@@ -114,6 +117,8 @@ def get_option_parser():
 	             help="Uses <ai_players> AI players (excludes the possible human-AI hybrid; defaults to 0).")
 	ai_group.add_option("--human-ai-hybrid", dest="human_ai", action="store_true", \
 	             help="Makes the human player a human-AI hybrid (for development only).")
+	ai_group.add_option("--force-player-id", dest="force_player_id", metavar="<force_player_id>", type="int", default=None, \
+	             help="Set the player with id <force_player_id> as the active (human) player.")
 	ai_group.add_option("--ai-highlights", dest="ai_highlights", action="store_true", \
 	             help="Shows AI plans as highlights (for development only).")
 	p.add_option_group(ai_group)
@@ -143,6 +148,8 @@ def get_option_parser():
 	dev_group.add_option("--gui-log", dest="log_gui", action="store_true", default=False, help="Log gui interactions")
 	dev_group.add_option("--sp-seed", dest="sp_seed", metavar="<seed>", type="int", \
 	                           help="Use this seed for singleplayer sessions.")
+	dev_group.add_option("--generate-minimap", dest="generate_minimap", \
+	                     metavar="<parameters>", help="Generate a minimap for a map")
 	p.add_option_group(dev_group)
 
 	return p

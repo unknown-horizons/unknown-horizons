@@ -203,7 +203,8 @@ class TradeManager(WorldObject):
 		self.ships_sent[source_settlement_manager.worldid] += 1
 
 	def __str__(self):
-		result = 'TradeManager(%s, %d)' % (self.settlement_manager.settlement.get_component(NamedComponent).name if hasattr(self.settlement_manager, 'settlement') else 'unknown', self.worldid)
+		result = 'TradeManager(%s, %s)' % (self.settlement_manager.settlement.get_component(NamedComponent).name if hasattr(self.settlement_manager, 'settlement') else 'unknown', \
+			self.worldid if hasattr(self, 'worldid') else 'none')
 		for resource_manager in self.data.itervalues():
 			result += '\n' + resource_manager.__str__()
 		return result

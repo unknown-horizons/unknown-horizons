@@ -461,7 +461,7 @@ class ProductionBuilder(AreaBuilder):
 			Scheduler().add_new_object(Callback(self._refresh_unused_fields), self, run_in = 0)
 			Scheduler().add_new_object(Callback(partial(super(ProductionBuilder, self).remove_building, building)), self, run_in = 0)
 		elif building.buildable_upon or building.id == BUILDINGS.TRAIL_CLASS:
-			pass # don't react to road, trees and tent ruins being destroyed
+			pass # don't react to road, trees and ruined tents being destroyed
 		else:
 			for x, y in building.position.tuple_iter():
 				self.register_change(x, y, BUILDING_PURPOSE.NONE, None)
@@ -481,7 +481,8 @@ class ProductionBuilder(AreaBuilder):
 	def manage_production(self):
 		"""Pauses and resumes production buildings when they have full input and output inventories."""
 		for building in self.production_buildings:
-			for production in building.get_component(Producer).get_productions():
+			producer = building.get_component(Producer)
+			for production in producer.get_productions():
 				if not production.get_produced_res():
 					continue
 				all_full = True
@@ -501,11 +502,11 @@ class ProductionBuilder(AreaBuilder):
 
 				if all_full:
 					if not production.is_paused():
-						ToggleActive(building, production).execute(self.land_manager.session)
+						ToggleActive(producer, production).execute(self.land_manager.session)
 						self.log.info('%s paused a production at %s/%d', self, building.name, building.worldid)
 				else:
 					if production.is_paused():
-						ToggleActive(building, production).execute(self.land_manager.session)
+						ToggleActive(producer, production).execute(self.land_manager.session)
 						self.log.info('%s resumed a production at %s/%d', self, building.name, building.worldid)
 
 	def handle_mine_empty(self, mine):
@@ -513,6 +514,7 @@ class ProductionBuilder(AreaBuilder):
 		self.land_manager.refresh_resource_deposits()
 
 	def __str__(self):
-		return '%s.PB(%s/%d)' % (self.owner, self.settlement.get_component(NamedComponent).name if hasattr(self, 'settlement') else 'unknown', self.worldid)
+		return '%s.PB(%s/%s)' % (self.owner, self.settlement.get_component(NamedComponent).name if hasattr(self, 'settlement') else 'unknown', \
+			self.worldid if hasattr(self, 'worldid') else 'none')
 
 decorators.bind_all(ProductionBuilder)

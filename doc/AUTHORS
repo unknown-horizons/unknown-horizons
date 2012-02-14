@@ -41,6 +41,11 @@ Manthus (Matthias Dittrich)
 inken
 orakeldel
 lmg
+Daniel Stephens
+
+= Map Editor
+Fabian Streitel (karottenreibe)
+Moritz Beller (ronnie_c)
 
 
 == Patchers
@@ -71,6 +76,8 @@ hoffi (GUI improvements)
 riidom (Tent and hut variations)
 abeaumont (Two renitent segfaults)
 mtfk (Voice internationalization)
+
+= 2012
 
 
 == Translators

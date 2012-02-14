@@ -23,7 +23,7 @@
 import horizons.main
 
 class ProductionLine(object):
-	"""Class that collects the production line data"""
+	"""Class that collects the production line data."""
 
 	def __init__(self, id, data={}):
 		"""Inits self from yaml data"""
@@ -105,3 +105,9 @@ class ProductionLine(object):
 				  "CONSUMED" : self.consumed_res,
 				  "PRODUCED" : self.produced_res,
 				  "UNIT"     : self.unit_production }[t][res] = amount
+
+
+	def get_original_copy(self):
+		"""Returns a copy of this production, in its original state, no changes
+		applied"""
+		return ProductionLine(self.id, self.__data)

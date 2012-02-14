@@ -21,45 +21,16 @@
 
 import os
 import tempfile
-from functools import partial
 
 from horizons.command.building import Build
 from horizons.command.production import ToggleActive
-from horizons.constants import BUILDINGS
-from horizons.util.random_map import generate_map_from_seed
-from horizons.util.savegameaccessor import SavegameAccessor
+from horizons.constants import BUILDINGS, PRODUCTION
 from horizons.util.worldobject import WorldObject
 from horizons.world.production.producer import Producer
 
 from tests.game import game_test, new_session, settle, load_session
 
-
-@game_test(mapgen=partial(generate_map_from_seed, 2), human_player=False, ai_players=2, timeout=0)
-def test_save_trivial(session, _):
-	"""
-	Let 2 AI players play for a while, then attempt to save the game.
-
-	Be aware, this is a pretty simple test and it doesn't actually check what is
-	beeing saved.
-	"""
-	session.run(seconds=4 * 60)
-
-	fd, filename = tempfile.mkstemp()
-	os.close(fd)
-
-	assert session.save(savegamename=filename)
-
-	SavegameAccessor(filename)
-
-	os.unlink(filename)
-
-
-# this disables the test in general and only makes it being run when
-# called like this: run_tests.py -a long
-test_save_trivial.long = True
-
-
-@game_test(timeout=0, manual_session=True)
+@game_test(manual_session=True)
 def test_load_inactive_production():
 	"""
 	create a savegame with a inactive production, load it
@@ -86,9 +57,59 @@ def test_load_inactive_production():
 	loadedlj = WorldObject.get_object_by_id(worldid)
 
 	# Make sure it really is not active
-	assert not loadedlj.get_component(Producer).is_active()
+	producer = loadedlj.get_component(Producer)
+	assert not producer.is_active()
 
 	# Trigger bug #1359
-	ToggleActive(loadedlj).execute(session)
+	ToggleActive(producer).execute(session)
 
+	session.end()
+
+def create_lumberjack_production_session():
+	"""Create a saved game with a producing production and then load it."""
+	session, player = new_session()
+	settlement, island = settle(session)
+
+	for x in [29, 30, 31, 32]:
+		Build(BUILDINGS.TREE_CLASS, x, 29, island, settlement=settlement, data = {"start_finished": True})(player)
+	building = Build(BUILDINGS.LUMBERJACK_CLASS, 30, 30, island, settlement=settlement)(player)
+	production = building.get_component(Producer).get_productions()[0]
+
+	# wait for the lumberjack to start producing
+	while True:
+		if production.get_state() is PRODUCTION.STATES.producing:
+			break
+		session.run(ticks=1)
+
+	fd1, filename1 = tempfile.mkstemp()
+	os.close(fd1)
+	assert session.save(savegamename=filename1)
+	session.end(keep_map=True)
+
+	# load the game
+	session = load_session(filename1)
+	return session
+
+@game_test(manual_session=True)
+def test_load_producing_production_fast():
+	"""Create a saved game with a producing production, load it, and try to save again very fast."""
+	session = create_lumberjack_production_session()
+	session.run(ticks=2)
+
+	# trigger #1395
+	fd2, filename2 = tempfile.mkstemp()
+	os.close(fd2)
+	assert session.save(savegamename=filename2)
+	session.end()
+
+@game_test(manual_session=True)
+def test_load_producing_production_slow():
+	"""Create a saved game with a producing production, load it, and try to save again in a few seconds."""
+	session = create_lumberjack_production_session()
+	session.run(ticks=100)
+
+	# trigger #1394
+	fd2, filename2 = tempfile.mkstemp()
+	os.close(fd2)
+	assert session.save(savegamename=filename2)
 	session.end()

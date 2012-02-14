@@ -22,6 +22,7 @@
 
 import os
 import shutil
+import locale
 
 from fife import fife
 from fife.extensions.basicapplication import ApplicationBase
@@ -31,14 +32,13 @@ from fife.extensions.serializers.simplexml import SimpleXMLSerializer
 
 from fife.extensions.fife_settings import FIFE_MODULE
 
-import horizons.main
-
 import horizons.gui.style
 from horizons.util import SQLiteAnimationLoader, SQLiteAtlasLoader
 from horizons.constants import LANGUAGENAMES, PATHS
 from horizons.engine.settingshandler import SettingsHandler, get_screen_resolutions
 from horizons.engine.sound import Sound
 from horizons.engine.settingsdialog import SettingsDialog
+from horizons.engine.pychan_util import init_pychan
 from horizons.engine import UH_MODULE
 
 
@@ -88,20 +88,27 @@ class Fife(ApplicationBase):
 			template_settings_version = template_config_parser.get("meta", "SettingsVersion")
 
 			if template_settings_version > user_settings_version: # we have to update the file
+				print 'Discovered old settings file, auto-upgrading: %s -> %s' % \
+				      (user_settings_version, template_settings_version)
 				# create settings so we have a list of all settings
 				self._setup_settings(check_file_version=False)
 
 				# save settings here
 				entries = []
+
+				# need safe default value
+				default_value = object()
+
 				def update_value(modulename, entryname):
 					# retrieve values from loaded settings file
 					try:
-						value = self._setting.get(modulename, entryname)
+						value = self._setting.get(modulename, entryname, default_value)
 					except UnicodeEncodeError: # this can happen when unicode data is saved as str
 						value = "default"
-					entries.append( (modulename, entryname, value ) )
+					if value is not default_value:
+						entries.append( (modulename, entryname, value ) )
 
-				# update known settings and unreferenced settings
+				# collect values from known settings and unreferenced settings
 				for modulename, module in self._setting.entries.iteritems():
 					for entryname in module.iterkeys():
 						update_value(modulename, entryname)
@@ -173,27 +180,7 @@ class Fife(ApplicationBase):
 		self.pychan.setupModalExecution(self.loop, self.breakLoop)
 		self.console = self.pychan.manager.hook.guimanager.getConsole()
 
-		from horizons.gui.widgets.inventory import Inventory
-		from horizons.gui.widgets.buysellinventory import BuySellInventory
-		from horizons.gui.widgets.imagefillstatusbutton import  ImageFillStatusButton
-		from horizons.gui.widgets.progressbar import ProgressBar
-		from horizons.gui.widgets.toggleimagebutton import ToggleImageButton
-		from horizons.gui.widgets.tooltip import TooltipIcon, TooltipButton, TooltipLabel, TooltipProgressBar
-		from horizons.gui.widgets.imagebutton import CancelButton, DeleteButton, OkButton
-		from horizons.gui.widgets.icongroup import TabBG
-		from horizons.gui.widgets.stepslider import StepSlider
-		from horizons.gui.widgets.unitoverview import HealthWidget, StanceWidget, WeaponStorageWidget
-
-		widgets = [OkButton, CancelButton, DeleteButton,
-				   Inventory, BuySellInventory, ImageFillStatusButton,
-				   ProgressBar, StepSlider, TabBG, ToggleImageButton,
-				   TooltipIcon, TooltipButton, TooltipLabel, TooltipProgressBar,
-				   HealthWidget, StanceWidget, WeaponStorageWidget]
-		for widget in widgets:
-			pychan.widgets.registerWidget(widget)
-
-		for name, stylepart in horizons.gui.style.STYLES.iteritems():
-			self.pychan.manager.addStyle(name, stylepart)
+		init_pychan()
 
 		self._setting_handler.update_languages()
 
@@ -214,6 +201,9 @@ class Fife(ApplicationBase):
 	def get_fife_setting(self, settingname):
 		return self._setting.get(FIFE_MODULE, settingname)
 
+	def set_fife_setting(self, settingname, value):
+		return self._setting.set(FIFE_MODULE, settingname, value)
+
 	def get_uh_setting(self, settingname):
 		return self._setting.get(UH_MODULE, settingname)
 
@@ -233,9 +223,8 @@ class Fife(ApplicationBase):
 		for locale_code, langname in LANGUAGENAMES.items():
 			if langname == self.get_uh_setting('Language'):
 				return locale_code
-		# TODO : better way to find 'System default' ?
+		default_locale, default_encoding = locale.getdefaultlocale()
 		try:
-			default_locale, default_encoding = locale.getdefaultlocale()
 			return default_locale.split('_')[0]
 		except:
 			# If default locale could not be detected use 'EN' as fallback

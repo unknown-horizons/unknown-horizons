@@ -30,6 +30,7 @@ import mock
 
 import horizons.main
 from fife import fife
+from horizons.constants import GAME_SPEED
 from horizons.gui.mousetools.cursortool import CursorTool
 from horizons.scheduler import Scheduler
 from horizons.util import Point
@@ -42,6 +43,48 @@ def get_player_ship(session):
 	raise Exception('Player ship not found')
 
 
+class CursorToolsPatch(object):
+	"""Temporarly changes CursorTool to interpret mouse event coordinates
+	as map coordinates instead of window coordinates. Makes it easier to
+	write tests.
+
+	Example:
+		gui.cursor_map_coords.enable()
+		gui.cursor_move(2, 3)
+		gui.cursor_map_coords.disable()
+	"""
+	def __init__(self):
+		self.old = CursorTool.get_world_location_from_event
+		self.old_exact = CursorTool.get_exact_world_location_from_event
+
+		def patched_world_location_from_event(self, evt):
+			"""Typically we expect a Mock MouseEvent, genereated by `_make_mouse_event`.
+
+			However NavigationTool keeps track of the last event position, which is
+			an instance of fife.ScreenPoint.
+			"""
+			try:
+				# fife.MouseEvent
+				x = evt.getX()
+				y = evt.getY()
+			except AttributeError:
+				# fife.ScreenPoint
+				x = evt.x
+				y = evt.y
+
+			return Point(x, y)
+
+		self.patch = patched_world_location_from_event
+
+	def enable(self):
+		CursorTool.get_world_location_from_event = self.patch
+		CursorTool.get_exact_world_location_from_event = self.patch
+
+	def disable(self):
+		CursorTool.get_world_location_from_event = self.old
+		CursorTool.get_exact_world_location_from_event = self.old_exact
+
+
 class GuiHelper(object):
 
 	Key = fife.Key
@@ -51,8 +94,12 @@ class GuiHelper(object):
 		self._manager = self._pychan.manager
 		self._runner = runner
 		self.follow_mouse = True
+		# patch for using map coords with CursorTools is enabled by default
+		self.cursor_map_coords = CursorToolsPatch()
+		self.cursor_map_coords.enable()
 
 		self.disable_autoscroll()
+		self.speed_up()
 
 	@property
 	def session(self):
@@ -85,12 +132,15 @@ class GuiHelper(object):
 	def trigger(self, root, event):
 		"""Trigger a widget event in a container.
 
-		root  - container that holds the widget
+		root  - container (object or name) that holds the widget
 		event - string describing the event (widget/event/group)
 
 		Example:
 			c = gui.find('mainmenu')
 			gui.trigger(c, 'OkButton/action/default')
+
+		Equivalent to:
+			gui.trigger('mainmenu', 'OkButton/action/default')
 		"""
 		widget_name, event_name, group_name = event.split('/')
 
@@ -100,6 +150,13 @@ class GuiHelper(object):
 			widget_name = int(widget_name)
 		except ValueError:
 			pass
+
+		# if container is given by name, look it up first
+		if isinstance(root, basestring):
+			root_name = root
+			root = self.find(name=root_name)
+			if not root:
+				raise Exception("Container '%s' not found" % root_name)
 
 		widget = root.findChild(name=widget_name)
 		if not widget:
@@ -130,11 +187,11 @@ class GuiHelper(object):
 		self.session.selected_instances = set(objects)
 		self.session.cursor.apply_select()
 
-	def pressKey(self, keycode):
+	def press_key(self, keycode):
 		"""Simulate a global keypress.
 
 		Example:
-			gui.pressKey(gui.Key.F4)
+			gui.press_key(gui.Key.F4)
 		"""
 		evt = mock.Mock()
 		evt.getKey.return_value = self.Key(keycode)
@@ -142,43 +199,21 @@ class GuiHelper(object):
 		self.session.keylistener.keyPressed(evt)
 		self.session.keylistener.keyReleased(evt)
 
-	@contextlib.contextmanager
-	def cursor_map_coords(self):
-		"""Temporarly changes CursorTool to interpret mouse event coordinates
-		as map coordinates instead of window coordinates. Makes it easier to
-		write tests.
-
-		Example:
-			with gui.cursor_map_coords():
-				gui.cursor_move(2, 3)
-		"""
-		old = CursorTool._get_world_location_from_event
-		old_exact = CursorTool._get_exact_world_location_from_event
-
-		def new(self, evt):
-			return Point(evt.getX(), evt.getY())
-
-		CursorTool._get_world_location_from_event = new
-		CursorTool._get_exact_world_location_from_event = new
-		yield
-		CursorTool._get_world_location_from_event = old
-		CursorTool._get_exact_world_location_from_event = old_exact
-
 	def cursor_move(self, x, y):
 		self.cursor.mouseMoved(self._make_mouse_event(x, y))
 		if self.follow_mouse:
 			self.session.view.center(x, y)
 
-	def cursor_press_button(self, x, y, button):
-		self.cursor.mousePressed(self._make_mouse_event(x, y, button))
+	def cursor_press_button(self, x, y, button, shift=False):
+		self.cursor.mousePressed(self._make_mouse_event(x, y, button, shift))
 
-	def cursor_release_button(self, x, y, button):
-		self.cursor.mouseReleased(self._make_mouse_event(x, y, button))
+	def cursor_release_button(self, x, y, button, shift=False):
+		self.cursor.mouseReleased(self._make_mouse_event(x, y, button, shift))
 
-	def cursor_click(self, x, y, button):
+	def cursor_click(self, x, y, button, shift=False):
 		self.cursor_move(x, y)
-		self.cursor_press_button(x, y, button)
-		self.cursor_release_button(x, y, button)
+		self.cursor_press_button(x, y, button, shift)
+		self.cursor_release_button(x, y, button, shift)
 
 	def _make_mouse_event(self, x, y, button=None, shift=False):
 		if button:
@@ -229,3 +264,8 @@ class GuiHelper(object):
 			# try to disable only if we're ingame already
 			# Tests starting in the menu need to do call `disable_autoscroll()` explicitly
 			self.session.view.autoscroll = mock.Mock()
+
+	def speed_up(self):
+		"""Run the test at maximum game speed."""
+		if self.session:
+			self.session.speed_set(GAME_SPEED.TICK_RATES[-1])

@@ -22,15 +22,14 @@
 from tests.gui import TestFinished, gui_test
 
 
-@gui_test(use_dev_map=True)
+@gui_test(use_dev_map=True, timeout=60)
 def test_logbook(gui):
 	"""
 	Open the (empty) logbook.
 	"""
 	yield # test needs to be a generator for now
 
-	hud = gui.find(name='mainhud')
-	gui.trigger(hud, 'logbook/action/default')
+	gui.trigger('mainhud', 'logbook/action/default')
 
 	logbook = gui.find(name='captains_log')
 	assert logbook

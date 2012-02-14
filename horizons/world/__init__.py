@@ -57,22 +57,22 @@ from horizons.world.disaster.disastermanager import DisasterManager
 class World(BuildingOwner, LivingObject, WorldObject):
 	"""The World class represents an Unknown Horizons map with all its units, grounds, buildings, etc.
 
+	It inherits amongst others from BuildingOwner, so it has building management capabilities.
+	There is always one big reference per building. It is stored either in the world, the island
+	or the settlement.
+
+	The world comprises amongst others:
 	   * players - a list of all the session's players - Player instances
 	   * islands - a list of all the map's islands - Island instances
 	   * grounds - a list of all the map's groundtiles
 	   * ground_map - a dictionary that binds tuples of coordinates with a reference to the tile:
 	                  { (x, y): tileref, ...}
-	                 This is important for pathfinding and quick tile fetching.z
-	   * full_map - a dictionary that binds tuples of coordinates with a reference to the tile (includes water and ground)
+	                 This is important for pathfinding and quick tile fetching.
 	   * island_map - a dictionary that binds tuples of coordinates with a reference to the island
 	   * ships - a list of all the ships ingame - horizons.world.units.ship.Ship instances
 	   * ship_map - same as ground_map, but for ships
-	   * fish_indexer - a BuildingIndexer for all fish on the map
 	   * session - reference to horizons.session.Session instance of the current game
-	   * water - Dictionary of coordinates that are water
-	   * water_body - Dictionary of water bodies {coords: area_number, ...}
-	   * sea_number - The water_body number of the sea
-	   * trader - The world's ingame free trader player instance
+	   * trader - The world's ingame free trader player instance (can control multiple ships)
 	   * pirate - The world's ingame pirate player instance
 	   TUTORIAL: You should now check out the _init() function.
 	"""
@@ -82,10 +82,13 @@ class World(BuildingOwner, LivingObject, WorldObject):
 		@param session: instance of session the world belongs to.
 		"""
 		self.inited = False
+		if False:
+			assert isinstance(session, horizons.session.Session)
 		self.session = session
 		super(World, self).__init__(worldid=GAME.WORLD_WORLDID)
 
 	def end(self):
+		# destructor-like thing.
 		self.session = None
 		self.properties = None
 		self.players = None
@@ -105,9 +108,14 @@ class World(BuildingOwner, LivingObject, WorldObject):
 		self.bullets = None
 		super(World, self).end()
 
-	def _init(self, savegame_db):
+	def _init(self, savegame_db, force_player_id=None):
 		"""
 		@param savegame_db: Dbreader with loaded savegame database
+		@param force_player_id: the worldid of the selected human player or default if None (debug option)
+		"""
+		"""
+		All essential and non-essential parts of the world are set up here, you don't need to
+		know everything that happens.
 		"""
 		#load properties
 		self.properties = {}
@@ -157,61 +165,15 @@ class World(BuildingOwner, LivingObject, WorldObject):
 				# the first player should be the human-ai hybrid
 				self.player = self.players[0]
 
-		if self.player is not None:
-			self.player.get_component(StorageComponent).inventory.add_change_listener(self.session.ingame_gui.update_gold, \
-			                                          call_listener_now=True)
+		# set the human player to the forced value (debug option)
+		self.set_forced_player(force_player_id)
 
 		if self.player is None and self.session.is_game_loaded():
 			self.log.warning('WARNING: Cannot autoselect a player because there are no \
 			or multiple candidates.')
 
-		# load islands
-		self.islands = []
-		for (islandid,) in savegame_db("SELECT rowid + 1000 FROM island"):
-			island = Island(savegame_db, islandid, self.session)
-			self.islands.append(island)
-
-		#calculate map dimensions
-		self.min_x, self.min_y, self.max_x, self.max_y = 0, 0, 0, 0
-		for i in self.islands:
-			self.min_x = i.rect.left if self.min_x is None or i.rect.left < self.min_x else self.min_x
-			self.min_y = i.rect.top if self.min_y is None or i.rect.top < self.min_y else self.min_y
-			self.max_x = i.rect.right if self.max_x is None or i.rect.right > self.max_x else self.max_x
-			self.max_y = i.rect.bottom if self.max_y is None or i.rect.bottom > self.max_y else self.max_y
-		self.min_x -= 10
-		self.min_y -= 10
-		self.max_x += 10
-		self.max_y += 10
-
-		self.map_dimensions = Rect.init_from_borders(self.min_x, self.min_y, self.max_x, self.max_y)
-
-		#add water
-		self.log.debug("Filling world with water...")
-		self.ground_map = {}
-		default_grounds = Entities.grounds[int(self.properties.get('default_ground', GROUND.WATER[0]))]
-		#default_grounds = Entities.grounds[90]
-
-		# extra world size that is added so that he player can't see the "black void"
-		border = 30
-		for x in xrange(self.min_x-border, self.max_x+border, 10):
-			for y in xrange(self.min_y-border, self.max_y+border, 10):
-				# Create big dummy water
-				default_grounds(self.session, x, y)
-				for x_offset in xrange(0,10):
-					if x+x_offset < self.max_x and x+x_offset>= self.min_x:
-						for y_offset in xrange(0,10):
-							if y+y_offset < self.max_y and y+y_offset >= self.min_y:
-								self.ground_map[(x+x_offset, y+y_offset)] = Entities.grounds[-1](self.session, x, y)
-
-		# remove parts that are occupied by islands, create the island map and the full map
-		self.island_map = {}
-		self.full_map = copy.copy(self.ground_map)
-		for island in self.islands:
-			for coords in island.ground_map:
-				if coords in self.ground_map:
-					self.full_map[coords] = island.ground_map[coords]
-					del self.ground_map[coords]
-					self.island_map[coords] = island
+		# all static data
+		self.load_raw_map(savegame_db)
 
 		# load world buildings (e.g. fish)
 		for (building_worldid, building_typeid) in \
@@ -295,22 +257,14 @@ class World(BuildingOwner, LivingObject, WorldObject):
 			self.diplomacy.load(self, savegame_db)
 
 		# add diplomacy notification listeners
-		def notify_change(caller, change_type, a, b):
+		def notify_change(caller, old_state, new_state, a, b):
 			player1 = u"%s" % a.name
 			player2 = u"%s" % b.name
 
-			#check if status really changed, if so update status string
-			if change_type == 'friend':
-				status = _('ally')
-			elif change_type == 'enemy':
-				status = _('enemy')
-			else:
-				status = _('neutral')
+			data = {'player1' : player1, 'player2' : player2}
 
-			data = {'player1' : player1, 'player2' : player2, 'status' : status}
-
-			self.session.ingame_gui.message_widget.add(self.max_x/2, self.max_y/2,
-			                                           'DIPLOMACY_STATUS_CHANGED', data)
+			self.session.ingame_gui.message_widget.add(
+			  None, None, 'DIPLOMACY_STATUS_'+old_state.upper()+"_"+new_state.upper(), data)
 
 		self.diplomacy.add_diplomacy_status_changed_listener(notify_change)
 
@@ -320,6 +274,60 @@ class World(BuildingOwner, LivingObject, WorldObject):
 		"""TUTORIAL:
 		To dig deeper, you should now continue to horizons/world/island.py,
 		to check out how buildings and settlements are added to the map"""
+
+
+	def load_raw_map(self, savegame_db, preview=False):
+		# load islands
+		self.islands = []
+		for (islandid,) in savegame_db("SELECT rowid + 1000 FROM island"):
+			island = Island(savegame_db, islandid, self.session, preview=preview)
+			self.islands.append(island)
+
+		#calculate map dimensions
+		self.min_x, self.min_y, self.max_x, self.max_y = 0, 0, 0, 0
+		for i in self.islands:
+			self.min_x = i.rect.left if self.min_x is None or i.rect.left < self.min_x else self.min_x
+			self.min_y = i.rect.top if self.min_y is None or i.rect.top < self.min_y else self.min_y
+			self.max_x = i.rect.right if self.max_x is None or i.rect.right > self.max_x else self.max_x
+			self.max_y = i.rect.bottom if self.max_y is None or i.rect.bottom > self.max_y else self.max_y
+		self.min_x -= 10
+		self.min_y -= 10
+		self.max_x += 10
+		self.max_y += 10
+
+		self.map_dimensions = Rect.init_from_borders(self.min_x, self.min_y, self.max_x, self.max_y)
+
+		#add water
+		self.log.debug("Filling world with water...")
+		self.ground_map = {}
+
+		# big sea water tile class
+		if not preview:
+			default_grounds = Entities.grounds[int(self.properties.get('default_ground', GROUND.WATER[0]))]
+
+		# extra world size that is added so that he player can't see the "black void"
+		border = 30
+		fake_tile_class = Entities.grounds[-1]
+		for x in xrange(self.min_x-border, self.max_x+border, 10):
+			for y in xrange(self.min_y-border, self.max_y+border, 10):
+				if not preview:
+					# we don't need no references, we don't need no mem control
+					default_grounds(self.session, x, y)
+				for x_offset in xrange(0,10):
+					if x+x_offset < self.max_x and x+x_offset>= self.min_x:
+						for y_offset in xrange(0,10):
+							if y+y_offset < self.max_y and y+y_offset >= self.min_y:
+								self.ground_map[(x+x_offset, y+y_offset)] = fake_tile_class(self.session, x, y)
+
+		# remove parts that are occupied by islands, create the island map and the full map
+		self.island_map = {}
+		self.full_map = copy.copy(self.ground_map)
+		for island in self.islands:
+			for coords in island.ground_map:
+				if coords in self.ground_map:
+					self.full_map[coords] = island.ground_map[coords]
+					del self.ground_map[coords]
+					self.island_map[coords] = island
 
 	def _init_water_bodies(self):
 		""" This function runs the flood fill algorithm on the water to make it easy to recognise different water bodies """
@@ -344,11 +352,9 @@ class World(BuildingOwner, LivingObject, WorldObject):
 			n += 1
 
 	def init_fish_indexer(self):
-		self.fish_indexer = BuildingIndexer(16, self.full_map)
-		for tile in self.ground_map.itervalues():
-			if tile.object is not None and tile.object.id == BUILDINGS.FISH_DEPOSIT_CLASS:
-				self.fish_indexer.add(tile.object)
-		self.fish_indexer._update()
+		radius = Entities.buildings[ BUILDINGS.FISHERMAN_CLASS ].radius
+		buildings = self.provider_buildings.provider_by_resources[RES.FISH_ID]
+		self.fish_indexer = BuildingIndexer(radius, self.full_map, buildings=buildings)
 
 	def init_new_world(self, trader_enabled, pirate_enabled, natural_resource_multiplier):
 		"""
@@ -562,6 +568,13 @@ class World(BuildingOwner, LivingObject, WorldObject):
 						if (fish_x, fish_y) in self.ground_map:
 							Build(FishDeposit, fish_x, fish_y, self, 45 + self.session.random.randint(0, 3) * 90, ownerless = True)(issuer = None)
 
+	def set_forced_player(self, force_player_id):
+		if force_player_id is not None:
+			for player in self.players:
+				if player.worldid == force_player_id:
+					self.player = player
+					break
+
 	def get_random_possible_ground_unit_position(self):
 		"""Returns a position in water, that is not at the border of the world"""
 		offset = 2
@@ -662,8 +675,6 @@ class World(BuildingOwner, LivingObject, WorldObject):
 		player.initialize(inv)  # Componentholder init
 		if local:
 			self.player = player
-			self.player.get_component(StorageComponent).inventory.add_change_listener(self.session.ingame_gui.update_gold, \
-			                                          call_listener_now=True)
 		self.players.append(player)
 
 	def get_tile(self, point):
@@ -709,13 +720,13 @@ class World(BuildingOwner, LivingObject, WorldObject):
 				break
 		return islands
 
-	def get_warehouses(self, position=None, radius=None, owner=None, include_friendly=False):
+	def get_warehouses(self, position=None, radius=None, owner=None, include_allied=False):
 		"""Returns all warehouses on the map. Optionally only those in range
 		around the specified position.
 		@param position: Point or Rect instance.
 		@param radius: int radius to use.
 		@param owner: Player instance, list only warehouses belonging to this player.
-		@param include_friendly also list the warehouses belonging to friends
+		@param include_allied also list the warehouses belonging to allies
 		@return: List of warehouses.
 		"""
 		warehouses = []
@@ -730,7 +741,8 @@ class World(BuildingOwner, LivingObject, WorldObject):
 				warehouse = settlement.warehouse
 				if (radius is None or position is None or \
 				    warehouse.position.distance(position) <= radius) and \
-				   (owner is None or warehouse.owner == owner or include_friendly):
+				   (owner is None or warehouse.owner == owner or
+				    (include_allied and self.diplomacy.are_allies(warehouse.owner, owner))):
 					warehouses.append(warehouse)
 		return warehouses
 
@@ -917,7 +929,7 @@ class World(BuildingOwner, LivingObject, WorldObject):
 		else:
 			for instance in self.session.world.get_health_instances():
 				if self.session.view.has_change_listener(instance.draw_health) and not instance._selected:
-					self.session.view.renderer['GenericRenderer'].removeAll("health_" + str(instance.worldid))
+					instance.draw_health(remove_only=True)
 					self.session.view.remove_change_listener(instance.draw_health)
 
 

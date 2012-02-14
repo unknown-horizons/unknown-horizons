@@ -46,7 +46,14 @@ class DbReader(object):
 		assert not command.endswith(";")
 		command = '%s;' % command
 		self.cur.execute(command, args)
-		return SqlResult(self.cur.fetchall(), None if self.cur.rowcount == -1 else self.cur.rowcount, self.cur.lastrowid)
+		# fetch rows only on select statements, PEP-249 specifies that an error should be
+		# raised when fetching results on other statements that produced no results. This
+		# does not happen on CPython, but on PyPy
+		if command.startswith("SELECT"):
+			rows = self.cur.fetchall()
+		else:
+			rows = []
+		return SqlResult(rows, None if self.cur.rowcount == -1 else self.cur.rowcount, self.cur.lastrowid)
 
 	@decorators.cachedmethod
 	def cached_query(self, command, *args):

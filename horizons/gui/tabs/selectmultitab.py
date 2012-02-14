@@ -26,6 +26,7 @@ from horizons.scheduler import Scheduler
 from horizons.command.unit import SetStance
 from horizons.world.component.healthcomponent import HealthComponent
 from horizons.world.component.stancecomponent import *
+from horizons.world.component.selectablecomponent import SelectableComponent
 
 class SelectMultiTab(TabInterface):
 	"""
@@ -115,11 +116,15 @@ class SelectMultiTab(TabInterface):
 			Scheduler().add_new_object(self.refresh_unit_widget, self, run_in = 0)
 
 	def refresh_unit_widget(self):
-		self._scheduled_refresh = False
-		self.hide_selected_units_widget()
-		self.draw_selected_units_widget()
-		self.toggle_stance()
-		self.widget.adaptLayout()
+		if self.instances:
+			self._scheduled_refresh = False
+			self.hide_selected_units_widget()
+			self.draw_selected_units_widget()
+			self.toggle_stance()
+			self.widget.adaptLayout()
+		else:
+			# all units were destroyed
+			self.hide_selected_units_widget()
 
 	def on_instance_removed(self, instance):
 		if hasattr(instance, 'stance'):
@@ -138,7 +143,7 @@ class SelectMultiTab(TabInterface):
 			# if one unit remains, show its menu
 			if len(self.instances) == 1:
 				self.session.ingame_gui.hide_menu()
-				self.instances[0].show_menu()
+				self.instances[0].get_component(SelectableComponent).show_menu()
 				return
 
 		self.type_number[instance.id] -= 1
@@ -158,12 +163,8 @@ class SelectMultiTab(TabInterface):
 		stance_widget = load_uh_widget('stancewidget.xml')
 		self.widget.findChild(name='stance').addChild(stance_widget)
 		self.toggle_stance()
-		self.widget.mapEvents({
-			'aggressive': Callback(self.set_stance, AggressiveStance),
-			'hold_ground': Callback(self.set_stance, HoldGroundStance),
-			'none': Callback(self.set_stance, NoneStance),
-			'flee': Callback(self.set_stance, FleeStance)
-		})
+		events = dict( (i.NAME, Callback(self.set_stance, i) ) for i in DEFAULT_STANCES )
+		self.widget.mapEvents( events )
 
 	def hide_stance_widget(self):
 		self.widget.findChild(name='stance').removeAllChildren()
@@ -178,10 +179,8 @@ class SelectMultiTab(TabInterface):
 		"""
 		Toggles the stance, Assumes at least one stance unit is selected
 		"""
-		self.widget.findChild(name='aggressive').set_inactive()
-		self.widget.findChild(name='hold_ground').set_inactive()
-		self.widget.findChild(name='none').set_inactive()
-		self.widget.findChild(name='flee').set_inactive()
+		for stance in DEFAULT_STANCES:
+			self.widget.findChild(name=stance.NAME).set_inactive()
 		# get first unit stance
 		stance_units = [u for u in self.instances if hasattr(u, "stance")]
 		stance = stance_units[0].stance
@@ -189,7 +188,7 @@ class SelectMultiTab(TabInterface):
 			if unit.stance != stance:
 				# not all have the same stance, toggle none
 				return
-		self.widget.findChild(name = stance).set_active()
+		self.widget.findChild(name = stance.NAME).set_active()
 
 class UnitEntry(object):
 	def __init__(self, instances, show_number = True):

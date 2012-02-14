@@ -44,7 +44,7 @@ class Weapon(object):
 
 		attack_ready callbacks are executed when the attack is made ready
 	"""
-	log = logging.getLogger("world.units.weapon")
+	log = logging.getLogger("world.combat")
 
 	def __init__(self, session, id):
 		"""
@@ -87,6 +87,7 @@ class Weapon(object):
 		@param damage : damage to be done
 		@param position : Point with position where damage needs to be done
 		"""
+		cls.log.debug("%s impact", cls)
 		# deal damage to units in position callback
 		attack_radius = session.db.get_weapon_attack_radius(weapon_id)
 
@@ -103,14 +104,17 @@ class Weapon(object):
 	def fire(self, destination, position, bullet_delay = 0):
 		"""
 		Fires the weapon at a certain destination
-		@param destination : Point with position where weapon will be fired
-		@param position : position where the weapon is fired from
+		@param destination: Point with position where weapon will be fired
+		@param position: position where the weapon is fired from
+		@param bullet_delay:
 		"""
+		self.log.debug("%s fire; ready: %s", self, self.attack_ready)
 		if not self.attack_ready:
 			return
 
 		distance = round(position.distance(destination.center()))
 		if not self.check_target_in_range(distance):
+			self.log.debug("%s target not in range", self)
 			return
 
 		#calculate the ticks until impact
@@ -139,9 +143,7 @@ class Weapon(object):
 		Checks if the distance between the weapon and target is in weapon range
 		@param distance : distance between weapon and target
 		"""
-		if self.weapon_range[0] <= distance <= self.weapon_range[1]:
-			return True
-		return False
+		return self.weapon_range[0] <= distance <= self.weapon_range[1]
 
 	def get_ticks_until_ready(self):
 		"""
@@ -176,6 +178,9 @@ class Weapon(object):
 			ticks = calls[call]
 			db("INSERT INTO attacks(remaining_ticks, weapon_id, damage, dest_x, dest_y) VALUES (?, ?, ?, ?, ?)",
 				ticks, weapon_id, damage, dest_x, dest_y)
+
+	def __str__(self):
+		return "Weapon(id:%s;type:%s;rang:%s)" % (self.weapon_id, self.weapon_type, self.weapon_range)
 
 class SetStackableWeaponNumberError(Exception):
 	"""

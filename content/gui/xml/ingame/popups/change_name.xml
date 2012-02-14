@@ -5,6 +5,10 @@
 <VBox position="50,30" padding="10">
 	<Label name="headline_change_name" text="Change name" />
 	<Icon image="content/gui/images/background/hr.png" />
+	<HBox padding="10">
+		<Label name="old_name_label" text="Old name:" />
+		<Label name="old_name" text="" />
+	</HBox>
 	<Label name="enter_new_name_lbl" text="Enter new name:"
 		wrap_text="1" max_size="150,40" />
 	<TextField name="new_name" max_size="150,20" min_size="150,20" />

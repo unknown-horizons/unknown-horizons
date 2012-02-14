@@ -20,6 +20,18 @@
 # ###################################################
 
 class Component(object):
+	"""
+	Base class for all components. Something like an interface.
+
+	TUTORIAL:
+	This is what all components share, basically only set up and tear down.
+	It would be advisable to look through all methods here,
+	and especially to see the difference between loading components (from
+	a savegame) and setting them up in a normal game.
+
+	Once you know how it works, please proceed to horizons/world/ingametype.py
+	where you'll see how the actual things in Unknown Horizons are created.
+	"""
 
 	#  Store the name of this component. This has to be overwritten in subclasses
 	NAME = None
@@ -29,16 +41,22 @@ class Component(object):
 
 	def __init__(self):
 		"""
-		@param instance: instance that has the component
+		Used for initialisation code that does not require any other components
 		"""
 		super(Component, self).__init__()
 		self.instance = None # Has to be set by the componentholder
-		self.session = None  # Has to be set by the componentholder
+
+	@property
+	def session(self):
+		return self.instance.session
 
 	def initialize(self):
 		"""
-		This is called by the ComponentHolder after it set the instance. Use this to
-		initialize any needed infrastructure
+		This is called by the ComponentHolder after it set the instance.
+		Use this to initialize any needed infrastructure.
+		When this is called, it is guaranteed that all other components have been added,
+		but initalized may not have been called on them, only __init__.
+		It is only called after construction, not on load.
 		"""
 		pass
 
@@ -50,11 +68,15 @@ class Component(object):
 
 	def save(self, db):
 		"""
-		Will do nothing, but will be always called in componentholder code, even if not implemented
+		Will do nothing, but will be always called in componentholder code, even if not implemented.
 		"""
 		pass
 
 	def load(self, db, worldid):
+		"""
+		This does on load what __init__, __init and initalize together do on constructions at runtime.
+		Has to set up *everything*, also add every member variable.
+		"""
 		pass
 
 	@classmethod

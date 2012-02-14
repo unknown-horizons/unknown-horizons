@@ -150,6 +150,7 @@ class UhDbAccessor(DbReader):
 		tooltip = _("{building}: {description}")
 		return tooltip.format(building=buildingtype._name, description=buildingtype.tooltip_text)
 
+	@decorators.cachedmethod
 	def get_related_building_ids(self, building_class_id):
 		"""Returns list of building ids related to building_class_id.
 		@param building_class_id: class of building, int
@@ -281,6 +282,10 @@ class UhDbAccessor(DbReader):
 		"""Returns the amount that a storage building can store of every resource."""
 		return self("SELECT size FROM storage_building_capacity WHERE type = ?", storage_type)[0][0]
 
+	def get_resource_deposit_resources(self, deposit_id):
+		"""Returns the range of resources a resource deposit has at the beginning."""
+		return self("SELECT resource, min_amount, max_amount FROM deposit_resources WHERE id = ?", deposit_id)
+
 	# Tile stes
 
 	def get_random_tile_set(self, ground_id):
@@ -319,7 +324,10 @@ class UhDbAccessor(DbReader):
 		return self.cached_query("SELECT name FROM unit where id = ?", type_id)[0][0]
 
 
-
 def read_savegame_template(db):
 	savegame_template = open(PATHS.SAVEGAME_TEMPLATE, "r")
+	db.execute_script( savegame_template.read() )
+
+def read_island_template(db):
+	savegame_template = open(PATHS.ISLAND_TEMPLATE, "r")
 	db.execute_script( savegame_template.read() )

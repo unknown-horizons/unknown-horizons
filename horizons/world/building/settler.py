@@ -25,10 +25,10 @@ import math
 from horizons.scheduler import Scheduler
 
 from horizons.gui.tabs import SettlerOverviewTab
-from horizons.world.building.building import BasicBuilding, SelectableBuilding
+from horizons.world.building.building import BasicBuilding
 from horizons.world.building.buildable import BuildableRect, BuildableSingle
 from horizons.constants import RES, BUILDINGS, GAME, SETTLER
-from horizons.world.building.collectingproducerbuilding import CollectingProducerBuilding
+from horizons.world.building.collectingbuilding import CollectingBuilding
 from horizons.world.production.production import SettlerProduction, SingleUseProduction
 from horizons.command.building import Build
 from horizons.util import decorators, Callback
@@ -46,7 +46,7 @@ class SettlerRuin(BasicBuilding, BuildableSingle):
 	"""
 	buildable_upon = True
 
-class Settler(SelectableBuilding, BuildableRect, CollectingProducerBuilding, BasicBuilding):
+class Settler(BuildableRect, CollectingBuilding, BasicBuilding):
 	"""Represents a settlers house, that uses resources and creates inhabitants."""
 	log = logging.getLogger("world.building.settler")
 
@@ -72,7 +72,8 @@ class Settler(SelectableBuilding, BuildableRect, CollectingProducerBuilding, Bas
 		happiness = self.__get_data("happiness_init_value")
 		if happiness is not None:
 			self.get_component(StorageComponent).inventory.alter(RES.HAPPINESS_ID, happiness)
-		self.get_component(StorageComponent).inventory.add_change_listener( self._update_status_icon )
+		if self.has_status_icon:
+			self.get_component(StorageComponent).inventory.add_change_listener( self._update_status_icon )
 		# give the user a month (about 30 seconds) to build a main square in range
 		if self.owner == self.session.world.player:
 			Scheduler().add_new_object(self._check_main_square_in_range, self, Scheduler().get_ticks_of_month())
@@ -136,7 +137,7 @@ class Settler(SelectableBuilding, BuildableRect, CollectingProducerBuilding, Bas
 		production = self._get_upgrade_production()
 		if production is not None:
 			if production.is_paused() == self.upgrade_allowed:
-				ToggleActive(self, production).execute(self.session, True)
+				ToggleActive(self.get_component(Producer), production).execute(self.session, True)
 
 	@property
 	def happiness(self):
@@ -146,7 +147,7 @@ class Settler(SelectableBuilding, BuildableRect, CollectingProducerBuilding, Bas
 
 	@property
 	def name(self):
-		house_name = self.session.db.get_settler_house_name(self.level)
+		house_name = self.session.db.get_settler_house_name(self.level) if hasattr(self, 'level') else 'unknown residence'
 		return (_(house_name)).title()
 
 	@property
@@ -264,25 +265,31 @@ class Settler(SelectableBuilding, BuildableRect, CollectingProducerBuilding, Bas
 			# drive the car out of the garage to make space for the building material
 			for res, amount in upgrade_material_production.get_consumed_resources().iteritems():
 				self.get_component(StorageComponent).inventory.add_resource_slot(res, abs(amount))
-			self.add_production(upgrade_material_production)
+			self.get_component(Producer).add_production(upgrade_material_production)
 			self.log.debug("%s: Waiting for material to upgrade from %s", self, self.level)
 			if not self.upgrade_allowed:
-				ToggleActive(self, upgrade_material_production).execute(self.session, True)
+				ToggleActive(self.get_component(Producer), upgrade_material_production).execute(self.session, True)
 		elif self.happiness < self.__get_data("happiness_level_down_limit"):
 			self.level_down()
 			self._changed()
 
 	def level_up(self, production = None):
 		"""Actually level up (usually called when the upgrade material has arrived)"""
-		# NOTE: production is unused, but gets passed by the production code
-		self.level += 1
-		self.log.debug("%s: Levelling up to %s", self, self.level)
-		self._update_level_data()
-		# notify owner about new level
-		self.owner.notify_settler_reached_level(self)
-		# reset happiness value for new level
-		self.get_component(StorageComponent).inventory.alter(RES.HAPPINESS_ID, self.__get_data("happiness_init_value") - self.happiness)
-		self._changed()
+
+		# just level up later that tick, it could disturb other code higher in the call stack
+
+		def _do_level_up():
+			# NOTE: production is unused, but gets passed by the production code
+			self.level += 1
+			self.log.debug("%s: Levelling up to %s", self, self.level)
+			self._update_level_data()
+			# notify owner about new level
+			self.owner.notify_settler_reached_level(self)
+			# reset happiness value for new level
+			self.get_component(StorageComponent).inventory.alter(RES.HAPPINESS_ID, self.__get_data("happiness_init_value") - self.happiness)
+			self._changed()
+
+		Scheduler().add_new_object(_do_level_up, self, run_in=0)
 
 	def level_down(self):
 		if self.level == 0: # can't level down any more
@@ -324,14 +331,15 @@ class Settler(SelectableBuilding, BuildableRect, CollectingProducerBuilding, Bas
 		pass
 
 	def _update_status_icon(self):
-		unhappy = self.happiness < self.__get_data("happiness_inhabitants_decrease_limit")
-		# check for changes
-		if unhappy and not hasattr(self, "_settler_status_icon"):
-			self._settler_status_icon = SettlerUnhappyStatus() # save ref for removal later
-			self._registered_status_icons.append( self._settler_status_icon )
-		if not unhappy and hasattr(self, "_settler_status_icon"):
-			self._registered_status_icons.remove( self._settler_status_icon )
-			del self._settler_status_icon
+		if self.has_status_icon:
+			unhappy = self.happiness < self.__get_data("happiness_inhabitants_decrease_limit")
+			# check for changes
+			if unhappy and not hasattr(self, "_settler_status_icon"):
+				self._settler_status_icon = SettlerUnhappyStatus() # save ref for removal later
+				self._registered_status_icons.append( self._settler_status_icon )
+			if not unhappy and hasattr(self, "_settler_status_icon"):
+				self._registered_status_icons.remove( self._settler_status_icon )
+				del self._settler_status_icon
 
 	def __str__(self):
 		try:

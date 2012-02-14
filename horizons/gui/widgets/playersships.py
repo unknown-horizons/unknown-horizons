@@ -23,12 +23,14 @@ from fife.extensions.pychan import widgets
 
 from horizons.constants import GAME_SPEED
 from horizons.gui.widgets.statswidget import StatsWidget
+from horizons.gui.widgets.tooltip import TooltipButton
 from horizons.scheduler import Scheduler
 from horizons.util import Callback
 from horizons.util.python import decorators
 from horizons.world.units.fightingship import FightingShip
 from horizons.world.component.healthcomponent import HealthComponent
 from horizons.world.component.namedcomponent import NamedComponent
+from horizons.world.component.selectablecomponent import SelectableComponent
 
 class PlayersShips(StatsWidget):
 	"""Widget that shows a list of the player's ships."""
@@ -49,10 +51,13 @@ class PlayersShips(StatsWidget):
 		sequence_number = 0
 		events = {}
 		for ship in sorted(self.session.world.ships, key = lambda ship: (ship.get_component(NamedComponent).name, ship.worldid)):
-			if ship.owner is player and ship.is_selectable:
+			if ship.owner is player and ship.has_component(SelectableComponent):
 				sequence_number += 1
-				name_label, status_label, status_position = self._add_line_to_gui(ship, sequence_number)
+				name_label, rename_icon, status_label, status_position = \
+				          self._add_line_to_gui(ship, sequence_number)
 				events['%s/mouseClicked' % name_label.name] = Callback(self._go_to_ship, ship)
+				cb = Callback(self.session.ingame_gui.show_change_name_dialog, ship)
+				events['%s/mouseClicked' % rename_icon.name] = cb
 				events['%s/mouseClicked' % status_label.name] = Callback(self._go_to_point, status_position)
 		self._gui.mapEvents(events)
 		self._content_vbox.adaptLayout()
@@ -70,7 +75,12 @@ class PlayersShips(StatsWidget):
 
 		ship_name = widgets.Label(name = 'ship_name_%d' % ship.worldid)
 		ship_name.text = unicode(ship.get_component(NamedComponent).name)
-		ship_name.min_size = ship_name.max_size = (110, 20)
+		ship_name.min_size = ship_name.max_size = (100, 20)
+
+		rename_icon = TooltipButton(name = 'rename_%d' % ship.worldid)
+		rename_icon.up_image = "content/gui/images/background/rename_feather_20.png"
+		rename_icon.hover_image = "content/gui/images/background/rename_feather_20_h.png"
+		rename_icon.tooltip = _("Click to change the name of this ship")
 
 		ship_type = widgets.Label(name = 'ship_type_%d' % ship.worldid)
 		ship_type.text = unicode(ship.classname)
@@ -93,7 +103,7 @@ class PlayersShips(StatsWidget):
 		health = widgets.Label(name = 'health_%d' % ship.worldid)
 		health_component = ship.get_component(HealthComponent)
 		health.text = unicode('%d/%d' % (health_component.health, health_component.max_health))
-		health.min_size = health.max_size = (70, 20)
+		health.min_size = health.max_size = (65, 20)
 
 		status = widgets.Label(name = 'status_%d' % ship.worldid)
 		status.text, status_position = ship.get_status()
@@ -102,11 +112,12 @@ class PlayersShips(StatsWidget):
 		hbox = widgets.HBox()
 		hbox.addChild(sequence_number_label)
 		hbox.addChild(ship_name)
+		hbox.addChild(rename_icon)
 		hbox.addChild(ship_type)
 		hbox.addChild(weapons)
 		hbox.addChild(health)
 		hbox.addChild(status)
 		self._content_vbox.addChild(hbox)
-		return (ship_name, status, status_position)
+		return (ship_name, rename_icon, status, status_position)
 
 decorators.bind_all(PlayersShips)

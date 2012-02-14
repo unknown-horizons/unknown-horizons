@@ -11,7 +11,7 @@ CREATE TABLE `view` (`zoom` FLOAT NOT NULL  DEFAULT '', `rotation` FLOAT NOT NUL
 CREATE TABLE "selected" (`group` INTEGER DEFAULT '', `id` INTEGER NOT NULL  DEFAULT '');
 CREATE TABLE `command` (`tick` INTEGER NOT NULL , `issuer` INTEGER NOT NULL , `data` TEXT NOT NULL );
 ANALYZE sqlite_master;
-CREATE TABLE "building" ("type" INTEGER,"x" INTEGER,"y" INTEGER,"health" FLOAT,"location" INTEGER, "rotation" INTEGER, "level" INTEGER NOT NULL  DEFAULT 0);
+CREATE TABLE "building" ("type" INTEGER,"x" INTEGER,"y" INTEGER,"location" INTEGER, "rotation" INTEGER, "level" INTEGER NOT NULL  DEFAULT 0);
 CREATE TABLE "storage_properties" ("object" INTEGER NOT NULL ,"name" TEXT NOT NULL , "value" TEXT);
 CREATE TABLE "trade_buy" (object INTEGER NOT NULL, "resource" INTEGER NOT NULL , "trade_limit" INTEGER NOT NULL);
 CREATE TABLE "trade_sell" (object INTEGER NOT NULL, "resource" INTEGER NOT NULL , "trade_limit" INTEGER NOT NULL);
@@ -79,6 +79,7 @@ CREATE TABLE "player" ("color" INTEGER NOT NULL ,"name" TEXT NOT NULL ,"client_i
 CREATE TABLE "ai_mission_special_domestic_trade" ("source_settlement_manager" INTEGER NOT NULL , "destination_settlement_manager" INTEGER NOT NULL , "ship" INTEGER NOT NULL , "state" INTEGER NOT NULL );
 CREATE TABLE "production_queue" (object INTEGER NOT NULL, position INTEGER NOT NULL, production_line_id INTEGER NOT NULL);
 CREATE TABLE production_line(for_worldid INTEGER, type STRING, res INTEGER, amount INTEGER);
+CREATE TABLE "resource_overview_bar" (object INTEGER NOT NULL, position INTEGER NOT NULL, resource INTEGER NOT NULL);
 CREATE TABLE "settler" ("inhabitants" INTEGER, "last_tax_payed" INTEGER);
 CREATE TABLE "settlement_tiles" (data STRING);
 CREATE TABLE production_state_history (

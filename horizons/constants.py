@@ -22,7 +22,7 @@
 
 import ctypes
 import platform
-import os.path
+import os
 import locale
 
 from horizons.ext.enum import Enum
@@ -62,7 +62,7 @@ class VERSION:
 	#RELEASE_VERSION = u'2011.3'
 
 	## +=1 this if you changed the savegame "api"
-	SAVEGAMEREVISION= 48
+	SAVEGAMEREVISION= 50
 
 	@staticmethod
 	def string():
@@ -171,6 +171,7 @@ class RES:
 	TOBACCO_PLANTS_ID = 30
 	TOBACCO_LEAVES_ID = 31
 	TOBACCO_PRODUCTS_ID = 32
+	CANNON_ID = WEAPONS.CANNON
 
 class GROUND:
 	DEFAULT_LAND = (3, "straight", 45)
@@ -259,6 +260,9 @@ class GAME:
 	WORLD_WORLDID = 0 # worldid of World object
 	MAX_TICKS = None # exit after on tick MAX_TICKS (disabled by setting to None)
 
+class GUI:
+	CITYINFO_UPDATE_DELAY = 2 # seconds
+
 # Messagewidget and Logbook
 class MESSAGES:
 	CUSTOM_MSG_SHOW_DELAY = 6 # delay between messages when passing more than one
@@ -326,7 +330,11 @@ class LAYERS:
 ## PATHS
 # workaround, so it can be used to create paths within PATHS
 
-if platform.system() != "Windows":
+if 'UH_USER_DIR' in os.environ:
+	# Prefer the value from the environment. Used to override user dir when
+	# running GUI tests.
+	_user_dir = os.environ['UH_USER_DIR']
+elif platform.system() != "Windows":
 	_user_dir = os.path.join(os.path.expanduser('~'), '.unknown-horizons')
 else:
 	dll = ctypes.windll.shell32
@@ -349,6 +357,7 @@ class PATHS:
 	ACTION_SETS_DIRECTORY = os.path.join("content", "gfx")
 	TILE_SETS_DIRECTORY = os.path.join("content", "gfx", "base")
 	SAVEGAME_TEMPLATE = os.path.join("content", "savegame_template.sql")
+	ISLAND_TEMPLATE = os.path.join("content", "island_template.sql")
 	ACTION_SETS_JSON_FILE = os.path.join("content", "actionsets.json")
 
 	CONFIG_TEMPLATE_FILE = os.path.join("content", "settings-template.xml")

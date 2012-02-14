@@ -45,6 +45,7 @@
 		<Label name="lbl_ROAD_TOOL" text="Enable road building mode" />
 		<Label name="lbl_TILE_OWNER_HIGHLIGHT" text="Highlight tile ownership" />
 		<Label name="lbl_DESTROY_TOOL" text="Enable destruct mode" />
+		<Label name="lbl_REMOVE_SELECTED" text="Remove selected units / buildings" />
 	</VBox>
 	<VBox>
 		<Label name="lbl_PLAYERS_OVERVIEW" text="Show player scores" />
@@ -59,10 +60,8 @@
 	</VBox>
 	<VBox>
 		<Label name="have_fun" text="Have fun." />
-		<Label name="fife_and_uh_team"  wrap_text="1"  max_size="290,40"
+		<TooltipLabel name="fife_and_uh_team"  wrap_text="1"  max_size="290,40"
 			text="The FIFE and Unknown Horizons development teams" />
-		<Label text="http://www.unknown-horizons.org"  name="url_uh"  comment="noi18n" />
-		<Label text="http://www.fifengine.net"  name="url_fife"  comment="noi18n" />
 	</VBox>
 <Spacer />
 </VBox>

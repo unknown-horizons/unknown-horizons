@@ -92,35 +92,26 @@ class SavegameAccessor(DbReader):
 
 	def _load_production(self):
 		self._production = {}
-		self._production_ids = {}
+		self._productions_by_id_and_owner = {}
 		db_data = self("SELECT rowid, state, owner, prod_line_id, remaining_ticks, _pause_old_state, creation_tick FROM production")
 		for row in db_data:
 			rowid = int(row[0])
-			self._production[rowid] = row[1:]
+			data = row[1:]
+			self._production[rowid] = data
 			owner = int(row[2])
-			if owner in self._production_ids:
-				self._production_ids[owner].append(rowid)
-			else:
-				self._production_ids[owner] = [rowid]
+			line = int(row[3])
+			if not line in self._productions_by_id_and_owner:
+				self._productions_by_id_and_owner[line] = {}
+			# in the line dict, the owners are unique
+			self._productions_by_id_and_owner[line][owner] = data
 
 		self._production_state_history = defaultdict(lambda: deque())
 		for production_id, tick, state in self("SELECT production, tick, state FROM production_state_history ORDER BY production, tick"):
 			self._production_state_history[int(production_id)].append((tick, state))
 
-	def get_productionworldid_by_id_and_owner(self, id, ownerid):
-		return self("SELECT rowid FROM production WHERE prod_line_id=? AND owner=?", id, ownerid)[0][0]
-
 	def get_production_by_id_and_owner(self, id, ownerid):
-		return self("SELECT state, remaining_ticks, _pause_old_state, creation_tick FROM production WHERE prod_line_id=? AND owner=?", id, ownerid)[0]
-
-	def get_production_row(self, worldid):
-		"""Returns (state, owner, prod_line_id, remaining_ticks, _pause_old_state, creation_tick)"""
-		return self._production[int(worldid)]
-
-	def get_production_ids_by_owner(self, ownerid):
-		"""Returns potentially empty list of worldids referencing productions"""
-		ownerid = int(ownerid)
-		return [] if ownerid not in self._production_ids else self._production_ids[ownerid]
+		# owner means worldid of entity
+		return self._productions_by_id_and_owner[id][ownerid]
 
 	def get_production_line_id(self, production_worldid):
 		"""Returns the prod_line_id of the given production"""

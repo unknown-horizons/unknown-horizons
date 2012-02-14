@@ -28,6 +28,7 @@ from horizons.gui.widgets.tooltip import TooltipButton
 from horizons.world.component.storagecomponent import StorageComponent
 from horizons.gui.widgets.minimap import Minimap
 from horizons.world.component.namedcomponent import NamedComponent
+from horizons.world.component.ambientsoundcomponent import AmbientSoundComponent
 
 import horizons.main
 
@@ -356,7 +357,8 @@ class RouteConfig(object):
 		@param warehouse: Set to add a specific one, else the selected one gets added.
 		"""
 		if len(self.widgets) >= self.MAX_ENTRIES:
-			# TODO: error sound
+			# reached max entries the gui can hold
+			AmbientSoundComponent.play_special('error')
 			return
 
 		self.instance.route.append(warehouse)
@@ -390,9 +392,11 @@ class RouteConfig(object):
 				if tile is not None and tile.settlement is not None:
 					self.append_warehouse( tile.settlement.warehouse )
 
-		self.minimap = Minimap(icon, self.session, \
-		                       horizons.main.fife.targetrenderer,
-		                       horizons.main.fife.imagemanager,
+		self.minimap = Minimap(icon, session=self.session,
+		                       world=self.session.world,
+		                       view=self.session.view,
+		                       targetrenderer=horizons.main.fife.targetrenderer,
+		                       imagemanager=horizons.main.fife.imagemanager,
 		                       cam_border=False,
 		                       use_rotation=False,
 		                       on_click=on_click)

@@ -25,9 +25,10 @@ from horizons.constants import LAYERS, BUILDINGS
 from horizons.world.building.building import BasicBuilding
 from horizons.world.building.buildable import BuildableLine, BuildableSingle
 from horizons.scheduler import Scheduler
+from horizons.world.componentholder import ComponentHolder
 
 
-class Path(object):
+class Path(ComponentHolder):
 	"""Object with path functionality"""
 	walkable = True
 

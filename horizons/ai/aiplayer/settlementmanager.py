@@ -273,7 +273,7 @@ class SettlementManager(WorldObject):
 			if building.level == level:
 				upgrade_production = building._get_upgrade_production()
 				if upgrade_production is not None and upgrade_production.is_paused():
-					ToggleActive(building, upgrade_production).execute(self.land_manager.session)
+					ToggleActive(building.get_component(Producer), upgrade_production).execute(self.land_manager.session)
 					num_upgrading += 1
 					upgraded_any = True
 					if num_upgrading >= limit:
@@ -418,6 +418,6 @@ class SettlementManager(WorldObject):
 		self.production_builder.display()
 
 	def __str__(self):
-		return '%s.SM(%s/%d)' % (self.owner, self.settlement.get_component(NamedComponent).name if hasattr(self, 'settlement') else 'unknown', self.worldid)
+		return '%s.SM(%s/%s)' % (self.owner, self.settlement.get_component(NamedComponent).name if hasattr(self, 'settlement') else 'unknown', self.worldid if hasattr(self, 'worldid') else 'none')
 
 decorators.bind_all(SettlementManager)

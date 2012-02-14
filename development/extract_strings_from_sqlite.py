@@ -91,8 +91,11 @@ class MSGID_collect:
 
 	def __str__(self):
 		s = []
-		for pair in self.msgids.items():
-			s += ['#. This is a database entry: %s.\n#: sql database files\nmsgid "%s"\nmsgstr ""\n' % (' '.join(pair[1]), pair[0])]
+		for text, locations in self.msgids.items():
+			comment = '#. This is a database entry: %s.\n#: sql database files\n' % ','.join(locations)
+			if "{" in text and "}" in text:
+				comment += '#, python-format\n'
+			s += [comment + 'msgid "%s"\nmsgstr ""\n' % text]
 		return '\n'.join(s).strip()
 
 def collect_msgid(msgid, place):

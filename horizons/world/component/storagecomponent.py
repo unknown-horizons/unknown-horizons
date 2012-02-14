@@ -24,22 +24,22 @@ class StorageComponent(Component):
 	    'PositiveSizedSlotStorage': PositiveSizedSlotStorage,
 	    'PositiveTotalNumSlotStorage': PositiveTotalNumSlotsStorage,
 	    'SlotsStorage': PositiveSizedSpecializedStorage,
-	    'SettlementStorage': SettlementStorage
+	    'SettlementStorage': SettlementStorage # pseudo storage meaning to share settlement storage
 	    }
-
-	has_own_inventory = True # some objs share inventory, which requires different handling here.
 
 	def __init__(self, inventory=None):
 		super(StorageComponent, self).__init__()
 		self.inventory = inventory
 
+		# SettlementStorage is used as flag to signal using another inventory
+		self.has_own_inventory = not isinstance(self.inventory, SettlementStorage)
+
 	def initialize(self):
+		# NOTE: also called on load (initialize usually isn't)
 		if self.inventory is None:
 			self.create_inventory()
-		elif isinstance(self.inventory, SettlementStorage):
+		elif not self.has_own_inventory:
 			self.inventory = self.instance.settlement.get_component(StorageComponent).inventory
-		if self.has_own_inventory:
-			self.inventory.add_change_listener(self.instance._changed)
 
 	def remove(self):
 		super(StorageComponent, self).remove()

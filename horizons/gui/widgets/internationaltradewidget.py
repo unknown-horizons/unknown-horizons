@@ -28,6 +28,7 @@ from horizons.util import Callback
 from horizons.world.component.tradepostcomponent import TradePostComponent
 from horizons.world.component.storagecomponent import StorageComponent
 from horizons.world.component.namedcomponent import NamedComponent
+from horizons.world.component.selectablecomponent import SelectableComponent
 
 class InternationalTradeWidget(object):
 	log = logging.getLogger("gui.internationaltradewidget")
@@ -97,7 +98,9 @@ class InternationalTradeWidget(object):
 				button.button.capture(Callback(self.transfer, button.res_id, self.partner.settlement, False))
 			self.widget.adaptLayout()
 		else:
+			# no partner in range any more
 			self.widget.hide()
+			self.instance.get_component(SelectableComponent).show_menu()
 
 	def __remove_changelisteners(self):
 		self.instance.remove_change_listener(self.draw_widget)
@@ -143,11 +146,11 @@ class InternationalTradeWidget(object):
 			if selling:
 				self.log.debug('InternationalTradeWidget : %s/%s is selling %d of res %d to %s/%s', \
 					self.instance.get_component(NamedComponent).name, self.instance.owner.name, self.exchange, res_id, settlement.get_component(NamedComponent).name, settlement.owner.name)
-				SellResource(settlement, self.instance, res_id, self.exchange).execute(self.instance.session)
+				SellResource(settlement.get_component(TradePostComponent), self.instance, res_id, self.exchange).execute(self.instance.session)
 			else:
 				self.log.debug('InternationalTradeWidget : %s/%s is buying %d of res %d from %s/%s', \
 					self.instance.get_component(NamedComponent).name, self.instance.owner.name, self.exchange, res_id, settlement.get_component(NamedComponent).name, settlement.owner.name)
-				BuyResource(settlement, self.instance, res_id, self.exchange).execute(self.instance.session)
+				BuyResource(settlement.get_component(TradePostComponent), self.instance, res_id, self.exchange).execute(self.instance.session)
 			# update gui
 			self.draw_widget()
 

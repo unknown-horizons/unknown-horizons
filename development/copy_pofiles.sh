@@ -6,6 +6,8 @@
 # Requires a checkout of the UH translation repo with the following structure:
 # (relative to the location of this file)
 # ../../translations
+# Only run from UH directory of a git clone (where run_uh.py and the po/ folder
+# are loacted)!
 
 
 TL_SOURCE='../translations'  #origin (TL repo pootle export)
@@ -23,6 +25,11 @@ TL_INCOMPLETE=( af  el  ga  gl  id  ko  lv  sr  th  tr  vi  zh_CN  zu )
 TL_TUT_INCOMPLETE=( af  ca@valencia  el  ga  gl  id  ko  lt  lv  nb  sl  sr  th  tr  vi  zh_CN  zu )
 ###############################################################################
 
+# this returns a string like the following:
+#   'grep -v -e en.po -e en-suggest.po -e de.po'
+# which means that en, en-suggest and de will not be considered when updating.
+# Use the _INCOMPLETE variables above to adjust (e.g. because new interface
+# translation maintainers are now working on the respective files).
 function build_ungrep {
 	c='grep -v -e en.po'
 	for i in "${TL_NOT_SHIPPING[@]}"; do
@@ -52,6 +59,15 @@ function tl_tut_check {
 }
 
 
+if [ ! -d $TL_SOURCE ] ; then
+	echo '!! No translation repository found. Tried here:'
+	echo $TL_SOURCE
+	echo '=> Please make sure you have a proper clone of the Unknown Horizons'
+	echo '   translation export repository in that location.'
+	echo '=> If you do not, run the following command in the current working dir:'
+	echo '   git clone git://github.com/unknown-horizons/translations.git ../translations'
+	exit 1 # stop executing script, no sense in trying to copy nonexistant files
+fi
 
 build_ungrep
 
@@ -63,7 +79,8 @@ done
 echo
 echo '=> Copying these interface translations:'
 
-for file in $(ls $TL_SOURCE/uh/*.po | $TL_UNGREP); do
+INTERFACE_FILES=$(ls $TL_SOURCE/uh/*.po -1 | $TL_UNGREP)
+for file in $INTERFACE_FILES; do
 	tl_check $file
 	if [ $? -ne 3 ]; then
 		echo '  !!This file seems to be broken. Skipping.'

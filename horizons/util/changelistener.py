@@ -28,7 +28,7 @@ class ChangeListener(object):
 	An object calls _changed everytime something has changed, obviously.
 	This function calls every Callback, that has been registered to listen for a change.
 	NOTE: ChangeListeners aren't saved, they have to be reregistered on load
-	NOTE: Removelisteners must not access the object, as it is in progress of being destroyed.
+	NOTE: RemoveListeners must not access the object, as it is in progress of being destroyed.
 	"""
 	def __init__(self, *args, **kwargs):
 		super(ChangeListener, self).__init__()
@@ -46,10 +46,15 @@ class ChangeListener(object):
 	def __remove_listener(self, listener_list, listener):
 		# check if the listener should be hard removed
 		# if so switch it in the list to None
-		if self.__hard_remove:
-			listener_list.remove(listener)
-		else:
-			listener_list[listener_list.index(listener)] = None
+		try:
+			if self.__hard_remove:
+				listener_list.remove(listener)
+			else:
+				listener_list[listener_list.index(listener)] = None
+		except ValueError as e: # nicer error:
+			raise ValueError(str(e)+
+			                 "\nTried to remove: "+str(listener)+"\nat "+str(self)+
+			                 "\nList: "+str([str(i) for i in listener_list]))
 
 	def __call_listeners(self, listener_list):
 		# instead of removing from list, switch the listener in position to None

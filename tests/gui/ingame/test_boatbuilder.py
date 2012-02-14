@@ -19,12 +19,18 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-from horizons.constants import BUILDINGS, PRODUCTION, GAME_SPEED
+import tempfile
+import os
+
+import horizons.main
+
+from horizons.constants import BUILDINGS, PRODUCTION
 from horizons.world.production.producer import Producer
 from tests.gui import TestFinished, gui_test
 
 
-@gui_test(use_fixture='boatbuilder')
+
+@gui_test(use_fixture='boatbuilder', timeout=120)
 def test_ticket_1224(gui):
 	"""
 	Boat builder running costs are inconsistent.
@@ -44,12 +50,10 @@ def test_ticket_1224(gui):
 	assert running_costs() == '10', "Expected 10, got %s" % running_costs()
 
 	# Select trade ships tab
-	c = gui.find(name='tab_base')
-	gui.trigger(c, '1/action/default')
+	gui.trigger('tab_base', '1/action/default')
 
 	# Build huker
-	c = gui.find(name='boatbuilder_trade')
-	gui.trigger(c, 'BB_build_trade_1/action/default')
+	gui.trigger('boatbuilder_trade', 'BB_build_trade_1/action/default')
 
 	# Wait until production starts
 	producer = boatbuilder.get_component(Producer)
@@ -62,7 +66,7 @@ def test_ticket_1224(gui):
 	yield TestFinished
 
 
-@gui_test(use_fixture='boatbuilder')
+@gui_test(use_fixture='boatbuilder', timeout=120)
 def test_ticket_1294(gui):
 	"""
 	Boatbuilder crash with out of order finishing.
@@ -75,40 +79,35 @@ def test_ticket_1294(gui):
 	gui.select([boatbuilder])
 
 	# Select trade ships tab
-	c = gui.find(name='tab_base')
-	gui.trigger(c, '1/action/default')
+	gui.trigger('tab_base', '1/action/default')
 
 	# Build huker
-	c = gui.find(name='boatbuilder_trade')
-	gui.trigger(c, 'BB_build_trade_1/action/default')
+	gui.trigger('boatbuilder_trade', 'BB_build_trade_1/action/default')
 
 	# Pause huker construction
-	c = gui.find(name='BB_main_tab')
-	gui.trigger(c, 'toggle_active_active/action/default')
+	gui.trigger('BB_main_tab', 'toggle_active_active/action/default')
 
 	# Select war ships tab
-	c = gui.find(name='tab_base')
-	gui.trigger(c, '2/action/default')
+	gui.trigger('tab_base', '2/action/default')
 
 	# Build frigate
-	c = gui.find(name='boatbuilder_war1')
-	gui.trigger(c, 'BB_build_war1_1/action/default')
-
-	gui.session.speed_set(GAME_SPEED.TICK_RATES[-1]) # speed things up a bit
+	gui.trigger('boatbuilder_war1', 'BB_build_war1_1/action/default')
 
 	# Wait until production ends
 	producer = boatbuilder.get_component(Producer)
-	while producer._get_current_state() != PRODUCTION.STATES.done:
+	while len(producer.get_productions()) > 1:
 		yield
 
-	# After some seconds it will crash
-	for i in gui.run(seconds=2):
+	# Unpause huker construction
+	gui.trigger('BB_main_tab', 'toggle_active_inactive/action/default')
+
+	while len(producer.get_productions()) > 0:
 		yield
 
 	yield TestFinished
 
 
-@gui_test(use_fixture='boatbuilder')
+@gui_test(use_fixture='boatbuilder', timeout=60)
 def test_remove_from_queue(gui):
 	"""
 	Boatbuilder crashes when canceling a ship in the queue.
@@ -121,23 +120,82 @@ def test_remove_from_queue(gui):
 	gui.select([boatbuilder])
 
 	# Select trade ships tab
-	c = gui.find(name='tab_base')
-	gui.trigger(c, '1/action/default')
+	gui.trigger('tab_base', '1/action/default')
 
 	# Build huker
-	c = gui.find(name='boatbuilder_trade')
-	gui.trigger(c, 'BB_build_trade_1/action/default')
+	gui.trigger('boatbuilder_trade', 'BB_build_trade_1/action/default')
 
 	# Select war ships tab
-	c = gui.find(name='tab_base')
-	gui.trigger(c, '2/action/default')
+	gui.trigger('tab_base', '2/action/default')
 
 	# Build frigate
-	c = gui.find(name='boatbuilder_war1')
-	gui.trigger(c, 'BB_build_war1_1/action/default')
+	gui.trigger('boatbuilder_war1', 'BB_build_war1_1/action/default')
 
-	# Cancel huker -> crash
-	c = gui.find(name='BB_main_tab')
-	gui.trigger(c, 'queue_container/mouseClicked/default')
+	# Cancel queue -> crash
+	gui.trigger('BB_main_tab', 'queue_container/mouseClicked/default')
+
+	yield TestFinished
+
+@gui_test(use_fixture='boatbuilder', timeout=60)
+def test_cancel_ticket_1424(gui):
+	"""
+	Boatbuilder crashes when canceling a ship build.
+	"""
+	yield # test needs to be a generator for now
+
+	settlement = gui.session.world.player.settlements[0]
+	boatbuilder = settlement.get_buildings_by_id(BUILDINGS.BOATBUILDER_CLASS)[0]
+
+	gui.select([boatbuilder])
+
+	# Select trade ships tab
+	gui.trigger('tab_base', '1/action/default')
+
+	# Build huker
+	gui.trigger('boatbuilder_trade', 'BB_build_trade_1/action/default')
+
+	# Select war ships tab
+	gui.trigger('tab_base', '2/action/default')
+
+	# Build frigate
+	gui.trigger('boatbuilder_war1', 'BB_build_war1_1/action/default')
+
+	# Cancel build completely -> crash
+	gui.trigger('BB_main_tab', 'BB_cancel_button/mouseClicked/default')
+
+
+	yield TestFinished
+
+@gui_test(use_fixture='boatbuilder', timeout=60)
+def test_save_load_ticket_1421(gui):
+	"""
+	Boatbuilder crashes when saving/loading while a ship is being produced.
+	"""
+	yield # test needs to be a generator for now
+
+	settlement = gui.session.world.player.settlements[0]
+	boatbuilder = settlement.get_buildings_by_id(BUILDINGS.BOATBUILDER_CLASS)[0]
+
+	gui.select([boatbuilder])
+
+	# Select trade ships tab
+	gui.trigger('tab_base', '1/action/default')
+
+	# Build huker
+	gui.trigger('boatbuilder_trade', 'BB_build_trade_1/action/default')
+
+	# Select war ships tab
+	gui.trigger('tab_base', '2/action/default')
+
+	# Build frigate
+	gui.trigger('boatbuilder_war1', 'BB_build_war1_1/action/default')
+
+	fd, filename = tempfile.mkstemp()
+	os.close(fd)
+
+	session = settlement.session
+	assert session.save(savegamename=filename)
+
+	horizons.main.load_game( savegame=filename )
 
 	yield TestFinished

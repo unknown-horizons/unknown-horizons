@@ -32,11 +32,13 @@ from horizons.world.component import Component
 from horizons.world.status import ProductivityLowStatus, DecommissionedStatus, InventoryFullStatus
 from horizons.world.production.unitproduction import UnitProduction
 from horizons.command.unit import CreateUnit
+from horizons.util.changelistener import metaChangeListenerDecorator
 
+@metaChangeListenerDecorator("production_finished")
 class Producer(Component):
 	"""Class for objects, that produce something.
-	@param auto_init: bool. If True, the producer automatically adds one production
-					  for each production_line.
+	@param auto_init: bool. If True, the producer automatically adds one
+	production for each production_line.
 	"""
 	log = logging.getLogger("world.production")
 
@@ -52,13 +54,17 @@ class Producer(Component):
 		self.__start_finished = start_finished
 		self.production_lines = productionlines
 
-	def initialize(self):
+	def __init(self):
 		# we store productions in 2 dicts, one for the active ones, and one for the inactive ones.
 		# the inactive ones won't get considered for needed_resources and such.
 		# the production_line id is the key in the dict (=> a building must not have two identical
 		# production lines)
 		self._productions = {}
 		self._inactive_productions = {}
+
+
+	def initialize(self):
+		self.__init()
 		# add production lines as specified in db.
 		if self.__auto_init:
 			for prod_line, attributes in self.production_lines.iteritems():
@@ -66,7 +72,7 @@ class Producer(Component):
 					continue  # It's set to false, don't add
 				prod = self.create_production(prod_line)
 				self.add_production(prod)
-
+				prod.start()
 		if self.__start_finished:
 			self.finish_production_now()
 
@@ -129,13 +135,13 @@ class Producer(Component):
 		Scheduler().add_new_object(self._on_production_change, self, run_in = 0)
 		super(Producer, self).load(db, worldid)
 		# load all productions
-		for production in self.get_productions():
+		self.__init()
+		lines_to_load = db("SELECT prod_line_id FROM production WHERE owner=?", worldid)
+		for line_id,  in lines_to_load:
+			production = self.create_production(line_id)
+			assert isinstance(production, Production)
 			production.load(db, worldid)
-			# move inactive productions to the correct list
-			if production.is_paused():
-				if production.prod_id in self._productions:
-					self._inactive_productions[production.prod_id] = production
-					del self._productions[production.prod_id]
+			self.add_production(production)
 			# Listener has been removed in the productions.load(), because the
 			# changelistener's load is called
 			production.add_change_listener(self._on_production_change, call_listener_now=False)
@@ -159,7 +165,14 @@ class Producer(Component):
 			self.log.debug('%s: added production line %s is active', self, production.get_production_line_id())
 			self._productions[production.get_production_line_id()] = production
 		production.add_change_listener(self._on_production_change, call_listener_now=False)
+		production.add_production_finished_listener(self._production_finished)
 		self.instance._changed()
+
+	def _production_finished(self, production):
+		"""Gets called when a production finishes. Intercepts call, adds info
+		and forwards it"""
+		produced_res = production.get_produced_res()
+		self.on_production_finished(produced_res)
 
 	def finish_production_now(self):
 		"""Cheat, makes current production finish right now (and produce the resources).
@@ -340,9 +353,9 @@ class QueueProducer(Producer):
 
 	def __init__(self, **kwargs):
 		super(QueueProducer, self).__init__(auto_init=False, **kwargs)
+		self.__init()
 
-	def initialize(self, **kwargs):
-		super(QueueProducer, self).initialize( ** kwargs)
+	def __init(self):
 		self.production_queue = [] # queue of production line ids
 
 	def save(self, db):
@@ -350,10 +363,11 @@ class QueueProducer(Producer):
 		for i in enumerate(self.production_queue):
 			position, prod_line_id = i
 			db("INSERT INTO production_queue (object, position, production_line_id) VALUES(?, ?, ?)",
-			   self.worldid, position, prod_line_id)
+			   self.instance.worldid, position, prod_line_id)
 
 	def load(self, db, worldid):
 		super(QueueProducer, self).load(db, worldid)
+		self.__init()
 		for (prod_line_id,) in db("SELECT production_line_id FROM production_queue WHERE object = ? ORDER by position", worldid):
 			self.production_queue.append(prod_line_id)
 
@@ -393,12 +407,12 @@ class QueueProducer(Producer):
 	def start_next_production(self):
 		"""Starts the next production that is in the queue, if there is one."""
 		if self.check_next_production_startable():
-			self.set_active(active=True)
 			self._productions.clear() # Make sure we only have one production active
 			production_line_id = self.production_queue.pop(0)
 			prod = self.create_production(production_line_id)
 			prod.add_production_finished_listener(self.on_queue_element_finished)
 			self.add_production( prod )
+			self.instance.set_active(production=prod, active=True)
 		else:
 			self.set_active(active=False)
 
@@ -451,7 +465,7 @@ class UnitProducer(QueueProducer):
 		productions = self._productions.values()
 		for production in productions:
 			assert isinstance(production, UnitProduction)
-			self.instance.on_building_production_finished(production.get_produced_units())
+			self.on_production_finished(production.get_produced_units())
 			for unit, amount in production.get_produced_units().iteritems():
 				for i in xrange(0, amount):
 					radius = 1
@@ -461,8 +475,8 @@ class UnitProducer(QueueProducer):
 						for coord in Circle(self.instance.position.center(), radius).tuple_iter():
 							point = Point(coord[0], coord[1])
 							if self.instance.island.get_tile(point) is None:
-								tile = self.instance.session.world.get_tile(point)
-								if tile is not None and tile.is_water and coord not in self.instance.session.world.ship_map:
+								tile = self.session.world.get_tile(point)
+								if tile is not None and tile.is_water and coord not in self.session.world.ship_map:
 									# execute bypassing the manager, it's simulated on every machine
 									CreateUnit(self.instance.owner.worldid, unit, point.x, point.y)(issuer=self.instance.owner)
 									found_tile = True

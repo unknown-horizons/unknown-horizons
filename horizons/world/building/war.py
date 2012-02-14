@@ -20,17 +20,32 @@
 # ###################################################
 
 from horizons.world.building.buildable import BuildableSingle
-from horizons.world.building.building import SelectableBuilding, BasicBuilding
+from horizons.world.building.building import BasicBuilding
 
-from horizons.world.units.weaponholder import WeaponHolder
+from horizons.world.units.weaponholder import StationaryWeaponHolder
 from horizons.constants import WEAPONS
 
-class Tower(BuildableSingle, SelectableBuilding, BasicBuilding, WeaponHolder):
+class Tower(BuildableSingle, StationaryWeaponHolder, BasicBuilding):
+
+	POSSIBLE_WEAPONS = [ WEAPONS.CANNON ]
+
 	def __init__(self, *args, **kwargs):
 		super(Tower, self).__init__(*args, **kwargs)
-		self.add_weapon_to_storage(WEAPONS.CANNON)
-		self.add_weapon_to_storage(WEAPONS.CANNON)
-		self.add_weapon_to_storage(WEAPONS.CANNON)
+		# apply cannons already payed for
+		for weapon_type in self.__class__.POSSIBLE_WEAPONS:
+			for i in xrange(self.costs.get(weapon_type, 0)):
+				self.add_weapon_to_storage(weapon_type)
 
 	def fire_all_weapons(self, dest, rotate = True):
 		super(Tower, self).fire_all_weapons(dest, rotate)
+
+	def update_range(self, caller=None):
+		self._fix_weapon_range()
+		super(Tower, self).update_range(caller=caller)
+
+	def _fix_weapon_range(self):
+		"""Set all min weapon ranges to 0.
+		Since the tower can't move, melee units could just approach it and
+		destroy the tower"""
+		for weapon in self._weapon_storage:
+			weapon.weapon_range = (0, weapon.weapon_range[1])

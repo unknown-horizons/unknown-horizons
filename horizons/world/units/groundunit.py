@@ -27,20 +27,25 @@ from horizons.world.pathfinding import PathBlockedError
 from horizons.world.units.movingobject import MoveNotPossible
 from horizons.util import Point, Circle
 from unit import Unit
-from horizons.constants import GAME_SPEED, WEAPONS, GFX
+from horizons.constants import GAME_SPEED, WEAPONS
 from horizons.world.units.weaponholder import MovingWeaponHolder
-from horizons.gui.tabs import GroundUnitOverviewTab, EnemyShipOverviewTab
+from horizons.world.component.selectablecomponent import SelectableComponent
+from horizons.world.component.commandablecomponent import CommandableComponent
 
 class GroundUnit(Unit):
 	"""Class representing ground unit
 	@param x: int x position
 	@param y: int y position
 	"""
+
+
+	# TODO:
+	# set these tabs in yaml as soon as there are ground units
+	# tabs = (GroundUnitOverviewTab,)
+	# enemy_tabs = (EnemyShipOverviewTab,)
+
 	pather_class = SoldierPather
-	tabs = (GroundUnitOverviewTab,)
-	enemy_tabs = (EnemyShipOverviewTab,)
 	health_bar_y = -70
-	is_selectable = True
 
 	def __init__(self, x, y, **kwargs):
 		super(GroundUnit, self).__init__(x=x, y=y, **kwargs)
@@ -49,13 +54,14 @@ class GroundUnit(Unit):
 
 	def remove(self):
 		if self in self.session.selected_instances:
-			self.deselect()
+			self.get_component(SelectableComponent).deselect()
 			self.session.selected_instances.remove(self)
 		super(GroundUnit, self).remove()
 		self.session.world.ground_units.remove(self)
 		if self.session.view.has_change_listener(self.draw_health):
 			self.session.view.remove_change_listener(self.draw_health)
 		del self.session.world.ground_unit_map[self.position.to_tuple()]
+
 
 	def _move_tick(self, resume = False):
 		del self.session.world.ground_unit_map[self.position.to_tuple()]
@@ -69,49 +75,6 @@ class GroundUnit(Unit):
 
 		self.session.world.ground_unit_map[self.position.to_tuple()] = weakref.ref(self)
 		self.session.world.ground_unit_map[self._next_target.to_tuple()] = weakref.ref(self)
-
-	def select(self, reset_cam=False):
-		"""Runs necessary steps to select the unit."""
-		self.session.view.renderer['InstanceRenderer'].addOutlined(self._instance, 255, 255, 255, GFX.UNIT_OUTLINE_WIDTH, GFX.UNIT_OUTLINE_THRESHOLD)
-		self.draw_health()
-		if reset_cam:
-			self.session.view.center(*self.position.to_tuple())
-		self.session.view.add_change_listener(self.draw_health)
-
-	def deselect(self):
-		"""Runs necessary steps to deselect the unit."""
-		self.session.view.renderer['InstanceRenderer'].removeOutlined(self._instance)
-		self.session.view.renderer['GenericRenderer'].removeAll("health_" + str(self.worldid))
-		# this is necessary to make deselect idempotent
-		if self.session.view.has_change_listener(self.draw_health):
-			self.session.view.remove_change_listener(self.draw_health)
-
-	def go(self, x, y):
-		"""Moves the unit.
-		This is called when a unit is selected and the right mouse button is pressed outside the unit"""
-		self.stop()
-
-		move_target = Point(int(round(x)), int(round(y)))
-		try:
-			self.move(move_target)
-		except MoveNotPossible:
-			# find a near tile to move to
-			surrounding = Circle(move_target, radius=1)
-			move_target = None
-			# try with smaller circles, increase radius if smaller circle isn't reachable
-			while surrounding.radius < 5:
-				try:
-					self.move(surrounding)
-				except MoveNotPossible:
-					surrounding.radius += 1
-					continue
-				# update actual target coord
-				move_target = self.get_move_target()
-				break
-
-		if move_target is None: # can't move
-			# TODO: give player some kind of feedback
-			return
 
 	def load(self, db, worldid):
 		super(GroundUnit, self).load(db, worldid)
@@ -132,7 +95,7 @@ class FightingGroundUnit(MovingWeaponHolder, GroundUnit):
 		self.name = map(lambda x: unicode(x[0], 'utf-8'), names)
 
 	def go(self, x, y):
-		super(FightingGroundUnit, self).go(x, y)
+		self.get_component(SelectableComponent).go(x, y)
 		self.stop_attack()
 
 	def act_attack(self, dest):

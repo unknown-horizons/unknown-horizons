@@ -43,9 +43,15 @@ class Speech:
 	SETTLERS_MOVED_OUT = None
 	MINE_EMPTY = None
 	DRAG_ROADS_HINT = None
-	DIPLOMACY_STATUS_CHANGED = None
+	DIPLOMACY_STATUS_ALLY_NEUTRAL = None
+	DIPLOMACY_STATUS_ALLY_ENEMY = None
+	DIPLOMACY_STATUS_ENEMY_ALLY = None
+	DIPLOMACY_STATUS_ENEMY_NEUTRAL = None
+	DIPLOMACY_STATUS_NEUTRAL_ALLY = None
+	DIPLOMACY_STATUS_NEUTRAL_ENEMY = None
 	MAX_INCR_REACHED = None
 	YOU_HAVE_WON = None
+	FIELD_NEEDS_FARM = None
 
 DEFAULT_LANG="en"
 DEFAULT_VARIATION=0
@@ -99,4 +105,5 @@ def eval_category_name(category):
 		cat_name = getattr(Speech, category)
 	except:
 		print "Incorrect name of speech category: %s" % category
+		print "You might want to add this here in voice.py."
 	return cat_name

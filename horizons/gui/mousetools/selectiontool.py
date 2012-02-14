@@ -26,6 +26,7 @@ from horizons.command.unit import Act
 from horizons.util import WorldObject
 from horizons.util.worldobject import WorldObjectNotFound
 from horizons.gui.mousetools.navigationtool import NavigationTool
+from horizons.world.component.selectablecomponent import SelectableComponent
 from horizons.constants import LAYERS
 
 class SelectionTool(NavigationTool):
@@ -40,7 +41,7 @@ class SelectionTool(NavigationTool):
 		# Deselect if needed while exiting
 		if self.deselect_at_end:
 			for i in self.session.selected_instances:
-				i.deselect()
+				i.get_component(SelectableComponent).deselect()
 		super(SelectionTool, self).remove()
 
 	def mouseDragged(self, evt):
@@ -81,7 +82,7 @@ class SelectionTool(NavigationTool):
 					i_id = instances[0].getId()
 					if i_id != '':
 						instance = WorldObject.get_object_by_id(int(i_id))
-						if instance.is_selectable:
+						if instance.has_component(SelectableComponent):
 							selectable.append(instance)
 				except WorldObjectNotFound:
 					pass
@@ -92,7 +93,7 @@ class SelectionTool(NavigationTool):
 						if i_id == '':
 							continue
 						instance = WorldObject.get_object_by_id(int(i_id))
-						if instance.is_selectable and instance.owner == self.session.world.player:
+						if instance.has_component(SelectableComponent) and instance.owner == self.session.world.player:
 							selectable.append(instance)
 					except WorldObjectNotFound:
 						pass
@@ -110,9 +111,9 @@ class SelectionTool(NavigationTool):
 			else:
 				selectable = set(self.select_old ^ frozenset(selectable))
 			for instance in self.session.selected_instances - selectable:
-				instance.deselect()
+				instance.get_component(SelectableComponent).deselect()
 			for instance in selectable - self.session.selected_instances:
-				instance.select()
+				instance.get_component(SelectableComponent).select()
 			self.session.selected_instances = selectable
 		elif (evt.getButton() == fife.MouseEvent.RIGHT):
 			pass
@@ -138,12 +139,14 @@ class SelectionTool(NavigationTool):
 		Called when selected instances changes. (Shows their menu)
 		If one of the selected instances can attack, switch mousetool to AttackingTool
 		"""
+		if (self.session.world.health_visible_for_all_health_instances):
+			self.session.world.toggle_health_for_all_health_instances()
 		selected = self.session.selected_instances
 		if len(selected) > 1 and all( i.is_unit for i in selected ):
 			self.session.ingame_gui.show_multi_select_tab()
 		elif len(selected) == 1:
 			for i in selected:
-				i.show_menu()
+				i.get_component(SelectableComponent).show_menu()
 
 		#change session cursor to attacking tool if selected instances can attack
 		from attackingtool import AttackingTool
@@ -168,21 +171,21 @@ class SelectionTool(NavigationTool):
 			selectable = []
 			instances = self.get_hover_instances(evt)
 			for instance in instances:
-				if instance.is_selectable:
+				if instance.has_component(SelectableComponent):
 					selectable.append(instance)
 			if len(selectable) > 1:
 				selectable = selectable[0:0]
 			self.select_old = frozenset(self.session.selected_instances) if evt.isControlPressed() else frozenset()
 			selectable = set(self.select_old ^ frozenset(selectable))
 			for instance in self.session.selected_instances - selectable:
-				instance.deselect()
+				instance.get_component(SelectableComponent).deselect()
 			for instance in selectable - self.session.selected_instances:
-				instance.select()
+				instance.get_component(SelectableComponent).select()
 			self.session.selected_instances = selectable
 			self.select_begin = (evt.getX(), evt.getY())
 			self.session.ingame_gui.hide_menu()
 		elif evt.getButton() == fife.MouseEvent.RIGHT:
-			target_mapcoord = self._get_exact_world_location_from_event(evt)
+			target_mapcoord = self.get_exact_world_location_from_event(evt)
 			for i in self.session.selected_instances:
 				if i.movable:
 					Act(i, target_mapcoord.x, target_mapcoord.y).execute(self.session)

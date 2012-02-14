@@ -19,9 +19,13 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
+from fife.extensions import pychan
 
 from horizons.entities import Entities
 from horizons.gui.tabs.tabinterface import TabInterface
+from horizons.command.building import Build
+from horizons.util import Callback
+from horizons.util.lastactiveplayersettlementmanager import LastActivePlayerSettlementManager
 from horizons.util.python.roman_numerals import int_to_roman
 
 class BuildTab(TabInterface):
@@ -64,6 +68,7 @@ class BuildTab(TabInterface):
 			 3 : 20,
 			 4 : 19,
 			 5 : 21,
+			 6 : 45,
 			21 : 7,
 			22 : 26,
 			23 : 18,
@@ -88,31 +93,32 @@ class BuildTab(TabInterface):
 
 	text_data = {
 		1 : {
-			 1 : 'Residents and infrastructure',
-			 3 : 'Services',
-			 5 : 'Companies',
+			 1 : _('Residents and infrastructure'),
+			 3 : _('Services'),
+			 5 : _('Companies'),
 		      },
 		2 : {
-			 1 : 'Companies',
-			 3 : 'Fields',
-			 5 : 'Services',
-			25 : 'Military',
+			 1 : _('Companies'),
+			 3 : _('Fields'),
+			 5 : _('Services'),
+			25 : _('Military'),
 		      },
 		3 : {
-			 1 : 'Mining',
-			 3 : 'Companies',
-			 5 : 'Fields',
-			 7 : 'Services',
+			 1 : _('Mining'),
+			 3 : _('Companies'),
+			 5 : _('Fields'),
+			 7 : _('Services'),
 		      },
 		}
 
 	last_active_build_tab = None
 
-	def __init__(self, tabindex = 1, callback_mapping=None):
+	def __init__(self, tabindex = 1, callback_mapping=None, session=None):
 		if callback_mapping is None:
 			callback_mapping = {}
 		super(BuildTab, self).__init__(widget = 'buildtab.xml')
 		self.init_values()
+		self.session = session
 		self.tabindex = tabindex
 		self.callback_mapping = callback_mapping
 
@@ -141,17 +147,44 @@ class BuildTab(TabInterface):
 		(columns as follows, left to right):
 		# 1,3,5,7.. | 2,4,6,8.. | 21,23,25,27.. | 22,24,26,28..
 		"""
+		settlement = LastActivePlayerSettlementManager().get()
 		for position, building_id in self.__class__.image_data[tabindex].iteritems():
-			icon = self.widget.child_finder('icon_{position}'.format(position=position))
-			icon.image = "content/gui/images/buttons/buildmenu_button_bg.png"
 			button = self.widget.child_finder('button_{position}'.format(position=position))
+			building = Entities.buildings[building_id]
+
+			icon = self.widget.child_finder('icon_{position}'.format(position=position))
+
 			#xgettext:python-format
-			button.tooltip = _('{building}: {description}').format(building = Entities.buildings[building_id].name,
-			                                                    description = Entities.buildings[building_id].tooltip_text)
-			path = "content/gui/icons/buildmenu/{id:03d}{{mode}}.png".format(id=building_id)
+			button.tooltip = _('{building}: {description}').format(building = _(building.name),
+			                                                    description = _(building.tooltip_text))
+
+			enough_res = True # show all buildings by default
+			if settlement is not None: # settlement is None when the mouse has never hovered over a settlement
+				res_overview =  self.session.ingame_gui.resource_overview
+				cbs = ( Callback( res_overview.set_construction_mode, settlement, building.costs),
+				       Callback( res_overview.close_construction_mode ) )
+
+				# can't use mapEvents since the events are taken by the tooltips.
+				# they do however provide an auxiliary way around this:
+				button.add_entered_callback(cbs[0])
+				button.add_exited_callback(cbs[1])
+
+				(enough_res, missing_res) = Build.check_resources({}, building.costs, settlement.owner, [settlement])
+			#check whether to disable build menu icon (not enough res available)
+			#TODO this does not refresh right now, the icons should get active
+			# as soon as enough res are available!
+			if enough_res:
+				icon.image = "content/gui/images/buttons/buildmenu_button_bg.png"
+				path = "content/gui/icons/buildmenu/{id:03d}{{mode}}.png".format(id=building_id)
+				button.down_image = path.format(mode='_h')
+				button.hover_image = path.format(mode='_h')
+			else:
+				icon.image = "content/gui/images/buttons/buildmenu_button_bg_bw.png"
+				path = "content/gui/icons/buildmenu/greyscale/{id:03d}{{mode}}.png".format(id=building_id)
+				button.down_image = path.format(mode='')
+				button.hover_image = path.format(mode='')
 			button.up_image = path.format(mode='')
-			button.down_image = path.format(mode='_h')
-			button.hover_image = path.format(mode='_h')
+
 			button.capture(self.callback_mapping[building_id])
 
 	def update_text(self, tabindex):

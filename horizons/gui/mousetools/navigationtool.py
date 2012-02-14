@@ -27,17 +27,20 @@ import horizons.main
 
 from horizons.gui.mousetools.cursortool import CursorTool
 from horizons.util import Point, WorldObject
+from horizons.util.lastactiveplayersettlementmanager import LastActivePlayerSettlementManager
 from horizons.gui.widgets.tooltip import TooltipIcon
 from horizons.constants import LAYERS
 
 class NavigationTool(CursorTool):
 	"""Navigation Class to process mouse actions ingame"""
+
+	last_event_pos = None # last received mouse event position, fife.ScreenPoint
+
 	def __init__(self, session):
 		super(NavigationTool, self).__init__(session)
 		self.lastScroll = [0, 0]
 		self.lastmoved = fife.ExactModelCoordinate()
 		self.middle_scroll_active = False
-		self.__last_hover_player_settlement = None # private weakref, see last_hover_player_settlement()
 
 		class CmdListener(fife.ICommandListener): pass
 		self.cmdlist = CmdListener()
@@ -67,7 +70,7 @@ class NavigationTool(CursorTool):
 
 			def show_evt(self, evt):
 				if self.enabled:
-					x, y = self.cursor_tool._get_world_location_from_event(evt).to_tuple()
+					x, y = self.cursor_tool.get_world_location_from_event(evt).to_tuple()
 					self.tooltip = str(x) + ', ' + str(y) + " "+_("Press H to remove this hint")
 					self.position_tooltip(evt)
 					self.show_tooltip()
@@ -77,16 +80,7 @@ class NavigationTool(CursorTool):
 	def remove(self):
 		horizons.main.fife.eventmanager.removeCommandListener(self.cmdlist)
 		self.session.view.autoscroll(-self.lastScroll[0], -self.lastScroll[1])
-		self.__last_hover_player_settlement = None
 		super(NavigationTool, self).remove()
-
-	@property
-	def last_hover_player_settlement(self):
-		"""The last settlement belonging to the player the mouse has hovered above"""
-		if self.__last_hover_player_settlement is not None and self.__last_hover_player_settlement() is not None: # weakref
-			return self.__last_hover_player_settlement()
-		else:
-			return None
 
 	def mousePressed(self, evt):
 		if (evt.getButton() == fife.MouseEvent.MIDDLE):
@@ -121,16 +115,14 @@ class NavigationTool(CursorTool):
 
 		self.tooltip.show_evt(evt)
 		mousepoint = fife.ScreenPoint(evt.getX(), evt.getY())
+		self.__class__.last_event_pos = mousepoint
 
 		# Status menu update
-		current = self._get_exact_world_location_from_event(evt)
+		current = self.get_exact_world_location_from_event(evt)
 		if abs((current.x-self.lastmoved.x)**2+(current.y-self.lastmoved.y)**2) >= 4**2: # move was far enough, 4 px
 			self.lastmoved = current
 			# update res bar with settlement-related info
-			settlement = self.session.world.get_settlement(Point(int(round(current.x)), int(round(current.y))))
-			self.__last_hover_player_settlement = weakref.ref(settlement) if \
-			  settlement and settlement.owner == self.session.world.player else None
-			self.session.ingame_gui.resourceinfo_set(settlement) # set for any settlement
+			LastActivePlayerSettlementManager().update(current)
 
 		# Mouse scrolling
 		x, y = 0, 0
@@ -185,4 +177,3 @@ class NavigationTool(CursorTool):
 			instance = WorldObject.get_object_by_id(int(id))
 			hover_instances.append(instance)
 		return hover_instances
-

@@ -23,6 +23,7 @@ from horizons.ai.aiplayer.building import AbstractBuilding
 from horizons.ai.aiplayer.constants import BUILD_RESULT, BUILDING_PURPOSE
 from horizons.constants import RES, BUILDINGS
 from horizons.util.python import decorators
+from horizons.entities import Entities
 
 class AbstractVillageBuilding(AbstractBuilding):
 	@classmethod
@@ -108,6 +109,12 @@ class AbstractVillageBuilding(AbstractBuilding):
 	def coverage_building(self):
 		""" main squares, pavilions, schools, and taverns are buildings that need to be built even if the total production is enough """
 		return True
+
+	def _get_producer_building(self):
+		# TODO: remove this hack; introduced to battle the community Production moving from main squares to the warehouse
+		if self.id == BUILDINGS.MAIN_SQUARE_CLASS:
+			return Entities.buildings[BUILDINGS.WAREHOUSE_CLASS]
+		return super(AbstractVillageBuilding, self)._get_producer_building()
 
 	@classmethod
 	def register_buildings(cls):

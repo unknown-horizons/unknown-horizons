@@ -29,6 +29,7 @@ from horizons.util import Point, WeakMethodList, decorators
 from horizons.world.concreteobject import ConcreteObject
 from horizons.constants import GAME_SPEED
 from horizons.world.componentholder import ComponentHolder
+from horizons.world.units import UnitClass
 
 class MoveNotPossible(Exception):
 	"""Gets thrown when the unit should move some where, but there is no possible path"""
@@ -227,6 +228,8 @@ class MovingObject(ComponentHolder, ConcreteObject):
 		#location = fife.Location(self._instance.getLocation().getLayer())
 		self._exact_model_coords.set(self._next_target.x, self._next_target.y, 0)
 		self._fife_location.setExactLayerCoordinates(self._exact_model_coords)
+
+		UnitClass.ensure_action_loaded(self._action_set_id, self._move_action) # lazy load move action
 
 		# it's safe to use location here (thisown is 0, set by swig, and setLocation uses reference)
 		self._instance.move(self._move_action+"_"+str(self._action_set_id), self._fife_location, \

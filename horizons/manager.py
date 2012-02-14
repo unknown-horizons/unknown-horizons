@@ -23,6 +23,7 @@ import operator
 import logging
 
 from horizons.timer import Timer
+from horizons.scheduler import Scheduler
 from horizons.util import WorldObject
 from horizons.util.living import LivingObject
 from horizons.command.building import Build
@@ -145,7 +146,7 @@ class MPManager(LivingObject):
 
 		# decide if tick can be calculated
 		# in the first few ticks, no data is available
-		if self.commandsmanager.is_tick_ready(tick) or tick < self.EXECUTIONDELAY:
+		if self.commandsmanager.is_tick_ready(tick) or tick < (Scheduler.FIRST_TICK_ID + self.EXECUTIONDELAY):
 			#self.log.debug("MPManager: check tick %s ready: yes", tick)
 			return Timer.TEST_PASS
 		else:
@@ -177,6 +178,11 @@ class MPManager(LivingObject):
 		if tick % self.HASH_EVAL_DISTANCE == 0:
 			if self.checkuphashmanager.are_checkup_hash_values_equal(tick, self.hash_value_diff) == False:
 				self.log.error("MPManager: Hash values generated in tick %s are not equal" % str(tick - self.HASHDELAY))
+				# if this is reached, we are screwed. Something went wrong in the simulation,
+				# but we don't know what. Stop the game.
+				msg = _("The games have run out of sync. This indicates an unknown internal error, the game cannot continue.") + "\n" + \
+				  _("We are very sorry and hope to have this bug fixed in a future version.")
+				self.session.gui._on_error(msg, fatal=True)
 			else:
 				#self.log.debug("MPManager: Hash values are equal")
 				pass
@@ -224,14 +230,17 @@ class MPManager(LivingObject):
 ################################################
 
 class MPPacketmanager(object):
+	log =  logging.getLogger("mpmanager")
 	def __init__(self, mpmanager):
 		self.mpmanager = mpmanager
 		self.command_packet_list = []
 
 	def is_tick_ready(self, tick):
 		"""Check if packets from all players have arrived (necessary for tick to begin)"""
-		#print 'packets for tick: ',  list(str(x) for x in self.get_packets_for_tick(tick, remove_returned_commands=False))
-		return len(self.get_packets_for_tick(tick, remove_returned_commands=False)) == self.mpmanager.get_player_count()
+		ready = len(self.get_packets_for_tick(tick, remove_returned_commands=False)) == self.mpmanager.get_player_count()
+		if not ready:
+			self.log.debug("tick not ready, packets: " + str(list(str(x) for x in self.get_packets_for_tick(tick, remove_returned_commands=False))))
+		return ready
 
 	def get_packets_for_tick(self, tick, remove_returned_commands=True):
 		"""Returns packets that are to be executed at a certain tick"""

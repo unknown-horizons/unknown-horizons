@@ -26,6 +26,7 @@ from horizons.command.uioptions import TransferResource
 from horizons.util import Callback
 from horizons.world.component.storagecomponent import StorageComponent
 from horizons.world.component.namedcomponent import NamedComponent
+from horizons.world.component.selectablecomponent import SelectableComponent
 
 class TradeWidget(object):
 	log = logging.getLogger("gui.tradewidget")
@@ -95,7 +96,8 @@ class TradeWidget(object):
 			self.widget.adaptLayout()
 		else:
 			self.widget.hide()
-			self.instance.show_menu()
+			self.instance.get_component(SelectableComponent).show_menu()
+
 
 	def __remove_changelisteners(self):
 		self.instance.remove_change_listener(self.draw_widget)

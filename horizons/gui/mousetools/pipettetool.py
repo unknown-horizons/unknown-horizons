@@ -24,8 +24,9 @@ from fife import fife
 import horizons.main
 
 from horizons.entities import Entities
-from horizons.constants import LAYERS
+from horizons.constants import LAYERS, BUILDINGS
 from horizons.gui.mousetools import  NavigationTool
+from horizons.world.component.ambientsoundcomponent import AmbientSoundComponent
 
 
 class PipetteTool(NavigationTool):
@@ -57,7 +58,7 @@ class PipetteTool(NavigationTool):
 			if obj and self._is_buildable(obj.id):
 				self.session.set_cursor('building', Entities.buildings[obj.id])
 			elif obj: # object that is not buildable
-				# TODO: error sound
+				AmbientSoundComponent.play_special('error')
 				self.on_escape()
 			else:
 				self.on_escape()
@@ -81,8 +82,11 @@ class PipetteTool(NavigationTool):
 			self._add_coloring(obj)
 
 	def _is_buildable(self, building_id):
+		# TODO: use proper buildability check once there is a system for that
+		#       (e.g. reuse from future build tabs)
 		return Entities.buildings[building_id].settler_level <= \
-		       self.session.world.player.settler_level
+		       self.session.world.player.settler_level and \
+		       building_id != BUILDINGS.WAREHOUSE_CLASS
 
 	def _add_coloring(self,  obj):
 		if self._is_buildable(obj.id):

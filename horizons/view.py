@@ -99,19 +99,13 @@ class View(ChangeListener):
 		self._changed()
 
 	def autoscroll(self, x, y):
-		"""
-		@param x:
-		@param y:
-		"""
+		"""Scrolling via mouse (reaching edge of screen)"""
 		if horizons.main.fife.get_uh_setting('EdgeScrolling'):
 			self._autoscroll[0] = x
 			self._autoscroll[1] = y
 
 	def autoscroll_keys(self, x, y):
-		"""
-		@param x:
-		@param y:
-		"""
+		"""Scrolling via keyboard keys"""
 		self._autoscroll_keys[0] = x
 		self._autoscroll_keys[1] = y
 
@@ -161,6 +155,7 @@ class View(ChangeListener):
 		if horizons.main.fife.get_fife_setting("PlaySounds"):
 			horizons.main.fife.sound.soundmanager.setListenerPosition(pos.x, pos.y, 1)
 		self._changed()
+
 
 	def _prepare_zoom_to_cursor(self, zoom):
 		"""Change the camera's position to accommodation zooming to the specified setting."""
