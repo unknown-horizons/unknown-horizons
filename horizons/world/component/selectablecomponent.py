@@ -91,7 +91,9 @@ class SelectableComponent(Component):
 			self.session.ingame_gui.show_menu( tabwidget )
 
 	def select(self, reset_cam=False):
-		raise NotImplementedError()
+		if reset_cam:
+			self.session.view.center(*self.instance.position.center().to_tuple())
+
 	def deselect(self):
 		raise NotImplementedError()
 
@@ -122,9 +124,8 @@ class SelectableBuildingComponent(SelectableComponent):
 
 	def select(self, reset_cam=False):
 		"""Runs necessary steps to select the building."""
+		super(SelectableBuildingComponent, self).select(reset_cam)
 		self.set_selection_outline()
-		if reset_cam:
-			self.session.view.center(*self.instance.position.origin.to_tuple())
 		renderer = self.session.view.renderer['InstanceRenderer']
 		self._do_select(renderer, self.instance.position, self.session.world,
 		                self.instance.settlement, self.instance.radius, self.range_applies_only_on_island)
@@ -260,8 +261,10 @@ class SelectableUnitComponent(SelectableComponent):
 
 	def select(self, reset_cam=False):
 		"""Runs necessary steps to select the unit."""
+		super(SelectableUnitComponent, self).select(reset_cam)
 		self.session.view.renderer['InstanceRenderer'].addOutlined(self.instance._instance, 255, 255, 255, GFX.UNIT_OUTLINE_WIDTH, GFX.UNIT_OUTLINE_THRESHOLD)
 		self.instance.draw_health()
+		self.session.view.add_change_listener(self.instance.draw_health)
 
 	def deselect(self):
 		"""Runs necessary steps to deselect the unit."""
