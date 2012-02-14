@@ -38,3 +38,14 @@ class Tower(BuildableSingle, StationaryWeaponHolder, BasicBuilding):
 
 	def fire_all_weapons(self, dest, rotate = True):
 		super(Tower, self).fire_all_weapons(dest, rotate)
+
+	def update_range(self, caller=None):
+		self._fix_weapon_range()
+		super(Tower, self).update_range(caller=caller)
+
+	def _fix_weapon_range(self):
+		"""Set all min weapon ranges to 0.
+		Since the tower can't move, melee units could just approach it and
+		destroy the tower"""
+		for weapon in self._weapon_storage:
+			weapon.weapon_range = (0, weapon.weapon_range[1])

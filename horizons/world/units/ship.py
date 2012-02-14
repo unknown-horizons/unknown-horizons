@@ -26,8 +26,6 @@ import horizons.main
 
 from horizons.world.pathfinding.pather import ShipPather, FisherShipPather
 from horizons.world.pathfinding import PathBlockedError
-from horizons.world.units.movingobject import MoveNotPossible
-from horizons.util import Point, Circle
 from horizons.world.units.collectors import FisherShipCollector
 from unit import Unit
 from horizons.constants import LAYERS
@@ -89,7 +87,6 @@ class Ship(Unit):
 				del self.session.world.ship_map[self._next_target.to_tuple()]
 			self.in_ship_map = False
 		if self._selected:
-			self.deselect()
 			self.get_component(SelectableComponent).deselect()
 			if self in self.session.selected_instances:
 				self.session.selected_instances.remove(self)
@@ -125,7 +122,7 @@ class Ship(Unit):
 			self._update_buoy()
 		else:
 			self.session.ingame_gui.minimap.show_unit_path(self)
-		
+
 	def move(self, *args, **kwargs):
 		super(Ship, self).move(*args, **kwargs)
 		if self._selected and self.session.world.player == self.owner: # handle buoy
