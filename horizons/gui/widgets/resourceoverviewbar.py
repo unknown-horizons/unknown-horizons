@@ -65,13 +65,13 @@ class ResourceOverviewBar(object):
 	                      RES.BRICKS_ID,
 	                      RES.FOOD_ID,
 	                      RES.TEXTILE_ID,
-	                      RES.SALT_ID,
-	                    ]
+	                      RES.SALT_ID]
 
 	# order should match the above, else confuses players when in build mode
 	CONSTRUCTION_RESOURCES = [ RES.TOOLS_ID,
 	                           RES.BOARDS_ID,
-	                           RES.BRICKS_ID ]
+	                           RES.BRICKS_ID,
+	                           RES.CANNON_ID ]
 
 	def __init__(self, session):
 		from horizons.session import Session

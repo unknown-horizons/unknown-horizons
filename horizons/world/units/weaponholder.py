@@ -288,7 +288,6 @@ class WeaponHolder(object):
 		@param targetid: world id of the unit that is to be attacked
 		"""
 		self.attack(WorldObject.get_object_by_id(targetid))
-		self.session.ingame_gui.minimap.show_unit_path(self)
 		self.on_user_attack_issued()
 
 	def is_attacking(self):
@@ -567,4 +566,24 @@ class MovingWeaponHolder(WeaponHolder):
 		stance, state = db("SELECT stance, state FROM stance WHERE worldid = ?", worldid)[0]
 		self.stance = self.get_component_by_name(stance)
 		self.stance.set_state(state)
+
+	def user_attack(self, targetid):
+		super(MovingWeaponHolder, self).user_attack(targetid)
+		self.session.ingame_gui.minimap.show_unit_path(self)
+
+class StationaryWeaponHolder(WeaponHolder):
+	"""Towers and stuff"""
+	# TODO: stances (shoot on sight, don't do anything)
+
+	def __init__(self, *args, **kwargs):
+		super(StationaryWeaponHolder, self).__init__(*args, **kwargs)
+		self.__init()
+
+	def __init(self):
+		self.add_component(HoldGroundStance())
+		self.stance = HoldGroundStance
+
+	def load(self, db, worldid):
+		super(StationaryWeaponHolder, self).load(db, worldid)
+		self.__init()
 
