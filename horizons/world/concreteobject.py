@@ -57,8 +57,13 @@ class ConcreteObject(WorldObject):
 		# only buildings for now
 		self.has_status_icon = self.is_building and \
 		  not self.id in self.session.db.get_status_icon_exclusions() and \
-		  self.owner == self.session.world.player # and only for the player's buildings
+			self.owner == self.session.world.player # and only for the player's buildings
 
+		# BIG FAT NOTE: this has to be executed for all players for mp
+		# even if this building has no status icons
+
+		interval = Scheduler().get_ticks(3)
+		run_in = self.session.random.randint(1, interval) # don't update all at once
 		if self.has_status_icon:
 			self._status_icon_key = "status_"+str(self.worldid)
 			self._status_icon_renderer = self.session.view.renderer['GenericRenderer']
@@ -66,11 +71,8 @@ class ConcreteObject(WorldObject):
 			# update now
 			Scheduler().add_new_object(self._update_status, self, run_in=0)
 
-			# update loop
-			interval = Scheduler().get_ticks(3)
 			# use session random to keep it synchronised in mp games,
 			# to be safe in case get_status_icon calls anything that changes anything
-			run_in = self.session.random.randint(1, interval) # don't update all at once
 			Scheduler().add_new_object(self._update_status, self, run_in=run_in, loops=-1,
 				                         loop_interval = interval)
 
