@@ -14,6 +14,10 @@ tooltip_text: _ Grows field crops and raises livestock.
 settler_level: 1
 buildingcosts: {1: 500, 4: 4, 6: 2}
 components:
+- SelectableComponent:
+    type: building
+    tabs: [FarmProductionOverviewTab,]
+    enemy_tabs: [EnemyBuildingOverviewTab,]
 - HealthComponent: {maxhealth: 1000}
 - ProducerComponent:
     productionlines:

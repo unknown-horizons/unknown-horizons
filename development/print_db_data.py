@@ -33,6 +33,14 @@ from horizons.constants import UNITS, SETTLER
 
 db = horizons.main._create_main_db()
 
+# we also need to load entities to get access to the yaml data
+from horizons.extscheduler import ExtScheduler
+from horizons.entities import Entities
+from horizons.ext.dummy import Dummy
+ExtScheduler.create_instance(Dummy()) # sometimes needed by entities in subsequent calls
+Entities.load_buildings(db, load_now=True)
+
+
 def get_obj_name(obj):
 	global db
 	if obj < UNITS.DIFFERENCE_BUILDING_UNIT_ID:
@@ -122,11 +130,10 @@ def print_building():
 	for (cost, cost_inactive) in [('0-10',0),('11-24',5),('25-40',10),('>40',15)]:
 		print "   %5s :   %2s" % (cost or '--', cost_inactive or '--')
 	print '\n' + '=' * 23 + 'R===P' + '=' * 50
-	for id, name, c_type, c_package, x, y, radius, cost, cost_inactive in \
-			db('SELECT id, name, class_type, class_package, size_x, size_y, radius, cost_active, cost_inactive FROM \
-			building LEFT OUTER JOIN building_running_costs ON building_running_costs.building = building.id\
-			ORDER BY id'):
-		print "%2s: %-16s %3s / %2s %5sx%1s %4s   %s.%s" % (id, name, cost or '--', cost_inactive or '--', x, y, radius, c_package, c_type)
+	for b in Entities.buildings.itervalues():
+		print "%2s: %-16s %3s / %2s %5sx%1s %4s   %s" % \
+		(b.id, b.name, b.running_costs or '--', b.running_costs_inactive or '--', \
+		 b.size[0], b.size[1], b.radius, b.baseclass)
 
 def print_unit():
 	print "Units (id: name from class)"
@@ -154,17 +161,19 @@ def print_collectors():
 
 def print_building_costs():
 	print 'Building costs:'
-	for b, in db("SELECT DISTINCT building FROM building_costs ORDER BY building"):
+	no_costs = []
+	for b in Entities.buildings.itervalues():
+		if not b.costs:
+			no_costs.append(b)
+			continue
 		s = ''
-		for res, amount in db("SELECT resource, amount FROM building_costs WHERE building = ?", b):
+		for res, amount in b.costs.iteritems():
 			s += "%4i %s(%s) " % (amount, get_res_name(res),res)
-		print "%2s: %-18s %s" % (b, get_obj_name(b), s)
+		print "%2s: %-18s %s" % (b.id, b.name, s)
 
 	print "\nBuildings without building costs:"
-	all = set(db('SELECT id FROM building'))
-	entries = set(db('SELECT DISTINCT building FROM building_costs'))
-	for id, in sorted(all - entries):
-		print "%2i: %s" % (id, get_obj_name(id))
+	for b in no_costs:
+		print "%2i: %s" % (b.id, b.name)
 
 def print_collector_restrictions():
 	for c, in db("SELECT DISTINCT collector FROM collector_restrictions"):

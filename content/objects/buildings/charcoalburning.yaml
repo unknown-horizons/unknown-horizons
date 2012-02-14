@@ -14,6 +14,10 @@ enemy_tabs: [EnemyBuildingOverviewTab,]
 settler_level: 2
 buildingcosts: {1: 250, 4: 2, 6: 1, 7: 3}
 components:
+- SelectableComponent:
+    type: building
+    tabs: [ProductionOverviewTab,]
+    enemy_tabs: [EnemyBuildingOverviewTab,]
 - HealthComponent: {maxhealth: 1000}
 - ProducerComponent:
     productionlines:

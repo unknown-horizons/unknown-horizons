@@ -19,12 +19,11 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-from horizons.gui import tabs
 from horizons.constants import SETTLER
 
 class IngameType(type):
 	"""Class that is used to create Ingame-Type-Classes from yaml data.
-	@param id: int - building id in the database.
+	@param id: building or unit type id
 	@param yaml_data: a dict containing all the data read from yaml files
 
 	Note this creates class types, NOT instances.
@@ -66,13 +65,8 @@ class IngameType(type):
 		self.component_templates = yaml_data['components']
 		self.action_sets = yaml_data['actionsets']
 		self.action_sets_by_level = self.action_sets_by_level(self.action_sets)
+		self.baseclass = yaml_data['baseclass'] # mostly only for debug
 		self._real_object = None # wrapped by _object
-		self.is_selectable = 'tabs' in yaml_data
-		if self.is_selectable:
-			# set tabs
-			resolve_tab = lambda tab_class_name : getattr(tabs, tab_class_name)
-			self.tabs = map(resolve_tab, yaml_data['tabs'])
-			self.enemy_tabs = map(resolve_tab, yaml_data['enemy_tabs'])
 
 		"""TUTORIAL: Now you know the basic attributes each type has. Further attributes
 		specific to buildings and units can be found in horizons/world/{buildings/units}/__init__.py

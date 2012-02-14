@@ -9,12 +9,14 @@ size_y: 3
 inhabitants_start: 2
 inhabitants_max: 2
 button_name: null
-tabs: [WarehouseOverviewTab, InventoryTab, BuySellTab, AccountTab]
-enemy_tabs: [EnemyWarehouseOverviewTab,]
 tooltip_text: null
 settler_level: 0
 buildingcosts: {1: 1000, 4: 12}
 components:
+- SelectableComponent:
+    type: building
+    tabs: [WarehouseOverviewTab, InventoryTab, BuySellTab, AccountTab]
+    enemy_tabs: [EnemyWarehouseOverviewTab,]
 - HealthComponent: {maxhealth: 1000}
 # NOTE: productions in combinations with SettlementStorage are allowed here since there is only this one warehouse per settlement
 - ProducerComponent:

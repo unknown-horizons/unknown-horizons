@@ -34,7 +34,6 @@ class Unit(MovingObject):
 	is_unit = True
 	is_ship = False
 	health_bar_y = -30
-	is_selectable = False
 
 	def __init__(self, x, y, owner=None, **kwargs):
 		super(Unit, self).__init__(x=x, y=y, **kwargs)
@@ -82,15 +81,17 @@ class Unit(MovingObject):
 			self.act(self._action, location, True)
 		self.session.view.cam.refresh()
 
-	def draw_health(self):
+	def draw_health(self, remove_only=False):
 		"""Draws the units current health as a healthbar over the unit."""
 		if not self.has_component(HealthComponent):
+			return
+		renderer = self.session.view.renderer['GenericRenderer']
+		renderer.removeAll("health_" + str(self.worldid))
+		if remove_only:
 			return
 		health_component = self.get_component(HealthComponent)
 		health = health_component.health
 		max_health = health_component.max_health
-		renderer = self.session.view.renderer['GenericRenderer']
-		renderer.removeAll("health_" + str(self.worldid))
 		zoom = self.session.view.get_zoom()
 		height = int(5 * zoom)
 		width = int(50 * zoom)

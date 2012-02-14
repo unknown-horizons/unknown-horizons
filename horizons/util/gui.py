@@ -136,18 +136,20 @@ class LazyWidgetsDict(dict):
 		# loading happens automatically on next access
 
 
-def create_resource_selection_dialog(on_click, inventory, db, res_filter=None):
+def create_resource_selection_dialog(on_click, inventory, db, widget='select_trade_resource.xml', res_filter=None):
 	"""Returns a container containing resource icons
 	@param on_click: called with resource id as parameter on clicks
 	@param inventory: to determine fill status of resource slots
 	@param db: main db instance
+	@param widget: which xml file to use as a template. Default: tabwidget. Required
+	               since the resource bar also uses this code (no tabs there though).
 	@param res_filter: callback to decide which icons to use. Default: show all
 	"""
 	from horizons.gui.widgets.imagefillstatusbutton import ImageFillStatusButton
 	from horizons.gui.widgets.tooltip import TooltipButton
 	dummy_icon_path = "content/gui/icons/resources/none_gray.png"
 
-	dlg = load_uh_widget('select_trade_resource.xml')
+	dlg = load_uh_widget(widget)
 
 	button_width = ImageFillStatusButton.DEFAULT_BUTTON_SIZE[0] # used for dummy button
 	vbox = dlg.findChild(name="resources")

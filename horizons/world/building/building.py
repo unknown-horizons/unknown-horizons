@@ -32,11 +32,9 @@ from horizons.world.component.ambientsoundcomponent import AmbientSoundComponent
 from horizons.util import ConstRect, Point, WorldObject, ActionSetLoader, decorators
 from horizons.constants import RES, LAYERS, GAME
 from horizons.world.building.buildable import BuildableSingle
-from horizons.gui.tabs import EnemyBuildingOverviewTab
 from horizons.command.building import Build
 from horizons.world.component.storagecomponent import StorageComponent
 from horizons.world.componentholder import ComponentHolder
-from horizons.world.building.selectablebuilding import SelectableBuilding
 
 
 class BasicBuilding(ComponentHolder, ConcreteObject):
@@ -152,7 +150,15 @@ class BasicBuilding(ComponentHolder, ConcreteObject):
 
 		remaining_ticks_of_month = None
 		if self.has_running_costs:
-			remaining_ticks_of_month = db("SELECT ticks FROM remaining_ticks_of_month WHERE rowid=?", worldid)[0][0]
+			db_data = db("SELECT ticks FROM remaining_ticks_of_month WHERE rowid=?", worldid)
+			if len(db_data) == 0:
+				# this can happen when running costs are set when there were no before
+				# we shouldn't crash because of changes in yaml code, still it's suspicous
+				print 'WARNING: object %s of type %s does not know when to pay its rent.'
+				print 'Disregard this when loading old savegames or on running cost changes.'
+				remaining_ticks_of_month = 1
+			else:
+				remaining_ticks_of_month = db_data[0][0]
 
 		self.__init(Point(x, y), rotation, level=level, \
 		            remaining_ticks_of_month=remaining_ticks_of_month)
@@ -318,7 +324,7 @@ class BasicBuilding(ComponentHolder, ConcreteObject):
 		return '%s(id=%s;worldid=%s)' % (self.name, self.id, self.worldid if hasattr(self, 'worldid') else 'none')
 
 
-class DefaultBuilding(BasicBuilding, SelectableBuilding, BuildableSingle):
+class DefaultBuilding(BasicBuilding, BuildableSingle):
 	"""Building with default properties, that does nothing."""
 	pass
 

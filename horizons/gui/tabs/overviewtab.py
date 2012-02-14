@@ -45,6 +45,7 @@ from horizons.world.production.producer import Producer
 
 
 class OverviewTab(TabInterface):
+	has_stance = False
 	def __init__(self, instance, widget = 'overviewtab.xml', \
 	             icon_path='content/gui/icons/tabwidget/common/building_overview_%s.png'):
 		super(OverviewTab, self).__init__(widget)
@@ -56,6 +57,9 @@ class OverviewTab(TabInterface):
 		self.button_down_image = icon_path % 'd'
 		self.button_hover_image = icon_path % 'h'
 		self.tooltip = _("Overview")
+
+		if self.__class__.has_stance:
+			self.init_stance_widget()
 
 		# set player emblem
 		if self.widget.child_finder('player_emblem'):
@@ -123,6 +127,10 @@ class OverviewTab(TabInterface):
 		self.on_remove()
 		self.instance = None
 
+	def init_stance_widget(self): # call for tabs with stances
+		stance_widget = self.widget.findChild(name='stance')
+		stance_widget.init(self.instance)
+		self.add_remove_listener(stance_widget.remove)
 
 
 class WarehouseOverviewTab(OverviewTab):
@@ -254,12 +262,11 @@ class ShipOverviewTab(OverviewTab):
 
 
 class FightingShipOverviewTab(ShipOverviewTab):
+	has_stance = True
 	def __init__(self, instance, widget = 'overview_war_ship.xml', \
 			icon_path='content/gui/icons/tabwidget/ship/ship_inv_%s.png'):
 		super(FightingShipOverviewTab, self).__init__(instance, widget, icon_path)
-		stance_widget = self.widget.findChild(name='stance')
-		stance_widget.init(self.instance)
-		self.add_remove_listener(stance_widget.remove)
+
 
 		#create weapon inventory, needed only in gui for inventory widget
 		self.weapon_inventory = self.instance.get_weapon_storage()
@@ -289,6 +296,14 @@ class FightingShipOverviewTab(ShipOverviewTab):
 		self.widget.child_finder('weapon_inventory').update()
 		self.refresh()
 
+class TowerOverviewTab(OverviewTab): # defensive tower
+	def __init__(self, instance):
+		super(TowerOverviewTab, self).__init__(
+			widget = 'overview_tower.xml',
+			instance = instance
+		)
+		self.widget.findChild(name="headline").text = unicode(self.instance.settlement.get_component(NamedComponent).name)
+		self.tooltip = _("Tower overview")
 
 class TraderShipOverviewTab(OverviewTab):
 	def __init__(self, instance):
@@ -300,6 +315,7 @@ class TraderShipOverviewTab(OverviewTab):
 		self.tooltip = _("Ship overview")
 
 class GroundUnitOverviewTab(OverviewTab):
+	has_stance = True
 	def __init__(self, instance):
 		super(GroundUnitOverviewTab, self).__init__(
 			widget = 'overview_groundunit.xml',
@@ -311,9 +327,6 @@ class GroundUnitOverviewTab(OverviewTab):
 		weapon_storage_widget = self.widget.findChild(name='weapon_storage')
 		weapon_storage_widget.init(self.instance)
 		self.add_remove_listener(weapon_storage_widget.remove)
-		stance_widget = self.widget.findChild(name='stance')
-		stance_widget.init(self.instance)
-		self.add_remove_listener(stance_widget.remove)
 
 class ProductionOverviewTab(OverviewTab):
 	def  __init__(self, instance, widget='overview_productionbuilding.xml',
@@ -324,8 +337,6 @@ class ProductionOverviewTab(OverviewTab):
 		)
 		self.tooltip = _("Production overview")
 		self.production_line_gui_xml = production_line_gui_xml
-
-		ExtScheduler().add_new_object(self.widget.adaptLayout, self, 0)
 
 	def refresh(self):
 		"""This function is called by the TabWidget to redraw the widget."""

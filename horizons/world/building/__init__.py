@@ -28,7 +28,6 @@ import horizons.main
 from fife import fife
 
 from horizons.util import ActionSetLoader
-from horizons.gui.tabs import BuildRelatedTab
 from horizons.i18n.objecttranslations import object_translations
 from horizons.world.ingametype import IngameType
 
@@ -76,11 +75,6 @@ class BuildingClass(IngameType):
 		buildable_on_deposit_type = db("SELECT deposit FROM mine WHERE mine = ?", self.id)
 		if buildable_on_deposit_type:
 			self.buildable_on_deposit_type = buildable_on_deposit_type[0][0]
-		if self.is_selectable:
-			related_building = db.cached_query("SELECT building FROM related_buildings where building = ?", self.id)
-			if len(related_building) > 0:
-				self.tabs += (BuildRelatedTab,)
-
 
 	def __str__(self):
 		return "Building[" + str(self.id) + "](" + self.name + ")"

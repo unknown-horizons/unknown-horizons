@@ -30,6 +30,7 @@ from horizons.util.python import decorators
 from horizons.world.units.fightingship import FightingShip
 from horizons.world.component.healthcomponent import HealthComponent
 from horizons.world.component.namedcomponent import NamedComponent
+from horizons.world.component.selectablecomponent import SelectableComponent
 
 class PlayersShips(StatsWidget):
 	"""Widget that shows a list of the player's ships."""
@@ -50,7 +51,7 @@ class PlayersShips(StatsWidget):
 		sequence_number = 0
 		events = {}
 		for ship in sorted(self.session.world.ships, key = lambda ship: (ship.get_component(NamedComponent).name, ship.worldid)):
-			if ship.owner is player and ship.is_selectable:
+			if ship.owner is player and ship.has_component(SelectableComponent):
 				sequence_number += 1
 				name_label, rename_icon, status_label, status_position = \
 				          self._add_line_to_gui(ship, sequence_number)

@@ -48,9 +48,9 @@ class InventoryTab(TabInterface):
 
 	def show(self):
 		# run once now
-		ExtScheduler().add_new_object(self.refresh, self, run_in=0.01, loops=1)
+		ExtScheduler().add_new_object(self.refresh, self, run_in=0, loops=1)
 		# and every sec later
-		ExtScheduler().add_new_object(self.refresh, self, run_in=1, loops=1)
+		ExtScheduler().add_new_object(self.refresh, self, run_in=1, loops=-1)
 		super(InventoryTab, self).show()
 
 	def hide(self):

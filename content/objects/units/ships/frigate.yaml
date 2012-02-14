@@ -3,9 +3,11 @@ id: 1000020
 name: Frigate
 radius: 5
 velocity: 12.0
-tabs: [FightingShipOverviewTab,]
-enemy_tabs: [EnemyShipOverviewTab,]
 components:
+- SelectableComponent:
+    type: ship
+    tabs: [FightingShipOverviewTab,]
+    enemy_tabs: [EnemyShipOverviewTab,]
 - AmbientSoundComponent
 - StorageComponent:
    inventory:
@@ -15,6 +17,7 @@ components:
 - ShipNameComponent
 - HealthComponent:
    maxhealth: 200
+- CommandableComponent   
 
 actionsets:
    as_frigate0: {level: 0}

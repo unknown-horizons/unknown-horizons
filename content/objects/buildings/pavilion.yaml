@@ -8,13 +8,15 @@ size_x: 2
 size_y: 2
 inhabitants_start: 1
 inhabitants_max: 1
-tabs: [ProductionOverviewTab,]
-enemy_tabs: [EnemyBuildingOverviewTab,]
 button_name: church-1
 tooltip_text: _ Fulfills religious needs of sailors.
 settler_level: 0
 buildingcosts: {1: 500, 4: 5, 6: 2}
 components:
+- SelectableComponent:
+    type: building
+    tabs: [ProductionOverviewTab,]
+    enemy_tabs: [EnemyBuildingOverviewTab,]
 - HealthComponent: {maxhealth: 1000}
 - ProducerComponent:
     productionlines:

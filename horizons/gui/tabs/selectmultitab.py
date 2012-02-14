@@ -26,6 +26,7 @@ from horizons.scheduler import Scheduler
 from horizons.command.unit import SetStance
 from horizons.world.component.healthcomponent import HealthComponent
 from horizons.world.component.stancecomponent import *
+from horizons.world.component.selectablecomponent import SelectableComponent
 
 class SelectMultiTab(TabInterface):
 	"""
@@ -142,7 +143,7 @@ class SelectMultiTab(TabInterface):
 			# if one unit remains, show its menu
 			if len(self.instances) == 1:
 				self.session.ingame_gui.hide_menu()
-				self.instances[0].show_menu()
+				self.instances[0].get_component(SelectableComponent).show_menu()
 				return
 
 		self.type_number[instance.id] -= 1

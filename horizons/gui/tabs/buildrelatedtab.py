@@ -26,6 +26,7 @@ from horizons.gui.tabs import OverviewTab
 from horizons.util.gui import load_uh_widget
 from horizons.util import Callback
 from horizons.entities import Entities
+from horizons.world.component.selectablecomponent import SelectableComponent
 
 class BuildRelatedTab(OverviewTab):
 	"""
@@ -112,7 +113,7 @@ class BuildRelatedTab(OverviewTab):
 
 		# deselect all
 		for instance in self.instance.session.selected_instances:
-			instance.deselect()
+			instance.get_component(SelectableComponent).deselect()
 		self.instance.session.selected_instances.clear()
 
 		self.instance.session.set_cursor('building', Entities.buildings[building_id], \

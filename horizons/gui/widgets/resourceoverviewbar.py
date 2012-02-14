@@ -19,8 +19,9 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-from fife.extensions import pychan
 
+from fife import fife
+from fife.extensions import pychan
 import weakref
 import functools
 
@@ -42,7 +43,7 @@ class ResourceOverviewBar(object):
 	- show costs of current build [x]
 	- configure the resources to show [x]
 		- per settlement [x]
-		- add new slots [ ]
+		- add new slots [x]
 		- switch displayed resources to construction relevant res on build [x]
 		- res selection consistent with other res selection dlgs [x]
 
@@ -59,15 +60,18 @@ class ResourceOverviewBar(object):
 
 	STYLE = "resource_bar"
 
-	DEFAULT_RESOURCES = [ RES.FOOD_ID,
-	                      RES.TOOLS_ID,
+	DEFAULT_RESOURCES = [ RES.TOOLS_ID,
 	                      RES.BOARDS_ID,
 	                      RES.BRICKS_ID,
-	                      RES.TEXTILE_ID ]
+	                      RES.FOOD_ID,
+	                      RES.TEXTILE_ID,
+	                      RES.SALT_ID]
 
+	# order should match the above, else confuses players when in build mode
 	CONSTRUCTION_RESOURCES = [ RES.TOOLS_ID,
 	                           RES.BOARDS_ID,
-	                           RES.BRICKS_ID ]
+	                           RES.BRICKS_ID,
+	                           RES.CANNON_ID ]
 
 	def __init__(self, session):
 		from horizons.session import Session
@@ -81,6 +85,7 @@ class ResourceOverviewBar(object):
 		self.current_instance = weakref.ref(self) # can't weakref to None
 		self.construction_mode = False
 		self._last_build_costs = None
+		self._do_show_dummy = False
 
 	def save(self, db):
 		for obj, config in self.resource_configurations.iteritems():
@@ -124,8 +129,9 @@ class ResourceOverviewBar(object):
 		if inv is not None:
 			inv.remove_change_listener(self._update_resources)
 
-		if instance is None: # show nothing instead
+		if instance in (None, self): # show nothing instead
 			self.current_instance = weakref.ref(self) # can't weakref to None
+			self._do_show_dummy = False # don't save dummy value
 			return
 
 		self.current_instance = weakref.ref(instance)
@@ -134,7 +140,8 @@ class ResourceOverviewBar(object):
 		initial_offset = 93
 		offset = 52
 		resources = self._get_current_resources()
-		for i, res in enumerate( resources + [-1] ): # add dummy at end for adding stuff
+		addition = [-1] if self._do_show_dummy else [] # add dummy at end for adding stuff
+		for i, res in enumerate( resources + addition ):
 			entry = load_uh_widget(self.ENTRY_GUI_FILE, style=self.__class__.STYLE)
 			entry.findChild(name="entry").position = (initial_offset + offset * i, 17)
 			background_icon = entry.findChild(name="background_icon")
@@ -142,7 +149,10 @@ class ResourceOverviewBar(object):
 
 			if res != -1:
 				tooltip = self.session.db.get_res_name(res)
-				entry.findChild(name="res_icon").image = get_res_icon(res)[2] # the 24 one
+				icon = entry.findChild(name="res_icon")
+				icon.num = i
+				icon.image = get_res_icon(res)[2] # the 24 one
+				icon.capture(self._on_res_slot_click, event_name = 'mouseClicked')
 			else:
 				tooltip = _("Click to add a new slot")
 				entry.show() # this will not be filled as the other res
@@ -230,7 +240,6 @@ class ResourceOverviewBar(object):
 		self.gold_gui.resizeToContent() # update label size
 		gold_available_lbl.position = (33 - gold_available_lbl.size[0]/2,  51)
 
-
 	def _update_resources(self):
 		"""Same as _update_gold but for all other slots"""
 		if not self.current_instance(): # instance died
@@ -268,12 +277,27 @@ class ResourceOverviewBar(object):
 	def _show_resource_selection_dialog(self, slot_num):
 		"""Shows gui for selecting a resource for slot slot_num"""
 		self._hide_resource_selection_dialog()
-
 		inv = self._get_current_inventory()
+		if inv is None:
+			return
+
+		self._show_dummy_slot()
+
+		# set mousetool to get notified on clicks outside the resbar area
+		if not isinstance(self.session.cursor, ResBarMouseTool):
+			def on_away_click():
+				self._hide_resource_selection_dialog()
+				self._hide_dummy_slot()
+			self.session.cursor = ResBarMouseTool(self.session, self.session.cursor,
+			                                      on_away_click)
+
+
 		on_click = functools.partial(self._set_resource_slot, slot_num)
 		cur_res = self._get_current_resources()
 		res_filter = lambda res_id : res_id not in cur_res
-		dlg = create_resource_selection_dialog(on_click, inv, self.session.db, res_filter)
+		dlg = create_resource_selection_dialog(on_click, inv, self.session.db,
+		                                       widget='resbar_resource_selection.xml',
+		                                       res_filter=res_filter)
 
 		# position dlg below slot
 		cur_gui = self.gui[slot_num]
@@ -305,11 +329,30 @@ class ResourceOverviewBar(object):
 
 		self.set_inventory_instance(self.current_instance(), force_update=True)
 
+		if isinstance(self.session.cursor, ResBarMouseTool):
+			self.session.cursor.reset()
+			self._hide_dummy_slot()
+
 	def _hide_resource_selection_dialog(self):
 		if hasattr(self, "_res_selection_dialog"):
 			self._res_selection_dialog.hide()
 			del self._res_selection_dialog
 
+	def _show_dummy_slot(self):
+		"""Show the dummy button at the end to allow for addition of slots"""
+		if self._do_show_dummy:
+			return # already visible
+		self._do_show_dummy = True
+		self.set_inventory_instance(self.current_instance(), force_update=True)
+
+	def _hide_dummy_slot(self):
+		self._do_show_dummy = False
+		self.set_inventory_instance(self.current_instance(), force_update=True)
+
+	def _on_res_slot_click(self, widget, event):
+		"""Called when you click on a resource slot in the bar (not the selection dialog)"""
+		if event.getButton() == fife.MouseEvent.RIGHT:
+			self._set_resource_slot(widget.num, 0)
 
 	##
 	# CODE FOR REFERENCE
@@ -330,3 +373,24 @@ class ResourceOverviewBar(object):
 		gui = load_uh_widget( self.__class__.GOLD_ENTRY_GUI_FILE )
 		icon = gui.findChild(name="background_icon")
 		return icon.position
+
+
+from horizons.gui.mousetools import NavigationTool
+class ResBarMouseTool(NavigationTool):
+	"""Temporary mousetool for resource selection.
+	Terminates self on mousePressed and restores old tool"""
+	def __init__(self, session, old_tool, on_click):
+		super(ResBarMouseTool, self).__init__(session)
+		old_tool.disable()
+		self.old_tool = old_tool
+		self.on_click = on_click
+
+	def mousePressed(self, evt):
+		self.on_click()
+		self.reset()
+
+	def reset(self):
+		"""Enable old tol again"""
+		self.session.cursor = self.old_tool
+		self.remove()
+		self.old_tool.enable()

@@ -96,8 +96,8 @@ class MessageWidget(LivingObject):
 							}.get(sound_file, sound_file)
 		self._add_message(Message(x, y, string_id, self.current_tick, message_dict=message_dict), sound)
 
-	def add_custom(self, x, y, messagetext, visible_for=40, sound=None, icon_id=1):
-		self._add_message( Message(x, y, None, self.current_tick, display=visible_for, message=messagetext, icon_id=icon_id), sound)
+	def add_custom(self, x, y, messagetext, visible_for=40, icon_id=1):
+		self._add_message( Message(x, y, None, self.current_tick, display=visible_for, message=messagetext, icon_id=icon_id) )
 
 	def _add_message(self, message, sound = None):
 		"""Internal function for adding messages. Do not call directly.

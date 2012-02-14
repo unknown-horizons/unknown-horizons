@@ -20,11 +20,11 @@
 # ###################################################
 
 from horizons.world.building.collectingbuilding import CollectingBuilding
-from horizons.world.building.building import BasicBuilding, SelectableBuilding
+from horizons.world.building.building import BasicBuilding
 from horizons.world.building.buildable import BuildableSingle
 
-class Doctor(SelectableBuilding, CollectingBuilding, BuildableSingle, BasicBuilding):
+class Doctor(CollectingBuilding, BuildableSingle, BasicBuilding):
 	pass
 
-class FireService(SelectableBuilding, BuildableSingle, BasicBuilding):
+class FireService(BuildableSingle, BasicBuilding):
 	pass

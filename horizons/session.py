@@ -41,6 +41,7 @@ from horizons.entities import Entities
 from horizons.util import WorldObject, LivingObject, livingProperty, SavegameAccessor
 from horizons.util.lastactiveplayersettlementmanager import LastActivePlayerSettlementManager
 from horizons.world.component.namedcomponent import NamedComponent
+from horizons.world.component.selectablecomponent import SelectableComponent
 from horizons.savegamemanager import SavegameManager
 from horizons.scenario import ScenarioEventHandler
 from horizons.world.component.ambientsoundcomponent import AmbientSoundComponent
@@ -271,7 +272,7 @@ class Session(LivingObject):
 		for instance_id in savegame_db("SELECT id FROM selected WHERE `group` IS NULL"): # Set old selected instance
 			obj = WorldObject.get_object_by_id(instance_id[0])
 			self.selected_instances.add(obj)
-			obj.select()
+			obj.get_component(SelectableComponent).select()
 		for group in xrange(len(self.selection_groups)): # load user defined unit groups
 			for instance_id in savegame_db("SELECT id FROM selected WHERE `group` = ?", group):
 				self.selection_groups[group].add(WorldObject.get_object_by_id(instance_id[0]))

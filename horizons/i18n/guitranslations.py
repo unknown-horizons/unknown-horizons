@@ -899,6 +899,8 @@ def set_translations():
 	"sp_random.xml" : {
 		# (text of widget: headline_map_settings_lbl)
 		("headline_map_settings_lbl"   , "text"    ): _("Map settings:"),
+		# (text of widget: seed_string_lbl)
+		("seed_string_lbl"             , "text"    ): _("Seed:"),
 		},
 
 	"sp_scenario.xml" : {

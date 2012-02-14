@@ -30,7 +30,7 @@ class Component(object):
 	a savegame) and setting them up in a normal game.
 
 	Once you know how it works, please proceed to horizons/world/ingametype.py
-	where you'll see how the actual things in uh are created.
+	where you'll see how the actual things in Unknown Horizons are created.
 	"""
 
 	#  Store the name of this component. This has to be overwritten in subclasses
@@ -45,7 +45,10 @@ class Component(object):
 		"""
 		super(Component, self).__init__()
 		self.instance = None # Has to be set by the componentholder
-		self.session = None  # Has to be set by the componentholder
+
+	@property
+	def session(self):
+		return self.instance.session
 
 	def initialize(self):
 		"""

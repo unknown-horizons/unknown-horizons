@@ -118,6 +118,11 @@ class TabWidget(object):
 		self.widget.hide()
 		self.show()
 
+		# pychan layouting depends on time, it's usually in a better mood later.
+		# this introduces some flickering, but fixes #916
+		from horizons.extscheduler import ExtScheduler
+		ExtScheduler().add_new_object(new_tab.widget.adaptLayout, self, run_in=0)
+
 	def _draw_widget(self):
 		"""Draws the widget, but does not show it automatically"""
 		self.current_tab.position = (self.widget.position[0] + self.widget.size[0] - 11,

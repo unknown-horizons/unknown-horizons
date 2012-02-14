@@ -7,8 +7,8 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2012-02-08 02:09+0100\n"
-"PO-Revision-Date: 2012-02-10 20:09+0200\n"
-"Last-Translator: Hugues <fafardh@hotmail.de>\n"
+"PO-Revision-Date: 2012-02-13 15:18+0200\n"
+"Last-Translator: Traveler <guillaume.pascal43@laposte.net>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: fr\n"
 "MIME-Version: 1.0\n"
@@ -127,7 +127,7 @@ msgstr "bétail"
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "cattle for slaughter"
-msgstr "animal de boucherie"
+msgstr "bétail pour l’abattoir"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
@@ -260,7 +260,7 @@ msgstr "porcs"
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "pigs for slaughter"
-msgstr "porcs d'élevage"
+msgstr "porcs pour l'abattoir"
 
 # please don't translate anything in <tags> - thanks!
 # Resources
@@ -2290,7 +2290,7 @@ msgstr "Tourner la mini-carte avec la carte :"
 #. (text of widget: mouse_sensitivity_label)
 #: horizons/i18n/guitranslations.py:830
 msgid "Mouse sensitivity:"
-msgstr "Sensibilité de la souris:"
+msgstr "Sensibilité de la souris :"
 
 #. (text of widget: network_port_lbl)
 #: horizons/i18n/guitranslations.py:832
@@ -2486,7 +2486,7 @@ msgstr "Nécessite des cochons ou des bovins. Produit de la nourriture."
 #. name of buildings:cattlerun
 #: horizons/i18n/objecttranslations.py:66
 msgid "Cattle Run"
-msgstr "Elevage bovin"
+msgstr "Élevage bovin"
 
 #. tooltip_text of buildings:cattlerun
 #: horizons/i18n/objecttranslations.py:68
@@ -2526,7 +2526,7 @@ msgstr "Distillerie"
 #. tooltip_text of buildings:distillery
 #: horizons/i18n/objecttranslations.py:94
 msgid "Turns sugar into liquor."
-msgstr "Transforme la canne à sucre en alcool."
+msgstr "Transforme le sucre en alcool."
 
 #. name of buildings:doctor
 #: horizons/i18n/objecttranslations.py:99

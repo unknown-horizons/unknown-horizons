@@ -26,6 +26,8 @@ from horizons.world.component.namedcomponent import NamedComponent, SettlementNa
 from horizons.world.component.tradepostcomponent import TradePostComponent
 from horizons.world.component.ambientsoundcomponent import AmbientSoundComponent
 from horizons.world.component.healthcomponent import HealthComponent
+from horizons.world.component.selectablecomponent import SelectableComponent
+from horizons.world.component.commandablecomponent import CommandableComponent
 from horizons.world.production.producer import Producer, QueueProducer, UnitProducer
 
 class ComponentHolder(object):
@@ -45,7 +47,7 @@ class ComponentHolder(object):
 
 	The components are stored in a dict, the key is their name (a string).
 	This is necessary so objects can be defined as a collection of their components in
-	human r/w-able format. This is done via yaml files in our case in content/objects.
+	human readable format. This is done via yaml files in our case in content/objects.
 	You could check out e.g. content/objects/buildings/lumberjackcamp.yaml to see what
 	it looks like in reality.
 
@@ -64,7 +66,9 @@ class ComponentHolder(object):
 	    "HealthComponent": HealthComponent,
 	    'ProducerComponent': Producer,
 	    'QueueProducerComponent': QueueProducer,
-	    'UnitProducerComponent': UnitProducer
+	    'UnitProducerComponent': UnitProducer,
+	    'SelectableComponent': SelectableComponent,
+	    'CommandableComponent': CommandableComponent,
 	}
 
 

@@ -475,8 +475,8 @@ class UnitProducer(QueueProducer):
 						for coord in Circle(self.instance.position.center(), radius).tuple_iter():
 							point = Point(coord[0], coord[1])
 							if self.instance.island.get_tile(point) is None:
-								tile = self.instance.session.world.get_tile(point)
-								if tile is not None and tile.is_water and coord not in self.instance.session.world.ship_map:
+								tile = self.session.world.get_tile(point)
+								if tile is not None and tile.is_water and coord not in self.session.world.ship_map:
 									# execute bypassing the manager, it's simulated on every machine
 									CreateUnit(self.instance.owner.worldid, unit, point.x, point.y)(issuer=self.instance.owner)
 									found_tile = True

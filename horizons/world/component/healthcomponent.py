@@ -71,7 +71,7 @@ class HealthComponent(Component):
 	def redraw_health(self, caller = None):
 		if not self.instance:
 			return
-		if self.instance in self.instance.session.selected_instances:
+		if self.instance in self.session.selected_instances:
 			if hasattr(self.instance, 'draw_health'):
 				self.instance.draw_health()
 

@@ -29,7 +29,11 @@ class StanceComponent(Component):
 	It has methods defined for specific instance states
 	The default methods are defined that the instance only listens to user commands
 	If a state different from user_attack or user_move is passed, it stops any action
-	and switches to idle
+	and switches to idle.
+
+	NOTE:
+	This does not use stance inheritance as intended, but multiple stance
+	components are present at the same time, while only one is used at a time.
 	"""
 
 	# Store the name of this component
@@ -51,7 +55,10 @@ class StanceComponent(Component):
 		# change state to 'user_attack' when the user issues attack via right click
 		self.instance.add_user_attack_issued_listener(Callback(self.set_state, 'user_attack'))
 		# change state to 'user_move' when the user issues movement via right click
-		self.instance.add_user_move_issued_listener(Callback(self.set_state, 'user_move'))
+		try:
+			self.instance.add_user_move_issued_listener(Callback(self.set_state, 'user_move'))
+		except AttributeError:
+			pass # temporary workaround to make it work for towers
 
 	def remove(self):
 		self.instance.remove_user_attack_issued_listener(Callback(self.set_state, 'user_attack'))
@@ -188,8 +195,8 @@ class LimitedMoveStance(StanceComponent):
 		"""
 		Returns closest attackable unit in radius
 		"""
-		enemies = [u for u in self.instance.session.world.get_health_instances(self.instance.position.center(), radius) \
-		           if self.instance.session.world.diplomacy.are_enemies(u.owner, self.instance.owner)]
+		enemies = [u for u in self.session.world.get_health_instances(self.instance.position.center(), radius) \
+		           if self.session.world.diplomacy.are_enemies(u.owner, self.instance.owner)]
 
 		if not enemies:
 			return None
@@ -201,7 +208,7 @@ class AggressiveStance(LimitedMoveStance):
 	Stance that attacks units in close range when doing movement
 	"""
 
-	NAME = 'aggressive'
+	NAME = 'aggressive_stance'
 
 	def __init__(self):
 		super(AggressiveStance, self).__init__()
@@ -229,7 +236,7 @@ class AggressiveStance(LimitedMoveStance):
 
 class HoldGroundStance(LimitedMoveStance):
 
-	NAME = 'hold_ground'
+	NAME = 'hold_ground_stance'
 
 	def __init__(self):
 		super(HoldGroundStance, self).__init__()
@@ -238,7 +245,7 @@ class HoldGroundStance(LimitedMoveStance):
 
 class NoneStance(StanceComponent):
 
-	NAME = 'none'
+	NAME = 'none_stance'
 
 	pass
 
@@ -247,7 +254,7 @@ class FleeStance(StanceComponent):
 	Move away from any approaching units
 	"""
 
-	NAME = 'flee'
+	NAME = 'flee_stance'
 
 	def __init__(self):
 		super(FleeStance, self).__init__()
@@ -280,8 +287,8 @@ class FleeStance(StanceComponent):
 		"""
 		Gets the closest unit that can fire to instance
 		"""
-		enemies = [u for u in self.instance.session.world.get_health_instances(self.instance.position.center(), self.lookout_distance) \
-		           if self.instance.session.world.diplomacy.are_enemies(u.owner, self.instance.owner) and hasattr(u, '_max_range')]
+		enemies = [u for u in self.session.world.get_health_instances(self.instance.position.center(), self.lookout_distance) \
+		           if self.session.world.diplomacy.are_enemies(u.owner, self.instance.owner) and hasattr(u, '_max_range')]
 
 		if not enemies:
 			return None
