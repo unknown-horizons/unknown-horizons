@@ -24,20 +24,20 @@ from horizons.world.settlement import Settlement
 from horizons.scheduler import Scheduler
 from horizons.constants import GAME_SPEED
 
-class Catastrophe(object):
-	"""Prototype class for catastrophes."""
+class Disaster(object):
+	"""Prototype class for disasters."""
 
-	# Change this catastrophe is seeded into a settlement in a tick of  the
-	# catastrophe manager
+	# Chance this disaster is seeded into a settlement in a tick of  the
+	# disaster manager
 	SEED_CHANCE = 0.5
 
-	# Time in ticks this catastrophes pauses between each expansion
+	# Time in ticks this disasters pauses between each expansion
 	EXPANSION_TIME = GAME_SPEED.TICKS_PER_SECOND * 5
 
 	def __init__(self, settlement, manager):
 		"""
-		@param settlement: Settlement instance this catastrophe operates on
-		@param manager: The catastrophe manager that initiated this catastrophe
+		@param settlement: Settlement instance this disaster operates on
+		@param manager: The disaster manager that initiated this disaster
 		"""
 		assert isinstance(settlement, Settlement), "Not a settlement!"
 		self._settlement = settlement
@@ -45,11 +45,11 @@ class Catastrophe(object):
 		Scheduler().add_new_object(self.expand, self, run_in=self.EXPANSION_TIME, loops=-1)
 
 	def evaluate(self):
-		"""Called to evaluate if this catastrophe is still active"""
+		"""Called to evaluate if this disaster is still active"""
 		raise NotImplementedError()
 
 	def expand(self):
-		"""Called to make the catastrophe expand further"""
+		"""Called to make the disaster expand further"""
 		raise NotImplementedError()
 
 	def breakout(self):
@@ -59,17 +59,17 @@ class Catastrophe(object):
 		return False
 
 	def wreak_havoc(self):
-		"""The implementation to whatever the catastrophe does to affected
+		"""The implementation to whatever the disaster does to affected
 		objects goes here"""
 		raise NotImplementedError()
 
 	@classmethod
 	def can_breakout(cls, settlement):
-		"""Returns whether or not a catastrophe can break out in the
+		"""Returns whether or not a disaster can break out in the
 		settlement"""
 		raise NotImplementedError()
 
 	def end(self):
-		"""End this class, used for cleanup. Called by the CatastropheManager
-		in end_catastrophe() automatically"""
+		"""End this class, used for cleanup. Called by the DisasterManager
+		in end_disaster() automatically"""
 		pass

@@ -20,7 +20,7 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-from horizons.world.catastrophe import Catastrophe
+from horizons.world.disaster import Disaster
 from horizons.world.status import SettlerUnhappyStatus
 from horizons.constants import GAME_SPEED
 from horizons.constants import BUILDINGS
@@ -28,7 +28,7 @@ from horizons.command.building import Tear
 from horizons.scheduler import Scheduler
 from horizons.util.python.callback import Callback
 
-class FireCatastrophe(Catastrophe):
+class FireDisaster(Disaster):
 
 	SEED_CHANCE = 0.2
 
@@ -37,13 +37,13 @@ class FireCatastrophe(Catastrophe):
 	EXPANSION_RADIUS = 2
 
 	# Defines the mininum number of settler buildings that need to be in a
-	# settlement before this catastrophe can break loose
+	# settlement before this disaster can break loose
 	MIN_SETTLERS_FOR_BREAKOUT = 5
 
 	TIME_BEFORE_HAVOC = GAME_SPEED.TICKS_PER_SECOND * 30
 
 	def __init__(self, settlement, manager):
-		super(FireCatastrophe, self).__init__(settlement, manager)
+		super(FireDisaster, self).__init__(settlement, manager)
 		self._affected_buildings = []
 
 	def breakout(self):
@@ -61,7 +61,7 @@ class FireCatastrophe(Catastrophe):
 
 	def expand(self):
 		if not self.evaluate():
-			self._manager.end_catastrophe(self._settlement)
+			self._manager.end_disaster(self._settlement)
 			# We are done here, time to leave
 			return
 		for building in self._affected_buildings:

@@ -52,7 +52,7 @@ from horizons.command.unit import CreateUnit
 from horizons.world.component.healthcomponent import HealthComponent
 from horizons.world.component.storagecomponent import StorageComponent
 
-from horizons.world.catastrophe.catastrophemanager import CatastropheManager
+from horizons.world.disaster.disastermanager import DisasterManager
 
 class World(BuildingOwner, LivingObject, WorldObject):
 	"""The World class represents an Unknown Horizons map with all its units, grounds, buildings, etc.
@@ -314,7 +314,7 @@ class World(BuildingOwner, LivingObject, WorldObject):
 
 		self.diplomacy.add_diplomacy_status_changed_listener(notify_change)
 
-		self.catastrophe_manager = CatastropheManager(self.session)
+		self.disaster_manager = DisasterManager(self.session)
 
 		self.inited = True
 		"""TUTORIAL:

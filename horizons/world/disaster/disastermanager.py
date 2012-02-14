@@ -20,13 +20,13 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-from horizons.world.catastrophe.firecatastrophe import FireCatastrophe
+from horizons.world.disaster.firedisaster import FireDisaster
 from horizons.scheduler import Scheduler
 from horizons.constants import GAME_SPEED
 
-class CatastropheManager(object):
-	"""The catastrophe manager manages catastrophes. It seeds them into the
-	game world and makes all requirements for a catastrophe are met before
+class DisasterManager(object):
+	"""The disaster manager manages disasters. It seeds them into the
+	game world and makes all requirements for a disaster are met before
 	seeding it."""
 
 	# Number of ticks between calls to run()
@@ -36,11 +36,11 @@ class CatastropheManager(object):
 		from horizons.session import Session
 		assert isinstance(session, Session)
 		self.session = session
-		# List of possible catastrophe classes
-		self.catastrophes = [FireCatastrophe]
+		# List of possible disaster classes
+		self.disasters = [FireDisaster]
 
-		# Mapping settlement -> active catastrophes
-		self._active_catastrophe = {}
+		# Mapping settlement -> active disasters
+		self._active_disaster = {}
 
 		Scheduler().add_new_object(self.run, self, run_in = self.CALL_EVERY, loops = -1)
 
@@ -49,18 +49,18 @@ class CatastropheManager(object):
 
 	def run(self):
 		for settlement in self.session.world.settlements:
-			for catastrophe in self.catastrophes:
-				if not settlement in self._active_catastrophe:
-					if self.session.random.random() <= catastrophe.SEED_CHANCE:
-						if catastrophe.can_breakout(settlement):
-							print "Seeding catastrophe:", catastrophe
-							cata = catastrophe(settlement, self)
+			for disaster in self.disasters:
+				if not settlement in self._active_disaster:
+					if self.session.random.random() <= disaster.SEED_CHANCE:
+						if disaster.can_breakout(settlement):
+							print "Seeding disaster:", disaster
+							cata = disaster(settlement, self)
 							cata.breakout()
-							self._active_catastrophe[settlement] = cata
+							self._active_disaster[settlement] = cata
 
-	def end_catastrophe(self, settlement):
-		# End the catastrophe
-		self._active_catastrophe[settlement].end()
-		del self._active_catastrophe[settlement]
+	def end_disaster(self, settlement):
+		# End the disaster
+		self._active_disaster[settlement].end()
+		del self._active_disaster[settlement]
 
 
