@@ -88,6 +88,7 @@ class FireDisaster(Disaster):
 		self.log.debug("%s infecting %s at %s", self, building, building.position)
 		super(FireDisaster, self).infect(building)
 		building._registered_status_icons.append(FireStatusIcon())
+		building._update_status() # needs to update right now
 		self._affected_buildings.append(building)
 		Scheduler().add_new_object(Callback(self.wreak_havoc, building), self, run_in = self.TIME_BEFORE_HAVOC)
 
@@ -95,7 +96,8 @@ class FireDisaster(Disaster):
 		self.log.debug("%s recovering %s at %s", self, building, building.position)
 		super(FireDisaster, self).recover(building)
 		building._registered_status_icons.remove(FireStatusIcon())
-
+		Scheduler().rem_call(self, Callback(self.wreak_havoc, building))
+		self._affected_buildings.remove(building)
 
 	def evaluate(self):
 		return len(self._affected_buildings) > 0

@@ -62,19 +62,20 @@ class Disaster(object):
 
 	def infect(self, building):
 		"""Used to expand disaster to this building. Usually called by expand and breakout"""
+		building.disaster = self
 		if self.DISASTER_RES is not None:
 			remnant = building.get_component(StorageComponent).inventory.alter(self.DISASTER_RES, 1)
 			assert remnant == 0
 
 	def recover(self, building):
 		"""Inverse of infect()"""
+		del building.disaster
 		if self.DISASTER_RES is not None:
 			# make sure to remove everything in case of random recovery
 			inv = building.get_component(StorageComponent).inventory
 			if inv[self.DISASTER_RES] > 0:
 				remnant = inv.alter(self.DISASTER_RES, -inv[self.DISASTER_RES])
 				assert remnant == 0
-
 
 	def breakout(self):
 		"""Picks (a) object(s) to start a breakout.
