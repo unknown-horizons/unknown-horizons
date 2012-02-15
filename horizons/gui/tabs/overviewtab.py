@@ -453,10 +453,10 @@ class ProductionOverviewTab(OverviewTab):
 		Scheduler().rem_all_classinst_calls(self)
 		for production in self.instance.get_component(Producer).get_productions():
 			if production.has_change_listener(self.refresh):
-				production.rem_change_listener(self.refresh)
+				production.remove_change_listener(self.refresh)
 		for anim in self._animations:
 			if anim():
-				anim.stop()
+				anim().stop()
 		self._animations = []
 
 
