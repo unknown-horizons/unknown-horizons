@@ -21,6 +21,7 @@
 # ###################################################
 
 import weakref
+from fife.extensions import pychan
 
 from horizons.gui.tabs.tabinterface import TabInterface
 
@@ -331,6 +332,7 @@ class GroundUnitOverviewTab(OverviewTab):
 
 class ProductionOverviewTab(OverviewTab):
 	ACTIVE_PRODUCTION_ANIM_DIR = "content/gui/images/animations/cogs/large"
+	BUTTON_BACKGROUND = "content/gui/images/buttons/msg_button.png"
 
 	def  __init__(self, instance, widget='overview_productionbuilding.xml',
 		         production_line_gui_xml='overview_productionline.xml'):
@@ -377,6 +379,11 @@ class ProductionOverviewTab(OverviewTab):
 				toggle_icon.name = "toggle_active"
 
 				if production.get_state() == PRODUCTION.STATES.producing:
+					bg = pychan.widgets.Icon(image=self.__class__.BUTTON_BACKGROUND)
+					bg.position = toggle_icon.position
+					container.addChild(bg)
+					container.removeChild(toggle_icon) # fix z-ordering
+					container.addChild(toggle_icon)
 					anim = PychanAnimation(toggle_icon, self.__class__.ACTIVE_PRODUCTION_ANIM_DIR)
 					container.anim = anim
 					anim.start(1.0/12, -1) # always start anew, people won't notice
