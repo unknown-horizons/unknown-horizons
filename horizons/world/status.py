@@ -72,6 +72,11 @@ class StatusIcon(object):
 		return str(self.__class__) + "(prio:%s,icon:%s)" % (self.priority, self.icon)
 
 
+class FireStatusIcon(StatusIcon):
+	# threshold is the inhabitants decrease level
+	def __init__(self):
+		super(FireStatusIcon, self).__init__( 1700, "as_on_fire+idle+45")
+
 class SettlerUnhappyStatus(StatusIcon):
 	# threshold is the inhabitants decrease level
 	def __init__(self):
