@@ -27,7 +27,7 @@ from horizons.gui.tabs.tabinterface import TabInterface
 from horizons.scheduler import Scheduler
 from horizons.extscheduler import ExtScheduler
 from horizons.util import Callback, ActionSetLoader
-from horizons.constants import GAME_SPEED, SETTLER, BUILDINGS, WEAPONS
+from horizons.constants import GAME_SPEED, SETTLER, BUILDINGS, WEAPONS, PRODUCTION
 from horizons.gui.widgets.tradewidget import TradeWidget
 from horizons.gui.widgets.internationaltradewidget import InternationalTradeWidget
 from horizons.gui.widgets.routeconfig import RouteConfig
@@ -37,6 +37,7 @@ from horizons.command.building import Tear
 from horizons.command.uioptions import SetTaxSetting
 from horizons.gui.widgets.imagefillstatusbutton import ImageFillStatusButton
 from horizons.util.gui import load_uh_widget, create_resource_icon
+from horizons.util.pychananimation import PychanAnimation
 from horizons.entities import Entities
 from horizons.world.component.namedcomponent import NamedComponent
 from horizons.world.component.storagecomponent import StorageComponent
@@ -329,6 +330,8 @@ class GroundUnitOverviewTab(OverviewTab):
 		self.add_remove_listener(weapon_storage_widget.remove)
 
 class ProductionOverviewTab(OverviewTab):
+	ACTIVE_PRODUCTION_ANIM_DIR = "content/gui/images/animations/cogs/large"
+
 	def  __init__(self, instance, widget='overview_productionbuilding.xml',
 		         production_line_gui_xml='overview_productionline.xml'):
 		super(ProductionOverviewTab, self).__init__(
@@ -337,6 +340,7 @@ class ProductionOverviewTab(OverviewTab):
 		)
 		self.tooltip = _("Production overview")
 		self.production_line_gui_xml = production_line_gui_xml
+		self._animations = []
 
 	def refresh(self):
 		"""This function is called by the TabWidget to redraw the widget."""
@@ -345,21 +349,38 @@ class ProductionOverviewTab(OverviewTab):
 		# remove old production line data
 		parent_container = self.widget.child_finder('production_lines')
 		while len(parent_container.children) > 0:
-			parent_container.removeChild(parent_container.children[0])
+			child = parent_container.children[-1]
+			if hasattr(child, "anim"):
+				child.anim.stop()
+				del child.anim
+			parent_container.removeChild( child )
 
 		# create a container for each production
 		# sort by production line id to have a consistent (basically arbitrary) order
 		for production in sorted(self.instance.get_component(Producer).get_productions(), \
 								             key=(lambda x: x.get_production_line_id())):
+
+			if not production.has_change_listener(self.refresh):
+				# we need to be notified of small production changes, that aren't passed through the instance
+				production.add_change_listener(self.refresh)
+
 			gui = load_uh_widget(self.production_line_gui_xml)
 			# fill in values to gui reflecting the current game state
 			container = gui.findChild(name="production_line_container")
 			if production.is_paused():
 				container.removeChild( container.findChild(name="toggle_active_active") )
-				container.findChild(name="toggle_active_inactive").name = "toggle_active"
+				toggle_icon = container.findChild(name="toggle_active_inactive")
+				toggle_icon.name = "toggle_active"
 			else:
 				container.removeChild( container.findChild(name="toggle_active_inactive") )
-				container.findChild(name="toggle_active_active").name = "toggle_active"
+				toggle_icon = container.findChild(name="toggle_active_active")
+				toggle_icon.name = "toggle_active"
+
+				if production.get_state() == PRODUCTION.STATES.producing:
+					anim = PychanAnimation(toggle_icon, self.__class__.ACTIVE_PRODUCTION_ANIM_DIR)
+					container.anim = anim
+					anim.start(1.0/12, -1) # always start anew, people won't notice
+					self._animations.append( weakref.ref( anim ) )
 
 			# fill it with input and output resources
 			in_res_container = container.findChild(name="input_res")
@@ -422,11 +443,22 @@ class ProductionOverviewTab(OverviewTab):
 
 	def hide(self):
 		super(ProductionOverviewTab, self).hide()
-		Scheduler().rem_all_classinst_calls(self)
+		self._cleanup()
 
 	def on_instance_removed(self):
-		Scheduler().rem_all_classinst_calls(self)
+		self._cleanup()
 		super(ProductionOverviewTab, self).on_instance_removed()
+
+	def _cleanup(self):
+		Scheduler().rem_all_classinst_calls(self)
+		for production in self.instance.get_component(Producer).get_productions():
+			if production.has_change_listener(self.refresh):
+				production.rem_change_listener(self.refresh)
+		for anim in self._animations:
+			if anim():
+				anim.stop()
+		self._animations = []
+
 
 class FarmProductionOverviewTab(ProductionOverviewTab):
 	def  __init__(self, instance):
