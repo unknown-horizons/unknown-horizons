@@ -24,7 +24,7 @@ import shelve
 import yaml
 import threading
 
-from horizons.constants import RES
+from horizons.constants import RES, PATHS
 
 try:
 	from yaml import CSafeLoader as SafeLoader
