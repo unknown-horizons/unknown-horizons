@@ -11,7 +11,7 @@ inhabitants_max: 2
 button_name: resident-1
 tooltip_text: _ Houses your inhabitants.
 settler_level: 0
-buildingcosts: {1: 100, 4: 2}
+buildingcosts: {RES.GOLD_ID: 100, 4: 2}
 components:
 - SelectableComponent:
     type: building
@@ -53,7 +53,7 @@ components:
         enabled_by_default: false
         time: 60
         consumes:
-        - [5, -1]
+        - [RES.FOOD_ID  , -1]
       72:
         produces:
         - [14, 5]

@@ -87,7 +87,7 @@ class Entities(object):
 				cls.log.debug("Loading: " +  filename)
 				# This is needed for dict lookups! Do not convert to os.join!
 				full_file = root + "/" + filename
-				result = YamlCache.get_file(full_file)
+				result = YamlCache.get_file(full_file, game_data=True)
 				if result is None: # discard empty yaml files
 					print "Empty yaml file {file} found, not loading!".format(file=full_file)
 					continue
@@ -112,7 +112,7 @@ class Entities(object):
 		for root, dirnames, filenames in os.walk('content/objects/units'):
 			for filename in fnmatch.filter(filenames, '*.yaml'):
 				full_file = os.path.join(root, filename)
-				result = YamlCache.get_file(full_file)
+				result = YamlCache.get_file(full_file, game_data=True)
 				unit_id = int(result['id'])
 				cls.units.create_on_access(unit_id, Callback(UnitClass, id=unit_id, yaml_data=result))
 				if load_now:
