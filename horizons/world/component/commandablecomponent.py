@@ -60,7 +60,7 @@ class CommandableComponent(Component):
 				# update actual target coord
 				move_target = self.instance.get_move_target()
 				break
-
+		self.instance.session.ingame_gui.minimap.show_unit_path(self.instance)
 		if move_target is None: # can't move
 			# TODO: give player some kind of feedback
-			return
+			return None

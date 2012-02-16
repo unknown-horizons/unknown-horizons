@@ -14,22 +14,22 @@
 
 		<Label name="headline_income_label" position="0,0" text="Income:" />
 		<Label name="taxes_label" position="10,20" text="Taxes"/>
-		<Label position="160,20" name="taxes" />
+		<Label position="160,20" name="taxes" min_size="100,15" />
 
 		<Label name="sell_income_label" position="10,40" text="Sale" />
-		<Label position="160,40" name="sale" />
+		<Label position="160,40" name="sale" min_size="100,15" />
 
 
 		<Label name="headline_expenses_label" position="0,70" text="Expenses:" />
 
 		<Label name="running_costs_label" position="10,90" text="Running costs"/>
-		<Label position="160,90" name="running_costs" />
+		<Label position="160,90" name="running_costs" min_size="100,15"/>
 
 		<Label name="buy_expenses_label" position="10,110" text="Buying" />
-		<Label position="160,110" name="buying" />
+		<Label position="160,110" name="buying" min_size="100,15" />
 
 		<Label name="headline_balance_label" position="0,140" text="Balance:" />
-		<Label position="160,140" name="balance" />
+		<Label position="160,140" name="balance" min_size="100,15" />
 	</Container>
 
 	<Container size="260,50"  position="25,240">

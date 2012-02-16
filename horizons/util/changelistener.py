@@ -70,7 +70,7 @@ class ChangeListener(object):
 
 		if self.__event_call_number == 0:
 			self.__hard_remove = True
-			listener_list = [ l for l in listener_list if l ]
+			listener_list[:] = [ l for l in listener_list if l ]
 
 	## Normal change listener
 	def add_change_listener(self, listener, call_listener_now = False):

@@ -119,9 +119,7 @@ class Ship(Unit):
 		if hasattr(self, 'route'):
 			self.route.disable()
 		if self.get_component(CommandableComponent).go(x, y) is None:
-			self._update_buoy()
-		else:
-			self.session.ingame_gui.minimap.show_unit_path(self)
+			self._update_buoy()			
 
 	def move(self, *args, **kwargs):
 		super(Ship, self).move(*args, **kwargs)

@@ -62,7 +62,10 @@ class StanceComponent(Component):
 
 	def remove(self):
 		self.instance.remove_user_attack_issued_listener(Callback(self.set_state, 'user_attack'))
-		self.instance.remove_user_move_issued_listener(Callback(self.set_state, 'user_move'))
+		try:
+			self.instance.remove_user_move_issued_listener(Callback(self.set_state, 'user_move'))
+		except AttributeError:
+			pass # temporary workaround to make it work for towers
 		super(StanceComponent, self).remove()
 
 	def set_state(self, state):
@@ -294,3 +297,6 @@ class FleeStance(StanceComponent):
 			return None
 
 		return min(enemies, key = lambda e: self.instance.position.distance(e.position) + e._max_range)
+
+
+DEFAULT_STANCES = [ HoldGroundStance, AggressiveStance, NoneStance, FleeStance ]

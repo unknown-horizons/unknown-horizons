@@ -163,12 +163,8 @@ class SelectMultiTab(TabInterface):
 		stance_widget = load_uh_widget('stancewidget.xml')
 		self.widget.findChild(name='stance').addChild(stance_widget)
 		self.toggle_stance()
-		self.widget.mapEvents({
-			'aggressive': Callback(self.set_stance, AggressiveStance),
-			'hold_ground': Callback(self.set_stance, HoldGroundStance),
-			'none': Callback(self.set_stance, NoneStance),
-			'flee': Callback(self.set_stance, FleeStance)
-		})
+		events = dict( (i.NAME, Callback(self.set_stance, i) ) for i in DEFAULT_STANCES )
+		self.widget.mapEvents( events )
 
 	def hide_stance_widget(self):
 		self.widget.findChild(name='stance').removeAllChildren()
@@ -183,10 +179,8 @@ class SelectMultiTab(TabInterface):
 		"""
 		Toggles the stance, Assumes at least one stance unit is selected
 		"""
-		self.widget.findChild(name='aggressive').set_inactive()
-		self.widget.findChild(name='hold_ground').set_inactive()
-		self.widget.findChild(name='none').set_inactive()
-		self.widget.findChild(name='flee').set_inactive()
+		for stance in DEFAULT_STANCES:
+			self.widget.findChild(name=stance.NAME).set_inactive()
 		# get first unit stance
 		stance_units = [u for u in self.instances if hasattr(u, "stance")]
 		stance = stance_units[0].stance
