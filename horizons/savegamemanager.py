@@ -77,9 +77,9 @@ class SavegameManager(object):
 	savegame_screenshot_width = 290
 
 	# metadata of a savegame with default values
-	savegame_metadata = { 'timestamp' : -1,	'savecounter' : 0, 'savegamerev' : 0, 'rng_state' : ""  }
+	savegame_metadata = { 'timestamp' : -1,	'savecounter' : 0, 'savegamerev' : 0, 'rng_state' : "", 'screenshot' : None }
 	savegame_metadata_types = { 'timestamp' : float, 'savecounter' : int, 'savegamerev': int, \
-	                            'rng_state' : str }
+	                            'rng_state' : str } # 'screenshot' : NoneType }
 
 	campaign_status_file = os.path.join(savegame_dir, 'campaign_status.yaml')
 
@@ -189,11 +189,15 @@ class SavegameManager(object):
 		db = DbReader(savegamefile)
 		metadata = cls.savegame_metadata.copy()
 
-		for key in metadata.iterkeys():
-			result = db("SELECT `value` FROM `metadata` WHERE `name` = ?", key)
-			if len(result) > 0:
-				assert(len(result) == 1)
-				metadata[key] = cls.savegame_metadata_types[key](result[0][0])
+		try:
+			for key in metadata.iterkeys():
+				result = db("SELECT `value` FROM `metadata` WHERE `name` = ?", key)
+				if len(result) > 0:
+					assert(len(result) == 1)
+					metadata[key] = cls.savegame_metadata_types[key](result[0][0])
+		except sqlite3.OperationalError as e:
+			print 'Warning: Can\'t read savegame %s: %s' % (savegamefile, e)
+			return metadata
 
 		screenshot_data = None
 		try:
@@ -279,7 +283,6 @@ class SavegameManager(object):
 	@classmethod
 	def get_available_scenarios(cls, include_displaynames = True, locales = None):
 		"""Returns available scenarios (depending on the campaign(s) status)"""
-		scenario_files = {}
 		afiles = []
 		anames = []
 		sfiles, snames = cls.get_scenarios(include_displaynames = True)
