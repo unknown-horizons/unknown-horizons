@@ -140,7 +140,7 @@ class ResourceOverviewBar(object):
 		initial_offset = 93
 		offset = 52
 		resources = self._get_current_resources()
-		addition = [-1] if self._do_show_dummy else [] # add dummy at end for adding stuff
+		addition = [-1] if self._do_show_dummy or not resources else [] # add dummy at end for adding stuff
 		for i, res in enumerate( resources + addition ):
 			entry = load_uh_widget(self.ENTRY_GUI_FILE, style=self.__class__.STYLE)
 			entry.findChild(name="entry").position = (initial_offset + offset * i, 17)
