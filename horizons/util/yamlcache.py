@@ -24,6 +24,8 @@ import shelve
 import yaml
 import threading
 
+from horizons.constants import RES, PATHS
+
 try:
 	from yaml import CSafeLoader as SafeLoader
 except ImportError:
@@ -34,7 +36,31 @@ def construct_yaml_str(self, node):
 	return self.construct_scalar(node)
 SafeLoader.add_constructor(u'tag:yaml.org,2002:python/unicode', construct_yaml_str)
 
-from horizons.constants import PATHS
+
+def parse_resource(res):
+	"""Helper function that tries to parse a resource.
+	Does not do error detection, but passes unparseable stuff through.
+	Allowed values for res: integer or RES.LIKE_IN_CONSTANTS
+	"""
+	if isinstance(res, (str, unicode)):
+		if res.startswith("RES."):
+			return getattr(RES, res[4:])
+		else:
+			return res
+	else:
+		return res # probably numeric already
+
+def convert_game_data(data):
+	"""Translates convenience symbols into actual game data usable by machines"""
+	if isinstance(data, dict):
+		return dict( [ convert_game_data(i) for i in data.iteritems() ] )
+	elif isinstance(data, (tuple, list)):
+		return type(data)( ( convert_game_data(i) for i in data) )
+	else: # leaf
+		data = parse_resource(data)
+		# etc.
+		return data
+
 
 class YamlCache(object):
 	"""Loads and caches YAML files in a shelve.
@@ -48,12 +74,12 @@ class YamlCache(object):
 	lock = threading.Lock()
 
 	@classmethod
-	def get_file(cls, filename):
-		data = cls.get_yaml_file(filename)
+	def get_file(cls, filename, game_data=False):
+		data = cls.get_yaml_file(filename, game_data=game_data)
 		return data
 
 	@classmethod
-	def get_yaml_file(cls, filename):
+	def get_yaml_file(cls, filename, game_data=False):
 		# calc the hash
 		f = open(filename, 'r')
 		h = hash(f.read())
@@ -68,8 +94,11 @@ class YamlCache(object):
 		if (filename in cls.cache and \
 				cls.cache[filename][0] != h) or \
 			 (not filename in cls.cache):
+			data = yaml.load( f, Loader = SafeLoader )
+			if game_data: # need to convert some values
+				data = convert_game_data(data)
 			cls.lock.acquire()
-			cls.cache[filename] = (h, yaml.load( f, Loader = SafeLoader ) )
+			cls.cache[filename] = (h, data)
 			if not cls.sync_scheduled:
 				cls.sync_scheduled = True
 				from horizons.extscheduler import ExtScheduler
