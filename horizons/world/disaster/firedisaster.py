@@ -39,7 +39,7 @@ class FireDisaster(Disaster):
 
 	EXPANSION_TIME = GAME_SPEED.TICKS_PER_SECOND * 10
 
-	EXPANSION_RADIUS = 2
+	EXPANSION_RADIUS = 3
 
 	# Defines the mininum number of settler buildings that need to be in a
 	# settlement before this disaster can break loose
@@ -87,15 +87,22 @@ class FireDisaster(Disaster):
 		"""Infect a building with fire"""
 		self.log.debug("%s infecting %s at %s", self, building, building.position)
 		super(FireDisaster, self).infect(building)
-		building._registered_status_icons.append(FireStatusIcon())
-		building._update_status() # needs to update right now
+		if building.has_status_icon: # normal status icon
+			building._registered_status_icons.append(FireStatusIcon())
+			building._update_status() # needs to update right now
+		else: # add special status icon
+			building._update_status(FireStatusIcon())
 		self._affected_buildings.append(building)
 		Scheduler().add_new_object(Callback(self.wreak_havoc, building), self, run_in = self.TIME_BEFORE_HAVOC)
 
 	def recover(self, building):
 		self.log.debug("%s recovering %s at %s", self, building, building.position)
 		super(FireDisaster, self).recover(building)
-		building._registered_status_icons.remove(FireStatusIcon())
+		if building.has_status_icon:
+			building._registered_status_icons.remove(FireStatusIcon())
+			building._update_status()
+		else:
+			building._update_status()
 		Scheduler().rem_call(self, Callback(self.wreak_havoc, building))
 		self._affected_buildings.remove(building)
 

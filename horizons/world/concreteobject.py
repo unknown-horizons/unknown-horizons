@@ -65,9 +65,6 @@ class ConcreteObject(WorldObject):
 		interval = Scheduler().get_ticks(3)
 		run_in = self.session.random.randint(1, interval) # don't update all at once
 		if self.has_status_icon:
-			self._status_icon_key = "status_"+str(self.worldid)
-			self._status_icon_renderer = self.session.view.renderer['GenericRenderer']
-			self.has_status_icon = True
 			# update now
 			Scheduler().add_new_object(self._update_status, self, run_in=0)
 
@@ -127,9 +124,22 @@ class ConcreteObject(WorldObject):
 		"""Returns a list of StatusIcon instances"""
 		return self._registered_status_icons[:] # always add pushed icons
 
-	def _update_status(self):
-		"""Handles status icon bar"""
-		status_list = self.get_status_icons()
+	@property
+	def _status_icon_key(self):
+		return "status_"+str(self.worldid)
+
+	@property
+	def _status_icon_renderer(self):
+		return self.session.view.renderer['GenericRenderer']
+
+	def _update_status(self, additional_icon=None):
+		"""Handles status icon bar.
+		@param additional_icon: add a special icon (one-time)
+		"""
+		if not additional_icon:
+			status_list = self.get_status_icons()
+		else:
+			status_list = (additional_icon, )
 
 		if hasattr(self, "_old_status_list"):
 			if status_list == self._old_status_list:

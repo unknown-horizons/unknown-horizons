@@ -65,7 +65,7 @@ class Disaster(object):
 		building.disaster = self
 		if self.DISASTER_RES is not None:
 			remnant = building.get_component(StorageComponent).inventory.alter(self.DISASTER_RES, 1)
-			assert remnant == 0
+			assert remnant == 0, 'remn: '+str(remnant)+" "+str(building)
 
 	def recover(self, building):
 		"""Inverse of infect()"""
