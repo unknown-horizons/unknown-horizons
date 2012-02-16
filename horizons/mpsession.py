@@ -50,7 +50,7 @@ class MPSession(Session):
 		if suggestion:
 			# ignore suggested speed changes in multiplayer
 			return
-		self.gui.show_popup(_("Not possible"), _("You cannot change the speed of a multiplayer game"))
+		self.gui.show_popup(_("Can't change speed of network game."), _("You cannot change the speed of a multiplayer game"))
 
 	def disable_speed_buttons(self):
 		up_icon = self.ingame_gui.widgets['minimap'].findChild(name='speedUp')

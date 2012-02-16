@@ -35,6 +35,7 @@ from horizons.savegamemanager import SavegameManager
 from horizons.gui.keylisteners import MainListener
 from horizons.gui.keylisteners.ingamekeylistener import KeyConfig
 from horizons.util import Callback
+from horizons.extscheduler import ExtScheduler
 from horizons.world.component.ambientsoundcomponent import AmbientSoundComponent
 from horizons.util.gui import LazyWidgetsDict
 from horizons.i18n.utils import N_
@@ -399,6 +400,9 @@ class Gui(SingleplayerMenu, MultiplayerMenu):
 		@return: True on ok, False on cancel (if no cancel button, always True)
 		"""
 		popup = self.build_popup(windowtitle, message, show_cancel_button, size=size)
+		# ok should be triggered on enter, therefore we need to focus the button
+		# pychan will only allow it after the widgets is shown
+		ExtScheduler().add_new_object(lambda : popup.findChild(name='okButton').requestFocus(), self, run_in=0)
 		if show_cancel_button:
 			return self.show_dialog(popup, {'okButton' : True, 'cancelButton' : False}, onPressEscape = False)
 		else:

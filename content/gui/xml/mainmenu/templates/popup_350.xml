@@ -9,7 +9,7 @@
 		 wrap_text="1"  max_size="520,320"  min_size="520,320" />
 </VBox>
 
-<CancelButton position="25,280" />
-<OkButton position="500,280" />
+<CancelButton position="25,280" is_focusable="0"/>
+<OkButton position="500,280" is_focusable="1"/> <!-- needed to be able to trigger this on enter -->
 
 </Container>
