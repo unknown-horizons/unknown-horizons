@@ -103,7 +103,7 @@ class SingleplayerMenu(object):
 		elif show == 'free_maps':
 			self.current.files, maps_display = SavegameManager.get_maps()
 
-			self.current.distributeInitialData({ 'maplist' : maps_display, })
+			self.active_right_side.distributeInitialData({ 'maplist' : maps_display, })
 			def _update_infos():
 				number_of_players = SavegameManager.get_recommended_number_of_players( self._get_selected_map() )
 				#xgettext:python-format
@@ -112,9 +112,9 @@ class SingleplayerMenu(object):
 				self.map_preview.update_map(self._get_selected_map())
 			if len(maps_display) > 0:
 				# select first entry
-				self.current.distributeData({ 'maplist' : 0, })
+				self.active_right_side.distributeData({ 'maplist' : 0, })
 				_update_infos()
-			self.current.findChild(name="maplist").capture(_update_infos)
+			self.active_right_side.findChild(name="maplist").capture(_update_infos)
 			show_ai_options = True
 			self._setup_game_settings_selection()
 		else:
@@ -130,10 +130,10 @@ class SingleplayerMenu(object):
 				self.current.files, maps_display = SavegameManager.get_available_scenarios(locales = choosable_locales)
 
 			# get the map files and their display names
-			self.current.distributeInitialData({ 'maplist' : maps_display, })
+			self.active_right_side.distributeInitialData({ 'maplist' : maps_display, })
 			if len(maps_display) > 0:
 				# select first entry
-				self.current.distributeData({ 'maplist' : 0, })
+				self.active_right_side.distributeData({ 'maplist' : 0, })
 
 				if show == 'scenario': # update infos for scenario
 					from horizons.scenario import ScenarioEventHandler, InvalidScenarioFileFormat
@@ -167,7 +167,7 @@ class SingleplayerMenu(object):
 						self.current.findChild(name="map_desc").text = \
 							_("Description: {desc}").format(desc=campaign_info.get('description', '')) #xgettext:python-format
 
-				self.current.findChild(name="maplist").capture(_update_infos)
+				self.active_right_side.findChild(name="maplist").capture(_update_infos)
 				_update_infos()
 
 
@@ -191,7 +191,7 @@ class SingleplayerMenu(object):
 		if self.current.collectData('random'):
 			map_file = self._get_random_map_file()
 		else:
-			assert self.current.collectData('maplist') != -1
+			assert self.active_right_side.collectData('maplist') != -1
 			map_file = self._get_selected_map()
 
 		is_scenario = bool(self.current.collectData('scenario'))
@@ -358,7 +358,7 @@ class SingleplayerMenu(object):
 
 	def _get_selected_map(self):
 		"""Returns map file, that is selected in the maplist widget"""
-		return self.current.files[ self.current.collectData('maplist') ]
+		return self.current.files[ self.active_right_side.collectData('maplist') ]
 
 	def _show_invalid_scenario_file_popup(self, exception):
 		"""Shows a popup complaining about invalid scenario file.

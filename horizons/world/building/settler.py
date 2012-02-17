@@ -131,9 +131,9 @@ class Settler(BuildableRect, CollectingBuilding, BasicBuilding):
 		return None
 
 	def remove(self):
-		super(Settler, self).remove()
 		if hasattr(self, "_settler_status_icon"):
 			self.session.message_bus.broadcast(RemoveStatusIcon(self, self._settler_status_icon))
+		super(Settler, self).remove()
 
 	@property
 	def upgrade_allowed(self):

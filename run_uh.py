@@ -31,11 +31,13 @@ to start the game. You usually don't need to work with this directly.
 If you want to dig into the game, continue to horizons/main.py. """
 
 __all__ = ['init_environment', 'get_fife_path']
+
 import sys
 import os
 import os.path
 import gettext
 import time
+import locale
 import logging
 import logging.config
 import logging.handlers
@@ -199,6 +201,9 @@ def main():
 	# abort silently on signal
 	signal.signal(signal.SIGINT, exithandler)
 	signal.signal(signal.SIGTERM, exithandler)
+
+	# use locale-specific time.strftime handling
+	locale.setlocale(locale.LC_TIME, '')
 
 	#chdir to Unknown Horizons root
 	os.chdir( find_uh_position() )

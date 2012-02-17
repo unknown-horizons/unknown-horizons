@@ -72,8 +72,6 @@ class SavegameManager(object):
 	autosave_filenamepattern = save_filename_timeformat.format(prefix=autosave_basename, ext=savegame_extension)
 	quicksave_filenamepattern = save_filename_timeformat.format(prefix=quicksave_basename, ext=savegame_extension)
 
-	display_timeformat = "%Y/%m/%d %H:%M"
-
 	savegame_screenshot_width = 290
 
 	# metadata of a savegame with default values
@@ -100,7 +98,7 @@ class SavegameManager(object):
 			if savegameinfo['timestamp'] == -1:
 				return ""
 			else:
-				return time.strftime(cls.display_timeformat, time.localtime(savegameinfo['timestamp']))
+				return time.strftime('%c', time.localtime(savegameinfo['timestamp']))
 
 		for f in files:
 			if f.startswith(cls.autosave_dir):

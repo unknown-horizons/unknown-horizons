@@ -549,7 +549,7 @@ class Gui(SingleplayerMenu, MultiplayerMenu):
 			else:
 				#xgettext:python-format
 				details_label.text += _("Saved at {time}").format(
-				                         time=time.strftime("%H:%M, %A, %B %d",
+				                         time=time.strftime("%c",
 				                         time.localtime(savegame_info['timestamp'])))
 			details_label.text += u'\n'
 			counter = savegame_info['savecounter']

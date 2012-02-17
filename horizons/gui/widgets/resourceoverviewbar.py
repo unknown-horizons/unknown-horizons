@@ -68,10 +68,11 @@ class ResourceOverviewBar(object):
 	                      RES.SALT_ID]
 
 	# order should match the above, else confuses players when in build mode
-	CONSTRUCTION_RESOURCES = [ RES.TOOLS_ID,
-	                           RES.BOARDS_ID,
-	                           RES.BRICKS_ID,
-	                           RES.CANNON_ID ]
+	CONSTRUCTION_RESOURCES = { # per settler increment
+	  0: [ RES.TOOLS_ID, RES.BOARDS_ID ],
+	  1: [ RES.TOOLS_ID, RES.BOARDS_ID, RES.BRICKS_ID ],
+	  2: [ RES.TOOLS_ID, RES.BOARDS_ID, RES.BRICKS_ID ],
+	}
 
 	def __init__(self, session):
 		from horizons.session import Session
@@ -184,14 +185,16 @@ class ResourceOverviewBar(object):
 		cost_icon_gold = "content/gui/images/background/widgets/res_mon_extra_bg.png"
 		cost_icon_res = "content/gui/images/background/widgets/res_extra_bg.png"
 
+		res_list = self._get_current_resources()
+
 		for res, amount in build_costs.iteritems():
-			assert res in self.__class__.CONSTRUCTION_RESOURCES or res == RES.GOLD_ID
+			assert res in res_list or res == RES.GOLD_ID
 
 			cost_label = pychan.widgets.Label(text=u"-"+unicode(amount))
 			cost_label.stylize( self.__class__.STYLE )
 			# add icon below end of background icon
-			if res in self.__class__.CONSTRUCTION_RESOURCES:
-				entry = self.CONSTRUCTION_RESOURCES.index(res)
+			if res in res_list:
+				entry = res_list.index(res)
 				cur_gui = self.gui[ entry ]
 				reference_icon = cur_gui.findChild(name="background_icon")
 				below = reference_icon.size[1]
@@ -260,7 +263,12 @@ class ResourceOverviewBar(object):
 	def _get_current_resources(self):
 		"""Return list of resources to display now"""
 		if self.construction_mode:
-			return self.__class__.CONSTRUCTION_RESOURCES
+			lvl = self.session.world.player.settler_level
+			res_list = self.__class__.CONSTRUCTION_RESOURCES[lvl]
+			# also add additional res that might be needed
+			res_list += [ res for res in self._last_build_costs if \
+			              res not in res_list and res != RES.GOLD_ID ]
+			return res_list
 		return self.resource_configurations.get(self.current_instance(),
 		                                        self.__class__.DEFAULT_RESOURCES)
 
