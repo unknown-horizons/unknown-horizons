@@ -40,3 +40,9 @@ class RemoveStatusIcon(Message):
 	def __init__(self, sender, icon):
 		super(RemoveStatusIcon, self).__init__(sender)
 		self.icon = icon
+
+class RemoveAllStatusIcons(Message):
+
+	def __init__(self, sender, instance):
+		super(RemoveAllStatusIcons, self).__init__(sender)
+		self.instance = instance

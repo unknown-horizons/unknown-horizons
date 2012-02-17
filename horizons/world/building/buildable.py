@@ -302,7 +302,7 @@ class BuildableLine(Buildable):
 				if (offset[0]+i[0], offset[1]+i[1]) in path:
 					action += action_char
 			if action == '':
-				action = 'ac' # default
+				action = 'single' # single trail piece with no neighbours
 
 			build = cls.check_build(session, Point(*i))
 			build.action = action
