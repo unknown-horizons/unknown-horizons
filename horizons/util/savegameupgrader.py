@@ -37,17 +37,6 @@ class SavegameUpgrader(object):
 		self.using_temp = False
 		self.final_path = None
 
-	def _upgrade_to_rev44(self, db):
-		# add trade history table
-		db("CREATE TABLE IF NOT EXISTS \"trade_history\" (\"settlement\" INTEGER NOT NULL," \
-		     "\"tick\" INTEGER NOT NULL, \"player\" INTEGER NOT NULL, " \
-		     "\"resource_id\" INTEGER NOT NULL, \"amount\" INTEGER NOT NULL, \"gold\" INTEGER NOT NULL)")
-
-	def _upgrade_to_rev45(self, db):
-		# fix production queue table
-		db("DROP TABLE production_queue")
-		db("CREATE TABLE \"production_queue\" (object INTEGER NOT NULL, position INTEGER NOT NULL, production_line_id INTEGER NOT NULL)")
-
 	def _upgrade_to_rev49(self, db):
 		db("CREATE TABLE \"resource_overview_bar\" (object INTEGER NOT NULL, position INTEGER NOT NULL, resource INTEGER NOT NULL)")
 
@@ -56,7 +45,6 @@ class SavegameUpgrader(object):
 		db("UPDATE stance set stance = \"none_stance\" where stance =\"none\"")
 		db("UPDATE stance set stance = \"flee_stance\" where stance =\"flee_stance\"")
 		db("UPDATE stance set stance = \"aggressive_stance\" where stance =\"aggressive\"")
-
 
 	def _upgrade(self):
 		# fix import loop
@@ -74,16 +62,10 @@ class SavegameUpgrader(object):
 			shutil.copyfile(self.original_path, self.final_path)
 			db = DbReader(self.final_path)
 
-			if rev <= 44:
-				self._upgrade_to_rev44(db)
-			if rev <= 45:
-				self._upgrade_to_rev45(db)
 			if rev < 49:
 				self._upgrade_to_rev49(db)
 			if rev < 50:
 				self._upgrade_to_rev50(db)
-
-
 
 			db.close()
 
