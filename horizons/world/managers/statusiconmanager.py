@@ -24,7 +24,7 @@ import horizons.main
 from fife import fife
 from horizons.world.status import StatusIcon
 
-from horizons.util.messaging.message import AddStatusIcon, RemoveStatusIcon
+from horizons.util.messaging.message import AddStatusIcon, RemoveStatusIcon, RemoveAllStatusIcons
 
 class StatusIconManager(object):
 	"""Manager class that manages all status icons. It listenes to AddStatusIcon
@@ -39,7 +39,7 @@ class StatusIconManager(object):
 
 		self.session.message_bus.subscribe_globally(AddStatusIcon, self.on_add_icon_message)
 		self.session.message_bus.subscribe_globally(RemoveStatusIcon, self.on_remove_icon_message)
-
+		self.session.message_bus.subscribe_globally(RemoveAllStatusIcons, self.on_remove_all_message)
 
 	def on_add_icon_message(self, message):
 		"""This is called by the message bus with AddStatusIcon messages"""
@@ -53,6 +53,12 @@ class StatusIconManager(object):
 		self.icons[icon_instance] = sorted(self.icons[icon_instance], key=StatusIcon.get_sorting_key())
 		# Now render the most important one
 		self.__render_status(icon_instance, self.icons[icon_instance][0])
+
+	def on_remove_all_message(self, message):
+		assert isinstance(message, RemoveAllStatusIcons)
+		if message.instance in self.icons:
+			self.renderer.removeAll(self.get_status_string(message.instance))
+			del self.icons[message.instance]
 
 	def on_remove_icon_message(self, message):
 		"""Called by the MessageBus with RemoveStatusIcon messages."""
