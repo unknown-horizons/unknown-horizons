@@ -32,7 +32,6 @@ import mock
 # check if SIGALRM is supported, this is not the case on Windows
 # we might provide an alternative later, but for now, this will do
 try:
-	from signal import SIGALRM
 	TEST_TIMELIMIT = True
 except ImportError:
 	TEST_TIMELIMIT = False
@@ -56,6 +55,8 @@ from horizons.util.uhdbaccessor import read_savegame_template
 from horizons.world import World
 from horizons.world.component.namedcomponent import NamedComponent
 from horizons.world.component.storagecomponent import StorageComponent
+from horizons.util.messaging.messagebus import MessageBus
+from horizons.world.managers.statusiconmanager import StatusIconManager
 
 from tests import RANDOM_SEED
 
@@ -166,6 +167,10 @@ class SPTestSession(SPSession):
 		Entities.load(self.db)
 		self.scenario_eventhandler = Dummy()
 		self.campaign = {}
+
+		self.message_bus = MessageBus()
+		self.status_icon_manager = StatusIconManager(self)
+
 
 		# GUI
 		self.gui.session = self
