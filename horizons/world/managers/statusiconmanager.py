@@ -47,7 +47,7 @@ class StatusIconManager(object):
 		icon_instance = message.icon.instance
 		if not icon_instance in self.icons:
 			self.icons[icon_instance] = []
-		assert message.icon not in self.icons[icon_instance]
+		assert not message.icon in self.icons[icon_instance]
 		self.icons[icon_instance].append(message.icon)
 		# Sort, make sure highest icon is at top
 		self.icons[icon_instance] = sorted(self.icons[icon_instance], key=StatusIcon.get_sorting_key())
@@ -79,7 +79,7 @@ class StatusIconManager(object):
 
 		rel = fife.Point(8, -8) # TODO: find suitable place within instance
 		# NOTE: rel is interpreted as pixel offset on screen
-		node = fife.RendererNode(instance, rel)
+		node = fife.RendererNode(instance.fife_instance, rel)
 
 		try: # to load an animation
 			anim = horizons.main.fife.animationloader.loadResource(status.icon)
