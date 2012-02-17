@@ -32,6 +32,7 @@ import mock
 # check if SIGALRM is supported, this is not the case on Windows
 # we might provide an alternative later, but for now, this will do
 try:
+	from signal import SIGALRM
 	TEST_TIMELIMIT = True
 except ImportError:
 	TEST_TIMELIMIT = False

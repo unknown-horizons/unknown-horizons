@@ -341,7 +341,7 @@ class Settler(BuildableRect, CollectingBuilding, BasicBuilding):
 			unhappy = self.happiness < self.__get_data("happiness_inhabitants_decrease_limit")
 			# check for changes
 			if unhappy and not hasattr(self, "_settler_status_icon"):
-				self._settler_status_icon = SettlerUnhappyStatus(self.fife_instance) # save ref for removal later
+				self._settler_status_icon = SettlerUnhappyStatus(self) # save ref for removal later
 				self.session.message_bus.broadcast(AddStatusIcon(self, self._settler_status_icon))
 			if not unhappy and hasattr(self, "_settler_status_icon"):
 				self.session.message_bus.broadcast(RemoveStatusIcon(self, self._settler_status_icon))
