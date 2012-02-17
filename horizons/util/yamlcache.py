@@ -98,7 +98,19 @@ class YamlCache(object):
 			if game_data: # need to convert some values
 				data = convert_game_data(data)
 			cls.lock.acquire()
-			cls.cache[filename] = (h, data)
+			try:
+				cls.cache[filename] = (h, data)
+			except Exception as e:
+				# when something unexpected happens, shelve does not guarantee anything.
+				# since crashing on any access is part of the specified behaviour, we need to handle it.
+				# cf. http://bugs.python.org/issue14041
+				print 'Warning: Can\'t write to shelve: ', e
+				# delete cache and try again
+				os.remove(cls.cache_filename)
+				cls.cache = None
+				cls.lock.release()
+				return cls.get_yaml_file(filename, game_data=game_data)
+
 			if not cls.sync_scheduled:
 				cls.sync_scheduled = True
 				from horizons.extscheduler import ExtScheduler
