@@ -21,8 +21,6 @@
 
 import operator
 
-import horizons.main
-
 """Classes used for StatusIcon.
 
 Code design note:
@@ -39,14 +37,16 @@ Priority:
 Keep the numbers unique to avoid confusion when sorting.
 """
 class StatusIcon(object):
-	def __init__(self, priority, icon):
+	def __init__(self, priority, icon, instance):
 		"""
 		@param priority: integer
 		@param icon: fife identifier for animations or icons. Must be supported by either the animationloader
 								 or the imagemanager. (i.e. either file path or something like "as_buoy0+idle+45")
+		@param instance: the instance the icon is to be attached to
 		"""
 		self.priority = priority
 		self.icon = icon
+		self.instance = instance
 
 	@staticmethod
 	def get_sorting_key():
@@ -57,14 +57,6 @@ class StatusIcon(object):
 		"""
 		return operator.attrgetter("priority")
 
-	def render(self, renderer, key, renderernode):
-		try: # to load an animation
-			anim = horizons.main.fife.animationloader.loadResource( self.icon )
-			renderer.addAnimation( key, renderernode, anim )
-		except ValueError as e:
-			img = horizons.main.fife.imagemanager.load( self.icon )
-			renderer.addImage( key, renderernode, img )
-
 	def __cmp__(self, other):
 		return cmp(self.__class__, other.__class__)
 
@@ -74,15 +66,15 @@ class StatusIcon(object):
 
 class SettlerUnhappyStatus(StatusIcon):
 	# threshold is the inhabitants decrease level
-	def __init__(self):
-		super(SettlerUnhappyStatus, self).__init__( 1700, "as_attention_please+idle+45")
+	def __init__(self, instance):
+		super(SettlerUnhappyStatus, self).__init__( 1700, "as_attention_please+idle+45", instance)
 
 class InventoryFullStatus(StatusIcon):
-	def __init__(self, reslist):
+	def __init__(self, reslist, instance):
 		"""
 		@param reslist: list of integers describing the resources
 		"""
-		super(InventoryFullStatus, self).__init__( 1200, "as_inventory_full+idle+45")
+		super(InventoryFullStatus, self).__init__( 1200, "as_inventory_full+idle+45", instance)
 		self.reslist = reslist
 
 class ProductivityLowStatus(StatusIcon):
@@ -93,5 +85,5 @@ class ProductivityLowStatus(StatusIcon):
 
 class DecommissionedStatus(StatusIcon):
 	"""Terminology: productiviy = capacity utilisation"""
-	def __init__(self):
-		super(DecommissionedStatus, self).__init__( 800, "as_decommissioned+idle+45")
+	def __init__(self, instance):
+		super(DecommissionedStatus, self).__init__( 800, "as_decommissioned+idle+45", instance)
