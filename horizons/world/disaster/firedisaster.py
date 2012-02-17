@@ -21,6 +21,7 @@
 # ###################################################
 
 from horizons.world.disaster import Disaster
+from horizons.util.messaging.message import AddStatusIcon, RemoveStatusIcon
 from horizons.world.status import FireStatusIcon
 from horizons.constants import GAME_SPEED, BUILDINGS, RES
 from horizons.command.building import Tear
@@ -87,22 +88,14 @@ class FireDisaster(Disaster):
 		"""Infect a building with fire"""
 		self.log.debug("%s infecting %s at %s", self, building, building.position)
 		super(FireDisaster, self).infect(building)
-		if building.has_status_icon: # normal status icon
-			building._registered_status_icons.append(FireStatusIcon())
-			building._update_status() # needs to update right now
-		else: # add special status icon
-			building._update_status(FireStatusIcon())
+		building.session.message_bus.broadcast(AddStatusIcon(building, FireStatusIcon(building.fife_instance)))
 		self._affected_buildings.append(building)
 		Scheduler().add_new_object(Callback(self.wreak_havoc, building), self, run_in = self.TIME_BEFORE_HAVOC)
 
 	def recover(self, building):
 		self.log.debug("%s recovering %s at %s", self, building, building.position)
 		super(FireDisaster, self).recover(building)
-		if building.has_status_icon:
-			building._registered_status_icons.remove(FireStatusIcon())
-			building._update_status()
-		else:
-			building._update_status()
+		building.session.message_bus.broadcast(RemoveStatusIcon(building, FireStatusIcon(building.fife_instance)))
 		Scheduler().rem_call(self, Callback(self.wreak_havoc, building))
 		self._affected_buildings.remove(building)
 
