@@ -27,6 +27,7 @@ from horizons.constants import GAME_SPEED, BUILDINGS, RES
 from horizons.command.building import Tear
 from horizons.scheduler import Scheduler
 from horizons.util.python.callback import Callback
+from horizons.util import WorldObject
 
 class FireDisaster(Disaster):
 	"""Simulates a fire.
@@ -35,6 +36,8 @@ class FireDisaster(Disaster):
 	Starts at a certain building and will spread out over time.
 
 	"""
+
+	TYPE = "The Flames Of The End"
 
 	SEED_CHANCE = 0.9
 
@@ -54,15 +57,30 @@ class FireDisaster(Disaster):
 		super(FireDisaster, self).__init__(settlement, manager)
 		self._affected_buildings = []
 
+	def save(self, db):
+		super(FireDisaster, self).save(db)
+		for building in self._affected_buildings:
+			ticks = Scheduler().get_remaining_ticks(self, Callback(self.wreak_havoc, building), True)
+			db("INSERT INTO fire_disaster(disaster, building, remaining_ticks_havoc) VALUES(?, ?, ?)",
+			   self.worldid, building.worldid, ticks)
+
+	def load(self, db, worldid):
+
+		super(FireDisaster, self).load(db, worldid)
+		for building_id, ticks in db("SELECT building, remaining_ticks_havoc FROM fire_disaster WHERE disaster = ?", worldid):
+			# do half of infect()
+			building = WorldObject.get_object_by_id(building_id)
+			building.session.message_bus.broadcast(AddStatusIcon(building, FireStatusIcon(building)))
+			self._affected_buildings.append(building)
+			Scheduler().add_new_object(Callback(self.wreak_havoc, building), self, run_in = ticks)
+
 	def breakout(self):
+		assert self.can_breakout(self._settlement)
+		super(FireDisaster, self).breakout()
 		possible_buildings = self._settlement.get_buildings_by_id(BUILDINGS.RESIDENTIAL_CLASS)
-		if len(possible_buildings) == 0:
-			self.log.debug("%s no buildings to breakout at", self)
-			return False
 		building = self._settlement.session.random.choice( possible_buildings )
 		self.infect(building)
 		self.log.debug("%s breakout out on %s at %s", self, building, building.position)
-		return True
 
 	@classmethod
 	def can_breakout(cls, settlement):
@@ -88,14 +106,15 @@ class FireDisaster(Disaster):
 		"""Infect a building with fire"""
 		self.log.debug("%s infecting %s at %s", self, building, building.position)
 		super(FireDisaster, self).infect(building)
-		building.session.message_bus.broadcast(AddStatusIcon(building, FireStatusIcon(building.fife_instance)))
+		# keep in sync with load()
+		building.session.message_bus.broadcast(AddStatusIcon(building, FireStatusIcon(building)))
 		self._affected_buildings.append(building)
 		Scheduler().add_new_object(Callback(self.wreak_havoc, building), self, run_in = self.TIME_BEFORE_HAVOC)
 
 	def recover(self, building):
 		self.log.debug("%s recovering %s at %s", self, building, building.position)
 		super(FireDisaster, self).recover(building)
-		building.session.message_bus.broadcast(RemoveStatusIcon(building, FireStatusIcon(building.fife_instance)))
+		building.session.message_bus.broadcast(RemoveStatusIcon(building, FireStatusIcon(building)))
 		Scheduler().rem_call(self, Callback(self.wreak_havoc, building))
 		self._affected_buildings.remove(building)
 

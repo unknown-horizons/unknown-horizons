@@ -52,6 +52,14 @@ class SavegameUpgrader(object):
 			db("INSERT INTO storage_slot_limit(object, slot, value) VALUES(?, ?, ?)",
 			   settler_id, 42, 1)
 
+	def _upgrade_to_rev52(self, db):
+		# create empty disaster tables
+		db('CREATE TABLE "disaster" ( type STRING NOT NULL, settlement INTEGER NOT NULL, remaining_ticks_expand INTEGER NOT NULL)')
+		db('CREATE TABLE "fire_disaster" ( disaster INTEGER NOT NULL, building INTEGER NOT NULL, remaining_ticks_havoc INTEGER NOT NULL )')
+		db('CREATE TABLE "disaster_manager" ( remaining_ticks INTEGER NOT NULL )')
+		db('INSERT INTO "disaster_manager" VALUES(1)')
+
+
 	def _upgrade(self):
 		# fix import loop
 		from horizons.savegamemanager import SavegameManager
@@ -74,6 +82,8 @@ class SavegameUpgrader(object):
 				self._upgrade_to_rev50(db)
 			if rev < 51:
 				self._upgrade_to_rev51(db)
+			if rev < 52:
+				self._upgrade_to_rev52(db)
 
 
 			db.close()

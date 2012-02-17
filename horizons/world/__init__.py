@@ -269,6 +269,8 @@ class World(BuildingOwner, LivingObject, WorldObject):
 		self.diplomacy.add_diplomacy_status_changed_listener(notify_change)
 
 		self.disaster_manager = DisasterManager(self.session)
+		if self.session.is_game_loaded():
+			self.disaster_manager.load(savegame_db)
 
 		self.inited = True
 		"""TUTORIAL:
@@ -821,6 +823,7 @@ class World(BuildingOwner, LivingObject, WorldObject):
 			bullet.save(db)
 		self.diplomacy.save(db)
 		Weapon.save_attacks(db)
+		self.disaster_manager.save(db)
 
 	def save_map(self, path, prefix):
 		map_file = os.path.join(path, prefix + '.sqlite')

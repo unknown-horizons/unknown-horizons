@@ -25,6 +25,7 @@ import logging
 from horizons.world.disaster.firedisaster import FireDisaster
 from horizons.scheduler import Scheduler
 from horizons.constants import GAME_SPEED
+from horizons.util import WorldObject
 
 class DisasterManager(object):
 	"""The disaster manager manages disasters. It seeds them into the
@@ -45,10 +46,26 @@ class DisasterManager(object):
 		# Mapping settlement -> active disasters
 		self._active_disaster = {}
 
-		Scheduler().add_new_object(self.run, self, run_in = self.CALL_EVERY, loops = -1)
+		Scheduler().add_new_object(self.run, self, run_in=self.CALL_EVERY, loops=-1)
 
-	def tick(self):
-		pass
+	def save(self, db):
+		ticks = Scheduler().get_remaining_ticks(self, self.run, True)
+		db("INSERT INTO disaster_manager(remaining_ticks) VALUES(?)", ticks)
+		for disaster in self._active_disaster.itervalues():
+			disaster.save(db)
+
+	def load(self, db):
+		Scheduler().rem_all_classinst_calls(self)
+		ticks = db("SELECT remaining_ticks FROM disaster_manager")[0][0] # one entry only
+		Scheduler().add_new_object(self.run, self, run_in=ticks,
+		                           loop_interval=self.CALL_EVERY, loops = -1)
+
+		for disaster_id, disaster_type, settlement_id in db("SELECT rowid, type, settlement FROM disaster"):
+			settlement = WorldObject.get_object_by_id(settlement_id)
+			klass = (i for i in  self.disasters if i.TYPE == disaster_type).next()
+			cata = klass(settlement, self)
+			self._active_disaster[settlement] = cata
+			cata.load(db, disaster_id)
 
 	def run(self):
 		for settlement in self.session.world.settlements:
