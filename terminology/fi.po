@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2011-07-08 16:54+0200\n"
-"PO-Revision-Date: 2011-12-05 18:54+0200\n"
+"PO-Revision-Date: 2012-01-30 17:04+0200\n"
 "Last-Translator: Aleksi <aleksi.kinnunen@ovi.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: fi\n"
@@ -440,7 +440,6 @@ msgid "hold"
 msgstr "pidä"
 
 # 80%
-#, fuzzy
 msgid "hunt"
 msgstr "metsästää"
 
