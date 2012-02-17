@@ -33,6 +33,7 @@ from horizons.world.status import ProductivityLowStatus, DecommissionedStatus, I
 from horizons.world.production.unitproduction import UnitProduction
 from horizons.command.unit import CreateUnit
 from horizons.util.changelistener import metaChangeListenerDecorator
+from horizons.util.messaging.message import AddStatusIcon, RemoveStatusIcon
 
 @metaChangeListenerDecorator("production_finished")
 class Producer(Component):
@@ -211,6 +212,8 @@ class Producer(Component):
 			self._get_production(prod_line_id).alter_production_time(modifier)
 
 	def remove(self):
+		if hasattr(self, "_producer_status_icon"):
+			self.session.message_bus.broadcast(RemoveStatusIcon(self, self._producer_status_icon))
 		super(Producer, self).remove()
 		Scheduler().rem_all_classinst_calls(self)
 		for production in self.get_productions():
@@ -314,11 +317,11 @@ class Producer(Component):
 				affected_res = set() # find them:
 				for prod in self.get_productions():
 					affected_res = affected_res.union( prod.get_unstorable_produced_res() )
-				self._producer_status_icon = InventoryFullStatus(affected_res)
-				self.instance._registered_status_icons.append( self._producer_status_icon )
+				self._producer_status_icon = InventoryFullStatus(affected_res, self.instance.fife_instance)
+				self.session.message_bus.broadcast(AddStatusIcon(self, self._producer_status_icon))
 
 			if not full and hasattr(self, "_producer_status_icon"):
-				self.instance._registered_status_icons.remove( self._producer_status_icon )
+				self.session.message_bus.broadcast(RemoveStatusIcon(self, self._producer_status_icon))
 				del self._producer_status_icon
 
 	def get_status_icons(self):

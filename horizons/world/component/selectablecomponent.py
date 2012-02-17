@@ -104,8 +104,13 @@ class SelectableBuildingComponent(SelectableComponent):
 
 	# these smell like instance attributes, but sometimes have to be used in non-instance
 	# contexts (e.g. building tool).
-	_selected_tiles = [] # tiles that are selected. used for clean deselect.
-	_selected_fake_tiles = [] # fake tiles create over ocean to select (can't select ocean directly)
+	class ListHolder(object):
+		def __init__(self):
+			self.l = []
+
+	# read/write on class variables is somewhat borked in python, so
+	_selected_tiles = ListHolder() # tiles that are selected. used for clean deselect.
+	_selected_fake_tiles = ListHolder() # fake tiles create over ocean to select (can't select ocean directly)
 
 	def __init__(self, tabs, enemy_tabs, range_applies_only_on_island=True):
 		super(SelectableBuildingComponent, self).__init__(tabs, enemy_tabs)
@@ -148,9 +153,9 @@ class SelectableBuildingComponent(SelectableComponent):
 		renderer = self.session.view.renderer['InstanceRenderer']
 		renderer.removeOutlined(self.instance._instance)
 		renderer.removeAllColored()
-		for fake_tile in self.__class__._selected_fake_tiles:
+		for fake_tile in self.__class__._selected_fake_tiles.l:
 			self.session.view.layers[LAYERS.FIELDS].deleteInstance(fake_tile)
-		del self.__class__._selected_fake_tiles[:] # delete inplace, assignment would operate on lowest class in hierarchy
+		self.__class__._selected_fake_tiles.l = []
 
 	def remove(self):
 		#TODO move this as a listener
@@ -184,17 +189,17 @@ class SelectableBuildingComponent(SelectableComponent):
 	def deselect_building(cls, session):
 		"""@see select_building
 		Used by building tool, allows incremental updates
-		@return list of tiles that were deselected."""
+		@return list of tiles that were deselected (only normal tiles, no fake tiles)"""
 		remove_colored = session.view.renderer['InstanceRenderer'].removeColored
-		for tile in cls._selected_tiles:
+		for tile in cls._selected_tiles.l:
 			remove_colored(tile._instance)
 			if tile.object is not None:
 				remove_colored(tile.object._instance)
-		selected_tiles = cls._selected_tiles
-		del cls._selected_tiles[:] # delete inplace, assignment would operate on lowest class in hierarchy
-		for fake_tile in cls._selected_fake_tiles:
+		selected_tiles = cls._selected_tiles.l
+		cls._selected_tiles.l = []
+		for fake_tile in cls._selected_fake_tiles.l:
 			session.view.layers[LAYERS.FIELDS].deleteInstance(fake_tile)
-		del cls._selected_fake_tiles[:] # delete inplace, assignment would operate on lowest class in hierarchy
+		cls._selected_fake_tiles.l = []
 		return selected_tiles
 
 	@classmethod
@@ -246,12 +251,12 @@ class SelectableBuildingComponent(SelectableComponent):
 					                            fife.ModelCoordinate(tup[0], tup[1], 0), "")
 					fife.InstanceVisual.create(inst)
 
-					cls._selected_fake_tiles.append(inst)
+					cls._selected_fake_tiles.l.append(inst)
 					renderer.addColored(inst, *cls.selection_color)
 
 	@classmethod
 	def _add_selected_tile(cls, tile, renderer):
-		cls._selected_tiles.append(tile)
+		cls._selected_tiles.l.append(tile)
 		renderer.addColored(tile._instance, *cls.selection_color)
 		# Add color to objects on tht tiles
 		renderer.addColored(tile.object._instance, *cls.selection_color)

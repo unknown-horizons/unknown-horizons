@@ -37,6 +37,7 @@ from horizons.command.production import ToggleActive
 from horizons.world.component.storagecomponent import StorageComponent
 from horizons.world.status import SettlerUnhappyStatus
 from horizons.world.production.producer import Producer
+from horizons.util.messaging.message import AddStatusIcon, RemoveStatusIcon
 
 class SettlerRuin(BasicBuilding, BuildableSingle):
 	"""Building that appears when a settler got unhappy. The building does nothing.
@@ -128,6 +129,11 @@ class Settler(BuildableRect, CollectingBuilding, BasicBuilding):
 		if self.get_component(Producer).has_production_line(upgrade_material_prodline):
 			return self.get_component(Producer)._get_production(upgrade_material_prodline)
 		return None
+
+	def remove(self):
+		super(Settler, self).remove()
+		if hasattr(self, "_settler_status_icon"):
+			self.session.message_bus.broadcast(RemoveStatusIcon(self, self._settler_status_icon))
 
 	@property
 	def upgrade_allowed(self):
@@ -335,10 +341,10 @@ class Settler(BuildableRect, CollectingBuilding, BasicBuilding):
 			unhappy = self.happiness < self.__get_data("happiness_inhabitants_decrease_limit")
 			# check for changes
 			if unhappy and not hasattr(self, "_settler_status_icon"):
-				self._settler_status_icon = SettlerUnhappyStatus() # save ref for removal later
-				self._registered_status_icons.append( self._settler_status_icon )
+				self._settler_status_icon = SettlerUnhappyStatus(self.fife_instance) # save ref for removal later
+				self.session.message_bus.broadcast(AddStatusIcon(self, self._settler_status_icon))
 			if not unhappy and hasattr(self, "_settler_status_icon"):
-				self._registered_status_icons.remove( self._settler_status_icon )
+				self.session.message_bus.broadcast(RemoveStatusIcon(self, self._settler_status_icon))
 				del self._settler_status_icon
 
 	def __str__(self):

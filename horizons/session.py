@@ -47,6 +47,8 @@ from horizons.savegamemanager import SavegameManager
 from horizons.scenario import ScenarioEventHandler
 from horizons.world.component.ambientsoundcomponent import AmbientSoundComponent
 from horizons.constants import GAME_SPEED, PATHS
+from horizons.util.messaging.messagebus import MessageBus
+from horizons.world.managers.statusiconmanager import StatusIconManager
 
 class Session(LivingObject):
 	"""Session class represents the games main ingame view and controls cameras and map loading.
@@ -121,6 +123,10 @@ class Session(LivingObject):
 		self.coordinates_tooltip = None
 		self.display_speed()
 		LastActivePlayerSettlementManager.create_instance(self)
+
+		self.message_bus = MessageBus()
+
+		self.status_icon_manager = StatusIconManager(self)
 
 		self.selected_instances = set()
 		self.selection_groups = [set()] * 10 # List of sets that holds the player assigned unit groups.

@@ -19,11 +19,8 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-from fife import fife
-
 from horizons.scheduler import Scheduler
 from horizons.util import WorldObject, Callback, ActionSetLoader
-from horizons.world.status import StatusIcon
 from horizons.world.units import UnitClass
 from random import randint
 
@@ -58,23 +55,6 @@ class ConcreteObject(WorldObject):
 		self.has_status_icon = self.is_building and \
 		  not self.id in self.session.db.get_status_icon_exclusions() and \
 			self.owner == self.session.world.player # and only for the player's buildings
-
-		# BIG FAT NOTE: this has to be executed for all players for mp
-		# even if this building has no status icons
-
-		interval = Scheduler().get_ticks(3)
-		run_in = self.session.random.randint(1, interval) # don't update all at once
-		if self.has_status_icon:
-			# update now
-			Scheduler().add_new_object(self._update_status, self, run_in=0)
-
-			# use session random to keep it synchronised in mp games,
-			# to be safe in case get_status_icon calls anything that changes anything
-			Scheduler().add_new_object(self._update_status, self, run_in=run_in, loops=-1,
-				                         loop_interval = interval)
-
-			# status icons, that are expensive to decide, can be appended/removed here
-			self._registered_status_icons = []
 
 	@property
 	def fife_instance(self):
@@ -114,52 +94,10 @@ class ConcreteObject(WorldObject):
 		return (action in ActionSetLoader.get_sets()[self._action_set_id])
 
 	def remove(self):
-		self._remove_status_icon()
 		self._instance.getLocationRef().getLayer().deleteInstance(self._instance)
 		self._instance = None
 		Scheduler().rem_all_classinst_calls(self)
 		super(ConcreteObject, self).remove()
-
-	def get_status_icons(self):
-		"""Returns a list of StatusIcon instances"""
-		return self._registered_status_icons[:] # always add pushed icons
-
-	@property
-	def _status_icon_key(self):
-		return "status_"+str(self.worldid)
-
-	@property
-	def _status_icon_renderer(self):
-		return self.session.view.renderer['GenericRenderer']
-
-	def _update_status(self, additional_icon=None):
-		"""Handles status icon bar.
-		@param additional_icon: add a special icon (one-time)
-		"""
-		if not additional_icon:
-			status_list = self.get_status_icons()
-		else:
-			status_list = (additional_icon, )
-
-		if hasattr(self, "_old_status_list"):
-			if status_list == self._old_status_list:
-				return
-		self._old_status_list = status_list
-
-		self._remove_status_icon()
-
-		if status_list:
-			status = max(status_list, key=StatusIcon.get_sorting_key())
-
-			# draw
-			rel = fife.Point(8, -8) # TODO: find suitable place within instance
-			# NOTE: rel is interpreted as pixel offset on screen
-			node = fife.RendererNode(self.fife_instance, rel)
-			status.render(self._status_icon_renderer, self._status_icon_key, node)
-
-	def _remove_status_icon(self):
-		if self.has_status_icon:
-			self._status_icon_renderer.removeAll(self._status_icon_key)
 
 	@classmethod
 	def get_random_action_set(cls, level=0, exact_level=False):

@@ -489,7 +489,6 @@ class BuildingTool(NavigationTool):
 			if self.last_change_listener is not None:
 				self._build_logic.add_change_listener(self.last_change_listener, self)
 
-
 	def force_update(self):
 		self.update_preview(force=True)
 
