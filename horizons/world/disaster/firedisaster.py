@@ -114,7 +114,7 @@ class FireDisaster(Disaster):
 	def recover(self, building):
 		self.log.debug("%s recovering %s at %s", self, building, building.position)
 		super(FireDisaster, self).recover(building)
-		building.session.message_bus.broadcast(RemoveStatusIcon(building, FireStatusIcon(building)))
+		building.session.message_bus.broadcast(RemoveStatusIcon(self, building, FireStatusIcon))
 		Scheduler().rem_call(self, Callback(self.wreak_havoc, building))
 		self._affected_buildings.remove(building)
 

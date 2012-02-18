@@ -63,10 +63,10 @@ class StatusIconManager(object):
 	def on_remove_icon_message(self, message):
 		"""Called by the MessageBus with RemoveStatusIcon messages."""
 		assert isinstance(message, RemoveStatusIcon)
-		icon_instance = message.icon.instance
+		icon_instance = message.instance
 		if icon_instance in self.icons:
 			for registered_icon in self.icons[icon_instance][:]:
-				if message.icon.__class__ is registered_icon.__class__:
+				if message.icon_class is registered_icon.__class__:
 					self.icons[icon_instance].remove(registered_icon)
 					if len(self.icons[icon_instance]) == 0:
 						# No icon left for this building, remove it

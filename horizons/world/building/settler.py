@@ -344,7 +344,7 @@ class Settler(BuildableRect, CollectingBuilding, BasicBuilding):
 				self._settler_status_icon = SettlerUnhappyStatus(self) # save ref for removal later
 				self.session.message_bus.broadcast(AddStatusIcon(self, self._settler_status_icon))
 			if not unhappy and hasattr(self, "_settler_status_icon"):
-				self.session.message_bus.broadcast(RemoveStatusIcon(self, self._settler_status_icon))
+				self.session.message_bus.broadcast(RemoveStatusIcon(self, self, SettlerUnhappyStatus))
 				del self._settler_status_icon
 
 	def __str__(self):

@@ -37,9 +37,12 @@ class AddStatusIcon(Message):
 
 class RemoveStatusIcon(Message):
 
-	def __init__(self, sender, icon):
+	def __init__(self, sender, instance, icon_class):
+		"""@param instance: the instance from which to remove the icon
+		@param icon_class: class object of the icon that is to be removed"""
 		super(RemoveStatusIcon, self).__init__(sender)
-		self.icon = icon
+		self.instance = instance
+		self.icon_class = icon_class
 
 class RemoveAllStatusIcons(Message):
 
