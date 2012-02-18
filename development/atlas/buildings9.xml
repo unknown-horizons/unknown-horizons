@@ -148,5 +148,9 @@
 	<image source="content/gfx/buildings/pioneers/streets/as_gravel_path/d/225/0.png" xpos="576" ypos="992" width="64" height="32"/>
 	<image source="content/gfx/buildings/pioneers/streets/as_gravel_path/d/315/0.png" xpos="640" ypos="992" width="64" height="32"/>
 	<image source="content/gfx/buildings/pioneers/streets/as_gravel_path/d/45/0.png" xpos="704" ypos="992" width="64" height="32"/>
+	<image source="content/gfx/buildings/pioneers/streets/as_gravel_path/single/135/0.png" xpos="768" ypos="992" width="64" height="32"/>
+	<image source="content/gfx/buildings/pioneers/streets/as_gravel_path/single/225/0.png" xpos="832" ypos="992" width="64" height="32"/>
+	<image source="content/gfx/buildings/pioneers/streets/as_gravel_path/single/315/0.png" xpos="896" ypos="992" width="64" height="32"/>
+	<image source="content/gfx/buildings/pioneers/streets/as_gravel_path/single/45/0.png" xpos="960" ypos="992" width="64" height="32"/>
 </atlas>
 
