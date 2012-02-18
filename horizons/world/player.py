@@ -143,7 +143,6 @@ class HumanPlayer(Player):
 			self.session.ingame_gui.message_widget.add(coords[0], coords[1], \
 			                                                    'SETTLER_LEVEL_UP',
 			                                                    {'level': message.level+1})
-			self.session.ingame_gui._player_settler_level_change_listener()
 		return level_up
 
 	def notify_mine_empty(self, mine):

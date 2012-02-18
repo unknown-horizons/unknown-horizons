@@ -100,6 +100,8 @@ class Session(LivingObject):
 		self.savecounter = 0
 		self.is_alive = True
 
+		self.message_bus = MessageBus()
+
 		# misc
 		WorldObject.reset()
 		NamedComponent.reset()
@@ -124,7 +126,6 @@ class Session(LivingObject):
 		self.display_speed()
 		LastActivePlayerSettlementManager.create_instance(self)
 
-		self.message_bus = MessageBus()
 
 		self.status_icon_manager = StatusIconManager(self)
 

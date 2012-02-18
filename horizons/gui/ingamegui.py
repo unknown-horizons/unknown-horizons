@@ -43,6 +43,7 @@ from horizons.command.misc import Chat
 from horizons.gui.tabs.tabinterface import TabInterface
 from horizons.world.component.namedcomponent import SettlementNameComponent, NamedComponent
 from horizons.world.component.selectablecomponent import SelectableComponent
+from horizons.util.messaging.message import SettlerUpdate
 
 class IngameGui(LivingObject):
 	"""Class handling all the ingame gui events.
@@ -138,6 +139,9 @@ class IngameGui(LivingObject):
 		for building_id in Entities.buildings.iterkeys():
 			self.callbacks_build[building_id] = Callback(self._build, building_id)
 
+		# Register for messages
+		self.session.message_bus.subscribe_globally(SettlerUpdate, self._on_settler_level_change)
+
 	def end(self):
 		self.widgets['minimap'].mapEvents({
 			'zoomIn' : None,
@@ -158,6 +162,7 @@ class IngameGui(LivingObject):
 		self.tabwidgets = None
 		self.minimap = None
 		self.hide_menu()
+		self.session.message_bus.unsubscribe_globally(SettlerUpdate, self._on_settler_level_change)
 		super(IngameGui, self).end()
 
 	def cityinfo_set(self, settlement):
@@ -444,7 +449,7 @@ class IngameGui(LivingObject):
 		wdg.resizeToContent()
 		self.widgets['minimap'].show()
 
-	def _player_settler_level_change_listener(self):
+	def _on_settler_level_change(self, message):
 		"""Gets called when the player changes"""
 		menu = self.get_cur_menu()
 		if hasattr(menu, "name"):

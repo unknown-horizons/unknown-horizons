@@ -98,7 +98,6 @@ class Settler(BuildableRect, CollectingBuilding, BasicBuilding):
 		self.__init(loading = True, last_tax_payed = last_tax_payed)
 		self._load_upgrade_data(db)
 		self.session.message_bus.broadcast(SettlerUpdate(self, self.level))
-		#self.owner.notify_settler_reached_level(self)
 		self.run(remaining_ticks)
 
 	def load_production(self, db, worldid):
@@ -289,10 +288,9 @@ class Settler(BuildableRect, CollectingBuilding, BasicBuilding):
 			self.log.debug("%s: Levelling up to %s", self, self.level)
 			self._update_level_data()
 
+			# Notify the world about the level up
 			self.session.message_bus.broadcast(SettlerUpdate(self, self.level))
 
-			# notify owner about new level
-			#self.owner.notify_settler_reached_level(self)
 			# reset happiness value for new level
 			self.get_component(StorageComponent).inventory.alter(RES.HAPPINESS_ID, self.__get_data("happiness_init_value") - self.happiness)
 			self._changed()
