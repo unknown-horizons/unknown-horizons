@@ -62,7 +62,14 @@ class Producer(Component):
 		# production lines)
 		self._productions = {}
 		self._inactive_productions = {}
+		# Store whether or not the producer is active
 		self.__active = True
+		# Store whether or not the utilisation level is currently ok
+		self.__utilisation_ok = True
+		if self.instance.has_status_icon:
+			interval = Scheduler().get_ticks(3)
+			run_in = self.session.random.randint(1, interval) # don't update all at once
+			Scheduler().add_new_object(self.update_capacity_utilisation, self, run_in=run_in, loops=-1, loop_interval = interval)
 
 
 	def initialize(self):
@@ -91,7 +98,7 @@ class Producer(Component):
 		production_class = self.production_class
 		owner_inventory = self.instance._get_owner_inventory()
 		return production_class(inventory = self.instance.get_component(StorageComponent).inventory, \
-		                        owner_inventory=owner_inventory, prod_id=id, prod_data=data)
+				                owner_inventory=owner_inventory, prod_id=id, prod_data=data)
 
 	def add_production_by_id(self, production_line_id, start_finished=False):
 		"""Convenience method.
@@ -100,7 +107,19 @@ class Producer(Component):
 		production_class = self.production_class
 		owner_inventory = self.instance._get_owner_inventory()
 		self.add_production(production_class(self.instance.get_component(StorageComponent).inventory, owner_inventory, \
-		                                     production_line_id, self.production_lines[production_line_id], start_finished=start_finished))
+				                             production_line_id, self.production_lines[production_line_id], start_finished=start_finished))
+
+
+	def update_capacity_utilisation(self):
+		"""Called by the scheduler to update the utilisation regularly"""
+		if not self.capacity_utilisation_below(ProductivityLowStatus.threshold) is not self.__utilisation_ok:
+			print self.__utilisation_ok
+			self.__utilisation_ok = not self.__utilisation_ok
+			if self.__utilisation_ok:
+				self.session.message_bus.broadcast(RemoveStatusIcon(self, self.instance, ProductivityLowStatus))
+			else:
+				icon = ProductivityLowStatus(self.instance)
+				self.session.message_bus.broadcast(AddStatusIcon(self, icon))
 
 	@property
 	def capacity_utilisation(self):
@@ -127,7 +146,7 @@ class Producer(Component):
 			# all those values are relative values, so we can just do this:
 			interval = diff * PRODUCTION.STATISTICAL_WINDOW
 			self._old_capacity_utilisation = (cur_tick + interval, # expiration date
-			                                  limit, capac < limit )
+						                      limit, capac < limit )
 		return self._old_capacity_utilisation[2]
 
 
@@ -260,7 +279,7 @@ class Producer(Component):
 			return False
 		else:
 			assert production.get_production_line_id() in self._productions or \
-			       production.get_production_line_id() in self._inactive_productions
+				   production.get_production_line_id() in self._inactive_productions
 			return not production.is_paused()
 
 	def set_active(self, production=None, active=True):
@@ -404,7 +423,7 @@ class QueueProducer(Producer):
 		state = self._get_current_state()
 		return (state is PRODUCTION.STATES.done or\
 				state is PRODUCTION.STATES.none or\
-		        state is PRODUCTION.STATES.paused) and\
+				state is PRODUCTION.STATES.paused) and\
 			   (len(self.production_queue) > 0)
 
 	def on_queue_element_finished(self, production):
