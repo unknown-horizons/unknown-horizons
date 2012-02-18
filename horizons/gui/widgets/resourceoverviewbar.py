@@ -79,6 +79,7 @@ class ResourceOverviewBar(object):
 	  0: [ RES.TOOLS_ID, RES.BOARDS_ID ],
 	  1: [ RES.TOOLS_ID, RES.BOARDS_ID, RES.BRICKS_ID ],
 	  2: [ RES.TOOLS_ID, RES.BOARDS_ID, RES.BRICKS_ID ],
+	  3: [ RES.TOOLS_ID, RES.BOARDS_ID, RES.BRICKS_ID ],
 	}
 
 	def __init__(self, session):
