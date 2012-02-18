@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2012-02-08 02:09+0100\n"
-"PO-Revision-Date: 2012-02-13 15:18+0200\n"
+"PO-Revision-Date: 2012-02-13 15:19+0200\n"
 "Last-Translator: Traveler <guillaume.pascal43@laposte.net>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: fr\n"
@@ -606,12 +606,13 @@ msgstr "Échec lors de l'effacement de la sauvegarde !"
 msgid "[{key}] = {text}"
 msgstr "[{key}] = {text}"
 
+# 97%
 #. (tooltip of widget: headline)
 #: horizons/gui/ingamegui.py:206 horizons/gui/tabs/mainsquaretabs.py:108
 #: horizons/gui/widgets/playerssettlements.py:101
 #: horizons/i18n/guitranslations.py:368 horizons/i18n/guitranslations.py:399
 msgid "Click to change the name of your settlement"
-msgstr ""
+msgstr "Cliquez pour changer le nom de votre colonie."
 
 #. e.g. when the pirate is disabled
 #. this dialog is pretty useless in this case
@@ -1105,11 +1106,12 @@ msgstr "Total"
 msgid "Ships of {player}"
 msgstr "Navires de {player}"
 
+# 97%
 #. (tooltip of widget: name)
 #: horizons/gui/widgets/playersships.py:82
 #: horizons/i18n/guitranslations.py:439 horizons/i18n/guitranslations.py:450
 msgid "Click to change the name of this ship"
-msgstr ""
+msgstr "Cliquez pour changer le nom de ce navire."
 
 #. i18n There are no weapons equipped at the moment.
 #: horizons/gui/widgets/playersships.py:97

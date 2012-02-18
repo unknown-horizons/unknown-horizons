@@ -580,12 +580,14 @@ msgstr "Verwijderen opgeslagen spel mislukt!"
 msgid "[{key}] = {text}"
 msgstr ""
 
+# 97%
 #. (tooltip of widget: headline)
 #: horizons/gui/ingamegui.py:206 horizons/gui/tabs/mainsquaretabs.py:108
 #: horizons/gui/widgets/playerssettlements.py:101
 #: horizons/i18n/guitranslations.py:368 horizons/i18n/guitranslations.py:399
+#, fuzzy
 msgid "Click to change the name of your settlement"
-msgstr ""
+msgstr "Klik om de naam van uw kolonie te wijzigen."
 
 #. e.g. when the pirate is disabled
 #. this dialog is pretty useless in this case
@@ -1052,11 +1054,13 @@ msgstr ""
 msgid "Ships of {player}"
 msgstr ""
 
+# 97%
 #. (tooltip of widget: name)
 #: horizons/gui/widgets/playersships.py:82
 #: horizons/i18n/guitranslations.py:439 horizons/i18n/guitranslations.py:450
+#, fuzzy
 msgid "Click to change the name of this ship"
-msgstr ""
+msgstr "Klik om de naam van dit schip te wijzigen."
 
 #. i18n There are no weapons equipped at the moment.
 #: horizons/gui/widgets/playersships.py:97

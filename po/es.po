@@ -582,12 +582,14 @@ msgstr "¡Error al borrar la partida guardada!"
 msgid "[{key}] = {text}"
 msgstr ""
 
+# 97%
 #. (tooltip of widget: headline)
 #: horizons/gui/ingamegui.py:206 horizons/gui/tabs/mainsquaretabs.py:108
 #: horizons/gui/widgets/playerssettlements.py:101
 #: horizons/i18n/guitranslations.py:368 horizons/i18n/guitranslations.py:399
+#, fuzzy
 msgid "Click to change the name of your settlement"
-msgstr ""
+msgstr "Clica para cambiar el nombre de tu asentamiento."
 
 #. e.g. when the pirate is disabled
 #. this dialog is pretty useless in this case
@@ -1062,11 +1064,13 @@ msgstr "Total"
 msgid "Ships of {player}"
 msgstr "Barcos del {player}"
 
+# 97%
 #. (tooltip of widget: name)
 #: horizons/gui/widgets/playersships.py:82
 #: horizons/i18n/guitranslations.py:439 horizons/i18n/guitranslations.py:450
+#, fuzzy
 msgid "Click to change the name of this ship"
-msgstr ""
+msgstr "Clic aquí para cambiar el nombre del navío."
 
 #. i18n There are no weapons equipped at the moment.
 #: horizons/gui/widgets/playersships.py:97
