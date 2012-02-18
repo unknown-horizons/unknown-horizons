@@ -389,7 +389,8 @@ class ResBarMouseTool(NavigationTool):
 	Terminates self on mousePressed and restores old tool"""
 	def __init__(self, session, old_tool, on_click):
 		super(ResBarMouseTool, self).__init__(session)
-		old_tool.disable()
+		if old_tool: # can be None in corner cases
+			old_tool.disable()
 		self.old_tool = old_tool
 		self.on_click = on_click
 
@@ -399,6 +400,10 @@ class ResBarMouseTool(NavigationTool):
 
 	def reset(self):
 		"""Enable old tol again"""
-		self.session.cursor = self.old_tool
+		if self.old_tool:
+			self.session.cursor = self.old_tool
 		self.remove()
-		self.old_tool.enable()
+		if self.old_tool:
+			self.old_tool.enable()
+		else:
+			self.session.set_cursor()
