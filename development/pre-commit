@@ -76,7 +76,7 @@ _, files_modified, _= run("git diff-index --name-only HEAD")
 
 exitcode = 0
 # Find added prints in a git diff output
-r = re.compile('^.*print.*')
+r = re.compile('print ')
 
 for fname in files_modified:
 	if fname.strip().endswith(".py"):
@@ -96,10 +96,10 @@ for fname in files_modified:
 
 		# Check for added prints
 		print >>sys.stderr, "Checking for 'print' on %s: ... " %(fname),
-		_, output, _ = run("git diff %s" %(fname))
+		_, output, _ = run("git diff-index -u HEAD %s" %(fname))
 		found_re = False
 		for line in output:
-			if r.match(line):
+			if r.search(line):
 				if not found_re:
 					print >>sys.stderr, "\rChecking for 'print' on %s:" %(fname), bcolors.FAIL, "FAILED!", bcolors.ENDC
 					found_re = True
