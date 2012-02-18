@@ -28,6 +28,7 @@ from horizons.scenario import CONDITIONS
 from horizons.scheduler import Scheduler
 from horizons.world.componentholder import ComponentHolder
 from horizons.world.component.storagecomponent import StorageComponent
+from horizons.util.messaging.message import SettlerUpdate
 
 class Player(ComponentHolder, WorldObject):
 	"""Class representing a player"""
@@ -66,6 +67,7 @@ class Player(ComponentHolder, WorldObject):
 		self.difficulty = DifficultySettings.get_settings(difficulty_level)
 		self.settler_level = settlerlevel
 		assert self.color.is_default_color, "Player color has to be a default color"
+		self.session.message_bus.subscribe_globally(SettlerUpdate, self.notify_settler_reached_level)
 
 		if self.regular_player:
 			Scheduler().add_new_object(Callback(self.update_stats), self, run_in = 0)
@@ -112,12 +114,13 @@ class Player(ComponentHolder, WorldObject):
 		"""
 		self.log.warning("ERROR: UNIT %s CANNOT MOVE ANY FURTHER!", unit)
 
-	def notify_settler_reached_level(self, settler):
+	def notify_settler_reached_level(self, message):
 		"""Settler calls this to notify the player
 		@param settler: instance of Settler
 		@return: bool, True if level is greater than the current maximum level"""
-		if settler.level > self.settler_level:
-			self.settler_level = settler.level
+		isinstance(message, SettlerUpdate)
+		if message.level > self.settler_level:
+			self.settler_level = message.level
 			self.session.scenario_eventhandler.check_events(CONDITIONS.settler_level_greater)
 			for settlement in self.settlements:
 				settlement.level_upgrade(self.settler_level)
@@ -132,14 +135,14 @@ class Player(ComponentHolder, WorldObject):
 
 class HumanPlayer(Player):
 	"""Class for players that physically sit in front of the machine where the game is run"""
-	def notify_settler_reached_level(self, settler):
-		level_up = super(HumanPlayer, self).notify_settler_reached_level(settler)
+	def notify_settler_reached_level(self, message):
+		level_up = super(HumanPlayer, self).notify_settler_reached_level(message)
 		if level_up:
 			# add message and update ingame gui
-			coords = (settler.position.center().x, settler.position.center().y)
+			coords = (message.sender.position.center().x, message.sender.position.center().y)
 			self.session.ingame_gui.message_widget.add(coords[0], coords[1], \
 			                                                    'SETTLER_LEVEL_UP',
-			                                                    {'level': settler.level+1})
+			                                                    {'level': message.level+1})
 			self.session.ingame_gui._player_settler_level_change_listener()
 		return level_up
 

@@ -37,7 +37,7 @@ from horizons.command.production import ToggleActive
 from horizons.world.component.storagecomponent import StorageComponent
 from horizons.world.status import SettlerUnhappyStatus
 from horizons.world.production.producer import Producer
-from horizons.util.messaging.message import AddStatusIcon, RemoveStatusIcon
+from horizons.util.messaging.message import AddStatusIcon, RemoveStatusIcon, SettlerUpdate
 
 class SettlerRuin(BasicBuilding, BuildableSingle):
 	"""Building that appears when a settler got unhappy. The building does nothing.
@@ -97,7 +97,8 @@ class Settler(BuildableRect, CollectingBuilding, BasicBuilding):
 		    db("SELECT ticks FROM remaining_ticks_of_month WHERE rowid=?", worldid)[0][0]
 		self.__init(loading = True, last_tax_payed = last_tax_payed)
 		self._load_upgrade_data(db)
-		self.owner.notify_settler_reached_level(self)
+		self.session.message_bus.broadcast(SettlerUpdate(self, self.level))
+		#self.owner.notify_settler_reached_level(self)
 		self.run(remaining_ticks)
 
 	def load_production(self, db, worldid):
@@ -287,8 +288,11 @@ class Settler(BuildableRect, CollectingBuilding, BasicBuilding):
 			self.level += 1
 			self.log.debug("%s: Levelling up to %s", self, self.level)
 			self._update_level_data()
+
+			self.session.message_bus.broadcast(SettlerUpdate(self, self.level))
+
 			# notify owner about new level
-			self.owner.notify_settler_reached_level(self)
+			#self.owner.notify_settler_reached_level(self)
 			# reset happiness value for new level
 			self.get_component(StorageComponent).inventory.alter(RES.HAPPINESS_ID, self.__get_data("happiness_init_value") - self.happiness)
 			self._changed()

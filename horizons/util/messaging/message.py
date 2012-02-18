@@ -49,3 +49,9 @@ class RemoveAllStatusIcons(Message):
 	def __init__(self, sender, instance):
 		super(RemoveAllStatusIcons, self).__init__(sender)
 		self.instance = instance
+
+class SettlerUpdate(Message):
+
+	def __init__(self, sender, level):
+		super(SettlerUpdate, self).__init__(sender)
+		self.level = level
