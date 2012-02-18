@@ -31,11 +31,13 @@ to start the game. You usually don't need to work with this directly.
 If you want to dig into the game, continue to horizons/main.py. """
 
 __all__ = ['init_environment', 'get_fife_path']
+
 import sys
 import os
 import os.path
 import gettext
 import time
+import locale
 import logging
 import logging.config
 import logging.handlers
@@ -171,9 +173,9 @@ def excepthook_creator(outfilename):
 		traceback.print_exception(exception_type, value, tb, file=f)
 		traceback.print_exception(exception_type, value, tb)
 		print
-		print _('Unknown Horizons crashed.')
+		print _('Unknown Horizons hash crashed.')
 		print
-		print _('We are very sorry for this, and want to fix this error.')
+		print _('We are very sorry for this and want to fix underlying error.')
 		print _('In order to do this, we need the information from the logfile:')
 		print outfilename
 		print _('Please give it to us via IRC or our forum, for both see unknown-horizons.org .')
@@ -199,6 +201,9 @@ def main():
 	# abort silently on signal
 	signal.signal(signal.SIGINT, exithandler)
 	signal.signal(signal.SIGTERM, exithandler)
+
+	# use locale-specific time.strftime handling
+	locale.setlocale(locale.LC_TIME, '')
 
 	#chdir to Unknown Horizons root
 	os.chdir( find_uh_position() )

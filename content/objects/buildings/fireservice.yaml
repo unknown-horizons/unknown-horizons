@@ -14,8 +14,19 @@ buildingcosts: {1: 750, 4: 3, 6: 2, 7: 5}
 components:
 - SelectableComponent:
     type: building
-    tabs: [ProductionOverviewTab,]
+    tabs: [OverviewTab,]
     enemy_tabs: [EnemyBuildingOverviewTab,]
 - HealthComponent: {maxhealth: 1000}
+- ProducerComponent:
+   productionlines:
+     56464472:
+       produces: []
+       consumes:
+        - [42,-1] # consume fire
+       time: 1
+- StorageComponent:
+   inventory:
+     SlotsStorage:
+      slot_sizes: {42: 10}
 actionsets:
   as_fireservice0: {level: 0}

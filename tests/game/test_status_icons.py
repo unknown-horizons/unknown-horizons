@@ -26,8 +26,9 @@ from horizons.world.component.storagecomponent import StorageComponent
 from horizons.constants import BUILDINGS, RES
 from horizons.world.status import SettlerUnhappyStatus, DecommissionedStatus, ProductivityLowStatus, InventoryFullStatus
 from mock import Mock
+from horizons.util.messaging.message import AddStatusIcon
 
-from tests.game import settle, game_test
+from tests.game import settle, game_test, SPSession
 
 @game_test
 def test_productivity_low(session, player):
@@ -35,13 +36,22 @@ def test_productivity_low(session, player):
 
 	lj = Build(BUILDINGS.LUMBERJACK_CLASS, 30, 30, island, settlement=settlement)(player)
 
+	called = [False]
+
+	def add_icon(message):
+		isinstance(message, AddStatusIcon)
+		if message.icon.__class__ == ProductivityLowStatus:
+			called.__setitem__(0, True)
+
+	session.message_bus.subscribe_globally(AddStatusIcon, add_icon)
+
+
 	# precondition
 	assert abs(lj.get_component(Producer).capacity_utilisation) < 0.0001
 
-	# must be low
-	icons = lj.get_status_icons()
-	assert len(icons) == 1
-	assert isinstance(icons[0], ProductivityLowStatus)
+	# Not yet low
+	assert not called[0]
+
 
 	# set capac util to 100, can't change the property directly
 	get_comp_orig = lj.get_component
@@ -59,26 +69,33 @@ def test_productivity_low(session, player):
 	lj.get_component = _get_comp
 
 	assert abs(lj.get_component(Producer).capacity_utilisation) > 0.9999
-	icons = lj.get_status_icons()
-	assert len(icons) == 0
+	# Now low
+	assert called[0]
 
 @game_test
 def test_settler_unhappy(session, player):
 	settlement, island = settle(session)
+	assert isinstance(session, SPSession)
+
+	called = [False]
+
+	def add_icon(message):
+		isinstance(message, AddStatusIcon)
+		if message.icon.__class__ == SettlerUnhappyStatus:
+			called.__setitem__(0, True)
+
+	session.message_bus.subscribe_globally(AddStatusIcon, add_icon)
 
 	settler = Build(BUILDINGS.RESIDENTIAL_CLASS, 30, 30, island, settlement=settlement)(player)
 
 	# certainly not unhappy
 	assert settler.happiness > 0.45
-	icons = settler.get_status_icons()
-	assert len(icons) == 0
+	assert not called[0]
 
 	# make it unhappy
 	settler.get_component(StorageComponent).inventory.alter(RES.HAPPINESS_ID, -settler.happiness)
 	assert settler.happiness < 0.1
-	icons = settler.get_status_icons()
-	assert len(icons) == 1
-	assert isinstance(icons[0], SettlerUnhappyStatus)
+	assert called[0]
 
 
 
@@ -88,15 +105,20 @@ def test_decommissioned(session, player):
 
 	lj = Build(BUILDINGS.LUMBERJACK_CLASS, 30, 30, island, settlement=settlement)(player)
 
-	icons = lj.get_status_icons()
-	assert not any( isinstance(icon, DecommissionedStatus) for icon in icons )
+	called = [False]
+
+	def add_icon(message):
+		isinstance(message, AddStatusIcon)
+		if message.icon.__class__ == DecommissionedStatus:
+			called.__setitem__(0, True)
+
+	session.message_bus.subscribe_globally(AddStatusIcon, add_icon)
+
+	assert not called[0]
 
 	ToggleActive(lj.get_component(Producer))(player)
 
-	icons = lj.get_status_icons()
-	assert any( isinstance(icon, DecommissionedStatus) for icon in icons )
-
-
+	assert called[0]
 
 @game_test
 def test_inventory_full(session, player):
@@ -104,15 +126,25 @@ def test_inventory_full(session, player):
 
 	lj = Build(BUILDINGS.LUMBERJACK_CLASS, 30, 30, island, settlement=settlement)(player)
 
-	icons = lj.get_status_icons()
-	assert not any( isinstance(icon, InventoryFullStatus) for icon in icons )
+	called = [False]
+
+	def add_icon(message):
+		isinstance(message, AddStatusIcon)
+		if message.icon.__class__ == InventoryFullStatus:
+			called.__setitem__(0, True)
+
+	session.message_bus.subscribe_globally(AddStatusIcon, add_icon)
+
+	# Not full
+	assert not called[0]
 
 	inv = lj.get_component(StorageComponent).inventory
 	res = RES.BOARDS_ID
 	inv.alter(res, inv.get_free_space_for( res ) )
 
-	icons = lj.get_status_icons()
-	assert any( isinstance(icon, InventoryFullStatus) for icon in icons )
+	# Full
+	assert called[0]
+
 
 
 

@@ -35,10 +35,12 @@ db = horizons.main._create_main_db()
 
 # we also need to load entities to get access to the yaml data
 from horizons.extscheduler import ExtScheduler
+from horizons.world.component.storagecomponent import StorageComponent
 from horizons.entities import Entities
 from horizons.ext.dummy import Dummy
 ExtScheduler.create_instance(Dummy()) # sometimes needed by entities in subsequent calls
 Entities.load_buildings(db, load_now=True)
+Entities.load_units(load_now=True)
 
 
 def get_obj_name(obj):
@@ -142,12 +144,26 @@ def print_unit():
 	print "Add %s to each ID if you want to use them." % UNITS.DIFFERENCE_BUILDING_UNIT_ID
 
 def print_storage():
-	for (obj, ) in db('SELECT DISTINCT object_id FROM storage'):
-		print '%s(%i) can store:' % (get_obj_name(obj), obj)
-		for res, amount in db("SELECT resource, size FROM storage WHERE object_id = ?", obj):
+	for b in Entities.buildings.itervalues():
+		try:
+			stor = b.get_component_template( StorageComponent.NAME )
+		except KeyError:
+			continue
+		if not stor:
+			continue
+		inv = stor['inventory']
+		try:
+			inv.values()[0].values()[0]
+		except IndexError:
+			continue
+		print '%s(%i) can store:' % (b.name, b.id)
+		for res, amount in inv.values()[0].values()[0].iteritems():
 			print "\t%2s tons of %s(%s)" % (amount, get_res_name(res), res)
 
+
+
 	print "\nAll others can store 30 tons of each res:" # show buildings with default storage
+	return
 	all = set(db('SELECT id FROM building'))
 	entries = set(db('SELECT object_id FROM storage')) # also includes units, they are ignored
 	for id, in sorted(all - entries):

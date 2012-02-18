@@ -328,9 +328,19 @@ class FisherShipCollector(BuildingCollector):
 		reach = RadiusRect(self.home_building.position, self.home_building.radius)
 		return self.session.world.get_providers_in_range(reach, reslist=reslist)
 
+class DisasterRecoveryCollector(StorageCollector):
+	"""Collects disasters such as fire or pestilence."""
+	# TODO: as optimisation, get_job can return None as long as no disaster
+	#       is registered for the settlement
+	def finish_working(self, collector_already_home=False):
+		super(DisasterRecoveryCollector, self).finish_working(collector_already_home=collector_already_home)
+		building = self.job.object
+		if hasattr(building, "disaster"): # make sure that building hasn't recovered any other way
+			building.disaster.recover(building)
 
 decorators.bind_all(BuildingCollector)
 decorators.bind_all(FieldCollector)
 decorators.bind_all(FisherShipCollector)
 decorators.bind_all(SettlerCollector)
 decorators.bind_all(StorageCollector)
+decorators.bind_all(DisasterRecoveryCollector)

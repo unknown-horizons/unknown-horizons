@@ -23,7 +23,6 @@ from horizons.gui.tabs import  ProductionOverviewTab, InventoryTab
 from horizons.constants import PRODUCTION
 from horizons.world.component.storagecomponent import StorageComponent
 from horizons.util.worldobject import WorldObject
-from horizons.world.status import InventoryFullStatus
 from horizons.world.production.producer import Producer
 
 
@@ -166,11 +165,15 @@ class ResourceHandler(object):
 		"""Returns a iterable obj containing all resources this building provides.
 		This is outsourced from initiation to a method for the possiblity of overwriting it.
 		Do not alter the returned list; if you need to do so, then copy it."""
-		produced_res = []
+		produced_res = set()
 		for prod in self.get_component(Producer).get_productions():
 			for res in prod.get_produced_res():
-				produced_res.append(res)
-		return set(produced_res)
+				produced_res.add(res)
+
+		for (res, ) in self.session.db.cached_query("SELECT resource FROM additional_provided_resources WHERE object_id = ?", self.id):
+			produced_res.add(res)
+
+		return produced_res
 
 	def transfer_to_storageholder(self, amount, res_id, transfer_to):
 		"""Transfers amount of res_id to transfer_to.

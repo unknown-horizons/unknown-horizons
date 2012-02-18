@@ -62,6 +62,7 @@ class Producer(Component):
 		# production lines)
 		self._productions = {}
 		self._inactive_productions = {}
+		self.__active = True
 
 
 	def initialize(self):
@@ -212,8 +213,6 @@ class Producer(Component):
 			self._get_production(prod_line_id).alter_production_time(modifier)
 
 	def remove(self):
-		if hasattr(self, "_producer_status_icon"):
-			self.session.message_bus.broadcast(RemoveStatusIcon(self, self._producer_status_icon))
 		super(Producer, self).remove()
 		Scheduler().rem_all_classinst_calls(self)
 		for production in self.get_productions():
@@ -288,6 +287,14 @@ class Producer(Component):
 				del self._productions[line_id]
 				production.pause()
 
+		if self.is_active() is not self.__active:
+			self.__active = not self.__active
+			if self.__active:
+				self.session.message_bus.broadcast(RemoveStatusIcon(self, self.instance, DecommissionedStatus))
+			else:
+				icon = DecommissionedStatus(self.instance)
+				self.session.message_bus.broadcast(AddStatusIcon(self, icon))
+
 		self.instance._changed()
 
 	def toggle_active(self, production=None):
@@ -321,15 +328,13 @@ class Producer(Component):
 				self.session.message_bus.broadcast(AddStatusIcon(self, self._producer_status_icon))
 
 			if not full and hasattr(self, "_producer_status_icon"):
-				self.session.message_bus.broadcast(RemoveStatusIcon(self, self._producer_status_icon))
+				self.session.message_bus.broadcast(RemoveStatusIcon(self, self.instance, InventoryFullStatus))
 				del self._producer_status_icon
 
 	def get_status_icons(self):
 		l = super(Producer, self).get_status_icons()
 		if self.capacity_utilisation_below(ProductivityLowStatus.threshold):
 			l.append( ProductivityLowStatus() )
-		if not self.is_active():
-			l.append( DecommissionedStatus() )
 		return l
 
 	def __str__(self):

@@ -62,7 +62,7 @@ class VERSION:
 	#RELEASE_VERSION = u'2011.3'
 
 	## +=1 this if you changed the savegame "api"
-	SAVEGAMEREVISION= 50
+	SAVEGAMEREVISION= 52
 
 	@staticmethod
 	def string():
@@ -172,6 +172,7 @@ class RES:
 	TOBACCO_LEAVES_ID = 31
 	TOBACCO_PRODUCTS_ID = 32
 	CANNON_ID = WEAPONS.CANNON
+	FIRE_ID = 42
 
 class GROUND:
 	DEFAULT_LAND = (3, "straight", 45)

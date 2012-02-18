@@ -63,8 +63,6 @@ class Path(ComponentHolder):
 				tile.object.recalculate_orientation()
 
 	def recalculate_orientation(self):
-		"""
-		"""
 		# orientation is a string containing a, b, c and/or d
 		# corresponding actions are saved in the db
 		action = ''
@@ -79,7 +77,7 @@ class Path(ComponentHolder):
 			   self.owner == tile.object.owner:
 				action += action_part
 		if action == '':
-			action = 'ac' # default
+			action = 'single' # single trail piece with no neighbours
 
 		location = self._instance.getLocation()
 		location.setLayerCoordinates(fife.ModelCoordinate(int(origin.x + 1), int(origin.y), 0))

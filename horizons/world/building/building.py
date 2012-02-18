@@ -35,6 +35,7 @@ from horizons.world.building.buildable import BuildableSingle
 from horizons.command.building import Build
 from horizons.world.component.storagecomponent import StorageComponent
 from horizons.world.componentholder import ComponentHolder
+from horizons.util.messaging.message import RemoveAllStatusIcons
 
 
 class BasicBuilding(ComponentHolder, ConcreteObject):
@@ -122,6 +123,8 @@ class BasicBuilding(ComponentHolder, ConcreteObject):
 		"""Removes the building"""
 		self.log.debug("building: remove %s", self.worldid)
 		self.island.remove_building(self)
+		if self.has_status_icon:
+			self.session.message_bus.broadcast(RemoveAllStatusIcons(self, self))
 		#instance is owned by layer...
 		#self._instance.thisown = 1
 		super(BasicBuilding, self).remove()
@@ -190,13 +193,11 @@ class BasicBuilding(ComponentHolder, ConcreteObject):
 	def get_buildings_in_range(self):
 		# TODO Think about moving this to the Settlement class
 		buildings = self.settlement.buildings
-		ret_building = []
 		for building in buildings:
-			if building == self:
+			if building is self:
 				continue
 			if self.position.distance( building.position ) <= self.radius:
-				ret_building.append( building )
-		return ret_building
+				yield building
 
 	def update_action_set_level(self, level=0):
 		"""Updates this buildings action_set to a random actionset from the specified level

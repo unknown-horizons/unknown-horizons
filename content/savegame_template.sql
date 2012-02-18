@@ -89,4 +89,18 @@ CREATE TABLE production_state_history (
     "object_id" INTEGER NOT NULL
 );
 CREATE TABLE "trade_history" ("settlement" INTEGER NOT NULL,"tick" INTEGER NOT NULL, "player" INTEGER NOT NULL, "resource_id" INTEGER NOT NULL, "amount" INTEGER NOT NULL, "gold" INTEGER NOT NULL);
+CREATE TABLE "disaster" (
+	type STRING NOT NULL,
+	settlement INTEGER NOT NULL, -- affected settlement
+	remaining_ticks_expand INTEGER NOT NULL -- ticks until the disaster will expand next
+);
+CREATE TABLE "fire_disaster" (
+	disaster INTEGER NOT NULL, -- disaster and building together make up the key 
+	building INTEGER NOT NULL,
+	remaining_ticks_havoc INTEGER NOT NULL
+);
+CREATE TABLE "disaster_manager" (
+	remaining_ticks INTEGER NOT NULL -- manager ticks. will only contain one row.
+);
+
 COMMIT;

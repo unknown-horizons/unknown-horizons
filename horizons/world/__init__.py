@@ -52,6 +52,8 @@ from horizons.command.unit import CreateUnit
 from horizons.world.component.healthcomponent import HealthComponent
 from horizons.world.component.storagecomponent import StorageComponent
 
+from horizons.world.disaster.disastermanager import DisasterManager
+
 class World(BuildingOwner, LivingObject, WorldObject):
 	"""The World class represents an Unknown Horizons map with all its units, grounds, buildings, etc.
 
@@ -265,6 +267,10 @@ class World(BuildingOwner, LivingObject, WorldObject):
 			  None, None, 'DIPLOMACY_STATUS_'+old_state.upper()+"_"+new_state.upper(), data)
 
 		self.diplomacy.add_diplomacy_status_changed_listener(notify_change)
+
+		self.disaster_manager = DisasterManager(self.session)
+		if self.session.is_game_loaded():
+			self.disaster_manager.load(savegame_db)
 
 		self.inited = True
 		"""TUTORIAL:
@@ -817,6 +823,7 @@ class World(BuildingOwner, LivingObject, WorldObject):
 			bullet.save(db)
 		self.diplomacy.save(db)
 		Weapon.save_attacks(db)
+		self.disaster_manager.save(db)
 
 	def save_map(self, path, prefix):
 		map_file = os.path.join(path, prefix + '.sqlite')
