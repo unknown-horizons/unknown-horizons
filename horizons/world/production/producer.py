@@ -213,8 +213,6 @@ class Producer(Component):
 			self._get_production(prod_line_id).alter_production_time(modifier)
 
 	def remove(self):
-		if hasattr(self, "_producer_status_icon"):
-			self.session.message_bus.broadcast(RemoveStatusIcon(self, self.instance, InventoryFullStatus))
 		super(Producer, self).remove()
 		Scheduler().rem_all_classinst_calls(self)
 		for production in self.get_productions():
@@ -296,8 +294,6 @@ class Producer(Component):
 			else:
 				icon = DecommissionedStatus(self.instance)
 				self.session.message_bus.broadcast(AddStatusIcon(self, icon))
-
-
 
 		self.instance._changed()
 
