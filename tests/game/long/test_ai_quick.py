@@ -26,19 +26,14 @@ from horizons.command.building import Tear
 from horizons.constants import BUILDINGS
 from horizons.util.worldobject import WorldObject, WorldObjectNotFound
 
-
 def test_ai_quick():
 	for seed in xrange(1, 16):
 		yield run_ai_quick, seed
 
-
 def run_ai_quick(seed):
 	@game_test(mapgen=partial(generate_map_from_seed, seed), human_player=False, ai_players=2, timeout=120)
 	def test(session, _):
-		"""
-		Let 2 AI players play for four minutes.
-		(disabled due to time limit)
-		"""
+		"""Let 2 AI players play for four minutes."""
 		session.run(seconds = 4 * 60)
 		assert session.world.settlements
 

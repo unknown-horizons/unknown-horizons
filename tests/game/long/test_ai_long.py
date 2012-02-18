@@ -23,19 +23,14 @@ from functools import partial
 from horizons.util.random_map import generate_map_from_seed
 from tests.game import game_test
 
-
 def test_ai_long():
 	for seed in [1, 2, 3, 4]:
 		yield run_ai_long, seed
 
-
 def run_ai_long(seed):
 	@game_test(mapgen = partial(generate_map_from_seed, seed), human_player = False, ai_players = 2, timeout = 1800)
 	def test(session, _):
-		"""
-		Let 2 AI players play for 40 minutes.
-		(disabled for general use due to time limit)
-		"""
+		"""Let 2 AI players play for 40 minutes."""
 		session.run(seconds = 2400)
 		assert session.world.settlements
 
