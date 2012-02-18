@@ -19,6 +19,7 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
+import os
 import random
 import tempfile
 import sys
@@ -460,7 +461,8 @@ def generate_map(seed, map_size, water_percent, max_island_size, preferred_islan
 				trial_number = 0
 				break
 
-	filename = tempfile.mkstemp()[1]
+	handle, filename = tempfile.mkstemp()
+	os.close(handle)
 	db = DbReader(filename)
 	read_savegame_template(db)
 
