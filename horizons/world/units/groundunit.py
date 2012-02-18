@@ -53,9 +53,6 @@ class GroundUnit(Unit):
 		self.session.world.ground_unit_map[self.position.to_tuple()] = weakref.ref(self)
 
 	def remove(self):
-		if self in self.session.selected_instances:
-			self.get_component(SelectableComponent).deselect()
-			self.session.selected_instances.remove(self)
 		super(GroundUnit, self).remove()
 		self.session.world.ground_units.remove(self)
 		if self.session.view.has_change_listener(self.draw_health):

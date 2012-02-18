@@ -51,7 +51,7 @@ from horizons.command.building import Build
 from horizons.command.unit import CreateUnit
 from horizons.world.component.healthcomponent import HealthComponent
 from horizons.world.component.storagecomponent import StorageComponent
-
+from horizons.world.component.selectablecomponent import SelectableComponent
 from horizons.world.disaster.disastermanager import DisasterManager
 
 class World(BuildingOwner, LivingObject, WorldObject):
@@ -926,12 +926,12 @@ class World(BuildingOwner, LivingObject, WorldObject):
 		self.health_visible_for_all_health_instances = not self.health_visible_for_all_health_instances
 		if self.health_visible_for_all_health_instances:
 			for instance in self.session.world.get_health_instances():
-				if not instance._selected:
+				if not instance.get_component(SelectableComponent).selected:
 					instance.draw_health()
 					self.session.view.add_change_listener(instance.draw_health)
 		else:
 			for instance in self.session.world.get_health_instances():
-				if self.session.view.has_change_listener(instance.draw_health) and not instance._selected:
+				if self.session.view.has_change_listener(instance.draw_health) and not instance.get_component(SelectableComponent).selected:
 					instance.draw_health(remove_only=True)
 					self.session.view.remove_change_listener(instance.draw_health)
 

@@ -67,7 +67,6 @@ class Ship(Unit):
 			self.route.load(db)
 
 	def __init(self):
-		self._selected = False
 		# register ship in world
 		self.session.world.ships.append(self)
 		if self.in_ship_map:
@@ -86,10 +85,6 @@ class Ship(Unit):
 			if self._next_target.to_tuple() in self.session.world.ship_map:
 				del self.session.world.ship_map[self._next_target.to_tuple()]
 			self.in_ship_map = False
-		if self._selected:
-			self.get_component(SelectableComponent).deselect()
-			if self in self.session.selected_instances:
-				self.session.selected_instances.remove(self)
 		super(Ship, self).remove()
 
 	def create_route(self):
@@ -119,11 +114,13 @@ class Ship(Unit):
 		if hasattr(self, 'route'):
 			self.route.disable()
 		if self.get_component(CommandableComponent).go(x, y) is None:
-			self._update_buoy()			
+			self._update_buoy()
 
 	def move(self, *args, **kwargs):
 		super(Ship, self).move(*args, **kwargs)
-		if self._selected and self.session.world.player == self.owner: # handle buoy
+		if self.has_component(SelectableComponent) and \
+		   self.get_component(SelectableComponent).selected and \
+		   self.session.world.player == self.owner: # handle buoy
 			# if move() is called as move_callback, tmp() from above might
 			# be executed after this, so draw the new buoy after move_callbacks have finished.
 			Scheduler().add_new_object(self._update_buoy, self, run_in=0)

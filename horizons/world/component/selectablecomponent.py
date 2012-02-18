@@ -62,6 +62,7 @@ class SelectableComponent(Component):
 		resolve_tab = lambda tab_class_name : getattr(tab_classes, tab_class_name)
 		self.tabs = map(resolve_tab, tabs)
 		self.enemy_tabs = map(resolve_tab, enemy_tabs)
+		self._selected = False
 
 	def show_menu(self, jump_to_tabclass=None):
 		"""Shows tabs from self.__class__.tabs, if there are any.
@@ -91,11 +92,23 @@ class SelectableComponent(Component):
 			self.session.ingame_gui.show_menu( tabwidget )
 
 	def select(self, reset_cam=False):
+		self._selected = True
 		if reset_cam:
 			self.session.view.center(*self.instance.position.center().to_tuple())
 
 	def deselect(self):
-		raise NotImplementedError()
+		self._selected = False
+
+	@property
+	def selected(self):
+		return self._selected
+
+	def remove(self):
+		if self.instance in self.session.selected_instances:
+			self.session.selected_instances.remove(self.instance)
+		if self._selected:
+			self.deselect()
+		super(SelectableComponent, self).remove()
 
 
 class SelectableBuildingComponent(SelectableComponent):
@@ -134,7 +147,6 @@ class SelectableBuildingComponent(SelectableComponent):
 		renderer = self.session.view.renderer['InstanceRenderer']
 		self._do_select(renderer, self.instance.position, self.session.world,
 		                self.instance.settlement, self.instance.radius, self.range_applies_only_on_island)
-		self._is_selected = True
 
 	def set_selection_outline(self):
 		"""Only set the selection outline.
@@ -147,23 +159,14 @@ class SelectableBuildingComponent(SelectableComponent):
 	def deselect(self):
 		"""Runs neccassary steps to deselect the building.
 		Only deselects if this building has been selected."""
-		if not hasattr(self, "_is_selected") or not self._is_selected:
-			return # only deselect selected buildings (simplifies other code)
-		self._is_selected = False
-		renderer = self.session.view.renderer['InstanceRenderer']
-		renderer.removeOutlined(self.instance._instance)
-		renderer.removeAllColored()
-		for fake_tile in self.__class__._selected_fake_tiles.l:
-			self.session.view.layers[LAYERS.FIELDS].deleteInstance(fake_tile)
-		self.__class__._selected_fake_tiles.l = []
-
-	def remove(self):
-		#TODO move this as a listener
-		if self in self.session.selected_instances:
-			self.session.selected_instances.remove(self)
-		if self.instance.owner == self.session.world.player:
-			self.deselect()
-		super(SelectableBuildingComponent, self).remove()
+		if self._selected:
+			super(SelectableBuildingComponent, self).deselect()
+			renderer = self.session.view.renderer['InstanceRenderer']
+			renderer.removeOutlined(self.instance._instance)
+			renderer.removeAllColored()
+			for fake_tile in self.__class__._selected_fake_tiles.l:
+				self.session.view.layers[LAYERS.FIELDS].deleteInstance(fake_tile)
+			self.__class__._selected_fake_tiles.l = []
 
 	@classmethod
 	def select_building(cls, session, position, settlement,
@@ -273,18 +276,19 @@ class SelectableUnitComponent(SelectableComponent):
 
 	def deselect(self):
 		"""Runs necessary steps to deselect the unit."""
-		self.session.view.renderer['InstanceRenderer'].removeOutlined(self.instance._instance)
-		self.instance.draw_health(remove_only=True)
-		# this is necessary to make deselect idempotent
-		if self.session.view.has_change_listener(self.instance.draw_health):
-			self.session.view.remove_change_listener(self.instance.draw_health)
+		if self._selected:
+			super(SelectableUnitComponent, self).deselect()
+			self.session.view.renderer['InstanceRenderer'].removeOutlined(self.instance._instance)
+			self.instance.draw_health(remove_only=True)
+			# this is necessary to make deselect idempotent
+			if self.session.view.has_change_listener(self.instance.draw_health):
+				self.session.view.remove_change_listener(self.instance.draw_health)
 
 
 class SelectableShipComponent(SelectableUnitComponent):
 
 	def select(self, reset_cam=False):
 		"""Runs necessary steps to select the ship."""
-		self.instance._selected = True
 		super(SelectableShipComponent, self).select(reset_cam=reset_cam)
 
 		# add a buoy at the ship's target if the player owns the ship
@@ -296,9 +300,9 @@ class SelectableShipComponent(SelectableUnitComponent):
 
 	def deselect(self):
 		"""Runs necessary steps to deselect the ship."""
-		self.instance._selected = False
-		super(SelectableShipComponent, self).deselect()
-		self.instance._update_buoy(remove_only=True)
+		if self._selected:
+			super(SelectableShipComponent, self).deselect()
+			self.instance._update_buoy(remove_only=True)
 
 
 
