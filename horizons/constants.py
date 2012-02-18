@@ -380,7 +380,7 @@ class PATHS:
 	                 ("game.sql", "balance.sql"))
 
 	if GFX.USE_ATLASES:
-		DB_FILES = DB_FILES + (os.pat.join("content", "atlas.sql"))
+		DB_FILES = DB_FILES + (os.path.join("content", "atlas.sql"), )
 
 	#voice paths
 	VOICE_DIR = os.path.join("content", "audio", "voice")
