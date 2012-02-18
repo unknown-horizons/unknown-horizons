@@ -107,6 +107,7 @@ def create_map():
 	read_savegame_template(db)
 	db("BEGIN TRANSACTION")
 	db("INSERT INTO island (x, y, file) VALUES(?, ?, ?)", 20, 20, islandfile)
+	db("INSERT INTO \"disaster_manager\" VALUES(1)")
 	db("COMMIT")
 
 	return savegame

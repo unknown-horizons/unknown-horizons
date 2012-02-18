@@ -517,7 +517,9 @@ class Gui(SingleplayerMenu, MultiplayerMenu):
 			savegame_info = SavegameManager.get_metadata(map_file)
 
 			# screenshot (len can be 0 if save failed in a weird way)
-			if savegame_info['screenshot'] is not None and len(savegame_info['screenshot']) > 0:
+			if 'screenshot' in savegame_info and \
+			   savegame_info['screenshot'] is not None and \
+			   len(savegame_info['screenshot']) > 0:
 				# try to find a writeable location, that is accessible via relative paths
 				# (required by fife)
 				fd, filename = tempfile.mkstemp()
