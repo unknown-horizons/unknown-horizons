@@ -451,11 +451,12 @@ class IngameGui(LivingObject):
 
 	def _on_settler_level_change(self, message):
 		"""Gets called when the player changes"""
-		menu = self.get_cur_menu()
-		if hasattr(menu, "name"):
-			if menu.name == "build_menu_tab_widget":
-				# player changed and build menu is currently displayed
-				self.show_build_menu(update=True)
+		if self.session.world.player == message.sender.owner:
+			menu = self.get_cur_menu()
+			if hasattr(menu, "name"):
+				if menu.name == "build_menu_tab_widget":
+					# player changed and build menu is currently displayed
+					self.show_build_menu(update=True)
 
 	def show_chat_dialog(self):
 		"""Show a dialog where the user can enter a chat message"""
