@@ -21,6 +21,7 @@
 # ###################################################
 
 from fife.extensions import pychan
+from horizons.gui.style import STYLES
 
 def init_pychan():
 	"""General pychan initiation for uh"""
@@ -50,7 +51,6 @@ def init_pychan():
 		pychan.widgets.registerWidget(widget)
 
 	# style
-	import horizons.gui
-	for name, stylepart in horizons.gui.style.STYLES.iteritems():
+	for name, stylepart in STYLES.iteritems():
 		pychan.manager.addStyle(name, stylepart)
 
