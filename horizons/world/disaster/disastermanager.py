@@ -34,7 +34,7 @@ class DisasterManager(object):
 	log = logging.getLogger("world.disaster")
 
 	# Number of ticks between calls to run()
-	CALL_EVERY = GAME_SPEED.TICKS_PER_SECOND * 5
+	CALL_EVERY = GAME_SPEED.TICKS_PER_SECOND * 60
 
 	def __init__(self, session):
 		from horizons.session import Session
