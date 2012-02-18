@@ -279,7 +279,7 @@ def parse_args():
 			logfilename = options.logfile
 		else:
 			logfilename = os.path.join(PATHS.LOG_DIR, "unknown-horizons-%s.log" % \
-												         time.strftime("%y-%m-%d_%H-%M-%S"))
+												         time.strftime("%Y-%m-%d_%H-%M-%S"))
 		print 'Logging to %s' % logfilename.encode('utf-8', 'replace')
 		# create logfile
 		logfile = open(logfilename, 'w')
