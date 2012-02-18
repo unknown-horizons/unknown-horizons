@@ -71,7 +71,6 @@ class Ship(Unit):
 		self.session.world.ships.append(self)
 		if self.in_ship_map:
 			self.session.world.ship_map[self.position.to_tuple()] = weakref.ref(self)
-		commandable_component = self.get_component(CommandableComponent)
 
 	def set_name(self, name):
 		self.get_component(ShipNameComponent).set_name(name)
