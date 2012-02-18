@@ -131,8 +131,6 @@ class Settler(BuildableRect, CollectingBuilding, BasicBuilding):
 		return None
 
 	def remove(self):
-		if hasattr(self, "_settler_status_icon"):
-			self.session.message_bus.broadcast(RemoveStatusIcon(self, self._settler_status_icon))
 		super(Settler, self).remove()
 
 	@property
