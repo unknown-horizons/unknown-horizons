@@ -73,31 +73,35 @@ class Disaster(WorldObject):
 		"""Called to make the disaster expand further"""
 		raise NotImplementedError()
 
-	def infect(self, building):
-		"""Used to expand disaster to this building. Usually called by expand and breakout"""
+	def infect(self, building, load):
+		"""Used to expand disaster to this building. Usually called by expand and breakout
+		@load: (db, disaster_worldid), set on restoring infected state of savegame"""
+		self.log.debug("%s infecting %s at %s", self, building, building.position)
 		building.disaster = self
-		if self.DISASTER_RES is not None:
+		if self.DISASTER_RES is not None and not load: # in load, storage save/load will kick in
 			remnant = building.get_component(StorageComponent).inventory.alter(self.DISASTER_RES, 1)
 			assert remnant == 0, 'remn: '+str(remnant)+" "+str(building)
 
 	def recover(self, building):
-		"""Inverse of infect()"""
+		"""Inverse of infect(). Is also called when buildings are torn down by the user."""
+		self.log.debug("%s recovering %s at %s", self, building, building.position)
 		del building.disaster
 		if self.DISASTER_RES is not None:
 			# make sure to remove everything in case of random recovery
 			inv = building.get_component(StorageComponent).inventory
 			if inv[self.DISASTER_RES] > 0:
 				remnant = inv.alter(self.DISASTER_RES, -inv[self.DISASTER_RES])
-				assert remnant == 0
+				assert remnant == 0, 'remn: '+str(remnant)+" "+str(building)
 
 	def breakout(self):
 		"""Picks (a) object(s) to start a breakout."""
 		Scheduler().add_new_object(self.expand, self, run_in=self.EXPANSION_TIME, loops=-1)
 
-	def wreak_havoc(self):
+	def wreak_havoc(self, building):
 		"""The implementation to whatever the disaster does to affected
 		objects goes here"""
-		raise NotImplementedError()
+		self.log.debug("%s wreak havoc %s at %s", self, building, building.position)
+		del building.disaster
 
 	@classmethod
 	def can_breakout(cls, settlement):

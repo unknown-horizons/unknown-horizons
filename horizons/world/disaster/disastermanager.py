@@ -35,6 +35,7 @@ class DisasterManager(object):
 
 	# Number of ticks between calls to run()
 	CALL_EVERY = GAME_SPEED.TICKS_PER_SECOND * 60
+	#CALL_EVERY =  1 # to conjure the demons of armageddon
 
 	def __init__(self, session):
 		from horizons.session import Session

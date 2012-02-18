@@ -122,6 +122,8 @@ class BasicBuilding(ComponentHolder, ConcreteObject):
 	def remove(self):
 		"""Removes the building"""
 		self.log.debug("building: remove %s", self.worldid)
+		if hasattr(self, "disaster"):
+			self.disaster.recover(self)
 		self.island.remove_building(self)
 		if self.has_status_icon:
 			self.session.message_bus.broadcast(RemoveAllStatusIcons(self, self))

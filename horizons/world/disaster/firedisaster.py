@@ -65,14 +65,12 @@ class FireDisaster(Disaster):
 			   self.worldid, building.worldid, ticks)
 
 	def load(self, db, worldid):
-
 		super(FireDisaster, self).load(db, worldid)
 		for building_id, ticks in db("SELECT building, remaining_ticks_havoc FROM fire_disaster WHERE disaster = ?", worldid):
 			# do half of infect()
 			building = WorldObject.get_object_by_id(building_id)
-			building.session.message_bus.broadcast(AddStatusIcon(building, FireStatusIcon(building)))
-			self._affected_buildings.append(building)
-			Scheduler().add_new_object(Callback(self.wreak_havoc, building), self, run_in = ticks)
+			self.log.debug("%s loading disaster %s", self, building)
+			self.infect(building, load=(db, worldid))
 
 	def breakout(self):
 		assert self.can_breakout(self._settlement)
@@ -92,6 +90,7 @@ class FireDisaster(Disaster):
 			self.log.debug("%s ending", self)
 			# We are done here, time to leave
 			return
+		self.log.debug("%s still active, expanding..", self)
 		for building in self._affected_buildings:
 			for tile in self._settlement.get_tiles_in_radius(building.position, self.EXPANSION_RADIUS, False):
 				if tile.object is not None and tile.object.id == BUILDINGS.RESIDENTIAL_CLASS and tile.object not in self._affected_buildings:
@@ -102,17 +101,21 @@ class FireDisaster(Disaster):
 	def end(self):
 		Scheduler().rem_all_classinst_calls(self)
 
-	def infect(self, building):
-		"""Infect a building with fire"""
-		self.log.debug("%s infecting %s at %s", self, building, building.position)
-		super(FireDisaster, self).infect(building)
+	def infect(self, building, load=None):
+		"""Infect a building with fire.
+		@load: (db, disaster_worldid), set on restoring infected state of savegame"""
+		super(FireDisaster, self).infect(building, load=load)
 		# keep in sync with load()
 		building.session.message_bus.broadcast(AddStatusIcon(building, FireStatusIcon(building)))
 		self._affected_buildings.append(building)
-		Scheduler().add_new_object(Callback(self.wreak_havoc, building), self, run_in = self.TIME_BEFORE_HAVOC)
+		havoc_time = self.TIME_BEFORE_HAVOC
+		if load:
+			db, worldid = load
+			havoc_time = db("SELECT remaining_ticks_havoc FROM fire_disaster WHERE disaster = ? AND building = ?", worldid, building.worldid)[0][0]
+
+		Scheduler().add_new_object(Callback(self.wreak_havoc, building), self, run_in=havoc_time)
 
 	def recover(self, building):
-		self.log.debug("%s recovering %s at %s", self, building, building.position)
 		super(FireDisaster, self).recover(building)
 		building.session.message_bus.broadcast(RemoveStatusIcon(self, building, FireStatusIcon))
 		Scheduler().rem_call(self, Callback(self.wreak_havoc, building))
@@ -122,6 +125,6 @@ class FireDisaster(Disaster):
 		return len(self._affected_buildings) > 0
 
 	def wreak_havoc(self, building):
-		self.log.debug("%s wreak havoc %s at %s", self, building, building.position)
+		super(FireDisaster, self).wreak_havoc(building)
 		self._affected_buildings.remove(building)
 		Tear(building).execute(self._settlement.session)
