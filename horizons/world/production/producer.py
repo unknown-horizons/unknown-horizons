@@ -113,7 +113,6 @@ class Producer(Component):
 	def update_capacity_utilisation(self):
 		"""Called by the scheduler to update the utilisation regularly"""
 		if not self.capacity_utilisation_below(ProductivityLowStatus.threshold) is not self.__utilisation_ok:
-			print self.__utilisation_ok
 			self.__utilisation_ok = not self.__utilisation_ok
 			if self.__utilisation_ok:
 				self.session.message_bus.broadcast(RemoveStatusIcon(self, self.instance, ProductivityLowStatus))
