@@ -22,12 +22,12 @@ components:
      56464472:
        produces: []
        consumes:
-        - [42,-1] # consume fire
+        - [99,-1] # consume fire
        time: 1
 - StorageComponent:
    inventory:
      SlotsStorage:
-      slot_sizes: {42: 10}
+      slot_sizes: {99: 10}
 - CollectingComponent:
     collectors:
       1000022: 1
