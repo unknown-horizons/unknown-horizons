@@ -55,10 +55,12 @@ class DisasterManager(object):
 			disaster.save(db)
 
 	def load(self, db):
-		Scheduler().rem_all_classinst_calls(self)
-		ticks = db("SELECT remaining_ticks FROM disaster_manager")[0][0] # one entry only
-		Scheduler().add_new_object(self.run, self, run_in=ticks,
-		                           loop_interval=self.CALL_EVERY, loops = -1)
+		db_data = db("SELECT remaining_ticks FROM disaster_manager")
+		if db_data:
+			Scheduler().rem_all_classinst_calls(self)
+			ticks = db_data[0][0] # only one row in table
+			Scheduler().add_new_object(self.run, self, run_in=ticks,
+			                           loop_interval=self.CALL_EVERY, loops = -1)
 
 		for disaster_id, disaster_type, settlement_id in db("SELECT rowid, type, settlement FROM disaster"):
 			settlement = WorldObject.get_object_by_id(settlement_id)
