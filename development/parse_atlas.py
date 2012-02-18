@@ -94,11 +94,25 @@ for i, atlas_xml_file in enumerate(atlas_xml_files):
 			if source in mapping:
 				print 'Warning: {0} is defined in more than one atlases'.format(source)
 			mapping[source] = AtlasEntry(atlas, xpos, ypos, width, height)
+print ""
+f.close()
 
 not_found = 0
+deleted = []
+
+for source in mapping:
+	if not os.path.exists(source):
+		deleted.append(source)
+
+if deleted:
+	deleted.sort()
+	print "Unused atlas entry:"
+	for v in deleted:
+		print "  {0} (in {1})".format(v, mapping[v].source)
+	print ""
 
 # Modify a bit how all_action_sets looks like
-all_action_sets = ActionSetLoader.get_action_sets()
+all_action_sets = ActionSetLoader.get_sets()
 for tileset_id in all_action_sets:
 	for action_id in all_action_sets[tileset_id]:
 		for rotation in sorted(all_action_sets[tileset_id][action_id]):
@@ -125,42 +139,45 @@ import json
 with open(os.path.join("development", "atlas", "actionsets.json"), mode="wb") as fjson:
 	json.dump(all_action_sets, fjson, indent=1)
 
-# This is only temporary until tileset loader will be working
-print >> f, "CREATE TABLE tile_sets_atlas('file' TEXT NOT NULL, 'atlas_id' INTEGER NOT NULL, \
-'xpos' INTEGER NOT NULL, 'ypos' INTEGER NOT NULL, \
-'width' INTEGER NOT NULL, 'height' INTEGER NOT NULL);";
+# Same stuff with tilesets
+all_tile_sets = TileSetLoader.get_sets()
+for tileset_id in all_tile_sets:
+	for action_id in all_tile_sets[tileset_id]:
+		for rotation in sorted(all_tile_sets[tileset_id][action_id]):
+			for file in sorted(all_tile_sets[tileset_id][action_id][rotation]):
 
-db = horizons.main._create_main_db()
-anims = db("SELECT file FROM animation")
-for (file,) in anims:
-	try:
-		entry = mapping[file]
-	except KeyError:
-		print "Warning: {0} not found".format(file)
-		not_found = not_found + 1
-		continue
-	print >> f, "INSERT INTO tile_sets_atlas VALUES('{0}', {1}, {2}, {3}, {4}, {5});".format(file, \
-		atlases[entry.source], entry.xpos, entry.ypos, entry.width, entry.height)
+				file_new = file.replace('\\', '/')
 
-# all_tile_sets = TileSetLoader.get_tile_sets()
-# for tileset_id in all_tile_sets:
-	# print tileset_id (as_)
-	# for action_id in all_tile_sets[tileset_id]:
-		# print ' * ', action_id (idle)
-		# for rotation in sorted(all_tile_sets[tileset_id][action_id]):
-			# print '   - ', rotation (90)
-			# for file in sorted(all_tile_sets[tileset_id][action_id][rotation]):
-				# print '     -> ', file (file)
-f.close()
+				try:
+					entry = mapping[file_new]
+				except KeyError:
+					print "Warning: {0} not found".format(file)
+					not_found = not_found + 1
+					continue
+
+				animval = all_tile_sets[tileset_id][action_id][rotation][file]
+				del all_tile_sets[tileset_id][action_id][rotation][file]
+				all_tile_sets[tileset_id][action_id][rotation][file_new] = [animval, \
+					atlases[entry.source], entry.xpos, entry.ypos, entry.width, entry.height]
+
+# Dump it into JSON file
+import json
+with open(os.path.join("development", "atlas", "tilesets.json"), mode="wb") as fjson:
+	json.dump(all_tile_sets, fjson, indent=1)
+
 print "Parsing done ..."
 if not_found > 0:
 	print "Total not found images: ", not_found
+print ""
 
 import shutil
 print "Copying atlas.sql to", os.path.join("content", "atlas.sql")
 shutil.copyfile(os.path.join("development","atlas", "atlas.sql"), os.path.join("content", "atlas.sql"))
 print "Copying actionsets.json to", os.path.join("content", "actionsets.json")
 shutil.copyfile(os.path.join("development","atlas", "actionsets.json"), os.path.join("content", "actionsets.json"))
+print "Copying tilesets.json to", os.path.join("content", "tilesets.json")
+shutil.copyfile(os.path.join("development","atlas", "tilesets.json"), os.path.join("content", "tilesets.json"))
+print ""
 
 atlas_path = os.path.join("content", "gfx", "atlas")
 if os.path.exists(atlas_path) == False:
@@ -170,4 +187,4 @@ for image in glob.glob(os.path.join("development", "atlas", "*.png")):
 	dest  = os.path.join(atlas_path, os.path.basename(image))
 	print "Copying", image, "to", dest
 	shutil.copyfile(image, dest)
-print "All done"
+print "\nAll done\n"

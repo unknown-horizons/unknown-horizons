@@ -22,8 +22,11 @@
 import os
 import logging
 
+import horizons.main
+
 from horizons.constants import PATHS
 from loader import GeneralLoader
+from jsondecoder import JsonDecoder
 
 class TileSetLoader(object):
 	"""The TileSetLoader loads tile sets from a directory tree. The directories loaded
@@ -56,7 +59,10 @@ class TileSetLoader(object):
 		#print "called"
 		if not cls._loaded:
 			cls.log.debug("Loading tile_sets...")
-			cls._find_tile_sets(PATHS.TILE_SETS_DIRECTORY)
+			if not horizons.main.fife.use_atlases:
+				cls._find_tile_sets(PATHS.TILE_SETS_DIRECTORY)
+			else:
+				cls.tile_sets = JsonDecoder.load(PATHS.TILE_SETS_JSON_FILE)
 			cls.log.debug("Done!")
 			cls._loaded = True
 

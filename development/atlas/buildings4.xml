@@ -1,5 +1,5 @@
 <?fife type="atlas"?>
-<atlas name="buildings4.png" namespace="buildings4" width="1024" height="960">
+<atlas name="buildings4.png" namespace="buildings4" width="1024" height="1024">
 	<image source="content/gfx/buildings/sailors/warehouse/as_warehouse0/idle/135/0.png" xpos="0" ypos="0" width="192" height="192"/>
 	<image source="content/gfx/buildings/sailors/warehouse/as_warehouse0/idle/225/0.png" xpos="192" ypos="0" width="192" height="192"/>
 	<image source="content/gfx/buildings/sailors/warehouse/as_warehouse0/idle/315/0.png" xpos="384" ypos="0" width="192" height="192"/>
@@ -48,10 +48,6 @@
 	<image source="content/gfx/buildings/sailors/sunsail/as_sunsail0/idle/225/0.png" xpos="640" ypos="704" width="128" height="128"/>
 	<image source="content/gfx/buildings/sailors/sunsail/as_sunsail0/idle/315/0.png" xpos="768" ypos="768" width="128" height="128"/>
 	<image source="content/gfx/buildings/sailors/sunsail/as_sunsail0/idle/45/0.png" xpos="896" ypos="768" width="128" height="128"/>
-	<image source="content/gfx/buildings/sailors/tent_ruin/as_tent_ruin0/idle/135/0.png" xpos="0" ypos="832" width="128" height="128"/>
-	<image source="content/gfx/buildings/sailors/tent_ruin/as_tent_ruin0/idle/225/0.png" xpos="128" ypos="832" width="128" height="128"/>
-	<image source="content/gfx/buildings/sailors/tent_ruin/as_tent_ruin0/idle/315/0.png" xpos="256" ypos="832" width="128" height="128"/>
-	<image source="content/gfx/buildings/sailors/tent_ruin/as_tent_ruin0/idle/45/0.png" xpos="384" ypos="832" width="128" height="128"/>
 	<image source="content/gfx/buildings/sailors/lookout/as_lookout0/idle/135/0.png" xpos="512" ypos="832" width="64" height="64"/>
 	<image source="content/gfx/buildings/sailors/lookout/as_lookout0/idle/225/0.png" xpos="576" ypos="832" width="64" height="64"/>
 	<image source="content/gfx/buildings/sailors/lookout/as_lookout0/idle/315/0.png" xpos="640" ypos="832" width="64" height="64"/>

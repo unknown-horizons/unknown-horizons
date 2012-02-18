@@ -1,76 +1,28 @@
 <?fife type="atlas"?>
-<atlas name="buildings10.png" namespace="buildings10" width="2048" height="866">
+<atlas name="buildings10.png" namespace="buildings10" width="1024" height="1024">
 	<image source="content/gfx/buildings/pioneers/boat_builder/as_boat_builder0/idle/135/0.png" xpos="0" ypos="0" width="192" height="192"/>
 	<image source="content/gfx/buildings/pioneers/boat_builder/as_boat_builder0/idle/225/0.png" xpos="192" ypos="0" width="192" height="192"/>
 	<image source="content/gfx/buildings/pioneers/boat_builder/as_boat_builder0/idle/315/0.png" xpos="384" ypos="0" width="192" height="192"/>
 	<image source="content/gfx/buildings/pioneers/boat_builder/as_boat_builder0/idle/45/0.png" xpos="576" ypos="0" width="192" height="192"/>
 	<image source="content/gfx/buildings/pioneers/clay_pit/as_clay_pit0/idle/135/0.png" xpos="768" ypos="0" width="192" height="192"/>
-	<image source="content/gfx/buildings/pioneers/clay_pit/as_clay_pit0/idle/225/0.png" xpos="960" ypos="0" width="192" height="192"/>
-	<image source="content/gfx/buildings/pioneers/clay_pit/as_clay_pit0/idle/315/0.png" xpos="1152" ypos="0" width="192" height="192"/>
-	<image source="content/gfx/buildings/pioneers/clay_pit/as_clay_pit0/idle/45/0.png" xpos="1344" ypos="0" width="192" height="192"/>
-	<image source="content/gfx/buildings/pioneers/farm/as_farm0/idle/135/0.png" xpos="1536" ypos="0" width="192" height="192"/>
-	<image source="content/gfx/buildings/pioneers/farm/as_farm0/idle/225/0.png" xpos="1728" ypos="0" width="192" height="192"/>
-	<image source="content/gfx/buildings/pioneers/farm/as_farm0/idle/315/0.png" xpos="0" ypos="192" width="192" height="192"/>
-	<image source="content/gfx/buildings/pioneers/farm/as_farm0/idle/45/0.png" xpos="192" ypos="192" width="192" height="192"/>
-	<image source="content/gfx/buildings/pioneers/tower_wooden/as_woodentower0/idle/135/0.png" xpos="1920" ypos="0" width="128" height="208"/>
-	<image source="content/gfx/buildings/pioneers/tower_wooden/as_woodentower0/idle/225/0.png" xpos="384" ypos="192" width="128" height="208"/>
-	<image source="content/gfx/buildings/pioneers/tower_wooden/as_woodentower0/idle/315/0.png" xpos="512" ypos="192" width="128" height="208"/>
-	<image source="content/gfx/buildings/pioneers/tower_wooden/as_woodentower0/idle/45/0.png" xpos="640" ypos="192" width="128" height="208"/>
-	<image source="content/gfx/buildings/pioneers/brickyard/as_brickyard0/idle/135/0.png" xpos="768" ypos="192" width="192" height="128"/>
-	<image source="content/gfx/buildings/pioneers/brickyard/as_brickyard0/idle/225/0.png" xpos="960" ypos="192" width="192" height="128"/>
-	<image source="content/gfx/buildings/pioneers/brickyard/as_brickyard0/idle/315/0.png" xpos="1152" ypos="192" width="192" height="128"/>
-	<image source="content/gfx/buildings/pioneers/brickyard/as_brickyard0/idle/45/0.png" xpos="1344" ypos="192" width="192" height="128"/>
-	<image source="content/gfx/buildings/pioneers/brickyard/as_brickyard0/idle_full/135/0.png" xpos="1536" ypos="192" width="192" height="128"/>
-	<image source="content/gfx/buildings/pioneers/brickyard/as_brickyard0/idle_full/225/0.png" xpos="1728" ypos="192" width="192" height="128"/>
-	<image source="content/gfx/buildings/pioneers/brickyard/as_brickyard0/idle_full/315/0.png" xpos="0" ypos="384" width="192" height="128"/>
-	<image source="content/gfx/buildings/pioneers/brickyard/as_brickyard0/idle_full/45/0.png" xpos="192" ypos="384" width="192" height="128"/>
-	<image source="content/gfx/buildings/pioneers/brickyard/as_brickyard0/work/135/0.png" xpos="768" ypos="320" width="192" height="128"/>
-	<image source="content/gfx/buildings/pioneers/brickyard/as_brickyard0/work/135/1.png" xpos="960" ypos="320" width="192" height="128"/>
-	<image source="content/gfx/buildings/pioneers/brickyard/as_brickyard0/work/135/2.png" xpos="1152" ypos="320" width="192" height="128"/>
-	<image source="content/gfx/buildings/pioneers/brickyard/as_brickyard0/work/135/3.png" xpos="1344" ypos="320" width="192" height="128"/>
-	<image source="content/gfx/buildings/pioneers/brickyard/as_brickyard0/work/225/0.png" xpos="1536" ypos="320" width="192" height="128"/>
-	<image source="content/gfx/buildings/pioneers/brickyard/as_brickyard0/work/225/1.png" xpos="1728" ypos="320" width="192" height="128"/>
-	<image source="content/gfx/buildings/pioneers/brickyard/as_brickyard0/work/225/2.png" xpos="0" ypos="512" width="192" height="128"/>
-	<image source="content/gfx/buildings/pioneers/brickyard/as_brickyard0/work/225/3.png" xpos="192" ypos="512" width="192" height="128"/>
-	<image source="content/gfx/buildings/pioneers/brickyard/as_brickyard0/work/315/0.png" xpos="384" ypos="400" width="192" height="128"/>
-	<image source="content/gfx/buildings/pioneers/brickyard/as_brickyard0/work/315/1.png" xpos="576" ypos="400" width="192" height="128"/>
-	<image source="content/gfx/buildings/pioneers/brickyard/as_brickyard0/work/315/2.png" xpos="768" ypos="448" width="192" height="128"/>
-	<image source="content/gfx/buildings/pioneers/brickyard/as_brickyard0/work/315/3.png" xpos="960" ypos="448" width="192" height="128"/>
-	<image source="content/gfx/buildings/pioneers/brickyard/as_brickyard0/work/45/0.png" xpos="1152" ypos="448" width="192" height="128"/>
-	<image source="content/gfx/buildings/pioneers/brickyard/as_brickyard0/work/45/1.png" xpos="1344" ypos="448" width="192" height="128"/>
-	<image source="content/gfx/buildings/pioneers/brickyard/as_brickyard0/work/45/2.png" xpos="1536" ypos="448" width="192" height="128"/>
-	<image source="content/gfx/buildings/pioneers/brickyard/as_brickyard0/work/45/3.png" xpos="1728" ypos="448" width="192" height="128"/>
-	<image source="content/gfx/buildings/pioneers/church_wooden/as_church_wooden0/idle/135/0.png" xpos="1920" ypos="208" width="128" height="146"/>
-	<image source="content/gfx/buildings/pioneers/church_wooden/as_church_wooden0/idle/225/0.png" xpos="1920" ypos="354" width="128" height="146"/>
-	<image source="content/gfx/buildings/pioneers/church_wooden/as_church_wooden0/idle/315/0.png" xpos="384" ypos="528" width="128" height="146"/>
-	<image source="content/gfx/buildings/pioneers/church_wooden/as_church_wooden0/idle/45/0.png" xpos="512" ypos="528" width="128" height="146"/>
-	<image source="content/gfx/buildings/pioneers/lumberjack_barrack/as_lumberjack_barrack0/idle/135/0.png" xpos="1920" ypos="500" width="128" height="128"/>
-	<image source="content/gfx/buildings/pioneers/lumberjack_barrack/as_lumberjack_barrack0/idle/225/0.png" xpos="0" ypos="640" width="128" height="128"/>
-	<image source="content/gfx/buildings/pioneers/lumberjack_barrack/as_lumberjack_barrack0/idle/315/0.png" xpos="128" ypos="640" width="128" height="128"/>
-	<image source="content/gfx/buildings/pioneers/lumberjack_barrack/as_lumberjack_barrack0/idle/45/0.png" xpos="256" ypos="640" width="128" height="128"/>
-	<image source="content/gfx/buildings/pioneers/distillery/as_distillery0/idle/135/0.png" xpos="640" ypos="528" width="128" height="98"/>
-	<image source="content/gfx/buildings/pioneers/distillery/as_distillery0/idle/225/0.png" xpos="768" ypos="576" width="128" height="98"/>
-	<image source="content/gfx/buildings/pioneers/distillery/as_distillery0/idle/315/0.png" xpos="896" ypos="576" width="128" height="98"/>
-	<image source="content/gfx/buildings/pioneers/distillery/as_distillery0/idle/45/0.png" xpos="1024" ypos="576" width="128" height="98"/>
-	<image source="content/gfx/buildings/pioneers/distillery/as_distillery0/work/135/0035.png" xpos="1152" ypos="576" width="128" height="98"/>
-	<image source="content/gfx/buildings/pioneers/distillery/as_distillery0/work/135/0045.png" xpos="1280" ypos="576" width="128" height="98"/>
-	<image source="content/gfx/buildings/pioneers/distillery/as_distillery0/work/135/0055.png" xpos="1408" ypos="576" width="128" height="98"/>
-	<image source="content/gfx/buildings/pioneers/distillery/as_distillery0/work/135/0065.png" xpos="1536" ypos="576" width="128" height="98"/>
-	<image source="content/gfx/buildings/pioneers/distillery/as_distillery0/work/135/0075.png" xpos="1664" ypos="576" width="128" height="98"/>
-	<image source="content/gfx/buildings/pioneers/distillery/as_distillery0/work/225/0035.png" xpos="1792" ypos="576" width="128" height="98"/>
-	<image source="content/gfx/buildings/pioneers/distillery/as_distillery0/work/225/0045.png" xpos="384" ypos="674" width="128" height="98"/>
-	<image source="content/gfx/buildings/pioneers/distillery/as_distillery0/work/225/0055.png" xpos="512" ypos="674" width="128" height="98"/>
-	<image source="content/gfx/buildings/pioneers/distillery/as_distillery0/work/225/0065.png" xpos="640" ypos="626" width="128" height="98"/>
-	<image source="content/gfx/buildings/pioneers/distillery/as_distillery0/work/225/0075.png" xpos="768" ypos="674" width="128" height="98"/>
-	<image source="content/gfx/buildings/pioneers/distillery/as_distillery0/work/315/0035.png" xpos="896" ypos="674" width="128" height="98"/>
-	<image source="content/gfx/buildings/pioneers/distillery/as_distillery0/work/315/0045.png" xpos="1024" ypos="674" width="128" height="98"/>
-	<image source="content/gfx/buildings/pioneers/distillery/as_distillery0/work/315/0055.png" xpos="1152" ypos="674" width="128" height="98"/>
-	<image source="content/gfx/buildings/pioneers/distillery/as_distillery0/work/315/0065.png" xpos="1280" ypos="674" width="128" height="98"/>
-	<image source="content/gfx/buildings/pioneers/distillery/as_distillery0/work/315/0075.png" xpos="1408" ypos="674" width="128" height="98"/>
-	<image source="content/gfx/buildings/pioneers/distillery/as_distillery0/work/45/0035.png" xpos="1536" ypos="674" width="128" height="98"/>
-	<image source="content/gfx/buildings/pioneers/distillery/as_distillery0/work/45/0045.png" xpos="1664" ypos="674" width="128" height="98"/>
-	<image source="content/gfx/buildings/pioneers/distillery/as_distillery0/work/45/0055.png" xpos="1792" ypos="674" width="128" height="98"/>
-	<image source="content/gfx/buildings/pioneers/distillery/as_distillery0/work/45/0065.png" xpos="1920" ypos="628" width="128" height="98"/>
-	<image source="content/gfx/buildings/pioneers/distillery/as_distillery0/work/45/0075.png" xpos="0" ypos="768" width="128" height="98"/>
+	<image source="content/gfx/buildings/pioneers/clay_pit/as_clay_pit0/idle/225/0.png" xpos="0" ypos="192" width="192" height="192"/>
+	<image source="content/gfx/buildings/pioneers/clay_pit/as_clay_pit0/idle/315/0.png" xpos="192" ypos="192" width="192" height="192"/>
+	<image source="content/gfx/buildings/pioneers/clay_pit/as_clay_pit0/idle/45/0.png" xpos="384" ypos="192" width="192" height="192"/>
+	<image source="content/gfx/buildings/pioneers/farm/as_farm0/idle/135/0.png" xpos="576" ypos="192" width="192" height="192"/>
+	<image source="content/gfx/buildings/pioneers/farm/as_farm0/idle/225/0.png" xpos="768" ypos="192" width="192" height="192"/>
+	<image source="content/gfx/buildings/pioneers/farm/as_farm0/idle/315/0.png" xpos="0" ypos="384" width="192" height="192"/>
+	<image source="content/gfx/buildings/pioneers/farm/as_farm0/idle/45/0.png" xpos="192" ypos="384" width="192" height="192"/>
+	<image source="content/gfx/buildings/pioneers/tower_wooden/as_woodentower0/idle/135/0.png" xpos="384" ypos="384" width="128" height="208"/>
+	<image source="content/gfx/buildings/pioneers/tower_wooden/as_woodentower0/idle/225/0.png" xpos="512" ypos="384" width="128" height="208"/>
+	<image source="content/gfx/buildings/pioneers/tower_wooden/as_woodentower0/idle/315/0.png" xpos="640" ypos="384" width="128" height="208"/>
+	<image source="content/gfx/buildings/pioneers/tower_wooden/as_woodentower0/idle/45/0.png" xpos="768" ypos="384" width="128" height="208"/>
+	<image source="content/gfx/buildings/pioneers/church_wooden/as_church_wooden0/idle/135/0.png" xpos="896" ypos="384" width="128" height="146"/>
+	<image source="content/gfx/buildings/pioneers/church_wooden/as_church_wooden0/idle/225/0.png" xpos="0" ypos="576" width="128" height="146"/>
+	<image source="content/gfx/buildings/pioneers/church_wooden/as_church_wooden0/idle/315/0.png" xpos="128" ypos="576" width="128" height="146"/>
+	<image source="content/gfx/buildings/pioneers/church_wooden/as_church_wooden0/idle/45/0.png" xpos="256" ypos="576" width="128" height="146"/>
+	<image source="content/gfx/buildings/pioneers/lumberjack_barrack/as_lumberjack_barrack0/idle/135/0.png" xpos="384" ypos="592" width="128" height="128"/>
+	<image source="content/gfx/buildings/pioneers/lumberjack_barrack/as_lumberjack_barrack0/idle/225/0.png" xpos="512" ypos="592" width="128" height="128"/>
+	<image source="content/gfx/buildings/pioneers/lumberjack_barrack/as_lumberjack_barrack0/idle/315/0.png" xpos="640" ypos="592" width="128" height="128"/>
+	<image source="content/gfx/buildings/pioneers/lumberjack_barrack/as_lumberjack_barrack0/idle/45/0.png" xpos="768" ypos="592" width="128" height="128"/>
 </atlas>
 

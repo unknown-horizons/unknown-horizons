@@ -1,0 +1,228 @@
+<?fife type="atlas"?>
+<atlas name="status_icons1.png" namespace="status_icons1" width="1024" height="1024">
+	<image source="content/gfx/misc/status_icons/as_attention_please/idle/45/exclamation mark20001.png" xpos="0" ypos="0" width="64" height="64"/>
+	<image source="content/gfx/misc/status_icons/as_attention_please/idle/45/exclamation mark20002.png" xpos="64" ypos="0" width="64" height="64"/>
+	<image source="content/gfx/misc/status_icons/as_attention_please/idle/45/exclamation mark20003.png" xpos="128" ypos="0" width="64" height="64"/>
+	<image source="content/gfx/misc/status_icons/as_attention_please/idle/45/exclamation mark20004.png" xpos="192" ypos="0" width="64" height="64"/>
+	<image source="content/gfx/misc/status_icons/as_attention_please/idle/45/exclamation mark20005.png" xpos="256" ypos="0" width="64" height="64"/>
+	<image source="content/gfx/misc/status_icons/as_attention_please/idle/45/exclamation mark20006.png" xpos="320" ypos="0" width="64" height="64"/>
+	<image source="content/gfx/misc/status_icons/as_attention_please/idle/45/exclamation mark20007.png" xpos="384" ypos="0" width="64" height="64"/>
+	<image source="content/gfx/misc/status_icons/as_attention_please/idle/45/exclamation mark20008.png" xpos="448" ypos="0" width="64" height="64"/>
+	<image source="content/gfx/misc/status_icons/as_attention_please/idle/45/exclamation mark20009.png" xpos="512" ypos="0" width="64" height="64"/>
+	<image source="content/gfx/misc/status_icons/as_attention_please/idle/45/exclamation mark20010.png" xpos="576" ypos="0" width="64" height="64"/>
+	<image source="content/gfx/misc/status_icons/as_attention_please/idle/45/exclamation mark20011.png" xpos="640" ypos="0" width="64" height="64"/>
+	<image source="content/gfx/misc/status_icons/as_attention_please/idle/45/exclamation mark20012.png" xpos="704" ypos="0" width="64" height="64"/>
+	<image source="content/gfx/misc/status_icons/as_attention_please/idle/45/exclamation mark20013.png" xpos="768" ypos="0" width="64" height="64"/>
+	<image source="content/gfx/misc/status_icons/as_attention_please/idle/45/exclamation mark20014.png" xpos="832" ypos="0" width="64" height="64"/>
+	<image source="content/gfx/misc/status_icons/as_attention_please/idle/45/exclamation mark20015.png" xpos="896" ypos="0" width="64" height="64"/>
+	<image source="content/gfx/misc/status_icons/as_attention_please/idle/45/exclamation mark20016.png" xpos="960" ypos="0" width="64" height="64"/>
+	<image source="content/gfx/misc/status_icons/as_attention_please/idle/45/exclamation mark20017.png" xpos="0" ypos="64" width="64" height="64"/>
+	<image source="content/gfx/misc/status_icons/as_attention_please/idle/45/exclamation mark20018.png" xpos="64" ypos="64" width="64" height="64"/>
+	<image source="content/gfx/misc/status_icons/as_attention_please/idle/45/exclamation mark20019.png" xpos="128" ypos="64" width="64" height="64"/>
+	<image source="content/gfx/misc/status_icons/as_attention_please/idle/45/exclamation mark20020.png" xpos="192" ypos="64" width="64" height="64"/>
+	<image source="content/gfx/misc/status_icons/as_attention_please/idle/45/exclamation mark20021.png" xpos="256" ypos="64" width="64" height="64"/>
+	<image source="content/gfx/misc/status_icons/as_attention_please/idle/45/exclamation mark20022.png" xpos="320" ypos="64" width="64" height="64"/>
+	<image source="content/gfx/misc/status_icons/as_attention_please/idle/45/exclamation mark20023.png" xpos="384" ypos="64" width="64" height="64"/>
+	<image source="content/gfx/misc/status_icons/as_attention_please/idle/45/exclamation mark20024.png" xpos="448" ypos="64" width="64" height="64"/>
+	<image source="content/gfx/misc/status_icons/as_attention_please/idle/45/exclamation mark20025.png" xpos="512" ypos="64" width="64" height="64"/>
+	<image source="content/gfx/misc/status_icons/as_attention_please/idle/45/exclamation mark20026.png" xpos="576" ypos="64" width="64" height="64"/>
+	<image source="content/gfx/misc/status_icons/as_attention_please/idle/45/exclamation mark20027.png" xpos="640" ypos="64" width="64" height="64"/>
+	<image source="content/gfx/misc/status_icons/as_attention_please/idle/45/exclamation mark20028.png" xpos="704" ypos="64" width="64" height="64"/>
+	<image source="content/gfx/misc/status_icons/as_attention_please/idle/45/exclamation mark20029.png" xpos="768" ypos="64" width="64" height="64"/>
+	<image source="content/gfx/misc/status_icons/as_attention_please/idle/45/exclamation mark20030.png" xpos="832" ypos="64" width="64" height="64"/>
+	<image source="content/gfx/misc/status_icons/as_attention_please/idle/45/exclamation mark20031.png" xpos="896" ypos="64" width="64" height="64"/>
+	<image source="content/gfx/misc/status_icons/as_attention_please/idle/45/exclamation mark20032.png" xpos="960" ypos="64" width="64" height="64"/>
+	<image source="content/gfx/misc/status_icons/as_attention_please/idle/45/exclamation mark20033.png" xpos="0" ypos="128" width="64" height="64"/>
+	<image source="content/gfx/misc/status_icons/as_attention_please/idle/45/exclamation mark20034.png" xpos="64" ypos="128" width="64" height="64"/>
+	<image source="content/gfx/misc/status_icons/as_attention_please/idle/45/exclamation mark20035.png" xpos="128" ypos="128" width="64" height="64"/>
+	<image source="content/gfx/misc/status_icons/as_attention_please/idle/45/exclamation mark20036.png" xpos="192" ypos="128" width="64" height="64"/>
+	<image source="content/gfx/misc/status_icons/as_book_close/idle/45/book20101.png" xpos="256" ypos="128" width="64" height="64"/>
+	<image source="content/gfx/misc/status_icons/as_book_close/idle/45/book20102.png" xpos="320" ypos="128" width="64" height="64"/>
+	<image source="content/gfx/misc/status_icons/as_book_close/idle/45/book20103.png" xpos="384" ypos="128" width="64" height="64"/>
+	<image source="content/gfx/misc/status_icons/as_book_close/idle/45/book20104.png" xpos="448" ypos="128" width="64" height="64"/>
+	<image source="content/gfx/misc/status_icons/as_book_close/idle/45/book20105.png" xpos="512" ypos="128" width="64" height="64"/>
+	<image source="content/gfx/misc/status_icons/as_book_close/idle/45/book20106.png" xpos="576" ypos="128" width="64" height="64"/>
+	<image source="content/gfx/misc/status_icons/as_book_close/idle/45/book20107.png" xpos="640" ypos="128" width="64" height="64"/>
+	<image source="content/gfx/misc/status_icons/as_book_close/idle/45/book20108.png" xpos="704" ypos="128" width="64" height="64"/>
+	<image source="content/gfx/misc/status_icons/as_book_close/idle/45/book20109.png" xpos="768" ypos="128" width="64" height="64"/>
+	<image source="content/gfx/misc/status_icons/as_book_close/idle/45/book20110.png" xpos="832" ypos="128" width="64" height="64"/>
+	<image source="content/gfx/misc/status_icons/as_book_close/idle/45/book20111.png" xpos="896" ypos="128" width="64" height="64"/>
+	<image source="content/gfx/misc/status_icons/as_book_close/idle/45/book20112.png" xpos="960" ypos="128" width="64" height="64"/>
+	<image source="content/gfx/misc/status_icons/as_book_close/idle/45/book20113.png" xpos="0" ypos="192" width="64" height="64"/>
+	<image source="content/gfx/misc/status_icons/as_book_close/idle/45/book20114.png" xpos="64" ypos="192" width="64" height="64"/>
+	<image source="content/gfx/misc/status_icons/as_book_close/idle/45/book20115.png" xpos="128" ypos="192" width="64" height="64"/>
+	<image source="content/gfx/misc/status_icons/as_book_close/idle/45/book20116.png" xpos="192" ypos="192" width="64" height="64"/>
+	<image source="content/gfx/misc/status_icons/as_book_close/idle/45/book20117.png" xpos="256" ypos="192" width="64" height="64"/>
+	<image source="content/gfx/misc/status_icons/as_book_close/idle/45/book20118.png" xpos="320" ypos="192" width="64" height="64"/>
+	<image source="content/gfx/misc/status_icons/as_book_flip/idle/45/book20119.png" xpos="384" ypos="192" width="64" height="64"/>
+	<image source="content/gfx/misc/status_icons/as_book_flip/idle/45/book20120.png" xpos="448" ypos="192" width="64" height="64"/>
+	<image source="content/gfx/misc/status_icons/as_book_flip/idle/45/book20121.png" xpos="512" ypos="192" width="64" height="64"/>
+	<image source="content/gfx/misc/status_icons/as_book_flip/idle/45/book20122.png" xpos="576" ypos="192" width="64" height="64"/>
+	<image source="content/gfx/misc/status_icons/as_book_flip/idle/45/book20123.png" xpos="640" ypos="192" width="64" height="64"/>
+	<image source="content/gfx/misc/status_icons/as_book_flip/idle/45/book20124.png" xpos="704" ypos="192" width="64" height="64"/>
+	<image source="content/gfx/misc/status_icons/as_book_flip/idle/45/book20125.png" xpos="768" ypos="192" width="64" height="64"/>
+	<image source="content/gfx/misc/status_icons/as_book_flip/idle/45/book20126.png" xpos="832" ypos="192" width="64" height="64"/>
+	<image source="content/gfx/misc/status_icons/as_book_flip/idle/45/book20127.png" xpos="896" ypos="192" width="64" height="64"/>
+	<image source="content/gfx/misc/status_icons/as_book_flip/idle/45/book20128.png" xpos="960" ypos="192" width="64" height="64"/>
+	<image source="content/gfx/misc/status_icons/as_book_flip/idle/45/book20129.png" xpos="0" ypos="256" width="64" height="64"/>
+	<image source="content/gfx/misc/status_icons/as_book_flip/idle/45/book20130.png" xpos="64" ypos="256" width="64" height="64"/>
+	<image source="content/gfx/misc/status_icons/as_book_flip/idle/45/book20131.png" xpos="128" ypos="256" width="64" height="64"/>
+	<image source="content/gfx/misc/status_icons/as_book_flip/idle/45/book20132.png" xpos="192" ypos="256" width="64" height="64"/>
+	<image source="content/gfx/misc/status_icons/as_book_flip/idle/45/book20133.png" xpos="256" ypos="256" width="64" height="64"/>
+	<image source="content/gfx/misc/status_icons/as_book_flip/idle/45/book20134.png" xpos="320" ypos="256" width="64" height="64"/>
+	<image source="content/gfx/misc/status_icons/as_book_flip/idle/45/book20135.png" xpos="384" ypos="256" width="64" height="64"/>
+	<image source="content/gfx/misc/status_icons/as_book_flip/idle/45/book20136.png" xpos="448" ypos="256" width="64" height="64"/>
+	<image source="content/gfx/misc/status_icons/as_inventory_full/idle/45/boxandbarrel40001.png" xpos="576" ypos="256" width="64" height="64"/>
+	<image source="content/gfx/misc/status_icons/as_inventory_full/idle/45/boxandbarrel40003.png" xpos="640" ypos="256" width="64" height="64"/>
+	<image source="content/gfx/misc/status_icons/as_inventory_full/idle/45/boxandbarrel40005.png" xpos="704" ypos="256" width="64" height="64"/>
+	<image source="content/gfx/misc/status_icons/as_inventory_full/idle/45/boxandbarrel40007.png" xpos="768" ypos="256" width="64" height="64"/>
+	<image source="content/gfx/misc/status_icons/as_inventory_full/idle/45/boxandbarrel40009.png" xpos="832" ypos="256" width="64" height="64"/>
+	<image source="content/gfx/misc/status_icons/as_inventory_full/idle/45/boxandbarrel40011.png" xpos="896" ypos="256" width="64" height="64"/>
+	<image source="content/gfx/misc/status_icons/as_inventory_full/idle/45/boxandbarrel40013.png" xpos="960" ypos="256" width="64" height="64"/>
+	<image source="content/gfx/misc/status_icons/as_inventory_full/idle/45/boxandbarrel40015.png" xpos="0" ypos="320" width="64" height="64"/>
+	<image source="content/gfx/misc/status_icons/as_inventory_full/idle/45/boxandbarrel40017.png" xpos="64" ypos="320" width="64" height="64"/>
+	<image source="content/gfx/misc/status_icons/as_inventory_full/idle/45/boxandbarrel40019.png" xpos="128" ypos="320" width="64" height="64"/>
+	<image source="content/gfx/misc/status_icons/as_inventory_full/idle/45/boxandbarrel40021.png" xpos="192" ypos="320" width="64" height="64"/>
+	<image source="content/gfx/misc/status_icons/as_inventory_full/idle/45/boxandbarrel40023.png" xpos="256" ypos="320" width="64" height="64"/>
+	<image source="content/gfx/misc/status_icons/as_inventory_full/idle/45/boxandbarrel40025.png" xpos="320" ypos="320" width="64" height="64"/>
+	<image source="content/gfx/misc/status_icons/as_inventory_full/idle/45/boxandbarrel40027.png" xpos="384" ypos="320" width="64" height="64"/>
+	<image source="content/gfx/misc/status_icons/as_inventory_full/idle/45/boxandbarrel40029.png" xpos="448" ypos="320" width="64" height="64"/>
+	<image source="content/gfx/misc/status_icons/as_inventory_full/idle/45/boxandbarrel40031.png" xpos="512" ypos="320" width="64" height="64"/>
+	<image source="content/gfx/misc/status_icons/as_inventory_full/idle/45/boxandbarrel40033.png" xpos="576" ypos="320" width="64" height="64"/>
+	<image source="content/gfx/misc/status_icons/as_inventory_full/idle/45/boxandbarrel40035.png" xpos="640" ypos="320" width="64" height="64"/>
+	<image source="content/gfx/misc/status_icons/as_inventory_full/idle/45/boxandbarrel40037.png" xpos="704" ypos="320" width="64" height="64"/>
+	<image source="content/gfx/misc/status_icons/as_inventory_full/idle/45/boxandbarrel40039.png" xpos="768" ypos="320" width="64" height="64"/>
+	<image source="content/gfx/misc/status_icons/as_inventory_full/idle/45/boxandbarrel40041.png" xpos="832" ypos="320" width="64" height="64"/>
+	<image source="content/gfx/misc/status_icons/as_inventory_full/idle/45/boxandbarrel40043.png" xpos="896" ypos="320" width="64" height="64"/>
+	<image source="content/gfx/misc/status_icons/as_inventory_full/idle/45/boxandbarrel40045.png" xpos="960" ypos="320" width="64" height="64"/>
+	<image source="content/gfx/misc/status_icons/as_inventory_full/idle/45/boxandbarrel40047.png" xpos="0" ypos="384" width="64" height="64"/>
+	<image source="content/gfx/misc/status_icons/as_inventory_full/idle/45/boxandbarrel40049.png" xpos="64" ypos="384" width="64" height="64"/>
+	<image source="content/gfx/misc/status_icons/as_inventory_full/idle/45/boxandbarrel40051.png" xpos="128" ypos="384" width="64" height="64"/>
+	<image source="content/gfx/misc/status_icons/as_inventory_full/idle/45/boxandbarrel40053.png" xpos="192" ypos="384" width="64" height="64"/>
+	<image source="content/gfx/misc/status_icons/as_inventory_full/idle/45/boxandbarrel40055.png" xpos="256" ypos="384" width="64" height="64"/>
+	<image source="content/gfx/misc/status_icons/as_inventory_full/idle/45/boxandbarrel40057.png" xpos="320" ypos="384" width="64" height="64"/>
+	<image source="content/gfx/misc/status_icons/as_inventory_full/idle/45/boxandbarrel40059.png" xpos="384" ypos="384" width="64" height="64"/>
+	<image source="content/gfx/misc/status_icons/as_inventory_full/idle/45/boxandbarrel40061.png" xpos="448" ypos="384" width="64" height="64"/>
+	<image source="content/gfx/misc/status_icons/as_inventory_full/idle/45/boxandbarrel40063.png" xpos="512" ypos="384" width="64" height="64"/>
+	<image source="content/gfx/misc/status_icons/as_inventory_full/idle/45/boxandbarrel40065.png" xpos="576" ypos="384" width="64" height="64"/>
+	<image source="content/gfx/misc/status_icons/as_inventory_full/idle/45/boxandbarrel40067.png" xpos="640" ypos="384" width="64" height="64"/>
+	<image source="content/gfx/misc/status_icons/as_inventory_full/idle/45/boxandbarrel40069.png" xpos="704" ypos="384" width="64" height="64"/>
+	<image source="content/gfx/misc/status_icons/as_inventory_full/idle/45/boxandbarrel40071.png" xpos="768" ypos="384" width="64" height="64"/>
+	<image source="content/gfx/misc/status_icons/as_inventory_full/idle/45/boxandbarrel40073.png" xpos="832" ypos="384" width="64" height="64"/>
+	<image source="content/gfx/misc/status_icons/as_inventory_full/idle/45/boxandbarrel40075.png" xpos="896" ypos="384" width="64" height="64"/>
+	<image source="content/gfx/misc/status_icons/as_inventory_full/idle/45/boxandbarrel40077.png" xpos="960" ypos="384" width="64" height="64"/>
+	<image source="content/gfx/misc/status_icons/as_inventory_full/idle/45/boxandbarrel40079.png" xpos="0" ypos="448" width="64" height="64"/>
+	<image source="content/gfx/misc/status_icons/as_inventory_full/idle/45/boxandbarrel40081.png" xpos="64" ypos="448" width="64" height="64"/>
+	<image source="content/gfx/misc/status_icons/as_inventory_full/idle/45/boxandbarrel40083.png" xpos="128" ypos="448" width="64" height="64"/>
+	<image source="content/gfx/misc/status_icons/as_inventory_full/idle/45/boxandbarrel40085.png" xpos="192" ypos="448" width="64" height="64"/>
+	<image source="content/gfx/misc/status_icons/as_inventory_full/idle/45/boxandbarrel40087.png" xpos="256" ypos="448" width="64" height="64"/>
+	<image source="content/gfx/misc/status_icons/as_inventory_full/idle/45/boxandbarrel40089.png" xpos="320" ypos="448" width="64" height="64"/>
+	<image source="content/gfx/misc/status_icons/as_inventory_full/idle/45/boxandbarrel40091.png" xpos="384" ypos="448" width="64" height="64"/>
+	<image source="content/gfx/misc/status_icons/as_inventory_full/idle/45/boxandbarrel40093.png" xpos="448" ypos="448" width="64" height="64"/>
+	<image source="content/gfx/misc/status_icons/as_inventory_full/idle/45/boxandbarrel40095.png" xpos="512" ypos="448" width="64" height="64"/>
+	<image source="content/gfx/misc/status_icons/as_inventory_full/idle/45/boxandbarrel40097.png" xpos="576" ypos="448" width="64" height="64"/>
+	<image source="content/gfx/misc/status_icons/as_inventory_full/idle/45/boxandbarrel40099.png" xpos="640" ypos="448" width="64" height="64"/>
+	<image source="content/gfx/misc/status_icons/as_inventory_full/idle/45/boxandbarrel40101.png" xpos="704" ypos="448" width="64" height="64"/>
+	<image source="content/gfx/misc/status_icons/as_inventory_full/idle/45/boxandbarrel40103.png" xpos="768" ypos="448" width="64" height="64"/>
+	<image source="content/gfx/misc/status_icons/as_inventory_full/idle/45/boxandbarrel40105.png" xpos="832" ypos="448" width="64" height="64"/>
+	<image source="content/gfx/misc/status_icons/as_inventory_full/idle/45/boxandbarrel40107.png" xpos="896" ypos="448" width="64" height="64"/>
+	<image source="content/gfx/misc/status_icons/as_inventory_full/idle/45/boxandbarrel40109.png" xpos="960" ypos="448" width="64" height="64"/>
+	<image source="content/gfx/misc/status_icons/as_inventory_full/idle/45/boxandbarrel40111.png" xpos="0" ypos="512" width="64" height="64"/>
+	<image source="content/gfx/misc/status_icons/as_inventory_full/idle/45/boxandbarrel40113.png" xpos="64" ypos="512" width="64" height="64"/>
+	<image source="content/gfx/misc/status_icons/as_inventory_full/idle/45/boxandbarrel40115.png" xpos="128" ypos="512" width="64" height="64"/>
+	<image source="content/gfx/misc/status_icons/as_inventory_full/idle/45/boxandbarrel40117.png" xpos="192" ypos="512" width="64" height="64"/>
+	<image source="content/gfx/misc/status_icons/as_inventory_full/idle/45/boxandbarrel40119.png" xpos="256" ypos="512" width="64" height="64"/>
+	<image source="content/gfx/misc/status_icons/as_inventory_full/idle/45/boxandbarrel40121.png" xpos="320" ypos="512" width="64" height="64"/>
+	<image source="content/gfx/misc/status_icons/as_inventory_full/idle/45/boxandbarrel40123.png" xpos="384" ypos="512" width="64" height="64"/>
+	<image source="content/gfx/misc/status_icons/as_inventory_full/idle/45/boxandbarrel40125.png" xpos="448" ypos="512" width="64" height="64"/>
+	<image source="content/gfx/misc/status_icons/as_inventory_full/idle/45/boxandbarrel40127.png" xpos="512" ypos="512" width="64" height="64"/>
+	<image source="content/gfx/misc/status_icons/as_inventory_full/idle/45/boxandbarrel40129.png" xpos="576" ypos="512" width="64" height="64"/>
+	<image source="content/gfx/misc/status_icons/as_inventory_full/idle/45/boxandbarrel40131.png" xpos="640" ypos="512" width="64" height="64"/>
+	<image source="content/gfx/misc/status_icons/as_inventory_full/idle/45/boxandbarrel40133.png" xpos="704" ypos="512" width="64" height="64"/>
+	<image source="content/gfx/misc/status_icons/as_inventory_full/idle/45/boxandbarrel40135.png" xpos="768" ypos="512" width="64" height="64"/>
+	<image source="content/gfx/misc/status_icons/as_inventory_full/idle/45/boxandbarrel40137.png" xpos="832" ypos="512" width="64" height="64"/>
+	<image source="content/gfx/misc/status_icons/as_inventory_full/idle/45/boxandbarrel40139.png" xpos="896" ypos="512" width="64" height="64"/>
+	<image source="content/gfx/misc/status_icons/as_inventory_full/idle/45/boxandbarrel40141.png" xpos="960" ypos="512" width="64" height="64"/>
+	<image source="content/gfx/misc/status_icons/as_inventory_full/idle/45/boxandbarrel40143.png" xpos="0" ypos="576" width="64" height="64"/>
+	<image source="content/gfx/misc/status_icons/as_mine_gold/idle/45/minecart20001.png" xpos="64" ypos="576" width="64" height="64"/>
+	<image source="content/gfx/misc/status_icons/as_mine_gold/idle/45/minecart20003.png" xpos="128" ypos="576" width="64" height="64"/>
+	<image source="content/gfx/misc/status_icons/as_mine_gold/idle/45/minecart20005.png" xpos="192" ypos="576" width="64" height="64"/>
+	<image source="content/gfx/misc/status_icons/as_mine_gold/idle/45/minecart20007.png" xpos="256" ypos="576" width="64" height="64"/>
+	<image source="content/gfx/misc/status_icons/as_mine_gold/idle/45/minecart20009.png" xpos="320" ypos="576" width="64" height="64"/>
+	<image source="content/gfx/misc/status_icons/as_mine_gold/idle/45/minecart20011.png" xpos="384" ypos="576" width="64" height="64"/>
+	<image source="content/gfx/misc/status_icons/as_mine_gold/idle/45/minecart20013.png" xpos="448" ypos="576" width="64" height="64"/>
+	<image source="content/gfx/misc/status_icons/as_mine_gold/idle/45/minecart20015.png" xpos="512" ypos="576" width="64" height="64"/>
+	<image source="content/gfx/misc/status_icons/as_mine_gold/idle/45/minecart20017.png" xpos="576" ypos="576" width="64" height="64"/>
+	<image source="content/gfx/misc/status_icons/as_mine_gold/idle/45/minecart20019.png" xpos="640" ypos="576" width="64" height="64"/>
+	<image source="content/gfx/misc/status_icons/as_mine_gold/idle/45/minecart20021.png" xpos="704" ypos="576" width="64" height="64"/>
+	<image source="content/gfx/misc/status_icons/as_mine_gold/idle/45/minecart20023.png" xpos="768" ypos="576" width="64" height="64"/>
+	<image source="content/gfx/misc/status_icons/as_mine_gold/idle/45/minecart20025.png" xpos="832" ypos="576" width="64" height="64"/>
+	<image source="content/gfx/misc/status_icons/as_mine_gold/idle/45/minecart20027.png" xpos="896" ypos="576" width="64" height="64"/>
+	<image source="content/gfx/misc/status_icons/as_mine_gold/idle/45/minecart20029.png" xpos="960" ypos="576" width="64" height="64"/>
+	<image source="content/gfx/misc/status_icons/as_mine_gold/idle/45/minecart20031.png" xpos="0" ypos="640" width="64" height="64"/>
+	<image source="content/gfx/misc/status_icons/as_mine_gold/idle/45/minecart20033.png" xpos="64" ypos="640" width="64" height="64"/>
+	<image source="content/gfx/misc/status_icons/as_mine_gold/idle/45/minecart20035.png" xpos="128" ypos="640" width="64" height="64"/>
+	<image source="content/gfx/misc/status_icons/as_mine_gold/idle/45/minecart20037.png" xpos="192" ypos="640" width="64" height="64"/>
+	<image source="content/gfx/misc/status_icons/as_mine_gold/idle/45/minecart20039.png" xpos="256" ypos="640" width="64" height="64"/>
+	<image source="content/gfx/misc/status_icons/as_mine_gold/idle/45/minecart20041.png" xpos="320" ypos="640" width="64" height="64"/>
+	<image source="content/gfx/misc/status_icons/as_mine_gold/idle/45/minecart20043.png" xpos="384" ypos="640" width="64" height="64"/>
+	<image source="content/gfx/misc/status_icons/as_mine_gold/idle/45/minecart20045.png" xpos="448" ypos="640" width="64" height="64"/>
+	<image source="content/gfx/misc/status_icons/as_mine_gold/idle/45/minecart20047.png" xpos="512" ypos="640" width="64" height="64"/>
+	<image source="content/gfx/misc/status_icons/as_mine_gold/idle/45/minecart20049.png" xpos="576" ypos="640" width="64" height="64"/>
+	<image source="content/gfx/misc/status_icons/as_mine_gold/idle/45/minecart20051.png" xpos="640" ypos="640" width="64" height="64"/>
+	<image source="content/gfx/misc/status_icons/as_mine_gold/idle/45/minecart20053.png" xpos="704" ypos="640" width="64" height="64"/>
+	<image source="content/gfx/misc/status_icons/as_mine_gold/idle/45/minecart20055.png" xpos="768" ypos="640" width="64" height="64"/>
+	<image source="content/gfx/misc/status_icons/as_mine_gold/idle/45/minecart20057.png" xpos="832" ypos="640" width="64" height="64"/>
+	<image source="content/gfx/misc/status_icons/as_mine_gold/idle/45/minecart20059.png" xpos="896" ypos="640" width="64" height="64"/>
+	<image source="content/gfx/misc/status_icons/as_mine_gold/idle/45/minecart20061.png" xpos="960" ypos="640" width="64" height="64"/>
+	<image source="content/gfx/misc/status_icons/as_mine_gold/idle/45/minecart20063.png" xpos="0" ypos="704" width="64" height="64"/>
+	<image source="content/gfx/misc/status_icons/as_mine_gold/idle/45/minecart20065.png" xpos="64" ypos="704" width="64" height="64"/>
+	<image source="content/gfx/misc/status_icons/as_mine_gold/idle/45/minecart20067.png" xpos="128" ypos="704" width="64" height="64"/>
+	<image source="content/gfx/misc/status_icons/as_mine_gold/idle/45/minecart20069.png" xpos="192" ypos="704" width="64" height="64"/>
+	<image source="content/gfx/misc/status_icons/as_mine_gold/idle/45/minecart20071.png" xpos="256" ypos="704" width="64" height="64"/>
+	<image source="content/gfx/misc/status_icons/as_mine_gold/idle/45/minecart20073.png" xpos="320" ypos="704" width="64" height="64"/>
+	<image source="content/gfx/misc/status_icons/as_mine_gold/idle/45/minecart20075.png" xpos="384" ypos="704" width="64" height="64"/>
+	<image source="content/gfx/misc/status_icons/as_mine_gold/idle/45/minecart20077.png" xpos="448" ypos="704" width="64" height="64"/>
+	<image source="content/gfx/misc/status_icons/as_mine_gold/idle/45/minecart20079.png" xpos="512" ypos="704" width="64" height="64"/>
+	<image source="content/gfx/misc/status_icons/as_mine_gold/idle/45/minecart20081.png" xpos="576" ypos="704" width="64" height="64"/>
+	<image source="content/gfx/misc/status_icons/as_mine_gold/idle/45/minecart20083.png" xpos="640" ypos="704" width="64" height="64"/>
+	<image source="content/gfx/misc/status_icons/as_mine_gold/idle/45/minecart20085.png" xpos="704" ypos="704" width="64" height="64"/>
+	<image source="content/gfx/misc/status_icons/as_mine_gold/idle/45/minecart20087.png" xpos="768" ypos="704" width="64" height="64"/>
+	<image source="content/gfx/misc/status_icons/as_mine_gold/idle/45/minecart20089.png" xpos="832" ypos="704" width="64" height="64"/>
+	<image source="content/gfx/misc/status_icons/as_mine_gold/idle/45/minecart20091.png" xpos="896" ypos="704" width="64" height="64"/>
+	<image source="content/gfx/misc/status_icons/as_mine_gold/idle/45/minecart20093.png" xpos="960" ypos="704" width="64" height="64"/>
+	<image source="content/gfx/misc/status_icons/as_mine_gold/idle/45/minecart20095.png" xpos="0" ypos="768" width="64" height="64"/>
+	<image source="content/gfx/misc/status_icons/as_mine_gold/idle/45/minecart20097.png" xpos="64" ypos="768" width="64" height="64"/>
+	<image source="content/gfx/misc/status_icons/as_mine_gold/idle/45/minecart20099.png" xpos="128" ypos="768" width="64" height="64"/>
+	<image source="content/gfx/misc/status_icons/as_mine_gold/idle/45/minecart20101.png" xpos="192" ypos="768" width="64" height="64"/>
+	<image source="content/gfx/misc/status_icons/as_mine_gold/idle/45/minecart20103.png" xpos="256" ypos="768" width="64" height="64"/>
+	<image source="content/gfx/misc/status_icons/as_mine_gold/idle/45/minecart20105.png" xpos="320" ypos="768" width="64" height="64"/>
+	<image source="content/gfx/misc/status_icons/as_mine_gold/idle/45/minecart20107.png" xpos="384" ypos="768" width="64" height="64"/>
+	<image source="content/gfx/misc/status_icons/as_mine_gold/idle/45/minecart20109.png" xpos="448" ypos="768" width="64" height="64"/>
+	<image source="content/gfx/misc/status_icons/as_mine_gold/idle/45/minecart20111.png" xpos="512" ypos="768" width="64" height="64"/>
+	<image source="content/gfx/misc/status_icons/as_mine_gold/idle/45/minecart20113.png" xpos="576" ypos="768" width="64" height="64"/>
+	<image source="content/gfx/misc/status_icons/as_mine_gold/idle/45/minecart20115.png" xpos="640" ypos="768" width="64" height="64"/>
+	<image source="content/gfx/misc/status_icons/as_mine_gold/idle/45/minecart20117.png" xpos="704" ypos="768" width="64" height="64"/>
+	<image source="content/gfx/misc/status_icons/as_mine_gold/idle/45/minecart20119.png" xpos="768" ypos="768" width="64" height="64"/>
+	<image source="content/gfx/misc/status_icons/as_mine_gold/idle/45/minecart20121.png" xpos="832" ypos="768" width="64" height="64"/>
+	<image source="content/gfx/misc/status_icons/as_mine_gold/idle/45/minecart20123.png" xpos="896" ypos="768" width="64" height="64"/>
+	<image source="content/gfx/misc/status_icons/as_mine_gold/idle/45/minecart20125.png" xpos="960" ypos="768" width="64" height="64"/>
+	<image source="content/gfx/misc/status_icons/as_mine_gold/idle/45/minecart20127.png" xpos="0" ypos="832" width="64" height="64"/>
+	<image source="content/gfx/misc/status_icons/as_mine_gold/idle/45/minecart20129.png" xpos="64" ypos="832" width="64" height="64"/>
+	<image source="content/gfx/misc/status_icons/as_mine_gold/idle/45/minecart20131.png" xpos="128" ypos="832" width="64" height="64"/>
+	<image source="content/gfx/misc/status_icons/as_mine_gold/idle/45/minecart20133.png" xpos="192" ypos="832" width="64" height="64"/>
+	<image source="content/gfx/misc/status_icons/as_mine_gold/idle/45/minecart20135.png" xpos="256" ypos="832" width="64" height="64"/>
+	<image source="content/gfx/misc/status_icons/as_mine_gold/idle/45/minecart20137.png" xpos="320" ypos="832" width="64" height="64"/>
+	<image source="content/gfx/misc/status_icons/as_mine_gold/idle/45/minecart20139.png" xpos="384" ypos="832" width="64" height="64"/>
+	<image source="content/gfx/misc/status_icons/as_mine_gold/idle/45/minecart20141.png" xpos="448" ypos="832" width="64" height="64"/>
+	<image source="content/gfx/misc/status_icons/as_mine_gold/idle/45/minecart20143.png" xpos="512" ypos="832" width="64" height="64"/>
+	<image source="content/gfx/misc/status_icons/as_on_fire/idle/45/fire status icon0010.png" xpos="576" ypos="832" width="64" height="64"/>
+	<image source="content/gfx/misc/status_icons/as_on_fire/idle/45/fire status icon0011.png" xpos="640" ypos="832" width="64" height="64"/>
+	<image source="content/gfx/misc/status_icons/as_on_fire/idle/45/fire status icon0012.png" xpos="704" ypos="832" width="64" height="64"/>
+	<image source="content/gfx/misc/status_icons/as_on_fire/idle/45/fire status icon0013.png" xpos="768" ypos="832" width="64" height="64"/>
+	<image source="content/gfx/misc/status_icons/as_on_fire/idle/45/fire status icon0014.png" xpos="832" ypos="832" width="64" height="64"/>
+	<image source="content/gfx/misc/status_icons/as_on_fire/idle/45/fire status icon0015.png" xpos="896" ypos="832" width="64" height="64"/>
+	<image source="content/gfx/misc/status_icons/as_on_fire/idle/45/fire status icon0016.png" xpos="960" ypos="832" width="64" height="64"/>
+	<image source="content/gfx/misc/status_icons/as_on_fire/idle/45/fire status icon0017.png" xpos="0" ypos="896" width="64" height="64"/>
+</atlas>
+

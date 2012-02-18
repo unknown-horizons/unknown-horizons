@@ -1,5 +1,5 @@
 <?fife type="atlas"?>
-<atlas name="animals.png" namespace="animals" width="1024" height="974">
+<atlas name="animals.png" namespace="animals" width="1024" height="1024">
 	<image source="content/gfx/units/animals/as_reddeer0/idle/0/0.png" xpos="0" ypos="0" width="64" height="64"/>
 	<image source="content/gfx/units/animals/as_reddeer0/idle/0/1.png" xpos="64" ypos="0" width="64" height="64"/>
 	<image source="content/gfx/units/animals/as_reddeer0/idle/0/2.png" xpos="128" ypos="0" width="64" height="64"/>

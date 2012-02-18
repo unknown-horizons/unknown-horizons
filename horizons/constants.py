@@ -359,6 +359,7 @@ class PATHS:
 	SAVEGAME_TEMPLATE = os.path.join("content", "savegame_template.sql")
 	ISLAND_TEMPLATE = os.path.join("content", "island_template.sql")
 	ACTION_SETS_JSON_FILE = os.path.join("content", "actionsets.json")
+	TILE_SETS_JSON_FILE = os.path.join("content", "tilesets.json")
 
 	CONFIG_TEMPLATE_FILE = os.path.join("content", "settings-template.xml")
 

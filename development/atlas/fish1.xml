@@ -1,0 +1,44 @@
+<?fife type="atlas"?>
+<atlas name="fish1.png" namespace="fish1" width="1024" height="1024">
+	<image source="content/gfx/terrain/resources/as_fish0/idle/225/000.png" xpos="0" ypos="0" width="128" height="128"/>
+	<image source="content/gfx/terrain/resources/as_fish0/idle/225/001.png" xpos="128" ypos="0" width="128" height="128"/>
+	<image source="content/gfx/terrain/resources/as_fish0/idle/225/002.png" xpos="256" ypos="0" width="128" height="128"/>
+	<image source="content/gfx/terrain/resources/as_fish0/idle/225/003.png" xpos="384" ypos="0" width="128" height="128"/>
+	<image source="content/gfx/terrain/resources/as_fish0/idle/225/004.png" xpos="512" ypos="0" width="128" height="128"/>
+	<image source="content/gfx/terrain/resources/as_fish0/idle/225/005.png" xpos="640" ypos="0" width="128" height="128"/>
+	<image source="content/gfx/terrain/resources/as_fish0/idle/225/006.png" xpos="768" ypos="0" width="128" height="128"/>
+	<image source="content/gfx/terrain/resources/as_fish0/idle/225/007.png" xpos="896" ypos="0" width="128" height="128"/>
+	<image source="content/gfx/terrain/resources/as_fish0/idle/225/008.png" xpos="0" ypos="128" width="128" height="128"/>
+	<image source="content/gfx/terrain/resources/as_fish0/idle/225/009.png" xpos="128" ypos="128" width="128" height="128"/>
+	<image source="content/gfx/terrain/resources/as_fish0/idle/225/010.png" xpos="256" ypos="128" width="128" height="128"/>
+	<image source="content/gfx/terrain/resources/as_fish0/idle/225/011.png" xpos="384" ypos="128" width="128" height="128"/>
+	<image source="content/gfx/terrain/resources/as_fish0/idle/225/012.png" xpos="512" ypos="128" width="128" height="128"/>
+	<image source="content/gfx/terrain/resources/as_fish0/idle/225/013.png" xpos="640" ypos="128" width="128" height="128"/>
+	<image source="content/gfx/terrain/resources/as_fish0/idle/225/014.png" xpos="768" ypos="128" width="128" height="128"/>
+	<image source="content/gfx/terrain/resources/as_fish0/idle/225/015.png" xpos="896" ypos="128" width="128" height="128"/>
+	<image source="content/gfx/terrain/resources/as_fish0/idle/225/016.png" xpos="0" ypos="256" width="128" height="128"/>
+	<image source="content/gfx/terrain/resources/as_fish0/idle/225/017.png" xpos="128" ypos="256" width="128" height="128"/>
+	<image source="content/gfx/terrain/resources/as_fish0/idle/225/018.png" xpos="256" ypos="256" width="128" height="128"/>
+	<image source="content/gfx/terrain/resources/as_fish0/idle/225/019.png" xpos="384" ypos="256" width="128" height="128"/>
+	<image source="content/gfx/terrain/resources/as_fish0/idle/315/000.png" xpos="512" ypos="256" width="128" height="128"/>
+	<image source="content/gfx/terrain/resources/as_fish0/idle/315/001.png" xpos="640" ypos="256" width="128" height="128"/>
+	<image source="content/gfx/terrain/resources/as_fish0/idle/315/002.png" xpos="768" ypos="256" width="128" height="128"/>
+	<image source="content/gfx/terrain/resources/as_fish0/idle/315/003.png" xpos="896" ypos="256" width="128" height="128"/>
+	<image source="content/gfx/terrain/resources/as_fish0/idle/315/004.png" xpos="0" ypos="384" width="128" height="128"/>
+	<image source="content/gfx/terrain/resources/as_fish0/idle/315/005.png" xpos="128" ypos="384" width="128" height="128"/>
+	<image source="content/gfx/terrain/resources/as_fish0/idle/315/006.png" xpos="256" ypos="384" width="128" height="128"/>
+	<image source="content/gfx/terrain/resources/as_fish0/idle/315/007.png" xpos="384" ypos="384" width="128" height="128"/>
+	<image source="content/gfx/terrain/resources/as_fish0/idle/315/008.png" xpos="512" ypos="384" width="128" height="128"/>
+	<image source="content/gfx/terrain/resources/as_fish0/idle/315/009.png" xpos="640" ypos="384" width="128" height="128"/>
+	<image source="content/gfx/terrain/resources/as_fish0/idle/315/010.png" xpos="768" ypos="384" width="128" height="128"/>
+	<image source="content/gfx/terrain/resources/as_fish0/idle/315/011.png" xpos="896" ypos="384" width="128" height="128"/>
+	<image source="content/gfx/terrain/resources/as_fish0/idle/315/012.png" xpos="0" ypos="512" width="128" height="128"/>
+	<image source="content/gfx/terrain/resources/as_fish0/idle/315/013.png" xpos="128" ypos="512" width="128" height="128"/>
+	<image source="content/gfx/terrain/resources/as_fish0/idle/315/014.png" xpos="256" ypos="512" width="128" height="128"/>
+	<image source="content/gfx/terrain/resources/as_fish0/idle/315/015.png" xpos="384" ypos="512" width="128" height="128"/>
+	<image source="content/gfx/terrain/resources/as_fish0/idle/315/016.png" xpos="512" ypos="512" width="128" height="128"/>
+	<image source="content/gfx/terrain/resources/as_fish0/idle/315/017.png" xpos="640" ypos="512" width="128" height="128"/>
+	<image source="content/gfx/terrain/resources/as_fish0/idle/315/018.png" xpos="768" ypos="512" width="128" height="128"/>
+	<image source="content/gfx/terrain/resources/as_fish0/idle/315/019.png" xpos="896" ypos="512" width="128" height="128"/>
+</atlas>
+

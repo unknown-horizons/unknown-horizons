@@ -26,6 +26,7 @@ import horizons.main
 
 from horizons.constants import PATHS
 from loader import GeneralLoader
+from jsondecoder import JsonDecoder
 
 class ActionSetLoader(object):
 	"""The ActionSetLoader loads action sets from a directory tree. The directories loaded
@@ -60,34 +61,7 @@ class ActionSetLoader(object):
 			if not horizons.main.fife.use_atlases:
 				cls._find_action_sets(PATHS.ACTION_SETS_DIRECTORY)
 			else:
-				import json
-				def _decode_list(lst):
-					newlist = []
-					for i in lst:
-						if isinstance(i, unicode):
-							i = i.encode('utf-8')
-						elif isinstance(i, list):
-							i = _decode_list(i)
-						newlist.append(i)
-					return newlist
-
-				def _decode_dict(dct):
-					newdict = {}
-					for k, v in dct.iteritems():
-						if isinstance(k, unicode):
-							try:
-								k = int(k)
-							except ValueError:
-								k = k.encode('utf-8')
-						if isinstance(v, unicode):
-							v = v.encode('utf-8')
-						elif isinstance(v, list):
-							v = _decode_list(v)
-						newdict[k] = v
-					return newdict
-
-				with open(PATHS.ACTION_SETS_JSON_FILE, "rb") as f:
-					cls.action_sets = json.load(f, encoding="ascii", object_hook=_decode_dict)
+				cls.action_sets = JsonDecoder.load(PATHS.ACTION_SETS_JSON_FILE)
 			cls.log.debug("Done!")
 			cls._loaded = True
 

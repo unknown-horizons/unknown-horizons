@@ -1,5 +1,5 @@
 <?fife type="atlas"?>
-<atlas name="army.png" namespace="army" width="504" height="378">
+<atlas name="army.png" namespace="army" width="512" height="512">
 	<image source="content/gfx/units/army/as_groundunit0/attack_melee/0/0001.png" xpos="0" ypos="0" width="42" height="42"/>
 	<image source="content/gfx/units/army/as_groundunit0/attack_melee/0/0002.png" xpos="42" ypos="0" width="42" height="42"/>
 	<image source="content/gfx/units/army/as_groundunit0/attack_melee/0/0003.png" xpos="84" ypos="0" width="42" height="42"/>

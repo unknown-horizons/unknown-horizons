@@ -1,0 +1,36 @@
+<?fife type="atlas"?>
+<atlas name="buildings13.png" namespace="buildings13" width="1024" height="512">
+	<image source="content/gfx/buildings/pioneers/fireservice/as_fireservice0/idle/135/0.png" xpos="0" ypos="0" width="128" height="128"/>
+	<image source="content/gfx/buildings/pioneers/fireservice/as_fireservice0/idle/225/0.png" xpos="128" ypos="0" width="128" height="128"/>
+	<image source="content/gfx/buildings/pioneers/fireservice/as_fireservice0/idle/315/0.png" xpos="256" ypos="0" width="128" height="128"/>
+	<image source="content/gfx/buildings/pioneers/fireservice/as_fireservice0/idle/45/0.png" xpos="384" ypos="0" width="128" height="128"/>
+	<image source="content/gfx/buildings/sailors/ruined_tent/as_ruined_tent0/idle/135/0.png" xpos="512" ypos="0" width="128" height="128"/>
+	<image source="content/gfx/buildings/sailors/ruined_tent/as_ruined_tent0/idle/225/0.png" xpos="640" ypos="0" width="128" height="128"/>
+	<image source="content/gfx/buildings/sailors/ruined_tent/as_ruined_tent0/idle/315/0.png" xpos="768" ypos="0" width="128" height="128"/>
+	<image source="content/gfx/buildings/sailors/ruined_tent/as_ruined_tent0/idle/45/0.png" xpos="896" ypos="0" width="128" height="128"/>
+	<image source="content/gfx/buildings/pioneers/distillery/as_distillery0/idle/135/0.png" xpos="0" ypos="128" width="128" height="98"/>
+	<image source="content/gfx/buildings/pioneers/distillery/as_distillery0/idle/225/0.png" xpos="128" ypos="128" width="128" height="98"/>
+	<image source="content/gfx/buildings/pioneers/distillery/as_distillery0/idle/315/0.png" xpos="256" ypos="128" width="128" height="98"/>
+	<image source="content/gfx/buildings/pioneers/distillery/as_distillery0/idle/45/0.png" xpos="384" ypos="128" width="128" height="98"/>
+	<image source="content/gfx/buildings/pioneers/distillery/as_distillery0/work/135/0.png" xpos="512" ypos="128" width="128" height="98"/>
+	<image source="content/gfx/buildings/pioneers/distillery/as_distillery0/work/135/1.png" xpos="640" ypos="128" width="128" height="98"/>
+	<image source="content/gfx/buildings/pioneers/distillery/as_distillery0/work/135/2.png" xpos="768" ypos="128" width="128" height="98"/>
+	<image source="content/gfx/buildings/pioneers/distillery/as_distillery0/work/135/3.png" xpos="896" ypos="128" width="128" height="98"/>
+	<image source="content/gfx/buildings/pioneers/distillery/as_distillery0/work/135/4.png" xpos="0" ypos="226" width="128" height="98"/>
+	<image source="content/gfx/buildings/pioneers/distillery/as_distillery0/work/225/0.png" xpos="128" ypos="226" width="128" height="98"/>
+	<image source="content/gfx/buildings/pioneers/distillery/as_distillery0/work/225/1.png" xpos="256" ypos="226" width="128" height="98"/>
+	<image source="content/gfx/buildings/pioneers/distillery/as_distillery0/work/225/2.png" xpos="384" ypos="226" width="128" height="98"/>
+	<image source="content/gfx/buildings/pioneers/distillery/as_distillery0/work/225/3.png" xpos="512" ypos="226" width="128" height="98"/>
+	<image source="content/gfx/buildings/pioneers/distillery/as_distillery0/work/225/4.png" xpos="640" ypos="226" width="128" height="98"/>
+	<image source="content/gfx/buildings/pioneers/distillery/as_distillery0/work/315/0.png" xpos="768" ypos="226" width="128" height="98"/>
+	<image source="content/gfx/buildings/pioneers/distillery/as_distillery0/work/315/1.png" xpos="896" ypos="226" width="128" height="98"/>
+	<image source="content/gfx/buildings/pioneers/distillery/as_distillery0/work/315/2.png" xpos="0" ypos="324" width="128" height="98"/>
+	<image source="content/gfx/buildings/pioneers/distillery/as_distillery0/work/315/3.png" xpos="128" ypos="324" width="128" height="98"/>
+	<image source="content/gfx/buildings/pioneers/distillery/as_distillery0/work/315/4.png" xpos="256" ypos="324" width="128" height="98"/>
+	<image source="content/gfx/buildings/pioneers/distillery/as_distillery0/work/45/0.png" xpos="384" ypos="324" width="128" height="98"/>
+	<image source="content/gfx/buildings/pioneers/distillery/as_distillery0/work/45/1.png" xpos="512" ypos="324" width="128" height="98"/>
+	<image source="content/gfx/buildings/pioneers/distillery/as_distillery0/work/45/2.png" xpos="640" ypos="324" width="128" height="98"/>
+	<image source="content/gfx/buildings/pioneers/distillery/as_distillery0/work/45/3.png" xpos="768" ypos="324" width="128" height="98"/>
+	<image source="content/gfx/buildings/pioneers/distillery/as_distillery0/work/45/4.png" xpos="896" ypos="324" width="128" height="98"/>
+</atlas>
+

@@ -1,5 +1,5 @@
 <?fife type="atlas"?>
-<atlas name="buildings0.png" namespace="buildings0" width="960" height="896">
+<atlas name="buildings0.png" namespace="buildings0" width="1024" height="1024">
 	<image source="content/gfx/buildings/settlers/agricultural/as_pigsty0/idle/135/0.png" xpos="0" ypos="0" width="320" height="320"/>
 	<image source="content/gfx/buildings/settlers/agricultural/as_pigsty0/idle/225/0.png" xpos="320" ypos="0" width="320" height="320"/>
 	<image source="content/gfx/buildings/settlers/agricultural/as_pigsty0/idle/315/0.png" xpos="640" ypos="0" width="320" height="320"/>

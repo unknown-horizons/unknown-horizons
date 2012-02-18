@@ -1,0 +1,202 @@
+<?fife type="atlas"?>
+<atlas name="status_icons0.png" namespace="status_icons0" width="1024" height="1024">
+	<image source="content/gfx/misc/status_icons/as_book_open/idle/45/book20101.png" xpos="0" ypos="0" width="64" height="64"/>
+	<image source="content/gfx/misc/status_icons/as_book_open/idle/45/book20102.png" xpos="64" ypos="0" width="64" height="64"/>
+	<image source="content/gfx/misc/status_icons/as_book_open/idle/45/book20103.png" xpos="128" ypos="0" width="64" height="64"/>
+	<image source="content/gfx/misc/status_icons/as_book_open/idle/45/book20104.png" xpos="192" ypos="0" width="64" height="64"/>
+	<image source="content/gfx/misc/status_icons/as_book_open/idle/45/book20105.png" xpos="256" ypos="0" width="64" height="64"/>
+	<image source="content/gfx/misc/status_icons/as_book_open/idle/45/book20106.png" xpos="320" ypos="0" width="64" height="64"/>
+	<image source="content/gfx/misc/status_icons/as_book_open/idle/45/book20107.png" xpos="384" ypos="0" width="64" height="64"/>
+	<image source="content/gfx/misc/status_icons/as_book_open/idle/45/book20108.png" xpos="448" ypos="0" width="64" height="64"/>
+	<image source="content/gfx/misc/status_icons/as_book_open/idle/45/book20109.png" xpos="512" ypos="0" width="64" height="64"/>
+	<image source="content/gfx/misc/status_icons/as_book_open/idle/45/book20110.png" xpos="576" ypos="0" width="64" height="64"/>
+	<image source="content/gfx/misc/status_icons/as_book_open/idle/45/book20111.png" xpos="640" ypos="0" width="64" height="64"/>
+	<image source="content/gfx/misc/status_icons/as_book_open/idle/45/book20112.png" xpos="704" ypos="0" width="64" height="64"/>
+	<image source="content/gfx/misc/status_icons/as_book_open/idle/45/book20113.png" xpos="768" ypos="0" width="64" height="64"/>
+	<image source="content/gfx/misc/status_icons/as_book_open/idle/45/book20114.png" xpos="832" ypos="0" width="64" height="64"/>
+	<image source="content/gfx/misc/status_icons/as_book_open/idle/45/book20115.png" xpos="896" ypos="0" width="64" height="64"/>
+	<image source="content/gfx/misc/status_icons/as_book_open/idle/45/book20116.png" xpos="960" ypos="0" width="64" height="64"/>
+	<image source="content/gfx/misc/status_icons/as_book_open/idle/45/book20117.png" xpos="0" ypos="64" width="64" height="64"/>
+	<image source="content/gfx/misc/status_icons/as_book_open/idle/45/book20118.png" xpos="64" ypos="64" width="64" height="64"/>
+	<image source="content/gfx/misc/status_icons/as_decommissioned/idle/45/zzz10001.png" xpos="128" ypos="64" width="64" height="64"/>
+	<image source="content/gfx/misc/status_icons/as_decommissioned/idle/45/zzz10002.png" xpos="192" ypos="64" width="64" height="64"/>
+	<image source="content/gfx/misc/status_icons/as_decommissioned/idle/45/zzz10003.png" xpos="256" ypos="64" width="64" height="64"/>
+	<image source="content/gfx/misc/status_icons/as_decommissioned/idle/45/zzz10004.png" xpos="320" ypos="64" width="64" height="64"/>
+	<image source="content/gfx/misc/status_icons/as_decommissioned/idle/45/zzz10005.png" xpos="384" ypos="64" width="64" height="64"/>
+	<image source="content/gfx/misc/status_icons/as_decommissioned/idle/45/zzz10006.png" xpos="448" ypos="64" width="64" height="64"/>
+	<image source="content/gfx/misc/status_icons/as_decommissioned/idle/45/zzz10007.png" xpos="512" ypos="64" width="64" height="64"/>
+	<image source="content/gfx/misc/status_icons/as_decommissioned/idle/45/zzz10008.png" xpos="576" ypos="64" width="64" height="64"/>
+	<image source="content/gfx/misc/status_icons/as_decommissioned/idle/45/zzz10009.png" xpos="640" ypos="64" width="64" height="64"/>
+	<image source="content/gfx/misc/status_icons/as_decommissioned/idle/45/zzz10010.png" xpos="704" ypos="64" width="64" height="64"/>
+	<image source="content/gfx/misc/status_icons/as_decommissioned/idle/45/zzz10011.png" xpos="768" ypos="64" width="64" height="64"/>
+	<image source="content/gfx/misc/status_icons/as_decommissioned/idle/45/zzz10012.png" xpos="832" ypos="64" width="64" height="64"/>
+	<image source="content/gfx/misc/status_icons/as_decommissioned/idle/45/zzz10013.png" xpos="896" ypos="64" width="64" height="64"/>
+	<image source="content/gfx/misc/status_icons/as_decommissioned/idle/45/zzz10014.png" xpos="960" ypos="64" width="64" height="64"/>
+	<image source="content/gfx/misc/status_icons/as_decommissioned/idle/45/zzz10015.png" xpos="0" ypos="128" width="64" height="64"/>
+	<image source="content/gfx/misc/status_icons/as_decommissioned/idle/45/zzz10016.png" xpos="64" ypos="128" width="64" height="64"/>
+	<image source="content/gfx/misc/status_icons/as_decommissioned/idle/45/zzz10017.png" xpos="128" ypos="128" width="64" height="64"/>
+	<image source="content/gfx/misc/status_icons/as_decommissioned/idle/45/zzz10018.png" xpos="192" ypos="128" width="64" height="64"/>
+	<image source="content/gfx/misc/status_icons/as_decommissioned/idle/45/zzz10019.png" xpos="256" ypos="128" width="64" height="64"/>
+	<image source="content/gfx/misc/status_icons/as_decommissioned/idle/45/zzz10020.png" xpos="320" ypos="128" width="64" height="64"/>
+	<image source="content/gfx/misc/status_icons/as_decommissioned/idle/45/zzz10021.png" xpos="384" ypos="128" width="64" height="64"/>
+	<image source="content/gfx/misc/status_icons/as_decommissioned/idle/45/zzz10022.png" xpos="448" ypos="128" width="64" height="64"/>
+	<image source="content/gfx/misc/status_icons/as_decommissioned/idle/45/zzz10023.png" xpos="512" ypos="128" width="64" height="64"/>
+	<image source="content/gfx/misc/status_icons/as_decommissioned/idle/45/zzz10024.png" xpos="576" ypos="128" width="64" height="64"/>
+	<image source="content/gfx/misc/status_icons/as_decommissioned/idle/45/zzz10025.png" xpos="640" ypos="128" width="64" height="64"/>
+	<image source="content/gfx/misc/status_icons/as_decommissioned/idle/45/zzz10026.png" xpos="704" ypos="128" width="64" height="64"/>
+	<image source="content/gfx/misc/status_icons/as_decommissioned/idle/45/zzz10027.png" xpos="768" ypos="128" width="64" height="64"/>
+	<image source="content/gfx/misc/status_icons/as_decommissioned/idle/45/zzz10028.png" xpos="832" ypos="128" width="64" height="64"/>
+	<image source="content/gfx/misc/status_icons/as_decommissioned/idle/45/zzz10029.png" xpos="896" ypos="128" width="64" height="64"/>
+	<image source="content/gfx/misc/status_icons/as_decommissioned/idle/45/zzz10030.png" xpos="960" ypos="128" width="64" height="64"/>
+	<image source="content/gfx/misc/status_icons/as_decommissioned/idle/45/zzz10031.png" xpos="0" ypos="192" width="64" height="64"/>
+	<image source="content/gfx/misc/status_icons/as_decommissioned/idle/45/zzz10032.png" xpos="64" ypos="192" width="64" height="64"/>
+	<image source="content/gfx/misc/status_icons/as_decommissioned/idle/45/zzz10033.png" xpos="128" ypos="192" width="64" height="64"/>
+	<image source="content/gfx/misc/status_icons/as_decommissioned/idle/45/zzz10034.png" xpos="192" ypos="192" width="64" height="64"/>
+	<image source="content/gfx/misc/status_icons/as_decommissioned/idle/45/zzz10035.png" xpos="256" ypos="192" width="64" height="64"/>
+	<image source="content/gfx/misc/status_icons/as_decommissioned/idle/45/zzz10036.png" xpos="320" ypos="192" width="64" height="64"/>
+	<image source="content/gfx/misc/status_icons/as_question_mark/idle/45/question mark0001.png" xpos="384" ypos="192" width="64" height="64"/>
+	<image source="content/gfx/misc/status_icons/as_question_mark/idle/45/question mark0002.png" xpos="448" ypos="192" width="64" height="64"/>
+	<image source="content/gfx/misc/status_icons/as_question_mark/idle/45/question mark0003.png" xpos="512" ypos="192" width="64" height="64"/>
+	<image source="content/gfx/misc/status_icons/as_question_mark/idle/45/question mark0004.png" xpos="576" ypos="192" width="64" height="64"/>
+	<image source="content/gfx/misc/status_icons/as_question_mark/idle/45/question mark0005.png" xpos="640" ypos="192" width="64" height="64"/>
+	<image source="content/gfx/misc/status_icons/as_question_mark/idle/45/question mark0006.png" xpos="704" ypos="192" width="64" height="64"/>
+	<image source="content/gfx/misc/status_icons/as_question_mark/idle/45/question mark0007.png" xpos="768" ypos="192" width="64" height="64"/>
+	<image source="content/gfx/misc/status_icons/as_question_mark/idle/45/question mark0008.png" xpos="832" ypos="192" width="64" height="64"/>
+	<image source="content/gfx/misc/status_icons/as_question_mark/idle/45/question mark0009.png" xpos="896" ypos="192" width="64" height="64"/>
+	<image source="content/gfx/misc/status_icons/as_question_mark/idle/45/question mark0010.png" xpos="960" ypos="192" width="64" height="64"/>
+	<image source="content/gfx/misc/status_icons/as_question_mark/idle/45/question mark0011.png" xpos="0" ypos="256" width="64" height="64"/>
+	<image source="content/gfx/misc/status_icons/as_question_mark/idle/45/question mark0012.png" xpos="64" ypos="256" width="64" height="64"/>
+	<image source="content/gfx/misc/status_icons/as_question_mark/idle/45/question mark0013.png" xpos="128" ypos="256" width="64" height="64"/>
+	<image source="content/gfx/misc/status_icons/as_question_mark/idle/45/question mark0014.png" xpos="192" ypos="256" width="64" height="64"/>
+	<image source="content/gfx/misc/status_icons/as_question_mark/idle/45/question mark0015.png" xpos="256" ypos="256" width="64" height="64"/>
+	<image source="content/gfx/misc/status_icons/as_question_mark/idle/45/question mark0016.png" xpos="320" ypos="256" width="64" height="64"/>
+	<image source="content/gfx/misc/status_icons/as_question_mark/idle/45/question mark0017.png" xpos="384" ypos="256" width="64" height="64"/>
+	<image source="content/gfx/misc/status_icons/as_question_mark/idle/45/question mark0018.png" xpos="448" ypos="256" width="64" height="64"/>
+	<image source="content/gfx/misc/status_icons/as_question_mark/idle/45/question mark0019.png" xpos="512" ypos="256" width="64" height="64"/>
+	<image source="content/gfx/misc/status_icons/as_question_mark/idle/45/question mark0020.png" xpos="576" ypos="256" width="64" height="64"/>
+	<image source="content/gfx/misc/status_icons/as_question_mark/idle/45/question mark0021.png" xpos="640" ypos="256" width="64" height="64"/>
+	<image source="content/gfx/misc/status_icons/as_question_mark/idle/45/question mark0022.png" xpos="704" ypos="256" width="64" height="64"/>
+	<image source="content/gfx/misc/status_icons/as_question_mark/idle/45/question mark0023.png" xpos="768" ypos="256" width="64" height="64"/>
+	<image source="content/gfx/misc/status_icons/as_question_mark/idle/45/question mark0024.png" xpos="832" ypos="256" width="64" height="64"/>
+	<image source="content/gfx/misc/status_icons/as_question_mark/idle/45/question mark0025.png" xpos="896" ypos="256" width="64" height="64"/>
+	<image source="content/gfx/misc/status_icons/as_question_mark/idle/45/question mark0026.png" xpos="960" ypos="256" width="64" height="64"/>
+	<image source="content/gfx/misc/status_icons/as_question_mark/idle/45/question mark0027.png" xpos="0" ypos="320" width="64" height="64"/>
+	<image source="content/gfx/misc/status_icons/as_question_mark/idle/45/question mark0028.png" xpos="64" ypos="320" width="64" height="64"/>
+	<image source="content/gfx/misc/status_icons/as_question_mark/idle/45/question mark0029.png" xpos="128" ypos="320" width="64" height="64"/>
+	<image source="content/gfx/misc/status_icons/as_question_mark/idle/45/question mark0030.png" xpos="192" ypos="320" width="64" height="64"/>
+	<image source="content/gfx/misc/status_icons/as_question_mark/idle/45/question mark0031.png" xpos="256" ypos="320" width="64" height="64"/>
+	<image source="content/gfx/misc/status_icons/as_question_mark/idle/45/question mark0032.png" xpos="320" ypos="320" width="64" height="64"/>
+	<image source="content/gfx/misc/status_icons/as_question_mark/idle/45/question mark0033.png" xpos="384" ypos="320" width="64" height="64"/>
+	<image source="content/gfx/misc/status_icons/as_question_mark/idle/45/question mark0034.png" xpos="448" ypos="320" width="64" height="64"/>
+	<image source="content/gfx/misc/status_icons/as_question_mark/idle/45/question mark0035.png" xpos="512" ypos="320" width="64" height="64"/>
+	<image source="content/gfx/misc/status_icons/as_question_mark/idle/45/question mark0036.png" xpos="576" ypos="320" width="64" height="64"/>
+	<image source="content/gfx/misc/status_icons/as_question_mark/idle/45/question mark0037.png" xpos="640" ypos="320" width="64" height="64"/>
+	<image source="content/gfx/misc/status_icons/as_question_mark/idle/45/question mark0038.png" xpos="704" ypos="320" width="64" height="64"/>
+	<image source="content/gfx/misc/status_icons/as_question_mark/idle/45/question mark0039.png" xpos="768" ypos="320" width="64" height="64"/>
+	<image source="content/gfx/misc/status_icons/as_question_mark/idle/45/question mark0040.png" xpos="832" ypos="320" width="64" height="64"/>
+	<image source="content/gfx/misc/status_icons/as_question_mark/idle/45/question mark0041.png" xpos="896" ypos="320" width="64" height="64"/>
+	<image source="content/gfx/misc/status_icons/as_question_mark/idle/45/question mark0042.png" xpos="960" ypos="320" width="64" height="64"/>
+	<image source="content/gfx/misc/status_icons/as_question_mark/idle/45/question mark0043.png" xpos="0" ypos="384" width="64" height="64"/>
+	<image source="content/gfx/misc/status_icons/as_question_mark/idle/45/question mark0044.png" xpos="64" ypos="384" width="64" height="64"/>
+	<image source="content/gfx/misc/status_icons/as_question_mark/idle/45/question mark0045.png" xpos="128" ypos="384" width="64" height="64"/>
+	<image source="content/gfx/misc/status_icons/as_question_mark/idle/45/question mark0046.png" xpos="192" ypos="384" width="64" height="64"/>
+	<image source="content/gfx/misc/status_icons/as_question_mark/idle/45/question mark0047.png" xpos="256" ypos="384" width="64" height="64"/>
+	<image source="content/gfx/misc/status_icons/as_question_mark/idle/45/question mark0048.png" xpos="320" ypos="384" width="64" height="64"/>
+	<image source="content/gfx/misc/status_icons/as_question_mark/idle/45/question mark0049.png" xpos="384" ypos="384" width="64" height="64"/>
+	<image source="content/gfx/misc/status_icons/as_question_mark/idle/45/question mark0050.png" xpos="448" ypos="384" width="64" height="64"/>
+	<image source="content/gfx/misc/status_icons/as_question_mark/idle/45/question mark0051.png" xpos="512" ypos="384" width="64" height="64"/>
+	<image source="content/gfx/misc/status_icons/as_question_mark/idle/45/question mark0052.png" xpos="576" ypos="384" width="64" height="64"/>
+	<image source="content/gfx/misc/status_icons/as_question_mark/idle/45/question mark0053.png" xpos="640" ypos="384" width="64" height="64"/>
+	<image source="content/gfx/misc/status_icons/as_question_mark/idle/45/question mark0054.png" xpos="704" ypos="384" width="64" height="64"/>
+	<image source="content/gfx/misc/status_icons/as_question_mark/idle/45/question mark0055.png" xpos="768" ypos="384" width="64" height="64"/>
+	<image source="content/gfx/misc/status_icons/as_question_mark/idle/45/question mark0056.png" xpos="832" ypos="384" width="64" height="64"/>
+	<image source="content/gfx/misc/status_icons/as_question_mark/idle/45/question mark0057.png" xpos="896" ypos="384" width="64" height="64"/>
+	<image source="content/gfx/misc/status_icons/as_question_mark/idle/45/question mark0058.png" xpos="960" ypos="384" width="64" height="64"/>
+	<image source="content/gfx/misc/status_icons/as_question_mark/idle/45/question mark0059.png" xpos="0" ypos="448" width="64" height="64"/>
+	<image source="content/gfx/misc/status_icons/as_question_mark/idle/45/question mark0060.png" xpos="64" ypos="448" width="64" height="64"/>
+	<image source="content/gfx/misc/status_icons/as_question_mark/idle/45/question mark0061.png" xpos="128" ypos="448" width="64" height="64"/>
+	<image source="content/gfx/misc/status_icons/as_question_mark/idle/45/question mark0062.png" xpos="192" ypos="448" width="64" height="64"/>
+	<image source="content/gfx/misc/status_icons/as_question_mark/idle/45/question mark0063.png" xpos="256" ypos="448" width="64" height="64"/>
+	<image source="content/gfx/misc/status_icons/as_question_mark/idle/45/question mark0064.png" xpos="320" ypos="448" width="64" height="64"/>
+	<image source="content/gfx/misc/status_icons/as_question_mark/idle/45/question mark0065.png" xpos="384" ypos="448" width="64" height="64"/>
+	<image source="content/gfx/misc/status_icons/as_question_mark/idle/45/question mark0066.png" xpos="448" ypos="448" width="64" height="64"/>
+	<image source="content/gfx/misc/status_icons/as_question_mark/idle/45/question mark0067.png" xpos="512" ypos="448" width="64" height="64"/>
+	<image source="content/gfx/misc/status_icons/as_question_mark/idle/45/question mark0068.png" xpos="576" ypos="448" width="64" height="64"/>
+	<image source="content/gfx/misc/status_icons/as_question_mark/idle/45/question mark0069.png" xpos="640" ypos="448" width="64" height="64"/>
+	<image source="content/gfx/misc/status_icons/as_question_mark/idle/45/question mark0070.png" xpos="704" ypos="448" width="64" height="64"/>
+	<image source="content/gfx/misc/status_icons/as_question_mark/idle/45/question mark0071.png" xpos="768" ypos="448" width="64" height="64"/>
+	<image source="content/gfx/misc/status_icons/as_question_mark/idle/45/question mark0072.png" xpos="832" ypos="448" width="64" height="64"/>
+	<image source="content/gfx/misc/status_icons/as_question_mark/idle/45/question mark0073.png" xpos="896" ypos="448" width="64" height="64"/>
+	<image source="content/gfx/misc/status_icons/as_question_mark/idle/45/question mark0074.png" xpos="960" ypos="448" width="64" height="64"/>
+	<image source="content/gfx/misc/status_icons/as_question_mark/idle/45/question mark0075.png" xpos="0" ypos="512" width="64" height="64"/>
+	<image source="content/gfx/misc/status_icons/as_question_mark/idle/45/question mark0076.png" xpos="64" ypos="512" width="64" height="64"/>
+	<image source="content/gfx/misc/status_icons/as_question_mark/idle/45/question mark0077.png" xpos="128" ypos="512" width="64" height="64"/>
+	<image source="content/gfx/misc/status_icons/as_question_mark/idle/45/question mark0078.png" xpos="192" ypos="512" width="64" height="64"/>
+	<image source="content/gfx/misc/status_icons/as_question_mark/idle/45/question mark0079.png" xpos="256" ypos="512" width="64" height="64"/>
+	<image source="content/gfx/misc/status_icons/as_question_mark/idle/45/question mark0080.png" xpos="320" ypos="512" width="64" height="64"/>
+	<image source="content/gfx/misc/status_icons/as_question_mark/idle/45/question mark0081.png" xpos="384" ypos="512" width="64" height="64"/>
+	<image source="content/gfx/misc/status_icons/as_question_mark/idle/45/question mark0082.png" xpos="448" ypos="512" width="64" height="64"/>
+	<image source="content/gfx/misc/status_icons/as_question_mark/idle/45/question mark0083.png" xpos="512" ypos="512" width="64" height="64"/>
+	<image source="content/gfx/misc/status_icons/as_question_mark/idle/45/question mark0084.png" xpos="576" ypos="512" width="64" height="64"/>
+	<image source="content/gfx/misc/status_icons/as_question_mark/idle/45/question mark0085.png" xpos="640" ypos="512" width="64" height="64"/>
+	<image source="content/gfx/misc/status_icons/as_question_mark/idle/45/question mark0086.png" xpos="704" ypos="512" width="64" height="64"/>
+	<image source="content/gfx/misc/status_icons/as_question_mark/idle/45/question mark0087.png" xpos="768" ypos="512" width="64" height="64"/>
+	<image source="content/gfx/misc/status_icons/as_question_mark/idle/45/question mark0088.png" xpos="832" ypos="512" width="64" height="64"/>
+	<image source="content/gfx/misc/status_icons/as_question_mark/idle/45/question mark0089.png" xpos="896" ypos="512" width="64" height="64"/>
+	<image source="content/gfx/misc/status_icons/as_question_mark/idle/45/question mark0090.png" xpos="960" ypos="512" width="64" height="64"/>
+	<image source="content/gfx/misc/status_icons/as_question_mark/idle/45/question mark0091.png" xpos="0" ypos="576" width="64" height="64"/>
+	<image source="content/gfx/misc/status_icons/as_question_mark/idle/45/question mark0092.png" xpos="64" ypos="576" width="64" height="64"/>
+	<image source="content/gfx/misc/status_icons/as_question_mark/idle/45/question mark0093.png" xpos="128" ypos="576" width="64" height="64"/>
+	<image source="content/gfx/misc/status_icons/as_question_mark/idle/45/question mark0094.png" xpos="192" ypos="576" width="64" height="64"/>
+	<image source="content/gfx/misc/status_icons/as_question_mark/idle/45/question mark0095.png" xpos="256" ypos="576" width="64" height="64"/>
+	<image source="content/gfx/misc/status_icons/as_question_mark/idle/45/question mark0096.png" xpos="320" ypos="576" width="64" height="64"/>
+	<image source="content/gfx/misc/status_icons/as_question_mark/idle/45/question mark0097.png" xpos="384" ypos="576" width="64" height="64"/>
+	<image source="content/gfx/misc/status_icons/as_question_mark/idle/45/question mark0098.png" xpos="448" ypos="576" width="64" height="64"/>
+	<image source="content/gfx/misc/status_icons/as_question_mark/idle/45/question mark0099.png" xpos="512" ypos="576" width="64" height="64"/>
+	<image source="content/gfx/misc/status_icons/as_question_mark/idle/45/question mark0100.png" xpos="576" ypos="576" width="64" height="64"/>
+	<image source="content/gfx/misc/status_icons/as_question_mark/idle/45/question mark0101.png" xpos="640" ypos="576" width="64" height="64"/>
+	<image source="content/gfx/misc/status_icons/as_question_mark/idle/45/question mark0102.png" xpos="704" ypos="576" width="64" height="64"/>
+	<image source="content/gfx/misc/status_icons/as_question_mark/idle/45/question mark0103.png" xpos="768" ypos="576" width="64" height="64"/>
+	<image source="content/gfx/misc/status_icons/as_question_mark/idle/45/question mark0104.png" xpos="832" ypos="576" width="64" height="64"/>
+	<image source="content/gfx/misc/status_icons/as_question_mark/idle/45/question mark0105.png" xpos="896" ypos="576" width="64" height="64"/>
+	<image source="content/gfx/misc/status_icons/as_question_mark/idle/45/question mark0106.png" xpos="960" ypos="576" width="64" height="64"/>
+	<image source="content/gfx/misc/status_icons/as_question_mark/idle/45/question mark0107.png" xpos="0" ypos="640" width="64" height="64"/>
+	<image source="content/gfx/misc/status_icons/as_question_mark/idle/45/question mark0108.png" xpos="64" ypos="640" width="64" height="64"/>
+	<image source="content/gfx/misc/status_icons/as_question_mark/idle/45/question mark0109.png" xpos="128" ypos="640" width="64" height="64"/>
+	<image source="content/gfx/misc/status_icons/as_question_mark/idle/45/question mark0110.png" xpos="192" ypos="640" width="64" height="64"/>
+	<image source="content/gfx/misc/status_icons/as_question_mark/idle/45/question mark0111.png" xpos="256" ypos="640" width="64" height="64"/>
+	<image source="content/gfx/misc/status_icons/as_question_mark/idle/45/question mark0112.png" xpos="320" ypos="640" width="64" height="64"/>
+	<image source="content/gfx/misc/status_icons/as_question_mark/idle/45/question mark0113.png" xpos="384" ypos="640" width="64" height="64"/>
+	<image source="content/gfx/misc/status_icons/as_question_mark/idle/45/question mark0114.png" xpos="448" ypos="640" width="64" height="64"/>
+	<image source="content/gfx/misc/status_icons/as_question_mark/idle/45/question mark0115.png" xpos="512" ypos="640" width="64" height="64"/>
+	<image source="content/gfx/misc/status_icons/as_question_mark/idle/45/question mark0116.png" xpos="576" ypos="640" width="64" height="64"/>
+	<image source="content/gfx/misc/status_icons/as_question_mark/idle/45/question mark0117.png" xpos="640" ypos="640" width="64" height="64"/>
+	<image source="content/gfx/misc/status_icons/as_question_mark/idle/45/question mark0118.png" xpos="704" ypos="640" width="64" height="64"/>
+	<image source="content/gfx/misc/status_icons/as_question_mark/idle/45/question mark0119.png" xpos="768" ypos="640" width="64" height="64"/>
+	<image source="content/gfx/misc/status_icons/as_question_mark/idle/45/question mark0120.png" xpos="832" ypos="640" width="64" height="64"/>
+	<image source="content/gfx/misc/status_icons/as_question_mark/idle/45/question mark0121.png" xpos="896" ypos="640" width="64" height="64"/>
+	<image source="content/gfx/misc/status_icons/as_question_mark/idle/45/question mark0122.png" xpos="960" ypos="640" width="64" height="64"/>
+	<image source="content/gfx/misc/status_icons/as_question_mark/idle/45/question mark0123.png" xpos="0" ypos="704" width="64" height="64"/>
+	<image source="content/gfx/misc/status_icons/as_question_mark/idle/45/question mark0124.png" xpos="64" ypos="704" width="64" height="64"/>
+	<image source="content/gfx/misc/status_icons/as_question_mark/idle/45/question mark0125.png" xpos="128" ypos="704" width="64" height="64"/>
+	<image source="content/gfx/misc/status_icons/as_question_mark/idle/45/question mark0126.png" xpos="192" ypos="704" width="64" height="64"/>
+	<image source="content/gfx/misc/status_icons/as_question_mark/idle/45/question mark0127.png" xpos="256" ypos="704" width="64" height="64"/>
+	<image source="content/gfx/misc/status_icons/as_question_mark/idle/45/question mark0128.png" xpos="320" ypos="704" width="64" height="64"/>
+	<image source="content/gfx/misc/status_icons/as_question_mark/idle/45/question mark0129.png" xpos="384" ypos="704" width="64" height="64"/>
+	<image source="content/gfx/misc/status_icons/as_question_mark/idle/45/question mark0130.png" xpos="448" ypos="704" width="64" height="64"/>
+	<image source="content/gfx/misc/status_icons/as_question_mark/idle/45/question mark0131.png" xpos="512" ypos="704" width="64" height="64"/>
+	<image source="content/gfx/misc/status_icons/as_question_mark/idle/45/question mark0132.png" xpos="576" ypos="704" width="64" height="64"/>
+	<image source="content/gfx/misc/status_icons/as_question_mark/idle/45/question mark0133.png" xpos="640" ypos="704" width="64" height="64"/>
+	<image source="content/gfx/misc/status_icons/as_question_mark/idle/45/question mark0134.png" xpos="704" ypos="704" width="64" height="64"/>
+	<image source="content/gfx/misc/status_icons/as_question_mark/idle/45/question mark0135.png" xpos="768" ypos="704" width="64" height="64"/>
+	<image source="content/gfx/misc/status_icons/as_question_mark/idle/45/question mark0136.png" xpos="832" ypos="704" width="64" height="64"/>
+	<image source="content/gfx/misc/status_icons/as_question_mark/idle/45/question mark0137.png" xpos="896" ypos="704" width="64" height="64"/>
+	<image source="content/gfx/misc/status_icons/as_question_mark/idle/45/question mark0138.png" xpos="960" ypos="704" width="64" height="64"/>
+	<image source="content/gfx/misc/status_icons/as_question_mark/idle/45/question mark0139.png" xpos="0" ypos="768" width="64" height="64"/>
+	<image source="content/gfx/misc/status_icons/as_question_mark/idle/45/question mark0140.png" xpos="64" ypos="768" width="64" height="64"/>
+	<image source="content/gfx/misc/status_icons/as_question_mark/idle/45/question mark0141.png" xpos="128" ypos="768" width="64" height="64"/>
+	<image source="content/gfx/misc/status_icons/as_question_mark/idle/45/question mark0142.png" xpos="192" ypos="768" width="64" height="64"/>
+	<image source="content/gfx/misc/status_icons/as_question_mark/idle/45/question mark0143.png" xpos="256" ypos="768" width="64" height="64"/>
+	<image source="content/gfx/misc/status_icons/as_question_mark/idle/45/question mark0144.png" xpos="320" ypos="768" width="64" height="64"/>
+</atlas>
+
