@@ -240,11 +240,14 @@ def main():
 			import cProfile as profile
 		except ImportError:
 			import profile
-		import tempfile
-		outfilename = tempfile.mkstemp(text = True)[1]
+
+		profiling_dir = os.path.join(PATHS.USER_DIR, 'profiling')
+		if not os.path.exists(profiling_dir):
+			os.makedirs(profiling_dir)
+
+		outfilename = os.path.join(profiling_dir, time.strftime('%Y-%m-%d_%H-%M-%S') + '.prof')
 		print 'Starting in profile mode. Writing output to:', outfilename
-		profile.runctx('horizons.main.start(options)', globals(), locals(), \
-								   outfilename)
+		profile.runctx('horizons.main.start(options)', globals(), locals(), outfilename)
 		print 'Program ended. Profiling output:', outfilename
 
 	if logfile:
