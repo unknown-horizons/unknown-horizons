@@ -32,9 +32,8 @@ from fife.extensions.serializers.simplexml import SimpleXMLSerializer
 
 from fife.extensions.fife_settings import FIFE_MODULE
 
-import horizons.gui.style
 from horizons.util import SQLiteAnimationLoader, SQLiteAtlasLoader
-from horizons.constants import LANGUAGENAMES, PATHS
+from horizons.constants import LANGUAGENAMES, PATHS, GFX
 from horizons.engine.settingshandler import SettingsHandler, get_screen_resolutions
 from horizons.engine.sound import Sound
 from horizons.engine.settingsdialog import SettingsDialog
@@ -159,7 +158,7 @@ class Fife(ApplicationBase):
 		self.sound = Sound(self)
 		self.imagemanager = self.engine.getImageManager()
 		self.targetrenderer = self.engine.getTargetRenderer()
-		self.use_atlases = False
+		self.use_atlases = GFX.USE_ATLASES
 		if self.use_atlases:
 			self.animationloader = SQLiteAtlasLoader()
 		else:

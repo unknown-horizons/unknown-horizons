@@ -347,6 +347,18 @@ else:
 	_user_dir = os.path.join(my_games, 'unknown-horizons')
 _user_dir = unicode(_user_dir, locale.getpreferredencoding()) # this makes umlaut-paths work on win
 
+class GFX:
+	BUILDING_OUTLINE_THRESHOLD = 96
+	BUILDING_OUTLINE_WIDTH = 2
+
+	UNIT_OUTLINE_THRESHOLD = 96
+	UNIT_OUTLINE_WIDTH = 2
+
+	SHIP_OUTLINE_THRESHOLD = 96
+	SHIP_OUTLINE_WIDTH = 2
+
+	USE_ATLASES = False
+
 class PATHS:
 	# paths in user dir
 	USER_DIR = _user_dir
@@ -365,7 +377,11 @@ class PATHS:
 	CONFIG_TEMPLATE_FILE = os.path.join("content", "settings-template.xml")
 
 	DB_FILES = tuple(os.path.join("content", i) for i in \
-	                 ("game.sql", "balance.sql", "atlas.sql") )
+	                 ("game.sql", "balance.sql"))
+
+	if GFX.USE_ATLASES:
+		DB_FILES = DB_FILES + (os.pat.join("content", "atlas.sql"))
+
 	#voice paths
 	VOICE_DIR = os.path.join("content", "audio", "voice")
 
@@ -442,12 +458,3 @@ FONTDEFS = {
 
 AUTO_CONTINUE_CAMPAIGN=True
 
-class GFX:
-	BUILDING_OUTLINE_THRESHOLD = 96
-	BUILDING_OUTLINE_WIDTH = 2
-
-	UNIT_OUTLINE_THRESHOLD = 96
-	UNIT_OUTLINE_WIDTH = 2
-
-	SHIP_OUTLINE_THRESHOLD = 96
-	SHIP_OUTLINE_WIDTH = 2
