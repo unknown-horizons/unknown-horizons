@@ -121,7 +121,7 @@ class TradeRoute(object):
 
 					# the ship should never pick up more than the number defined in the route config
 					if self.ship.get_component(StorageComponent).inventory[res] + amount > self.get_location()['resource_list'][res]:
-						amount = self.get_location()['resource_list'][res] - self.ship.inventory[res]
+						amount = self.get_location()['resource_list'][res] - self.ship.get_component(StorageComponent).inventory[res]
 
 					# check if ship has enough space is handled implicitly below
 					amount_transferred = settlement.transfer_to_storageholder(amount, res, self.ship)
