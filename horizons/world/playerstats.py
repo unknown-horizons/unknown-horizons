@@ -110,8 +110,18 @@ class PlayerStats(WorldObject):
 		self._calculate_money_score(running_costs, taxes, self.player.get_component(StorageComponent).inventory[RES.GOLD_ID])
 		self._calculate_total_score()
 
-	settler_values = {SETTLER.SAILOR_LEVEL: 2, SETTLER.PIONEER_LEVEL: 3, SETTLER.SETTLER_LEVEL: 7}
-	settler_building_values = {SETTLER.SAILOR_LEVEL: 3, SETTLER.PIONEER_LEVEL: 5, SETTLER.SETTLER_LEVEL: 11}
+	settler_values = {
+			SETTLER.SAILOR_LEVEL: 2,
+			SETTLER.PIONEER_LEVEL: 3,
+			SETTLER.SETTLER_LEVEL: 7,
+			SETTLER.CITIZEN_LEVEL: 15,
+			}
+	settler_building_values = {
+			SETTLER.SAILOR_LEVEL: 3,
+			SETTLER.PIONEER_LEVEL: 5,
+			SETTLER.SETTLER_LEVEL: 11,
+			SETTLER.CITIZEN_LEVEL: 19,
+			}
 	settler_resource_provided_coefficient = 0.1
 	settler_score_coefficient = 0.3
 
