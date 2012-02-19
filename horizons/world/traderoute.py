@@ -85,7 +85,7 @@ class TradeRoute(object):
 					del self.current_transfer[res]
 
 		settlement = warehouse.settlement
-		status = self._transer_resources(settlement, resource_list)
+		status = self._transfer_resources(settlement, resource_list)
 		if (not status.settlement_has_enough_space_to_take_res and self.wait_at_unload) or \
 		   (not status.settlement_provides_enough_res and self.wait_at_load):
 			self.current_transfer = status.remaining_transfers
@@ -95,7 +95,7 @@ class TradeRoute(object):
 			self.current_transfer = None
 			self.move_to_next_route_warehouse()
 
-	def _transer_resources(self, settlement, resource_list):
+	def _transfer_resources(self, settlement, resource_list):
 		"""Transfers resources to/from settlement according to list.
 		@return: TransferStatus instance
 		"""
