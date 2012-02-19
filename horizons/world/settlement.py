@@ -31,8 +31,9 @@ from horizons.world.componentholder import ComponentHolder
 from horizons.world.component.tradepostcomponent import TradePostComponent
 from horizons.world.production.producer import Producer
 from horizons.world.storage import PositiveSizedSlotStorage
+from horizons.world.resourcehandler import ResourceHandler
 
-class Settlement(ComponentHolder, WorldObject, ChangeListener):
+class Settlement(ComponentHolder, WorldObject, ChangeListener, ResourceHandler):
 	"""The Settlement class describes a settlement and stores all the necessary information
 	like name, current inhabitants, lists of tiles and houses, etc belonging to the village."""
 
