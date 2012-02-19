@@ -31,10 +31,7 @@ class Timer(LivingObject):
 	The Timer class manages game-ticks, every tick executes a set of functions in its call lists,
 	this is especially important for multiplayer, to allow synchronous play.
 	"""
-	TEST_PASS, TEST_SKIP, TEST_RETRY_RESET_NEXT_TICK_TIME, TEST_RETRY_KEEP_NEXT_TICK_TIME = xrange(0, 4)
-
-	possible_ticks_per_second = GAME_SPEED.TICK_RATES
-	default_ticks_per_second = GAME_SPEED.TICKS_PER_SECOND
+	TEST_PASS, TEST_SKIP = xrange(0, 2)
 
 	ACCEPTABLE_TICK_DELAY = 0.2 # sec
 	DEFER_TICK_ON_DELAY_BY = 0.4 # sec
@@ -105,11 +102,7 @@ class Timer(LivingObject):
 					# If a callback changed the speed to zero, we have to exit
 					if self.ticks_per_second != 0:
 						self.tick_next_time = (self.tick_next_time or time.time()) + 1.0 / self.ticks_per_second
-				elif r == self.TEST_RETRY_RESET_NEXT_TICK_TIME:
-					self.tick_next_time = None
-				elif r != self.TEST_RETRY_KEEP_NEXT_TICK_TIME:
-					continue
-				return
+					return
 			if self._freeze_protection and self.tick_next_time:
 				# stretch time if we're too slow
 				diff = time.time() - self.tick_next_time
