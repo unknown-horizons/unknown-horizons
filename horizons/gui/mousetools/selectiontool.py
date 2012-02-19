@@ -168,6 +168,14 @@ class SelectionTool(NavigationTool):
 			super(SelectionTool, self).mousePressed(evt)
 			return
 		elif evt.getButton() == fife.MouseEvent.LEFT:
+			if self.session.selected_instances is None:
+				# this is a very odd corner case, it should only happen after the session has been ended
+				# we can't allow to just let it crash however
+				print 'WARNING: selected_instance is None. Please report this!'
+				import traceback
+				traceback.print_stack()
+				print 'WARNING: selected_instance is None. Please report this!'
+				return
 			selectable = []
 			instances = self.get_hover_instances(evt)
 			for instance in instances:
