@@ -153,9 +153,7 @@ class SPTestSession(SPSession):
 		self.savecounter = 0	# this is a new game.
 		self.is_alive = True
 
-		WorldObject.reset()
-		NamedComponent.reset()
-		AIPlayer.clear_caches()
+		self._clear_caches()
 
 		# Game
 		self.random = self.create_rng(rng_seed)

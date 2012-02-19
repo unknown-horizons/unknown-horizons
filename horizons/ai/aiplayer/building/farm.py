@@ -252,6 +252,11 @@ class FarmEvaluator(BuildingEvaluator):
 				self.area_builder.unused_fields[self.field_purpose].append(coords)
 		return (BUILD_RESULT.OK, building)
 
+	@classmethod
+	def clear_cache(cls):
+		cls.__cache.clear()
+		cls.__cache_changes = (-1, -1)
+
 class ModifiedFieldEvaluator(BuildingEvaluator):
 	"""This evaluator evaluates the cost of changing the type of an unused field."""
 

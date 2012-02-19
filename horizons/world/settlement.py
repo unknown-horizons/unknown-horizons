@@ -254,3 +254,11 @@ class Settlement(ComponentHolder, WorldObject, ChangeListener):
 			else:
 				self.produced_res[res] = amount
 
+	def end(self):
+		self.session = None
+		self.owner = None
+		self.buildings = None
+		self.ground_map = None
+		self.produced_res = None
+		self.buildings_by_id = None
+		self.warehouse = None

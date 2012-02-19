@@ -100,10 +100,7 @@ class Session(LivingObject):
 		self.savecounter = 0
 		self.is_alive = True
 
-		# misc
-		WorldObject.reset()
-		NamedComponent.reset()
-		AIPlayer.clear_caches()
+		self._clear_caches()
 
 		#game
 		self.random = self.create_rng(rng_seed)
@@ -147,6 +144,11 @@ class Session(LivingObject):
 		"""Returns a Timer instance."""
 		raise NotImplementedError
 
+	def _clear_caches(self):
+		WorldObject.reset()
+		NamedComponent.reset()
+		AIPlayer.clear_caches()
+
 	def end(self):
 		self.log.debug("Ending session")
 		self.is_alive = False
@@ -167,6 +169,9 @@ class Session(LivingObject):
 			horizons.main.fife.sound.emitter['speech'].stop()
 		if hasattr(self, "cursor"): # the line below would crash uglily on ^C
 			self.cursor.remove()
+
+		if hasattr(self, 'cursor') and self.cursor is not None:
+			self.cursor.end()
 		self.cursor = None
 		self.world = None
 		self.keylistener = None
@@ -175,11 +180,18 @@ class Session(LivingObject):
 		self.manager = None
 		self.timer = None
 		self.scenario_eventhandler = None
-		Scheduler.destroy_instance()
 
+		Scheduler().end()
+		Scheduler.destroy_instance()
 
 		self.selected_instances = None
 		self.selection_groups = None
+
+		self.status_icon_manager = None
+		self.message_bus = None
+
+		horizons.main._modules.session = None
+		self._clear_caches()
 
 	def toggle_cursor(self, which, *args, **kwargs):
 		"""Alternate between the cursor which and default.

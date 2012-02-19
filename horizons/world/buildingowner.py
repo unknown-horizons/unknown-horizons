@@ -140,5 +140,9 @@ class BuildingOwner(object):
 		for building in self.buildings:
 			building.save(db)
 
-
-
+	def end(self):
+		if self.buildings is not None:
+			for building in [building for building in self.buildings]:
+				building.remove()
+		self.provider_buildings = None
+		self.buildings = None

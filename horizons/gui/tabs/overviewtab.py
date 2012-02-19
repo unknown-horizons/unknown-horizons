@@ -298,6 +298,10 @@ class FightingShipOverviewTab(ShipOverviewTab):
 		self.widget.child_finder('weapon_inventory').update()
 		self.refresh()
 
+	def on_instance_removed(self):
+		self.weapon_inventory = None
+		super(FightingShipOverviewTab, self).on_instance_removed()
+
 class TowerOverviewTab(OverviewTab): # defensive tower
 	def __init__(self, instance):
 		super(TowerOverviewTab, self).__init__(

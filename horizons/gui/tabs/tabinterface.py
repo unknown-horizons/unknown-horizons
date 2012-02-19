@@ -146,4 +146,4 @@ class TabInterface(object):
 
 	def __del__(self):
 		"""Do cleanup work here."""
-		pass
+		self.widget = None

@@ -103,3 +103,6 @@ class CursorTool(fife.IMouseListener):
 		else:
 			return fife.ScreenPoint(arg.getX(), arg.getY())
 
+	def end(self):
+		self.session = None
+		self.tooltip = None

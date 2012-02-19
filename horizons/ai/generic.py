@@ -19,6 +19,8 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
+import weakref
+
 from horizons.world.player import Player
 from horizons.scheduler import Scheduler
 from horizons.ext.enum import Enum
@@ -36,7 +38,7 @@ class GenericAI(Player):
 		self.__init()
 
 	def __init(self):
-		self.ships = {} # {ship : state}. used as list of ships and structure to know their state
+		self.ships = weakref.WeakValueDictionary() # {ship : state}. used as list of ships and structure to know their state
 
 	def _load(self, db, worldid):
 		super(GenericAI, self)._load(db, worldid)
@@ -71,3 +73,7 @@ class GenericAI(Player):
 		# retry moving ship in 2 secs
 		Scheduler().add_new_object(Callback(self.ship_idle, unit), self, \
 		                           GAME_SPEED.TICKS_PER_SECOND * 2)
+
+	def end(self):
+		self.ships = None
+		super(GenericAI, self).end()

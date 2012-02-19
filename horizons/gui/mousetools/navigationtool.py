@@ -177,3 +177,7 @@ class NavigationTool(CursorTool):
 			instance = WorldObject.get_object_by_id(int(id))
 			hover_instances.append(instance)
 		return hover_instances
+
+	def end(self):
+		super(NavigationTool, self).end()
+		self.tooltip = None

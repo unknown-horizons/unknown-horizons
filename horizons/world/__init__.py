@@ -89,6 +89,15 @@ class World(BuildingOwner, LivingObject, WorldObject):
 
 	def end(self):
 		# destructor-like thing.
+		super(World, self).end()
+
+		for player in self.players:
+			player.end()
+		for ship in [ship for ship in self.ships]:
+			ship.remove()
+		for island in self.islands:
+			island.end()
+
 		self.session = None
 		self.properties = None
 		self.players = None
@@ -106,7 +115,6 @@ class World(BuildingOwner, LivingObject, WorldObject):
 		self.islands = None
 		self.diplomacy = None
 		self.bullets = None
-		super(World, self).end()
 
 	def _init(self, savegame_db, force_player_id=None):
 		"""

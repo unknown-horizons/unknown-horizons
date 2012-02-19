@@ -130,6 +130,10 @@ class Player(ComponentHolder, WorldObject):
 		"""The Mine calls this function to let the player know that the mine is empty."""
 		pass
 
+	def end(self):
+		self.stats = None
+		self.session = None
+
 class HumanPlayer(Player):
 	"""Class for players that physically sit in front of the machine where the game is run"""
 	def notify_settler_reached_level(self, settler):

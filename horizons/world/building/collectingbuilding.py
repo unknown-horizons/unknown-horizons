@@ -72,6 +72,8 @@ class CollectingBuilding(BuildingResourceHandler):
 				collector.decouple_from_home_building()
 		assert len([c for c in self.__collectors]) == 0
 		super(CollectingBuilding, self).remove()
+		self.__collectors = None
+		self.path_nodes = None
 
 	def save(self, db):
 		super(CollectingBuilding, self).save(db)

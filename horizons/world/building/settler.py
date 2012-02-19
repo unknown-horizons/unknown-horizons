@@ -352,7 +352,7 @@ class Settler(BuildableRect, CollectingBuilding, BasicBuilding):
 		except AttributeError: # an attribute hasn't been set up
 			return super(Settler, self).__str__()
 
-	@decorators.cachedmethod
+	#@decorators.cachedmethod TODO: replace this with a version that doesn't leak
 	def __get_data(self, key):
 		"""Returns constant settler-related data from the db.
 		The values are cached by python, so the underlying data must not change."""

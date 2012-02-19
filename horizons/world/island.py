@@ -402,3 +402,14 @@ class Island(BuildingOwner, WorldObject):
 					# building area with origin at coords affected
 					if coords in building_areas:
 						building_areas[coords] = self.last_change_id
+
+	def end(self):
+		super(Island, self).end()
+		for wild_animal in (wild_animal for wild_animal in self.wild_animals):
+			wild_animal.remove()
+		for settlement in self.settlements:
+			settlement.end()
+		self.wild_animals = None
+		self.ground_map = None
+		self.path_nodes = None
+		self.building_indexers = None
