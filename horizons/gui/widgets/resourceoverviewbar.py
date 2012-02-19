@@ -30,6 +30,7 @@ from horizons.world.component.storagecomponent import StorageComponent
 from horizons.util.gui import load_uh_widget, get_res_icon, create_resource_selection_dialog
 from horizons.util import PychanChildFinder, Callback
 from horizons.util.python.decorators import cachedmethod
+from horizons.util.messaging.message import ResourceBarResize
 
 
 class ResourceOverviewBar(object):
@@ -322,15 +323,18 @@ class ResourceOverviewBar(object):
 		"""
 		self._hide_resource_selection_dialog()
 		res_copy = self._get_current_resources()[:]
+		number_of_slots_changed = False
 		if slot_num < len(res_copy): # change existing slot
 			if res_id == 0: # remove it
 				del res_copy[slot_num]
+				number_of_slots_changed = True
 			else: # actual slot change
 				res_copy[slot_num] = res_id
 		else: # addition
 			if res_id == 0: # that would mean adding an empty slot
 				pass
 			else:
+				number_of_slots_changed = True
 				res_copy += [res_id]
 
 		self.resource_configurations[self.current_instance()] = res_copy
@@ -340,6 +344,9 @@ class ResourceOverviewBar(object):
 		if isinstance(self.session.cursor, ResBarMouseTool):
 			self.session.cursor.reset()
 			self._hide_dummy_slot()
+
+		if number_of_slots_changed:
+			self.session.message_bus.broadcast( ResourceBarResize(self) )
 
 	def _hide_resource_selection_dialog(self):
 		if hasattr(self, "_res_selection_dialog"):

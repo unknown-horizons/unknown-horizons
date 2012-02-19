@@ -43,7 +43,7 @@ from horizons.command.misc import Chat
 from horizons.gui.tabs.tabinterface import TabInterface
 from horizons.world.component.namedcomponent import SettlementNameComponent, NamedComponent
 from horizons.world.component.selectablecomponent import SelectableComponent
-from horizons.util.messaging.message import SettlerUpdate, SettlerInhabitantsChanged
+from horizons.util.messaging.message import SettlerUpdate, SettlerInhabitantsChanged, ResourceBarResize
 
 class IngameGui(LivingObject):
 	"""Class handling all the ingame gui events.
@@ -64,6 +64,7 @@ class IngameGui(LivingObject):
 	def __init__(self, session, gui):
 		super(IngameGui, self).__init__()
 		self.session = session
+		assert isinstance(self.session, horizons.session.Session)
 		self.main_gui = gui
 		self.main_widget = None
 		self.tabwidgets = {}
@@ -132,6 +133,7 @@ class IngameGui(LivingObject):
 		self.message_widget = MessageWidget(self.session)
 
 		self.resource_overview = ResourceOverviewBar(self.session)
+		self.session.message_bus.subscribe_globally( ResourceBarResize, self._on_resourcebar_resize )
 
 		# map buildings to build functions calls with their building id.
 		# This is necessary because BuildTabs have no session.
@@ -142,6 +144,12 @@ class IngameGui(LivingObject):
 		# Register for messages
 		self.session.message_bus.subscribe_globally(SettlerUpdate, self._on_settler_level_change)
 		self.session.message_bus.subscribe_globally(SettlerInhabitantsChanged, self._on_settler_inhabitant_change)
+
+	def _on_resourcebar_resize(self, message):
+		###
+		# handle here
+		###
+		res_bar = message.sender # or use self.resource_overview, same thing
 
 	def end(self):
 		self.widgets['minimap'].mapEvents({

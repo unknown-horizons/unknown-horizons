@@ -63,3 +63,7 @@ class SettlerInhabitantsChanged(Message):
 	def __init__(self, sender, change):
 		super(SettlerInhabitantsChanged, self).__init__(sender)
 		self.change = change
+
+class ResourceBarResize(Message):
+	"""Signals a change in resource bar size (not slot changes, but number of slot changes)"""
+	pass
