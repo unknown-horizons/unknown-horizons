@@ -43,7 +43,7 @@ from horizons.command.misc import Chat
 from horizons.gui.tabs.tabinterface import TabInterface
 from horizons.world.component.namedcomponent import SettlementNameComponent, NamedComponent
 from horizons.world.component.selectablecomponent import SelectableComponent
-from horizons.util.messaging.message import SettlerUpdate
+from horizons.util.messaging.message import SettlerUpdate, SettlerInhabitantsChanged
 
 class IngameGui(LivingObject):
 	"""Class handling all the ingame gui events.
@@ -141,6 +141,7 @@ class IngameGui(LivingObject):
 
 		# Register for messages
 		self.session.message_bus.subscribe_globally(SettlerUpdate, self._on_settler_level_change)
+		self.session.message_bus.subscribe_globally(SettlerInhabitantsChanged, self._on_settler_inhabitant_change)
 
 	def end(self):
 		self.widgets['minimap'].mapEvents({
@@ -204,6 +205,13 @@ class IngameGui(LivingObject):
 			self.widgets['city_info'].show()
 			self.update_settlement()
 			settlement.add_change_listener(self.update_settlement)
+
+	def _on_settler_inhabitant_change(self, message):
+		assert isinstance(message, SettlerInhabitantsChanged)
+		cityinfo = self.widgets['city_info']
+		foundlabel = cityinfo.child_finder('city_inhabitants')
+		foundlabel.text = unicode(' %s' % (int(foundlabel.text) + message.change))
+		foundlabel.resizeToContent()
 
 	def update_settlement(self):
 		cityinfo = self.widgets['city_info']

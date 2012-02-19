@@ -55,3 +55,11 @@ class SettlerUpdate(Message):
 	def __init__(self, sender, level):
 		super(SettlerUpdate, self).__init__(sender)
 		self.level = level
+
+class SettlerInhabitantsChanged(Message):
+	"""Class to signal that the number of inhabitants in a settler building
+	have changed."""
+
+	def __init__(self, sender, change):
+		super(SettlerInhabitantsChanged, self).__init__(sender)
+		self.change = change

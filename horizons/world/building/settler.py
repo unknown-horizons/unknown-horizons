@@ -37,7 +37,7 @@ from horizons.command.production import ToggleActive
 from horizons.world.component.storagecomponent import StorageComponent
 from horizons.world.status import SettlerUnhappyStatus
 from horizons.world.production.producer import Producer
-from horizons.util.messaging.message import AddStatusIcon, RemoveStatusIcon, SettlerUpdate
+from horizons.util.messaging.message import AddStatusIcon, RemoveStatusIcon, SettlerUpdate, SettlerInhabitantsChanged
 
 class SettlerRuin(BasicBuilding, BuildableSingle):
 	"""Building that appears when a settler got unhappy. The building does nothing.
@@ -70,6 +70,7 @@ class Settler(BuildableRect, BuildingResourceHandler, BasicBuilding):
 
 	def initialize(self):
 		super(Settler, self).initialize()
+		self.session.message_bus.broadcast(SettlerInhabitantsChanged(self, self.inhabitants))
 		happiness = self.__get_data("happiness_init_value")
 		if happiness is not None:
 			self.get_component(StorageComponent).inventory.alter(RES.HAPPINESS_ID, happiness)
@@ -228,21 +229,21 @@ class Settler(BuildableRect, BuildingResourceHandler, BasicBuilding):
 
 	def inhabitant_check(self):
 		"""Checks whether or not the population of this settler should increase or decrease"""
-		changed = False
+		change = 0
 		if self.happiness > self.__get_data("happiness_inhabitants_increase_requirement") and \
 			 self.inhabitants < self.inhabitants_max:
-			self.inhabitants += 1
-			changed = True
+			change = 1
 			self.log.debug("%s: inhabitants increase to %s", self, self.inhabitants)
 		elif self.happiness < self.__get_data("happiness_inhabitants_decrease_limit") and \
 		     self.inhabitants > 1:
-			self.inhabitants -= 1
-			changed = True
+			change = -1
 			self.log.debug("%s: inhabitants decrease to %s", self, self.inhabitants)
 
-		if changed:
+		if change != 0:
 			# see http://wiki.unknown-horizons.org/w/Supply_citizens_with_resources
 			self.get_component(Producer).alter_production_time( 6.0/7.0 * math.log( 1.5 * (self.inhabitants + 1.2) ) )
+			self.inhabitants += change
+			self.session.message_bus.broadcast(SettlerInhabitantsChanged(self, change))
 			self._changed()
 
 	def level_check(self):
