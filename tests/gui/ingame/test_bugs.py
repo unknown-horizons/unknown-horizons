@@ -34,7 +34,7 @@ def test_ticket_1352(gui):
 	yield # test needs to be a generator for now
 
 	player = gui.session.world.player
-	ship = CreateUnit(player.worldid, UNITS.FRIGATE, 68, 10)(player)
+	ship = CreateUnit(player.worldid, UNITS.FRIGATE_CLASS, 68, 10)(player)
 	x, y = ship.position.x, ship.position.y
 
 	gui.session.view.center(x, y)

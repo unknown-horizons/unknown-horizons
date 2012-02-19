@@ -39,7 +39,7 @@ components:
         slot_sizes: {8: 10, 4: 10}
 - CollectingComponent:
     collectors:
-      1000010: 1
+      UNITS.LUMBERJACK_COLLECTOR_CLASS: 1
 actionsets:
   as_lumberjack0: {level: 0}
   as_lumberjack_barrack0: {level: 1}
