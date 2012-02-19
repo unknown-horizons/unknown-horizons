@@ -210,7 +210,7 @@ class IngameGui(LivingObject):
 		assert isinstance(message, SettlerInhabitantsChanged)
 		cityinfo = self.widgets['city_info']
 		foundlabel = cityinfo.child_finder('city_inhabitants')
-		foundlabel.text = unicode(' %s' % (int(foundlabel.text) + message.change))
+		foundlabel.text = unicode(' %s' % ((int(foundlabel.text) if foundlabel.text else 0) + message.change))
 		foundlabel.resizeToContent()
 
 	def update_settlement(self):
