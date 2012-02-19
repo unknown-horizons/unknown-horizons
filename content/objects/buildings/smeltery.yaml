@@ -31,5 +31,8 @@ components:
     inventory:
       SlotsStorage:
         slot_sizes: {25: 6, 26: 9, 23: 6}
+- CollectingComponent:
+    collectors:
+      1000002: 2
 actionsets:
   as_smeltery0: {level: 0}

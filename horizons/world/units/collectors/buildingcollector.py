@@ -28,6 +28,7 @@ from horizons.scheduler import Scheduler
 from horizons.world.units.movingobject import MoveNotPossible
 from horizons.world.units.collectors.collector import Collector, JobList
 from horizons.world.component.storagecomponent import StorageComponent
+from horizons.world.component.collectingcompontent import CollectingComponent
 
 
 
@@ -100,9 +101,9 @@ class BuildingCollector(Collector):
 		@param unregister: whether to reverse registration
 		"""
 		if unregister:
-			self.home_building.remove_local_collector(self)
+			self.home_building.get_component(CollectingComponent).remove_local_collector(self)
 		else:
-			self.home_building.add_local_collector(self)
+			self.home_building.get_component(CollectingComponent).add_local_collector(self)
 
 	def apply_state(self, state, remaining_ticks = None):
 		super(BuildingCollector, self).apply_state(state, remaining_ticks)
@@ -130,7 +131,7 @@ class BuildingCollector(Collector):
 		return self.home_building.get_component(StorageComponent).inventory
 
 	def get_colleague_collectors(self):
-		return self.home_building.get_local_collectors()
+		return self.home_building.get_component(CollectingComponent).get_local_collectors()
 
 	@decorators.make_constants()
 	def get_job(self):

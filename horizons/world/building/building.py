@@ -82,11 +82,7 @@ class BasicBuilding(ComponentHolder, ConcreteObject):
 		self.level = level
 		self._action_set_id = action_set_id if action_set_id is not None else \
 		    self.get_random_action_set(self.level)[0]
-		self.rotation = rotation
-		if self.rotation in (135, 315): # Rotate the rect correctly
-			self.position = ConstRect(origin, self.size[1]-1, self.size[0]-1)
-		else:
-			self.position = ConstRect(origin, self.size[0]-1, self.size[1]-1)
+		self.__set_position(rotation, origin)
 
 		self.loading_area = self.position # shape where collector get resources
 
@@ -106,6 +102,13 @@ class BasicBuilding(ComponentHolder, ConcreteObject):
 				play_every = 15 + random.randint(0, 15)
 				for soundfile in self.get_component(AmbientSoundComponent).soundfiles:
 					self.get_component(AmbientSoundComponent).play_ambient(soundfile, True, play_every)
+
+	def __set_position(self, rotation, origin):
+			self.rotation = rotation
+			if self.rotation in (135, 315): # Rotate the rect correctly
+				self.position = ConstRect(origin, self.size[1]-1, self.size[0]-1)
+			else:
+				self.position = ConstRect(origin, self.size[0]-1, self.size[1]-1)
 
 	def toggle_costs(self):
 		self.running_costs , self.running_costs_inactive = \
@@ -150,6 +153,11 @@ class BasicBuilding(ComponentHolder, ConcreteObject):
 		owner_id = db.get_settlement_owner(location)
 		owner = None if owner_id is None else WorldObject.get_object_by_id(owner_id)
 		self.owner = owner # set before super().load(), they need it
+
+		# HACK set position in advance of loading because it is needed in the
+		# collecting component. The position is set twice because of this, but
+		# it should do no harm.
+		self.__set_position(rotation, Point(x, y))
 
 		super(BasicBuilding, self).load(db, worldid)
 

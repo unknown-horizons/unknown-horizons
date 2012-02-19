@@ -21,7 +21,6 @@
 
 from horizons.world.building.building import BasicBuilding
 from horizons.world.building.buildable import BuildableRect, BuildableSingleEverywhere
-from horizons.world.building.collectingbuilding import CollectingBuilding
 from horizons.world.building.buildingresourcehandler import BuildingResourceHandler
 from horizons.entities import Entities
 from horizons.scheduler import Scheduler
@@ -67,7 +66,7 @@ class Field(NatureBuildingResourceHandler):
 			self.session.ingame_gui.message_widget.add(pos.x, pos.y, "FIELD_NEEDS_FARM",
 			                                           check_duplicate=True)
 
-class AnimalField(CollectingBuilding, Field):
+class AnimalField(Field):
 	walkable = False
 	def create_collector(self):
 		self.animals = []

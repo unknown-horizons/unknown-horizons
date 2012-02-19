@@ -20,7 +20,6 @@
 # ###################################################
 
 
-from horizons.world.building.collectingbuilding import CollectingBuilding
 from horizons.world.building.buildingresourcehandler import BuildingResourceHandler
 from horizons.world.building.building import BasicBuilding
 from horizons.world.building.buildable import BuildableSingle, BuildableSingleOnCoast, BuildableSingleOnDeposit
@@ -35,8 +34,7 @@ from horizons.world.status import InventoryFullStatus, ProductivityLowStatus
 from horizons.world.production.producer import Producer
 from horizons.world.component.storagecomponent import StorageComponent
 
-
-class Farm(CollectingBuilding, BuildableSingle, BasicBuilding):
+class Farm(BuildingResourceHandler, BuildableSingle, BasicBuilding):
 	max_fields_possible = 8 # only for utilisation calculation
 	tabs = (FarmProductionOverviewTab,)
 
@@ -57,31 +55,31 @@ class Farm(CollectingBuilding, BuildableSingle, BasicBuilding):
 		result = max(result, 0.0)
 		return result
 
-class Lumberjack(CollectingBuilding, BuildableSingle, BasicBuilding):
+class Lumberjack(BuildingResourceHandler, BuildableSingle, BasicBuilding):
 	pass
 
-class Refiner(CollectingBuilding, BuildableSingle, BasicBuilding):
+class Refiner(BuildingResourceHandler, BuildableSingle, BasicBuilding):
 	pass
 
-class Hunter(CollectingBuilding, BuildableSingle, BasicBuilding):
+class Hunter(BuildingResourceHandler, BuildableSingle, BasicBuilding):
 	pass
 
-class IronRefiner(CollectingBuilding, BuildableSingle, BasicBuilding):
+class IronRefiner(BuildingResourceHandler, BuildableSingle, BasicBuilding):
 	pass
 
-class Smeltery(CollectingBuilding, BuildableSingle, BasicBuilding):
+class Smeltery(BuildingResourceHandler, BuildableSingle, BasicBuilding):
 	pass
 
-class CharcoalBurning(CollectingBuilding, BuildableSingle, BasicBuilding):
+class CharcoalBurning(BuildingResourceHandler, BuildableSingle, BasicBuilding):
 	pass
 
-class SaltPond(CollectingBuilding, BuildableSingleOnCoast, BasicBuilding):
+class SaltPond(BuildingResourceHandler, BuildableSingleOnCoast, BasicBuilding):
 	pass
 
-class CannonBuilder(CollectingBuilding, BuildableSingle, BasicBuilding):
+class CannonBuilder(BuildingResourceHandler, BuildableSingle, BasicBuilding):
 	pass
 
-class Fisher(CollectingBuilding, BuildableSingleOnCoast, BasicBuilding):
+class Fisher(BuildingResourceHandler, BuildableSingleOnCoast, BasicBuilding):
 
 	"""
 	Old selection workaround (only color fish) removed in b69c72aeef0174c42dec4039eed7b81f96f6dcaa.
@@ -97,7 +95,7 @@ class Fisher(CollectingBuilding, BuildableSingleOnCoast, BasicBuilding):
 			total += state_history[PRODUCTION.STATES.producing.index]
 		return total / float(len(productions))
 
-class SettlerServiceProvider(CollectingBuilding, BuildableSingle, BasicBuilding):
+class SettlerServiceProvider(BuildingResourceHandler, BuildableSingle, BasicBuilding):
 	"""Class for Pavilion, School that provide a service-type res for settlers.
 	Also provides collectors for buildings that consume resources (tavern)."""
 	def get_status_icons(self):

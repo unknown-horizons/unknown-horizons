@@ -28,6 +28,7 @@ from horizons.world.component.ambientsoundcomponent import AmbientSoundComponent
 from horizons.world.component.healthcomponent import HealthComponent
 from horizons.world.component.selectablecomponent import SelectableComponent
 from horizons.world.component.commandablecomponent import CommandableComponent
+from horizons.world.component.collectingcompontent import CollectingComponent
 from horizons.world.production.producer import Producer, QueueProducer, UnitProducer
 
 class ComponentHolder(object):
@@ -69,6 +70,7 @@ class ComponentHolder(object):
 	    'UnitProducerComponent': UnitProducer,
 	    'SelectableComponent': SelectableComponent,
 	    'CommandableComponent': CommandableComponent,
+	    'CollectingComponent': CollectingComponent,
 	}
 
 
@@ -122,8 +124,8 @@ class ComponentHolder(object):
 		"""
 		assert isinstance(component, Component)
 		component.instance = self
-		component.initialize()
 		self.components[component.NAME] = component
+		component.initialize()
 
 	def remove_component(self, component_class):
 		"""

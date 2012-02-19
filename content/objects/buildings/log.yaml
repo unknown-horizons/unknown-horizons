@@ -14,5 +14,4 @@ settler_level: 0
 buildingcosts: {1: 50, 4: 2}
 components:
 - HealthComponent: {maxhealth: 10}
-- StorageComponent
 actionsets: {}

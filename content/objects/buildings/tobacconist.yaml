@@ -30,5 +30,8 @@ components:
     inventory:
       SlotsStorage:
         slot_sizes: {32: 4, 31: 6}
+- CollectingComponent:
+    collectors:
+      1000002: 1
 actionsets:
   as_tobacconist0: {level: 0}

@@ -19,12 +19,12 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-from horizons.world.building.collectingbuilding import CollectingBuilding
+from horizons.world.building.buildingresourcehandler import BuildingResourceHandler
 from horizons.world.building.building import BasicBuilding
 from horizons.world.building.buildable import BuildableSingle
 
-class Doctor(CollectingBuilding, BuildableSingle, BasicBuilding):
+class Doctor(BuildingResourceHandler, BuildableSingle, BasicBuilding):
 	pass
 
-class FireService(CollectingBuilding, BuildableSingle, BasicBuilding):
+class FireService(BuildingResourceHandler, BuildableSingle, BasicBuilding):
 	pass
