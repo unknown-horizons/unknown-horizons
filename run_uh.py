@@ -153,6 +153,12 @@ def get_option_parser():
 	                           help="Use this seed for singleplayer sessions.")
 	dev_group.add_option("--generate-minimap", dest="generate_minimap", \
 	                     metavar="<parameters>", help="Generate a minimap for a map")
+	dev_group.add_option("--create-mp-game", action="store_true", dest="create_mp_game", \
+	                     help="Create an multiplayer game with default settings.")
+	dev_group.add_option("--join-mp-game", action="store_true", dest="join_mp_game", \
+	                     help="Join first multiplayer game.")
+	p.add_option_group(dev_group)
+	p.add_option_group(dev_group)
 	p.add_option_group(dev_group)
 
 	return p

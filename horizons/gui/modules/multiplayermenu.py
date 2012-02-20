@@ -87,6 +87,15 @@ class MultiplayerMenu(object):
 
 		self.on_escape = event_map['cancel']
 
+	def create_default_mp_game(self):
+		"""For debugging; creates a valid game. Call right after show_multi"""
+		self.__show_create_game()
+		self.__create_game()
+
+	def join_mp_game(self):
+		"""For debugging; joins first open game. Call right after show_multi"""
+		self.__join_game()
+
 	def __connect_to_server(self):
 		NetworkInterface().register_chat_callback(self.__receive_chat_message)
 		NetworkInterface().register_game_details_changed_callback(self.__update_game_details)

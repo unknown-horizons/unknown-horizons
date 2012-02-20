@@ -206,6 +206,14 @@ def start(command_line_arguments):
 		from development.stringpreviewwidget import StringPreviewWidget
 		__string_previewer = StringPreviewWidget(_modules.session)
 		__string_previewer.show()
+	elif command_line_arguments.create_mp_game:
+		_modules.gui.show_main()
+		_modules.gui.show_multi()
+		_modules.gui.create_default_mp_game()
+	elif command_line_arguments.join_mp_game:
+		_modules.gui.show_main()
+		_modules.gui.show_multi()
+		_modules.gui.join_mp_game()
 	else: # no commandline parameter, show main screen
 		_modules.gui.show_main()
 		if not command_line_arguments.nopreload:
