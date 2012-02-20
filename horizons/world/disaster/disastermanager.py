@@ -90,4 +90,9 @@ class DisasterManager(object):
 		self._active_disaster[settlement].end()
 		del self._active_disaster[settlement]
 
+	def is_affected(self, settlement):
+		"""Returns whether there is currently a disaster in a settlement"""
+		return settlement in self._active_disaster
+
+
 

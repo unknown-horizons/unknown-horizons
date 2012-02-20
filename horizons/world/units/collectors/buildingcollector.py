@@ -331,13 +331,18 @@ class FisherShipCollector(BuildingCollector):
 
 class DisasterRecoveryCollector(StorageCollector):
 	"""Collects disasters such as fire or pestilence."""
-	# TODO: as optimisation, get_job can return None as long as no disaster
-	#       is registered for the settlement
 	def finish_working(self, collector_already_home=False):
 		super(DisasterRecoveryCollector, self).finish_working(collector_already_home=collector_already_home)
 		building = self.job.object
 		if hasattr(building, "disaster"): # make sure that building hasn't recovered any other way
 			building.disaster.recover(building)
+
+	def get_job(self):
+		if self.home_building is not None and \
+		   not self.session.world.disaster_manager.is_affected( self.home_building.settlement ):
+			return None # not one disaster active, bail out
+
+		return super(DisasterRecoveryCollector, self).get_job()
 
 decorators.bind_all(BuildingCollector)
 decorators.bind_all(FieldCollector)
