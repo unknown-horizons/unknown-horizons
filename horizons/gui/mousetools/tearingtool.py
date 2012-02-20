@@ -22,11 +22,10 @@
 from fife import fife
 
 import horizons.main
-from weakref import WeakSet
 
 from horizons.gui.mousetools.navigationtool import NavigationTool
 from horizons.command.building import Tear
-from horizons.util import Point
+from horizons.util import Point, WeakList
 from horizons.constants import BUILDINGS
 
 class TearingTool(NavigationTool):
@@ -38,13 +37,13 @@ class TearingTool(NavigationTool):
 	def __init__(self, session):
 		super(TearingTool, self).__init__(session)
 		self.coords = None
-		self.selected = WeakSet()
+		self.selected = WeakList()
 		self.oldedges = None
 		self.tear_tool_active = True
 		self.session.gui.on_escape = self.on_escape
 		self.session.ingame_gui.hide_menu()
 		horizons.main.fife.set_cursor_image("tearing")
-		self._hovering_over = WeakSet()
+		self._hovering_over = WeakList()
 
 	def remove(self):
 		self._mark()
@@ -88,8 +87,8 @@ class TearingTool(NavigationTool):
 						pos = warehouses[0].position.origin
 						self.session.ingame_gui.message_widget.add( pos.x, pos.y, "WAREHOUSE_NOT_TEARABLE" )
 
-			self.selected = WeakSet()
-			self._hovering_over = WeakSet()
+			self.selected = WeakList()
+			self._hovering_over = WeakList()
 
 			if not evt.isShiftPressed() and not horizons.main.fife.get_uh_setting('UninterruptedBuilding'):
 				self.tear_tool_active = False
@@ -119,17 +118,19 @@ class TearingTool(NavigationTool):
 		if self.oldedges != edges or edges is None:
 			for i in self.selected:
 				self.session.view.renderer['InstanceRenderer'].removeColored(i._instance)
-			self.selected = WeakSet()
+			self.selected = WeakList()
 			self.oldedges = edges
 		if edges is not None:
-			self._hovering_over = WeakSet()
+			self._hovering_over = WeakList()
 			for x in xrange(edges[0][0], edges[1][0] + 1):
 				for y in xrange(edges[0][1], edges[1][1] + 1):
 					b = self.session.world.get_building(Point(x, y))
 					if b is not None:
-						self._hovering_over.add(b)
+						if b not in self._hovering_over:
+							self._hovering_over.append(b)
 						if b.tearable and self.session.world.player == b.owner:
-							self.selected.add(b)
+							if b not in self.selected:
+								self.selected.append(b)
 			for i in self.selected:
 				self.session.view.renderer['InstanceRenderer'].addColored(i._instance, \
 				                                                          *self.tear_selection_color)
