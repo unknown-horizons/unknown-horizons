@@ -74,8 +74,8 @@ class MPManager(LivingObject):
 	execution time and is also responsible for handling lags"""
 	log =  logging.getLogger("mpmanager")
 	EXECUTIONDELAY = 4
-	HASHDELAY = 8
-	HASH_EVAL_DISTANCE = 8
+	HASHDELAY = 4
+	HASH_EVAL_DISTANCE = 2 # interval, check hash every nth tick
 
 	def __init__(self, session, networkinterface):
 		"""Initialize the Multiplayer Manager"""
