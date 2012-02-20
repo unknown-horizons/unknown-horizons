@@ -43,7 +43,7 @@ class MessageWidget(LivingObject):
 	ICON_TEMPLATE = 'messagewidget_icon.xml'
 	MSG_TEMPLATE = 'messagewidget_message.xml'
 	CHARS_PER_LINE = 34 # character count after which we start new line. no wrap
-	SHOW_NEW_MESSAGE_TEXT = 4 # seconds
+	SHOW_NEW_MESSAGE_TEXT = 7 # seconds
 	MAX_MESSAGES = 5
 
 	_DUPLICATE_TIME_THRESHOLD = 10 # sec
