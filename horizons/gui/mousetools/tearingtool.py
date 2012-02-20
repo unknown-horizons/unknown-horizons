@@ -22,10 +22,12 @@
 from fife import fife
 
 import horizons.main
+from weakref import WeakSet
 
 from horizons.gui.mousetools.navigationtool import NavigationTool
 from horizons.command.building import Tear
 from horizons.util import Point
+from horizons.constants import BUILDINGS
 
 class TearingTool(NavigationTool):
 	"""
@@ -36,12 +38,13 @@ class TearingTool(NavigationTool):
 	def __init__(self, session):
 		super(TearingTool, self).__init__(session)
 		self.coords = None
-		self.selected = set()
+		self.selected = WeakSet()
 		self.oldedges = None
 		self.tear_tool_active = True
 		self.session.gui.on_escape = self.on_escape
 		self.session.ingame_gui.hide_menu()
 		horizons.main.fife.set_cursor_image("tearing")
+		self._hovering_over = WeakSet()
 
 	def remove(self):
 		self._mark()
@@ -75,7 +78,18 @@ class TearingTool(NavigationTool):
 			for i in self.selected:
 				self.session.view.renderer['InstanceRenderer'].removeColored(i._instance)
 				Tear(i).execute(self.session)
-			self.selected = set()
+			else:
+				if self._hovering_over:
+					# we're hovering over a building, but none is selected, so this tear action isn't allowed
+					warehouses = [ b for b in self._hovering_over if \
+					               b.id ==BUILDINGS.WAREHOUSE_CLASS ]
+					if warehouses:
+						# tried to tear a warehouse, this is especially non-tearable
+						pos = warehouses[0].position.origin
+						self.session.ingame_gui.message_widget.add( pos.x, pos.y, "WAREHOUSE_NOT_TEARABLE" )
+
+			self.selected = WeakSet()
+			self._hovering_over = WeakSet()
 
 			if not evt.isShiftPressed() and not horizons.main.fife.get_uh_setting('UninterruptedBuilding'):
 				self.tear_tool_active = False
@@ -105,14 +119,17 @@ class TearingTool(NavigationTool):
 		if self.oldedges != edges or edges is None:
 			for i in self.selected:
 				self.session.view.renderer['InstanceRenderer'].removeColored(i._instance)
-			self.selected = set()
+			self.selected = WeakSet()
 			self.oldedges = edges
 		if edges is not None:
+			self._hovering_over = WeakSet()
 			for x in xrange(edges[0][0], edges[1][0] + 1):
 				for y in xrange(edges[0][1], edges[1][1] + 1):
 					b = self.session.world.get_building(Point(x, y))
-					if b is not None and b.tearable and self.session.world.player == b.owner:
-						self.selected.add(b)
+					if b is not None:
+						self._hovering_over.add(b)
+						if b.tearable and self.session.world.player == b.owner:
+							self.selected.add(b)
 			for i in self.selected:
 				self.session.view.renderer['InstanceRenderer'].addColored(i._instance, \
 				                                                          *self.tear_selection_color)
