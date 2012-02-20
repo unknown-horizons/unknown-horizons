@@ -168,8 +168,10 @@ def set_translations():
 		},
 
 	"content/objects/buildings/lumberjackcamp.yaml" : {
-		# name of buildings:lumberjackcamp
-		"name"                        : _("Lumberjack Camp"),
+		# name_0 of buildings:lumberjackcamp
+		"name_0"                      : _("Lumberjack Tent"),
+		# name_1 of buildings:lumberjackcamp
+		"name_1"                      : _("Lumberjack Hut"),
 		# tooltip_text of buildings:lumberjackcamp
 		"tooltip_text"                : _("Chops down trees and turns them into boards."),
 		},

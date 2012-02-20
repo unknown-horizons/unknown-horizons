@@ -6,7 +6,7 @@
 # The storage component has space for both raw wood and boards.
 # The actionsets define how the building looks like in the different settler levels.
 id: 8
-name: _ Lumberjack Camp
+name: {0: _ Lumberjack Tent, 1: _ Lumberjack Hut}
 baseclass: production.Lumberjack
 radius: 3
 cost: 5

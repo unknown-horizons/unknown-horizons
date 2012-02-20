@@ -128,3 +128,11 @@ class ConcreteObject(WorldObject):
 		if action_set is not None and 'preview' in action_sets[action_set]:
 			preview = action_sets[action_set]['preview']
 		return (action_set, preview)
+
+	@property
+	def name(self):
+		if hasattr(self, "_level_specific_names"):
+			return self._level_specific_names[self.level]
+		else:
+			return self._name
+

@@ -98,12 +98,19 @@ def content_from_file(filename):
 	object_strings = []
 	if not parsed:
 		return ''
+	def add_line(value, component, filename):
+		if value.startswith('_ '):
+			text = '_("{value}")'.format(value=value[2:])
+			comment = '%s of %s' %(component, filename.rsplit('.yaml')[0].split(OBJECT_PATH)[1].replace('/',':'))
+			object_strings.append('# %s' %comment + ROWINDENT + '%-30s: %s' % (('"%s"') % component, text))
+
 	for component, value in parsed.iteritems():
 		if isinstance(value, str) or isinstance(value, unicode):
-			if value.startswith('_ '):
-				text = '_("{value}")'.format(value=value[2:])
-				comment = '%s of %s' %(component, filename.rsplit('.yaml')[0].split(OBJECT_PATH)[1].replace('/',':'))
-				object_strings.append('# %s' %comment + ROWINDENT + '%-30s: %s' % (('"%s"') % component, text))
+			add_line(value, component, filename)
+		elif isinstance(value, dict):
+			for key, subvalue in value.iteritems():
+				if isinstance(subvalue, str) or isinstance(subvalue, unicode):
+					add_line(subvalue, component + "_" + str(key), filename)
 
 	strings = sorted(object_strings)
 

@@ -57,10 +57,30 @@ class IngameType(type):
 			(getattr(module, class_name),),
 			{'load': load, 'class_package': class_package, 'class_name': class_name})
 
+	def _strip_translation_marks(self, string):
+		if string.startswith("_ "):
+			return string[2:]
+		else:
+			return string
 
 	def __init__(self, id, yaml_data):
 		self.id = id
-		self._name = yaml_data['name']
+		# self._name is always some default name
+		# self._level_specifc_names is optional and contains a dict like this: { level_id : name }
+		# (with entries for all increments in which it is active)
+		name_data = yaml_data['name']
+		if isinstance(name_data, dict): # { level_id : name }
+			# fill up dict (fall down to highest class which has an name
+			name = None
+			self._level_specific_names = {}
+			for lvl in xrange( min(name_data), SETTLER.CURRENT_MAX_INCR+1 ):
+				if lvl in name_data:
+					name = _( self._strip_translation_marks( name_data[lvl] ) )
+				assert name is not None, "name attribute is wrong: "+str(yaml_data['name'])
+				self._level_specific_names[lvl] = name
+			self._name = name_data[ min(name_data) ] # use first as default
+		else: # assume just one string
+			self._name = _( self._strip_translation_marks( name_data ) )
 		self.radius = yaml_data['radius']
 		self.component_templates = yaml_data['components']
 		self.action_sets = yaml_data['actionsets']

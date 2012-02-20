@@ -325,11 +325,6 @@ class BasicBuilding(ComponentHolder, ConcreteObject):
 		"""This function is called when the building is built, to start production for example."""
 		pass
 
-	@property
-	def name(self):
-		return self._name
-
-
 	#@decorators.relese_mode(ret="Building")
 	def __str__(self): # debug
 		return '%s(id=%s;worldid=%s)' % (self.name, self.id, self.worldid if hasattr(self, 'worldid') else 'none')
