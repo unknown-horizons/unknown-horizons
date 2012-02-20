@@ -93,16 +93,7 @@ class YamlCache(object):
 		if isinstance(filename, unicode):
 			filename = filename.encode('utf8') # shelve needs str keys
 
-		if (filename in cls.cache and \
-				cls.cache[filename][0] != h) or \
-			 (not filename in cls.cache):
-			data = yaml.load( f, Loader = SafeLoader )
-			if game_data: # need to convert some values
-				data = convert_game_data(data)
-			cls.lock.acquire()
-			try:
-				cls.cache[filename] = (h, data)
-			except Exception as e:
+		def handle_get_yaml_file_error(e, release):
 				# when something unexpected happens, shelve does not guarantee anything.
 				# since crashing on any access is part of the specified behaviour, we need to handle it.
 				# cf. http://bugs.python.org/issue14041
@@ -110,8 +101,24 @@ class YamlCache(object):
 				# delete cache and try again
 				os.remove(cls.cache_filename)
 				cls.cache = None
-				cls.lock.release()
+				if release:
+					cls.lock.release()
 				return cls.get_yaml_file(filename, game_data=game_data)
+
+		try:
+			yaml_file_in_cache = (filename in cls.cache and cls.cache[filename][0] == h)
+		except Exception as e:
+			return handle_get_yaml_file_error(e, release=False)
+
+		if not yaml_file_in_cache:
+			data = yaml.load( f, Loader = SafeLoader )
+			if game_data: # need to convert some values
+				data = convert_game_data(data)
+			cls.lock.acquire()
+			try:
+				cls.cache[filename] = (h, data)
+			except Exception as e:
+				return handle_get_yaml_file_error(e, release=True)
 
 			if not cls.sync_scheduled:
 				cls.sync_scheduled = True
