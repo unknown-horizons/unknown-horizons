@@ -1,7 +1,7 @@
 id: 45
 name: _ Fire Brigade
 baseclass: prevention.FireService
-radius: 10
+radius: 16
 cost: 15
 cost_inactive: 5
 size_x: 2
