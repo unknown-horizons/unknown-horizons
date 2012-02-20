@@ -19,6 +19,8 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
+import weakref
+
 from fife import fife
 
 from horizons.util.gui import load_uh_widget
@@ -53,7 +55,9 @@ class RouteConfig(object):
 
 	@property
 	def session(self):
-		return self.instance.session
+		session = self.instance.session
+		assert isinstance(session, horizons.session.Session)
+		return session
 
 	def show(self):
 		self.minimap.draw()
@@ -61,12 +65,17 @@ class RouteConfig(object):
 		if not self.instance.has_remove_listener(self.on_instance_removed):
 			self.instance.add_remove_listener(self.on_instance_removed)
 		self.session.ingame_gui.on_switch_main_widget(self)
+		self.session.speed_pause(suggestion=True)
 
 	def hide(self):
+		self.session.speed_unpause(suggestion=True)
 		self.minimap.disable()
 		self._gui.hide()
 		if self.instance.has_remove_listener(self.on_instance_removed):
 			self.instance.remove_remove_listener(self.on_instance_removed)
+
+		if not self.instance.route.enabled: # make sure user knows that it's not enabled
+			self.session.ingame_gui.message_widget.add(None, None, "ROUTE_DISABLED")
 
 	def on_instance_removed(self):
 		self.hide()
@@ -83,6 +92,9 @@ class RouteConfig(object):
 	def start_route(self):
 		if self.instance.route.enable():
 			self.start_button_set_inactive()
+		else:
+			self.instance.session.gui.show_popup(_("Need at least two settlements"),
+			                                     _("You need at least two different settlements in your route."))
 
 	def stop_route(self):
 		self.instance.route.disable()
@@ -168,12 +180,14 @@ class RouteConfig(object):
 		button = slot.findChild(name="buysell")
 		button.up_image = self.buy_button_path
 		button.hover_image = self.buy_button_path
+		button.tooltip = _("Loading into ship")
 		slot.action = "load"
 
 	def show_unload_icon(self, slot):
 		button = slot.findChild(name="buysell")
 		button.up_image = self.sell_button_path
 		button.hover_image = self.sell_button_path
+		button.tooltip = _("Unloading from ship")
 		slot.action = "unload"
 
 	def toggle_load_unload(self, slot, entry):
@@ -254,37 +268,63 @@ class RouteConfig(object):
 		if self.resource_menu_shown:
 			self.hide_resource_menu()
 		self.resource_menu_shown = True
+
 		vbox = self._gui.findChild(name="resources")
 		lbl = widgets.Label(name='select_res_label', text=_('Select a resource:'))
 		vbox.addChild( lbl )
 
-		#hardcoded for 6 works better than vbox.width / button_width
-		amount_per_line = 6
+		scrollarea = widgets.ScrollArea()
+		res_box = widgets.VBox()
+		scrollarea.addChild(res_box)
+		vbox.addChild(scrollarea)
+
+		# TODO: use create_resource_selection_dialog from util/gui.py
+
+		#hardcoded for 5 works better than vbox.width / button_width
+		amount_per_line = 5
 
 		current_hbox = widgets.HBox(max_size="326,46")
 		index = 1
 
-		for res_id in self.icon_for_resource:
+		settlement = entry.settlement()
+		inventory = settlement.get_component(StorageComponent).inventory if settlement else None
+		from horizons.gui.widgets.imagefillstatusbutton import ImageFillStatusButton
+
+		for res_id in sorted(self.icon_for_resource):
 			if res_id in self.instance.route.waypoints[position]['resource_list'] and \
 			   slot.findChild(name='button').up_image.source is not self.icon_for_resource[res_id]:
 				continue
-			button = TooltipButton(size=(46,46))
-			icon = self.icon_for_resource[res_id]
-			button.up_image, button.down_image, button.hover_image = icon, icon, icon
-			button.capture(Callback(self.add_resource, slot, res_id, entry))
-			if res_id != 0:
-				button.tooltip = self.session.db.get_res_name(res_id)
+			cb = Callback(self.add_resource, slot, res_id, entry)
+			if res_id == 0 or inventory is None: # no fillbar e.g. on dead settlement (shouldn't happen) or dummy slot
+				button = TooltipButton(size=(46,46))
+				icon = self.icon_for_resource[res_id]
+				button.up_image, button.down_image, button.hover_image = icon, icon, icon
+				button.capture(cb)
+			else: # button with fillbar
+				amount = inventory[res_id]
+				filled = int(float(inventory[res_id]) / float(inventory.get_limit(res_id)) * 100.0)
+				button = ImageFillStatusButton.init_for_res(self.session.db, res_id,
+			                                            	amount=amount, filled=filled,
+			                                            	use_inactive_icon=False)
+				button.button.capture(cb)
+
+
 			current_hbox.addChild(button)
 			if index >= amount_per_line:
 				index -= amount_per_line
-				vbox.addChild(current_hbox)
+				res_box.addChild(current_hbox)
 				current_hbox = widgets.HBox(max_size="326,26")
 			index += 1
 		current_hbox.addSpacer(widgets.Spacer())
 		#TODO this spacer does absolutely nothing.
-		vbox.addChild(current_hbox)
+		res_box.addChild(current_hbox)
 
 		self._gui.adaptLayout()
+		scrollarea.max_width = 316
+		scrollarea.width = 316
+		vbox.max_width = 316
+		vbox.width = 316
+
 
 	def hide_resource_menu(self):
 		self.resource_menu_shown = False
@@ -324,6 +364,7 @@ class RouteConfig(object):
 	def add_gui_entry(self, warehouse, resource_list = None):
 		vbox = self._gui.findChild(name="left_vbox")
 		entry = load_uh_widget("route_entry.xml")
+		entry.settlement = weakref.ref( warehouse.settlement )
 		self.widgets.append(entry)
 
 		settlement_name_label = entry.findChild(name = "warehouse_name")
