@@ -26,6 +26,7 @@ from horizons.util import  Circle, WorldObject
 from horizons.constants import GAME_SPEED
 from horizons.scheduler import Scheduler
 from horizons.world.component.storagecomponent import StorageComponent
+from horizons.world.component.tradepostcomponent import TradePostComponent
 
 class TradeRoute(object):
 	"""
@@ -146,7 +147,7 @@ class TradeRoute(object):
 
 					amount_transferred = self.ship.transfer_to_storageholder(amount, res, settlement)
 				else:
-					amount_transferred = settlement.buy_resource(self.ship.worldid, res, amount)
+					amount_transferred = settlement.get_component(TradePostComponent).buy_resource(self.ship.worldid, res, amount)
 
 				if amount_transferred < -status.remaining_transfers[res] and self.ship.get_component(StorageComponent).inventory[res] > 0:
 					status.settlement_has_enough_space_to_take_res = False
