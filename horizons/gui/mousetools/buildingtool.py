@@ -269,16 +269,17 @@ class BuildingTool(NavigationTool):
 					radius_only_on_island =  template['range_applies_only_on_island']
 				SelectableBuildingComponent.select_building(self.session, building.position, settlement, self._class.radius, radius_only_on_island)
 
-				related = frozenset(self.session.db.get_related_building_ids(self._class.id))
-				checked = set() # already processed
-				for tile in settlement.get_tiles_in_radius(building.position, self._class.radius, include_self=True):
-					obj = tile.object
-					if (obj is not None) and (obj.id in related) and (obj not in checked):
-						# currently same code as highlight_related_buildings
-						inst = obj.fife_instance
-						self.renderer.addOutlined(inst, *self.related_building_outline)
-						self.renderer.addColored(inst, *self.related_building_color)
-						self._modified_instances.add( weakref.ref(inst) )
+				if settlement is not None:
+					related = frozenset(self.session.db.get_related_building_ids(self._class.id))
+					checked = set() # already processed
+					for tile in settlement.get_tiles_in_radius(building.position, self._class.radius, include_self=True):
+						obj = tile.object
+						if (obj is not None) and (obj.id in related) and (obj not in checked):
+							# currently same code as highlight_related_buildings
+							inst = obj.fife_instance
+							self.renderer.addOutlined(inst, *self.related_building_outline)
+							self.renderer.addColored(inst, *self.related_building_color)
+							self._modified_instances.add( weakref.ref(inst) )
 
 		else: # not buildable
 			# must remove other highlight, fife does not support both
