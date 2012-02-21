@@ -114,7 +114,13 @@ class SingleplayerMenu(object):
 				# select first entry
 				self.active_right_side.distributeData({ 'maplist' : 0, })
 				_update_infos()
-			self.active_right_side.findChild(name="maplist").capture(_update_infos)
+			# update preview whenever somehting is selected in the list
+			self.active_right_side.findChild(name="maplist").mapEvents({
+			  'maplist/action'              : _update_infos,
+			  'maplist/mouseWheelMovedUp'   : _update_infos,
+			  'maplist/mouseWheelMovedDown' : _update_infos
+			})
+			self.active_right_side.findChild(name="maplist").capture(_update_infos, event_name="keyPressed")
 			show_ai_options = True
 			self._setup_game_settings_selection()
 		else:
