@@ -74,7 +74,7 @@ class TearingTool(NavigationTool):
 			if self.coords is None:
 				self.coords = coords
 			self._mark(self.coords, coords)
-			for i in self.selected:
+			for i in [i for i in self.selected]:
 				self.session.view.renderer['InstanceRenderer'].removeColored(i._instance)
 				Tear(i).execute(self.session)
 			else:
