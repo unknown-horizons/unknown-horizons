@@ -19,6 +19,7 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
+
 class Component(object):
 	"""
 	Base class for all components. Something like an interface.

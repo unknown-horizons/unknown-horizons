@@ -21,11 +21,8 @@
 
 import logging
 
-
 from horizons.world.component import Component
 from horizons.util import Point, Circle
-
-
 
 class CommandableComponent(Component):
 	"""
@@ -35,15 +32,18 @@ class CommandableComponent(Component):
 
 	# Store the name of this component
 	NAME = 'commandable'
-	
+
 	def __init__(self):
 		super(CommandableComponent, self).__init__()
-		
+
 	def go(self, x, y):
 		from horizons.world.units.movingobject import MoveNotPossible
 		"""Moves the unit.
 		This is called when a unit is selected and the right mouse button is pressed outside the unit"""
-		move_target = Point(int(round(x)), int(round(y)))
+		x = int(round(x))
+		y = int(round(y))
+		move_target = Point(x, y)
+
 		try:
 			self.instance.move(move_target)
 		except MoveNotPossible:
@@ -62,5 +62,8 @@ class CommandableComponent(Component):
 				break
 		self.instance.session.ingame_gui.minimap.show_unit_path(self.instance)
 		if move_target is None: # can't move
-			# TODO: give player some kind of feedback
+			if self.session.world.get_tile(Point(x, y)) is None: # not even in world
+				self.session.ingame_gui.message_widget.add(x, y, "MOVE_OUTSIDE_OF_WORLD")
+			else: # in world, but still unreachable
+				self.session.ingame_gui.message_widget.add(x, y, "MOVE_INVALID_LOCATION")
 			return None

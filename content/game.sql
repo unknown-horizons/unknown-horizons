@@ -161,6 +161,8 @@ INSERT INTO "message" VALUES('One of your fields requires a farm to harvest its 
 INSERT INTO "message" VALUES('You have reached the current maximum increment. Your inhabitants will not upgrade further.',1,45.0,NULL,'MAX_INCR_REACHED');
 INSERT INTO "message" VALUES('You cannot tear the warehouse, your settlements needs it.',1,30.0,NULL,'WAREHOUSE_NOT_TEARABLE');
 INSERT INTO "message" VALUES('The route is now configured. Start it via the "start route" button in the "configure route" menu.',1,45.0,NULL,'ROUTE_DISABLED');
+INSERT INTO "message" VALUES('Your crew refuses to leave this map.',1,20.0,NULL,'MOVE_OUTSIDE_OF_WORLD');
+INSERT INTO "message" VALUES('Cannot go here.',1,20.0,NULL,'MOVE_INVALID_LOCATION');
 CREATE TABLE ai (client_id TEXT NOT NULL, class_package TEXT NOT NULL, class_name TEXT NOT NULL);
 INSERT INTO "ai" VALUES('AIPlayer','aiplayer','AIPlayer');
 CREATE TABLE "object_sounds" (object  INTEGER PRIMARY KEY  NOT NULL  DEFAULT '' , "sound" INTEGER NOT NULL  DEFAULT '');
