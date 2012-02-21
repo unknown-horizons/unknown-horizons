@@ -347,7 +347,15 @@ class SingleplayerMenu(object):
 		widget = self.widgets['game_settings']
 		if widget.parent is not None:
 			widget.parent.removeChild(widget)
-		self.current.findChild(name = 'game_settings_box').addChild(widget)
+		settings_box = self.current.findChild(name = 'game_settings_box')
+		settings_box.addChild(widget)
+
+		# make click on labels change the respective checkboxes
+		for setting in u'free_trader', u'pirates', u'disasters':
+			def toggle(setting):
+				box = self.current.findChild(name = setting)
+				box.marked = not box.marked
+			self.current.findChild(name = u'lbl_'+setting).capture(Callback(toggle, setting))
 
 		resource_density_slider = widget.findChild(name = 'resource_density_slider')
 		def on_resource_density_slider_change():
