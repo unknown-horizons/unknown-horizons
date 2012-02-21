@@ -236,6 +236,7 @@ class SingleplayerMenu(object):
 			  map_file, playername, playercolor, ai_players = ai_players, human_ai = AI.HUMAN_AI,
 			  trader_enabled = self.widgets['game_settings'].findChild(name = 'free_trader').marked,
 			  pirate_enabled = self.widgets['game_settings'].findChild(name = 'pirates').marked,
+			  disasters_enabled = self.widgets['game_settings'].findChild(name = 'disasters').marked,
 			  natural_resource_multiplier = self._get_natural_resource_multiplier()
 			)
 

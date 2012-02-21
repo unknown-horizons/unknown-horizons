@@ -219,8 +219,10 @@ class Session(LivingObject):
 	def save(self, savegame=None):
 		raise NotImplementedError
 
-	def load(self, savegame, players, trader_enabled, pirate_enabled, natural_resource_multiplier, is_scenario=False, campaign=None, force_player_id=None):
-		"""Loads a map.
+	def load(self, savegame, players, trader_enabled, pirate_enabled,
+	         natural_resource_multiplier, is_scenario=False, campaign=None,
+	         force_player_id=None, disasters_enabled=True):
+		"""Loads a map. Key method for starting a game.
 		@param savegame: path to the savegame database.
 		@param players: iterable of dictionaries containing id, name, color, local, ai, and difficulty
 		@param is_scenario: Bool whether the loaded map is a scenario or not
@@ -261,7 +263,7 @@ class Session(LivingObject):
 			self.random.setstate( rng_state_tuple )
 
 		self.world = World(self) # Load horizons.world module (check horizons/world/__init__.py)
-		self.world._init(savegame_db, force_player_id)
+		self.world._init(savegame_db, force_player_id, disasters_enabled=disasters_enabled)
 		self.view.load(savegame_db) # load view
 		if not self.is_game_loaded():
 			# NOTE: this must be sorted before iteration, cause there is no defined order for

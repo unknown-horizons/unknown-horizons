@@ -108,7 +108,7 @@ class World(BuildingOwner, LivingObject, WorldObject):
 		self.bullets = None
 		super(World, self).end()
 
-	def _init(self, savegame_db, force_player_id=None):
+	def _init(self, savegame_db, force_player_id=None, disasters_enabled=True):
 		"""
 		@param savegame_db: Dbreader with loaded savegame database
 		@param force_player_id: the worldid of the selected human player or default if None (debug option)
@@ -268,7 +268,11 @@ class World(BuildingOwner, LivingObject, WorldObject):
 
 		self.diplomacy.add_diplomacy_status_changed_listener(notify_change)
 
-		self.disaster_manager = DisasterManager(self.session)
+		disasters_disabled_by_properties = 'disasters_enabled' in self.properties and not self.properties['disasters_enabled']
+		# if savegame or parameter disables disasters, it's disabled (both have to be set to enable to actually enable)
+		disasters_disabled = not disasters_enabled or disasters_disabled_by_properties
+
+		self.disaster_manager = DisasterManager(self.session, disabled=disasters_disabled)
 		if self.session.is_game_loaded():
 			self.disaster_manager.load(savegame_db)
 
