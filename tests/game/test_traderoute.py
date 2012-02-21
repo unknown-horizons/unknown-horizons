@@ -24,19 +24,15 @@ from horizons.world.component.namedcomponent import NamedComponent
 from horizons.world.component.storagecomponent import StorageComponent
 from horizons.constants import RES
 
-from tests.gui import TestFinished, gui_test
+from tests.game import game_test
 
 
-
-@gui_test(use_fixture='traderoute', timeout=360)
-def test_traderoute_basic(gui):
+@game_test(use_fixture='traderoute')
+def test_traderoute_basic(s):
 	"""
 	Check if traderoutes do anything.
-	This is actually not really a gui test, but it's here for the fixture support.
 	"""
-	yield # test needs to be a generator for now
-
-	settlements = gui.session.world.player.settlements
+	settlements = s.world.player.settlements
 	assert len(settlements) == 2
 
 	# 2 settlements, one produces food, the other one boards
@@ -52,16 +48,13 @@ def test_traderoute_basic(gui):
 	assert wood_inv[RES.BOARDS_ID] > 0
 
 	while food_inv[RES.BOARDS_ID] == 0: # first ensure wood to food
-		yield
+		s.run()
 	while wood_inv[RES.FOOD_ID] == 0: # traderoute also goes other way around
-		yield
+		s.run()
 
 	while food_inv.get_free_space_for(RES.BOARDS_ID) > 0: # also fill up
-		yield
+		s.run()
 	while wood_inv.get_free_space_for(RES.FOOD_ID) > 0: # also fill up
-		yield
+		s.run()
 
 	# when the whiles pass, it is ensured that traderoutes somewhat work
-
-	yield TestFinished
-

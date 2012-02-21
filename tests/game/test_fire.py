@@ -24,23 +24,19 @@ from horizons.constants import RES, BUILDINGS
 from horizons.command.building import Build, Tear
 from horizons.world.component.storagecomponent import StorageComponent
 
-from tests.gui import TestFinished, gui_test
+from tests.game import game_test
 
 
 # FIXTURE is settlement with some food, main square and ~8 settlers
 # a lumberjack is placed somewhere, where a fire brigade would be useful
 
-@gui_test(use_fixture='fire', timeout=120)
-def test_fire_destroy(gui):
+@game_test(use_fixture='fire')
+def test_fire_destroy(s):
 	"""
 	Check if a fire destroys all settlers
-
-	This is actually not really a gui test, but it's here for the fixture support.
 	"""
-	yield # test needs to be a generator for now
-
-	dis_man = gui.session.world.disaster_manager
-	settlement = gui.session.world.player.settlements[0]
+	dis_man = s.world.disaster_manager
+	settlement = s.world.player.settlements[0]
 
 	assert len(settlement.buildings_by_id[ BUILDINGS.RESIDENTIAL_CLASS ]) > 0
 	old_num = len(settlement.buildings_by_id[ BUILDINGS.RESIDENTIAL_CLASS ])
@@ -50,25 +46,19 @@ def test_fire_destroy(gui):
 
 	# wait until fire is over
 	while dis_man._active_disaster:
-		yield
+		s.run()
 
 	# it's not defined how bad a fire is, but some buildings should be destroyed in any case
 	assert len(settlement.buildings_by_id[ BUILDINGS.RESIDENTIAL_CLASS ]) < old_num
 
-	yield TestFinished
 
-
-@gui_test(use_fixture='fire', timeout=120)
-def test_fire_brigade(gui):
+@game_test(use_fixture='fire')
+def test_fire_brigade(s):
 	"""
 	Check if a fire brigade stops fires.
-
-	This is actually not really a gui test, but it's here for the fixture support.
 	"""
-	yield # test needs to be a generator for now
-
-	dis_man = gui.session.world.disaster_manager
-	settlement = gui.session.world.player.settlements[0]
+	dis_man = s.world.disaster_manager
+	settlement = s.world.player.settlements[0]
 
 	inv = settlement.get_component(StorageComponent).inventory
 	# res for fire brigade
@@ -94,10 +84,7 @@ def test_fire_brigade(gui):
 
 		# wait until fire is over
 		while dis_man._active_disaster:
-			yield
+			s.run()
 
 	# in this simple case, the fire brigade should be 100% effective
 	assert len(settlement.buildings_by_id[ BUILDINGS.RESIDENTIAL_CLASS ]) == old_num
-
-	yield TestFinished
-
