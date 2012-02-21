@@ -61,6 +61,9 @@ from horizons.world.managers.statusiconmanager import StatusIconManager
 
 from tests import RANDOM_SEED
 
+# path where test savegames are stored (tests/game/fixtures/)
+TEST_FIXTURES_DIR = os.path.join(os.path.abspath(os.path.dirname(__file__)), 'fixtures')
+
 
 db = None
 
@@ -211,7 +214,7 @@ class SPTestSession(SPSession):
 			self.world.setup_player(i['id'], i['name'], i['color'], i['local'], i['is_ai'], i['difficulty'])
 		self.manager.load(self.savegame_db)
 
-	def end(self, keep_map=False):
+	def end(self, keep_map=False, remove_savegame=True):
 		"""
 		Clean up temporary files.
 		"""
@@ -221,9 +224,11 @@ class SPTestSession(SPSession):
 			for (island_file, ) in self.savegame_db('SELECT file FROM island'):
 				if island_file[:7] != 'random:': # random islands don't exist as files
 					os.remove(island_file)
-		# Finally remove savegame
+
 		self.savegame_db.close()
-		os.remove(self.savegame)
+		# Finally remove savegame
+		if remove_savegame:
+			os.remove(self.savegame)
 
 	@classmethod
 	def cleanup(cls):
@@ -341,6 +346,7 @@ def game_test(*args, **kwargs):
 	human_player = kwargs.get('human_player', True)
 	ai_players = kwargs.get('ai_players', 0)
 	manual_session = kwargs.get('manual_session', False)
+	use_fixture = kwargs.get('use_fixture', False)
 
 	if TEST_TIMELIMIT and timeout:
 		def handler(signum, frame):
@@ -351,17 +357,27 @@ def game_test(*args, **kwargs):
 		@wraps(func)
 		def wrapped(*args):
 			horizons.main.db = db
-			if not manual_session:
+			if not manual_session and not use_fixture:
 				s, p = new_session(mapgen = mapgen, human_player = human_player, ai_players = ai_players)
+			elif use_fixture:
+				path = os.path.join(TEST_FIXTURES_DIR, use_fixture + '.sqlite')
+				if not os.path.exists(path):
+					raise Exception('Savegame %s not found' % path)
+				s = load_session(path)
+				
 			if TEST_TIMELIMIT and timeout:
 				signal.alarm(timeout)
 			try:
-				if not manual_session:
+				if use_fixture:
+					return func(s, *args)
+				elif not manual_session:
 					return func(s, p, *args)
 				else:
 					return func(*args)
 			finally:
-				if not manual_session:
+				if use_fixture:
+					s.end(remove_savegame=False, keep_map=True)
+				elif not manual_session:
 					s.end()
 				else:
 					SPTestSession.cleanup()
