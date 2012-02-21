@@ -105,18 +105,19 @@ class SPSession(Session):
 	def autosave(self):
 		"""Called automatically in an interval"""
 		self.log.debug("Session: autosaving")
-		# call saving through horizons.main and not directly through session, so that save errors are handled
-		success = self.save(SavegameManager.create_autosave_filename())
+		success = self._do_save(SavegameManager.create_autosave_filename())
 		if success:
 			SavegameManager.delete_dispensable_savegames(autosaves = True)
+			self.ingame_gui.message_widget.add(None, None, 'AUTOSAVE')
 
 	def quicksave(self):
 		"""Called when user presses the quicksave hotkey"""
 		self.log.debug("Session: quicksaving")
 		# call saving through horizons.main and not directly through session, so that save errors are handled
-		success = self.save(SavegameManager.create_quicksave_filename())
+		success = self._do_save(SavegameManager.create_quicksave_filename())
 		if success:
 			SavegameManager.delete_dispensable_savegames(quicksaves = True)
+			self.ingame_gui.message_widget.add(None, None, 'QUICKSAVE')
 		else:
 			headline = _(u"Failed to quicksave.")
 			descr = _(u"An error happened during quicksave. Your game has not been saved.")
@@ -144,7 +145,14 @@ class SPSession(Session):
 				return True # user aborted dialog
 			savegamename = SavegameManager.create_filename(savegamename)
 
-		savegame = savegamename
+		success= self._do_save(savegamename)
+		if success:
+			self.ingame_gui.message_widget.add(None, None, 'SAVED_GAME')
+		return success
+
+	def _do_save(self, savegame):
+		"""Actual save code.
+		@param savegame: absolute path"""
 		assert os.path.isabs(savegame)
 		self.log.debug("Session: Saving to %s", savegame)
 		try:
@@ -192,7 +200,6 @@ class SPSession(Session):
 			# make sure everything get's written now
 			db("COMMIT")
 			db.close()
-			self.ingame_gui.message_widget.add(None, None, 'SAVED_GAME')
 			return True
 		except:
 			print "Save Exception"

@@ -97,7 +97,6 @@ class Producer(Component):
 				prod_lines.append(key)
 		return prod_lines
 
-
 	def create_production(self, id):
 		data = self.production_lines[id]
 		production_class = self.production_class
