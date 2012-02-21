@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<VBox max_size="320,480"  min_size="320,480"  position="520,162"  name="right_side">
+<VBox max_size="320,480"  min_size="320,480"  name="right_side">
 	<Label text="Choose a map to play:"  name="choose_map_lbl" />
 	<ScrollArea max_size="290,200"  min_size="290,200"  horizontal_scrollbar="0"  name="map_list_area">
 		<ListBox name="maplist" />

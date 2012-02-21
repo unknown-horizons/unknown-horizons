@@ -30,7 +30,7 @@
 	<Icon image="content/gui/images/background/mainmenu/selected_color_border.png" position="284,363" />
 
 	<!-- load the proper xml submenu template (scenario, random maps, free play, ..) -->
-	<VBox max_size="320,480"  min_size="320,480"  position="520,162"  name="right_side_box" />
+	<VBox max_size="320,480"  min_size="320,480"  position="520,152"  name="right_side_box" />
 
 	<HBox min_size="0,40" position="640, 600">
 	<Spacer />
