@@ -165,7 +165,7 @@ class Buildable(object):
 			# at least one location that has this tile must be actually buildable
 			# area of the buildings is (x, y) + width/height, therefore all build positions that
 			# include (x, y) are (x, y) - ( [0..width], [0..height] )
-			return any( cls.check_build(session, Point(tile.x - x_off, tile.y - y_off)) for
+			return any( cls.check_build(session, Point(tile.x - x_off, tile.y - y_off), ship=ship) for
 				          x_off, y_off in itertools.product(xrange(cls.size[0]), xrange(cls.size[1])) )
 		else:
 			return True
