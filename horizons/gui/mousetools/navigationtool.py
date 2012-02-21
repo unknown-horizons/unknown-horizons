@@ -20,13 +20,11 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-import weakref
-
 from fife import fife
 import horizons.main
 
 from horizons.gui.mousetools.cursortool import CursorTool
-from horizons.util import Point, WorldObject
+from horizons.util import WorldObject
 from horizons.util.lastactiveplayersettlementmanager import LastActivePlayerSettlementManager
 from horizons.gui.widgets.tooltip import TooltipIcon
 from horizons.constants import LAYERS
@@ -38,7 +36,7 @@ class NavigationTool(CursorTool):
 
 	def __init__(self, session):
 		super(NavigationTool, self).__init__(session)
-		self.lastScroll = [0, 0]
+		self._last_mmb_scroll_point = [0, 0]
 		self.lastmoved = fife.ExactModelCoordinate()
 		self.middle_scroll_active = False
 
@@ -79,29 +77,24 @@ class NavigationTool(CursorTool):
 
 	def remove(self):
 		horizons.main.fife.eventmanager.removeCommandListener(self.cmdlist)
-		self.session.view.autoscroll(-self.lastScroll[0], -self.lastScroll[1])
 		super(NavigationTool, self).remove()
 
 	def mousePressed(self, evt):
 		if (evt.getButton() == fife.MouseEvent.MIDDLE):
-			return # deactivated because of bugs (see #582)
-			self.session.view.scroll(-self.lastScroll[0], -self.lastScroll[1])
-			self.lastScroll = [evt.getX(), evt.getY()]
+			self._last_mmb_scroll_point = (evt.getX(), evt.getY())
 			self.middle_scroll_active = True
 
 	def mouseReleased(self, evt):
 		if (evt.getButton() == fife.MouseEvent.MIDDLE):
-			return # deactivated because of bugs (see #582)
-			self.lastScroll = [0, 0]
-			CursorTool.mouseMoved(self, evt)
 			self.middle_scroll_active = False
 
-	# drag ingamemap via MIDDLE mouse button
 	def mouseDragged(self, evt):
 		if (evt.getButton() == fife.MouseEvent.MIDDLE):
-			return # deactivated because of bugs (see #582)
-			self.session.view.scroll(self.lastScroll[0] - evt.getX(), self.lastScroll[1] - evt.getY())
-			self.lastScroll = [evt.getX(), evt.getY()]
+			if self.middle_scroll_active:
+				scroll_by = ( self._last_mmb_scroll_point[0] - evt.getX(),
+				              self._last_mmb_scroll_point[1] - evt.getY() )
+				self.session.view.scroll( *scroll_by )
+				self._last_mmb_scroll_point = (evt.getX(), evt.getY())
 		else:
 			# Else the event will mistakenly be delegated if the left mouse button is hit while
 			# scrolling using the middle mouse button
