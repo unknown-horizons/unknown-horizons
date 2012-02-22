@@ -9,7 +9,7 @@ id: 8
 name:
   0: _ Lumberjack Tent
   1: _ Lumberjack Hut
-baseclass: production.Lumberjack
+baseclass: production.ProductionBuilding
 radius: 3
 cost: 5
 cost_inactive: 0

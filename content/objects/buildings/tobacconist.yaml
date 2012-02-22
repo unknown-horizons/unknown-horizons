@@ -1,6 +1,6 @@
 id: 37
 name: _ Tobacconist
-baseclass: production.Refiner
+baseclass: production.ProductionBuilding
 radius: 8
 cost: 10
 cost_inactive: 0

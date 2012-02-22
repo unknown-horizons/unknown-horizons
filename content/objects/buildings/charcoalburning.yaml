@@ -1,6 +1,6 @@
 id: 31
 name: _ Charcoal Burning
-baseclass: production.CharcoalBurning
+baseclass: production.ProductionBuilding
 radius: 6
 cost: 10
 cost_inactive: 0

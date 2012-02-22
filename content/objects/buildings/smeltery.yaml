@@ -1,6 +1,6 @@
 id: 29
 name: _ Smeltery
-baseclass: production.Smeltery
+baseclass: production.ProductionBuilding
 radius: 10
 cost: 50
 cost_inactive: 15

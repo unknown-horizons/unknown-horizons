@@ -24,7 +24,7 @@ from horizons.world.building.buildingresourcehandler import BuildingResourceHand
 from building import BasicBuilding
 from buildable import BuildableSingle, BuildableSingleFromShip
 from horizons.world.component.storagecomponent import StorageComponent
-from horizons.world.building.production import SettlerServiceProvider
+from horizons.world.building.production import ProductionBuilding
 from horizons.world.building.path import Path
 from horizons.world.status import InventoryFullStatus
 from horizons.world.component.collectingcompontent import CollectingComponent
@@ -80,7 +80,7 @@ class Warehouse(StorageBuilding, BuildableSingleFromShip):
 		return [ i for i in super(Warehouse, self).get_status_icons() if \
 		         not i.__class__ in banned_classes ]
 
-class MainSquare(Path, StorageBuilding, SettlerServiceProvider):
+class MainSquare(Path, StorageBuilding, ProductionBuilding):
 	walkable = True
 
 	def recalculate_orientation(self):

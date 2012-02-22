@@ -1,6 +1,6 @@
 id: 42
 name: _ Doctor
-baseclass: prevention.Doctor
+baseclass: production.ProductionBuilding
 radius: 10
 cost: 20
 cost_inactive: 5

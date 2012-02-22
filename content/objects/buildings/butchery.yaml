@@ -1,6 +1,6 @@
 id: 41
 name: _ Butchery
-baseclass: production.Refiner
+baseclass: production.ProductionBuilding
 radius: 8
 cost: 15
 cost_inactive: 5

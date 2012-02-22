@@ -1,6 +1,6 @@
 id: 5
 name: _ Pavilion
-baseclass: production.SettlerServiceProvider
+baseclass: production.ProductionBuilding
 radius: 0
 cost: 15
 cost_inactive: 5

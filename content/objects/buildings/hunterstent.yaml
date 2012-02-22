@@ -1,6 +1,6 @@
 id: 9
 name: _ Hunter's Tent
-baseclass: production.Hunter
+baseclass: production.ProductionBuilding
 radius: 10
 cost: 5
 cost_inactive: 0

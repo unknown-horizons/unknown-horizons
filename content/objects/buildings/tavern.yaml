@@ -1,6 +1,6 @@
 id: 32
 name: _ Tavern
-baseclass: production.SettlerServiceProvider
+baseclass: production.ProductionBuilding
 radius: 6
 cost: 5
 cost_inactive: 0
