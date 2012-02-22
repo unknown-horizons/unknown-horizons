@@ -347,7 +347,7 @@ class Collector(Unit):
 		if self.has_component(AmbientSoundComponent):
 			am_comp = self.get_component(AmbientSoundComponent)
 			if len(am_comp.soundfiles) > 0:
-				am_comp.play_ambient(am_comp.soundfiles[0], looping=False)
+				am_comp.play_ambient(am_comp.soundfiles[0], position=self.position)
 		self.state = self.states.working
 
 	def finish_working(self):

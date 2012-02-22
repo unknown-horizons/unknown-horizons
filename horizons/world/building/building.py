@@ -20,7 +20,6 @@
 # ###################################################
 
 import logging
-import random
 
 from fife import fife
 
@@ -28,7 +27,6 @@ from horizons.scheduler import Scheduler
 
 from horizons.world.concreteobject import ConcreteObject
 from horizons.world.settlement import Settlement
-from horizons.world.component.ambientsoundcomponent import AmbientSoundComponent
 from horizons.util import ConstRect, Point, WorldObject, ActionSetLoader, decorators
 from horizons.constants import RES, LAYERS, GAME
 from horizons.world.building.buildable import BuildableSingle
@@ -49,6 +47,7 @@ class BasicBuilding(ComponentHolder, ConcreteObject):
 	show_buildingtool_preview_tab = True # whether to show the tab of the building. not shown for
 																			# e.g. paths. the tab hides a part of the map.
 	layer = LAYERS.OBJECTS
+
 
 	log = logging.getLogger("world.building")
 
@@ -95,13 +94,6 @@ class BasicBuilding(ComponentHolder, ConcreteObject):
 			run_in = remaining_ticks_of_month if remaining_ticks_of_month is not None else interval
 			Scheduler().add_new_object(self.get_payout, self, \
 			                           run_in=run_in, loops=-1, loop_interval=interval)
-
-		# play ambient sound, if available every 30 seconds
-		if self.session.world.player == self.owner:
-			if self.has_component(AmbientSoundComponent):
-				play_every = 15 + random.randint(0, 15)
-				for soundfile in self.get_component(AmbientSoundComponent).soundfiles:
-					self.get_component(AmbientSoundComponent).play_ambient(soundfile, True, play_every)
 
 	def __set_position(self, rotation, origin):
 			self.rotation = rotation
