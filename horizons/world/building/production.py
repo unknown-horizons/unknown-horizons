@@ -35,7 +35,6 @@ from horizons.world.production.producer import Producer
 from horizons.world.component.storagecomponent import StorageComponent
 
 class Farm(BuildingResourceHandler, BuildableSingle, BasicBuilding):
-	max_fields_possible = 8 # only for utilisation calculation
 	tabs = (FarmProductionOverviewTab,)
 
 	def _get_providers(self):
@@ -43,17 +42,6 @@ class Farm(BuildingResourceHandler, BuildableSingle, BasicBuilding):
 		providers = self.island.get_providers_in_range(reach, reslist=self.get_needed_resources())
 		return [provider for provider in providers if isinstance(provider, Field)]
 
-	@property
-	def capacity_utilisation(self):
-		"""
-		Farm doesn't actually produce something, so calculate productivity by the number of fields nearby.
-		"""
-
-		result = float(len(self._get_providers())) / self.max_fields_possible
-		# sanity checks for theoretically impossible cases:
-		result = min(result, 1.0)
-		result = max(result, 0.0)
-		return result
 
 class Lumberjack(BuildingResourceHandler, BuildableSingle, BasicBuilding):
 	pass

@@ -34,6 +34,7 @@ from horizons.world.production.unitproduction import UnitProduction
 from horizons.command.unit import CreateUnit
 from horizons.util.changelistener import metaChangeListenerDecorator
 from horizons.util.messaging.message import AddStatusIcon, RemoveStatusIcon
+from horizons.world.production.utilisation import Utilisation, FullUtilisation, FieldUtilisation
 
 @metaChangeListenerDecorator("production_finished")
 class Producer(Component):
@@ -46,14 +47,21 @@ class Producer(Component):
 	NAME = "producer"
 	DEPENDENCIES = [StorageComponent]
 
+	utilisation_mapping = {
+	    'FieldUtilisation': FieldUtilisation,
+	    'FullUtilisation': FullUtilisation
+	}
+
 	production_class = Production
 
 	# INIT
-	def __init__(self, auto_init=True, start_finished=False, productionlines={}, **kwargs):
+	def __init__(self, auto_init=True, start_finished=False, productionlines={}, utilisation_calculator=None, **kwargs):
 		super(Producer, self).__init__(**kwargs)
 		self.__auto_init = auto_init
 		self.__start_finished = start_finished
 		self.production_lines = productionlines
+		assert utilisation_calculator is not None
+		self.__utilisation = utilisation_calculator
 
 	def __init(self):
 		# we store productions in 2 dicts, one for the active ones, and one for the inactive ones.
@@ -126,32 +134,10 @@ class Producer(Component):
 
 	@property
 	def capacity_utilisation(self):
-		total = 0
-		productions = self.get_productions()
-		if not productions:
-			return 0 # catch the border case, else there'll be a div by 0
-		for production in productions:
-			state_history = production.get_state_history_times(False)
-			total += state_history[PRODUCTION.STATES.producing.index]
-		return total / len(productions)
+		return self.__utilisation.capacity_utilisation(self)
 
 	def capacity_utilisation_below(self, limit):
-		"""Returns whether the capacity utilisation is below a value.
-		It is equivalent to "foo.capacity_utilisation <= value, but faster."""
-		# idea: retrieve the value, then check how long it has to take until the limit
-		# can be reached (from both sides). Within this timespan, don't check again.
-		cur_tick = Scheduler().cur_tick
-		if not hasattr(self, "_old_capacity_utilisation") or \
-		   self._old_capacity_utilisation[0] < cur_tick or \
-		   self._old_capacity_utilisation[1] != limit:
-			capac = self.capacity_utilisation
-			diff = abs(limit - capac)
-			# all those values are relative values, so we can just do this:
-			interval = diff * PRODUCTION.STATISTICAL_WINDOW
-			self._old_capacity_utilisation = (cur_tick + interval, # expiration date
-						                      limit, capac < limit )
-		return self._old_capacity_utilisation[2]
-
+		return self.__utilisation.capacity_utilisation_below(limit, self)
 
 	def load(self, db, worldid):
 		# Call this before super, because we have to make sure this is called before the
@@ -372,6 +358,17 @@ class Producer(Component):
 			# this makes e.g. the boatbuilder's progress bar constant when you pause it
 			return production.progress
 		return 0 # No production available
+
+	@classmethod
+	def get_instance(cls, arguments={}):
+		utilisation = None
+		if 'utilisation' in arguments:
+			if arguments['utilisation'] in cls.utilisation_mapping:
+				utilisation = cls.utilisation_mapping[arguments['utilisation']]()
+			del arguments['utilisation']
+		else:
+			utilisation = Utilisation()
+		return cls(utilisation_calculator=utilisation, **arguments)
 
 
 class QueueProducer(Producer):
