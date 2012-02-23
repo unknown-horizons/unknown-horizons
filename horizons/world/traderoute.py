@@ -127,7 +127,7 @@ class TradeRoute(object):
 					# check if ship has enough space is handled implicitly below
 					amount_transferred = settlement.transfer_to_storageholder(amount, res, self.ship)
 				else:
-					amount_transferred = settlement.sell_resource(self.ship.worldid, res, amount)
+					amount_transferred = settlement.get_component(TradePostComponent).sell_resource(self.ship.worldid, res, amount)
 
 				inv_comp = self.ship.get_component(StorageComponent)
 				if amount_transferred < status.remaining_transfers[res] and \
