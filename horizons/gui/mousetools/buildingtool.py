@@ -673,7 +673,8 @@ class SettlementBuildingToolLogic(object):
 
 class BuildRelatedBuildingToolLogic(SettlementBuildingToolLogic):
 	"""Same as normal build, except quitting it drops to the build related tab."""
-	def __init__(self, instance):
+	def __init__(self, building_tool, instance):
+		super(BuildRelatedBuildingToolLogic, self).__init__(building_tool)
 		# instance must be weakref
 		self.instance = instance
 
