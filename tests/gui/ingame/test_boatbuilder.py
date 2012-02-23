@@ -132,7 +132,7 @@ def test_remove_from_queue(gui):
 	gui.trigger('boatbuilder_war1', 'BB_build_war1_1/action/default')
 
 	# Cancel queue -> crash
-	gui.trigger('BB_main_tab', 'queue_container/mouseClicked/default')
+	gui.trigger('BB_main_tab', 'queue_elem_0/mouseClicked/default')
 
 	yield TestFinished
 
