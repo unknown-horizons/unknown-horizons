@@ -236,10 +236,7 @@ class Settlement(ComponentHolder, WorldObject, ChangeListener, ResourceHandler):
 
 	def get_buildings_by_id(self, id):
 		"""Returns all buildings on this island that have the given id"""
-		if id in self.buildings_by_id.keys():
-			return self.buildings_by_id[id]
-		else:
-			return []
+		return self.buildings_by_id.get(id, [])
 
 	def count_buildings(self, id):
 		"""Returns the number of buildings in the settlement that are of the given type."""

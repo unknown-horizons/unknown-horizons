@@ -71,3 +71,12 @@ class ResourceBarResize(Message):
 class UpgradePermissionsChanged(Message):
 	"""In a settlement."""
 	pass
+
+class SettlementRangeChanged(Message):
+	"""Called on grow and perhaps shrink once that's implemented. Used by buildingtool.
+	@param sender: Settlement
+	@param changed_tiles: Actual tile objects"""
+	def __init__(self, sender, changed_tiles):
+		super(SettlementRangeChanged, self).__init__(sender)
+		self.changed_tiles = changed_tiles
+
