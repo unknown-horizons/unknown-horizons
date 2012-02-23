@@ -323,6 +323,8 @@ class Settler(BuildableRect, BuildingResourceHandler, BasicBuilding):
 
 	def _check_main_square_in_range(self):
 		"""Notifies the user via a message in case there is no main square in range"""
+		if self.owner is not self.session.world.player:
+			return # only check this for local player
 		for building in self.get_buildings_in_range():
 			if building.id == BUILDINGS.MAIN_SQUARE_CLASS:
 				if StaticPather.get_path_on_roads(self.island, self, building) is not None:

@@ -74,7 +74,8 @@ class RouteConfig(object):
 		if self.instance.has_remove_listener(self.on_instance_removed):
 			self.instance.remove_remove_listener(self.on_instance_removed)
 
-		if not self.instance.route.enabled: # make sure user knows that it's not enabled
+		# make sure user knows that it's not enabled (if it's complete)
+		if not self.instance.route.enabled and self.instance.route.can_enable():
 			self.session.ingame_gui.message_widget.add(None, None, "ROUTE_DISABLED")
 
 	def on_instance_removed(self):
