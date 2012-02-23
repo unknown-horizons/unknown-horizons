@@ -67,3 +67,7 @@ class SettlerInhabitantsChanged(Message):
 class ResourceBarResize(Message):
 	"""Signals a change in resource bar size (not slot changes, but number of slot changes)"""
 	pass
+
+class UpgradePermissionsChanged(Message):
+	"""In a settlement."""
+	pass

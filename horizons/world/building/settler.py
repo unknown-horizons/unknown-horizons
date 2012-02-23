@@ -37,7 +37,7 @@ from horizons.command.production import ToggleActive
 from horizons.world.component.storagecomponent import StorageComponent
 from horizons.world.status import SettlerUnhappyStatus
 from horizons.world.production.producer import Producer
-from horizons.util.messaging.message import AddStatusIcon, RemoveStatusIcon, SettlerUpdate, SettlerInhabitantsChanged
+from horizons.util.messaging.message import AddStatusIcon, RemoveStatusIcon, SettlerUpdate, SettlerInhabitantsChanged, UpgradePermissionsChanged
 
 class SettlerRuin(BasicBuilding, BuildableSingle):
 	"""Building that appears when a settler got unhappy. The building does nothing.
@@ -67,6 +67,7 @@ class Settler(BuildableRect, BuildingResourceHandler, BasicBuilding):
 		self.level_max = SETTLER.CURRENT_MAX_INCR # for now
 		self._update_level_data(loading = loading)
 		self.last_tax_payed = last_tax_payed
+		self.session.message_bus.subscribe_locally(UpgradePermissionsChanged, self.settlement, self._on_change_upgrade_permissions)
 
 	def initialize(self):
 		super(Settler, self).initialize()
@@ -138,7 +139,7 @@ class Settler(BuildableRect, BuildingResourceHandler, BasicBuilding):
 	def upgrade_allowed(self):
 		return self.session.world.get_settlement(self.position.origin).upgrade_permissions[self.level]
 
-	def on_change_upgrade_permissions(self):
+	def _on_change_upgrade_permissions(self, message):
 		production = self._get_upgrade_production()
 		if production is not None:
 			if production.is_paused() == self.upgrade_allowed:
