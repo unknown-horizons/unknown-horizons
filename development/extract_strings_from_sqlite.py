@@ -108,14 +108,11 @@ class MSGID_collect:
 			comment = '#. This is a database entry: %s.\n#: sql database files\n' % ','.join(locations)
 			if "{" in text and "}" in text:
 				comment += '#, python-format\n'
-			s += [comment + 'msgid "%s"\nmsgstr ""\n' % text]
+			s += [comment + build_msgid(text)]
 		return '\n'.join(s).strip()
 
-def collect_msgid(msgid, place):
-	pass
-
-def print_msgid(msgid):
-	print 'msgid "%s"\nmsgstr ""\n' % msgid
+def build_msgid(msgid):
+	return 'msgid "%s"\nmsgstr ""\n' % msgid.replace('"','\\"')
 
 def collect_all():
 	collector = MSGID_collect()
