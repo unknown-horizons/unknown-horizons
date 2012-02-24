@@ -75,12 +75,14 @@ class InternationalTradeWidget(object):
 			partner_label = self.widget.findChild(name='partners')
 			nearest_partner = self.get_nearest_partner(self.partners)
 			partner_label.text = unicode(self.partners[nearest_partner].settlement.get_component(NamedComponent).name)
-			old_partner = self.partner
-			self.partner = self.partners[nearest_partner]
-			# If we changed partners, update changelisteners
-			if old_partner and old_partner is not self.partner:
-				old_partner.get_component(StorageComponent).inventory.remove_change_listener(self.draw_widget)
-				self.partner.get_component(StorageComponent).inventory.add_change_listener(self.draw_widget)
+
+			new_partner = self.partners[nearest_partner]
+			different_partner = new_partner is not self.partner
+			if self.partner is not None and different_partner:
+				self.__remove_changelisteners()
+			self.partner = new_partner
+			if different_partner:
+				self.__add_changelisteners()
 
 			selling_inventory = self.widget.findChild(name='selling_inventory')
 			selling_inventory.init(self.instance.session.db, self.partner.get_component(StorageComponent).inventory, self.partner.settlement.get_component(TradePostComponent).sell_list, True)
@@ -103,17 +105,16 @@ class InternationalTradeWidget(object):
 			self.instance.get_component(SelectableComponent).show_menu()
 
 	def __remove_changelisteners(self):
-		self.instance.remove_change_listener(self.draw_widget)
-		self.partner.get_component(StorageComponent).inventory.remove_change_listener(self.draw_widget)
-		# TODO: partner buy / sell list
+		# need to be idempotent, show/hide calls it in arbitrary order
+		self.instance.discard_change_listener(self.draw_widget)
+		self.partner.get_component(StorageComponent).inventory.discard_change_listener(self.draw_widget)
+		self.partner.settlement.get_component(TradePostComponent).discard_change_listener(self.draw_widget)
 
 	def __add_changelisteners(self):
-		self.instance.add_change_listener(self.draw_widget)
-		self.partner.get_component(StorageComponent).inventory.add_change_listener(self.draw_widget)
-		# TODO: partner buy / sell list
-
-	def set_partner(self, partner_id):
-		self.partner = self.partners[partner_id]
+		# need to be idempotent, show/hide calls it in arbitrary order
+		self.instance.add_change_listener(self.draw_widget, no_duplicates=True)
+		self.partner.get_component(StorageComponent).inventory.add_change_listener(self.draw_widget, no_duplicates=True)
+		self.partner.settlement.get_component(TradePostComponent).add_change_listener(self.draw_widget, no_duplicates=True)
 
 	def hide(self):
 		self.widget.hide()

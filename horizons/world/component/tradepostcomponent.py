@@ -19,14 +19,14 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-from horizons.util import WorldObject
+from horizons.util import WorldObject, ChangeListener
 from horizons.constants import RES, TRADER
 from horizons.scheduler import Scheduler
 from horizons.world.component.storagecomponent import StorageComponent
 from horizons.world.component import Component
 
 
-class TradePostComponent(Component):
+class TradePostComponent(ChangeListener, Component):
 	"""This Class has to be inherited by every class that wishes to use BuySellTab and trade with
 	the free trader.
 	"""
@@ -47,17 +47,21 @@ class TradePostComponent(Component):
 
 	def add_to_buy_list(self, res_id, limit):
 		self.buy_list[res_id] = limit
+		self._changed()
 
 	def remove_from_buy_list(self, res_id):
 		if res_id in self.buy_list:
 			del self.buy_list[res_id]
+			self._changed()
 
 	def add_to_sell_list(self, res_id, limit):
 		self.sell_list[res_id] = limit
+		self._changed()
 
 	def remove_from_sell_list(self, res_id):
 		if res_id in self.sell_list:
 			del self.sell_list[res_id]
+			self._changed()
 
 	def save(self, db):
 		super(TradePostComponent, self).save(db)
@@ -114,6 +118,7 @@ class TradePostComponent(Component):
 		   self.get_owner_inventory()[RES.GOLD_ID] < price or \
 		   self.get_inventory().get_free_space_for(res) < amount or \
 		   amount + self.get_inventory()[res] > self.buy_list[res]:
+			self._changed()
 			return False
 
 		else:
@@ -124,6 +129,7 @@ class TradePostComponent(Component):
 			self.trade_history.append((Scheduler().cur_tick, player_id, res, amount, -price))
 			self.buy_history[ Scheduler().cur_tick ] = (res, amount, price)
 			self.total_expenses += amount*price
+			self._changed()
 			return True
 		assert False
 
@@ -138,6 +144,7 @@ class TradePostComponent(Component):
 		if not res in self.sell_list or \
 			 self.get_inventory()[res] < amount or \
 			 self.get_inventory()[res] - amount < self.sell_list[res]:
+			self._changed()
 			return False
 
 		else:
@@ -148,6 +155,7 @@ class TradePostComponent(Component):
 			self.trade_history.append((Scheduler().cur_tick, player_id, res, -amount, price))
 			self.sell_history[ Scheduler().cur_tick ] = (res, amount, price)
 			self.total_income += amount*price
+			self._changed()
 			return True
 		assert False
 
@@ -195,6 +203,7 @@ class TradePostComponent(Component):
 		self.trade_history.append((Scheduler().cur_tick, ship.owner.worldid, resource_id, -amount, total_price))
 		self.sell_history[Scheduler().cur_tick] = (resource_id, amount, total_price)
 		self.total_income += total_price
+		self._changed()
 		return amount
 
 	def buy_resource(self, ship_worldid, resource_id, amount):
@@ -246,6 +255,7 @@ class TradePostComponent(Component):
 		self.trade_history.append((Scheduler().cur_tick, ship.owner.worldid, resource_id, amount, -total_price))
 		self.buy_history[Scheduler().cur_tick] = (resource_id, amount, total_price)
 		self.total_expenses += total_price
+		self._changed()
 		return amount
 
 	@property

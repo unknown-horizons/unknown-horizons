@@ -73,10 +73,11 @@ class ChangeListener(object):
 			listener_list[:] = [ l for l in listener_list if l ]
 
 	## Normal change listener
-	def add_change_listener(self, listener, call_listener_now = False):
+	def add_change_listener(self, listener, call_listener_now=False, no_duplicates=False):
 		assert callable(listener)
-		self.__listeners.append(listener)
-		if call_listener_now:
+		if not no_duplicates or listener not in self.__listeners:
+			self.__listeners.append(listener)
+		if call_listener_now: # also call if duplicate is adde
 			listener()
 
 	def remove_change_listener(self, listener):
