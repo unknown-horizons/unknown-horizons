@@ -258,12 +258,10 @@ class Gui(SingleplayerMenu, MultiplayerMenu):
 		assert mode in ('save', 'load', 'mp_load', 'mp_save')
 		map_files, map_file_display = None, None
 		mp = False
-		print 'mode', mode
 		if mode.startswith('mp'):
 			mode = mode[3:]
 			mp = True
 			# below this line, mp_load == load, mp_save == save
-		print 'mode', mode
 		if mode == 'load':
 			if not mp:
 				map_files, map_file_display = SavegameManager.get_saves()

@@ -25,6 +25,11 @@ from horizons.scheduler import Scheduler
 from horizons.world.component.storagecomponent import StorageComponent
 from horizons.world.component import Component
 
+class TRADE_ERROR_TYPE(object):
+	"""Machine controlled entities need to know the difference. On this basis, they decide
+	whether to retry the trade in a few seconds.
+	"""
+	NO_ERROR, TEMPORARY, PERMANENT = range(3)
 
 class TradePostComponent(ChangeListener, Component):
 	"""This Class has to be inherited by every class that wishes to use BuySellTab and trade with
@@ -107,7 +112,7 @@ class TradePostComponent(ChangeListener, Component):
 		return self.instance.get_component(StorageComponent).inventory
 
 	def buy(self, res, amount, price, player_id):
-		"""Check if we can buy, and process actions to our inventory
+		"""Buy from the free trader.
 		@param res:
 		@param amount:
 		@param price: cumulative price for whole amount of res
@@ -134,7 +139,7 @@ class TradePostComponent(ChangeListener, Component):
 		assert False
 
 	def sell(self, res, amount, price, player_id):
-		"""Check if we can sell, and process actions to our inventory
+		"""Sell to the free trader.
 		@param res:
 		@param amount:
 		@param price: cumulative price for whole amount of res
@@ -159,14 +164,18 @@ class TradePostComponent(ChangeListener, Component):
 			return True
 		assert False
 
-	def sell_resource(self, ship_worldid, resource_id, amount):
-		""" Attempt to sell the given amount of resource to the ship, returns the amount sold """
+	def sell_resource(self, ship_worldid, resource_id, amount, add_error_type=False, suppress_messages=False):
+		""" Attempt to sell the given amount of resource to the ship, returns the amount sold.
+		@param add_error_type: if True, return tuple where second item is ERROR_TYPE"""
 		ship = WorldObject.get_object_by_id(ship_worldid)
+
+		def err(string, err_type):
+			if not suppress_messages and ship.owner.is_local_player:
+				self.session.ingame_gui.message_widget.add_custom(ship.position.x, ship.position.y, string)
+			return 0 if not add_error_type else 0, err_type
+
 		if resource_id not in self.sell_list:
-			if ship.owner.is_local_player:
-				self.session.ingame_gui.message_widget.add_custom(ship.position.x, ship.position.y, \
-				                                                  _("The trade partner does not sell this."))
-			return 0
+			return err(_("The trade partner does not sell this."), TRADE_ERROR_TYPE.PERMANENT)
 
 		price = int(self.session.db.get_res_value(resource_id) * TRADER.PRICE_MODIFIER_BUY) # price per ton of resource
 		assert price > 0
@@ -174,26 +183,17 @@ class TradePostComponent(ChangeListener, Component):
 		# can't sell more than the ship can fit in its inventory
 		amount = min(amount, ship.get_component(StorageComponent).inventory.get_free_space_for(resource_id))
 		if amount <= 0:
-			if ship.owner.is_local_player:
-				self.session.ingame_gui.message_widget.add_custom(ship.position.x, ship.position.y, \
-				                                                  _("You can not store this."))
-			return 0
+			return err(_("You can not store this."), TRADE_ERROR_TYPE.PERMANENT)
 		# can't sell more than the ship's owner can afford
 		amount = min(amount, ship.owner.get_component(StorageComponent).inventory[RES.GOLD_ID] // price)
 		if amount <= 0:
-			if ship.owner.is_local_player:
-				self.session.ingame_gui.message_widget.add_custom(ship.position.x, ship.position.y, \
-				                                                  _("You can not afford to buy this."))
-			return 0
+			return err(_("You can not afford to buy this."), TRADE_ERROR_TYPE.TEMPORARY)
 		# can't sell more than what we have
 		amount = min(amount, self.get_inventory()[resource_id])
 		# can't sell more than we are trying to sell according to the settings
 		amount = min(amount, self.get_inventory()[resource_id] - self.sell_list[resource_id])
 		if amount <= 0:
-			if ship.owner.is_local_player:
-				self.session.ingame_gui.message_widget.add_custom(ship.position.x, ship.position.y, \
-				                                                  _("The trade partner does not sell more of this."))
-			return 0
+			return err(_("The trade partner does not sell more of this."), TRADE_ERROR_TYPE.TEMPORARY)
 
 		total_price = price * amount
 		assert self.get_owner_inventory().alter(RES.GOLD_ID, total_price) == 0
@@ -204,16 +204,20 @@ class TradePostComponent(ChangeListener, Component):
 		self.sell_history[Scheduler().cur_tick] = (resource_id, amount, total_price)
 		self.total_income += total_price
 		self._changed()
-		return amount
+		return amount if not add_error_type else amount, TRADE_ERROR_TYPE.NO_ERROR
 
-	def buy_resource(self, ship_worldid, resource_id, amount):
-		""" Attempt to buy the given amount of resource from the ship, return the amount bought """
+	def buy_resource(self, ship_worldid, resource_id, amount, add_error_type=False, suppress_messages=False):
+		""" Attempt to buy the given amount of resource from the ship, return the amount bought
+		@param add_error_type: if True, return tuple where second item is ERROR_TYPE"""
 		ship = WorldObject.get_object_by_id(ship_worldid)
+
+		def err(string, err_type):
+			if not suppress_messages and ship.owner.is_local_player:
+				self.session.ingame_gui.message_widget.add_custom(ship.position.x, ship.position.y, string)
+			return 0 if not add_error_type else 0, err_type
+
 		if resource_id not in self.buy_list:
-			if ship.owner.is_local_player:
-				self.session.ingame_gui.message_widget.add_custom(ship.position.x, ship.position.y, \
-				                                                  _("The trade partner does not buy this."))
-			return 0
+			return err(_("The trade partner does not buy this."), TRADE_ERROR_TYPE.PERMANENT)
 
 		price = int(self.session.db.get_res_value(resource_id) * TRADER.PRICE_MODIFIER_SELL) # price per ton of resource
 		assert price > 0
@@ -221,31 +225,20 @@ class TradePostComponent(ChangeListener, Component):
 		# can't buy more than the ship has
 		amount = min(amount, ship.get_component(StorageComponent).inventory[resource_id])
 		if amount <= 0:
-			if ship.owner.is_local_player:
-				self.session.ingame_gui.message_widget.add_custom(ship.position.x, ship.position.y, \
-				                                                  _("You do not possess this."))
-			return 0
+			return err(_("You do not possess this."), TRADE_ERROR_TYPE.PERMANENT)
 		# can't buy more than we can fit in the inventory
 		amount = min(amount, self.get_inventory().get_free_space_for(resource_id))
 		if amount <= 0:
-			if ship.owner.is_local_player:
-				self.session.ingame_gui.message_widget.add_custom(ship.position.x, ship.position.y, \
-				                                                  _("The trade partner can not store more of this."))
-			return 0
+			return err(_("The trade partner can not store more of this."), TRADE_ERROR_TYPE.TEMPORARY)
 		# can't buy more than we can afford
 		amount = min(amount, self.get_owner_inventory()[RES.GOLD_ID] // price)
 		if amount <= 0:
-			if ship.owner.is_local_player:
-				self.session.ingame_gui.message_widget.add_custom(ship.position.x, ship.position.y, \
-				                                                  _("The trade partner can not afford to buy this."))
-			return 0
+			return err(_("The trade partner can not afford to buy this."), TRADE_ERROR_TYPE.TEMPORARY)
+
 		# can't buy more than we are trying to buy according to the settings
 		amount = min(amount, self.buy_list[resource_id] - self.get_inventory()[resource_id])
 		if amount <= 0:
-			if ship.owner.is_local_player:
-				self.session.ingame_gui.message_widget.add_custom(ship.position.x, ship.position.y, \
-				                                                  _("The trade partner does not buy more of this."))
-			return 0
+			return err(_("The trade partner does not buy more of this."), TRADE_ERROR_TYPE.TEMPORARY)
 
 		total_price = price * amount
 		assert self.get_owner_inventory().alter(RES.GOLD_ID, -total_price) == 0
@@ -256,7 +249,7 @@ class TradePostComponent(ChangeListener, Component):
 		self.buy_history[Scheduler().cur_tick] = (resource_id, amount, total_price)
 		self.total_expenses += total_price
 		self._changed()
-		return amount
+		return amount if not add_error_type else amount, TRADE_ERROR_TYPE.TEMPORARY
 
 	@property
 	def sell_income(self):

@@ -76,7 +76,7 @@ class SelectionTool(NavigationTool):
 			  self.session.view.layers[LAYERS.OBJECTS],
 			  False) # False for accurate
 
-			# Only one unit, select anyway
+			# Only one unit, select
 			if len(instances) == 1:
 				try:
 					i_id = instances[0].getId()

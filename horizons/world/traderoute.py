@@ -26,7 +26,7 @@ from horizons.util import  Circle, WorldObject
 from horizons.constants import GAME_SPEED
 from horizons.scheduler import Scheduler
 from horizons.world.component.storagecomponent import StorageComponent
-from horizons.world.component.tradepostcomponent import TradePostComponent
+from horizons.world.component.tradepostcomponent import TradePostComponent, TRADE_ERROR_TYPE
 
 class TradeRoute(object):
 	"""
@@ -77,6 +77,7 @@ class TradeRoute(object):
 		"""Transfer resources, wait if necessary and move to next warehouse when possible"""
 		warehouse = self.get_location()['warehouse']
 		resource_list = self.current_transfer or self.get_location()['resource_list']
+		suppress_messages = self.current_transfer is not None # no messages from  second try on
 
 		if self.current_transfer is not None:
 			for res in copy.copy(self.current_transfer):
@@ -86,7 +87,12 @@ class TradeRoute(object):
 					del self.current_transfer[res]
 
 		settlement = warehouse.settlement
-		status = self._transfer_resources(settlement, resource_list)
+		status = self._transfer_resources(settlement, resource_list, suppress_messages)
+
+		if not self.enabled: # got disabled while retrying transfer
+			self.current_transfer = None
+			return
+
 		if (not status.settlement_has_enough_space_to_take_res and self.wait_at_unload) or \
 		   (not status.settlement_provides_enough_res and self.wait_at_load):
 			self.current_transfer = status.remaining_transfers
@@ -96,11 +102,10 @@ class TradeRoute(object):
 			self.current_transfer = None
 			self.move_to_next_route_warehouse()
 
-	def _transfer_resources(self, settlement, resource_list):
+	def _transfer_resources(self, settlement, resource_list, suppress_messages=False):
 		"""Transfers resources to/from settlement according to list.
 		@return: TransferStatus instance
 		"""
-
 		class TransferStatus(object):
 			def __init__(self):
 				self.settlement_provides_enough_res = self.settlement_has_enough_space_to_take_res = True
@@ -127,7 +132,12 @@ class TradeRoute(object):
 					# check if ship has enough space is handled implicitly below
 					amount_transferred = settlement.transfer_to_storageholder(amount, res, self.ship)
 				else:
-					amount_transferred = settlement.get_component(TradePostComponent).sell_resource(self.ship.worldid, res, amount)
+					amount_transferred, error = settlement.get_component(TradePostComponent).sell_resource(
+					  self.ship.worldid, res, amount,add_error_type=True, suppress_messages=suppress_messages)
+					if error == TRADE_ERROR_TYPE.PERMANENT:
+						# pretend to have everything and move on, waiting doesn't make sense
+						amount_transferred = amount
+
 
 				inv_comp = self.ship.get_component(StorageComponent)
 				if amount_transferred < status.remaining_transfers[res] and \
@@ -147,7 +157,10 @@ class TradeRoute(object):
 
 					amount_transferred = self.ship.transfer_to_storageholder(amount, res, settlement)
 				else:
-					amount_transferred = settlement.get_component(TradePostComponent).buy_resource(self.ship.worldid, res, amount)
+					amount_transferred, error = settlement.get_component(TradePostComponent).buy_resource(
+					  self.ship.worldid, res, amount, add_error_type=True, suppress_messages=suppress_messages)
+					if error == TRADE_ERROR_TYPE.PERMANENT:
+						amount_transferred = amount # is negative
 
 				if amount_transferred < -status.remaining_transfers[res] and self.ship.get_component(StorageComponent).inventory[res] > 0:
 					status.settlement_has_enough_space_to_take_res = False

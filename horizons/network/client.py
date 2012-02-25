@@ -53,7 +53,9 @@ class Client(object):
 			clientaddress = enet.Address(client_address[0], client_address[1]) if client_address is not None else None
 			self.host = enet.Host(clientaddress, MAX_PEERS, 0, 0, 0)
 		except (IOError, MemoryError):
+			# these exceptions do not provide any information.
 			raise network.NetworkException("Unable to create network structure. Maybe invalid or irresolvable client address.")
+
 		self.name          = name
 		self.version       = version
 		self.serveraddress = Address(server_address[0], server_address[1])
