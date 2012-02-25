@@ -137,8 +137,12 @@ def start(command_line_arguments):
 	if command_line_arguments.log_gui:
 		if command_line_arguments.gui_test:
 			raise Exception("Logging gui interactions doesn't work when running tests.")
-		from tests.gui.logger import setup_gui_logger
-		setup_gui_logger()
+		try:
+			from tests.gui.logger import setup_gui_logger
+			setup_gui_logger()
+		except ImportError:
+			print "Gui logging requires code that is only present in the repository and is not being installed."
+			return False
 
 	# GUI tests always run with sound disabled and SDL (so they can run under xvfb).
 	# Needs to be done before engine is initialized.
