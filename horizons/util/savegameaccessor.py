@@ -128,7 +128,7 @@ class SavegameAccessor(DbReader):
 
 	def get_production_lines_by_owner(self, owner):
 		"""Returns the prod_line_id of the given production"""
-		return self._production_lines_by_owner[owner]
+		return self._production_lines_by_owner.get(owner, [])
 
 	def get_production_state_history(self, worldid):
 		return self._production_state_history[int(worldid)]
