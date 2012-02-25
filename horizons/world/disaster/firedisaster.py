@@ -75,14 +75,14 @@ class FireDisaster(Disaster):
 	def breakout(self):
 		assert self.can_breakout(self._settlement)
 		super(FireDisaster, self).breakout()
-		possible_buildings = self._settlement.get_buildings_by_id(BUILDINGS.RESIDENTIAL_CLASS)
+		possible_buildings = self._settlement.buildings_by_id[BUILDINGS.RESIDENTIAL_CLASS]
 		building = self._settlement.session.random.choice( possible_buildings )
 		self.infect(building)
 		self.log.debug("%s breakout out on %s at %s", self, building, building.position)
 
 	@classmethod
 	def can_breakout(cls, settlement):
-		return len(settlement.get_buildings_by_id(BUILDINGS.RESIDENTIAL_CLASS)) > cls.MIN_SETTLERS_FOR_BREAKOUT
+		return settlement.count_buildings(BUILDINGS.RESIDENTIAL_CLASS) > cls.MIN_SETTLERS_FOR_BREAKOUT
 
 	def expand(self):
 		if not self.evaluate():

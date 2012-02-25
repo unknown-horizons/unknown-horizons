@@ -177,7 +177,7 @@ def test_ticket_1371(gui):
 	# Select lumberjack
 	# TODO selecting should work when clicking on the map
 	settlement = gui.session.world.player.settlements[0]
-	lumberjack = settlement.get_buildings_by_id(BUILDINGS.LUMBERJACK_CLASS)[0]
+	lumberjack = settlement.buildings_by_id[BUILDINGS.LUMBERJACK_CLASS][0]
 	gui.select([lumberjack])
 
 	# Open build related tab

@@ -234,13 +234,9 @@ class Settlement(ComponentHolder, WorldObject, ChangeListener, ResourceHandler):
 			# notify interested players of removed building
 			self.owner.remove_building(building)
 
-	def get_buildings_by_id(self, id):
-		"""Returns all buildings on this island that have the given id"""
-		return self.buildings_by_id.get(id, [])
-
 	def count_buildings(self, id):
 		"""Returns the number of buildings in the settlement that are of the given type."""
-		return len(self.buildings_by_id[id]) if id in self.buildings_by_id else 0
+		return len(self.buildings_by_id.get(id, []))
 
 	def settlement_building_production_finished(self, building, produced_res):
 		"""Callback function for registering the production of resources."""

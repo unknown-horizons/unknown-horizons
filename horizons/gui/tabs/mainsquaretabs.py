@@ -166,12 +166,12 @@ class MainSquareSettlerLevelTab(MainSquareTab):
 		self.instance.session.message_bus.unsubscribe_locally(UpgradePermissionsChanged, self.settlement, self.refresh_via_message)
 
 	def _get_last_tax_paid(self):
-		return sum([building.last_tax_payed for building in self.settlement.get_buildings_by_id(BUILDINGS.RESIDENTIAL_CLASS) if \
+		return sum([building.last_tax_payed for building in self.settlement.buildings_by_id[BUILDINGS.RESIDENTIAL_CLASS] if \
 			building.level == self.__class__.LEVEL])
 
 	def _get_resident_counts(self):
 		result = {}
-		for building in self.settlement.get_buildings_by_id(BUILDINGS.RESIDENTIAL_CLASS):
+		for building in self.settlement.buildings_by_id[BUILDINGS.RESIDENTIAL_CLASS]:
 			if building.level == self.__class__.LEVEL:
 				if building.inhabitants not in result:
 					result[building.inhabitants] = 0
