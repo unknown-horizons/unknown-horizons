@@ -99,7 +99,7 @@ class BuildingTool(NavigationTool):
 		for settlement in self.session.world.settlements:
 			if settlement.owner.is_local_player:
 				for bid in related:
-					for building in settlement.buildings_by_id[bid]:
+					for building in settlement.buildings_by_id.get(bid, []):
 						building.get_component(SelectableBuildingComponent).select()
 						self._related_buildings.append(building)
 

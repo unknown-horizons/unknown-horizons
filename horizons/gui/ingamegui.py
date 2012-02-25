@@ -297,7 +297,7 @@ class IngameGui(LivingObject):
 			tab = TabWidget(self, tabs=[ TabInterface(widget="buildtab_no_settlement.xml") ])
 		else:
 			btabs = [BuildTab(index+1, self.callbacks_build, self.session) for index in \
-							 range(self.session.world.player.settler_level+1)]
+							 xrange(self.session.world.player.settler_level+1)]
 			tab = TabWidget(self, tabs=btabs, name="build_menu_tab_widget", \
 											active_tab=BuildTab.last_active_build_tab)
 		self.show_menu(tab)
@@ -469,10 +469,9 @@ class IngameGui(LivingObject):
 		"""Gets called when the player changes"""
 		if message.sender.owner.is_local_player:
 			menu = self.get_cur_menu()
-			if hasattr(menu, "name"):
-				if menu.name == "build_menu_tab_widget":
-					# player changed and build menu is currently displayed
-					self.show_build_menu(update=True)
+			if hasattr(menu, "name") and menu.name == "build_menu_tab_widget":
+				# player changed and build menu is currently displayed
+				self.show_build_menu(update=True)
 
 	def show_chat_dialog(self):
 		"""Show a dialog where the user can enter a chat message"""

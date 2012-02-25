@@ -64,7 +64,13 @@ class ChangeListener(object):
 		self.__event_call_number += 1
 		for listener in listener_list:
 			if listener:
-				listener()
+				try:
+					listener()
+				except ReferenceError, e:
+					# listener object is dead, don't crash since it doesn't need updates now anyway
+					print 'Warning: the dead are listening to', self, ': ', e
+					import traceback
+					traceback.print_stack()
 
 		self.__event_call_number -= 1
 
