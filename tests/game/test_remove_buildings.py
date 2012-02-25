@@ -37,7 +37,7 @@ from tests.game import settle, game_test, RANDOM_SEED
 def test_removal():
 	rng = random.Random(RANDOM_SEED)
 	for i in range(10):
-		yield remove, rng.randint(0, 200), rng.randint(0, 200), rng.randint(0, 8)
+		yield remove, rng.randint(1, 200), rng.randint(1, 200), rng.randint(0, 8)
 
 
 @game_test

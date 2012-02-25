@@ -208,6 +208,9 @@ def test_ticket_1427():
 	assert expected_production == production_line_loaded.production
 	assert expected_progress == production_loaded.progress
 
+	# if you don't let the session run for a bit then collectors won't be fully initialized and can't be killed => another test will fail in session.end()
+	session.run(seconds=1)
+	session.end()
 
 
 @game_test

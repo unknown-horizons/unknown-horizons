@@ -100,10 +100,12 @@ class BuildingCollector(Collector):
 		in job.object)
 		@param unregister: whether to reverse registration
 		"""
-		if unregister:
-			self.home_building.get_component(CollectingComponent).remove_local_collector(self)
-		else:
-			self.home_building.get_component(CollectingComponent).add_local_collector(self)
+		# TODO: figure out why the home_building can be None when this is run in session.end()
+		if self.home_building is not None:
+			if unregister:
+				self.home_building.get_component(CollectingComponent).remove_local_collector(self)
+			else:
+				self.home_building.get_component(CollectingComponent).add_local_collector(self)
 
 	def apply_state(self, state, remaining_ticks = None):
 		super(BuildingCollector, self).apply_state(state, remaining_ticks)
