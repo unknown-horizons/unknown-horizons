@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2012-02-08 02:09+0100\n"
-"PO-Revision-Date: 2012-02-23 11:16+0200\n"
+"PO-Revision-Date: 2012-02-25 11:20+0200\n"
 "Last-Translator: studiocb <studiocbsite@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: nl\n"
@@ -77,9 +77,8 @@ msgstr "U heeft gewonnen!"
 # 86%
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
-#, fuzzy
 msgid "Your game has been saved."
-msgstr "Uw spel is snel opgeslagen."
+msgstr "Uw spel is opgeslagen."
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
@@ -341,7 +340,7 @@ msgstr "Geef het pad naar de FIFE map."
 #: horizons/command/misc.py:30
 #, python-format
 msgid "{name}: {chatmessage}"
-msgstr ""
+msgstr "{name}: {chatmessage}"
 
 #: horizons/engine/settingsdialog.py:50
 msgid "Restart required"
@@ -470,7 +469,7 @@ msgstr "Spel opslaan"
 
 #: horizons/gui/gui.py:323
 msgid "No filename given"
-msgstr ""
+msgstr "U heeft geen bestandsnaam ingevuld"
 
 #: horizons/gui/gui.py:323
 msgid "Please enter a valid filename."
@@ -543,7 +542,7 @@ msgstr ""
 #: horizons/gui/gui.py:567
 #, python-format
 msgid "Required version: {required}!"
-msgstr ""
+msgstr "Vereiste versie: {required}!"
 
 #: horizons/gui/gui.py:570
 msgid "Incompatible version"
