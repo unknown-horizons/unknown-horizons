@@ -51,7 +51,8 @@ class ProductionLine(object):
 				self.consumed_res[res] = amount
 		# Stores unit_id: amount entries, if units are to be produced by this production line
 		self.unit_production = {}
-		for unit, amount in horizons.main.db("SELECT unit, amount FROM unit_production WHERE production_line = ?", self.id):
+		# TODO: move this data into yaml files
+		for unit, amount in horizons.main.db.cached_query("SELECT unit, amount FROM unit_production WHERE production_line = ?", self.id):
 			self.unit_production[int(unit)] = amount # Store the correct unit id =>  -1.000.000
 
 		self._init_finished = True

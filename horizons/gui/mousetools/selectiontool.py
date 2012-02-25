@@ -178,7 +178,6 @@ class SelectionTool(NavigationTool):
 			return
 		evt.consume()
 
-
 	def _update_selection(self, instances, do_multi=False):
 		"""
 		@param instances: uh instances

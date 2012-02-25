@@ -27,11 +27,12 @@ from horizons.scheduler import Scheduler
 class UnitProduction(ChangingProduction):
 	"""Production, that produces units."""
 	USES_GOLD = True
-	def __init__(self, **kwargs):
-		super(UnitProduction, self).__init__(auto_start=False, **kwargs)
-		self.__init()
-		# We have to check manually now after initing because we set auto_start to false
-		self._check_inventory()
+	def __init__(self, load=False, **kwargs):
+		super(UnitProduction, self).__init__(auto_start=False, load=load, **kwargs)
+		if not load:
+			self.__init()
+			# We have to check manually now after initing because we set auto_start to false
+			self._check_inventory()
 
 	def __init(self):
 		self.original_prod_line = self._prod_line.get_original_copy()

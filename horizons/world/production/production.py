@@ -56,7 +56,7 @@ class Production(ChangeListener):
 
 	## INIT/DESTRUCT
 	def __init__(self, inventory, owner_inventory, prod_id, prod_data, auto_start=True, \
-	             start_finished=False, **kwargs):
+	             start_finished=False, load=False, **kwargs):
 		super(Production, self).__init__(**kwargs)
 		self._state_history = deque()
 		self.prod_id = prod_id
@@ -65,7 +65,8 @@ class Production(ChangeListener):
 		self.__start_finished = start_finished
 		self.__init(inventory, owner_inventory, prod_id, prod_data, PRODUCTION.STATES.none, Scheduler().cur_tick)
 
-		self._add_listeners()
+		if not load:
+			self._add_listeners()
 
 	def start(self):
 		if self.__start_finished:
@@ -114,14 +115,14 @@ class Production(ChangeListener):
 				 self.prod_id, translated_tick, state, owner_id)
 
 	def load(self, db, worldid):
-		# Worldid is the world id of the producer component instance calling this
+		# NOTE: __init__ must have been called with load=True
+		# worldid is the world id of the producer component instance calling this
 		super(Production, self).load(db, worldid)
 
 		db_data = db.get_production_by_id_and_owner(self.prod_id, worldid)
 		self._creation_tick = db_data[5]
 		self._state = PRODUCTION.STATES[db_data[0]]
 		self._pause_old_state = None if db_data[4] is None else PRODUCTION.STATES[db_data[4]]
-		self._remove_listeners()
 		if self._state == PRODUCTION.STATES.paused:
 			self._pause_remaining_ticks = db_data[3]
 		elif self._state == PRODUCTION.STATES.producing:

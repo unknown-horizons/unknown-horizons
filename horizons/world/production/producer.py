@@ -105,12 +105,12 @@ class Producer(Component):
 				prod_lines.append(key)
 		return prod_lines
 
-	def create_production(self, id):
+	def create_production(self, id, load=False):
 		data = self.production_lines[id]
 		production_class = self.production_class
 		owner_inventory = self.instance._get_owner_inventory()
-		return production_class(inventory = self.instance.get_component(StorageComponent).inventory, \
-				                owner_inventory=owner_inventory, prod_id=id, prod_data=data)
+		return production_class(inventory=self.instance.get_component(StorageComponent).inventory, \
+				                owner_inventory=owner_inventory, prod_id=id, prod_data=data, load=load)
 
 	def add_production_by_id(self, production_line_id, start_finished=False):
 		"""Convenience method.
@@ -146,9 +146,8 @@ class Producer(Component):
 		super(Producer, self).load(db, worldid)
 		# load all productions
 		self.__init()
-		lines_to_load = db("SELECT prod_line_id FROM production WHERE owner=?", worldid)
-		for line_id,  in lines_to_load:
-			production = self.create_production(line_id)
+		for line_id in db.get_production_lines_by_owner(worldid):
+			production = self.create_production(line_id, load=True)
 			assert isinstance(production, Production)
 			production.load(db, worldid)
 			self.add_production(production)

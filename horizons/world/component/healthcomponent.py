@@ -51,7 +51,7 @@ class HealthComponent(Component):
 		db("INSERT INTO unit_health(owner_id, health) VALUES(?, ?)", self.instance.worldid, self.health)
 
 	def load(self, db, worldid):
-		self.health = db("SELECT health FROM unit_health WHERE owner_id = ?", worldid)[0][0]
+		self.health = db.get_health(worldid)
 		self._add_listeners()
 
 	def deal_damage(self, weapon_id, damage):

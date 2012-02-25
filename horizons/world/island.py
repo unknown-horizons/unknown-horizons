@@ -410,9 +410,11 @@ class Island(BuildingOwner, WorldObject):
 						building_areas[coords] = self.last_change_id
 
 	def end(self):
-		super(Island, self).end()
+		# NOTE: killing animals before buildings is an optimisation, else they would
+		# keep searching for new trees every time a tree is torn down.
 		for wild_animal in (wild_animal for wild_animal in self.wild_animals):
 			wild_animal.remove()
+		super(Island, self).end()
 		for settlement in self.settlements:
 			settlement.end()
 		self.wild_animals = None
