@@ -343,10 +343,14 @@ class IngameGui(LivingObject):
 		@param menu: str with the guiname or pychan object.
 		"""
 		if self._old_menu is not None:
+			if hasattr(self._old_menu, "remove_remove_listener"):
+				self._old_menu.remove_remove_listener( Callback(self.show_menu, None) )
 			self._old_menu.hide()
 
 		self._old_menu = self._get_menu_object(menu)
 		if self._old_menu is not None:
+			if hasattr(self._old_menu, "add_remove_listener"):
+				self._old_menu.add_remove_listener( Callback(self.show_menu, None) )
 			self._old_menu.show()
 			self.minimap_to_front()
 

@@ -59,7 +59,6 @@ class SettlerUpdate(Message):
 class SettlerInhabitantsChanged(Message):
 	"""Class to signal that the number of inhabitants in a settler building
 	have changed."""
-
 	def __init__(self, sender, change):
 		super(SettlerInhabitantsChanged, self).__init__(sender)
 		self.change = change

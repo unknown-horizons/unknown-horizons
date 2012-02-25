@@ -120,7 +120,6 @@ class TearingTool(NavigationTool):
 					 (max(edges[0][0], edges[1][0]), max(edges[0][1], edges[1][1])))
 		else:
 			edges = None
-		print 'rem old'
 		if self.oldedges != edges or edges is None:
 			for i in self.selected:
 				self.session.view.renderer['InstanceRenderer'].removeColored(i._instance)
