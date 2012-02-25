@@ -111,6 +111,7 @@ class BuildingTool(NavigationTool):
 		self._remove_listeners()
 		self._remove_building_instances()
 		self._remove_coloring()
+		self._build_logic.remove(self.session)
 		self._buildable_tiles = None
 		self._modified_instances = None
 		self.buildings = None
@@ -336,7 +337,7 @@ class BuildingTool(NavigationTool):
 		self._build_logic.on_escape(self.session)
 		if self.gui is not None:
 			self.gui.hide()
-		self.session.set_cursor()
+		self.session.set_cursor() # will call remove()
 
 	def mouseMoved(self, evt):
 		self.log.debug("BuildingTool mouseMoved")
@@ -562,6 +563,7 @@ class BuildingTool(NavigationTool):
 			# layer might not exist, happens for some reason after a build
 			if layer is not None:
 				layer.deleteInstance(fife_instance)
+		self.buildings_fife_instances = {}
 
 	def _remove_coloring(self):
 		"""Removes coloring from tiles, that indicate that the tile is buildable"""
@@ -601,9 +603,14 @@ class ShipBuildingToolLogic(object):
 							building_tool._color_buildable_tile(tile)
 
 	def on_escape(self, session):
+		for selected in session.selected_instances:
+			selected.get_component(SelectableComponent).deselect()
 		session.selected_instances = set([self.ship])
 		self.ship.get_component(SelectableComponent).select()
 		self.ship.get_component(SelectableComponent).show_menu()
+
+	def remove(self, session):
+		self.on_escape(session)
 
 	def add_change_listener(self, instance, building_tool):
 		# instance is self.ship here
@@ -618,8 +625,7 @@ class ShipBuildingToolLogic(object):
 			instance.remove_change_listener(building_tool.force_update)
 
 
-	def continue_build(self):
-		pass
+	def continue_build(self): pass
 
 class SettlementBuildingToolLogic(object):
 	"""Helper class to seperate the logic needen when building from a settlement
@@ -661,14 +667,20 @@ class SettlementBuildingToolLogic(object):
 				self.building_tool().highlight_buildable(message.changed_tiles)
 
 	def on_escape(self, session):
-		session.ingame_gui.show_build_menu()
-		session.message_bus.unsubscribe_globally(SettlementRangeChanged, self._on_update)
+		session.ingame_gui.show_build_menu() # will call remove()
+		if self.subscribed:
+			self.subscribed = False
+			session.message_bus.unsubscribe_globally(SettlementRangeChanged, self._on_update)
+
+	def remove(self, session):
+		if self.subscribed:
+			self.subscribed = False
+			session.message_bus.unsubscribe_globally(SettlementRangeChanged, self._on_update)
 
 	def add_change_listener(self, instance, building_tool): pass # using messages now
 	def remove_change_listener(self, instance, building_tool): pass
 
-	def continue_build(self):
-		pass
+	def continue_build(self): pass
 
 
 class BuildRelatedBuildingToolLogic(SettlementBuildingToolLogic):
@@ -690,6 +702,7 @@ class BuildRelatedBuildingToolLogic(SettlementBuildingToolLogic):
 
 	def add_change_listener(self, instance, building_tool): pass # using messages now
 	def remove_change_listener(self, instance, building_tool): pass
+	def remove(self, session): pass
 
 
 decorators.bind_all(BuildingTool)
