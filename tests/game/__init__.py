@@ -190,7 +190,7 @@ class SPTestSession(SPSession):
 		"""
 		# SavegameManager.write_metadata tries to create a screenshot and breaks when
 		# accessing fife properties
-		with mock.patch('horizons.spsession.SavegameManager'):
+		with mock.patch('horizons.session.SavegameManager'):
 			# We need to covert Dummy() objects to a sensible value that can be stored
 			# in the database
 			with _dbreader_convert_dummy_objects():
