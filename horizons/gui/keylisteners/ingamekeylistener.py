@@ -157,7 +157,7 @@ class IngameKeyListener(fife.IKeyListener, LivingObject):
 			if evt.isControlPressed():
 				# create new group (only consider units owned by the player)
 				self.session.selection_groups[num] = \
-				    set(filter(lambda unit : unit.owner == self.session.world.player,
+				    set(filter(lambda unit : unit.owner.is_local_player,
 				               self.session.selected_instances))
 				# drop units of the new group from all other groups
 				for group in self.session.selection_groups:

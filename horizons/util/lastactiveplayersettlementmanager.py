@@ -48,7 +48,7 @@ class LastActivePlayerSettlementManager(object):
 		settlement = self.session.world.get_settlement(Point(int(round(current.x)), int(round(current.y))))
 
 		self._settlement = weakref.ref(settlement) if \
-		  settlement and settlement.owner == self.session.world.player else None
+		  settlement and settlement.owner.is_local_player else None
 
 		# set cityinfo for any settlement
 		self.session.ingame_gui.cityinfo_set(settlement)

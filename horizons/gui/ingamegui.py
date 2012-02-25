@@ -223,7 +223,7 @@ class IngameGui(LivingObject):
 
 	def update_settlement(self):
 		cityinfo = self.widgets['city_info']
-		if self.settlement.owner == self.session.world.player: # allow name changes
+		if self.settlement.owner.is_local_player: # allow name changes
 			cb = Callback(self.show_change_name_dialog, self.settlement)
 			tooltip = _("Click to change the name of your settlement")
 		else: # no name changes
@@ -291,7 +291,7 @@ class IngameGui(LivingObject):
 		self.session.set_cursor() # set default cursor for build menu
 		self.deselect_all()
 
-		if not any( (settlement.owner == self.session.world.player) for settlement in self.session.world.settlements):
+		if not any( settlement.owner.is_local_player for settlement in self.session.world.settlements):
 			# player has not built any settlements yet. Accessing the build menu at such a point
 			# indicates a mistake in the mental model of the user. Display a hint.
 			tab = TabWidget(self, tabs=[ TabInterface(widget="buildtab_no_settlement.xml") ])
@@ -467,7 +467,7 @@ class IngameGui(LivingObject):
 
 	def _on_settler_level_change(self, message):
 		"""Gets called when the player changes"""
-		if self.session.world.player == message.sender.owner:
+		if message.sender.owner.is_local_player:
 			menu = self.get_cur_menu()
 			if hasattr(menu, "name"):
 				if menu.name == "build_menu_tab_widget":

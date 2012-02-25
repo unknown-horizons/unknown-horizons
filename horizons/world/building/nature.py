@@ -47,7 +47,7 @@ class Field(NatureBuildingResourceHandler):
 	def initialize(self, **kwargs):
 		super(Field, self).initialize( ** kwargs)
 
-		if self.owner == self.session.world.player:
+		if self.owner.is_local_player:
 			# make sure to have a farm nearby when we can reasonably assume that the crops are fully grown
 			prod_comp = self.get_component(Producer)
 			productions = prod_comp.get_productions()
@@ -61,7 +61,7 @@ class Field(NatureBuildingResourceHandler):
 		"""Warn in case there is no farm nearby to cultivate the field"""
 		farm_in_range = any( (farm.position.distance( self.position ) <= farm.radius) for farm in
 		                     self.settlement.buildings_by_id[ BUILDINGS.FARM_CLASS ] )
-		if not farm_in_range and self.owner == self.session.world.player: # warn only local player
+		if not farm_in_range and self.owner.is_local_player:
 			pos = self.position.origin
 			self.session.ingame_gui.message_widget.add(pos.x, pos.y, "FIELD_NEEDS_FARM",
 			                                           check_duplicate=True)

@@ -163,7 +163,7 @@ class TradePostComponent(ChangeListener, Component):
 		""" Attempt to sell the given amount of resource to the ship, returns the amount sold """
 		ship = WorldObject.get_object_by_id(ship_worldid)
 		if resource_id not in self.sell_list:
-			if ship.owner == self.session.world.player:
+			if ship.owner.is_local_player:
 				self.session.ingame_gui.message_widget.add_custom(ship.position.x, ship.position.y, \
 				                                                  _("The trade partner does not sell this."))
 			return 0
@@ -174,14 +174,14 @@ class TradePostComponent(ChangeListener, Component):
 		# can't sell more than the ship can fit in its inventory
 		amount = min(amount, ship.get_component(StorageComponent).inventory.get_free_space_for(resource_id))
 		if amount <= 0:
-			if ship.owner == self.session.world.player:
+			if ship.owner.is_local_player:
 				self.session.ingame_gui.message_widget.add_custom(ship.position.x, ship.position.y, \
 				                                                  _("You can not store this."))
 			return 0
 		# can't sell more than the ship's owner can afford
 		amount = min(amount, ship.owner.get_component(StorageComponent).inventory[RES.GOLD_ID] // price)
 		if amount <= 0:
-			if ship.owner == self.session.world.player:
+			if ship.owner.is_local_player:
 				self.session.ingame_gui.message_widget.add_custom(ship.position.x, ship.position.y, \
 				                                                  _("You can not afford to buy this."))
 			return 0
@@ -190,7 +190,7 @@ class TradePostComponent(ChangeListener, Component):
 		# can't sell more than we are trying to sell according to the settings
 		amount = min(amount, self.get_inventory()[resource_id] - self.sell_list[resource_id])
 		if amount <= 0:
-			if ship.owner == self.session.world.player:
+			if ship.owner.is_local_player:
 				self.session.ingame_gui.message_widget.add_custom(ship.position.x, ship.position.y, \
 				                                                  _("The trade partner does not sell more of this."))
 			return 0
@@ -210,7 +210,7 @@ class TradePostComponent(ChangeListener, Component):
 		""" Attempt to buy the given amount of resource from the ship, return the amount bought """
 		ship = WorldObject.get_object_by_id(ship_worldid)
 		if resource_id not in self.buy_list:
-			if ship.owner == self.session.world.player:
+			if ship.owner.is_local_player:
 				self.session.ingame_gui.message_widget.add_custom(ship.position.x, ship.position.y, \
 				                                                  _("The trade partner does not buy this."))
 			return 0
@@ -221,28 +221,28 @@ class TradePostComponent(ChangeListener, Component):
 		# can't buy more than the ship has
 		amount = min(amount, ship.get_component(StorageComponent).inventory[resource_id])
 		if amount <= 0:
-			if ship.owner == self.session.world.player:
+			if ship.owner.is_local_player:
 				self.session.ingame_gui.message_widget.add_custom(ship.position.x, ship.position.y, \
 				                                                  _("You do not possess this."))
 			return 0
 		# can't buy more than we can fit in the inventory
 		amount = min(amount, self.get_inventory().get_free_space_for(resource_id))
 		if amount <= 0:
-			if ship.owner == self.session.world.player:
+			if ship.owner.is_local_player:
 				self.session.ingame_gui.message_widget.add_custom(ship.position.x, ship.position.y, \
 				                                                  _("The trade partner can not store more of this."))
 			return 0
 		# can't buy more than we can afford
 		amount = min(amount, self.get_owner_inventory()[RES.GOLD_ID] // price)
 		if amount <= 0:
-			if ship.owner == self.session.world.player:
+			if ship.owner.is_local_player:
 				self.session.ingame_gui.message_widget.add_custom(ship.position.x, ship.position.y, \
 				                                                  _("The trade partner can not afford to buy this."))
 			return 0
 		# can't buy more than we are trying to buy according to the settings
 		amount = min(amount, self.buy_list[resource_id] - self.get_inventory()[resource_id])
 		if amount <= 0:
-			if ship.owner == self.session.world.player:
+			if ship.owner.is_local_player:
 				self.session.ingame_gui.message_widget.add_custom(ship.position.x, ship.position.y, \
 				                                                  _("The trade partner does not buy more of this."))
 			return 0

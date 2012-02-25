@@ -189,7 +189,7 @@ class ShipOverviewTab(OverviewTab):
 		island_without_player_settlement_found = False
 		tooltip = _("The ship needs to be close to an island to found a settlement.")
 		for island in self.instance.session.world.get_islands_in_radius(self.instance.position, self.instance.radius):
-			if not any(settlement.owner is self.instance.session.world.player for settlement in island.settlements):
+			if not any(settlement.owner.is_local_player for settlement in island.settlements):
 				island_without_player_settlement_found = True
 			else:
 				tooltip = _("You already have a settlement on this island.")

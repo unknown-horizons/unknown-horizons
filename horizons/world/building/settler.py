@@ -78,7 +78,7 @@ class Settler(BuildableRect, BuildingResourceHandler, BasicBuilding):
 		if self.has_status_icon:
 			self.get_component(StorageComponent).inventory.add_change_listener( self._update_status_icon )
 		# give the user a month (about 30 seconds) to build a main square in range
-		if self.owner == self.session.world.player:
+		if self.owner.is_local_player:
 			Scheduler().add_new_object(self._check_main_square_in_range, self, Scheduler().get_ticks_of_month())
 		self.__init()
 		self.run()
@@ -253,7 +253,7 @@ class Settler(BuildableRect, BuildingResourceHandler, BasicBuilding):
 		if self.happiness > self.__get_data("happiness_level_up_requirement"):
 			if self.level >= self.level_max:
 				# max level reached already, can't allow an update
-				if self.owner == self.session.world.player:
+				if self.owner.is_local_player:
 					if not self.__class__._max_increment_reached_notification_displayed:
 						self.__class__._max_increment_reached_notification_displayed = True
 						self.session.ingame_gui.message_widget.add( \
@@ -311,8 +311,8 @@ class Settler(BuildableRect, BuildingResourceHandler, BasicBuilding):
 			  self, run_in=0)
 
 			self.log.debug("%s: Destroyed by lack of happiness", self)
-			if self.owner == self.session.world.player:
-		# check_duplicate: only trigger once for different settlers of a neighborhood
+			if self.owner.is_local_player:
+				# check_duplicate: only trigger once for different settlers of a neighborhood
 				self.session.ingame_gui.message_widget.add(self.position.center().x, self.position.center().y, \
 			                                           'SETTLERS_MOVED_OUT', check_duplicate=True)
 		else:
@@ -325,7 +325,7 @@ class Settler(BuildableRect, BuildingResourceHandler, BasicBuilding):
 
 	def _check_main_square_in_range(self):
 		"""Notifies the user via a message in case there is no main square in range"""
-		if self.owner is not self.session.world.player:
+		if not self.owner.is_local_player:
 			return # only check this for local player
 		for building in self.get_buildings_in_range():
 			if building.id == BUILDINGS.MAIN_SQUARE_CLASS:

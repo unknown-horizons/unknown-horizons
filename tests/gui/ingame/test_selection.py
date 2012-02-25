@@ -36,7 +36,7 @@ def test_select_ship(gui):
 	# Find player's ship
 	player_ship = None
 	for ship in gui.session.world.ships:
-		if ship.owner == gui.session.world.player:
+		if ship.owner.is_local_player:
 			player_ship = ship
 			break
 

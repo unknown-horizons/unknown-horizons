@@ -70,7 +70,7 @@ class SelectableComponent(Component):
 		"""
 		from horizons.gui.tabs import TabWidget
 		tablist = None
-		if self.instance.owner == self.session.world.player:
+		if self.instance.owner.is_local_player:
 			tablist = self.tabs
 		else: # this is an enemy instance with respect to the local player
 			tablist = self.enemy_tabs
@@ -292,10 +292,8 @@ class SelectableShipComponent(SelectableUnitComponent):
 		super(SelectableShipComponent, self).select(reset_cam=reset_cam)
 
 		# add a buoy at the ship's target if the player owns the ship
-		if self.session.world.player == self.instance.owner:
-			self.instance._update_buoy()
-
 		if self.instance.owner.is_local_player:
+			self.instance._update_buoy()
 			self.session.ingame_gui.minimap.show_unit_path(self.instance)
 
 	def deselect(self):

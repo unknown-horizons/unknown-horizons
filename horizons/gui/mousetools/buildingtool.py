@@ -97,7 +97,7 @@ class BuildingTool(NavigationTool):
 		# also distinguish related buildings (lumberjack for tree)
 		related = self.session.db.get_inverse_related_building_ids(self._class.id)
 		for settlement in self.session.world.settlements:
-			if settlement.owner == self.session.world.player:
+			if settlement.owner.is_local_player:
 				for bid in related:
 					for building in settlement.buildings_by_id[bid]:
 						building.get_component(SelectableBuildingComponent).select()

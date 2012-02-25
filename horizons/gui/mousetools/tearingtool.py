@@ -134,7 +134,7 @@ class TearingTool(NavigationTool):
 					if b is not None:
 						if b not in self._hovering_over:
 							self._hovering_over.append(b)
-						if b.tearable and self.session.world.player == b.owner:
+						if b.tearable and b.owner.is_local_player:
 							if b not in self.selected:
 								self.selected.append(b)
 			for i in self.selected:
