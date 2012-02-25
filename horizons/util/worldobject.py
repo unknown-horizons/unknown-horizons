@@ -22,7 +22,8 @@
 import weakref
 import logging
 
-from changelistener import ChangeListener
+from horizons.util import ChangeListener
+from horizons.util.messaging.message import WorldObjectDeleted
 
 class WorldObjectNotFound(KeyError):
 	pass
@@ -71,6 +72,7 @@ class WorldObject(ChangeListener):
 		self.__init(worldid)
 
 	def remove(self):
+		self.session.message_bus.broadcast(WorldObjectDeleted(self, self.worldid))
 		super(WorldObject, self).remove()
 		self.log.debug("Removing WorldObject %s %s", self.worldid, self)
 		del WorldObject.__objects[self.worldid]

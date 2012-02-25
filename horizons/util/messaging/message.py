@@ -80,3 +80,10 @@ class SettlementRangeChanged(Message):
 		super(SettlementRangeChanged, self).__init__(sender)
 		self.changed_tiles = changed_tiles
 
+class WorldObjectDeleted(Message):
+	"""Called when a world object is being deleted.
+	Currently emitted in the process of destruction, i.e. you aren't guaranteed to be able to access any attributes. (Feel free to change the implementation if you need this).
+	"""
+	def __init__(self, sender, worldid):
+		super(WorldObjectDeleted, self).__init__(sender)
+		self.worldid = worldid

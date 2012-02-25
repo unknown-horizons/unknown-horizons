@@ -27,6 +27,7 @@ from horizons.gui.mousetools.navigationtool import NavigationTool
 from horizons.command.building import Tear
 from horizons.util import Point, WeakList
 from horizons.constants import BUILDINGS
+from horizons.util.messaging.message import WorldObjectDeleted
 
 class TearingTool(NavigationTool):
 	"""
@@ -44,11 +45,13 @@ class TearingTool(NavigationTool):
 		self.session.ingame_gui.hide_menu()
 		horizons.main.fife.set_cursor_image("tearing")
 		self._hovering_over = WeakList()
+		self.session.message_bus.subscribe_globally(WorldObjectDeleted, self._on_object_deleted)
 
 	def remove(self):
 		self._mark()
 		self.tear_tool_active = False
 		horizons.main.fife.set_cursor_image("default")
+		self.session.message_bus.unsubscribe_globally(WorldObjectDeleted, self._on_object_deleted)
 		super(TearingTool, self).remove()
 
 	def mouseDragged(self, evt):
@@ -69,6 +72,7 @@ class TearingTool(NavigationTool):
 
 	def mouseReleased(self,  evt):
 		"""Tear selected instances and set selection tool as cursor"""
+		self.log.debug("TearingTool: mouseReleased")
 		if fife.MouseEvent.LEFT == evt.getButton():
 			coords = self.get_world_location_from_event(evt).to_tuple()
 			if self.coords is None:
@@ -81,7 +85,7 @@ class TearingTool(NavigationTool):
 				if self._hovering_over:
 					# we're hovering over a building, but none is selected, so this tear action isn't allowed
 					warehouses = [ b for b in self._hovering_over if \
-					               b.id ==BUILDINGS.WAREHOUSE_CLASS ]
+					               b.id == BUILDINGS.WAREHOUSE_CLASS ]
 					if warehouses:
 						# tried to tear a warehouse, this is especially non-tearable
 						pos = warehouses[0].position.origin
@@ -108,6 +112,7 @@ class TearingTool(NavigationTool):
 
 	def _mark(self, *edges):
 		"""Highights building instances and keeps self.selected up to date."""
+		self.log.debug("TearingTool: mark")
 		if len(edges) == 1:
 			edges = (edges[0], edges[0])
 		elif len(edges) == 2:
@@ -115,6 +120,7 @@ class TearingTool(NavigationTool):
 					 (max(edges[0][0], edges[1][0]), max(edges[0][1], edges[1][1])))
 		else:
 			edges = None
+		print 'rem old'
 		if self.oldedges != edges or edges is None:
 			for i in self.selected:
 				self.session.view.renderer['InstanceRenderer'].removeColored(i._instance)
@@ -134,3 +140,11 @@ class TearingTool(NavigationTool):
 			for i in self.selected:
 				self.session.view.renderer['InstanceRenderer'].addColored(i._instance, \
 				                                                          *self.tear_selection_color)
+		self.log.debug("TearingTool: mark done")
+
+
+	def _on_object_deleted(self, message):
+		self.log.debug("TearingTool: on deletion notification %s", message.worldid)
+		if message.sender in self.selected:
+			self.log.debug("TearingTool: deleted obj present")
+			self.selected.remove(message.sender)
