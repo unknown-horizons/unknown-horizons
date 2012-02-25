@@ -847,6 +847,10 @@ class World(BuildingOwner, LivingObject, WorldObject):
 		db.close()
 
 	def get_checkup_hash(self):
+		"""Returns a collection of important game state values. Used to check if two mp games have diverged.
+		Not designed to be reliable."""
+		# NOTE: don't include float values, they are represented differently in python 2.6 and 2.7
+		# and will differ at some insignificant place. Also make sure to handle them correctly in the game logic.
 		dict = {
 			'rngvalue': self.session.random.random(),
 			'settlements': [],
@@ -856,7 +860,6 @@ class World(BuildingOwner, LivingObject, WorldObject):
 			for settlement in island.settlements:
 				entry = {
 					'owner': str(settlement.owner.worldid),
-					'tax_settings': str(settlement.tax_settings),
 					'inhabitants': str(settlement.inhabitants),
 					'cumulative_running_costs': str(settlement.cumulative_running_costs),
 					'cumulative_taxes': str(settlement.cumulative_taxes),
