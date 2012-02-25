@@ -261,7 +261,9 @@ class SavegameManager(object):
 
 		# scale to the correct with and adapt height with same factor
 		factor = float( cls.savegame_screenshot_width ) / width
-		horizons.main.fife.engine.getRenderBackend().captureScreen(screenshot_filename,
+		if width and height:
+			# TODO: make it work when width & height are Dummy objects
+			horizons.main.fife.engine.getRenderBackend().captureScreen(screenshot_filename,
 		                                                           int(float(width) * factor),
 		                                                           int(float(height) * factor))
 
