@@ -93,7 +93,7 @@ class SelectionTool(NavigationTool):
 						if i_id == '':
 							continue
 						instance = WorldObject.get_object_by_id(int(i_id))
-						if instance.has_component(SelectableComponent) and instance.owner.is_local_player:
+						if instance.has_component(SelectableComponent) and instance.owner is not None and instance.owner.is_local_player:
 							selectable.append(instance)
 					except WorldObjectNotFound:
 						pass

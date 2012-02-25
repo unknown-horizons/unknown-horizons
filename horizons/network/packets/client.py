@@ -22,11 +22,15 @@
 from horizons.network.packets import *
 
 class cmd_creategame(packet):
-	def __init__(self, clientver, mapname, maxplayers, playername):
+	def __init__(self, clientver, mapname, maxplayers, playername, load=False):
+		"""
+		@param load: whether it's a loaded game
+		"""
 		self.clientversion = clientver
 		self.mapname       = mapname
 		self.maxplayers    = maxplayers
 		self.playername    = playername
+		self.load          = load
 
 SafeUnpickler.add('client', cmd_creategame)
 

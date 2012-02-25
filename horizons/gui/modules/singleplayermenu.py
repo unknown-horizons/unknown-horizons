@@ -173,7 +173,12 @@ class SingleplayerMenu(object):
 						self.current.findChild(name="map_desc").text = \
 							_("Description: {desc}").format(desc=campaign_info.get('description', '')) #xgettext:python-format
 
-				self.active_right_side.findChild(name="maplist").capture(_update_infos)
+
+				self.active_right_side.findChild(name="maplist").mapEvents({
+		  		'maplist/action': _update_infos,
+				  'maplist/mouseWheelMovedUp'   : _update_infos,
+		  		'maplist/mouseWheelMovedDown' : _update_infos
+				})
 				_update_infos()
 
 

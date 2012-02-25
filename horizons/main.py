@@ -340,7 +340,12 @@ def prepare_multiplayer(game, trader_enabled = True, pirate_enabled = True, natu
 	random = sum([ int(uuid[i : i + 2], 16) for i in range(0, len(uuid), 2) ])
 	_modules.session = MPSession(_modules.gui, db, NetworkInterface(), rng_seed=random)
 	# NOTE: this data passing is only temporary, maybe use a player class/struct
-	_modules.session.load("content/maps/" + game.get_map_name() + ".sqlite", \
+	if game.load:
+		map_file = SavegameManager.get_multiplayersave_map( game.get_map_name() )
+	else:
+		map_file = SavegameManager.get_map( game.get_map_name() )
+
+	_modules.session.load(map_file,
 	                      game.get_player_list(), trader_enabled, pirate_enabled, natural_resource_multiplier)
 
 def start_multiplayer(game):

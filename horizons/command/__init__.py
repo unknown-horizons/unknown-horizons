@@ -38,7 +38,7 @@ class Command(object):
 		"""
 		SafeUnpickler.add('server', klass)
 
-	def execute(self, session, local = False):
+	def execute(self, session, local=False):
 		"""Execute command.
 		@param session: Execute command on this session's manager.
 		@param local: Execute the command only locally (only used in multiplayer manager)

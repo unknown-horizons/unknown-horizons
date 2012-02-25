@@ -38,10 +38,10 @@ class SPManager(LivingObject):
 		self.session = session
 		self.commands = []
 
-	def execute(self, command, local = False):
+	def execute(self, command, local=False):
 		"""Executes a command
 		@param command: Command the command to be executed
-		@param local: not used in singleplayer manager
+		@param local: Whether to only execute command here (doesn't make sense in singleplayer
 		"""
 		# if we are in demo playback mode, every incoming command has to be thrown away.
 		if len(self.commands) > 0:
@@ -201,7 +201,7 @@ class MPManager(LivingObject):
 	def execute(self, command, local = False):
 		"""Receive commands to be executed from local player
 		@param command: Command instance
-		@param local: not used in singleplayer manager"""
+		@param local: commands that don't need to be sent over the wire"""
 		self.log.debug('MPManager: adding command (next tick: ' + str(self.session.timer.tick_next_id) + ')'+str(command))
 		if local:
 			self.localcommands.append(command)

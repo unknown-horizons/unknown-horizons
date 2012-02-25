@@ -24,9 +24,11 @@ import random
 from horizons.session import Session
 from horizons.manager import MPManager
 from horizons.timer import Timer
+from horizons.savegamemanager import SavegameManager
+from horizons.command.game import SaveCommand
 
 class MPSession(Session):
-	"""Session class for multiplayer games."""
+	"""Session class fo multiplayer games."""
 
 	def __init__(self, gui, db, network_interface, **kwargs):
 		"""
@@ -64,10 +66,28 @@ class MPSession(Session):
 		super(MPSession, self).end()
 
 	def autosave(self):
-		self.gui.show_popup(_("Not possible"), _("Save/load for multiplayer games is not possible yet"))
+		SaveCommand( SavegameManager.create_multiplayer_autosave_name() ).execute(self)
+
 	def quicksave(self):
-		self.gui.show_popup(_("Not possible"), _("Save/load for multiplayer games is not possible yet"))
+		SaveCommand( SavegameManager.create_multiplayer_quicksave_name() ).execute(self)
+
 	def quickload(self):
 		self.gui.show_popup(_("Not possible"), _("Save/load for multiplayer games is not possible yet"))
-	def save(self, savegame=None):
-		self.gui.show_popup(_("Not possible"), _("Save/load for multiplayer games is not possible yet"))
+
+	def save(self, savegamename=None):
+		if savegamename is None:
+			def sanity_checker(string):
+				try:
+					SavegameManager.create_multiplayersave_filename(string)
+				except RuntimeError:
+					return False
+				else:
+					return True
+			sanity_criteria = _("The filename must consist only of letters, numbers, spaces and _.-")
+			savegamename = self.gui.show_select_savegame(mode='mp_save', sanity_checker=sanity_checker,
+			                                             sanity_criteria=sanity_criteria)
+			if savegamename is None:
+				return True # user aborted dialog
+
+		SaveCommand( savegamename ).execute(self)
+		return True
