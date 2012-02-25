@@ -472,7 +472,6 @@ class MovingWeaponHolder(WeaponHolder):
 		self.add_component(FleeStance())
 		self.stance = HoldGroundStance
 
-
 	def _stance_tick(self):
 		"""
 		Executes every few seconds, doing movement depending on the stance.
@@ -583,7 +582,8 @@ class MovingWeaponHolder(WeaponHolder):
 
 	def user_attack(self, targetid):
 		super(MovingWeaponHolder, self).user_attack(targetid)
-		self.session.ingame_gui.minimap.show_unit_path(self)
+		if self.owner.is_local_player:
+			self.session.ingame_gui.minimap.show_unit_path(self)
 
 class StationaryWeaponHolder(WeaponHolder):
 	"""Towers and stuff"""

@@ -36,6 +36,7 @@ class Player(ComponentHolder, WorldObject):
 	regular_player = True # either a human player or a normal AI player (not trader or pirate)
 	component_templates = ({'StorageComponent': {'inventory': {'PositiveStorage': {}}}},)
 
+
 	def __init__(self, session, worldid, name, color, difficulty_level = None):
 		"""
 		@param session: Session instance
@@ -71,6 +72,10 @@ class Player(ComponentHolder, WorldObject):
 
 		if self.regular_player:
 			Scheduler().add_new_object(Callback(self.update_stats), self, run_in = 0)
+
+	@property
+	def is_local_player(self):
+		return self is self.session.world.player
 
 	def update_stats(self):
 		Scheduler().add_new_object(Callback(self.update_stats), self, run_in = PLAYER.STATS_UPDATE_FREQUENCY)

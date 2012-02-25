@@ -189,7 +189,7 @@ class IngameKeyListener(fife.IKeyListener, LivingObject):
 				instance = iter(self.session.selected_instances).next()
 				self.session.view.center( * instance.position.to_tuple())
 				for instance in self.session.selected_instances:
-					if hasattr(instance, "path"):
+					if hasattr(instance, "path") and instance.owner.is_local_player:
 						self.session.ingame_gui.minimap.show_unit_path(instance)
 		else:
 			return

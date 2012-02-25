@@ -295,7 +295,7 @@ class SelectableShipComponent(SelectableUnitComponent):
 		if self.session.world.player == self.instance.owner:
 			self.instance._update_buoy()
 
-		if self.instance.owner is self.session.world.player:
+		if self.instance.owner.is_local_player:
 			self.session.ingame_gui.minimap.show_unit_path(self.instance)
 
 	def deselect(self):

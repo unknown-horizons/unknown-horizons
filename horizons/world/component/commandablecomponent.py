@@ -60,9 +60,10 @@ class CommandableComponent(Component):
 				# update actual target coord
 				move_target = self.instance.get_move_target()
 				break
-		self.instance.session.ingame_gui.minimap.show_unit_path(self.instance)
+		if self.instance.owner.is_local_player:
+			self.instance.session.ingame_gui.minimap.show_unit_path(self.instance)
 		if move_target is None: # can't move
-			if self.instance.owner == self.session.world.player: # only get local messages
+			if self.instance.owner.is_local_player:
 				if self.session.world.get_tile(Point(x, y)) is None: # not even in world
 					self.session.ingame_gui.message_widget.add(x, y, "MOVE_OUTSIDE_OF_WORLD")
 				else: # in world, but still unreachable
