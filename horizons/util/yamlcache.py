@@ -24,7 +24,7 @@ import shelve
 import yaml
 import threading
 
-from horizons.constants import RES, PATHS
+from horizons.constants import RES, UNITS, BUILDINGS, PATHS
 
 try:
 	from yaml import CSafeLoader as SafeLoader
@@ -37,18 +37,19 @@ def construct_yaml_str(self, node):
 SafeLoader.add_constructor(u'tag:yaml.org,2002:python/unicode', construct_yaml_str)
 
 
-def parse_resource(res):
-	"""Helper function that tries to parse a resource.
+def parse_token(token, token_klass):
+	"""Helper function that tries to parse a constant name.
 	Does not do error detection, but passes unparseable stuff through.
-	Allowed values for res: integer or RES.LIKE_IN_CONSTANTS
+	Allowed values: integer or token_klass.LIKE_IN_CONSTANTS
+	@param token_klass: "RES", "UNITS" or "BUILDINGS"
 	"""
-	if isinstance(res, (str, unicode)):
-		if res.startswith("RES."):
-			return getattr(RES, res[4:])
+	if isinstance(token, (str, unicode)):
+		if token.startswith(token_klass):
+			return getattr( globals()[token_klass], token.split(".", 2)[1])
 		else:
-			return res
+			return token
 	else:
-		return res # probably numeric already
+		return token # probably numeric already
 
 def convert_game_data(data):
 	"""Translates convenience symbols into actual game data usable by machines"""
@@ -57,8 +58,9 @@ def convert_game_data(data):
 	elif isinstance(data, (tuple, list)):
 		return type(data)( ( convert_game_data(i) for i in data) )
 	else: # leaf
-		data = parse_resource(data)
-		# etc.
+		data = parse_token(data, "RES")
+		data = parse_token(data, "UNITS")
+		data = parse_token(data, "BUILDINGS")
 		return data
 
 
@@ -91,16 +93,7 @@ class YamlCache(object):
 		if isinstance(filename, unicode):
 			filename = filename.encode('utf8') # shelve needs str keys
 
-		if (filename in cls.cache and \
-				cls.cache[filename][0] != h) or \
-			 (not filename in cls.cache):
-			data = yaml.load( f, Loader = SafeLoader )
-			if game_data: # need to convert some values
-				data = convert_game_data(data)
-			cls.lock.acquire()
-			try:
-				cls.cache[filename] = (h, data)
-			except Exception as e:
+		def handle_get_yaml_file_error(e, release):
 				# when something unexpected happens, shelve does not guarantee anything.
 				# since crashing on any access is part of the specified behaviour, we need to handle it.
 				# cf. http://bugs.python.org/issue14041
@@ -108,8 +101,24 @@ class YamlCache(object):
 				# delete cache and try again
 				os.remove(cls.cache_filename)
 				cls.cache = None
-				cls.lock.release()
+				if release:
+					cls.lock.release()
 				return cls.get_yaml_file(filename, game_data=game_data)
+
+		try:
+			yaml_file_in_cache = (filename in cls.cache and cls.cache[filename][0] == h)
+		except Exception as e:
+			return handle_get_yaml_file_error(e, release=False)
+
+		if not yaml_file_in_cache:
+			data = yaml.load( f, Loader = SafeLoader )
+			if game_data: # need to convert some values
+				data = convert_game_data(data)
+			cls.lock.acquire()
+			try:
+				cls.cache[filename] = (h, data)
+			except Exception as e:
+				return handle_get_yaml_file_error(e, release=True)
 
 			if not cls.sync_scheduled:
 				cls.sync_scheduled = True

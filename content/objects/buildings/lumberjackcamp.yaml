@@ -6,8 +6,10 @@
 # The storage component has space for both raw wood and boards.
 # The actionsets define how the building looks like in the different settler levels.
 id: 8
-name: _ Lumberjack Camp
-baseclass: production.Lumberjack
+name:
+  0: _ Lumberjack Tent
+  1: _ Lumberjack Hut
+baseclass: production.ProductionBuilding
 radius: 3
 cost: 5
 cost_inactive: 0
@@ -37,6 +39,9 @@ components:
     inventory:
       SlotsStorage:
         slot_sizes: {8: 10, 4: 10}
+- CollectingComponent:
+    collectors:
+      UNITS.LUMBERJACK_COLLECTOR_CLASS: 1
 actionsets:
   as_lumberjack0: {level: 0}
   as_lumberjack_barrack0: {level: 1}

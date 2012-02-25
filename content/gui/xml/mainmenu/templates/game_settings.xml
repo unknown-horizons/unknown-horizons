@@ -7,15 +7,21 @@
 		<StepSlider name="resource_density_slider" size="125,20" scale_start="0" scale_end="4" step_length="1" marker_length="25" />
 	</HBox>
 
-	<HBox name="param_ai_factions" padding="15">
-		<HBox name="map_param">
+	<HBox name="game_setting_checkboxes">
+		<!-- don't change names of boxes and labels, they are used in singleplayermenu.py -->
+		<HBox name="map_param_trader">
 			<CheckBox name="free_trader" min_size="15,15" max_size="15,15" marked="1" />
 			<Label name="lbl_free_trader"  text="Free Trader" comment="Whether to create this kind of player in the game." />
 		</HBox>
-		<HBox name="map_param">
+		<HBox name="map_param_pirate">
 			<CheckBox name="pirates" min_size="15,15" max_size="15,15" marked="1" />
 			<Label name="lbl_pirates"  text="Pirates" comment="Whether to create this kind of player in the game." />
 		</HBox>
+		<HBox name="map_param_disasters">
+			<CheckBox name="disasters" min_size="15,15" max_size="15,15" marked="1" />
+			<Label name="lbl_disasters"  text="Disasters" comment="Whether there should be disasters in the game." />
+		</HBox>
+
 		<!--
 		<HBox name="map_param">
 			<CheckBox name="peoples" min_size="15,15" />

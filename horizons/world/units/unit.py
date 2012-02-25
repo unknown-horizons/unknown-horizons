@@ -199,11 +199,6 @@ class Unit(MovingObject):
 	def classname(self):
 		return self.session.db.get_unit_type_name(self.id)
 
-	@property
-	def name(self):
-		# this doesn't inherit properly from IngameType
-		return self._name
-
 	def __str__(self): # debug
 		return '%s(id=%s;worldid=%s)' % (self.name, self.id, self.worldid if hasattr(self, 'worldid') else 'none')
 

@@ -28,7 +28,7 @@ from horizons.gui.tabs import SettlerOverviewTab
 from horizons.world.building.building import BasicBuilding
 from horizons.world.building.buildable import BuildableRect, BuildableSingle
 from horizons.constants import RES, BUILDINGS, GAME, SETTLER
-from horizons.world.building.collectingbuilding import CollectingBuilding
+from horizons.world.building.buildingresourcehandler import BuildingResourceHandler
 from horizons.world.production.production import SettlerProduction, SingleUseProduction
 from horizons.command.building import Build
 from horizons.util import decorators, Callback
@@ -37,7 +37,7 @@ from horizons.command.production import ToggleActive
 from horizons.world.component.storagecomponent import StorageComponent
 from horizons.world.status import SettlerUnhappyStatus
 from horizons.world.production.producer import Producer
-from horizons.util.messaging.message import AddStatusIcon, RemoveStatusIcon
+from horizons.util.messaging.message import AddStatusIcon, RemoveStatusIcon, SettlerUpdate, SettlerInhabitantsChanged, UpgradePermissionsChanged
 
 class SettlerRuin(BasicBuilding, BuildableSingle):
 	"""Building that appears when a settler got unhappy. The building does nothing.
@@ -47,7 +47,7 @@ class SettlerRuin(BasicBuilding, BuildableSingle):
 	"""
 	buildable_upon = True
 
-class Settler(BuildableRect, CollectingBuilding, BasicBuilding):
+class Settler(BuildableRect, BuildingResourceHandler, BasicBuilding):
 	"""Represents a settlers house, that uses resources and creates inhabitants."""
 	log = logging.getLogger("world.building.settler")
 
@@ -67,16 +67,18 @@ class Settler(BuildableRect, CollectingBuilding, BasicBuilding):
 		self.level_max = SETTLER.CURRENT_MAX_INCR # for now
 		self._update_level_data(loading = loading)
 		self.last_tax_payed = last_tax_payed
+		self.session.message_bus.subscribe_locally(UpgradePermissionsChanged, self.settlement, self._on_change_upgrade_permissions)
 
 	def initialize(self):
 		super(Settler, self).initialize()
+		self.session.message_bus.broadcast(SettlerInhabitantsChanged(self, self.inhabitants))
 		happiness = self.__get_data("happiness_init_value")
 		if happiness is not None:
 			self.get_component(StorageComponent).inventory.alter(RES.HAPPINESS_ID, happiness)
 		if self.has_status_icon:
 			self.get_component(StorageComponent).inventory.add_change_listener( self._update_status_icon )
 		# give the user a month (about 30 seconds) to build a main square in range
-		if self.owner == self.session.world.player:
+		if self.owner.is_local_player:
 			Scheduler().add_new_object(self._check_main_square_in_range, self, Scheduler().get_ticks_of_month())
 		self.__init()
 		self.run()
@@ -97,7 +99,7 @@ class Settler(BuildableRect, CollectingBuilding, BasicBuilding):
 		    db("SELECT ticks FROM remaining_ticks_of_month WHERE rowid=?", worldid)[0][0]
 		self.__init(loading = True, last_tax_payed = last_tax_payed)
 		self._load_upgrade_data(db)
-		self.owner.notify_settler_reached_level(self)
+		self.session.message_bus.broadcast(SettlerUpdate(self, self.level))
 		self.run(remaining_ticks)
 
 	def load_production(self, db, worldid):
@@ -131,13 +133,14 @@ class Settler(BuildableRect, CollectingBuilding, BasicBuilding):
 		return None
 
 	def remove(self):
+		self.session.message_bus.unsubscribe_locally(UpgradePermissionsChanged, self.settlement, self._on_change_upgrade_permissions)
 		super(Settler, self).remove()
 
 	@property
 	def upgrade_allowed(self):
 		return self.session.world.get_settlement(self.position.origin).upgrade_permissions[self.level]
 
-	def on_change_upgrade_permissions(self):
+	def _on_change_upgrade_permissions(self, message):
 		production = self._get_upgrade_production()
 		if production is not None:
 			if production.is_paused() == self.upgrade_allowed:
@@ -228,21 +231,21 @@ class Settler(BuildableRect, CollectingBuilding, BasicBuilding):
 
 	def inhabitant_check(self):
 		"""Checks whether or not the population of this settler should increase or decrease"""
-		changed = False
+		change = 0
 		if self.happiness > self.__get_data("happiness_inhabitants_increase_requirement") and \
 			 self.inhabitants < self.inhabitants_max:
-			self.inhabitants += 1
-			changed = True
+			change = 1
 			self.log.debug("%s: inhabitants increase to %s", self, self.inhabitants)
 		elif self.happiness < self.__get_data("happiness_inhabitants_decrease_limit") and \
 		     self.inhabitants > 1:
-			self.inhabitants -= 1
-			changed = True
+			change = -1
 			self.log.debug("%s: inhabitants decrease to %s", self, self.inhabitants)
 
-		if changed:
+		if change != 0:
 			# see http://wiki.unknown-horizons.org/w/Supply_citizens_with_resources
 			self.get_component(Producer).alter_production_time( 6.0/7.0 * math.log( 1.5 * (self.inhabitants + 1.2) ) )
+			self.inhabitants += change
+			self.session.message_bus.broadcast(SettlerInhabitantsChanged(self, change))
 			self._changed()
 
 	def level_check(self):
@@ -250,7 +253,7 @@ class Settler(BuildableRect, CollectingBuilding, BasicBuilding):
 		if self.happiness > self.__get_data("happiness_level_up_requirement"):
 			if self.level >= self.level_max:
 				# max level reached already, can't allow an update
-				if self.owner == self.session.world.player:
+				if self.owner.is_local_player:
 					if not self.__class__._max_increment_reached_notification_displayed:
 						self.__class__._max_increment_reached_notification_displayed = True
 						self.session.ingame_gui.message_widget.add( \
@@ -287,8 +290,10 @@ class Settler(BuildableRect, CollectingBuilding, BasicBuilding):
 			self.level += 1
 			self.log.debug("%s: Levelling up to %s", self, self.level)
 			self._update_level_data()
-			# notify owner about new level
-			self.owner.notify_settler_reached_level(self)
+
+			# Notify the world about the level up
+			self.session.message_bus.broadcast(SettlerUpdate(self, self.level))
+
 			# reset happiness value for new level
 			self.get_component(StorageComponent).inventory.alter(RES.HAPPINESS_ID, self.__get_data("happiness_init_value") - self.happiness)
 			self._changed()
@@ -306,8 +311,8 @@ class Settler(BuildableRect, CollectingBuilding, BasicBuilding):
 			  self, run_in=0)
 
 			self.log.debug("%s: Destroyed by lack of happiness", self)
-			if self.owner == self.session.world.player:
-		# check_duplicate: only trigger once for different settlers of a neighborhood
+			if self.owner.is_local_player:
+				# check_duplicate: only trigger once for different settlers of a neighborhood
 				self.session.ingame_gui.message_widget.add(self.position.center().x, self.position.center().y, \
 			                                           'SETTLERS_MOVED_OUT', check_duplicate=True)
 		else:
@@ -320,6 +325,8 @@ class Settler(BuildableRect, CollectingBuilding, BasicBuilding):
 
 	def _check_main_square_in_range(self):
 		"""Notifies the user via a message in case there is no main square in range"""
+		if not self.owner.is_local_player:
+			return # only check this for local player
 		for building in self.get_buildings_in_range():
 			if building.id == BUILDINGS.MAIN_SQUARE_CLASS:
 				if StaticPather.get_path_on_roads(self.island, self, building) is not None:

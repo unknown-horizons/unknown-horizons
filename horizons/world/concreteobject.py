@@ -52,6 +52,7 @@ class ConcreteObject(WorldObject):
 		self._action_set_id = self.get_random_action_set()[0]
 
 		# only buildings for now
+		# NOTE: this is player dependant, therefore there must be no calls to session.random that depend on this
 		self.has_status_icon = self.is_building and \
 		  not self.id in self.session.db.get_status_icon_exclusions() and \
 			self.owner == self.session.world.player # and only for the player's buildings
@@ -127,3 +128,11 @@ class ConcreteObject(WorldObject):
 		if action_set is not None and 'preview' in action_sets[action_set]:
 			preview = action_sets[action_set]['preview']
 		return (action_set, preview)
+
+	@property
+	def name(self):
+		if hasattr(self, "_level_specific_names"):
+			return self._level_specific_names[self.level]
+		else:
+			return self._name
+

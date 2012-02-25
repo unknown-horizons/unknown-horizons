@@ -33,6 +33,7 @@
 			<Label name="game_creator"/>
 			<Label name="game_playersnum"/>
 			<Label name="game_players"/>
+			<Label name="game_isloaded"/>
 		</VBox>
 	</Container>
 

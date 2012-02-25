@@ -84,21 +84,27 @@ class TestFailed(Exception): pass
 TEST_USER_DIR = None
 
 def setup_package():
-	"""
-	Create a temporary dictionary to use as user dictionary (settings, savegames etc.)
-	while the tests are running.
-	"""
+	"""Create a temporary directory to use as user directory (settings, savegames etc.)
+	while the tests are running."""
 	global TEST_USER_DIR
 	TEST_USER_DIR = tempfile.mkdtemp()
 
 
 def teardown_package():
-	"""
-	Delete the user dictionary.
-	"""
+	"""Delete the user directory."""
 	global TEST_USER_DIR
 	shutil.rmtree(TEST_USER_DIR)
 	TEST_USER_DIR = None
+
+
+def recreate_userdir():
+	"""Cleanup user directory by deleting the old and using a new path.
+
+	Some tests may modify the user directory, e.g. by saving games, we need to
+	revert these changes."""
+	global TEST_USER_DIR
+	shutil.rmtree(TEST_USER_DIR)
+	TEST_USER_DIR = tempfile.mkdtemp()
 
 
 class GuiTestPlugin(Plugin):
@@ -227,13 +233,14 @@ class TestRunner(object):
 			pass
 
 
-def gui_test(use_dev_map=False, use_fixture=None, ai_players=0, timeout=15 * 60):
+def gui_test(use_dev_map=False, use_fixture=None, ai_players=0, timeout=15 * 60, cleanup_userdir=False):
 	"""Magic nose integration.
 
 	use_dev_map		-	starts the game with --start-dev-map
 	use_fixture		-	starts the game with --load-map=fixture_name
 	ai_players		-	starts the game with --ai_players=<number>
 	timeout			-	test will be stopped after X seconds passed (0 = disabled)
+	cleanup_userdir	-	whether the userdir should be cleaned after the test
 
 	Each GUI test is run in a new process. In case of an error, stderr will be
 	printed. That way it will appear in the nose failure listing.
@@ -293,8 +300,12 @@ def gui_test(use_dev_map=False, use_fixture=None, ai_players=0, timeout=15 * 60)
 				if nose_captured:
 					if stdout:
 						print stdout
+					if cleanup_userdir:
+						recreate_userdir()
 					raise TestFailed('\n\n' + stderr)
 				else:
+					if cleanup_userdir:
+						recreate_userdir()
 					raise TestFailed()
 
 		# we need to store the original function, otherwise the new process will execute

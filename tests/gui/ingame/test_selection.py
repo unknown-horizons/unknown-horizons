@@ -36,7 +36,7 @@ def test_select_ship(gui):
 	# Find player's ship
 	player_ship = None
 	for ship in gui.session.world.ships:
-		if ship.owner == gui.session.world.player:
+		if ship.owner.is_local_player:
 			player_ship = ship
 			break
 
@@ -58,7 +58,7 @@ def test_selectmultitab(gui):
 	def create_ship(type):
 		return CreateUnit(player.worldid, type, *gui.session.world.get_random_possible_ship_position().to_tuple())(issuer=player)
 
-	ships = [create_ship(UNITS.FRIGATE), create_ship(UNITS.FRIGATE)]
+	ships = [create_ship(UNITS.FRIGATE_CLASS), create_ship(UNITS.FRIGATE_CLASS)]
 	gui.select(ships)
 	assert gui.find('overview_select_multi')
 	for _ in gui.run(seconds=0.1):

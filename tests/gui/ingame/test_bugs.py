@@ -34,7 +34,7 @@ def test_ticket_1352(gui):
 	yield # test needs to be a generator for now
 
 	player = gui.session.world.player
-	ship = CreateUnit(player.worldid, UNITS.FRIGATE, 68, 10)(player)
+	ship = CreateUnit(player.worldid, UNITS.FRIGATE_CLASS, 68, 10)(player)
 	x, y = ship.position.x, ship.position.y
 
 	gui.session.view.center(x, y)
@@ -177,7 +177,7 @@ def test_ticket_1371(gui):
 	# Select lumberjack
 	# TODO selecting should work when clicking on the map
 	settlement = gui.session.world.player.settlements[0]
-	lumberjack = settlement.get_buildings_by_id(BUILDINGS.LUMBERJACK_CLASS)[0]
+	lumberjack = settlement.buildings_by_id[BUILDINGS.LUMBERJACK_CLASS][0]
 	gui.select([lumberjack])
 
 	# Open build related tab

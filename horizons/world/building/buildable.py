@@ -19,6 +19,8 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
+import itertools
+
 from horizons.util import Point, Rect, decorators
 from horizons.world.pathfinding.roadpathfinder import RoadPathFinder
 from horizons.constants import BUILDINGS
@@ -33,7 +35,7 @@ class BuildableErrorTypes(object):
 
 	text = {
 	  NO_ISLAND : _("Buildings must be built on islands."),
-	  UNFIT_TILE : _("The ground is not fit here for this building."),
+	  UNFIT_TILE : _("The ground is not suitable for this building."),
 	  NO_SETTLEMENT : _("You can only build this within your settlement."),
 	  SETTLEMENT : _("This area is already occupied."),
 	  OTHER_PLAYERS_SETTLEMENT : _("You can only build this within your settlement."),
@@ -92,6 +94,8 @@ class Buildable(object):
 	"""Interface for every kind of buildable objects.
 	Contains methods to determine whether a building can be placed on a coordinate, regarding
 	island, settlement, ground requirements etc. Does not care about building costs."""
+
+	irregular_conditions = False # whether all ground tiles have to fulfill the same conditions
 
 	# INTERFACE
 
@@ -154,7 +158,17 @@ class Buildable(object):
 			cls._check_buildings(session, position)
 		except _NotBuildableError:
 			return False
-		return True
+
+		if cls.irregular_conditions:
+			# check in case not all ground tiles have to fulfill the same conditions (e.g. when 1 tile has to be coast)
+
+			# at least one location that has this tile must be actually buildable
+			# area of the buildings is (x, y) + width/height, therefore all build positions that
+			# include (x, y) are (x, y) - ( [0..width], [0..height] )
+			return any( cls.check_build(session, Point(tile.x - x_off, tile.y - y_off), ship=ship) for
+				          x_off, y_off in itertools.product(xrange(cls.size[0]), xrange(cls.size[1])) )
+		else:
+			return True
 
 	# PRIVATE PARTS
 
@@ -241,7 +255,7 @@ class BuildableSingle(Buildable):
 		return [ cls.check_build(session, point2, rotation=rotation, ship=ship) ]
 
 class BuildableSingleEverywhere(BuildableSingle):
-	"""Buildings, that can be built everywhere"""
+	"""Buildings, that can be built everywhere. Usually not used for buildings placeable by humans."""
 	@classmethod
 	def check_build(cls, session, point, rotation=45, check_settlement=True, ship=None, issuer=None):
 		# for non-quadratic buildings, we have to switch width and height depending on the rotation
@@ -313,6 +327,7 @@ class BuildableLine(Buildable):
 
 class BuildableSingleOnCoast(BuildableSingle):
 	"""Buildings one can only build on coast, such as BoatBuilder, Fisher"""
+	irregular_conditions = True
 	@classmethod
 	def _check_island(cls, session, position, island=None):
 		# ground has to be either coastline or constructible, > 1 tile must be coastline
@@ -424,6 +439,7 @@ class BuildableSingleOnDeposit(BuildableSingle):
 	This is specified in game.sqlite in the table "mine", and saved in cls.buildable_on_deposit in
 	the buildingclass.
 	"""
+	irregular_conditions = True
 	@classmethod
 	def _check_buildings(cls, session, position, island=None):
 		"""Check if there are buildings blocking the build"""

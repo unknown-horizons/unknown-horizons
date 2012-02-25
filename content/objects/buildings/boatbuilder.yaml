@@ -60,5 +60,8 @@ components:
     inventory:
       SlotsStorage:
         slot_sizes: {40: 12, 3: 12, 4: 12, 6: 12}
+- CollectingComponent:
+    collectors:
+      1000002: 1
 actionsets:
   as_boat_builder0: {level: 0}

@@ -26,6 +26,7 @@ import os
 import os.path
 import glob
 import time
+import re
 import yaml
 
 from horizons.constants import PATHS, VERSION
@@ -53,6 +54,7 @@ class SavegameManager(object):
 
 	savegame_dir = os.path.join(PATHS.USER_DIR, "save")
 	autosave_dir = os.path.join(savegame_dir, "autosave")
+	multiplayersave_dir = os.path.join(savegame_dir, "multiplayer_save")
 	quicksave_dir = os.path.join(savegame_dir, "quicksave")
 	maps_dir = os.path.join("content", "maps")
 	scenario_maps_dir = os.path.join("content", "scenariomaps")
@@ -65,6 +67,8 @@ class SavegameManager(object):
 
 	autosave_basename = "autosave-"
 	quicksave_basename = "quicksave-"
+
+	multiplayersave_name_regex = r"^[0-9a-zA-Z _.-]+$" # don't just blindly allow everything
 
 	# Use {{}} because this string is formatted twice and
 	# {timestamp} is replaced in the second format() call.
@@ -84,10 +88,9 @@ class SavegameManager(object):
 	@classmethod
 	def init(cls):
 		# create savegame directory if it does not exist
-		if not os.path.isdir(cls.autosave_dir):
-			os.makedirs(cls.autosave_dir)
-		if not os.path.isdir(cls.quicksave_dir):
-			os.makedirs(cls.quicksave_dir)
+		for d in cls.autosave_dir, cls.quicksave_dir, cls.multiplayersave_dir:
+			if not os.path.isdir(d):
+				os.makedirs(d)
 
 	@classmethod
 	def __get_displaynames(cls, files):
@@ -149,6 +152,28 @@ class SavegameManager(object):
 		prepared_filename = time.strftime(cls.quicksave_filenamepattern.format(timestamp=time.time()))
 		name = u"{directory}{sep}{name}".format(directory=cls.quicksave_dir, sep=os.sep, name=prepared_filename)
 		cls.log.debug("Savegamemanager: creating quicksave-filename: %s", name)
+		return name
+
+	@classmethod
+	def create_multiplayer_quicksave_name(cls):
+		"""Will create a name, not a path"""
+		return "quicksave-" + str(time.time())
+
+	@classmethod
+	def create_multiplayer_autosave_name(cls):
+		"""Will create a name, not a path"""
+		return "autosave-" + str(time.time())
+
+	@classmethod
+	def create_multiplayersave_filename(cls, name):
+		"""Returns the filename for a multiplayer save"""
+		if not re.match(cls.multiplayersave_name_regex, name):
+			err = "Smelly multiplayer filename detected: " + name
+			cls.log.error(err)
+			raise RuntimeError(err)
+
+		name = u"{directory}{sep}{name}".format(directory=cls.multiplayersave_dir, sep=os.sep, name=name + "." + cls.savegame_extension)
+		cls.log.debug("Savegamemanager: creating multiplayersave-filename: %s", name)
 		return name
 
 	@classmethod
@@ -260,11 +285,24 @@ class SavegameManager(object):
 		return cls.__get_saves_from_dirs([cls.maps_dir], include_displaynames, None, False)
 
 	@classmethod
+	def get_map(cls, map_name):
+		return os.path.join(cls.maps_dir, map_name + "." + cls.savegame_extension)
+
+	@classmethod
+	def get_multiplayersave_map(cls, name):
+		return os.path.join(cls.multiplayersave_dir, name + "." + cls.savegame_extension)
+
+	@classmethod
 	def get_saves(cls, include_displaynames = True):
 		"""Returns all savegames"""
 		cls.log.debug("Savegamemanager: get saves from %s, %s, %s", cls.savegame_dir,
 		              cls.autosave_dir, cls.quicksave_dir)
 		return cls.__get_saves_from_dirs([cls.savegame_dir, cls.autosave_dir, cls.quicksave_dir], include_displaynames, None, True)
+
+	@classmethod
+	def get_multiplayersaves(cls, include_displaynames = True):
+		cls.log.debug("Savegamemanager: get saves from %s, %s, %s", cls.multiplayersave_dir)
+		return cls.__get_saves_from_dirs([cls.multiplayersave_dir], include_displaynames, None, True)
 
 	@classmethod
 	def get_quicksaves(cls, include_displaynames = True):

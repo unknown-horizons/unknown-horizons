@@ -76,7 +76,7 @@ class BuildingEvaluator(WorldObject):
 		"""
 
 		shortest_distance = None
-		for building in area_builder.settlement.get_buildings_by_id(building_id):
+		for building in area_builder.settlement.buildings_by_id.get(building_id, []):
 			distance = builder.position.distance(building.position)
 			if distance <= Entities.buildings[builder.building_id].radius:
 				shortest_distance = distance if shortest_distance is None or distance < shortest_distance else shortest_distance

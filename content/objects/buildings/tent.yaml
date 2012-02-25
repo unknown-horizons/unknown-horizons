@@ -19,6 +19,8 @@ components:
     enemy_tabs: [EnemyBuildingOverviewTab,]
 - HealthComponent: {maxhealth: 1000}
 - ProducerComponent:
+    utilisation:
+      FullUtilisation
     productionlines:
       35:
         changes_animation: false
@@ -145,6 +147,9 @@ components:
     inventory:
       SlotsStorage:
         slot_sizes: {32: 1, 3: 1, 5: 1, 11: 1, 14: 100, 16: 1, 19: 1, 27: 1, 29: 1, 42: 1}
+- CollectingComponent:
+    collectors:
+      1000011: 1
 actionsets:
   as_tent0: {level: 0}
   as_tent1: {level: 0}

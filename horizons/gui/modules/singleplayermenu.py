@@ -114,7 +114,13 @@ class SingleplayerMenu(object):
 				# select first entry
 				self.active_right_side.distributeData({ 'maplist' : 0, })
 				_update_infos()
-			self.active_right_side.findChild(name="maplist").capture(_update_infos)
+			# update preview whenever somehting is selected in the list
+			self.active_right_side.findChild(name="maplist").mapEvents({
+			  'maplist/action'              : _update_infos,
+			  'maplist/mouseWheelMovedUp'   : _update_infos,
+			  'maplist/mouseWheelMovedDown' : _update_infos
+			})
+			self.active_right_side.findChild(name="maplist").capture(_update_infos, event_name="keyPressed")
 			show_ai_options = True
 			self._setup_game_settings_selection()
 		else:
@@ -167,7 +173,12 @@ class SingleplayerMenu(object):
 						self.current.findChild(name="map_desc").text = \
 							_("Description: {desc}").format(desc=campaign_info.get('description', '')) #xgettext:python-format
 
-				self.active_right_side.findChild(name="maplist").capture(_update_infos)
+
+				self.active_right_side.findChild(name="maplist").mapEvents({
+		  		'maplist/action': _update_infos,
+				  'maplist/mouseWheelMovedUp'   : _update_infos,
+		  		'maplist/mouseWheelMovedDown' : _update_infos
+				})
 				_update_infos()
 
 
@@ -230,6 +241,7 @@ class SingleplayerMenu(object):
 			  map_file, playername, playercolor, ai_players = ai_players, human_ai = AI.HUMAN_AI,
 			  trader_enabled = self.widgets['game_settings'].findChild(name = 'free_trader').marked,
 			  pirate_enabled = self.widgets['game_settings'].findChild(name = 'pirates').marked,
+			  disasters_enabled = self.widgets['game_settings'].findChild(name = 'disasters').marked,
 			  natural_resource_multiplier = self._get_natural_resource_multiplier()
 			)
 
@@ -340,7 +352,15 @@ class SingleplayerMenu(object):
 		widget = self.widgets['game_settings']
 		if widget.parent is not None:
 			widget.parent.removeChild(widget)
-		self.current.findChild(name = 'game_settings_box').addChild(widget)
+		settings_box = self.current.findChild(name = 'game_settings_box')
+		settings_box.addChild(widget)
+
+		# make click on labels change the respective checkboxes
+		for setting in u'free_trader', u'pirates', u'disasters':
+			def toggle(setting):
+				box = self.current.findChild(name = setting)
+				box.marked = not box.marked
+			self.current.findChild(name = u'lbl_'+setting).capture(Callback(toggle, setting))
 
 		resource_density_slider = widget.findChild(name = 'resource_density_slider')
 		def on_resource_density_slider_change():

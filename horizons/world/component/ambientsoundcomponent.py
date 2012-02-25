@@ -19,74 +19,96 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
+import random
+
 import horizons.main
+
 from horizons.world.component import Component
-from fife.extensions.fife_timer import repeatCall
+from horizons.extscheduler import ExtScheduler
 
 
 class AmbientSoundComponent(Component):
-	"""Support for playing ambient sounds, such as animal noise.
-	It relies on the subclass having an attribute "position", which must be either a Point or Rect.
+	"""Support for playing ambient sounds, such as animal noise or collector sounds.
 	"""
+	AMBIENT_SOUND_INTERVAL = 20 # interval between two plays
+	AMBIENT_SOUND_INTERVAL_VARIANCE = [0, 15] # a number of this interval is added to the one above
 
 	NAME = "ambientsound"
 
-	def __init__(self, soundfiles=[], positioning=True, **kwargs):
+	def __init__(self, soundfiles=[]):
 		"""
-		@param positioning: bool, whether sound should play from a certain position.
+		@param soundfiles: list of paths
 		"""
 		super(AmbientSoundComponent, self).__init__()
-		self.__init(positioning)
 		self.soundfiles = soundfiles
+		self.__init()
 
-	def __init(self, positioning):
-		self.__positioning = positioning
-		self.__emitter = None
-		self.__timer = None
+	def __init(self):
+		self.__emitter = None # only create it when really needed
 
 	def __create_emitter(self):
 		if horizons.main.fife.get_fife_setting("PlaySounds"):
 			self.__emitter = horizons.main.fife.sound.soundmanager.createEmitter()
 			self.__emitter.setGain(horizons.main.fife.get_uh_setting("VolumeEffects")*10)
-			if self.__positioning:
-				self.__emitter.setRolloff(1.9)
 			horizons.main.fife.sound.emitter['ambient'].append(self.__emitter)
+
+	def _init_playing(self):
+		if hasattr(self.instance, "is_local_player") and self.instance.owner.is_local_player:
+			# don't use session random, this is player dependent
+			play_every = self.__class__.AMBIENT_SOUND_INTERVAL + \
+												random.randint( * self.__class__.AMBIENT_SOUND_INTERVAL_VARIANCE )
+			for soundfile in self.soundfiles:
+				self.play_ambient(soundfile, loop_interval=play_every,
+				                  position=self.instance.position.center())
 
 	def load(self, db, worldid):
 		super(AmbientSoundComponent, self).load(db, worldid)
-		# set positioning per default to true, since only special sounds have this
-		# set to false, which are nonrecurring
-		self.__init(positioning=True)
+		self.__init()
+		# don't start playing all at once
 
-	def __del__(self):
+		interval = (0, self.__class__.AMBIENT_SOUND_INTERVAL + \
+		            self.__class__.AMBIENT_SOUND_INTERVAL_VARIANCE[1])
+		run_in = random.randint( *interval )
+		ExtScheduler().add_new_object(self._init_playing, self, run_in=run_in)
+
+	def remove(self):
+		super(AmbientSoundComponent, self).remove()
+		self.stop_sound()
 		self.__emitter = None
-		self.__positioning = None
-		self.__timer = None
 
-	def play_ambient(self, soundfile, looping, play_every=None):
-		"""Starts playing an ambient sound
+	def play_ambient(self, soundfile, loop_interval=None, position=None):
+		"""Starts playing an ambient sound. On looping, it will also play right now.
+		Default: play sound once
 		@param soundfile: path to audio file
-		@param looping: bool, whether sound should loop for forever
-		@param play_every: play the sound every x seconds if looping is true
+		@param loop_interval: delay between two plays, None means no looping, 0 is no pause between looping
+		@param position: Point
 		"""
 		if horizons.main.fife.get_fife_setting("PlaySounds"):
 			if self.__emitter is None:
 				self.__create_emitter()
-			# set to current position
-			if(hasattr(self, 'position') and self.position != None and self.__positioning):
-				self.__emitter.setPosition(self.position.center().x, self.position.center().y, 1)
+
+			if position is not None:
+				self.__emitter.setRolloff(1.9)
+				# set to current position
+				self.__emitter.setPosition(position.x, position.y, 1)
+			else:
+				self.__emitter.setRolloff(0) # reset to default
+
 			self.__emitter.setSoundClip(horizons.main.fife.sound.soundclipmanager.load(soundfile))
-			if play_every is None:
-				self.__emitter.setLooping(looping)
-			elif looping and play_every is not None:
-				duration = play_every*1000 + self.__emitter.getDuration()
-				self.__timer = repeatCall(duration, self.__emitter.play)
+
+			if loop_interval == 0:
+				self.__emitter.setLooping(True)
+			elif loop_interval != None:
+				duration = loop_interval + (float(self.__emitter.getDuration()) / 1000) # from millisec
+				ExtScheduler().add_new_object(self.__emitter.play, self, duration, -1)
+
 			self.__emitter.play()
 
 	def stop_sound(self):
 		"""Stops playing an ambient sound"""
 		if self.__emitter:
 			self.__emitter.stop()
+		ExtScheduler().rem_all_classinst_calls(self)
 
 	@classmethod
 	def play_special(cls, sound, position = None):
@@ -96,11 +118,7 @@ class AmbientSoundComponent(Component):
 		@param position: optional, source of sound on map
 		"""
 		if horizons.main.fife.get_fife_setting("PlaySounds"):
-			if position is None:
-				a = AmbientSoundComponent(positioning=False)
-			else:
-				a = AmbientSoundComponent()
-				a.position = position
+			a = AmbientSoundComponent()
 			soundfile = horizons.main.db.get_sound_file(sound)
-			a.play_ambient(soundfile, looping = False)
+			a.play_ambient(soundfile, position=position)
 			horizons.main.fife.sound.emitter['ambient'].remove(a.__emitter)

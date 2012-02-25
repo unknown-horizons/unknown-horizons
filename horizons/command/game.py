@@ -19,12 +19,31 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-from horizons.world.building.collectingbuilding import CollectingBuilding
-from horizons.world.building.building import BasicBuilding
-from horizons.world.building.buildable import BuildableSingle
+from horizons.command import Command
+from horizons.savegamemanager import SavegameManager
 
-class Doctor(CollectingBuilding, BuildableSingle, BasicBuilding):
-	pass
+class SaveCommand(Command):
+	"""Used to init a save, which will happen at all network machines.
+	Only reasonable in multiplayer games."""
+	def __init__(self, name):
+		self.name = name
 
-class FireService(CollectingBuilding, BuildableSingle, BasicBuilding):
-	pass
+	def __call__(self, issuer):
+		session = issuer.session
+		try:
+			path = SavegameManager.create_multiplayersave_filename(self.name)
+		except RuntimeError, e:
+			headline = _("Invalid filename")
+			msg = _("Received an invalid filename for a save command.")
+			session.gui.show_error_popup(headline, msg, unicode(e))
+			return
+
+		self.log.debug("SaveCommand: save to %s", path)
+
+		success = session._do_save( path )
+		if success:
+			session.ingame_gui.message_widget.add(None, None, 'SAVED_GAME') # TODO: distinguish auto/quick/normal
+		else:
+			session.gui.show_popup(_('Error'), _('Failed to save.'))
+
+Command.allow_network(SaveCommand)

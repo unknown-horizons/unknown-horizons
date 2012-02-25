@@ -23,10 +23,9 @@
 from building import BasicBuilding
 from buildable import BuildableSingleOnOcean
 from horizons.world.building.buildingresourcehandler import BuildingResourceHandler
-from collectingbuilding import CollectingBuilding
 from horizons.world.component.storagecomponent import StorageComponent
 
-class BoatBuilder(CollectingBuilding, BuildableSingleOnOcean, BasicBuilding):
+class BoatBuilder(BuildingResourceHandler, BuildableSingleOnOcean, BasicBuilding):
 
 	def __init__(self, **kwargs):
 		super(BoatBuilder, self).__init__(**kwargs)

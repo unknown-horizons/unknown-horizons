@@ -38,7 +38,7 @@ def test_ticket_1224(gui):
 	yield # test needs to be a generator for now
 
 	settlement = gui.session.world.player.settlements[0]
-	boatbuilder = settlement.get_buildings_by_id(BUILDINGS.BOATBUILDER_CLASS)[0]
+	boatbuilder = settlement.buildings_by_id[BUILDINGS.BOATBUILDER_CLASS][0]
 
 	gui.select([boatbuilder])
 
@@ -74,7 +74,7 @@ def test_ticket_1294(gui):
 	yield # test needs to be a generator for now
 
 	settlement = gui.session.world.player.settlements[0]
-	boatbuilder = settlement.get_buildings_by_id(BUILDINGS.BOATBUILDER_CLASS)[0]
+	boatbuilder = settlement.buildings_by_id[BUILDINGS.BOATBUILDER_CLASS][0]
 
 	gui.select([boatbuilder])
 
@@ -115,7 +115,7 @@ def test_remove_from_queue(gui):
 	yield # test needs to be a generator for now
 
 	settlement = gui.session.world.player.settlements[0]
-	boatbuilder = settlement.get_buildings_by_id(BUILDINGS.BOATBUILDER_CLASS)[0]
+	boatbuilder = settlement.buildings_by_id[BUILDINGS.BOATBUILDER_CLASS][0]
 
 	gui.select([boatbuilder])
 
@@ -132,7 +132,7 @@ def test_remove_from_queue(gui):
 	gui.trigger('boatbuilder_war1', 'BB_build_war1_1/action/default')
 
 	# Cancel queue -> crash
-	gui.trigger('BB_main_tab', 'queue_container/mouseClicked/default')
+	gui.trigger('BB_main_tab', 'queue_elem_0/mouseClicked/default')
 
 	yield TestFinished
 
@@ -144,7 +144,7 @@ def test_cancel_ticket_1424(gui):
 	yield # test needs to be a generator for now
 
 	settlement = gui.session.world.player.settlements[0]
-	boatbuilder = settlement.get_buildings_by_id(BUILDINGS.BOATBUILDER_CLASS)[0]
+	boatbuilder = settlement.buildings_by_id[BUILDINGS.BOATBUILDER_CLASS][0]
 
 	gui.select([boatbuilder])
 
@@ -174,7 +174,7 @@ def test_save_load_ticket_1421(gui):
 	yield # test needs to be a generator for now
 
 	settlement = gui.session.world.player.settlements[0]
-	boatbuilder = settlement.get_buildings_by_id(BUILDINGS.BOATBUILDER_CLASS)[0]
+	boatbuilder = settlement.buildings_by_id[BUILDINGS.BOATBUILDER_CLASS][0]
 
 	gui.select([boatbuilder])
 

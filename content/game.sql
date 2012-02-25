@@ -141,6 +141,8 @@ CREATE TABLE "message" ("text" TEXT NOT NULL ,"icon" INTEGER NOT NULL ,"visible_
 INSERT INTO "message" VALUES('A new settlement was founded by {player}.',1,30.0,2,'NEW_SETTLEMENT');
 INSERT INTO "message" VALUES('A new world has been created.',1,15.0,1,'NEW_WORLD');
 INSERT INTO "message" VALUES('Your game has been saved.',3,15.0,NULL,'SAVED_GAME');
+INSERT INTO "message" VALUES('Your game has been autosaved.',3,15.0,NULL,'AUTOSAVE');
+INSERT INTO "message" VALUES('Your game has been quicksaved.',3,15.0,NULL,'QUICKSAVE');
 INSERT INTO "message" VALUES('Screenshot has been saved to {file}.',2,20.0,NULL,'SCREENSHOT');
 INSERT INTO "message" VALUES('Your inhabitants reached level {level}.',1,30.0,3,'SETTLER_LEVEL_UP');
 INSERT INTO "message" VALUES('You need more {resource} to build this building.',1,10.0,NULL,'NEED_MORE_RES');
@@ -157,6 +159,10 @@ INSERT INTO "message" VALUES('{player1} and {player2} have terminated their alli
 INSERT INTO "message" VALUES('{player1} and {player2} have settled their hostility.',1,10.0,NULL,'DIPLOMACY_STATUS_ENEMY_NEUTRAL');
 INSERT INTO "message" VALUES('One of your fields requires a farm to harvest its crops.',1,30.0,NULL,'FIELD_NEEDS_FARM');
 INSERT INTO "message" VALUES('You have reached the current maximum increment. Your inhabitants will not upgrade further.',1,45.0,NULL,'MAX_INCR_REACHED');
+INSERT INTO "message" VALUES('You cannot tear the warehouse, your settlements needs it.',1,30.0,NULL,'WAREHOUSE_NOT_TEARABLE');
+INSERT INTO "message" VALUES('The route is now configured. Start it via the "start route" button in the "configure route" menu.',1,45.0,NULL,'ROUTE_DISABLED');
+INSERT INTO "message" VALUES('Your crew refuses to leave this map.',1,20.0,NULL,'MOVE_OUTSIDE_OF_WORLD');
+INSERT INTO "message" VALUES('Cannot go here.',1,20.0,NULL,'MOVE_INVALID_LOCATION');
 CREATE TABLE ai (client_id TEXT NOT NULL, class_package TEXT NOT NULL, class_name TEXT NOT NULL);
 INSERT INTO "ai" VALUES('AIPlayer','aiplayer','AIPlayer');
 CREATE TABLE "object_sounds" (object  INTEGER PRIMARY KEY  NOT NULL  DEFAULT '' , "sound" INTEGER NOT NULL  DEFAULT '');

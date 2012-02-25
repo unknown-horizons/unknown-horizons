@@ -39,7 +39,7 @@ def run_ai_quick(seed):
 
 		# simple test for luck: storages are known to easily break on remove:
 		for settlement in session.world.settlements:
-			for stor in settlement.get_buildings_by_id(BUILDINGS.STORAGE_CLASS):
+			for stor in settlement.buildings_by_id[BUILDINGS.STORAGE_CLASS]:
 				wid = stor.worldid
 				Tear(stor)(stor.owner)
 				try:

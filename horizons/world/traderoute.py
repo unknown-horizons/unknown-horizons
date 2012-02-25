@@ -26,6 +26,7 @@ from horizons.util import  Circle, WorldObject
 from horizons.constants import GAME_SPEED
 from horizons.scheduler import Scheduler
 from horizons.world.component.storagecomponent import StorageComponent
+from horizons.world.component.tradepostcomponent import TradePostComponent
 
 class TradeRoute(object):
 	"""
@@ -85,7 +86,7 @@ class TradeRoute(object):
 					del self.current_transfer[res]
 
 		settlement = warehouse.settlement
-		status = self._transer_resources(settlement, resource_list)
+		status = self._transfer_resources(settlement, resource_list)
 		if (not status.settlement_has_enough_space_to_take_res and self.wait_at_unload) or \
 		   (not status.settlement_provides_enough_res and self.wait_at_load):
 			self.current_transfer = status.remaining_transfers
@@ -95,7 +96,7 @@ class TradeRoute(object):
 			self.current_transfer = None
 			self.move_to_next_route_warehouse()
 
-	def _transer_resources(self, settlement, resource_list):
+	def _transfer_resources(self, settlement, resource_list):
 		"""Transfers resources to/from settlement according to list.
 		@return: TransferStatus instance
 		"""
@@ -120,13 +121,13 @@ class TradeRoute(object):
 						amount = settlement.get_component(StorageComponent).inventory[res]
 
 					# the ship should never pick up more than the number defined in the route config
-					if self.ship.get_component(Producer).inventory[res] + amount > self.get_location()['resource_list'][res]:
-						amount = self.get_location()['resource_list'][res] - self.ship.inventory[res]
+					if self.ship.get_component(StorageComponent).inventory[res] + amount > self.get_location()['resource_list'][res]:
+						amount = self.get_location()['resource_list'][res] - self.ship.get_component(StorageComponent).inventory[res]
 
 					# check if ship has enough space is handled implicitly below
 					amount_transferred = settlement.transfer_to_storageholder(amount, res, self.ship)
 				else:
-					amount_transferred = settlement.sell_resource(self.ship.worldid, res, amount)
+					amount_transferred = settlement.get_component(TradePostComponent).sell_resource(self.ship.worldid, res, amount)
 
 				inv_comp = self.ship.get_component(StorageComponent)
 				if amount_transferred < status.remaining_transfers[res] and \
@@ -146,7 +147,7 @@ class TradeRoute(object):
 
 					amount_transferred = self.ship.transfer_to_storageholder(amount, res, settlement)
 				else:
-					amount_transferred = settlement.buy_resource(self.ship.worldid, res, amount)
+					amount_transferred = settlement.get_component(TradePostComponent).buy_resource(self.ship.worldid, res, amount)
 
 				if amount_transferred < -status.remaining_transfers[res] and self.ship.get_component(StorageComponent).inventory[res] > 0:
 					status.settlement_has_enough_space_to_take_res = False

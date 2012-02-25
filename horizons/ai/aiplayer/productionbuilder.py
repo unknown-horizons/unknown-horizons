@@ -401,7 +401,7 @@ class ProductionBuilder(AreaBuilder):
 	def _handle_lumberjack_removal(self, building):
 		"""Release the unused trees around the lumberjack building being removed."""
 		used_trees = set()
-		for lumberjack_building in self.settlement.get_buildings_by_id(BUILDINGS.LUMBERJACK_CLASS):
+		for lumberjack_building in self.settlement.buildings_by_id.get(BUILDINGS.LUMBERJACK_CLASS, []):
 			if lumberjack_building.worldid == building.worldid:
 				continue
 			for coords in lumberjack_building.position.get_radius_coordinates(lumberjack_building.radius):
@@ -414,7 +414,7 @@ class ProductionBuilder(AreaBuilder):
 	def _handle_farm_removal(self, building):
 		"""Handle farm removal by removing planned fields and tearing existing ones that can't be serviced by another farm."""
 		unused_fields = set()
-		farms = self.settlement.get_buildings_by_id(BUILDINGS.FARM_CLASS)
+		farms = self.settlement.buildings_by_id.get(BUILDINGS.FARM_CLASS, [])
 		for coords in building.position.get_radius_coordinates(building.radius):
 			if not coords in self.plan:
 				continue

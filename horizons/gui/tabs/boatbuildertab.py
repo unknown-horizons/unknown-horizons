@@ -104,11 +104,11 @@ class BoatbuilderTab(_BoatbuilderOverviewTab):
 				# people don't count properly, always starting at 1..
 				icon_name = "queue_elem_"+str(place_in_queue)
 				icon = TooltipIcon(name=icon_name, image=image, tooltip=tooltip)
-				queue_container.addChild( icon )
-				queue_container.capture(
+				icon.capture(
 				  Callback(RemoveFromQueue(self.producer, place_in_queue).execute, self.instance.session),
 				  event_name="mouseClicked"
 				)
+				queue_container.addChild( icon )
 
 			# Set built ship info
 			produced_unit_id = self.producer._get_production(production_lines[0]).get_produced_units().keys()[0]

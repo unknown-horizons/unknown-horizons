@@ -1,0 +1,12 @@
+Here, we describe the world of UH.
+The files are designed to be easy to edit for every person. Each subdirectory has a README file that explains what these objects are for and especially which properties are available.
+
+If you run into any issues with the files, please don't be shy to report the problem. We are very eager to make these file editable by anyone, so you would help us a lot by tellings us about problems you face with them.
+
+We use yaml as data format, wikipedia has a nice article about it: http://en.wikipedia.org/wiki/Yaml
+
+There are some convenience names when working with buildings, resources and units.
+You can write stuff like BUILDINGS.LUMBERJACK_CLASS or RES.FOOD_ID when referring to those things.
+A complete list of these three is given in horizons/contstants.py .
+(Only those three types are currently supported.)
+Let us know if you'd find any other convenience stuff useful!

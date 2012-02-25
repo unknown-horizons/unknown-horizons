@@ -26,13 +26,14 @@ from horizons.constants import BUILDINGS, SETTLER
 from horizons.entities import Entities
 from horizons.util.worldobject import WorldObject
 from horizons.util.shapes.rect import Rect
+from horizons.util.messaging.message import UpgradePermissionsChanged
 from horizons.util.changelistener import ChangeListener
 from horizons.world.componentholder import ComponentHolder
 from horizons.world.component.tradepostcomponent import TradePostComponent
 from horizons.world.production.producer import Producer
-from horizons.world.storage import PositiveSizedSlotStorage
+from horizons.world.resourcehandler import ResourceHandler
 
-class Settlement(ComponentHolder, WorldObject, ChangeListener):
+class Settlement(ComponentHolder, WorldObject, ChangeListener, ResourceHandler):
 	"""The Settlement class describes a settlement and stores all the necessary information
 	like name, current inhabitants, lists of tiles and houses, etc belonging to the village."""
 
@@ -89,10 +90,8 @@ class Settlement(ComponentHolder, WorldObject, ChangeListener):
 	def set_upgrade_permissions(self, level, allowed):
 		if self.upgrade_permissions[level] != allowed:
 			self.upgrade_permissions[level] = allowed
-			for building in self.get_buildings_by_id(BUILDINGS.RESIDENTIAL_CLASS):
-				if building.level == level:
-					building.on_change_upgrade_permissions()
 
+			self.session.message_bus.broadcast(UpgradePermissionsChanged(self))
 
 	@property
 	def inhabitants(self):
@@ -235,16 +234,9 @@ class Settlement(ComponentHolder, WorldObject, ChangeListener):
 			# notify interested players of removed building
 			self.owner.remove_building(building)
 
-	def get_buildings_by_id(self, id):
-		"""Returns all buildings on this island that have the given id"""
-		if id in self.buildings_by_id.keys():
-			return self.buildings_by_id[id]
-		else:
-			return []
-
 	def count_buildings(self, id):
 		"""Returns the number of buildings in the settlement that are of the given type."""
-		return len(self.buildings_by_id[id]) if id in self.buildings_by_id else 0
+		return len(self.buildings_by_id.get(id, []))
 
 	def settlement_building_production_finished(self, building, produced_res):
 		"""Callback function for registering the production of resources."""

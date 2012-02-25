@@ -28,7 +28,7 @@ from horizons.world.component.storagecomponent import StorageComponent
 
 class AbstractIronMine(AbstractBuilding):
 	def iter_potential_locations(self, settlement_manager):
-		for building in settlement_manager.land_manager.settlement.get_buildings_by_id(BUILDINGS.MOUNTAIN_CLASS):
+		for building in settlement_manager.land_manager.settlement.buildings_by_id.get(BUILDINGS.MOUNTAIN_CLASS, []):
 			if building.get_component(StorageComponent).inventory[RES.RAW_IRON_ID]:
 				(x, y) = building.position.origin.to_tuple()
 				for rotation in xrange(4):

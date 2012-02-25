@@ -209,7 +209,7 @@ class SettlementManager(WorldObject):
 		if self.village_builder.tent_queue:
 			return False
 		settler_houses = 0
-		residences = self.settlement.get_buildings_by_id(BUILDINGS.RESIDENTIAL_CLASS)
+		residences = self.settlement.buildings_by_id.get(BUILDINGS.RESIDENTIAL_CLASS, [])
 		for building in residences:
 			if building.level == SETTLER.SETTLER_LEVEL:
 				settler_houses += 1
@@ -240,7 +240,7 @@ class SettlementManager(WorldObject):
 			elif resource_id == RES.LIQUOR_ID:
 				total = self.production_chain[RES.GET_TOGETHER_ID].get_ratio(RES.LIQUOR_ID) * self.get_resource_production_requirement(RES.GET_TOGETHER_ID)
 			else:
-				for residence in self.settlement.get_buildings_by_id(BUILDINGS.RESIDENTIAL_CLASS):
+				for residence in self.settlement.buildings_by_id.get(BUILDINGS.RESIDENTIAL_CLASS, []):
 					for production in residence.get_component(Producer).get_productions():
 						production_line = production._prod_line
 						if resource_id in production_line.consumed_res:
@@ -260,7 +260,7 @@ class SettlementManager(WorldObject):
 		"""
 
 		num_upgrading = 0
-		for building in self.settlement.get_buildings_by_id(BUILDINGS.RESIDENTIAL_CLASS):
+		for building in self.settlement.buildings_by_id.get(BUILDINGS.RESIDENTIAL_CLASS, []):
 			if building.level == level:
 				upgrade_production = building._get_upgrade_production()
 				if upgrade_production is not None and not upgrade_production.is_paused():
@@ -269,7 +269,7 @@ class SettlementManager(WorldObject):
 						return False
 
 		upgraded_any = False
-		for building in self.settlement.get_buildings_by_id(BUILDINGS.RESIDENTIAL_CLASS):
+		for building in self.settlement.buildings_by_id.get(BUILDINGS.RESIDENTIAL_CLASS, []):
 			if building.level == level:
 				upgrade_production = building._get_upgrade_production()
 				if upgrade_production is not None and upgrade_production.is_paused():

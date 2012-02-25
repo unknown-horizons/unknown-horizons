@@ -49,3 +49,40 @@ class RemoveAllStatusIcons(Message):
 	def __init__(self, sender, instance):
 		super(RemoveAllStatusIcons, self).__init__(sender)
 		self.instance = instance
+
+class SettlerUpdate(Message):
+
+	def __init__(self, sender, level):
+		super(SettlerUpdate, self).__init__(sender)
+		self.level = level
+
+class SettlerInhabitantsChanged(Message):
+	"""Class to signal that the number of inhabitants in a settler building
+	have changed."""
+	def __init__(self, sender, change):
+		super(SettlerInhabitantsChanged, self).__init__(sender)
+		self.change = change
+
+class ResourceBarResize(Message):
+	"""Signals a change in resource bar size (not slot changes, but number of slot changes)"""
+	pass
+
+class UpgradePermissionsChanged(Message):
+	"""In a settlement."""
+	pass
+
+class SettlementRangeChanged(Message):
+	"""Called on grow and perhaps shrink once that's implemented. Used by buildingtool.
+	@param sender: Settlement
+	@param changed_tiles: Actual tile objects"""
+	def __init__(self, sender, changed_tiles):
+		super(SettlementRangeChanged, self).__init__(sender)
+		self.changed_tiles = changed_tiles
+
+class WorldObjectDeleted(Message):
+	"""Called when a world object is being deleted.
+	Currently emitted in the process of destruction, i.e. you aren't guaranteed to be able to access any attributes. (Feel free to change the implementation if you need this).
+	"""
+	def __init__(self, sender, worldid):
+		super(WorldObjectDeleted, self).__init__(sender)
+		self.worldid = worldid

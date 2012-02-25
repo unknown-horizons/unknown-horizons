@@ -67,6 +67,7 @@ class MultiplayerMenu(object):
 			'cancel'  : self.__cancel,
 			'join'    : self.__join_game,
 			'create'  : self.__show_create_game,
+			'load'    : self.__show_load_game,
 			'refresh' : self.__refresh,
 		}
 		# store old name and color
@@ -86,6 +87,15 @@ class MultiplayerMenu(object):
 		self.current.show()
 
 		self.on_escape = event_map['cancel']
+
+	def create_default_mp_game(self):
+		"""For debugging; creates a valid game. Call right after show_multi"""
+		self.__show_create_game()
+		self.__create_game()
+
+	def join_mp_game(self):
+		"""For debugging; joins first open game. Call right after show_multi"""
+		self.__join_game()
 
 	def __connect_to_server(self):
 		NetworkInterface().register_chat_callback(self.__receive_chat_message)
@@ -136,6 +146,10 @@ class MultiplayerMenu(object):
 		self.games = NetworkInterface().get_active_games(self.current.findChild(name='showonlyownversion').marked)
 		if self.games is None:
 			return False
+
+		# TODO: show only load games where we have the fitting savegame
+		# (perhaps display others greyed out for now)
+
 		self.current.distributeInitialData({'gamelist' : map(lambda x: "{name} ({players}, {limit}){version}".format(
 		                        name=x.get_map_name(),
 		                        players=x.get_player_count(),
@@ -174,6 +188,8 @@ class MultiplayerMenu(object):
 		#xgettext:python-format
 		creator_text.text = _("Creator: {player}").format(player=game.get_creator())
 		creator_text.adaptLayout()
+		if game.load:
+			self.current.findChild(name="game_isloaded").text = u"Is a savegame"
 		textplayers = self.current.findChild(name="game_players")
 		if textplayers is not None:
 			textplayers.text = u", ".join(game.get_players())
@@ -304,18 +320,40 @@ class MultiplayerMenu(object):
 				'playerlimit' : 0
 			})
 			_update_infos()
+		self.current.findChild(name="maplist").mapEvents({
+		  'maplist/action': _update_infos,
+		  'maplist/mouseWheelMovedUp'   : _update_infos,
+		  'maplist/mouseWheelMovedDown' : _update_infos
+		})
+
 		self.current.show()
 
 		self.on_escape = event_map['cancel']
 
-	def __create_game(self):
-		"""Actually create a game, join it and display the lobby"""
+	def __show_load_game(self):
+		path = self.show_select_savegame(mode='mp_load')
+		if path is None: # user aborted
+			return
+		# get name from path
+		paths, names = SavegameManager.get_multiplayersaves()
+		name = names[paths.index(path)]
+		self.__create_game(load=name)
+
+
+	def __create_game(self, load=None):
+		"""Actually create a game, join it and display the lobby.
+		@param load: set to the savegame name on load"""
 		# create the game
 		#TODO: possibly some input validation
-		mapindex = self.current.collectData('maplist')
-		mapname = self.maps_display[mapindex]
-		maxplayers = self.current.collectData('playerlimit') + 2 # 1 is the first entry
-		game = NetworkInterface().creategame(mapname, maxplayers)
+		if load:
+			mapname = load
+			maxplayers = 2 # TODO: read from savegame
+		else:
+			mapindex = self.current.collectData('maplist')
+			mapname = self.maps_display[mapindex]
+			maxplayers = self.current.collectData('playerlimit') + 2 # 1 is the first entry
+
+		game = NetworkInterface().creategame(mapname, maxplayers, load)
 		if game is None:
 			return
 

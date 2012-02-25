@@ -64,7 +64,13 @@ class ChangeListener(object):
 		self.__event_call_number += 1
 		for listener in listener_list:
 			if listener:
-				listener()
+				try:
+					listener()
+				except ReferenceError, e:
+					# listener object is dead, don't crash since it doesn't need updates now anyway
+					print 'Warning: the dead are listening to', self, ': ', e
+					import traceback
+					traceback.print_stack()
 
 		self.__event_call_number -= 1
 
@@ -73,10 +79,11 @@ class ChangeListener(object):
 			listener_list[:] = [ l for l in listener_list if l ]
 
 	## Normal change listener
-	def add_change_listener(self, listener, call_listener_now = False):
+	def add_change_listener(self, listener, call_listener_now=False, no_duplicates=False):
 		assert callable(listener)
-		self.__listeners.append(listener)
-		if call_listener_now:
+		if not no_duplicates or listener not in self.__listeners:
+			self.__listeners.append(listener)
+		if call_listener_now: # also call if duplicate is adde
 			listener()
 
 	def remove_change_listener(self, listener):

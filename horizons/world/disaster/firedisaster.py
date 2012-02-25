@@ -41,7 +41,6 @@ class FireDisaster(Disaster):
 
 	SEED_CHANCE = 0.1
 
-	EXPANSION_TIME = GAME_SPEED.TICKS_PER_SECOND * 15
 
 	EXPANSION_RADIUS = 3
 
@@ -50,6 +49,7 @@ class FireDisaster(Disaster):
 	MIN_SETTLERS_FOR_BREAKOUT = 5
 
 	TIME_BEFORE_HAVOC = GAME_SPEED.TICKS_PER_SECOND * 30
+	EXPANSION_TIME = (TIME_BEFORE_HAVOC / 2) - 1 # try twice before dying
 
 	DISASTER_RES = RES.FIRE_ID
 
@@ -75,14 +75,14 @@ class FireDisaster(Disaster):
 	def breakout(self):
 		assert self.can_breakout(self._settlement)
 		super(FireDisaster, self).breakout()
-		possible_buildings = self._settlement.get_buildings_by_id(BUILDINGS.RESIDENTIAL_CLASS)
+		possible_buildings = self._settlement.buildings_by_id[BUILDINGS.RESIDENTIAL_CLASS]
 		building = self._settlement.session.random.choice( possible_buildings )
 		self.infect(building)
 		self.log.debug("%s breakout out on %s at %s", self, building, building.position)
 
 	@classmethod
 	def can_breakout(cls, settlement):
-		return len(settlement.get_buildings_by_id(BUILDINGS.RESIDENTIAL_CLASS)) > cls.MIN_SETTLERS_FOR_BREAKOUT
+		return settlement.count_buildings(BUILDINGS.RESIDENTIAL_CLASS) > cls.MIN_SETTLERS_FOR_BREAKOUT
 
 	def expand(self):
 		if not self.evaluate():

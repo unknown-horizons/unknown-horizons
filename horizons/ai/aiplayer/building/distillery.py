@@ -43,7 +43,7 @@ class DistilleryEvaluator(BuildingEvaluator):
 			return None
 
 		distance_to_farm = None
-		for building in area_builder.settlement.get_buildings_by_id(BUILDINGS.FARM_CLASS):
+		for building in area_builder.settlement.buildings_by_id.get(BUILDINGS.FARM_CLASS, []):
 			distance = builder.position.distance(building.position)
 			if distance <= Entities.buildings[BUILDINGS.DISTILLERY_CLASS].radius:
 				sugarcane_producer = False

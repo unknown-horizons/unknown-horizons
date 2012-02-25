@@ -20,16 +20,17 @@
 # ###################################################
 
 from horizons.world.resourcehandler import StorageResourceHandler
-from horizons.world.building.collectingbuilding import CollectingBuilding
+from horizons.world.building.buildingresourcehandler import BuildingResourceHandler
 from building import BasicBuilding
 from buildable import BuildableSingle, BuildableSingleFromShip
 from horizons.world.component.storagecomponent import StorageComponent
-from horizons.world.building.production import SettlerServiceProvider
+from horizons.world.building.production import ProductionBuilding
 from horizons.world.building.path import Path
 from horizons.world.status import InventoryFullStatus
+from horizons.world.component.collectingcompontent import CollectingComponent
 
 class StorageBuilding(StorageResourceHandler, \
-                      CollectingBuilding, BasicBuilding):
+                      BuildingResourceHandler, BasicBuilding):
 	"""Building that gets pickups and provides them for anyone.
 	Inherited eg. by warehouse, storage tent.
 	These objects don't have a storage themselves, but use the settlement storage.
@@ -54,10 +55,11 @@ class StorageBuilding(StorageResourceHandler, \
 		self.get_component(StorageComponent).inventory.add_change_listener(self._changed)
 
 	def get_utilisation_history_length(self):
-		return None if not self.get_local_collectors() else self.get_local_collectors()[0].get_utilisation_history_length()
+		collecting_comp = self.get_component(CollectingComponent)
+		return None if not collecting_comp.get_local_collectors() else collecting_comp.get_local_collectors()[0].get_utilisation_history_length()
 
 	def get_collector_utilisation(self):
-		collectors = self.get_local_collectors()
+		collectors = self.get_component(CollectingComponent).get_local_collectors()
 		if not collectors:
 			return None
 		return sum(collector.get_utilisation() for collector in collectors) / float(len(collectors))
@@ -78,7 +80,7 @@ class Warehouse(StorageBuilding, BuildableSingleFromShip):
 		return [ i for i in super(Warehouse, self).get_status_icons() if \
 		         not i.__class__ in banned_classes ]
 
-class MainSquare(Path, StorageBuilding, SettlerServiceProvider):
+class MainSquare(Path, StorageBuilding, ProductionBuilding):
 	walkable = True
 
 	def recalculate_orientation(self):

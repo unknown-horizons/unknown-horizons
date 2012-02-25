@@ -23,6 +23,7 @@ import os
 import os.path
 import logging
 import json
+import traceback
 from random import Random
 
 import horizons.main
@@ -31,6 +32,7 @@ from horizons.ai.aiplayer import AIPlayer
 from horizons.gui.ingamegui import IngameGui
 from horizons.gui.mousetools import SelectionTool, PipetteTool, TearingTool, BuildingTool, AttackingTool
 from horizons.command.building import Tear
+from horizons.util.dbreader import DbReader
 from horizons.command.unit import RemoveUnit
 from horizons.gui.keylisteners import IngameKeyListener
 from horizons.scheduler import Scheduler
@@ -40,6 +42,7 @@ from horizons.gui import Gui
 from horizons.world import World
 from horizons.entities import Entities
 from horizons.util import WorldObject, LivingObject, livingProperty, SavegameAccessor
+from horizons.util.uhdbaccessor import read_savegame_template
 from horizons.util.lastactiveplayersettlementmanager import LastActivePlayerSettlementManager
 from horizons.world.component.namedcomponent import NamedComponent
 from horizons.world.component.selectablecomponent import SelectableComponent
@@ -101,6 +104,7 @@ class Session(LivingObject):
 		self.is_alive = True
 
 		self._clear_caches()
+		self.message_bus = MessageBus()
 
 		#game
 		self.random = self.create_rng(rng_seed)
@@ -121,16 +125,29 @@ class Session(LivingObject):
 		self.display_speed()
 		LastActivePlayerSettlementManager.create_instance(self)
 
-		self.message_bus = MessageBus()
 
 		self.status_icon_manager = StatusIconManager(self)
 
 		self.selected_instances = set()
 		self.selection_groups = [set()] * 10 # List of sets that holds the player assigned unit groups.
 
+		self._old_autosave_interval = None
+
 	def start(self):
 		"""Actually starts the game."""
 		self.timer.activate()
+		self.reset_autosave()
+
+	def reset_autosave(self):
+		"""(Re-)Set up autosave. Called if autosave interval has been changed."""
+		# get_uh_setting returns floats like 4.0 and 42.0 since slider stepping is 1.0.
+		interval = int(horizons.main.fife.get_uh_setting("AutosaveInterval"))
+		if interval != self._old_autosave_interval:
+			self._old_autosave_interval = interval
+			ExtScheduler().rem_call(self, self.autosave)
+			if interval != 0: #autosave
+				self.log.debug("Initing autosave every %s minutes", interval)
+				ExtScheduler().add_new_object(self.autosave, self, interval * 60, -1)
 
 	def create_manager(self):
 		"""Returns instance of command manager (currently MPManager or SPManager)"""
@@ -230,8 +247,10 @@ class Session(LivingObject):
 	def save(self, savegame=None):
 		raise NotImplementedError
 
-	def load(self, savegame, players, trader_enabled, pirate_enabled, natural_resource_multiplier, is_scenario=False, campaign=None, force_player_id=None):
-		"""Loads a map.
+	def load(self, savegame, players, trader_enabled, pirate_enabled,
+	         natural_resource_multiplier, is_scenario=False, campaign=None,
+	         force_player_id=None, disasters_enabled=True):
+		"""Loads a map. Key method for starting a game.
 		@param savegame: path to the savegame database.
 		@param players: iterable of dictionaries containing id, name, color, local, ai, and difficulty
 		@param is_scenario: Bool whether the loaded map is a scenario or not
@@ -272,7 +291,7 @@ class Session(LivingObject):
 			self.random.setstate( rng_state_tuple )
 
 		self.world = World(self) # Load horizons.world module (check horizons/world/__init__.py)
-		self.world._init(savegame_db, force_player_id)
+		self.world._init(savegame_db, force_player_id, disasters_enabled=disasters_enabled)
 		self.view.load(savegame_db) # load view
 		if not self.is_game_loaded():
 			# NOTE: this must be sorted before iteration, cause there is no defined order for
@@ -423,3 +442,63 @@ class Session(LivingObject):
 		if not os.path.exists(maps_folder):
 			os.makedirs(maps_folder)
 		self.world.save_map(maps_folder, prefix)
+
+	def _do_save(self, savegame):
+		"""Actual save code.
+		@param savegame: absolute path"""
+		assert os.path.isabs(savegame)
+		self.log.debug("Session: Saving to %s", savegame)
+		try:
+			if os.path.exists(savegame):
+				os.unlink(savegame)
+			self.savecounter += 1
+
+			db = DbReader(savegame)
+		except IOError as e: # usually invalid filename
+			headline = _("Failed to create savegame file")
+			descr = _("There has been an error while creating your savegame file.")
+			advice = _("This usually means that the savegame name contains unsupported special characters.")
+			self.gui.show_error_popup(headline, descr, advice, unicode(e))
+			return self.save() # retry with new savegamename entered by the user
+			# this must not happen with quicksave/autosave
+		except ZeroDivisionError as err:
+			# TODO:
+			# this should say WindowsError, but that somehow now leads to a NameError
+			if err.winerror == 5:
+				self.gui.show_error_popup(_("Access is denied"), \
+				                          _("The savegame file is probably read-only."))
+				return self.save()
+			elif err.winerror == 32:
+				self.gui.show_error_popup(_("File used by another process"), \
+				                          _("The savegame file is currently used by another program."))
+				return self.save()
+			raise
+
+		try:
+			read_savegame_template(db)
+
+			db("BEGIN")
+			self.world.save(db)
+			#self.manager.save(db)
+			self.view.save(db)
+			self.ingame_gui.save(db)
+			self.scenario_eventhandler.save(db)
+
+			for instance in self.selected_instances:
+				db("INSERT INTO selected(`group`, id) VALUES(NULL, ?)", instance.worldid)
+			for group in xrange(len(self.selection_groups)):
+				for instance in self.selection_groups[group]:
+					db("INSERT INTO selected(`group`, id) VALUES(?, ?)", group, instance.worldid)
+
+			rng_state = json.dumps( self.random.getstate() )
+			SavegameManager.write_metadata(db, self.savecounter, rng_state)
+			# make sure everything get's written now
+			db("COMMIT")
+			db.close()
+			return True
+		except:
+			print "Save Exception"
+			traceback.print_exc()
+			db.close() # close db before delete
+			os.unlink(savegame) # remove invalid savegamefile
+			return False

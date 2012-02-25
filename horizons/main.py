@@ -206,6 +206,14 @@ def start(command_line_arguments):
 		from development.stringpreviewwidget import StringPreviewWidget
 		__string_previewer = StringPreviewWidget(_modules.session)
 		__string_previewer.show()
+	elif command_line_arguments.create_mp_game:
+		_modules.gui.show_main()
+		_modules.gui.show_multi()
+		_modules.gui.create_default_mp_game()
+	elif command_line_arguments.join_mp_game:
+		_modules.gui.show_main()
+		_modules.gui.show_multi()
+		_modules.gui.join_mp_game()
 	else: # no commandline parameter, show main screen
 		_modules.gui.show_main()
 		if not command_line_arguments.nopreload:
@@ -235,7 +243,7 @@ def quit():
 
 def start_singleplayer(map_file, playername = "Player", playercolor = None, is_scenario = False, \
 		campaign = None, ai_players = 0, human_ai = False, trader_enabled = True, pirate_enabled = True, \
-		natural_resource_multiplier = 1, force_player_id = None):
+		natural_resource_multiplier = 1, force_player_id = None, disasters_enabled = True):
 	"""Starts a singleplayer game
 	@param map_file: path to map file
 	@param ai_players: number of AI players to start (excludes possible human AI)
@@ -286,7 +294,7 @@ def start_singleplayer(map_file, playername = "Player", playercolor = None, is_s
 	from horizons.scenario import InvalidScenarioFileFormat # would create import loop at top
 	try:
 		_modules.session.load(map_file, players, trader_enabled, pirate_enabled, natural_resource_multiplier, \
-			is_scenario = is_scenario, campaign = campaign, force_player_id = force_player_id)
+			is_scenario = is_scenario, campaign = campaign, force_player_id = force_player_id, disasters_enabled=disasters_enabled)
 	except InvalidScenarioFileFormat as e:
 		raise
 	except Exception as e:
@@ -332,7 +340,12 @@ def prepare_multiplayer(game, trader_enabled = True, pirate_enabled = True, natu
 	random = sum([ int(uuid[i : i + 2], 16) for i in range(0, len(uuid), 2) ])
 	_modules.session = MPSession(_modules.gui, db, NetworkInterface(), rng_seed=random)
 	# NOTE: this data passing is only temporary, maybe use a player class/struct
-	_modules.session.load("content/maps/" + game.get_map_name() + ".sqlite", \
+	if game.load:
+		map_file = SavegameManager.get_multiplayersave_map( game.get_map_name() )
+	else:
+		map_file = SavegameManager.get_map( game.get_map_name() )
+
+	_modules.session.load(map_file,
 	                      game.get_player_list(), trader_enabled, pirate_enabled, natural_resource_multiplier)
 
 def start_multiplayer(game):

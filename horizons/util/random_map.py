@@ -35,7 +35,7 @@ from horizons.constants import GROUND
 _random_island_id_template = "random:${creation_method}:${width}:${height}:${seed}"
 
 # you can check for a random island id with this:
-_random_island_id_regexp = r"random:([0-9]+):([0-9]+):([0-9]+):([\-]?[0-9]+)"
+_random_island_id_regexp = r"^random:([0-9]+):([0-9]+):([0-9]+):([\-]?[0-9]+)$"
 
 
 def is_random_island_id_string(id_string):

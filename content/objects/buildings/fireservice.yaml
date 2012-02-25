@@ -1,7 +1,7 @@
 id: 45
 name: _ Fire Brigade
-baseclass: prevention.FireService
-radius: 10
+baseclass: production.ProductionBuilding
+radius: 13
 cost: 15
 cost_inactive: 5
 size_x: 2
@@ -28,5 +28,8 @@ components:
    inventory:
      SlotsStorage:
       slot_sizes: {42: 10}
+- CollectingComponent:
+    collectors:
+      1000022: 1
 actionsets:
   as_fireservice0: {level: 0}

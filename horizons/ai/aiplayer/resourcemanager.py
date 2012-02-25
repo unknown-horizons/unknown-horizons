@@ -224,7 +224,7 @@ class ResourceManager(WorldObject):
 		"""Return the amount of resource still needed to upgrade at most upgrade_limit residences."""
 		limit_left = upgrade_limit
 		needed = 0
-		for residence in self.settlement_manager.settlement.get_buildings_by_id(BUILDINGS.RESIDENTIAL_CLASS):
+		for residence in self.settlement_manager.settlement.buildings_by_id.get(BUILDINGS.RESIDENTIAL_CLASS, []):
 			if limit_left <= 0:
 				break
 			production = residence._get_upgrade_production()
@@ -378,7 +378,7 @@ class SingleResourceManager(WorldObject):
 		"""Return the current amount of resource per tick being produced at buildings of this type."""
 		if self.resource_id in self.virtual_resources:
 			return self.virtual_production
-		buildings = self.settlement_manager.settlement.get_buildings_by_id(self.building_id)
+		buildings = self.settlement_manager.settlement.buildings_by_id.get(self.building_id, [])
 		return sum(AbstractBuilding.buildings[building.id].get_production_level(building, self.resource_id) for building in buildings)
 
 	def refresh(self):

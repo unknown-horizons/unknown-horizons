@@ -19,6 +19,8 @@ components:
     enemy_tabs: [EnemyBuildingOverviewTab,]
 - HealthComponent: {maxhealth: 1000}
 - ProducerComponent:
+    utilisation:
+      FieldUtilisation
     productionlines:
       7:
         produces:
@@ -61,5 +63,9 @@ components:
       SlotsStorage:
         slot_sizes: {33: 6, 2: 6, 35: 6, 36: 6, 5: 6, 38: 6, 10: 6, 34: 6, 15: 6,
           17: 6, 18: 6, 37: 6, 30: 6, 31: 6}
+- CollectingComponent:
+    collectors:
+      1000015: 1
+      1000009: 1
 actionsets:
   as_farm0: {level: 0}

@@ -20,6 +20,7 @@
 # ###################################################
 
 import logging
+import weakref
 
 from fife.extensions import pychan
 from horizons.gui.widgets.tooltip import TooltipButton
@@ -27,7 +28,9 @@ from horizons.gui.widgets.tooltip import TooltipButton
 import horizons.main
 from horizons.util.gui import load_uh_widget
 from horizons.util import Callback
+from horizons.util.changelistener import metaChangeListenerDecorator
 
+@metaChangeListenerDecorator('remove')
 class TabWidget(object):
 	"""The TabWidget class handles widgets which consist of many
 	different tabs(subpanels, switchable via buttons(TabButtons).
@@ -64,9 +67,17 @@ class TabWidget(object):
 
 	def _init_tabs(self):
 		"""Add enough tabbuttons for all widgets."""
+		def on_tab_removal(tabwidget):
+			# called when a tab is being removed (via weakref since tabs shouldn't have references to the parent tabwidget)
+			# If one tab is removed, the whole tabwidget will die..
+			# This is easy usually the desired behaviour.
+			if tabwidget():
+				tabwidget().on_remove()
+
 		# Load buttons
 		for index, tab in enumerate(self._tabs):
-			tab.add_remove_listener(self.hide)
+			# don't add a reference to the
+			tab.add_remove_listener(Callback(on_tab_removal, weakref.ref(self)))
 			container = pychan.Container()
 			background = pychan.Icon()
 			background.name = "bg_%s" % index
@@ -91,6 +102,8 @@ class TabWidget(object):
 			self.content.addChild(container)
 		self.widget.size = (50, 55*len(self._tabs))
 		self.widget.adaptLayout()
+
+		self._apply_layout_hack()
 
 	def _show_tab(self, number):
 		"""Used as callback function for the TabButtons.
@@ -118,10 +131,13 @@ class TabWidget(object):
 		self.widget.hide()
 		self.show()
 
+		self._apply_layout_hack()
+
+	def _apply_layout_hack(self):
 		# pychan layouting depends on time, it's usually in a better mood later.
 		# this introduces some flickering, but fixes #916
 		from horizons.extscheduler import ExtScheduler
-		ExtScheduler().add_new_object(new_tab.widget.adaptLayout, self, run_in=0)
+		ExtScheduler().add_new_object(self.current_tab.widget.adaptLayout, self, run_in=0)
 
 	def _draw_widget(self):
 		"""Draws the widget, but does not show it automatically"""

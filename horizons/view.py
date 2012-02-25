@@ -130,6 +130,7 @@ class View(ChangeListener):
 		"""
 		loc = self.cam.getLocation()
 		pos = loc.getExactLayerCoordinatesRef()
+
 		if x != 0:
 			pos.x += x * math.cos(math.pi * self.cam.getRotation() / 180.0) / self.cam.getZoom() / 32.0
 			pos.y += x * math.sin(math.pi * self.cam.getRotation() / 180.0) / self.cam.getZoom() / 32.0

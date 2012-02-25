@@ -24,8 +24,9 @@ import time
 from horizons.constants import BUILDINGS
 from horizons.command.unit import Act
 from horizons.world.units.collectors.collector import Collector
-from horizons.gui.mousetools.buildingtool import BuildingTool 
+from horizons.gui.mousetools.buildingtool import BuildingTool
 from horizons.gui.mousetools.cursortool import CursorTool
+from horizons.world.component.collectingcompontent import CollectingComponent
 from tests.gui import TestFinished, gui_test
 from tests.gui.helper import get_player_ship
 
@@ -85,7 +86,7 @@ def test_found_settlement(gui):
 	# select the storage
 	gui.select([storage])
 	assert gui.find('warehouse_and_storage_overview')
-	collectors = storage.get_local_collectors()
+	collectors = storage.get_component(CollectingComponent).get_local_collectors()
 
 	while True:
 		if any(collector.state is Collector.states.moving_to_target for collector in collectors):
@@ -93,7 +94,7 @@ def test_found_settlement(gui):
 		yield
 
 	# remove the storage, trigger ticket 1441
-	gui.press_key(gui.Key.DELETE) 
+	gui.press_key(gui.Key.DELETE)
 	start = time.time()
 	# wait 0.5 seconds
 	while time.time() - start < 0.5:

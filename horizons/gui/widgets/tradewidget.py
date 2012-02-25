@@ -25,6 +25,7 @@ from horizons.util.gui import load_uh_widget
 from horizons.command.uioptions import TransferResource
 from horizons.util import Callback
 from horizons.world.component.storagecomponent import StorageComponent
+from horizons.world.component.tradepostcomponent import TradePostComponent
 from horizons.world.component.namedcomponent import NamedComponent
 from horizons.world.component.selectablecomponent import SelectableComponent
 
@@ -62,7 +63,6 @@ class TradeWidget(object):
 		self.instance = instance
 		self.partner = None
 		self.set_exchange(50, initial=True)
-		self.draw_widget()
 		if hasattr(self.instance, 'radius'):
 			self.radius = self.instance.radius
 
@@ -75,12 +75,15 @@ class TradeWidget(object):
 			nearest_partner = self.get_nearest_partner(self.partners)
 			#dropdown.setData(nearest_partner)
 			dropdown.text = unicode(self.partners[nearest_partner].settlement.get_component(NamedComponent).name) # label fix for release use only
-			old_partner = self.partner
-			self.partner = self.partners[nearest_partner]
-			# If we changed partners, update changelisteners
-			if old_partner and old_partner is not self.partner:
-				old_partner.get_component(StorageComponent).inventory.remove_change_listener(self.draw_widget)
-				self.partner.get_component(StorageComponent).inventory.add_change_listener(self.draw_widget)
+
+			new_partner = self.partners[nearest_partner]
+			different_partner = new_partner is not self.partner
+			if self.partner is not None and different_partner:
+				self.__remove_changelisteners()
+			self.partner = new_partner
+			if different_partner:
+				self.__add_changelisteners()
+
 			inv_partner = self.widget.findChild(name='inventory_partner')
 			inv_partner.init(self.instance.session.db, self.partner.get_component(StorageComponent).inventory)
 			for button in self.get_widgets_by_class(inv_partner, ImageFillStatusButton):
@@ -100,22 +103,23 @@ class TradeWidget(object):
 
 
 	def __remove_changelisteners(self):
-		self.instance.remove_change_listener(self.draw_widget)
-		self.partner.get_component(StorageComponent).inventory.remove_change_listener(self.draw_widget)
+		# need to be idempotent, show/hide calls it in arbitrary order
+		self.instance.discard_change_listener(self.draw_widget)
+		self.partner.get_component(StorageComponent).inventory.discard_change_listener(self.draw_widget)
+		self.partner.settlement.get_component(TradePostComponent).discard_change_listener(self.draw_widget)
 
 	def __add_changelisteners(self):
-		self.instance.add_change_listener(self.draw_widget)
-		self.partner.get_component(StorageComponent).inventory.add_change_listener(self.draw_widget)
-
-
-	def set_partner(self, partner_id):
-		self.partner = self.partners[partner_id]
+		# need to be idempotent, show/hide calls it in arbitrary order
+		self.instance.add_change_listener(self.draw_widget, no_duplicates=True)
+		self.partner.get_component(StorageComponent).inventory.add_change_listener(self.draw_widget, no_duplicates=True)
+		self.partner.settlement.get_component(TradePostComponent).add_change_listener(self.draw_widget, no_duplicates=True)
 
 	def hide(self):
 		self.widget.hide()
 		self.__remove_changelisteners()
 
 	def show(self):
+		self.draw_widget()
 		self.widget.show()
 		self.__add_changelisteners()
 

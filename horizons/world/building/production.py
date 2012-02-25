@@ -20,7 +20,6 @@
 # ###################################################
 
 
-from horizons.world.building.collectingbuilding import CollectingBuilding
 from horizons.world.building.buildingresourcehandler import BuildingResourceHandler
 from horizons.world.building.building import BasicBuilding
 from horizons.world.building.buildable import BuildableSingle, BuildableSingleOnCoast, BuildableSingleOnDeposit
@@ -30,58 +29,21 @@ from horizons.util.shapes.radiusshape import RadiusRect
 from horizons.command.building import Build
 from horizons.scheduler import Scheduler
 from horizons.constants import BUILDINGS, PRODUCTION
-from horizons.gui.tabs import FarmProductionOverviewTab
-from horizons.world.status import InventoryFullStatus, ProductivityLowStatus
 from horizons.world.production.producer import Producer
 from horizons.world.component.storagecomponent import StorageComponent
 
+class ProductionBuilding(BuildingResourceHandler, BuildableSingle, BasicBuilding):
+	pass
 
-class Farm(CollectingBuilding, BuildableSingle, BasicBuilding):
-	max_fields_possible = 8 # only for utilisation calculation
-	tabs = (FarmProductionOverviewTab,)
+class Farm(ProductionBuilding):
 
 	def _get_providers(self):
 		reach = RadiusRect(self.position, self.radius)
 		providers = self.island.get_providers_in_range(reach, reslist=self.get_needed_resources())
 		return [provider for provider in providers if isinstance(provider, Field)]
 
-	@property
-	def capacity_utilisation(self):
-		"""
-		Farm doesn't actually produce something, so calculate productivity by the number of fields nearby.
-		"""
 
-		result = float(len(self._get_providers())) / self.max_fields_possible
-		# sanity checks for theoretically impossible cases:
-		result = min(result, 1.0)
-		result = max(result, 0.0)
-		return result
-
-class Lumberjack(CollectingBuilding, BuildableSingle, BasicBuilding):
-	pass
-
-class Refiner(CollectingBuilding, BuildableSingle, BasicBuilding):
-	pass
-
-class Hunter(CollectingBuilding, BuildableSingle, BasicBuilding):
-	pass
-
-class IronRefiner(CollectingBuilding, BuildableSingle, BasicBuilding):
-	pass
-
-class Smeltery(CollectingBuilding, BuildableSingle, BasicBuilding):
-	pass
-
-class CharcoalBurning(CollectingBuilding, BuildableSingle, BasicBuilding):
-	pass
-
-class SaltPond(CollectingBuilding, BuildableSingleOnCoast, BasicBuilding):
-	pass
-
-class CannonBuilder(CollectingBuilding, BuildableSingle, BasicBuilding):
-	pass
-
-class Fisher(CollectingBuilding, BuildableSingleOnCoast, BasicBuilding):
+class Fisher(BuildingResourceHandler, BuildableSingleOnCoast, BasicBuilding):
 
 	"""
 	Old selection workaround (only color fish) removed in b69c72aeef0174c42dec4039eed7b81f96f6dcaa.
@@ -96,15 +58,6 @@ class Fisher(CollectingBuilding, BuildableSingleOnCoast, BasicBuilding):
 			state_history = production.get_state_history_times(True)
 			total += state_history[PRODUCTION.STATES.producing.index]
 		return total / float(len(productions))
-
-class SettlerServiceProvider(CollectingBuilding, BuildableSingle, BasicBuilding):
-	"""Class for Pavilion, School that provide a service-type res for settlers.
-	Also provides collectors for buildings that consume resources (tavern)."""
-	def get_status_icons(self):
-		banned_classes = (InventoryFullStatus, ProductivityLowStatus)
-		# inventories are full most of the time, don't show it
-		return [ i for i in super(SettlerServiceProvider, self).get_status_icons() if \
-		         not i.__class__ in banned_classes ]
 
 class Mine(BuildingResourceHandler, BuildableSingleOnDeposit, BasicBuilding):
 	def __init__(self, inventory, deposit_class, *args, **kwargs):

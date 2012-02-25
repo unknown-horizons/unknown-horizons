@@ -21,6 +21,9 @@ components:
 - StorageComponent:
     inventory:
         SettlementStorage: {}
+- CollectingComponent:
+    collectors:
+      1000008: 2
 actionsets:
   as_storagetent0: {level: 0}
   as_storagetent1: {level: 1}

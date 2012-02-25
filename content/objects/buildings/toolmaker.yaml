@@ -1,6 +1,6 @@
 id: 30
 name: _ Toolmaker
-baseclass: production.IronRefiner
+baseclass: production.ProductionBuilding
 radius: 8
 cost: 10
 cost_inactive: 0
@@ -32,5 +32,8 @@ components:
     inventory:
       SlotsStorage:
         slot_sizes: {26: 4, 4: 4, 6: 8, 23: 4}
+- CollectingComponent:
+    collectors:
+      1000002: 1
 actionsets:
   as_toolmaker0: {level: 0}

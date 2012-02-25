@@ -1,6 +1,6 @@
 id: 13
 name: _ Lookout
-baseclass: housing.Housing
+baseclass: building.DefaultBuilding
 radius: 10
 cost: 0
 cost_inactive: 0

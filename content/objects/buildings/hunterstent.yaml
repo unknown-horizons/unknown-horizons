@@ -1,6 +1,6 @@
 id: 9
 name: _ Hunter's Tent
-baseclass: production.Hunter
+baseclass: production.ProductionBuilding
 radius: 10
 cost: 5
 cost_inactive: 0
@@ -30,5 +30,8 @@ components:
     inventory:
       SlotsStorage:
         slot_sizes: {5: 6, 13: 4}
+- CollectingComponent:
+    collectors:
+      1000014: 1
 actionsets:
   as_hunter0: {level: 0}

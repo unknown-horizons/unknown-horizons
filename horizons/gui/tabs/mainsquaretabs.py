@@ -28,6 +28,7 @@ from horizons.gui.widgets.productionoverview import ProductionOverview
 from horizons.gui.tabs.overviewtab import _setup_tax_slider
 
 from horizons.util import Callback
+from horizons.util.messaging.message import UpgradePermissionsChanged
 from horizons.util.gui import create_resource_icon
 from horizons.command.uioptions import SetSettlementUpgradePermissions
 from horizons.constants import BUILDINGS, SETTLER
@@ -156,18 +157,31 @@ class MainSquareSettlerLevelTab(MainSquareTab):
 	def shown_for(cls, instance):
 		return instance.owner.settler_level >= cls.LEVEL
 
+	def show(self):
+		super(MainSquareSettlerLevelTab, self).show()
+		self.instance.session.message_bus.subscribe_locally(UpgradePermissionsChanged, self.settlement, self.refresh_via_message)
+
+	def hide(self):
+		super(MainSquareSettlerLevelTab, self).hide()
+		self.instance.session.message_bus.unsubscribe_locally(UpgradePermissionsChanged, self.settlement, self.refresh_via_message)
+
 	def _get_last_tax_paid(self):
-		return sum([building.last_tax_payed for building in self.settlement.get_buildings_by_id(BUILDINGS.RESIDENTIAL_CLASS) if \
+		return sum([building.last_tax_payed for building in self.settlement.buildings_by_id[BUILDINGS.RESIDENTIAL_CLASS] if \
 			building.level == self.__class__.LEVEL])
 
 	def _get_resident_counts(self):
 		result = {}
-		for building in self.settlement.get_buildings_by_id(BUILDINGS.RESIDENTIAL_CLASS):
+		for building in self.settlement.buildings_by_id[BUILDINGS.RESIDENTIAL_CLASS]:
 			if building.level == self.__class__.LEVEL:
 				if building.inhabitants not in result:
 					result[building.inhabitants] = 0
 				result[building.inhabitants] += 1
 		return result
+
+	def refresh_via_message(self, message):
+		# message bus requires parameter, refresh() doesn't allow parameter
+		# TODO: find general solution
+		self.refresh()
 
 	def refresh(self):
 		self.widget.mapEvents({
@@ -206,7 +220,6 @@ class MainSquareSettlerLevelTab(MainSquareTab):
 
 	def toggle_upgrades(self):
 		SetSettlementUpgradePermissions(self.settlement, self.__class__.LEVEL, not self.settlement.upgrade_permissions[self.__class__.LEVEL]).execute(self.settlement.session)
-		self.refresh()
 
 class MainSquareSailorsTab(MainSquareSettlerLevelTab):
 	LEVEL = SETTLER.SAILOR_LEVEL

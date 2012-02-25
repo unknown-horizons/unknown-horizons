@@ -23,11 +23,12 @@ from collections import deque
 
 from horizons.util import WorldObject, RadiusRect, Callback, decorators
 from horizons.world.pathfinding.pather import RoadPather, BuildingCollectorPather
-from horizons.constants import COLLECTORS
+from horizons.constants import COLLECTORS, BUILDINGS
 from horizons.scheduler import Scheduler
 from horizons.world.units.movingobject import MoveNotPossible
 from horizons.world.units.collectors.collector import Collector, JobList
 from horizons.world.component.storagecomponent import StorageComponent
+from horizons.world.component.collectingcompontent import CollectingComponent
 
 
 
@@ -100,9 +101,9 @@ class BuildingCollector(Collector):
 		@param unregister: whether to reverse registration
 		"""
 		if unregister:
-			self.home_building.remove_local_collector(self)
+			self.home_building.get_component(CollectingComponent).remove_local_collector(self)
 		else:
-			self.home_building.add_local_collector(self)
+			self.home_building.get_component(CollectingComponent).add_local_collector(self)
 
 	def apply_state(self, state, remaining_ticks = None):
 		super(BuildingCollector, self).apply_state(state, remaining_ticks)
@@ -130,7 +131,7 @@ class BuildingCollector(Collector):
 		return self.home_building.get_component(StorageComponent).inventory
 
 	def get_colleague_collectors(self):
-		return self.home_building.get_local_collectors()
+		return self.home_building.get_component(CollectingComponent).get_local_collectors()
 
 	@decorators.make_constants()
 	def get_job(self):
@@ -313,7 +314,7 @@ class FisherShipCollector(BuildingCollector):
 		fishers = []
 		for settlement in session.world.settlements:
 			if settlement.owner == owner:
-				fishers.extend(settlement.get_buildings_by_id(11))
+				fishers.extend(settlement.buildings_by_id[BUILDINGS.FISHERMAN_CLASS])
 		smallest_fisher = fishers.pop()
 		for fisher in fishers:
 			if len(smallest_fisher.get_local_collectors()) > len(fisher.get_local_collectors()):
@@ -330,13 +331,18 @@ class FisherShipCollector(BuildingCollector):
 
 class DisasterRecoveryCollector(StorageCollector):
 	"""Collects disasters such as fire or pestilence."""
-	# TODO: as optimisation, get_job can return None as long as no disaster
-	#       is registered for the settlement
 	def finish_working(self, collector_already_home=False):
 		super(DisasterRecoveryCollector, self).finish_working(collector_already_home=collector_already_home)
 		building = self.job.object
 		if hasattr(building, "disaster"): # make sure that building hasn't recovered any other way
 			building.disaster.recover(building)
+
+	def get_job(self):
+		if self.home_building is not None and \
+		   not self.session.world.disaster_manager.is_affected( self.home_building.settlement ):
+			return None # not one disaster active, bail out
+
+		return super(DisasterRecoveryCollector, self).get_job()
 
 decorators.bind_all(BuildingCollector)
 decorators.bind_all(FieldCollector)

@@ -86,37 +86,22 @@ class SPSession(Session):
 			"""
 		self.display_speed()
 
-	def start(self):
-		super(SPSession, self).start()
-		self.reset_autosave()
-
-	_old_autosave_interval = None
-	def reset_autosave(self):
-		"""(Re-)Set up autosave. Called if autosave interval has been changed."""
-		# get_uh_setting returns floats like 4.0 and 42.0 since slider stepping is 1.0.
-		interval = int(horizons.main.fife.get_uh_setting("AutosaveInterval"))
-		if interval != self._old_autosave_interval:
-			self._old_autosave_interval = interval
-			ExtScheduler().rem_call(self, self.autosave)
-			if interval != 0: #autosave
-				self.log.debug("Initing autosave every %s minutes", interval)
-				ExtScheduler().add_new_object(self.autosave, self, interval * 60, -1)
-
 	def autosave(self):
 		"""Called automatically in an interval"""
 		self.log.debug("Session: autosaving")
-		# call saving through horizons.main and not directly through session, so that save errors are handled
-		success = self.save(SavegameManager.create_autosave_filename())
+		success = self._do_save(SavegameManager.create_autosave_filename())
 		if success:
 			SavegameManager.delete_dispensable_savegames(autosaves = True)
+			self.ingame_gui.message_widget.add(None, None, 'AUTOSAVE')
 
 	def quicksave(self):
 		"""Called when user presses the quicksave hotkey"""
 		self.log.debug("Session: quicksaving")
 		# call saving through horizons.main and not directly through session, so that save errors are handled
-		success = self.save(SavegameManager.create_quicksave_filename())
+		success = self._do_save(SavegameManager.create_quicksave_filename())
 		if success:
 			SavegameManager.delete_dispensable_savegames(quicksaves = True)
+			self.ingame_gui.message_widget.add(None, None, 'QUICKSAVE')
 		else:
 			headline = _(u"Failed to quicksave.")
 			descr = _(u"An error happened during quicksave. Your game has not been saved.")
@@ -144,59 +129,7 @@ class SPSession(Session):
 				return True # user aborted dialog
 			savegamename = SavegameManager.create_filename(savegamename)
 
-		savegame = savegamename
-		assert os.path.isabs(savegame)
-		self.log.debug("Session: Saving to %s", savegame)
-		try:
-			if os.path.exists(savegame):
-				os.unlink(savegame)
-			self.savecounter += 1
-
-			db = DbReader(savegame)
-		except IOError as e: # usually invalid filename
-			headline = _("Failed to create savegame file")
-			descr = _("There has been an error while creating your savegame file.")
-			advice = _("This usually means that the savegame name contains unsupported special characters.")
-			self.gui.show_error_popup(headline, descr, advice, unicode(e))
-			return self.save() # retry with new savegamename entered by the user
-			# this must not happen with quicksave/autosave
-		except WindowsError as err:
-			if err.winerror == 5:
-				self.gui.show_error_popup(_("Access is denied"), \
-				                          _("The savegame file is probably read-only."))
-				return self.save()
-			elif err.winerror == 32:
-				self.gui.show_error_popup(_("File used by another process"), \
-				                          _("The savegame file is currently used by another program."))
-				return self.save()
-			raise
-
-		try:
-			read_savegame_template(db)
-
-			db("BEGIN")
-			self.world.save(db)
-			#self.manager.save(db)
-			self.view.save(db)
-			self.ingame_gui.save(db)
-			self.scenario_eventhandler.save(db)
-
-			for instance in self.selected_instances:
-				db("INSERT INTO selected(`group`, id) VALUES(NULL, ?)", instance.worldid)
-			for group in xrange(len(self.selection_groups)):
-				for instance in self.selection_groups[group]:
-					db("INSERT INTO selected(`group`, id) VALUES(?, ?)", group, instance.worldid)
-
-			rng_state = json.dumps( self.random.getstate() )
-			SavegameManager.write_metadata(db, self.savecounter, rng_state)
-			# make sure everything get's written now
-			db("COMMIT")
-			db.close()
+		success= self._do_save(savegamename)
+		if success:
 			self.ingame_gui.message_widget.add(None, None, 'SAVED_GAME')
-			return True
-		except:
-			print "Save Exception"
-			traceback.print_exc()
-			db.close() # close db before delete
-			os.unlink(savegame) # remove invalid savegamefile
-			return False
+		return success

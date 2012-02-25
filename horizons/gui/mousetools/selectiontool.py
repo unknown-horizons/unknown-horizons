@@ -93,7 +93,7 @@ class SelectionTool(NavigationTool):
 						if i_id == '':
 							continue
 						instance = WorldObject.get_object_by_id(int(i_id))
-						if instance.has_component(SelectableComponent) and instance.owner == self.session.world.player:
+						if instance.has_component(SelectableComponent) and instance.owner is not None and instance.owner.is_local_player:
 							selectable.append(instance)
 					except WorldObjectNotFound:
 						pass
@@ -168,6 +168,14 @@ class SelectionTool(NavigationTool):
 			super(SelectionTool, self).mousePressed(evt)
 			return
 		elif evt.getButton() == fife.MouseEvent.LEFT:
+			if self.session.selected_instances is None:
+				# this is a very odd corner case, it should only happen after the session has been ended
+				# we can't allow to just let it crash however
+				print 'WARNING: selected_instance is None. Please report this!'
+				import traceback
+				traceback.print_stack()
+				print 'WARNING: selected_instance is None. Please report this!'
+				return
 			selectable = []
 			instances = self.get_hover_instances(evt)
 			for instance in instances:

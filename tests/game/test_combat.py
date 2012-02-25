@@ -90,7 +90,7 @@ def test_equip(s, p):
 
 	assert WEAPONS.DEFAULT_FIGHTING_SHIP_WEAPONS_NUM > 0, "This test only makes sense with default cannons. Adapt this if you don't want default cannons."
 
-	(p0, s0), (p1, s1) = setup_combat(s, UNITS.FRIGATE)
+	(p0, s0), (p1, s1) = setup_combat(s, UNITS.FRIGATE_CLASS)
 
 	assert s0.get_component(StorageComponent).inventory[ WEAPONS.CANNON ] == 0
 	assert s0.get_weapon_storage()[ WEAPONS.CANNON ] == WEAPONS.DEFAULT_FIGHTING_SHIP_WEAPONS_NUM
@@ -136,7 +136,7 @@ def test_equip(s, p):
 @game_test
 def test_diplo0(s, p):
 
-	(p0, s0), (p1, s1) = setup_combat(s, UNITS.FRIGATE)
+	(p0, s0), (p1, s1) = setup_combat(s, UNITS.FRIGATE_CLASS)
 
 	Attack(s0, s1).execute(s)
 	# attack without war
@@ -162,7 +162,7 @@ def test_dying(s, p):
 	"""
 	Check if units actually are gone when they have died
 	"""
-	(p0, s0), (p1, s1) = setup_combat(s, UNITS.FRIGATE)
+	(p0, s0), (p1, s1) = setup_combat(s, UNITS.FRIGATE_CLASS)
 
 	AddEnemyPair(p0, p1).execute(s)
 	Attack(s0, s1).execute(s)
@@ -178,7 +178,7 @@ def test_dying(s, p):
 @game_test
 def test_diplo1(s, p):
 
-	(p0, s0), (p1, s1) = setup_combat(s, UNITS.FRIGATE)
+	(p0, s0), (p1, s1) = setup_combat(s, UNITS.FRIGATE_CLASS)
 
 	assert health(s0) == max_health(s0)
 	assert health(s1) == max_health(s1)
@@ -212,11 +212,11 @@ def test_diplo1(s, p):
 
 @game_test
 def test_unfair(s, p):
-	(p0, s0), (p1, s1) = setup_combat(s, UNITS.FRIGATE)
+	(p0, s0), (p1, s1) = setup_combat(s, UNITS.FRIGATE_CLASS)
 
 	# two against one
 
-	s0_1 = CreateUnit(p0.worldid, UNITS.FRIGATE, 5, 5)(issuer=p0)
+	s0_1 = CreateUnit(p0.worldid, UNITS.FRIGATE_CLASS, 5, 5)(issuer=p0)
 
 	AddEnemyPair(p0, p1).execute(s)
 
@@ -238,7 +238,7 @@ def test_combat_save_load():
 	"""
 
 	session, player = new_session()
-	(p0, s0), (p1, s1) = setup_combat(session, UNITS.FRIGATE)
+	(p0, s0), (p1, s1) = setup_combat(session, UNITS.FRIGATE_CLASS)
 
 	s0_worldid, s1_worldid = s0.worldid, s1.worldid
 

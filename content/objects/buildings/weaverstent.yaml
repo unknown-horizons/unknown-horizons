@@ -1,6 +1,6 @@
 id: 7
 name: _ Weaver's Tent
-baseclass: production.Refiner
+baseclass: production.ProductionBuilding
 radius: 8
 cost: 10
 cost_inactive: 0
@@ -30,5 +30,8 @@ components:
     inventory:
       SlotsStorage:
         slot_sizes: {10: 8, 3: 8}
+- CollectingComponent:
+    collectors:
+      1000002: 1
 actionsets:
   as_weaver0: {level: 0}

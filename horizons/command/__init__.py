@@ -38,7 +38,7 @@ class Command(object):
 		"""
 		SafeUnpickler.add('server', klass)
 
-	def execute(self, session, local = False):
+	def execute(self, session, local=False):
 		"""Execute command.
 		@param session: Execute command on this session's manager.
 		@param local: Execute the command only locally (only used in multiplayer manager)
@@ -50,6 +50,7 @@ class GenericCommand(Command):
 	"""Code generator for trivial commands on an object.
 	It saves an object's world id, and executes a method specified as string on it in __call__
 
+	NOTE: Do not use floats! 2.6 and 2.7 handle them differently.
 	Use like this to call obj.mymethod(42, 1337):
 
 	class MyCommand(GenericCommand):

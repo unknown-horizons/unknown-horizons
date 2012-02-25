@@ -1,6 +1,6 @@
 id: 42
 name: _ Doctor
-baseclass: prevention.Doctor
+baseclass: production.ProductionBuilding
 radius: 10
 cost: 20
 cost_inactive: 5
@@ -28,5 +28,9 @@ components:
     inventory:
       SlotsStorage:
         slot_sizes: {38: 8}
+- CollectingComponent:
+    collectors:
+      1000002: 1
+      1000019: 0
 actionsets:
   as_doctor0: {level: 0}

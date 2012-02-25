@@ -18,11 +18,16 @@
 		<Icon image="content/gui/images/background/hr.png" position="52,140" />
 		-->
 
-		<VBox position="42,430"  max_size="290,80"  min_size="290,80" >
+		<VBox position="42,370"  max_size="290,125"  min_size="290,125" >
 
 			<HBox>
 				<Label name="create_game_lbl" text="Create game:" />
 				<OkButton name="create"  tooltip="Create a new game" />
+			</HBox>
+
+			<HBox>
+				<Label name="load_game_lbl" text="Load game:" />
+				<OkButton name="load"  tooltip="Load a saved game" />
 			</HBox>
 
 			<HBox>
@@ -53,6 +58,8 @@
 			<Label name="game_map"         wrap_text="1"  max_size="300,40" />
 			<Label name="game_creator"     wrap_text="1"  max_size="300,40" />
 			<Label name="game_playersnum"  wrap_text="1"  max_size="300,100"/>
+			<Label name="game_isloaded"    wrap_text="1"  max_size="300,40"/>
+
 			<!--
 			<ScrollArea name="map_description_area" position="5,380"> </ScrollArea>
 			-->

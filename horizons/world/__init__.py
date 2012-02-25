@@ -116,7 +116,7 @@ class World(BuildingOwner, LivingObject, WorldObject):
 		self.diplomacy = None
 		self.bullets = None
 
-	def _init(self, savegame_db, force_player_id=None):
+	def _init(self, savegame_db, force_player_id=None, disasters_enabled=True):
 		"""
 		@param savegame_db: Dbreader with loaded savegame database
 		@param force_player_id: the worldid of the selected human player or default if None (debug option)
@@ -276,7 +276,11 @@ class World(BuildingOwner, LivingObject, WorldObject):
 
 		self.diplomacy.add_diplomacy_status_changed_listener(notify_change)
 
-		self.disaster_manager = DisasterManager(self.session)
+		disasters_disabled_by_properties = 'disasters_enabled' in self.properties and not self.properties['disasters_enabled']
+		# if savegame or parameter disables disasters, it's disabled (both have to be set to enable to actually enable)
+		disasters_disabled = not disasters_enabled or disasters_disabled_by_properties
+
+		self.disaster_manager = DisasterManager(self.session, disabled=disasters_disabled)
 		if self.session.is_game_loaded():
 			self.disaster_manager.load(savegame_db)
 
@@ -851,6 +855,10 @@ class World(BuildingOwner, LivingObject, WorldObject):
 		db.close()
 
 	def get_checkup_hash(self):
+		"""Returns a collection of important game state values. Used to check if two mp games have diverged.
+		Not designed to be reliable."""
+		# NOTE: don't include float values, they are represented differently in python 2.6 and 2.7
+		# and will differ at some insignificant place. Also make sure to handle them correctly in the game logic.
 		dict = {
 			'rngvalue': self.session.random.random(),
 			'settlements': [],
@@ -860,7 +868,6 @@ class World(BuildingOwner, LivingObject, WorldObject):
 			for settlement in island.settlements:
 				entry = {
 					'owner': str(settlement.owner.worldid),
-					'tax_settings': str(settlement.tax_settings),
 					'inhabitants': str(settlement.inhabitants),
 					'cumulative_running_costs': str(settlement.cumulative_running_costs),
 					'cumulative_taxes': str(settlement.cumulative_taxes),

@@ -1,8 +1,8 @@
 <?xml version="1.0"?>
-<VBox max_size="320,480"  min_size="320,480"  position="520,162"  name="right_side"  padding="15">
+<VBox max_size="320,480"  min_size="320,480"  name="right_side"  padding="15">
 	<Label name="headline_map_settings_lbl" text="Map settings:" />
 
-	<VBox name="map_settings"  padding="15">
+	<VBox name="map_settings"  padding="8">
 		<HBox name="seed_string">
 			<Label name="seed_string_lbl" min_size="150,20" text="Seed:" />
 			<TextField name="seed_string_field" text="" max_size="250,20" min_size="125,20" />

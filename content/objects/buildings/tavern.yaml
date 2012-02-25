@@ -1,6 +1,6 @@
 id: 32
 name: _ Tavern
-baseclass: production.SettlerServiceProvider
+baseclass: production.ProductionBuilding
 radius: 6
 cost: 5
 cost_inactive: 0
@@ -30,5 +30,8 @@ components:
     inventory:
       SlotsStorage:
         slot_sizes: {27: 12, 22: 4}
+- CollectingComponent:
+    collectors:
+      1000002: 1
 actionsets:
   as_tavern0: {level: 0}

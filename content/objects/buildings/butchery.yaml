@@ -1,6 +1,6 @@
 id: 41
 name: _ Butchery
-baseclass: production.Refiner
+baseclass: production.ProductionBuilding
 radius: 8
 cost: 15
 cost_inactive: 5
@@ -36,5 +36,8 @@ components:
     inventory:
       SlotsStorage:
         slot_sizes: {35: 4, 36: 6, 5: 12}
+- CollectingComponent:
+    collectors:
+      1000002: 1
 actionsets:
   as_butchery0: {level: 0}

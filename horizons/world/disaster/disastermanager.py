@@ -37,16 +37,20 @@ class DisasterManager(object):
 	CALL_EVERY = GAME_SPEED.TICKS_PER_SECOND * 60
 	#CALL_EVERY =  1 # to conjure the demons of armageddon
 
-	def __init__(self, session):
+	def __init__(self, session, disabled=False):
+		"""
+		@param disabled: Don't do anything at all if true (but be responsive to normal calls)"""
 		from horizons.session import Session
 		assert isinstance(session, Session)
 		self.session = session
+		self.disabled = disabled
 		# List of possible disaster classes
 		self.disasters = [FireDisaster]
 
 		# Mapping settlement -> active disasters
 		self._active_disaster = {}
 
+		# keep call also when disabled, simplifies save/load
 		Scheduler().add_new_object(self.run, self, run_in=self.CALL_EVERY, loops=-1)
 
 	def save(self, db):
@@ -71,6 +75,8 @@ class DisasterManager(object):
 			cata.load(db, disaster_id)
 
 	def run(self):
+		if self.disabled:
+			return
 		for settlement in self.session.world.settlements:
 			for disaster in self.disasters:
 				if not settlement in self._active_disaster:
@@ -89,5 +95,10 @@ class DisasterManager(object):
 		self.log.debug("ending desaster in %s", settlement)
 		self._active_disaster[settlement].end()
 		del self._active_disaster[settlement]
+
+	def is_affected(self, settlement):
+		"""Returns whether there is currently a disaster in a settlement"""
+		return settlement in self._active_disaster
+
 
 

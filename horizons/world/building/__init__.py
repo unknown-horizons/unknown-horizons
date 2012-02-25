@@ -48,13 +48,6 @@ class BuildingClass(IngameType):
 		"""
 		super(BuildingClass, self).__init__(id, yaml_data)
 
-		# Override name with translation here. KeyError if no translation present.
-		try:
-			self._name = object_translations[yaml_data['yaml_file']]['name']
-		except KeyError as err:
-			print 'Warning: Building without translated name in objecttranslation: {err}'.format(err=err)
-			self._name = yaml_data['name']
-
 		self.settler_level = yaml_data['settler_level']
 		try:
 			self.tooltip_text = object_translations[yaml_data['yaml_file']]['tooltip_text']

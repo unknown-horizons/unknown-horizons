@@ -119,7 +119,7 @@ class Ship(Unit):
 		super(Ship, self).move(*args, **kwargs)
 		if self.has_component(SelectableComponent) and \
 		   self.get_component(SelectableComponent).selected and \
-		   self.session.world.player == self.owner: # handle buoy
+		   self.owner.is_local_player: # handle buoy
 			# if move() is called as move_callback, tmp() from above might
 			# be executed after this, so draw the new buoy after move_callbacks have finished.
 			Scheduler().add_new_object(self._update_buoy, self, run_in=0)
