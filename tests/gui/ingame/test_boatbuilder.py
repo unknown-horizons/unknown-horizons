@@ -199,3 +199,47 @@ def test_save_load_ticket_1421(gui):
 	horizons.main.load_game( savegame=filename )
 
 	yield TestFinished
+
+
+@gui_test(use_fixture='boatbuilder', timeout=120)
+def test_ticket_1513(gui):
+	"""
+	Boat builder costs don't go back to normal after cancelling a ship.
+	"""
+	yield # test needs to be a generator for now
+
+	settlement = gui.session.world.player.settlements[0]
+	boatbuilder = settlement.buildings_by_id[BUILDINGS.BOATBUILDER_CLASS][0]
+
+	gui.select([boatbuilder])
+
+	def running_costs():
+		c = gui.find(name='BB_main_tab')
+		return c.findChild(name='running_costs').text
+
+	# Check (inactive) running costs
+	assert running_costs() == '10', "Expected 10, got %s" % running_costs()
+
+	# Select trade ships tab
+	gui.trigger('tab_base', '1/action/default')
+
+	# Build huker
+	gui.trigger('boatbuilder_trade', 'BB_build_trade_1/action/default')
+
+	# Wait until production starts
+	producer = boatbuilder.get_component(Producer)
+	while producer._get_current_state() != PRODUCTION.STATES.producing:
+		yield
+
+	# Check (active) running costs
+	assert running_costs() == '25', "Expected 25, got %s" % running_costs()
+
+	yield
+
+	# Cancel build
+	gui.trigger('BB_main_tab', 'BB_cancel_button/mouseClicked/default')
+
+	# Check (inactive) running costs
+	assert running_costs() == '10', "Expected 10, got %s" % running_costs()
+
+	yield TestFinished
