@@ -465,8 +465,7 @@ class QueueProducer(Producer):
 
 
 class UnitProducer(QueueProducer):
-	"""The QueueProducer stores all productions in a queue and runs them one
-	by one. """
+	"""Uses queues to produce naval units"""
 
 	production_class = UnitProduction
 
