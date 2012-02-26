@@ -243,3 +243,42 @@ def test_ticket_1513(gui):
 	assert running_costs() == '10', "Expected 10, got %s" % running_costs()
 
 	yield TestFinished
+
+
+@gui_test(use_fixture='boatbuilder', timeout=120)
+def test_ticket_1514(gui):
+	"""
+	Cancelling a ship doesn't update the ship builder's tab.
+	"""
+	yield # test needs to be a generator for now
+
+	settlement = gui.session.world.player.settlements[0]
+	boatbuilder = settlement.buildings_by_id[BUILDINGS.BOATBUILDER_CLASS][0]
+
+	gui.select([boatbuilder])
+
+	# nothing beeing build, no cancel button visible
+	assert not gui.find('BB_cancel_button')
+
+	# Select trade ships tab
+	gui.trigger('tab_base', '1/action/default')
+
+	# Build huker
+	gui.trigger('boatbuilder_trade', 'BB_build_trade_1/action/default')
+
+	assert gui.find('BB_cancel_button')
+
+	# Wait until production starts
+	producer = boatbuilder.get_component(Producer)
+	while producer._get_current_state() != PRODUCTION.STATES.producing:
+		yield
+
+	yield
+
+	# Cancel build
+	gui.trigger('BB_main_tab', 'BB_cancel_button/mouseClicked/default')
+
+	# The tab should have changed, no cancel button visible
+	assert not gui.find('BB_cancel_button')
+
+	yield TestFinished
