@@ -7,8 +7,8 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2012-02-08 02:09+0100\n"
-"PO-Revision-Date: 2012-01-19 00:43+0200\n"
-"Last-Translator: Christopher Oelmueller <chris.oelmueller+uh@gmail.com>\n"
+"PO-Revision-Date: 2012-02-25 11:20+0200\n"
+"Last-Translator: studiocb <studiocbsite@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: nl\n"
 "MIME-Version: 1.0\n"
@@ -72,14 +72,13 @@ msgstr "U heeft meer {resource} nodig om dit gebouw te plaatsen."
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
 msgid "You won!"
-msgstr ""
+msgstr "U heeft gewonnen!"
 
 # 86%
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
-#, fuzzy
 msgid "Your game has been saved."
-msgstr "Uw spel is snel opgeslagen."
+msgstr "Uw spel is opgeslagen."
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
@@ -341,7 +340,7 @@ msgstr "Geef het pad naar de FIFE map."
 #: horizons/command/misc.py:30
 #, python-format
 msgid "{name}: {chatmessage}"
-msgstr ""
+msgstr "{name}: {chatmessage}"
 
 #: horizons/engine/settingsdialog.py:50
 msgid "Restart required"
@@ -453,7 +452,7 @@ msgstr "Geen opgeslagen spellen"
 
 #: horizons/gui/gui.py:256
 msgid "There are no saved games to load."
-msgstr ""
+msgstr "Er zijn geen opgeslagen spellen om te laden."
 
 #. (text of widget: loadgame)
 #. (text of widget: loadgame) Open a widget to select which game to load
@@ -470,7 +469,7 @@ msgstr "Spel opslaan"
 
 #: horizons/gui/gui.py:323
 msgid "No filename given"
-msgstr ""
+msgstr "U heeft geen bestandsnaam ingevuld"
 
 #: horizons/gui/gui.py:323
 msgid "Please enter a valid filename."
@@ -481,11 +480,11 @@ msgstr ""
 #: horizons/gui/gui.py:328
 #, python-format
 msgid "A savegame with the name '{name}' already exists."
-msgstr ""
+msgstr "Een opgeslagen spel me de naam '{name}' bestaat al."
 
 #: horizons/gui/gui.py:329
 msgid "Overwrite it?"
-msgstr ""
+msgstr "Wilt u het overschrijven?"
 
 #: horizons/gui/gui.py:330
 msgid "Confirmation for overwriting"
@@ -520,7 +519,7 @@ msgstr "Datum van opslaan onbekend"
 #: horizons/gui/gui.py:543
 #, python-format
 msgid "Saved at {time}"
-msgstr ""
+msgstr "Opgeslagen op {time}"
 
 #. N_ takes care of plural forms for different languages
 #: horizons/gui/gui.py:550
@@ -543,7 +542,7 @@ msgstr ""
 #: horizons/gui/gui.py:567
 #, python-format
 msgid "Required version: {required}!"
-msgstr ""
+msgstr "Vereiste versie: {required}!"
 
 #: horizons/gui/gui.py:570
 msgid "Incompatible version"
