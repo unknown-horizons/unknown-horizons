@@ -243,3 +243,45 @@ def test_ticket_1515(gui):
 	gui.select([mountain])
 
 	yield TestFinished
+
+
+@gui_test(use_dev_map=True, timeout=120)
+def test_ticket_1520(gui):
+	"""
+	Crash when completing build after outlined/related buildings were removed.
+	"""
+	yield
+
+	ship = get_player_ship(gui.session)
+	gui.select([ship])
+
+	gui.cursor_click(8, 2, 'right')
+	while (ship.position.x, ship.position.y) != (8, 2):
+		yield
+
+	# Found a settlement
+	gui.trigger('overview_trade_ship', 'found_settlement/action/default')
+	gui.cursor_click(10, 6, 'left')
+
+	ground_map = gui.session.world.islands[0].ground_map
+
+	# Build a tent
+	gui.trigger('mainhud', 'build/action/default')
+	gui.trigger('tab', 'button_1/action/default')
+	gui.cursor_click(7, 9, 'left')
+
+	assert ground_map[(7, 9)].object.id == BUILDINGS.RESIDENTIAL_CLASS
+
+	# Start building a mainsquare (not releasing left mouse button)
+	gui.trigger('tab', 'button_3/action/default')
+	gui.cursor_move(13, 11)
+	gui.cursor_press_button(13, 11, 'left')
+
+	# wait until tent is gone
+	while ground_map[(7, 9)].object.id == BUILDINGS.RESIDENTIAL_CLASS:
+		yield
+
+	# release mouse button, finish build
+	gui.cursor_release_button(13, 11, 'left')
+		
+	yield TestFinished
