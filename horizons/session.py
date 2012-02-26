@@ -189,10 +189,11 @@ class Session(LivingObject):
 
 		if hasattr(self, 'cursor') and self.cursor is not None:
 			self.cursor.end()
+		# these will call end() if the attribute still exists by the LivingObject magic
+		self.ingame_gui = None # keep this before world
 		self.cursor = None
 		self.world = None
 		self.keylistener = None
-		self.ingame_gui = None
 		self.view = None
 		self.manager = None
 		self.timer = None
