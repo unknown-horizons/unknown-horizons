@@ -70,7 +70,7 @@ class SelectableComponent(Component):
 		"""
 		from horizons.gui.tabs import TabWidget
 		tablist = None
-		if self.instance.owner.is_local_player:
+		if self.instance.owner is not None and self.instance.owner.is_local_player:
 			tablist = self.tabs
 		else: # this is an enemy instance with respect to the local player
 			tablist = self.enemy_tabs
