@@ -230,3 +230,16 @@ def test_ticket_1447(gui):
 	yield # this could crash the game
 
 	yield TestFinished
+
+
+@gui_test(use_dev_map=True, timeout=120)
+def test_ticket_1515(gui):
+	"""
+	Unable to select an unowned resource deposit.
+	"""
+	yield # test needs to be a generator for now
+
+	mountain = gui.session.world.islands[0].ground_map[(6, 17)].object
+	gui.select([mountain])
+
+	yield TestFinished
