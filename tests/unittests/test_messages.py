@@ -30,6 +30,9 @@ import mock
 class ExampleMessage(Message):
 	pass
 
+class FooMessage(Message):
+	arguments = ('a', 'b', )
+
 
 class TestMessageBus(unittest.TestCase):
 
@@ -94,3 +97,19 @@ class TestMessageBus(unittest.TestCase):
 		self.bus.broadcast(msg1)
 		self.bus.broadcast(msg2)
 		self.assertFalse(self.cb.called)
+
+
+class TestMessage(unittest.TestCase):
+
+	def test_sender_argument(self):
+		msg = Message(self)
+		self.assertEqual(msg.sender, self)
+
+	def test_additional_arguments(self):
+		msg = FooMessage(self, 1, 2)
+		self.assertEqual(msg.sender, self)
+		self.assertEqual(msg.a, 1)
+		self.assertEqual(msg.b, 2)
+
+	def test_wrong_arguments(self):
+		self.assertRaises(Exception, FooMessage, self, 1)

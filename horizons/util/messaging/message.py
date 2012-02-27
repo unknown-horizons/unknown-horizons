@@ -23,45 +23,42 @@ class Message(object):
 	"""Message class for the MessageBus. Every Message that is supposed to be
 	send through the MessageBus should subclass this base class, to ensure proper
 	setting of base attributes.
-	"""
 
-	def __init__(self, sender):
+	The first argument in each message is always a reference to the sender,
+	additional expected arguments are defined on the class-level attribute `arguments`,
+	these will be stored on the instance.
+	"""
+	arguments = tuple()
+
+	def __init__(self, sender, *args):
 		self.sender = sender
+		if len(self.arguments) != len(args):
+			raise Exception('Unexpected number of arguments. Expected %d, received %d' % (
+				len(self.arguments), len(args)))
+
+		for arg, value in zip(self.arguments, args):
+			setattr(self, arg, value)
 
 
 class AddStatusIcon(Message):
-
-	def __init__(self, sender, icon):
-		super(AddStatusIcon, self).__init__(sender)
-		self.icon = icon
+	arguments = ('icon', )
 
 class RemoveStatusIcon(Message):
-
-	def __init__(self, sender, instance, icon_class):
-		"""@param instance: the instance from which to remove the icon
-		@param icon_class: class object of the icon that is to be removed"""
-		super(RemoveStatusIcon, self).__init__(sender)
-		self.instance = instance
-		self.icon_class = icon_class
+	arguments = (
+		'instance',		# the instance from which to remove the icon
+		'icon_class'	# class object of the icon that is to be removed
+	)
 
 class RemoveAllStatusIcons(Message):
-
-	def __init__(self, sender, instance):
-		super(RemoveAllStatusIcons, self).__init__(sender)
-		self.instance = instance
+	arguments = ('instance', )
 
 class SettlerUpdate(Message):
-
-	def __init__(self, sender, level):
-		super(SettlerUpdate, self).__init__(sender)
-		self.level = level
+	arguments = ('level', )
 
 class SettlerInhabitantsChanged(Message):
 	"""Class to signal that the number of inhabitants in a settler building
 	have changed."""
-	def __init__(self, sender, change):
-		super(SettlerInhabitantsChanged, self).__init__(sender)
-		self.change = change
+	arguments = ('change', )
 
 class ResourceBarResize(Message):
 	"""Signals a change in resource bar size (not slot changes, but number of slot changes)"""
@@ -73,16 +70,13 @@ class UpgradePermissionsChanged(Message):
 
 class SettlementRangeChanged(Message):
 	"""Called on grow and perhaps shrink once that's implemented. Used by buildingtool.
-	@param sender: Settlement
-	@param changed_tiles: Actual tile objects"""
-	def __init__(self, sender, changed_tiles):
-		super(SettlementRangeChanged, self).__init__(sender)
-		self.changed_tiles = changed_tiles
+	Send by a Settlement."""
+	arguments = (
+		'changed_tiles', # Actual tile objects
+	)
 
 class WorldObjectDeleted(Message):
 	"""Called when a world object is being deleted.
 	Currently emitted in the process of destruction, i.e. you aren't guaranteed to be able to access any attributes. (Feel free to change the implementation if you need this).
 	"""
-	def __init__(self, sender, worldid):
-		super(WorldObjectDeleted, self).__init__(sender)
-		self.worldid = worldid
+	arguments = ('worldid', )

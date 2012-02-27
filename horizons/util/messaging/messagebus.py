@@ -19,30 +19,29 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
+from collections import defaultdict
+
+
 class MessageBus(object):
 	"""The MessageBus class is used to send Message instances from a sender to
 	one or multiple recipients."""
 
 	def __init__(self):
 		# Register {MessageType: [list of receiver callbacks]}
-		self.global_receivers = {}
+		self.global_receivers = defaultdict(list)
 		# Register for messages from a specific object
 		# {(MessageType, instance): [list of receiver callbacks]}
-		self.local_receivers = {}
+		self.local_receivers = defaultdict(list)
 
 	def subscribe_globally(self, messagetype, callback):
 		"""Register for a certain message type.
 		@param callback: Callback methode, needs to take 1 parameter: the message"""
-		if not messagetype in self.global_receivers:
-			self.global_receivers[messagetype] = []
 		self.global_receivers[messagetype].append(callback)
 
 	def subscribe_locally(self, messagetype, instance, callback):
 		"""Register for a certain message type from a specific instance.
 		@param callback: Callback methode, needs to take 1 parameter: the message"""
 		pair = (messagetype, instance)
-		if not pair in self.local_receivers:
-			self.local_receivers[pair] = []
 		self.local_receivers[pair].append(callback)
 
 	def unsubscribe_globally(self, messagetype, callback):
@@ -57,13 +56,12 @@ class MessageBus(object):
 	def broadcast(self, message):
 		"""Send a message to the bus and broadcast it to all recipients"""
 		messagetype = message.__class__
-		if messagetype in self.global_receivers:
-			for callback in self.global_receivers[messagetype]:
-				# Execute the callback
-				callback(message)
+		for callback in self.global_receivers[messagetype]:
+			# Execute the callback
+			callback(message)
+
 		pair = (messagetype, message.sender)
-		if pair in self.local_receivers:
-			for callback in self.local_receivers[pair]:
-				# Execute the callback
-				callback(message)
+		for callback in self.local_receivers[pair]:
+			# Execute the callback
+			callback(message)
 
