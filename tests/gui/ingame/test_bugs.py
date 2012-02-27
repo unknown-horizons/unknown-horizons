@@ -285,3 +285,39 @@ def test_ticket_1520(gui):
 	gui.cursor_release_button(13, 11, 'left')
 		
 	yield TestFinished
+
+
+@gui_test(use_dev_map=True, timeout=120)
+def test_ticket_1509(gui):
+	"""
+	Crash when quickly switching between tent tabs.
+	"""
+	yield
+
+	ship = get_player_ship(gui.session)
+	gui.select([ship])
+
+	gui.cursor_click(8, 2, 'right')
+	while (ship.position.x, ship.position.y) != (8, 2):
+		yield
+
+	# Found a settlement
+	gui.trigger('overview_trade_ship', 'found_settlement/action/default')
+	gui.cursor_click(10, 6, 'left')
+
+	# Build a tent
+	gui.trigger('mainhud', 'build/action/default')
+	gui.trigger('tab', 'button_1/action/default')
+	gui.cursor_click(7, 10, 'left')
+
+	tent = gui.session.world.islands[0].ground_map[(7, 10)].object
+	gui.select([tent])
+
+	# quickly switch between tabs
+	gui.trigger('tab_base', '1/action/default')
+	yield
+	gui.trigger('tab_base', '0/action/default')
+	yield
+	gui.trigger('tab_base', '1/action/default')
+
+	yield TestFinished
