@@ -238,3 +238,9 @@ class MainSquareSettlersTab(MainSquareSettlerLevelTab):
 	def __init__(self, instance):
 		super(MainSquareSettlersTab, self).__init__(instance, 'mainsquare_settlers.xml')
 		self.helptext = _("Settlers")
+
+class MainSquareCitizensTab(MainSquareSettlerLevelTab):
+	LEVEL = SETTLER.CITIZEN_LEVEL
+	def __init__(self, instance):
+		super(MainSquareCitizensTab, self).__init__(instance, 'mainsquare_citizens.xml')
+		self.helptext = _("Citizens")

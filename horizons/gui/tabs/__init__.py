@@ -36,7 +36,8 @@ from boatbuildertab import BoatbuilderTab, BoatbuilderFisherTab, \
 						BoatbuilderWar2Tab, BoatbuilderConfirmTab
 from mainsquaretabs import AccountTab, MainSquareSettlerTabSettlerTab, \
 						MainSquareSailorsTab, MainSquarePioneersTab, \
-						MainSquareSettlersTab, MainSquareOverviewTab
+						MainSquareSettlersTab, MainSquareCitizensTab, \
+                                                MainSquareOverviewTab
 from buildrelatedtab import BuildRelatedTab
 
 from diplomacytab import DiplomacyTab

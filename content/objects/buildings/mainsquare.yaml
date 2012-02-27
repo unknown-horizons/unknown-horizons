@@ -16,7 +16,7 @@ components:
 # NOTE: don't add a producer component, it's currently not guaranteed to work flawlessly in combination with SettlementStorage
 - SelectableComponent:
     type: building
-    tabs: [MainSquareOverviewTab, MainSquareSailorsTab, MainSquarePioneersTab, MainSquareSettlersTab]
+    tabs: [MainSquareOverviewTab, MainSquareSailorsTab, MainSquarePioneersTab, MainSquareSettlersTab, MainSquareCitizensTab]
     enemy_tabs: [EnemyBuildingOverviewTab,]
 - HealthComponent: {maxhealth: 1000}
 - StorageComponent:
