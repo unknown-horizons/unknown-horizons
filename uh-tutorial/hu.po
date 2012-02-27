@@ -7,8 +7,8 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: translate-uh@lists.unknown-horizons.org\n"
 "POT-Creation-Date: 2011-10-31 20:46+0100\n"
-"PO-Revision-Date: 2011-07-13 23:35+0200\n"
-"Last-Translator: Szontágh <szontagh.ferenc@exahost.eu>\n"
+"PO-Revision-Date: 2012-02-27 13:29+0200\n"
+"Last-Translator: matyi <molnarmatyas@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: hu\n"
 "MIME-Version: 1.0\n"
@@ -42,11 +42,13 @@ msgid ""
 "Build a warehouse at the coast, so it is easy accessible for other ships "
 "like the Free Trader."
 msgstr ""
+"Építs egy raktárat a tengerparthoz, így könnyen megközelíthető a többi "
+"szabadkereskedő hajó számára"
 
 #. This is a logbook page heading. Space is VERY short, please only translate to strings that fit (roughly 30 characters max).
 #: po/tutorial.py:10
 msgid "Welcome to Unknown Horizons!"
-msgstr ""
+msgstr "Üdvözli az Unknown Horizons!"
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:12
@@ -69,11 +71,20 @@ msgid ""
 "\n"
 "And now, let's start the actual game."
 msgstr ""
+"Ez a kapitány naplója, amin minden fontos információt tárol. Az egyes "
+"feladatok rövid értesítést fognak nyújtani a képernyő bal oldalán. \\ N\\ nHa "
+"érdekelnek a hosszabb leírásokat, a napló remélhetőleg segít mindenben amire "
+"szükséged van. \\ N\\ nHa bezárod a naplót, akkor úgy lehet újra megnyitni "
+"hogyha a \"Hajónapló\" ikonra kattintasz a jobb felső sarokban (mini-térkép "
+"egy lepecsételt dokumentummal és egy toll.) \\ N\\ nHa hibát találsz, vagy nem "
+"értelmes valami: Kérjük, jelezd nekünk, és mi megpróbáljuk javítani a "
+"tutorialt! \\ N\\ nLátogass el www.unknown-horizons.org oldalra, itt lehet "
+"lehet kapcsolatba lépni a csapattal! \\ N\\ nÉs most kezdjük a játék."
 
 #. This is a logbook page heading. Space is VERY short, please only translate to strings that fit (roughly 30 characters max).
 #: po/tutorial.py:14
 msgid "NEW TASK: SETTLE ON AN ISLAND"
-msgstr ""
+msgstr "Új feladat: Rendezkedj be egy szigetre!"
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:16
@@ -94,11 +105,19 @@ msgid ""
 "\n"
 "TASK: Build a warehouse at the coast."
 msgstr ""
+"A hajó mozgatásához kattints a bal egérgombbal a hajón, és kattintson jobb "
+"gombbal a kívánt helyre, hogy odamenjen. \\ N\\ nMiután a part közelébe értél, "
+"egy horgony-szerű gomb lesz aktív áttekintés fülön. \\ N\\ nEz azt jelzi, "
+"hogy meg tudod építeni a raktárat a gomb megnyomásával (az úgynevezett "
+"\"Build Settlement\"). \\ N\\ nMost az épület előnézetét az egérrel tudod "
+"mozgatni. \\ N\\ nMeg lehet építeni bármilyen helyen, ahol a kép nem árnyalt "
+"vörös. \\ NKattintson oda, ahová szeretnéd helyezni az első épüled. \\ N\\ "
+"nFeladat: Készítsen egy raktárat a parton."
 
 #. This is a logbook page heading. Space is VERY short, please only translate to strings that fit (roughly 30 characters max).
 #: po/tutorial.py:18
 msgid "NEW TASK: BUILD A LUMBERJACK"
-msgstr ""
+msgstr "Új feladat: Építs egy favágóházat"
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:20
