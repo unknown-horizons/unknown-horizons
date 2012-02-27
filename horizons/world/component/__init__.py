@@ -42,8 +42,8 @@ class Component(object):
 
 	def __init__(self):
 		"""
-		Used for initialisation code that does not require any other components
-		"""
+		Used for initialisation code that does not require any other components.
+		This is always called first, on construction and on load."""
 		super(Component, self).__init__()
 		self.instance = None # Has to be set by the componentholder
 
@@ -55,9 +55,9 @@ class Component(object):
 		"""
 		This is called by the ComponentHolder after it set the instance.
 		Use this to initialize any needed infrastructure.
-		When this is called, it is guaranteed that all other components have been added,
-		but initalized may not have been called on them, only __init__.
-		It is only called after construction, not on load.
+		When this is called, it is guaranteed that all other components this one
+		has a dependency on have been added, but initalized may not have been called
+		on them, only __init__. It is only called after construction, not on load().
 		"""
 		pass
 
@@ -75,8 +75,11 @@ class Component(object):
 
 	def load(self, db, worldid):
 		"""
-		This does on load what __init__, __init and initalize together do on constructions at runtime.
-		Has to set up *everything*, also add every member variable.
+		This does on load what __init() and initalize() together do on constructions at runtime.
+		Has to set up *everything*, also add every member variable. Note that on loading
+		__init__() is called with the data needed by the component through get_instance(),
+		but initialize() is not, so any work needed for loading as well should be moved
+		to a separate method and called here.
 		"""
 		pass
 

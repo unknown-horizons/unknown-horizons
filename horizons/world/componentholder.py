@@ -79,7 +79,12 @@ class ComponentHolder(object):
 		self.components = {}
 
 	def initialize(self):
-		"""Has to be called every time an componentholder is created."""
+		"""Has to be called every time an componentholder is created. This is not
+		in __init__() because we need to make sure that all other sub/parent classes
+		have been inited, for example the ConcreteObject class. This is to ensure
+		that all member variables of sub/parent classes are correctly set when we
+		init the components. If someday all code is moved to components, this will
+		not be necessary any more."""
 		for component in self.__create_components():
 			self.add_component(component)
 
@@ -142,7 +147,6 @@ class ComponentHolder(object):
 		return component_class.NAME in self.components
 
 	def get_component(self, component):
-		#assert self.__initialized, "You forgot to initialize this componentholder:" + str(self)
 		if self.has_component(component):
 			return self.components[component.NAME]
 		else:
