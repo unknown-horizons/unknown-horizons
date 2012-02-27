@@ -182,7 +182,7 @@ class SelectionTool(NavigationTool):
 		"""
 		@param instances: uh instances
 		"""
-		self.log.debug("update selection %s", [str(i) for i in instances])
+		self.log.debug("update selection %s", [unicode(i) for i in instances])
 		selectable = ( self.filter_selectable(i) for i in instances )
 		selectable = [ i for i in selectable if i is not None ]
 
@@ -205,8 +205,4 @@ class SelectionTool(NavigationTool):
 		for sel_comp in selectable - selected_components:
 			sel_comp.select()
 
-		self.log.debug("update selection old selected %s", [str(i) for i in self.session.selected_instances] )
-
 		self.session.selected_instances = set( i.instance for i in selectable )
-
-		self.log.debug("update selection new selected %s", [str(i) for i in self.session.selected_instances] )
