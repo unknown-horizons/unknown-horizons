@@ -487,7 +487,6 @@ class SettlerOverviewTab(OverviewTab):
 			widget = 'overview_settler.xml',
 			instance = instance
 		)
-		self.instance.session.message_bus.subscribe_locally(SettlerUpdate, self.instance, self.on_settler_level_change)
 		self.tooltip = _("Settler overview")
 		self.widget.findChild(name="headline").text = unicode(self.instance.settlement.get_component(NamedComponent).name)
 		_setup_tax_slider(self.widget.child_finder('tax_slider'), self.widget.child_finder('tax_val_label'),
@@ -504,6 +503,10 @@ class SettlerOverviewTab(OverviewTab):
 		_setup_tax_slider(self.widget.child_finder('tax_slider'), self.widget.child_finder('tax_val_label'),
 		                  self.instance.settlement, message.level)
 		self.widget.child_finder('tax_val_label').text = unicode(self.instance.settlement.tax_settings[self.instance.level])
+
+	def show(self):
+		super(SettlerOverviewTab, self).show()
+		self.instance.session.message_bus.subscribe_locally(SettlerUpdate, self.instance, self.on_settler_level_change)
 
 	def hide(self):
 		self.instance.session.message_bus.unsubscribe_locally(SettlerUpdate, self.instance, self.on_settler_level_change)
