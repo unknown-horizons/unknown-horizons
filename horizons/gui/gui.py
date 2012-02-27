@@ -41,6 +41,7 @@ from horizons.util.gui import LazyWidgetsDict
 from horizons.i18n.utils import N_
 
 from horizons.gui.modules import SingleplayerMenu, MultiplayerMenu
+from horizons.command.game import PauseCommand, UnPauseCommand
 
 class Gui(SingleplayerMenu, MultiplayerMenu):
 	"""This class handles all the out of game menu, like the main and pause menu, etc.
@@ -110,7 +111,7 @@ class Gui(SingleplayerMenu, MultiplayerMenu):
 			self.__pause_displayed = False
 			self.hide()
 			self.current = None
-			self.session.speed_unpause(True)
+			UnPauseCommand(suggestion=True).execute(self.session)
 			self.on_escape = self.toggle_pause
 
 		else:
@@ -162,7 +163,7 @@ class Gui(SingleplayerMenu, MultiplayerMenu):
 			self.current.additional_widget.show()
 			self.current.show()
 
-			self.session.speed_pause(True)
+			PauseCommand(suggestion=True).execute(self.session)
 			self.on_escape = self.toggle_pause
 
 # what happens on button clicks
@@ -187,7 +188,7 @@ class Gui(SingleplayerMenu, MultiplayerMenu):
 			self._help_is_displayed = True
 			# make game pause if there is a game and we're not in the main menu
 			if self.session is not None and self.current != self.widgets['ingamemenu']:
-				self.session.speed_pause()
+				PauseCommand().execute(self.session)
 			if self.session is not None:
 				self.session.ingame_gui.on_escape() # close dialogs that might be open
 			self.show_dialog(help_dlg, {'okButton' : True}, onPressEscape = True)
@@ -195,7 +196,7 @@ class Gui(SingleplayerMenu, MultiplayerMenu):
 		else:
 			self._help_is_displayed = False
 			if self.session is not None and self.current != self.widgets['ingamemenu']:
-				self.session.speed_unpause()
+				UnPauseCommand().execute(self.session)
 			help_dlg.hide()
 
 	def show_quit(self):

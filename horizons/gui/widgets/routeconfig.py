@@ -31,6 +31,7 @@ from horizons.world.component.storagecomponent import StorageComponent
 from horizons.gui.widgets.minimap import Minimap
 from horizons.world.component.namedcomponent import NamedComponent
 from horizons.world.component.ambientsoundcomponent import AmbientSoundComponent
+from horizons.command.game import PauseCommand, UnPauseCommand
 
 import horizons.main
 
@@ -65,10 +66,10 @@ class RouteConfig(object):
 		if not self.instance.has_remove_listener(self.on_instance_removed):
 			self.instance.add_remove_listener(self.on_instance_removed)
 		self.session.ingame_gui.on_switch_main_widget(self)
-		self.session.speed_pause(suggestion=True)
+		PauseCommand(suggestion=True).execute(self.session)
 
 	def hide(self):
-		self.session.speed_unpause(suggestion=True)
+		UnPauseCommand(suggestion=True).execute(self.session)
 		self.minimap.disable()
 		self._gui.hide()
 		if self.instance.has_remove_listener(self.on_instance_removed):

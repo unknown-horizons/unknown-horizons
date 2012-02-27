@@ -37,7 +37,11 @@ class MPSession(Session):
 		"""
 		self.__network_interface = network_interface
 		super(MPSession, self).__init__(gui, db, **kwargs)
-		self.disable_speed_buttons()
+
+	def speed_set(self, ticks, suggestion=False):
+		"""Set game speed to ticks ticks per second"""
+		if not suggestion:
+			super(MPSession, self).speed_set(ticks, suggestion)
 
 	def create_manager(self):
 		return MPManager(self, self.__network_interface)
@@ -47,19 +51,6 @@ class MPSession(Session):
 
 	def create_timer(self):
 		return Timer(freeze_protection=False)
-
-	def speed_set(self, ticks, suggestion=False):
-		if suggestion:
-			# ignore suggested speed changes in multiplayer
-			return
-		self.gui.show_popup(_("Can't change speed of network game."), _("You cannot change the speed of a multiplayer game"))
-
-	def disable_speed_buttons(self):
-		up_icon = self.ingame_gui.widgets['minimap'].findChild(name='speedUp')
-		down_icon = self.ingame_gui.widgets['minimap'].findChild(name='speedDown')
-		up_icon.set_inactive()
-		down_icon.set_inactive()
-		self.ingame_gui.display_game_speed(u'')
 
 	def end(self):
 		self.__network_interface.disconnect()

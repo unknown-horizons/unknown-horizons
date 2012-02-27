@@ -40,6 +40,7 @@ from horizons.util.gui import LazyWidgetsDict
 from horizons.constants import BUILDINGS, GUI
 from horizons.command.uioptions import RenameObject
 from horizons.command.misc import Chat
+from horizons.command.game import SpeedDownCommand, SpeedUpCommand
 from horizons.gui.tabs.tabinterface import TabInterface
 from horizons.world.component.namedcomponent import SettlementNameComponent, NamedComponent
 from horizons.world.component.selectablecomponent import SelectableComponent
@@ -111,14 +112,20 @@ class IngameGui(LivingObject):
 		                       session=self.session,
 		                       world=self.session.world,
 		                       view=self.session.view)
+
+		def speed_up():
+			SpeedUpCommand().execute(self.session)
+
+		def speed_down():
+			SpeedDownCommand().execute(self.session)
+
 		minimap.mapEvents({
 			'zoomIn' : self.session.view.zoom_in,
 			'zoomOut' : self.session.view.zoom_out,
 			'rotateRight' : Callback.ChainedCallbacks(self.session.view.rotate_right, self.minimap.rotate_right),
 			'rotateLeft' : Callback.ChainedCallbacks(self.session.view.rotate_left, self.minimap.rotate_left),
-			'speedUp' : self.session.speed_up,
-			'speedDown' : self.session.speed_down,
-
+			'speedUp' : speed_up,
+			'speedDown' : speed_down,
 			'destroy_tool' : self.session.toggle_destroy_tool,
 			'build' : self.show_build_menu,
 			'diplomacyButton' : self.show_diplomacy_menu,
@@ -147,9 +154,9 @@ class IngameGui(LivingObject):
 
 	def _on_resourcebar_resize(self, message):
 		###
-		# handle here
+		# TODO implement
 		###
-		res_bar = message.sender # or use self.resource_overview, same thing
+		pass
 
 	def end(self):
 		self.widgets['minimap'].mapEvents({

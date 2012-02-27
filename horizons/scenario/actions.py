@@ -27,6 +27,7 @@ from horizons.command.unit import CreateUnit
 from horizons.scenario import CONDITIONS
 from horizons.savegamemanager import SavegameManager
 from horizons.constants import MESSAGES, AUTO_CONTINUE_CAMPAIGN
+from horizons.command.game import PauseCommand, UnPauseCommand
 
 
 ###
@@ -65,7 +66,7 @@ def show_logbook_entry_delayed(session, head, message, delay=MESSAGES.LOGBOOK_DE
 
 def do_win(session):
 	"""Called when player won"""
-	session.speed_pause()
+	PauseCommand().execute(session)
 	show_db_message(session, 'YOU_HAVE_WON')
 	horizons.main.fife.play_sound('effects', "content/audio/sounds/events/scenario/win.ogg")
 
@@ -82,7 +83,7 @@ def do_win(session):
 		else:
 			Scheduler().add_new_object(Callback(session.gui.quit_session, force=True), session, run_in=0)
 	else:
-		session.speed_unpause()
+		UnPauseCommand().execute(session)
 
 def goal_reached(session, goal_number):
 	"""Called when player reached a goal in a scenario"""

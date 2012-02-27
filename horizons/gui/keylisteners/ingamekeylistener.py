@@ -25,6 +25,7 @@ import horizons.main
 from horizons.util.living import LivingObject
 from horizons.gui.keylisteners import KeyConfig
 from horizons.world.component.selectablecomponent import SelectableComponent
+from horizons.command.game import TogglePauseCommand, SpeedDownCommand, SpeedUpCommand
 
 class IngameKeyListener(fife.IKeyListener, LivingObject):
 	"""KeyListener Class to process key presses ingame"""
@@ -46,7 +47,6 @@ class IngameKeyListener(fife.IKeyListener, LivingObject):
 
 	def keyPressed(self, evt):
 		keyval = evt.getKey().getValue()
-		keystr = evt.getKey().getAsString().lower()
 		action = KeyConfig().translate(evt)
 
 		_Actions = KeyConfig._Actions
@@ -82,11 +82,11 @@ class IngameKeyListener(fife.IKeyListener, LivingObject):
 		elif action == _Actions.ROAD_TOOL:
 			self.session.ingame_gui.toggle_road_tool()
 		elif action == _Actions.SPEED_UP:
-			self.session.speed_up()
+			SpeedUpCommand().execute(self.session)
 		elif action == _Actions.SPEED_DOWN:
-			self.session.speed_down()
+			SpeedDownCommand().execute(self.session)
 		elif action == _Actions.PAUSE:
-			self.session.gui.toggle_pause()
+			TogglePauseCommand().execute(self.session)
 		elif action == _Actions.PLAYERS_OVERVIEW:
 			self.session.ingame_gui.players_overview.toggle_visibility()
 		elif action == _Actions.SETTLEMENTS_OVERVIEW:
