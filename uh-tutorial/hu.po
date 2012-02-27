@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: translate-uh@lists.unknown-horizons.org\n"
 "POT-Creation-Date: 2011-10-31 20:46+0100\n"
-"PO-Revision-Date: 2012-02-27 15:59+0200\n"
+"PO-Revision-Date: 2012-02-27 16:01+0200\n"
 "Last-Translator: matyi <molnarmatyas@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: hu\n"
@@ -389,7 +389,7 @@ msgstr "Építs legalább három további sátrat és kösd be a főtérre."
 #. This is a logbook page heading. Space is VERY short, please only translate to strings that fit (roughly 30 characters max).
 #: po/tutorial.py:52
 msgid "NEW TASK: BUILD SIGNAL FIRE"
-msgstr ""
+msgstr "Új feladat: Építs kereskedelmi tűzjelet"
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:54
@@ -411,6 +411,17 @@ msgid ""
 "The signal fire has to cover the area which the ships pass through to catch "
 "them."
 msgstr ""
+"Látod, hogy hajó halad el a szigetednél időről időre? Ez a hajó a Szabad "
+"Kereskedőkhöz tartozik, az egyik első telepesek ebben a szigetvilágban. \\ N\\ "
+"nA kereskedő ellátja a települést szükséges árukkal, amelyeket nem tudsz "
+"előállítani még. \\ NAz eladni kívánt többletet a termelés határozza meg, de "
+"általában időigényes eladni őket (az több épület több sátorral), ahelyett, "
+"hogy eladná helyben idehozza a nagyobb nyereség reményében. \\ N\\ nNormális "
+"esetben a kereskedő hajók csak vitorláznak körbe körbe és keresik az "
+"ajánlatokat, de lehet gyorsítani a dolgokat egy kicsit. \\ N\\ nErre a célra "
+"lehet építeni egy Tüzjelet a parton a raktár közelében. Meg fogja mutatni az "
+"utat a hajóknak a településre. \\ N\\ nA tűzjel azért van, hogy mutassa a "
+"területet, és elkapja a hajósokat akik áthaladnak."
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:56

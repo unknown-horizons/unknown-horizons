@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2012-02-08 02:09+0100\n"
-"PO-Revision-Date: 2012-02-12 17:47+0200\n"
+"PO-Revision-Date: 2012-02-12 17:49+0200\n"
 "Last-Translator: probert <r.panovics@freemail.hu>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: hu\n"
@@ -808,13 +808,13 @@ msgstr "Halász hajó"
 #: horizons/gui/tabs/boatbuildertab.py:244
 #: horizons/i18n/guitranslations.py:148
 msgid "Trade boats"
-msgstr "Kereskedő hajó"
+msgstr "Kereskedőhajók"
 
 #. (text of widget: headline)
 #: horizons/gui/tabs/boatbuildertab.py:252
 #: horizons/i18n/guitranslations.py:165
 msgid "War boats"
-msgstr "Csata hajó"
+msgstr "Csatahajók"
 
 #: horizons/gui/tabs/boatbuildertab.py:259
 msgid "War ships"
