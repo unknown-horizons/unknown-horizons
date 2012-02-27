@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: translate-uh@lists.unknown-horizons.org\n"
 "POT-Creation-Date: 2011-10-31 20:46+0100\n"
-"PO-Revision-Date: 2012-02-27 13:30+0200\n"
+"PO-Revision-Date: 2012-02-27 15:31+0200\n"
 "Last-Translator: matyi <molnarmatyas@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: hu\n"
@@ -170,16 +170,26 @@ msgid ""
 "\n"
 "Watch how a collector will fetch your first self-produced boards."
 msgstr ""
+"A civilizáció úgy fejlődik, hogy minél több és bonyolultabb épületeket "
+"építesz. \\ N\\ nMost válassza ki a favágóházat a \"cégek\" alatt és olyan "
+"területen építs, ahol van néhány fa. \\ N\\ nFákat is ültetnek majd - de ez "
+"pénzbe kerül. Használd, amit a természet ad feltéve, hogy elég! \\ n\\ nA "
+"cégen mindig szüksége van egy útra ami össze kapcsolja egy tárolóval vagy "
+"raktárral, különben áru a cégnél marad, és nem lehet beszedni. \\ N\\ nEz azt "
+"jelenti, hogy meg kell építened egy összekötő utat a raktárhoz (vagy "
+"tárolóhoz) és a favágóhoz. \\ N\\ nFeladat: Készíts egy favágóházat egy erdős "
+"területen, és csatlakoztasd az utat. \\ N\\ nNézd meg, hogy a  gyűjtők "
+"idehozzák az első saját készítésű deszkákat."
 
 #. This message is displayed in the widget on the left screen part. Please keep it short enough to fit there!
 #: po/tutorial.py:24
 msgid "Build a lumberjack and connect it to the warehouse using a trail."
-msgstr ""
+msgstr "Építs egy favágóházat és csatlakoztass hozzá a raktárból egy utat."
 
 #. This is a logbook page heading. Space is VERY short, please only translate to strings that fit (roughly 30 characters max).
 #: po/tutorial.py:26
 msgid "NEW TASK: FOOD SUPPLY"
-msgstr ""
+msgstr "Új feladat: Élelmiszer ellátás"
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:28
@@ -199,6 +209,14 @@ msgid ""
 "\n"
 "Conclusion: the hunter is not too reliable if you need continuous supply."
 msgstr ""
+"Szükséged lesz néhány élelmiszer-termelő cégre is, mert az emberek általában "
+"(és különösen a hajósok) nagyon éhesek. \\ N\\ nRendelkezésre álló cégek "
+"közül az első a Vadász és a Halász. \\ N\\ nA Vadász meglepő módon vadászik az "
+"állatokra az erdőben, ezért kell, hogy fák vegyék körül. \\ N\\ nNe helyezd "
+"el a Vadászt a közeli favágó erdejében. \\ N\\ nElőfordulhat, hogy az állatok "
+"nem szaporodnak elég gyorsan, vagy egyszerűen csak eltűnnek. \\ N\\ "
+"nKövetkeztetés: a vadász nem túl megbízható, ha szükséged van a folyamatos "
+"ellátásra."
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:30
@@ -218,16 +236,23 @@ msgid ""
 "\n"
 "Don't forget to connect them to your warehouse with trails!"
 msgstr ""
+"A Halásznak szüksége van egy tengerparti építési telekre a raktár és egy "
+"halraj közelében. \\ N\\ nÉpít egy kis evezős hajót, és a fog néhány halat. \\ "
+"N\\ nEz folyamatos utánpótlást biztosít azon az áron egy kicsit hosszabb a "
+"termelési idő élelmiszer egységenként. \\ N\\ nEgy kis településen, mint a "
+"tiéd ki lehet próbálni mindkettőt, és akkor meglátod látni az előnyeit és "
+"hátrányait. \\ N\\ nFeladat: Készítsen egy Vadászt és egy Halászt. \\ N\\ nNe "
+"felejtsd el csatlakoztatni a raktárba!"
 
 #. This message is displayed in the widget on the left screen part. Please keep it short enough to fit there!
 #: po/tutorial.py:32
 msgid "Build a hunter and a fisher. Connect them to the warehouse."
-msgstr ""
+msgstr "Építs egy Vadászt és egy Halászt. Csatlakoztasd őket a raktárba."
 
 #. This is a logbook page heading. Space is VERY short, please only translate to strings that fit (roughly 30 characters max).
 #: po/tutorial.py:34
 msgid "NEW TASK: MAIN SQUARE"
-msgstr ""
+msgstr "Új feladat: Fő tér"
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:36
@@ -249,6 +274,14 @@ msgid ""
 "\n"
 "TASK: Build a main square."
 msgstr ""
+"A lakosoknak szüksége van főtérre, ahol meg tudják venni az árukat. \\ N\\ nEz "
+"azt jelenti, hogy szükség van egy útra ami összeköt saját főtereddel a "
+"raktáradat. \\ N\\ nMinden áru a raktárban rendelkezésre áll a \"piacon\", így a "
+"lakosok nem kell elmenni a Halászhoz vagy a raktárba. \\ N\\ nÉrdemes "
+"figyelembe venni az aktuális ház építésénél, hogy könnyű lehessen bővíteni, "
+"és utakat építeni is is. \\ N\\ nNe tegye túl közel a sátrat a favágóhoz mert, "
+"mert a sátor építésénél eltakarítják a fákat. \\ N\\ nFeladat: Készíts egy "
+"főteret."
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:38
@@ -267,6 +300,14 @@ msgid ""
 "inhabitants. You also set the increment-specific global tax here and allow or "
 "deny inhabitants of this increment to upgrade to the next higher one."
 msgstr ""
+"Most vessünk egy közelebbi pillantást a főtérre. \\ N\\ nAz \"Account\" fül "
+"mutatja a sziget mérlegét, az összes költséget, és az összes adót. \\ N\\ nA "
+"tételek \"Eladás\" és a \"Vétel\" kifejezés a kereskedelmi egyensúlyod ezt látni "
+"fogjuk a későbbiekben. \\ N\\ nHa a mérleg pozitív, akkor minden mindenben "
+"nyereséget hoz. \\ N\\ nA különböző fülek növekményénél láthatóak a lakosok "
+"statisztikája. Azt is beállíthatod, hogy a növekmény-specifikus globális "
+"adót engedélyezed vagy tiltod lakosoknak, ez a növekmény frissíteni a "
+"következő magasabb."
 
 #. This message is displayed in the widget on the left screen part. Please keep it short enough to fit there!
 #: po/tutorial.py:40
