@@ -44,7 +44,6 @@ from shapes.annulus import Annulus
 
 from python import Callback
 from python import decorators
-from python import stablelist
 from python import WeakList
 from python import WeakMethod
 from python import WeakMethodList

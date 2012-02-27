@@ -26,7 +26,6 @@ but rather a generic enhancement of the programming language.
 
 import decorators
 from callback import Callback
-from stablelist import stablelist
 from weaklist import WeakList
 from weakmethod import WeakMethod
 from weakmethodlist import WeakMethodList
@@ -50,15 +49,3 @@ def parse_port(port, allow_zero=False):
 	if portInt < 1 or portInt > 65535:
 		raise ValueError()
 	return portInt
-
-def get_counter():
-	"""Returns a counter.
-	USAGE:
-	my_things_counter = get_counter()
-	first = my_things_counter.next()
-	second = my_things_counter.next()
-	"""
-	i = 0
-	while True:
-		yield i
-		i += 1

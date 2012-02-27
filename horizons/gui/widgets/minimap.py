@@ -18,6 +18,7 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
+import itertools
 import json
 
 import horizons.main
@@ -26,7 +27,6 @@ from fife import fife
 from horizons.util import Point, Rect, Circle
 from horizons.extscheduler import ExtScheduler
 from horizons.util.python.decorators import bind_all
-from horizons.util.python import get_counter
 from horizons.command.unit import Act
 from horizons.world.component.namedcomponent import NamedComponent
 
@@ -70,8 +70,8 @@ class Minimap(object):
 	  "highlight" : "l"
 	  }
 
-	__minimap_id_counter = get_counter()
-	__ship_route_counter = get_counter()
+	__minimap_id_counter = itertools.count()
+	__ship_route_counter = itertools.count()
 	_instances = [] # all active instances
 
 	_dummy_fife_point = fife.Point(0, 0) # use when you quickly need a temporary point
