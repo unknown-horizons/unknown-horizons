@@ -161,3 +161,4 @@ actionsets:
   as_hut0: {level: 1}
   as_house0: {level: 2}
   as_hut2: {level: 1}
+  as_stonehouse0: {level: 3}
