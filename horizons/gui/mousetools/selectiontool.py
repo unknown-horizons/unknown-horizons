@@ -100,7 +100,8 @@ class SelectionTool(NavigationTool):
 
 			# multiselection is only allowed for user instances
 			if len(instances) > 1:
-				instances = [ i for i in instances if i.owner is not None and i.owner.is_local_player ]
+				instances = [ i for i in instances if \
+				              i.owner is not None and hasattr(i.owner, "is_local_player") and i.owner.is_local_player ]
 
 			self._update_selection( instances, do_multi )
 

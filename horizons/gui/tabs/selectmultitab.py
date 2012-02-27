@@ -223,7 +223,7 @@ class UnitEntry(object):
 			health_component.remove_damage_dealt_listener(self.draw_health)
 
 		if self.instances:
-			self.widget.findChild(name = "instance_number").text = unicode(str(len(self.instances)))
+			self.widget.findChild(name = "instance_number").text = unicode(len(self.instances))
 
 	def draw_health(self, caller = None):
 		health = 0
