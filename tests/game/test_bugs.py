@@ -27,6 +27,7 @@ from horizons.world.component.collectingcompontent import CollectingComponent
 from horizons.world.production.producer import Producer, QueueProducer
 from horizons.constants import BUILDINGS, RES, PRODUCTIONLINES, GAME
 from horizons.util.worldobject import WorldObject
+from horizons.world.production.utilisation import FieldUtilisation
 
 from tests.game import settle, game_test, new_session, load_session
 from tests.game.test_buildings import test_brick_production_chain, test_tool_production_chain
@@ -238,4 +239,18 @@ def test_settler_level(s, p):
 	# should have leveled up
 	assert settler.level == level + 1
 
+@game_test
+def test_ticket_1523(s, p):
+	settlement, island = settle(s)
 
+	farm = _build_farm(30, 30, BUILDINGS.POTATO_FIELD_CLASS, island, settlement, p)
+
+	# Let it work for a bit
+	s.run(seconds=60)
+	assert farm.get_component(StorageComponent).inventory[RES.FOOD_ID]
+
+
+	assert isinstance(farm.get_component(Producer)._Producer__utilisation, FieldUtilisation)
+	# Should be 0.5
+	assert not farm.get_component(Producer).capacity_utilisation_below(0.4)
+	assert farm.get_component(Producer).capacity_utilisation > 0.4
