@@ -98,6 +98,10 @@ class SelectionTool(NavigationTool):
 			instances = ( self.fife_instance_to_uh_instance(i) for i in instances )
 			instances = [ i for i in instances if i is not None ]
 
+			# multiselection is only allowed for user instances
+			if len(instances) > 1:
+				instances = [ i for i in instances if i.owner is not None and i.owner.is_local_player ]
+
 			self._update_selection( instances, do_multi )
 
 		elif (evt.getButton() == fife.MouseEvent.RIGHT):
