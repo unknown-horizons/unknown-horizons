@@ -37,6 +37,7 @@ from horizons.util.messaging.message import AddStatusIcon, RemoveStatusIcon
 from horizons.world.production.utilisation import Utilisation, FullUtilisation, FieldUtilisation
 
 @metaChangeListenerDecorator("production_finished")
+@metaChangeListenerDecorator("activity_changed")
 class Producer(Component):
 	"""Class for objects, that produce something.
 	@param auto_init: bool. If True, the producer automatically adds one
@@ -55,11 +56,20 @@ class Producer(Component):
 	production_class = Production
 
 	# INIT
-	def __init__(self, auto_init=True, start_finished=False, productionlines={}, utilisation_calculator=None, **kwargs):
+	def __init__(self, auto_init=True, start_finished=False, productionlines=None,
+	             utilisation_calculator=None, reactivateable=True, **kwargs):
+		"""
+		@param productionline: yaml-dict for prod line data
+		@param utilisation_calculator: one of utilisatoin_mapping
+		@param reactivatable: whether it can be activated once it ran out of res. False for mines
+		"""
+		if productionlines is None:
+			productionlines = {}
 		super(Producer, self).__init__(**kwargs)
 		self.__auto_init = auto_init
 		self.__start_finished = start_finished
 		self.production_lines = productionlines
+		self.reactivateable = reactivateable
 		assert utilisation_calculator is not None
 		self.__utilisation = utilisation_calculator
 
@@ -275,34 +285,37 @@ class Producer(Component):
 		see also: is_active, toggle_active
 		@param production: instance of Production. if None, we do it to all productions.
 		@param active: whether to set it active or inactive"""
+		if not self.reactivateable and active and self._get_current_state() == PRODUCTION.STATES.waiting_for_res:
+			return # denied
 		if production is None:
+			# set all
 			for production in self.get_productions():
 				self.set_active(production, active)
-			return
-
-		line_id = production.get_production_line_id()
-		if active:
-			if not self.is_active(production):
-				self.log.debug("ResHandler %s: reactivating production %s", self.instance.worldid, line_id)
-				self._productions[line_id] = production
-				del self._inactive_productions[line_id]
-				production.pause(pause=False)
 		else:
-			if self.is_active(production):
-				self.log.debug("ResHandler %s: deactivating production %s", self.instance.worldid, line_id)
-				self._inactive_productions[line_id] = production
-				del self._productions[line_id]
-				production.pause()
-
-		if self.is_active() is not self.__active:
-			self.__active = not self.__active
-			if self.__active:
-				self.session.message_bus.broadcast(RemoveStatusIcon(self, self.instance, DecommissionedStatus))
+			line_id = production.get_production_line_id()
+			if active:
+				if not self.is_active(production):
+					self.log.debug("ResHandler %s: reactivating production %s", self.instance.worldid, line_id)
+					self._productions[line_id] = production
+					del self._inactive_productions[line_id]
+					production.pause(pause=False)
 			else:
-				icon = DecommissionedStatus(self.instance)
-				self.session.message_bus.broadcast(AddStatusIcon(self, icon))
+				if self.is_active(production):
+					self.log.debug("ResHandler %s: deactivating production %s", self.instance.worldid, line_id)
+					self._inactive_productions[line_id] = production
+					del self._productions[line_id]
+					production.pause()
+
+			if self.is_active() is not self.__active:
+				self.__active = not self.__active
+				if self.__active:
+					self.session.message_bus.broadcast(RemoveStatusIcon(self, self.instance, DecommissionedStatus))
+				else:
+					icon = DecommissionedStatus(self.instance)
+					self.session.message_bus.broadcast(AddStatusIcon(self, icon))
 
 		self.instance._changed()
+		self.on_activity_changed(self.is_active())
 
 	def toggle_active(self, production=None):
 		if production is None:
@@ -438,7 +451,7 @@ class QueueProducer(Producer):
 			prod = self.create_production(production_line_id)
 			prod.add_production_finished_listener(self.on_queue_element_finished)
 			self.add_production( prod )
-			self.instance.set_active(production=prod, active=True)
+			self.set_active(production=prod, active=True)
 		else:
 			self.set_active(active=False)
 

@@ -49,7 +49,9 @@ class ProductionOverview(StatsWidget):
 		#xgettext:python-format
 		self._gui.findChild(name = 'headline').text = _('Production overview of {settlement}').format(settlement=self.settlement.get_component(NamedComponent).name)
 
-		for resource_id, amount in sorted(self.settlement.produced_res.items(), key = lambda data: data[1], reverse = True):
+		for resource_id, amount in \
+		    sorted(self.settlement.produced_res.items(),
+		           key = lambda data: data[1], reverse = True):
 			self._add_line_to_gui(resource_id, amount)
 		self._content_vbox.adaptLayout()
 

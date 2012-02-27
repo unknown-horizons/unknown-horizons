@@ -140,11 +140,3 @@ class Mine(BuildingResourceHandler, BuildableSingleOnDeposit, BasicBuilding):
 				self.set_active(active=False)
 			self.owner.notify_mine_empty(self)
 
-	def set_active(self, production=None, active=True):
-		super(Mine, self).set_active(production, active)
-		if active and self._get_current_state() == PRODUCTION.STATES.waiting_for_res:
-			# don't allow reactivating a mine that's already empty
-			# we can't check for this before changing activity, because the state is paused
-			# before. Therefore we have to react here and disable the mine again.
-			self.set_active(production, active=False)
-

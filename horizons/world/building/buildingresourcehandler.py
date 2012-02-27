@@ -37,29 +37,25 @@ class BuildingResourceHandler(ResourceHandler):
 
 	def __init(self):
 		self.island.provider_buildings.append(self)
+		if self.has_component(Producer):
+			self.get_component(Producer).add_activity_changed_listener(self._set_running_costs_to_status)
+			self._set_running_costs_to_status(None, self.get_component(Producer).is_active())
 
 	def load(self, db, worldid):
 		super(BuildingResourceHandler, self).load(db, worldid)
-		self._set_running_costs_to_status()
 		self.__init()
 
 	def remove(self):
 		super(BuildingResourceHandler, self).remove()
 		self.island.provider_buildings.remove(self)
-
-	def set_active(self, production=None, active=True):
 		if self.has_component(Producer):
-			self.get_component(Producer).set_active(production, active)
-		# set running costs, if activity status has changed.
-		self._set_running_costs_to_status()
+			self.get_component(Producer).remove_activity_changed_listener(self._set_running_costs_to_status)
 
-	def _set_running_costs_to_status(self):
-		if self.running_costs_active():
-			if self.has_component(Producer) and not self.get_component(Producer).is_active():
-				self.toggle_costs()
-		else:
-			if self.has_component(Producer) and self.get_component(Producer).is_active():
-				self.toggle_costs()
+	def _set_running_costs_to_status(self, caller, is_active):
+		if self.running_costs_active() and not is_active:
+			self.toggle_costs()
+		elif is_active:
+			self.toggle_costs()
 		self._changed()
 
 
@@ -67,7 +63,5 @@ class UnitProducerBuilding(BuildingResourceHandler):
 	"""Class for building that produce units.
 	Uses a BuildingResourceHandler additionally to ResourceHandler to enable
 	building specific behaviour."""
+	pass
 
-	def __init__(self, **kwargs):
-		super(UnitProducerBuilding, self).__init__(**kwargs)
-		self.set_active(active=False)

@@ -76,7 +76,7 @@ class Component(object):
 	def load(self, db, worldid):
 		"""
 		This does on load what __init() and initalize() together do on constructions at runtime.
-		Has to set up *everything* that is not setup in __init__(). Note that on loading
+		Has to set up everything that is not setup in __init__(). Note that on loading
 		__init__() is called with the data needed by the component through get_instance(),
 		but initialize() is not, so any work needed for loading as well should be moved
 		to a separate method and called here.
