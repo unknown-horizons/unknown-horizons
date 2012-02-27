@@ -590,6 +590,7 @@ INSERT INTO "status_icon_exclusions" VALUES(22);
 INSERT INTO "status_icon_exclusions" VALUES(36);
 INSERT INTO "status_icon_exclusions" VALUES(45);
 INSERT INTO "status_icon_exclusions" VALUES(21);
+INSERT INTO "status_icon_exclusions" VALUES(32);
 INSERT INTO "status_icon_exclusions" VALUES(1000013);
 
 CREATE TABLE additional_provided_resources (
