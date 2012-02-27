@@ -90,14 +90,14 @@ ROWINDENT = '\n\t\t'
 
 OBJECT_PATH = 'content/objects/'
 
-locations_to_translate = {
+locations_to_translate = [
 	OBJECT_PATH + 'buildings/',
 	OBJECT_PATH + 'units/ships/',
-	}
+	]
 
-files_to_skip = {
+files_to_skip = [
 	'usablefisher.yaml',
-	}
+	]
 
 import os
 import sys

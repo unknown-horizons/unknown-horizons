@@ -88,7 +88,7 @@ def set_translations():
 FOOTER = '''\n\t}\n'''
 ROWINDENT = '\n\t\t'
 
-files_to_skip = {
+files_to_skip = [
 	'call_for_support.xml',
 	'credits0.xml',
 	'credits1.xml',
@@ -97,7 +97,7 @@ files_to_skip = {
 	'credits4.xml',
 	'stringpreviewwidget.xml',
 	'startup_error_popup.xml'
-	}
+	]
 
 import xml.dom.minidom
 import os
