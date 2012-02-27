@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: translate-uh@lists.unknown-horizons.org\n"
 "POT-Creation-Date: 2011-10-31 20:46+0100\n"
-"PO-Revision-Date: 2012-02-27 15:31+0200\n"
+"PO-Revision-Date: 2012-02-27 15:59+0200\n"
 "Last-Translator: matyi <molnarmatyas@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: hu\n"
@@ -313,11 +313,13 @@ msgstr ""
 #: po/tutorial.py:40
 msgid "Build a main square. Choose an area without many economy buildings."
 msgstr ""
+"Készítsen egy főteret. Válassz ki egy helyet anélkül, hogy sok gazdasági "
+"épület lenne a környéken."
 
 #. This is a logbook page heading. Space is VERY short, please only translate to strings that fit (roughly 30 characters max).
 #: po/tutorial.py:42
 msgid "NEW TASK: RESIDENTIAL BUILDINGS"
-msgstr ""
+msgstr "Új feladat: Lakóépületek"
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:44
@@ -334,11 +336,18 @@ msgid ""
 "\n"
 "TASK: Build a tent and connect it to the main square."
 msgstr ""
+"A telepesek szeretnék, hogy tető legyen a fejük fölött, egyébként nem is "
+"tudják milyen az élet a városban! Ezért jó neki a sátor is. \\ N\\ nSátrak "
+"alapvető lakóépületek. A telepesek akarják majd, hogy fejleszd, amikor "
+"elérnek egy nagyobb szintre. \\ N\\ nA telepesek nem tűnnek nagyon hasznosnak, "
+"mert megpróbálják elfogyasztani az összes árut amit termelsz - de legalább "
+"fizetnek adót, és ez az egyetlen módja, hogy pénzt szerezz most! \\ N\\ "
+"nFeladat: Készíts egy sátrat, és csatlakoztasd a főtérre."
 
 #. This message is displayed in the widget on the left screen part. Please keep it short enough to fit there!
 #: po/tutorial.py:46
 msgid "Build a tent and connect it to the main square."
-msgstr ""
+msgstr "Készíts egy sátrat, és csatlakoztasd a főtérre."
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:48
@@ -362,12 +371,20 @@ msgid ""
 "TIP: Holding down SHIFT eases constructing multiple buildings of the same "
 "kind."
 msgstr ""
+"Vessünk egy pillantást a sátor áttekintés fülre. \\ NLáthatjuk \\ n* A lakosok "
+"boldogságát, \\ n* Az általuk befizetett adókat és \\ n* A forrásokat amiket "
+"igényelnek. \\ N\\ nHa ezek a követelmények teljesülnek, a boldogság és így a "
+"adóbevétel növekedni fog. \\ N\\ nHa nem, a boldogság és a jövedelmek "
+"csökkennek. Néha a lakosok amikor sorsuk sanyarú, egyszerűen otthagyják a "
+"falut, és mindenüket. \\ N\\ nNe feledd, hogy megváltoztathatod a globális adó "
+"beállításokat itt is. \\ N\\ nFeladat: Készíts legalább további három sátrat. "
+"\\ N\\ nTIPP: Tartsd lenyomva a SHIFT-et több hasonló épület építésekor."
 
 #. This message is displayed in the widget on the left screen part. Please keep it short enough to fit there!
 #: po/tutorial.py:50
 msgid ""
 "Build at least three additional tents and connect them to the main square."
-msgstr ""
+msgstr "Építs legalább három további sátrat és kösd be a főtérre."
 
 #. This is a logbook page heading. Space is VERY short, please only translate to strings that fit (roughly 30 characters max).
 #: po/tutorial.py:52
