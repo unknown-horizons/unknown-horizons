@@ -219,18 +219,18 @@ class GuiHelper(object):
 		if self.follow_mouse:
 			self.session.view.center(x, y)
 
-	def cursor_press_button(self, x, y, button, shift=False):
-		self.cursor.mousePressed(self._make_mouse_event(x, y, button, shift))
+	def cursor_press_button(self, x, y, button, shift=False, ctrl=False):
+		self.cursor.mousePressed(self._make_mouse_event(x, y, button, shift, ctrl))
 
-	def cursor_release_button(self, x, y, button, shift=False):
-		self.cursor.mouseReleased(self._make_mouse_event(x, y, button, shift))
+	def cursor_release_button(self, x, y, button, shift=False, ctrl=False):
+		self.cursor.mouseReleased(self._make_mouse_event(x, y, button, shift, ctrl))
 
-	def cursor_click(self, x, y, button, shift=False):
+	def cursor_click(self, x, y, button, shift=False, ctrl=False):
 		self.cursor_move(x, y)
-		self.cursor_press_button(x, y, button, shift)
-		self.cursor_release_button(x, y, button, shift)
+		self.cursor_press_button(x, y, button, shift, ctrl)
+		self.cursor_release_button(x, y, button, shift, ctrl)
 
-	def _make_mouse_event(self, x, y, button=None, shift=False):
+	def _make_mouse_event(self, x, y, button=None, shift=False, ctrl=False):
 		if button:
 			button = {'left': fife.MouseEvent.LEFT,
 					  'right': fife.MouseEvent.RIGHT}[button]
@@ -241,6 +241,7 @@ class GuiHelper(object):
 		evt.getY.return_value = y
 		evt.getButton.return_value = button
 		evt.isShiftPressed.return_value = shift
+		evt.isControlPressed.return_value = ctrl
 
 		return evt
 

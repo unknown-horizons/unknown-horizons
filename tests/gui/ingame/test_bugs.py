@@ -21,7 +21,6 @@
 
 from horizons.command.unit import CreateUnit
 from horizons.constants import UNITS, BUILDINGS
-from horizons.world.component.selectablecomponent import SelectableComponent
 from tests.gui import TestFinished, gui_test
 from tests.gui.helper import get_player_ship
 
@@ -310,5 +309,23 @@ def test_ticket_1509(gui):
 	gui.trigger('tab_base', '0/action/default')
 	yield
 	gui.trigger('tab_base', '1/action/default')
+
+	yield TestFinished
+
+
+@gui_test(use_fixture='boatbuilder', timeout=120)
+def test_ticket_1526(gui):
+	"""
+	Multiselection with Ctrl crashes on many combinations.
+	"""
+	yield
+
+	# Select main square and then boat builder
+	gui.cursor_click(52, 12, 'left')
+	gui.cursor_click(64, 10, 'left', ctrl=True)
+
+	# Select same building twice
+	gui.cursor_click(52, 12, 'left')
+	gui.cursor_click(52, 12, 'left', ctrl=True)
 
 	yield TestFinished
