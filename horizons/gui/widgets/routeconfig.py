@@ -155,6 +155,7 @@ class RouteConfig(object):
 		position = self.widgets.index(entry)
 		if position == len(self.widgets) and direction is 'down' or \
 		   position == 0 and direction is 'up':
+			AmbientSoundComponent.play_special('error')
 			return
 
 		if direction is 'up':
@@ -177,6 +178,7 @@ class RouteConfig(object):
 			self.instance.route.enable()
 
 		self._gui.adaptLayout()
+		self._resource_selection_area_layout_hack_fix()
 
 	def show_load_icon(self, slot):
 		button = slot.findChild(name="buysell")
@@ -275,7 +277,7 @@ class RouteConfig(object):
 		lbl = widgets.Label(name='select_res_label', text=_('Select a resource:'))
 		vbox.addChild( lbl )
 
-		scrollarea = widgets.ScrollArea()
+		scrollarea = widgets.ScrollArea(name="resources_scrollarea")
 		res_box = widgets.VBox()
 		scrollarea.addChild(res_box)
 		vbox.addChild(scrollarea)
@@ -322,11 +324,17 @@ class RouteConfig(object):
 		res_box.addChild(current_hbox)
 
 		self._gui.adaptLayout()
-		scrollarea.max_width = 316
-		scrollarea.width = 316
-		vbox.max_width = 316
-		vbox.width = 316
+		self._resource_selection_area_layout_hack_fix()
 
+	def _resource_selection_area_layout_hack_fix(self):
+		# no one knows why this is necessary, but sometimes we need to set the values anew
+		vbox = self._gui.findChild(name="resources")
+		scrollarea = vbox.findChild(name="resources_scrollarea")
+		if scrollarea:
+			scrollarea.max_width = 316
+			scrollarea.width = 316
+			vbox.max_width = 316
+			vbox.width = 316
 
 	def hide_resource_menu(self):
 		self.resource_menu_shown = False
