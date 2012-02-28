@@ -89,19 +89,31 @@ class BuildingTool(NavigationTool):
 
 		self.highlight_buildable()
 
-	def highlight_buildable(self, tiles_to_check = None):
+	def highlight_buildable(self, tiles_to_check=None):
 		"""Highlights all buildable tiles.
 		@param tiles_to_check: list of tiles to check for coloring."""
 		self._build_logic.highlight_buildable(self, tiles_to_check)
 
 		# also distinguish related buildings (lumberjack for tree)
-		related = self.session.db.get_inverse_related_building_ids(self._class.id)
-		for settlement in self.session.world.settlements:
-			if settlement.owner.is_local_player:
-				for bid in related:
-					for building in settlement.buildings_by_id.get(bid, []):
-						building.get_component(SelectableBuildingComponent).select()
-						self._related_buildings.append(building)
+		related = frozenset(self.session.db.get_inverse_related_building_ids(self._class.id))
+		if tiles_to_check is None:
+			buildings_to_select = [ buildings_to_select for\
+			                        settlement in self.session.world.settlements if \
+			                        settlement.owner.is_local_player for \
+			                        bid in related  for \
+			                        buildings_to_select in settlement.buildings_by_id[bid] ]
+
+		else:
+			buildings_to_select = [ tile.object for tile in tiles_to_check if \
+			                        tile.object is not None and tile.object.id in related ]
+
+		# NOTE: it would suffice to only call this when the building tool is inited,
+		# however there is some general cleanup function that removes the selection.
+		# This is the bottleneck of building buildings with related buildings.
+		SelectableBuildingComponent.select_many(buildings_to_select,
+		                                        self.session.view.renderer['InstanceRenderer'])
+		for building in buildings_to_select:
+			self._related_buildings.append(building)
 
 	def _color_buildable_tile(self, tile):
 		self._buildable_tiles.add(tile) # it's a set, so duplicates are handled

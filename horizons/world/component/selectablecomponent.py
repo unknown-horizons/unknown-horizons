@@ -208,6 +208,30 @@ class SelectableBuildingComponent(SelectableComponent):
 		return selected_tiles
 
 	@classmethod
+	def select_many(cls, buildings, renderer):
+		"""Same as calling select() on many instances, but way faster.
+		Limited functionality, only use on real buildings of a settlement."""
+		if not buildings:
+			return # that is not many
+		settlement = buildings[0].settlement
+
+		coords = set()
+		add_to_coord_set = coords.add
+
+		for building in buildings:
+			for coord in building.position.get_radius_coordinates(building.radius, include_self=True):
+				add_to_coord_set(coord)
+
+		for coord in coords:
+			tile = settlement.ground_map.get(coord)
+			if tile:
+				try:
+					if ( 'constructible' in tile.classes or 'coastline' in tile.classes ):
+						cls._add_selected_tile(tile, renderer)
+				except AttributeError:
+					pass # no tile or no object on tile
+
+	@classmethod
 	def _do_select(cls, renderer, position, world, settlement,
 	               radius, range_applies_only_on_island):
 		if range_applies_only_on_island:
