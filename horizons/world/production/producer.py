@@ -105,8 +105,6 @@ class Producer(Component):
 				prod = self.create_production(prod_line)
 				self.add_production(prod)
 				prod.start()
-		if self.__start_finished:
-			self.finish_production_now()
 
 	def get_production_lines_by_level(self, level):
 		prod_lines = []
@@ -120,7 +118,7 @@ class Producer(Component):
 		production_class = self.production_class
 		owner_inventory = self.instance._get_owner_inventory()
 		return production_class(inventory=self.instance.get_component(StorageComponent).inventory, \
-				                owner_inventory=owner_inventory, prod_id=id, prod_data=data, load=load)
+				                owner_inventory=owner_inventory, prod_id=id, prod_data=data, load=load, start_finished=self.__start_finished)
 
 	def add_production_by_id(self, production_line_id, start_finished=False):
 		"""Convenience method.

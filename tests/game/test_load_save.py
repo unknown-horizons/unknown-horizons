@@ -71,7 +71,7 @@ def create_lumberjack_production_session():
 	settlement, island = settle(session)
 
 	for x in [29, 30, 31, 32]:
-		Build(BUILDINGS.TREE_CLASS, x, 29, island, settlement=settlement, data = {"start_finished": True})(player)
+		Build(BUILDINGS.TREE_CLASS, x, 29, island, settlement=settlement,)(player)
 	building = Build(BUILDINGS.LUMBERJACK_CLASS, 30, 30, island, settlement=settlement)(player)
 	production = building.get_component(Producer).get_productions()[0]
 

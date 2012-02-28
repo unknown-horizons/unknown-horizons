@@ -97,11 +97,6 @@ class Tree(NatureBuildingResourceHandler):
 	buildable_upon = True
 	layer = LAYERS.OBJECTS
 
-	def initialize(self, start_finished=False, **kwargs):
-		super(Tree, self).initialize( **kwargs )
-		if start_finished:
-			self.get_component(Producer).finish_production_now()
-
 class ResourceDeposit(NatureBuilding):
 	"""Class for stuff like clay deposits."""
 	tearable = False

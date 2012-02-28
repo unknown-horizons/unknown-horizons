@@ -15,6 +15,7 @@ buildingcosts: {1: 10}
 components:
 - HealthComponent: {maxhealth: 10}
 - ProducerComponent:
+    start_finished: True
     productionlines:
       1:
         produces:
