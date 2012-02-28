@@ -423,7 +423,6 @@ def generate_map(seed, map_size, water_percent, max_island_size, preferred_islan
 	@param island_size_deviation: deviation of island side lengths
 	@return: filename of the SQLite database containing the map
 	"""
-
 	max_island_size = min(max_island_size, map_size)
 	rand = random.Random(_simplify_seed(seed))
 	min_island_size = 20 # minimum chosen island side length (the real size my be smaller)
@@ -503,3 +502,7 @@ def generate_map_from_seed(seed):
 	"""
 
 	return generate_map(seed, 150, 50, 70, 70, 30)
+
+def generate_huge_map_from_seed(seed):
+	"""Same as generate_map_from_seed, but making it as big as it is still reasonable"""
+	return generate_map(seed, 250, 20, 70, 70, 5)
