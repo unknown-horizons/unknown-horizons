@@ -22,7 +22,7 @@
 
 from horizons.world.building.buildingresourcehandler import BuildingResourceHandler
 from horizons.world.building.building import BasicBuilding
-from horizons.world.building.buildable import BuildableSingle, BuildableSingleOnCoast, BuildableSingleOnDeposit
+from horizons.world.building.buildable import BuildableSingle, BuildableSingleOnCoast, BuildableSingleOnDeposit, BuildableSingleOnOcean
 from horizons.world.building.nature import Field
 from horizons.util import Rect
 from horizons.util.shapes.radiusshape import RadiusRect
@@ -42,6 +42,10 @@ class Farm(ProductionBuilding):
 		providers = self.island.get_providers_in_range(reach, reslist=self.get_needed_resources())
 		return [provider for provider in providers if isinstance(provider, Field)]
 
+
+class CoastalProducer(BuildingResourceHandler, BuildableSingleOnOcean, BasicBuilding):
+	"""E.g. salt ponds"""
+	pass
 
 class Fisher(BuildingResourceHandler, BuildableSingleOnCoast, BasicBuilding):
 

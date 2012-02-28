@@ -404,7 +404,7 @@ class BuildableSingleOnOcean(BuildableSingleOnCoast):
 				raise _NotBuildableError(BuildableErrorTypes.NO_ISLAND)
 		posis = position.get_coordinates()
 		for tile in posis:
-			for rad in Circle(Point(*tile), 2):
+			for rad in Circle(Point(*tile), 3):
 				if island.get_tile(rad) is None:
 					# Tile not on island -> deep water
 					return True

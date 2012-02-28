@@ -1,6 +1,6 @@
 id: 35
 name: _ Salt Ponds
-baseclass: production.ProductionBuilding
+baseclass: production.CoastalProducer
 radius: 0
 cost: 10
 cost_inactive: 0
