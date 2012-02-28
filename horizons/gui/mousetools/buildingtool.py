@@ -73,6 +73,7 @@ class BuildingTool(NavigationTool):
 		self._buildable_tiles = set() # tiles marked as buildable
 		self._related_buildings = set() # buildings highlighted as related
 		self._build_logic = None
+		self._related_buildings_selected_tiles = frozenset() # highlights w.r.t. related buildings
 		if self.ship is not None:
 			self._build_logic = ShipBuildingToolLogic(ship)
 		elif build_related is not None:
@@ -97,6 +98,7 @@ class BuildingTool(NavigationTool):
 
 		# also distinguish related buildings (lumberjack for tree)
 		related = frozenset(self.session.db.get_inverse_related_building_ids(self._class.id))
+		renderer = self.session.view.renderer['InstanceRenderer']
 		if tiles_to_check is None:
 			buildings_to_select = [ buildings_to_select for\
 			                        settlement in self.session.world.settlements if \
@@ -104,15 +106,16 @@ class BuildingTool(NavigationTool):
 			                        bid in related  for \
 			                        buildings_to_select in settlement.buildings_by_id[bid] ]
 
+			tiles = SelectableBuildingComponent.select_many(buildings_to_select, renderer)
+			self._related_buildings_selected_tiles = frozenset(tiles)
 		else:
 			buildings_to_select = [ tile.object for tile in tiles_to_check if \
 			                        tile.object is not None and tile.object.id in related ]
+			for tile in tiles_to_check:
+				# check if we need to recolor the tiles
+				if tile in self._related_buildings_selected_tiles:
+					SelectableBuildingComponent._add_selected_tile(tile, renderer, remember=False)
 
-		# NOTE: it would suffice to only call this when the building tool is inited,
-		# however there is some general cleanup function that removes the selection.
-		# This is the bottleneck of building buildings with related buildings.
-		SelectableBuildingComponent.select_many(buildings_to_select,
-		                                        self.session.view.renderer['InstanceRenderer'])
 		for building in buildings_to_select:
 			self._related_buildings.add(building)
 
@@ -128,6 +131,7 @@ class BuildingTool(NavigationTool):
 		self._build_logic.remove(self.session)
 		self._buildable_tiles = None
 		self._modified_instances = None
+		self._related_buildings_selected_tiles = None
 		self.buildings = None
 		if self.gui is not None:
 			self.session.view.remove_change_listener(self.draw_gui)
@@ -301,7 +305,6 @@ class BuildingTool(NavigationTool):
 							inst = obj.fife_instance
 							self.renderer.addOutlined(inst, *self.related_building_outline)
 							self.renderer.addColored(inst, *self.related_building_color)
-							self._modified_instances.add( weakref.ref(inst) )
 
 		else: # not buildable
 			# must remove other highlight, fife does not support both
@@ -349,7 +352,6 @@ class BuildingTool(NavigationTool):
 					inst = related_building.fife_instance
 					self.renderer.addOutlined(inst, *self.related_building_outline)
 					self.renderer.addColored(inst, *self.related_building_color)
-					self._modified_instances.add( weakref.ref(inst) )
 
 
 	def on_escape(self):
@@ -402,7 +404,8 @@ class BuildingTool(NavigationTool):
 			self._check_update_preview(point)
 
 			# actually do the build
-			found_buildable = self.do_build()
+			changed_tiles = self.do_build()
+			found_buildable = bool(changed_tiles)
 
 			# HACK: users sometimes don't realise that roads can be dragged
 			# check if 3 roads have been built within 1.2 seconds, and display
@@ -424,6 +427,8 @@ class BuildingTool(NavigationTool):
 			    not found_buildable or \
 			    self._class.class_package == 'path':
 				# build once more
+				self._restore_modified_instances()
+				self.highlight_buildable(changed_tiles)
 				self.start_point = point
 				self._build_logic.continue_build()
 				self.preview_build(point, point)
@@ -436,9 +441,8 @@ class BuildingTool(NavigationTool):
 
 	def do_build(self):
 		"""Actually builds the previews
-		@return whether it was possible to build anything of the previews."""
-		# used to check if a building was built with this click, later used to play a sound
-		built = False
+		@return a set of tiles where buildings have really been built"""
+		changed_tiles = set()
 
 		# actually do the build and build preparations
 		i = -1
@@ -453,7 +457,6 @@ class BuildingTool(NavigationTool):
 				self.renderer.removeOutlined(fife_instance)
 				fife_instance.getLocationRef().getLayer().deleteInstance(fife_instance)
 
-
 			if building.buildable:
 				island = self.session.world.get_island(building.position.origin)
 				for position in building.position:
@@ -465,7 +468,7 @@ class BuildingTool(NavigationTool):
 						# we don't need to do anything.
 						self._buildable_tiles.remove(tile)
 						self.renderer.removeColored(tile._instance)
-				built = True
+						changed_tiles.add(tile)
 				self._remove_listeners() # Remove changelisteners for update_preview
 				# create the command and execute it
 				cmd = Build(building=self._class, \
@@ -498,13 +501,13 @@ class BuildingTool(NavigationTool):
 						  building.position.origin.x, building.position.origin.y,
 						  'NEED_MORE_RES', {'resource' : _(res_name)})
 
-		if built:
+		if changed_tiles:
 			PlaySound("build").execute(self.session, True)
 			if self.gui is not None:
 				self.gui.hide()
 		self.buildings = []
 		self.buildings_action_set_ids = []
-		return built
+		return changed_tiles
 
 	def _check_update_preview(self, end_point):
 		"""Used internally if the end_point changes"""
@@ -520,7 +523,6 @@ class BuildingTool(NavigationTool):
 			if self.last_change_listener.has_change_listener(self.highlight_buildable):
 				self.last_change_listener.remove_change_listener(self.highlight_buildable)
 			self._build_logic.remove_change_listener(self.last_change_listener, self)
-
 
 		self.last_change_listener = None
 
@@ -566,24 +568,25 @@ class BuildingTool(NavigationTool):
 			# redraw buildables (removal of selection might have tampered with it)
 			self.highlight_buildable(deselected_tiles)
 
-		for inst_weakref in self._modified_instances:
-			fife_instance = inst_weakref()
-			if fife_instance:
-				# remove everything that might have been added, we don't keep track of the single changes
-				self.renderer.removeOutlined(fife_instance)
-				self.renderer.removeColored(fife_instance)
-				if not hasattr(fife_instance, "keep_translucency") or not fife_instance.keep_translucency:
-					fife_instance.get2dGfxVisual().setTransparency(0)
+		self._restore_modified_instances()
 		for building in self._related_buildings:
 			# restore selection, removeOutline can destroy it
 			building.get_component(SelectableComponent).set_selection_outline()
-		self._modified_instances.clear()
 		for fife_instance in self.buildings_fife_instances.itervalues():
 			layer = fife_instance.getLocationRef().getLayer()
 			# layer might not exist, happens for some reason after a build
 			if layer is not None:
 				layer.deleteInstance(fife_instance)
 		self.buildings_fife_instances = {}
+
+	def _restore_modified_instances(self):
+		"""Removes transparency"""
+		for inst_weakref in self._modified_instances:
+			fife_instance = inst_weakref()
+			if fife_instance:
+				if not hasattr(fife_instance, "keep_translucency") or not fife_instance.keep_translucency:
+					fife_instance.get2dGfxVisual().setTransparency(0)
+		self._modified_instances.clear()
 
 	def _remove_coloring(self):
 		"""Removes coloring from tiles, that indicate that the tile is buildable"""
