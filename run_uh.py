@@ -157,6 +157,8 @@ def get_option_parser():
 	                     help="Create an multiplayer game with default settings.")
 	dev_group.add_option("--join-mp-game", action="store_true", dest="join_mp_game", \
 	                     help="Join first multiplayer game.")
+	dev_group.add_option("--interactive-shell", action="store_true", dest="interactive_shell",
+	                     help="Starts an IPython kernel. Connect to the shell with: ipython console --existing")
 	p.add_option_group(dev_group)
 	p.add_option_group(dev_group)
 	p.add_option_group(dev_group)

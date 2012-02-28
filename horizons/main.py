@@ -234,6 +234,10 @@ def start(command_line_arguments):
 		from tests.gui import TestRunner
 		TestRunner(fife, command_line_arguments.gui_test)
 
+	if command_line_arguments.interactive_shell:
+		from horizons.util import interactive_shell
+		interactive_shell.start(fife)
+
 	fife.run()
 
 def quit():
