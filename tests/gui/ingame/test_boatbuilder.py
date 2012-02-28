@@ -40,7 +40,8 @@ def test_ticket_1224(gui):
 	settlement = gui.session.world.player.settlements[0]
 	boatbuilder = settlement.buildings_by_id[BUILDINGS.BOATBUILDER_CLASS][0]
 
-	gui.select([boatbuilder])
+	# Select boat builder
+	gui.cursor_click(64, 10, 'left')
 
 	def running_costs():
 		c = gui.find(name='BB_main_tab')
@@ -76,7 +77,8 @@ def test_ticket_1294(gui):
 	settlement = gui.session.world.player.settlements[0]
 	boatbuilder = settlement.buildings_by_id[BUILDINGS.BOATBUILDER_CLASS][0]
 
-	gui.select([boatbuilder])
+	# Select boat builder
+	gui.cursor_click(64, 10, 'left')
 
 	# Select trade ships tab
 	gui.trigger('tab_base', '1/action/default')
@@ -114,10 +116,8 @@ def test_remove_from_queue(gui):
 	"""
 	yield # test needs to be a generator for now
 
-	settlement = gui.session.world.player.settlements[0]
-	boatbuilder = settlement.buildings_by_id[BUILDINGS.BOATBUILDER_CLASS][0]
-
-	gui.select([boatbuilder])
+	# Select boat builder
+	gui.cursor_click(64, 10, 'left')
 
 	# Select trade ships tab
 	gui.trigger('tab_base', '1/action/default')
@@ -143,10 +143,8 @@ def test_cancel_ticket_1424(gui):
 	"""
 	yield # test needs to be a generator for now
 
-	settlement = gui.session.world.player.settlements[0]
-	boatbuilder = settlement.buildings_by_id[BUILDINGS.BOATBUILDER_CLASS][0]
-
-	gui.select([boatbuilder])
+	# Select boat builder
+	gui.cursor_click(64, 10, 'left')
 
 	# Select trade ships tab
 	gui.trigger('tab_base', '1/action/default')
@@ -173,10 +171,8 @@ def test_save_load_ticket_1421(gui):
 	"""
 	yield # test needs to be a generator for now
 
-	settlement = gui.session.world.player.settlements[0]
-	boatbuilder = settlement.buildings_by_id[BUILDINGS.BOATBUILDER_CLASS][0]
-
-	gui.select([boatbuilder])
+	# Select boat builder
+	gui.cursor_click(64, 10, 'left')
 
 	# Select trade ships tab
 	gui.trigger('tab_base', '1/action/default')
@@ -193,8 +189,7 @@ def test_save_load_ticket_1421(gui):
 	fd, filename = tempfile.mkstemp()
 	os.close(fd)
 
-	session = settlement.session
-	assert session.save(savegamename=filename)
+	assert gui.session.save(savegamename=filename)
 
 	horizons.main.load_game( savegame=filename )
 
@@ -211,7 +206,8 @@ def test_ticket_1513(gui):
 	settlement = gui.session.world.player.settlements[0]
 	boatbuilder = settlement.buildings_by_id[BUILDINGS.BOATBUILDER_CLASS][0]
 
-	gui.select([boatbuilder])
+	# Select boat builder
+	gui.cursor_click(64, 10, 'left')
 
 	def running_costs():
 		c = gui.find(name='BB_main_tab')
@@ -255,7 +251,8 @@ def test_ticket_1514(gui):
 	settlement = gui.session.world.player.settlements[0]
 	boatbuilder = settlement.buildings_by_id[BUILDINGS.BOATBUILDER_CLASS][0]
 
-	gui.select([boatbuilder])
+	# Select boat builder
+	gui.cursor_click(64, 10, 'left')
 
 	# nothing beeing build, no cancel button visible
 	assert not gui.find('BB_cancel_button')

@@ -31,7 +31,7 @@ import mock
 import horizons.main
 from fife import fife
 from horizons.constants import GAME_SPEED
-from horizons.gui.mousetools.cursortool import CursorTool
+from horizons.gui.mousetools import NavigationTool
 from horizons.scheduler import Scheduler
 from horizons.util import Point
 
@@ -54,9 +54,6 @@ class CursorToolsPatch(object):
 		gui.cursor_map_coords.disable()
 	"""
 	def __init__(self):
-		self.old = CursorTool.get_world_location_from_event
-		self.old_exact = CursorTool.get_exact_world_location_from_event
-
 		def patched_world_location_from_event(self, evt):
 			"""Typically we expect a Mock MouseEvent, genereated by `_make_mouse_event`.
 
@@ -74,15 +71,33 @@ class CursorToolsPatch(object):
 
 			return Point(x, y)
 
-		self.patch = patched_world_location_from_event
+		self.patch1 = mock.patch('horizons.gui.mousetools.CursorTool.get_world_location_from_event', patched_world_location_from_event)
+		self.patch2 = mock.patch('horizons.gui.mousetools.CursorTool.get_exact_world_location_from_event', patched_world_location_from_event)
+
+		NavigationTool._orig_get_hover_instances = NavigationTool.get_hover_instances
 
 	def enable(self):
-		CursorTool.get_world_location_from_event = self.patch
-		CursorTool.get_exact_world_location_from_event = self.patch
+		self.patch1.start()
+		self.patch2.start()
+
+		# this makes selecting buildings by clicking on them possible. without this, get_hover_instances receives an event with map
+		# coordinates, and will not find the correct building (if any). to fix this, we're converting the coordinates back to screen space
+		# and can avoid changing any other code
+		def deco(func):
+			def wrapped(self, evt, *args, **kwargs):
+				screen_point = self.session.view.cam.toScreenCoordinates(fife.ExactModelCoordinate(evt.getX(), evt.getY()))
+				evt = mock.Mock()
+				evt.getX.return_value = screen_point.x
+				evt.getY.return_value = screen_point.y
+				return func(self, evt, *args, **kwargs)
+			return wrapped
+		NavigationTool.get_hover_instances = deco(NavigationTool.get_hover_instances)
 
 	def disable(self):
-		CursorTool.get_world_location_from_event = self.old
-		CursorTool.get_exact_world_location_from_event = self.old_exact
+		self.patch1.stop()
+		self.patch2.stop()
+
+		NavigationTool.get_hover_instances = NavigationTool._orig_get_hover_instances
 
 
 class GuiHelper(object):

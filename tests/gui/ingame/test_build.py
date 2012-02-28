@@ -84,7 +84,7 @@ def test_found_settlement(gui):
 	gui.cursor_click(55, y, 'right')
 
 	# select the storage
-	gui.select([storage])
+	gui.cursor_click(55, 15, 'left')
 	assert gui.find('warehouse_and_storage_overview')
 	collectors = storage.get_component(CollectingComponent).get_local_collectors()
 

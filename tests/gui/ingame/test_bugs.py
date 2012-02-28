@@ -175,10 +175,7 @@ def test_ticket_1371(gui):
 	gui.cursor_click(52, 7, 'left')
 
 	# Select lumberjack
-	# TODO selecting should work when clicking on the map
-	settlement = gui.session.world.player.settlements[0]
-	lumberjack = settlement.buildings_by_id[BUILDINGS.LUMBERJACK_CLASS][0]
-	gui.select([lumberjack])
+	gui.cursor_click(52, 7, 'left')
 
 	# Open build related tab
 	gui.trigger('tab_base', '1/action/default')
@@ -215,18 +212,13 @@ def test_ticket_1447(gui):
 	warehouse = gui.session.world.islands[0].ground_map[(18, 63)].object
 	assert(warehouse.id == BUILDINGS.WAREHOUSE_CLASS)
 
-	gui.select([fisher])
-	fisher.get_component(SelectableComponent).select()
+	gui.cursor_click(20, 67, 'left')
 	yield
 
-	fisher.get_component(SelectableComponent).deselect()
-	gui.select([lumberjack])
-	lumberjack.get_component(SelectableComponent).select()
+	gui.cursor_click(23, 63, 'left')
 	yield
 
-	lumberjack.get_component(SelectableComponent).deselect()
-	gui.select([warehouse])
-	warehouse.get_component(SelectableComponent).select()
+	gui.cursor_click(18, 63, 'left')
 	yield # this could crash the game
 
 	yield TestFinished
@@ -239,8 +231,7 @@ def test_ticket_1515(gui):
 	"""
 	yield # test needs to be a generator for now
 
-	mountain = gui.session.world.islands[0].ground_map[(6, 17)].object
-	gui.select([mountain])
+	gui.cursor_click(6, 17, 'left')
 
 	yield TestFinished
 
@@ -310,8 +301,8 @@ def test_ticket_1509(gui):
 	gui.trigger('tab', 'button_1/action/default')
 	gui.cursor_click(7, 10, 'left')
 
-	tent = gui.session.world.islands[0].ground_map[(7, 10)].object
-	gui.select([tent])
+	# Select tent
+	gui.cursor_click(7, 10, 'left')
 
 	# quickly switch between tabs
 	gui.trigger('tab_base', '1/action/default')
