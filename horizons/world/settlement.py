@@ -22,6 +22,8 @@
 import json
 import sqlite3
 
+from collections import defaultdict
+
 from horizons.constants import BUILDINGS, SETTLER
 from horizons.entities import Entities
 from horizons.util.worldobject import WorldObject
@@ -63,8 +65,8 @@ class Settlement(ComponentHolder, WorldObject, ChangeListener, ResourceHandler):
 		self.owner = owner
 		self.buildings = []
 		self.ground_map = {} # this is the same as in island.py. it uses hard references to the tiles too
-		self.produced_res = {} # dictionary of all resources, produced at this settlement
-		self.buildings_by_id = {}
+		self.produced_res = defaultdict(lambda : 0) # dictionary of all resources, produced at this settlement
+		self.buildings_by_id = defaultdict(list)
 		self.warehouse = None # this is set later in the same tick by the warehouse itself or load() here
 		self.upgrade_permissions = upgrade_permissions
 		self.tax_settings = tax_settings
@@ -241,10 +243,7 @@ class Settlement(ComponentHolder, WorldObject, ChangeListener, ResourceHandler):
 	def settlement_building_production_finished(self, building, produced_res):
 		"""Callback function for registering the production of resources."""
 		for res, amount in produced_res.iteritems():
-			if res in self.produced_res:
-				self.produced_res[res] += amount
-			else:
-				self.produced_res[res] = amount
+			self.produced_res[res] += amount
 
 	def end(self):
 		self.session = None
