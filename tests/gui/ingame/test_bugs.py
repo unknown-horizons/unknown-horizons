@@ -20,6 +20,7 @@
 # ###################################################
 
 from horizons.command.unit import CreateUnit
+from horizons.command.building import Tear
 from horizons.constants import UNITS, BUILDINGS
 from tests.gui import TestFinished, gui_test
 from tests.gui.helper import get_player_ship
@@ -267,13 +268,12 @@ def test_ticket_1520(gui):
 	gui.cursor_move(13, 11)
 	gui.cursor_press_button(13, 11, 'left')
 
-	# wait until tent is gone
-	while ground_map[(7, 9)].object.id == BUILDINGS.RESIDENTIAL_CLASS:
-		yield
+	# remove tent
+	Tear( ground_map[(7, 9)].object ).execute(gui.session)
 
 	# release mouse button, finish build
 	gui.cursor_release_button(13, 11, 'left')
-		
+
 	yield TestFinished
 
 

@@ -35,7 +35,7 @@ from horizons.command.sounds import PlaySound
 from horizons.util.gui import load_uh_widget
 from horizons.constants import BUILDINGS, GFX
 from horizons.extscheduler import ExtScheduler
-from horizons.util.messaging.message import SettlementRangeChanged
+from horizons.util.messaging.message import SettlementRangeChanged, WorldObjectDeleted
 
 class BuildingTool(NavigationTool):
 	"""Represents a dangling tool after a building was selected from the list.
@@ -71,7 +71,7 @@ class BuildingTool(NavigationTool):
 		self.last_change_listener = None
 		self._modified_instances = set() # fife instances modified for transparency
 		self._buildable_tiles = set() # tiles marked as buildable
-		self._related_buildings = []
+		self._related_buildings = set() # buildings highlighted as related
 		self._build_logic = None
 		if self.ship is not None:
 			self._build_logic = ShipBuildingToolLogic(ship)
@@ -88,6 +88,7 @@ class BuildingTool(NavigationTool):
 		self.session.gui.on_escape = self.on_escape
 
 		self.highlight_buildable()
+		self.session.message_bus.subscribe_globally(WorldObjectDeleted, self._on_worldobject_deleted)
 
 	def highlight_buildable(self, tiles_to_check=None):
 		"""Highlights all buildable tiles.
@@ -113,13 +114,14 @@ class BuildingTool(NavigationTool):
 		SelectableBuildingComponent.select_many(buildings_to_select,
 		                                        self.session.view.renderer['InstanceRenderer'])
 		for building in buildings_to_select:
-			self._related_buildings.append(building)
+			self._related_buildings.add(building)
 
 	def _color_buildable_tile(self, tile):
 		self._buildable_tiles.add(tile) # it's a set, so duplicates are handled
 		self.renderer.addColored(tile._instance, *self.buildable_color)
 
 	def remove(self):
+		self.session.message_bus.unsubscribe_globally(WorldObjectDeleted, self._on_worldobject_deleted)
 		self._remove_listeners()
 		self._remove_building_instances()
 		self._remove_coloring()
@@ -132,6 +134,12 @@ class BuildingTool(NavigationTool):
 			self.gui.hide()
 		ExtScheduler().rem_all_classinst_calls(self)
 		super(BuildingTool, self).remove()
+
+	def _on_worldobject_deleted(self, message):
+		# remove references to this object
+		self._related_buildings.discard(message.sender)
+		self._modified_instances = set( i for i in self._modified_instances if \
+		                                i() is not None and int(i().getId()) != message.worldid )
 
 	def load_gui(self):
 		if self.gui is None:
