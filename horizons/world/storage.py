@@ -144,8 +144,9 @@ class SizedSpecializedStorage(SpecializedStorage):
 	Can take a dict {res: size, res2: size2} to init slots
 	"""
 
-	def __init__(self, slot_sizes={}):
+	def __init__(self, slot_sizes=None):
 		super(SizedSpecializedStorage, self).__init__()
+		slot_sizes = slot_sizes or {}
 		self.__slot_limits = {}
 		for res, size in slot_sizes.iteritems():
 			self.add_resource_slot(res, size)

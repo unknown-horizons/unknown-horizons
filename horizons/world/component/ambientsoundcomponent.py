@@ -35,12 +35,12 @@ class AmbientSoundComponent(Component):
 
 	NAME = "ambientsound"
 
-	def __init__(self, soundfiles=[]):
+	def __init__(self, soundfiles=None):
 		"""
 		@param soundfiles: list of paths
 		"""
 		super(AmbientSoundComponent, self).__init__()
-		self.soundfiles = soundfiles
+		self.soundfiles = soundfiles or []
 		self.__init()
 
 	def __init(self):

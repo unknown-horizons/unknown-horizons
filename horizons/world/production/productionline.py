@@ -25,9 +25,9 @@ import horizons.main
 class ProductionLine(object):
 	"""Class that collects the production line data."""
 
-	def __init__(self, id, data={}):
+	def __init__(self, id, data):
 		"""Inits self from yaml data"""
-		self.__data = data
+		self.__data = data or {}
 		self.id = id
 		self.__init()
 
