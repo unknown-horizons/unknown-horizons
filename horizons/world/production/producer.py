@@ -372,7 +372,9 @@ class Producer(Component):
 		return 0 # No production available
 
 	@classmethod
-	def get_instance(cls, arguments={}):
+	def get_instance(cls, arguments=None):
+		arguments = arguments and arguments.copy() or {}
+
 		utilisation = None
 		if 'utilisation' in arguments:
 			if arguments['utilisation'] in cls.utilisation_mapping:
