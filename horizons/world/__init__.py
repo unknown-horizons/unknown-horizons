@@ -58,11 +58,11 @@ import horizons.world.worldutils # keep like this to make origin visible
 class World(BuildingOwner, LivingObject, WorldObject):
 	"""The World class represents an Unknown Horizons map with all its units, grounds, buildings, etc.
 
-	It inherits amongst others from BuildingOwner, so it has building management capabilities.
+	It inherits from BuildingOwner, amongst other things, so it has building management capabilities.
 	There is always one big reference per building. It is stored either in the world, the island
 	or the settlement.
 
-	The world comprises amongst others:
+	The main components of the world are:
 	   * players - a list of all the session's players - Player instances
 	   * islands - a list of all the map's islands - Island instances
 	   * grounds - a list of all the map's groundtiles

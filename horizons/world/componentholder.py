@@ -34,7 +34,7 @@ from horizons.world.production.producer import Producer, QueueProducer, UnitProd
 class ComponentHolder(object):
 	"""
 	Class that manages Component plug-ins
-	It can be inherided by all objects that can hold components
+	It can be inherited by all objects that can hold components
 
 	TUTORIAL:
 	I can't explain component-oriented architecture to you here, but i can give you
@@ -48,11 +48,11 @@ class ComponentHolder(object):
 
 	The components are stored in a dict, the key is their name (a string).
 	This is necessary so objects can be defined as a collection of their components in
-	human readable format. This is done via yaml files in our case in content/objects.
+	human readable format. This is done via yaml files in content/objects in our case.
 	You could check out e.g. content/objects/buildings/lumberjackcamp.yaml to see what
-	it looks like in reality.
+	it looks like.
 
-	This class manages the components, it stores them at makes them accessible.
+	This class manages the components, it stores them and makes them accessible.
 	Check out the actual component class in horizons/world/component/__init__.py
 	"""
 

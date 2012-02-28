@@ -34,11 +34,11 @@ from horizons.world.buildingowner import BuildingOwner
 from horizons.gui.widgets.minimap import Minimap
 
 class Island(BuildingOwner, WorldObject):
-	"""The Island class represents an island by keeping a list of all things on the map,
+	"""The Island class represents an island. It contains a list of all things on the map
 	that belong to the island. This comprises ground tiles as well as buildings,
 	nature objects (which are buildings) and units.
-	All those objects have furthermore a reference to the island, making it easy to determine to which island the instance belongs.
-	An Island instance is created at map creation, when all tiles are added to the map.
+	All those objects also have a reference to the island, making it easy to determine to which island the instance belongs.
+	An Island instance is created during map creation, when all tiles are added to the map.
 	@param origin: Point instance - Position of the (0, 0) ground tile.
 	@param filename: file from which the island is loaded.
 

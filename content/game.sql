@@ -140,6 +140,7 @@ INSERT INTO "collector_restrictions" VALUES(1000011,32);
 CREATE TABLE "message" ("text" TEXT NOT NULL ,"icon" INTEGER NOT NULL ,"visible_for" FLOAT NOT NULL ,"speech_group_id" INTEGER,"id_string" STRING);
 INSERT INTO "message" VALUES('A new settlement was founded by {player}.',1,30.0,2,'NEW_SETTLEMENT');
 INSERT INTO "message" VALUES('A new world has been created.',1,15.0,1,'NEW_WORLD');
+INSERT INTO "message" VALUES('A new ship has been created.',1,15.0,1,'NEW_UNIT');
 INSERT INTO "message" VALUES('Your game has been saved.',3,15.0,NULL,'SAVED_GAME');
 INSERT INTO "message" VALUES('Your game has been autosaved.',3,15.0,NULL,'AUTOSAVE');
 INSERT INTO "message" VALUES('Your game has been quicksaved.',3,15.0,NULL,'QUICKSAVE');
