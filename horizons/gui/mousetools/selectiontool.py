@@ -40,17 +40,18 @@ class SelectionTool(NavigationTool):
 	def remove(self):
 		# Deselect if needed while exiting
 		if self.deselect_at_end:
-			for i in self.session.selected_instances:
-				self.filter_selectable(i).deselect()
+			for i in self.filter_selectable( self.session.selected_instances ):
+				i.deselect()
 		super(SelectionTool, self).remove()
 
 	def is_selectable(self, entity):
 		# also enemy entities are selectable, but the selection representation will differ
 		return entity.has_component(SelectableComponent)
 
-	def filter_selectable(self, instance):
+	def filter_selectable(self, instances):
 		"""Only keeps relevant components from a list of worldobjects"""
-		return instance.get_component(SelectableComponent) if self.is_selectable(instance) else None
+		return [ instance.get_component(SelectableComponent) for instance in instances \
+		         if self.is_selectable(instance) ]
 
 	def fife_instance_to_uh_instance(self, instance):
 		"""Visual fife instance to uh game logic object or None"""
@@ -168,7 +169,7 @@ class SelectionTool(NavigationTool):
 				return
 			selectable = []
 			instances = self.get_hover_instances(evt)
-			self.select_old = frozenset(self.session.selected_instances) if evt.isControlPressed() else frozenset()
+			self.select_old = frozenset(self.filter_selectable(self.session.selected_instances)) if evt.isControlPressed() else frozenset()
 			self._update_selection(instances)
 
 			self.select_begin = (evt.getX(), evt.getY())
@@ -188,8 +189,7 @@ class SelectionTool(NavigationTool):
 		@param instances: uh instances
 		"""
 		self.log.debug("update selection %s", [unicode(i) for i in instances])
-		selectable = ( self.filter_selectable(i) for i in instances )
-		selectable = [ i for i in selectable if i is not None ]
+		selectable = self.filter_selectable(instances)
 
 		if len(selectable) > 1:
 			if do_multi:
@@ -204,7 +204,8 @@ class SelectionTool(NavigationTool):
 		else:
 			selectable = set(self.select_old ^ frozenset(selectable))
 
-		selected_components = set(self.filter_selectable(i) for i in self.session.selected_instances)
+		# apply changes
+		selected_components = set(self.filter_selectable(self.session.selected_instances))
 		for sel_comp in selected_components - selectable:
 			sel_comp.deselect()
 		for sel_comp in selectable - selected_components:
