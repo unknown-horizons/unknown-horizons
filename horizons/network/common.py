@@ -119,8 +119,8 @@ class Game(object):
 		self.clientversion = packet.clientversion
 		self.mapname       = packet.mapname
 		self.maxplayers    = packet.maxplayers
-		self.load          = packet.load
 		self.gamename      = packet.gamename
+		self.load          = packet.load
 		self.creator       = creator.name
 		self.creator_sid   = creator.sid
 		self.players       = []

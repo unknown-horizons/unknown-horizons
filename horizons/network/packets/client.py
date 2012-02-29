@@ -28,9 +28,9 @@ class cmd_creategame(packet):
 	maxplayers    = None
 	playername    = None
 	gamename      = u"Unnamed Game"
-	load          = False
+	load          = None
 
-	def __init__(self, clientver, mapname, maxplayers, playername, gamename, load=False):
+	def __init__(self, clientver, mapname, maxplayers, playername, gamename, load=None):
 		"""
 		@param load: whether it's a loaded game
 		"""
@@ -38,8 +38,8 @@ class cmd_creategame(packet):
 		self.mapname       = mapname
 		self.maxplayers    = maxplayers
 		self.playername    = playername
-		self.load          = load
 		self.gamename      = gamename
+		self.load          = load
 
 	def validate(self):
 		if not isinstance(self.clientversion, unicode):
@@ -52,8 +52,8 @@ class cmd_creategame(packet):
 			raise NetworkException("Invalid datatype: playername")
 		if not isinstance(self.gamename, unicode):
 			raise NetworkException("Invalid datatype: gamename")
-		if not isinstance(self.load, bool):
-			raise NetworkException("Invalid datatype: load/%s" % (type(self.load)))
+		if self.load is not None and not isinstance(self.load, str):
+			raise NetworkException("Invalid datatype: load")
 
 SafeUnpickler.add('client', cmd_creategame)
 

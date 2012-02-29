@@ -353,7 +353,7 @@ class Client(object):
 
 	#-----------------------------------------------------------------------------
 
-	def creategame(self, mapname, maxplayers, gamename, load=False):
+	def creategame(self, mapname, maxplayers, gamename, load=None):
 		if self.mode is None:
 			raise network.NotConnected()
 		if self.mode is not ClientMode.Server:

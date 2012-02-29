@@ -114,7 +114,7 @@ class NetworkInterface(object):
 			except NetworkException as e:
 				self._handle_exception(e)
 
-	def creategame(self, mapname, maxplayers, gamename, load=False):
+	def creategame(self, mapname, maxplayers, gamename, load=None):
 		self.log.debug("[CREATEGAME] %s, %s, %s, %s", mapname, maxplayers, gamename, load)
 		try:
 			game = self._client.creategame(mapname, maxplayers, gamename, load)

@@ -191,9 +191,9 @@ class MultiplayerMenu(object):
 		creator_text.text = _("Creator: {player}").format(player=game.get_creator())
 		creator_text.adaptLayout()
 		vbox_inner = self.current.findChild(name="game_info")
-		if game.load: # work around limitations of current systems via messages
+		if game.load is not None: # work around limitations of current systems via messages
 			path = SavegameManager.get_multiplayersave_map(game.mapname)
-			if not os.path.exists(path):
+			if SavegameAccessor.get_hash(path) != game.load:
 				text = ""
 				btn_name = "save_missing_help_button"
 				btn = vbox_inner.findChild(name=btn_name)
@@ -231,7 +231,7 @@ class MultiplayerMenu(object):
 		"""Joins a multiplayer game. Displays lobby for that specific game"""
 		if game == None:
 			game = self.__get_selected_game()
-		if game.load and not os.path.exists(SavegameManager.get_multiplayersave_map(game.mapname)):
+		if game.load is not None and SavegameAccessor.get_hash(SavegameManager.get_multiplayersave_map(game.mapname)) != game.load:
 			self.show_popup(_("Error"), self.current.findChild(name="save_missing_help_button").btn_text, size=1)
 			return
 		if game.get_uuid() == -1: # -1 signals no game
@@ -386,13 +386,13 @@ class MultiplayerMenu(object):
 			mapname, gamename = load
 			path = SavegameManager.get_multiplayersave_map(mapname)
 			maxplayers = SavegameAccessor.get_players_num(path)
-			load = True
+			load = SavegameAccessor.get_hash(path)
 		else:
 			mapindex = self.current.collectData('maplist')
 			mapname = self.maps_display[mapindex]
 			maxplayers = self.current.collectData('playerlimit') + 2 # 1 is the first entry
 			gamename = self.current.collectData('gamename')
-			load = False
+			load = None
 
 
 		game = NetworkInterface().creategame(mapname, maxplayers, gamename, load)
@@ -400,3 +400,4 @@ class MultiplayerMenu(object):
 			return
 
 		self.__show_gamelobby()
+
