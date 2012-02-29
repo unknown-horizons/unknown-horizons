@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: translate-uh@lists.unknown-horizons.org\n"
 "POT-Creation-Date: 2011-10-31 20:46+0100\n"
-"PO-Revision-Date: 2012-02-28 23:05+0200\n"
+"PO-Revision-Date: 2012-02-29 14:38+0200\n"
 "Last-Translator: matyi <molnarmatyas@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: hu\n"
@@ -523,7 +523,7 @@ msgstr ""
 #. This message is displayed in the widget on the left screen part. Please keep it short enough to fit there!
 #: po/tutorial.py:58
 msgid "Build a signal fire at the coast close to your warehouse."
-msgstr ""
+msgstr "Építs egy Tűzjelet a parton közel a raktárhoz."
 
 #. This is a logbook page heading. Space is VERY short, please only translate to strings that fit (roughly 30 characters max).
 #: po/tutorial.py:60
@@ -572,17 +572,17 @@ msgstr ""
 #. This message is displayed in the widget on the left screen part. Please keep it short enough to fit there!
 #: po/tutorial.py:66
 msgid "Reach an island stock of at least 30 tools."
-msgstr ""
+msgstr "Érje el a sziget készlete a legalább 30 eszközt."
 
 #. This message is displayed in the widget on the left screen part. Please keep it short enough to fit there!
 #: po/tutorial.py:68
 msgid "Note that this might take a while."
-msgstr ""
+msgstr "Megjegyzendő, hogy ez eltart egy darabig."
 
 #. This is a logbook page heading. Space is VERY short, please only translate to strings that fit (roughly 30 characters max).
 #: po/tutorial.py:70
 msgid "NEW TASK: BUILD A PAVILION"
-msgstr ""
+msgstr "Új feladat: Építs egy pavilont"
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:72
@@ -626,12 +626,12 @@ msgstr ""
 #. This message is displayed in the widget on the left screen part. Please keep it short enough to fit there!
 #: po/tutorial.py:76
 msgid "Build a pavilion with connection to the tents."
-msgstr ""
+msgstr "Építs egy pavilont és kapcsold össze a sátrakkal."
 
 #. This is a logbook page heading. Space is VERY short, please only translate to strings that fit (roughly 30 characters max).
 #: po/tutorial.py:78
 msgid "NEW TASK: NEXT INCREMENT"
-msgstr ""
+msgstr "Új feladat: Következő szintnövekedés"
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:80
@@ -680,11 +680,13 @@ msgstr ""
 msgid ""
 "Set the tax level to Low (left end) and wait for your sailors to upgrade."
 msgstr ""
+"Állítsd az adószintet alacsonyra (bal szélen) és várj amíg a hajósok "
+"frissítik."
 
 #. This is a logbook page heading. Space is VERY short, please only translate to strings that fit (roughly 30 characters max).
 #: po/tutorial.py:86
 msgid "NEW TASK: BUILD A FARM"
-msgstr ""
+msgstr "Új feladat: Építs egy farmot"
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:88
@@ -729,12 +731,12 @@ msgstr ""
 #. This message is displayed in the widget on the left screen part. Please keep it short enough to fit there!
 #: po/tutorial.py:92
 msgid "Build a farm and keep some empty space around it."
-msgstr ""
+msgstr "Építs egy farmot, legyen néhány üres hely körülötte."
 
 #. This is a logbook page heading. Space is VERY short, please only translate to strings that fit (roughly 30 characters max).
 #: po/tutorial.py:94
 msgid "NEW TASK: BUILD FIELDS"
-msgstr ""
+msgstr "Új feladat: Építs mezőket"
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:96
