@@ -27,7 +27,14 @@ from horizons.constants import BUILDINGS, RES
 from horizons.world.status import SettlerUnhappyStatus, DecommissionedStatus, ProductivityLowStatus, InventoryFullStatus
 from horizons.util.messaging.message import AddStatusIcon
 
-from tests.game import settle, game_test, SPSession
+import mock
+from tests.game import settle, game_test
+
+def assert_called_with_icon(cb, icon):
+	assert cb.called
+	# the first and only parameter is the message send
+	assert cb.call_args[0][0].icon.__class__ == icon
+
 
 @game_test
 def test_productivity_low(session, player):
@@ -35,49 +42,34 @@ def test_productivity_low(session, player):
 
 	Build(BUILDINGS.CHARCOAL_BURNER_CLASS, 30, 30, island, settlement=settlement)(player)
 
-	called = [False]
-
-	def add_icon(message):
-		isinstance(message, AddStatusIcon)
-		if message.icon.__class__ == ProductivityLowStatus:
-			called.__setitem__(0, True)
-
-	session.message_bus.subscribe_globally(AddStatusIcon, add_icon)
-
+	cb = mock.Mock()
+	session.message_bus.subscribe_globally(AddStatusIcon, cb)
 
 	# Not yet low
-	assert not called[0]
+	assert not cb.called
 
 	session.run(seconds=60)
 
 	# Now low
-	assert called[0]
+	assert_called_with_icon(cb, ProductivityLowStatus)
 
 @game_test
 def test_settler_unhappy(session, player):
 	settlement, island = settle(session)
-	assert isinstance(session, SPSession)
 
-	called = [False]
-
-	def add_icon(message):
-		isinstance(message, AddStatusIcon)
-		if message.icon.__class__ == SettlerUnhappyStatus:
-			called.__setitem__(0, True)
-
-	session.message_bus.subscribe_globally(AddStatusIcon, add_icon)
+	cb = mock.Mock()
+	session.message_bus.subscribe_globally(AddStatusIcon, cb)
 
 	settler = Build(BUILDINGS.RESIDENTIAL_CLASS, 30, 30, island, settlement=settlement)(player)
 
 	# certainly not unhappy
 	assert settler.happiness > 0.45
-	assert not called[0]
+	assert not cb.called
 
 	# make it unhappy
 	settler.get_component(StorageComponent).inventory.alter(RES.HAPPINESS_ID, -settler.happiness)
 	assert settler.happiness < 0.1
-	assert called[0]
-
+	assert_called_with_icon(cb, SettlerUnhappyStatus)
 
 
 @game_test
@@ -86,20 +78,14 @@ def test_decommissioned(session, player):
 
 	lj = Build(BUILDINGS.LUMBERJACK_CLASS, 30, 30, island, settlement=settlement)(player)
 
-	called = [False]
+	cb = mock.Mock()
+	session.message_bus.subscribe_globally(AddStatusIcon, cb)
 
-	def add_icon(message):
-		isinstance(message, AddStatusIcon)
-		if message.icon.__class__ == DecommissionedStatus:
-			called.__setitem__(0, True)
-
-	session.message_bus.subscribe_globally(AddStatusIcon, add_icon)
-
-	assert not called[0]
+	assert not cb.called
 
 	ToggleActive(lj.get_component(Producer))(player)
 
-	assert called[0]
+	assert_called_with_icon(cb, DecommissionedStatus)
 
 @game_test
 def test_inventory_full(session, player):
@@ -107,27 +93,15 @@ def test_inventory_full(session, player):
 
 	lj = Build(BUILDINGS.LUMBERJACK_CLASS, 30, 30, island, settlement=settlement)(player)
 
-	called = [False]
-
-	def add_icon(message):
-		isinstance(message, AddStatusIcon)
-		if message.icon.__class__ == InventoryFullStatus:
-			called.__setitem__(0, True)
-
-	session.message_bus.subscribe_globally(AddStatusIcon, add_icon)
+	cb = mock.Mock()
+	session.message_bus.subscribe_globally(AddStatusIcon, cb)
 
 	# Not full
-	assert not called[0]
+	assert not cb.called
 
 	inv = lj.get_component(StorageComponent).inventory
 	res = RES.BOARDS_ID
 	inv.alter(res, inv.get_free_space_for( res ) )
 
 	# Full
-	assert called[0]
-
-
-
-
-
-
+	assert_called_with_icon(cb, InventoryFullStatus)
