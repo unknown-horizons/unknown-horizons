@@ -702,7 +702,6 @@ class SettlementBuildingToolLogic(object):
 
 	def add_change_listener(self, instance, building_tool): pass # using messages now
 	def remove_change_listener(self, instance, building_tool): pass
-
 	def continue_build(self): pass
 
 
@@ -718,6 +717,7 @@ class BuildRelatedBuildingToolLogic(SettlementBuildingToolLogic):
 		self.instance().get_component(SelectableComponent).show_menu(jump_to_tabclass=BuildRelatedTab)
 
 	def on_escape(self, session):
+		super(BuildRelatedBuildingToolLogic, self.).on_escape(session)
 		self._reshow_tab()
 
 	def continue_build(self):
@@ -725,7 +725,8 @@ class BuildRelatedBuildingToolLogic(SettlementBuildingToolLogic):
 
 	def add_change_listener(self, instance, building_tool): pass # using messages now
 	def remove_change_listener(self, instance, building_tool): pass
-	def remove(self, session): pass
+	def remove(self, session):
+		super(BuildRelatedBuildingToolLogic, self).remove(session)
 
 
 decorators.bind_all(BuildingTool)
