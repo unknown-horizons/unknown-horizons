@@ -144,7 +144,7 @@ class SelectableBuildingComponent(SelectableComponent):
 		"""Runs necessary steps to select the building."""
 		super(SelectableBuildingComponent, self).select(reset_cam)
 		self.set_selection_outline()
-		if not self.instance.owner.is_local_player:
+		if self.instance.owner is None or not self.instance.owner.is_local_player:
 			return # don't show enemy ranges
 		renderer = self.session.view.renderer['InstanceRenderer']
 		self._do_select(renderer, self.instance.position, self.session.world,

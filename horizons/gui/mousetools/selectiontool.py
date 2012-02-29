@@ -53,6 +53,11 @@ class SelectionTool(NavigationTool):
 		return [ instance.get_component(SelectableComponent) for instance in instances \
 		         if self.is_selectable(instance) ]
 
+	def filter_owner(self, instances):
+		"""Only keep instances belonging to the user. This is used for multiselection"""
+		return [ i for i in instances if \
+		         i.owner is not None and hasattr(i.owner, "is_local_player") and i.owner.is_local_player ]
+
 	def fife_instance_to_uh_instance(self, instance):
 		"""Visual fife instance to uh game logic object or None"""
 		i_id = instance.getId()
@@ -66,7 +71,7 @@ class SelectionTool(NavigationTool):
 
 	def mouseDragged(self, evt):
 		if evt.getButton() == fife.MouseEvent.LEFT and hasattr(self, 'select_begin'):
-			do_multi = ((self.select_begin[0] - evt.getX()) ** 2 + (self.select_begin[1] - evt.getY()) ** 2) >= 10 # ab 3px (3*3 + 1)
+			do_multi = ((self.select_begin[0] - evt.getX()) ** 2 + (self.select_begin[1] - evt.getY()) ** 2) >= 10 # from 3px (3*3 + 1)
 			self.session.view.renderer['GenericRenderer'].removeAll(self.__class__._SELECTION_RECTANGLE_NAME)
 			if do_multi:
 				# draw a rectangle
@@ -98,11 +103,6 @@ class SelectionTool(NavigationTool):
 			# get selection components
 			instances = ( self.fife_instance_to_uh_instance(i) for i in instances )
 			instances = [ i for i in instances if i is not None ]
-
-			# multiselection is only allowed for user instances
-			if len(instances) > 1:
-				instances = [ i for i in instances if \
-				              i.owner is not None and hasattr(i.owner, "is_local_player") and i.owner.is_local_player ]
 
 			self._update_selection( instances, do_multi )
 
@@ -167,9 +167,9 @@ class SelectionTool(NavigationTool):
 				traceback.print_stack()
 				print 'WARNING: selected_instance is None. Please report this!'
 				return
-			selectable = []
 			instances = self.get_hover_instances(evt)
-			self.select_old = frozenset(self.filter_selectable(self.session.selected_instances)) if evt.isControlPressed() else frozenset()
+			self.select_old = frozenset(self.session.selected_instances) if evt.isControlPressed() else frozenset()
+
 			self._update_selection(instances)
 
 			self.select_begin = (evt.getX(), evt.getY())
@@ -186,23 +186,30 @@ class SelectionTool(NavigationTool):
 
 	def _update_selection(self, instances, do_multi=False):
 		"""
+		self.select_old are old instances still relevant now (esp. on ctrl)
 		@param instances: uh instances
+		@param do_multi: true if selection rectangle on drag is used
 		"""
 		self.log.debug("update selection %s", [unicode(i) for i in instances])
-		selectable = self.filter_selectable(instances)
 
-		if len(selectable) > 1:
-			if do_multi:
-				for comp in selectable[:]: # iterate through copy for safe removal
-					if comp.instance.is_building:
-						selectable.remove(comp)
+		if do_multi: # add to selection
+			instances = self.select_old.union(instances)
+		else: # this is for deselecting among a selection with ctrl
+			instances = self.select_old.symmetric_difference(instances)
+
+		# sanity:
+		# - if at least one unit, then only units
+		if any( not instance.is_building for instance in instances ):
+			instances = [ instance for instance in instances if not instance.is_building ]
+		# - no multiple entities from enemy selected
+		if len(instances) > 1:
+			user_instances = self.filter_owner(instances)
+			if user_instances: # check at least one remaining
+				instances = user_instances
 			else:
-				selectable = [selectable.pop(0)]
+				instances = [instances[0]]
 
-		if do_multi:
-			selectable = set(self.select_old | frozenset(selectable))
-		else:
-			selectable = set(self.select_old ^ frozenset(selectable))
+		selectable = frozenset( self.filter_selectable(instances) )
 
 		# apply changes
 		selected_components = set(self.filter_selectable(self.session.selected_instances))
