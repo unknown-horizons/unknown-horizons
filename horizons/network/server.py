@@ -259,6 +259,12 @@ class Server(object):
 			self.error(peer, "You can't create a game while in another game")
 			return
 		player.name = unicode(packet.playername)
+		# monkey-patch pre 2012.1 packets so the server doesn't crash
+		# TODO: the server shouldn't crash on invalid data
+		if not hasattr(packet, "load"):
+			packet.load = False
+		if not hasattr(packet, "gamename"):
+			packet.gamename = "Unnamed Game" # no translation, this string is to be phased out
 		game = Game(packet, player)
 		logging.debug("[CREATE] [%s] %s created %s" % (game.uuid, player, game))
 		self.games.append(game)

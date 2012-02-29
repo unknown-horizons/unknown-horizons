@@ -120,6 +120,7 @@ class Game(object):
 		self.mapname       = packet.mapname
 		self.maxplayers    = packet.maxplayers
 		self.load          = packet.load
+		self.gamename      = packet.gamename
 		self.creator       = creator.name
 		self.creator_sid   = creator.sid
 		self.players       = []
