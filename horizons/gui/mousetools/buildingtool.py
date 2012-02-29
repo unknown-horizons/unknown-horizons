@@ -717,7 +717,7 @@ class BuildRelatedBuildingToolLogic(SettlementBuildingToolLogic):
 		self.instance().get_component(SelectableComponent).show_menu(jump_to_tabclass=BuildRelatedTab)
 
 	def on_escape(self, session):
-		super(BuildRelatedBuildingToolLogic, self.).on_escape(session)
+		super(BuildRelatedBuildingToolLogic, self).on_escape(session)
 		self._reshow_tab()
 
 	def continue_build(self):
