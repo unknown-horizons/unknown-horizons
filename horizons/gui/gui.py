@@ -259,6 +259,7 @@ class Gui(SingleplayerMenu, MultiplayerMenu):
 		assert mode in ('save', 'load', 'mp_load', 'mp_save')
 		map_files, map_file_display = None, None
 		mp = False
+		args = mode, sanity_checker, sanity_criteria # for reshow
 		if mode.startswith('mp'):
 			mode = mode[3:]
 			mp = True
@@ -281,6 +282,20 @@ class Gui(SingleplayerMenu, MultiplayerMenu):
 		old_current = self._switch_current_widget('select_savegame')
 		self.current.findChild(name='headline').text = _('Save game') if mode == 'save' else _('Load game')
 		self.current.findChild(name='okButton').tooltip = _('Save game') if mode == 'save' else _('Load game')
+
+		name_box = self.current.findChild(name="gamename_box")
+		if mp and mode == 'load': # have gamename
+			name_box.parent.showChild(name_box)
+			gamename_textfield = self.current.findChild(name="gamename")
+			def clear_gamename_textfield():
+				gamename_textfield.text = u""
+			gamename_textfield.capture(clear_gamename_textfield, 'mouseReleased', 'default')
+		else:
+			if name_box not in name_box.parent.hidden_children:
+				name_box.parent.hideChild(name_box)
+
+		self.current.show()
+
 
 		if not hasattr(self, 'filename_hbox'):
 			self.filename_hbox = self.current.findChild(name='enter_filename')
@@ -333,7 +348,7 @@ class Gui(SingleplayerMenu, MultiplayerMenu):
 				self.current.distributeData({'savegamelist' : -1})
 				cb()
 			self.current = old_current
-			return self.show_select_savegame(mode=mode)
+			return self.show_select_savegame(*args)
 
 		selected_savegame = None
 		if mode == 'save': # return from textfield
@@ -341,19 +356,19 @@ class Gui(SingleplayerMenu, MultiplayerMenu):
 			if selected_savegame == "":
 				self.show_error_popup(windowtitle = _("No filename given"), description = _("Please enter a valid filename."))
 				self.current = old_current
-				return self.show_select_savegame(mode=mode) # reshow dialog
+				return self.show_select_savegame(*args) # reshow dialog
 			elif selected_savegame in map_file_display: # savegamename already exists
 				#xgettext:python-format
 				message = _("A savegame with the name '{name}' already exists.").format(
 				             name=selected_savegame) + u"\n" + _('Overwrite it?')
 				if not self.show_popup(_("Confirmation for overwriting"), message, show_cancel_button = True):
 					self.current = old_current
-					return self.show_select_savegame(mode=mode) # reshow dialog
+					return self.show_select_savegame(*args) # reshow dialog
 			elif sanity_checker and sanity_criteria:
 				if not sanity_checker(selected_savegame):
 					self.show_error_popup(windowtitle = _("Invalid filename given"), description = sanity_criteria)
 					self.current = old_current
-					return self.show_select_savegame(mode=mode) # reshow dialog
+					return self.show_select_savegame(*args) # reshow dialog
 		else: # return selected item from list
 			selected_savegame = self.current.collectData('savegamelist')
 			selected_savegame = None if selected_savegame == -1 else map_files[selected_savegame]
@@ -361,9 +376,15 @@ class Gui(SingleplayerMenu, MultiplayerMenu):
 				# ok button has been pressed, but no savegame was selected
 				self.show_popup(_("Select a savegame"), _("Please select a savegame or click on cancel."))
 				self.current = old_current
-				return self.show_select_savegame(mode=mode) # reshow dialog
+				return self.show_select_savegame(*args) # reshow dialog
+
+		if mp and mode == 'load': # also name
+			gamename_textfield = self.current.findChild(name="gamename")
+			ret = selected_savegame, self.current.collectData('gamename')
+		else:
+			ret = selected_savegame
 		self.current = old_current # reuse old widget
-		return selected_savegame
+		return ret
 
 # display
 

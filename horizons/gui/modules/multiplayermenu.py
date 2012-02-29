@@ -150,13 +150,14 @@ class MultiplayerMenu(object):
 		if self.games is None:
 			return False
 
-		self.current.distributeInitialData({'gamelist' : map(lambda x: "{name} ({players}, {limit}){version}".format(
+		self.current.distributeInitialData(
+		  {'gamelist' : map(lambda x: "{gamename}: {name} ({players}, {limit}){version}".format(
 		                        name=x.get_map_name(),
+		                        gamename=x.get_game_name(),
 		                        players=x.get_player_count(),
 		                        limit=x.get_player_limit(),
-		                        version=" " + _("Version differs!") if x.get_version() != NetworkInterface().get_clientversion() else ""
-						    ),
-		        self.games)})
+		                        version=" " + _("Version differs!") if x.get_version() != NetworkInterface().get_clientversion() else ""),
+		                    self.games)})
 		self.current.distributeData({'gamelist' : 0}) # select first map
 		self.__update_game_details()
 		return True
@@ -169,7 +170,7 @@ class MultiplayerMenu(object):
 				index = self.current.collectData('gamelist')
 				return self.games[index]
 		except:
-			return MPGame(-1, "", "", 0, 0, [], "", -1)
+			return MPGame(-1, "", "", 0, 0, [], "", -1, "", False)
 
 	def __show_only_own_version_toggle(self):
 		self.__refresh()
@@ -180,6 +181,7 @@ class MultiplayerMenu(object):
 			game = self.__get_selected_game()
 		#xgettext:python-format
 		self.current.findChild(name="game_map").text = _("Map: {map_name}").format(map_name=game.get_map_name())
+		self.current.findChild(name="game_name").text = _("Name: {game_name}").format(game_name=game.get_game_name())
 		#xgettext:python-format
 		self.current.findChild(name="game_playersnum").text =  _("Players: {player_amount}/{player_limit}").format(
 		                           player_amount=game.get_player_count(),
@@ -356,36 +358,42 @@ class MultiplayerMenu(object):
 		  'maplist/mouseWheelMovedDown' : _update_infos
 		})
 
+		gamename_textfield = self.current.findChild(name="gamename")
+		def clear_gamename_textfield():
+			gamename_textfield.text = u""
+		gamename_textfield.capture(clear_gamename_textfield, 'mouseReleased', 'default')
+
 		self.current.show()
 
 		self.on_escape = event_map['cancel']
 
 	def __show_load_game(self):
-		path = self.show_select_savegame(mode='mp_load')
-		if path is None: # user aborted
+		ret = self.show_select_savegame(mode='mp_load')
+		if ret is None: # user aborted
 			return
+		path, gamename = ret
 		# get name from path
 		paths, names = SavegameManager.get_multiplayersaves()
-		name = names[paths.index(path)]
-		self.__create_game(load=name)
+		mapname = names[paths.index(path)]
+		self.__create_game(load=(mapname, gamename))
 
 
 	def __create_game(self, load=None):
 		"""Actually create a game, join it and display the lobby.
-		@param load: set to the savegame name on load (only when creating game, this does not apply for joining)"""
+		@param load: game data tuple for creating loaded games"""
 		# create the game
 		if load:
-			mapname = load
-			path = SavegameManager.get_multiplayersave_map(load)
+			mapname, gamename = load
+			path = SavegameManager.get_multiplayersave_map(mapname)
 			maxplayers = SavegameAccessor.get_players_num(path)
-			print maxplayers
-
 		else:
 			mapindex = self.current.collectData('maplist')
 			mapname = self.maps_display[mapindex]
 			maxplayers = self.current.collectData('playerlimit') + 2 # 1 is the first entry
+			gamename = self.current.collectData('gamename')
 
-		game = NetworkInterface().creategame(mapname, maxplayers, load)
+
+		game = NetworkInterface().creategame(mapname, maxplayers, gamename, load)
 		if game is None:
 			return
 

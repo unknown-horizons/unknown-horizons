@@ -114,10 +114,10 @@ class NetworkInterface(object):
 			except NetworkException as e:
 				self._handle_exception(e)
 
-	def creategame(self, mapname, maxplayers, load=False):
-		self.log.debug("[CREATEGAME] %s, %s", mapname, maxplayers)
+	def creategame(self, mapname, maxplayers, gamename, load=False):
+		self.log.debug("[CREATEGAME] %s, %s, %s, %s", mapname, maxplayers, gamename, load)
 		try:
-			game = self._client.creategame(mapname, maxplayers, load)
+			game = self._client.creategame(mapname, maxplayers, gamename, load)
 		except NetworkException as e:
 			fatal = self._handle_exception(e)
 			return None
@@ -262,7 +262,7 @@ class NetworkInterface(object):
 		return ret_list
 
 	def game2mpgame(self, game):
-		return MPGame(game.uuid, game.creator, game.mapname, game.maxplayers, game.playercnt, map(lambda x: unicode(x.name), game.players), self._client.name, game.clientversion, game.load)
+		return MPGame(game.uuid, game.creator, game.mapname, game.maxplayers, game.playercnt, map(lambda x: unicode(x.name), game.players), self._client.name, game.clientversion, game.gamename, game.load)
 
 	def get_clientversion(self):
 		return self._client.version
@@ -281,7 +281,7 @@ class NetworkInterface(object):
 
 
 class MPGame(object):
-	def __init__(self, uuid, creator, mapname, maxplayers, playercnt, players, localname, version, load=False):
+	def __init__(self, uuid, creator, mapname, maxplayers, playercnt, players, localname, version, gamename, load):
 		self.uuid       = uuid
 		self.creator    = creator
 		self.mapname    = mapname
@@ -290,6 +290,7 @@ class MPGame(object):
 		self.players    = players
 		self.localname  = localname
 		self.version    = version
+		self.gamename   = gamename
 		self.load       = load
 
 	def get_uuid(self):
@@ -297,6 +298,9 @@ class MPGame(object):
 
 	def get_map_name(self):
 		return self.mapname
+
+	def get_game_name(self):
+		return self.gamename
 
 	def get_creator(self):
 		return self.creator

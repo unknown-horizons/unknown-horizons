@@ -13,12 +13,18 @@
 		<ScrollArea max_size="300,400" horizontal_scrollbar="0" >
 			<ListBox name="savegamelist" />
 		</ScrollArea>
-	<Spacer />
+	<Spacer fixed_size="20" />
+		<HBox max_size="270,40" min_size="270,40" size="270,40" name="gamename_box"> <!-- keep sync with equivalent entry in multiplayer_creategame.xml -->
+			<TooltipLabel text="Name of the game:" name="gamename_lbl" tooltip="This will be displayed to other players so they recognise the game."/>
+			<TextField name="gamename" text="Unnamed Game" max_size="250,20" min_size="150,20" />
+		</HBox>
+
+	<Spacer fixed_size="30" />
 		<HBox max_size="34,40">
-		<!-- if no max_size is set, button reaction area expands to whole page -->
+			<!-- if no max_size is set, button reaction area expands to whole page -->
 			<DeleteButton tooltip="Delete selected savegame" />
 		</HBox>>
-	</VBox>
+	</VBox> <!-- left_page -->
 
 	<VBox name="right_page" position="420,75"
 		    max_size="380,465" min_size="380,465" padding="5">

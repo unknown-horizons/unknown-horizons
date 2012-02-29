@@ -56,6 +56,7 @@
 
 		<VBox name="game_info">
 			<Label name="game_map"         wrap_text="1"  max_size="300,40" />
+			<Label name="game_name"         wrap_text="1"  max_size="300,40" />
 			<Label name="game_creator"     wrap_text="1"  max_size="300,40" />
 			<Label name="game_playersnum"  wrap_text="1"  max_size="300,100"/>
 			<Label name="game_isloaded"    wrap_text="1"  max_size="300,100"/>

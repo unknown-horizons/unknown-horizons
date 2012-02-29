@@ -30,6 +30,7 @@
 		<Label name="startmessage"  text="Game details:"  position="0,100" />
 		<VBox position="130,100" name="game_info">
 			<Label name="game_map"/>
+			<Label name="game_name"/>
 			<Label name="game_creator"/>
 			<Label name="game_playersnum"/>
 			<Label name="game_players"/>
