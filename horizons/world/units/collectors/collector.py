@@ -238,7 +238,7 @@ class Collector(Unit):
 		"""Checks our if we "are allowed" and able to pick up from the target"""
 		# Discard building if it works for same inventory (happens when both are storage buildings
 		# or home_building is checked out)
-		if target.get_component(StorageComponent).inventory == self.get_home_inventory():
+		if target.get_component(StorageComponent).inventory is self.get_home_inventory():
 			#self.log.debug("nojob: same inventory")
 			return False
 

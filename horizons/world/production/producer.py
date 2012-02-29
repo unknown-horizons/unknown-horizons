@@ -86,7 +86,6 @@ class Producer(Component):
 		# Store whether or not the utilisation level is currently ok
 		self.__utilisation_ok = True
 
-
 		# BIG FAT NOTE: this has to be executed for all players for mp
 		# even if this building has no status icons
 		# TODO: think about whether this is enough gui-related so it belongs to the ExtScheduler, also check its performance when moving
@@ -94,7 +93,6 @@ class Producer(Component):
 		run_in = self.session.random.randint(1, interval) # don't update all at once
 		if self.instance.has_status_icon:
 			Scheduler().add_new_object(self.update_capacity_utilisation, self, run_in=run_in, loops=-1, loop_interval = interval)
-
 
 	def initialize(self):
 		self.__init()

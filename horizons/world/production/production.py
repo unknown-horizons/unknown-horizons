@@ -71,6 +71,7 @@ class Production(ChangeListener):
 	def start(self):
 		if self.__start_finished:
 			self._give_produced_res()
+			self._add_listeners()
 		if self.__auto_start:
 			self._check_inventory()
 
