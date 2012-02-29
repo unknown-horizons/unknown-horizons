@@ -46,7 +46,8 @@ import signal
 import traceback
 import platform
 
-from horizons.constants import PATHS, VERSION
+# NOTE: do NOT import anything from horizons.* into global scope
+# this will break any run_uh imports from other locations (e.g. _get_version())
 
 def log():
 	"""Returns Logger"""
@@ -81,6 +82,7 @@ def find_uh_position():
 
 def get_option_parser():
 	"""Returns inited OptionParser object"""
+	from horizons.constants import VERSION
 	p = optparse.OptionParser(usage="%prog [options]", version=VERSION.string())
 	p.add_option("-d", "--debug", dest="debug", action="store_true", \
 				       default=False, help="Enable debug output to stderr and a logfile.")
@@ -165,6 +167,7 @@ def get_option_parser():
 
 def create_user_dirs():
 	"""Creates the userdir and subdirs. Includes from horizons."""
+	from horizons.constants import PATHS
 	for directory in (PATHS.USER_DIR, PATHS.LOG_DIR, PATHS.SCREENSHOT_DIR):
 		if not os.path.isdir(directory):
 			os.makedirs(directory)
@@ -247,6 +250,7 @@ def main():
 		except ImportError:
 			import profile
 
+		from horizons.constants import PATHS
 		profiling_dir = os.path.join(PATHS.USER_DIR, 'profiling')
 		if not os.path.exists(profiling_dir):
 			os.makedirs(profiling_dir)
@@ -281,6 +285,7 @@ def parse_args():
 		options.debug = True
 		# also log to file
 		# init a logfile handler with a dynamic filename
+		from horizons.constants import PATHS
 		if options.logfile:
 			logfilename = options.logfile
 		else:
