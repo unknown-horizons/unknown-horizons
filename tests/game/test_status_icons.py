@@ -33,7 +33,7 @@ from tests.game import settle, game_test, SPSession
 def test_productivity_low(session, player):
 	settlement, island = settle(session)
 
-	lj = Build(BUILDINGS.CHARCOAL_BURNER_CLASS, 30, 30, island, settlement=settlement)(player)
+	Build(BUILDINGS.CHARCOAL_BURNER_CLASS, 30, 30, island, settlement=settlement)(player)
 
 	called = [False]
 
@@ -44,9 +44,6 @@ def test_productivity_low(session, player):
 
 	session.message_bus.subscribe_globally(AddStatusIcon, add_icon)
 
-
-	# precondition
-	assert abs(lj.get_component(Producer).capacity_utilisation) < 0.0001
 
 	# Not yet low
 	assert not called[0]
