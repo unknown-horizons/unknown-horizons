@@ -109,6 +109,9 @@ class packet(object):
 	def __init__(self):
 		self.sid = None
 
+	def validate(self):
+		return True
+
 	def serialize(self):
 		return cPickle.dumps(self, PICKLE_PROTOCOL)
 

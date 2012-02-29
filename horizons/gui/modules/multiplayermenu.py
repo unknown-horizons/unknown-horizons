@@ -386,11 +386,13 @@ class MultiplayerMenu(object):
 			mapname, gamename = load
 			path = SavegameManager.get_multiplayersave_map(mapname)
 			maxplayers = SavegameAccessor.get_players_num(path)
+			load = True
 		else:
 			mapindex = self.current.collectData('maplist')
 			mapname = self.maps_display[mapindex]
 			maxplayers = self.current.collectData('playerlimit') + 2 # 1 is the first entry
 			gamename = self.current.collectData('gamename')
+			load = False
 
 
 		game = NetworkInterface().creategame(mapname, maxplayers, gamename, load)

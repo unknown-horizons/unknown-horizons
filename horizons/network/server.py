@@ -30,6 +30,7 @@ enet = find_enet_module(client = False)
 
 MAX_PEERS = 4095
 CONNECTION_TIMEOUT = 500
+MINIMUM_PLAYERS = 2
 
 logging.basicConfig(format = '[%(asctime)-15s] [%(levelname)s] %(message)s',
 		level = logging.DEBUG)
@@ -220,9 +221,10 @@ class Server(object):
 		packet = None
 		try:
 			packet = packets.unserialize(event.packet.data)
-		except Exception:
-			logging.warning("[RECEIVE] Unknown packet from %s!" % (peer.address))
-			self.fatalerror(event.peer, "Unknown packet. Please check your game version")
+			packet.validate()
+		except Exception, e:
+			logging.warning("[RECEIVE] Unknown or malformed packet from %s: %s!" % (peer.address, e))
+			self.fatalerror(event.peer, "Unknown or malformed packet. Please check your game version")
 			return
 
 		# session id check
@@ -251,20 +253,25 @@ class Server(object):
 
 
 	def oncreategame(self, peer, packet):
-		if not len(packet.playername):
-			self.error(peer, "You must have a non empty name")
+		if not len(packet.clientversion):
+			self.error(peer, "Invalid client version")
 			return
+		if not len(packet.mapname):
+			self.error(peer, "You can't run a game with an empty mapname")
+			return
+		if packet.maxplayers < MINIMUM_PLAYERS:
+			self.error(peer, "You can't run a game with less than two players")
+			return
+		if not len(packet.playername):
+			self.error(peer, "Your player name cannot be empty")
+			return
+		if not len(packet.gamename):
+			packet.gamename = "Unnamed Game"
 		player = self.players[peer.data]
 		if player.game is not None:
 			self.error(peer, "You can't create a game while in another game")
 			return
 		player.name = unicode(packet.playername)
-		# monkey-patch pre 2012.1 packets so the server doesn't crash
-		# TODO: the server shouldn't crash on invalid data
-		if not hasattr(packet, "load"):
-			packet.load = False
-		if not hasattr(packet, "gamename"):
-			packet.gamename = "Unnamed Game" # no translation, this string is to be phased out
 		game = Game(packet, player)
 		logging.debug("[CREATE] [%s] %s created %s" % (game.uuid, player, game))
 		self.games.append(game)
@@ -296,8 +303,14 @@ class Server(object):
 
 
 	def onjoingame(self, peer, packet):
+		if len(packet.uuid) != 32:
+			self.error(peer, "Invalid game UUID")
+			return
+		if not len(packet.clientversion):
+			self.error(peer, "Invalid client version")
+			return
 		if not len(packet.playername):
-			self.error(peer, "You must have a non empty name")
+			self.error(peer, "Your player name cannot be empty")
 			return
 		player = self.players[peer.data]
 		if player.game is not None:
@@ -313,7 +326,7 @@ class Server(object):
 			game = _game
 			break
 		if game is None:
-			self.error(peer, "Unknown game")
+			self.error(peer, "Unknown game or game is running a different version")
 			return
 		if game.state is not Game.State.Open:
 			self.error(peer, "Game has already started. No more joining")
