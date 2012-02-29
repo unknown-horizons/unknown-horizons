@@ -308,6 +308,9 @@ def parse_args():
 				except UnicodeEncodeError:
 					# python unicode handling is weird, this has been empirically proven to work
 					logfile.write( line.encode("UTF-8") )
+			def flush(self):
+				sys.__stdout__.flush()
+				logfile.flush()
 		sys.stdout = StdOutDuplicator()
 
 		# add a handler to stderr too _but_ only if logfile isn't already a tty
