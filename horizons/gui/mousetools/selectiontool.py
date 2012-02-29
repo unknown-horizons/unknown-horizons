@@ -207,7 +207,7 @@ class SelectionTool(NavigationTool):
 			if user_instances: # check at least one remaining
 				instances = user_instances
 			else:
-				instances = [instances[0]]
+				instances = [iter(instances).next()]
 
 		selectable = frozenset( self.filter_selectable(instances) )
 
