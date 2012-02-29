@@ -20,7 +20,9 @@
 # ###################################################
 
 import logging
+import os.path
 import textwrap
+from fife.extensions import pychan
 
 from horizons.gui.modules import PlayerDataSelection
 from horizons.savegamemanager import SavegameManager
@@ -28,6 +30,7 @@ from horizons.network.networkinterface import MPGame
 from horizons.constants import MULTIPLAYER
 from horizons.network.networkinterface import NetworkInterface
 from horizons.network import find_enet_module
+from horizons.util import SavegameAccessor
 
 enet = find_enet_module()
 
@@ -147,9 +150,6 @@ class MultiplayerMenu(object):
 		if self.games is None:
 			return False
 
-		# TODO: show only load games where we have the fitting savegame
-		# (perhaps display others greyed out for now)
-
 		self.current.distributeInitialData({'gamelist' : map(lambda x: "{name} ({players}, {limit}){version}".format(
 		                        name=x.get_map_name(),
 		                        players=x.get_player_count(),
@@ -188,12 +188,39 @@ class MultiplayerMenu(object):
 		#xgettext:python-format
 		creator_text.text = _("Creator: {player}").format(player=game.get_creator())
 		creator_text.adaptLayout()
-		if game.load:
-			self.current.findChild(name="game_isloaded").text = u"Is a savegame"
+		vbox_inner = self.current.findChild(name="game_info")
+		if game.load: # work around limitations of current systems via messages
+			path = SavegameManager.get_multiplayersave_map(game.mapname)
+			if not os.path.exists(path):
+				text = ""
+				btn_name = "save_missing_help_button"
+				btn = vbox_inner.findChild(name=btn_name)
+				if btn is None:
+					btn = pychan.widgets.Button(name=btn_name,
+					                            text=_("This savegame is missing (click here)"))
+					last_elem = vbox_inner.findChild(name="game_info_last")
+					if last_elem is None: # no last elem -> we are last
+						vbox_inner.addChild( btn )
+					else:
+						vbox_inner.insertChildBefore( btn, last_elem )
+				btn_text = _(u"For multiplayer load, it is currently necessary for you to ensure you have the correct savegame file.") + u"\n"
+				btn_text += _(u"This really sucks and we hope have it fixed soon.") + u"\n"
+				btn_text += _(u"Please request the file {path} from the game creator manually and put it in {map_directory} .").format(path=os.path.basename(path), map_directory=os.path.dirname(path))
+				btn.btn_text = btn_text
+				def show():
+					self.show_popup(_("Help"), btn_text, size=1)
+				btn.capture(show)
+
+			else:
+				text = _(u"This is a savegame.")
+
+			if text:
+				self.current.findChild(name="game_isloaded").text = text
 		textplayers = self.current.findChild(name="game_players")
 		if textplayers is not None:
 			textplayers.text = u", ".join(game.get_players())
 
+		vbox_inner.adaptLayout() # inner vbox always exists
 		vbox = self.current.findChild(name="gamedetailsbox")
 		if vbox is not None:
 			vbox.adaptLayout()
@@ -202,6 +229,9 @@ class MultiplayerMenu(object):
 		"""Joins a multiplayer game. Displays lobby for that specific game"""
 		if game == None:
 			game = self.__get_selected_game()
+		if game.load and not os.path.exists(SavegameManager.get_multiplayersave_map(game.mapname)):
+			self.show_popup(_("Error"), self.current.findChild(name="save_missing_help_button").btn_text, size=1)
+			return
 		if game.get_uuid() == -1: # -1 signals no game
 			return
 		if game.get_version() != NetworkInterface().get_clientversion():
@@ -342,12 +372,14 @@ class MultiplayerMenu(object):
 
 	def __create_game(self, load=None):
 		"""Actually create a game, join it and display the lobby.
-		@param load: set to the savegame name on load"""
+		@param load: set to the savegame name on load (only when creating game, this does not apply for joining)"""
 		# create the game
-		#TODO: possibly some input validation
 		if load:
 			mapname = load
-			maxplayers = 2 # TODO: read from savegame
+			path = SavegameManager.get_multiplayersave_map(load)
+			maxplayers = SavegameAccessor.get_players_num(path)
+			print maxplayers
+
 		else:
 			mapindex = self.current.collectData('maplist')
 			mapname = self.maps_display[mapindex]

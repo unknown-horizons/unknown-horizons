@@ -250,4 +250,13 @@ class SavegameAccessor(DbReader):
 		return self._health[owner]
 
 
+
+	# Random savegamefile related utility that i didn't know where to put
+
+	@classmethod
+	def get_players_num(cls, savegamefile):
+		"""Return number of regular human and ai players"""
+		return DbReader(savegamefile)("SELECT count(rowid) FROM player WHERE is_trader = 0 AND is_pirate = 0")[0][0]
+
+
 decorators.bind_all(SavegameAccessor)
