@@ -62,7 +62,6 @@ class MessageWidget(LivingObject):
 		self.text_widget = load_uh_widget(self.MSG_TEMPLATE)
 		self.text_widget.position = (self.widget.x + self.widget.width, self.widget.y)
 
-		self.current_tick = 0
 		self.widget.show()
 		self.item = 0 # number of current message
 		ExtScheduler().add_new_object(self.tick, self, loops=-1)
@@ -71,11 +70,12 @@ class MessageWidget(LivingObject):
 		self._last_message = {} # used to detect fast subsequent messages in add()
 		self.draw_widget()
 
-	def add(self, x, y, string_id, message_dict=None, sound_file=True, check_duplicate=False):
+	def add(self, x, y, string_id, message_dict=None, creation_tick=None, sound_file=True, check_duplicate=False):
 		"""Adds a message to the MessageWidget.
-		@param x, y: int coordinates where the action took place.
-		@param id: message id string, needed to retrieve the message from the database.
+		@param x, y: int coordinates where the action took place. Clicks on the message will then focus that spot.
+		@param id: message id string, needed to retrieve the message text from the content database.
 		@param message_dict: dict with strings to replace in the message, e.g. {'player': 'Arthus'}
+		@param creation_tick: keeps messages sorted after load. Either current scheduler tick (new messages) or stored in savegame (loaded messages)
 		@param sound_file: if True: play default message speech for string_id
 		                   if False: do not play sound
 		                   if sound file path: play this sound file
@@ -94,10 +94,20 @@ class MessageWidget(LivingObject):
 							True: get_speech_file(string_id),
 							False: None
 							}.get(sound_file, sound_file)
-		self._add_message(Message(x, y, string_id, self.current_tick, message_dict=message_dict), sound)
+		if creation_tick is None:
+			creation_tick = Scheduler().cur_tick
+		self._add_message(Message(x, y, string_id, created=creation_tick, message_dict=message_dict), sound)
 
-	def add_custom(self, x, y, messagetext, visible_for=40, icon_id=1):
-		self._add_message( Message(x, y, None, self.current_tick, display=visible_for, message=messagetext, icon_id=icon_id) )
+	def add_custom(self, x, y, messagetext, visible_for=40, creation_tick=None, icon_id=1):
+		""" See docstring for add().
+		Uses no predefined message template from content database looked up by string id.
+		Instead provides the text and icon to be displayed (messagetext, icon_id)
+		@param visible_for: how many seconds the message will usually stay visible in the widget
+		@param creation_tick: keeps messages sorted after load. Either current scheduler tick (new messages) or stored in savegame (loaded messages)
+		"""
+		if creation_tick is None:
+			creation_tick = Scheduler().cur_tick
+		self._add_message(Message(x, y, None, display=visible_for, created=creation_tick, message=messagetext, icon_id=icon_id))
 
 	def _add_message(self, message, sound = None):
 		"""Internal function for adding messages. Do not call directly.
@@ -210,17 +220,18 @@ class MessageWidget(LivingObject):
 	def save(self, db):
 		for message in self.active_messages:
 			if message.id is not None: # only save default messages (for now)
-				db("INSERT INTO message_widget_active (id, x, y, read, created, display, message) VALUES (?, ?, ?, ?, ?, ?, ?)", message.id, message.x, message.y, 1 if message.read else 0, message.created, message.display, message.message)
+				db("INSERT INTO message_widget_active (id, x, y, read, created, display, message) VALUES (?, ?, ?, ?, ?, ?, ?)", message.id, message.x, message.y, int(message.read), message.created, message.display, message.message)
 		for message in self.archive:
 			if message.id is not None:
-				db("INSERT INTO message_widget_archive (id, x, y, read, created, display, message) VALUES (?, ?, ?, ?, ?, ?, ?)", message.id, message.x, message.y, 1 if message.read else 0, message.created, message.display, message.message)
+				db("INSERT INTO message_widget_archive (id, x, y, read, created, display, message) VALUES (?, ?, ?, ?, ?, ?, ?)", message.id, message.x, message.y, int(message.read), message.created, message.display, message.message)
 
 	def load(self, db):
-		return # function disabled for now cause it crashes
-		for message in db("SELECT id, x, y, read, created, display, message FROM message_widget_active"):
-			self.active_messages.append(Message(x, y, id, created, bool(read), display, message))
-		for message in db("SELECT id, x, y, read, created, display, message FROM message_widget_archive"):
-			self.archive.append(Message(self.x, self.y, id, created, bool(read), display, message))
+		messages = db("SELECT id, x, y, read, created, display, message FROM message_widget_active")
+		for (msg_id, x, y, read, created, display, message) in messages:
+			self.active_messages.append(Message(x, y, msg_id, created, bool(read), bool(display), message))
+		messages = db("SELECT id, x, y, read, created, display, message FROM message_widget_archive")
+		for (msg_id, x, y, read, created, display, message) in messages:
+			self.archive.append(Message(x, y, msg_id, created, bool(read), bool(display), message))
 		self.draw_widget()
 
 
@@ -233,7 +244,7 @@ class Message(object):
 
 	@param x, y: int position on the map where the action took place.
 	@param id: message id string, needed to retrieve the message from the database.
-	@param created: tickid when the message was created.
+	@param created: tickid when the message was created. Keeps message order after load.
 	@param message_dict: dict with strings to replace in the message, e.g. {'player': 'Arthus'}
 	"""
 	def __init__(self, x, y, id, created, read=False, display=None, message=None, message_dict=None, icon_id=None):
