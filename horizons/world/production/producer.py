@@ -35,6 +35,7 @@ from horizons.command.unit import CreateUnit
 from horizons.util.changelistener import metaChangeListenerDecorator
 from horizons.util.messaging.message import AddStatusIcon, RemoveStatusIcon
 from horizons.world.production.utilisation import Utilisation, FullUtilisation, FieldUtilisation
+from horizons.util.python.callback import Callback
 
 @metaChangeListenerDecorator("production_finished")
 @metaChangeListenerDecorator("activity_changed")
@@ -105,6 +106,12 @@ class Producer(Component):
 				prod = self.create_production(prod_line)
 				self.add_production(prod)
 				prod.start()
+		# For newly built producers we set the utilisation to full for the first
+		# few seconds, this avoids the low productivity icon being shown every
+		# time a new producer is built
+		temp_util = self.__utilisation
+		self.__utilisation = FullUtilisation()
+		Scheduler().add_new_object(Callback(self.__set_utilisation, temp_util), self, Scheduler().get_ticks(15))
 
 	def get_production_lines_by_level(self, level):
 		prod_lines = []
@@ -368,6 +375,9 @@ class Producer(Component):
 			# this makes e.g. the boatbuilder's progress bar constant when you pause it
 			return production.progress
 		return 0 # No production available
+
+	def __set_utilisation(self, utilisation):
+		self.__utilisation = utilisation
 
 	@classmethod
 	def get_instance(cls, arguments=None):
