@@ -49,11 +49,15 @@ class MessageWidget(LivingObject):
 	_DUPLICATE_TIME_THRESHOLD = 10 # sec
 	_DUPLICATE_SPACE_THRESHOLD = 8 # distance
 
+	OVERVIEW_WIDGET = 'messagewidget_overview.xml'
+
 	def __init__(self, session):
 		super(MessageWidget, self).__init__()
 		self.session = session
 		self.active_messages = [] # for displayed messages
 		self.archive = [] # messages, that aren't displayed any more
+		self.chat = [] # chat messages sent by players
+
 		self.widget = load_uh_widget(self.ICON_TEMPLATE)
 		self.widget.position = (
 			 5,
@@ -100,21 +104,27 @@ class MessageWidget(LivingObject):
 
 	def add_custom(self, x, y, messagetext, visible_for=40, creation_tick=None, icon_id=1):
 		""" See docstring for add().
-		Uses no predefined message template from content database looked up by string id.
-		Instead provides the text and icon to be displayed (messagetext, icon_id)
-		@param visible_for: how many seconds the message will usually stay visible in the widget
-		@param creation_tick: keeps messages sorted after load. Either current scheduler tick (new messages) or stored in savegame (loaded messages)
+		Uses no predefined message template from content database like add() does.
+		Instead, directly provides text and icon to be shown (messagetext, icon_id)
+		@param visible_for: how many seconds the message will stay visible in the widget
+		@param creation_tick: either current scheduler tick (new messages) or stored in savegame (loaded messages)
 		"""
 		if creation_tick is None:
 			creation_tick = Scheduler().cur_tick
 		self._add_message(Message(x, y, None, display=visible_for, created=creation_tick, message=messagetext, icon_id=icon_id))
 
-	def _add_message(self, message, sound = None):
+	def add_chat(self, player, messagetext, icon_id=1):
+		""" See docstring for add().
+		"""
+		message_dict = {'player': player, 'message': messagetext}
+		self.add(x=None, y=None, string_id='CHAT', message_dict=message_dict)
+		self.chat.append(self.active_messages[0])
+
+	def _add_message(self, message, sound=None):
 		"""Internal function for adding messages. Do not call directly.
 		@param message: Message instance
 		@param sound: path to soundfile"""
 		self.active_messages.insert(0, message)
-
 		if len(self.active_messages) > self.MAX_MESSAGES:
 			self.active_messages.remove(self.active_messages[self.MAX_MESSAGES])
 
@@ -219,11 +229,14 @@ class MessageWidget(LivingObject):
 
 	def save(self, db):
 		for message in self.active_messages:
-			if message.id is not None: # only save default messages (for now)
+			if message.id is not None and message.id != 'CHAT': # only save default messages (for now)
 				db("INSERT INTO message_widget_active (id, x, y, read, created, display, message) VALUES (?, ?, ?, ?, ?, ?, ?)", message.id, message.x, message.y, int(message.read), message.created, message.display, message.message)
 		for message in self.archive:
-			if message.id is not None:
+			if message.id is not None and message.id != 'CHAT':
 				db("INSERT INTO message_widget_archive (id, x, y, read, created, display, message) VALUES (?, ?, ?, ?, ?, ?, ?)", message.id, message.x, message.y, int(message.read), message.created, message.display, message.message)
+		for message in self.chat:
+			# handle 'CHAT' special case: display is 0 (do not show old chat on load)
+			db("INSERT INTO message_widget_archive (id, x, y, read, created, display, message) VALUES (?, ?, ?, ?, ?, ?, ?)", message.id, message.x, message.y, int(message.read), message.created, 0, message.message)
 
 	def load(self, db):
 		messages = db("SELECT id, x, y, read, created, display, message FROM message_widget_active")
@@ -231,16 +244,19 @@ class MessageWidget(LivingObject):
 			self.active_messages.append(Message(x, y, msg_id, created, bool(read), bool(display), message))
 		messages = db("SELECT id, x, y, read, created, display, message FROM message_widget_archive")
 		for (msg_id, x, y, read, created, display, message) in messages:
-			self.archive.append(Message(x, y, msg_id, created, bool(read), bool(display), message))
+			msg = Message(x, y, msg_id, created, bool(read), bool(display), message)
+			if msg_id == 'CHAT':
+				self.chat.append(msg)
+			else:
+				self.archive.append(msg)
 		self.draw_widget()
 
 
 class Message(object):
 	"""Represents a message that is to be displayed in the MessageWidget.
-	The message is used as a string.Template, meaning it can contain placeholders
-	like the following: $player, ${gold}. The second version is recommended, as the word
-	can then be followed by other characters without a whitespace (e.g. "home of ${player}").
-	The dict needed to fill these placeholders needs to be provided when creating the Message.
+	The message is used as a string template, meaning it can contain placeholders
+	like the following: {player}, {gold}. The dict needed to fill in these place-
+	holders needs to be provided when creating Messages. (parameter message_dict)
 
 	@param x, y: int position on the map where the action took place.
 	@param id: message id string, needed to retrieve the message from the database.

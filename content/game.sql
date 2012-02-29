@@ -137,7 +137,10 @@ INSERT INTO "collector_restrictions" VALUES(1000011,4);
 INSERT INTO "collector_restrictions" VALUES(1000011,5);
 INSERT INTO "collector_restrictions" VALUES(1000011,21);
 INSERT INTO "collector_restrictions" VALUES(1000011,32);
+
 CREATE TABLE "message" ("text" TEXT NOT NULL ,"icon" INTEGER NOT NULL ,"visible_for" FLOAT NOT NULL ,"speech_group_id" INTEGER,"id_string" STRING);
+-- When you add new message groups, remember to update  horizons/i18n/voice.py !
+INSERT INTO "message" VALUES('{player}: {message}',1,30.0,NULL,'CHAT');
 INSERT INTO "message" VALUES('A new settlement was founded by {player}.',1,30.0,2,'NEW_SETTLEMENT');
 INSERT INTO "message" VALUES('A new world has been created.',1,15.0,1,'NEW_WORLD');
 INSERT INTO "message" VALUES('A new ship has been created.',1,15.0,1,'NEW_UNIT');

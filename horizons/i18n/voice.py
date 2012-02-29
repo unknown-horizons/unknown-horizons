@@ -31,6 +31,7 @@ Internationalization for speech|voice files
 """
 class Speech:
 	"""Definition of category names, those names are the name of directory where speech should be"""
+	CHAT = None
 	NEW_SETTLEMENT = "new_settlement"
 	NEW_WORLD = "new_world"
 	SAVED_GAME = None
