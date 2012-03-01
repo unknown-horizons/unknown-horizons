@@ -57,5 +57,5 @@ def get_all_subclasses(cls):
 	for subclass in cls.__class__.__subclasses__(cls):
 		if subclass not in result:
 			result.add(subclass)
-			result.update(subclass.get_all_commands())
+			result.update(get_all_subclasses(subclass))
 	return result
