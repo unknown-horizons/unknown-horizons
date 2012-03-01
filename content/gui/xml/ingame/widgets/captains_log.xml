@@ -45,7 +45,7 @@
 	<Label name="headline_statistics" text="Statistics"
 		wrap_text="0" max_size="323, 25" min_size="323, 25" />
 	<Icon image="content/gui/images/background/hr.png" />
-	<HBox name="header_button_row">
+	<HBox name="header_button_row" padding="5">
 		<Button name='stats_players' text="Players" />
 		<Button name='stats_ships' text="My ships" />
 		<Button name='stats_settlements' text="My settlements" />

@@ -33,6 +33,9 @@ STYLES = {
 			'font' : '14_black',
 		},
 		'Button' : {
+			'background_color' : fife.Color(255,255,255,32),
+			'foreground_color' : fife.Color(80,80,40, 192),
+			'base_color' : fife.Color(80,80,40, 64),
 			'border_size': 1,
 			'margins' : (10, 5),
 		},
