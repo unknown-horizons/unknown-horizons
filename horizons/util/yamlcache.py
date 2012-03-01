@@ -45,7 +45,12 @@ def parse_token(token, token_klass):
 	"""
 	if isinstance(token, (str, unicode)):
 		if token.startswith(token_klass):
-			return getattr( globals()[token_klass], token.split(".", 2)[1])
+			try:
+				return getattr( globals()[token_klass], token.split(".", 2)[1])
+			except AttributeError as e: # token not defined here
+				err =  "This means that you either have to add an entry in horizons/constants.py in the class %s for %s,\nor %s is actually a typo." % (token_klass, token, token)
+				raise Exception( str(e) + "\n\n" + err +"\n" )
+
 		else:
 			return token
 	else:
