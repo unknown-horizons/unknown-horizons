@@ -53,9 +53,12 @@ STYLES = {
 		('Slider','StepSlider') : {
 			'base_color' : fife.Color(80,80,40,128),
 		},
-		'TextBox' : {
+		'TextField' : {
+			'selection_color' : fife.Color(255,255,255),
+			'background_color' : fife.Color(255,255,255,64),
+			'base_color' : fife.Color(0,0,0,0),
+			'foreground_color' : fife.Color(80,80,40),
 			'font' : '14_black',
-			'opaque': 0
 		},
 		'ListBox' : {
 			'background_color' : fife.Color(0,0,0,0),
@@ -249,10 +252,6 @@ STYLES = {
 		('Slider','StepSlider') : {
 			'base_color' : fife.Color(80,80,40,128),
 		},
-		'TextBox' : {
-			'font' : '14_black',
-			'opaque': 0
-		},
 		'ListBox' : {
 			'background_color' : fife.Color(0,0,0,0),
 			'foreground_color' : fife.Color(80,80,40),
@@ -289,10 +288,6 @@ STYLES = {
 		},
 		('Label','TooltipLabel') : {
 			'font' : '14_black',
-		},
-		'TextBox' : {
-			'font' : '14_black',
-			'opaque': 0
 		},
 		'ListBox' : {
 			'font' : '14_black',
