@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: translate-uh@lists.unknown-horizons.org\n"
 "POT-Creation-Date: 2011-10-31 20:46+0100\n"
-"PO-Revision-Date: 2012-03-01 10:57+0200\n"
+"PO-Revision-Date: 2012-03-01 11:03+0200\n"
 "Last-Translator: matyi <molnarmatyas@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: hu\n"
@@ -33,7 +33,7 @@ msgid ""
 "The tutorial:\n"
 "Build your first settlement and learn how to play!\n"
 msgstr ""
-"Bemutató:\n"
+"Gyakorlás:\n"
 "építsd fel az első telepedet, és tanuld meg hogyan kell játszani!\n"
 
 #. This message is displayed in the widget on the left screen part. Please keep it short enough to fit there!
@@ -874,7 +874,7 @@ msgstr ""
 #. This is a logbook page heading. Space is VERY short, please only translate to strings that fit (roughly 30 characters max).
 #: po/tutorial.py:118
 msgid "NEW TASK: COMPLETE TUTORIAL"
-msgstr ""
+msgstr "Új feladat: Végezz a gyakorlással"
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:120
@@ -892,7 +892,7 @@ msgstr ""
 #. This is a logbook page heading. Space is VERY short, please only translate to strings that fit (roughly 30 characters max).
 #: po/tutorial.py:122
 msgid "NO TASKS LEFT"
-msgstr ""
+msgstr "Nincs feladat hátra"
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:124
@@ -917,7 +917,7 @@ msgstr ""
 #. This is a logbook page heading. Space is VERY short, please only translate to strings that fit (roughly 30 characters max).
 #: po/tutorial.py:126
 msgid "Thanks!"
-msgstr ""
+msgstr "Köszönöm!"
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:128
@@ -933,6 +933,16 @@ msgid ""
 "\n"
 "Your UH-Team"
 msgstr ""
+"\n"
+"\n"
+"\n"
+"\n"
+"\n"
+"\n"
+"\n"
+"Köszönöm hogy végigjátszottad a gyakorlást!\n"
+"\n"
+"A te UH-Csapatod"
 
 #. This message is displayed in the widget on the left screen part. Please keep it short enough to fit there!
 #: po/tutorial.py:130
@@ -940,6 +950,8 @@ msgid ""
 "Congratulations! You have reached the end of this tutorial and are ready to "
 "meet new challenges!"
 msgstr ""
+"Gratulálok! Elértél a gyakorlás végéhez, most már megfelesz az új "
+"kihívásoknak!"
 
 #~ msgid "Build a warehouse at the coast."
 #~ msgstr "Építs egy fiókirodást a partra."
