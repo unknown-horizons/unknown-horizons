@@ -50,6 +50,22 @@ def init_pychan():
 	for widget in widgets:
 		pychan.widgets.registerWidget(widget)
 
+	# NOTE: there is a bug with the tuple notation: http://fife.trac.cvsdude.com/engine/ticket/656
+	# work around this here for now:
+	def conv(d):
+		entries = []
+		for k, v in d.iteritems():
+			if isinstance(v, dict): # recurse
+				v = conv(v)
+			if isinstance(k, tuple): # resolve tuple-notation, add separate keys
+				for k_i in k:
+					entries.append( (k_i, v) )
+			else:
+				entries.append( (k, v) )
+		return dict(entries)
+
+	STYLES = conv(STYLES)
+
 	# style
 	for name, stylepart in STYLES.iteritems():
 		pychan.manager.addStyle(name, stylepart)
