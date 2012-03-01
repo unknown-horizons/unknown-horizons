@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: translate-uh@lists.unknown-horizons.org\n"
 "POT-Creation-Date: 2011-10-31 20:46+0100\n"
-"PO-Revision-Date: 2012-02-29 14:56+0200\n"
+"PO-Revision-Date: 2012-03-01 10:57+0200\n"
 "Last-Translator: matyi <molnarmatyas@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: hu\n"
@@ -838,7 +838,7 @@ msgstr "Építs egy tárolósátrat (növekmény fül) amennyiben van értelme."
 #. This is a logbook page heading. Space is VERY short, please only translate to strings that fit (roughly 30 characters max).
 #: po/tutorial.py:110
 msgid "NEW TASK: BUILD A WEAVER"
-msgstr ""
+msgstr "Új feladat: Építs egy szövőt"
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:112
@@ -860,7 +860,7 @@ msgstr ""
 #. This message is displayed in the widget on the left screen part. Please keep it short enough to fit there!
 #: po/tutorial.py:114
 msgid "Build a weaver that can somehow reach the wool of your farm."
-msgstr ""
+msgstr "Építs egy szövőt amely eléri a farmon lévő gyapjút!"
 
 #. This message is displayed in the widget on the left screen part. Please keep it short enough to fit there!
 #: po/tutorial.py:116
@@ -868,6 +868,8 @@ msgid ""
 "House a total of 50 or more inhabitants in your city to complete the "
 "tutorial. You need a positive balance."
 msgstr ""
+"Legalább 50 lakosnodnak kell lennie és pozitív egyenlegednek, hogy befejezd "
+"a gyakorlást."
 
 #. This is a logbook page heading. Space is VERY short, please only translate to strings that fit (roughly 30 characters max).
 #: po/tutorial.py:118
