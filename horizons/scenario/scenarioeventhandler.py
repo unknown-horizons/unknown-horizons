@@ -23,14 +23,11 @@ import yaml
 import copy
 import pickle
 
-import horizons.main
-
-from horizons.ext.enum import Enum
-from horizons.constants import RES
 from horizons.scheduler import Scheduler
-from horizons.util import Callback, LivingObject, decorators, YamlCache
+from horizons.util import Callback, LivingObject, YamlCache
 
-from horizons.scenario.conditions import CONDITIONS, _scheduled_checked_conditions
+from horizons.scenario.actions import ACTIONS
+from horizons.scenario.conditions import CONDITIONS
 
 
 try:
@@ -65,7 +62,7 @@ class ScenarioEventHandler(LivingObject):
 		# map: condition types -> events
 		self._event_conditions = {}
 		self._scenario_variables = {} # variables for set_var, var_eq ...
-		for cond in CONDITIONS:
+		for cond in CONDITIONS.registry.keys():
 			self._event_conditions[cond] = set()
 		if scenariofile:
 			self._apply_data( self._parse_yaml_file( scenariofile ) )
@@ -205,7 +202,7 @@ class ScenarioEventHandler(LivingObject):
 
 	def _scheduled_check(self):
 		"""Check conditions that can only be checked periodically"""
-		for cond_type in _scheduled_checked_conditions:
+		for cond_type in CONDITIONS.check_periodically:
 			self.check_events(cond_type)
 
 	def _remove_event(self, event):
@@ -231,23 +228,12 @@ class ScenarioEventHandler(LivingObject):
 
 
 ###
-# Scenario Conditions
-from horizons.scenario.conditions import *
-
-###
-# Scenario Actions
-from horizons.scenario.actions import *
-
-###
 # Simple utility classes
 
-def _should_be_list(d, where):
-	if not isinstance(d, list):
-		raise InvalidScenarioFileFormat(msg = where + " should be a list, but is: " + str(d))
-
-def _should_be_dict(d, where):
-	if not isinstance(d, dict):
-		raise InvalidScenarioFileFormat(msg = where + " should be a dictionary, but is: " + str(d))
+def assert_type(var, expected_type, name):
+	if not isinstance(var, expected_type):
+		raise InvalidScenarioFileFormat('%s should be a %s, but is: %s' % (
+			name, expected_type.__name__, str(var)))
 
 
 class _Event(object):
@@ -256,10 +242,10 @@ class _Event(object):
 		self.session = session
 		self.actions = []
 		self.conditions = []
-		_should_be_list(event_dict['actions'], "actions")
+		assert_type(event_dict['actions'], list, "actions")
 		for action_dict in event_dict['actions']:
 			self.actions.append( _Action(action_dict) )
-		_should_be_list(event_dict['conditions'], "conditions")
+		assert_type(event_dict['conditions'], list, "conditions")
 		for cond_dict in event_dict['conditions']:
 			self.conditions.append( _Condition(session, cond_dict) )
 
@@ -280,30 +266,19 @@ class _Event(object):
 
 class _Action(object):
 	"""Internal data structure representing an ingame scenario action"""
-	action_types = {
-		'message': show_message,
-		'db_message': show_db_message,
-		'win' : do_win,
-		'lose' : do_lose,
-		'set_var' : set_var,
-		'logbook': show_logbook_entry_delayed, # set delay=0 for instant appearing
-		'logbook_w': write_logbook_entry, # not showing the logbook
-		'wait': wait,
-		'goal_reached' : goal_reached,
-		'spawn_ships': spawn_ships
-	}
-
 	def __init__(self, action_dict):
-		_should_be_dict(action_dict, "action specification")
+		assert_type(action_dict, dict, "action specification")
+
 		try:
-			self._action_type_str = action_dict['type']
+			self.action_type = action_dict['type']
 		except KeyError:
 			raise InvalidScenarioFileFormat('Encountered action without type')
 		try:
-			self.callback = self.action_types[ action_dict['type'] ]
+			self.callback = ACTIONS.get(self.action_type)
 		except KeyError:
-			raise InvalidScenarioFileFormat('Found invalid action type: %s' % action_dict['type'])
-		self.arguments = action_dict['arguments'] if 'arguments' in action_dict else []
+			raise InvalidScenarioFileFormat('Found invalid action type: %s' % self.action_type)
+
+		self.arguments = action_dict.get('arguments', [])
 
 	def __call__(self, session):
 		"""Executes action."""
@@ -314,29 +289,27 @@ class _Action(object):
 		arguments_yaml = yaml.safe_dump(self.arguments, line_break='\n')
 		# NOTE: the line above used to end with this: .replace('\n', '')
 		# which broke formatting of logbook messages, of course. Revert in case of problems.
-		return "{arguments: %s, type: %s}" % (arguments_yaml, self._action_type_str)
+		return "{arguments: %s, type: %s}" % (arguments_yaml, self.action_type)
 
 
 class _Condition(object):
 	"""Internal data structure representing a condition"""
-	# map condition types to functions here if renaming is necessary
-	condition_types = { }
+
 	def __init__(self, session, cond_dict):
 		self.session = session
-		_should_be_dict(cond_dict, "condition specification")
-		if not 'type' in cond_dict:
+
+		assert_type(cond_dict, dict, "condition specification")
+
+		try:
+			self.cond_type = cond_dict['type']
+		except KeyError:
 			raise InvalidScenarioFileFormat("Encountered condition without type")
 		try:
-			self.cond_type = CONDITIONS.get_item_for_string(cond_dict['type'])
+			self.callback = CONDITIONS.get(self.cond_type)
 		except KeyError:
-			raise InvalidScenarioFileFormat('Found invalid condition type: %s' % cond_dict['type'])
-		# first check the global namespace for a function called same as the condition.
-		# if a function has to be named differently, map the CONDITION type in self.condition_types
-		if cond_dict['type'] in globals():
-			self.callback = globals()[cond_dict['type']]
-		else:
-			self.callback = self.condition_types[ self.cond_type  ]
-		self.arguments = cond_dict['arguments'] if 'arguments' in cond_dict else []
+			raise InvalidScenarioFileFormat('Found invalid condition type: %s' % self.cond_type)
+
+		self.arguments = cond_dict.get('arguments', [])
 
 	def __call__(self):
 		"""Check for condition.
@@ -348,4 +321,4 @@ class _Condition(object):
 		arguments_yaml = yaml.safe_dump(self.arguments, line_break='\n')
 		# NOTE: the line above used to end with this: .replace('\n', '')
 		# which broke formatting of logbook messages, of course. Revert in case of problems.
-		return '{arguments: %s, type: "%s"}' % ( arguments_yaml, self.cond_type.key)
+		return '{arguments: %s, type: "%s"}' % ( arguments_yaml, self.cond_type)

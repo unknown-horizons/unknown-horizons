@@ -22,7 +22,7 @@
 import horizons.main
 
 from horizons.scheduler import Scheduler
-from horizons.util import Callback, WorldObject, Point, Circle
+from horizons.util import Callback, WorldObject, Point, Circle, Registry
 from horizons.command.unit import CreateUnit
 from horizons.scenario import CONDITIONS
 from horizons.savegamemanager import SavegameManager
@@ -30,9 +30,24 @@ from horizons.constants import MESSAGES, AUTO_CONTINUE_CAMPAIGN
 from horizons.command.game import PauseCommand, UnPauseCommand
 
 
-###
-# Scenario Actions
+class ACTIONS(object):
+	"""Class that holds all available action functions."""
+	__metaclass__ = Registry
 
+	@classmethod
+	def register_function(cls, func, name=None):
+		"""Register action.
+
+		By default, the function's name is used as identifier of the action. You can supply
+		a `name` parameter to use instead.
+		"""
+		cls.registry[name or func.__name__] = func
+
+
+register = ACTIONS.register
+
+
+@register(name='message')
 def show_message(session, *message):
 	"""Shows a custom message in the messagewidget. If you pass more than one message, they
 	will be shown after each other after a delay"""
@@ -45,10 +60,12 @@ def show_message(session, *message):
 		                           None, run_in=delay_iter)
 		delay_iter += delay_ticks
 
+@register(name='db_message')
 def show_db_message(session, message_id):
 	"""Shows a message specified in the db on the ingame message widget"""
 	session.ingame_gui.message_widget.add(None, None, message_id)
 
+@register(name='logbook_w')
 def write_logbook_entry(session, head, message):
 	"""Silently adds an entry to the logbook."""
 	msg = message + '\n'* 30 + 'UHtutorial' # this can get removed once ticket 535 is resolved
@@ -59,11 +76,15 @@ def show_logbook_entry(session, head, message):
 	write_logbook_entry(session, head, message)
 	session.ingame_gui.logbook.show()
 
+@register(name='logbook')
 def show_logbook_entry_delayed(session, head, message, delay=MESSAGES.LOGBOOK_DEFAULT_DELAY):
-	"""Show a logbook entry delayed by delay seconds"""
+	"""Show a logbook entry delayed by delay seconds.
+	
+	Set delay=0 for instant apperaring."""
 	callback = Callback(show_logbook_entry, session, head, message)
 	Scheduler().add_new_object(callback, session.scenario_eventhandler, run_in=Scheduler().get_ticks(delay))
 
+@register(name='win')
 def do_win(session):
 	"""Called when player won"""
 	PauseCommand().execute(session)
@@ -85,6 +106,7 @@ def do_win(session):
 	else:
 		UnPauseCommand().execute(session)
 
+@register(name='goal_reached')
 def goal_reached(session, goal_number):
 	"""Called when player reached a goal in a scenario"""
 	# TODO : if we want, we could make this work in "scenario" mode
@@ -93,6 +115,7 @@ def goal_reached(session, goal_number):
 	if session.campaign:
 		SavegameManager.mark_goal_reached(session.campaign, goal_number)
 
+@register(name='lose')
 def do_lose(session):
 	"""Called when player lost"""
 	show_message(session, 'You failed the scenario.')
@@ -100,15 +123,18 @@ def do_lose(session):
 	# drop events after this event
 	Scheduler().add_new_object(session.scenario_eventhandler.drop_events, session.scenario_eventhandler)
 
+@register()
 def set_var(session, name, value):
 	session.scenario_eventhandler._scenario_variables[name] = value
 	check_callback = Callback(session.scenario_eventhandler.check_events, CONDITIONS.var_eq)
 	Scheduler().add_new_object(check_callback, session.scenario_eventhandler)
 
+@register()
 def wait(session, time):
 	delay = Scheduler().get_ticks(time)
 	session.scenario_eventhandler.sleep(delay)
 
+@register()
 def spawn_ships(session, owner, id, number, *position):
 	"""
 	spawns a number of ships for owner
@@ -133,4 +159,3 @@ def spawn_ships(session, owner, id, number, *position):
 			if number == 0:
 				break
 		radius += 1
-

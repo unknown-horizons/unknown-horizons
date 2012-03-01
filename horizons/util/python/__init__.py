@@ -30,6 +30,7 @@ from weaklist import WeakList
 from weakmethod import WeakMethod
 from weakmethodlist import WeakMethodList
 from singleton import Singleton, ManualConstructionSingleton
+from registry import Registry
 
 
 class Const(object):
