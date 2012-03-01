@@ -49,10 +49,19 @@ def pick_object(self, args):
 	SelectionTool.apply_select = deco(SelectionTool.apply_select)
 
 
+def shortcuts(self, args):
+	"""Inject references to the current session and world into the namespace of
+	the IPython shell."""
+	import horizons.main
+	session = horizons.main._modules.session
+	self.push({'session': session, 'world': session.world})
+
+
 class UHKernel(Kernel):
 	"""Custom kernel to inject a callback into the fifengine."""
 	def start(self):
 		self.shell.define_magic('uhpick', pick_object)
+		self.shell.define_magic('uhshortcuts', shortcuts)
 		self.fife_engine.pump.append(self.do_one_iteration)
 
 
