@@ -64,6 +64,7 @@ def init_pychan():
 				entries.append( (k, v) )
 		return dict(entries)
 
+	global STYLES
 	STYLES = conv(STYLES)
 
 	# style
