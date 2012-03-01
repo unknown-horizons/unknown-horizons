@@ -101,7 +101,7 @@ class SavegameManager(object):
 			if savegameinfo['timestamp'] == -1:
 				return ""
 			else:
-				return time.strftime('%c', time.localtime(savegameinfo['timestamp']))
+				return time.strftime('%c', time.localtime(savegameinfo['timestamp'])).decode('utf-8')
 
 		for f in files:
 			if f.startswith(cls.autosave_dir):
