@@ -106,6 +106,7 @@ class LogBook(PickBeltWidget):
 		if not self._hiding_widget:
 			self._hiding_widget = True
 			self.session.ingame_gui.on_switch_main_widget(None)
+			self._hide_statswidgets()
 			self._gui.hide()
 			self._hiding_widget = False
 			UnPauseCommand(suggestion=True).execute(self.session)
