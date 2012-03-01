@@ -39,21 +39,52 @@
 		<Label name="lbl_right"  font="14_black"
 			wrap_text="1" max_size="323,432" />
 	</VBox> <!-- closes VBox logbook right page -->
-</HBox> <!-- closes: <HBox name='logbook'> -->
+</HBox> <!-- closes: <HBox name="logbook"> -->
 
-<VBox name='statistics' max_size="700,508" min_size="700,508">
+<VBox name="statistics" max_size="700,508" min_size="700,508">
 	<Label name="headline_statistics" text="Statistics"
 		wrap_text="0" max_size="323, 25" min_size="323, 25" />
 	<Icon image="content/gui/images/background/hr.png" />
-	<HBox name="header_button_row" padding="5">
-		<Button name='stats_players' text="Players" />
-		<Button name='stats_ships' text="My ships" />
-		<Button name='stats_settlements' text="My settlements" />
+	<HBox name="header_button_row_stats" padding="5">
+		<Button name="stats_players" text="Players" />
+		<Button name="stats_ships" text="My ships" />
+		<Button name="stats_settlements" text="My settlements" />
 	</HBox>
-</VBox> <!--closes: <VBox name='statistics'>-->
+</VBox> <!--closes: <VBox name="statistics">-->
 
-<HBox name='chat_overview'>
-</HBox> <!--closes: <HBox name='chat_overview'>-->
+<HBox name="chat_overview" max_size="700,508" min_size="700,508">
+	<VBox name="game_messages" comment="Left page" max_size="345,508" min_size="345,508">
+		<Label name="headline_game_messages" text="Game messages"
+			wrap_text="0" max_size="323, 25" min_size="323, 25" />
+		<Icon image="content/gui/images/background/hr.png" />
+		<HBox name="header_button_row_gamemsg" padding="5">
+			<Button name="weird_button_1" text="Button 1" />
+			<Button name="wb2" text="Button 2" />
+			<Button name="wb3" text="Button 3" />
+		</HBox>
+
+		<ScrollArea name="game_messages_scroll_area"  min_size="325,360"  max_size="325,360">
+			<ListBox name="game_messagebox"  min_size="325,360" max_size="325,360" />
+		</ScrollArea>
+	</VBox>
+
+	<VBox name="chat" comment="Right page">
+		<Label name="headline_chat" text="Chat"
+			wrap_text="0" max_size="323, 25" min_size="323, 25" />
+		<Icon image="content/gui/images/background/hr.png" />
+		<HBox name="header_button_row_chat" padding="5">
+			<Button name="weird_button_4" text="Button 4" />
+			<Button name="wb5" text="Button 5" />
+			<Button name="wb6" text="Button 6" />
+		</HBox>
+
+		<ScrollArea name="chat_scroll_area"  min_size="325,360"  max_size="325,360">
+			<ListBox name="chatbox"  min_size="325,360" max_size="325,360" />
+		</ScrollArea>
+		<TextField name="chatTextField"
+			text="Enter your message here"  min_size="300,16" />
+	</VBox>
+</HBox> <!--closes: <VBox name="chat_overview">-->
 
 <OkButton tooltip="Return to game" position="795,510" />
 

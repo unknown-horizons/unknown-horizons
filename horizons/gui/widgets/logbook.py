@@ -23,6 +23,7 @@ from horizons.util import Callback
 from horizons.util.changelistener import metaChangeListenerDecorator
 from horizons.world.component.ambientsoundcomponent import AmbientSoundComponent
 from horizons.command.game import UnPauseCommand, PauseCommand
+from horizons.command.misc import Chat
 from horizons.gui.widgets.pickbeltwidget import PickBeltWidget
 
 @metaChangeListenerDecorator("pause_request")
@@ -57,15 +58,21 @@ class LogBook(PickBeltWidget):
 		"""Initial gui setup for all subpages accessible through pickbelts."""
 		self._gui = self.get_widget()
 		self._gui.mapEvents({
+		  'okButton' : self.hide,
 		  'backwardButton' : Callback(self._scroll, -2),
 		  'forwardButton' : Callback(self._scroll, 2),
-		  'okButton' : self.hide,
 		  'stats_players' : self._show_players,
-		  'stats_ships' : self._show_playerships,
 		  'stats_settlements' : self._show_playersettlements,
+		  'stats_ships' : self._show_playerships,
+		  'chatTextField' : self._send_chat_message,
 		  })
 		self._gui.position_technique = "automatic" # "center:center"
 
+		# stuff in the game message / chat history subwidget
+		self.textfield = self._gui.findChild(name="chatTextField")
+		self.textfield.capture(self._chatfield_onfocus, 'mouseReleased', 'default')
+
+		# these buttons flip pages in the captain's log if there are more than two
 		self.backward_button = self._gui.findChild(name="backwardButton")
 		self.forward_button = self._gui.findChild(name="forwardButton")
 
@@ -232,3 +239,21 @@ class LogBook(PickBeltWidget):
 		for statswidget in statswidgets:
 			# we don't care which one is shown currently (if any), just hide all of them
 			statswidget.hide()
+
+
+
+########
+#        MESSAGE  AND  CHAT  HISTORY  SUBWIDGET
+########
+
+	def _send_chat_message(self):
+		"""Sends a chat message. Called when user presses enter in the input field"""
+		msg = self.textfield.text
+		if len(msg):
+			Chat(msg).execute(self.session)
+			self.textfield.text = u''
+
+	def _chatfield_onfocus(self):
+		"""Removes text in chat input field when it gets focused."""
+		self.textfield.text = u""
+		self.textfield.capture(None, 'mouseReleased', 'default')
