@@ -282,3 +282,6 @@ class Message(object):
 				self.message = msg
 				print u"Warning: Unsubstituted string {err} in {id} message \"{msg}\", dict {dic}".format(
 				       err=err, msg=msg, id=id, dic=message_dict)
+
+	def __repr__(self):
+		return "% 4d: %s  '%s'  %s %s%s" % (self.created, self.id, self.message, '(%s,%s) ' % (self.x, self.y) if self.x and self.y else '', 'R' if self.read else ' ', 'D' if self.display else ' ')
