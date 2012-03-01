@@ -2,56 +2,56 @@
 <Container name="captains_log" size="1020,580" position="-20,0">
 <Icon image="content/gui/images/background/book.png" position="100,0" />
 
-	<!-- left side -->
-<!-- Here pickbelts # 1, 3 and 5 with the texts "Captain's Log", "Game Messages"
-and "Chat Messages" will get added later. Refer to gui/credits/*.xml for info-->
+<Container name="left_pickbelts" size="170,580" />
 
-<VBox max_size="350,508" min_size="350,508" position="175,40" padding="2">
-	<Label name="head_left" font="headline"
-		wrap_text="0" max_size="323, 25" min_size="323, 25" />
-	<Icon image="content/gui/images/background/hr.png" />
-	<Label name="lbl_left"  font="14_black"
-		wrap_text="1" max_size="323,432" />
+<HBox name="logbook" max_size="700,508" min_size="700,508" padding="0">
+	<!-- left page -->
+	<VBox max_size="350,508" min_size="350,508" position="175,40" padding="2" name="logbook_left">
+		<Label name="head_left" font="headline"
+			wrap_text="0" max_size="323, 25" min_size="323, 25" />
+		<Icon image="content/gui/images/background/hr.png" />
+		<Label name="lbl_left"  font="14_black"
+			wrap_text="1" max_size="323,432" />
 
-	<Spacer />
+		<Spacer />
 
-	<HBox max_size="80,36">
-		<ToggleImageButton name="backwardButton" tooltip="Read previous entries"
-			comment="Entry of Captain's Log (logbook/diary used in scenarios)"
-			inactive_image ="content/gui/images/buttons/parrow_left_bw.png"
-			up_image="content/gui/images/buttons/parrow_left.png"
-			hover_image="content/gui/images/buttons/parrow_left_h.png"
-			down_image="content/gui/images/buttons/parrow_left_d.png" />
-		<ToggleImageButton name="forwardButton" tooltip="Read next entries"
-			comment="Entry of Captain's Log (logbook/diary used in scenarios)"
-			inactive_image ="content/gui/images/buttons/parrow_right_bw.png"
-			up_image="content/gui/images/buttons/parrow_right.png"
-			hover_image="content/gui/images/buttons/parrow_right_h.png"
-			down_image="content/gui/images/buttons/parrow_right_d.png" />
-			<!-- "proximate entries" would also fit -->
-	</HBox>
-</VBox>
+		<HBox max_size="80,36">
+			<ToggleImageButton name="backwardButton" tooltip="Read previous entries"
+				comment="Entry of Captain's Log (logbook/diary used in scenarios)"
+				inactive_image ="content/gui/images/buttons/parrow_left_bw.png"
+				up_image="content/gui/images/buttons/parrow_left.png"
+				hover_image="content/gui/images/buttons/parrow_left_h.png"
+				down_image="content/gui/images/buttons/parrow_left_d.png" />
+			<ToggleImageButton name="forwardButton" tooltip="Read next entries"
+				comment="Entry of Captain's Log (logbook/diary used in scenarios)"
+				inactive_image ="content/gui/images/buttons/parrow_right_bw.png"
+				up_image="content/gui/images/buttons/parrow_right.png"
+				hover_image="content/gui/images/buttons/parrow_right_h.png"
+				down_image="content/gui/images/buttons/parrow_right_d.png" />
+		</HBox>
+	</VBox> <!-- closes VBox logbook left page -->
 
-	<!-- right side -->
+	<!-- right page -->
+	<VBox max_size="350,508" min_size="350,508" position="520,40" padding="2" name="logbook_right">
+		<Label name="head_right" font="headline"
+			wrap_text="0" max_size="323, 25" min_size="323, 25" />
+		<Icon image="content/gui/images/background/hr.png" />
+		<Label name="lbl_right"  font="14_black"
+			wrap_text="1" max_size="323,432" />
 
-<VBox max_size="350,508" min_size="350,508" position="520,40" padding="2">
-	<Label name="head_right" font="headline"
-		wrap_text="0" max_size="323, 25" min_size="323, 25" />
-	<Icon image="content/gui/images/background/hr.png" />
-	<Label name="lbl_right"  font="14_black"
-		wrap_text="1" max_size="323,432" />
+		<Spacer />
 
-	<Spacer />
+		<HBox> <Spacer min_size="275"/>
+			<OkButton tooltip="Leave Captain's log"
+				comment="Captain's Log: logbook/diary used in scenarios" />
+		</HBox>
+	</VBox> <!-- closes VBox logbook right page -->
+</HBox> <!-- closes: <HBox name='logbook'> -->
 
-	<HBox> <Spacer min_size="275"/>
-		<OkButton tooltip="Leave Captain's log"
-			comment="Captain's Log: logbook/diary used in scenarios" />
-	</HBox>
-	<!-- Yes, this button will not be placed on the very right without min_size.
-	No, we don't know why the engine does this.
-	Maybe related to the icon size of the HR above.-->
-</VBox>
+<VBox name='statistics' />
 
-<!-- Here pickbelts # 1, 3 and 5 with the texts "Captain's Log", "Game Messages"
-and "Chat Messages" will get added later. Refer to gui/credits/*.xml for info-->
+<VBox name='chat_overview' />
+
+<Container name="right_pickbelts" position="810,0" size="170,580" />
+
 </Container>

@@ -18,14 +18,16 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
+from fife.extensions.pychan.widgets import ImageButton
+
 from horizons.util import Callback
 from horizons.util.gui import load_uh_widget
-from fife.extensions import pychan
 
 class PickBeltWidget(object):
 	"""Base class for widget with sections behaving as pages"""
 	sections = () # Tuple with widget name and Label
 	widget_xml = '' # xml to load for the widget
+	style = 'book'
 	pickbelt_start_pos = (35,150)
 	page_pos = (185,45)
 
@@ -33,7 +35,7 @@ class PickBeltWidget(object):
 		self.page_widgets = {}
 		self.dict_lt = {}
 		self.dict_rt = {}
-		self.widget = load_uh_widget(self.widget_xml, style="book")
+		self.widget = load_uh_widget(self.widget_xml, style=self.style)
 
 		self.pickbelts_container_lt = self.widget.findChild(name="left_pickbelts")
 		self.pickbelts_container_rt = self.widget.findChild(name="right_pickbelts")
@@ -44,10 +46,10 @@ class PickBeltWidget(object):
 		# Create the required pickbelts
 		for side in ('lt', 'rt'):
 			for i in range(len(self.sections)):
-				pickbelt = pychan.widgets.ImageButton()
+				pickbelt = ImageButton()
 				pickbelt.name = self.sections[i][0] + '_' + side
 				pickbelt.text = self.sections[i][1]
-				pickbelt.font="small_tooltip"
+				pickbelt.font = "small_tooltip"
 				pickbelt.position = (self.pickbelt_start_pos[0]+5*i, self.pickbelt_start_pos[1]+70*i)
 				pickbelt.capture(Callback(self.update_view, i), event_name="mouseClicked")
 				if side == 'lt':

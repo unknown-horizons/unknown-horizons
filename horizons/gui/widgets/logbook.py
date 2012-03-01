@@ -19,24 +19,30 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-from horizons.util.gui import load_uh_widget
 from horizons.util import Callback
 from horizons.util.changelistener import metaChangeListenerDecorator
 from horizons.world.component.ambientsoundcomponent import AmbientSoundComponent
 from horizons.command.game import UnPauseCommand, PauseCommand
-
-
+from horizons.gui.widgets.pickbeltwidget import PickBeltWidget
 
 @metaChangeListenerDecorator("pause_request")
 @metaChangeListenerDecorator("unpause_request")
-class LogBook(object):
+class LogBook(PickBeltWidget):
 	"""Implementation of the logbook as described here:
 	http://wiki.unknown-horizons.org/w/Message_System
 
 	It displays longer messages, that are essential for scenarios.
 	Headings can be specified for each entry.
 	"""
+	widget_xml = 'captains_log.xml'
+	style = None
+	page_pos = (170,38)
+	sections = (('logbook', _(u'Logbook')),
+				('statistics', _(u'Statistics')),
+				('chat_overview', _(u'Chat')))
+
 	def __init__(self, session):
+		super(LogBook, self).__init__()
 		self.session = session
 		self._headings = []
 		self._messages = [] # list of all headings / messages
@@ -135,7 +141,7 @@ class LogBook(object):
 
 	def _init_gui(self):
 		"""Initial init of gui."""
-		self._gui = load_uh_widget("captains_log.xml")
+		self._gui = self.get_widget()
 		self._gui.mapEvents({
 		  'backwardButton' : Callback(self._scroll, -2),
 		  'forwardButton' : Callback(self._scroll, 2),
