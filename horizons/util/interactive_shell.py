@@ -40,8 +40,9 @@ def pick_object(self, args):
 
 	def deco(func):
 		def wrapped(self, *args, **kwargs):
-			shell.push({'selection': list(self.session.selected_instances)[0]})
-			SelectionTool.apply_select = original
+			if self.session.selected_instances:
+				shell.push({'selection': list(self.session.selected_instances)[0]})
+				SelectionTool.apply_select = original
 			return func(self, *args, **kwargs)
 		return wrapped
 
