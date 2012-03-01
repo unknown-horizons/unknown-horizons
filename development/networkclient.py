@@ -62,18 +62,18 @@ def onlist(*args):
   if len(games) > 0:
     print "[GAMESLIST]"
     for game in games:
-      print "  [%s] map=%s maxplayers=%d playercnt=%d" % (game.uuid, game.mapname, game.maxplayers, game.playercnt)
+      print "  [%s] map=%s maxplayers=%d playercnt=%d name=%s" % (game.uuid, game.mapname, game.maxplayers, game.playercnt, game.name)
   else:
     print "No games available"
 
 def oncreate(*args):
   global client
-  if len(args) != 2:
-    print "Syntax: create <mapname> <maxplayers>"
+  if len(args) != 3:
+    print "Syntax: create <mapname> <maxplayers> <gamename>"
     return
   try:
     maxplayers = int(args[1])
-    game = client.creategame(args[0], maxplayers)
+    game = client.creategame(unicode(args[0]), maxplayers, unicode(args[2]))
     print "[GAME] [%s] mapname=%s maxplayers=%d playercnt=%d" % (game.uuid, game.mapname, game.maxplayers, game.playercnt)
     for player in game.players:
       print "  Player: %s (%s)" % (player.name, player.sid)
@@ -86,7 +86,7 @@ def onjoin(*args):
     print "Syntax: join <uuid>"
     return
   try:
-    game = client.joingame(args[0])
+    game = client.joingame(unicode(args[0]))
     print "[GAME] [%s] mapname=%s maxplayers=%d playercnt=%d" % (game.uuid, game.mapname, game.maxplayers, game.playercnt)
     for player in game.players:
       print "  Player: %s (%s)" % (player.name, player.sid)
@@ -99,7 +99,7 @@ def onleave(*args):
 
 def onchat(*args):
   global client
-  client.chat(' '.join(args))
+  client.chat(u' '.join(args))
 
 def cb_onchat(game, player, msg):
   print "[ONCHAT] [%s] %s: %s" % (game.uuid, player, msg)
@@ -128,10 +128,11 @@ def cb_ongamedata(data):
 
 def onauto(*args):
   global client
-  mapname = "autocreated"
+  mapname = u"autocreated"
+  gamename = u"mygame"
   maxplayers = 4
   if len(args) >= 1:
-    mapname = args[0]
+    mapname = unicode(args[0])
   if len(args) >= 2:
     try:
       maxplayers = int(args[1])
@@ -143,7 +144,7 @@ def onauto(*args):
   if len(games) > 0:
     game = client.joingame(games[0].uuid)
   else:
-    game = client.creategame(mapname, maxplayers)
+    game = client.creategame(mapname, maxplayers, gamename)
   print "[GAME] [%s] mapname=%s maxplayers=%d playercnt=%d" % (game.uuid, game.mapname, game.maxplayers, game.playercnt)
   for player in game.players:
     print "  Player: %s" % (player.name)
@@ -154,15 +155,15 @@ def ongamedata(*args):
   if client.mode is not ClientMode.Game:
     print "[ERROR] Client not in game mode"
     return
-  client.send(' '.join(args))
+  client.send(u' '.join(args))
 
 def onname(*args):
   global name, client
   if len(args) == 1:
     # see documentation for client.changename() why this code is like that
-    if not client.changename(args[0]):
+    if not client.changename(unicode(args[0])):
       return
-    name = args[0]
+    name = unicode(args[0])
   print "[NAME] My name is %s" % (name)
 
 def onstatus(*args):
@@ -235,8 +236,8 @@ logging.getLogger().addHandler(logging.StreamHandler(sys.stderr))
 logging.getLogger("network").setLevel(logging.DEBUG)
 
 client = None
-version = "0.512a"
-name = "client-%u" % (os.getpid())
+version = u"0.512a"
+name = u"client-%u" % (os.getpid())
 onname()
 client = Client(name, version, [host, port], None)
 client.register_callback("lobbygame_chat", cb_onchat)

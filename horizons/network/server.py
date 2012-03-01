@@ -220,8 +220,7 @@ class Server(object):
 
 		packet = None
 		try:
-			packet = packets.unserialize(event.packet.data)
-			packet.validate()
+			packet = packets.unserialize(event.packet.data, True)
 		except Exception, e:
 			logging.warning("[RECEIVE] Unknown or malformed packet from %s: %s!" % (peer.address, e))
 			self.fatalerror(event.peer, "Unknown or malformed packet. Please check your game version")
@@ -265,8 +264,8 @@ class Server(object):
 		if not len(packet.playername):
 			self.error(peer, "Your player name cannot be empty")
 			return
-		if not len(packet.gamename):
-			packet.gamename = "Unnamed Game"
+		if not len(packet.name):
+			packet.name = "Unnamed Game"
 		player = self.players[peer.data]
 		if player.game is not None:
 			self.error(peer, "You can't create a game while in another game")

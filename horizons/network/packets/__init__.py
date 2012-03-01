@@ -150,9 +150,11 @@ SafeUnpickler.add('common', cmd_fatalerror)
 
 #-------------------------------------------------------------------------------
 
-def unserialize(data):
-	packet = SafeUnpickler.loads(data)
-	return packet
+def unserialize(data, validate = False):
+	mypacket = SafeUnpickler.loads(data)
+	if validate and not (hasattr(mypacket.validate, '__func__') and mypacket.validate.__func__ is packet.validate.__func__):
+		mypacket.validate()
+	return mypacket
 
 #-------------------------------------------------------------------------------
 

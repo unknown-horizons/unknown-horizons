@@ -353,13 +353,13 @@ class Client(object):
 
 	#-----------------------------------------------------------------------------
 
-	def creategame(self, mapname, maxplayers, gamename, load=None):
+	def creategame(self, mapname, maxplayers, name, load=None):
 		if self.mode is None:
 			raise network.NotConnected()
 		if self.mode is not ClientMode.Server:
 			raise network.NotInServerMode("We are not in server mode")
 		self.log.debug("[CREATE] mapname=%s maxplayers=%d" % (mapname, maxplayers))
-		self.send(packets.client.cmd_creategame(self.version, mapname, maxplayers, self.name, gamename, load))
+		self.send(packets.client.cmd_creategame(self.version, mapname, maxplayers, self.name, name, load))
 		packet = self.recv_packet([packets.cmd_error, packets.server.data_gamestate])
 		if packet is None:
 			raise network.FatalError("No reply from server")

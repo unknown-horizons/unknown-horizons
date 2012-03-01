@@ -27,10 +27,10 @@ class cmd_creategame(packet):
 	mapname       = None
 	maxplayers    = None
 	playername    = None
-	gamename      = u"Unnamed Game"
+	name          = u"Unnamed Game"
 	load          = None
 
-	def __init__(self, clientver, mapname, maxplayers, playername, gamename, load=None):
+	def __init__(self, clientver, mapname, maxplayers, playername, name, load=None):
 		"""
 		@param load: whether it's a loaded game
 		"""
@@ -38,7 +38,7 @@ class cmd_creategame(packet):
 		self.mapname       = mapname
 		self.maxplayers    = maxplayers
 		self.playername    = playername
-		self.gamename      = gamename
+		self.name          = name
 		self.load          = load
 
 	def validate(self):
@@ -50,8 +50,8 @@ class cmd_creategame(packet):
 			raise NetworkException("Invalid datatype: maxplayers")
 		if not isinstance(self.playername, unicode):
 			raise NetworkException("Invalid datatype: playername")
-		if not isinstance(self.gamename, unicode):
-			raise NetworkException("Invalid datatype: gamename")
+		if not isinstance(self.name, unicode):
+			raise NetworkException("Invalid datatype: name")
 		if self.load is not None and not isinstance(self.load, str):
 			raise NetworkException("Invalid datatype: load")
 
