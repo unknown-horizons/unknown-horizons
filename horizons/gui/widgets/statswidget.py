@@ -41,23 +41,25 @@ class StatsWidget(object):
 			self.refresh()
 
 	def show(self):
+		if not self._initialised:
+			self._initialised = True
+			self._init_gui()
 		self._gui.show()
-		self.session.ingame_gui.on_switch_main_widget(self)
 
 	def hide(self):
+		if not self._initialised:
+			return # can happen if the logbook calls hide on all statswidgets
 		if not self._hiding_widget:
 			self._hiding_widget = True
-			self.session.ingame_gui.on_switch_main_widget(None)
 			self._gui.hide()
 			self._hiding_widget = False
 
 	def is_visible(self):
+		if not self._initialised:
+			return False
 		return self._gui.isVisible()
 
 	def toggle_visibility(self):
-		if not self._initialised:
-			self._initialised = True
-			self._init_gui()
 		if self.is_visible():
 			self.hide()
 		else:
@@ -66,8 +68,7 @@ class StatsWidget(object):
 
 	def _init_gui(self):
 		self._gui = load_uh_widget(self.widget_file_name)
-		self._gui.mapEvents({'okButton': self.hide})
-		self._gui.position_technique = 'automatic'
+		self._gui.position_technique = 'center:center+25'
 		self._content_vbox = self._gui.findChild(name = 'content_vbox')
 		self.refresh()
 

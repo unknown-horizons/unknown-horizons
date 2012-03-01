@@ -1,8 +1,5 @@
 <?xml version="1.0"?>
-<Container size="1020,580" position="-20,0" name="ships_list">
-	<Icon image="content/gui/images/background/book.png" position="100,0" />
-
-	<VBox max_size="695,508" min_size="695,508" position="175,40" padding="5">
+	<VBox max_size="695,408" min_size="695,408" padding="5">
 		<HBox>
 			<Label name="headline" text="" min_size="300,20" />
 		</HBox>
@@ -19,7 +16,7 @@
 			</HBox>
 		</VBox>
 
-		<ScrollArea background_color="255,255,255,0" min_size="650,400">
+		<ScrollArea background_color="255,255,255,0" min_size="650,300">
 			<VBox name="content_vbox" />
 		</ScrollArea>
 <!--
@@ -34,11 +31,4 @@ In this VBox a line is added per ship in the following format:
 				<Label min_size="320,20" name="status_n" text="Attacking AI42" />
 			</HBox>
 -->
-
-		<Spacer />
-		<HBox>
-			<Spacer min_size="627" />
-			<OkButton tooltip="Close" />
-		</HBox>
 	</VBox>
-</Container>

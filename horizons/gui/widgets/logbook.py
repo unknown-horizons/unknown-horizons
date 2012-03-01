@@ -53,6 +53,30 @@ class LogBook(PickBeltWidget):
 
 		#self.add_entry(u"Heading",u"Welcome to the Captains log") # test code
 
+	def _init_gui(self):
+		"""Initial gui setup for all subpages accessible through pickbelts."""
+		self._gui = self.get_widget()
+		self._gui.mapEvents({
+		  'backwardButton' : Callback(self._scroll, -2),
+		  'forwardButton' : Callback(self._scroll, 2),
+		  'okButton' : self.hide,
+		  'stats_players' : self._show_players,
+		  'stats_ships' : self._show_playerships,
+		  'stats_settlements' : self._show_playersettlements,
+		  })
+		self._gui.position_technique = "automatic" # "center:center"
+
+		self.backward_button = self._gui.findChild(name="backwardButton")
+		self.forward_button = self._gui.findChild(name="forwardButton")
+
+	def update_view(self, number=0):
+		""" update_view from PickBeltWidget, cleaning up the logbook subwidgets
+		"""
+		# self.session might not exist yet during callback setup for pickbelts
+		if hasattr(self, 'session'):
+			self._hide_statswidgets()
+		super(LogBook, self).update_view(number)
+
 	def save(self, db):
 		for i in xrange(0, len(self._headings)):
 			db("INSERT INTO logbook(heading, message) VALUES(?, ?)", \
@@ -68,28 +92,6 @@ class LogBook(PickBeltWidget):
 		if (value and value[0] and value[0][0]):
 			self._cur_entry = int(value[0][0])
 		self._redraw()
-
-	def add_entry(self, heading, message, show_logbook=True):
-		"""Adds an entry to the logbook consisting of:
-		@param heading: printed in top line.
-		@param message: printed below heading, wraps. """
-		#TODO last line of message text sometimes get eaten. Ticket #535
-		heading = unicode(heading)
-		message = unicode(message)
-		self._headings.append(heading)
-		self._messages.append(message)
-		if len(self._messages) % 2 == 1:
-			self._cur_entry = len(self._messages) - 1
-		else:
-			self._cur_entry = len(self._messages) - 2
-		if show_logbook:
-			self._redraw()
-
-	def clear(self):
-		"""Remove all entries"""
-		self._headings = []
-		self._messages = []
-		self._cur_entry = None
 
 	def show(self):
 		# don't show if there are no messages
@@ -116,41 +118,6 @@ class LogBook(PickBeltWidget):
 			self.hide()
 		else:
 			self.show()
-
-	def get_cur_entry(self):
-		return self._cur_entry
-
-	def set_cur_entry(self, cur_entry):
-		if cur_entry < 0 or cur_entry >= len(self._messages):
-			raise ValueError
-		self._cur_entry = cur_entry
-		self._redraw()
-
-	def _scroll(self, direction):
-		"""Scroll back or forth one message.
-		@param direction: -1 or 1"""
-		if len(self._messages) == 0:
-			return
-		#assert direction in (-1, 1)
-		new_cur = self._cur_entry + direction
-		if new_cur < 0 or new_cur >= len(self._messages):
-			return # invalid scroll
-		self._cur_entry = new_cur
-		AmbientSoundComponent.play_special('flippage')
-		self._redraw()
-
-	def _init_gui(self):
-		"""Initial init of gui."""
-		self._gui = self.get_widget()
-		self._gui.mapEvents({
-		  'backwardButton' : Callback(self._scroll, -2),
-		  'forwardButton' : Callback(self._scroll, 2),
-		  'okButton' : self.hide
-		  })
-		self._gui.position_technique = "automatic" # "center:center"
-
-		self.backward_button = self._gui.findChild(name="backwardButton")
-		self.forward_button = self._gui.findChild(name="forwardButton")
 
 	def _redraw(self):
 		"""Redraws gui. Necessary when current message has changed."""
@@ -180,4 +147,87 @@ class LogBook(PickBeltWidget):
 		self._gui.findChild(name="lbl_right").text = texts[1]
 		self._gui.adaptLayout()
 
+########
+#        LOGBOOK  SUBWIDGET
+########
 
+	def add_entry(self, heading, message, show_logbook=True):
+		"""Adds an entry to the logbook consisting of:
+		@param heading: printed in top line.
+		@param message: printed below heading, wraps. """
+		#TODO last line of message text sometimes get eaten. Ticket #535
+		heading = unicode(heading)
+		message = unicode(message)
+		self._headings.append(heading)
+		self._messages.append(message)
+		if len(self._messages) % 2 == 1:
+			self._cur_entry = len(self._messages) - 1
+		else:
+			self._cur_entry = len(self._messages) - 2
+		if show_logbook:
+			self._redraw()
+
+	def clear(self):
+		"""Remove all entries"""
+		self._headings = []
+		self._messages = []
+		self._cur_entry = None
+
+	def get_cur_entry(self):
+		return self._cur_entry
+
+	def set_cur_entry(self, cur_entry):
+		if cur_entry < 0 or cur_entry >= len(self._messages):
+			raise ValueError
+		self._cur_entry = cur_entry
+		self._redraw()
+
+	def _scroll(self, direction):
+		"""Scroll back or forth one message.
+		@param direction: -1 or 1"""
+		if len(self._messages) == 0:
+			return
+		#assert direction in (-1, 1)
+		new_cur = self._cur_entry + direction
+		if new_cur < 0 or new_cur >= len(self._messages):
+			return # invalid scroll
+		self._cur_entry = new_cur
+		AmbientSoundComponent.play_special('flippage')
+		self._redraw()
+
+########
+#        STATISTICS  SUBWIDGET
+########
+#
+#TODO list:
+#  [ ] fix stats show/hide mess: how is update_view called before self.__init__
+#  [ ] save last shown stats widget and re-show it when clicking on Statistics
+#  [ ] F2 F3 F4 should open logbook at Statistics with correct button selected
+#  [ ] semantic distinction between general widget and subwidgets (log, stats)
+#  [ ] layout and style: statswidget button clickability totally not obvious
+#
+#  [ ] chat overview widget
+#
+########
+
+	def _show_playerships(self):
+		self._hide_statswidgets()
+		self.session.ingame_gui.players_ships.show()
+
+	def _show_playersettlements(self):
+		self._hide_statswidgets()
+		self.session.ingame_gui.players_settlements.show()
+
+	def _show_players(self):
+		self._hide_statswidgets()
+		self.session.ingame_gui.players_overview.show()
+
+	def _hide_statswidgets(self):
+		statswidgets = [
+		  self.session.ingame_gui.players_overview,
+		  self.session.ingame_gui.players_ships,
+		  self.session.ingame_gui.players_settlements,
+		  ]
+		for statswidget in statswidgets:
+			# we don't care which one is shown currently (if any), just hide all of them
+			statswidget.hide()

@@ -6,7 +6,7 @@
 
 <HBox name="logbook" max_size="700,508" min_size="700,508" padding="0">
 	<!-- left page -->
-	<VBox max_size="350,508" min_size="350,508" position="175,40" padding="2" name="logbook_left">
+	<VBox max_size="350,508" min_size="350,508" padding="2" name="logbook_left">
 		<Label name="head_left" font="headline"
 			wrap_text="0" max_size="323, 25" min_size="323, 25" />
 		<Icon image="content/gui/images/background/hr.png" />
@@ -32,7 +32,7 @@
 	</VBox> <!-- closes VBox logbook left page -->
 
 	<!-- right page -->
-	<VBox max_size="350,508" min_size="350,508" position="520,40" padding="2" name="logbook_right">
+	<VBox max_size="350,508" min_size="350,508" padding="2" name="logbook_right">
 		<Label name="head_right" font="headline"
 			wrap_text="0" max_size="323, 25" min_size="323, 25" />
 		<Icon image="content/gui/images/background/hr.png" />
@@ -48,9 +48,19 @@
 	</VBox> <!-- closes VBox logbook right page -->
 </HBox> <!-- closes: <HBox name='logbook'> -->
 
-<VBox name='statistics' />
+<VBox name='statistics' max_size="700,508" min_size="700,508">
+	<Label name="headline_statistics" text="Statistics"
+		wrap_text="0" max_size="323, 25" min_size="323, 25" />
+	<Icon image="content/gui/images/background/hr.png" />
+	<HBox name="header_button_row">
+		<Button name='stats_players' text="Players" />
+		<Button name='stats_ships' text="My ships" />
+		<Button name='stats_settlements' text="My settlements" />
+	</HBox>
+</VBox> <!--closes: <VBox name='statistics'>-->
 
-<VBox name='chat_overview' />
+<HBox name='chat_overview'>
+</HBox> <!--closes: <HBox name='chat_overview'>-->
 
 <Container name="right_pickbelts" position="810,0" size="170,580" />
 
