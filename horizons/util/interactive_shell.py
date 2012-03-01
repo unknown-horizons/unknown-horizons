@@ -22,10 +22,36 @@
 from IPython.zmq.ipkernel import Kernel
 from IPython.zmq.kernelapp import KernelApp
 
+from horizons.gui.mousetools.selectiontool import SelectionTool
+
+
+def pick_object(self, args):
+	"""Intercepts selection of buildings/units and puts a reference to the object
+	into the namespace of the IPython shell.
+
+	In the shell, execute the following:
+
+		%uhpick
+
+	Now select a building or unit, and the object is accessible as variable `selection`.
+	"""
+	original = SelectionTool.apply_select
+	shell = self
+
+	def deco(func):
+		def wrapped(self, *args, **kwargs):
+			shell.push({'selection': list(self.session.selected_instances)[0]})
+			SelectionTool.apply_select = original
+			return func(self, *args, **kwargs)
+		return wrapped
+
+	SelectionTool.apply_select = deco(SelectionTool.apply_select)
+
 
 class UHKernel(Kernel):
 	"""Custom kernel to inject a callback into the fifengine."""
 	def start(self):
+		self.shell.define_magic('uhpick', pick_object)
 		self.fife_engine.pump.append(self.do_one_iteration)
 
 
