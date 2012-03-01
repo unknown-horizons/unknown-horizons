@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-	<VBox max_size="695,408" min_size="695,408" padding="5">
+	<VBox max_size="695,388" min_size="695,388" padding="5">
 		<HBox>
 			<Label name="headline" text="" min_size="300,20" />
 		</HBox>

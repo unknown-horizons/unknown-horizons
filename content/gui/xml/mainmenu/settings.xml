@@ -4,7 +4,7 @@
 <Container name="settings_window" size="1000,580">
 	<Icon image="content/gui/images/background/book.png" position="100,0" />
 <!-- Pickbelts to the left -->
-	<Container name="left_pickbelts" size="170,580">
+	<Container name="left_pickbelts" size="170,580" position="30,0">
 	</Container>
 
 <!-- Graphics section -->
@@ -189,7 +189,6 @@
 	<DropDown name="lighting_model" min_size="20,0" position="10000,0" />
 
 <!-- Pickbelts to the right -->
-	<Container name="right_pickbelts" position="810,0" size="170,580">
-	</Container>
+    <Container name="right_pickbelts" position="835,0" size="170,580" />
 
 </Container>

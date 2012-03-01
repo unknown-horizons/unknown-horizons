@@ -28,8 +28,8 @@ class PickBeltWidget(object):
 	sections = () # Tuple with widget name and Label
 	widget_xml = '' # xml to load for the widget
 	style = 'book'
-	pickbelt_start_pos = (35,150)
-	page_pos = (185,45)
+	pickbelt_start_pos = (5, 150)
+	page_pos = (185, 45)
 
 	def __init__(self):
 		self.page_widgets = {}
