@@ -49,3 +49,13 @@ def parse_port(port, allow_zero=False):
 	if portInt < 1 or portInt > 65535:
 		raise ValueError()
 	return portInt
+
+
+def get_all_subclasses(cls):
+	"""Recursivly find all subclasses of a given class."""
+	result = set()
+	for subclass in cls.__class__.__subclasses__(cls):
+		if subclass not in result:
+			result.add(subclass)
+			result.update(get_all_subclasses(subclass))
+	return result

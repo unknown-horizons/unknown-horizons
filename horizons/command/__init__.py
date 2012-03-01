@@ -23,7 +23,7 @@ __all__ = ['building', 'unit', 'sounds']
 
 import logging
 
-from horizons.util import WorldObject
+from horizons.util import WorldObject, get_all_subclasses
 from horizons.network.packets import SafeUnpickler
 
 class Command(object):
@@ -45,6 +45,11 @@ class Command(object):
 		@return: Propagated return value of manager's execute function.
 		"""
 		return session.manager.execute(self, local)
+
+	@classmethod
+	def get_all_commands(cls):
+		return list(get_all_subclasses(cls))
+
 
 class GenericCommand(Command):
 	"""Code generator for trivial commands on an object.
