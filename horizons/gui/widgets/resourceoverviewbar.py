@@ -22,8 +22,11 @@
 
 from fife import fife
 from fife.extensions import pychan
+import json
 import weakref
 import functools
+
+import horizons.main
 
 from horizons.constants import RES
 from horizons.world.component.storagecomponent import StorageComponent
@@ -32,6 +35,7 @@ from horizons.util import PychanChildFinder, Callback
 from horizons.util.python.decorators import cachedmethod
 from horizons.util.messaging.message import ResourceBarResize
 from horizons.extscheduler import ExtScheduler
+from horizons.world.component.ambientsoundcomponent import AmbientSoundComponent
 
 
 class ResourceOverviewBar(object):
@@ -89,6 +93,17 @@ class ResourceOverviewBar(object):
 		self.construction_mode = False
 		self._last_build_costs = None
 		self._do_show_dummy = False
+
+		self._update_default_configuration()
+
+	def _update_default_configuration(self):
+		# user defined variante of DEFAULT_RESOURCES (will be preferred)
+		self._custom_default_resources = None
+		setting = horizons.main.fife.get_uh_setting("ResourceOverviewBarConfiguration")
+		if setting: # parse it if there is something
+			config = json.loads(setting)
+			if config: # actually use it if it was parseable
+				self._custom_default_resources = config
 
 	def save(self, db):
 		for obj, config in self.resource_configurations.iteritems():
@@ -283,8 +298,10 @@ class ResourceOverviewBar(object):
 			res_list += [ res for res in self._last_build_costs if \
 			              res not in res_list and res != RES.GOLD_ID ]
 			return res_list
-		return self.resource_configurations.get(self.current_instance(),
-		                                        self.__class__.DEFAULT_RESOURCES)
+		# prefer user defaults over general defaults
+		default = self._custom_default_resources if self._custom_default_resources else self.__class__.DEFAULT_RESOURCES
+		# prefer specific setting over any defaults
+		return self.resource_configurations.get(self.current_instance(), default)
 
 	def _get_current_inventory(self):
 		if not (self.current_instance() in (None, self)): # alive and set
@@ -326,8 +343,22 @@ class ResourceOverviewBar(object):
 		background_icon = cur_gui.findChild(name="background_icon")
 		dlg.position = (cur_gui.position[0] + background_icon.position[0],
 		                cur_gui.position[1] + background_icon.position[1] + background_icon.size[1] )
+		dlg.findChild(name="make_default_btn").capture(self._make_configuration_default)
+		dlg.findChild(name="reset_default_btn").capture(Callback(self._make_configuration_default, reset=True))
 		dlg.show()
 		self._res_selection_dialog = dlg
+
+	def _make_configuration_default(self, reset=False):
+		"""Saves current resources as default via game settings"""
+		if reset:
+			config = [] # meaning invalid
+		else:
+			config = json.dumps(self._get_current_resources())
+		horizons.main.fife.set_uh_setting("ResourceOverviewBarConfiguration", config)
+		self._update_default_configuration()
+		AmbientSoundComponent.play_special("success")
+		if reset:
+			self.set_inventory_instance(self.current_instance(), force_update=True)
 
 	def _set_resource_slot(self, slot_num, res_id):
 		"""Show res_id in slot slot_num

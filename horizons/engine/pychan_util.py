@@ -62,6 +62,12 @@ def init_pychan():
 					entries.append( (k_i, v) )
 			else:
 				entries.append( (k, v) )
+
+		for entry in entries[:]:
+			# Button is the same as Tooltip button, duplicate styles
+			if entry[0] == "Button":
+				entries.append( ("TooltipButton", entry[1]) )
+
 		return dict(entries)
 
 	global STYLES

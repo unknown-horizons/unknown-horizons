@@ -45,8 +45,9 @@
 		<Setting name="RandomMapIslandSizeDeviation" type="float">2.0</Setting>
 		<Setting name="MapResourceDensity" type="float">2.0</Setting>
 		<Setting name="AutoUnload" type="bool">True</Setting>
+		<Setting name="ResourceOverviewBarConfiguration" type="str"></Setting>
 	</Module>
 	<Module name="meta">
-		<Setting name="SettingsVersion" type="int">13</Setting>
+		<Setting name="SettingsVersion" type="int">14</Setting>
 	</Module>
 </Settings>
