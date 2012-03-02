@@ -57,6 +57,7 @@ class MessageWidget(LivingObject):
 		self.active_messages = [] # for displayed messages
 		self.archive = [] # messages, that aren't displayed any more
 		self.chat = [] # chat messages sent by players
+		self.msgcount = 0 # sort to preserve order after loading
 
 		self.widget = load_uh_widget(self.ICON_TEMPLATE)
 		self.widget.position = (
@@ -79,7 +80,6 @@ class MessageWidget(LivingObject):
 		@param x, y: int coordinates where the action took place. Clicks on the message will then focus that spot.
 		@param id: message id string, needed to retrieve the message text from the content database.
 		@param message_dict: dict with strings to replace in the message, e.g. {'player': 'Arthus'}
-		@param creation_tick: keeps messages sorted after load. Either current scheduler tick (new messages) or stored in savegame (loaded messages)
 		@param sound_file: if True: play default message speech for string_id
 		                   if False: do not play sound
 		                   if sound file path: play this sound file
@@ -98,20 +98,17 @@ class MessageWidget(LivingObject):
 							True: get_speech_file(string_id),
 							False: None
 							}.get(sound_file, sound_file)
-		if creation_tick is None:
-			creation_tick = Scheduler().cur_tick
-		self._add_message(Message(x, y, string_id, created=creation_tick, message_dict=message_dict), sound)
+		self._add_message(Message(x, y, string_id, created=self.msgcount, message_dict=message_dict), sound)
+		self.msgcount += 1
 
-	def add_custom(self, x, y, messagetext, visible_for=40, creation_tick=None, icon_id=1):
+	def add_custom(self, x, y, messagetext, visible_for=40, icon_id=1):
 		""" See docstring for add().
 		Uses no predefined message template from content database like add() does.
 		Instead, directly provides text and icon to be shown (messagetext, icon_id)
 		@param visible_for: how many seconds the message will stay visible in the widget
-		@param creation_tick: either current scheduler tick (new messages) or stored in savegame (loaded messages)
 		"""
-		if creation_tick is None:
-			creation_tick = Scheduler().cur_tick
-		self._add_message(Message(x, y, None, display=visible_for, created=creation_tick, message=messagetext, icon_id=icon_id))
+		self._add_message(Message(x, y, None, display=visible_for, created=self.msgcount, message=messagetext, icon_id=icon_id))
+		self.msgcount += 1
 
 	def add_chat(self, player, messagetext, icon_id=1):
 		""" See docstring for add().
@@ -239,16 +236,18 @@ class MessageWidget(LivingObject):
 			db("INSERT INTO message_widget_archive (id, x, y, read, created, display, message) VALUES (?, ?, ?, ?, ?, ?, ?)", message.id, message.x, message.y, int(message.read), message.created, 0, message.message)
 
 	def load(self, db):
-		messages = db("SELECT id, x, y, read, created, display, message FROM message_widget_active")
+		messages = db("SELECT id, x, y, read, created, display, message FROM message_widget_active ORDER BY created ASC")
 		for (msg_id, x, y, read, created, display, message) in messages:
-			self.active_messages.append(Message(x, y, msg_id, created, bool(read), bool(display), message))
-		messages = db("SELECT id, x, y, read, created, display, message FROM message_widget_archive")
+			msg = Message(x, y, msg_id, created, bool(read), bool(display), message)
+			self.active_messages.append(msg)
+		messages = db("SELECT id, x, y, read, created, display, message FROM message_widget_archive ORDER BY created ASC")
 		for (msg_id, x, y, read, created, display, message) in messages:
 			msg = Message(x, y, msg_id, created, bool(read), bool(display), message)
 			if msg_id == 'CHAT':
 				self.chat.append(msg)
 			else:
 				self.archive.append(msg)
+		self.msgcount = max(m.created for m in self.active_messages + self.archive + self.chat) + 1
 		self.draw_widget()
 
 
