@@ -7,12 +7,6 @@
 	<VBox name="left_vbox" max_size="350,508" min_size="350,508" position="175,40" padding="5">
 		<Icon image="content/gui/images/background/hr.png" />
 	</VBox>
-	<ToggleImageButton name="start_route" border_size="0" position="175,480"
-		inactive_image="content/gui/icons/ship/traderoute_disabled.png"
-		up_image="content/gui/icons/ship/traderoute.png"
-		down_image="content/gui/icons/ship/traderoute.png"
-		hover_image="content/gui/icons/ship/traderoute_hover_to_disable.png"
-		tooltip="Start route" comment="Trade route" is_focusable="0"/>
 	<VBox position="250,485">
 		<HBox>
 			<Label name="lbl_wait_at_load" text="Wait at load:"
@@ -34,9 +28,20 @@
 		<TooltipIcon name="minimap" size="300,300" max_size="300,300" is_focusable="0"/> <!-- settlement selection in minimap -->
 
 		<!-- this box is only displayed on resource selection. -->
-		<VBox name="resources" max_size="326,172" min_size="276,158" /> <!-- res selection box, filled with icons -->
+		<VBox name="resources" max_size="326,155" min_size="276,155" /> <!-- res selection box, filled with icons -->
 
-		<HBox> <Spacer min_size="275" max_size="275"/>
+		<HBox>
+			<Spacer min_size="70" max_size="70"/>
+			<Label name="lbl_route_activity" text="Route activity:" position="0,7"/>
+			<ToggleImageButton name="start_route" border_size="0"
+				inactive_image="content/gui/icons/ship/traderoute.png"
+				up_image="content/gui/icons/ship/traderoute_disabled.png"
+				down_image="content/gui/icons/ship/traderoute_disabled.png"
+				hover_image="content/gui/icons/ship/traderoute_hover_to_disable.png"
+				tooltip="Start route" comment="Trade route" is_focusable="0"/>
+
+			<Spacer fixed_size="43"/>
+
 			<OkButton tooltip="Exit" />
 		</HBox>
 	</VBox>
