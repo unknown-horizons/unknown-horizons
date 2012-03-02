@@ -111,7 +111,6 @@ class IngameGui(LivingObject):
 		                       targetrenderer=horizons.main.fife.targetrenderer,
 		                       imagemanager=horizons.main.fife.imagemanager,
 		                       session=self.session,
-		                       world=self.session.world,
 		                       view=self.session.view)
 
 		def speed_up():

@@ -33,7 +33,7 @@ from collections import deque
 import horizons.main
 from horizons.world.island import Island
 from horizons.world.player import HumanPlayer
-from horizons.util import Point, Rect, LivingObject, Circle, WorldObject
+from horizons.util import Point, Rect, Circle, WorldObject
 from horizons.util.color import Color
 from horizons.constants import UNITS, BUILDINGS, RES, GROUND, GAME, WILD_ANIMAL
 from horizons.ai.trader import Trader
@@ -55,7 +55,7 @@ from horizons.world.component.selectablecomponent import SelectableComponent
 from horizons.world.disaster.disastermanager import DisasterManager
 import horizons.world.worldutils # keep like this to make origin visible
 
-class World(BuildingOwner, LivingObject, WorldObject):
+class World(BuildingOwner, WorldObject):
 	"""The World class represents an Unknown Horizons map with all its units, grounds, buildings, etc.
 
 	It inherits from BuildingOwner, amongst other things, so it has building management capabilities.
@@ -92,12 +92,12 @@ class World(BuildingOwner, LivingObject, WorldObject):
 		# destructor-like thing.
 		super(World, self).end()
 
-		for player in self.players:
-			player.end()
 		for ship in [ship for ship in self.ships]:
 			ship.remove()
 		for island in self.islands:
 			island.end()
+		for player in self.players:
+			player.end() # end players after game entites, since they usually depend on players
 
 		self.session = None
 		self.properties = None

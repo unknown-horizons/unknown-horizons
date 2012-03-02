@@ -88,7 +88,6 @@ class Session(LivingObject):
 	view = livingProperty()
 	ingame_gui = livingProperty()
 	keylistener = livingProperty()
-	world = livingProperty()
 	scenario_eventhandler = livingProperty()
 
 	log = logging.getLogger('session')
@@ -192,6 +191,7 @@ class Session(LivingObject):
 		# these will call end() if the attribute still exists by the LivingObject magic
 		self.ingame_gui = None # keep this before world
 		self.cursor = None
+		self.world.end() # must be called before the world ref is gone
 		self.world = None
 		self.keylistener = None
 		self.view = None

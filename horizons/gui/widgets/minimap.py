@@ -76,7 +76,7 @@ class Minimap(object):
 
 	_dummy_fife_point = fife.Point(0, 0) # use when you quickly need a temporary point
 
-	def __init__(self, position, session, world, view, targetrenderer, imagemanager, renderer=None,
+	def __init__(self, position, session, view, targetrenderer, imagemanager, renderer=None, world=None,
 	             cam_border=True, use_rotation=True, on_click=None, preview=False, tooltip=None):
 		"""
 		@param position: a Rect or a Pychan Icon, where we will draw to
