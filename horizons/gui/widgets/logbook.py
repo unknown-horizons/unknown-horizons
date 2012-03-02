@@ -48,14 +48,15 @@ class LogBook(PickBeltWidget):
 		self._headings = []
 		self._messages = [] # list of all headings / messages
 		self._cur_entry = None # remember current location; 0 to len(messages)-1
-
-		self._init_gui()
+		self._initialized = False
 		self._hiding_widget = False # True if and only if the widget is currently in the process of being hidden
 
 		#self.add_entry(u"Heading",u"Welcome to the Captains log") # test code
 
 	def _init_gui(self):
 		"""Initial gui setup for all subpages accessible through pickbelts."""
+		if self._initialized:
+			return
 		self._gui = self.get_widget()
 		self._gui.mapEvents({
 		  'okButton' : self.hide,
@@ -71,10 +72,17 @@ class LogBook(PickBeltWidget):
 		# stuff in the game message / chat history subwidget
 		self.textfield = self._gui.findChild(name="chatTextField")
 		self.textfield.capture(self._chatfield_onfocus, 'mouseReleased', 'default')
+		self.chatbox = self._gui.findChild(name="chatbox")
+		self.messagebox = self._gui.findChild(name="game_messagebox")
+		self._display_chat_history() # initially print all loaded messages
+		self._display_message_history()
 
 		# these buttons flip pages in the captain's log if there are more than two
 		self.backward_button = self._gui.findChild(name="backwardButton")
 		self.forward_button = self._gui.findChild(name="forwardButton")
+		self._redraw_captainslog()
+
+		self._initialized = True
 
 	def update_view(self, number=0):
 		""" update_view from PickBeltWidget, cleaning up the logbook subwidgets
@@ -98,12 +106,8 @@ class LogBook(PickBeltWidget):
 		value = db("SELECT value FROM metadata WHERE name = \"logbook_cur_entry\"")
 		if (value and value[0] and value[0][0]):
 			self._cur_entry = int(value[0][0])
-		self._redraw()
 
 	def show(self):
-		# don't show if there are no messages
-		#if len(self._messages) == 0:
-		#	return
 		if not self._gui.isVisible():
 			self._gui.show()
 			self.session.ingame_gui.on_switch_main_widget(self)
@@ -122,12 +126,14 @@ class LogBook(PickBeltWidget):
 		return self._gui.isVisible()
 
 	def toggle_visibility(self):
+		if not self._initialized:
+			self._init_gui()
 		if self.is_visible():
 			self.hide()
 		else:
 			self.show()
 
-	def _redraw(self):
+	def _redraw_captainslog(self):
 		"""Redraws gui. Necessary when current message has changed."""
 		texts = [u'', u'']
 		heads = [u'', u'']
@@ -173,7 +179,7 @@ class LogBook(PickBeltWidget):
 		else:
 			self._cur_entry = len(self._messages) - 2
 		if show_logbook:
-			self._redraw()
+			self._redraw_captainslog()
 
 	def clear(self):
 		"""Remove all entries"""
@@ -188,7 +194,7 @@ class LogBook(PickBeltWidget):
 		if cur_entry < 0 or cur_entry >= len(self._messages):
 			raise ValueError
 		self._cur_entry = cur_entry
-		self._redraw()
+		self._redraw_captainslog()
 
 	def _scroll(self, direction):
 		"""Scroll back or forth one message.
@@ -201,7 +207,7 @@ class LogBook(PickBeltWidget):
 			return # invalid scroll
 		self._cur_entry = new_cur
 		AmbientSoundComponent.play_special('flippage')
-		self._redraw()
+		self._redraw_captainslog()
 
 ########
 #        STATISTICS  SUBWIDGET
@@ -212,9 +218,6 @@ class LogBook(PickBeltWidget):
 #  [ ] save last shown stats widget and re-show it when clicking on Statistics
 #  [ ] F2 F3 F4 should open logbook at Statistics with correct button selected
 #  [ ] semantic distinction between general widget and subwidgets (log, stats)
-#  [ ] layout and style: statswidget button clickability totally not obvious
-#
-#  [ ] chat overview widget
 #
 ########
 
@@ -241,17 +244,40 @@ class LogBook(PickBeltWidget):
 			statswidget.hide()
 
 
-
 ########
 #        MESSAGE  AND  CHAT  HISTORY  SUBWIDGET
+########
+#
+#TODO list:
+#  [ ] use message bus to check for new updates
+#  [ ] only display new message on update, not reload whole history
+#  [ ] update message history on new game messages. not on sending a chat line
+#
 ########
 
 	def _send_chat_message(self):
 		"""Sends a chat message. Called when user presses enter in the input field"""
 		msg = self.textfield.text
-		if len(msg):
+		if msg:
 			Chat(msg).execute(self.session)
 			self.textfield.text = u''
+		self._display_chat_history()
+		self._display_message_history()
+
+	def _display_message_history(self):
+		self.messagebox.items = []
+		messages = self.session.ingame_gui.message_widget.active_messages + \
+		           self.session.ingame_gui.message_widget.archive
+		for msg in sorted(messages,	key=lambda m: m.created):
+			if msg.id != 'CHAT': # those get displayed in the chat window instead
+				self.messagebox.items.append(msg.message)
+		self.messagebox.selected = len(self.messagebox.items) - 1 # scroll to bottom
+
+	def _display_chat_history(self):
+		self.chatbox.items = []
+		for msg in sorted(self.session.ingame_gui.message_widget.chat, key=lambda m: m.created):
+			self.chatbox.items.append(msg.message)
+		self.chatbox.selected = len(self.chatbox.items) - 1 # scroll to bottom
 
 	def _chatfield_onfocus(self):
 		"""Removes text in chat input field when it gets focused."""
