@@ -22,7 +22,6 @@
 # ###################################################
 
 import horizons.main
-import time
 
 from unittest import TestCase
 from mock import Mock, MagicMock, patch
@@ -46,7 +45,8 @@ class TestTimer(TestCase):
 		self.fife = Mock()
 		self.pump = MagicMock()
 		self.fife.pump = self.pump
-		horizons.main.fife = self.fife
+		self.fifePatcher = patch('horizons.main.fife', self.fife)
+		self.fifePatcher.start()
 		# Mock system time
 		self.timePatcher = patch('time.time')
 		self.clock = self.timePatcher.start()
@@ -55,11 +55,10 @@ class TestTimer(TestCase):
 		self.timer = Timer(freeze_protection=False)
 		self.timer.ticks_per_second = self.TICK_PER_SEC
 		self.timer.add_call(self.callback)
-		pass
 
 	def tearDown(self):
+		self.fifePatcher.stop()
 		self.timePatcher.stop()
-		pass
 
 	def test_activate_register_end_unregister_from_pump(self):
 		self.timer.activate()
@@ -67,7 +66,6 @@ class TestTimer(TestCase):
 		self.fife.pump.__contains__.return_value = True
 		self.timer.end()
 		self.fife.pump.remove.assert_called_once_with(self.timer.check_tick)
-		pass
 
 	def test_first_pump_then_one_tick(self):	
 		self.timer.check_tick()

@@ -164,7 +164,7 @@ def test_build_tear(s, p):
 	s.run(seconds=1)
 
 	wid = tree.worldid
-	t = Tear(tree)(p)
+	Tear(tree)(p)
 
 	try:
 		WorldObject.get_object_by_id(wid)

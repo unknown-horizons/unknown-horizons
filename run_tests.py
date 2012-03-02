@@ -68,16 +68,14 @@ def setup_horizons():
 	Get ready for testing.
 	"""
 
-	# This needs to run at first, importing setup_fife seems to trigger
-	# other imports that we need to avoid
+	# This needs to run at first to avoid that other code gets a reference to
+	# the real fife module
 	mock_fife_and_gui()
 
 	# set global reference to fife
 	import horizons.main
 	import fife
 	horizons.main.fife = fife.fife
-
-	horizons.main._modules.gui = Dummy()
 
 	from run_uh import create_user_dirs
 	create_user_dirs()

@@ -49,7 +49,6 @@ the test will be further exhausted:
 
 import os
 import shutil
-import signal
 import subprocess
 import sys
 import tempfile
@@ -59,19 +58,10 @@ from nose.plugins import Plugin
 
 from tests import RANDOM_SEED
 from tests.gui.helper import GuiHelper
-
-# check if SIGALRM is supported, this is not the case on Windows
-# we might provide an alternative later, but for now, this will do
-try:
-	from signal import SIGALRM
-	TEST_TIMELIMIT = True
-except ImportError:
-	TEST_TIMELIMIT = False
-
+from tests.utils import Timer
 
 # path where test savegames are stored (tests/gui/ingame/fixtures/)
 TEST_FIXTURES_DIR = os.path.join(os.path.abspath(os.path.dirname(__file__)), 'ingame', 'fixtures')
-
 
 # Used by the test to signal that's it's finished.
 # Needed to distinguish between the original test and other generators used
@@ -287,13 +277,12 @@ def gui_test(use_dev_map=False, use_fixture=None, ai_players=0, timeout=15 * 60,
 			# Start game
 			proc = subprocess.Popen(args, stdout=stdout, stderr=stderr, env=env)
 
-			if TEST_TIMELIMIT and timeout:
-				# Install timeout kill
-				def handler(signum, frame):
-					proc.kill()
-					raise TestFailed('\n\nTest run exceeded %ds time limit' % timeout)
-				signal.signal(signal.SIGALRM, handler)
-				signal.alarm(timeout)
+			def handler(signum, frame):
+				proc.kill()
+				raise TestFailed('\n\nTest run exceeded %ds time limit' % timeout)
+
+			timelimit = Timer(handler)
+			timelimit.start(timeout)
 
 			stdout, stderr = proc.communicate()
 			if proc.returncode != 0:

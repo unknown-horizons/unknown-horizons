@@ -19,47 +19,27 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-
 import contextlib
 import inspect
 import os
-import signal
-import tempfile
 from functools import wraps
 
 import mock
 
-# check if SIGALRM is supported, this is not the case on Windows
-# we might provide an alternative later, but for now, this will do
-try:
-	from signal import SIGALRM
-	TEST_TIMELIMIT = True
-except ImportError:
-	TEST_TIMELIMIT = False
-
 import horizons.main
 import horizons.world	# needs to be imported before session
 from horizons.ai.aiplayer import AIPlayer
-from horizons.ai.trader import Trader
-from horizons.command.building import Build
 from horizons.command.unit import CreateUnit
-from horizons.constants import GROUND, UNITS, BUILDINGS, GAME_SPEED, RES
-from horizons.entities import Entities
+from horizons.constants import UNITS
 from horizons.ext.dummy import Dummy
 from horizons.extscheduler import ExtScheduler
 from horizons.scheduler import Scheduler
 from horizons.spsession import SPSession
-from horizons.util import (Color, DbReader, Rect, WorldObject, LivingObject,
-						   SavegameAccessor, Point, DifficultySettings)
-from horizons.util.lastactiveplayersettlementmanager import LastActivePlayerSettlementManager
-from horizons.util.uhdbaccessor import read_savegame_template
-from horizons.world import World
-from horizons.world.component.namedcomponent import NamedComponent
+from horizons.util import Color, DbReader, SavegameAccessor, DifficultySettings
 from horizons.world.component.storagecomponent import StorageComponent
-from horizons.util.messaging.messagebus import MessageBus
-from horizons.world.managers.statusiconmanager import StatusIconManager
 
 from tests import RANDOM_SEED
+from tests.utils import Timer
 
 # path where test savegames are stored (tests/game/fixtures/)
 TEST_FIXTURES_DIR = os.path.join(os.path.abspath(os.path.dirname(__file__)), 'fixtures')
@@ -74,45 +54,7 @@ def setup_package():
 	"""
 	global db
 	db = horizons.main._create_main_db()
-
-
-def create_map():
-	"""
-	Create a map with a square island (20x20) at position (20, 20) and return the path
-	to the database file.
-	"""
-
-	# Create island.
-	fd, islandfile = tempfile.mkstemp()
-	os.close(fd)
-
-	db = DbReader(islandfile)
-	db("CREATE TABLE ground(x INTEGER NOT NULL, y INTEGER NOT NULL, ground_id INTEGER NOT NULL, action_id TEXT NOT NULL, rotation INTEGER NOT NULL)")
-	db("CREATE TABLE island_properties(name TEXT PRIMARY KEY NOT NULL, value TEXT NOT NULL)")
-
-	db("BEGIN TRANSACTION")
-	tiles = []
-	for x, y in Rect.init_from_topleft_and_size(0, 0, 20, 20).tuple_iter():
-		if (0 < x < 20) and (0 < y < 20):
-			ground = GROUND.DEFAULT_LAND
-		else:
-			# Add coastline at the borders.
-			ground = GROUND.SHALLOW_WATER
-		tiles.append([x, y] + list(ground))
-	db.execute_many("INSERT INTO ground VALUES(?, ?, ?, ?, ?)", tiles)
-	db("COMMIT")
-
-	# Create savegame with the island above.
-	fd, savegame = tempfile.mkstemp()
-	os.close(fd)
-
-	db = DbReader(savegame)
-	read_savegame_template(db)
-	db("BEGIN TRANSACTION")
-	db("INSERT INTO island (x, y, file) VALUES(?, ?, ?)", 20, 20, islandfile)
-	db("COMMIT")
-
-	return savegame
+	ExtScheduler.create_instance(Dummy)
 
 
 @contextlib.contextmanager
@@ -145,44 +87,9 @@ def _dbreader_convert_dummy_objects():
 
 class SPTestSession(SPSession):
 
-	def __init__(self, db, rng_seed=None):
-		"""
-		Unfortunately, right now there is no other way to setup Dummy versions of the GUI,
-		View etc., unless we want to patch the references in the session module.
-		"""
-		super(LivingObject, self).__init__()
-		self.gui = Dummy()
-		self.db = db
-		self.savecounter = 0	# this is a new game.
-		self.is_alive = True
-
-		self._clear_caches()
-
-		# Game
-		self.random = self.create_rng(rng_seed)
-		self.timer = self.create_timer()
-		Scheduler.create_instance(self.timer)
-		ExtScheduler.create_instance(Dummy)
-		self.manager = self.create_manager()
-		self.view = Dummy()
-		self.view.renderer = Dummy()
-		Entities.load(self.db)
-		self.scenario_eventhandler = Dummy()
-		self.campaign = {}
-
-		self.message_bus = MessageBus()
-		self.status_icon_manager = StatusIconManager(self)
-
-
-		# GUI
-		self.gui.session = self
-		self.ingame_gui = Dummy()
-		LastActivePlayerSettlementManager.create_instance(self)
-
-		self.selected_instances = set()
-		self.selection_groups = [set()] * 10 # List of sets that holds the player assigned unit groups.
-
-		GAME_SPEED.TICKS_PER_SECOND = 16
+	def __init__(self, rng_seed=None):
+		super(SPTestSession, self).__init__(Dummy, horizons.main.db, rng_seed)
+		self.reset_autosave = mock.Mock()
 
 	def save(self, *args, **kwargs):
 		"""
@@ -197,34 +104,25 @@ class SPTestSession(SPSession):
 				return super(SPTestSession, self).save(*args, **kwargs)
 
 	def load(self, savegame, players):
-		"""
-		Stripped version of the original code. We don't need to load selections,
-		or a scenario, setting up the gui or view.
-		"""
+		# keep a reference on the savegame, so we can cleanup in `end`
 		self.savegame = savegame
-		self.savegame_db = SavegameAccessor(self.savegame)
-
-		self.savecounter = 1
-
-		self.world = World(self)
-		self.world._init(self.savegame_db)
-		for i in sorted(players):
-			self.world.setup_player(i['id'], i['name'], i['color'], i['local'], i['is_ai'], i['difficulty'])
-		self.manager.load(self.savegame_db)
+		super(SPTestSession, self).load(savegame, players, False, False, 0)
 
 	def end(self, keep_map=False, remove_savegame=True):
 		"""
 		Clean up temporary files.
 		"""
 		super(SPTestSession, self).end()
+
 		# Find all islands in the map first
+		savegame_db = SavegameAccessor(self.savegame)
 		if not keep_map:
-			for (island_file, ) in self.savegame_db('SELECT file FROM island'):
-				if island_file[:7] != 'random:': # random islands don't exist as files
+			for (island_file, ) in savegame_db('SELECT file FROM island'):
+				if not island_file.startswith('random:'): # random islands don't exist as files
 					os.remove(island_file)
 
-		self.savegame_db.close()
 		# Finally remove savegame
+		savegame_db.close()
 		if remove_savegame:
 			os.remove(self.savegame)
 
@@ -249,28 +147,28 @@ class SPTestSession(SPSession):
 			Scheduler().tick( Scheduler().cur_tick + 1 )
 
 
+# import helper functions here, so tests can import from tests.game directly
+from tests.game.utils import create_map, new_settlement, settle
+
+
 def new_session(mapgen=create_map, rng_seed=RANDOM_SEED, human_player = True, ai_players = 0):
 	"""
 	Create a new session with a map, add one human player and a trader (it will crash
 	otherwise). It returns both session and player to avoid making the function-baed
 	tests too verbose.
 	"""
-	session = SPTestSession(horizons.main.db, rng_seed=rng_seed)
+	session = SPTestSession(rng_seed=rng_seed)
 	human_difficulty = DifficultySettings.DEFAULT_LEVEL
 	ai_difficulty = DifficultySettings.EASY_LEVEL
 
 	players = []
 	if human_player:
-		players.append({'id': 1, 'name': 'foobar', 'color': Color[1], 'local': True, 'is_ai': False, 'difficulty': human_difficulty})
+		players.append({'id': 1, 'name': 'foobar', 'color': Color[1], 'local': True, 'ai': False, 'difficulty': human_difficulty})
 	for i in xrange(ai_players):
 		id = i + human_player + 1
-		players.append({'id': id, 'name': ('AI' + str(i)), 'color': Color[id], 'local': id == 1, 'is_ai': True, 'difficulty': ai_difficulty})
+		players.append({'id': id, 'name': ('AI' + str(i)), 'color': Color[id], 'local': id == 1, 'ai': True, 'difficulty': ai_difficulty})
 
 	session.load(mapgen(), players)
-	session.world.init_fish_indexer()
-	# use different trader id here, so that init_new_world can be called
-	# (else there would be a worldid conflict)
-	session.world.trader = Trader(session, 99999 + 42, 'Free Trader', Color())
 
 	if ai_players > 0: # currently only ai tests use the ships
 		for player in session.world.players:
@@ -288,30 +186,11 @@ def load_session(savegame, rng_seed=RANDOM_SEED):
 	"""
 	Start a new session with the given savegame.
 	"""
-	session = SPTestSession(horizons.main.db, rng_seed=rng_seed)
+	session = SPTestSession(rng_seed=rng_seed)
 
 	session.load(savegame, [])
 
 	return session
-
-
-def new_settlement(session, pos=Point(30, 20)):
-	"""
-	Creates a settlement at the given position. It returns the settlement and the island
-	where it was created on, to avoid making function-baed tests too verbose.
-	"""
-	island = session.world.get_island(pos)
-	assert island, "No island found at %s" % pos
-	player = session.world.player
-
-	ship = CreateUnit(player.worldid, UNITS.PLAYER_SHIP_CLASS, pos.x, pos.y)(player)
-	for res, amount in session.db("SELECT resource, amount FROM start_resources"):
-		ship.get_component(StorageComponent).inventory.alter(res, amount)
-
-	building = Build(BUILDINGS.WAREHOUSE_CLASS, pos.x, pos.y, island, ship=ship)(player)
-	assert building, "Could not build warehouse at %s" % pos
-
-	return (building.settlement, island)
 
 
 def game_test(*args, **kwargs):
@@ -346,10 +225,8 @@ def game_test(*args, **kwargs):
 	manual_session = kwargs.get('manual_session', False)
 	use_fixture = kwargs.get('use_fixture', False)
 
-	if TEST_TIMELIMIT and timeout:
-		def handler(signum, frame):
-			raise Exception('Test run exceeded %ds time limit' % timeout)
-		signal.signal(signal.SIGALRM, handler)
+	def handler(signum, frame):
+		raise Exception('Test run exceeded %ds time limit' % timeout)
 
 	def deco(func):
 		@wraps(func)
@@ -363,8 +240,9 @@ def game_test(*args, **kwargs):
 					raise Exception('Savegame %s not found' % path)
 				s = load_session(path)
 				
-			if TEST_TIMELIMIT and timeout:
-				signal.alarm(timeout)
+			timelimit = Timer(handler)
+			timelimit.start(timeout)
+
 			try:
 				if use_fixture:
 					return func(s, *args)
@@ -380,8 +258,7 @@ def game_test(*args, **kwargs):
 				else:
 					SPTestSession.cleanup()
 
-				if TEST_TIMELIMIT and timeout:
-					signal.alarm(0)
+				timelimit.stop()
 		return wrapped
 
 	if no_decorator_arguments:
@@ -394,26 +271,13 @@ def game_test(*args, **kwargs):
 game_test.__test__ = False
 
 
-def settle(s):
-	"""
-	Create a new settlement, start with some resources.
-	"""
-	settlement, island = new_settlement(s)
-	settlement.get_component(StorageComponent).inventory.alter(RES.GOLD_ID, 5000)
-	settlement.get_component(StorageComponent).inventory.alter(RES.BOARDS_ID, 50)
-	settlement.get_component(StorageComponent).inventory.alter(RES.TOOLS_ID, 50)
-	settlement.get_component(StorageComponent).inventory.alter(RES.BRICKS_ID, 50)
-	return settlement, island
-
-
 def set_trace():
 	"""
 	Use this function instead of directly importing if from pdb. The test run
 	time limit will be disabled and stdout restored (so the debugger actually
 	works).
 	"""
-	if TEST_TIMELIMIT:
-		signal.alarm(0)
+	Timer.stop()
 
 	from nose.tools import set_trace
 	set_trace()

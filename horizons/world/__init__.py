@@ -400,7 +400,8 @@ class World(BuildingOwner, LivingObject, WorldObject):
 			logger.setLevel( logging.WARN )
 
 		# add a random number of environmental objects
-		self._add_nature_objects(natural_resource_multiplier)
+		if natural_resource_multiplier != 0:
+			self._add_nature_objects(natural_resource_multiplier)
 
 		# reset loggers, see above
 		for logger_name, level in loggers_to_silence.iteritems():
