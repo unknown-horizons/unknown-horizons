@@ -823,11 +823,11 @@ msgid "For multiplayer load, it is currently necessary for you to ensure you hav
 msgstr ""
 
 #: horizons/gui/modules/multiplayermenu.py:209
-msgid "This really sucks and we hope have it fixed soon."
+msgid "This is not nice and we hope to offer a more convenient solution very soon."
 msgstr ""
 
 #: horizons/gui/modules/multiplayermenu.py:210
-msgid "Please request the file {path} from the game creator manually and put it in {map_directory} ."
+msgid "Meanwhile, please request the file {path} from the game creator and put it in {map_directory} ."
 msgstr ""
 
 #. (text of widget: help)

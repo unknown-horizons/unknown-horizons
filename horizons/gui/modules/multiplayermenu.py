@@ -206,8 +206,8 @@ class MultiplayerMenu(object):
 					else:
 						vbox_inner.insertChildBefore( btn, last_elem )
 				btn_text = _(u"For multiplayer load, it is currently necessary for you to ensure you have the correct savegame file.") + u"\n"
-				btn_text += _(u"This really sucks and we hope have it fixed soon.") + u"\n"
-				btn_text += _(u"Please request the file {path} from the game creator manually and put it in {map_directory} .").format(path=os.path.basename(path), map_directory=os.path.dirname(path))
+				btn_text += _(u"This is not nice and we hope to offer a more convenient solution very soon.") + u"\n"
+				btn_text += _(u"Meanwhile, please request the file {path} from the game creator and put it in {map_directory} .").format(path=os.path.basename(path), map_directory=os.path.dirname(path))
 				btn.btn_text = btn_text
 				def show():
 					self.show_popup(_("Help"), btn_text, size=1)
