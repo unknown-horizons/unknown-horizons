@@ -20,6 +20,7 @@
 # ###################################################
 
 import textwrap
+import itertools
 
 from fife.extensions import pychan
 
@@ -57,7 +58,7 @@ class MessageWidget(LivingObject):
 		self.active_messages = [] # for displayed messages
 		self.archive = [] # messages, that aren't displayed any more
 		self.chat = [] # chat messages sent by players
-		self.msgcount = 0 # sort to preserve order after loading
+		self.msgcount = itertools.count() # sort to preserve order after loading
 
 		self.widget = load_uh_widget(self.ICON_TEMPLATE)
 		self.widget.position = (
@@ -98,8 +99,7 @@ class MessageWidget(LivingObject):
 							True: get_speech_file(string_id),
 							False: None
 							}.get(sound_file, sound_file)
-		self._add_message(Message(x, y, string_id, created=self.msgcount, message_dict=message_dict), sound)
-		self.msgcount += 1
+		self._add_message(Message(x, y, string_id, created=self.msgcount.next(), message_dict=message_dict), sound)
 
 	def add_custom(self, x, y, messagetext, visible_for=40, icon_id=1):
 		""" See docstring for add().
@@ -107,8 +107,7 @@ class MessageWidget(LivingObject):
 		Instead, directly provides text and icon to be shown (messagetext, icon_id)
 		@param visible_for: how many seconds the message will stay visible in the widget
 		"""
-		self._add_message(Message(x, y, None, display=visible_for, created=self.msgcount, message=messagetext, icon_id=icon_id))
-		self.msgcount += 1
+		self._add_message(Message(x, y, None, display=visible_for, created=self.msgcount.next(), message=messagetext, icon_id=icon_id))
 
 	def add_chat(self, player, messagetext, icon_id=1):
 		""" See docstring for add().
@@ -247,7 +246,8 @@ class MessageWidget(LivingObject):
 				self.chat.append(msg)
 			else:
 				self.archive.append(msg)
-		self.msgcount = max(m.created for m in self.active_messages + self.archive + self.chat) + 1
+		count = max([-1] + [m.created for m in self.active_messages + self.archive + self.chat]) + 1
+		self.msgcount = itertools.count(start = count)
 		self.draw_widget()
 
 
