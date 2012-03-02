@@ -22,18 +22,9 @@
 import contextlib
 import inspect
 import os
-import signal
 from functools import wraps
 
 import mock
-
-# check if SIGALRM is supported, this is not the case on Windows
-# we might provide an alternative later, but for now, this will do
-try:
-	from signal import SIGALRM
-	TEST_TIMELIMIT = True
-except ImportError:
-	TEST_TIMELIMIT = False
 
 import horizons.main
 import horizons.world	# needs to be imported before session
@@ -55,6 +46,7 @@ from horizons.util.messaging.messagebus import MessageBus
 from horizons.world.managers.statusiconmanager import StatusIconManager
 
 from tests import RANDOM_SEED
+from tests.utils import Timer
 
 # path where test savegames are stored (tests/game/fixtures/)
 TEST_FIXTURES_DIR = os.path.join(os.path.abspath(os.path.dirname(__file__)), 'fixtures')
@@ -287,10 +279,8 @@ def game_test(*args, **kwargs):
 	manual_session = kwargs.get('manual_session', False)
 	use_fixture = kwargs.get('use_fixture', False)
 
-	if TEST_TIMELIMIT and timeout:
-		def handler(signum, frame):
-			raise Exception('Test run exceeded %ds time limit' % timeout)
-		signal.signal(signal.SIGALRM, handler)
+	def handler(signum, frame):
+		raise Exception('Test run exceeded %ds time limit' % timeout)
 
 	def deco(func):
 		@wraps(func)
@@ -304,8 +294,9 @@ def game_test(*args, **kwargs):
 					raise Exception('Savegame %s not found' % path)
 				s = load_session(path)
 				
-			if TEST_TIMELIMIT and timeout:
-				signal.alarm(timeout)
+			timelimit = Timer(handler)
+			timelimit.start(timeout)
+
 			try:
 				if use_fixture:
 					return func(s, *args)
@@ -321,8 +312,7 @@ def game_test(*args, **kwargs):
 				else:
 					SPTestSession.cleanup()
 
-				if TEST_TIMELIMIT and timeout:
-					signal.alarm(0)
+				timelimit.stop()
 		return wrapped
 
 	if no_decorator_arguments:
@@ -341,8 +331,7 @@ def set_trace():
 	time limit will be disabled and stdout restored (so the debugger actually
 	works).
 	"""
-	if TEST_TIMELIMIT:
-		signal.alarm(0)
+	Timer.stop()
 
 	from nose.tools import set_trace
 	set_trace()
