@@ -31,6 +31,7 @@ from horizons.constants import MULTIPLAYER
 from horizons.network.networkinterface import NetworkInterface
 from horizons.network import find_enet_module
 from horizons.util import SavegameAccessor
+from horizons.world.component.ambientsoundcomponent import AmbientSoundComponent
 
 enet = find_enet_module()
 
@@ -235,6 +236,7 @@ class MultiplayerMenu(object):
 			self.show_popup(_("Error"), self.current.findChild(name="save_missing_help_button").btn_text, size=1)
 			return
 		if game.get_uuid() == -1: # -1 signals no game
+			AmbientSoundComponent.play_special('error')
 			return
 		if game.get_version() != NetworkInterface().get_clientversion():
 			self.show_popup(_("Wrong version"),

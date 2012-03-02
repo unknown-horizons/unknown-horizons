@@ -177,6 +177,7 @@ class Gui(SingleplayerMenu, MultiplayerMenu):
 			self.show_popup(_('Error'), _('Failed to save.'))
 
 	def show_settings(self):
+		self.on_escape = lambda : horizons.main.fife._setting.OptionsDlg.hide()
 		horizons.main.fife.show_settings()
 
 	_help_is_displayed = False
@@ -295,7 +296,6 @@ class Gui(SingleplayerMenu, MultiplayerMenu):
 				name_box.parent.hideChild(name_box)
 
 		self.current.show()
-
 
 		if not hasattr(self, 'filename_hbox'):
 			self.filename_hbox = self.current.findChild(name='enter_filename')

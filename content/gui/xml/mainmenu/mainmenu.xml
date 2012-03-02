@@ -14,6 +14,7 @@
 	<Icon image="content/gui/images/background/oa_startmenu_buttonbg.png" position="457,144" />
 	<ImageButton name="startSingle"
 		position="488,169"
+		is_focusable="0"
 		up_image="content/gui/icons/mainmenu/compass_bw.png"
 		down_image="content/gui/icons/mainmenu/compass.png"
 		hover_image="content/gui/icons/mainmenu/compass.png" />
@@ -23,6 +24,7 @@
 	<Icon image="content/gui/images/background/oa_startmenu_buttonbg.png" position="566,188" />
 	<ImageButton name="startMulti"
 		position="593,211"
+		is_focusable="0"
 		up_image="content/gui/icons/mainmenu/multiplayer_bw.png"
 		down_image="content/gui/icons/mainmenu/multiplayer.png"
 		hover_image="content/gui/icons/mainmenu/multiplayer.png" />
@@ -31,6 +33,7 @@
 	<Icon image="content/gui/images/background/oa_startmenu_buttonbg.png" position="612,298" />
 	<ImageButton name="settingsLink"
 		position="637,323"
+		is_focusable="0"
 		up_image="content/gui/icons/mainmenu/gears_bw.png"
 		down_image="content/gui/icons/mainmenu/gears.png"
 		hover_image="content/gui/icons/mainmenu/gears.png" />
@@ -39,6 +42,7 @@
 	<Icon image="content/gui/images/background/oa_startmenu_buttonbg.png" position="566,406" />
 	<ImageButton name="helpLink"
 		position="593,431"
+		is_focusable="0"
 		up_image="content/gui/icons/mainmenu/help_bw.png"
 		down_image="content/gui/icons/mainmenu/help.png"
 		hover_image="content/gui/icons/mainmenu/help.png" />
@@ -47,6 +51,7 @@
 	<Icon image="content/gui/images/background/oa_startmenu_buttonbg.png" position="457,452" />
 	<ImageButton name="closeButton"
 		position="484,478"
+		is_focusable="0"
 		up_image="content/gui/icons/mainmenu/door_bw.png"
 		down_image="content/gui/icons/mainmenu/door.png"
 		hover_image="content/gui/icons/mainmenu/door.png" />
@@ -55,6 +60,7 @@
 	<Icon image="content/gui/images/background/oa_startmenu_buttonbg.png" position="349,406" />
 	<ImageButton name="dead_link"
 		position="376,431"
+		is_focusable="0"
 		up_image="content/gui/icons/mainmenu/bell_bw.png"
 		down_image="content/gui/icons/mainmenu/bell.png"
 		hover_image="content/gui/icons/mainmenu/bell.png" />
@@ -63,6 +69,7 @@
 	<Icon image="content/gui/images/background/oa_startmenu_buttonbg.png" position="302,298" />
 	<ImageButton name="creditsLink"
 		position="328,321"
+		is_focusable="0"
 		up_image="content/gui/icons/mainmenu/log_bw.png"
 		down_image="content/gui/icons/mainmenu/log.png"
 		hover_image="content/gui/icons/mainmenu/log.png" />
@@ -71,6 +78,7 @@
 	<Icon image="content/gui/images/background/oa_startmenu_buttonbg.png" position="350,188" />
 	<ImageButton name="loadgameButton"
 		position="376,212"
+		is_focusable="0"
 		up_image="content/gui/icons/mainmenu/load_bw.png"
 		down_image="content/gui/icons/mainmenu/load.png"
 		hover_image="content/gui/icons/mainmenu/load.png" />

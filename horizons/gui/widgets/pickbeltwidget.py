@@ -46,7 +46,7 @@ class PickBeltWidget(object):
 		# Create the required pickbelts
 		for side in ('lt', 'rt'):
 			for i in range(len(self.sections)):
-				pickbelt = ImageButton()
+				pickbelt = ImageButton(is_focusable=False)
 				pickbelt.name = self.sections[i][0] + '_' + side
 				pickbelt.text = self.sections[i][1]
 				pickbelt.font = "small_tooltip"

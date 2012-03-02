@@ -180,9 +180,9 @@
 
 <!-- General section -->
 	<HBox position="700,500" >
-		<DeleteButton name="defaultButton" tooltip="Reset to default settings" />
-		<CancelButton tooltip="Return" />
-		<OkButton tooltip="Apply" />
+		<DeleteButton name="defaultButton" tooltip="Reset to default settings" is_focusable="0" />
+		<CancelButton tooltip="Return" is_focusable="0" />
+		<OkButton tooltip="Apply" is_focusable="0" />
 	</HBox>
 
 <!-- This dropdown is invisible, but required by fife to be here -->
