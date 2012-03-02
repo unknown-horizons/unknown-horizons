@@ -25,14 +25,14 @@ from tests.gui import gui_test, TestFinished
 @gui_test(use_dev_map=True, timeout=120)
 def test_ticket_1342(gui):
 	"""
-	Ship list widget (F4) crashes game on access.
+	Ship list widget (F3, formerly F4) crashes game on access.
 	"""
 	yield # test needs to be a generator for now
 
 	assert gui.find(name='ships_list') is None
-	gui.press_key(gui.Key.F4)
+	gui.press_key(gui.Key.F3)
 	assert gui.find(name='ships_list')
-	gui.press_key(gui.Key.F4)
+	gui.press_key(gui.Key.F3)
 	assert gui.find(name='ships_list') is None
 
 	yield TestFinished
