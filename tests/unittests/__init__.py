@@ -22,12 +22,9 @@
 import unittest
 
 import horizons.main
-from horizons.util.uhdbaccessor import UhDbAccessor
-from horizons.constants import PATHS
 
 
 db = None
-temp_dir = None
 
 def setup_package():
 	"""
@@ -35,11 +32,9 @@ def setup_package():
 	so we can avoid to create a database for each test. Using TestCase, we can
 	be sure that each test runs on an unmodified database.
 	"""
-	global db, temp_dir
+	global db
 
-	db = UhDbAccessor(':memory:')
-	for i in PATHS.DB_FILES:
-		db.execute_script( open(i, "r").read() )
+	db = horizons.main._create_main_db()
 
 	# Truncate all tables. We don't want to rely on existing data.
 	for (table_name, ) in db("SELECT name FROM sqlite_master WHERE type = 'table'"):

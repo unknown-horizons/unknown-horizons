@@ -49,12 +49,11 @@ from horizons.ext.dummy import Dummy
 from horizons.extscheduler import ExtScheduler
 from horizons.scheduler import Scheduler
 from horizons.spsession import SPSession
-from horizons.util import (Color, DbReader, Rect, WorldObject, LivingObject,
+from horizons.util import (Color, DbReader, Rect, LivingObject,
 						   SavegameAccessor, Point, DifficultySettings)
 from horizons.util.lastactiveplayersettlementmanager import LastActivePlayerSettlementManager
 from horizons.util.uhdbaccessor import read_savegame_template
 from horizons.world import World
-from horizons.world.component.namedcomponent import NamedComponent
 from horizons.world.component.storagecomponent import StorageComponent
 from horizons.util.messaging.messagebus import MessageBus
 from horizons.world.managers.statusiconmanager import StatusIconManager
