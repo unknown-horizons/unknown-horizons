@@ -65,9 +65,13 @@ def init_pychan():
 		return dict(entries)
 
 	global STYLES
+	# patch uh styles
 	STYLES = conv(STYLES)
 
-	# style
+	# patch fife default styles
+	pychan.manager.styles = conv(pychan.manager.styles)
+
+	# add uh styles
 	for name, stylepart in STYLES.iteritems():
 		pychan.manager.addStyle(name, stylepart)
 
