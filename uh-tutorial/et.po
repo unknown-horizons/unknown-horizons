@@ -7,8 +7,8 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: translate-uh@lists.unknown-horizons.org\n"
 "POT-Creation-Date: 2011-10-31 20:46+0100\n"
-"PO-Revision-Date: 2012-01-08 18:18+0200\n"
-"Last-Translator: ussikene <ussikene@gmail.com>\n"
+"PO-Revision-Date: 2012-02-05 11:32+0200\n"
+"Last-Translator: Christopher Oelmueller <chris.oelmueller+uh@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: et\n"
 "MIME-Version: 1.0\n"
@@ -99,7 +99,6 @@ msgstr "ÜLESANNE: KOLONISEERI SAAR"
 # 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:16
-#, fuzzy
 msgid ""
 "To move your ship, select it with a left click and right click on the "
 "location you want it to go to.\n"
