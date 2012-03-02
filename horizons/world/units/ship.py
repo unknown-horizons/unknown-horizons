@@ -126,6 +126,8 @@ class Ship(Unit):
 
 	def _update_buoy(self, remove_only=False):
 		"""Draw a buoy at the move target if the ship is moving."""
+		if self.owner is None or not self.owner.is_local_player:
+			return
 		move_target = self.get_move_target()
 
 		ship_id = self.worldid
