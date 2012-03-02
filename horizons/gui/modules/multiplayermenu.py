@@ -95,7 +95,7 @@ class MultiplayerMenu(object):
 	def create_default_mp_game(self):
 		"""For debugging; creates a valid game. Call right after show_multi"""
 		self.__show_create_game()
-		self.__create_game()
+		self.__create_game(chosen_map = 'mp-dev')
 
 	def join_mp_game(self):
 		"""For debugging; joins first open game. Call right after show_multi"""
@@ -380,9 +380,13 @@ class MultiplayerMenu(object):
 		self.__create_game(load=(mapname, gamename))
 
 
-	def __create_game(self, load=None):
-		"""Actually create a game, join it and display the lobby.
-		@param load: game data tuple for creating loaded games"""
+	def __create_game(self, load=None, chosen_map=None):
+		"""
+		Actually create a game, join it, and display the lobby.
+		
+		@param load: game data tuple for creating loaded games
+		@param chosen_map: the name of the map to start a new game on (overrides the gui)
+		"""
 		# create the game
 		if load:
 			mapname, gamename = load
@@ -390,12 +394,19 @@ class MultiplayerMenu(object):
 			maxplayers = SavegameAccessor.get_players_num(path)
 			load = SavegameAccessor.get_hash(path)
 		else:
-			mapindex = self.current.collectData('maplist')
+			mapindex = None
+			if chosen_map is not None:
+				for i, map in enumerate(self.maps_display):
+					if map == chosen_map:
+						mapindex = i
+						break
+
+			if mapindex is None:
+				mapindex = self.current.collectData('maplist')
 			mapname = self.maps_display[mapindex]
 			maxplayers = self.current.collectData('playerlimit') + 2 # 1 is the first entry
 			gamename = self.current.collectData('gamename')
 			load = None
-
 
 		game = NetworkInterface().creategame(mapname, maxplayers, gamename, load)
 		if game is None:
