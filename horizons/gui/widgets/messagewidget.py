@@ -247,7 +247,7 @@ class MessageWidget(LivingObject):
 			else:
 				self.archive.append(msg)
 		count = max([-1] + [m.created for m in self.active_messages + self.archive + self.chat]) + 1
-		self.msgcount = itertools.count(start = count)
+		self.msgcount = itertools.count(count) # start keyword only works with 2.7+
 		self.draw_widget()
 
 
