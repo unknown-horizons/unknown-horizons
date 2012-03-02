@@ -41,6 +41,7 @@ Combinations:
 
 import sys
 import copy
+from collections import defaultdict
 
 from horizons.util import ChangeListener
 
@@ -52,7 +53,7 @@ class GenericStorage(ChangeListener):
 	"""
 	def __init__(self):
 		super(GenericStorage, self).__init__()
-		self._storage = {}
+		self._storage = defaultdict(lambda : 0)
 
 	def save(self, db, ownerid):
 		for slot in self._storage.iteritems():
@@ -72,12 +73,7 @@ class GenericStorage(ChangeListener):
 		@param amount: int amount that is to be changed. Can be negative to remove resources.
 		@return: int - amount that did not fit or was not available, depending on context.
 		"""
-		assert isinstance(res, int)
-		assert isinstance(amount, int)
-		if res in self._storage:
-			self._storage[res] += amount
-		else:
-			self._storage[res] = amount
+		self._storage[res] += amount
 		self._changed()
 		return 0
 

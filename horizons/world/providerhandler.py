@@ -20,6 +20,8 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
+from collections import defaultdict
+
 class ProviderHandler(list):
 	"""Class to keep track of providers of an area, especially an island.
 	It acts as a data structure for quick retrieval of special properties, that only resource
@@ -27,26 +29,13 @@ class ProviderHandler(list):
 
 	Precondition: Provider never change their provided resources."""
 
-	class ProviderByResDict(dict):
-		def __getitem__(self, item):
-			try:
-				return dict.__getitem__(self, item)
-			except KeyError:
-				self[item] = []
-				return self[item]
-
-
 	def __init__(self):
 		super(ProviderHandler, self).__init__()
-		self.provider_by_resources = ProviderHandler.ProviderByResDict()
+		self.provider_by_resources = defaultdict(list)
 
 	def append(self, provider):
 		# NOTE: appended elements need to be removed, else there will be a memory leak
 		for res in provider.provided_resources:
-			if res not in self.provider_by_resources:
-				self.provider_by_resources[res] = []
-			else:
-				assert provider not in self.provider_by_resources[res]
 			self.provider_by_resources[res].append(provider)
 		super(ProviderHandler, self).append(provider)
 

@@ -21,11 +21,10 @@
 
 import itertools
 
-from horizons.util import Point, Rect, decorators
+from horizons.util import Point, Rect, decorators, Circle
 from horizons.world.pathfinding.roadpathfinder import RoadPathFinder
 from horizons.constants import BUILDINGS
 from horizons.entities import Entities
-from horizons.util.shapes.circle import Circle
 
 class BuildableErrorTypes(object):
 	"""Killjoy class. Collection of reasons why you can't build."""
@@ -118,10 +117,10 @@ class Buildable(object):
 		problem = None
 		tearset = []
 		try:
-			cls._check_island(session, position)
+			island = cls._check_island(session, position)
 			# TODO: if the rotation changes here for non-quadratic buildings, wrong results will be returned
 			rotation = cls._check_rotation(session, position, rotation)
-			tearset = cls._check_buildings(session, position)
+			tearset = cls._check_buildings(session, position, island=island)
 			cls._check_units(session, position)
 			if check_settlement:
 				cls._check_settlement(session, position, ship=ship, issuer=issuer)
@@ -179,7 +178,11 @@ class Buildable(object):
 		@param position: coord Point to build at
 		@param island: Island instance if known before"""
 		if island is None:
-			island = session.world.get_island(position.center())
+			if position.__class__ is Rect: # performance optimisation
+				at = position.left, position.top
+			else:
+				at = position.center().to_tuple()
+			island = session.world.get_island_tuple( at )
 			if island is None:
 				raise _NotBuildableError(BuildableErrorTypes.NO_ISLAND)
 		for tup in position.tuple_iter():
@@ -189,6 +192,7 @@ class Buildable(object):
 				raise _NotBuildableError(BuildableErrorTypes.NO_ISLAND)
 			if 'constructible' not in tile.classes:
 				raise _NotBuildableError(BuildableErrorTypes.UNFIT_TILE)
+		return island
 
 	@classmethod
 	def _check_rotation(cls, session, position, rotation):
@@ -350,6 +354,7 @@ class BuildableSingleOnCoast(BuildableSingle):
 				raise _NotBuildableError(BuildableErrorTypes.UNFIT_TILE)
 		if not coastline_found:
 			raise _NotBuildableError(BuildableErrorTypes.NO_COAST)
+		return island
 
 	@classmethod
 	def _check_rotation(cls, session, position, rotation):
@@ -407,7 +412,7 @@ class BuildableSingleOnOcean(BuildableSingleOnCoast):
 			for rad in Circle(Point(*tile), 3):
 				if island.get_tile(rad) is None:
 					# Tile not on island -> deep water
-					return True
+					return island
 		raise _NotBuildableError(BuildableErrorTypes.NO_OCEAN_NEARBY)
 
 

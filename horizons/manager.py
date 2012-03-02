@@ -53,17 +53,6 @@ class SPManager(LivingObject):
 	def load(self, db):
 		pass
 
-	def tick(self, tick):
-		remove = []
-		for cmd in self.commands:
-			if tick == cmd[0]:
-				cmd[2](issuer = cmd[1])
-				remove.append(cmd)
-		for cmd in remove:
-			self.commands.remove(cmd)
-		if len(self.commands) == 0:
-			self.session.timer.remove_call(self.tick)
-
 	def end(self):
 		self.commands = None
 		super(SPManager, self).end()

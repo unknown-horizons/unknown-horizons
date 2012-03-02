@@ -131,7 +131,7 @@ class Build(Command):
 			for (resource, value) in building.costs.iteritems():
 				# remove from issuer, and remove rest from secondary source (settlement or ship)
 				first_source_remnant = issuer.get_component(StorageComponent).inventory.alter(resource, -value)
-				if secondary_resource_source is not None:
+				if first_source_remnant != 0 and secondary_resource_source is not None:
 					second_source_remnant = secondary_resource_source.get_component(StorageComponent).inventory.alter(resource, first_source_remnant)
 					assert second_source_remnant == 0
 				else: # first source must have covered everything

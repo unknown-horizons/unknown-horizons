@@ -102,4 +102,3 @@ def remove(s, p, before_ticks, after_ticks, tear_index):
 	target = [b for b in settlement.buildings if b.id not in (BUILDINGS.TRAIL_CLASS, BUILDINGS.TREE_CLASS)][tear_index]
 	Tear(target)(p)
 	s.run(seconds=after_ticks)
-

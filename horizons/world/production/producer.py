@@ -186,8 +186,11 @@ class Producer(Component):
 		else:
 			self.log.debug('%s: added production line %s is active', self, production.get_production_line_id())
 			self._productions[production.get_production_line_id()] = production
-		production.add_change_listener(self._on_production_change, call_listener_now=False)
 		production.add_production_finished_listener(self._production_finished)
+		# this would be called multiple times during init, just add it later this tick.
+		Scheduler().add_new_object(
+		  Callback(production.add_change_listener, self._on_production_change, call_listener_now=True), self, run_in=0
+		)
 		self.instance._changed()
 
 	def _production_finished(self, production):

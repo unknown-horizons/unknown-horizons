@@ -31,6 +31,7 @@ from horizons.util.gui import load_uh_widget, get_res_icon, create_resource_sele
 from horizons.util import PychanChildFinder, Callback
 from horizons.util.python.decorators import cachedmethod
 from horizons.util.messaging.message import ResourceBarResize
+from horizons.extscheduler import ExtScheduler
 
 
 class ResourceOverviewBar(object):
@@ -233,8 +234,20 @@ class ResourceOverviewBar(object):
 		# set appropriate icon
 		self.gold_gui.findChild(name="res_icon").image = get_res_icon(RES.GOLD_ID)[4] # the 32 one
 
-	def _update_gold(self):
+	def _update_gold(self, force=False):
 		"""Changelistener to upate player gold"""
+		# can be called pretty often (e.g. if there's an settlement.inventory.alter() in a loop)
+		# only update every 0.2 sec at most
+		scheduled_attr = "_gold_upate_scheduled"
+		if not hasattr(self, scheduled_attr):
+			setattr(self, scheduled_attr, True)
+			ExtScheduler().add_new_object(Callback(self._update_gold, True), self, run_in=0.2)
+			return
+		elif not force:
+			return # these calls we want to suppress, wait for scheduled call
+
+		delattr(self, scheduled_attr)
+
 		# set gold amount
 		gold = self.session.world.player.get_component(StorageComponent).inventory[RES.GOLD_ID]
 		gold_available_lbl = self.gold_gui.child_finder("gold_available")

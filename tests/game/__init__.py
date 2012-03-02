@@ -239,7 +239,7 @@ def game_test(*args, **kwargs):
 				if not os.path.exists(path):
 					raise Exception('Savegame %s not found' % path)
 				s = load_session(path)
-				
+
 			timelimit = Timer(handler)
 			timelimit.start(timeout)
 

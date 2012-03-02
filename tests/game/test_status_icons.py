@@ -103,5 +103,7 @@ def test_inventory_full(session, player):
 	res = RES.BOARDS_ID
 	inv.alter(res, inv.get_free_space_for( res ) )
 
+	session.run(seconds=1)
+
 	# Full
 	assert_called_with_icon(cb, InventoryFullStatus)
