@@ -19,12 +19,10 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-
 import contextlib
 import inspect
 import os
 import signal
-import tempfile
 from functools import wraps
 
 import mock
@@ -41,18 +39,16 @@ import horizons.main
 import horizons.world	# needs to be imported before session
 from horizons.ai.aiplayer import AIPlayer
 from horizons.ai.trader import Trader
-from horizons.command.building import Build
 from horizons.command.unit import CreateUnit
-from horizons.constants import GROUND, UNITS, BUILDINGS, GAME_SPEED, RES
+from horizons.constants import UNITS, GAME_SPEED
 from horizons.entities import Entities
 from horizons.ext.dummy import Dummy
 from horizons.extscheduler import ExtScheduler
 from horizons.scheduler import Scheduler
 from horizons.spsession import SPSession
-from horizons.util import (Color, DbReader, Rect, LivingObject,
-						   SavegameAccessor, Point, DifficultySettings)
+from horizons.util import (Color, DbReader, LivingObject, SavegameAccessor,
+							DifficultySettings)
 from horizons.util.lastactiveplayersettlementmanager import LastActivePlayerSettlementManager
-from horizons.util.uhdbaccessor import read_savegame_template
 from horizons.world import World
 from horizons.world.component.storagecomponent import StorageComponent
 from horizons.util.messaging.messagebus import MessageBus
@@ -73,45 +69,6 @@ def setup_package():
 	"""
 	global db
 	db = horizons.main._create_main_db()
-
-
-def create_map():
-	"""
-	Create a map with a square island (20x20) at position (20, 20) and return the path
-	to the database file.
-	"""
-
-	# Create island.
-	fd, islandfile = tempfile.mkstemp()
-	os.close(fd)
-
-	db = DbReader(islandfile)
-	db("CREATE TABLE ground(x INTEGER NOT NULL, y INTEGER NOT NULL, ground_id INTEGER NOT NULL, action_id TEXT NOT NULL, rotation INTEGER NOT NULL)")
-	db("CREATE TABLE island_properties(name TEXT PRIMARY KEY NOT NULL, value TEXT NOT NULL)")
-
-	db("BEGIN TRANSACTION")
-	tiles = []
-	for x, y in Rect.init_from_topleft_and_size(0, 0, 20, 20).tuple_iter():
-		if (0 < x < 20) and (0 < y < 20):
-			ground = GROUND.DEFAULT_LAND
-		else:
-			# Add coastline at the borders.
-			ground = GROUND.SHALLOW_WATER
-		tiles.append([x, y] + list(ground))
-	db.execute_many("INSERT INTO ground VALUES(?, ?, ?, ?, ?)", tiles)
-	db("COMMIT")
-
-	# Create savegame with the island above.
-	fd, savegame = tempfile.mkstemp()
-	os.close(fd)
-
-	db = DbReader(savegame)
-	read_savegame_template(db)
-	db("BEGIN TRANSACTION")
-	db("INSERT INTO island (x, y, file) VALUES(?, ?, ?)", 20, 20, islandfile)
-	db("COMMIT")
-
-	return savegame
 
 
 @contextlib.contextmanager
@@ -248,6 +205,10 @@ class SPTestSession(SPSession):
 			Scheduler().tick( Scheduler().cur_tick + 1 )
 
 
+# import helper functions here, so tests can import from tests.game directly
+from tests.game.utils import create_map, new_settlement, settle
+
+
 def new_session(mapgen=create_map, rng_seed=RANDOM_SEED, human_player = True, ai_players = 0):
 	"""
 	Create a new session with a map, add one human player and a trader (it will crash
@@ -292,25 +253,6 @@ def load_session(savegame, rng_seed=RANDOM_SEED):
 	session.load(savegame, [])
 
 	return session
-
-
-def new_settlement(session, pos=Point(30, 20)):
-	"""
-	Creates a settlement at the given position. It returns the settlement and the island
-	where it was created on, to avoid making function-baed tests too verbose.
-	"""
-	island = session.world.get_island(pos)
-	assert island, "No island found at %s" % pos
-	player = session.world.player
-
-	ship = CreateUnit(player.worldid, UNITS.PLAYER_SHIP_CLASS, pos.x, pos.y)(player)
-	for res, amount in session.db("SELECT resource, amount FROM start_resources"):
-		ship.get_component(StorageComponent).inventory.alter(res, amount)
-
-	building = Build(BUILDINGS.WAREHOUSE_CLASS, pos.x, pos.y, island, ship=ship)(player)
-	assert building, "Could not build warehouse at %s" % pos
-
-	return (building.settlement, island)
 
 
 def game_test(*args, **kwargs):
@@ -391,18 +333,6 @@ def game_test(*args, **kwargs):
 		return deco
 
 game_test.__test__ = False
-
-
-def settle(s):
-	"""
-	Create a new settlement, start with some resources.
-	"""
-	settlement, island = new_settlement(s)
-	settlement.get_component(StorageComponent).inventory.alter(RES.GOLD_ID, 5000)
-	settlement.get_component(StorageComponent).inventory.alter(RES.BOARDS_ID, 50)
-	settlement.get_component(StorageComponent).inventory.alter(RES.TOOLS_ID, 50)
-	settlement.get_component(StorageComponent).inventory.alter(RES.BRICKS_ID, 50)
-	return settlement, island
 
 
 def set_trace():
