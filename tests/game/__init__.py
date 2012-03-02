@@ -29,21 +29,14 @@ import mock
 import horizons.main
 import horizons.world	# needs to be imported before session
 from horizons.ai.aiplayer import AIPlayer
-from horizons.ai.trader import Trader
 from horizons.command.unit import CreateUnit
-from horizons.constants import UNITS, GAME_SPEED
-from horizons.entities import Entities
+from horizons.constants import UNITS
 from horizons.ext.dummy import Dummy
 from horizons.extscheduler import ExtScheduler
 from horizons.scheduler import Scheduler
 from horizons.spsession import SPSession
-from horizons.util import (Color, DbReader, LivingObject, SavegameAccessor,
-							DifficultySettings)
-from horizons.util.lastactiveplayersettlementmanager import LastActivePlayerSettlementManager
-from horizons.world import World
+from horizons.util import Color, DbReader, SavegameAccessor, DifficultySettings
 from horizons.world.component.storagecomponent import StorageComponent
-from horizons.util.messaging.messagebus import MessageBus
-from horizons.world.managers.statusiconmanager import StatusIconManager
 
 from tests import RANDOM_SEED
 from tests.utils import Timer
@@ -61,6 +54,7 @@ def setup_package():
 	"""
 	global db
 	db = horizons.main._create_main_db()
+	ExtScheduler.create_instance(Dummy)
 
 
 @contextlib.contextmanager
@@ -93,44 +87,9 @@ def _dbreader_convert_dummy_objects():
 
 class SPTestSession(SPSession):
 
-	def __init__(self, db, rng_seed=None):
-		"""
-		Unfortunately, right now there is no other way to setup Dummy versions of the GUI,
-		View etc., unless we want to patch the references in the session module.
-		"""
-		super(LivingObject, self).__init__()
-		self.gui = Dummy()
-		self.db = db
-		self.savecounter = 0	# this is a new game.
-		self.is_alive = True
-
-		self._clear_caches()
-
-		# Game
-		self.random = self.create_rng(rng_seed)
-		self.timer = self.create_timer()
-		Scheduler.create_instance(self.timer)
-		ExtScheduler.create_instance(Dummy)
-		self.manager = self.create_manager()
-		self.view = Dummy()
-		self.view.renderer = Dummy()
-		Entities.load(self.db)
-		self.scenario_eventhandler = Dummy()
-		self.campaign = {}
-
-		self.message_bus = MessageBus()
-		self.status_icon_manager = StatusIconManager(self)
-
-
-		# GUI
-		self.gui.session = self
-		self.ingame_gui = Dummy()
-		LastActivePlayerSettlementManager.create_instance(self)
-
-		self.selected_instances = set()
-		self.selection_groups = [set()] * 10 # List of sets that holds the player assigned unit groups.
-
-		GAME_SPEED.TICKS_PER_SECOND = 16
+	def __init__(self, rng_seed=None):
+		super(SPTestSession, self).__init__(Dummy, horizons.main.db, rng_seed)
+		self.reset_autosave = mock.Mock()
 
 	def save(self, *args, **kwargs):
 		"""
@@ -145,34 +104,25 @@ class SPTestSession(SPSession):
 				return super(SPTestSession, self).save(*args, **kwargs)
 
 	def load(self, savegame, players):
-		"""
-		Stripped version of the original code. We don't need to load selections,
-		or a scenario, setting up the gui or view.
-		"""
+		# keep a reference on the savegame, so we can cleanup in `end`
 		self.savegame = savegame
-		self.savegame_db = SavegameAccessor(self.savegame)
-
-		self.savecounter = 1
-
-		self.world = World(self)
-		self.world._init(self.savegame_db)
-		for i in sorted(players):
-			self.world.setup_player(i['id'], i['name'], i['color'], i['local'], i['is_ai'], i['difficulty'])
-		self.manager.load(self.savegame_db)
+		super(SPTestSession, self).load(savegame, players, False, False, 0)
 
 	def end(self, keep_map=False, remove_savegame=True):
 		"""
 		Clean up temporary files.
 		"""
 		super(SPTestSession, self).end()
+
 		# Find all islands in the map first
+		savegame_db = SavegameAccessor(self.savegame)
 		if not keep_map:
-			for (island_file, ) in self.savegame_db('SELECT file FROM island'):
-				if island_file[:7] != 'random:': # random islands don't exist as files
+			for (island_file, ) in savegame_db('SELECT file FROM island'):
+				if not island_file.startswith('random:'): # random islands don't exist as files
 					os.remove(island_file)
 
-		self.savegame_db.close()
 		# Finally remove savegame
+		savegame_db.close()
 		if remove_savegame:
 			os.remove(self.savegame)
 
@@ -207,22 +157,18 @@ def new_session(mapgen=create_map, rng_seed=RANDOM_SEED, human_player = True, ai
 	otherwise). It returns both session and player to avoid making the function-baed
 	tests too verbose.
 	"""
-	session = SPTestSession(horizons.main.db, rng_seed=rng_seed)
+	session = SPTestSession(rng_seed=rng_seed)
 	human_difficulty = DifficultySettings.DEFAULT_LEVEL
 	ai_difficulty = DifficultySettings.EASY_LEVEL
 
 	players = []
 	if human_player:
-		players.append({'id': 1, 'name': 'foobar', 'color': Color[1], 'local': True, 'is_ai': False, 'difficulty': human_difficulty})
+		players.append({'id': 1, 'name': 'foobar', 'color': Color[1], 'local': True, 'ai': False, 'difficulty': human_difficulty})
 	for i in xrange(ai_players):
 		id = i + human_player + 1
-		players.append({'id': id, 'name': ('AI' + str(i)), 'color': Color[id], 'local': id == 1, 'is_ai': True, 'difficulty': ai_difficulty})
+		players.append({'id': id, 'name': ('AI' + str(i)), 'color': Color[id], 'local': id == 1, 'ai': True, 'difficulty': ai_difficulty})
 
 	session.load(mapgen(), players)
-	session.world.init_fish_indexer()
-	# use different trader id here, so that init_new_world can be called
-	# (else there would be a worldid conflict)
-	session.world.trader = Trader(session, 99999 + 42, 'Free Trader', Color())
 
 	if ai_players > 0: # currently only ai tests use the ships
 		for player in session.world.players:
@@ -240,7 +186,7 @@ def load_session(savegame, rng_seed=RANDOM_SEED):
 	"""
 	Start a new session with the given savegame.
 	"""
-	session = SPTestSession(horizons.main.db, rng_seed=rng_seed)
+	session = SPTestSession(rng_seed=rng_seed)
 
 	session.load(savegame, [])
 
