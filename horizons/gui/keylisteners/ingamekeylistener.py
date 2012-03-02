@@ -88,11 +88,11 @@ class IngameKeyListener(fife.IKeyListener, LivingObject):
 		elif action == _Actions.PAUSE:
 			TogglePauseCommand().execute(self.session)
 		elif action == _Actions.PLAYERS_OVERVIEW:
-			self.session.ingame_gui.players_overview.toggle_visibility()
+			self.session.ingame_gui.logbook.toggle_stats_visibility(widget='players')
 		elif action == _Actions.SETTLEMENTS_OVERVIEW:
-			self.session.ingame_gui.players_settlements.toggle_visibility()
+			self.session.ingame_gui.logbook.toggle_stats_visibility(widget='settlements')
 		elif action == _Actions.SHIPS_OVERVIEW:
-			self.session.ingame_gui.players_ships.toggle_visibility()
+			self.session.ingame_gui.logbook.toggle_stats_visibility(widget='ships')
 		elif action == _Actions.LOGBOOK:
 			self.session.ingame_gui.logbook.toggle_visibility()
 		elif action == _Actions.DEBUG:

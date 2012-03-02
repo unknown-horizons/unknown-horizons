@@ -48,23 +48,23 @@ class LogBook(PickBeltWidget):
 		self._headings = []
 		self._messages = [] # list of all headings / messages
 		self._cur_entry = None # remember current location; 0 to len(messages)-1
-		self._initialized = False
 		self._hiding_widget = False # True if and only if the widget is currently in the process of being hidden
+		self.stats_visible = None
 
 		#self.add_entry(u"Heading",u"Welcome to the Captains log") # test code
 
 	def _init_gui(self):
 		"""Initial gui setup for all subpages accessible through pickbelts."""
-		if self._initialized:
+		if hasattr(self,'_gui'):
 			return
 		self._gui = self.get_widget()
 		self._gui.mapEvents({
 		  'okButton' : self.hide,
 		  'backwardButton' : Callback(self._scroll, -2),
 		  'forwardButton' : Callback(self._scroll, 2),
-		  'stats_players' : self._show_players,
-		  'stats_settlements' : self._show_playersettlements,
-		  'stats_ships' : self._show_playerships,
+		  'stats_players' : Callback(self.show_statswidget, widget='players'),
+		  'stats_settlements' : Callback(self.show_statswidget, widget='settlements'),
+		  'stats_ships' : Callback(self.show_statswidget, widget='ships'),
 		  'chatTextField' : self._send_chat_message,
 		  })
 		self._gui.position_technique = "automatic" # "center:center"
@@ -81,8 +81,6 @@ class LogBook(PickBeltWidget):
 		self.backward_button = self._gui.findChild(name="backwardButton")
 		self.forward_button = self._gui.findChild(name="forwardButton")
 		self._redraw_captainslog()
-
-		self._initialized = True
 
 	def update_view(self, number=0):
 		""" update_view from PickBeltWidget, cleaning up the logbook subwidgets
@@ -103,12 +101,14 @@ class LogBook(PickBeltWidget):
 		for heading, message in db("SELECT heading, message FROM logbook"):
 			# We need unicode strings as the entries are displayed on screen.
 			self.add_entry(unicode(heading, 'utf-8'), unicode(message, 'utf-8'), False)
-		value = db("SELECT value FROM metadata WHERE name = \"logbook_cur_entry\"")
+		value = db('SELECT value FROM metadata WHERE name = "logbook_cur_entry"')
 		if (value and value[0] and value[0][0]):
 			self._cur_entry = int(value[0][0])
 
 	def show(self):
-		if not self._gui.isVisible():
+		if not hasattr(self,'_gui'):
+			self._init_gui()
+		if not self.is_visible():
 			self._gui.show()
 			self.session.ingame_gui.on_switch_main_widget(self)
 			PauseCommand(suggestion=True).execute(self.session)
@@ -123,11 +123,9 @@ class LogBook(PickBeltWidget):
 			UnPauseCommand(suggestion=True).execute(self.session)
 
 	def is_visible(self):
-		return self._gui.isVisible()
+		return hasattr(self, '_gui') and self._gui.isVisible()
 
 	def toggle_visibility(self):
-		if not self._initialized:
-			self._init_gui()
 		if self.is_visible():
 			self.hide()
 		else:
@@ -216,21 +214,38 @@ class LogBook(PickBeltWidget):
 #TODO list:
 #  [ ] fix stats show/hide mess: how is update_view called before self.__init__
 #  [ ] save last shown stats widget and re-show it when clicking on Statistics
-#  [ ] F2 F3 F4 should open logbook at Statistics with correct button selected
 #  [ ] semantic distinction between general widget and subwidgets (log, stats)
 #
 ########
 
-	def _show_playerships(self):
+	def show_statswidget(self, widget='players'):
+		"""Shows logbook with Statistics page selected"""
+		logbook_index = [i for i,sec in enumerate(self.sections) if sec[0] == 'statistics'][0]
+		self.update_view(logbook_index)
 		self._hide_statswidgets()
+		if widget:
+			getattr(self, '_show_{widget}'.format(widget=widget))()
+			self.stats_visible = widget
+
+	def toggle_stats_visibility(self, widget='players'):
+		"""
+		Only hides logbook if hotkey of current stats selection pressed.
+		Otherwise, switch to displaying the new widget instead of hiding.
+		@param widget: 'players' or 'settlements' or 'ships'
+		"""
+		if self.stats_visible is not None and self.stats_visible == widget :
+			self.hide()
+		else:
+			self.show()
+			self.show_statswidget(widget=widget)
+
+	def _show_ships(self):
 		self.session.ingame_gui.players_ships.show()
 
-	def _show_playersettlements(self):
-		self._hide_statswidgets()
+	def _show_settlements(self):
 		self.session.ingame_gui.players_settlements.show()
 
 	def _show_players(self):
-		self._hide_statswidgets()
 		self.session.ingame_gui.players_overview.show()
 
 	def _hide_statswidgets(self):
@@ -242,6 +257,8 @@ class LogBook(PickBeltWidget):
 		for statswidget in statswidgets:
 			# we don't care which one is shown currently (if any), just hide all of them
 			statswidget.hide()
+		self.stats_visible = None
+
 
 
 ########
