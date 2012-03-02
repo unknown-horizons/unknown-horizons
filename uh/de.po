@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2012-03-02 04:09+0100\n"
-"PO-Revision-Date: 2012-03-02 04:41+0200\n"
+"PO-Revision-Date: 2012-03-02 04:38+0200\n"
 "Last-Translator: Christopher Oelmueller <chris.oelmueller+uh@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: de\n"
@@ -870,14 +870,12 @@ msgstr ""
 "Speicherstand verwenden."
 
 #: horizons/gui/modules/multiplayermenu.py:209
-msgid "This really sucks and we hope have it fixed soon."
+msgid "This is not nice and we hope to offer a more convenient solution very soon."
 msgstr ""
 
 #: horizons/gui/modules/multiplayermenu.py:210
-msgid "Please request the file {path} from the game creator manually and put it in {map_directory} ."
+msgid "Meanwhile, please request the file {path} from the game creator and put it in {map_directory} ."
 msgstr ""
-"Bitte versucht, die Datei {path} vom Ersteller zu kopieren und speichert sie "
-"unter {map_directory} ."
 
 #. (text of widget: help)
 #. (text of widget: help) Main / in-game menu entry
@@ -1163,7 +1161,6 @@ msgstr "Siedler"
 #. (text of widget: headline)
 #: horizons/gui/tabs/mainsquaretabs.py:246
 #: horizons/i18n/guitranslations.py:222
-#, fuzzy
 msgid "Citizens"
 msgstr "Bürger"
 
@@ -3384,8 +3381,10 @@ msgid "Save/load for multiplayer games is not possible yet"
 msgstr "Speichern/Laden ist im Mehrspieler-Modus noch nicht möglich"
 
 #: horizons/mpsession.py:77
+#, fuzzy
 msgid "The filename must consist only of letters, numbers, spaces and _.-"
 msgstr ""
+"Der Dateiname darf nur Buchstaben, Ziffern, Leerzeichen und _ . - enthalten."
 
 #: horizons/savegamemanager.py:360
 #, python-format
@@ -3540,7 +3539,7 @@ msgstr ""
 
 #: horizons/world/building/buildable.py:47
 msgid "This spot is too far away from your ship."
-msgstr ""
+msgstr "Bauplatz ist zu weit von Eurem Schiff entfernt."
 
 #: horizons/world/building/buildable.py:48
 msgid "This building can only be built on a resource source."
@@ -3628,13 +3627,11 @@ msgstr "Angriff auf {owner}"
 
 # 86%
 #: run_uh.py:185
-#, fuzzy
 msgid "Unknown Horizons has crashed."
 msgstr "Unknown Horizons ist abgestürzt."
 
 # 83%
 #: run_uh.py:187
-#, fuzzy
 msgid "We are very sorry for this and want to fix underlying error."
 msgstr "Es tut uns Leid, wir wollen diesen Fehler beheben."
 
@@ -3672,6 +3669,11 @@ msgstr "Danke für das Verwenden von Unknown Horizons!"
 #: run_uh.py:433
 msgid "FIFE was not found."
 msgstr "FIFE konnte nicht gefunden werden."
+
+#~ msgid "Please request the file {path} from the game creator manually and put it in {map_directory} ."
+#~ msgstr ""
+#~ "Bitte versucht, die Datei {path} vom Ersteller zu kopieren und speichert sie "
+#~ "unter {map_directory} ."
 
 #, python-format
 #~ msgid "{player1} and {player2} are now {status}"
