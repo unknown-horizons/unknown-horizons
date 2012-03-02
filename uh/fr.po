@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2012-03-02 04:09+0100\n"
-"PO-Revision-Date: 2012-03-02 16:41+0200\n"
+"PO-Revision-Date: 2012-03-02 16:27+0200\n"
 "Last-Translator: ajira <samuel@micheldorsaz.ch>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: fr\n"
@@ -76,7 +76,7 @@ msgstr "Vous pouvez cliquer-glisser des routes."
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
 msgid "You cannot tear the warehouse, your settlements needs it."
-msgstr "Vous ne pouvez pas démolir l'entrepôt, vos colonies en ont besoin. "
+msgstr "Vous ne pouvez pas démolir l'entrepôt, vos colonies en ont besoin."
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
