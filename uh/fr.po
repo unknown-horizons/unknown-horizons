@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2012-03-02 04:09+0100\n"
-"PO-Revision-Date: 2012-03-02 16:27+0200\n"
+"PO-Revision-Date: 2012-03-02 16:41+0200\n"
 "Last-Translator: ajira <samuel@micheldorsaz.ch>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: fr\n"
@@ -3545,7 +3545,7 @@ msgstr ""
 
 #: horizons/world/building/buildable.py:43
 msgid "You can't build this on top of another building."
-msgstr ""
+msgstr "Vous ne pouvez pas construire sur un autre bâtiment."
 
 #: horizons/world/building/buildable.py:44
 msgid "You can't build this on top of a unit."
@@ -3553,7 +3553,7 @@ msgstr ""
 
 #: horizons/world/building/buildable.py:45
 msgid "This building must be built on the coastline."
-msgstr ""
+msgstr "Ce bâtiment doit être construit le long de la côte."
 
 #: horizons/world/building/buildable.py:46
 msgid "This building requires to be placed near the ocean."
@@ -3647,9 +3647,10 @@ msgstr "Attaque {target} '{name}' ({owner})"
 msgid "Attacking {owner}"
 msgstr "Attaque {owner}"
 
+# 86%
 #: run_uh.py:185
 msgid "Unknown Horizons has crashed."
-msgstr ""
+msgstr "Unknown Horizons est tombé en panne."
 
 #: run_uh.py:187
 msgid "We are very sorry for this and want to fix underlying error."
