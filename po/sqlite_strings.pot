@@ -1,47 +1,7 @@
-#. This is a database entry: the name of a resource.
-#: sql database files
-msgid "dagger"
-msgstr ""
-
-#. This is a database entry: the name of a resource.
-#: sql database files
-msgid "charcoal"
-msgstr ""
-
-#. This is a database entry: the name of a resource.
-#: sql database files
-msgid "bricks"
-msgstr ""
-
-#. This is a database entry: the name of a resource.
-#: sql database files
-msgid "liquor"
-msgstr ""
-
-#. This is a database entry: the name of a resource.
-#: sql database files
-msgid "cattle"
-msgstr ""
-
-#. This is a database entry: the name of a resource.
-#: sql database files
-msgid "iron ingots"
-msgstr ""
-
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: sql database files
 #, python-format
 msgid "{player1} and {player2} have allied their forces."
-msgstr ""
-
-#. This is a database entry: the name of a resource.
-#: sql database files
-msgid "spice plants"
-msgstr ""
-
-#. This is a database entry: the name of a resource.
-#: sql database files
-msgid "tobaccos"
 msgstr ""
 
 #. This is a database entry: the name of a resource.
@@ -51,74 +11,7 @@ msgstr ""
 
 #. This is a database entry: the name of a resource.
 #: sql database files
-msgid "alvearies"
-msgstr ""
-
-#. This is a database entry: a messagewidget message (left part of the screen).
-#: sql database files
-msgid "Your mine has run out of resources."
-msgstr ""
-
-#. This is a database entry: the name of a resource.
-#: sql database files
-msgid "vines"
-msgstr ""
-
-#. This is a database entry: a messagewidget message (left part of the screen).
-#: sql database files
-#, python-format
-msgid "Screenshot has been saved to {file}."
-msgstr ""
-
-#. This is a database entry: a messagewidget message (left part of the screen).
-#: sql database files
-msgid "One of your fields requires a farm to harvest its crops."
-msgstr ""
-
-#. This is a database entry: the name of a resource.
-#: sql database files
-msgid "iron deposit"
-msgstr ""
-
-#. This is a database entry: the name of a resource.
-#: sql database files
-msgid "stone tops"
-msgstr ""
-
-#. This is a database entry: the name of a resource.
-#: sql database files
-msgid "cocoa beans"
-msgstr ""
-
-#. This is a database entry: a messagewidget message (left part of the screen).
-#: sql database files
-msgid "You can also drag roads."
-msgstr ""
-
-#. This is a database entry: the name of a resource.
-#: sql database files
-msgid "tools"
-msgstr ""
-
-#. This is a database entry: the name of a resource.
-#: sql database files
-msgid "happiness"
-msgstr ""
-
-#. This is a database entry: a messagewidget message (left part of the screen).
-#: sql database files
-#, python-format
-msgid "{player1} and {player2} have ended their alliance and are now in a state of war."
-msgstr ""
-
-#. This is a database entry: the name of a resource.
-#: sql database files
-msgid "lamb wool"
-msgstr ""
-
-#. This is a database entry: the name of a resource.
-#: sql database files
-msgid "education"
+msgid "medical herbs"
 msgstr ""
 
 #. This is a database entry: the name of an inhabitant increment (tier / level).
@@ -126,10 +19,9 @@ msgstr ""
 msgid "aristocrat"
 msgstr ""
 
-#. This is a database entry: a messagewidget message (left part of the screen).
+#. This is a database entry: the name of a resource.
 #: sql database files
-#, python-format
-msgid "A new settlement was founded by {player}."
+msgid "happiness"
 msgstr ""
 
 #. This is a database entry: a messagewidget message (left part of the screen).
@@ -144,33 +36,7 @@ msgstr ""
 
 #. This is a database entry: the name of a resource.
 #: sql database files
-msgid "coins"
-msgstr ""
-
-#. This is a database entry: the name of a resource.
-#: sql database files
-msgid "honeycombs"
-msgstr ""
-
-#. This is a database entry: a messagewidget message (left part of the screen).
-#: sql database files
-#, python-format
-msgid "You need more {resource} to build this building."
-msgstr ""
-
-#. This is a database entry: the name of a resource.
-#: sql database files
-msgid "textile"
-msgstr ""
-
-#. This is a database entry: the name of a resource.
-#: sql database files
 msgid "tobacco leaves"
-msgstr ""
-
-#. This is a database entry: a messagewidget message (left part of the screen).
-#: sql database files
-msgid "You won!"
 msgstr ""
 
 #. This is a database entry: the name of a resource.
@@ -178,29 +44,14 @@ msgstr ""
 msgid "wood"
 msgstr ""
 
-#. This is a database entry: a messagewidget message (left part of the screen).
-#: sql database files
-msgid "You have reached the current maximum increment. Your inhabitants will not upgrade further."
-msgstr ""
-
 #. This is a database entry: the name of a resource.
 #: sql database files
-msgid "confectionery"
-msgstr ""
-
-#. This is a database entry: the name of an inhabitant increment (tier / level).
-#: sql database files
-msgid "sailor"
+msgid "stone tops"
 msgstr ""
 
 #. This is a database entry: the name of a resource.
 #: sql database files
 msgid "wool"
-msgstr ""
-
-#. This is a database entry: the name of a resource.
-#: sql database files
-msgid "fish"
 msgstr ""
 
 #. This is a database entry: the name of an inhabitant increment (tier / level).
@@ -210,27 +61,7 @@ msgstr ""
 
 #. This is a database entry: the name of a resource.
 #: sql database files
-msgid "deer meat"
-msgstr ""
-
-#. This is a database entry: the name of a resource.
-#: sql database files
-msgid "pigs for slaughter"
-msgstr ""
-
-#. This is a database entry: the name of a resource.
-#: sql database files
-msgid "stone deposit"
-msgstr ""
-
-#. This is a database entry: the name of an inhabitant increment (tier / level).
-#: sql database files
-msgid "citizen"
-msgstr ""
-
-#. This is a database entry: the name of a resource.
-#: sql database files
-msgid "get-together"
+msgid "cocoa beans"
 msgstr ""
 
 #. This is a database entry: the name of a resource.
@@ -243,65 +74,14 @@ msgstr ""
 msgid "cannon"
 msgstr ""
 
-#. This is a database entry: a messagewidget message (left part of the screen).
-#: sql database files
-msgid "A new world has been created."
-msgstr ""
-
 #. This is a database entry: the name of a resource.
 #: sql database files
-msgid "clay"
-msgstr ""
-
-#. This is a database entry: the name of a resource.
-#: sql database files
-msgid "acorns"
-msgstr ""
-
-#. This is a database entry: the name of a resource.
-#: sql database files
-msgid "deer food A"
-msgstr ""
-
-#. This is a database entry: the name of a resource.
-#: sql database files
-msgid "cattle for slaughter"
-msgstr ""
-
-#. This is a database entry: the name of a resource.
-#: sql database files
-msgid "herbs"
-msgstr ""
-
-#. This is a database entry: the name of a resource.
-#: sql database files
-msgid "pigs"
-msgstr ""
-
-#. This is a database entry: the name of a resource.
-#: sql database files
-msgid "community"
-msgstr ""
-
-#. This is a database entry: the name of a resource.
-#: sql database files
-msgid "grapes"
+msgid "pigs for slaughter"
 msgstr ""
 
 #. This is a database entry: the name of a resource.
 #: sql database files
 msgid "clay deposit"
-msgstr ""
-
-#. This is a database entry: the name of a resource.
-#: sql database files
-msgid "candles"
-msgstr ""
-
-#. This is a database entry: a messagewidget message (left part of the screen).
-#: sql database files
-#, python-format
-msgid "Your inhabitants reached level {level}."
 msgstr ""
 
 #. This is a database entry: a messagewidget message (left part of the screen).
@@ -315,24 +95,76 @@ msgstr ""
 msgid "cocoa"
 msgstr ""
 
-#. This is a database entry: the name of a resource.
+#. This is a database entry: a messagewidget message (left part of the screen).
 #: sql database files
-msgid "faith"
+msgid "A new ship has been created."
 msgstr ""
 
 #. This is a database entry: the name of a resource.
 #: sql database files
-msgid "spices"
+msgid "potatoes"
 msgstr ""
 
 #. This is a database entry: the name of a resource.
 #: sql database files
-msgid "boards"
+msgid "clay"
 msgstr ""
 
 #. This is a database entry: the name of a resource.
 #: sql database files
-msgid "flour"
+msgid "liquor"
+msgstr ""
+
+#. This is a database entry: the name of a resource.
+#: sql database files
+msgid "iron ingots"
+msgstr ""
+
+#. This is a database entry: a messagewidget message (left part of the screen).
+#: sql database files
+#, python-format
+msgid "Screenshot has been saved to {file}."
+msgstr ""
+
+#. This is a database entry: the name of a resource.
+#: sql database files
+msgid "cattle"
+msgstr ""
+
+#. This is a database entry: a messagewidget message (left part of the screen).
+#: sql database files
+msgid "You can also drag roads."
+msgstr ""
+
+#. This is a database entry: the name of a resource.
+#: sql database files
+msgid "lamb wool"
+msgstr ""
+
+#. This is a database entry: a messagewidget message (left part of the screen).
+#: sql database files
+msgid "The route is now configured. Start it via the \"start route\" button in the \"configure route\" menu."
+msgstr ""
+
+#. This is a database entry: a messagewidget message (left part of the screen).
+#: sql database files
+#, python-format
+msgid "A new settlement was founded by {player}."
+msgstr ""
+
+#. This is a database entry: a messagewidget message (left part of the screen).
+#: sql database files
+msgid "Cannot go here."
+msgstr ""
+
+#. This is a database entry: the name of an inhabitant increment (tier / level).
+#: sql database files
+msgid "pioneer"
+msgstr ""
+
+#. This is a database entry: the name of a resource.
+#: sql database files
+msgid "sugar cane"
 msgstr ""
 
 #. This is a database entry: the name of a resource.
@@ -342,7 +174,22 @@ msgstr ""
 
 #. This is a database entry: the name of a resource.
 #: sql database files
-msgid "potatoes"
+msgid "grapes"
+msgstr ""
+
+#. This is a database entry: the name of a resource.
+#: sql database files
+msgid "honeycombs"
+msgstr ""
+
+#. This is a database entry: the name of a resource.
+#: sql database files
+msgid "faith"
+msgstr ""
+
+#. This is a database entry: the name of a resource.
+#: sql database files
+msgid "boards"
 msgstr ""
 
 #. This is a database entry: the name of an inhabitant increment (tier / level).
@@ -358,33 +205,107 @@ msgstr ""
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: sql database files
 #, python-format
-msgid "{player1} and {player2} have terminated their alliance."
-msgstr ""
-
-#. This is a database entry: the name of a resource.
-#: sql database files
-msgid "condiments"
-msgstr ""
-
-#. This is a database entry: a messagewidget message (left part of the screen).
-#: sql database files
-msgid "Your game has been saved."
-msgstr ""
-
-#. This is a database entry: a messagewidget message (left part of the screen).
-#: sql database files
-#, python-format
 msgid "{player1} and {player2} will fight each other to the death."
-msgstr ""
-
-#. This is a database entry: the name of an inhabitant increment (tier / level).
-#: sql database files
-msgid "pioneer"
 msgstr ""
 
 #. This is a database entry: the name of a resource.
 #: sql database files
 msgid "grain"
+msgstr ""
+
+#. This is a database entry: the name of a resource.
+#: sql database files
+msgid "spices"
+msgstr ""
+
+#. This is a database entry: the name of a resource.
+#: sql database files
+msgid "dagger"
+msgstr ""
+
+#. This is a database entry: the name of a resource.
+#: sql database files
+msgid "bricks"
+msgstr ""
+
+#. This is a database entry: the name of a resource.
+#: sql database files
+msgid "community"
+msgstr ""
+
+#. This is a database entry: the name of a resource.
+#: sql database files
+msgid "spice plants"
+msgstr ""
+
+#. This is a database entry: the name of an inhabitant increment (tier / level).
+#: sql database files
+msgid "sailor"
+msgstr ""
+
+#. This is a database entry: the name of a resource.
+#: sql database files
+msgid "cattle for slaughter"
+msgstr ""
+
+#. This is a database entry: the name of a resource.
+#: sql database files
+msgid "tobaccos"
+msgstr ""
+
+#. This is a database entry: the name of a resource.
+#: sql database files
+msgid "tools"
+msgstr ""
+
+#. This is a database entry: the name of a resource.
+#: sql database files
+msgid "deer meat"
+msgstr ""
+
+#. This is a database entry: the name of a resource.
+#: sql database files
+msgid "confectionery"
+msgstr ""
+
+#. This is a database entry: the name of a resource.
+#: sql database files
+msgid "coins"
+msgstr ""
+
+#. This is a database entry: a messagewidget message (left part of the screen).
+#: sql database files
+msgid "You won!"
+msgstr ""
+
+#. This is a database entry: the name of a resource.
+#: sql database files
+msgid "fish"
+msgstr ""
+
+#. This is a database entry: the name of a resource.
+#: sql database files
+msgid "charcoal"
+msgstr ""
+
+#. This is a database entry: the name of a resource.
+#: sql database files
+msgid "stone deposit"
+msgstr ""
+
+#. This is a database entry: the name of a resource.
+#: sql database files
+msgid "fire"
+msgstr ""
+
+#. This is a database entry: a messagewidget message (left part of the screen).
+#: sql database files
+msgid "You have reached the current maximum increment. Your inhabitants will not upgrade further."
+msgstr ""
+
+#. This is a database entry: the name of a resource.
+#: sql database files
+msgid "acorns"
 msgstr ""
 
 #. This is a database entry: the name of a resource.
@@ -395,12 +316,23 @@ msgstr ""
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: sql database files
 #, python-format
-msgid "{player1} and {player2} have settled their hostility."
+msgid "You need more {resource} to build this building."
 msgstr ""
 
-#. This is a database entry: the name of a resource.
+#. This is a database entry: a messagewidget message (left part of the screen).
 #: sql database files
-msgid "medical herbs"
+msgid "Your crew refuses to leave this map."
+msgstr ""
+
+#. This is a database entry: the name of an inhabitant increment (tier / level).
+#: sql database files
+msgid "citizen"
+msgstr ""
+
+#. This is a database entry: a messagewidget message (left part of the screen).
+#: sql database files
+#, python-format
+msgid "{player1} and {player2} have settled their hostility."
 msgstr ""
 
 #. This is a database entry: the name of a resource.
@@ -410,10 +342,124 @@ msgstr ""
 
 #. This is a database entry: the name of a resource.
 #: sql database files
-msgid "salt"
+msgid "alvearies"
+msgstr ""
+
+#. This is a database entry: a messagewidget message (left part of the screen).
+#: sql database files
+msgid "Your game has been autosaved."
+msgstr ""
+
+#. This is a database entry: a messagewidget message (left part of the screen).
+#: sql database files
+msgid "One of your fields requires a farm to harvest its crops."
+msgstr ""
+
+#. This is a database entry: a messagewidget message (left part of the screen).
+#: sql database files
+msgid "Your mine has run out of resources."
+msgstr ""
+
+#. This is a database entry: a messagewidget message (left part of the screen).
+#: sql database files
+#, python-format
+msgid "Your inhabitants reached level {level}."
 msgstr ""
 
 #. This is a database entry: the name of a resource.
 #: sql database files
-msgid "sugar cane"
+msgid "iron deposit"
+msgstr ""
+
+#. This is a database entry: the name of a resource.
+#: sql database files
+msgid "education"
+msgstr ""
+
+#. This is a database entry: a messagewidget message (left part of the screen).
+#: sql database files
+#, python-format
+msgid "{player1} and {player2} have ended their alliance and are now in a state of war."
+msgstr ""
+
+#. This is a database entry: the name of a resource.
+#: sql database files
+msgid "textile"
+msgstr ""
+
+#. This is a database entry: a messagewidget message (left part of the screen).
+#: sql database files
+#, python-format
+msgid "{player}: {message}"
+msgstr ""
+
+#. This is a database entry: the name of a resource.
+#: sql database files
+msgid "flour"
+msgstr ""
+
+#. This is a database entry: the name of a resource.
+#: sql database files
+msgid "get-together"
+msgstr ""
+
+#. This is a database entry: a messagewidget message (left part of the screen).
+#: sql database files
+msgid "A new world has been created."
+msgstr ""
+
+#. This is a database entry: a messagewidget message (left part of the screen).
+#: sql database files
+msgid "Your game has been quicksaved."
+msgstr ""
+
+#. This is a database entry: the name of a resource.
+#: sql database files
+msgid "deer food A"
+msgstr ""
+
+#. This is a database entry: the name of a resource.
+#: sql database files
+msgid "herbs"
+msgstr ""
+
+#. This is a database entry: the name of a resource.
+#: sql database files
+msgid "pigs"
+msgstr ""
+
+#. This is a database entry: a messagewidget message (left part of the screen).
+#: sql database files
+msgid "You cannot tear the warehouse, your settlements needs it."
+msgstr ""
+
+#. This is a database entry: the name of a resource.
+#: sql database files
+msgid "condiments"
+msgstr ""
+
+#. This is a database entry: the name of a resource.
+#: sql database files
+msgid "candles"
+msgstr ""
+
+#. This is a database entry: a messagewidget message (left part of the screen).
+#: sql database files
+#, python-format
+msgid "{player1} and {player2} have terminated their alliance."
+msgstr ""
+
+#. This is a database entry: the name of a resource.
+#: sql database files
+msgid "vines"
+msgstr ""
+
+#. This is a database entry: a messagewidget message (left part of the screen).
+#: sql database files
+msgid "Your game has been saved."
+msgstr ""
+
+#. This is a database entry: the name of a resource.
+#: sql database files
+msgid "salt"
 msgstr ""

@@ -19,18 +19,26 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-# ###################################################################
+###############################################################################
+#
+# == I18N DEV USE CASES: CHEATSHEET ==
+#
+# ** Refer to  development/copy_pofiles.sh  for help with building or updating
+#    the translation files for Unknown Horizons.
+#
+###############################################################################
+#
 # WARNING: This file is generated automagically.
 #          You need to update it to see changes to strings in-game.
 #          DO NOT MANUALLY UPDATE THIS FILE (by editing strings).
 #          The script to generate .pot templates calls the following:
 # ./development/extract_strings_from_objects.py  horizons/i18n/objecttranslations.py
-#          If you changed strings in code, you might just run this
-#          command as well.
+#
 # NOTE: In string-freeze mode (shortly before releases, usually
 #       announced in a meeting), updates to this file must not happen
 #       without permission of the responsible translation admin!
-# ###################################################################
+#
+###############################################################################
 
 from horizons.constants import VERSION
 

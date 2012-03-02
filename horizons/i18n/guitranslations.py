@@ -19,18 +19,26 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-# ###################################################################
+###############################################################################
+#
+# == I18N DEV USE CASES: CHEATSHEET ==
+#
+# ** Refer to  development/copy_pofiles.sh  for help with building or updating
+#    the translation files for Unknown Horizons.
+#
+###############################################################################
+#
 # WARNING: This file is generated automagically.
 #          You need to update it to see changes to strings in-game.
 #          DO NOT MANUALLY UPDATE THIS FILE (by editing strings).
 #          The script to generate .pot templates calls the following:
 # ./development/extract_strings_from_xml.py  horizons/i18n/guitranslations.py
-#          If you changed strings in code, you might just run this
-#          command as well.
+#
 # NOTE: In string-freeze mode (shortly before releases, usually
 #       announced in a meeting), updates to this file must not happen
 #       without permission of the responsible translation admin!
-# ###################################################################
+#
+###############################################################################
 
 from horizons.constants import VERSION
 
@@ -381,6 +389,17 @@ def set_translations():
 		("signal_fire_description_lbl" , "text"    ): _("The signal fire shows the free trader how to reach your settlement in case you want to buy or sell goods."),
 		},
 
+	"overview_tower.xml" : {
+		# (text of widget: name_label)
+		("name_label"                  , "text"    ): _("Name:"),
+		# (tooltip of widget: running_costs_label)
+		("running_costs_label"         , "tooltip" ): _("Running costs"),
+		# (tooltip of widget: headline)
+		("headline"                    , "tooltip" ): _("Click to change the name of your settlement"),
+		# (tooltip of widget: running_costs)
+		("running_costs"               , "tooltip" ): _("Running costs"),
+		},
+
 	"overview_tradership.xml" : {
 		# (text of widget: trader_description_lbl)
 		("trader_description_lbl"      , "text"    ): _("This is the free trader's ship. It will visit you from time to time to buy or sell goods."),
@@ -503,6 +522,13 @@ def set_translations():
 		("toggle_active_inactive"      , "tooltip" ): _("Start production"),
 		},
 
+	"resbar_resource_selection.xml" : {
+		# (text of widget: headline) Please keep the translation similarly short and concise, else the tooltip is not well understood by players.
+		("headline"                    , "text"    ): _("Select resource:"),
+		# (tooltip of widget: headline) Please keep the translation similarly short and concise, else the tooltip is not well understood by players.
+		("headline"                    , "tooltip" ): _("The resource you select is displayed instead of the current one. Empty by clicking on X."),
+		},
+
 	"route_entry.xml" : {
 		# (tooltip of widget: delete_warehouse) Trade route entry
 		("delete_warehouse"            , "tooltip" ): _("Delete entry"),
@@ -513,8 +539,28 @@ def set_translations():
 		},
 
 	"captains_log.xml" : {
-		# (tooltip of widget: okButton) Captain's Log: logbook/diary used in scenarios
-		("okButton"                    , "tooltip" ): _("Leave Captain's log"),
+		# (text of widget: headline_chat)
+		("headline_chat"               , "text"    ): _("Chat"),
+		# (text of widget: headline_game_messages)
+		("headline_game_messages"      , "text"    ): _("Game messages"),
+		# (text of widget: headline_statistics)
+		("headline_statistics"         , "text"    ): _("Statistics"),
+		# (text of widget: stats_players)
+		("stats_players"               , "text"    ): _("Players"),
+		# (text of widget: stats_settlements)
+		("stats_settlements"           , "text"    ): _("My settlements"),
+		# (text of widget: stats_ships)
+		("stats_ships"                 , "text"    ): _("My ships"),
+		# (text of widget: wb2) Only filter messages important for your own settlements (disasters, new increment, ...)
+		("wb2"                         , "text"    ): _("Own settlements"),
+		# (text of widget: wb5) Sends the chat message to all allied players.
+		("wb5"                         , "text"    ): _("Allies"),
+		# (text of widget: weird_button_1) Displays all notifications and game messages
+		("weird_button_1"              , "text"    ): _("Whole world"),
+		# (text of widget: weird_button_4) Sends the chat message to all players (default)
+		("weird_button_4"              , "text"    ): _("Everybody"),
+		# (tooltip of widget: okButton)
+		("okButton"                    , "tooltip" ): _("Return to game"),
 		# (tooltip of widget: backwardButton) Entry of Captain's Log (logbook/diary used in scenarios)
 		("backwardButton"              , "tooltip" ): _("Read previous entries"),
 		# (tooltip of widget: forwardButton) Entry of Captain's Log (logbook/diary used in scenarios)
@@ -569,8 +615,6 @@ def set_translations():
 		("total_score"                 , "text"    ): _("Total"),
 		# (text of widget: unit_score)
 		("unit_score"                  , "text"    ): _("Units"),
-		# (tooltip of widget: okButton)
-		("okButton"                    , "tooltip" ): _("Close"),
 		},
 
 	"players_settlements.xml" : {
@@ -584,8 +628,6 @@ def set_translations():
 		("settlement_name"             , "text"    ): _("Name"),
 		# (text of widget: taxes)
 		("taxes"                       , "text"    ): _("Taxes"),
-		# (tooltip of widget: okButton)
-		("okButton"                    , "tooltip" ): _("Close"),
 		},
 
 	"ships_list.xml" : {
@@ -599,19 +641,17 @@ def set_translations():
 		("status"                      , "text"    ): _("Status"),
 		# (text of widget: weapons)
 		("weapons"                     , "text"    ): _("Weapons"),
-		# (tooltip of widget: okButton)
-		("okButton"                    , "tooltip" ): _("Close"),
 		},
 
 	"stancewidget.xml" : {
-		# (tooltip of widget: aggressive) Description of combat stance (how units behave when fighting)
-		("aggressive"                  , "tooltip" ): _("Aggressive"),
-		# (tooltip of widget: flee) Description of combat stance (how units behave when fighting)
-		("flee"                        , "tooltip" ): _("Flee"),
-		# (tooltip of widget: hold_ground) Description of combat stance (how units behave when fighting)
-		("hold_ground"                 , "tooltip" ): _("Hold ground"),
-		# (tooltip of widget: none) Description of combat stance (how units behave when fighting)
-		("none"                        , "tooltip" ): _("Passive"),
+		# (tooltip of widget: aggressive_stance) Description of combat stance (how units behave when fighting)
+		("aggressive_stance"           , "tooltip" ): _("Aggressive"),
+		# (tooltip of widget: flee_stance) Description of combat stance (how units behave when fighting)
+		("flee_stance"                 , "tooltip" ): _("Flee"),
+		# (tooltip of widget: hold_ground_stance) Description of combat stance (how units behave when fighting)
+		("hold_ground_stance"          , "tooltip" ): _("Hold ground"),
+		# (tooltip of widget: none_stance) Description of combat stance (how units behave when fighting)
+		("none_stance"                 , "tooltip" ): _("Passive"),
 		},
 
 	"help.xml" : {
@@ -739,6 +779,10 @@ def set_translations():
 		("create"                      , "tooltip" ): _("Create this new game"),
 		# (tooltip of widget: cancel)
 		("cancel"                      , "tooltip" ): _("Exit to multiplayer menu"),
+		# (text of widget: gamename_lbl)
+		("gamename_lbl"                , "text"    ): _("Name of the game:"),
+		# (tooltip of widget: gamename_lbl)
+		("gamename_lbl"                , "tooltip" ): _("This will be displayed to other players so they recognise the game."),
 		},
 
 	"multiplayer_gamelobby.xml" : {
@@ -769,12 +813,16 @@ def set_translations():
 		("headline_left"               , "text"    ): _("New game - Multiplayer"),
 		# (text of widget: join_game_lbl)
 		("join_game_lbl"               , "text"    ): _("Join game"),
+		# (text of widget: load_game_lbl)
+		("load_game_lbl"               , "text"    ): _("Load game:"),
 		# (text of widget: refr_gamelist_lbl)
 		("refr_gamelist_lbl"           , "text"    ): _("Refresh list:"),
 		# (tooltip of widget: create)
 		("create"                      , "tooltip" ): _("Create a new game"),
 		# (tooltip of widget: join)
 		("join"                        , "tooltip" ): _("Join the selected game"),
+		# (tooltip of widget: load)
+		("load"                        , "tooltip" ): _("Load a saved game"),
 		# (tooltip of widget: cancel)
 		("cancel"                      , "tooltip" ): _("Exit to main menu"),
 		# (tooltip of widget: refresh)
@@ -863,6 +911,10 @@ def set_translations():
 		("cancelButton"                , "tooltip" ): _("Cancel"),
 		# (tooltip of widget: deleteButton)
 		("deleteButton"                , "tooltip" ): _("Delete selected savegame"),
+		# (text of widget: gamename_lbl)
+		("gamename_lbl"                , "text"    ): _("Name of the game:"),
+		# (tooltip of widget: gamename_lbl)
+		("gamename_lbl"                , "tooltip" ): _("This will be displayed to other players so they recognise the game."),
 		},
 
 	"singleplayermenu.xml" : {
@@ -916,6 +968,8 @@ def set_translations():
 	"game_settings.xml" : {
 		# (text of widget: headline_game_settings_lbl)
 		("headline_game_settings_lbl"  , "text"    ): _("Game settings:"),
+		# (text of widget: lbl_disasters) Whether there should be disasters in the game.
+		("lbl_disasters"               , "text"    ): _("Disasters"),
 		# (text of widget: lbl_free_trader) Whether to create this kind of player in the game.
 		("lbl_free_trader"             , "text"    ): _("Free Trader"),
 		# (text of widget: lbl_pirates) Whether to create this kind of player in the game.
