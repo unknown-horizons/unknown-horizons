@@ -44,6 +44,10 @@ class ProductionOverview(StatsWidget):
 		self.db = self.settlement.session.db
 		Scheduler().add_new_object(Callback(self._refresh_tick), self, run_in = GAME_SPEED.TICKS_PER_SECOND, loops = -1)
 
+	def _init_gui(self):
+		super(ProductionOverview, self)._init_gui()
+		self._gui.findChild(name="okButton").capture(self.hide)
+
 	def refresh(self):
 		super(ProductionOverview, self).refresh()
 		#xgettext:python-format
