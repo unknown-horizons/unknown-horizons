@@ -176,7 +176,7 @@ class LogBook(PickBeltWidget):
 			self._cur_entry = len(self._messages) - 1
 		else:
 			self._cur_entry = len(self._messages) - 2
-		if show_logbook:
+		if show_logbook and hasattr(self, "_gui"):
 			self._redraw_captainslog()
 
 	def clear(self):
