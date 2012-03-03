@@ -135,6 +135,7 @@ class SPTestSession(SPSession):
 		"""
 		Scheduler.destroy_instance()
 		ExtScheduler.destroy_instance()
+		ExtScheduler.create_instance() # won't be generated on session start
 		WorldObject.reset()
 
 	def run(self, ticks=1, seconds=None):
