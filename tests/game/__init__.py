@@ -134,8 +134,9 @@ class SPTestSession(SPSession):
 		return the game to a valid state.
 		"""
 		Scheduler.destroy_instance()
+		ext_sched_pump = ExtScheduler().pump
 		ExtScheduler.destroy_instance()
-		ExtScheduler.create_instance() # won't be generated on session start
+		ExtScheduler.create_instance(ext_sched_pump) # won't be generated on session start
 		WorldObject.reset()
 
 	def run(self, ticks=1, seconds=None):
@@ -254,12 +255,20 @@ def game_test(*args, **kwargs):
 				else:
 					return func(*args)
 			finally:
-				if use_fixture:
-					s.end(remove_savegame=False, keep_map=True)
-				elif not manual_session:
-					s.end()
-				else:
+				try:
+					if use_fixture:
+						s.end(remove_savegame=False, keep_map=True)
+					elif not manual_session:
+						s.end()
+				except:
+					pass
+					# An error happened after cleanup after an error.
+					# This is ok since cleanup is only defined to work when invariants are in place,
+					# but the first error could have violated one.
+					# Therefore only use failsafe cleanup:
+				finally:
 					SPTestSession.cleanup()
+
 
 				timelimit.stop()
 		return wrapped
