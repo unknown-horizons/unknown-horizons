@@ -25,10 +25,12 @@ msgstr ""
 msgid "A new settlement was founded by {player}."
 msgstr "{player} založil novou osadu."
 
+# 82%
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
+#, fuzzy
 msgid "A new ship has been created."
-msgstr ""
+msgstr "Byl vytvořen nový svět."
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
@@ -397,10 +399,12 @@ msgstr ""
 msgid "spices"
 msgstr ""
 
+# 76%
 #. This is a database entry: the name of a resource.
 #: database files sql
+#, fuzzy
 msgid "stone deposit"
-msgstr ""
+msgstr "naleziště železa"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
@@ -1152,11 +1156,13 @@ msgstr "Průzkumníci"
 msgid "Settlers"
 msgstr "Osadníci"
 
+# 75%
 #. (text of widget: headline)
 #: horizons/gui/tabs/mainsquaretabs.py:246
 #: horizons/i18n/guitranslations.py:222
+#, fuzzy
 msgid "Citizens"
-msgstr ""
+msgstr "občan"
 
 #. (text of widget: headline)
 #: horizons/gui/tabs/overviewtab.py:62 horizons/gui/tabs/overviewtab.py:553
@@ -1926,10 +1932,12 @@ msgstr ""
 msgid "Start production"
 msgstr ""
 
+# 94%
 #. (text of widget: headline) Please keep the translation similarly short and concise, else the tooltip is not well understood by players.
 #: horizons/i18n/guitranslations.py:566
+#, fuzzy
 msgid "Select resource:"
-msgstr ""
+msgstr "Vyberte zdroje:"
 
 #. (tooltip of widget: headline) Please keep the translation similarly short and concise, else the tooltip is not well understood by players.
 #: horizons/i18n/guitranslations.py:568
@@ -2428,10 +2436,12 @@ msgstr ""
 msgid "Join game"
 msgstr ""
 
+# 90%
 #. (text of widget: load_game_lbl)
 #: horizons/i18n/guitranslations.py:856
+#, fuzzy
 msgid "Load game:"
-msgstr ""
+msgstr "Nahrát hru"
 
 #. (text of widget: refr_gamelist_lbl)
 #: horizons/i18n/guitranslations.py:858
@@ -2852,10 +2862,12 @@ msgstr ""
 msgid "Corn Field"
 msgstr ""
 
+# 88%
 #. tooltip_text of buildings:cornfield
 #: horizons/i18n/objecttranslations.py:137
+#, fuzzy
 msgid "Yields corn. Needs a farm."
-msgstr ""
+msgstr "Produkuje jídlo. Potřebuje farmu."
 
 #. name of buildings:distillery
 #: horizons/i18n/objecttranslations.py:142
@@ -3557,9 +3569,11 @@ msgstr ""
 msgid "Unknown Horizons has crashed."
 msgstr ""
 
+# 83%
 #: run_uh.py:187
+#, fuzzy
 msgid "We are very sorry for this and want to fix underlying error."
-msgstr ""
+msgstr "Velice se omlouváme a snažíme se tuto chybu vyřešit."
 
 #: run_uh.py:188
 msgid "In order to do this, we need the information from the logfile:"
