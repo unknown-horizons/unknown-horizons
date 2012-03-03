@@ -21,7 +21,7 @@
 			<TooltipIcon name="happiness_label" position="0,166"
 				image="content/gui/icons/resources/running_costs.png"
 				tooltip="Happiness" />
-			<Icon position="20,165" image="content/gui/images/background/bar_bg.png" size="80,170"/>
+			<Icon position="20,165" image="content/gui/images/background/bar_bg.png" size="80,20" />
 			<TooltipProgressBar name='happiness' position="21,166"
 				size="91,20" tooltip="Happiness" />
 			<TooltipIcon name="residents_label" position="140,166"
