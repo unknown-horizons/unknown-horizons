@@ -1,5 +1,5 @@
 id: 45
-name: _ Fire Brigade
+name: _ Fire Station
 baseclass: production.ProductionBuilding
 radius: 13
 cost: 15

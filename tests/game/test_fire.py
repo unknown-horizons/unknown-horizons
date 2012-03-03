@@ -28,7 +28,7 @@ from tests.game import game_test
 
 
 # FIXTURE is settlement with some food, main square and ~8 settlers
-# a lumberjack is placed somewhere, where a fire brigade would be useful
+# a lumberjack is placed somewhere, where a fire station would be useful
 
 @game_test(use_fixture='fire')
 def test_fire_destroy(s):
@@ -53,15 +53,15 @@ def test_fire_destroy(s):
 
 
 @game_test(use_fixture='fire')
-def test_fire_brigade(s):
+def test_fire_station(s):
 	"""
-	Check if a fire brigade stops fires.
+	Check if a fire station stops fires.
 	"""
 	dis_man = s.world.disaster_manager
 	settlement = s.world.player.settlements[0]
 
 	inv = settlement.get_component(StorageComponent).inventory
-	# res for fire brigade
+	# res for fire station
 	inv.alter(RES.BOARDS_ID, 10)
 	inv.alter(RES.TOOLS_ID, 10)
 	inv.alter(RES.BRICKS_ID, 10)
@@ -73,7 +73,7 @@ def test_fire_brigade(s):
 	island = lj.island
 
 	Tear(lj)(owner)
-	assert Build(BUILDINGS.FIRE_BRIGADE_CLASS, pos.x, pos.y, island, settlement=settlement)(owner)
+	assert Build(BUILDINGS.FIRE_STATION_CLASS, pos.x, pos.y, island, settlement=settlement)(owner)
 
 	assert len(settlement.buildings_by_id[ BUILDINGS.RESIDENTIAL_CLASS ]) > 0
 	old_num = len(settlement.buildings_by_id[ BUILDINGS.RESIDENTIAL_CLASS ])
@@ -86,5 +86,5 @@ def test_fire_brigade(s):
 		while dis_man._active_disaster:
 			s.run()
 
-	# in this simple case, the fire brigade should be 100% effective
+	# in this simple case, the fire station should be 100% effective
 	assert len(settlement.buildings_by_id[ BUILDINGS.RESIDENTIAL_CLASS ]) == old_num

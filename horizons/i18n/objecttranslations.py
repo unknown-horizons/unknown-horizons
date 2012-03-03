@@ -118,7 +118,7 @@ def set_translations():
 
 	"content/objects/buildings/fireservice.yaml" : {
 		# name of buildings:fireservice
-		"name"                        : _("Fire Brigade"),
+		"name"                        : _("Fire Station"),
 		# tooltip_text of buildings:fireservice
 		"tooltip_text"                : _("Extinguishes fires."),
 		},
