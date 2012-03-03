@@ -54,7 +54,6 @@ def setup_package():
 	"""
 	global db
 	db = horizons.main._create_main_db()
-	ExtScheduler.create_instance(Dummy)
 
 
 @contextlib.contextmanager
@@ -87,7 +86,9 @@ def _dbreader_convert_dummy_objects():
 
 class SPTestSession(SPSession):
 
+	@mock.patch('horizons.session.View', Dummy)
 	def __init__(self, rng_seed=None):
+		ExtScheduler.create_instance(Dummy)
 		super(SPTestSession, self).__init__(Dummy, horizons.main.db, rng_seed)
 		self.reset_autosave = mock.Mock()
 
@@ -134,9 +135,7 @@ class SPTestSession(SPSession):
 		return the game to a valid state.
 		"""
 		Scheduler.destroy_instance()
-		ext_sched_pump = ExtScheduler().pump
 		ExtScheduler.destroy_instance()
-		ExtScheduler.create_instance(ext_sched_pump) # won't be generated on session start
 		WorldObject.reset()
 
 	def run(self, ticks=1, seconds=None):
