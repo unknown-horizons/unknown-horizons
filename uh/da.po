@@ -23,10 +23,12 @@ msgstr ""
 msgid "A new settlement was founded by {player}."
 msgstr ""
 
+# 82%
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
+#, fuzzy
 msgid "A new ship has been created."
-msgstr ""
+msgstr "En ny verden er blevet oprettet."
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
@@ -97,10 +99,12 @@ msgstr ""
 msgid "Your crew refuses to leave this map."
 msgstr ""
 
+# 86%
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
+#, fuzzy
 msgid "Your game has been autosaved."
-msgstr ""
+msgstr "Dit spil er blevet autogemt."
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
@@ -1109,11 +1113,13 @@ msgstr "pioner"
 msgid "Settlers"
 msgstr "nybygger"
 
+# 75%
 #. (text of widget: headline)
 #: horizons/gui/tabs/mainsquaretabs.py:246
 #: horizons/i18n/guitranslations.py:222
+#, fuzzy
 msgid "Citizens"
-msgstr ""
+msgstr "borger"
 
 #. (text of widget: headline)
 #: horizons/gui/tabs/overviewtab.py:62 horizons/gui/tabs/overviewtab.py:553
@@ -2370,10 +2376,12 @@ msgstr ""
 msgid "Join game"
 msgstr ""
 
+# 90%
 #. (text of widget: load_game_lbl)
 #: horizons/i18n/guitranslations.py:856
+#, fuzzy
 msgid "Load game:"
-msgstr ""
+msgstr "Hent spil"
 
 #. (text of widget: refr_gamelist_lbl)
 #: horizons/i18n/guitranslations.py:858

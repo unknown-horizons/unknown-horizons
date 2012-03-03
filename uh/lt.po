@@ -1119,11 +1119,13 @@ msgstr "pionierius"
 msgid "Settlers"
 msgstr "naujakurys"
 
+# 75%
 #. (text of widget: headline)
 #: horizons/gui/tabs/mainsquaretabs.py:246
 #: horizons/i18n/guitranslations.py:222
+#, fuzzy
 msgid "Citizens"
-msgstr ""
+msgstr "miestiečiai"
 
 #. (text of widget: headline)
 #: horizons/gui/tabs/overviewtab.py:62 horizons/gui/tabs/overviewtab.py:553
@@ -1660,20 +1662,32 @@ msgstr "4 gyventojai"
 msgid "5 residents"
 msgstr "5 gyventojai"
 
+# 88%
+# 81%
+# 90%
 #. (text of widget: resident_6)
 #: horizons/i18n/guitranslations.py:240
+#, fuzzy
 msgid "6 residents"
-msgstr ""
+msgstr "2 gyventojai"
 
+# 88%
+# 81%
+# 90%
 #. (text of widget: resident_7)
 #: horizons/i18n/guitranslations.py:242
+#, fuzzy
 msgid "7 residents"
-msgstr ""
+msgstr "2 gyventojai"
 
+# 88%
+# 81%
+# 90%
 #. (text of widget: resident_8)
 #: horizons/i18n/guitranslations.py:244
+#, fuzzy
 msgid "8 residents"
-msgstr ""
+msgstr "2 gyventojai"
 
 # 88%
 #. (text of widget: residents)
@@ -1898,10 +1912,12 @@ msgstr "Pristabdyti gamybą"
 msgid "Start production"
 msgstr "Pradėti gamybą"
 
+# 94%
 #. (text of widget: headline) Please keep the translation similarly short and concise, else the tooltip is not well understood by players.
 #: horizons/i18n/guitranslations.py:566
+#, fuzzy
 msgid "Select resource:"
-msgstr ""
+msgstr "Pasirinkti išteklius:"
 
 #. (tooltip of widget: headline) Please keep the translation similarly short and concise, else the tooltip is not well understood by players.
 #: horizons/i18n/guitranslations.py:568
@@ -2397,10 +2413,12 @@ msgstr "Naujas žaidimas - Kelių žaidėjų"
 msgid "Join game"
 msgstr "Dalyvauti žaidime"
 
+# 90%
 #. (text of widget: load_game_lbl)
 #: horizons/i18n/guitranslations.py:856
+#, fuzzy
 msgid "Load game:"
-msgstr ""
+msgstr "Įkelti žaidimą"
 
 #. (text of widget: refr_gamelist_lbl)
 #: horizons/i18n/guitranslations.py:858
@@ -2825,10 +2843,12 @@ msgstr ""
 msgid "Corn Field"
 msgstr ""
 
+# 88%
 #. tooltip_text of buildings:cornfield
 #: horizons/i18n/objecttranslations.py:137
+#, fuzzy
 msgid "Yields corn. Needs a farm."
-msgstr ""
+msgstr "Teikia maistą. Reikalingas ūkis."
 
 #. name of buildings:distillery
 #: horizons/i18n/objecttranslations.py:142
