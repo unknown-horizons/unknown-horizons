@@ -81,6 +81,7 @@ class PlayersShips(StatsWidget):
 		rename_icon.up_image = "content/gui/images/background/rename_feather_20.png"
 		rename_icon.hover_image = "content/gui/images/background/rename_feather_20_h.png"
 		rename_icon.tooltip = _("Click to change the name of this ship")
+		rename_icon.max_size = (20, 20) # (width, height)
 
 		ship_type = widgets.Label(name = 'ship_type_%d' % ship.worldid)
 		ship_type.text = unicode(ship.classname)
