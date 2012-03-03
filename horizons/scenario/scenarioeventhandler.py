@@ -297,19 +297,12 @@ class _Condition(object):
 
 	def __init__(self, session, cond_dict):
 		self.session = session
-<<<<<<< HEAD
-
 		assert_type(cond_dict, dict, "condition specification")
 
 		try:
 			self.cond_type = cond_dict['type']
 		except KeyError:
-			raise InvalidScenarioFileFormat("Encountered condition without type")
-=======
-		_should_be_dict(cond_dict, "condition specification")
-		if not 'type' in cond_dict:
 			raise InvalidScenarioFileFormat("Encountered condition without type\n"+str(cond_dict))
->>>>>>> f74cb43... Added Kikody's scenario
 		try:
 			self.callback = CONDITIONS.get(self.cond_type)
 		except KeyError:
