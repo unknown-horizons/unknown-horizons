@@ -1,0 +1,95 @@
+# logbook_w writes an entry without showing the book
+# logbook[head,msg] shows an entry with 8 sec delay
+# logbook[head,msg,time] shows an entry after time sec delay
+
+# TODO:
+# - name of ship
+# - custom start res
+# - let ship sink
+# - images?
+# - make sure the be specific about the requirements, so players certainly don't geet lost
+# - last event:
+# // depends on AI (a nation with a lot of useless trails (like the AI now builds) is not very realistic; the AI has to be slower, too):
+# [When border of another nation is reached]
+#  Today, we found out that another nation nation lifes here on the island. But we don´t know, wether they are peaceful or not.
+#   We should send a negotiator there. Then we know, wether they are friendly or not.
+#
+# for notes, see: http://wiki.unknown-horizons.org/w/Kikody%27s_scenario
+
+events:
+- # start
+  actions:
+   - type: logbook
+     arguments: 
+        - 20th November 1740
+        - |
+            After four days, the storm finally fades and we can take a rest. But we have only 15 lb of food left and our ship is very broken-down. The navigation instruments and the sea charts are lost. We have to come ashore. One of my Jacks saw some birds hunting for fish, so land can´t be far away.  Fortunally we have always some tools and wooden boards at the ship, so we can build some huts.
+
+            Our task now is:
+            Find land and build a port, so that we can empty the ship.
+        - 0
+  conditions:
+   - type: time_passed
+     arguments: [0]
+
+- # with port
+  actions:
+  - type: logbook
+    arguments: 
+    - 22th Novenber 1740
+    - |
+      The port is built and just in time the ship sank, it was emptyed. [Let the ship sank here]
+
+      We need some people hunting fish, some producing wooden boards, some tents to life in, and so on. Building the things for that is our task for the next days. But we have to be carefull! Our amount of tools is not very high!
+
+    - 1
+  conditions:
+  - type: settlements_num_greater
+    arguments: [0]
+
+- # basic buildings
+  actions:
+  - type: logbook
+    arguments:
+    - 1th December 1740
+    - |
+      Finally we have everything for our basic needs.
+
+      Well, we don´t know were we are, have no sea charts and navigation instruments and the stars at night are unknown.
+      So we only can try to to build up a civilisation and try to find out how to come home...
+    - 0
+  conditions:
+  - type: building_num_of_type_greater 
+    arguments: [BUILDINGS.FISHERMAN_CLASS, 0]
+  - type: building_num_of_type_greater 
+    arguments: [BUILDINGS.HUNTER_CLASS, 0]
+  - type: building_num_of_type_greater 
+    arguments: [BUILDINGS.LUMBERJACK_CLASS, 0]
+  - type: building_num_of_type_greater 
+    arguments: [BUILDINGS.RESIDENTIAL_CLASS, 4]
+  - type: building_num_of_type_greater 
+    arguments: [BUILDINGS.MAIN_SQUARE_CLASS, 0]
+  - type: settlement_res_stored_greater
+    arguments: [RES.FOOD_ID, 5]
+  - type: settlement_res_stored_greater
+    arguments: [RES.WOOD_ID, 5]
+
+- # 250 people
+  actions: # TODO: bigger map action
+  - type: logbook
+    arguments:
+    - 15th January 1741
+    - The island becomes small. We should build and load a ship and try to find another island!
+    - 0
+  conditions:
+  - type: settlement_inhabitants_greater
+    arguments: [250]
+    
+
+mapfile: development.sqlite
+difficulty: easy
+author: Kikody
+description: |
+  You are the captain of a ship, which is under the flag of England in 1740. You and your crew of the "[name of the ship]" were on the way to a colony of England in the pacific ocean to ship some rich passengers there.
+  Everything went fine until you came into a storm....
+locale: en

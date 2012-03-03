@@ -272,7 +272,7 @@ class _Action(object):
 		try:
 			self.action_type = action_dict['type']
 		except KeyError:
-			raise InvalidScenarioFileFormat('Encountered action without type')
+			raise InvalidScenarioFileFormat('Encountered action without type\n'+str(action_dict))
 		try:
 			self.callback = ACTIONS.get(self.action_type)
 		except KeyError:
@@ -297,6 +297,7 @@ class _Condition(object):
 
 	def __init__(self, session, cond_dict):
 		self.session = session
+<<<<<<< HEAD
 
 		assert_type(cond_dict, dict, "condition specification")
 
@@ -304,6 +305,11 @@ class _Condition(object):
 			self.cond_type = cond_dict['type']
 		except KeyError:
 			raise InvalidScenarioFileFormat("Encountered condition without type")
+=======
+		_should_be_dict(cond_dict, "condition specification")
+		if not 'type' in cond_dict:
+			raise InvalidScenarioFileFormat("Encountered condition without type\n"+str(cond_dict))
+>>>>>>> f74cb43... Added Kikody's scenario
 		try:
 			self.callback = CONDITIONS.get(self.cond_type)
 		except KeyError:
