@@ -3,6 +3,8 @@
 # logbook[head,msg,time] shows an entry after time sec delay
 
 # TODO:
+# - fix spelling and grammar
+# - remove references to specific resource amounts and units where it isn't strictly necessary for the story
 # - name of ship
 # - custom start res
 # - let ship sink
