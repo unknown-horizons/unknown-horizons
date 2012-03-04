@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2012-03-02 04:09+0100\n"
-"PO-Revision-Date: 2012-03-04 12:04+0200\n"
+"PO-Revision-Date: 2012-03-04 12:46+0200\n"
 "Last-Translator: Samuel <samuel@micheldorsaz.ch>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: fr\n"
@@ -880,10 +880,14 @@ msgstr "Cette sauvegarde n'existe pas (cliquez ici)"
 #: horizons/gui/modules/multiplayermenu.py:208
 msgid "For multiplayer load, it is currently necessary for you to ensure you have the correct savegame file."
 msgstr ""
+"Pour charger une partie multijoueur, il est actuellement nécessaire de vous "
+"assurez d'avoir le bon fichier de sauvegarde."
 
 #: horizons/gui/modules/multiplayermenu.py:209
 msgid "This is not nice and we hope to offer a more convenient solution very soon."
 msgstr ""
+"Ce n'est pas très agréable et nous espérons vous offrir une solution plus "
+"convenable très bientôt."
 
 #: horizons/gui/modules/multiplayermenu.py:210
 msgid "Meanwhile, please request the file {path} from the game creator and put it in {map_directory} ."
