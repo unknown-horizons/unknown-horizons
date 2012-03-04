@@ -43,7 +43,7 @@ class VillageBuilder(AreaBuilder):
 		of the village section and seq_no is the sequence number of a residence or None
 		if it is another type of building. The plan is created in the beginning and
 		changed only when land is lost.
-	* producer_assignment: {BUILDING_PURPOSE constant: {village producer coordinates: [residence coordinates, ...]}}
+	* special_building_assignments: {BUILDING_PURPOSE constant: {village producer coordinates: [residence coordinates, ...]}}
 	* tent_queue: deque([(x, y), ...]) of remaining residence spots in the right order
 	* num_sections: number of sections in the area
 	* current_section: 1-based number of the section that is being filled with residences
@@ -91,7 +91,7 @@ class VillageBuilder(AreaBuilder):
 				self.land_manager.roads.add((x, y))
 
 		self._recreate_tent_queue()
-		self._create_village_producer_assignments()
+		self._create_special_village_building_assignments()
 
 	def _get_village_section_coordinates(self, start_x, start_y, width, height):
 		"""Return set([(x, y), ...]) of usable coordinates in the rectangle defined by the parameters."""
@@ -191,7 +191,7 @@ class VillageBuilder(AreaBuilder):
 				self.plan[coords] = (purpose, (i, tent_lookup[coords]))
 		self.num_sections = len(section_plans)
 		self.current_section = 0
-		self._reserve_village_producer_spots()
+		self._reserve_special_village_building_spots()
 		self._recreate_tent_queue()
 
 		# add potential roads to the island's network
@@ -541,8 +541,8 @@ class VillageBuilder(AreaBuilder):
 			(x, y) = best_pos.origin.to_tuple()
 			self.register_change(x, y, new_purpose, (self.plan[(x, y)][1][0], None))
 
-	def _reserve_village_producer_spots(self):
-		"""Replace residence spots with village producers such as pavilions, schools, and taverns."""
+	def _reserve_special_village_building_spots(self):
+		"""Replace residence spots with special village buildings such as pavilions, schools, taverns, and fire stations."""
 		num_other_buildings = 0 # the maximum number of each village producer that should be placed
 		residences = len(self.tent_queue)
 		while residences > 0:
@@ -555,31 +555,39 @@ class VillageBuilder(AreaBuilder):
 			num_other_buildings, self.personality.max_coverage_building_capacity)
 		self._replace_planned_residence(BUILDINGS.TAVERN_CLASS, BUILDING_PURPOSE.TAVERN, \
 			num_other_buildings, self.personality.max_coverage_building_capacity)
-		self._create_village_producer_assignments()
 
-	def _create_village_producer_assignments(self):
+		num_fire_stations = max(0, int(round(0.5 + (len(self.tent_queue) - 3 * num_other_buildings) / self.personality.normal_fire_station_capacity)))
+		self._replace_planned_residence(BUILDINGS.FIRE_STATION_CLASS, BUILDING_PURPOSE.FIRE_STATION, \
+			num_fire_stations, self.personality.max_fire_station_capacity)
+
+		self._create_special_village_building_assignments()
+
+	def _create_special_village_building_assignments(self):
 		"""
-		Create an assignment of residence spots to village producer spots.
+		Create an assignment of residence spots to special village building spots.
 
-		This is useful for deciding which of the village producers would be most useful.
+		This is useful for deciding which of the special village buildings would be most useful.
 		"""
 
-		self.producer_assignment = {} # {BUILDING_PURPOSE constant: {village producer coordinates: [residence coordinates, ...]}}
-		purposes = [BUILDING_PURPOSE.PAVILION, BUILDING_PURPOSE.VILLAGE_SCHOOL, BUILDING_PURPOSE.TAVERN]
+		self.special_building_assignments = {} # {BUILDING_PURPOSE constant: {village producer coordinates: [residence coordinates, ...]}}
 		residence_positions = self._get_sorted_residence_positions()
-		residence_range = Entities.buildings[BUILDINGS.RESIDENTIAL_CLASS].radius
 
-		for purpose in purposes:
+		building_types = []
+		for purpose in [BUILDING_PURPOSE.PAVILION, BUILDING_PURPOSE.VILLAGE_SCHOOL, BUILDING_PURPOSE.TAVERN]:
+			building_types.append((purpose, Entities.buildings[BUILDINGS.RESIDENTIAL_CLASS].radius, self.personality.max_coverage_building_capacity))
+		building_types.append((BUILDING_PURPOSE.FIRE_STATION, Entities.buildings[BUILDINGS.FIRE_STATION_CLASS].radius, self.personality.max_fire_station_capacity))
+
+		for purpose, range, max_capacity in building_types:
 			producer_positions = sorted(self._get_position(coords, BUILDING_PURPOSE.get_building(purpose)) for coords, (pos_purpose, _) in self.plan.iteritems() if pos_purpose == purpose)
-			self.producer_assignment[purpose] = {}
+			self.special_building_assignments[purpose] = {}
 			for producer_position in producer_positions:
-				self.producer_assignment[purpose][producer_position.origin.to_tuple()] = []
+				self.special_building_assignments[purpose][producer_position.origin.to_tuple()] = []
 
 			options = []
 			for producer_position in producer_positions:
 				for position in residence_positions:
 					distance = producer_position.distance(position)
-					if distance <= residence_range:
+					if distance <= range:
 						options.append((distance, producer_position.origin.to_tuple(), position.origin.to_tuple()))
 			options.sort(reverse = True)
 
@@ -587,10 +595,10 @@ class VillageBuilder(AreaBuilder):
 			for _, producer_coords, residence_coords in options:
 				if residence_coords in assigned_residence_coords:
 					continue
-				if len(self.producer_assignment[purpose][producer_coords]) >= self.personality.max_coverage_building_capacity:
+				if len(self.special_building_assignments[purpose][producer_coords]) >= max_capacity:
 					continue
 				assigned_residence_coords.add(residence_coords)
-				self.producer_assignment[purpose][producer_coords].append(residence_coords)
+				self.special_building_assignments[purpose][producer_coords].append(residence_coords)
 
 	def _create_tent_queue(self, section_plan):
 		"""
@@ -804,7 +812,7 @@ class VillageBuilder(AreaBuilder):
 		# TODO: renumber the sections
 		# TODO: create a new plan with village producers
 		self._return_unused_space()
-		self._create_village_producer_assignments()
+		self._create_special_village_building_assignments()
 		super(VillageBuilder, self).handle_lost_area(coords_list)
 
 	def remove_building(self, building):
@@ -825,6 +833,7 @@ class VillageBuilder(AreaBuilder):
 		pavilion_colour = (255, 128, 128)
 		village_school_colour = (128, 128, 255)
 		tavern_colour = (255, 255, 0)
+		fire_station_colour = (255, 64, 64)
 		reserved_colour = (0, 0, 255)
 		unknown_colour = (255, 0, 0)
 		renderer = self.session.view.renderer['InstanceRenderer']
@@ -843,6 +852,8 @@ class VillageBuilder(AreaBuilder):
 				renderer.addColored(tile._instance, *pavilion_colour)
 			elif purpose == BUILDING_PURPOSE.TAVERN:
 				renderer.addColored(tile._instance, *tavern_colour)
+			elif purpose == BUILDING_PURPOSE.FIRE_STATION:
+				renderer.addColored(tile._instance, *fire_station_colour)
 			elif purpose == BUILDING_PURPOSE.RESERVED:
 				renderer.addColored(tile._instance, *reserved_colour)
 			else:

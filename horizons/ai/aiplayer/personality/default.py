@@ -94,6 +94,9 @@ class DefaultPersonality:
 		max_coverage_building_capacity = 22 # maximum number of residences a coverage building can service
 		normal_coverage_building_capacity = 20 # the initial plan calls for this number of residences per coverage building (may or may not be optimised away)
 
+		max_fire_station_capacity = 40 # maximum number of residences a fire station can service
+		normal_fire_station_capacity = 30 # the initial plan calls for this number of residences per fire station
+
 		min_coverage_building_options = 10 # consider at least this many coverage building options
 		coverage_building_option_ratio = 0.4 # consider this * 100% of the possible options
 
@@ -283,7 +286,7 @@ class DefaultPersonality:
 
 	class BricksGoal:
 		enabled = True
-		default_priority = 350
+		default_priority = 490
 		residences_required = 0
 		min_settler_level = SETTLER.PIONEER_LEVEL
 
@@ -434,3 +437,12 @@ class DefaultPersonality:
 		remove_unused_pasture_penalty = 1 # the penalty for removing an unused pasture
 		remove_unused_sugarcane_field_penalty = 1.5 # the penalty for removing an unused sugarcane field
 		remove_unused_tobacco_field_penalty = 1.5 # the penalty for removing an unused tobacco field
+
+	class FireStationGoal:
+		enabled = True
+		default_priority = 690
+		residences_required = 5
+		min_settler_level = SETTLER.SAILOR_LEVEL
+
+	class AbstractFireStation:
+		fraction_of_assigned_residences_built = 0.4 # build a fire station if at least this amount of the assigned residences have been built

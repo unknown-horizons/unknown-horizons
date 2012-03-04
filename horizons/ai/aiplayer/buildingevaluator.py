@@ -31,6 +31,7 @@ class BuildingEvaluator(WorldObject):
 
 	log = logging.getLogger("ai.aiplayer.buildingevaluator")
 	need_collector_connection = True
+	record_plan_change = True
 
 	def __init__(self, area_builder, builder, value):
 		"""
@@ -154,6 +155,8 @@ class BuildingEvaluator(WorldObject):
 		# check without road first because the road is unlikely to be the problem and pathfinding isn't cheap
 		if not self.builder.have_resources():
 			return False
+		if not self.need_collector_connection:
+			return True # skip the road cost test for buildings that don't need one
 		road_cost = self.area_builder.get_road_connection_cost(self.builder)
 		if road_cost is None:
 			return None
@@ -169,13 +172,17 @@ class BuildingEvaluator(WorldObject):
 			return (BUILD_RESULT.NEED_RESOURCES, None)
 		if self.need_collector_connection:
 			assert self.area_builder.build_road_connection(self.builder)
+
 		building = self.builder.execute()
 		if not building:
 			self.log.debug('%s, unknown error', self)
 			return (BUILD_RESULT.UNKNOWN_ERROR, None)
-		for x, y in self.builder.position.tuple_iter():
-			self.area_builder.register_change(x, y, BUILDING_PURPOSE.RESERVED, None)
-		self.area_builder.register_change(self.builder.position.origin.x, self.builder.position.origin.y, self.purpose, None)
+
+		if self.record_plan_change:
+			for x, y in self.builder.position.tuple_iter():
+				self.area_builder.register_change(x, y, BUILDING_PURPOSE.RESERVED, None)
+			self.area_builder.register_change(self.builder.position.origin.x, self.builder.position.origin.y, self.purpose, None)
+
 		return (BUILD_RESULT.OK, building)
 
 	def __str__(self):

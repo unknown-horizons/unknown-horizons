@@ -49,6 +49,7 @@ from building.villagebuilding import AbstractVillageBuilding
 from building.claydeposit import AbstractClayDeposit
 from building.claypit import AbstractClayPit
 from building.brickyard import AbstractBrickyard
+from building.firestation import AbstractFireStation
 from building.fishdeposit import AbstractFishDeposit
 from building.fisher import AbstractFisher
 from building.tree import AbstractTree

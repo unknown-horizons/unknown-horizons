@@ -47,7 +47,7 @@ class AbstractVillageBuilding(AbstractBuilding):
 	def _need_producer(self, settlement_manager, coords, resource_id):
 		if not settlement_manager.settlement.count_buildings(BUILDING_PURPOSE.get_building(self.get_purpose(resource_id))):
 			return True # if none exist and we need the resource then build it
-		assigned_residences = settlement_manager.village_builder.producer_assignment[self.get_purpose(resource_id)][coords]
+		assigned_residences = settlement_manager.village_builder.special_building_assignments[self.get_purpose(resource_id)][coords]
 		total = len(assigned_residences)
 		not_serviced = 0
 		for residence_coords in assigned_residences:

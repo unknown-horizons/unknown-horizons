@@ -32,6 +32,7 @@ from horizons.ai.aiplayer.goal.depositcoverage import ClayDepositCoverageGoal, M
 from horizons.ai.aiplayer.goal.enlargecollectorarea import EnlargeCollectorAreaGoal
 from horizons.ai.aiplayer.goal.feederchaingoal import FeederFoodGoal, FeederTextileGoal, FeederLiquorGoal, \
 	FeederTobaccoProductsGoal, FeederSaltGoal
+from horizons.ai.aiplayer.goal.firestation import FireStationGoal
 from horizons.ai.aiplayer.goal.foundfeederisland import FoundFeederIslandGoal
 from horizons.ai.aiplayer.goal.improvecollectorcoverage import ImproveCollectorCoverageGoal
 from horizons.ai.aiplayer.goal.productionchaingoal import FaithGoal, TextileGoal, BricksGoal, \
@@ -139,6 +140,7 @@ class SettlementManager(WorldObject):
 			self._goals.append(ToolsGoal(self))
 			self._goals.append(TentGoal(self))
 			self._goals.append(TradingShipGoal(self))
+			self._goals.append(FireStationGoal(self))
 
 	def save(self, db):
 		super(SettlementManager, self).save(db)
