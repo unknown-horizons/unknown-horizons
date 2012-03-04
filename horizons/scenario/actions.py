@@ -69,7 +69,7 @@ def show_db_message(session, message_id):
 def write_logbook_entry(session, head, message):
 	"""Silently adds an entry to the logbook."""
 	msg = message + '\n'* 30 + 'UHtutorial' # this can get removed once ticket 535 is resolved
-	session.ingame_gui.logbook.add_entry(unicode(head),unicode(msg))
+	session.ingame_gui.logbook.add_captainslog_entry(unicode(head),unicode(msg))
 
 def show_logbook_entry(session, head, message):
 	"""Adds an entry to the logbook and displays it."""

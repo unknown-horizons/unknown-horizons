@@ -51,7 +51,8 @@ class LogBook(PickBeltWidget):
 		self._hiding_widget = False # True if and only if the widget is currently in the process of being hidden
 		self.stats_visible = None
 
-		#self.add_entry(u"Heading",u"Welcome to the Captains log") # test code
+		self.add_captainslog_entry(u"Heading",u"Welcome to the Captains log", images=[('content/gui/images/buttons/parrow_left_bw.png',(0300,100)), ('content/gui/images/buttons/parrow_left_bw.png',(0300,300))]) # test code
+		self.add_captainslog_entry(u"Heading",u"Welcome to the Captains log", images=[('content/gui/images/buttons/parrow_left_bw.png',(0,0))]) # test code
 
 	def _init_gui(self):
 		"""Initial gui setup for all subpages accessible through pickbelts."""
@@ -98,9 +99,10 @@ class LogBook(PickBeltWidget):
 		   "logbook_cur_entry", self._cur_entry)
 
 	def load(self, db):
+		#TODO after saving works, also load them again ;-)
 		for heading, message in db("SELECT heading, message FROM logbook"):
 			# We need unicode strings as the entries are displayed on screen.
-			self.add_entry(unicode(heading, 'utf-8'), unicode(message, 'utf-8'), False)
+			self.add_captainslog_entry(unicode(heading, 'utf-8'), unicode(message, 'utf-8'), False)
 		value = db('SELECT value FROM metadata WHERE name = "logbook_cur_entry"')
 		if (value and value[0] and value[0][0]):
 			self._cur_entry = int(value[0][0])
@@ -163,7 +165,7 @@ class LogBook(PickBeltWidget):
 #        LOGBOOK  SUBWIDGET
 ########
 
-	def add_entry(self, heading, message, show_logbook=True):
+	def add_captainslog_entry(self, heading, message, images=None, show_logbook=True):
 		"""Adds an entry to the logbook consisting of:
 		@param heading: printed in top line.
 		@param message: printed below heading, wraps. """

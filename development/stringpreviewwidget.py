@@ -83,7 +83,7 @@ class StringPreviewWidget(object):
 					if action['type'] in ('logbook', 'logbook_w'):
 						head= action['arguments'][0]
 						msg = action['arguments'][1]
-						self.logbook.add_entry(unicode(head), unicode(msg), show_logbook=False)
+						self.logbook.add_captainslog_entry(unicode(head), unicode(msg), show_logbook=False)
 
 			try:
 				self.logbook.set_cur_entry(cur_entry)
