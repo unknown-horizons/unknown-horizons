@@ -7,8 +7,8 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2012-03-02 04:09+0100\n"
-"PO-Revision-Date: 2012-03-04 11:23+0200\n"
-"Last-Translator: ajira <samuel@micheldorsaz.ch>\n"
+"PO-Revision-Date: 2012-03-04 12:04+0200\n"
+"Last-Translator: Samuel <samuel@micheldorsaz.ch>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: fr\n"
 "MIME-Version: 1.0\n"
@@ -138,8 +138,9 @@ msgstr "glands"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
+#, fuzzy
 msgid "alvearies"
-msgstr ""
+msgstr "ruches"
 
 #. This is a database entry: the name of an inhabitant increment (tier / level).
 #: database files sql
@@ -392,7 +393,7 @@ msgstr "colon"
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "spice plants"
-msgstr ""
+msgstr "plantes à épice"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
@@ -402,7 +403,7 @@ msgstr "épices"
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "stone deposit"
-msgstr ""
+msgstr "gisement de pierre"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
@@ -448,7 +449,7 @@ msgstr "outils"
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "vines"
-msgstr ""
+msgstr "vignes"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
@@ -478,30 +479,32 @@ msgstr ""
 #, python-format
 msgid "{player1} and {player2} have ended their alliance and are now in a state of war."
 msgstr ""
+"{player1} et {player2} ont mis fin à leur alliance et sont maintenant en "
+"état de guerre."
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
-#, python-format
+#, python-format, fuzzy
 msgid "{player1} and {player2} have settled their hostility."
-msgstr ""
+msgstr "{player1} et {player2} ont lancé les hostilités."
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
 #, python-format
 msgid "{player1} and {player2} have terminated their alliance."
-msgstr ""
+msgstr "{player1} et {player2} ont mis fin à leur alliance."
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
 #, python-format
 msgid "{player1} and {player2} will fight each other to the death."
-msgstr ""
+msgstr "{player1} et {player2} vont se battre jusqu'à la mort."
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
 #, python-format
 msgid "{player}: {message}"
-msgstr ""
+msgstr "{player}: {message}"
 
 #: editor/editor.py:33
 msgid "Specify the path to FIFE root directory."
@@ -513,7 +516,7 @@ msgstr "Nom de fichier invalide"
 
 #: horizons/command/game.py:37
 msgid "Received an invalid filename for a save command."
-msgstr ""
+msgstr "La commande de sauvegarde à reçu un chemin de fichier invalide."
 
 #. There was a problem during the 'save game' procedure.
 #: horizons/command/game.py:47 horizons/gui/gui.py:177
@@ -677,7 +680,7 @@ msgstr "Confirmation de l'écrasement"
 
 #: horizons/gui/gui.py:369
 msgid "Invalid filename given"
-msgstr ""
+msgstr "Nom de fichier invalide."
 
 #: horizons/gui/gui.py:377
 msgid "Please select a savegame or click on cancel."
