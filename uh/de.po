@@ -7,8 +7,8 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2012-03-02 04:09+0100\n"
-"PO-Revision-Date: 2012-03-02 04:38+0200\n"
-"Last-Translator: Christopher Oelmueller <chris.oelmueller+uh@gmail.com>\n"
+"PO-Revision-Date: 2012-03-04 23:11+0200\n"
+"Last-Translator: H0ff1 <stefhoff@go4more.de>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: de\n"
 "MIME-Version: 1.0\n"
@@ -26,9 +26,8 @@ msgstr "{player} hat eine neue Siedlung gegründet."
 # 82%
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
-#, fuzzy
 msgid "A new ship has been created."
-msgstr "Eine neue Welt wurde erschaffen."
+msgstr "Ein neues Schiff wurde gebaut."
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
@@ -872,6 +871,8 @@ msgstr ""
 #: horizons/gui/modules/multiplayermenu.py:209
 msgid "This is not nice and we hope to offer a more convenient solution very soon."
 msgstr ""
+"Das ist nicht schön und wir hoffen möglichst bald eine passendere Lösung zu "
+"finden. "
 
 #: horizons/gui/modules/multiplayermenu.py:210
 msgid "Meanwhile, please request the file {path} from the game creator and put it in {map_directory} ."
@@ -1229,7 +1230,7 @@ msgstr "Waffe abrüsten"
 
 #: horizons/gui/tabs/overviewtab.py:313
 msgid "Tower overview"
-msgstr ""
+msgstr "Turm-Übersicht"
 
 #: horizons/gui/tabs/overviewtab.py:330
 msgid "Unit overview"
@@ -1247,7 +1248,7 @@ msgstr "Angewählte Einheiten"
 #: horizons/gui/widgets/inventory.py:115
 #, python-format
 msgid "Limit: {amount}t per slot"
-msgstr "Limit: {amount}t pro slot"
+msgstr "Limit: {amount}t pro Slot"
 
 #: horizons/gui/widgets/logbook.py:41
 msgid "Logbook"
@@ -2784,7 +2785,7 @@ msgstr ""
 #. name of buildings:barracks
 #: horizons/i18n/objecttranslations.py:67
 msgid "Barracks"
-msgstr ""
+msgstr "Kaserne"
 
 #. tooltip_text of buildings:barracks
 #: horizons/i18n/objecttranslations.py:69
@@ -3306,12 +3307,12 @@ msgstr "Verwebt Wolle zu Kleidung."
 #. name of buildings:windmill
 #: horizons/i18n/objecttranslations.py:428
 msgid "Windmill"
-msgstr ""
+msgstr "Windmühle"
 
 #. tooltip_text of buildings:windmill
 #: horizons/i18n/objecttranslations.py:430
 msgid "Grinds corn into flour."
-msgstr ""
+msgstr "Mahlt Korn zu Mehl. "
 
 #. name of buildings:woodentower
 #: horizons/i18n/objecttranslations.py:435
@@ -3535,7 +3536,7 @@ msgstr ""
 
 #: horizons/world/building/buildable.py:46
 msgid "This building requires to be placed near the ocean."
-msgstr ""
+msgstr "Dieses Gebäude muss am Ozean platziert werden. "
 
 #: horizons/world/building/buildable.py:47
 msgid "This spot is too far away from your ship."
@@ -3647,7 +3648,7 @@ msgstr ""
 
 #: run_uh.py:234
 msgid "Error: Unable to find required libraries"
-msgstr "Konnte benötigte Bibliotheken nicht finden"
+msgstr "Fehler: Konnte benötigte Bibliotheken nicht finden"
 
 #: run_uh.py:235
 msgid "We are sorry to inform you that a library that is required by Unknown Horizons, is missing and needs to be installed."
