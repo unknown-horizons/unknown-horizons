@@ -23,10 +23,12 @@ msgstr ""
 msgid "A new settlement was founded by {player}."
 msgstr "{player} új települést alapított."
 
+# 82%
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
+#, fuzzy
 msgid "A new ship has been created."
-msgstr ""
+msgstr "Egy új világot teremtettél."
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
@@ -103,10 +105,13 @@ msgstr ""
 msgid "Your game has been autosaved."
 msgstr "A játékmeneted automatikusan mentve lett."
 
+# 86%
+# 83%
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
+#, fuzzy
 msgid "Your game has been quicksaved."
-msgstr ""
+msgstr "A játékmeneted automatikusan mentve lett."
 
 # 86%
 #. This is a database entry: a messagewidget message (left part of the screen).
@@ -393,10 +398,12 @@ msgstr ""
 msgid "spices"
 msgstr ""
 
+# 76%
 #. This is a database entry: the name of a resource.
 #: database files sql
+#, fuzzy
 msgid "stone deposit"
-msgstr ""
+msgstr "vaslelőhely"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
@@ -1146,11 +1153,13 @@ msgstr "Telepesek"
 msgid "Settlers"
 msgstr "Telepesek"
 
+# 75%
 #. (text of widget: headline)
 #: horizons/gui/tabs/mainsquaretabs.py:246
 #: horizons/i18n/guitranslations.py:222
+#, fuzzy
 msgid "Citizens"
-msgstr ""
+msgstr "polgár"
 
 #. (text of widget: headline)
 #: horizons/gui/tabs/overviewtab.py:62 horizons/gui/tabs/overviewtab.py:553
@@ -1675,20 +1684,26 @@ msgstr "4 lakó"
 msgid "5 residents"
 msgstr "5 lakó"
 
+# 90%
 #. (text of widget: resident_6)
 #: horizons/i18n/guitranslations.py:240
+#, fuzzy
 msgid "6 residents"
-msgstr ""
+msgstr "2 lakó"
 
+# 90%
 #. (text of widget: resident_7)
 #: horizons/i18n/guitranslations.py:242
+#, fuzzy
 msgid "7 residents"
-msgstr ""
+msgstr "2 lakó"
 
+# 90%
 #. (text of widget: resident_8)
 #: horizons/i18n/guitranslations.py:244
+#, fuzzy
 msgid "8 residents"
-msgstr ""
+msgstr "2 lakó"
 
 #. (text of widget: residents)
 #: horizons/i18n/guitranslations.py:246 horizons/i18n/guitranslations.py:288
@@ -1926,10 +1941,13 @@ msgstr "Termelés felfüggesztése"
 msgid "Start production"
 msgstr "Termelés indítása"
 
+# 83%
+# 94%
 #. (text of widget: headline) Please keep the translation similarly short and concise, else the tooltip is not well understood by players.
 #: horizons/i18n/guitranslations.py:566
+#, fuzzy
 msgid "Select resource:"
-msgstr ""
+msgstr "Válassz egy nyersanyagot:"
 
 #. (tooltip of widget: headline) Please keep the translation similarly short and concise, else the tooltip is not well understood by players.
 #: horizons/i18n/guitranslations.py:568
@@ -2442,10 +2460,12 @@ msgstr "Új játék - többjátékos"
 msgid "Join game"
 msgstr "Csatlakozás a játékhoz"
 
+# 90%
 #. (text of widget: load_game_lbl)
 #: horizons/i18n/guitranslations.py:856
+#, fuzzy
 msgid "Load game:"
-msgstr ""
+msgstr "Játék betöltése"
 
 #. (text of widget: refr_gamelist_lbl)
 #: horizons/i18n/guitranslations.py:858
@@ -2686,10 +2706,12 @@ msgstr "Véletlen térkép"
 msgid "Scenario"
 msgstr ""
 
+# 90%
 #. (tooltip of widget: okay)
 #: horizons/i18n/guitranslations.py:975
+#, fuzzy
 msgid "Start game"
-msgstr ""
+msgstr "Játék megkezdése:"
 
 #. (text of widget: choose_map_lbl)
 #. (text of widget: headline_choose_map_lbl)
@@ -2866,10 +2888,12 @@ msgstr ""
 msgid "Corn Field"
 msgstr ""
 
+# 88%
 #. tooltip_text of buildings:cornfield
 #: horizons/i18n/objecttranslations.py:137
+#, fuzzy
 msgid "Yields corn. Needs a farm."
-msgstr ""
+msgstr "Ételt termel. Egy farm szükséges."
 
 #. name of buildings:distillery
 #: horizons/i18n/objecttranslations.py:142

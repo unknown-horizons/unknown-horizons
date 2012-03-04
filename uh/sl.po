@@ -24,10 +24,12 @@ msgstr ""
 msgid "A new settlement was founded by {player}."
 msgstr "{player} je ustanovil novo naselbino."
 
+# 82%
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
+#, fuzzy
 msgid "A new ship has been created."
-msgstr ""
+msgstr "Ustvarjen je bil nov svet."
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
@@ -388,10 +390,12 @@ msgstr ""
 msgid "spices"
 msgstr ""
 
+# 76%
 #. This is a database entry: the name of a resource.
 #: database files sql
+#, fuzzy
 msgid "stone deposit"
-msgstr ""
+msgstr "nahajališče železa"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
@@ -1127,11 +1131,13 @@ msgstr "Pionirji"
 msgid "Settlers"
 msgstr "Naseljenci"
 
+# 75%
 #. (text of widget: headline)
 #: horizons/gui/tabs/mainsquaretabs.py:246
 #: horizons/i18n/guitranslations.py:222
+#, fuzzy
 msgid "Citizens"
-msgstr ""
+msgstr "državljan"
 
 #. (text of widget: headline)
 #: horizons/gui/tabs/overviewtab.py:62 horizons/gui/tabs/overviewtab.py:553
@@ -1666,20 +1672,32 @@ msgstr "4 prebivalci"
 msgid "5 residents"
 msgstr "5 prebivalcev"
 
+# 88%
+# 81%
+# 90%
 #. (text of widget: resident_6)
 #: horizons/i18n/guitranslations.py:240
+#, fuzzy
 msgid "6 residents"
-msgstr ""
+msgstr "2 prebivalca"
 
+# 88%
+# 81%
+# 90%
 #. (text of widget: resident_7)
 #: horizons/i18n/guitranslations.py:242
+#, fuzzy
 msgid "7 residents"
-msgstr ""
+msgstr "2 prebivalca"
 
+# 88%
+# 81%
+# 90%
 #. (text of widget: resident_8)
 #: horizons/i18n/guitranslations.py:244
+#, fuzzy
 msgid "8 residents"
-msgstr ""
+msgstr "2 prebivalca"
 
 # 88%
 #. (text of widget: residents)
@@ -1909,10 +1927,12 @@ msgstr "Premor proizvodnje"
 msgid "Start production"
 msgstr "Začni proizvodnjo"
 
+# 94%
 #. (text of widget: headline) Please keep the translation similarly short and concise, else the tooltip is not well understood by players.
 #: horizons/i18n/guitranslations.py:566
+#, fuzzy
 msgid "Select resource:"
-msgstr ""
+msgstr "Izberi sredstva:"
 
 #. (tooltip of widget: headline) Please keep the translation similarly short and concise, else the tooltip is not well understood by players.
 #: horizons/i18n/guitranslations.py:568
@@ -2408,10 +2428,12 @@ msgstr "Nova igra - več igralcev"
 msgid "Join game"
 msgstr "Pridruži se igri"
 
+# 90%
 #. (text of widget: load_game_lbl)
 #: horizons/i18n/guitranslations.py:856
+#, fuzzy
 msgid "Load game:"
-msgstr ""
+msgstr "Naloži igro"
 
 #. (text of widget: refr_gamelist_lbl)
 #: horizons/i18n/guitranslations.py:858
@@ -2837,10 +2859,12 @@ msgstr ""
 msgid "Corn Field"
 msgstr ""
 
+# 88%
 #. tooltip_text of buildings:cornfield
 #: horizons/i18n/objecttranslations.py:137
+#, fuzzy
 msgid "Yields corn. Needs a farm."
-msgstr ""
+msgstr "proizvaja hrano. Zahteva kmetijo."
 
 #. name of buildings:distillery
 #: horizons/i18n/objecttranslations.py:142
@@ -3573,13 +3597,17 @@ msgstr ""
 msgid "Attacking {owner}"
 msgstr ""
 
+# 86%
 #: run_uh.py:185
+#, fuzzy
 msgid "Unknown Horizons has crashed."
-msgstr ""
+msgstr "Unknown Horizons se je sesul."
 
+# 83%
 #: run_uh.py:187
+#, fuzzy
 msgid "We are very sorry for this and want to fix underlying error."
-msgstr ""
+msgstr "Zelo nam je žal za to in želimo to napako popraviti."
 
 #: run_uh.py:188
 msgid "In order to do this, we need the information from the logfile:"

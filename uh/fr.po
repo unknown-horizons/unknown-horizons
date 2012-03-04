@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2012-03-02 04:09+0100\n"
-"PO-Revision-Date: 2012-03-02 16:27+0200\n"
+"PO-Revision-Date: 2012-03-04 11:23+0200\n"
 "Last-Translator: ajira <samuel@micheldorsaz.ch>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: fr\n"
@@ -3528,12 +3528,12 @@ msgstr "Les bâtiments doivent être construits sur une île."
 
 #: horizons/world/building/buildable.py:38
 msgid "The ground is not suitable for this building."
-msgstr ""
+msgstr "Le terrain n'est pas approprié pour ce bâtiment."
 
 #: horizons/world/building/buildable.py:39
 #: horizons/world/building/buildable.py:41
 msgid "You can only build this within your settlement."
-msgstr ""
+msgstr "Vous ne pouvez construire qu'au sein de votre colonie."
 
 #: horizons/world/building/buildable.py:40
 msgid "This area is already occupied."
@@ -3541,7 +3541,7 @@ msgstr "Cette zone est déjà occupée."
 
 #: horizons/world/building/buildable.py:42
 msgid "Another player has already occupied this island."
-msgstr ""
+msgstr "Un autre joueur occupe déjà cette île."
 
 #: horizons/world/building/buildable.py:43
 msgid "You can't build this on top of another building."
@@ -3549,7 +3549,7 @@ msgstr "Vous ne pouvez pas construire sur un autre bâtiment."
 
 #: horizons/world/building/buildable.py:44
 msgid "You can't build this on top of a unit."
-msgstr ""
+msgstr "Vous ne pouvez construire sur une unité."
 
 #: horizons/world/building/buildable.py:45
 msgid "This building must be built on the coastline."
@@ -3557,15 +3557,15 @@ msgstr "Ce bâtiment doit être construit le long de la côte."
 
 #: horizons/world/building/buildable.py:46
 msgid "This building requires to be placed near the ocean."
-msgstr ""
+msgstr "Ce bâtiment nécessite d'être placé à proximité de l'océan."
 
 #: horizons/world/building/buildable.py:47
 msgid "This spot is too far away from your ship."
-msgstr ""
+msgstr "Cet endroit est trop éloigné de votre navire."
 
 #: horizons/world/building/buildable.py:48
 msgid "This building can only be built on a resource source."
-msgstr ""
+msgstr "Ce bâtiment ne peut être construit que sur un gisement."
 
 #: horizons/world/component/tradepostcomponent.py:178
 msgid "The trade partner does not sell this."
