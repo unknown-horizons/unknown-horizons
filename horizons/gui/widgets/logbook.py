@@ -19,6 +19,8 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
+from fife.extensions.pychan.widgets import Icon
+
 from horizons.util import Callback
 from horizons.util.changelistener import metaChangeListenerDecorator
 from horizons.world.component.ambientsoundcomponent import AmbientSoundComponent
@@ -47,6 +49,7 @@ class LogBook(PickBeltWidget):
 		self.session = session
 		self._headings = []
 		self._messages = [] # list of all headings / messages
+		self._images = [] # list of string tuples (image, position) displayed per page
 		self._cur_entry = None # remember current location; 0 to len(messages)-1
 		self._hiding_widget = False # True if and only if the widget is currently in the process of being hidden
 		self.stats_visible = None
@@ -92,6 +95,7 @@ class LogBook(PickBeltWidget):
 		super(LogBook, self).update_view(number)
 
 	def save(self, db):
+		#TODO save images (figure out which format to use)!
 		for i in xrange(0, len(self._headings)):
 			db("INSERT INTO logbook(heading, message) VALUES(?, ?)", \
 			   self._headings[i], self._messages[i])
@@ -137,12 +141,15 @@ class LogBook(PickBeltWidget):
 		"""Redraws gui. Necessary when current message has changed."""
 		texts = [u'', u'']
 		heads = [u'', u'']
+		images = [ [], [] ]
 		if len(self._messages) != 0: # there is a current message if there is an entry
 			texts[0] = self._messages[self._cur_entry]
 			heads[0] = self._headings[self._cur_entry]
+			images[0] = self._images[self._cur_entry]
 			if self._cur_entry+1 < len(self._messages): # maybe also one for the right side?
 				texts[1] = self._messages[self._cur_entry+1]
 				heads[1] = self._headings[self._cur_entry+1]
+				images[1] = self._images[self._cur_entry+1]
 		else:
 			heads[0] = _('Emptiness')
 			texts[0] = "\n\n" + _('There is nothing written in your logbook yet!')
@@ -157,6 +164,10 @@ class LogBook(PickBeltWidget):
 
 		self._gui.findChild(name="head_left").text = heads[0]
 		self._gui.findChild(name="lbl_left").text = texts[0]
+		container = self._gui.findChild(name="images_left_page")
+		for (image_path, image_position) in images[0]:
+			img = Icon(image=image_path, position=image_position)
+			container.addChild(img)
 		self._gui.findChild(name="head_right").text = heads[1]
 		self._gui.findChild(name="lbl_right").text = texts[1]
 		self._gui.adaptLayout()
@@ -168,12 +179,18 @@ class LogBook(PickBeltWidget):
 	def add_captainslog_entry(self, heading, message, images=None, show_logbook=True):
 		"""Adds an entry to the logbook consisting of:
 		@param heading: printed in top line.
-		@param message: printed below heading, wraps. """
+		@param message: printed below heading, wraps.
+		@param images: list of string tuples (image_path, absolute_position).
+		Note that the image position should be wrapped in _() if a scenario should get
+		translated, so translators can move the image on the page to fit the new text.
+		"""
 		#TODO last line of message text sometimes get eaten. Ticket #535
 		heading = unicode(heading)
 		message = unicode(message)
 		self._headings.append(heading)
 		self._messages.append(message)
+		self._images.append(images or [])
+		print "_img  %s" % self._images
 		if len(self._messages) % 2 == 1:
 			self._cur_entry = len(self._messages) - 1
 		else:
@@ -201,7 +218,6 @@ class LogBook(PickBeltWidget):
 		@param direction: -1 or 1"""
 		if len(self._messages) == 0:
 			return
-		#assert direction in (-1, 1)
 		new_cur = self._cur_entry + direction
 		if new_cur < 0 or new_cur >= len(self._messages):
 			return # invalid scroll

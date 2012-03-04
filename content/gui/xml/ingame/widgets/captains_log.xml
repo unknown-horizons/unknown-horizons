@@ -3,6 +3,7 @@
 <Icon image="content/gui/images/background/book.png" position="100,0" />
 
 <Container name="left_pickbelts" size="195,580" position="30,0" />
+<Container name="images_left_page" size="350,508" />
 
 <HBox name="logbook" max_size="700,508" min_size="700,508" padding="0">
 	<!-- left page -->
