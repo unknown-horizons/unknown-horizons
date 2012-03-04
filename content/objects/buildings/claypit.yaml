@@ -19,7 +19,7 @@ components:
     enemy_tabs: [EnemyBuildingOverviewTab,]
 - HealthComponent: {maxhealth: 1000}
 - ProducerComponent:
-    reactivateable: False
+    is_mine: True
     productionlines:
       32:
         produces:

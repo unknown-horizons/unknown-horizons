@@ -25,9 +25,11 @@ from horizons.world.production.productionline import ProductionLine
 from horizons.world.production.production import Production, SingleUseProduction
 from horizons.constants import PRODUCTION
 from horizons.scheduler import Scheduler
+from horizons.util import decorators
 from horizons.util.shapes.circle import Circle
 from horizons.util.shapes.point import Point
 from horizons.world.component.storagecomponent import StorageComponent
+from horizons.world.component.ambientsoundcomponent import AmbientSoundComponent
 from horizons.world.component import Component
 from horizons.world.status import ProductivityLowStatus, DecommissionedStatus, InventoryFullStatus
 from horizons.world.production.unitproduction import UnitProduction
@@ -58,11 +60,10 @@ class Producer(Component):
 
 	# INIT
 	def __init__(self, auto_init=True, start_finished=False, productionlines=None,
-	             utilisation_calculator=None, reactivateable=True, **kwargs):
+	             utilisation_calculator=None, is_mine=True, **kwargs):
 		"""
 		@param productionline: yaml-dict for prod line data
 		@param utilisation_calculator: one of utilisatoin_mapping
-		@param reactivatable: whether it can be activated once it ran out of res. False for mines
 		"""
 		if productionlines is None:
 			productionlines = {}
@@ -70,9 +71,9 @@ class Producer(Component):
 		self.__auto_init = auto_init
 		self.__start_finished = start_finished
 		self.production_lines = productionlines
-		self.reactivateable = reactivateable
 		assert utilisation_calculator is not None
 		self.__utilisation = utilisation_calculator
+
 
 	def __init(self):
 		# we store productions in 2 dicts, one for the active ones, and one for the inactive ones.
@@ -291,8 +292,6 @@ class Producer(Component):
 		see also: is_active, toggle_active
 		@param production: instance of Production. if None, we do it to all productions.
 		@param active: whether to set it active or inactive"""
-		if not self.reactivateable and active and self._get_current_state() == PRODUCTION.STATES.waiting_for_res:
-			return # denied
 		if production is None:
 			# set all
 			for production in self.get_productions():
@@ -391,7 +390,31 @@ class Producer(Component):
 			del arguments['utilisation']
 		else:
 			utilisation = Utilisation()
+
+		if arguments.get('is_mine'):
+			# this is more of an aspect than an actual subclass, but python doesn't allow
+			# fast aspect-oriented programming
+			cls = MineProducer
+
 		return cls(utilisation_calculator=utilisation, **arguments)
+
+
+class MineProducer(Producer):
+	"""Normal producer that can irrecoverably run out of resources and handles this case"""
+	def set_active(self, production=None, active=True):
+		super(MineProducer, self).set_active(production, active)
+		# check if the user set it to waiting_for_res (which doesn't do anything)
+		if active and self._get_current_state() == PRODUCTION.STATES.waiting_for_res:
+			super(MineProducer, self).set_active(production, active=False)
+			AmbientSoundComponent.play_special('error')
+
+	def _on_production_change(self):
+		super(MineProducer, self)._on_production_change()
+		if self._get_current_state() == PRODUCTION.STATES.waiting_for_res:
+			# this is never going to change, the building is useless now.
+			if self.is_active():
+				self.set_active(active=False)
+			self.instance.owner.notify_mine_empty(self.instance)
 
 
 class QueueProducer(Producer):
@@ -399,7 +422,6 @@ class QueueProducer(Producer):
 	by one. """
 
 	production_class = SingleUseProduction
-
 
 	def __init__(self, **kwargs):
 		super(QueueProducer, self).__init__(auto_init=False, **kwargs)
@@ -533,3 +555,9 @@ class UnitProducer(QueueProducer):
 									found_tile = True
 									break
 						radius += 1
+
+
+decorators.bind_all(Producer)
+decorators.bind_all(MineProducer)
+decorators.bind_all(QueueProducer)
+decorators.bind_all(UnitProducer)

@@ -201,12 +201,14 @@ class Fife(ApplicationBase):
 		return self._setting.get(FIFE_MODULE, settingname)
 
 	def set_fife_setting(self, settingname, value):
+		"""Probably saves setting in memory. Call save_settings() later"""
 		return self._setting.set(FIFE_MODULE, settingname, value)
 
 	def get_uh_setting(self, settingname):
 		return self._setting.get(UH_MODULE, settingname)
 
 	def set_uh_setting(self, settingname, value):
+		"""Probably saves setting in memory. Call save_settings() later"""
 		self._setting.set(UH_MODULE, settingname, value)
 
 	def save_settings(self):

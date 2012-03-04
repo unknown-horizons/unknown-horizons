@@ -76,8 +76,9 @@ class Mine(BuildingResourceHandler, BuildableSingleOnDeposit, BasicBuilding):
 
 	def initialize(self, deposit_class, inventory, **kwargs):
 		super(Mine, self).initialize( ** kwargs)
-		self.__init(deposit_class=deposit_class, mine_empty_msg_shown=False)
+		self.__init(deposit_class=deposit_class)
 		for res, amount in inventory.iteritems():
+			# bury resources from mountain in mine
 			self.get_component(StorageComponent).inventory.alter(res, amount)
 
 	@classmethod
@@ -95,9 +96,8 @@ class Mine(BuildingResourceHandler, BuildableSingleOnDeposit, BasicBuilding):
 		else:
 			return pos
 
-	def __init(self, deposit_class, mine_empty_msg_shown):
+	def __init(self, deposit_class):
 		self.__deposit_class = deposit_class
-		self._mine_empty_msg_shown = mine_empty_msg_shown
 
 		# setup loading area
 		# TODO: for now we assume that a mine building is 5x5 with a 3x1 entry on 1 side
@@ -124,23 +124,11 @@ class Mine(BuildingResourceHandler, BuildableSingleOnDeposit, BasicBuilding):
 
 	def save(self, db):
 		super(Mine, self).save(db)
-		db("INSERT INTO mine(rowid, deposit_class, mine_empty_msg_shown) VALUES(?, ?, ?)", \
-		   self.worldid, self.__deposit_class, self._mine_empty_msg_shown)
+		db("INSERT INTO mine(rowid, deposit_class) VALUES(?, ?)", \
+		   self.worldid, self.__deposit_class)
 
 	def load(self, db, worldid):
 		super(Mine, self).load(db, worldid)
-		deposit_class, mine_empty_msg_shown = \
-		             db("SELECT deposit_class, mine_empty_msg_shown FROM mine WHERE rowid = ?", worldid)[0]
-		self.__init(deposit_class, mine_empty_msg_shown)
-
-	def _on_production_change(self):
-		super(Mine, self)._on_production_change()
-		if self._get_current_state() == PRODUCTION.STATES.waiting_for_res and \
-		   (hasattr(self, "_mine_empty_msg_shown") and \
-		    not self._mine_empty_msg_shown):
-			# all resources are gone from the mine.
-			self._mine_empty_msg_shown = True
-			if self.is_active():
-				self.set_active(active=False)
-			self.owner.notify_mine_empty(self)
+		deposit_class = db("SELECT deposit_class FROM mine WHERE rowid = ?", worldid)[0][0]
+		self.__init(deposit_class)
 
