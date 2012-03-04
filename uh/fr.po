@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2012-03-02 04:09+0100\n"
-"PO-Revision-Date: 2012-03-04 12:46+0200\n"
+"PO-Revision-Date: 2012-03-04 12:47+0200\n"
 "Last-Translator: Samuel <samuel@micheldorsaz.ch>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: fr\n"
@@ -892,6 +892,8 @@ msgstr ""
 #: horizons/gui/modules/multiplayermenu.py:210
 msgid "Meanwhile, please request the file {path} from the game creator and put it in {map_directory} ."
 msgstr ""
+"En attendant, récupérez le fichier {path} du créateur du jeu et copiez le "
+"dans {map_directory} ."
 
 #. (text of widget: help)
 #. (text of widget: help) Main / in-game menu entry
