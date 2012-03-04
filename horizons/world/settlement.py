@@ -230,6 +230,8 @@ class Settlement(ComponentHolder, WorldObject, ChangeListener, ResourceHandler):
 		"""Properly removes a building from the settlement"""
 		self.buildings.remove(building)
 		self.buildings_by_id[building.id].remove(building)
+		if(self.buildings_by_id[building.id] == None):
+			self.buildings_by_id.remove(building.id)
 		if building.has_component(Producer):
 			building.get_component(Producer).remove_production_finished_listener(self.settlement_building_production_finished)
 		if hasattr(self.owner, 'remove_building'):
