@@ -75,8 +75,11 @@ def run(command):
 _, files_modified, _= run("git diff-index --name-only HEAD")
 
 exitcode = 0
-# Find added prints in a git diff output
-r = re.compile('print ')
+# Find words not suitable to be included in commits
+invalid_regexes = [
+	'print ',
+	'pdb',
+	'set_trace']
 
 for fname in files_modified:
 	if fname.strip().endswith(".py"):
@@ -94,25 +97,29 @@ for fname in files_modified:
 		else:
 			print >>sys.stderr, "\rChecking syntax on %s:" %(fname), bcolors.OKGREEN, "OK!", bcolors.ENDC
 
-		# Check for added prints
-		print >>sys.stderr, "Checking for 'print' on %s: ... " %(fname),
+		# Check for added prints or other stuff
+		print >>sys.stderr, "Checking for 'print', 'pdb' and 'set_trace' on %s: ... " %(fname),
 		_, output, _ = run("git diff-index -u HEAD %s" %(fname))
 		found_re = False
-		for line in output:
-			if r.search(line):
-				if not found_re:
-					print >>sys.stderr, "\rChecking for 'print' on %s:" %(fname), bcolors.FAIL, "FAILED!", bcolors.ENDC
-					found_re = True
-				index = output.index(line)
-				if index > 0:
-					print "\t", output[index-1]
-				print "\t", bcolors.FAIL, line, bcolors.ENDC
-				if len(output) > index:
-					print "\t", output[index+1]
+		for i, line in enumerate(output):
+			if not line.startswith('+'):
+				continue
+
+			for r in invalid_regexes:
+				if re.search(r, line):
+					if not found_re:
+						print >>sys.stderr, "\rChecking for '%s' on %s:" % (r, fname), bcolors.FAIL, "FAILED!", bcolors.ENDC
+						found_re = True
+					index = output.index(line)
+					if i > 0:
+						print "\t", output[i-1]
+					print "\t", bcolors.FAIL, line, bcolors.ENDC
+					if len(output) > i:
+						print "\t", output[i+1]
 		if found_re:
 			exitcode = 1
 		else:
-			print >>sys.stderr, "\rChecking for 'print' on %s:" %(fname), bcolors.OKGREEN, "OK!", bcolors.ENDC
+			print >>sys.stderr, "\rChecking for 'print', 'pdb' and 'set_trace' on %s:" %(fname), bcolors.OKGREEN, "OK!", bcolors.ENDC
 
 
 if exitcode == 1:
