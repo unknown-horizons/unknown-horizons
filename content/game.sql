@@ -502,7 +502,7 @@ INSERT INTO "resource" VALUES(1,'boards',1.25,4,1);
 INSERT INTO "resource" VALUES(1,'food',2,5,1);
 INSERT INTO "resource" VALUES(1,'tools',18.5,6,1);
 INSERT INTO "resource" VALUES(1,'bricks',15,7,1);
-INSERT INTO "resource" VALUES(0,'wood',1,8,1);
+INSERT INTO "resource" VALUES(0,'trees',1,8,1);
 INSERT INTO "resource" VALUES(0,'grass',0,9,0);
 INSERT INTO "resource" VALUES(1,'wool',2.5,10,1);
 INSERT INTO "resource" VALUES(0,'faith',NULL,11,1);
