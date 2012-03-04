@@ -355,6 +355,7 @@ class ResourceOverviewBar(object):
 		else:
 			config = json.dumps(self._get_current_resources())
 		horizons.main.fife.set_uh_setting("ResourceOverviewBarConfiguration", config)
+		horizons.main.fife.save_settings()
 		self._update_default_configuration()
 		AmbientSoundComponent.play_special("success")
 		if reset:
