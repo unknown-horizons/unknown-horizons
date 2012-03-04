@@ -1,7 +1,7 @@
 # All buildings in UH are defined here.
 # These properties must be set for all buildings
 
-# random but unique id 
+# random but unique id
 id: 1234
 
 # for names, there are two possiblities:
@@ -28,7 +28,7 @@ size_x: 2 # building width (should match its graphics)
 size_y: 2 # building height (should match its graphics)
 inhabitants_start: 1 # inhabitants of the building. Doesn't do anything, but counts as inhabitants number in the overview.
 # brief description to be displayed as tooltip (don't forget the "_ ")
-tooltip_text: _ My building does fancy thing and is great in general 
+tooltip_text: _ My building does fancy thing and is great in general
 settler_level: 1 # counting start at 0 again. building will be available from this level on.
 # There are currently fluctuations with the build menu generation, so please talk to a dev to get your building in the build menu
 
@@ -61,7 +61,7 @@ components:
       SlotsStorage: # the common type, here we define "slots" for resource types
 				# we want to turn wood in to boards here, so we need to be able to store both
 				# therefore, we add slots of size 6 each for those resources:
-        slot_sizes: {RES.WOOD_ID: 6, RES.BOARDS_ID: 6} 
+        slot_sizes: {RES.TREES_ID: 6, RES.BOARDS_ID: 6}
 
 # If your building should collect resources via collectors, we add them here:
 - CollectingComponent:
@@ -71,7 +71,7 @@ components:
 			# If you need other collectors, check the list in horizons/constants.py (under UNITS)
 			# and comments about their behaviour in horizons/world/units/collectors/buildingcollector.py
 
-# The collectors will collect exactly what the producer in the building needs: 
+# The collectors will collect exactly what the producer in the building needs:
 - ProducerComponent:
 	# we produce in production lines. Think of a line as a machine,
 	# where you put stuff in and after a certain amount of time, you get other stuff out of it.
@@ -80,7 +80,7 @@ components:
 			# now we define what comes in and what comes out.
 			# this machine will cut raw wood in half (so you have 2 boards afterwards):
 			consumes:
-			- [RES.WOOD_ID, 1]
+			- [RES.TREES_ID, 1]
 			produces:
 			- [RES.BOARDS_ID, 2]
 			- [RES.GOLD_ID, 100] # it also magically produces gold (just to show you how you can add further entries ;)

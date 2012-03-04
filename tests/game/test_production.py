@@ -43,9 +43,9 @@ def test_basic_wood_production(session, player):
 
 
 	# Make sure wood production is added
-	assert PRODUCTIONLINES.WOOD in producer.get_production_lines()
-	assert producer.has_production_line(PRODUCTIONLINES.WOOD)
-	production = producer._get_production(PRODUCTIONLINES.WOOD)
+	assert PRODUCTIONLINES.TREES in producer.get_production_lines()
+	assert producer.has_production_line(PRODUCTIONLINES.TREES)
+	production = producer._get_production(PRODUCTIONLINES.TREES)
 
 	# Check if the production finished listener is called
 	production_finished = [False]
@@ -57,7 +57,7 @@ def test_basic_wood_production(session, player):
 	assert producer._get_current_state() == PRODUCTION.STATES.waiting_for_res
 
 	# Got res, producing
-	storage.inventory.alter(RES.WOOD_ID, 1)
+	storage.inventory.alter(RES.TREES_ID, 1)
 	assert producer._get_current_state() == PRODUCTION.STATES.producing
 
 	# Work half-way

@@ -43,7 +43,7 @@ def test_lumberjack(s, p):
 	assert jack
 
 	assert jack.get_component(StorageComponent).inventory[RES.BOARDS_ID] == 0
-	assert jack.get_component(StorageComponent).inventory[RES.WOOD_ID] == 0
+	assert jack.get_component(StorageComponent).inventory[RES.TREES_ID] == 0
 
 	for (x_off, y_off) in product([-2, 2], repeat=2):
 		x = 30 + x_off
@@ -185,12 +185,12 @@ def test_tree_production(s, p):
 	inv = tree.get_component(StorageComponent).inventory
 	for i in xrange(n):  # we want n units
 
-		while not inv[RES.WOOD_ID]:
+		while not inv[RES.TREES_ID]:
 			s.run(seconds=5)
 
 		# take one away to free storage space
 		#from tests import set_trace ; set_trace()
-		inv.alter(RES.WOOD_ID, -1)
+		inv.alter(RES.TREES_ID, -1)
 
 	# here, n tons of wood have been produced
 
