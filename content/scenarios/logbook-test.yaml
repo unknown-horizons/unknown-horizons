@@ -8,6 +8,7 @@ events:
     - [Headline, "NEW TASK: Build a main square"]
     - [Image, "content/gui/images/background/hr.png"]
     - [Label, "Some text to go before the image"]
+    - "Shortcut notation for a Label: Just write text."
     - [Gallery, [
         "content/gui/images/logos/uh_emblem.png",
         "content/gui/images/logos/uh_emblem.png",

@@ -164,7 +164,9 @@ class LogBook(PickBeltWidget):
 ########
 
 	def parse_logbook_item(self, widget):
-		if widget[0] == 'Image':
+		if isinstance(widget, basestring):
+			add = Label(text=unicode(widget), wrap_text=True, max_size=(340,508))
+		elif widget[0] == 'Image':
 			add = Icon(image=widget[1])
 		elif widget[0] == 'Gallery':
 			add = HBox()
