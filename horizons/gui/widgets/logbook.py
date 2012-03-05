@@ -19,7 +19,7 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-from fife.extensions.pychan.widgets import Icon
+from fife.extensions.pychan.widgets import HBox, Icon, Label
 
 from horizons.util import Callback
 from horizons.util.changelistener import metaChangeListenerDecorator
@@ -53,14 +53,16 @@ class LogBook(PickBeltWidget):
 		self._cur_entry = None # remember current location; 0 to len(messages)-1
 		self._hiding_widget = False # True if and only if the widget is currently in the process of being hidden
 		self.stats_visible = None
+		self._gui = self.get_widget()
 
-		self.add_captainslog_entry(u"Heading",u"Welcome to the Captains log", images=[('content/gui/images/buttons/parrow_left_bw.png',(0300,100)), ('content/gui/images/buttons/parrow_left_bw.png',(0300,300))]) # test code
-		self.add_captainslog_entry(u"Heading",u"Welcome to the Captains log", images=[('content/gui/images/buttons/parrow_left_bw.png',(0,0))]) # test code
+		self.add_captainslog_entry([
+		  ['Headline', "Heading"],
+		  ['Image', "content/gui/images/background/hr.png"],
+		  ['Label', "Welcome to the Captain's log"]
+			]) # test code
 
 	def _init_gui(self):
 		"""Initial gui setup for all subpages accessible through pickbelts."""
-		if hasattr(self,'_gui'):
-			return
 		self._gui = self.get_widget()
 		self._gui.mapEvents({
 		  'okButton' : self.hide,
@@ -95,7 +97,7 @@ class LogBook(PickBeltWidget):
 		super(LogBook, self).update_view(number)
 
 	def save(self, db):
-		#TODO save images (figure out which format to use)!
+		#TODO fix saving in new format
 		for i in xrange(0, len(self._headings)):
 			db("INSERT INTO logbook(heading, message) VALUES(?, ?)", \
 			   self._headings[i], self._messages[i])
@@ -103,7 +105,7 @@ class LogBook(PickBeltWidget):
 		   "logbook_cur_entry", self._cur_entry)
 
 	def load(self, db):
-		#TODO after saving works, also load them again ;-)
+		#TODO fix loading new format
 		for heading, message in db("SELECT heading, message FROM logbook"):
 			# We need unicode strings as the entries are displayed on screen.
 			self.add_captainslog_entry(unicode(heading, 'utf-8'), unicode(message, 'utf-8'), False)
@@ -164,10 +166,6 @@ class LogBook(PickBeltWidget):
 
 		self._gui.findChild(name="head_left").text = heads[0]
 		self._gui.findChild(name="lbl_left").text = texts[0]
-		container = self._gui.findChild(name="images_left_page")
-		for (image_path, image_position) in images[0]:
-			img = Icon(image=image_path, position=image_position)
-			container.addChild(img)
 		self._gui.findChild(name="head_right").text = heads[1]
 		self._gui.findChild(name="lbl_right").text = texts[1]
 		self._gui.adaptLayout()
@@ -176,15 +174,38 @@ class LogBook(PickBeltWidget):
 #        LOGBOOK  SUBWIDGET
 ########
 
-	def add_captainslog_entry(self, heading, message, images=None, show_logbook=True):
-		"""Adds an entry to the logbook consisting of:
-		@param heading: printed in top line.
-		@param message: printed below heading, wraps.
-		@param images: list of string tuples (image_path, absolute_position).
-		Note that the image position should be wrapped in _() if a scenario should get
-		translated, so translators can move the image on the page to fit the new text.
+	def parse_logbook_item(self, widget):
+		if widget[0] == 'Image':
+			add = Icon(image=widget[1])
+		elif widget[0] == 'Gallery':
+			add = HBox()
+			for image in widget[1]:
+				add.addChild(Icon(image=image))
+		elif widget[0] == 'Label':
+			add = Label(text=unicode(widget[1]), wrap_text=True, max_size=(340,508))
+		elif widget[0] == 'Headline':
+			add = Label(text=unicode(widget[1]))
+			add.stylize('headline')
+		elif widget[0] == 'Pagebreak':
+			# well this is obviously not working yet, ignore
+			add = None
+		if add is not None:
+			self._gui.findChild(name="custom_widgets_left").addChild(add)
+
+	def add_captainslog_entry(self, widgets, show_logbook=True):
+		"""Adds an entry to the logbook VBoxes consisting of a widget list.
+		@param widgets: Each item in here is a list like the following:
+		[Label, "Awesome text to be displayed as a label"]
+		[Headline, "Label to be styled as headline (in small caps)"]
+		[Image, "content/gui/images/path/to/the/file.png"]
+		[Gallery, ["/path/1.png", "]]
+		[Pagebreak]  <==  not implemented yet
 		"""
 		#TODO last line of message text sometimes get eaten. Ticket #535
+		for widget_definition in widgets:
+			self.parse_logbook_item(widget_definition)
+		return
+		###################################################################
 		heading = unicode(heading)
 		message = unicode(message)
 		self._headings.append(heading)

@@ -9,9 +9,9 @@ events:
     - [Image, "content/gui/images/background/hr.png"]
     - [Label, "Some text to go before the image"]
     - [Gallery, [
-        ["content/gui/images/logos/uh_emblem.png"],
-        ["content/gui/images/logos/uh_emblem.png"],
-        ["content/gui/images/logos/uh_emblem.png"],
+        "content/gui/images/logos/uh_emblem.png",
+        "content/gui/images/logos/uh_emblem.png",
+        "content/gui/images/logos/uh_emblem.png",
       ]]
     - [Label, "Text to go below the image displayed, since we're in a VBox here and I don't think exposing further layout options is sane."]
     - [Pagebreak]
