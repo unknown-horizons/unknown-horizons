@@ -74,6 +74,7 @@ class TearingTool(NavigationTool):
 		"""Tear selected instances and set selection tool as cursor"""
 		self.log.debug("TearingTool: mouseReleased")
 		if fife.MouseEvent.LEFT == evt.getButton():
+			initial_population = self.session.ingame_gui.settlement.inhabitants
 			coords = self.get_world_location_from_event(evt).to_tuple()
 			if self.coords is None:
 				self.coords = coords
@@ -97,6 +98,9 @@ class TearingTool(NavigationTool):
 			if not evt.isShiftPressed() and not horizons.main.fife.get_uh_setting('UninterruptedBuilding'):
 				self.tear_tool_active = False
 				self.on_escape()
+				#if population of settlement has decreased, hide settlement info in middle of screen
+				if(initial_population > self.session.ingame_gui.settlement.inhabitants):
+					self.session.ingame_gui.resourceinfo_set(None)
 			evt.consume()
 
 	def mousePressed(self,  evt):
