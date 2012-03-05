@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2012-03-02 04:09+0100\n"
-"PO-Revision-Date: 2012-03-05 14:01+0200\n"
+"PO-Revision-Date: 2012-03-05 14:42+0200\n"
 "Last-Translator: VinWij <vinwij@vinwij.nl>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: nl\n"
@@ -707,23 +707,24 @@ msgstr "Datum van opslaan onbekend"
 msgid "Saved at {time}"
 msgstr "Opgeslagen op {time}"
 
+# Current dutch translation is ok for both plural and singular
 #. N_ takes care of plural forms for different languages
 #: horizons/gui/gui.py:600
 #, python-format
 msgid "Saved {amount} time"
 msgid_plural "Saved {amount} times"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "{amount} keer opgeslagen"
+msgstr[1] "{amount} keer opgeslagen"
 
 #: horizons/gui/gui.py:610
 #, python-format
 msgid "Savegame version {version}"
-msgstr ""
+msgstr "Savegame versie {versie}"
 
 #: horizons/gui/gui.py:614
 #, python-format
 msgid "WARNING: Incompatible version {version}!"
-msgstr ""
+msgstr "WAARSCHUWING: versie {version} is niet compatibel!"
 
 #: horizons/gui/gui.py:617
 #, python-format
@@ -732,7 +733,7 @@ msgstr "Vereiste versie: {required}!"
 
 #: horizons/gui/gui.py:620
 msgid "Incompatible version"
-msgstr ""
+msgstr "Incompatibele versie"
 
 #: horizons/gui/gui.py:637
 msgid "No file selected"
@@ -740,12 +741,12 @@ msgstr "Geen bestand geselecteerd"
 
 #: horizons/gui/gui.py:637
 msgid "You need to select a savegame to delete."
-msgstr ""
+msgstr "Selecteer een savegame om te verwijderen."
 
 #: horizons/gui/gui.py:641
 #, python-format
 msgid "Do you really want to delete the savegame '{name}'?"
-msgstr ""
+msgstr "Weet u zeker dat u de savegame '{name}' wilt verwijderen?"
 
 #: horizons/gui/gui.py:643
 msgid "Confirm deletion"
@@ -763,7 +764,7 @@ msgstr "Verwijderen opgeslagen spel mislukt!"
 #: horizons/gui/gui.py:666
 #, python-format
 msgid "[{key}] = {text}"
-msgstr ""
+msgstr "[{key}] = {text}"
 
 # 97%
 #. (tooltip of widget: headline)
@@ -771,29 +772,28 @@ msgstr ""
 #: horizons/gui/widgets/playerssettlements.py:101
 #: horizons/i18n/guitranslations.py:415 horizons/i18n/guitranslations.py:437
 #: horizons/i18n/guitranslations.py:457
-#, fuzzy
 msgid "Click to change the name of your settlement"
-msgstr "Klik om de naam van uw kolonie te wijzigen."
+msgstr "Klik om de naam van uw nederzetting te wijzigen."
 
 #. e.g. when the pirate is disabled
 #. this dialog is pretty useless in this case
 #: horizons/gui/ingamegui.py:272
 msgid "No diplomacy possible"
-msgstr ""
+msgstr "Geen diplomatie mogelijk"
 
 #: horizons/gui/ingamegui.py:273
 msgid "Cannot do diplomacy as there are no other players."
-msgstr ""
+msgstr "Diplomatie is niet mogelijk omdat er geen andere spelers zijn."
 
 #: horizons/gui/ingamegui.py:449
 #, python-format
 msgid "Valid map names are in the following form: {expression}"
-msgstr ""
+msgstr "Geldige kaartnamen zien er als volgt uit: {expression}"
 
 #: horizons/gui/ingamegui.py:451
 #, python-format
 msgid "Try a name that only contains letters and numbers."
-msgstr ""
+msgstr "Probeer een naam die enkel letters en cijfers bevat."
 
 #: horizons/gui/modules/multiplayermenu.py:43
 msgid "Unable to find pyenet"
@@ -828,11 +828,13 @@ msgstr "Fatale Netwerk Fout"
 
 #: horizons/gui/modules/multiplayermenu.py:117
 msgid "Could not connect to master server."
-msgstr ""
+msgstr "Kan niet verbinden met de master server."
 
 #: horizons/gui/modules/multiplayermenu.py:118
 msgid "Please check your Internet connection. If it is fine, it means our master server is temporarily down."
 msgstr ""
+"Controleer je internetverbinding. Als die in orde is, betekend dat dat onze "
+"master server tijdelijk niet beschikbaar is."
 
 # 97%
 #: horizons/gui/modules/multiplayermenu.py:135
@@ -846,37 +848,43 @@ msgstr "Verschillende versie!"
 #: horizons/gui/modules/multiplayermenu.py:183
 #, python-format
 msgid "Map: {map_name}"
-msgstr ""
+msgstr "Kaart: {map_name}"
 
 #: horizons/gui/modules/multiplayermenu.py:184
 msgid "Name: {game_name}"
-msgstr ""
+msgstr "Naam: {game_name}"
 
 #: horizons/gui/modules/multiplayermenu.py:186
 #, python-format
 msgid "Players: {player_amount}/{player_limit}"
-msgstr ""
+msgstr "Spelers: {player_amount}/{player_limit}"
 
 #: horizons/gui/modules/multiplayermenu.py:191
 #, python-format
 msgid "Creator: {player}"
-msgstr ""
+msgstr "Starter: {player}"
 
 #: horizons/gui/modules/multiplayermenu.py:202
 msgid "This savegame is missing (click here)"
-msgstr ""
+msgstr "Dit opgeslagen spel ontbreekt (klik hier)"
 
 #: horizons/gui/modules/multiplayermenu.py:208
 msgid "For multiplayer load, it is currently necessary for you to ensure you have the correct savegame file."
 msgstr ""
+"Om in multiplayer te kunnen laden moet je het juiste savegame-bestand "
+"bezitten."
 
 #: horizons/gui/modules/multiplayermenu.py:209
 msgid "This is not nice and we hope to offer a more convenient solution very soon."
 msgstr ""
+"Dit is niet goed en we hopen spoedig een makkelijkere oplossing te kunnen "
+"voorzien."
 
 #: horizons/gui/modules/multiplayermenu.py:210
 msgid "Meanwhile, please request the file {path} from the game creator and put it in {map_directory} ."
 msgstr ""
+"Vraag ondertussen het bestand {path} van de spelstarter en zet het in "
+"{map_directory}."
 
 #. (text of widget: help)
 #. (text of widget: help) Main / in-game menu entry
@@ -887,7 +895,7 @@ msgstr "Help"
 
 #: horizons/gui/modules/multiplayermenu.py:217
 msgid "This is a savegame."
-msgstr ""
+msgstr "Dit is een savegame."
 
 #: horizons/gui/modules/multiplayermenu.py:240
 msgid "Wrong version"
@@ -897,33 +905,37 @@ msgstr "Verkeerde versie"
 #, python-format
 msgid "The game's version differs from your version. Every player in a multiplayer game must use the same version. This can be fixed by every player updating to the latest version. Game version: {game_version} Your version: {own_version}"
 msgstr ""
+"De spelversie van dit spel verschilt met uw versie. Iedere speler in een "
+"multiplayer-spel moet dezelfde versie gebruiken. Dit kan worden opgelost "
+"door iedere speler te laten updaten naar de laatste versie. Spelversie: "
+"{game_version}, uw versie: {own_version}"
 
 #: horizons/gui/modules/multiplayermenu.py:348
 #: horizons/gui/modules/singleplayermenu.py:111
 #, python-format
 msgid "Recommended number of players: {number}"
-msgstr ""
+msgstr "Aanbevolen aantal spelers: {number}"
 
 #: horizons/gui/modules/singleplayermenu.py:156
 #: horizons/gui/modules/singleplayermenu.py:170
 #: horizons/gui/widgets/choose_next_scenario.py:44
 #, python-format
 msgid "Difficulty: {difficulty}"
-msgstr ""
+msgstr "Moeilijkheidsgraad: {difficulty}"
 
 #: horizons/gui/modules/singleplayermenu.py:158
 #: horizons/gui/modules/singleplayermenu.py:172
 #: horizons/gui/widgets/choose_next_scenario.py:45
 #, python-format
 msgid "Author: {author}"
-msgstr ""
+msgstr "Auteur: {author}"
 
 #: horizons/gui/modules/singleplayermenu.py:160
 #: horizons/gui/modules/singleplayermenu.py:174
 #: horizons/gui/widgets/choose_next_scenario.py:46
 #, python-format
 msgid "Description: {desc}"
-msgstr ""
+msgstr "Beschrijving: {desc}"
 
 #: horizons/gui/modules/singleplayermenu.py:197
 msgid "Invalid player name"
@@ -931,7 +943,7 @@ msgstr "Ongeldige spelersnaam"
 
 #: horizons/gui/modules/singleplayermenu.py:197
 msgid "You entered an invalid playername."
-msgstr ""
+msgstr "Er is een ongeldige speler-naam ingevuld."
 
 #: horizons/gui/modules/singleplayermenu.py:288
 msgid "Map size:"
@@ -978,27 +990,27 @@ msgstr "Meld dit alstublieft aan de auteur."
 #. dialog already gone
 #: horizons/gui/modules/singleplayermenu.py:464
 msgid "Click to generate a different random map"
-msgstr ""
+msgstr "Klik om een nieuwe random kaart te genereren"
 
 #. (text of widget: headline)
 #. set translated building name in gui
 #: horizons/gui/mousetools/buildingtool.py:157
 #: horizons/i18n/guitranslations.py:64
 msgid "Build"
-msgstr "Plaats"
+msgstr "Bouw"
 
 #: horizons/gui/mousetools/navigationtool.py:72
 msgid "Press H to remove this hint"
-msgstr ""
+msgstr "Druk H om deze hint te verwijderen"
 
 #: horizons/gui/tabs/boatbuildertab.py:50
 msgid "Boat builder overview"
-msgstr "Boot bouw overzicht"
+msgstr "Scheepsbouwer overzicht"
 
 #: horizons/gui/tabs/boatbuildertab.py:101
 #, python-format
 msgid "{ship} (place in queue: {place})"
-msgstr ""
+msgstr "{ship} (plaats in wachtrij: {place})"
 
 #: horizons/gui/tabs/boatbuildertab.py:165
 msgid "Resources still needed:"
@@ -1014,7 +1026,7 @@ msgstr "Vissersboten"
 #: horizons/gui/tabs/boatbuildertab.py:252
 #: horizons/i18n/guitranslations.py:156
 msgid "Trade boats"
-msgstr "Handelsschip"
+msgstr "Handelsschepen"
 
 #. (text of widget: headline)
 #: horizons/gui/tabs/boatbuildertab.py:260
