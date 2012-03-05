@@ -51,14 +51,14 @@ class LogBook(PickBeltWidget):
 		self._cur_entry = None # remember current location; 0 to len(messages)-1
 		self._hiding_widget = False # True if and only if the widget is currently in the process of being hidden
 		self.stats_visible = None
-		self._gui = self.get_widget()
+		self._init_gui()
 
-		self.add_captainslog_entry([
-		  ['Headline', "Heading"],
-		  ['Image', "content/gui/images/background/hr.png"],
-		  ['Label', "Welcome to the Captain's log"],
-		  ['Label', "\n\n"],
-			]) # test code
+#		self.add_captainslog_entry([
+#		  ['Headline', "Heading"],
+#		  ['Image', "content/gui/images/background/hr.png"],
+#		  ['Label', "Welcome to the Captain's log"],
+#		  ['Label', "\n\n"],
+#			]) # test code
 
 	def _init_gui(self):
 		"""Initial gui setup for all subpages accessible through pickbelts."""
@@ -79,8 +79,8 @@ class LogBook(PickBeltWidget):
 		self.textfield.capture(self._chatfield_onfocus, 'mouseReleased', 'default')
 		self.chatbox = self._gui.findChild(name="chatbox")
 		self.messagebox = self._gui.findChild(name="game_messagebox")
-		self._display_chat_history() # initially print all loaded messages
-		self._display_message_history()
+		#self._display_chat_history() # initially print all loaded messages
+		#self._display_message_history()
 
 		# these buttons flip pages in the captain's log if there are more than two
 		self.backward_button = self._gui.findChild(name="backwardButton")
@@ -140,10 +140,12 @@ class LogBook(PickBeltWidget):
 
 	def _redraw_captainslog(self):
 		"""Redraws gui. Necessary when current message has changed."""
-		if len(self._widgets) != 0: # there is something to display if this has items
+		if len(self._widgets) > 0: # there is something to display if this has items
 			self._magic_display(self._widgets[self._cur_entry], 'left')
-			if self._cur_entry+1 < len(self._widgets): # maybe also one for the right side?
+			if self._cur_entry+1 < len(self._widgets): # check for content on right page
 				self._magic_display(self._widgets[self._cur_entry+1], 'right')
+			else:
+				self._magic_display([], 'right') # display empty page
 		else:
 			self._magic_display([
 			  ['Headline', _("Emptiness")],
@@ -155,7 +157,7 @@ class LogBook(PickBeltWidget):
 		self.forward_button.set_active()
 		if len(self._widgets) == 0 or self._cur_entry == 0:
 			self.backward_button.set_inactive()
-		if len(self._widgets) == 0 or self._cur_entry == len(self._widgets) - 2:
+		if len(self._widgets) == 0 or self._cur_entry == len(self._widgets) - 1:
 			self.forward_button.set_inactive()
 		self._gui.adaptLayout()
 
@@ -180,22 +182,35 @@ class LogBook(PickBeltWidget):
 		elif widget[0] == 'Pagebreak':
 			# well this is obviously not working yet, ignore
 			add = None
-		if add is not None:
-			self._gui.findChild(name="custom_widgets_left").addChild(add)
+		return add
+
+	def _magic_display(self, widgets, page):
+		"""
+		@param widgets: widget list, cf. docstring of add_captainslog_entry
+		@param page: 'left' or 'right'
+		"""
+		widgetbox = self._gui.findChild(name="custom_widgets_{page}".format(page=page))
+		widgetbox.removeAllChildren()
+		for widget_definition in widgets:
+			add = self.parse_logbook_item(widget_definition)
+			if add is not None:
+				widgetbox.addChild(add)
 
 	def add_captainslog_entry(self, widgets, show_logbook=True):
 		"""Adds an entry to the logbook VBoxes consisting of a widget list.
+		Check e.g. content/scenarios/tutorial_en.yaml for real-life usage.
+
 		@param widgets: Each item in here is a list like the following:
 		[Label, "Awesome text to be displayed as a label"]
+		"Shortcut notation for a Label"
 		[Headline, "Label to be styled as headline (in small caps)"]
 		[Image, "content/gui/images/path/to/the/file.png"]
-		[Gallery, ["/path/1.png", "]]
+		[Gallery, ["/path/1.png", "/path/file.png", "/file/3.png"]]
 		[Pagebreak]  <==  not implemented yet
 		"""
 		#TODO last line of message text sometimes get eaten. Ticket #535
 		for widget_definition in widgets:
 			self.parse_logbook_item(widget_definition)
-		return
 		###################################################################
 		#TODO split into several entries if [Pagebreak] present in widgets
 		self._widgets.append(widgets)
