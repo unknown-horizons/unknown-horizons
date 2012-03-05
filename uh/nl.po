@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2012-03-02 04:09+0100\n"
-"PO-Revision-Date: 2012-03-05 14:42+0200\n"
+"PO-Revision-Date: 2012-03-05 14:54+0200\n"
 "Last-Translator: VinWij <vinwij@vinwij.nl>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: nl\n"
@@ -1032,11 +1032,11 @@ msgstr "Handelsschepen"
 #: horizons/gui/tabs/boatbuildertab.py:260
 #: horizons/i18n/guitranslations.py:173
 msgid "War boats"
-msgstr "Oorlogsschip"
+msgstr "Oorlogsschepen"
 
 #: horizons/gui/tabs/boatbuildertab.py:267
 msgid "War ships"
-msgstr "Oorlogsschip"
+msgstr "Oorlogsschepen"
 
 #: horizons/gui/tabs/boatbuildertab.py:284
 msgid "Confirm order"
@@ -1067,7 +1067,7 @@ msgstr "Velden"
 
 #: horizons/gui/tabs/buildtabs.py:115 horizons/gui/tabs/buildtabs.py:122
 msgid "Military"
-msgstr "Militair"
+msgstr "Leger"
 
 #: horizons/gui/tabs/buildtabs.py:118
 msgid "Mining"
@@ -1082,12 +1082,12 @@ msgstr "Vergroot {increment}"
 #. '... buildings' will cause wrong declinations all over :/
 #: horizons/gui/tabs/buildtabs.py:156
 msgid "{incr_inhabitant_name}"
-msgstr ""
+msgstr "{incr_inhabitant_name}"
 
 #: horizons/gui/tabs/buildtabs.py:174 horizons/util/uhdbaccessor.py:150
 #, python-format
 msgid "{building}: {description}"
-msgstr ""
+msgstr "{building}: {description}"
 
 #. (text of widget: headline)
 #. (tooltip of widget: trade)
@@ -1099,22 +1099,26 @@ msgstr "Handel"
 
 #: horizons/gui/tabs/buyselltab.py:139
 msgid "Click on one of the resource slots to add a trade offer."
-msgstr ""
+msgstr "Klik op een van de grondstoffen om een aanbod toe te voegen."
 
 #. new res
 #: horizons/gui/tabs/buyselltab.py:186
 msgid "Set to buy or sell by clicking on that label, then adjust the amount via the slider to the right."
 msgstr ""
+"Klik op een label om te kopen of te verkopen en pas de hoeveelheid aan met "
+"de schuifbalk rechts."
 
 #: horizons/gui/tabs/buyselltab.py:362
 #, python-format
 msgid "Will buy {resource_name} whenever less than {limit}t are in stock."
 msgstr ""
+"Zal {resource_name} kopen wanneer er minder dan {limit} ton in voorraad is."
 
 #: horizons/gui/tabs/buyselltab.py:365
 #, python-format
 msgid "Will sell {resource_name} whenever more than {limit}t are available."
 msgstr ""
+"Zal {resource_name} verkopen wanneer er meer dan {limit} ton beschikbaar is."
 
 #. (text of widget: headline)
 #: horizons/gui/tabs/inventorytab.py:38 horizons/i18n/guitranslations.py:217
@@ -1128,7 +1132,7 @@ msgstr "Rekening"
 
 #: horizons/gui/tabs/mainsquaretabs.py:93
 msgid "Main square overview"
-msgstr "Markplaats overzicht"
+msgstr "Marktplaats overzicht"
 
 #. (text of widget: headline)
 #: horizons/gui/tabs/mainsquaretabs.py:112
@@ -1138,24 +1142,24 @@ msgstr "Kolonisten overzicht"
 
 #: horizons/gui/tabs/mainsquaretabs.py:199
 msgid "Don't allow upgrades"
-msgstr "Upgrades niet toestaan"
+msgstr "Verbeteringen niet toestaan"
 
 #: horizons/gui/tabs/mainsquaretabs.py:202
 msgid "Allow upgrades"
-msgstr "Upgrades toestaan"
+msgstr "Verbeteringen toestaan"
 
 #. (text of widget: headline)
 #: horizons/gui/tabs/mainsquaretabs.py:228
 #: horizons/i18n/guitranslations.py:305
 msgid "Sailors"
-msgstr "Zeilers"
+msgstr "Zeelui"
 
 # 75%
 #. (text of widget: headline)
 #: horizons/gui/tabs/mainsquaretabs.py:234
 #: horizons/i18n/guitranslations.py:274
 msgid "Pioneers"
-msgstr "Pionier"
+msgstr "Pioniers"
 
 # 75%
 #. (text of widget: headline)
@@ -1169,9 +1173,8 @@ msgstr "Kolonisten"
 #. (text of widget: headline)
 #: horizons/gui/tabs/mainsquaretabs.py:246
 #: horizons/i18n/guitranslations.py:222
-#, fuzzy
 msgid "Citizens"
-msgstr "burger"
+msgstr "Burgerij"
 
 #. (text of widget: headline)
 #: horizons/gui/tabs/overviewtab.py:62 horizons/gui/tabs/overviewtab.py:553
@@ -1181,13 +1184,12 @@ msgstr "Overzicht"
 
 # 94%
 #: horizons/gui/tabs/overviewtab.py:148 horizons/gui/tabs/overviewtab.py:570
-#, fuzzy
 msgid "Warehouse overview"
-msgstr "Marktplaats overzicht"
+msgstr "Warenhuis overzicht"
 
 #: horizons/gui/tabs/overviewtab.py:182 horizons/gui/tabs/overviewtab.py:322
 msgid "Ship overview"
-msgstr "Schip overzicht"
+msgstr "Scheepsoverzicht"
 
 #: horizons/gui/tabs/overviewtab.py:190
 msgid "The ship needs to be close to an island to found a settlement."
@@ -1196,7 +1198,7 @@ msgstr ""
 
 #: horizons/gui/tabs/overviewtab.py:195
 msgid "You already have a settlement on this island."
-msgstr ""
+msgstr "U heeft reeds een nederzetting op dit eiland."
 
 #. (tooltip of widget: found_settlement)
 #: horizons/gui/tabs/overviewtab.py:203 horizons/i18n/guitranslations.py:501
@@ -1206,41 +1208,40 @@ msgstr "Plaats nederzetting"
 
 #: horizons/gui/tabs/overviewtab.py:228
 msgid "Load/Unload"
-msgstr ""
+msgstr "Laden/Lossen"
 
 #: horizons/gui/tabs/overviewtab.py:231
 msgid "Buy/Sell"
-msgstr ""
+msgstr "Kopen/Verkopen"
 
 #: horizons/gui/tabs/overviewtab.py:240
 msgid "Too far from the nearest own or allied warehouse"
-msgstr ""
+msgstr "Te ver van het dichtsbijzijnde eigen of bevriende warenhuis"
 
 #: horizons/gui/tabs/overviewtab.py:246
 msgid "Cannot equip trade ship with weapons"
-msgstr ""
+msgstr "Kan een handelsschip niet met wapens uitrusten"
 
 #: horizons/gui/tabs/overviewtab.py:247
 msgid "It is not possible to equip a trade ship with weapons."
-msgstr ""
+msgstr "Het is niet mogelijk om een handelsschip met wapens uit te rusten."
 
 #: horizons/gui/tabs/overviewtab.py:280
 msgid "Equip weapon"
-msgstr ""
+msgstr "Wapen toevoegen"
 
 #: horizons/gui/tabs/overviewtab.py:284
 msgid "Unequip weapon"
-msgstr ""
+msgstr "Wapen verwijderen"
 
 #: horizons/gui/tabs/overviewtab.py:313
 msgid "Tower overview"
-msgstr ""
+msgstr "Torenoverzicht"
 
 # 76%
 #: horizons/gui/tabs/overviewtab.py:330
-#, fuzzy
 msgid "Unit overview"
-msgstr "Schip overzicht"
+msgstr "Eenhedenoverzicht"
 
 #: horizons/gui/tabs/overviewtab.py:348 horizons/gui/tabs/overviewtab.py:482
 msgid "Production overview"
@@ -1254,16 +1255,16 @@ msgstr "Geselcteerde Eenheden"
 #: horizons/gui/widgets/inventory.py:115
 #, python-format
 msgid "Limit: {amount}t per slot"
-msgstr ""
+msgstr "Limiet: {amount} ton per slot"
 
 #: horizons/gui/widgets/logbook.py:41
 msgid "Logbook"
-msgstr ""
+msgstr "Logboek"
 
 #. (text of widget: headline_statistics)
 #: horizons/gui/widgets/logbook.py:42 horizons/i18n/guitranslations.py:586
 msgid "Statistics"
-msgstr ""
+msgstr "Statistieken"
 
 #. (text of widget: headline)
 #. (text of widget: headline_chat)
@@ -1294,25 +1295,24 @@ msgid "Sound"
 msgstr "Geluid"
 
 #: horizons/gui/widgets/pickbeltwidget.py:93
-#, fuzzy
 msgid "Game"
-msgstr "Verlaat spel"
+msgstr "Spel"
 
 #: horizons/gui/widgets/playerssettlements.py:44
 #, python-format
 msgid "Settlements of {player}"
-msgstr ""
+msgstr "Nederzettingen van {player}"
 
 #. (text of widget: total_score)
 #: horizons/gui/widgets/playerssettlements.py:121
 #: horizons/i18n/guitranslations.py:654
 msgid "Total"
-msgstr ""
+msgstr "Totaal"
 
 #: horizons/gui/widgets/playersships.py:49
 #, python-format
 msgid "Ships of {player}"
-msgstr ""
+msgstr "Schepen van {player}"
 
 # 97%
 #. (tooltip of widget: name)
@@ -1334,11 +1334,11 @@ msgstr "n.b."
 #: horizons/gui/widgets/productionoverview.py:50
 #, python-format
 msgid "Production overview of {settlement}"
-msgstr ""
+msgstr "Productieoverzicht van {settlement}"
 
 #: horizons/gui/widgets/resourceoverviewbar.py:160
 msgid "Click to add a new slot"
-msgstr ""
+msgstr "Klik om een nieuw slot toe te voegen"
 
 #. (tooltip of widget: start_route) Trade route
 #: horizons/gui/widgets/routeconfig.py:88 horizons/i18n/guitranslations.py:630
@@ -1351,23 +1351,24 @@ msgstr "Handelsroute stoppen"
 
 #: horizons/gui/widgets/routeconfig.py:98
 msgid "Need at least two settlements"
-msgstr ""
+msgstr "Er zijn minstens twee nederzettingen nodig"
 
 #: horizons/gui/widgets/routeconfig.py:99
 msgid "You need at least two different settlements in your route."
 msgstr ""
+"Er moeten minstens twee verschillende nederzettingen in je route zitten."
 
 #: horizons/gui/widgets/routeconfig.py:144
 msgid "Click on a settlement to add a waypoint!"
-msgstr ""
+msgstr "Klik op een nederzetting om een waypoint toe te voegen!"
 
 #: horizons/gui/widgets/routeconfig.py:187
 msgid "Loading into ship"
-msgstr ""
+msgstr "Lading laden"
 
 #: horizons/gui/widgets/routeconfig.py:194
 msgid "Unloading from ship"
-msgstr ""
+msgstr "Lading lossen"
 
 # 83%
 #: horizons/gui/widgets/routeconfig.py:277
@@ -1387,7 +1388,7 @@ msgstr "Spel start"
 #. (text of widget: howto_1_need_warehouse)
 #: horizons/i18n/guitranslations.py:55
 msgid "You need to found a settlement before you can construct buildings!"
-msgstr "Je hebt een nederzetting nodig voordat je gebouwen kunt bouwen!"
+msgstr "Er is een nederzetting nodig voordat gebouwen gebouwd kunnen worden!"
 
 #. (text of widget: howto_2_navigate_ship)
 #: horizons/i18n/guitranslations.py:57
@@ -1413,12 +1414,12 @@ msgstr "Inwoners"
 #. (tooltip of widget: build)
 #: horizons/i18n/guitranslations.py:76
 msgid "Build menu (B)"
-msgstr ""
+msgstr "Bouw menu (B)"
 
 #. (tooltip of widget: destroy_tool)
 #: horizons/i18n/guitranslations.py:78
 msgid "Destroy (X)"
-msgstr ""
+msgstr "Vernietig (X)"
 
 #. (tooltip of widget: diplomacyButton)
 #: horizons/i18n/guitranslations.py:80
@@ -1428,7 +1429,7 @@ msgstr "Diplomatie"
 #. (tooltip of widget: gameMenuButton)
 #: horizons/i18n/guitranslations.py:82
 msgid "Game menu (Esc)"
-msgstr ""
+msgstr "Spel menu (Esc)"
 
 #. (tooltip of widget: logbook)
 #: horizons/i18n/guitranslations.py:84
