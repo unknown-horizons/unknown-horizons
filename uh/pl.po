@@ -24,10 +24,13 @@ msgstr ""
 msgid "A new settlement was founded by {player}."
 msgstr "Nowa osada została znaleziona przez {player}."
 
+# Messages
+# 82%
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
+#, fuzzy
 msgid "A new ship has been created."
-msgstr ""
+msgstr "Nowy świat został utworzony."
 
 # Messages
 #. This is a database entry: a messagewidget message (left part of the screen).
@@ -398,10 +401,12 @@ msgstr ""
 msgid "spices"
 msgstr ""
 
+# 76%
 #. This is a database entry: the name of a resource.
 #: database files sql
+#, fuzzy
 msgid "stone deposit"
-msgstr ""
+msgstr "złoże żelaza"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
@@ -1166,11 +1171,13 @@ msgstr "Pionierzy"
 msgid "Settlers"
 msgstr "Osadnicy"
 
+# 75%
 #. (text of widget: headline)
 #: horizons/gui/tabs/mainsquaretabs.py:246
 #: horizons/i18n/guitranslations.py:222
+#, fuzzy
 msgid "Citizens"
-msgstr ""
+msgstr "obywatel"
 
 #. (text of widget: headline)
 #: horizons/gui/tabs/overviewtab.py:62 horizons/gui/tabs/overviewtab.py:553
@@ -1710,20 +1717,32 @@ msgstr "4 mieszkańców"
 msgid "5 residents"
 msgstr "5 mieszkańców"
 
+# 88%
+# 81%
+# 90%
 #. (text of widget: resident_6)
 #: horizons/i18n/guitranslations.py:240
+#, fuzzy
 msgid "6 residents"
-msgstr ""
+msgstr "2 mieszkańców"
 
+# 88%
+# 81%
+# 90%
 #. (text of widget: resident_7)
 #: horizons/i18n/guitranslations.py:242
+#, fuzzy
 msgid "7 residents"
-msgstr ""
+msgstr "2 mieszkańców"
 
+# 88%
+# 81%
+# 90%
 #. (text of widget: resident_8)
 #: horizons/i18n/guitranslations.py:244
+#, fuzzy
 msgid "8 residents"
-msgstr ""
+msgstr "2 mieszkańców"
 
 # 88%
 #. (text of widget: residents)
@@ -1954,10 +1973,12 @@ msgstr "Wstrzymaj produkcję"
 msgid "Start production"
 msgstr "Rozpocznij produkcję"
 
+# 94%
 #. (text of widget: headline) Please keep the translation similarly short and concise, else the tooltip is not well understood by players.
 #: horizons/i18n/guitranslations.py:566
+#, fuzzy
 msgid "Select resource:"
-msgstr ""
+msgstr "Wybierz zasoby:"
 
 #. (tooltip of widget: headline) Please keep the translation similarly short and concise, else the tooltip is not well understood by players.
 #: horizons/i18n/guitranslations.py:568
@@ -2460,10 +2481,12 @@ msgstr "Nowa gra - Wielu graczy"
 msgid "Join game"
 msgstr "Dołącz do gry"
 
+# 90%
 #. (text of widget: load_game_lbl)
 #: horizons/i18n/guitranslations.py:856
+#, fuzzy
 msgid "Load game:"
-msgstr ""
+msgstr "Wczytaj grę"
 
 #. (text of widget: refr_gamelist_lbl)
 #: horizons/i18n/guitranslations.py:858
@@ -2889,10 +2912,12 @@ msgstr ""
 msgid "Corn Field"
 msgstr ""
 
+# 88%
 #. tooltip_text of buildings:cornfield
 #: horizons/i18n/objecttranslations.py:137
+#, fuzzy
 msgid "Yields corn. Needs a farm."
-msgstr ""
+msgstr "Dostarcza jedzenie. Wymaga farmy."
 
 #. name of buildings:distillery
 #: horizons/i18n/objecttranslations.py:142
@@ -3570,9 +3595,13 @@ msgstr ""
 msgid "The trade partner can not store more of this."
 msgstr "Partner handlowy nie sprzedaje aktualnie tego."
 
+# 82%
+# 82%
+# 77%
 #: horizons/world/component/tradepostcomponent.py:236
+#, fuzzy
 msgid "The trade partner can not afford to buy this."
-msgstr ""
+msgstr "Partner handlowy nie sprzedaje aktualnie tego."
 
 # 77%
 #: horizons/world/component/tradepostcomponent.py:241
@@ -3626,13 +3655,17 @@ msgstr "Atakowany {target} '{name}' ({owner})"
 msgid "Attacking {owner}"
 msgstr "Atakowany {owner}"
 
+# 86%
 #: run_uh.py:185
+#, fuzzy
 msgid "Unknown Horizons has crashed."
-msgstr ""
+msgstr "Wystąpił błąd w Unknown Horizons."
 
+# 83%
 #: run_uh.py:187
+#, fuzzy
 msgid "We are very sorry for this and want to fix underlying error."
-msgstr ""
+msgstr "Jest nam niezmiernie przykro. Postaramy się jednak naprawić ten błąd."
 
 #: run_uh.py:188
 msgid "In order to do this, we need the information from the logfile:"

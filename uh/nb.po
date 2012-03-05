@@ -23,10 +23,12 @@ msgstr ""
 msgid "A new settlement was founded by {player}."
 msgstr ""
 
+# 82%
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
+#, fuzzy
 msgid "A new ship has been created."
-msgstr ""
+msgstr "En ny verden har blitt skapt."
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
@@ -99,10 +101,12 @@ msgstr ""
 msgid "Your crew refuses to leave this map."
 msgstr ""
 
+# 86%
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
+#, fuzzy
 msgid "Your game has been autosaved."
-msgstr ""
+msgstr "Spillet har blitt lagret."
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
@@ -1670,20 +1674,32 @@ msgstr "Beboere"
 msgid "5 residents"
 msgstr "Beboere"
 
+# 88%
+# 81%
+# 90%
 #. (text of widget: resident_6)
 #: horizons/i18n/guitranslations.py:240
+#, fuzzy
 msgid "6 residents"
-msgstr ""
+msgstr "Beboere"
 
+# 88%
+# 81%
+# 90%
 #. (text of widget: resident_7)
 #: horizons/i18n/guitranslations.py:242
+#, fuzzy
 msgid "7 residents"
-msgstr ""
+msgstr "Beboere"
 
+# 88%
+# 81%
+# 90%
 #. (text of widget: resident_8)
 #: horizons/i18n/guitranslations.py:244
+#, fuzzy
 msgid "8 residents"
-msgstr ""
+msgstr "Beboere"
 
 # 88%
 #. (text of widget: residents)
@@ -1915,10 +1931,12 @@ msgstr "Stop produksjon midlertidig"
 msgid "Start production"
 msgstr "Start produksjon"
 
+# 94%
 #. (text of widget: headline) Please keep the translation similarly short and concise, else the tooltip is not well understood by players.
 #: horizons/i18n/guitranslations.py:566
+#, fuzzy
 msgid "Select resource:"
-msgstr ""
+msgstr "Velg ressurser:"
 
 #. (tooltip of widget: headline) Please keep the translation similarly short and concise, else the tooltip is not well understood by players.
 #: horizons/i18n/guitranslations.py:568
@@ -2416,10 +2434,12 @@ msgstr ""
 msgid "Join game"
 msgstr "Delta i spill"
 
+# 90%
 #. (text of widget: load_game_lbl)
 #: horizons/i18n/guitranslations.py:856
+#, fuzzy
 msgid "Load game:"
-msgstr ""
+msgstr "Åpne spill"
 
 #. (text of widget: refr_gamelist_lbl)
 #: horizons/i18n/guitranslations.py:858
@@ -2843,10 +2863,12 @@ msgstr ""
 msgid "Corn Field"
 msgstr ""
 
+# 88%
 #. tooltip_text of buildings:cornfield
 #: horizons/i18n/objecttranslations.py:137
+#, fuzzy
 msgid "Yields corn. Needs a farm."
-msgstr ""
+msgstr "Gir mat. Trenger en gård."
 
 #. name of buildings:distillery
 #: horizons/i18n/objecttranslations.py:142
@@ -3562,13 +3584,17 @@ msgstr ""
 msgid "Attacking {owner}"
 msgstr ""
 
+# 86%
 #: run_uh.py:185
+#, fuzzy
 msgid "Unknown Horizons has crashed."
-msgstr ""
+msgstr "Unknown Horizons krasjet."
 
+# 83%
 #: run_uh.py:187
+#, fuzzy
 msgid "We are very sorry for this and want to fix underlying error."
-msgstr ""
+msgstr "Vi er veldig lei for dette, og ønsker å fikse denne feilen."
 
 #: run_uh.py:188
 msgid "In order to do this, we need the information from the logfile:"

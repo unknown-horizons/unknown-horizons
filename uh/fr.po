@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2012-03-02 04:09+0100\n"
-"PO-Revision-Date: 2012-03-04 12:47+0200\n"
+"PO-Revision-Date: 2012-03-04 18:37+0200\n"
 "Last-Translator: Samuel <samuel@micheldorsaz.ch>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: fr\n"
@@ -1188,11 +1188,13 @@ msgstr "Pionniers"
 msgid "Settlers"
 msgstr "Colons"
 
+# 75%
 #. (text of widget: headline)
 #: horizons/gui/tabs/mainsquaretabs.py:246
 #: horizons/i18n/guitranslations.py:222
+#, fuzzy
 msgid "Citizens"
-msgstr ""
+msgstr "citoyen"
 
 # An "apercu" is more a preview than an overview.
 #. (text of widget: headline)
@@ -1996,10 +1998,12 @@ msgstr "Suspendre la production"
 msgid "Start production"
 msgstr "Reprendre la production"
 
+# 94%
 #. (text of widget: headline) Please keep the translation similarly short and concise, else the tooltip is not well understood by players.
 #: horizons/i18n/guitranslations.py:566
+#, fuzzy
 msgid "Select resource:"
-msgstr ""
+msgstr "Sélectionner les ressources :"
 
 #. (tooltip of widget: headline) Please keep the translation similarly short and concise, else the tooltip is not well understood by players.
 #: horizons/i18n/guitranslations.py:568
@@ -2927,10 +2931,12 @@ msgstr ""
 msgid "Corn Field"
 msgstr "Champ de maïs"
 
+# 88%
 #. tooltip_text of buildings:cornfield
 #: horizons/i18n/objecttranslations.py:137
+#, fuzzy
 msgid "Yields corn. Needs a farm."
-msgstr ""
+msgstr "Produit de la nourriture. Nécessite une ferme."
 
 #. name of buildings:distillery
 #: horizons/i18n/objecttranslations.py:142
@@ -3661,9 +3667,11 @@ msgstr "Attaque {owner}"
 msgid "Unknown Horizons has crashed."
 msgstr "Unknown Horizons est tombé en panne."
 
+# 83%
 #: run_uh.py:187
+#, fuzzy
 msgid "We are very sorry for this and want to fix underlying error."
-msgstr ""
+msgstr "Nous vous prions de bien vouloir nous excuser pour la gêne occasionnée."
 
 #: run_uh.py:188
 msgid "In order to do this, we need the information from the logfile:"
