@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2012-03-02 04:09+0100\n"
-"PO-Revision-Date: 2012-03-05 13:39+0200\n"
+"PO-Revision-Date: 2012-03-05 14:01+0200\n"
 "Last-Translator: VinWij <vinwij@vinwij.nl>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: nl\n"
@@ -204,7 +204,7 @@ msgstr "cacao"
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "cocoa beans"
-msgstr ""
+msgstr "cacaobonen"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
@@ -216,20 +216,21 @@ msgstr "munten"
 msgid "community"
 msgstr "gemeenschap"
 
+# From wiki: condiments are sauces or spices to add flavor to food.
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "condiments"
-msgstr ""
+msgstr "toevoegingen"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "confectionery"
-msgstr ""
+msgstr "suikergoed"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "corn"
-msgstr ""
+msgstr "mais"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
@@ -239,17 +240,17 @@ msgstr "dolk"
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "deer food A"
-msgstr "herten voedsel A"
+msgstr "hertenvoer A"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "deer meat"
-msgstr "herten voedsel"
+msgstr "hertenvlees"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "education"
-msgstr "educatie"
+msgstr "onderwijs"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
@@ -259,7 +260,7 @@ msgstr "geloof"
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "fire"
-msgstr ""
+msgstr "vuur"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
@@ -269,7 +270,7 @@ msgstr "vis"
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "flour"
-msgstr ""
+msgstr "bloem"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
@@ -284,12 +285,12 @@ msgstr "samenkomst"
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "grain"
-msgstr ""
+msgstr "graan"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "grapes"
-msgstr ""
+msgstr "druiven"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
@@ -299,7 +300,7 @@ msgstr "gras"
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "happiness"
-msgstr "vreugde"
+msgstr "blijdschap"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
@@ -309,7 +310,7 @@ msgstr "kruiden"
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "honeycombs"
-msgstr ""
+msgstr "honingraat"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
@@ -329,7 +330,7 @@ msgstr "ijzererts"
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "lamb wool"
-msgstr "wol"
+msgstr "lamswol"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
@@ -384,24 +385,24 @@ msgstr "kolonist"
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "spice plants"
-msgstr ""
+msgstr "kruiden"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "spices"
-msgstr ""
+msgstr "kruiden"
 
 # 76%
 #. This is a database entry: the name of a resource.
 #: database files sql
-#, fuzzy
 msgid "stone deposit"
-msgstr "ijzer afzetting"
+msgstr "steen afzetting"
 
+# What is this exactly?
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "stone tops"
-msgstr ""
+msgstr "stenen platen"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
@@ -411,7 +412,7 @@ msgstr "suiker"
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "sugar cane"
-msgstr "suiker riet"
+msgstr "suikerriet"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
@@ -421,12 +422,12 @@ msgstr "textiel"
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "tobacco leaves"
-msgstr "tabakplanten"
+msgstr "tabaksbladeren"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "tobacco plants"
-msgstr "tabakplanten"
+msgstr "tabaksplanten"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
@@ -438,10 +439,11 @@ msgstr "tabak"
 msgid "tools"
 msgstr "gereedschap"
 
+# Is this vines as in plants, or vines as in ore-vines? I assumed plants here, otherwise change this to "aders".
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "vines"
-msgstr ""
+msgstr "struiken"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
@@ -457,47 +459,52 @@ msgstr "wol"
 #: database files sql
 #, python-format
 msgid "{player1} and {player2} have allied their forces."
-msgstr ""
+msgstr "{player1} en {player2} hebben hun krachten verenigd."
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
 #, python-format
 msgid "{player1} and {player2} have ended the war and are now allied."
 msgstr ""
+"{player1} en {player2} zijn niet langer in oorlog en vormen nu een "
+"alliantie."
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
 #, python-format
 msgid "{player1} and {player2} have ended their alliance and are now in a state of war."
 msgstr ""
+"{player1} en {player2} vormen geen alliantie meer en zijn nu in staat van "
+"oorlog."
 
+# Just to be sure, this means they are no longer hostile, right?
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
 #, python-format
 msgid "{player1} and {player2} have settled their hostility."
-msgstr ""
+msgstr "{player1} en {player2} zijn niet meer vijandig tegenover elkaar."
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
 #, python-format
 msgid "{player1} and {player2} have terminated their alliance."
-msgstr ""
+msgstr "{player1} en {player2} hebben hun alliantie opgeheven."
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
 #, python-format
 msgid "{player1} and {player2} will fight each other to the death."
-msgstr ""
+msgstr "{player1} en {player2} zullen vechten op leven en dood."
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
 #, python-format
 msgid "{player}: {message}"
-msgstr ""
+msgstr "{player}: {message}"
 
 #: editor/editor.py:33
 msgid "Specify the path to FIFE root directory."
-msgstr "Geef het pad naar de FIFE map."
+msgstr "Geef het pad naar de FIFE-map."
 
 #: horizons/command/game.py:36
 msgid "Invalid filename"
@@ -505,7 +512,7 @@ msgstr "Ongeldige bestandsnaam"
 
 #: horizons/command/game.py:37
 msgid "Received an invalid filename for a save command."
-msgstr ""
+msgstr "Ongeldige bestandsnaam voor een save-commando."
 
 #. There was a problem during the 'save game' procedure.
 #: horizons/command/game.py:47 horizons/gui/gui.py:177
@@ -530,11 +537,13 @@ msgstr "Enkele van Uw veranderingen vereisen een herstart van Unknown Horizons."
 
 #: horizons/engine/settingsdialog.py:55
 msgid "Restore default settings"
-msgstr "Hertel standaard instellingen"
+msgstr "Herstel standaard instellingen"
 
 #: horizons/engine/settingsdialog.py:56
 msgid "Restoring the default settings will delete all changes to the settings you made so far."
 msgstr ""
+"Het herstellen van de standaard instellingen zal alle wijzigingen die op dit "
+"moment gemaakt zijn ongedaan maken."
 
 #: horizons/engine/settingsdialog.py:57
 msgid "Do you want to continue?"
@@ -558,7 +567,7 @@ msgstr ""
 
 #: horizons/engine/settingshandler.py:212
 msgid "Invalid network port"
-msgstr "Ongeldige poort"
+msgstr "Ongeldige netwerkpoort"
 
 #: horizons/engine/settingshandler.py:213
 msgid "The port you specified is not valid. It must be a number between 1 and 65535."
@@ -569,30 +578,37 @@ msgstr ""
 #: horizons/engine/settingshandler.py:214
 msgid "Please check the port you entered and make sure it is in the specified range."
 msgstr ""
+"Controleer het ingevoerde poortnummer en check of die in de aangegaven range "
+"ligt."
 
 #: horizons/engine/settingshandler.py:226
 msgid "Failed to apply new network settings."
-msgstr ""
+msgstr "Het toepassen van de netwerkinstellingen is mislukt."
 
 #: horizons/engine/settingshandler.py:227
 #: horizons/gui/modules/multiplayermenu.py:55
 msgid "Network features could not be initialized with the current configuration."
 msgstr ""
+"De netwerkfunctionaliteiten konden niet worden gestart met de huidige "
+"instellingen."
 
 #: horizons/engine/settingshandler.py:228
 #: horizons/gui/modules/multiplayermenu.py:56
 msgid "Check the settings you specified in the network section."
 msgstr ""
+"Controleer de instellingen die je in het netwerk-gedeelte hebt ingevoerd."
 
 #. i18n This is advice for players seeing a network error with the current config
 #: horizons/engine/settingshandler.py:232
 msgid "Low port numbers sometimes require special access privileges, try 0 or a number greater than 1024."
 msgstr ""
+"Lage poortnummers vereisen soms speciale toegangsrechten. Probeer 0 of een "
+"getal groter dan 1024."
 
 #: horizons/engine/settingshandler.py:262
 #, python-format
 msgid "Configured language {lang} could not be loaded"
-msgstr ""
+msgstr "De ingestelde taal {lang} kon niet worden geladen."
 
 # geen hoofdletters bij u tenzij u god aanspreekt.
 #: horizons/gui/gui.py:204
@@ -610,7 +626,7 @@ msgstr "Weet u zeker dat u de actieve sessie wilt stoppen?"
 
 #: horizons/gui/gui.py:213
 msgid "Quit Session"
-msgstr "Verlaat sessie"
+msgstr "Verlaat Sessie"
 
 #: horizons/gui/gui.py:273
 msgid "No saved games"
@@ -639,7 +655,7 @@ msgstr "U heeft geen bestandsnaam ingevuld"
 
 #: horizons/gui/gui.py:357
 msgid "Please enter a valid filename."
-msgstr ""
+msgstr "Voer een geldige bestandsnaam in."
 
 #. reshow dialog
 #. savegamename already exists
@@ -654,15 +670,15 @@ msgstr "Wilt u het overschrijven?"
 
 #: horizons/gui/gui.py:364
 msgid "Confirmation for overwriting"
-msgstr "Bevestiging voor overschrijven"
+msgstr "Bevestig overschrijven"
 
 #: horizons/gui/gui.py:369
 msgid "Invalid filename given"
-msgstr ""
+msgstr "Ongeldige bestandsnaam gegeven"
 
 #: horizons/gui/gui.py:377
 msgid "Please select a savegame or click on cancel."
-msgstr "Selecteer een savegame of klik op beeindigen."
+msgstr "Selecteer een savegame of klik op annuleren."
 
 #. ok button has been pressed, but no savegame was selected
 #: horizons/gui/gui.py:377
@@ -674,7 +690,7 @@ msgstr "Selecteer een savegame"
 #: horizons/gui/gui.py:466 horizons/i18n/guitranslations.py:615
 #: horizons/i18n/guitranslations.py:946
 msgid "Details:"
-msgstr "Eigenschappen:"
+msgstr "Details:"
 
 # 83%
 #: horizons/gui/gui.py:467
