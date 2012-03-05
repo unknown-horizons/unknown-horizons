@@ -19,6 +19,7 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
+from itertools import groupby
 from fife.extensions.pychan.widgets import HBox, Icon, Label
 
 from horizons.util import Callback
@@ -157,7 +158,7 @@ class LogBook(PickBeltWidget):
 		self.forward_button.set_active()
 		if len(self._widgets) == 0 or self._cur_entry == 0:
 			self.backward_button.set_inactive()
-		if len(self._widgets) == 0 or self._cur_entry == len(self._widgets) - 1:
+		if len(self._widgets) == 0 or self._cur_entry >= len(self._widgets) - 2:
 			self.forward_button.set_inactive()
 		self._gui.adaptLayout()
 
@@ -179,8 +180,9 @@ class LogBook(PickBeltWidget):
 		elif widget[0] == 'Headline':
 			add = Label(text=unicode(widget[1]))
 			add.stylize('headline')
-		elif widget[0] == 'Pagebreak':
-			# well this is obviously not working yet, ignore
+		else:
+			print '[WW] Warning: Unknown widget type {typ} in widget {wdg}'.format(
+				typ=widget[0], wdg=widget)
 			add = None
 		return add
 
@@ -209,12 +211,19 @@ class LogBook(PickBeltWidget):
 		[Pagebreak]  <==  not implemented yet
 		"""
 		#TODO last line of message text sometimes get eaten. Ticket #535
-		for widget_definition in widgets:
-			self.parse_logbook_item(widget_definition)
-		###################################################################
-		#TODO split into several entries if [Pagebreak] present in widgets
-		self._widgets.append(widgets)
+		def _split_on_pagebreaks(widgets):
+			"""This black magic splits the widget list on each ['Pagebreak']
+			>> [['a','a'], ['b','b'], ['Pagebreak'], ['c','c'], ['d','d']]
+			>>>> into [[['a', 'a'], ['b', 'b']], [['c', 'c'], ['d', 'd']]]
+			#TODO n successive pagebreaks should insert (n-1) blank pages (currently 0 are inserted)
+			"""
+			return [list(l[1]) for l in groupby(widgets, lambda x: x != ['Pagebreak']) if l[0]]
 
+		print widgets, _split_on_pagebreaks(widgets)
+		for widget_list in _split_on_pagebreaks(widgets):
+			self._widgets.append(widget_list)
+			for widget_definition in widget_list:
+				self.parse_logbook_item(widget_definition)
 		if len(self._widgets) % 2 == 1:
 			self._cur_entry = len(self._widgets) - 1
 		else:
