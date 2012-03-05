@@ -315,6 +315,8 @@ class Settler(BuildableRect, BuildingResourceHandler, BasicBuilding):
 				# check_duplicate: only trigger once for different settlers of a neighborhood
 				self.session.ingame_gui.message_widget.add(self.position.center().x, self.position.center().y, \
 			                                           'SETTLERS_MOVED_OUT', check_duplicate=True)
+			        #remove inhabitant counter in middle of screen to allow it to update when mouse is moved
+			        self.session.ingame_gui.resourceinfo_set(None)
 		else:
 			self.level -= 1
 			self._update_level_data()
