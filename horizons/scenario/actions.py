@@ -68,7 +68,6 @@ def show_db_message(session, message_id):
 @register(name='logbook_w')
 def write_logbook_entry(session, widgets):
 	"""Adds an entry to the logbook and displays it."""
-	print widgets
 	session.ingame_gui.logbook.add_captainslog_entry(widgets, show_logbook=True)
 
 @register(name='logbook')
