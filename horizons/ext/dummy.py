@@ -21,6 +21,7 @@ SOFTWARE.
 """
 
 # http://code.activestate.com/recipes/576447-dummy-object/
+# with some modifications
 
 class Dummy(object):
 	def __getattr__(self, attr):
@@ -49,6 +50,8 @@ class Dummy(object):
 		return hash(None)
 	def __call__(self, *args, **kwargs):
 		return self
+	def __trunc__(self):
+		return 0
 	__sub__ = __div__ = __mul__ = __floordiv__ = __mod__ = __and__ = __or__ = \
 	__xor__ = __rsub__ = __rdiv__ = __rmul__ = __rfloordiv__ = __rmod__ = \
 	__rand__ = __rxor__ = __ror__ = __radd__ = __pow__ = __rpow__ = \
