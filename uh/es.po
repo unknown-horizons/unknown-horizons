@@ -28,7 +28,7 @@ msgstr "Un nuevo asentamiento ha sido fundado por {player}."
 #: database files sql
 #, fuzzy
 msgid "A new ship has been created."
-msgstr "Se ha creado un nuevo mundo."
+msgstr "Se ha creado un nuevo barco."
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
@@ -71,7 +71,7 @@ msgstr ""
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
 msgid "You can also drag roads."
-msgstr "Tambien puedes arrastrar caminos."
+msgstr "También puedes arrastrar caminos."
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
