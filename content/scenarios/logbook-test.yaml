@@ -1,0 +1,27 @@
+author: chris
+description: "test new logbook features (improved markup, displaying images)"
+difficulty: 'none'
+events:
+- actions:
+  - type: logbook
+    arguments:
+    - [Headline, "NEW TASK: Build a main square"]
+    - [Image, "content/gui/images/background/hr.png"]
+    - [Label, "Some text to go before the image"]
+    - [Gallery, [
+        ["content/gui/images/logos/uh_emblem.png"],
+        ["content/gui/images/logos/uh_emblem.png"],
+        ["content/gui/images/logos/uh_emblem.png"],
+      ]]
+    - [Label, "Text to go below the image displayed, since we're in a VBox here and I don't think exposing further layout options is sane."]
+    - [Pagebreak]
+    - [Headline, "Pagebreak should be a useful feature"]
+    - [Label, "This should now be on the next page, regardless of space left. No auto-wrapping between different boxes, this will only drive authors (and me) crazy."]
+
+  conditions:
+  - type: time_passed
+    arguments: [0]
+
+locale: en
+mapfile: test-map-tiny.sqlite
+
