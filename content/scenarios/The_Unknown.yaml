@@ -22,11 +22,11 @@ events:
         - [Headline, "20th November 1740"]
         - [Image, "content/gui/images/background/hr.png"]
         - |
-            After four days, the storm finally fades and we can take a rest. But we have only 15 lb of food left and our ship is very broken-down. The navigation instruments and the sea charts are lost.
-            We have to come ashore. One of my Jacks saw some birds hunting for fish, so land can´t be far away.  Fortunally we have always some tools and wooden boards at the ship, so we can build some huts.
+          After four days, the storm finally fades and we can take a rest. But we have only 15 lb of food left and our ship is very broken-down. The navigation instruments and the sea charts are lost.
+          We have to come ashore. One of my Jacks saw some birds hunting for fish, so land can´t be far away.  Fortunally we have always some tools and wooden boards at the ship, so we can build some huts.
 
-            Our task now is:
-            Find land and build a port, so that we can empty the ship.
+          Our task now is:
+          Find land and build a port, so that we can empty the ship.
   conditions:
    - type: time_passed
      arguments: [0]
