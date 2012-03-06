@@ -17,13 +17,15 @@
 				inactive_image ="content/gui/images/buttons/parrow_left_bw.png"
 				up_image="content/gui/images/buttons/parrow_left.png"
 				hover_image="content/gui/images/buttons/parrow_left_h.png"
-				down_image="content/gui/images/buttons/parrow_left_d.png" />
+				down_image="content/gui/images/buttons/parrow_left_d.png"
+				is_focusable="0" />
 			<ToggleImageButton name="forwardButton" tooltip="Read next entries"
 				comment="Entry of Captain's Log (logbook/diary used in scenarios)"
 				inactive_image ="content/gui/images/buttons/parrow_right_bw.png"
 				up_image="content/gui/images/buttons/parrow_right.png"
 				hover_image="content/gui/images/buttons/parrow_right_h.png"
-				down_image="content/gui/images/buttons/parrow_right_d.png" />
+				down_image="content/gui/images/buttons/parrow_right_d.png"
+				is_focusable="0" />
 		</HBox>
 	</VBox> <!-- closes VBox logbook left page -->
 
