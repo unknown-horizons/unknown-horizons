@@ -16,7 +16,8 @@ events:
        If you are interested in longer descriptions, your log will hopefully provide all the help you need.
 
        After you close this log, it can be re-opened with the "Captain's Log" icon in the top-right corner (below the mini-map, with a sealed document and a feather).
-
+     - [Gallery, ["content/gui/icons/widgets/minimap/captainslog.png"]]
+     - |
        For any suggestions on better wording, topics you would like to have explained or even buggy conditions: Please tell us and we will try to improve the tutorial!
 
        Visit www.unknown-horizons.org for help on how to contact the team!
@@ -29,7 +30,8 @@ events:
        To move your ship, select it with a left click and right click on the location you want it to go to.
 
        Once you are near the coast, the anchor-like button you see in the overview tab will become active.
-
+     - [Gallery, ["content/gui/icons/ship/anchor.png"]]
+     - |
        This indicates that you are able to build a warehouse there by pressing that button (called 'Build Settlement').
 
        Now a preview of your building is dragged around when you move the cursor.
@@ -59,7 +61,8 @@ events:
        The fisherman needs some boards to build his vessel as well.
 
        In order to construct lumberjacks; open the build menu by either clicking the big icon below the mini map or pressing B key.
-
+     - [Gallery, ["content/gui/icons/widgets/minimap/build.png"]]
+     - |
        The build menu is sorted by increments.
        You are currently in the first increment (the Sailors level) so are offered only the basic buildings.
      - [Pagebreak]
@@ -67,17 +70,21 @@ events:
 
        As your civilization advances, you also gain more and more complex buildings.
 
-       For now, select the lumberjack under 'Companies' and build it in an area with some trees around.
-
+       For now, select the lumberjack under 'Companies' and build it in an area with some trees around. 
        You can also plant trees later - but that costs money. Use what nature provided you with!
 
        A company always needs a trail connection to a storage or warehouse, otherwise goods will remain at the company and not be collected.
-
        This means that you have to build a trail connecting your warehouse (or storage) and lumberjack.
 
        TASK: Build a lumberjack in a wooded area and connect it to a road.
 
        Watch how a collector will fetch your first self-produced boards. Don't worry about recruiting workers for the lumberjack. That happens automatically.
+     - [Gallery, [
+          "content/gui/icons/buildmenu/008_h.png",
+          "content/gui/icons/buildmenu/015_h.png",
+          #"content/gui/icons/templates/production/production_arrow.png",
+          "content/gui/icons/resources/50/004.png",
+       ]]
    - {type: message, arguments: ["Build a lumberjack and connect it to the warehouse using a trail."]}
    - {type: set_var, arguments: ["tutStepDone", 19]}
   conditions:
@@ -123,6 +130,11 @@ events:
        TASK: Build a hunter and a fisher.
 
        Don't forget to connect them to your warehouse with trails!
+     - [Gallery, [
+          "content/gui/icons/buildmenu/011_h.png",
+          "content/gui/icons/buildmenu/009_h.png",
+          "content/gui/icons/resources/50/005.png",
+       ]]
    - {type: message, arguments: ["Build a hunter and a fisher. Connect them to the warehouse."]}
    - {type: set_var, arguments: ["tutStepDone", 22]}
   conditions:
@@ -140,27 +152,28 @@ events:
      - [Image, "content/gui/images/background/hr.png"]
      - |
        Your residents need a main square where they can fetch their goods from.
-
        This means that they need a trail connection from their home to the main square.
 
        All goods in your warehouse are available at this 'market place', so your residents do not need to walk to the fisher or even to the warehouse.
-
-       You should consider founding your actual house settlement in an area where you can easily expand it and build some trails, too.
-
-       You should avoid placing tents too close to your lumberjacks for example because building tents will clear away the trees that your lumberjack needs to produce boards. All companies work just as well even without being connected to the tents, so you don't need to build paths to the companies.
+     - [Gallery, ["content/gui/icons/buildmenu/004_h.png"]]
+     - |
+       You should avoid placing your main settlement tents too close to your lumberjacks because building tents will clear away the trees that your lumberjack needs to produce boards.
+       Companies work without being connected to the tents, so you don't need to build a road between the main square and e.g. your lumberjack tent.
 
        TASK: Build a main square.
      - [Pagebreak]
      - |
 
        Now let's have a closer look at the main square.
-
+     - [Gallery, ["content/gui/icons/tabwidget/warehouse/account_a.png"]]
+     - |
        In the 'Account' tab you get a balance sheet of this island, featuring all costs you pay and all taxes you earn.
 
        The items 'Sale' and 'Buy' refer to your trading balance and will be explained later on.
 
        If your balance is positive, you all-in-all make a profit.
-
+     - [Gallery, ["content/gui/icons/tabwidget/mainsquare/inhabitants0_a.png"]]
+     - |
        In the different increment overview tabs you can see statistics about your inhabitants. You also set the increment-specific global tax here and allow or deny inhabitants of this increment to upgrade to the next higher one.
    - {type: message, arguments: ["Build a main square. Choose an area without many economy buildings."]}
    - {type: set_var, arguments: ["tutStepDone", 25]}
@@ -185,7 +198,8 @@ events:
      - [Image, "content/gui/images/background/hr.png"]
      - |
        Settlers want to have a roof over their heads, else they won't even think of living in your city! You need to provide tents.
-
+     - [Gallery, ["content/gui/icons/buildmenu/003_h.png"]]
+     - |
        Tents are the basic residential buildings. Your inhabitants will want to upgrade it when they reach higher increments.
 
        Settlers may not look very useful since they will try to consume all goods you produce - but they at least pay taxes, and that's the only way you can make money for now!
@@ -243,7 +257,8 @@ events:
        You can also sell surpluses of your production, but in general consuming them (by building more tents) instead of selling them yields more profit.
 
        Normally the trader ships just sail around and look for deals, but you can speed things up a bit.
-
+     - [Gallery, ["content/gui/icons/buildmenu/006_h.png"]]
+     - |
        For this purpose, build a signal fire at the coast near your warehouse. It will show ships the way to your settlement.
 
        The signal fire has to cover the area which the ships pass through to catch them.
@@ -251,9 +266,9 @@ events:
      - |
 
        After this little advertisment, the trader will also stop by and look into your warehouse if it planned to sail past it.
-
-       You can propose deals via the warehouse tab 'Buy/Sell'. (This feature is currently quite fiddly to use. If you come up with a nice way of improving it, please share your thoughts! We need your help here!)
-
+       You can propose deals via the warehouse tab "Buy/Sell".
+     - [Gallery, ["content/gui/icons/tabwidget/warehouse/buysell_a.png"]]
+     - |
        At the 'sailors' increment, you are equipped with three trading slots.
 
        Click on the small icon to change the slot mode from 'Buy' to 'Sell' and vice versa.
