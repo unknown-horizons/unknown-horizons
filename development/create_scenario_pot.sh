@@ -160,9 +160,21 @@ scenario['translation_status'] = '$numbers'
 
 for i, event in enumerate(scenario['events']):
 	for j, action in enumerate(event['actions']):
-		if action['type'] not in ('message', 'logbook', 'logbook_w'):
+		if action['type'] not in ('message', 'logbook'):
 			continue
-		action['arguments'] = map(translate, action['arguments'])
+		elif action['type'] == 'message':
+			action['arguments'] = map(translate, action['arguments'])
+		elif action['type'] == 'logbook':
+			old_args = action['arguments']
+			action['arguments'] = []
+			for widget in old_args:
+				if isinstance(widget, basestring):
+					action['arguments'].append(widget)
+				elif widget[0] in ('Label', 'Headline'):
+					text = translate(widget[1])
+					action['arguments'].append([widget[0], text])
+				else:
+					action['arguments'].append(widget) # no translation for everything else
 		event['actions'][j] = action
 	scenario['events'][i] = event
 
