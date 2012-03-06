@@ -6,9 +6,9 @@
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: Unknown Horizons e58f4ba\n"
+"Project-Id-Version: Unknown Horizons 5300c91\n"
 "Report-Msgid-Bugs-To: translate-uh@lists.unknown-horizons.org\n"
-"POT-Creation-Date: 2011-12-29 03:27+0100\n"
+"POT-Creation-Date: 2012-03-06 05:16+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -55,7 +55,7 @@ msgid ""
 "If you are interested in longer descriptions, your log will hopefully provide "
 "all the help you need.\n"
 "\n"
-"After you close this log, it can be re-opened with the 'Captain's Log' icon "
+"After you close this log, it can be re-opened with the \"Captain's Log\" icon "
 "in the top-right corner (below the mini-map, with a sealed document and a "
 "feather).\n"
 "\n"
@@ -122,6 +122,7 @@ msgstr ""
 #. This is the text body of a logbook page.
 #: po/tutorial.py:22
 msgid ""
+"\n"
 "As your civilization advances, you also gain more and more complex "
 "buildings.\n"
 "\n"
@@ -139,7 +140,8 @@ msgid ""
 "\n"
 "TASK: Build a lumberjack in a wooded area and connect it to a road.\n"
 "\n"
-"Watch how a collector will fetch your first self-produced boards."
+"Watch how a collector will fetch your first self-produced boards. Don't worry "
+"about recruiting workers for the lumberjack. That happens automatically."
 msgstr ""
 
 #. This message is displayed in the widget on the left screen part. Please keep it short enough to fit there!
@@ -174,6 +176,7 @@ msgstr ""
 #. This is the text body of a logbook page.
 #: po/tutorial.py:30
 msgid ""
+"\n"
 "The Fisher needs a coastal building site like the warehouse and a fish school "
 "in range.\n"
 "\n"
@@ -216,7 +219,8 @@ msgid ""
 "\n"
 "You should avoid placing tents too close to your lumberjacks for example "
 "because building tents will clear away the trees that your lumberjack needs "
-"to produce boards.\n"
+"to produce boards. All companies work just as well even without being "
+"connected to the tents, so you don't need to build paths to the companies.\n"
 "\n"
 "TASK: Build a main square."
 msgstr ""
@@ -224,6 +228,7 @@ msgstr ""
 #. This is the text body of a logbook page.
 #: po/tutorial.py:38
 msgid ""
+"\n"
 "Now let's have a closer look at the main square.\n"
 "\n"
 "In the 'Account' tab you get a balance sheet of this island, featuring all "
@@ -262,7 +267,8 @@ msgid ""
 "you produce - but they at least pay taxes, and that's the only way you can "
 "make money for now!\n"
 "\n"
-"TASK: Build a tent and connect it to the main square."
+"TASK: Build a tent and connect it to the main square. Tents dont need to be "
+"connected to any of the companies"
 msgstr ""
 
 #. This message is displayed in the widget on the left screen part. Please keep it short enough to fit there!
@@ -273,6 +279,7 @@ msgstr ""
 #. This is the text body of a logbook page.
 #: po/tutorial.py:48
 msgid ""
+"\n"
 "Let's have a look at the tent overview tab.\n"
 "You can see\n"
 "* the happiness of these residents,\n"
@@ -328,6 +335,7 @@ msgstr ""
 #. This is the text body of a logbook page.
 #: po/tutorial.py:56
 msgid ""
+"\n"
 "After this little advertisment, the trader will also stop by and look into "
 "your warehouse if it planned to sail past it.\n"
 "\n"
@@ -377,7 +385,8 @@ msgstr ""
 #. This is the text body of a logbook page.
 #: po/tutorial.py:64
 msgid ""
-"For example: \n"
+"\n"
+"For example:\n"
 "Having a 'Buy' slot and 5 tons in stock, a slider positioned at 9 tons will "
 "cause you to buy 4 additional tons at most.\n"
 "Selling works similarly. A 'Sell' slot with 18 tons in stock and the slider "
@@ -400,7 +409,7 @@ msgstr ""
 msgid "Reach an island stock of at least 30 tools."
 msgstr ""
 
-#. This is the text body of a logbook page.
+#. This message is displayed in the widget on the left screen part. Please keep it short enough to fit there!
 #: po/tutorial.py:68
 msgid "Note that this might take a while."
 msgstr ""
@@ -433,6 +442,7 @@ msgstr ""
 #. This is the text body of a logbook page.
 #: po/tutorial.py:74
 msgid ""
+"\n"
 "Note that faith is treated like a physical resource!\n"
 "\n"
 "This means that your inhabitants need a road connection to the producer "
@@ -483,6 +493,7 @@ msgstr ""
 #. This is the text body of a logbook page.
 #: po/tutorial.py:82
 msgid ""
+"\n"
 "Such residential upgrades are the only ones which cost resources and can not "
 "be restricted by you.\n"
 "\n"
@@ -533,6 +544,7 @@ msgstr ""
 #. This is the text body of a logbook page.
 #: po/tutorial.py:90
 msgid ""
+"\n"
 "We will have a closer look at this later.\n"
 "\n"
 "Farms, like all companies producing raw materials, do not necessarily need to "
@@ -585,6 +597,7 @@ msgstr ""
 #. This is the text body of a logbook page.
 #: po/tutorial.py:98
 msgid ""
+"\n"
 "Make sure that all fields you build are in the area covered by the farm.\n"
 "\n"
 "You can have combined production - one pasture will not lead to 100 percent "
@@ -636,6 +649,7 @@ msgstr ""
 #. This is the text body of a logbook page.
 #: po/tutorial.py:106
 msgid ""
+"\n"
 "This means that you can save money when you temporarily do not need a company "
 "and do not want to tear it down, either.\n"
 "\n"
