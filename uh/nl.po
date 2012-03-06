@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2012-03-02 04:09+0100\n"
-"PO-Revision-Date: 2012-03-05 14:54+0200\n"
+"PO-Revision-Date: 2012-03-06 17:53+0200\n"
 "Last-Translator: VinWij <vinwij@vinwij.nl>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: nl\n"
@@ -1434,31 +1434,29 @@ msgstr "Spel menu (Esc)"
 #. (tooltip of widget: logbook)
 #: horizons/i18n/guitranslations.py:84
 msgid "Captain's log (L)"
-msgstr ""
+msgstr "Logboek van de Kapitein (L)"
 
 #. (tooltip of widget: rotateLeft)
 #: horizons/i18n/guitranslations.py:86
 msgid "Rotate map counterclockwise (,)"
-msgstr ""
+msgstr "Draai de kaart tegen de klok in (,)"
 
 #. (tooltip of widget: rotateRight)
 #: horizons/i18n/guitranslations.py:88
 msgid "Rotate map clockwise (.)"
-msgstr ""
+msgstr "Draai de kaart met de klok mee (.)"
 
 # 82%
 #. (tooltip of widget: speedDown)
 #: horizons/i18n/guitranslations.py:90
-#, fuzzy
 msgid "Decrease game speed (-)"
-msgstr "Spel snelheid verlagen"
+msgstr "Speelsnelheid verlagen (-)"
 
 # 82%
 #. (tooltip of widget: speedUp)
 #: horizons/i18n/guitranslations.py:92
-#, fuzzy
 msgid "Increase game speed (+)"
-msgstr "Spel snelheid verhogen"
+msgstr "Speelsnelheid verhogen (+)"
 
 #. (tooltip of widget: zoomIn)
 #: horizons/i18n/guitranslations.py:94
@@ -1488,7 +1486,7 @@ msgstr "Verander naam"
 #. (text of widget: old_name_label)
 #: horizons/i18n/guitranslations.py:110
 msgid "Old name:"
-msgstr ""
+msgstr "Oude naam:"
 
 #. (tooltip of widget: okButton)
 #: horizons/i18n/guitranslations.py:112
@@ -1503,17 +1501,17 @@ msgstr "Voer uw bericht in:"
 #. (text of widget: enter_new_name_lbl)
 #: horizons/i18n/guitranslations.py:124
 msgid "Enter prefix:"
-msgstr ""
+msgstr "Voer voorvoegsel in:"
 
 #. (text of widget: headline_change_name)
 #: horizons/i18n/guitranslations.py:126
 msgid "Save map"
-msgstr ""
+msgstr "Kaart opslaan"
 
 #. (tooltip of widget: okButton)
 #: horizons/i18n/guitranslations.py:128
 msgid "Save the map"
-msgstr ""
+msgstr "Sla de kaart op"
 
 #. (text of widget: BB_cancel_build_label) abort construction of a ship, lose invested resources
 #: horizons/i18n/guitranslations.py:133
