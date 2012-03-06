@@ -93,15 +93,15 @@ for event in scenario['events']:
 			for widget_def in action['arguments']:
 				if isinstance(widget_def, basestring):
 					comment = COMMENT_TEXT
-					widget = prep(widget_def)
+					widget = prep(widget_def.rstrip('\n'))
 				elif widget_def[0] in ('Image', 'Gallery', 'Pagebreak'):
 					continue
 				elif widget_def[0] == 'Label':
 					comment = COMMENT_TEXT
-					widget = prep(widget_def[1])
+					widget = prep(widget_def[1].rstrip('\n'))
 				elif widget_def[0] == 'Headline':
 					comment = COMMENT_HEADING
-					widget = prep(widget_def[1])
+					widget = prep(widget_def[1].rstrip('\n'))
 				write(comment, widget)
 END
 
