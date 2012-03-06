@@ -80,23 +80,29 @@ write('scenario description', prep(scenario['description']))
 for event in scenario['events']:
 	for action in event['actions']:
 		at = action['type']
-		if at not in ('message', 'logbook', 'logbook_w'):
+		if at not in ('message', 'logbook'):
 			continue
 		elif at == 'message':
 			comment = COMMENT_MESSAGEWIDGET
-		elif at[0:7] == 'logbook':
-			comment = COMMENT_HEADING
-		for argument in action['arguments']:
-			if isinstance(argument, int):
-				continue
-			argument = prep(argument)
-			if not argument:
-				comment = COMMENT_TEXT
-				#HACK the first arg (headline) is empty, do not write the headline comment afterwards
-				continue
-			write(comment, argument)
-			#HACK the first arg is a headline and written, now do not write the headline comment for the main text
-			comment = COMMENT_TEXT
+			for argument in action['arguments']:
+				if isinstance(argument, int):
+					continue
+				argument = prep(argument)
+				write(comment, argument)
+		elif at == 'logbook':
+			for widget_def in action['arguments']:
+				if isinstance(widget_def, basestring):
+					comment = COMMENT_TEXT
+					widget = prep(widget_def)
+				elif widget_def[0] in ('Image', 'Gallery', 'Pagebreak'):
+					continue
+				elif widget_def[0] == 'Label':
+					comment = COMMENT_TEXT
+					widget = prep(widget_def[1])
+				elif widget_def[0] == 'Headline':
+					comment = COMMENT_HEADING
+					widget = prep(widget_def[1])
+				write(comment, widget)
 END
 
 xgettext --output-dir=po --output=$1.pot \
