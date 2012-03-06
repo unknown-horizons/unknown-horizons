@@ -169,9 +169,9 @@ for i, event in enumerate(scenario['events']):
 			action['arguments'] = []
 			for widget in old_args:
 				if isinstance(widget, basestring):
-					action['arguments'].append(widget)
+					action['arguments'].append(translate(widget.rstrip('\n')))
 				elif widget[0] in ('Label', 'Headline'):
-					text = translate(widget[1])
+					text = translate(widget[1].rstrip('\n'))
 					action['arguments'].append([widget[0], text])
 				else:
 					action['arguments'].append(widget) # no translation for everything else
