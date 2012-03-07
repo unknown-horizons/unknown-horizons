@@ -174,7 +174,7 @@ class ResourceOverviewBar(object):
 			else:
 				helptext = _("Click to add a new slot")
 				entry.show() # this will not be filled as the other res
-			background_icon.helptext = tooltip
+			background_icon.helptext = helptext
 
 			self.gui.append(entry)
 			# show it just when values are entered, this appeases pychan

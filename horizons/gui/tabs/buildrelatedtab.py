@@ -19,9 +19,9 @@
 # Free Software Foundation, Inc.,
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
-from fife.extensions.pychan.widgets import Icon
 
-from fife.extensions.pychan.widgets  import ImageButton
+from fife.extensions.pychan.widgets import Icon, ImageButton
+
 from horizons.gui.tabs import OverviewTab
 from horizons.util.gui import load_uh_widget
 from horizons.util import Callback
@@ -89,10 +89,10 @@ class BuildRelatedTab(OverviewTab):
 		if level <= self.instance.owner.settler_level:
 			# {{mode}} in double braces because it is replaced as a second step
 			path = "content/gui/icons/buildmenu/{id:03d}{{mode}}.png".format(id=building_id)
-			tooltip = self.instance.session.db.get_building_tooltip(building_id)
+			helptext = self.instance.session.db.get_building_tooltip(building_id)
 
 			build_button = ImageButton(name="build{id}".format(id=building_id), \
-			                             helptext=tooltip)
+			                             helptext=helptext)
 			build_button.up_image = path.format(mode='')
 			build_button.down_image = path.format(mode='_h')
 			build_button.hover_image = path.format(mode='_h')
