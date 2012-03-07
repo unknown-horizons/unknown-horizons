@@ -338,7 +338,7 @@ class Minimap(object):
 	def _show_tooltip(self, event):
 		if hasattr(self, "icon"): # only supported for icon mode atm
 			if self.fixed_tooltip != None:
-				self.icon.tooltip = self.fixed_tooltip
+				self.icon.helptext = self.fixed_tooltip
 				self.icon.position_tooltip(event)
 				#self.icon.show_tooltip()
 			else:
@@ -351,7 +351,7 @@ class Minimap(object):
 				if tile is not None and tile.settlement is not None:
 					new_tooltip = unicode(tile.settlement.get_component(NamedComponent).name)
 					if self.icon.tooltip != new_tooltip:
-						self.icon.tooltip = new_tooltip
+						self.icon.helptext = new_tooltip
 						self.icon.show_tooltip()
 					else:
 						self.icon.position_tooltip(event)

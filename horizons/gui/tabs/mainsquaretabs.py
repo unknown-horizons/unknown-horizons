@@ -92,7 +92,7 @@ class MainSquareOverviewTab(AccountTab):
 		super(MainSquareOverviewTab, self).__init__(instance=instance)
 		self.helptext = _('Main square overview')
 		self.widget.child_finder('headline').text = unicode(self.settlement.get_component(NamedComponent).name)
-		self.widget.child_finder('headline').tooltip = _('Click to change the name of your settlement')
+		self.widget.child_finder('headline').helptext = _('Click to change the name of your settlement')
 
 	def refresh(self):
 		self.widget.child_finder('headline').text = unicode(self.settlement.get_component(NamedComponent).name)
@@ -196,10 +196,10 @@ class MainSquareSettlerLevelTab(MainSquareTab):
 		if self.__class__.LEVEL < SETTLER.CURRENT_MAX_INCR: #max incr => cannot allow upgrades
 			if self.settlement.upgrade_permissions[self.__class__.LEVEL]:
 				upgrades_button.set_active()
-				upgrades_button.tooltip = _('Don\'t allow upgrades')
+				upgrades_button.helptext = _('Don\'t allow upgrades')
 			else:
 				upgrades_button.set_inactive()
-				upgrades_button.tooltip = _('Allow upgrades')
+				upgrades_button.helptext = _('Allow upgrades')
 
 		# refresh residents per house info
 		resident_counts = self._get_resident_counts()

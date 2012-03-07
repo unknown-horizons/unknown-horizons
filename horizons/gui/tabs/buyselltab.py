@@ -211,7 +211,7 @@ class BuySellTab(TabInterface):
 		# reset slot value for new res
 		if res_id == 0:
 			button.up_image, button.down_image, button.hover_image = [ self.dummy_icon_path ] * 3
-			button.tooltip = u""
+			button.helptext = u""
 			slot.findChild(name="amount").text = u""
 			slot.findChild(name="slider").value = 0.0
 			slot.res = None
@@ -227,7 +227,7 @@ class BuySellTab(TabInterface):
 			button.up_image = icons[0]
 			button.down_image = icons[0]
 			button.hover_image = icons[1] # disabled icon
-			button.tooltip = self.session.db.get_res_name(res_id)
+			button.helptext = self.session.db.get_res_name(res_id)
 			slot.res = res_id
 			# use some python magic to assign a res attribute to the slot to
 			# save which res_id it stores

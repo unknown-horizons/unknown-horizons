@@ -155,7 +155,7 @@ class BuildTab(TabInterface):
 			icon = self.widget.child_finder('icon_{position}'.format(position=position))
 
 			#xgettext:python-format
-			button.tooltip = _('{building}: {description}').format(building = _(building.name),
+			button.helptext = _('{building}: {description}').format(building = _(building.name),
 			                                                    description = _(building.tooltip_text))
 
 			enough_res = True # show all buildings by default

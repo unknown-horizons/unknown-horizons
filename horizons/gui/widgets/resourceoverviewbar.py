@@ -166,15 +166,15 @@ class ResourceOverviewBar(object):
 			background_icon.add_entered_callback( Callback(self._show_resource_selection_dialog, i) )
 
 			if res != -1:
-				tooltip = self.session.db.get_res_name(res)
+				helptext = self.session.db.get_res_name(res)
 				icon = entry.findChild(name="res_icon")
 				icon.num = i
 				icon.image = get_res_icon(res)[2] # the 24 one
 				icon.capture(self._on_res_slot_click, event_name = 'mouseClicked')
 			else:
-				tooltip = _("Click to add a new slot")
+				helptext = _("Click to add a new slot")
 				entry.show() # this will not be filled as the other res
-			background_icon.tooltip = tooltip
+			background_icon.helptext = tooltip
 
 			self.gui.append(entry)
 			# show it just when values are entered, this appeases pychan

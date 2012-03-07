@@ -85,11 +85,11 @@ class RouteConfig(object):
 
 	def start_button_set_active(self):
 		self._gui.findChild(name='start_route').set_active()
-		self._gui.findChild(name='start_route').tooltip = _('Start route')
+		self._gui.findChild(name='start_route').helptext = _('Start route')
 
 	def start_button_set_inactive(self):
 		self._gui.findChild(name='start_route').set_inactive()
-		self._gui.findChild(name='start_route').tooltip = _('Stop route')
+		self._gui.findChild(name='start_route').helptext = _('Stop route')
 
 	def start_route(self):
 		if self.instance.route.enable():
@@ -184,14 +184,14 @@ class RouteConfig(object):
 		button = slot.findChild(name="buysell")
 		button.up_image = self.buy_button_path
 		button.hover_image = self.buy_button_path
-		button.tooltip = _("Loading into ship")
+		button.helptext = _("Loading into ship")
 		slot.action = "load"
 
 	def show_unload_icon(self, slot):
 		button = slot.findChild(name="buysell")
 		button.up_image = self.sell_button_path
 		button.hover_image = self.sell_button_path
-		button.tooltip = _("Unloading from ship")
+		button.helptext = _("Unloading from ship")
 		slot.action = "unload"
 
 	def toggle_load_unload(self, slot, entry):

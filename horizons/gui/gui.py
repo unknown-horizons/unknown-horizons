@@ -282,7 +282,7 @@ class Gui(SingleplayerMenu, MultiplayerMenu):
 		# Prepare widget
 		old_current = self._switch_current_widget('select_savegame')
 		self.current.findChild(name='headline').text = _('Save game') if mode == 'save' else _('Load game')
-		self.current.findChild(name='okButton').tooltip = _('Save game') if mode == 'save' else _('Load game')
+		self.current.findChild(name='okButton').helptext = _('Save game') if mode == 'save' else _('Load game')
 
 		name_box = self.current.findChild(name="gamename_box")
 		if mp and mode == 'load': # have gamename
@@ -686,4 +686,4 @@ def build_help_strings(widgets):
 		lbl[0].text = HELPSTRING_LAYOUT.format(text=_(lbl[0].text), key=keyname.upper())
 
 	author_label = widgets.findChild(name='fife_and_uh_team')
-	author_label.tooltip = u"www.unknown-[br]horizons.org[br]www.fifengine.net"
+	author_label.helptext = u"www.unknown-[br]horizons.org[br]www.fifengine.net"

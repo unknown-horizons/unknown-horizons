@@ -237,11 +237,11 @@ class IngameGui(LivingObject):
 		cityinfo.mapEvents({
 			'city_name': cb
 		})
-		cityinfo.findChild(name="city_name").tooltip = tooltip
+		cityinfo.findChild(name="city_name").helptext = tooltip
 
 		foundlabel = cityinfo.child_finder('owner_emblem')
 		foundlabel.image = 'content/gui/images/tabwidget/emblems/emblem_%s.png' % (self.settlement.owner.color.name)
-		foundlabel.tooltip = unicode(self.settlement.owner.name)
+		foundlabel.helptext = unicode(self.settlement.owner.name)
 
 		foundlabel = cityinfo.child_finder('city_name')
 		foundlabel.text = unicode(self.settlement.get_component(SettlementNameComponent).name)
