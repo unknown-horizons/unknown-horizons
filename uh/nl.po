@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2012-03-02 04:09+0100\n"
-"PO-Revision-Date: 2012-03-07 01:50+0200\n"
+"PO-Revision-Date: 2012-03-07 02:01+0200\n"
 "Last-Translator: VinWij <vinwij@vinwij.nl>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: nl\n"
@@ -2274,7 +2274,7 @@ msgstr "Schermafbeelding"
 #. (text of widget: lbl_SETTLEMENTS_OVERVIEW)
 #: horizons/i18n/guitranslations.py:742
 msgid "Show settlement list"
-msgstr "Toon nederzettingslijst"
+msgstr "Toon lijst met nederzettingen"
 
 #. (text of widget: lbl_SHIFT)
 #: horizons/i18n/guitranslations.py:744
@@ -2284,17 +2284,17 @@ msgstr "Inhouden om meerdere gebouwen te plaatsen"
 #. (text of widget: lbl_SHIPS_OVERVIEW)
 #: horizons/i18n/guitranslations.py:746
 msgid "Show ship list"
-msgstr ""
+msgstr "Toon lijst met schepen"
 
 #. (text of widget: lbl_SPEED_DOWN)
 #: horizons/i18n/guitranslations.py:748
 msgid "Decrease game speed"
-msgstr "Spel snelheid verlagen"
+msgstr "Speelsnelheid verlagen"
 
 #. (text of widget: lbl_SPEED_UP)
 #: horizons/i18n/guitranslations.py:750
 msgid "Increase game speed"
-msgstr "Spel snelheid verhogen"
+msgstr "Speelsnelheid verhogen"
 
 #. (text of widget: lbl_TILE_OWNER_HIGHLIGHT)
 #: horizons/i18n/guitranslations.py:752

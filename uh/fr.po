@@ -67,6 +67,8 @@ msgstr "Certains de vos colons viennent juste de déménager."
 #: database files sql
 msgid "The route is now configured. Start it via the \"start route\" button in the \"configure route\" menu."
 msgstr ""
+"La route est maintenant configuré. Lancez la via le bouton «démarrer route» "
+"dans le menu «configurer route» "
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
@@ -1192,9 +1194,8 @@ msgstr "Colons"
 #. (text of widget: headline)
 #: horizons/gui/tabs/mainsquaretabs.py:246
 #: horizons/i18n/guitranslations.py:222
-#, fuzzy
 msgid "Citizens"
-msgstr "citoyen"
+msgstr "Citoyens"
 
 # An "apercu" is more a preview than an overview.
 #. (text of widget: headline)
@@ -1240,7 +1241,7 @@ msgstr "Achat/Vente"
 
 #: horizons/gui/tabs/overviewtab.py:240
 msgid "Too far from the nearest own or allied warehouse"
-msgstr ""
+msgstr "Trop loin d'un comptoir ami"
 
 # 94%
 #: horizons/gui/tabs/overviewtab.py:246
@@ -1262,7 +1263,7 @@ msgstr "Désarmer"
 
 #: horizons/gui/tabs/overviewtab.py:313
 msgid "Tower overview"
-msgstr ""
+msgstr "Panneau tour"
 
 # An "apercu" is more a preview than an overview.
 # 76%
@@ -1287,12 +1288,12 @@ msgstr "Limite : {amount}t par emplacement"
 
 #: horizons/gui/widgets/logbook.py:41
 msgid "Logbook"
-msgstr ""
+msgstr "Journal de bord"
 
 #. (text of widget: headline_statistics)
 #: horizons/gui/widgets/logbook.py:42 horizons/i18n/guitranslations.py:586
 msgid "Statistics"
-msgstr ""
+msgstr "Statistiques"
 
 #. (text of widget: headline)
 #. (text of widget: headline_chat)
@@ -1381,11 +1382,11 @@ msgstr "Arrêter la route"
 
 #: horizons/gui/widgets/routeconfig.py:98
 msgid "Need at least two settlements"
-msgstr ""
+msgstr "Besoin d'au moins deux colonies"
 
 #: horizons/gui/widgets/routeconfig.py:99
 msgid "You need at least two different settlements in your route."
-msgstr ""
+msgstr "Vous avez besoin d'au moins deux colonies pour votre route."
 
 #: horizons/gui/widgets/routeconfig.py:144
 msgid "Click on a settlement to add a waypoint!"
@@ -2008,7 +2009,7 @@ msgstr "Sélectionner les ressources :"
 #. (tooltip of widget: headline) Please keep the translation similarly short and concise, else the tooltip is not well understood by players.
 #: horizons/i18n/guitranslations.py:568
 msgid "The resource you select is displayed instead of the current one. Empty by clicking on X."
-msgstr ""
+msgstr "La ressource cliquée prend la place de l'actuelle. Videz en cliquant X."
 
 #. (tooltip of widget: delete_warehouse) Trade route entry
 #: horizons/i18n/guitranslations.py:573
@@ -2028,7 +2029,7 @@ msgstr "Monter"
 #. (text of widget: headline_game_messages)
 #: horizons/i18n/guitranslations.py:584
 msgid "Game messages"
-msgstr ""
+msgstr "Messages du jeu"
 
 #. (text of widget: stats_players)
 #: horizons/i18n/guitranslations.py:588
@@ -2048,7 +2049,7 @@ msgstr "Mes navires"
 #. (text of widget: wb2) Only filter messages important for your own settlements (disasters, new increment, ...)
 #: horizons/i18n/guitranslations.py:594
 msgid "Own settlements"
-msgstr ""
+msgstr "Vos colonies"
 
 #. (text of widget: wb5) Sends the chat message to all allied players.
 #: horizons/i18n/guitranslations.py:596
@@ -2444,6 +2445,7 @@ msgstr "Nom du jeu:"
 #: horizons/i18n/guitranslations.py:824 horizons/i18n/guitranslations.py:956
 msgid "This will be displayed to other players so they recognise the game."
 msgstr ""
+"Ceci sera diffusé aux autres joueurs pour qu'ils reconnaissent la partie."
 
 #. (text of widget: exit_to_mp_menu_lbl)
 #: horizons/i18n/guitranslations.py:829
@@ -2813,12 +2815,14 @@ msgstr "Nom du joueur :"
 #. name of buildings:alvearies
 #: horizons/i18n/objecttranslations.py:53
 msgid "Alvearies"
-msgstr ""
+msgstr "Ruches"
 
 #. tooltip_text of buildings:alvearies
 #: horizons/i18n/objecttranslations.py:55
 msgid "Keeps bees. Produces honeycombs used for confectionery. Needs a farm."
 msgstr ""
+"Abrite des abeilles. Produit du miel utiliser comme sucre. Nécessite une "
+"ferme."
 
 #. name of buildings:bakery
 #: horizons/i18n/objecttranslations.py:60
@@ -2828,7 +2832,7 @@ msgstr "Boulangerie"
 #. tooltip_text of buildings:bakery
 #: horizons/i18n/objecttranslations.py:62
 msgid "Consumes flour. Produces food."
-msgstr ""
+msgstr "Nécessite de la farine. Produit de la nourriture."
 
 #. name of buildings:barracks
 #: horizons/i18n/objecttranslations.py:67
