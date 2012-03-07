@@ -7,8 +7,8 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2012-03-02 04:09+0100\n"
-"PO-Revision-Date: 2012-03-07 02:01+0200\n"
-"Last-Translator: VinWij <vinwij@vinwij.nl>\n"
+"PO-Revision-Date: 2012-03-07 17:41+0200\n"
+"Last-Translator: angellus <nzwaal@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: nl\n"
 "MIME-Version: 1.0\n"
@@ -2315,7 +2315,7 @@ msgstr "Naar boven scrollen"
 #. (tooltip of widget: cancelButton)
 #: horizons/i18n/guitranslations.py:758 horizons/i18n/guitranslations.py:905
 msgid "Return"
-msgstr ""
+msgstr "terug"
 
 #. (text of widget: fife_and_uh_team)
 #: horizons/i18n/guitranslations.py:760
@@ -2401,7 +2401,7 @@ msgstr "Verlaten naar multiplayer menu"
 #. (text of widget: gamename_lbl)
 #: horizons/i18n/guitranslations.py:822 horizons/i18n/guitranslations.py:954
 msgid "Name of the game:"
-msgstr ""
+msgstr "spel"
 
 #. (tooltip of widget: gamename_lbl)
 #: horizons/i18n/guitranslations.py:824 horizons/i18n/guitranslations.py:956
@@ -2452,7 +2452,7 @@ msgstr "Hoofd menu:"
 #. (text of widget: game_showonlyownversion)
 #: horizons/i18n/guitranslations.py:850
 msgid "Only show games with the same version:"
-msgstr ""
+msgstr "Toon alleen spellen met gelijke versie"
 
 #. (text of widget: headline_left)
 #: horizons/i18n/guitranslations.py:852
@@ -2489,7 +2489,7 @@ msgstr "Speel mee met geselecteerd spel"
 #. (tooltip of widget: load)
 #: horizons/i18n/guitranslations.py:864
 msgid "Load a saved game"
-msgstr ""
+msgstr "Laden"
 
 #. (tooltip of widget: cancel)
 #: horizons/i18n/guitranslations.py:866 horizons/i18n/guitranslations.py:977
@@ -2518,9 +2518,8 @@ msgstr "Taal"
 
 #. (text of widget: headline_mouse)
 #: horizons/i18n/guitranslations.py:881
-#, fuzzy
 msgid "Mouse"
-msgstr "huizen"
+msgstr "Muis"
 
 #. (text of widget: headline_network)
 #: horizons/i18n/guitranslations.py:883
@@ -2576,14 +2575,13 @@ msgstr "Toepassen"
 # 84%
 #. (tooltip of widget: defaultButton)
 #: horizons/i18n/guitranslations.py:907
-#, fuzzy
 msgid "Reset to default settings"
-msgstr "Hertel standaard instellingen"
+msgstr "Herstel standaard instellingen"
 
 #. (text of widget: auto_unload_label)
 #: horizons/i18n/guitranslations.py:909
 msgid "Auto-unload ship:"
-msgstr ""
+msgstr "Schip automatisch uitladen:"
 
 #. (text of widget: color_depth_label)
 #: horizons/i18n/guitranslations.py:911
@@ -2593,19 +2591,18 @@ msgstr "Kleur diepte:"
 #. (text of widget: edge_scrolling_label)
 #: horizons/i18n/guitranslations.py:913
 msgid "Scroll at map edge:"
-msgstr ""
+msgstr "Scrollen aan de rand van de map:"
 
 #. (text of widget: minimap_rotation_label)
 #: horizons/i18n/guitranslations.py:915
 msgid "Rotate minimap with map:"
-msgstr ""
+msgstr "Roteer de mini-kaart:"
 
 # 76%
 #. (text of widget: mouse_sensitivity_label)
 #: horizons/i18n/guitranslations.py:917
-#, fuzzy
 msgid "Mouse sensitivity:"
-msgstr "Grondstoffen afzetting:"
+msgstr "Muisgevoeligheid:"
 
 #. (text of widget: network_port_lbl)
 #: horizons/i18n/guitranslations.py:919
@@ -2615,7 +2612,7 @@ msgstr "Poort:"
 #. (text of widget: uninterrupted_building_label)
 #: horizons/i18n/guitranslations.py:921
 msgid "Uninterrupted building:"
-msgstr ""
+msgstr "Onverstoord gebouw:"
 
 #. (text of widget: use_renderer_label)
 #: horizons/i18n/guitranslations.py:923
@@ -2625,43 +2622,43 @@ msgstr "Renderer:"
 #. (tooltip of widget: auto_unload_label)
 #: horizons/i18n/guitranslations.py:925
 msgid "Whether to unload the ship after founding a settlement"
-msgstr ""
+msgstr "Schip uitladen bij de start van een nederzetting?"
 
 #. (tooltip of widget: color_depth_label)
 #: horizons/i18n/guitranslations.py:927
 msgid "If set to 0, use the driver default"
-msgstr ""
+msgstr "Indien 0, wordt de standaard driver gebruikt."
 
 #. (tooltip of widget: edge_scrolling_label)
 #: horizons/i18n/guitranslations.py:929
 msgid "Whether to move the viewport when the mouse pointer is close to map edges"
-msgstr ""
+msgstr "De map scrollen als de muis dicht langs de rand is"
 
 #. (tooltip of widget: minimap_rotation_label)
 #: horizons/i18n/guitranslations.py:931
 msgid "Whether to also rotate the minimap whenever the regular map is rotated"
-msgstr ""
+msgstr "Mini-kaart mee roteren met de kaart?"
 
 #. (tooltip of widget: mouse_sensitivity_label)
 #: horizons/i18n/guitranslations.py:933
-#, fuzzy
 msgid "0 is default system settings"
-msgstr "Hertel standaard instellingen"
+msgstr "0 = standaard instellingen"
 
 #. (tooltip of widget: network_port_lbl)
 #: horizons/i18n/guitranslations.py:935
 msgid "If set to 0, use the router default"
-msgstr ""
+msgstr "Indien 0, wordt de standaardinstelling gebruikt"
 
 #. (tooltip of widget: uninterrupted_building_label)
 #: horizons/i18n/guitranslations.py:937
 msgid "When enabled, do not exit the build mode after successful construction"
 msgstr ""
+"Indien geselecteerd wordt de bouwmodus niet verlaten na succesvol bouwen"
 
 #. (tooltip of widget: use_renderer_label)
 #: horizons/i18n/guitranslations.py:939
 msgid "SDL is only meant as unsupported fallback and might cause problems!"
-msgstr ""
+msgstr "SDL wordt niet ondersteund en kan problemen geven."
 
 #. (text of widget: enter_filename_label)
 #: horizons/i18n/guitranslations.py:944
@@ -2681,7 +2678,7 @@ msgstr "Annuleer"
 #. (tooltip of widget: deleteButton)
 #: horizons/i18n/guitranslations.py:952
 msgid "Delete selected savegame"
-msgstr ""
+msgstr "Verwijder geselecteerde opgeslagen spel"
 
 #. (text of widget: headline)
 #: horizons/i18n/guitranslations.py:961
@@ -2736,7 +2733,7 @@ msgstr "Kaart instellingen:"
 #. (text of widget: seed_string_lbl)
 #: horizons/i18n/guitranslations.py:994
 msgid "Seed:"
-msgstr ""
+msgstr "Level-seed:"
 
 #. (text of widget: ai_players_label)
 #: horizons/i18n/guitranslations.py:1004
@@ -2751,12 +2748,12 @@ msgstr "Spel instellingen:"
 #. (text of widget: lbl_disasters) Whether there should be disasters in the game.
 #: horizons/i18n/guitranslations.py:1011
 msgid "Disasters"
-msgstr ""
+msgstr "Rampen"
 
 #. (text of widget: lbl_free_trader) Whether to create this kind of player in the game.
 #: horizons/i18n/guitranslations.py:1013
 msgid "Free Trader"
-msgstr ""
+msgstr "Vrije handelaar"
 
 #. (text of widget: lbl_pirates) Whether to create this kind of player in the game.
 #: horizons/i18n/guitranslations.py:1015
@@ -2773,6 +2770,7 @@ msgstr "Kleur:"
 msgid "Player name:"
 msgstr "Spelersnaam:"
 
+# What does this building do? Can't google it.
 #. name of buildings:alvearies
 #: horizons/i18n/objecttranslations.py:53
 msgid "Alvearies"
