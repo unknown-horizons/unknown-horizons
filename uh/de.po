@@ -7,8 +7,8 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2012-03-02 04:09+0100\n"
-"PO-Revision-Date: 2012-03-04 23:11+0200\n"
-"Last-Translator: H0ff1 <stefhoff@go4more.de>\n"
+"PO-Revision-Date: 2012-03-07 14:35+0200\n"
+"Last-Translator: Raymond <raymondv@gmx.de>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: de\n"
 "MIME-Version: 1.0\n"
@@ -37,7 +37,7 @@ msgstr "Eine neue Welt wurde erschaffen."
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
 msgid "Cannot go here."
-msgstr ""
+msgstr "Kann hier nicht hingehen. "
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
@@ -63,9 +63,10 @@ msgstr "Einige Eurer Siedler haben soeben Eure Siedlung verlassen."
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
-#, fuzzy
 msgid "The route is now configured. Start it via the \"start route\" button in the \"configure route\" menu."
-msgstr "Aktiviert sie, indem"
+msgstr ""
+"Die Route ist nun konfiguriert. Starten Sie es über die \"Start-Route\"-Taste "
+"in dem \"Konfiguriere Route\" Menü"
 
 # "aufziehen" ersetzen
 #. This is a database entry: a messagewidget message (left part of the screen).
@@ -463,37 +464,39 @@ msgstr "Wolle"
 #: database files sql
 #, python-format
 msgid "{player1} and {player2} have allied their forces."
-msgstr ""
+msgstr "{player1} und {player2} sind nun Verbündete."
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
 #, python-format
 msgid "{player1} and {player2} have ended the war and are now allied."
 msgstr ""
+"{player1} und {player2} haben den Krieg beendet und sind nun Verbündete. "
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
 #, python-format
 msgid "{player1} and {player2} have ended their alliance and are now in a state of war."
 msgstr ""
+"{player1} und {player2} haben Ihr Bündnis beendet und sind nun im Krieg. "
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
 #, python-format
 msgid "{player1} and {player2} have settled their hostility."
-msgstr ""
+msgstr "{player1} und {player2} haben ihre Feindschaft niedergelegt."
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
 #, python-format
 msgid "{player1} and {player2} have terminated their alliance."
-msgstr ""
+msgstr "{player1} und {player2} haben Ihr Bündnis beendet."
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
 #, python-format
 msgid "{player1} and {player2} will fight each other to the death."
-msgstr ""
+msgstr "{player1} und {player2} werden bis zum Tod kämpfen."
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
@@ -511,7 +514,7 @@ msgstr "Ungültiger Dateiname"
 
 #: horizons/command/game.py:37
 msgid "Received an invalid filename for a save command."
-msgstr ""
+msgstr "Einen ungültigen Dateinamen für einen Speichern-Befehl erhalten."
 
 #. There was a problem during the 'save game' procedure.
 #: horizons/command/game.py:47 horizons/gui/gui.py:177
@@ -674,7 +677,7 @@ msgstr "Überschreiben bestätigen"
 
 #: horizons/gui/gui.py:369
 msgid "Invalid filename given"
-msgstr ""
+msgstr "Ungültiger Dateiname angegeben"
 
 #: horizons/gui/gui.py:377
 msgid "Please select a savegame or click on cancel."
@@ -877,6 +880,8 @@ msgstr ""
 #: horizons/gui/modules/multiplayermenu.py:210
 msgid "Meanwhile, please request the file {path} from the game creator and put it in {map_directory} ."
 msgstr ""
+"Unterdessen fordern Sie bitte die Datei {path} aus dem Spielersteller und "
+"lege es in {map_directory}."
 
 #. (text of widget: help)
 #. (text of widget: help) Main / in-game menu entry
@@ -1346,7 +1351,7 @@ msgstr "Handelsroute stoppen"
 
 #: horizons/gui/widgets/routeconfig.py:98
 msgid "Need at least two settlements"
-msgstr ""
+msgstr "Sie benötigen mindestens zwei Siedlungen"
 
 #: horizons/gui/widgets/routeconfig.py:99
 msgid "You need at least two different settlements in your route."
@@ -2395,6 +2400,7 @@ msgstr "Spielname:"
 #: horizons/i18n/guitranslations.py:824 horizons/i18n/guitranslations.py:956
 msgid "This will be displayed to other players so they recognise the game."
 msgstr ""
+"Dies wird anderen Spielern angezeigt, so dass sie das Spiel erkennen können."
 
 #. (text of widget: exit_to_mp_menu_lbl)
 #: horizons/i18n/guitranslations.py:829
@@ -2770,17 +2776,17 @@ msgstr "Bienenstöcke"
 #. tooltip_text of buildings:alvearies
 #: horizons/i18n/objecttranslations.py:55
 msgid "Keeps bees. Produces honeycombs used for confectionery. Needs a farm."
-msgstr ""
+msgstr "Beherbergt Bienen. Erzeugt Waben für Süßwaren. Benötigt eine Farm."
 
 #. name of buildings:bakery
 #: horizons/i18n/objecttranslations.py:60
 msgid "Bakery"
-msgstr ""
+msgstr "Bäckerei"
 
 #. tooltip_text of buildings:bakery
 #: horizons/i18n/objecttranslations.py:62
 msgid "Consumes flour. Produces food."
-msgstr ""
+msgstr "Verbraucht Mehl. Produziert Nahrung."
 
 #. name of buildings:barracks
 #: horizons/i18n/objecttranslations.py:67
@@ -2790,7 +2796,7 @@ msgstr "Kaserne"
 #. tooltip_text of buildings:barracks
 #: horizons/i18n/objecttranslations.py:69
 msgid "Recruits units suitable for ground combat."
-msgstr ""
+msgstr "Rekrutiert Einheiten, die für den Bodenkampf geeignet sind."
 
 #. name of buildings:blender
 #: horizons/i18n/objecttranslations.py:74
@@ -2800,7 +2806,7 @@ msgstr "Gewürzmischer"
 #. tooltip_text of buildings:blender
 #: horizons/i18n/objecttranslations.py:76
 msgid "Produces condiments out of spices."
-msgstr ""
+msgstr "Produziert Würzmittel aus Gewürzen."
 
 # Are there "boats" and "ships" or only boats (ships)?
 #
@@ -2856,7 +2862,7 @@ msgstr "Kohlemeiler"
 #. tooltip_text of buildings:charcoalburning
 #: horizons/i18n/objecttranslations.py:111
 msgid "Burns a lot of boards to charcoal."
-msgstr ""
+msgstr "Verbrennt eine Menge Bretter zu Holzkohle."
 
 # Building
 #. name of buildings:claydeposit
@@ -2878,17 +2884,17 @@ msgstr "Fördert Lehm aus Lehmvorkommen."
 #. name of buildings:cocoafield
 #: horizons/i18n/objecttranslations.py:128
 msgid "Cocoa Field"
-msgstr ""
+msgstr "Kakaofeld"
 
 #. tooltip_text of buildings:cocoafield
 #: horizons/i18n/objecttranslations.py:130
 msgid "Produces cocoa beans used for confectionery. Needs a farm."
-msgstr ""
+msgstr "Produziert Kakaobohnen für Süßwaren. Benötigt eine Farm. "
 
 #. name of buildings:cornfield
 #: horizons/i18n/objecttranslations.py:135
 msgid "Corn Field"
-msgstr ""
+msgstr "Maisfeld"
 
 # 88%
 #. tooltip_text of buildings:cornfield
@@ -3012,12 +3018,12 @@ msgstr "Erhöht die Spielersicht."
 #. name_0 of buildings:lumberjackcamp
 #: horizons/i18n/objecttranslations.py:222
 msgid "Lumberjack Tent"
-msgstr ""
+msgstr "Holzfällerzelt"
 
 #. name_1 of buildings:lumberjackcamp
 #: horizons/i18n/objecttranslations.py:224
 msgid "Lumberjack Hut"
-msgstr ""
+msgstr "Holzfällerhütte"
 
 #. tooltip_text of buildings:lumberjackcamp
 #: horizons/i18n/objecttranslations.py:226
@@ -3043,12 +3049,12 @@ msgstr "Berg"
 #. name of buildings:pastryshop
 #: horizons/i18n/objecttranslations.py:243
 msgid "Pastry Shop"
-msgstr ""
+msgstr "Konditorei"
 
 #. tooltip_text of buildings:pastryshop
 #: horizons/i18n/objecttranslations.py:245
 msgid "Produces all kinds of confectionery."
-msgstr ""
+msgstr "Produziert alle Arten von Süßwaren."
 
 #. name of buildings:pasture
 #: horizons/i18n/objecttranslations.py:250
@@ -3058,7 +3064,7 @@ msgstr "Weide"
 #. tooltip_text of buildings:pasture
 #: horizons/i18n/objecttranslations.py:252
 msgid "Raises sheep. Produces wool. Needs a farm."
-msgstr "Produziert Wolle. Benötigt eine Farm."
+msgstr "Schert Schafe. Produziert Wolle. Benötigt eine Farm."
 
 # *NICHT* Kapelle
 #. name of buildings:pavilion
@@ -3141,7 +3147,7 @@ msgstr "Verhüttet Erze zu Metallen."
 #. name of buildings:spicefield
 #: horizons/i18n/objecttranslations.py:311
 msgid "Spice Field"
-msgstr ""
+msgstr "Gewürzfeld"
 
 #. tooltip_text of buildings:spicefield
 #: horizons/i18n/objecttranslations.py:313
@@ -3166,7 +3172,7 @@ msgstr "Steinbruch"
 #. tooltip_text of buildings:stonepit
 #: horizons/i18n/objecttranslations.py:327
 msgid "Gets stone from a mountain."
-msgstr ""
+msgstr "Holt Steine von einem Berg."
 
 #. name of buildings:storagetent
 #: horizons/i18n/objecttranslations.py:332
@@ -3272,22 +3278,22 @@ msgstr "Fördert die Bildung Eurer Untertanen."
 #. name of buildings:vineyard
 #: horizons/i18n/objecttranslations.py:402
 msgid "Vineyard"
-msgstr ""
+msgstr "Weinberg"
 
 #. tooltip_text of buildings:vineyard
 #: horizons/i18n/objecttranslations.py:404
 msgid "Produces grapes for use in wine and confectionery. Needs a farm."
-msgstr ""
+msgstr "Produziert Trauben für Wein und Süßwaren. Benötigt eine Farm."
 
 #. name of buildings:vintner
 #: horizons/i18n/objecttranslations.py:409
 msgid "Vintner"
-msgstr ""
+msgstr "Winzer"
 
 #. tooltip_text of buildings:vintner
 #: horizons/i18n/objecttranslations.py:411
 msgid "Produces wine out of grapes."
-msgstr ""
+msgstr "Produziert Wein aus Trauben."
 
 #. name of buildings:warehouse
 #: horizons/i18n/objecttranslations.py:416
@@ -3312,7 +3318,7 @@ msgstr "Windmühle"
 #. tooltip_text of buildings:windmill
 #: horizons/i18n/objecttranslations.py:430
 msgid "Grinds corn into flour."
-msgstr "Mahlt Korn zu Mehl. "
+msgstr "Mahlt Korn zu Mehl."
 
 #. name of buildings:woodentower
 #: horizons/i18n/objecttranslations.py:435
@@ -3536,7 +3542,7 @@ msgstr ""
 
 #: horizons/world/building/buildable.py:46
 msgid "This building requires to be placed near the ocean."
-msgstr "Dieses Gebäude muss am Ozean platziert werden. "
+msgstr "Dieses Gebäude muss am Ozean platziert werden."
 
 #: horizons/world/building/buildable.py:47
 msgid "This spot is too far away from your ship."
