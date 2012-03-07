@@ -39,6 +39,7 @@ def init_pychan():
 	from horizons.gui.widgets.stepslider import StepSlider
 	from horizons.gui.widgets.unitoverview import HealthWidget, StanceWidget, WeaponStorageWidget
 	from horizons.gui.widgets.container import AutoResizeContainer
+	from horizons.gui.widgets.tooltip import _Tooltip
 
 	widgets = [OkButton, CancelButton, DeleteButton,
 			   Inventory, BuySellInventory, ImageFillStatusButton,
@@ -46,6 +47,26 @@ def init_pychan():
 			   TooltipIcon, TooltipButton, TooltipLabel, TooltipProgressBar,
 			   HealthWidget, StanceWidget, WeaponStorageWidget,
 	       AutoResizeContainer]
+
+
+	# patch default widgets to support tooltips via helptext attribute
+	for name, widget in pychan.widgets.WIDGETS.items()[:]:
+		print widget
+		if any( attr.name == "helptext" for attr in widget.ATTRIBUTES ):
+
+			# create a new class with this __init__, so tooltips are initalize
+			# (the new class will just dynamically inherit from the original wiget
+			# as well as _Tooltip)
+			def __init__(self, *args, **kwargs):
+				super(self.__class__, self).__init__(*args, **kwargs)
+				self.init_tooltip()
+
+			klass_name =  str(widget)+" with tooltip hack (see horizons/engine/pychan_util.py"
+			base_klasses =  (widget, _Tooltip)
+			klass = type(klass_name, base_klasses, {"__init__" : __init__} )
+
+			# register this new class in pychan
+			pychan.widgets.WIDGETS[name] = klass
 
 	for widget in widgets:
 		pychan.widgets.registerWidget(widget)
@@ -62,11 +83,6 @@ def init_pychan():
 					entries.append( (k_i, v) )
 			else:
 				entries.append( (k, v) )
-
-		for entry in entries[:]:
-			# Button is the same as Tooltip button, duplicate styles
-			if entry[0] == "Button":
-				entries.append( ("TooltipButton", entry[1]) )
 
 		return dict(entries)
 

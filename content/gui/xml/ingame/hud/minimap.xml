@@ -73,11 +73,11 @@ In case you change the size of this Container, also adapt the ingamegui position
 		down_image="content/gui/icons/widgets/minimap/captainslog_h.png"
 		hover_image="content/gui/icons/widgets/minimap/captainslog_h.png"
 		is_focusable="0" tooltip="Captain's log (L)" />
-	<TooltipButton name="build" position="82,42"
+	<ImageButton name="build" position="82,42"
 		up_image="content/gui/icons/widgets/minimap/build.png"
 		down_image="content/gui/icons/widgets/minimap/build_h.png"
 		hover_image="content/gui/icons/widgets/minimap/build_h.png"
-		is_focusable="0" tooltip="Build menu (B)" />
+		is_focusable="0" helptext="Build menu (B)" />
 	<TooltipButton name="diplomacyButton" position="130,32"
 		up_image="content/gui/icons/widgets/minimap/diplomacy.png"
 		down_image="content/gui/icons/widgets/minimap/diplomacy_h.png"

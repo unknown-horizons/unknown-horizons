@@ -79,7 +79,7 @@ def show_logbook_entry(session, head, message):
 @register(name='logbook')
 def show_logbook_entry_delayed(session, head, message, delay=MESSAGES.LOGBOOK_DEFAULT_DELAY):
 	"""Show a logbook entry delayed by delay seconds.
-	
+
 	Set delay=0 for instant apperaring."""
 	callback = Callback(show_logbook_entry, session, head, message)
 	Scheduler().add_new_object(callback, session.scenario_eventhandler, run_in=Scheduler().get_ticks(delay))

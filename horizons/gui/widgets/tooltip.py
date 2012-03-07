@@ -28,6 +28,7 @@ from horizons.extscheduler import ExtScheduler
 from fife.extensions.pychan.widgets.common import UnicodeAttr
 from horizons.gui.widgets import ProgressBar
 from horizons.util.gui import load_uh_widget
+from horizons.util import Callback
 
 class _Tooltip(object):
 	"""Base class for pychan widgets overloaded with tooltip functionality"""
@@ -35,10 +36,8 @@ class _Tooltip(object):
 	SIZE_BG_TOP = 17 # height of the image tooltip_bg_top.png
 	SIZE_BG_BOTTOM = 17 # height of the image tooltip_bg_bottom.png
 	CHARS_PER_LINE = 19 # character count after which we start new line. no wrap
-	def init_tooltip(self, tooltip):
-		self.gui = load_uh_widget('tooltip.xml')
-		self.gui.hide()
-		self.tooltip = tooltip
+	def init_tooltip(self):
+		self.gui = None
 		self.mapEvents({
 			self.name + '/mouseEntered' : self.position_tooltip,
 			self.name + '/mouseExited' : self.hide_tooltip,
@@ -58,6 +57,9 @@ class _Tooltip(object):
 				i()
 		if (event.getButton() == fife.MouseEvent.MIDDLE):
 			return
+
+		if self.gui is None:
+			self.gui = load_uh_widget('tooltip.xml')
 		widget_position = self.getAbsolutePos()
 		screen_width = horizons.main.fife.engine_settings.getScreenWidth()
 		self.gui.y = widget_position[1] + event.getY() + 5
@@ -72,7 +74,7 @@ class _Tooltip(object):
 			self.gui.show()
 
 	def show_tooltip(self):
-		if self.tooltip not in ("", None):
+		if self.helptext not in ("", None):
 			# recreate full tooltip since new text needs to be relayouted
 			self.gui.removeAllChildren()
 			translated_tooltip = _(self.tooltip)
