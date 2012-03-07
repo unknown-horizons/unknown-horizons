@@ -7,8 +7,8 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2012-03-02 04:09+0100\n"
-"PO-Revision-Date: 2012-01-07 07:51+0200\n"
-"Last-Translator: Christopher Oelmueller <chris.oelmueller+uh@gmail.com>\n"
+"PO-Revision-Date: 2012-03-07 07:28+0200\n"
+"Last-Translator: Andrej <andrej.znidarsic@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: sl\n"
 "MIME-Version: 1.0\n"
@@ -27,9 +27,8 @@ msgstr "{player} je ustanovil novo naselbino."
 # 82%
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
-#, fuzzy
 msgid "A new ship has been created."
-msgstr "Ustvarjen je bil nov svet."
+msgstr "Ustvarjena je bila nova ladja."
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
@@ -39,7 +38,7 @@ msgstr "Ustvarjen je bil nov svet."
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
 msgid "Cannot go here."
-msgstr ""
+msgstr "Ni mogoče iti sem."
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
