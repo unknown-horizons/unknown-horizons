@@ -179,7 +179,18 @@ class MPManager(LivingObject):
 				pass
 
 	def hash_value_diff(self, player1, hash1, player2, hash2):
+		"""Called when a divergence has been detected"""
 		self.log.error("MPManager: Hash diff:\n%s hash1: %s\n%s hash2: %s" % (player1, hash1, player2, hash2))
+		self.log.error("------------------")
+		self.log.error("Differences:")
+		if len(hash1) != len(hash2):
+			self.log.error("Different length")
+		items1 = sorted(hash1.iteritems())
+		items2 = sorted(hash2.iteritems())
+		for i in xrange(min(len(hash1), len(hash2))):
+			if (items1[i] != items2[i]):
+				self.log.error(str(i)+": "+str(items1[i]))
+				self.log.error(str(i)+": "+str(items2[i]))
 		self.log.error("------------------")
 
 	def calculate_execution_tick(self, tick):
@@ -258,6 +269,11 @@ class MPCheckupHashManager(MPPacketmanager):
 		return super(MPCheckupHashManager, self).is_tick_ready(tick)
 
 	def are_checkup_hash_values_equal(self, tick, cb_diff = None):
+		"""
+		@param packages for tick
+		@param cb_diff: called in case hashes differ
+		@return False if they are not equal
+		"""
 		pkges = self.get_packets_for_tick(tick)
 		for pkg in pkges[1:]:
 			if pkges[0].checkup_hash != pkg.checkup_hash:
