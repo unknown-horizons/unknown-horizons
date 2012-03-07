@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2012-03-02 04:09+0100\n"
-"PO-Revision-Date: 2012-01-22 03:35+0200\n"
+"PO-Revision-Date: 2012-03-07 08:15+0200\n"
 "Last-Translator: ussikene <ussikene@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: et\n"
@@ -26,9 +26,8 @@ msgstr "Uus koloonia rajati {player} poolt."
 # 82%
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
-#, fuzzy
 msgid "A new ship has been created."
-msgstr "Uus maailm on loodud."
+msgstr "Uus laev on valminud."
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
@@ -38,7 +37,7 @@ msgstr "Uus maailm on loodud."
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
 msgid "Cannot go here."
-msgstr ""
+msgstr "Ei saa minna."
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
