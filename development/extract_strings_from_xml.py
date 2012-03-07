@@ -116,7 +116,7 @@ def list_all_files():
 				result.append('%s/%s' % (entry[0], filename))
 	return sorted(result)
 
-def content_from_element(element_name, parse_tree, text_name='text'):
+def content_from_element(element_name, parse_tree, text_name):
 
 	def _set_default_name(element, default_name):
 		element.setAttribute('name', default_name)
@@ -153,16 +153,15 @@ def content_from_file(filename):
 	print '@ %s' % filename
 	parsed = xml.dom.minidom.parse(filename)
 
-	strings = content_from_element('Label', parsed) + \
-		content_from_element('Button', parsed) + \
-		content_from_element('CheckBox', parsed) + \
-		content_from_element('RadioButton', parsed) + \
-		content_from_element('Window', parsed, 'title') + \
+	strings = \
+		content_from_element('Button', parsed, 'text') + \
+		content_from_element('CheckBox', parsed, 'text') + \
 		content_from_element('Label', parsed, 'text') + \
+		content_from_element('RadioButton', parsed, 'text') + \
 \
-		content_from_element('OkButton', parsed, 'helptext') + \
 		content_from_element('CancelButton', parsed, 'helptext') + \
 		content_from_element('DeleteButton', parsed, 'helptext') + \
+		content_from_element('OkButton', parsed, 'helptext') + \
 \
 		content_from_element('Button', parsed, 'helptext') + \
 		content_from_element('Icon', parsed, 'helptext') + \
