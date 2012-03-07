@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2012-03-02 04:09+0100\n"
-"PO-Revision-Date: 2012-03-06 17:53+0200\n"
+"PO-Revision-Date: 2012-03-07 01:50+0200\n"
 "Last-Translator: VinWij <vinwij@vinwij.nl>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: nl\n"
@@ -1595,12 +1595,12 @@ msgstr "Bouw dit schip!"
 #: horizons/i18n/guitranslations.py:162 horizons/i18n/guitranslations.py:179
 #: horizons/i18n/guitranslations.py:646
 msgid "Money"
-msgstr ""
+msgstr "Geld"
 
 #. (tooltip of widget: costs_003)
 #: horizons/i18n/guitranslations.py:164 horizons/i18n/guitranslations.py:181
 msgid "Cloth"
-msgstr ""
+msgstr "Textiel"
 
 #. (tooltip of widget: costs_004)
 #: horizons/i18n/guitranslations.py:166 horizons/i18n/guitranslations.py:183
@@ -1620,7 +1620,7 @@ msgstr "Frigaat"
 #. (tooltip of widget: costs_040)
 #: horizons/i18n/guitranslations.py:187
 msgid "Cannons"
-msgstr ""
+msgstr "Kanonnen"
 
 #. (text of widget: ally_label) Diplomacy state of player
 #: horizons/i18n/guitranslations.py:192
@@ -1649,7 +1649,7 @@ msgstr "Bouw velden"
 #: horizons/i18n/guitranslations.py:206 horizons/i18n/guitranslations.py:210
 #: horizons/i18n/guitranslations.py:383 horizons/i18n/guitranslations.py:387
 msgid "Capacity utilization"
-msgstr ""
+msgstr "Verbruiksstatistieken"
 
 #. (text of widget: headline_residents_per_house)
 #: horizons/i18n/guitranslations.py:224 horizons/i18n/guitranslations.py:276
@@ -1712,27 +1712,24 @@ msgstr "5 bewoners"
 # 90%
 #. (text of widget: resident_6)
 #: horizons/i18n/guitranslations.py:240
-#, fuzzy
 msgid "6 residents"
-msgstr "2 bewoners"
+msgstr "6 bewoners"
 
 # 88%
 # 81%
 # 90%
 #. (text of widget: resident_7)
 #: horizons/i18n/guitranslations.py:242
-#, fuzzy
 msgid "7 residents"
-msgstr "2 bewoners"
+msgstr "7 bewoners"
 
 # 88%
 # 81%
 # 90%
 #. (text of widget: resident_8)
 #: horizons/i18n/guitranslations.py:244
-#, fuzzy
 msgid "8 residents"
-msgstr "2 bewoners"
+msgstr "8 bewoners"
 
 # 88%
 #. (text of widget: residents)
@@ -1886,7 +1883,7 @@ msgstr ""
 #. (tooltip of widget: collector_utilisation) Percentage describing how busy the collectors were (100% = always going for / already carrying full load of goods)
 #: horizons/i18n/guitranslations.py:451 horizons/i18n/guitranslations.py:455
 msgid "Collector utilisation"
-msgstr ""
+msgstr "Gebruikspercentage"
 
 #. (text of widget: exchange_label)
 #: horizons/i18n/guitranslations.py:473 horizons/i18n/guitranslations.py:486
@@ -1906,7 +1903,7 @@ msgstr "Handelspartner:"
 #. (tooltip of widget: configure_route)
 #: horizons/i18n/guitranslations.py:499 horizons/i18n/guitranslations.py:510
 msgid "Configure trading route"
-msgstr ""
+msgstr "Stel handelsroute in"
 
 #. (text of widget: headline)
 #: horizons/i18n/guitranslations.py:519
@@ -1916,7 +1913,7 @@ msgstr "Koop of verkoop grondstof"
 #. (text of widget: headline_trade_history)
 #: horizons/i18n/guitranslations.py:521
 msgid "Trade history"
-msgstr ""
+msgstr "Handelsgeschiedenis"
 
 #. (text of widget: headline)
 #: horizons/i18n/guitranslations.py:526
@@ -1967,14 +1964,15 @@ msgstr "Start productie"
 # 94%
 #. (text of widget: headline) Please keep the translation similarly short and concise, else the tooltip is not well understood by players.
 #: horizons/i18n/guitranslations.py:566
-#, fuzzy
 msgid "Select resource:"
-msgstr "Selecteer grondstoffen:"
+msgstr "Selecteer grondstof:"
 
 #. (tooltip of widget: headline) Please keep the translation similarly short and concise, else the tooltip is not well understood by players.
 #: horizons/i18n/guitranslations.py:568
 msgid "The resource you select is displayed instead of the current one. Empty by clicking on X."
 msgstr ""
+"De geselecteerde grondstof wordt in plaats van de huidige getoond. Druk op X "
+"om te wissen."
 
 #. (tooltip of widget: delete_warehouse) Trade route entry
 #: horizons/i18n/guitranslations.py:573
@@ -1994,42 +1992,43 @@ msgstr "Naar boven verplaatsen"
 #. (text of widget: headline_game_messages)
 #: horizons/i18n/guitranslations.py:584
 msgid "Game messages"
-msgstr ""
+msgstr "Spelberichten"
 
 #. (text of widget: stats_players)
 #: horizons/i18n/guitranslations.py:588
 msgid "Players"
-msgstr ""
+msgstr "Spelers"
 
 #. (text of widget: stats_settlements)
 #: horizons/i18n/guitranslations.py:590
 msgid "My settlements"
-msgstr ""
+msgstr "Mijn nederzettingen"
 
 #. (text of widget: stats_ships)
 #: horizons/i18n/guitranslations.py:592
 msgid "My ships"
-msgstr ""
+msgstr "Mijn schepen"
 
 #. (text of widget: wb2) Only filter messages important for your own settlements (disasters, new increment, ...)
 #: horizons/i18n/guitranslations.py:594
 msgid "Own settlements"
-msgstr ""
+msgstr "Eigen nederzettingen"
 
 #. (text of widget: wb5) Sends the chat message to all allied players.
 #: horizons/i18n/guitranslations.py:596
 msgid "Allies"
-msgstr ""
+msgstr "Medestanders"
 
+# "Hele wereld" would be litteral, but I think this is more to the point.
 #. (text of widget: weird_button_1) Displays all notifications and game messages
 #: horizons/i18n/guitranslations.py:598
 msgid "Whole world"
-msgstr ""
+msgstr "Alle berichten"
 
 #. (text of widget: weird_button_4) Sends the chat message to all players (default)
 #: horizons/i18n/guitranslations.py:600
 msgid "Everybody"
-msgstr ""
+msgstr "Iedereen"
 
 #. (tooltip of widget: okButton)
 #. (text of widget: start)
@@ -2040,7 +2039,7 @@ msgstr "Keer terug naar spel"
 #. (tooltip of widget: backwardButton) Entry of Captain's Log (logbook/diary used in scenarios)
 #: horizons/i18n/guitranslations.py:604
 msgid "Read previous entries"
-msgstr ""
+msgstr "Lees vorige berichten"
 
 #. (tooltip of widget: forwardButton) Entry of Captain's Log (logbook/diary used in scenarios)
 #: horizons/i18n/guitranslations.py:606
@@ -2060,22 +2059,22 @@ msgstr "Scenario beschrijving"
 #. (tooltip of widget: cancelButton) Players either select the next scenario they want to play or press this button
 #: horizons/i18n/guitranslations.py:617
 msgid "Continue playing"
-msgstr ""
+msgstr "Speel verder"
 
 #. (tooltip of widget: choose_scenario) Select which scenario to play
 #: horizons/i18n/guitranslations.py:619
 msgid "Choose this scenario"
-msgstr ""
+msgstr "Kies dit scenario"
 
 #. (text of widget: lbl_wait_at_load) Trade route setting: Whether to wait until all goods could be loaded.
 #: horizons/i18n/guitranslations.py:624
 msgid "Wait at load:"
-msgstr ""
+msgstr "Wacht bij het laden:"
 
 #. (text of widget: lbl_wait_at_unload) Trade route setting: Whether to wait until all goods could be unloaded.
 #: horizons/i18n/guitranslations.py:626
 msgid "Wait at unload:"
-msgstr ""
+msgstr "Wacht bij het lossen:"
 
 #. (tooltip of widget: okButton)
 #: horizons/i18n/guitranslations.py:628
@@ -2085,22 +2084,22 @@ msgstr "Einde"
 #. (tooltip of widget: okButton)
 #: horizons/i18n/guitranslations.py:635
 msgid "Close"
-msgstr ""
+msgstr "Sluiten"
 
 #. (text of widget: building_score)
 #: horizons/i18n/guitranslations.py:640
 msgid "Buildings"
-msgstr ""
+msgstr "Gebouwen"
 
 #. (text of widget: headline)
 #: horizons/i18n/guitranslations.py:642
 msgid "Player scores"
-msgstr ""
+msgstr "Score van spelers"
 
 #. (text of widget: land_score)
 #: horizons/i18n/guitranslations.py:644
 msgid "Land"
-msgstr ""
+msgstr "Land"
 
 # 80%
 #. (text of widget: player_name)
@@ -2114,7 +2113,7 @@ msgstr "Naam"
 #. (text of widget: resource_score)
 #: horizons/i18n/guitranslations.py:650
 msgid "Resources"
-msgstr ""
+msgstr "Grondstoffen"
 
 #. (text of widget: unit_score)
 #: horizons/i18n/guitranslations.py:656
@@ -2130,7 +2129,7 @@ msgstr "Balans"
 #. (text of widget: health)
 #: horizons/i18n/guitranslations.py:674
 msgid "Health"
-msgstr ""
+msgstr "Gezondheid"
 
 #. (text of widget: ship_type)
 #: horizons/i18n/guitranslations.py:678
@@ -2190,7 +2189,7 @@ msgstr "Console aan/uit"
 #. (text of widget: lbl_COORD_TOOLTIP)
 #: horizons/i18n/guitranslations.py:708
 msgid "Show coordinate values (Debug)"
-msgstr ""
+msgstr "Toon coördinaten (Debug)"
 
 #. (text of widget: lbl_DESTROY_TOOL)
 #: horizons/i18n/guitranslations.py:710
@@ -2230,7 +2229,7 @@ msgstr "Pauseer spel"
 #. (text of widget: lbl_PLAYERS_OVERVIEW)
 #: horizons/i18n/guitranslations.py:724
 msgid "Show player scores"
-msgstr ""
+msgstr "Toon scores"
 
 #. (text of widget: lbl_QUICKLOAD)
 #: horizons/i18n/guitranslations.py:726
@@ -2245,7 +2244,7 @@ msgstr "Snel opslaan"
 #. (text of widget: lbl_REMOVE_SELECTED)
 #: horizons/i18n/guitranslations.py:730
 msgid "Remove selected units / buildings"
-msgstr ""
+msgstr "Verwijder geselecteerde eenheden / gebouwen"
 
 #. (text of widget: lbl_RIGHT)
 #: horizons/i18n/guitranslations.py:732
@@ -2255,17 +2254,17 @@ msgstr "Naar rechts scrollen"
 #. (text of widget: lbl_ROAD_TOOL)
 #: horizons/i18n/guitranslations.py:734
 msgid "Enable road building mode"
-msgstr ""
+msgstr "Activeer wegenbouw-modus"
 
 #. (text of widget: lbl_ROTATE_LEFT)
 #: horizons/i18n/guitranslations.py:736
 msgid "Rotate building or map counterclockwise"
-msgstr ""
+msgstr "Draai gebouw of kaart tegen de klok in"
 
 #. (text of widget: lbl_ROTATE_RIGHT)
 #: horizons/i18n/guitranslations.py:738
 msgid "Rotate building or map clockwise"
-msgstr ""
+msgstr "Draai gebouw of kaart met de klok mee"
 
 #. (text of widget: lbl_SCREENSHOT)
 #: horizons/i18n/guitranslations.py:740
@@ -2275,7 +2274,7 @@ msgstr "Schermafbeelding"
 #. (text of widget: lbl_SETTLEMENTS_OVERVIEW)
 #: horizons/i18n/guitranslations.py:742
 msgid "Show settlement list"
-msgstr ""
+msgstr "Toon nederzettingslijst"
 
 #. (text of widget: lbl_SHIFT)
 #: horizons/i18n/guitranslations.py:744
