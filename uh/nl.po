@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2012-03-02 04:09+0100\n"
-"PO-Revision-Date: 2012-03-07 18:01+0200\n"
+"PO-Revision-Date: 2012-03-07 18:19+0200\n"
 "Last-Translator: Nick <nzwaal@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: nl\n"
@@ -3049,7 +3049,7 @@ msgstr "Confectiebakkerij"
 #. tooltip_text of buildings:pastryshop
 #: horizons/i18n/objecttranslations.py:245
 msgid "Produces all kinds of confectionery."
-msgstr ""
+msgstr "Produceert verschillende zoetigheden."
 
 #. name of buildings:pasture
 #: horizons/i18n/objecttranslations.py:250
@@ -3059,7 +3059,7 @@ msgstr "Weiland"
 #. tooltip_text of buildings:pasture
 #: horizons/i18n/objecttranslations.py:252
 msgid "Raises sheep. Produces wool. Needs a farm."
-msgstr "Leefruimte voor schapen. Produceert wol. Heeft een boerderij nodig."
+msgstr "Brengt schapen groot. Produceert wol. Heeft een boerderij nodig."
 
 #. name of buildings:pavilion
 #: horizons/i18n/objecttranslations.py:257
@@ -3069,7 +3069,7 @@ msgstr "Pavilioen"
 #. tooltip_text of buildings:pavilion
 #: horizons/i18n/objecttranslations.py:259
 msgid "Fulfills religious needs of sailors."
-msgstr "Voldoet aan religieuze belangen van zeelui."
+msgstr "Voldoet aan religieuze behoeftes van zeelui."
 
 #. name of buildings:pigsty
 #: horizons/i18n/objecttranslations.py:264
@@ -3099,27 +3099,27 @@ msgstr "Kade"
 #. tooltip_text of buildings:rampart
 #: horizons/i18n/objecttranslations.py:280
 msgid "Protects your settlement."
-msgstr "Verdedig je nederzetting."
+msgstr "Verdedigd je nederzetting."
 
 #. name of buildings:ruinedtent
 #: horizons/i18n/objecttranslations.py:285
 msgid "Ruined Tent"
-msgstr ""
+msgstr "Vernietigde tent"
 
 #. name of buildings:saltponds
 #: horizons/i18n/objecttranslations.py:290
 msgid "Salt Ponds"
-msgstr "Zout Meren"
+msgstr "Zoutmeren"
 
 #. tooltip_text of buildings:saltponds
 #: horizons/i18n/objecttranslations.py:292
 msgid "Evaporates salt. Built on sea coast."
-msgstr "Verdampt zout. Gebouwd op de zee kust."
+msgstr "Verdampt zeewater voor zoutproductie. Gebouwd op de zee kust."
 
 #. name of buildings:signalfire
 #: horizons/i18n/objecttranslations.py:297
 msgid "Signal Fire"
-msgstr "Signaal Vuur"
+msgstr "Signaalvuur"
 
 #. tooltip_text of buildings:signalfire
 #: horizons/i18n/objecttranslations.py:299
@@ -3139,42 +3139,42 @@ msgstr "Verwerkt verschillende soorten erts."
 #. name of buildings:spicefield
 #: horizons/i18n/objecttranslations.py:311
 msgid "Spice Field"
-msgstr ""
+msgstr "Specerijenveld"
 
 #. tooltip_text of buildings:spicefield
 #: horizons/i18n/objecttranslations.py:313
 msgid "Grows spices. Needs a farm."
-msgstr ""
+msgstr "Groeit specerijen. Heeft een boerderij nodig."
 
 #. name of buildings:stonemason
 #: horizons/i18n/objecttranslations.py:318
 msgid "Stonemason"
-msgstr ""
+msgstr "Steenhouwer"
 
 #. tooltip_text of buildings:stonemason
 #: horizons/i18n/objecttranslations.py:320
 msgid "Carves stone tops into bricks."
-msgstr ""
+msgstr "Maakt bouwstenen van rots."
 
 #. name of buildings:stonepit
 #: horizons/i18n/objecttranslations.py:325
 msgid "Stone Pit"
-msgstr ""
+msgstr "Rotsafzetting"
 
 #. tooltip_text of buildings:stonepit
 #: horizons/i18n/objecttranslations.py:327
 msgid "Gets stone from a mountain."
-msgstr ""
+msgstr "Haalt rots van de berg."
 
 #. name of buildings:storagetent
 #: horizons/i18n/objecttranslations.py:332
 msgid "Storage Tent"
-msgstr "Opslag Tent"
+msgstr "Opslagtent"
 
 #. tooltip_text of buildings:storagetent
 #: horizons/i18n/objecttranslations.py:334
 msgid "Extends stock and provides collectors."
-msgstr "Vergroot voorraad en levert verzamelaars."
+msgstr "Vergroot voorraadruimte en levert verzamelaars."
 
 #. name of buildings:sugarfield
 #: horizons/i18n/objecttranslations.py:339
@@ -3209,7 +3209,7 @@ msgstr "Woonruimte voor inwoners."
 #. name of buildings:tobaccofield
 #: horizons/i18n/objecttranslations.py:360
 msgid "Tobacco Field"
-msgstr "Tabak veld"
+msgstr "Tabakveld"
 
 #. tooltip_text of buildings:tobaccofield
 #: horizons/i18n/objecttranslations.py:362
@@ -3219,7 +3219,7 @@ msgstr "Produceert tabak. Boerderij benodigd."
 #. name of buildings:tobacconist
 #: horizons/i18n/objecttranslations.py:367
 msgid "Tobacconist"
-msgstr "Tabaksverkoper"
+msgstr "Tabaksverwerker"
 
 #. tooltip_text of buildings:tobacconist
 #: horizons/i18n/objecttranslations.py:369
@@ -3254,7 +3254,7 @@ msgstr "Boom"
 #. tooltip_text of buildings:tree
 #: horizons/i18n/objecttranslations.py:390
 msgid "Provides lumber. Chopped down by lumberjacks."
-msgstr ""
+msgstr "Groeit hout. Wordt omgehakt door houthakkers."
 
 #. name of buildings:villageschool
 #: horizons/i18n/objecttranslations.py:395
@@ -3269,60 +3269,59 @@ msgstr "Levert educatie."
 #. name of buildings:vineyard
 #: horizons/i18n/objecttranslations.py:402
 msgid "Vineyard"
-msgstr ""
+msgstr "Druiventeler"
 
 #. tooltip_text of buildings:vineyard
 #: horizons/i18n/objecttranslations.py:404
 msgid "Produces grapes for use in wine and confectionery. Needs a farm."
 msgstr ""
+"Produceert druiven voor gebruik in wijn en de confectiebakkerij. Heeft een "
+"boerderij nodig."
 
 #. name of buildings:vintner
 #: horizons/i18n/objecttranslations.py:409
 msgid "Vintner"
-msgstr ""
+msgstr "Wijnproducent"
 
 #. tooltip_text of buildings:vintner
 #: horizons/i18n/objecttranslations.py:411
 msgid "Produces wine out of grapes."
-msgstr ""
+msgstr "Produceert wijn uit druiven."
 
 #. name of buildings:warehouse
 #: horizons/i18n/objecttranslations.py:416
-#, fuzzy
 msgid "Warehouse"
-msgstr "huizen"
+msgstr "Warenhuis"
 
 #. name of buildings:weaverstent
 #: horizons/i18n/objecttranslations.py:421
 msgid "Weaver's Tent"
-msgstr "Wevers Tent"
+msgstr "Weverstent"
 
 #. tooltip_text of buildings:weaverstent
 #: horizons/i18n/objecttranslations.py:423
-#, fuzzy
 msgid "Turns lamb wool into cloth."
-msgstr "Maakt kleren van wol."
+msgstr "Maakt doeken van wol."
 
 #. name of buildings:windmill
 #: horizons/i18n/objecttranslations.py:428
 msgid "Windmill"
-msgstr ""
+msgstr "Windmolen"
 
 #. tooltip_text of buildings:windmill
 #: horizons/i18n/objecttranslations.py:430
 msgid "Grinds corn into flour."
-msgstr ""
+msgstr "Vermaalt mais in bloem."
 
 #. name of buildings:woodentower
 #: horizons/i18n/objecttranslations.py:435
 msgid "Wooden Tower"
-msgstr "Houten Toren"
+msgstr "Houten toren"
 
 #. tooltip_text of buildings:woodentower
 #: horizons/i18n/objecttranslations.py:437
-#, fuzzy
 msgid "Defends your settlement."
-msgstr "Verdedig je nederzetting."
+msgstr "Verdedigd je nederzetting."
 
 #: horizons/main.py:318
 msgid "Failed to start/load the game"
@@ -3335,31 +3334,42 @@ msgstr "Het spel dat u geselecteerd heeft kan niet worden gestart."
 #: horizons/main.py:320
 msgid "The savegame might be broken or has been saved with an earlier version."
 msgstr ""
-"De savedgame is defect of is door een eerdere versie van het spel gemaakt."
+"Het opgeslagen spel is defect of is door een eerdere versie van het spel "
+"gemaakt."
 
 #: horizons/main.py:465
 #, python-format
 msgid "Due to technical reasons, the campaign file will be copied to the UH campaign directory ({path})."
 msgstr ""
+"Door technische redenen, wordt het verhaal-bestand gekopieërd naar de UH "
+"verhaalmap ({path})."
 
 #: horizons/main.py:467
 msgid "This means that changes in the file you specified will not apply to the game directly."
 msgstr ""
+"Dit betekend dat verandering in het bestand niet direct het spel zullen "
+"beinvloeden."
 
 #: horizons/main.py:469
 #, python-format
 msgid "To see the changes, either always start UH with the current arguments or edit the file {filename}."
 msgstr ""
+"Om de veranderingen te zien, ofwel start UH altijd met de huidige parameters "
+"of verander het bestand {filename}."
 
 #. if this is reached, we are screwed. Something went wrong in the simulation,
 #. but we don't know what. Stop the game.
 #: horizons/manager.py:185
 msgid "The games have run out of sync. This indicates an unknown internal error, the game cannot continue."
 msgstr ""
+"De spellen lopen niet langer gelijk. Dit is vermoedelijk een onbekende "
+"interne fout. Het spel kan niet doorgaan."
 
 #: horizons/manager.py:186
 msgid "We are very sorry and hope to have this bug fixed in a future version."
 msgstr ""
+"Het spijt ons zeer en we hopen dit probleem in een opvolgende versie "
+"verholpen te hebben."
 
 #: horizons/mpsession.py:66
 msgid "Not possible"
@@ -3372,21 +3382,22 @@ msgstr "Opslaan/laden van multiplayer spellen is nog niet mogelijk"
 #: horizons/mpsession.py:77
 msgid "The filename must consist only of letters, numbers, spaces and _.-"
 msgstr ""
+"De bestandsnaam moet alleen bestaan uit letters, nummers, spaties en _ of -."
 
 #: horizons/savegamemanager.py:360
 #, python-format
 msgid "Error: don't know how to handle condition type {condition}"
-msgstr ""
+msgstr "Fout: Onbekend hoe er om moet worden gegaan met probleem; {condition}."
 
 #: horizons/savegamemanager.py:410 horizons/savegamemanager.py:416
 #, python-format
 msgid "Error: Cannot find campaign '{name}'."
-msgstr ""
+msgstr "Fout: Can niet het verhaal '{name}' vinden."
 
 #: horizons/savegamemanager.py:435 horizons/savegamemanager.py:441
 #, python-format
 msgid "Error: Cannot find scenario '{name}'."
-msgstr ""
+msgstr "Fout: Kan niet het scenario '{name}' vinden."
 
 #: horizons/scenario/actions.py:96
 msgid "You have won!"
@@ -3394,7 +3405,7 @@ msgstr "U heeft gewonnen!"
 
 #: horizons/scenario/actions.py:97
 msgid "You have completed this scenario."
-msgstr ""
+msgstr "U heeft het scenario voltooid."
 
 # 75%
 #: horizons/scenario/actions.py:98
@@ -3414,7 +3425,7 @@ msgstr "Opslaan van de savegame mislukt"
 
 #: horizons/session.py:489
 msgid "There has been an error while creating your savegame file."
-msgstr "Er is een fout opgestreden bij het opslaan van uw savegame."
+msgstr "Er is een fout opgetreden bij het opslaan van uw savegame."
 
 #: horizons/session.py:490
 msgid "This usually means that the savegame name contains unsupported special characters."
@@ -3424,11 +3435,11 @@ msgstr ""
 
 #: horizons/session.py:498
 msgid "Access is denied"
-msgstr ""
+msgstr "Toegang is ontzegd."
 
 #: horizons/session.py:499
 msgid "The savegame file is probably read-only."
-msgstr ""
+msgstr "Het opgeslagen bestand is vermoedelijk alleen-lezen."
 
 #: horizons/session.py:502
 msgid "File used by another process"
