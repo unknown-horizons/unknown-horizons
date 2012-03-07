@@ -20,6 +20,4 @@
 # ###################################################
 
 from progressbar import ProgressBar
-from toggleimagebutton import ToggleImageButton
-from tooltip import TooltipButton, TooltipIcon
 from imagebutton import OkButton, CancelButton, DeleteButton

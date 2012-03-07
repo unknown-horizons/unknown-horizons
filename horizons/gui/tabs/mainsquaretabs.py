@@ -63,7 +63,7 @@ class AccountTab(MainSquareTab):
 	def __init__(self, instance):
 		super(AccountTab, self).__init__(instance=instance, widget='tab_account.xml', \
 		                                 icon_path='content/gui/icons/tabwidget/warehouse/account_%s.png')
-		self.tooltip = _("Account")
+		self.helptext = _("Account")
 
 		self.widget.mapEvents({
 		  'show_production_overview/mouseClicked' : self.show_production_overview
@@ -90,7 +90,7 @@ class AccountTab(MainSquareTab):
 class MainSquareOverviewTab(AccountTab):
 	def __init__(self, instance):
 		super(MainSquareOverviewTab, self).__init__(instance=instance)
-		self.tooltip = _('Main square overview')
+		self.helptext = _('Main square overview')
 		self.widget.child_finder('headline').text = unicode(self.settlement.get_component(NamedComponent).name)
 		self.widget.child_finder('headline').tooltip = _('Click to change the name of your settlement')
 
@@ -109,7 +109,7 @@ class MainSquareSettlerTabSettlerTab(MainSquareTab):
 				widget='mainsquare_inhabitants.xml',
 				instance=instance,
 				icon_path='content/gui/icons/widgets/cityinfo/inhabitants.png')
-		self.tooltip = _("Settler overview")
+		self.helptext = _("Settler overview")
 
 		self._old_most_needed_res_icon = None
 
@@ -225,16 +225,16 @@ class MainSquareSailorsTab(MainSquareSettlerLevelTab):
 	LEVEL = SETTLER.SAILOR_LEVEL
 	def __init__(self, instance):
 		super(MainSquareSailorsTab, self).__init__(instance, 'mainsquare_sailors.xml')
-		self.tooltip = _("Sailors")
+		self.helptext = _("Sailors")
 
 class MainSquarePioneersTab(MainSquareSettlerLevelTab):
 	LEVEL = SETTLER.PIONEER_LEVEL
 	def __init__(self, instance):
 		super(MainSquarePioneersTab, self).__init__(instance, 'mainsquare_pioneers.xml')
-		self.tooltip = _("Pioneers")
+		self.helptext = _("Pioneers")
 
 class MainSquareSettlersTab(MainSquareSettlerLevelTab):
 	LEVEL = SETTLER.SETTLER_LEVEL
 	def __init__(self, instance):
 		super(MainSquareSettlersTab, self).__init__(instance, 'mainsquare_settlers.xml')
-		self.tooltip = _("Settlers")
+		self.helptext = _("Settlers")

@@ -158,15 +158,17 @@ def content_from_file(filename):
 		content_from_element('CheckBox', parsed) + \
 		content_from_element('RadioButton', parsed) + \
 		content_from_element('Window', parsed, 'title') + \
-		content_from_element('OkButton', parsed, 'tooltip') + \
-		content_from_element('CancelButton', parsed, 'tooltip') + \
-		content_from_element('DeleteButton', parsed, 'tooltip') + \
-		content_from_element('TooltipButton', parsed, 'tooltip') + \
-		content_from_element('TooltipIcon', parsed, 'tooltip') + \
-		content_from_element('TooltipLabel', parsed, 'text') + \
-		content_from_element('TooltipLabel', parsed, 'tooltip') + \
-		content_from_element('TooltipProgressBar', parsed, 'tooltip') + \
-		content_from_element('ToggleImageButton', parsed, 'tooltip')
+		content_from_element('Label', parsed, 'text') + \
+\
+		content_from_element('OkButton', parsed, 'helptext') + \
+		content_from_element('CancelButton', parsed, 'helptext') + \
+		content_from_element('DeleteButton', parsed, 'helptext') + \
+\
+		content_from_element('Button', parsed, 'helptext') + \
+		content_from_element('Icon', parsed, 'helptext') + \
+		content_from_element('Label', parsed, 'helptext') + \
+		content_from_element('ProgressBar', parsed, 'helptext') + \
+		content_from_element('ToggleImageButton', parsed, 'helptext')
 
 	if len(strings):
 		printname = filename.rsplit("/",1)[1]

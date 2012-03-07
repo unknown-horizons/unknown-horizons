@@ -21,7 +21,7 @@
 # ###################################################
 from fife.extensions.pychan.widgets import Icon
 
-from horizons.gui.widgets  import TooltipButton
+from fife.extensions.pychan.widgets  import ImageButton
 from horizons.gui.tabs import OverviewTab
 from horizons.util.gui import load_uh_widget
 from horizons.util import Callback
@@ -43,7 +43,7 @@ class BuildRelatedTab(OverviewTab):
 		    instance = instance,
 		    icon_path = 'content/gui/icons/tabwidget/production/related_%s.png'
 		)
-		self.tooltip = _("Build related fields")
+		self.helptext = _("Build related fields")
 
 	def refresh(self):
 		"""
@@ -91,8 +91,8 @@ class BuildRelatedTab(OverviewTab):
 			path = "content/gui/icons/buildmenu/{id:03d}{{mode}}.png".format(id=building_id)
 			tooltip = self.instance.session.db.get_building_tooltip(building_id)
 
-			build_button = TooltipButton(name="build{id}".format(id=building_id), \
-			                             tooltip=tooltip)
+			build_button = ImageButton(name="build{id}".format(id=building_id), \
+			                             helptext=tooltip)
 			build_button.up_image = path.format(mode='')
 			build_button.down_image = path.format(mode='_h')
 			build_button.hover_image = path.format(mode='_h')

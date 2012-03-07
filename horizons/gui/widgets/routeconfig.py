@@ -26,7 +26,7 @@ from fife import fife
 from horizons.util.gui import load_uh_widget
 from horizons.util import Callback, Point
 from fife.extensions.pychan import widgets
-from horizons.gui.widgets.tooltip import TooltipButton
+from fife.extensions.pychan.widgets import ImageButton
 from horizons.world.component.storagecomponent import StorageComponent
 from horizons.gui.widgets.minimap import Minimap
 from horizons.world.component.namedcomponent import NamedComponent
@@ -300,7 +300,7 @@ class RouteConfig(object):
 				continue
 			cb = Callback(self.add_resource, slot, res_id, entry)
 			if res_id == 0 or inventory is None: # no fillbar e.g. on dead settlement (shouldn't happen) or dummy slot
-				button = TooltipButton(size=(46,46))
+				button = ImageButton(size=(46,46))
 				icon = self.icon_for_resource[res_id]
 				button.up_image, button.down_image, button.hover_image = icon, icon, icon
 				button.capture(cb)

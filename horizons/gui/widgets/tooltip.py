@@ -25,10 +25,7 @@ from fife.extensions import pychan
 import horizons.main
 
 from horizons.extscheduler import ExtScheduler
-from fife.extensions.pychan.widgets.common import UnicodeAttr
-from horizons.gui.widgets import ProgressBar
 from horizons.util.gui import load_uh_widget
-from horizons.util import Callback
 
 class _Tooltip(object):
 	"""Base class for pychan widgets overloaded with tooltip functionality"""
@@ -77,7 +74,7 @@ class _Tooltip(object):
 		if self.helptext not in ("", None):
 			# recreate full tooltip since new text needs to be relayouted
 			self.gui.removeAllChildren()
-			translated_tooltip = _(self.tooltip)
+			translated_tooltip = _(self.helptext)
 			#HACK this looks better than splitting into several lines & joining
 			# them. works because replace_whitespace in fill defaults to True:
 			replaced = translated_tooltip.replace(r'\n', self.CHARS_PER_LINE*' ')
@@ -124,51 +121,3 @@ class _Tooltip(object):
 		"""Add a callback to always be called when the mouse exits the button (not the tooltip)"""
 		self._exited_callbacks.append(cb)
 
-
-class TooltipIcon(_Tooltip, pychan.widgets.Icon):
-	"""The TooltipIcon is a modified icon widget. It can be used in xml files like this:
-	<TooltipIcon tooltip=""/>
-	Used to display tooltip on hover on icons.
-	Attributes same as Icon widget with addition of tooltip="text string to display".
-	Use '\n' to force newline.
-	"""
-	ATTRIBUTES = pychan.widgets.Icon.ATTRIBUTES + [UnicodeAttr('tooltip')]
-	def __init__(self, tooltip = "", **kwargs):
-		super(TooltipIcon, self).__init__(**kwargs)
-		self.init_tooltip(tooltip)
-
-class TooltipButton(_Tooltip, pychan.widgets.ImageButton):
-	"""The TooltipButton is a modified image button widget. It can be used in xml files like this:
-	<TooltipButton tooltip=""/>
-	Used to display tooltip on hover on buttons.
-	Attributes same as ImageButton widget with addition of tooltip="text string to display".
-	Use '\n' to force newline.
-	"""
-	ATTRIBUTES = pychan.widgets.ImageButton.ATTRIBUTES + [UnicodeAttr('tooltip')]
-	def __init__(self, tooltip = "", **kwargs):
-		super(TooltipButton, self).__init__(**kwargs)
-		self.init_tooltip(tooltip)
-
-class TooltipLabel(_Tooltip, pychan.widgets.Label):
-	"""The TooltipButton is a modified label widget. It can be used in xml files like this:
-	<TooltipLabel tooltip=""/>
-	Used to display tooltip on hover on buttons.
-	Attributes same as Label widget with addition of tooltip="text string to display".
-	Use '\n' to force newline.
-	"""
-	ATTRIBUTES = pychan.widgets.Label.ATTRIBUTES + [UnicodeAttr('tooltip')]
-	def __init__(self, tooltip="", **kwargs):
-		super(TooltipLabel, self).__init__(**kwargs)
-		self.init_tooltip(tooltip)
-
-class TooltipProgressBar(_Tooltip, ProgressBar):
-	"""The TooltipProgressBar is a modified progress bar widget. It can be used in xml files like this:
-	<TooltipProgressbar tooltip=""/>
-	Used to display tooltip on hover on buttons.
-	Attributes same as Label widget with addition of tooltip="text string to display".
-	Use '\n' to force newline.
-	"""
-	ATTRIBUTES = pychan.widgets.Label.ATTRIBUTES + [UnicodeAttr('tooltip')]
-	def __init__(self, tooltip="", **kwargs):
-		super(TooltipProgressBar, self).__init__(**kwargs)
-		self.init_tooltip(tooltip)

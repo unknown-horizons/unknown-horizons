@@ -94,7 +94,7 @@ class BuySellTab(TabInterface):
 		self.trade_history_widget_cache = {} # {(tick, player_id, resource_id, amount, gold): widget, ...}
 
 		self.hide()
-		self.tooltip = _("Trade")
+		self.helptext = _("Trade")
 		self.inited = True
 
 	def hide(self):

@@ -53,7 +53,7 @@ class SelectMultiTab(TabInterface):
 		# keep track of number of instances per type
 		self.type_number = {}
 
-		self.tooltip = _("Selected Units")
+		self.helptext = _("Selected Units")
 		for i in self.session.selected_instances:
 			if hasattr(i, 'stance'):
 				self.stance_unit_number += 1

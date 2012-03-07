@@ -108,4 +108,4 @@ class CursorTool(fife.IMouseListener):
 
 	def end(self):
 		self.session = None
-		self.tooltip = None
+		self.helptext = None

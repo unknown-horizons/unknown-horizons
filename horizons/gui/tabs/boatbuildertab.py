@@ -28,7 +28,7 @@ from horizons.util.gui import get_res_icon
 from horizons.util import Callback
 from horizons.constants import PRODUCTIONLINES
 from horizons.world.production.producer import Producer
-from horizons.gui.widgets.tooltip import TooltipIcon
+from fife.extensions.pychan.widgets import Icon
 
 class _BoatbuilderOverviewTab(OverviewTab):
 	"""Private class all classes here inherit."""
@@ -47,7 +47,7 @@ class BoatbuilderTab(_BoatbuilderOverviewTab):
 			widget = 'boatbuilder.xml',
 			instance = instance
 		)
-		self.tooltip = _("Boat builder overview")
+		self.helptext = _("Boat builder overview")
 
 	def refresh(self):
 		"""This function is called by the TabWidget to redraw the widget."""
@@ -103,7 +103,7 @@ class BoatbuilderTab(_BoatbuilderOverviewTab):
 				               place=place_in_queue+1 )
 				# people don't count properly, always starting at 1..
 				icon_name = "queue_elem_"+str(place_in_queue)
-				icon = TooltipIcon(name=icon_name, image=image, tooltip=tooltip)
+				icon = Icon(name=icon_name, image=image, helptext=tooltip)
 				icon.capture(
 				  Callback(RemoveFromQueue(self.producer, place_in_queue).execute, self.instance.session),
 				  event_name="mouseClicked"
@@ -115,7 +115,7 @@ class BoatbuilderTab(_BoatbuilderOverviewTab):
 			produced_unit_id = self.producer._get_production(production_lines[0]).get_produced_units().keys()[0]
 			(name,) = self.instance.session.db.cached_query("SELECT name FROM unit WHERE id = ?", produced_unit_id)[0]
 			container_active.findChild(name="headline_BB_builtship_label").text = _(name)
-			container_active.findChild(name="BB_cur_ship_icon").tooltip = "Storage: 4 slots, 120t \nHealth: 100"
+			container_active.findChild(name="BB_cur_ship_icon").helptext = "Storage: 4 slots, 120t \nHealth: 100"
 			container_active.findChild(name="BB_cur_ship_icon").image = "content/gui/images/objects/ships/116/%s.png" % (produced_unit_id)
 
 			button_active = container_active.findChild(name="toggle_active_active")
@@ -239,7 +239,7 @@ class BoatbuilderFisherTab(BoatbuilderSelectTab):
 
 	def __init__(self, instance):
 		super(BoatbuilderFisherTab, self).__init__(instance, 'fisher')
-		self.tooltip = _("Fisher boats")
+		self.helptext = _("Fisher boats")
 		# TODO: generalize this hard coded value
 		events = { 'BB_build_fisher_1' : Callback(self.start_production, PRODUCTIONLINES.FISHING_BOAT) }
 		self.widget.mapEvents(events)
@@ -249,7 +249,7 @@ class BoatbuilderTradeTab(BoatbuilderSelectTab):
 	def __init__(self, instance):
 		super(BoatbuilderTradeTab, self).__init__(instance, 'trade')
 		events = { 'BB_build_trade_1' : Callback(self.start_production, PRODUCTIONLINES.HUKER) }
-		self.tooltip = _("Trade boats")
+		self.helptext = _("Trade boats")
 		self.widget.mapEvents(events)
 
 class BoatbuilderWar1Tab(BoatbuilderSelectTab):
@@ -257,14 +257,14 @@ class BoatbuilderWar1Tab(BoatbuilderSelectTab):
 	def __init__(self, instance):
 		super(BoatbuilderWar1Tab, self).__init__(instance, 'war1')
 		events = { 'BB_build_war1_1' : Callback(self.start_production, PRODUCTIONLINES.FRIGATE) }
-		self.tooltip = _("War boats")
+		self.helptext = _("War boats")
 		self.widget.mapEvents(events)
 
 class BoatbuilderWar2Tab(BoatbuilderSelectTab):
 
 	def __init__(self, instance):
 		super(BoatbuilderWar2Tab, self).__init__(instance, 'war2')
-		self.tooltip = _("War ships")
+		self.helptext = _("War ships")
 
 # these tabs additionally request functions for:
 # * goto: show [confirm view] tab (not accessible via tab button in the end)
@@ -281,7 +281,7 @@ class BoatbuilderConfirmTab(_BoatbuilderOverviewTab):
 		)
 		events = { 'create_unit': self.start_production }
 		self.widget.mapEvents(events)
-		self.tooltip = _("Confirm order")
+		self.helptext = _("Confirm order")
 
 	def start_production(self):
 		AddProduction(self.producer, 15).execute(self.instance.session)

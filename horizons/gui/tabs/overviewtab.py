@@ -59,7 +59,7 @@ class OverviewTab(TabInterface):
 		self.button_active_image = icon_path % 'a'
 		self.button_down_image = icon_path % 'd'
 		self.button_hover_image = icon_path % 'h'
-		self.tooltip = _("Overview")
+		self.helptext = _("Overview")
 
 		if self.__class__.has_stance:
 			self.init_stance_widget()
@@ -145,7 +145,7 @@ class WarehouseOverviewTab(OverviewTab):
 			instance = instance
 		)
 		self.widget.findChild(name="headline").text = unicode(self.instance.settlement.get_component(NamedComponent).name)
-		self.tooltip = _("Warehouse overview")
+		self.helptext = _("Warehouse overview")
 		self._refresh_collector_utilisation()
 
 	def _refresh_collector_utilisation(self):
@@ -179,7 +179,7 @@ class ShipOverviewTab(OverviewTab):
 			icon_path='content/gui/icons/tabwidget/ship/ship_inv_%s.png'):
 		super(ShipOverviewTab, self).__init__(instance, widget, icon_path)
 		self.widget.child_finder('inventory').init(self.instance.session.db, self.instance.get_component(StorageComponent).inventory)
-		self.tooltip = _("Ship overview")
+		self.helptext = _("Ship overview")
 
 	def _configure_route(self):
 		self.route_menu = RouteConfig(self.instance)
@@ -187,12 +187,12 @@ class ShipOverviewTab(OverviewTab):
 
 	def _refresh_found_settlement_button(self, events):
 		island_without_player_settlement_found = False
-		tooltip = _("The ship needs to be close to an island to found a settlement.")
+		helptext = _("The ship needs to be close to an island to found a settlement.")
 		for island in self.instance.session.world.get_islands_in_radius(self.instance.position, self.instance.radius):
 			if not any(settlement.owner.is_local_player for settlement in island.settlements):
 				island_without_player_settlement_found = True
 			else:
-				tooltip = _("You already have a settlement on this island.")
+				helptext = _("You already have a settlement on this island.")
 
 		if island_without_player_settlement_found:
 			events['found_settlement'] = Callback(self.instance.session.ingame_gui._build, \
@@ -200,12 +200,12 @@ class ShipOverviewTab(OverviewTab):
 			                                     weakref.ref(self.instance) )
 			self.widget.child_finder('found_settlement_bg').set_active()
 			self.widget.child_finder('found_settlement').set_active()
-			self.widget.child_finder('found_settlement').tooltip = _("Build settlement")
+			self.widget.child_finder('found_settlement').helptext = _("Build settlement")
 		else:
 			events['found_settlement'] = None
 			self.widget.child_finder('found_settlement_bg').set_inactive()
 			self.widget.child_finder('found_settlement').set_inactive()
-			self.widget.child_finder('found_settlement').tooltip = tooltip
+			self.widget.child_finder('found_settlement').helptext = helptext
 
 		cb = Callback( self.instance.session.ingame_gui.resource_overview.set_construction_mode,
 		               self.instance,
@@ -225,19 +225,19 @@ class ShipOverviewTab(OverviewTab):
 		if warehouses:
 			if warehouses[0].owner is self.instance.owner:
 				wdg = TradeWidget(self.instance)
-				tooltip = _('Load/Unload')
+				helptext = _('Load/Unload')
 			else:
 				wdg = InternationalTradeWidget(self.instance)
-				tooltip = _('Buy/Sell')
+				helptext = _('Buy/Sell')
 			events['trade'] = Callback(self.instance.session.ingame_gui.show_menu, wdg)
 			self.widget.findChild(name='trade_bg').set_active()
 			self.widget.findChild(name='trade').set_active()
-			self.widget.findChild(name='trade').tooltip = tooltip
+			self.widget.findChild(name='trade').helptext = helptext
 		else:
 			events['trade'] = None
 			self.widget.findChild(name='trade_bg').set_inactive()
 			self.widget.findChild(name='trade').set_inactive()
-			self.widget.findChild(name='trade').tooltip = _('Too far from the nearest own or allied warehouse')
+			self.widget.findChild(name='trade').helptext = _('Too far from the nearest own or allied warehouse')
 
 	def _refresh_combat(self): # no combat
 		def click_on_cannons(button):
@@ -277,11 +277,11 @@ class FightingShipOverviewTab(ShipOverviewTab):
 
 	def _refresh_combat(self):
 		def apply_equip(button):
-			button.button.tooltip = _("Equip weapon")
+			button.button.helptext = _("Equip weapon")
 			button.button.capture(Callback(self.equip_weapon, button.res_id))
 
 		def apply_unequip(button):
-			button.button.tooltip = _("Unequip weapon")
+			button.button.helptext = _("Unequip weapon")
 			button.button.capture(Callback(self.unequip_weapon, button.res_id))
 
 		self.widget.findChild(name='weapon_inventory').apply_to_buttons(apply_unequip, lambda b: b.res_id == WEAPONS.CANNON)
@@ -310,7 +310,7 @@ class TowerOverviewTab(OverviewTab): # defensive tower
 			instance = instance
 		)
 		self.widget.findChild(name="headline").text = unicode(self.instance.settlement.get_component(NamedComponent).name)
-		self.tooltip = _("Tower overview")
+		self.helptext = _("Tower overview")
 
 class TraderShipOverviewTab(OverviewTab):
 	def __init__(self, instance):
@@ -319,7 +319,7 @@ class TraderShipOverviewTab(OverviewTab):
 			icon_path='content/gui/icons/tabwidget/ship/ship_inv_%s.png',
 			instance = instance
 		)
-		self.tooltip = _("Ship overview")
+		self.helptext = _("Ship overview")
 
 class GroundUnitOverviewTab(OverviewTab):
 	has_stance = True
@@ -327,7 +327,7 @@ class GroundUnitOverviewTab(OverviewTab):
 		super(GroundUnitOverviewTab, self).__init__(
 			widget = 'overview_groundunit.xml',
 			instance = instance)
-		self.tooltip = _("Unit overview")
+		self.helptext = _("Unit overview")
 		health_widget = self.widget.findChild(name='health')
 		health_widget.init(self.instance)
 		self.add_remove_listener(health_widget.remove)
@@ -345,7 +345,7 @@ class ProductionOverviewTab(OverviewTab):
 			widget = widget,
 			instance = instance
 		)
-		self.tooltip = _("Production overview")
+		self.helptext = _("Production overview")
 		self.production_line_gui_xml = production_line_gui_xml
 		self._animations = []
 
@@ -479,7 +479,7 @@ class FarmProductionOverviewTab(ProductionOverviewTab):
 			widget = 'overview_farm.xml',
 			production_line_gui_xml = "overview_farmproductionline.xml"
 		)
-		self.tooltip = _("Production overview")
+		self.helptext = _("Production overview")
 
 class SettlerOverviewTab(OverviewTab):
 	def  __init__(self, instance):
@@ -487,7 +487,7 @@ class SettlerOverviewTab(OverviewTab):
 			widget = 'overview_settler.xml',
 			instance = instance
 		)
-		self.tooltip = _("Settler overview")
+		self.helptext = _("Settler overview")
 		self.widget.findChild(name="headline").text = unicode(self.instance.settlement.get_component(NamedComponent).name)
 		_setup_tax_slider(self.widget.child_finder('tax_slider'), self.widget.child_finder('tax_val_label'),
 		                  self.instance.settlement, self.instance.level)
@@ -550,7 +550,7 @@ class SignalFireOverviewTab(OverviewTab):
 		action_gfx = action_set.items()[0][1]
 		image = action_gfx[45].keys()[0]
 		self.widget.findChild(name="building_image").image = image
-		self.tooltip = _("Overview")
+		self.helptext = _("Overview")
 
 class EnemyBuildingOverviewTab(OverviewTab):
 	def  __init__(self, instance):
@@ -567,7 +567,7 @@ class EnemyWarehouseOverviewTab(OverviewTab):
 			instance = instance
 		)
 		self.widget.findChild(name="headline").text = unicode(self.instance.settlement.get_component(NamedComponent).name)
-		self.tooltip = _("Warehouse overview")
+		self.helptext = _("Warehouse overview")
 
 	def refresh(self):
 		settlement = self.instance.settlement

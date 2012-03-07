@@ -23,7 +23,7 @@ import logging
 import weakref
 
 from fife.extensions import pychan
-from horizons.gui.widgets.tooltip import TooltipButton
+from fife.extensions.pychan.widgets import ImageButton
 
 import horizons.main
 from horizons.util.gui import load_uh_widget
@@ -81,7 +81,7 @@ class TabWidget(object):
 			container = pychan.Container()
 			background = pychan.Icon()
 			background.name = "bg_%s" % index
-			button = TooltipButton()
+			button = ImageButton()
 			button.name = index
 			if self.current_tab is tab:
 				background.image = tab.button_background_image_active
@@ -94,8 +94,8 @@ class TabWidget(object):
 			button.is_focusable = False
 			button.size = (50, 50)
 			button.capture(Callback(self._show_tab, index))
-			if hasattr(tab, 'tooltip') and tab.tooltip is not None:
-				button.tooltip = unicode(tab.tooltip)
+			if hasattr(tab, 'helptext') and tab.helptext is not None:
+				button.helptext = unicode(tab.helptext)
 			container.size = background.size
 			container.addChild(background)
 			container.addChild(button)

@@ -19,9 +19,10 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-from horizons.gui.widgets.tooltip import TooltipButton
+from fife.extensions.pychan.widgets import ImageButton
 
-class OkButton(TooltipButton):
+
+class OkButton(ImageButton):
 	"""The OkButton is a shortcut for an ImageButton with our OK / apply icon.
 	Its default attributes are:
 	name="okButton"
@@ -37,7 +38,7 @@ class OkButton(TooltipButton):
 			hover_image="content/gui/images/buttons/ok_h.png",
 			down_image="content/gui/images/buttons/ok.png", **kwargs)
 
-class CancelButton(TooltipButton):
+class CancelButton(ImageButton):
 	"""The CancelButton is a shortcut for an ImageButton with our cancel / close
 	icon. Its default attributes are:
 	name="cancelButton"
@@ -53,7 +54,7 @@ class CancelButton(TooltipButton):
 			hover_image="content/gui/images/buttons/close_h.png",
 			down_image="content/gui/images/buttons/close.png", **kwargs)
 
-class DeleteButton(TooltipButton):
+class DeleteButton(ImageButton):
 	"""The DeleteButton is a shortcut for an ImageButton with our delete / tear
 	icon. Its default attributes are:
 	name="deleteButton"

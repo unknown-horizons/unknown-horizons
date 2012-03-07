@@ -84,20 +84,20 @@ def get_res_icon(res):
 
 
 def create_resource_icon(res_id, db, size=50):
-	"""Creates a pychan TooltipIcon for a resource.
+	"""Creates a pychan Icon for a resource.
 	Returns None if size parameter is invalid (not in 16,24,50).
 	@param res_id:
 	@param db: dbreader for main db
 	@param size: Size of icon in px. Valid: 16, 24, 50."""
-	from horizons.gui.widgets.tooltip import TooltipIcon
+	from fife.extensions.pychan.widgets import Icon
 	if size == 50:
-		return TooltipIcon(tooltip=db.get_res_name(res_id),
+		return Icon(helptext=db.get_res_name(res_id),
 		                   image=get_res_icon(res_id)[0])
 	elif size == 24:
-		return TooltipIcon(tooltip=db.get_res_name(res_id),
+		return Icon(helptext=db.get_res_name(res_id),
 		                   image=get_res_icon(res_id)[2])
 	elif size == 16:
-		return TooltipIcon(tooltip=db.get_res_name(res_id),
+		return Icon(helptext=db.get_res_name(res_id),
 		                   image=get_res_icon(res_id)[3])
 	else:
 		return None
@@ -146,7 +146,7 @@ def create_resource_selection_dialog(on_click, inventory, db, widget='select_tra
 	@param res_filter: callback to decide which icons to use. Default: show all
 	"""
 	from horizons.gui.widgets.imagefillstatusbutton import ImageFillStatusButton
-	from horizons.gui.widgets.tooltip import TooltipButton
+	from fife.extensions.pychan.widgets import ImageButton
 	dummy_icon_path = "content/gui/icons/resources/none_gray.png"
 
 	dlg = load_uh_widget(widget)
@@ -166,7 +166,7 @@ def create_resource_selection_dialog(on_click, inventory, db, widget='select_tra
 			continue
 		# create button (dummy one or real one)
 		if res_id == 0:
-			button = TooltipButton( size=(button_width, button_width), name="resource_icon_00")
+			button = ImageButton( size=(button_width, button_width), name="resource_icon_00")
 			button.up_image, button.down_image, button.hover_image = (dummy_icon_path,)*3
 		else:
 			amount = inventory[res_id]

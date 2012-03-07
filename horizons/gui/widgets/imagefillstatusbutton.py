@@ -21,7 +21,7 @@
 
 from fife.extensions import pychan
 
-from horizons.gui.widgets.tooltip import TooltipButton
+from fife.extensions.pychan.widgets import ImageButton
 
 from horizons.util import Callback
 from horizons.util.gui import get_res_icon
@@ -30,7 +30,7 @@ class ImageFillStatusButton(pychan.widgets.Container):
 
 	DEFAULT_BUTTON_SIZE = (55, 50)
 
-	def __init__(self, up_image, down_image, hover_image, text, res_id, tooltip="", \
+	def __init__(self, up_image, down_image, hover_image, text, res_id, helptext="", \
 	             filled=0, uncached=False, **kwargs):
 		"""Represents the image in the ingame gui, with a bar to show how full the inventory is for that resource
 		Derives from pychan.widgets.Container, but also takes the args of the pychan.widgets.Imagebutton,
@@ -38,7 +38,7 @@ class ImageFillStatusButton(pychan.widgets.Container):
 		This is meant to be used with the Inventory widget."""
 		super(ImageFillStatusButton, self).__init__(**kwargs)
 		self.up_image, self.down_image, self.hover_image, self.text = up_image, down_image, hover_image, unicode(text)
-		self.tooltip = unicode(_(tooltip))
+		self.helptext = unicode(_(helptext))
 		# res_id is used by the TradeWidget for example to determine the resource this button represents
 		self.res_id = res_id
 		self.text_position = (17, 36)
@@ -59,12 +59,12 @@ class ImageFillStatusButton(pychan.widgets.Container):
 		icon, icon_disabled = icons[0], icons[1]
 		if not use_inactive_icon:
 			icon_disabled = icon
-		tooltip = db.get_res_name(res)
+		helptext = db.get_res_name(res)
 		return cls(up_image=icon_disabled if amount == 0 else icon,
 		           down_image=icon_disabled if amount == 0 else icon,
 		           hover_image=icon_disabled if amount == 0 else icon,
 		           text=str(amount),
-		           tooltip=tooltip,
+		           helptext=helptext,
 		           size=cls.DEFAULT_BUTTON_SIZE,
 		           res_id = res,
 		           filled = filled,
@@ -86,10 +86,10 @@ class ImageFillStatusButton(pychan.widgets.Container):
 		"""Draws the icon + bar."""
 		# hash buttons by creation function call
 		# NOTE: there may be problems with multiple buttons with the same
-		# images and tooltip at the same time
-		create_btn = Callback(TooltipButton, up_image=self.up_image,
+		# images and helptext at the same time
+		create_btn = Callback(ImageButton, up_image=self.up_image,
 		                      down_image=self.down_image, hover_image=self.hover_image,
-		                      tooltip=self.tooltip)
+		                      helptext=self.helptext)
 		self.button = None
 		if self.uncached:
 			self.button = create_btn()

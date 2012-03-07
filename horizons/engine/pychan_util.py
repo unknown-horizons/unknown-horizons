@@ -33,7 +33,6 @@ def init_pychan():
 	from horizons.gui.widgets.imagefillstatusbutton import  ImageFillStatusButton
 	from horizons.gui.widgets.progressbar import ProgressBar
 	from horizons.gui.widgets.toggleimagebutton import ToggleImageButton
-	from horizons.gui.widgets.tooltip import TooltipIcon, TooltipButton, TooltipLabel, TooltipProgressBar
 	from horizons.gui.widgets.imagebutton import CancelButton, DeleteButton, OkButton
 	from horizons.gui.widgets.icongroup import TabBG
 	from horizons.gui.widgets.stepslider import StepSlider
@@ -44,14 +43,14 @@ def init_pychan():
 	widgets = [OkButton, CancelButton, DeleteButton,
 			   Inventory, BuySellInventory, ImageFillStatusButton,
 			   ProgressBar, StepSlider, TabBG, ToggleImageButton,
-			   TooltipIcon, TooltipButton, TooltipLabel, TooltipProgressBar,
 			   HealthWidget, StanceWidget, WeaponStorageWidget,
 	       AutoResizeContainer]
 
+	for widget in widgets:
+		pychan.widgets.registerWidget(widget)
 
 	# patch default widgets to support tooltips via helptext attribute
 	for name, widget in pychan.widgets.WIDGETS.items()[:]:
-		print widget
 		if any( attr.name == "helptext" for attr in widget.ATTRIBUTES ):
 
 			# create a new class with this __init__, so tooltips are initalize
@@ -68,8 +67,6 @@ def init_pychan():
 			# register this new class in pychan
 			pychan.widgets.WIDGETS[name] = klass
 
-	for widget in widgets:
-		pychan.widgets.registerWidget(widget)
 
 	# NOTE: there is a bug with the tuple notation: http://fife.trac.cvsdude.com/engine/ticket/656
 	# work around this here for now:

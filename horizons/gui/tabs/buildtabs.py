@@ -128,7 +128,7 @@ class BuildTab(TabInterface):
 		self.button_down_image = icon_path % ('d')
 		self.button_hover_image = icon_path % ('h')
 
-		self.tooltip = _("Increment {increment}").format(increment = int_to_roman(tabindex))
+		self.helptext = _("Increment {increment}").format(increment = int_to_roman(tabindex))
 
 		self.init_gui(self.tabindex)
 

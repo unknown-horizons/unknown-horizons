@@ -23,7 +23,7 @@ from fife.extensions import pychan
 
 from horizons.util.gui import load_uh_widget, get_res_icon
 from horizons.util import Callback
-from horizons.gui.widgets import TooltipIcon
+from fife.extensions.pychan.widgets import Icon
 from horizons.command.unit import SetStance
 from horizons.extscheduler import ExtScheduler
 from horizons.world.component.healthcomponent import HealthComponent
@@ -114,10 +114,10 @@ class WeaponStorageWidget(pychan.widgets.HBox):
 				weapons_added = True
 				icon_image = get_res_icon(weapon)[2]
 				icon_tooltip = self.instance.session.db.get_res_name(weapon)+': '+str(amount)
-				icon = TooltipIcon(image = icon_image, tooltip = icon_tooltip)
+				icon = Icon(image = icon_image, helptext=icon_tooltip)
 				self.addChild(icon)
 		if not weapons_added:
 			icon_image = "content/gui/icons/resources/none.png"
-			icon = TooltipIcon(image = icon_image, tooltip = _("none"))
+			icon = Icon(image = icon_image, helptext=_("none"))
 			self.addChild(icon)
 

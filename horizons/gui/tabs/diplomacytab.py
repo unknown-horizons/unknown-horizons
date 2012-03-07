@@ -54,7 +54,7 @@ class DiplomacyTab(TabInterface):
 		self.button_active_image = icon_path % color
 		self.button_down_image = icon_path % color
 		self.button_hover_image = icon_path % color
-		self.tooltip = player.name
+		self.helptext = player.name
 
 		self.widget.stylize("default")
 		self.widget.findChild(name="ally_check_box").base_color = 80, 80, 80
