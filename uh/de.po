@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2012-03-02 04:09+0100\n"
-"PO-Revision-Date: 2012-03-07 14:35+0200\n"
+"PO-Revision-Date: 2012-03-07 14:51+0200\n"
 "Last-Translator: Raymond <raymondv@gmx.de>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: de\n"
@@ -37,7 +37,7 @@ msgstr "Eine neue Welt wurde erschaffen."
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
 msgid "Cannot go here."
-msgstr "Kann hier nicht hingehen. "
+msgstr "Kann hier nicht hingehen."
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
@@ -172,7 +172,7 @@ msgstr "Kanonen"
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "cattle"
-msgstr "Rinder"
+msgstr "Vieh"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
@@ -310,7 +310,7 @@ msgstr "Zufriedenheit"
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "herbs"
-msgstr "Kräuter"
+msgstr "Heilkräuter"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
@@ -471,7 +471,7 @@ msgstr "{player1} und {player2} sind nun Verbündete."
 #, python-format
 msgid "{player1} and {player2} have ended the war and are now allied."
 msgstr ""
-"{player1} und {player2} haben den Krieg beendet und sind nun Verbündete. "
+"{player1} und {player2} haben den Krieg beendet und sind nun Verbündete."
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
@@ -3376,8 +3376,8 @@ msgstr ""
 #: horizons/manager.py:186
 msgid "We are very sorry and hope to have this bug fixed in a future version."
 msgstr ""
-"Das Team bedauert diesen Fehler und wir hoffen, dass er in einer späteren "
-"Version nicht mehr auftritt."
+"Das Team bedauert diesen Fehler und wir hoffen, dass dieser in einer "
+"späteren Version nicht mehr auftritt."
 
 #: horizons/mpsession.py:66
 msgid "Not possible"
@@ -3501,7 +3501,7 @@ msgstr ""
 
 #: horizons/util/checkupdates.py:76
 msgid "Click to download"
-msgstr "Hier downloaden"
+msgstr "Hier herunterladen"
 
 #: horizons/util/checkupdates.py:80
 msgid "A page has been opened in your browser."
@@ -3509,16 +3509,16 @@ msgstr "Eine Seite wurde in Eurem Browser geöffnet."
 
 #: horizons/world/building/buildable.py:37
 msgid "Buildings must be built on islands."
-msgstr ""
+msgstr "Gebäude müssen auf Inseln erbaut werden."
 
 #: horizons/world/building/buildable.py:38
 msgid "The ground is not suitable for this building."
-msgstr ""
+msgstr "Der Boden ist nicht für dieses Gebäude geeignet."
 
 #: horizons/world/building/buildable.py:39
 #: horizons/world/building/buildable.py:41
 msgid "You can only build this within your settlement."
-msgstr ""
+msgstr "Sie können dieses nur in Ihrer Siedlung bauen."
 
 #: horizons/world/building/buildable.py:40
 msgid "This area is already occupied."
