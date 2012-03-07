@@ -22,7 +22,7 @@
 				image="content/gui/icons/resources/running_costs.png"
 				helptext="Happiness" />
 			<Icon position="20,165" image="content/gui/images/background/bar_bg.png" size="80,20" />
-			<TooltipProgressBar name='happiness' position="21,166"
+			<ProgressBar name='happiness' position="21,166"
 				size="91,20" helptext="Happiness" />
 			<Icon name="residents_label" position="140,166"
 				image="content/gui/icons/widgets/cityinfo/inhabitants_small.png"
