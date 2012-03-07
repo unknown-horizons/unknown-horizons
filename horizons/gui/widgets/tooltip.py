@@ -73,7 +73,11 @@ class _Tooltip(object):
 	def show_tooltip(self):
 		if self.helptext not in ("", None):
 			# recreate full tooltip since new text needs to be relayouted
-			self.gui.removeAllChildren()
+
+			if self.gui is None:
+				self.gui = load_uh_widget('tooltip.xml')
+			else:
+				self.gui.removeAllChildren()
 			translated_tooltip = _(self.helptext)
 			#HACK this looks better than splitting into several lines & joining
 			# them. works because replace_whitespace in fill defaults to True:
@@ -106,9 +110,10 @@ class _Tooltip(object):
 		if (event is None or event.getType() == fife.MouseEvent.EXITED):
 			for i in self._exited_callbacks:
 				i()
-		self.gui.hide()
+		if self.gui is not None:
+			self.gui.hide()
+			self.gui.removeAllChildren()
 		ExtScheduler().rem_call(self, self.show_tooltip)
-		self.gui.removeAllChildren()
 		self.tooltip_shown = False
 
 	def add_entered_callback(self, cb):

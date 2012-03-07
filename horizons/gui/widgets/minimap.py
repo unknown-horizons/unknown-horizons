@@ -349,13 +349,14 @@ class Minimap(object):
 
 				tile = self.world.get_tile( Point(*coords) )
 				if tile is not None and tile.settlement is not None:
-					new_tooltip = unicode(tile.settlement.get_component(NamedComponent).name)
-					if self.icon.tooltip != new_tooltip:
-						self.icon.helptext = new_tooltip
+					new_helptext = unicode(tile.settlement.get_component(NamedComponent).name)
+					if self.icon.helptext != new_helptext:
+						self.icon.helptext = new_helptext
 						self.icon.show_tooltip()
 					else:
 						self.icon.position_tooltip(event)
 				else:
+					# mouse not over relevant part of the minimap
 					self.icon.hide_tooltip()
 
 	def highlight(self, tup, factor=1.0, speed=1.0, finish_callback=None, color=(0,0,0)):
