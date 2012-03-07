@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2012-03-02 04:09+0100\n"
-"PO-Revision-Date: 2012-03-07 21:19+0200\n"
+"PO-Revision-Date: 2012-03-07 22:59+0200\n"
 "Last-Translator: Andrés  José <taurendil@erebor.com.ar>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: es\n"
@@ -764,9 +764,8 @@ msgstr ""
 #: horizons/gui/widgets/playerssettlements.py:101
 #: horizons/i18n/guitranslations.py:415 horizons/i18n/guitranslations.py:437
 #: horizons/i18n/guitranslations.py:457
-#, fuzzy
 msgid "Click to change the name of your settlement"
-msgstr "Clica para cambiar el nombre de tu asentamiento."
+msgstr "Hacé click para cambiar el nombre de tu asentamiento."
 
 #. e.g. when the pirate is disabled
 #. this dialog is pretty useless in this case
@@ -786,7 +785,7 @@ msgstr "Nombres válidos de mapa de la siguiente forma: {expression}"
 #: horizons/gui/ingamegui.py:451
 #, python-format
 msgid "Try a name that only contains letters and numbers."
-msgstr ""
+msgstr "Intente un nombre que sólo contenga letras y números."
 
 #: horizons/gui/modules/multiplayermenu.py:43
 msgid "Unable to find pyenet"
@@ -801,7 +800,7 @@ msgstr ""
 #: horizons/gui/modules/multiplayermenu.py:45
 msgid "Linux users: Try to install pyenet through your package manager."
 msgstr ""
-"Usuarios Linux: Intenten instalar pyenet através de su administrador de "
+"Usuarios de Linux: Intenten instalar pyenet a través de su gestor de "
 "paquetes."
 
 #: horizons/gui/modules/multiplayermenu.py:46
@@ -977,7 +976,7 @@ msgstr "Reporta esto al autor, por favor."
 #. dialog already gone
 #: horizons/gui/modules/singleplayermenu.py:464
 msgid "Click to generate a different random map"
-msgstr ""
+msgstr "Haga click para generar otro mapa aleatorio"
 
 #. (text of widget: headline)
 #. set translated building name in gui
