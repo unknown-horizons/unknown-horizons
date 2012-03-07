@@ -7,8 +7,8 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2012-03-02 04:09+0100\n"
-"PO-Revision-Date: 2012-03-07 17:41+0200\n"
-"Last-Translator: angellus <nzwaal@gmail.com>\n"
+"PO-Revision-Date: 2012-03-07 18:01+0200\n"
+"Last-Translator: Nick <nzwaal@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: nl\n"
 "MIME-Version: 1.0\n"
@@ -2780,41 +2780,43 @@ msgstr ""
 #: horizons/i18n/objecttranslations.py:55
 msgid "Keeps bees. Produces honeycombs used for confectionery. Needs a farm."
 msgstr ""
+"Houd bijen. Produceert honing voor een confectiebakkerij. Maakt gebruik van "
+"een boerderij."
 
 #. name of buildings:bakery
 #: horizons/i18n/objecttranslations.py:60
 msgid "Bakery"
-msgstr ""
+msgstr "Bakkerij"
 
 #. tooltip_text of buildings:bakery
 #: horizons/i18n/objecttranslations.py:62
 msgid "Consumes flour. Produces food."
-msgstr ""
+msgstr "Consumeert bloem. Produceert voedsel."
 
 #. name of buildings:barracks
 #: horizons/i18n/objecttranslations.py:67
 msgid "Barracks"
-msgstr ""
+msgstr "Barakken"
 
 #. tooltip_text of buildings:barracks
 #: horizons/i18n/objecttranslations.py:69
 msgid "Recruits units suitable for ground combat."
-msgstr ""
+msgstr "Rekruteerd eenheden geschikt voor grondgevechten."
 
 #. name of buildings:blender
 #: horizons/i18n/objecttranslations.py:74
 msgid "Blender"
-msgstr ""
+msgstr "Menger"
 
 #. tooltip_text of buildings:blender
 #: horizons/i18n/objecttranslations.py:76
 msgid "Produces condiments out of spices."
-msgstr ""
+msgstr "Produceert voedseltoevoegingen uit kruiden."
 
 #. name of buildings:boatbuilder
 #: horizons/i18n/objecttranslations.py:81
 msgid "Boat Builder"
-msgstr "Dok"
+msgstr "Scheepswerf"
 
 #. tooltip_text of buildings:boatbuilder
 #: horizons/i18n/objecttranslations.py:83
@@ -2844,7 +2846,7 @@ msgstr "Varkens of vee benodigd. Produceert voedsel."
 #. name of buildings:cattlerun
 #: horizons/i18n/objecttranslations.py:102
 msgid "Cattle Run"
-msgstr "vee"
+msgstr "Weiland voor vee"
 
 #. tooltip_text of buildings:cattlerun
 #: horizons/i18n/objecttranslations.py:104
@@ -2854,22 +2856,22 @@ msgstr "Brengt vee groot. Boerderij benodigd."
 #. name of buildings:charcoalburning
 #: horizons/i18n/objecttranslations.py:109
 msgid "Charcoal Burning"
-msgstr "Houtskool branden"
+msgstr "Houtskool brander"
 
 #. tooltip_text of buildings:charcoalburning
 #: horizons/i18n/objecttranslations.py:111
 msgid "Burns a lot of boards to charcoal."
-msgstr ""
+msgstr "Verbruikt veel planken voor houtskool."
 
 #. name of buildings:claydeposit
 #: horizons/i18n/objecttranslations.py:116
 msgid "Clay Deposit"
-msgstr "Klei Afzetting"
+msgstr "Klei afzetting"
 
 #. name of buildings:claypit
 #: horizons/i18n/objecttranslations.py:121
 msgid "Clay Pit"
-msgstr "Klei Groeve"
+msgstr "Kleigroeve"
 
 #. tooltip_text of buildings:claypit
 #: horizons/i18n/objecttranslations.py:123
@@ -2879,29 +2881,30 @@ msgstr "Graaft klei uit."
 #. name of buildings:cocoafield
 #: horizons/i18n/objecttranslations.py:128
 msgid "Cocoa Field"
-msgstr ""
+msgstr "Cacao veld"
 
 #. tooltip_text of buildings:cocoafield
 #: horizons/i18n/objecttranslations.py:130
 msgid "Produces cocoa beans used for confectionery. Needs a farm."
 msgstr ""
+"Produceert cacao bonen voor de confectiebakkerij. Maakt gebruik van een "
+"boerderij."
 
 #. name of buildings:cornfield
 #: horizons/i18n/objecttranslations.py:135
 msgid "Corn Field"
-msgstr ""
+msgstr "Maisveld"
 
 # 88%
 #. tooltip_text of buildings:cornfield
 #: horizons/i18n/objecttranslations.py:137
-#, fuzzy
 msgid "Yields corn. Needs a farm."
-msgstr "Produceert voedsel. Heeft een boerderij nodig."
+msgstr "Produceert mais. Heeft een boerderij nodig."
 
 #. name of buildings:distillery
 #: horizons/i18n/objecttranslations.py:142
 msgid "Distillery"
-msgstr "Distillerij"
+msgstr "Brouwerij"
 
 #. tooltip_text of buildings:distillery
 #: horizons/i18n/objecttranslations.py:144
@@ -2916,7 +2919,7 @@ msgstr "Dokter"
 #. tooltip_text of buildings:doctor
 #: horizons/i18n/objecttranslations.py:151
 msgid "Treats diseases. Consumes herbs."
-msgstr ""
+msgstr "Behandeld ziektes. Gebruikt kruiden."
 
 #. name of buildings:farm
 #: horizons/i18n/objecttranslations.py:156
@@ -2931,12 +2934,12 @@ msgstr "Verbouwt groenten en beheert vee."
 #. name of buildings:fireservice
 #: horizons/i18n/objecttranslations.py:163
 msgid "Fire Brigade"
-msgstr ""
+msgstr "Brandweer"
 
 #. tooltip_text of buildings:fireservice
 #: horizons/i18n/objecttranslations.py:165
 msgid "Extinguishes fires."
-msgstr ""
+msgstr "Dooft vuren."
 
 #. name of buildings:fishdeposit
 #: horizons/i18n/objecttranslations.py:170
@@ -2966,7 +2969,7 @@ msgstr "Kruidentuin"
 #. tooltip_text of buildings:herbary
 #: horizons/i18n/objecttranslations.py:189
 msgid "Produces herbs. Needs a farm."
-msgstr "Produceert tabak. Boerderij benodigd."
+msgstr "Produceert kruiden. Boerderij benodigd."
 
 #. name of buildings:hunterstent
 #: horizons/i18n/objecttranslations.py:194
@@ -2981,7 +2984,7 @@ msgstr "Jaagt op wilde dieren, produceert voedsel."
 #. name of buildings:ironmine
 #: horizons/i18n/objecttranslations.py:201
 msgid "Iron Mine"
-msgstr "Ijzermijn"
+msgstr "IJzermijn"
 
 #. tooltip_text of buildings:ironmine
 #: horizons/i18n/objecttranslations.py:203
@@ -2991,12 +2994,12 @@ msgstr "Haalt ijzererts uit de grond."
 #. name of buildings:log
 #: horizons/i18n/objecttranslations.py:208
 msgid "Log"
-msgstr "Log"
+msgstr "Blok hout"
 
 #. tooltip_text of buildings:log
 #: horizons/i18n/objecttranslations.py:210
 msgid "Road across a river."
-msgstr ""
+msgstr "Weg over een rivier."
 
 #. name of buildings:lookout
 #: horizons/i18n/objecttranslations.py:215
@@ -3006,17 +3009,17 @@ msgstr "Uitkijk"
 #. tooltip_text of buildings:lookout
 #: horizons/i18n/objecttranslations.py:217
 msgid "Increases the player's sight."
-msgstr ""
+msgstr "Vergroot de speler zijn zicht."
 
 #. name_0 of buildings:lumberjackcamp
 #: horizons/i18n/objecttranslations.py:222
 msgid "Lumberjack Tent"
-msgstr ""
+msgstr "Houthakkers tent"
 
 #. name_1 of buildings:lumberjackcamp
 #: horizons/i18n/objecttranslations.py:224
 msgid "Lumberjack Hut"
-msgstr ""
+msgstr "Houthakkers hut"
 
 #. tooltip_text of buildings:lumberjackcamp
 #: horizons/i18n/objecttranslations.py:226
@@ -3041,7 +3044,7 @@ msgstr "Berg"
 #. name of buildings:pastryshop
 #: horizons/i18n/objecttranslations.py:243
 msgid "Pastry Shop"
-msgstr ""
+msgstr "Confectiebakkerij"
 
 #. tooltip_text of buildings:pastryshop
 #: horizons/i18n/objecttranslations.py:245
