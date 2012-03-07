@@ -110,7 +110,7 @@ class BuildingCollector(Collector):
 	def apply_state(self, state, remaining_ticks = None):
 		super(BuildingCollector, self).apply_state(state, remaining_ticks)
 		if state == self.states.moving_home:
-			# collector is on his way home
+			# collector is on its way home
 			self.add_move_callback(self.reached_home)
 			self.add_blocked_callback(self.handle_path_home_blocked)
 			self.show()

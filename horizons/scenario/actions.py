@@ -73,7 +73,7 @@ def write_logbook_entry(session, widgets):
 @register(name='logbook')
 def show_logbook_entry_delayed(session, *widgets):
 	"""Show a logbook entry delayed by delay seconds.
-	
+
 	Set delay=0 for instant appearing.
 	#TODO get *delay* parameter working again
 	"""
@@ -108,7 +108,7 @@ def goal_reached(session, goal_number):
 	"""Called when player reached a goal in a scenario"""
 	# TODO : if we want, we could make this work in "scenario" mode
 	#        to allow the player to reach goals in scenarios even if
-	#        he didn't load the campaign.
+	#        no campaign was has been loaded.
 	if session.campaign:
 		SavegameManager.mark_goal_reached(session.campaign, goal_number)
 

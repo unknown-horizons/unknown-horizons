@@ -32,11 +32,11 @@ from horizons.world.component.tradepostcomponent import TradePostComponent
 
 
 class Trader(GenericAI):
-	"""A trader represents the free trader that travels around the map with his trading ship(s) and
+	"""A trader represents the free trader that travels around the map with its trading ship(s) and
 	sells resources to players and buys resources from them. This is a very simple form of AI, as it
 	doesn't do any more then drive to a place on water or a warehouse randomly and then buys and
 	sells resources. A game should not have more then one free trader (it could though)
-	@param id: int - player id, every Player needs a unique id, as the freetrader is a Player instance, he also does.
+	@param id: int - player id, every Player needs a unique id, as the free trader is a Player instance, it also does.
 	@param name: Traders name, also needed for the Player class.
 	@param color: util.Color instance with the traders banner color, also needed for the Player class"""
 
@@ -205,7 +205,7 @@ class Trader(GenericAI):
 				continue
 			price = int(self.session.db.get_res_value(res) * TRADER.PRICE_MODIFIER_SELL * amount)
 			trade_comp.buy(res, amount, price, self.worldid)
-			# don't care if he bought it. the trader just offers.
+			# don't care if it has been bought. the trader just offers.
 			self.log.debug("Trader %s: offered sell %s tons of res %s", self.worldid, amount, res)
 
 		# NOTE: must be sorted for mp games (same order everywhere)

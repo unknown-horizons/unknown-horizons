@@ -282,7 +282,7 @@ class World(BuildingOwner, WorldObject):
 		if not preview:
 			default_grounds = Entities.grounds[int(self.properties.get('default_ground', GROUND.WATER[0]))]
 
-		# extra world size that is added so that he player can't see the "black void"
+		# extra world size that is added so that the player can't see the "black void"
 		border = 30
 		fake_tile_class = Entities.grounds[-1]
 		for x in xrange(self.min_x-border, self.max_x+border, 10):

@@ -176,7 +176,7 @@ def test_ticket_1427():
 
 	production_line = production._prod_line
 
-	# Make sure the boatbuilder consumes everything in his inventory
+	# Make sure the boatbuilder consumes everything in its inventory
 	session.run(seconds=10)
 
 	# Check if correctly consumed wood

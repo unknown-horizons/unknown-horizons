@@ -380,7 +380,7 @@ class Server(object):
 		logging.debug("[TERMINATE] [%s] (by %s)" % (game.uuid, player if player is not None else None))
 		for _player in game.players:
 			if _player.peer.state == enet.PEER_STATE_CONNECTED:
-				self.fatalerror(_player.peer, "I feel like a bad bunny but one player has terminated his game and this game is programmed to terminate the whole game now. Sorry :*(")
+				self.fatalerror(_player.peer, "I feel like a bad bunny but one player has terminated the game which currently for technical reasons means that the game cannot continue. Sorry :*(")
 		game.clear()
 		self.call_callbacks('deletegame', game)
 

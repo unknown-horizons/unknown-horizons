@@ -387,7 +387,7 @@ class Collector(Unit):
 
 	def end_job(self):
 		"""Contrary to setup_new_job"""
-		# he finished the job now
+		# the job now is finished now
 		# before the new job can begin this will be executed
 		self.log.debug("%s end_job - waiting for new search_job", self)
 		if self.start_hidden:
