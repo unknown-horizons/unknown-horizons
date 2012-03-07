@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2012-03-02 04:09+0100\n"
-"PO-Revision-Date: 2012-03-07 18:41+0200\n"
+"PO-Revision-Date: 2012-03-07 18:53+0200\n"
 "Last-Translator: Alexander <fcxSanya@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: ru\n"
@@ -78,7 +78,7 @@ msgstr "Вы также можете двигать дороги, удержив
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
 msgid "You cannot tear the warehouse, your settlements needs it."
-msgstr ""
+msgstr "Вы не можете снести склад, он требуется вашему поселению."
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
@@ -229,10 +229,11 @@ msgstr "приправы"
 msgid "confectionery"
 msgstr "кондитерские изделия"
 
+# вариант: зерновые культуры
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "corn"
-msgstr ""
+msgstr "злаки"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
@@ -262,7 +263,7 @@ msgstr "вера"
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "fire"
-msgstr ""
+msgstr "огонь"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
@@ -272,7 +273,7 @@ msgstr "рыба"
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "flour"
-msgstr ""
+msgstr "мука"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
@@ -287,12 +288,12 @@ msgstr "общение"
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "grain"
-msgstr ""
+msgstr "зерно"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "grapes"
-msgstr ""
+msgstr "виноград"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
@@ -313,7 +314,7 @@ msgstr "травы"
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "honeycombs"
-msgstr ""
+msgstr "соты"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
@@ -388,24 +389,23 @@ msgstr "поселенец"
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "spice plants"
-msgstr ""
+msgstr "пряные растения"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "spices"
-msgstr ""
+msgstr "пряности"
 
 # 76%
 #. This is a database entry: the name of a resource.
 #: database files sql
-#, fuzzy
 msgid "stone deposit"
-msgstr "месторождение железа"
+msgstr "месторождение камня"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "stone tops"
-msgstr ""
+msgstr "каменные плиты"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
@@ -445,7 +445,7 @@ msgstr "инструменты"
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "vines"
-msgstr ""
+msgstr "виноградные лозы"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
