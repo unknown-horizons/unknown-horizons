@@ -27,6 +27,7 @@ from horizons.gui.mousetools.cursortool import CursorTool
 from horizons.util import WorldObject
 from horizons.util.lastactiveplayersettlementmanager import LastActivePlayerSettlementManager
 from fife.extensions.pychan.widgets import Icon
+from fife.extensions.pychan import widgets
 from horizons.constants import LAYERS
 
 class NavigationTool(CursorTool):
@@ -45,7 +46,7 @@ class NavigationTool(CursorTool):
 		horizons.main.fife.eventmanager.addCommandListener(self.cmdlist)
 		self.cmdlist.onCommand = self.onCommand
 
-		class CoordsTooltip(Icon):
+		class CoordsTooltip(object):
 			@classmethod
 			def get_instance(cls, cursor_tool):
 				if cursor_tool.session.coordinates_tooltip is not None:
@@ -60,18 +61,20 @@ class NavigationTool(CursorTool):
 				cursor_tool.session.coordinates_tooltip = self
 				self.cursor_tool = cursor_tool
 				self.enabled = False
+				# resolve icon this way so we get the version with tooltips
+				self.popup = widgets.WIDGETS['Icon']()
 
 			def toggle(self):
 				self.enabled = not self.enabled
-				if not self.enabled and self.tooltip_shown:
-					self.hide_tooltip()
+				if not self.enabled and self.popup.tooltip_shown:
+					self.popup.hide_tooltip()
 
 			def show_evt(self, evt):
 				if self.enabled:
 					x, y = self.cursor_tool.get_world_location_from_event(evt).to_tuple()
-					self.helptext = str(x) + ', ' + str(y) + " "+_("Press H to remove this hint")
-					self.position_tooltip(evt)
-					self.show_tooltip()
+					self.popup.helptext = str(x) + ', ' + str(y) + " "+_("Press H to remove this hint")
+					self.popup.position_tooltip(evt)
+					self.popup.show_tooltip()
 
 		self.tooltip = CoordsTooltip.get_instance(self)
 
