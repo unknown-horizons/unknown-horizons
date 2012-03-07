@@ -22,17 +22,17 @@
 
 			<HBox>
 				<Label name="create_game_lbl" text="Create game:" />
-				<OkButton name="create"  tooltip="Create a new game" />
+				<OkButton name="create"  helptext="Create a new game" />
 			</HBox>
 
 			<HBox>
 				<Label name="load_game_lbl" text="Load game:" />
-				<OkButton name="load"  tooltip="Load a saved game" />
+				<OkButton name="load"  helptext="Load a saved game" />
 			</HBox>
 
 			<HBox>
 				<Label name="exit_to_main_menu_lbl"  text="Main menu:" />
-				<CancelButton name="cancel"  tooltip="Exit to main menu" />
+				<CancelButton name="cancel"  helptext="Exit to main menu" />
 			</HBox>
 
 		</VBox>
@@ -44,7 +44,7 @@
 			<Label text="Active games:"  name="active_games_lbl" />
 			<Spacer />
 			<Label name="refr_gamelist_lbl"  text="Refresh list:"  position="150,50" />
-			<TooltipButton name="refresh"  tooltip="Refresh list of active games"
+			<ImageButton name="refresh"  helptext="Refresh list of active games"
 				up_image="content/gui/icons/widgets/minimap/rotate_right.png"
 				down_image="content/gui/icons/widgets/minimap/rotate_right.png"
 				hover_image="content/gui/icons/widgets/minimap/rotate_left.png" />
@@ -74,7 +74,7 @@
 
 		<HBox min_size="0,40"><Spacer />
 			<Label name="join_game_lbl" text="Join game" />
-			<OkButton name="join"  tooltip="Join the selected game" />
+			<OkButton name="join"  helptext="Join the selected game" />
 		</HBox>
 
 	</VBox>

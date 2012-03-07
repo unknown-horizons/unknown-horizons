@@ -9,27 +9,27 @@
 			down_image="content/gui/icons/units/stances/aggressive.png"
 			hover_image="content/gui/icons/units/stances/aggressive.png"
 			comment="Description of combat stance (how units behave when fighting)"
-			tooltip="Aggressive" />
+			helptext="Aggressive" />
 		<ToggleImageButton name="hold_ground_stance" border_size="0" position="175,480"
 			inactive_image="content/gui/icons/units/stances/hold_ground_gr.png"
 			up_image="content/gui/icons/units/stances/hold_ground.png"
 			down_image="content/gui/icons/units/stances/hold_ground.png"
 			hover_image="content/gui/icons/units/stances/hold_ground.png"
 			comment="Description of combat stance (how units behave when fighting)"
-			tooltip="Hold ground" />
+			helptext="Hold ground" />
 		<ToggleImageButton name="none_stance" border_size="0" position="175,480"
 			inactive_image="content/gui/icons/units/stances/none_gr.png"
 			up_image="content/gui/icons/units/stances/none.png"
 			down_image="content/gui/icons/units/stances/none.png"
 			hover_image="content/gui/icons/units/stances/none.png"
 			comment="Description of combat stance (how units behave when fighting)"
-			tooltip="Passive" />
+			helptext="Passive" />
 		<ToggleImageButton name="flee_stance" border_size="0" position="175,480"
 			inactive_image="content/gui/icons/units/stances/flee_gr.png"
 			up_image="content/gui/icons/units/stances/flee.png"
 			down_image="content/gui/icons/units/stances/flee.png"
 			hover_image="content/gui/icons/units/stances/flee.png"
 			comment="Description of combat stance (how units behave when fighting)"
-			tooltip="Flee" />
+			helptext="Flee" />
 	</HBox>
 </Container>

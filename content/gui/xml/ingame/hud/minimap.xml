@@ -15,27 +15,27 @@ In case you change the size of this Container, also adapt the ingamegui position
 		up_image="content/gui/icons/widgets/minimap/speed_up.png"
 		down_image="content/gui/icons/widgets/minimap/speed_up_h.png"
 		hover_image="content/gui/icons/widgets/minimap/speed_up_h.png"
-		tooltip="Increase game speed (+)"
+		helptext="Increase game speed (+)"
 		is_focusable="0" />
 	<ToggleImageButton name="speedDown" position="48,105"
 		inactive_image="content/gui/icons/widgets/minimap/speed_down_bw.png"
 		up_image="content/gui/icons/widgets/minimap/speed_down.png"
 		down_image="content/gui/icons/widgets/minimap/speed_down_h.png"
 		hover_image="content/gui/icons/widgets/minimap/speed_down_h.png"
-		tooltip="Decrease game speed (-)"
+		helptext="Decrease game speed (-)"
 		is_focusable="0" />
 
-	<TooltipButton name="rotateLeft" position="96,19"
+	<ImageButton name="rotateLeft" position="96,19"
 		up_image="content/gui/icons/widgets/minimap/rotate_left.png"
 		down_image="content/gui/icons/widgets/minimap/rotate_left_h.png"
 		hover_image="content/gui/icons/widgets/minimap/rotate_left_h.png"
-		tooltip="Rotate map counterclockwise (,)"
+		helptext="Rotate map counterclockwise (,)"
 		is_focusable="0" />
-	<TooltipButton name="rotateRight" position="150,19"
+	<ImageButton name="rotateRight" position="150,19"
 		up_image="content/gui/icons/widgets/minimap/rotate_right.png"
 		down_image="content/gui/icons/widgets/minimap/rotate_right_h.png"
 		hover_image="content/gui/icons/widgets/minimap/rotate_right_h.png"
-		tooltip="Rotate map clockwise (.)"
+		helptext="Rotate map clockwise (.)"
 		is_focusable="0" />
 
 	<ToggleImageButton name="zoomIn" position="195,63"
@@ -43,14 +43,14 @@ In case you change the size of this Container, also adapt the ingamegui position
 		up_image="content/gui/icons/widgets/minimap/zoom_in.png"
 		down_image="content/gui/icons/widgets/minimap/zoom_in_h.png"
 		hover_image="content/gui/icons/widgets/minimap/zoom_in_h.png"
-		tooltip="Zoom in"
+		helptext="Zoom in"
 		is_focusable="0" />
 	<ToggleImageButton name="zoomOut" position="195,105"
 		inactive_image="content/gui/icons/widgets/minimap/zoom_out_bw.png"
 		up_image="content/gui/icons/widgets/minimap/zoom_out.png"
 		down_image="content/gui/icons/widgets/minimap/zoom_out_h.png"
 		hover_image="content/gui/icons/widgets/minimap/zoom_out_h.png"
-		tooltip="Zoom out"
+		helptext="Zoom out"
 		is_focusable="0" />
 </Container>
 
@@ -63,31 +63,31 @@ In case you change the size of this Container, also adapt the ingamegui position
 	<Icon position="126,28" image="content/gui/images/buttons/glass_small.png" />
 	<Icon position="157,0"  image="content/gui/images/buttons/glass_small.png" />
 
-	<TooltipButton name="destroy_tool" position="3,2"
+	<ImageButton name="destroy_tool" position="3,2"
 		up_image="content/gui/icons/widgets/minimap/tear.png"
 		down_image="content/gui/icons/widgets/minimap/tear_h.png"
 		hover_image="content/gui/icons/widgets/minimap/tear_h.png"
-		is_focusable="0" tooltip="Destroy (X)" />
-	<TooltipButton name="logbook" position="39,32"
+		is_focusable="0" helptext="Destroy (X)" />
+	<ImageButton name="logbook" position="39,32"
 		up_image="content/gui/icons/widgets/minimap/captainslog.png"
 		down_image="content/gui/icons/widgets/minimap/captainslog_h.png"
 		hover_image="content/gui/icons/widgets/minimap/captainslog_h.png"
-		is_focusable="0" tooltip="Captain's log (L)" />
+		is_focusable="0" helptext="Captain's log (L)" />
 	<ImageButton name="build" position="82,42"
 		up_image="content/gui/icons/widgets/minimap/build.png"
 		down_image="content/gui/icons/widgets/minimap/build_h.png"
 		hover_image="content/gui/icons/widgets/minimap/build_h.png"
 		is_focusable="0" helptext="Build menu (B)" />
-	<TooltipButton name="diplomacyButton" position="130,32"
+	<ImageButton name="diplomacyButton" position="130,32"
 		up_image="content/gui/icons/widgets/minimap/diplomacy.png"
 		down_image="content/gui/icons/widgets/minimap/diplomacy_h.png"
 		hover_image="content/gui/icons/widgets/minimap/diplomacy_h.png"
-		tooltip="Diplomacy" is_focusable="0"/>
-	<TooltipButton name="gameMenuButton" position="160,0"
+		helptext="Diplomacy" is_focusable="0"/>
+	<ImageButton name="gameMenuButton" position="160,0"
 		up_image="content/gui/icons/widgets/minimap/gamemenu.png"
 		down_image="content/gui/icons/widgets/minimap/gamemenu_h.png"
 		hover_image="content/gui/icons/widgets/minimap/gamemenu_h.png"
-		tooltip="Game menu (Esc)" is_focusable="0"/>
+		helptext="Game menu (Esc)" is_focusable="0"/>
 </Container>
-<TooltipIcon name="minimap"  size="120,120"  max_size="120,120"  position="47,46" />
+<Icon name="minimap"  size="120,120"  max_size="120,120"  position="47,46" />
 </Container>

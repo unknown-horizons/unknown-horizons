@@ -16,13 +16,13 @@
 		<Spacer />
 
 		<HBox max_size="80,36">
-			<ToggleImageButton name="backwardButton" tooltip="Read previous entries"
+			<ToggleImageButton name="backwardButton" helptext="Read previous entries"
 				comment="Entry of Captain's Log (logbook/diary used in scenarios)"
 				inactive_image ="content/gui/images/buttons/parrow_left_bw.png"
 				up_image="content/gui/images/buttons/parrow_left.png"
 				hover_image="content/gui/images/buttons/parrow_left_h.png"
 				down_image="content/gui/images/buttons/parrow_left_d.png" />
-			<ToggleImageButton name="forwardButton" tooltip="Read next entries"
+			<ToggleImageButton name="forwardButton" helptext="Read next entries"
 				comment="Entry of Captain's Log (logbook/diary used in scenarios)"
 				inactive_image ="content/gui/images/buttons/parrow_right_bw.png"
 				up_image="content/gui/images/buttons/parrow_right.png"
@@ -90,7 +90,7 @@
 	</VBox>
 </HBox> <!--closes: <VBox name="chat_overview">-->
 
-<OkButton tooltip="Return to game" position="795,510" />
+<OkButton helptext="Return to game" position="795,510" />
 
 <Container name="right_pickbelts" position="835,0" size="170,580" />
 

@@ -5,7 +5,7 @@
 		<ListBox name="maplist" />
 	</ScrollArea>
 	<Label name="recommended_number_of_players_lbl" text=""/>
-	<TooltipIcon name="map_preview_minimap" size="130,130" max_size="130,130" is_focusable="0"/> 
+	<Icon name="map_preview_minimap" size="130,130" max_size="130,130" is_focusable="0"/> 
 
 
 <!--
@@ -13,19 +13,19 @@
 	<ScrollArea horizontal_scrollbar="1"  vertical_scrollbar="0"  name="opponent_list_area">
 		<HBox name="opponent_list">
 			<VBox>
-				<TooltipIcon image="content/gfx/dummies/square_80.png" tooltip="Emma Stonard" />
+				<Icon image="content/gfx/dummies/square_80.png" helptext="Emma Stonard" />
 			</VBox>
 			<VBox>
-				<TooltipIcon image="content/gfx/dummies/square_80.png" tooltip="Arthur Gordon" />
+				<Icon image="content/gfx/dummies/square_80.png" helptext="Arthur Gordon" />
 			</VBox>
 			<VBox>
-				<TooltipIcon image="content/gfx/dummies/square_80.png" tooltip="Baron Hill" />
+				<Icon image="content/gfx/dummies/square_80.png" helptext="Baron Hill" />
 			</VBox>
 			<VBox>
-				<TooltipIcon image="content/gfx/dummies/square_80.png" tooltip="Cristina de Bolsena" />
+				<Icon image="content/gfx/dummies/square_80.png" helptext="Cristina de Bolsena" />
 			</VBox>
 			<VBox>
-				<TooltipIcon image="content/gfx/dummies/square_80.png" tooltip="Pietro Gonzale" />
+				<Icon image="content/gfx/dummies/square_80.png" helptext="Pietro Gonzale" />
 			</VBox>
 		</HBox>
 	</ScrollArea>

@@ -11,20 +11,20 @@
 
 	<Container position="20,110" size="95,95" >
 		<!--Current order pic-->
-		<TooltipIcon image="content/gfx/dummies/square_80.png" position="15,15" tooltip="(like in the selection tabs)" />
+		<Icon image="content/gfx/dummies/square_80.png" position="15,15" helptext="(like in the selection tabs)" />
 	</Container>
 
 	<Container position="130,110" size="260,100" >
 		<!--Resources and amount-->
-		<TooltipIcon image="content/gui/icons/resources/16/004.png" position="0,0" tooltip="$res" />
+		<Icon image="content/gui/icons/resources/16/004.png" position="0,0" helptext="$res" />
 		<Label position="22,0" name="BB_needed_boards" text="24t" />
-		<TooltipIcon image="content/gui/icons/resources/16/003.png" position="0,20" tooltip="$res" />
+		<Icon image="content/gui/icons/resources/16/003.png" position="0,20" helptext="$res" />
 		<Label position="22,20" name="BB_needed_cloth" text="14t" />
-		<TooltipIcon image="content/gui/icons/resources/16/006.png" position="0,40" tooltip="$res" />
+		<Icon image="content/gui/icons/resources/16/006.png" position="0,40" helptext="$res" />
 		<Label position="22,40" name="BB_needed_ropes" text="06t" />
-		<TooltipIcon image="content/gui/icons/resources/16/005.png" position="0,60" tooltip="$res" />
+		<Icon image="content/gui/icons/resources/16/005.png" position="0,60" helptext="$res" />
 		<Label position="22,60" name="BB_needed_cannons" text="06t" />
-		<TooltipIcon image="content/gui/icons/resources/16/001.png" position="0,80" tooltip="$res" />
+		<Icon image="content/gui/icons/resources/16/001.png" position="0,80" helptext="$res" />
 		<Label position="22,80" name="BB_needed_money" text="2500" />
 
 	</Container>
@@ -39,12 +39,12 @@
 
 	<Container position="20,333" size="220,30" >
 		<!--Upgrades-->
-		<TooltipButton position="20,0"
+		<ImageButton position="20,0"
 				up_image="content/gui/images/background/sq.png"
 				hover_image="content/gui/images/background/sq_h.png"
 				down_image="content/gui/images/background/sq_h.png" />
 		<Label name="BB_upgrade_cannons" position="50,4" text="Cannons" />
-		<TooltipButton position="120,0"
+		<ImageButton position="120,0"
 				up_image="content/gui/images/background/sq_ok.png"
 				hover_image="content/gui/images/background/sq_h.png"
 				down_image="content/gui/images/background/sq_h.png" />
@@ -64,6 +64,6 @@
 	<Container position="60,380" size="240,100" >
 		<!--Confirm task-->
 		<Label position="30,10" name="BB_confirm_build_label" text="Build ship:" />
-		<OkButton position="100,0" tooltip="Build this ship!" name="create_unit" />
+		<OkButton position="100,0" helptext="Build this ship!" name="create_unit" />
 	</Container>-->
 </Container>

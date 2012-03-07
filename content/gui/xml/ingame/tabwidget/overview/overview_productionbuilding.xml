@@ -16,15 +16,15 @@
 	<HBox min_size="125,20" max_size="225,20" position="25,63">
 		<!-- the widgets in this container have no text because it is set
 		dynamically at runtime. See e.g. overviewtab.py -->
-		<TooltipIcon name="running_costs_label" tooltip="Running costs"
+		<Icon name="running_costs_label" helptext="Running costs"
 			image="content/gui/icons/resources/running_costs.png" />
-		<TooltipLabel name="running_costs" text=""
-			tooltip="Running costs" />
+		<Label name="running_costs" text=""
+			helptext="Running costs" />
 	<Spacer max_size="50" />
-		<TooltipIcon name="capacity_utilisation_label"  tooltip="Capacity utilization"
+		<Icon name="capacity_utilisation_label"  helptext="Capacity utilization"
 			image="content/gui/icons/resources/cap_util.png" />
-		<TooltipLabel name="capacity_utilisation" text=""
-			tooltip="Capacity utilization" />
+		<Label name="capacity_utilisation" text=""
+			helptext="Capacity utilization" />
 	</HBox>
 
 

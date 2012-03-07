@@ -5,10 +5,10 @@
 		<Label name="player_emblem" text="   " size="12,18"  comment="noi18n" />
 		<Label name="player_name" min_size="138,20"/>
 		<Label name="gold_amount" />
-		<TooltipIcon name="gold_icon" />
+		<Icon name="gold_icon" />
 	</HBox>
 	<HBox>
-		<TooltipIcon name="resource_icon" />
+		<Icon name="resource_icon" />
 		<Label name="resource_amount" />
 	</HBox>
 </VBox>

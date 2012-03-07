@@ -18,7 +18,7 @@
 
 		<Label name="exit_to_mp_menu_lbl"  text="Leave:"  position="75,470" />
 		<CancelButton position="120,460"
-			name="cancel"  tooltip="Exit gamelobby" />
+			name="cancel"  helptext="Exit gamelobby" />
 	</Container>
 
 

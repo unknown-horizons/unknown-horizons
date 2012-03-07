@@ -14,15 +14,15 @@
 	<Icon image="content/gui/icons/templates/production/production_arrow.png" position="60,12"/>
 
 	<!-- one of those button gets removed at runtime -->
-	<TooltipButton up_image="content/gui/icons/templates/production/toggle_small_active_n.png"
+	<ImageButton up_image="content/gui/icons/templates/production/toggle_small_active_n.png"
 		down_image="content/gui/icons/templates/production/toggle_small_active_d.png"
 		hover_image="content/gui/icons/templates/production/toggle_small_active_h.png"
-		border_size="0" position="82,0" name="toggle_active_active" tooltip="Pause production" />
+		border_size="0" position="82,0" name="toggle_active_active" helptext="Pause production" />
 
-	<TooltipButton up_image="content/gui/icons/templates/production/toggle_small_inactive_n.png"
+	<ImageButton up_image="content/gui/icons/templates/production/toggle_small_inactive_n.png"
 		down_image="content/gui/icons/templates/production/toggle_small_inactive_d.png"
 		hover_image="content/gui/icons/templates/production/toggle_small_inactive_h.png"
-		border_size="0" position="82,0" name="toggle_active_inactive" tooltip="Start production" />
+		border_size="0" position="82,0" name="toggle_active_inactive" helptext="Start production" />
 
 	<VBox name="output_res" position="157,-06" />
 

@@ -16,8 +16,8 @@
 			<Icon name="icon_1" />
 			<Icon name="icon_2" />
 		</HBox>
-		<TooltipButton name="button_1" position="2,32" />
-		<TooltipButton name="button_2" position="56,32" />
+		<ImageButton name="button_1" position="2,32" />
+		<ImageButton name="button_2" position="56,32" />
 	</Container>
 
 	<Container position="128,32" size="140,80">
@@ -26,8 +26,8 @@
 			<Icon name="icon_21" />
 			<Icon name="icon_22" />
 		</HBox>
-		<TooltipButton name="button_21" position="2,32" />
-		<TooltipButton name="button_22" position="56,32" />
+		<ImageButton name="button_21" position="2,32" />
+		<ImageButton name="button_22" position="56,32" />
 	</Container>
 
 	<Container position="20,107" size="250,80" >
@@ -36,8 +36,8 @@
 			<Icon name="icon_3" />
 			<Icon name="icon_4" />
 		</HBox>
-		<TooltipButton name="button_3" position="2,32" />
-		<TooltipButton name="button_4" position="56,32" />
+		<ImageButton name="button_3" position="2,32" />
+		<ImageButton name="button_4" position="56,32" />
 	</Container>
 
 	<Container position="128,107" size="140,80" >
@@ -46,8 +46,8 @@
 			<Icon name="icon_23" />
 			<Icon name="icon_24" />
 		</HBox>
-		<TooltipButton name="button_23" position="2,32" />
-		<TooltipButton name="button_24" position="56,32" />
+		<ImageButton name="button_23" position="2,32" />
+		<ImageButton name="button_24" position="56,32" />
 	</Container>
 
 	<Container position="20,182" size="140,80" >
@@ -56,8 +56,8 @@
 			<Icon name="icon_5" />
 			<Icon name="icon_6" />
 		</HBox>
-		<TooltipButton name="button_5" position="2,32" />
-		<TooltipButton name="button_6" position="56,32" />
+		<ImageButton name="button_5" position="2,32" />
+		<ImageButton name="button_6" position="56,32" />
 	</Container>
 
 	<Container position="128,182" size="140,80" >
@@ -66,8 +66,8 @@
 			<Icon name="icon_25" />
 			<Icon name="icon_26" />
 		</HBox>
-		<TooltipButton name="button_25" position="2,32" />
-		<TooltipButton name="button_26" position="56,32" />
+		<ImageButton name="button_25" position="2,32" />
+		<ImageButton name="button_26" position="56,32" />
 	</Container>
 
 	<Container position="20,257" size="250,80" >
@@ -76,8 +76,8 @@
 			<Icon name="icon_7" />
 			<Icon name="icon_8" />
 		</HBox>
-		<TooltipButton name="button_7" position="2,32" />
-		<TooltipButton name="button_8" position="56,32" />
+		<ImageButton name="button_7" position="2,32" />
+		<ImageButton name="button_8" position="56,32" />
 	</Container>
 
 	<Container position="128,257" size="140,80" >
@@ -86,8 +86,8 @@
 			<Icon name="icon_27" />
 			<Icon name="icon_28" />
 		</HBox>
-		<TooltipButton name="button_27" position="2,32" />
-		<TooltipButton name="button_28" position="56,32" />
+		<ImageButton name="button_27" position="2,32" />
+		<ImageButton name="button_28" position="56,32" />
 	</Container>
 
 </Container>

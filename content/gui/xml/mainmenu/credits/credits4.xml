@@ -54,7 +54,7 @@
 </VBox>
 
 <Container position="0,500"  size="1000,100">
-	<OkButton position="800,0"  tooltip="Exit to main menu" />
+	<OkButton position="800,0"  helptext="Exit to main menu" />
 </Container>
 
 </Container>

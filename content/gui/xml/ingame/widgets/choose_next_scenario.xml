@@ -14,7 +14,7 @@
 	</ScrollArea>
 
 	<Spacer />
-	<CancelButton tooltip="Continue playing"
+	<CancelButton helptext="Continue playing"
 		comment="Players either select the next scenario they want to play or press this button" />
 
 </VBox>
@@ -37,7 +37,7 @@
 		up_image="content/gui/icons/templates/production/toggle_active_n.png"
 		down_image="content/gui/icons/templates/production/toggle_active_d.png"
 		hover_image="content/gui/icons/templates/production/toggle_active_h.png"
-		tooltip="Choose this scenario"  comment="Select which scenario to play" />
+		helptext="Choose this scenario"  comment="Select which scenario to play" />
 	</HBox>
 </VBox>
 </Container>

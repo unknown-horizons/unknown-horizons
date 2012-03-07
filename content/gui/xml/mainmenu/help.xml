@@ -60,12 +60,12 @@
 	</VBox>
 	<VBox>
 		<Label name="have_fun" text="Have fun." />
-		<TooltipLabel name="fife_and_uh_team"  wrap_text="1"  max_size="290,40"
+		<Label name="fife_and_uh_team"  wrap_text="1"  max_size="290,40"
 			text="The FIFE and Unknown Horizons development teams" />
 	</VBox>
 <Spacer />
 </VBox>
 
-<OkButton position="695,500"  tooltip="Return" />
+<OkButton position="695,500"  helptext="Return" />
 
 </Container>

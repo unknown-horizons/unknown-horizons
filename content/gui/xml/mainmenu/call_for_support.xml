@@ -67,6 +67,6 @@
 	</VBox>
 </VBox>
 
-<OkButton position="695,500"  tooltip="Exit to main menu" />
+<OkButton position="695,500"  helptext="Exit to main menu" />
 
 </Container>

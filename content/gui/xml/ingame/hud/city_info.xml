@@ -4,12 +4,12 @@
 	Displayed when hovering player settlement. -->
 	<Icon image="content/gui/images/background/widgets/city_name_bg.png"  position="0,17" />
 
-	<TooltipIcon name="owner_emblem"  position="5,19" />
-	<TooltipIcon name="city_info_inhabitants"  position="174,11"
+	<Icon name="owner_emblem"  position="5,19" />
+	<Icon name="city_info_inhabitants"  position="174,11"
 		image="content/gui/icons/widgets/cityinfo/inhabitants.png" 
-		tooltip="Inhabitants" />
+		helptext="Inhabitants" />
 
-	<TooltipLabel name="city_name"  text=""  position="38,20" />
+	<Label name="city_name"  text=""  position="38,20" />
 	<Label name="city_inhabitants"  position="204,20"  text="" />
 	<!-- these two are set at runtime: horizons.gui.ingamegui.update_settlement -->
 </Container>

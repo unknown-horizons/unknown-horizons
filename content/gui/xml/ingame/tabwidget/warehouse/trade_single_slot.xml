@@ -1,8 +1,8 @@
 <?xml version="1.0"?>
 <Container size="60,50" opaque="0">
 	<Icon name="icon" image="content/gui/images/background/inv_bg.png" />
-	<TooltipButton up_image="content/gui/images/background/inv_bg.png" name="button" />
-	<TooltipButton name="buysell" position="3,3" />
+	<ImageButton up_image="content/gui/images/background/inv_bg.png" name="button" />
+	<ImageButton name="buysell" position="3,3" />
 
 	<!-- Label that displays the amount that is being sold or bought -->
 	<Label name="amount" text="" position="13,35" />

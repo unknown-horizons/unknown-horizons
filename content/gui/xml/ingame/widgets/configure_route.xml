@@ -25,7 +25,7 @@
 	<!-- right side -->
 
 	<VBox name="right_vbox" max_size="350,508" min_size="350,508" position="520,40" padding="2">
-		<TooltipIcon name="minimap" size="300,300" max_size="300,300" is_focusable="0"/> <!-- settlement selection in minimap -->
+		<Icon name="minimap" size="300,300" max_size="300,300" is_focusable="0"/> <!-- settlement selection in minimap -->
 
 		<!-- this box is only displayed on resource selection. -->
 		<VBox name="resources" max_size="326,155" min_size="276,155" /> <!-- res selection box, filled with icons -->
@@ -38,11 +38,11 @@
 				up_image="content/gui/icons/ship/traderoute_disabled.png"
 				down_image="content/gui/icons/ship/traderoute_disabled.png"
 				hover_image="content/gui/icons/ship/traderoute_hover_to_disable.png"
-				tooltip="Start route" comment="Trade route" is_focusable="0"/>
+				helptext="Start route" comment="Trade route" is_focusable="0"/>
 
 			<Spacer fixed_size="43"/>
 
-			<OkButton tooltip="Exit" />
+			<OkButton helptext="Exit" />
 		</HBox>
 	</VBox>
 <!-- Here pickbelts could be added to achieve more space.

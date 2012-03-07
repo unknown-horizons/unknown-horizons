@@ -11,21 +11,21 @@
 
 	<Container position="20,95" size="260,450" >
 		<!-- Ship images -->
-		<TooltipIcon image="content/gfx/dummies/square_80.png" position="0,20"
-				tooltip="Galley: \nStorage: 1 slots of 40t \nCannons: 12 \nSpeed: fast \nHealth: 200" />
-		<CancelButton position="60,70" tooltip="Can't build this ship!" />
+		<Icon image="content/gfx/dummies/square_80.png" position="0,20"
+				helptext="Galley: \nStorage: 1 slots of 40t \nCannons: 12 \nSpeed: fast \nHealth: 200" />
+		<CancelButton position="60,70" helptext="Can't build this ship!" />
 
-		<TooltipIcon image="content/gfx/dummies/square_80.png" position="0,107"
-				tooltip="Big gunboat: \nStorage: 2 slots of 15t \nCannons: 20 \nSpeed: fast \nHealth: 150\nGets available after:\n  Build Shipyard" />
-		<CancelButton position="60,157" tooltip="Can't build this ship!" />
+		<Icon image="content/gfx/dummies/square_80.png" position="0,107"
+				helptext="Big gunboat: \nStorage: 2 slots of 15t \nCannons: 20 \nSpeed: fast \nHealth: 150\nGets available after:\n  Build Shipyard" />
+		<CancelButton position="60,157" helptext="Can't build this ship!" />
 
-		<TooltipIcon image="content/gfx/dummies/square_80.png" position="0,194"
-				tooltip="Corvette: \nStorage: 0 slots of 0t \nCannons: 0 \nSpeed:  \nHealth: 0\nGets available after:\n Build Shipyard" />
-		<CancelButton position="60,244" tooltip="Can't build this ship!" />
+		<Icon image="content/gfx/dummies/square_80.png" position="0,194"
+				helptext="Corvette: \nStorage: 0 slots of 0t \nCannons: 0 \nSpeed:  \nHealth: 0\nGets available after:\n Build Shipyard" />
+		<CancelButton position="60,244" helptext="Can't build this ship!" />
 
-		<TooltipIcon image="content/gfx/dummies/square_80.png" position="0,281"
-				tooltip="Frigate: \nStorage: 0 slots of 0t \nCannons: 0 \nSpeed:  \nHealth: 0 \nGets available after:\n Build Shipyard" />
-		<CancelButton position="60,331" tooltip="Can't build this ship!" />
+		<Icon image="content/gfx/dummies/square_80.png" position="0,281"
+				helptext="Frigate: \nStorage: 0 slots of 0t \nCannons: 0 \nSpeed:  \nHealth: 0 \nGets available after:\n Build Shipyard" />
+		<CancelButton position="60,331" helptext="Can't build this ship!" />
 
 	</Container>
 
@@ -33,15 +33,15 @@
 		<!-- Ship 1 information -->
 		<Label position="0,3" text="Galley" />
 
-		<TooltipIcon image="content/gui/icons/resources/16/004.png" position="13,25" tooltip="Boards" />
+		<Icon image="content/gui/icons/resources/16/004.png" position="13,25" helptext="Boards" />
 		<Label position="35,25" text="42t" /> <!-- maybe get this info out of a sqlite. could depend on difficulty.-->
-		<TooltipIcon image="content/gui/icons/resources/16/003.png" position="13,45" tooltip="Cloth" />
+		<Icon image="content/gui/icons/resources/16/003.png" position="13,45" helptext="Cloth" />
 		<Label position="35,45" text="24t" />
-		<TooltipIcon image="content/gui/icons/resources/16/006.png" position="68,25" tooltip="Ropes" />
+		<Icon image="content/gui/icons/resources/16/006.png" position="68,25" helptext="Ropes" />
 		<Label position="90,25" text="12t" />
-		<TooltipIcon image="content/gui/icons/resources/16/005.png" position="68,45" tooltip="Cannons" />
+		<Icon image="content/gui/icons/resources/16/005.png" position="68,45" helptext="Cannons" />
 		<Label position="90,45" text="12t" />
-		<TooltipIcon image="content/gui/icons/resources/16/001.png" position="13,65" tooltip="Money" />
+		<Icon image="content/gui/icons/resources/16/001.png" position="13,65" helptext="Money" />
 		<Label position="35,65" text="5000" />
 	</Container>
 
@@ -49,15 +49,15 @@
 		<!-- Ship 2 information -->
 		<Label position="0,3" text="Big gunboat" />
 
-		<TooltipIcon image="content/gui/icons/resources/16/004.png" position="13,25" tooltip="Boards" />
+		<Icon image="content/gui/icons/resources/16/004.png" position="13,25" helptext="Boards" />
 		<Label position="35,25" text="38t" /> <!-- maybe get this info out of a sqlite. could depend on difficulty.-->
-		<TooltipIcon image="content/gui/icons/resources/16/003.png" position="13,45" tooltip="Cloth" />
+		<Icon image="content/gui/icons/resources/16/003.png" position="13,45" helptext="Cloth" />
 		<Label position="35,45" text="28t" />
-		<TooltipIcon image="content/gui/icons/resources/16/006.png" position="68,25" tooltip="Ropes" />
+		<Icon image="content/gui/icons/resources/16/006.png" position="68,25" helptext="Ropes" />
 		<Label position="90,25" text="14t" />
-		<TooltipIcon image="content/gui/icons/resources/16/005.png" position="68,45" tooltip="Cannons" />
+		<Icon image="content/gui/icons/resources/16/005.png" position="68,45" helptext="Cannons" />
 		<Label position="90,45" text="20t" />
-		<TooltipIcon image="content/gui/icons/resources/16/001.png" position="13,65" tooltip="Money" />
+		<Icon image="content/gui/icons/resources/16/001.png" position="13,65" helptext="Money" />
 		<Label position="35,65" text="6500" />
 	</Container>
 

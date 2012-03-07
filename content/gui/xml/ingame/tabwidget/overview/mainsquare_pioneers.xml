@@ -17,17 +17,17 @@ Shows info about pioneers and allows the player to change taxes or deny upgrade 
 
 		<Container size="260,60" position="25,43">
 			<!-- Taxes -->
-			<TooltipIcon name="paid_taxes_icon" position="0,0"
+			<Icon name="paid_taxes_icon" position="0,0"
 				image="content/gui/icons/resources/running_costs.png"
-				tooltip="Paid taxes" />
+				helptext="Paid taxes" />
 			<Label position="20,0" name="tax_label" text="Taxes:" />
-			<TooltipLabel name="taxes" position="98,0" text=""
-				tooltip="Paid taxes" />
-			<TooltipIcon name="tax_rate_icon" position="160,0"
+			<Label name="taxes" position="98,0" text=""
+				helptext="Paid taxes" />
+			<Icon name="tax_rate_icon" position="160,0"
 				image="content/gui/icons/resources/cap_util.png"
-				tooltip="Tax rate" />
-			<TooltipLabel name="tax_val_label" position="180,0" text=""
-				tooltip="Tax rate" />
+				helptext="Tax rate" />
+			<Label name="tax_val_label" position="180,0" text=""
+				helptext="Tax rate" />
 			<StepSlider position="2,25" size="200,20" name="tax_slider" orientation="0" />
 		</Container>
 

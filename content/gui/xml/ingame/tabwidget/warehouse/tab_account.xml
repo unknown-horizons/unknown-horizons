@@ -6,7 +6,7 @@
 
 	<HBox position="22,7"  min_size="170,20"  size="230,20">
 	<Spacer min_size="0"  max_size="50" />
-		<TooltipLabel name="headline"  text="Account" />
+		<Label name="headline"  text="Account" />
 	</HBox>
 
 	<Icon image="content/gui/images/background/hr.png" position="20,30" />
@@ -38,7 +38,7 @@
 		up_image="content/gui/icons/widgets/cityinfo/settlement.png"
 		down_image="content/gui/icons/widgets/cityinfo/settlement.png"
 		hover_image="content/gui/icons/widgets/cityinfo/settlement.png"
-		tooltip="Show resources produced in this settlement" />
+		helptext="Show resources produced in this settlement" />
 	</Container>
 
 </Container>

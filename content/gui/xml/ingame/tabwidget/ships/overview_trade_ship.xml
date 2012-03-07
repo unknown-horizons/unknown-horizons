@@ -7,7 +7,7 @@
 		<!-- Name of Ship -->
 		<HBox position="22,7" min_size="170,20" size="230,20">
 			<Spacer min_size="0" max_size="50" />
-			<TooltipLabel name="name" border_size="0" tooltip="Click to change the name of this ship" />
+			<Label name="name" border_size="0" helptext="Click to change the name of this ship" />
 		</HBox>
 
 		<Icon image="content/gui/images/background/hr.png" position="20,30" />
@@ -19,7 +19,7 @@
 					up_image="content/gui/images/buttons/msg_button.png" 
 					down_image="content/gui/images/buttons/msg_button_d.png" 
 					hover_image="content/gui/images/buttons/msg_button_h.png" is_focusable="0"/>
-				<ToggleImageButton name="trade" tooltip="Trade" position="10,9"
+				<ToggleImageButton name="trade" helptext="Trade" position="10,9"
 					inactive_image="content/gui/icons/ship/civil_32_bw.png"
 					up_image="content/gui/icons/ship/civil_32.png"
 					down_image="content/gui/icons/ship/civil_32_h.png"
@@ -32,14 +32,14 @@
 					up_image="content/gui/images/buttons/msg_button.png" 
 					down_image="content/gui/images/buttons/msg_button_d.png" 
 					hover_image="content/gui/images/buttons/msg_button_h.png" is_focusable="0" />
-				<ToggleImageButton name="found_settlement" tooltip="Build settlement" position="6,5"
+				<ToggleImageButton name="found_settlement" helptext="Build settlement" position="6,5"
 					inactive_image="content/gui/icons/ship/anchor_bw.png" 
 					up_image="content/gui/icons/ship/anchor.png" 
 					down_image="content/gui/icons/ship/anchor_a.png" 
 					hover_image="content/gui/icons/ship/anchor_h.png" is_focusable="0" />
 			</Container>
 
-			<ToggleImageButton name="configure_route" border_size="0" position="155,0" tooltip="Configure trading route"
+			<ToggleImageButton name="configure_route" border_size="0" position="155,0" helptext="Configure trading route"
 				inactive_image="content/gui/icons/ship/traderoute_configure_onroute.png"
 				up_image="content/gui/icons/ship/traderoute_configure.png"
 				down_image="content/gui/icons/ship/traderoute_configure_pressed.png"

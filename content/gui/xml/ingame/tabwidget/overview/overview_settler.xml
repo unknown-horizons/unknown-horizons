@@ -7,7 +7,7 @@
 
 		<HBox position="22,7"  min_size="170,20"  size="230,20" >
 		<Spacer min_size="0"  max_size="50" />
-			<TooltipLabel name="headline" text="" tooltip="Click to change the name of your settlement" />
+			<Label name="headline" text="" helptext="Click to change the name of your settlement" />
 		</HBox>
 
 		<Icon image="content/gui/images/background/hr.png" position="20,30" />
@@ -18,31 +18,31 @@
 
 			<!-- happiness and residents -->
 			<Label name='name' position="0,140" text="" />
-			<TooltipIcon name="happiness_label" position="0,166"
+			<Icon name="happiness_label" position="0,166"
 				image="content/gui/icons/resources/running_costs.png"
-				tooltip="Happiness" />
+				helptext="Happiness" />
 			<Icon position="20,165" image="content/gui/images/background/bar_bg.png" size="80,20" />
 			<TooltipProgressBar name='happiness' position="21,166"
-				size="91,20" tooltip="Happiness" />
-			<TooltipIcon name="residents_label" position="140,166"
+				size="91,20" helptext="Happiness" />
+			<Icon name="residents_label" position="140,166"
 				image="content/gui/icons/widgets/cityinfo/inhabitants_small.png"
-				tooltip="Residents" />
-			<TooltipLabel name='inhabitants' position="160,165" text=""
-				tooltip="Residents" />
+				helptext="Residents" />
+			<Label name='inhabitants' position="160,165" text=""
+				helptext="Residents" />
 
 			<!-- Taxes -->
 			<Icon image="content/gui/images/background/hr.png" position="0,190" />
 			<Label position="0,205" name="tax_label" text="Taxes:" />
-			<TooltipLabel name='taxes' position="55,205" text=""
-				tooltip="Paid taxes" />
-			<TooltipIcon name="paid_taxes_label" position="72,205"
+			<Label name='taxes' position="55,205" text=""
+				helptext="Paid taxes" />
+			<Icon name="paid_taxes_label" position="72,205"
 				image="content/gui/icons/resources/running_costs.png"
-				tooltip="Paid taxes" />
-			<TooltipLabel name='tax_val_label' position="160,205" text=""
-				tooltip="Tax rate" />
-			<TooltipIcon name="paid_taxes_label" position="185,205"
+				helptext="Paid taxes" />
+			<Label name='tax_val_label' position="160,205" text=""
+				helptext="Tax rate" />
+			<Icon name="paid_taxes_label" position="185,205"
 				image="content/gui/icons/resources/running_costs.png"
-				tooltip="Tax rate" />
+				helptext="Tax rate" />
 			<StepSlider position="2,230" size="200,20" name="tax_slider" orientation="0" />
 
 			<!-- Ressources -->

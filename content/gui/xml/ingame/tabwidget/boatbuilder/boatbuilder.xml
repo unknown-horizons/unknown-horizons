@@ -12,7 +12,7 @@
 
 		<Icon image="content/gui/images/background/hr.png" position="20,30" />
 		<Label name='name' position="25,40" text="" />
-		<TooltipIcon name="running_costs_label"	position="180,62" tooltip="Running costs"
+		<Icon name="running_costs_label"	position="180,62" helptext="Running costs"
 			image="content/gui/icons/resources/running_costs.png" />
 		<Label name="running_costs" position="200,62" text="" />
 		<!--<Label position="," name="health_label" text="Health:" />
@@ -34,22 +34,22 @@
 			comment="Information about the ship currently under construction at the boat builder" />
 		<HBox name="queue_container"></HBox>
 		<Label name="headline_BB_builtship_label" position="0,43" text=""/>
-		<TooltipIcon image="content/gfx/dummies/square_120.png" position="0,65"
+		<Icon image="content/gfx/dummies/square_120.png" position="0,65"
 			name="BB_cur_ship_bg" />
-		<TooltipIcon name="BB_cur_ship_icon" position="2,67" />
+		<Icon name="BB_cur_ship_icon" position="2,67" />
 		<VBox position="125,75" name="BB_upgrades_box"/> 	<!-- translations? -->
 
 		<!-- one of those button gets removed at runtime -->
-		<TooltipButton up_image="content/gui/icons/templates/production/toggle_active_n.png"
+		<ImageButton up_image="content/gui/icons/templates/production/toggle_active_n.png"
 			down_image="content/gui/icons/templates/production/toggle_active_d.png"
 			hover_image="content/gui/icons/templates/production/toggle_active_h.png"
 			position="145,130"  border_size="0"  name="toggle_active_active"
-			comment="Pauses the current ship production, can be resumed later"  tooltip="Pause" />
-		<TooltipButton up_image="content/gui/icons/templates/production/toggle_inactive_n.png"
+			comment="Pauses the current ship production, can be resumed later"  helptext="Pause" />
+		<ImageButton up_image="content/gui/icons/templates/production/toggle_inactive_n.png"
 			down_image="content/gui/icons/templates/production/toggle_inactive_d.png"
 			hover_image="content/gui/icons/templates/production/toggle_inactive_h.png"
 			position="145,130"  border_size="0"  name="toggle_active_inactive"
-		comment="Resumes the currently paused ship production"  tooltip="Resume" />
+		comment="Resumes the currently paused ship production"  helptext="Resume" />
 	</Container>
 
 	<Container position="25,325" size="260,40" name="BB_progress_container">
@@ -63,11 +63,11 @@
 	<Container position="25,380" size="260,50" name="BB_needed_resources_container">
 	<!-- Resources -->
 		<Label position="0,0" name="BB_needed_res_label" text="" />
-		<TooltipIcon image="" position="0,25" name="BB_needed_res_icon_1" tooltip="" />
+		<Icon image="" position="0,25" name="BB_needed_res_icon_1" helptext="" />
 		<Label position="22,25" name="BB_needed_res_lbl_1" text="" />
-		<TooltipIcon image="" position="70,25" name="BB_needed_res_icon_2" tooltip="" />
+		<Icon image="" position="70,25" name="BB_needed_res_icon_2" helptext="" />
 		<Label position="92,25" name="BB_needed_res_lbl_2" text="" />
-		<TooltipIcon image="" position="140,25" name="BB_needed_res_icon_3" tooltip="" />
+		<Icon image="" position="140,25" name="BB_needed_res_icon_3" helptext="" />
 		<Label position="162,25" name="BB_needed_res_lbl_3" text="" />
 		<!-- dynamical display of the three most wanted res with amount in one line, looking like this:
 		[ ] 11t	[ ] 8t	[ ] 2t -->
@@ -81,6 +81,6 @@
 			comment="abort construction of a ship, lose invested resources" /> <!-- smaller font than the above one -->
 		<CancelButton name="BB_cancel_button"  position="160,22"  size="64,64"
 			comment="abort construction of a ship, lose invested resources"
-			tooltip="Cancel all building progress" /> <!-- needs a confirmation popup -->
+			helptext="Cancel all building progress" /> <!-- needs a confirmation popup -->
 	</Container>
 </Container>

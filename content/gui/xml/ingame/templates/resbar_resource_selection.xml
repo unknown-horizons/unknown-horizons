@@ -2,8 +2,8 @@
 <Container name="resbar_resource_selection" position="0,5" size="250,350"
 	background_image='content/gui/images/background/mainmenu/ingame.png'>
 
-	<TooltipLabel name="headline" text="Select resource:" position="50,7"
-		tooltip="The resource you select is displayed instead of the current one. Empty by clicking on X."
+	<Label name="headline" text="Select resource:" position="50,7"
+		helptext="The resource you select is displayed instead of the current one. Empty by clicking on X."
 		comment="Please keep the translation similarly short and concise, else the tooltip is not well understood by players." />
 	<Icon image="content/gui/images/background/hr.png" position="20,30" />
 
@@ -17,8 +17,8 @@
 	<Icon image="content/gui/images/background/hr.png" position="20,300" />
 
 	<HBox position="15,310">
-		<TooltipButton name="make_default_btn" text="Save as default" tooltip="Save current resource configuration as default for all settlements."/>
-		<TooltipButton name="reset_default_btn" text="Restore default" tooltip="Reset default resource configuration for all settlements."/>
+		<ImageButton name="make_default_btn" text="Save as default" helptext="Save current resource configuration as default for all settlements."/>
+		<ImageButton name="reset_default_btn" text="Restore default" helptext="Reset default resource configuration for all settlements."/>
 	</HBox>
 
 </Container>

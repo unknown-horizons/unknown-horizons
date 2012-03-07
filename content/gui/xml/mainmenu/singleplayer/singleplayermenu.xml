@@ -16,7 +16,7 @@
 
 		<HBox position="42,470"  min_size="0,40">
 			<Label name="main_menu_label" text="Main menu:" />
-			<CancelButton name="cancel"  tooltip="Exit to main menu" />
+			<CancelButton name="cancel"  helptext="Exit to main menu" />
 		</HBox>
 	</Container>
 
@@ -35,7 +35,7 @@
 	<HBox min_size="0,40" position="640, 600">
 	<Spacer />
 		<Label name="start_game_label"  text="Start game:" />
-		<OkButton name="okay"  tooltip="Start game" />
+		<OkButton name="okay"  helptext="Start game" />
 	</HBox>
 
 </Container>

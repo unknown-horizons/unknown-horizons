@@ -9,7 +9,7 @@
 
 		<HBox>
 			<CancelButton />
-			<OkButton tooltip="Save the map" />
+			<OkButton helptext="Save the map" />
 		</HBox>
 	</VBox>
 </Container>

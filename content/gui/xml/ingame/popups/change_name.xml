@@ -15,7 +15,7 @@
 
 	<HBox>
 		<CancelButton />
-		<OkButton tooltip="Apply the new name" />
+		<OkButton helptext="Apply the new name" />
 	</HBox>
 </VBox>
 

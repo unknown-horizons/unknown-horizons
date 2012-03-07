@@ -24,7 +24,7 @@ In this VBox a line is added per ship in the following format:
 			<HBox>
 				<Label min_size="15,20" name="sequence_number_n" text="42" />
 				<Label min_size="100,20" name="ship_name_n" text="Millennium Falcon" />
-				<TooltipIcon name="rename_n" tooltip="Click to change the name of this ship" image="content/gui/images/background/rename_feather_20.png" />
+				<Icon name="rename_n" helptext="Click to change the name of this ship" image="content/gui/images/background/rename_feather_20.png" />
 				<Label min_size="60,20" name="ship_type_n" text="Light freighter" />
 				<Label min_size="60,20" name="weapons_n" text="42 quad laser cannon" />
 				<Label min_size="65,20" name="health_n" text="100/100" />

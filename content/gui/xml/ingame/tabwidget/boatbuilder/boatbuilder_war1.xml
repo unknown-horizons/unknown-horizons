@@ -12,22 +12,22 @@
 	<Container position="20,95" size="260,450" >
 		<!-- Ship images -->
 		<Icon image="content/gfx/dummies/square_80.png" position="0,20" />
-		<TooltipIcon image="content/gui/images/objects/ships/76/1000020.png" position="2,22"
-				tooltip="Frigate: \nStorage: 4 slots, 30t \nCannons: 7 \nHealth: 200" />
-		<OkButton position="60,70"  name="BB_build_war1_1"  tooltip="Build this ship!" /><!--
+		<Icon image="content/gui/images/objects/ships/76/1000020.png" position="2,22"
+				helptext="Frigate: \nStorage: 4 slots, 30t \nCannons: 7 \nHealth: 200" />
+		<OkButton position="60,70"  name="BB_build_war1_1"  helptext="Build this ship!" /><!--
 
-		<TooltipIcon image="content/gfx/dummies/square_80.png" position="0,107"/>
-				tooltip="Naval cutter: \nStorage: 2 slots of 15t \nCannons: 4 \nSpeed: x \nHealth: 100\nGets available after:\n Research 'Military Ships'" />
-		<CancelButton position="60,157" tooltip="Can't build this ship!" />
-		<CancelButton position="60,70" tooltip="Not yet implemented." />
+		<Icon image="content/gfx/dummies/square_80.png" position="0,107"/>
+				helptext="Naval cutter: \nStorage: 2 slots of 15t \nCannons: 4 \nSpeed: x \nHealth: 100\nGets available after:\n Research 'Military Ships'" />
+		<CancelButton position="60,157" helptext="Can't build this ship!" />
+		<CancelButton position="60,70" helptext="Not yet implemented." />
 
-		<TooltipIcon image="content/gfx/dummies/square_80.png" position="0,194"/>
-				tooltip="Bombadiere: \nStorage: x slots of xt \nCannons: x \nSpeed: x \nHealth: x\nGets available after:\n Research 'Military Ships'" />
-		<CancelButton position="60,70" tooltip="Not yet implemented." />
+		<Icon image="content/gfx/dummies/square_80.png" position="0,194"/>
+				helptext="Bombadiere: \nStorage: x slots of xt \nCannons: x \nSpeed: x \nHealth: x\nGets available after:\n Research 'Military Ships'" />
+		<CancelButton position="60,70" helptext="Not yet implemented." />
 
-		<TooltipIcon image="content/gfx/dummies/square_80.png" position="0,281"
-				tooltip="Sloop-o'-war: \nStorage: x slots of xt \nCannons: x \nSpeed: x \nHealth: x \nGets available after:\n Research 'Military Ships'" />
-		<CancelButton position="60,70" tooltip="Not yet implemented." />-->
+		<Icon image="content/gfx/dummies/square_80.png" position="0,281"
+				helptext="Sloop-o'-war: \nStorage: x slots of xt \nCannons: x \nSpeed: x \nHealth: x \nGets available after:\n Research 'Military Ships'" />
+		<CancelButton position="60,70" helptext="Not yet implemented." />-->
 
 	</Container>
 
@@ -36,30 +36,30 @@
 		<Label position="0,3" text="Small gunboat" />-->
 		<Label name="headline_BB_war1_ship1" position="0,3" text="Frigate" />
 
-		<TooltipIcon image="content/gui/icons/resources/16/004.png" position="13,25" tooltip="Boards"  name="costs_004" />
+		<Icon image="content/gui/icons/resources/16/004.png" position="13,25" helptext="Boards"  name="costs_004" />
 		<Label position="35,25" text="13t"  name="noi18n"  comment="noi18n" /> <!-- maybe get this info out of a sqlite. could depend on difficulty.-->
-		<TooltipIcon image="content/gui/icons/resources/16/003.png" position="13,45" tooltip="Cloth"   name="costs_003" />
+		<Icon image="content/gui/icons/resources/16/003.png" position="13,45" helptext="Cloth"   name="costs_003" />
 		<Label position="35,45" text="06t"  name="noi18n"  comment="noi18n" />
-		<TooltipIcon image="content/gui/icons/resources/16/006.png" position="68,25" tooltip="Tools"   name="costs_006" />
+		<Icon image="content/gui/icons/resources/16/006.png" position="68,25" helptext="Tools"   name="costs_006" />
 		<Label position="90,25" text="02t"  name="noi18n"  comment="noi18n" />
-		<TooltipIcon image="content/gui/icons/resources/16/040.png" position="68,45" tooltip="Cannons" name="costs_040" />
+		<Icon image="content/gui/icons/resources/16/040.png" position="68,45" helptext="Cannons" name="costs_040" />
 		<Label position="90,45" text="07t"  name="noi18n"  comment="noi18n" />
-		<TooltipIcon image="content/gui/icons/resources/16/001.png" position="13,65" tooltip="Money"   name="costs_001" />
+		<Icon image="content/gui/icons/resources/16/001.png" position="13,65" helptext="Money"   name="costs_001" />
 		<Label position="35,65" text="750"  name="noi18n"  comment="noi18n" />
 	</Container><!--
 
 	<Container position="110,197" size="260,87" >
 		<Label position="0,3" text="Naval cutter" />
 
-		<TooltipIcon image="content/gui/icons/resources/16/004.png" position="13,25" tooltip="Boards" />
+		<Icon image="content/gui/icons/resources/16/004.png" position="13,25" helptext="Boards" />
 		<Label position="35,25" text="12t" />
-		<TooltipIcon image="content/gui/icons/resources/16/003.png" position="13,45" tooltip="Cloth" />
+		<Icon image="content/gui/icons/resources/16/003.png" position="13,45" helptext="Cloth" />
 		<Label position="35,45" text="06t" />
-		<TooltipIcon image="content/gui/icons/resources/16/006.png" position="68,25" tooltip="Ropes" />
+		<Icon image="content/gui/icons/resources/16/006.png" position="68,25" helptext="Ropes" />
 		<Label position="90,25" text="03t" />
-		<TooltipIcon image="content/gui/icons/resources/16/005.png" position="68,45" tooltip="Cannons" />
+		<Icon image="content/gui/icons/resources/16/005.png" position="68,45" helptext="Cannons" />
 		<Label position="90,45" text="04t" />
-		<TooltipIcon image="content/gui/icons/resources/16/001.png" position="13,65" tooltip="Money" />
+		<Icon image="content/gui/icons/resources/16/001.png" position="13,65" helptext="Money" />
 		<Label position="35,65" text="500" />
 	</Container>
 

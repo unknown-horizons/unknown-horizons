@@ -21,7 +21,7 @@ In this VBox a line is added per sensible resource in the following format:
 		<Spacer />
 		<HBox>
 			<Spacer min_size="627" />
-			<OkButton tooltip="Close" />
+			<OkButton helptext="Close" />
 		</HBox>
 	</VBox>
 </Container>

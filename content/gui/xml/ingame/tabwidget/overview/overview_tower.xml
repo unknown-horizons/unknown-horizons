@@ -8,7 +8,7 @@
 
 	<HBox position="22,7"  min_size="170,20"  size="230,20" >
 	<Spacer min_size="0"  max_size="50" />
-		<TooltipLabel name="headline" text="" tooltip="Click to change the name of your settlement" />
+		<Label name="headline" text="" helptext="Click to change the name of your settlement" />
 	</HBox>
 
 	<Icon image="content/gui/images/background/hr.png" position="20,30" />
@@ -19,10 +19,10 @@
 	</HBox>
 
 	<HBox min_size="125,20" max_size="225,20" position="25,65">
-		<TooltipIcon name="running_costs_label" tooltip="Running costs"
+		<Icon name="running_costs_label" helptext="Running costs"
 			image="content/gui/icons/resources/running_costs.png" />
-		<TooltipLabel name="running_costs" text=""
-			tooltip="Running costs" />
+		<Label name="running_costs" text=""
+			helptext="Running costs" />
 	</HBox>
 </Container>
 </Container>
