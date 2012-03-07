@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2012-03-02 04:09+0100\n"
-"PO-Revision-Date: 2012-03-07 14:49+0200\n"
+"PO-Revision-Date: 2012-03-07 15:14+0200\n"
 "Last-Translator: Raymond <raymondv@gmx.de>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: de\n"
@@ -3550,7 +3550,7 @@ msgstr "Bauplatz ist zu weit von Eurem Schiff entfernt."
 
 #: horizons/world/building/buildable.py:48
 msgid "This building can only be built on a resource source."
-msgstr ""
+msgstr "Dieses Gebäude kann nur auf einer Ressourcen Quelle gebaut werden."
 
 #: horizons/world/component/tradepostcomponent.py:178
 msgid "The trade partner does not sell this."
