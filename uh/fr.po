@@ -7,8 +7,8 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2012-03-02 04:09+0100\n"
-"PO-Revision-Date: 2012-03-04 18:37+0200\n"
-"Last-Translator: Samuel <samuel@micheldorsaz.ch>\n"
+"PO-Revision-Date: 2012-03-07 02:47+0200\n"
+"Last-Translator: Sebastien (seblabel) <sebastiencharpentier@laposte.net>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: fr\n"
 "MIME-Version: 1.0\n"
@@ -2842,17 +2842,17 @@ msgstr "Caserne"
 #. tooltip_text of buildings:barracks
 #: horizons/i18n/objecttranslations.py:69
 msgid "Recruits units suitable for ground combat."
-msgstr ""
+msgstr "Recrute des unités capable de combat au sol."
 
 #. name of buildings:blender
 #: horizons/i18n/objecttranslations.py:74
 msgid "Blender"
-msgstr ""
+msgstr "Mélangeur"
 
 #. tooltip_text of buildings:blender
 #: horizons/i18n/objecttranslations.py:76
 msgid "Produces condiments out of spices."
-msgstr ""
+msgstr "Produit des condiments à partir d'épices."
 
 #. name of buildings:boatbuilder
 #: horizons/i18n/objecttranslations.py:81
@@ -2903,7 +2903,7 @@ msgstr "Meule de charbonnier"
 #. tooltip_text of buildings:charcoalburning
 #: horizons/i18n/objecttranslations.py:111
 msgid "Burns a lot of boards to charcoal."
-msgstr ""
+msgstr "Produit du charbon de bois."
 
 #. name of buildings:claydeposit
 #: horizons/i18n/objecttranslations.py:116
@@ -2928,7 +2928,7 @@ msgstr "Champ de cacao"
 #. tooltip_text of buildings:cocoafield
 #: horizons/i18n/objecttranslations.py:130
 msgid "Produces cocoa beans used for confectionery. Needs a farm."
-msgstr ""
+msgstr "Produit du cacao utilisé en confiserie. Nécessite une ferme."
 
 #. name of buildings:cornfield
 #: horizons/i18n/objecttranslations.py:135
@@ -2938,9 +2938,8 @@ msgstr "Champ de maïs"
 # 88%
 #. tooltip_text of buildings:cornfield
 #: horizons/i18n/objecttranslations.py:137
-#, fuzzy
 msgid "Yields corn. Needs a farm."
-msgstr "Produit de la nourriture. Nécessite une ferme."
+msgstr "Produit du mais. Nécessite une ferme."
 
 #. name of buildings:distillery
 #: horizons/i18n/objecttranslations.py:142
@@ -3057,12 +3056,12 @@ msgstr "Augmente la vue du joueur."
 #. name_0 of buildings:lumberjackcamp
 #: horizons/i18n/objecttranslations.py:222
 msgid "Lumberjack Tent"
-msgstr ""
+msgstr "Camp de bûcheron"
 
 #. name_1 of buildings:lumberjackcamp
 #: horizons/i18n/objecttranslations.py:224
 msgid "Lumberjack Hut"
-msgstr ""
+msgstr "Camp de bûcheron"
 
 #. tooltip_text of buildings:lumberjackcamp
 #: horizons/i18n/objecttranslations.py:226
@@ -3092,7 +3091,7 @@ msgstr "Pâtisserie"
 #. tooltip_text of buildings:pastryshop
 #: horizons/i18n/objecttranslations.py:245
 msgid "Produces all kinds of confectionery."
-msgstr ""
+msgstr "Produit des confiseries."
 
 #. name of buildings:pasture
 #: horizons/i18n/objecttranslations.py:250
@@ -3189,7 +3188,7 @@ msgstr "Champ d'épices"
 #. tooltip_text of buildings:spicefield
 #: horizons/i18n/objecttranslations.py:313
 msgid "Grows spices. Needs a farm."
-msgstr ""
+msgstr "Cultive des épices. Nécessite une ferme."
 
 #. name of buildings:stonemason
 #: horizons/i18n/objecttranslations.py:318
