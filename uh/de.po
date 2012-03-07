@@ -3522,15 +3522,15 @@ msgstr "Sie können dieses nur in Ihrer Siedlung bauen."
 
 #: horizons/world/building/buildable.py:40
 msgid "This area is already occupied."
-msgstr ""
+msgstr "Dieser Bereich ist bereits besetzt."
 
 #: horizons/world/building/buildable.py:42
 msgid "Another player has already occupied this island."
-msgstr ""
+msgstr "Ein anderer Spieler hat bereits die Insel besetzt."
 
 #: horizons/world/building/buildable.py:43
 msgid "You can't build this on top of another building."
-msgstr ""
+msgstr "Ihr könnt nicht dieses auf einem anderen Gebäude bauen."
 
 #: horizons/world/building/buildable.py:44
 msgid "You can't build this on top of a unit."
