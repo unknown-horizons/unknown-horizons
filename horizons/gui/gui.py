@@ -23,6 +23,7 @@ import glob
 import os
 import os.path
 import random
+import traceback
 import time
 import tempfile
 import logging
@@ -448,12 +449,13 @@ class Gui(SingleplayerMenu, MultiplayerMenu):
 		else:
 			return self.show_dialog(popup, {'okButton' : True}, onPressEscape = True)
 
-	def show_error_popup(self, windowtitle, description, advice=None, details=None):
+	def show_error_popup(self, windowtitle, description, advice=None, details=None, _first=True):
 		"""Displays a popup containing an error message.
 		@param windowtitle: title of popup, will be auto-prefixed with "Error: "
 		@param description: string to tell the user what happened
 		@param advice: how the user might be able to fix the problem
 		@param details: technical details, relevant for debugging but not for the user
+		@param _first: Don't touch this.
 
 		Guide for writing good error messages:
 		http://www.useit.com/alertbox/20010624.html
@@ -464,7 +466,15 @@ class Gui(SingleplayerMenu, MultiplayerMenu):
 			msg += advice + u"\n"
 		if details:
 			msg += _(u"Details:") + u" " + details
-		self.show_popup( _(u"Error:") + u" " + windowtitle, msg, show_cancel_button=False)
+		try:
+			self.show_popup( _(u"Error:") + u" " + windowtitle, msg, show_cancel_button=False)
+		except:
+			if _first:
+				traceback.print_exc()
+				print 'Exception while showing error, retrying once more'
+				return self.show_error_popup(windowtitle, description, advice, details, _first=False)
+			else:
+				raise # it persists, we have to die.
 
 	def build_popup(self, windowtitle, message, show_cancel_button = False, size=0):
 		""" Creates a pychan popup widget with the specified properties.
