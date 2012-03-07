@@ -1,7 +1,3 @@
-# logbook_w writes an entry without showing the book
-# logbook[head,msg] shows an entry with 8 sec delay
-# logbook[head,msg,time] shows an entry after time sec delay
-
 # TODO:
 # - fix spelling and grammar
 # - remove references to specific resource amounts and units where it isn't strictly necessary for the story
@@ -23,13 +19,14 @@ events:
   actions:
    - type: logbook
      arguments:
-        - 20th November 1740
+        - [Headline, "20th November 1740"]
+        - [Image, "content/gui/images/background/hr.png"]
         - |
-            After four days, the storm finally fades and we can take a rest. But we have only 15 lb of food left and our ship is very broken-down. The navigation instruments and the sea charts are lost. We have to come ashore. One of my Jacks saw some birds hunting for fish, so land can´t be far away.  Fortunally we have always some tools and wooden boards at the ship, so we can build some huts.
+          After four days, the storm finally fades and we can take a rest. But we have only 15 lb of food left and our ship is very broken-down. The navigation instruments and the sea charts are lost.
+          We have to come ashore. One of my Jacks saw some birds hunting for fish, so land can´t be far away.  Fortunally we have always some tools and wooden boards at the ship, so we can build some huts.
 
-            Our task now is:
-            Find land and build a port, so that we can empty the ship.
-        - 0
+          Our task now is:
+          Find land and build a port, so that we can empty the ship.
   conditions:
    - type: time_passed
      arguments: [0]
@@ -38,13 +35,13 @@ events:
   actions:
   - type: logbook
     arguments:
-    - 22th Novenber 1740
+    - [Headline, "22th Novenber 1740"]
+    - [Image, "content/gui/images/background/hr.png"]
     - |
       The port is built and just in time the ship sank, it was emptyed. [Let the ship sank here]
 
       We need some people hunting fish, some producing wooden boards, some tents to life in, and so on. Building the things for that is our task for the next days. But we have to be carefull! Our amount of tools is not very high!
 
-    - 1
   conditions:
   - type: settlements_num_greater
     arguments: [0]
@@ -53,13 +50,13 @@ events:
   actions:
   - type: logbook
     arguments:
-    - 1th December 1740
+    - [Headline, "1th December 1740"]
+    - [Image, "content/gui/images/background/hr.png"]
     - |
       Finally we have everything for our basic needs.
 
       Well, we don´t know were we are, have no sea charts and navigation instruments and the stars at night are unknown.
       So we only can try to to build up a civilisation and try to find out how to come home...
-    - 0
   conditions:
   - type: building_num_of_type_greater
     arguments: [BUILDINGS.FISHERMAN_CLASS, 0]
@@ -80,9 +77,9 @@ events:
   actions: # TODO: bigger map action
   - type: logbook
     arguments:
-    - 15th January 1741
-    - The island becomes small. We should build and load a ship and try to find another island!
-    - 0
+    - [Headline, "15th January 1741"]
+    - [Image, "content/gui/images/background/hr.png"]
+    - "The island becomes small. We should build and load a ship and try to find another island!"
   conditions:
   - type: settlement_inhabitants_greater
     arguments: [250]

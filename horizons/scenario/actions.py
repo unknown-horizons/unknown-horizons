@@ -66,22 +66,19 @@ def show_db_message(session, message_id):
 	session.ingame_gui.message_widget.add(None, None, message_id)
 
 @register(name='logbook_w')
-def write_logbook_entry(session, head, message):
-	"""Silently adds an entry to the logbook."""
-	msg = message + '\n'* 30 + 'UHtutorial' # this can get removed once ticket 535 is resolved
-	session.ingame_gui.logbook.add_entry(unicode(head),unicode(msg))
-
-def show_logbook_entry(session, head, message):
+def write_logbook_entry(session, widgets):
 	"""Adds an entry to the logbook and displays it."""
-	write_logbook_entry(session, head, message)
-	session.ingame_gui.logbook.show()
+	session.ingame_gui.logbook.add_captainslog_entry(widgets, show_logbook=True)
 
 @register(name='logbook')
-def show_logbook_entry_delayed(session, head, message, delay=MESSAGES.LOGBOOK_DEFAULT_DELAY):
+def show_logbook_entry_delayed(session, *widgets):
 	"""Show a logbook entry delayed by delay seconds.
-
-	Set delay=0 for instant apperaring."""
-	callback = Callback(show_logbook_entry, session, head, message)
+	
+	Set delay=0 for instant appearing.
+	#TODO get *delay* parameter working again
+	"""
+	delay = MESSAGES.LOGBOOK_DEFAULT_DELAY
+	callback = Callback(write_logbook_entry, session, widgets)
 	Scheduler().add_new_object(callback, session.scenario_eventhandler, run_in=Scheduler().get_ticks(delay))
 
 @register(name='win')

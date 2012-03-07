@@ -3,15 +3,11 @@
 <Icon image="content/gui/images/background/book.png" position="100,0" />
 
 <Container name="left_pickbelts" size="195,580" position="30,0" />
-
 <HBox name="logbook" max_size="700,508" min_size="700,508" padding="0">
 	<!-- left page -->
 	<VBox max_size="350,508" min_size="350,508" padding="2" name="logbook_left">
-		<Label name="head_left" font="headline"
-			wrap_text="0" max_size="323, 25" min_size="323, 25" />
-		<Icon image="content/gui/images/background/hr.png" />
-		<Label name="lbl_left"  font="14_black"
-			wrap_text="1" max_size="323,432" />
+		<VBox name="custom_widgets_left" max_size="350,472" min_size="350,0"
+			comment="In here, widgets defined in yaml get added on runtime." />
 
 		<Spacer />
 
@@ -21,23 +17,22 @@
 				inactive_image ="content/gui/images/buttons/parrow_left_bw.png"
 				up_image="content/gui/images/buttons/parrow_left.png"
 				hover_image="content/gui/images/buttons/parrow_left_h.png"
-				down_image="content/gui/images/buttons/parrow_left_d.png" />
+				down_image="content/gui/images/buttons/parrow_left_d.png"
+				is_focusable="0" />
 			<ToggleImageButton name="forwardButton" helptext="Read next entries"
 				comment="Entry of Captain's Log (logbook/diary used in scenarios)"
 				inactive_image ="content/gui/images/buttons/parrow_right_bw.png"
 				up_image="content/gui/images/buttons/parrow_right.png"
 				hover_image="content/gui/images/buttons/parrow_right_h.png"
-				down_image="content/gui/images/buttons/parrow_right_d.png" />
+				down_image="content/gui/images/buttons/parrow_right_d.png"
+				is_focusable="0" />
 		</HBox>
 	</VBox> <!-- closes VBox logbook left page -->
 
 	<!-- right page -->
 	<VBox max_size="350,508" min_size="350,508" padding="2" name="logbook_right">
-		<Label name="head_right" font="headline"
-			wrap_text="0" max_size="323, 25" min_size="323, 25" />
-		<Icon image="content/gui/images/background/hr.png" />
-		<Label name="lbl_right"  font="14_black"
-			wrap_text="1" max_size="323,432" />
+		<VBox name="custom_widgets_right" max_size="350,508" min_size="350,0"
+			comment="In here, widgets defined in yaml get added on runtime." />
 	</VBox> <!-- closes VBox logbook right page -->
 </HBox> <!-- closes: <HBox name="logbook"> -->
 

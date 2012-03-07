@@ -80,16 +80,14 @@ class StringPreviewWidget(object):
 			events = data['events']
 			for event in events:
 				for action in event['actions']:
-					if action['type'] in ('logbook', 'logbook_w'):
-						head= action['arguments'][0]
-						msg = action['arguments'][1]
-						self.logbook.add_entry(unicode(head), unicode(msg), show_logbook=False)
+					if action['type'] in ('logbook', 'logbook'):
+						self.logbook.add_captainslog_entry(action['arguments'], show_logbook=False)
 
 			try:
 				self.logbook.set_cur_entry(cur_entry)
 			except ValueError:
 				pass # no entries
-			self.logbook._redraw()
+			self.logbook._redraw_captainslog()
 			self.logbook.show()
 
 
