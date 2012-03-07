@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2012-03-02 04:09+0100\n"
-"PO-Revision-Date: 2012-03-07 15:14+0200\n"
+"PO-Revision-Date: 2012-03-07 21:40+0200\n"
 "Last-Translator: Raymond <raymondv@gmx.de>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: de\n"
@@ -478,7 +478,7 @@ msgstr ""
 #, python-format
 msgid "{player1} and {player2} have ended their alliance and are now in a state of war."
 msgstr ""
-"{player1} und {player2} haben Ihr Bündnis beendet und sind nun im Krieg. "
+"{player1} und {player2} haben Ihr Bündnis beendet und sind nun im Krieg."
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
@@ -3534,7 +3534,7 @@ msgstr "Ihr könnt nicht dieses auf einem anderen Gebäude bauen."
 
 #: horizons/world/building/buildable.py:44
 msgid "You can't build this on top of a unit."
-msgstr ""
+msgstr "Ihr könnt nicht dieses auf einer anderen Einheit bauen."
 
 #: horizons/world/building/buildable.py:45
 msgid "This building must be built on the coastline."
