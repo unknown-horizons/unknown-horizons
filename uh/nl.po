@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2012-03-02 04:09+0100\n"
-"PO-Revision-Date: 2012-03-07 18:19+0200\n"
+"PO-Revision-Date: 2012-03-08 10:01+0200\n"
 "Last-Translator: Nick <nzwaal@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: nl\n"
@@ -2299,12 +2299,12 @@ msgstr "Speelsnelheid verhogen"
 #. (text of widget: lbl_TILE_OWNER_HIGHLIGHT)
 #: horizons/i18n/guitranslations.py:752
 msgid "Highlight tile ownership"
-msgstr ""
+msgstr "Verlicht beheerste vlakken"
 
 #. (text of widget: lbl_TRANSLUCENCY)
 #: horizons/i18n/guitranslations.py:754
 msgid "Toggle translucency of ambient buildings"
-msgstr ""
+msgstr "Selecteer de doorzichtigheid van algemene gebouwen"
 
 #. (text of widget: lbl_UP)
 #: horizons/i18n/guitranslations.py:756
@@ -2407,6 +2407,7 @@ msgstr "spel"
 #: horizons/i18n/guitranslations.py:824 horizons/i18n/guitranslations.py:956
 msgid "This will be displayed to other players so they recognise the game."
 msgstr ""
+"Dit wordt aan andere spelers getoond, zodat zij het spel kunnen herkennen."
 
 #. (text of widget: exit_to_mp_menu_lbl)
 #: horizons/i18n/guitranslations.py:829
@@ -3409,9 +3410,8 @@ msgstr "U heeft het scenario voltooid."
 
 # 75%
 #: horizons/scenario/actions.py:98
-#, fuzzy
 msgid "Do you want to continue playing?"
-msgstr "Wil je verdergaan?"
+msgstr "Wil je doorspelen?"
 
 #: horizons/scenario/scenarioeventhandler.py:157
 #: horizons/scenario/scenarioeventhandler.py:167
@@ -3474,55 +3474,56 @@ msgstr "U dient snel op te slaan voor u kunt snel laden."
 
 # 92%
 #: horizons/util/checkupdates.py:70
-#, fuzzy
 msgid "New version of Unknown Horizons"
-msgstr "Unknown Horizons wordt gestart"
+msgstr "Nieuwe versie van Unknown Horizons"
 
 #: horizons/util/checkupdates.py:72
 #, python-format
 msgid "There is a more recent release of Unknown Horizons ({new_version}) than the one you are currently using ({old_version})."
 msgstr ""
+"Er is een nieuwere versie ({new_version}) van Unknown Horizons dan diegene "
+"die je nu gebruikt ({old_version})."
 
 #: horizons/util/checkupdates.py:76
 msgid "Click to download"
-msgstr ""
+msgstr "Klik om te downloaden"
 
 #: horizons/util/checkupdates.py:80
 msgid "A page has been opened in your browser."
-msgstr ""
+msgstr "Een pagina is geopend in je internet browser."
 
 #: horizons/world/building/buildable.py:37
 msgid "Buildings must be built on islands."
-msgstr ""
+msgstr "Gebouwen moeten op eilanden geplaatst worden."
 
 #: horizons/world/building/buildable.py:38
 msgid "The ground is not suitable for this building."
-msgstr ""
+msgstr "Deze grond is niet geschikt om op te bouwen."
 
 #: horizons/world/building/buildable.py:39
 #: horizons/world/building/buildable.py:41
 msgid "You can only build this within your settlement."
-msgstr ""
+msgstr "Dit kan alleen gebouwd worden in uw kolonie."
 
 #: horizons/world/building/buildable.py:40
 msgid "This area is already occupied."
-msgstr ""
+msgstr "Dit gebied is al bezet."
 
 #: horizons/world/building/buildable.py:42
 msgid "Another player has already occupied this island."
-msgstr ""
+msgstr "Een andere speler heeft dit eiland al bezet."
 
 #: horizons/world/building/buildable.py:43
 msgid "You can't build this on top of another building."
-msgstr ""
+msgstr "U kunt niet bouwen op een ander gebouw."
 
 #: horizons/world/building/buildable.py:44
 msgid "You can't build this on top of a unit."
-msgstr ""
+msgstr "U kunt niet bouwen op eenheden."
 
 #: horizons/world/building/buildable.py:45
 msgid "This building must be built on the coastline."
-msgstr ""
+msgstr "Dit gebouw dient op de kustlijn geplaatst te worden."
 
 #: horizons/world/building/buildable.py:46
 msgid "This building requires to be placed near the ocean."
