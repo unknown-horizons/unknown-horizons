@@ -35,7 +35,7 @@ class StanceWidget(pychan.widgets.Container):
 		super(StanceWidget, self).__init__(size=(245,50), **kwargs)
 		widget = load_uh_widget('stancewidget.xml')
 		self.addChild(widget)
-		ExtScheduler().add_new_object(self.refresh, self, run_in=1, loops=-1)
+		ExtScheduler().add_new_object(self.refresh, self, run_in=0.3, loops=-1)
 
 	def init(self, instance):
 		self.instance = instance
@@ -49,10 +49,11 @@ class StanceWidget(pychan.widgets.Container):
 		ExtScheduler().add_new_object(self.refresh, self, run_in=1, loops=-1)
 
 	def refresh(self):
-		self.toggle_stance()
 		if not self.isVisible():
 			# refresh not needed
 			ExtScheduler().rem_all_classinst_calls(self)
+			return
+		self.toggle_stance()
 
 	def remove(self, caller=None):
 		"""Removes instance ref"""

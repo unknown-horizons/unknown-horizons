@@ -106,7 +106,12 @@ class SetStance(GenericUnitCommand):
 	@param stance: stance as string representation
 	"""
 	def __init__(self, unit, stance):
-		super(SetStance, self).__init__(unit, "set_stance", stance)
+		super(SetStance, self).__init__(unit, "set_stance", stance.NAME)
+
+	def __call__(self, issuer):
+		# we need the stance component, so resolve the name
+		self.args = ( self._get_object().get_component_by_name( self.args[0] ) , )
+		return super(GenericUnitCommand, self).__call__(issuer)
 
 GenericCommand.allow_network(SetStance)
 

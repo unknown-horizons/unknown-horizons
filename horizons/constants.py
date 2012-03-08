@@ -72,7 +72,6 @@ class VERSION:
 class UNITS:
 	# ./development/print_db_data.py unit
 	HUKER_SHIP_CLASS           = 1000001
-	PLAYER_SHIP_CLASS          = HUKER_SHIP_CLASS
 	BUILDING_COLLECTOR_CLASS   = 1000002
 	FISHER_BOAT_CLASS          = 1000004
 	PIRATE_SHIP_CLASS          = 1000005
@@ -80,6 +79,10 @@ class UNITS:
 	WILD_ANIMAL_CLASS          = 1000013
 	USABLE_FISHER_BOAT         = 1000016
 	FRIGATE_CLASS              = 1000020
+
+	# players will be spawned with an instance of this
+	PLAYER_SHIP_CLASS          = HUKER_SHIP_CLASS
+	#PLAYER_SHIP_CLASS          = FRIGATE_CLASS
 
 	# collectors
 	ANIMAL_COLLECTOR_CLASS      = 1000007
