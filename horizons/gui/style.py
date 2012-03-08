@@ -26,10 +26,10 @@ STYLES = {
 		'default' : {
 			'border_size': 0,
 			'margins': (0, 0),
-			'base_color' : fife.Color(40, 40, 40, 0),
-			'foreground_color' : fife.Color(255, 255, 255),
-			'background_color' : fife.Color(40, 40, 40, 255),
-			'selection_color' : fife.Color(80, 80, 80, 255),
+			'base_color' : fife.Color(40, 40, 40,   0),
+			'foreground_color' : fife.Color( 80, 80, 40,   0),
+			'background_color' : fife.Color(255,255,255, 128),
+			'selection_color' : fife.Color(80,80,40, 192),
 			'font' : '14_black',
 		},
 		'Button' : {
@@ -44,9 +44,9 @@ STYLES = {
 		},
 		('CheckBox','DropDown') : {
 			'selection_color' : fife.Color(255,255,255,200),
-			'background_color' : fife.Color(255,255,255,128),
-			'base_color' : fife.Color(0,0,0,0),
+			'background_color' : fife.Color(255,255,255,64),
 			'foreground_color' : fife.Color(80,80,40),
+			'base_color' : fife.Color(0,0,0,0),
 			'font' : '14_black',
 			'border_size': 0,
 		},
@@ -75,7 +75,6 @@ STYLES = {
 		},
 		'RadioButton' : {
 			'border_size': 0,
-			'background_color' : fife.Color(0, 0, 0, 0)
 		},
 		'Label' : {
 			'border_size': 0,
@@ -236,9 +235,9 @@ STYLES = {
 		'Label' : {
 			'font' : '14_black',
 		},
-		'CheckBox' : {
+		('CheckBox', 'RadioButton') : {
 			'selection_color' : fife.Color(255,255,255,200),
-			'background_color' : fife.Color(255,255,255,128),
+			'background_color' : fife.Color(255,255,255,64),
 			'base_color' : fife.Color(0,0,0,0),
 			'foreground_color' : fife.Color(80,80,40),
 		},
