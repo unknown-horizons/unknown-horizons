@@ -56,13 +56,18 @@ def init_pychan():
 			# create a new class with this __init__, so tooltips are initalize
 			# (the new class will just dynamically inherit from the original wiget
 			# as well as _Tooltip)
-			def __init__(self, *args, **kwargs):
-				super(self.__class__, self).__init__(*args, **kwargs)
-				self.init_tooltip()
 
 			klass_name =  str(widget)+" with tooltip hack (see horizons/engine/pychan_util.py"
 			base_klasses =  (widget, _Tooltip)
-			klass = type(klass_name, base_klasses, {"__init__" : __init__} )
+			klass = type(klass_name, base_klasses, {})
+
+			# pass klass as default arg, since we're in a loop and it would be overwritten later;
+			# however the default arg is evaluated only once, and that is precisely now.
+			def __init__(self, _klass=klass, *args, **kwargs):
+				super(_klass, self).__init__(*args, **kwargs)
+				self.init_tooltip()
+
+			klass.__init__ = __init__
 
 			# register this new class in pychan
 			pychan.widgets.WIDGETS[name] = klass

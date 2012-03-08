@@ -26,8 +26,9 @@ import horizons.main
 from horizons.gui.mousetools.cursortool import CursorTool
 from horizons.util import WorldObject
 from horizons.util.lastactiveplayersettlementmanager import LastActivePlayerSettlementManager
-from fife.extensions.pychan.widgets import Icon
 from horizons.constants import LAYERS
+
+from fife.extensions.pychan import widgets
 
 class NavigationTool(CursorTool):
 	"""Navigation Class to process mouse actions ingame"""
@@ -45,7 +46,10 @@ class NavigationTool(CursorTool):
 		horizons.main.fife.eventmanager.addCommandListener(self.cmdlist)
 		self.cmdlist.onCommand = self.onCommand
 
-		class CoordsTooltip(Icon):
+		# can't import Icon directly since it won't have tooltips
+		# TODO: find a way to make this obvious
+		tooltipicon_klass = widgets.WIDGETS['Icon']
+		class CoordsTooltip(tooltipicon_klass):
 			@classmethod
 			def get_instance(cls, cursor_tool):
 				if cursor_tool.session.coordinates_tooltip is not None:
