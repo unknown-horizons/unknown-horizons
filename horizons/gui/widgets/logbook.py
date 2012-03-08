@@ -221,7 +221,6 @@ class LogBook(PickBeltWidget):
 			"""
 			return [list(l[1]) for l in groupby(widgets, lambda x: x != ['Pagebreak']) if l[0]]
 
-		print widgets, _split_on_pagebreaks(widgets)
 		for widget_list in _split_on_pagebreaks(widgets):
 			self._widgets.append(widget_list)
 			for widget_definition in widget_list:
