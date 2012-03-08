@@ -67,6 +67,7 @@ class Gui(SingleplayerMenu, MultiplayerMenu):
 	  'aidataselection' : 'book',
 	  'select_savegame': 'book',
 	  'ingame_pause': 'book',
+	  'game_settings' : 'book',
 #	  'credits': 'book',
 	  }
 
