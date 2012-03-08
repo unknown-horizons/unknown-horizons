@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2012-03-02 04:09+0100\n"
-"PO-Revision-Date: 2012-03-08 10:01+0200\n"
+"PO-Revision-Date: 2012-03-08 10:17+0200\n"
 "Last-Translator: Nick <nzwaal@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: nl\n"
@@ -2468,9 +2468,8 @@ msgstr "Meespelen"
 # 90%
 #. (text of widget: load_game_lbl)
 #: horizons/i18n/guitranslations.py:856
-#, fuzzy
 msgid "Load game:"
-msgstr "Spel laden"
+msgstr "Spel laden:"
 
 #. (text of widget: refr_gamelist_lbl)
 #: horizons/i18n/guitranslations.py:858
@@ -2772,10 +2771,11 @@ msgid "Player name:"
 msgstr "Spelersnaam:"
 
 # What does this building do? Can't google it.
+# FIX: http://en.wiktionary.org/wiki/alveary#English
 #. name of buildings:alvearies
 #: horizons/i18n/objecttranslations.py:53
 msgid "Alvearies"
-msgstr ""
+msgstr "Bijenkorf"
 
 #. tooltip_text of buildings:alvearies
 #: horizons/i18n/objecttranslations.py:55
@@ -3527,81 +3527,81 @@ msgstr "Dit gebouw dient op de kustlijn geplaatst te worden."
 
 #: horizons/world/building/buildable.py:46
 msgid "This building requires to be placed near the ocean."
-msgstr ""
+msgstr "Dit gebouw moet vlak bij de oceaan geplaatst worden."
 
 #: horizons/world/building/buildable.py:47
 msgid "This spot is too far away from your ship."
-msgstr ""
+msgstr "Deze plek is te ver weg van uw schip."
 
 #: horizons/world/building/buildable.py:48
 msgid "This building can only be built on a resource source."
-msgstr ""
+msgstr "Dit gebouw kan alleen gebouwd worden op een locatie met grondstoffen."
 
 #: horizons/world/component/tradepostcomponent.py:178
 msgid "The trade partner does not sell this."
-msgstr ""
+msgstr "De handelspartner verkoopt dit niet."
 
 #: horizons/world/component/tradepostcomponent.py:186
 msgid "You can not store this."
-msgstr ""
+msgstr "Dit kan niet opgeslagen worden."
 
 #: horizons/world/component/tradepostcomponent.py:190
 msgid "You can not afford to buy this."
-msgstr ""
+msgstr "U kunt dit niet veroorloven."
 
 #: horizons/world/component/tradepostcomponent.py:196
 msgid "The trade partner does not sell more of this."
-msgstr ""
+msgstr "De handelspartner verkoopt hier niet meer van."
 
 #: horizons/world/component/tradepostcomponent.py:220
 msgid "The trade partner does not buy this."
-msgstr ""
+msgstr "De handelspartner koopt dit niet."
 
 #: horizons/world/component/tradepostcomponent.py:228
 msgid "You do not possess this."
-msgstr ""
+msgstr "U heeft dit niet."
 
 #: horizons/world/component/tradepostcomponent.py:232
 msgid "The trade partner can not store more of this."
-msgstr ""
+msgstr "De handelspartner kan niet meer van dit product opslaan."
 
 #: horizons/world/component/tradepostcomponent.py:236
 msgid "The trade partner can not afford to buy this."
-msgstr ""
+msgstr "De handelspartner kan dit niet veroorloven."
 
 #: horizons/world/component/tradepostcomponent.py:241
 msgid "The trade partner does not buy more of this."
-msgstr ""
+msgstr "De handelspartner koopt niet meer van dit product."
 
 #: horizons/world/traderoute.py:282
 #, python-format
 msgid "Trade route: going to {location}"
-msgstr ""
+msgstr "Handelsroute: Gaat naar {location}"
 
 #: horizons/world/traderoute.py:286
 #, python-format
 msgid "Trade route: waiting at {position}"
-msgstr ""
+msgstr "Handelsroute: Wacht bij {position}"
 
 #: horizons/world/units/ship.py:184
 #, python-format
 msgid "Going to {location}"
-msgstr ""
+msgstr "Gaat naar {location}"
 
 #: horizons/world/units/ship.py:186
 #, python-format
 msgid "Going to {x}, {y}"
-msgstr ""
+msgstr "Gaat naar coördinaten {x}, {y}"
 
 #: horizons/world/units/ship.py:191
 #, python-format
 msgid "Idle at {location}"
-msgstr ""
+msgstr "Doet niets bij {location}"
 
 #: horizons/world/units/ship.py:193
 #, python-format
 msgid "Idle at {x}, {y}"
-msgstr ""
+msgstr "Doet niets bij coördinaten {x}, {y}"
 
 #: horizons/world/units/ship.py:208
 msgid "Trader"
@@ -3610,28 +3610,26 @@ msgstr "Handelaar"
 #: horizons/world/units/weaponholder.py:453
 #, python-format
 msgid "Attacking {target} '{name}' ({owner})"
-msgstr ""
+msgstr "Valt {target} aan, '{name}' van {owner}"
 
 #: horizons/world/units/weaponholder.py:458
 #, python-format
 msgid "Attacking {owner}"
-msgstr ""
+msgstr "Valt aan: {owner}"
 
 # 86%
 #: run_uh.py:185
-#, fuzzy
 msgid "Unknown Horizons has crashed."
-msgstr "Unknown Horizons is vast gelopen."
+msgstr "Unknown Horizons is vastgelopen."
 
 # 83%
 #: run_uh.py:187
-#, fuzzy
 msgid "We are very sorry for this and want to fix underlying error."
-msgstr "Wij verontschuldigen ons hiervoor, en willen deze fout oplossen."
+msgstr "Onze excuses hiervoor. Wij willen deze fout graag oplossen."
 
 #: run_uh.py:188
 msgid "In order to do this, we need the information from the logfile:"
-msgstr "Hiervoor hebben we de volgende informatie van het logbestand nodig:"
+msgstr "Hiervoor hebben we de informatie van het logbestand nodig:"
 
 #: run_uh.py:190
 msgid "Please give it to us via IRC or our forum, for both see unknown-horizons.org ."
@@ -3639,15 +3637,17 @@ msgstr ""
 "Meld dit alstublieft via IRC of via het forum, informatie over beide staat "
 "op unknown-horizons.org ."
 
+# libraries behouden maakt het zoeken naar een oplossing via google makkelijker ;)
+# Anders veranderen naar '(code-)bibliotheken'
 #: run_uh.py:234
 msgid "Error: Unable to find required libraries"
-msgstr "onmogelijk om te benodigde libraries te lokaliseren"
+msgstr "Fout: Kan de benodigde libraries niet vinden."
 
 #: run_uh.py:235
 msgid "We are sorry to inform you that a library that is required by Unknown Horizons, is missing and needs to be installed."
 msgstr ""
-"Helaas moeten wij mededelen dat de benodigde bestanden voor Unknown Horizons "
-"ontbreken en geinstalleerd dient te worden."
+"Helaas moeten wij mededelen dat een benodigd bestand voor Unknown Horizons "
+"ontbreekt en geinstalleerd dient te worden."
 
 #: run_uh.py:236
 msgid "Installers for Windows users are available at \"http://pyyaml.org/wiki/PyYAML\", Linux users should find it in their packagement management system under the name \"pyyaml\" or \"python-yaml\"."
@@ -3658,7 +3658,7 @@ msgstr ""
 
 #: run_uh.py:266
 msgid "Thank you for using Unknown Horizons!"
-msgstr "Bedankt dat U Unknown Horizons gebruikt!"
+msgstr "Bedankt voor het spelen van Unknown Horizons!"
 
 #: run_uh.py:433
 msgid "FIFE was not found."
