@@ -92,6 +92,10 @@ class Unit(MovingObject):
 
 	def _on_damage(self, caller=None):
 		"""Called when health has changed"""
+		if not self._instance: # dead
+			# it is sometimes hard to avoid this being called after the unit has died,
+			# e.g. when it's part of a list of changelisteners, and one of the listeners executed before kills the unit
+			return
 		health_was_displayed_before = self._health_displayed
 		# always update
 		self.draw_health()
