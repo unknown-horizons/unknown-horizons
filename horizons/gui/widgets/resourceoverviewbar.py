@@ -96,6 +96,9 @@ class ResourceOverviewBar(object):
 
 		self._update_default_configuration()
 
+	def end(self):
+		ExtScheduler().rem_all_classinst_calls(self)
+
 	def _update_default_configuration(self):
 		# user defined variante of DEFAULT_RESOURCES (will be preferred)
 		self._custom_default_resources = None

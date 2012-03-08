@@ -175,6 +175,8 @@ class IngameGui(LivingObject):
 		self.message_widget = None
 		self.tabwidgets = None
 		self.minimap = None
+		self.resource_overview.end()
+		self.resource_overview = None
 		self.hide_menu()
 		self.session.message_bus.unsubscribe_globally(SettlerUpdate, self._on_settler_level_change)
 		super(IngameGui, self).end()
