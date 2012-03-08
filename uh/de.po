@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2012-03-02 04:09+0100\n"
-"PO-Revision-Date: 2012-03-08 21:21+0200\n"
+"PO-Revision-Date: 2012-03-08 22:55+0200\n"
 "Last-Translator: Raymond <raymondv@gmx.de>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: de\n"
@@ -66,7 +66,7 @@ msgstr "Einige Eurer Siedler haben soeben Eure Siedlung verlassen."
 msgid "The route is now configured. Start it via the \"start route\" button in the \"configure route\" menu."
 msgstr ""
 "Die Route ist nun konfiguriert. Starten Sie es über die \"Start-Route\"-Taste "
-"in dem \"Konfiguriere Route\" Menü"
+"in dem \"Konfiguriere Route\" Menü."
 
 # "aufziehen" ersetzen
 #. This is a database entry: a messagewidget message (left part of the screen).
@@ -881,7 +881,7 @@ msgstr ""
 msgid "Meanwhile, please request the file {path} from the game creator and put it in {map_directory} ."
 msgstr ""
 "Unterdessen fordern Sie bitte die Datei {path} aus dem Spielersteller und "
-"lege es in {map_directory}."
+"lege es in {map_directory} ."
 
 #. (text of widget: help)
 #. (text of widget: help) Main / in-game menu entry
@@ -2624,9 +2624,7 @@ msgstr ""
 #. (tooltip of widget: edge_scrolling_label)
 #: horizons/i18n/guitranslations.py:929
 msgid "Whether to move the viewport when the mouse pointer is close to map edges"
-msgstr ""
-"Die Karte verschieben, wenn sich der Mauszeiger am Kartenrand "
-"(Bildschirmrand) befindet"
+msgstr "Die Karte verschieben, wenn sich der Mauszeiger am Kartenrand befindet"
 
 #. (tooltip of widget: minimap_rotation_label)
 #: horizons/i18n/guitranslations.py:931
@@ -3152,7 +3150,7 @@ msgstr "Gewürzfeld"
 #. tooltip_text of buildings:spicefield
 #: horizons/i18n/objecttranslations.py:313
 msgid "Grows spices. Needs a farm."
-msgstr ""
+msgstr "Wächst Gewürze. Benötigt eine Farm."
 
 #. name of buildings:stonemason
 #: horizons/i18n/objecttranslations.py:318
@@ -3162,7 +3160,7 @@ msgstr "Steinmetz"
 #. tooltip_text of buildings:stonemason
 #: horizons/i18n/objecttranslations.py:320
 msgid "Carves stone tops into bricks."
-msgstr ""
+msgstr "Meißelt Steine zu Ziegeln."
 
 #. name of buildings:stonepit
 #: horizons/i18n/objecttranslations.py:325
@@ -3388,10 +3386,9 @@ msgid "Save/load for multiplayer games is not possible yet"
 msgstr "Speichern/Laden ist im Mehrspieler-Modus noch nicht möglich"
 
 #: horizons/mpsession.py:77
-#, fuzzy
 msgid "The filename must consist only of letters, numbers, spaces and _.-"
 msgstr ""
-"Der Dateiname darf nur Buchstaben, Ziffern, Leerzeichen und _ . - enthalten."
+"Der Dateiname darf nur Buchstaben, Ziffern, Leerzeichen und _.- enthalten."
 
 #: horizons/savegamemanager.py:360
 #, python-format
