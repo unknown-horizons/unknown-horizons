@@ -112,7 +112,8 @@ class TabWidget(object):
 			traceback.print_stack()
 			self.log.warn("Invalid tab number %s, available tabs: %s", number, self._tabs)
 			return
-		self.current_tab.hide()
+		if self.current_tab.is_visible():
+			self.current_tab.hide()
 		new_tab = self._tabs[number]
 		old_bg = self.content.findChild(name = "bg_%s" % self._tabs.index(self.current_tab))
 		old_bg.image = self.current_tab.button_background_image
