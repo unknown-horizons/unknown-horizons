@@ -142,7 +142,11 @@ class BuildingOwner(object):
 
 	def end(self):
 		if self.buildings is not None:
-			for building in [building for building in self.buildings]:
-				building.remove()
+			# remove all buildings
+			# this iteration style is the most robust; sometimes the ai reacts to removals
+			# by building/tearing, effectively changing the list, therefore iterating over a
+			# copy would either miss instances or remove some twice.
+			while self.buildings:
+				self.buildings[-1].remove()
 		self.provider_buildings = None
 		self.buildings = None
