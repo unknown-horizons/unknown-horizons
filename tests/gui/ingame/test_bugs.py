@@ -329,3 +329,43 @@ def test_ticket_1526(gui):
 	gui.cursor_click(52, 12, 'left', ctrl=True)
 
 	yield TestFinished
+
+
+@gui_test(use_dev_map=True, timeout=120)
+def test_pavilion_build_crash_built_via_settler_related_tab(gui):
+	"""
+	"""
+	yield
+
+	ship = get_player_ship(gui.session)
+	gui.select([ship])
+
+	gui.cursor_click(59, 1, 'right')
+	while (ship.position.x, ship.position.y) != (59, 1):
+		yield
+
+	# Found settlement
+	gui.trigger('overview_trade_ship', 'found_settlement/action/default')
+
+	gui.cursor_click(56, 3, 'left')
+
+	gui.trigger('mainhud', 'build/action/default')
+
+	# Build settler
+	gui.trigger('tab', 'button_1/action/default')
+	gui.cursor_click(52, 7, 'left')
+
+	# Select settler
+	gui.cursor_click(52, 7, 'left')
+
+	# Open build related tab
+	gui.trigger('tab_base', '1/action/default')
+
+	# Select pavilion
+	gui.trigger('farm_overview_buildrelated', 'build5/action/default')
+
+	# Plant it
+	gui.cursor_click(49, 6, 'left')
+
+	# if we survive until here, the bug hasn't happened
+	yield TestFinished
