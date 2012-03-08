@@ -49,6 +49,12 @@ def init_pychan():
 	for widget in widgets:
 		pychan.widgets.registerWidget(widget)
 
+	# add uh styles
+	# NOTE: do this before adding tooltip feature, because pychan has a design issue
+	# where it sometimes uses the class hierarchy and sometimes treats each class differently.
+	for name, stylepart in STYLES.iteritems():
+		pychan.manager.addStyle(name, stylepart)
+
 	# patch default widgets to support tooltips via helptext attribute
 	for name, widget in pychan.widgets.WIDGETS.items()[:]:
 		if any( attr.name == "helptext" for attr in widget.ATTRIBUTES ):
@@ -58,7 +64,7 @@ def init_pychan():
 			# as well as _Tooltip)
 
 			klass_name =  str(widget)+" with tooltip hack (see horizons/engine/pychan_util.py"
-			base_klasses =  (widget, _Tooltip)
+			base_klasses = (widget, _Tooltip)
 			klass = type(klass_name, base_klasses, {})
 
 			# pass klass as default arg, since we're in a loop and it would be overwritten later;
@@ -94,8 +100,4 @@ def init_pychan():
 
 	# patch fife default styles
 	pychan.manager.styles = conv(pychan.manager.styles)
-
-	# add uh styles
-	for name, stylepart in STYLES.iteritems():
-		pychan.manager.addStyle(name, stylepart)
 
