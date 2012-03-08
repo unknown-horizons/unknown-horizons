@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2012-03-02 04:09+0100\n"
-"PO-Revision-Date: 2012-03-07 21:40+0200\n"
+"PO-Revision-Date: 2012-03-08 21:21+0200\n"
 "Last-Translator: Raymond <raymondv@gmx.de>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: de\n"
@@ -875,7 +875,7 @@ msgstr ""
 msgid "This is not nice and we hope to offer a more convenient solution very soon."
 msgstr ""
 "Das ist nicht schön und wir hoffen möglichst bald eine passendere Lösung zu "
-"finden. "
+"finden."
 
 #: horizons/gui/modules/multiplayermenu.py:210
 msgid "Meanwhile, please request the file {path} from the game creator and put it in {map_directory} ."
@@ -1285,7 +1285,7 @@ msgstr "Es gibt noch keine Einträge in Eurem Logbuch!"
 #: horizons/gui/widgets/pickbeltwidget.py:91
 #: horizons/i18n/guitranslations.py:877
 msgid "Graphics"
-msgstr "Graphik"
+msgstr "Grafik"
 
 # (toggling everything on/off)
 #. (text of widget: headline_sound)
@@ -2889,7 +2889,7 @@ msgstr "Kakaofeld"
 #. tooltip_text of buildings:cocoafield
 #: horizons/i18n/objecttranslations.py:130
 msgid "Produces cocoa beans used for confectionery. Needs a farm."
-msgstr "Produziert Kakaobohnen für Süßwaren. Benötigt eine Farm. "
+msgstr "Produziert Kakaobohnen für Süßwaren. Benötigt eine Farm."
 
 #. name of buildings:cornfield
 #: horizons/i18n/objecttranslations.py:135
@@ -3538,7 +3538,7 @@ msgstr "Ihr könnt nicht dieses auf einer anderen Einheit bauen."
 
 #: horizons/world/building/buildable.py:45
 msgid "This building must be built on the coastline."
-msgstr ""
+msgstr "Dieses Gebäude muss an der Küste errichtet werden."
 
 #: horizons/world/building/buildable.py:46
 msgid "This building requires to be placed near the ocean."
