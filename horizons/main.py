@@ -33,6 +33,7 @@ import sys
 import os.path
 import random
 import json
+import traceback
 import threading
 import thread # for thread.error raised by threading.Lock.release
 import shutil
@@ -244,7 +245,14 @@ def quit():
 	"""Quits the game"""
 	global fife
 	if _modules.session is not None and _modules.session.is_alive:
-		_modules.session.end()
+		try:
+			_modules.session.end()
+		except Exception as e:
+			# if we're in a non-valid state, this code might be reached
+			# give a nice error message instead of just randomly crashing
+			traceback.print_exc()
+			print
+			print "Fatal error on shutdown. Please report in case you haven't been fumbling with internals."
 	preload_game_join(preloading)
 	ExtScheduler.destroy_instance()
 	fife.quit()
@@ -313,7 +321,12 @@ def start_singleplayer(map_file, playername = "Player", playercolor = None, is_s
 		print "Failed to load", map_file
 		traceback.print_exc()
 		if _modules.session is not None and _modules.session.is_alive:
-			_modules.session.end()
+			try:
+				_modules.session.end()
+			except Exception as e:
+				print
+				traceback.print_exc()
+				print "Additionally to failing when loading, cleanup afterwards also failed"
 		_modules.gui.show_main()
 		headline = _(u"Failed to start/load the game")
 		descr = _(u"The game you selected couldn't be started.") + u" " +\
