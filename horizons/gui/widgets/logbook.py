@@ -144,13 +144,13 @@ class LogBook(PickBeltWidget):
 	def _redraw_captainslog(self):
 		"""Redraws gui. Necessary when current message has changed."""
 		if len(self._widgets) > 0: # there is something to display if this has items
-			self._magic_display(self._widgets[self._cur_entry], 'left')
+			self._display_widgets_on_page(self._widgets[self._cur_entry], 'left')
 			if self._cur_entry+1 < len(self._widgets): # check for content on right page
-				self._magic_display(self._widgets[self._cur_entry+1], 'right')
+				self._display_widgets_on_page(self._widgets[self._cur_entry+1], 'right')
 			else:
-				self._magic_display([], 'right') # display empty page
+				self._display_widgets_on_page([], 'right') # display empty page
 		else:
-			self._magic_display([
+			self._display_widgets_on_page([
 			  ['Headline', _("Emptiness")],
 			  ['Image', "content/gui/images/background/hr.png"],
 			  ['Label', "\n\n"],
@@ -171,14 +171,14 @@ class LogBook(PickBeltWidget):
 	def parse_logbook_item(self, widget):
 		if isinstance(widget, basestring):
 			add = Label(text=unicode(widget), wrap_text=True, max_size=(340,508))
+		elif widget[0] == 'Label':
+			add = Label(text=unicode(widget[1]), wrap_text=True, max_size=(340,508))
 		elif widget[0] == 'Image':
 			add = Icon(image=widget[1])
 		elif widget[0] == 'Gallery':
 			add = HBox()
 			for image in widget[1]:
 				add.addChild(Icon(image=image))
-		elif widget[0] == 'Label':
-			add = Label(text=unicode(widget[1]), wrap_text=True, max_size=(340,508))
 		elif widget[0] == 'Headline':
 			add = Label(text=unicode(widget[1]))
 			add.stylize('headline')
@@ -188,7 +188,7 @@ class LogBook(PickBeltWidget):
 			add = None
 		return add
 
-	def _magic_display(self, widgets, page):
+	def _display_widgets_on_page(self, widgets, page):
 		"""
 		@param widgets: widget list, cf. docstring of add_captainslog_entry
 		@param page: 'left' or 'right'
@@ -231,6 +231,7 @@ class LogBook(PickBeltWidget):
 			self._cur_entry = len(self._widgets) - 2
 		if show_logbook and hasattr(self, "_gui"):
 			self._redraw_captainslog()
+			self.show()
 
 	def clear(self):
 		"""Remove all entries"""
