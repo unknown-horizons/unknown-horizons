@@ -20,11 +20,14 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
+import new
+
 from fife.extensions import pychan
 from horizons.gui.style import STYLES
 
 def init_pychan():
 	"""General pychan initiation for uh"""
+	global STYLES
 
 	# register custom widgets
 
@@ -59,18 +62,28 @@ def init_pychan():
 	for name, widget in pychan.widgets.WIDGETS.items()[:]:
 		if any( attr.name == "helptext" for attr in widget.ATTRIBUTES ):
 
-			# create a new class with this __init__, so tooltips are initalize
-			# (the new class will just dynamically inherit from the original wiget
-			# as well as _Tooltip)
+			# create a new class with a custom __init__, so tooltips are initalized
 
 			klass_name =  str(widget)+" with tooltip hack (see horizons/engine/pychan_util.py"
-			base_klasses = (widget, _Tooltip)
-			klass = type(klass_name, base_klasses, {})
+			klass = type(klass_name, (widget, ), {})
 
-			# pass klass as default arg, since we're in a loop and it would be overwritten later;
-			# however the default arg is evaluated only once, and that is precisely now.
-			def __init__(self, _klass=klass, *args, **kwargs):
-				super(_klass, self).__init__(*args, **kwargs)
+			def __init__(self, *args, **kwargs):
+				# this is going to look a bit weird
+
+				# remove all traces of this code ever existing (would confuse pychan badly, don't try to create own widgets)
+				self.__class__ = self.__class__.__mro__[1]
+				# manually copy everything we need from the tooltip class
+				for key, value in _Tooltip.__dict__.iteritems():
+					if not key.startswith("__"): # not the internals
+						if callable( value ):
+							value =  new.instancemethod(value, self)
+
+					# put it in the instance dict, not the class dict
+					self.__dict__[key] = value
+
+				# call real init (no super, since we are already in the super class
+				self.__init__(*args, **kwargs)
+
 				self.init_tooltip()
 
 			klass.__init__ = __init__
@@ -94,7 +107,6 @@ def init_pychan():
 
 		return dict(entries)
 
-	global STYLES
 	# patch uh styles
 	STYLES = conv(STYLES)
 
