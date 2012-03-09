@@ -181,7 +181,7 @@ class Fife(ApplicationBase):
 
 		init_pychan()
 
-		self._setting_handler.update_languages()
+		self._setting_handler.apply_settings()
 
 		self._gotInited = True
 

@@ -58,11 +58,14 @@ _modules = Modules()
 # garbage collection
 __string_previewer = None
 
-def start(command_line_arguments):
+command_line_arguments = None
+
+def start(_command_line_arguments):
 	"""Starts the horizons. Will drop you to the main menu.
-	@param command_line_arguments: options object from optparse.OptionParser. see run_uh.py.
+	@param _command_line_arguments: options object from optparse.OptionParser. see run_uh.py.
 	"""
-	global fife, db, debug, preloading
+	global fife, db, debug, preloading, command_line_arguments
+	command_line_arguments = _command_line_arguments
 	# NOTE: globals are designwise the same thing as singletons. they don't look pretty.
 	#       here, we only have globals that are either trivial, or only one instance may ever exist.
 
@@ -92,7 +95,6 @@ def start(command_line_arguments):
 		  command_line_arguments.generate_minimap
 		  ) )
 		sys.exit(0)
-
 
 	# init fife before mp_bind is parsed, since it's needed there
 	fife = Fife()

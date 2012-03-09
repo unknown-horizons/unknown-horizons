@@ -222,7 +222,8 @@ def main():
 
 	create_user_dirs()
 
-	options = parse_args()
+	options = get_option_parser().parse_args()[0]
+	setup_debugging(options)
 
 	# NOTE: this might cause a program restart
 	init_environment()
@@ -266,12 +267,16 @@ def main():
 		print _('Thank you for using Unknown Horizons!')
 
 
-def parse_args():
+def setup_debugging(options):
 	"""Parses and applies options
-	@returns option object from Parser
+	@param options: parameters: debug, debug_module, debug_log_only, logfile
 	"""
-	global logfilename
-	options = get_option_parser().parse_args()[0]
+	global logfilename, logfile
+
+	# not too nice way of sharing code, but it is necessary because code from this file
+	# can't be accessed elsewhere on every distribution, and we can't just access other code.
+	# however passing options is guaranteed to work
+	options.setup_debugging = setup_debugging
 
 	# apply options
 	if options.debug or options.debug_log_only:
@@ -324,8 +329,6 @@ def parse_args():
 			logging.getLogger().addHandler( logging.StreamHandler(sys.stderr) )
 
 		log_sys_info()
-
-	return options
 
 
 """

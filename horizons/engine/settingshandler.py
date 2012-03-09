@@ -23,6 +23,7 @@
 import platform
 import gettext
 import os
+import logging
 import locale
 
 from fife import fife
@@ -34,7 +35,7 @@ from horizons.util import Callback, parse_port
 from horizons.i18n import update_all_translations
 from horizons.extscheduler import ExtScheduler
 from horizons.i18n.utils import get_fontdef_for_locale, find_available_languages
-from horizons.constants import LANGUAGENAMES
+from horizons.constants import LANGUAGENAMES, PATHS
 from horizons.network.networkinterface import NetworkInterface
 from horizons.engine import UH_MODULE
 
@@ -88,6 +89,9 @@ class SettingsHandler(object):
 		self._setting.createAndAddEntry(UH_MODULE, "NetworkPort", "network_port",
 				                        applyfunction=self.set_network_port)
 
+		self._setting.createAndAddEntry(UH_MODULE, "DebugLog", "debug_log",
+				                        applyfunction=self.set_debug_log)
+
 
 		self._setting.entries[FIFE_MODULE]['PlaySounds'].applyfunction = lambda x: self.engine.sound.setup_sound()
 		self._setting.entries[FIFE_MODULE]['PlaySounds'].requiresrestart = False
@@ -99,6 +103,11 @@ class SettingsHandler(object):
 				                        #applyfunction=self.set_mouse_sensitivity, \
 				                        requiresrestart=True)
 
+	def apply_settings(self):
+		"""Called on startup to apply the effects of settings"""
+		self.update_languages()
+		if self.engine.get_uh_setting("DebugLog"):
+			self.set_debug_log(True, startup=True)
 
 	def setup_setting_extras(self):
 		"""Some kind of setting gui initalisation"""
@@ -275,6 +284,37 @@ class SettingsHandler(object):
 		# dynamically reset all translations of active widgets
 		update_all_translations()
 
+	def set_debug_log(self, data, startup=False):
+		"""
+		@param data: boolean
+		@param startup: True if on startup to apply settings. Won't show popup
+		"""
+		options = horizons.main.command_line_arguments
+		print 'called', data
+
+		if data: # enable logging
+			if options.debug:
+				# log file is already set up, just make sure everything is logged
+				logging.getLogger().setLevel( logging.DEBUG )
+			else: # set up all anew
+				class Data(object):
+					debug = False
+					debug_log_only = True
+					logfile = None
+					debug_module = []
+				# use setup call reference, see run_uh.py
+				options.setup_debugging(Data)
+				options.debug = True
+
+			if not startup:
+				headline = _("Logging enabled")
+				msg = _("I'm going to write logs in {dir}.").format(dir=PATHS.LOG_DIR)
+				horizons.main._modules.gui.show_popup(headline, msg)
+
+		else: #disable logging
+			logging.getLogger().setLevel( logging.WARNING )
+			# keep debug flag in options so to not reenable it fully twice
+			# on reenable, onyl the level will be reset
 
 # misc utility
 

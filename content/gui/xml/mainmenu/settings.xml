@@ -129,27 +129,33 @@
 			<VBox name="misc_settings" padding="2">
 
 				<HBox>
-					<Label name="minimap_rotation_label" text="Rotate minimap with map:"
+					<Label name="minimap_rotation_label" text="Rotate minimap with map:" min_size="170,0"
 						helptext="Whether to also rotate the minimap whenever the regular map is rotated" />
 					<CheckBox min_size="24,24" name="minimaprotation" />
 				</HBox>
 
 				<HBox>
-					<Label name="edge_scrolling_label" text="Scroll at map edge:"
+					<Label name="edge_scrolling_label" text="Scroll at map edge:" min_size="170,0"
 						helptext="Whether to move the viewport when the mouse pointer is close to map edges" />
 					<CheckBox min_size="24,24" name="edgescrolling" />
 				</HBox>
 
 				<HBox>
-					<Label name="uninterrupted_building_label" text="Uninterrupted building:"
+					<Label name="uninterrupted_building_label" text="Uninterrupted building:" min_size="170,0"
 						helptext="When enabled, do not exit the build mode after successful construction" />
 					<CheckBox min_size="24,24" name="uninterrupted_building" />
 				</HBox>
 
 				<HBox>
-					<Label name="auto_unload_label" text="Auto-unload ship:"
+					<Label name="auto_unload_label" text="Auto-unload ship:" min_size="170,0"
 						helptext="Whether to unload the ship after founding a settlement" />
 					<CheckBox min_size="24,24" name="auto_unload" />
+				</HBox>
+
+				<HBox>
+					<Label name="debug_log_lbl" text="Enable logging" min_size="170,0"
+						helptext="Whether to write debug information in the logging directory of your user directory" />
+					<CheckBox min_size="24,24" name="debug_log" />
 				</HBox>
 			</VBox>
 		</VBox>

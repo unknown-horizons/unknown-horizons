@@ -46,8 +46,9 @@
 		<Setting name="MapResourceDensity" type="float">2.0</Setting>
 		<Setting name="AutoUnload" type="bool">True</Setting>
 		<Setting name="ResourceOverviewBarConfiguration" type="str"></Setting>
+		<Setting name="DebugLog" type="bool">False</Setting>
 	</Module>
 	<Module name="meta">
-		<Setting name="SettingsVersion" type="int">14</Setting>
+		<Setting name="SettingsVersion" type="int">15</Setting>
 	</Module>
 </Settings>
