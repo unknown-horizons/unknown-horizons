@@ -26,7 +26,7 @@ CREATE TABLE "pirate_ships" ("state" INTEGER NOT NULL  DEFAULT 0, "remaining_tic
 CREATE TABLE storage_global_limit(object INT NOT NULL, value INT NOT NULL);
 CREATE TABLE storage_slot_limit(object INT NOT NULL, slot INT NOT NULL, value INT NOT NULL);
 CREATE TABLE "scenario_variables" ("key" TEXT NOT NULL , "value" TEXT NOT NULL );
-CREATE TABLE logbook ( heading string, message string );
+CREATE TABLE logbook ( widgets string );
 CREATE TABLE "trade_values" ("object" INTEGER NOT NULL , "total_income" INTEGER NOT NULL , "total_expenses" INTEGER NOT NULL );
 CREATE TABLE mine(deposit_class INTEGER NOT NULL, mine_empty_msg_shown BOOL);
 CREATE TABLE settlement_produced_res(settlement INT NOT NULL, res INT NOT NULL, amount INT NOT NULL);

@@ -20,8 +20,9 @@
 # ###################################################
 
 import os
-import shutil
 import os.path
+import json
+import shutil
 import tempfile
 
 from horizons.util.python import decorators
@@ -59,6 +60,20 @@ class SavegameUpgrader(object):
 		db('CREATE TABLE "disaster_manager" ( remaining_ticks INTEGER NOT NULL )')
 		db('INSERT INTO "disaster_manager" VALUES(1)')
 
+	def _upgrade_to_rev53(self, db):
+		# convert old logbook (heading, message) tuples to new syntax, modify logbook table layout
+		old_entries = db("SELECT heading, message FROM logbook")
+		db('DROP TABLE logbook')
+		db('CREATE TABLE logbook ( widgets string )')
+		widgets = []
+		for heading, message in old_entries:
+			add = []
+			add.append(['Headline', heading])
+			add.append(['Image', "content/gui/images/background/hr.png"])
+			add.append(['Label', message])
+			widgets.append(add)
+		db("INSERT INTO logbook(widgets) VALUES(?)", json.dumps(widgets))
+
 
 	def _upgrade(self):
 		# fix import loop
@@ -84,6 +99,8 @@ class SavegameUpgrader(object):
 				self._upgrade_to_rev51(db)
 			if rev < 52:
 				self._upgrade_to_rev52(db)
+			if rev < 53:
+				self._upgrade_to_rev53(db)
 
 
 			db.close()

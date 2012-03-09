@@ -19,6 +19,7 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
+import json
 from itertools import groupby
 from fife.extensions.pychan.widgets import HBox, Icon, Label
 
@@ -97,23 +98,17 @@ class LogBook(PickBeltWidget):
 		super(LogBook, self).update_view(number)
 
 	def save(self, db):
-		return
-		#TODO fix saving in new format; find below old and outdated code
-		for i in xrange(0, len(self._headings)):
-			db("INSERT INTO logbook(heading, message) VALUES(?, ?)", \
-			   self._headings[i], self._widgets[i])
+		db("INSERT INTO logbook(widgets) VALUES(?)", json.dumps(self._widgets))
 		db("INSERT INTO metadata(name, value) VALUES(?, ?)", \
 		   "logbook_cur_entry", self._cur_entry)
 
 	def load(self, db):
-		return
-		#TODO fix loading new format; find below old and outdated code
-		for heading, message in db("SELECT heading, message FROM logbook"):
-			# We need unicode strings as the entries are displayed on screen.
-			self.add_captainslog_entry(unicode(heading, 'utf-8'), unicode(message, 'utf-8'), False)
+		widget_list = json.loads(db("SELECT widgets FROM logbook")[0][0])
+		for widgets in widget_list:
+			self.add_captainslog_entry(widgets, show_logbook=False)
 		value = db('SELECT value FROM metadata WHERE name = "logbook_cur_entry"')
 		if (value and value[0] and value[0][0]):
-			self._cur_entry = int(value[0][0])
+			self.set_cur_entry(int(value[0][0])) # this also redraws
 
 	def show(self):
 		if not hasattr(self,'_gui'):
@@ -169,17 +164,21 @@ class LogBook(PickBeltWidget):
 ########
 
 	def parse_logbook_item(self, widget):
+		# json.loads() returns unicode, thus convert strings and compare to unicode
+		# Image works with str() since pychan can only use str objects as file path
+		if widget[0]:
+			widget_type = unicode(widget[0])
 		if isinstance(widget, basestring):
 			add = Label(text=unicode(widget), wrap_text=True, max_size=(340,508))
-		elif widget[0] == 'Label':
+		elif widget_type == u'Label':
 			add = Label(text=unicode(widget[1]), wrap_text=True, max_size=(340,508))
-		elif widget[0] == 'Image':
-			add = Icon(image=widget[1])
-		elif widget[0] == 'Gallery':
+		elif widget_type == u'Image':
+			add = Icon(image=str(widget[1]))
+		elif widget_type == u'Gallery':
 			add = HBox()
 			for image in widget[1]:
-				add.addChild(Icon(image=image))
-		elif widget[0] == 'Headline':
+				add.addChild(Icon(image=str(image)))
+		elif widget_type == u'Headline':
 			add = Label(text=unicode(widget[1]))
 			add.stylize('headline')
 		else:
