@@ -324,7 +324,7 @@ class BuySellTab(TabInterface):
 			self.show_resource_menu(widget.parent.id)
 		elif event.getButton() == fife.MouseEvent.RIGHT:
 			# remove the buy/sell offer
-			self.add_resource(0, widget.parent.id, None, False)
+			self.add_resource(0, widget.parent.id)
 
 	def show_resource_menu(self, slot_id):
 		"""
