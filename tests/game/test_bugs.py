@@ -254,3 +254,19 @@ def test_ticket_1523(s, p):
 	# Should be 0.5
 	assert not farm.get_component(Producer).capacity_utilisation_below(0.4)
 	assert farm.get_component(Producer).capacity_utilisation > 0.4
+
+@game_test
+def test_ticket_1561(s, p):
+	settlement, island = settle(s)
+
+	residence = Build(BUILDINGS.RESIDENTIAL_CLASS, 30, 30, island, settlement=settlement)(p)
+	s.run(ticks=1)
+	assert residence.level == 0
+
+	residence.level_up()
+	s.run(ticks=1)
+	assert residence.level == 1
+
+	residence2 = Build(BUILDINGS.RESIDENTIAL_CLASS, 30, 32, island, settlement=settlement)(p)
+	s.run(ticks=1)
+	assert residence2.level == 0
