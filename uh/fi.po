@@ -919,7 +919,7 @@ msgstr "Vaikeustaso: {difficulty}"
 #: horizons/gui/widgets/choose_next_scenario.py:45
 #, python-format
 msgid "Author: {author}"
-msgstr "Tekijä: {aurhor}"
+msgstr "Tekijä: {author}"
 
 #: horizons/gui/modules/singleplayermenu.py:160
 #: horizons/gui/modules/singleplayermenu.py:174
