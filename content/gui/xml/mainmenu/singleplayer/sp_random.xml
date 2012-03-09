@@ -48,5 +48,5 @@
 
 	<VBox name="game_settings_box" />
 
-	<Spacer />
+	<Spacer min_size="4200" />
 </VBox>
