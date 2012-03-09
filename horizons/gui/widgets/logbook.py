@@ -103,7 +103,8 @@ class LogBook(PickBeltWidget):
 		   "logbook_cur_entry", self._cur_entry)
 
 	def load(self, db):
-		widget_list = json.loads(db("SELECT widgets FROM logbook")[0][0])
+		db_data = db("SELECT widgets FROM logbook")
+		widget_list = json.loads(db_data[0][0] if db_data else "[]")
 		for widgets in widget_list:
 			self.add_captainslog_entry(widgets, show_logbook=False)
 		value = db('SELECT value FROM metadata WHERE name = "logbook_cur_entry"')
