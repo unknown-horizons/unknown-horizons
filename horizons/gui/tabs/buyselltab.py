@@ -30,7 +30,6 @@ from horizons.command.uioptions import AddToBuyList, AddToSellList, RemoveFromBu
 from horizons.gui.widgets.tradehistoryitem import TradeHistoryItem
 from horizons.util import Callback, WorldObject
 from horizons.util.gui import load_uh_widget, get_res_icon, create_resource_selection_dialog
-from horizons.world.component.storagecomponent import StorageComponent
 from horizons.world.component.tradepostcomponent import TradePostComponent
 
 class BuySellTab(TabInterface):
@@ -74,7 +73,7 @@ class BuySellTab(TabInterface):
 		# use dynamic change code to init the slots
 		buy_list = self.tradepost.buy_list
 		for res in buy_list:
-			if slot_count < self.slots:
+			if slot_count < slots:
 				self.slots[slot_count].action = 'buy'
 				self.add_resource(res, slot_count, buy_list[res])
 				self._show_buy( self.slots[slot_count] )
@@ -82,7 +81,7 @@ class BuySellTab(TabInterface):
 				slot_count += 1
 		sell_list = self.tradepost.sell_list
 		for res in sell_list:
-			if slot_count < self.slots:
+			if slot_count < slots:
 				self.slots[slot_count].action = 'sell'
 				self.add_resource(res, slot_count, sell_list[res])
 				self._show_sell( self.slots[slot_count] )
