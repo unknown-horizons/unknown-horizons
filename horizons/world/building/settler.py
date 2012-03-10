@@ -53,7 +53,7 @@ class Settler(BuildableRect, BuildingResourceHandler, BasicBuilding):
 
 	production_class = SettlerProduction
 
-	tabs = (SettlerOverviewTab,)
+	tabs = (SettlerOverviewTab, )
 
 	default_level_on_build = 0
 

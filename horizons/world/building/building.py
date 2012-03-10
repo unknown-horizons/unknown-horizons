@@ -59,10 +59,10 @@ class BasicBuilding(ComponentHolder, ConcreteObject):
 	@param action_set_id: use this action set id. None means choose one at random
 	"""
 	def __init__(self, x, y, rotation, owner, island, level=None, action_set_id=None, **kwargs):
-		self.__pre_init(owner, rotation, Point(x, y))
+		self.__pre_init(owner, rotation, Point(x, y), level=level)
 		super(BasicBuilding, self).__init__(x=x, y=y, rotation=rotation, owner=owner, \
 								                        island=island, **kwargs)
-		self.__init(level, action_set_id=action_set_id)
+		self.__init( action_set_id=action_set_id )
 		self.island = island
 
 		settlements = self.island.get_settlements(self.position, owner)
@@ -90,7 +90,7 @@ class BasicBuilding(ComponentHolder, ConcreteObject):
 		else:
 			self.position = ConstRect(origin, self.size[0]-1, self.size[1]-1)
 
-	def __init(self, level=None, remaining_ticks_of_month=None, action_set_id=None):
+	def __init(self, remaining_ticks_of_month=None, action_set_id=None):
 		self._action_set_id = action_set_id if action_set_id is not None else \
 		    self.get_random_action_set(self.level)[0]
 

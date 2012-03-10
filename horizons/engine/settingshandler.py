@@ -290,7 +290,6 @@ class SettingsHandler(object):
 		@param startup: True if on startup to apply settings. Won't show popup
 		"""
 		options = horizons.main.command_line_arguments
-		print 'called', data
 
 		if data: # enable logging
 			if options.debug:
