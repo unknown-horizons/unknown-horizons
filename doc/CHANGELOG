@@ -4,12 +4,21 @@ Unknown Horizons
 -----------------------------------------------------
 
 2012-??-??: Milestone 2012.1
-changelog date: DEC 19; rev: 0f74dbf6d5e1660b7c91600a6b8679ac87d995bc
+changelog date: MAR 10; rev: 473895d2fd84fbfc027154699cde73a7b33a8f8d
 
 Gameplay and Balancing
 * New features
    + screenshots of savegames
-   + 
+   + map preview, using a subprocess
+   + disasters: fire as proof of concept, fire station as remedy of choice
+   + allow generating different random maps and using own random seeds
+   + status icon system for buildings
+   + major overhaul of buy/sell interface
+   + major overhaul of resource overview bar, custom bars per settlement
+   + many new hotkeys (see section User Interface)
+   + statistics widgets: player scores, settlement/ship overview, chat history
+   + Unknown Horizons automatically checks for updates on startup
+   + support for CJKV translations
 
 * Modifications and changes
    # lower running costs for several buildings when paused:
@@ -17,54 +26,89 @@ Gameplay and Balancing
      # salt ponds: 0 (was: 10)
      # doctor: 5 (was: 15)
    # maximum game speed now: 20x
-   # 
+   # multiplayer mode: game names
+   # boat builder now displays queue and allows modifications
+   # "Branch Office" renamed to "Warehouse", "Tent Ruin" to "Ruined Tent"
 
 * Fixed bugs and problems
    ~ main square now walkable, i.e. behaves like a road
    ~ ships only load as many tons of a res as specified in the route at max
-   ~ 
 
 
 Media Content
 * New files and features
-   + icon: capcity utilisation (also used for other stats)
-   + icon: different happiness stage smileys
-   + sound: build sound (Novatlan)
    + building: new fish (lmg)
+   + building: fire station
+   + building: single tile roads
+   + building: all rotations for the birch tree
+   + animated status icons: full inventory, decommissioned, mine cart, book
+   + animated status icons: question mark, exclamation mark, building on fire
+   + sound: invalid actions / error
+   + sound: build sound (Novatlan)
+   + sound: flipping page
+   + icon: capacity utilisation (also used for other stats)
+   + icon: different happiness stage smileys
    + icon: pipette cursor
-   + icon: minimap background image
-   + font: CJKV support through UMing
-   + 
+   + icon: rename (20 and 50px)
+   + icon: ship on minimap
+   + icon: animated cogs for active production lines
+   + icon: medium and large popup background images
+   + icon: three new mainmenu background images
+   + icon: messagewidget background images
+   + font: UMing for CJKV
 
 * Brush-ups and modifications
+   # building: new renders of charcoal burning
+   # building: new renders of distillery
    # icon: save/load in main / pause menu
    # icon: inhabitant amount
+   # icon: minimap background image
    # fish animations run at different speeds
-   # 
 
 User Interface
 * Additions and new features
-   + shortcut R to enter road building mode
    + minimap in ship route config dialog, click on BO to add it to the route
    + sending ships via click on minimap, highlight selected ships in minimap
+   + captain's log entries can now contain images and multiple entries per page
    + pipette tool to clone existing buildings (O)
    + save and show trade history
+   + support for dynamic hotkey configuration
    + hotkey A to display owner color on tiles
+   + hotkey J jumps to selected units
+   + hotkey K toggles healthbars
+   + hotkey R to enter road building mode
+   + enter key confirms a popup
+   + delete key removes units and buildings
    + zoom to mouse position as new center
    + remove resources in buy, sell, load, unload slots on right click
+   + setting for mouse sensitivity
+   + setting to enable logging
    + setting to disable auto-unloading goods on founding settlements
-   + hotkey K toggles healthbars
-   + boat builder now displays queue and allows modifications
-   + 
+   + highlight position of messagewidget events on minimap
+   + show unit route on minimap when player owns selected unit
+   + build multiple tents by holding the mouse (same as trees)
+   + dynamic build menu (highlight buildings currently buildable)
+   + show building costs when hovering build menu buttons
+   + highlight related buildings in build preview mode
+   + enhanced player name and color selection
+   + re-enabled map panning with middle mouse button
+   + display random background image in mainmenu
+   + load and display messagewidget items in logbook game message widget
 
 * Repositioning and modifications
+   # improved random name selection algorithm (prefer unused names)
+   # improved diplomacy UI and messages
    # sliders for map creation always start in center position
-   + ship status now clickable in ship list
-   # show branch office locations on minimap
+   # ship status now clickable in ship list
+   # show warehouse locations on minimap
    # combine widgets minimap and menu_panel to new widget 'minimap'
    # simplified ship and main square tabs
-   # tooltip explanations to some settings
-   # 
+   # tooltip explanations of some settings
+   # minimap and tabwidget positioning changed: prevent unintentional scrolling
+   # RouteConfig: Move activity icon into focus of attention area
+   # zooming depends on cursor location
+   # brighter and hopefully less obtrusive range highlight colors
+   # multiselection improvements
 
 * Fixed bugs and usability problems
    ~ reduce tooltip flickering
@@ -78,12 +122,29 @@ User Interface
    ~ rotate natural resources randomly
    ~ add savegame date and time to filenames
    ~ main widgets could be displayed twice, resulting in an infinite pause loop
-   ~ 
+   ~ build roads clockwise or counterclockwise based on user input
+   ~ display hint when a field is fully grown, but has no farm access
+   ~ consider keyboard scrolling when determining active settlement
+   ~ also show radius of signal fire on sea tiles
+   ~ stay in warehouse build mode when trying to build at invalid location
+   ~ delay cityinfo hide after hovering own settlements, renaming improvements
+   ~ allow to rename ships/settlement in statistics widget
+   ~ notification threshold depending on event distance wrt. time and space
+   ~ lots of is_focusable fixes (buttons previously caught keyboard events)
 
 
 Codebase
 * New functionalities
+   + Components!
+   + MessageBus and Message system
+   + gui logger (store all input actions) to help creating gui tests
+   + pre-commit hook for developers
+   + interactive iPython shell: allows executing any available Command
+   + support for gui tests and many gui tests
+   + tests can make use of savegames
+   + map saver and loader plugin for editor
    + script to pull and compile .po files from TL repo (dev/copy_pofiles)
+   + change pychan widgets on runtime for tooltips to use helptext= attribute
    + comment= widget attribute as context help for translators
    + save random map settings to settings.xml file
    + save maps (shift + F12)
@@ -92,15 +153,22 @@ Codebase
    + cmd line option --game-speed
    + use fife.Point.set where reasonable (performance)
    + lazy loading for tabs
-   + building and unit outline settings (threshold, width) now configureable
    + dynamically update data of older savegames to current format
    + locale-aware fontdef loading (LinLibertine vs. UMing)
-   + 
+   + support starting 2-player mp game via command line
+   + coupling between selectability and tabs
+   + session property for all components
+   + stop multiplayer game when detecting desync, print hash differences
+   + modular messagewidget (dynamic height depending on message)
+   + use YamlCache for object files to speed up loading
+   + several robustness improvements to YamlCache
 
 * Modified structures
    # adapt all widgets to new pychan keyword API
+   # removed all custom Tooltip* widgets
+   # speed up build mode by 40% (6000% for buildings with related buildings)
+   # allow human-readable resource ids in object files, like RES.FOOD_ID
    # refactored i18n methods to replace widget content
-   # rename ResourceHandler._get_productions to ResourceHandler.get_productions
    # improved loading speed for production lines, PathNodes, AbstractPather,
      # ComponentHolder and GlobalLimitStorage
    # minimap no longer uses GenericRenderer and supports more than one minimap
@@ -111,11 +179,22 @@ Codebase
    # inventory tab uses ExtScheduler instead of Scheduler
    # refactored management of all mousetools
    # rename ConcretObject to ConcreteObject
+   # building and unit outline parameters (threshold, width) now configureable
    # now using python's '{foo}'.format(foo=bar) for all i18n strings
+   # use python string formatting instead of string.Template
    # store savegame template as sql statements instead of binary sqlite file
-   # 
+   # lazy loading of action sets
+   # level-depending building names (lumberjack tent -> lumberjack hut)
+   # exclude certain status icons from certain buildings
+   # save language code instead of language name
+   # settings and logbook now use a PickBeltWidget
+   # removed several tables from our databases. Data now in yaml objects.
+   # registry pattern to keep track of scenario actions/conditions
+   # large amount of fixes and workarounds for styling widgets
 
 * Fixed crashes and inconsistencies
+   ~ reduced memory leaks when ending a session
+   ~ more than 40 crashes related to merging the branch "component"
    ~ crash when clicking on savegames in save dialog (#1223)
    ~ uninterrupted building setting now also affects destruction tool
    ~ crash when player name contained unreasonable characters
@@ -126,6 +205,10 @@ Codebase
    ~ faulty parameter name caused endless loops when FIFE was not found
    ~ crash with inaccessible entries in guitranslations
    ~ rounding issue caused problems with minimap
+   ~ handle random crashes that are defined behavior for python shelves
+   ~ use os-independent paths in the savegame manager
+   ~ crash when trying to overwrite a read-only file on windows
+   ~ some bugs in our core scheduler and timer code
    ~ 
 
 
@@ -146,7 +229,13 @@ User-Contributed Content
    + map triple
    + map test-map-tiny
    + map quattro
-   + 
+   + map Full House (3)
+   + map Rouver (4-6)
+   + map FightForRes
+   + map mp-dev
+   + scenario The Unknown by Kikody
+   + scenario deathmatch
+   # included images in tutorial scenarios
 
 * Media Content
 
