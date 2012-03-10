@@ -97,7 +97,13 @@ class ResourceOverviewBar(object):
 		self._update_default_configuration()
 
 	def end(self):
+		self.set_inventory_instance( None, force_update=True )
+		self.current_instance = weakref.ref(self)
 		ExtScheduler().rem_all_classinst_calls(self)
+		self.resource_configurations.clear()
+		self.gold_gui = None
+		self.gui = None
+		self._custom_default_resources = None
 
 	def _update_default_configuration(self):
 		# user defined variante of DEFAULT_RESOURCES (will be preferred)
@@ -184,6 +190,7 @@ class ResourceOverviewBar(object):
 
 		# fill values
 		inv = self._get_current_inventory()
+		# update on all changes as well as now
 		inv.add_change_listener(self._update_resources, call_listener_now=True)
 
 	def set_construction_mode(self, resource_source_instance, build_costs):
@@ -277,7 +284,7 @@ class ResourceOverviewBar(object):
 
 	def _update_resources(self):
 		"""Same as _update_gold but for all other slots"""
-		if not self.current_instance(): # instance died
+		if self.current_instance() in (None, self): # instance died
 			self.set_inventory_instance(None)
 			return
 		inv = self._get_current_inventory()
