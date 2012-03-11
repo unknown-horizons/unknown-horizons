@@ -22,10 +22,10 @@ events:
         - [Headline, "20th November 1740"]
         - [Image, "content/gui/images/background/hr.png"]
         - |
-          After four days, the storm finally fades and we can take a rest. But we have only 15 lb of food left and our ship is very broken-down. The navigation instruments and the sea charts are lost.
-          We have to come ashore. One of my Jacks saw some birds hunting for fish, so land can´t be far away.  Fortunally we have always some tools and wooden boards at the ship, so we can build some huts.
+          After four days, the storm finally fades and we can take a rest. But we only have 15 lb of food left and our ship is in a bad shape. The navigational instruments and sea charts are lost.
+          We have to come ashore. One of my jacks saw some birds hunting for fish, so land can´t be far away. Fortunately we always have some tools and wooden boards onboard, so we can build some huts.
 
-          Our task now is:
+          Now our task is:
           Find land and build a port, so that we can empty the ship.
   conditions:
    - type: time_passed
@@ -38,9 +38,9 @@ events:
     - [Headline, "22th Novenber 1740"]
     - [Image, "content/gui/images/background/hr.png"]
     - |
-      The port is built and just in time the ship sank, it was emptyed. [Let the ship sank here]
+      The port is built and just when the ship was emptied it sank. [Let the ship sink here]
 
-      We need some people hunting fish, some producing wooden boards, some tents to life in, and so on. Building the things for that is our task for the next days. But we have to be carefull! Our amount of tools is not very high!
+      We need some people hunting, fishing, some producing wooden boards, some tents to live in, and so on. Building those is our task for the next days. But we have to be careful! Our supply of tools is not very high!
 
   conditions:
   - type: settlements_num_greater
@@ -55,7 +55,7 @@ events:
     - |
       Finally we have everything for our basic needs.
 
-      Well, we don´t know were we are, have no sea charts and navigation instruments and the stars at night are unknown.
+      Well, we don´t know were we are, have no sea charts and navigational instruments and the stars at night are unknown.
       So we only can try to to build up a civilisation and try to find out how to come home...
   conditions:
   - type: building_num_of_type_greater
@@ -71,7 +71,7 @@ events:
   - type: settlement_res_stored_greater
     arguments: [RES.FOOD_ID, 5]
   - type: settlement_res_stored_greater
-    arguments: [RES.TREES_ID, 5]
+    arguments: [RES.BOARDS, 5]
 
 - # 250 people
   actions: # TODO: bigger map action
