@@ -144,8 +144,10 @@ class ResourceOverviewBar(object):
 		if self.current_instance() is instance and not self.construction_mode and not force_update:
 			return # caller is drunk yet again
 		if self.construction_mode and not keep_construction_mode:
+			# stop construction mode, immediately update view, which will be a normal view
 			self.close_construction_mode(update_slots=False)
-			return
+
+		# reconstruct general gui
 
 		# remove old gui
 		for i in self.gui:
