@@ -316,6 +316,7 @@ events:
        You can see your trade balance in the 'Account' tab comparing the 'Sale' and 'Buy' values there.
 
        TASK: Buy as many tools as you need to have 30 tools in stock!
+     - [Gallery, ["content/gui/icons/resources/50/006.png"]]
    - {type: message, arguments: ["Reach an island stock of at least 30 tools.", "Note that this might take a while."]}
      # Multiple messages: Each gets shown after a certain delay (usually horizons.constants.CUSTOM_MSG_SHOW_DELAY)
    - {type: set_var, arguments: ["tutStepDone", 37]}
@@ -338,7 +339,6 @@ events:
        You now provide housing, a main square and food to your inhabitants.
 
        Still there is one demand which we have not satisfied so far, you may check that in the marketplace or tent tab - your sailors want a basic building where they can pray.
-
        The solution is a pavilion which the village parson quickly puts up as shelter from the sun.
 
        Service buildings like this also need to be connected to the tents with a trail, else your inhabitants feel unable to reach them.
@@ -357,6 +357,7 @@ events:
        The road connection is required as well.
 
        TASK: Build a pavilion with a trail to the tents in order to fulfill your sailors' demand for faith.
+     - [Gallery, ["content/gui/icons/buildmenu/005.png"]]
    - {type: message, arguments: ["Build a pavilion with connection to the tents."]}
    - {type: set_var, arguments: ["tutStepDone", 40]}
   conditions:
@@ -385,15 +386,16 @@ events:
      - [Pagebreak]
      - |
 
-       Such residential upgrades are the only ones which cost resources and can not be restricted by you.
+       Such residential upgrades cost resources and can thus be restricted at the main square.
 
-       There are manual upgrades to some buildings where you use resources to construct a better version on the same spot, and there are upgrades without costs for example as you will see with the lumberjack (In this case, only the graphics change).
+       There also are upgrades of buildings without costs, as you will see with the lumberjack. In this case, only the graphics change.
 
        Upgraded housing accomodates more inhabitants, and pioneers pay more taxes than sailors, too.
 
        As you may have figured out already, the downside is that pioneers demand additional goods which sailors do not need - so you will need to spend this extra money to make them happy as well.
 
        TASK: Set the tax level to Low (left end) and wait for sailors to upgrade.
+     - [Gallery, ["content/gfx/buildings/pioneers/residential/as_hut0/idle/45/0.png"]]
    - {type: message, arguments: ["Set the tax level to Low (left end) and wait for your sailors to upgrade."]}
    - {type: set_var, arguments: ["tutStepDone", 43]}
   conditions:
@@ -413,7 +415,8 @@ events:
        Congratulations! Some of your inhabitants have reached increment II!
 
        Now you have access to new buildings, take a look at the Build menu again.
-
+     - [Gallery, ["content/gui/icons/tabwidget/buildmenu/level2_u.png"]]
+     - |
        A shiny new tab appeared there.
 
        Pioneers will demand cloth, so you need to set up a production line for cloth starting with lambs wool (which is one of the goods produced at the farm).
@@ -435,6 +438,7 @@ events:
        Try to build the farm not too close to the coast or your existing buildings since it will need some space around it to work well.
 
        TASK: Build a farm.
+     - [Gallery, ["content/gui/icons/buildmenu/020.png"]]
    - {type: message, arguments: ["Build a farm and keep some empty space around it."]}
    - {type: set_var, arguments: ["tutStepDone", 46]}
   conditions:
@@ -475,6 +479,8 @@ events:
        For now, you do not need to care about these issues a lot since you haven't built any fields. Let's change that!
 
        TASK: Build at least one pasture in the farm's range and add potato fields if you like.
+     - [Gallery, ["content/gui/icons/buildmenu/018.png",
+                  "content/gui/icons/buildmenu/019.png"]]
    - {type: message, arguments: ["Build at least one pasture and add potato fields if you like."]}
    - {type: set_var, arguments: ["tutStepDone", 49]}
   conditions:
@@ -495,12 +501,13 @@ events:
 
        Since your warehouse does not have unlimited space to store goods, collectors will stop fetching goods from companies when stock is full.
        So if no sailor recently wanted to upgrade his tent, you probably have a lot of boards and in that case, the lumberjack may idle.
-       We can improve this situation with two different approaches, and below we will have a look at both of them.
+       We can improve this situation in two different ways, and we will have a look at both of them below.
 
-       All companies offer the possibility of doing no work at all.
-       This may sound strange, but try to click on the gear wheel you see in, for example, a lumberjack's overview.
+       All companies offer to do no work at all.
+       This may sound strange, but click on the gear wheel you see in a lumberjack hut's overview.
 
        If this 'break' mode is enabled (we call it 'Decommissioning'), the running costs you pay for the building will decrease. They won't be zero, but still lower than if you keep the company producing.
+     - [Gallery, ["content/gui/icons/templates/production/toggle_inactive_h.png"]]
      - [Pagebreak]
      - |
 
@@ -515,6 +522,7 @@ events:
        Note that companies can also be connected to a storage in order to get their products collected, and if the warehouse is overwhelmed with collector tasks, you can place a storage tent to help out there.
 
        TASK: Build a storage tent, preferably where you need collectors.
+     - [Gallery, ["content/gui/icons/buildmenu/002.png"]]
    - {type: message, arguments: ["Build a storage tent (increment I tab) where it makes sense."]}
    - {type: set_var, arguments: ["tutStepDone", 52]}
   conditions:
@@ -541,6 +549,7 @@ events:
        You can place the weaver close to the farm and tear down any trail to the farm to see that it will still fetch the wool and produce.
 
        TASK: Build a weaver positioned so it can get wool.
+     - [Gallery, ["content/gui/icons/buildmenu/007.png"]]
    - {type: message, arguments: ["Build a weaver that can somehow reach the wool of your farm."]}
    - {type: set_var, arguments: ["tutStepDone", 55]}
   conditions:
@@ -563,6 +572,7 @@ events:
        Once you are able to keep an economy running which can satisfy this amount of consumers, you are ready to discover new Unknown Horizons!
 
        TASK: Reach a total number of 50 inhabitants and a positive balance to complete this tutorial.
+     - [Gallery, ["content/gui/icons/widgets/cityinfo/inhabitants.png"]]
    - {type: set_var, arguments: ["tutStepDone", 58]}
   conditions:
    - type: settlement_res_stored_greater
@@ -607,6 +617,8 @@ events:
        Thanks for playing the tutorial!
 
        Your UH-Team
+     - [Gallery, ["content/unknown-horizons.xpm",
+                  "content/gfx/misc/status_icons/as_book_flip/idle/45/book20125.png"]]
    - {type: set_var, arguments: ["tutStepDone", 61]}
   conditions:
    - type: settlements_num_greater
