@@ -237,7 +237,7 @@ class Settler(BuildableRect, BuildingResourceHandler, BasicBuilding):
 			change = 1
 			self.log.debug("%s: inhabitants increase to %s", self, self.inhabitants)
 		elif self.happiness < self.__get_data("happiness_inhabitants_decrease_limit") and \
-		     self.inhabitants > 1:
+		     self.inhabitants >= 1:
 			change = -1
 			self.log.debug("%s: inhabitants decrease to %s", self, self.inhabitants)
 
