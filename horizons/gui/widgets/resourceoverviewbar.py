@@ -145,6 +145,7 @@ class ResourceOverviewBar(object):
 			return # caller is drunk yet again
 		if self.construction_mode and not keep_construction_mode:
 			self.close_construction_mode(update_slots=False)
+			return
 
 		# remove old gui
 		for i in self.gui:
@@ -241,6 +242,7 @@ class ResourceOverviewBar(object):
 				self.gold_gui.addChild(cost_label)
 				self.gold_gui.resizeToContent()
 
+
 	def close_construction_mode(self, update_slots=True):
 		"""Return to normal configuration"""
 		self.construction_mode = False
@@ -249,7 +251,7 @@ class ResourceOverviewBar(object):
 		self._reset_gold_gui()
 		self._update_gold()
 		self.gold_gui.show()
-		self._update_gold()
+		self._update_gold(force=True)
 
 	def _reset_gold_gui(self):
 		if self.gold_gui is not None:
@@ -266,7 +268,7 @@ class ResourceOverviewBar(object):
 		scheduled_attr = "_gold_upate_scheduled"
 		if not hasattr(self, scheduled_attr):
 			setattr(self, scheduled_attr, True)
-			ExtScheduler().add_new_object(Callback(self._update_gold, True), self, run_in=0.2)
+			ExtScheduler().add_new_object(Callback(self._update_gold, True), self, run_in=0.02)
 			return
 		elif not force:
 			return # these calls we want to suppress, wait for scheduled call
