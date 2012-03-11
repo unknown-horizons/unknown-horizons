@@ -1,7 +1,7 @@
 id: 6
 name: _ Signal Fire
 baseclass: building.DefaultBuilding
-radius: 10
+radius: 13
 cost: 0
 cost_inactive: 0
 size_x: 1
