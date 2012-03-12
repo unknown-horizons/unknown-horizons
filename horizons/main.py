@@ -248,17 +248,6 @@ def start(_command_line_arguments):
 def quit():
 	"""Quits the game"""
 	global fife
-	if _modules.session is not None and _modules.session.is_alive:
-		try:
-			_modules.session.end()
-		except Exception as e:
-			# if we're in a non-valid state, this code might be reached
-			# give a nice error message instead of just randomly crashing
-			traceback.print_exc()
-			print
-			print "Fatal error on shutdown. Please report in case you haven't been fumbling with internals."
-	preload_game_join(preloading)
-	ExtScheduler.destroy_instance()
 	fife.quit()
 
 def start_singleplayer(map_file, playername = "Player", playercolor = None, is_scenario = False, \
