@@ -8,6 +8,9 @@ events:
    - {type: message, arguments: ["Build a warehouse at the coast, so it is easy accessible for other ships like the Free Trader."]}
    - type: logbook
      arguments:
+     - "\n\n\n"
+     - [Gallery, ["content/gfx/uh.png"]]
+     - [Pagebreak]
      - [Headline, "Welcome to Unknown Horizons!"]
      - [Image, "content/gui/images/background/hr.png"]
      - |
@@ -23,6 +26,8 @@ events:
        Visit www.unknown-horizons.org for help on how to contact the team!
 
        And now, let's start the actual game.
+     - [Pagebreak]
+     - "" # empty page for better alignment of later messages
      - [Pagebreak]
      - [Headline, "NEW TASK: SETTLE ON AN ISLAND"]
      - [Image, "content/gui/images/background/hr.png"]
