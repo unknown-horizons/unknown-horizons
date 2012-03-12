@@ -167,7 +167,7 @@ class LogBook(PickBeltWidget):
 	def parse_logbook_item(self, widget):
 		# json.loads() returns unicode, thus convert strings and compare to unicode
 		# Image works with str() since pychan can only use str objects as file path
-		if widget[0]:
+		if widget and widget[0]: # allow empty Labels
 			widget_type = unicode(widget[0])
 		if isinstance(widget, basestring):
 			add = Label(text=unicode(widget), wrap_text=True, max_size=(340,508))
@@ -225,10 +225,14 @@ class LogBook(PickBeltWidget):
 			self._widgets.append(widget_list)
 			for widget_definition in widget_list:
 				self.parse_logbook_item(widget_definition)
-		if len(self._widgets) % 2 == 1:
-			self._cur_entry = len(self._widgets) - 1
-		else:
-			self._cur_entry = len(self._widgets) - 2
+		# if a new entry contains more than one page, we want to display the first
+		# unread message. note that len(widgets) starts at 1 and _cur_entry at 0.
+		# position always refers to the left page, so only multiples of 2 are valid
+		len_old = len(self._widgets) - len(_split_on_pagebreaks(widgets))
+		if len_old % 2 == 1: # uneven amount => empty last page, space for 1 new
+			self._cur_entry = len_old - 1
+		else: # even amount => all pages filled. we could display two new messages
+			self._cur_entry = len_old
 		if show_logbook and hasattr(self, "_gui"):
 			self._redraw_captainslog()
 			self.show()
