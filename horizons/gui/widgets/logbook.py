@@ -167,7 +167,7 @@ class LogBook(PickBeltWidget):
 	def parse_logbook_item(self, widget):
 		# json.loads() returns unicode, thus convert strings and compare to unicode
 		# Image works with str() since pychan can only use str objects as file path
-		if widget[0]:
+		if widget and widget[0]: # allow empty Labels
 			widget_type = unicode(widget[0])
 		if isinstance(widget, basestring):
 			add = Label(text=unicode(widget), wrap_text=True, max_size=(340,508))
