@@ -209,7 +209,7 @@ def start(_command_line_arguments):
 	elif command_line_arguments.stringpreview:
 		tiny = [ i for i in SavegameManager.get_maps()[0] if 'tiny' in i ]
 		if not tiny:
-			SavegameManager.get_map()[0]
+			tiny = SavegameManager.get_map()[0]
 		startup_worked = _start_map(tiny[0], ai_players=0, human_ai=False, trader_enabled=False, pirate_enabled=False, \
 			force_player_id=command_line_arguments.force_player_id)
 		from development.stringpreviewwidget import StringPreviewWidget
