@@ -37,6 +37,7 @@ import os
 import os.path
 import gettext
 import time
+import functools
 import locale
 import logging
 import logging.config
@@ -190,26 +191,21 @@ def excepthook_creator(outfilename):
 		print _('Please give it to us via IRC or our forum, for both see http://unknown-horizons.org .')
 	return excepthook
 
-def exithandler(signum, frame):
+def exithandler(exitcode, signum, frame):
 	"""Handles a kill quietly"""
 	signal.signal(signal.SIGINT, signal.SIG_IGN)
 	signal.signal(signal.SIGTERM, signal.SIG_IGN)
-	try:
-		import horizons.main
-		horizons.main.quit()
-	except ImportError:
-		pass
 	print
 	print 'Oh my god! They killed UH.'
 	print 'You bastards!'
 	if logfile:
 		logfile.close()
-	sys.exit(1)
+	sys.exit(exitcode)
 
 def main():
 	# abort silently on signal
-	signal.signal(signal.SIGINT, exithandler)
-	signal.signal(signal.SIGTERM, exithandler)
+	signal.signal(signal.SIGINT, functools.partial(exithandler, 130))
+	signal.signal(signal.SIGTERM, functools.partial(exithandler, 1))
 
 	# use locale-specific time.strftime handling
 	locale.setlocale(locale.LC_TIME, '')
