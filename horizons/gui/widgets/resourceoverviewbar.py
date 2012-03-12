@@ -139,6 +139,9 @@ class ResourceOverviewBar(object):
 
 		self.set_inventory_instance(None)
 
+	def redraw(self):
+		self.set_inventory_instance(self.current_instance(), force_update=True)
+
 	def set_inventory_instance(self, instance, keep_construction_mode=False, force_update=False):
 		"""Display different inventory. May change resources that are displayed"""
 		if self.current_instance() is instance and not self.construction_mode and not force_update:
@@ -358,7 +361,33 @@ class ResourceOverviewBar(object):
 		dlg.position = (cur_gui.position[0] + background_icon.position[0],
 		                cur_gui.position[1] + background_icon.position[1] + background_icon.size[1] )
 		dlg.findChild(name="make_default_btn").capture(self._make_configuration_default)
-		dlg.findChild(name="reset_default_btn").capture(Callback(self._make_configuration_default, reset=True))
+		reset_default_btn = dlg.findChild(name="reset_default_btn")
+		# this is a quadruple-use button.
+		# If there is no user set default, restore to factory default
+		# If the current config is different from user default, set to default
+		# If this is the current user set config, remove user set config and fall back to factory default
+		# If there is no user set config and the current config is the system default,
+		# the button should be disabled, but the first case below is shown because
+		# we can't disable it
+		if self._custom_default_resources is None:
+			reset_default_btn.text = _("Reset to default")
+			reset_default_btn.helptext = _("Reset this configuration to the factory default.")
+			reset_default_btn.capture(Callback(self._drop_settlement_resource_configuration))
+
+		elif self._custom_default_resources != self._get_current_resources():
+			reset_default_btn.text = _("Reset to default")
+			reset_default_btn.helptext = _("Reset this settlements' displayed resources to the default configuration you have saved.")
+			reset_default_btn.capture(Callback(self._drop_settlement_resource_configuration))
+
+		else:
+			reset_default_btn.text = _("Reset to factory")
+			reset_default_btn.helptext = _("Reset the default configuration (which you see here) to the factory default for all settlements.")
+			cb = Callback.ChainedCallbacks(
+			  self._drop_settlement_resource_configuration, # remove specific config
+			  Callback(self._make_configuration_default, reset=True) # remove global config
+			)
+			reset_default_btn.capture( cb )
+
 		dlg.show()
 		self._res_selection_dialog = dlg
 
@@ -373,7 +402,13 @@ class ResourceOverviewBar(object):
 		self._update_default_configuration()
 		AmbientSoundComponent.play_special("success")
 		if reset: # in the other case, it's already set
-			self.set_inventory_instance(self.current_instance(), force_update=True)
+			self.redraw()
+
+	def _drop_settlement_resource_configuration(self):
+		"""Forget resource configuration for a settlement"""
+		if self.current_instance() in self.resource_configurations:
+			del self.resource_configurations[self.current_instance()]
+		self.redraw()
 
 	def _set_resource_slot(self, slot_num, res_id):
 		"""Show res_id in slot slot_num
@@ -398,7 +433,7 @@ class ResourceOverviewBar(object):
 
 		self.resource_configurations[self.current_instance()] = res_copy
 
-		self.set_inventory_instance(self.current_instance(), force_update=True)
+		self.redraw()
 
 		if isinstance(self.session.cursor, ResBarMouseTool):
 			self.session.cursor.reset()
@@ -417,11 +452,11 @@ class ResourceOverviewBar(object):
 		if self._do_show_dummy:
 			return # already visible
 		self._do_show_dummy = True
-		self.set_inventory_instance(self.current_instance(), force_update=True)
+		self.redraw()
 
 	def _hide_dummy_slot(self):
 		self._do_show_dummy = False
-		self.set_inventory_instance(self.current_instance(), force_update=True)
+		self.redraw()
 
 	def _on_res_slot_click(self, widget, event):
 		"""Called when you click on a resource slot in the bar (not the selection dialog)"""
