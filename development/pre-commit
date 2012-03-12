@@ -110,7 +110,6 @@ for fname in files_modified:
 					if not found_re:
 						print >>sys.stderr, "\rChecking for '%s' on %s:" % (r, fname), bcolors.FAIL, "FAILED!", bcolors.ENDC
 						found_re = True
-					index = output.index(line)
 					if i > 0:
 						print "\t", output[i-1]
 					print "\t", bcolors.FAIL, line, bcolors.ENDC
