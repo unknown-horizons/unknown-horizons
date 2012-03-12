@@ -372,7 +372,7 @@ class ResourceOverviewBar(object):
 		horizons.main.fife.save_settings()
 		self._update_default_configuration()
 		AmbientSoundComponent.play_special("success")
-		if reset:
+		if reset: # in the other case, it's already set
 			self.set_inventory_instance(self.current_instance(), force_update=True)
 
 	def _set_resource_slot(self, slot_num, res_id):
