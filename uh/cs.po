@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2012-03-02 04:09+0100\n"
-"PO-Revision-Date: 2012-03-13 20:18+0200\n"
+"PO-Revision-Date: 2012-03-13 21:40+0200\n"
 "Last-Translator: VMa <VaclavMacurek@seznam.cz>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: cs\n"
@@ -867,7 +867,7 @@ msgstr "Tato hra chybí (klikněte zde)"
 
 #: horizons/gui/modules/multiplayermenu.py:208
 msgid "For multiplayer load, it is currently necessary for you to ensure you have the correct savegame file."
-msgstr ""
+msgstr "Pro načtení v módu multiplayeru je nutné mít správnou hru."
 
 #: horizons/gui/modules/multiplayermenu.py:209
 msgid "This is not nice and we hope to offer a more convenient solution very soon."
