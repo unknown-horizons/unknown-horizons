@@ -21,7 +21,7 @@
 
 from fife.extensions import pychan
 
-from fife.extensions.pychan.widgets import ImageButton
+from fife.extensions.pychan import widgets
 
 from horizons.util import Callback
 from horizons.util.gui import get_res_icon
@@ -87,7 +87,7 @@ class ImageFillStatusButton(pychan.widgets.Container):
 		# hash buttons by creation function call
 		# NOTE: there may be problems with multiple buttons with the same
 		# images and helptext at the same time
-		create_btn = Callback(ImageButton, up_image=self.up_image,
+		create_btn = Callback(widgets.WIDGETS['ImageButton'], up_image=self.up_image,
 		                      down_image=self.down_image, hover_image=self.hover_image,
 		                      helptext=self.helptext)
 		self.button = None
