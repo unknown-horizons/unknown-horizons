@@ -86,7 +86,8 @@ class StatusIconManager(object):
 
 		#rel = fife.Point(8, -8) # TODO: find suitable place within instance
 		# NOTE: rel is interpreted as pixel offset on screen
-		node = fife.RendererNode(instance.fife_instance, rel)
+		#node = fife.RendererNode(instance.fife_instance, rel)
+
 		layer = self.session.view.layers[LAYERS.OBJECTS]
 
 		pos = instance.position
