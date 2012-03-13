@@ -376,7 +376,7 @@ class ResourceOverviewBar(object):
 
 		elif self._custom_default_resources != self._get_current_resources():
 			reset_default_btn.text = _("Reset to default")
-			reset_default_btn.helptext = _("Reset this settlements' displayed resources to the default configuration you have saved.")
+			reset_default_btn.helptext = _("Reset this settlement's displayed resources to the default configuration you have saved.")
 			reset_default_btn.capture(Callback(self._drop_settlement_resource_configuration))
 
 		else:
