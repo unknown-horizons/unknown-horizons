@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2012-03-02 04:09+0100\n"
-"PO-Revision-Date: 2012-03-13 19:32+0200\n"
+"PO-Revision-Date: 2012-03-13 19:45+0200\n"
 "Last-Translator: VMa <VaclavMacurek@seznam.cz>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: cs\n"
@@ -513,7 +513,7 @@ msgstr "Chybné jméno souboru."
 
 #: horizons/command/game.py:37
 msgid "Received an invalid filename for a save command."
-msgstr ""
+msgstr "Chybné jméno souboru pro uložení."
 
 #. There was a problem during the 'save game' procedure.
 #: horizons/command/game.py:47 horizons/gui/gui.py:177
@@ -525,7 +525,7 @@ msgstr "Chyba"
 
 #: horizons/command/game.py:47 horizons/gui/gui.py:177
 msgid "Failed to save."
-msgstr "Nepodařilo se uložit."
+msgstr "Uložení se nezdařilo."
 
 #: horizons/engine/settingsdialog.py:50
 msgid "Restart required"
@@ -541,11 +541,11 @@ msgstr "Obnovit původní nastavení"
 
 #: horizons/engine/settingsdialog.py:56
 msgid "Restoring the default settings will delete all changes to the settings you made so far."
-msgstr ""
+msgstr "Obnovení původního nastavení zruší veškerá Vaše nastavení."
 
 #: horizons/engine/settingsdialog.py:57
 msgid "Do you want to continue?"
-msgstr "Chceš pokračovat?"
+msgstr "Chcete pokračovat?"
 
 #: horizons/engine/settingshandler.py:136
 msgid "Warning"
@@ -558,10 +558,9 @@ msgid ""
 "\n"
 "Use at own risk!"
 msgstr ""
-"SDL vykreslování je určeno pouze jako náhradní řešení a má vážné grafické "
-"chyby. \n"
+"V SDL vykreslování jsou vážné chyby je určeno pouze jako náhradní řešení. \n"
 "\n"
-"Použití na vlastní riziko!"
+"Použití na vlastní nebezpečí!"
 
 #: horizons/engine/settingshandler.py:212
 msgid "Invalid network port"
@@ -593,9 +592,8 @@ msgstr "Síť nemůže být inicializována s aktuálním nastavením."
 # 75%
 #: horizons/engine/settingshandler.py:228
 #: horizons/gui/modules/multiplayermenu.py:56
-#, fuzzy
 msgid "Check the settings you specified in the network section."
-msgstr "Zkontrolujte nastavení, které jste zadali v nastavení sítě."
+msgstr "Zkontrolujte nastavení sítě."
 
 #. i18n This is advice for players seeing a network error with the current config
 #: horizons/engine/settingshandler.py:232
@@ -610,7 +608,7 @@ msgstr ""
 #: horizons/engine/settingshandler.py:262
 #, python-format
 msgid "Configured language {lang} could not be loaded"
-msgstr "Nastavený jazyk {lang} neleze načíst"
+msgstr "Jazyk {lang} nelze načíst"
 
 #: horizons/gui/gui.py:204
 msgid "Are you sure you want to quit Unknown Horizons?"
