@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: translate-uh@lists.unknown-horizons.org\n"
 "POT-Creation-Date: 2012-03-13 16:25+0100\n"
-"PO-Revision-Date: 2012-02-05 11:32+0200\n"
+"PO-Revision-Date: 2012-03-06 18:13+0200\n"
 "Last-Translator: Christopher Oelmueller <chris.oelmueller+uh@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: et\n"
@@ -1036,10 +1036,13 @@ msgstr ""
 msgid "Build at least one pasture and add potato fields if you like."
 msgstr ""
 
+# 79%
+# 75%
 #. This is a logbook page heading. Space is VERY short, please only translate to strings that fit (roughly 30 characters max).
 #: po/tutorial.py:310
+#, fuzzy
 msgid "NEW TASK: BUILD STORAGE"
-msgstr ""
+msgstr "ÜLESANNE: EHITA FARM"
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:312
@@ -1126,10 +1129,12 @@ msgstr ""
 msgid "Build a storage tent (increment I tab) where it makes sense."
 msgstr ""
 
+# 79%
 #. This is a logbook page heading. Space is VERY short, please only translate to strings that fit (roughly 30 characters max).
 #: po/tutorial.py:336
+#, fuzzy
 msgid "NEW TASK: BUILD A WEAVER"
-msgstr ""
+msgstr "ÜLESANNE: EHITA FARM"
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:338

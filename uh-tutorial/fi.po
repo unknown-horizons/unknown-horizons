@@ -7,8 +7,8 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: translate-uh@lists.unknown-horizons.org\n"
 "POT-Creation-Date: 2012-03-13 16:25+0100\n"
-"PO-Revision-Date: 2012-01-04 21:34+0200\n"
-"Last-Translator: Aleksi <aleksi.kinnunen@ovi.com>\n"
+"PO-Revision-Date: 2012-03-06 18:11+0200\n"
+"Last-Translator: Christopher Oelmueller <chris.oelmueller+uh@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: fi\n"
 "MIME-Version: 1.0\n"
@@ -595,12 +595,14 @@ msgid ""
 "explain this once you are ready to trade."
 msgstr ""
 
+# 89%
 #. This is the text body of a logbook page.
 #: po/tutorial.py:178
+#, fuzzy
 msgid ""
 "\n"
 "TASK: Build a signal fire at the coast close to your warehouse."
-msgstr ""
+msgstr "Rakenna merkkituli rannikolle sivutoimistosi lähettyville."
 
 #. This message is displayed in the widget on the left screen part. Please keep it short enough to fit there!
 #: po/tutorial.py:180
@@ -1263,8 +1265,10 @@ msgstr ""
 msgid "Thanks!"
 msgstr "Suuret kiitokset!"
 
+# 96%
 #. This is the text body of a logbook page.
 #: po/tutorial.py:368
+#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -1275,6 +1279,17 @@ msgid ""
 "\n"
 "Your UH-Team"
 msgstr ""
+"\n"
+"\n"
+"\n"
+"\n"
+"\n"
+"\n"
+"\n"
+"Kiitos, että pelasit tätä harjoituspeliä!\n"
+"\n"
+"Terveisin,\n"
+"Unknown Horizonsin kehittäjät"
 
 #. This message is displayed in the widget on the left screen part. Please keep it short enough to fit there!
 #: po/tutorial.py:370
