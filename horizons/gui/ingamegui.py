@@ -401,6 +401,13 @@ class IngameGui(LivingObject):
 		newname = changename.findChild(name='new_name')
 		changename.mapEvents(events)
 		newname.capture(Callback(self.change_name, instance))
+
+		def forward_escape(event):
+			# the textfield will eat everything, even control events
+			if event.getKey().getValue() == fife.Key.ESCAPE:
+				self.main_gui.on_escape()
+		newname.capture( forward_escape, "keyPressed" )
+
 		changename.show()
 		newname.requestFocus()
 
