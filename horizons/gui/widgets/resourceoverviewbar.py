@@ -36,6 +36,7 @@ from horizons.util.python.decorators import cachedmethod
 from horizons.util.messaging.message import ResourceBarResize
 from horizons.extscheduler import ExtScheduler
 from horizons.world.component.ambientsoundcomponent import AmbientSoundComponent
+from horizons.util.lastactiveplayersettlementmanager import LastActivePlayerSettlementManager
 
 
 class ResourceOverviewBar(object):
@@ -204,6 +205,10 @@ class ResourceOverviewBar(object):
 		@param resource_source_instance: object with StorageComponent
 		@param build_costs: dict, { res : amount }
 		"""
+		if resource_source_instance is None:
+			# Build moved out of settlement. This is usually not sane and an interaction error.
+			# Use this heuristically computed settlement to fix preconditions.
+			resource_source_instance = LastActivePlayerSettlementManager().get()
 		if self.construction_mode and \
 		   resource_source_instance == self.current_instance() and \
 		   build_costs == self._last_build_costs:
