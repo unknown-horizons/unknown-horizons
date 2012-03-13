@@ -85,23 +85,34 @@ for event in scenario['events']:
 		elif at == 'message':
 			comment = COMMENT_MESSAGEWIDGET
 			for argument in action['arguments']:
-				if isinstance(argument, int):
+				if isinstance(argument, int) or not argument:
+					# ignore strings that only consist of newlines
 					continue
 				argument = prep(argument)
 				write(comment, argument)
 		elif at == 'logbook':
 			for widget_def in action['arguments']:
 				if isinstance(widget_def, basestring):
-					comment = COMMENT_TEXT
-					widget = prep(widget_def.rstrip('\n'))
-				elif widget_def[0] in ('Image', 'Gallery', 'Pagebreak'):
-					continue
-				elif widget_def[0] == 'Label':
-					comment = COMMENT_TEXT
-					widget = prep(widget_def[1].rstrip('\n'))
+					content = widget_def.rstrip('\n')
+					# ignore strings that only consist of newlines
+					if content:
+						comment = COMMENT_TEXT
+						widget = prep(content)
+					else:
+						continue
+				elif widget_def[0] == 'Label' and widget_def[1]:
+					content = widget_def[1].rstrip('\n')
+					# ignore strings that only consist of newlines
+					if content:
+						comment = COMMENT_TEXT
+						widget = prep(content)
+					else:
+						continue
 				elif widget_def[0] == 'Headline':
 					comment = COMMENT_HEADING
 					widget = prep(widget_def[1].rstrip('\n'))
+				elif widget_def[0] in ('Image', 'Gallery', 'Pagebreak'):
+					continue
 				write(comment, widget)
 END
 
