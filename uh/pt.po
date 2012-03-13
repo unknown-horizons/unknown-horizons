@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2012-03-02 04:09+0100\n"
-"PO-Revision-Date: 2012-01-10 14:58+0200\n"
+"PO-Revision-Date: 2012-03-13 14:01+0200\n"
 "Last-Translator: Sérgio <knitter.is@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: pt\n"
@@ -21,14 +21,13 @@ msgstr ""
 #: database files sql
 #, python-format
 msgid "A new settlement was founded by {player}."
-msgstr ""
+msgstr "Uma nova povoação foi fundada por {player}."
 
 # 82%
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
-#, fuzzy
 msgid "A new ship has been created."
-msgstr "Um novo mundo foi criado."
+msgstr "Foi criado um novo navio."
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
@@ -38,7 +37,7 @@ msgstr "Um novo mundo foi criado."
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
 msgid "Cannot go here."
-msgstr ""
+msgstr "Não é possível chegar ao destino."
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
