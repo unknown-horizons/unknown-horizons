@@ -486,7 +486,7 @@ msgstr ""
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
-#, python-format, fuzzy
+#, python-format, 
 msgid "{player1} and {player2} have settled their hostility."
 msgstr "{player1} et {player2} ont lancé les hostilités."
 
@@ -2002,7 +2002,6 @@ msgstr "Reprendre la production"
 # 94%
 #. (text of widget: headline) Please keep the translation similarly short and concise, else the tooltip is not well understood by players.
 #: horizons/i18n/guitranslations.py:566
-#, fuzzy
 msgid "Select resource:"
 msgstr "Sélectionner les ressources :"
 
