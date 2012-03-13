@@ -7,8 +7,8 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2012-03-02 04:09+0100\n"
-"PO-Revision-Date: 2012-02-06 11:27+0200\n"
-"Last-Translator: naked.in.rain <martin.mezl@gmail.com>\n"
+"PO-Revision-Date: 2012-03-13 18:20+0200\n"
+"Last-Translator: VMa <VaclavMacurek@seznam.cz>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: cs\n"
 "MIME-Version: 1.0\n"
@@ -28,9 +28,8 @@ msgstr "{player} založil novou osadu."
 # 82%
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
-#, fuzzy
 msgid "A new ship has been created."
-msgstr "Byl vytvořen nový svět."
+msgstr "Postavena nová loď."
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
@@ -40,7 +39,7 @@ msgstr "Byl vytvořen nový svět."
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
 msgid "Cannot go here."
-msgstr ""
+msgstr "Místo je nedostupné."
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
@@ -62,31 +61,32 @@ msgstr "Někteří Vaši obyvatelé nemají přístup k hlavnímu náměstí."
 # 77%
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
-#, fuzzy
 msgid "Some of your inhabitants just moved out."
-msgstr "Někteří osadníci se odstěhovali."
+msgstr "Někteří z Vašich osadníků se odstěhovali."
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
 msgid "The route is now configured. Start it via the \"start route\" button in the \"configure route\" menu."
 msgstr ""
+"Obchodní cesta je připravena. Začněte jí tlačítkem \"Započít cestu\" v menu "
+"\"Nastavení cesty\"."
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
 msgid "You can also drag roads."
-msgstr "Můžeš také položit cesty."
+msgstr "Cestu je možné postavit i tažením myší."
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
 msgid "You cannot tear the warehouse, your settlements needs it."
-msgstr ""
+msgstr "Sklad není možné zbourat. Vaši osádníci jej potřebují."
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
 msgid "You have reached the current maximum increment. Your inhabitants will not upgrade further."
 msgstr ""
-"Dosáhli jste aktuálního maximálního přírůstku. Vaši obyvatelé se nebudou "
-"dále zdokonalovat."
+"Dosáhli jste aktuálního maximální úrovně. Vaši obyvatelé se nebudou dále "
+"zdokonalovat."
 
 # 97%
 #. This is a database entry: a messagewidget message (left part of the screen).
@@ -103,7 +103,7 @@ msgstr "Vyhráli jste!"
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
 msgid "Your crew refuses to leave this map."
-msgstr ""
+msgstr "Vaši lidé odmítají opustit mapu."
 
 # automatic save
 #. This is a database entry: a messagewidget message (left part of the screen).
