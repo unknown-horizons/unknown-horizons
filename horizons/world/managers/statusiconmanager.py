@@ -23,6 +23,7 @@ import horizons.main
 
 from fife import fife
 from horizons.world.status import StatusIcon
+from horizons.constants import LAYERS
 
 from horizons.util.messaging.message import AddStatusIcon, RemoveStatusIcon, RemoveAllStatusIcons
 
@@ -83,9 +84,23 @@ class StatusIconManager(object):
 		# Clean icons
 		self.renderer.removeAll(status_string)
 
-		rel = fife.Point(8, -8) # TODO: find suitable place within instance
+		#rel = fife.Point(8, -8) # TODO: find suitable place within instance
 		# NOTE: rel is interpreted as pixel offset on screen
 		node = fife.RendererNode(instance.fife_instance, rel)
+		layer = self.session.view.layers[LAYERS.OBJECTS]
+
+		pos = instance.position
+
+		# trial and error has brought me to this
+		loc = fife.Location(layer)
+		loc.setExactLayerCoordinates(
+		  fife.ExactModelCoordinate(
+		    pos.origin.x + float(pos.width) / 4,
+		    pos.origin.y + float(pos.height) / 4,
+		    )
+		  )
+
+		node = fife.RendererNode(loc)
 
 		try: # to load an animation
 			anim = horizons.main.fife.animationloader.loadResource(status.icon)
