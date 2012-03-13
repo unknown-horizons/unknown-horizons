@@ -19,14 +19,14 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-from fife.extensions import pychan
-
 from horizons.entities import Entities
 from horizons.gui.tabs.tabinterface import TabInterface
 from horizons.command.building import Build
 from horizons.util import Callback
 from horizons.util.lastactiveplayersettlementmanager import LastActivePlayerSettlementManager
 from horizons.util.python.roman_numerals import int_to_roman
+from horizons.world.component.storagecomponent import StorageComponent
+from horizons.util.messaging.message import LastSettlementChanged
 
 class BuildTab(TabInterface):
 	"""
@@ -130,25 +130,25 @@ class BuildTab(TabInterface):
 
 		self.helptext = _("Increment {increment}").format(increment = int_to_roman(tabindex))
 
-		self.init_gui(self.tabindex)
+		self.init_gui()
+		self.__current_settlement = None
 
-	def init_gui(self, tabindex):
+	def init_gui(self):
 		headline_lbl = self.widget.child_finder('headline')
 		#i18n In English, this is Sailors, Pioneers, Settlers.
 		#TODO what formatting to use? getting names from DB and adding
 		# '... buildings' will cause wrong declinations all over :/
 		headline_lbl.text = _('{incr_inhabitant_name}').format(incr_inhabitant_name='Sailors') #xgettext:python-format
 
-		self.update_images(tabindex)
-		self.update_text(tabindex)
+		self.refresh()
 
-	def update_images(self, tabindex):
+	def update_images(self):
 		"""Shows background images and building icons where defined
 		(columns as follows, left to right):
 		# 1,3,5,7.. | 2,4,6,8.. | 21,23,25,27.. | 22,24,26,28..
 		"""
 		settlement = LastActivePlayerSettlementManager().get()
-		for position, building_id in self.__class__.image_data[tabindex].iteritems():
+		for position, building_id in self.__class__.image_data[self.tabindex].iteritems():
 			button = self.widget.child_finder('button_{position}'.format(position=position))
 			building = Entities.buildings[building_id]
 
@@ -158,8 +158,8 @@ class BuildTab(TabInterface):
 			button.helptext = _('{building}: {description}').format(building = _(building.name),
 			                                                    description = _(building.tooltip_text))
 
-			enough_res = True # show all buildings by default
-			if settlement is not None: # settlement is None when the mouse has never hovered over a settlement
+			enough_res = False # don't show building by default
+			if settlement is not None: # settlement is None when the mouse has left the settlement
 				res_overview =  self.session.ingame_gui.resource_overview
 				cbs = ( Callback( res_overview.set_construction_mode, settlement, building.costs),
 				       Callback( res_overview.close_construction_mode ) )
@@ -187,20 +187,41 @@ class BuildTab(TabInterface):
 
 			button.capture(self.callback_mapping[building_id])
 
-	def update_text(self, tabindex):
+	def update_text(self):
 		"""Shows labels where defined (1-7 left column, 20-27 right column).
 		Separated from actual build menu because called on language update.
 		"""
-		for position, heading in self.__class__.text_data[tabindex].iteritems():
+		for position, heading in self.__class__.text_data[self.tabindex].iteritems():
 			lbl = self.widget.child_finder('label_{position}'.format(position=position))
 			lbl.text = _(heading)
 
 	def refresh(self):
-		pass
+		self.update_images()
+		self.update_text()
+
+	def on_settlement_change(self, message):
+		self.refresh()
+
+	def __remove_changelisteners(self):
+		self.session.message_bus.discard_globally(LastSettlementChanged, self.on_settlement_change)
+		if self.__current_settlement is not None:
+			inventory = self.__current_settlement.get_component(StorageComponent).inventory
+			inventory.discard_change_listener(self.refresh)
+
+	def __add_changelisteners(self):
+		self.session.message_bus.subscribe_globally(LastSettlementChanged, self.on_settlement_change)
+		if self.__current_settlement is not None:
+			inventory = self.__current_settlement.get_component(StorageComponent).inventory
+			if not inventory.has_change_listener(self.refresh):
+				inventory.add_change_listener(self.refresh)
 
 	def show(self):
+		self.__remove_changelisteners()
+		self.__current_settlement = LastActivePlayerSettlementManager().get()
+		self.__add_changelisteners()
 		self.__class__.last_active_build_tab = self.tabindex - 1 # build tabs start at 1
 		super(BuildTab, self).show()
 
 	def hide(self):
+		self.__remove_changelisteners()
 		super(BuildTab, self).hide()

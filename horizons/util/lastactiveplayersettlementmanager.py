@@ -23,6 +23,7 @@ import weakref
 
 from horizons.util.python import ManualConstructionSingleton
 from horizons.util import Point
+from horizons.util.messaging.message import LastSettlementChanged
 
 class LastActivePlayerSettlementManager(object):
 	"""Keeps track of the last active (hovered over) player's settlement.
@@ -47,19 +48,24 @@ class LastActivePlayerSettlementManager(object):
 		"""Update to new world position. Sets internal state to new settlement or no settlement"""
 		settlement = self.session.world.get_settlement(Point(int(round(current.x)), int(round(current.y))))
 
-		self._settlement = weakref.ref(settlement) if \
+		new_settlement = weakref.ref(settlement) if \
 		  settlement and settlement.owner.is_local_player else None
 
-		# set cityinfo for any settlement
-		self.session.ingame_gui.cityinfo_set(settlement)
+		if self.get() is not (new_settlement() if new_settlement else new_settlement):
+			self._settlement = new_settlement
+			self.session.message_bus.broadcast(LastSettlementChanged(self))
 
-		# set res info only if it's a player settlement
-		self.session.ingame_gui.resource_overview.set_inventory_instance( self.get() )
+
+			# set cityinfo for any settlement
+			self.session.ingame_gui.cityinfo_set(settlement)
+
+			# set res info only if it's a player settlement
+			self.session.ingame_gui.resource_overview.set_inventory_instance(settlement)
 
 	def get(self):
 		"""The last settlement belonging to the player the mouse has hovered above"""
 		ref = self._settlement
-		if ref is not None and ref() is not None: # weakref
+		if ref is not None: # weakref
 			return ref()
 		else:
 			return None

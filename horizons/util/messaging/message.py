@@ -80,3 +80,7 @@ class WorldObjectDeleted(Message):
 	Currently emitted in the process of destruction, i.e. you aren't guaranteed to be able to access any attributes. (Feel free to change the implementation if you need this).
 	"""
 	arguments = ('worldid', )
+
+
+class LastSettlementChanged(Message):
+	"""Sent when the ListActiveSettlementManager changes its last selected settlement"""

@@ -53,6 +53,10 @@ class MessageBus(object):
 		assert callback in self.local_receivers[pair]
 		self.local_receivers[pair].remove(callback)
 
+	def discard_globally(self, messagetype, callback):
+		if callback in self.global_receivers[messagetype]:
+			self.unsubscribe_globally(messagetype, callback)
+
 	def broadcast(self, message):
 		"""Send a message to the bus and broadcast it to all recipients"""
 		messagetype = message.__class__
