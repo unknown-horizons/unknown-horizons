@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2012-03-02 04:09+0100\n"
-"PO-Revision-Date: 2012-03-13 20:06+0200\n"
+"PO-Revision-Date: 2012-03-13 20:18+0200\n"
 "Last-Translator: VMa <VaclavMacurek@seznam.cz>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: cs\n"
@@ -741,17 +741,17 @@ msgstr "Nebyl vybrán žádný soubor"
 # 97%
 #: horizons/gui/gui.py:637
 msgid "You need to select a savegame to delete."
-msgstr "Potřebuješ vybrat uloženou hru pro smazání."
+msgstr "Vyberte hru ke smazání."
 
 # 84%
 #: horizons/gui/gui.py:641
 #, python-format
 msgid "Do you really want to delete the savegame '{name}'?"
-msgstr "Opravdu chceš smazat uloženou hru '{name}'?"
+msgstr "Opravdu chcete smazat hru '{name}'?"
 
 #: horizons/gui/gui.py:643
 msgid "Confirm deletion"
-msgstr "Potvrď smazání"
+msgstr "Potvrďte smazání"
 
 #: horizons/gui/gui.py:648
 msgid "Error!"
@@ -781,21 +781,21 @@ msgstr "Klikněte pro změnu jména Vaší osady."
 #. this dialog is pretty useless in this case
 #: horizons/gui/ingamegui.py:272
 msgid "No diplomacy possible"
-msgstr "Není možná žádná diplomacie"
+msgstr "Diplomacie není použitelná."
 
 #: horizons/gui/ingamegui.py:273
 msgid "Cannot do diplomacy as there are no other players."
-msgstr "Nemůžete dělat diplomacii, pokud neexistují další hráči."
+msgstr "Diplomacie není možná. Neexistují další hráči."
 
 #: horizons/gui/ingamegui.py:449
 #, python-format
 msgid "Valid map names are in the following form: {expression}"
-msgstr "Platné názvy map v následující podobě: {expression}"
+msgstr "Názvy map jsou platné v následující podobě: {expression}"
 
 #: horizons/gui/ingamegui.py:451
 #, python-format
 msgid "Try a name that only contains letters and numbers."
-msgstr ""
+msgstr "Zkuste jméno, které obsahuje pouze písmena a číslice."
 
 #: horizons/gui/modules/multiplayermenu.py:43
 msgid "Unable to find pyenet"
@@ -826,7 +826,7 @@ msgstr "Fatální chyba sítě"
 
 #: horizons/gui/modules/multiplayermenu.py:117
 msgid "Could not connect to master server."
-msgstr ""
+msgstr "Spojení s hlavním serverem se nezdařilo."
 
 #: horizons/gui/modules/multiplayermenu.py:118
 msgid "Please check your Internet connection. If it is fine, it means our master server is temporarily down."
@@ -849,7 +849,7 @@ msgstr "Mapa: {map_name}"
 
 #: horizons/gui/modules/multiplayermenu.py:184
 msgid "Name: {game_name}"
-msgstr ""
+msgstr "Jméno hry: {game_name}"
 
 #: horizons/gui/modules/multiplayermenu.py:186
 #, python-format
@@ -863,7 +863,7 @@ msgstr "Stvořitel: {player}"
 
 #: horizons/gui/modules/multiplayermenu.py:202
 msgid "This savegame is missing (click here)"
-msgstr ""
+msgstr "Tato hra chybí (klikněte zde)"
 
 #: horizons/gui/modules/multiplayermenu.py:208
 msgid "For multiplayer load, it is currently necessary for you to ensure you have the correct savegame file."
