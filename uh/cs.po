@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2012-03-02 04:09+0100\n"
-"PO-Revision-Date: 2012-03-13 19:45+0200\n"
+"PO-Revision-Date: 2012-03-13 20:06+0200\n"
 "Last-Translator: VMa <VaclavMacurek@seznam.cz>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: cs\n"
@@ -612,7 +612,7 @@ msgstr "Jazyk {lang} nelze načíst"
 
 #: horizons/gui/gui.py:204
 msgid "Are you sure you want to quit Unknown Horizons?"
-msgstr "Chceš opravdu ukončit Unknown Horizons?"
+msgstr "Chcete opravdu ukončit Unknown Horizons?"
 
 #: horizons/gui/gui.py:205
 msgid "Quit Game"
@@ -620,7 +620,7 @@ msgstr "Ukončit hru"
 
 #: horizons/gui/gui.py:211
 msgid "Are you sure you want to abort the running session?"
-msgstr "Jsi si jist že chceš přerušit aktuální hru?"
+msgstr "Jste si jist s přerušením aktuální hry?"
 
 #: horizons/gui/gui.py:213
 #, fuzzy
@@ -662,7 +662,7 @@ msgstr "Zadejte prosím platný název souboru."
 #: horizons/gui/gui.py:362
 #, python-format
 msgid "A savegame with the name '{name}' already exists."
-msgstr "uložená hra s tímto názvem '{name}' již existuje."
+msgstr "Uložená hra názvem '{name}' již existuje."
 
 #: horizons/gui/gui.py:363
 msgid "Overwrite it?"
@@ -670,27 +670,27 @@ msgstr "Přepsat?"
 
 #: horizons/gui/gui.py:364
 msgid "Confirmation for overwriting"
-msgstr "Potvrď přepsání"
+msgstr "Potvrďte přepsání"
 
 #: horizons/gui/gui.py:369
 msgid "Invalid filename given"
-msgstr ""
+msgstr "Zadán neplatný název souboru."
 
 #: horizons/gui/gui.py:377
 msgid "Please select a savegame or click on cancel."
-msgstr "Prosím vyber uloženou hru nebo klikni na zrušit."
+msgstr "Prosím vyberte uloženou hru nebo klikněte na zrušit."
 
 #. ok button has been pressed, but no savegame was selected
 #: horizons/gui/gui.py:377
 msgid "Select a savegame"
-msgstr "Vyber uloženou hru"
+msgstr "Vyberte uloženou hru"
 
 #. (text of widget: scenario_details) More text describing the scenario
 #. (text of widget: headline_details_label) More text describing the savegame
 #: horizons/gui/gui.py:466 horizons/i18n/guitranslations.py:615
 #: horizons/i18n/guitranslations.py:946
 msgid "Details:"
-msgstr "Detaily:"
+msgstr "Podbrobnosti:"
 
 #: horizons/gui/gui.py:467
 msgid "Error:"
@@ -699,7 +699,7 @@ msgstr "Chyba:"
 # 94%
 #: horizons/gui/gui.py:590
 msgid "Unknown savedate"
-msgstr "Neznáme datum uložení"
+msgstr "Neznámé datum uložení"
 
 #: horizons/gui/gui.py:593
 #, python-format
@@ -712,7 +712,7 @@ msgstr "Uloženo {time}"
 msgid "Saved {amount} time"
 msgid_plural "Saved {amount} times"
 msgstr[0] "Uloženo {amount}-krát"
-msgstr[1] "Uloženo {amoutn}-krát"
+msgstr[1] "Uloženo {amount}-krát"
 msgstr[2] "Uloženo {amount}-krát"
 
 #: horizons/gui/gui.py:610
@@ -732,11 +732,11 @@ msgstr "Požadovaná verze: {required}!"
 
 #: horizons/gui/gui.py:620
 msgid "Incompatible version"
-msgstr "nekompatibilní verze"
+msgstr "Nekompatibilní verze"
 
 #: horizons/gui/gui.py:637
 msgid "No file selected"
-msgstr "Nevybrán žádný soubor"
+msgstr "Nebyl vybrán žádný soubor"
 
 # 97%
 #: horizons/gui/gui.py:637
