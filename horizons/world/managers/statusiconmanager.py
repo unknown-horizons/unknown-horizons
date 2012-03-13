@@ -84,24 +84,23 @@ class StatusIconManager(object):
 		# Clean icons
 		self.renderer.removeAll(status_string)
 
-		#rel = fife.Point(8, -8) # TODO: find suitable place within instance
-		# NOTE: rel is interpreted as pixel offset on screen
-		#node = fife.RendererNode(instance.fife_instance, rel)
+		# pixel-offset on screen (will be constant across zoom-levels)
+		rel = fife.Point(0, -30)
 
 		layer = self.session.view.layers[LAYERS.OBJECTS]
 
 		pos = instance.position
 
-		# trial and error has brought me to this
+		# trial and error has brought me to this (it's supposed to hit the center)
 		loc = fife.Location(layer)
 		loc.setExactLayerCoordinates(
 		  fife.ExactModelCoordinate(
 		    pos.origin.x + float(pos.width) / 4,
 		    pos.origin.y + float(pos.height) / 4,
-		    )
 		  )
+		)
 
-		node = fife.RendererNode(loc)
+		node = fife.RendererNode(loc, rel)
 
 		try: # to load an animation
 			anim = horizons.main.fife.animationloader.loadResource(status.icon)
