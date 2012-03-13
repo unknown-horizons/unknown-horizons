@@ -21,6 +21,7 @@
 
 import re
 import horizons.main
+from fife import fife
 
 from horizons.entities import Entities
 from horizons.util import livingProperty, LivingObject, PychanChildFinder
@@ -493,6 +494,12 @@ class IngameGui(LivingObject):
 		self.main_gui.on_escape = self._hide_chat_dialog
 
 		self.widgets['chat'].mapEvents(events)
+		def forward_escape(event):
+			# the textfield will eat everything, even control events
+			if event.getKey().getValue() == fife.Key.ESCAPE:
+				self.main_gui.on_escape()
+
+		self.widgets['chat'].findChild(name='msg').capture( forward_escape, "keyPressed" )
 		self.widgets['chat'].findChild(name='msg').capture( self._do_chat )
 		self.widgets['chat'].show()
 		self.widgets['chat'].findChild(name="msg").requestFocus()
