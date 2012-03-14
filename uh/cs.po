@@ -7,8 +7,8 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2012-03-02 04:09+0100\n"
-"PO-Revision-Date: 2012-03-13 21:40+0200\n"
-"Last-Translator: VMa <VaclavMacurek@seznam.cz>\n"
+"PO-Revision-Date: 2012-03-14 10:55+0200\n"
+"Last-Translator: Kristian <kristian.hynek@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: cs\n"
 "MIME-Version: 1.0\n"
@@ -501,7 +501,7 @@ msgstr "Hráči {player1} a {player2} začali válku na život a na smrt."
 #: database files sql
 #, python-format
 msgid "{player}: {message}"
-msgstr ""
+msgstr "{player}: {message}"
 
 #: editor/editor.py:33
 msgid "Specify the path to FIFE root directory."
@@ -882,11 +882,12 @@ msgstr ""
 #: horizons/gui/modules/multiplayermenu.py:213
 #: horizons/i18n/guitranslations.py:765 horizons/i18n/guitranslations.py:791
 msgid "Help"
-msgstr ""
+msgstr "Pomoc"
 
 #: horizons/gui/modules/multiplayermenu.py:217
+#, fuzzy
 msgid "This is a savegame."
-msgstr ""
+msgstr "Toto je uložená hra"
 
 #: horizons/gui/modules/multiplayermenu.py:240
 msgid "Wrong version"
@@ -1282,7 +1283,7 @@ msgstr ""
 #: horizons/gui/widgets/pickbeltwidget.py:92
 #: horizons/i18n/guitranslations.py:887
 msgid "Sound"
-msgstr ""
+msgstr "Zvuk"
 
 #: horizons/gui/widgets/pickbeltwidget.py:93
 #, fuzzy
@@ -3421,9 +3422,8 @@ msgid "You need to quicksave before you can quickload."
 msgstr ""
 
 #: horizons/util/checkupdates.py:70
-#, fuzzy
 msgid "New version of Unknown Horizons"
-msgstr "Děkujeme Vám za hraní Unknown Horizons!"
+msgstr "Nová verze Unknown Horizons"
 
 #: horizons/util/checkupdates.py:72
 #, python-format
@@ -3432,11 +3432,11 @@ msgstr ""
 
 #: horizons/util/checkupdates.py:76
 msgid "Click to download"
-msgstr ""
+msgstr "Klikněte pro stažení"
 
 #: horizons/util/checkupdates.py:80
 msgid "A page has been opened in your browser."
-msgstr ""
+msgstr "Stránka byla otevřena ve Vašem přohlížeči."
 
 #: horizons/world/building/buildable.py:37
 msgid "Buildings must be built on islands."
