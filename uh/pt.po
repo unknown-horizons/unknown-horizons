@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2012-03-02 04:09+0100\n"
-"PO-Revision-Date: 2012-03-14 16:01+0200\n"
+"PO-Revision-Date: 2012-03-14 15:59+0200\n"
 "Last-Translator: bdias <ebrunojdias@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: pt\n"
@@ -42,7 +42,7 @@ msgstr "Não é possível chegar ao destino."
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
 msgid "One of your fields requires a farm to harvest its crops."
-msgstr "Terminologia"
+msgstr "Uma das suas plantações requer uma quinta para a colheita."
 
 # 97%
 #. This is a database entry: a messagewidget message (left part of the screen).
@@ -441,7 +441,7 @@ msgstr "ferramentas"
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "vines"
-msgstr ""
+msgstr "videiras"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
@@ -719,7 +719,7 @@ msgstr ""
 
 #: horizons/gui/gui.py:637
 msgid "No file selected"
-msgstr "Nenhum ficheiro selecionado"
+msgstr "Nenhum ficheiro seleccionado"
 
 #: horizons/gui/gui.py:637
 msgid "You need to select a savegame to delete."
@@ -886,28 +886,28 @@ msgstr ""
 #: horizons/gui/modules/singleplayermenu.py:111
 #, python-format
 msgid "Recommended number of players: {number}"
-msgstr ""
+msgstr "Número de jogadores recomendado: {number}"
 
 #: horizons/gui/modules/singleplayermenu.py:156
 #: horizons/gui/modules/singleplayermenu.py:170
 #: horizons/gui/widgets/choose_next_scenario.py:44
 #, python-format
 msgid "Difficulty: {difficulty}"
-msgstr ""
+msgstr "Dificuldade: {difficulty}"
 
 #: horizons/gui/modules/singleplayermenu.py:158
 #: horizons/gui/modules/singleplayermenu.py:172
 #: horizons/gui/widgets/choose_next_scenario.py:45
 #, python-format
 msgid "Author: {author}"
-msgstr ""
+msgstr "Autor: {author}"
 
 #: horizons/gui/modules/singleplayermenu.py:160
 #: horizons/gui/modules/singleplayermenu.py:174
 #: horizons/gui/widgets/choose_next_scenario.py:46
 #, python-format
 msgid "Description: {desc}"
-msgstr ""
+msgstr "Descrição: {desc}"
 
 #: horizons/gui/modules/singleplayermenu.py:197
 msgid "Invalid player name"
@@ -1109,11 +1109,11 @@ msgstr "Relatório dos povoadores"
 
 #: horizons/gui/tabs/mainsquaretabs.py:199
 msgid "Don't allow upgrades"
-msgstr "Não permitir melhoramentos"
+msgstr "Não permitir melhorias"
 
 #: horizons/gui/tabs/mainsquaretabs.py:202
 msgid "Allow upgrades"
-msgstr "Permitir melhoramentos"
+msgstr "Permitir melhorias"
 
 #. (text of widget: headline)
 #: horizons/gui/tabs/mainsquaretabs.py:228
@@ -1219,20 +1219,21 @@ msgstr "Relatório de produção"
 msgid "Selected Units"
 msgstr "Unidades Seleccionadas"
 
+# slot context?
 #: horizons/gui/widgets/buysellinventory.py:83
 #: horizons/gui/widgets/inventory.py:115
 #, python-format
 msgid "Limit: {amount}t per slot"
-msgstr ""
+msgstr "Limite: {amount}t por slot"
 
 #: horizons/gui/widgets/logbook.py:41
 msgid "Logbook"
-msgstr ""
+msgstr "Diário de bordo"
 
 #. (text of widget: headline_statistics)
 #: horizons/gui/widgets/logbook.py:42 horizons/i18n/guitranslations.py:586
 msgid "Statistics"
-msgstr ""
+msgstr "Estatísticas"
 
 #. (text of widget: headline)
 #. (text of widget: headline_chat)
@@ -1572,7 +1573,7 @@ msgstr "Dinheiro"
 #. (tooltip of widget: costs_003)
 #: horizons/i18n/guitranslations.py:164 horizons/i18n/guitranslations.py:181
 msgid "Cloth"
-msgstr ""
+msgstr "tecido"
 
 #. (tooltip of widget: costs_004)
 #: horizons/i18n/guitranslations.py:166 horizons/i18n/guitranslations.py:183

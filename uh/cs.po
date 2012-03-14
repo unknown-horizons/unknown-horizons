@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2012-03-02 04:09+0100\n"
-"PO-Revision-Date: 2012-03-14 15:41+0200\n"
+"PO-Revision-Date: 2012-03-14 16:38+0200\n"
 "Last-Translator: VMa <VaclavMacurek@seznam.cz>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: cs\n"
@@ -1089,22 +1089,28 @@ msgstr "Obchod"
 
 #: horizons/gui/tabs/buyselltab.py:139
 msgid "Click on one of the resource slots to add a trade offer."
-msgstr ""
+msgstr "Obchodní nabídku přidejte kliknutím na využitý oddíl skladu."
 
 #. new res
 #: horizons/gui/tabs/buyselltab.py:186
 msgid "Set to buy or sell by clicking on that label, then adjust the amount via the slider to the right."
 msgstr ""
+"Zadejte nákup či prodej kliknutím šipku - a potom posuvníkem nastavte cílové "
+"množství ve skladu."
 
 #: horizons/gui/tabs/buyselltab.py:362
 #, python-format
 msgid "Will buy {resource_name} whenever less than {limit}t are in stock."
 msgstr ""
+"Nakoupí {resource_name} kdykoli, když ve skladu klesne počet tohoto zboží "
+"pod určené množství."
 
 #: horizons/gui/tabs/buyselltab.py:365
 #, python-format
 msgid "Will sell {resource_name} whenever more than {limit}t are available."
 msgstr ""
+"Prodá {resource_name} kdykoli, když je ve skladu toto zboží dostupné k "
+"prodeji."
 
 #. (text of widget: headline)
 #: horizons/gui/tabs/inventorytab.py:38 horizons/i18n/guitranslations.py:217
