@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2012-03-02 04:09+0100\n"
-"PO-Revision-Date: 2012-03-14 15:40+0200\n"
+"PO-Revision-Date: 2012-03-14 16:01+0200\n"
 "Last-Translator: bdias <ebrunojdias@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: pt\n"
@@ -60,12 +60,14 @@ msgstr "Alguns habitantes não conseguem chegar à praça principal."
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
 msgid "Some of your inhabitants just moved out."
-msgstr ""
+msgstr "Alguns dos seus habitantes mudaram-se."
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
 msgid "The route is now configured. Start it via the \"start route\" button in the \"configure route\" menu."
 msgstr ""
+"A rota está agora configurada. Inicie através do botão \"iniciar rota\"  no "
+"menu \"configurar rota\""
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
@@ -93,18 +95,18 @@ msgstr "Precisa de mais ${resource} para construir este edifício."
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
 msgid "You won!"
-msgstr ""
+msgstr "Ganhou!"
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
 msgid "Your crew refuses to leave this map."
-msgstr ""
+msgstr "A sua tripulação recusa-se a abandonar este mapa."
 
 # 86%
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
 msgid "Your game has been autosaved."
-msgstr "O seu jogo foi gravado automaticamente."
+msgstr "O seu jogo foi gravado/guardado automaticamente."
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
@@ -120,7 +122,7 @@ msgstr "O seu jogo foi gravado."
 #: database files sql
 #, python-format
 msgid "Your inhabitants reached level {level}."
-msgstr ""
+msgstr "Os seus habitantes atingiram o nível {level}."
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
@@ -135,12 +137,12 @@ msgstr "bolotas"
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "alvearies"
-msgstr ""
+msgstr "aviários"
 
 #. This is a database entry: the name of an inhabitant increment (tier / level).
 #: database files sql
 msgid "aristocrat"
-msgstr "aristrocrata"
+msgstr "aristocrata ou fidalgo"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
@@ -155,7 +157,7 @@ msgstr "tijolos"
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "candles"
-msgstr ""
+msgstr "velas"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
@@ -165,7 +167,7 @@ msgstr "canhão"
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "cattle"
-msgstr "gado vacum"
+msgstr "gado vacum ou bovinos"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
@@ -196,12 +198,12 @@ msgstr "depósito de barro"
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "cocoa"
-msgstr ""
+msgstr "cacau"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "cocoa beans"
-msgstr ""
+msgstr "sementes de cacau"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
@@ -216,17 +218,17 @@ msgstr "comunidade"
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "condiments"
-msgstr ""
+msgstr "condimentos"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "confectionery"
-msgstr ""
+msgstr "doçaria"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "corn"
-msgstr ""
+msgstr "milho"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
@@ -256,7 +258,7 @@ msgstr "fé"
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "fire"
-msgstr ""
+msgstr "fogo"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
@@ -266,7 +268,7 @@ msgstr "peixe"
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "flour"
-msgstr ""
+msgstr "farinha"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
@@ -281,12 +283,12 @@ msgstr "reunião"
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "grain"
-msgstr ""
+msgstr "cereais"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "grapes"
-msgstr ""
+msgstr "uvas"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
@@ -307,17 +309,17 @@ msgstr "especiarias"
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "honeycombs"
-msgstr ""
+msgstr "favos de mel"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "iron deposit"
-msgstr "deposíto de ferro"
+msgstr "depósito de ferro"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "iron ingots"
-msgstr "ligotes de ferro"
+msgstr "lingotes de ferro"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
@@ -332,7 +334,7 @@ msgstr "lã de ovelha"
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "liquor"
-msgstr "álcool"
+msgstr "bebida alcoólica"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
@@ -382,19 +384,18 @@ msgstr "colono"
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "spice plants"
-msgstr ""
+msgstr "plantas de especiarias"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "spices"
-msgstr ""
+msgstr "especiarias"
 
 # 76%
 #. This is a database entry: the name of a resource.
 #: database files sql
-#, fuzzy
 msgid "stone deposit"
-msgstr "deposíto de ferro"
+msgstr "depósito de ferro"
 
 #. This is a database entry: the name of a resource.
 #: database files sql

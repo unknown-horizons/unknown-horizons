@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2012-03-02 04:09+0100\n"
-"PO-Revision-Date: 2012-03-14 15:26+0200\n"
+"PO-Revision-Date: 2012-03-14 15:41+0200\n"
 "Last-Translator: VMa <VaclavMacurek@seznam.cz>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: cs\n"
@@ -981,7 +981,7 @@ msgstr "Prosím, oznamte tuto věc autorovi."
 #. dialog already gone
 #: horizons/gui/modules/singleplayermenu.py:464
 msgid "Click to generate a different random map"
-msgstr ""
+msgstr "Klikněte pro vytvoření jiné náhodné mapy"
 
 #. (text of widget: headline)
 #. set translated building name in gui
@@ -1033,7 +1033,7 @@ msgstr "Potvrdit"
 
 #: horizons/gui/tabs/buildrelatedtab.py:46
 msgid "Build related fields"
-msgstr ""
+msgstr "Stavba polí"
 
 #: horizons/gui/tabs/buildtabs.py:107
 msgid "Residents and infrastructure"
