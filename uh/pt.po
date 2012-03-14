@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2012-03-02 04:09+0100\n"
-"PO-Revision-Date: 2012-03-15 00:39+0200\n"
+"PO-Revision-Date: 2012-03-15 01:00+0200\n"
 "Last-Translator: bdias <ebrunojdias@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: pt\n"
@@ -1987,7 +1987,7 @@ msgstr ""
 #. (text of widget: stats_ships)
 #: horizons/i18n/guitranslations.py:592
 msgid "My ships"
-msgstr ""
+msgstr "Os meus navios"
 
 #. (text of widget: wb2) Only filter messages important for your own settlements (disasters, new increment, ...)
 #: horizons/i18n/guitranslations.py:594
@@ -1997,17 +1997,17 @@ msgstr ""
 #. (text of widget: wb5) Sends the chat message to all allied players.
 #: horizons/i18n/guitranslations.py:596
 msgid "Allies"
-msgstr ""
+msgstr "Aliados"
 
 #. (text of widget: weird_button_1) Displays all notifications and game messages
 #: horizons/i18n/guitranslations.py:598
 msgid "Whole world"
-msgstr ""
+msgstr "Mundo todo"
 
 #. (text of widget: weird_button_4) Sends the chat message to all players (default)
 #: horizons/i18n/guitranslations.py:600
 msgid "Everybody"
-msgstr ""
+msgstr "Todos"
 
 #. (tooltip of widget: okButton)
 #. (text of widget: start)
@@ -2018,7 +2018,7 @@ msgstr "Voltar ao jogo"
 #. (tooltip of widget: backwardButton) Entry of Captain's Log (logbook/diary used in scenarios)
 #: horizons/i18n/guitranslations.py:604
 msgid "Read previous entries"
-msgstr ""
+msgstr "Ler entradas anteriores"
 
 #. (tooltip of widget: forwardButton) Entry of Captain's Log (logbook/diary used in scenarios)
 #: horizons/i18n/guitranslations.py:606
@@ -2143,7 +2143,7 @@ msgstr "Manter posição"
 #. (tooltip of widget: none_stance) Description of combat stance (how units behave when fighting)
 #: horizons/i18n/guitranslations.py:693
 msgid "Passive"
-msgstr ""
+msgstr "Inactivo"
 
 #. (text of widget: have_fun)
 #: horizons/i18n/guitranslations.py:698
@@ -2238,17 +2238,17 @@ msgstr ""
 #. (text of widget: lbl_ROTATE_LEFT)
 #: horizons/i18n/guitranslations.py:736
 msgid "Rotate building or map counterclockwise"
-msgstr ""
+msgstr "Rodar construção ou mapa no sentido inverso dos ponteiros de relógio"
 
 #. (text of widget: lbl_ROTATE_RIGHT)
 #: horizons/i18n/guitranslations.py:738
 msgid "Rotate building or map clockwise"
-msgstr ""
+msgstr "Rodar construção ou mapa no sentido dos ponteiros de relógio"
 
 #. (text of widget: lbl_SCREENSHOT)
 #: horizons/i18n/guitranslations.py:740
 msgid "Screenshot"
-msgstr "Captura de ecrã"
+msgstr "Imagem de ecrã"
 
 #. (text of widget: lbl_SETTLEMENTS_OVERVIEW)
 #: horizons/i18n/guitranslations.py:742
@@ -2380,7 +2380,7 @@ msgstr "Sair para o menu de jogo de rede"
 #. (text of widget: gamename_lbl)
 #: horizons/i18n/guitranslations.py:822 horizons/i18n/guitranslations.py:954
 msgid "Name of the game:"
-msgstr ""
+msgstr "Nome do jogo:"
 
 #. (tooltip of widget: gamename_lbl)
 #: horizons/i18n/guitranslations.py:824 horizons/i18n/guitranslations.py:956
@@ -2468,7 +2468,7 @@ msgstr "Junte-se ao jogo selecionado"
 #. (tooltip of widget: load)
 #: horizons/i18n/guitranslations.py:864
 msgid "Load a saved game"
-msgstr ""
+msgstr "Carregar um jogo guardado"
 
 #. (tooltip of widget: cancel)
 #: horizons/i18n/guitranslations.py:866 horizons/i18n/guitranslations.py:977
@@ -2534,7 +2534,7 @@ msgstr "Número de gravações rápidas:"
 #. (text of widget: screen_fullscreen_text)
 #: horizons/i18n/guitranslations.py:897
 msgid "Full screen:"
-msgstr "Ecrã inteiro:"
+msgstr "Ecrã total:"
 
 #. (text of widget: screen_resolution_label)
 #: horizons/i18n/guitranslations.py:899
@@ -2653,7 +2653,7 @@ msgstr "Os seus jogos gravados:"
 #. (tooltip of widget: cancelButton)
 #: horizons/i18n/guitranslations.py:950
 msgid "Cancel"
-msgstr ""
+msgstr "Cancelar"
 
 #. (tooltip of widget: deleteButton)
 #: horizons/i18n/guitranslations.py:952
@@ -2728,7 +2728,7 @@ msgstr "Definições do jogo:"
 #. (text of widget: lbl_disasters) Whether there should be disasters in the game.
 #: horizons/i18n/guitranslations.py:1011
 msgid "Disasters"
-msgstr ""
+msgstr "Desastres"
 
 #. (text of widget: lbl_free_trader) Whether to create this kind of player in the game.
 #: horizons/i18n/guitranslations.py:1013
@@ -2763,32 +2763,32 @@ msgstr ""
 #. name of buildings:bakery
 #: horizons/i18n/objecttranslations.py:60
 msgid "Bakery"
-msgstr ""
+msgstr "Padaria"
 
 #. tooltip_text of buildings:bakery
 #: horizons/i18n/objecttranslations.py:62
 msgid "Consumes flour. Produces food."
-msgstr ""
+msgstr "Gastos de farinha.  Produzir comida."
 
 #. name of buildings:barracks
 #: horizons/i18n/objecttranslations.py:67
 msgid "Barracks"
-msgstr ""
+msgstr "Alojamentos"
 
 #. tooltip_text of buildings:barracks
 #: horizons/i18n/objecttranslations.py:69
 msgid "Recruits units suitable for ground combat."
-msgstr ""
+msgstr "Unidades de recuta adequadas para combate terrestre."
 
 #. name of buildings:blender
 #: horizons/i18n/objecttranslations.py:74
 msgid "Blender"
-msgstr ""
+msgstr "Misturador"
 
 #. tooltip_text of buildings:blender
 #: horizons/i18n/objecttranslations.py:76
 msgid "Produces condiments out of spices."
-msgstr ""
+msgstr "Produzir condimentos por especiarias."
 
 #. name of buildings:boatbuilder
 #: horizons/i18n/objecttranslations.py:81
