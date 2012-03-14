@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2012-03-02 04:09+0100\n"
-"PO-Revision-Date: 2012-03-14 16:38+0200\n"
+"PO-Revision-Date: 2012-03-14 16:53+0200\n"
 "Last-Translator: VMa <VaclavMacurek@seznam.cz>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: cs\n"
@@ -1165,9 +1165,8 @@ msgstr "Osadníci"
 #. (text of widget: headline)
 #: horizons/gui/tabs/mainsquaretabs.py:246
 #: horizons/i18n/guitranslations.py:222
-#, fuzzy
 msgid "Citizens"
-msgstr "občan"
+msgstr "občané"
 
 #. (text of widget: headline)
 #: horizons/gui/tabs/overviewtab.py:62 horizons/gui/tabs/overviewtab.py:553
@@ -1177,13 +1176,12 @@ msgstr "Přehled"
 
 # 94%
 #: horizons/gui/tabs/overviewtab.py:148 horizons/gui/tabs/overviewtab.py:570
-#, fuzzy
 msgid "Warehouse overview"
-msgstr "Přehled poboček"
+msgstr "Přehled skladiště"
 
 #: horizons/gui/tabs/overviewtab.py:182 horizons/gui/tabs/overviewtab.py:322
 msgid "Ship overview"
-msgstr "Přehled lodí"
+msgstr "Přehled lodi"
 
 #: horizons/gui/tabs/overviewtab.py:190
 msgid "The ship needs to be close to an island to found a settlement."
@@ -1211,7 +1209,7 @@ msgstr "Koupit/Prodat"
 
 #: horizons/gui/tabs/overviewtab.py:240
 msgid "Too far from the nearest own or allied warehouse"
-msgstr ""
+msgstr "Příliš daleko od nejbližšího vlastního či spojeneckého skladiště"
 
 # 94%
 #: horizons/gui/tabs/overviewtab.py:246
