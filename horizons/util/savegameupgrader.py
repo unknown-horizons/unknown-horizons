@@ -74,6 +74,11 @@ class SavegameUpgrader(object):
 			widgets.append(add)
 		db("INSERT INTO logbook(widgets) VALUES(?)", json.dumps(widgets))
 
+	def _upgrade_to_rev54(self, db):
+		for (settlement,) in db("SELECT DISTINCT settlement FROM settlement_level_properties WHERE level = ?", 0):
+			print settlement
+			db("INSERT INTO settlement_level_properties VALUES(?, 3, 0, 1)", settlement)
+
 
 	def _upgrade(self):
 		# fix import loop
@@ -101,6 +106,8 @@ class SavegameUpgrader(object):
 				self._upgrade_to_rev52(db)
 			if rev < 53:
 				self._upgrade_to_rev53(db)
+			if rev < 54:
+				self._upgrade_to_rev54(db)
 
 
 			db.close()
