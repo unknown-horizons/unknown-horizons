@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2012-03-02 04:09+0100\n"
-"PO-Revision-Date: 2012-03-14 19:01+0200\n"
+"PO-Revision-Date: 2012-03-14 19:19+0200\n"
 "Last-Translator: VMa <VaclavMacurek@seznam.cz>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: cs\n"
@@ -1724,12 +1724,12 @@ msgstr "Daně:"
 #. (text of widget: upgrades_lbl)
 #: horizons/i18n/guitranslations.py:250
 msgid "Upgrade not possible:"
-msgstr "Vylepšení není dostupné:"
+msgstr "Vylepšení není možné:"
 
 #. (tooltip of widget: allow_upgrades)
 #: horizons/i18n/guitranslations.py:252
 msgid "This is the current maximum increment!"
-msgstr ""
+msgstr "Toto je maximální možná úroveň!"
 
 #. (tooltip of widget: paid_taxes_icon)
 #. (tooltip of widget: taxes)
@@ -1747,7 +1747,7 @@ msgstr ""
 #: horizons/i18n/guitranslations.py:358 horizons/i18n/guitranslations.py:364
 #: horizons/i18n/guitranslations.py:409 horizons/i18n/guitranslations.py:421
 msgid "Paid taxes"
-msgstr ""
+msgstr "Zaplacené daně"
 
 #. (tooltip of widget: tax_rate_icon)
 #. (tooltip of widget: tax_val_label)
@@ -1765,17 +1765,17 @@ msgstr ""
 #: horizons/i18n/guitranslations.py:360 horizons/i18n/guitranslations.py:362
 #: horizons/i18n/guitranslations.py:411 horizons/i18n/guitranslations.py:419
 msgid "Tax rate"
-msgstr ""
+msgstr "Daňové zatížení"
 
 #. (text of widget: avg_happiness_lbl)
 #: horizons/i18n/guitranslations.py:265
 msgid "Average happiness:"
-msgstr ""
+msgstr "Průměrná spokojenost:"
 
 #. (text of widget: most_needed_res_lbl)
 #: horizons/i18n/guitranslations.py:269
 msgid "Most needed resource:"
-msgstr ""
+msgstr "Nejžádanější surovina:"
 
 #. (text of widget: upgrades_lbl)
 #: horizons/i18n/guitranslations.py:292 horizons/i18n/guitranslations.py:321
@@ -1788,12 +1788,12 @@ msgstr ""
 #: horizons/i18n/guitranslations.py:369 horizons/i18n/guitranslations.py:471
 #: horizons/i18n/guitranslations.py:531
 msgid "Buying"
-msgstr ""
+msgstr "Nákup"
 
 #. (text of widget: selling_label)
 #: horizons/i18n/guitranslations.py:371 horizons/i18n/guitranslations.py:477
 msgid "Selling"
-msgstr ""
+msgstr "Prodej"
 
 #. (text of widget: lbl_weapon_storage)
 #: horizons/i18n/guitranslations.py:376
@@ -1810,16 +1810,18 @@ msgstr "Hustota zdrojů"
 #: horizons/i18n/guitranslations.py:396
 msgid "This is a resource deposit where you can build a mine to dig up resources."
 msgstr ""
+"Toto je naleziště surovin, kde můžete postavit důl, abyste mohli suroviny "
+"těžit."
 
 #. (text of widget: res_dep_description_lbl2) It == The resource deposit
 #: horizons/i18n/guitranslations.py:398
 msgid "It contains these resources:"
-msgstr ""
+msgstr "Obsahuje následující suroviny:"
 
 #. (text of widget: needed_res_label)
 #: horizons/i18n/guitranslations.py:403
 msgid "Needed resources:"
-msgstr ""
+msgstr "Potřebné suroviny:"
 
 # 88%
 #. (tooltip of widget: happiness_label)
@@ -1832,57 +1834,60 @@ msgstr "Štěstí"
 #. (tooltip of widget: inhabitants)
 #: horizons/i18n/guitranslations.py:413 horizons/i18n/guitranslations.py:417
 msgid "Residents"
-msgstr ""
+msgstr "Obyvatelé"
 
 #. (text of widget: signal_fire_description_lbl)
 #: horizons/i18n/guitranslations.py:428
 msgid "The signal fire shows the free trader how to reach your settlement in case you want to buy or sell goods."
 msgstr ""
+"Signální oheň ukazuje svobodným obchodníkům cestu do Vaší osady, aby mohli "
+"nakupovat a prodávat"
 
 # 75%
 # 80%
 #. (text of widget: name_label)
 #: horizons/i18n/guitranslations.py:433 horizons/i18n/guitranslations.py:449
 #: horizons/i18n/guitranslations.py:466
-#, fuzzy
 msgid "Name:"
-msgstr "Ukončit hru"
+msgstr "Jméno:"
 
 #. (text of widget: trader_description_lbl)
 #: horizons/i18n/guitranslations.py:444
 msgid "This is the free trader's ship. It will visit you from time to time to buy or sell goods."
 msgstr ""
+"Toto je loď svobodného obchodníka. Občas navštíví Vaší osadu, aby nakoupil "
+"či prodal své zboží."
 
 #. (tooltip of widget: collector_utilisation_label)
 #. (tooltip of widget: collector_utilisation) Percentage describing how busy the collectors were (100% = always going for / already carrying full load of goods)
 #: horizons/i18n/guitranslations.py:451 horizons/i18n/guitranslations.py:455
 msgid "Collector utilisation"
-msgstr ""
+msgstr "Vytížení výběrčího daní"
 
 #. (text of widget: exchange_label)
 #: horizons/i18n/guitranslations.py:473 horizons/i18n/guitranslations.py:486
 msgid "Exchange:"
-msgstr ""
+msgstr "Směna:"
 
 #. (text of widget: ship_label)
 #: horizons/i18n/guitranslations.py:479 horizons/i18n/guitranslations.py:490
 msgid "Ship:"
-msgstr ""
+msgstr "Loď:"
 
 #. (text of widget: trade_with_label)
 #: horizons/i18n/guitranslations.py:481 horizons/i18n/guitranslations.py:492
 msgid "Trade partner:"
-msgstr ""
+msgstr "Obchodní partner:"
 
 #. (tooltip of widget: configure_route)
 #: horizons/i18n/guitranslations.py:499 horizons/i18n/guitranslations.py:510
 msgid "Configure trading route"
-msgstr ""
+msgstr "Nastavení obchodní cesty"
 
 #. (text of widget: headline)
 #: horizons/i18n/guitranslations.py:519
 msgid "Buy or sell resources"
-msgstr ""
+msgstr "Kupě či prodej surovin"
 
 #. (text of widget: headline_trade_history)
 #: horizons/i18n/guitranslations.py:521
