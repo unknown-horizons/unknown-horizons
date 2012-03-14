@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: translate-uh@lists.unknown-horizons.org\n"
 "POT-Creation-Date: 2012-03-13 16:25+0100\n"
-"PO-Revision-Date: 2012-03-14 23:27+0200\n"
+"PO-Revision-Date: 2012-03-14 23:32+0200\n"
 "Last-Translator: bdias <ebrunojdias@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: pt\n"
@@ -84,6 +84,8 @@ msgid ""
 "To see your first task, click on the button \"Read next entries\" in the "
 "navigation panel! It looks like this:"
 msgstr ""
+"Para visualizar a tua primeira tarefa, pressiona o botão \"Ler novas "
+"entradas\" no painel de navegação! Parece-se com isto:"
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:20
@@ -225,6 +227,8 @@ msgid ""
 "You can also plant trees later - but that costs money. Use what nature "
 "provided you with!"
 msgstr ""
+"Podes também plantar árvores depois - mas isso tem um custo. Usa o que a "
+"natureza te proporciona."
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:62

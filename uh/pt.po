@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2012-03-02 04:09+0100\n"
-"PO-Revision-Date: 2012-03-14 15:59+0200\n"
+"PO-Revision-Date: 2012-03-14 23:55+0200\n"
 "Last-Translator: bdias <ebrunojdias@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: pt\n"
@@ -78,6 +78,8 @@ msgstr "Também pode arrastar estradas."
 #: database files sql
 msgid "You cannot tear the warehouse, your settlements needs it."
 msgstr ""
+"Não podes anular o depósito de mercadorias, já que os teus contratos estão "
+"dependentes dele."
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
@@ -95,12 +97,12 @@ msgstr "Precisa de mais ${resource} para construir este edifício."
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
 msgid "You won!"
-msgstr "Ganhou!"
+msgstr "Ganhaste!"
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
 msgid "Your crew refuses to leave this map."
-msgstr "A sua tripulação recusa-se a abandonar este mapa."
+msgstr "A tua tripulação recusa-se a abandonar este mapa."
 
 # 86%
 #. This is a database entry: a messagewidget message (left part of the screen).
@@ -111,23 +113,23 @@ msgstr "O seu jogo foi gravado/guardado automaticamente."
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
 msgid "Your game has been quicksaved."
-msgstr "O seu jogo foi gravado."
+msgstr "O teu jogo foi guardado"
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
 msgid "Your game has been saved."
-msgstr "O seu jogo foi gravado."
+msgstr "O teu jogo foi guardado como."
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
 #, python-format
 msgid "Your inhabitants reached level {level}."
-msgstr "Os seus habitantes atingiram o nível {level}."
+msgstr "Os teus habitantes atingiram o nível {level}."
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
 msgid "Your mine has run out of resources."
-msgstr "A sua mina ficou sem recursos."
+msgstr "A tua mina ficou sem recursos."
 
 #. This is a database entry: the name of a resource.
 #: database files sql
@@ -167,7 +169,7 @@ msgstr "canhão"
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "cattle"
-msgstr "gado vacum ou bovinos"
+msgstr "gado bovino"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
@@ -400,7 +402,7 @@ msgstr "depósito de ferro"
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "stone tops"
-msgstr ""
+msgstr "tampos de pedra"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
@@ -457,19 +459,20 @@ msgstr "lã"
 #: database files sql
 #, python-format
 msgid "{player1} and {player2} have allied their forces."
-msgstr ""
+msgstr "{player1] e o {player2} aliaram forças."
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
 #, python-format
 msgid "{player1} and {player2} have ended the war and are now allied."
-msgstr ""
+msgstr "{player1} e o {player2} romperam com a guerra e agora são aliados."
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
 #, python-format
 msgid "{player1} and {player2} have ended their alliance and are now in a state of war."
 msgstr ""
+"{player1} e o {player2} romperam tréguas e agora estão em estado de guerra."
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
