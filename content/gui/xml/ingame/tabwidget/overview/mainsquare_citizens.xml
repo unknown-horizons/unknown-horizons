@@ -17,26 +17,26 @@ Shows info about citizens and allows the player to change taxes or deny upgrade 
 
 		<Container size="260,60" position="25,43">
 			<!-- Taxes -->
-			<TooltipIcon name="paid_taxes_icon" position="0,0"
+			<Icon name="paid_taxes_icon" position="0,0"
 				image="content/gui/icons/resources/running_costs.png"
-				tooltip="Paid taxes" />
+				helptext="Paid taxes" />
 			<Label position="20,0" name="tax_label" text="Taxes:" />
-			<TooltipLabel name="taxes" position="98,0" text=""
-				tooltip="Paid taxes" />
-			<TooltipIcon name="tax_rate_icon" position="160,0"
+			<Label name="taxes" position="98,0" text=""
+				helptext="Paid taxes" />
+			<Icon name="tax_rate_icon" position="160,0"
 				image="content/gui/icons/resources/cap_util.png"
-				tooltip="Tax rate" />
-			<TooltipLabel name="tax_val_label" position="180,0" text=""
-				tooltip="Tax rate" />
+				helptext="Tax rate" />
+			<Label name="tax_val_label" position="180,0" text=""
+				helptext="Tax rate" />
 			<StepSlider position="2,25" size="200,20" name="tax_slider" orientation="0" />
 		</Container>
 
 		<Container size="260,80" position="25,90">
 			<Label name="upgrades_lbl" position="0,0" text="Upgrade not possible:" />
 			<!--<Label name="upgrades_lbl" position="0,0" text="Upgrade permissions:" />-->
-			<TooltipIcon name="allow_upgrades" border_size="0" position="0,20"
+			<Icon name="allow_upgrades" border_size="0" position="0,20"
 				image="content/gui/images/buttons/upgrade/disallow.png"
-				tooltip="This is the current maximum increment!" />
+				helptext="This is the current maximum increment!" />
 			<!--<ToggleImageButton name="allow_upgrades" border_size="0" position="0,20"
 				inactive_image="content/gui/images/buttons/upgrade/disallow.png"
 				up_image="content/gui/images/buttons/upgrade/allow.png"
