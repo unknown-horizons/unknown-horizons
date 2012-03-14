@@ -7,8 +7,8 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2012-03-02 04:09+0100\n"
-"PO-Revision-Date: 2012-03-14 10:55+0200\n"
-"Last-Translator: Kristian <kristian.hynek@gmail.com>\n"
+"PO-Revision-Date: 2012-03-14 15:26+0200\n"
+"Last-Translator: VMa <VaclavMacurek@seznam.cz>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: cs\n"
 "MIME-Version: 1.0\n"
@@ -871,7 +871,7 @@ msgstr "Pro načtení v módu multiplayeru je nutné mít správnou hru."
 
 #: horizons/gui/modules/multiplayermenu.py:209
 msgid "This is not nice and we hope to offer a more convenient solution very soon."
-msgstr ""
+msgstr "To se nepovedlo a doufáme, že brzy bude tento problém lépe vyřešen."
 
 #: horizons/gui/modules/multiplayermenu.py:210
 msgid "Meanwhile, please request the file {path} from the game creator and put it in {map_directory} ."
@@ -936,7 +936,7 @@ msgstr "Neplatné jméno hráče"
 # 97%
 #: horizons/gui/modules/singleplayermenu.py:197
 msgid "You entered an invalid playername."
-msgstr "Zadal jsi neplatné jméno hráče."
+msgstr "Zadal jste neplatné jméno hráče."
 
 #: horizons/gui/modules/singleplayermenu.py:288
 msgid "Map size:"
