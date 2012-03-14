@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2012-03-02 04:09+0100\n"
-"PO-Revision-Date: 2012-03-14 23:55+0200\n"
+"PO-Revision-Date: 2012-03-15 00:39+0200\n"
 "Last-Translator: bdias <ebrunojdias@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: pt\n"
@@ -484,13 +484,13 @@ msgstr ""
 #: database files sql
 #, python-format
 msgid "{player1} and {player2} have terminated their alliance."
-msgstr ""
+msgstr "{player1} e o {player2} romperam tréguas."
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
 #, python-format
 msgid "{player1} and {player2} will fight each other to the death."
-msgstr ""
+msgstr "{player1} e o {player2} lutarão até à morte."
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
@@ -560,21 +560,23 @@ msgstr ""
 
 #: horizons/engine/settingshandler.py:212
 msgid "Invalid network port"
-msgstr "Porto de rede inválido"
+msgstr "Porta de rede inválida"
 
 #: horizons/engine/settingshandler.py:213
 msgid "The port you specified is not valid. It must be a number between 1 and 65535."
 msgstr ""
-"O porto especificado não é válido. O porto deve ser um número compreendido "
+"A porta especificada não é válida. A porta deve ser um número compreendido "
 "entre 1 e 65535."
 
 #: horizons/engine/settingshandler.py:214
 msgid "Please check the port you entered and make sure it is in the specified range."
 msgstr ""
+"Por favor verifique a porta digitada e tenha em atenção que está abrangida "
+"pela gama especificada."
 
 #: horizons/engine/settingshandler.py:226
 msgid "Failed to apply new network settings."
-msgstr ""
+msgstr "A aplicação das novas definições de rede falhou."
 
 #: horizons/engine/settingshandler.py:227
 #: horizons/gui/modules/multiplayermenu.py:55
@@ -637,22 +639,22 @@ msgstr "Gravar jogo"
 
 #: horizons/gui/gui.py:357
 msgid "No filename given"
-msgstr ""
+msgstr "Nenhum nome de ficheiro atribuído."
 
 #: horizons/gui/gui.py:357
 msgid "Please enter a valid filename."
-msgstr ""
+msgstr "Por favor insira um nome de ficheiro válido."
 
 #. reshow dialog
 #. savegamename already exists
 #: horizons/gui/gui.py:362
 #, python-format
 msgid "A savegame with the name '{name}' already exists."
-msgstr ""
+msgstr "O jogo guardado com o nome '{name}' já existe."
 
 #: horizons/gui/gui.py:363
 msgid "Overwrite it?"
-msgstr ""
+msgstr "Substituir?"
 
 #: horizons/gui/gui.py:364
 msgid "Confirmation for overwriting"
@@ -660,7 +662,7 @@ msgstr "Confirmação para substituir"
 
 #: horizons/gui/gui.py:369
 msgid "Invalid filename given"
-msgstr ""
+msgstr "Dado um nome de ficheiro inválido"
 
 #: horizons/gui/gui.py:377
 msgid "Please select a savegame or click on cancel."
@@ -714,11 +716,11 @@ msgstr ""
 #: horizons/gui/gui.py:617
 #, python-format
 msgid "Required version: {required}!"
-msgstr ""
+msgstr "Versão requerida: {required}!"
 
 #: horizons/gui/gui.py:620
 msgid "Incompatible version"
-msgstr ""
+msgstr "Versão incompatível"
 
 #: horizons/gui/gui.py:637
 msgid "No file selected"
@@ -766,7 +768,7 @@ msgstr "Pressione para alterar o nome da sua povoação."
 #. this dialog is pretty useless in this case
 #: horizons/gui/ingamegui.py:272
 msgid "No diplomacy possible"
-msgstr ""
+msgstr "Diplomacia inviável"
 
 #: horizons/gui/ingamegui.py:273
 msgid "Cannot do diplomacy as there are no other players."
@@ -780,7 +782,7 @@ msgstr ""
 #: horizons/gui/ingamegui.py:451
 #, python-format
 msgid "Try a name that only contains letters and numbers."
-msgstr ""
+msgstr "Crie um nome que contenha apenas letras e números."
 
 #: horizons/gui/modules/multiplayermenu.py:43
 msgid "Unable to find pyenet"
@@ -811,15 +813,17 @@ msgstr "Não foi possível iniciar a rede."
 #: horizons/gui/modules/multiplayermenu.py:116
 #: horizons/gui/modules/multiplayermenu.py:134
 msgid "Fatal Network Error"
-msgstr ""
+msgstr "Erro de conexão fatal"
 
 #: horizons/gui/modules/multiplayermenu.py:117
 msgid "Could not connect to master server."
-msgstr ""
+msgstr "Não é possivel conectar ao servidor principal."
 
 #: horizons/gui/modules/multiplayermenu.py:118
 msgid "Please check your Internet connection. If it is fine, it means our master server is temporarily down."
 msgstr ""
+"Por favor verifique a sua conexão à internet. Se esta estiver óptima, "
+"significa que o nosso servidor principal está temporariamente em baixo."
 
 # 97%
 #: horizons/gui/modules/multiplayermenu.py:135
@@ -847,11 +851,11 @@ msgstr ""
 #: horizons/gui/modules/multiplayermenu.py:191
 #, python-format
 msgid "Creator: {player}"
-msgstr ""
+msgstr "Criador: {player}"
 
 #: horizons/gui/modules/multiplayermenu.py:202
 msgid "This savegame is missing (click here)"
-msgstr ""
+msgstr "Jogo guardado em falta (pressione aqui)"
 
 #: horizons/gui/modules/multiplayermenu.py:208
 msgid "For multiplayer load, it is currently necessary for you to ensure you have the correct savegame file."
@@ -1191,7 +1195,7 @@ msgstr ""
 
 #: horizons/gui/tabs/overviewtab.py:246
 msgid "Cannot equip trade ship with weapons"
-msgstr ""
+msgstr "Não é possível equipar um navio de comércio com armas."
 
 #: horizons/gui/tabs/overviewtab.py:247
 msgid "It is not possible to equip a trade ship with weapons."
@@ -1285,7 +1289,7 @@ msgstr "Total"
 #: horizons/gui/widgets/playersships.py:49
 #, python-format
 msgid "Ships of {player}"
-msgstr ""
+msgstr "Navios do {player}"
 
 # 97%
 #. (tooltip of widget: name)
@@ -1298,11 +1302,11 @@ msgstr "Clique para mudar o nome deste navio."
 #. i18n There are no weapons equipped at the moment.
 #: horizons/gui/widgets/playersships.py:98
 msgid "None"
-msgstr ""
+msgstr "Nenhum"
 
 #: horizons/gui/widgets/playersships.py:100
 msgid "N/A"
-msgstr ""
+msgstr "Não aplicável ou não disponível"
 
 # 89%
 #: horizons/gui/widgets/productionoverview.py:50
@@ -1337,11 +1341,11 @@ msgstr ""
 
 #: horizons/gui/widgets/routeconfig.py:187
 msgid "Loading into ship"
-msgstr ""
+msgstr "Carregar o navio"
 
 #: horizons/gui/widgets/routeconfig.py:194
 msgid "Unloading from ship"
-msgstr ""
+msgstr "Descarregar o navio"
 
 # 83%
 #: horizons/gui/widgets/routeconfig.py:277
@@ -1388,12 +1392,12 @@ msgstr "Habitantes"
 #. (tooltip of widget: build)
 #: horizons/i18n/guitranslations.py:76
 msgid "Build menu (B)"
-msgstr ""
+msgstr "Menu de construção (B)"
 
 #. (tooltip of widget: destroy_tool)
 #: horizons/i18n/guitranslations.py:78
 msgid "Destroy (X)"
-msgstr ""
+msgstr "Destruir (X)"
 
 #. (tooltip of widget: diplomacyButton)
 #: horizons/i18n/guitranslations.py:80
@@ -1403,36 +1407,34 @@ msgstr "Diplomacia"
 #. (tooltip of widget: gameMenuButton)
 #: horizons/i18n/guitranslations.py:82
 msgid "Game menu (Esc)"
-msgstr ""
+msgstr "Menu de jogo (Esc)"
 
 #. (tooltip of widget: logbook)
 #: horizons/i18n/guitranslations.py:84
 msgid "Captain's log (L)"
-msgstr ""
+msgstr "Diário de bordo (L)"
 
 #. (tooltip of widget: rotateLeft)
 #: horizons/i18n/guitranslations.py:86
 msgid "Rotate map counterclockwise (,)"
-msgstr ""
+msgstr "Rodar o mapa no sentido inverso dos ponteiros de relógio (,)"
 
 #. (tooltip of widget: rotateRight)
 #: horizons/i18n/guitranslations.py:88
 msgid "Rotate map clockwise (.)"
-msgstr ""
+msgstr "Rodar o mapa no sentido dos ponteiros de relógio (.)"
 
 # 82%
 #. (tooltip of widget: speedDown)
 #: horizons/i18n/guitranslations.py:90
-#, fuzzy
 msgid "Decrease game speed (-)"
-msgstr "Diminuir a velocidade de jogo"
+msgstr "Diminuir a velocidade de jogo (-)"
 
 # 82%
 #. (tooltip of widget: speedUp)
 #: horizons/i18n/guitranslations.py:92
-#, fuzzy
 msgid "Increase game speed (+)"
-msgstr "Aumentar a velocidade de jogo"
+msgstr "Aumentar a velocidade de jogo (+)"
 
 #. (tooltip of widget: zoomIn)
 #: horizons/i18n/guitranslations.py:94
@@ -1462,7 +1464,7 @@ msgstr "Mudar o nome"
 #. (text of widget: old_name_label)
 #: horizons/i18n/guitranslations.py:110
 msgid "Old name:"
-msgstr ""
+msgstr "Nome antigo:"
 
 #. (tooltip of widget: okButton)
 #: horizons/i18n/guitranslations.py:112
@@ -1477,17 +1479,17 @@ msgstr "Introduza a sua mensagem:"
 #. (text of widget: enter_new_name_lbl)
 #: horizons/i18n/guitranslations.py:124
 msgid "Enter prefix:"
-msgstr ""
+msgstr "Inserir o prefixo:"
 
 #. (text of widget: headline_change_name)
 #: horizons/i18n/guitranslations.py:126
 msgid "Save map"
-msgstr ""
+msgstr "Mapa guardado"
 
 #. (tooltip of widget: okButton)
 #: horizons/i18n/guitranslations.py:128
 msgid "Save the map"
-msgstr ""
+msgstr "Guardar o mapa"
 
 #. (text of widget: BB_cancel_build_label) abort construction of a ship, lose invested resources
 #: horizons/i18n/guitranslations.py:133
@@ -1596,7 +1598,7 @@ msgstr "Fragata"
 #. (tooltip of widget: costs_040)
 #: horizons/i18n/guitranslations.py:187
 msgid "Cannons"
-msgstr ""
+msgstr "Canhões"
 
 #. (text of widget: ally_label) Diplomacy state of player
 #: horizons/i18n/guitranslations.py:192
@@ -1892,12 +1894,12 @@ msgstr "Comprar ou vender recursos"
 #. (text of widget: headline_trade_history)
 #: horizons/i18n/guitranslations.py:521
 msgid "Trade history"
-msgstr ""
+msgstr "Historial de comércio"
 
 #. (text of widget: headline)
 #: horizons/i18n/guitranslations.py:526
 msgid "Select resources:"
-msgstr "Selecione os recursos:"
+msgstr "Seleccione os recursos:"
 
 #. (text of widget: headline_balance_label)
 #: horizons/i18n/guitranslations.py:533
@@ -1975,7 +1977,7 @@ msgstr ""
 #. (text of widget: stats_players)
 #: horizons/i18n/guitranslations.py:588
 msgid "Players"
-msgstr ""
+msgstr "Jogadores"
 
 #. (text of widget: stats_settlements)
 #: horizons/i18n/guitranslations.py:590
