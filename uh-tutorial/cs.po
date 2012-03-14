@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: translate-uh@lists.unknown-horizons.org\n"
 "POT-Creation-Date: 2012-03-13 16:25+0100\n"
-"PO-Revision-Date: 2012-03-14 12:00+0200\n"
+"PO-Revision-Date: 2012-03-14 11:51+0200\n"
 "Last-Translator: naked.in.rain <martin.mezl@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: cs\n"
@@ -579,11 +579,14 @@ msgid ""
 "really sour and simply turn their back on your village, leaving behind a "
 "decaying ruin."
 msgstr ""
+"Pokud nebudou splněny, štěstí a příjem poklesne. Po určité době se obyvatelé "
+"stanou nevrlými, opustí Vaši vesnici a zanechají za sebou rozpadající se "
+"trosky."
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:146
 msgid "Note that you can also change the global tax settings here, too."
-msgstr ""
+msgstr "Všimněte si, že i zde můžete změnit nastavení celkové daně."
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:148
@@ -591,6 +594,8 @@ msgid ""
 "\n"
 "TASK: Build at least three additional tents."
 msgstr ""
+"\n"
+"ÚKOL: Postavte alespoň tři další stany."
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:150
@@ -599,6 +604,9 @@ msgid ""
 "TIP: Holding down SHIFT eases constructing multiple buildings of the same "
 "kind."
 msgstr ""
+"\n"
+"TIP: Přidržení klávesy SHIFT Vám zjednoduší hromadnou výstavbu budov "
+"stejného druhu."
 
 #. This message is displayed in the widget on the left screen part. Please keep it short enough to fit there!
 #: po/tutorial.py:152
@@ -617,6 +625,9 @@ msgid ""
 "Can you see the ship passing your island from time to time? That ship belongs "
 "to the Free Trader, one of the first settlers in this archipelago."
 msgstr ""
+"Vidíte lodě, které čas od času projedou okolo Vašeho ostrova? Tyto lodě "
+"patří Svobodnému obchodníkovi, jednomu z prvních osadníků v tomto "
+"souostroví."
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:158
@@ -624,6 +635,8 @@ msgid ""
 "The trader will supply your settlement with necessary goods which you can't "
 "produce yet."
 msgstr ""
+"Obchodník bude zásobovat Vaši osadu potřebným zbožím, které zatím nemůžete "
+"sami produkovat."
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:160
@@ -631,6 +644,9 @@ msgid ""
 "You can also sell surpluses of your production, but in general consuming them "
 "(by building more tents) instead of selling them yields more profit."
 msgstr ""
+"Také můžete prodávat přebytky z Vaší produkce. Obecně je ale výhodnější tyto "
+"přebytky spotřebovat (tak, že postavíte více stanů). Příjem z daní bude "
+"vyšší než by byl příjem z prodeje."
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:162
@@ -638,6 +654,8 @@ msgid ""
 "Normally the trader ships just sail around and look for deals, but you can "
 "speed things up a bit."
 msgstr ""
+"Normálně obchodní lodě pouze proplouvají okolo a hledají obchodní "
+"příležitosti, ale my můžeme věci trochu urychlit."
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:164
@@ -645,6 +663,8 @@ msgid ""
 "For this purpose, build a signal fire at the coast near your warehouse. It "
 "will show ships the way to your settlement."
 msgstr ""
+"Pro tento účel postavte signální oheň na pobřeží poblíž Obchodního přístavu. "
+"Tak ukážete lodím cestu do Vaší osady."
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:166
@@ -652,6 +672,8 @@ msgid ""
 "The signal fire has to cover the area which the ships pass through to catch "
 "them."
 msgstr ""
+"Aby mohl signální oheň přilákat lodě, musí pokrývat oblast, kterou lodě "
+"projíždějí."
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:168
@@ -660,16 +682,20 @@ msgid ""
 "After this little advertisment, the trader will also stop by and look into "
 "your warehouse if it planned to sail past it."
 msgstr ""
+"\n"
+"Pokud by obchodník plánoval proplout okolo, po této upoutávce zakotví a "
+"navštíví Obchodní přístav."
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:170
 msgid "You can propose deals via the warehouse tab \"Buy/Sell\"."
 msgstr ""
+"Zakázky můžete nabízet pomocí záložky \"Prodej/Nákup\" v Obchodním přístavu. "
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:172
 msgid "At the 'sailors' increment, you are equipped with three trading slots."
-msgstr ""
+msgstr "V úrovni \"námořníci\" máte k dispozici tři obchodní sloty."
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:174
@@ -677,6 +703,8 @@ msgid ""
 "Click on the small icon to change the slot mode from 'Buy' to 'Sell' and vice "
 "versa."
 msgstr ""
+"Klikněte na malou ikonu, abyste změnili režim slotu z \"Nákup\" na \"Prodej\" a "
+"naopak."
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:176
@@ -684,6 +712,8 @@ msgid ""
 "Click in the slot to choose the good you want to trade with. We will further "
 "explain this once you are ready to trade."
 msgstr ""
+"Klikněte do slotu a vyberte zboží, se kterým chcete obchodovat. Více tuto "
+"část vysvětlíme později, až budete připraveni obchodovat."
 
 # 89%
 #. This is the text body of a logbook page.
@@ -693,7 +723,7 @@ msgid ""
 "TASK: Build a signal fire at the coast close to your warehouse."
 msgstr ""
 "\n"
-"Postavte signální oheň na pobřeží v blízkosti Obchodního přístavu."
+"ÚKOL: Postavte signální oheň na pobřeží v blízkosti Obchodního přístavu."
 
 #. This message is displayed in the widget on the left screen part. Please keep it short enough to fit there!
 #: po/tutorial.py:180
