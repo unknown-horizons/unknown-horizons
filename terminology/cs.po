@@ -540,13 +540,9 @@ msgid "running costs"
 msgstr "provozní náklady"
 
 # (poterminology) uh-tutorial/tutorial.pot (7)
-#
 # (poterminology) uh/unknownhorizons.pot (1)
-#
-#
-#
 msgid "collector"
-msgstr "sběratel"
+msgstr "nosič"
 
 # (poterminology) uh-tutorial/tutorial.pot (4)
 #

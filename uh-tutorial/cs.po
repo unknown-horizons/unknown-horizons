@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: translate-uh@lists.unknown-horizons.org\n"
 "POT-Creation-Date: 2012-03-13 16:25+0100\n"
-"PO-Revision-Date: 2012-03-14 10:57+0200\n"
+"PO-Revision-Date: 2012-03-14 10:53+0200\n"
 "Last-Translator: naked.in.rain <martin.mezl@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: cs\n"
@@ -182,11 +182,13 @@ msgid ""
 "The construction material on your ship got unloaded automatically. You can "
 "now construct some basic buildings."
 msgstr ""
+"Stavební materiál se z lodi vyloží automaticky. Nyní můžete postavit několik "
+"základních budov."
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:44
 msgid "We will start with building a lumberjack."
-msgstr ""
+msgstr "Začneme se stavbou dřevorubce."
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:46
@@ -194,11 +196,13 @@ msgid ""
 "This is essential because, at this stage, boards are the only poles your "
 "sailors can afford to hang their tents over."
 msgstr ""
+"V této části hry je to nezbytné, protože prkna jsou to jediné, co můžete "
+"poskytnout námořníkům k zakrytí jejich stanů."
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:48
 msgid "The fisherman needs some boards to build his vessel as well."
-msgstr ""
+msgstr "Také rybář potřebuje nějaká prkna, aby si mohl vyrobit svou loďku."
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:50
@@ -206,11 +210,13 @@ msgid ""
 "In order to construct lumberjacks; open the build menu by either clicking the "
 "big icon below the mini map or pressing B key."
 msgstr ""
+"Abyste postavili dřevorubce, otevřete stavební menu kliknutím na velkou "
+"ikonu pod minimapou nebo stisknutím klávesy B."
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:52
 msgid "The build menu is sorted by increments."
-msgstr ""
+msgstr "Stavební menu je rozděleno podle jednotlivých úrovní."
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:54
@@ -218,6 +224,8 @@ msgid ""
 "You are currently in the first increment (the Sailors level) so are offered "
 "only the basic buildings."
 msgstr ""
+"Nyní se nacházíte na první úrovni (námořnická úroveň), proto máte k "
+"dispozici pouze základní budovy."
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:56
@@ -225,6 +233,9 @@ msgid ""
 "\n"
 "As your civilization advances, you also gain more and more complex buildings."
 msgstr ""
+"\n"
+"Jak se bude vaše civilizace rozvíjet, získáte stále komplexnější a "
+"komplexnější budovy."
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:58
@@ -232,6 +243,8 @@ msgid ""
 "For now, select the lumberjack under 'Companies' and build it in an area with "
 "some trees around."
 msgstr ""
+"Nyní vyberte dřevorubce v sekci \"Podniky\" a postavte ho v oblasti, kde jsou "
+"stromy."
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:60
@@ -239,6 +252,8 @@ msgid ""
 "You can also plant trees later - but that costs money. Use what nature "
 "provided you with!"
 msgstr ""
+"Později můžete stromy také sázet, ale bude Vás to stát peníze. Využijte to, "
+"co Vám příroda poskytuje!"
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:62
@@ -246,6 +261,8 @@ msgid ""
 "A company always needs a trail connection to a storage or warehouse, "
 "otherwise goods will remain at the company and not be collected."
 msgstr ""
+"Podnik vždy potřebuje spojení stezkou ke skladišti nebo Obchodnímu přístavu, "
+"jinak zboží zůstane v podniku a nebude vybráno."
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:64
@@ -253,6 +270,8 @@ msgid ""
 "This means that you have to build a trail connecting your warehouse (or "
 "storage) and lumberjack."
 msgstr ""
+"To znamená, že musíte vybudovat stezku spojující váš Obchodní přístav (nebo "
+"skladiště) a dřevorubce."
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:66
@@ -260,13 +279,15 @@ msgid ""
 "\n"
 "TASK: Build a lumberjack in a wooded area and connect it to a road."
 msgstr ""
+"\n"
+"ÚKOL: Postavte dřevorubce v lesnaté oblasti a propojte ho cestou."
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:68
 msgid ""
 "Watch how a collector will fetch your first self-produced boards. Don't worry "
 "about recruiting workers for the lumberjack. That happens automatically."
-msgstr ""
+msgstr "Sledujte jak nosič odnese Vaše první vyprodukované prkna."
 
 #. This message is displayed in the widget on the left screen part. Please keep it short enough to fit there!
 #: po/tutorial.py:70
@@ -276,7 +297,7 @@ msgstr "Postavte dřevorubce a spojte ho s Obchodním přístavem pomocí stezky
 #. This is a logbook page heading. Space is VERY short, please only translate to strings that fit (roughly 30 characters max).
 #: po/tutorial.py:72
 msgid "NEW TASK: FOOD SUPPLY"
-msgstr "NOVÝ ÚKOL: PRODUKCE JÍDLA"
+msgstr "NOVÝ ÚKOL: ZÁSOBENÍ JÍDLEM"
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:74
@@ -284,21 +305,23 @@ msgid ""
 "You will need to have some food-producing companies, too, because people in "
 "general (and especially sailors) are very hungry."
 msgstr ""
+"Dále budete muset postavit některé základní budovy, které budou produkovat "
+"jídlo, protože všichni lidé (a námořníci obzvláště) jsou velmi hladoví."
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:76
 msgid "Available companies in the first increment are the Hunter and Fisher."
-msgstr ""
+msgstr "Dostupné budovy pro první úroveň jsou Lovec a Rybář."
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:78
 msgid "The Hunter hunts animals in the forest, thus needs trees nearby."
-msgstr ""
+msgstr "Lovec loví v lesích zvířata, proto potřebuje být blízko lesa."
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:80
 msgid "Note that you can place your Hunter close to the lumberjack's forest."
-msgstr ""
+msgstr "Všimněte si, že lovce můžete umístit blízko dřevorubcova lesa."
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:82
@@ -306,12 +329,15 @@ msgid ""
 "It can happen that the animals don't reproduce fast enough or simply hide "
 "well."
 msgstr ""
+"Stává se, že zvířata se nemnoží dostatečně rychle nebo se umí dobře schovat."
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:84
 msgid ""
 "Conclusion: the hunter is not too reliable if you need continuous supply."
 msgstr ""
+"Závěr: Lovec není příliš spolehlivý zdroj potravy, pokud potřebujete "
+"nepřerušované zásobování."
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:86
