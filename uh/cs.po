@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2012-03-02 04:09+0100\n"
-"PO-Revision-Date: 2012-03-14 16:53+0200\n"
+"PO-Revision-Date: 2012-03-14 18:29+0200\n"
 "Last-Translator: VMa <VaclavMacurek@seznam.cz>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: cs\n"
@@ -1232,7 +1232,7 @@ msgstr "Odzbrojit"
 
 #: horizons/gui/tabs/overviewtab.py:313
 msgid "Tower overview"
-msgstr ""
+msgstr "Přehled obranné věže"
 
 #: horizons/gui/tabs/overviewtab.py:330
 msgid "Unit overview"
@@ -1254,12 +1254,12 @@ msgstr "Omezení: {amount}t na slot"
 
 #: horizons/gui/widgets/logbook.py:41
 msgid "Logbook"
-msgstr ""
+msgstr "Záznamy"
 
 #. (text of widget: headline_statistics)
 #: horizons/gui/widgets/logbook.py:42 horizons/i18n/guitranslations.py:586
 msgid "Statistics"
-msgstr ""
+msgstr "Statistiky"
 
 #. (text of widget: headline)
 #. (text of widget: headline_chat)
@@ -1281,7 +1281,7 @@ msgstr "Ve Vašem lodním deníku není zatím žádný záznam!"
 #: horizons/gui/widgets/pickbeltwidget.py:91
 #: horizons/i18n/guitranslations.py:877
 msgid "Graphics"
-msgstr ""
+msgstr "Grafika"
 
 #. (text of widget: headline_sound)
 #: horizons/gui/widgets/pickbeltwidget.py:92
@@ -1297,7 +1297,7 @@ msgstr "Ukončit hru"
 #: horizons/gui/widgets/playerssettlements.py:44
 #, python-format
 msgid "Settlements of {player}"
-msgstr ""
+msgstr "Osadníci hráče {player}"
 
 #. (text of widget: total_score)
 #: horizons/gui/widgets/playerssettlements.py:121
@@ -1308,7 +1308,7 @@ msgstr "Celkem"
 #: horizons/gui/widgets/playersships.py:49
 #, python-format
 msgid "Ships of {player}"
-msgstr ""
+msgstr "Lodě hráče {player}"
 
 #. (tooltip of widget: name)
 #: horizons/gui/widgets/playersships.py:83
