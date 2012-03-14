@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: translate-uh@lists.unknown-horizons.org\n"
 "POT-Creation-Date: 2012-03-13 16:25+0100\n"
-"PO-Revision-Date: 2012-03-06 18:11+0200\n"
+"PO-Revision-Date: 2012-03-14 02:58+0200\n"
 "Last-Translator: Christopher Oelmueller <chris.oelmueller+uh@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: cs\n"
@@ -597,11 +597,12 @@ msgstr ""
 # 89%
 #. This is the text body of a logbook page.
 #: po/tutorial.py:178
-#, fuzzy
 msgid ""
 "\n"
 "TASK: Build a signal fire at the coast close to your warehouse."
-msgstr "Postavte signální oheň na pobřeží v blízkosti Obchodního přístavu."
+msgstr ""
+"\n"
+"Postavte signální oheň na pobřeží v blízkosti Obchodního přístavu."
 
 #. This message is displayed in the widget on the left screen part. Please keep it short enough to fit there!
 #: po/tutorial.py:180
@@ -1265,7 +1266,6 @@ msgstr "Díky!"
 # 96%
 #. This is the text body of a logbook page.
 #: po/tutorial.py:368
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -1276,8 +1276,6 @@ msgid ""
 "\n"
 "Your UH-Team"
 msgstr ""
-"\n"
-"\n"
 "\n"
 "\n"
 "\n"
