@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: translate-uh@lists.unknown-horizons.org\n"
 "POT-Creation-Date: 2012-03-13 16:25+0100\n"
-"PO-Revision-Date: 2012-03-14 10:53+0200\n"
+"PO-Revision-Date: 2012-03-14 12:00+0200\n"
 "Last-Translator: naked.in.rain <martin.mezl@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: cs\n"
@@ -346,11 +346,13 @@ msgid ""
 "The Fisher needs a coastal building site like the warehouse and a fish school "
 "in range."
 msgstr ""
+"\n"
+"Rybář potřebuje budovu na pobřeží a Obchodní přístav a hejno ryb v dosahu."
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:88
 msgid "He will build a small rowing vessel and catch some fish."
-msgstr ""
+msgstr "Postaví si malou loďku a bude chytat ryby."
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:90
@@ -358,6 +360,8 @@ msgid ""
 "This is a very constant supply at the cost of a slightly longer production "
 "time per unit of food."
 msgstr ""
+"Jedná se o nepřetržitý zdroj potravy, cenou za to je delší produkční čas "
+"každé jednotky jídla."
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:92
@@ -365,6 +369,8 @@ msgid ""
 "A small settlement like yours can use both companies, and you can better "
 "balance pros and cons if you see the direct comparison."
 msgstr ""
+"Malá osada, jakou je ta Vaše, může využít obě společnosti. Pokud je uvidíte "
+"v přímém srovnání, můžete lépe porovnat jejich výhody a nevýhody."
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:94
@@ -372,11 +378,13 @@ msgid ""
 "\n"
 "TASK: Build a hunter and a fisher."
 msgstr ""
+"\n"
+"ÚKOL: Postavte lovce a rybáře."
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:96
 msgid "Don't forget to connect them to your warehouse with trails!"
-msgstr ""
+msgstr "Nezapomeňte je připojit k Vašemu Obchodnímu přístavu pomocí stezek!"
 
 #. This message is displayed in the widget on the left screen part. Please keep it short enough to fit there!
 #: po/tutorial.py:98
@@ -391,14 +399,14 @@ msgstr "NOVÝ ÚKOL: TRŽIŠTĚ"
 #. This is the text body of a logbook page.
 #: po/tutorial.py:102
 msgid "Your residents need a main square where they can fetch their goods from."
-msgstr ""
+msgstr "Vaši obyvatelé potřebují tržiště, kde si mohou vyzvednout zboží."
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:104
 msgid ""
 "This means that they need a trail connection from their home to the main "
 "square."
-msgstr ""
+msgstr "To znamená, že musí mít spojení pomocí stezky ze svých domů na tržiště."
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:106
@@ -406,6 +414,8 @@ msgid ""
 "All goods in your warehouse are available at this 'market place', so your "
 "residents do not need to walk to the fisher or even to the warehouse."
 msgstr ""
+"Všechno zboží v Obchodním přístavu je dostupné na tomto \"tržišti\", takže "
+"obyvatelé nemusí chodit k rybáři nebo až do Obchodního přístavu."
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:108
@@ -414,6 +424,9 @@ msgid ""
 "lumberjacks because building tents will clear away the trees that your "
 "lumberjack needs to produce boards."
 msgstr ""
+"Měli byste se vyvarovat výstavby stanů příliš blízko Vašemu "
+"dřevorubci,protože postavením stanů budou zničeny stromy, které dřevorubec "
+"potřebuje k produkci prken."
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:110
@@ -421,6 +434,8 @@ msgid ""
 "Companies work without being connected to the tents, so you don't need to "
 "build a road between the main square and e.g. your lumberjack tent."
 msgstr ""
+"Společnosti nepotřebují přístup ke stanům, proto nepotřebujete vybudovat "
+"cestu mezi tržištěm a např. dřevorubeckým stanem."
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:112
@@ -428,6 +443,8 @@ msgid ""
 "\n"
 "TASK: Build a main square."
 msgstr ""
+"\n"
+"ÚKOL: Postavte tržiště."
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:114
@@ -435,6 +452,8 @@ msgid ""
 "\n"
 "Now let's have a closer look at the main square."
 msgstr ""
+"\n"
+"Nyní se blíže podívejme na tržiště."
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:116
@@ -442,6 +461,8 @@ msgid ""
 "In the 'Account' tab you get a balance sheet of this island, featuring all "
 "costs you pay and all taxes you earn."
 msgstr ""
+"V záložce \"Účet\" můžete vidět přehled financí  Vašeho ostrova, který "
+"zahrnuje všechny platby, které platíte, a všechny daně, které dostáváte."
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:118
@@ -449,11 +470,13 @@ msgid ""
 "The items 'Sale' and 'Buy' refer to your trading balance and will be "
 "explained later on."
 msgstr ""
+"Položky \"Nákup\" a \"Prodej\" ukazují Vaši obchodní bilanci a budou vysvětleny "
+"později."
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:120
 msgid "If your balance is positive, you all-in-all make a profit."
-msgstr ""
+msgstr "Pokud je Vaše bilance kladná, vykazujete zisk."
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:122
@@ -462,6 +485,9 @@ msgid ""
 "inhabitants. You also set the increment-specific global tax here and allow or "
 "deny inhabitants of this increment to upgrade to the next higher one."
 msgstr ""
+"Dále jsou zde záložky odpovídající jednotlivým úrovním. Zde můžete sledovat "
+"statistiky o Vašich obyvatelích. Zde můžete nastavit celkovou daň a povolit "
+"nebo zakázat obyvatelům na dané úrovni postoupit do vyšší úrovně."
 
 #. This message is displayed in the widget on the left screen part. Please keep it short enough to fit there!
 #: po/tutorial.py:124
@@ -480,6 +506,8 @@ msgid ""
 "Settlers want to have a roof over their heads, else they won't even think of "
 "living in your city! You need to provide tents."
 msgstr ""
+"Osadníci chtějí mít střechu nad hlavou, jinak je ani nenapadne usadit se ve "
+"Vašem městě! Potřebujete zajistit jim stany."
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:130
@@ -487,6 +515,8 @@ msgid ""
 "Tents are the basic residential buildings. Your inhabitants will want to "
 "upgrade it when they reach higher increments."
 msgstr ""
+"Stany jsou základními obytnými budovami. Vaši obyvatelé je budou vylepšovat "
+"až dosáhnou vyšší úrovně."
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:132
@@ -495,6 +525,9 @@ msgid ""
 "you produce - but they at least pay taxes, and that's the only way you can "
 "make money for now!"
 msgstr ""
+"Osadníci se nezdají být příliš užiteční, snaží se spotřebovat všechno zboží, "
+"které produkujete, ale na druhou stranu platí daně, které jsou prozatím "
+"Vaším jediným zdrojem peněz!"
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:134
@@ -503,6 +536,8 @@ msgid ""
 "TASK: Build a tent and connect it to the main square. Tents dont need to be "
 "connected to any of the companies"
 msgstr ""
+"\n"
+"ÚKOL: Postavte stan a propojte jej s tržištěm."
 
 #. This message is displayed in the widget on the left screen part. Please keep it short enough to fit there!
 #: po/tutorial.py:136
@@ -515,6 +550,8 @@ msgid ""
 "\n"
 "Let's have a look at the tent overview tab."
 msgstr ""
+"\n"
+"Nyní se pojďme podívat na přehledovou záložku pro stany."
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:140
@@ -524,12 +561,16 @@ msgid ""
 "* the taxes they pay and\n"
 "* the resources they demand."
 msgstr ""
+"Můžete zde vidět:* spokojenost obyvatel,\n"
+"* daně, které platí\n"
+"* zdroje, které požadují."
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:142
 msgid ""
 "If their demands are fulfilled, happiness and thus your tax income increase."
 msgstr ""
+"Pokud budou jejich požadavky splněny, štěstí a také příjem z daní vzrostou."
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:144
