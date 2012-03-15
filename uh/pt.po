@@ -7,8 +7,8 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2012-03-02 04:09+0100\n"
-"PO-Revision-Date: 2012-03-15 01:24+0200\n"
-"Last-Translator: bdias <ebrunojdias@gmail.com>\n"
+"PO-Revision-Date: 2012-03-15 02:14+0200\n"
+"Last-Translator: Sérgio <knitter.is@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: pt\n"
 "MIME-Version: 1.0\n"
@@ -85,6 +85,8 @@ msgstr ""
 #: database files sql
 msgid "You have reached the current maximum increment. Your inhabitants will not upgrade further."
 msgstr ""
+"Atingiste o topo em desenvolvimento. Os teus habitantes não podem progredir "
+"mais."
 
 # 97%
 #. This is a database entry: a messagewidget message (left part of the screen).
