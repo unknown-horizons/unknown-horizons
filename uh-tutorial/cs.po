@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: translate-uh@lists.unknown-horizons.org\n"
 "POT-Creation-Date: 2012-03-13 16:25+0100\n"
-"PO-Revision-Date: 2012-03-14 12:14+0200\n"
+"PO-Revision-Date: 2012-03-15 11:23+0200\n"
 "Last-Translator: naked.in.rain <martin.mezl@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: cs\n"
@@ -762,12 +762,16 @@ msgid ""
 "Dragging the slider on the right of each slot determines your 'target value' "
 "which has a different meaning on 'Buy' and 'Sell'."
 msgstr ""
+"Tažením posuvníku na pravé straně každého slotu určíte \"cílovou hodnotu\", "
+"která má různé významy pro \"Prodej\" a \"Nákup\"."
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:190
 msgid ""
 "When buying, you will buy sufficient to hold your 'target value' in stock."
 msgstr ""
+"Pokud nakupujete zboží, bude nakoupeno tolik zboží, aby byla udržena \"cílová "
+"hodnota\" ve skladu."
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:192
@@ -775,6 +779,8 @@ msgid ""
 "When selling, the 'target value' is the stock amount at which you will always "
 "stop selling until you get more of that resource again."
 msgstr ""
+"Pokud zboží prodáváte, \"cílová hodnota\" určuje množství zboží, které "
+"uchováváte jako rezervu a nebude prodáno."
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:194
@@ -784,6 +790,11 @@ msgid ""
 "Having a 'Buy' slot and 5 tons in stock, a slider positioned at 9 tons will "
 "cause you to buy 4 additional tons at most."
 msgstr ""
+"\n"
+"Ukážeme si to na příkladu:\n"
+"Pokud máme nastavený slot na \"Nákup\" a na skladě máme 5 tun daného zboží, "
+"tak nastavení posuvníku na hodnotu 9 tun způsobí nákup maximálně 4 dalších "
+"tun zboží. "
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:196
@@ -791,6 +802,8 @@ msgid ""
 "Selling works similarly. A 'Sell' slot with 18 tons in stock and the slider "
 "positioned at 13 will sell up to 5 tons."
 msgstr ""
+"Prodej funguje obdobně. Slot \"Prodej\" s 18 tunami zboží na skladě a posuvník "
+"nastavený na hodnotu 13 tun způsobí, že bude prodáno 5 tun zboží."
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:198
@@ -798,6 +811,9 @@ msgid ""
 "If the free trader however only wants to buy or sell less than your settings "
 "would allow him, you need to live with that and wait for him to return."
 msgstr ""
+"Pokud svobodný obchodník bude chtít nakoupit nebo prodat méně zboží než "
+"nastavení vašich slotů dovoluje, nezbývá Vám nic jiného než počkat na jeho "
+"příští cestu."
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:200
@@ -805,6 +821,9 @@ msgid ""
 "Unknown Horizons features smart pricing, so the value of one unit can vary.\n"
 "It is NOT possible to change prices manually!"
 msgstr ""
+"Unknown Horizons obsahuje chytré nastavení cen, to znamená, že cena za "
+"jednotku zboží se může lišit.\n"
+"Není možné měnit ceny manuálně!"
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:202
@@ -812,6 +831,8 @@ msgid ""
 "You can see your trade balance in the 'Account' tab comparing the 'Sale' and "
 "'Buy' values there."
 msgstr ""
+"Vaši obchodní bilanci můžete vidět v záložce \\\"Účet\\\", kde jsou srovnány "
+"\"Nákup\" a \"Prodej\"."
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:204
@@ -819,6 +840,8 @@ msgid ""
 "\n"
 "TASK: Buy as many tools as you need to have 30 tools in stock!"
 msgstr ""
+"\n"
+"ÚKOL: Nakupte nástroje tak, aby zásoby ve vašem skladu byly 30 jednotek!"
 
 #. This message is displayed in the widget on the left screen part. Please keep it short enough to fit there!
 #: po/tutorial.py:206
@@ -838,12 +861,12 @@ msgstr "NOVÝ ÚKOL: POSTAVTE PAVILÓN"
 #. This is the text body of a logbook page.
 #: po/tutorial.py:212
 msgid "Those tools will be enough for the moment. Well done!"
-msgstr ""
+msgstr "Pro tuto chvíli máte dostatek nástrojů. Velmi dobře!"
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:214
 msgid "You now provide housing, a main square and food to your inhabitants."
-msgstr ""
+msgstr "Vašim obyvatelům nyní poskytujete bydlení, tržiště a jídlo."
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:216
@@ -852,6 +875,9 @@ msgid ""
 "that in the marketplace or tent tab - your sailors want a basic building "
 "where they can pray."
 msgstr ""
+"Stále je zde ještě jeden požadavek, který nebyl doposud uspokojen, jak si "
+"můžete sami ověřit v záložce tržnice nebo stanu - vaši námořníci chtějí "
+"budovu, kde by se mohli modlit."
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:218
@@ -859,6 +885,8 @@ msgid ""
 "The solution is a pavilion which the village parson quickly puts up as "
 "shelter from the sun."
 msgstr ""
+"Řešením je pavilón, který vesnický pastor rychle vztyčí jako úkryt před "
+"sluncem."
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:220
@@ -866,6 +894,8 @@ msgid ""
 "Service buildings like this also need to be connected to the tents with a "
 "trail, else your inhabitants feel unable to reach them."
 msgstr ""
+"Budovy služeb, jako je tato, potřebují být propojeny se stany pomocí cest, "
+"jinak je vaši obyvatelé nebudou moci využívat."
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:222
@@ -873,6 +903,8 @@ msgid ""
 "\n"
 "Note that faith is treated like a physical resource!"
 msgstr ""
+"\n"
+"Všimněte si, že víra se chová jako fyzikální zdroj!"
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:224
@@ -880,6 +912,8 @@ msgid ""
 "This means that your inhabitants need a road connection to the producer "
 "(pavilion) to pick up faith there."
 msgstr ""
+"To znamená, že vaši obyvatelé potřebují stezky k producentovi (pavilónu), "
+"aby si mohli přijít vyzvednout víru."
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:226
@@ -887,6 +921,8 @@ msgid ""
 "After some time, they will have consumed it and then again look for a "
 "producer to collect more faith."
 msgstr ""
+"Po určité době tuto víru zkonzumují a potom znovu vyhledají producenta, aby "
+"dostali více víry."
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:228
@@ -896,6 +932,9 @@ msgid ""
 "tents.\n"
 "The road connection is required as well."
 msgstr ""
+"Důležité:\n"
+"NENÍ dostačující, že se budova nachází v dostatečné vzdálenosti od stanů.\n"
+"Spojení pomocí stezky je rovněž vyžadováno."
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:230
@@ -904,6 +943,9 @@ msgid ""
 "TASK: Build a pavilion with a trail to the tents in order to fulfill your "
 "sailors' demand for faith."
 msgstr ""
+"\n"
+"ÚKOL: Postavte pavilón spojený stezkou se stany, aby se uspokojila potřeba "
+"víry vašich námořníků."
 
 #. This message is displayed in the widget on the left screen part. Please keep it short enough to fit there!
 #: po/tutorial.py:232
@@ -921,6 +963,8 @@ msgid ""
 "All demands are fulfilled now if your inhabitants can regularly visit the "
 "main square & pavilion and your food supply is adequate."
 msgstr ""
+"Všechny požadavky jsou nyní splněny. Vaši obyvatelé můžou pravidelně "
+"navštěvovat náměstí a pavilón a Vaše zásobení jídlem je dostačující."
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:238
@@ -928,6 +972,8 @@ msgid ""
 "If the sailors are happy enough, they want to advance to the next increment "
 "called Pioneers."
 msgstr ""
+"Pokud budou námořníci dostatečně šťastní, budou chtít postoupit na další "
+"úroveň nazvanou Průkopníci."
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:240
@@ -935,6 +981,8 @@ msgid ""
 "To make them happy, there is nothing else for you to do but setting taxes to "
 "a lower level since you have fulfilled all the demands of your inhabitants."
 msgstr ""
+"Abyste je učinili šťastnými, není nic jednoduššího než nastavit daně na "
+"nižší úroveň, dokud nebudou naplněny všechny požadavky Vašich obyvatel."
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:242
@@ -943,6 +991,9 @@ msgid ""
 "to bankruptcy sooner or later. For a period of time and if you know what you "
 "are doing, it is fine though."
 msgstr ""
+"Nízké daně je potřeba využívat obezřetně. Pokud je necháte na nízké úrovni, "
+"přivedete svůj ostrov, dříve nebo později, k bankrotu. Pokud ale víte, co "
+"děláte, fungují skvěle."
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:244
@@ -951,6 +1002,9 @@ msgid ""
 "look for new construction material there to build a log house. This house "
 "will replace the old tent."
 msgstr ""
+"Po určité době se první obyvatelé vypraví na náměstí, aby získali nový "
+"stavební materiál, který potřebují ke stavbě srubu. Tímto domem nahradí své "
+"dosavadní stany."
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:246
@@ -959,6 +1013,9 @@ msgid ""
 "Such residential upgrades cost resources and can thus be restricted at the "
 "main square."
 msgstr ""
+"\n"
+"Takové vylepšení obytných budov jsou jediným vylepšením, které Vás stojí "
+"prostředky a nemůže být Vámi zakázáno."
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:248
@@ -966,6 +1023,10 @@ msgid ""
 "There also are upgrades of buildings without costs, as you will see with the "
 "lumberjack. In this case, only the graphics change."
 msgstr ""
+"Jsou zde také manuální vylepšení některých budov, kdy jsou prostředky "
+"využity ke stavbě lepší verze budovy na tom samém místě. Také existují "
+"vylepšení bez poplatků, například jak uvidíte u dřevorubce (dojde ke "
+"grafické změně)."
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:250
@@ -973,6 +1034,8 @@ msgid ""
 "Upgraded housing accomodates more inhabitants, and pioneers pay more taxes "
 "than sailors, too."
 msgstr ""
+"Vylepšené domy pojmou více obyvatel a průkopníci také platí vyšší daně než "
+"námořníci."
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:252
@@ -981,6 +1044,9 @@ msgid ""
 "additional goods which sailors do not need - so you will need to spend this "
 "extra money to make them happy as well."
 msgstr ""
+"Jak už jste si možná všimli, nevýhodou je, že průkopníci požadují dodatečné "
+"zboží, které námořníci nepotřebovali - takže budete muset utratit peníze, "
+"abyste je učinili šťastnými."
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:254
@@ -988,6 +1054,9 @@ msgid ""
 "\n"
 "TASK: Set the tax level to Low (left end) and wait for sailors to upgrade."
 msgstr ""
+"\n"
+"ÚKOL: Nastavte výši daní na nízkou hodnotu (levý okraj posuvníku) a počkejte "
+"na vylepšení."
 
 #. This message is displayed in the widget on the left screen part. Please keep it short enough to fit there!
 #: po/tutorial.py:256
@@ -1004,18 +1073,19 @@ msgstr "NOVÝ ÚKOL: POSTAVTE FARMU"
 #. This is the text body of a logbook page.
 #: po/tutorial.py:260
 msgid "Congratulations! Some of your inhabitants have reached increment II!"
-msgstr ""
+msgstr "Gratulujeme! Část vašich obyvatel dosáhla další úrovně II!"
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:262
 msgid ""
 "Now you have access to new buildings, take a look at the Build menu again."
 msgstr ""
+"Nyní máte přístup k novým budovám, podívejte se do Stavebního menu znova."
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:264
 msgid "A shiny new tab appeared there."
-msgstr ""
+msgstr "Objevila se zde nová blýskavá záložka."
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:266
@@ -1023,6 +1093,9 @@ msgid ""
 "Pioneers will demand cloth, so you need to set up a production line for cloth "
 "starting with lambs wool (which is one of the goods produced at the farm)."
 msgstr ""
+"Průkopníci budou požadovat látku, to znamená, že budete muset vytvořit "
+"výrobní linku pro látku, která začne ovčí vlnou (ovce jsou produkovány na "
+"farmě)."
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:268
@@ -1030,11 +1103,13 @@ msgid ""
 "The farm is a very special production building since it can produce not only "
 "one, but very many (and different) goods if you choose."
 msgstr ""
+"Farma je vyjímečná produkční budova, která neprodukuje pouze jednu, ale "
+"velmi mnoho (a rozličných) druhů zboží, které si zvolíte."
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:270
 msgid "The output of farms depends on what kind of fields you build around it."
-msgstr ""
+msgstr "Výstupní produkt závisí na typu polí, které jsou vystavěny okolo ní."
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:272
@@ -1042,6 +1117,8 @@ msgid ""
 "\n"
 "We will have a closer look at this later."
 msgstr ""
+"\n"
+"K tomuto se podrobněji vrátíme později."
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:274
@@ -1049,6 +1126,8 @@ msgid ""
 "Farms, like all companies producing raw materials, do not necessarily need to "
 "be connected to storage or a warehouse."
 msgstr ""
+"Farmy, stejně jako všechny společnosti produkující suroviny, nemusí být "
+"propojeny se skladištěm nebo pobočkou."
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:276
@@ -1057,6 +1136,9 @@ msgid ""
 "collectors from the warehouse or storage tent can reach the final company "
 "everything's fine."
 msgstr ""
+"Jednotky výrobní společnosti musí dosáhnout na výstupy z farmy a výběrčím z "
+"pobočky nebo skladiště stačí dosáhnout na výsledné produkty z výrobní "
+"společnosti."
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:278
@@ -1065,6 +1147,9 @@ msgid ""
 "(which can make sense) or even on different islands, you will need a "
 "connection to collectors."
 msgstr ""
+"Nicméně, pokud plánujete provádět některou část z výrobního řetězce v jiných "
+"částech ostrova (což může dávat smysl) nebo na různých ostrovech, budete "
+"potřebovat propojení k výběrčím."
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:280
@@ -1072,6 +1157,8 @@ msgid ""
 "Try to build the farm not too close to the coast or your existing buildings "
 "since it will need some space around it to work well."
 msgstr ""
+"Zkuste postavit farmu tak, aby nebyla blízko pobřeží a stávajících budov, "
+"protože bude pro správnou činnost potřebovat místo okolo sebe."
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:282
@@ -1079,6 +1166,8 @@ msgid ""
 "\n"
 "TASK: Build a farm."
 msgstr ""
+"\n"
+"ÚKOL: Postavte farmu."
 
 #. This message is displayed in the widget on the left screen part. Please keep it short enough to fit there!
 #: po/tutorial.py:284
@@ -1093,12 +1182,14 @@ msgstr "NOVÝ ÚKOL: STAVBA POLÍ"
 #. This is the text body of a logbook page.
 #: po/tutorial.py:288
 msgid "The farm itself is not going to produce anything without some fields."
-msgstr ""
+msgstr "Samotná farma nebude nic produkovat, pokud nebudou postavena pole."
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:290
 msgid "You currently have the choice between pastures, potato and sugar fields."
 msgstr ""
+"Nyní máte možnost výběru mezi pastvinami, bramborovými poli a plantážemi s "
+"cukrovou třtinou."
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:292
@@ -1109,6 +1200,11 @@ msgid ""
 "* Sugar field: Grows sugar which is used to distill liquor and (later) "
 "produce confectionery."
 msgstr ""
+"Proveďme krátké shrnutí:\n"
+"* Pastviny - žijí zde ovce, produkují ovčí vlnu.\n"
+"* Bramborové pole - pěstují se zde brambory, ty slouží jako potrava.\n"
+"* Plantáž cukrové třtiny - pěstuje se zde třtina, která je dále použita k "
+"destilaci kořalky a (později) produkci cukrovinek."
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:294
@@ -1116,6 +1212,9 @@ msgid ""
 "We now only need pastures, but in case your food supply chain is too small "
 "(maybe many residential buildings) you can also produce some potatoes."
 msgstr ""
+"Nyní potřebujeme pouze pastviny, ale v případě, že Vaše zásobení jídlem je "
+"příliš malé (díky mnoha obytným budovám), můžete také postavit bramborové "
+"pole."
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:296
@@ -1123,6 +1222,8 @@ msgid ""
 "Note that for potatoes you will need a road connection to the farm (not to "
 "the field!) as it will be the only company to work on the goods."
 msgstr ""
+"Všimněte si, že brambory potřebujete propojit s farmou (nikoli s poli!), což "
+"je jediná budova, která pracuje se zbožím."
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:298
@@ -1130,6 +1231,9 @@ msgid ""
 "\n"
 "Make sure that all fields you build are in the area covered by the farm."
 msgstr ""
+"\n"
+"Ujistěte se, že všechna pole, která stavíte, leží v oblasti, která je "
+"pokryta farmou."
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:300
@@ -1138,6 +1242,9 @@ msgid ""
 "efficiency of the farm - but you need to check how many fields one farm can "
 "serve."
 msgstr ""
+"Můžete mít kombinovanou produkci - jedna jednotka pastvin nepovede ke "
+"stoprocentní efektivnosti farmy, ale na druhou stranu, počet polí, které "
+"jedna farma může zabezpečit je omezen."
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:302
@@ -1146,6 +1253,8 @@ msgid ""
 "there (to seed, harvest, herd, etc…) and because of that, the farm may be "
 "unable to serve all of the fields you built for it in time."
 msgstr ""
+"Různé druhy polí mají různé časové požadavky (k vysetí, sklizni, pastvě, "
+"atd.) a kvůli tomu nemusí být farma schopna obsloužit všechna pole včas."
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:304
@@ -1153,6 +1262,8 @@ msgid ""
 "For now, you do not need to care about these issues a lot since you haven't "
 "built any fields. Let's change that!"
 msgstr ""
+"Nyní se tím nemusíte příliš zabývat, protože jste nevybudovali žádné pole. "
+"Pojďme to změnit!"
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:306
@@ -1161,6 +1272,9 @@ msgid ""
 "TASK: Build at least one pasture in the farm's range and add potato fields if "
 "you like."
 msgstr ""
+"\n"
+"ÚKOL: Vybudujte alespoň jednu pastvinu v okolí farmy a přidejte bramborové "
+"pole, pokud chcete."
 
 #. This message is displayed in the widget on the left screen part. Please keep it short enough to fit there!
 #: po/tutorial.py:308
@@ -1176,7 +1290,7 @@ msgstr "NOVÝ ÚKOL: POSTAVTE SKLADIŠTĚ"
 #. This is the text body of a logbook page.
 #: po/tutorial.py:312
 msgid "Did you watch your lumberjack recently?"
-msgstr ""
+msgstr "Viděli jste nedávno dřevorubce?"
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:314
@@ -1184,6 +1298,8 @@ msgid ""
 "Since your warehouse does not have unlimited space to store goods, collectors "
 "will stop fetching goods from companies when stock is full."
 msgstr ""
+"Vzhledem k tomu že Obchodní přístav nemá neomezený prostor pro uložení "
+"zboží, dělníci přestanou odebírat zboží od dodavatelů, když je plný zásob."
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:316
@@ -1191,6 +1307,9 @@ msgid ""
 "So if no sailors recently wanted to upgrade their tents, you probably have a "
 "lot of boards and in that case, the lumberjack may idle."
 msgstr ""
+"Takže pokud námořník nechtěl nedávno provést vylepšení svého stanu, "
+"pravděpodobně máte spoustu prken, a v takovém případě nemusí dřevorubec "
+"pracovat."
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:318
@@ -1198,6 +1317,7 @@ msgid ""
 "We can improve this situation in two different ways, and we will have a look "
 "at both of them below."
 msgstr ""
+"Tuto situaci můžete zlepšit dvěma různými způsoby, pojďme se na ně podívat."
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:320
@@ -1206,6 +1326,9 @@ msgid ""
 "This may sound strange, but click on the gear wheel you see in a lumberjack "
 "hut's overview."
 msgstr ""
+"Všichni dodavatelé nabízejí možnost nepracovat.\n"
+"Může to znít divně, ale zkuste kliknout na ozubené kolo, které vidíte "
+"například v přehledu dřevorubce."
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:322
@@ -1214,6 +1337,9 @@ msgid ""
 "costs you pay for the building will decrease. They won't be zero, but still "
 "lower than if you keep the company producing."
 msgstr ""
+"Pokud je povolen režim \"rozbít\" (říkáme tomu \"Vyřazení z provozu\"), budou "
+"provozní náklady, které zaplatíte za budovu, nižší. Nebudou nulové, ale "
+"stále nižší, než pokud bude dodavatel pracovat."
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:324
@@ -1222,6 +1348,9 @@ msgid ""
 "This means that you can save money when you temporarily do not need a company "
 "and do not want to tear it down, either."
 msgstr ""
+"\n"
+"To znamená, že můžete ušetřit poeníze tak, že dočasně zastavíte produkci "
+"zboží, které nepotřebujete a zároveň nechcete budovu strhnout."
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:326
@@ -1229,6 +1358,8 @@ msgid ""
 "Another solution is to build the last increment-I building which has not been "
 "mentioned so far: the storage tent."
 msgstr ""
+"Dalším řešením je vybudování poslední budovy, která zatím nebyla zmíněna: "
+"skladovacího stanu."
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:328
@@ -1237,6 +1368,9 @@ msgid ""
 "* Offers more storage for your goods, and\n"
 "* sends its own collectors to fetch goods, just like the warehouse does."
 msgstr ""
+"Tato budova slouží ke  dvoum účelům,  a to:* Nabízí více prostoru pro vaše "
+"zboží, a\n"
+"* vysílá své sběrače vyzvednout zboží, stejně jako Obchodní přístav."
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:330
@@ -1245,6 +1379,9 @@ msgid ""
 "products collected, and if the warehouse is overwhelmed with collector tasks, "
 "you can place a storage tent to help out there."
 msgstr ""
+"Pamatujte že všechny společnosti potřebují být spojeny s Obchodním přístavem "
+"pro svoz zboží. Pokud má Obchodní přístav moc úkolů postavte skladovací "
+"stan ktery Obchodnímu přístavu pomůže při svážení výrobků."
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:332
@@ -1252,6 +1389,8 @@ msgid ""
 "\n"
 "TASK: Build a storage tent, preferably where you need collectors."
 msgstr ""
+"\n"
+"ÚKOL: Vybudujte skladovací stan, přednostně tam kde potřebujete sběrače."
 
 #. This message is displayed in the widget on the left screen part. Please keep it short enough to fit there!
 #: po/tutorial.py:334
@@ -1269,6 +1408,8 @@ msgid ""
 "Now the wool production is set up, you still need a weaver to produce cloth "
 "out of this wool."
 msgstr ""
+"Nyní je nastavena produkce vlny, ale stále potřebujete tkalcovnu pro "
+"produkci látky z vlny."
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:340
@@ -1276,11 +1417,13 @@ msgid ""
 "There are two spots where you can build it - either close to the farm or "
 "close to a Storage Tent (or the warehouse)."
 msgstr ""
+"Jsou zde dvě místa, kde ji můžete postavit - buď v blízkosti farmy nebo v "
+"blízkosti skladovacího stanu (Obchodního přístavu)."
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:342
 msgid "In both cases you should ensure the connection to a trail as well."
-msgstr ""
+msgstr "V obou případech se ujistěte, jestli je propojená stezkou."
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:344
@@ -1288,6 +1431,8 @@ msgid ""
 "You can place the weaver close to the farm and tear down any trail to the "
 "farm to see that it will still fetch the wool and produce."
 msgstr ""
+"Pokud bude tkadlec v dosahu farmy nemusíte jej propojovat stezkou, zásobení "
+"bude fungovat."
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:346
@@ -1295,6 +1440,8 @@ msgid ""
 "\n"
 "TASK: Build a weaver positioned so it can get wool."
 msgstr ""
+"\n"
+"ÚKOL: Postavte tkalcovnu tak, aby byla zásobena vlnou."
 
 #. This message is displayed in the widget on the left screen part. Please keep it short enough to fit there!
 #: po/tutorial.py:348
@@ -1320,7 +1467,7 @@ msgstr "NOVÝ ÚKOL: DOKONČETE TUTORIAL"
 msgid ""
 "Try to house a total of 50 or more inhabitants in your city by providing more "
 "residential buildings."
-msgstr ""
+msgstr "Dosáhnětě 50 a více obyvatel tím, že jim postavíte více domů."
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:356
@@ -1328,6 +1475,8 @@ msgid ""
 "Once you are able to keep an economy running which can satisfy this amount of "
 "consumers, you are ready to discover new Unknown Horizons!"
 msgstr ""
+"Jakmile zajistíte obyvatele, jste připraveni objevovat nové Neznámé obzory "
+"(Unknown Horizons)!"
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:358
@@ -1335,6 +1484,9 @@ msgid ""
 "You also need enough money to keep this economy running, so a positive "
 "balance (check in the warehouse tab 'Account') is required."
 msgstr ""
+"Také budete potřebovat dostatek peněz, abyste uchovali stabilní ekonomiku. "
+"Proto je vyžadována kladná bilance (můžete si ji zkontrolovat v Obchodním "
+"přístavu v záložce \"Účet\")."
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:360
@@ -1343,6 +1495,9 @@ msgid ""
 "TASK: Reach a total number of 50 inhabitants and a positive balance to "
 "complete this tutorial."
 msgstr ""
+"\n"
+"ÚKOL: Dosáhněte počtu 50 obyvatel a udrže kladnou bilanci pro dokončení "
+"tutorialu."
 
 #. This is a logbook page heading. Space is VERY short, please only translate to strings that fit (roughly 30 characters max).
 #: po/tutorial.py:362
