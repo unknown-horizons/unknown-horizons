@@ -7,8 +7,8 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2012-03-02 04:09+0100\n"
-"PO-Revision-Date: 2012-03-15 02:14+0200\n"
-"Last-Translator: Sérgio <knitter.is@gmail.com>\n"
+"PO-Revision-Date: 2012-03-16 00:00+0200\n"
+"Last-Translator: bdias <ebrunojdias@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: pt\n"
 "MIME-Version: 1.0\n"
@@ -509,7 +509,7 @@ msgstr "Nome de ficheiro inválido"
 
 #: horizons/command/game.py:37
 msgid "Received an invalid filename for a save command."
-msgstr ""
+msgstr "Recebido um nome de ficheiro inválido para guardar"
 
 #. There was a problem during the 'save game' procedure.
 #: horizons/command/game.py:47 horizons/gui/gui.py:177
@@ -538,6 +538,8 @@ msgstr "Repor as definições por omissão"
 #: horizons/engine/settingsdialog.py:56
 msgid "Restoring the default settings will delete all changes to the settings you made so far."
 msgstr ""
+"O restauro das definições padrão implicará a anulação de todas as mudanças "
+"efectuadas até agora."
 
 #: horizons/engine/settingsdialog.py:57
 msgid "Do you want to continue?"
@@ -587,12 +589,14 @@ msgstr ""
 #: horizons/engine/settingshandler.py:228
 #: horizons/gui/modules/multiplayermenu.py:56
 msgid "Check the settings you specified in the network section."
-msgstr ""
+msgstr "Verifique as definições que especificou na secção de ligação de rede"
 
 #. i18n This is advice for players seeing a network error with the current config
 #: horizons/engine/settingshandler.py:232
 msgid "Low port numbers sometimes require special access privileges, try 0 or a number greater than 1024."
 msgstr ""
+"Números de portas baixos por vezes requerem privilégios especiais de acesso, "
+"tenta o 0 ou um número maior que 1024"
 
 # 80%
 #: horizons/engine/settingshandler.py:262
@@ -694,7 +698,7 @@ msgstr "Data de gravação desconhecida"
 #: horizons/gui/gui.py:593
 #, python-format
 msgid "Saved at {time}"
-msgstr ""
+msgstr "Guardado em {time}"
 
 #. N_ takes care of plural forms for different languages
 #: horizons/gui/gui.py:600
@@ -707,7 +711,7 @@ msgstr[1] ""
 #: horizons/gui/gui.py:610
 #, python-format
 msgid "Savegame version {version}"
-msgstr ""
+msgstr "Versão do jogo guardado {version}"
 
 #: horizons/gui/gui.py:614
 #, python-format
@@ -729,13 +733,13 @@ msgstr "Nenhum ficheiro seleccionado"
 
 #: horizons/gui/gui.py:637
 msgid "You need to select a savegame to delete."
-msgstr "É necessário seleccionar um jogo gravado para apagar."
+msgstr "É necessário seleccionar um jogo guardado para apagar."
 
 # 84%
 #: horizons/gui/gui.py:641
 #, python-format
 msgid "Do you really want to delete the savegame '{name}'?"
-msgstr "Tem a certeza que deseja apagar o jogo gravado \"{name}\"?"
+msgstr "Tem a certeza que deseja apagar o jogo guardado \"{name}\"?"
 
 #: horizons/gui/gui.py:643
 msgid "Confirm deletion"
@@ -747,7 +751,7 @@ msgstr "Erro!"
 
 #: horizons/gui/gui.py:648
 msgid "Failed to delete savefile!"
-msgstr "Não foi possível apagar o ficheiro de jogo gravado!"
+msgstr "Não foi possível apagar o ficheiro de jogo guardado!"
 
 #. i18n this defines how each line in our help looks like. Default: '[C] = Chat'
 #: horizons/gui/gui.py:666
