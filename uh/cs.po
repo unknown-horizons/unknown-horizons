@@ -2147,22 +2147,22 @@ msgstr "Pasivní"
 #. (text of widget: have_fun)
 #: horizons/i18n/guitranslations.py:698
 msgid "Have fun."
-msgstr ""
+msgstr "Bavte se."
 
 #. (text of widget: headline)
 #: horizons/i18n/guitranslations.py:700
 msgid "Key bindings"
-msgstr ""
+msgstr "Klávesové zkratky"
 
 #. (text of widget: lbl_BUILD_TOOL)
 #: horizons/i18n/guitranslations.py:702
 msgid "Show build menu"
-msgstr ""
+msgstr "Ukázat menu staveb"
 
 #. (text of widget: lbl_CONSOLE)
 #: horizons/i18n/guitranslations.py:706
 msgid "Toggle console on/off"
-msgstr ""
+msgstr "Vypnout/zapnout konzoli"
 
 #. (text of widget: lbl_COORD_TOOLTIP)
 #: horizons/i18n/guitranslations.py:708
