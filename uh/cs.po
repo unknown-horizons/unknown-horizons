@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2012-03-02 04:09+0100\n"
-"PO-Revision-Date: 2012-03-15 13:32+0200\n"
+"PO-Revision-Date: 2012-03-15 14:01+0200\n"
 "Last-Translator: VMa <VaclavMacurek@seznam.cz>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: cs\n"
@@ -1955,32 +1955,32 @@ msgstr ""
 #. (tooltip of widget: delete_warehouse) Trade route entry
 #: horizons/i18n/guitranslations.py:573
 msgid "Delete entry"
-msgstr ""
+msgstr "Smazat položku"
 
 #. (tooltip of widget: move_down) Trade route entry
 #: horizons/i18n/guitranslations.py:575
 msgid "Move down"
-msgstr ""
+msgstr "Posun dolů"
 
 #. (tooltip of widget: move_up) Trade route entry
 #: horizons/i18n/guitranslations.py:577
 msgid "Move up"
-msgstr ""
+msgstr "Posun nahoru"
 
 #. (text of widget: headline_game_messages)
 #: horizons/i18n/guitranslations.py:584
 msgid "Game messages"
-msgstr ""
+msgstr "Herní zprávy"
 
 #. (text of widget: stats_players)
 #: horizons/i18n/guitranslations.py:588
 msgid "Players"
-msgstr ""
+msgstr "Hráči"
 
 #. (text of widget: stats_settlements)
 #: horizons/i18n/guitranslations.py:590
 msgid "My settlements"
-msgstr ""
+msgstr "Mé osady"
 
 #. (text of widget: stats_ships)
 #: horizons/i18n/guitranslations.py:592
