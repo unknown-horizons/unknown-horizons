@@ -44,6 +44,7 @@ updated automatically.
 from subprocess import Popen, PIPE
 import sys
 import re
+import Tkinter
 import tkMessageBox
 
 syntax_checker = "pyflakes"
@@ -122,6 +123,10 @@ for fname in files_modified:
 
 
 if exitcode == 1:
+	# Hide root Tk window that is always created
+	window = Tkinter.Tk()
+	window.wm_withdraw()
+
 	if not tkMessageBox.askyesno("Errors have been detected", "Cancel Commit?"):
 		exitcode = 0
 sys.exit(exitcode)
