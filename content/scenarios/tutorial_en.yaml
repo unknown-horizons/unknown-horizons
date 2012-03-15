@@ -224,7 +224,7 @@ events:
        Settlers may not look very useful since they will try to consume all goods you produce - but they at least pay taxes, and that's the only way you can make money for now!
      - |
 
-       TASK: Build a tent and connect it to the main square. Tents dont need to be connected to any of the companies
+       TASK: Build a tent and connect it to the main square. Tents dont need to be connected to any of the companies.
    - {type: message, arguments: ["Build a tent and connect it to the main square."]}
    - {type: set_var, arguments: ["tutStepDone", 28]}
   conditions:
