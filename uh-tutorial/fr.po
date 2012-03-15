@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: translate-uh@lists.unknown-horizons.org\n"
 "POT-Creation-Date: 2012-03-13 16:25+0100\n"
-"PO-Revision-Date: 2012-03-15 11:38+0200\n"
+"PO-Revision-Date: 2012-03-15 11:59+0200\n"
 "Last-Translator: Sebastien (seblabel) <sebastiencharpentier@laposte.net>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: fr\n"
@@ -75,6 +75,9 @@ msgid ""
 "in the top-right corner (below the mini-map, with a sealed document and a "
 "feather)."
 msgstr ""
+"Après avoir fermé ce journal, il peut être réouvert avec l'icône «Journal de "
+"bord» en haut à droite (sous la mini-carte, avec un document cacheté et une "
+"plume)."
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:18
@@ -83,6 +86,9 @@ msgid ""
 "To see your first task, click on the button \"Read next entries\" in the "
 "navigation panel! It looks like this:"
 msgstr ""
+"\n"
+"Pour voir votre première tâche, cliquez le bouton «Lire entrées suivantes» "
+"dans la fenêtre de navigation! Ça ressemble à ça: "
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:20
@@ -92,6 +98,10 @@ msgid ""
 "explained or even buggy conditions: Please tell us and we will try to improve "
 "the tutorial!"
 msgstr ""
+"\n"
+"Pour toute suggestion sur une meilleure rédaction, une explication, ou pour "
+"nous rapporter un bug : N'hésitez pas à nous contacter et nous essaierons "
+"d'améliorer ce didacticiel!"
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:22
@@ -99,11 +109,13 @@ msgid ""
 "\n"
 "Visit www.unknown-horizons.org for help on how to contact the team!"
 msgstr ""
+"\n"
+"Visitez www.unknown-horizons.org pour savoir comment contacter l'équipe!"
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:24
 msgid "And now, let's start the actual game."
-msgstr ""
+msgstr "Et maintenant, commençons la partie."
 
 #. This is a logbook page heading. Space is VERY short, please only translate to strings that fit (roughly 30 characters max).
 #: po/tutorial.py:26
@@ -116,6 +128,8 @@ msgid ""
 "To move your ship, select it with a left click and right click on the "
 "location you want it to go to."
 msgstr ""
+"Pour déplacer votre bateau, sélectionnez le par un clic gauche et cliquez "
+"droit sur la destination de votre choix."
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:30
@@ -123,6 +137,8 @@ msgid ""
 "Once you are near the coast, the anchor-like button you see in the overview "
 "tab will become active."
 msgstr ""
+"Une fois que vous êtes près de la côte, le bouton en forme d'ancre du "
+"panneau deviendra actif."
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:32
@@ -130,12 +146,14 @@ msgid ""
 "This indicates that you are able to build a warehouse there by pressing that "
 "button (called 'Build Settlement')."
 msgstr ""
+"Cela signifie que vous êtes alors capable de construire un comptoir ici en "
+"cliquant sur ce bouton (nommé «Fonder une colonie»)."
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:34
 msgid ""
 "Now a preview of your building is dragged around when you move the cursor."
-msgstr ""
+msgstr "Maintenant, un aperçu de votre comptoir devrait suivre votre curseur."
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:36
@@ -143,6 +161,8 @@ msgid ""
 "You can build on any spot where this preview is not shaded red.\n"
 "Click where you want to place your first building."
 msgstr ""
+"Vous pouvez construire aux endroits où cet aperçu n’apparait pas en rouge.\n"
+"Cliquez à l'endroit où vous voulez placer votre première construction."
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:38
@@ -150,6 +170,8 @@ msgid ""
 "\n"
 "TASK: Build a warehouse at the coast."
 msgstr ""
+"\n"
+"MISSION: Construire un comptoir sur la côte."
 
 # I changed this to make it fit properly (seb)
 #. This is a logbook page heading. Space is VERY short, please only translate to strings that fit (roughly 30 characters max).
@@ -163,6 +185,9 @@ msgid ""
 "The construction material on your ship got unloaded automatically. You can "
 "now construct some basic buildings."
 msgstr ""
+"Les matériaux de construction de votre vaisseau sont déchargés "
+"automatiquement. Vous pouvez maintenant construire quelques bâtiments "
+"basiques."
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:44
