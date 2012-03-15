@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2012-03-02 04:09+0100\n"
-"PO-Revision-Date: 2012-03-15 14:01+0200\n"
+"PO-Revision-Date: 2012-03-15 13:34+0200\n"
 "Last-Translator: VMa <VaclavMacurek@seznam.cz>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: cs\n"
@@ -1985,88 +1985,88 @@ msgstr "Mé osady"
 #. (text of widget: stats_ships)
 #: horizons/i18n/guitranslations.py:592
 msgid "My ships"
-msgstr ""
+msgstr "Mé lodě"
 
 #. (text of widget: wb2) Only filter messages important for your own settlements (disasters, new increment, ...)
 #: horizons/i18n/guitranslations.py:594
 msgid "Own settlements"
-msgstr ""
+msgstr "Vlastní osady"
 
 #. (text of widget: wb5) Sends the chat message to all allied players.
 #: horizons/i18n/guitranslations.py:596
 msgid "Allies"
-msgstr ""
+msgstr "Spojenci"
 
 #. (text of widget: weird_button_1) Displays all notifications and game messages
 #: horizons/i18n/guitranslations.py:598
 msgid "Whole world"
-msgstr ""
+msgstr "Celý svět"
 
 #. (text of widget: weird_button_4) Sends the chat message to all players (default)
 #: horizons/i18n/guitranslations.py:600
 msgid "Everybody"
-msgstr ""
+msgstr "Všichni"
 
 #. (tooltip of widget: okButton)
 #. (text of widget: start)
 #: horizons/i18n/guitranslations.py:602 horizons/i18n/guitranslations.py:775
 msgid "Return to game"
-msgstr ""
+msgstr "Návrat do hry"
 
 #. (tooltip of widget: backwardButton) Entry of Captain's Log (logbook/diary used in scenarios)
 #: horizons/i18n/guitranslations.py:604
 msgid "Read previous entries"
-msgstr ""
+msgstr "Přečíst předchozí záznamy"
 
 #. (tooltip of widget: forwardButton) Entry of Captain's Log (logbook/diary used in scenarios)
 #: horizons/i18n/guitranslations.py:606
 msgid "Read next entries"
-msgstr ""
+msgstr "Přečíst další záznamy"
 
 #. (text of widget: head_left)
 #: horizons/i18n/guitranslations.py:611
 msgid "Available Scenarios"
-msgstr ""
+msgstr "Dostupné scénáře"
 
 #. (text of widget: head_right)
 #: horizons/i18n/guitranslations.py:613
 msgid "Scenario description"
-msgstr ""
+msgstr "Popis scénáře"
 
 #. (tooltip of widget: cancelButton) Players either select the next scenario they want to play or press this button
 #: horizons/i18n/guitranslations.py:617
 msgid "Continue playing"
-msgstr ""
+msgstr "Pokračovat ve hře"
 
 #. (tooltip of widget: choose_scenario) Select which scenario to play
 #: horizons/i18n/guitranslations.py:619
 msgid "Choose this scenario"
-msgstr ""
+msgstr "Vybrat tento scénář"
 
 #. (text of widget: lbl_wait_at_load) Trade route setting: Whether to wait until all goods could be loaded.
 #: horizons/i18n/guitranslations.py:624
 msgid "Wait at load:"
-msgstr ""
+msgstr "Čekat na naložení:"
 
 #. (text of widget: lbl_wait_at_unload) Trade route setting: Whether to wait until all goods could be unloaded.
 #: horizons/i18n/guitranslations.py:626
 msgid "Wait at unload:"
-msgstr ""
+msgstr "Čekat na vyložení:"
 
 #. (tooltip of widget: okButton)
 #: horizons/i18n/guitranslations.py:628
 msgid "Exit"
-msgstr ""
+msgstr "Konec"
 
 #. (tooltip of widget: okButton)
 #: horizons/i18n/guitranslations.py:635
 msgid "Close"
-msgstr ""
+msgstr "Zavřít"
 
 #. (text of widget: building_score)
 #: horizons/i18n/guitranslations.py:640
 msgid "Buildings"
-msgstr ""
+msgstr "Stavby"
 
 #. (text of widget: headline)
 #: horizons/i18n/guitranslations.py:642
