@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: translate-uh@lists.unknown-horizons.org\n"
 "POT-Creation-Date: 2012-03-13 16:25+0100\n"
-"PO-Revision-Date: 2012-03-14 11:51+0200\n"
+"PO-Revision-Date: 2012-03-14 12:14+0200\n"
 "Last-Translator: naked.in.rain <martin.mezl@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: cs\n"
@@ -743,6 +743,9 @@ msgid ""
 "\n"
 "Let's continue our tutorial on how to trade."
 msgstr ""
+"Výborně! Svobodný obchodník nyní čas od času zakotví v Obchodním přístavu.\n"
+"\n"
+"Pokračujme v našem návodu, jak obchodovat."
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:186
@@ -750,6 +753,8 @@ msgid ""
 "After selecting a particular type of good, the green bar across the bottom of "
 "the slot (if visible) shows you how much you have in stock of this good."
 msgstr ""
+"Po vybrání konkrétního typu zboží, zelený ukazatel napravo od slotu (pokud "
+"je viditelný) ukazuje, kolik jednotek zboží máte aktuálně ve skladu."
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:188
