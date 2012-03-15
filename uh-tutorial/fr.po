@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: translate-uh@lists.unknown-horizons.org\n"
 "POT-Creation-Date: 2012-03-13 16:25+0100\n"
-"PO-Revision-Date: 2012-03-15 11:59+0200\n"
+"PO-Revision-Date: 2012-03-15 12:09+0200\n"
 "Last-Translator: Sebastien (seblabel) <sebastiencharpentier@laposte.net>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: fr\n"
@@ -192,7 +192,7 @@ msgstr ""
 #. This is the text body of a logbook page.
 #: po/tutorial.py:44
 msgid "We will start with building a lumberjack."
-msgstr ""
+msgstr "Nous commencerons par établir un bûcheron."
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:46
@@ -200,11 +200,13 @@ msgid ""
 "This is essential because, at this stage, boards are the only poles your "
 "sailors can afford to hang their tents over."
 msgstr ""
+"C'est essentiel parce que, à ce niveau, les planches sont le seul matériel "
+"que les marins peuvent s'offrir pour monter leurs tentes."
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:48
 msgid "The fisherman needs some boards to build his vessel as well."
-msgstr ""
+msgstr "Le pêcheur a également besoin de planches pour construire son bateau."
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:50
@@ -212,11 +214,13 @@ msgid ""
 "In order to construct lumberjacks; open the build menu by either clicking the "
 "big icon below the mini map or pressing B key."
 msgstr ""
+"Pour construire un camp de bûcheron, ouvrez le menu construction en cliquant "
+"sur le grand icône sous la mini-carte, ou en pressant la touche B."
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:52
 msgid "The build menu is sorted by increments."
-msgstr ""
+msgstr "Le menu construction est classé par niveaux."
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:54
@@ -224,6 +228,8 @@ msgid ""
 "You are currently in the first increment (the Sailors level) so are offered "
 "only the basic buildings."
 msgstr ""
+"Vous êtes actuellement au premier niveau (le niveau des Marins) et donc, "
+"seuls les bâtiments de bases sont accessibles."
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:56
@@ -231,13 +237,16 @@ msgid ""
 "\n"
 "As your civilization advances, you also gain more and more complex buildings."
 msgstr ""
+"\n"
+"Plus votre civilisation avancera et plus vous pourrez construire de "
+"bâtiments complexes."
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:58
 msgid ""
 "For now, select the lumberjack under 'Companies' and build it in an area with "
 "some trees around."
-msgstr ""
+msgstr "Maintenant construisez un camp de bûcheron dans une zone boisée."
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:60
@@ -245,6 +254,8 @@ msgid ""
 "You can also plant trees later - but that costs money. Use what nature "
 "provided you with!"
 msgstr ""
+"Vous pourrez aussi planter des arbres plus tard - mais cela vous coûtera de "
+"l'argent. Utilisez ce que la nature vous offre!"
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:62
@@ -252,6 +263,8 @@ msgid ""
 "A company always needs a trail connection to a storage or warehouse, "
 "otherwise goods will remain at the company and not be collected."
 msgstr ""
+"Une entreprise nécessite une route menant à un dépôt ou un comptoir, "
+"autrement les biens produits y resteront et ne seront pas collectés."
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:64
@@ -259,6 +272,8 @@ msgid ""
 "This means that you have to build a trail connecting your warehouse (or "
 "storage) and lumberjack."
 msgstr ""
+"Vous devez donc construire un sentier entre votre comptoir (ou votre dépôt) "
+"et votre bûcheron."
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:66
@@ -266,6 +281,9 @@ msgid ""
 "\n"
 "TASK: Build a lumberjack in a wooded area and connect it to a road."
 msgstr ""
+"\n"
+"MISSION: Établissez un bûcheron dans une zone boisée et connectez le à une "
+"route."
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:68
