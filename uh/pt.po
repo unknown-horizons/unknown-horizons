@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2012-03-02 04:09+0100\n"
-"PO-Revision-Date: 2012-03-16 00:00+0200\n"
+"PO-Revision-Date: 2012-03-16 00:08+0200\n"
 "Last-Translator: bdias <ebrunojdias@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: pt\n"
@@ -776,7 +776,7 @@ msgstr "Diplomacia inviável"
 
 #: horizons/gui/ingamegui.py:273
 msgid "Cannot do diplomacy as there are no other players."
-msgstr ""
+msgstr "Não existem outros jogadores para exercer diplomacia."
 
 #: horizons/gui/ingamegui.py:449
 #, python-format
@@ -836,21 +836,21 @@ msgstr "Ocorreu uma falha na rede:"
 
 #: horizons/gui/modules/multiplayermenu.py:159
 msgid "Version differs!"
-msgstr "As versões diferente!"
+msgstr "Versão diferente!"
 
 #: horizons/gui/modules/multiplayermenu.py:183
 #, python-format
 msgid "Map: {map_name}"
-msgstr ""
+msgstr "Mapa: {map_name}"
 
 #: horizons/gui/modules/multiplayermenu.py:184
 msgid "Name: {game_name}"
-msgstr ""
+msgstr "Nome: {game_name}"
 
 #: horizons/gui/modules/multiplayermenu.py:186
 #, python-format
 msgid "Players: {player_amount}/{player_limit}"
-msgstr ""
+msgstr "Jogadores: {player_amount}/{player_limit}"
 
 #: horizons/gui/modules/multiplayermenu.py:191
 #, python-format
@@ -892,6 +892,10 @@ msgstr "Versão errada"
 #, python-format
 msgid "The game's version differs from your version. Every player in a multiplayer game must use the same version. This can be fixed by every player updating to the latest version. Game version: {game_version} Your version: {own_version}"
 msgstr ""
+"A versão deste jogo é diferente da tua versão. Cada jogador no modo multi-"
+"jogador tem de usar a mesma versão. Cada jogador resolve este problema "
+"através da actualização da versão mais recente. Versão deste jogo: "
+"{game_version} A tua versão: {own_version}"
 
 #: horizons/gui/modules/multiplayermenu.py:348
 #: horizons/gui/modules/singleplayermenu.py:111
@@ -973,7 +977,7 @@ msgstr "Por favor, informe o autor desta situação."
 #. dialog already gone
 #: horizons/gui/modules/singleplayermenu.py:464
 msgid "Click to generate a different random map"
-msgstr ""
+msgstr "Pressione para gerar um mapa qualquer diferente"
 
 #. (text of widget: headline)
 #. set translated building name in gui
@@ -984,7 +988,7 @@ msgstr "Construir"
 
 #: horizons/gui/mousetools/navigationtool.py:72
 msgid "Press H to remove this hint"
-msgstr ""
+msgstr "Pressione H para remover este aviso"
 
 #: horizons/gui/tabs/boatbuildertab.py:50
 msgid "Boat builder overview"
@@ -1359,7 +1363,7 @@ msgstr "Selecione os recursos:"
 
 #: horizons/gui/widgets/unitoverview.py:121
 msgid "none"
-msgstr ""
+msgstr "nenhum"
 
 #. (text of widget: headline)
 #: horizons/i18n/guitranslations.py:53
