@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: translate-uh@lists.unknown-horizons.org\n"
 "POT-Creation-Date: 2012-03-13 16:25+0100\n"
-"PO-Revision-Date: 2012-03-15 01:58+0200\n"
+"PO-Revision-Date: 2012-03-15 02:03+0200\n"
 "Last-Translator: Sérgio <knitter.is@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: pt\n"
@@ -56,9 +56,9 @@ msgid ""
 "This is your Captain's log where all important information is stored. A short "
 "notification of each task will be provided on the left of the screen."
 msgstr ""
-"Este é o diário de bordo do teu Capitão onde todas as informações "
-"importantes estão armazenadas. Será fornecida uma pequena notificação de "
-"cada tarefa no lado esquerdo do ecrã."
+"Este é o diário de bordo do teu Capitão onde toda a informação importante é "
+"armazenada. Uma breve notificação de cada tarefa será apresentada no lado "
+"esquerdo do ecrã."
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:14
@@ -155,12 +155,14 @@ msgstr ""
 msgid ""
 "\n"
 "TASK: Build a warehouse at the coast."
-msgstr "TAREFA: Construa um depósito de mercadorias no litoral."
+msgstr ""
+"\n"
+"TAREFA: Constrói um armazém na costa."
 
 #. This is a logbook page heading. Space is VERY short, please only translate to strings that fit (roughly 30 characters max).
 #: po/tutorial.py:40
 msgid "NEW TASK: BUILD A LUMBERJACK"
-msgstr "ADICIONAR UM LENHADOR"
+msgstr "NOVA TAREFA: ADICIONAR UM LENHADOR"
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:42

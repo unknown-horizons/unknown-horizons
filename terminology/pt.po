@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2011-07-08 16:54+0200\n"
-"PO-Revision-Date: 2012-03-14 15:34+0200\n"
+"PO-Revision-Date: 2012-03-14 15:35+0200\n"
 "Last-Translator: bdias <ebrunojdias@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: pt\n"
@@ -50,7 +50,7 @@ msgstr "filial, feitoria"
 # (poterminology) uh-tutorial/tutorial.pot (3)
 # (poterminology) uh/unknownhorizons.pot (2)
 msgid "your"
-msgstr "seu"
+msgstr "teu"
 
 # (poterminology) uh-tutorial/tutorial.pot (19)
 # (poterminology) uh/unknownhorizons.pot (5)
