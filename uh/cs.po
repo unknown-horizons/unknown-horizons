@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2012-03-02 04:09+0100\n"
-"PO-Revision-Date: 2012-03-15 13:34+0200\n"
+"PO-Revision-Date: 2012-03-15 14:56+0200\n"
 "Last-Translator: VMa <VaclavMacurek@seznam.cz>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: cs\n"
@@ -2071,12 +2071,12 @@ msgstr "Stavby"
 #. (text of widget: headline)
 #: horizons/i18n/guitranslations.py:642
 msgid "Player scores"
-msgstr ""
+msgstr "Skóre"
 
 #. (text of widget: land_score)
 #: horizons/i18n/guitranslations.py:644
 msgid "Land"
-msgstr ""
+msgstr "Země"
 
 # 75%
 #. (text of widget: player_name)
@@ -2084,39 +2084,38 @@ msgstr ""
 #. (text of widget: ship_name)
 #: horizons/i18n/guitranslations.py:648 horizons/i18n/guitranslations.py:667
 #: horizons/i18n/guitranslations.py:676
-#, fuzzy
 msgid "Name"
-msgstr "Ukončit hru"
+msgstr "Jméno"
 
 #. (text of widget: resource_score)
 #: horizons/i18n/guitranslations.py:650
 msgid "Resources"
-msgstr ""
+msgstr "Zboží"
 
 #. (text of widget: unit_score)
 #: horizons/i18n/guitranslations.py:656
 msgid "Units"
-msgstr ""
+msgstr "Jednotky"
 
 #. (text of widget: balance)
 #: horizons/i18n/guitranslations.py:661
 msgid "Balance"
-msgstr ""
+msgstr "Bilance"
 
 #. (text of widget: health)
 #: horizons/i18n/guitranslations.py:674
 msgid "Health"
-msgstr ""
+msgstr "Zdraví"
 
 #. (text of widget: ship_type)
 #: horizons/i18n/guitranslations.py:678
 msgid "Type"
-msgstr ""
+msgstr "Typ"
 
 #. (text of widget: status)
 #: horizons/i18n/guitranslations.py:680
 msgid "Status"
-msgstr ""
+msgstr "Status"
 
 # 87%
 #. (text of widget: weapons)
@@ -2128,22 +2127,22 @@ msgstr "Zbraně:"
 #. (tooltip of widget: aggressive_stance) Description of combat stance (how units behave when fighting)
 #: horizons/i18n/guitranslations.py:687
 msgid "Aggressive"
-msgstr ""
+msgstr "Agresivní"
 
 #. (tooltip of widget: flee_stance) Description of combat stance (how units behave when fighting)
 #: horizons/i18n/guitranslations.py:689
 msgid "Flee"
-msgstr ""
+msgstr "Utéct"
 
 #. (tooltip of widget: hold_ground_stance) Description of combat stance (how units behave when fighting)
 #: horizons/i18n/guitranslations.py:691
 msgid "Hold ground"
-msgstr ""
+msgstr "Držet území"
 
 #. (tooltip of widget: none_stance) Description of combat stance (how units behave when fighting)
 #: horizons/i18n/guitranslations.py:693
 msgid "Passive"
-msgstr ""
+msgstr "Pasivní"
 
 #. (text of widget: have_fun)
 #: horizons/i18n/guitranslations.py:698
