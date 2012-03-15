@@ -114,7 +114,7 @@ for fname in files_modified:
 					if i > 0:
 						print "\t", output[i-1]
 					print "\t", bcolors.FAIL, line, bcolors.ENDC
-					if len(output) > i:
+					if len(output) > i + 1:
 						print "\t", output[i+1]
 		if found_re:
 			exitcode = 1
