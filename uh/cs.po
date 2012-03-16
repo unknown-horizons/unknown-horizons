@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2012-03-02 04:09+0100\n"
-"PO-Revision-Date: 2012-03-15 14:56+0200\n"
+"PO-Revision-Date: 2012-03-16 08:37+0200\n"
 "Last-Translator: VMa <VaclavMacurek@seznam.cz>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: cs\n"
@@ -2167,102 +2167,102 @@ msgstr "Vypnout/zapnout konzoli"
 #. (text of widget: lbl_COORD_TOOLTIP)
 #: horizons/i18n/guitranslations.py:708
 msgid "Show coordinate values (Debug)"
-msgstr ""
+msgstr "Ukázat souřadnice"
 
 #. (text of widget: lbl_DESTROY_TOOL)
 #: horizons/i18n/guitranslations.py:710
 msgid "Enable destruct mode"
-msgstr ""
+msgstr "Povolit destrukční režim"
 
 #. (text of widget: lbl_DOWN)
 #: horizons/i18n/guitranslations.py:712
 msgid "Scroll down"
-msgstr ""
+msgstr "Posunout dolů"
 
 #. (text of widget: lbl_GRID)
 #: horizons/i18n/guitranslations.py:714
 msgid "Toggle grid on/off"
-msgstr ""
+msgstr "Zobrazit/skrýt mřížku"
 
 #. (text of widget: lbl_HELP)
 #: horizons/i18n/guitranslations.py:716
 msgid "Display help"
-msgstr ""
+msgstr "Ukázat nápovědu"
 
 #. (text of widget: lbl_LEFT)
 #: horizons/i18n/guitranslations.py:718
 msgid "Scroll left"
-msgstr ""
+msgstr "Posunout doleva"
 
 #. (text of widget: lbl_LOGBOOK)
 #: horizons/i18n/guitranslations.py:720
 msgid "Toggle Captain's log"
-msgstr ""
+msgstr "Ukázat Kapitánův deník"
 
 #. (text of widget: lbl_PAUSE)
 #: horizons/i18n/guitranslations.py:722
 msgid "Pause game"
-msgstr ""
+msgstr "Pozastavit hru"
 
 #. (text of widget: lbl_PLAYERS_OVERVIEW)
 #: horizons/i18n/guitranslations.py:724
 msgid "Show player scores"
-msgstr ""
+msgstr "Ukázat skóre"
 
 #. (text of widget: lbl_QUICKLOAD)
 #: horizons/i18n/guitranslations.py:726
 msgid "Quickload"
-msgstr ""
+msgstr "Rychlé načtení"
 
 #. (text of widget: lbl_QUICKSAVE)
 #: horizons/i18n/guitranslations.py:728
 msgid "Quicksave"
-msgstr ""
+msgstr "Rychlé uložení"
 
 #. (text of widget: lbl_REMOVE_SELECTED)
 #: horizons/i18n/guitranslations.py:730
 msgid "Remove selected units / buildings"
-msgstr ""
+msgstr "Odstranit vybrané jednotky či budovy"
 
 #. (text of widget: lbl_RIGHT)
 #: horizons/i18n/guitranslations.py:732
 msgid "Scroll right"
-msgstr ""
+msgstr "Posunout doprava"
 
 #. (text of widget: lbl_ROAD_TOOL)
 #: horizons/i18n/guitranslations.py:734
 msgid "Enable road building mode"
-msgstr ""
+msgstr "Povolit mód stavby cest"
 
 #. (text of widget: lbl_ROTATE_LEFT)
 #: horizons/i18n/guitranslations.py:736
 msgid "Rotate building or map counterclockwise"
-msgstr ""
+msgstr "Otočit stavbu či mapu proti směru hodinových ručiček"
 
 #. (text of widget: lbl_ROTATE_RIGHT)
 #: horizons/i18n/guitranslations.py:738
 msgid "Rotate building or map clockwise"
-msgstr ""
+msgstr "Otočit stavbu či mapu ve směru hodinových ručiček"
 
 #. (text of widget: lbl_SCREENSHOT)
 #: horizons/i18n/guitranslations.py:740
 msgid "Screenshot"
-msgstr ""
+msgstr "Obrázek ze hry"
 
 #. (text of widget: lbl_SETTLEMENTS_OVERVIEW)
 #: horizons/i18n/guitranslations.py:742
 msgid "Show settlement list"
-msgstr ""
+msgstr "Ukázat seznam osad"
 
 #. (text of widget: lbl_SHIFT)
 #: horizons/i18n/guitranslations.py:744
 msgid "Hold to place multiple buildings"
-msgstr ""
+msgstr "Podržte pro umístění více stejných budov"
 
 #. (text of widget: lbl_SHIPS_OVERVIEW)
 #: horizons/i18n/guitranslations.py:746
 msgid "Show ship list"
-msgstr ""
+msgstr "Ukázat seznam lodí"
 
 #. (text of widget: lbl_SPEED_DOWN)
 #: horizons/i18n/guitranslations.py:748
@@ -2277,28 +2277,28 @@ msgstr "Zrychlit herní rychlost"
 #. (text of widget: lbl_TILE_OWNER_HIGHLIGHT)
 #: horizons/i18n/guitranslations.py:752
 msgid "Highlight tile ownership"
-msgstr ""
+msgstr "Zvýraznit vlastnictví země"
 
 #. (text of widget: lbl_TRANSLUCENCY)
 #: horizons/i18n/guitranslations.py:754
 msgid "Toggle translucency of ambient buildings"
-msgstr ""
+msgstr "Zapnout průsvitnost okolních budov"
 
 #. (text of widget: lbl_UP)
 #: horizons/i18n/guitranslations.py:756
 msgid "Scroll up"
-msgstr ""
+msgstr "Posunout nahoru"
 
 #. (tooltip of widget: okButton)
 #. (tooltip of widget: cancelButton)
 #: horizons/i18n/guitranslations.py:758 horizons/i18n/guitranslations.py:905
 msgid "Return"
-msgstr ""
+msgstr "Návrat"
 
 #. (text of widget: fife_and_uh_team)
 #: horizons/i18n/guitranslations.py:760
 msgid "The FIFE and Unknown Horizons development teams"
-msgstr ""
+msgstr "Vývojové týmy FIFE a Unknown Horizons"
 
 #. (text of widget: quit)
 #: horizons/i18n/guitranslations.py:769
