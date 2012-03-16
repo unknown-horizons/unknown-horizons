@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2012-03-02 04:09+0100\n"
-"PO-Revision-Date: 2012-03-16 09:46+0200\n"
+"PO-Revision-Date: 2012-03-16 22:42+0200\n"
 "Last-Translator: VMa <VaclavMacurek@seznam.cz>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: cs\n"
@@ -3310,7 +3310,7 @@ msgstr "Hra se zdá poškozenou či uloženou starší verzí hry."
 #: horizons/main.py:465
 #, python-format
 msgid "Due to technical reasons, the campaign file will be copied to the UH campaign directory ({path})."
-msgstr ""
+msgstr "Z technických důvodů bude kampaň zkopírována do adresáře {path}."
 
 #: horizons/main.py:467
 msgid "This means that changes in the file you specified will not apply to the game directly."
