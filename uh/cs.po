@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2012-03-02 04:09+0100\n"
-"PO-Revision-Date: 2012-03-16 08:37+0200\n"
+"PO-Revision-Date: 2012-03-16 09:00+0200\n"
 "Last-Translator: VMa <VaclavMacurek@seznam.cz>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: cs\n"
@@ -2303,23 +2303,23 @@ msgstr "Vývojové týmy FIFE a Unknown Horizons"
 #. (text of widget: quit)
 #: horizons/i18n/guitranslations.py:769
 msgid "Cancel game"
-msgstr ""
+msgstr "Zrušit hru"
 
 #. (text of widget: settings)
 #. (text of widget: settings) Main / in-game menu entry
 #: horizons/i18n/guitranslations.py:773 horizons/i18n/guitranslations.py:797
 msgid "Settings"
-msgstr ""
+msgstr "Nastavení"
 
 #. (text of widget: loading_label)
 #: horizons/i18n/guitranslations.py:780
 msgid "Loading ..."
-msgstr ""
+msgstr "Načítám..."
 
 #. (text of widget: chimebell)
 #: horizons/i18n/guitranslations.py:787
 msgid "Attention please!"
-msgstr ""
+msgstr "Důležité!"
 
 #. (text of widget: credits)
 #: horizons/i18n/guitranslations.py:789
@@ -2329,72 +2329,72 @@ msgstr ""
 #. (text of widget: quit) Completely shut down UH
 #: horizons/i18n/guitranslations.py:795
 msgid "Quit"
-msgstr ""
+msgstr "Konec"
 
 #. (text of widget: start) Opens widget to create singleplayer games (campaigns, scenarios, random maps, free play)
 #: horizons/i18n/guitranslations.py:799
 msgid "Singleplayer"
-msgstr ""
+msgstr "Jeden hráč"
 
 #. (text of widget: start_multi) Opens widget to join or create multiplayer games
 #: horizons/i18n/guitranslations.py:801
 msgid "Multiplayer"
-msgstr ""
+msgstr "Více hráčů"
 
 #. (text of widget: create_game_lbl)
 #: horizons/i18n/guitranslations.py:808 horizons/i18n/guitranslations.py:846
 msgid "Create game:"
-msgstr ""
+msgstr "Vytvořit hru:"
 
 #. (text of widget: exit_to_mp_menu_lbl)
 #: horizons/i18n/guitranslations.py:810
 msgid "Back:"
-msgstr ""
+msgstr "Zpět:"
 
 #. (text of widget: headline)
 #: horizons/i18n/guitranslations.py:812
 msgid "Choose a map:"
-msgstr ""
+msgstr "Vybrat mapu:"
 
 #. (text of widget: headline)
 #: horizons/i18n/guitranslations.py:814
 msgid "Create game - Multiplayer"
-msgstr ""
+msgstr "Vytvořit hru pro více hráčů"
 
 #. (text of widget: mp_player_limit_lbl)
 #: horizons/i18n/guitranslations.py:816
 msgid "Player limit:"
-msgstr ""
+msgstr "Maximální počet hráčů:"
 
 #. (tooltip of widget: create)
 #: horizons/i18n/guitranslations.py:818
 msgid "Create this new game"
-msgstr ""
+msgstr "Vytvořit novou hru"
 
 #. (tooltip of widget: cancel)
 #: horizons/i18n/guitranslations.py:820
 msgid "Exit to multiplayer menu"
-msgstr ""
+msgstr "Odejít do menu hry více hráčů"
 
 #. (text of widget: gamename_lbl)
 #: horizons/i18n/guitranslations.py:822 horizons/i18n/guitranslations.py:954
 msgid "Name of the game:"
-msgstr ""
+msgstr "Název hry:"
 
 #. (tooltip of widget: gamename_lbl)
 #: horizons/i18n/guitranslations.py:824 horizons/i18n/guitranslations.py:956
 msgid "This will be displayed to other players so they recognise the game."
-msgstr ""
+msgstr "Toto bude zobrazeno ostatním hráčům, aby vybrali hru."
 
 #. (text of widget: exit_to_mp_menu_lbl)
 #: horizons/i18n/guitranslations.py:829
 msgid "Leave:"
-msgstr ""
+msgstr "Opustit hru:"
 
 #. (text of widget: game_start_notice)
 #: horizons/i18n/guitranslations.py:831
 msgid "The game will start as soon as enough players have joined."
-msgstr ""
+msgstr "Hra začne jakmile se připojí dost hráčů."
 
 # 80%
 #. (text of widget: headline)
@@ -2410,7 +2410,7 @@ msgstr ""
 #. (text of widget: startmessage)
 #: horizons/i18n/guitranslations.py:837
 msgid "Game details:"
-msgstr ""
+msgstr "Podrobnosti hry:"
 
 #. (tooltip of widget: cancel)
 #: horizons/i18n/guitranslations.py:839
@@ -2420,28 +2420,28 @@ msgstr ""
 #. (text of widget: active_games_lbl)
 #: horizons/i18n/guitranslations.py:844
 msgid "Active games:"
-msgstr ""
+msgstr "Aktivní hry:"
 
 #. (text of widget: exit_to_main_menu_lbl)
 #. (text of widget: main_menu_label)
 #: horizons/i18n/guitranslations.py:848 horizons/i18n/guitranslations.py:963
 msgid "Main menu:"
-msgstr ""
+msgstr "Hlavní menu:"
 
 #. (text of widget: game_showonlyownversion)
 #: horizons/i18n/guitranslations.py:850
 msgid "Only show games with the same version:"
-msgstr ""
+msgstr "Ukázat jen hry stejné verze:"
 
 #. (text of widget: headline_left)
 #: horizons/i18n/guitranslations.py:852
 msgid "New game - Multiplayer"
-msgstr ""
+msgstr "Nová hra více hráčů"
 
 #. (text of widget: join_game_lbl)
 #: horizons/i18n/guitranslations.py:854
 msgid "Join game"
-msgstr ""
+msgstr "Připojit ke hře"
 
 # 90%
 #. (text of widget: load_game_lbl)
@@ -2458,27 +2458,27 @@ msgstr ""
 #. (tooltip of widget: create)
 #: horizons/i18n/guitranslations.py:860
 msgid "Create a new game"
-msgstr ""
+msgstr "Vytvořit novou hru"
 
 #. (tooltip of widget: join)
 #: horizons/i18n/guitranslations.py:862
 msgid "Join the selected game"
-msgstr ""
+msgstr "Připojit k vybrané hře"
 
 #. (tooltip of widget: load)
 #: horizons/i18n/guitranslations.py:864
 msgid "Load a saved game"
-msgstr ""
+msgstr "Načíst uloženou hru"
 
 #. (tooltip of widget: cancel)
 #: horizons/i18n/guitranslations.py:866 horizons/i18n/guitranslations.py:977
 msgid "Exit to main menu"
-msgstr ""
+msgstr "Odejít do hlavního menu"
 
 #. (tooltip of widget: refresh)
 #: horizons/i18n/guitranslations.py:868
 msgid "Refresh list of active games"
-msgstr ""
+msgstr "Znovu načíst seznam aktivních her"
 
 #. (text of widget: autosave_interval_label)
 #: horizons/i18n/guitranslations.py:873
