@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2012-03-02 04:09+0100\n"
-"PO-Revision-Date: 2012-03-16 09:36+0200\n"
+"PO-Revision-Date: 2012-03-16 09:34+0200\n"
 "Last-Translator: VMa <VaclavMacurek@seznam.cz>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: cs\n"
@@ -3016,17 +3016,17 @@ msgstr "Hora"
 #. name of buildings:pastryshop
 #: horizons/i18n/objecttranslations.py:243
 msgid "Pastry Shop"
-msgstr ""
+msgstr "Cukrárna"
 
 #. tooltip_text of buildings:pastryshop
 #: horizons/i18n/objecttranslations.py:245
 msgid "Produces all kinds of confectionery."
-msgstr ""
+msgstr "Vyrábí cukroví."
 
 #. name of buildings:pasture
 #: horizons/i18n/objecttranslations.py:250
 msgid "Pasture"
-msgstr "Pastýř"
+msgstr "Pastvina"
 
 #. tooltip_text of buildings:pasture
 #: horizons/i18n/objecttranslations.py:252
@@ -3036,7 +3036,7 @@ msgstr "Chová ovce. Produkuje vlnu. Potřebuje farmu."
 #. name of buildings:pavilion
 #: horizons/i18n/objecttranslations.py:257
 msgid "Pavilion"
-msgstr "Pavilon"
+msgstr "Kostel"
 
 #. tooltip_text of buildings:pavilion
 #: horizons/i18n/objecttranslations.py:259
@@ -3076,7 +3076,7 @@ msgstr "Brání tvou osadu."
 #. name of buildings:ruinedtent
 #: horizons/i18n/objecttranslations.py:285
 msgid "Ruined Tent"
-msgstr ""
+msgstr "Opuštěný stan"
 
 #. name of buildings:saltponds
 #: horizons/i18n/objecttranslations.py:290
