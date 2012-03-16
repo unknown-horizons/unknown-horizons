@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2012-03-02 04:09+0100\n"
-"PO-Revision-Date: 2012-03-16 09:00+0200\n"
+"PO-Revision-Date: 2012-03-16 09:36+0200\n"
 "Last-Translator: VMa <VaclavMacurek@seznam.cz>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: cs\n"
@@ -2483,72 +2483,72 @@ msgstr "Znovu načíst seznam aktivních her"
 #. (text of widget: autosave_interval_label)
 #: horizons/i18n/guitranslations.py:873
 msgid "Autosave interval in minutes:"
-msgstr ""
+msgstr "Automatické ukládání každých {number} minut"
 
 #. (text of widget: effect_volume_label)
 #: horizons/i18n/guitranslations.py:875
 msgid "Effects volume:"
-msgstr ""
+msgstr "Hlasitost efektů:"
 
 #. (text of widget: headline_language)
 #: horizons/i18n/guitranslations.py:879
 msgid "Language"
-msgstr ""
+msgstr "Jazyk"
 
 #. (text of widget: headline_mouse)
 #: horizons/i18n/guitranslations.py:881
 msgid "Mouse"
-msgstr ""
+msgstr "Myš"
 
 #. (text of widget: headline_network)
 #: horizons/i18n/guitranslations.py:883
 msgid "Network"
-msgstr ""
+msgstr "Síť"
 
 #. (text of widget: headline_saving)
 #: horizons/i18n/guitranslations.py:885
 msgid "Saving"
-msgstr ""
+msgstr "Ukládám..."
 
 #. (text of widget: language_label)
 #: horizons/i18n/guitranslations.py:889
 msgid "Select language:"
-msgstr ""
+msgstr "Vyberte jazyk:"
 
 #. (text of widget: music_volume_label)
 #: horizons/i18n/guitranslations.py:891
 msgid "Music volume:"
-msgstr ""
+msgstr "Hlasitost hudby:"
 
 #. (text of widget: number_of_autosaves_label)
 #: horizons/i18n/guitranslations.py:893
 msgid "Number of autosaves:"
-msgstr ""
+msgstr "Počet automaticky uložených her:"
 
 #. (text of widget: number_of_quicksaves_label)
 #: horizons/i18n/guitranslations.py:895
 msgid "Number of quicksaves:"
-msgstr ""
+msgstr "Počet rychle uložených her:"
 
 #. (text of widget: screen_fullscreen_text)
 #: horizons/i18n/guitranslations.py:897
 msgid "Full screen:"
-msgstr ""
+msgstr "Celá obrazovka:"
 
 #. (text of widget: screen_resolution_label)
 #: horizons/i18n/guitranslations.py:899
 msgid "Screen resolution:"
-msgstr ""
+msgstr "Velikost obrazu:"
 
 #. (text of widget: sound_enable_opt_text)
 #: horizons/i18n/guitranslations.py:901
 msgid "Enable sound:"
-msgstr ""
+msgstr "Povolit zvuk:"
 
 #. (tooltip of widget: okButton)
 #: horizons/i18n/guitranslations.py:903
 msgid "Apply"
-msgstr ""
+msgstr "Přijmout"
 
 # 84%
 #. (tooltip of widget: defaultButton)
@@ -2560,22 +2560,22 @@ msgstr "Obnovit původní nastavení"
 #. (text of widget: auto_unload_label)
 #: horizons/i18n/guitranslations.py:909
 msgid "Auto-unload ship:"
-msgstr ""
+msgstr "Automaticky vyložit loď:"
 
 #. (text of widget: color_depth_label)
 #: horizons/i18n/guitranslations.py:911
 msgid "Color depth:"
-msgstr ""
+msgstr "Barevná hloubka:"
 
 #. (text of widget: edge_scrolling_label)
 #: horizons/i18n/guitranslations.py:913
 msgid "Scroll at map edge:"
-msgstr ""
+msgstr "Posunovat okraj mapy:"
 
 #. (text of widget: minimap_rotation_label)
 #: horizons/i18n/guitranslations.py:915
 msgid "Rotate minimap with map:"
-msgstr ""
+msgstr "Otočit minimapu zároveň s mapou:"
 
 #. (text of widget: mouse_sensitivity_label)
 #: horizons/i18n/guitranslations.py:917
@@ -2586,115 +2586,113 @@ msgstr "Hustota zdrojů:"
 #. (text of widget: network_port_lbl)
 #: horizons/i18n/guitranslations.py:919
 msgid "Network port:"
-msgstr ""
+msgstr "Síťový port:"
 
 #. (text of widget: uninterrupted_building_label)
 #: horizons/i18n/guitranslations.py:921
 msgid "Uninterrupted building:"
-msgstr ""
+msgstr "Nepřerušené stavění:"
 
 #. (text of widget: use_renderer_label)
 #: horizons/i18n/guitranslations.py:923
 msgid "Used renderer:"
-msgstr ""
+msgstr "Použité vykreslování:"
 
 #. (tooltip of widget: auto_unload_label)
 #: horizons/i18n/guitranslations.py:925
 msgid "Whether to unload the ship after founding a settlement"
-msgstr ""
+msgstr "Vyložit loď po nalezení osady"
 
 #. (tooltip of widget: color_depth_label)
 #: horizons/i18n/guitranslations.py:927
 msgid "If set to 0, use the driver default"
-msgstr ""
+msgstr "Je li zadána 0, použít výchozí"
 
 #. (tooltip of widget: edge_scrolling_label)
 #: horizons/i18n/guitranslations.py:929
 msgid "Whether to move the viewport when the mouse pointer is close to map edges"
-msgstr ""
+msgstr "Posunout náhled, pokud je myš blízko okraje mapy"
 
 #. (tooltip of widget: minimap_rotation_label)
 #: horizons/i18n/guitranslations.py:931
 msgid "Whether to also rotate the minimap whenever the regular map is rotated"
-msgstr ""
+msgstr "Otočit minimapu, pokud je otočena mapa"
 
 #. (tooltip of widget: mouse_sensitivity_label)
 #: horizons/i18n/guitranslations.py:933
-#, fuzzy
 msgid "0 is default system settings"
-msgstr "Obnovit původní nastavení"
+msgstr "0 je výchozí nastavení"
 
 #. (tooltip of widget: network_port_lbl)
 #: horizons/i18n/guitranslations.py:935
 msgid "If set to 0, use the router default"
-msgstr ""
+msgstr "Pokud je nastavena 0, použít výchozí nastavení routeru"
 
 #. (tooltip of widget: uninterrupted_building_label)
 #: horizons/i18n/guitranslations.py:937
 msgid "When enabled, do not exit the build mode after successful construction"
-msgstr ""
+msgstr "Pokud je povoleno, po úspěšném postavní se neukončí stavební režim"
 
 #. (tooltip of widget: use_renderer_label)
 #: horizons/i18n/guitranslations.py:939
 msgid "SDL is only meant as unsupported fallback and might cause problems!"
-msgstr ""
+msgstr "SDL není podporovaný a může způsobit potíže!"
 
 #. (text of widget: enter_filename_label)
 #: horizons/i18n/guitranslations.py:944
 msgid "Enter filename:"
-msgstr ""
+msgstr "Zadejte název souboru:"
 
 # 76%
 #. (text of widget: headline_saved_games_label)
 #: horizons/i18n/guitranslations.py:948
-#, fuzzy
 msgid "Your saved games:"
-msgstr "Žádné uložené hry:"
+msgstr "Vaše uložené hry:"
 
 #. (tooltip of widget: cancelButton)
 #: horizons/i18n/guitranslations.py:950
 msgid "Cancel"
-msgstr ""
+msgstr "Zrušit"
 
 #. (tooltip of widget: deleteButton)
 #: horizons/i18n/guitranslations.py:952
 msgid "Delete selected savegame"
-msgstr ""
+msgstr "Smazat vybranou hru"
 
 #. (text of widget: headline)
 #: horizons/i18n/guitranslations.py:961
 msgid "New game - Singleplayer"
-msgstr ""
+msgstr "Nová hra jednoho hráče"
 
 #. (text of widget: start_game_label)
 #: horizons/i18n/guitranslations.py:965
 msgid "Start game:"
-msgstr ""
+msgstr "Začít hru:"
 
 #. (text of widget: campaign)
 #: horizons/i18n/guitranslations.py:967
 msgid "Campaign"
-msgstr ""
+msgstr "Kampaň"
 
 #. (text of widget: free_maps)
 #: horizons/i18n/guitranslations.py:969
 msgid "Free play"
-msgstr ""
+msgstr "Nekonečná hra"
 
 #. (text of widget: random)
 #: horizons/i18n/guitranslations.py:971
 msgid "Random map"
-msgstr ""
+msgstr "Náhodná mapa"
 
 #. (text of widget: scenario)
 #: horizons/i18n/guitranslations.py:973
 msgid "Scenario"
-msgstr ""
+msgstr "Scénář"
 
 #. (tooltip of widget: okay)
 #: horizons/i18n/guitranslations.py:975
 msgid "Start game"
-msgstr ""
+msgstr "Začít hru"
 
 #. (text of widget: choose_map_lbl)
 #. (text of widget: headline_choose_map_lbl)
@@ -2702,92 +2700,92 @@ msgstr ""
 #: horizons/i18n/guitranslations.py:982 horizons/i18n/guitranslations.py:987
 #: horizons/i18n/guitranslations.py:999
 msgid "Choose a map to play:"
-msgstr ""
+msgstr "Vyberte mapu k hře:"
 
 #. (text of widget: headline_map_settings_lbl)
 #: horizons/i18n/guitranslations.py:992
 msgid "Map settings:"
-msgstr ""
+msgstr "Nastavení mapy:"
 
 #. (text of widget: seed_string_lbl)
 #: horizons/i18n/guitranslations.py:994
 msgid "Seed:"
-msgstr ""
+msgstr "Osivo:"
 
 #. (text of widget: ai_players_label)
 #: horizons/i18n/guitranslations.py:1004
 msgid "AI players:"
-msgstr ""
+msgstr "Hráči ovládaní počítačem:"
 
 #. (text of widget: headline_game_settings_lbl)
 #: horizons/i18n/guitranslations.py:1009
 msgid "Game settings:"
-msgstr ""
+msgstr "Nastavení hry:"
 
 #. (text of widget: lbl_disasters) Whether there should be disasters in the game.
 #: horizons/i18n/guitranslations.py:1011
 msgid "Disasters"
-msgstr ""
+msgstr "Pohromy"
 
 #. (text of widget: lbl_free_trader) Whether to create this kind of player in the game.
 #: horizons/i18n/guitranslations.py:1013
 msgid "Free Trader"
-msgstr ""
+msgstr "Svobodný obchodník"
 
 #. (text of widget: lbl_pirates) Whether to create this kind of player in the game.
 #: horizons/i18n/guitranslations.py:1015
 msgid "Pirates"
-msgstr ""
+msgstr "Piráti"
 
 #. (text of widget: color_label)
 #: horizons/i18n/guitranslations.py:1020
 msgid "Color:"
-msgstr ""
+msgstr "Barva:"
 
 #. (text of widget: player_label)
 #: horizons/i18n/guitranslations.py:1022
 msgid "Player name:"
-msgstr ""
+msgstr "Jméno hráče:"
 
 #. name of buildings:alvearies
 #: horizons/i18n/objecttranslations.py:53
 msgid "Alvearies"
-msgstr ""
+msgstr "Včelařství"
 
 #. tooltip_text of buildings:alvearies
 #: horizons/i18n/objecttranslations.py:55
 msgid "Keeps bees. Produces honeycombs used for confectionery. Needs a farm."
-msgstr ""
+msgstr "Chová včely. Vyrábí medové plástve pro výrobu cukroví. Vyžaduje farmu."
 
 #. name of buildings:bakery
 #: horizons/i18n/objecttranslations.py:60
 msgid "Bakery"
-msgstr ""
+msgstr "Pekárna"
 
 #. tooltip_text of buildings:bakery
 #: horizons/i18n/objecttranslations.py:62
 msgid "Consumes flour. Produces food."
-msgstr ""
+msgstr "Spotřebovává mouku. Vyrábí jídlo."
 
 #. name of buildings:barracks
 #: horizons/i18n/objecttranslations.py:67
 msgid "Barracks"
-msgstr ""
+msgstr "Kasárna"
 
 #. tooltip_text of buildings:barracks
 #: horizons/i18n/objecttranslations.py:69
 msgid "Recruits units suitable for ground combat."
-msgstr ""
+msgstr "Poskytuje jednotky vhodné pro pozemní souboje."
 
 #. name of buildings:blender
 #: horizons/i18n/objecttranslations.py:74
 msgid "Blender"
-msgstr ""
+msgstr "Bylinkářství"
 
 #. tooltip_text of buildings:blender
 #: horizons/i18n/objecttranslations.py:76
 msgid "Produces condiments out of spices."
-msgstr ""
+msgstr "Vyrábí koření."
 
 #. name of buildings:boatbuilder
 #: horizons/i18n/objecttranslations.py:81
@@ -2837,12 +2835,12 @@ msgstr "Uhlíř"
 #. tooltip_text of buildings:charcoalburning
 #: horizons/i18n/objecttranslations.py:111
 msgid "Burns a lot of boards to charcoal."
-msgstr ""
+msgstr "Z prken vyrábí dřevěné uhlí."
 
 #. name of buildings:claydeposit
 #: horizons/i18n/objecttranslations.py:116
 msgid "Clay Deposit"
-msgstr "Naleziště hlíny"
+msgstr "Ložisko jílu"
 
 #. name of buildings:claypit
 #: horizons/i18n/objecttranslations.py:121
@@ -2857,24 +2855,23 @@ msgstr "Produkuje jíl."
 #. name of buildings:cocoafield
 #: horizons/i18n/objecttranslations.py:128
 msgid "Cocoa Field"
-msgstr ""
+msgstr "Kakaovníkové pole"
 
 #. tooltip_text of buildings:cocoafield
 #: horizons/i18n/objecttranslations.py:130
 msgid "Produces cocoa beans used for confectionery. Needs a farm."
-msgstr ""
+msgstr "Vyrábí kakaové boby. Potřebuje farmu."
 
 #. name of buildings:cornfield
 #: horizons/i18n/objecttranslations.py:135
 msgid "Corn Field"
-msgstr ""
+msgstr "Kukuřičné pole"
 
 # 88%
 #. tooltip_text of buildings:cornfield
 #: horizons/i18n/objecttranslations.py:137
-#, fuzzy
 msgid "Yields corn. Needs a farm."
-msgstr "Produkuje jídlo. Potřebuje farmu."
+msgstr "Dává kukuřici. Potřebuje farmu."
 
 #. name of buildings:distillery
 #: horizons/i18n/objecttranslations.py:142
@@ -2894,7 +2891,7 @@ msgstr "Lékař"
 #. tooltip_text of buildings:doctor
 #: horizons/i18n/objecttranslations.py:151
 msgid "Treats diseases. Consumes herbs."
-msgstr ""
+msgstr "Léčí nemoci. Spotřebovává bylinky."
 
 #. name of buildings:farm
 #: horizons/i18n/objecttranslations.py:156
@@ -2909,12 +2906,12 @@ msgstr "Obhospodařuje pole a chová dobytek."
 #. name of buildings:fireservice
 #: horizons/i18n/objecttranslations.py:163
 msgid "Fire Brigade"
-msgstr ""
+msgstr "Hasiči"
 
 #. tooltip_text of buildings:fireservice
 #: horizons/i18n/objecttranslations.py:165
 msgid "Extinguishes fires."
-msgstr ""
+msgstr "Hasí oheň"
 
 #. name of buildings:fishdeposit
 #: horizons/i18n/objecttranslations.py:170
@@ -2974,7 +2971,7 @@ msgstr "Kláda"
 #. tooltip_text of buildings:log
 #: horizons/i18n/objecttranslations.py:210
 msgid "Road across a river."
-msgstr ""
+msgstr "Cesta přes řeku"
 
 #. name of buildings:lookout
 #: horizons/i18n/objecttranslations.py:215
@@ -2984,17 +2981,17 @@ msgstr "Rozhledna"
 #. tooltip_text of buildings:lookout
 #: horizons/i18n/objecttranslations.py:217
 msgid "Increases the player's sight."
-msgstr ""
+msgstr "Zvětšuje hráčovo zorné pole."
 
 #. name_0 of buildings:lumberjackcamp
 #: horizons/i18n/objecttranslations.py:222
 msgid "Lumberjack Tent"
-msgstr ""
+msgstr "Dřevorubcův stav"
 
 #. name_1 of buildings:lumberjackcamp
 #: horizons/i18n/objecttranslations.py:224
 msgid "Lumberjack Hut"
-msgstr ""
+msgstr "Dřevorubcova bouda"
 
 #. tooltip_text of buildings:lumberjackcamp
 #: horizons/i18n/objecttranslations.py:226
