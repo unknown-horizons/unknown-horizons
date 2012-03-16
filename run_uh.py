@@ -46,9 +46,29 @@ import optparse
 import signal
 import traceback
 import platform
+import struct
 
 # NOTE: do NOT import anything from horizons.* into global scope
 # this will break any run_uh imports from other locations (e.g. _get_version())
+
+def show_error_message(title, message):
+	print(title)
+	print(message)
+
+	try:
+		import tkinter
+		import tkinter.messagebox
+		window = tkinter.Tk()
+		window.wm_withdraw()
+		tkinter.messagebox.showerror(title, message)
+	except:
+		# tkinter may be missing
+		pass
+	exit(1)
+
+if __name__ == '__main__':
+	if platform.python_version_tuple()[0] != '2':
+		show_error_message('Unsupported Python version', 'Python 2 is required to run Unknown Horizons.')
 
 def log():
 	"""Returns Logger"""
@@ -182,22 +202,22 @@ def excepthook_creator(outfilename):
 		f = open(outfilename, 'a')
 		traceback.print_exception(exception_type, value, tb, file=f)
 		traceback.print_exception(exception_type, value, tb)
-		print
-		print _('Unknown Horizons has crashed.')
-		print
-		print _('We are very sorry for this and want to fix underlying error.')
-		print _('In order to do this, we need the information from the logfile:')
-		print outfilename
-		print _('Please give it to us via IRC or our forum, for both see http://unknown-horizons.org .')
+		print('')
+		print(_('Unknown Horizons has crashed.'))
+		print('')
+		print(_('We are very sorry for this and want to fix underlying error.'))
+		print(_('In order to do this, we need the information from the logfile:'))
+		print(outfilename)
+		print(_('Please give it to us via IRC or our forum, for both see http://unknown-horizons.org .'))
 	return excepthook
 
 def exithandler(exitcode, signum, frame):
 	"""Handles a kill quietly"""
 	signal.signal(signal.SIGINT, signal.SIG_IGN)
 	signal.signal(signal.SIGTERM, signal.SIG_IGN)
-	print
-	print 'Oh my god! They killed UH.'
-	print 'You bastards!'
+	print('')
+	print('Oh my god! They killed UH.')
+	print('You bastards!')
 	if logfile:
 		logfile.close()
 	sys.exit(exitcode)
@@ -228,9 +248,9 @@ def main():
 	try:
 		import yaml
 	except ImportError:
-		headline = _(u"Error: Unable to find required libraries")
-		msg = _(u"We are sorry to inform you that a library that is required by Unknown Horizons, is missing and needs to be installed.") + u"\n" + \
-		    _(u"Installers for Windows users are available at \"http://pyyaml.org/wiki/PyYAML\", Linux users should find it in their packagement management system under the name \"pyyaml\" or \"python-yaml\".")
+		headline = _("Error: Unable to find required libraries")
+		msg = _("We are sorry to inform you that a library that is required by Unknown Horizons, is missing and needs to be installed.") + "\n" + \
+		    _("Installers for Windows users are available at \"http://pyyaml.org/wiki/PyYAML\", Linux users should find it in their packagement management system under the name \"pyyaml\" or \"python-yaml\".")
 		standalone_error_popup(headline, msg)
 		exit(1)
 
@@ -253,14 +273,14 @@ def main():
 			os.makedirs(profiling_dir)
 
 		outfilename = os.path.join(profiling_dir, time.strftime('%Y-%m-%d_%H-%M-%S') + '.prof')
-		print 'Starting in profile mode. Writing output to:', outfilename
+		print('Starting in profile mode. Writing output to: %s' % outfilename)
 		profile.runctx('horizons.main.start(options)', globals(), locals(), outfilename)
-		print 'Program ended. Profiling output:', outfilename
+		print('Program ended. Profiling output: %s' % outfilename)
 
 	if logfile:
 		logfile.close()
 	if ret:
-		print _('Thank you for using Unknown Horizons!')
+		print(_('Thank you for using Unknown Horizons!'))
 
 
 def setup_debugging(options):
@@ -279,7 +299,7 @@ def setup_debugging(options):
 		logging.getLogger().setLevel(logging.DEBUG)
 	for module in options.debug_module:
 		if not module in logging.Logger.manager.loggerDict:
-			print 'No such logger:', module
+			print('No such logger: %s' % module)
 			sys.exit(1)
 		logging.getLogger(module).setLevel(logging.DEBUG)
 	if options.debug or len(options.debug_module) > 0 or options.debug_log_only:
@@ -292,7 +312,7 @@ def setup_debugging(options):
 		else:
 			logfilename = os.path.join(PATHS.LOG_DIR, "unknown-horizons-%s.log" % \
 												         time.strftime("%Y-%m-%d_%H-%M-%S"))
-		print 'Logging to %s' % logfilename.encode('utf-8', 'replace')
+		print('Logging to %s' % logfilename.encode('utf-8', 'replace'))
 		# create logfile
 		logfile = open(logfilename, 'w')
 		# log there
@@ -340,8 +360,11 @@ def setup_fife(args):
 		if '--fife-in-library-path' in args:
 			# fife should already be in LD_LIBRARY_PATH
 			log_paths()
-			print 'Failed to load FIFE:', e
-			exit(1)
+			err_str = str(e)
+			if err_str == 'DLL load failed: %1 is not a valid Win32 application.':
+				show_error_message('Unsupported Python version', '32 bit FIFE requires 32 bit (x86) Python 2.')
+			else:
+				show_error_message('Failed to load FIFE', err_str)
 		log().debug('Failed to load FIFE from default paths: %s', e)
 		log().debug('Searching for FIFE')
 		find_FIFE() # this restarts or terminates the program
@@ -384,7 +407,7 @@ def get_fife_path(fife_custom_path=None):
 	if fife_custom_path is not None:
 		_paths.append(fife_custom_path)
 		if not check_path_for_fife(fife_custom_path):
-			print 'Specified invalid FIFE path: %s' %  fife_custom_path
+			print('Specified invalid FIFE path: %s' %  fife_custom_path)
 			exit(1)
 	else:
 		# no command line parameter, now check for config
@@ -392,7 +415,7 @@ def get_fife_path(fife_custom_path=None):
 			import config
 			_paths.append(config.fife_path)
 			if not check_path_for_fife(config.fife_path):
-				print 'Invalid fife_path in config.py: %s' % config.fife_path
+				print('Invalid fife_path in config.py: %s' % config.fife_path)
 				exit(1)
 		except (ImportError, AttributeError):
 		# no config, try frequently used paths
@@ -429,7 +452,7 @@ def get_fife_path(fife_custom_path=None):
 				os.path.defpath += os.path.pathsep + fife_path
 				break
 	else:
-		print _('FIFE was not found.')
+		print(_('FIFE was not found.'))
 		sys.exit(1)
 	return fife_path
 
