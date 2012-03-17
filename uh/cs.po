@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2012-03-02 04:09+0100\n"
-"PO-Revision-Date: 2012-03-17 21:58+0200\n"
+"PO-Revision-Date: 2012-03-17 21:57+0200\n"
 "Last-Translator: VMa <VaclavMacurek@seznam.cz>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: cs\n"
@@ -3348,65 +3348,64 @@ msgstr "Název souboru smí obsahovat jen písmena, číslice, mezery a podtrž�
 #: horizons/savegamemanager.py:360
 #, python-format
 msgid "Error: don't know how to handle condition type {condition}"
-msgstr ""
+msgstr "Chyba: není znám způsob zpracování podmínky {condition}."
 
 #: horizons/savegamemanager.py:410 horizons/savegamemanager.py:416
 #, python-format
 msgid "Error: Cannot find campaign '{name}'."
-msgstr ""
+msgstr "Chyba: Nemohu najít kampaň '{name}'."
 
 #: horizons/savegamemanager.py:435 horizons/savegamemanager.py:441
 #, python-format
 msgid "Error: Cannot find scenario '{name}'."
-msgstr ""
+msgstr "Chyba: Nemohu najít scénář '{name}'."
 
 #: horizons/scenario/actions.py:96
 msgid "You have won!"
-msgstr "Vyhrál jsi!"
+msgstr "Vyhrál jste!"
 
 #: horizons/scenario/actions.py:97
 msgid "You have completed this scenario."
-msgstr ""
+msgstr "Dokončili jste scénář."
 
 # 75%
 #: horizons/scenario/actions.py:98
-#, fuzzy
 msgid "Do you want to continue playing?"
-msgstr "Chceš pokračovat?"
+msgstr "Chcete pokračovat?"
 
 #: horizons/scenario/scenarioeventhandler.py:157
 #: horizons/scenario/scenarioeventhandler.py:167
 msgid "unknown"
-msgstr ""
+msgstr "neznámé"
 
 #. usually invalid filename
 #: horizons/session.py:488
 msgid "Failed to create savegame file"
-msgstr ""
+msgstr "Vytvoření souboru hry se nezdařilo"
 
 #: horizons/session.py:489
 msgid "There has been an error while creating your savegame file."
-msgstr ""
+msgstr "V průběhu vytváření souboru hry se vyskytla chyba."
 
 #: horizons/session.py:490
 msgid "This usually means that the savegame name contains unsupported special characters."
-msgstr ""
+msgstr "Název hry obsahuje znaky, které nejsou podporovány."
 
 #: horizons/session.py:498
 msgid "Access is denied"
-msgstr ""
+msgstr "Přístup zamítnut"
 
 #: horizons/session.py:499
 msgid "The savegame file is probably read-only."
-msgstr ""
+msgstr "Soubor hry je pravděpodobně jen k čtení."
 
 #: horizons/session.py:502
 msgid "File used by another process"
-msgstr ""
+msgstr "Soubor je využíván jiným procesem"
 
 #: horizons/session.py:503
 msgid "The savegame file is currently used by another program."
-msgstr ""
+msgstr "Soubor hry je zrovna používán jiným programem."
 
 # 75%
 #: horizons/spsession.py:66
@@ -3416,19 +3415,19 @@ msgstr "Nepodařilo se uložit."
 
 #: horizons/spsession.py:67
 msgid "An error happened during quicksave. Your game has not been saved."
-msgstr ""
+msgstr "V průběhu ukládání se vyskytla chyba. Hra nebyla uložena."
 
 #: horizons/spsession.py:68
 msgid "If this error happens again, please contact the development team:"
-msgstr ""
+msgstr "Pokud se tato chyba objeví znovu, kontaktujte vývojářský tým."
 
 #: horizons/spsession.py:76
 msgid "No quicksaves found"
-msgstr ""
+msgstr "Žádná rychlá uložení nebyla nalezena"
 
 #: horizons/spsession.py:76
 msgid "You need to quicksave before you can quickload."
-msgstr ""
+msgstr "Před rychlým načtením potřebujete rychlé uložení."
 
 #: horizons/util/checkupdates.py:70
 msgid "New version of Unknown Horizons"
@@ -3438,6 +3437,8 @@ msgstr "Nová verze Unknown Horizons"
 #, python-format
 msgid "There is a more recent release of Unknown Horizons ({new_version}) than the one you are currently using ({old_version})."
 msgstr ""
+"Je k dispozici novější verze Unknown horizons - {new_version}. Vaše verze je "
+"{old_version}."
 
 #: horizons/util/checkupdates.py:76
 msgid "Click to download"
@@ -3449,7 +3450,7 @@ msgstr "Stránka byla otevřena ve Vašem přohlížeči."
 
 #: horizons/world/building/buildable.py:37
 msgid "Buildings must be built on islands."
-msgstr ""
+msgstr "Stavby musí být stavěny na ostrovech."
 
 #: horizons/world/building/buildable.py:38
 msgid "The ground is not suitable for this building."
