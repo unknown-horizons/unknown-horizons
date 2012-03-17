@@ -58,4 +58,3 @@ class PychanAnimation(object):
 				setattr(self.icon, img, self.files[ self.cur ])
 
 
-

@@ -36,7 +36,8 @@ class SavegameAccessor(DbReader):
 
 	def __init__(self, dbfile):
 		self.upgrader = SavegameUpgrader(dbfile)
-		super(SavegameAccessor, self).__init__(dbfile=self.upgrader.get_path())
+		dbfile = self.upgrader.get_path()
+		super(SavegameAccessor, self).__init__(dbfile=dbfile)
 		self._load_building()
 		self._load_settlement()
 		self._load_concrete_object()

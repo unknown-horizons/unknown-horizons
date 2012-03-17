@@ -473,6 +473,9 @@ class ProductionOverviewTab(OverviewTab):
 
 
 class FarmProductionOverviewTab(ProductionOverviewTab):
+	# the farm uses small buttons
+	ACTIVE_PRODUCTION_ANIM_DIR = "content/gui/images/animations/cogs/small"
+	BUTTON_BACKGROUND = "content/gui/images/buttons/msg_button_small.png"
 	def  __init__(self, instance):
 		super(FarmProductionOverviewTab, self).__init__(
 			instance = instance,
