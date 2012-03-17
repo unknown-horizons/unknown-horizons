@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2012-03-02 04:09+0100\n"
-"PO-Revision-Date: 2012-03-17 22:13+0200\n"
+"PO-Revision-Date: 2012-03-17 23:34+0200\n"
 "Last-Translator: VMa <VaclavMacurek@seznam.cz>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: cs\n"
@@ -136,7 +136,7 @@ msgstr "Vaši obyvatelé dosáhli úrovně {level}."
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
 msgid "Your mine has run out of resources."
-msgstr "Tvému dolu došly zásoby."
+msgstr "Ve Vašem dole už nejsou žádné suroviny."
 
 #. This is a database entry: the name of a resource.
 #: database files sql
@@ -578,9 +578,8 @@ msgstr ""
 
 # 81%
 #: horizons/engine/settingshandler.py:226
-#, fuzzy
 msgid "Failed to apply new network settings."
-msgstr "Nepodařilo se načíst nová síťová data."
+msgstr "Nepodařilo se načíst nové síťové nastavení."
 
 # 78%
 #: horizons/engine/settingshandler.py:227
@@ -612,7 +611,7 @@ msgstr "Jazyk {lang} nelze načíst"
 
 #: horizons/gui/gui.py:204
 msgid "Are you sure you want to quit Unknown Horizons?"
-msgstr "Chcete opravdu ukončit Unknown Horizons?"
+msgstr "Opravdu chcete ukončit Unknown Horizons?"
 
 #: horizons/gui/gui.py:205
 msgid "Quit Game"
@@ -620,7 +619,7 @@ msgstr "Ukončit hru"
 
 #: horizons/gui/gui.py:211
 msgid "Are you sure you want to abort the running session?"
-msgstr "Jste si jist s přerušením aktuální hry?"
+msgstr "Jste si jisti, že chcete přerušit aktuální hru?"
 
 #: horizons/gui/gui.py:213
 #, fuzzy
@@ -765,7 +764,7 @@ msgstr "Chyba při smazání uloženého souboru!"
 #: horizons/gui/gui.py:666
 #, python-format
 msgid "[{key}] = {text}"
-msgstr ""
+msgstr "[{key}] = {text}"
 
 # 97%
 #. (tooltip of widget: headline)
@@ -885,9 +884,8 @@ msgid "Help"
 msgstr "Pomoc"
 
 #: horizons/gui/modules/multiplayermenu.py:217
-#, fuzzy
 msgid "This is a savegame."
-msgstr "Toto je uložená hra"
+msgstr "Toto je uložená hra."
 
 #: horizons/gui/modules/multiplayermenu.py:240
 msgid "Wrong version"
@@ -988,20 +986,20 @@ msgstr "Klikněte pro vytvoření jiné náhodné mapy"
 #: horizons/gui/mousetools/buildingtool.py:157
 #: horizons/i18n/guitranslations.py:64
 msgid "Build"
-msgstr "Postavit"
+msgstr "Stavba"
 
 #: horizons/gui/mousetools/navigationtool.py:72
 msgid "Press H to remove this hint"
-msgstr "Stisknutím tlačítka H zavřete nápovědu"
+msgstr "Stiskněte klávesu H k odstranění tohoto tipu."
 
 #: horizons/gui/tabs/boatbuildertab.py:50
 msgid "Boat builder overview"
-msgstr "Přehled stavitelů lodí"
+msgstr "Přehled stavitele lodí"
 
 #: horizons/gui/tabs/boatbuildertab.py:101
 #, python-format
 msgid "{ship} (place in queue: {place})"
-msgstr ""
+msgstr "{ship} (umístit ve frontě: {place})"
 
 #: horizons/gui/tabs/boatbuildertab.py:165
 msgid "Resources still needed:"
@@ -1071,12 +1069,12 @@ msgstr "Úroveň {increment}"
 #. '... buildings' will cause wrong declinations all over :/
 #: horizons/gui/tabs/buildtabs.py:156
 msgid "{incr_inhabitant_name}"
-msgstr ""
+msgstr "{incr_inhabitant_name}"
 
 #: horizons/gui/tabs/buildtabs.py:174 horizons/util/uhdbaccessor.py:150
 #, python-format
 msgid "{building}: {description}"
-msgstr ""
+msgstr "{building}: {description}"
 
 # 83%
 #. (text of widget: headline)
@@ -1577,7 +1575,7 @@ msgstr "Provozní náklady"
 #. (text of widget: headline_BB_trade_ship1) The huker is a ship class mostly used for fishing. It is the starting ship of players in Unknown Horizons. If you are not sure how to translate, just leave the field empty and it will be called Huker.
 #: horizons/i18n/guitranslations.py:158
 msgid "Huker"
-msgstr ""
+msgstr "Hoker"
 
 #. (tooltip of widget: BB_build_trade_1)
 #. (tooltip of widget: BB_build_war1_1)
@@ -1804,7 +1802,7 @@ msgstr "Zbraně:"
 #. (text of widget: headline)
 #: horizons/i18n/guitranslations.py:394
 msgid "Resource deposit"
-msgstr "Hustota zdrojů"
+msgstr "Naleziště zdrojů "
 
 #. (text of widget: res_dep_description_lbl)
 #: horizons/i18n/guitranslations.py:396
@@ -1892,7 +1890,7 @@ msgstr "Koupě či prodej surovin"
 #. (text of widget: headline_trade_history)
 #: horizons/i18n/guitranslations.py:521
 msgid "Trade history"
-msgstr ""
+msgstr "Historie obchodu"
 
 #. (text of widget: headline)
 #: horizons/i18n/guitranslations.py:526
@@ -1951,6 +1949,8 @@ msgstr "Vyberte zdroje:"
 #: horizons/i18n/guitranslations.py:568
 msgid "The resource you select is displayed instead of the current one. Empty by clicking on X."
 msgstr ""
+"Zboží, kkteré vyberete, je zobrazováno místo současného. Vynulujte stiknutím "
+"klávesy X."
 
 #. (tooltip of widget: delete_warehouse) Trade route entry
 #: horizons/i18n/guitranslations.py:573
@@ -2324,7 +2324,7 @@ msgstr "Důležité!"
 #. (text of widget: credits)
 #: horizons/i18n/guitranslations.py:789
 msgid "Credits"
-msgstr ""
+msgstr "Autoři"
 
 #. (text of widget: quit) Completely shut down UH
 #: horizons/i18n/guitranslations.py:795
@@ -2453,7 +2453,7 @@ msgstr "Nahrát hru"
 #. (text of widget: refr_gamelist_lbl)
 #: horizons/i18n/guitranslations.py:858
 msgid "Refresh list:"
-msgstr ""
+msgstr "Obnovit seznam:"
 
 #. (tooltip of widget: create)
 #: horizons/i18n/guitranslations.py:860
@@ -3499,65 +3499,65 @@ msgstr "Obchodní partner toto zboží neprodává."
 
 #: horizons/world/component/tradepostcomponent.py:186
 msgid "You can not store this."
-msgstr "Toto není možné skladovat."
+msgstr "Toto zboží není možné skladovat."
 
 #: horizons/world/component/tradepostcomponent.py:190
 msgid "You can not afford to buy this."
-msgstr ""
+msgstr "Toto zboží není možné koupit."
 
 #: horizons/world/component/tradepostcomponent.py:196
 msgid "The trade partner does not sell more of this."
-msgstr ""
+msgstr "Obchodní partner větší množství tohoto zboží neprodá."
 
 #: horizons/world/component/tradepostcomponent.py:220
 msgid "The trade partner does not buy this."
-msgstr ""
+msgstr "Obchodní partner toto zboží nekupuje."
 
 #: horizons/world/component/tradepostcomponent.py:228
 msgid "You do not possess this."
-msgstr ""
+msgstr "Toto zboží nemáte."
 
 #: horizons/world/component/tradepostcomponent.py:232
 msgid "The trade partner can not store more of this."
-msgstr ""
+msgstr "Obchodní partner nemůže skladovat větší množství tohoto množství."
 
 #: horizons/world/component/tradepostcomponent.py:236
 msgid "The trade partner can not afford to buy this."
-msgstr ""
+msgstr "Obchodní partner nemůže toto zboží koupit."
 
 #: horizons/world/component/tradepostcomponent.py:241
 msgid "The trade partner does not buy more of this."
-msgstr ""
+msgstr "Obchodní partner nemůže koupit další kusy tohoto zboží."
 
 #: horizons/world/traderoute.py:282
 #, python-format
 msgid "Trade route: going to {location}"
-msgstr ""
+msgstr "Obchodní cesta: plující do {location}"
 
 #: horizons/world/traderoute.py:286
 #, python-format
 msgid "Trade route: waiting at {position}"
-msgstr ""
+msgstr "Obchodní cesta: Vyčkávající v {position}"
 
 #: horizons/world/units/ship.py:184
 #, python-format
 msgid "Going to {location}"
-msgstr ""
+msgstr "Plující do {location}"
 
 #: horizons/world/units/ship.py:186
 #, python-format
 msgid "Going to {x}, {y}"
-msgstr ""
+msgstr "Plující na {x}, {y}"
 
 #: horizons/world/units/ship.py:191
 #, python-format
 msgid "Idle at {location}"
-msgstr ""
+msgstr "Nečinný v {location}"
 
 #: horizons/world/units/ship.py:193
 #, python-format
 msgid "Idle at {x}, {y}"
-msgstr ""
+msgstr "Nečinný na {x}, {y}"
 
 #: horizons/world/units/ship.py:208
 msgid "Trader"
@@ -3566,16 +3566,16 @@ msgstr "Obchodník"
 #: horizons/world/units/weaponholder.py:453
 #, python-format
 msgid "Attacking {target} '{name}' ({owner})"
-msgstr ""
+msgstr "Útočí na {target} '{name}' ({owner})"
 
 #: horizons/world/units/weaponholder.py:458
 #, python-format
 msgid "Attacking {owner}"
-msgstr ""
+msgstr "Útočí na {owner}"
 
 #: run_uh.py:185
 msgid "Unknown Horizons has crashed."
-msgstr ""
+msgstr "Unknown Horizons spadly."
 
 # 83%
 #: run_uh.py:187
@@ -3585,11 +3585,13 @@ msgstr "Velice se omlouváme a snažíme se tuto chybu vyřešit."
 
 #: run_uh.py:188
 msgid "In order to do this, we need the information from the logfile:"
-msgstr ""
+msgstr "K této věci potřebujeme informace z logovacího souboru:"
 
 #: run_uh.py:190
 msgid "Please give it to us via IRC or our forum, for both see unknown-horizons.org ."
 msgstr ""
+"Prosím, dejte nám vědět přes IRC nebo na našem fóru. Oboje hledejte na "
+"unknown-horizons.org"
 
 #: run_uh.py:234
 msgid "Error: Unable to find required libraries"
@@ -3598,12 +3600,15 @@ msgstr "Nebylo možné najít potřebné knihovny"
 #: run_uh.py:235
 msgid "We are sorry to inform you that a library that is required by Unknown Horizons, is missing and needs to be installed."
 msgstr ""
-"Je nám velice líto Vám oznámit, že knihovna, potřebná pro hru Unknown "
-"Horizons chybí a musí být naisntalována."
+"Omlouváme se, ale knihovna nutná pro hraní Unknown Horizons chybí, a musí "
+"být doinstalována."
 
 #: run_uh.py:236
 msgid "Installers for Windows users are available at \"http://pyyaml.org/wiki/PyYAML\", Linux users should find it in their packagement management system under the name \"pyyaml\" or \"python-yaml\"."
 msgstr ""
+"Pro uživatele Windows je instalátor dostupný na "
+"\"http://pyyaml.org/wiki/PyYAML\", uživatelé Linux by správcem balíčků hledat "
+"\"pyyaml\" nebo \"python-yaml\"."
 
 #: run_uh.py:266
 msgid "Thank you for using Unknown Horizons!"
