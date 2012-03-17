@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2012-03-02 04:09+0100\n"
-"PO-Revision-Date: 2012-03-17 21:57+0200\n"
+"PO-Revision-Date: 2012-03-17 22:13+0200\n"
 "Last-Translator: VMa <VaclavMacurek@seznam.cz>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: cs\n"
@@ -3454,52 +3454,52 @@ msgstr "Stavby musí být stavěny na ostrovech."
 
 #: horizons/world/building/buildable.py:38
 msgid "The ground is not suitable for this building."
-msgstr ""
+msgstr "Tento povrch není pro budovu vhodný."
 
 #: horizons/world/building/buildable.py:39
 #: horizons/world/building/buildable.py:41
 msgid "You can only build this within your settlement."
-msgstr ""
+msgstr "Stavět smíte jen uvnitř Vaší osady."
 
 #: horizons/world/building/buildable.py:40
 msgid "This area is already occupied."
-msgstr ""
+msgstr "Toto území je již zabráno."
 
 #: horizons/world/building/buildable.py:42
 msgid "Another player has already occupied this island."
-msgstr ""
+msgstr "Tento ostrov je již zabrán jiným hráčem."
 
 #: horizons/world/building/buildable.py:43
 msgid "You can't build this on top of another building."
-msgstr ""
+msgstr "Není možné postavit přes jinou budovu."
 
 #: horizons/world/building/buildable.py:44
 msgid "You can't build this on top of a unit."
-msgstr ""
+msgstr "Není možné postavit přes jednotku."
 
 #: horizons/world/building/buildable.py:45
 msgid "This building must be built on the coastline."
-msgstr ""
+msgstr "Tato budova smí být postavena jen na pobřeží."
 
 #: horizons/world/building/buildable.py:46
 msgid "This building requires to be placed near the ocean."
-msgstr ""
+msgstr "Tato budova vyžaduje postavení blízko moři."
 
 #: horizons/world/building/buildable.py:47
 msgid "This spot is too far away from your ship."
-msgstr ""
+msgstr "Toto místo je příliš daleko od Vaší lodi."
 
 #: horizons/world/building/buildable.py:48
 msgid "This building can only be built on a resource source."
-msgstr ""
+msgstr "Tato budova smí být postavena jen na ložisku surovin."
 
 #: horizons/world/component/tradepostcomponent.py:178
 msgid "The trade partner does not sell this."
-msgstr ""
+msgstr "Obchodní partner toto zboží neprodává."
 
 #: horizons/world/component/tradepostcomponent.py:186
 msgid "You can not store this."
-msgstr ""
+msgstr "Toto není možné skladovat."
 
 #: horizons/world/component/tradepostcomponent.py:190
 msgid "You can not afford to buy this."
