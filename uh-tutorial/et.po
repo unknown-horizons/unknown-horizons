@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: translate-uh@lists.unknown-horizons.org\n"
 "POT-Creation-Date: 2012-03-13 16:25+0100\n"
-"PO-Revision-Date: 2012-03-17 13:59+0200\n"
+"PO-Revision-Date: 2012-03-17 14:04+0200\n"
 "Last-Translator: Mihkel <RM87@hot.ee>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: et\n"
@@ -480,12 +480,19 @@ msgid ""
 "* the taxes they pay and\n"
 "* the resources they demand."
 msgstr ""
+"Sa näed\n"
+"* elanike heaolu.\n"
+"* makse mida nad maksavad ja\n"
+"* ressursse mida nad nõuavad."
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:142
+#, fuzzy
 msgid ""
 "If their demands are fulfilled, happiness and thus your tax income increase."
 msgstr ""
+"Kui nende nõudmised on täidetud, heaolu ja seega ka sinu maksutulu "
+"suurenevad."
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:144
