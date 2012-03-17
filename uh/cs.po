@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2012-03-02 04:09+0100\n"
-"PO-Revision-Date: 2012-03-16 22:43+0200\n"
+"PO-Revision-Date: 2012-03-17 21:58+0200\n"
 "Last-Translator: VMa <VaclavMacurek@seznam.cz>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: cs\n"
@@ -3327,23 +3327,23 @@ msgstr ""
 #. but we don't know what. Stop the game.
 #: horizons/manager.py:185
 msgid "The games have run out of sync. This indicates an unknown internal error, the game cannot continue."
-msgstr ""
+msgstr "Neznámá chyba. Hra nemůže pokračovat."
 
 #: horizons/manager.py:186
 msgid "We are very sorry and hope to have this bug fixed in a future version."
-msgstr ""
+msgstr "Velmi se omlouváme a doufáme, že bude chyba opravena co nejdříve."
 
 #: horizons/mpsession.py:66
 msgid "Not possible"
-msgstr ""
+msgstr "Nemožné."
 
 #: horizons/mpsession.py:66
 msgid "Save/load for multiplayer games is not possible yet"
-msgstr ""
+msgstr "Uložení/nahrání hry více hráčů není zatím dostupné."
 
 #: horizons/mpsession.py:77
 msgid "The filename must consist only of letters, numbers, spaces and _.-"
-msgstr ""
+msgstr "Název souboru smí obsahovat jen písmena, číslice, mezery a podtržítko."
 
 #: horizons/savegamemanager.py:360
 #, python-format
