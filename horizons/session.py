@@ -128,7 +128,7 @@ class Session(LivingObject):
 		self.status_icon_manager = StatusIconManager(self)
 
 		self.selected_instances = set()
-		self.selection_groups = [set()] * 10 # List of sets that holds the player assigned unit groups.
+		self.selection_groups = [set() for _ in range(10)]  # List of sets that holds the player assigned unit groups.
 
 		self._old_autosave_interval = None
 
