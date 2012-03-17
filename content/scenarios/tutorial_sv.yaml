@@ -2,7 +2,8 @@
 # DON'T EDIT THIS FILE.
 
 # It was automatically generated with development/create_scenario_pot.sh using
-# translation files from pootle.
+# translation files from pootle. Documentation on this process is found here:
+#   development/copy_pofiles.sh
 
 author: !!python/unicode 'The UH team'
 description: "Introduktionen:\nBygg din f\xF6rsta bos\xE4ttning och l\xE4r dig hur\
@@ -13,29 +14,59 @@ events:
   - arguments: ["Bygg ett handelskontor vid kusten, s\xE5 det blir l\xE4ttillg\xE4\
         ngligt f\xF6r andra fartyg exempelvis k\xF6pm\xE4n."]
     type: message
-  - arguments: ["V\xE4lkommen till Unknown Horizons!", "Det h\xE4r \xE4r din loggbok\
-        \ d\xE4r all viktig information lagras. En kort underr\xE4ttelse av varje\
-        \ uppgift kommer att finnas tillg\xE4nglig p\xE5 v\xE4nstra sidan av sk\xE4\
-        rmen.\n\nOm du \xE4r intresserad av l\xE4ngre f\xF6rklaringar s\xE5 kommer\
-        \ loggboken f\xF6rhoppningsvis att ge dig den hj\xE4lp du beh\xF6ver.\n\n\
-        Efter att du har st\xE4ngt loggboken kan du \xF6ppna den igen genom att trycka\
-        \ p\xE5 ikonen \"Loggboken\" i det \xF6vre h\xF6gra h\xF6rnet(under v\xE4\
-        rldskartan med ett f\xF6rseglat dokument och en fj\xE4der)\n\nOm du har n\xE5\
-        gra f\xF6rslag p\xE5 b\xE4ttre f\xF6rklaringar, \xE4mnen som kunde ha beskrivits\
-        \ eller buggighet s\xE5 tala g\xE4rna om det f\xF6r oss s\xE5 ska vi g\xF6\
-        ra vad vi kan f\xF6r att f\xF6rb\xE4ttra introduktionen!\n\nBes\xF6k www.unknown-horizons.org\
-        \ f\xF6r hj\xE4lp om hur du tar kontakt med teamet!\n\nDags att b\xF6rja spela!"]
-    type: logbook_w
-  - arguments: ["NY UPPGIFT: BOS\xC4TTA SIG P\xC5 EN NY \xD6", "F\xF6r att flytta\
-        \ ditt fartyg, tryck p\xE5 fartyget med v\xE4nsterknappen och sedan med h\xF6\
-        gerknappen d\xE4r du vill att den ska \xE5ka.\n\nN\xE4r du kommit n\xE4ra\
-        \ kusten s\xE5 aktiveras den ankar-liknande knappen i \xF6versiktsfliken.\n\
-        \nDet betyder att du nu kan bygga ett handelskontor genom att trycka p\xE5\
-        \ knappen(kallad 'Bygg Bos\xE4ttning').\n\nEn f\xF6rhandsvisning av din byggnad\
-        \ g\xE5r att se n\xE4r du flyttar runt med pekaren.\n\nDu kan bygga p\xE5\
-        \ alla platser d\xE4r f\xF6rhandsvisningen inte \xE4r f\xE4rgad r\xF6d.\n\
-        Tryck d\xE4r du vill placera din byggnad.\n\nUPPGIFT: Bygg ett handelskontor\
-        \ vid kusten.", 2]
+  - arguments:
+    - ''
+    - - Gallery
+      - [content/gfx/uh.png]
+    - [Pagebreak]
+    - [Headline, "V\xE4lkommen till Unknown Horizons!"]
+    - [Image, content/gui/images/background/hr.png]
+    - ''
+    - !!python/unicode 'This is your Captain''s log where all important information
+      is stored. A short notification of each task will be provided on the left of
+      the screen.'
+    - !!python/unicode 'If you are interested in longer descriptions, your log will
+      hopefully provide all the help you need.'
+    - !!python/unicode 'After you close this log, it can be re-opened with the "Captain''s
+      Log" icon in the top-right corner (below the mini-map, with a sealed document
+      and a feather).'
+    - - Gallery
+      - [content/gui/icons/widgets/minimap/captainslog.png]
+    - !!python/unicode '
+
+      To see your first task, click on the button "Read next entries" in the navigation
+      panel! It looks like this:'
+    - - Gallery
+      - [content/gui/images/buttons/parrow_right.png]
+    - [Pagebreak]
+    - !!python/unicode '
+
+      For any suggestions on better wording, topics you would like to have explained
+      or even buggy conditions: Please tell us and we will try to improve the tutorial!'
+    - !!python/unicode '
+
+      Visit www.unknown-horizons.org for help on how to contact the team!'
+    - !!python/unicode 'And now, let''s start the actual game.'
+    - [Pagebreak]
+    - [Headline, "NY UPPGIFT: BOS\xC4TTA SIG P\xC5 EN NY \xD6"]
+    - [Image, content/gui/images/background/hr.png]
+    - !!python/unicode 'To move your ship, select it with a left click and right click
+      on the location you want it to go to.'
+    - !!python/unicode 'Once you are near the coast, the anchor-like button you see
+      in the overview tab will become active.'
+    - - Gallery
+      - [content/gui/icons/ship/anchor.png]
+    - !!python/unicode 'This indicates that you are able to build a warehouse there
+      by pressing that button (called ''Build Settlement'').'
+    - !!python/unicode 'Now a preview of your building is dragged around when you
+      move the cursor.'
+    - !!python/unicode 'You can build on any spot where this preview is not shaded
+      red.
+
+      Click where you want to place your first building.'
+    - !!python/unicode '
+
+      TASK: Build a warehouse at the coast.'
     type: logbook
   - arguments: [tutStepDone, 16]
     type: set_var
@@ -43,29 +74,43 @@ events:
   - arguments: [0]
     type: time_passed
 - actions:
-  - arguments: [!!python/unicode 'NY UPPGIFT: BYGG EN SKOGSHUGGARE', "Byggnadsmaterialet\
-        \ p\xE5 ditt fartyg lastades av automatiskt. Du kan nu bygga n\xE5gra grundl\xE4\
-        ggande byggnader.\n\nVi b\xF6rjar med att bygga en skogshuggare.\n\nDetta\
-        \ \xE4r viktigt, f\xF6r i detta skede \xE4r plankor de enda p\xE5lar dina\
-        \ sj\xF6m\xE4n har r\xE5d att h\xE4nga sina t\xE4lt \xF6ver.\n\nFiskaren beh\xF6\
-        ver ocks\xE5 n\xE5gra plankor f\xF6r att bygga sin b\xE5t.\n\nF\xF6r att bygga\
-        \ skogshuggare; \xF6ppna byggmenyn genom att klicka p\xE5 den stora ikonen\
-        \ under den lilla kartan eller tryck B p\xE5 tangentbordet.\n\nByggnadsmenyn\
-        \ \xE4r indelad i tillv\xE4xtgrader.\nDu befinner dig f\xF6r nuvarande p\xE5\
-        \ den f\xF6rsta tillv\xE4xtgraden (Sj\xF6mans niv\xE5) och erbjuds d\xE4rf\xF6\
-        r bara grundl\xE4ggande byggnader."]
-    type: logbook_w
-  - arguments: ['', "Under tiden som din civilisation utvecklas kommer du f\xE5 tillg\xE5\
-        ng till mer avancerade byggnader.\n\nTills vidare, tryck p\xE5 skogshuggare\
-        \ under 'F\xF6retag' och bygg den i n\xE4rheten av tr\xE4d.\n\nDu kan ocks\xE5\
-        \ plantera tr\xE4d - men det kostar pengar. F\xF6rs\xF6k anv\xE4nda vad naturen\
-        \ erbjuder!\n\nEtt f\xF6retag beh\xF6ver alltid en g\xE5ngstig ansluten till\
-        \ ett f\xF6rvaringst\xE4lt eller handelskontor, annars kommer varorna inte\
-        \ att samlas in f\xF6r anv\xE4ndning.\n\nDet betyder att du m\xE5ste bygga\
-        \ en g\xE5ngstig mellan handelskontoret(eller ett f\xF6rvaringst\xE4lt) och\
-        \ skogshuggaren.\n\nUPPGIFT: Bygg en skogshuggare i ett skogst\xE4tt omr\xE5\
-        de och anslut den till en g\xE5ngstig.\n\nV\xE4nta och se nu hur en samlare\
-        \ h\xE4mtar din f\xF6rsta sj\xE4lvproducerade vara - tr\xE4."]
+  - arguments:
+    - [Headline, !!python/unicode 'NY UPPGIFT: BYGG EN SKOGSHUGGARE']
+    - [Image, content/gui/images/background/hr.png]
+    - !!python/unicode 'The construction material on your ship got unloaded automatically.
+      You can now construct some basic buildings.'
+    - !!python/unicode 'We will start with building a lumberjack.'
+    - !!python/unicode 'This is essential because, at this stage, boards are the only
+      poles your sailors can afford to hang their tents over.'
+    - !!python/unicode 'The fisherman needs some boards to build his vessel as well.'
+    - !!python/unicode 'In order to construct lumberjacks; open the build menu by
+      either clicking the big icon below the mini map or pressing B key.'
+    - - Gallery
+      - [content/gui/icons/widgets/minimap/build.png]
+    - !!python/unicode 'The build menu is sorted by increments.'
+    - !!python/unicode 'You are currently in the first increment (the Sailors level)
+      so are offered only the basic buildings.'
+    - [Pagebreak]
+    - !!python/unicode '
+
+      As your civilization advances, you also gain more and more complex buildings.'
+    - !!python/unicode 'For now, select the lumberjack under ''Companies'' and build
+      it in an area with some trees around.'
+    - !!python/unicode 'You can also plant trees later - but that costs money. Use
+      what nature provided you with!'
+    - !!python/unicode 'A company always needs a trail connection to a storage or
+      warehouse, otherwise goods will remain at the company and not be collected.'
+    - !!python/unicode 'This means that you have to build a trail connecting your
+      warehouse (or storage) and lumberjack.'
+    - !!python/unicode '
+
+      TASK: Build a lumberjack in a wooded area and connect it to a road.'
+    - !!python/unicode 'Watch how a collector will fetch your first self-produced
+      boards. Don''t worry about recruiting workers for the lumberjack. That happens
+      automatically.'
+    - - Gallery
+      - [content/gui/icons/buildmenu/008.png, content/gui/icons/buildmenu/015.png,
+        content/gui/icons/resources/50/004.png]
     type: logbook
   - arguments: ["Bygg en skogshuggare och anslut den till handelskontoret med en g\xE5\
         ngstig."]
@@ -84,24 +129,37 @@ events:
   - arguments: [tutStepDone, 19]
     type: var_lt
 - actions:
-  - arguments: ["NY UPPGIFT: SAMLA F\xD6DA", "Du kommer att beh\xF6va ett f\xF6retag\
-        \ som producerar f\xF6da, eftersom m\xE4nniskor i allm\xE4nhet(och sj\xF6\
-        m\xE4n i synnerhet) \xE4r v\xE4ldigt hungriga.\n\nTillg\xE4ngliga f\xF6retag\
-        \ i steg ett \xE4r J\xE4gare och Fiskare.\n\nJ\xE4garen, f\xF6rv\xE5nansv\xE4\
-        rt nog, jagar djur i skogen och beh\xF6ver tr\xE4d runtomkring sig.\n\nNotera\
-        \ att du kan placera en J\xE4gare i n\xE4rheten av skogshuggarens skog.\n\n\
-        Det kan h\xE4nda att djuren inte f\xF6r\xF6kar sig tillr\xE4ckligt snabbt\
-        \ eller g\xF6mmer sig v\xE4l.\n\nSlutsats: j\xE4garen \xE4r inte tillf\xF6\
-        rlitlig f\xF6r en stabil och kontinuerlig tillg\xE5ng av f\xF6da."]
-    type: logbook_w
-  - arguments: ['', "Fiskarens byggnad placeras vid kusten precis som handelskontoret\
-        \ och beh\xF6ver fisk inom dess r\xE4ckvidd.\n\nFiskaren bygger ett litet\
-        \ fartyg f\xF6r att f\xE5nga fisk.\n\nFiskaren ger en kontinuerlig tillg\xE5\
-        ng av f\xF6da men till priset att produktionen \xE4r l\xE5ngsammare.\n\nEn\
-        \ liten bos\xE4ttning som din kan anv\xE4nda b\xE5da f\xF6retagen, och du\
-        \ f\xE5r sj\xE4lv balansera effekten av b\xE5das f\xF6r och nackdelar.\n\n\
-        UPPGIFT: Bygg en j\xE4gare och en fiskare.\n\nGl\xF6m inte att ansluta dem\
-        \ till ditt handelskontor med en g\xE5ngstig!"]
+  - arguments:
+    - [Headline, "NY UPPGIFT: SAMLA F\xD6DA"]
+    - [Image, content/gui/images/background/hr.png]
+    - !!python/unicode 'You will need to have some food-producing companies, too,
+      because people in general (and especially sailors) are very hungry.'
+    - !!python/unicode 'Available companies in the first increment are the Hunter
+      and Fisher.'
+    - !!python/unicode 'The Hunter hunts animals in the forest, thus needs trees nearby.'
+    - !!python/unicode 'Note that you can place your Hunter close to the lumberjack''s
+      forest.'
+    - !!python/unicode 'It can happen that the animals don''t reproduce fast enough
+      or simply hide well.'
+    - !!python/unicode 'Conclusion: the hunter is not too reliable if you need continuous
+      supply.'
+    - [Pagebreak]
+    - !!python/unicode '
+
+      The Fisher needs a coastal building site like the warehouse and a fish school
+      in range.'
+    - !!python/unicode 'He will build a small rowing vessel and catch some fish.'
+    - !!python/unicode 'This is a very constant supply at the cost of a slightly longer
+      production time per unit of food.'
+    - !!python/unicode 'A small settlement like yours can use both companies, and
+      you can better balance pros and cons if you see the direct comparison.'
+    - !!python/unicode '
+
+      TASK: Build a hunter and a fisher.'
+    - !!python/unicode 'Don''t forget to connect them to your warehouse with trails!'
+    - - Gallery
+      - [content/gui/icons/buildmenu/011_h.png, content/gui/icons/buildmenu/009_h.png,
+        content/gui/icons/resources/50/005.png]
     type: logbook
   - arguments: ["Bygg en j\xE4gare och en fiskare. Anslut dem till ditt handelskontor."]
     type: message
@@ -115,35 +173,44 @@ events:
   - arguments: [tutStepDone, 22]
     type: var_lt
 - actions:
-  - arguments: [!!python/unicode 'NY UPPGIFT: MARKNADSPLATS', "Dina inv\xE5nare beh\xF6\
-        ver en marknadsplats d\xE4r de kan h\xE4mta varor som de beh\xF6ver.\n\nDet\
-        \ betyder att de beh\xF6ver en g\xE5ngstig ansluten fr\xE5n deras bostad till\
-        \ marknadsplatsen.\n\nAlla varor i ditt handelskontor \xE4r tillg\xE4ngliga\
-        \ i marknadsplatsen, s\xE5 att dina inv\xE5nare in beh\xF6ver g\xE5 till fiskaren\
-        \ eller handelskontoret f\xF6r att h\xE4mta h\xE4mta f\xF6da.\n\nDu borde\
-        \ fundera p\xE5 att planera dina bost\xE4ders bos\xE4ttning s\xE5 att omr\xE5\
-        det l\xE4ttare kan expandera och anslutas med g\xE5ngstigar.\n\nDu borde undvika\
-        \ att placera dina bost\xE4der f\xF6r n\xE4ra timmerstugan eftersom bost\xE4\
-        derna kommer att ta bort tr\xE4d som timmerstugan beh\xF6ver f\xF6r att producera\
-        \ tr\xE4.\n\nUPPGIFT: Bygg en marknadsplats."]
-    type: logbook_w
-  - arguments: ['', !!python/unicode 'Now let''s have a closer look at the main square.
+  - arguments:
+    - [Headline, !!python/unicode 'NY UPPGIFT: MARKNADSPLATS']
+    - [Image, content/gui/images/background/hr.png]
+    - !!python/unicode 'Your residents need a main square where they can fetch their
+      goods from.'
+    - !!python/unicode 'This means that they need a trail connection from their home
+      to the main square.'
+    - !!python/unicode 'All goods in your warehouse are available at this ''market
+      place'', so your residents do not need to walk to the fisher or even to the
+      warehouse.'
+    - - Gallery
+      - [content/gui/icons/buildmenu/004_h.png]
+    - !!python/unicode 'You should avoid placing your main settlement tents too close
+      to your lumberjacks because building tents will clear away the trees that your
+      lumberjack needs to produce boards.'
+    - !!python/unicode 'Companies work without being connected to the tents, so you
+      don''t need to build a road between the main square and e.g. your lumberjack
+      tent.'
+    - !!python/unicode '
 
+      TASK: Build a main square.'
+    - [Pagebreak]
+    - !!python/unicode '
 
-        In the ''Account'' tab you get a balance sheet of this island, featuring all
-        costs you pay and all taxes you earn.
-
-
-        The items ''Sale'' and ''Buy'' refer to your trading balance and will be explained
-        later on.
-
-
-        If your balance is positive, you all-in-all make a profit.
-
-
-        In the different increment overview tabs you can see statistics about your
-        inhabitants. You also set the increment-specific global tax here and allow
-        or deny inhabitants of this increment to upgrade to the next higher one.']
+      Now let''s have a closer look at the main square.'
+    - - Gallery
+      - [content/gui/icons/tabwidget/warehouse/account_a.png]
+    - !!python/unicode 'In the ''Account'' tab you get a balance sheet of this island,
+      featuring all costs you pay and all taxes you earn.'
+    - !!python/unicode 'The items ''Sale'' and ''Buy'' refer to your trading balance
+      and will be explained later on.'
+    - !!python/unicode 'If your balance is positive, you all-in-all make a profit.'
+    - - Gallery
+      - [content/gui/icons/tabwidget/mainsquare/inhabitants0_a.png]
+    - !!python/unicode 'In the different increment overview tabs you can see statistics
+      about your inhabitants. You also set the increment-specific global tax here
+      and allow or deny inhabitants of this increment to upgrade to the next higher
+      one.'
     type: logbook
   - arguments: ["Bygg en marknadsplats. V\xE4lj en plats d\xE4r du l\xE4ttare kan\
         \ bygga ut ditt bostadsomr\xE5de."]
@@ -164,14 +231,22 @@ events:
   - arguments: [tutStepDone, 25]
     type: var_lt
 - actions:
-  - arguments: [!!python/unicode 'NY UPPGIFT: BOSTADSBYGGNADER', "Nybyggare vill ha\
-        \ tak \xF6ver huvudet, annars kommer de inte att flytta in i din bos\xE4ttning!\
-        \ Du m\xE5ste ge dem t\xE4lt att bo i.\n\nT\xE4lt \xE4r den enklaste typen\
-        \ av bostad. Dina inv\xE5nare kommer att vilja uppgradera sina bost\xE4der\
-        \ n\xE4r nya steg finns tillg\xE4ngliga.\n\nNybyggare kan tyckas on\xF6diga\
-        \ eftersom de konsumerar dina varor - \xE5 andra sidan betalar de skatt, och\
-        \ \xE4r den enda inkomstk\xE4llan du har f\xF6r tillf\xE4llet.\n\nUPPGIFT:\
-        \ Bygg ett t\xE4lt och anslut den till marknadsplatsen."]
+  - arguments:
+    - [Headline, !!python/unicode 'NY UPPGIFT: BOSTADSBYGGNADER']
+    - [Image, content/gui/images/background/hr.png]
+    - !!python/unicode 'Settlers want to have a roof over their heads, else they won''t
+      even think of living in your city! You need to provide tents.'
+    - - Gallery
+      - [content/gui/icons/buildmenu/003_h.png]
+    - !!python/unicode 'Tents are the basic residential buildings. Your inhabitants
+      will want to upgrade it when they reach higher increments.'
+    - !!python/unicode 'Settlers may not look very useful since they will try to consume
+      all goods you produce - but they at least pay taxes, and that''s the only way
+      you can make money for now!'
+    - !!python/unicode '
+
+      TASK: Build a tent and connect it to the main square. Tents dont need to be
+      connected to any of the companies.'
     type: logbook
   - arguments: ["Bygg ett t\xE4lt och anslut den till marknadsplatsen."]
     type: message
@@ -185,16 +260,24 @@ events:
   - arguments: [tutStepDone, 28]
     type: var_lt
 - actions:
-  - arguments: ['', "L\xE5t oss ta en titt p\xE5 t\xE4ltets \xF6versiktsflik.\nDu\
-        \ kan se:\n* Hur lyckliga de inneboende \xE4r.\n* Skatterna de betalar.\n\
-        * och de varor som de kr\xE4ver.\n\nOm deras krav p\xE5 varor \xE4r m\xE4\
-        ttade, \xF6kar deras lycka som i sin tur \xF6kar dina skatteint\xE4kter.\n\
-        \nOm inte s\xE5 minkar lycka och skatteint\xE4kter. Om du struntar fullst\xE4\
-        ndigt i deras behov kan det h\xE4nda att de l\xE4mnar din bos\xE4ttning och\
-        \ minnena av dem \xE4r ett f\xF6rfallet t\xE4lt.\n\nNotera att du \xE4ven\
-        \ kan justera den globala skatteint\xE4kten \xE4ven h\xE4r.\n\nUPPGIFT: Bygg\
-        \ minst tre t\xE4lt till.\n\nTIPS: Att h\xE5lla ner SHIFT g\xF6r att du kan\
-        \ placera flera av samma byggnad."]
+  - arguments: [!!python/unicode '
+
+        Let''s have a look at the tent overview tab.', !!python/unicode 'You can see
+
+        * the happiness of these residents,
+
+        * the taxes they pay and
+
+        * the resources they demand.', !!python/unicode 'If their demands are fulfilled,
+        happiness and thus your tax income increase.', !!python/unicode 'If not, happiness
+        and income decrease. At some time your residents may get really sour and simply
+        turn their back on your village, leaving behind a decaying ruin.', !!python/unicode 'Note
+        that you can also change the global tax settings here, too.', !!python/unicode '
+
+        TASK: Build at least three additional tents.', !!python/unicode '
+
+        TIP: Holding down SHIFT eases constructing multiple buildings of the same
+        kind.']
     type: logbook
   - arguments: ["Bygg minst tre t\xE4lt till och anslut dem till marknadsplatsen."]
     type: message
@@ -208,50 +291,41 @@ events:
   - arguments: [tutStepDone, 31]
     type: var_lt
 - actions:
-  - arguments: [!!python/unicode 'NY UPPGIFT: BYGG EN SIGNALBRAND', !!python/unicode 'Can
-        you see the ship passing your island from time to time? That ship belongs
-        to the Free Trader, one of the first settlers in this archipelago.
+  - arguments:
+    - [Headline, !!python/unicode 'NY UPPGIFT: BYGG EN SIGNALBRAND']
+    - [Image, content/gui/images/background/hr.png]
+    - !!python/unicode 'Can you see the ship passing your island from time to time?
+      That ship belongs to the Free Trader, one of the first settlers in this archipelago.'
+    - !!python/unicode 'The trader will supply your settlement with necessary goods
+      which you can''t produce yet.'
+    - !!python/unicode 'You can also sell surpluses of your production, but in general
+      consuming them (by building more tents) instead of selling them yields more
+      profit.'
+    - !!python/unicode 'Normally the trader ships just sail around and look for deals,
+      but you can speed things up a bit.'
+    - - Gallery
+      - [content/gui/icons/buildmenu/006_h.png]
+    - !!python/unicode 'For this purpose, build a signal fire at the coast near your
+      warehouse. It will show ships the way to your settlement.'
+    - !!python/unicode 'The signal fire has to cover the area which the ships pass
+      through to catch them.'
+    - [Pagebreak]
+    - !!python/unicode '
 
+      After this little advertisment, the trader will also stop by and look into your
+      warehouse if it planned to sail past it.'
+    - !!python/unicode 'You can propose deals via the warehouse tab "Buy/Sell".'
+    - - Gallery
+      - [content/gui/icons/tabwidget/warehouse/buysell_a.png]
+    - !!python/unicode 'At the ''sailors'' increment, you are equipped with three
+      trading slots.'
+    - !!python/unicode 'Click on the small icon to change the slot mode from ''Buy''
+      to ''Sell'' and vice versa.'
+    - !!python/unicode 'Click in the slot to choose the good you want to trade with.
+      We will further explain this once you are ready to trade.'
+    - !!python/unicode '
 
-        The trader will supply your settlement with necessary goods which you can''t
-        produce yet.
-
-        You can also sell surpluses of your production, but in general consuming them
-        (by building more tents) instead of selling them yields more profit.
-
-
-        Normally the trader ships just sail around and look for deals, but you can
-        speed things up a bit.
-
-
-        For this purpose, build a signal fire at the coast near your warehouse. It
-        will show ships the way to your settlement.
-
-
-        The signal fire has to cover the area which the ships pass through to catch
-        them.']
-    type: logbook_w
-  - arguments: ['', !!python/unicode 'After this little advertisment, the trader will
-        also stop by and look into your warehouse if it planned to sail past it.
-
-
-        You can propose deals via the warehouse tab ''Buy/Sell''. (This feature is
-        currently quite fiddly to use. If you come up with a nice way of improving
-        it, please share your thoughts! We need your help here!)
-
-
-        At the ''sailors'' increment, you are equipped with three trading slots.
-
-
-        Click on the small icon to change the slot mode from ''Buy'' to ''Sell'' and
-        vice versa.
-
-
-        Click in the slot to choose the good you want to trade with. We will further
-        explain this once you are ready to trade.
-
-
-        TASK: Build a signal fire at the coast close to your warehouse.']
+      TASK: Build a signal fire at the coast close to your warehouse.'
     type: logbook
   - arguments: ["Bygg en signalbrand vid kusten och i n\xE4rheten av handelskontoret."]
     type: message
@@ -265,25 +339,46 @@ events:
   - arguments: [tutStepDone, 34]
     type: var_lt
 - actions:
-  - arguments: ["NY UPPGIFT: L\xC4R DIG HANDEL", "Utm\xE4rkt! Nu kommer k\xF6pm\xE4\
-        nnen att stanna vid ditt handelskontor d\xE5 och d\xE5.\n\nNu vidare till\
-        \ hur du utf\xF6r handel.\n\nEfter att ha valt en viss typ av vara kommer\
-        \ den gr\xF6na stapeln att visa(om den syns) hur mycket av den varan som finns\
-        \ i ditt lager.\n\nReglaget till h\xF6ger om stapeln best\xE4mmer hur stora\
-        \ eller sm\xE5 m\xE4ngder du vill k\xF6pa eller s\xE4lja.\nOm du vill k\xF6\
-        pa en vara best\xE4mmer du hur mycket du vill ska finnas i lagret.\nOm du\
-        \ s\xE4ljer en vara best\xE4mmer du hur mycket du vill ha kvar i lagret."]
-    type: logbook_w
-  - arguments: ['', !!python/unicode "For example: \nHaving a 'Buy' slot and 5 tons\
-        \ in stock, a slider positioned at 9 tons will cause you to buy 4 additional\
-        \ tons at most.\nSelling works similarly. A 'Sell' slot with 18 tons in stock\
-        \ and the slider positioned at 13 will sell up to 5 tons.\n\nIf the free trader\
-        \ however only wants to buy or sell less than your settings would allow him,\
-        \ you need to live with that and wait for him to return.\n\nUnknown Horizons\
-        \ features smart pricing, so the value of one unit can vary.\nIt is NOT possible\
-        \ to change prices manually!\n\nYou can see your trade balance in the 'Account'\
-        \ tab comparing the 'Sale' and 'Buy' values there.\n\nTASK: Buy as many tools\
-        \ as you need to have 30 tools in stock!"]
+  - arguments:
+    - [Headline, "NY UPPGIFT: L\xC4R DIG HANDEL"]
+    - [Image, content/gui/images/background/hr.png]
+    - !!python/unicode 'Excellent! The Free Trader will now stop by at your warehouse
+      from time to time.
+
+
+      Let''s continue our tutorial on how to trade.'
+    - !!python/unicode 'After selecting a particular type of good, the green bar across
+      the bottom of the slot (if visible) shows you how much you have in stock of
+      this good.'
+    - !!python/unicode 'Dragging the slider on the right of each slot determines your
+      ''target value'' which has a different meaning on ''Buy'' and ''Sell''.'
+    - !!python/unicode 'When buying, you will buy sufficient to hold your ''target
+      value'' in stock.'
+    - !!python/unicode 'When selling, the ''target value'' is the stock amount at
+      which you will always stop selling until you get more of that resource again.'
+    - [Pagebreak]
+    - !!python/unicode '
+
+      For example:
+
+      Having a ''Buy'' slot and 5 tons in stock, a slider positioned at 9 tons will
+      cause you to buy 4 additional tons at most.'
+    - !!python/unicode 'Selling works similarly. A ''Sell'' slot with 18 tons in stock
+      and the slider positioned at 13 will sell up to 5 tons.'
+    - !!python/unicode 'If the free trader however only wants to buy or sell less
+      than your settings would allow him, you need to live with that and wait for
+      him to return.'
+    - !!python/unicode 'Unknown Horizons features smart pricing, so the value of one
+      unit can vary.
+
+      It is NOT possible to change prices manually!'
+    - !!python/unicode 'You can see your trade balance in the ''Account'' tab comparing
+      the ''Sale'' and ''Buy'' values there.'
+    - !!python/unicode '
+
+      TASK: Buy as many tools as you need to have 30 tools in stock!'
+    - - Gallery
+      - [content/gui/icons/resources/50/006.png]
     type: logbook
   - arguments: [!!python/unicode 'Se till att du har 30 ton verktyg i lager.', !!python/unicode 'Note
         that this might take a while.']
@@ -298,36 +393,37 @@ events:
   - arguments: [tutStepDone, 37]
     type: var_lt
 - actions:
-  - arguments: [!!python/unicode 'NY UPPGIFT: BYGG EN PAVILJONG', "Det borde r\xE4\
-        cka med verktyg f\xF6r nuvarande. Bra jobbat!\n\nJust nu tillgodoser du dina\
-        \ inv\xE5nare med bostad, marknadsplats och f\xF6da.\n\nMen det finns fortfarande\
-        \ ett till behov vi inte har tillgodosett, s\xE5 kolla i marknadsplatsen eller\
-        \ bostadsfliken - Dina sj\xF6m\xE4n vill ha en byggnad d\xE4r de kan be.\n\
-        \nF\xF6r att l\xF6sa detta behov snabbt byggs en paviljong d\xE4r pr\xE4sten\
-        \ kan vara i skydd mot solen.\n\nServicebyggnader som denna beh\xF6ver ocks\xE5\
-        \ en g\xE5ngstig, annars hittar inte dina inv\xE5nare dit.\n\nI senare steg\
-        \ kan uppgraderade versioner av byggnaderna komma att bli tillg\xE4ngliga."]
-    type: logbook_w
-  - arguments: ['', !!python/unicode 'Note that faith is treated like a physical resource!
+  - arguments:
+    - [Headline, !!python/unicode 'NY UPPGIFT: BYGG EN PAVILJONG']
+    - [Image, content/gui/images/background/hr.png]
+    - !!python/unicode 'Those tools will be enough for the moment. Well done!'
+    - !!python/unicode 'You now provide housing, a main square and food to your inhabitants.'
+    - !!python/unicode 'Still there is one demand which we have not satisfied so far,
+      you may check that in the marketplace or tent tab - your sailors want a basic
+      building where they can pray.'
+    - !!python/unicode 'The solution is a pavilion which the village parson quickly
+      puts up as shelter from the sun.'
+    - !!python/unicode 'Service buildings like this also need to be connected to the
+      tents with a trail, else your inhabitants feel unable to reach them.'
+    - [Pagebreak]
+    - !!python/unicode '
 
+      Note that faith is treated like a physical resource!'
+    - !!python/unicode 'This means that your inhabitants need a road connection to
+      the producer (pavilion) to pick up faith there.'
+    - !!python/unicode 'After some time, they will have consumed it and then again
+      look for a producer to collect more faith.'
+    - !!python/unicode 'Important:
 
-        This means that your inhabitants need a road connection to the producer (pavilion)
-        to pick up faith there.
+      It is NOT enough that the building is merely within a certain range of the tents.
 
-        After some time, they will have consumed it and then again look for a producer
-        to collect more faith.
+      The road connection is required as well.'
+    - !!python/unicode '
 
-
-        Important:
-
-        It is NOT enough that the building is merely within a certain range of the
-        tents.
-
-        The road connection is required as well.
-
-
-        TASK: Build a pavilion with a trail to the tents in order to fulfill your
-        sailors'' demand for faith.']
+      TASK: Build a pavilion with a trail to the tents in order to fulfill your sailors''
+      demand for faith.'
+    - - Gallery
+      - [content/gui/icons/buildmenu/005.png]
     type: logbook
   - arguments: ["Bygg en paviljong med anslutning till bost\xE4derna."]
     type: message
@@ -341,29 +437,39 @@ events:
   - arguments: [tutStepDone, 40]
     type: var_lt
 - actions:
-  - arguments: ["NY UPPGIFT: N\xC4STA STEG", "Alla behov \xE4r tillgodosedda om dina\
-        \ inv\xE5nare regelbundet kan bes\xF6ka marknadsplatsen och paviljongen och\
-        \ f\xF6dan r\xE4cker till alla.\n\nOm sj\xF6m\xE4nnen \xE4r tillr\xE4ckligt\
-        \ lyckliga s\xE5 vill de avancera till n\xE4sta steg som kallas Pionj\xE4\
-        rer.\n\nF\xF6r att g\xF6ra dem lyckliga finns det inte s\xE5 mycket kvar att\
-        \ g\xF6ra utom att s\xE4nka skatten eftersom alla behov redan \xE4r tillgodosedda.\n\
-        \nUndvik att st\xE4ndigt h\xE5lla skatterna l\xE5ga eftersom det kan leda\
-        \ till att du g\xE5r bankrutt. Men under kortare perioder kan det vara n\xF6\
-        dv\xE4ndigt, om du vet vad du g\xF6r.\n\nEfter en stund kommer den f\xF6rsta\
-        \ inv\xE5naren att knata bort till marknadsplatsen, kolla efter nya byggmaterial\
-        \ f\xF6r att bygga en timmerstuga som ers\xE4tter det gamla t\xE4ltet."]
-    type: logbook_w
-  - arguments: ['', "Uppgraderingar av bost\xE4der kostar varor(som tr\xE4) och kan\
-        \ inte styras av dig(f\xF6rutom att tillgodose behov och s\xE4nka skatter).\n\
-        \nDet finns manuella uppgraderingar av andra byggnader f\xF6r att bygga en\
-        \ b\xE4ttre version av byggnaden, och dessutom finns det uppgraderingar utan\
-        \ kostnad, till exempel skogshuggarens byggnad(I detta fall \xE4ndras endast\
-        \ grafiken).\n\nUppgraderade bost\xE4der rymmer fler inneboende och dessutom\
-        \ betalar poinj\xE4rerna mer skatt \xE4n sj\xF6m\xE4nnen.\n\nNackdelen med\
-        \ uppgraderingar \xE4r att pionj\xE4rerna kr\xE4ver mer varor \xE4n vad sj\xF6\
-        m\xE4nnen g\xF6r - s\xE5 de extra pengar du tj\xE4nar in kanske m\xE5ste spenderas\
-        \ p\xE5 att g\xF6ra dem lyckliga.\n\nUPPGIFT: S\xE4nk skatten och v\xE4nta\
-        \ p\xE5 att sj\xF6m\xE4nnen ska uppgradera."]
+  - arguments:
+    - [Headline, "NY UPPGIFT: N\xC4STA STEG"]
+    - [Image, content/gui/images/background/hr.png]
+    - !!python/unicode 'All demands are fulfilled now if your inhabitants can regularly
+      visit the main square & pavilion and your food supply is adequate.'
+    - !!python/unicode 'If the sailors are happy enough, they want to advance to the
+      next increment called Pioneers.'
+    - !!python/unicode 'To make them happy, there is nothing else for you to do but
+      setting taxes to a lower level since you have fulfilled all the demands of your
+      inhabitants.'
+    - !!python/unicode 'You should try to not always run on low taxes since this will
+      probably lead to bankruptcy sooner or later. For a period of time and if you
+      know what you are doing, it is fine though.'
+    - !!python/unicode 'After some time, the first unit should walk to the main square
+      and have a look for new construction material there to build a log house. This
+      house will replace the old tent.'
+    - [Pagebreak]
+    - !!python/unicode '
+
+      Such residential upgrades cost resources and can thus be restricted at the main
+      square.'
+    - !!python/unicode 'There also are upgrades of buildings without costs, as you
+      will see with the lumberjack. In this case, only the graphics change.'
+    - !!python/unicode 'Upgraded housing accomodates more inhabitants, and pioneers
+      pay more taxes than sailors, too.'
+    - !!python/unicode 'As you may have figured out already, the downside is that
+      pioneers demand additional goods which sailors do not need - so you will need
+      to spend this extra money to make them happy as well.'
+    - !!python/unicode '
+
+      TASK: Set the tax level to Low (left end) and wait for sailors to upgrade.'
+    - - Gallery
+      - [content/gfx/buildings/pioneers/residential/as_hut0/idle/45/0.png]
     type: logbook
   - arguments: ["S\xE4nk skatten och v\xE4nta p\xE5 att sj\xF6m\xE4nnen ska uppgradera."]
     type: message
@@ -377,48 +483,42 @@ events:
   - arguments: [tutStepDone, 43]
     type: var_lt
 - actions:
-  - arguments: [!!python/unicode 'NEW TASK: BUILD A FARM', !!python/unicode 'Congratulations!
-        Some of your inhabitants have reached increment II!
+  - arguments:
+    - [Headline, !!python/unicode 'NEW TASK: BUILD A FARM']
+    - [Image, content/gui/images/background/hr.png]
+    - !!python/unicode 'Congratulations! Some of your inhabitants have reached increment
+      II!'
+    - !!python/unicode 'Now you have access to new buildings, take a look at the Build
+      menu again.'
+    - - Gallery
+      - [content/gui/icons/tabwidget/buildmenu/level2_u.png]
+    - !!python/unicode 'A shiny new tab appeared there.'
+    - !!python/unicode 'Pioneers will demand cloth, so you need to set up a production
+      line for cloth starting with lambs wool (which is one of the goods produced
+      at the farm).'
+    - !!python/unicode 'The farm is a very special production building since it can
+      produce not only one, but very many (and different) goods if you choose.'
+    - !!python/unicode 'The output of farms depends on what kind of fields you build
+      around it.'
+    - [Pagebreak]
+    - !!python/unicode '
 
+      We will have a closer look at this later.'
+    - !!python/unicode 'Farms, like all companies producing raw materials, do not
+      necessarily need to be connected to storage or a warehouse.'
+    - !!python/unicode 'As long as units of the final production company can reach
+      the farm, and collectors from the warehouse or storage tent can reach the final
+      company everything''s fine.'
+    - !!python/unicode 'If you, however, plan to do some processing on different parts
+      of the island (which can make sense) or even on different islands, you will
+      need a connection to collectors.'
+    - !!python/unicode 'Try to build the farm not too close to the coast or your existing
+      buildings since it will need some space around it to work well.'
+    - !!python/unicode '
 
-        Now you have access to new buildings, take a look at the Build menu again.
-
-
-        A shiny new tab appeared there.
-
-
-        Pioneers will demand cloth, so you need to set up a production line for cloth
-        starting with lambs wool (which is one of the goods produced at the farm).
-
-
-        The farm is a very special production building since it can produce not only
-        one, but very many (and different) goods if you choose.
-
-
-        The output of farms depends on what kind of fields you build around it.']
-    type: logbook_w
-  - arguments: ['', !!python/unicode 'We will have a closer look at this later.
-
-
-        Farms, like all companies producing raw materials, do not necessarily need
-        to be connected to storage or a warehouse.
-
-
-        As long as units of the final production company can reach the farm, and collectors
-        from the warehouse or storage tent can reach the final company everything''s
-        fine.
-
-
-        If you, however, plan to do some processing on different parts of the island
-        (which can make sense) or even on different islands, you will need a connection
-        to collectors.
-
-
-        Try to build the farm not too close to the coast or your existing buildings
-        since it will need some space around it to work well.
-
-
-        TASK: Build a farm.']
+      TASK: Build a farm.'
+    - - Gallery
+      - [content/gui/icons/buildmenu/020.png]
     type: logbook
   - arguments: [!!python/unicode 'Build a farm and keep some empty space around it.']
     type: message
@@ -432,39 +532,43 @@ events:
   - arguments: [tutStepDone, 46]
     type: var_lt
 - actions:
-  - arguments: [!!python/unicode 'NEW TASK: BUILD FIELDS', !!python/unicode 'The farm
-        itself is not going to produce anything without some fields.
+  - arguments:
+    - [Headline, !!python/unicode 'NEW TASK: BUILD FIELDS']
+    - [Image, content/gui/images/background/hr.png]
+    - !!python/unicode 'The farm itself is not going to produce anything without some
+      fields.'
+    - !!python/unicode 'You currently have the choice between pastures, potato and
+      sugar fields.'
+    - !!python/unicode 'Let''s have a short overview:
 
+      * Pasture: Sheep live here, producing lamb wool.
 
-        You currently have the choice between pastures, potato and sugar fields.
+      * Potato field: Grows potatoes which are currently treated as food.
 
+      * Sugar field: Grows sugar which is used to distill liquor and (later) produce
+      confectionery.'
+    - !!python/unicode 'We now only need pastures, but in case your food supply chain
+      is too small (maybe many residential buildings) you can also produce some potatoes.'
+    - !!python/unicode 'Note that for potatoes you will need a road connection to
+      the farm (not to the field!) as it will be the only company to work on the goods.'
+    - [Pagebreak]
+    - !!python/unicode '
 
-        Let''s have a short overview:
+      Make sure that all fields you build are in the area covered by the farm.'
+    - !!python/unicode 'You can have combined production - one pasture will not lead
+      to 100 percent efficiency of the farm - but you need to check how many fields
+      one farm can serve.'
+    - "Different classes of fields require the farm units to spend more or less time\
+      \ there (to seed, harvest, herd, etc\u2026) and because of that, the farm may\
+      \ be unable to serve all of the fields you built for it in time."
+    - !!python/unicode 'For now, you do not need to care about these issues a lot
+      since you haven''t built any fields. Let''s change that!'
+    - !!python/unicode '
 
-        * Pasture: Sheep live here, producing lamb wool.
-
-        * Potato field: Grows potatoes which are currently treated as food.
-
-        * Sugar field: Grows sugar which is used to distill liquor and (later) produce
-        confectionery.
-
-
-        We now only need pastures, but in case your food supply chain is too small
-        (maybe many residential buildings) you can also produce some potatoes.
-
-
-        Note that for potatoes you will need a road connection to the farm (not to
-        the field!) as it will be the only company to work on the goods.']
-    type: logbook_w
-  - arguments: ['', "Make sure that all fields you build are in the area covered by\
-        \ the farm.\n\nYou can have combined production - one pasture will not lead\
-        \ to 100 percent efficiency of the farm - but you need to check how many fields\
-        \ one farm can serve.\n\nDifferent classes of fields require the farm units\
-        \ to spend more or less time there (to seed, harvest, herd, etc\u2026) and\
-        \ because of that, the farm may be unable to serve all of the fields you built\
-        \ for it in time.\n\nFor now, you do not need to care about these issues a\
-        \ lot since you haven't built any fields. Let's change that!\n\nTASK: Build\
-        \ at least one pasture in the farm's range and add potato fields if you like."]
+      TASK: Build at least one pasture in the farm''s range and add potato fields
+      if you like.'
+    - - Gallery
+      - [content/gui/icons/buildmenu/018.png, content/gui/icons/buildmenu/019.png]
     type: logbook
   - arguments: [!!python/unicode 'Build at least one pasture and add potato fields
         if you like.']
@@ -479,40 +583,45 @@ events:
   - arguments: [tutStepDone, 49]
     type: var_lt
 - actions:
-  - arguments: [!!python/unicode 'NEW TASK: BUILD STORAGE', !!python/unicode 'Did
-        you watch your lumberjack recently?
+  - arguments:
+    - [Headline, !!python/unicode 'NEW TASK: BUILD STORAGE']
+    - [Image, content/gui/images/background/hr.png]
+    - !!python/unicode 'Did you watch your lumberjack recently?'
+    - !!python/unicode 'Since your warehouse does not have unlimited space to store
+      goods, collectors will stop fetching goods from companies when stock is full.'
+    - !!python/unicode 'So if no sailors recently wanted to upgrade their tents, you
+      probably have a lot of boards and in that case, the lumberjack may idle.'
+    - !!python/unicode 'We can improve this situation in two different ways, and we
+      will have a look at both of them below.'
+    - !!python/unicode 'All companies offer to do no work at all.
 
+      This may sound strange, but click on the gear wheel you see in a lumberjack
+      hut''s overview.'
+    - !!python/unicode 'If this ''break'' mode is enabled (we call it ''Decommissioning''),
+      the running costs you pay for the building will decrease. They won''t be zero,
+      but still lower than if you keep the company producing.'
+    - - Gallery
+      - [content/gui/icons/templates/production/toggle_inactive_h.png]
+    - [Pagebreak]
+    - !!python/unicode '
 
-        Since your warehouse does not have unlimited space to store goods, collectors
-        will stop fetching goods from companies when stock is full.
+      This means that you can save money when you temporarily do not need a company
+      and do not want to tear it down, either.'
+    - !!python/unicode 'Another solution is to build the last increment-I building
+      which has not been mentioned so far: the storage tent.'
+    - !!python/unicode 'This building has two purposes. It:
 
-        So if no sailor recently wanted to upgrade his tent, you probably have a lot
-        of boards and in that case, the lumberjack may idle.
+      * Offers more storage for your goods, and
 
-        We can improve this situation with two different approaches, and below we
-        will have a look at both of them.
+      * sends its own collectors to fetch goods, just like the warehouse does.'
+    - !!python/unicode 'Note that companies can also be connected to a storage in
+      order to get their products collected, and if the warehouse is overwhelmed with
+      collector tasks, you can place a storage tent to help out there.'
+    - !!python/unicode '
 
-
-        All companies offer the possibility of doing no work at all.
-
-        This may sound strange, but try to click on the gear wheel you see in, for
-        example, a lumberjack''s overview.
-
-
-        If this ''break'' mode is enabled (we call it ''Decommissioning''), the running
-        costs you pay for the building will decrease. They won''t be zero, but still
-        lower than if you keep the company producing.']
-    type: logbook_w
-  - arguments: ['', !!python/unicode "This means that you can save money when you\
-        \ temporarily do not need a company and do not want to tear it down, either.\n\
-        \nAnother solution is to build the last increment-I building which has not\
-        \ been mentioned so far: the storage tent.\n\nThis building has two purposes.\
-        \ It:\n* Offers more storage for your goods, and \n* sends its own collectors\
-        \ to fetch goods, just like the warehouse does.\n\nNote that companies can\
-        \ also be connected to a storage in order to get their products collected,\
-        \ and if the warehouse is overwhelmed with collector tasks, you can place\
-        \ a storage tent to help out there.\n\nTASK: Build a storage tent, preferably\
-        \ where you need collectors."]
+      TASK: Build a storage tent, preferably where you need collectors.'
+    - - Gallery
+      - [content/gui/icons/buildmenu/002.png]
     type: logbook
   - arguments: [!!python/unicode 'Build a storage tent (increment I tab) where it
         makes sense.']
@@ -527,23 +636,22 @@ events:
   - arguments: [tutStepDone, 52]
     type: var_lt
 - actions:
-  - arguments: [!!python/unicode 'NEW TASK: BUILD A WEAVER', !!python/unicode 'Now
-        the wool production is set up, you still need a weaver to produce cloth out
-        of this wool.
+  - arguments:
+    - [Headline, !!python/unicode 'NEW TASK: BUILD A WEAVER']
+    - [Image, content/gui/images/background/hr.png]
+    - !!python/unicode 'Now the wool production is set up, you still need a weaver
+      to produce cloth out of this wool.'
+    - !!python/unicode 'There are two spots where you can build it - either close
+      to the farm or close to a Storage Tent (or the warehouse).'
+    - !!python/unicode 'In both cases you should ensure the connection to a trail
+      as well.'
+    - !!python/unicode 'You can place the weaver close to the farm and tear down any
+      trail to the farm to see that it will still fetch the wool and produce.'
+    - !!python/unicode '
 
-
-        There are two spots where you can build it - either close to the farm or close
-        to a Storage Tent (or the warehouse).
-
-
-        In both cases you should ensure the connection to a trail as well.
-
-
-        You can place the weaver close to the farm and tear down any trail to the
-        farm to see that it will still fetch the wool and produce.
-
-
-        TASK: Build a weaver positioned so it can get wool.']
+      TASK: Build a weaver positioned so it can get wool.'
+    - - Gallery
+      - [content/gui/icons/buildmenu/007.png]
     type: logbook
   - arguments: [!!python/unicode 'Build a weaver that can somehow reach the wool of
         your farm.']
@@ -561,17 +669,21 @@ events:
   - arguments: [!!python/unicode 'House a total of 50 or more inhabitants in your
         city to complete the tutorial. You need a positive balance.']
     type: message
-  - arguments: [!!python/unicode 'NEW TASK: COMPLETE TUTORIAL', !!python/unicode 'Try
-        to house a total of 50 or more inhabitants in your city by providing more
-        residential buildings.
+  - arguments:
+    - [Headline, !!python/unicode 'NEW TASK: COMPLETE TUTORIAL']
+    - [Image, content/gui/images/background/hr.png]
+    - !!python/unicode 'Try to house a total of 50 or more inhabitants in your city
+      by providing more residential buildings.'
+    - !!python/unicode 'Once you are able to keep an economy running which can satisfy
+      this amount of consumers, you are ready to discover new Unknown Horizons!'
+    - !!python/unicode 'You also need enough money to keep this economy running, so
+      a positive balance (check in the warehouse tab ''Account'') is required.'
+    - !!python/unicode '
 
-
-        Once you are able to keep an economy running which can satisfy this amount
-        of consumers, you are ready to discover new Unknown Horizons!
-
-
-        TASK: Reach a total number of 50 inhabitants and a positive balance to complete
-        this tutorial.']
+      TASK: Reach a total number of 50 inhabitants and a positive balance to complete
+      this tutorial.'
+    - - Gallery
+      - [content/gui/icons/widgets/cityinfo/inhabitants.png]
     type: logbook
   - arguments: [tutStepDone, 58]
     type: set_var
@@ -585,41 +697,45 @@ events:
   - arguments: [tutStepDone, 58]
     type: var_lt
 - actions:
-  - arguments: [!!python/unicode 'NO TASKS LEFT', !!python/unicode 'There is nothing
-        left to do now.
+  - arguments:
+    - [Headline, !!python/unicode 'NO TASKS LEFT']
+    - [Image, content/gui/images/background/hr.png]
+    - !!python/unicode 'There is nothing left to do now.
 
 
-        If you have any suggestions on what we could or should improve, add or leave
-        out:
+      If you have any suggestions on what we could or should improve, add or leave
+      out:
 
 
-        www.unknown-horizons.org
+      www.unknown-horizons.org
 
 
-        #unknown-horizons @ irc.freenode.net
+      #unknown-horizons @ irc.freenode.net
 
 
-        team@unknown-horizons.org
+      team@unknown-horizons.org
 
 
-        Our forums are open to you as well!
+      Our forums are open to you as well!
 
 
-        The best results until now were achieved by joining our IRC channel, so you
-        could try that out first (-;']
-    type: logbook
-  - arguments: [!!python/unicode 'Thanks!', !!python/unicode '
+      The best results until now were achieved by joining our IRC channel, so you
+      could try that out first (-;'
+    - [Pagebreak]
+    - [Headline, !!python/unicode 'Thanks!']
+    - [Image, content/gui/images/background/hr.png]
+    - !!python/unicode '
 
 
 
 
 
+      Thanks for playing the tutorial!
 
 
-        Thanks for playing the tutorial!
-
-
-        Your UH-Team']
+      Your UH-Team'
+    - - Gallery
+      - [content/unknown-horizons.xpm, content/gfx/misc/status_icons/as_book_flip/idle/45/book20125.png]
     type: logbook
   - arguments: [tutStepDone, 61]
     type: set_var
@@ -648,5 +764,6 @@ events:
     type: var_gt
 locale: sv
 mapfile: development.sqlite
-translation_status: 35 translated messages, 30 untranslated messages.
+translation_status: 22 translated messages, 1 fuzzy translation, 162 untranslated
+  messages.
 

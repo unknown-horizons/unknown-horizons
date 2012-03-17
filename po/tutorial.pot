@@ -6,9 +6,9 @@
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: Unknown Horizons d88e8a1\n"
+"Project-Id-Version: Unknown Horizons b41720c\n"
 "Report-Msgid-Bugs-To: translate-uh@lists.unknown-horizons.org\n"
-"POT-Creation-Date: 2012-03-13 16:25+0100\n"
+"POT-Creation-Date: 2012-03-17 21:10+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -446,7 +446,7 @@ msgstr ""
 msgid ""
 "\n"
 "TASK: Build a tent and connect it to the main square. Tents dont need to be "
-"connected to any of the companies"
+"connected to any of the companies."
 msgstr ""
 
 #. This message is displayed in the widget on the left screen part. Please keep it short enough to fit there!
