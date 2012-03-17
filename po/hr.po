@@ -24,10 +24,12 @@ msgstr ""
 msgid "A new settlement was founded by {player}."
 msgstr ""
 
+# 82%
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
+#, fuzzy
 msgid "A new ship has been created."
-msgstr ""
+msgstr "Novi svijet je kreiran."
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
@@ -1103,11 +1105,13 @@ msgstr "Pioniri"
 msgid "Settlers"
 msgstr ""
 
+# 75%
 #. (text of widget: headline)
 #: horizons/gui/tabs/mainsquaretabs.py:246
 #: horizons/i18n/guitranslations.py:222
+#, fuzzy
 msgid "Citizens"
-msgstr ""
+msgstr "građanin"
 
 #. (text of widget: headline)
 #: horizons/gui/tabs/overviewtab.py:62 horizons/gui/tabs/overviewtab.py:553
