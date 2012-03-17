@@ -7,8 +7,8 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: translate-uh@lists.unknown-horizons.org\n"
 "POT-Creation-Date: 2012-03-13 16:25+0100\n"
-"PO-Revision-Date: 2012-03-15 12:09+0200\n"
-"Last-Translator: Sebastien (seblabel) <sebastiencharpentier@laposte.net>\n"
+"PO-Revision-Date: 2012-03-17 10:36+0200\n"
+"Last-Translator: Traveler <guillaume.pascal43@laposte.net>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: fr\n"
 "MIME-Version: 1.0\n"
@@ -311,21 +311,25 @@ msgid ""
 "You will need to have some food-producing companies, too, because people in "
 "general (and especially sailors) are very hungry."
 msgstr ""
+"Vous allez aussi avoir besoin d'entreprises productrices de nourriture car, "
+"en générale les gens (et surtout les marins) ont toujours faim."
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:76
 msgid "Available companies in the first increment are the Hunter and Fisher."
-msgstr ""
+msgstr "Au premier niveau vous disposez du Chasseur et du Pêcheur."
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:78
 msgid "The Hunter hunts animals in the forest, thus needs trees nearby."
 msgstr ""
+"Le chasseur chasse le gibier dans la forêt et a donc besoin de bois autour "
+"de lui."
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:80
 msgid "Note that you can place your Hunter close to the lumberjack's forest."
-msgstr ""
+msgstr "Notez que vous pouvez le placer à coté de la forêt du bûcheron."
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:82
@@ -333,12 +337,16 @@ msgid ""
 "It can happen that the animals don't reproduce fast enough or simply hide "
 "well."
 msgstr ""
+"Il peut arriver que le gibier ne se reproduise pas assez rapidement ou qu'il "
+"soit bien caché..."
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:84
 msgid ""
 "Conclusion: the hunter is not too reliable if you need continuous supply."
 msgstr ""
+"Conclusion : le chasseur n'est pas très fiable si vous avez besoin d'un "
+"approvisionnement constant."
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:86
@@ -347,11 +355,14 @@ msgid ""
 "The Fisher needs a coastal building site like the warehouse and a fish school "
 "in range."
 msgstr ""
+"\n"
+"Le pêcheur a besoin d'un bâtiment côtier et d'un banc de poisson à "
+"proximité."
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:88
 msgid "He will build a small rowing vessel and catch some fish."
-msgstr ""
+msgstr "Il construira un petit bateau à rame et ira attraper du poisson."
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:90
@@ -359,6 +370,8 @@ msgid ""
 "This is a very constant supply at the cost of a slightly longer production "
 "time per unit of food."
 msgstr ""
+"C'est une source de nourriture très constante mais d'un temps de production "
+"par unité de nourriture légèrement plus long."
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:92
@@ -366,6 +379,9 @@ msgid ""
 "A small settlement like yours can use both companies, and you can better "
 "balance pros and cons if you see the direct comparison."
 msgstr ""
+"Une petite colonie comme la votre peut utiliser ces deux types "
+"d'entreprises, et vous pourrez mieux en évaluer les avantages et les "
+"inconvénients en les comparant directement."
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:94
@@ -373,11 +389,13 @@ msgid ""
 "\n"
 "TASK: Build a hunter and a fisher."
 msgstr ""
+"\n"
+"MISSION : Construire une hutte de chasseur et une de pêcheur."
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:96
 msgid "Don't forget to connect them to your warehouse with trails!"
-msgstr ""
+msgstr "Et n'oubliez pas les sentiers les reliant à votre comptoir !"
 
 #. This message is displayed in the widget on the left screen part. Please keep it short enough to fit there!
 #: po/tutorial.py:98
@@ -395,6 +413,8 @@ msgstr "MISSION : LA PLACE CENTRALE"
 #: po/tutorial.py:102
 msgid "Your residents need a main square where they can fetch their goods from."
 msgstr ""
+"Vos habitants ont besoin d'une place marchande où ils trouveront des biens "
+"de consommation."
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:104
@@ -402,6 +422,8 @@ msgid ""
 "This means that they need a trail connection from their home to the main "
 "square."
 msgstr ""
+"Cela signifie qu'il leur faudra un sentier menant des habitations à la place "
+"centrale."
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:106
@@ -409,14 +431,20 @@ msgid ""
 "All goods in your warehouse are available at this 'market place', so your "
 "residents do not need to walk to the fisher or even to the warehouse."
 msgstr ""
+"Toutes les marchandises de votre comptoir sont disponibles dans cette « "
+"place du marché », donc vos habitants n'ont pas besoin d'aller chez le "
+"pêcheur ou même jusqu'au comptoir."
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:108
+#, fuzzy
 msgid ""
 "You should avoid placing your main settlement tents too close to your "
 "lumberjacks because building tents will clear away the trees that your "
 "lumberjack needs to produce boards."
 msgstr ""
+"Vous devriez fonder votre campement de tentes dans un endroit où vous "
+"pourrez facilement l'étendre et y construire des routes."
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:110
@@ -431,6 +459,8 @@ msgid ""
 "\n"
 "TASK: Build a main square."
 msgstr ""
+"\n"
+"MISSION : Construire une place centrale."
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:114
@@ -438,6 +468,8 @@ msgid ""
 "\n"
 "Now let's have a closer look at the main square."
 msgstr ""
+"\n"
+"Maintenant, nous allons regarder de plus près la place centrale."
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:116
@@ -445,6 +477,8 @@ msgid ""
 "In the 'Account' tab you get a balance sheet of this island, featuring all "
 "costs you pay and all taxes you earn."
 msgstr ""
+"Dans l'onglet « Compte » vous obtenez un bilan de cette île, avec tous les "
+"frais que vous payez ainsi que tous les impôts que vous gagnez."
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:118
@@ -452,11 +486,13 @@ msgid ""
 "The items 'Sale' and 'Buy' refer to your trading balance and will be "
 "explained later on."
 msgstr ""
+"Les points « Vendre » et « Acheter » font référence à votre balance "
+"commerciale et seront expliqués plus tard."
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:120
 msgid "If your balance is positive, you all-in-all make a profit."
-msgstr ""
+msgstr "Si votre solde est positif, tout compte tenu vous faites un profit."
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:122
@@ -465,6 +501,10 @@ msgid ""
 "inhabitants. You also set the increment-specific global tax here and allow or "
 "deny inhabitants of this increment to upgrade to the next higher one."
 msgstr ""
+"Dans les différents onglets de sélection de niveaux vous pouvez voir des "
+"statistiques sur vos habitants. Vous pouvez également définir le niveau "
+"global de taxe spécifique et autoriser ou refuser aux habitants de ce niveau "
+"de passer au niveau suivant."
 
 #. This message is displayed in the widget on the left screen part. Please keep it short enough to fit there!
 #: po/tutorial.py:124
@@ -484,6 +524,9 @@ msgid ""
 "Settlers want to have a roof over their heads, else they won't even think of "
 "living in your city! You need to provide tents."
 msgstr ""
+"Les colons veulent avoir un toit au dessus de la tête, autrement ils ne "
+"penseront même pas à venir vivre dans votre ville ! Vous devez leurs fournir "
+"des tentes."
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:130
@@ -491,6 +534,8 @@ msgid ""
 "Tents are the basic residential buildings. Your inhabitants will want to "
 "upgrade it when they reach higher increments."
 msgstr ""
+"Les tentes constituent l'habitation de base. Vos habitants voudront les "
+"améliorer quand ils atteindront des niveaux supérieurs."
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:132
@@ -499,6 +544,10 @@ msgid ""
 "you produce - but they at least pay taxes, and that's the only way you can "
 "make money for now!"
 msgstr ""
+"Les marins peuvent sembler peu ou pas très utiles dans la mesure où ils "
+"essaieront de consommer tout les biens que vous produirez mais, au moins, "
+"ils paient les taxes et c'est votre seule façon de gagner de l'argent pour "
+"le moment."
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:134
@@ -507,6 +556,8 @@ msgid ""
 "TASK: Build a tent and connect it to the main square. Tents dont need to be "
 "connected to any of the companies"
 msgstr ""
+"\n"
+"MISSION : Construisez une tente et connectez la à la place centrale."
 
 #. This message is displayed in the widget on the left screen part. Please keep it short enough to fit there!
 #: po/tutorial.py:136
@@ -519,6 +570,8 @@ msgid ""
 "\n"
 "Let's have a look at the tent overview tab."
 msgstr ""
+"\n"
+"Regardons maintenant la fenêtre d'une tente."
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:140
@@ -528,12 +581,18 @@ msgid ""
 "* the taxes they pay and\n"
 "* the resources they demand."
 msgstr ""
+"Vous pouvez y voir\n"
+"* la satisfaction de ses occupants,\n"
+"* les taxes qu'ils paient et\n"
+"* les ressources qu'ils demandent."
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:142
 msgid ""
 "If their demands are fulfilled, happiness and thus your tax income increase."
 msgstr ""
+"Si vous répondez à leurs demandes, la satisfaction et donc les taxes "
+"prélevées augmentent."
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:144
@@ -542,11 +601,14 @@ msgid ""
 "really sour and simply turn their back on your village, leaving behind a "
 "decaying ruin."
 msgstr ""
+"Sinon, la satisfaction et les rentrées d'argent diminuent. Parfois, les "
+"habitants peuvent en avoir vraiment marre, ils tournent alors le dos à votre "
+"village."
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:146
 msgid "Note that you can also change the global tax settings here, too."
-msgstr ""
+msgstr "Notez que vous pouvez régler les taxes ici aussi."
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:148
@@ -554,14 +616,21 @@ msgid ""
 "\n"
 "TASK: Build at least three additional tents."
 msgstr ""
+"\n"
+"MISSION: Construisez au moins 3 tentes supplémentaires."
 
+# MAJ ou SHIFT?
 #. This is the text body of a logbook page.
 #: po/tutorial.py:150
+#, fuzzy
 msgid ""
 "\n"
 "TIP: Holding down SHIFT eases constructing multiple buildings of the same "
 "kind."
 msgstr ""
+"\n"
+"Astuce: Il est plus simple de construire plusieurs bâtiments du même type en "
+"gardant la touche MAJ enfoncée."
 
 #. This message is displayed in the widget on the left screen part. Please keep it short enough to fit there!
 #: po/tutorial.py:152
@@ -581,6 +650,9 @@ msgid ""
 "Can you see the ship passing your island from time to time? That ship belongs "
 "to the Free Trader, one of the first settlers in this archipelago."
 msgstr ""
+"Avez-vous remarqué le navire qui passe de temps en temps devant votre île? "
+"C'est le navire du marchand indépendant, l'un des premiers colons de cet "
+"archipel."
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:158
@@ -588,6 +660,8 @@ msgid ""
 "The trader will supply your settlement with necessary goods which you can't "
 "produce yet."
 msgstr ""
+"Il peut approvisionner votre colonie en marchandises que vous ne pouvez pas "
+"encore produire."
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:160
@@ -595,6 +669,8 @@ msgid ""
 "You can also sell surpluses of your production, but in general consuming them "
 "(by building more tents) instead of selling them yields more profit."
 msgstr ""
+"Vous pouvez également vendre vos surplus de production, mais en général il "
+"est plus profitable de les consommer (en construisant plus de tentes)."
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:162
@@ -602,6 +678,8 @@ msgid ""
 "Normally the trader ships just sail around and look for deals, but you can "
 "speed things up a bit."
 msgstr ""
+"Normalement les navire marchands ne font que chercher des opportunités, mais "
+"vous pouvez un peu accélérer les choses."
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:164
@@ -609,6 +687,8 @@ msgid ""
 "For this purpose, build a signal fire at the coast near your warehouse. It "
 "will show ships the way to your settlement."
 msgstr ""
+"À cette fin, construisez un phare sur la côte près de votre comptoir. Il "
+"montrera aux navires le chemin vers votre colonie."
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:166
@@ -616,6 +696,8 @@ msgid ""
 "The signal fire has to cover the area which the ships pass through to catch "
 "them."
 msgstr ""
+"Le phare doit couvrir le territoire à travers lequel les navires passent "
+"pour les guider."
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:168
@@ -624,16 +706,23 @@ msgid ""
 "After this little advertisment, the trader will also stop by and look into "
 "your warehouse if it planned to sail past it."
 msgstr ""
+"\n"
+"Après cette annonce le marchand fera une escale chez vous pour regarder "
+"votre comptoir même s'il avait prévu de passer tout droit."
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:170
 msgid "You can propose deals via the warehouse tab \"Buy/Sell\"."
 msgstr ""
+"Vous pouvez faire des offres dans l'onglet « Achat/Vente » de votre "
+"comptoir."
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:172
 msgid "At the 'sailors' increment, you are equipped with three trading slots."
 msgstr ""
+"Au niveau « marins » vous avez trois emplacements de commerce à votre "
+"disposition."
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:174
@@ -641,6 +730,8 @@ msgid ""
 "Click on the small icon to change the slot mode from 'Buy' to 'Sell' and vice "
 "versa."
 msgstr ""
+"Cliquez sur le petit symbole pour changer le mode de « Achat » à « Vente » "
+"et vice versa."
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:176
@@ -648,15 +739,20 @@ msgid ""
 "Click in the slot to choose the good you want to trade with. We will further "
 "explain this once you are ready to trade."
 msgstr ""
+"Cliquez sur l'emplacement de commerce pour choisir la marchandise que vous "
+"voulez vendre ou acheter. Nous expliquerons ce procédé plus précisément "
+"lorsque vous serez prêt à faire affaire."
 
 # 89%
 #. This is the text body of a logbook page.
 #: po/tutorial.py:178
-#, fuzzy
 msgid ""
 "\n"
 "TASK: Build a signal fire at the coast close to your warehouse."
-msgstr "Construisez un feu de signalisation sur la côte proche du comptoir."
+msgstr ""
+"\n"
+"MISSION : Construisez un feu de signalisation sur la côte proche du "
+"comptoir."
 
 #. This message is displayed in the widget on the left screen part. Please keep it short enough to fit there!
 #: po/tutorial.py:180
@@ -677,6 +773,10 @@ msgid ""
 "\n"
 "Let's continue our tutorial on how to trade."
 msgstr ""
+"Excellent ! Le bateau-marchand va maintenant s'arrêter à votre comptoir de "
+"temps en temps.\n"
+"\n"
+"Continuons ce tutoriel et voyons comment commercer."
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:186
@@ -684,6 +784,8 @@ msgid ""
 "After selecting a particular type of good, the green bar across the bottom of "
 "the slot (if visible) shows you how much you have in stock of this good."
 msgstr ""
+"Après avoir sélectionné un type de produit, la barre verte le long de "
+"l'emplacement (si visible) vous indique le niveau de stock de ce produit."
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:188
@@ -691,12 +793,16 @@ msgid ""
 "Dragging the slider on the right of each slot determines your 'target value' "
 "which has a different meaning on 'Buy' and 'Sell'."
 msgstr ""
+"Bouger le curseur d'un emplacement (à droite) détermine sa « valeur cible » "
+"qui a un sens différent pour « acheter » ou « vendre »."
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:190
 msgid ""
 "When buying, you will buy sufficient to hold your 'target value' in stock."
 msgstr ""
+"Quand vous achetez, vous allez acheter suffisamment pour atteindre votre « "
+"valeur cible » de stock."
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:192
@@ -704,6 +810,8 @@ msgid ""
 "When selling, the 'target value' is the stock amount at which you will always "
 "stop selling until you get more of that resource again."
 msgstr ""
+"Quand vous vendez, la « valeur cible » est la quantité de produit que vous "
+"voulez garder en réserve et ne pas vendre."
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:194
@@ -713,6 +821,10 @@ msgid ""
 "Having a 'Buy' slot and 5 tons in stock, a slider positioned at 9 tons will "
 "cause you to buy 4 additional tons at most."
 msgstr ""
+"\n"
+"Par exemple :\n"
+"Un emplacement « achat » avec 5 tonnes en stock et un curseur à 9 provoquera "
+"l'achat de 4 tonnes supplémentaires."
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:196
@@ -720,6 +832,8 @@ msgid ""
 "Selling works similarly. A 'Sell' slot with 18 tons in stock and the slider "
 "positioned at 13 will sell up to 5 tons."
 msgstr ""
+"Un emplacement « vente » avec 18 tonnes en stock et un curseur à 13 vendra "
+"jusqu'à 5 tonnes."
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:198
@@ -727,6 +841,9 @@ msgid ""
 "If the free trader however only wants to buy or sell less than your settings "
 "would allow him, you need to live with that and wait for him to return."
 msgstr ""
+"Cependant si le bateau-marchand veut juste acheter ou vendre moins que ce "
+"que vos réglages permettent, vous devrez être patient et attendre son "
+"retour."
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:200
@@ -734,6 +851,9 @@ msgid ""
 "Unknown Horizons features smart pricing, so the value of one unit can vary.\n"
 "It is NOT possible to change prices manually!"
 msgstr ""
+"Unknown Horizons propose un système de prix intelligent, la valeur d'une "
+"unité peut donc varier.\n"
+"Il n'est PAS possible de changer les prix manuellement !"
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:202
@@ -741,6 +861,8 @@ msgid ""
 "You can see your trade balance in the 'Account' tab comparing the 'Sale' and "
 "'Buy' values there."
 msgstr ""
+"Vous pouvez voir votre balance commerciale dans l'onglet « Compte » mettant "
+"en relief « Vente » et « Achat »."
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:204
@@ -748,6 +870,8 @@ msgid ""
 "\n"
 "TASK: Buy as many tools as you need to have 30 tools in stock!"
 msgstr ""
+"\n"
+"MISSION : Achetez autant d'outils que nécessaire pour en avoir 30 en stock !"
 
 #. This message is displayed in the widget on the left screen part. Please keep it short enough to fit there!
 #: po/tutorial.py:206
@@ -768,12 +892,14 @@ msgstr "MISSION : LE PAVILLON"
 #. This is the text body of a logbook page.
 #: po/tutorial.py:212
 msgid "Those tools will be enough for the moment. Well done!"
-msgstr ""
+msgstr "Ces outils seront suffisants pour le moment. Bien joué !"
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:214
 msgid "You now provide housing, a main square and food to your inhabitants."
 msgstr ""
+"Vous fournissez maintenant des logements, une place marchande et de la "
+"nourriture à vos habitants."
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:216
@@ -782,6 +908,9 @@ msgid ""
 "that in the marketplace or tent tab - your sailors want a basic building "
 "where they can pray."
 msgstr ""
+"Pourtant il y a une demande que nous ne satisfaisons pas à ce jour, vérifiez "
+"le sur la fenêtre d'une tente ou de la place - vos marins veulent un "
+"bâtiment où il pourront prier."
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:218
@@ -789,6 +918,8 @@ msgid ""
 "The solution is a pavilion which the village parson quickly puts up as "
 "shelter from the sun."
 msgstr ""
+"La solution est un pavillon que le curé du village mettra rapidement en "
+"place."
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:220
@@ -796,6 +927,9 @@ msgid ""
 "Service buildings like this also need to be connected to the tents with a "
 "trail, else your inhabitants feel unable to reach them."
 msgstr ""
+"Les bâtiments de services comme celui-ci ont également besoin d'être "
+"connecté aux tentes avec un sentier, autrement vos habitants seront "
+"incapables de les atteindre."
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:222
@@ -803,6 +937,8 @@ msgid ""
 "\n"
 "Note that faith is treated like a physical resource!"
 msgstr ""
+"\n"
+"Notez que la foi est traitée comme un bien physique !"
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:224
@@ -810,6 +946,8 @@ msgid ""
 "This means that your inhabitants need a road connection to the producer "
 "(pavilion) to pick up faith there."
 msgstr ""
+"Cela implique que vos habitants auront besoin d'une connexion routière vers "
+"le producteur (le pavillon) pour aller y chercher de la foi."
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:226
@@ -817,6 +955,8 @@ msgid ""
 "After some time, they will have consumed it and then again look for a "
 "producer to collect more faith."
 msgstr ""
+"Après un certain temps, ils l'auront consommée et chercheront à nouveau un "
+"producteur pour recueillir plus de foi."
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:228
@@ -826,6 +966,10 @@ msgid ""
 "tents.\n"
 "The road connection is required as well."
 msgstr ""
+"Attention :\n"
+"Il n'est PAS suffisant que le bâtiment soit simplement dans un certain rayon "
+"des tentes.\n"
+"La connexion routière est également requise."
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:230
@@ -834,6 +978,9 @@ msgid ""
 "TASK: Build a pavilion with a trail to the tents in order to fulfill your "
 "sailors' demand for faith."
 msgstr ""
+"\n"
+"MISSION : Édifiez un pavillon avec un sentier vers les tentes pour qu'il "
+"puisse combler la demande en foi des marins."
 
 #. This message is displayed in the widget on the left screen part. Please keep it short enough to fit there!
 #: po/tutorial.py:232
