@@ -58,8 +58,24 @@ def init_pychan():
 	for name, stylepart in STYLES.iteritems():
 		pychan.manager.addStyle(name, stylepart)
 
-	# patch default widgets to support tooltips via helptext attribute
+	# patch default widgets
 	for name, widget in pychan.widgets.WIDGETS.items()[:]:
+
+		# patch hide so that it doesn't crash
+		def hide_new(self, *args, **kwargs):
+			try:
+				# call on self, we can't access the outer scope easily since we're in a loop
+				self._hide_orig(*args, **kwargs)
+			except RuntimeError as e:
+				import traceback
+				traceback.print_exc()
+				print 'Caught pychan RuntimeError on hide, assuming irrelevant gcn::exception.'
+
+		widget._hide_orig = widget.hide
+		widget.hide = hide_new
+
+
+		# support for tooltips via helptext attribute
 		if any( attr.name == "helptext" for attr in widget.ATTRIBUTES ):
 
 			# create a new class with a custom __init__, so tooltips are initalized
