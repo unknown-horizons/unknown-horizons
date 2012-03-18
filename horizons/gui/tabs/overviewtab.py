@@ -506,6 +506,8 @@ class SettlerOverviewTab(OverviewTab):
 		_setup_tax_slider(self.widget.child_finder('tax_slider'), self.widget.child_finder('tax_val_label'),
 		                  self.instance.settlement, message.level)
 		self.widget.child_finder('tax_val_label').text = unicode(self.instance.settlement.tax_settings[self.instance.level])
+		imgs = ActionSetLoader.get_sets()[self.instance._action_set_id].items()[0][1]
+		self.widget.findChild(name="building_image").image = imgs[45].keys()[0]
 
 	def show(self):
 		super(SettlerOverviewTab, self).show()
