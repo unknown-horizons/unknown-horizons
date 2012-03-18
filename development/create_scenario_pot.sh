@@ -129,6 +129,10 @@ xgettext --output-dir=po --output=$1.pot \
          po/$1.py
 rm po/$1.py
 
+diff=$(git diff --numstat po/$1.pot |awk '{print $1;}')
+if [ $diff -le 2 ]; then      # only changed version and date (two lines)
+    git checkout -- po/$1.pot # => discard this template change
+fi
 
 if [ "x$2" = x ]; then
     exit
