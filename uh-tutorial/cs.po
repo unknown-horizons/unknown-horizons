@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: translate-uh@lists.unknown-horizons.org\n"
 "POT-Creation-Date: 2012-03-13 16:25+0100\n"
-"PO-Revision-Date: 2012-03-18 13:56+0200\n"
+"PO-Revision-Date: 2012-03-18 13:54+0200\n"
 "Last-Translator: VMa <VaclavMacurek@seznam.cz>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: cs\n"
@@ -234,8 +234,8 @@ msgid ""
 "As your civilization advances, you also gain more and more complex buildings."
 msgstr ""
 "\n"
-"Jak se bude vaše civilizace rozvíjet, získáte stále komplexnější a "
-"komplexnější budovy."
+"Jak se bude Vaše civilizace rozvíjet, budete získávat složitější a "
+"složitější budovy."
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:58
@@ -297,7 +297,7 @@ msgstr "Postavte dřevorubce a spojte ho s Obchodním přístavem pomocí stezky
 #. This is a logbook page heading. Space is VERY short, please only translate to strings that fit (roughly 30 characters max).
 #: po/tutorial.py:72
 msgid "NEW TASK: FOOD SUPPLY"
-msgstr "NOVÝ ÚKOL: ZÁSOBENÍ JÍDLEM"
+msgstr "NOVÝ ÚKOL: ZÁSOBOVÁNÍ JÍDLEM"
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:74
@@ -793,8 +793,8 @@ msgstr ""
 "\n"
 "Ukážeme si to na příkladu:\n"
 "Pokud máme nastavený slot na \"Nákup\" a na skladě máme 5 tun daného zboží, "
-"tak nastavení posuvníku na hodnotu 9 tun způsobí nákup maximálně 4 dalších "
-"tun zboží. "
+"tak nastavení posuvníku na hodnotu 9 tun způsobí nákup maximálně 4 další "
+"tuny zboží. "
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:196
@@ -841,7 +841,7 @@ msgid ""
 "TASK: Buy as many tools as you need to have 30 tools in stock!"
 msgstr ""
 "\n"
-"ÚKOL: Nakupte nástroje tak, aby zásoby ve vašem skladu byly 30 jednotek!"
+"ÚKOL: Nakupte nástroje tak, aby zásoby ve vašem skladu byly 30 kusů!"
 
 #. This message is displayed in the widget on the left screen part. Please keep it short enough to fit there!
 #: po/tutorial.py:206
@@ -1073,7 +1073,7 @@ msgstr "NOVÝ ÚKOL: POSTAVTE FARMU"
 #. This is the text body of a logbook page.
 #: po/tutorial.py:260
 msgid "Congratulations! Some of your inhabitants have reached increment II!"
-msgstr "Gratulujeme! Část vašich obyvatel dosáhla další úrovně II!"
+msgstr "Gratulujeme! Část vašich obyvatel dosáhla úrovně II!"
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:262
@@ -1562,7 +1562,7 @@ msgstr ""
 "\n"
 "\n"
 "\n"
-"Děkujeme za hraní tutorialu!\n"
+"Děkujeme za hraní výuky!\n"
 "\n"
 "Tvůj UH-Team"
 
@@ -1572,7 +1572,7 @@ msgid ""
 "Congratulations! You have reached the end of this tutorial and are ready to "
 "meet new challenges!"
 msgstr ""
-"Gratulujeme! Dostali jste se na konec tutorialu a jste připraveni na další "
+"Gratulujeme! Dostali jste se na konec výuky a jste připraveni na další "
 "výzvy!"
 
 #~ msgid ""
