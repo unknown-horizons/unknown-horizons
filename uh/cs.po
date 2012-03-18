@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2012-03-02 04:09+0100\n"
-"PO-Revision-Date: 2012-03-17 23:44+0200\n"
+"PO-Revision-Date: 2012-03-18 13:42+0200\n"
 "Last-Translator: VMa <VaclavMacurek@seznam.cz>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: cs\n"
@@ -408,7 +408,7 @@ msgstr "naleziště kamenů"
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "stone tops"
-msgstr "kamenné vrchy"
+msgstr "balvany"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
@@ -558,7 +558,7 @@ msgid ""
 "\n"
 "Use at own risk!"
 msgstr ""
-"V SDL vykreslování jsou vážné chyby je určeno pouze jako náhradní řešení. \n"
+"V SDL vykreslování jsou vážné chyby a je určeno pouze jako náhradní řešení. \n"
 "\n"
 "Použití na vlastní nebezpečí!"
 
@@ -920,7 +920,7 @@ msgstr "Obtížnost: {difficulty}"
 #: horizons/gui/widgets/choose_next_scenario.py:45
 #, python-format
 msgid "Author: {author}"
-msgstr "Autor: {autho}"
+msgstr "Autor: {author}"
 
 #: horizons/gui/modules/singleplayermenu.py:160
 #: horizons/gui/modules/singleplayermenu.py:174
@@ -964,7 +964,7 @@ msgstr "Hustota zdrojů:"
 
 #: horizons/gui/modules/singleplayermenu.py:387
 msgid "Invalid scenario file"
-msgstr "neplatný scénář"
+msgstr "Neplatný scénář"
 
 #: horizons/gui/modules/singleplayermenu.py:388
 msgid "The selected file is not a valid scenario file."
@@ -1001,7 +1001,7 @@ msgstr "Přehled stavitele lodí"
 #: horizons/gui/tabs/boatbuildertab.py:101
 #, python-format
 msgid "{ship} (place in queue: {place})"
-msgstr "{ship} (umístit ve frontě: {place})"
+msgstr "{ship} (umístit do fronty: {place})"
 
 #: horizons/gui/tabs/boatbuildertab.py:165
 msgid "Resources still needed:"
@@ -1166,7 +1166,7 @@ msgstr "Osadníci"
 #: horizons/gui/tabs/mainsquaretabs.py:246
 #: horizons/i18n/guitranslations.py:222
 msgid "Citizens"
-msgstr "občané"
+msgstr "Občané"
 
 #. (text of widget: headline)
 #: horizons/gui/tabs/overviewtab.py:62 horizons/gui/tabs/overviewtab.py:553
@@ -1189,7 +1189,7 @@ msgstr "Pro založení osady musí být loď blíže k ostrovu."
 
 #: horizons/gui/tabs/overviewtab.py:195
 msgid "You already have a settlement on this island."
-msgstr "Již máte dohodu s tímto ostrovem."
+msgstr "Na tomto ostrově již osadu máte."
 
 #. (tooltip of widget: found_settlement)
 #: horizons/gui/tabs/overviewtab.py:203 horizons/i18n/guitranslations.py:501
@@ -1328,11 +1328,11 @@ msgstr "N/A"
 #: horizons/gui/widgets/productionoverview.py:50
 #, python-format
 msgid "Production overview of {settlement}"
-msgstr "Přehled výroby {settlement}"
+msgstr "Přehled výroby osady {settlement}"
 
 #: horizons/gui/widgets/resourceoverviewbar.py:160
 msgid "Click to add a new slot"
-msgstr "Klikněte, abyste přidali nový oddíl"
+msgstr "Klikněte pro přidání nového oddílu"
 
 #. (tooltip of widget: start_route) Trade route
 #: horizons/gui/widgets/routeconfig.py:88 horizons/i18n/guitranslations.py:630
@@ -1516,7 +1516,7 @@ msgstr "Zrušit Stavbu:"
 #. (text of widget: BB_cancel_warning_label) abort construction of a ship, lose invested resources
 #: horizons/i18n/guitranslations.py:135
 msgid "(lose all resources)"
-msgstr "ztratit všechen materiál"
+msgstr "(ztratit všechen materiál)"
 
 #. (text of widget: BB_current_order) Information about the ship currently under construction at the boat builder
 #: horizons/i18n/guitranslations.py:137
@@ -1828,7 +1828,7 @@ msgstr "Potřebné suroviny:"
 #. (tooltip of widget: happiness)
 #: horizons/i18n/guitranslations.py:407 horizons/i18n/guitranslations.py:423
 msgid "Happiness"
-msgstr "Štěstí"
+msgstr "Spokojenost"
 
 #. (tooltip of widget: residents_label)
 #. (tooltip of widget: inhabitants)
@@ -1897,7 +1897,7 @@ msgstr "Historie obchodu"
 #. (text of widget: headline)
 #: horizons/i18n/guitranslations.py:526
 msgid "Select resources:"
-msgstr "Vyberte zdroje:"
+msgstr "Vyberte zboží:"
 
 #. (text of widget: headline_balance_label)
 #: horizons/i18n/guitranslations.py:533
@@ -1943,9 +1943,8 @@ msgstr "Začít výrobu"
 # 94%
 #. (text of widget: headline) Please keep the translation similarly short and concise, else the tooltip is not well understood by players.
 #: horizons/i18n/guitranslations.py:566
-#, fuzzy
 msgid "Select resource:"
-msgstr "Vyberte zdroje:"
+msgstr "Vyberte zboží:"
 
 #. (tooltip of widget: headline) Please keep the translation similarly short and concise, else the tooltip is not well understood by players.
 #: horizons/i18n/guitranslations.py:568
@@ -2269,17 +2268,17 @@ msgstr "Ukázat seznam lodí"
 #. (text of widget: lbl_SPEED_DOWN)
 #: horizons/i18n/guitranslations.py:748
 msgid "Decrease game speed"
-msgstr "Zpomalit herní rychlost"
+msgstr "Zpomalit rychlost hry"
 
 #. (text of widget: lbl_SPEED_UP)
 #: horizons/i18n/guitranslations.py:750
 msgid "Increase game speed"
-msgstr "Zrychlit herní rychlost"
+msgstr "Zrychlit rychlost hry"
 
 #. (text of widget: lbl_TILE_OWNER_HIGHLIGHT)
 #: horizons/i18n/guitranslations.py:752
 msgid "Highlight tile ownership"
-msgstr "Zvýraznit vlastnictví země"
+msgstr "Zvýraznit vlastnictví území"
 
 #. (text of widget: lbl_TRANSLUCENCY)
 #: horizons/i18n/guitranslations.py:754
@@ -2752,7 +2751,7 @@ msgstr "Jméno hráče:"
 #. name of buildings:alvearies
 #: horizons/i18n/objecttranslations.py:53
 msgid "Alvearies"
-msgstr "Včelařství"
+msgstr "Úly"
 
 #. tooltip_text of buildings:alvearies
 #: horizons/i18n/objecttranslations.py:55
@@ -2807,7 +2806,7 @@ msgstr "Cihelna"
 #. tooltip_text of buildings:brickyard
 #: horizons/i18n/objecttranslations.py:90
 msgid "Turns clay into bricks."
-msgstr "Vyrábí cihly z jílu."
+msgstr "Z jílu vyrábí cihly."
 
 #. name of buildings:butchery
 #: horizons/i18n/objecttranslations.py:95
@@ -2847,12 +2846,12 @@ msgstr "Ložisko jílu"
 #. name of buildings:claypit
 #: horizons/i18n/objecttranslations.py:121
 msgid "Clay Pit"
-msgstr "Hliněný důl"
+msgstr "Jílový důl"
 
 #. tooltip_text of buildings:claypit
 #: horizons/i18n/objecttranslations.py:123
 msgid "Gets clay from deposit."
-msgstr "Produkuje jíl."
+msgstr "Těží jíl."
 
 #. name of buildings:cocoafield
 #: horizons/i18n/objecttranslations.py:128
@@ -2928,7 +2927,7 @@ msgstr "Rybářský stan"
 #. tooltip_text of buildings:fishermanstent
 #: horizons/i18n/objecttranslations.py:177
 msgid "Fishes the sea, produces food."
-msgstr "Rybaří na moři, produkuje jídlo."
+msgstr "Rybaří na moři, dodává jídlo."
 
 #. name of buildings:gravelpath
 #: horizons/i18n/objecttranslations.py:182
@@ -2953,7 +2952,7 @@ msgstr "Lovecký stan"
 #. tooltip_text of buildings:hunterstent
 #: horizons/i18n/objecttranslations.py:196
 msgid "Hunts wild forest animals, produces food."
-msgstr "Loví divoká lesní zvířata, produkuje jídlo."
+msgstr "Loví divoká lesní zvířata, dodává jídlo."
 
 #. name of buildings:ironmine
 #: horizons/i18n/objecttranslations.py:201
