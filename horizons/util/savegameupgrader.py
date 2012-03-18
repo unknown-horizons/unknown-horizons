@@ -95,8 +95,6 @@ class SavegameUpgrader(object):
 			db("INSERT INTO storage_slot_limit (object, slot, value) VALUES (?, ?, ?)",
 			   obj, 42, 6)
 
-
-
 	def _upgrade(self):
 		# fix import loop
 		from horizons.savegamemanager import SavegameManager
@@ -112,6 +110,7 @@ class SavegameUpgrader(object):
 			os.close(handle)
 			shutil.copyfile(self.original_path, self.final_path)
 			db = DbReader(self.final_path)
+			db('BEGIN TRANSACTION')
 
 			if rev < 49:
 				self._upgrade_to_rev49(db)
@@ -128,8 +127,7 @@ class SavegameUpgrader(object):
 			if rev < 55:
 				self._upgrade_to_rev55(db)
 
-
-
+			db('COMMIT')
 			db.close()
 
 	def get_path(self):
