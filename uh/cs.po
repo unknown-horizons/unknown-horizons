@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2012-03-02 04:09+0100\n"
-"PO-Revision-Date: 2012-03-17 23:43+0200\n"
+"PO-Revision-Date: 2012-03-17 23:44+0200\n"
 "Last-Translator: VMa <VaclavMacurek@seznam.cz>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: cs\n"
@@ -347,7 +347,7 @@ msgstr "pálenka"
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "medical herbs"
-msgstr "léčivé bylinky"
+msgstr "bylinky"
 
 #. This is a database entry: the name of an inhabitant increment (tier / level).
 #: database files sql
