@@ -65,13 +65,15 @@ def init_pychan():
 		def hide_new(self, *args, **kwargs):
 			try:
 				# call on self, we can't access the outer scope easily since we're in a loop
-				self._hide_orig(*args, **kwargs)
+				# only apply usable args, else it would crash when called through fife timers
+				pychan.tools.applyOnlySuitable(self._hide_orig, *args, **kwargs)
 			except RuntimeError as e:
 				import traceback
 				traceback.print_exc()
 				print 'Caught pychan RuntimeError on hide, assuming irrelevant gcn::exception.'
 
-		widget._hide_orig = widget.hide
+		if not hasattr(widget, "_hide_orig"):
+			widget._hide_orig = widget.hide
 		widget.hide = hide_new
 
 
