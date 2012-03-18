@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2012-03-02 04:09+0100\n"
-"PO-Revision-Date: 2012-03-18 13:42+0200\n"
+"PO-Revision-Date: 2012-03-17 23:44+0200\n"
 "Last-Translator: VMa <VaclavMacurek@seznam.cz>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: cs\n"
@@ -93,7 +93,7 @@ msgstr ""
 #: database files sql
 #, python-format
 msgid "You need more {resource} to build this building."
-msgstr "Potřebuješ více {resource} k postavení budovy."
+msgstr "K postavení budovy potřebujete více {resource}."
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
@@ -146,7 +146,7 @@ msgstr "žaludy"
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "alvearies"
-msgstr "úly"
+msgstr "včelařství"
 
 #. This is a database entry: the name of an inhabitant increment (tier / level).
 #: database files sql
@@ -438,7 +438,7 @@ msgstr "tabákové rostliny"
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "tobaccos"
-msgstr "tabák"
+msgstr "doutníky"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
@@ -2962,7 +2962,7 @@ msgstr "Železný důl"
 #. tooltip_text of buildings:ironmine
 #: horizons/i18n/objecttranslations.py:203
 msgid "Gets iron ore from deposit."
-msgstr "Získává rudu ze zdroje."
+msgstr "Získává železnou rudu."
 
 #. name of buildings:log
 #: horizons/i18n/objecttranslations.py:208
@@ -2987,7 +2987,7 @@ msgstr "Zvětšuje hráčovo zorné pole."
 #. name_0 of buildings:lumberjackcamp
 #: horizons/i18n/objecttranslations.py:222
 msgid "Lumberjack Tent"
-msgstr "Dřevorubcův stav"
+msgstr "Dřevorubcův stan"
 
 #. name_1 of buildings:lumberjackcamp
 #: horizons/i18n/objecttranslations.py:224
@@ -3007,7 +3007,7 @@ msgstr "Náměstí"
 #. tooltip_text of buildings:mainsquare
 #: horizons/i18n/objecttranslations.py:233
 msgid "Supplies citizens with goods."
-msgstr "Zásobuje občany se zbožím."
+msgstr "Zásobuje občany zbožím."
 
 #. name of buildings:mountain
 #: horizons/i18n/objecttranslations.py:238
@@ -3192,7 +3192,7 @@ msgstr "Produkuje tabákové listy. Potřebuje farmu."
 #. name of buildings:tobacconist
 #: horizons/i18n/objecttranslations.py:367
 msgid "Tobacconist"
-msgstr "Trafikant"
+msgstr "Prodejce tabáku"
 
 #. tooltip_text of buildings:tobacconist
 #: horizons/i18n/objecttranslations.py:369
@@ -3217,7 +3217,7 @@ msgstr "Stezka"
 #. tooltip_text of buildings:trail
 #: horizons/i18n/objecttranslations.py:383
 msgid "Needed for collecting goods."
-msgstr "Protřebná pro sběr zboží."
+msgstr "Potřebná pro sběr zboží."
 
 #. name of buildings:tree
 #: horizons/i18n/objecttranslations.py:388
@@ -3322,8 +3322,8 @@ msgstr "Toto znamená, že změny v vybraném souboru nebudou ve hře použity p
 #, python-format
 msgid "To see the changes, either always start UH with the current arguments or edit the file {filename}."
 msgstr ""
-"Aby byly vidět změny, je třeba spustit UH s současnými příkazy nebo změnit "
-"soubor {filename}."
+"Aby byly vidět změny, je třeba spustit UH s současnými příkazy nebo "
+"zasáhnout do souboru {filename}."
 
 #. if this is reached, we are screwed. Something went wrong in the simulation,
 #. but we don't know what. Stop the game.

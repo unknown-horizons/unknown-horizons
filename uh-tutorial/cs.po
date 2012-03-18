@@ -7,8 +7,8 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: translate-uh@lists.unknown-horizons.org\n"
 "POT-Creation-Date: 2012-03-13 16:25+0100\n"
-"PO-Revision-Date: 2012-03-15 11:23+0200\n"
-"Last-Translator: naked.in.rain <martin.mezl@gmail.com>\n"
+"PO-Revision-Date: 2012-03-18 13:56+0200\n"
+"Last-Translator: VMa <VaclavMacurek@seznam.cz>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: cs\n"
 "MIME-Version: 1.0\n"
@@ -20,7 +20,7 @@ msgstr ""
 #. scenario difficulty
 #: po/tutorial.py:2
 msgid "Tutorial"
-msgstr "Tutorial"
+msgstr "Výuka"
 
 #. scenario author
 #: po/tutorial.py:4
@@ -33,7 +33,7 @@ msgid ""
 "The tutorial:\n"
 "Build your first settlement and learn how to play!\n"
 msgstr ""
-"Tutorial:\n"
+"Výuka:\n"
 "Postavte svojí první osadu a naučte se hrát!\n"
 
 #. This message is displayed in the widget on the left screen part. Please keep it short enough to fit there!
@@ -56,7 +56,7 @@ msgid ""
 "This is your Captain's log where all important information is stored. A short "
 "notification of each task will be provided on the left of the screen."
 msgstr ""
-"Toto je Váš Lodní deník, kde najdete všechny důležité informace. Krátké "
+"Toto je Váš Lodní deník. Zde najdete všechny důležité informace. Krátké "
 "upozornění na každý úkol bude umístěno vlevo na obrazovce."
 
 #. This is the text body of a logbook page.
@@ -86,7 +86,7 @@ msgid ""
 "navigation panel! It looks like this:"
 msgstr ""
 "\n"
-"Pro zobrazení Vašeho prvního úkolu klikněte na tlačítko \"Přečti další "
+"Pro zobrazení Vašeho prvního úkolu klikněte na tlačítko \"Přečíst další "
 "položku\" v panelu navigace! Vypadá to takhle:"
 
 #. This is the text body of a logbook page.
@@ -126,7 +126,7 @@ msgid ""
 "To move your ship, select it with a left click and right click on the "
 "location you want it to go to."
 msgstr ""
-"Pro pohyb lodí, jí nejprve vyberte pomocí levého tlačítka myši, a pravým "
+"Pro pohyb lodí jí nejprve vyberte pomocí levého tlačítka myši a pravým "
 "tlačítkem zadejte místo, kam chcete plout."
 
 #. This is the text body of a logbook page.
