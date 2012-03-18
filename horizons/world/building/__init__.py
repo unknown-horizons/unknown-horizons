@@ -69,9 +69,6 @@ class BuildingClass(IngameType):
 		if buildable_on_deposit_type:
 			self.buildable_on_deposit_type = buildable_on_deposit_type[0][0]
 
-		# TODO: move this to the producer component as soon as there is support for class attributes there
-		self.additional_provided_resources = yaml_data['additional_provided_resources'] if 'additional_provided_resources' in yaml_data else []
-
 	def __str__(self):
 		return "Building[" + str(self.id) + "](" + self.name + ")"
 

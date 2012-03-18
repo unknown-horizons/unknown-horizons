@@ -88,6 +88,9 @@ class IngameType(type):
 		self.baseclass = yaml_data['baseclass'] # mostly only for debug
 		self._real_object = None # wrapped by _object
 
+		# TODO: move this to the producer component as soon as there is support for class attributes there
+		self.additional_provided_resources = yaml_data['additional_provided_resources'] if 'additional_provided_resources' in yaml_data else []
+
 		"""TUTORIAL: Now you know the basic attributes each type has. Further attributes
 		specific to buildings and units can be found in horizons/world/{buildings/units}/__init__.py
 		which contains the unit and building specific attributes and loading.
