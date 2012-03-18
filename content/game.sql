@@ -616,9 +616,3 @@ INSERT INTO "status_icon_exclusions" VALUES(45);
 INSERT INTO "status_icon_exclusions" VALUES(21);
 INSERT INTO "status_icon_exclusions" VALUES(32);
 INSERT INTO "status_icon_exclusions" VALUES(1000013);
-
-CREATE TABLE additional_provided_resources (
-    "object_id" INT NOT NULL,
-		"resource" INT NOT NULL
-	);
-INSERT INTO "additional_provided_resources" VALUES(3,42);

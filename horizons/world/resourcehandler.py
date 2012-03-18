@@ -170,7 +170,7 @@ class ResourceHandler(object):
 			for res in prod.get_produced_res():
 				produced_res.add(res)
 
-		for (res, ) in self.session.db.cached_query("SELECT resource FROM additional_provided_resources WHERE object_id = ?", self.id):
+		for res in self.additional_provided_resources:
 			produced_res.add(res)
 
 		return produced_res

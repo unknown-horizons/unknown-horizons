@@ -118,7 +118,15 @@ class YamlCache(object):
 		if not yaml_file_in_cache:
 			data = yaml.load( f, Loader = SafeLoader )
 			if game_data: # need to convert some values
-				data = convert_game_data(data)
+				try:
+					data = convert_game_data(data)
+				except Exception as e:
+					# add info about file
+					to_add = "\nThis error happened in %s ." % filename
+					e.args = ( e.args[0] + to_add, ) + e.args[1:]
+					e.message = ( e.message + to_add )
+					raise
+
 			cls.lock.acquire()
 			try:
 				cls.cache[filename] = (h, data)

@@ -22,12 +22,12 @@ components:
      56464472:
        produces: []
        consumes:
-        - [99,-1] # consume fire
+        - [RES.FIRE_ID, -1]
        time: 1
 - StorageComponent:
    inventory:
      SlotsStorage:
-      slot_sizes: {99: 10}
+      slot_sizes: {RES.FIRE_ID: 10}
 - CollectingComponent:
     collectors:
       1000022: 1
