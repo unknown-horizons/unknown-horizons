@@ -159,13 +159,6 @@ class GuiHelper(object):
 		"""
 		widget_name, event_name, group_name = event.split('/')
 
-		try:
-			# Some widgets use numbers as name. Their name needs to be converted,
-			# otherwise the lookup fails.
-			widget_name = int(widget_name)
-		except ValueError:
-			pass
-
 		# if container is given by name, look it up first
 		if isinstance(root, basestring):
 			root_name = root
