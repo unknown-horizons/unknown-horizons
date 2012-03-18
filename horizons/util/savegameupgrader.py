@@ -76,8 +76,25 @@ class SavegameUpgrader(object):
 
 	def _upgrade_to_rev54(self, db):
 		for (settlement,) in db("SELECT DISTINCT settlement FROM settlement_level_properties WHERE level = ?", 0):
-			print settlement
 			db("INSERT INTO settlement_level_properties VALUES(?, 3, 0, 1)", settlement)
+
+	def _upgrade_to_rev55(self, db):
+		# The upgrade system has been mishandled, this upgrade tries to fix
+		# as much as possible. It's partly brute force and might not work every
+		# time, however the savegames are in an undefined state, so recovery is hard
+
+		# make anything inflamable, the code should be able to handle it
+		for (obj, ) in db("SELECT rowid FROM building where type != 8"):
+			db("INSERT INTO storage_slot_limit (object, slot, value) VALUES (?, ?, ?)",
+			   obj, 99, 1)
+
+		# make farm be able to store grain and stuff
+		for (obj, ) in db("SELECT rowid FROM building where type = 20"):
+			db("INSERT INTO storage_slot_limit (object, slot, value) VALUES (?, ?, ?)",
+			   obj, 43, 6)
+			db("INSERT INTO storage_slot_limit (object, slot, value) VALUES (?, ?, ?)",
+			   obj, 42, 6)
+
 
 
 	def _upgrade(self):
@@ -108,6 +125,9 @@ class SavegameUpgrader(object):
 				self._upgrade_to_rev53(db)
 			if rev < 54:
 				self._upgrade_to_rev54(db)
+			if rev < 55:
+				self._upgrade_to_rev55(db)
+
 
 
 			db.close()
