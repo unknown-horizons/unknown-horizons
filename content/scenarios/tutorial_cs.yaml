@@ -6,9 +6,9 @@
 #   development/copy_pofiles.sh
 
 author: "T\xFDm UH"
-description: "Tutorial:\nPostavte svoj\xED prvn\xED osadu a nau\u010Dte se hr\xE1\
+description: "V\xFDuka:\nPostavte svoj\xED prvn\xED osadu a nau\u010Dte se hr\xE1\
   t!\n"
-difficulty: !!python/unicode 'Tutorial'
+difficulty: "V\xFDuka"
 events:
 - actions:
   - arguments: ["Postavte na pob\u0159e\u017E\xED Obchodn\xED p\u0159\xEDstav, aby\
@@ -23,7 +23,7 @@ events:
     - [Headline, "V\xEDtej v Unknown Horizons!"]
     - [Image, content/gui/images/background/hr.png]
     - ''
-    - "Toto je V\xE1\u0161 Lodn\xED den\xEDk, kde najdete v\u0161echny d\u016Fle\u017E\
+    - "Toto je V\xE1\u0161 Lodn\xED den\xEDk. Zde najdete v\u0161echny d\u016Fle\u017E\
       it\xE9 informace. Kr\xE1tk\xE9 upozorn\u011Bn\xED na ka\u017Ed\xFD \xFAkol bude\
       \ um\xEDst\u011Bno vlevo na obrazovce."
     - "Pokud m\xE1te z\xE1jem o podrobn\u011Bj\u0161\xED popisy, den\xEDk V\xE1m poskytne\
@@ -34,8 +34,8 @@ events:
     - - Gallery
       - [content/gui/icons/widgets/minimap/captainslog.png]
     - "\nPro zobrazen\xED Va\u0161eho prvn\xEDho \xFAkolu klikn\u011Bte na tla\u010D\
-      \xEDtko \"P\u0159e\u010Dti dal\u0161\xED polo\u017Eku\" v panelu navigace! Vypad\xE1\
-      \ to takhle:"
+      \xEDtko \"P\u0159e\u010D\xEDst dal\u0161\xED polo\u017Eku\" v panelu navigace!\
+      \ Vypad\xE1 to takhle:"
     - - Gallery
       - [content/gui/images/buttons/parrow_right.png]
     - [Pagebreak]
@@ -47,8 +47,8 @@ events:
     - [Pagebreak]
     - [Headline, "NOV\xDD \xDAKOL: OS\xCDDLIT OSTROV"]
     - [Image, content/gui/images/background/hr.png]
-    - "Pro pohyb lod\xED, j\xED nejprve vyberte pomoc\xED lev\xE9ho tla\u010D\xED\
-      tka my\u0161i, a prav\xFDm tla\u010D\xEDtkem zadejte m\xEDsto, kam chcete plout."
+    - "Pro pohyb lod\xED j\xED nejprve vyberte pomoc\xED lev\xE9ho tla\u010D\xEDtka\
+      \ my\u0161i a prav\xFDm tla\u010D\xEDtkem zadejte m\xEDsto, kam chcete plout."
     - "Jakmile budete v bl\xEDzkosti pob\u0159e\u017E\xED, tla\u010D\xEDtko kotvy,\
       \ kter\xE9 vid\xEDte na kart\u011B p\u0159ehledu, bude aktivn\xED."
     - - Gallery
@@ -86,8 +86,8 @@ events:
     - "Nyn\xED se nach\xE1z\xEDte na prvn\xED \xFArovni (n\xE1mo\u0159nick\xE1 \xFA\
       rove\u0148), proto m\xE1te k dispozici pouze z\xE1kladn\xED budovy."
     - [Pagebreak]
-    - "\nJak se bude va\u0161e civilizace rozv\xEDjet, z\xEDsk\xE1te st\xE1le komplexn\u011B\
-      j\u0161\xED a komplexn\u011Bj\u0161\xED budovy."
+    - "\nJak se bude Va\u0161e civilizace rozv\xEDjet, budete z\xEDsk\xE1vat slo\u017E\
+      it\u011Bj\u0161\xED a slo\u017Eit\u011Bj\u0161\xED budovy."
     - "Nyn\xED vyberte d\u0159evorubce v sekci \"Podniky\" a postavte ho v oblasti,\
       \ kde jsou stromy."
     - "Pozd\u011Bji m\u016F\u017Eete stromy tak\xE9 s\xE1zet, ale bude V\xE1s to st\xE1\
@@ -121,7 +121,7 @@ events:
     type: var_lt
 - actions:
   - arguments:
-    - [Headline, "NOV\xDD \xDAKOL: Z\xC1SOBEN\xCD J\xCDDLEM"]
+    - [Headline, "NOV\xDD \xDAKOL: Z\xC1SOBOV\xC1N\xCD J\xCDDLEM"]
     - [Image, content/gui/images/background/hr.png]
     - "D\xE1le budete muset postavit n\u011Bkter\xE9 z\xE1kladn\xED budovy, kter\xE9\
       \ budou produkovat j\xEDdlo, proto\u017Ee v\u0161ichni lid\xE9 (a n\xE1mo\u0159\
@@ -350,7 +350,7 @@ events:
     - "\nUk\xE1\u017Eeme si to na p\u0159\xEDkladu:\nPokud m\xE1me nastaven\xFD slot\
       \ na \"N\xE1kup\" a na sklad\u011B m\xE1me 5 tun dan\xE9ho zbo\u017E\xED, tak\
       \ nastaven\xED posuvn\xEDku na hodnotu 9 tun zp\u016Fsob\xED n\xE1kup maxim\xE1\
-      ln\u011B 4 dal\u0161\xEDch tun zbo\u017E\xED. "
+      ln\u011B 4 dal\u0161\xED tuny zbo\u017E\xED. "
     - "Prodej funguje obdobn\u011B. Slot \"Prodej\" s 18 tunami zbo\u017E\xED na sklad\u011B\
       \ a posuvn\xEDk nastaven\xFD na hodnotu 13 tun zp\u016Fsob\xED, \u017Ee bude\
       \ prod\xE1no 5 tun zbo\u017E\xED."
@@ -364,7 +364,7 @@ events:
     - "Va\u0161i obchodn\xED bilanci m\u016F\u017Eete vid\u011Bt v z\xE1lo\u017Ece\
       \ \\\"\xDA\u010Det\\\", kde jsou srovn\xE1ny \"N\xE1kup\" a \"Prodej\"."
     - "\n\xDAKOL: Nakupte n\xE1stroje tak, aby z\xE1soby ve va\u0161em skladu byly\
-      \ 30 jednotek!"
+      \ 30 kus\u016F!"
     - - Gallery
       - [content/gui/icons/resources/50/006.png]
     type: logbook
@@ -477,8 +477,7 @@ events:
   - arguments:
     - [Headline, "NOV\xDD \xDAKOL: POSTAVTE FARMU"]
     - [Image, content/gui/images/background/hr.png]
-    - "Gratulujeme! \u010C\xE1st va\u0161ich obyvatel dos\xE1hla dal\u0161\xED \xFA\
-      rovn\u011B II!"
+    - "Gratulujeme! \u010C\xE1st va\u0161ich obyvatel dos\xE1hla \xFArovn\u011B II!"
     - "Nyn\xED m\xE1te p\u0159\xEDstup k nov\xFDm budov\xE1m, pod\xEDvejte se do Stavebn\xED\
       ho menu znova."
     - - Gallery
@@ -694,7 +693,7 @@ events:
     - [Pagebreak]
     - [Headline, "D\xEDky!"]
     - [Image, content/gui/images/background/hr.png]
-    - "\n\n\n\n\nD\u011Bkujeme za hran\xED tutorialu!\n\nTv\u016Fj UH-Team"
+    - "\n\n\n\n\nD\u011Bkujeme za hran\xED v\xFDuky!\n\nTv\u016Fj UH-Team"
     - - Gallery
       - [content/unknown-horizons.xpm, content/gfx/misc/status_icons/as_book_flip/idle/45/book20125.png]
     type: logbook
@@ -717,7 +716,7 @@ events:
     type: var_lt
 - actions:
   - {type: win}
-  - arguments: ["Gratulujeme! Dostali jste se na konec tutorialu a jste p\u0159ipraveni\
+  - arguments: ["Gratulujeme! Dostali jste se na konec v\xFDuky a jste p\u0159ipraveni\
         \ na dal\u0161\xED v\xFDzvy!"]
     type: message
   conditions:
