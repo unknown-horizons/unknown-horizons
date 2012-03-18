@@ -57,6 +57,8 @@ class Minimap(object):
 
 	WAREHOUSE_IMAGE = "content/gui/icons/resources/16/placeholder.png"
 	SHIP_IMAGE = "content/gui/icons/minimap/ship.png"
+	SHIP_NEUTRAL = "content/gui/icons/minimap/ship_neutral.png"
+	SHIP_PIRATE = "content/gui/icons/minimap/pirate.png"
 
 	SHIP_DOT_UPDATE_INTERVAL = 0.5 # seconds
 
@@ -544,31 +546,38 @@ class Minimap(object):
 		"""Regular updates for domains we can't or don't want to keep track of."""
 		# update ship dots
 		# OPTIMISATION NOTE: there can be pretty many ships, don't rely on the inner loop being rarely executed
-		for i in xrange(10):
-			self.minimap_image.set_drawing_enabled()
-			render_name = self._get_render_name("ship")
-			self.minimap_image.rendertarget.removeAll( render_name )
-			use_rotation = self._get_rotation_setting()
-			for ship in self.world.ship_map.itervalues():
-				if not ship():
-					continue
+		self.minimap_image.set_drawing_enabled()
+		render_name = self._get_render_name("ship")
+		self.minimap_image.rendertarget.removeAll( render_name )
+		use_rotation = self._get_rotation_setting()
+		for ship in self.world.ship_map.itervalues():
+			if not ship():
+				continue
 
-				coord = self._world_to_minimap( ship().position.to_tuple(), use_rotation )
-				color = ship().owner.color.to_tuple()
+			coord = self._world_to_minimap( ship().position.to_tuple(), use_rotation )
+			color = ship().owner.color.to_tuple()
+			
+			# set correct icon
+			if ship().owner is self.session.world.pirate:
+				self._update_image( self.__class__.SHIP_PIRATE, render_name, coord)
+			elif ship().owner is self.session.world.trader:
+				self._update_image( self.__class__.SHIP_NEUTRAL, render_name, coord)
+			else:
 				# TODO: apply color
 				self._update_image( self.__class__.SHIP_IMAGE, render_name, coord)
-				# TODO: nicer selected view
-				if ship() in self.session.selected_instances:
+			
+			# TODO: nicer selected view
+			if ship() in self.session.selected_instances:
+				self.minimap_image.rendertarget.addPoint(render_name,
+					                                     fife.Point( coord[0], coord[1] ),
+					                                     *Minimap.COLORS["water"])
+				for x_off, y_off in ((-2,  0),
+					                   (+2,  0),
+					                   ( 0, -2),
+					                   ( 0, +2)):
 					self.minimap_image.rendertarget.addPoint(render_name,
-						                                     fife.Point( coord[0], coord[1] ),
-						                                     *Minimap.COLORS["water"])
-					for x_off, y_off in ((-2,  0),
-						                   (+2,  0),
-						                   ( 0, -2),
-						                   ( 0, +2)):
-						self.minimap_image.rendertarget.addPoint(render_name,
-							                                       fife.Point( coord[0]+x_off, coord[1] + y_off ),
-							                                       *color)
+						                                       fife.Point( coord[0]+x_off, coord[1] + y_off ),
+						                                       *color)
 
 
 		# draw settlement warehouses if something has changed
