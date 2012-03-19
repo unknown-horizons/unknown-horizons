@@ -7,8 +7,8 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2012-03-02 04:09+0100\n"
-"PO-Revision-Date: 2012-03-07 22:59+0200\n"
-"Last-Translator: Andrés  José <taurendil@erebor.com.ar>\n"
+"PO-Revision-Date: 2012-03-16 20:39+0200\n"
+"Last-Translator: yagreor <yasser.greyeb@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: es\n"
 "MIME-Version: 1.0\n"
@@ -26,7 +26,6 @@ msgstr "Un nuevo asentamiento ha sido fundado por {player}."
 # 82%
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
-#, fuzzy
 msgid "A new ship has been created."
 msgstr "Se ha creado un nuevo barco."
 
