@@ -20,6 +20,7 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
+import functools
 import new
 
 from fife.extensions import pychan
@@ -61,21 +62,19 @@ def init_pychan():
 	# patch default widgets
 	for name, widget in pychan.widgets.WIDGETS.items()[:]:
 
-		# patch hide so that it doesn't crash
-		def hide_new(self, *args, **kwargs):
-			try:
-				# call on self, we can't access the outer scope easily since we're in a loop
-				# only apply usable args, else it would crash when called through fife timers
-				pychan.tools.applyOnlySuitable(self._hide_orig, *args, **kwargs)
-			except RuntimeError as e:
-				import traceback
-				traceback.print_exc()
-				print 'Caught pychan RuntimeError on hide, assuming irrelevant gcn::exception.'
+		def patch_hide(func):
+			@functools.wraps(func)
+			def wrapper(*args, **kwargs):
+				try:
+					# only apply usable args, else it would crash when called through fife timers
+					pychan.tools.applyOnlySuitable(func, *args, **kwargs)
+				except RuntimeError as e:
+					import traceback
+					traceback.print_exc()
+					print 'Caught pychan RuntimeError on hide, assuming irrelevant gcn::exception.'
+			return wrapper
 
-		if not hasattr(widget, "_hide_orig"):
-			widget._hide_orig = widget.hide
-		widget.hide = hide_new
-
+		widget.hide = patch_hide(widget.hide)
 
 		# support for tooltips via helptext attribute
 		if any( attr.name == "helptext" for attr in widget.ATTRIBUTES ):
