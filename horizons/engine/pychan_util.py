@@ -77,7 +77,12 @@ def init_pychan():
 
 		# support for tooltips via helptext attribute
 		if any( attr.name == "helptext" for attr in widget.ATTRIBUTES ):
-			widget.__bases__ += (_Tooltip, )
+			# Copy everything we need from the tooltip class (manual mixin).
+			# TODO Figure out if it is safe to use this instead:
+			#widget.__bases__ += (_Tooltip, )
+			for key, value in _Tooltip.__dict__.iteritems():
+				if not key.startswith("__"):
+					setattr(widget, key, value)
 
 			def patch(func):
 				@functools.wraps(func)
