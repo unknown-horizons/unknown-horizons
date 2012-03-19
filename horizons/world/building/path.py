@@ -85,7 +85,6 @@ class Path(ComponentHolder):
 
 class Road(Path, BasicBuilding, BuildableLine):
 	"""Actual buildable road."""
-	show_buildingtool_preview_tab = False
 	layer = LAYERS.FIELDS
 
 class Bridge(BasicBuilding, BuildableSingle):

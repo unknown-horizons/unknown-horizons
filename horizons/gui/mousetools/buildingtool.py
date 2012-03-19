@@ -81,10 +81,9 @@ class BuildingTool(NavigationTool):
 		else:
 			self._build_logic = SettlementBuildingToolLogic(self)
 
-		if self._class.show_buildingtool_preview_tab:
-			self.load_gui()
-			self.gui.show()
-			self.session.ingame_gui.minimap_to_front()
+		self.load_gui()
+		self.gui.show()
+		self.session.ingame_gui.minimap_to_front()
 
 		self.session.gui.on_escape = self.on_escape
 

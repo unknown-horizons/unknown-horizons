@@ -44,8 +44,6 @@ class BasicBuilding(ComponentHolder, ConcreteObject):
 	buildable_upon = False # whether we can build upon this building
 	is_building = True
 	tearable = True
-	show_buildingtool_preview_tab = True # whether to show the tab of the building. not shown for
-																			# e.g. paths. the tab hides a part of the map.
 	layer = LAYERS.OBJECTS
 
 
