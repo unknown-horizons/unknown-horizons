@@ -1318,7 +1318,6 @@ msgstr "Schepen van {player}"
 #. (tooltip of widget: name)
 #: horizons/gui/widgets/playersships.py:83
 #: horizons/i18n/guitranslations.py:497 horizons/i18n/guitranslations.py:508
-#, fuzzy
 msgid "Click to change the name of this ship"
 msgstr "Klik om de naam van dit schip te wijzigen."
 
@@ -1372,7 +1371,6 @@ msgstr "Lading lossen"
 
 # 83%
 #: horizons/gui/widgets/routeconfig.py:277
-#, fuzzy
 msgid "Select a resource:"
 msgstr "Selecteer grondstoffen:"
 
