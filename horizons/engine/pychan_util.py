@@ -21,7 +21,6 @@
 # ###################################################
 
 import functools
-import new
 
 from fife.extensions import pychan
 from horizons.gui.style import STYLES
@@ -60,7 +59,7 @@ def init_pychan():
 		pychan.manager.addStyle(name, stylepart)
 
 	# patch default widgets
-	for name, widget in pychan.widgets.WIDGETS.items()[:]:
+	for name, widget in pychan.widgets.WIDGETS.items():
 
 		def patch_hide(func):
 			@functools.wraps(func)
@@ -78,35 +77,16 @@ def init_pychan():
 
 		# support for tooltips via helptext attribute
 		if any( attr.name == "helptext" for attr in widget.ATTRIBUTES ):
+			widget.__bases__ += (_Tooltip, )
 
-			# create a new class with a custom __init__, so tooltips are initalized
+			def patch(func):
+				@functools.wraps(func)
+				def wrapper(self, *args, **kwargs):
+					func(self, *args, **kwargs)
+					self.init_tooltip()
+				return wrapper
 
-			klass_name =  str(widget)+" with tooltip hack (see horizons/engine/pychan_util.py"
-			klass = type(klass_name, (widget, ), {})
-
-			def __init__(self, *args, **kwargs):
-				# this is going to look a bit weird
-
-				# remove all traces of this code ever existing (would confuse pychan badly, don't try to create own widgets)
-				self.__class__ = self.__class__.__mro__[1]
-				# manually copy everything we need from the tooltip class
-				for key, value in _Tooltip.__dict__.iteritems():
-					if not key.startswith("__"): # not the internals
-						if callable( value ):
-							value =  new.instancemethod(value, self)
-
-					# put it in the instance dict, not the class dict
-					self.__dict__[key] = value
-
-				# call real init (no super, since we are already in the super class
-				self.__init__(*args, **kwargs)
-
-				self.init_tooltip()
-
-			klass.__init__ = __init__
-
-			# register this new class in pychan
-			pychan.widgets.WIDGETS[name] = klass
+			widget.__init__ = patch(widget.__init__)
 
 
 	# NOTE: there is a bug with the tuple notation: http://fife.trac.cvsdude.com/engine/ticket/656
