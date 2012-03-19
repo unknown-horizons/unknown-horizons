@@ -116,6 +116,16 @@ if [ ! -d $TL_SOURCE ] ; then
 	echo '   git clone git://github.com/unknown-horizons/translations.git ../translations'
 	exit 1 # stop executing script, no sense in trying to copy nonexistant files
 fi
+uh=$(pwd)
+cd $TL_SOURCE
+old_head=$(git diff-tree -s --pretty=%ct HEAD) # unix timestamp of commit date
+git pull
+new_head=$(git diff-tree -s --pretty=%ct HEAD)
+if [ $new_head -le $old_head ]; then # no new strings, abort script
+	echo 'No changes in translation export repository. Exiting.'
+	exit 1
+fi
+cd $uh
 
 build_ungrep
 
