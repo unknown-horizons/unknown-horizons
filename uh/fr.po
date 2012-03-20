@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2012-03-02 04:09+0100\n"
-"PO-Revision-Date: 2012-03-20 19:59+0200\n"
+"PO-Revision-Date: 2012-03-20 19:57+0200\n"
 "Last-Translator: ddr2 <ben547@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: fr\n"
@@ -44,7 +44,7 @@ msgstr "Ne peut pas aller ici."
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
 msgid "One of your fields requires a farm to harvest its crops."
-msgstr "Un de vos champs à besoin d'un ferme pour sa récolte."
+msgstr "Un de vos champs à besoin d'une ferme pour être récolté."
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
@@ -67,7 +67,7 @@ msgstr "Certains de vos colons viennent juste de déménager."
 #: database files sql
 msgid "The route is now configured. Start it via the \"start route\" button in the \"configure route\" menu."
 msgstr ""
-"La route est maintenant configuré. Lancez la via le bouton «démarrer route» "
+"La route est maintenant configurée. Ouvrez la via le bouton «démarrer route» "
 "dans le menu «configurer route» "
 
 #. This is a database entry: a messagewidget message (left part of the screen).
@@ -3206,8 +3206,9 @@ msgstr ""
 
 #. tooltip_text of buildings:stonepit
 #: horizons/i18n/objecttranslations.py:327
+#, fuzzy
 msgid "Gets stone from a mountain."
-msgstr ""
+msgstr "Récupère de la pierre d'une montagne"
 
 #. name of buildings:storagetent
 #: horizons/i18n/objecttranslations.py:332
