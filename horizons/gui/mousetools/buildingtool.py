@@ -99,7 +99,18 @@ class BuildingTool(NavigationTool):
 		# highlight their range at all times
 		# (there is another similar highlight, but it only marks building when
 		# the current build preview is in its range)
-		related = frozenset(self.session.db.get_inverse_related_building_ids(self._class.id))
+		related = self.session.db.get_inverse_related_building_ids(self._class.id)
+
+		# if the current buildings has related buildings, also show other buildings
+		# of this class. You usually don't want overlapping ranges of e.g. lumberjacks.
+		if self._class.id in self.session.db.get_buildings_with_related_buildings() and \
+		   self._class.id != BUILDINGS.RESIDENTIAL_CLASS:
+			# TOOD: generalize settler class exclusion, e.g. when refactoring it into components
+
+			related = related + [self._class.id] # don't += on retrieved data from db
+
+		related = frozenset(related)
+
 		renderer = self.session.view.renderer['InstanceRenderer']
 		if tiles_to_check is None: # first run, check all
 			buildings_to_select = [ buildings_to_select for\
