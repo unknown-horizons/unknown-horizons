@@ -105,7 +105,7 @@ class BuildingTool(NavigationTool):
 		# of this class. You usually don't want overlapping ranges of e.g. lumberjacks.
 		if self._class.id in self.session.db.get_buildings_with_related_buildings() and \
 		   self._class.id != BUILDINGS.RESIDENTIAL_CLASS:
-			# TOOD: generalize settler class exclusion, e.g. when refactoring it into components
+			# TODO: generalize settler class exclusion, e.g. when refactoring it into components
 
 			related = related + [self._class.id] # don't += on retrieved data from db
 
