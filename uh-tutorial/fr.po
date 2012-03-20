@@ -7,8 +7,8 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: translate-uh@lists.unknown-horizons.org\n"
 "POT-Creation-Date: 2012-03-13 16:25+0100\n"
-"PO-Revision-Date: 2012-03-20 11:28+0200\n"
-"Last-Translator: Samuel <samuel@micheldorsaz.ch>\n"
+"PO-Revision-Date: 2012-03-20 21:37+0200\n"
+"Last-Translator: Christopher Oelmueller <chris.oelmueller+uh@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: fr\n"
 "MIME-Version: 1.0\n"
@@ -57,7 +57,7 @@ msgid ""
 "notification of each task will be provided on the left of the screen."
 msgstr ""
 "Voici votre journal de bord où toute information importante est stockée. Un "
-"court rappel de chaque tâche sera visible sur le coté gauche de l'écran"
+"court rappel de chaque tâche sera visible sur le coté gauche de l'écran."
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:14
@@ -101,7 +101,7 @@ msgstr ""
 "\n"
 "Pour toute suggestion sur une meilleure rédaction, une explication, ou pour "
 "nous rapporter un bug : N'hésitez pas à nous contacter et nous essaierons "
-"d'améliorer ce didacticiel!"
+"d'améliorer ce didacticiel !"
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:22
@@ -110,7 +110,7 @@ msgid ""
 "Visit www.unknown-horizons.org for help on how to contact the team!"
 msgstr ""
 "\n"
-"Visitez www.unknown-horizons.org pour savoir comment contacter l'équipe!"
+"Visitez www.unknown-horizons.org pour savoir comment contacter l'équipe !"
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:24
@@ -255,7 +255,7 @@ msgid ""
 "provided you with!"
 msgstr ""
 "Vous pourrez aussi planter des arbres plus tard - mais cela vous coûtera de "
-"l'argent. Utilisez ce que la nature vous offre!"
+"l'argent. Utilisez ce que la nature vous offre !"
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:62
@@ -1159,7 +1159,9 @@ msgstr ""
 msgid ""
 "\n"
 "TASK: Build a farm."
-msgstr "MISSION: Construire une ferme."
+msgstr ""
+"\n"
+"MISSION: Construire une ferme."
 
 #. This message is displayed in the widget on the left screen part. Please keep it short enough to fit there!
 #: po/tutorial.py:284
@@ -1479,7 +1481,6 @@ msgstr "Merci !"
 # 96%
 #. This is the text body of a logbook page.
 #: po/tutorial.py:368
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -1490,8 +1491,6 @@ msgid ""
 "\n"
 "Your UH-Team"
 msgstr ""
-"\n"
-"\n"
 "\n"
 "\n"
 "\n"
