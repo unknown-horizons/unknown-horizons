@@ -152,12 +152,12 @@ class MultiplayerMenu(object):
 			return False
 
 		self.current.distributeInitialData(
-		  {'gamelist' : map(lambda x: "{gamename}: {name} ({players}, {limit}){version}".format(
+		  {'gamelist' : map(lambda x: u"{gamename}: {name} ({players}, {limit}){version}".format(
 		                        name=x.get_map_name(),
 		                        gamename=x.get_name(),
 		                        players=x.get_player_count(),
 		                        limit=x.get_player_limit(),
-		                        version=" " + _("Version differs!") if x.get_version() != NetworkInterface().get_clientversion() else ""),
+		                        version=u" " + _("Version differs!") if x.get_version() != NetworkInterface().get_clientversion() else u""),
 		                    self.games)})
 		self.current.distributeData({'gamelist' : 0}) # select first map
 		self.__update_game_details()
@@ -383,7 +383,7 @@ class MultiplayerMenu(object):
 	def __create_game(self, load=None, chosen_map=None):
 		"""
 		Actually create a game, join it, and display the lobby.
-		
+
 		@param load: game data tuple for creating loaded games
 		@param chosen_map: the name of the map to start a new game on (overrides the gui)
 		"""

@@ -216,6 +216,9 @@ class SelectableBuildingComponent(SelectableComponent):
 			return [] # that is not many
 		settlement = buildings[0].settlement
 
+		for building in buildings:
+			building.get_component(SelectableComponent).set_selection_outline()
+
 		coords = set( coord for \
 		              building in buildings for \
 		              coord in building.position.get_radius_coordinates(building.radius, include_self=True) )

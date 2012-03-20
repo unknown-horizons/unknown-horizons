@@ -144,6 +144,9 @@ def start(_command_line_arguments):
 			from tests.gui.logger import setup_gui_logger
 			setup_gui_logger()
 		except ImportError:
+			import traceback
+			traceback.print_exc()
+			print
 			print "Gui logging requires code that is only present in the repository and is not being installed."
 			return False
 

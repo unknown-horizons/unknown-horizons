@@ -168,6 +168,12 @@ class UhDbAccessor(DbReader):
 		sql = "SELECT building FROM related_buildings WHERE related_building = ?"
 		return map(lambda x: x[0], self.cached_query(sql, building_class_id))
 
+	@decorators.cachedmethod
+	def get_buildings_with_related_buildings(self):
+		"""Returns all buildings that have related buildings"""
+		sql = "SELECT DISTINCT building FROM related_buildings"
+		return map(lambda x: x[0], self.cached_query(sql))
+
 	# Message table
 
 	def get_msg_visibility(self, msg_id_string):
