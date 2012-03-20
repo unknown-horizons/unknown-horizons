@@ -40,7 +40,8 @@ class SelectionTool(NavigationTool):
 	def remove(self):
 		# Deselect if needed while exiting
 		if self.deselect_at_end:
-			for i in self.filter_selectable( self.session.selected_instances ):
+			selectables = self.filter_selectable( self.session.selected_instances )
+			for i in self.filter_component(SelectableComponent, selectables):
 				i.deselect()
 		super(SelectionTool, self).remove()
 
@@ -48,10 +49,14 @@ class SelectionTool(NavigationTool):
 		# also enemy entities are selectable, but the selection representation will differ
 		return entity.has_component(SelectableComponent)
 
+	def filter_component(self, component, instances):
+		"""Only get specific component from a list of world objects"""
+		return [instance.get_component(component) for instance in instances]		
+
 	def filter_selectable(self, instances):
-		"""Only keeps relevant components from a list of worldobjects"""
-		return [ instance.get_component(SelectableComponent) for instance in instances \
-		         if self.is_selectable(instance) ]
+		"""Only keeps selectables from a list of worldobjects"""
+		return filter(self.is_selectable, instances)
+		#return [selectable.get_component(SelectableComponent) for selectable in selectables]
 
 	def filter_owner(self, instances):
 		"""Only keep instances belonging to the user. This is used for multiselection"""
@@ -170,6 +175,7 @@ class SelectionTool(NavigationTool):
 			instances = self.get_hover_instances(evt)
 			self.select_old = frozenset(self.session.selected_instances) if evt.isControlPressed() else frozenset()
 
+			instances = filter(self.is_selectable, instances)
 			#on single click only one building should be selected from the hover_instances
 			#the if is for [] and [single_item] cases (they crashed)
 			#it acts as user would expect (instances[0] selects buildings in front first)
@@ -213,11 +219,12 @@ class SelectionTool(NavigationTool):
 				instances = user_instances
 			else:
 				instances = [iter(instances).next()]
-
-		selectable = frozenset( self.filter_selectable(instances) )
+		selectable = frozenset( self.filter_component(SelectableComponent,
+							       self.filter_selectable(instances)))
 
 		# apply changes
-		selected_components = set(self.filter_selectable(self.session.selected_instances))
+		selected_components = set(self.filter_component(SelectableComponent, 
+					  self.filter_selectable(self.session.selected_instances)))
 		for sel_comp in selected_components - selectable:
 			sel_comp.deselect()
 		for sel_comp in selectable - selected_components:
