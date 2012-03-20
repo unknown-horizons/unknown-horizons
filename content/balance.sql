@@ -259,16 +259,6 @@ CREATE TABLE storage_building_capacity(type INT, size INT);
 INSERT INTO "storage_building_capacity" VALUES(1,30);
 INSERT INTO "storage_building_capacity" VALUES(2,10);
 INSERT INTO "storage_building_capacity" VALUES(4,0);
-CREATE TABLE health (
-	'id' INTEGER,
-	'max_health' INTEGER);
-INSERT INTO "health" VALUES(1000006,175);
-INSERT INTO "health" VALUES(1000005,250);
-INSERT INTO "health" VALUES(1000001,150);
-INSERT INTO "health" VALUES(1000004,80);
-INSERT INTO "health" VALUES(1000016,80);
-INSERT INTO "health" VALUES(1000020,200);
-INSERT INTO "health" VALUES(1000021,25);
 CREATE TABLE upgrade_material(level INT NOT NULL, production_line INT NOT NULL);
 INSERT INTO "upgrade_material" VALUES(1,24);
 INSERT INTO "upgrade_material" VALUES(2,35);
