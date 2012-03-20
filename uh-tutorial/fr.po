@@ -452,6 +452,9 @@ msgid ""
 "Companies work without being connected to the tents, so you don't need to "
 "build a road between the main square and e.g. your lumberjack tent."
 msgstr ""
+"Les entreprises fonctionnent sans être connectées aux tentes, donc vous "
+"n'avez pas besoin de construire une route entre la place centrale et par "
+"exemple la tente du bûcheron."
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:112
