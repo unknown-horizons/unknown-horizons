@@ -7,8 +7,8 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2012-03-02 04:09+0100\n"
-"PO-Revision-Date: 2012-03-07 02:47+0200\n"
-"Last-Translator: Sebastien (seblabel) <sebastiencharpentier@laposte.net>\n"
+"PO-Revision-Date: 2012-03-20 19:59+0200\n"
+"Last-Translator: ddr2 <ben547@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: fr\n"
 "MIME-Version: 1.0\n"
@@ -3192,7 +3192,7 @@ msgstr "Cultive des épices. Nécessite une ferme."
 #. name of buildings:stonemason
 #: horizons/i18n/objecttranslations.py:318
 msgid "Stonemason"
-msgstr ""
+msgstr "Tailleur de pierre"
 
 #. tooltip_text of buildings:stonemason
 #: horizons/i18n/objecttranslations.py:320
@@ -3317,18 +3317,20 @@ msgstr "Vigne"
 
 #. tooltip_text of buildings:vineyard
 #: horizons/i18n/objecttranslations.py:404
+#, fuzzy
 msgid "Produces grapes for use in wine and confectionery. Needs a farm."
 msgstr ""
+"Produit des raisins pour le vin et les confiseries. Nécessite une ferme."
 
 #. name of buildings:vintner
 #: horizons/i18n/objecttranslations.py:409
 msgid "Vintner"
-msgstr ""
+msgstr "Viticulteur"
 
 #. tooltip_text of buildings:vintner
 #: horizons/i18n/objecttranslations.py:411
 msgid "Produces wine out of grapes."
-msgstr ""
+msgstr "Produit du vin à partir de raisins."
 
 #. name of buildings:warehouse
 #: horizons/i18n/objecttranslations.py:416
@@ -3349,12 +3351,13 @@ msgstr "Transforme la laine en tissu."
 #. name of buildings:windmill
 #: horizons/i18n/objecttranslations.py:428
 msgid "Windmill"
-msgstr ""
+msgstr "Moulin à vent"
 
 #. tooltip_text of buildings:windmill
 #: horizons/i18n/objecttranslations.py:430
+#, fuzzy
 msgid "Grinds corn into flour."
-msgstr ""
+msgstr "Produit de la farine en moulinant des céréales. "
 
 #. name of buildings:woodentower
 #: horizons/i18n/objecttranslations.py:435
