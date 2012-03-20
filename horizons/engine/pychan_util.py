@@ -25,6 +25,17 @@ import functools
 from fife.extensions import pychan
 from horizons.gui.style import STYLES
 
+def handle_gcn_exception(e, msg=None):
+	"""Called for RuntimeErrors after gcn::exceptions that smell like guichan bugs.
+	@param e: RuntimeError (python, not pychan)
+	@param msg: additional info as string
+	"""
+	import traceback
+	traceback.print_exc()
+	print 'Caught RuntimeError on gui interaction, assuming irrelevant gcn::exception.'
+	if msg:
+		print msg
+
 def init_pychan():
 	"""General pychan initiation for uh"""
 	global STYLES
@@ -68,9 +79,7 @@ def init_pychan():
 					# only apply usable args, else it would crash when called through fife timers
 					pychan.tools.applyOnlySuitable(func, *args, **kwargs)
 				except RuntimeError as e:
-					import traceback
-					traceback.print_exc()
-					print 'Caught pychan RuntimeError on hide, assuming irrelevant gcn::exception.'
+					handle_gcn_exception(e)
 			return wrapper
 
 		widget.hide = patch_hide(widget.hide)

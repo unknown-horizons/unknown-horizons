@@ -37,6 +37,7 @@ from horizons.util.messaging.message import ResourceBarResize
 from horizons.extscheduler import ExtScheduler
 from horizons.world.component.ambientsoundcomponent import AmbientSoundComponent
 from horizons.util.lastactiveplayersettlementmanager import LastActivePlayerSettlementManager
+from horizons.engine.pychan_util import handle_gcn_exception
 
 
 class ResourceOverviewBar(object):
@@ -156,7 +157,11 @@ class ResourceOverviewBar(object):
 
 		# remove old gui
 		for i in self.gui:
-			i.hide()
+			try:
+				i.hide()
+			except RuntimeError as e:
+				# http://trac.unknown-horizons.org/t/ticket/1580
+				handle_gcn_exception(e)
 		self._hide_resource_selection_dialog()
 		self.gui = []
 
