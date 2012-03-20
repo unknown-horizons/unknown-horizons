@@ -48,25 +48,27 @@ class LastActivePlayerSettlementManager(object):
 		"""Update to new world position. Sets internal state to new settlement or no settlement"""
 		settlement = self.session.world.get_settlement(Point(int(round(current.x)), int(round(current.y))))
 
-		new_settlement = weakref.ref(settlement) if \
+		# set cityinfo for any settlement
+		# TODO: this will catch duplicate events, do it here rather to have it unified
+		# it will require a LastSettlementChanged event for all settlements and one for player settlements
+		self.session.ingame_gui.cityinfo_set(settlement)
+
+		# player-sensitive code
+		new_player_settlement = weakref.ref(settlement) if \
 		  settlement and settlement.owner.is_local_player else None
 
-		if self.get() is not (new_settlement() if new_settlement else new_settlement):
-			self._settlement = new_settlement
+		# check for any change
+		if self.get() is not (new_player_settlement() if new_player_settlement else new_player_settlement):
+			self._settlement = new_player_settlement
 			self.session.message_bus.broadcast(LastSettlementChanged(self))
 
-
-			# set cityinfo for any settlement
-			self.session.ingame_gui.cityinfo_set(settlement)
-
-			# set res info only if it's a player settlement
-			self.session.ingame_gui.resource_overview.set_inventory_instance(settlement)
+			# set res info (includes setting it to None)
+			self.session.ingame_gui.resource_overview.set_inventory_instance(self.get())
 
 	def get(self):
 		"""The last settlement belonging to the player the mouse has hovered above"""
-		ref = self._settlement
-		if ref is not None: # weakref
-			return ref()
+		if self._settlement is not None: # weakref
+			return self._settlement() # might still be None
 		else:
 			return None
 

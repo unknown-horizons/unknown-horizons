@@ -95,10 +95,13 @@ class BuildingTool(NavigationTool):
 		@param tiles_to_check: list of tiles to check for coloring."""
 		self._build_logic.highlight_buildable(self, tiles_to_check)
 
-		# also distinguish related buildings (lumberjack for tree)
+		# also distinguish inversely related buildings (lumberjack for tree)
+		# highlight their range at all times
+		# (there is another similar highlight, but it only marks building when
+		# the current build preview is in its range)
 		related = frozenset(self.session.db.get_inverse_related_building_ids(self._class.id))
 		renderer = self.session.view.renderer['InstanceRenderer']
-		if tiles_to_check is None:
+		if tiles_to_check is None: # first run, check all
 			buildings_to_select = [ buildings_to_select for\
 			                        settlement in self.session.world.settlements if \
 			                        settlement.owner.is_local_player for \
@@ -107,7 +110,7 @@ class BuildingTool(NavigationTool):
 
 			tiles = SelectableBuildingComponent.select_many(buildings_to_select, renderer)
 			self._related_buildings_selected_tiles = frozenset(tiles)
-		else:
+		else: # we don't need to check all
 			buildings_to_select = [ tile.object for tile in tiles_to_check if \
 			                        tile.object is not None and tile.object.id in related ]
 			for tile in tiles_to_check:
@@ -294,6 +297,7 @@ class BuildingTool(NavigationTool):
 					radius_only_on_island =  template['range_applies_only_on_island']
 				SelectableBuildingComponent.select_building(self.session, building.position, settlement, self._class.radius, radius_only_on_island)
 
+				# highlight directly related buildings (tree for lumberjacks)
 				if settlement is not None:
 					related = frozenset(self.session.db.get_related_building_ids(self._class.id))
 					checked = set() # already processed
@@ -327,7 +331,8 @@ class BuildingTool(NavigationTool):
 				self._modified_instances.add( weakref.ref(inst) )
 
 	def highlight_related_buildings(self, building, settlement):
-		"""Point out buildings that are relevant (e.g. lumberjacks when building trees)"""
+		"""Point out buildings that are inversly relevant (e.g. lumberjacks when building trees)
+		This is triggered on each preview change and highlights only those in range"""
 		# tuple for fast lookup with few elements
 		ids = tuple(self.session.db.get_inverse_related_building_ids(self._class.id))
 		if settlement is None or not ids: # nothing is related
