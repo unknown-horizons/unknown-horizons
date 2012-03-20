@@ -54,14 +54,18 @@ class SelectionTool(NavigationTool):
 		return [instance.get_component(component) for instance in instances]		
 
 	def filter_selectable(self, instances):
-		"""Only keeps selectables from a list of worldobjects"""
+		"""Only keeps selectables from a list of world objects"""
 		return filter(self.is_selectable, instances)
-		#return [selectable.get_component(SelectableComponent) for selectable in selectables]
+
+	def is_owned_by_player(self, instance):
+		"""Returns boolean if single world object is owned by local player"""
+		return instance.owner is not None and \
+			hasattr(instance.owner, "is_local_player") and \
+			instance.owner.is_local_player
 
 	def filter_owner(self, instances):
 		"""Only keep instances belonging to the user. This is used for multiselection"""
-		return [ i for i in instances if \
-		         i.owner is not None and hasattr(i.owner, "is_local_player") and i.owner.is_local_player ]
+		return [ i for i in instances if self.is_owned_by_player(i) ]
 
 	def fife_instance_to_uh_instance(self, instance):
 		"""Visual fife instance to uh game logic object or None"""
@@ -108,6 +112,14 @@ class SelectionTool(NavigationTool):
 			# get selection components
 			instances = ( self.fife_instance_to_uh_instance(i) for i in instances )
 			instances = [ i for i in instances if i is not None ]
+
+			#we only consider selectable items when dragging a selection box
+			instances = self.filter_selectable(instances)
+
+			#if there's at least one of player unit, we don't select any enemies
+			#applies both to buildings and ships
+			if( any((self.is_owned_by_player(instance) for instance in instances))):
+				instances = self.filter_owner(instances)
 
 			self._update_selection( instances, do_multi )
 
@@ -219,8 +231,7 @@ class SelectionTool(NavigationTool):
 				instances = user_instances
 			else:
 				instances = [iter(instances).next()]
-		selectable = frozenset( self.filter_component(SelectableComponent,
-							       self.filter_selectable(instances)))
+		selectable = frozenset( self.filter_component(SelectableComponent, instances))
 
 		# apply changes
 		selected_components = set(self.filter_component(SelectableComponent, 
