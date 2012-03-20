@@ -170,11 +170,6 @@ class SelectionTool(NavigationTool):
 			instances = self.get_hover_instances(evt)
 			self.select_old = frozenset(self.session.selected_instances) if evt.isControlPressed() else frozenset()
 
-			#on single click only one building should be selected from the hover_instances
-			#the if is for [] and [single_item] cases (they crashed)
-			#it seems to act as user would expect (instances[0] selects building "in front" first)
-			instances = instances if len(instances) <= 1 else [instances[0]]
-
 			self._update_selection(instances)
 
 			self.select_begin = (evt.getX(), evt.getY())
