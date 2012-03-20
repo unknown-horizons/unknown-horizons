@@ -28,7 +28,7 @@ from horizons.util import WorldObject
 from horizons.util.lastactiveplayersettlementmanager import LastActivePlayerSettlementManager
 from horizons.constants import LAYERS
 
-from fife.extensions.pychan import widgets
+from fife.extensions.pychan.widgets import Icon
 
 class NavigationTool(CursorTool):
 	"""Navigation Class to process mouse actions ingame"""
@@ -62,9 +62,7 @@ class NavigationTool(CursorTool):
 				self.cursor_tool = cursor_tool
 				self.enabled = False
 
-				# can't import Icon directly since it won't have tooltips
-				# TODO: find a way to make this obvious
-				self.icon = widgets.WIDGETS['Icon']()
+				self.icon = Icon()
 
 			def toggle(self):
 				self.enabled = not self.enabled

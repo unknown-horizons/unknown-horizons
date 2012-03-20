@@ -22,8 +22,7 @@
 import logging
 import weakref
 
-from fife.extensions.pychan.widgets import Container, Icon
-from fife.extensions.pychan import widgets
+from fife.extensions.pychan.widgets import Container, Icon, ImageButton
 
 import horizons.main
 from horizons.util.gui import load_uh_widget
@@ -80,7 +79,7 @@ class TabWidget(object):
 			tab.add_remove_listener(Callback(on_tab_removal, weakref.ref(self)))
 			container = Container(name="container_%s" % index)
 			background = Icon(name="bg_%s" % index)
-			button = widgets.WIDGETS['ImageButton'](name=str(index))
+			button = ImageButton(name=str(index))
 			if self.current_tab is tab:
 				background.image = tab.button_background_image_active
 				button.up_image = tab.button_active_image

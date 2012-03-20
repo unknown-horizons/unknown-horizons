@@ -23,7 +23,7 @@ from fife import fife
 
 from horizons.constants import LAYERS, BUILDINGS
 from horizons.world.building.building import BasicBuilding
-from horizons.world.building.buildable import BuildableLine, BuildableSingle
+from horizons.world.building.buildable import BuildableLine
 from horizons.scheduler import Scheduler
 from horizons.world.componentholder import ComponentHolder
 
@@ -86,16 +86,3 @@ class Path(ComponentHolder):
 class Road(Path, BasicBuilding, BuildableLine):
 	"""Actual buildable road."""
 	layer = LAYERS.FIELDS
-
-class Bridge(BasicBuilding, BuildableSingle):
-	layer = LAYERS.FIELDS
-
-	"""
-	duplicate code from Path; also, this building is unused
-	def init(self):
-		super(Bridge, self).init()
-		origin = self.position.origin
-		for tile in self.island.get_surrounding_tiles(origin):
-			if tile is not None and self.island.path_nodes.is_road(tile.x, tile.y):
-				tile.object.recalculate_orientation()
-	"""

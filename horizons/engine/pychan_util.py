@@ -21,10 +21,20 @@
 # ###################################################
 
 import functools
-import new
 
 from fife.extensions import pychan
 from horizons.gui.style import STYLES
+
+def handle_gcn_exception(e, msg=None):
+	"""Called for RuntimeErrors after gcn::exceptions that smell like guichan bugs.
+	@param e: RuntimeError (python, not pychan)
+	@param msg: additional info as string
+	"""
+	import traceback
+	traceback.print_exc()
+	print 'Caught RuntimeError on gui interaction, assuming irrelevant gcn::exception.'
+	if msg:
+		print msg
 
 def init_pychan():
 	"""General pychan initiation for uh"""
@@ -60,7 +70,7 @@ def init_pychan():
 		pychan.manager.addStyle(name, stylepart)
 
 	# patch default widgets
-	for name, widget in pychan.widgets.WIDGETS.items()[:]:
+	for name, widget in pychan.widgets.WIDGETS.items():
 
 		def patch_hide(func):
 			@functools.wraps(func)
@@ -69,44 +79,28 @@ def init_pychan():
 					# only apply usable args, else it would crash when called through fife timers
 					pychan.tools.applyOnlySuitable(func, *args, **kwargs)
 				except RuntimeError as e:
-					import traceback
-					traceback.print_exc()
-					print 'Caught pychan RuntimeError on hide, assuming irrelevant gcn::exception.'
+					handle_gcn_exception(e)
 			return wrapper
 
 		widget.hide = patch_hide(widget.hide)
 
 		# support for tooltips via helptext attribute
 		if any( attr.name == "helptext" for attr in widget.ATTRIBUTES ):
+			# Copy everything we need from the tooltip class (manual mixin).
+			# TODO Figure out if it is safe to use this instead:
+			#widget.__bases__ += (_Tooltip, )
+			for key, value in _Tooltip.__dict__.iteritems():
+				if not key.startswith("__"):
+					setattr(widget, key, value)
 
-			# create a new class with a custom __init__, so tooltips are initalized
+			def patch(func):
+				@functools.wraps(func)
+				def wrapper(self, *args, **kwargs):
+					func(self, *args, **kwargs)
+					self.init_tooltip()
+				return wrapper
 
-			klass_name =  str(widget)+" with tooltip hack (see horizons/engine/pychan_util.py"
-			klass = type(klass_name, (widget, ), {})
-
-			def __init__(self, *args, **kwargs):
-				# this is going to look a bit weird
-
-				# remove all traces of this code ever existing (would confuse pychan badly, don't try to create own widgets)
-				self.__class__ = self.__class__.__mro__[1]
-				# manually copy everything we need from the tooltip class
-				for key, value in _Tooltip.__dict__.iteritems():
-					if not key.startswith("__"): # not the internals
-						if callable( value ):
-							value =  new.instancemethod(value, self)
-
-					# put it in the instance dict, not the class dict
-					self.__dict__[key] = value
-
-				# call real init (no super, since we are already in the super class
-				self.__init__(*args, **kwargs)
-
-				self.init_tooltip()
-
-			klass.__init__ = __init__
-
-			# register this new class in pychan
-			pychan.widgets.WIDGETS[name] = klass
+			widget.__init__ = patch(widget.__init__)
 
 
 	# NOTE: there is a bug with the tuple notation: http://fife.trac.cvsdude.com/engine/ticket/656
