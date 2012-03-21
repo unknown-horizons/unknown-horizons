@@ -49,14 +49,13 @@ class Minimap(object):
 	** Handle clicks, remove overlay icon
 	"""
 	COLORS = { "island": (137, 117,  87),
-				     "cam":    (  1,   1,   1),
-	           "water" : (198, 188, 165),
-	           "highlight" : (255, 0, 0), # for events
-	           }
+		"cam":    (  1,   1,   1),
+		"water" : (198, 188, 165),
+		"highlight" : (255, 0, 0), # for events
+		}
 
 
 	WAREHOUSE_IMAGE = "content/gui/icons/resources/16/placeholder.png"
-	SHIP_IMAGE = "content/gui/icons/minimap/ship.png"
 	SHIP_NEUTRAL = "content/gui/icons/minimap/ship_neutral.png"
 	SHIP_PIRATE = "content/gui/icons/minimap/pirate.png"
 
@@ -122,7 +121,7 @@ class Minimap(object):
 		self._image_size_cache = {} # internal detail
 
 		self.imagemanager = imagemanager
-
+		
 		self.minimap_image = _MinimapImage(self, targetrenderer)
 
 		#import random
@@ -544,8 +543,7 @@ class Minimap(object):
 
 	def _timed_update(self, force=False):
 		"""Regular updates for domains we can't or don't want to keep track of."""
-		# update ship dots
-		# OPTIMISATION NOTE: there can be pretty many ships, don't rely on the inner loop being rarely executed
+		# update ship icons
 		self.minimap_image.set_drawing_enabled()
 		render_name = self._get_render_name("ship")
 		self.minimap_image.rendertarget.removeAll( render_name )
@@ -556,16 +554,21 @@ class Minimap(object):
 
 			coord = self._world_to_minimap( ship().position.to_tuple(), use_rotation )
 			color = ship().owner.color.to_tuple()
-			
 			# set correct icon
 			if ship().owner is self.session.world.pirate:
 				self._update_image( self.__class__.SHIP_PIRATE, render_name, coord)
 			elif ship().owner is self.session.world.trader:
 				self._update_image( self.__class__.SHIP_NEUTRAL, render_name, coord)
-			else:
-				# TODO: apply color
-				self._update_image( self.__class__.SHIP_IMAGE, render_name, coord)
-			
+			else: 
+				ship_icon = self.imagemanager.load(self.__class__.SHIP_NEUTRAL)
+				self.minimap_image.rendertarget.addImage(render_name, fife.Point(coord[0], coord[1]), ship_icon)
+				# add the 'flag' over the ship icon, with the color of the owner
+				self.minimap_image.rendertarget.addLine(render_name, fife.Point(coord[0] - 5, coord[1] - 5),\
+									fife.Point(coord[0], coord[1] - 5), color[0], color[1], color[2])
+				self.minimap_image.rendertarget.addLine(render_name, fife.Point(coord[0] - 6, coord[1] - 6),\
+									fife.Point(coord[0], coord[1] - 6), color[0], color[1], color[2])
+				self.minimap_image.rendertarget.addLine(render_name, fife.Point(coord[0] - 4, coord[1] - 4),\
+									fife.Point(coord[0], coord[1] - 4), color[0], color[1], color[2])
 			# TODO: nicer selected view
 			if ship() in self.session.selected_instances:
 				self.minimap_image.rendertarget.addPoint(render_name,
