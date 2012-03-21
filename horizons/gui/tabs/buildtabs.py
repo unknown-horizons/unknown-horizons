@@ -173,8 +173,7 @@ class BuildTab(TabInterface):
 			icon = self.widget.child_finder('icon_{position}'.format(position=position))
 
 			#xgettext:python-format
-			button.helptext = _('{building}: {description}').format(building = _(building.name),
-			                                                    description = _(building.tooltip_text))
+			button.helptext = self.session.db.get_building_tooltip(building_id)
 
 			enough_res = False # don't show building by default
 			if settlement is not None: # settlement is None when the mouse has left the settlement
