@@ -44,8 +44,6 @@ class Ship(Unit):
 	health_bar_y = -150
 	is_ship = True
 
-	has_health = True
-
 	in_ship_map = True # (#1023)
 
 	def __init__(self, x, y, **kwargs):
@@ -201,7 +199,6 @@ class PirateShip(Ship):
 class TradeShip(Ship):
 	"""Represents a trade ship."""
 	health_bar_y = -220
-	has_health = False
 
 	def __init__(self, x, y, **kwargs):
 		super(TradeShip, self).__init__(x, y, **kwargs)
@@ -213,8 +210,6 @@ class FisherShip(FisherShipCollector, Ship):
 	"""Represents a fisher ship."""
 	pather_class = FisherShipPather
 	health_bar_y = -50
-
-	has_health = False
 
 	in_ship_map = False # (#1023)
 
