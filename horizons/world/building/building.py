@@ -73,7 +73,6 @@ class BasicBuilding(ComponentHolder, ConcreteObject):
 
 		assert self.settlement is None or isinstance(self.settlement, Settlement)
 
-
 	def __pre_init(self, owner, rotation, origin, level=None):
 		"""Here we face the awkward situation of requiring a forth init function.
 		It is called like __init, but before other parts are inited via super().
@@ -145,10 +144,11 @@ class BasicBuilding(ComponentHolder, ConcreteObject):
 	def load(self, db, worldid):
 		self.island, self.settlement = self.load_location(db, worldid)
 		x, y, location, rotation, level = db.get_building_row(worldid)
-
 		owner_id = db.get_settlement_owner(location)
 		owner = None if owner_id is None else WorldObject.get_object_by_id(owner_id)
-		self.__pre_init(owner, rotation, Point(x, y))
+
+		# early init before super() call
+		self.__pre_init(owner, rotation, Point(x, y), level=level)
 
 		super(BasicBuilding, self).load(db, worldid)
 

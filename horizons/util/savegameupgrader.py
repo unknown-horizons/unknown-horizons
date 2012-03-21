@@ -95,6 +95,11 @@ class SavegameUpgrader(object):
 			db("INSERT INTO storage_slot_limit (object, slot, value) VALUES (?, ?, ?)",
 			   obj, 42, 6)
 
+	def _upgrade_to_rev56(self, db):
+		db("CREATE TABLE \"last_active_settlement\" ( type STRING NOT NULL, value INTEGER NOT NULL )")
+		db("INSERT INTO last_active_settlement(type, value) VALUES(?, ?)", "LAST_NONE_FLAG", False)
+
+
 	def _upgrade(self):
 		# fix import loop
 		from horizons.savegamemanager import SavegameManager
@@ -126,6 +131,9 @@ class SavegameUpgrader(object):
 				self._upgrade_to_rev54(db)
 			if rev < 55:
 				self._upgrade_to_rev55(db)
+			if rev < 56:
+				self._upgrade_to_rev56(db)
+
 
 			db('COMMIT')
 			db.close()

@@ -145,8 +145,20 @@ class NavigationTool(CursorTool):
 		evt.consume()
 
 	def onCommand(self, command):
-		if command.getCommandType() == fife.CMD_APP_ICONIFIED or command.getCommandType() == fife.CMD_INPUT_FOCUS_LOST:
-			self.session.view.autoscroll(0, 0) #stop autoscroll
+		"""Called when some kind of command-event happens.
+		For "documentation", see:
+		engine/core/eventchannel/command/ec_commandids.h
+		engine/core/eventchannel/eventmanager.cpp
+		in fife.
+		It's usually about mouse/keyboard focus or window being iconified/restored.
+		"""
+		STOP_SCROLLING_ON = (fife.CMD_APP_ICONIFIED,
+		                     fife.CMD_MOUSE_FOCUS_LOST,
+		                     fife.CMD_INPUT_FOCUS_LOST)
+		if command.getCommandType() in STOP_SCROLLING_ON:
+			# a random, unreproducible crash has session set to None. Check because it doesn't hurt.
+			if self.session is not None:
+				self.session.view.autoscroll(0, 0) # stop autoscroll
 
 	def get_hover_instances(self, evt, layers=None):
 		"""

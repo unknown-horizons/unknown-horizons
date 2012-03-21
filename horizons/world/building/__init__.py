@@ -50,6 +50,7 @@ class BuildingClass(IngameType):
 
 		self.settler_level = yaml_data['settler_level']
 		try:
+			# NOTE: tooltip texts are always untranslated here, use db.get_building_tooltip()
 			self.tooltip_text = object_translations[yaml_data['yaml_file']]['tooltip_text']
 		except KeyError: # not found => use value defined in yaml unless it is null
 			tooltip_text = yaml_data['tooltip_text']

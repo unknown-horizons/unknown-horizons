@@ -323,6 +323,8 @@ class Session(LivingObject):
 		# Set cursor correctly, menus might need to be opened.
 		# Open menus later, they may need unit data not yet inited
 		self.cursor.apply_select()
+		if self.is_game_loaded():
+			LastActivePlayerSettlementManager().load(savegame_db)
 
 		Scheduler().before_ticking()
 		savegame_db.close()
@@ -512,6 +514,7 @@ class Session(LivingObject):
 			self.view.save(db)
 			self.ingame_gui.save(db)
 			self.scenario_eventhandler.save(db)
+			LastActivePlayerSettlementManager().save(db)
 
 			for instance in self.selected_instances:
 				db("INSERT INTO selected(`group`, id) VALUES(NULL, ?)", instance.worldid)

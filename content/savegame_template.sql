@@ -103,4 +103,10 @@ CREATE TABLE "disaster_manager" (
 	remaining_ticks INTEGER NOT NULL -- manager ticks. will only contain one row.
 );
 
+CREATE TABLE "last_active_settlement" (
+	type STRING NOT NULL,
+	value INTEGER NOT NULL
+);
+
+
 COMMIT;
