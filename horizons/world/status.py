@@ -67,7 +67,7 @@ class StatusIcon(object):
 class FireStatusIcon(StatusIcon):
 	# threshold is the inhabitants decrease level
 	def __init__(self, instance):
-		super(FireStatusIcon, self).__init__( 1700, "as_on_fire+idle+45", instance)
+		super(FireStatusIcon, self).__init__( 3000, "as_on_fire+idle+45", instance)
 
 class SettlerUnhappyStatus(StatusIcon):
 	# threshold is the inhabitants decrease level
@@ -89,6 +89,5 @@ class ProductivityLowStatus(StatusIcon):
 		super(ProductivityLowStatus, self).__init__( 400, "as_attention_please+idle+45", instance)
 
 class DecommissionedStatus(StatusIcon):
-	"""Terminology: productiviy = capacity utilisation"""
 	def __init__(self, instance):
 		super(DecommissionedStatus, self).__init__( 800, "as_decommissioned+idle+45", instance)
