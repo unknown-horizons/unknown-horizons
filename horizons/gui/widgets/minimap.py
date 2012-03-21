@@ -562,7 +562,7 @@ class Minimap(object):
 				ship_icon_path = self.__class__.SHIP_NEUTRAL
 			ship_icon = self.imagemanager.load(ship_icon_path)
 			self.minimap_image.rendertarget.addImage(render_name, fife.Point(coord[0], coord[1]), ship_icon)
-			if ship().owner is not self.session.world.trader:
+			if ship().owner.regular_player is True:
 				# add the 'flag' over the ship icon, with the color of the owner
 				self.minimap_image.rendertarget.addLine(render_name, fife.Point(coord[0] - 5, coord[1] - 5),\
 									fife.Point(coord[0], coord[1] - 5), color[0], color[1], color[2])
