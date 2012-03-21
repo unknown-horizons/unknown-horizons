@@ -199,7 +199,7 @@ class MPManager(LivingObject):
 	def calculate_hash_tick(self, tick):
 		return tick + self.HASHDELAY
 
-	def execute(self, command, local = False):
+	def execute(self, command, local=False):
 		"""Receive commands to be executed from local player
 		@param command: Command instance
 		@param local: commands that don't need to be sent over the wire"""

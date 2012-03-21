@@ -474,6 +474,8 @@ class BuildingTool(NavigationTool):
 			# actually do the build
 			changed_tiles = self.do_build()
 			found_buildable = bool(changed_tiles)
+			if found_buildable:
+				PlaySound("build").execute(self.session, local=True)
 
 			# HACK: users sometimes don't realise that roads can be dragged
 			# check if 3 roads have been built within 1.2 seconds, and display
@@ -569,10 +571,6 @@ class BuildingTool(NavigationTool):
 						  building.position.origin.x, building.position.origin.y,
 						  'NEED_MORE_RES', {'resource' : _(res_name)})
 
-		if changed_tiles:
-			PlaySound("build").execute(self.session, True)
-			if self.gui is not None:
-				self.gui.hide()
 		self.buildings = []
 		self.buildings_action_set_ids = []
 		return changed_tiles
