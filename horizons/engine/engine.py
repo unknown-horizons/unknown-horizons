@@ -223,7 +223,8 @@ class Fife(ApplicationBase):
 	def get_locale(self):
 		for locale_code, langname in LANGUAGENAMES.items():
 			if langname == self.get_uh_setting('Language'):
-				return locale_code
+				if not langname == 'System default':
+					return locale_code
 		default_locale, default_encoding = locale.getdefaultlocale()
 		try:
 			return default_locale.split('_')[0]
