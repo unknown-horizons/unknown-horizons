@@ -92,8 +92,12 @@ class LastActivePlayerSettlementManager(object):
 			self.session.message_bus.broadcast(NewPlayerSettlementHovered(self, settlement))
 		self._last_player_settlement_hovered_was_none = (new_player_settlement is None)
 
-	def get(self):
-		"""The last settlement belonging to the player the mouse has hovered above"""
+	def get(self, get_current_pos=False):
+		"""The last settlement belonging to the player the mouse has hovered above.
+		@param get_current_pos: get current position even if it's None
+		"""
+		if get_current_pos and self._last_player_settlement_hovered_was_none:
+			return None
 		return resolve_weakref(self._last_player_settlement)
 
 	def _on_scroll(self):

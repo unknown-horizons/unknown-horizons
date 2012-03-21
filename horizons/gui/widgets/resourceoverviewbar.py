@@ -264,12 +264,15 @@ class ResourceOverviewBar(object):
 	def close_construction_mode(self, update_slots=True):
 		"""Return to normal configuration"""
 		self.construction_mode = False
-		if update_slots:
+		if update_slots: # cleanup
 			self.set_inventory_instance(None)
 		self._reset_gold_gui()
 		self._update_gold()
 		self.gold_gui.show()
 		self._update_gold(force=True)
+
+		# reshow last settlement
+		self.set_inventory_instance( LastActivePlayerSettlementManager().get(get_current_pos=True) )
 
 	def _reset_gold_gui(self):
 		if self.gold_gui is not None:
