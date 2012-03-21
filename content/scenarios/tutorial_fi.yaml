@@ -700,12 +700,29 @@ events:
   - arguments:
     - [Headline, "EI TEHT\xC4VI\xC4 J\xC4LJELL\xC4"]
     - [Image, content/gui/images/background/hr.png]
-    - "Mit\xE4\xE4n teht\xE4vi\xE4 ei ole en\xE4\xE4 j\xE4ljell\xE4.\n\nJos sinulle\
-      \ j\xE4i t\xE4st\xE4 harjoituspelist\xE4 jotain sanottavaa, kuten parannettavaa,\
-      \ moitittavaa, poistettavaa tai kehuttavaa, kerro se meille:\n\nwww.unknown-horizons.org\n\
-      \n#unknown-horizons @ irc.freenode.net\n\nteam@unknown-horizons.org\n\nMy\xF6\
-      s keskustelualueemme ovat aina avoinna sinulle!\n\nParhaat tulokset ovat tulleet\
-      \ IRC-kanaviltamme, joten kokeile niit\xE4 ensimm\xE4isen\xE4 (-;"
+    - !!python/unicode 'You have successfully completed all tasks that were handed
+      to you. The world is now at your command, waiting for your free aspirations
+      and brave explorations!
+
+
+      If you have any suggestions on what we could or should improve, add or leave
+      out:
+
+
+      www.unknown-horizons.org
+
+
+      #unknown-horizons @ irc.freenode.net
+
+
+      team@unknown-horizons.org
+
+
+      Our forums are open to you as well!
+
+
+      The best results until now were achieved by joining our IRC channel, so you
+      could try that out first (-;'
     - [Pagebreak]
     - [Headline, !!python/unicode 'Suuret kiitokset!']
     - [Image, content/gui/images/background/hr.png]
@@ -749,6 +766,6 @@ events:
     type: var_gt
 locale: fi
 mapfile: development.sqlite
-translation_status: 38 translated messages, 2 fuzzy translations, 145 untranslated
+translation_status: 37 translated messages, 2 fuzzy translations, 152 untranslated
   messages.
 

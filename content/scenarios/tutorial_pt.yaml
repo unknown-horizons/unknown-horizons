@@ -696,12 +696,29 @@ events:
   - arguments:
     - [Headline, "NENHUMA TAREFA DISPON\xCDVEL"]
     - [Image, content/gui/images/background/hr.png]
-    - "N\xE3o resta nada para fazer agora.\n\nSe tiveres alguma sugest\xE3o em algo\
-      \ que possamos adicionar ou melhorar, contacta-nos:\n\nwww.unknown-horizons.org\n\
-      \n#unknown-horizons @ irc.freenode.net\n\nteam@unknown-horizons.org\n\nTemos\
-      \ f\xF3rums dispon\xEDveis se preferires!\n\nOs melhores resultados at\xE9 agora\
-      \ foram obtidos atrav\xE9s do nosso canal de IRC, recomendamos essa aproxima\xE7\
-      \xE3o primeiro (-;"
+    - !!python/unicode 'You have successfully completed all tasks that were handed
+      to you. The world is now at your command, waiting for your free aspirations
+      and brave explorations!
+
+
+      If you have any suggestions on what we could or should improve, add or leave
+      out:
+
+
+      www.unknown-horizons.org
+
+
+      #unknown-horizons @ irc.freenode.net
+
+
+      team@unknown-horizons.org
+
+
+      Our forums are open to you as well!
+
+
+      The best results until now were achieved by joining our IRC channel, so you
+      could try that out first (-;'
     - [Pagebreak]
     - [Headline, !!python/unicode 'Obrigado!']
     - [Image, content/gui/images/background/hr.png]
@@ -745,5 +762,5 @@ events:
     type: var_gt
 locale: pt
 mapfile: development.sqlite
-translation_status: 51 translated messages, 134 untranslated messages.
+translation_status: 50 translated messages, 141 untranslated messages.
 

@@ -595,14 +595,13 @@ CREATE TABLE settler_level (
     "level" INT NOT NULL DEFAULT (''),
     "name" TEXT NOT NULL DEFAULT (''),
     "tax_income" INT NOT NULL DEFAULT (''),
-    "inhabitants_max" INT
-, "residential_name" TEXT   DEFAULT (''));
-INSERT INTO "settler_level" VALUES(0,'sailor',3,2,'tent');
-INSERT INTO "settler_level" VALUES(1,'pioneer',6,3,'hut');
-INSERT INTO "settler_level" VALUES(2,'settler',10,5,'house');
-INSERT INTO "settler_level" VALUES(3,'citizen',15,8,'stone house');
-INSERT INTO "settler_level" VALUES(4,'merchant',21,13,'estate');
-INSERT INTO "settler_level" VALUES(5,'aristocrat',28,21,'manor');
+    "inhabitants_max" INT);
+INSERT INTO "settler_level" VALUES(0,'sailor',3,2);
+INSERT INTO "settler_level" VALUES(1,'pioneer',6,3);
+INSERT INTO "settler_level" VALUES(2,'settler',10,5);
+INSERT INTO "settler_level" VALUES(3,'citizen',15,8);
+INSERT INTO "settler_level" VALUES(4,'merchant',21,13);
+INSERT INTO "settler_level" VALUES(5,'aristocrat',28,21);
 CREATE TABLE status_icon_exclusions (
     "object_type" INT NOT NULL DEFAULT (''));
 INSERT INTO "status_icon_exclusions" VALUES(17);

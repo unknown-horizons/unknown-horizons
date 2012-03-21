@@ -82,5 +82,11 @@ class WorldObjectDeleted(Message):
 	arguments = ('worldid', )
 
 
-class LastSettlementChanged(Message):
-	"""Sent when the ListActiveSettlementManager changes its last selected settlement"""
+class NewPlayerSettlementHovered(Message):
+	"""Sent when the mouse hovers over a different settlement than before,
+	and it belongs to the local player or is None."""
+	arguments = ('settlement', )
+
+class HoverSettlementChanged(Message):
+	"""Sent when hovering over any different settlement, or no settlement."""
+	arguments = ('settlement', )

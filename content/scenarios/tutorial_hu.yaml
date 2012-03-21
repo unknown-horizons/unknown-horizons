@@ -704,7 +704,9 @@ events:
   - arguments:
     - [Headline, "Nincs feladat h\xE1tra"]
     - [Image, content/gui/images/background/hr.png]
-    - !!python/unicode 'There is nothing left to do now.
+    - !!python/unicode 'You have successfully completed all tasks that were handed
+      to you. The world is now at your command, waiting for your free aspirations
+      and brave explorations!
 
 
       If you have any suggestions on what we could or should improve, add or leave
@@ -768,6 +770,6 @@ events:
     type: var_gt
 locale: hu
 mapfile: development.sqlite
-translation_status: 36 translated messages, 2 fuzzy translations, 147 untranslated
+translation_status: 36 translated messages, 2 fuzzy translations, 153 untranslated
   messages.
 

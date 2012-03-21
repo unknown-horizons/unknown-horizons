@@ -45,7 +45,7 @@ from horizons.command.game import SpeedDownCommand, SpeedUpCommand
 from horizons.gui.tabs.tabinterface import TabInterface
 from horizons.world.component.namedcomponent import SettlementNameComponent, NamedComponent
 from horizons.world.component.selectablecomponent import SelectableComponent
-from horizons.util.messaging.message import SettlerUpdate, SettlerInhabitantsChanged, ResourceBarResize
+from horizons.util.messaging.message import SettlerUpdate, SettlerInhabitantsChanged, ResourceBarResize, HoverSettlementChanged
 
 class IngameGui(LivingObject):
 	"""Class handling all the ingame gui events.
@@ -139,7 +139,7 @@ class IngameGui(LivingObject):
 		self.widgets['tooltip'].hide()
 
 		self.resource_overview = ResourceOverviewBar(self.session)
-		self.session.message_bus.subscribe_globally( ResourceBarResize, self._on_resourcebar_resize )
+		self.session.message_bus.subscribe_globally(ResourceBarResize, self._on_resourcebar_resize)
 
 		# map buildings to build functions calls with their building id.
 		# This is necessary because BuildTabs have no session.
@@ -150,6 +150,7 @@ class IngameGui(LivingObject):
 		# Register for messages
 		self.session.message_bus.subscribe_globally(SettlerUpdate, self._on_settler_level_change)
 		self.session.message_bus.subscribe_globally(SettlerInhabitantsChanged, self._on_settler_inhabitant_change)
+		self.session.message_bus.subscribe_globally(HoverSettlementChanged, self._cityinfo_set)
 
 	def _on_resourcebar_resize(self, message):
 		###
@@ -180,21 +181,24 @@ class IngameGui(LivingObject):
 		self.resource_overview = None
 		self.hide_menu()
 		self.session.message_bus.unsubscribe_globally(SettlerUpdate, self._on_settler_level_change)
+		self.session.message_bus.unsubscribe_globally(ResourceBarResize, self._on_resourcebar_resize)
+		self.session.message_bus.unsubscribe_globally(HoverSettlementChanged, self._cityinfo_set)
+		self.session.message_bus.unsubscribe_globally(SettlerInhabitantsChanged, self._on_settler_inhabitant_change)
+
 		super(IngameGui, self).end()
 
-	def cityinfo_set(self, settlement):
+	def _cityinfo_set(self, message):
 		"""Sets the city name at top center of screen.
 
 		Show/Hide is handled automatically
 		To hide cityname, set name to ''
-		@param settlement: Settlement class providing the information needed
+		@param message: HoverSettlementChanged message
 		"""
+		settlement = message.settlement
 		old_was_player_settlement = False
-		if settlement is self.settlement:
-			return
 		if self.settlement is not None:
 			self.settlement.remove_change_listener(self.update_settlement)
-			old_was_player_settlement = self.settlement.owner == self.session.world.player
+			old_was_player_settlement = (self.settlement.owner == self.session.world.player)
 
 		# save reference to new "current" settlement in self.settlement
 		self.settlement = settlement

@@ -24,7 +24,7 @@ events:
     - ''
     - "Voici votre journal de bord o\xF9 toute information importante est stock\xE9\
       e. Un court rappel de chaque t\xE2che sera visible sur le cot\xE9 gauche de\
-      \ l'\xE9cran"
+      \ l'\xE9cran."
     - !!python/unicode 'Si vous voulez une plus ample description, votre journal vous
       fournira toute l''aide dont vous aurez besoin.'
     - "Apr\xE8s avoir ferm\xE9 ce journal, il peut \xEAtre r\xE9ouvert avec l'ic\xF4\
@@ -40,8 +40,9 @@ events:
     - [Pagebreak]
     - "\nPour toute suggestion sur une meilleure r\xE9daction, une explication, ou\
       \ pour nous rapporter un bug : N'h\xE9sitez pas \xE0 nous contacter et nous\
-      \ essaierons d'am\xE9liorer ce didacticiel!"
-    - "\nVisitez www.unknown-horizons.org pour savoir comment contacter l'\xE9quipe!"
+      \ essaierons d'am\xE9liorer ce didacticiel !"
+    - "\nVisitez www.unknown-horizons.org pour savoir comment contacter l'\xE9quipe\
+      \ !"
     - "Et maintenant, commen\xE7ons la partie."
     - [Pagebreak]
     - [Headline, "MISSION\_: COLONISER UNE \xCELE"]
@@ -87,7 +88,7 @@ events:
       timents complexes."
     - "Maintenant construisez un camp de b\xFBcheron dans une zone bois\xE9e."
     - "Vous pourrez aussi planter des arbres plus tard - mais cela vous co\xFBtera\
-      \ de l'argent. Utilisez ce que la nature vous offre!"
+      \ de l'argent. Utilisez ce que la nature vous offre !"
     - "Une entreprise n\xE9cessite une route menant \xE0 un d\xE9p\xF4t ou un comptoir,\
       \ autrement les biens produits y resteront et ne seront pas collect\xE9s."
     - "Vous devez donc construire un sentier entre votre comptoir (ou votre d\xE9\
@@ -174,9 +175,9 @@ events:
     - !!python/unicode 'You should avoid placing your main settlement tents too close
       to your lumberjacks because building tents will clear away the trees that your
       lumberjack needs to produce boards.'
-    - !!python/unicode 'Companies work without being connected to the tents, so you
-      don''t need to build a road between the main square and e.g. your lumberjack
-      tent.'
+    - "Les entreprises fonctionnent sans \xEAtre connect\xE9es aux tentes, donc vous\
+      \ n'avez pas besoin de construire une route entre la place centrale et par exemple\
+      \ la tente du b\xFBcheron."
     - !!python/unicode '
 
       MISSION : Construire une place centrale.'
@@ -485,7 +486,7 @@ events:
       buildings since it will need some space around it to work well.'
     - !!python/unicode '
 
-      TASK: Build a farm.'
+      MISSION: Construire une ferme.'
     - - Gallery
       - [content/gui/icons/buildmenu/020.png]
     type: logbook
@@ -670,27 +671,33 @@ events:
   - arguments:
     - [Headline, "AUCUNE\_MISSION\_RESTANTE"]
     - [Image, content/gui/images/background/hr.png]
-    - "Il ne reste plus rien \xE0 faire pour l'instant.\n\nSi vous avez des propositions\
-      \ sur ce que nous pourrions am\xE9liorer, ajouter ou enlever\_:\n\nwww.unknown-horizons.org\n\
-      \n#unknown-horizons @ irc.freenode.net\n\nteam@unknown-horizons.org\n\nNos forums\
-      \ vous sont \xE9galement accessibles\_!\n\nJusqu'\xE0 pr\xE9sent, le canal IRC\
-      \ est le meilleur moyen de nous joindre, essayez donc cela en premier ;-) \n\
-      \nDans l'int\xE9r\xEAt des autres participants aux conversations et qui ne parlent\
-      \ peut-\xEAtre pas le fran\xE7ais, nous vous prions de parler anglais dans le\
-      \ chat."
+    - !!python/unicode 'You have successfully completed all tasks that were handed
+      to you. The world is now at your command, waiting for your free aspirations
+      and brave explorations!
+
+
+      If you have any suggestions on what we could or should improve, add or leave
+      out:
+
+
+      www.unknown-horizons.org
+
+
+      #unknown-horizons @ irc.freenode.net
+
+
+      team@unknown-horizons.org
+
+
+      Our forums are open to you as well!
+
+
+      The best results until now were achieved by joining our IRC channel, so you
+      could try that out first (-;'
     - [Pagebreak]
     - [Headline, !!python/unicode 'Merci !']
     - [Image, content/gui/images/background/hr.png]
-    - !!python/unicode '
-
-
-
-
-
-      Thanks for playing the tutorial!
-
-
-      Your UH-Team'
+    - "\n\n\n\n\nMerci d'avoir suivi ce didacticiel!\n\nL'\xE9quipe d'UH"
     - - Gallery
       - [content/unknown-horizons.xpm, content/gfx/misc/status_icons/as_book_flip/idle/45/book20125.png]
     type: logbook
@@ -721,6 +728,6 @@ events:
     type: var_gt
 locale: fr
 mapfile: development.sqlite
-translation_status: 128 translated messages, 3 fuzzy translations, 54 untranslated
+translation_status: 129 translated messages, 2 fuzzy translations, 60 untranslated
   messages.
 

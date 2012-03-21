@@ -78,7 +78,8 @@ class IngameType(type):
 					name = _( self._strip_translation_marks( name_data[lvl] ) )
 				assert name is not None, "name attribute is wrong: "+str(yaml_data['name'])
 				self._level_specific_names[lvl] = name
-			self._name = name_data[ min(name_data) ] # use first as default
+			_name = name_data[ min(name_data) ] # use first as default
+			self._name = _( self._strip_translation_marks( _name ) )
 		else: # assume just one string
 			self._name = _( self._strip_translation_marks( name_data ) )
 		self.radius = yaml_data['radius']

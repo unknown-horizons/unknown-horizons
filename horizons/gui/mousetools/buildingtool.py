@@ -193,8 +193,9 @@ class BuildingTool(NavigationTool):
 	def _on_worldobject_deleted(self, message):
 		# remove references to this object
 		self._related_buildings.discard(message.sender)
-		self._transparencified_instances = set( i for i in self._transparencified_instances if \
-		                                        i() is not None and int(i().getId()) != message.worldid )
+		self._transparencified_instances = \
+		  set( i for i in self._transparencified_instances if \
+		       i() is not None and int(i().getId()) != message.worldid )
 		check_building = lambda b : b.worldid != message.worldid
 		self._highlighted_buildings = set( tup for tup in self._highlighted_buildings if check_building(tup[0]) )
 		self._related_buildings = set( filter(check_building, self._related_buildings) )
@@ -473,6 +474,8 @@ class BuildingTool(NavigationTool):
 			# actually do the build
 			changed_tiles = self.do_build()
 			found_buildable = bool(changed_tiles)
+			if found_buildable:
+				PlaySound("build").execute(self.session, local=True)
 
 			# HACK: users sometimes don't realise that roads can be dragged
 			# check if 3 roads have been built within 1.2 seconds, and display
@@ -568,10 +571,6 @@ class BuildingTool(NavigationTool):
 						  building.position.origin.x, building.position.origin.y,
 						  'NEED_MORE_RES', {'resource' : _(res_name)})
 
-		if changed_tiles:
-			PlaySound("build").execute(self.session, True)
-			if self.gui is not None:
-				self.gui.hide()
 		self.buildings = []
 		self.buildings_action_set_ids = []
 		return changed_tiles
