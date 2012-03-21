@@ -51,7 +51,7 @@ class StatusIconManager(object):
 		assert not message.icon in self.icons[icon_instance]
 		self.icons[icon_instance].append(message.icon)
 		# Sort, make sure highest icon is at top
-		self.icons[icon_instance] = sorted(self.icons[icon_instance], key=StatusIcon.get_sorting_key())
+		self.icons[icon_instance] = sorted(self.icons[icon_instance], key=StatusIcon.get_sorting_key(), reverse=True)
 		# Now render the most important one
 		self.__render_status(icon_instance, self.icons[icon_instance][0])
 
