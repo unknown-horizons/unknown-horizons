@@ -419,6 +419,7 @@ class BuildableSingleOnOcean(BuildableSingleOnCoast):
 
 class BuildableSingleFromShip(BuildableSingleOnOcean):
 	"""Buildings that can be build from a ship. Currently only Warehouse."""
+	CHECK_NEARBY_LOCATIONS_UP_TO_DISTANCE = 3
 	@classmethod
 	def _check_settlement(cls, session, position, ship, issuer=None):
 		# building from ship doesn't require settlements
@@ -437,6 +438,36 @@ class BuildableSingleFromShip(BuildableSingleOnOcean):
 		for s in island.settlements:
 			if s.owner == ship.owner:
 				raise _NotBuildableError(BuildableErrorTypes.OTHER_PLAYERS_SETTLEMENT_ON_ISLAND)
+
+	@classmethod
+	def check_build(cls, session, point, *args, **kwargs):
+		# The highlight for this isn't very good, it highlights buildable tiles instead
+		# of buildable positions. Therefore, we check nearby positions as well and jump to
+		# them to aid the user
+
+		def filter_duplicates(gen):
+			checked = set()
+			for point in gen:
+				if point.to_tuple() not in checked: # use tuples, points can't be hashed properly
+					checked.add(point.to_tuple())
+					yield point
+
+		# generate coords near point, search from small radius to large radius
+		def get_positions():
+			for radius in xrange(cls.CHECK_NEARBY_LOCATIONS_UP_TO_DISTANCE):
+				circle = Circle(point, radius)
+				for point_to_check in circle:
+					yield point_to_check
+
+		for pos in filter_duplicates( get_positions() ):
+			buildpos = super(BuildableSingleFromShip, cls).check_build(session, pos, *args, **kwargs)
+			if buildpos.buildable:
+				return buildpos
+
+		# found none, fail with specified paramters
+		return super(BuildableSingleFromShip, cls).check_build(session, point, *args, **kwargs)
+
+
 
 class BuildableSingleOnDeposit(BuildableSingle):
 	"""For mines; those buildings are only buildable upon other buildings (clay pit on clay deposit, e.g.)
