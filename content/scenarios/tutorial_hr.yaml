@@ -702,7 +702,9 @@ events:
   - arguments:
     - [Headline, "NEMA VI\u0160E ZADATAKA"]
     - [Image, content/gui/images/background/hr.png]
-    - !!python/unicode 'There is nothing left to do now.
+    - !!python/unicode 'You have successfully completed all tasks that were handed
+      to you. The world is now at your command, waiting for your free aspirations
+      and brave explorations!
 
 
       If you have any suggestions on what we could or should improve, add or leave
@@ -766,5 +768,6 @@ events:
     type: var_gt
 locale: hr
 mapfile: development.sqlite
-translation_status: 12 translated messages, 173 untranslated messages.
+translation_status: 12 translated messages, 1 fuzzy translation, 178 untranslated
+  messages.
 

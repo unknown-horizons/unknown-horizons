@@ -684,12 +684,29 @@ events:
   - arguments:
     - [Headline, "\u017D\xC1DN\xC9 DAL\u0160\xCD \xDAKOLY"]
     - [Image, content/gui/images/background/hr.png]
-    - "Nic dal\u0161\xEDho se zat\xEDm ned\xE1 d\u011Blat.\n\nPokud m\xE1te n\u011B\
-      jak\xE9 n\xE1pady co by se mohlo nebo m\u011Blo vylep\u0161it, p\u0159idat nebo\
-      \ vynechat::\n\nwww.unknown-horizons.org\n\n#unknown-horizons @ irc.freenode.net\n\
-      \nteam@unknown-horizons.org\n\nNa\u0161e f\xF3rum je pro v\xE1s otev\u0159en\xE9\
-      !\n\nNejlep\u0161\xEDch v\xFDsledk\u016F bylo dosa\u017Eeno pomoc\xED na\u0161\
-      eho IRC kan\xE1lu, tak\u017Ee to byste mohli zkusit jako prvn\xED (-;"
+    - !!python/unicode 'You have successfully completed all tasks that were handed
+      to you. The world is now at your command, waiting for your free aspirations
+      and brave explorations!
+
+
+      If you have any suggestions on what we could or should improve, add or leave
+      out:
+
+
+      www.unknown-horizons.org
+
+
+      #unknown-horizons @ irc.freenode.net
+
+
+      team@unknown-horizons.org
+
+
+      Our forums are open to you as well!
+
+
+      The best results until now were achieved by joining our IRC channel, so you
+      could try that out first (-;'
     - [Pagebreak]
     - [Headline, "D\xEDky!"]
     - [Image, content/gui/images/background/hr.png]
@@ -724,5 +741,5 @@ events:
     type: var_gt
 locale: cs
 mapfile: development.sqlite
-translation_status: 185 translated messages.
+translation_status: 183 translated messages, 8 untranslated messages.
 

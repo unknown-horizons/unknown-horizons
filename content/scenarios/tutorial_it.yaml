@@ -708,12 +708,29 @@ events:
   - arguments:
     - [Headline, !!python/unicode 'COMPITI FINITI']
     - [Image, content/gui/images/background/hr.png]
-    - "Non c'\xE8 pi\xF9 nulla da fare, ora.\n\nSe hai suggerimenti su cosa potremmo\
-      \ o dovremmo migliorare, aggiungili oppure esci:\n\nwww.unknown-horizons.org\n\
-      \n#unknown-horizons @ irc.freenode.net\n\nteam@unknown-horizons.org\n\nI nostri\
-      \ forum sono anche aperti per te!\n\nI migliori risultati fino ad ora sono stati\
-      \ raggiunti unendosi al canale IRC, quindi potresti provare questo come primo\
-      \ passo (-;"
+    - !!python/unicode 'You have successfully completed all tasks that were handed
+      to you. The world is now at your command, waiting for your free aspirations
+      and brave explorations!
+
+
+      If you have any suggestions on what we could or should improve, add or leave
+      out:
+
+
+      www.unknown-horizons.org
+
+
+      #unknown-horizons @ irc.freenode.net
+
+
+      team@unknown-horizons.org
+
+
+      Our forums are open to you as well!
+
+
+      The best results until now were achieved by joining our IRC channel, so you
+      could try that out first (-;'
     - [Pagebreak]
     - [Headline, !!python/unicode 'Grazie!']
     - [Image, content/gui/images/background/hr.png]
@@ -757,6 +774,6 @@ events:
     type: var_gt
 locale: it
 mapfile: development.sqlite
-translation_status: 37 translated messages, 2 fuzzy translations, 146 untranslated
+translation_status: 36 translated messages, 2 fuzzy translations, 153 untranslated
   messages.
 

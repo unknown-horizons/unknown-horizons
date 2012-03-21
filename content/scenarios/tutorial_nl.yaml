@@ -704,10 +704,14 @@ events:
   - arguments:
     - [Headline, !!python/unicode 'GEEN OPDRACHTEN RESTEREND']
     - [Image, content/gui/images/background/hr.png]
-    - !!python/unicode 'Er zijn geen resterende taken.
+    - !!python/unicode 'You have successfully completed all tasks that were handed
+      to you. The world is now at your command, waiting for your free aspirations
+      and brave explorations!
 
 
-      Mocht u suggesties hebben wat er verbeterd, toegevoegd of verwijderd kan worden:
+      If you have any suggestions on what we could or should improve, add or leave
+      out:
+
 
       www.unknown-horizons.org
 
@@ -718,11 +722,11 @@ events:
       team@unknown-horizons.org
 
 
-      De forums zijn open voor iedereen!
+      Our forums are open to you as well!
 
 
-      De beste resultaten tot nu toe zijn behaald via het IRC kanaal, wij raden aan
-      dit eerst te proberen (-;'
+      The best results until now were achieved by joining our IRC channel, so you
+      could try that out first (-;'
     - [Pagebreak]
     - [Headline, !!python/unicode 'Dank u wel!']
     - [Image, content/gui/images/background/hr.png]
@@ -766,6 +770,6 @@ events:
     type: var_gt
 locale: nl
 mapfile: development.sqlite
-translation_status: 40 translated messages, 2 fuzzy translations, 143 untranslated
+translation_status: 39 translated messages, 2 fuzzy translations, 150 untranslated
   messages.
 
