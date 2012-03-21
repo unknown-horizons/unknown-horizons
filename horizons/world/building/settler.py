@@ -60,7 +60,7 @@ class Settler(BuildableRect, BuildingResourceHandler, BasicBuilding):
 	_max_increment_reached_notification_displayed = False # this could be saved
 
 	def __init__(self, x, y, owner, instance=None, **kwargs):
-		kwargs['level'] = self.default_level_on_build # settlers always start in first level
+		kwargs['level'] = self.__class__.default_level_on_build # settlers always start in first level
 		super(Settler, self).__init__(x=x, y=y, owner=owner, instance=instance, **kwargs)
 
 	def __init(self, loading = False, last_tax_payed=0):

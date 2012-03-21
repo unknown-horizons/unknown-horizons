@@ -98,7 +98,6 @@ class SavegameUpgrader(object):
 	def _upgrade_to_rev56(self, db):
 		db("CREATE TABLE \"last_active_settlement\" ( type STRING NOT NULL, value INTEGER NOT NULL )")
 		db("INSERT INTO last_active_settlement(type, value) VALUES(?, ?)", "LAST_NONE_FLAG", False)
-		print 'ins'
 
 
 	def _upgrade(self):
