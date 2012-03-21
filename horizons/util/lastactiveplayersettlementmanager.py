@@ -59,7 +59,6 @@ class LastActivePlayerSettlementManager(object):
 	def save(self, db):
 		if self._last_player_settlement is not None:
 			db("INSERT INTO last_active_settlement(type, value) VALUES(?, ?)", "PLAYER", self._last_player_settlement().worldid)
-			print 'save set', self._last_player_settlement
 		if self._last_settlement is not None:
 			db("INSERT INTO last_active_settlement(type, value) VALUES(?, ?)", "ANY", self._last_settlement().worldid)
 
@@ -68,7 +67,6 @@ class LastActivePlayerSettlementManager(object):
 	def load(self, db):
 		data = db("SELECT value FROM last_active_settlement WHERE type = \"PLAYER\"")
 		self._last_player_settlement = weakref.ref(WorldObject.get_object_by_id(data[0][0])) if data else None
-		print 'got pl set', self._last_player_settlement
 		data = db("SELECT value FROM last_active_settlement WHERE type = \"ANY\"")
 		self._last_settlement = weakref.ref(WorldObject.get_object_by_id(data[0][0])) if data else None
 		data = db("SELECT value FROM last_active_settlement WHERE type = \"LAST_NONE_FLAG\"")
