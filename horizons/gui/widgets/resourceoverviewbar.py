@@ -37,6 +37,7 @@ from horizons.util.messaging.message import ResourceBarResize
 from horizons.extscheduler import ExtScheduler
 from horizons.world.component.ambientsoundcomponent import AmbientSoundComponent
 from horizons.util.lastactiveplayersettlementmanager import LastActivePlayerSettlementManager
+from horizons.util.messaging.message import NewPlayerSettlementHovered
 
 
 class ResourceOverviewBar(object):
@@ -98,6 +99,8 @@ class ResourceOverviewBar(object):
 
 		self._update_default_configuration()
 
+		self.session.message_bus.subscribe_globally(NewPlayerSettlementHovered, self._on_different_settlement)
+
 	def end(self):
 		self.set_inventory_instance( None, force_update=True )
 		self.current_instance = weakref.ref(self)
@@ -106,6 +109,7 @@ class ResourceOverviewBar(object):
 		self.gold_gui = None
 		self.gui = None
 		self._custom_default_resources = None
+		self.session.message_bus.unsubscribe_globally(NewPlayerSettlementHovered, self._on_different_settlement)
 
 	def _update_default_configuration(self):
 		# user defined variante of DEFAULT_RESOURCES (will be preferred)
@@ -143,6 +147,9 @@ class ResourceOverviewBar(object):
 
 	def redraw(self):
 		self.set_inventory_instance(self.current_instance(), force_update=True)
+
+	def _on_different_settlement(self, message):
+		self.set_inventory_instance(message.settlement)
 
 	def set_inventory_instance(self, instance, keep_construction_mode=False, force_update=False):
 		"""Display different inventory. May change resources that are displayed"""

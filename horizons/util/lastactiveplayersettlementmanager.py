@@ -23,7 +23,21 @@ import weakref
 
 from horizons.util.python import ManualConstructionSingleton
 from horizons.util import Point
-from horizons.util.messaging.message import LastSettlementChanged
+from horizons.util.messaging.message import NewPlayerSettlementHovered, HoverSettlementChanged
+
+def resolve_weakref(ref):
+	"""Resolves a weakref to a hardref, where the ref itself can be None"""
+	if ref is None:
+		return None
+	else:
+		return ref()
+
+def create_weakref(obj):
+	"""Safe create weakref, that supports None"""
+	if obj is None:
+		return None
+	else:
+		return weakref.ref(obj)
 
 class LastActivePlayerSettlementManager(object):
 	"""Keeps track of the last active (hovered over) player's settlement.
@@ -36,41 +50,51 @@ class LastActivePlayerSettlementManager(object):
 	__metaclass__ = ManualConstructionSingleton
 
 	def __init__(self, session):
-		self._settlement = None
 		self.session = session
 		self.session.view.add_change_listener(self._on_scroll)
+		self._last_player_settlement = None
+		self._last_settlement = None
+		self._last_player_settlement_hovered_was_none = True
 
 	def remove(self):
-		self._settlement = None
+		self._last_player_settlement = None
+		self._last_settlement = None
 		self.session.view.remove_change_listener(self._on_scroll)
 
 	def update(self, current):
-		"""Update to new world position. Sets internal state to new settlement or no settlement"""
+		"""Update to new world position. Sets internal state to new settlement or no settlement
+		@param current: some kind of position coords with x- and y-values"""
 		settlement = self.session.world.get_settlement(Point(int(round(current.x)), int(round(current.y))))
 
-		# set cityinfo for any settlement
-		# TODO: this will catch duplicate events, do it here rather to have it unified
-		# it will require a LastSettlementChanged event for all settlements and one for player settlements
-		self.session.ingame_gui.cityinfo_set(settlement)
+		# check if it's a new settlement independent of player
+		if resolve_weakref(self._last_settlement) is not settlement:
+			self._last_settlement = create_weakref(settlement)
+			self.session.message_bus.broadcast(HoverSettlementChanged(self, settlement))
 
 		# player-sensitive code
 		new_player_settlement = weakref.ref(settlement) if \
 		  settlement and settlement.owner.is_local_player else None
 
-		# check for any change
-		if self.get() is not (new_player_settlement() if new_player_settlement else new_player_settlement):
-			self._settlement = new_player_settlement
-			self.session.message_bus.broadcast(LastSettlementChanged(self))
+		need_msg = False
+		# check if actual last player settlement is a new one
+		if new_player_settlement is not None and \
+		   resolve_weakref(self._last_player_settlement) is not resolve_weakref( new_player_settlement):
+			self._last_player_settlement = new_player_settlement
+			need_msg = True
 
-			# set res info (includes setting it to None)
-			self.session.ingame_gui.resource_overview.set_inventory_instance(self.get())
+		# check if we changed to or from None
+		# this doesn't change the last settlement, but we need a message
+		if (new_player_settlement is None and not self._last_player_settlement_hovered_was_none) or \
+		   (new_player_settlement is not None and self._last_player_settlement_hovered_was_none):
+			need_msg = True
+
+		if need_msg:
+			self.session.message_bus.broadcast(NewPlayerSettlementHovered(self, settlement))
+		self._last_player_settlement_hovered_was_none = (new_player_settlement is None)
 
 	def get(self):
 		"""The last settlement belonging to the player the mouse has hovered above"""
-		if self._settlement is not None: # weakref
-			return self._settlement() # might still be None
-		else:
-			return None
+		return resolve_weakref(self._last_player_settlement)
 
 	def _on_scroll(self):
 		"""Called when view changes"""
