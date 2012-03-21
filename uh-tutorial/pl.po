@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: translate-uh@lists.unknown-horizons.org\n"
-"POT-Creation-Date: 2012-03-13 16:25+0100\n"
+"POT-Creation-Date: 2012-03-21 04:04+0100\n"
 "PO-Revision-Date: 2012-03-06 18:11+0200\n"
 "Last-Translator: Christopher Oelmueller <chris.oelmueller+uh@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -456,7 +456,7 @@ msgstr ""
 msgid ""
 "\n"
 "TASK: Build a tent and connect it to the main square. Tents dont need to be "
-"connected to any of the companies"
+"connected to any of the companies."
 msgstr ""
 
 #. This message is displayed in the widget on the left screen part. Please keep it short enough to fit there!
@@ -1231,30 +1231,52 @@ msgstr "Wszystkie zadania wykonano"
 #. This is the text body of a logbook page.
 #: po/tutorial.py:364
 msgid ""
-"There is nothing left to do now.\n"
-"\n"
+"You have successfully completed all tasks that were handed to you. The world "
+"is now at your command, waiting for your free aspirations and brave "
+"explorations!"
+msgstr ""
+
+#. This is the text body of a logbook page.
+#: po/tutorial.py:366
+msgid ""
 "If you have any suggestions on what we could or should improve, add or leave "
-"out:\n"
-"\n"
-"www.unknown-horizons.org\n"
-"\n"
-"#unknown-horizons @ irc.freenode.net\n"
-"\n"
-"team@unknown-horizons.org\n"
-"\n"
-"Our forums are open to you as well!\n"
-"\n"
+"out:"
+msgstr ""
+
+#. This is the text body of a logbook page.
+#: po/tutorial.py:368
+msgid "www.unknown-horizons.org"
+msgstr ""
+
+#. This is the text body of a logbook page.
+#: po/tutorial.py:370
+msgid "#unknown-horizons @ irc.freenode.net"
+msgstr ""
+
+#. This is the text body of a logbook page.
+#: po/tutorial.py:372
+msgid "team@unknown-horizons.org"
+msgstr ""
+
+#. This is the text body of a logbook page.
+#: po/tutorial.py:374
+msgid "Our forums are open to you as well!"
+msgstr ""
+
+#. This is the text body of a logbook page.
+#: po/tutorial.py:376
+msgid ""
 "The best results until now were achieved by joining our IRC channel, so you "
 "could try that out first (-;"
 msgstr ""
 
 #. This is a logbook page heading. Space is VERY short, please only translate to strings that fit (roughly 30 characters max).
-#: po/tutorial.py:366
+#: po/tutorial.py:378
 msgid "Thanks!"
 msgstr "Dziękuję!"
 
 #. This is the text body of a logbook page.
-#: po/tutorial.py:368
+#: po/tutorial.py:380
 msgid ""
 "\n"
 "\n"
@@ -1267,7 +1289,7 @@ msgid ""
 msgstr ""
 
 #. This message is displayed in the widget on the left screen part. Please keep it short enough to fit there!
-#: po/tutorial.py:370
+#: po/tutorial.py:382
 msgid ""
 "Congratulations! You have reached the end of this tutorial and are ready to "
 "meet new challenges!"

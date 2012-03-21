@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: translate-uh@lists.unknown-horizons.org\n"
-"POT-Creation-Date: 2012-03-13 16:25+0100\n"
-"PO-Revision-Date: 2012-03-15 20:32+0200\n"
+"POT-Creation-Date: 2012-03-21 04:04+0100\n"
+"PO-Revision-Date: 2012-03-21 04:08+0200\n"
 "Last-Translator: Christopher Oelmueller <chris.oelmueller+uh@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: de\n"
@@ -559,10 +559,11 @@ msgstr ""
 msgid ""
 "\n"
 "TASK: Build a tent and connect it to the main square. Tents dont need to be "
-"connected to any of the companies"
+"connected to any of the companies."
 msgstr ""
 "\n"
-"AUFGABE: Errichtet ein Zelt und verbindet es mit dem Marktplatz."
+"AUFGABE: Errichtet ein Zelt und verbindet es mit dem Marktplatz.. Zelte "
+"müssen nicht mit den Betrieben verbunden werden."
 
 #. This message is displayed in the widget on the left screen part. Please keep it short enough to fit there!
 #: po/tutorial.py:136
@@ -1548,49 +1549,57 @@ msgstr ""
 msgid "NO TASKS LEFT"
 msgstr "ALLE AUFGABEN ERLEDIGT"
 
-# "Es gibt jetzt nichts mehr zu tun"
-# Gibt es nichts mehr zu tun? Doch, „Auf zu neuen Unknown Horizons“, Szenario, Multiplayer, Krieg/War
 #. This is the text body of a logbook page.
 #: po/tutorial.py:364
 msgid ""
-"There is nothing left to do now.\n"
-"\n"
+"You have successfully completed all tasks that were handed to you. The world "
+"is now at your command, waiting for your free aspirations and brave "
+"explorations!"
+msgstr ""
+"Ihr habt alle Euch übertragenen Aufgaben erfolgreich abgeschlossen. Eine "
+"neue Welt liegt euch nun zu Füßen und wartet darauf, mit Tatendrang und "
+"Entdeckerwillen besiedelt zu werden!"
+
+#. This is the text body of a logbook page.
+#: po/tutorial.py:366
+msgid ""
 "If you have any suggestions on what we could or should improve, add or leave "
-"out:\n"
-"\n"
-"www.unknown-horizons.org\n"
-"\n"
-"#unknown-horizons @ irc.freenode.net\n"
-"\n"
-"team@unknown-horizons.org\n"
-"\n"
-"Our forums are open to you as well!\n"
-"\n"
+"out:"
+msgstr ""
+"Falls Ihr Vorschläge habt, was wir verbessern, hinzufügen oder auslassen "
+"könnten bzw. sollten:"
+
+#. This is the text body of a logbook page.
+#: po/tutorial.py:368
+msgid "www.unknown-horizons.org"
+msgstr "www.unknown-horizons.org"
+
+#. This is the text body of a logbook page.
+#: po/tutorial.py:370
+msgid "#unknown-horizons @ irc.freenode.net"
+msgstr "#unknown-horizons @ irc.freenode.net"
+
+#. This is the text body of a logbook page.
+#: po/tutorial.py:372
+msgid "team@unknown-horizons.org"
+msgstr "team@unknown-horizons.org"
+
+#. This is the text body of a logbook page.
+#: po/tutorial.py:374
+msgid "Our forums are open to you as well!"
+msgstr "Unsere Foren stehen Euch ebenfalls offen!"
+
+#. This is the text body of a logbook page.
+#: po/tutorial.py:376
+msgid ""
 "The best results until now were achieved by joining our IRC channel, so you "
 "could try that out first (-;"
 msgstr ""
-"Glückwunsch, Ihr habt das Tutorial erfolgreich abgeschlossen und seid bereit "
-"für neue Abenteuer. Setzt Segel im Einzel- und Mehrspielermodus von Unknown "
-"Horizons!\n"
-"\n"
-"Falls Ihr Vorschläge habt, was wir verbessern, hinzufügen oder auslassen "
-"könnten bzw. sollten:\n"
-"www.unknown-horizons.org\n"
-"#unknown-horizons @ irc.freenode.net\n"
-"team@unknown-horizons.org\n"
-"\n"
-"Unsere Foren stehen Euch ebenfalls offen!\n"
-"\n"
-"Die besten Ergebnisse wurden bis jetzt erreicht, wenn man unseren IRC Kanal "
-"betritt, das solltet Ihr also zuerst probieren (-;\n"
-"\n"
-"Genauso wie Ihr auch kein Gast in fremder Gesellschaft sein möchtet, der "
-"einer Unterhaltung mangels Sprachkenntnis nicht folgen kann, bitten wir dort "
-"um Englisch. In dringenden Fällen könnt Ihr auch in gebrochenem Englisch "
-"Hilfe suchen und erwähnen, dass Ihr Deutsch sprecht."
+"Meist sind wir am besten in unserem IRC-Kanal zu erreichen, das solltet Ihr "
+"also zuerst probieren (-:"
 
 #. This is a logbook page heading. Space is VERY short, please only translate to strings that fit (roughly 30 characters max).
-#: po/tutorial.py:366
+#: po/tutorial.py:378
 msgid "Thanks!"
 msgstr "Vielen Dank!"
 
@@ -1599,7 +1608,7 @@ msgstr "Vielen Dank!"
 # Vielen Dank für das (Durch-)Spielen der Einführung.
 # 96%
 #. This is the text body of a logbook page.
-#: po/tutorial.py:368
+#: po/tutorial.py:380
 msgid ""
 "\n"
 "\n"
@@ -1620,13 +1629,60 @@ msgstr ""
 "Das UH-Team"
 
 #. This message is displayed in the widget on the left screen part. Please keep it short enough to fit there!
-#: po/tutorial.py:370
+#: po/tutorial.py:382
 msgid ""
 "Congratulations! You have reached the end of this tutorial and are ready to "
 "meet new challenges!"
 msgstr ""
 "Glückwunsch! Ihr habt das Ende dieser Einführung erreicht und seid bereit, "
 "Euch neuen Herausforderungen zu stellen!"
+
+#~ msgid ""
+#~ "\n"
+#~ "TASK: Build a tent and connect it to the main square. Tents dont need to be "
+#~ "connected to any of the companies"
+#~ msgstr ""
+#~ "\n"
+#~ "AUFGABE: Errichtet ein Zelt und verbindet es mit dem Marktplatz."
+
+# "Es gibt jetzt nichts mehr zu tun"
+# Gibt es nichts mehr zu tun? Doch, „Auf zu neuen Unknown Horizons“, Szenario, Multiplayer, Krieg/War
+#~ msgid ""
+#~ "There is nothing left to do now.\n"
+#~ "\n"
+#~ "If you have any suggestions on what we could or should improve, add or leave "
+#~ "out:\n"
+#~ "\n"
+#~ "www.unknown-horizons.org\n"
+#~ "\n"
+#~ "#unknown-horizons @ irc.freenode.net\n"
+#~ "\n"
+#~ "team@unknown-horizons.org\n"
+#~ "\n"
+#~ "Our forums are open to you as well!\n"
+#~ "\n"
+#~ "The best results until now were achieved by joining our IRC channel, so you "
+#~ "could try that out first (-;"
+#~ msgstr ""
+#~ "Glückwunsch, Ihr habt das Tutorial erfolgreich abgeschlossen und seid bereit "
+#~ "für neue Abenteuer. Setzt Segel im Einzel- und Mehrspielermodus von Unknown "
+#~ "Horizons!\n"
+#~ "\n"
+#~ "Falls Ihr Vorschläge habt, was wir verbessern, hinzufügen oder auslassen "
+#~ "könnten bzw. sollten:\n"
+#~ "www.unknown-horizons.org\n"
+#~ "#unknown-horizons @ irc.freenode.net\n"
+#~ "team@unknown-horizons.org\n"
+#~ "\n"
+#~ "Unsere Foren stehen Euch ebenfalls offen!\n"
+#~ "\n"
+#~ "Die besten Ergebnisse wurden bis jetzt erreicht, wenn man unseren IRC Kanal "
+#~ "betritt, das solltet Ihr also zuerst probieren (-;\n"
+#~ "\n"
+#~ "Genauso wie Ihr auch kein Gast in fremder Gesellschaft sein möchtet, der "
+#~ "einer Unterhaltung mangels Sprachkenntnis nicht folgen kann, bitten wir dort "
+#~ "um Englisch. In dringenden Fällen könnt Ihr auch in gebrochenem Englisch "
+#~ "Hilfe suchen und erwähnen, dass Ihr Deutsch sprecht."
 
 #~ msgid ""
 #~ "The farm is a very special production building since it can produce not only "
