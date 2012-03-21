@@ -631,7 +631,7 @@ events:
      - [Headline, "NO TASKS LEFT"]
      - [Image, "content/gui/images/background/hr.png"]
      - |
-       There is nothing left to do now.
+       You have successfully completed all tasks that were handed to you. The world is now at your command, waiting for your free aspirations and brave explorations!
 
        If you have any suggestions on what we could or should improve, add or leave out:
 

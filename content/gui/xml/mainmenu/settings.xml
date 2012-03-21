@@ -154,7 +154,7 @@
 
 				<HBox>
 					<Label name="debug_log_lbl" text="Enable logging" min_size="170,0"
-						helptext="Whether to write debug information in the logging directory of your user directory" />
+						helptext="Don't use in normal game session. Decides whether to write debug information in the logging directory of your user directory. Slows the game down." />
 					<CheckBox min_size="24,24" name="debug_log" />
 				</HBox>
 			</VBox>
