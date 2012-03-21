@@ -1,5 +1,11 @@
 id: 3
-name: _ Tent
+name:
+  0: _ Tent
+  1: _ Hut
+  2: _ House
+  3: _ Stone house
+  4: _ Estate
+  5: _ Manor
 baseclass: settler.Settler
 radius: 12
 cost: 0

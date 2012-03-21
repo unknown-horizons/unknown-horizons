@@ -31,7 +31,7 @@ from horizons.constants import RES, BUILDINGS, GAME, SETTLER
 from horizons.world.building.buildingresourcehandler import BuildingResourceHandler
 from horizons.world.production.production import SettlerProduction, SingleUseProduction
 from horizons.command.building import Build
-from horizons.util import decorators, Callback
+from horizons.util import Callback
 from horizons.world.pathfinding.pather import StaticPather
 from horizons.command.production import ToggleActive
 from horizons.world.component.storagecomponent import StorageComponent
@@ -151,11 +151,6 @@ class Settler(BuildableRect, BuildingResourceHandler, BasicBuilding):
 		difficulty = self.owner.difficulty
 		result = int(round(difficulty.extra_happiness_constant + self.get_component(StorageComponent).inventory[RES.HAPPINESS_ID] * difficulty.happiness_multiplier))
 		return max(0, min(result, self.get_component(StorageComponent).inventory.get_limit(RES.HAPPINESS_ID)))
-
-	@property
-	def name(self):
-		house_name = self.session.db.get_settler_house_name(self.level) if hasattr(self, 'level') else 'unknown residence'
-		return (_(house_name)).title()
 
 	@property
 	def capacity_utilisation(self):
