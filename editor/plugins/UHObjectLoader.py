@@ -143,7 +143,10 @@ class UHObjectLoader(scripts.plugin.Plugin):
 
 	def _loadBuilding(self, yaml):
 		id = int(yaml['id'])
-		name = yaml['name'][2:]
+		name_data = yaml['name']
+		if isinstance(name_data, dict): # level-sensitive names as dict
+			name_data = sorted(name_data.iteritems())[0][1]
+		name = name_data[2:] # drop translation mark
 		size_x = yaml['size_x']
 		size_y = yaml['size_y']
 		action_sets = yaml['actionsets']
