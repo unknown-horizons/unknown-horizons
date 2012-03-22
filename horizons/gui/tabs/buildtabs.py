@@ -155,10 +155,7 @@ class BuildTab(TabInterface):
 
 	def init_gui(self):
 		headline_lbl = self.widget.child_finder('headline')
-		#i18n In English, this is Sailors, Pioneers, Settlers.
-		#TODO what formatting to use? getting names from DB and adding
-		# '... buildings' will cause wrong declinations all over :/
-		headline_lbl.text = _('{incr_inhabitant_name}').format(incr_inhabitant_name='Sailors') #xgettext:python-format
+		headline_lbl.text = _(self.session.db.get_settler_name(self.tabindex-1))
 
 		self.refresh()
 

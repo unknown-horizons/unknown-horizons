@@ -596,12 +596,12 @@ CREATE TABLE settler_level (
     "name" TEXT NOT NULL DEFAULT (''),
     "tax_income" INT NOT NULL DEFAULT (''),
     "inhabitants_max" INT);
-INSERT INTO "settler_level" VALUES(0,'sailor',3,2);
-INSERT INTO "settler_level" VALUES(1,'pioneer',6,3);
-INSERT INTO "settler_level" VALUES(2,'settler',10,5);
-INSERT INTO "settler_level" VALUES(3,'citizen',15,8);
-INSERT INTO "settler_level" VALUES(4,'merchant',21,13);
-INSERT INTO "settler_level" VALUES(5,'aristocrat',28,21);
+INSERT INTO "settler_level" VALUES(0,'Sailors',3,2);
+INSERT INTO "settler_level" VALUES(1,'Pioneers',6,3);
+INSERT INTO "settler_level" VALUES(2,'Settlers',10,5);
+INSERT INTO "settler_level" VALUES(3,'Citizens',15,8);
+INSERT INTO "settler_level" VALUES(4,'Merchants',21,13);
+INSERT INTO "settler_level" VALUES(5,'Aristocrats',28,21);
 CREATE TABLE status_icon_exclusions (
     "object_type" INT NOT NULL DEFAULT (''));
 INSERT INTO "status_icon_exclusions" VALUES(17);

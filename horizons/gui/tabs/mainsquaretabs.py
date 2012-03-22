@@ -147,6 +147,7 @@ class MainSquareSettlerLevelTab(MainSquareTab):
 		icon_path = 'content/gui/icons/tabwidget/mainsquare/inhabitants{incr}_%s.png'.format(incr=self.__class__.LEVEL)
 		super(MainSquareSettlerLevelTab, self).__init__(widget=widget, instance=instance, icon_path=icon_path)
 		self.max_inhabitants = instance.session.db.get_settler_inhabitants_max(self.__class__.LEVEL)
+		self.helptext = instance.session.db.get_settler_name(self.__class__.LEVEL)
 
 		slider = self.widget.child_finder('tax_slider')
 		val_label = self.widget.child_finder('tax_val_label')
@@ -225,22 +226,18 @@ class MainSquareSailorsTab(MainSquareSettlerLevelTab):
 	LEVEL = SETTLER.SAILOR_LEVEL
 	def __init__(self, instance):
 		super(MainSquareSailorsTab, self).__init__(instance, 'mainsquare_sailors.xml')
-		self.helptext = _("Sailors")
 
 class MainSquarePioneersTab(MainSquareSettlerLevelTab):
 	LEVEL = SETTLER.PIONEER_LEVEL
 	def __init__(self, instance):
 		super(MainSquarePioneersTab, self).__init__(instance, 'mainsquare_pioneers.xml')
-		self.helptext = _("Pioneers")
 
 class MainSquareSettlersTab(MainSquareSettlerLevelTab):
 	LEVEL = SETTLER.SETTLER_LEVEL
 	def __init__(self, instance):
 		super(MainSquareSettlersTab, self).__init__(instance, 'mainsquare_settlers.xml')
-		self.helptext = _("Settlers")
 
 class MainSquareCitizensTab(MainSquareSettlerLevelTab):
 	LEVEL = SETTLER.CITIZEN_LEVEL
 	def __init__(self, instance):
 		super(MainSquareCitizensTab, self).__init__(instance, 'mainsquare_citizens.xml')
-		self.helptext = _("Citizens")
