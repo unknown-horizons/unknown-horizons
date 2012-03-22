@@ -65,7 +65,7 @@ class StatusIcon(object):
 
 
 class FireStatusIcon(StatusIcon):
-	# threshold is the inhabitants decrease level
+	""" Fire disaster """
 	def __init__(self, instance):
 		super(FireStatusIcon, self).__init__( 3000, "as_on_fire+idle+45", instance)
 

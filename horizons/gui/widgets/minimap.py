@@ -570,7 +570,14 @@ class Minimap(object):
 									fife.Point(coord[0], coord[1] - 6), color[0], color[1], color[2])
 				self.minimap_image.rendertarget.addLine(render_name, fife.Point(coord[0] - 4, coord[1] - 4),\
 									fife.Point(coord[0], coord[1] - 4), color[0], color[1], color[2])
-			
+				# add black border around the flag
+				self.minimap_image.rendertarget.addLine(render_name, fife.Point(coord[0] - 6, coord[1] - 7),\
+									fife.Point(coord[0], coord[1] - 7), 0, 0, 0)
+				self.minimap_image.rendertarget.addLine(render_name, fife.Point(coord[0] - 4, coord[1] - 3),\
+									fife.Point(coord[0], coord[1] - 4), 0, 0, 0)
+				self.minimap_image.rendertarget.addLine(render_name, fife.Point(coord[0] - 6, coord[1] - 7),\
+									fife.Point(coord[0] - 4, coord[1] - 3), 0, 0, 0)
+				
 			# TODO: nicer selected view
 			if ship() in self.session.selected_instances:
 				self.minimap_image.rendertarget.addPoint(render_name,
