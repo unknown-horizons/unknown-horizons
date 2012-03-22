@@ -85,6 +85,7 @@ class TabInterface(object):
 		self.widget.hide()
 
 	def is_visible(self):
+		self.ensure_loaded()
 		# naming convention clash: python vs c++
 		return self.widget.isVisible()
 
