@@ -137,6 +137,10 @@ STYLES = {
 		# NOTE: This is a hack to add padding attributs to boxes of this style
 		('Container','HBox','VBox') : {
 		},
+		# once more, better not ask why this is necessary (#1607)
+		# also seems it won't work if just added to the above.
+		'CheckBox' : {
+		},
 },
 
 'resource_bar': {
