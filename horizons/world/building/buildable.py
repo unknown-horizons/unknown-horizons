@@ -445,28 +445,34 @@ class BuildableSingleFromShip(BuildableSingleOnOcean):
 		# of buildable positions. Therefore, we check nearby positions as well and jump to
 		# them to aid the user
 
-		def filter_duplicates(gen):
+		def filter_duplicates(gen, transform=lambda x : x):
+			"""
+			@param transform: transforms elements to hashable equivalent
+			"""
 			checked = set()
-			for point in gen:
-				if point.to_tuple() not in checked: # use tuples, points can't be hashed properly
-					checked.add(point.to_tuple())
-					yield point
+			for elem in itertools.ifilterfalse(lambda e : transform(e) in checked, gen):
+				checked.add( transform(elem) )
+				yield elem
 
-		# generate coords near point, search from small radius to large radius
+		# generate coords near point, search coords of small circles to larger ones
 		def get_positions():
-			for radius in xrange(cls.CHECK_NEARBY_LOCATIONS_UP_TO_DISTANCE):
-				circle = Circle(point, radius)
-				for point_to_check in circle:
-					yield point_to_check
+			iters = (iter(Circle(point, radius)) for radius in xrange(cls.CHECK_NEARBY_LOCATIONS_UP_TO_DISTANCE) )
+			return itertools.chain.from_iterable( iters )
 
-		for pos in filter_duplicates( get_positions() ):
-			buildpos = super(BuildableSingleFromShip, cls).check_build(session, pos, *args, **kwargs)
-			if buildpos.buildable:
-				return buildpos
+		# generate positions and check for matches
+		check_pos = lambda pos : super(BuildableSingleFromShip, cls).check_build(session, pos, *args, **kwargs)
+		checked = itertools.imap(check_pos,
+		                         filter_duplicates( get_positions(), transform=lambda p : p.to_tuple() ) )
 
-		# found none, fail with specified paramters
-		return super(BuildableSingleFromShip, cls).check_build(session, point, *args, **kwargs)
+		# filter positive solutions
+		result_generator = itertools.ifilter(lambda buildpos: buildpos.buildable, checked)
 
+		try:
+			# return first match
+			return result_generator.next()
+		except StopIteration:
+			# found none, fail with specified paramters
+			return super(BuildableSingleFromShip, cls).check_build(session, point, *args, **kwargs)
 
 
 class BuildableSingleOnDeposit(BuildableSingle):

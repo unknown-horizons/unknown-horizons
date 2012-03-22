@@ -11,8 +11,5 @@ components:
          limit: 120
          slotnum: 4
 - ShipNameComponent
-- HealthComponent:
-   maxhealth: 80
-
 actionsets:
    as_fisher0: {level: 0}
