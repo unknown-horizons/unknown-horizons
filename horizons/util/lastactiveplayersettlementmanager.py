@@ -105,7 +105,8 @@ class LastActivePlayerSettlementManager(object):
 			need_msg = True
 
 		if need_msg:
-			self.session.message_bus.broadcast(NewPlayerSettlementHovered(self, settlement))
+			self.session.message_bus.broadcast(
+			  NewPlayerSettlementHovered(self, resolve_weakref(new_player_settlement)))
 		self._last_player_settlement_hovered_was_none = (new_player_settlement is None)
 
 	def get(self, get_current_pos=False):
