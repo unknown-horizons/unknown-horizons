@@ -117,6 +117,6 @@ class UnitProduction(ChangingProduction):
 
 	def _finished_producing(self, **kwargs):
 		super(UnitProduction, self)._finished_producing(continue_producing=False, **kwargs)
-		self.state = PRODUCTION.STATES.done
+		self._state = PRODUCTION.STATES.done
 		# reset prodline
 		self._prod_line = self._prod_line.get_original_copy()
