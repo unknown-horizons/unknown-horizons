@@ -469,7 +469,11 @@ class Gui(SingleplayerMenu, MultiplayerMenu):
 			msg += _(u"Details:") + u" " + details
 		try:
 			self.show_popup( _(u"Error:") + u" " + windowtitle, msg, show_cancel_button=False)
+		except SystemExit: # user really wants us to die
+			raise
 		except:
+			# could be another game error, try to be persistent in showing the error message
+			# else the game would be gone without the user being able to read the message.
 			if _first:
 				traceback.print_exc()
 				print 'Exception while showing error, retrying once more'
