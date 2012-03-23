@@ -21,7 +21,7 @@ msgstr ""
 #: database files sql
 #, python-format
 msgid "A new settlement was founded by {player}."
-msgstr "{player} hat eine neue Siedlung gegründet."
+msgstr "Eine neue Siedlung wurde von {player} gegründet."
 
 # 82%
 #. This is a database entry: a messagewidget message (left part of the screen).
