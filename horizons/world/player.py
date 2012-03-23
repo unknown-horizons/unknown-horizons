@@ -122,8 +122,10 @@ class Player(ComponentHolder, WorldObject):
 	def notify_settler_reached_level(self, message):
 		"""Settler calls this to notify the player
 		@param settler: instance of Settler
-		@return: bool, True if level is greater than the current maximum level"""
-		isinstance(message, SettlerUpdate)
+		@return: bool, True if actually incremented the level"""
+		assert isinstance(message, SettlerUpdate)
+		if message.sender.owner is not self:
+			return False # was settler of another player
 		if message.level > self.settler_level:
 			self.settler_level = message.level
 			self.session.scenario_eventhandler.check_events(CONDITIONS.settler_level_greater)
