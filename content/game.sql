@@ -193,6 +193,7 @@ INSERT INTO "related_buildings" VALUES(3,21);
 INSERT INTO "related_buildings" VALUES(3,32);
 INSERT INTO "related_buildings" VALUES(3,42);
 INSERT INTO "related_buildings" VALUES(3,45);
+INSERT INTO "related_buildings" VALUES(6,1);
 CREATE TABLE mine(mine INTEGER NOT NULL, deposit NOT NULL);
 INSERT INTO "mine" VALUES(25,23);
 INSERT INTO "mine" VALUES(28,34);
