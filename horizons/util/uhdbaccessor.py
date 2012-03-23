@@ -163,7 +163,7 @@ class UhDbAccessor(DbReader):
 	@decorators.cachedmethod
 	def get_related_building_ids_for_menu(self, building_class_id):
 		"""Returns list of building ids related to building_class_id, which should
-		shown in the build_related menu.
+		be shown in the build_related menu.
 		@param building_class_id: class of building, int
 		@return list of building class ids
 		"""
