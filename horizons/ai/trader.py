@@ -161,36 +161,24 @@ class Trader(GenericAI):
 		@param warehouse: warehouse instance to move to. Random one is selected on None."""
 		self.log.debug("Trader %s ship %s moving to warehouse (random=%s)", self.worldid, ship.worldid, \
 		               (warehouse is None))
-		# maybe this kind of list should be saved somewhere, as this is pretty performance intense
+		#TODO maybe this kind of list should be saved somewhere, as this is pretty performance intense
 		warehouses = self.session.world.get_warehouses()
-		if len(warehouses) == 0:
-			# there aren't any warehouses, so move randomly
+		if len(warehouses) == 0: # there aren't any warehouses, move randomly
 			self.send_ship_random(ship)
-		else:
-			# select a warehouse
+		else: # select a warehouse
 			if warehouse is None:
-				rand = self.session.random.randint(0, len(warehouses)-1)
-				self.office[ship.worldid] = warehouses[rand]
+				self.office[ship.worldid] = self.session.random.choice(warehouses)
 			else:
 				self.office[ship.worldid] = warehouse
-			# try to find a possible position near the warehouse
-
-			if self.office[ship.worldid] == None:
-				# DEBUG output for http://trac.unknown-horizons.org/t/ticket/958
-				print "warehouse: ", warehouse
-				print "offices: ", [ str(i) for i in warehouses ]
-				print "self.office: ", self.office
-				print "ship wid: ", ship.worldid
-				print "ship: ", ship
-
-			try:
+			try: # try to find a possible position near the warehouse
 				ship.move(Circle(self.office[ship.worldid].position.center(), ship.radius), Callback(self.reached_warehouse, ship))
 				self.ships[ship] = self.shipStates.moving_to_warehouse
 			except MoveNotPossible:
 				self.send_ship_random(ship)
 
 	def reached_warehouse(self, ship):
-		"""Actions that need to be taken when reaching a warehouse
+		"""Actions that need to be taken when reaching a warehouse:
+		Sell demanded res, buy offered res, simulate load/unload, continue route.
 		@param ship: ship instance"""
 		self.log.debug("Trader %s ship %s: reached warehouse", self.worldid, ship.worldid)
 		settlement = self.office[ship.worldid].settlement
@@ -219,14 +207,14 @@ class Trader(GenericAI):
 			self.log.debug("Trader %s: offered buy %s tons of res %s", self.worldid, amount, res)
 
 		del self.office[ship.worldid]
-		# wait 2 seconds before going on to the next island
+		# wait a few seconds before going on to simulate loading/unloading process
 		Scheduler().add_new_object(Callback(self.ship_idle, ship), self, \
 		                           Scheduler().get_ticks(TRADER.TRADING_DURATION))
 		self.ships[ship] = self.shipStates.reached_warehouse
 
 	def ship_idle(self, ship):
-		"""Called if a ship is idle. Sends ship to a random place or  warehouse (which target
-		to use is decided by chance, probability for warehouse (BUSINESS_S.) is 2/3 by default)
+		"""Called if a ship is idle. Sends ship to either a random place or warehouse.
+		Probability for 'random warehouse' in percent: TRADER.BUSINESS_SENSE.
 		@param ship: ship instance"""
 		if self.session.random.randint(0, 100) < TRADER.BUSINESS_SENSE:
 			# delay one tick, to allow old movement calls to completely finish
