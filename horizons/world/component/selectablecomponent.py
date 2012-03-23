@@ -132,8 +132,8 @@ class SelectableBuildingComponent(SelectableComponent):
 
 	def initialize(self):
 		# check for related buildings (defined in db, not yaml)
-		related_building = self.session.db.get_related_building_ids(self.instance.id)
-		if len(related_building) > 0:
+		related_buildings = self.session.db.get_related_building_ids_for_menu(self.instance.id)
+		if len(related_buildings) > 0:
 			from horizons.gui.tabs import BuildRelatedTab
 			self.tabs += (BuildRelatedTab,)
 
