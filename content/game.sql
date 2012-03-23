@@ -616,4 +616,6 @@ INSERT INTO "status_icon_exclusions" VALUES(36);
 INSERT INTO "status_icon_exclusions" VALUES(45);
 INSERT INTO "status_icon_exclusions" VALUES(21);
 INSERT INTO "status_icon_exclusions" VALUES(32);
+INSERT INTO "status_icon_exclusions" VALUES(38);
+INSERT INTO "status_icon_exclusions" VALUES(39);
 INSERT INTO "status_icon_exclusions" VALUES(1000013);
