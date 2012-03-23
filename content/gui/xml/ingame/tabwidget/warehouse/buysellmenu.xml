@@ -11,7 +11,8 @@
 		<!-- Replaced with the buy/sell boxes. -->
 		<HBox size="250, 100"  position="23,47"  name="content"  padding="10" />
 		<Icon image="content/gui/images/background/hr.png"  position="20,105" />
-		<Label name="hint_label" position="20,120" max_size="230,180" wrap_text="1" />
+		<Label name="hint_label" position="17,120" wrap_text="1"
+			max_size="225,80" min_size="225,80" size="225,80" />
 
 		<Icon image="content/gui/images/background/hr.png"  position="20,180" />
 

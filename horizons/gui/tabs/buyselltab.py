@@ -360,15 +360,17 @@ class BuySellTab(TabInterface):
 		price = self.session.db.get_res_value(slot.res)
 		if action == "buy":
 			#xgettext:python-format
-			hint = _("Will buy {resource_name} for {price}gold/t whenever less than {limit}t are in stock.")
+			hint = _("Will buy {resource_name} for {price} gold/t whenever less than {limit}t are in stock.")
 			price *= TRADER.PRICE_MODIFIER_SELL
 		elif action == "sell":
 			#xgettext:python-format
-			hint = _("Will sell {resource_name} for {price}gold/t whenever more than {limit}t are available.")
+			hint = _("Will sell {resource_name} for {price} gold/t whenever more than {limit}t are available.")
 			price *= TRADER.PRICE_MODIFIER_BUY
 
 		hint = hint.format(limit=unicode(limit),
-		                   resource_name=_(self.session.db.get_res_name(slot.res)), price=price)
+		                   resource_name=_(self.session.db.get_res_name(slot.res)),
+		                   price=int(price))
+		# same price rounding as in tradepostcomponent
 		self._set_hint( hint )
 
 	def _set_hint(self, text):
