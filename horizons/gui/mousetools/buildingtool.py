@@ -395,7 +395,7 @@ class BuildingTool(NavigationTool):
 		radii = dict( [ (bid, Entities.buildings[bid].radius) for bid in ids ] )
 		max_radius = max(radii.itervalues())
 
-		for tile in settlement.get_tiles_in_radius(building.position, max_radius, include_self=False):
+		for tile in settlement.get_tiles_in_radius(building.position, max_radius, include_self=True):
 			if tile.object is not None and tile.object.id in ids:
 				related_building = tile.object
 				# check if it was actually this one's radius
