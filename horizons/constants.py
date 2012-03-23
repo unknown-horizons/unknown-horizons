@@ -291,15 +291,16 @@ class AI:
 	HUMAN_AI = False # whether the human player is controlled by the AI
 
 class TRADER: # check resource values: ./development/print_db_data.py res
-	PRICE_MODIFIER_BUY = 0.9  # buy for x times the resource value
-	PRICE_MODIFIER_SELL = 1.5 # sell for x times the resource value
+	PRICE_MODIFIER_BUY = 1.0  # buy for x times the resource value
+	PRICE_MODIFIER_SELL = 1.0 # sell for x times the resource value
 	TRADING_DURATION = 4 # seconds that trader stays at warehouse to simulate (un)loading
 
 	BUSINESS_SENSE = 50 # chance in percent to be sent to a warehouse instead of random spot
 
-	BUY_AMOUNT = (2, 8)  # amount range to buy/sell from settlement per resource
+	BUY_AMOUNT_MIN = 2  # amount range to buy/sell from settlement per resource
+	BUY_AMOUNT_MAX = 10
 	SELL_AMOUNT_MIN = 2
-	SELL_AMOUNT_MAX = 8
+	SELL_AMOUNT_MAX = 10
 
 # Taxes and Restrictions
 class SETTLER:

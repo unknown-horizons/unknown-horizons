@@ -211,7 +211,7 @@ class Trader(GenericAI):
 		# NOTE: must be sorted for mp games (same order everywhere)
 		for res in sorted(trade_comp.sell_list.iterkeys()):
 			# select a random amount to buy from the settlement
-			amount = self.session.random.randint(*TRADER.BUY_AMOUNT)
+			amount = self.session.random.randint(TRADER.BUY_AMOUNT_MIN, TRADER.BUY_AMOUNT_MAX)
 			if amount == 0:
 				continue
 			price = int(self.session.db.get_res_value(res) * TRADER.PRICE_MODIFIER_BUY * amount)
