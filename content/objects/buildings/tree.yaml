@@ -16,7 +16,7 @@ show_status_icons: false
 components:
 - HealthComponent: {maxhealth: 10}
 - ProducerComponent:
-    start_finished: True
+    start_finished: false
     productionlines:
       1:
         produces:

@@ -231,6 +231,9 @@ def add_nature_objects(world, natural_resource_multiplier):
 	FishDeposit = Entities.buildings[BUILDINGS.FISH_DEPOSIT_CLASS]
 	fish_directions = [(i, j) for i in xrange(-1, 2) for j in xrange(-1, 2)]
 
+	# TODO HACK BAD THING hack the component template to make trees start finished
+	Tree.component_templates[1]['ProducerComponent']['start_finished'] = True
+
 	# add trees, wild animals, and fish
 	for island in world.islands:
 		for (x, y), tile in sorted(island.ground_map.iteritems()):
@@ -252,6 +255,9 @@ def add_nature_objects(world, natural_resource_multiplier):
 					# now we have the location, check if we can build here
 					if (fish_x, fish_y) in world.ground_map:
 						Build(FishDeposit, fish_x, fish_y, world, 45 + world.session.random.randint(0, 3) * 90, ownerless = True)(issuer = None)
+
+	# TODO HACK BAD THING revert hack so trees don't start finished
+	Tree.component_templates[1]['ProducerComponent']['start_finished'] = False
 
 
 def get_random_possible_ground_unit_position(world):
