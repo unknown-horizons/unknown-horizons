@@ -53,8 +53,7 @@ class ConcreteObject(WorldObject):
 
 		# only buildings for now
 		# NOTE: this is player dependant, therefore there must be no calls to session.random that depend on this
-		self.has_status_icon = self.is_building and \
-		  not self.id in self.session.db.get_status_icon_exclusions() and \
+		self.has_status_icon = self.is_building and self.show_status_icons and \
 			self.owner == self.session.world.player # and only for the player's buildings
 
 	@property

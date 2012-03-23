@@ -318,11 +318,6 @@ class UhDbAccessor(DbReader):
 		# use set because of quick contains check
 		return frozenset( i[0] for i in self("SELECT type FROM translucent_buildings") )
 
-	@decorators.cachedmethod
-	def get_status_icon_exclusions(self):
-		return frozenset( i[0] for i in self("SELECT object_type FROM status_icon_exclusions") )
-
-
 	# Weapon table
 
 	def get_weapon_stackable(self, weapon_id):

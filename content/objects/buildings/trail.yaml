@@ -12,6 +12,7 @@ button_name: street-1
 tooltip_text: _ Needed for collecting goods.
 settler_level: 0
 buildingcosts: {1: 5}
+show_status_icons: false
 components:
 - HealthComponent: {maxhealth: 10}
 actionsets:

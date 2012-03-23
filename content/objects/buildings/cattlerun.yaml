@@ -12,6 +12,7 @@ button_name: cattlerun-1
 tooltip_text: _ Raises cattle. Needs a farm.
 settler_level: 2
 buildingcosts: {1: 100, 4: 1}
+show_status_icons: false
 components:
 - HealthComponent: {maxhealth: 10}
 - ProducerComponent:

@@ -12,6 +12,7 @@ button_name: null
 tooltip_text: null
 settler_level: 0
 buildingcosts: {}
+show_status_icons: false
 components:
 - HealthComponent: {maxhealth: 10}
 - ProducerComponent:
