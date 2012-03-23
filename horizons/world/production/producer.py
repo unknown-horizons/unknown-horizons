@@ -350,7 +350,7 @@ class Producer(Component):
 				affected_res = set() # find them:
 				for prod in self.get_productions():
 					affected_res = affected_res.union( prod.get_unstorable_produced_res() )
-				self._producer_status_icon = InventoryFullStatus(affected_res, self.instance)
+				self._producer_status_icon = InventoryFullStatus(self.instance, affected_res)
 				self.session.message_bus.broadcast(AddStatusIcon(self, self._producer_status_icon))
 
 			if not full and hasattr(self, "_producer_status_icon"):

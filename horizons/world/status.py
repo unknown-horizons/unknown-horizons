@@ -37,15 +37,16 @@ Priority:
 Keep the numbers unique to avoid confusion when sorting.
 """
 class StatusIcon(object):
-	def __init__(self, priority, icon, instance):
+	# integer
+	priority = None
+	# fife identifier for animations or icons. Must be supported by either the animationloader
+	# or the imagemanager. (i.e. either file path or something like "as_buoy0+idle+45")
+	icon = None
+
+	def __init__(self, instance):
 		"""
-		@param priority: integer
-		@param icon: fife identifier for animations or icons. Must be supported by either the animationloader
-								 or the imagemanager. (i.e. either file path or something like "as_buoy0+idle+45")
 		@param instance: the instance the icon is to be attached to
 		"""
-		self.priority = priority
-		self.icon = icon
 		self.instance = instance
 
 	@staticmethod
@@ -66,28 +67,35 @@ class StatusIcon(object):
 
 class FireStatusIcon(StatusIcon):
 	""" Fire disaster """
-	def __init__(self, instance):
-		super(FireStatusIcon, self).__init__( 3000, "as_on_fire+idle+45", instance)
+	priority = 3000
+	icon = 'as_on_fire+idle+45'
+
 
 class SettlerUnhappyStatus(StatusIcon):
 	# threshold is the inhabitants decrease level
-	def __init__(self, instance):
-		super(SettlerUnhappyStatus, self).__init__( 1700, "as_attention_please+idle+45", instance)
+	priority = 1700
+	icon = 'as_attention_please+idle+45'
+
 
 class InventoryFullStatus(StatusIcon):
-	def __init__(self, reslist, instance):
+	priority = 1200
+	icon = 'as_inventory_full+idle+45'
+
+	def __init__(self, instance, reslist):
 		"""
 		@param reslist: list of integers describing the resources
 		"""
-		super(InventoryFullStatus, self).__init__( 1200, "as_inventory_full+idle+45", instance)
+		super(InventoryFullStatus, self).__init__(instance)
 		self.reslist = reslist
+
 
 class ProductivityLowStatus(StatusIcon):
 	"""Terminology: productivity = capacity utilisation"""
 	threshold = 0.25 # display when productivity lower than this
-	def __init__(self, instance):
-		super(ProductivityLowStatus, self).__init__( 400, "as_attention_please+idle+45", instance)
+	priority = 400
+	icon = 'as_attention_please+idle+45'
+
 
 class DecommissionedStatus(StatusIcon):
-	def __init__(self, instance):
-		super(DecommissionedStatus, self).__init__( 800, "as_decommissioned+idle+45", instance)
+	priority = 800
+	icon = 'as_decommissioned+idle+45'
