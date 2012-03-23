@@ -52,7 +52,7 @@ class SettingsHandler(object):
 	def add_settings(self):
 
 		# TODO: find a way to apply changing to a running game in a clean fashion
-		#       possibility: use singaling via changelistener
+		#       possibility: use signaling via changelistener
 		def update_minimap(*args):
 			try: horizons.main._modules.session.ingame_gui.minimap.draw()
 			except AttributeError: pass # session or gui not yet initialised
@@ -97,6 +97,9 @@ class SettingsHandler(object):
 		self._setting.entries[FIFE_MODULE]['PlaySounds'].requiresrestart = False
 
 		self._setting.entries[FIFE_MODULE]['RenderBackend'].applyfunction = lambda x: self._show_renderbackend_warning()
+
+		self._setting.createAndAddEntry(FIFE_MODULE, "FrameLimit", "fps_rate",
+				                        initialdata=[30, 45, 60, 90, 120], requiresrestart=True)
 
 		self._setting.createAndAddEntry(FIFE_MODULE, "MouseSensitivity", "mousesensitivity", \
 				                        #read comment in set_mouse_sensitivity function about this

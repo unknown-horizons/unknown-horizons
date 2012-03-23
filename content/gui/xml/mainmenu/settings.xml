@@ -46,6 +46,14 @@
 			</ScrollArea>
 		</VBox>
 
+		<VBox>
+			<Label name="fps_label" text="Framerate limit:"
+				wrap_text="1" helptext="Set the maximum framerate used. (default: 60)" />
+			<ScrollArea min_size="80,60" >
+				<ListBox name="fps_rate" />
+			</ScrollArea>
+		</VBox>
+
 		<VBox name="mouse_settings" padding="2">
 			<Label name="headline_mouse" text="Mouse" font="headline" position_technique="automatic" />
 			<Icon image="content/gui/images/background/hr.png" />
