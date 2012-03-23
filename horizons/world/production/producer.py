@@ -165,9 +165,6 @@ class Producer(Component):
 			assert isinstance(production, Production)
 			production.load(db, worldid)
 			self.add_production(production)
-			# Listener has been removed in the productions.load(), because the
-			# changelistener's load is called
-			production.add_change_listener(self._on_production_change, call_listener_now=False)
 
 	def save(self, db):
 		super(Producer, self).save(db)
@@ -188,7 +185,11 @@ class Producer(Component):
 			self.log.debug('%s: added production line %s is active', self, production.get_production_line_id())
 			self._productions[production.get_production_line_id()] = production
 		production.add_production_finished_listener(self._production_finished)
-		# this would be called multiple times during init, just add it later this tick.
+		# This would be called multiple times during init, just add it later this tick.
+		# It also ensures that the changelistener would stick, we used to readd
+		# the listener in load(), which was explained by this comment:
+			# Listener has been removed in the productions.load(), because the
+			# changelistener's load is called
 		Scheduler().add_new_object(
 		  Callback(production.add_change_listener, self._on_production_change, call_listener_now=True), self, run_in=0
 		)
