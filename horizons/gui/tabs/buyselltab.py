@@ -31,6 +31,7 @@ from horizons.gui.widgets.tradehistoryitem import TradeHistoryItem
 from horizons.util import Callback, WorldObject
 from horizons.util.gui import load_uh_widget, get_res_icon, create_resource_selection_dialog
 from horizons.world.component.tradepostcomponent import TradePostComponent
+from horizons.constants import TRADER
 
 class BuySellTab(TabInterface):
 	"""
@@ -356,15 +357,18 @@ class BuySellTab(TabInterface):
 		slot = self.slots[slot_id]
 		limit = int( slot.findChild(name="slider").value )
 		action = slot.action
+		price = self.session.db.get_res_value(slot.res)
 		if action == "buy":
 			#xgettext:python-format
-			hint = _("Will buy {resource_name} whenever less than {limit}t are in stock.")
+			hint = _("Will buy {resource_name} for {price}gold/t whenever less than {limit}t are in stock.")
+			price *= TRADER.PRICE_MODIFIER_SELL
 		elif action == "sell":
 			#xgettext:python-format
-			hint = _("Will sell {resource_name} whenever more than {limit}t are available.")
+			hint = _("Will sell {resource_name} for {price}gold/t whenever more than {limit}t are available.")
+			price *= TRADER.PRICE_MODIFIER_BUY
 
 		hint = hint.format(limit=unicode(limit),
-		                   resource_name=_(self.session.db.get_res_name(slot.res)))
+		                   resource_name=_(self.session.db.get_res_name(slot.res)), price=price)
 		self._set_hint( hint )
 
 	def _set_hint(self, text):
