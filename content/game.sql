@@ -192,8 +192,8 @@ INSERT INTO "related_buildings" VALUES(3,5, 1);
 INSERT INTO "related_buildings" VALUES(3,21, 1);
 INSERT INTO "related_buildings" VALUES(3,32, 1);
 INSERT INTO "related_buildings" VALUES(3,42, 0); --hidden for 2012.1, show afterwards!
-INSERT INTO "related_buildings" VALUES(3,45, 1);
 INSERT INTO "related_buildings" VALUES(6,1, 0);
+INSERT INTO "related_buildings" VALUES(45, 3, 0);
 CREATE TABLE mine(mine INTEGER NOT NULL, deposit NOT NULL);
 INSERT INTO "mine" VALUES(25,23);
 INSERT INTO "mine" VALUES(28,34);
