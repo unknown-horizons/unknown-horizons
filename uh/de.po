@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2012-03-24 02:16+0100\n"
-"PO-Revision-Date: 2012-03-24 01:41+0200\n"
+"PO-Revision-Date: 2012-03-25 01:32+0200\n"
 "Last-Translator: Christopher Oelmueller <chris.oelmueller+uh@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: de\n"
@@ -1327,23 +1327,27 @@ msgstr "Klick fügt neuen Slot hinzu"
 #: horizons/gui/widgets/resourceoverviewbar.py:389
 #: horizons/gui/widgets/resourceoverviewbar.py:394
 msgid "Reset to default"
-msgstr ""
+msgstr "Auf Standard zurücksetzen"
 
 #: horizons/gui/widgets/resourceoverviewbar.py:390
 msgid "Reset this configuration to the factory default."
-msgstr ""
+msgstr "Diese Konfiguration auf Werkseinstellung zurücksetzen."
 
 #: horizons/gui/widgets/resourceoverviewbar.py:395
 msgid "Reset this settlement's displayed resources to the default configuration you have saved."
 msgstr ""
+"Das Rohstoffpanel dieser Siedlung auf die gespeicherte Einstellung "
+"zurücksetzen."
 
 #: horizons/gui/widgets/resourceoverviewbar.py:399
 msgid "Reset to factory"
-msgstr ""
+msgstr "Zurück auf Werkseinstellung"
 
 #: horizons/gui/widgets/resourceoverviewbar.py:400
 msgid "Reset the default configuration (which you see here) to the factory default for all settlements."
 msgstr ""
+"Die hier angezeigte Konfiguration für alle Siedlungen auf Werkseinstellung "
+"zurücksetzen."
 
 #. (helptext of widget: start_route) Trade route
 #: horizons/gui/widgets/routeconfig.py:88 horizons/i18n/guitranslations.py:642
@@ -1960,12 +1964,12 @@ msgstr "Produktion fortsetzen"
 #. (text of widget: make_default_btn)
 #: horizons/i18n/guitranslations.py:568
 msgid "Save as default"
-msgstr ""
+msgstr "Als Standard speichern"
 
 #. (text of widget: reset_default_btn)
 #: horizons/i18n/guitranslations.py:570
 msgid "Restore default"
-msgstr ""
+msgstr "Standard wiederherstellen"
 
 # 94%
 #. (text of widget: headline) Please keep the translation similarly short and concise, else the tooltip is not well understood by players.
@@ -1976,12 +1980,12 @@ msgstr "Ware auswählen:"
 #. (helptext of widget: make_default_btn)
 #: horizons/i18n/guitranslations.py:574
 msgid "Save current resource configuration as default for all settlements."
-msgstr ""
+msgstr "Aktuelles Rohstoffpanel als Standard für alle Siedlungen speichern."
 
 #. (helptext of widget: reset_default_btn)
 #: horizons/i18n/guitranslations.py:576
 msgid "Reset default resource configuration for all settlements."
-msgstr ""
+msgstr "Rohstoffpanel aller Siedlungen zurücksetzen."
 
 #. (helptext of widget: headline) Please keep the translation similarly short and concise, else the tooltip is not well understood by players.
 #: horizons/i18n/guitranslations.py:578
@@ -3606,7 +3610,7 @@ msgstr "Der Boden ist nicht für dieses Gebäude geeignet."
 #: horizons/world/building/buildable.py:38
 #: horizons/world/building/buildable.py:40
 msgid "You can only build this within your settlement."
-msgstr "Sie können dieses nur in Ihrer Siedlung bauen."
+msgstr "Ihr könnt dies nur innerhalb der Grenzen Eurer Siedlung bauen."
 
 #: horizons/world/building/buildable.py:39
 msgid "This area is already occupied."
@@ -3614,15 +3618,15 @@ msgstr "Dieser Bereich ist bereits besetzt."
 
 #: horizons/world/building/buildable.py:41
 msgid "Another player has already occupied this island."
-msgstr "Ein anderer Spieler hat bereits die Insel besetzt."
+msgstr "Ein anderer Spieler hat bereits diese Insel besiedelt."
 
 #: horizons/world/building/buildable.py:42
 msgid "You can't build this on top of another building."
-msgstr "Ihr könnt nicht dieses auf einem anderen Gebäude bauen."
+msgstr "Ihr könnt nicht auf einem anderen Gebäude bauen."
 
 #: horizons/world/building/buildable.py:43
 msgid "You can't build this on top of a unit."
-msgstr "Ihr könnt nicht dieses auf einer anderen Einheit bauen."
+msgstr "Ihr könnt nicht auf einer anderen Einheit bauen."
 
 #: horizons/world/building/buildable.py:44
 msgid "This building must be built on the coastline."
@@ -3638,7 +3642,7 @@ msgstr "Bauplatz ist zu weit von Eurem Schiff entfernt."
 
 #: horizons/world/building/buildable.py:47
 msgid "This building can only be built on a resource source."
-msgstr "Dieses Gebäude kann nur auf einer Ressourcen Quelle gebaut werden."
+msgstr "Dieses Gebäude kann nur auf einem Rohstoffvorkommen errichtet werden."
 
 #: horizons/world/component/tradepostcomponent.py:178
 msgid "The trade partner does not sell this."
