@@ -19,6 +19,7 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
+import itertools
 
 from tests.gui import gui_test, TestFinished
 from tests.gui.helper import get_player_ship
@@ -102,5 +103,78 @@ def test_build_a_settlement(gui):
 	# Build a tent
 	gui.trigger('tab', 'button_1/action/default')
 	gui.cursor_click(58, 5, 'left')
+
+	yield TestFinished
+
+
+@gui_test(use_dev_map=True, timeout=120)
+def test_buildingtool(gui):
+	"""
+	Trigger different buildingtool highlights
+	"""
+	yield # test needs to be a generator for now
+
+	ship = get_player_ship(gui.session)
+
+	gui.select([ship])
+
+	# Move ship
+	gui.cursor_click(57, 0, 'right')
+
+	# Wait for ship to arrive
+	while (ship.position.x, ship.position.y) != (57, 0):
+		yield
+
+	gui.trigger('overview_trade_ship', 'found_settlement/action/default')
+
+	def build_at(target):
+		# build while moving around cursor beforehand
+		OFFSETS = [ 0, 1, -1, 2, -2, 5, -5, 20, -20 ] # don't add more, takes long enough already
+		for off_x, off_y in itertools.product( OFFSETS, repeat=2 ):
+			# will trigger preview_build of BuildingTool
+			gui.cursor_move( target[0]+off_x, target[1]+off_y )
+		gui.cursor_click(target[0], target[1], 'left')
+
+	# Place warehouse
+	build_at( (56, 3) )
+	assert gui.session.world.settlements
+
+	# Select buildmenu
+	gui.trigger('mainhud', 'build/action/default')
+
+	# Select fisher
+	gui.trigger('tab', 'button_26/action/default')
+
+	# Place fisher
+	build_at( (52, 3) )
+
+
+	# Build lumberjack
+	gui.trigger('tab', 'button_5/action/default')
+	build_at( (52, 6) )
+
+	# Build main square
+	gui.trigger('tab', 'button_3/action/default')
+	build_at( (53, 11) )
+
+	# Select path
+	gui.trigger('tab', 'button_21/action/default')
+
+	# Build some paths
+	for i in xrange(6, 13):
+		build_at( (57, i) )
+	gui.cursor_click(54, 7, 'right') # cancel
+
+	# Build a tent
+	gui.trigger('tab', 'button_1/action/default')
+	build_at( (58, 7) )
+
+	# Select pavilion (tent highlights
+	gui.trigger('tab', 'button_4/action/default')
+	build_at( (58, 5) )
+
+	# Build a tent (pavilion highlights
+	gui.trigger('tab', 'button_1/action/default')
+	build_at( (58, 9) )
 
 	yield TestFinished
