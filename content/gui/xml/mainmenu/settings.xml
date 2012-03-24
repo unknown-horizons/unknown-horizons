@@ -49,7 +49,7 @@
 
 		<VBox>
 			<Label name="fps_label" text="Framerate limit:"
-				wrap_text="1" helptext="Set the maximum framerate used. (default: 60)" />
+				wrap_text="1" helptext="Set the maximum framerate used. Default: 60 fps." />
 			<ScrollArea min_size="80,60" >
 				<ListBox name="fps_rate" />
 			</ScrollArea>
@@ -64,7 +64,8 @@
 
 			 <HBox>
 				<Label name="mouse_sensitivity_label" text="Mouse sensitivity:"
-					wrap_text="1" max_size="250,40"  min_size="250,20" helptext="0 is default system settings" />
+					wrap_text="1" max_size="250,40"  min_size="250,20"
+					helptext="0 is default system settings" />
 				<Label text="" name="mousesensitivity_value" />
 			 </HBox>
 			 <Slider size="300,20" name="mousesensitivity"
