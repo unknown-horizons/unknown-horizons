@@ -48,8 +48,8 @@
 		</VBox>
 
 		<VBox>
-			<Label name="fps_label" text="Framerate limit:"
-				wrap_text="1" helptext="Set the maximum framerate used. Default: 60 fps." />
+			<Label name="fps_label" text="Frame rate limit:"
+				wrap_text="1" helptext="Set the maximum frame rate used. Default: 60 fps." />
 			<ScrollArea min_size="80,60" >
 				<ListBox name="fps_rate" />
 			</ScrollArea>
