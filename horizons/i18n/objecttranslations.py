@@ -328,8 +328,10 @@ def set_translations():
 		},
 
 	"content/objects/buildings/storagetent.yaml" : {
-		# name of buildings:storagetent
-		"name"                        : _("Storage Tent"),
+		# name_0 of buildings:storagetent
+		"name_0"                      : _("Storage Tent"),
+		# name_1 of buildings:storagetent
+		"name_1"                      : _("Storage Hut"),
 		# tooltip_text of buildings:storagetent
 		"tooltip_text"                : _("Extends stock and provides collectors."),
 		},
@@ -349,8 +351,18 @@ def set_translations():
 		},
 
 	"content/objects/buildings/tent.yaml" : {
-		# name of buildings:tent
-		"name"                        : _("Tent"),
+		# name_0 of buildings:tent
+		"name_0"                      : _("Tent"),
+		# name_1 of buildings:tent
+		"name_1"                      : _("Hut"),
+		# name_2 of buildings:tent
+		"name_2"                      : _("House"),
+		# name_3 of buildings:tent
+		"name_3"                      : _("Stone house"),
+		# name_4 of buildings:tent
+		"name_4"                      : _("Estate"),
+		# name_5 of buildings:tent
+		"name_5"                      : _("Manor"),
 		# tooltip_text of buildings:tent
 		"tooltip_text"                : _("Houses your inhabitants."),
 		},
@@ -408,7 +420,7 @@ def set_translations():
 		# name of buildings:vintner
 		"name"                        : _("Vintner"),
 		# tooltip_text of buildings:vintner
-		"tooltip_text"                : _("Produces wine and sultanas out of grapes."),
+		"tooltip_text"                : _("Produces wine out of grapes."),
 		},
 
 	"content/objects/buildings/warehouse.yaml" : {
@@ -418,7 +430,7 @@ def set_translations():
 
 	"content/objects/buildings/weaverstent.yaml" : {
 		# name of buildings:weaverstent
-		"name"                        : _("Weaver's Tent"),
+		"name"                        : _("Weaver's Hut"),
 		# tooltip_text of buildings:weaverstent
 		"tooltip_text"                : _("Turns lamb wool into cloth."),
 		},
