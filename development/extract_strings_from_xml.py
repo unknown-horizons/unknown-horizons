@@ -165,6 +165,7 @@ def content_from_file(filename):
 \
 		content_from_element('Button', parsed, 'helptext') + \
 		content_from_element('Icon', parsed, 'helptext') + \
+		content_from_element('ImageButton', parsed, 'helptext') + \
 		content_from_element('Label', parsed, 'helptext') + \
 		content_from_element('ProgressBar', parsed, 'helptext') + \
 		content_from_element('ToggleImageButton', parsed, 'helptext')
