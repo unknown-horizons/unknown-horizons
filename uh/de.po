@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
-"POT-Creation-Date: 2012-03-24 01:22+0100\n"
-"PO-Revision-Date: 2012-03-24 01:39+0200\n"
+"POT-Creation-Date: 2012-03-24 02:16+0100\n"
+"PO-Revision-Date: 2012-03-24 01:41+0200\n"
 "Last-Translator: Christopher Oelmueller <chris.oelmueller+uh@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: de\n"
@@ -48,8 +48,7 @@ msgstr "Kann hier nicht hingehen."
 # 75%
 #. (text of widget: headline)
 #. This is a database entry: the name of an inhabitant increment (tier / level).
-#: database files horizons/gui/tabs/mainsquaretabs.py:250
-#: horizons/i18n/guitranslations.py:224 sql
+#: database files horizons/i18n/guitranslations.py:224 sql
 msgid "Citizens"
 msgstr "Bürger"
 
@@ -85,9 +84,8 @@ msgstr "Bildschirmfoto wurde unter {file} gespeichert."
 #. (text of widget: headline)
 #. (text of widget: settler_score)
 #. This is a database entry: the name of an inhabitant increment (tier / level).
-#: database files horizons/gui/tabs/mainsquaretabs.py:241
-#: horizons/i18n/guitranslations.py:336 horizons/i18n/guitranslations.py:664
-#: sql
+#: database files horizons/i18n/guitranslations.py:336
+#: horizons/i18n/guitranslations.py:664 sql
 msgid "Settlers"
 msgstr "Siedler"
 
@@ -629,9 +627,10 @@ msgstr "Die eingestellte Sprache {lang} konnte nicht geladen werden"
 msgid "Logging enabled"
 msgstr "Spielverlaufsprotokolle aktiviert"
 
-#: horizons/engine/settingshandler.py:313
-msgid "I'm going to write logs in {dir}."
-msgstr "Dateien werden nach {dir} geschrieben."
+#: horizons/engine/settingshandler.py:314
+#, python-format
+msgid "Logs are written to {directory}."
+msgstr "Dateien werden nach {directory} geschrieben."
 
 #: horizons/gui/gui.py:207
 msgid "Are you sure you want to quit Unknown Horizons?"
@@ -1061,34 +1060,34 @@ msgstr "Auftrag bestätigen"
 msgid "Build related fields"
 msgstr "Zugehörige Felder"
 
-#: horizons/gui/tabs/buildtabs.py:125
+#: horizons/gui/tabs/buildtabs.py:110
 msgid "Residents and infrastructure"
 msgstr "Wohnbauten und Infrastruktur"
 
-#: horizons/gui/tabs/buildtabs.py:126 horizons/gui/tabs/buildtabs.py:132
-#: horizons/gui/tabs/buildtabs.py:139
+#: horizons/gui/tabs/buildtabs.py:111 horizons/gui/tabs/buildtabs.py:117
+#: horizons/gui/tabs/buildtabs.py:124
 msgid "Services"
 msgstr "Grundversorgung"
 
-#: horizons/gui/tabs/buildtabs.py:127 horizons/gui/tabs/buildtabs.py:130
-#: horizons/gui/tabs/buildtabs.py:137 horizons/gui/tabs/buildtabs.py:147
+#: horizons/gui/tabs/buildtabs.py:112 horizons/gui/tabs/buildtabs.py:115
+#: horizons/gui/tabs/buildtabs.py:122 horizons/gui/tabs/buildtabs.py:128
 msgid "Companies"
 msgstr "Betriebe"
 
-#: horizons/gui/tabs/buildtabs.py:131 horizons/gui/tabs/buildtabs.py:138
-#: horizons/gui/tabs/buildtabs.py:148
+#: horizons/gui/tabs/buildtabs.py:116 horizons/gui/tabs/buildtabs.py:123
+#: horizons/gui/tabs/buildtabs.py:129
 msgid "Fields"
 msgstr "Felder"
 
-#: horizons/gui/tabs/buildtabs.py:133 horizons/gui/tabs/buildtabs.py:143
+#: horizons/gui/tabs/buildtabs.py:118
 msgid "Military"
 msgstr "Militär"
 
-#: horizons/gui/tabs/buildtabs.py:136
+#: horizons/gui/tabs/buildtabs.py:121
 msgid "Mining"
 msgstr "Bergbau"
 
-#: horizons/gui/tabs/buildtabs.py:168
+#: horizons/gui/tabs/buildtabs.py:149
 msgid "Increment {increment}"
 msgstr "Stufe {increment}"
 
@@ -2557,9 +2556,10 @@ msgstr "Am Kartenrand scrollen:"
 msgid "Effects volume:"
 msgstr "Effektlautstärke:"
 
+# 94%
 #. (text of widget: fps_label)
 #: horizons/i18n/guitranslations.py:897
-msgid "Framerate limit:"
+msgid "Frame rate limit:"
 msgstr "Max. Bildfrequenz:"
 
 #. (text of widget: headline_language)
@@ -2677,8 +2677,8 @@ msgstr "Die Karte verschieben, wenn sich der Mauszeiger am Kartenrand befindet"
 
 #. (helptext of widget: fps_label)
 #: horizons/i18n/guitranslations.py:949
-msgid "Set the maximum framerate used. (default: 60)"
-msgstr "Maximalgrenze der Bildwiederholrate. (Standardeinstellung: 60)"
+msgid "Set the maximum frame rate used. Default: 60 fps."
+msgstr "Maximalgrenze der Bildwiederholrate. Standardeinstellung: 60 fps."
 
 #. (helptext of widget: minimap_rotation_label)
 #: horizons/i18n/guitranslations.py:951
@@ -2830,23 +2830,33 @@ msgstr "Bienenstöcke"
 msgid "Keeps bees. Produces honeycombs used for confectionery. Needs a farm."
 msgstr "Beherbergt Bienen. Erzeugt Waben für Süßwaren. Benötigt eine Farm."
 
-#. name of buildings:barracks
+#. name of buildings:bakery
 #: horizons/i18n/objecttranslations.py:60
+msgid "Bakery"
+msgstr "Bäckerei"
+
+#. tooltip_text of buildings:bakery
+#: horizons/i18n/objecttranslations.py:62
+msgid "Consumes flour. Produces food."
+msgstr "Verbraucht Mehl. Produziert Nahrung."
+
+#. name of buildings:barracks
+#: horizons/i18n/objecttranslations.py:67
 msgid "Barracks"
 msgstr "Kaserne"
 
 #. tooltip_text of buildings:barracks
-#: horizons/i18n/objecttranslations.py:62
+#: horizons/i18n/objecttranslations.py:69
 msgid "Recruits units suitable for ground combat."
 msgstr "Rekrutiert Einheiten, die für den Bodenkampf geeignet sind."
 
 #. name of buildings:blender
-#: horizons/i18n/objecttranslations.py:67
+#: horizons/i18n/objecttranslations.py:74
 msgid "Blender"
 msgstr "Gewürzmischer"
 
 #. tooltip_text of buildings:blender
-#: horizons/i18n/objecttranslations.py:69
+#: horizons/i18n/objecttranslations.py:76
 msgid "Produces condiments out of spices."
 msgstr "Produziert Würzmittel aus Gewürzen."
 
@@ -2856,504 +2866,551 @@ msgstr "Produziert Würzmittel aus Gewürzen."
 #
 # Here: Bootsbauer => Schiffbauer
 #. name of buildings:boatbuilder
-#: horizons/i18n/objecttranslations.py:74
+#: horizons/i18n/objecttranslations.py:81
 msgid "Boat Builder"
 msgstr "Bootsbauer"
 
 #. tooltip_text of buildings:boatbuilder
-#: horizons/i18n/objecttranslations.py:76
+#: horizons/i18n/objecttranslations.py:83
 msgid "Builds boats and small ships. Built on coast."
 msgstr "Baut Boote und kleine Schiffe. Muss an der Küste errichtet werden."
 
 # Building
 #. name of buildings:brickyard
-#: horizons/i18n/objecttranslations.py:81
+#: horizons/i18n/objecttranslations.py:88
 msgid "Brickyard"
 msgstr "Ziegelei"
 
 #. tooltip_text of buildings:brickyard
-#: horizons/i18n/objecttranslations.py:83
+#: horizons/i18n/objecttranslations.py:90
 msgid "Turns clay into bricks."
 msgstr "Verarbeitet Lehm zu Ziegelsteinen."
 
 #. name of buildings:butchery
-#: horizons/i18n/objecttranslations.py:88
+#: horizons/i18n/objecttranslations.py:95
 msgid "Butchery"
 msgstr "Metzgerei"
 
 #. tooltip_text of buildings:butchery
-#: horizons/i18n/objecttranslations.py:90
+#: horizons/i18n/objecttranslations.py:97
 msgid "Needs pigs or cattle. Produces food."
 msgstr "Verwertet Schlachtvieh zu Nahrung."
 
 #. name of buildings:cattlerun
-#: horizons/i18n/objecttranslations.py:95
+#: horizons/i18n/objecttranslations.py:102
 msgid "Cattle Run"
 msgstr "Viehweide"
 
 #. tooltip_text of buildings:cattlerun
-#: horizons/i18n/objecttranslations.py:97
+#: horizons/i18n/objecttranslations.py:104
 msgid "Raises cattle. Needs a farm."
 msgstr "Zieht Schlachtvieh auf. Benötigt eine Farm."
 
 #. name of buildings:charcoalburning
-#: horizons/i18n/objecttranslations.py:102
+#: horizons/i18n/objecttranslations.py:109
 msgid "Charcoal Burning"
 msgstr "Kohlemeiler"
 
 #. tooltip_text of buildings:charcoalburning
-#: horizons/i18n/objecttranslations.py:104
+#: horizons/i18n/objecttranslations.py:111
 msgid "Burns a lot of boards to charcoal."
 msgstr "Verbrennt eine Menge Bretter zu Holzkohle."
 
 # Building
 #. name of buildings:claydeposit
-#: horizons/i18n/objecttranslations.py:109
+#: horizons/i18n/objecttranslations.py:116
 msgid "Clay Deposit"
 msgstr "Lehmvorkommen"
 
 # Building
 #. name of buildings:claypit
-#: horizons/i18n/objecttranslations.py:114
+#: horizons/i18n/objecttranslations.py:121
 msgid "Clay Pit"
 msgstr "Lehmgrube"
 
 #. tooltip_text of buildings:claypit
-#: horizons/i18n/objecttranslations.py:116
+#: horizons/i18n/objecttranslations.py:123
 msgid "Gets clay from deposit."
 msgstr "Fördert Lehm aus Lehmvorkommen."
 
 #. name of buildings:cocoafield
-#: horizons/i18n/objecttranslations.py:121
+#: horizons/i18n/objecttranslations.py:128
 msgid "Cocoa Field"
 msgstr "Kakaofeld"
 
 #. tooltip_text of buildings:cocoafield
-#: horizons/i18n/objecttranslations.py:123
+#: horizons/i18n/objecttranslations.py:130
 msgid "Produces cocoa beans used for confectionery. Needs a farm."
 msgstr "Produziert Kakaobohnen für Süßwaren. Benötigt eine Farm."
 
 #. name of buildings:cornfield
-#: horizons/i18n/objecttranslations.py:128
+#: horizons/i18n/objecttranslations.py:135
 msgid "Corn Field"
 msgstr "Maisfeld"
 
 # 88%
 #. tooltip_text of buildings:cornfield
-#: horizons/i18n/objecttranslations.py:130
+#: horizons/i18n/objecttranslations.py:137
 msgid "Yields corn. Needs a farm."
 msgstr "Produziert Nahrung. Benötigt eine Farm."
 
 #. name of buildings:distillery
-#: horizons/i18n/objecttranslations.py:135
+#: horizons/i18n/objecttranslations.py:142
 msgid "Distillery"
 msgstr "Brennerei"
 
 #. tooltip_text of buildings:distillery
-#: horizons/i18n/objecttranslations.py:137
+#: horizons/i18n/objecttranslations.py:144
 msgid "Turns sugar into liquor."
 msgstr "Zuckerrohr wird hier zu Spirituosen veredelt."
 
 #. name of buildings:doctor
-#: horizons/i18n/objecttranslations.py:142
+#: horizons/i18n/objecttranslations.py:149
 msgid "Doctor"
 msgstr "Arzt"
 
 #. tooltip_text of buildings:doctor
-#: horizons/i18n/objecttranslations.py:144
+#: horizons/i18n/objecttranslations.py:151
 msgid "Treats diseases. Consumes herbs."
 msgstr "Behandelt Seuchen. Verbraucht Heilkräuter."
 
+#. name of buildings:farm
+#: horizons/i18n/objecttranslations.py:156
+msgid "Farm"
+msgstr "Farm"
+
+#. tooltip_text of buildings:farm
+#: horizons/i18n/objecttranslations.py:158
+msgid "Grows field crops and raises livestock."
+msgstr "Bewirtschaftet Felder und hält Nutztiere."
+
+#. name of buildings:fireservice
+#: horizons/i18n/objecttranslations.py:163
+msgid "Fire Station"
+msgstr "Feuerwehr"
+
+#. tooltip_text of buildings:fireservice
+#: horizons/i18n/objecttranslations.py:165
+msgid "Extinguishes fires."
+msgstr "Löscht Brände."
+
 #. name of buildings:fishdeposit
-#: horizons/i18n/objecttranslations.py:149
+#: horizons/i18n/objecttranslations.py:170
 msgid "Fish Deposit"
 msgstr "Fischgrund"
 
 #. name of buildings:fishermanstent
-#: horizons/i18n/objecttranslations.py:154
+#: horizons/i18n/objecttranslations.py:175
 msgid "Fisherman's Tent"
 msgstr "Fischer"
 
 # FIXME: Sammelt?
 #. tooltip_text of buildings:fishermanstent
-#: horizons/i18n/objecttranslations.py:156
+#: horizons/i18n/objecttranslations.py:177
 msgid "Fishes the sea, produces food."
 msgstr "Befischt die See, produziert Nahrung."
 
 #. name of buildings:gravelpath
-#: horizons/i18n/objecttranslations.py:161
+#: horizons/i18n/objecttranslations.py:182
 msgid "Gravel Path"
 msgstr "Schotterpfad"
 
 #. name of buildings:herbary
-#: horizons/i18n/objecttranslations.py:166
+#: horizons/i18n/objecttranslations.py:187
 msgid "Herbary"
 msgstr "Kräutergarten"
 
 #. tooltip_text of buildings:herbary
-#: horizons/i18n/objecttranslations.py:168
+#: horizons/i18n/objecttranslations.py:189
 msgid "Produces herbs. Needs a farm."
 msgstr "Anbau von Heilkräutern. Benötigt eine Farm."
 
 #. name of buildings:hunterstent
-#: horizons/i18n/objecttranslations.py:173
+#: horizons/i18n/objecttranslations.py:194
 msgid "Hunter's Tent"
 msgstr "Jäger"
 
 # FIXME: Sammelt Essen? "sammelt"? → Produziert? etc.
 #. tooltip_text of buildings:hunterstent
-#: horizons/i18n/objecttranslations.py:175
+#: horizons/i18n/objecttranslations.py:196
 msgid "Hunts wild forest animals, produces food."
 msgstr "Jagt Wild, produziert Nahrung."
 
 #. name of buildings:ironmine
-#: horizons/i18n/objecttranslations.py:180
+#: horizons/i18n/objecttranslations.py:201
 msgid "Iron Mine"
 msgstr "Eisenerzbergwerk"
 
 #. tooltip_text of buildings:ironmine
-#: horizons/i18n/objecttranslations.py:182
+#: horizons/i18n/objecttranslations.py:203
 msgid "Gets iron ore from deposit."
 msgstr "Dient dem Abbau von Eisenerz."
 
+#. name of buildings:log
+#: horizons/i18n/objecttranslations.py:208
+msgid "Log"
+msgstr "Protokoll"
+
+#. tooltip_text of buildings:log
+#: horizons/i18n/objecttranslations.py:210
+msgid "Road across a river."
+msgstr "Straße über einen Fluss."
+
 #. name of buildings:lookout
-#: horizons/i18n/objecttranslations.py:187
+#: horizons/i18n/objecttranslations.py:215
 msgid "Lookout"
 msgstr "Krähennest"
 
 #. tooltip_text of buildings:lookout
-#: horizons/i18n/objecttranslations.py:189
+#: horizons/i18n/objecttranslations.py:217
 msgid "Increases the player's sight."
 msgstr "Erhöht die Spielersicht."
 
 #. name_0 of buildings:lumberjackcamp
-#: horizons/i18n/objecttranslations.py:194
+#: horizons/i18n/objecttranslations.py:222
 msgid "Lumberjack Tent"
 msgstr "Holzfällerzelt"
 
 #. name_1 of buildings:lumberjackcamp
-#: horizons/i18n/objecttranslations.py:196
+#: horizons/i18n/objecttranslations.py:224
 msgid "Lumberjack Hut"
 msgstr "Holzfällerhütte"
 
 #. tooltip_text of buildings:lumberjackcamp
-#: horizons/i18n/objecttranslations.py:198
+#: horizons/i18n/objecttranslations.py:226
 msgid "Chops down trees and turns them into boards."
 msgstr "Fällt Holz und verarbeitet es zu Brettern."
 
 # *nicht* Hauptplatz!
 #. name of buildings:mainsquare
-#: horizons/i18n/objecttranslations.py:203
+#: horizons/i18n/objecttranslations.py:231
 msgid "Main Square"
 msgstr "Marktplatz"
 
 #. tooltip_text of buildings:mainsquare
-#: horizons/i18n/objecttranslations.py:205
+#: horizons/i18n/objecttranslations.py:233
 msgid "Supplies citizens with goods."
 msgstr "Versorgt die Einwohner mit Gütern."
 
 #. name of buildings:mountain
-#: horizons/i18n/objecttranslations.py:210
+#: horizons/i18n/objecttranslations.py:238
 msgid "Mountain"
 msgstr "Berg"
 
 #. name of buildings:pastryshop
-#: horizons/i18n/objecttranslations.py:215
+#: horizons/i18n/objecttranslations.py:243
 msgid "Pastry Shop"
 msgstr "Konditorei"
 
 #. tooltip_text of buildings:pastryshop
-#: horizons/i18n/objecttranslations.py:217
+#: horizons/i18n/objecttranslations.py:245
 msgid "Produces all kinds of confectionery."
 msgstr "Produziert alle Arten von Süßwaren."
 
 #. name of buildings:pasture
-#: horizons/i18n/objecttranslations.py:222
+#: horizons/i18n/objecttranslations.py:250
 msgid "Pasture"
 msgstr "Weide"
 
 #. tooltip_text of buildings:pasture
-#: horizons/i18n/objecttranslations.py:224
+#: horizons/i18n/objecttranslations.py:252
 msgid "Raises sheep. Produces wool. Needs a farm."
 msgstr "Schert Schafe. Produziert Wolle. Benötigt eine Farm."
 
 # *NICHT* Kapelle
 #. name of buildings:pavilion
-#: horizons/i18n/objecttranslations.py:229
+#: horizons/i18n/objecttranslations.py:257
 msgid "Pavilion"
 msgstr "Pavillon"
 
 #. tooltip_text of buildings:pavilion
-#: horizons/i18n/objecttranslations.py:231
+#: horizons/i18n/objecttranslations.py:259
 msgid "Fulfills religious needs of sailors."
 msgstr "Erfüllt religiöse Bedürfnisse Eurer Bevölkerung."
 
 #. name of buildings:pigsty
-#: horizons/i18n/objecttranslations.py:236
+#: horizons/i18n/objecttranslations.py:264
 msgid "Pigsty"
 msgstr "Schweinestall"
 
 #. tooltip_text of buildings:pigsty
-#: horizons/i18n/objecttranslations.py:238
+#: horizons/i18n/objecttranslations.py:266
 msgid "Raises pigs. Needs a farm."
 msgstr "Zieht Schweine auf. Benötigt eine Farm."
 
 #. name of buildings:potatofield
-#: horizons/i18n/objecttranslations.py:243
+#: horizons/i18n/objecttranslations.py:271
 msgid "Potato Field"
 msgstr "Kartoffelfeld"
 
 #. tooltip_text of buildings:potatofield
-#: horizons/i18n/objecttranslations.py:245
+#: horizons/i18n/objecttranslations.py:273
 msgid "Yields food. Needs a farm."
 msgstr "Produziert Nahrung. Benötigt eine Farm."
 
 #. name of buildings:rampart
-#: horizons/i18n/objecttranslations.py:250
+#: horizons/i18n/objecttranslations.py:278
 msgid "Rampart"
 msgstr "Schutzwall"
 
 #. tooltip_text of buildings:rampart
-#: horizons/i18n/objecttranslations.py:252
+#: horizons/i18n/objecttranslations.py:280
 msgid "Protects your settlement."
 msgstr "Verteidigt Eure Siedlung."
 
 #. name of buildings:ruinedtent
-#: horizons/i18n/objecttranslations.py:257
+#: horizons/i18n/objecttranslations.py:285
 msgid "Ruined Tent"
 msgstr "Zeltruine"
 
 #. name of buildings:saltponds
-#: horizons/i18n/objecttranslations.py:262
+#: horizons/i18n/objecttranslations.py:290
 msgid "Salt Ponds"
 msgstr "Salzgarten"
 
 #. tooltip_text of buildings:saltponds
-#: horizons/i18n/objecttranslations.py:264
+#: horizons/i18n/objecttranslations.py:292
 msgid "Evaporates salt. Built on sea coast."
 msgstr ""
 "Verdunstet Meerwasser zur Salzgewinnung. Muss an der Küste errichtet werden."
 
 #. name of buildings:signalfire
-#: horizons/i18n/objecttranslations.py:269
+#: horizons/i18n/objecttranslations.py:297
 msgid "Signal Fire"
 msgstr "Signalfeuer"
 
 # FIXME: Leuchtfeuer, Leuchtsignal, Signalfeuer
 #. tooltip_text of buildings:signalfire
-#: horizons/i18n/objecttranslations.py:271
+#: horizons/i18n/objecttranslations.py:299
 msgid "Allows the player to trade with the free trader."
 msgstr "Erlaubt Handel mit dem Freien Händler."
 
 #. name of buildings:smeltery
-#: horizons/i18n/objecttranslations.py:276
+#: horizons/i18n/objecttranslations.py:304
 msgid "Smeltery"
 msgstr "Schmelzhütte"
 
 #. tooltip_text of buildings:smeltery
-#: horizons/i18n/objecttranslations.py:278
+#: horizons/i18n/objecttranslations.py:306
 msgid "Refines all kind of ores."
 msgstr "Verhüttet Erze zu Metallen."
 
 #. name of buildings:spicefield
-#: horizons/i18n/objecttranslations.py:283
+#: horizons/i18n/objecttranslations.py:311
 msgid "Spice Field"
 msgstr "Gewürzfeld"
 
 #. tooltip_text of buildings:spicefield
-#: horizons/i18n/objecttranslations.py:285
+#: horizons/i18n/objecttranslations.py:313
 msgid "Grows spices. Needs a farm."
 msgstr "Wächst Gewürze. Benötigt eine Farm."
 
 #. name of buildings:stonemason
-#: horizons/i18n/objecttranslations.py:290
+#: horizons/i18n/objecttranslations.py:318
 msgid "Stonemason"
 msgstr "Steinmetz"
 
 #. tooltip_text of buildings:stonemason
-#: horizons/i18n/objecttranslations.py:292
+#: horizons/i18n/objecttranslations.py:320
 msgid "Carves stone tops into bricks."
 msgstr "Meißelt Steine zu Ziegeln."
 
 #. name of buildings:stonepit
-#: horizons/i18n/objecttranslations.py:297
+#: horizons/i18n/objecttranslations.py:325
 msgid "Stone Pit"
 msgstr "Steinbruch"
 
 #. tooltip_text of buildings:stonepit
-#: horizons/i18n/objecttranslations.py:299
+#: horizons/i18n/objecttranslations.py:327
 msgid "Gets stone from a mountain."
 msgstr "Holt Steine von einem Berg."
 
-#. name of buildings:storagetent
-#: horizons/i18n/objecttranslations.py:304
+#. name_0 of buildings:storagetent
+#: horizons/i18n/objecttranslations.py:332
 msgid "Storage Tent"
 msgstr "Lagerzelt"
 
+# 75%
+#. name_1 of buildings:storagetent
+#: horizons/i18n/objecttranslations.py:334
+msgid "Storage Hut"
+msgstr "Lagerhütte"
+
 #. tooltip_text of buildings:storagetent
-#: horizons/i18n/objecttranslations.py:306
+#: horizons/i18n/objecttranslations.py:336
 msgid "Extends stock and provides collectors."
 msgstr "Erweitert die Lagerkapazität und stellt Träger bereit."
 
 #. name of buildings:sugarfield
-#: horizons/i18n/objecttranslations.py:311
+#: horizons/i18n/objecttranslations.py:341
 msgid "Sugar Field"
 msgstr "Zuckerrohrfeld"
 
 #. tooltip_text of buildings:sugarfield
-#: horizons/i18n/objecttranslations.py:313
+#: horizons/i18n/objecttranslations.py:343
 msgid "Used in liquor production. Needs a farm."
 msgstr "Verwendung für Spirituosen. Benötigt eine Farm."
 
 #. name of buildings:tavern
-#: horizons/i18n/objecttranslations.py:318
+#: horizons/i18n/objecttranslations.py:348
 msgid "Tavern"
 msgstr "Taverne"
 
 #. tooltip_text of buildings:tavern
-#: horizons/i18n/objecttranslations.py:320
+#: horizons/i18n/objecttranslations.py:350
 msgid "Provides get-together."
 msgstr "Erfüllt den Gemeinschaftssinn Eurer Untertanen."
 
 #. name_0 of buildings:tent
-#: horizons/i18n/objecttranslations.py:325
+#: horizons/i18n/objecttranslations.py:355
 msgid "Tent"
 msgstr "Zelt"
 
 #. name_1 of buildings:tent
-#: horizons/i18n/objecttranslations.py:327
+#: horizons/i18n/objecttranslations.py:357
 msgid "Hut"
 msgstr "Hütte"
 
 # 80%
 #. name_2 of buildings:tent
-#: horizons/i18n/objecttranslations.py:329
+#: horizons/i18n/objecttranslations.py:359
 msgid "House"
 msgstr "Haus"
 
 #. name_3 of buildings:tent
-#: horizons/i18n/objecttranslations.py:331
+#: horizons/i18n/objecttranslations.py:361
 msgid "Stone house"
 msgstr "Steinhaus"
 
 #. name_4 of buildings:tent
-#: horizons/i18n/objecttranslations.py:333
+#: horizons/i18n/objecttranslations.py:363
 msgid "Estate"
 msgstr "Anwesen"
 
 #. name_5 of buildings:tent
-#: horizons/i18n/objecttranslations.py:335
+#: horizons/i18n/objecttranslations.py:365
 msgid "Manor"
 msgstr "Herrenhaus"
 
 #. tooltip_text of buildings:tent
-#: horizons/i18n/objecttranslations.py:337
+#: horizons/i18n/objecttranslations.py:367
 msgid "Houses your inhabitants."
 msgstr "Beherbergt Eure Einwohner."
 
 #. name of buildings:tobaccofield
-#: horizons/i18n/objecttranslations.py:342
+#: horizons/i18n/objecttranslations.py:372
 msgid "Tobacco Field"
 msgstr "Tabakfeld"
 
 #. tooltip_text of buildings:tobaccofield
-#: horizons/i18n/objecttranslations.py:344
+#: horizons/i18n/objecttranslations.py:374
 msgid "Produces tobacco. Needs a farm."
 msgstr "Produziert Tabakpflanzen. Benötigt eine Farm."
 
 #. name of buildings:tobacconist
-#: horizons/i18n/objecttranslations.py:349
+#: horizons/i18n/objecttranslations.py:379
 msgid "Tobacconist"
 msgstr "Tabakhändler"
 
 #. tooltip_text of buildings:tobacconist
-#: horizons/i18n/objecttranslations.py:351
+#: horizons/i18n/objecttranslations.py:381
 msgid "Produces tobaccos out of tobacco."
 msgstr "Produziert Tabakwaren aus Tabak."
 
 #. name of buildings:toolmaker
-#: horizons/i18n/objecttranslations.py:356
+#: horizons/i18n/objecttranslations.py:386
 msgid "Toolmaker"
 msgstr "Werkzeugschmiede"
 
 #. tooltip_text of buildings:toolmaker
-#: horizons/i18n/objecttranslations.py:358
+#: horizons/i18n/objecttranslations.py:388
 msgid "Produces tools out of iron."
 msgstr "Stellt Werkzeuge her."
 
 #. name of buildings:trail
-#: horizons/i18n/objecttranslations.py:363
+#: horizons/i18n/objecttranslations.py:393
 msgid "Trail"
 msgstr "Trampelpfad"
 
 #. tooltip_text of buildings:trail
-#: horizons/i18n/objecttranslations.py:365
+#: horizons/i18n/objecttranslations.py:395
 msgid "Needed for collecting goods."
 msgstr "Wird zum Transport von Gütern benötigt."
 
 #. name of buildings:tree
-#: horizons/i18n/objecttranslations.py:370
+#: horizons/i18n/objecttranslations.py:400
 msgid "Tree"
 msgstr "Baum"
 
 #. tooltip_text of buildings:tree
-#: horizons/i18n/objecttranslations.py:372
+#: horizons/i18n/objecttranslations.py:402
 msgid "Provides lumber. Chopped down by lumberjacks."
 msgstr "Versorgt den Holzfäller mit Holz."
 
 # Building
 #. name of buildings:villageschool
-#: horizons/i18n/objecttranslations.py:377
+#: horizons/i18n/objecttranslations.py:407
 msgid "Village school"
 msgstr "Dorfschule"
 
 #. tooltip_text of buildings:villageschool
-#: horizons/i18n/objecttranslations.py:379
+#: horizons/i18n/objecttranslations.py:409
 msgid "Provides education."
 msgstr "Fördert die Bildung Eurer Untertanen."
 
 #. name of buildings:vineyard
-#: horizons/i18n/objecttranslations.py:384
+#: horizons/i18n/objecttranslations.py:414
 msgid "Vineyard"
 msgstr "Weinberg"
 
 #. tooltip_text of buildings:vineyard
-#: horizons/i18n/objecttranslations.py:386
+#: horizons/i18n/objecttranslations.py:416
 msgid "Produces grapes for use in wine and confectionery. Needs a farm."
 msgstr "Produziert Trauben für Wein und Süßwaren. Benötigt eine Farm."
 
 #. name of buildings:vintner
-#: horizons/i18n/objecttranslations.py:391
+#: horizons/i18n/objecttranslations.py:421
 msgid "Vintner"
 msgstr "Winzer"
 
 #. tooltip_text of buildings:vintner
-#: horizons/i18n/objecttranslations.py:393
+#: horizons/i18n/objecttranslations.py:423
 msgid "Produces wine out of grapes."
 msgstr "Produziert Wein aus Trauben."
 
 #. name of buildings:warehouse
-#: horizons/i18n/objecttranslations.py:398
+#: horizons/i18n/objecttranslations.py:428
 msgid "Warehouse"
 msgstr "Kontor"
 
+# 76%
 #. name of buildings:weaverstent
-#: horizons/i18n/objecttranslations.py:403
-msgid "Weaver's Tent"
-msgstr "Weber"
+#: horizons/i18n/objecttranslations.py:433
+msgid "Weaver's Hut"
+msgstr "Weberhütte"
 
 #. tooltip_text of buildings:weaverstent
-#: horizons/i18n/objecttranslations.py:405
+#: horizons/i18n/objecttranslations.py:435
 msgid "Turns lamb wool into cloth."
 msgstr "Verwebt Wolle zu Kleidung."
 
+#. name of buildings:windmill
+#: horizons/i18n/objecttranslations.py:440
+msgid "Windmill"
+msgstr "Windmühle"
+
+#. tooltip_text of buildings:windmill
+#: horizons/i18n/objecttranslations.py:442
+msgid "Grinds corn into flour."
+msgstr "Mahlt Korn zu Mehl."
+
 #. name of buildings:woodentower
-#: horizons/i18n/objecttranslations.py:410
+#: horizons/i18n/objecttranslations.py:447
 msgid "Wooden Tower"
 msgstr "Hölzerner Turm"
 
 #. tooltip_text of buildings:woodentower
-#: horizons/i18n/objecttranslations.py:412
+#: horizons/i18n/objecttranslations.py:449
 msgid "Defends your settlement."
 msgstr "Verteidigt Eure Siedlung."
 
@@ -3708,6 +3765,21 @@ msgstr "Danke für das Verwenden von Unknown Horizons!"
 msgid "FIFE was not found."
 msgstr "FIFE konnte nicht gefunden werden."
 
+#~ msgid "Burns a lot of boards."
+#~ msgstr "Ein Köhler stellt hier Holzkohle her."
+
+#~ msgid "I'm going to write logs in {dir}."
+#~ msgstr "Dateien werden nach {dir} geschrieben."
+
+#~ msgid "Framerate limit:"
+#~ msgstr "Max. Bildfrequenz:"
+
+#~ msgid "Set the maximum framerate used. (default: 60)"
+#~ msgstr "Maximalgrenze der Bildwiederholrate. (Standardeinstellung: 60)"
+
+#~ msgid "Weaver's Tent"
+#~ msgstr "Weber"
+
 #~ msgid "aristocrat"
 #~ msgstr "Aristokrat"
 
@@ -3742,35 +3814,8 @@ msgstr "FIFE konnte nicht gefunden werden."
 #~ msgstr ""
 #~ "Verkaufe {resource_name}, solange sich mehr als {limit}t im Lager befinden."
 
-#~ msgid "Bakery"
-#~ msgstr "Bäckerei"
-
-#~ msgid "Consumes flour. Produces food."
-#~ msgstr "Verbraucht Mehl. Produziert Nahrung."
-
-#~ msgid "Farm"
-#~ msgstr "Farm"
-
-#~ msgid "Grows field crops and raises livestock."
-#~ msgstr "Bewirtschaftet Felder und hält Nutztiere."
-
 #~ msgid "Fire Brigade"
 #~ msgstr "Feuerwehr"
-
-#~ msgid "Extinguishes fires."
-#~ msgstr "Löscht Brände."
-
-#~ msgid "Log"
-#~ msgstr "Protokoll"
-
-#~ msgid "Road across a river."
-#~ msgstr "Straße über einen Fluss."
-
-#~ msgid "Windmill"
-#~ msgstr "Windmühle"
-
-#~ msgid "Grinds corn into flour."
-#~ msgstr "Mahlt Korn zu Mehl."
 
 #~ msgid "Please give it to us via IRC or our forum, for both see unknown-horizons.org ."
 #~ msgstr ""
@@ -3798,9 +3843,6 @@ msgstr "FIFE konnte nicht gefunden werden."
 
 #~ msgid "Leave Captain's log"
 #~ msgstr "Logbuch verlassen"
-
-#~ msgid "Burns a lot of boards."
-#~ msgstr "Ein Köhler stellt hier Holzkohle her."
 
 #~ msgid "Lumberjack Camp"
 #~ msgstr "Holzfällerlager"
