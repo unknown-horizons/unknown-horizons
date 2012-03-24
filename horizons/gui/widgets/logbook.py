@@ -149,7 +149,7 @@ class LogBook(PickBeltWidget):
 			self._display_widgets_on_page([
 			  ['Headline', _("Emptiness")],
 			  ['Image', "content/gui/images/background/hr.png"],
-			  ['Label', "\n\n"],
+			  ['Label', u"\n\n"],
 			  ['Label', _('There is nothing written in your logbook yet!')],
 				], 'left')
 		self.backward_button.set_active()

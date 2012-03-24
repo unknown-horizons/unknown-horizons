@@ -63,7 +63,7 @@ class ImageFillStatusButton(pychan.widgets.Container):
 		return cls(up_image=icon_disabled if amount == 0 else icon,
 		           down_image=icon_disabled if amount == 0 else icon,
 		           hover_image=icon_disabled if amount == 0 else icon,
-		           text=str(amount),
+		           text=unicode(amount),
 		           helptext=helptext,
 		           size=cls.DEFAULT_BUTTON_SIZE,
 		           res_id = res,
