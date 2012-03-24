@@ -91,11 +91,11 @@ class MainSquareOverviewTab(AccountTab):
 	def __init__(self, instance):
 		super(MainSquareOverviewTab, self).__init__(instance=instance)
 		self.helptext = _('Main square overview')
-		self.widget.child_finder('headline').text = unicode(self.settlement.get_component(NamedComponent).name)
+		self.widget.child_finder('headline').text = self.settlement.get_component(NamedComponent).name
 		self.widget.child_finder('headline').helptext = _('Click to change the name of your settlement')
 
 	def refresh(self):
-		self.widget.child_finder('headline').text = unicode(self.settlement.get_component(NamedComponent).name)
+		self.widget.child_finder('headline').text = self.settlement.get_component(NamedComponent).name
 		events = {
 				'headline': Callback(self.instance.session.ingame_gui.show_change_name_dialog, self.settlement)
 		         }

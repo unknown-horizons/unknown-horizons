@@ -38,7 +38,7 @@ class DiplomacyTab(TabInterface):
 		self.diplomacy = player.session.world.diplomacy
 		self.init_values()
 
-		self.widget.findChild(name='headline').text = unicode(player.name)
+		self.widget.findChild(name='headline').text = player.name
 		self.widget.mapEvents({
 			'ally_label' : self.add_ally,
 			'ally_check_box' : self.add_ally,

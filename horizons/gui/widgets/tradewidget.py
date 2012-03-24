@@ -67,14 +67,14 @@ class TradeWidget(object):
 			self.radius = self.instance.radius
 
 	def draw_widget(self):
-		self.widget.findChild(name='ship_name').text = unicode(self.instance.get_component(NamedComponent).name)
+		self.widget.findChild(name='ship_name').text = self.instance.get_component(NamedComponent).name
 		self.partners = self.find_partner()
 		if len(self.partners) > 0:
 			dropdown = self.widget.findChild(name='partners')
 			#dropdown.capture(Callback(self.set_partner, dropdown.getData()))
 			nearest_partner = self.get_nearest_partner(self.partners)
 			#dropdown.setData(nearest_partner)
-			dropdown.text = unicode(self.partners[nearest_partner].settlement.get_component(NamedComponent).name) # label fix for release use only
+			dropdown.text = self.partners[nearest_partner].settlement.get_component(NamedComponent).name # label fix for release use only
 
 			new_partner = self.partners[nearest_partner]
 			different_partner = new_partner is not self.partner

@@ -37,8 +37,8 @@ class ImageFillStatusButton(pychan.widgets.Container):
 		in order to display the image. The container is only used, because ImageButtons can't have children.
 		This is meant to be used with the Inventory widget."""
 		super(ImageFillStatusButton, self).__init__(**kwargs)
-		self.up_image, self.down_image, self.hover_image, self.text = up_image, down_image, hover_image, unicode(text)
-		self.helptext = unicode(_(helptext))
+		self.up_image, self.down_image, self.hover_image, self.text = up_image, down_image, hover_image, text
+		self.helptext = _(helptext)
 		# res_id is used by the TradeWidget for example to determine the resource this button represents
 		self.res_id = res_id
 		self.text_position = (17, 36)

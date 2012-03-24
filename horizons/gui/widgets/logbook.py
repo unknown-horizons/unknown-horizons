@@ -168,11 +168,11 @@ class LogBook(PickBeltWidget):
 		# json.loads() returns unicode, thus convert strings and compare to unicode
 		# Image works with str() since pychan can only use str objects as file path
 		if widget and widget[0]: # allow empty Labels
-			widget_type = unicode(widget[0])
+			widget_type = widget[0]
 		if isinstance(widget, basestring):
-			add = Label(text=unicode(widget), wrap_text=True, max_size=(340,508))
+			add = Label(text=widget, wrap_text=True, max_size=(340,508))
 		elif widget_type == u'Label':
-			add = Label(text=unicode(widget[1]), wrap_text=True, max_size=(340,508))
+			add = Label(text=widget[1], wrap_text=True, max_size=(340,508))
 		elif widget_type == u'Image':
 			add = Icon(image=str(widget[1]))
 		elif widget_type == u'Gallery':
@@ -180,7 +180,7 @@ class LogBook(PickBeltWidget):
 			for image in widget[1]:
 				add.addChild(Icon(image=str(image)))
 		elif widget_type == u'Headline':
-			add = Label(text=unicode(widget[1]))
+			add = Label(text=widget[1])
 			add.stylize('headline')
 		else:
 			print '[WW] Warning: Unknown widget type {typ} in widget {wdg}'.format(
@@ -343,17 +343,14 @@ class LogBook(PickBeltWidget):
 		           self.session.ingame_gui.message_widget.archive
 		for msg in sorted(messages, key=lambda m: m.created):
 			if msg.id != 'CHAT': # those get displayed in the chat window instead
-				m = msg.message
-				if not isinstance(m, unicode):
-					m = m.decode('utf-8')
-				self.messagebox.items.append(m)
+				self.messagebox.items.append(msg.message)
 		self.messagebox.selected = len(self.messagebox.items) - 1 # scroll to bottom
 
 	def _display_chat_history(self):
 		self.chatbox.items = []
 		messages = self.session.ingame_gui.message_widget.chat
 		for msg in sorted(messages, key=lambda m: m.created):
-			self.chatbox.items.append(unicode(msg.message))
+			self.chatbox.items.append(msg.message)
 		self.chatbox.selected = len(self.chatbox.items) - 1 # scroll to bottom
 
 	def _chatfield_onfocus(self):

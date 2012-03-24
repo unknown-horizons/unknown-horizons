@@ -350,7 +350,7 @@ class Minimap(object):
 
 				tile = self.world.get_tile( Point(*coords) )
 				if tile is not None and tile.settlement is not None:
-					new_helptext = unicode(tile.settlement.get_component(NamedComponent).name)
+					new_helptext = tile.settlement.get_component(NamedComponent).name
 					if self.icon.helptext != new_helptext:
 						self.icon.helptext = new_helptext
 						self.icon.show_tooltip()
