@@ -40,8 +40,6 @@
 #
 ###############################################################################
 
-from horizons.constants import VERSION
-
 object_translations = dict()
 
 def set_translations():
