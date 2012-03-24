@@ -135,7 +135,8 @@ class SingleplayerMenu(object):
 			elif show == 'scenario':
 				self.current.files, maps_display = SavegameManager.get_available_scenarios(locales = choosable_locales)
 
-			# get the map files and their display names
+			# get the map files and their display names. display tutorials on top.
+			maps_display.sort(key=lambda x : ('tutorial' not in x, x))
 			self.active_right_side.distributeInitialData({ 'maplist' : maps_display, })
 			if len(maps_display) > 0:
 				# select first entry
