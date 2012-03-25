@@ -212,23 +212,6 @@ def print_increment_data():
 				str += '%i %s(%s), ' % (-amount, get_res_name(res), res)
 		print str
 
-	print '\n' + 'Settler Consumption Lines:'
-	for inc in xrange(SETTLER.CURRENT_MAX_INCR+1):
-		settlername = get_settler_name(inc)
-		print "In increment %3s, %s desire the following goods:" % \
-		                                (int_to_roman(inc+1), settlername)
-		lines = db("SELECT production_line FROM settler_production_line \
-		            WHERE level = ? ORDER BY production_line", inc)
-		sorted_lines = sorted([(get_prod_line(line[0], tuple)[0][0],line[0]) for i,line in enumerate(lines)])
-		for item,id in sorted_lines:
-			time = db("SELECT time FROM production_line WHERE id == ?",id)[0][0]
-			str = '%2s: Each %5s seconds, %s consume ' % (id, time, settlername)
-			(consumption,production) = get_prod_line(id, tuple)
-			str += '%2i %-12s(%2s) for ' % (-consumption[1], get_res_name(consumption[0]), consumption[0])
-			str += '%2i %s(%2s).' % (production[1], get_res_name(production[0]), production[0])
-			print str
-		print ''
-
 def print_colors():
 	print 'Colors' + '\n' + '%2s: %12s  %3s  %3s  %3s  %3s  #%6s' % ('id', 'name', 'R ', 'G ', 'B ', 'A ', 'HEX   ')
 	print '=' * 45
