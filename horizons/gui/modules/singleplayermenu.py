@@ -114,7 +114,7 @@ class SingleplayerMenu(object):
 				# select first entry
 				self.active_right_side.distributeData({ 'maplist' : 0, })
 				_update_infos()
-			# update preview whenever somehting is selected in the list
+			# update preview whenever something is selected in the list
 			self.active_right_side.findChild(name="maplist").mapEvents({
 			  'maplist/action'              : _update_infos,
 			  'maplist/mouseWheelMovedUp'   : _update_infos,
@@ -161,7 +161,6 @@ class SingleplayerMenu(object):
 							_("Author: {author}").format(author=author) #xgettext:python-format
 						self.current.findChild(name="map_desc").text = \
 							_("Description: {desc}").format(desc=desc) #xgettext:python-format
-						#self.current.findChild(name="map_desc").parent.adaptLayout()
 				elif show == 'campaign': # update infos for campaign
 					def _update_infos():
 						"""Fill in infos of selected campaign to label"""
@@ -178,10 +177,11 @@ class SingleplayerMenu(object):
 
 
 				self.active_right_side.findChild(name="maplist").mapEvents({
-		  		'maplist/action': _update_infos,
-				  'maplist/mouseWheelMovedUp'   : _update_infos,
-		  		'maplist/mouseWheelMovedDown' : _update_infos
+					'maplist/action': _update_infos,
+					'maplist/mouseWheelMovedUp'   : _update_infos,
+					'maplist/mouseWheelMovedDown' : _update_infos
 				})
+				self.active_right_side.findChild(name="maplist").capture(_update_infos, event_name="keyPressed")
 				_update_infos()
 
 
