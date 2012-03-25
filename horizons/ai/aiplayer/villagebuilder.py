@@ -463,28 +463,35 @@ class VillageBuilder(AreaBuilder):
 		"""Return the position Rect of a building of the given type at the given position."""
 		return Rect.init_from_topleft_and_size_tuples(coords, Entities.buildings[building_id].size)
 
-	def _get_sorted_residence_positions(self):
-		"""Return a list of sorted residence positions in the form [Rect, ...]."""
-		return sorted(self._get_position(coords, BUILDINGS.RESIDENTIAL_CLASS) for coords, (purpose, _) in self.plan.iteritems() if purpose == BUILDING_PURPOSE.RESIDENCE)
+	def _get_sorted_building_positions(self, building_purpose):
+		"""Return a list of sorted building positions in the form [Rect, ...]."""
+		building_id = BUILDING_PURPOSE.purpose_to_building[building_purpose]
+		return sorted(self._get_position(coords, building_id) for coords, (purpose, _) in self.plan.iteritems() if purpose == building_purpose)
 
-	def _replace_planned_residence(self, building_id, new_purpose, max_buildings, capacity):
+	def _replace_planned_residence(self, new_purpose, max_buildings, capacity):
 		"""
-		Replace up to max_buildings residence spots with buildings of type building_id.
+		Replace up to max_buildings residence spots with buildings of purpose new_purpose.
 
 		This function is used to amend the existing plan with village producers such as
 		pavilions, schools, and taverns. The goal is to place as few of them as needed
 		while still covering the maximum number of residences.
 
-		@param building_id: the type of the new buildings
 		@param new_purpose: the BUILDING_PURPOSE constant of the new buildings
 		@param max_buildings: maximum number of residences to replace
 		@param capacity: maximum number of residences one of the new buildings can service
 		"""
 
 		tent_range = Entities.buildings[BUILDINGS.RESIDENTIAL_CLASS].radius
-		planned_tents = self._get_sorted_residence_positions()
+		planned_tents = self._get_sorted_building_positions(BUILDING_PURPOSE.RESIDENCE)
 
 		possible_positions = copy.copy(planned_tents)
+		if new_purpose == BUILDING_PURPOSE.TAVERN:
+			# filter out the positions that are too far from the main squares and the warehouse
+			tavern_radius = Entities.buildings[BUILDINGS.TAVERN_CLASS].radius
+			storage_positions = self._get_sorted_building_positions(BUILDING_PURPOSE.MAIN_SQUARE)
+			storage_positions.append(self.settlement_manager.settlement.warehouse.position)
+			possible_positions = [rect for rect in possible_positions if any(rect.distance(storage_rect) <= tavern_radius for storage_rect in storage_positions)]
+
 		num_kept = int(min(len(possible_positions), max(self.personality.min_coverage_building_options, len(possible_positions) * self.personality.coverage_building_option_ratio)))
 		possible_positions = self.session.random.sample(possible_positions, num_kept)
 
@@ -549,16 +556,12 @@ class VillageBuilder(AreaBuilder):
 			num_other_buildings += 3
 			residences -= 3 + self.personality.normal_coverage_building_capacity
 
-		self._replace_planned_residence(BUILDINGS.PAVILION_CLASS, BUILDING_PURPOSE.PAVILION, \
-			num_other_buildings, self.personality.max_coverage_building_capacity)
-		self._replace_planned_residence(BUILDINGS.VILLAGE_SCHOOL_CLASS, BUILDING_PURPOSE.VILLAGE_SCHOOL, \
-			num_other_buildings, self.personality.max_coverage_building_capacity)
-		self._replace_planned_residence(BUILDINGS.TAVERN_CLASS, BUILDING_PURPOSE.TAVERN, \
-			num_other_buildings, self.personality.max_coverage_building_capacity)
+		self._replace_planned_residence(BUILDING_PURPOSE.PAVILION, num_other_buildings, self.personality.max_coverage_building_capacity)
+		self._replace_planned_residence(BUILDING_PURPOSE.VILLAGE_SCHOOL, num_other_buildings, self.personality.max_coverage_building_capacity)
+		self._replace_planned_residence(BUILDING_PURPOSE.TAVERN, num_other_buildings, self.personality.max_coverage_building_capacity)
 
 		num_fire_stations = max(0, int(round(0.5 + (len(self.tent_queue) - 3 * num_other_buildings) / self.personality.normal_fire_station_capacity)))
-		self._replace_planned_residence(BUILDINGS.FIRE_STATION_CLASS, BUILDING_PURPOSE.FIRE_STATION, \
-			num_fire_stations, self.personality.max_fire_station_capacity)
+		self._replace_planned_residence(BUILDING_PURPOSE.FIRE_STATION, num_fire_stations, self.personality.max_fire_station_capacity)
 
 		self._create_special_village_building_assignments()
 
@@ -570,7 +573,7 @@ class VillageBuilder(AreaBuilder):
 		"""
 
 		self.special_building_assignments = {} # {BUILDING_PURPOSE constant: {village producer coordinates: [residence coordinates, ...]}}
-		residence_positions = self._get_sorted_residence_positions()
+		residence_positions = self._get_sorted_building_positions(BUILDING_PURPOSE.RESIDENCE)
 
 		building_types = []
 		for purpose in [BUILDING_PURPOSE.PAVILION, BUILDING_PURPOSE.VILLAGE_SCHOOL, BUILDING_PURPOSE.TAVERN]:
