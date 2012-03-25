@@ -98,6 +98,7 @@ def create_resource_icon(res_id, db, size=50):
 		except RuntimeError: # ImageManager: image not found, use placeholder
 			print '[WW] Image not found: {icon_path}'.format(icon_path=icon_path)
 			widget = Icon(image=get_res_icon_path('placeholder', size))
+		widget.helptext = db.get_res_name(res_id)
 	return widget
 
 class LazyWidgetsDict(dict):
