@@ -26,7 +26,6 @@ import logging
 import locale
 import weakref
 
-import horizons.main
 from horizons.constants import LANGUAGENAMES
 from horizons.i18n import objecttranslations, guitranslations
 from horizons.i18n.utils import get_fontdef_for_locale, find_available_languages
@@ -93,6 +92,8 @@ def change_language(language=None):
 
 	Called on startup and when changing the language in the settings menu.
 	"""
+	import horizons.main
+
 	if language: # non-default
 		try:
 			# NOTE about gettext fallback mechanism:
@@ -119,3 +120,17 @@ def change_language(language=None):
 
 	# dynamically reset all translations of active widgets
 	update_all_translations()
+
+
+def install():
+	"""
+	Maps _ to the ugettext unicode gettext call. Use: _(string).
+	N_ takes care of plural forms for different languages. It masks ungettext
+	calls (unicode, plural-aware _() ) to create different translation strings
+	depending on the counter value. Not all languages have only two plural forms
+	"One" / "Anything else". Use: N_("{n} dungeon", "{n} dungeons", n).format(n=n)
+	where n is a counter. N_ is, for some reason, broken. Cf. horizons.i18n.utils
+	We will need to make gettext recognise namespaces some time, but hardcoded
+	'unknown-horizons' works for now since we currently only use one namespace.
+	"""
+	namespace_translation = gettext.translation('unknown-horizons', 'content/lang', fallback=True)

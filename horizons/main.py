@@ -40,6 +40,7 @@ import shutil
 
 from fife import fife as fife_module
 
+from horizons import i18n
 from horizons.savegamemanager import SavegameManager
 from horizons.gui import Gui
 from horizons.extscheduler import ExtScheduler
@@ -125,7 +126,7 @@ def start(_command_line_arguments):
 
 	# init game parts
 
-	_init_gettext(fife)
+	i18n.install()
 
 	client_id = fife.get_uh_setting("ClientID")
 	if client_id is None or len(client_id) == 0:
@@ -381,24 +382,6 @@ def load_game(ai_players=0, human_ai=False, savegame=None, is_scenario=False, ca
 		ai_players=ai_players, human_ai=human_ai, pirate_enabled=pirate_enabled, \
 		trader_enabled=trader_enabled, force_player_id=force_player_id)
 	return True
-
-
-def _init_gettext(fife):
-	"""
-	Maps _ to the ugettext unicode gettext call. Use: _(string).
-	N_ takes care of plural forms for different languages. It masks ungettext
-	calls (unicode, plural-aware _() ) to create different translation strings
-	depending on the counter value. Not all languages have only two plural forms
-	"One" / "Anything else". Use: N_("{n} dungeon", "{n} dungeons", n).format(n=n)
-	where n is a counter. N_ is, for some reason, broken. Cf. horizons.i18n.utils
-	We will need to make gettext recognise namespaces some time, but hardcoded
-	'unknown-horizons' works for now since we currently only use one namespace.
-	"""
-	from gettext import translation
-	namespace_translation = translation('unknown-horizons', 'content/lang', fallback=True)
-	_  = namespace_translation.ugettext
-	N_ = namespace_translation.ungettext
-
 
 
 ## GAME START FUNCTIONS
