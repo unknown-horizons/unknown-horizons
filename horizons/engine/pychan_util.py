@@ -72,7 +72,7 @@ def init_pychan():
 	# patch default widgets
 	for name, widget in pychan.widgets.WIDGETS.items():
 
-		def patch_hide(func):
+		def catch_gcn_exception_decorator(func):
 			@functools.wraps(func)
 			def wrapper(*args, **kwargs):
 				try:
@@ -82,7 +82,7 @@ def init_pychan():
 					handle_gcn_exception(e)
 			return wrapper
 
-		widget.hide = patch_hide(widget.hide)
+		widget.hide = catch_gcn_exception_decorator(widget.hide)
 
 		# support for tooltips via helptext attribute
 		if any( attr.name == "helptext" for attr in widget.ATTRIBUTES ):
@@ -93,14 +93,18 @@ def init_pychan():
 				if not key.startswith("__"):
 					setattr(widget, key, value)
 
-			def patch(func):
+			def add_tooltip_init(func):
 				@functools.wraps(func)
 				def wrapper(self, *args, **kwargs):
 					func(self, *args, **kwargs)
 					self.init_tooltip()
 				return wrapper
 
-			widget.__init__ = patch(widget.__init__)
+			widget.__init__ = add_tooltip_init(widget.__init__)
+
+			# these sometimes fail with "No focushandler set (did you add the widget to the gui?)."
+			# see #1597 and #1647
+			widget.requestFocus = catch_gcn_exception_decorator(widget.requestFocus)
 
 
 	# NOTE: there is a bug with the tuple notation: http://fife.trac.cvsdude.com/engine/ticket/656
