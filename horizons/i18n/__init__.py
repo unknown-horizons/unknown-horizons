@@ -22,13 +22,12 @@
 import logging
 import weakref
 
-import horizons.i18n.objecttranslations
-from horizons.i18n.guitranslations import set_translations
+from horizons.i18n import objecttranslations, guitranslations
 
 log = logging.getLogger("i18n")
 
 # init translations
-set_translations()
+guitranslations.set_translations()
 objecttranslations.set_translations()
 
 # save translated widgets
@@ -61,7 +60,7 @@ def update_all_translations():
 	"""Update the translations in every active widget"""
 	from horizons.gui.gui import build_help_strings
 	global translated_widgets
-	set_translations()
+	guitranslations.set_translations()
 	objecttranslations.set_translations()
 	for (filename, widget) in translated_widgets.iteritems():
 		widget = widget() # resolve weakref
