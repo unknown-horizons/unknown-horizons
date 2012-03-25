@@ -220,9 +220,8 @@ class ScenarioEventHandler(LivingObject):
 		# every data except events are static, so reuse old data
 		data = copy.deepcopy(self._data)
 		del data['events']
-		yaml_code = yaml.dump(data, line_break=u'\n')
-		yaml_code = yaml_code.rstrip(u'}\n')
-		#yaml_code = yaml_code.strip('{}')
+		yaml_code = dump_dict_to_yaml(data)
+		yaml_code = yaml_code.rstrip(u'}\n') # remove last } so we can add stuff
 		yaml_code += ', events: [ %s ] }' % ', '.join(event.to_yaml() for event in self._events)
 		return yaml_code
 
@@ -286,9 +285,7 @@ class _Action(object):
 
 	def to_yaml(self):
 		"""Returns yaml representation of self"""
-		arguments_yaml = yaml.safe_dump(self.arguments, line_break='\n')
-		# NOTE: the line above used to end with this: .replace('\n', '')
-		# which broke formatting of logbook messages, of course. Revert in case of problems.
+		arguments_yaml = dump_dict_to_yaml(self.arguments)
 		return "{arguments: %s, type: %s}" % (arguments_yaml, self.action_type)
 
 
@@ -317,7 +314,15 @@ class _Condition(object):
 
 	def to_yaml(self):
 		"""Returns yaml representation of self"""
-		arguments_yaml = yaml.safe_dump(self.arguments, line_break='\n')
-		# NOTE: the line above used to end with this: .replace('\n', '')
-		# which broke formatting of logbook messages, of course. Revert in case of problems.
+		arguments_yaml = dump_dict_to_yaml(self.arguments)
 		return '{arguments: %s, type: "%s"}' % ( arguments_yaml, self.cond_type)
+
+
+def dump_dict_to_yaml(data):
+	"""Wrapper for dumping yaml data using common parameters"""
+	# NOTE: the line below used to end with this: .replace('\n', '')
+	# which broke formatting of logbook messages, of course. Revert in case of problems.
+
+	# default_flow_style: makes use of short list notation without newlines (required here)
+	return yaml.safe_dump(data, line_break='\n', default_flow_style=True)
+
