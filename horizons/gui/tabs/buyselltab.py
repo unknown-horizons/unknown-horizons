@@ -29,7 +29,7 @@ from horizons.command.uioptions import AddToBuyList, AddToSellList, RemoveFromBu
                                        RemoveFromSellList
 from horizons.gui.widgets.tradehistoryitem import TradeHistoryItem
 from horizons.util import Callback, WorldObject
-from horizons.util.gui import load_uh_widget, get_res_icon, create_resource_selection_dialog
+from horizons.util.gui import load_uh_widget, get_res_icon_path, create_resource_selection_dialog
 from horizons.world.component.tradepostcomponent import TradePostComponent
 from horizons.constants import TRADER
 
@@ -223,10 +223,11 @@ class BuySellTab(TabInterface):
 			button.up_image = None
 			button.hover_image = None
 		else:
-			icons = get_res_icon(res_id)
-			button.up_image = icons[0]
-			button.down_image = icons[0]
-			button.hover_image = icons[1] # disabled icon
+			icon = get_res_icon_path(res_id, 50)
+			icon_disabled = get_res_icon_path(res_id, 50, greyscale=True)
+			button.up_image = icon
+			button.down_image = icon
+			button.hover_image = icon_disabled
 			button.helptext = self.session.db.get_res_name(res_id)
 			slot.res = res_id
 			# use some python magic to assign a res attribute to the slot to

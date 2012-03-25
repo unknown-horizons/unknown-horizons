@@ -24,7 +24,7 @@ from random import randint
 from horizons.constants import PATHS
 from horizons.util import decorators
 from horizons.util.dbreader import DbReader
-from horizons.util.gui import get_res_icon
+from horizons.util.gui import get_res_icon_path
 from horizons.entities import Entities
 
 ########################################################################
@@ -94,7 +94,8 @@ class UhDbAccessor(DbReader):
 		if only_inventory:
 			sql += " AND shown_in_inventory = 1 "
 		query = self.cached_query(sql)
-		return [(query[res][0], get_res_icon(query[res][0])[0]) for res in xrange(len(query))]
+		format_data = lambda res: (res, get_res_icon_path(res, 50))
+		return [format_data(row[0]) for row in query]
 
 	# Sound table
 

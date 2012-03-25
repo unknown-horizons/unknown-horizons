@@ -24,7 +24,7 @@ from fife.extensions import pychan
 from fife.extensions.pychan.widgets import ImageButton
 
 from horizons.util import Callback
-from horizons.util.gui import get_res_icon
+from horizons.util.gui import get_res_icon_path
 
 class ImageFillStatusButton(pychan.widgets.Container):
 
@@ -55,14 +55,14 @@ class ImageFillStatusButton(pychan.widgets.Container):
 		@param use_inactive_icon: wheter to use inactive icon if amount == 0
 		@param uncached: force no cache. see __init__()
 		@return: ImageFillStatusButton instance"""
-		icons = get_res_icon(res)
-		icon, icon_disabled = icons[0], icons[1]
-		if not use_inactive_icon:
+		icon = get_res_icon_path(res, 50)
+		if use_inactive_icon:
+			icon_disabled = get_res_icon_path(res, 50, greyscale=True)
+		else:
 			icon_disabled = icon
 		helptext = db.get_res_name(res)
-		return cls(up_image=icon_disabled if amount == 0 else icon,
-		           down_image=icon_disabled if amount == 0 else icon,
-		           hover_image=icon_disabled if amount == 0 else icon,
+		image = icon_disabled if amount == 0 else icon
+		return cls(up_image=image, down_image=image, hover_image=image,
 		           text=str(amount),
 		           helptext=helptext,
 		           size=cls.DEFAULT_BUTTON_SIZE,

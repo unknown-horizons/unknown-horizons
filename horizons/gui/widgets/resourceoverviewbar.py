@@ -30,7 +30,7 @@ import horizons.main
 
 from horizons.constants import RES
 from horizons.world.component.storagecomponent import StorageComponent
-from horizons.util.gui import load_uh_widget, get_res_icon, create_resource_selection_dialog
+from horizons.util.gui import load_uh_widget, get_res_icon_path, create_resource_selection_dialog
 from horizons.util import PychanChildFinder, Callback
 from horizons.util.python.decorators import cachedmethod
 from horizons.util.messaging.message import ResourceBarResize
@@ -193,7 +193,7 @@ class ResourceOverviewBar(object):
 				helptext = self.session.db.get_res_name(res)
 				icon = entry.findChild(name="res_icon")
 				icon.num = i
-				icon.image = get_res_icon(res)[2] # the 24 one
+				icon.image = get_res_icon_path(res, 24)
 				icon.capture(self._on_res_slot_click, event_name = 'mouseClicked')
 			else:
 				helptext = _("Click to add a new slot")
@@ -280,7 +280,7 @@ class ResourceOverviewBar(object):
 		self.gold_gui = load_uh_widget(self.__class__.GOLD_ENTRY_GUI_FILE, style=self.__class__.STYLE)
 		self.gold_gui.child_finder = PychanChildFinder(self.gold_gui)
 		# set appropriate icon
-		self.gold_gui.findChild(name="res_icon").image = get_res_icon(RES.GOLD_ID)[4] # the 32 one
+		self.gold_gui.findChild(name="res_icon").image = get_res_icon_path(RES.GOLD_ID, 32)
 
 	def _update_gold(self, force=False):
 		"""Changelistener to upate player gold"""

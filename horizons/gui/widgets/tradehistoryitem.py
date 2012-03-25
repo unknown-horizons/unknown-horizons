@@ -21,7 +21,7 @@
 
 from fife.extensions import pychan
 
-from horizons.util.gui import load_uh_widget, get_res_icon
+from horizons.util.gui import load_uh_widget, get_res_icon_path
 from horizons.constants import RES
 
 class TradeHistoryItem(pychan.widgets.Container):
@@ -39,14 +39,14 @@ class TradeHistoryItem(pychan.widgets.Container):
 		gold_amount_label.text = u'{gold:+5d}'.format(gold=gold)
 
 		gold_icon = self.findChild(name='gold_icon')
-		gold_icon.image = get_res_icon(RES.GOLD_ID)[3]
+		gold_icon.image = get_res_icon_path(RES.GOLD_ID, 16)
 		gold_icon.helptext = player.session.db.get_res_name(RES.GOLD_ID)
 
 		resource_amount_label = self.findChild(name='resource_amount')
 		resource_amount_label.text = u'{amount:+5d}'.format(amount=amount)
 
 		resource_icon = self.findChild(name='resource_icon')
-		resource_icon.image = get_res_icon(resource_id)[3]
+		resource_icon.image = get_res_icon_path(resource_id, 16)
 		resource_icon.helptext = player.session.db.get_res_name(resource_id)
 
 		self.size = self.widget.size
