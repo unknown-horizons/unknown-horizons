@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: translate-uh@lists.unknown-horizons.org\n"
 "POT-Creation-Date: 2012-03-21 04:04+0100\n"
-"PO-Revision-Date: 2012-03-25 12:40+0200\n"
+"PO-Revision-Date: 2012-03-25 12:43+0200\n"
 "Last-Translator: Traveler <guillaume.pascal43@laposte.net>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: fr\n"
@@ -1373,6 +1373,9 @@ msgid ""
 "This may sound strange, but click on the gear wheel you see in a lumberjack "
 "hut's overview."
 msgstr ""
+"Toutes les entreprises offrent la possibilité de stopper le travail.\n"
+"Cela peut paraître étrange mais essayez de cliquer sur les engrenages que "
+"vous voyez, par exemple, dans le sommaire du bûcheron."
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:322
@@ -1381,6 +1384,10 @@ msgid ""
 "costs you pay for the building will decrease. They won't be zero, but still "
 "lower than if you keep the company producing."
 msgstr ""
+"Si ce mode « pause » est disponible (nous l'appelons « désaffection »), les "
+"coûts de fonctionnements que vous payez pour le bâtiment baisseront. Il ne "
+"baisseront pas à zéro, mais ils seront déjà plus bas que si le bâtiment "
+"fonctionnait."
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:324
@@ -1389,6 +1396,10 @@ msgid ""
 "This means that you can save money when you temporarily do not need a company "
 "and do not want to tear it down, either."
 msgstr ""
+"\n"
+"Cela veut dire que vous pouvez économiser de l'argent en désactivant des "
+"bâtiments que vous ne voulez pas détruire mais dont vous n'avez pas besoin "
+"pour l'instant."
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:326
@@ -1396,6 +1407,8 @@ msgid ""
 "Another solution is to build the last increment-I building which has not been "
 "mentioned so far: the storage tent."
 msgstr ""
+"Une autre solution est de construire le dernier bâtiment de niveau 1 qui n'a "
+"pas encore été mentionné : l'entrepôt."
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:328
@@ -1404,6 +1417,10 @@ msgid ""
 "* Offers more storage for your goods, and\n"
 "* sends its own collectors to fetch goods, just like the warehouse does."
 msgstr ""
+"Ce bâtiment a deux fonctions. Il :\n"
+"* Offre plus d'espace de stockage pour vos biens et\n"
+"* Envoie ses propres collecteurs pour aller chercher des biens tout comme le "
+"comptoir le fait."
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:330
@@ -1412,6 +1429,9 @@ msgid ""
 "products collected, and if the warehouse is overwhelmed with collector tasks, "
 "you can place a storage tent to help out there."
 msgstr ""
+"Notez que les entreprises peuvent également être connectées à un entrepôt à "
+"la place d'un comptoir et si le comptoir est surchargé vous pouvez l'aider à "
+"tout collecter en construisant un entrepôt."
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:332
@@ -1419,6 +1439,9 @@ msgid ""
 "\n"
 "TASK: Build a storage tent, preferably where you need collectors."
 msgstr ""
+"\n"
+"MISSION : Construisez un entrepôt, de préférence quelque part où vous avez "
+"besoin de collecteurs."
 
 #. This message is displayed in the widget on the left screen part. Please keep it short enough to fit there!
 #: po/tutorial.py:334
