@@ -169,9 +169,6 @@ class Session(LivingObject):
 		self.log.debug("Ending session")
 		self.is_alive = False
 
-		LastActivePlayerSettlementManager().remove()
-		LastActivePlayerSettlementManager.destroy_instance()
-
 		self.gui.session = None
 
 		Scheduler().rem_all_classinst_calls(self)
@@ -190,6 +187,10 @@ class Session(LivingObject):
 			self.cursor.end()
 		# these will call end() if the attribute still exists by the LivingObject magic
 		self.ingame_gui = None # keep this before world
+
+		LastActivePlayerSettlementManager().remove() # keep after ingame_gui
+		LastActivePlayerSettlementManager.destroy_instance()
+
 		self.cursor = None
 		self.world.end() # must be called before the world ref is gone
 		self.world = None
