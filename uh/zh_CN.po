@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2012-03-24 02:16+0100\n"
-"PO-Revision-Date: 2012-03-24 03:07+0200\n"
+"PO-Revision-Date: 2012-03-25 04:56+0200\n"
 "Last-Translator: nifabric <nifabric@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: zh_CN\n"
@@ -21,7 +21,7 @@ msgstr ""
 #: database files sql
 #, python-format
 msgid "A new settlement was founded by {player}."
-msgstr "{player}建立了一个新殖民地。"
+msgstr "一个新殖民地由{player}建立了。"
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
@@ -36,46 +36,46 @@ msgstr "创建了新世界。"
 #. This is a database entry: the name of an inhabitant increment (tier / level).
 #: database files sql
 msgid "Aristocrats"
-msgstr ""
+msgstr "贵族"
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
 msgid "Cannot go here."
-msgstr ""
+msgstr "不能到达那里。"
 
 #. (text of widget: headline)
 #. This is a database entry: the name of an inhabitant increment (tier / level).
 #: database files horizons/i18n/guitranslations.py:224 sql
 msgid "Citizens"
-msgstr ""
+msgstr "市民"
 
 #. This is a database entry: the name of an inhabitant increment (tier / level).
 #: database files sql
 msgid "Merchants"
-msgstr ""
+msgstr "商人"
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
 msgid "One of your fields requires a farm to harvest its crops."
-msgstr ""
+msgstr "你的一块田地需要农场收割作物。"
 
 #. (text of widget: headline)
 #. This is a database entry: the name of an inhabitant increment (tier / level).
 #: database files horizons/i18n/guitranslations.py:276 sql
 msgid "Pioneers"
-msgstr ""
+msgstr "拓荒者"
 
 #. (text of widget: headline)
 #. This is a database entry: the name of an inhabitant increment (tier / level).
 #: database files horizons/i18n/guitranslations.py:307 sql
 msgid "Sailors"
-msgstr ""
+msgstr "水手"
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
 #, python-format
 msgid "Screenshot has been saved to {file}."
-msgstr ""
+msgstr "截图已保存至文件{file}。"
 
 #. (text of widget: headline)
 #. (text of widget: settler_score)
@@ -83,17 +83,18 @@ msgstr ""
 #: database files horizons/i18n/guitranslations.py:336
 #: horizons/i18n/guitranslations.py:664 sql
 msgid "Settlers"
-msgstr ""
+msgstr "移民"
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
+#, fuzzy
 msgid "Some of your inhabitants have no access to a main square."
-msgstr ""
+msgstr "你的一些居民没有广场。"
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
 msgid "Some of your inhabitants just moved out."
-msgstr ""
+msgstr "你的一些居民刚刚搬走了。"
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
