@@ -19,6 +19,18 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
+"""
+Maps _ to the ugettext unicode gettext call. Use: _(string).
+N_ takes care of plural forms for different languages. It masks ungettext
+calls (unicode, plural-aware _() ) to create different translation strings
+depending on the counter value. Not all languages have only two plural forms
+"One" / "Anything else". Use: N_("{n} dungeon", "{n} dungeons", n).format(n=n)
+where n is a counter.
+
+We will need to make gettext recognise namespaces some time, but hardcoded
+'unknown-horizons' works for now since we currently only use one namespace.
+"""
+
 import platform
 import gettext
 import os
@@ -124,17 +136,3 @@ def change_language(language=None):
 
 	# dynamically reset all translations of active widgets
 	update_all_translations()
-
-
-def install():
-	"""
-	Maps _ to the ugettext unicode gettext call. Use: _(string).
-	N_ takes care of plural forms for different languages. It masks ungettext
-	calls (unicode, plural-aware _() ) to create different translation strings
-	depending on the counter value. Not all languages have only two plural forms
-	"One" / "Anything else". Use: N_("{n} dungeon", "{n} dungeons", n).format(n=n)
-	where n is a counter.
-	We will need to make gettext recognise namespaces some time, but hardcoded
-	'unknown-horizons' works for now since we currently only use one namespace.
-	"""
-	namespace_translation = gettext.translation('unknown-horizons', 'content/lang', fallback=True)

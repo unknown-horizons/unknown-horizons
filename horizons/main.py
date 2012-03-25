@@ -40,7 +40,6 @@ import shutil
 
 from fife import fife as fife_module
 
-from horizons import i18n
 from horizons.savegamemanager import SavegameManager
 from horizons.gui import Gui
 from horizons.extscheduler import ExtScheduler
@@ -125,8 +124,6 @@ def start(_command_line_arguments):
 	db = _create_main_db()
 
 	# init game parts
-
-	i18n.install()
 
 	client_id = fife.get_uh_setting("ClientID")
 	if client_id is None or len(client_id) == 0:
