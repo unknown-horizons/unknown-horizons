@@ -409,34 +409,33 @@ events:
   - arguments:
     - [Headline, "MISSION\_: NIVEAU SUIVANT"]
     - [Image, content/gui/images/background/hr.png]
-    - !!python/unicode 'All demands are fulfilled now if your inhabitants can regularly
-      visit the main square & pavilion and your food supply is adequate.'
-    - !!python/unicode 'If the sailors are happy enough, they want to advance to the
-      next increment called Pioneers.'
-    - !!python/unicode 'To make them happy, there is nothing else for you to do but
-      setting taxes to a lower level since you have fulfilled all the demands of your
-      inhabitants.'
-    - !!python/unicode 'You should try to not always run on low taxes since this will
-      probably lead to bankruptcy sooner or later. For a period of time and if you
-      know what you are doing, it is fine though.'
-    - !!python/unicode 'After some time, the first unit should walk to the main square
-      and have a look for new construction material there to build a log house. This
-      house will replace the old tent.'
+    - "Toutes les demandes sont maintenant remplies si vos habitants peuvent visiter\
+      \ r\xE9guli\xE8rement la place centrale et le pavillon et que vos ressources\
+      \ alimentaires sont suffisantes."
+    - "Si vos marins sont assez heureux, ils voudront avancer au prochain niveau appel\xE9\
+      \ Pionniers."
+    - "Pour les rendre heureux, il n'y a rien d'autre \xE0 faire que de fixer des\
+      \ imp\xF4ts plus bas puisque vous avez r\xE9pondu \xE0 toutes leurs demandes."
+    - "Vous devriez essayer de ne pas toujours jouer avec un niveau d'imp\xF4t trop\
+      \ bas puisque ceci vous m\xE8nerais \xE0 la faillite t\xF4t ou tard. Mais pour\
+      \ une p\xE9riode de temps d\xE9fini et si vous savez que vous faites, ce n'est\
+      \ pas un probl\xE8me."
+    - "Apr\xE8s quelques temps, un premier pionnier devrait aller \xE0 la place centrale\
+      \ y chercher du mat\xE9riel n\xE9cessaire \xE0 la construction d'une maison\
+      \ en rondin. Cette maison remplacera la vieille tente."
     - [Pagebreak]
-    - !!python/unicode '
-
-      Such residential upgrades cost resources and can thus be restricted at the main
-      square.'
+    - "\nL'am\xE9lioration de l'habitat co\xFBte des ressources et peut \xEAtre limit\xE9\
+      e depuis la place principale."
     - !!python/unicode 'There also are upgrades of buildings without costs, as you
       will see with the lumberjack. In this case, only the graphics change.'
-    - !!python/unicode 'Upgraded housing accomodates more inhabitants, and pioneers
-      pay more taxes than sailors, too.'
-    - !!python/unicode 'As you may have figured out already, the downside is that
-      pioneers demand additional goods which sailors do not need - so you will need
-      to spend this extra money to make them happy as well.'
-    - !!python/unicode '
-
-      TASK: Set the tax level to Low (left end) and wait for sailors to upgrade.'
+    - "Les logements am\xE9lior\xE9s peuvent h\xE9berger plus d'habitants et, de plus,\
+      \ les pionniers paient plus de taxes que les marins."
+    - "Comme vous l'avez peut-\xEAtre constat\xE9, le d\xE9savantage est que les pionniers\
+      \ demandent des biens suppl\xE9mentaires dont les marins n'ont pas besoin -\
+      \ vous devrez donc d\xE9penser cet argent suppl\xE9mentaire pour les satisfaire\
+      \ aussi."
+    - "\nMISSION : Baissez les taxes (c\xF4t\xE9 gauche du r\xE9gleur) et attendez\
+      \ que les marins se d\xE9veloppent."
     - - Gallery
       - [content/gfx/buildings/pioneers/residential/as_hut0/idle/45/0.png]
     type: logbook
@@ -456,34 +455,32 @@ events:
   - arguments:
     - [Headline, "MISSION\_: CONSTRUIRE UNE FERME"]
     - [Image, content/gui/images/background/hr.png]
-    - !!python/unicode 'Congratulations! Some of your inhabitants have reached increment
-      II!'
-    - !!python/unicode 'Now you have access to new buildings, take a look at the Build
-      menu again.'
+    - "F\xE9licitations ! Certains de vos habitants ont atteint le deuxi\xE8me niveau\
+      \ de d\xE9veloppement !"
+    - "Vous avez maintenant acc\xE8s \xE0 de nouveaux b\xE2timents, regardez de nouveau\
+      \ le menu de construction."
     - - Gallery
       - [content/gui/icons/tabwidget/buildmenu/level2_u.png]
-    - !!python/unicode 'A shiny new tab appeared there.'
+    - "Un joli nouvel onglet vient d'y appara\xEEtre."
     - !!python/unicode 'Pioneers will demand cloth, so you need to set up a production
       line for cloth starting with lambs wool (which is one of the goods produced
       at the farm).'
-    - !!python/unicode 'The farm is a very special production building since it can
-      produce not only one, but very many (and different) goods if you choose.'
-    - !!python/unicode 'The output of farms depends on what kind of fields you build
-      around it.'
+    - "La ferme est un b\xE2timent de production tr\xE8s sp\xE9ciale puisqu'elle peut\
+      \ produire plusieurs biens (diff\xE9rents) si vous le voulez."
+    - "La production d'une ferme d\xE9pend du type de champ que vous placez autour\
+      \ d'elle."
     - [Pagebreak]
-    - !!python/unicode '
-
-      We will have a closer look at this later.'
-    - !!python/unicode 'Farms, like all companies producing raw materials, do not
-      necessarily need to be connected to storage or a warehouse.'
-    - !!python/unicode 'As long as units of the final production company can reach
-      the farm, and collectors from the warehouse or storage tent can reach the final
-      company everything''s fine.'
-    - !!python/unicode 'If you, however, plan to do some processing on different parts
-      of the island (which can make sense) or even on different islands, you will
-      need a connection to collectors.'
-    - !!python/unicode 'Try to build the farm not too close to the coast or your existing
-      buildings since it will need some space around it to work well.'
+    - "\nNous regarderons cela de plus pr\xE8s plus tard."
+    - "Les fermes, comme tout les b\xE2timents produisant des biens bruts, n'ont pas\
+      \ besoin d'\xEAtre connect\xE9es \xE0 un comptoir ou au stock."
+    - "Tant qu'une personne de l'entreprise de transformation peut atteindre la ferme\
+      \ et qu'un porteur du comptoir ou d'un d\xE9p\xF4t peut atteindre l'entreprise\
+      \ alors tout ira bien."
+    - "Cependant si vous pensez affiner ces biens brut sur une autre partie de l'\xEE\
+      le ou m\xEAme sur une autre \xEEle, vous devrez les connecter \xE0 un d\xE9\
+      p\xF4t ou \xE0 un comptoir."
+    - "Essayez de construire une ferme, mais pas trop pr\xE8s de la c\xF4te ou d'autres\
+      \ b\xE2timents puisqu'elle aura besoin d'espace autour d'elle pour bien fonctionner."
     - !!python/unicode '
 
       MISSION: Construire une ferme.'
@@ -506,38 +503,34 @@ events:
   - arguments:
     - [Headline, "MISSION\_: LES CHAMPS"]
     - [Image, content/gui/images/background/hr.png]
-    - !!python/unicode 'The farm itself is not going to produce anything without some
-      fields.'
-    - !!python/unicode 'You currently have the choice between pastures, potato and
-      sugar fields.'
-    - !!python/unicode 'Let''s have a short overview:
-
-      * Pasture: Sheep live here, producing lamb wool.
-
-      * Potato field: Grows potatoes which are currently treated as food.
-
-      * Sugar field: Grows sugar which is used to distill liquor and (later) produce
-      confectionery.'
-    - !!python/unicode 'We now only need pastures, but in case your food supply chain
-      is too small (maybe many residential buildings) you can also produce some potatoes.'
-    - !!python/unicode 'Note that for potatoes you will need a road connection to
-      the farm (not to the field!) as it will be the only company to work on the goods.'
+    - "La ferme elle-m\xEAme ne produira rien sans champs."
+    - "Pour l'instant vous avez le choix entre des pr\xE9s, des champs de pommes de\
+      \ terre et des champs de canne \xE0 sucre."
+    - "Voyons ce qu'ils produisent :\n* Pr\xE9s : Des moutons vivent ici et produisent\
+      \ de la laine.\n* Champs de pomme de terre : Des pommes de terre y poussent\
+      \ et constituent votre nourriture.\n* Champs de canne \xE0 sucre : De la canne\
+      \ \xE0 sucre qui sert \xE0 produire de l'alcool et (plus tard) des confiseries."
+    - "Pour l'instant nous avons seulement besoin de pr\xE9s mais si vos ressources\
+      \ alimentaires ne sont pas suffisantes (beaucoup d'habitations) vous pouvez\
+      \ aussi produire des pommes de terre."
+    - "Notez que dans le cas des pommes de terre vous devrez connecter la ferme (pas\
+      \ les champs!) au r\xE9seau routier puisque c'est la seule entreprise de cette\
+      \ cha\xEEne de production."
     - [Pagebreak]
     - !!python/unicode '
 
-      Make sure that all fields you build are in the area covered by the farm.'
-    - !!python/unicode 'You can have combined production - one pasture will not lead
-      to 100 percent efficiency of the farm - but you need to check how many fields
-      one farm can serve.'
-    - "Different classes of fields require the farm units to spend more or less time\
-      \ there (to seed, harvest, herd, etc\u2026) and because of that, the farm may\
-      \ be unable to serve all of the fields you built for it in time."
-    - !!python/unicode 'For now, you do not need to care about these issues a lot
-      since you haven''t built any fields. Let''s change that!'
-    - !!python/unicode '
-
-      TASK: Build at least one pasture in the farm''s range and add potato fields
-      if you like.'
+      Assurez-vous que tous les champs sont dans l''espace couvert par la ferme.'
+    - "Vous pouvez combiner vos productions - un champ ne m\xE8nera pas \xE0 une efficacit\xE9\
+      \ de 100 pour cent - mais vous devrez v\xE9rifier combien de champs la ferme\
+      \ peut cultiver."
+    - "Les diff\xE9rents types de champs n\xE9cessitent plus ou moins de temps pour\
+      \ \xEAtre cultiv\xE9s (planter, r\xE9colter, etc...) et \xE0 cause de cela une\
+      \ ferme peut ne pas \xEAtre en mesure de s'occuper de tous les champs \xE0 temps."
+    - "Mais pour l'instant vous n'avez pas besoin de penser \xE0 ce genre de probl\xE8\
+      me vu que vous n'avez pas encore construit de champs. Nous devons changer cela\
+      \ !"
+    - "\nMISSION : Construisez au moins un pr\xE9 dans le rayon d'action de la ferme\
+      \ et ajoutez des champs de pommes de terre si vous le souhaitez."
     - - Gallery
       - [content/gui/icons/buildmenu/018.png, content/gui/icons/buildmenu/019.png]
     type: logbook
@@ -557,40 +550,36 @@ events:
   - arguments:
     - [Headline, "MISSION : L'ENTREP\xD4T"]
     - [Image, content/gui/images/background/hr.png]
-    - !!python/unicode 'Did you watch your lumberjack recently?'
-    - !!python/unicode 'Since your warehouse does not have unlimited space to store
-      goods, collectors will stop fetching goods from companies when stock is full.'
-    - !!python/unicode 'So if no sailors recently wanted to upgrade their tents, you
-      probably have a lot of boards and in that case, the lumberjack may idle.'
-    - !!python/unicode 'We can improve this situation in two different ways, and we
-      will have a look at both of them below.'
-    - !!python/unicode 'All companies offer to do no work at all.
-
-      This may sound strange, but click on the gear wheel you see in a lumberjack
-      hut''s overview.'
-    - !!python/unicode 'If this ''break'' mode is enabled (we call it ''Decommissioning''),
-      the running costs you pay for the building will decrease. They won''t be zero,
-      but still lower than if you keep the company producing.'
+    - "Avez vous observ\xE9 le b\xFBcheron r\xE9cemment ?"
+    - "Puisque votre comptoir n'a qu'une capacit\xE9 limit\xE9, les collecteurs arr\xEA\
+      terons d'aller chercher les biens dans les entreprises lorsqu'il sera plein."
+    - "Donc si aucun marin n'a am\xE9lior\xE9 sa tente, vous avez probablement beaucoup\
+      \ de planches et dans ce cas le b\xFBcheron est peut-\xEAtre inactif."
+    - "Nous pouvons corriger cette situation par deux approches diff\xE9rentes que\
+      \ nous allons pr\xE9senter plus bas."
+    - "Toutes les entreprises offrent la possibilit\xE9 de stopper le travail.\nCela\
+      \ peut para\xEEtre \xE9trange mais essayez de cliquer sur les engrenages que\
+      \ vous voyez, par exemple, dans le sommaire du b\xFBcheron."
+    - "Si ce mode \xAB pause \xBB est disponible (nous l'appelons \xAB d\xE9saffection\
+      \ \xBB), les co\xFBts de fonctionnements que vous payez pour le b\xE2timent\
+      \ baisseront. Il ne baisseront pas \xE0 z\xE9ro, mais ils seront d\xE9j\xE0\
+      \ plus bas que si le b\xE2timent fonctionnait."
     - - Gallery
       - [content/gui/icons/templates/production/toggle_inactive_h.png]
     - [Pagebreak]
-    - !!python/unicode '
-
-      This means that you can save money when you temporarily do not need a company
-      and do not want to tear it down, either.'
-    - !!python/unicode 'Another solution is to build the last increment-I building
-      which has not been mentioned so far: the storage tent.'
-    - !!python/unicode 'This building has two purposes. It:
-
-      * Offers more storage for your goods, and
-
-      * sends its own collectors to fetch goods, just like the warehouse does.'
-    - !!python/unicode 'Note that companies can also be connected to a storage in
-      order to get their products collected, and if the warehouse is overwhelmed with
-      collector tasks, you can place a storage tent to help out there.'
-    - !!python/unicode '
-
-      TASK: Build a storage tent, preferably where you need collectors.'
+    - "\nCela veut dire que vous pouvez \xE9conomiser de l'argent en d\xE9sactivant\
+      \ des b\xE2timents que vous ne voulez pas d\xE9truire mais dont vous n'avez\
+      \ pas besoin pour l'instant."
+    - "Une autre solution est de construire le dernier b\xE2timent de niveau 1 qui\
+      \ n'a pas encore \xE9t\xE9 mentionn\xE9 : l'entrep\xF4t."
+    - "Ce b\xE2timent a deux fonctions. Il :\n* Offre plus d'espace de stockage pour\
+      \ vos biens et\n* Envoie ses propres collecteurs pour aller chercher des biens\
+      \ tout comme le comptoir le fait."
+    - "Notez que les entreprises peuvent \xE9galement \xEAtre connect\xE9es \xE0 un\
+      \ entrep\xF4t \xE0 la place d'un comptoir et si le comptoir est surcharg\xE9\
+      \ vous pouvez l'aider \xE0 tout collecter en construisant un entrep\xF4t."
+    - "\nMISSION : Construisez un entrep\xF4t, de pr\xE9f\xE9rence quelque part o\xF9\
+      \ vous avez besoin de collecteurs."
     - - Gallery
       - [content/gui/icons/buildmenu/002.png]
     type: logbook
@@ -716,6 +705,6 @@ events:
     type: var_gt
 locale: fr
 mapfile: development.sqlite
-translation_status: 129 translated messages, 2 fuzzy translations, 60 untranslated
+translation_status: 169 translated messages, 3 fuzzy translations, 19 untranslated
   messages.
 
