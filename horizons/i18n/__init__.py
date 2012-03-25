@@ -19,10 +19,17 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
+import platform
+import gettext
+import os
 import logging
+import locale
 import weakref
 
+import horizons.main
+from horizons.constants import LANGUAGENAMES
 from horizons.i18n import objecttranslations, guitranslations
+from horizons.i18n.utils import get_fontdef_for_locale, find_available_languages
 
 log = logging.getLogger("i18n")
 
@@ -79,3 +86,36 @@ def replace_attribute(widget, attribute, text):
 		setattr(widget, attribute, text)
 	else:
 		log.debug("Could not replace attribute %s in widget %s", attribute, widget)
+
+
+def change_language(language=None):
+	"""Load/change the language of Unknown Horizons.
+
+	Called on startup and when changing the language in the settings menu.
+	"""
+	if language: # non-default
+		try:
+			# NOTE about gettext fallback mechanism:
+			# English is not shipped as .mo file, thus if English is
+			# selected we use NullTranslations to get English output.
+			fallback = (language == 'en')
+			trans = gettext.translation('unknown-horizons', find_available_languages()[language], \
+										languages=[language], fallback=fallback)
+			trans.install(unicode=True, names=['ngettext',])
+		except IOError:
+			#xgettext:python-format
+			print _("Configured language {lang} could not be loaded").format(lang=language)
+			horizons.main.fife.set_uh_setting('Language', LANGUAGENAMES[''])
+			return change_language() # recurse
+	else:
+		# default locale
+		if platform.system() == "Windows": # win doesn't set the language variable by default
+			os.environ[ 'LANGUAGE' ] = locale.getdefaultlocale()[0]
+		gettext.install('unknown-horizons', 'content/lang', unicode=True, names=['ngettext',])
+
+	# update fonts
+	fontdef = get_fontdef_for_locale(language)
+	horizons.main.fife.pychan.loadFonts(fontdef)
+
+	# dynamically reset all translations of active widgets
+	update_all_translations()
