@@ -20,3 +20,4 @@ components:
 
 actionsets:
    as_pirate0: {level: 0}
+   as_pirate1: {level: 0}
