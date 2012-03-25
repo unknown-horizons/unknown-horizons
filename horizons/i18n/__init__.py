@@ -114,6 +114,10 @@ def change_language(language=None):
 			os.environ[ 'LANGUAGE' ] = locale.getdefaultlocale()[0]
 		gettext.install('unknown-horizons', 'content/lang', unicode=True, names=['ngettext',])
 
+	# expose the plural-aware translate function as builtin N_ (gettext does the same to _)
+	import __builtin__
+	__builtin__.__dict__['N_'] = __builtin__.__dict__['ngettext']
+
 	# update fonts
 	fontdef = get_fontdef_for_locale(language)
 	horizons.main.fife.pychan.loadFonts(fontdef)
@@ -129,7 +133,7 @@ def install():
 	calls (unicode, plural-aware _() ) to create different translation strings
 	depending on the counter value. Not all languages have only two plural forms
 	"One" / "Anything else". Use: N_("{n} dungeon", "{n} dungeons", n).format(n=n)
-	where n is a counter. N_ is, for some reason, broken. Cf. horizons.i18n.utils
+	where n is a counter.
 	We will need to make gettext recognise namespaces some time, but hardcoded
 	'unknown-horizons' works for now since we currently only use one namespace.
 	"""
