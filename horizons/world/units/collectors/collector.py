@@ -165,7 +165,7 @@ class Collector(Unit):
 			# resolve worldid to object later
 			if self.job:
 				if self.job.object == -1:
-					self.job.object = None
+					self.job.object = None # e.g. when hunters have killed their prey
 				else:
 					self.job.object = WorldObject.get_object_by_id( self.job.object )
 

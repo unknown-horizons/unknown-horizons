@@ -25,6 +25,7 @@ from fife.extensions import pychan
 import json
 import weakref
 import functools
+import itertools
 
 import horizons.main
 
@@ -101,6 +102,9 @@ class ResourceOverviewBar(object):
 
 		self.session.message_bus.subscribe_globally(NewPlayerSettlementHovered, self._on_different_settlement)
 
+		self._entry_gui_template = load_uh_widget(self.ENTRY_GUI_FILE, style=self.__class__.STYLE)
+		self._entry_gui_instances_counter = itertools.count()
+
 	def end(self):
 		self.set_inventory_instance( None, force_update=True )
 		self.current_instance = weakref.ref(self)
@@ -149,7 +153,16 @@ class ResourceOverviewBar(object):
 		self.set_inventory_instance(self.current_instance(), force_update=True)
 
 	def _on_different_settlement(self, message):
-		self.set_inventory_instance(message.settlement)
+
+		import cProfile as profile
+		import tempfile
+		outfilename = tempfile.mkstemp(text = True)[1]
+		print 'profile to ', outfilename
+		c = "cls._do_select(renderer, position, session.world, settlement)"
+		c = "self.set_inventory_instance(message.settlement)"
+		profile.runctx(c, globals(), locals(), outfilename)
+
+		#self.set_inventory_instance(message.settlement)
 
 	def set_inventory_instance(self, instance, keep_construction_mode=False, force_update=False):
 		"""Display different inventory. May change resources that are displayed"""
@@ -184,14 +197,18 @@ class ResourceOverviewBar(object):
 		resources = self._get_current_resources()
 		addition = [-1] if self._do_show_dummy or not resources else [] # add dummy at end for adding stuff
 		for i, res in enumerate( resources + addition ):
-			entry = load_uh_widget(self.ENTRY_GUI_FILE, style=self.__class__.STYLE)
-			entry.findChild(name="entry").position = (initial_offset + offset * i, 17)
-			background_icon = entry.findChild(name="background_icon")
+			# pychan requires an arbitrary unique prefix
+			prefix = str(self._entry_gui_instances_counter.next())
+			entry = self._entry_gui_template.clone(prefix=prefix)
+			entry.my_prefix = prefix # save it for others to use
+			#import pdb ; pdb.set_trace()
+			entry.findChild(name=prefix+"entry").position = (initial_offset + offset * i, 17)
+			background_icon = entry.findChild(name=prefix+"background_icon")
 			background_icon.add_entered_callback( Callback(self._show_resource_selection_dialog, i) )
 
 			if res != -1:
 				helptext = self.session.db.get_res_name(res)
-				icon = entry.findChild(name="res_icon")
+				icon = entry.findChild(name=prefix+"res_icon")
 				icon.num = i
 				icon.image = get_res_icon_path(res, 24)
 				icon.capture(self._on_res_slot_click, event_name = 'mouseClicked')
@@ -242,7 +259,7 @@ class ResourceOverviewBar(object):
 			if res in res_list:
 				entry = res_list.index(res)
 				cur_gui = self.gui[ entry ]
-				reference_icon = cur_gui.findChild(name="background_icon")
+				reference_icon = cur_gui.findChild(name=cur_gui.my_prefix+"background_icon")
 				below = reference_icon.size[1]
 				cost_icon = pychan.widgets.Icon(image=cost_icon_res,
 				                                position=(0, below))
@@ -315,7 +332,7 @@ class ResourceOverviewBar(object):
 			cur_gui = self.gui[i]
 
 			# set amount
-			label = cur_gui.findChild(name="res_available")
+			label = cur_gui.findChild(name=cur_gui.my_prefix+"res_available")
 			label.text = unicode( inv[res] )
 
 			# reposition according to magic forumula passed down from the elders in order to support centering
