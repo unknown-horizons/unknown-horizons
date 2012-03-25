@@ -422,6 +422,7 @@ class MapPreview(object):
 		self.minimap = None
 		self.calc_proc = None # handle to background calculation process
 		self.get_widget = get_widget
+		self._last_random_map_params = None
 
 	def update_map(self, map_file):
 		"""Direct map preview update.
@@ -446,6 +447,10 @@ class MapPreview(object):
 		"""Called when a random map parameter has changed.
 		@param map_params: _get_random_map() output
 		@param on_click: handler for clicks"""
+		if self._last_random_map_params == map_params:
+			return # we already display this, happens on spurious slider events such as hover
+		self._last_random_map_params = map_params
+
 		def check_calc_process():
 			# checks up on calc process (see below)
 			if self.calc_proc is not None:
@@ -491,7 +496,7 @@ class MapPreview(object):
 		# launch process in background to calculate minimap data
 		minimap_icon = self._get_map_preview_icon()
 
-		params =  json.dumps(((minimap_icon.width, minimap_icon.height), map_params))
+		params = json.dumps(((minimap_icon.width, minimap_icon.height), map_params))
 
 		args = (sys.executable, sys.argv[0], "--generate-minimap", params)
 		handle, outfilename = tempfile.mkstemp()
