@@ -9,8 +9,6 @@ import signal
 import logging
 import logging.config
 import logging.handlers
-import gettext
-gettext.install('', unicode=True)
 
 sys.path.append(os.getcwd())
 from horizons.network.client import Client, ClientMode

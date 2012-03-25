@@ -35,9 +35,6 @@ def get_option_parser():
 	return p
 
 if __name__ == '__main__':
-	import gettext
-	gettext.install('', unicode=True) # necessary for init_environment
-
 	# prepare sys path and init UH
 	def up(path):
 		return os.path.split(path)[0]
