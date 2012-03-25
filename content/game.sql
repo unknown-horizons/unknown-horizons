@@ -576,14 +576,17 @@ CREATE TABLE "weapon" (
 INSERT INTO "weapon" VALUES(40,'ranged',7,5,15,3,4,2,1,'content/gfx/misc/cannonballs/cannonball.png');
 INSERT INTO "weapon" VALUES(41,'melee',3,1,1,3,2,1,0,'');
 CREATE TABLE settler_production_line(level INTEGER, production_line INTEGER);
+-- sailors
 INSERT INTO "settler_production_line" VALUES(0,71);
 INSERT INTO "settler_production_line" VALUES(0,72);
+INSERT INTO "settler_production_line" VALUES(0,30);
+-- pioneers
 INSERT INTO "settler_production_line" VALUES(1,19);
 INSERT INTO "settler_production_line" VALUES(1,20);
 INSERT INTO "settler_production_line" VALUES(1,21);
 INSERT INTO "settler_production_line" VALUES(1,26);
-INSERT INTO "settler_production_line" VALUES(0,30);
 INSERT INTO "settler_production_line" VALUES(1,30);
+-- settlers
 INSERT INTO "settler_production_line" VALUES(2,30);
 INSERT INTO "settler_production_line" VALUES(2,43);
 INSERT INTO "settler_production_line" VALUES(2,20);
@@ -592,6 +595,15 @@ INSERT INTO "settler_production_line" VALUES(2,44);
 INSERT INTO "settler_production_line" VALUES(2,41);
 INSERT INTO "settler_production_line" VALUES(2,69);
 INSERT INTO "settler_production_line" VALUES(2,70);
+-- citizens
+INSERT INTO "settler_production_line" VALUES(3,30);
+INSERT INTO "settler_production_line" VALUES(3,43);
+INSERT INTO "settler_production_line" VALUES(3,20);
+INSERT INTO "settler_production_line" VALUES(3,21);
+INSERT INTO "settler_production_line" VALUES(3,44);
+INSERT INTO "settler_production_line" VALUES(3,41);
+INSERT INTO "settler_production_line" VALUES(3,69);
+INSERT INTO "settler_production_line" VALUES(3,70);
 CREATE TABLE settler_level (
     "level" INT NOT NULL DEFAULT (''),
     "name" TEXT NOT NULL DEFAULT (''),
