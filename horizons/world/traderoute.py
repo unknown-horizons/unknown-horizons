@@ -22,13 +22,13 @@
 import copy
 
 from horizons.world.units.movingobject import MoveNotPossible
-from horizons.util import  Circle, WorldObject
+from horizons.util import  Circle, WorldObject, ChangeListener
 from horizons.constants import GAME_SPEED
 from horizons.scheduler import Scheduler
 from horizons.world.component.storagecomponent import StorageComponent
 from horizons.world.component.tradepostcomponent import TradePostComponent, TRADE_ERROR_TYPE
 
-class TradeRoute(object):
+class TradeRoute(ChangeListener):
 	"""
 	waypoints: list of dicts with the keys
 		- warehouse:  a warehouse object
@@ -36,9 +36,10 @@ class TradeRoute(object):
 			- if amount is negative the ship unloads
 			- if amount is positive the ship loads
 
-	#NOTE new methods need to be added to handle route editing.
+	Change notifications mainly notify about changes of enable.
 	"""
 	def __init__(self, ship):
+		super(TradeRoute, self).__init__()
 		self.ship = ship
 		self.waypoints = []
 		self.current_waypoint = -1
@@ -49,13 +50,25 @@ class TradeRoute(object):
 
 		self.current_transfer = {} # used for partial unloading in combination with waiting
 
-	def append(self, warehouse):
+	def append(self, warehouse_worldid):
+		warehouse = WorldObject.get_object_by_id(warehouse_worldid)
 		self.waypoints.append({
 			'warehouse' : warehouse,
 			'resource_list' : {}
 		})
 
+	def set_wait_at_load(self, flag):
+		self.wait_at_load = flag # as method for commands
+
+	def set_wait_at_unload(self, flag):
+		self.wait_at_unload = flag # as methods for commands
+
+
 	def move_waypoint(self, position, direction):
+		was_enabled = self.enabled
+		if was_enabled:
+			self.disable()
+
 		if position == len(self.waypoints) and direction is 'down' or \
 		   position == 0 and direction is 'up':
 			return
@@ -66,6 +79,26 @@ class TradeRoute(object):
 		else:
 			return
 		self.waypoints.insert(new_pos, self.waypoints.pop(position))
+
+		if was_enabled:
+			self.enable()
+
+	def remove_waypoint(self, position):
+		was_enabled = self.enabled
+		if was_enabled:
+			self.disable()
+		try:
+			self.waypoints.pop(position)
+		except IndexError:
+			pass # usually multiple clicks in short succession with mp delay
+
+		if was_enabled:
+			self.enable() # might fail if too few waypoints now
+
+		self._changed()
+
+	def toggle_load_unload(self, position, res_id):
+		self.waypoints[position]['resource_list'][res_id] *= -1
 
 	def add_to_resource_list(self, position, res_id, amount):
 		self.waypoints[position]['resource_list'][res_id] = amount
@@ -213,11 +246,13 @@ class TradeRoute(object):
 			return False
 		self.enabled = True
 		self.move_to_next_route_warehouse()
+		self._changed()
 		return True
 
 	def disable(self):
 		self.enabled = False
 		self.ship.stop()
+		self._changed()
 
 	def clear(self):
 		self.waypoints = []

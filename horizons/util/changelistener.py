@@ -106,9 +106,11 @@ class ChangeListener(object):
 		self.__call_listeners(self.__listeners)
 
 	## Removal change listener
-	def add_remove_listener(self, listener):
+	def add_remove_listener(self, listener, no_duplicates=False):
 		"""A listener that listens for removal of the object"""
 		assert callable(listener)
+		if no_duplicates and listener in self.__remove_listeners:
+			return # don't allow duplicate entries
 		self.__remove_listeners.append(listener)
 
 	def remove_remove_listener(self, listener):
@@ -116,6 +118,10 @@ class ChangeListener(object):
 
 	def has_remove_listener(self, listener):
 		return (listener in self.__remove_listeners)
+
+	def discard_remove_listener(self, listener):
+		if self.has_remove_listener(listener):
+			self.remove_remove_listener(listener)
 
 	def load(self, db, world_id):
 		self.__init()
