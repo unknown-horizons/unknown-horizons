@@ -200,11 +200,13 @@ class BuySellTab(TabInterface):
 				self.remove_sell_from_settlement(slot.res)
 			if res_id != 0:
 				self.add_sell_to_settlement(res_id, value, slot.id)
-		else:
-			if slot.action is "buy" and slot.res is not None:
+		elif slot.action is "buy":
+			if slot.res is not None: # slot has been in use before, delete old value
 				self.remove_buy_from_settlement(slot.res)
 			if res_id != 0:
 				self.add_buy_to_settlement(res_id, value, slot.id)
+		else:
+			assert False
 
 		button = slot.findChild(name="button")
 		fillbar = slot.findChild(name="fillbar")
@@ -239,8 +241,8 @@ class BuySellTab(TabInterface):
 			filled = float(inventory[res_id]) / inventory.get_limit(res_id)
 			fillbar.position = (icon.width - fillbar.width - 1,
 			                    icon.height - int(icon.height*filled))
-			# show buy action by default (set to sell and toggle)
-			slot.action = "sell"
+			# reuse code from toggle to finish setup (must switch state before, it will reset it)
+			slot.action = "sell" if slot.action is "buy" else "buy"
 			self.toggle_buysell(slot_id, keep_hint=keep_hint)
 		slot.adaptLayout()
 
@@ -260,9 +262,12 @@ class BuySellTab(TabInterface):
 		elif slot.action is "sell":
 			# setting to buy
 			self._show_buy(slot)
+			slot.action = "buy"
 			if slot.res is not None:
 				self.remove_sell_from_settlement(slot.res)
 				self.add_buy_to_settlement(slot.res, limit, slot.id)
+		else:
+			assert False
 
 		if not keep_hint:
 			self._update_hint(slot_id)
