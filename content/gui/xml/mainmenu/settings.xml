@@ -68,7 +68,7 @@
 					helptext="0 is default system settings" />
 				<Label text="" name="mousesensitivity_value" />
 			 </HBox>
-			 <Slider size="300,20" name="mousesensitivity"
+			 <Slider size="300,20" name="mousesensitivity" is_focusable="0"
 				 orientation="0" scale_start="-0.99" scale_end="2.00" step_length="1.0" />
 		</VBox>
 	</VBox>
@@ -86,7 +86,7 @@
 					min_size="250,20" max_size="250,40" />
 				<Label name="volume_music_value" text="" />
 			</HBox>
-			<Slider size="300,20" name="volume_music"
+			<Slider size="300,20" name="volume_music" is_focusable="0"
 				orientation="0" scale_start="0.0" scale_end="0.20" />
 		</VBox>
 		<VBox>
@@ -95,7 +95,7 @@
 					wrap_text="1" min_size="250,20" max_size="250,40" />
 				<Label text="" name="volume_effects_value" />
 			</HBox>
-			<Slider size="300,20" name="volume_effects"
+			<Slider size="300,20" name="volume_effects" is_focusable="0"
 				orientation="0" scale_start="0.0" scale_end="0.5" />
 		</VBox>
 		<Spacer min_size="10" />
@@ -119,7 +119,7 @@
 						wrap_text="1" max_size="250,40" min_size="250,20" />
 					<Label text="" name="autosaveinterval_value" />
 				</HBox>
-				<Slider size="300,20" name="autosaveinterval"
+				<Slider size="300,20" name="autosaveinterval" is_focusable="0"
 					orientation="0" scale_start="0.0" scale_end="60.0" step_length="2.0" />
 
 				<HBox>
@@ -127,7 +127,7 @@
 						wrap_text="1" max_size="250,40" min_size="250,20" />
 					<Label text="" name="autosavemaxcount_value" />
 				</HBox>
-				<Slider size="300,20" name="autosavemaxcount"
+				<Slider size="300,20" name="autosavemaxcount" is_focusable="0"
 					orientation="0" scale_start="1.0" scale_end="30.0" step_length="1.0" />
 
 				<HBox>
@@ -135,7 +135,7 @@
 						wrap_text="1" max_size="250,40" min_size="250,20" />
 					<Label text="" name="quicksavemaxcount_value" />
 				</HBox>
-				<Slider size="300,20" name="quicksavemaxcount"
+				<Slider size="300,20" name="quicksavemaxcount" is_focusable="0"
 					orientation="0" scale_start="1.0" scale_end="30.0" step_length="1.0" />
 			</VBox>
 
