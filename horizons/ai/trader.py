@@ -29,6 +29,7 @@ from horizons.ext.enum import Enum
 from horizons.world.units.movingobject import MoveNotPossible
 from horizons.command.unit import CreateUnit
 from horizons.world.component.tradepostcomponent import TradePostComponent
+from horizons.util.messaging.message import NewSettlement
 
 
 class Trader(GenericAI):
@@ -61,6 +62,13 @@ class Trader(GenericAI):
 	def __init(self):
 		self.office = {} # { ship.worldid : warehouse }. stores the warehouse the ship is currently heading to
 		self.allured_by_signal_fire = {} # bool, used to get away from a signal fire (and not be allured again immediately)
+
+		self.session.message_bus.subscribe_globally(NewSettlement, self._on_new_settlement)
+
+	def _on_new_settlement(self, msg):
+		# make sure there's a trader ship for 2 settlements
+		if len(self.session.world.settlements) > self.get_ship_count() * 2:
+			self.create_ship()
 
 	def save(self, db):
 		super(Trader, self).save(db)

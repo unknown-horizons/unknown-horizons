@@ -45,6 +45,8 @@ class Player(ComponentHolder, WorldObject):
 		@param color: color of player (as Color)
 		@param inventory: {res: value} that are put in the players inventory
 		"""
+		if False:
+			assert isinstance(session, horizons.session.Session)
 		self.session = session
 		super(Player, self).__init__(worldid=worldid)
 		self.__init(name, color, difficulty_level)

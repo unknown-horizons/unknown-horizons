@@ -25,7 +25,7 @@ from horizons.entities import Entities
 from horizons.scheduler import Scheduler
 
 from horizons.util import WorldObject, Point, Rect, Circle, DbReader, random_map, BuildingIndexer
-from horizons.util.messaging.message import SettlementRangeChanged
+from horizons.util.messaging.message import SettlementRangeChanged, NewSettlement
 from settlement import Settlement
 from horizons.world.pathfinding.pathnodes import IslandPathNodes
 from horizons.constants import BUILDINGS, RES, UNITS
@@ -221,7 +221,7 @@ class Island(BuildingOwner, WorldObject):
 		                                           {'player':player.name}, \
 		                                           self.session.world.player == player)
 
-		self.session.world.notify_new_settlement()
+		self.session.message_bus.broadcast(NewSettlement(self, settlement))
 
 		return settlement
 

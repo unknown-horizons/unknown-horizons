@@ -23,7 +23,7 @@ import weakref
 
 from horizons.util.python import ManualConstructionSingleton
 from horizons.util import Point, WorldObject
-from horizons.util.messaging.message import NewPlayerSettlementHovered, HoverSettlementChanged
+from horizons.util.messaging.message import NewPlayerSettlementHovered, HoverSettlementChanged, NewSettlement
 
 def resolve_weakref(ref):
 	"""Resolves a weakref to a hardref, where the ref itself can be None"""
@@ -55,6 +55,7 @@ class LastActivePlayerSettlementManager(object):
 		self._last_player_settlement = None
 		self._last_settlement = None
 		self._last_player_settlement_hovered_was_none = True
+		self.session.message_bus.subscribe_globally(NewSettlement, self._on_new_settlement_created)
 
 	def save(self, db):
 		if self._last_player_settlement is not None:
@@ -126,3 +127,9 @@ class LastActivePlayerSettlementManager(object):
 			loc = self.session.cursor.get_exact_world_location_from_event( pos )
 			self.update(loc)
 
+	def _on_new_settlement_created(self, msg):
+		# if the player has created a new settlement, it is the current one, even
+		# if the mouse hasn't hovered over it. Required when immediately entering build menu.
+		if msg.settlement.owner.is_local_player:
+			self._last_player_settlement = weakref.ref(msg.settlement)
+			self._last_player_settlement_hovered_was_none = False
