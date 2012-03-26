@@ -183,6 +183,7 @@ def bind_all(mc, builtin_only=False, stoplist=None, verbose=False):
 	builtin_only to True.
 
 	"""
+	return
 
 	# Ignore gettext functions. At the beginning these point to a NullTranslation
 	# object, they change when a language is activated.
