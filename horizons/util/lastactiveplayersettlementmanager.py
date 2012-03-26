@@ -52,16 +52,24 @@ class LastActivePlayerSettlementManager(object):
 	def __init__(self, session):
 		self.session = session
 		self.session.view.add_change_listener(self._on_scroll)
+
+		# settlement mouse currently is above or None
+		self._cur_settlement = None
+
+		# last settlement of player mouse was on, only None at startup
 		self._last_player_settlement = None
-		self._last_settlement = None
+
+		# whether last known event was not on a player settlement
+		# can be used to detect reentering the area of _last_player_settlement
 		self._last_player_settlement_hovered_was_none = True
+
 		self.session.message_bus.subscribe_globally(NewSettlement, self._on_new_settlement_created)
 
 	def save(self, db):
 		if self._last_player_settlement is not None:
 			db("INSERT INTO last_active_settlement(type, value) VALUES(?, ?)", "PLAYER", self._last_player_settlement().worldid)
-		if self._last_settlement is not None:
-			db("INSERT INTO last_active_settlement(type, value) VALUES(?, ?)", "ANY", self._last_settlement().worldid)
+		if self._cur_settlement is not None:
+			db("INSERT INTO last_active_settlement(type, value) VALUES(?, ?)", "ANY", self._cur_settlement().worldid)
 
 		db("INSERT INTO last_active_settlement(type, value) VALUES(?, ?)", "LAST_NONE_FLAG", self._last_player_settlement_hovered_was_none)
 
@@ -69,13 +77,13 @@ class LastActivePlayerSettlementManager(object):
 		data = db("SELECT value FROM last_active_settlement WHERE type = \"PLAYER\"")
 		self._last_player_settlement = weakref.ref(WorldObject.get_object_by_id(data[0][0])) if data else None
 		data = db("SELECT value FROM last_active_settlement WHERE type = \"ANY\"")
-		self._last_settlement = weakref.ref(WorldObject.get_object_by_id(data[0][0])) if data else None
+		self._cur_settlement = weakref.ref(WorldObject.get_object_by_id(data[0][0])) if data else None
 		data = db("SELECT value FROM last_active_settlement WHERE type = \"LAST_NONE_FLAG\"")
 		self._last_player_settlement_hovered_was_none = bool(data[0][0])
 
 	def remove(self):
 		self._last_player_settlement = None
-		self._last_settlement = None
+		self._cur_settlement = None
 		self.session.view.remove_change_listener(self._on_scroll)
 
 	def update(self, current):
@@ -84,8 +92,8 @@ class LastActivePlayerSettlementManager(object):
 		settlement = self.session.world.get_settlement(Point(int(round(current.x)), int(round(current.y))))
 
 		# check if it's a new settlement independent of player
-		if resolve_weakref(self._last_settlement) is not settlement:
-			self._last_settlement = create_weakref(settlement)
+		if resolve_weakref(self._cur_settlement) is not settlement:
+			self._cur_settlement = create_weakref(settlement)
 			self.session.message_bus.broadcast(HoverSettlementChanged(self, settlement))
 
 		# player-sensitive code
@@ -118,8 +126,12 @@ class LastActivePlayerSettlementManager(object):
 			return None
 		return resolve_weakref(self._last_player_settlement)
 
+	def get_current_settlement(self):
+		"""Returns settlement mouse currently hovers over or None"""
+		return resolve_weakref(self._cur_settlement)
+
 	def _on_scroll(self):
-		"""Called when view changes"""
+		"""Called when view changes. Scrolling and zooming can change cursor position."""
 		if not hasattr(self.session, "cursor"): # not inited yet
 			return
 		pos = self.session.cursor.__class__.last_event_pos

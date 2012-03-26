@@ -46,6 +46,7 @@ from horizons.gui.tabs.tabinterface import TabInterface
 from horizons.world.component.namedcomponent import SettlementNameComponent, NamedComponent
 from horizons.world.component.selectablecomponent import SelectableComponent
 from horizons.util.messaging.message import SettlerUpdate, SettlerInhabitantsChanged, ResourceBarResize, HoverSettlementChanged
+from horizons.util.lastactiveplayersettlementmanager import LastActivePlayerSettlementManager
 
 class IngameGui(LivingObject):
 	"""Class handling all the ingame gui events.
@@ -378,7 +379,6 @@ class IngameGui(LivingObject):
 		else:
 			self.show_menu(menu)
 
-
 	def save(self, db):
 		self.message_widget.save(db)
 		self.logbook.save(db)
@@ -388,6 +388,9 @@ class IngameGui(LivingObject):
 		self.message_widget.load(db)
 		self.logbook.load(db)
 		self.resource_overview.load(db)
+
+		cur_settlement = LastActivePlayerSettlementManager().get_current_settlement()
+		self._cityinfo_set( HoverSettlementChanged(self, cur_settlement) )
 
 		self.minimap.draw() # update minimap to new world
 

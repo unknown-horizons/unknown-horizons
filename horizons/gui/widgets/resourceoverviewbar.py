@@ -143,7 +143,8 @@ class ResourceOverviewBar(object):
 		self.gold_gui.show()
 		self._update_gold() # call once more to make pychan happy
 
-		self.set_inventory_instance(None)
+		self.set_inventory_instance(
+		  LastActivePlayerSettlementManager().get(get_current_pos=True))
 
 	def redraw(self):
 		self.set_inventory_instance(self.current_instance(), force_update=True)
