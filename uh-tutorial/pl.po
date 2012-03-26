@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: translate-uh@lists.unknown-horizons.org\n"
 "POT-Creation-Date: 2012-03-21 04:04+0100\n"
-"PO-Revision-Date: 2012-03-26 18:58+0200\n"
+"PO-Revision-Date: 2012-03-26 19:32+0200\n"
 "Last-Translator: matekm <matekm@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: pl\n"
@@ -75,6 +75,9 @@ msgid ""
 "in the top-right corner (below the mini-map, with a sealed document and a "
 "feather)."
 msgstr ""
+"Po zamknięciu dziennik może być ponownie otwarty poprzez kliknięcie w ikonę "
+"\"Dziennik kapitański\" w prawym górnym rogu (poniżej mini mapy, z zamknietym "
+"dokumentem oraz piórem)."
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:18
@@ -95,6 +98,9 @@ msgid ""
 "explained or even buggy conditions: Please tell us and we will try to improve "
 "the tutorial!"
 msgstr ""
+"Jeżeli masz jakieś sugestie na temat redakcji tekstu, tematów, które powinny "
+"być wyjaśnione badź znalezionych błędów: powiedz nam, a my postaramy się "
+"ulepszyć ten samouczek!"
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:22
@@ -137,7 +143,7 @@ msgstr ""
 msgid ""
 "This indicates that you are able to build a warehouse there by pressing that "
 "button (called 'Build Settlement')."
-msgstr ""
+msgstr "Klikając w ten przycisk (nazwanego \"Buduj osadę\") możesz zbudować port."
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:34
@@ -151,6 +157,9 @@ msgid ""
 "You can build on any spot where this preview is not shaded red.\n"
 "Click where you want to place your first building."
 msgstr ""
+"Możesz wybrać dowolne miejsce na którym podgląd budynku nie jest "
+"podświetlony na czerwono.\n"
+"Kliknij w miejscu, gdzie chcesz wybudować pierwszy budynek."
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:38
@@ -158,6 +167,8 @@ msgid ""
 "\n"
 "TASK: Build a warehouse at the coast."
 msgstr ""
+"\n"
+"Zadanie: Wybuduj port na wybrzeżu."
 
 #. This is a logbook page heading. Space is VERY short, please only translate to strings that fit (roughly 30 characters max).
 #: po/tutorial.py:40
@@ -170,6 +181,8 @@ msgid ""
 "The construction material on your ship got unloaded automatically. You can "
 "now construct some basic buildings."
 msgstr ""
+"Materiały budowlane, które znajdowały się na pokładzie statku, zostały "
+"automatycznie rozładowane. Możesz teraz wybudować podstawowe budynki."
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:44
@@ -183,7 +196,7 @@ msgid ""
 "sailors can afford to hang their tents over."
 msgstr ""
 "Na tym etapie jest to niezbędne, ponieważ drewniane maszty są jedynym "
-"materiałem utrzymującym namioty na który żeglarze mogą sobie pozwolić."
+"materiałem utrzymującym namioty, na który żeglarze mogą sobie pozwolić."
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:48
@@ -197,12 +210,14 @@ msgid ""
 "big icon below the mini map or pressing B key."
 msgstr ""
 "Aby zbudować chatę drwala, otwórz menu budowy klikając wielką ikonę poniżej "
-"mini mapy lub naciskając klawisz B."
+"mini mapy lub naciskając klawisz 'B'."
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:52
 msgid "The build menu is sorted by increments."
 msgstr ""
+"Wszystkie konstrukcje w menu budowy są posortowane według etapów rozwoju "
+"twoich osadników."
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:54
@@ -210,6 +225,8 @@ msgid ""
 "You are currently in the first increment (the Sailors level) so are offered "
 "only the basic buildings."
 msgstr ""
+"W tym momencie jesteś na pierwszym z etapów (poziom Żeglarzy), dlatego masz "
+"dostęp tylko do podstawowych budynków."
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:56
@@ -217,6 +234,9 @@ msgid ""
 "\n"
 "As your civilization advances, you also gain more and more complex buildings."
 msgstr ""
+"\n"
+"Wraz z rozwojem cywilizacji, zdobędziesz dostęp do bardziej zaawansowanych "
+"budowli."
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:58
@@ -224,6 +244,8 @@ msgid ""
 "For now, select the lumberjack under 'Companies' and build it in an area with "
 "some trees around."
 msgstr ""
+"Na razie zaznacz chatę drwala z kategori 'Przemysł i rolnictwo' i wybuduj ją "
+"w zalesionym rejonie."
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:60
@@ -231,6 +253,8 @@ msgid ""
 "You can also plant trees later - but that costs money. Use what nature "
 "provided you with!"
 msgstr ""
+"Możesz także sadzić drzewa - jednak to kosztuje. Na razie skorzystaj z tego, "
+"co oferuje natura!"
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:62
@@ -238,6 +262,9 @@ msgid ""
 "A company always needs a trail connection to a storage or warehouse, "
 "otherwise goods will remain at the company and not be collected."
 msgstr ""
+"Aby wykorzystać wszystkie dobra, które zostały zebrane bądź wyprodukowane w "
+"danym miejscu musisz połączyć je drogą z reszta infrastruktury w twoiej "
+"osadzie. Inaczej nie będą brane pod uwagę."
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:64
@@ -245,6 +272,8 @@ msgid ""
 "This means that you have to build a trail connecting your warehouse (or "
 "storage) and lumberjack."
 msgstr ""
+"Oznacza to, że musisz wybudować drogę pomiędzy portem (lub magazynem) a "
+"chatą drwala."
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:66
@@ -262,6 +291,9 @@ msgid ""
 "Watch how a collector will fetch your first self-produced boards. Don't worry "
 "about recruiting workers for the lumberjack. That happens automatically."
 msgstr ""
+"Obserwuj jak pomocnik odbiera od drwala pierwsze wyprodukowane deski. Nie "
+"martw się rekrutacją pracowników do chaty drwala. Przebiega ona "
+"automatycznie."
 
 #. This message is displayed in the widget on the left screen part. Please keep it short enough to fit there!
 #: po/tutorial.py:70
@@ -279,21 +311,29 @@ msgid ""
 "You will need to have some food-producing companies, too, because people in "
 "general (and especially sailors) are very hungry."
 msgstr ""
+"Przyszła kolej na produkcję żywność, aby ludzie (a wszczególności żeglarze) "
+"nie chodzili głodni."
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:76
 msgid "Available companies in the first increment are the Hunter and Fisher."
 msgstr ""
+"Na pierwszym etapie rozwoju dostępnę są dwa zawody zajmujące się produkcją "
+"żywności: Rybak oraz Myśliwy."
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:78
 msgid "The Hunter hunts animals in the forest, thus needs trees nearby."
 msgstr ""
+"Myśliwy poluje na leśne zwierzęta, dlatego najlepiej zlokalizować go w "
+"pobliżu lasu."
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:80
 msgid "Note that you can place your Hunter close to the lumberjack's forest."
 msgstr ""
+"Zauważ, że myśliwego możesz zlokalizować w pobliżu lasu, który odwiedza "
+"drwal."
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:82
@@ -301,12 +341,16 @@ msgid ""
 "It can happen that the animals don't reproduce fast enough or simply hide "
 "well."
 msgstr ""
+"Może się zdażyć, że zwierzęta nie będą rozmnażać się zbyt szybko albo będą "
+"bardzo dobrze się ukrywały."
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:84
 msgid ""
 "Conclusion: the hunter is not too reliable if you need continuous supply."
 msgstr ""
+"Wniosek: jeżeli potrzebujesz stałego dostępu do żywności, zatrudnienie "
+"myśliwego nie jest najlepszym rozwiązaniem."
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:86
@@ -315,11 +359,15 @@ msgid ""
 "The Fisher needs a coastal building site like the warehouse and a fish school "
 "in range."
 msgstr ""
+"\n"
+"Rybak potrzebuje dostępu do wody w któej znajdują się ławice ryb."
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:88
 msgid "He will build a small rowing vessel and catch some fish."
 msgstr ""
+"Po usytuowaniu chatki rybaka na wybrzeżu, wybuduje on sobie łódź rybacką i "
+"zacznie łowić ryby."
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:90
@@ -327,6 +375,8 @@ msgid ""
 "This is a very constant supply at the cost of a slightly longer production "
 "time per unit of food."
 msgstr ""
+"To bardzo pewne źródło żywności, ceną jest jednak nieznacznie dłuższa "
+"produkcja."
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:92
@@ -334,6 +384,9 @@ msgid ""
 "A small settlement like yours can use both companies, and you can better "
 "balance pros and cons if you see the direct comparison."
 msgstr ""
+"Taka mała osada jak twoja może wykorzystać oba sposoby pozyskiwania "
+"żywności, powinieneś je jednaki zbalansować jzgodnie z ich zaletami i "
+"wadami."
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:94
@@ -341,11 +394,13 @@ msgid ""
 "\n"
 "TASK: Build a hunter and a fisher."
 msgstr ""
+"\n"
+"Zadanie: Wybuduj chatę myśliwego i rybaka."
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:96
 msgid "Don't forget to connect them to your warehouse with trails!"
-msgstr ""
+msgstr "Nie zapomnij o tym, aby doprowadzić do nich drogę!"
 
 #. This message is displayed in the widget on the left screen part. Please keep it short enough to fit there!
 #: po/tutorial.py:98
@@ -362,13 +417,15 @@ msgstr "Now Zadanie: Rynek główny"
 #: po/tutorial.py:102
 msgid "Your residents need a main square where they can fetch their goods from."
 msgstr ""
+"Osadnicy potrzebują rynku głównego, na którym będą mogli nabyć niezbędne "
+"towary."
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:104
 msgid ""
 "This means that they need a trail connection from their home to the main "
 "square."
-msgstr ""
+msgstr "Oznacza to, że potrzebują bezpośredniego połączenia z domu do rynku."
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:106
@@ -376,6 +433,8 @@ msgid ""
 "All goods in your warehouse are available at this 'market place', so your "
 "residents do not need to walk to the fisher or even to the warehouse."
 msgstr ""
+"Wszystkie dobra, które magazynujesz będą dostępne na rynku, dzięki temu "
+"osadnicy nie są zmuszeni chodzić bezpośrednio do rybaka czy do portu."
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:108
