@@ -31,8 +31,20 @@ from horizons.util import Point
 # http://en.wikipedia.org/wiki/Rounding#Round_half_up
 roundhalfplus = lambda x: int(round(math.floor(x + x) / 2.0 + 0.25))
 
+def patch(cls):
+	# thanks http://stackoverflow.com/a/6475071/556536
+	# TODO figure out why this works
+	SwigPyObjectType = type(cls)
+	class Meta(SwigPyObjectType):
+		pass
 
-class CursorTool(fife.IMouseListener):
+	class Patched(cls):
+		__metaclass__ = Meta
+
+	return Patched
+
+
+class CursorTool(patch(fife.IMouseListener)):
 	"""Basic tool for cursors."""
 	log = logging.getLogger("gui.mousetools")
 
