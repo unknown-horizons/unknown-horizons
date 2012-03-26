@@ -89,7 +89,6 @@ events:
   - type: logbook
     arguments:
     - [Headline, "1th December 1740"]
-    - [Pagebreak]
     - [Image, "content/gui/images/background/hr.png"]
     - |
       Finally we have enough to eat and a place to live again. My tent is not very comfortable but it keeps me dry and I have the feeling of having a roof over my head at night.
@@ -115,7 +114,7 @@ events:
     - [Headline, "27th August 1745"]
     - [Image, "content/gui/images/background/hr.png"]
     - |
-      Our village is doing well, the city has grown to over 250 inhabitants. I have started getting used to my new home, but this island is too small to stay here for ever.
+      Our village is doing well, the city has grown to over 250 inhabitants. I have started getting used to my new home, but this island is too small to stay here forever.
 
       We should load our ship and move out to find a bigger island offering room and resources for my people. I have created a basic navigational map again, using the stars I see at night. It is not perfect,  but I hope it will suffice to return here.
 
