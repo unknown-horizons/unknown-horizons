@@ -49,9 +49,6 @@ class RemoveStatusIcon(Message):
 		'icon_class'	# class object of the icon that is to be removed
 	)
 
-class RemoveAllStatusIcons(Message):
-	arguments = ('instance', )
-
 class SettlerUpdate(Message):
 	arguments = ('level', )
 
@@ -79,7 +76,7 @@ class WorldObjectDeleted(Message):
 	"""Called when a world object is being deleted.
 	Currently emitted in the process of destruction, i.e. you aren't guaranteed to be able to access any attributes. (Feel free to change the implementation if you need this).
 	"""
-	arguments = ('worldid', )
+	arguments = ('worldobject', 'worldid', )
 
 
 class NewPlayerSettlementHovered(Message):
@@ -90,3 +87,8 @@ class NewPlayerSettlementHovered(Message):
 class HoverSettlementChanged(Message):
 	"""Sent when hovering over any different settlement, or no settlement."""
 	arguments = ('settlement', )
+
+class NewSettlement(Message):
+	"""Sent when a new settlement is created"""
+	arguments = ('settlement', )
+

@@ -8,9 +8,10 @@
 	</Container>
 
 <!-- Graphics section -->
-	<VBox name="graphics_settings" position="185,45" padding="25">
-
-		<VBox name="mouse_settings" padding="2">
+<HBox name="graphics_settings" position="185,45" padding="25">
+	<!-- Left pane -->
+	<VBox name="graphics_left" max_size="320,500" min_size="320,0" padding="25">
+		<VBox name="graphics" padding="2">
 			<Label text="Graphics" name="headline_graphics" font="headline" />
 			<Icon image="content/gui/images/background/hr.png" />
 			<HBox  max_size="320,245">
@@ -46,20 +47,32 @@
 			</ScrollArea>
 		</VBox>
 
+		<VBox>
+			<Label name="fps_label" text="Frame rate limit:"
+				wrap_text="1" helptext="Set the maximum frame rate used. Default: 60 fps." />
+			<ScrollArea min_size="80,60" >
+				<ListBox name="fps_rate" />
+			</ScrollArea>
+		</VBox>
+	</VBox>
+
+	<!-- Right pane -->
+	<VBox name="graphics_right" max_size="320,500" min_size="320,0" padding="25">
 		<VBox name="mouse_settings" padding="2">
 			<Label name="headline_mouse" text="Mouse" font="headline" position_technique="automatic" />
 			<Icon image="content/gui/images/background/hr.png" />
 
 			 <HBox>
 				<Label name="mouse_sensitivity_label" text="Mouse sensitivity:"
-					wrap_text="1" max_size="250,40"  min_size="250,20" helptext="0 is default system settings" />
+					wrap_text="1" max_size="250,40"  min_size="250,20"
+					helptext="0 is default system settings" />
 				<Label text="" name="mousesensitivity_value" />
 			 </HBox>
-			 <Slider size="300,20" name="mousesensitivity"
+			 <Slider size="300,20" name="mousesensitivity" is_focusable="0"
 				 orientation="0" scale_start="-0.99" scale_end="2.00" step_length="1.0" />
 		</VBox>
-
 	</VBox>
+</HBox>
 
 <!-- Sound section -->
 	<VBox name="sound_settings" position="185,45">
@@ -73,7 +86,7 @@
 					min_size="250,20" max_size="250,40" />
 				<Label name="volume_music_value" text="" />
 			</HBox>
-			<Slider size="300,20" name="volume_music"
+			<Slider size="300,20" name="volume_music" is_focusable="0"
 				orientation="0" scale_start="0.0" scale_end="0.20" />
 		</VBox>
 		<VBox>
@@ -82,7 +95,7 @@
 					wrap_text="1" min_size="250,20" max_size="250,40" />
 				<Label text="" name="volume_effects_value" />
 			</HBox>
-			<Slider size="300,20" name="volume_effects"
+			<Slider size="300,20" name="volume_effects" is_focusable="0"
 				orientation="0" scale_start="0.0" scale_end="0.5" />
 		</VBox>
 		<Spacer min_size="10" />
@@ -94,9 +107,9 @@
 	</VBox>
 
 <!-- Game section -->
-	<HBox name="game_settings" position="185,45" padding="27">
+	<HBox name="game_settings" position="185,45" padding="25">
 		<!-- Left pane -->
-		<VBox max_size="320,550" padding="25">
+		<VBox name="game_left" max_size="320,500" min_size="320,0" padding="25">
 			<VBox name="saving_settings" padding="2">
 				<Label name="headline_saving" text="Saving" font="headline" position_technique="automatic" />
 				<Icon image="content/gui/images/background/hr.png" />
@@ -106,7 +119,7 @@
 						wrap_text="1" max_size="250,40" min_size="250,20" />
 					<Label text="" name="autosaveinterval_value" />
 				</HBox>
-				<Slider size="300,20" name="autosaveinterval"
+				<Slider size="300,20" name="autosaveinterval" is_focusable="0"
 					orientation="0" scale_start="0.0" scale_end="60.0" step_length="2.0" />
 
 				<HBox>
@@ -114,7 +127,7 @@
 						wrap_text="1" max_size="250,40" min_size="250,20" />
 					<Label text="" name="autosavemaxcount_value" />
 				</HBox>
-				<Slider size="300,20" name="autosavemaxcount"
+				<Slider size="300,20" name="autosavemaxcount" is_focusable="0"
 					orientation="0" scale_start="1.0" scale_end="30.0" step_length="1.0" />
 
 				<HBox>
@@ -122,7 +135,7 @@
 						wrap_text="1" max_size="250,40" min_size="250,20" />
 					<Label text="" name="quicksavemaxcount_value" />
 				</HBox>
-				<Slider size="300,20" name="quicksavemaxcount"
+				<Slider size="300,20" name="quicksavemaxcount" is_focusable="0"
 					orientation="0" scale_start="1.0" scale_end="30.0" step_length="1.0" />
 			</VBox>
 
@@ -161,7 +174,7 @@
 		</VBox>
 
 		<!-- Right pane -->
-		<VBox max_size="320,550">
+		<VBox name="game_right" max_size="320,500" min_size="320,0" padding="25">
 			<VBox name="language_settings">
 				<Label text="Language"
 					name="headline_language" font="headline" />

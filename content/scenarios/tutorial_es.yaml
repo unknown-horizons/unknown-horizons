@@ -704,27 +704,15 @@ events:
     - [Image, content/gui/images/background/hr.png]
     - !!python/unicode 'You have successfully completed all tasks that were handed
       to you. The world is now at your command, waiting for your free aspirations
-      and brave explorations!
-
-
-      If you have any suggestions on what we could or should improve, add or leave
-      out:
-
-
-      www.unknown-horizons.org
-
-
-      #unknown-horizons @ irc.freenode.net
-
-
-      team@unknown-horizons.org
-
-
-      Our forums are open to you as well!
-
-
-      The best results until now were achieved by joining our IRC channel, so you
-      could try that out first (-;'
+      and brave explorations!'
+    - !!python/unicode 'If you have any suggestions on what we could or should improve,
+      add or leave out:'
+    - !!python/unicode 'www.unknown-horizons.org'
+    - !!python/unicode '#unknown-horizons @ irc.freenode.net'
+    - !!python/unicode 'team@unknown-horizons.org'
+    - !!python/unicode 'Our forums are open to you as well!'
+    - !!python/unicode 'The best results until now were achieved by joining our IRC
+      channel, so you could try that out first (-;'
     - [Pagebreak]
     - [Headline, "\xA1Gracias!"]
     - [Image, content/gui/images/background/hr.png]

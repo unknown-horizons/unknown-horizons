@@ -24,9 +24,13 @@ import tempfile
 
 from horizons.command.building import Build
 from horizons.command.production import ToggleActive
-from horizons.constants import BUILDINGS, PRODUCTION
+from horizons.command.unit import CreateUnit
+from horizons.constants import BUILDINGS, PRODUCTION, UNITS, COLLECTORS
 from horizons.util.worldobject import WorldObject
 from horizons.world.production.producer import Producer
+from horizons.world.component.collectingcompontent import CollectingComponent
+from horizons.world.units.collectors import Collector
+from horizons.scheduler import Scheduler
 
 from tests.game import game_test, new_session, settle, load_session
 
@@ -113,3 +117,67 @@ def test_load_producing_production_slow():
 	os.close(fd2)
 	assert session.save(savegamename=filename2)
 	session.end()
+
+@game_test(manual_session=True)
+def test_hunter_save_load():
+	"""Save/loading hunter in different states"""
+	session, player = new_session()
+	settlement, island = settle(session)
+
+	# setup hunter, trees (to keep animals close) and animals
+
+	hunter = Build(BUILDINGS.HUNTER_CLASS, 30, 30, island, settlement=settlement)(player)
+	hunter_worldid = hunter.worldid
+	del hunter # invalid after save/load
+
+	for x in xrange(27, 29):
+		for y in xrange(25, 28):
+			assert Build(BUILDINGS.TREE_CLASS, x, y, island, settlement=settlement)(player)
+
+	CreateUnit(island.worldid, UNITS.WILD_ANIMAL_CLASS, 27, 27)(issuer=None)
+	CreateUnit(island.worldid, UNITS.WILD_ANIMAL_CLASS, 28, 27)(issuer=None)
+	CreateUnit(island.worldid, UNITS.WILD_ANIMAL_CLASS, 29, 27)(issuer=None)
+
+	# utility
+	def saveload(session):
+		fd, filename = tempfile.mkstemp()
+		os.close(fd)
+		assert session.save(savegamename=filename)
+		session.end(keep_map=True)
+		session =  load_session(filename)
+		Scheduler().before_ticking() # late init finish (not ticking already)
+		return session
+
+	def get_hunter_collector(session):
+		hunter = WorldObject.get_object_by_id(hunter_worldid)
+		return hunter.get_component(CollectingComponent)._CollectingComponent__collectors[0]
+
+	def await_transition(session, collector, old_state, new_state):
+		assert collector.state == old_state, "expected old state %s, got %s" % (old_state, collector.state)
+		while collector.state == old_state:
+			session.run(seconds=1)
+		assert collector.state == new_state, "expected new state %s, got %s" % (old_state, collector.state)
+
+
+	sequence = [
+	  Collector.states.idle,
+	  Collector.states.waiting_for_animal_to_stop,
+	  Collector.states.moving_to_target,
+	  Collector.states.working,
+	  Collector.states.moving_home,
+	  Collector.states.idle
+	  ]
+
+	# do full run without saveload
+	collector = get_hunter_collector(session)
+	for i in xrange(len(sequence)-1):
+		await_transition(session, collector, sequence[i], sequence[i+1])
+
+	# do full run with saveload
+	for i in xrange(len(sequence)-1):
+		collector = get_hunter_collector(session)
+		await_transition(session, collector, sequence[i], sequence[i+1])
+		session = saveload(session)
+
+	# last state reached successfully 2 times -> finished
+

@@ -106,3 +106,17 @@ class UnequipWeaponToInventory(GenericCommand):
 		super(UnequipWeaponToInventory, self).__init__(obj, "unequip_to_inventory", weapon_id, number)
 
 GenericCommand.allow_network(UnequipWeaponToInventory)
+
+class RouteConfigCommand(GenericCommand):
+	"""Use this for routeconfig actions.
+	There are too many small methods to use single commands.
+	"""
+	def __init__(self, obj, method, *args, **kwargs):
+		super(RouteConfigCommand, self).__init__(obj, method, *args, **kwargs)
+
+	def _get_object(self):
+		obj = super(RouteConfigCommand, self)._get_object()
+		return obj.route
+
+
+GenericCommand.allow_network(RouteConfigCommand)

@@ -65,6 +65,7 @@ class BuildingClass(IngameType):
 		self.running_costs = yaml_data['cost']
 		self.running_costs_inactive = yaml_data['cost_inactive']
 		self.has_running_costs = (self.running_costs != 0)
+		self.show_status_icons = yaml_data.get('show_status_icons', True)
 		# for mines: on which deposit is it buildable
 		buildable_on_deposit_type = db("SELECT deposit FROM mine WHERE mine = ?", self.id)
 		if buildable_on_deposit_type:

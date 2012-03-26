@@ -334,25 +334,29 @@ class LogBook(PickBeltWidget):
 		if msg:
 			Chat(msg).execute(self.session)
 			self.textfield.text = u''
-		self._display_chat_history()
 		self._display_message_history()
+		self._display_chat_history()
 
 	def _display_message_history(self):
 		self.messagebox.items = []
 		messages = self.session.ingame_gui.message_widget.active_messages + \
 		           self.session.ingame_gui.message_widget.archive
-		for msg in sorted(messages,	key=lambda m: m.created):
+		for msg in sorted(messages, key=lambda m: m.created):
 			if msg.id != 'CHAT': # those get displayed in the chat window instead
-				self.messagebox.items.append(msg.message)
+				m = msg.message
+				if not isinstance(m, unicode):
+					m = m.decode('utf-8')
+				self.messagebox.items.append(m)
 		self.messagebox.selected = len(self.messagebox.items) - 1 # scroll to bottom
 
 	def _display_chat_history(self):
 		self.chatbox.items = []
-		for msg in sorted(self.session.ingame_gui.message_widget.chat, key=lambda m: m.created):
-			self.chatbox.items.append(msg.message)
+		messages = self.session.ingame_gui.message_widget.chat
+		for msg in sorted(messages, key=lambda m: m.created):
+			self.chatbox.items.append(unicode(msg.message))
 		self.chatbox.selected = len(self.chatbox.items) - 1 # scroll to bottom
 
 	def _chatfield_onfocus(self):
 		"""Removes text in chat input field when it gets focused."""
-		self.textfield.text = u""
+		self.textfield.text = u''
 		self.textfield.capture(None, 'mouseReleased', 'default')

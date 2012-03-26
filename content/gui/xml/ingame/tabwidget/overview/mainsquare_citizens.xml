@@ -28,7 +28,7 @@ Shows info about citizens and allows the player to change taxes or deny upgrade 
 				helptext="Tax rate" />
 			<Label name="tax_val_label" position="180,0" text=""
 				helptext="Tax rate" />
-			<StepSlider position="2,25" size="200,20" name="tax_slider" orientation="0" />
+			<StepSlider position="2,25" size="200,20" name="tax_slider" orientation="0" is_focusable="0" />
 		</Container>
 
 		<Container size="260,80" position="25,90">

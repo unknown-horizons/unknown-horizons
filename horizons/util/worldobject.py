@@ -68,11 +68,11 @@ class WorldObject(ChangeListener):
 
 	def load(self, db, worldid):
 		super(WorldObject, self).load(db, worldid)
-		self.log.debug('loading worldobject %s %s', worldid, self)
 		self.__init(worldid)
+		self.log.debug('Loading worldobject %s %s', worldid, self)
 
 	def remove(self):
-		self.session.message_bus.broadcast(WorldObjectDeleted(self, self.worldid))
+		self.session.message_bus.broadcast(WorldObjectDeleted(self, self, self.worldid))
 		super(WorldObject, self).remove()
 		self.log.debug("Removing WorldObject %s %s", self.worldid, self)
 		del WorldObject.__objects[self.worldid]

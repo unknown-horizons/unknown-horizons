@@ -114,7 +114,7 @@ class SingleplayerMenu(object):
 				# select first entry
 				self.active_right_side.distributeData({ 'maplist' : 0, })
 				_update_infos()
-			# update preview whenever somehting is selected in the list
+			# update preview whenever something is selected in the list
 			self.active_right_side.findChild(name="maplist").mapEvents({
 			  'maplist/action'              : _update_infos,
 			  'maplist/mouseWheelMovedUp'   : _update_infos,
@@ -134,8 +134,11 @@ class SingleplayerMenu(object):
 				self.show_popup("No campaigns available yet", text)
 			elif show == 'scenario':
 				self.current.files, maps_display = SavegameManager.get_available_scenarios(locales = choosable_locales)
+				# get the map files and their display names. display tutorials on top.
+				prefer_tutorial = lambda x : ('tutorial' not in x, x)
+				maps_display.sort(key=prefer_tutorial)
+				self.current.files.sort(key=prefer_tutorial)
 
-			# get the map files and their display names
 			self.active_right_side.distributeInitialData({ 'maplist' : maps_display, })
 			if len(maps_display) > 0:
 				# select first entry
@@ -158,7 +161,6 @@ class SingleplayerMenu(object):
 							_("Author: {author}").format(author=author) #xgettext:python-format
 						self.current.findChild(name="map_desc").text = \
 							_("Description: {desc}").format(desc=desc) #xgettext:python-format
-						#self.current.findChild(name="map_desc").parent.adaptLayout()
 				elif show == 'campaign': # update infos for campaign
 					def _update_infos():
 						"""Fill in infos of selected campaign to label"""
@@ -175,10 +177,11 @@ class SingleplayerMenu(object):
 
 
 				self.active_right_side.findChild(name="maplist").mapEvents({
-		  		'maplist/action': _update_infos,
-				  'maplist/mouseWheelMovedUp'   : _update_infos,
-		  		'maplist/mouseWheelMovedDown' : _update_infos
+					'maplist/action': _update_infos,
+					'maplist/mouseWheelMovedUp'   : _update_infos,
+					'maplist/mouseWheelMovedDown' : _update_infos
 				})
+				self.active_right_side.findChild(name="maplist").capture(_update_infos, event_name="keyPressed")
 				_update_infos()
 
 
@@ -419,6 +422,7 @@ class MapPreview(object):
 		self.minimap = None
 		self.calc_proc = None # handle to background calculation process
 		self.get_widget = get_widget
+		self._last_random_map_params = None
 
 	def update_map(self, map_file):
 		"""Direct map preview update.
@@ -443,6 +447,10 @@ class MapPreview(object):
 		"""Called when a random map parameter has changed.
 		@param map_params: _get_random_map() output
 		@param on_click: handler for clicks"""
+		if self._last_random_map_params == map_params:
+			return # we already display this, happens on spurious slider events such as hover
+		self._last_random_map_params = map_params
+
 		def check_calc_process():
 			# checks up on calc process (see below)
 			if self.calc_proc is not None:
@@ -488,7 +496,7 @@ class MapPreview(object):
 		# launch process in background to calculate minimap data
 		minimap_icon = self._get_map_preview_icon()
 
-		params =  json.dumps(((minimap_icon.width, minimap_icon.height), map_params))
+		params = json.dumps(((minimap_icon.width, minimap_icon.height), map_params))
 
 		args = (sys.executable, sys.argv[0], "--generate-minimap", params)
 		handle, outfilename = tempfile.mkstemp()

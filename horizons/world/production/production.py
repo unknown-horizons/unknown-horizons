@@ -375,7 +375,7 @@ class Production(ChangeListener):
 		self._give_produced_res()
 		self.on_production_finished()
 		if continue_producing:
-			self.state = PRODUCTION.STATES.waiting_for_res
+			self._state = PRODUCTION.STATES.waiting_for_res
 			self._add_listeners()
 			self._check_inventory()
 
@@ -459,7 +459,7 @@ class SingleUseProduction(Production):
 
 	def _finished_producing(self, **kwargs):
 		super(SingleUseProduction, self)._finished_producing(continue_producing=False, **kwargs)
-		self.state = PRODUCTION.STATES.done
+		self._state = PRODUCTION.STATES.done
 
 class ProgressProduction(Production):
 	"""Same as Production, but starts as soon as any needed res is available (doesn't wait

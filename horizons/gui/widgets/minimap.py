@@ -549,6 +549,8 @@ class Minimap(object):
 		render_name = self._get_render_name("ship")
 		self.minimap_image.rendertarget.removeAll( render_name )
 		use_rotation = self._get_rotation_setting()
+		dummy_point0 = fife.Point(0,0)
+		dummy_point1 = fife.Point(0,0)
 		for ship in self.world.ship_map.itervalues():
 			if not ship():
 				continue
@@ -561,28 +563,43 @@ class Minimap(object):
 			else: 	
 				ship_icon_path = self.__class__.SHIP_NEUTRAL
 			ship_icon = self.imagemanager.load(ship_icon_path)
-			self.minimap_image.rendertarget.addImage(render_name, fife.Point(coord[0], coord[1]), ship_icon)
+			dummy_point1.set(coord[0], coord[1])
+			self.minimap_image.rendertarget.addImage(render_name, dummy_point1, ship_icon)
 			if ship().owner.regular_player is True:
 				# add the 'flag' over the ship icon, with the color of the owner
-				self.minimap_image.rendertarget.addLine(render_name, fife.Point(coord[0] - 5, coord[1] - 5),\
-									fife.Point(coord[0], coord[1] - 5), color[0], color[1], color[2])
-				self.minimap_image.rendertarget.addLine(render_name, fife.Point(coord[0] - 6, coord[1] - 6),\
-									fife.Point(coord[0], coord[1] - 6), color[0], color[1], color[2])
-				self.minimap_image.rendertarget.addLine(render_name, fife.Point(coord[0] - 4, coord[1] - 4),\
-									fife.Point(coord[0], coord[1] - 4), color[0], color[1], color[2])
-			
+				dummy_point0.set(coord[0] - 5, coord[1] - 5)
+				dummy_point1.set(coord[0], coord[1] - 5)
+				self.minimap_image.rendertarget.addLine(render_name, dummy_point0,
+									dummy_point1, color[0], color[1], color[2])
+				dummy_point0.set(coord[0] - 6, coord[1] - 6)
+				dummy_point1.set(coord[0], coord[1] - 6)
+				self.minimap_image.rendertarget.addLine(render_name, dummy_point0,
+									dummy_point1, color[0], color[1], color[2])
+				dummy_point0.set(coord[0] - 4, coord[1] - 4)
+				dummy_point1.set(coord[0], coord[1] - 4)
+				self.minimap_image.rendertarget.addLine(render_name, dummy_point0,
+									dummy_point1, color[0], color[1], color[2])
+				# add black border around the flag
+				dummy_point0.set(coord[0] - 6, coord[1] - 7)
+				dummy_point1.set(coord[0], coord[1] - 7)
+				self.minimap_image.rendertarget.addLine(render_name, dummy_point0, dummy_point1, 0, 0, 0)
+				dummy_point0.set(coord[0] - 4, coord[1] - 3)
+				dummy_point1.set(coord[0], coord[1] - 4)
+				self.minimap_image.rendertarget.addLine(render_name, dummy_point0, dummy_point1, 0, 0, 0)
+				dummy_point0.set(coord[0] - 6, coord[1] - 7)
+				dummy_point1.set(coord[0] - 4, coord[1] - 3)
+				self.minimap_image.rendertarget.addLine(render_name, dummy_point0, dummy_point1, 0, 0, 0)
+				
 			# TODO: nicer selected view
+			dummy_point0.set(coord[0], coord[1])
 			if ship() in self.session.selected_instances:
-				self.minimap_image.rendertarget.addPoint(render_name,
-					                                     fife.Point( coord[0], coord[1] ),
-					                                     *Minimap.COLORS["water"])
+				self.minimap_image.rendertarget.addPoint(render_name, dummy_point0, *Minimap.COLORS["water"])
 				for x_off, y_off in ((-2,  0),
 					                   (+2,  0),
 					                   ( 0, -2),
 					                   ( 0, +2)):
-					self.minimap_image.rendertarget.addPoint(render_name,
-						                                       fife.Point( coord[0]+x_off, coord[1] + y_off ),
-						                                       *color)
+					dummy_point1.set(coord[0]+x_off, coord[1] + y_off)
+					self.minimap_image.rendertarget.addPoint(render_name, dummy_point1, *color)
 
 		# draw settlement warehouses if something has changed
 		settlements = self.world.settlements

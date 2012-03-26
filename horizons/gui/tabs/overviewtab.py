@@ -367,9 +367,8 @@ class ProductionOverviewTab(OverviewTab):
 		for production in sorted(self.instance.get_component(Producer).get_productions(), \
 								             key=(lambda x: x.get_production_line_id())):
 
-			if not production.has_change_listener(self.refresh):
-				# we need to be notified of small production changes, that aren't passed through the instance
-				production.add_change_listener(self.refresh)
+			# we need to be notified of small production changes, that aren't passed through the instance
+			production.add_change_listener(self._schedule_refresh, no_duplicates=True)
 
 			gui = load_uh_widget(self.production_line_gui_xml)
 			# fill in values to gui reflecting the current game state
@@ -464,8 +463,7 @@ class ProductionOverviewTab(OverviewTab):
 	def _cleanup(self):
 		Scheduler().rem_all_classinst_calls(self)
 		for production in self.instance.get_component(Producer).get_productions():
-			if production.has_change_listener(self.refresh):
-				production.remove_change_listener(self.refresh)
+			production.discard_change_listener(self._schedule_refresh)
 		for anim in self._animations:
 			if anim():
 				anim().stop()

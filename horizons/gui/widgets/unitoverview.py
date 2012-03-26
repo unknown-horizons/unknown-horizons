@@ -21,7 +21,7 @@
 
 from fife.extensions import pychan
 
-from horizons.util.gui import load_uh_widget, get_res_icon
+from horizons.util.gui import load_uh_widget, get_res_icon_path
 from horizons.util import Callback
 from fife.extensions.pychan.widgets import Icon
 from horizons.command.unit import SetStance
@@ -113,7 +113,7 @@ class WeaponStorageWidget(pychan.widgets.HBox):
 			storage = self.instance.get_weapon_storage()
 			for weapon, amount in storage:
 				weapons_added = True
-				icon_image = get_res_icon(weapon)[2]
+				icon_image = get_res_icon_path(weapon, 24)
 				icon_tooltip = self.instance.session.db.get_res_name(weapon)+': '+str(amount)
 				icon = Icon(image = icon_image, helptext=icon_tooltip)
 				self.addChild(icon)

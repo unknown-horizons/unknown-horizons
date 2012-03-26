@@ -29,6 +29,7 @@ from fife.extensions.pychan import widgets
 from fife.extensions.pychan.widgets import ImageButton
 from horizons.world.component.storagecomponent import StorageComponent
 from horizons.gui.widgets.minimap import Minimap
+from horizons.command.uioptions import RouteConfigCommand
 from horizons.world.component.namedcomponent import NamedComponent
 from horizons.world.component.ambientsoundcomponent import AmbientSoundComponent
 from horizons.command.game import PauseCommand, UnPauseCommand
@@ -63,8 +64,10 @@ class RouteConfig(object):
 	def show(self):
 		self.minimap.draw()
 		self._gui.show()
-		if not self.instance.has_remove_listener(self.on_instance_removed):
-			self.instance.add_remove_listener(self.on_instance_removed)
+
+		self.instance.add_remove_listener(self.on_instance_removed, no_duplicates=True)
+		self.instance.route.add_change_listener(self.on_route_change, no_duplicates=True, call_listener_now=True)
+
 		self.session.ingame_gui.on_switch_main_widget(self)
 		PauseCommand(suggestion=True).execute(self.session)
 
@@ -72,16 +75,24 @@ class RouteConfig(object):
 		UnPauseCommand(suggestion=True).execute(self.session)
 		self.minimap.disable()
 		self._gui.hide()
-		if self.instance.has_remove_listener(self.on_instance_removed):
-			self.instance.remove_remove_listener(self.on_instance_removed)
 
-		# make sure user knows that it's not enabled (if it's complete)
+		self.instance.discard_remove_listener(self.on_instance_removed)
+		self.instance.route.discard_remove_listener(self.on_route_change)
+
+		# make sure user knows that it's not enabled (if it appears to be complete)
 		if not self.instance.route.enabled and self.instance.route.can_enable():
 			self.session.ingame_gui.message_widget.add(None, None, "ROUTE_DISABLED")
 
 	def on_instance_removed(self):
 		self.hide()
 		self.instance = None
+
+	def on_route_change(self):
+		"""Called on changelistener notifications from the route"""
+		if self.instance.route.enabled:
+			self.start_button_set_inactive()
+		else:
+			self.start_button_set_active()
 
 	def start_button_set_active(self):
 		self._gui.findChild(name='start_route').set_active()
@@ -92,15 +103,14 @@ class RouteConfig(object):
 		self._gui.findChild(name='start_route').helptext = _('Stop route')
 
 	def start_route(self):
-		if self.instance.route.enable():
-			self.start_button_set_inactive()
-		else:
+		if not self.instance.route.can_enable():
 			self.instance.session.gui.show_popup(_("Need at least two settlements"),
 			                                     _("You need at least two different settlements in your route."))
+		else:
+			self._route_cmd("enable")
 
 	def stop_route(self):
-		self.instance.route.disable()
-		self.start_button_set_active()
+		self._route_cmd("disable")
 
 	def toggle_route(self):
 		if not self.instance.route.enabled:
@@ -120,18 +130,12 @@ class RouteConfig(object):
 	def remove_entry(self, entry):
 		if self.resource_menu_shown:
 			self.hide_resource_menu()
-		enabled = self.instance.route.enabled
-		self.instance.route.disable()
 		vbox = self._gui.findChild(name="left_vbox")
 		self.slots.pop(entry)
 		position = self.widgets.index(entry)
+		self._route_cmd("remove_waypoint", position)
 		self.widgets.pop(position)
-		self.instance.route.waypoints.pop(position)
 		vbox.removeChild(entry)
-		if enabled:
-			self.instance.route.enable()
-		elif not self.instance.route.can_enable():
-			self.stop_route()
 
 		self._check_no_entries_label()
 
@@ -166,16 +170,12 @@ class RouteConfig(object):
 			return
 
 		vbox = self._gui.findChild(name="left_vbox")
-		enabled = self.instance.route.enabled
-		self.instance.route.disable()
 
 		vbox.removeChildren(self.widgets)
-		self.widgets.insert(new_pos,self.widgets.pop(position))
-		self.instance.route.move_waypoint(position, direction)
+		self.widgets.insert(new_pos, self.widgets.pop(position))
+		self._route_cmd("move_waypoint", position, direction)
 		vbox.addChildren(self.widgets)
 
-		if enabled:
-			self.instance.route.enable()
 
 		self._gui.adaptLayout()
 		self._resource_selection_area_layout_hack_fix()
@@ -200,7 +200,7 @@ class RouteConfig(object):
 		res = self.resource_for_icon[res_button.up_image.source]
 
 		if res is not 0:
-			self.instance.route.waypoints[position]['resource_list'][res] *= -1
+			self._route_cmd("toggle_load_unload", position, res)
 
 		if slot.action is "unload":
 			self.show_load_icon(slot)
@@ -215,16 +215,16 @@ class RouteConfig(object):
 		amount_lbl.text = u'{amount}t'.format(amount=amount)
 		if slot.action is "unload":
 			amount = -amount
-		self.instance.route.add_to_resource_list(position, res_id, amount)
+		self._route_cmd("add_to_resource_list", position, res_id, amount)
 		slot.adaptLayout()
 
-	def add_resource(self, slot, res_id, entry, has_value = False, value=0):
+	def add_resource(self, slot, res_id, entry, has_value=False, value=0):
 		button = slot.findChild(name="button")
 		position = self.widgets.index(entry)
 		#remove old resource from waypoints
 		res = self.resource_for_icon[button.up_image.source]
 		if res is not 0:
-			self.instance.route.remove_from_resource_list(position, res)
+			self._route_cmd("remove_from_resource_list", position, res)
 
 		icon = self.icon_for_resource[res_id]
 		button.up_image, button.down_image, button.hover_image = icon, icon, icon
@@ -255,7 +255,7 @@ class RouteConfig(object):
 		if res_id != 0:
 			slot.findChild(name="amount").text = unicode(amount) + "t"
 			slot.adaptLayout()
-			self.instance.route.add_to_resource_list(position, res_id, value)
+			self._route_cmd("add_to_resource_list", position, res_id, value)
 			slider.capture(Callback(self.slider_adjust, slot, res_id, entry))
 		else:
 			slot.findChild(name="amount").text = unicode("")
@@ -300,7 +300,7 @@ class RouteConfig(object):
 				continue
 			cb = Callback(self.add_resource, slot, res_id, entry)
 			if res_id == 0 or inventory is None: # no fillbar e.g. on dead settlement (shouldn't happen) or dummy slot
-				button = ImageButton(size=(46,46))
+				button = ImageButton(size=(46, 46))
 				icon = self.icon_for_resource[res_id]
 				button.up_image, button.down_image, button.hover_image = icon, icon, icon
 				button.capture(cb)
@@ -344,7 +344,7 @@ class RouteConfig(object):
 		x_position = 105
 		#initialize slots with empty dict
 		self.slots[entry] = {}
-		for num in range(0,num):
+		for num in range(0, num):
 			slot = load_uh_widget('trade_single_slot.xml')
 			slot.position = x_position, 0
 
@@ -389,10 +389,10 @@ class RouteConfig(object):
 		for res_id in resource_list:
 			if index > self.slots_per_entry:
 				break
-			self.add_resource(self.slots[entry][index - 1],\
-			                  res_id, \
-			                  entry, \
-			                  has_value = True, \
+			self.add_resource(self.slots[entry][index - 1],
+			                  res_id,
+			                  entry,
+			                  has_value = True,
 			                  value = resource_list[res_id])
 			index += 1
 
@@ -412,7 +412,7 @@ class RouteConfig(object):
 			AmbientSoundComponent.play_special('error')
 			return
 
-		self.instance.route.append(warehouse)
+		self._route_cmd("append", warehouse.worldid)
 		self.add_gui_entry(warehouse)
 		if self.resource_menu_shown:
 			self.hide_resource_menu()
@@ -453,35 +453,31 @@ class RouteConfig(object):
 		                       on_click=on_click)
 
 		resources = self.session.db.get_res_id_and_icon(True)
-		#map an icon for a resource
-		#map a resource for an icon
+		# map an icon for a resource
+		# map a resource for an icon
 		self.resource_for_icon = {}
 		self.icon_for_resource = {}
 		for res_id, icon in list(resources) + [(0, self.dummy_icon_path)]:
 			self.resource_for_icon[icon] = res_id
 			self.icon_for_resource[res_id] = icon
 
-		#don't do any actions if the resource menu is shown
+		# don't do any actions if the resource menu is shown
 		self.resource_menu_shown = False
 		for entry in self.instance.route.waypoints:
 			self.add_gui_entry(entry['warehouse'], entry['resource_list'])
-		# we want escape key to close the widget, what needs to be fixed here?
-		self.start_button_set_active()
-		if self.instance.route.enabled:
-			self.start_button_set_inactive()
 
 		self._check_no_entries_label()
 
 		wait_at_unload_box = self._gui.findChild(name="wait_at_unload")
 		wait_at_unload_box.marked = self.instance.route.wait_at_unload
 		def toggle_wait_at_unload():
-			self.instance.route.wait_at_unload = not self.instance.route.wait_at_unload
+			self._route_cmd("set_wait_at_unload", not self.instance.route.wait_at_unload)
 		wait_at_unload_box.capture(toggle_wait_at_unload)
 
 		wait_at_load_box = self._gui.findChild(name="wait_at_load")
 		wait_at_load_box.marked = self.instance.route.wait_at_load
 		def toggle_wait_at_load():
-			self.instance.route.wait_at_load = not self.instance.route.wait_at_load
+			self._route_cmd("set_wait_at_load", not self.instance.route.wait_at_load)
 		wait_at_load_box.capture(toggle_wait_at_load)
 
 		self._gui.mapEvents({
@@ -497,4 +493,9 @@ class RouteConfig(object):
 		print 'profile to ', outfilename
 		profile.runctx( "self.minimap.draw()", globals(), locals(), outfilename)
 		"""
+
+
+	def _route_cmd(self, method, *args, **kwargs):
+		"""Convenience method for calling a method on instance.route via command (mp-safe)"""
+		RouteConfigCommand(self.instance, method, *args, **kwargs).execute(self.session)
 

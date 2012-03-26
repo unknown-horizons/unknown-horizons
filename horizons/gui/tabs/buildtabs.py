@@ -48,6 +48,7 @@ class BuildTab(TabInterface):
 	TODO: Implement refresh() calls to BuildTabs
 	TODO: Call update_text when applying new interface language
 	"""
+	lazy_loading = True
 
 	image_data = {
 		1 : {
@@ -135,28 +136,26 @@ class BuildTab(TabInterface):
 		if callback_mapping is None:
 			callback_mapping = {}
 		super(BuildTab, self).__init__(widget = 'buildtab.xml')
-		self.init_values()
 		self.session = session
 		self.tabindex = tabindex
 		self.callback_mapping = callback_mapping
 
-		icon_path = 'content/gui/icons/tabwidget/buildmenu/level{incr}_%s.png'.format(incr=tabindex)
+		icon_path = 'content/gui/icons/tabwidget/buildmenu/level{incr}_%s.png'.format(incr=self.tabindex)
 		self.button_up_image = icon_path % ('u')
 		self.button_active_image = icon_path % ('a')
 		self.button_down_image = icon_path % ('d')
 		self.button_hover_image = icon_path % ('h')
 
-		self.helptext = _("Increment {increment}").format(increment = int_to_roman(tabindex))
+		self.helptext = _("Increment {increment}").format(increment = int_to_roman(self.tabindex))
 
+	def _lazy_loading_init(self):
+		super(BuildTab, self)._lazy_loading_init()
 		self.init_gui()
 		self.__current_settlement = None
 
 	def init_gui(self):
 		headline_lbl = self.widget.child_finder('headline')
-		#i18n In English, this is Sailors, Pioneers, Settlers.
-		#TODO what formatting to use? getting names from DB and adding
-		# '... buildings' will cause wrong declinations all over :/
-		headline_lbl.text = _('{incr_inhabitant_name}').format(incr_inhabitant_name='Sailors') #xgettext:python-format
+		headline_lbl.text = _(self.session.db.get_settler_name(self.tabindex-1))
 
 		self.refresh()
 

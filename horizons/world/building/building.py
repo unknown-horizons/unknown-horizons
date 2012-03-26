@@ -33,8 +33,6 @@ from horizons.world.building.buildable import BuildableSingle
 from horizons.command.building import Build
 from horizons.world.component.storagecomponent import StorageComponent
 from horizons.world.componentholder import ComponentHolder
-from horizons.util.messaging.message import RemoveAllStatusIcons
-
 
 class BasicBuilding(ComponentHolder, ConcreteObject):
 	"""Class that represents a building. The building class is mainly a super class for other buildings."""
@@ -123,8 +121,6 @@ class BasicBuilding(ComponentHolder, ConcreteObject):
 		if hasattr(self, "disaster"):
 			self.disaster.recover(self)
 		self.island.remove_building(self)
-		if self.has_status_icon:
-			self.session.message_bus.broadcast(RemoveAllStatusIcons(self, self))
 		#instance is owned by layer...
 		#self._instance.thisown = 1
 		super(BasicBuilding, self).remove()

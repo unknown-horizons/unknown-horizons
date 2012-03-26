@@ -12,6 +12,7 @@ button_name: pigsty-1
 tooltip_text: _ Raises pigs. Needs a farm.
 settler_level: 2
 buildingcosts: {1: 200, 4: 2}
+show_status_icons: false
 components:
 - HealthComponent: {maxhealth: 1000}
 - ProducerComponent:

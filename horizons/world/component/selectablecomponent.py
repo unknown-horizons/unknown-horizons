@@ -132,8 +132,8 @@ class SelectableBuildingComponent(SelectableComponent):
 
 	def initialize(self):
 		# check for related buildings (defined in db, not yaml)
-		related_building = self.session.db.get_related_building_ids(self.instance.id)
-		if len(related_building) > 0:
+		related_buildings = self.session.db.get_related_building_ids_for_menu(self.instance.id)
+		if len(related_buildings) > 0:
 			from horizons.gui.tabs import BuildRelatedTab
 			self.tabs += (BuildRelatedTab,)
 
@@ -235,11 +235,11 @@ class SelectableBuildingComponent(SelectableComponent):
 	@classmethod
 	def _do_select(cls, renderer, position, world, settlement,
 	               radius, range_applies_only_on_island):
-		if range_applies_only_on_island:
-			island = world.get_island(position.origin)
-			if island is None:
-				return # preview isn't on island, and therefore invalid
+		island = world.get_island(position.origin)
+		if island is None:
+			return # preview isn't on island, and therefore invalid
 
+		if range_applies_only_on_island:
 			ground_holder = None # use settlement or island as tile provider (prefer settlement, since it contains fewer tiles)
 			if settlement is None:
 				ground_holder = island
@@ -264,7 +264,6 @@ class SelectableBuildingComponent(SelectableComponent):
 					cls._fake_tile_obj.get2dGfxVisual().addStaticImage(rotation, img.getHandle())
 
 			layer = world.session.view.layers[LAYERS.FIELDS]
-			island = world.get_island(position.origin)
 			# color island or fake tile
 			for tup in position.get_radius_coordinates(radius):
 				tile = island.get_tile_tuple(tup)

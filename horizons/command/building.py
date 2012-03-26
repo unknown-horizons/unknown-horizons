@@ -73,19 +73,26 @@ class Build(Command):
 
 		# check once agaion. needed for MP because of the execution delay.
 		buildable_class = Entities.buildings[self.building_class]
-		buildable = buildable_class.check_build(session, Point(self.x, self.y), \
-		  rotation = self.rotation,\
+		build_position = buildable_class.check_build(session, Point(self.x, self.y), \
+		  rotation=self.rotation,\
 			check_settlement=issuer is not None, \
 			ship=WorldObject.get_object_by_id(self.ship) if self.ship is not None else None,
 			issuer=issuer)
-		if buildable.buildable and issuer:
+
+		# it's possible that the build check requires different actions now,
+		# so update our data
+		self.x, self.y = build_position.position.origin.to_tuple()
+		self.rotation = build_position.rotation
+		self.tearset = build_position.tearset
+
+		if build_position.buildable and issuer:
 			# building seems to buildable, check res too now
 			res_sources = [ None if self.ship is None else WorldObject.get_object_by_id(self.ship),
 			                None if self.settlement is None else WorldObject.get_object_by_id(self.settlement) ]
 
-			(buildable.buildable, missing_res) = \
+			(build_position.buildable, missing_res) = \
 			 self.check_resources({}, buildable_class.costs, issuer, res_sources)
-		if not buildable.buildable:
+		if not build_position.buildable:
 			self.log.debug("Build aborted. Seems like circumstances changed during EXECUTIONDELAY.")
 			# TODO: maybe show message to user
 			return

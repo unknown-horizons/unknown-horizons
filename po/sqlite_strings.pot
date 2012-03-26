@@ -16,7 +16,7 @@ msgstr ""
 
 #. This is a database entry: the name of an inhabitant increment (tier / level).
 #: sql database files
-msgid "aristocrat"
+msgid "Aristocrats"
 msgstr ""
 
 #. This is a database entry: the name of a resource.
@@ -41,22 +41,17 @@ msgstr ""
 
 #. This is a database entry: the name of a resource.
 #: sql database files
-msgid "wood"
+msgid "stone tops"
 msgstr ""
 
-#. This is a database entry: the name of a resource.
+#. This is a database entry: the name of an inhabitant increment (tier / level).
 #: sql database files
-msgid "stone tops"
+msgid "Pioneers"
 msgstr ""
 
 #. This is a database entry: the name of a resource.
 #: sql database files
 msgid "wool"
-msgstr ""
-
-#. This is a database entry: the name of an inhabitant increment (tier / level).
-#: sql database files
-msgid "merchant"
 msgstr ""
 
 #. This is a database entry: the name of a resource.
@@ -77,6 +72,11 @@ msgstr ""
 #. This is a database entry: the name of a resource.
 #: sql database files
 msgid "pigs for slaughter"
+msgstr ""
+
+#. This is a database entry: the name of a resource.
+#: sql database files
+msgid "trees"
 msgstr ""
 
 #. This is a database entry: the name of a resource.
@@ -108,6 +108,11 @@ msgstr ""
 #. This is a database entry: the name of a resource.
 #: sql database files
 msgid "clay"
+msgstr ""
+
+#. This is a database entry: the name of an inhabitant increment (tier / level).
+#: sql database files
+msgid "Merchants"
 msgstr ""
 
 #. This is a database entry: the name of a resource.
@@ -157,11 +162,6 @@ msgstr ""
 msgid "Cannot go here."
 msgstr ""
 
-#. This is a database entry: the name of an inhabitant increment (tier / level).
-#: sql database files
-msgid "pioneer"
-msgstr ""
-
 #. This is a database entry: the name of a resource.
 #: sql database files
 msgid "sugar cane"
@@ -182,6 +182,11 @@ msgstr ""
 msgid "honeycombs"
 msgstr ""
 
+#. This is a database entry: the name of an inhabitant increment (tier / level).
+#: sql database files
+msgid "Settlers"
+msgstr ""
+
 #. This is a database entry: the name of a resource.
 #: sql database files
 msgid "faith"
@@ -190,11 +195,6 @@ msgstr ""
 #. This is a database entry: the name of a resource.
 #: sql database files
 msgid "boards"
-msgstr ""
-
-#. This is a database entry: the name of an inhabitant increment (tier / level).
-#: sql database files
-msgid "settler"
 msgstr ""
 
 #. This is a database entry: a messagewidget message (left part of the screen).
@@ -206,6 +206,11 @@ msgstr ""
 #: sql database files
 #, python-format
 msgid "{player1} and {player2} will fight each other to the death."
+msgstr ""
+
+#. This is a database entry: the name of an inhabitant increment (tier / level).
+#: sql database files
+msgid "Sailors"
 msgstr ""
 
 #. This is a database entry: the name of a resource.
@@ -236,11 +241,6 @@ msgstr ""
 #. This is a database entry: the name of a resource.
 #: sql database files
 msgid "spice plants"
-msgstr ""
-
-#. This is a database entry: the name of an inhabitant increment (tier / level).
-#: sql database files
-msgid "sailor"
 msgstr ""
 
 #. This is a database entry: the name of a resource.
@@ -324,11 +324,6 @@ msgstr ""
 msgid "Your crew refuses to leave this map."
 msgstr ""
 
-#. This is a database entry: the name of an inhabitant increment (tier / level).
-#: sql database files
-msgid "citizen"
-msgstr ""
-
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: sql database files
 #, python-format
@@ -396,6 +391,11 @@ msgstr ""
 #. This is a database entry: the name of a resource.
 #: sql database files
 msgid "flour"
+msgstr ""
+
+#. This is a database entry: the name of an inhabitant increment (tier / level).
+#: sql database files
+msgid "Citizens"
 msgstr ""
 
 #. This is a database entry: the name of a resource.

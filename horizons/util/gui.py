@@ -69,38 +69,37 @@ def load_uh_widget(filename, style=None, center_widget=False):
 
 	return widget
 
-def get_res_icon(res):
+def get_res_icon_path(res, size, greyscale=False):
 	"""Returns icons of a resource
-	@param res: resource id
+	@param res: resource id. Pass 'placeholder' to get placeholder path.
 	@return: tuple: (icon_50_path, icon_disabled_path, icon_24_path, icon_16_path, icon_32_path)
 	"""
-	ICON_PATH = 'content/gui/icons/resources/'
-	icon_50 = ICON_PATH + '50/%03d.png' % res
-	icon_disabled = ICON_PATH + '50/greyscale/%03d.png' % res
-	icon_24 = ICON_PATH + '24/%03d.png' % res
-	icon_16 = ICON_PATH + '16/%03d.png' % res
-	icon_32 = ICON_PATH + '32/%03d.png' % res
-	return (icon_50, icon_disabled, icon_24, icon_16, icon_32)
-
+	icon_path = 'content/gui/icons/resources/{size}/'.format(size=size)
+	if greyscale:
+		icon_path = icon_path + 'greyscale/'
+	if res == 'placeholder':
+		icon_path = icon_path + 'placeholder.png'
+	else:
+		icon_path = icon_path + '{res:03d}.png'.format(res=res)
+	return icon_path
 
 def create_resource_icon(res_id, db, size=50):
-	"""Creates a pychan Icon for a resource.
-	Returns None if size parameter is invalid (not in 16,24,50).
-	@param res_id:
+	"""Creates a pychan Icon for a resource. Helptext is set to res name.
+	Returns None if  size  parameter is invalid.
+	@param res_id: resource id
 	@param db: dbreader for main db
-	@param size: Size of icon in px. Valid: 16, 24, 50."""
+	@param size: Size of icon in px. Valid: 16, 24, 32, 50."""
 	from fife.extensions.pychan.widgets import Icon
-	if size == 50:
-		return Icon(helptext=db.get_res_name(res_id),
-		                   image=get_res_icon(res_id)[0])
-	elif size == 24:
-		return Icon(helptext=db.get_res_name(res_id),
-		                   image=get_res_icon(res_id)[2])
-	elif size == 16:
-		return Icon(helptext=db.get_res_name(res_id),
-		                   image=get_res_icon(res_id)[3])
-	else:
-		return None
+	widget = None
+	if size in (16, 24, 32, 50):
+		icon_path = get_res_icon_path(res_id, size)
+		try:
+			widget = Icon(image=icon_path)
+		except RuntimeError: # ImageManager: image not found, use placeholder
+			print '[WW] Image not found: {icon_path}'.format(icon_path=icon_path)
+			widget = Icon(image=get_res_icon_path('placeholder', size))
+		widget.helptext = db.get_res_name(res_id)
+	return widget
 
 class LazyWidgetsDict(dict):
 	"""Dictionary for UH widgets. Loads widget on first access."""

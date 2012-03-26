@@ -88,7 +88,8 @@ class SettlementManager(WorldObject):
 
 		if not self.feeder_island:
 			self._set_taxes_and_permissions(self.personality.initial_sailor_taxes, self.personality.initial_pioneer_taxes, \
-				self.personality.initial_settler_taxes, self.personality.initial_sailor_upgrades, self.personality.initial_pioneer_upgrades)
+				self.personality.initial_citizen_taxes, self.personality.initial_settler_taxes, self.personality.initial_sailor_upgrades, \
+				self.personality.initial_pioneer_upgrades, self.personality.initial_settler_upgrades)
 
 	def __init(self, land_manager):
 		self.owner = land_manager.owner
@@ -188,23 +189,41 @@ class SettlementManager(WorldObject):
 		for building in self.settlement.buildings:
 			self.add_building(building)
 
-	def _set_taxes_and_permissions(self, sailors_taxes, pioneers_taxes, settlers_taxes, sailors_can_upgrade, pioneers_can_upgrade):
+	def _set_taxes_and_permissions(self, sailor_taxes, pioneer_taxes, settler_taxes, citizen_taxes, sailor_upgrades, pioneer_upgrades, settler_upgrades):
 		"""Set new tax settings and building permissions."""
-		if abs(self.settlement.tax_settings[SETTLER.SAILOR_LEVEL] - sailors_taxes) > 1e-9:
-			self.log.info('%s set sailors\' taxes from %.1f to %.1f', self, self.settlement.tax_settings[SETTLER.SAILOR_LEVEL], sailors_taxes)
-			SetTaxSetting(self.settlement, SETTLER.SAILOR_LEVEL, sailors_taxes).execute(self.land_manager.session)
-		if abs(self.settlement.tax_settings[SETTLER.PIONEER_LEVEL] - pioneers_taxes) > 1e-9:
-			self.log.info('%s set pioneers\' taxes from %.1f to %.1f', self, self.settlement.tax_settings[SETTLER.PIONEER_LEVEL], pioneers_taxes)
-			SetTaxSetting(self.settlement, SETTLER.PIONEER_LEVEL, pioneers_taxes).execute(self.land_manager.session)
-		if abs(self.settlement.tax_settings[SETTLER.SETTLER_LEVEL] - settlers_taxes) > 1e-9:
-			self.log.info('%s set settlers\' taxes from %.1f to %.1f', self, self.settlement.tax_settings[SETTLER.SETTLER_LEVEL], settlers_taxes)
-			SetTaxSetting(self.settlement, SETTLER.SETTLER_LEVEL, settlers_taxes).execute(self.land_manager.session)
-		if self.settlement.upgrade_permissions[SETTLER.SAILOR_LEVEL] != sailors_can_upgrade:
-			self.log.info('%s set sailor upgrade permissions to %s', self, sailors_can_upgrade)
-			SetSettlementUpgradePermissions(self.settlement, SETTLER.SAILOR_LEVEL, sailors_can_upgrade).execute(self.land_manager.session)
-		if self.settlement.upgrade_permissions[SETTLER.PIONEER_LEVEL] != pioneers_can_upgrade:
-			self.log.info('%s set pioneer upgrade permissions to %s', self, pioneers_can_upgrade)
-			SetSettlementUpgradePermissions(self.settlement, SETTLER.PIONEER_LEVEL, pioneers_can_upgrade).execute(self.land_manager.session)
+		if abs(self.settlement.tax_settings[SETTLER.SAILOR_LEVEL] - sailor_taxes) > 1e-9:
+			self.log.info('%s set sailors\' taxes from %.1f to %.1f', self, self.settlement.tax_settings[SETTLER.SAILOR_LEVEL], sailor_taxes)
+			SetTaxSetting(self.settlement, SETTLER.SAILOR_LEVEL, sailor_taxes).execute(self.land_manager.session)
+		if abs(self.settlement.tax_settings[SETTLER.PIONEER_LEVEL] - pioneer_taxes) > 1e-9:
+			self.log.info('%s set pioneers\' taxes from %.1f to %.1f', self, self.settlement.tax_settings[SETTLER.PIONEER_LEVEL], pioneer_taxes)
+			SetTaxSetting(self.settlement, SETTLER.PIONEER_LEVEL, pioneer_taxes).execute(self.land_manager.session)
+		if abs(self.settlement.tax_settings[SETTLER.SETTLER_LEVEL] - settler_taxes) > 1e-9:
+			self.log.info('%s set settlers\' taxes from %.1f to %.1f', self, self.settlement.tax_settings[SETTLER.SETTLER_LEVEL], settler_taxes)
+			SetTaxSetting(self.settlement, SETTLER.SETTLER_LEVEL, settler_taxes).execute(self.land_manager.session)
+		if abs(self.settlement.tax_settings[SETTLER.CITIZEN_LEVEL] - citizen_taxes) > 1e-9:
+			self.log.info('%s set citizens\' taxes from %.1f to %.1f', self, self.settlement.tax_settings[SETTLER.CITIZEN_LEVEL], citizen_taxes)
+			SetTaxSetting(self.settlement, SETTLER.CITIZEN_LEVEL, citizen_taxes).execute(self.land_manager.session)
+		if self.settlement.upgrade_permissions[SETTLER.SAILOR_LEVEL] != sailor_upgrades:
+			self.log.info('%s set sailor upgrade permissions to %s', self, sailor_upgrades)
+			SetSettlementUpgradePermissions(self.settlement, SETTLER.SAILOR_LEVEL, sailor_upgrades).execute(self.land_manager.session)
+		if self.settlement.upgrade_permissions[SETTLER.PIONEER_LEVEL] != pioneer_upgrades:
+			self.log.info('%s set pioneer upgrade permissions to %s', self, pioneer_upgrades)
+			SetSettlementUpgradePermissions(self.settlement, SETTLER.PIONEER_LEVEL, pioneer_upgrades).execute(self.land_manager.session)
+		if self.settlement.upgrade_permissions[SETTLER.SETTLER_LEVEL] != settler_upgrades:
+			self.log.info('%s set settler upgrade permissions to %s', self, settler_upgrades)
+			SetSettlementUpgradePermissions(self.settlement, SETTLER.SETTLER_LEVEL, settler_upgrades).execute(self.land_manager.session)
+
+	def _set_taxes_and_permissions_prefix(self, prefix):
+		"""Set new tax settings and building permissions according to the prefix used in the personality file."""
+		sailor_taxes = getattr(self.personality, '%s_sailor_taxes' % prefix)
+		pioneer_taxes = getattr(self.personality, '%s_pioneer_taxes' % prefix)
+		settler_taxes = getattr(self.personality, '%s_settler_taxes' % prefix)
+		citizen_taxes = getattr(self.personality, '%s_citizen_taxes' % prefix)
+		sailor_upgrades = getattr(self.personality, '%s_sailor_upgrades' % prefix)
+		pioneer_upgrades = getattr(self.personality, '%s_pioneer_upgrades' % prefix)
+		settler_upgrades = getattr(self.personality, '%s_settler_upgrades' % prefix)
+		self._set_taxes_and_permissions(sailor_taxes, pioneer_taxes, settler_taxes, citizen_taxes, \
+			sailor_upgrades, pioneer_upgrades, settler_upgrades)
 
 	def can_provide_resources(self):
 		"""Return a boolean showing whether this settlement is complete enough to concentrate on building a new settlement."""
@@ -338,8 +357,7 @@ class SettlementManager(WorldObject):
 		if self.land_manager.owner.settler_level == 0:
 			# if we are on level 0 and there is a house that can be upgraded then do it.
 			if self._manual_upgrade(0, 1):
-				self._set_taxes_and_permissions(self.personality.early_sailor_taxes, self.personality.early_pioneer_taxes, \
-					self.personality.early_settler_taxes, self.personality.early_sailor_upgrades, self.personality.early_pioneer_upgrades)
+				self._set_taxes_and_permissions_prefix('early')
 		elif self.get_resource_production(RES.BRICKS_ID) > 1e-9 and not self.settlement.count_buildings(BUILDINGS.VILLAGE_SCHOOL_CLASS):
 			# if we just need the school then upgrade sailors manually
 			free_boards = self.settlement.get_component(StorageComponent).inventory[RES.BOARDS_ID]
@@ -347,15 +365,12 @@ class SettlementManager(WorldObject):
 			free_boards /= 2 # TODO: load this from upgrade resources
 			if free_boards > 0:
 				self._manual_upgrade(0, free_boards)
-			self._set_taxes_and_permissions(self.personality.no_school_sailor_taxes, self.personality.no_school_pioneer_taxes, \
-				self.personality.no_school_settler_taxes, self.personality.no_school_sailor_upgrades, self.personality.no_school_pioneer_upgrades)
+			self._set_taxes_and_permissions_prefix('no_school')
 		elif self.settlement.count_buildings(BUILDINGS.VILLAGE_SCHOOL_CLASS):
 			if self.need_materials:
-				self._set_taxes_and_permissions(self.personality.school_sailor_taxes, self.personality.school_pioneer_taxes, \
-					self.personality.school_settler_taxes, self.personality.school_sailor_upgrades, self.personality.school_pioneer_upgrades)
+				self._set_taxes_and_permissions_prefix('school')
 			else:
-				self._set_taxes_and_permissions(self.personality.final_sailor_taxes, self.personality.final_pioneer_taxes, \
-					self.personality.final_settler_taxes, self.personality.final_sailor_upgrades, self.personality.final_pioneer_upgrades)
+				self._set_taxes_and_permissions_prefix('final')
 
 	def _end_general_tick(self):
 		self.trade_manager.finalize_requests()

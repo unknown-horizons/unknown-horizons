@@ -12,6 +12,7 @@ button_name: null
 tooltip_text: null
 settler_level: 0
 buildingcosts: {1: 1000, 4: 12}
+show_status_icons: false
 components:
 - SelectableComponent:
     type: building

@@ -24,7 +24,7 @@ import operator
 
 from horizons.command.production import AddProduction, RemoveFromQueue, CancelCurrentProduction
 from horizons.gui.tabs import OverviewTab
-from horizons.util.gui import get_res_icon
+from horizons.util.gui import get_res_icon_path
 from horizons.util import Callback
 from horizons.constants import PRODUCTIONLINES
 from horizons.world.production.producer import Producer
@@ -169,8 +169,8 @@ class BoatbuilderTab(_BoatbuilderOverviewTab):
 					continue # Don't show res that are not really needed anymore
 				assert i <= 3, "Only 3 still needed res for ships are currently supported"
 
-				icon = get_res_icon(res)[3]
-				needed_res_container.findChild(name="BB_needed_res_icon_"+str(i+1)).image = icon
+				icon_path = get_res_icon_path(res, 16)
+				needed_res_container.findChild(name="BB_needed_res_icon_"+str(i+1)).image = icon_path
 				needed_res_container.findChild(name="BB_needed_res_lbl_"+str(i+1)).text = unicode(-1*amount)+u't' # -1 makes them positive
 				i += 1
 				if i >= 3:

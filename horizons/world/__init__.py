@@ -689,12 +689,6 @@ class World(BuildingOwner, WorldObject):
 			data['ships'].append(entry)
 		return data
 
-	def notify_new_settlement(self):
-		"""Called when a new settlement is created"""
-		# make sure there's a trader ship for 2 settlements
-		if self.trader and len(self.settlements) > self.trader.get_ship_count() * 2:
-			self.trader.create_ship()
-
 	def toggle_owner_highlight(self):
 		renderer = self.session.view.renderer['InstanceRenderer']
 		self.owner_highlight_active = not self.owner_highlight_active

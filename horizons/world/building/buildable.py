@@ -126,7 +126,7 @@ class Buildable(object):
 				cls._check_settlement(session, position, ship=ship, issuer=issuer)
 		except _NotBuildableError as e:
 			buildable = False
-			problem = (e.errortype, BuildableErrorTypes.text[ e.errortype ])
+			problem = (e.errortype, _(BuildableErrorTypes.text[e.errortype]))
 
 		return _BuildPosition(position, rotation, tearset, buildable, problem=problem)
 

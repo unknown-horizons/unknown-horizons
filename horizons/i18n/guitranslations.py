@@ -72,6 +72,20 @@ def set_translations():
 		},
 
 	"minimap.xml" : {
+		# (helptext of widget: build)
+		("build"                       , "helptext"): _("Build menu (B)"),
+		# (helptext of widget: destroy_tool)
+		("destroy_tool"                , "helptext"): _("Destroy (X)"),
+		# (helptext of widget: diplomacyButton)
+		("diplomacyButton"             , "helptext"): _("Diplomacy"),
+		# (helptext of widget: gameMenuButton)
+		("gameMenuButton"              , "helptext"): _("Game menu (Esc)"),
+		# (helptext of widget: logbook)
+		("logbook"                     , "helptext"): _("Captain's log (L)"),
+		# (helptext of widget: rotateLeft)
+		("rotateLeft"                  , "helptext"): _("Rotate map counterclockwise (,)"),
+		# (helptext of widget: rotateRight)
+		("rotateRight"                 , "helptext"): _("Rotate map clockwise (.)"),
 		# (helptext of widget: speedDown)
 		("speedDown"                   , "helptext"): _("Decrease game speed (-)"),
 		# (helptext of widget: speedUp)
@@ -131,6 +145,10 @@ def set_translations():
 		("BB_cancel_button"            , "helptext"): _("Cancel all building progress"),
 		# (helptext of widget: running_costs_label)
 		("running_costs_label"         , "helptext"): _("Running costs"),
+		# (helptext of widget: toggle_active_active) Pauses the current ship production, can be resumed later
+		("toggle_active_active"        , "helptext"): _("Pause"),
+		# (helptext of widget: toggle_active_inactive) Resumes the currently paused ship production
+		("toggle_active_inactive"      , "helptext"): _("Resume"),
 		},
 
 	"boatbuilder_trade.xml" : {
@@ -531,6 +549,20 @@ def set_translations():
 		("show_production_overview"    , "helptext"): _("Show resources produced in this settlement"),
 		},
 
+	"overview_farmproductionline.xml" : {
+		# (helptext of widget: toggle_active_active)
+		("toggle_active_active"        , "helptext"): _("Pause production"),
+		# (helptext of widget: toggle_active_inactive)
+		("toggle_active_inactive"      , "helptext"): _("Start production"),
+		},
+
+	"overview_productionline.xml" : {
+		# (helptext of widget: toggle_active_active)
+		("toggle_active_active"        , "helptext"): _("Pause production"),
+		# (helptext of widget: toggle_active_inactive)
+		("toggle_active_inactive"      , "helptext"): _("Start production"),
+		},
+
 	"resbar_resource_selection.xml" : {
 		# (text of widget: make_default_btn)
 		("make_default_btn"            , "text"    ): _("Save as default"),
@@ -544,6 +576,15 @@ def set_translations():
 		("reset_default_btn"           , "helptext"): _("Reset default resource configuration for all settlements."),
 		# (helptext of widget: headline) Please keep the translation similarly short and concise, else the tooltip is not well understood by players.
 		("headline"                    , "helptext"): _("The resource you select is displayed instead of the current one. Empty by clicking on X."),
+		},
+
+	"route_entry.xml" : {
+		# (helptext of widget: delete_warehouse) Trade route entry
+		("delete_warehouse"            , "helptext"): _("Delete entry"),
+		# (helptext of widget: move_down) Trade route entry
+		("move_down"                   , "helptext"): _("Move down"),
+		# (helptext of widget: move_up) Trade route entry
+		("move_up"                     , "helptext"): _("Move up"),
 		},
 
 	"captains_log.xml" : {
@@ -835,6 +876,8 @@ def set_translations():
 		("join"                        , "helptext"): _("Join the selected game"),
 		# (helptext of widget: load)
 		("load"                        , "helptext"): _("Load a saved game"),
+		# (helptext of widget: refresh)
+		("refresh"                     , "helptext"): _("Refresh list of active games"),
 		},
 
 	"settings.xml" : {
@@ -850,6 +893,8 @@ def set_translations():
 		("edge_scrolling_label"        , "text"    ): _("Scroll at map edge:"),
 		# (text of widget: effect_volume_label)
 		("effect_volume_label"         , "text"    ): _("Effects volume:"),
+		# (text of widget: fps_label)
+		("fps_label"                   , "text"    ): _("Frame rate limit:"),
 		# (text of widget: headline_graphics)
 		("headline_graphics"           , "text"    ): _("Graphics"),
 		# (text of widget: headline_language)
@@ -897,9 +942,11 @@ def set_translations():
 		# (helptext of widget: color_depth_label)
 		("color_depth_label"           , "helptext"): _("If set to 0, use the driver default"),
 		# (helptext of widget: debug_log_lbl)
-		("debug_log_lbl"               , "helptext"): _("Whether to write debug information in the logging directory of your user directory"),
+		("debug_log_lbl"               , "helptext"): _("Don't use in normal game session. Decides whether to write debug information in the logging directory of your user directory. Slows the game down."),
 		# (helptext of widget: edge_scrolling_label)
 		("edge_scrolling_label"        , "helptext"): _("Whether to move the viewport when the mouse pointer is close to map edges"),
+		# (helptext of widget: fps_label)
+		("fps_label"                   , "helptext"): _("Set the maximum frame rate used. Default: 60 fps."),
 		# (helptext of widget: minimap_rotation_label)
 		("minimap_rotation_label"      , "helptext"): _("Whether to also rotate the minimap whenever the regular map is rotated"),
 		# (helptext of widget: mouse_sensitivity_label)

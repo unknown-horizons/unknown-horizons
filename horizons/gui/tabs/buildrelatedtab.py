@@ -55,7 +55,7 @@ class BuildRelatedTab(OverviewTab):
 			parent_container.removeChild(parent_container.children[0])
 
 		# Load all related Fields of this Farm
-		building_ids = self.instance.session.db.get_related_building_ids(self.instance.id)
+		building_ids = self.instance.session.db.get_related_building_ids_for_menu(self.instance.id)
 
 		container = self.__get_new_container()
 		counter = 0
