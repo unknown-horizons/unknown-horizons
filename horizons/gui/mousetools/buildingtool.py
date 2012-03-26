@@ -578,7 +578,7 @@ class BuildingTool(NavigationTool):
 						res_name = self.session.db.get_res_name( self.buildings_missing_resources[building] )
 						self.session.ingame_gui.message_widget.add(
 						  building.position.origin.x, building.position.origin.y,
-						  'NEED_MORE_RES', {'resource' : _(res_name)})
+						  'NEED_MORE_RES', {'resource' : res_name})
 
 		self.buildings = []
 		self.buildings_action_set_ids = []
