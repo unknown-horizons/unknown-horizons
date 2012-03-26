@@ -319,7 +319,8 @@ class ResourceOverviewBar(object):
 			label.text = unicode( inv[res] )
 
 			# reposition according to magic forumula passed down from the elders in order to support centering
-			cur_gui.show() # show to update values size values
+			cur_gui.adaptLayout() # update size values (e.g. if amount of digits changed)
+			cur_gui.show()
 			label.position = (24 - label.size[0]/2, 44)
 
 	def _get_current_resources(self):
