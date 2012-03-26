@@ -21,10 +21,8 @@
 
 from fife.extensions.pychan import widgets
 
-from horizons.constants import GAME_SPEED
 from fife.extensions.pychan.widgets import ImageButton
 from horizons.gui.widgets.statswidget import StatsWidget
-from horizons.scheduler import Scheduler
 from horizons.util.python import decorators
 from horizons.util import Callback
 from horizons.world.component.namedcomponent import NamedComponent
@@ -36,7 +34,6 @@ class PlayersSettlements(StatsWidget):
 
 	def __init__(self, session):
 		super(PlayersSettlements, self).__init__(session)
-		Scheduler().add_new_object(Callback(self._refresh_tick), self, run_in = 1, loops = -1, loop_interval = GAME_SPEED.TICKS_PER_SECOND / 3)
 
 	def refresh(self):
 		super(PlayersSettlements, self).refresh()

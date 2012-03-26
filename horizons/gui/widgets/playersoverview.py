@@ -21,10 +21,7 @@
 
 from fife.extensions.pychan import widgets
 
-from horizons.constants import PLAYER
 from horizons.gui.widgets.statswidget import StatsWidget
-from horizons.scheduler import Scheduler
-from horizons.util import Callback
 from horizons.util.python import decorators
 
 class PlayersOverview(StatsWidget):
@@ -35,7 +32,6 @@ class PlayersOverview(StatsWidget):
 	def __init__(self, session):
 		super(PlayersOverview, self).__init__(session)
 		# this is supposed to run on the tick after the stats update
-		Scheduler().add_new_object(Callback(self._refresh_tick), self, run_in = 2, loops = -1, loop_interval = PLAYER.STATS_UPDATE_FREQUENCY)
 
 	def refresh(self):
 		super(PlayersOverview, self).refresh()
