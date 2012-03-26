@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: translate-uh@lists.unknown-horizons.org\n"
 "POT-Creation-Date: 2012-03-21 04:04+0100\n"
-"PO-Revision-Date: 2012-03-26 18:41+0200\n"
+"PO-Revision-Date: 2012-03-26 18:58+0200\n"
 "Last-Translator: matekm <matekm@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: pl\n"
@@ -50,7 +50,7 @@ msgstr ""
 #. This is a logbook page heading. Space is VERY short, please only translate to strings that fit (roughly 30 characters max).
 #: po/tutorial.py:10
 msgid "Welcome to Unknown Horizons!"
-msgstr "Witaj w Unknown Horizons!"
+msgstr "Witaj w grze Unknown Horizons!"
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:12
@@ -58,7 +58,7 @@ msgid ""
 "This is your Captain's log where all important information is stored. A short "
 "notification of each task will be provided on the left of the screen."
 msgstr ""
-"Oto dziennik kapitański w którym zapisywane są wszystkie ważne informacje. "
+"Oto dziennik kapitański,w którym zapisywane są wszystkie ważne informacje. "
 "Krótki opis każdego zadania pojawi się po lewej stronie ekranu."
 
 #. This is the text body of a logbook page.
@@ -83,6 +83,7 @@ msgid ""
 "To see your first task, click on the button \"Read next entries\" in the "
 "navigation panel! It looks like this:"
 msgstr ""
+"\n"
 "Jeżeli chcesz zobaczyć pierwsze zadanie, kliknij przycisk \"Przeczytaj "
 "kolejny wpis\" znajdujący się w pasku nawigacji! Wygląda on tak:"
 
@@ -103,7 +104,7 @@ msgid ""
 msgstr ""
 "\n"
 "Pomoc oraz informacje jak skontaktować się z zespołem znajdziesz na www"
-".unknown-horizons.org"
+".unknown-horizons.org!"
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:24
@@ -195,6 +196,8 @@ msgid ""
 "In order to construct lumberjacks; open the build menu by either clicking the "
 "big icon below the mini map or pressing B key."
 msgstr ""
+"Aby zbudować chatę drwala, otwórz menu budowy klikając wielką ikonę poniżej "
+"mini mapy lub naciskając klawisz B."
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:52
@@ -249,6 +252,9 @@ msgid ""
 "\n"
 "TASK: Build a lumberjack in a wooded area and connect it to a road."
 msgstr ""
+"\n"
+"ZADANIE: Wybuduj chatę drwala w zalesionym obszarze a następnie doprowadź do "
+"niej drogę."
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:68
@@ -259,9 +265,8 @@ msgstr ""
 
 #. This message is displayed in the widget on the left screen part. Please keep it short enough to fit there!
 #: po/tutorial.py:70
-#, fuzzy
 msgid "Build a lumberjack and connect it to the warehouse using a trail."
-msgstr "Wybuduj chatę drwala i połącz ją drogą z portem."
+msgstr "Wybuduj chatę drwala i poprowadź drogę od chaty do portu."
 
 #. This is a logbook page heading. Space is VERY short, please only translate to strings that fit (roughly 30 characters max).
 #: po/tutorial.py:72
@@ -615,11 +620,12 @@ msgstr ""
 # 89%
 #. This is the text body of a logbook page.
 #: po/tutorial.py:178
-#, fuzzy
 msgid ""
 "\n"
 "TASK: Build a signal fire at the coast close to your warehouse."
-msgstr "Wybuduj latarnie na wybrzeżu w pobliżu swojego portu."
+msgstr ""
+"\n"
+"Wybuduj latarnie na wybrzeżu w pobliżu swojego portu."
 
 #. This message is displayed in the widget on the left screen part. Please keep it short enough to fit there!
 #: po/tutorial.py:180
@@ -1235,9 +1241,8 @@ msgstr ""
 
 #. This is a logbook page heading. Space is VERY short, please only translate to strings that fit (roughly 30 characters max).
 #: po/tutorial.py:362
-#, fuzzy
 msgid "NO TASKS LEFT"
-msgstr "Wszystkie zadania wykonano"
+msgstr "Wszystkie zadania zostały wykonane"
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:364
