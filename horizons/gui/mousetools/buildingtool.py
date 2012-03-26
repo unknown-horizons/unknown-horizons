@@ -196,7 +196,7 @@ class BuildingTool(NavigationTool):
 		self._related_buildings.discard(message.sender)
 		self._transparencified_instances = \
 		  set( i for i in self._transparencified_instances if \
-		       i() is not None and int(i().getId()) != message.worldid )
+		       i() is not None and i().worldid != message.worldid )
 		check_building = lambda b : b.worldid != message.worldid
 		self._highlighted_buildings = set( tup for tup in self._highlighted_buildings if check_building(tup[0]) )
 		self._related_buildings = set( filter(check_building, self._related_buildings) )
@@ -391,7 +391,7 @@ class BuildingTool(NavigationTool):
 			if tile.object is not None and tile.object.buildable_upon:
 				inst = tile.object.fife_instance
 				inst.get2dGfxVisual().setTransparency( BUILDINGS.TRANSPARENCY_VALUE )
-				self._transparencified_instances.add( weakref.ref(inst) )
+				self._transparencified_instances.add( weakref.ref(tile.object) )
 
 	def _highlight_inversely_related_buildings(self, building, settlement):
 		"""Point out buildings that are inversly relevant (e.g. lumberjacks when building trees)
@@ -658,8 +658,9 @@ class BuildingTool(NavigationTool):
 	def _restore_transparencified_instances(self):
 		"""Removes transparency"""
 		for inst_weakref in self._transparencified_instances:
-			fife_instance = inst_weakref()
-			if fife_instance:
+			obj = inst_weakref()
+			if obj:
+				fife_instance = obj.fife_instance
 				if not hasattr(fife_instance, "keep_translucency") or not fife_instance.keep_translucency:
 					fife_instance.get2dGfxVisual().setTransparency(0)
 		self._transparencified_instances.clear()
