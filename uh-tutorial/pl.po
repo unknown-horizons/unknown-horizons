@@ -7,8 +7,8 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: translate-uh@lists.unknown-horizons.org\n"
 "POT-Creation-Date: 2012-03-21 04:04+0100\n"
-"PO-Revision-Date: 2012-03-26 19:32+0200\n"
-"Last-Translator: matekm <matekm@gmail.com>\n"
+"PO-Revision-Date: 2012-03-26 22:20+0200\n"
+"Last-Translator: Robert <matekm@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: pl\n"
 "MIME-Version: 1.0\n"
@@ -67,6 +67,8 @@ msgid ""
 "If you are interested in longer descriptions, your log will hopefully provide "
 "all the help you need."
 msgstr ""
+"Jeżeli interesują cię dłuższe opisy z pewnością znajdziesz je w swoim "
+"dzienniku."
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:16
@@ -75,7 +77,7 @@ msgid ""
 "in the top-right corner (below the mini-map, with a sealed document and a "
 "feather)."
 msgstr ""
-"Po zamknięciu dziennik może być ponownie otwarty poprzez kliknięcie w ikonę "
+"Po zamknięciu, dziennik może być ponownie otwarty poprzez kliknięcie w ikonę "
 "\"Dziennik kapitański\" w prawym górnym rogu (poniżej mini mapy, z zamknietym "
 "dokumentem oraz piórem)."
 
@@ -137,6 +139,8 @@ msgid ""
 "Once you are near the coast, the anchor-like button you see in the overview "
 "tab will become active."
 msgstr ""
+"Jak tylko zbliżysz się do wybrzeża, przycisk 'Buduj port' zostanie "
+"automatycznie aktywowany."
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:32
@@ -291,7 +295,7 @@ msgid ""
 "Watch how a collector will fetch your first self-produced boards. Don't worry "
 "about recruiting workers for the lumberjack. That happens automatically."
 msgstr ""
-"Obserwuj jak pomocnik odbiera od drwala pierwsze wyprodukowane deski. Nie "
+"Obserwuj jak tragarz odbiera od drwala pierwsze wyprodukowane deski. Nie "
 "martw się rekrutacją pracowników do chaty drwala. Przebiega ona "
 "automatycznie."
 
@@ -411,7 +415,7 @@ msgstr "Wybuduj chatę myśliwego i rybaka. Połącz je drogą z portem."
 #. This is a logbook page heading. Space is VERY short, please only translate to strings that fit (roughly 30 characters max).
 #: po/tutorial.py:100
 msgid "NEW TASK: MAIN SQUARE"
-msgstr "Now Zadanie: Rynek główny"
+msgstr "Nowe Zadanie: Rynek główny"
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:102
@@ -443,6 +447,8 @@ msgid ""
 "lumberjacks because building tents will clear away the trees that your "
 "lumberjack needs to produce boards."
 msgstr ""
+"Nie powinieneś rozstawiać namiotów w pobliżu chaty drwala, gdyż niszczysz w "
+"ten sposób drzewa, które potrzebne są drwalowi do produkcji desek."
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:110
@@ -456,7 +462,7 @@ msgstr ""
 msgid ""
 "\n"
 "TASK: Build a main square."
-msgstr ""
+msgstr "Zadanie: Wybuduj rynek główny."
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:114
@@ -464,6 +470,8 @@ msgid ""
 "\n"
 "Now let's have a closer look at the main square."
 msgstr ""
+"\n"
+"Przyjżyjmy się bliżej rynkowi głównemu."
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:116
@@ -471,6 +479,8 @@ msgid ""
 "In the 'Account' tab you get a balance sheet of this island, featuring all "
 "costs you pay and all taxes you earn."
 msgstr ""
+"W zakładce 'Finanse' możesz sprawdzić stan finansów wyspy, włączając w to "
+"wszystkie koszta jakie ponosisz oraz podatki jakie zbierasz."
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:118
@@ -478,11 +488,13 @@ msgid ""
 "The items 'Sale' and 'Buy' refer to your trading balance and will be "
 "explained later on."
 msgstr ""
+"Pozycje 'Sprzedaż' i 'Kupno' odnoszą się do bilansu handlowego i zostaną "
+"wytłumaczone później."
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:120
 msgid "If your balance is positive, you all-in-all make a profit."
-msgstr ""
+msgstr "Jeżeli Twoje saldo jest dodatnie, odnosisz zyski."
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:122
@@ -1122,16 +1134,17 @@ msgstr ""
 #: po/tutorial.py:308
 msgid "Build at least one pasture and add potato fields if you like."
 msgstr ""
+"Zbuduj co najmniej jedno pastwisko oraz dodaj kartoflisko jeżeli chcesz."
 
 #. This is a logbook page heading. Space is VERY short, please only translate to strings that fit (roughly 30 characters max).
 #: po/tutorial.py:310
 msgid "NEW TASK: BUILD STORAGE"
-msgstr ""
+msgstr "Nowe zadanie: zbuduj magazyn"
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:312
 msgid "Did you watch your lumberjack recently?"
-msgstr ""
+msgstr "Czy odwiedziłeś ostatnio drwala?"
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:314
@@ -1362,6 +1375,14 @@ msgid ""
 "\n"
 "Your UH-Team"
 msgstr ""
+"\n"
+"\n"
+"\n"
+"\n"
+"\n"
+"Dziękujemy za rozegranie samouczka!\n"
+"\n"
+"Zespół UH"
 
 #. This message is displayed in the widget on the left screen part. Please keep it short enough to fit there!
 #: po/tutorial.py:382
@@ -1369,6 +1390,8 @@ msgid ""
 "Congratulations! You have reached the end of this tutorial and are ready to "
 "meet new challenges!"
 msgstr ""
+"Gratulacje! Ukończyłeś samouczek i jesteś gotowy stawić czoła nowym "
+"wyzwaniom!"
 
 #~ msgid ""
 #~ "The construction material on your ship got unloaded automatically. You can "
