@@ -53,11 +53,15 @@ obtained at http://www.opensource.org/licenses/mit-license.php .
 The files
 
 /horizons/network/darwin-x86/enet.so
+/horizons/network/darwin-x64/enet.so
 /horizons/network/freebsd-x86/enet.so
+/horizons/network/freebsd-x64/enet.so
 /horizons/network/linux-x64/enet.so
 /horizons/network/linux-x86/enet.so
-/horizons/network/windows-x86/enet.pyd
-/horizons/network/windows-x64/enet.pyd
+/horizons/network/windows-x86-26/enet.pyd
+/horizons/network/windows-x64-26/enet.pyd
+/horizons/network/windows-x86-27/enet.pyd
+/horizons/network/windows-x64-27/enet.pyd
 
 are licensend by Lee Salzman under the terms of this freeware license.
 http://enet.bespin.org/License.html
