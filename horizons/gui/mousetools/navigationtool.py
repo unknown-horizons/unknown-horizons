@@ -33,12 +33,13 @@ from fife.extensions.pychan.widgets import Icon
 class NavigationTool(CursorTool):
 	"""Navigation Class to process mouse actions ingame"""
 
+	last_event_pos = None # last received mouse event position, fife.ScreenPoint
+
 	def __init__(self, session):
 		super(NavigationTool, self).__init__(session)
 		self._last_mmb_scroll_point = [0, 0]
 		self.lastmoved = fife.ExactModelCoordinate()
 		self.middle_scroll_active = False
-		self.last_event_pos = None # last received mouse event position, fife.ScreenPoint
 
 		class CmdListener(fife.ICommandListener): pass
 		self.cmdlist = CmdListener()
@@ -110,7 +111,7 @@ class NavigationTool(CursorTool):
 
 		self.tooltip.show_evt(evt)
 		mousepoint = fife.ScreenPoint(evt.getX(), evt.getY())
-		self.last_event_pos = mousepoint
+		self.__class__.last_event_pos = mousepoint
 
 		# Status menu update
 		current = self.get_exact_world_location_from_event(evt)
