@@ -134,7 +134,7 @@ class LastActivePlayerSettlementManager(object):
 		"""Called when view changes. Scrolling and zooming can change cursor position."""
 		if not hasattr(self.session, "cursor"): # not inited yet
 			return
-		pos = self.session.cursor.__class__.last_event_pos
+		pos = self.session.cursor.last_event_pos
 		if pos is not None:
 			loc = self.session.cursor.get_exact_world_location_from_event( pos )
 			self.update(loc)
