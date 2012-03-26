@@ -155,6 +155,7 @@ INSERT INTO "message" VALUES('You need more {resource} to build this building.',
 INSERT INTO "message" VALUES('Some of your inhabitants have no access to a main square.',1,30.0,NULL,'NO_MAIN_SQUARE_IN_RANGE');
 INSERT INTO "message" VALUES('Some of your inhabitants just moved out.',1,40.0,NULL,'SETTLERS_MOVED_OUT');
 INSERT INTO "message" VALUES('You won!',1,60.0,NULL,'YOU_HAVE_WON');
+INSERT INTO "message" VALUES('You failed the scenario.',1,60.0,NULL,'YOU_LOST');
 INSERT INTO "message" VALUES('Your mine has run out of resources.',1,30.0,NULL,'MINE_EMPTY');
 INSERT INTO "message" VALUES('You can also drag roads.',1,20.0,NULL,'DRAG_ROADS_HINT');
 INSERT INTO "message" VALUES('{player1} and {player2} have allied their forces.',1,10.0,NULL,'DIPLOMACY_STATUS_NEUTRAL_ALLY');
