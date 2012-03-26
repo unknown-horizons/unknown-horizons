@@ -175,7 +175,7 @@ def _make_constants(f, builtin_only=False, stoplist=[], verbose=False):
 
 _make_constants = _make_constants(_make_constants) # optimize thyself!
 
-def bind_all(mc, builtin_only=False, stoplist=[],  verbose=False):
+def bind_all(mc, builtin_only=False, stoplist=None, verbose=False):
 	"""Recursively apply constant binding to functions in a module or class.
 
 	Use as the last line of the module (after everything is defined, but
@@ -183,6 +183,12 @@ def bind_all(mc, builtin_only=False, stoplist=[],  verbose=False):
 	builtin_only to True.
 
 	"""
+
+	# Ignore gettext functions. At the beginning these point to a NullTranslation
+	# object, they change when a language is activated.
+	stoplist = stoplist or []
+	stoplist.extend(['_', 'N_'])
+
 	try:
 		d = vars(mc)
 	except TypeError:

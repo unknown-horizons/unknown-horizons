@@ -60,7 +60,7 @@ class UhDbAccessor(DbReader):
 		if only_if_inventory:
 			sql += " AND shown_in_inventory = 1"
 		try:
-			return self.cached_query(sql, id)[0][0]
+			return _(self.cached_query(sql, id)[0][0])
 		except IndexError:
 			return None
 

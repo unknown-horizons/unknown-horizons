@@ -374,7 +374,7 @@ class BuySellTab(TabInterface):
 			price *= TRADER.PRICE_MODIFIER_BUY
 
 		hint = hint.format(limit=unicode(limit),
-		                   resource_name=_(self.session.db.get_res_name(slot.res)),
+		                   resource_name=self.session.db.get_res_name(slot.res),
 		                   price=int(price))
 		# same price rounding as in tradepostcomponent
 		self._set_hint( hint )
