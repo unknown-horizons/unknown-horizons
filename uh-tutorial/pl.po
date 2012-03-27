@@ -7,8 +7,8 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: translate-uh@lists.unknown-horizons.org\n"
 "POT-Creation-Date: 2012-03-21 04:04+0100\n"
-"PO-Revision-Date: 2012-03-27 00:40+0200\n"
-"Last-Translator: Christopher Oelmueller <chris.oelmueller+uh@gmail.com>\n"
+"PO-Revision-Date: 2012-03-27 09:50+0200\n"
+"Last-Translator: Robert <matekm@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: pl\n"
 "MIME-Version: 1.0\n"
@@ -525,6 +525,8 @@ msgid ""
 "Settlers want to have a roof over their heads, else they won't even think of "
 "living in your city! You need to provide tents."
 msgstr ""
+"Osadnicy muszą mieć dach nad głowami, inaczej nie będą nawet myśleć o "
+"zamieszkaniu w wiosce. Powinienś wybudować namioty."
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:130
@@ -532,6 +534,8 @@ msgid ""
 "Tents are the basic residential buildings. Your inhabitants will want to "
 "upgrade it when they reach higher increments."
 msgstr ""
+"Namioty są podstawowymi budynkami mieszkalnymi. Mieszkańcy będą chcieli je "
+"ulepszać wraz ze zwiększaniem stadium rozwoju."
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:132
