@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: translate-uh@lists.unknown-horizons.org\n"
 "POT-Creation-Date: 2012-03-21 04:04+0100\n"
-"PO-Revision-Date: 2012-03-27 17:16+0200\n"
+"PO-Revision-Date: 2012-03-27 20:32+0200\n"
 "Last-Translator: Robert <matekm@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: pl\n"
@@ -58,8 +58,8 @@ msgid ""
 "This is your Captain's log where all important information is stored. A short "
 "notification of each task will be provided on the left of the screen."
 msgstr ""
-"Oto dziennik kapitański,w którym zapisywane są wszystkie ważne informacje. "
-"Krótki opis każdego zadania pojawi się po lewej stronie ekranu."
+"Oto dziennik pokładowy,w którym zapisywane są wszystkie ważne informacje. "
+"Krótki opis nowego zadania będzie pojawiać się po lewej stronie ekranu."
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:14
@@ -67,8 +67,7 @@ msgid ""
 "If you are interested in longer descriptions, your log will hopefully provide "
 "all the help you need."
 msgstr ""
-"Jeżeli interesują cię dłuższe opisy z pewnością znajdziesz je w swoim "
-"dzienniku."
+"Jeżeli interesuje cię dłuższy opis zadania, znajdziesz go w swoim dzienniku."
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:16
@@ -77,9 +76,9 @@ msgid ""
 "in the top-right corner (below the mini-map, with a sealed document and a "
 "feather)."
 msgstr ""
-"Po zamknięciu, dziennik może być ponownie otwarty poprzez kliknięcie w ikonę "
-"\"Dziennik kapitański\" w prawym górnym rogu (poniżej mini mapy, z zamknietym "
-"dokumentem oraz piórem)."
+"Po zamknięciu dziennik może zostać ponownie otwarty poprzez kliknięcie w "
+"ikonę \"Dziennik kapitański\" w prawym górnym rogu (ikona z zapieczętowanym "
+"dokumentem i piórem poniżej mini mapy)."
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:18
@@ -131,7 +130,7 @@ msgid ""
 "To move your ship, select it with a left click and right click on the "
 "location you want it to go to."
 msgstr ""
-"Aby przesunąć statek, wybierz go klikając na nim lewym przyciskiem myszki a "
+"Aby poruszyć statkiem, wybierz go klikając na nim lewym przyciskiem myszki a "
 "następnie kliknij prawym przyciskiem w miejscu do którego ma się udać."
 
 #. This is the text body of a logbook page.
@@ -141,7 +140,7 @@ msgid ""
 "tab will become active."
 msgstr ""
 "Jak tylko zbliżysz się do wybrzeża, przycisk 'Buduj port' zostanie "
-"automatycznie aktywowany."
+"odblokowany."
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:32
@@ -155,6 +154,8 @@ msgstr "Klikając w ten przycisk (nazwanego \"Buduj osadę\") możesz zbudować 
 msgid ""
 "Now a preview of your building is dragged around when you move the cursor."
 msgstr ""
+"Po kliknięciu na ekranie pojawi się podgląd budynku, którym będziesz mógł "
+"przesuwać po mapie."
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:36
@@ -162,7 +163,7 @@ msgid ""
 "You can build on any spot where this preview is not shaded red.\n"
 "Click where you want to place your first building."
 msgstr ""
-"Możesz wybrać dowolne miejsce na którym podgląd budynku nie jest "
+"Możesz wybrać dowolne miejsce, na którym podgląd budynku nie jest "
 "podświetlony na czerwono.\n"
 "Kliknij w miejscu, gdzie chcesz wybudować pierwszy budynek."
 
@@ -269,7 +270,7 @@ msgid ""
 msgstr ""
 "Aby wykorzystać wszystkie dobra, które zostały zebrane bądź wyprodukowane w "
 "danym miejscu musisz połączyć je drogą z reszta infrastruktury w twoiej "
-"osadzie. Inaczej nie będą brane pod uwagę."
+"osadzie. Inaczej nie zostaną zabrane z miejsca produkcji."
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:64
@@ -277,8 +278,8 @@ msgid ""
 "This means that you have to build a trail connecting your warehouse (or "
 "storage) and lumberjack."
 msgstr ""
-"Oznacza to, że musisz wybudować drogę pomiędzy portem (lub magazynem) a "
-"chatą drwala."
+"Oznacza to, że musisz postawić drogę pomiędzy portem (lub magazynem) a chatą "
+"drwala."
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:66
