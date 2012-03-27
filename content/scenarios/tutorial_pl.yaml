@@ -19,54 +19,49 @@ events:
     - - Gallery
       - [content/gfx/uh.png]
     - [Pagebreak]
-    - [Headline, !!python/unicode 'Witaj w Unknown Horizons!']
+    - [Headline, !!python/unicode 'Witaj w grze Unknown Horizons!']
     - [Image, content/gui/images/background/hr.png]
     - ''
-    - !!python/unicode 'This is your Captain''s log where all important information
-      is stored. A short notification of each task will be provided on the left of
-      the screen.'
-    - !!python/unicode 'If you are interested in longer descriptions, your log will
-      hopefully provide all the help you need.'
-    - !!python/unicode 'After you close this log, it can be re-opened with the "Captain''s
-      Log" icon in the top-right corner (below the mini-map, with a sealed document
-      and a feather).'
+    - "Oto dziennik kapita\u0144ski,w kt\xF3rym zapisywane s\u0105 wszystkie wa\u017C\
+      ne informacje. Kr\xF3tki opis ka\u017Cdego zadania pojawi si\u0119 po lewej\
+      \ stronie ekranu."
+    - "Je\u017Celi interesuj\u0105 ci\u0119 d\u0142u\u017Csze opisy z pewno\u015B\
+      ci\u0105 znajdziesz je w swoim dzienniku."
+    - "Po zamkni\u0119ciu, dziennik mo\u017Ce by\u0107 ponownie otwarty poprzez klikni\u0119\
+      cie w ikon\u0119 \"Dziennik kapita\u0144ski\" w prawym g\xF3rnym rogu (poni\u017C\
+      ej mini mapy, z zamknietym dokumentem oraz pi\xF3rem)."
     - - Gallery
       - [content/gui/icons/widgets/minimap/captainslog.png]
-    - !!python/unicode '
-
-      To see your first task, click on the button "Read next entries" in the navigation
-      panel! It looks like this:'
+    - "\nJe\u017Celi chcesz zobaczy\u0107 pierwsze zadanie, kliknij przycisk \"Przeczytaj\
+      \ kolejny wpis\" znajduj\u0105cy si\u0119 w pasku nawigacji! Wygl\u0105da on\
+      \ tak:"
     - - Gallery
       - [content/gui/images/buttons/parrow_right.png]
     - [Pagebreak]
-    - !!python/unicode '
-
-      For any suggestions on better wording, topics you would like to have explained
-      or even buggy conditions: Please tell us and we will try to improve the tutorial!'
-    - !!python/unicode '
-
-      Visit www.unknown-horizons.org for help on how to contact the team!'
-    - !!python/unicode 'And now, let''s start the actual game.'
+    - "\nJe\u017Celi masz jakie\u015B sugestie na temat redakcji tekstu, temat\xF3\
+      w, kt\xF3re powinny by\u0107 wyja\u015Bnione bad\u017A znalezionych b\u0142\u0119\
+      d\xF3w: powiedz nam, a my postaramy si\u0119 ulepszy\u0107 ten samouczek!"
+    - "\nPomoc oraz informacje jak skontaktowa\u0107 si\u0119 z zespo\u0142em znajdziesz\
+      \ na www.unknown-horizons.org!"
+    - "A teraz rozpocznijmy zabaw\u0119."
     - [Pagebreak]
     - [Headline, "Nowe zadanie: Osiedl si\u0119 na wyspie"]
     - [Image, content/gui/images/background/hr.png]
-    - !!python/unicode 'To move your ship, select it with a left click and right click
-      on the location you want it to go to.'
-    - !!python/unicode 'Once you are near the coast, the anchor-like button you see
-      in the overview tab will become active.'
+    - "Aby przesun\u0105\u0107 statek, wybierz go klikaj\u0105c na nim lewym przyciskiem\
+      \ myszki a nast\u0119pnie kliknij prawym przyciskiem w miejscu do kt\xF3rego\
+      \ ma si\u0119 uda\u0107."
+    - "Jak tylko zbli\u017Cysz si\u0119 do wybrze\u017Ca, przycisk 'Buduj port' zostanie\
+      \ automatycznie aktywowany."
     - - Gallery
       - [content/gui/icons/ship/anchor.png]
-    - !!python/unicode 'This indicates that you are able to build a warehouse there
-      by pressing that button (called ''Build Settlement'').'
+    - "Klikaj\u0105c w ten przycisk (nazwanego \"Buduj osad\u0119\") mo\u017Cesz zbudowa\u0107\
+      \ port."
     - !!python/unicode 'Now a preview of your building is dragged around when you
       move the cursor.'
-    - !!python/unicode 'You can build on any spot where this preview is not shaded
-      red.
-
-      Click where you want to place your first building.'
-    - !!python/unicode '
-
-      TASK: Build a warehouse at the coast.'
+    - "Mo\u017Cesz wybra\u0107 dowolne miejsce na kt\xF3rym podgl\u0105d budynku nie\
+      \ jest pod\u015Bwietlony na czerwono.\nKliknij w miejscu, gdzie chcesz wybudowa\u0107\
+      \ pierwszy budynek."
+    - "\nZadanie: Wybuduj port na wybrze\u017Cu."
     type: logbook
   - arguments: [tutStepDone, 16]
     type: set_var
@@ -77,43 +72,46 @@ events:
   - arguments:
     - [Headline, "Nowe zadanie: Wybuduj chat\u0119 drwala"]
     - [Image, content/gui/images/background/hr.png]
-    - !!python/unicode 'The construction material on your ship got unloaded automatically.
-      You can now construct some basic buildings.'
-    - !!python/unicode 'We will start with building a lumberjack.'
-    - !!python/unicode 'This is essential because, at this stage, boards are the only
-      poles your sailors can afford to hang their tents over.'
-    - !!python/unicode 'The fisherman needs some boards to build his vessel as well.'
-    - !!python/unicode 'In order to construct lumberjacks; open the build menu by
-      either clicking the big icon below the mini map or pressing B key.'
+    - "Materia\u0142y budowlane, kt\xF3re znajdowa\u0142y si\u0119 na pok\u0142adzie\
+      \ statku, zosta\u0142y automatycznie roz\u0142adowane. Mo\u017Cesz teraz wybudowa\u0107\
+      \ podstawowe budynki."
+    - !!python/unicode 'Zaczniemy od wybudowania chaty drwala'
+    - "Na tym etapie jest to niezb\u0119dne, poniewa\u017C drewniane maszty s\u0105\
+      \ jedynym materia\u0142em utrzymuj\u0105cym namioty, na kt\xF3ry \u017Ceglarze\
+      \ mog\u0105 sobie pozwoli\u0107."
+    - "Rybacy tak\u017Ce potrzebuj\u0105 desek, chocia\u017Cby po to, aby zbudowa\u0107\
+      \ statki."
+    - "Aby zbudowa\u0107 chat\u0119 drwala, otw\xF3rz menu budowy klikaj\u0105c wielk\u0105\
+      \ ikon\u0119 poni\u017Cej mini mapy lub naciskaj\u0105c klawisz 'B'."
     - - Gallery
       - [content/gui/icons/widgets/minimap/build.png]
-    - !!python/unicode 'The build menu is sorted by increments.'
-    - !!python/unicode 'You are currently in the first increment (the Sailors level)
-      so are offered only the basic buildings.'
+    - "Wszystkie konstrukcje w menu budowy s\u0105 posortowane wed\u0142ug etap\xF3\
+      w rozwoju twoich osadnik\xF3w."
+    - "W tym momencie jeste\u015B na pierwszym z etap\xF3w (poziom \u017Beglarzy),\
+      \ dlatego masz dost\u0119p tylko do podstawowych budynk\xF3w."
     - [Pagebreak]
-    - !!python/unicode '
-
-      As your civilization advances, you also gain more and more complex buildings.'
-    - !!python/unicode 'For now, select the lumberjack under ''Companies'' and build
-      it in an area with some trees around.'
-    - !!python/unicode 'You can also plant trees later - but that costs money. Use
-      what nature provided you with!'
-    - !!python/unicode 'A company always needs a trail connection to a storage or
-      warehouse, otherwise goods will remain at the company and not be collected.'
-    - !!python/unicode 'This means that you have to build a trail connecting your
-      warehouse (or storage) and lumberjack.'
-    - !!python/unicode '
-
-      TASK: Build a lumberjack in a wooded area and connect it to a road.'
-    - !!python/unicode 'Watch how a collector will fetch your first self-produced
-      boards. Don''t worry about recruiting workers for the lumberjack. That happens
-      automatically.'
+    - "\nWraz z rozwojem cywilizacji, zdob\u0119dziesz dost\u0119p do bardziej zaawansowanych\
+      \ budowli."
+    - "Na razie zaznacz chat\u0119 drwala z kategori 'Przemys\u0142 i rolnictwo' i\
+      \ wybuduj j\u0105 w zalesionym rejonie."
+    - "Mo\u017Cesz tak\u017Ce sadzi\u0107 drzewa - jednak to kosztuje. Na razie skorzystaj\
+      \ z tego, co oferuje natura!"
+    - "Aby wykorzysta\u0107 wszystkie dobra, kt\xF3re zosta\u0142y zebrane b\u0105\
+      d\u017A wyprodukowane w danym miejscu musisz po\u0142\u0105czy\u0107 je drog\u0105\
+      \ z reszta infrastruktury w twoiej osadzie. Inaczej nie b\u0119d\u0105 brane\
+      \ pod uwag\u0119."
+    - "Oznacza to, \u017Ce musisz wybudowa\u0107 drog\u0119 pomi\u0119dzy portem (lub\
+      \ magazynem) a chat\u0105 drwala."
+    - "\nZADANIE: Wybuduj chat\u0119 drwala w zalesionym obszarze a nast\u0119pnie\
+      \ doprowad\u017A do niej drog\u0119."
+    - "Obserwuj jak tragarz odbiera od drwala pierwsze wyprodukowane deski. Nie martw\
+      \ si\u0119 rekrutacj\u0105 pracownik\xF3w do chaty drwala. Przebiega ona automatycznie."
     - - Gallery
       - [content/gui/icons/buildmenu/008.png, content/gui/icons/buildmenu/015.png,
         content/gui/icons/resources/50/004.png]
     type: logbook
-  - arguments: [!!python/unicode 'Build a lumberjack and connect it to the warehouse
-        using a trail.']
+  - arguments: ["Wybuduj chat\u0119 drwala i poprowad\u017A drog\u0119 od chaty do\
+        \ portu."]
     type: message
   - arguments: [tutStepDone, 19]
     type: set_var
@@ -132,31 +130,31 @@ events:
   - arguments:
     - [Headline, "Nowe Zadanie: Zaopatrzenie w \u017Cywno\u015B\u0107"]
     - [Image, content/gui/images/background/hr.png]
-    - !!python/unicode 'You will need to have some food-producing companies, too,
-      because people in general (and especially sailors) are very hungry.'
-    - !!python/unicode 'Available companies in the first increment are the Hunter
-      and Fisher.'
-    - !!python/unicode 'The Hunter hunts animals in the forest, thus needs trees nearby.'
-    - !!python/unicode 'Note that you can place your Hunter close to the lumberjack''s
-      forest.'
-    - !!python/unicode 'It can happen that the animals don''t reproduce fast enough
-      or simply hide well.'
-    - !!python/unicode 'Conclusion: the hunter is not too reliable if you need continuous
-      supply.'
+    - "Przysz\u0142a kolej na produkcj\u0119 \u017Cywno\u015B\u0107, aby ludzie (a\
+      \ wszczeg\xF3lno\u015Bci \u017Ceglarze) nie chodzili g\u0142odni."
+    - "Na pierwszym etapie rozwoju dost\u0119pn\u0119 s\u0105 dwa zawody zajmuj\u0105\
+      ce si\u0119 produkcj\u0105 \u017Cywno\u015Bci: Rybak oraz My\u015Bliwy."
+    - "My\u015Bliwy poluje na le\u015Bne zwierz\u0119ta, dlatego najlepiej zlokalizowa\u0107\
+      \ go w pobli\u017Cu lasu."
+    - "Zauwa\u017C, \u017Ce my\u015Bliwego mo\u017Cesz zlokalizowa\u0107 w pobli\u017C\
+      u lasu, kt\xF3ry odwiedza drwal."
+    - "Mo\u017Ce si\u0119 zda\u017Cy\u0107, \u017Ce zwierz\u0119ta nie b\u0119d\u0105\
+      \ rozmna\u017Ca\u0107 si\u0119 zbyt szybko albo b\u0119d\u0105 bardzo dobrze\
+      \ si\u0119 ukrywa\u0142y."
+    - "Wniosek: je\u017Celi potrzebujesz sta\u0142ego dost\u0119pu do \u017Cywno\u015B\
+      ci, zatrudnienie my\u015Bliwego nie jest najlepszym rozwi\u0105zaniem."
     - [Pagebreak]
-    - !!python/unicode '
-
-      The Fisher needs a coastal building site like the warehouse and a fish school
-      in range.'
-    - !!python/unicode 'He will build a small rowing vessel and catch some fish.'
-    - !!python/unicode 'This is a very constant supply at the cost of a slightly longer
-      production time per unit of food.'
-    - !!python/unicode 'A small settlement like yours can use both companies, and
-      you can better balance pros and cons if you see the direct comparison.'
-    - !!python/unicode '
-
-      TASK: Build a hunter and a fisher.'
-    - !!python/unicode 'Don''t forget to connect them to your warehouse with trails!'
+    - "\nRybak potrzebuje dost\u0119pu do wody w kt\xF3ej znajduj\u0105 si\u0119 \u0142\
+      awice ryb."
+    - "Po usytuowaniu chatki rybaka na wybrze\u017Cu, wybuduje on sobie \u0142\xF3\
+      d\u017A ryback\u0105 i zacznie \u0142owi\u0107 ryby."
+    - "To bardzo pewne \u017Ar\xF3d\u0142o \u017Cywno\u015Bci, cen\u0105 jest jednak\
+      \ nieznacznie d\u0142u\u017Csza produkcja."
+    - "Taka ma\u0142a osada jak twoja mo\u017Ce wykorzysta\u0107 oba sposoby pozyskiwania\
+      \ \u017Cywno\u015Bci, powiniene\u015B je jednaki zbalansowa\u0107 jzgodnie z\
+      \ ich zaletami i wadami."
+    - "\nZadanie: Wybuduj chat\u0119 my\u015Bliwego i rybaka."
+    - "Nie zapomnij o tym, aby doprowadzi\u0107 do nich drog\u0119!"
     - - Gallery
       - [content/gui/icons/buildmenu/011_h.png, content/gui/icons/buildmenu/009_h.png,
         content/gui/icons/resources/50/005.png]
@@ -175,37 +173,34 @@ events:
     type: var_lt
 - actions:
   - arguments:
-    - [Headline, "Now Zadanie: Rynek g\u0142\xF3wny"]
+    - [Headline, "Nowe Zadanie: Rynek g\u0142\xF3wny"]
     - [Image, content/gui/images/background/hr.png]
-    - !!python/unicode 'Your residents need a main square where they can fetch their
-      goods from.'
-    - !!python/unicode 'This means that they need a trail connection from their home
-      to the main square.'
-    - !!python/unicode 'All goods in your warehouse are available at this ''market
-      place'', so your residents do not need to walk to the fisher or even to the
-      warehouse.'
+    - "Osadnicy potrzebuj\u0105 rynku g\u0142\xF3wnego, na kt\xF3rym b\u0119d\u0105\
+      \ mogli naby\u0107 niezb\u0119dne towary."
+    - "Oznacza to, \u017Ce potrzebuj\u0105 bezpo\u015Bredniego po\u0142\u0105czenia\
+      \ z domu do rynku."
+    - "Wszystkie dobra, kt\xF3re magazynujesz b\u0119d\u0105 dost\u0119pne na rynku,\
+      \ dzi\u0119ki temu osadnicy nie s\u0105 zmuszeni chodzi\u0107 bezpo\u015Brednio\
+      \ do rybaka czy do portu."
     - - Gallery
       - [content/gui/icons/buildmenu/004_h.png]
-    - !!python/unicode 'You should avoid placing your main settlement tents too close
-      to your lumberjacks because building tents will clear away the trees that your
-      lumberjack needs to produce boards.'
+    - "Nie powiniene\u015B rozstawia\u0107 namiot\xF3w w pobli\u017Cu chaty drwala,\
+      \ gdy\u017C niszczysz w ten spos\xF3b drzewa, kt\xF3re potrzebne s\u0105 drwalowi\
+      \ do produkcji desek."
     - !!python/unicode 'Companies work without being connected to the tents, so you
       don''t need to build a road between the main square and e.g. your lumberjack
       tent.'
-    - !!python/unicode '
-
-      TASK: Build a main square.'
+    - "\nZadanie: Wybuduj rynek g\u0142\xF3wny."
     - [Pagebreak]
-    - !!python/unicode '
-
-      Now let''s have a closer look at the main square.'
+    - "\nPrzyj\u017Cyjmy si\u0119 bli\u017Cej rynkowi g\u0142\xF3wnemu."
     - - Gallery
       - [content/gui/icons/tabwidget/warehouse/account_a.png]
-    - !!python/unicode 'In the ''Account'' tab you get a balance sheet of this island,
-      featuring all costs you pay and all taxes you earn.'
-    - !!python/unicode 'The items ''Sale'' and ''Buy'' refer to your trading balance
-      and will be explained later on.'
-    - !!python/unicode 'If your balance is positive, you all-in-all make a profit.'
+    - "W zak\u0142adce 'Finanse' mo\u017Cesz sprawdzi\u0107 stan finans\xF3w wyspy,\
+      \ w\u0142\u0105czaj\u0105c w to wszystkie koszta jakie ponosisz oraz podatki\
+      \ jakie zbierasz."
+    - "Pozycje 'Sprzeda\u017C' i 'Kupno' odnosz\u0105 si\u0119 do bilansu handlowego\
+      \ i zostan\u0105 wyt\u0142umaczone p\xF3\u017Aniej."
+    - "Je\u017Celi Twoje saldo jest dodatnie, odnosisz zyski."
     - - Gallery
       - [content/gui/icons/tabwidget/mainsquare/inhabitants0_a.png]
     - !!python/unicode 'In the different increment overview tabs you can see statistics
@@ -235,12 +230,13 @@ events:
   - arguments:
     - [Headline, !!python/unicode 'Nowe Zadanie: Budynki mieszkalne']
     - [Image, content/gui/images/background/hr.png]
-    - !!python/unicode 'Settlers want to have a roof over their heads, else they won''t
-      even think of living in your city! You need to provide tents.'
+    - "Osadnicy musz\u0105 mie\u0107 dach nad g\u0142owami, inaczej nie b\u0119d\u0105\
+      \ nawet my\u015Ble\u0107 o zamieszkaniu w wiosce. Powinien\u015B wybudowa\u0107\
+      \ namioty."
     - - Gallery
       - [content/gui/icons/buildmenu/003_h.png]
-    - !!python/unicode 'Tents are the basic residential buildings. Your inhabitants
-      will want to upgrade it when they reach higher increments.'
+    - "Namioty s\u0105 podstawowymi budynkami mieszkalnymi. Mieszka\u0144cy b\u0119\
+      d\u0105 chcieli je ulepsza\u0107 wraz ze zwi\u0119kszaniem stadium rozwoju."
     - !!python/unicode 'Settlers may not look very useful since they will try to consume
       all goods you produce - but they at least pay taxes, and that''s the only way
       you can make money for now!'
@@ -326,9 +322,7 @@ events:
       to ''Sell'' and vice versa.'
     - !!python/unicode 'Click in the slot to choose the good you want to trade with.
       We will further explain this once you are ready to trade.'
-    - !!python/unicode '
-
-      TASK: Build a signal fire at the coast close to your warehouse.'
+    - "\nZadanie: Wybuduj latarnie na wybrze\u017Cu w pobli\u017Cu swojego portu."
     type: logbook
   - arguments: [!!python/unicode 'Build a signal fire at the coast close to your warehouse.']
     type: message
@@ -574,8 +568,8 @@ events:
     - - Gallery
       - [content/gui/icons/buildmenu/018.png, content/gui/icons/buildmenu/019.png]
     type: logbook
-  - arguments: [!!python/unicode 'Build at least one pasture and add potato fields
-        if you like.']
+  - arguments: ["Zbuduj co najmniej jedno pastwisko oraz dodaj kartoflisko je\u017C\
+        eli chcesz."]
     type: message
   - arguments: [tutStepDone, 49]
     type: set_var
@@ -588,9 +582,9 @@ events:
     type: var_lt
 - actions:
   - arguments:
-    - [Headline, !!python/unicode 'NEW TASK: BUILD STORAGE']
+    - [Headline, !!python/unicode 'Nowe zadanie: zbuduj magazyn']
     - [Image, content/gui/images/background/hr.png]
-    - !!python/unicode 'Did you watch your lumberjack recently?'
+    - "Czy odwiedzi\u0142e\u015B ostatnio drwala?"
     - !!python/unicode 'Since your warehouse does not have unlimited space to store
       goods, collectors will stop fetching goods from companies when stock is full.'
     - !!python/unicode 'So if no sailors recently wanted to upgrade their tents, you
@@ -702,7 +696,7 @@ events:
     type: var_lt
 - actions:
   - arguments:
-    - [Headline, !!python/unicode 'NO TASKS LEFT']
+    - [Headline, "Wszystkie zadania zosta\u0142y wykonane"]
     - [Image, content/gui/images/background/hr.png]
     - !!python/unicode 'You have successfully completed all tasks that were handed
       to you. The world is now at your command, waiting for your free aspirations
@@ -718,16 +712,7 @@ events:
     - [Pagebreak]
     - [Headline, "Dzi\u0119kuj\u0119!"]
     - [Image, content/gui/images/background/hr.png]
-    - !!python/unicode '
-
-
-
-
-
-      Thanks for playing the tutorial!
-
-
-      Your UH-Team'
+    - "\n\n\n\n\nDzi\u0119kujemy za rozegranie samouczka!\n\nZesp\xF3\u0142 UH"
     - - Gallery
       - [content/unknown-horizons.xpm, content/gfx/misc/status_icons/as_book_flip/idle/45/book20125.png]
     type: logbook
@@ -750,14 +735,14 @@ events:
     type: var_lt
 - actions:
   - {type: win}
-  - arguments: [!!python/unicode 'Congratulations! You have reached the end of this
-        tutorial and are ready to meet new challenges!']
+  - arguments: ["Gratulacje! Uko\u0144czy\u0142e\u015B samouczek i jeste\u015B gotowy\
+        \ stawi\u0107 czo\u0142a nowym wyzwaniom!"]
     type: message
   conditions:
   - arguments: [tutStepDone, 60]
     type: var_gt
 locale: pl
 mapfile: development.sqlite
-translation_status: 19 translated messages, 7 fuzzy translations, 165 untranslated
+translation_status: 76 translated messages, 4 fuzzy translations, 111 untranslated
   messages.
 
