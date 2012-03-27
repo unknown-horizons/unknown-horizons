@@ -21,10 +21,13 @@
 
 from collections import defaultdict
 
+from horizons.util.python.singleton import Singleton
+
 
 class MessageBus(object):
 	"""The MessageBus class is used to send Message instances from a sender to
 	one or multiple recipients."""
+	__metaclass__ = Singleton
 
 	def __init__(self):
 		# Register {MessageType: [list of receiver callbacks]}

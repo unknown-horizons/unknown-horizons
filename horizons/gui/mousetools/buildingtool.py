@@ -35,7 +35,7 @@ from horizons.command.sounds import PlaySound
 from horizons.util.gui import load_uh_widget
 from horizons.constants import BUILDINGS, GFX
 from horizons.extscheduler import ExtScheduler
-from horizons.util.messaging.message import SettlementRangeChanged, WorldObjectDeleted
+from horizons.messaging import SettlementRangeChanged, WorldObjectDeleted
 
 class BuildingTool(NavigationTool):
 	"""Represents a dangling tool after a building was selected from the list.
@@ -123,7 +123,7 @@ class BuildingTool(NavigationTool):
 		self.session.gui.on_escape = self.on_escape
 
 		self.highlight_buildable()
-		self.session.message_bus.subscribe_globally(WorldObjectDeleted, self._on_worldobject_deleted)
+		WorldObjectDeleted.subscribe(self._on_worldobject_deleted)
 
 	def highlight_buildable(self, tiles_to_check=None):
 		"""Highlights all buildable tiles.
@@ -173,7 +173,7 @@ class BuildingTool(NavigationTool):
 		self.renderer.addColored(tile._instance, *self.buildable_color)
 
 	def remove(self):
-		self.session.message_bus.unsubscribe_globally(WorldObjectDeleted, self._on_worldobject_deleted)
+		WorldObjectDeleted.unsubscribe(self._on_worldobject_deleted)
 		self._remove_listeners()
 		self._remove_building_instances()
 		self._remove_coloring()
@@ -746,7 +746,7 @@ class SettlementBuildingToolLogic(object):
 
 		if not self.subscribed:
 			self.subscribed = True
-			session.message_bus.subscribe_globally(SettlementRangeChanged, self._on_update)
+			SettlementRangeChanged.subscribe(self._on_update)
 
 		if tiles_to_check is not None: # only check these tiles
 			for tile in tiles_to_check:
@@ -770,12 +770,12 @@ class SettlementBuildingToolLogic(object):
 		session.ingame_gui.show_build_menu() # will call remove()
 		if self.subscribed:
 			self.subscribed = False
-			session.message_bus.unsubscribe_globally(SettlementRangeChanged, self._on_update)
+			SettlementRangeChanged.unsubscribe(self._on_update)
 
 	def remove(self, session):
 		if self.subscribed:
 			self.subscribed = False
-			session.message_bus.unsubscribe_globally(SettlementRangeChanged, self._on_update)
+			SettlementRangeChanged.unsubscribe(self._on_update)
 
 	def add_change_listener(self, instance, building_tool): pass # using messages now
 	def remove_change_listener(self, instance, building_tool): pass

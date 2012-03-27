@@ -28,7 +28,7 @@ from horizons.gui.widgets.productionoverview import ProductionOverview
 from horizons.gui.tabs.overviewtab import _setup_tax_slider
 
 from horizons.util import Callback
-from horizons.util.messaging.message import UpgradePermissionsChanged
+from horizons.messaging import UpgradePermissionsChanged
 from horizons.util.gui import create_resource_icon
 from horizons.command.uioptions import SetSettlementUpgradePermissions
 from horizons.constants import BUILDINGS, SETTLER
@@ -160,11 +160,11 @@ class MainSquareSettlerLevelTab(MainSquareTab):
 
 	def show(self):
 		super(MainSquareSettlerLevelTab, self).show()
-		self.instance.session.message_bus.subscribe_locally(UpgradePermissionsChanged, self.settlement, self.refresh_via_message)
+		UpgradePermissionsChanged.subscribe(self.refresh_via_message, sender=self.settlement)
 
 	def hide(self):
 		super(MainSquareSettlerLevelTab, self).hide()
-		self.instance.session.message_bus.unsubscribe_locally(UpgradePermissionsChanged, self.settlement, self.refresh_via_message)
+		UpgradePermissionsChanged.unsubscribe(self.refresh_via_message, sender=self.settlement)
 
 	def _get_last_tax_paid(self):
 		return sum([building.last_tax_payed for building in self.settlement.buildings_by_id[BUILDINGS.RESIDENTIAL_CLASS] if \

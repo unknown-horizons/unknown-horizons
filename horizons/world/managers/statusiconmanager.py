@@ -25,7 +25,7 @@ from fife import fife
 from horizons.world.status import StatusIcon
 from horizons.constants import LAYERS
 
-from horizons.util.messaging.message import AddStatusIcon, RemoveStatusIcon, WorldObjectDeleted
+from horizons.messaging import AddStatusIcon, RemoveStatusIcon, WorldObjectDeleted
 
 class StatusIconManager(object):
 	"""Manager class that manages all status icons. It listenes to AddStatusIcon
@@ -38,9 +38,9 @@ class StatusIconManager(object):
 		# Renderer used to render the icons
 		self.renderer = self.session.view.renderer['GenericRenderer']
 
-		self.session.message_bus.subscribe_globally(AddStatusIcon, self.on_add_icon_message)
-		self.session.message_bus.subscribe_globally(RemoveStatusIcon, self.on_remove_icon_message)
-		self.session.message_bus.subscribe_globally(WorldObjectDeleted, self.on_worldobject_deleted_message)
+		AddStatusIcon.subscribe(self.on_add_icon_message)
+		RemoveStatusIcon.subscribe(self.on_remove_icon_message)
+		WorldObjectDeleted.subscribe(self.on_worldobject_deleted_message)
 
 	def on_add_icon_message(self, message):
 		"""This is called by the message bus with AddStatusIcon messages"""

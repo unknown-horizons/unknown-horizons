@@ -35,7 +35,7 @@ from horizons.world.status import ProductivityLowStatus, DecommissionedStatus, I
 from horizons.world.production.unitproduction import UnitProduction
 from horizons.command.unit import CreateUnit
 from horizons.util.changelistener import metaChangeListenerDecorator
-from horizons.util.messaging.message import AddStatusIcon, RemoveStatusIcon
+from horizons.messaging import AddStatusIcon, RemoveStatusIcon
 from horizons.world.production.utilisation import Utilisation, FullUtilisation, FieldUtilisation
 from horizons.util.python.callback import Callback
 
@@ -141,10 +141,10 @@ class Producer(Component):
 		if not self.capacity_utilisation_below(ProductivityLowStatus.threshold) is not self.__utilisation_ok:
 			self.__utilisation_ok = not self.__utilisation_ok
 			if self.__utilisation_ok:
-				self.session.message_bus.broadcast(RemoveStatusIcon(self, self.instance, ProductivityLowStatus))
+				RemoveStatusIcon.broadcast(self, self.instance, ProductivityLowStatus)
 			else:
 				icon = ProductivityLowStatus(self.instance)
-				self.session.message_bus.broadcast(AddStatusIcon(self, icon))
+				AddStatusIcon.broadcast(self, icon)
 
 	@property
 	def capacity_utilisation(self):
@@ -315,10 +315,10 @@ class Producer(Component):
 			if self.is_active() is not self.__active:
 				self.__active = not self.__active
 				if self.__active:
-					self.session.message_bus.broadcast(RemoveStatusIcon(self, self.instance, DecommissionedStatus))
+					RemoveStatusIcon.broadcast(self, self.instance, DecommissionedStatus)
 				else:
 					icon = DecommissionedStatus(self.instance)
-					self.session.message_bus.broadcast(AddStatusIcon(self, icon))
+					AddStatusIcon.broadcast(self, icon)
 
 		self.instance._changed()
 		self.on_activity_changed(self.is_active())
@@ -351,10 +351,10 @@ class Producer(Component):
 				for prod in self.get_productions():
 					affected_res = affected_res.union( prod.get_unstorable_produced_res() )
 				self._producer_status_icon = InventoryFullStatus(self.instance, affected_res)
-				self.session.message_bus.broadcast(AddStatusIcon(self, self._producer_status_icon))
+				AddStatusIcon.broadcast(self, self._producer_status_icon)
 
 			if not full and hasattr(self, "_producer_status_icon"):
-				self.session.message_bus.broadcast(RemoveStatusIcon(self, self.instance, InventoryFullStatus))
+				RemoveStatusIcon.broadcast(self, self.instance, InventoryFullStatus)
 				del self._producer_status_icon
 
 	def get_status_icons(self):

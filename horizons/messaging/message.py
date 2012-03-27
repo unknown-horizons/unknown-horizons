@@ -19,6 +19,9 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
+from horizons.messaging.messagebus import MessageBus
+
+
 class Message(object):
 	"""Message class for the MessageBus. Every Message that is supposed to be
 	send through the MessageBus should subclass this base class, to ensure proper
@@ -38,6 +41,28 @@ class Message(object):
 
 		for arg, value in zip(self.arguments, args):
 			setattr(self, arg, value)
+
+	@classmethod
+	def subscribe(cls, callback, sender=None):
+		if sender:
+			MessageBus().subscribe_locally(cls, sender, callback)
+		else:
+			MessageBus().subscribe_globally(cls, callback)
+
+	@classmethod
+	def unsubscribe(cls, callback, sender=None):
+		if sender:
+			MessageBus().unsubscribe_locally(cls, sender, callback)
+		else:
+			MessageBus().unsubscribe_globally(cls, callback)
+
+	@classmethod
+	def discard(cls, callback):
+		MessageBus().discard_globally(cls, callback)
+
+	@classmethod
+	def broadcast(cls, *args):
+		MessageBus().broadcast(cls(*args))
 
 
 class AddStatusIcon(Message):

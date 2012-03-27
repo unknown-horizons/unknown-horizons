@@ -28,7 +28,7 @@ from horizons.constants import BUILDINGS, SETTLER
 from horizons.entities import Entities
 from horizons.util.worldobject import WorldObject
 from horizons.util.shapes.rect import Rect
-from horizons.util.messaging.message import UpgradePermissionsChanged
+from horizons.messaging import UpgradePermissionsChanged
 from horizons.util.changelistener import ChangeListener
 from horizons.world.componentholder import ComponentHolder
 from horizons.world.component.tradepostcomponent import TradePostComponent
@@ -93,7 +93,7 @@ class Settlement(ComponentHolder, WorldObject, ChangeListener, ResourceHandler):
 		if self.upgrade_permissions[level] != allowed:
 			self.upgrade_permissions[level] = allowed
 
-			self.session.message_bus.broadcast(UpgradePermissionsChanged(self))
+			UpgradePermissionsChanged.broadcast(self)
 
 	@property
 	def inhabitants(self):

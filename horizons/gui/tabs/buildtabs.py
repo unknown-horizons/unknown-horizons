@@ -26,7 +26,7 @@ from horizons.util import Callback
 from horizons.util.lastactiveplayersettlementmanager import LastActivePlayerSettlementManager
 from horizons.util.python.roman_numerals import int_to_roman
 from horizons.world.component.storagecomponent import StorageComponent
-from horizons.util.messaging.message import NewPlayerSettlementHovered
+from horizons.messaging import NewPlayerSettlementHovered
 
 class BuildTab(TabInterface):
 	"""
@@ -221,13 +221,13 @@ class BuildTab(TabInterface):
 			self.refresh()
 
 	def __remove_changelisteners(self):
-		self.session.message_bus.discard_globally(NewPlayerSettlementHovered, self.on_settlement_change)
+		NewPlayerSettlementHovered.discard(self.on_settlement_change)
 		if self.__current_settlement is not None:
 			inventory = self.__current_settlement.get_component(StorageComponent).inventory
 			inventory.discard_change_listener(self.refresh)
 
 	def __add_changelisteners(self):
-		self.session.message_bus.subscribe_globally(NewPlayerSettlementHovered, self.on_settlement_change)
+		NewPlayerSettlementHovered.subscribe(self.on_settlement_change)
 		if self.__current_settlement is not None:
 			inventory = self.__current_settlement.get_component(StorageComponent).inventory
 			if not inventory.has_change_listener(self.refresh):
