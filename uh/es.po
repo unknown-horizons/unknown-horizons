@@ -7,8 +7,8 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2012-03-24 02:16+0100\n"
-"PO-Revision-Date: 2012-03-16 20:39+0200\n"
-"Last-Translator: yagreor <yasser.greyeb@gmail.com>\n"
+"PO-Revision-Date: 2012-03-24 02:34+0200\n"
+"Last-Translator: Juarrox <juarrox@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: es\n"
 "MIME-Version: 1.0\n"
@@ -1348,11 +1348,11 @@ msgstr "¡Haga clic sobre un asentamiento para añadir un punto de referencia!"
 
 #: horizons/gui/widgets/routeconfig.py:187
 msgid "Loading into ship"
-msgstr ""
+msgstr "Cargar al navío"
 
 #: horizons/gui/widgets/routeconfig.py:194
 msgid "Unloading from ship"
-msgstr ""
+msgstr "Descargar del navío"
 
 #: horizons/gui/widgets/routeconfig.py:277
 msgid "Select a resource:"
@@ -1997,7 +1997,7 @@ msgstr "Mover hacia arriba"
 #. (text of widget: stats_players)
 #: horizons/i18n/guitranslations.py:592
 msgid "Players"
-msgstr ""
+msgstr "Jugadores"
 
 #. (text of widget: stats_settlements)
 #: horizons/i18n/guitranslations.py:594
