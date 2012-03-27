@@ -257,6 +257,7 @@ class ResourceOverviewBar(object):
 				cost_label.position = (15, below) # TODO: centering
 				cur_gui.addChild(cost_icon)
 				cur_gui.addChild(cost_label)
+				cur_gui.cost_gui = [cost_label, cost_icon]
 				cur_gui.resizeToContent() # container needs to be bigger now
 			else: # must be gold
 				reference_icon = self.gold_gui.findChild(name="background_icon")
@@ -273,8 +274,13 @@ class ResourceOverviewBar(object):
 		"""Return to normal configuration"""
 		self.construction_mode = False
 		if update_slots: # cleanup
+			for entry in self.gui:
+				if hasattr(entry, "cost_gui"): # get rid of possible cost labels
+					for elem in entry.cost_gui:
+						entry.removeChild(elem)
+					del entry.cost_gui
 			self.set_inventory_instance(None)
-		self._reset_gold_gui()
+		self._reset_gold_gui() # fully reload gold, it's fast enough since it's only 1 icon
 		self._update_gold()
 		self.gold_gui.show()
 		self._update_gold(force=True)
