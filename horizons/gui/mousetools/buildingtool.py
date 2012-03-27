@@ -322,7 +322,8 @@ class BuildingTool(NavigationTool):
 			# draw ordinary ranges first, then later color related buildings (they are more important)
 			self._make_surrounding_transparent(building.position)
 			self._color_preview_building(building)
-			self._draw_preview_building_range(building, settlement)
+			if building.buildable:
+				self._draw_preview_building_range(building, settlement)
 			self._highlight_related_buildings_in_range(building, settlement)
 			self._highlight_inversely_related_buildings(building, settlement)
 
