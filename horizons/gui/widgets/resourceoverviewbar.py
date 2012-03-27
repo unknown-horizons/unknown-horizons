@@ -24,6 +24,7 @@ from fife import fife
 from fife.extensions import pychan
 import json
 import weakref
+import itertools
 import functools
 
 import horizons.main
@@ -88,9 +89,12 @@ class ResourceOverviewBar(object):
 		assert isinstance(session, Session)
 		self.session = session
 
-		self.gold_gui = None # special slot because of special properties
+		# special slot because of special properties
+		self.gold_gui = load_uh_widget(self.__class__.GOLD_ENTRY_GUI_FILE, style=self.__class__.STYLE)
+		self.gold_gui.child_finder = PychanChildFinder(self.gold_gui)
+		self.gold_gui.findChild(name="res_icon").image = get_res_icon_path(RES.GOLD_ID, 32)
+
 		self.gui = [] # list of slots
-		self._reset_gold_gui()
 		self.resource_configurations = weakref.WeakKeyDictionary()
 		self.current_instance = weakref.ref(self) # can't weakref to None
 		self.construction_mode = False
@@ -241,6 +245,9 @@ class ResourceOverviewBar(object):
 
 		res_list = self._get_current_resources()
 
+		# remove old one before, avoids duplicates
+		self._drop_cost_labels()
+
 		for res, amount in build_costs.iteritems():
 			assert res in res_list or res == RES.GOLD_ID
 
@@ -256,11 +263,6 @@ class ResourceOverviewBar(object):
 				                                position=(0, below))
 				cost_label.position = (15, below) # TODO: centering
 
-				if hasattr(cur_gui, "cost_gui"): # remove old one before, avoids duplicates
-					for elem in cur_gui.cost_gui:
-						cur_gui.removeChild(elem)
-					del cur_gui.cost_gui
-
 				cur_gui.addChild(cost_icon)
 				cur_gui.addChild(cost_label)
 				cur_gui.cost_gui = [cost_label, cost_icon]
@@ -272,35 +274,33 @@ class ResourceOverviewBar(object):
 				cost_icon = pychan.widgets.Icon(image=cost_icon_gold,
 				                              position=(0, below) )
 				cost_label.position = (15, below) # TODO: centering
+
 				self.gold_gui.addChild(cost_icon)
 				self.gold_gui.addChild(cost_label)
+				self.gold_gui.cost_gui = [cost_label, cost_icon]
+
 				self.gold_gui.resizeToContent()
 
 	def close_construction_mode(self, update_slots=True):
 		"""Return to normal configuration"""
 		self.construction_mode = False
 		if update_slots: # cleanup
-			for entry in self.gui:
-				if hasattr(entry, "cost_gui"): # get rid of possible cost labels
-					for elem in entry.cost_gui:
-						entry.removeChild(elem)
-					del entry.cost_gui
+			self._drop_cost_labels()
 			self.set_inventory_instance(None)
-		self._reset_gold_gui() # fully reload gold, it's fast enough since it's only 1 icon
-		self._update_gold()
+		#self._update_gold()
 		self.gold_gui.show()
 		self._update_gold(force=True)
 
 		# reshow last settlement
 		self.set_inventory_instance( LastActivePlayerSettlementManager().get(get_current_pos=True) )
 
-	def _reset_gold_gui(self):
-		if self.gold_gui is not None:
-			self.gold_gui.hide()
-		self.gold_gui = load_uh_widget(self.__class__.GOLD_ENTRY_GUI_FILE, style=self.__class__.STYLE)
-		self.gold_gui.child_finder = PychanChildFinder(self.gold_gui)
-		# set appropriate icon
-		self.gold_gui.findChild(name="res_icon").image = get_res_icon_path(RES.GOLD_ID, 32)
+	def _drop_cost_labels(self):
+		"""Removes all labels below the slots indicating building costs"""
+		for entry in itertools.chain(self.gui, [self.gold_gui]):
+			if hasattr(entry, "cost_gui"): # get rid of possible cost labels
+				for elem in entry.cost_gui:
+					entry.removeChild(elem)
+				del entry.cost_gui
 
 	def _update_gold(self, force=False):
 		"""Changelistener to upate player gold"""
