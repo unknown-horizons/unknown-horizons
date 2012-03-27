@@ -106,8 +106,7 @@ def player_inhabitants_greater(session, limit):
 def building_num_of_type_greater(session, building_class, limit):
 	"""Check if player has more than limit buildings on a settlement"""
 	for settlement in _get_player_settlements(session):
-		if len([building for building in settlement.buildings if \
-		       building.id == building_class]) > limit:
+		if len(settlement.buildings_by_id[building_class]) > limit:
 			return True
 	return False
 

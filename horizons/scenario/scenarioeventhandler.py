@@ -186,7 +186,7 @@ class ScenarioEventHandler(LivingObject):
 	"""
 	@classmethod
 	def _parse_yaml_file(cls, filename):
-		return YamlCache.get_file(filename)
+		return YamlCache.get_file(filename, game_data=True)
 
 	def _apply_data(self, data):
 		"""Apply data to self loaded via yaml.load
