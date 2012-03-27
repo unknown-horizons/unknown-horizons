@@ -162,11 +162,10 @@ class ResourceOverviewBar(object):
 
 		# reconstruct general gui
 
-		# remove old gui
+		# remove old gui (keep entries for reuse)
 		for i in self.gui:
 			i.hide()
 		self._hide_resource_selection_dialog()
-		self.gui = []
 
 		inv = self._get_current_inventory()
 		if inv is not None:
@@ -180,14 +179,23 @@ class ResourceOverviewBar(object):
 		self.current_instance = weakref.ref(instance)
 
 		# construct new slots (fill values later)
+		load_entry = lambda : load_uh_widget(self.ENTRY_GUI_FILE, style=self.__class__.STYLE)
 		initial_offset = 93
 		offset = 52
 		resources = self._get_current_resources()
 		addition = [-1] if self._do_show_dummy or not resources else [] # add dummy at end for adding stuff
 		for i, res in enumerate( resources + addition ):
-			entry = load_uh_widget(self.ENTRY_GUI_FILE, style=self.__class__.STYLE)
+			try: # get old slot
+				entry = self.gui[i]
+				if res == -1: # can't reuse dummy slot, need default data
+					self.gui[i] = entry = load_entry()
+			except IndexError: # need new one
+				entry = load_entry()
+				self.gui.append(entry)
+
 			entry.findChild(name="entry").position = (initial_offset + offset * i, 17)
 			background_icon = entry.findChild(name="background_icon")
+			background_icon.clear_entered_callbacks()
 			background_icon.add_entered_callback( Callback(self._show_resource_selection_dialog, i) )
 
 			if res != -1:
@@ -201,7 +209,6 @@ class ResourceOverviewBar(object):
 				entry.show() # this will not be filled as the other res
 			background_icon.helptext = helptext
 
-			self.gui.append(entry)
 			# show it just when values are entered, this appeases pychan
 
 		# fill values

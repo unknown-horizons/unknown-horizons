@@ -178,12 +178,6 @@ class ScenarioEventHandler(LivingObject):
 		except Exception as e: # catch anything yaml or functions that yaml calls might throw
 			raise InvalidScenarioFileFormat(str(e))
 
-	_yaml_file_cache = {} # only used in the method below
-	"""
-	This caches the parsed output of a yaml file.
-	It also checks if the cache is invalidated, therefore we can't use the
-	decorator.
-	"""
 	@classmethod
 	def _parse_yaml_file(cls, filename):
 		return YamlCache.get_file(filename, game_data=True)
