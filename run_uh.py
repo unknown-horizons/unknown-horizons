@@ -392,9 +392,6 @@ def init_environment():
 	#find FIFE and setup search paths, if it can't be imported yet
 	setup_fife(sys.argv)
 
-	#for some external libraries distributed with UH
-	sys.path.append( os.path.join('horizons', 'ext') )
-
 
 def get_fife_path(fife_custom_path=None):
 	"""Returns absolute path to FIFE engine. Calls sys.exit() if it can't be found."""
