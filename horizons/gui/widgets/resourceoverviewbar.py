@@ -255,9 +255,16 @@ class ResourceOverviewBar(object):
 				cost_icon = pychan.widgets.Icon(image=cost_icon_res,
 				                                position=(0, below))
 				cost_label.position = (15, below) # TODO: centering
+
+				if hasattr(cur_gui, "cost_gui"): # remove old one before, avoids duplicates
+					for elem in cur_gui.cost_gui:
+						cur_gui.removeChild(elem)
+					del cur_gui.cost_gui
+
 				cur_gui.addChild(cost_icon)
 				cur_gui.addChild(cost_label)
 				cur_gui.cost_gui = [cost_label, cost_icon]
+
 				cur_gui.resizeToContent() # container needs to be bigger now
 			else: # must be gold
 				reference_icon = self.gold_gui.findChild(name="background_icon")
@@ -268,7 +275,6 @@ class ResourceOverviewBar(object):
 				self.gold_gui.addChild(cost_icon)
 				self.gold_gui.addChild(cost_label)
 				self.gold_gui.resizeToContent()
-
 
 	def close_construction_mode(self, update_slots=True):
 		"""Return to normal configuration"""
