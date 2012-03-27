@@ -7,8 +7,8 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: translate-uh@lists.unknown-horizons.org\n"
 "POT-Creation-Date: 2012-03-21 04:04+0100\n"
-"PO-Revision-Date: 2012-03-06 18:08+0200\n"
-"Last-Translator: Christopher Oelmueller <chris.oelmueller+uh@gmail.com>\n"
+"PO-Revision-Date: 2012-03-27 17:37+0200\n"
+"Last-Translator: Juarrox <juarrox@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: es\n"
 "MIME-Version: 1.0\n"
@@ -139,13 +139,16 @@ msgid ""
 "You can build on any spot where this preview is not shaded red.\n"
 "Click where you want to place your first building."
 msgstr ""
+"Puedes construir en cualquier punto mientras no aparezca la vista previa "
+"ensombrecida en color rojo. Haz clic donde quieras ubicar tu primer "
+"edificio."
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:38
 msgid ""
 "\n"
 "TASK: Build a warehouse at the coast."
-msgstr ""
+msgstr "TAREA: Construye una sucursal en la costa."
 
 #. This is a logbook page heading. Space is VERY short, please only translate to strings that fit (roughly 30 characters max).
 #: po/tutorial.py:40
@@ -158,11 +161,13 @@ msgid ""
 "The construction material on your ship got unloaded automatically. You can "
 "now construct some basic buildings."
 msgstr ""
+"Los materiales de construcción de tu navío se han descargado "
+"automáticamente. Ahora puedes construir algunos edificios básicos."
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:44
 msgid "We will start with building a lumberjack."
-msgstr ""
+msgstr "Vamos a comenzar construyendo un aserradero."
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:46
@@ -201,6 +206,8 @@ msgid ""
 "\n"
 "As your civilization advances, you also gain more and more complex buildings."
 msgstr ""
+"A medida que tu civilización avance, podrás construir edificios más "
+"complejos."
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:58
