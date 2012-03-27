@@ -182,6 +182,8 @@ class BuildTab(TabInterface):
 
 				# can't use mapEvents since the events are taken by the tooltips.
 				# they do however provide an auxiliary way around this:
+				button.clear_entered_callbacks()
+				button.clear_exited_callbacks()
 				button.add_entered_callback(cbs[0])
 				button.add_exited_callback(cbs[1])
 
