@@ -7,8 +7,8 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2012-03-24 02:16+0100\n"
-"PO-Revision-Date: 2012-03-24 02:34+0200\n"
-"Last-Translator: Juarrox <juarrox@gmail.com>\n"
+"PO-Revision-Date: 2012-03-27 23:14+0200\n"
+"Last-Translator: Sergio <juarrox@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: es\n"
 "MIME-Version: 1.0\n"
@@ -1225,7 +1225,7 @@ msgstr ""
 #. (text of widget: headline_statistics)
 #: horizons/gui/widgets/logbook.py:46 horizons/i18n/guitranslations.py:610
 msgid "Statistics"
-msgstr ""
+msgstr "Estadísticas"
 
 #. (text of widget: headline)
 #. (text of widget: headline_chat)
@@ -2002,12 +2002,12 @@ msgstr "Jugadores"
 #. (text of widget: stats_settlements)
 #: horizons/i18n/guitranslations.py:594
 msgid "My settlements"
-msgstr ""
+msgstr "Mis asentamientos"
 
 #. (text of widget: stats_ships)
 #: horizons/i18n/guitranslations.py:596
 msgid "My ships"
-msgstr ""
+msgstr "Mis navíos"
 
 #. (text of widget: wb2) Only filter messages important for your own settlements (disasters, new increment, ...)
 #: horizons/i18n/guitranslations.py:598
@@ -2032,7 +2032,7 @@ msgstr ""
 #. (text of widget: headline_game_messages)
 #: horizons/i18n/guitranslations.py:608
 msgid "Game messages"
-msgstr ""
+msgstr "Mensajes del juego"
 
 #. (helptext of widget: okButton)
 #. (text of widget: start)
@@ -2083,7 +2083,7 @@ msgstr ""
 #. (text of widget: lbl_wait_at_unload) Trade route setting: Whether to wait until all goods could be unloaded.
 #: horizons/i18n/guitranslations.py:638
 msgid "Wait at unload:"
-msgstr ""
+msgstr "Esperar a descargar:"
 
 #. (helptext of widget: okButton)
 #: horizons/i18n/guitranslations.py:640
@@ -2505,7 +2505,7 @@ msgstr "Unirse a la partida seleccionada"
 #. (helptext of widget: load)
 #: horizons/i18n/guitranslations.py:878
 msgid "Load a saved game"
-msgstr ""
+msgstr "Cargar una partida guardada"
 
 #. (helptext of widget: refresh)
 #: horizons/i18n/guitranslations.py:880
@@ -2910,7 +2910,7 @@ msgstr "Obtiene la arcilla del depósito."
 #. name of buildings:cocoafield
 #: horizons/i18n/objecttranslations.py:128
 msgid "Cocoa Field"
-msgstr ""
+msgstr "Campo de Cacao"
 
 #. tooltip_text of buildings:cocoafield
 #: horizons/i18n/objecttranslations.py:130
@@ -3429,6 +3429,7 @@ msgstr "Guardar/Cargar partidas de multijugador no es posible todavía"
 #: horizons/mpsession.py:77
 msgid "The filename must consist only of letters, numbers, spaces and _.-"
 msgstr ""
+"El nombre de archivo sólo puede contener letras, números, espacios y _.-"
 
 #: horizons/savegamemanager.py:360
 #, python-format
@@ -3443,7 +3444,7 @@ msgstr ""
 #: horizons/savegamemanager.py:435 horizons/savegamemanager.py:441
 #, python-format
 msgid "Error: Cannot find scenario '{name}'."
-msgstr ""
+msgstr "Error: No se encuentra el escenario '{name}'."
 
 #: horizons/scenario/actions.py:93
 msgid "You have won!"
@@ -3603,7 +3604,7 @@ msgstr ""
 
 #: horizons/world/component/tradepostcomponent.py:220
 msgid "The trade partner does not buy this."
-msgstr ""
+msgstr "El socio comercial no quiere comprar esto."
 
 #: horizons/world/component/tradepostcomponent.py:228
 msgid "You do not possess this."
