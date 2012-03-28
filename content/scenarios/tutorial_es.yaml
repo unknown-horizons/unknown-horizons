@@ -32,10 +32,8 @@ events:
       and a feather).'
     - - Gallery
       - [content/gui/icons/widgets/minimap/captainslog.png]
-    - !!python/unicode '
-
-      To see your first task, click on the button "Read next entries" in the navigation
-      panel! It looks like this:'
+    - "\nPara ver tu primera tarea, haz clic en el bot\xF3n \"Leer las siguientes\
+      \ entradas\" en el panel de navegaci\xF3n. Aparecer\xE1 algo como esto:"
     - - Gallery
       - [content/gui/images/buttons/parrow_right.png]
     - [Pagebreak]
@@ -60,13 +58,12 @@ events:
       by pressing that button (called ''Build Settlement'').'
     - !!python/unicode 'Now a preview of your building is dragged around when you
       move the cursor.'
-    - !!python/unicode 'You can build on any spot where this preview is not shaded
-      red.
-
-      Click where you want to place your first building.'
+    - !!python/unicode 'Puedes construir en cualquier punto mientras no aparezca la
+      vista previa ensombrecida en color rojo. Haz clic donde quieras ubicar tu primer
+      edificio.'
     - !!python/unicode '
 
-      TASK: Build a warehouse at the coast.'
+      TAREA: Construye una sucursal en la costa.'
     type: logbook
   - arguments: [tutStepDone, 16]
     type: set_var
@@ -75,11 +72,11 @@ events:
     type: time_passed
 - actions:
   - arguments:
-    - [Headline, !!python/unicode 'EL ASERRADERO']
+    - [Headline, !!python/unicode 'CONSTRUYE UN ASERRADERO']
     - [Image, content/gui/images/background/hr.png]
-    - !!python/unicode 'The construction material on your ship got unloaded automatically.
-      You can now construct some basic buildings.'
-    - !!python/unicode 'We will start with building a lumberjack.'
+    - "Los materiales de construcci\xF3n de tu nav\xEDo se han descargado autom\xE1\
+      ticamente. Ahora puedes construir algunos edificios b\xE1sicos."
+    - !!python/unicode 'Vamos a comenzar construyendo un aserradero.'
     - !!python/unicode 'This is essential because, at this stage, boards are the only
       poles your sailors can afford to hang their tents over.'
     - !!python/unicode 'The fisherman needs some boards to build his vessel as well.'
@@ -91,13 +88,12 @@ events:
     - !!python/unicode 'You are currently in the first increment (the Sailors level)
       so are offered only the basic buildings.'
     - [Pagebreak]
-    - !!python/unicode '
-
-      As your civilization advances, you also gain more and more complex buildings.'
-    - !!python/unicode 'For now, select the lumberjack under ''Companies'' and build
-      it in an area with some trees around.'
-    - !!python/unicode 'You can also plant trees later - but that costs money. Use
-      what nature provided you with!'
+    - "\nA medida que tu civilizaci\xF3n avance, podr\xE1s construir edificios m\xE1\
+      s complejos."
+    - "Por ahora, selecciona el aserradero bajo \"Compa\xF1\xEDas\" y constr\xFAyelo\
+      \ en un \xE1rea con algunos \xE1rboles alrededor."
+    - "M\xE1s tarde podr\xE1s plantar \xE1rboles - pero cuesta dinero. Utiliza lo\
+      \ que la naturaleza te proporcione!"
     - !!python/unicode 'A company always needs a trail connection to a storage or
       warehouse, otherwise goods will remain at the company and not be collected.'
     - !!python/unicode 'This means that you have to build a trail connecting your
@@ -324,9 +320,7 @@ events:
       to ''Sell'' and vice versa.'
     - !!python/unicode 'Click in the slot to choose the good you want to trade with.
       We will further explain this once you are ready to trade.'
-    - !!python/unicode '
-
-      TASK: Build a signal fire at the coast close to your warehouse.'
+    - "\nConstruya una se\xF1al de humo en la costa cerca de su asentamiento."
     type: logbook
   - arguments: ["Construya una se\xF1al de humo en la costa cerca de su asentamiento."]
     type: message
@@ -716,16 +710,7 @@ events:
     - [Pagebreak]
     - [Headline, "\xA1Gracias!"]
     - [Image, content/gui/images/background/hr.png]
-    - !!python/unicode '
-
-
-
-
-
-      Thanks for playing the tutorial!
-
-
-      Your UH-Team'
+    - "\n\n\n\n\n\xA1Gracias por haber jugado al tutorial!\n\nEl equipo de UH"
     - - Gallery
       - [content/unknown-horizons.xpm, content/gfx/misc/status_icons/as_book_flip/idle/45/book20125.png]
     type: logbook
@@ -756,6 +741,5 @@ events:
     type: var_gt
 locale: es
 mapfile: development.sqlite
-translation_status: 37 translated messages, 2 fuzzy translations, 152 untranslated
-  messages.
+translation_status: 47 translated messages, 144 untranslated messages.
 
