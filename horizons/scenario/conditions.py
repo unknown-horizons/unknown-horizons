@@ -31,6 +31,9 @@ class CONDITIONS(object):
 	"""
 	Class that holds all available conditions.
 
+	These are functions, that perform a certain check at one point in time.
+	There is no memory, e.g. if you lose progress, conditions just aren't true any more.
+
 	Condition checking is split up in 2 types:
 
 	  1. possible condition change is notified somewhere in the game code

@@ -43,7 +43,21 @@ class InvalidScenarioFileFormat(Exception):
 
 class ScenarioEventHandler(LivingObject):
 	"""Handles event, that make up a scenario. See wiki.
-	An instance of this class is bound to a set of events. On a new scenario, you need a new instance."""
+	An instance of this class is bound to a set of events. On a new scenario, you need a new instance.
+
+	Scenarios consist of condition-action events.
+	When all conditions of an event become true, the action is executed and the event is
+	removed from the scenario. All events only happen once.
+
+	Whenever the game state changes in a way, that can change the truth value of a condition,
+	the event handler must be notified. It will then check all relevant events.
+	It is imperative for this notification to always be triggered, else the scenario gets stuck.
+	For conditions, where this approach doesn't make sense (e.g. too frequent changes),
+	a periodic check can be used.
+
+	Save/load works by dumping all info into a yaml string in the savegame,
+	which is loaded just like normal scenarios are loaded.
+	"""
 
 	CHECK_CONDITIONS_INTERVAL = 3 # seconds
 
