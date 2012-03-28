@@ -723,7 +723,7 @@ msgstr "Guardado en {time}"
 #, python-format
 msgid "Saved {amount} time"
 msgid_plural "Saved {amount} times"
-msgstr[0] ""
+msgstr[0] "Guardado {amount} veces"
 msgstr[1] ""
 
 #: horizons/gui/gui.py:625
