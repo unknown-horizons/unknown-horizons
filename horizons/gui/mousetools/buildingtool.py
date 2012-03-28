@@ -304,11 +304,10 @@ class BuildingTool(NavigationTool):
 					building.buildable = False
 
 
-			if building.buildable:
-				# building seems to buildable, check res too now
-				(enough_res, missing_res) = Build.check_resources(neededResources, self._class.costs,
-				                                    self.session.world.player, [settlement, self.ship])
-				if not enough_res:
+			# check required resources
+			(enough_res, missing_res) = Build.check_resources(neededResources, self._class.costs,
+			                                                  self.session.world.player, [settlement, self.ship])
+			if building.buildable and not enough_res:
 					# make building red
 					self.renderer.addColored(self.buildings_fife_instances[building],
 										     *self.not_buildable_color)
@@ -322,7 +321,8 @@ class BuildingTool(NavigationTool):
 			# draw ordinary ranges first, then later color related buildings (they are more important)
 			self._make_surrounding_transparent(building.position)
 			self._color_preview_building(building)
-			self._draw_preview_building_range(building, settlement)
+			if building.buildable:
+				self._draw_preview_building_range(building, settlement)
 			self._highlight_related_buildings_in_range(building, settlement)
 			self._highlight_inversely_related_buildings(building, settlement)
 
