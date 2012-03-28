@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2012-03-24 02:16+0100\n"
-"PO-Revision-Date: 2012-03-25 04:56+0200\n"
+"PO-Revision-Date: 2012-03-28 04:27+0200\n"
 "Last-Translator: nifabric <nifabric@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: zh_CN\n"
@@ -99,69 +99,69 @@ msgstr "你的一些居民刚刚搬走了。"
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
 msgid "The route is now configured. Start it via the \"start route\" button in the \"configure route\" menu."
-msgstr ""
+msgstr "路径已配置。请通过“配置路径”菜单上的“开启路径”按钮启用。"
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
 msgid "You can also drag roads."
-msgstr ""
+msgstr "你也可以拖拽道路"
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
 msgid "You cannot tear the warehouse, your settlements needs it."
-msgstr ""
+msgstr "你不能分割仓库，你的殖民地需要它。"
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
 msgid "You have reached the current maximum increment. Your inhabitants will not upgrade further."
-msgstr ""
+msgstr "你已经达成最大增长。你的居民不会再继续升级了。"
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
 #, python-format
 msgid "You need more {resource} to build this building."
-msgstr ""
+msgstr "你需要更多的{resource}来建造此建筑物。"
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
 msgid "You won!"
-msgstr ""
+msgstr "你赢了！"
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
 msgid "Your crew refuses to leave this map."
-msgstr ""
+msgstr "你的船员拒绝离开此地图。"
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
 msgid "Your game has been autosaved."
-msgstr ""
+msgstr "你的游戏已经自动存档了。"
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
 msgid "Your game has been quicksaved."
-msgstr ""
+msgstr "你的游戏已经快速存档了。"
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
 msgid "Your game has been saved."
-msgstr ""
+msgstr "你的游戏已经存档了。"
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
 #, python-format
 msgid "Your inhabitants reached level {level}."
-msgstr ""
+msgstr "你的居民升至{level}级。"
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
 msgid "Your mine has run out of resources."
-msgstr ""
+msgstr "你的矿厂资源已经开采尽了。"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "acorns"
-msgstr ""
+msgstr "橡树果实"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
