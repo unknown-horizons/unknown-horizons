@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2012-03-24 02:16+0100\n"
-"PO-Revision-Date: 2012-03-27 21:29+0200\n"
+"PO-Revision-Date: 2012-03-28 02:06+0200\n"
 "Last-Translator: Kiryx <kiryx7@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: pl\n"
@@ -322,12 +322,12 @@ msgstr "razem"
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "grain"
-msgstr ""
+msgstr "ziarno"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "grapes"
-msgstr ""
+msgstr "winogrona"
 
 # Resources
 #. This is a database entry: the name of a resource.
@@ -729,7 +729,7 @@ msgstr "Zapisano o {time}"
 #, python-format,
 msgid "Saved {amount} time"
 msgid_plural "Saved {amount} times"
-msgstr[0] "Zapisano {amount}"
+msgstr[0] "Zapisano {amount} raz"
 msgstr[1] "Zapisano {amount} razy"
 msgstr[2] ""
 
@@ -767,7 +767,7 @@ msgstr "Musisz mieć zaznaczony zapis gry, by go usunąć."
 #, python-format
 #, python-format,
 msgid "Do you really want to delete the savegame '{name}'?"
-msgstr "Czy na pewno chcesz usunąć zapis gry  '{name}'?"
+msgstr "Czy na pewno chcesz usunąć zapis gry '{name}'?"
 
 #: horizons/gui/gui.py:658
 msgid "Confirm deletion"
@@ -878,7 +878,7 @@ msgstr "Mapa: {map_name}"
 
 #: horizons/gui/modules/multiplayermenu.py:185
 msgid "Name: {game_name}"
-msgstr ""
+msgstr "Nazwa: {game_name}"
 
 #: horizons/gui/modules/multiplayermenu.py:187
 #, python-format
@@ -893,7 +893,7 @@ msgstr "Twórca: : {player}"
 
 #: horizons/gui/modules/multiplayermenu.py:203
 msgid "This savegame is missing (click here)"
-msgstr ""
+msgstr "Brakujący zapis gry (kliknij tutaj)"
 
 #: horizons/gui/modules/multiplayermenu.py:209
 msgid "For multiplayer load, it is currently necessary for you to ensure you have the correct savegame file."
