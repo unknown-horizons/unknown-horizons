@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2012-03-24 02:16+0100\n"
-"PO-Revision-Date: 2012-03-27 21:27+0200\n"
+"PO-Revision-Date: 2012-03-27 21:29+0200\n"
 "Last-Translator: Kiryx <kiryx7@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: pl\n"
@@ -254,12 +254,12 @@ msgstr "społeczność"
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "condiments"
-msgstr ""
+msgstr "przyprawy"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "confectionery"
-msgstr ""
+msgstr "wyroby cukiernicze"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
