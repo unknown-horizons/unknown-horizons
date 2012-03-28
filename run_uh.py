@@ -80,10 +80,7 @@ logfile = None
 def find_uh_position():
 	"""Returns path, where uh is located"""
 	# first check around cur dir and sys.argv[0]
-	for i in (
-		os.path.split(sys.argv[0])[0],
-		'.', '..'
-		):
+	for i in (os.path.dirname(sys.argv[0]), '.', '..'):
 		i = os.path.realpath(i)
 		if os.path.exists( os.path.join(i, 'content')):
 			return i
