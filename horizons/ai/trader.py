@@ -193,26 +193,27 @@ class Trader(GenericAI):
 		# NOTE: must be sorted for mp games (same order everywhere)
 		trade_comp = settlement.get_component(TradePostComponent)
 		for res in sorted(trade_comp.buy_list.iterkeys()): # check for resources that the settlement wants to buy
-			wanted_amount = trade_comp.buy_list[res]
-			actual_min_limit = min(wanted_amount, TRADER.SELL_AMOUNT_MIN)
 			# select a random amount to sell
-			amount = self.session.random.randint(actual_min_limit, TRADER.SELL_AMOUNT_MAX)
-			if amount == 0:
-				continue
-			price = int(self.session.db.get_res_value(res) * TRADER.PRICE_MODIFIER_SELL * amount)
-			trade_comp.buy(res, amount, price, self.worldid)
-			# don't care if it has been bought. the trader just offers.
-			self.log.debug("Trader %s: offered sell %s tons of res %s", self.worldid, amount, res)
+			amount = self.session.random.randint(TRADER.SELL_AMOUNT_MIN, TRADER.SELL_AMOUNT_MAX)
+			# try to sell all, else try smaller pieces
+			for try_amount in xrange(amount, 0, -1):
+				price = int(self.session.db.get_res_value(res) * TRADER.PRICE_MODIFIER_SELL * try_amount)
+				trade_successful = trade_comp.buy(res, try_amount, price, self.worldid)
+				self.log.debug("Trader %s: offered sell %s tons of res %s, success: %s", self.worldid, try_amount, res, trade_successful)
+				if trade_successful:
+					break
 
 		# NOTE: must be sorted for mp games (same order everywhere)
 		for res in sorted(trade_comp.sell_list.iterkeys()):
 			# select a random amount to buy from the settlement
 			amount = self.session.random.randint(TRADER.BUY_AMOUNT_MIN, TRADER.BUY_AMOUNT_MAX)
-			if amount == 0:
-				continue
-			price = int(self.session.db.get_res_value(res) * TRADER.PRICE_MODIFIER_BUY * amount)
-			trade_comp.sell(res, amount, price, self.worldid)
-			self.log.debug("Trader %s: offered buy %s tons of res %s", self.worldid, amount, res)
+			# try to buy all, else try smaller pieces
+			for try_amount in xrange(amount, 0, -1):
+				price = int(self.session.db.get_res_value(res) * TRADER.PRICE_MODIFIER_BUY * try_amount)
+				trade_successful = trade_comp.sell(res, try_amount, price, self.worldid)
+				self.log.debug("Trader %s: offered buy %s tons of res %s, success: %s", self.worldid, try_amount, res, trade_successful)
+				if trade_successful:
+					break
 
 		del self.office[ship.worldid]
 		# wait a few seconds before going on to simulate loading/unloading process
