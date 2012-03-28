@@ -130,7 +130,6 @@ class Player(ComponentHolder, WorldObject):
 			return False # was settler of another player
 		if message.level > self.settler_level:
 			self.settler_level = message.level
-			self.session.scenario_eventhandler.check_events(CONDITIONS.settler_level_greater)
 			for settlement in self.settlements:
 				settlement.level_upgrade(self.settler_level)
 			self._changed()

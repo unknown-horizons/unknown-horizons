@@ -65,7 +65,7 @@ def settlements_num_greater(session, limit):
 	"""Returns whether the number of settlements owned by the human player is greater than limit."""
 	return len(_get_player_settlements(session)) > limit
 
-@register()
+@register(periodically=True)
 def settler_level_greater(session, limit):
 	"""Returns wheter the max level of settlers is greater than limit"""
 	return (session.world.player.settler_level > limit)
