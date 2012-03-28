@@ -20,4 +20,3 @@
 # ###################################################
 
 from horizons.messaging.message import *
-from horizons.messaging.messagebus import MessageBus

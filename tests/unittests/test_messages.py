@@ -38,13 +38,18 @@ class TestMessageBus(unittest.TestCase):
 	def setUp(self):
 		self.cb = mock.Mock()
 
+	def assert_called_once_with(self, cb, message_type, **arguments):
+		assert cb.call_count == 1
+		msg = cb.call_args[0][0]
+		for name, value in arguments.items():
+			assert getattr(msg, name) == value
+
 	def test_global_subscribe(self):
 		ExampleMessage.subscribe(self.cb)
 
 		# correct message type, cb is called
-		msg = ExampleMessage(self)
-		msg.broadcast()
-		self.cb.assert_called_once_with(msg)
+		ExampleMessage.broadcast(self)
+		self.assert_called_once_with(self.cb, ExampleMessage, sender=self)
 		self.cb.reset_mock()
 
 		# wrong message type, cb is not called
@@ -55,14 +60,12 @@ class TestMessageBus(unittest.TestCase):
 		ExampleMessage.subscribe(self.cb, sender=self)
 
 		# correct message type, correct sender, cb is called
-		msg = ExampleMessage(self)
-		msg.broadcast()
-		self.cb.assert_called_once_with(msg)
+		ExampleMessage.broadcast(self)
+		self.assert_called_once_with(self.cb, ExampleMessage, sender=self)
 		self.cb.reset_mock()
 
 		# correct message type, wrong sender, cb is not called
-		msg = ExampleMessage(1)
-		msg.broadcast()
+		ExampleMessage.broadcast(1)
 		self.assertFalse(self.cb.called)
 		self.cb.reset_mock()
 
@@ -74,27 +77,23 @@ class TestMessageBus(unittest.TestCase):
 		ExampleMessage.subscribe(self.cb)
 		Message.subscribe(self.cb, sender=self)
 
-		msg1 = ExampleMessage(self)
-		msg2 = Message(self)
-
 		# broadcast local and global message, cb called two times
-		msg1.broadcast()
-		msg2.broadcast()
-		self.cb.assert_any_call(msg1)
-		self.cb.assert_any_call(msg2)
+		ExampleMessage.broadcast(self)
+		Message.broadcast(self)
+		assert self.cb.call_count == 2
 		self.cb.reset_mock()
 
 		# after unsubscribing globally, only the local message is received
 		ExampleMessage.unsubscribe(self.cb)
-		msg1.broadcast()
-		msg2.broadcast()
-		self.cb.assert_called_with(msg2)
+		ExampleMessage.broadcast(self)
+		Message.broadcast(self)
+		self.assert_called_once_with(self.cb, Message, sender=self)
 		self.cb.reset_mock()
 
 		# after unsubscribing locally, all subscriptions should be gone, cb not called
 		Message.unsubscribe(self.cb, sender=self)
-		msg1.broadcast()
-		msg2.broadcast()
+		ExampleMessage.broadcast(self)
+		Message.broadcast(self)
 		self.assertFalse(self.cb.called)
 
 
