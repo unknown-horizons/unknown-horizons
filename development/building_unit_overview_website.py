@@ -10,9 +10,14 @@ Pass --no-units or --no-buildings to remove the respective entries.
 For now, use the flags in lines 43ff.
 """
 
-import os.path
+get_buildings = True
+get_units = True
+
+WEBSITE = 'https://github.com/unknown-horizons/unknown-horizons/raw/master'
+
+###############################################################################
+
 import sys
-import sqlite3
 
 sys.path.append(".")
 sys.path.append("./horizons")
@@ -30,68 +35,57 @@ init_environment()
 
 import horizons.main
 from horizons.util.loaders.actionsetloader import ActionSetLoader
-from horizons.constants import UNITS
 
-global db, loader, query
+global db, action_sets
 db = horizons.main._create_main_db()
-loader = ActionSetLoader()
-query = 'SELECT action_set_id FROM action_set WHERE object_id = ?'
+action_sets = ActionSetLoader.get_sets()
 
-get_buildings = True
-#get_buildings = False
-get_units = True
-#get_units = False
+from horizons.entities import Entities
+from horizons.ext.dummy import Dummy
+from horizons.extscheduler import ExtScheduler
+ExtScheduler.create_instance(Dummy()) # sometimes needed by entities in subsequent calls
 
-def get_name(object_id):
-	if object_id < UNITS.DIFFERENCE_BUILDING_UNIT_ID:
-		name = db("SELECT name FROM building WHERE id = ?", object_id)[0][0]
-		#query += ' ORDER BY settler_level ASC'
-		#TODO this ORDER BY does not do what it was hired for.
-	elif object_id > UNITS.DIFFERENCE_BUILDING_UNIT_ID:
-		name = db("SELECT name FROM unit WHERE id = ?", object_id)[0][0]
+def get_entities(type):
+	ret = dict()
+	for e in getattr(Entities, type).itervalues():
+		level_sets = e.action_sets_by_level
+		di = dict()
+		for (level, list) in level_sets.iteritems():
+			if list == []:
+				continue
+			images = []
+			for set in list:
+				images.append(get_images(set)[0])
+			di[level] = images # only one for now. #TODO animations
+		ret[e.name] = di
+	return ret
 
-	return name
+def get_images(data):
+	"""Pass action_set name. Returns a list of image paths, much like this:
+	['content/gfx/buildings/settlers/agricultural/as_herbary0/idle/135/0.png',
+	 'content/gfx/buildings/settlers/agricultural/as_herbary0/idle/225/0.png',
+	 'content/gfx/buildings/settlers/agricultural/as_herbary0/idle/315/0.png',
+	 'content/gfx/buildings/settlers/agricultural/as_herbary0/idle/45/0.png'] """
+	if 'idle' in action_sets[data]:
+		action = 'idle'
+	elif 'idle_full' in action_sets[data]:
+		action = 'idle_full'
+	elif 'abc' in action_sets[data]:
+		action = 'abc'
+	else: # If no idle animation found, use the first you find
+		action = action_sets[data].keys()[0]
+	return sorted(action_sets[data][action][45])
 
-def get_images(object_id):
-	sets = []
-	result_list = []
-
-	for as_ in db(query, object_id):
-		sets.append(as_[0])
-
-	for as_ in sorted(sets): #TODO this sorted() call breaks order again, see above.
-		set_ = loader.get_action_sets()[as_]
-		try: #trees and roads have no idle animation
-			image = set_['idle_full'][45].keys()[0]
-		except KeyError:
-			try:
-				image = set_['idle'][45].keys()[0]
-			except:
-				image = set_['abc'][45].keys()[0]
-
-		result_list.append(image)
-
-	return result_list
-
-def create_table_entry(object_id):
-	WEBSITE = 'https://github.com/unknown-horizons/unknown-horizons/raw/master'
+def create_table(type):
 	retval = ''
-
-	query = get_images(object_id)
-	retval += '%s \n' % get_name(object_id)
-	for result in query:
-		retval += '<img src="%s/%s" alt="%s/" />\n' % (WEBSITE, result, result.split('content/gfx/')[1].split('/idle')[0])
-	retval += '<hr />\n\n'
+	for (name, data) in sorted(get_entities(type).items()):
+		for (level, images) in data.iteritems():
+			for image in images:
+				retval += '<img src="%s/%s" alt="%s/" />\n' % (WEBSITE, image, image.split('content/gfx/')[1].split('/idle')[0])
+			retval += '<br />\n'
+		retval += '%s\n<br />\n' % name
+		retval += '<hr />\n\n'
 	return retval
-
-def create_all_entries(id_list):
-	retval = ''
-	for id_ in sorted(id_list):
-		retval += create_table_entry(id_)
-	return retval
-
-args = sys.argv
-
 
 HEADER = \
 '''<?xml version="1.0" encoding="UTF-8"?>
@@ -111,12 +105,11 @@ FOOTER = \
 page = HEADER
 
 if get_buildings:
-	buildings = map(lambda x: x[0], db('SELECT DISTINCT id FROM building'))
-	page += create_all_entries(buildings)
-
+	Entities.load_buildings(db, load_now=True)
+	page += create_table('buildings')
 if get_units:
-	units = map(lambda x: x[0], db('SELECT DISTINCT id FROM unit'))
-	page += create_all_entries(units)
+	Entities.load_units(load_now=True)
+	page += create_table('units')
 
 page += FOOTER
 
