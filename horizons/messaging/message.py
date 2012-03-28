@@ -24,8 +24,8 @@ from horizons.messaging.messagebus import MessageBus
 
 class Message(object):
 	"""Message class for the MessageBus. Every Message that is supposed to be
-	send through the MessageBus should subclass this base class, to ensure proper
-	setting of base attributes.
+	send through the MessageBus has to subclass this base class, to ensure proper
+	setting of base attributes and inheriting the interface.
 
 	The first argument in each message is always a reference to the sender,
 	additional expected arguments are defined on the class-level attribute `arguments`,
@@ -44,6 +44,21 @@ class Message(object):
 
 	@classmethod
 	def subscribe(cls, callback, sender=None):
+		"""Register a callback to be called whenever a message of this type is send.
+
+		callback - Callable that receives an instance of a message as only argument.
+
+		sender	-	If specified, the callback receives only messages that originated
+					from sender. By default, all messages are received.
+
+		Example:
+
+			>>> def cb(msg):
+				    print 'Received', msg
+
+			>>> MessageClass.subscribe(cb)	# Global
+			>>> MessageClass.subscribe(cb, sender=foo) # Specific sender
+		"""
 		if sender:
 			MessageBus().subscribe_locally(cls, sender, callback)
 		else:
@@ -51,6 +66,24 @@ class Message(object):
 
 	@classmethod
 	def unsubscribe(cls, callback, sender=None):
+		"""Stop your subscription of this message type for the specified callback.
+
+		callback -	Callable that receives an instance of a message as only argument.
+					The same you've been using with `Message.subscribe`.
+
+		sender	-	If specified, the subscription will only be stopped for messages
+					from this sender. By default, all subscriptions are ended.
+
+		Note: There has to be a subscription, otherwise an error will be raised.
+
+		Example:
+
+			>>> MessageClass.subscribe(cb)
+			>>> MessageClass.broadcast('sender')
+			message received
+			>>> MessageClass.unsubscribe(cb)
+			>>> MessageClass.broadcast('sender')
+		"""
 		if sender:
 			MessageBus().unsubscribe_locally(cls, sender, callback)
 		else:
@@ -58,10 +91,24 @@ class Message(object):
 
 	@classmethod
 	def discard(cls, callback):
+		"""
+		"""
 		MessageBus().discard_globally(cls, callback)
 
 	@classmethod
 	def broadcast(cls, *args):
+		"""Send a message that is initialized with `args`.
+
+		The first argument is always a sender, the number of arguments has to be
+		N + 1, with N beeing the number of arguments defined on the message class.
+
+		Example:
+
+			>>> class Foo(Message):
+				    arguments = ('a', 'b', )
+
+			>>> Foo.broadcast('sender', 1, 2)
+		"""
 		MessageBus().broadcast(cls(*args))
 
 
