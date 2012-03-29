@@ -45,7 +45,7 @@ from horizons.command.game import SpeedDownCommand, SpeedUpCommand
 from horizons.gui.tabs.tabinterface import TabInterface
 from horizons.world.component.namedcomponent import SettlementNameComponent, NamedComponent
 from horizons.world.component.selectablecomponent import SelectableComponent
-from horizons.util.messaging.message import SettlerUpdate, SettlerInhabitantsChanged, ResourceBarResize, HoverSettlementChanged
+from horizons.messaging import SettlerUpdate, SettlerInhabitantsChanged, ResourceBarResize, HoverSettlementChanged
 from horizons.util.lastactiveplayersettlementmanager import LastActivePlayerSettlementManager
 
 class IngameGui(LivingObject):
@@ -140,7 +140,7 @@ class IngameGui(LivingObject):
 		self.widgets['tooltip'].hide()
 
 		self.resource_overview = ResourceOverviewBar(self.session)
-		self.session.message_bus.subscribe_globally(ResourceBarResize, self._on_resourcebar_resize)
+		ResourceBarResize.subscribe(self._on_resourcebar_resize)
 
 		# map buildings to build functions calls with their building id.
 		# This is necessary because BuildTabs have no session.
@@ -149,9 +149,9 @@ class IngameGui(LivingObject):
 			self.callbacks_build[building_id] = Callback(self._build, building_id)
 
 		# Register for messages
-		self.session.message_bus.subscribe_globally(SettlerUpdate, self._on_settler_level_change)
-		self.session.message_bus.subscribe_globally(SettlerInhabitantsChanged, self._on_settler_inhabitant_change)
-		self.session.message_bus.subscribe_globally(HoverSettlementChanged, self._cityinfo_set)
+		SettlerUpdate.subscribe(self._on_settler_level_change)
+		SettlerInhabitantsChanged.subscribe(self._on_settler_inhabitant_change)
+		HoverSettlementChanged.subscribe(self._cityinfo_set)
 
 	def _on_resourcebar_resize(self, message):
 		###
@@ -181,10 +181,10 @@ class IngameGui(LivingObject):
 		self.resource_overview.end()
 		self.resource_overview = None
 		self.hide_menu()
-		self.session.message_bus.unsubscribe_globally(SettlerUpdate, self._on_settler_level_change)
-		self.session.message_bus.unsubscribe_globally(ResourceBarResize, self._on_resourcebar_resize)
-		self.session.message_bus.unsubscribe_globally(HoverSettlementChanged, self._cityinfo_set)
-		self.session.message_bus.unsubscribe_globally(SettlerInhabitantsChanged, self._on_settler_inhabitant_change)
+		SettlerUpdate.unsubscribe(self._on_settler_level_change)
+		ResourceBarResize.unsubscribe(self._on_resourcebar_resize)
+		HoverSettlementChanged.unsubscribe(self._cityinfo_set)
+		SettlerInhabitantsChanged.unsubscribe(self._on_settler_inhabitant_change)
 
 		super(IngameGui, self).end()
 

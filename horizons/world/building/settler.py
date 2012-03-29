@@ -37,7 +37,7 @@ from horizons.command.production import ToggleActive
 from horizons.world.component.storagecomponent import StorageComponent
 from horizons.world.status import SettlerUnhappyStatus
 from horizons.world.production.producer import Producer
-from horizons.util.messaging.message import AddStatusIcon, RemoveStatusIcon, SettlerUpdate, SettlerInhabitantsChanged, UpgradePermissionsChanged
+from horizons.messaging import AddStatusIcon, RemoveStatusIcon, SettlerUpdate, SettlerInhabitantsChanged, UpgradePermissionsChanged
 
 class SettlerRuin(BasicBuilding, BuildableSingle):
 	"""Building that appears when a settler got unhappy. The building does nothing.
@@ -67,11 +67,11 @@ class Settler(BuildableRect, BuildingResourceHandler, BasicBuilding):
 		self.level_max = SETTLER.CURRENT_MAX_INCR # for now
 		self._update_level_data(loading = loading)
 		self.last_tax_payed = last_tax_payed
-		self.session.message_bus.subscribe_locally(UpgradePermissionsChanged, self.settlement, self._on_change_upgrade_permissions)
+		UpgradePermissionsChanged.subscribe(self._on_change_upgrade_permissions, sender=self.settlement)
 
 	def initialize(self):
 		super(Settler, self).initialize()
-		self.session.message_bus.broadcast(SettlerInhabitantsChanged(self, self.inhabitants))
+		SettlerInhabitantsChanged.broadcast(self, self.inhabitants)
 		happiness = self.__get_data("happiness_init_value")
 		if happiness is not None:
 			self.get_component(StorageComponent).inventory.alter(RES.HAPPINESS_ID, happiness)
@@ -99,7 +99,7 @@ class Settler(BuildableRect, BuildingResourceHandler, BasicBuilding):
 		    db("SELECT ticks FROM remaining_ticks_of_month WHERE rowid=?", worldid)[0][0]
 		self.__init(loading = True, last_tax_payed = last_tax_payed)
 		self._load_upgrade_data(db)
-		self.session.message_bus.broadcast(SettlerUpdate(self, self.level))
+		SettlerUpdate.broadcast(self, self.level)
 		self.run(remaining_ticks)
 
 	def load_production(self, db, worldid):
@@ -133,7 +133,7 @@ class Settler(BuildableRect, BuildingResourceHandler, BasicBuilding):
 		return None
 
 	def remove(self):
-		self.session.message_bus.unsubscribe_locally(UpgradePermissionsChanged, self.settlement, self._on_change_upgrade_permissions)
+		UpgradePermissionsChanged.unsubscribe(self._on_change_upgrade_permissions, sender=self.settlement)
 		super(Settler, self).remove()
 
 	@property
@@ -240,7 +240,7 @@ class Settler(BuildableRect, BuildingResourceHandler, BasicBuilding):
 			# see http://wiki.unknown-horizons.org/w/Supply_citizens_with_resources
 			self.get_component(Producer).alter_production_time( 6.0/7.0 * math.log( 1.5 * (self.inhabitants + 1.2) ) )
 			self.inhabitants += change
-			self.session.message_bus.broadcast(SettlerInhabitantsChanged(self, change))
+			SettlerInhabitantsChanged.broadcast(self, change)
 			self._changed()
 
 	def level_check(self):
@@ -287,7 +287,7 @@ class Settler(BuildableRect, BuildingResourceHandler, BasicBuilding):
 			self._update_level_data()
 
 			# Notify the world about the level up
-			self.session.message_bus.broadcast(SettlerUpdate(self, self.level))
+			SettlerUpdate.broadcast(self, self.level)
 
 			# reset happiness value for new level
 			self.get_component(StorageComponent).inventory.alter(RES.HAPPINESS_ID, self.__get_data("happiness_init_value") - self.happiness)
@@ -342,9 +342,9 @@ class Settler(BuildableRect, BuildingResourceHandler, BasicBuilding):
 			# check for changes
 			if unhappy and not hasattr(self, "_settler_status_icon"):
 				self._settler_status_icon = SettlerUnhappyStatus(self) # save ref for removal later
-				self.session.message_bus.broadcast(AddStatusIcon(self, self._settler_status_icon))
+				AddStatusIcon.broadcast(self, self._settler_status_icon)
 			if not unhappy and hasattr(self, "_settler_status_icon"):
-				self.session.message_bus.broadcast(RemoveStatusIcon(self, self, SettlerUnhappyStatus))
+				RemoveStatusIcon.broadcast(self, self, SettlerUnhappyStatus)
 				del self._settler_status_icon
 
 	def __str__(self):

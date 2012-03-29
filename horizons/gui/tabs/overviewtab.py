@@ -44,7 +44,7 @@ from horizons.world.component.namedcomponent import NamedComponent
 from horizons.world.component.storagecomponent import StorageComponent
 from horizons.world.component.tradepostcomponent import TradePostComponent
 from horizons.world.production.producer import Producer
-from horizons.util.messaging.message import SettlerUpdate
+from horizons.messaging import SettlerUpdate
 
 
 class OverviewTab(TabInterface):
@@ -509,10 +509,10 @@ class SettlerOverviewTab(OverviewTab):
 
 	def show(self):
 		super(SettlerOverviewTab, self).show()
-		self.instance.session.message_bus.subscribe_locally(SettlerUpdate, self.instance, self.on_settler_level_change)
+		SettlerUpdate.subscribe(self.on_settler_level_change, sender=self.instance)
 
 	def hide(self):
-		self.instance.session.message_bus.unsubscribe_locally(SettlerUpdate, self.instance, self.on_settler_level_change)
+		SettlerUpdate.unsubscribe(self.on_settler_level_change, sender=self.instance)
 		super(SettlerOverviewTab, self).hide()
 
 	def refresh(self):

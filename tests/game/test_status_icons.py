@@ -25,7 +25,7 @@ from horizons.world.production.producer import Producer
 from horizons.world.component.storagecomponent import StorageComponent
 from horizons.constants import BUILDINGS, RES
 from horizons.world.status import SettlerUnhappyStatus, DecommissionedStatus, ProductivityLowStatus, InventoryFullStatus
-from horizons.util.messaging.message import AddStatusIcon
+from horizons.messaging import AddStatusIcon
 
 import mock
 from tests.game import settle, game_test
@@ -43,7 +43,7 @@ def test_productivity_low(session, player):
 	Build(BUILDINGS.CHARCOAL_BURNER_CLASS, 30, 30, island, settlement=settlement)(player)
 
 	cb = mock.Mock()
-	session.message_bus.subscribe_globally(AddStatusIcon, cb)
+	AddStatusIcon.subscribe(cb)
 
 	# Not yet low
 	assert not cb.called
@@ -58,7 +58,7 @@ def test_settler_unhappy(session, player):
 	settlement, island = settle(session)
 
 	cb = mock.Mock()
-	session.message_bus.subscribe_globally(AddStatusIcon, cb)
+	AddStatusIcon.subscribe(cb)
 
 	settler = Build(BUILDINGS.RESIDENTIAL_CLASS, 30, 30, island, settlement=settlement)(player)
 
@@ -79,7 +79,7 @@ def test_decommissioned(session, player):
 	lj = Build(BUILDINGS.LUMBERJACK_CLASS, 30, 30, island, settlement=settlement)(player)
 
 	cb = mock.Mock()
-	session.message_bus.subscribe_globally(AddStatusIcon, cb)
+	AddStatusIcon.subscribe(cb)
 
 	assert not cb.called
 
@@ -94,7 +94,7 @@ def test_inventory_full(session, player):
 	lj = Build(BUILDINGS.LUMBERJACK_CLASS, 30, 30, island, settlement=settlement)(player)
 
 	cb = mock.Mock()
-	session.message_bus.subscribe_globally(AddStatusIcon, cb)
+	AddStatusIcon.subscribe(cb)
 
 	# Not full
 	assert not cb.called

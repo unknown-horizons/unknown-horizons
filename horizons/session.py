@@ -51,7 +51,6 @@ from horizons.savegamemanager import SavegameManager
 from horizons.scenario import ScenarioEventHandler
 from horizons.world.component.ambientsoundcomponent import AmbientSoundComponent
 from horizons.constants import GAME_SPEED, PATHS
-from horizons.util.messaging.messagebus import MessageBus
 from horizons.world.managers.statusiconmanager import StatusIconManager
 
 class Session(LivingObject):
@@ -103,7 +102,6 @@ class Session(LivingObject):
 		self.is_alive = True
 
 		self._clear_caches()
-		self.message_bus = MessageBus()
 
 		#game
 		self.random = self.create_rng(rng_seed)

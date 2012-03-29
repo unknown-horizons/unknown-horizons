@@ -34,11 +34,10 @@ from horizons.world.component.storagecomponent import StorageComponent
 from horizons.util.gui import load_uh_widget, get_res_icon_path, create_resource_selection_dialog
 from horizons.util import PychanChildFinder, Callback
 from horizons.util.python.decorators import cachedmethod
-from horizons.util.messaging.message import ResourceBarResize
 from horizons.extscheduler import ExtScheduler
 from horizons.world.component.ambientsoundcomponent import AmbientSoundComponent
 from horizons.util.lastactiveplayersettlementmanager import LastActivePlayerSettlementManager
-from horizons.util.messaging.message import NewPlayerSettlementHovered
+from horizons.messaging import NewPlayerSettlementHovered, ResourceBarResize
 
 
 class ResourceOverviewBar(object):
@@ -103,7 +102,7 @@ class ResourceOverviewBar(object):
 
 		self._update_default_configuration()
 
-		self.session.message_bus.subscribe_globally(NewPlayerSettlementHovered, self._on_different_settlement)
+		NewPlayerSettlementHovered.subscribe(self._on_different_settlement)
 
 	def end(self):
 		self.set_inventory_instance( None, force_update=True )
@@ -113,7 +112,7 @@ class ResourceOverviewBar(object):
 		self.gold_gui = None
 		self.gui = None
 		self._custom_default_resources = None
-		self.session.message_bus.unsubscribe_globally(NewPlayerSettlementHovered, self._on_different_settlement)
+		NewPlayerSettlementHovered.unsubscribe(self._on_different_settlement)
 
 	def _update_default_configuration(self):
 		# user defined variante of DEFAULT_RESOURCES (will be preferred)
@@ -477,7 +476,7 @@ class ResourceOverviewBar(object):
 			self._hide_dummy_slot()
 
 		if number_of_slots_changed:
-			self.session.message_bus.broadcast( ResourceBarResize(self) )
+			ResourceBarResize.broadcast(self)
 
 	def _hide_resource_selection_dialog(self):
 		if hasattr(self, "_res_selection_dialog"):
