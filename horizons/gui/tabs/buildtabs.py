@@ -22,6 +22,7 @@
 from horizons.entities import Entities
 from horizons.gui.tabs.tabinterface import TabInterface
 from horizons.command.building import Build
+from horizons.constants import BUILDINGS
 from horizons.util import Callback
 from horizons.util.lastactiveplayersettlementmanager import LastActivePlayerSettlementManager
 from horizons.util.python.roman_numerals import int_to_roman
@@ -52,56 +53,56 @@ class BuildTab(TabInterface):
 
 	image_data = {
 		1 : {
-			 1 : 3, # tent
-			 2 : 2, # storage tent
-			 3 : 4, # main square
-			 4 : 5, # pavilion
-			 5 : 8, # lumberjack
-			 6 : 17,# tree
-			21 : 15,# trail
-			23 : 6, # signal fire
-			25 : 9, # hunter
-			26 : 11,# fisher
+			 1 : BUILDINGS.RESIDENTIAL_CLASS,
+			 2 : BUILDINGS.STORAGE_CLASS,
+			 3 : BUILDINGS.MAIN_SQUARE_CLASS,
+			 4 : BUILDINGS.PAVILION_CLASS,
+			 5 : BUILDINGS.LUMBERJACK_CLASS,
+			 6 : BUILDINGS.TREE_CLASS,
+			21 : BUILDINGS.TRAIL_CLASS,
+			23 : BUILDINGS.SIGNAL_FIRE_CLASS,
+			25 : BUILDINGS.HUNTER_CLASS,
+			26 : BUILDINGS.FISHERMAN_CLASS,
 		      },
 		2 : {
-			 1 : 25,
-			 2 : 24,
-			 3 : 20,
-			 4 : 19,
-			 5 : 21,
-			 6 : 45,
-			21 : 7,
-			22 : 26,
-			23 : 18,
-			24 : 22,
-			25 : 12,
-			26 : 44,
+			 1 : BUILDINGS.CLAY_PIT_CLASS,
+			 2 : BUILDINGS.BRICKYARD_CLASS,
+			 3 : BUILDINGS.FARM_CLASS,
+			 4 : BUILDINGS.POTATO_FIELD_CLASS,
+			 5 : BUILDINGS.VILLAGE_SCHOOL_CLASS,
+			 6 : BUILDINGS.FIRE_STATION_CLASS,
+			21 : BUILDINGS.WEAVER_CLASS,
+			22 : BUILDINGS.DISTILLERY_CLASS,
+			23 : BUILDINGS.PASTURE_CLASS,
+			24 : BUILDINGS.SUGARCANE_FIELD_CLASS,
+			25 : BUILDINGS.BOATBUILDER_CLASS,
+			26 : BUILDINGS.WOODEN_TOWER,
 		      },
 		3 : {
-			 1 : 28,
-			 2 : 29,
-			 3 : 35,
-			 4 : 41,
-			 5 : 36,
-			 6 : 38,
-			 7 : 32,
-			21 : 30,
-			22 : 31,
-			23 : 37,
-#			24 : 50,
-			25 : 39,
-#			26 : 49,
-#			27 : 53,
+			 1 : BUILDINGS.IRON_MINE_CLASS,
+			 2 : BUILDINGS.SMELTERY_CLASS,
+			 3 : BUILDINGS.SALT_PONDS_CLASS,
+			 4 : BUILDINGS.BUTCHERY,
+			 5 : BUILDINGS.TOBACCO_FIELD_CLASS,
+			 6 : BUILDINGS.CATTLE_RUN,
+			 7 : BUILDINGS.TAVERN_CLASS,
+			21 : BUILDINGS.TOOLMAKER_CLASS,
+			22 : BUILDINGS.CHARCOAL_BURNER_CLASS,
+			23 : BUILDINGS.TOBACCONIST_CLASS,
+			24 : BUILDINGS.BLENDER,
+			25 : BUILDINGS.PIGSTY,
+			26 : BUILDINGS.SPICE_FIELD,
+			27 : BUILDINGS.BARRACKS,
 		      },
 		4 : {
-			 1 : 47,
-			 2 : 48,
-			 3 : 46,
-#			 4 : 60,
-#			21 : 65,
-#			22 : 63,
-#			23 : 61,
-#			24 : 62,
+			 1 : BUILDINGS.WINDMILL,
+			 2 : BUILDINGS.BAKERY,
+			 3 : BUILDINGS.CORN_FIELD,
+			 4 : BUILDINGS.COCOA_FIELD,
+			21 : BUILDINGS.VINTNER,
+			22 : BUILDINGS.PASTRY_SHOP,
+			23 : BUILDINGS.VINEYARD,
+			24 : BUILDINGS.ALVEARIES,
 		      },
 		}
 
