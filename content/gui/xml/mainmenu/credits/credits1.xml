@@ -62,6 +62,12 @@
 			<Label text="mtfk (Voice internationalization)" />
 		</VBox>
 	</VBox>
+
+	<VBox> <Label text="2012"  name="headline" />
+		<VBox  name="box">
+			<Label text="Foaly (Resource icons)" />
+		</VBox>
+	</VBox>
 </VBox>
 </ScrollArea>
 
