@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: translate-uh@lists.unknown-horizons.org\n"
 "POT-Creation-Date: 2012-03-21 04:04+0100\n"
-"PO-Revision-Date: 2012-03-25 12:43+0200\n"
+"PO-Revision-Date: 2012-03-25 12:47+0200\n"
 "Last-Translator: Traveler <guillaume.pascal43@laposte.net>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: fr\n"
@@ -88,7 +88,7 @@ msgid ""
 msgstr ""
 "\n"
 "Pour voir votre première tâche, cliquez le bouton «Lire entrées suivantes» "
-"dans la fenêtre de navigation! Ça ressemble à ça: "
+"dans la fenêtre de navigation! Ça ressemble à ça:"
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:20

@@ -7,8 +7,8 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2012-03-24 02:16+0100\n"
-"PO-Revision-Date: 2012-03-08 10:17+0200\n"
-"Last-Translator: Nick <nzwaal@gmail.com>\n"
+"PO-Revision-Date: 2012-03-29 11:32+0200\n"
+"Last-Translator: Christopher Oelmueller <chris.oelmueller+uh@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: nl\n"
 "MIME-Version: 1.0\n"
@@ -791,7 +791,7 @@ msgstr "[{key}] = {text}"
 #: horizons/i18n/guitranslations.py:417 horizons/i18n/guitranslations.py:439
 #: horizons/i18n/guitranslations.py:459
 msgid "Click to change the name of your settlement"
-msgstr "Klik om de naam van uw nederzetting te wijzigen."
+msgstr "Klik om de naam van uw nederzetting te wijzigen"
 
 #. e.g. when the pirate is disabled
 #. this dialog is pretty useless in this case
@@ -902,7 +902,7 @@ msgstr ""
 msgid "Meanwhile, please request the file {path} from the game creator and put it in {map_directory} ."
 msgstr ""
 "Vraag ondertussen het bestand {path} van de spelstarter en zet het in "
-"{map_directory}."
+"{map_directory} ."
 
 #. (text of widget: help)
 #. (text of widget: help) Main / in-game menu entry
@@ -1295,7 +1295,7 @@ msgstr "Schepen van {player}"
 #: horizons/gui/widgets/playersships.py:83
 #: horizons/i18n/guitranslations.py:499 horizons/i18n/guitranslations.py:510
 msgid "Click to change the name of this ship"
-msgstr "Klik om de naam van dit schip te wijzigen."
+msgstr "Klik om de naam van dit schip te wijzigen"
 
 #. i18n There are no weapons equipped at the moment.
 #: horizons/gui/widgets/playersships.py:99
@@ -2474,7 +2474,7 @@ msgstr "Hoofd menu:"
 #. (text of widget: game_showonlyownversion)
 #: horizons/i18n/guitranslations.py:862
 msgid "Only show games with the same version:"
-msgstr "Toon alleen spellen met gelijke versie"
+msgstr "Toon alleen spellen met gelijke versie:"
 
 #. (text of widget: headline_left)
 #: horizons/i18n/guitranslations.py:864
@@ -2658,7 +2658,7 @@ msgstr "Schip uitladen bij de start van een nederzetting?"
 #. (helptext of widget: color_depth_label)
 #: horizons/i18n/guitranslations.py:943
 msgid "If set to 0, use the driver default"
-msgstr "Indien 0, wordt de standaard driver gebruikt."
+msgstr "Indien 0, wordt de standaard driver gebruikt"
 
 #. (helptext of widget: debug_log_lbl)
 #: horizons/i18n/guitranslations.py:945
@@ -2699,7 +2699,7 @@ msgstr ""
 #. (helptext of widget: use_renderer_label)
 #: horizons/i18n/guitranslations.py:959
 msgid "SDL is only meant as unsupported fallback and might cause problems!"
-msgstr "SDL wordt niet ondersteund en kan problemen geven."
+msgstr "SDL wordt niet ondersteund en kan problemen geven!"
 
 #. (text of widget: enter_filename_label)
 #: horizons/i18n/guitranslations.py:964
@@ -3454,7 +3454,7 @@ msgstr "Opslaan/laden van multiplayer spellen is nog niet mogelijk"
 #: horizons/mpsession.py:77
 msgid "The filename must consist only of letters, numbers, spaces and _.-"
 msgstr ""
-"De bestandsnaam moet alleen bestaan uit letters, nummers, spaties en _ of -."
+"De bestandsnaam moet alleen bestaan uit letters, nummers, spaties en _.-"
 
 #: horizons/savegamemanager.py:360
 #, python-format
@@ -3506,7 +3506,7 @@ msgstr ""
 
 #: horizons/session.py:499
 msgid "Access is denied"
-msgstr "Toegang is ontzegd."
+msgstr "Toegang is ontzegd"
 
 #: horizons/session.py:500
 msgid "The savegame file is probably read-only."
@@ -3715,7 +3715,7 @@ msgstr ""
 # Anders veranderen naar '(code-)bibliotheken'
 #: run_uh.py:251
 msgid "Error: Unable to find required libraries"
-msgstr "Fout: Kan de benodigde libraries niet vinden."
+msgstr "Fout: Kan de benodigde libraries niet vinden"
 
 #: run_uh.py:252
 msgid "We are sorry to inform you that a library that is required by Unknown Horizons, is missing and needs to be installed."
