@@ -54,7 +54,7 @@ class Message(object):
 		Example:
 
 			>>> def cb(msg):
-				    print 'Received', msg
+			... 	print 'Received', msg
 
 			>>> MessageClass.subscribe(cb)	# Global
 			>>> MessageClass.subscribe(cb, sender=foo) # Specific sender
@@ -91,7 +91,8 @@ class Message(object):
 
 	@classmethod
 	def discard(cls, callback):
-		"""
+		"""Similar to `Message.unsubscribe`, but does not raise an error if the
+		callback has not been registered before.
 		"""
 		MessageBus().discard_globally(cls, callback)
 
@@ -105,7 +106,7 @@ class Message(object):
 		Example:
 
 			>>> class Foo(Message):
-				    arguments = ('a', 'b', )
+			... 	arguments = ('a', 'b', )
 
 			>>> Foo.broadcast('sender', 1, 2)
 		"""
