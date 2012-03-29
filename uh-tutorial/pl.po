@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: translate-uh@lists.unknown-horizons.org\n"
 "POT-Creation-Date: 2012-03-21 04:04+0100\n"
-"PO-Revision-Date: 2012-03-29 21:41+0200\n"
+"PO-Revision-Date: 2012-03-29 21:49+0200\n"
 "Last-Translator: Robert <matekm@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: pl\n"
@@ -35,7 +35,7 @@ msgid ""
 "Build your first settlement and learn how to play!\n"
 msgstr ""
 "Samouczek:\n"
-"Zbuduj swoją pierwszą osadę i naucz się jak grać!\n"
+"Zbuduj swoją pierwszą osadę i naucz się grać!\n"
 
 #. This message is displayed in the widget on the left screen part. Please keep it short enough to fit there!
 #: po/tutorial.py:8
@@ -582,12 +582,18 @@ msgid ""
 "* the taxes they pay and\n"
 "* the resources they demand."
 msgstr ""
+"Możesz tutaj zobaczyć\n"
+"* zadowolenie rezydentów,\n"
+"* podatki jakie płacą\n"
+"* dobra, których żądają."
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:142
 msgid ""
 "If their demands are fulfilled, happiness and thus your tax income increase."
 msgstr ""
+"Jeżeli ich żądania zostaną spełnione, zwiększy się ich szczęście a przez to "
+"wpływy z podatków."
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:144
@@ -596,11 +602,14 @@ msgid ""
 "really sour and simply turn their back on your village, leaving behind a "
 "decaying ruin."
 msgstr ""
+"W przeciwnym przypadku szczęście oraz wpływy zmniejszą się. Po pewnym czasie "
+"rezydenci mogą poważnie się zawieść i opuścić wioskę, zostawiając za sobą "
+"rozpadające się ruiny."
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:146
 msgid "Note that you can also change the global tax settings here, too."
-msgstr ""
+msgstr "Pamiętaj, że możesz tutaj zmienić globalną wysokość podatku."
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:148
@@ -608,6 +617,8 @@ msgid ""
 "\n"
 "TASK: Build at least three additional tents."
 msgstr ""
+"\n"
+"Zadanie: Dobuduj przynajmniej trzy namioty."
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:150
@@ -616,6 +627,9 @@ msgid ""
 "TIP: Holding down SHIFT eases constructing multiple buildings of the same "
 "kind."
 msgstr ""
+"\n"
+"Wskazówka: przytrzymanie klawisza 'SHIFT' ułatwia budowanie wielu budynków "
+"tego samego typu."
 
 #. This message is displayed in the widget on the left screen part. Please keep it short enough to fit there!
 #: po/tutorial.py:152
@@ -636,6 +650,8 @@ msgid ""
 "Can you see the ship passing your island from time to time? That ship belongs "
 "to the Free Trader, one of the first settlers in this archipelago."
 msgstr ""
+"Widzisz statek przepływający w pobliżu wyspy od czasu do czasu? Należy do "
+"Wolnych Kupców, jednych z pierwszych osadników archipelagu."
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:158
@@ -643,6 +659,8 @@ msgid ""
 "The trader will supply your settlement with necessary goods which you can't "
 "produce yet."
 msgstr ""
+"Kupcy dostarczą osadzie niezbędnych dóbr, których nie jesteś w stanie "
+"jeszcze wyprodukować."
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:160
@@ -716,7 +734,6 @@ msgstr ""
 
 #. This message is displayed in the widget on the left screen part. Please keep it short enough to fit there!
 #: po/tutorial.py:180
-#, fuzzy
 msgid "Build a signal fire at the coast close to your warehouse."
 msgstr "Wybuduj latarnie na wybrzeżu w pobliżu swojego portu."
 
@@ -1294,7 +1311,6 @@ msgstr ""
 
 #. This is a logbook page heading. Space is VERY short, please only translate to strings that fit (roughly 30 characters max).
 #: po/tutorial.py:352
-#, fuzzy
 msgid "NEW TASK: COMPLETE TUTORIAL"
 msgstr "NOWE ZADANIE: UKOŃCZ TUTORIAL"
 
