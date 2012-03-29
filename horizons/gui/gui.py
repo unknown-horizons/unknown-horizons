@@ -88,14 +88,22 @@ class Gui(SingleplayerMenu, MultiplayerMenu):
 	def show_main(self):
 		"""Shows the main menu """
 		self._switch_current_widget('mainmenu', center=True, show=True, event_map = {
-			'startSingle'    : self.show_single,
+			'startSingle'    : self.show_single, # first is the icon in menu
+			'start'          : self.show_single, # second is the lable in menu
 			'startMulti'     : self.show_multi,
+			'start_multi'    : self.show_multi,
 			'settingsLink'   : self.show_settings,
+			'settings'       : self.show_settings,
 			'helpLink'       : self.on_help,
+			'help'           : self.on_help,
 			'closeButton'    : self.show_quit,
+			'quit'           : self.show_quit,
 			'dead_link'      : self.on_chime, # call for help; SoC information
+			'chimebell'      : self.on_chime,
 			'creditsLink'    : self.show_credits,
-			'loadgameButton' : horizons.main.load_game
+			'credits'        : self.show_credits,
+			'loadgameButton' : horizons.main.load_game,
+			'loadgame'       : horizons.main.load_game
 		})
 
 		self.on_escape = self.show_quit
