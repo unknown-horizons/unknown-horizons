@@ -212,14 +212,10 @@ def _building_connected_to_any_of(session, building_class, *classes):
 	building_to_check = []
 	check_connection = []
 	for settlement in _get_player_settlements(session):
-		for building in settlement.buildings:
-			if building.id == building_class:
-				building_to_check.append(building)
-			else:
-				for b_class in classes:
-					if building.id == b_class:
-						check_connection.append(building)
-						break
+		building_to_check.extend(settlement.buildings_by_id[building_class])
+		for b_class in classes:		
+			for building in [x for x in settlement.buildings_by_id[b_class]]:
+				check_connection.append(building)
 	found_connected = 0
 	for building in building_to_check:
 		for check in check_connection:
