@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2012-03-24 02:16+0100\n"
-"PO-Revision-Date: 2012-03-20 19:57+0200\n"
+"PO-Revision-Date: 2012-03-20 20:13+0200\n"
 "Last-Translator: ddr2 <ben547@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: fr\n"
@@ -169,7 +169,7 @@ msgstr "Une sauvegarde automatique de votre partie a été effectuée."
 #: database files sql
 #, python-format
 msgid "Your inhabitants reached level {level}."
-msgstr "Vos colons ont atteints le niveau {level}."
+msgstr "Vos habitants ont atteints le niveau {level}."
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
@@ -1817,7 +1817,7 @@ msgstr "Impôts payées"
 #: horizons/i18n/guitranslations.py:362 horizons/i18n/guitranslations.py:364
 #: horizons/i18n/guitranslations.py:413 horizons/i18n/guitranslations.py:421
 msgid "Tax rate"
-msgstr "Taux d'imposition"
+msgstr "Taux d'impôts"
 
 # Resources
 #. (text of widget: avg_happiness_lbl)

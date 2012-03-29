@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2012-03-24 02:16+0100\n"
-"PO-Revision-Date: 2012-03-29 11:42+0200\n"
+"PO-Revision-Date: 2012-03-29 11:50+0200\n"
 "Last-Translator: Christopher Oelmueller <chris.oelmueller+uh@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: cs\n"
@@ -516,7 +516,7 @@ msgstr "Určete cestu k adresáři s FIFE."
 
 #: horizons/command/game.py:36
 msgid "Invalid filename"
-msgstr "Chybné jméno souboru."
+msgstr "Chybné jméno souboru"
 
 #: horizons/command/game.py:37
 msgid "Received an invalid filename for a save command."
@@ -687,7 +687,7 @@ msgstr "Potvrďte přepsání"
 
 #: horizons/gui/gui.py:371
 msgid "Invalid filename given"
-msgstr "Zadán neplatný název souboru."
+msgstr "Zadán neplatný název souboru"
 
 #: horizons/gui/gui.py:379
 msgid "Please select a savegame or click on cancel."
@@ -787,13 +787,13 @@ msgstr "[{key}] = {text}"
 #: horizons/i18n/guitranslations.py:417 horizons/i18n/guitranslations.py:439
 #: horizons/i18n/guitranslations.py:459
 msgid "Click to change the name of your settlement"
-msgstr "Klikněte pro změnu jména Vaší osady."
+msgstr "Klikněte pro změnu jména Vaší osady"
 
 #. e.g. when the pirate is disabled
 #. this dialog is pretty useless in this case
 #: horizons/gui/ingamegui.py:278
 msgid "No diplomacy possible"
-msgstr "Diplomacie není použitelná."
+msgstr "Diplomacie není použitelná"
 
 #: horizons/gui/ingamegui.py:279
 msgid "Cannot do diplomacy as there are no other players."
@@ -889,7 +889,7 @@ msgstr "To se nepovedlo a doufáme, že brzy bude tento problém lépe vyřešen
 msgid "Meanwhile, please request the file {path} from the game creator and put it in {map_directory} ."
 msgstr ""
 "Prosím, získejte z generátoru her soubor {path} a vložte jej do adresáře "
-"{map_directory}."
+"{map_directory} ."
 
 #. (text of widget: help)
 #. (text of widget: help) Main / in-game menu entry
@@ -1005,7 +1005,7 @@ msgstr "Stavba"
 
 #: horizons/gui/mousetools/navigationtool.py:75
 msgid "Press H to remove this hint"
-msgstr "Stiskněte klávesu H k odstranění tohoto tipu."
+msgstr "Stiskněte klávesu H k odstranění tohoto tipu"
 
 #: horizons/gui/tabs/boatbuildertab.py:50
 msgid "Boat builder overview"
@@ -1281,7 +1281,7 @@ msgstr "Lodě hráče {player}"
 #: horizons/gui/widgets/playersships.py:83
 #: horizons/i18n/guitranslations.py:499 horizons/i18n/guitranslations.py:510
 msgid "Click to change the name of this ship"
-msgstr "Klikněte za účelem změny jména lodi."
+msgstr "Klikněte za účelem změny jména lodi"
 
 #. i18n There are no weapons equipped at the moment.
 #: horizons/gui/widgets/playersships.py:99
@@ -1337,7 +1337,7 @@ msgstr "Potřebujete nejméně dvě osady"
 
 #: horizons/gui/widgets/routeconfig.py:99
 msgid "You need at least two different settlements in your route."
-msgstr "Pro cestu potřebujete nejméně dvě různé osady"
+msgstr "Pro cestu potřebujete nejméně dvě různé osady."
 
 #: horizons/gui/widgets/routeconfig.py:144
 msgid "Click on a settlement to add a waypoint!"
@@ -1469,7 +1469,7 @@ msgstr "Změnit jméno"
 #. (text of widget: old_name_label)
 #: horizons/i18n/guitranslations.py:110
 msgid "Old name:"
-msgstr "Původní jméno"
+msgstr "Původní jméno:"
 
 #. (helptext of widget: okButton)
 #: horizons/i18n/guitranslations.py:112
@@ -1484,7 +1484,7 @@ msgstr "Vaše zpráva:"
 #. (text of widget: enter_new_name_lbl)
 #: horizons/i18n/guitranslations.py:124
 msgid "Enter prefix:"
-msgstr "Zadejte předponu"
+msgstr "Zadejte předponu:"
 
 #. (text of widget: headline_change_name)
 #: horizons/i18n/guitranslations.py:126
@@ -1831,7 +1831,7 @@ msgstr "Obyvatelé"
 msgid "The signal fire shows the free trader how to reach your settlement in case you want to buy or sell goods."
 msgstr ""
 "Signální oheň ukazuje svobodným obchodníkům cestu do Vaší osady, aby mohli "
-"nakupovat a prodávat"
+"nakupovat a prodávat."
 
 # 75%
 # 80%
@@ -2137,7 +2137,7 @@ msgstr "Status"
 #. (text of widget: weapons)
 #: horizons/i18n/guitranslations.py:694
 msgid "Weapons"
-msgstr "Zbraně:"
+msgstr "Zbraně"
 
 #. (helptext of widget: aggressive_stance) Description of combat stance (how units behave when fighting)
 #: horizons/i18n/guitranslations.py:699
@@ -2329,7 +2329,7 @@ msgstr "Nastavení"
 #. (text of widget: loading_label)
 #: horizons/i18n/guitranslations.py:792
 msgid "Loading ..."
-msgstr "Načítám..."
+msgstr "Načítám ..."
 
 #. (text of widget: chimebell)
 #: horizons/i18n/guitranslations.py:799
@@ -2462,7 +2462,7 @@ msgstr "Připojit ke hře"
 #. (text of widget: load_game_lbl)
 #: horizons/i18n/guitranslations.py:868
 msgid "Load game:"
-msgstr "Nahrát hru"
+msgstr "Nahrát hru:"
 
 #. (text of widget: refr_gamelist_lbl)
 #: horizons/i18n/guitranslations.py:870
@@ -2502,7 +2502,7 @@ msgstr "Automaticky vyložit loď:"
 #. (text of widget: autosave_interval_label)
 #: horizons/i18n/guitranslations.py:887
 msgid "Autosave interval in minutes:"
-msgstr "Automatické ukládání každých {number} minut"
+msgstr "Automatické ukládání každých {number} minut:"
 
 #. (text of widget: color_depth_label)
 #: horizons/i18n/guitranslations.py:889
@@ -2943,7 +2943,7 @@ msgstr ""
 #. tooltip_text of buildings:fireservice
 #: horizons/i18n/objecttranslations.py:165
 msgid "Extinguishes fires."
-msgstr "Hasí oheň"
+msgstr "Hasí oheň."
 
 #. name of buildings:fishdeposit
 #: horizons/i18n/objecttranslations.py:170
@@ -3003,7 +3003,7 @@ msgstr "Kláda"
 #. tooltip_text of buildings:log
 #: horizons/i18n/objecttranslations.py:210
 msgid "Road across a river."
-msgstr "Cesta přes řeku"
+msgstr "Cesta přes řeku."
 
 #. name of buildings:lookout
 #: horizons/i18n/objecttranslations.py:215
@@ -3363,7 +3363,7 @@ msgstr "Start/načtení hry se nezdařil(o)"
 
 #: horizons/main.py:328
 msgid "The game you selected couldn't be started."
-msgstr "Vybranou hru se nepodařilo začít"
+msgstr "Vybranou hru se nepodařilo začít."
 
 #: horizons/main.py:329
 msgid "The savegame might be broken or has been saved with an earlier version."
@@ -3398,7 +3398,7 @@ msgstr "Velmi se omlouváme a doufáme, že bude chyba opravena co nejdříve."
 
 #: horizons/mpsession.py:66
 msgid "Not possible"
-msgstr "Nemožné."
+msgstr "Nemožné"
 
 #: horizons/mpsession.py:66
 msgid "Save/load for multiplayer games is not possible yet"
@@ -3481,7 +3481,7 @@ msgstr "V průběhu ukládání se vyskytla chyba. Hra nebyla uložena."
 
 #: horizons/spsession.py:68
 msgid "If this error happens again, please contact the development team:"
-msgstr "Pokud se tato chyba objeví znovu, kontaktujte vývojářský tým."
+msgstr "Pokud se tato chyba objeví znovu, kontaktujte vývojářský tým:"
 
 #: horizons/spsession.py:76
 msgid "No quicksaves found"
