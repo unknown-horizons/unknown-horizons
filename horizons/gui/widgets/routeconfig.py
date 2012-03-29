@@ -258,7 +258,7 @@ class RouteConfig(object):
 			self._route_cmd("add_to_resource_list", position, res_id, value)
 			slider.capture(Callback(self.slider_adjust, slot, res_id, entry))
 		else:
-			slot.findChild(name="amount").text = unicode("")
+			slot.findChild(name="amount").text = u""
 
 	def handle_resource_click(self, widget, event):
 		if event.getButton() == fife.MouseEvent.LEFT:
@@ -378,9 +378,9 @@ class RouteConfig(object):
 		self.widgets.append(entry)
 
 		settlement_name_label = entry.findChild(name = "warehouse_name")
-		settlement_name_label.text = unicode(warehouse.settlement.get_component(NamedComponent).name)
+		settlement_name_label.text = warehouse.settlement.get_component(NamedComponent).name
 		player_name_label = entry.findChild(name = "player_name")
-		player_name_label.text = unicode(warehouse.owner.name)
+		player_name_label.text = warehouse.owner.name
 
 		self.add_trade_slots(entry, self.slots_per_entry)
 

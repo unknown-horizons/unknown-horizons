@@ -56,8 +56,8 @@ class TabBG(pychan.widgets.VBox):
 		mid_path = "content/gui/images/tabwidget/main_bg_fill.png"
 		footer_path = "content/gui/images/tabwidget/main_bg_bottom.png"
 		for i in xrange(0,self.amount):
-			mid = Icon(image=mid_path, name='background_icon_' + unicode(i+1))
+			mid = Icon(image=mid_path, name='background_icon_' + str(i+1))
 			self.addChild(mid)
-		self.addChild(Icon(image=footer_path, name='background_icon_' + unicode(self.amount+1)))
+		self.addChild(Icon(image=footer_path, name='background_icon_' + str(self.amount+1)))
 
 	amount = property(_get_amount, _set_amount)

@@ -30,7 +30,6 @@ class DbReader(object):
 	def __init__(self, dbfile):
 		self.connection = sqlite3.connect(dbfile)
 		self.connection.isolation_level = None
-		self.connection.text_factory = str
 		def regexp(expr, item):
 			r = re.compile(expr)
 			return r.match(item) is not None

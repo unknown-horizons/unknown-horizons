@@ -88,7 +88,7 @@ class OverviewTab(TabInterface):
 			name_widget = self.widget.child_finder('name')
 			# Named objects can't be translated.
 			if self.instance.has_component(NamedComponent):
-				name_widget.text = unicode(self.instance.get_component(NamedComponent).name)
+				name_widget.text = self.instance.get_component(NamedComponent).name
 			else:
 				name_widget.text = _(self.instance.name)
 
@@ -144,16 +144,16 @@ class WarehouseOverviewTab(OverviewTab):
 			widget = 'overview_warehouse.xml',
 			instance = instance
 		)
-		self.widget.findChild(name="headline").text = unicode(self.instance.settlement.get_component(NamedComponent).name)
+		self.widget.findChild(name="headline").text = self.instance.settlement.get_component(NamedComponent).name
 		self.helptext = _("Warehouse overview")
 		self._refresh_collector_utilisation()
 
 	def _refresh_collector_utilisation(self):
 		utilisation = int(round(self.instance.get_collector_utilisation() * 100))
-		self.widget.findChild(name="collector_utilisation").text = unicode(str(utilisation) + '%')
+		self.widget.findChild(name="collector_utilisation").text = unicode(utilisation) + u'%'
 
 	def refresh(self):
-		self.widget.findChild(name="headline").text = unicode(self.instance.settlement.get_component(NamedComponent).name)
+		self.widget.findChild(name="headline").text = self.instance.settlement.get_component(NamedComponent).name
 		events = {
 				'headline': Callback(self.instance.session.ingame_gui.show_change_name_dialog, self.instance.settlement)
 		         }
@@ -309,7 +309,7 @@ class TowerOverviewTab(OverviewTab): # defensive tower
 			widget = 'overview_tower.xml',
 			instance = instance
 		)
-		self.widget.findChild(name="headline").text = unicode(self.instance.settlement.get_component(NamedComponent).name)
+		self.widget.findChild(name="headline").text = self.instance.settlement.get_component(NamedComponent).name
 		self.helptext = _("Tower overview")
 
 class TraderShipOverviewTab(OverviewTab):
@@ -446,7 +446,7 @@ class ProductionOverviewTab(OverviewTab):
 		utilisation = 0
 		if self.instance.has_component(Producer):
 			utilisation = int(round(self.instance.get_component(Producer).capacity_utilisation * 100))
-		self.widget.child_finder('capacity_utilisation').text = unicode(str(utilisation) + '%')
+		self.widget.child_finder('capacity_utilisation').text = unicode(utilisation) + u'%'
 
 	def show(self):
 		super(ProductionOverviewTab, self).show()
@@ -489,7 +489,7 @@ class SettlerOverviewTab(OverviewTab):
 			instance = instance
 		)
 		self.helptext = _("Settler overview")
-		self.widget.findChild(name="headline").text = unicode(self.instance.settlement.get_component(NamedComponent).name)
+		self.widget.findChild(name="headline").text = self.instance.settlement.get_component(NamedComponent).name
 		_setup_tax_slider(self.widget.child_finder('tax_slider'), self.widget.child_finder('tax_val_label'),
 		                  self.instance.settlement, self.instance.level)
 
@@ -522,7 +522,7 @@ class SettlerOverviewTab(OverviewTab):
 		                                               self.instance.inhabitants_max)
 		self.widget.child_finder('taxes').text = unicode(self.instance.last_tax_payed)
 		self.update_consumed_res()
-		self.widget.findChild(name="headline").text = unicode(self.instance.settlement.get_component(NamedComponent).name)
+		self.widget.findChild(name="headline").text = self.instance.settlement.get_component(NamedComponent).name
 		events = {
 				'headline': Callback(self.instance.session.ingame_gui.show_change_name_dialog, self.instance.settlement)
 		         }
@@ -561,7 +561,7 @@ class EnemyBuildingOverviewTab(OverviewTab):
 			widget = 'overview_enemybuilding.xml',
 			instance = instance
 		)
-		self.widget.findChild(name="headline").text = unicode(self.instance.owner.name)
+		self.widget.findChild(name="headline").text = self.instance.owner.name
 
 class EnemyWarehouseOverviewTab(OverviewTab):
 	def __init__(self, instance):
@@ -569,12 +569,12 @@ class EnemyWarehouseOverviewTab(OverviewTab):
 			widget = 'overview_enemywarehouse.xml',
 			instance = instance
 		)
-		self.widget.findChild(name="headline").text = unicode(self.instance.settlement.get_component(NamedComponent).name)
+		self.widget.findChild(name="headline").text = self.instance.settlement.get_component(NamedComponent).name
 		self.helptext = _("Warehouse overview")
 
 	def refresh(self):
 		settlement = self.instance.settlement
-		self.widget.findChild(name="headline").text = unicode(settlement.get_component(NamedComponent).name)
+		self.widget.findChild(name="headline").text = settlement.get_component(NamedComponent).name
 
 		selling_inventory = self.widget.findChild(name='selling_inventory')
 		selling_inventory.init(self.instance.session.db, settlement.get_component(StorageComponent).inventory, settlement.get_component(TradePostComponent).sell_list, True)
@@ -591,7 +591,7 @@ class EnemyShipOverviewTab(OverviewTab):
 			icon_path='content/gui/icons/tabwidget/ship/ship_inv_%s.png',
 			instance = instance
 		)
-		self.widget.findChild(name="headline").text = unicode(self.instance.owner.name)
+		self.widget.findChild(name="headline").text = self.instance.owner.name
 
 class ResourceDepositOverviewTab(OverviewTab):
 	def  __init__(self, instance):

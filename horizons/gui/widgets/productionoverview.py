@@ -72,7 +72,7 @@ class ProductionOverview(StatsWidget):
 		icon.name = 'icon_%s' % resource_id
 
 		label = widgets.Label(name = 'resource_%s' % resource_id)
-		label.text = unicode(res_name)
+		label.text = res_name
 		label.min_size = label.max_size = (70, 20)
 
 		amount_label = widgets.Label(name = 'produced_sum_%s' % resource_id)

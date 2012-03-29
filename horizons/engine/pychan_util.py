@@ -40,6 +40,19 @@ def init_pychan():
 	"""General pychan initiation for uh"""
 	global STYLES
 
+	# quick hack to allow up_image/down_image values to be unicode
+	# TODO solve this problem in a better way (e.g. passing str explicitly)
+	from fife.extensions.pychan.properties import ImageProperty
+
+	def patch_imageproperty(func):
+		def wrapper(self, obj, image):
+			if isinstance(image, unicode):
+				image = str(image)
+			return func(self, obj, image)
+		return wrapper
+
+	ImageProperty.__set__ = patch_imageproperty(ImageProperty.__set__)
+
 	# register custom widgets
 
 	from horizons.gui.widgets.inventory import Inventory

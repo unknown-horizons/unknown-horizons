@@ -49,7 +49,7 @@ class NamedComponent(Component):
 			self.instance._changed()
 
 	def _possible_names(self):
-		return ['object_%s' % self.instance.worldid]
+		return [u'object_%s' % self.instance.worldid]
 
 	def get_default_name(self):
 		available_names = [name for name in self._possible_names() if name not in NamedComponent.names_used]
@@ -57,7 +57,7 @@ class NamedComponent(Component):
 		if available_names != []:
 			return self.session.random.choice(available_names)
 		else:
-			newname = unicode(self.session.random.choice(self._possible_names()))
+			newname = self.session.random.choice(self._possible_names())
 			index = 2
 			while u"{newname} {index}".format(newname=newname, index=index) in NamedComponent.names_used:
 				index += 1
@@ -72,7 +72,7 @@ class NamedComponent(Component):
 		self.name = None
 		name = db("SELECT name FROM name WHERE rowid = ?", worldid)[0][0]
 		# We need unicode strings as the name is displayed on screen.
-		self.set_name(unicode(name, 'utf-8'))
+		self.set_name(name)
 
 	@classmethod
 	def reset(cls):
@@ -82,18 +82,16 @@ class ShipNameComponent(NamedComponent):
 
 	def _possible_names(self):
 		names = self.session.db("SELECT name FROM shipnames WHERE for_player = 1")
-		# We need unicode strings as the name is displayed on screen.
-		return map(lambda x: unicode(x[0], 'utf-8'), names)
-
+		return [x[0] for x in names]
 
 class PirateShipNameComponent(NamedComponent):
 
 	def _possible_names(self):
 		names = self.session.db("SELECT name FROM shipnames WHERE for_pirate = 1")
-		return map(lambda x: unicode(x[0]), names)
+		return [x[0] for x in names]
 
 class SettlementNameComponent(NamedComponent):
 
 	def _possible_names(self):
 		names = self.session.db("SELECT name FROM citynames WHERE for_player = 1")
-		return map(lambda x: x[0], names)
+		return [x[0] for x in names]

@@ -231,7 +231,7 @@ class IngameGui(LivingObject):
 		assert isinstance(message, SettlerInhabitantsChanged)
 		cityinfo = self.widgets['city_info']
 		foundlabel = cityinfo.child_finder('city_inhabitants')
-		foundlabel.text = unicode(' %s' % ((int(foundlabel.text) if foundlabel.text else 0) + message.change))
+		foundlabel.text = u' %s' % ((int(foundlabel.text) if foundlabel.text else 0) + message.change)
 		foundlabel.resizeToContent()
 
 	def update_settlement(self):
@@ -249,14 +249,14 @@ class IngameGui(LivingObject):
 
 		foundlabel = cityinfo.child_finder('owner_emblem')
 		foundlabel.image = 'content/gui/images/tabwidget/emblems/emblem_%s.png' % (self.settlement.owner.color.name)
-		foundlabel.helptext = unicode(self.settlement.owner.name)
+		foundlabel.helptext = self.settlement.owner.name
 
 		foundlabel = cityinfo.child_finder('city_name')
-		foundlabel.text = unicode(self.settlement.get_component(SettlementNameComponent).name)
+		foundlabel.text = self.settlement.get_component(SettlementNameComponent).name
 		foundlabel.resizeToContent()
 
 		foundlabel = cityinfo.child_finder('city_inhabitants')
-		foundlabel.text = unicode(' %s' % (self.settlement.inhabitants))
+		foundlabel.text = u' %s' % (self.settlement.inhabitants)
 		foundlabel.resizeToContent()
 
 		cityinfo.adaptLayout()
@@ -404,7 +404,7 @@ class IngameGui(LivingObject):
 		self.main_gui.on_escape = self._hide_change_name_dialog
 		changename = self.widgets['change_name']
 		oldname = changename.findChild(name='old_name')
-		oldname.text =  unicode(instance.get_component(SettlementNameComponent).name)
+		oldname.text =  instance.get_component(SettlementNameComponent).name
 		newname = changename.findChild(name='new_name')
 		changename.mapEvents(events)
 		newname.capture(Callback(self.change_name, instance))

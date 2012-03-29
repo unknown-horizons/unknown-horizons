@@ -197,7 +197,7 @@ class UnitEntry(object):
 		# get the icon of the first instance
 		self.widget.findChild(name="unit_button").up_image = self.get_thumbnail_icon(instances[0].id)
 		if show_number:
-			self.widget.findChild(name="instance_number").text = unicode(str(len(self.instances)))
+			self.widget.findChild(name="instance_number").text = unicode(len(self.instances))
 		# only two callbacks are needed so drop unwanted changelistener inheritance
 		for i in instances:
 			if not i.has_remove_listener(Callback(self.on_instance_removed, i)):

@@ -319,7 +319,7 @@ class World(BuildingOwner, WorldObject):
 			if len(ai_data) > 0:
 				class_package, class_name = ai_data[0]
 				# import ai class and call load on it
-				module = __import__('horizons.ai.'+class_package, fromlist=[class_name])
+				module = __import__('horizons.ai.'+class_package, fromlist=[str(class_name)])
 				ai_class = getattr(module, class_name)
 				player = ai_class.load(self.session, savegame_db, player_worldid)
 			else: # no ai

@@ -69,12 +69,12 @@ class InternationalTradeWidget(object):
 			self.radius = self.instance.radius
 
 	def draw_widget(self):
-		self.widget.findChild(name='ship_name').text = unicode(self.instance.get_component(NamedComponent).name)
+		self.widget.findChild(name='ship_name').text = self.instance.get_component(NamedComponent).name
 		self.partners = self.find_partner()
 		if len(self.partners) > 0:
 			partner_label = self.widget.findChild(name='partners')
 			nearest_partner = self.get_nearest_partner(self.partners)
-			partner_label.text = unicode(self.partners[nearest_partner].settlement.get_component(NamedComponent).name)
+			partner_label.text = self.partners[nearest_partner].settlement.get_component(NamedComponent).name
 
 			new_partner = self.partners[nearest_partner]
 			different_partner = new_partner is not self.partner
