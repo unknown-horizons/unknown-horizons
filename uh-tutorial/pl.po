@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: translate-uh@lists.unknown-horizons.org\n"
 "POT-Creation-Date: 2012-03-21 04:04+0100\n"
-"PO-Revision-Date: 2012-03-27 20:32+0200\n"
+"PO-Revision-Date: 2012-03-29 21:41+0200\n"
 "Last-Translator: Robert <matekm@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: pl\n"
@@ -39,13 +39,12 @@ msgstr ""
 
 #. This message is displayed in the widget on the left screen part. Please keep it short enough to fit there!
 #: po/tutorial.py:8
-#, fuzzy
 msgid ""
 "Build a warehouse at the coast, so it is easy accessible for other ships like "
 "the Free Trader."
 msgstr ""
-"Wybuduj port na wybrzeżu, tak aby inne statki miały do niego dostęp, np. "
-"Kupcy."
+"Wybuduj port na wybrzeżu, tak by był dostępny dla innych statków, na "
+"przykład statków Wolnych Kupców."
 
 #. This is a logbook page heading. Space is VERY short, please only translate to strings that fit (roughly 30 characters max).
 #: po/tutorial.py:10
@@ -410,9 +409,8 @@ msgstr "Nie zapomnij o tym, aby doprowadzić do nich drogę!"
 
 #. This message is displayed in the widget on the left screen part. Please keep it short enough to fit there!
 #: po/tutorial.py:98
-#, fuzzy
 msgid "Build a hunter and a fisher. Connect them to the warehouse."
-msgstr "Wybuduj chatę myśliwego i rybaka. Połącz je drogą z portem."
+msgstr "Wybuduj chatę myśliwego i rybaka. Doprowadź do nich drogę z portu."
 
 #. This is a logbook page heading. Space is VERY short, please only translate to strings that fit (roughly 30 characters max).
 #: po/tutorial.py:100
@@ -458,6 +456,8 @@ msgid ""
 "Companies work without being connected to the tents, so you don't need to "
 "build a road between the main square and e.g. your lumberjack tent."
 msgstr ""
+"Firmy działają także, jeżeli nie są połączone z namiotami, nie musisz więc "
+"prowadzić drogi pomiędzy rynkiem a, przykładowo, namiotem drwala."
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:112
@@ -545,6 +545,9 @@ msgid ""
 "you produce - but they at least pay taxes, and that's the only way you can "
 "make money for now!"
 msgstr ""
+"Ponieważ osadnicy konsumują wszystkie dobra, które produkujesz, mogą nie "
+"wydawać się zbyt przydatni - pamiętaj, że płacone przez nich podatnki to "
+"obecnie jedyny sposób zdobywania pieniędzy. "
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:134
@@ -553,11 +556,14 @@ msgid ""
 "TASK: Build a tent and connect it to the main square. Tents dont need to be "
 "connected to any of the companies."
 msgstr ""
+"\n"
+"Zadanie: zbuduj namiot i połącz go drogą z rynkiem głównym. Namioty nie "
+"muszą być połączone drogą z żadną firmą."
 
 #. This message is displayed in the widget on the left screen part. Please keep it short enough to fit there!
 #: po/tutorial.py:136
 msgid "Build a tent and connect it to the main square."
-msgstr "Postaw namioty i połącz je drogą z rynkiem głównym."
+msgstr "Zbuduj namiot i połącz je drogą z rynkiem głównym."
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:138
@@ -565,6 +571,8 @@ msgid ""
 "\n"
 "Let's have a look at the tent overview tab."
 msgstr ""
+"\n"
+"Rzućmy okiem na zakładkę podglądu namiotu."
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:140
