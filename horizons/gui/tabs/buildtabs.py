@@ -123,7 +123,7 @@ class BuildTab(TabInterface):
 			 3 : _('Companies'),
 			 5 : _('Fields'),
 			 7 : _('Services'),
-#			27 : _('Military'),
+			27 : _('Military'),
 		      },
 		4 : {
 			 1 : _('Companies'),
