@@ -21,7 +21,7 @@
 
 import itertools
 
-from horizons.util import Point, Rect, decorators, Circle
+from horizons.util import Point, Rect, decorators, Circle, WorldObject
 from horizons.world.pathfinding.roadpathfinder import RoadPathFinder
 from horizons.constants import BUILDINGS
 from horizons.entities import Entities
@@ -496,6 +496,13 @@ class BuildableSingleOnDeposit(BuildableSingle):
 			deposit = tile.object
 		return set([deposit.worldid])
 
+	@classmethod
+	def _check_rotation(cls, session, position, rotation):
+		"""The rotation should be the same as the one of the underlying mountain"""
+		tearset = cls._check_buildings(session, position) # will raise on problems
+		# rotation fix code is only reached when building is buildable
+		mountain = WorldObject.get_object_by_id( iter(tearset).next() )
+		return mountain.rotation
 
 
 decorators.bind_all(Buildable)

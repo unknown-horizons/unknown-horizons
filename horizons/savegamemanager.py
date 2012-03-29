@@ -219,7 +219,7 @@ class SavegameManager(object):
 					assert(len(result) == 1)
 					metadata[key] = cls.savegame_metadata_types[key](result[0][0])
 		except sqlite3.OperationalError as e:
-			print 'Warning: Can\'t read savegame %s: %s' % (savegamefile, e)
+			print 'Warning: Cannot read savegame {file}: {exception}'.format(file=savegamefile, exception=e)
 			return metadata
 
 		screenshot_data = None
@@ -356,8 +356,7 @@ class SavegameManager(object):
 			for condition in conditions:
 				# all conditions have to be reached
 				if condition['type'] != 'goal_reached':
-					#xgettext:python-format
-					print _("Error: don't know how to handle condition type {condition}").format(condition=condition)
+					print "Error: Cannot handle the condition type {condition}.".format(condition=condition)
 				if not condition['goal'] in campaign_status.get(condition['scenario'], []):
 					break
 			else:
@@ -406,14 +405,12 @@ class SavegameManager(object):
 		sfiles, snames = cls.get_scenarios(include_displaynames = True)
 		if name:
 			if not name in cnames:
-				#xgettext:python-format
-				print _("Error: Cannot find campaign '{name}'.").format(name=name)
+				print "Error: Cannot find campaign '{name}'.".format(name=name)
 				return None
 			index = cnames.index(name)
 		elif filename:
 			if not filename in cfiles:
-				#xgettext:python-format
-				print _("Error: Cannot find campaign '{name}'.").format(name=filename)
+				print "Error: Cannot find campaign '{name}'.".format(name=filename)
 				return None
 			index = cfiles.index(filename)
 		infos = cdatas[index]
@@ -431,14 +428,12 @@ class SavegameManager(object):
 		sfiles, snames = cls.get_scenarios(include_displaynames = True)
 		if name:
 			if not name in snames:
-				#xgettext:python-format
-				print _("Error: Cannot find scenario '{name}'.").format(name=name)
+				print "Error: Cannot find scenario '{name}'.".format(name=name)
 				return {}
 			index = snames.index(name)
 		elif filename:
 			if not filename in sfiles:
-				#xgettext:python-format
-				print _("Error: Cannot find scenario '{name}'.").format(name=filename)
+				print "Error: Cannot find scenario '{name}'.".format(name=filename)
 				return {}
 			index = sfiles.index(filename)
 		data = YamlCache.get_file(sfiles[index])

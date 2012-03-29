@@ -22,14 +22,15 @@ events:
     - [Headline, !!python/unicode 'Witaj w grze Unknown Horizons!']
     - [Image, content/gui/images/background/hr.png]
     - ''
-    - "Oto dziennik kapita\u0144ski,w kt\xF3rym zapisywane s\u0105 wszystkie wa\u017C\
-      ne informacje. Kr\xF3tki opis ka\u017Cdego zadania pojawi si\u0119 po lewej\
-      \ stronie ekranu."
-    - "Je\u017Celi interesuj\u0105 ci\u0119 d\u0142u\u017Csze opisy z pewno\u015B\
-      ci\u0105 znajdziesz je w swoim dzienniku."
-    - "Po zamkni\u0119ciu, dziennik mo\u017Ce by\u0107 ponownie otwarty poprzez klikni\u0119\
-      cie w ikon\u0119 \"Dziennik kapita\u0144ski\" w prawym g\xF3rnym rogu (poni\u017C\
-      ej mini mapy, z zamknietym dokumentem oraz pi\xF3rem)."
+    - "Oto dziennik pok\u0142adowy,w kt\xF3rym zapisywane s\u0105 wszystkie wa\u017C\
+      ne informacje. Kr\xF3tki opis nowego zadania b\u0119dzie pojawia\u0107 si\u0119\
+      \ po lewej stronie ekranu."
+    - "Je\u017Celi interesuje ci\u0119 d\u0142u\u017Cszy opis zadania, znajdziesz\
+      \ go w swoim dzienniku."
+    - "Po zamkni\u0119ciu dziennik mo\u017Ce zosta\u0107 ponownie otwarty poprzez\
+      \ klikni\u0119cie w ikon\u0119 \"Dziennik kapita\u0144ski\" w prawym g\xF3rnym\
+      \ rogu (ikona z zapiecz\u0119towanym dokumentem i pi\xF3rem poni\u017Cej mini\
+      \ mapy)."
     - - Gallery
       - [content/gui/icons/widgets/minimap/captainslog.png]
     - "\nJe\u017Celi chcesz zobaczy\u0107 pierwsze zadanie, kliknij przycisk \"Przeczytaj\
@@ -47,19 +48,19 @@ events:
     - [Pagebreak]
     - [Headline, "Nowe zadanie: Osiedl si\u0119 na wyspie"]
     - [Image, content/gui/images/background/hr.png]
-    - "Aby przesun\u0105\u0107 statek, wybierz go klikaj\u0105c na nim lewym przyciskiem\
+    - "Aby poruszy\u0107 statkiem, wybierz go klikaj\u0105c na nim lewym przyciskiem\
       \ myszki a nast\u0119pnie kliknij prawym przyciskiem w miejscu do kt\xF3rego\
       \ ma si\u0119 uda\u0107."
     - "Jak tylko zbli\u017Cysz si\u0119 do wybrze\u017Ca, przycisk 'Buduj port' zostanie\
-      \ automatycznie aktywowany."
+      \ odblokowany."
     - - Gallery
       - [content/gui/icons/ship/anchor.png]
     - "Klikaj\u0105c w ten przycisk (nazwanego \"Buduj osad\u0119\") mo\u017Cesz zbudowa\u0107\
       \ port."
-    - !!python/unicode 'Now a preview of your building is dragged around when you
-      move the cursor.'
-    - "Mo\u017Cesz wybra\u0107 dowolne miejsce na kt\xF3rym podgl\u0105d budynku nie\
-      \ jest pod\u015Bwietlony na czerwono.\nKliknij w miejscu, gdzie chcesz wybudowa\u0107\
+    - "Po klikni\u0119ciu na ekranie pojawi si\u0119 podgl\u0105d budynku, kt\xF3\
+      rym b\u0119dziesz m\xF3g\u0142 przesuwa\u0107 po mapie."
+    - "Mo\u017Cesz wybra\u0107 dowolne miejsce, na kt\xF3rym podgl\u0105d budynku\
+      \ nie jest pod\u015Bwietlony na czerwono.\nKliknij w miejscu, gdzie chcesz wybudowa\u0107\
       \ pierwszy budynek."
     - "\nZadanie: Wybuduj port na wybrze\u017Cu."
     type: logbook
@@ -98,9 +99,9 @@ events:
       \ z tego, co oferuje natura!"
     - "Aby wykorzysta\u0107 wszystkie dobra, kt\xF3re zosta\u0142y zebrane b\u0105\
       d\u017A wyprodukowane w danym miejscu musisz po\u0142\u0105czy\u0107 je drog\u0105\
-      \ z reszta infrastruktury w twoiej osadzie. Inaczej nie b\u0119d\u0105 brane\
-      \ pod uwag\u0119."
-    - "Oznacza to, \u017Ce musisz wybudowa\u0107 drog\u0119 pomi\u0119dzy portem (lub\
+      \ z reszta infrastruktury w twoiej osadzie. Inaczej nie zostan\u0105 zabrane\
+      \ z miejsca produkcji."
+    - "Oznacza to, \u017Ce musisz postawi\u0107 drog\u0119 pomi\u0119dzy portem (lub\
       \ magazynem) a chat\u0105 drwala."
     - "\nZADANIE: Wybuduj chat\u0119 drwala w zalesionym obszarze a nast\u0119pnie\
       \ doprowad\u017A do niej drog\u0119."
@@ -743,6 +744,6 @@ events:
     type: var_gt
 locale: pl
 mapfile: development.sqlite
-translation_status: 76 translated messages, 4 fuzzy translations, 111 untranslated
+translation_status: 80 translated messages, 4 fuzzy translations, 107 untranslated
   messages.
 

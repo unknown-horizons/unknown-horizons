@@ -124,8 +124,12 @@ def do_lose(session):
 @register()
 def set_var(session, name, value):
 	session.scenario_eventhandler._scenario_variables[name] = value
-	check_callback = Callback(session.scenario_eventhandler.check_events, CONDITIONS.var_eq)
-	Scheduler().add_new_object(check_callback, session.scenario_eventhandler)
+	check_callbacks = Callback.ChainedCallbacks(
+	  Callback(session.scenario_eventhandler.check_events, CONDITIONS.var_eq),
+	  Callback(session.scenario_eventhandler.check_events, CONDITIONS.var_lt),
+	  Callback(session.scenario_eventhandler.check_events, CONDITIONS.var_gt)
+	)
+	Scheduler().add_new_object(check_callbacks, session.scenario_eventhandler, run_in=0)
 
 @register()
 def wait(session, time):

@@ -36,10 +36,12 @@ msgstr "Novi svijet je kreiran."
 msgid "A new world has been created."
 msgstr "Novi svijet je kreiran."
 
+# 81%
 #. This is a database entry: the name of an inhabitant increment (tier / level).
 #: database files sql
+#, fuzzy
 msgid "Aristocrats"
-msgstr ""
+msgstr "aristokrat"
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
