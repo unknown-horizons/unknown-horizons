@@ -323,7 +323,7 @@ def start_singleplayer(map_file, playername = "Player", playercolor = None, is_s
 				print "Additionally to failing when loading, cleanup afterwards also failed"
 		_modules.gui.show_main()
 		headline = _(u"Failed to start/load the game")
-		descr = _(u"The game you selected couldn't be started.") + u" " +\
+		descr = _(u"The game you selected could not be started.") + u" " +\
 			      _("The savegame might be broken or has been saved with an earlier version.")
 		_modules.gui.show_error_popup(headline, descr)
 		load_game(ai_players, human_ai, force_player_id=force_player_id)
@@ -331,7 +331,7 @@ def start_singleplayer(map_file, playername = "Player", playercolor = None, is_s
 
 def prepare_multiplayer(game, trader_enabled = True, pirate_enabled = True, natural_resource_multiplier = 1):
 	"""Starts a multiplayer game server
-	TODO: acctual game data parameter passing
+	TODO: actual game data parameter passing
 	"""
 	global fife, preloading, db
 
