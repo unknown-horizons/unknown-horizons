@@ -46,7 +46,7 @@ from horizons.util import WorldObject, LivingObject, livingProperty, SavegameAcc
 from horizons.util.uhdbaccessor import read_savegame_template
 from horizons.util.lastactiveplayersettlementmanager import LastActivePlayerSettlementManager
 from horizons.world.component.namedcomponent import NamedComponent
-from horizons.world.component.selectablecomponent import SelectableComponent
+from horizons.world.component.selectablecomponent import SelectableComponent, SelectableBuildingComponent
 from horizons.savegamemanager import SavegameManager
 from horizons.scenario import ScenarioEventHandler
 from horizons.world.component.ambientsoundcomponent import AmbientSoundComponent
@@ -161,9 +161,11 @@ class Session(LivingObject):
 		raise NotImplementedError
 
 	def _clear_caches(self):
+		"""Clear all data caches in global namespace related to a session"""
 		WorldObject.reset()
 		NamedComponent.reset()
 		AIPlayer.clear_caches()
+		SelectableBuildingComponent.reset()
 
 	def end(self):
 		self.log.debug("Ending session")
