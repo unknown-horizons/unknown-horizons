@@ -329,7 +329,7 @@ events:
       We will further explain this once you are ready to trade.'
     - !!python/unicode '
 
-      TASK: Build a signal fire at the coast close to your warehouse.'
+      Plaats een signaal vuur bij de kust nabij het kantoor.'
     type: logbook
   - arguments: [!!python/unicode 'Plaats een signaal vuur bij de kust nabij het kantoor.']
     type: message
@@ -724,10 +724,10 @@ events:
 
 
 
-      Thanks for playing the tutorial!
+      Bedankt voor het spelen van de Tutorial!
 
 
-      Your UH-Team'
+      Het UH-Team'
     - - Gallery
       - [content/unknown-horizons.xpm, content/gfx/misc/status_icons/as_book_flip/idle/45/book20125.png]
     type: logbook
@@ -758,6 +758,5 @@ events:
     type: var_gt
 locale: nl
 mapfile: development.sqlite
-translation_status: 39 translated messages, 2 fuzzy translations, 150 untranslated
-  messages.
+translation_status: 41 translated messages, 150 untranslated messages.
 

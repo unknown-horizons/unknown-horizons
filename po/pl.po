@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2012-03-24 02:16+0100\n"
-"PO-Revision-Date: 2012-03-28 02:06+0200\n"
+"PO-Revision-Date: 2012-03-28 02:07+0200\n"
 "Last-Translator: Kiryx <kiryx7@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: pl\n"
@@ -46,7 +46,7 @@ msgstr "Arystokraci"
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
 msgid "Cannot go here."
-msgstr ""
+msgstr "Nie możesz tam się dostać."
 
 # 75%
 #. (text of widget: headline)
@@ -3240,10 +3240,13 @@ msgstr ""
 msgid "Storage Tent"
 msgstr "Namiot składowy"
 
+# Building
+# 75%
 #. name_1 of buildings:storagetent
 #: horizons/i18n/objecttranslations.py:334
+#, fuzzy
 msgid "Storage Hut"
-msgstr ""
+msgstr "Namiot składowy"
 
 #. tooltip_text of buildings:storagetent
 #: horizons/i18n/objecttranslations.py:336
@@ -3281,10 +3284,12 @@ msgstr "Namiot"
 msgid "Hut"
 msgstr ""
 
+# 80%
 #. name_2 of buildings:tent
 #: horizons/i18n/objecttranslations.py:359
+#, fuzzy
 msgid "House"
-msgstr ""
+msgstr "Mysz"
 
 #. name_3 of buildings:tent
 #: horizons/i18n/objecttranslations.py:361
@@ -3392,10 +3397,12 @@ msgstr ""
 msgid "Warehouse"
 msgstr "Magazyn"
 
+# 76%
 #. name of buildings:weaverstent
 #: horizons/i18n/objecttranslations.py:433
+#, fuzzy
 msgid "Weaver's Hut"
-msgstr ""
+msgstr "Namiot tkacki"
 
 #. tooltip_text of buildings:weaverstent
 #: horizons/i18n/objecttranslations.py:435

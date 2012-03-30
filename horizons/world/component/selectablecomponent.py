@@ -125,6 +125,13 @@ class SelectableBuildingComponent(SelectableComponent):
 	_selected_tiles = ListHolder() # tiles that are selected. used for clean deselect.
 	_selected_fake_tiles = ListHolder() # fake tiles create over ocean to select (can't select ocean directly)
 
+	@classmethod
+	def reset(cls):
+		"""Called on session end to get rid of static data and init variables"""
+		cls._selected_tiles.l = []
+		cls._selected_fake_tiles.l = []
+
+
 	def __init__(self, tabs, enemy_tabs, range_applies_only_on_island=True):
 		super(SelectableBuildingComponent, self).__init__(tabs, enemy_tabs)
 

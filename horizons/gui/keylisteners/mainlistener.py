@@ -98,9 +98,16 @@ class MainListener(fife.IKeyListener, fife.ConsoleExecuter, LivingObject):
 				# ingame message if there is a session
 				self.gui.session.ingame_gui.message_widget.add(None, None, 'SCREENSHOT', \
 																													{'file': screenshotfilename})
+			evt.consume()
 		elif action == _Actions.QUICKLOAD:
-			from horizons.main import _load_last_quicksave
-			_load_last_quicksave()
+			if self.gui.session is not None:
+				# let the session do it for proper cleanup
+				self.gui.session.quickload()
+			else:
+				# no session to clean up, do it directly
+				from horizons.main import _load_last_quicksave
+				_load_last_quicksave()
+			evt.consume()
 
 
 	def keyReleased(self, evt):

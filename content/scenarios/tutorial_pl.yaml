@@ -7,12 +7,12 @@
 
 author: "Zesp\xF3\u0142 UH"
 description: "Samouczek:\nZbuduj swoj\u0105 pierwsz\u0105 osad\u0119 i naucz si\u0119\
-  \ jak gra\u0107!\n"
+  \ gra\u0107!\n"
 difficulty: !!python/unicode 'Samouczek'
 events:
 - actions:
-  - arguments: [!!python/unicode 'Build a warehouse at the coast, so it is easy accessible
-        for other ships like the Free Trader.']
+  - arguments: ["Wybuduj port na wybrze\u017Cu, tak by by\u0142 dost\u0119pny dla\
+        \ innych statk\xF3w, na przyk\u0142ad statk\xF3w Wolnych Kupc\xF3w."]
     type: message
   - arguments:
     - ''
@@ -160,8 +160,8 @@ events:
       - [content/gui/icons/buildmenu/011_h.png, content/gui/icons/buildmenu/009_h.png,
         content/gui/icons/resources/50/005.png]
     type: logbook
-  - arguments: [!!python/unicode 'Build a hunter and a fisher. Connect them to the
-        warehouse.']
+  - arguments: ["Wybuduj chat\u0119 my\u015Bliwego i rybaka. Doprowad\u017A do nich\
+        \ drog\u0119 z portu."]
     type: message
   - arguments: [tutStepDone, 22]
     type: set_var
@@ -188,9 +188,9 @@ events:
     - "Nie powiniene\u015B rozstawia\u0107 namiot\xF3w w pobli\u017Cu chaty drwala,\
       \ gdy\u017C niszczysz w ten spos\xF3b drzewa, kt\xF3re potrzebne s\u0105 drwalowi\
       \ do produkcji desek."
-    - !!python/unicode 'Companies work without being connected to the tents, so you
-      don''t need to build a road between the main square and e.g. your lumberjack
-      tent.'
+    - "Firmy dzia\u0142aj\u0105 tak\u017Ce, je\u017Celi nie s\u0105 po\u0142\u0105\
+      czone z namiotami, nie musisz wi\u0119c prowadzi\u0107 drogi pomi\u0119dzy rynkiem\
+      \ a, przyk\u0142adowo, namiotem drwala."
     - "\nZadanie: Wybuduj rynek g\u0142\xF3wny."
     - [Pagebreak]
     - "\nPrzyj\u017Cyjmy si\u0119 bli\u017Cej rynkowi g\u0142\xF3wnemu."
@@ -238,16 +238,16 @@ events:
       - [content/gui/icons/buildmenu/003_h.png]
     - "Namioty s\u0105 podstawowymi budynkami mieszkalnymi. Mieszka\u0144cy b\u0119\
       d\u0105 chcieli je ulepsza\u0107 wraz ze zwi\u0119kszaniem stadium rozwoju."
-    - !!python/unicode 'Settlers may not look very useful since they will try to consume
-      all goods you produce - but they at least pay taxes, and that''s the only way
-      you can make money for now!'
-    - !!python/unicode '
-
-      TASK: Build a tent and connect it to the main square. Tents dont need to be
-      connected to any of the companies.'
+    - "Poniewa\u017C osadnicy konsumuj\u0105 wszystkie dobra, kt\xF3re produkujesz,\
+      \ mog\u0105 nie wydawa\u0107 si\u0119 zbyt przydatni - pami\u0119taj, \u017C\
+      e p\u0142acone przez nich podatnki to obecnie jedyny spos\xF3b zdobywania pieni\u0119\
+      dzy. "
+    - "\nZadanie: zbuduj namiot i po\u0142\u0105cz go drog\u0105 z rynkiem g\u0142\
+      \xF3wnym. Namioty nie musz\u0105 by\u0107 po\u0142\u0105czone drog\u0105 z \u017C\
+      adn\u0105 firm\u0105."
     type: logbook
-  - arguments: ["Postaw namioty i po\u0142\u0105cz je drog\u0105 z rynkiem g\u0142\
-        \xF3wnym."]
+  - arguments: ["Zbuduj namiot i po\u0142\u0105cz je drog\u0105 z rynkiem g\u0142\xF3\
+        wnym."]
     type: message
   - arguments: [tutStepDone, 28]
     type: set_var
@@ -259,24 +259,19 @@ events:
   - arguments: [tutStepDone, 28]
     type: var_lt
 - actions:
-  - arguments: [!!python/unicode '
+  - arguments: ["\nRzu\u0107my okiem na zak\u0142adk\u0119 podgl\u0105du namiotu.",
+      "Mo\u017Cesz tutaj zobaczy\u0107\n* zadowolenie rezydent\xF3w,\n* podatki jakie\
+        \ p\u0142ac\u0105\n* dobra, kt\xF3rych \u017C\u0105daj\u0105.", "Je\u017C\
+        eli ich \u017C\u0105dania zostan\u0105 spe\u0142nione, zwi\u0119kszy si\u0119\
+        \ ich szcz\u0119\u015Bcie a przez to wp\u0142ywy z podatk\xF3w.", "W przeciwnym\
+        \ przypadku szcz\u0119\u015Bcie oraz wp\u0142ywy zmniejsz\u0105 si\u0119.\
+        \ Po pewnym czasie rezydenci mog\u0105 powa\u017Cnie si\u0119 zawie\u015B\u0107\
+        \ i opu\u015Bci\u0107 wiosk\u0119, zostawiaj\u0105c za sob\u0105 rozpadaj\u0105\
+        ce si\u0119 ruiny.", "Pami\u0119taj, \u017Ce mo\u017Cesz tutaj zmieni\u0107\
+        \ globaln\u0105 wysoko\u015B\u0107 podatku.", !!python/unicode '
 
-        Let''s have a look at the tent overview tab.', !!python/unicode 'You can see
-
-        * the happiness of these residents,
-
-        * the taxes they pay and
-
-        * the resources they demand.', !!python/unicode 'If their demands are fulfilled,
-        happiness and thus your tax income increase.', !!python/unicode 'If not, happiness
-        and income decrease. At some time your residents may get really sour and simply
-        turn their back on your village, leaving behind a decaying ruin.', !!python/unicode 'Note
-        that you can also change the global tax settings here, too.', !!python/unicode '
-
-        TASK: Build at least three additional tents.', !!python/unicode '
-
-        TIP: Holding down SHIFT eases constructing multiple buildings of the same
-        kind.']
+        Zadanie: Dobuduj przynajmniej trzy namioty.', "\nWskaz\xF3wka: przytrzymanie\
+        \ klawisza 'SHIFT' u\u0142atwia budowanie wielu budynk\xF3w tego samego typu."]
     type: logbook
   - arguments: ["Postaw conajmniej trzy dodatkowe namioty i po\u0142\u0105cz je drog\u0105\
         \ z rynkiem g\u0142\xF3wnyn."]
@@ -294,10 +289,10 @@ events:
   - arguments:
     - [Headline, "Nowe Zadanie: Wybuduj sygna\u0142 \u015Bwietlny"]
     - [Image, content/gui/images/background/hr.png]
-    - !!python/unicode 'Can you see the ship passing your island from time to time?
-      That ship belongs to the Free Trader, one of the first settlers in this archipelago.'
-    - !!python/unicode 'The trader will supply your settlement with necessary goods
-      which you can''t produce yet.'
+    - "Widzisz statek przep\u0142ywaj\u0105cy w pobli\u017Cu wyspy od czasu do czasu?\
+      \ Nale\u017Cy do Wolnych Kupc\xF3w, jednych z pierwszych osadnik\xF3w archipelagu."
+    - "Kupcy dostarcz\u0105 osadzie niezb\u0119dnych d\xF3br, kt\xF3rych nie jeste\u015B\
+      \ w stanie jeszcze wyprodukowa\u0107."
     - !!python/unicode 'You can also sell surpluses of your production, but in general
       consuming them (by building more tents) instead of selling them yields more
       profit.'
@@ -325,7 +320,7 @@ events:
       We will further explain this once you are ready to trade.'
     - "\nZadanie: Wybuduj latarnie na wybrze\u017Cu w pobli\u017Cu swojego portu."
     type: logbook
-  - arguments: [!!python/unicode 'Build a signal fire at the coast close to your warehouse.']
+  - arguments: ["Wybuduj latarnie na wybrze\u017Cu w pobli\u017Cu swojego portu."]
     type: message
   - arguments: [tutStepDone, 34]
     type: set_var
@@ -669,7 +664,7 @@ events:
         city to complete the tutorial. You need a positive balance.']
     type: message
   - arguments:
-    - [Headline, !!python/unicode 'NEW TASK: COMPLETE TUTORIAL']
+    - [Headline, "NOWE ZADANIE: UKO\u0143CZ TUTORIAL"]
     - [Image, content/gui/images/background/hr.png]
     - !!python/unicode 'Try to house a total of 50 or more inhabitants in your city
       by providing more residential buildings.'
@@ -744,6 +739,5 @@ events:
     type: var_gt
 locale: pl
 mapfile: development.sqlite
-translation_status: 80 translated messages, 4 fuzzy translations, 107 untranslated
-  messages.
+translation_status: 96 translated messages, 95 untranslated messages.
 

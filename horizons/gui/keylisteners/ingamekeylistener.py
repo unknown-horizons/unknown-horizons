@@ -170,9 +170,7 @@ class IngameKeyListener(fife.IKeyListener, LivingObject):
 					instance.get_component(SelectableComponent).select(reset_cam=True)
 				self.session.selected_instances = self.session.selection_groups[num]
 		elif action == _Actions.QUICKSAVE:
-			self.session.quicksave()
-		elif action == _Actions.QUICKLOAD:
-			self.session.quickload()
+			self.session.quicksave() # load is only handled by the MainListener
 		elif action == _Actions.SAVE_MAP:
 			# require shift to make it less likely that an ordinary user stumbles upon this
 			# this is done because the maps aren't usable without moving them to the right places

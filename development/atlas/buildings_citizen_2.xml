@@ -1,0 +1,52 @@
+<?fife type="atlas"?>
+<atlas name="buildings_citizen_2.png" namespace="buildings_citizen_2" width="2048" height="1024">
+	<image source="content/gfx/buildings/citizens/as_cornfield0/idle/135/0.png" xpos="0" ypos="0" width="192" height="192"/>
+	<image source="content/gfx/buildings/citizens/as_cornfield0/idle/225/0.png" xpos="192" ypos="0" width="192" height="192"/>
+	<image source="content/gfx/buildings/citizens/as_cornfield0/idle/315/0.png" xpos="384" ypos="0" width="192" height="192"/>
+	<image source="content/gfx/buildings/citizens/as_cornfield0/idle/45/0.png" xpos="576" ypos="0" width="192" height="192"/>
+	<image source="content/gfx/buildings/citizens/as_cornfield0/idle_full/135/0.png" xpos="768" ypos="0" width="192" height="192"/>
+	<image source="content/gfx/buildings/citizens/as_cornfield0/idle_full/225/0.png" xpos="960" ypos="0" width="192" height="192"/>
+	<image source="content/gfx/buildings/citizens/as_cornfield0/idle_full/315/0.png" xpos="1152" ypos="0" width="192" height="192"/>
+	<image source="content/gfx/buildings/citizens/as_cornfield0/idle_full/45/0.png" xpos="1344" ypos="0" width="192" height="192"/>
+	<image source="content/gfx/buildings/citizens/as_cornfield0/work/135/0.png" xpos="1536" ypos="0" width="192" height="192"/>
+	<image source="content/gfx/buildings/citizens/as_cornfield0/work/135/1.png" xpos="1728" ypos="0" width="192" height="192"/>
+	<image source="content/gfx/buildings/citizens/as_cornfield0/work/135/2.png" xpos="0" ypos="192" width="192" height="192"/>
+	<image source="content/gfx/buildings/citizens/as_cornfield0/work/135/3.png" xpos="192" ypos="192" width="192" height="192"/>
+	<image source="content/gfx/buildings/citizens/as_cornfield0/work/225/0.png" xpos="384" ypos="192" width="192" height="192"/>
+	<image source="content/gfx/buildings/citizens/as_cornfield0/work/225/1.png" xpos="576" ypos="192" width="192" height="192"/>
+	<image source="content/gfx/buildings/citizens/as_cornfield0/work/225/2.png" xpos="768" ypos="192" width="192" height="192"/>
+	<image source="content/gfx/buildings/citizens/as_cornfield0/work/225/3.png" xpos="960" ypos="192" width="192" height="192"/>
+	<image source="content/gfx/buildings/citizens/as_cornfield0/work/315/0.png" xpos="1152" ypos="192" width="192" height="192"/>
+	<image source="content/gfx/buildings/citizens/as_cornfield0/work/315/1.png" xpos="1344" ypos="192" width="192" height="192"/>
+	<image source="content/gfx/buildings/citizens/as_cornfield0/work/315/2.png" xpos="1536" ypos="192" width="192" height="192"/>
+	<image source="content/gfx/buildings/citizens/as_cornfield0/work/315/3.png" xpos="1728" ypos="192" width="192" height="192"/>
+	<image source="content/gfx/buildings/citizens/as_cornfield0/work/45/0.png" xpos="0" ypos="384" width="192" height="192"/>
+	<image source="content/gfx/buildings/citizens/as_cornfield0/work/45/1.png" xpos="192" ypos="384" width="192" height="192"/>
+	<image source="content/gfx/buildings/citizens/as_cornfield0/work/45/2.png" xpos="384" ypos="384" width="192" height="192"/>
+	<image source="content/gfx/buildings/citizens/as_cornfield0/work/45/3.png" xpos="576" ypos="384" width="192" height="192"/>
+	<image source="content/gfx/buildings/citizens/as_windmill0/idle/135/17.png" xpos="1920" ypos="0" width="128" height="256"/>
+	<image source="content/gfx/buildings/citizens/as_windmill0/idle/225/17.png" xpos="1920" ypos="256" width="128" height="256"/>
+	<image source="content/gfx/buildings/citizens/as_windmill0/idle/315/17.png" xpos="768" ypos="384" width="128" height="256"/>
+	<image source="content/gfx/buildings/citizens/as_windmill0/idle/45/17.png" xpos="896" ypos="384" width="128" height="256"/>
+	<image source="content/gfx/buildings/citizens/as_windmill0/idle_full/135/00.png" xpos="1024" ypos="384" width="128" height="256"/>
+	<image source="content/gfx/buildings/citizens/as_windmill0/idle_full/225/00.png" xpos="1152" ypos="384" width="128" height="256"/>
+	<image source="content/gfx/buildings/citizens/as_windmill0/idle_full/315/00.png" xpos="1280" ypos="384" width="128" height="256"/>
+	<image source="content/gfx/buildings/citizens/as_windmill0/idle_full/45/00.png" xpos="1408" ypos="384" width="128" height="256"/>
+	<image source="content/gfx/buildings/citizens/as_windmill0/work/135/19.png" xpos="1536" ypos="384" width="128" height="256"/>
+	<image source="content/gfx/buildings/citizens/as_windmill0/work/135/20.png" xpos="1664" ypos="384" width="128" height="256"/>
+	<image source="content/gfx/buildings/citizens/as_windmill0/work/135/21.png" xpos="1792" ypos="384" width="128" height="256"/>
+	<image source="content/gfx/buildings/citizens/as_windmill0/work/135/22.png" xpos="1920" ypos="512" width="128" height="256"/>
+	<image source="content/gfx/buildings/citizens/as_windmill0/work/135/23.png" xpos="0" ypos="576" width="128" height="256"/>
+	<image source="content/gfx/buildings/citizens/as_windmill0/work/135/24.png" xpos="128" ypos="576" width="128" height="256"/>
+	<image source="content/gfx/buildings/citizens/as_windmill0/work/135/25.png" xpos="256" ypos="576" width="128" height="256"/>
+	<image source="content/gfx/buildings/citizens/as_windmill0/work/135/26.png" xpos="384" ypos="576" width="128" height="256"/>
+	<image source="content/gfx/buildings/citizens/as_windmill0/work/135/27.png" xpos="512" ypos="576" width="128" height="256"/>
+	<image source="content/gfx/buildings/citizens/as_windmill0/work/135/28.png" xpos="640" ypos="576" width="128" height="256"/>
+	<image source="content/gfx/buildings/citizens/as_windmill0/work/135/29.png" xpos="768" ypos="640" width="128" height="256"/>
+	<image source="content/gfx/buildings/citizens/as_windmill0/work/135/30.png" xpos="896" ypos="640" width="128" height="256"/>
+	<image source="content/gfx/buildings/citizens/as_windmill0/work/135/31.png" xpos="1024" ypos="640" width="128" height="256"/>
+	<image source="content/gfx/buildings/citizens/as_windmill0/work/135/32.png" xpos="1152" ypos="640" width="128" height="256"/>
+	<image source="content/gfx/buildings/citizens/as_windmill0/work/135/33.png" xpos="1280" ypos="640" width="128" height="256"/>
+	<image source="content/gfx/buildings/citizens/as_windmill0/work/135/34.png" xpos="1408" ypos="640" width="128" height="256"/>
+</atlas>
+
