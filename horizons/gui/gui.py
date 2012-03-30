@@ -684,8 +684,7 @@ def build_help_strings(widgets):
 	The layout is defined through HELPSTRING_LAYOUT and translated.
 	"""
 	#i18n this defines how each line in our help looks like. Default: '[C] = Chat'
-	#xgettext:python-format
-	HELPSTRING_LAYOUT = _('[{key}] = {text}')
+	HELPSTRING_LAYOUT = _('[{key}] = {text}') #xgettext:python-format
 
 	#HACK Ugliness starts; load actions defined through keys and map them to FIFE key strings
 	actions = KeyConfig._Actions.__dict__
@@ -704,7 +703,11 @@ def build_help_strings(widgets):
 		try:
 			keyname = '{key}'.format(key=actionmap[str(actions[name[4:]])])
 		except KeyError:
-			keyname = ' '
+			# manually add keys that are not used for keylistener purposes
+			if name == 'lbl_SHIFT':
+				keyname = 'SHIFT' # uninterrupted building
+			else:
+				keyname = ' '
 		lbl[0].text = HELPSTRING_LAYOUT.format(text=_(lbl[0].text), key=keyname.upper())
 
 	author_label = widgets.findChild(name='fife_and_uh_team')
