@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: translate-uh@lists.unknown-horizons.org\n"
 "POT-Creation-Date: 2012-03-21 04:04+0100\n"
-"PO-Revision-Date: 2012-03-31 00:26+0200\n"
+"PO-Revision-Date: 2012-03-31 00:37+0200\n"
 "Last-Translator: Sergio <juarrox@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: es\n"
@@ -1021,6 +1021,7 @@ msgstr "LOS CAMPOS"
 #: po/tutorial.py:288
 msgid "The farm itself is not going to produce anything without some fields."
 msgstr ""
+"La granja por sí sola no va a producir nada sin crear campos de cultivo."
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:290
@@ -1080,6 +1081,8 @@ msgid ""
 "For now, you do not need to care about these issues a lot since you haven't "
 "built any fields. Let's change that!"
 msgstr ""
+"Por ahora, no tienes que preocuparte mucho de esos problemas mientras no "
+"hayas creado campos de cultivo. ¡Vamos a cambiar eso!"
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:306
@@ -1088,6 +1091,8 @@ msgid ""
 "TASK: Build at least one pasture in the farm's range and add potato fields if "
 "you like."
 msgstr ""
+"TAREA: Construye al menos un prado en el alcance de la granja y añade si "
+"quieres campos de patata."
 
 #. This message is displayed in the widget on the left screen part. Please keep it short enough to fit there!
 #: po/tutorial.py:308

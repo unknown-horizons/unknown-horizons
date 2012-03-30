@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2012-03-24 02:16+0100\n"
-"PO-Revision-Date: 2012-03-29 17:56+0200\n"
+"PO-Revision-Date: 2012-03-31 00:55+0200\n"
 "Last-Translator: Sergio <juarrox@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: es\n"
@@ -21,7 +21,7 @@ msgstr ""
 #: database files sql
 #, python-format
 msgid "A new settlement was founded by {player}."
-msgstr "Un nuevo asentamiento ha sido fundado por {player}."
+msgstr "Se ha fundado un nuevo asentamiento por {player}."
 
 # 82%
 #. This is a database entry: a messagewidget message (left part of the screen).
@@ -875,7 +875,7 @@ msgstr "Creador: {player}"
 
 #: horizons/gui/modules/multiplayermenu.py:203
 msgid "This savegame is missing (click here)"
-msgstr ""
+msgstr "Se ha perdido esta partida guardada (clic aquí)"
 
 #: horizons/gui/modules/multiplayermenu.py:209
 msgid "For multiplayer load, it is currently necessary for you to ensure you have the correct savegame file."
@@ -888,6 +888,8 @@ msgstr ""
 #: horizons/gui/modules/multiplayermenu.py:211
 msgid "Meanwhile, please request the file {path} from the game creator and put it in {map_directory} ."
 msgstr ""
+"Mientras tanto, por favor solicite al creador del juego el archivo {path} y "
+"póngalo en {map_directory} ."
 
 #. (text of widget: help)
 #. (text of widget: help) Main / in-game menu entry
@@ -898,7 +900,7 @@ msgstr "Ayuda"
 
 #: horizons/gui/modules/multiplayermenu.py:218
 msgid "This is a savegame."
-msgstr ""
+msgstr "Esta es una partida guardada."
 
 #: horizons/gui/modules/multiplayermenu.py:242
 msgid "Wrong version"
@@ -1081,7 +1083,7 @@ msgstr "Minería"
 #: horizons/gui/tabs/buildtabs.py:149
 #, fuzzy
 msgid "Increment {increment}"
-msgstr "Incremento"
+msgstr "Incremento {increment}"
 
 #. (text of widget: headline)
 #. (helptext of widget: trade)
@@ -1094,11 +1096,15 @@ msgstr "Comercio"
 #: horizons/gui/tabs/buyselltab.py:139
 msgid "Click on one of the resource slots to add a trade offer."
 msgstr ""
+"Haz clic en una de las casillas disponibles para añadir una oferta "
+"comercial."
 
 #. new res
 #: horizons/gui/tabs/buyselltab.py:186
 msgid "Set to buy or sell by clicking on that label, then adjust the amount via the slider to the right."
 msgstr ""
+"Elige comprar o vender haciendo clic en esa etiqueta, después ajusta la "
+"cantidad moviendo el control deslizante a la derecha."
 
 #: horizons/gui/tabs/buyselltab.py:363
 #, python-format
@@ -1473,7 +1479,7 @@ msgstr "Cambiar nombre"
 #. (text of widget: old_name_label)
 #: horizons/i18n/guitranslations.py:110
 msgid "Old name:"
-msgstr ""
+msgstr "Anterior nombre:"
 
 #. (helptext of widget: okButton)
 #: horizons/i18n/guitranslations.py:112
