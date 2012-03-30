@@ -99,6 +99,9 @@ class SavegameUpgrader(object):
 		db("CREATE TABLE \"last_active_settlement\" ( type STRING NOT NULL, value INTEGER NOT NULL )")
 		db("INSERT INTO last_active_settlement(type, value) VALUES(?, ?)", "LAST_NONE_FLAG", False)
 
+	def _upgrade_to_rev57(self, db):
+		raise Exception('I have no idea what all changed, but it certainly broke savegames.')
+
 
 	def _upgrade(self):
 		# fix import loop
@@ -133,6 +136,8 @@ class SavegameUpgrader(object):
 				self._upgrade_to_rev55(db)
 			if rev < 56:
 				self._upgrade_to_rev56(db)
+			if rev < 57:
+				self._upgrade_to_rev57(db)
 
 
 			db('COMMIT')
