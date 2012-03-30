@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2012-03-24 02:16+0100\n"
-"PO-Revision-Date: 2012-03-25 03:15+0200\n"
+"PO-Revision-Date: 2012-03-25 03:20+0200\n"
 "Last-Translator: André <andre-r@online.de>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: de\n"
@@ -3742,7 +3742,7 @@ msgstr "Um dies zu tun, benötigen wir die Informationen aus der Protokolldatei:
 msgid "Please give it to us via IRC or our forum, for both see http://unknown-horizons.org ."
 msgstr ""
 "Bitte lasst es uns über IRC oder unser Forum zukommen, beides findet Ihr "
-"unter http;//unknown-horizons.org ."
+"unter http://unknown-horizons.org ."
 
 #: run_uh.py:251
 msgid "Error: Unable to find required libraries"
