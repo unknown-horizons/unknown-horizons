@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2012-03-24 02:16+0100\n"
-"PO-Revision-Date: 2012-03-31 00:55+0200\n"
+"PO-Revision-Date: 2012-03-31 01:04+0200\n"
 "Last-Translator: Sergio <juarrox@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: es\n"
@@ -1110,11 +1110,15 @@ msgstr ""
 #, python-format
 msgid "Will buy {resource_name} for {price} gold/t whenever less than {limit}t are in stock."
 msgstr ""
+"Se comprará {resource_name} por {price} gold/t mientras haya menos que "
+"{limit}t en el almacén."
 
 #: horizons/gui/tabs/buyselltab.py:367
 #, python-format
 msgid "Will sell {resource_name} for {price} gold/t whenever more than {limit}t are available."
 msgstr ""
+"Se venderá {resource_name} por {price} monedas de oro si hay {limit}t "
+"disponibles."
 
 #. (text of widget: headline)
 #: horizons/gui/tabs/inventorytab.py:38 horizons/i18n/guitranslations.py:219
@@ -1718,7 +1722,7 @@ msgstr "2 residentes"
 #: horizons/i18n/guitranslations.py:244
 #, fuzzy
 msgid "7 residents"
-msgstr "2 residentes"
+msgstr "7 residentes"
 
 # 88%
 # 81%
@@ -1727,7 +1731,7 @@ msgstr "2 residentes"
 #: horizons/i18n/guitranslations.py:246
 #, fuzzy
 msgid "8 residents"
-msgstr "2 residentes"
+msgstr "8 residentes"
 
 # 88%
 #. (text of widget: residents)
