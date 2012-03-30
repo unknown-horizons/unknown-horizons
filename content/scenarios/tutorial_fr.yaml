@@ -34,7 +34,7 @@ events:
       - [content/gui/icons/widgets/minimap/captainslog.png]
     - "\nPour voir votre premi\xE8re t\xE2che, cliquez le bouton \xABLire entr\xE9\
       es suivantes\xBB dans la fen\xEAtre de navigation! \xC7a ressemble \xE0 \xE7\
-      a: "
+      a:"
     - - Gallery
       - [content/gui/images/buttons/parrow_right.png]
     - [Pagebreak]

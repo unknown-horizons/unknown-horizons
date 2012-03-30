@@ -364,9 +364,11 @@ events:
       to ''Sell'' and vice versa.'
     - !!python/unicode 'Click in the slot to choose the good you want to trade with.
       We will further explain this once you are ready to trade.'
-    - !!python/unicode '
-
-      TASK: Build a signal fire at the coast close to your warehouse.'
+    - "\n\u041F\u043E\u0441\u0442\u0440\u043E\u0439\u0442\u0435 \u0441\u0438\u0433\
+      \u043D\u0430\u043B\u044C\u043D\u044B\u0439 \u043E\u0433\u043E\u043D\u044C \u043D\
+      \u0430 \u043F\u043E\u0431\u0435\u0440\u0435\u0436\u044C\u0435, \u0440\u044F\u0434\
+      \u043E\u043C \u0441 \u0432\u0430\u0448\u0435\u0439 \u043A\u043E\u043D\u0442\u043E\
+      \u0440\u043E\u0439."
     type: logbook
   - arguments: ["\u041F\u043E\u0441\u0442\u0440\u043E\u0439\u0442\u0435 \u0441\u0438\
         \u0433\u043D\u0430\u043B\u044C\u043D\u044B\u0439 \u043E\u0433\u043E\u043D\u044C\
@@ -803,16 +805,9 @@ events:
     - [Pagebreak]
     - [Headline, "\u0421\u043F\u0430\u0441\u0438\u0431\u043E!"]
     - [Image, content/gui/images/background/hr.png]
-    - !!python/unicode '
-
-
-
-
-
-      Thanks for playing the tutorial!
-
-
-      Your UH-Team'
+    - "\n\n\n\n\n\u0421\u043F\u0430\u0441\u0438\u0431\u043E \u0437\u0430 \u043F\u0440\
+      \u043E\u0445\u043E\u0436\u0434\u0435\u043D\u0438\u0435 \u043E\u0431\u0443\u0447\
+      \u0435\u043D\u0438\u044F!\n\nUH-Team"
     - - Gallery
       - [content/unknown-horizons.xpm, content/gfx/misc/status_icons/as_book_flip/idle/45/book20125.png]
     type: logbook
@@ -846,6 +841,5 @@ events:
     type: var_gt
 locale: ru
 mapfile: development.sqlite
-translation_status: 37 translated messages, 2 fuzzy translations, 152 untranslated
-  messages.
+translation_status: 39 translated messages, 152 untranslated messages.
 
