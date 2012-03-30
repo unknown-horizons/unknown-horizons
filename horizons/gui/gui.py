@@ -38,7 +38,7 @@ from horizons.gui.keylisteners.ingamekeylistener import KeyConfig
 from horizons.util import Callback
 from horizons.extscheduler import ExtScheduler
 from horizons.world.component.ambientsoundcomponent import AmbientSoundComponent
-from horizons.util.gui import LazyWidgetsDict
+from horizons.gui.util import LazyWidgetsDict
 
 from horizons.gui.modules import SingleplayerMenu, MultiplayerMenu
 from horizons.command.game import PauseCommand, UnPauseCommand

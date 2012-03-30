@@ -32,7 +32,7 @@ from horizons.command.building import Build
 from horizons.world.component.selectablecomponent import SelectableBuildingComponent, SelectableComponent
 from horizons.gui.mousetools.navigationtool import NavigationTool
 from horizons.command.sounds import PlaySound
-from horizons.util.gui import load_uh_widget
+from horizons.gui.util import load_uh_widget
 from horizons.constants import BUILDINGS, GFX
 from horizons.extscheduler import ExtScheduler
 from horizons.messaging import SettlementRangeChanged, WorldObjectDeleted

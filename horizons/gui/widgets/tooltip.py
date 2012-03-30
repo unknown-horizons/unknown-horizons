@@ -25,7 +25,7 @@ from fife.extensions import pychan
 import horizons.main
 
 from horizons.extscheduler import ExtScheduler
-from horizons.util.gui import load_uh_widget
+from horizons.gui.util import load_uh_widget
 
 class _Tooltip(object):
 	"""Base class for pychan widgets overloaded with tooltip functionality"""

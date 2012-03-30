@@ -21,7 +21,7 @@
 
 from tabinterface import TabInterface
 from horizons.util import Callback
-from horizons.util.gui import load_uh_widget
+from horizons.gui.util import load_uh_widget
 from horizons.scheduler import Scheduler
 from horizons.command.unit import SetStance
 from horizons.world.component.healthcomponent import HealthComponent

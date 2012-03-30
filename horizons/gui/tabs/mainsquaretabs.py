@@ -28,7 +28,7 @@ from horizons.gui.tabs.overviewtab import OverviewTab, _setup_tax_slider
 
 from horizons.util import Callback
 from horizons.messaging import UpgradePermissionsChanged
-from horizons.util.gui import create_resource_icon
+from horizons.gui.util import create_resource_icon
 from horizons.command.uioptions import SetSettlementUpgradePermissions
 from horizons.constants import BUILDINGS, SETTLER
 from horizons.world.component.tradepostcomponent import TradePostComponent

@@ -25,7 +25,7 @@ from horizons.constants import GAME_SPEED
 from horizons.gui.widgets.statswidget import StatsWidget
 from horizons.scheduler import Scheduler
 from horizons.util.python import decorators
-from horizons.util.gui import create_resource_icon
+from horizons.gui.util import create_resource_icon
 from horizons.util import Callback
 from horizons.world.component.namedcomponent import NamedComponent
 

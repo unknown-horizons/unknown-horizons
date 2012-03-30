@@ -37,7 +37,7 @@ from horizons.command.production import ToggleActive
 from horizons.command.building import Tear
 from horizons.command.uioptions import SetTaxSetting
 from horizons.gui.widgets.imagefillstatusbutton import ImageFillStatusButton
-from horizons.util.gui import load_uh_widget, create_resource_icon
+from horizons.gui.util import load_uh_widget, create_resource_icon
 from horizons.util.pychananimation import PychanAnimation
 from horizons.entities import Entities
 from horizons.world.component.namedcomponent import NamedComponent

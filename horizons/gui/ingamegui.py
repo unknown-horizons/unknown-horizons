@@ -37,7 +37,7 @@ from horizons.gui.widgets.resourceoverviewbar import ResourceOverviewBar
 from horizons.gui.widgets.playersships import PlayersShips
 from horizons.gui.widgets.choose_next_scenario import ScenarioChooser
 from horizons.extscheduler import ExtScheduler
-from horizons.util.gui import LazyWidgetsDict
+from horizons.gui.util import LazyWidgetsDict
 from horizons.constants import BUILDINGS, GUI
 from horizons.command.uioptions import RenameObject
 from horizons.command.misc import Chat

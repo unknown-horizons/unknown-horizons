@@ -23,7 +23,7 @@ import weakref
 
 from fife import fife
 
-from horizons.util.gui import load_uh_widget
+from horizons.gui.util import load_uh_widget
 from horizons.util import Callback, Point
 from fife.extensions.pychan import widgets
 from fife.extensions.pychan.widgets import ImageButton

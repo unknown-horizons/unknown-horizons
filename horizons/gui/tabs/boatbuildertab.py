@@ -24,7 +24,7 @@ import operator
 
 from horizons.command.production import AddProduction, RemoveFromQueue, CancelCurrentProduction
 from horizons.gui.tabs import OverviewTab
-from horizons.util.gui import get_res_icon_path
+from horizons.gui.util import get_res_icon_path
 from horizons.util import Callback
 from horizons.constants import PRODUCTIONLINES
 from horizons.world.production.producer import Producer

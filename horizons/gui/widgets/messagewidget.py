@@ -29,7 +29,7 @@ import horizons.main
 from horizons.extscheduler import ExtScheduler
 from horizons.util import LivingObject, Callback, Point
 from horizons.scheduler import Scheduler
-from horizons.util.gui import load_uh_widget
+from horizons.gui.util import load_uh_widget
 from horizons.world.component.ambientsoundcomponent import AmbientSoundComponent
 from horizons.i18n.voice import get_speech_file
 

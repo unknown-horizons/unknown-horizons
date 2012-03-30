@@ -21,7 +21,7 @@
 import logging
 
 from horizons.gui.widgets.imagefillstatusbutton import ImageFillStatusButton
-from horizons.util.gui import load_uh_widget
+from horizons.gui.util import load_uh_widget
 from horizons.command.uioptions import TransferResource
 from horizons.util import Callback
 from horizons.world.component.storagecomponent import StorageComponent

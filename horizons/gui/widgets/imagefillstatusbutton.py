@@ -24,7 +24,7 @@ from fife.extensions import pychan
 from fife.extensions.pychan.widgets import ImageButton
 
 from horizons.util import Callback
-from horizons.util.gui import get_res_icon_path
+from horizons.gui.util import get_res_icon_path
 
 class ImageFillStatusButton(pychan.widgets.Container):
 
