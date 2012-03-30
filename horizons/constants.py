@@ -374,7 +374,7 @@ class GFX:
 	SHIP_OUTLINE_THRESHOLD = 96
 	SHIP_OUTLINE_WIDTH = 2
 
-	USE_ATLASES = True
+	USE_ATLASES = False
 
 class PATHS:
 	# paths in user dir
