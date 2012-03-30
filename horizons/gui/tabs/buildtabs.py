@@ -133,19 +133,14 @@ class BuildTab(TabInterface):
 
 	last_active_build_tab = None
 
-	def __init__(self, tabindex = 1, callback_mapping=None, session=None):
+	def __init__(self, tabindex=1, callback_mapping=None, session=None,
+	             icon_path='content/gui/icons/tabwidget/buildmenu/level{incr}_%s.png'):
 		if callback_mapping is None:
 			callback_mapping = {}
-		super(BuildTab, self).__init__(widget = 'buildtab.xml')
+		super(BuildTab, self).__init__(widget='buildtab.xml', icon_path=icon_path.format(incr=tabindex))
 		self.session = session
 		self.tabindex = tabindex
 		self.callback_mapping = callback_mapping
-
-		icon_path = 'content/gui/icons/tabwidget/buildmenu/level{incr}_%s.png'.format(incr=self.tabindex)
-		self.button_up_image = icon_path % ('u')
-		self.button_active_image = icon_path % ('a')
-		self.button_down_image = icon_path % ('d')
-		self.button_hover_image = icon_path % ('h')
 
 		self.helptext = _("Increment {increment}").format(increment = int_to_roman(self.tabindex))
 

@@ -49,16 +49,12 @@ from horizons.messaging import SettlerUpdate
 
 class OverviewTab(TabInterface):
 	has_stance = False
-	def __init__(self, instance, widget = 'overviewtab.xml', \
+	def __init__(self, instance, widget='overviewtab.xml',
 	             icon_path='content/gui/icons/tabwidget/common/building_overview_%s.png'):
-		super(OverviewTab, self).__init__(widget)
+		super(OverviewTab, self).__init__(widget=widget, icon_path=icon_path)
 		self.instance = instance
 		self.init_values()
 		self._refresh_scheduled = False
-		self.button_up_image = icon_path % 'u'
-		self.button_active_image = icon_path % 'a'
-		self.button_down_image = icon_path % 'd'
-		self.button_hover_image = icon_path % 'h'
 		self.helptext = _("Overview")
 
 		if self.__class__.has_stance:
@@ -66,12 +62,11 @@ class OverviewTab(TabInterface):
 
 		# set player emblem
 		if self.widget.child_finder('player_emblem'):
+			emblem = 'content/gui/images/tabwidget/emblems/emblem_%s.png'
 			if self.instance.owner is not None:
-				self.widget.child_finder('player_emblem').image =  \
-			    'content/gui/images/tabwidget/emblems/emblem_%s.png' %  self.instance.owner.color.name
+				self.widget.child_finder('player_emblem').image = emblem % self.instance.owner.color.name
 			else:
-				self.widget.child_finder('player_emblem').image = \
-			    'content/gui/images/tabwidget/emblems/emblem_no_player.png'
+				self.widget.child_finder('player_emblem').image = emblem % 'no_player'
 
 	def _schedule_refresh(self):
 		"""Schedule a refresh soon, dropping all other refresh request, that appear until then.

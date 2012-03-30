@@ -37,12 +37,9 @@ class BuildRelatedTab(OverviewTab):
 	"""
 	relatedfields_gui_xml = 'relatedfields.xml'
 
-	def  __init__(self, instance, icon_path = 'content/gui/icons/tabwidget/production/related_%s.png'):
-		super(BuildRelatedTab, self).__init__(
-		    widget = 'overview_buildrelated.xml',
-		    instance = instance,
-		    icon_path = 'content/gui/icons/tabwidget/production/related_%s.png'
-		)
+	def  __init__(self, instance, widget='overview_buildrelated.xml',
+	              icon_path='content/gui/icons/tabwidget/production/related_%s.png'):
+		super(BuildRelatedTab, self).__init__(widget=widget, instance=instance, icon_path=icon_path)
 		self.helptext = _("Build related fields")
 
 	def refresh(self):
@@ -91,7 +88,7 @@ class BuildRelatedTab(OverviewTab):
 			path = "content/gui/icons/buildmenu/{id:03d}{{mode}}.png".format(id=building_id)
 			helptext = self.instance.session.db.get_building_tooltip(building_id)
 
-			build_button = ImageButton(name="build{id}".format(id=building_id), \
+			build_button = ImageButton(name="build{id}".format(id=building_id),
 			                             helptext=helptext)
 			build_button.up_image = path.format(mode='')
 			build_button.down_image = path.format(mode='_h')
