@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2012-03-24 02:16+0100\n"
-"PO-Revision-Date: 2012-03-30 18:40+0200\n"
+"PO-Revision-Date: 2012-03-30 18:49+0200\n"
 "Last-Translator: Christopher Oelmueller <chris.oelmueller+uh@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: da\n"
@@ -81,7 +81,7 @@ msgstr ""
 #: database files sql
 #, python-format
 msgid "Screenshot has been saved to {file}."
-msgstr "Screenshot er blevet gemt til {fil}."
+msgstr "Screenshot er blevet gemt til {file}."
 
 # 75%
 #. (text of widget: headline)
@@ -128,7 +128,7 @@ msgstr "Du har nået det nuværende maksimale tilvækst. Dine indbyggere vil ikk
 #: database files sql
 #, python-format
 msgid "You need more {resource} to build this building."
-msgstr "Du har brug for mere {ressource} til at bygge denne bygning."
+msgstr "Du har brug for mere {resource} til at bygge denne bygning."
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
@@ -163,7 +163,7 @@ msgstr "Dit spil er blevet autogemt."
 #: database files sql
 #, python-format
 msgid "Your inhabitants reached level {level}."
-msgstr "Dine indbyggere nåede niveau {niveau}."
+msgstr "Dine indbyggere nåede niveau {level}."
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
@@ -707,7 +707,7 @@ msgstr "Gemt på {time}"
 #, python-format
 msgid "Saved {amount} time"
 msgid_plural "Saved {amount} times"
-msgstr[0] "Gemt {amount} tid"
+msgstr[0] ""
 msgstr[1] ""
 
 #: horizons/gui/gui.py:625
@@ -1818,12 +1818,12 @@ msgstr ""
 #. (text of widget: ship_label)
 #: horizons/i18n/guitranslations.py:481 horizons/i18n/guitranslations.py:492
 msgid "Ship:"
-msgstr ""Skib ... "
+msgstr "Skib:"
 
 #. (text of widget: trade_with_label)
 #: horizons/i18n/guitranslations.py:483 horizons/i18n/guitranslations.py:494
 msgid "Trade partner:"
-msgstr "Handel partner:"
+msgstr "Handelspartner:"
 
 #. (helptext of widget: configure_route)
 #: horizons/i18n/guitranslations.py:501 horizons/i18n/guitranslations.py:512
@@ -1964,7 +1964,7 @@ msgstr "Hele verden"
 #. (text of widget: weird_button_4) Sends the chat message to all players (default)
 #: horizons/i18n/guitranslations.py:604
 msgid "Everybody"
-msgstr ""Alle"
+msgstr ""
 
 #. (text of widget: headline_game_messages)
 #: horizons/i18n/guitranslations.py:608
@@ -2138,6 +2138,7 @@ msgstr ""
 
 #. (text of widget: lbl_COORD_TOOLTIP)
 #: horizons/i18n/guitranslations.py:722
+#, fuzzy
 msgid "Show coordinate values (Debug)"
 msgstr "Vis koordinat-værdier (Debug)"
 
@@ -3593,7 +3594,7 @@ msgstr "Angreb {owner}"
 
 #: run_uh.py:206
 msgid "Unknown Horizons has crashed."
-msgstr "Ukendte Horizons er gået ned."
+msgstr "Unknown Horizons er gået ned."
 
 #: run_uh.py:208
 msgid "We are very sorry for this and want to fix underlying error."
