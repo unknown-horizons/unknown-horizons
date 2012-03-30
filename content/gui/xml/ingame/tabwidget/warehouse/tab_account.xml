@@ -38,6 +38,7 @@
 		up_image="content/gui/icons/widgets/cityinfo/settlement.png"
 		down_image="content/gui/icons/widgets/cityinfo/settlement.png"
 		hover_image="content/gui/icons/widgets/cityinfo/settlement.png"
+		is_focusable="0"
 		helptext="Show resources produced in this settlement" />
 	</Container>
 
