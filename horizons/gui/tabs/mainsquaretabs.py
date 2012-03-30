@@ -23,9 +23,8 @@ import operator
 
 import horizons.main
 
-from horizons.gui.tabs.overviewtab import OverviewTab
 from horizons.gui.widgets.productionoverview import ProductionOverview
-from horizons.gui.tabs.overviewtab import _setup_tax_slider
+from horizons.gui.tabs.overviewtab import OverviewTab, _setup_tax_slider
 
 from horizons.util import Callback
 from horizons.util.messaging.message import UpgradePermissionsChanged

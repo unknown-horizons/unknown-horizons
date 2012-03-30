@@ -46,7 +46,12 @@ class ProductionOverview(StatsWidget):
 
 	def _init_gui(self):
 		super(ProductionOverview, self)._init_gui()
+		self.session.gui.on_escape = self.hide
 		self._gui.findChild(name="okButton").capture(self.hide)
+
+	def hide(self):
+		super(ProductionOverview, self).hide()
+		self.session.gui.on_escape = self.session.gui.toggle_pause
 
 	def refresh(self):
 		super(ProductionOverview, self).refresh()
@@ -68,12 +73,13 @@ class ProductionOverview(StatsWidget):
 		if not displayed:
 			return
 
-		icon = create_resource_icon(resource_id, self.db, size = 16)
+		icon = create_resource_icon(resource_id, self.db, size=16)
 		icon.name = 'icon_%s' % resource_id
+		icon.max_size = icon.min_size = icon.size = (16, 16)
 
 		label = widgets.Label(name = 'resource_%s' % resource_id)
 		label.text = unicode(res_name)
-		label.min_size = label.max_size = (70, 20)
+		label.min_size = (100, 20)
 
 		amount_label = widgets.Label(name = 'produced_sum_%s' % resource_id)
 		amount_label.text = unicode(amount)
