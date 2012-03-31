@@ -272,6 +272,8 @@ class MultiplayerMenu(object):
 
 		self.__update_game_details(game)
 		self.current.findChild(name="game_players").text = u", ".join(game.get_players())
+		if(game.get_player_count() <= 1): # you are not allowed to start game single
+			self.current.findChild(name="start_multiplayer_game").setInactive()
 		textfield = self.current.findChild(name="chatTextField")
 		textfield.capture(self.__send_chat_message)
 		textfield.capture(self.__chatfield_onfocus, 'mouseReleased', 'default')
@@ -317,9 +319,12 @@ class MultiplayerMenu(object):
 
 	def __player_joined(self, game, player):
 		self.__print_event_message(u"{player} has joined the game".format(player=player.name))
+		self.current.findChild(name="start_multiplayer_game").setInactive(False)
 
 	def __player_left(self, game, player):
 		self.__print_event_message(u"{player} has left the game".format(player=player.name))
+		if(game.playercnt <=1): # you are not allowed to start game single
+			self.current.findChild(name="start_multiplayer_game").setInactive(True)
 
 	def __player_changed_name(self, game, plold, plnew, myself):
 		if myself:

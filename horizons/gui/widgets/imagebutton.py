@@ -37,6 +37,15 @@ class OkButton(ImageButton):
 			up_image="content/gui/images/buttons/ok.png",
 			hover_image="content/gui/images/buttons/ok_h.png",
 			down_image="content/gui/images/buttons/ok.png", **kwargs)
+	def setInactive(self,state=True):
+		if(state):
+			self.up_image = "content/gui/images/buttons/ok_bw.png"
+			self.down_image = "content/gui/images/buttons/ok_bw.png"
+			self.hover_image = "content/gui/images/buttons/ok_bw.png"
+		else:
+			self.up_image = "content/gui/images/buttons/ok.png"
+			self.down_image = "content/gui/images/buttons/ok_h.png"
+			self.hover_image = "content/gui/images/buttons/ok.png"			
 
 class CancelButton(ImageButton):
 	"""The CancelButton is a shortcut for an ImageButton with our cancel / close
@@ -53,6 +62,15 @@ class CancelButton(ImageButton):
 			up_image="content/gui/images/buttons/close.png",
 			hover_image="content/gui/images/buttons/close_h.png",
 			down_image="content/gui/images/buttons/close.png", **kwargs)
+	def setInactive(self,state=True):
+		if(state):
+			self.up_image = "content/gui/images/buttons/close_bw.png"
+			self.down_image = "content/gui/images/buttons/close_bw.png"
+			self.hover_image = "content/gui/images/buttons/close_bw.png"
+		else:
+			self.up_image = "content/gui/images/buttons/close.png"
+			self.down_image = "content/gui/images/buttons/close_h.png"
+			self.hover_image = "content/gui/images/buttons/close.png"
 
 class DeleteButton(ImageButton):
 	"""The DeleteButton is a shortcut for an ImageButton with our delete / tear
@@ -69,3 +87,12 @@ class DeleteButton(ImageButton):
 			up_image="content/gui/images/buttons/delete.png",
 			hover_image="content/gui/images/buttons/delete_h.png",
 			down_image="content/gui/images/buttons/delete.png", **kwargs)
+	def setInactive(self,state=True):
+		if(state):
+			self.up_image = "content/gui/images/buttons/delete_bw.png"
+			self.down_image = "content/gui/images/buttons/delete_bw.png"
+			self.hover_image = "content/gui/images/buttons/delete_bw.png"
+		else:
+			self.up_image = "content/gui/images/buttons/delete.png"
+			self.down_image = "content/gui/images/buttons/delete_h.png"
+			self.hover_image = "content/gui/images/buttons/delete.png"
