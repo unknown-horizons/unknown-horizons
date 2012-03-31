@@ -207,7 +207,6 @@ def _get_player_settlements(session):
 def _get_scenario_vars(session):
 	return session.scenario_eventhandler._scenario_variables
 
-@register()
 def _building_connected_to_any_of(session, building_class, *classes):
 	"""Returns the exact amount of buildings of type building_class that are
 	connected to any building of a class in classes. Counts all settlements."""
@@ -236,7 +235,6 @@ def player_number_of_ships_lt(session, player_id, number):
 	number_of_ships = len([s for s in session.world.ships if s.owner.worldid == player_id])
 	return number_of_ships < number
 
-@register()
 def _building_connected_to_all_of(session, building_class, *classes):
 	"""Returns the exact amount of buildings of type building_class that are
 	connected to any building of each class in classes. Counts all settlements."""
