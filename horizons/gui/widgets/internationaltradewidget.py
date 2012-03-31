@@ -23,7 +23,7 @@ import logging
 
 from horizons.gui.widgets.imagefillstatusbutton import ImageFillStatusButton
 from horizons.gui.util import load_uh_widget
-from horizons.command.uioptions import SellResource, BuyResource
+from horizons.command.uioptions import SellResource, BuyResource, TransferResource
 from horizons.util import Callback
 from horizons.world.component.tradepostcomponent import TradePostComponent
 from horizons.world.component.storagecomponent import StorageComponent
@@ -71,7 +71,7 @@ class InternationalTradeWidget(object):
 	def draw_widget(self):
 		self.widget.findChild(name='ship_name').text = self.instance.get_component(NamedComponent).name
 		self.partners = self.find_partner()
-		if len(self.partners) > 0:
+		if self.partners:
 			partner_label = self.widget.findChild(name='partners')
 			nearest_partner = self.get_nearest_partner(self.partners)
 			partner_label.text = self.partners[nearest_partner].settlement.get_component(NamedComponent).name
@@ -84,15 +84,33 @@ class InternationalTradeWidget(object):
 			if different_partner:
 				self.__add_changelisteners()
 
-			selling_inventory = self.widget.findChild(name='selling_inventory')
-			selling_inventory.init(self.instance.session.db, self.partner.get_component(StorageComponent).inventory, self.partner.settlement.get_component(TradePostComponent).sell_list, True)
-			for button in self.get_widgets_by_class(selling_inventory, ImageFillStatusButton):
-				button.button.capture(Callback(self.transfer, button.res_id, self.partner.settlement, True))
+			is_own = self.partner.owner is self.instance.owner
+			if not is_own: # foreign warehouse => disable exchange widget, enable trade interface
+				self.widget.findChild(name='domestic').hide()
+				selling_inventory = self.widget.findChild(name='selling_inventory')
+				selling_inventory.init(self.instance.session.db,
+						self.partner.get_component(StorageComponent).inventory,
+						self.partner.settlement.get_component(TradePostComponent).sell_list,
+						selling=True)
+				for button in self.get_widgets_by_class(selling_inventory, ImageFillStatusButton):
+					button.button.capture(Callback(self.transfer, button.res_id, self.partner.settlement, True))
 
-			buying_inventory = self.widget.findChild(name='buying_inventory')
-			buying_inventory.init(self.instance.session.db, self.partner.get_component(StorageComponent).inventory, self.partner.settlement.get_component(TradePostComponent).buy_list, False)
-			for button in self.get_widgets_by_class(buying_inventory, ImageFillStatusButton):
-				button.button.capture(Callback(self.transfer, button.res_id, self.partner.settlement, False))
+				buying_inventory = self.widget.findChild(name='buying_inventory')
+				buying_inventory.init(self.instance.session.db,
+						self.partner.get_component(StorageComponent).inventory,
+						self.partner.settlement.get_component(TradePostComponent).buy_list,
+						selling=False)
+				for button in self.get_widgets_by_class(buying_inventory, ImageFillStatusButton):
+					button.button.capture(Callback(self.transfer, button.res_id, self.partner.settlement, False))
+				self.widget.findChild(name='international').show()
+			else: # own warehouse => enable exchange widget, disable trade interface
+				self.widget.findChild(name='international').hide()
+				inv_partner = self.widget.findChild(name='inventory_partner') # This is no BuySellInventory!
+				inv_partner.init(self.instance.session.db,
+						self.partner.get_component(StorageComponent).inventory)
+				for button in self.get_widgets_by_class(inv_partner, ImageFillStatusButton):
+					button.button.capture(Callback(self.transfer, button.res_id, self.partner.settlement, self.instance))
+				self.widget.findChild(name='domestic').show()
 
 			inv = self.widget.findChild(name='inventory_ship')
 			inv.init(self.instance.session.db, self.instance.get_component(StorageComponent).inventory)
@@ -144,14 +162,32 @@ class InternationalTradeWidget(object):
 	def transfer(self, res_id, settlement, selling):
 		"""Buy or sell the resources"""
 		if self.instance.position.distance(settlement.warehouse.position) <= self.radius:
-			if selling:
-				self.log.debug('InternationalTradeWidget : %s/%s is selling %d of res %d to %s/%s', \
-					self.instance.get_component(NamedComponent).name, self.instance.owner.name, self.exchange, res_id, settlement.get_component(NamedComponent).name, settlement.owner.name)
-				SellResource(settlement.get_component(TradePostComponent), self.instance, res_id, self.exchange).execute(self.instance.session)
-			else:
-				self.log.debug('InternationalTradeWidget : %s/%s is buying %d of res %d from %s/%s', \
+			is_own = settlement.owner is self.instance.owner
+			if selling and not is_own: # ship sells resources to settlement
+				self.log.debug('InternationalTrade: %s/%s is selling %d of res %d to %s/%s',
+					self.instance.get_component(NamedComponent).name, self.instance.owner.name,
+					self.exchange, res_id,
+					settlement.get_component(NamedComponent).name, settlement.owner.name)
+				SellResource(settlement.get_component(TradePostComponent), self.instance,
+					res_id, self.exchange).execute(self.instance.session)
+			elif selling and is_own: # transfer from ship to settlement
+				self.log.debug('Trade: Transferring %s of res %s from %s/%s to %s/%s',
+					self.exchange, res_id,
+					settlement.get_component(NamedComponent).name, settlement.owner.name,
+					self.instance.get_component(NamedComponent).name, self.instance.owner.name)
+				TransferResource(self.exchange, res_id, settlement,
+					self.instance).execute(self.instance.session)
+			elif not selling and not is_own: # ship buys resources from settlement
+				self.log.debug('InternationalTrade: %s/%s is buying %d of res %d from %s/%s', \
 					self.instance.get_component(NamedComponent).name, self.instance.owner.name, self.exchange, res_id, settlement.get_component(NamedComponent).name, settlement.owner.name)
 				BuyResource(settlement.get_component(TradePostComponent), self.instance, res_id, self.exchange).execute(self.instance.session)
+			elif not selling and is_own: # transfer from settlement to ship
+				self.log.debug('Trade: Transferring %s of res %s from %s/%s to %s/%s',
+					self.exchange, res_id,
+					self.instance.get_component(NamedComponent).name, self.instance.owner.name,
+					settlement.get_component(NamedComponent).name, settlement.owner.name)
+				TransferResource(self.exchange, res_id, self.instance,
+					settlement).execute(self.instance.session)
 			# update gui
 			self.draw_widget()
 
@@ -176,8 +212,8 @@ class InternationalTradeWidget(object):
 		nearest = None
 		nearest_dist = None
 		for partner in partners:
-			if partner.owner is not self.instance.owner: # international trade ignored domestic warehouses
-				dist = partner.position.distance(self.instance.position)
-				nearest = partners.index(partner) if dist < nearest_dist or nearest_dist is None else nearest
-				nearest_dist = dist if dist < nearest_dist or nearest_dist is None else nearest_dist
+			dist = partner.position.distance(self.instance.position)
+			if dist < nearest_dist or nearest_dist is None:
+				nearest_dist = dist
+				nearest = partners.index(partner)
 		return nearest

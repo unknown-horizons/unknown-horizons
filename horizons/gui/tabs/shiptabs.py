@@ -83,11 +83,10 @@ class ShipOverviewTab(OverviewTab):
 
 		if warehouses:
 			if warehouses[0].owner is self.instance.owner:
-				wdg = TradeWidget(self.instance)
 				helptext = _('Load/Unload')
 			else:
-				wdg = InternationalTradeWidget(self.instance)
 				helptext = _('Buy/Sell')
+			wdg = InternationalTradeWidget(self.instance)
 			events['trade'] = Callback(self.instance.session.ingame_gui.show_menu, wdg)
 			self.widget.findChild(name='trade_bg').set_active()
 			self.widget.findChild(name='trade').set_active()
