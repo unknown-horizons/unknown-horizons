@@ -18,17 +18,13 @@
 # Free Software Foundation, Inc.,
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
-import heapq
-import operator
-
-import horizons.main
 
 from horizons.gui.widgets.productionoverview import ProductionOverview
-from horizons.gui.tabs.overviewtab import OverviewTab, _setup_tax_slider
+from horizons.gui.tabs import OverviewTab
+from horizons.gui.tabs.residentialtabs import setup_tax_slider
 
 from horizons.util import Callback
 from horizons.messaging import UpgradePermissionsChanged
-from horizons.gui.util import create_resource_icon
 from horizons.command.uioptions import SetSettlementUpgradePermissions
 from horizons.constants import BUILDINGS, SETTLER
 from horizons.world.component.tradepostcomponent import TradePostComponent
@@ -101,45 +97,6 @@ class MainSquareOverviewTab(AccountTab):
 		self.widget.mapEvents(events)
 		super(MainSquareOverviewTab, self).refresh()
 
-class MainSquareSettlerTabSettlerTab(MainSquareTab):
-	"""Displays information about the settlers on average as overview"""
-	def __init__(self, instance):
-		super(MainSquareSettlerTabSettlerTab, self).__init__(
-				widget='mainsquare_inhabitants.xml',
-				instance=instance,
-				icon_path='content/gui/icons/widgets/cityinfo/inhabitants.png')
-		self.helptext = _("Settler overview")
-
-		self._old_most_needed_res_icon = None
-
-	def refresh(self):
-		happinesses = []
-		needed_res = {}
-		for building in self.settlement.buildings:
-			if hasattr(building, 'happiness'):
-				happinesses.append(building.happiness)
-				for res in building.get_currently_not_consumed_resources():
-					try:
-						needed_res[res] += 1
-					except KeyError:
-						needed_res[res] = 1
-
-		num_happinesses = max(len(happinesses), 1) # make sure not to divide by 0
-		avg_happiness = int( sum(happinesses, 0.0) / num_happinesses )
-		self.widget.child_finder('avg_happiness').text = unicode(avg_happiness) + u'/100'
-
-		container = self.widget.child_finder('most_needed_res_container')
-		if self._old_most_needed_res_icon is not None:
-			container.removeChild(self._old_most_needed_res_icon)
-			self._old_most_needed_res_icon = None
-
-		if len(needed_res) > 0:
-			most_need_res = heapq.nlargest(1, needed_res.iteritems(), operator.itemgetter(1))[0][0]
-			most_needed_res_icon = create_resource_icon(most_need_res, horizons.main.db)
-			container.addChild(most_needed_res_icon)
-			self._old_most_needed_res_icon = most_needed_res_icon
-		container.adaptLayout()
-
 class MainSquareSettlerLevelTab(MainSquareTab):
 	LEVEL = None # overwrite in subclass
 	def __init__(self, instance, widget):
@@ -150,7 +107,7 @@ class MainSquareSettlerLevelTab(MainSquareTab):
 
 		slider = self.widget.child_finder('tax_slider')
 		val_label = self.widget.child_finder('tax_val_label')
-		_setup_tax_slider(slider, val_label, self.settlement, self.__class__.LEVEL)
+		setup_tax_slider(slider, val_label, self.settlement, self.__class__.LEVEL)
 		self.widget.child_finder('tax_val_label').text = unicode(self.settlement.tax_settings[self.__class__.LEVEL])
 
 	@classmethod
@@ -166,8 +123,8 @@ class MainSquareSettlerLevelTab(MainSquareTab):
 		UpgradePermissionsChanged.unsubscribe(self.refresh_via_message, sender=self.settlement)
 
 	def _get_last_tax_paid(self):
-		return sum([building.last_tax_payed for building in self.settlement.buildings_by_id[BUILDINGS.RESIDENTIAL_CLASS] if \
-			building.level == self.__class__.LEVEL])
+		houses = self.settlement.buildings_by_id[BUILDINGS.RESIDENTIAL_CLASS]
+		return sum([building.last_tax_payed for building in houses if building.level == self.__class__.LEVEL])
 
 	def _get_resident_counts(self):
 		result = {}
