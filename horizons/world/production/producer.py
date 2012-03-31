@@ -549,11 +549,12 @@ class UnitProducer(QueueProducer):
 							if self.instance.island.get_tile(point) is None:
 								tile = self.session.world.get_tile(point)
 								if tile is not None and tile.is_water and coord not in self.session.world.ship_map:
+									found_tile = True
 									# execute bypassing the manager, it's simulated on every machine
 									CreateUnit(self.instance.owner.worldid, unit, point.x, point.y)(issuer=self.instance.owner)
-									# Fire a message indicating that the ship has been created
-									self.session.ingame_gui.message_widget.add(None, None, 'NEW_UNIT')
-									found_tile = True
+									if self.instance.owner.is_local_player:
+										# Fire a message indicating that the ship has been created
+										self.session.ingame_gui.message_widget.add(point.x, point.y, 'NEW_UNIT')
 									break
 						radius += 1
 
