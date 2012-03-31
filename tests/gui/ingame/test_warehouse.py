@@ -22,37 +22,20 @@
 from tests.gui import TestFinished, gui_test
 
 
-@gui_test(use_dev_map=True, timeout=60)
-def test_logbook(gui):
-	"""
-	Open the (empty) logbook.
-	"""
-	yield # test needs to be a generator for now
-
-	gui.trigger('mainhud', 'logbook/action/default')
-
-	logbook = gui.find(name='captains_log')
-	assert logbook
-
-	# Close it and confirm it's gone
-	gui.trigger(logbook, 'okButton/action/default')
-	assert gui.find(name='captains_log') is None
-
-	yield TestFinished
-
-
 @gui_test(use_fixture='boatbuilder', timeout=60)
-def test_logbook_statistics(gui):
-	"""Open the 3 three different statistic tabs in the logbook."""
+def test_production_overview(gui):
 	yield
 
-	# Open statistics page in logbook
-	gui.trigger('mainhud', 'logbook/action/default')
-	gui.trigger('captains_log', 'statistics_rt/mouseClicked/default')
+	# select warehouse
+	gui.cursor_click(52, 12, 'left')
 
-	# Open players/ships/settlements tabs
-	gui.trigger('captains_log', 'stats_players/action/default')
-	gui.trigger('captains_log', 'stats_ships/action/default')
-	gui.trigger('captains_log', 'stats_settlements/action/default')
+	# open production overview
+	gui.trigger('tab_account', 'show_production_overview/mouseClicked/default')
+
+	# leave it open for a while to let a refresh happen
+	for _ in gui.run(seconds=2):
+		yield
+
+	gui.trigger('production_overview', 'okButton/action/default')
 
 	yield TestFinished
