@@ -37,7 +37,6 @@ CREATE TABLE ship_route_resources(ship_id INTEGER, waypoint_index INTEGER, res I
 CREATE TABLE 'weapon_storage' ('owner_id' INT, 'weapon_id' INT, 'number' INT, remaining_ticks INT);
 CREATE TABLE unit_health ('owner_id' INT, 'health' FLOAT);
 CREATE TABLE 'unit' ('type' INTEGER NOT NULL, 'location' INTEGER DEFAULT NULL, 'x' INTEGER DEFAULT NULL, 'y' INTEGER DEFAULT NULL, 'owner' INTEGER NOT NULL);
-CREATE TABLE 'component'(worldid INT, name TEXT, module TEXT, class TEXT);
 CREATE TABLE bullet(worldid INT, startx INT, starty INT, destx INT, desty INT, speed INT, image TEXT);
 CREATE TABLE attacks(remaining_ticks INT, weapon_id INT, damage INT, dest_x INT, dest_y INT);
 CREATE TABLE target(worldid INT, target_id INT);
