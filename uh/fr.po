@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2012-03-24 02:16+0100\n"
-"PO-Revision-Date: 2012-03-31 10:00+0200\n"
+"PO-Revision-Date: 2012-03-31 10:26+0200\n"
 "Last-Translator: Sebastien (seblabel) <sebastiencharpentier@laposte.net>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: fr\n"
@@ -1135,11 +1135,15 @@ msgstr ""
 #, python-format
 msgid "Will buy {resource_name} for {price} gold/t whenever less than {limit}t are in stock."
 msgstr ""
+"Achetera {resource_name} au prix de {price} or/t dès qu'il y aura moins de "
+"{limit}t en stock."
 
 #: horizons/gui/tabs/buyselltab.py:367
 #, python-format
 msgid "Will sell {resource_name} for {price} gold/t whenever more than {limit}t are available."
 msgstr ""
+"Vendra {resource_name} au prix de {price} or/t dès qu'il y aura plus de "
+"{limit}t en stock."
 
 #. (text of widget: headline)
 #: horizons/gui/tabs/inventorytab.py:38 horizons/i18n/guitranslations.py:219
@@ -1347,23 +1351,27 @@ msgstr "Cliquez pour ajouter un nouveau slot."
 #: horizons/gui/widgets/resourceoverviewbar.py:389
 #: horizons/gui/widgets/resourceoverviewbar.py:394
 msgid "Reset to default"
-msgstr ""
+msgstr "Réinitialiser"
 
 #: horizons/gui/widgets/resourceoverviewbar.py:390
 msgid "Reset this configuration to the factory default."
-msgstr ""
+msgstr "Remettre la configuration par defaut."
 
 #: horizons/gui/widgets/resourceoverviewbar.py:395
 msgid "Reset this settlement's displayed resources to the default configuration you have saved."
 msgstr ""
+"Réinitialiser les ressources affichées à la configuration par défaut que "
+"vous avez sauvegardé."
 
 #: horizons/gui/widgets/resourceoverviewbar.py:399
 msgid "Reset to factory"
-msgstr ""
+msgstr "Paramétrage usine"
 
 #: horizons/gui/widgets/resourceoverviewbar.py:400
 msgid "Reset the default configuration (which you see here) to the factory default for all settlements."
 msgstr ""
+"Réinitialiser la configuration par défaut (que vous voyez ici) pour toutes "
+"les colonies."
 
 #. (helptext of widget: start_route) Trade route
 #: horizons/gui/widgets/routeconfig.py:88 horizons/i18n/guitranslations.py:642
@@ -1997,12 +2005,12 @@ msgstr "Reprendre la production"
 #. (text of widget: make_default_btn)
 #: horizons/i18n/guitranslations.py:568
 msgid "Save as default"
-msgstr ""
+msgstr "Enregistrer comme paramètres par défaut"
 
 #. (text of widget: reset_default_btn)
 #: horizons/i18n/guitranslations.py:570
 msgid "Restore default"
-msgstr ""
+msgstr "Restaurer les paramètres par défaut"
 
 # 94%
 #. (text of widget: headline) Please keep the translation similarly short and concise, else the tooltip is not well understood by players.
@@ -2014,11 +2022,15 @@ msgstr "Sélectionner les ressources :"
 #: horizons/i18n/guitranslations.py:574
 msgid "Save current resource configuration as default for all settlements."
 msgstr ""
+"Enregistrer la configuration actuelle des ressources par défaut pour toutes "
+"les colonies."
 
 #. (helptext of widget: reset_default_btn)
 #: horizons/i18n/guitranslations.py:576
 msgid "Reset default resource configuration for all settlements."
 msgstr ""
+"Réinitialiser la configuration des ressources par défaut pour toutes les "
+"colonies."
 
 #. (helptext of widget: headline) Please keep the translation similarly short and concise, else the tooltip is not well understood by players.
 #: horizons/i18n/guitranslations.py:578
@@ -2120,7 +2132,7 @@ msgstr "Choisir ce scénario"
 #. (text of widget: lbl_route_activity)
 #: horizons/i18n/guitranslations.py:634
 msgid "Route activity:"
-msgstr ""
+msgstr "Activité de la route:"
 
 #. (text of widget: lbl_wait_at_load) Trade route setting: Whether to wait until all goods could be loaded.
 #: horizons/i18n/guitranslations.py:636
@@ -2577,7 +2589,7 @@ msgstr "Profondeur des couleurs :"
 #. (text of widget: debug_log_lbl)
 #: horizons/i18n/guitranslations.py:891
 msgid "Enable logging"
-msgstr ""
+msgstr "Activer la journalisation"
 
 #. (text of widget: edge_scrolling_label)
 #: horizons/i18n/guitranslations.py:893
@@ -2592,7 +2604,7 @@ msgstr "Volume des effets sonores :"
 #. (text of widget: fps_label)
 #: horizons/i18n/guitranslations.py:897
 msgid "Frame rate limit:"
-msgstr ""
+msgstr "Limite frame rate:"
 
 #. (text of widget: headline_language)
 #: horizons/i18n/guitranslations.py:901
@@ -2700,6 +2712,9 @@ msgstr "Si réglé sur 0, utilise le pilote par défaut"
 #: horizons/i18n/guitranslations.py:945
 msgid "Don't use in normal game session. Decides whether to write debug information in the logging directory of your user directory. Slows the game down."
 msgstr ""
+"Ne pas utiliser en session de jeu normale. Écrit des informations de "
+"débogage dans le répertoire de journalisation de votre répertoire "
+"utilisateur. Ralentit le jeu."
 
 #. (helptext of widget: edge_scrolling_label)
 #: horizons/i18n/guitranslations.py:947
@@ -2711,7 +2726,7 @@ msgstr ""
 #. (helptext of widget: fps_label)
 #: horizons/i18n/guitranslations.py:949
 msgid "Set the maximum frame rate used. Default: 60 fps."
-msgstr ""
+msgstr "Réglez la vitesse de défilement maximale utilisée. Par défaut: 60 fps."
 
 #. (helptext of widget: minimap_rotation_label)
 #: horizons/i18n/guitranslations.py:951
@@ -3014,7 +3029,7 @@ msgstr "Cultive les champs et élève du bétail."
 #. name of buildings:fireservice
 #: horizons/i18n/objecttranslations.py:163
 msgid "Fire Station"
-msgstr ""
+msgstr "Caserne des pompiers"
 
 #. tooltip_text of buildings:fireservice
 #: horizons/i18n/objecttranslations.py:165
@@ -3237,18 +3252,17 @@ msgstr "Tailleur de pierre"
 #. tooltip_text of buildings:stonemason
 #: horizons/i18n/objecttranslations.py:320
 msgid "Carves stone tops into bricks."
-msgstr ""
+msgstr "Taille les pierre en briques."
 
 #. name of buildings:stonepit
 #: horizons/i18n/objecttranslations.py:325
 msgid "Stone Pit"
-msgstr ""
+msgstr "Carrière"
 
 #. tooltip_text of buildings:stonepit
 #: horizons/i18n/objecttranslations.py:327
-#, fuzzy
 msgid "Gets stone from a mountain."
-msgstr "Récupère de la pierre d'une montagne"
+msgstr "Récupère de la pierre d'une montagne."
 
 #. name_0 of buildings:storagetent
 #: horizons/i18n/objecttranslations.py:332
@@ -3294,27 +3308,28 @@ msgstr "Tente"
 #. name_1 of buildings:tent
 #: horizons/i18n/objecttranslations.py:357
 msgid "Hut"
-msgstr ""
+msgstr "Tente"
 
+# 80%
 #. name_2 of buildings:tent
 #: horizons/i18n/objecttranslations.py:359
 msgid "House"
-msgstr ""
+msgstr "Maison"
 
 #. name_3 of buildings:tent
 #: horizons/i18n/objecttranslations.py:361
 msgid "Stone house"
-msgstr ""
+msgstr "Maison de pierre"
 
 #. name_4 of buildings:tent
 #: horizons/i18n/objecttranslations.py:363
 msgid "Estate"
-msgstr ""
+msgstr "Biens"
 
 #. name_5 of buildings:tent
 #: horizons/i18n/objecttranslations.py:365
 msgid "Manor"
-msgstr ""
+msgstr "Manoir"
 
 #. tooltip_text of buildings:tent
 #: horizons/i18n/objecttranslations.py:367
@@ -3408,10 +3423,12 @@ msgstr "Produit du vin à partir de raisins."
 msgid "Warehouse"
 msgstr "Comptoir"
 
+# The word "tisseur" is more common than "tisserand"
+# More common ? not at all, the good french word is tisserand, and more than that, it's a more contextual word.  
 #. name of buildings:weaverstent
 #: horizons/i18n/objecttranslations.py:433
 msgid "Weaver's Hut"
-msgstr ""
+msgstr "Tente du tisserand"
 
 #. tooltip_text of buildings:weaverstent
 #: horizons/i18n/objecttranslations.py:435
@@ -3425,9 +3442,8 @@ msgstr "Moulin à vent"
 
 #. tooltip_text of buildings:windmill
 #: horizons/i18n/objecttranslations.py:442
-#, fuzzy
 msgid "Grinds corn into flour."
-msgstr "Produit de la farine en moulinant des céréales. "
+msgstr "Produit de la farine à partir de maïs. "
 
 #. name of buildings:woodentower
 #: horizons/i18n/objecttranslations.py:447
@@ -3749,9 +3765,10 @@ msgstr "Unknown Horizons est tombé en panne."
 
 # 83%
 #: run_uh.py:208
-#, fuzzy
 msgid "We are very sorry for this and want to fix underlying error."
-msgstr "Nous vous prions de bien vouloir nous excuser pour la gêne occasionnée."
+msgstr ""
+"Nous sommes désolé de cette erreur, nous allons faire notre possible pour la "
+"corriger."
 
 #: run_uh.py:209
 msgid "In order to do this, we need the information from the logfile:"
@@ -3762,6 +3779,8 @@ msgstr ""
 #: run_uh.py:211
 msgid "Please give it to us via IRC or our forum, for both see http://unknown-horizons.org ."
 msgstr ""
+"Tenez nous informé par IRC ou par notre forum, voyez http://unknown-"
+"horizons.org ."
 
 #: run_uh.py:251
 msgid "Error: Unable to find required libraries"
