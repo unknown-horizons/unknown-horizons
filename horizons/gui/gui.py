@@ -202,7 +202,7 @@ class Gui(SingleplayerMenu, MultiplayerMenu):
 				PauseCommand().execute(self.session)
 			if self.session is not None:
 				self.session.ingame_gui.on_escape() # close dialogs that might be open
-			self.show_dialog(help_dlg, {OkButton.DEFAULT_NAME : True}, onPressEscape = True)
+			self.show_dialog(help_dlg, {OkButton.DEFAULT_NAME : True})
 			self.on_help() # toggle state
 		else:
 			self._help_is_displayed = False
@@ -213,7 +213,7 @@ class Gui(SingleplayerMenu, MultiplayerMenu):
 	def show_quit(self):
 		"""Shows the quit dialog """
 		message = _("Are you sure you want to quit Unknown Horizons?")
-		if self.show_popup(_("Quit Game"), message, show_cancel_button = True):
+		if self.show_popup(_("Quit Game"), message, show_cancel_button=True):
 			horizons.main.quit()
 
 	def quit_session(self, force=False):
@@ -241,7 +241,7 @@ class Gui(SingleplayerMenu, MultiplayerMenu):
 		introduces information for SoC applicants (if valid).
 		"""
 		AmbientSoundComponent.play_special("message")
-		self.show_dialog(self.widgets['call_for_support'], {OkButton.DEFAULT_NAME : True}, onPressEscape = True)
+		self.show_dialog(self.widgets['call_for_support'], {OkButton.DEFAULT_NAME : True})
 
 	def show_credits(self, number=0):
 		"""Shows the credits dialog. """
@@ -259,7 +259,7 @@ class Gui(SingleplayerMenu, MultiplayerMenu):
 
 		if self.current_dialog is not None:
 			self.current_dialog.hide()
-		self.show_dialog(self.widgets['credits'+str(number)], {OkButton.DEFAULT_NAME : True}, onPressEscape = True)
+		self.show_dialog(self.widgets['credits'+str(number)], {OkButton.DEFAULT_NAME : True})
 
 	def show_select_savegame(self, mode, sanity_checker=None, sanity_criteria=None):
 		"""Shows menu to select a savegame.
@@ -337,16 +337,16 @@ class Gui(SingleplayerMenu, MultiplayerMenu):
 		})
 		self.current.findChild(name="savegamelist").capture(cb, event_name="keyPressed")
 
-		eventMap = {
+		bind = {
 			OkButton.DEFAULT_NAME     : True,
 			CancelButton.DEFAULT_NAME : False,
 			DeleteButton.DEFAULT_NAME : 'delete'
 		}
 
 		if mode == 'save':
-			eventMap['savegamefile'] = True
+			bind['savegamefile'] = True
 
-		retval = self.show_dialog(self.current, eventMap, onPressEscape = False)
+		retval = self.show_dialog(self.current, bind)
 		if not retval: # cancelled
 			self.current = old_current
 			return
@@ -420,15 +420,12 @@ class Gui(SingleplayerMenu, MultiplayerMenu):
 		return self.current is not None and self.current.isVisible()
 
 
-	def show_dialog(self, dlg, bind, onPressEscape = None, event_map = None):
+	def show_dialog(self, dlg, bind, event_map = None):
 		"""Shows any pychan dialog.
 		@param dlg: dialog that is to be shown
 		@param bind: events that make the dialog return + return values{ 'ok': callback, 'cancel': callback }
-		@param onPressEscape: callback that is to be called if the escape button is pressed
 		@param event_map: dictionary with callbacks for buttons. See pychan docu: pychan.widget.mapEvents()
 		"""
-		# TODO: get rid of onPressEscape, only used below when cancelButton is not defined
-
 		self.current_dialog = dlg
 		if event_map is not None:
 			dlg.mapEvents(event_map)
@@ -443,8 +440,7 @@ class Gui(SingleplayerMenu, MultiplayerMenu):
 					callback()
 				else:
 					# escape should hide the dialog default
-					print 'ici', onPressEscape
-					pychan.internal.get_manager().breakFromMainLoop(onPressEscape)
+					pychan.internal.get_manager().breakFromMainLoop(returnValue=False)
 					dlg.hide()
 			elif event.getKey().getValue() == fife.Key.ENTER: # convention says use ok action
 				btn = dlg.findChild(name=OkButton.DEFAULT_NAME)
@@ -475,9 +471,9 @@ class Gui(SingleplayerMenu, MultiplayerMenu):
 		ExtScheduler().add_new_object(lambda : popup.findChild(name=OkButton.DEFAULT_NAME).requestFocus(), self, run_in=0)
 		if show_cancel_button:
 			return self.show_dialog(popup,{OkButton.DEFAULT_NAME : True,
-			                               CancelButton.DEFAULT_NAME : False}, onPressEscape = False)
+			                               CancelButton.DEFAULT_NAME : False})
 		else:
-			return self.show_dialog(popup, {OkButton.DEFAULT_NAME : True}, onPressEscape = True)
+			return self.show_dialog(popup, {OkButton.DEFAULT_NAME : True})
 
 	def show_error_popup(self, windowtitle, description, advice=None, details=None, _first=True):
 		"""Displays a popup containing an error message.
