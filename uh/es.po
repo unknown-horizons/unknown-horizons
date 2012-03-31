@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2012-03-24 02:16+0100\n"
-"PO-Revision-Date: 2012-03-31 17:41+0200\n"
+"PO-Revision-Date: 2012-03-31 17:51+0200\n"
 "Last-Translator: Sergio <juarrox@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: es\n"
@@ -2923,7 +2923,7 @@ msgstr ""
 #. name of buildings:claydeposit
 #: horizons/i18n/objecttranslations.py:116
 msgid "Clay Deposit"
-msgstr "Depósito de arcilla"
+msgstr "Yacimiento de arcilla"
 
 #. name of buildings:claypit
 #: horizons/i18n/objecttranslations.py:121
@@ -2932,9 +2932,8 @@ msgstr "Pozo de arcilla"
 
 #. tooltip_text of buildings:claypit
 #: horizons/i18n/objecttranslations.py:123
-#, fuzzy
 msgid "Gets clay from deposit."
-msgstr "Obtiene la arcilla del depósito."
+msgstr "Extrae arcilla del yacimiento."
 
 #. name of buildings:cocoafield
 #: horizons/i18n/objecttranslations.py:128
@@ -2945,6 +2944,7 @@ msgstr "Campo de Cacao"
 #: horizons/i18n/objecttranslations.py:130
 msgid "Produces cocoa beans used for confectionery. Needs a farm."
 msgstr ""
+"Fabrica semillas de cacao para productos de confitería. Requiere una granja."
 
 #. name of buildings:cornfield
 #: horizons/i18n/objecttranslations.py:135
@@ -2975,7 +2975,7 @@ msgstr "Doctor"
 #. tooltip_text of buildings:doctor
 #: horizons/i18n/objecttranslations.py:151
 msgid "Treats diseases. Consumes herbs."
-msgstr ""
+msgstr "Tratamiento de enfermedades. Consume hierbas."
 
 #. name of buildings:farm
 #: horizons/i18n/objecttranslations.py:156
@@ -2995,7 +2995,7 @@ msgstr "Estación de Bomberos"
 #. tooltip_text of buildings:fireservice
 #: horizons/i18n/objecttranslations.py:165
 msgid "Extinguishes fires."
-msgstr ""
+msgstr "Extingue fuegos."
 
 #. name of buildings:fishdeposit
 #: horizons/i18n/objecttranslations.py:170
@@ -3070,7 +3070,7 @@ msgstr ""
 #. name_0 of buildings:lumberjackcamp
 #: horizons/i18n/objecttranslations.py:222
 msgid "Lumberjack Tent"
-msgstr ""
+msgstr "Tienda de Leñador"
 
 #. name_1 of buildings:lumberjackcamp
 #: horizons/i18n/objecttranslations.py:224
@@ -3105,7 +3105,7 @@ msgstr "Pastelería"
 #. tooltip_text of buildings:pastryshop
 #: horizons/i18n/objecttranslations.py:245
 msgid "Produces all kinds of confectionery."
-msgstr ""
+msgstr "Produce todo tipo de productos de confitería."
 
 #. name of buildings:pasture
 #: horizons/i18n/objecttranslations.py:250
@@ -3115,7 +3115,7 @@ msgstr "Pastos"
 #. tooltip_text of buildings:pasture
 #: horizons/i18n/objecttranslations.py:252
 msgid "Raises sheep. Produces wool. Needs a farm."
-msgstr "Aumenta ovejas. Produce lana. Necesita de una granja."
+msgstr "Cría ovejas. Produce lana. Requiere una granja."
 
 #. name of buildings:pavilion
 #: horizons/i18n/objecttranslations.py:257
@@ -3195,42 +3195,43 @@ msgstr "Afina todo tipo de minerales."
 #. name of buildings:spicefield
 #: horizons/i18n/objecttranslations.py:311
 msgid "Spice Field"
-msgstr ""
+msgstr "Campo de Especias"
 
 #. tooltip_text of buildings:spicefield
 #: horizons/i18n/objecttranslations.py:313
 msgid "Grows spices. Needs a farm."
-msgstr ""
+msgstr "Cultiva especias. Requiere una granja."
 
 #. name of buildings:stonemason
 #: horizons/i18n/objecttranslations.py:318
 msgid "Stonemason"
-msgstr ""
+msgstr "Albañil"
 
 #. tooltip_text of buildings:stonemason
 #: horizons/i18n/objecttranslations.py:320
 msgid "Carves stone tops into bricks."
-msgstr ""
+msgstr "Labrado de piedra en ladrillos."
 
 #. name of buildings:stonepit
 #: horizons/i18n/objecttranslations.py:325
 msgid "Stone Pit"
-msgstr ""
+msgstr "Pozo de Piedra"
 
 #. tooltip_text of buildings:stonepit
 #: horizons/i18n/objecttranslations.py:327
 msgid "Gets stone from a mountain."
-msgstr ""
+msgstr "Extrae piedra de una montaña."
 
 #. name_0 of buildings:storagetent
 #: horizons/i18n/objecttranslations.py:332
 msgid "Storage Tent"
-msgstr "Tienda de almacenamiento"
+msgstr "Tienda de Almacenamiento"
 
+# 75%
 #. name_1 of buildings:storagetent
 #: horizons/i18n/objecttranslations.py:334
 msgid "Storage Hut"
-msgstr ""
+msgstr "Cabaña de Almacenamiento"
 
 #. tooltip_text of buildings:storagetent
 #: horizons/i18n/objecttranslations.py:336
@@ -3276,12 +3277,12 @@ msgstr "Casa"
 #. name_3 of buildings:tent
 #: horizons/i18n/objecttranslations.py:361
 msgid "Stone house"
-msgstr ""
+msgstr "Casa de piedra"
 
 #. name_4 of buildings:tent
 #: horizons/i18n/objecttranslations.py:363
 msgid "Estate"
-msgstr ""
+msgstr "Propiedad"
 
 #. name_5 of buildings:tent
 #: horizons/i18n/objecttranslations.py:365
@@ -3356,22 +3357,22 @@ msgstr "Provee de educación."
 #. name of buildings:vineyard
 #: horizons/i18n/objecttranslations.py:414
 msgid "Vineyard"
-msgstr ""
+msgstr "Viñedo"
 
 #. tooltip_text of buildings:vineyard
 #: horizons/i18n/objecttranslations.py:416
 msgid "Produces grapes for use in wine and confectionery. Needs a farm."
-msgstr ""
+msgstr "Produce uva para su uso en vino y confitería. Requiere una granja."
 
 #. name of buildings:vintner
 #: horizons/i18n/objecttranslations.py:421
 msgid "Vintner"
-msgstr ""
+msgstr "Vinatero"
 
 #. tooltip_text of buildings:vintner
 #: horizons/i18n/objecttranslations.py:423
 msgid "Produces wine out of grapes."
-msgstr ""
+msgstr "Produce vino de las uvas."
 
 #. name of buildings:warehouse
 #: horizons/i18n/objecttranslations.py:428
@@ -3397,7 +3398,7 @@ msgstr "Molino"
 #. tooltip_text of buildings:windmill
 #: horizons/i18n/objecttranslations.py:442
 msgid "Grinds corn into flour."
-msgstr ""
+msgstr "Muele el maíz para hacer harina."
 
 #. name of buildings:woodentower
 #: horizons/i18n/objecttranslations.py:447
@@ -3427,6 +3428,8 @@ msgstr ""
 #, python-format
 msgid "Due to technical reasons, the campaign file will be copied to the UH campaign directory ({path})."
 msgstr ""
+"Por razones técnicas el archivo de campaña de UH se copiará al directorio "
+"({path})."
 
 #: horizons/main.py:476
 msgid "This means that changes in the file you specified will not apply to the game directly."
@@ -3436,6 +3439,8 @@ msgstr ""
 #, python-format
 msgid "To see the changes, either always start UH with the current arguments or edit the file {filename}."
 msgstr ""
+"Para ver los cambios, inicia siempre UH con los parámetros actuales o edita "
+"el archivo {filename}."
 
 #. if this is reached, we are screwed. Something went wrong in the simulation,
 #. but we don't know what. Stop the game.
