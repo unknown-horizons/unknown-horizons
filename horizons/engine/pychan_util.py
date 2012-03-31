@@ -128,3 +128,17 @@ def init_pychan():
 	# patch fife default styles
 	pychan.manager.styles = conv(pychan.manager.styles)
 
+
+
+def get_button_event(button):
+	"""Returns the callback that is triggered when the button is clicked on.
+	@param button: pychan Button"""
+	try:
+		# try dialog action
+		return button.event_mapper.callbacks['__execute__']['action']
+	except KeyError:
+		try:
+			# try mapped event
+			return button.event_mapper.callbacks['default']['action']
+		except KeyError:
+			return None
