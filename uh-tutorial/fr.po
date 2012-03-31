@@ -7,8 +7,8 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: translate-uh@lists.unknown-horizons.org\n"
 "POT-Creation-Date: 2012-03-21 04:04+0100\n"
-"PO-Revision-Date: 2012-03-25 12:47+0200\n"
-"Last-Translator: Traveler <guillaume.pascal43@laposte.net>\n"
+"PO-Revision-Date: 2012-03-31 12:30+0200\n"
+"Last-Translator: Hugues <fafardh@hotmail.de>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: fr\n"
 "MIME-Version: 1.0\n"
@@ -291,6 +291,9 @@ msgid ""
 "Watch how a collector will fetch your first self-produced boards. Don't worry "
 "about recruiting workers for the lumberjack. That happens automatically."
 msgstr ""
+"Observez comme un collecteur vat chercher vos premières planches. Ne vous "
+"préoccupez pas de recruter des employers pour le bucheron. Cela se fait "
+"automatiquement."
 
 #. This message is displayed in the widget on the left screen part. Please keep it short enough to fit there!
 #: po/tutorial.py:70
@@ -437,14 +440,14 @@ msgstr ""
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:108
-#, fuzzy
 msgid ""
 "You should avoid placing your main settlement tents too close to your "
 "lumberjacks because building tents will clear away the trees that your "
 "lumberjack needs to produce boards."
 msgstr ""
-"Vous devriez fonder votre campement de tentes dans un endroit où vous "
-"pourrez facilement l'étendre et y construire des routes."
+"Vous devriez éviter de fonder votre campement trop prés du bucheron car les "
+"tentes prennent la place du bois dont le bucheron a besion afin de produire "
+"des planches."
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:110
@@ -559,6 +562,9 @@ msgid ""
 "TASK: Build a tent and connect it to the main square. Tents dont need to be "
 "connected to any of the companies."
 msgstr ""
+"\n"
+"MISSION : Construisez une tente et connectez-la à la place principale. Les "
+"tentes n'ont pas besoin d'être connectées aux entreprises."
 
 #. This message is displayed in the widget on the left screen part. Please keep it short enough to fit there!
 #: po/tutorial.py:136
@@ -620,18 +626,17 @@ msgstr ""
 "\n"
 "MISSION: Construisez au moins 3 tentes supplémentaires."
 
-# MAJ ou SHIFT?
+# MAJ ou SHIFT? (Les deux sont correctes. C'est une question de gout.)
 #. This is the text body of a logbook page.
 #: po/tutorial.py:150
-#, fuzzy
 msgid ""
 "\n"
 "TIP: Holding down SHIFT eases constructing multiple buildings of the same "
 "kind."
 msgstr ""
 "\n"
-"Astuce: Il est plus simple de construire plusieurs bâtiments du même type en "
-"gardant la touche MAJ enfoncée."
+"ASTUCE : Il est plus simple de construire plusieurs bâtiments du même type "
+"en gardant la touche SHIFT enfoncée."
 
 #. This message is displayed in the widget on the left screen part. Please keep it short enough to fit there!
 #: po/tutorial.py:152
@@ -1061,6 +1066,9 @@ msgid ""
 "There also are upgrades of buildings without costs, as you will see with the "
 "lumberjack. In this case, only the graphics change."
 msgstr ""
+"Comme vous pouvez l'observer chez le bucheron il existe aussi des "
+"améliorations gratuites. Dans ce cas uniquement l'image du bâtiment est "
+"améliorée."
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:250
@@ -1127,13 +1135,13 @@ msgstr "Un joli nouvel onglet vient d'y apparaître."
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:266
-#, fuzzy
 msgid ""
 "Pioneers will demand cloth, so you need to set up a production line for cloth "
 "starting with lambs wool (which is one of the goods produced at the farm)."
 msgstr ""
-"Les pionniers demandent du tissu, vous devrez créer une ligne de production "
-"en commençant par la laine de mouton (l'un des biens produit à la ferme)."
+"Les pionniers demanderont du tissu, vous devrez créer une ligne de "
+"production en commençant par la laine de mouton (l'un des biens produit à la "
+"ferme)."
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:268
@@ -1460,6 +1468,8 @@ msgid ""
 "Now the wool production is set up, you still need a weaver to produce cloth "
 "out of this wool."
 msgstr ""
+"Maintenant que la production de laine est prète vous avez encore besion d'un "
+"tisserand pour produire du tissu à partir de cette laine."
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:340
@@ -1467,11 +1477,15 @@ msgid ""
 "There are two spots where you can build it - either close to the farm or "
 "close to a Storage Tent (or the warehouse)."
 msgstr ""
+"Il y a deux emplacements òu vous pouvez le construire : près de la ferme ou "
+"près de l'entrepôt (ou du comptoir)."
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:342
 msgid "In both cases you should ensure the connection to a trail as well."
 msgstr ""
+"Dans les deux cas vous devriez également assurer la connection avec un "
+"sentier."
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:344
@@ -1479,6 +1493,9 @@ msgid ""
 "You can place the weaver close to the farm and tear down any trail to the "
 "farm to see that it will still fetch the wool and produce."
 msgstr ""
+"Vous pouvez placer le tisserand près de la ferme at détruire tous les "
+"sentiers vers la ferme afin de voir qu'il ira quand-même chercher la laine "
+"pour en faire du tissu."
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:346
