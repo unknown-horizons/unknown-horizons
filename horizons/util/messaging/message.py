@@ -92,3 +92,8 @@ class NewSettlement(Message):
 	"""Sent when a new settlement is created"""
 	arguments = ('settlement', )
 
+class HoverInstancesChanged(Message):
+	"""Sent when hovering over a different set of instances.
+	Not sent on every mouse move but with a bit of delay to be able to do more extensive
+	computation without risk of delays."""
+	arguments = ('instances', )

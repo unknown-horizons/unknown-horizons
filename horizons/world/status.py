@@ -69,17 +69,20 @@ class FireStatusIcon(StatusIcon):
 	""" Fire disaster """
 	priority = 3000
 	icon = 'as_on_fire+idle+45'
+	helptext = _("This building is on fire!")
 
 
 class SettlerUnhappyStatus(StatusIcon):
 	# threshold is the inhabitants decrease level
 	priority = 1700
 	icon = 'as_attention_please+idle+45'
+	helptext = _("These residents are unhappy.")
 
 
 class InventoryFullStatus(StatusIcon):
 	priority = 1200
 	icon = 'as_inventory_full+idle+45'
+	helptext = _("The inventory of this building is full.")
 
 	def __init__(self, instance, reslist):
 		"""
@@ -94,8 +97,11 @@ class ProductivityLowStatus(StatusIcon):
 	threshold = 0.25 # display when productivity lower than this
 	priority = 400
 	icon = 'as_attention_please+idle+45'
+	helptext = _("This building has a very low productivty.")
 
 
 class DecommissionedStatus(StatusIcon):
 	priority = 800
 	icon = 'as_decommissioned+idle+45'
+	helptext = _("This building is decomissioned.")
+
