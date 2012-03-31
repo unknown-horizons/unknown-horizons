@@ -194,7 +194,15 @@ class Session(LivingObject):
 		LastActivePlayerSettlementManager.destroy_instance()
 
 		self.cursor = None
-		self.world.end() # must be called before the world ref is gone
+		try:
+			# This is likely to throw when the game state is invalid.
+			# Try to continue cleanup afterwards even if this fails.
+			# NOTE: This is not a proper solution, separating sessions by design (e.g. single processes) would be.
+			self.world.end() # must be called before the world ref is gone
+		except Exception:
+			import traceback
+			traceback.print_exc()
+			print 'Exception on world end(), trying to continue to cleanup'
 		self.world = None
 		self.keylistener = None
 		self.view = None
