@@ -97,3 +97,7 @@ class HoverInstancesChanged(Message):
 	Not sent on every mouse move but with a bit of delay to be able to do more extensive
 	computation without risk of delays."""
 	arguments = ('instances', )
+
+class NewDisaster(Message):
+	"""Sent when a building is affected by a disaster."""
+	arguments = ('building', 'disaster_class', )

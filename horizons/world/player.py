@@ -28,7 +28,7 @@ from horizons.scenario import CONDITIONS
 from horizons.scheduler import Scheduler
 from horizons.world.componentholder import ComponentHolder
 from horizons.world.component.storagecomponent import StorageComponent
-from horizons.util.messaging.message import SettlerUpdate
+from horizons.util.messaging.message import SettlerUpdate, NewDisaster
 
 class Player(ComponentHolder, WorldObject):
 	"""Class representing a player"""
@@ -71,6 +71,7 @@ class Player(ComponentHolder, WorldObject):
 		self.settler_level = settlerlevel
 		assert self.color.is_default_color, "Player color has to be a default color"
 		self.session.message_bus.subscribe_globally(SettlerUpdate, self.notify_settler_reached_level)
+		self.session.message_bus.subscribe_locally(NewDisaster, self, self.notify_new_disaster)
 
 		if self.regular_player:
 			Scheduler().add_new_object(Callback(self.update_stats), self, run_in = 0)
@@ -141,6 +142,12 @@ class Player(ComponentHolder, WorldObject):
 	def notify_mine_empty(self, mine):
 		"""The Mine calls this function to let the player know that the mine is empty."""
 		pass
+
+	def notify_new_disaster(self, message):
+		"""The message bus calls this when a building is 'infected' with a disaster."""
+		if self.is_local_player:
+			pos = message.building.position.center()
+			self.session.ingame_gui.message_widget.add(pos.x, pos.y, message.disaster_class.NOTIFICATION_TYPE)
 
 	def end(self):
 		self.stats = None
