@@ -33,6 +33,7 @@ from horizons.command.uioptions import RouteConfigCommand
 from horizons.world.component.namedcomponent import NamedComponent
 from horizons.world.component.ambientsoundcomponent import AmbientSoundComponent
 from horizons.command.game import PauseCommand, UnPauseCommand
+from horizons.gui.widgets import OkButton
 
 import horizons.main
 
@@ -481,7 +482,7 @@ class RouteConfig(object):
 		wait_at_load_box.capture(toggle_wait_at_load)
 
 		self._gui.mapEvents({
-		  'okButton' : self.hide,
+		  OkButton.DEFAULT_NAME : self.hide,
 		  'start_route/mouseClicked' : self.toggle_route
 		  })
 		self._gui.position_technique = "automatic" # "center:center"

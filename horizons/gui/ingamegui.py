@@ -28,7 +28,8 @@ from horizons.util import livingProperty, LivingObject, PychanChildFinder
 from horizons.util.python import Callback
 from horizons.gui.mousetools import BuildingTool
 from horizons.gui.tabs import TabWidget, BuildTab, DiplomacyTab, SelectMultiTab
-from horizons.gui.widgets.messagewidget import MessageWidget
+from horizons.gui.widgets import OkButton, CancelButton
+from horizons.gui.widgets.minimap import Minimap
 from horizons.gui.widgets.minimap import Minimap
 from horizons.gui.widgets.logbook import LogBook
 from horizons.gui.widgets.playersoverview import PlayersOverview
@@ -398,8 +399,8 @@ class IngameGui(LivingObject):
 		"""Shows a dialog where the user can change the name of a NamedComponant.
 		The game gets paused while the dialog is executed."""
 		events = {
-			'okButton': Callback(self.change_name, instance),
-			'cancelButton': self._hide_change_name_dialog
+			OkButton.DEFAULT_NAME: Callback(self.change_name, instance),
+			CancelButton.DEFAULT_NAME: self._hide_change_name_dialog
 		}
 		self.main_gui.on_escape = self._hide_change_name_dialog
 		changename = self.widgets['change_name']
@@ -437,8 +438,8 @@ class IngameGui(LivingObject):
 	def show_save_map_dialog(self):
 		"""Shows a dialog where the user can set the name of the saved map."""
 		events = {
-			'okButton': self.save_map,
-			'cancelButton': self._hide_save_map_dialog
+			OkButton.DEFAULT_NAME: self.save_map,
+			CancelButton.DEFAULT_NAME: self._hide_save_map_dialog
 		}
 		self.main_gui.on_escape = self._hide_save_map_dialog
 		dialog = self.widgets['save_map']
@@ -502,8 +503,8 @@ class IngameGui(LivingObject):
 	def show_chat_dialog(self):
 		"""Show a dialog where the user can enter a chat message"""
 		events = {
-			'okButton': self._do_chat,
-			'cancelButton': self._hide_chat_dialog
+			OkButton.DEFAULT_NAME: self._do_chat,
+			CancelButton.DEFAULT_NAME: self._hide_chat_dialog
 		}
 		self.main_gui.on_escape = self._hide_chat_dialog
 

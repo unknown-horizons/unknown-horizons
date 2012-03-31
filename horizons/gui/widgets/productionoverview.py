@@ -28,6 +28,7 @@ from horizons.util.python import decorators
 from horizons.gui.util import create_resource_icon
 from horizons.util import Callback
 from horizons.world.component.namedcomponent import NamedComponent
+from horizons.gui.widgets import OkButton
 
 class ProductionOverview(StatsWidget):
 	"""
@@ -47,7 +48,7 @@ class ProductionOverview(StatsWidget):
 	def _init_gui(self):
 		super(ProductionOverview, self)._init_gui()
 		self.session.gui.on_escape = self.hide
-		self._gui.findChild(name="okButton").capture(self.hide)
+		self._gui.findChild(name=OkButton.DEFAULT_NAME).capture(self.hide)
 
 	def hide(self):
 		super(ProductionOverview, self).hide()

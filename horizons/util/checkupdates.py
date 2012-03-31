@@ -24,6 +24,7 @@ import webbrowser
 import urllib2
 
 from horizons.constants import NETWORK, VERSION
+from horizons.gui.widgets import OkButton
 
 class UpdateInfo(object):
 	INVALID, READY, UNINITIALISED = range(3)
@@ -84,5 +85,5 @@ def show_new_version_hint(gui, info):
 	popup = gui.build_popup(title, text)
 	popup.addChild( dl_btn )
 
-	gui.show_dialog(popup, {"okButton" : True})
+	gui.show_dialog(popup, {OkButton.DEFAULT_NAME : True})
 

@@ -35,6 +35,7 @@ import horizons.main
 from horizons.savegamemanager import SavegameManager
 from horizons.gui.keylisteners import MainListener
 from horizons.gui.keylisteners.ingamekeylistener import KeyConfig
+from horizons.gui.widgets import OkButton, CancelButton, DeleteButton
 from horizons.util import Callback
 from horizons.extscheduler import ExtScheduler
 from horizons.world.component.ambientsoundcomponent import AmbientSoundComponent
@@ -201,7 +202,7 @@ class Gui(SingleplayerMenu, MultiplayerMenu):
 				PauseCommand().execute(self.session)
 			if self.session is not None:
 				self.session.ingame_gui.on_escape() # close dialogs that might be open
-			self.show_dialog(help_dlg, {'okButton' : True}, onPressEscape = True)
+			self.show_dialog(help_dlg, {OkButton.DEFAULT_NAME : True}, onPressEscape = True)
 			self.on_help() # toggle state
 		else:
 			self._help_is_displayed = False
@@ -240,7 +241,7 @@ class Gui(SingleplayerMenu, MultiplayerMenu):
 		introduces information for SoC applicants (if valid).
 		"""
 		AmbientSoundComponent.play_special("message")
-		self.show_dialog(self.widgets['call_for_support'], {'okButton' : True}, onPressEscape = True)
+		self.show_dialog(self.widgets['call_for_support'], {OkButton.DEFAULT_NAME : True}, onPressEscape = True)
 
 	def show_credits(self, number=0):
 		"""Shows the credits dialog. """
@@ -258,7 +259,7 @@ class Gui(SingleplayerMenu, MultiplayerMenu):
 
 		if self.current_dialog is not None:
 			self.current_dialog.hide()
-		self.show_dialog(self.widgets['credits'+str(number)], {'okButton' : True}, onPressEscape = True)
+		self.show_dialog(self.widgets['credits'+str(number)], {OkButton.DEFAULT_NAME : True}, onPressEscape = True)
 
 	def show_select_savegame(self, mode, sanity_checker=None, sanity_criteria=None):
 		"""Shows menu to select a savegame.
@@ -291,7 +292,7 @@ class Gui(SingleplayerMenu, MultiplayerMenu):
 		# Prepare widget
 		old_current = self._switch_current_widget('select_savegame')
 		self.current.findChild(name='headline').text = _('Save game') if mode == 'save' else _('Load game')
-		self.current.findChild(name='okButton').helptext = _('Save game') if mode == 'save' else _('Load game')
+		self.current.findChild(name=OkButton.DEFAULT_NAME).helptext = _('Save game') if mode == 'save' else _('Load game')
 
 		name_box = self.current.findChild(name="gamename_box")
 		if mp and mode == 'load': # have gamename
@@ -337,9 +338,9 @@ class Gui(SingleplayerMenu, MultiplayerMenu):
 		self.current.findChild(name="savegamelist").capture(cb, event_name="keyPressed")
 
 		eventMap = {
-			'okButton'     : True,
-			'cancelButton' : False,
-			'deleteButton' : 'delete'
+			OkButton.DEFAULT_NAME     : True,
+			CancelButton.DEFAULT_NAME : False,
+			DeleteButton.DEFAULT_NAME : 'delete'
 		}
 
 		if mode == 'save':
@@ -436,7 +437,7 @@ class Gui(SingleplayerMenu, MultiplayerMenu):
 		def _on_keypress(event, dlg=dlg): # rebind to make sure this dlg is used
 			from horizons.engine import pychan_util
 			if event.getKey().getValue() == fife.Key.ESCAPE: # convention says use cancel action
-				btn = dlg.findChild(name="cancelButton")
+				btn = dlg.findChild(name=CancelButton.DEFAULT_NAME)
 				callback = pychan_util.get_button_event(btn) if btn else None
 				if callback:
 					callback()
@@ -446,7 +447,7 @@ class Gui(SingleplayerMenu, MultiplayerMenu):
 					pychan.internal.get_manager().breakFromMainLoop(onPressEscape)
 					dlg.hide()
 			elif event.getKey().getValue() == fife.Key.ENTER: # convention says use ok action
-				btn = dlg.findChild(name="okButton")
+				btn = dlg.findChild(name=OkButton.DEFAULT_NAME)
 				callback = pychan_util.get_button_event(btn) if btn else None
 				if callback:
 					callback()
@@ -471,11 +472,12 @@ class Gui(SingleplayerMenu, MultiplayerMenu):
 		popup = self.build_popup(windowtitle, message, show_cancel_button, size=size)
 		# ok should be triggered on enter, therefore we need to focus the button
 		# pychan will only allow it after the widgets is shown
-		ExtScheduler().add_new_object(lambda : popup.findChild(name='okButton').requestFocus(), self, run_in=0)
+		ExtScheduler().add_new_object(lambda : popup.findChild(name=OkButton.DEFAULT_NAME).requestFocus(), self, run_in=0)
 		if show_cancel_button:
-			return self.show_dialog(popup, {'okButton' : True, 'cancelButton' : False}, onPressEscape = False)
+			return self.show_dialog(popup,{OkButton.DEFAULT_NAME : True,
+			                               CancelButton.DEFAULT_NAME : False}, onPressEscape = False)
 		else:
-			return self.show_dialog(popup, {'okButton' : True}, onPressEscape = True)
+			return self.show_dialog(popup, {OkButton.DEFAULT_NAME : True}, onPressEscape = True)
 
 	def show_error_popup(self, windowtitle, description, advice=None, details=None, _first=True):
 		"""Displays a popup containing an error message.
@@ -531,7 +533,7 @@ class Gui(SingleplayerMenu, MultiplayerMenu):
 		popup = self.widgets[wdg_name]
 
 		if not show_cancel_button:
-			cancel_button = popup.findChild(name="cancelButton")
+			cancel_button = popup.findChild(name=CancelButton.DEFAULT_NAME)
 			cancel_button.parent.removeChild(cancel_button)
 
 		headline = popup.findChild(name='headline')

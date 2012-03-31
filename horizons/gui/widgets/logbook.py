@@ -29,6 +29,7 @@ from horizons.world.component.ambientsoundcomponent import AmbientSoundComponent
 from horizons.command.game import UnPauseCommand
 from horizons.command.misc import Chat
 from horizons.gui.widgets.pickbeltwidget import PickBeltWidget
+from horizons.gui.widgets import OkButton
 
 @metaChangeListenerDecorator("pause_request")
 @metaChangeListenerDecorator("unpause_request")
@@ -69,7 +70,7 @@ class LogBook(PickBeltWidget):
 		"""Initial gui setup for all subpages accessible through pickbelts."""
 		self._gui = self.get_widget()
 		self._gui.mapEvents({
-		  'okButton' : self.hide,
+		  OkButton.DEFAULT_NAME : self.hide,
 		  'backwardButton' : Callback(self._scroll, -2),
 		  'forwardButton' : Callback(self._scroll, 2),
 		  'stats_players' : Callback(self.show_statswidget, widget='players'),
