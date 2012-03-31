@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2012-03-24 02:16+0100\n"
-"PO-Revision-Date: 2012-03-31 14:58+0200\n"
+"PO-Revision-Date: 2012-03-31 14:59+0200\n"
 "Last-Translator: Sergio <juarrox@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: es\n"
@@ -38,7 +38,7 @@ msgstr "Se ha creado un nuevo mundo."
 #. This is a database entry: the name of an inhabitant increment (tier / level).
 #: database files sql
 msgid "Aristocrats"
-msgstr "aristócratas"
+msgstr "Aristócratas"
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
@@ -715,9 +715,9 @@ msgstr "Fecha desconocida"
 
 #: horizons/gui/gui.py:608
 #, python-format
-#, fuzzy, python-format
+#, python-format
 msgid "Saved at {time}"
-msgstr "Guardado en {time}"
+msgstr "Guardado a las {time}"
 
 #. N_ takes care of plural forms for different languages
 #: horizons/gui/gui.py:615
@@ -730,12 +730,12 @@ msgstr[1] ""
 #: horizons/gui/gui.py:625
 #, python-format
 msgid "Savegame version {version}"
-msgstr ""
+msgstr "Versión de la partida guardada {version}"
 
 #: horizons/gui/gui.py:629
 #, python-format
 msgid "WARNING: Incompatible version {version}!"
-msgstr "ADVERTENCIA: Versión incompatible {version}!"
+msgstr "ADVERTENCIA: ¡Versión incompatible {version}!"
 
 #: horizons/gui/gui.py:632
 #, python-format
