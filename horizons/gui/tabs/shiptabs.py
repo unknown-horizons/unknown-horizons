@@ -25,12 +25,11 @@ import weakref
 from horizons.constants import BUILDINGS, WEAPONS
 from horizons.command.uioptions import EquipWeaponFromInventory, UnequipWeaponToInventory
 from horizons.entities import Entities
-from horizons.gui.tabs import OverviewTab
+from horizons.gui.tabs import OverviewTab, TradeTab
 from horizons.gui.widgets.routeconfig import RouteConfig
-from horizons.gui.widgets.tradewidget import TradeWidget
-from horizons.gui.widgets.internationaltradewidget import InternationalTradeWidget
 from horizons.util import Callback
 from horizons.world.component.storagecomponent import StorageComponent
+from horizons.world.component.selectablecomponent import SelectableComponent
 
 
 class ShipOverviewTab(OverviewTab):
@@ -86,8 +85,7 @@ class ShipOverviewTab(OverviewTab):
 				helptext = _('Load/Unload')
 			else:
 				helptext = _('Buy/Sell')
-			wdg = InternationalTradeWidget(self.instance)
-			events['trade'] = Callback(self.instance.session.ingame_gui.show_menu, wdg)
+			events['trade'] = Callback(self.instance.get_component(SelectableComponent).show_menu, TradeTab)
 			self.widget.findChild(name='trade_bg').set_active()
 			self.widget.findChild(name='trade').set_active()
 			self.widget.findChild(name='trade').helptext = helptext

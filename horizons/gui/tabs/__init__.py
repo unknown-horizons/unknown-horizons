@@ -20,6 +20,7 @@
 # ###################################################
 
 from inventorytab import InventoryTab
+from tradetab import TradeTab
 from overviewtab import OverviewTab, GroundUnitOverviewTab
 from buildingtabs import SignalFireOverviewTab, ResourceDepositOverviewTab, \
 						TowerOverviewTab, WarehouseOverviewTab

@@ -39,7 +39,7 @@ class ImageFillStatusButton(pychan.widgets.Container):
 		super(ImageFillStatusButton, self).__init__(**kwargs)
 		self.up_image, self.down_image, self.hover_image, self.text = up_image, down_image, hover_image, text
 		self.helptext = _(helptext)
-		# res_id is used by the TradeWidget for example to determine the resource this button represents
+		# res_id is used by the TradeTab for example to determine the resource this button represents
 		self.res_id = res_id
 		self.text_position = (17, 36)
 		self.uncached = uncached # force no cache. needed when the same icon has to appear several times at the same time

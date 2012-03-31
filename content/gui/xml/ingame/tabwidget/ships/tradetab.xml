@@ -101,16 +101,6 @@
 		background_color="255,255,255,0">
 		<Inventory name="inventory_partner"  size="0,200"  uncached="1"  display_legend="0" />
 	</ScrollArea>
-	<!--#TODO need a callback for this button to actually scroll the list (and possibly
-	be hidden if there are no overflow entries, i.e. the inventory displays <= 12 res)-->
-	<ImageButton position="97,32"
-		up_image="content/gui/images/buttons/up_10.png"
-		down_image="content/gui/images/buttons/up_10_h.png"
-		hover_image="content/gui/images/buttons/up_10_h.png"	/>
-	<ImageButton position="97,193"
-		up_image="content/gui/images/buttons/down_10.png"
-		down_image="content/gui/images/buttons/down_10_h.png"
-		hover_image="content/gui/images/buttons/down_10_h.png"	/>
 </Container>
 
 </Container>

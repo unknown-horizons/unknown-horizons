@@ -22,7 +22,7 @@
 import logging
 
 from horizons.gui.widgets.imagefillstatusbutton import ImageFillStatusButton
-from horizons.gui.util import load_uh_widget
+from horizons.gui.tabs.tabinterface import TabInterface
 from horizons.command.uioptions import SellResource, BuyResource, TransferResource
 from horizons.util import Callback
 from horizons.world.component.tradepostcomponent import TradePostComponent
@@ -30,8 +30,8 @@ from horizons.world.component.storagecomponent import StorageComponent
 from horizons.world.component.namedcomponent import NamedComponent
 from horizons.world.component.selectablecomponent import SelectableComponent
 
-class InternationalTradeWidget(object):
-	log = logging.getLogger("gui.internationaltradewidget")
+class TradeTab(TabInterface):
+	log = logging.getLogger("gui.tradetab")
 
 	# objects within this radius can be traded with, only used if the
 	# main instance does not have a radius attribute
@@ -43,20 +43,20 @@ class InternationalTradeWidget(object):
 	  5 : 'size_2',
 	  10: 'size_3',
 	  20: 'size_4',
-	  50: 'size_5'
+	  50: 'size_5',
 	  }
 
 	images = {
 	  'box_highlighted': 'content/gui/icons/ship/smallbutton_a.png',
-	  'box': 'content/gui/icons/ship/smallbutton.png'
+	  'box': 'content/gui/icons/ship/smallbutton.png',
 	  }
 
 	def __init__(self, instance):
 		"""
 		@param instance: ship instance used for trading
 		"""
-		self.widget = load_uh_widget('buy_sell_goods.xml')
-		self.widget.position_technique = "right:top+157"
+		super(TradeTab,self).__init__(instance=instance, widget='tradetab.xml',
+				icon_path='content/gui/icons/tabwidget/warehouse/buysell_%s.png')
 		events = {}
 		for k, v in self.exchange_size_buttons.iteritems():
 			events[v] = Callback(self.set_exchange, k)
@@ -64,7 +64,6 @@ class InternationalTradeWidget(object):
 		self.instance = instance
 		self.partner = None
 		self.set_exchange(50, initial=True)
-		self.draw_widget()
 		if hasattr(self.instance, 'radius'):
 			self.radius = self.instance.radius
 
@@ -119,26 +118,32 @@ class InternationalTradeWidget(object):
 			self.widget.adaptLayout()
 		else:
 			# no partner in range any more
-			self.widget.hide()
-			self.instance.get_component(SelectableComponent).show_menu()
+			pass
+			#self.widget.hide()
+			#self.instance.get_component(SelectableComponent).show_menu()
 
 	def __remove_changelisteners(self):
 		# need to be idempotent, show/hide calls it in arbitrary order
-		self.instance.discard_change_listener(self.draw_widget)
-		self.partner.get_component(StorageComponent).inventory.discard_change_listener(self.draw_widget)
-		self.partner.settlement.get_component(TradePostComponent).discard_change_listener(self.draw_widget)
+		if self.instance:
+			self.instance.discard_change_listener(self.draw_widget)
+		if self.partner:
+			self.partner.get_component(StorageComponent).inventory.discard_change_listener(self.draw_widget)
+			self.partner.settlement.get_component(TradePostComponent).discard_change_listener(self.draw_widget)
 
 	def __add_changelisteners(self):
 		# need to be idempotent, show/hide calls it in arbitrary order
-		self.instance.add_change_listener(self.draw_widget, no_duplicates=True)
-		self.partner.get_component(StorageComponent).inventory.add_change_listener(self.draw_widget, no_duplicates=True)
-		self.partner.settlement.get_component(TradePostComponent).add_change_listener(self.draw_widget, no_duplicates=True)
+		if self.instance:
+			self.instance.add_change_listener(self.draw_widget, no_duplicates=True)
+		if self.partner:
+			self.partner.get_component(StorageComponent).inventory.add_change_listener(self.draw_widget, no_duplicates=True)
+			self.partner.settlement.get_component(TradePostComponent).add_change_listener(self.draw_widget, no_duplicates=True)
 
 	def hide(self):
 		self.widget.hide()
 		self.__remove_changelisteners()
 
 	def show(self):
+		self.draw_widget()
 		self.widget.show()
 		self.__add_changelisteners()
 
