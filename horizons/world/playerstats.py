@@ -27,6 +27,7 @@ from horizons.util import WorldObject
 from horizons.entities import Entities
 from horizons.constants import SETTLER, BUILDINGS, PRODUCTION, RES, UNITS
 from horizons.util.python import decorators
+from horizons.world.component.collectingcompontent import CollectingComponent
 from horizons.world.component.storagecomponent import StorageComponent
 from horizons.world.component.selectablecomponent import SelectableComponent
 from horizons.world.production.producer import Producer
@@ -72,9 +73,9 @@ class PlayerStats(WorldObject):
 					for resource_id, amount in building.get_component(StorageComponent).inventory:
 						total_resources[resource_id] += amount
 
-				# resource held by collectors
-				if hasattr(building, 'get_local_collectors'):
-					for collector in building.get_local_collectors():
+				# resources held by collectors
+				if building.has_component(CollectingComponent):
+					for collector in building.get_component(CollectingComponent).get_local_collectors():
 						for resource_id, amount in collector.get_component(StorageComponent).inventory:
 							total_resources[resource_id] += amount
 
