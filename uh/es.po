@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2012-03-24 02:16+0100\n"
-"PO-Revision-Date: 2012-03-31 17:51+0200\n"
+"PO-Revision-Date: 2012-03-31 17:48+0200\n"
 "Last-Translator: Sergio <juarrox@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: es\n"
@@ -156,9 +156,8 @@ msgstr "La partida se ha guardado."
 # 86%
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
-#, fuzzy
 msgid "Your game has been saved."
-msgstr "La partida ha sido guardada."
+msgstr "Tu partida ha sido guardada."
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
@@ -3434,6 +3433,8 @@ msgstr ""
 #: horizons/main.py:476
 msgid "This means that changes in the file you specified will not apply to the game directly."
 msgstr ""
+"Significa que los cambios en el archivo que has seleccionado no se aplicarán "
+"directamente a la partida."
 
 #: horizons/main.py:478
 #, python-format
@@ -3447,10 +3448,14 @@ msgstr ""
 #: horizons/manager.py:174
 msgid "The games have run out of sync. This indicates an unknown internal error, the game cannot continue."
 msgstr ""
+"Las partidas han quedado sin sincronización. Esto indica un error interno "
+"desconocido que impide continuar la partida."
 
 #: horizons/manager.py:175
 msgid "We are very sorry and hope to have this bug fixed in a future version."
-msgstr "Lo lamentamos y esperamos resolver el error en una próxima versión."
+msgstr ""
+"Lo lamentamos profundamente. Esperamos resolver el error en una próxima "
+"versión."
 
 #: horizons/mpsession.py:66
 msgid "Not possible"
@@ -3468,7 +3473,7 @@ msgstr ""
 #: horizons/savegamemanager.py:360
 #, python-format
 msgid "Error: don't know how to handle condition type {condition}"
-msgstr ""
+msgstr "Error: no se sabe cómo gestionar el tipo de condición {condition}"
 
 #: horizons/savegamemanager.py:410 horizons/savegamemanager.py:416
 #, python-format
@@ -3652,7 +3657,7 @@ msgstr "El socio comercial no puede almacenar más de esto."
 
 #: horizons/world/component/tradepostcomponent.py:236
 msgid "The trade partner can not afford to buy this."
-msgstr ""
+msgstr "El socio comercial no puede permitirse comprar esto."
 
 #: horizons/world/component/tradepostcomponent.py:241
 msgid "The trade partner does not buy more of this."
@@ -3709,9 +3714,8 @@ msgstr "Unknown Horizons se ha caído."
 
 # 83%
 #: run_uh.py:208
-#, fuzzy
 msgid "We are very sorry for this and want to fix underlying error."
-msgstr "Disculpa por esto, queremos solucionar este error."
+msgstr "Lo sentimos profundamente, queremos solucionar este error crítico."
 
 #: run_uh.py:209
 msgid "In order to do this, we need the information from the logfile:"
