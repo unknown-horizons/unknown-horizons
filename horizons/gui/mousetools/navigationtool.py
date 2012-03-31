@@ -180,12 +180,11 @@ class NavigationTool(CursorTool):
 	def get_hover_instances(self, where, layers=None):
 		"""
 		Utility method, returns the instances under the cursor
-		@param evt: anything supporting getX/getY
+		@param where: anything supporting getX/getY
 		@param layers: list of layer ids to search for. Default to OBJECTS
 		"""
 		if layers is None:
 			layers = [LAYERS.OBJECTS]
-
 
 		all_instances = []
 		for layer in layers:

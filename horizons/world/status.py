@@ -42,6 +42,7 @@ class StatusIcon(object):
 	# fife identifier for animations or icons. Must be supported by either the animationloader
 	# or the imagemanager. (i.e. either file path or something like "as_buoy0+idle+45")
 	icon = None
+	_helptext = ""
 
 	def __init__(self, instance):
 		"""
@@ -58,6 +59,10 @@ class StatusIcon(object):
 		"""
 		return operator.attrgetter("priority")
 
+	@property
+	def helptext(self):
+		return _(self._helptext)
+
 	def __cmp__(self, other):
 		return cmp(self.__class__, other.__class__)
 
@@ -69,20 +74,20 @@ class FireStatusIcon(StatusIcon):
 	""" Fire disaster """
 	priority = 3000
 	icon = 'as_on_fire+idle+45'
-	helptext = _("This building is on fire!")
+	_helptext = _(u"This building is on fire!")
 
 
 class SettlerUnhappyStatus(StatusIcon):
 	# threshold is the inhabitants decrease level
 	priority = 1700
 	icon = 'as_attention_please+idle+45'
-	helptext = _("These residents are unhappy.")
+	_helptext = _(u"These residents are unhappy.")
 
 
 class InventoryFullStatus(StatusIcon):
 	priority = 1200
 	icon = 'as_inventory_full+idle+45'
-	helptext = _("The inventory of this building is full.")
+	_helptext = _(u"The inventory of this building is full.")
 
 	def __init__(self, instance, reslist):
 		"""
@@ -97,11 +102,11 @@ class ProductivityLowStatus(StatusIcon):
 	threshold = 0.25 # display when productivity lower than this
 	priority = 400
 	icon = 'as_attention_please+idle+45'
-	helptext = _("This building has a very low productivty.")
+	_helptext = _(u"This building has a very low productivity.")
 
 
 class DecommissionedStatus(StatusIcon):
 	priority = 800
 	icon = 'as_decommissioned+idle+45'
-	helptext = _("This building is decomissioned.")
+	_helptext = _(u"This building is decomissioned.")
 
