@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2012-03-24 02:16+0100\n"
-"PO-Revision-Date: 2012-03-31 14:42+0200\n"
+"PO-Revision-Date: 2012-03-31 14:58+0200\n"
 "Last-Translator: Sergio <juarrox@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: es\n"
@@ -2092,7 +2092,7 @@ msgstr "Elegir este escenario"
 #. (text of widget: lbl_route_activity)
 #: horizons/i18n/guitranslations.py:634
 msgid "Route activity:"
-msgstr ""
+msgstr "Actividad de la ruta:"
 
 #. (text of widget: lbl_wait_at_load) Trade route setting: Whether to wait until all goods could be loaded.
 #: horizons/i18n/guitranslations.py:636
@@ -2406,7 +2406,7 @@ msgstr "Atrás:"
 #. (text of widget: gamename_lbl)
 #: horizons/i18n/guitranslations.py:824 horizons/i18n/guitranslations.py:966
 msgid "Name of the game:"
-msgstr ""
+msgstr "Nombre de la partida:"
 
 #. (text of widget: headline)
 #: horizons/i18n/guitranslations.py:826
@@ -2499,12 +2499,12 @@ msgstr "Unirse"
 #: horizons/i18n/guitranslations.py:868
 #, fuzzy
 msgid "Load game:"
-msgstr "Cargar partida"
+msgstr "Cargar partida:"
 
 #. (text of widget: refr_gamelist_lbl)
 #: horizons/i18n/guitranslations.py:870
 msgid "Refresh list:"
-msgstr "Refescar lista:"
+msgstr "Actualizar lista:"
 
 #. (helptext of widget: cancel)
 #: horizons/i18n/guitranslations.py:872 horizons/i18n/guitranslations.py:995
@@ -2675,6 +2675,9 @@ msgstr ""
 #: horizons/i18n/guitranslations.py:945
 msgid "Don't use in normal game session. Decides whether to write debug information in the logging directory of your user directory. Slows the game down."
 msgstr ""
+"No lo utilices en una sesión normal del juego. Supone escribir información "
+"de depuración en el directorio de registro de tu carpeta de usuario. "
+"Ralentiza la partida."
 
 #. (helptext of widget: edge_scrolling_label)
 #: horizons/i18n/guitranslations.py:947
@@ -2684,7 +2687,7 @@ msgstr ""
 #. (helptext of widget: fps_label)
 #: horizons/i18n/guitranslations.py:949
 msgid "Set the maximum frame rate used. Default: 60 fps."
-msgstr ""
+msgstr "Fija un máximo de ratio de frames. Por defecto: 60 fps"
 
 #. (helptext of widget: minimap_rotation_label)
 #: horizons/i18n/guitranslations.py:951
@@ -2700,7 +2703,7 @@ msgstr "Reiniciar configuración por defecto"
 #. (helptext of widget: network_port_lbl)
 #: horizons/i18n/guitranslations.py:955
 msgid "If set to 0, use the router default"
-msgstr ""
+msgstr "Si es 0, usa el router por defecto"
 
 #. (helptext of widget: uninterrupted_building_label)
 #: horizons/i18n/guitranslations.py:957
@@ -2939,14 +2942,13 @@ msgstr ""
 #. name of buildings:cornfield
 #: horizons/i18n/objecttranslations.py:135
 msgid "Corn Field"
-msgstr ""
+msgstr "Campo de Maíz"
 
 # 88%
 #. tooltip_text of buildings:cornfield
 #: horizons/i18n/objecttranslations.py:137
-#, fuzzy
 msgid "Yields corn. Needs a farm."
-msgstr "Produce alimento. Necesita una granja."
+msgstr "Produce maíz. Requiere una granja."
 
 #. name of buildings:distillery
 #: horizons/i18n/objecttranslations.py:142
@@ -3066,7 +3068,7 @@ msgstr ""
 #. name_1 of buildings:lumberjackcamp
 #: horizons/i18n/objecttranslations.py:224
 msgid "Lumberjack Hut"
-msgstr ""
+msgstr "Cabaña de Leñador"
 
 #. tooltip_text of buildings:lumberjackcamp
 #: horizons/i18n/objecttranslations.py:226
@@ -3091,7 +3093,7 @@ msgstr "Montaña"
 #. name of buildings:pastryshop
 #: horizons/i18n/objecttranslations.py:243
 msgid "Pastry Shop"
-msgstr ""
+msgstr "Pastelería"
 
 #. tooltip_text of buildings:pastryshop
 #: horizons/i18n/objecttranslations.py:245
@@ -3151,7 +3153,7 @@ msgstr "Defiende tu asentamiento."
 #. name of buildings:ruinedtent
 #: horizons/i18n/objecttranslations.py:285
 msgid "Ruined Tent"
-msgstr ""
+msgstr "Tienda en ruinas"
 
 #. name of buildings:saltponds
 #: horizons/i18n/objecttranslations.py:290
@@ -3256,12 +3258,13 @@ msgstr "Tienda"
 #. name_1 of buildings:tent
 #: horizons/i18n/objecttranslations.py:357
 msgid "Hut"
-msgstr ""
+msgstr "Cabaña"
 
+# 80%
 #. name_2 of buildings:tent
 #: horizons/i18n/objecttranslations.py:359
 msgid "House"
-msgstr ""
+msgstr "Casa"
 
 #. name_3 of buildings:tent
 #: horizons/i18n/objecttranslations.py:361
@@ -3276,7 +3279,7 @@ msgstr ""
 #. name_5 of buildings:tent
 #: horizons/i18n/objecttranslations.py:365
 msgid "Manor"
-msgstr ""
+msgstr "Finca"
 
 #. tooltip_text of buildings:tent
 #: horizons/i18n/objecttranslations.py:367
@@ -3365,14 +3368,14 @@ msgstr ""
 
 #. name of buildings:warehouse
 #: horizons/i18n/objecttranslations.py:428
-#, fuzzy
 msgid "Warehouse"
-msgstr "casas"
+msgstr "Lonja"
 
+# 76%
 #. name of buildings:weaverstent
 #: horizons/i18n/objecttranslations.py:433
 msgid "Weaver's Hut"
-msgstr ""
+msgstr "Cabaña de Tejedor"
 
 #. tooltip_text of buildings:weaverstent
 #: horizons/i18n/objecttranslations.py:435
@@ -3382,7 +3385,7 @@ msgstr "Transforma la lana de oveja en ropas."
 #. name of buildings:windmill
 #: horizons/i18n/objecttranslations.py:440
 msgid "Windmill"
-msgstr ""
+msgstr "Molino"
 
 #. tooltip_text of buildings:windmill
 #: horizons/i18n/objecttranslations.py:442
@@ -3435,7 +3438,7 @@ msgstr ""
 
 #: horizons/manager.py:175
 msgid "We are very sorry and hope to have this bug fixed in a future version."
-msgstr ""
+msgstr "Lo lamentamos y esperamos resolver el error en una próxima versión."
 
 #: horizons/mpsession.py:66
 msgid "Not possible"
@@ -3458,7 +3461,7 @@ msgstr ""
 #: horizons/savegamemanager.py:410 horizons/savegamemanager.py:416
 #, python-format
 msgid "Error: Cannot find campaign '{name}'."
-msgstr ""
+msgstr "Error: No se ha encontrado la campaña '{name}'."
 
 #: horizons/savegamemanager.py:435 horizons/savegamemanager.py:441
 #, python-format
@@ -3546,6 +3549,8 @@ msgstr "Iniciando Unknown Horizons"
 #, python-format
 msgid "There is a more recent release of Unknown Horizons ({new_version}) than the one you are currently using ({old_version})."
 msgstr ""
+"Hay una versión más reciente de Unknown Horizons ({new_version}) que la que "
+"estás utilizando ({old_version})."
 
 #: horizons/util/checkupdates.py:76
 msgid "Click to download"
@@ -3639,7 +3644,7 @@ msgstr ""
 
 #: horizons/world/component/tradepostcomponent.py:241
 msgid "The trade partner does not buy more of this."
-msgstr ""
+msgstr "El socio comercial ha dejado de comprar más de esto."
 
 #: horizons/world/traderoute.py:282
 #, python-format
@@ -3664,12 +3669,12 @@ msgstr "Yendo a {x}, {y}"
 #: horizons/world/units/ship.py:191
 #, python-format
 msgid "Idle at {location}"
-msgstr ""
+msgstr "Parado en {location}"
 
 #: horizons/world/units/ship.py:193
 #, python-format
 msgid "Idle at {x}, {y}"
-msgstr ""
+msgstr "Parado en {x}, {y}"
 
 #: horizons/world/units/ship.py:207
 msgid "Trader"
@@ -3678,18 +3683,17 @@ msgstr "Comerciante"
 #: horizons/world/units/weaponholder.py:453
 #, python-format
 msgid "Attacking {target} '{name}' ({owner})"
-msgstr ""
+msgstr "Atacar {target} '{name}' ({owner})"
 
 #: horizons/world/units/weaponholder.py:458
 #, python-format
 msgid "Attacking {owner}"
-msgstr ""
+msgstr "Atacar {owner}"
 
 # 86%
 #: run_uh.py:206
-#, fuzzy
 msgid "Unknown Horizons has crashed."
-msgstr "Unknown Horizons ha caído."
+msgstr "Unknown Horizons se ha caído."
 
 # 83%
 #: run_uh.py:208
@@ -3704,6 +3708,8 @@ msgstr "Para hacer esto, necesitamos la información de este registro:"
 #: run_uh.py:211
 msgid "Please give it to us via IRC or our forum, for both see http://unknown-horizons.org ."
 msgstr ""
+"Por favor avísanos vía IRC o en nuestro foro, para ambos visita http"
+"://unkwnown-horizons.org ."
 
 #: run_uh.py:251
 msgid "Error: Unable to find required libraries"
