@@ -19,10 +19,9 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-from fife.extensions.pychan.widgets import ImageButton
+from horizons.gui.widgets.toggleimagebutton import ToggleImageButton
 
-
-class OkButton(ImageButton):
+class OkButton(ToggleImageButton):
 	"""The OkButton is a shortcut for an ImageButton with our OK / apply icon.
 	Its default attributes are:
 	name="okButton"
@@ -39,9 +38,10 @@ class OkButton(ImageButton):
 			is_focusable = False,
 			up_image="content/gui/images/buttons/ok.png",
 			hover_image="content/gui/images/buttons/ok_h.png",
-			down_image="content/gui/images/buttons/ok.png", **kwargs)
+			down_image="content/gui/images/buttons/ok.png",
+			inactive_image= "content/gui/images/buttons/ok_bw.png", **kwargs)	
 
-class CancelButton(ImageButton):
+class CancelButton(ToggleImageButton):
 	"""The CancelButton is a shortcut for an ImageButton with our cancel / close
 	icon. Its default attributes are:
 	name="cancelButton"
@@ -58,9 +58,10 @@ class CancelButton(ImageButton):
 			is_focusable = False,
 			up_image="content/gui/images/buttons/close.png",
 			hover_image="content/gui/images/buttons/close_h.png",
-			down_image="content/gui/images/buttons/close.png", **kwargs)
+			down_image="content/gui/images/buttons/close.png",
+			inactive_image= "content/gui/images/buttons/close_bw.png", **kwargs)
 
-class DeleteButton(ImageButton):
+class DeleteButton(ToggleImageButton):
 	"""The DeleteButton is a shortcut for an ImageButton with our delete / tear
 	icon. Its default attributes are:
 	name="deleteButton"
@@ -77,4 +78,5 @@ class DeleteButton(ImageButton):
 			is_focusable = False,
 			up_image="content/gui/images/buttons/delete.png",
 			hover_image="content/gui/images/buttons/delete_h.png",
-			down_image="content/gui/images/buttons/delete.png", **kwargs)
+			down_image="content/gui/images/buttons/delete.png",
+			inactive_image= "content/gui/images/buttons/delete_bw.png", **kwargs)

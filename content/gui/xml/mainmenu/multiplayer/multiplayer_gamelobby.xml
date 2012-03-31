@@ -16,9 +16,13 @@
 		<TextField name="chatTextField"  position="22,420" 
 			text="Enter your message here"  min_size="300,16" />
 
-		<Label name="exit_to_mp_menu_lbl"  text="Leave:"  position="75,470" />
-		<CancelButton position="120,460"
+		<Label name="exit_to_mp_menu_lbl"  text="Leave:"  position="55,470" />
+		<CancelButton position="100,460"
 			name="cancel"  helptext="Exit gamelobby" />
+
+		<Label name="start_multiplayer_game_button_lbl"  text="Start game:"  position="165,470" />
+		<OkButton position="240,460"
+			name="start_multiplayer_game"  helptext="Sart the Game" />
 	</Container>
 
 
