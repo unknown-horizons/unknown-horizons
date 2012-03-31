@@ -155,7 +155,7 @@ class GuiHelper(object):
 			gui.trigger(c, 'okButton/action/default')
 
 		Equivalent to:
-			gui.trigger('maiNMENU', 'OkButton/action/default')
+			gui.trigger('mainmenu', 'okButton/action/default')
 		"""
 		widget_name, event_name, group_name = event.split('/')
 
