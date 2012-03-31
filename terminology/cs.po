@@ -2,16 +2,16 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-07-08 16:54+0200\n"
-"PO-Revision-Date: 2011-12-29 14:32+0200\n"
-"Last-Translator: Kristian <kristian.hynek@gmail.com>\n"
+"POT-Creation-Date: 2012-03-31 21:42+0100\n"
+"PO-Revision-Date: 2012-03-14 11:06+0200\n"
+"Last-Translator: naked.in.rain <martin.mezl@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: cs\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
-"X-Generator: Pootle 2.1.5\n"
+"X-Generator: Translate Toolkit 1.9.0\n"
 
 # (poterminology) uh-tutorial/tutorial.pot (43)
 #
@@ -40,33 +40,14 @@ msgstr "hra"
 msgid "building"
 msgstr "budování"
 
-# (poterminology) uh-tutorial/tutorial.pot (24)
+# (poterminology) uh-tutorial/tutorial.pot (9)
 #
-# (poterminology) uh/unknownhorizons.pot (6)
-#
-#
-#
-msgid "tent"
-msgstr "stan"
-
-# (poterminology) uh-tutorial/tutorial.pot (8)
-#
-# (poterminology) uh/unknownhorizons.pot (14)
+# (poterminology) uh/unknownhorizons.pot (5)
 #
 #
 #
-msgid "resource"
-msgstr "zdroje"
-
-# (poterminology) uh-tutorial/tutorial.pot (21)
-# (poterminology) uh/unknownhorizons.pot (2)
-msgid "branch office"
-msgstr "Obchodní přístav"
-
-# (poterminology) uh-tutorial/tutorial.pot (3)
-# (poterminology) uh/unknownhorizons.pot (2)
-msgid "your"
-msgstr "vaše"
+msgid "settlement"
+msgstr "osada"
 
 # (poterminology) uh-tutorial/tutorial.pot (19)
 #
@@ -79,24 +60,6 @@ msgstr "farma"
 
 # (poterminology) uh-tutorial/tutorial.pot (13)
 #
-# (poterminology) uh/unknownhorizons.pot (6)
-#
-#
-#
-msgid "field"
-msgstr "pole"
-
-# (poterminology) uh-tutorial/tutorial.pot (6)
-#
-# (poterminology) uh/unknownhorizons.pot (8)
-#
-#
-#
-msgid "overview"
-msgstr "přehled"
-
-# (poterminology) uh-tutorial/tutorial.pot (13)
-#
 # (poterminology) uh/unknownhorizons.pot (9)
 #
 #
@@ -104,50 +67,44 @@ msgstr "přehled"
 msgid "ship"
 msgstr "loď"
 
-# (poterminology) uh-tutorial/tutorial.pot (11)
+# (poterminology) uh-tutorial/tutorial.pot (24)
 #
-# (poterminology) uh/unknownhorizons.pot (5)
+# (poterminology) uh/unknownhorizons.pot (6)
 #
 #
 #
-msgid "main"
-msgstr "hlavní"
+msgid "tent"
+msgstr "stan"
 
-# (poterminology) uh-tutorial/tutorial.pot (9)
-#
-# (poterminology) uh/unknownhorizons.pot (5)
-#
-#
-#
-msgid "settlement"
-msgstr "osada"
-
-# (poterminology) uh-tutorial/tutorial.pot (3)
-#
-# (poterminology) uh/unknownhorizons.pot (9)
-#
-#
-#
-msgid "start"
-msgstr "start"
+msgid "warehouse"
+msgstr ""
 
 # (poterminology) uh-tutorial/tutorial.pot (8)
+#
+# (poterminology) uh/unknownhorizons.pot (14)
+#
+#
+#
+msgid "resource"
+msgstr "zdroje"
+
+# (poterminology) uh-tutorial/tutorial.pot (9)
 #
 # (poterminology) uh/unknownhorizons.pot (4)
 #
 #
 #
-msgid "click"
-msgstr "klik"
+msgid "produce"
+msgstr "produkování"
 
-# (poterminology) uh-tutorial/tutorial.pot (12)
+# (poterminology) uh-tutorial/tutorial.pot (13)
 #
-# (poterminology) uh/unknownhorizons.pot (2)
+# (poterminology) uh/unknownhorizons.pot (6)
 #
 #
 #
-msgid "inhabitants"
-msgstr "obyvatel"
+msgid "field"
+msgstr "pole"
 
 #
 #
@@ -160,37 +117,70 @@ msgstr "obyvatel"
 msgid "map"
 msgstr "mapa"
 
-# (poterminology) uh-tutorial/tutorial.pot (3)
+# (poterminology) uh-tutorial/tutorial.pot (8)
+#
+# (poterminology) uh/unknownhorizons.pot (4)
+#
+#
+#
+msgid "trade"
+msgstr "obchod"
+
+# (poterminology) uh-tutorial/tutorial.pot (12)
+#
+# (poterminology) uh/unknownhorizons.pot (2)
+#
+#
+#
+msgid "inhabitants"
+msgstr "obyvatel"
+
+# (poterminology) uh-tutorial/tutorial.pot (9)
+#
+# (poterminology) uh/unknownhorizons.pot (4)
+#
+#
+#
+msgid "buy"
+msgstr "koupit"
+
+# (poterminology) uh-tutorial/tutorial.pot (6)
 #
 # (poterminology) uh/unknownhorizons.pot (8)
 #
 #
 #
-msgid "menu"
-msgstr "menu"
+msgid "overview"
+msgstr "přehled"
 
-# (poterminology) uh-tutorial/tutorial.pot (7)
+# (poterminology) uh-tutorial/tutorial.pot (8)
+#
 # (poterminology) uh/unknownhorizons.pot (4)
-msgid "production"
-msgstr "výroba"
+#
+#
+#
+msgid "click"
+msgstr "klik"
 
-# (poterminology) uh-tutorial/tutorial.pot (13)
+# (poterminology) uh-tutorial/tutorial.pot (11)
 #
-# (poterminology) uh/unknownhorizons.pot (1)
+# (poterminology) uh/unknownhorizons.pot (2)
 #
 #
 #
-msgid "tab"
-msgstr "záložka"
+msgid "lumberjack"
+msgstr "dřevorubec"
 
-# (poterminology) uh-tutorial/tutorial.pot (3)
-#
-# (poterminology) uh/unknownhorizons.pot (10)
-#
-#
-#
-msgid "unknown"
-msgstr "neznámé"
+msgid "resident"
+msgstr ""
+
+# (poterminology) uh-tutorial/tutorial.pot (10)
+# (poterminology) uh/unknownhorizons.pot (2)
+msgid "main square"
+msgstr "tržnice"
+
+msgid "sailors"
+msgstr ""
 
 # (poterminology) uh-tutorial/tutorial.pot (5)
 #
@@ -206,10 +196,24 @@ msgstr "jídlo"
 msgid "increment"
 msgstr "úroveň"
 
+# (poterminology) uh-tutorial/tutorial.pot (7)
+# (poterminology) uh/unknownhorizons.pot (4)
+msgid "production"
+msgstr "výroba"
+
 # (poterminology) uh-tutorial/tutorial.pot (3)
 # (poterminology) uh/unknownhorizons.pot (4)
 msgid "select"
 msgstr "výběr"
+
+# (poterminology) uh-tutorial/tutorial.pot (7)
+#
+# (poterminology) uh/unknownhorizons.pot (4)
+#
+#
+#
+msgid "sell"
+msgstr "prodat"
 
 # (poterminology) uh-tutorial/tutorial.pot (3)
 #
@@ -220,6 +224,45 @@ msgstr "výběr"
 msgid "setting"
 msgstr "nastavení"
 
+# (poterminology) uh-tutorial/tutorial.pot (11)
+#
+# (poterminology) uh/unknownhorizons.pot (2)
+#
+#
+#
+msgid "storage"
+msgstr "skladiště"
+
+# (poterminology) uh-tutorial/tutorial.pot (13)
+#
+# (poterminology) uh/unknownhorizons.pot (1)
+#
+#
+#
+msgid "tab"
+msgstr "záložka"
+
+msgid "upgrade"
+msgstr ""
+
+msgid "your inhabitants"
+msgstr ""
+
+msgid "close"
+msgstr ""
+
+# (poterminology) uh-tutorial/tutorial.pot (8)
+#
+# (poterminology) uh/unknownhorizons.pot (1)
+#
+#
+#
+msgid "companies"
+msgstr "společnosti"
+
+msgid "island"
+msgstr ""
+
 # (poterminology) uh-tutorial/tutorial.pot (13)
 #
 # (poterminology) uh/unknownhorizons.pot (2)
@@ -229,28 +272,62 @@ msgstr "nastavení"
 msgid "time"
 msgstr "čas"
 
-# (poterminology) uh-tutorial/tutorial.pot (8)
-#
-# (poterminology) uh/unknownhorizons.pot (4)
-#
-#
-#
-msgid "trade"
-msgstr "obchod"
+msgid "unit"
+msgstr ""
 
-# (poterminology) uh-tutorial/tutorial.pot (5)
+# (poterminology) uh-tutorial/tutorial.pot (7)
 #
-# (poterminology) uh/unknownhorizons.pot (4)
+# (poterminology) uh/unknownhorizons.pot (1)
 #
 #
 #
-msgid "change"
-msgstr "změna"
+msgid "balance"
+msgstr "vyvážení"
 
-# (poterminology) uh-tutorial/tutorial.pot (10)
-# (poterminology) uh/unknownhorizons.pot (2)
-msgid "main square"
-msgstr "tržnice"
+# (poterminology) uh-tutorial/tutorial.pot (7)
+#
+# (poterminology) uh/unknownhorizons.pot (1)
+#
+#
+#
+msgid "coast"
+msgstr "pobřeží"
+
+# (poterminology) uh-tutorial/tutorial.pot (3)
+#
+# (poterminology) uh/unknownhorizons.pot (8)
+#
+#
+#
+msgid "menu"
+msgstr "menu"
+
+# (poterminology) uh-tutorial/tutorial.pot (7)
+#
+# (poterminology) uh/unknownhorizons.pot (1)
+#
+#
+#
+msgid "slot"
+msgstr "slot"
+
+# (poterminology) uh-tutorial/tutorial.pot (3)
+#
+# (poterminology) uh/unknownhorizons.pot (9)
+#
+#
+#
+msgid "start"
+msgstr "start"
+
+# (poterminology) uh-tutorial/tutorial.pot (9)
+#
+# (poterminology) uh/unknownhorizons.pot (1)
+#
+#
+#
+msgid "stock"
+msgstr "zásoba"
 
 # (poterminology) uh-tutorial/tutorial.pot (10)
 #
@@ -261,6 +338,18 @@ msgstr "tržnice"
 msgid "trail"
 msgstr "stezka"
 
+msgid "Unknown Horizons"
+msgstr ""
+
+# (poterminology) uh-tutorial/tutorial.pot (7)
+#
+# (poterminology) uh/unknownhorizons.pot (4)
+#
+#
+#
+msgid "wool"
+msgstr "vlna"
+
 # (poterminology) uh-tutorial/tutorial.pot (6)
 #
 # (poterminology) uh/unknownhorizons.pot (4)
@@ -270,23 +359,31 @@ msgstr "stezka"
 msgid "boards"
 msgstr "nástěnka"
 
-# (poterminology) uh-tutorial/tutorial.pot (9)
+# (poterminology) uh-tutorial/tutorial.pot (7)
+# (poterminology) uh/unknownhorizons.pot (1)
+msgid "collector"
+msgstr "nosič"
+
+msgid "connection"
+msgstr "spojení"
+
+# (poterminology) uh-tutorial/tutorial.pot (3)
+#
+# (poterminology) uh/unknownhorizons.pot (3)
+#
+#
+#
+msgid "fire"
+msgstr "oheň"
+
+# (poterminology) uh-tutorial/tutorial.pot (5)
 #
 # (poterminology) uh/unknownhorizons.pot (4)
 #
 #
 #
-msgid "buy"
-msgstr "koupit"
-
-# (poterminology) uh-tutorial/tutorial.pot (7)
-#
-# (poterminology) uh/unknownhorizons.pot (1)
-#
-#
-#
-msgid "coast"
-msgstr "pobřeží"
+msgid "change"
+msgstr "změna"
 
 # (poterminology) uh-tutorial/tutorial.pot (7)
 #
@@ -306,14 +403,14 @@ msgstr "spojit"
 msgid "cost"
 msgstr "cena"
 
-# (poterminology) uh-tutorial/tutorial.pot (4)
+# (poterminology) uh-tutorial/tutorial.pot (5)
 #
-# (poterminology) uh/unknownhorizons.pot (4)
+# (poterminology) uh/unknownhorizons.pot (1)
 #
 #
 #
-msgid "free"
-msgstr "zdarma"
+msgid "house"
+msgstr "dům"
 
 # (poterminology) uh-tutorial/tutorial.pot (5)
 #
@@ -324,86 +421,37 @@ msgstr "zdarma"
 msgid "log"
 msgstr "záznam"
 
-# (poterminology) uh-tutorial/tutorial.pot (11)
+msgid "road"
+msgstr ""
+
+#
+#
+# (poterminology) uh-tutorial/tutorial.pot (1)
 #
 # (poterminology) uh/unknownhorizons.pot (2)
 #
 #
 #
-msgid "lumberjack"
-msgstr "dřevorubec"
-
-# (poterminology) uh-tutorial/tutorial.pot (7)
-#
-# (poterminology) uh/unknownhorizons.pot (4)
-#
-#
-#
-msgid "sell"
-msgstr "prodat"
-
-# (poterminology) uh-tutorial/tutorial.pot (11)
-#
-# (poterminology) uh/unknownhorizons.pot (2)
-#
-#
-#
-msgid "storage"
-msgstr "skladiště"
-
-# (poterminology) uh-tutorial/tutorial.pot (7)
-#
-# (poterminology) uh/unknownhorizons.pot (3)
-#
-#
-#
-msgid "taxes"
-msgstr "daně"
-
-# (poterminology) uh-tutorial/tutorial.pot (6)
-#
-# (poterminology) uh/unknownhorizons.pot (3)
-#
-#
-#
-msgid "trader"
-msgstr "obchodník"
+msgid "save"
+msgstr "uložit"
 
 # (poterminology) uh-tutorial/tutorial.pot (3)
-#
-# (poterminology) uh/unknownhorizons.pot (11)
-#
-#
-#
-msgid "version"
-msgstr "verze"
-
-# (poterminology) uh-tutorial/tutorial.pot (8)
 #
 # (poterminology) uh/unknownhorizons.pot (1)
 #
 #
 #
-msgid "companies"
-msgstr "společnosti"
+msgid "built"
+msgstr "postavený"
 
-# (poterminology) uh-tutorial/tutorial.pot (3)
-#
-# (poterminology) uh/unknownhorizons.pot (3)
-#
-#
-#
-msgid "fire"
-msgstr "oheň"
-
-# (poterminology) uh-tutorial/tutorial.pot (5)
+# (poterminology) uh-tutorial/tutorial.pot (6)
 #
 # (poterminology) uh/unknownhorizons.pot (2)
 #
 #
 #
-msgid "left"
-msgstr "vlevo"
+msgid "pasture"
+msgstr "pastvina"
 
 # (poterminology) uh-tutorial/tutorial.pot (7)
 #
@@ -414,53 +462,34 @@ msgstr "vlevo"
 msgid "reach"
 msgstr "dosah"
 
-# (poterminology) uh-tutorial/tutorial.pot (3)
-#
-# (poterminology) uh/unknownhorizons.pot (3)
-#
-#
-#
-msgid "signal"
-msgstr "signál"
-
-msgid "signal fire"
-msgstr "signální oheň"
-
-# (poterminology) uh-tutorial/tutorial.pot (9)
-#
-# (poterminology) uh/unknownhorizons.pot (1)
-#
-#
-#
-msgid "stock"
-msgstr "zásoba"
-
 # (poterminology) uh-tutorial/tutorial.pot (4)
 #
-# (poterminology) uh/unknownhorizons.pot (3)
+# (poterminology) uh/unknownhorizons.pot (2)
 #
 #
 #
-msgid "tools"
-msgstr "nářadí"
+msgid "tree"
+msgstr "strom"
 
-# (poterminology) uh-tutorial/tutorial.pot (7)
-#
-# (poterminology) uh/unknownhorizons.pot (4)
-#
-#
-#
-msgid "wool"
-msgstr "vlna"
+# (poterminology) uh-tutorial/tutorial.pot (3)
+# (poterminology) uh/unknownhorizons.pot (2)
+msgid "your"
+msgstr "vaše"
 
-# (poterminology) uh-tutorial/tutorial.pot (7)
+msgid "your settlement"
+msgstr ""
+
+# (poterminology) uh-tutorial/tutorial.pot (3)
 #
 # (poterminology) uh/unknownhorizons.pot (1)
 #
 #
 #
-msgid "balance"
-msgstr "vyvážení"
+msgid "add"
+msgstr "přidat"
+
+msgid "check"
+msgstr "zkontrolovat / kontrol"
 
 # (poterminology) uh-tutorial/tutorial.pot (3)
 #
@@ -471,6 +500,9 @@ msgstr "vyvážení"
 msgid "choose"
 msgstr "vybrat"
 
+msgid "confectionery"
+msgstr ""
+
 # (poterminology) uh-tutorial/tutorial.pot (5)
 #
 # (poterminology) uh/unknownhorizons.pot (2)
@@ -480,14 +512,25 @@ msgstr "vybrat"
 msgid "fisher"
 msgstr "rybář"
 
-# (poterminology) uh-tutorial/tutorial.pot (2)
+# (poterminology) uh-tutorial/tutorial.pot (4)
+# (poterminology) uh/unknownhorizons.pot (1)
+msgid "free trader"
+msgstr "svobodný obchodník"
+
+# (poterminology) uh-tutorial/tutorial.pot (3)
 #
-# (poterminology) uh/unknownhorizons.pot (4)
+# (poterminology) uh/unknownhorizons.pot (3)
 #
 #
 #
-msgid "found"
-msgstr "nalezeno"
+msgid "happiness"
+msgstr "štěstí"
+
+msgid "in stock"
+msgstr ""
+
+msgid "money"
+msgstr ""
 
 # (poterminology) uh-tutorial/tutorial.pot (4)
 #
@@ -498,51 +541,61 @@ msgstr "nalezeno"
 msgid "pavilion"
 msgstr "pavilón"
 
-# (poterminology) uh-tutorial/tutorial.pot (4)
+msgid "running costs"
+msgstr "provozní náklady"
+
+# (poterminology) uh-tutorial/tutorial.pot (3)
 #
-# (poterminology) uh/unknownhorizons.pot (2)
+# (poterminology) uh/unknownhorizons.pot (4)
 #
 #
 #
-msgid "potato"
-msgstr "brambora"
+msgid "sugar"
+msgstr "cukr"
+
+# (poterminology) uh-tutorial/tutorial.pot (7)
+#
+# (poterminology) uh/unknownhorizons.pot (3)
+#
+#
+#
+msgid "taxes"
+msgstr "daně"
+
+msgid "tax"
+msgstr "daň"
 
 # (poterminology) uh-tutorial/tutorial.pot (4)
 #
-# (poterminology) uh/unknownhorizons.pot (1)
+# (poterminology) uh/unknownhorizons.pot (3)
 #
 #
 #
-msgid "range"
-msgstr "rozsah"
+msgid "tools"
+msgstr "nářadí"
+
+msgid "button"
+msgstr ""
 
 #
 #
 # (poterminology) uh-tutorial/tutorial.pot (1)
 #
-# (poterminology) uh/unknownhorizons.pot (3)
+# (poterminology) uh/unknownhorizons.pot (1)
 #
 #
 #
-msgid "raw"
-msgstr "surový"
+msgid "continue"
+msgstr "pokračování"
 
 # (poterminology) uh-tutorial/tutorial.pot (2)
 #
-# (poterminology) uh/unknownhorizons.pot (3)
-#
-#
-#
-msgid "running"
-msgstr "běh"
-
-msgid "running costs"
-msgstr "provozní náklady"
-
-# (poterminology) uh-tutorial/tutorial.pot (7)
 # (poterminology) uh/unknownhorizons.pot (1)
-msgid "collector"
-msgstr "nosič"
+#
+#
+#
+msgid "faith"
+msgstr "víra"
 
 # (poterminology) uh-tutorial/tutorial.pot (4)
 #
@@ -555,21 +608,12 @@ msgstr "pomoc"
 
 # (poterminology) uh-tutorial/tutorial.pot (5)
 #
-# (poterminology) uh/unknownhorizons.pot (1)
-#
-#
-#
-msgid "house"
-msgstr "dům"
-
-# (poterminology) uh-tutorial/tutorial.pot (2)
-#
 # (poterminology) uh/unknownhorizons.pot (2)
 #
 #
 #
-msgid "inventory"
-msgstr "inventář"
+msgid "left"
+msgstr "vlevo"
 
 # (poterminology) uh-tutorial/tutorial.pot (4)
 #
@@ -580,6 +624,15 @@ msgstr "inventář"
 msgid "level"
 msgstr "úroveň"
 
+# (poterminology) uh-tutorial/tutorial.pot (2)
+#
+# (poterminology) uh/unknownhorizons.pot (1)
+#
+#
+#
+msgid "mode"
+msgstr "režim"
+
 #
 # (poterminology) uh-tutorial/tutorial.pot (1)
 #
@@ -588,38 +641,47 @@ msgstr "úroveň"
 msgid "move"
 msgstr "pohyb"
 
-# (poterminology) uh-tutorial/tutorial.pot (1)
-#
-# (poterminology) uh/unknownhorizons.pot (1)
-#
-#
-#
-msgid "moved"
-msgstr "pohyboval"
+msgid "pioneers"
+msgstr ""
 
-# (poterminology) uh-tutorial/tutorial.pot (9)
-#
-# (poterminology) uh/unknownhorizons.pot (4)
-#
-#
-#
-msgid "produce"
-msgstr "produkování"
+msgid "citizens"
+msgstr ""
 
-# (poterminology) uh-tutorial/tutorial.pot (9)
-# (poterminology) uh/unknownhorizons.pot (4)
-# 87%
-msgid "produced"
-msgstr "vyrobeno"
+msgid "merchants"
+msgstr ""
 
-# (poterminology) uh-tutorial/tutorial.pot (6)
+msgid "aristocrats"
+msgstr ""
+
+# (poterminology) uh-tutorial/tutorial.pot (4)
 #
 # (poterminology) uh/unknownhorizons.pot (2)
 #
 #
 #
-msgid "pasture"
-msgstr "pastvina"
+msgid "potato"
+msgstr "brambora"
+
+# (poterminology) uh-tutorial/tutorial.pot (4)
+#
+# (poterminology) uh/unknownhorizons.pot (6)
+#
+#
+#
+msgid "settler"
+msgstr "osadník"
+
+msgid "speed"
+msgstr ""
+
+# (poterminology) uh-tutorial/tutorial.pot (3)
+#
+# (poterminology) uh/unknownhorizons.pot (1)
+#
+#
+#
+msgid "stop"
+msgstr "stop"
 
 # (poterminology) uh-tutorial/tutorial.pot (4)
 #
@@ -630,41 +692,23 @@ msgstr "pastvina"
 msgid "storage tent"
 msgstr "skladovací stan"
 
-# (poterminology) uh-tutorial/tutorial.pot (3)
-#
-# (poterminology) uh/unknownhorizons.pot (4)
-#
-#
-#
-msgid "sugar"
-msgstr "cukr"
+msgid "wait"
+msgstr ""
 
-# (poterminology) uh-tutorial/tutorial.pot (4)
-#
-# (poterminology) uh/unknownhorizons.pot (2)
-#
-#
-#
-msgid "tree"
-msgstr "strom"
+msgid "access"
+msgstr ""
 
-# (poterminology) uh-tutorial/tutorial.pot (3)
-#
-# (poterminology) uh/unknownhorizons.pot (3)
-#
-#
-#
-msgid "active"
-msgstr "aktivní"
-
-# (poterminology) uh-tutorial/tutorial.pot (3)
+# (poterminology) uh-tutorial/tutorial.pot (2)
 #
 # (poterminology) uh/unknownhorizons.pot (1)
 #
 #
 #
-msgid "add"
-msgstr "přidat"
+msgid "account"
+msgstr "účet"
+
+msgid "amount"
+msgstr ""
 
 # (poterminology) uh-tutorial/tutorial.pot (2)
 #
@@ -681,8 +725,8 @@ msgstr "stavební menu"
 #
 #
 #
-msgid "built"
-msgstr "postavený"
+msgid "cloth"
+msgstr "látka"
 
 # (poterminology) uh-tutorial/tutorial.pot (3)
 #
@@ -693,17 +737,6 @@ msgstr "postavený"
 msgid "construction"
 msgstr "výstavba"
 
-#
-#
-# (poterminology) uh-tutorial/tutorial.pot (1)
-#
-# (poterminology) uh/unknownhorizons.pot (1)
-#
-#
-#
-msgid "continue"
-msgstr "pokračování"
-
 # (poterminology) uh-tutorial/tutorial.pot (2)
 #
 # (poterminology) uh/unknownhorizons.pot (2)
@@ -713,19 +746,45 @@ msgstr "pokračování"
 msgid "decrease"
 msgstr "snížení"
 
-# (poterminology) uh-tutorial/tutorial.pot (4)
+#
+#
+# (poterminology) uh-tutorial/tutorial.pot (1)
+#
 # (poterminology) uh/unknownhorizons.pot (1)
-msgid "free trader"
-msgstr "svobodný obchodník"
+#
+#
+#
+msgid "description"
+msgstr "popis"
 
-# (poterminology) uh-tutorial/tutorial.pot (6)
+# (poterminology) uh-tutorial/tutorial.pot (2)
 #
-# (poterminology) uh/unknownhorizons.pot (1)
+# (poterminology) uh/unknownhorizons.pot (2)
 #
 #
 #
-msgid "hunter"
-msgstr "lovec"
+msgid "fish"
+msgstr "ryba"
+
+#
+#
+# (poterminology) uh-tutorial/tutorial.pot (1)
+#
+# (poterminology) uh/unknownhorizons.pot (2)
+#
+#
+#
+msgid "increase"
+msgstr "zvýšení"
+
+# (poterminology) uh-tutorial/tutorial.pot (2)
+#
+# (poterminology) uh/unknownhorizons.pot (2)
+#
+#
+#
+msgid "lamb"
+msgstr "jehně"
 
 #
 #
@@ -742,73 +801,43 @@ msgstr "opustit"
 #
 # (poterminology) uh-tutorial/tutorial.pot (1)
 #
-# (poterminology) uh/unknownhorizons.pot (2)
-#
-#
-#
-msgid "market"
-msgstr "obchod"
-
-# (poterminology) uh-tutorial/tutorial.pot (2)
-# (poterminology) uh/unknownhorizons.pot (1)
-msgid "partner"
-msgstr "partner"
-
-# (poterminology) uh-tutorial/tutorial.pot (12)
-#
 # (poterminology) uh/unknownhorizons.pot (3)
 #
 #
 #
-msgid "sailor"
-msgstr "námořník"
+msgid "liquor"
+msgstr "kořalka"
+
+msgid "location"
+msgstr ""
+
+msgid "offer"
+msgstr ""
+
+# (poterminology) uh-tutorial/tutorial.pot (3)
+#
+# (poterminology) uh/unknownhorizons.pot (1)
+#
+#
+#
+msgid "potatoes"
+msgstr "brambory"
 
 # (poterminology) uh-tutorial/tutorial.pot (4)
 #
-# (poterminology) uh/unknownhorizons.pot (2)
+# (poterminology) uh/unknownhorizons.pot (1)
 #
 #
 #
-msgid "pioneer"
-msgstr "průkopník"
+msgid "range"
+msgstr "rozsah"
 
-# (poterminology) uh-tutorial/tutorial.pot (4)
+# (poterminology) uh-tutorial/tutorial.pot (2)
 #
-# (poterminology) uh/unknownhorizons.pot (6)
+# (poterminology) uh/unknownhorizons.pot (1)
 #
-#
-#
-msgid "settler"
-msgstr "osadník"
-
-msgid "citizen"
-msgstr "občan"
-
-msgid "merchant"
-msgstr "obchodník"
-
-msgid "aristocrat"
-msgstr "šlechtic"
-
-#
-#
-# (poterminology) uh-tutorial/tutorial.pot (1)
-#
-# (poterminology) uh/unknownhorizons.pot (2)
-#
-#
-#
-msgid "refresh"
-msgstr "obnovit"
-
-# (poterminology) uh-tutorial/tutorial.pot (4)
-#
-# (poterminology) uh/unknownhorizons.pot (2)
-#
-#
-#
-msgid "residents"
-msgstr "obyvatel"
+msgid "reached"
+msgstr "dosaženo"
 
 #
 #
@@ -821,210 +850,8 @@ msgstr "obyvatel"
 msgid "run"
 msgstr "běh"
 
-# (poterminology) uh-tutorial/tutorial.pot (7)
-#
-# (poterminology) uh/unknownhorizons.pot (1)
-#
-#
-#
-msgid "slot"
-msgstr "slot"
-
-# (poterminology) uh-tutorial/tutorial.pot (3)
-#
-# (poterminology) uh/unknownhorizons.pot (1)
-#
-#
-#
-msgid "stop"
-msgstr "stop"
-
-# (poterminology) uh-tutorial/tutorial.pot (2)
-#
-# (poterminology) uh/unknownhorizons.pot (1)
-#
-#
-#
-msgid "team"
-msgstr "tým"
-
-# (poterminology) uh-tutorial/tutorial.pot (2)
-#
-# (poterminology) uh/unknownhorizons.pot (2)
-#
-#
-#
-msgid "village"
-msgstr "vesnice"
-
-# (poterminology) uh-tutorial/tutorial.pot (2)
-#
-# (poterminology) uh/unknownhorizons.pot (1)
-#
-#
-#
-msgid "account"
-msgstr "účet"
-
-# (poterminology) uh-tutorial/tutorial.pot (2)
-#
-# (poterminology) uh/unknownhorizons.pot (1)
-#
-#
-#
-msgid "back"
-msgstr "zpět"
-
-#
-#
-# (poterminology) uh-tutorial/tutorial.pot (1)
-#
-# (poterminology) uh/unknownhorizons.pot (2)
-#
-#
-#
-msgid "build settlement"
-msgstr "postav osadu"
-
-# (poterminology) uh-tutorial/tutorial.pot (1)
-# (poterminology) uh/unknownhorizons.pot (3)
-msgid "Captain's log"
-msgstr "Lodní deník"
-
-# (poterminology) uh-tutorial/tutorial.pot (3)
-#
-# (poterminology) uh/unknownhorizons.pot (1)
-#
-#
-#
-msgid "cloth"
-msgstr "látka"
-
-#
-#
-# (poterminology) uh-tutorial/tutorial.pot (1)
-#
-# (poterminology) uh/unknownhorizons.pot (1)
-#
-#
-#
-msgid "description"
-msgstr "popis"
-
-# (poterminology) uh-tutorial/tutorial.pot (3)
-#
-# (poterminology) uh/unknownhorizons.pot (3)
-#
-#
-#
-msgid "happiness"
-msgstr "štěstí"
-
-#
-#
-# (poterminology) uh-tutorial/tutorial.pot (1)
-#
-# (poterminology) uh/unknownhorizons.pot (2)
-#
-#
-#
-msgid "increase"
-msgstr "zvýšení"
-
-#
-#
-# (poterminology) uh-tutorial/tutorial.pot (1)
-#
-# (poterminology) uh/unknownhorizons.pot (3)
-#
-#
-#
-msgid "liquor"
-msgstr "kořalka"
-
-# (poterminology) uh-tutorial/tutorial.pot (2)
-#
-# (poterminology) uh/unknownhorizons.pot (1)
-#
-#
-#
-msgid "mode"
-msgstr "režim"
-
-#
-#
-# (poterminology) uh-tutorial/tutorial.pot (1)
-#
-# (poterminology) uh/unknownhorizons.pot (2)
-#
-#
-#
-msgid "multiple"
-msgstr "násobek"
-
-#
-#
-# (poterminology) uh-tutorial/tutorial.pot (1)
-#
-# (poterminology) uh/unknownhorizons.pot (2)
-#
-#
-#
-msgid "output"
-msgstr "výstup"
-
-#
-#
-# (poterminology) uh-tutorial/tutorial.pot (1)
-#
-# (poterminology) uh/unknownhorizons.pot (2)
-#
-#
-#
-msgid "play"
-msgstr "hrát"
-
-# (poterminology) uh-tutorial/tutorial.pot (2)
-#
-# (poterminology) uh/unknownhorizons.pot (1)
-#
-#
-#
-msgid "sale"
-msgstr "prodej"
-
-#
-#
-# (poterminology) uh-tutorial/tutorial.pot (1)
-#
-# (poterminology) uh/unknownhorizons.pot (2)
-#
-#
-#
-msgid "save"
-msgstr "uložit"
-
-#
-#
-# (poterminology) uh-tutorial/tutorial.pot (1)
-#
-# (poterminology) uh/unknownhorizons.pot (2)
-#
-#
-#
-msgid "school"
-msgstr "škola"
-
-#
-#
-# (poterminology) uh-tutorial/tutorial.pot (1)
-#
-# (poterminology) uh/unknownhorizons.pot (2)
-#
-#
-#
-msgid "screen"
-msgstr "obraz"
+msgid "slider"
+msgstr "posuvník"
 
 # (poterminology) uh-tutorial/tutorial.pot (2)
 #
@@ -1035,16 +862,11 @@ msgstr "obraz"
 msgid "solution"
 msgstr "řešení"
 
-#
-#
-# (poterminology) uh-tutorial/tutorial.pot (1)
-#
-# (poterminology) uh/unknownhorizons.pot (2)
-#
-#
-#
-msgid "sound"
-msgstr "zvuk"
+msgid "space"
+msgstr ""
+
+msgid "target"
+msgstr ""
 
 # (poterminology) uh-tutorial/tutorial.pot (2)
 #
@@ -1052,64 +874,55 @@ msgstr "zvuk"
 #
 #
 #
-msgid "from time to time"
-msgstr "čas od času"
+msgid "team"
+msgstr "tým"
 
-# (poterminology) uh-tutorial/tutorial.pot (2)
-#
-# (poterminology) uh/unknownhorizons.pot (1)
-#
-#
-#
-msgid "trading"
-msgstr "obchodování"
+msgid "total"
+msgstr ""
 
-# (poterminology) uh-tutorial/tutorial.pot (2)
-#
-# (poterminology) uh/unknownhorizons.pot (1)
-#
-#
-#
-msgid "visit"
-msgstr "návštěva"
+msgid "unable"
+msgstr ""
 
-# (poterminology) uh-tutorial/tutorial.pot (4)
-#
-# (poterminology) uh/unknownhorizons.pot (1)
-#
-#
-#
-msgid "weaver"
-msgstr "tkadlec"
-
-# (poterminology) uh-tutorial/tutorial.pot (2)
+# (poterminology) uh-tutorial/tutorial.pot (3)
 #
 # (poterminology) uh/unknownhorizons.pot (3)
 #
 #
 #
-msgid "animal"
-msgstr "zvíře"
+msgid "active"
+msgstr "aktivní"
+
+msgid "afford"
+msgstr ""
+
+msgid "animals"
+msgstr ""
+
+# (poterminology) uh-tutorial/tutorial.pot (1)
+# (poterminology) uh/unknownhorizons.pot (3)
+msgid "Captain's log"
+msgstr "Lodní deník"
+
+msgid "construct"
+msgstr ""
+
+msgid "consume"
+msgstr "spotřebovat"
+
+msgid "enabled"
+msgstr ""
+
+msgid "entries"
+msgstr ""
 
 # (poterminology) uh-tutorial/tutorial.pot (2)
-#
-# (poterminology) uh/unknownhorizons.pot (2)
-#
-#
-#
-msgid "fish"
-msgstr "ryba"
-
-#
-#
-# (poterminology) uh-tutorial/tutorial.pot (1)
 #
 # (poterminology) uh/unknownhorizons.pot (1)
 #
 #
 #
-msgid "fisherman"
-msgstr "rybář"
+msgid "feature"
+msgstr "vlastnost"
 
 # (poterminology) uh-tutorial/tutorial.pot (2)
 #
@@ -1120,45 +933,12 @@ msgstr "rybář"
 msgid "forest"
 msgstr "les"
 
-#
-#
-# (poterminology) uh-tutorial/tutorial.pot (1)
-#
-# (poterminology) uh/unknownhorizons.pot (1)
-#
-#
-#
-msgid "forum"
-msgstr "fórum"
-
-#
-#
-# (poterminology) uh-tutorial/tutorial.pot (1)
-#
-# (poterminology) uh/unknownhorizons.pot (1)
-#
-#
-#
-msgid "fulfill"
-msgstr "splnit"
-
-#
-#
-# (poterminology) uh-tutorial/tutorial.pot (1)
-#
-# (poterminology) uh/unknownhorizons.pot (1)
-#
-#
-#
-msgid "graphics"
-msgstr "grafiky"
-
 # (poterminology) uh-tutorial/tutorial.pot (2)
 #
 # (poterminology) uh/unknownhorizons.pot (1)
-# 80%
-msgid "grow"
-msgstr "růst / roste"
+#
+msgid "grows"
+msgstr "roste"
 
 # (poterminology) uh-tutorial/tutorial.pot (2)
 #
@@ -1169,11 +949,8 @@ msgstr "růst / roste"
 msgid "hold"
 msgstr "držet"
 
-# (poterminology) uh-tutorial/tutorial.pot (1)
-# (poterminology) uh/unknownhorizons.pot (1)
-# 80%
-msgid "hunt"
-msgstr "lovit"
+msgid "idle"
+msgstr ""
 
 # (poterminology) uh-tutorial/tutorial.pot (2)
 #
@@ -1218,16 +995,37 @@ msgstr "klíč"
 msgid "lamb wool"
 msgstr "jehněčí vlna"
 
+msgid "overview tab"
+msgstr ""
+
+msgid "minimap"
+msgstr "minimapa"
+
+msgid "issues"
+msgstr "problémy"
+
+msgid "plant"
+msgstr ""
+
 #
 #
 # (poterminology) uh-tutorial/tutorial.pot (1)
 #
-# (poterminology) uh/unknownhorizons.pot (1)
+# (poterminology) uh/unknownhorizons.pot (2)
 #
 #
 #
-msgid "load/unload"
-msgstr "naložit/vyložit"
+msgid "play"
+msgstr "hrát"
+
+msgid "playing"
+msgstr "hraní"
+
+msgid "price"
+msgstr ""
+
+msgid "read"
+msgstr ""
 
 #
 #
@@ -1239,6 +1037,207 @@ msgstr "naložit/vyložit"
 #
 msgid "return"
 msgstr "návrat"
+
+# (poterminology) uh-tutorial/tutorial.pot (2)
+#
+# (poterminology) uh/unknownhorizons.pot (1)
+#
+#
+#
+msgid "sale"
+msgstr "prodej"
+
+#
+#
+# (poterminology) uh-tutorial/tutorial.pot (1)
+#
+# (poterminology) uh/unknownhorizons.pot (2)
+#
+#
+#
+msgid "screen"
+msgstr "obraz"
+
+#
+#
+# (poterminology) uh-tutorial/tutorial.pot (1)
+#
+# (poterminology) uh/unknownhorizons.pot (2)
+#
+#
+#
+msgid "sound"
+msgstr "zvuk"
+
+msgid "special"
+msgstr ""
+
+msgid "store"
+msgstr ""
+
+msgid "tear"
+msgstr ""
+
+# (poterminology) uh-tutorial/tutorial.pot (2)
+#
+# (poterminology) uh/unknownhorizons.pot (1)
+#
+#
+#
+msgid "from time to time"
+msgstr "čas od času"
+
+# (poterminology) uh-tutorial/tutorial.pot (2)
+#
+# (poterminology) uh/unknownhorizons.pot (1)
+#
+#
+#
+msgid "trading"
+msgstr "obchodování"
+
+# (poterminology) uh-tutorial/tutorial.pot (2)
+#
+# (poterminology) uh/unknownhorizons.pot (2)
+#
+#
+#
+msgid "village"
+msgstr "vesnice"
+
+# (poterminology) uh-tutorial/tutorial.pot (2)
+#
+# (poterminology) uh/unknownhorizons.pot (1)
+#
+#
+#
+msgid "visit"
+msgstr "návštěva"
+
+msgid "world"
+msgstr ""
+
+msgid "yield"
+msgstr ""
+
+msgid "your ship"
+msgstr ""
+
+# (poterminology) uh-tutorial/tutorial.pot (2)
+#
+# (poterminology) uh/unknownhorizons.pot (1)
+#
+#
+#
+msgid "back"
+msgstr "zpět"
+
+#
+#
+# (poterminology) uh-tutorial/tutorial.pot (1)
+#
+# (poterminology) uh/unknownhorizons.pot (2)
+#
+#
+#
+msgid "build settlement"
+msgstr "postav osadu"
+
+msgid "load"
+msgstr ""
+
+msgid "unload"
+msgstr ""
+
+msgid "command"
+msgstr ""
+
+msgid "completed"
+msgstr ""
+
+msgid "condition"
+msgstr "stav"
+
+msgid "contact"
+msgstr "kontakt"
+
+msgid "empty"
+msgstr ""
+
+msgid "ensure"
+msgstr ""
+
+#
+#
+# (poterminology) uh-tutorial/tutorial.pot (1)
+#
+# (poterminology) uh/unknownhorizons.pot (1)
+#
+#
+#
+msgid "fulfill"
+msgstr "splnit"
+
+#
+#
+# (poterminology) uh-tutorial/tutorial.pot (1)
+#
+# (poterminology) uh/unknownhorizons.pot (1)
+#
+#
+#
+msgid "graphics"
+msgstr "grafiky"
+
+msgid "harvest"
+msgstr ""
+
+#
+#
+# (poterminology) uh-tutorial/tutorial.pot (1)
+#
+# (poterminology) uh/unknownhorizons.pot (1)
+#
+#
+#
+msgid "hunts"
+msgstr "lovy"
+
+#
+#
+# (poterminology) uh-tutorial/tutorial.pot (1)
+#
+# (poterminology) uh/unknownhorizons.pot (2)
+#
+#
+#
+msgid "multiple"
+msgstr "násobek"
+
+#
+#
+# (poterminology) uh-tutorial/tutorial.pot (1)
+#
+# (poterminology) uh/unknownhorizons.pot (2)
+#
+#
+#
+msgid "potato field"
+msgstr "bramborové pole"
+
+#
+#
+# (poterminology) uh-tutorial/tutorial.pot (1)
+#
+# (poterminology) uh/unknownhorizons.pot (2)
+#
+#
+#
+msgid "school"
+msgstr "škola"
+
+msgid "seed"
+msgstr "osivo / semeno"
 
 #
 #
@@ -1262,171 +1261,11 @@ msgstr "služba"
 msgid "sheep"
 msgstr "ovce"
 
-#
-#
-# (poterminology) uh-tutorial/tutorial.pot (1)
-#
-# (poterminology) uh/unknownhorizons.pot (1)
-#
-#
-#
-msgid "ship inventory"
-msgstr "lodní inventář"
+msgid "signal fire"
+msgstr "signální oheň"
 
-#
-#
-# (poterminology) uh-tutorial/tutorial.pot (1)
-#
-# (poterminology) uh/unknownhorizons.pot (1)
-#
-#
-#
-msgid "starting"
-msgstr "výchozí"
-
-#
-#
-# (poterminology) uh-tutorial/tutorial.pot (1)
-#
-# (poterminology) uh/unknownhorizons.pot (1)
-#
-#
-#
-msgid "trade partner"
-msgstr "obchodní partner"
-
-#
-#
-# (poterminology) uh-tutorial/tutorial.pot (1)
-#
-# (poterminology) uh/unknownhorizons.pot (1)
-#
-#
-#
-msgid "yields"
-msgstr "výnosy"
-
-# (poterminology) uh-tutorial/tutorial.pot (2)
-#
-# (poterminology) uh/unknownhorizons.pot (1)
-#
-#
-#
-msgid "faith"
-msgstr "víra"
-
-#
-#
-# (poterminology) uh-tutorial/tutorial.pot (1)
-#
-# (poterminology) uh/unknownhorizons.pot (1)
-#
-#
-#
-msgid "green"
-msgstr "zelený"
-
-#
-#
-# (poterminology) uh-tutorial/tutorial.pot (1)
-#
-# (poterminology) uh/unknownhorizons.pot (1)
-#
-#
-#
-msgid "red"
-msgstr "červený"
-
-msgid "check"
-msgstr "zkontrolovat / kontrol"
-
-msgid "connection"
-msgstr "spojení"
-
-msgid "no"
-msgstr "ne"
-
-msgid "tax"
-msgstr "daň"
-
-# (poterminology) uh-tutorial/tutorial.pot (2)
-#
-# (poterminology) uh/unknownhorizons.pot (1)
-#
-#
-#
-msgid "feature"
-msgstr "vlastnost"
-
-# (poterminology) uh-tutorial/tutorial.pot (2)
-#
-# (poterminology) uh/unknownhorizons.pot (1)
-#
-msgid "reached"
-msgstr "dosaženo"
-
-msgid "slider"
-msgstr "posuvník"
-
-msgid "condition"
-msgstr "stav"
-
-msgid "consume"
-msgstr "spotřebovat"
-
-msgid "contact"
-msgstr "kontakt"
-
-msgid "dialogue"
-msgstr "dialog"
-
-msgid "issues"
-msgstr "problémy"
-
-msgid "minimap"
-msgstr "minimapa"
-
-msgid "playing"
-msgstr "hraní"
-
-# (poterminology) uh-tutorial/tutorial.pot (1)
-# (poterminology) uh/unknownhorizons.pot (1)
-# 75%
-msgid "ruin"
-msgstr "ruina"
-
-msgid "seed"
-msgstr "osivo / semeno"
-
-msgid "temporarily"
-msgstr "dočasně"
-
-msgid "salt ponds"
-msgstr "solná jezera"
-
-msgid "tobacco"
-msgstr "tabák"
-
-msgid "cattle"
-msgstr "skot"
-
-msgid "pig"
-msgstr "prase"
-
-msgid "herbs"
-msgstr "bylinky"
-
-msgid "herbary"
-msgstr "bylinkářství"
-
-msgid "butchery"
-msgstr "řeznictví"
-
-msgid "doctor"
-msgstr "lékař"
-
-msgid "education"
-msgstr "vzdělání"
+msgid "statistics"
+msgstr ""
 
 # (poterminology) uh-tutorial/tutorial.pot (1)
 # (poterminology) uh/unknownhorizons.pot (2)
@@ -1434,14 +1273,122 @@ msgstr "vzdělání"
 msgid "clay"
 msgstr "jíl"
 
-msgid "charcoal"
-msgstr "dřevěné uhlí"
-
 msgid "iron"
 msgstr "železo"
 
 msgid "ore"
 msgstr "ruda"
+
+msgid "tobacco"
+msgstr "tabák"
+
+msgid "charcoal"
+msgstr "dřevěné uhlí"
+
+#
+#
+# (poterminology) uh-tutorial/tutorial.pot (1)
+#
+# (poterminology) uh/unknownhorizons.pot (1)
+#
+#
+#
+msgid "sugar field"
+msgstr "cukrové pole"
+
+msgid "temporarily"
+msgstr "dočasně"
+
+msgid "values"
+msgstr ""
+
+# (poterminology) uh-tutorial/tutorial.pot (21)
+# (poterminology) uh/unknownhorizons.pot (2)
+#~ msgid "branch office"
+#~ msgstr "Obchodní přístav"
+
+# (poterminology) uh-tutorial/tutorial.pot (11)
+#
+# (poterminology) uh/unknownhorizons.pot (5)
+#
+#
+#
+#~ msgid "main"
+#~ msgstr "hlavní"
+
+# (poterminology) uh-tutorial/tutorial.pot (3)
+#
+# (poterminology) uh/unknownhorizons.pot (10)
+#
+#
+#
+#~ msgid "unknown"
+#~ msgstr "neznámé"
+
+# (poterminology) uh-tutorial/tutorial.pot (4)
+#
+# (poterminology) uh/unknownhorizons.pot (4)
+#
+#
+#
+#~ msgid "free"
+#~ msgstr "zdarma"
+
+# (poterminology) uh-tutorial/tutorial.pot (6)
+#
+# (poterminology) uh/unknownhorizons.pot (3)
+#
+#
+#
+#~ msgid "trader"
+#~ msgstr "obchodník"
+
+# (poterminology) uh-tutorial/tutorial.pot (3)
+#
+# (poterminology) uh/unknownhorizons.pot (11)
+#
+#
+#
+#~ msgid "version"
+#~ msgstr "verze"
+
+# (poterminology) uh-tutorial/tutorial.pot (3)
+#
+# (poterminology) uh/unknownhorizons.pot (3)
+#
+#
+#
+#~ msgid "signal"
+#~ msgstr "signál"
+
+# (poterminology) uh-tutorial/tutorial.pot (2)
+#
+# (poterminology) uh/unknownhorizons.pot (4)
+#
+#
+#
+#~ msgid "found"
+#~ msgstr "nalezeno"
+
+#
+#
+# (poterminology) uh-tutorial/tutorial.pot (1)
+#
+# (poterminology) uh/unknownhorizons.pot (3)
+#
+#
+#
+#~ msgid "raw"
+#~ msgstr "surový"
+
+# (poterminology) uh-tutorial/tutorial.pot (2)
+#
+# (poterminology) uh/unknownhorizons.pot (3)
+#
+#
+#
+#~ msgid "running"
+#~ msgstr "běh"
 
 # (poterminology) uh-tutorial/tutorial.pot (2)
 #
@@ -1449,8 +1396,272 @@ msgstr "ruda"
 #
 #
 #
-#~ msgid "lamb"
-#~ msgstr "jehně"
+#~ msgid "inventory"
+#~ msgstr "inventář"
+
+# (poterminology) uh-tutorial/tutorial.pot (1)
+#
+# (poterminology) uh/unknownhorizons.pot (1)
+#
+#
+#
+#~ msgid "moved"
+#~ msgstr "pohyboval"
+
+# (poterminology) uh-tutorial/tutorial.pot (9)
+# (poterminology) uh/unknownhorizons.pot (4)
+# 87%
+#~ msgid "produced"
+#~ msgstr "vyrobeno"
+
+# (poterminology) uh-tutorial/tutorial.pot (6)
+#
+# (poterminology) uh/unknownhorizons.pot (1)
+#
+#
+#
+#~ msgid "hunter"
+#~ msgstr "lovec"
+
+#
+#
+# (poterminology) uh-tutorial/tutorial.pot (1)
+#
+# (poterminology) uh/unknownhorizons.pot (2)
+#
+#
+#
+#~ msgid "market"
+#~ msgstr "obchod"
+
+# (poterminology) uh-tutorial/tutorial.pot (2)
+# (poterminology) uh/unknownhorizons.pot (1)
+#~ msgid "partner"
+#~ msgstr "partner"
+
+# (poterminology) uh-tutorial/tutorial.pot (12)
+#
+# (poterminology) uh/unknownhorizons.pot (3)
+#
+#
+#
+#~ msgid "sailor"
+#~ msgstr "námořník"
+
+# (poterminology) uh-tutorial/tutorial.pot (4)
+#
+# (poterminology) uh/unknownhorizons.pot (2)
+#
+#
+#
+#~ msgid "pioneer"
+#~ msgstr "průkopník"
+
+#~ msgid "citizen"
+#~ msgstr "občan"
+
+#~ msgid "merchant"
+#~ msgstr "obchodník"
+
+#~ msgid "aristocrat"
+#~ msgstr "šlechtic"
+
+#
+#
+# (poterminology) uh-tutorial/tutorial.pot (1)
+#
+# (poterminology) uh/unknownhorizons.pot (2)
+#
+#
+#
+#~ msgid "refresh"
+#~ msgstr "obnovit"
+
+# (poterminology) uh-tutorial/tutorial.pot (4)
+#
+# (poterminology) uh/unknownhorizons.pot (2)
+#
+#
+#
+#~ msgid "residents"
+#~ msgstr "obyvatel"
+
+#
+#
+# (poterminology) uh-tutorial/tutorial.pot (1)
+#
+# (poterminology) uh/unknownhorizons.pot (2)
+#
+#
+#
+#~ msgid "output"
+#~ msgstr "výstup"
+
+# (poterminology) uh-tutorial/tutorial.pot (4)
+#
+# (poterminology) uh/unknownhorizons.pot (1)
+#
+#
+#
+#~ msgid "weaver"
+#~ msgstr "tkadlec"
+
+# (poterminology) uh-tutorial/tutorial.pot (2)
+#
+# (poterminology) uh/unknownhorizons.pot (3)
+#
+#
+#
+#~ msgid "animal"
+#~ msgstr "zvíře"
+
+#
+#
+# (poterminology) uh-tutorial/tutorial.pot (1)
+#
+# (poterminology) uh/unknownhorizons.pot (1)
+#
+#
+#
+#~ msgid "fisherman"
+#~ msgstr "rybář"
+
+#
+#
+# (poterminology) uh-tutorial/tutorial.pot (1)
+#
+# (poterminology) uh/unknownhorizons.pot (1)
+#
+#
+#
+#~ msgid "forum"
+#~ msgstr "fórum"
+
+# (poterminology) uh-tutorial/tutorial.pot (2)
+#
+# (poterminology) uh/unknownhorizons.pot (1)
+# 80%
+#~ msgid "grow"
+#~ msgstr "růst / roste"
+
+# (poterminology) uh-tutorial/tutorial.pot (1)
+# (poterminology) uh/unknownhorizons.pot (1)
+# 80%
+#~ msgid "hunt"
+#~ msgstr "lovit"
+
+#
+#
+# (poterminology) uh-tutorial/tutorial.pot (1)
+#
+# (poterminology) uh/unknownhorizons.pot (1)
+#
+#
+#
+#~ msgid "load/unload"
+#~ msgstr "naložit/vyložit"
+
+#
+#
+# (poterminology) uh-tutorial/tutorial.pot (1)
+#
+# (poterminology) uh/unknownhorizons.pot (1)
+#
+#
+#
+#~ msgid "ship inventory"
+#~ msgstr "lodní inventář"
+
+#
+#
+# (poterminology) uh-tutorial/tutorial.pot (1)
+#
+# (poterminology) uh/unknownhorizons.pot (1)
+#
+#
+#
+#~ msgid "starting"
+#~ msgstr "výchozí"
+
+#
+#
+# (poterminology) uh-tutorial/tutorial.pot (1)
+#
+# (poterminology) uh/unknownhorizons.pot (1)
+#
+#
+#
+#~ msgid "trade partner"
+#~ msgstr "obchodní partner"
+
+#
+#
+# (poterminology) uh-tutorial/tutorial.pot (1)
+#
+# (poterminology) uh/unknownhorizons.pot (1)
+#
+#
+#
+#~ msgid "yields"
+#~ msgstr "výnosy"
+
+#
+#
+# (poterminology) uh-tutorial/tutorial.pot (1)
+#
+# (poterminology) uh/unknownhorizons.pot (1)
+#
+#
+#
+#~ msgid "green"
+#~ msgstr "zelený"
+
+#
+#
+# (poterminology) uh-tutorial/tutorial.pot (1)
+#
+# (poterminology) uh/unknownhorizons.pot (1)
+#
+#
+#
+#~ msgid "red"
+#~ msgstr "červený"
+
+#~ msgid "no"
+#~ msgstr "ne"
+
+#~ msgid "dialogue"
+#~ msgstr "dialog"
+
+# (poterminology) uh-tutorial/tutorial.pot (1)
+# (poterminology) uh/unknownhorizons.pot (1)
+# 75%
+#~ msgid "ruin"
+#~ msgstr "ruina"
+
+#~ msgid "salt ponds"
+#~ msgstr "solná jezera"
+
+#~ msgid "cattle"
+#~ msgstr "skot"
+
+#~ msgid "pig"
+#~ msgstr "prase"
+
+#~ msgid "herbs"
+#~ msgstr "bylinky"
+
+#~ msgid "herbary"
+#~ msgstr "bylinkářství"
+
+#~ msgid "butchery"
+#~ msgstr "řeznictví"
+
+#~ msgid "doctor"
+#~ msgstr "lékař"
+
+#~ msgid "education"
+#~ msgstr "vzdělání"
 
 # 
 #
@@ -1467,45 +1678,12 @@ msgstr "ruda"
 #
 # (poterminology) uh-tutorial/tutorial.pot (1)
 #
-# (poterminology) uh/unknownhorizons.pot (2)
-#
-#
-#
-#~ msgid "potato field"
-#~ msgstr "bramborové pole"
-
-# 
-#
-# (poterminology) uh-tutorial/tutorial.pot (1)
-#
-# (poterminology) uh/unknownhorizons.pot (1)
-#
-#
-#
-#~ msgid "hunts"
-#~ msgstr "lovy"
-
-# 
-#
-# (poterminology) uh-tutorial/tutorial.pot (1)
-#
 # (poterminology) uh/unknownhorizons.pot (1)
 #
 #
 #
 #~ msgid "SHIFT"
 #~ msgstr "SHIFT"
-
-# 
-#
-# (poterminology) uh-tutorial/tutorial.pot (1)
-#
-# (poterminology) uh/unknownhorizons.pot (1)
-#
-#
-#
-#~ msgid "sugar field"
-#~ msgstr "cukrové pole"
 
 # (poterminology) uh-tutorial/tutorial.pot (1)
 # 
@@ -1515,22 +1693,6 @@ msgstr "ruda"
 #
 #~ msgid "IRC"
 #~ msgstr "IRC"
-
-# (poterminology) uh-tutorial/tutorial.pot (3)
-# 
-# (poterminology) uh/unknownhorizons.pot (1)
-# 
-#
-#
-#~ msgid "potatoes"
-#~ msgstr "brambory"
-
-# (poterminology) uh-tutorial/tutorial.pot (2)
-# 
-# (poterminology) uh/unknownhorizons.pot (1)
-# 
-#~ msgid "grows"
-#~ msgstr "roste"
 
 # (poterminology) uh-tutorial/tutorial.pot (1)
 # 

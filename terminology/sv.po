@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-07-08 16:54+0200\n"
+"POT-Creation-Date: 2012-03-31 21:42+0100\n"
 "PO-Revision-Date: 2011-09-23 13:56+0200\n"
 "Last-Translator: Nagrim <johansson.wiktor@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -22,61 +22,61 @@ msgstr "spel"
 msgid "building"
 msgstr "byggnad"
 
-msgid "tent"
-msgstr "tält"
-
-msgid "resource"
-msgstr "vara / råvara / resurs"
-
-# Otydlig. Ursprungliga översättning från tyskans "kontor".
-msgid "branch office"
-msgstr "handelskontor"
-
-msgid "your"
-msgstr "din"
+msgid "settlement"
+msgstr "bosättning"
 
 msgid "farm"
 msgstr "gård"
 
-msgid "field"
-msgstr "fält"
-
-msgid "overview"
-msgstr "översikt"
-
 msgid "ship"
 msgstr "fartyg"
 
-msgid "main"
-msgstr "huvudsakliga"
+msgid "tent"
+msgstr "tält"
 
-msgid "settlement"
-msgstr "bosättning"
+msgid "warehouse"
+msgstr ""
 
-msgid "start"
-msgstr "starta"
+msgid "resource"
+msgstr "vara / råvara / resurs"
 
-msgid "click"
-msgstr "klicka"
+msgid "produce"
+msgstr "tillverka / producera"
 
-msgid "inhabitants"
-msgstr "invånare"
+msgid "field"
+msgstr "fält"
 
 #
 msgid "map"
 msgstr "karta"
 
-msgid "menu"
-msgstr "meny"
+msgid "trade"
+msgstr "handel"
 
-msgid "production"
-msgstr "produktion"
+msgid "inhabitants"
+msgstr "invånare"
 
-msgid "tab"
-msgstr "flik"
+msgid "buy"
+msgstr "köp"
 
-msgid "unknown"
-msgstr "okänd"
+msgid "overview"
+msgstr "översikt"
+
+msgid "click"
+msgstr "klicka"
+
+# lumberjack och lumberjacks camp syftar till samma byggnad/yrke
+msgid "lumberjack"
+msgstr "skogshuggare"
+
+msgid "resident"
+msgstr ""
+
+msgid "main square"
+msgstr "torg"
+
+msgid "sailors"
+msgstr ""
 
 msgid "food"
 msgstr "föda"
@@ -84,35 +84,87 @@ msgstr "föda"
 msgid "increment"
 msgstr "tillväxtsteg / tillväxtgrad"
 
+msgid "production"
+msgstr "produktion"
+
 msgid "select"
 msgstr "välj"
+
+msgid "sell"
+msgstr "sälj"
 
 msgid "setting"
 msgstr "inställning"
 
+msgid "storage"
+msgstr "lager"
+
+msgid "tab"
+msgstr "flik"
+
+msgid "upgrade"
+msgstr ""
+
+msgid "your inhabitants"
+msgstr ""
+
+msgid "close"
+msgstr ""
+
+msgid "companies"
+msgstr "företag"
+
+msgid "island"
+msgstr ""
+
 msgid "time"
 msgstr "tid"
 
-msgid "trade"
-msgstr "handel"
+msgid "unit"
+msgstr ""
 
-msgid "change"
-msgstr "förändring"
+msgid "balance"
+msgstr "balans"
 
-msgid "main square"
-msgstr "torg"
+msgid "coast"
+msgstr "kust"
+
+msgid "menu"
+msgstr "meny"
+
+msgid "slot"
+msgstr "plats"
+
+msgid "start"
+msgstr "starta"
+
+msgid "stock"
+msgstr "lager"
 
 msgid "trail"
 msgstr "stig"
 
+msgid "Unknown Horizons"
+msgstr ""
+
+msgid "wool"
+msgstr "ull"
+
 msgid "boards"
 msgstr "brädor"
 
-msgid "buy"
-msgstr "köp"
+# syftar i spelet på de som hämtar saker från företagen
+msgid "collector"
+msgstr "insamlare"
 
-msgid "coast"
-msgstr "kust"
+msgid "connection"
+msgstr "anslutning"
+
+msgid "fire"
+msgstr "eld / brand"
+
+msgid "change"
+msgstr "förändring"
 
 msgid "connect"
 msgstr "anslut"
@@ -120,328 +172,263 @@ msgstr "anslut"
 msgid "cost"
 msgstr "kostnad"
 
-msgid "free"
-msgstr "fri"
+msgid "house"
+msgstr "hus"
 
 msgid "log"
 msgstr "logg"
 
-# lumberjack och lumberjacks camp syftar till samma byggnad/yrke
-msgid "lumberjack"
-msgstr "skogshuggare"
-
-msgid "sell"
-msgstr "sälj"
-
-msgid "storage"
-msgstr "lager"
-
-msgid "taxes"
-msgstr "skatter"
-
-msgid "trader"
-msgstr "köpman"
-
-msgid "version"
-msgstr "version"
-
-msgid "companies"
-msgstr "företag"
-
-msgid "fire"
-msgstr "eld / brand"
-
-msgid "left"
-msgstr "över / vänster"
-
-# Beroende på om det syftar till verb eller substantiv
-msgid "reach"
-msgstr "nå / räckhåll"
-
-msgid "signal"
-msgstr "signal"
-
-# Signaleld är en bettydligt bättre översättning än signalbrand då det i spelet syftar på byggnaden.
-msgid "signal fire"
-msgstr "signaleld"
-
-msgid "stock"
-msgstr "lager"
-
-msgid "tools"
-msgstr "verktyg"
-
-msgid "wool"
-msgstr "ull"
-
-msgid "balance"
-msgstr "balans"
-
-msgid "choose"
-msgstr "välj / välja"
-
-msgid "fisher"
-msgstr "fiskare"
-
-msgid "found"
-msgstr "hittade"
-
-# för kyrkobyggnad
-msgid "pavilion"
-msgstr "kapell"
-
-msgid "potato"
-msgstr "potatis"
-
-msgid "range"
-msgstr "räckvidd"
-
-#
-msgid "raw"
-msgstr "rå"
-
-msgid "running"
-msgstr "kör / springer"
-
-msgid "running costs"
-msgstr "driftskostnader"
-
-# syftar i spelet på de som hämtar saker från företagen
-msgid "collector"
-msgstr "insamlare"
-
-msgid "help"
-msgstr "hjälp"
-
-msgid "house"
-msgstr "hus"
-
-msgid "inventory"
-msgstr "inventarie"
-
-msgid "level"
-msgstr "nivå / plan"
-
-#
-msgid "move"
-msgstr "flytta"
-
-# 80%
-msgid "moved"
-msgstr "flyttad / flyttat"
-
-msgid "produce"
-msgstr "tillverka / producera"
-
-# 87%
-msgid "produced"
-msgstr "tillverkad / producerad"
-
-msgid "pasture"
-msgstr "betesmark"
-
-msgid "storage tent"
-msgstr "lagertält"
-
-msgid "sugar"
-msgstr "socker"
-
-msgid "tree"
-msgstr "träd"
-
-msgid "active"
-msgstr "aktiv / verksam"
-
-msgid "add"
-msgstr "lägga till"
-
-msgid "build menu"
-msgstr "byggmenyn"
-
-msgid "built"
-msgstr "byggd / byggt"
-
-msgid "construction"
-msgstr "byggnad"
-
-#
-msgid "continue"
-msgstr "fortsätt / fortsätta"
-
-msgid "decrease"
-msgstr "minska"
-
-# syftar i spelet på fartyget som man kan köpa/sälja av.
-msgid "free trader"
-msgstr "fria handelsfaryget"
-
-msgid "hunter"
-msgstr "jägare"
-
-msgid "leave"
-msgstr "lämna"
-
-#
-msgid "market"
-msgstr "marknad"
-
-msgid "partner"
-msgstr "partner / delägare"
-
-msgid "sailor"
-msgstr "sjöman"
-
-msgid "pioneer"
-msgstr "pionjär"
-
-msgid "settler"
-msgstr "nybyggare"
-
-msgid "citizen"
-msgstr "medborgare"
-
-# merchant kan även översättas till köpman, men krockar med översättningen av trader. Borgare är ett alternativ för att lösa detta.
-msgid "merchant"
-msgstr "handelsman"
-
-msgid "aristocrat"
-msgstr "aristokrat"
-
-msgid "refresh"
-msgstr "uppdatera / förnya"
-
-msgid "residents"
-msgstr "boende / invånare"
-
-#
-msgid "run"
-msgstr "kör / springa"
-
-msgid "slot"
-msgstr "plats"
-
-msgid "stop"
-msgstr "stopp / stoppa"
-
-msgid "team"
-msgstr "lag"
-
-msgid "village"
-msgstr "by"
-
-msgid "account"
-msgstr "konto"
-
-msgid "back"
-msgstr "tillbaka / bakåt"
-
-#
-msgid "build settlement"
-msgstr "bygg bosättning"
-
-#
-msgid "Captain's log"
-msgstr "Kaptenens loggbok"
-
-msgid "cloth"
-msgstr "tyg"
-
-#
-msgid "description"
-msgstr "beskrivning"
-
-msgid "happiness"
-msgstr "lycka"
-
-# 75%
-msgid "increase"
-msgstr "öka"
-
-#
-msgid "liquor"
-msgstr "sprit"
-
-# 75%
-msgid "mode"
-msgstr "läge"
-
-msgid "multiple"
-msgstr "flera"
-
-msgid "output"
-msgstr "utgång / effekt / produktion"
-
-msgid "play"
-msgstr "spela"
-
-# 75%
-msgid "sale"
-msgstr "försäljning / rea"
+msgid "road"
+msgstr ""
 
 #
 msgid "save"
 msgstr "spara"
 
-#
-msgid "school"
-msgstr "skola"
+msgid "built"
+msgstr "byggd / byggt"
+
+msgid "pasture"
+msgstr "betesmark"
+
+# Beroende på om det syftar till verb eller substantiv
+msgid "reach"
+msgstr "nå / räckhåll"
+
+msgid "tree"
+msgstr "träd"
+
+msgid "your"
+msgstr "din"
+
+msgid "your settlement"
+msgstr ""
+
+msgid "add"
+msgstr "lägga till"
+
+msgid "check"
+msgstr "kontrollera / bocka av"
+
+msgid "choose"
+msgstr "välj / välja"
+
+msgid "confectionery"
+msgstr ""
+
+msgid "fisher"
+msgstr "fiskare"
+
+# syftar i spelet på fartyget som man kan köpa/sälja av.
+msgid "free trader"
+msgstr "fria handelsfaryget"
+
+msgid "happiness"
+msgstr "lycka"
+
+msgid "in stock"
+msgstr ""
+
+msgid "money"
+msgstr ""
+
+# för kyrkobyggnad
+msgid "pavilion"
+msgstr "kapell"
+
+msgid "running costs"
+msgstr "driftskostnader"
+
+msgid "sugar"
+msgstr "socker"
+
+msgid "taxes"
+msgstr "skatter"
+
+msgid "tax"
+msgstr "skatt"
+
+msgid "tools"
+msgstr "verktyg"
+
+msgid "button"
+msgstr ""
 
 #
-msgid "screen"
-msgstr "skärm"
+msgid "continue"
+msgstr "fortsätt / fortsätta"
 
-msgid "solution"
-msgstr "lösning"
+msgid "faith"
+msgstr "tro / religion"
+
+msgid "help"
+msgstr "hjälp"
+
+msgid "left"
+msgstr "över / vänster"
+
+msgid "level"
+msgstr "nivå / plan"
+
+# 75%
+msgid "mode"
+msgstr "läge"
 
 #
-msgid "sound"
-msgstr "ljud"
+msgid "move"
+msgstr "flytta"
 
-msgid "from time to time"
-msgstr "då och då"
+msgid "pioneers"
+msgstr ""
 
-msgid "trading"
-msgstr "handel"
+msgid "citizens"
+msgstr ""
 
-msgid "visit"
-msgstr "besök / besöka"
+msgid "merchants"
+msgstr ""
 
-msgid "weaver"
-msgstr "vävare"
+msgid "aristocrats"
+msgstr ""
 
-msgid "animal"
-msgstr "djur"
+msgid "potato"
+msgstr "potatis"
+
+msgid "settler"
+msgstr "nybyggare"
+
+msgid "speed"
+msgstr ""
+
+msgid "stop"
+msgstr "stopp / stoppa"
+
+msgid "storage tent"
+msgstr "lagertält"
+
+msgid "wait"
+msgstr ""
+
+msgid "access"
+msgstr ""
+
+msgid "account"
+msgstr "konto"
+
+msgid "amount"
+msgstr ""
+
+msgid "build menu"
+msgstr "byggmenyn"
+
+msgid "cloth"
+msgstr "tyg"
+
+msgid "construction"
+msgstr "byggnad"
+
+msgid "decrease"
+msgstr "minska"
+
+#
+msgid "description"
+msgstr "beskrivning"
 
 msgid "fish"
 msgstr "fisk"
 
+# 75%
+msgid "increase"
+msgstr "öka"
+
+msgid "lamb"
+msgstr "lamm"
+
+msgid "leave"
+msgstr "lämna"
+
 #
-msgid "fisherman"
-msgstr "fiskare"
+msgid "liquor"
+msgstr "sprit"
+
+msgid "location"
+msgstr ""
+
+msgid "offer"
+msgstr ""
+
+msgid "potatoes"
+msgstr ""
+
+msgid "range"
+msgstr "räckvidd"
+
+msgid "reached"
+msgstr "uppnått / /uppnådd / nått / nådd"
+
+#
+msgid "run"
+msgstr "kör / springa"
+
+msgid "slider"
+msgstr "reglage"
+
+msgid "solution"
+msgstr "lösning"
+
+msgid "space"
+msgstr ""
+
+msgid "target"
+msgstr ""
+
+msgid "team"
+msgstr "lag"
+
+msgid "total"
+msgstr ""
+
+msgid "unable"
+msgstr ""
+
+msgid "active"
+msgstr "aktiv / verksam"
+
+msgid "afford"
+msgstr ""
+
+msgid "animals"
+msgstr ""
+
+#
+msgid "Captain's log"
+msgstr "Kaptenens loggbok"
+
+msgid "construct"
+msgstr ""
+
+msgid "consume"
+msgstr "konsumera / förbruka"
+
+msgid "enabled"
+msgstr ""
+
+msgid "entries"
+msgstr ""
+
+msgid "feature"
+msgstr "funktion / kännetecken"
 
 msgid "forest"
 msgstr "skog"
 
-#
-msgid "forum"
-msgstr "forum"
-
-#
-msgid "fulfill"
-msgstr "uppfylla"
-
-#
-msgid "graphics"
-msgstr "grafik"
-
-msgid "grow"
-msgstr "växa / öka / odla"
+msgid "grows"
+msgstr ""
 
 msgid "hold"
 msgstr "håll / hålla"
 
-msgid "hunt"
-msgstr "jaga / jakt / jakten"
+msgid "idle"
+msgstr ""
 
 msgid "income"
 msgstr "inkomst"
@@ -459,12 +446,133 @@ msgstr "nyckel / tangent"
 msgid "lamb wool"
 msgstr "lammull"
 
-#
-msgid "load/unload"
-msgstr "lasta/lasta av"
+msgid "overview tab"
+msgstr ""
+
+msgid "minimap"
+msgstr "världskarta"
+
+msgid "issues"
+msgstr "problem / frågor"
+
+msgid "plant"
+msgstr ""
+
+msgid "play"
+msgstr "spela"
+
+msgid "playing"
+msgstr "spelar"
+
+msgid "price"
+msgstr ""
+
+msgid "read"
+msgstr ""
 
 msgid "return"
 msgstr "tillbaka / återgå / återlämna"
+
+# 75%
+msgid "sale"
+msgstr "försäljning / rea"
+
+#
+msgid "screen"
+msgstr "skärm"
+
+#
+msgid "sound"
+msgstr "ljud"
+
+msgid "special"
+msgstr ""
+
+msgid "store"
+msgstr ""
+
+msgid "tear"
+msgstr ""
+
+msgid "from time to time"
+msgstr "då och då"
+
+msgid "trading"
+msgstr "handel"
+
+msgid "village"
+msgstr "by"
+
+msgid "visit"
+msgstr "besök / besöka"
+
+msgid "world"
+msgstr ""
+
+msgid "yield"
+msgstr ""
+
+msgid "your ship"
+msgstr ""
+
+msgid "back"
+msgstr "tillbaka / bakåt"
+
+#
+msgid "build settlement"
+msgstr "bygg bosättning"
+
+msgid "load"
+msgstr ""
+
+msgid "unload"
+msgstr ""
+
+msgid "command"
+msgstr ""
+
+msgid "completed"
+msgstr ""
+
+msgid "condition"
+msgstr "villkor / skick / tillstånd"
+
+msgid "contact"
+msgstr "kontakt / kontakta"
+
+msgid "empty"
+msgstr ""
+
+msgid "ensure"
+msgstr ""
+
+#
+msgid "fulfill"
+msgstr "uppfylla"
+
+#
+msgid "graphics"
+msgstr "grafik"
+
+msgid "harvest"
+msgstr ""
+
+msgid "hunts"
+msgstr ""
+
+msgid "multiple"
+msgstr "flera"
+
+#
+msgid "potato field"
+msgstr "potatisfält"
+
+#
+msgid "school"
+msgstr "skola"
+
+msgid "seed"
+msgstr "seeder / distributör? / frö / säd"
 
 #
 msgid "service"
@@ -474,115 +582,15 @@ msgstr "service / tjänst"
 msgid "sheep"
 msgstr "får"
 
-#
-msgid "ship inventory"
-msgstr "fartygs inventarie"
+# Signaleld är en bettydligt bättre översättning än signalbrand då det i spelet syftar på byggnaden.
+msgid "signal fire"
+msgstr "signaleld"
 
-msgid "starting"
-msgstr "startar"
-
-#
-msgid "trade partner"
-msgstr "handelspartner"
-
-msgid "yields"
-msgstr "ger"
-
-msgid "faith"
-msgstr "tro / religion"
-
-#
-msgid "green"
-msgstr "grön"
-
-#
-msgid "red"
-msgstr "röd"
-
-msgid "check"
-msgstr "kontrollera / bocka av"
-
-msgid "connection"
-msgstr "anslutning"
-
-msgid "no"
-msgstr "nej / ingen / inga"
-
-msgid "tax"
-msgstr "skatt"
-
-msgid "feature"
-msgstr "funktion / kännetecken"
-
-msgid "reached"
-msgstr "uppnått / /uppnådd / nått / nådd"
-
-msgid "slider"
-msgstr "reglage"
-
-msgid "condition"
-msgstr "villkor / skick / tillstånd"
-
-msgid "consume"
-msgstr "konsumera / förbruka"
-
-msgid "contact"
-msgstr "kontakt / kontakta"
-
-msgid "dialogue"
-msgstr "dialog"
-
-msgid "issues"
-msgstr "problem / frågor"
-
-msgid "minimap"
-msgstr "världskarta"
-
-msgid "playing"
-msgstr "spelar"
-
-# 75%
-msgid "ruin"
-msgstr "ruin / ruinera / förstöra / ödelägga"
-
-msgid "seed"
-msgstr "frö / säd"
-
-msgid "temporarily"
-msgstr "tillfälligt"
-
-msgid "salt ponds"
-msgstr "salin"
-
-msgid "tobacco"
-msgstr "tobak"
-
-msgid "cattle"
-msgstr "boskap / nötkreatur"
-
-msgid "pig"
-msgstr "gris"
-
-msgid "herbs"
-msgstr "örter"
-
-msgid "herbary"
-msgstr "örtagård"
-
-msgid "butchery"
-msgstr "slakteri"
-
-msgid "doctor"
-msgstr "läkare"
-
-msgid "education"
-msgstr "utbildning"
+msgid "statistics"
+msgstr ""
 
 msgid "clay"
 msgstr "lera"
-
-msgid "charcoal"
-msgstr "träkol"
 
 msgid "iron"
 msgstr "järn"
@@ -590,21 +598,184 @@ msgstr "järn"
 msgid "ore"
 msgstr "malm"
 
-#~ msgid "lamb"
-#~ msgstr "lamm"
+msgid "tobacco"
+msgstr "tobak"
+
+msgid "charcoal"
+msgstr "träkol"
+
+#
+msgid "sugar field"
+msgstr "sockerfält"
+
+msgid "temporarily"
+msgstr "tillfälligt"
+
+msgid "values"
+msgstr ""
+
+# Otydlig. Ursprungliga översättning från tyskans "kontor".
+#~ msgid "branch office"
+#~ msgstr "handelskontor"
+
+#~ msgid "main"
+#~ msgstr "huvudsakliga"
+
+#~ msgid "unknown"
+#~ msgstr "okänd"
+
+#~ msgid "free"
+#~ msgstr "fri"
+
+#~ msgid "trader"
+#~ msgstr "köpman"
+
+#~ msgid "version"
+#~ msgstr "version"
+
+#~ msgid "signal"
+#~ msgstr "signal"
+
+#~ msgid "found"
+#~ msgstr "hittade"
+
+#
+#~ msgid "raw"
+#~ msgstr "rå"
+
+#~ msgid "running"
+#~ msgstr "kör / springer"
+
+#~ msgid "inventory"
+#~ msgstr "inventarie"
+
+# 80%
+#~ msgid "moved"
+#~ msgstr "flyttad / flyttat"
+
+# 87%
+#~ msgid "produced"
+#~ msgstr "tillverkad / producerad"
+
+#~ msgid "hunter"
+#~ msgstr "jägare"
+
+#
+#~ msgid "market"
+#~ msgstr "marknad"
+
+#~ msgid "partner"
+#~ msgstr "partner / delägare"
+
+#~ msgid "sailor"
+#~ msgstr "sjöman"
+
+#~ msgid "pioneer"
+#~ msgstr "pionjär"
+
+#~ msgid "citizen"
+#~ msgstr "medborgare"
+
+# merchant kan även översättas till köpman, men krockar med översättningen av trader. Borgare är ett alternativ för att lösa detta.
+#~ msgid "merchant"
+#~ msgstr "handelsman"
+
+#~ msgid "aristocrat"
+#~ msgstr "aristokrat"
+
+#~ msgid "refresh"
+#~ msgstr "uppdatera / förnya"
+
+#~ msgid "residents"
+#~ msgstr "boende / invånare"
+
+#~ msgid "output"
+#~ msgstr "utgång / effekt / produktion"
+
+#~ msgid "weaver"
+#~ msgstr "vävare"
+
+#~ msgid "animal"
+#~ msgstr "djur"
+
+#
+#~ msgid "fisherman"
+#~ msgstr "fiskare"
+
+#
+#~ msgid "forum"
+#~ msgstr "forum"
+
+#~ msgid "grow"
+#~ msgstr "växa / öka / odla"
+
+#~ msgid "hunt"
+#~ msgstr "jaga / jakt / jakten"
+
+#
+#~ msgid "load/unload"
+#~ msgstr "lasta/lasta av"
+
+#
+#~ msgid "ship inventory"
+#~ msgstr "fartygs inventarie"
+
+#~ msgid "starting"
+#~ msgstr "startar"
+
+#
+#~ msgid "trade partner"
+#~ msgstr "handelspartner"
+
+#~ msgid "yields"
+#~ msgstr "ger"
+
+#
+#~ msgid "green"
+#~ msgstr "grön"
+
+#
+#~ msgid "red"
+#~ msgstr "röd"
+
+#~ msgid "no"
+#~ msgstr "nej / ingen / inga"
+
+#~ msgid "dialogue"
+#~ msgstr "dialog"
+
+# 75%
+#~ msgid "ruin"
+#~ msgstr "ruin / ruinera / förstöra / ödelägga"
+
+#~ msgid "salt ponds"
+#~ msgstr "salin"
+
+#~ msgid "cattle"
+#~ msgstr "boskap / nötkreatur"
+
+#~ msgid "pig"
+#~ msgstr "gris"
+
+#~ msgid "herbs"
+#~ msgstr "örter"
+
+#~ msgid "herbary"
+#~ msgstr "örtagård"
+
+#~ msgid "butchery"
+#~ msgstr "slakteri"
+
+#~ msgid "doctor"
+#~ msgstr "läkare"
+
+#~ msgid "education"
+#~ msgstr "utbildning"
 
 # 
 #~ msgid "market place"
 #~ msgstr "marknadsplats"
 
 # 
-#~ msgid "potato field"
-#~ msgstr "potatisfält"
-
-# 
 #~ msgid "SHIFT"
 #~ msgstr "SHIFT"
-
-# 
-#~ msgid "sugar field"
-#~ msgstr "sockerfält"

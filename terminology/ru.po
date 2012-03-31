@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-07-08 16:54+0200\n"
+"POT-Creation-Date: 2012-03-31 21:42+0100\n"
 "PO-Revision-Date: 2011-07-09 06:08+0200\n"
 "Last-Translator: Alexander <fcxSanya@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -12,7 +12,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%"
 "10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
-"X-Generator: Pootle 2.1.5\n"
+"X-Generator: Translate Toolkit 1.9.0\n"
 
 msgid "build"
 msgstr "строить"
@@ -23,60 +23,60 @@ msgstr "игра"
 msgid "building"
 msgstr "здание"
 
-msgid "tent"
-msgstr "палатка"
-
-msgid "resource"
-msgstr "ресурс"
-
-msgid "branch office"
-msgstr "контора"
-
-msgid "your"
-msgstr "Ваш / Ваше"
+msgid "settlement"
+msgstr "поселение"
 
 msgid "farm"
 msgstr "ферма"
 
-msgid "field"
-msgstr "поле"
-
-msgid "overview"
-msgstr "обзор"
-
 msgid "ship"
 msgstr "корабль"
 
-msgid "main"
-msgstr "главный"
+msgid "tent"
+msgstr "палатка"
 
-msgid "settlement"
-msgstr "поселение"
+msgid "warehouse"
+msgstr ""
 
-msgid "start"
-msgstr "начать"
+msgid "resource"
+msgstr "ресурс"
 
-msgid "click"
-msgstr "нажатие / клик / нажимать"
+msgid "produce"
+msgstr "производить"
 
-msgid "inhabitants"
-msgstr "жители"
+msgid "field"
+msgstr "поле"
 
 #
 msgid "map"
 msgstr "карта"
 
-msgid "menu"
-msgstr "меню"
+msgid "trade"
+msgstr "торговля"
 
-msgid "production"
-msgstr "продукция"
+msgid "inhabitants"
+msgstr "жители"
 
-msgid "tab"
-msgstr "вкладка"
+msgid "buy"
+msgstr "купить"
 
-msgid "unknown"
-msgstr "неизвестно"
+msgid "overview"
+msgstr "обзор"
+
+msgid "click"
+msgstr "нажатие / клик / нажимать"
+
+msgid "lumberjack"
+msgstr "лесоруб"
+
+msgid "resident"
+msgstr ""
+
+msgid "main square"
+msgstr "главная площадь"
+
+msgid "sailors"
+msgstr ""
 
 msgid "food"
 msgstr "еда"
@@ -84,35 +84,86 @@ msgstr "еда"
 msgid "increment"
 msgstr "уровень / ступень развития"
 
+msgid "production"
+msgstr "продукция"
+
 msgid "select"
 msgstr "выделять"
+
+msgid "sell"
+msgstr "продавать"
 
 msgid "setting"
 msgstr "настройка"
 
+msgid "storage"
+msgstr "склад / хранилище"
+
+msgid "tab"
+msgstr "вкладка"
+
+msgid "upgrade"
+msgstr ""
+
+msgid "your inhabitants"
+msgstr ""
+
+msgid "close"
+msgstr ""
+
+msgid "companies"
+msgstr "предприятия"
+
+msgid "island"
+msgstr ""
+
 msgid "time"
 msgstr "время"
 
-msgid "trade"
-msgstr "торговля"
+msgid "unit"
+msgstr ""
 
-msgid "change"
-msgstr "изменить"
+msgid "balance"
+msgstr "баланс"
 
-msgid "main square"
-msgstr "главная площадь"
+msgid "coast"
+msgstr "побережье"
+
+msgid "menu"
+msgstr "меню"
+
+msgid "slot"
+msgstr "слот"
+
+msgid "start"
+msgstr "начать"
+
+msgid "stock"
+msgstr "запасы"
 
 msgid "trail"
 msgstr "тропа"
 
+msgid "Unknown Horizons"
+msgstr ""
+
+msgid "wool"
+msgstr "шерсть"
+
 msgid "boards"
 msgstr "доски"
 
-msgid "buy"
-msgstr "купить"
+msgid "collector"
+msgstr "сборщик"
 
-msgid "coast"
-msgstr "побережье"
+msgid "connection"
+msgstr "соединение"
+
+msgid "fire"
+msgstr "огонь"
+
+msgid "change"
+msgstr "изменить"
 
 msgid "connect"
 msgstr "соединить"
@@ -120,326 +171,260 @@ msgstr "соединить"
 msgid "cost"
 msgstr "цена"
 
-msgid "free"
-msgstr "свободный / бесплатный"
+msgid "house"
+msgstr "дом"
 
 msgid "log"
 msgstr "лог / журнал / бревно"
 
-msgid "lumberjack"
-msgstr "лесоруб"
-
-msgid "sell"
-msgstr "продавать"
-
-msgid "storage"
-msgstr "склад / хранилище"
-
-msgid "taxes"
-msgstr "налоги"
-
-msgid "trader"
-msgstr "торговец"
-
-msgid "version"
-msgstr "версия"
-
-msgid "companies"
-msgstr "предприятия"
-
-msgid "fire"
-msgstr "огонь"
-
-msgid "left"
-msgstr "слева / налево"
-
-msgid "reach"
-msgstr "достигать"
-
-msgid "signal"
-msgstr "подавать сигнал / сигнал"
-
-msgid "signal fire"
-msgstr "сигнальный огонь"
-
-msgid "stock"
-msgstr "запасы"
-
-msgid "tools"
-msgstr "инструменты"
-
-msgid "wool"
-msgstr "шерсть"
-
-msgid "balance"
-msgstr "баланс"
-
-msgid "choose"
-msgstr "выбирать"
-
-msgid "fisher"
-msgstr "рыбак"
-
-msgid "found"
-msgstr "основывать"
-
-msgid "pavilion"
-msgstr "павильон"
-
-msgid "potato"
-msgstr "картофель"
-
-msgid "range"
-msgstr "область действия / радиус / дистанция"
+msgid "road"
+msgstr ""
 
 #
-msgid "raw"
-msgstr "необработанный / сырой"
-
-msgid "running"
-msgstr "активно / работает"
-
-msgid "running costs"
-msgstr "затраты на содержание"
-
-msgid "collector"
-msgstr "сборщик"
-
-msgid "help"
-msgstr "помощь"
-
-msgid "house"
-msgstr "дом"
-
-msgid "inventory"
-msgstr "инвентарь / запасы / товары"
-
-msgid "level"
-msgstr "уровень"
-
-#
-msgid "move"
-msgstr "двигать"
-
-# 80%
-msgid "moved"
-msgstr "перемещённый"
-
-msgid "produce"
-msgstr "производить"
-
-# 87%
-msgid "produced"
-msgstr "произведённый"
-
-msgid "pasture"
-msgstr "пастбище"
-
-msgid "storage tent"
-msgstr "хранилище"
-
-msgid "sugar"
-msgstr "сахар"
-
-msgid "tree"
-msgstr "дерево"
-
-msgid "active"
-msgstr "активный"
-
-msgid "add"
-msgstr "добавить"
-
-msgid "build menu"
-msgstr "меню строительства"
+msgid "save"
+msgstr "сохнанять / сохранение"
 
 msgid "built"
 msgstr "построенный"
 
-msgid "construction"
-msgstr "здание / сооружение"
+msgid "pasture"
+msgstr "пастбище"
+
+msgid "reach"
+msgstr "достигать"
+
+msgid "tree"
+msgstr "дерево"
+
+msgid "your"
+msgstr "Ваш / Ваше"
+
+msgid "your settlement"
+msgstr ""
+
+msgid "add"
+msgstr "добавить"
+
+msgid "check"
+msgstr "проверять"
+
+msgid "choose"
+msgstr "выбирать"
+
+msgid "confectionery"
+msgstr ""
+
+msgid "fisher"
+msgstr "рыбак"
+
+msgid "free trader"
+msgstr "свободный торговец"
+
+msgid "happiness"
+msgstr "удовлетворённость / счастье"
+
+msgid "in stock"
+msgstr ""
+
+msgid "money"
+msgstr ""
+
+msgid "pavilion"
+msgstr "павильон"
+
+msgid "running costs"
+msgstr "затраты на содержание"
+
+msgid "sugar"
+msgstr "сахар"
+
+msgid "taxes"
+msgstr "налоги"
+
+msgid "tax"
+msgstr "налог"
+
+msgid "tools"
+msgstr "инструменты"
+
+msgid "button"
+msgstr ""
 
 #
 msgid "continue"
 msgstr "продолжать"
 
+msgid "faith"
+msgstr "вера"
+
+msgid "help"
+msgstr "помощь"
+
+msgid "left"
+msgstr "слева / налево"
+
+msgid "level"
+msgstr "уровень"
+
+msgid "mode"
+msgstr "режим"
+
+#
+msgid "move"
+msgstr "двигать"
+
+msgid "pioneers"
+msgstr ""
+
+msgid "citizens"
+msgstr ""
+
+msgid "merchants"
+msgstr ""
+
+msgid "aristocrats"
+msgstr ""
+
+msgid "potato"
+msgstr "картофель"
+
+msgid "settler"
+msgstr "поселенец"
+
+msgid "speed"
+msgstr ""
+
+msgid "stop"
+msgstr "остановить / прервать"
+
+msgid "storage tent"
+msgstr "хранилище"
+
+msgid "wait"
+msgstr ""
+
+msgid "access"
+msgstr ""
+
+msgid "account"
+msgstr "счёт"
+
+msgid "amount"
+msgstr ""
+
+msgid "build menu"
+msgstr "меню строительства"
+
+msgid "cloth"
+msgstr "одежда"
+
+msgid "construction"
+msgstr "здание / сооружение"
+
 msgid "decrease"
 msgstr "уменьшать"
 
-msgid "free trader"
-msgstr "свободный торговец"
+#
+msgid "description"
+msgstr "описание"
 
-msgid "hunter"
-msgstr "охотник"
+msgid "fish"
+msgstr "рыба"
+
+#
+msgid "increase"
+msgstr "увеличивать"
+
+msgid "lamb"
+msgstr "овца"
 
 #
 msgid "leave"
 msgstr "покидать"
 
 #
-msgid "market"
-msgstr "рынок"
+msgid "liquor"
+msgstr "алкоголь"
 
-msgid "partner"
-msgstr "партнёр / компаньон"
+msgid "location"
+msgstr ""
 
-msgid "sailor"
-msgstr "моряк"
+msgid "offer"
+msgstr ""
 
-msgid "pioneer"
-msgstr "первопроходец / пионер"
+msgid "potatoes"
+msgstr ""
 
-msgid "settler"
-msgstr "поселенец"
+msgid "range"
+msgstr "область действия / радиус / дистанция"
 
-msgid "citizen"
-msgstr "горожанин"
-
-msgid "merchant"
-msgstr "торговец"
-
-msgid "aristocrat"
-msgstr "аристократ"
-
-#
-msgid "refresh"
-msgstr "обновлять"
-
-msgid "residents"
-msgstr "жители"
+msgid "reached"
+msgstr "достигнутый"
 
 #
 msgid "run"
 msgstr "запускать"
 
-msgid "slot"
-msgstr "слот"
+msgid "slider"
+msgstr "слайдер / ползунок"
 
-msgid "stop"
-msgstr "остановить / прервать"
+msgid "solution"
+msgstr "решение"
+
+msgid "space"
+msgstr ""
+
+msgid "target"
+msgstr ""
 
 msgid "team"
 msgstr "команда"
 
-msgid "village"
-msgstr "деревня"
+msgid "total"
+msgstr ""
 
-msgid "account"
-msgstr "счёт"
+msgid "unable"
+msgstr ""
 
-msgid "back"
-msgstr "назад"
+msgid "active"
+msgstr "активный"
 
-#
-msgid "build settlement"
-msgstr "основывать поселение"
+msgid "afford"
+msgstr ""
+
+msgid "animals"
+msgstr ""
 
 #
 msgid "Captain's log"
 msgstr "судовой журнал"
 
-msgid "cloth"
-msgstr "одежда"
+msgid "construct"
+msgstr ""
 
-#
-msgid "description"
-msgstr "описание"
+msgid "consume"
+msgstr "потреблять"
 
-msgid "happiness"
-msgstr "удовлетворённость / счастье"
+msgid "enabled"
+msgstr ""
 
-#
-msgid "increase"
-msgstr "увеличивать"
+msgid "entries"
+msgstr ""
 
-#
-msgid "liquor"
-msgstr "алкоголь"
-
-msgid "mode"
-msgstr "режим"
-
-#
-msgid "multiple"
-msgstr "несколько"
-
-#
-msgid "output"
-msgstr "вывод"
-
-#
-msgid "play"
-msgstr "играть"
-
-msgid "sale"
-msgstr "продажа"
-
-#
-msgid "save"
-msgstr "сохнанять / сохранение"
-
-#
-msgid "school"
-msgstr "школа"
-
-#
-msgid "screen"
-msgstr "экран"
-
-msgid "solution"
-msgstr "решение"
-
-#
-msgid "sound"
-msgstr "звук"
-
-msgid "from time to time"
-msgstr "время от времени / иногда"
-
-msgid "trading"
-msgstr "торговля"
-
-msgid "visit"
-msgstr "посещать"
-
-msgid "weaver"
-msgstr "ткач"
-
-msgid "animal"
-msgstr "животное"
-
-msgid "fish"
-msgstr "рыба"
-
-#
-msgid "fisherman"
-msgstr "рыбак"
+msgid "feature"
+msgstr "возможность / функция"
 
 msgid "forest"
 msgstr "лес"
 
-#
-msgid "forum"
-msgstr "форум"
-
-#
-msgid "fulfill"
-msgstr "выполнять"
-
-#
-msgid "graphics"
-msgstr "графика"
-
-msgid "grow"
-msgstr "расти"
+msgid "grows"
+msgstr ""
 
 msgid "hold"
 msgstr "удерживать / держать"
 
-# 3-е лицо
-# 80%
-msgid "hunt"
-msgstr "охотится"
+msgid "idle"
+msgstr ""
 
 msgid "income"
 msgstr "доход / прибыль"
@@ -457,13 +442,136 @@ msgstr "клавиша / ключ"
 msgid "lamb wool"
 msgstr "овечья шерсть"
 
+msgid "overview tab"
+msgstr ""
+
+msgid "minimap"
+msgstr "миникарта"
+
+msgid "issues"
+msgstr "проблемы"
+
+msgid "plant"
+msgstr ""
+
 #
-msgid "load/unload"
-msgstr "загружать/разгружать"
+msgid "play"
+msgstr "играть"
+
+msgid "playing"
+msgstr "играя"
+
+msgid "price"
+msgstr ""
+
+msgid "read"
+msgstr ""
 
 #
 msgid "return"
 msgstr "возвращать / возврат"
+
+msgid "sale"
+msgstr "продажа"
+
+#
+msgid "screen"
+msgstr "экран"
+
+#
+msgid "sound"
+msgstr "звук"
+
+msgid "special"
+msgstr ""
+
+msgid "store"
+msgstr ""
+
+msgid "tear"
+msgstr ""
+
+msgid "from time to time"
+msgstr "время от времени / иногда"
+
+msgid "trading"
+msgstr "торговля"
+
+msgid "village"
+msgstr "деревня"
+
+msgid "visit"
+msgstr "посещать"
+
+msgid "world"
+msgstr ""
+
+msgid "yield"
+msgstr ""
+
+msgid "your ship"
+msgstr ""
+
+msgid "back"
+msgstr "назад"
+
+#
+msgid "build settlement"
+msgstr "основывать поселение"
+
+msgid "load"
+msgstr ""
+
+msgid "unload"
+msgstr ""
+
+msgid "command"
+msgstr ""
+
+msgid "completed"
+msgstr ""
+
+msgid "condition"
+msgstr "условие"
+
+msgid "contact"
+msgstr "контакт / контактировать"
+
+msgid "empty"
+msgstr ""
+
+msgid "ensure"
+msgstr ""
+
+#
+msgid "fulfill"
+msgstr "выполнять"
+
+#
+msgid "graphics"
+msgstr "графика"
+
+msgid "harvest"
+msgstr ""
+
+# 3-е лицо
+msgid "hunts"
+msgstr "охотится"
+
+#
+msgid "multiple"
+msgstr "несколько"
+
+#
+msgid "potato field"
+msgstr "картофельное поле"
+
+#
+msgid "school"
+msgstr "школа"
+
+msgid "seed"
+msgstr "семя / сеять / начальное значение (генератора случайных чисел)"
 
 #
 msgid "service"
@@ -473,118 +581,15 @@ msgstr "услуги"
 msgid "sheep"
 msgstr "овца"
 
-#
-msgid "ship inventory"
-msgstr "запасы на корабле"
+msgid "signal fire"
+msgstr "сигнальный огонь"
 
-#
-msgid "starting"
-msgstr "исходный / начальный"
-
-#
-msgid "trade partner"
-msgstr "компаньон / партнёр по торговле"
-
-#
-msgid "yields"
-msgstr "прибыль / доходы"
-
-msgid "faith"
-msgstr "вера"
-
-#
-msgid "green"
-msgstr "зелёный"
-
-#
-msgid "red"
-msgstr "красный"
-
-msgid "check"
-msgstr "проверять"
-
-msgid "connection"
-msgstr "соединение"
-
-msgid "no"
-msgstr "нет"
-
-msgid "tax"
-msgstr "налог"
-
-msgid "feature"
-msgstr "возможность / функция"
-
-msgid "reached"
-msgstr "достигнутый"
-
-msgid "slider"
-msgstr "слайдер / ползунок"
-
-msgid "condition"
-msgstr "условие"
-
-msgid "consume"
-msgstr "потреблять"
-
-msgid "contact"
-msgstr "контакт / контактировать"
-
-msgid "dialogue"
-msgstr "диалог"
-
-msgid "issues"
-msgstr "проблемы"
-
-msgid "minimap"
-msgstr "миникарта"
-
-msgid "playing"
-msgstr "играя"
-
-# 75%
-msgid "ruin"
-msgstr "руины / разрушать"
-
-msgid "seed"
-msgstr "семя / сеять / начальное значение (генератора случайных чисел)"
-
-msgid "temporarily"
-msgstr "временно"
-
-msgid "salt ponds"
-msgstr "солёные озёра"
-
-msgid "tobacco"
-msgstr "табак"
-
-msgid "cattle"
-msgstr "скот"
-
-msgid "pig"
-msgstr "свинья"
-
-msgid "herbs"
-msgstr "травы"
-
-msgid "herbary"
-msgstr "сад трав"
-
-msgid "butchery"
-msgstr "скотобойня"
-
-msgid "doctor"
-msgstr "врач"
-
-msgid "education"
-msgstr "образование"
+msgid "statistics"
+msgstr ""
 
 # 75%
 msgid "clay"
 msgstr "глина"
-
-msgid "charcoal"
-msgstr "уголь"
 
 msgid "iron"
 msgstr "железо"
@@ -592,25 +597,188 @@ msgstr "железо"
 msgid "ore"
 msgstr "руда"
 
-#~ msgid "lamb"
-#~ msgstr "овца"
+msgid "tobacco"
+msgstr "табак"
+
+msgid "charcoal"
+msgstr "уголь"
+
+#
+msgid "sugar field"
+msgstr "сахарная плантация"
+
+msgid "temporarily"
+msgstr "временно"
+
+msgid "values"
+msgstr ""
+
+#~ msgid "branch office"
+#~ msgstr "контора"
+
+#~ msgid "main"
+#~ msgstr "главный"
+
+#~ msgid "unknown"
+#~ msgstr "неизвестно"
+
+#~ msgid "free"
+#~ msgstr "свободный / бесплатный"
+
+#~ msgid "trader"
+#~ msgstr "торговец"
+
+#~ msgid "version"
+#~ msgstr "версия"
+
+#~ msgid "signal"
+#~ msgstr "подавать сигнал / сигнал"
+
+#~ msgid "found"
+#~ msgstr "основывать"
+
+#
+#~ msgid "raw"
+#~ msgstr "необработанный / сырой"
+
+#~ msgid "running"
+#~ msgstr "активно / работает"
+
+#~ msgid "inventory"
+#~ msgstr "инвентарь / запасы / товары"
+
+# 80%
+#~ msgid "moved"
+#~ msgstr "перемещённый"
+
+# 87%
+#~ msgid "produced"
+#~ msgstr "произведённый"
+
+#~ msgid "hunter"
+#~ msgstr "охотник"
+
+#
+#~ msgid "market"
+#~ msgstr "рынок"
+
+#~ msgid "partner"
+#~ msgstr "партнёр / компаньон"
+
+#~ msgid "sailor"
+#~ msgstr "моряк"
+
+#~ msgid "pioneer"
+#~ msgstr "первопроходец / пионер"
+
+#~ msgid "citizen"
+#~ msgstr "горожанин"
+
+#~ msgid "merchant"
+#~ msgstr "торговец"
+
+#~ msgid "aristocrat"
+#~ msgstr "аристократ"
+
+#
+#~ msgid "refresh"
+#~ msgstr "обновлять"
+
+#~ msgid "residents"
+#~ msgstr "жители"
+
+#
+#~ msgid "output"
+#~ msgstr "вывод"
+
+#~ msgid "weaver"
+#~ msgstr "ткач"
+
+#~ msgid "animal"
+#~ msgstr "животное"
+
+#
+#~ msgid "fisherman"
+#~ msgstr "рыбак"
+
+#
+#~ msgid "forum"
+#~ msgstr "форум"
+
+#~ msgid "grow"
+#~ msgstr "расти"
+
+# 3-е лицо
+# 80%
+#~ msgid "hunt"
+#~ msgstr "охотится"
+
+#
+#~ msgid "load/unload"
+#~ msgstr "загружать/разгружать"
+
+#
+#~ msgid "ship inventory"
+#~ msgstr "запасы на корабле"
+
+#
+#~ msgid "starting"
+#~ msgstr "исходный / начальный"
+
+#
+#~ msgid "trade partner"
+#~ msgstr "компаньон / партнёр по торговле"
+
+#
+#~ msgid "yields"
+#~ msgstr "прибыль / доходы"
+
+#
+#~ msgid "green"
+#~ msgstr "зелёный"
+
+#
+#~ msgid "red"
+#~ msgstr "красный"
+
+#~ msgid "no"
+#~ msgstr "нет"
+
+#~ msgid "dialogue"
+#~ msgstr "диалог"
+
+# 75%
+#~ msgid "ruin"
+#~ msgstr "руины / разрушать"
+
+#~ msgid "salt ponds"
+#~ msgstr "солёные озёра"
+
+#~ msgid "cattle"
+#~ msgstr "скот"
+
+#~ msgid "pig"
+#~ msgstr "свинья"
+
+#~ msgid "herbs"
+#~ msgstr "травы"
+
+#~ msgid "herbary"
+#~ msgstr "сад трав"
+
+#~ msgid "butchery"
+#~ msgstr "скотобойня"
+
+#~ msgid "doctor"
+#~ msgstr "врач"
+
+#~ msgid "education"
+#~ msgstr "образование"
 
 # 
 #~ msgid "market place"
 #~ msgstr "рынок / рыночная площадь"
 
-# 
-#~ msgid "potato field"
-#~ msgstr "картофельное поле"
-
-# 3-е лицо
-#~ msgid "hunts"
-#~ msgstr "охотится"
-
 # Is this about the key ?
 #~ msgid "SHIFT"
 #~ msgstr "SHIFT"
-
-# 
-#~ msgid "sugar field"
-#~ msgstr "сахарная плантация"
