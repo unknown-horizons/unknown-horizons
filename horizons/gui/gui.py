@@ -442,7 +442,6 @@ class Gui(SingleplayerMenu, MultiplayerMenu):
 					callback()
 				else:
 					# escape should hide the dialog default
-					print 'ici', onPressEscape
 					pychan.internal.get_manager().breakFromMainLoop(onPressEscape)
 					dlg.hide()
 			elif event.getKey().getValue() == fife.Key.ENTER: # convention says use ok action
