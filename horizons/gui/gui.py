@@ -426,15 +426,35 @@ class Gui(SingleplayerMenu, MultiplayerMenu):
 		@param onPressEscape: callback that is to be called if the escape button is pressed
 		@param event_map: dictionary with callbacks for buttons. See pychan docu: pychan.widget.mapEvents()
 		"""
+		# TODO: get rid of onPressEscape, only used below when cancelButton is not defined
+
 		self.current_dialog = dlg
 		if event_map is not None:
 			dlg.mapEvents(event_map)
-		if onPressEscape is not None:
-			def _escape(event):
-				if event.getKey().getValue() == fife.Key.ESCAPE:
+
+		# handle escape and enter keypresses
+		def _on_keypress(event, dlg=dlg): # rebind to make sure this dlg is used
+			from horizons.engine import pychan_util
+			if event.getKey().getValue() == fife.Key.ESCAPE: # convention says use cancel action
+				btn = dlg.findChild(name="cancelButton")
+				callback = pychan_util.get_button_event(btn) if btn else None
+				if callback:
+					callback()
+				else:
+					# escape should hide the dialog default
+					print 'ici', onPressEscape
 					pychan.internal.get_manager().breakFromMainLoop(onPressEscape)
 					dlg.hide()
-			dlg.capture(_escape, event_name="keyPressed")
+			elif event.getKey().getValue() == fife.Key.ENTER: # convention says use ok action
+				btn = dlg.findChild(name="okButton")
+				callback = pychan_util.get_button_event(btn) if btn else None
+				if callback:
+					callback()
+				# can't guess a default action here
+
+		dlg.capture(_on_keypress, event_name="keyPressed")
+
+		# show that a dialog is being executed, this can sometimes require changes in program logic elsewhere
 		self.dialog_executed = True
 		ret = dlg.execute(bind)
 		self.dialog_executed = False
