@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2012-03-24 02:16+0100\n"
-"PO-Revision-Date: 2012-03-31 18:13+0200\n"
+"PO-Revision-Date: 2012-03-31 23:51+0200\n"
 "Last-Translator: Sergio <juarrox@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: es\n"
@@ -884,6 +884,8 @@ msgstr ""
 #: horizons/gui/modules/multiplayermenu.py:210
 msgid "This is not nice and we hope to offer a more convenient solution very soon."
 msgstr ""
+"Esto no es agradable. Esperamos ofrecer una solución más adecuada muy "
+"pronto."
 
 #: horizons/gui/modules/multiplayermenu.py:211
 msgid "Meanwhile, please request the file {path} from the game creator and put it in {map_directory} ."
@@ -968,9 +970,8 @@ msgstr "Tamaño de la isla preferido:"
 
 # too long
 #: horizons/gui/modules/singleplayermenu.py:328
-#, fuzzy
 msgid "Island size deviation:"
-msgstr "Desviación del tamaño de la isla:"
+msgstr "Cambio del tamaño de la isla:"
 
 # 76%
 #: horizons/gui/modules/singleplayermenu.py:367
@@ -1155,9 +1156,8 @@ msgstr "Visión general"
 
 # 94%
 #: horizons/gui/tabs/overviewtab.py:148 horizons/gui/tabs/overviewtab.py:575
-#, fuzzy
 msgid "Warehouse overview"
-msgstr "Visión general del mercado"
+msgstr "Visión general de la lonja"
 
 #: horizons/gui/tabs/overviewtab.py:182 horizons/gui/tabs/overviewtab.py:322
 msgid "Ship overview"
@@ -1266,9 +1266,8 @@ msgid "Sound"
 msgstr "Sonido"
 
 #: horizons/gui/widgets/pickbeltwidget.py:93
-#, fuzzy
 msgid "Game"
-msgstr "Salir del juego"
+msgstr "Partida"
 
 #: horizons/gui/widgets/playerssettlements.py:44
 #, python-format
@@ -1292,9 +1291,8 @@ msgstr "Navíos de {player}"
 #. (helptext of widget: name)
 #: horizons/gui/widgets/playersships.py:83
 #: horizons/i18n/guitranslations.py:499 horizons/i18n/guitranslations.py:510
-#, fuzzy
 msgid "Click to change the name of this ship"
-msgstr "Clic aquí para cambiar el nombre del navío."
+msgstr "Haz clic para cambiar el nombre de este navío."
 
 #. i18n There are no weapons equipped at the moment.
 #: horizons/gui/widgets/playersships.py:99
@@ -1437,12 +1435,12 @@ msgstr "Bitácora del capitán (L)"
 #. (helptext of widget: rotateLeft)
 #: horizons/i18n/guitranslations.py:86
 msgid "Rotate map counterclockwise (,)"
-msgstr ""
+msgstr "Rotar mapa a la izquierda (.)"
 
 #. (helptext of widget: rotateRight)
 #: horizons/i18n/guitranslations.py:88
 msgid "Rotate map clockwise (.)"
-msgstr ""
+msgstr "Rotar mapa a la derecha (.)"
 
 #. (helptext of widget: speedDown)
 #: horizons/i18n/guitranslations.py:90
@@ -2030,7 +2028,7 @@ msgstr "Mis navíos"
 #. (text of widget: wb2) Only filter messages important for your own settlements (disasters, new increment, ...)
 #: horizons/i18n/guitranslations.py:598
 msgid "Own settlements"
-msgstr ""
+msgstr "Asentamientos propios"
 
 #. (text of widget: wb5) Sends the chat message to all allied players.
 #: horizons/i18n/guitranslations.py:600
@@ -2040,12 +2038,12 @@ msgstr "Aliados"
 #. (text of widget: weird_button_1) Displays all notifications and game messages
 #: horizons/i18n/guitranslations.py:602
 msgid "Whole world"
-msgstr ""
+msgstr "Mundo entero"
 
 #. (text of widget: weird_button_4) Sends the chat message to all players (default)
 #: horizons/i18n/guitranslations.py:604
 msgid "Everybody"
-msgstr ""
+msgstr "Todo el mundo"
 
 #. (text of widget: headline_game_messages)
 #: horizons/i18n/guitranslations.py:608
@@ -2251,9 +2249,8 @@ msgstr "Scroll izquierda"
 # 75%
 #. (text of widget: lbl_LOGBOOK)
 #: horizons/i18n/guitranslations.py:734
-#, fuzzy
 msgid "Toggle Captain's log"
-msgstr "Dejar el cuaderno de bitácora"
+msgstr "Activar Diario de a bordo del Capitán"
 
 #. (text of widget: lbl_PAUSE)
 #: horizons/i18n/guitranslations.py:736
@@ -2338,7 +2335,7 @@ msgstr "Destacar baldosas de las posesiones"
 #. (text of widget: lbl_TRANSLUCENCY)
 #: horizons/i18n/guitranslations.py:768
 msgid "Toggle translucency of ambient buildings"
-msgstr ""
+msgstr "Activar transparencia de ambiente de los edificios"
 
 #. (text of widget: lbl_UP)
 #: horizons/i18n/guitranslations.py:770
@@ -2695,9 +2692,8 @@ msgstr "Ya sea para rotar también el minimapa cuando gire el mapa principal "
 
 #. (helptext of widget: mouse_sensitivity_label)
 #: horizons/i18n/guitranslations.py:953
-#, fuzzy
 msgid "0 is default system settings"
-msgstr "Reiniciar configuración por defecto"
+msgstr "0 para ajustes predeterminados del sistema"
 
 #. (helptext of widget: network_port_lbl)
 #: horizons/i18n/guitranslations.py:955
@@ -2789,7 +2785,7 @@ msgstr "Configuración del mapa:"
 #. (text of widget: seed_string_lbl)
 #: horizons/i18n/guitranslations.py:1014
 msgid "Seed:"
-msgstr ""
+msgstr "Semilla:"
 
 #. (text of widget: ai_players_label)
 #: horizons/i18n/guitranslations.py:1024
@@ -2841,12 +2837,12 @@ msgstr ""
 #. name of buildings:bakery
 #: horizons/i18n/objecttranslations.py:60
 msgid "Bakery"
-msgstr ""
+msgstr "Pastelería"
 
 #. tooltip_text of buildings:bakery
 #: horizons/i18n/objecttranslations.py:62
 msgid "Consumes flour. Produces food."
-msgstr ""
+msgstr "Consume harina. Produce alimento."
 
 #. name of buildings:barracks
 #: horizons/i18n/objecttranslations.py:67
@@ -2916,7 +2912,7 @@ msgstr "Quemadero de carbón"
 #. tooltip_text of buildings:charcoalburning
 #: horizons/i18n/objecttranslations.py:111
 msgid "Burns a lot of boards to charcoal."
-msgstr ""
+msgstr "Quema una gran cantidad de tablones a carbón."
 
 #. name of buildings:claydeposit
 #: horizons/i18n/objecttranslations.py:116
@@ -3053,7 +3049,7 @@ msgstr "Bitácora"
 #. tooltip_text of buildings:log
 #: horizons/i18n/objecttranslations.py:210
 msgid "Road across a river."
-msgstr ""
+msgstr "Camino a través de un río."
 
 #. name of buildings:lookout
 #: horizons/i18n/objecttranslations.py:215
@@ -3063,7 +3059,7 @@ msgstr "Vigilancia"
 #. tooltip_text of buildings:lookout
 #: horizons/i18n/objecttranslations.py:217
 msgid "Increases the player's sight."
-msgstr ""
+msgstr "Aumenta la vista del jugador."
 
 #. name_0 of buildings:lumberjackcamp
 #: horizons/i18n/objecttranslations.py:222

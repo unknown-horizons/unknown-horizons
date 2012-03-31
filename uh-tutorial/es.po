@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: translate-uh@lists.unknown-horizons.org\n"
 "POT-Creation-Date: 2012-03-21 04:04+0100\n"
-"PO-Revision-Date: 2012-03-31 00:37+0200\n"
+"PO-Revision-Date: 2012-03-31 23:57+0200\n"
 "Last-Translator: Sergio <juarrox@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: es\n"
@@ -56,6 +56,9 @@ msgid ""
 "This is your Captain's log where all important information is stored. A short "
 "notification of each task will be provided on the left of the screen."
 msgstr ""
+"Este es tu Diario de a bordo del Capitán donde se almacena toda la "
+"información importante. Una breve notificación de cada tarea aparecerá a la "
+"izquierda de la pantalla."
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:14
@@ -63,6 +66,8 @@ msgid ""
 "If you are interested in longer descriptions, your log will hopefully provide "
 "all the help you need."
 msgstr ""
+"Si estás interesado en descripciones más extensas, tu bitácora te "
+"proporcionará con suerte toda la ayuda que necesites."
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:16
@@ -71,6 +76,9 @@ msgid ""
 "in the top-right corner (below the mini-map, with a sealed document and a "
 "feather)."
 msgstr ""
+"Después de cerrar esta bitácora, puedes volver a abrirlo mediante el icono "
+"\"Bitácora del Capitán\" en la esquina superior derecha (al lado del mini-"
+"mapa, con un documento sellado y una pluma)."
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:18
@@ -91,6 +99,10 @@ msgid ""
 "explained or even buggy conditions: Please tell us and we will try to improve "
 "the tutorial!"
 msgstr ""
+"\n"
+"Para cualquier sugerencia sobre una mejor redacción, temas que te gustaría "
+"que se explicaran o cualquier otra cosa: ¡Por favor dínoslo e intentaremos "
+"mejorar este tutorial!"
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:22
