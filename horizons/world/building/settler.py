@@ -99,7 +99,7 @@ class Settler(BuildableRect, BuildingResourceHandler, BasicBuilding):
 		    db("SELECT ticks FROM remaining_ticks_of_month WHERE rowid=?", worldid)[0][0]
 		self.__init(loading = True, last_tax_payed = last_tax_payed)
 		self._load_upgrade_data(db)
-		SettlerUpdate.broadcast(self, self.level)
+		SettlerUpdate.broadcast(self, self.level, self.level)
 		self.run(remaining_ticks)
 
 	def load_production(self, db, worldid):
@@ -287,7 +287,7 @@ class Settler(BuildableRect, BuildingResourceHandler, BasicBuilding):
 			self._update_level_data()
 
 			# Notify the world about the level up
-			SettlerUpdate.broadcast(self, self.level)
+			SettlerUpdate.broadcast(self, self.level, 1)
 
 			# reset happiness value for new level
 			self.get_component(StorageComponent).inventory.alter(RES.HAPPINESS_ID, self.__get_data("happiness_init_value") - self.happiness)
@@ -317,6 +317,9 @@ class Settler(BuildableRect, BuildingResourceHandler, BasicBuilding):
 			self.get_component(StorageComponent).inventory.alter(RES.HAPPINESS_ID, self.__get_data("happiness_init_value") - self.happiness)
 			self.log.debug("%s: Level down to %s", self, self.level)
 			self._changed()
+
+			# Notify the world about the level down
+			SettlerUpdate.broadcast(self, self.level, -1)
 
 	def _check_main_square_in_range(self):
 		"""Notifies the user via a message in case there is no main square in range"""

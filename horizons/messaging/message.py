@@ -123,7 +123,10 @@ class RemoveStatusIcon(Message):
 	)
 
 class SettlerUpdate(Message):
-	arguments = ('level', )
+	"""Sent when the level of a settler building changes. Message includes the new
+	level and the change (+1/-1).
+	"""
+	arguments = ('level', 'change', )
 
 class SettlerInhabitantsChanged(Message):
 	"""Class to signal that the number of inhabitants in a settler building
