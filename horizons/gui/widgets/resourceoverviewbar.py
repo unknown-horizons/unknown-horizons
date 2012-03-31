@@ -106,12 +106,13 @@ class ResourceOverviewBar(object):
 		self.session.message_bus.subscribe_globally(NewPlayerSettlementHovered, self._on_different_settlement)
 
 	def end(self):
-		self.set_inventory_instance( None, force_update=True )
+		self.set_inventory_instance(None, force_update=True)
 		self.current_instance = weakref.ref(self)
 		ExtScheduler().rem_all_classinst_calls(self)
 		self.resource_configurations.clear()
+		self.gold_gui.hide()
 		self.gold_gui = None
-		self.gui = None
+		self.gui = None # hidden by set_inventory
 		self._custom_default_resources = None
 		self.session.message_bus.unsubscribe_globally(NewPlayerSettlementHovered, self._on_different_settlement)
 
