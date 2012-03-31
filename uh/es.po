@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2012-03-24 02:16+0100\n"
-"PO-Revision-Date: 2012-03-31 14:59+0200\n"
+"PO-Revision-Date: 2012-03-31 16:59+0200\n"
 "Last-Translator: Sergio <juarrox@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: es\n"
@@ -773,9 +773,9 @@ msgstr "¡Error al borrar la partida guardada!"
 
 #. i18n this defines how each line in our help looks like. Default: '[C] = Chat'
 #: horizons/gui/gui.py:681
-#, python-format
+#, python-format, fuzzy
 msgid "[{key}] = {text}"
-msgstr ""
+msgstr "[{key}] = {text}"
 
 # 97%
 #. (helptext of widget: headline)
@@ -784,7 +784,7 @@ msgstr ""
 #: horizons/i18n/guitranslations.py:417 horizons/i18n/guitranslations.py:439
 #: horizons/i18n/guitranslations.py:459
 msgid "Click to change the name of your settlement"
-msgstr "Hacé click para cambiar el nombre de tu asentamiento."
+msgstr "Haz clic para cambiar el nombre de tu colonia"
 
 #. e.g. when the pirate is disabled
 #. this dialog is pretty useless in this case
@@ -880,6 +880,8 @@ msgstr "Se ha perdido esta partida guardada (clic aquí)"
 #: horizons/gui/modules/multiplayermenu.py:209
 msgid "For multiplayer load, it is currently necessary for you to ensure you have the correct savegame file."
 msgstr ""
+"Para cargar partidas en red, comprueba que tienes la versión correcta de la "
+"partida guardada."
 
 #: horizons/gui/modules/multiplayermenu.py:210
 msgid "This is not nice and we hope to offer a more convenient solution very soon."
@@ -1017,7 +1019,7 @@ msgstr "Información general para constructor de barcos"
 #: horizons/gui/tabs/boatbuildertab.py:101
 #, python-format
 msgid "{ship} (place in queue: {place})"
-msgstr ""
+msgstr "{ship} (detenido en: {place})"
 
 #: horizons/gui/tabs/boatbuildertab.py:165
 msgid "Resources still needed:"
@@ -1048,9 +1050,8 @@ msgid "Confirm order"
 msgstr "Confirmar la orden"
 
 #: horizons/gui/tabs/buildrelatedtab.py:46
-#, fuzzy
 msgid "Build related fields"
-msgstr "Contrucción de campos relacionados"
+msgstr "Construcción de campos relacionados"
 
 # and=y
 #: horizons/gui/tabs/buildtabs.py:110
@@ -1285,9 +1286,9 @@ msgstr "Total"
 # 94%
 #: horizons/gui/widgets/playersships.py:49
 #, python-format
-#, python-format, fuzzy
+#, python-format, 
 msgid "Ships of {player}"
-msgstr "Barcos del {player}"
+msgstr "Navíos de {player}"
 
 # 97%
 #. (helptext of widget: name)
@@ -1304,7 +1305,7 @@ msgstr "Ninguno"
 
 #: horizons/gui/widgets/playersships.py:101
 msgid "N/A"
-msgstr "N/A"
+msgstr "N/D"
 
 #: horizons/gui/widgets/productionoverview.py:54
 #, python-format
