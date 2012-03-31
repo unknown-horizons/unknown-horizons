@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2012-03-24 02:16+0100\n"
-"PO-Revision-Date: 2012-03-31 16:59+0200\n"
+"PO-Revision-Date: 2012-03-31 17:41+0200\n"
 "Last-Translator: Sergio <juarrox@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: es\n"
@@ -1649,7 +1649,7 @@ msgstr "Construir campos"
 #: horizons/i18n/guitranslations.py:208 horizons/i18n/guitranslations.py:212
 #: horizons/i18n/guitranslations.py:385 horizons/i18n/guitranslations.py:389
 msgid "Capacity utilization"
-msgstr ""
+msgstr "Capacidad de uso"
 
 #. (text of widget: headline_residents_per_house)
 #: horizons/i18n/guitranslations.py:226 horizons/i18n/guitranslations.py:278
@@ -1712,9 +1712,8 @@ msgstr "5 residentes"
 # 90%
 #. (text of widget: resident_6)
 #: horizons/i18n/guitranslations.py:242
-#, fuzzy
 msgid "6 residents"
-msgstr "2 residentes"
+msgstr "6 residentes"
 
 # 88%
 # 81%
@@ -1885,7 +1884,7 @@ msgstr ""
 #. (helptext of widget: collector_utilisation) Percentage describing how busy the collectors were (100% = always going for / already carrying full load of goods)
 #: horizons/i18n/guitranslations.py:453 horizons/i18n/guitranslations.py:457
 msgid "Collector utilisation"
-msgstr ""
+msgstr "Eficiencia de transporte"
 
 #. (text of widget: exchange_label)
 #: horizons/i18n/guitranslations.py:475 horizons/i18n/guitranslations.py:488
@@ -1976,14 +1975,15 @@ msgstr "Restaurar predeterminada"
 # 94%
 #. (text of widget: headline) Please keep the translation similarly short and concise, else the tooltip is not well understood by players.
 #: horizons/i18n/guitranslations.py:572
-#, fuzzy
 msgid "Select resource:"
-msgstr "Seleccionar recursos:"
+msgstr "Escoger recursos:"
 
 #. (helptext of widget: make_default_btn)
 #: horizons/i18n/guitranslations.py:574
 msgid "Save current resource configuration as default for all settlements."
 msgstr ""
+"Guardar la configuración de recursos actual como predeterminada para todas "
+"las colonias."
 
 #. (helptext of widget: reset_default_btn)
 #: horizons/i18n/guitranslations.py:576
@@ -2037,7 +2037,7 @@ msgstr ""
 #. (text of widget: wb5) Sends the chat message to all allied players.
 #: horizons/i18n/guitranslations.py:600
 msgid "Allies"
-msgstr ""
+msgstr "Aliados"
 
 #. (text of widget: weird_button_1) Displays all notifications and game messages
 #: horizons/i18n/guitranslations.py:602
@@ -2223,7 +2223,7 @@ msgstr "Mostrar/Ocultar consola"
 #. (text of widget: lbl_COORD_TOOLTIP)
 #: horizons/i18n/guitranslations.py:722
 msgid "Show coordinate values (Debug)"
-msgstr ""
+msgstr "Mostrar valores de coordenadas (Debug)"
 
 #. (text of widget: lbl_DESTROY_TOOL)
 #: horizons/i18n/guitranslations.py:724
@@ -2335,7 +2335,7 @@ msgstr "Incrementar la velocidad de juego"
 #. (text of widget: lbl_TILE_OWNER_HIGHLIGHT)
 #: horizons/i18n/guitranslations.py:766
 msgid "Highlight tile ownership"
-msgstr ""
+msgstr "Destacar baldosas de las posesiones"
 
 #. (text of widget: lbl_TRANSLUCENCY)
 #: horizons/i18n/guitranslations.py:768
@@ -2437,7 +2437,7 @@ msgstr "Crear la partida"
 #. (helptext of widget: gamename_lbl)
 #: horizons/i18n/guitranslations.py:836 horizons/i18n/guitranslations.py:976
 msgid "This will be displayed to other players so they recognise the game."
-msgstr ""
+msgstr "Se mostrará a los demás jugadores para que reconozcan la partida."
 
 #. (text of widget: exit_to_mp_menu_lbl)
 #: horizons/i18n/guitranslations.py:841
@@ -2535,7 +2535,7 @@ msgstr "Refrescar lista de partidas activas"
 #. (text of widget: auto_unload_label)
 #: horizons/i18n/guitranslations.py:885
 msgid "Auto-unload ship:"
-msgstr ""
+msgstr "Descarga automática del navío:"
 
 #. (text of widget: autosave_interval_label)
 #: horizons/i18n/guitranslations.py:887
@@ -2550,12 +2550,12 @@ msgstr "Profundidad:"
 #. (text of widget: debug_log_lbl)
 #: horizons/i18n/guitranslations.py:891
 msgid "Enable logging"
-msgstr ""
+msgstr "Activar archivo de registro"
 
 #. (text of widget: edge_scrolling_label)
 #: horizons/i18n/guitranslations.py:893
 msgid "Scroll at map edge:"
-msgstr ""
+msgstr "Desplazar al borde del mapa:"
 
 #. (text of widget: effect_volume_label)
 #: horizons/i18n/guitranslations.py:895
@@ -2565,7 +2565,7 @@ msgstr "Volumen de efectos:"
 #. (text of widget: fps_label)
 #: horizons/i18n/guitranslations.py:897
 msgid "Frame rate limit:"
-msgstr ""
+msgstr "Límite de imágenes por segundo (frame rate):"
 
 #. (text of widget: headline_language)
 #: horizons/i18n/guitranslations.py:901
@@ -2574,9 +2574,8 @@ msgstr "Idioma"
 
 #. (text of widget: headline_mouse)
 #: horizons/i18n/guitranslations.py:903
-#, fuzzy
 msgid "Mouse"
-msgstr "casas"
+msgstr "Ratón"
 
 #. (text of widget: headline_network)
 #: horizons/i18n/guitranslations.py:905
@@ -2596,14 +2595,13 @@ msgstr "Seleccionar idioma:"
 #. (text of widget: minimap_rotation_label)
 #: horizons/i18n/guitranslations.py:913
 msgid "Rotate minimap with map:"
-msgstr ""
+msgstr "Rotar minimapa con el mapa:"
 
 # 76%
 #. (text of widget: mouse_sensitivity_label)
 #: horizons/i18n/guitranslations.py:915
-#, fuzzy
 msgid "Mouse sensitivity:"
-msgstr "Depósito de recursos:"
+msgstr "Sensibilidad del ratón:"
 
 #. (text of widget: music_volume_label)
 #: horizons/i18n/guitranslations.py:917
@@ -2665,12 +2663,12 @@ msgstr "Aplicar"
 #. (helptext of widget: auto_unload_label)
 #: horizons/i18n/guitranslations.py:941
 msgid "Whether to unload the ship after founding a settlement"
-msgstr ""
+msgstr "Ya sea para descargar un navío al encontrar un asentamiento"
 
 #. (helptext of widget: color_depth_label)
 #: horizons/i18n/guitranslations.py:943
 msgid "If set to 0, use the driver default"
-msgstr ""
+msgstr "Si es 0, controlador predeterminado"
 
 #. (helptext of widget: debug_log_lbl)
 #: horizons/i18n/guitranslations.py:945
@@ -2684,6 +2682,8 @@ msgstr ""
 #: horizons/i18n/guitranslations.py:947
 msgid "Whether to move the viewport when the mouse pointer is close to map edges"
 msgstr ""
+"Ya sea para mover el cursor cuando el puntero del ratón se encuentre cerca "
+"de los bordes del mapa"
 
 #. (helptext of widget: fps_label)
 #: horizons/i18n/guitranslations.py:949
@@ -2693,7 +2693,7 @@ msgstr "Fija un máximo de ratio de frames. Por defecto: 60 fps"
 #. (helptext of widget: minimap_rotation_label)
 #: horizons/i18n/guitranslations.py:951
 msgid "Whether to also rotate the minimap whenever the regular map is rotated"
-msgstr ""
+msgstr "Ya sea para rotar también el minimapa cuando gire el mapa principal "
 
 #. (helptext of widget: mouse_sensitivity_label)
 #: horizons/i18n/guitranslations.py:953
@@ -2710,11 +2710,15 @@ msgstr "Si es 0, usa el router por defecto"
 #: horizons/i18n/guitranslations.py:957
 msgid "When enabled, do not exit the build mode after successful construction"
 msgstr ""
+"Cuando está activado, no se sale del modo de construcción al completar un "
+"edificio."
 
 #. (helptext of widget: use_renderer_label)
 #: horizons/i18n/guitranslations.py:959
 msgid "SDL is only meant as unsupported fallback and might cause problems!"
 msgstr ""
+"¡SDL podría causar problemas, úsalo excepcionalmente en casos de "
+"incompatibilidad!"
 
 #. (text of widget: enter_filename_label)
 #: horizons/i18n/guitranslations.py:964
@@ -2833,6 +2837,8 @@ msgstr ""
 #: horizons/i18n/objecttranslations.py:55
 msgid "Keeps bees. Produces honeycombs used for confectionery. Needs a farm."
 msgstr ""
+"Mantiene abejas. Produce panales de miel para confitería. Requiere una "
+"granja."
 
 #. name of buildings:bakery
 #: horizons/i18n/objecttranslations.py:60
@@ -2847,12 +2853,12 @@ msgstr ""
 #. name of buildings:barracks
 #: horizons/i18n/objecttranslations.py:67
 msgid "Barracks"
-msgstr ""
+msgstr "Cuartel"
 
 #. tooltip_text of buildings:barracks
 #: horizons/i18n/objecttranslations.py:69
 msgid "Recruits units suitable for ground combat."
-msgstr ""
+msgstr "Recluta unidades adecuadas para el combate terrestre."
 
 #. name of buildings:blender
 #: horizons/i18n/objecttranslations.py:74
@@ -2862,7 +2868,7 @@ msgstr ""
 #. tooltip_text of buildings:blender
 #: horizons/i18n/objecttranslations.py:76
 msgid "Produces condiments out of spices."
-msgstr ""
+msgstr "Produce condimentos de especias."
 
 #. name of buildings:boatbuilder
 #: horizons/i18n/objecttranslations.py:81
