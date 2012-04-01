@@ -12,7 +12,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 "
 "|| n%100>=20) ? 1 : 2);\n"
-"X-Generator: Translate Toolkit 1.9.0\n"
+"X-Generator: Pootle 2.1.5\n"
 
 # (poterminology) uh-tutorial/tutorial.pot (43)
 #
@@ -83,14 +83,18 @@ msgstr "kliknij"
 msgid "lumberjack"
 msgstr "drwal"
 
+# 88%
+#, fuzzy
 msgid "resident"
-msgstr ""
+msgstr "mieszkańcy"
 
 msgid "main square"
 msgstr "rynek"
 
+# 85%
+#, fuzzy
 msgid "sailors"
-msgstr ""
+msgstr "marynarz"
 
 msgid "food"
 msgstr "jedzenie"
@@ -322,17 +326,27 @@ msgstr "tryb"
 msgid "move"
 msgstr "przesuń"
 
+# (poterminology) uh-tutorial/tutorial.pot (4)
+# (poterminology) uh/unknownhorizons.pot (2)
+# 87%
+#, fuzzy
 msgid "pioneers"
-msgstr ""
+msgstr "pionier"
 
+# 87%
+#, fuzzy
 msgid "citizens"
-msgstr ""
+msgstr "mieszkaniec"
 
+# 88%
+#, fuzzy
 msgid "merchants"
-msgstr ""
+msgstr "kupiec"
 
+# 90%
+#, fuzzy
 msgid "aristocrats"
-msgstr ""
+msgstr "arystokrata"
 
 # (poterminology) uh-tutorial/tutorial.pot (4)
 # (poterminology) uh/unknownhorizons.pot (2)
@@ -342,8 +356,10 @@ msgstr "ziemniak"
 msgid "settler"
 msgstr "osadnik"
 
+# 80%
+#, fuzzy
 msgid "speed"
-msgstr ""
+msgstr "ziarno"
 
 # (poterminology) uh-tutorial/tutorial.pot (3)
 #
@@ -478,8 +494,12 @@ msgstr "aktywny"
 msgid "afford"
 msgstr ""
 
+# (poterminology) uh-tutorial/tutorial.pot (2)
+# (poterminology) uh/unknownhorizons.pot (3)
+# 85%
+#, fuzzy
 msgid "animals"
-msgstr ""
+msgstr "zwierzę"
 
 #
 #
@@ -492,8 +512,10 @@ msgstr ""
 msgid "Captain's log"
 msgstr "Dziennik kapitański"
 
+# 75%
+#, fuzzy
 msgid "construct"
-msgstr ""
+msgstr "konstrukcja"
 
 msgid "consume"
 msgstr "konsumować"
@@ -510,8 +532,10 @@ msgstr "właściwości"
 msgid "forest"
 msgstr "las"
 
+# 80%
+#, fuzzy
 msgid "grows"
-msgstr ""
+msgstr "wzrost"
 
 msgid "hold"
 msgstr "przytrzymaj"
@@ -556,8 +580,12 @@ msgstr "granie"
 msgid "price"
 msgstr ""
 
+# (poterminology) uh-tutorial/tutorial.pot (1)
+# (poterminology) uh/unknownhorizons.pot (1)
+# 75%
+#, fuzzy
 msgid "read"
-msgstr ""
+msgstr "czerwony"
 
 #
 #
@@ -594,8 +622,12 @@ msgstr ""
 msgid "store"
 msgstr ""
 
+# (poterminology) uh-tutorial/tutorial.pot (2)
+# (poterminology) uh/unknownhorizons.pot (1)
+# 75%
+#, fuzzy
 msgid "tear"
-msgstr ""
+msgstr "drużyna"
 
 # (poterminology) uh-tutorial/tutorial.pot (2)
 #
@@ -624,8 +656,10 @@ msgstr "odwiedzać"
 msgid "world"
 msgstr ""
 
+# 83%
+#, fuzzy
 msgid "yield"
-msgstr ""
+msgstr "plony"
 
 msgid "your ship"
 msgstr ""
@@ -680,8 +714,10 @@ msgstr "grafika"
 msgid "harvest"
 msgstr ""
 
+# 80%
+#, fuzzy
 msgid "hunts"
-msgstr ""
+msgstr "polowanie"
 
 msgid "multiple"
 msgstr "wielokrotny"
