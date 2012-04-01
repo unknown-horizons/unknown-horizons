@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: translate-uh@lists.unknown-horizons.org\n"
 "POT-Creation-Date: 2012-03-21 04:04+0100\n"
-"PO-Revision-Date: 2012-04-01 12:56+0200\n"
+"PO-Revision-Date: 2012-04-01 13:19+0200\n"
 "Last-Translator: Sergio <juarrox@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: es\n"
@@ -955,6 +955,10 @@ msgid ""
 "tents.\n"
 "The road connection is required as well."
 msgstr ""
+"Importante:\n"
+"NO es suficiente con que el edificio se construya abarcando en su área a "
+"todas las tiendas.\n"
+"La conexión vial también es necesaria."
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:230
@@ -963,11 +967,14 @@ msgid ""
 "TASK: Build a pavilion with a trail to the tents in order to fulfill your "
 "sailors' demand for faith."
 msgstr ""
+"\n"
+"TAREA: Construye un convento con una conexión a las tiendas para satisfacer "
+"la demanda de fe de los marineros."
 
 #. This message is displayed in the widget on the left screen part. Please keep it short enough to fit there!
 #: po/tutorial.py:232
 msgid "Build a pavilion with connection to the tents."
-msgstr "Construya un convento conectado a las tiendas."
+msgstr "Construye un convento conectado a las tiendas."
 
 #. This is a logbook page heading. Space is VERY short, please only translate to strings that fit (roughly 30 characters max).
 #: po/tutorial.py:234
@@ -980,6 +987,8 @@ msgid ""
 "All demands are fulfilled now if your inhabitants can regularly visit the "
 "main square & pavilion and your food supply is adequate."
 msgstr ""
+"Tus habitantes verán satisfechas sus demandas si pueden visitar regularmente "
+"la plaza principal y el convento y tu suministro de alimentos es adecuada."
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:238
@@ -994,6 +1003,8 @@ msgid ""
 "To make them happy, there is nothing else for you to do but setting taxes to "
 "a lower level since you have fulfilled all the demands of your inhabitants."
 msgstr ""
+"Para mantenerlos felices no puedes hacer nada más que eso, salvo mantener "
+"los impuestos en el nivel más bajo hasta que satisfagas todas sus demandas."
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:242
@@ -1002,6 +1013,9 @@ msgid ""
 "to bankruptcy sooner or later. For a period of time and if you know what you "
 "are doing, it is fine though."
 msgstr ""
+"No mantengas los impuestos bajos ya que probablemente te llevará tarde o "
+"temprano a la quiebra. Sin embargo durante un breve período de tiempo, si "
+"sabes lo que haces, está bien."
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:244
@@ -1010,6 +1024,9 @@ msgid ""
 "look for new construction material there to build a log house. This house "
 "will replace the old tent."
 msgstr ""
+"Después de algún tiempo, la primera unidad saldrá caminando hacia la plaza "
+"principal donde buscará materiales de construcción para construirse una "
+"cabaña que sustituya su vieja tienda de campaña."
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:246
@@ -1018,6 +1035,9 @@ msgid ""
 "Such residential upgrades cost resources and can thus be restricted at the "
 "main square."
 msgstr ""
+"\n"
+"Como tales mejoras residenciales supone consumo de recursos puedes "
+"restringirlos en la plaza principal."
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:248
@@ -1025,6 +1045,8 @@ msgid ""
 "There also are upgrades of buildings without costs, as you will see with the "
 "lumberjack. In this case, only the graphics change."
 msgstr ""
+"También hay mejoras de edificios sin costes, como podrás ver con el "
+"aserradero. En este caso, sólo hay un cambio en los gráficos."
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:250
@@ -1032,6 +1054,8 @@ msgid ""
 "Upgraded housing accomodates more inhabitants, and pioneers pay more taxes "
 "than sailors, too."
 msgstr ""
+"Las mejoras de las casas permite acomodar más habitantes, y además los "
+"pioneros pagan más impuestos que los marineros."
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:252
@@ -1047,13 +1071,16 @@ msgid ""
 "\n"
 "TASK: Set the tax level to Low (left end) and wait for sailors to upgrade."
 msgstr ""
+"\n"
+"TAREA: Fija un nivel de impuestos bajo (hacia la izquierda) y espera a que "
+"los marineros empiecen las mejoras."
 
 #. This message is displayed in the widget on the left screen part. Please keep it short enough to fit there!
 #: po/tutorial.py:256
 msgid ""
 "Set the tax level to Low (left end) and wait for your sailors to upgrade."
 msgstr ""
-"Configura el nivel de impuestos a 'Bajo' (izquierda de todo) y espera a la "
+"Fija los impuestos a un nivel 'Bajo' (izquierda de todo) y espera a la "
 "actualización de tus marineros."
 
 #. This is a logbook page heading. Space is VERY short, please only translate to strings that fit (roughly 30 characters max).
