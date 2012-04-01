@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: translate-uh@lists.unknown-horizons.org\n"
 "POT-Creation-Date: 2012-03-21 04:04+0100\n"
-"PO-Revision-Date: 2012-04-01 13:19+0200\n"
+"PO-Revision-Date: 2012-04-01 15:01+0200\n"
 "Last-Translator: Sergio <juarrox@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: es\n"
@@ -910,6 +910,9 @@ msgid ""
 "that in the marketplace or tent tab - your sailors want a basic building "
 "where they can pray."
 msgstr ""
+"Todavía hay una demanda lejos de estar satisfecha. Puedes comprobar que en "
+"la plaza del mercado o en la pestaña de tiendas - tus marineros quieren un "
+"edificio básico donde poder rezar."
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:218
@@ -925,6 +928,9 @@ msgid ""
 "Service buildings like this also need to be connected to the tents with a "
 "trail, else your inhabitants feel unable to reach them."
 msgstr ""
+"Los edificios de Servicios como éste también necesitan estar conectados a "
+"las tiendas por medio de un camino o tus habitantes no podrán llegar a "
+"ellos."
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:222
@@ -932,6 +938,8 @@ msgid ""
 "\n"
 "Note that faith is treated like a physical resource!"
 msgstr ""
+"\n"
+"¡Ten en cuenta que la fe es tratada como un recurso físico!"
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:224
@@ -939,6 +947,8 @@ msgid ""
 "This means that your inhabitants need a road connection to the producer "
 "(pavilion) to pick up faith there."
 msgstr ""
+"Esto significa que tus habitantes necesitan un camino para conectar con el "
+"productor (convento) para escoger la fe allí."
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:226
@@ -946,6 +956,8 @@ msgid ""
 "After some time, they will have consumed it and then again look for a "
 "producer to collect more faith."
 msgstr ""
+"Un poco más tarde, la habrán consumido y volverán a recolectar más fe del "
+"fabricante."
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:228
@@ -996,6 +1008,8 @@ msgid ""
 "If the sailors are happy enough, they want to advance to the next increment "
 "called Pioneers."
 msgstr ""
+"Si los marineros son lo suficientemente felices, querrán avanzar al "
+"siguiente nivel denominado Pioneros."
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:240
@@ -1064,6 +1078,9 @@ msgid ""
 "additional goods which sailors do not need - so you will need to spend this "
 "extra money to make them happy as well."
 msgstr ""
+"Como podrás imaginar, la desventaja es que los pioneros van a demandar "
+"productos adicionales que los marineros no necesitaban - así que tendrás que "
+"gastar un dinero extra en hacerles felices también."
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:254
@@ -1091,13 +1108,15 @@ msgstr "LAS GRANJAS"
 #. This is the text body of a logbook page.
 #: po/tutorial.py:260
 msgid "Congratulations! Some of your inhabitants have reached increment II!"
-msgstr ""
+msgstr "¡Felicidades! ¡Algunos de tus habitantes han alcanzado el nivel 2!"
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:262
 msgid ""
 "Now you have access to new buildings, take a look at the Build menu again."
 msgstr ""
+"Ahora accede a los nuevos edificios, vamos a echar un vistazo otra vez al "
+"menú de construcción."
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:264
@@ -1155,6 +1174,9 @@ msgid ""
 "collectors from the warehouse or storage tent can reach the final company "
 "everything's fine."
 msgstr ""
+"Todo irá bien mientras los trabajadores del negocio de producción final "
+"puedan llegar a la granja, así como los recolectores de la lonja o del "
+"almacén puedan llegar el negocio final."
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:278
@@ -1163,6 +1185,9 @@ msgid ""
 "(which can make sense) or even on different islands, you will need a "
 "connection to collectors."
 msgstr ""
+"Sin embargo, si planeas hacer distintas partes del procesamiento distintas "
+"áreas de la isla (que puede tener sentido) o incluso en diferentes islas, "
+"necesitarás una conexión a los recolectores."
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:280
@@ -1430,6 +1455,8 @@ msgid ""
 "Now the wool production is set up, you still need a weaver to produce cloth "
 "out of this wool."
 msgstr ""
+"Ahora que has fijado la producción de lana, para producir tejidos a partir "
+"de la lana necesitarás una tejedora."
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:340
@@ -1437,11 +1464,13 @@ msgid ""
 "There are two spots where you can build it - either close to the farm or "
 "close to a Storage Tent (or the warehouse)."
 msgstr ""
+"Hay dos sitios donde puedes construirlo - al lado de la granja o junto a un "
+"almacén (o lonja)."
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:342
 msgid "In both cases you should ensure the connection to a trail as well."
-msgstr ""
+msgstr "En ambos casos asegúrate de que están bien conectados por caminos."
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:344
