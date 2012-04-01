@@ -24,20 +24,20 @@ from fife import fife
 from fife.extensions import pychan
 import json
 import weakref
+import itertools
 import functools
 
 import horizons.main
 
 from horizons.constants import RES
 from horizons.world.component.storagecomponent import StorageComponent
-from horizons.util.gui import load_uh_widget, get_res_icon_path, create_resource_selection_dialog
+from horizons.gui.util import load_uh_widget, get_res_icon_path, create_resource_selection_dialog
 from horizons.util import PychanChildFinder, Callback
 from horizons.util.python.decorators import cachedmethod
-from horizons.util.messaging.message import ResourceBarResize
 from horizons.extscheduler import ExtScheduler
 from horizons.world.component.ambientsoundcomponent import AmbientSoundComponent
 from horizons.util.lastactiveplayersettlementmanager import LastActivePlayerSettlementManager
-from horizons.util.messaging.message import NewPlayerSettlementHovered
+from horizons.messaging import NewPlayerSettlementHovered, ResourceBarResize
 
 
 class ResourceOverviewBar(object):
@@ -88,9 +88,12 @@ class ResourceOverviewBar(object):
 		assert isinstance(session, Session)
 		self.session = session
 
-		self.gold_gui = None # special slot because of special properties
+		# special slot because of special properties
+		self.gold_gui = load_uh_widget(self.__class__.GOLD_ENTRY_GUI_FILE, style=self.__class__.STYLE)
+		self.gold_gui.child_finder = PychanChildFinder(self.gold_gui)
+		self.gold_gui.findChild(name="res_icon").image = get_res_icon_path(RES.GOLD_ID, 32)
+
 		self.gui = [] # list of slots
-		self._reset_gold_gui()
 		self.resource_configurations = weakref.WeakKeyDictionary()
 		self.current_instance = weakref.ref(self) # can't weakref to None
 		self.construction_mode = False
@@ -99,7 +102,7 @@ class ResourceOverviewBar(object):
 
 		self._update_default_configuration()
 
-		self.session.message_bus.subscribe_globally(NewPlayerSettlementHovered, self._on_different_settlement)
+		NewPlayerSettlementHovered.subscribe(self._on_different_settlement)
 
 	def end(self):
 		self.set_inventory_instance( None, force_update=True )
@@ -109,7 +112,7 @@ class ResourceOverviewBar(object):
 		self.gold_gui = None
 		self.gui = None
 		self._custom_default_resources = None
-		self.session.message_bus.unsubscribe_globally(NewPlayerSettlementHovered, self._on_different_settlement)
+		NewPlayerSettlementHovered.unsubscribe(self._on_different_settlement)
 
 	def _update_default_configuration(self):
 		# user defined variante of DEFAULT_RESOURCES (will be preferred)
@@ -143,7 +146,8 @@ class ResourceOverviewBar(object):
 		self.gold_gui.show()
 		self._update_gold() # call once more to make pychan happy
 
-		self.set_inventory_instance(None)
+		self.set_inventory_instance(
+		  LastActivePlayerSettlementManager().get(get_current_pos=True))
 
 	def redraw(self):
 		self.set_inventory_instance(self.current_instance(), force_update=True)
@@ -161,11 +165,10 @@ class ResourceOverviewBar(object):
 
 		# reconstruct general gui
 
-		# remove old gui
+		# remove old gui (keep entries for reuse)
 		for i in self.gui:
 			i.hide()
 		self._hide_resource_selection_dialog()
-		self.gui = []
 
 		inv = self._get_current_inventory()
 		if inv is not None:
@@ -179,14 +182,23 @@ class ResourceOverviewBar(object):
 		self.current_instance = weakref.ref(instance)
 
 		# construct new slots (fill values later)
+		load_entry = lambda : load_uh_widget(self.ENTRY_GUI_FILE, style=self.__class__.STYLE)
 		initial_offset = 93
 		offset = 52
 		resources = self._get_current_resources()
 		addition = [-1] if self._do_show_dummy or not resources else [] # add dummy at end for adding stuff
 		for i, res in enumerate( resources + addition ):
-			entry = load_uh_widget(self.ENTRY_GUI_FILE, style=self.__class__.STYLE)
+			try: # get old slot
+				entry = self.gui[i]
+				if res == -1: # can't reuse dummy slot, need default data
+					self.gui[i] = entry = load_entry()
+			except IndexError: # need new one
+				entry = load_entry()
+				self.gui.append(entry)
+
 			entry.findChild(name="entry").position = (initial_offset + offset * i, 17)
 			background_icon = entry.findChild(name="background_icon")
+			background_icon.clear_entered_callbacks()
 			background_icon.add_entered_callback( Callback(self._show_resource_selection_dialog, i) )
 
 			if res != -1:
@@ -200,7 +212,6 @@ class ResourceOverviewBar(object):
 				entry.show() # this will not be filled as the other res
 			background_icon.helptext = helptext
 
-			self.gui.append(entry)
 			# show it just when values are entered, this appeases pychan
 
 		# fill values
@@ -233,6 +244,9 @@ class ResourceOverviewBar(object):
 
 		res_list = self._get_current_resources()
 
+		# remove old one before, avoids duplicates
+		self._drop_cost_labels()
+
 		for res, amount in build_costs.iteritems():
 			assert res in res_list or res == RES.GOLD_ID
 
@@ -247,8 +261,11 @@ class ResourceOverviewBar(object):
 				cost_icon = pychan.widgets.Icon(image=cost_icon_res,
 				                                position=(0, below))
 				cost_label.position = (15, below) # TODO: centering
+
 				cur_gui.addChild(cost_icon)
 				cur_gui.addChild(cost_label)
+				cur_gui.cost_gui = [cost_label, cost_icon]
+
 				cur_gui.resizeToContent() # container needs to be bigger now
 			else: # must be gold
 				reference_icon = self.gold_gui.findChild(name="background_icon")
@@ -256,31 +273,33 @@ class ResourceOverviewBar(object):
 				cost_icon = pychan.widgets.Icon(image=cost_icon_gold,
 				                              position=(0, below) )
 				cost_label.position = (15, below) # TODO: centering
+
 				self.gold_gui.addChild(cost_icon)
 				self.gold_gui.addChild(cost_label)
-				self.gold_gui.resizeToContent()
+				self.gold_gui.cost_gui = [cost_label, cost_icon]
 
+				self.gold_gui.resizeToContent()
 
 	def close_construction_mode(self, update_slots=True):
 		"""Return to normal configuration"""
 		self.construction_mode = False
 		if update_slots: # cleanup
+			self._drop_cost_labels()
 			self.set_inventory_instance(None)
-		self._reset_gold_gui()
-		self._update_gold()
+		#self._update_gold()
 		self.gold_gui.show()
 		self._update_gold(force=True)
 
 		# reshow last settlement
 		self.set_inventory_instance( LastActivePlayerSettlementManager().get(get_current_pos=True) )
 
-	def _reset_gold_gui(self):
-		if self.gold_gui is not None:
-			self.gold_gui.hide()
-		self.gold_gui = load_uh_widget(self.__class__.GOLD_ENTRY_GUI_FILE, style=self.__class__.STYLE)
-		self.gold_gui.child_finder = PychanChildFinder(self.gold_gui)
-		# set appropriate icon
-		self.gold_gui.findChild(name="res_icon").image = get_res_icon_path(RES.GOLD_ID, 32)
+	def _drop_cost_labels(self):
+		"""Removes all labels below the slots indicating building costs"""
+		for entry in itertools.chain(self.gui, [self.gold_gui]):
+			if hasattr(entry, "cost_gui"): # get rid of possible cost labels
+				for elem in entry.cost_gui:
+					entry.removeChild(elem)
+				del entry.cost_gui
 
 	def _update_gold(self, force=False):
 		"""Changelistener to upate player gold"""
@@ -457,7 +476,7 @@ class ResourceOverviewBar(object):
 			self._hide_dummy_slot()
 
 		if number_of_slots_changed:
-			self.session.message_bus.broadcast( ResourceBarResize(self) )
+			ResourceBarResize.broadcast(self)
 
 	def _hide_resource_selection_dialog(self):
 		if hasattr(self, "_res_selection_dialog"):

@@ -17,19 +17,22 @@
 events:
 - # start
   actions:
-   - type: logbook
-     arguments:
-        - [Headline, "20th November 1740"]
-        - [Image, "content/gui/images/background/hr.png"]
-        - |
-          After four days, the storm finally fades and we can take a rest. But we only have 15 lb of food left and our ship is in a bad shape. The navigational instruments and sea charts are lost.
-          We have to come ashore. One of my jacks saw some birds hunting for fish, so land can´t be far away. Fortunately we always have some tools and wooden boards onboard, so we can build some huts.
+  - type: logbook
+    arguments:
+      - [Headline, "20th November 1740"]
+      - [Image, "content/gui/images/background/hr.png"]
+      - |
+        After four days the storm finally fades and we can take a rest. But we only have little food left and our ship is in a bad shape. The navigational instruments and sea charts are lost.
+        We have to come ashore soon. One of my jacks saw some birds hunting for fish, so land can't be far. Fortunately we always have some tools and boards onboard, so we can build some basic shelter.
 
-          Now our task is:
-          Find land and build a port, so that we can empty the ship.
+        Task:
+        Find land and build a port.
+      - [Pagebreak]
+      - |
+
   conditions:
-   - type: time_passed
-     arguments: [0]
+    - type: time_passed
+      arguments: [0]
 
 - # with port
   actions:
@@ -38,25 +41,37 @@ events:
     - [Headline, "22th Novenber 1740"]
     - [Image, "content/gui/images/background/hr.png"]
     - |
-      The port is built and just when the ship was emptied it sank. [Let the ship sink here]
+      The port is built and a new hope arises. I am still worried about the next days... we are running out of food and lack basic building material.
 
-      We need some people hunting, fishing, some producing wooden boards, some tents to live in, and so on. Building those is our task for the next days. But we have to be careful! Our supply of tools is not very high!
+      We need to secure our basic needs to keep us alive. It is time to send people gathering food and lumber so that we can survive and build some shelter.
+
+      Task:
+      Build at least one of each:
+      * Lumberjack
+      * Fisher
+      * Hunter
+      Collect 5 food and 5 boards.
+    - [Pagebreak]
+    - |
 
   conditions:
   - type: settlements_num_greater
     arguments: [0]
 
-- # basic buildings
+- # basic production setup
   actions:
   - type: logbook
     arguments:
-    - [Headline, "1th December 1740"]
+    - [Headline, "25th Novenber 1740"]
     - [Image, "content/gui/images/background/hr.png"]
     - |
-      Finally we have everything for our basic needs.
+      We have secured our basic needs of food and gathered some wood to continue the growth of our new settlement. Our people demand a place to live and exchange goods for their everyday needs. It is time to build some tents to live in and a small main square to supply our citizens with goods.
 
-      Well, we don´t know were we are, have no sea charts and navigational instruments and the stars at night are unknown.
-      So we only can try to to build up a civilisation and try to find out how to come home...
+      Task:
+      Build a mainsquare and at least 10 tents.
+    - [Pagebreak]
+    - |
+
   conditions:
   - type: building_num_of_type_greater
     arguments: [BUILDINGS.FISHERMAN_CLASS, 0]
@@ -64,31 +79,60 @@ events:
     arguments: [BUILDINGS.HUNTER_CLASS, 0]
   - type: building_num_of_type_greater
     arguments: [BUILDINGS.LUMBERJACK_CLASS, 0]
+  - type: settlement_res_stored_greater
+    arguments: [RES.BOARDS_ID, 4]
+  - type: settlement_res_stored_greater
+    arguments: [RES.FOOD_ID, 4]
+
+- # basic residence setup
+  actions:
+  - type: logbook
+    arguments:
+    - [Headline, "1th December 1740"]
+    - [Image, "content/gui/images/background/hr.png"]
+    - |
+      Finally we have enough to eat and a place to live again. My tent is not very comfortable but it keeps me dry and I have the feeling of having a roof over my head at night.
+
+      I have been researching the stars at night, but without my sea charts and instruments their meaning remains unknown. I have the feeling we will be stuck here for a while, so we'll have to make the best of situation.
+      We can only try to to build up a civilisation and find a way home...
+
+      Task:
+      Grow the village util you have at least 250 inhabitants and a positive balance.
+    - [Pagebreak]
+    - |
+
+  conditions:
   - type: building_num_of_type_greater
     arguments: [BUILDINGS.RESIDENTIAL_CLASS, 4]
   - type: building_num_of_type_greater
     arguments: [BUILDINGS.MAIN_SQUARE_CLASS, 0]
-  - type: settlement_res_stored_greater
-    arguments: [RES.FOOD_ID, 5]
-  - type: settlement_res_stored_greater
-    arguments: [RES.BOARDS, 5]
 
 - # 250 people
   actions: # TODO: bigger map action
   - type: logbook
     arguments:
-    - [Headline, "15th January 1741"]
+    - [Headline, "27th August 1745"]
     - [Image, "content/gui/images/background/hr.png"]
-    - "The island becomes small. We should build and load a ship and try to find another island!"
+    - |
+      Our village is doing well, the city has grown to over 250 inhabitants. I have started getting used to my new home, but this island is too small to stay here forever.
+
+      We should load our ship and move out to find a bigger island offering room and resources for my people. I have created a basic navigational map again, using the stars I see at night. It is not perfect,  but I hope it will suffice to return here.
+
+      Task:
+      Contact the Unknown Horizons Team (www.unknown-horizons.org) and find out how you can contribute to making this scenario longer and better!
+    - [Pagebreak]
+    - |
   conditions:
   - type: settlement_inhabitants_greater
     arguments: [250]
+  - type: player_balance_greater
+    arguments: [0]
 
 
 mapfile: development.sqlite
 difficulty: easy
-author: Kikody
+author: Kikody, UH-Team
 description: |
-  You are the captain of a ship, which is under the flag of England in 1740. You and your crew of the "[name of the ship]" were on the way to a colony of England in the pacific ocean to ship some rich passengers there.
+  You are the captain of a ship under the flag of England in 1740. You and your crew were on the way to a colony of England in the pacific ocean.
   Everything went fine until you came into a storm....
 locale: en

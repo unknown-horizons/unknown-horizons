@@ -46,12 +46,11 @@ from horizons.util import WorldObject, LivingObject, livingProperty, SavegameAcc
 from horizons.util.uhdbaccessor import read_savegame_template
 from horizons.util.lastactiveplayersettlementmanager import LastActivePlayerSettlementManager
 from horizons.world.component.namedcomponent import NamedComponent
-from horizons.world.component.selectablecomponent import SelectableComponent
+from horizons.world.component.selectablecomponent import SelectableComponent, SelectableBuildingComponent
 from horizons.savegamemanager import SavegameManager
 from horizons.scenario import ScenarioEventHandler
 from horizons.world.component.ambientsoundcomponent import AmbientSoundComponent
 from horizons.constants import GAME_SPEED, PATHS
-from horizons.util.messaging.messagebus import MessageBus
 from horizons.world.managers.statusiconmanager import StatusIconManager
 
 class Session(LivingObject):
@@ -103,7 +102,6 @@ class Session(LivingObject):
 		self.is_alive = True
 
 		self._clear_caches()
-		self.message_bus = MessageBus()
 
 		#game
 		self.random = self.create_rng(rng_seed)
@@ -161,9 +159,11 @@ class Session(LivingObject):
 		raise NotImplementedError
 
 	def _clear_caches(self):
+		"""Clear all data caches in global namespace related to a session"""
 		WorldObject.reset()
 		NamedComponent.reset()
 		AIPlayer.clear_caches()
+		SelectableBuildingComponent.reset()
 
 	def end(self):
 		self.log.debug("Ending session")
@@ -308,6 +308,8 @@ class Session(LivingObject):
 			self.scenario_eventhandler.load(savegame_db)
 		self.manager.load(savegame_db) # load the manager (there might me old scheduled ticks).
 		self.world.init_fish_indexer() # now the fish should exist
+		if self.is_game_loaded():
+			LastActivePlayerSettlementManager().load(savegame_db) # before ingamegui
 		self.ingame_gui.load(savegame_db) # load the old gui positions and stuff
 
 		for instance_id in savegame_db("SELECT id FROM selected WHERE `group` IS NULL"): # Set old selected instance
@@ -324,8 +326,6 @@ class Session(LivingObject):
 		# Set cursor correctly, menus might need to be opened.
 		# Open menus later, they may need unit data not yet inited
 		self.cursor.apply_select()
-		if self.is_game_loaded():
-			LastActivePlayerSettlementManager().load(savegame_db)
 
 		Scheduler().before_ticking()
 		savegame_db.close()

@@ -19,10 +19,28 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
+"""
+Maps _ to the ugettext unicode gettext call. Use: _(string).
+N_ takes care of plural forms for different languages. It masks ungettext
+calls (unicode, plural-aware _() ) to create different translation strings
+depending on the counter value. Not all languages have only two plural forms
+"One" / "Anything else". Use: N_("{n} dungeon", "{n} dungeons", n).format(n=n)
+where n is a counter.
+
+We will need to make gettext recognise namespaces some time, but hardcoded
+'unknown-horizons' works for now since we currently only use one namespace.
+"""
+
+import platform
+import gettext
+import os
 import logging
+import locale
 import weakref
 
+from horizons.constants import LANGUAGENAMES
 from horizons.i18n import objecttranslations, guitranslations
+from horizons.i18n.utils import get_fontdef_for_locale, find_available_languages
 
 log = logging.getLogger("i18n")
 
@@ -48,7 +66,7 @@ def translate_widget(untranslated, filename):
 				replace_attribute(widget, entry[0][1], entry[1])
 				widget.adaptLayout()
 	else:
-		log.debug('No translation for file %s', filename)
+		log.debug('No translation key in i18n.guitranslations for file %s', filename)
 
 	# save as weakref for updates to translations
 	translated_widgets[filename] = weakref.ref(untranslated)
@@ -79,3 +97,42 @@ def replace_attribute(widget, attribute, text):
 		setattr(widget, attribute, text)
 	else:
 		log.debug("Could not replace attribute %s in widget %s", attribute, widget)
+
+
+def change_language(language=None):
+	"""Load/change the language of Unknown Horizons.
+
+	Called on startup and when changing the language in the settings menu.
+	"""
+	import horizons.main
+
+	if language: # non-default
+		try:
+			# NOTE about gettext fallback mechanism:
+			# English is not shipped as .mo file, thus if English is
+			# selected we use NullTranslations to get English output.
+			fallback = (language == 'en')
+			trans = gettext.translation('unknown-horizons', find_available_languages()[language], \
+										languages=[language], fallback=fallback)
+			trans.install(unicode=True, names=['ngettext',])
+		except IOError:
+			#xgettext:python-format
+			print _("Configured language {lang} could not be loaded.").format(lang=language)
+			horizons.main.fife.set_uh_setting('Language', LANGUAGENAMES[''])
+			return change_language() # recurse
+	else:
+		# default locale
+		if platform.system() == "Windows": # win doesn't set the language variable by default
+			os.environ[ 'LANGUAGE' ] = locale.getdefaultlocale()[0]
+		gettext.install('unknown-horizons', 'content/lang', unicode=True, names=['ngettext',])
+
+	# expose the plural-aware translate function as builtin N_ (gettext does the same to _)
+	import __builtin__
+	__builtin__.__dict__['N_'] = __builtin__.__dict__['ngettext']
+
+	# update fonts
+	fontdef = get_fontdef_for_locale(language)
+	horizons.main.fife.pychan.loadFonts(fontdef)
+
+	# dynamically reset all translations of active widgets
+	update_all_translations()

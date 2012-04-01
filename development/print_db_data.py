@@ -14,9 +14,6 @@ sys.path.append(".")
 sys.path.append("./horizons")
 sys.path.append("./horizons/util")
 
-import gettext
-gettext.install('', unicode=True)
-
 try:
 	import run_uh
 except ImportError as e:

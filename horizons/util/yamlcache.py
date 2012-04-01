@@ -35,6 +35,7 @@ except ImportError:
 def construct_yaml_str(self, node):
 	return self.construct_scalar(node)
 SafeLoader.add_constructor(u'tag:yaml.org,2002:python/unicode', construct_yaml_str)
+SafeLoader.add_constructor(u'tag:yaml.org,2002:str', construct_yaml_str)
 
 
 def parse_token(token, token_klass):

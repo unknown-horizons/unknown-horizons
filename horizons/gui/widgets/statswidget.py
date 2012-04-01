@@ -19,8 +19,11 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-from horizons.util.gui import load_uh_widget
+from horizons.gui.util import load_uh_widget
 from horizons.util.python import decorators
+from horizons.util.python.callback import Callback
+from horizons.extscheduler import ExtScheduler
+from horizons.constants import PLAYER, GAME_SPEED
 
 class StatsWidget(object):
 	"""A widget that creates a large table with statistics."""
@@ -41,12 +44,15 @@ class StatsWidget(object):
 			self.refresh()
 
 	def show(self):
+		ExtScheduler().add_new_object(Callback(self._refresh_tick), self, run_in = PLAYER.STATS_UPDATE_FREQUENCY / GAME_SPEED.TICKS_PER_SECOND, loops = -1)
 		if not self._initialised:
 			self._initialised = True
 			self._init_gui()
+		self.refresh()
 		self._gui.show()
 
 	def hide(self):
+		ExtScheduler().rem_all_classinst_calls(self)
 		if not self._initialised:
 			return # can happen if the logbook calls hide on all statswidgets
 		if not self._hiding_widget:

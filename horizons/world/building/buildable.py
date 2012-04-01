@@ -21,30 +21,29 @@
 
 import itertools
 
-from horizons.util import Point, Rect, decorators, Circle
+from horizons.util import Point, Rect, decorators, Circle, WorldObject
 from horizons.world.pathfinding.roadpathfinder import RoadPathFinder
 from horizons.constants import BUILDINGS
 from horizons.entities import Entities
 
 class BuildableErrorTypes(object):
 	"""Killjoy class. Collection of reasons why you can't build."""
-	NO_ISLAND, UNFIT_TILE, NO_SETTLEMENT, SETTLEMENT, OTHER_PLAYERS_SETTLEMENT, \
+	NO_ISLAND, UNFIT_TILE, NO_SETTLEMENT, OTHER_PLAYERS_SETTLEMENT, \
 	OTHER_PLAYERS_SETTLEMENT_ON_ISLAND, OTHER_BUILDING_THERE, UNIT_THERE, NO_COAST, \
-	NO_OCEAN_NEARBY, ONLY_NEAR_SHIP, NEED_RES_SOURCE = range(12)
+	NO_OCEAN_NEARBY, ONLY_NEAR_SHIP, NEED_RES_SOURCE, ISLAND_ALREADY_SETTLED = range(12)
 
 	text = {
-	  NO_ISLAND : _("Buildings must be built on islands."),
-	  UNFIT_TILE : _("The ground is not suitable for this building."),
-	  NO_SETTLEMENT : _("You can only build this within your settlement."),
-	  SETTLEMENT : _("This area is already occupied."),
-	  OTHER_PLAYERS_SETTLEMENT : _("You can only build this within your settlement."),
-	  OTHER_PLAYERS_SETTLEMENT_ON_ISLAND : _("Another player has already occupied this island."),
-	  OTHER_BUILDING_THERE : _("You can't build this on top of another building."),
-	  UNIT_THERE : _("You can't build this on top of a unit."),
+	  NO_ISLAND : _("This building must be built on an island."),
+	  UNFIT_TILE : _("This ground is not suitable for this building."),
+	  NO_SETTLEMENT : _("This building has to be built within your settlement."),
+	  OTHER_PLAYERS_SETTLEMENT : _("This area is already occupied by another player."),
+	  OTHER_BUILDING_THERE : _("This area is already occupied by another building."),
+	  UNIT_THERE : _("This area is already occupied by a unit."),
 	  NO_COAST : _("This building must be built on the coastline."),
-	  NO_OCEAN_NEARBY : _("This building requires to be placed near the ocean."),
+	  NO_OCEAN_NEARBY : _("This building has to be placed at the ocean."),
 	  ONLY_NEAR_SHIP : _("This spot is too far away from your ship."),
 	  NEED_RES_SOURCE : _("This building can only be built on a resource source."),
+	  ISLAND_ALREADY_SETTLED : _("You have already settled this island.")
 	}
 	# TODO: say res source which one we need, maybe even highlight those
 
@@ -431,13 +430,13 @@ class BuildableSingleFromShip(BuildableSingleOnOcean):
 			# and the position mustn't be owned by anyone else
 			settlement = session.world.get_settlement(i)
 			if settlement is not None:
-				raise _NotBuildableError(BuildableErrorTypes.SETTLEMENT)
+				raise _NotBuildableError(BuildableErrorTypes.OTHER_PLAYERS_SETTLEMENT)
 
 		# and player mustn't have a settlement here already
 		island = session.world.get_island(position.center())
 		for s in island.settlements:
 			if s.owner == ship.owner:
-				raise _NotBuildableError(BuildableErrorTypes.OTHER_PLAYERS_SETTLEMENT_ON_ISLAND)
+				raise _NotBuildableError(BuildableErrorTypes.ISLAND_ALREADY_SETTLED)
 
 	@classmethod
 	def check_build(cls, session, point, *args, **kwargs):
@@ -496,6 +495,13 @@ class BuildableSingleOnDeposit(BuildableSingle):
 			deposit = tile.object
 		return set([deposit.worldid])
 
+	@classmethod
+	def _check_rotation(cls, session, position, rotation):
+		"""The rotation should be the same as the one of the underlying mountain"""
+		tearset = cls._check_buildings(session, position) # will raise on problems
+		# rotation fix code is only reached when building is buildable
+		mountain = WorldObject.get_object_by_id( iter(tearset).next() )
+		return mountain.rotation
 
 
 decorators.bind_all(Buildable)

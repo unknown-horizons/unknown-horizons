@@ -350,7 +350,7 @@ class Minimap(object):
 
 				tile = self.world.get_tile( Point(*coords) )
 				if tile is not None and tile.settlement is not None:
-					new_helptext = unicode(tile.settlement.get_component(NamedComponent).name)
+					new_helptext = tile.settlement.get_component(NamedComponent).name
 					if self.icon.helptext != new_helptext:
 						self.icon.helptext = new_helptext
 						self.icon.show_tooltip()
@@ -549,6 +549,7 @@ class Minimap(object):
 		render_name = self._get_render_name("ship")
 		self.minimap_image.rendertarget.removeAll( render_name )
 		use_rotation = self._get_rotation_setting()
+		# make use of this dummy points instead of creating a fife.point instances which are consuming a lot of resources
 		dummy_point0 = fife.Point(0,0)
 		dummy_point1 = fife.Point(0,0)
 		for ship in self.world.ship_map.itervalues():

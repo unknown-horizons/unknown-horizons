@@ -21,7 +21,7 @@
 
 from fife.extensions import pychan
 
-from horizons.util.gui import load_uh_widget, get_res_icon_path
+from horizons.gui.util import load_uh_widget, get_res_icon_path
 from horizons.constants import RES
 
 class TradeHistoryItem(pychan.widgets.Container):

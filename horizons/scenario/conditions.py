@@ -31,6 +31,9 @@ class CONDITIONS(object):
 	"""
 	Class that holds all available conditions.
 
+	These are functions, that perform a certain check at one point in time.
+	There is no memory, e.g. if you lose progress, conditions just aren't true any more.
+
 	Condition checking is split up in 2 types:
 
 	  1. possible condition change is notified somewhere in the game code
@@ -106,8 +109,7 @@ def player_inhabitants_greater(session, limit):
 def building_num_of_type_greater(session, building_class, limit):
 	"""Check if player has more than limit buildings on a settlement"""
 	for settlement in _get_player_settlements(session):
-		if len([building for building in settlement.buildings if \
-		       building.id == building_class]) > limit:
+		if len(settlement.buildings_by_id[building_class]) > limit:
 			return True
 	return False
 
@@ -205,21 +207,16 @@ def _get_player_settlements(session):
 def _get_scenario_vars(session):
 	return session.scenario_eventhandler._scenario_variables
 
-@register()
 def _building_connected_to_any_of(session, building_class, *classes):
 	"""Returns the exact amount of buildings of type building_class that are
 	connected to any building of a class in classes. Counts all settlements."""
 	building_to_check = []
 	check_connection = []
 	for settlement in _get_player_settlements(session):
-		for building in settlement.buildings:
-			if building.id == building_class:
-				building_to_check.append(building)
-			else:
-				for b_class in classes:
-					if building.id == b_class:
-						check_connection.append(building)
-						break
+		building_to_check.extend(settlement.buildings_by_id[building_class])
+		for b_class in classes:		
+			for building in settlement.buildings_by_id[b_class]:
+				check_connection.append(building)
 	found_connected = 0
 	for building in building_to_check:
 		for check in check_connection:
@@ -238,7 +235,6 @@ def player_number_of_ships_lt(session, player_id, number):
 	number_of_ships = len([s for s in session.world.ships if s.owner.worldid == player_id])
 	return number_of_ships < number
 
-@register()
 def _building_connected_to_all_of(session, building_class, *classes):
 	"""Returns the exact amount of buildings of type building_class that are
 	connected to any building of each class in classes. Counts all settlements."""

@@ -95,7 +95,8 @@ class CursorTool(fife.IMouseListener):
 
 	def get_exact_world_location_from_event(self, evt):
 		"""Returns the coordinates of an event at the map.
-		@return FifePoint with float coordinates"""
+		@return FifePoint with float coordinates or something with getX/getY"""
+		# TODO: rename this, it doesn't only take events
 		screenpoint = self._get_screenpoint(evt)
 		return self.session.view.cam.toMapCoordinates(screenpoint, False)
 

@@ -1,0 +1,29 @@
+id: 49
+name: _ Spice Field
+baseclass: nature.Field
+radius: 0
+cost: 0
+cost_inactive: 0
+size_x: 3
+size_y: 3
+inhabitants_start: 0
+inhabitants_max: 0
+tooltip_text: _ Grows spices. Needs a farm.
+settler_level: 2
+buildingcosts: {1: 150}
+show_status_icons: false
+components:
+- HealthComponent: {maxhealth: 10}
+- ProducerComponent:
+    productionlines:
+      0:
+        produces:
+        - [RES.SPICE_PLANTS, 1]
+        time: 30
+- StorageComponent:
+    inventory:
+      SlotsStorage:
+        slot_sizes: {RES.SPICE_PLANTS: 1}
+actionsets:
+  as_3x3: {level: 0}  
+  #as_spicefield0: {level: 0}

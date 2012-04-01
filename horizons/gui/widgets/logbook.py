@@ -26,9 +26,10 @@ from fife.extensions.pychan.widgets import HBox, Icon, Label
 from horizons.util import Callback
 from horizons.util.changelistener import metaChangeListenerDecorator
 from horizons.world.component.ambientsoundcomponent import AmbientSoundComponent
-from horizons.command.game import UnPauseCommand, PauseCommand
+from horizons.command.game import UnPauseCommand
 from horizons.command.misc import Chat
 from horizons.gui.widgets.pickbeltwidget import PickBeltWidget
+from horizons.gui.widgets import OkButton
 
 @metaChangeListenerDecorator("pause_request")
 @metaChangeListenerDecorator("unpause_request")
@@ -47,12 +48,15 @@ class LogBook(PickBeltWidget):
 				('chat_overview', _(u'Chat')))
 
 	def __init__(self, session):
+		self.statistics_index = [i for i,sec in enumerate(self.sections) if sec[0] == 'statistics'][0]
 		super(LogBook, self).__init__()
 		self.session = session
 		self._widgets = [] # list of lists of all widgets added to a logbook page
 		self._cur_entry = None # remember current location; 0 to len(messages)-1
 		self._hiding_widget = False # True if and only if the widget is currently in the process of being hidden
 		self.stats_visible = None
+		self.last_stats_widget = 'players'
+		self.current_page = 0
 		self._init_gui()
 
 #		self.add_captainslog_entry([
@@ -66,7 +70,7 @@ class LogBook(PickBeltWidget):
 		"""Initial gui setup for all subpages accessible through pickbelts."""
 		self._gui = self.get_widget()
 		self._gui.mapEvents({
-		  'okButton' : self.hide,
+		  OkButton.DEFAULT_NAME : self.hide,
 		  'backwardButton' : Callback(self._scroll, -2),
 		  'forwardButton' : Callback(self._scroll, 2),
 		  'stats_players' : Callback(self.show_statswidget, widget='players'),
@@ -92,9 +96,12 @@ class LogBook(PickBeltWidget):
 	def update_view(self, number=0):
 		""" update_view from PickBeltWidget, cleaning up the logbook subwidgets
 		"""
+		self.current_page = number
 		# self.session might not exist yet during callback setup for pickbelts
 		if hasattr(self, 'session'):
 			self._hide_statswidgets()
+		if self.statistics_index == number:
+			self.show_statswidget(self.last_stats_widget)
 		super(LogBook, self).update_view(number)
 
 	def save(self, db):
@@ -116,8 +123,9 @@ class LogBook(PickBeltWidget):
 			self._init_gui()
 		if not self.is_visible():
 			self._gui.show()
+			if self.current_page == self.statistics_index:
+				self.show_statswidget(self.last_stats_widget)
 			self.session.ingame_gui.on_switch_main_widget(self)
-			PauseCommand(suggestion=True).execute(self.session)
 
 	def hide(self):
 		if not self._hiding_widget:
@@ -126,7 +134,8 @@ class LogBook(PickBeltWidget):
 			self._hide_statswidgets()
 			self._gui.hide()
 			self._hiding_widget = False
-			UnPauseCommand(suggestion=True).execute(self.session)
+		# Make sure the game is unpaused always and in any case
+		UnPauseCommand(suggestion=False).execute(self.session)
 
 	def is_visible(self):
 		return hasattr(self, '_gui') and self._gui.isVisible()
@@ -149,7 +158,7 @@ class LogBook(PickBeltWidget):
 			self._display_widgets_on_page([
 			  ['Headline', _("Emptiness")],
 			  ['Image', "content/gui/images/background/hr.png"],
-			  ['Label', "\n\n"],
+			  ['Label', u"\n\n"],
 			  ['Label', _('There is nothing written in your logbook yet!')],
 				], 'left')
 		self.backward_button.set_active()
@@ -168,11 +177,11 @@ class LogBook(PickBeltWidget):
 		# json.loads() returns unicode, thus convert strings and compare to unicode
 		# Image works with str() since pychan can only use str objects as file path
 		if widget and widget[0]: # allow empty Labels
-			widget_type = unicode(widget[0])
+			widget_type = widget[0]
 		if isinstance(widget, basestring):
-			add = Label(text=unicode(widget), wrap_text=True, max_size=(340,508))
+			add = Label(text=widget, wrap_text=True, max_size=(340,508))
 		elif widget_type == u'Label':
-			add = Label(text=unicode(widget[1]), wrap_text=True, max_size=(340,508))
+			add = Label(text=widget[1], wrap_text=True, max_size=(340,508))
 		elif widget_type == u'Image':
 			add = Icon(image=str(widget[1]))
 		elif widget_type == u'Gallery':
@@ -180,7 +189,7 @@ class LogBook(PickBeltWidget):
 			for image in widget[1]:
 				add.addChild(Icon(image=str(image)))
 		elif widget_type == u'Headline':
-			add = Label(text=unicode(widget[1]))
+			add = Label(text=widget[1])
 			add.stylize('headline')
 		else:
 			print '[WW] Warning: Unknown widget type {typ} in widget {wdg}'.format(
@@ -268,6 +277,8 @@ class LogBook(PickBeltWidget):
 ########
 #
 #TODO list:
+#  [ ] Extract this stuff to extra widget class that properly handles all the
+#      hide and save calls
 #  [ ] fix stats show/hide mess: how is update_view called before self.__init__
 #  [ ] save last shown stats widget and re-show it when clicking on Statistics
 #  [ ] semantic distinction between general widget and subwidgets (log, stats)
@@ -276,12 +287,13 @@ class LogBook(PickBeltWidget):
 
 	def show_statswidget(self, widget='players'):
 		"""Shows logbook with Statistics page selected"""
-		logbook_index = [i for i,sec in enumerate(self.sections) if sec[0] == 'statistics'][0]
-		self.update_view(logbook_index)
+		if self.current_page != self.statistics_index:
+			self.update_view(self.statistics_index)
 		self._hide_statswidgets()
 		if widget:
 			getattr(self, '_show_{widget}'.format(widget=widget))()
 			self.stats_visible = widget
+			self.last_stats_widget = widget
 
 	def toggle_stats_visibility(self, widget='players'):
 		"""
@@ -343,17 +355,14 @@ class LogBook(PickBeltWidget):
 		           self.session.ingame_gui.message_widget.archive
 		for msg in sorted(messages, key=lambda m: m.created):
 			if msg.id != 'CHAT': # those get displayed in the chat window instead
-				m = msg.message
-				if not isinstance(m, unicode):
-					m = m.decode('utf-8')
-				self.messagebox.items.append(m)
+				self.messagebox.items.append(msg.message)
 		self.messagebox.selected = len(self.messagebox.items) - 1 # scroll to bottom
 
 	def _display_chat_history(self):
 		self.chatbox.items = []
 		messages = self.session.ingame_gui.message_widget.chat
 		for msg in sorted(messages, key=lambda m: m.created):
-			self.chatbox.items.append(unicode(msg.message))
+			self.chatbox.items.append(msg.message)
 		self.chatbox.selected = len(self.chatbox.items) - 1 # scroll to bottom
 
 	def _chatfield_onfocus(self):

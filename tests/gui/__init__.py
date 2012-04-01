@@ -239,7 +239,14 @@ def gui_test(use_dev_map=False, use_fixture=None, ai_players=0, timeout=15 * 60,
 		@wraps(func)
 		def wrapped():
 			test_name = '%s.%s' % (func.__module__, func.__name__)
-			args = [sys.executable, 'run_uh.py', '--sp-seed', str(RANDOM_SEED), '--gui-test', test_name]
+
+			# when running under coverage, enable it for subprocesses too
+			if os.environ.get('RUNCOV'):
+				executable = ['coverage', 'run']
+			else:
+				executable = [sys.executable]
+
+			args = executable + ['run_uh.py', '--sp-seed', str(RANDOM_SEED), '--gui-test', test_name]
 			if use_fixture:
 				path = os.path.join(TEST_FIXTURES_DIR, use_fixture + '.sqlite')
 				if not os.path.exists(path):

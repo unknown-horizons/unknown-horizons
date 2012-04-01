@@ -234,8 +234,6 @@ def main():
 	os.chdir( find_uh_position() )
 	logging.config.fileConfig( os.path.join('content', 'logging.conf'))
 
-	gettext.install("unknown-horizons", "content/lang", unicode=True)
-
 	create_user_dirs()
 
 	options = get_option_parser().parse_args()[0]
@@ -327,11 +325,7 @@ def setup_debugging(options):
 			def write(self, line):
 				line = unicode(line)
 				sys.__stdout__.write(line)
-				try:
-					logfile.write(line)
-				except UnicodeEncodeError:
-					# python unicode handling is weird, this has been empirically proven to work
-					logfile.write( line.encode("UTF-8") )
+				logfile.write(line.encode('UTF-8'))
 			def flush(self):
 				sys.__stdout__.flush()
 				logfile.flush()
@@ -381,7 +375,8 @@ def init_environment():
 	"""Sets up everything. Use in any program that requires access to FIFE and uh modules.
 	It will parse sys.args, so this var has to contain only valid uh options."""
 
-	gettext.install("unknown-horizons", "po", unicode=True)
+	# install dummy translation
+	gettext.install('', unicode=True)
 
 	options = get_option_parser().parse_args()[0]
 
@@ -392,9 +387,6 @@ def init_environment():
 
 	#find FIFE and setup search paths, if it can't be imported yet
 	setup_fife(sys.argv)
-
-	#for some external libraries distributed with UH
-	sys.path.append( os.path.join('horizons', 'ext') )
 
 
 def get_fife_path(fife_custom_path=None):
@@ -534,8 +526,8 @@ def standalone_error_popup(headline, msg):
 
 	dlg = pychan.loadXML("content/gui/xml/startup_error_popup.xml")
 	# can't translate as translations are only set up later
-	dlg.findChild(name="headline").text = unicode(headline)
-	dlg.findChild(name="msg").text = unicode(msg)
+	dlg.findChild(name="headline").text = headline
+	dlg.findChild(name="msg").text = msg
 	dlg.mapEvents({'quit_button': do_quit})
 	dlg.show()
 

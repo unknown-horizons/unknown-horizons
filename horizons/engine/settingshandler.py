@@ -20,21 +20,16 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-import platform
-import gettext
-import os
 import logging
-import locale
 
 from fife import fife
 from fife.extensions.fife_settings import FIFE_MODULE
 
 import horizons.main
 
+from horizons.i18n import change_language, find_available_languages
 from horizons.util import Callback, parse_port
-from horizons.i18n import update_all_translations
 from horizons.extscheduler import ExtScheduler
-from horizons.i18n.utils import get_fontdef_for_locale, find_available_languages
 from horizons.constants import LANGUAGENAMES, PATHS
 from horizons.network.networkinterface import NetworkInterface
 from horizons.engine import UH_MODULE
@@ -248,44 +243,11 @@ class SettingsHandler(object):
 
 
 	def update_languages(self, data=None):
-		"""
-		Load/Change language of Unknown Horizons. Called on startup
-		and when changing the language.
-
-		data is used when changing the language in the settings menu.
-		"""
 		if data is None:
 			data = self._setting.get(UH_MODULE, "Language")
 
-		# get language key
-		symbol = LANGUAGENAMES.get_by_value(data)
-
-		if symbol != '': # non-default
-			try:
-				# NOTE about gettext fallback mechanism:
-				# English is not shipped as .mo file, thus if English is
-				# selected we use NullTranslations to get English output.
-				fallback = (symbol == 'en')
-				trans = gettext.translation('unknown-horizons', find_available_languages()[symbol], \
-								            languages=[symbol], fallback=fallback)
-				trans.install(unicode=True, names=['ngettext',])
-			except IOError:
-				#xgettext:python-format
-				print _("Configured language {lang} could not be loaded").format(lang=symbol)
-				self._setting.set(UH_MODULE, "Language", LANGUAGENAMES[''])
-				return self.update_languages() # recurse
-		else:
-			# default locale
-			if platform.system() == "Windows": # win doesn't set the language variable by default
-				os.environ[ 'LANGUAGE' ] = locale.getdefaultlocale()[0]
-			gettext.install('unknown-horizons', 'content/lang', unicode=True, names=['ngettext',])
-
-		# update fonts
-		fontdef = get_fontdef_for_locale(symbol)
-		self.engine.pychan.loadFonts(fontdef)
-
-		# dynamically reset all translations of active widgets
-		update_all_translations()
+		language = LANGUAGENAMES.get_by_value(data)
+		change_language(language)
 
 	def set_debug_log(self, data, startup=False):
 		"""

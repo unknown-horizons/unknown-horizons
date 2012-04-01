@@ -67,9 +67,12 @@ class IngameKeyListener(fife.IKeyListener, LivingObject):
 		if self.key_scroll[0] != 0 or self.key_scroll != 0:
 			self.session.view.autoscroll_keys(self.key_scroll[0], self.key_scroll[1])
 
+		key_event_handled = True
+
 		if action == _Actions.ESCAPE:
-			if not self.session.ingame_gui.on_escape():
-				return # let the MainListener handle this
+			handled_by_ingame_gui = self.session.ingame_gui.on_escape()
+			if not handled_by_ingame_gui:
+				key_event_handled = False # let the MainListener handle this
 		elif action == _Actions.GRID:
 			gridrenderer = self.session.view.renderer['GridRenderer']
 			gridrenderer.setEnabled( not gridrenderer.isEnabled() )
@@ -170,9 +173,7 @@ class IngameKeyListener(fife.IKeyListener, LivingObject):
 					instance.get_component(SelectableComponent).select(reset_cam=True)
 				self.session.selected_instances = self.session.selection_groups[num]
 		elif action == _Actions.QUICKSAVE:
-			self.session.quicksave()
-		elif action == _Actions.QUICKLOAD:
-			self.session.quickload()
+			self.session.quicksave() # load is only handled by the MainListener
 		elif action == _Actions.SAVE_MAP:
 			# require shift to make it less likely that an ordinary user stumbles upon this
 			# this is done because the maps aren't usable without moving them to the right places
@@ -192,8 +193,10 @@ class IngameKeyListener(fife.IKeyListener, LivingObject):
 					if hasattr(instance, "path") and instance.owner.is_local_player:
 						self.session.ingame_gui.minimap.show_unit_path(instance)
 		else:
-			return
-		evt.consume()
+			key_event_handled = False # nope, nothing triggered
+
+		if key_event_handled:
+			evt.consume() # prevent other listeners from being called
 
 	def keyReleased(self, evt):
 		keyval = evt.getKey().getValue()

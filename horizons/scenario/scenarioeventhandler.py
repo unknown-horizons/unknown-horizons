@@ -19,9 +19,9 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
+import json
 import yaml
 import copy
-import pickle
 
 from horizons.scheduler import Scheduler
 from horizons.util import Callback, LivingObject, YamlCache
@@ -43,7 +43,21 @@ class InvalidScenarioFileFormat(Exception):
 
 class ScenarioEventHandler(LivingObject):
 	"""Handles event, that make up a scenario. See wiki.
-	An instance of this class is bound to a set of events. On a new scenario, you need a new instance."""
+	An instance of this class is bound to a set of events. On a new scenario, you need a new instance.
+
+	Scenarios consist of condition-action events.
+	When all conditions of an event become true, the action is executed and the event is
+	removed from the scenario. All events only happen once.
+
+	Whenever the game state changes in a way, that can change the truth value of a condition,
+	the event handler must be notified. It will then check all relevant events.
+	It is imperative for this notification to always be triggered, else the scenario gets stuck.
+	For conditions, where this approach doesn't make sense (e.g. too frequent changes),
+	a periodic check can be used.
+
+	Save/load works by dumping all info into a yaml string in the savegame,
+	which is loaded just like normal scenarios are loaded.
+	"""
 
 	CHECK_CONDITIONS_INTERVAL = 3 # seconds
 
@@ -102,11 +116,11 @@ class ScenarioEventHandler(LivingObject):
 			db("INSERT INTO metadata(name, value) VALUES(?, ?)", "scenario_events", self.to_yaml())
 		for key, value in self._scenario_variables.iteritems():
 			db("INSERT INTO scenario_variables(key, value) VALUES(?, ?)", key, \
-			   pickle.dumps(value, self.PICKLE_PROTOCOL))
+			   json.dumps(value))
 
 	def load(self, db):
 		for key, value in db("SELECT key, value FROM scenario_variables"):
-			self._scenario_variables[key] = pickle.loads(value)
+			self._scenario_variables[key] = json.loads(value)
 		data = db("SELECT value FROM metadata WHERE name = ?", "scenario_events")
 		if len(data) == 0:
 			return # nothing to load
@@ -178,15 +192,9 @@ class ScenarioEventHandler(LivingObject):
 		except Exception as e: # catch anything yaml or functions that yaml calls might throw
 			raise InvalidScenarioFileFormat(str(e))
 
-	_yaml_file_cache = {} # only used in the method below
-	"""
-	This caches the parsed output of a yaml file.
-	It also checks if the cache is invalidated, therefore we can't use the
-	decorator.
-	"""
 	@classmethod
 	def _parse_yaml_file(cls, filename):
-		return YamlCache.get_file(filename)
+		return YamlCache.get_file(filename, game_data=True)
 
 	def _apply_data(self, data):
 		"""Apply data to self loaded via yaml.load

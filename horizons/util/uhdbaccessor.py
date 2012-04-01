@@ -24,7 +24,7 @@ from random import randint
 from horizons.constants import PATHS
 from horizons.util import decorators
 from horizons.util.dbreader import DbReader
-from horizons.util.gui import get_res_icon_path
+from horizons.gui.util import get_res_icon_path
 from horizons.entities import Entities
 
 ########################################################################
@@ -60,7 +60,7 @@ class UhDbAccessor(DbReader):
 		if only_if_inventory:
 			sql += " AND shown_in_inventory = 1"
 		try:
-			return self.cached_query(sql, id)[0][0]
+			return _(self.cached_query(sql, id)[0][0])
 		except IndexError:
 			return None
 

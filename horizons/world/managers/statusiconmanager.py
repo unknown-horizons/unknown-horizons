@@ -25,7 +25,7 @@ from fife import fife
 from horizons.world.status import StatusIcon
 from horizons.constants import LAYERS
 
-from horizons.util.messaging.message import AddStatusIcon, RemoveStatusIcon, WorldObjectDeleted
+from horizons.messaging import AddStatusIcon, RemoveStatusIcon, WorldObjectDeleted, HoverInstancesChanged
 
 class StatusIconManager(object):
 	"""Manager class that manages all status icons. It listenes to AddStatusIcon
@@ -38,9 +38,13 @@ class StatusIconManager(object):
 		# Renderer used to render the icons
 		self.renderer = self.session.view.renderer['GenericRenderer']
 
-		self.session.message_bus.subscribe_globally(AddStatusIcon, self.on_add_icon_message)
-		self.session.message_bus.subscribe_globally(RemoveStatusIcon, self.on_remove_icon_message)
-		self.session.message_bus.subscribe_globally(WorldObjectDeleted, self.on_worldobject_deleted_message)
+		self.tooltip_instances = set() # no weakset:
+		# we need to remove the tooltip always anyway, and along with it the entry here
+
+		AddStatusIcon.subscribe(self.on_add_icon_message)
+		HoverInstancesChanged.subscribe(self.on_hover_instances_changed)
+		RemoveStatusIcon.subscribe(self.on_remove_icon_message)
+		WorldObjectDeleted.subscribe(self.on_worldobject_deleted_message)
 
 	def on_add_icon_message(self, message):
 		"""This is called by the message bus with AddStatusIcon messages"""
@@ -57,9 +61,15 @@ class StatusIconManager(object):
 
 	def on_worldobject_deleted_message(self, message):
 		assert isinstance(message, WorldObjectDeleted)
+		# remove icon
 		if message.worldobject in self.icons:
 			self.renderer.removeAll(self.get_status_string(message.worldobject))
 			del self.icons[message.worldobject]
+		# remove icon tooltip
+		if message.worldobject in self.tooltip_instances:
+			new_instances = set(i for i in self.tooltip_instances if \
+			                    i is not message.worldobject)
+			self.on_hover_instances_changed( HoverInstancesChanged(self, new_instances) )
 
 	def on_remove_icon_message(self, message):
 		"""Called by the MessageBus with RemoveStatusIcon messages."""
@@ -110,5 +120,39 @@ class StatusIconManager(object):
 			self.renderer.addImage(status_string, node, img)
 
 	def get_status_string(self, instance):
-			status_string = "status_"+ str(id(instance))
-			return status_string
+		"""Returns render name for status icons of this instance"""
+		status_string = "status_"+ str(id(instance))
+		return status_string
+
+	def on_hover_instances_changed(self, msg):
+		"""Check if we need to display a tooltip"""
+		instances = msg.instances
+		dropouts = self.tooltip_instances.difference(instances)
+		additions = instances.difference(self.tooltip_instances)
+
+		# only those that have icons
+		additions = (i for i in additions if i in self.icons)
+		# and belong to the player
+		additions = (i for i in additions if \
+		             hasattr(i, "owner" ) and \
+		             hasattr(i.owner, "is_local_player") and \
+		             i.owner.is_local_player)
+
+		# apply changes
+		for instance in dropouts:
+			self.tooltip_instances.remove(instance)
+			# remove tooltip
+			# TODO
+			print 'remove tooltip of ', instance
+		for instance in additions:
+			self.tooltip_instances.add(instance)
+			icons_of_instance = self.icons[instance]
+
+			icon = max(icons_of_instance, key=StatusIcon.get_sorting_key())
+
+			# show tooltip
+			# TODO
+			print 'new icon for', instance, ":", icon.helptext
+
+
+

@@ -21,7 +21,7 @@
 from fife.extensions.pychan.widgets import ImageButton
 
 from horizons.util import Callback
-from horizons.util.gui import load_uh_widget
+from horizons.gui.util import load_uh_widget
 
 class PickBeltWidget(object):
 	"""Base class for widget with sections behaving as pages"""

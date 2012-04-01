@@ -25,7 +25,7 @@ from fife.extensions import pychan
 import horizons.main
 
 from horizons.extscheduler import ExtScheduler
-from horizons.util.gui import load_uh_widget
+from horizons.gui.util import load_uh_widget
 
 class _Tooltip(object):
 	"""Base class for pychan widgets overloaded with tooltip functionality"""
@@ -122,7 +122,13 @@ class _Tooltip(object):
 		# from what my other solution to this problem would have looked like
 		self._entered_callbacks.append(cb)
 
+	def clear_entered_callbacks(self):
+		self._entered_callbacks = []
+
 	def add_exited_callback(self, cb):
 		"""Add a callback to always be called when the mouse exits the button (not the tooltip)"""
 		self._exited_callbacks.append(cb)
+
+	def clear_exited_callbacks(self):
+		self._exited_callbacks = []
 

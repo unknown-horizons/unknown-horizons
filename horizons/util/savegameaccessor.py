@@ -49,7 +49,6 @@ class SavegameAccessor(DbReader):
 		self._load_building_collector()
 		self._load_production_line()
 		self._load_unit_path()
-		self._load_component()
 		self._load_storage_global_limit()
 		self._load_health()
 		self._hash = None
@@ -223,19 +222,6 @@ class SavegameAccessor(DbReader):
 	def get_unit_path(self, worldid):
 		worldid = int(worldid)
 		return self._unit_path[worldid] if worldid in self._unit_path else None
-
-
-	def _load_component(self):
-		self._component = {}
-		for row in self("SELECT worldid, name, module, class FROM component"):
-			id = int(row[0])
-			if id not in self._component:
-				self._component[id] = []
-			self._component[id].append(row[1:])
-
-	def get_component_row(self, worldid):
-		worldid = int(worldid)
-		return self._component[worldid] if worldid in self._component else []
 
 
 	def _load_storage_global_limit(self):

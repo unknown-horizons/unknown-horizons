@@ -81,13 +81,10 @@ class SelectableComponent(Component):
 			tabwidget = TabWidget(self.session.ingame_gui, tabs=tabs)
 
 			if jump_to_tabclass:
-				num = None
-				for i in xrange( len(tabs) ):
-					if isinstance(tabs[i], jump_to_tabclass):
-						num = i
+				for i, tab in enumerate(tabs):
+					if isinstance(tab, jump_to_tabclass):
+						tabwidget._show_tab(i)
 						break
-				if num is not None:
-					tabwidget._show_tab(num)
 
 			self.session.ingame_gui.show_menu( tabwidget )
 
@@ -124,6 +121,13 @@ class SelectableBuildingComponent(SelectableComponent):
 	# read/write on class variables is somewhat borked in python, so
 	_selected_tiles = ListHolder() # tiles that are selected. used for clean deselect.
 	_selected_fake_tiles = ListHolder() # fake tiles create over ocean to select (can't select ocean directly)
+
+	@classmethod
+	def reset(cls):
+		"""Called on session end to get rid of static data and init variables"""
+		cls._selected_tiles.l = []
+		cls._selected_fake_tiles.l = []
+
 
 	def __init__(self, tabs, enemy_tabs, range_applies_only_on_island=True):
 		super(SelectableBuildingComponent, self).__init__(tabs, enemy_tabs)
@@ -258,7 +262,7 @@ class SelectableBuildingComponent(SelectableComponent):
 				cls._fake_tile_obj = horizons.main.fife.engine.getModel().createObject('fake_tile_obj', 'ground')
 				fife.ObjectVisual.create(cls._fake_tile_obj)
 
-				img_path = 'content/gfx/base/water/fake_water.png'
+				img_path = 'content/gfx/base/fake_water.png'
 				img = horizons.main.fife.imagemanager.load(img_path)
 				for rotation in [45, 135, 225, 315]:
 					cls._fake_tile_obj.get2dGfxVisual().addStaticImage(rotation, img.getHandle())

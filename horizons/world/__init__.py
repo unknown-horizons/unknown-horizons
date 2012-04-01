@@ -24,6 +24,7 @@ __all__ = ['island', 'nature', 'player', 'settlement', 'ambientsound']
 
 import bisect
 import logging
+import json
 import copy
 import itertools
 import os.path
@@ -129,7 +130,10 @@ class World(BuildingOwner, WorldObject):
 		#load properties
 		self.properties = {}
 		for (name, value) in savegame_db("SELECT name, value FROM map_properties"):
-			self.properties[name] = value
+			self.properties[name] = json.loads(value)
+		if not 'disasters_enabled' in self.properties:
+			# set on first init
+			self.properties['disasters_enabled'] = disasters_enabled
 
 		# create playerlist
 		self.players = []
@@ -208,7 +212,7 @@ class World(BuildingOwner, WorldObject):
 
 		self._load_combat(savegame_db)
 		self._load_diplomacy(savegame_db)
-		self._load_disasters(savegame_db, disasters_enabled)
+		self._load_disasters(savegame_db)
 
 		self.inited = True
 		"""TUTORIAL:
@@ -244,11 +248,10 @@ class World(BuildingOwner, WorldObject):
 
 		self.diplomacy.add_diplomacy_status_changed_listener(notify_change)
 
-	def _load_disasters(self, savegame_db, disasters_enabled):
-		disasters_disabled_by_properties = 'disasters_enabled' in self.properties and not self.properties['disasters_enabled']
-		# if savegame or parameter disables disasters, it's disabled (both have to be set to enable to actually enable)
-		disasters_disabled = not disasters_enabled or disasters_disabled_by_properties
-
+	def _load_disasters(self, savegame_db):
+		# disasters are only enabled if they are explicitly set to be enabled
+		disasters_disabled = not ('disasters_enabled' in self.properties and
+		                          self.properties['disasters_enabled'])
 		self.disaster_manager = DisasterManager(self.session, disabled=disasters_disabled)
 		if self.session.is_game_loaded():
 			self.disaster_manager.load(savegame_db)
@@ -316,7 +319,7 @@ class World(BuildingOwner, WorldObject):
 			if len(ai_data) > 0:
 				class_package, class_name = ai_data[0]
 				# import ai class and call load on it
-				module = __import__('horizons.ai.'+class_package, fromlist=[class_name])
+				module = __import__('horizons.ai.'+class_package, fromlist=[str(class_name)])
 				ai_class = getattr(module, class_name)
 				player = ai_class.load(self.session, savegame_db, player_worldid)
 			else: # no ai
@@ -633,7 +636,7 @@ class World(BuildingOwner, WorldObject):
 		@param db: DbReader object of the db the game is saved to."""
 		super(World, self).save(db)
 		for name, value in self.properties.iteritems():
-			db("INSERT INTO map_properties (name, value) VALUES (?, ?)", name, value)
+			db("INSERT INTO map_properties (name, value) VALUES (?, ?)", name, json.dumps(value))
 		for island in self.islands:
 			island.save(db)
 		for player in self.players:

@@ -106,10 +106,12 @@ def test_ticket_1369(gui):
 		yield
 
 	# trade widget should not be visible anymore
-	assert gui.find(name='buy_sell_goods') is None
+# For now, the trade widget will stay visible.
+#	assert gui.find(name='buy_sell_goods') is None
 
 	# but the ship overview should be
-	assert gui.find(name='overview_trade_ship')
+	assert gui.find(name='buy_sell_goods')
+#	assert gui.find(name='overview_trade_ship')
 
 	yield TestFinished
 
@@ -181,18 +183,18 @@ def test_ticket_1371(gui):
 	gui.trigger('tab_base', '1/action/default')
 
 	# Select tree
-	gui.trigger('farm_overview_buildrelated', 'build17/action/default')
+	gui.trigger('overview_buildrelated', 'build17/action/default')
 
 	# Plant a tree (without uninterrupted building)
 	gui.cursor_click(49, 6, 'left')
-	assert gui.find(name='farm_overview_buildrelated')
+	assert gui.find(name='overview_buildrelated')
 
 	# Select tree again and plant it with uninterrupted building
-	gui.trigger('farm_overview_buildrelated', 'build17/action/default')
+	gui.trigger('overview_buildrelated', 'build17/action/default')
 	gui.cursor_click(49, 7, 'left', shift=True)
 
 	# Tab should still be there
-	assert gui.find(name='farm_overview_buildrelated')
+	assert gui.find(name='overview_buildrelated')
 
 	yield TestFinished
 
@@ -362,7 +364,7 @@ def test_pavilion_build_crash_built_via_settler_related_tab(gui):
 	gui.trigger('tab_base', '1/action/default')
 
 	# Select pavilion
-	gui.trigger('farm_overview_buildrelated', 'build5/action/default')
+	gui.trigger('overview_buildrelated', 'build5/action/default')
 
 	# Plant it
 	gui.cursor_click(49, 6, 'left')

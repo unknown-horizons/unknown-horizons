@@ -115,7 +115,8 @@ def goal_reached(session, goal_number):
 @register(name='lose')
 def do_lose(session):
 	"""Called when player lost"""
-	show_message(session, 'You failed the scenario.')
+	show_db_message(session, 'YOU_LOST')
+	#TODO rename this file to 'lose.ogg'
 	horizons.main.fife.play_sound('effects', 'content/audio/sounds/events/scenario/loose.ogg')
 	# drop events after this event
 	Scheduler().add_new_object(session.scenario_eventhandler.drop_events, session.scenario_eventhandler)
@@ -123,8 +124,12 @@ def do_lose(session):
 @register()
 def set_var(session, name, value):
 	session.scenario_eventhandler._scenario_variables[name] = value
-	check_callback = Callback(session.scenario_eventhandler.check_events, CONDITIONS.var_eq)
-	Scheduler().add_new_object(check_callback, session.scenario_eventhandler)
+	check_callbacks = Callback.ChainedCallbacks(
+	  Callback(session.scenario_eventhandler.check_events, CONDITIONS.var_eq),
+	  Callback(session.scenario_eventhandler.check_events, CONDITIONS.var_lt),
+	  Callback(session.scenario_eventhandler.check_events, CONDITIONS.var_gt)
+	)
+	Scheduler().add_new_object(check_callbacks, session.scenario_eventhandler, run_in=0)
 
 @register()
 def wait(session, time):

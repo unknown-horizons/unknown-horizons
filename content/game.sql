@@ -155,6 +155,7 @@ INSERT INTO "message" VALUES('You need more {resource} to build this building.',
 INSERT INTO "message" VALUES('Some of your inhabitants have no access to a main square.',1,30.0,NULL,'NO_MAIN_SQUARE_IN_RANGE');
 INSERT INTO "message" VALUES('Some of your inhabitants just moved out.',1,40.0,NULL,'SETTLERS_MOVED_OUT');
 INSERT INTO "message" VALUES('You won!',1,60.0,NULL,'YOU_HAVE_WON');
+INSERT INTO "message" VALUES('You failed the scenario.',1,60.0,NULL,'YOU_LOST');
 INSERT INTO "message" VALUES('Your mine has run out of resources.',1,30.0,NULL,'MINE_EMPTY');
 INSERT INTO "message" VALUES('You can also drag roads.',1,20.0,NULL,'DRAG_ROADS_HINT');
 INSERT INTO "message" VALUES('{player1} and {player2} have allied their forces.',1,10.0,NULL,'DIPLOMACY_STATUS_NEUTRAL_ALLY');
@@ -169,6 +170,7 @@ INSERT INTO "message" VALUES('You cannot tear the warehouse, your settlements ne
 INSERT INTO "message" VALUES('The route is now configured. Start it via the "start route" button in the "configure route" menu.',1,45.0,NULL,'ROUTE_DISABLED');
 INSERT INTO "message" VALUES('Your crew refuses to leave this map.',1,20.0,NULL,'MOVE_OUTSIDE_OF_WORLD');
 INSERT INTO "message" VALUES('Cannot go here.',1,20.0,NULL,'MOVE_INVALID_LOCATION');
+INSERT INTO "message" VALUES('Your building has caught fire!',1,30.0,NULL,'BUILDING_ON_FIRE');
 CREATE TABLE ai (client_id TEXT NOT NULL, class_package TEXT NOT NULL, class_name TEXT NOT NULL);
 INSERT INTO "ai" VALUES('AIPlayer','aiplayer','AIPlayer');
 CREATE TABLE "object_sounds" (object  INTEGER PRIMARY KEY  NOT NULL  DEFAULT '' , "sound" INTEGER NOT NULL  DEFAULT '');
@@ -187,6 +189,10 @@ INSERT INTO "related_buildings" VALUES(20,36, 1);
 INSERT INTO "related_buildings" VALUES(20,38, 1);
 INSERT INTO "related_buildings" VALUES(20,39, 1);
 INSERT INTO "related_buildings" VALUES(20,46, 1);
+INSERT INTO "related_buildings" VALUES(20,49, 1);
+INSERT INTO "related_buildings" VALUES(20,60, 1);
+INSERT INTO "related_buildings" VALUES(20,61, 1);
+INSERT INTO "related_buildings" VALUES(20,62, 1);
 INSERT INTO "related_buildings" VALUES(3,4, 1);
 INSERT INTO "related_buildings" VALUES(3,5, 1);
 INSERT INTO "related_buildings" VALUES(3,21, 1);
@@ -507,6 +513,7 @@ INSERT INTO "resource" VALUES(1,'tools',18.5,6,1);
 INSERT INTO "resource" VALUES(1,'bricks',15,7,1);
 INSERT INTO "resource" VALUES(0,'trees',1,8,1);
 INSERT INTO "resource" VALUES(0,'grass',0,9,0);
+-- tradeable   name   value   id   show_inv
 INSERT INTO "resource" VALUES(1,'wool',2.5,10,1);
 INSERT INTO "resource" VALUES(0,'faith',NULL,11,1);
 INSERT INTO "resource" VALUES(0,'deer food A',0,12,0);
@@ -530,6 +537,7 @@ INSERT INTO "resource" VALUES(1,'salt',15,29,1);
 INSERT INTO "resource" VALUES(0,'tobacco plants',2,30,1);
 INSERT INTO "resource" VALUES(1,'tobacco leaves',2.5,31,1);
 INSERT INTO "resource" VALUES(1,'tobaccos',10,32,1);
+-- tradeable   name   value   id   show_inv
 INSERT INTO "resource" VALUES(0,'cattle',0,33,1);
 INSERT INTO "resource" VALUES(0,'pigs',0,34,1);
 INSERT INTO "resource" VALUES(0,'cattle for slaughter',2,35,1);
@@ -541,23 +549,21 @@ INSERT INTO "resource" VALUES(1,'cannon',100,40,1);
 INSERT INTO "resource" VALUES(0,'dagger',10,41,0);
 INSERT INTO "resource" VALUES(0,'grain',0,42,1); -- corn ears
 INSERT INTO "resource" VALUES(0,'corn',2,43,1);
-INSERT INTO "resource" VALUES(1,'flour',0,44,1);
---these are hidden for now, waiting for the respective building graphics
---INSERT INTO "resource" VALUES(0,'spice plants',2,45,1);
---INSERT INTO "resource" VALUES(1,'spices',2.5,46,1);
---INSERT INTO "resource" VALUES(1,'condiments',10,47,1);
---INSERT INTO "resource" VALUES(0,'stone deposit',0,51,1);
---INSERT INTO "resource" VALUES(1,'stone tops',7.5,52,1);
---INSERT INTO "resource" VALUES(0,'cocoa beans',2,53,1);
---INSERT INTO "resource" VALUES(1,'cocoa',2.5,54,1);
---INSERT INTO "resource" VALUES(1,'confectionery',10,55,1);
---INSERT INTO "resource" VALUES(1,'candles',10,56,1);
---INSERT INTO "resource" VALUES(0,'vines',2,57,1);
---INSERT INTO "resource" VALUES(1,'grapes',2.5,58,1);
---INSERT INTO "resource" VALUES(0,'alvearies',2,59,1);
---INSERT INTO "resource" VALUES(1,'honeycombs',2.5,60,1);
-INSERT INTO "resource" VALUES(0,'fire',0,99,0); --
-
+INSERT INTO "resource" VALUES(1,'flour',2.5,44,1);
+INSERT INTO "resource" VALUES(0,'spice plants',2,45,1);
+INSERT INTO "resource" VALUES(1,'spices',2.5,46,1);
+INSERT INTO "resource" VALUES(1,'condiments',10,47,1);
+INSERT INTO "resource" VALUES(0,'stone deposit',0,51,1);
+INSERT INTO "resource" VALUES(1,'stone tops',7.5,52,1);
+INSERT INTO "resource" VALUES(0,'cocoa beans',2,53,1);
+INSERT INTO "resource" VALUES(1,'cocoa',2.5,54,1);
+INSERT INTO "resource" VALUES(1,'confectionery',10,55,1);
+INSERT INTO "resource" VALUES(1,'candles',10,56,1);
+INSERT INTO "resource" VALUES(0,'vines',2,57,1);
+INSERT INTO "resource" VALUES(1,'grapes',2.5,58,1);
+INSERT INTO "resource" VALUES(0,'alvearies',2,59,1);
+INSERT INTO "resource" VALUES(1,'honeycombs',2.5,60,1);
+INSERT INTO "resource" VALUES(0,'fire',0,99,0);
 CREATE TABLE translucent_buildings(type INTEGER);
 INSERT INTO "translucent_buildings" VALUES(17);
 INSERT INTO "translucent_buildings" VALUES(34);

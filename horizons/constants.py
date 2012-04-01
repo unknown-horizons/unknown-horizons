@@ -24,6 +24,7 @@ import ctypes
 import platform
 import os
 import locale
+import sys
 
 from horizons.ext.enum import Enum
 
@@ -62,7 +63,7 @@ class VERSION:
 	#RELEASE_VERSION = u'2011.3'
 
 	## +=1 this if you changed the savegame "api"
-	SAVEGAMEREVISION= 56
+	SAVEGAMEREVISION= 57
 
 	@staticmethod
 	def string():
@@ -139,6 +140,27 @@ class BUILDINGS:
 	TOBACCO_FIELD_CLASS = 36
 	TOBACCONIST_CLASS = 37
 	FIRE_STATION_CLASS = 45
+	CATTLE_RUN   = 38
+	PIGSTY       = 39
+	HERBARY      = 40
+	BUTCHERY     = 41
+	DOCTOR       = 42
+	GRAVEL_PATH  = 43
+	WOODEN_TOWER = 44
+	CORN_FIELD   = 46
+	WINDMILL     = 47
+	BAKERY       = 48
+	SPICE_FIELD  = 49
+	BLENDER      = 50
+	BARRACKS     = 53
+	STONE_PIT    = 54
+	STONEMASON   = 55
+	COCOA_FIELD  = 60
+	VINEYARD     = 61
+	ALVEARIES    = 62
+	PASTRY_SHOP  = 63
+	VINTNER      = 65
+
 
 	TRANSPARENCY_VALUE = 180
 
@@ -187,6 +209,25 @@ class RES:
 	TOBACCO_LEAVES_ID = 31
 	TOBACCO_PRODUCTS_ID = 32
 	CANNON_ID = WEAPONS.CANNON
+
+	GRAIN = 42
+	CORN = 43
+	FLOUR = 44
+	SPICE_PLANTS = 45
+	SPICES = 46
+	CONDIMENTS = 47
+
+	STONE_DEPOSIT = 51
+	STONE_TOPS = 52
+	COCOA_BEANS = 53
+	COCOA = 54
+	CONFECTIONERY = 55
+	CANDLES = 56
+	VINES = 57
+	GRAPES = 58
+	ALVEARIES = 59
+	HONEYCOMBS = 60
+
 	FIRE_ID = 99
 
 class GROUND:
@@ -362,7 +403,12 @@ else:
 	if not os.path.exists(my_games):
 		os.makedirs(my_games)
 	_user_dir = os.path.join(my_games, 'unknown-horizons')
-_user_dir = unicode(_user_dir, locale.getpreferredencoding()) # this makes umlaut-paths work on win
+try:
+  _user_dir = unicode(_user_dir, locale.getpreferredencoding()) # this makes umlaut-paths work on win
+except Exception as inst:
+  _user_dir = unicode(_user_dir, sys.getfilesystemencoding()) # locale.getpreferredencoding() does not work @ mac
+
+
 
 class GFX:
 	BUILDING_OUTLINE_THRESHOLD = 96
@@ -403,7 +449,7 @@ class PATHS:
 	VOICE_DIR = os.path.join("content", "audio", "voice")
 
 class PLAYER:
-	STATS_UPDATE_FREQUENCY = 42
+	STATS_UPDATE_FREQUENCY = GAME_SPEED.TICKS_PER_SECOND
 
 ## SINGLEPLAYER
 class SINGLEPLAYER:

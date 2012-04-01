@@ -21,7 +21,7 @@
 # ###################################################
 
 from horizons.world.disaster import Disaster
-from horizons.util.messaging.message import AddStatusIcon, RemoveStatusIcon
+from horizons.messaging import AddStatusIcon, RemoveStatusIcon, NewDisaster
 from horizons.world.status import FireStatusIcon
 from horizons.constants import GAME_SPEED, BUILDINGS, RES, SETTLER
 from horizons.command.building import Tear
@@ -38,6 +38,7 @@ class FireDisaster(Disaster):
 	"""
 
 	TYPE = "The Flames Of The End"
+	NOTIFICATION_TYPE = 'BUILDING_ON_FIRE'
 
 	SEED_CHANCE = 0.1
 
@@ -107,7 +108,8 @@ class FireDisaster(Disaster):
 		@load: (db, disaster_worldid), set on restoring infected state of savegame"""
 		super(FireDisaster, self).infect(building, load=load)
 		# keep in sync with load()
-		building.session.message_bus.broadcast(AddStatusIcon(building, FireStatusIcon(building)))
+		AddStatusIcon.broadcast(building, FireStatusIcon(building))
+		NewDisaster.broadcast(building.owner, building, FireDisaster)
 		self._affected_buildings.append(building)
 		havoc_time = self.TIME_BEFORE_HAVOC
 		if load:
@@ -118,7 +120,7 @@ class FireDisaster(Disaster):
 
 	def recover(self, building):
 		super(FireDisaster, self).recover(building)
-		building.session.message_bus.broadcast(RemoveStatusIcon(self, building, FireStatusIcon))
+		RemoveStatusIcon.broadcast(self, building, FireStatusIcon)
 		Scheduler().rem_call(self, Callback(self.wreak_havoc, building))
 		self._affected_buildings.remove(building)
 

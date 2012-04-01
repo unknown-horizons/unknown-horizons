@@ -27,9 +27,6 @@ import glob
 
 sys.path.append(".")
 
-import gettext
-gettext.install('', unicode=True)
-
 try:
 	import run_uh
 except ImportError as e:

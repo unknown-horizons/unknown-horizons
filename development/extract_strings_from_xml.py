@@ -96,7 +96,7 @@ files_to_skip = [
 	'credits3.xml',
 	'credits4.xml',
 	'stringpreviewwidget.xml',
-	'startup_error_popup.xml'
+	'startup_error_popup.xml',
 	]
 
 import xml.dom.minidom
@@ -112,8 +112,8 @@ def list_all_files():
 	walker = os.walk('content/gui/xml')
 	for entry in walker:
 		for filename in entry[2]:
-			if filename.endswith('.xml') and filename not in files_to_skip:
-				result.append('%s/%s' % (entry[0], filename))
+			if filename.endswith('.xml'):
+				result.append(('%s/%s' % (entry[0], filename), filename not in files_to_skip))
 	return sorted(result)
 
 def content_from_element(element_name, parse_tree, text_name):
@@ -149,7 +149,11 @@ def content_from_element(element_name, parse_tree, text_name):
 
 	return sorted(element_strings)
 
-def content_from_file(filename):
+def content_from_file(filename, parse=True):
+	"""Set parse=False if you want to list the widget in guitranslations,
+	but not the strings. Usually because those strings are not reasonable
+	to translate (credits) or change too frequently (how to contribute).
+	"""
 	print '@ %s' % filename
 	parsed = xml.dom.minidom.parse(filename)
 
@@ -170,15 +174,15 @@ def content_from_file(filename):
 		content_from_element('ProgressBar', parsed, 'helptext') + \
 		content_from_element('ToggleImageButton', parsed, 'helptext')
 
-	if len(strings):
-		printname = filename.rsplit("/",1)[1]
+	printname = filename.rsplit("/",1)[1]
+	if len(strings) and parse:
 		#HACK! we strip the string until no "/" occurs and then use the remaining part
 		# this is necessary because of our dynamic widget loading (by unique file names)
 		return ('\n\t"%s" : {' % printname) + (ROWINDENT + '%s,' % (','+ROWINDENT).join(strings)) + ROWINDENT + '},'
 	else:
-		return ''
+		return ('\n\t"%s" : {' % printname) + ROWINDENT + '},'
 
-filesnippets = (content_from_file(filename) for filename in list_all_files())
+filesnippets = (content_from_file(filename, parse) for (filename, parse) in list_all_files())
 filesnippets = (content for content in filesnippets if content != '')
 
 output = '%s%s%s' % (header, '\n'.join(filesnippets), FOOTER)
