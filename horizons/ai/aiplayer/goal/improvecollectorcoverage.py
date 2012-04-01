@@ -119,7 +119,7 @@ class ImproveCollectorCoverageGoal(SettlementGoal):
 
 	def _build_extra_storage(self):
 		"""Build an extra storage tent to improve collector coverage."""
-		if not self.production_builder.have_resources(BUILDINGS.STORAGE_CLASS):
+		if not self.production_builder.have_resources(BUILDINGS.STORAGE):
 			return BUILD_RESULT.NEED_RESOURCES
 
 		reachable = dict.fromkeys(self.land_manager.roads) # {(x, y): [(building worldid, distance), ...], ...}
@@ -130,7 +130,7 @@ class ImproveCollectorCoverageGoal(SettlementGoal):
 			if reachable[key] is None:
 				reachable[key] = []
 
-		storage_radius = Entities.buildings[BUILDINGS.STORAGE_CLASS].radius
+		storage_radius = Entities.buildings[BUILDINGS.STORAGE].radius
 		moves = [(-1, 0), (0, -1), (0, 1), (1, 0)]
 		for building in self._problematic_buildings:
 			distance = dict.fromkeys(reachable)
@@ -156,7 +156,7 @@ class ImproveCollectorCoverageGoal(SettlementGoal):
 
 		options = []
 		for (x, y), building_distances in reachable.iteritems():
-			builder = self.production_builder.make_builder(BUILDINGS.STORAGE_CLASS, x, y, False)
+			builder = self.production_builder.make_builder(BUILDINGS.STORAGE, x, y, False)
 			if not builder:
 				continue
 

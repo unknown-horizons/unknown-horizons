@@ -86,7 +86,7 @@ class PipetteTool(NavigationTool):
 		#       (e.g. reuse from future build tabs)
 		return Entities.buildings[building_id].settler_level <= \
 		       self.session.world.player.settler_level and \
-		       building_id != BUILDINGS.WAREHOUSE_CLASS
+		       building_id != BUILDINGS.WAREHOUSE
 
 	def _add_coloring(self,  obj):
 		if self._is_buildable(obj.id):

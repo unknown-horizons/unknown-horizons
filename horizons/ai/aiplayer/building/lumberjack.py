@@ -35,7 +35,7 @@ class AbstractLumberjack(AbstractBuilding):
 
 	@classmethod
 	def register_buildings(cls):
-		cls._available_buildings[BUILDINGS.LUMBERJACK_CLASS] = cls
+		cls._available_buildings[BUILDINGS.LUMBERJACK] = cls
 
 class LumberjackEvaluator(BuildingEvaluator):
 	__template_outline = None
@@ -43,9 +43,9 @@ class LumberjackEvaluator(BuildingEvaluator):
 	@classmethod
 	def __init_outline(cls):
 		"""Save a template outline that surrounds a lumberjack."""
-		position = Rect.init_from_topleft_and_size_tuples((0, 0), Entities.buildings[BUILDINGS.LUMBERJACK_CLASS].size)
+		position = Rect.init_from_topleft_and_size_tuples((0, 0), Entities.buildings[BUILDINGS.LUMBERJACK].size)
 		moves = [(-1, 0), (0, -1), (0, 1), (1, 0)]
-		coords_list = set(position.get_radius_coordinates(Entities.buildings[BUILDINGS.LUMBERJACK_CLASS].radius, True))
+		coords_list = set(position.get_radius_coordinates(Entities.buildings[BUILDINGS.LUMBERJACK].radius, True))
 
 		result = set()
 		for x, y in coords_list:
@@ -67,13 +67,13 @@ class LumberjackEvaluator(BuildingEvaluator):
 
 	@classmethod
 	def create(cls, area_builder, x, y, orientation):
-		builder = area_builder.make_builder(BUILDINGS.LUMBERJACK_CLASS, x, y, True, orientation)
+		builder = area_builder.make_builder(BUILDINGS.LUMBERJACK, x, y, True, orientation)
 		if not builder:
 			return None
 
 		area_value = 0
 		personality = area_builder.owner.personality_manager.get('LumberjackEvaluator')
-		for coords in builder.position.get_radius_coordinates(Entities.buildings[BUILDINGS.LUMBERJACK_CLASS].radius):
+		for coords in builder.position.get_radius_coordinates(Entities.buildings[BUILDINGS.LUMBERJACK].radius):
 			if coords in area_builder.plan:
 				purpose = area_builder.plan[coords][0]
 				if purpose == BUILDING_PURPOSE.NONE:
@@ -98,11 +98,11 @@ class LumberjackEvaluator(BuildingEvaluator):
 		if result != BUILD_RESULT.OK:
 			return (result, None)
 
-		for coords in building.position.get_radius_coordinates(Entities.buildings[BUILDINGS.LUMBERJACK_CLASS].radius):
+		for coords in building.position.get_radius_coordinates(Entities.buildings[BUILDINGS.LUMBERJACK].radius):
 			if coords in self.area_builder.plan and self.area_builder.plan[coords][0] == BUILDING_PURPOSE.NONE:
 				self.area_builder.register_change(coords[0], coords[1], BUILDING_PURPOSE.TREE, None)
 				# TODO: don't ignore the return value
-				Builder.create(BUILDINGS.TREE_CLASS, self.area_builder.land_manager, Point(coords[0], coords[1])).execute()
+				Builder.create(BUILDINGS.TREE, self.area_builder.land_manager, Point(coords[0], coords[1])).execute()
 		return (BUILD_RESULT.OK, building)
 
 AbstractLumberjack.register_buildings()

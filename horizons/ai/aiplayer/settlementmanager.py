@@ -232,7 +232,7 @@ class SettlementManager(WorldObject):
 		if self.village_builder.tent_queue:
 			return False
 		settler_houses = 0
-		residences = self.settlement.buildings_by_id.get(BUILDINGS.RESIDENTIAL_CLASS, [])
+		residences = self.settlement.buildings_by_id.get(BUILDINGS.RESIDENTIAL, [])
 		for building in residences:
 			if building.level == SETTLER.SETTLER_LEVEL:
 				settler_houses += 1
@@ -263,7 +263,7 @@ class SettlementManager(WorldObject):
 			elif resource_id == RES.LIQUOR_ID:
 				total = self.production_chain[RES.GET_TOGETHER_ID].get_ratio(RES.LIQUOR_ID) * self.get_resource_production_requirement(RES.GET_TOGETHER_ID)
 			else:
-				for residence in self.settlement.buildings_by_id.get(BUILDINGS.RESIDENTIAL_CLASS, []):
+				for residence in self.settlement.buildings_by_id.get(BUILDINGS.RESIDENTIAL, []):
 					for production in residence.get_component(Producer).get_productions():
 						production_line = production._prod_line
 						if resource_id in production_line.consumed_res:
@@ -283,7 +283,7 @@ class SettlementManager(WorldObject):
 		"""
 
 		num_upgrading = 0
-		for building in self.settlement.buildings_by_id.get(BUILDINGS.RESIDENTIAL_CLASS, []):
+		for building in self.settlement.buildings_by_id.get(BUILDINGS.RESIDENTIAL, []):
 			if building.level == level:
 				upgrade_production = building._get_upgrade_production()
 				if upgrade_production is not None and not upgrade_production.is_paused():
@@ -292,7 +292,7 @@ class SettlementManager(WorldObject):
 						return False
 
 		upgraded_any = False
-		for building in self.settlement.buildings_by_id.get(BUILDINGS.RESIDENTIAL_CLASS, []):
+		for building in self.settlement.buildings_by_id.get(BUILDINGS.RESIDENTIAL, []):
 			if building.level == level:
 				upgrade_production = building._get_upgrade_production()
 				if upgrade_production is not None and upgrade_production.is_paused():
@@ -360,15 +360,15 @@ class SettlementManager(WorldObject):
 			# if we are on level 0 and there is a house that can be upgraded then do it.
 			if self._manual_upgrade(0, 1):
 				self._set_taxes_and_permissions_prefix('early')
-		elif self.get_resource_production(RES.BRICKS_ID) > 1e-9 and not self.settlement.count_buildings(BUILDINGS.VILLAGE_SCHOOL_CLASS):
+		elif self.get_resource_production(RES.BRICKS_ID) > 1e-9 and not self.settlement.count_buildings(BUILDINGS.VILLAGE_SCHOOL):
 			# if we just need the school then upgrade sailors manually
 			free_boards = self.settlement.get_component(StorageComponent).inventory[RES.BOARDS_ID]
-			free_boards -= Entities.buildings[BUILDINGS.VILLAGE_SCHOOL_CLASS].costs[RES.BOARDS_ID]
+			free_boards -= Entities.buildings[BUILDINGS.VILLAGE_SCHOOL].costs[RES.BOARDS_ID]
 			free_boards /= 2 # TODO: load this from upgrade resources
 			if free_boards > 0:
 				self._manual_upgrade(0, free_boards)
 			self._set_taxes_and_permissions_prefix('no_school')
-		elif self.settlement.count_buildings(BUILDINGS.VILLAGE_SCHOOL_CLASS):
+		elif self.settlement.count_buildings(BUILDINGS.VILLAGE_SCHOOL):
 			if self.need_materials:
 				self._set_taxes_and_permissions_prefix('school')
 			else:
@@ -439,10 +439,10 @@ class SettlementManager(WorldObject):
 	def handle_disaster(self, message):
 		if issubclass(message.disaster_class, FireDisaster):
 			position = message.building.position
-			fire_station_radius = Entities.buildings[BUILDINGS.FIRE_STATION_CLASS].radius
+			fire_station_radius = Entities.buildings[BUILDINGS.FIRE_STATION].radius
 			handled = False
 
-			for fire_station in self.settlement.buildings_by_id[BUILDINGS.FIRE_STATION_CLASS]:
+			for fire_station in self.settlement.buildings_by_id[BUILDINGS.FIRE_STATION]:
 				if fire_station.position.distance(position) > fire_station_radius:
 					continue
 				# TODO: check whether the building and the fire station are connected by road

@@ -39,7 +39,7 @@ class AbstractField(AbstractBuilding):
 			total_cost += field_spots_available * self.get_expected_building_cost()
 			extra_fields_needed -= field_spots_available
 
-		evaluators = AbstractBuilding.buildings[BUILDINGS.FARM_CLASS].get_evaluators(settlement_manager, self.get_higher_level_resource(resource_id))
+		evaluators = AbstractBuilding.buildings[BUILDINGS.FARM].get_evaluators(settlement_manager, self.get_higher_level_resource(resource_id))
 		if not evaluators:
 			return None
 
@@ -51,7 +51,7 @@ class AbstractField(AbstractBuilding):
 		#extra_farms_needed = int(math.ceil(float(extra_fields_needed) / fields_per_farm))
 
 		total_cost += self.get_expected_building_cost() * extra_fields_needed
-		total_cost += AbstractBuilding.buildings[BUILDINGS.FARM_CLASS].get_expected_building_cost() * extra_farms_needed
+		total_cost += AbstractBuilding.buildings[BUILDINGS.FARM].get_expected_building_cost() * extra_farms_needed
 		return total_cost
 
 	@classmethod
@@ -98,10 +98,10 @@ class AbstractField(AbstractBuilding):
 
 	@classmethod
 	def register_buildings(cls):
-		cls._available_buildings[BUILDINGS.POTATO_FIELD_CLASS] = cls
-		cls._available_buildings[BUILDINGS.PASTURE_CLASS] = cls
-		cls._available_buildings[BUILDINGS.SUGARCANE_FIELD_CLASS] = cls
-		cls._available_buildings[BUILDINGS.TOBACCO_FIELD_CLASS] = cls
+		cls._available_buildings[BUILDINGS.POTATO_FIELD] = cls
+		cls._available_buildings[BUILDINGS.PASTURE] = cls
+		cls._available_buildings[BUILDINGS.SUGARCANE_FIELD] = cls
+		cls._available_buildings[BUILDINGS.TOBACCO_FIELD] = cls
 
 AbstractField.register_buildings()
 

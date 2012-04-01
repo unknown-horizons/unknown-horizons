@@ -154,14 +154,14 @@ def buildings_connected_to_warehouse_gt(session, building_class, number):
 	"""Checks whether more than number of building_class type buildings are
 	connected to a warehouse or storage."""
 	return (_building_connected_to_any_of(session, building_class, \
-	        BUILDINGS.WAREHOUSE_CLASS, BUILDINGS.STORAGE_CLASS) > number )
+	        BUILDINGS.WAREHOUSE, BUILDINGS.STORAGE) > number )
 
 @register(periodically=True)
 def buildings_connected_to_warehouse_lt(session, building_class, number):
 	"""Checks whether less than number of building_class type buildings are
 	connected to a warehouse or storage."""
 	return (_building_connected_to_any_of(session, building_class, \
-	        BUILDINGS.WAREHOUSE_CLASS, BUILDINGS.STORAGE_CLASS) < number )
+	        BUILDINGS.WAREHOUSE, BUILDINGS.STORAGE) < number )
 
 @register(periodically=True)
 def buildings_connected_to_building_gt(session, building_class, class2, number):

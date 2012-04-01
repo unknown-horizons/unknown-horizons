@@ -53,7 +53,7 @@ class SettlementFounder(object):
 				continue
 			object = tile.object
 			if object is not None and not object.buildable_upon:
-				if object.id in [BUILDINGS.CLAY_DEPOSIT_CLASS, BUILDINGS.MOUNTAIN_CLASS] and (tile.x, tile.y) == object.position.origin.to_tuple():
+				if object.id in [BUILDINGS.CLAY_DEPOSIT, BUILDINGS.MOUNTAIN] and (tile.x, tile.y) == object.position.origin.to_tuple():
 					# take the natural resources into account
 					usable = True # is the deposit fully available (no part owned by a player)?
 					for coords in object.position.tuple_iter():

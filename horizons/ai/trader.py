@@ -55,7 +55,7 @@ class Trader(GenericAI):
 		"""Create a ship and place it randomly"""
 		self.log.debug("Trader %s: creating new ship", self.worldid)
 		point = self.session.world.get_random_possible_ship_position()
-		ship = CreateUnit(self.worldid, UNITS.TRADER_SHIP_CLASS, point.x, point.y)(issuer=self)
+		ship = CreateUnit(self.worldid, UNITS.TRADER_SHIP, point.x, point.y)(issuer=self)
 		self.ships[ship] = self.shipStates.reached_warehouse
 		Scheduler().add_new_object(Callback(self.ship_idle, ship), self, run_in=0)
 
@@ -140,7 +140,7 @@ class Trader(GenericAI):
 			return False # don't visit signal fire again
 		for tile in self.session.world.get_tiles_in_radius(ship.position, ship.radius):
 			try:
-				if tile.object.id == BUILDINGS.SIGNAL_FIRE_CLASS:
+				if tile.object.id == BUILDINGS.SIGNAL_FIRE:
 					return tile.object
 			except AttributeError:
 				pass # tile has no object or object has no id

@@ -33,22 +33,22 @@ class AbstractWeaver(AbstractBuilding):
 
 	@classmethod
 	def register_buildings(cls):
-		cls._available_buildings[BUILDINGS.WEAVER_CLASS] = cls
+		cls._available_buildings[BUILDINGS.WEAVER] = cls
 
 class WeaverEvaluator(BuildingEvaluator):
 	@classmethod
 	def create(cls, area_builder, x, y, orientation):
-		builder = area_builder.make_builder(BUILDINGS.WEAVER_CLASS, x, y, True, orientation)
+		builder = area_builder.make_builder(BUILDINGS.WEAVER, x, y, True, orientation)
 		if not builder:
 			return None
 
 		distance_to_farm = None
-		for building in area_builder.settlement.buildings_by_id.get(BUILDINGS.FARM_CLASS, []):
+		for building in area_builder.settlement.buildings_by_id.get(BUILDINGS.FARM, []):
 			distance = builder.position.distance(building.position)
-			if distance <= Entities.buildings[BUILDINGS.WEAVER_CLASS].radius:
+			if distance <= Entities.buildings[BUILDINGS.WEAVER].radius:
 				wool_producer = False
 				for provider in building._get_providers():
-					if isinstance(provider, Entities.buildings[BUILDINGS.PASTURE_CLASS]):
+					if isinstance(provider, Entities.buildings[BUILDINGS.PASTURE]):
 						wool_producer = True
 						break
 				if wool_producer:
@@ -59,10 +59,10 @@ class WeaverEvaluator(BuildingEvaluator):
 			return None # require weavers to have a collector building in range
 
 		personality = area_builder.owner.personality_manager.get('WeaverEvaluator')
-		distance_penalty = Entities.buildings[BUILDINGS.WEAVER_CLASS].radius * personality.distance_penalty
+		distance_penalty = Entities.buildings[BUILDINGS.WEAVER].radius * personality.distance_penalty
 		alignment = cls._get_alignment(area_builder, builder.position.tuple_iter())
 		distance = cls._weighted_distance(distance_to_collector, [(personality.farm_distance_importance, distance_to_farm)], distance_penalty)
-		value = float(Entities.buildings[BUILDINGS.WEAVER_CLASS].radius) / distance + alignment * personality.alignment_importance
+		value = float(Entities.buildings[BUILDINGS.WEAVER].radius) / distance + alignment * personality.alignment_importance
 		return WeaverEvaluator(area_builder, builder, value)
 
 	@property

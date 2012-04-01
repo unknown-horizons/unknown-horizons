@@ -39,7 +39,7 @@ def test_ticket_979(s, p):
 	settlement, island = settle(s)
 	storage_collectors = settlement.warehouse.get_component(CollectingComponent).get_local_collectors()
 
-	farm = _build_farm(30, 30, BUILDINGS.POTATO_FIELD_CLASS, island, settlement, p)
+	farm = _build_farm(30, 30, BUILDINGS.POTATO_FIELD, island, settlement, p)
 
 	# Let it work for a bit
 	s.run(seconds=60)
@@ -52,7 +52,7 @@ def test_ticket_979(s, p):
 
 	# Build a road, connecting farm and warehouse
 	for y in range(23, 30):
-		assert Build(BUILDINGS.TRAIL_CLASS, 30, y, island, settlement=settlement)(p)
+		assert Build(BUILDINGS.TRAIL, 30, y, island, settlement=settlement)(p)
 
 	# Step forward in time until a collector picked a job
 	got_job = False
@@ -70,7 +70,7 @@ def test_ticket_979(s, p):
 def test_ticket_1016(s, p):
 	settlement, island = settle(s)
 
-	farm = _build_farm(30, 30, BUILDINGS.POTATO_FIELD_CLASS, island, settlement, p)
+	farm = _build_farm(30, 30, BUILDINGS.POTATO_FIELD, island, settlement, p)
 
 	# tear down job target, then home building (in the same tick)
 
@@ -93,7 +93,7 @@ def test_ticket_1005(s, p):
 	settlement, island = settle(s)
 	assert len(s.world.ships) == 2
 
-	builder = Build(BUILDINGS.BOATBUILDER_CLASS, 35, 20, island, settlement=settlement)(p)
+	builder = Build(BUILDINGS.BOATBUILDER, 35, 20, island, settlement=settlement)(p)
 	builder.get_component(StorageComponent).inventory.alter(RES.TEXTILE_ID, 5)
 	builder.get_component(StorageComponent).inventory.alter(RES.BOARDS_ID, 4)
 	builder.get_component(Producer).add_production_by_id(15)
@@ -108,7 +108,7 @@ def test_ticket_1232(s, p):
 	settlement, island = settle(s)
 	assert len(s.world.ships) == 2
 
-	boat_builder = Build(BUILDINGS.BOATBUILDER_CLASS, 35, 20, island, settlement=settlement)(p)
+	boat_builder = Build(BUILDINGS.BOATBUILDER, 35, 20, island, settlement=settlement)(p)
 	boat_builder.get_component(StorageComponent).inventory.alter(RES.TEXTILE_ID, 10)
 	boat_builder.get_component(StorageComponent).inventory.alter(RES.BOARDS_ID, 8)
 	assert isinstance(boat_builder.get_component(Producer),QueueProducer)
@@ -156,7 +156,7 @@ def test_ticket_1427():
 	session, player = new_session()
 	settlement, island = settle(session)
 
-	boat_builder = Build(BUILDINGS.BOATBUILDER_CLASS, 35, 20, island, settlement=settlement)(player)
+	boat_builder = Build(BUILDINGS.BOATBUILDER, 35, 20, island, settlement=settlement)(player)
 	worldid = boat_builder.worldid
 
 	# Make sure no boards are available
@@ -221,7 +221,7 @@ def test_settler_level(s, p):
 	"""
 	settlement, island = settle(s)
 
-	settler = Build(BUILDINGS.RESIDENTIAL_CLASS, 22, 22, island, settlement=settlement)(p)
+	settler = Build(BUILDINGS.RESIDENTIAL, 22, 22, island, settlement=settlement)(p)
 
 	# make it happy
 	inv = settler.get_component(StorageComponent).inventory
@@ -243,7 +243,7 @@ def test_settler_level(s, p):
 def test_ticket_1523(s, p):
 	settlement, island = settle(s)
 
-	farm = _build_farm(30, 30, BUILDINGS.POTATO_FIELD_CLASS, island, settlement, p)
+	farm = _build_farm(30, 30, BUILDINGS.POTATO_FIELD, island, settlement, p)
 
 	# Let it work for a bit
 	s.run(seconds=60)
@@ -259,7 +259,7 @@ def test_ticket_1523(s, p):
 def test_ticket_1561(s, p):
 	settlement, island = settle(s)
 
-	residence = Build(BUILDINGS.RESIDENTIAL_CLASS, 30, 30, island, settlement=settlement)(p)
+	residence = Build(BUILDINGS.RESIDENTIAL, 30, 30, island, settlement=settlement)(p)
 	s.run(ticks=1)
 	assert residence.level == 0
 
@@ -267,6 +267,6 @@ def test_ticket_1561(s, p):
 	s.run(ticks=1)
 	assert residence.level == 1
 
-	residence2 = Build(BUILDINGS.RESIDENTIAL_CLASS, 30, 32, island, settlement=settlement)(p)
+	residence2 = Build(BUILDINGS.RESIDENTIAL, 30, 32, island, settlement=settlement)(p)
 	s.run(ticks=1)
 	assert residence2.level == 0

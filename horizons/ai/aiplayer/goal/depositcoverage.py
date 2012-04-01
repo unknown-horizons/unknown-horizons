@@ -43,7 +43,7 @@ class DepositCoverageGoal(SettlementGoal):
 
 	def _improve_deposit_coverage(self):
 		"""Get closer to having a resource deposit in the settlement."""
-		if not self.production_builder.have_resources(BUILDINGS.STORAGE_CLASS):
+		if not self.production_builder.have_resources(BUILDINGS.STORAGE):
 			return BUILD_RESULT.NEED_RESOURCES
 
 		available_deposits = []
@@ -55,7 +55,7 @@ class DepositCoverageGoal(SettlementGoal):
 
 		options = []
 		for x, y in self.production_builder.plan:
-			builder = self.production_builder.make_builder(BUILDINGS.STORAGE_CLASS, x, y, False)
+			builder = self.production_builder.make_builder(BUILDINGS.STORAGE, x, y, False)
 			if not builder:
 				continue
 

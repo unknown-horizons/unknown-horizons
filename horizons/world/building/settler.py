@@ -298,7 +298,7 @@ class Settler(BuildableRect, BuildingResourceHandler, BasicBuilding):
 	def level_down(self):
 		if self.level == 0: # can't level down any more
 			# replace this building with a ruin
-			command = Build(BUILDINGS.SETTLER_RUIN_CLASS, self.position.origin.x, \
+			command = Build(BUILDINGS.SETTLER_RUIN, self.position.origin.x, \
 			                self.position.origin.y, island=self.island, settlement=self.settlement)
 
 			Scheduler().add_new_object(
@@ -326,7 +326,7 @@ class Settler(BuildableRect, BuildingResourceHandler, BasicBuilding):
 		if not self.owner.is_local_player:
 			return # only check this for local player
 		for building in self.get_buildings_in_range():
-			if building.id == BUILDINGS.MAIN_SQUARE_CLASS:
+			if building.id == BUILDINGS.MAIN_SQUARE:
 				if StaticPather.get_path_on_roads(self.island, self, building) is not None:
 					# a main square is in range
 					return

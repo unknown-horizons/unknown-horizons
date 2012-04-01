@@ -39,7 +39,7 @@ def test_lumberjack(s, p):
 	"""
 	settlement, island = settle(s)
 
-	jack = Build(BUILDINGS.LUMBERJACK_CLASS, 30, 30, island, settlement=settlement)(p)
+	jack = Build(BUILDINGS.LUMBERJACK, 30, 30, island, settlement=settlement)(p)
 	assert jack
 
 	assert jack.get_component(StorageComponent).inventory[RES.BOARDS_ID] == 0
@@ -48,7 +48,7 @@ def test_lumberjack(s, p):
 	for (x_off, y_off) in product([-2, 2], repeat=2):
 		x = 30 + x_off
 		y = 30 + y_off
-		tree = Build(BUILDINGS.TREE_CLASS, x, y, island, settlement=settlement)(p)
+		tree = Build(BUILDINGS.TREE, x, y, island, settlement=settlement)(p)
 		assert tree
 		tree.get_component(Producer).finish_production_now()
 
@@ -64,7 +64,7 @@ def test_hunter(s, p):
 	"""
 	settlement, island = settle(s)
 
-	hunter = Build(BUILDINGS.HUNTER_CLASS, 30, 30, island, settlement=settlement)(p)
+	hunter = Build(BUILDINGS.HUNTER, 30, 30, island, settlement=settlement)(p)
 	assert hunter
 
 	assert hunter.get_component(StorageComponent).inventory[RES.FOOD_ID] == 0
@@ -73,7 +73,7 @@ def test_hunter(s, p):
 	for (x_off, y_off) in product([-5, -4, 4, 5], repeat=2):
 		x = 30 + x_off
 		y = 30 + y_off
-		animal = CreateUnit(island.worldid, UNITS.WILD_ANIMAL_CLASS, x, y)(None)
+		animal = CreateUnit(island.worldid, UNITS.WILD_ANIMAL, x, y)(None)
 		# wild animals are slow eaters, we feed them directly
 		animal.get_component(StorageComponent).inventory.alter(12, 10)
 		animal.get_component(Producer).finish_production_now()
@@ -92,11 +92,11 @@ def test_fisherman(s, p):
 	settlement, island = settle(s)
 
 	for x in (25, 30, 35):
-		school = Build(BUILDINGS.FISH_DEPOSIT_CLASS, x, 18, s.world, ownerless=True)(None)
+		school = Build(BUILDINGS.FISH_DEPOSIT, x, 18, s.world, ownerless=True)(None)
 		assert school
 		school.get_component(Producer).finish_production_now()
 
-	fisherman = Build(BUILDINGS.FISHERMAN_CLASS, 25, 20, island, settlement=settlement)(p)
+	fisherman = Build(BUILDINGS.FISHER, 25, 20, island, settlement=settlement)(p)
 	assert fisherman
 
 	assert fisherman.get_component(StorageComponent).inventory[RES.FOOD_ID] == 0
@@ -114,10 +114,10 @@ def test_brick_production_chain(s, p):
 	"""
 	settlement, island = settle(s)
 
-	assert Build(BUILDINGS.CLAY_DEPOSIT_CLASS, 30, 30, island, ownerless=True)(None)
-	assert Build(BUILDINGS.CLAY_PIT_CLASS, 30, 30, island, settlement=settlement)(p)
+	assert Build(BUILDINGS.CLAY_DEPOSIT, 30, 30, island, ownerless=True)(None)
+	assert Build(BUILDINGS.CLAY_PIT, 30, 30, island, settlement=settlement)(p)
 
-	brickyard = Build(BUILDINGS.BRICKYARD_CLASS, 30, 25, island, settlement=settlement)(p)
+	brickyard = Build(BUILDINGS.BRICKYARD, 30, 25, island, settlement=settlement)(p)
 	assert brickyard.get_component(StorageComponent).inventory[RES.BRICKS_ID] == 0
 	assert brickyard.get_component(StorageComponent).inventory[RES.CLAY_ID] == 0
 
@@ -136,16 +136,16 @@ def test_tool_production_chain(s, p):
 	"""
 	settlement, island = settle(s)
 
-	assert Build(BUILDINGS.MOUNTAIN_CLASS, 30, 35, island, ownerless=True)(None)
-	assert Build(BUILDINGS.IRON_MINE_CLASS, 30, 35, island, settlement=settlement)(p)
+	assert Build(BUILDINGS.MOUNTAIN, 30, 35, island, ownerless=True)(None)
+	assert Build(BUILDINGS.IRON_MINE, 30, 35, island, settlement=settlement)(p)
 
-	charcoal = Build(BUILDINGS.CHARCOAL_BURNER_CLASS, 25, 35, island, settlement=settlement)(p)
+	charcoal = Build(BUILDINGS.CHARCOAL_BURNER, 25, 35, island, settlement=settlement)(p)
 	assert charcoal
 	charcoal.get_component(StorageComponent).inventory.alter(RES.BOARDS_ID, 10) # give him boards directly
 
-	assert Build(BUILDINGS.SMELTERY_CLASS, 25, 30, island, settlement=settlement)(p)
+	assert Build(BUILDINGS.SMELTERY, 25, 30, island, settlement=settlement)(p)
 
-	toolmaker = Build(BUILDINGS.TOOLMAKER_CLASS, 22, 32, island, settlement=settlement)(p)
+	toolmaker = Build(BUILDINGS.TOOLMAKER, 22, 32, island, settlement=settlement)(p)
 	assert toolmaker
 	toolmaker.get_component(StorageComponent).inventory.alter(RES.BOARDS_ID, 10) # give him boards directly
 
@@ -159,7 +159,7 @@ def test_build_tear(s, p):
 	Build stuff and tear it later
 	"""
 	settlement, island = settle(s)
-	tree = Build(BUILDINGS.TREE_CLASS, 30, 35, island, settlement=settlement)(p)
+	tree = Build(BUILDINGS.TREE, 30, 35, island, settlement=settlement)(p)
 
 	s.run(seconds=1)
 
@@ -178,7 +178,7 @@ def test_build_tear(s, p):
 def test_tree_production(s, p):
 	"""Check whether trees produce wood"""
 	settlement, island = settle(s)
-	tree = Build(BUILDINGS.TREE_CLASS, 30, 35, island, settlement=settlement)(p)
+	tree = Build(BUILDINGS.TREE, 30, 35, island, settlement=settlement)(p)
 
 	n = 20
 

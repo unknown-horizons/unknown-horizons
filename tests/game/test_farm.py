@@ -37,7 +37,7 @@ def _build_farm(x, y, field_type, island, settlement, owner):
 	  X		  (X - farm, F - field)
 	F   F
 	"""
-	farm = Build(BUILDINGS.FARM_CLASS, x, y, island, settlement=settlement)(owner)
+	farm = Build(BUILDINGS.FARM, x, y, island, settlement=settlement)(owner)
 	assert farm, "Failed to build a farm at (%d, %d)" % (x, y)
 
 	for (x_off, y_off) in product([-3, 3], repeat=2):
@@ -57,9 +57,9 @@ def test_weaver(s, p):
 	"""
 	settlement, island = settle(s)
 
-	_build_farm(30, 30, BUILDINGS.PASTURE_CLASS, island, settlement, p)
+	_build_farm(30, 30, BUILDINGS.PASTURE, island, settlement, p)
 
-	weaver = Build(BUILDINGS.WEAVER_CLASS, 27, 30, island, settlement=settlement)(p)
+	weaver = Build(BUILDINGS.WEAVER, 27, 30, island, settlement=settlement)(p)
 	assert weaver
 	assert weaver.get_component(StorageComponent).inventory[RES.TEXTILE_ID] == 0
 
@@ -76,9 +76,9 @@ def test_distillery(s, p):
 	"""
 	settlement, island = settle(s)
 
-	_build_farm(30, 30, BUILDINGS.SUGARCANE_FIELD_CLASS, island, settlement, p)
+	_build_farm(30, 30, BUILDINGS.SUGARCANE_FIELD, island, settlement, p)
 
-	distillery = Build(BUILDINGS.DISTILLERY_CLASS, 27, 30, island, settlement=settlement)(p)
+	distillery = Build(BUILDINGS.DISTILLERY, 27, 30, island, settlement=settlement)(p)
 	assert distillery
 	assert distillery.get_component(StorageComponent).inventory[RES.LIQUOR_ID] == 0
 
@@ -94,7 +94,7 @@ def test_potato_field(s, p):
 	"""
 	settlement, island = settle(s)
 
-	farm = _build_farm(30, 30, BUILDINGS.POTATO_FIELD_CLASS, island, settlement, p)
+	farm = _build_farm(30, 30, BUILDINGS.POTATO_FIELD, island, settlement, p)
 	assert farm.get_component(StorageComponent).inventory[RES.FOOD_ID] == 0
 	assert farm.get_component(StorageComponent).inventory[RES.POTATOES_ID] == 0
 

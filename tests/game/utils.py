@@ -82,11 +82,11 @@ def new_settlement(session, pos=Point(30, 20)):
 	assert island, "No island found at %s" % pos
 	player = session.world.player
 
-	ship = CreateUnit(player.worldid, UNITS.PLAYER_SHIP_CLASS, pos.x, pos.y)(player)
+	ship = CreateUnit(player.worldid, UNITS.PLAYER_SHIP, pos.x, pos.y)(player)
 	for res, amount in session.db("SELECT resource, amount FROM start_resources"):
 		ship.get_component(StorageComponent).inventory.alter(res, amount)
 
-	building = Build(BUILDINGS.WAREHOUSE_CLASS, pos.x, pos.y, island, ship=ship)(player)
+	building = Build(BUILDINGS.WAREHOUSE, pos.x, pos.y, island, ship=ship)(player)
 	assert building, "Could not build warehouse at %s" % pos
 
 	return (building.settlement, island)

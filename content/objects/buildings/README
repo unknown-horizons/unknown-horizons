@@ -67,7 +67,7 @@ components:
 - CollectingComponent:
     collectors:
 			# We want a normal worker collector, that just walks directly to all providers in the radius of the building
-      UNITS.BUILDING_COLLECTOR_CLASS: 2
+      UNITS.BUILDING_COLLECTOR: 2
 			# If you need other collectors, check the list in horizons/constants.py (under UNITS)
 			# and comments about their behaviour in horizons/world/units/collectors/buildingcollector.py
 

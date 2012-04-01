@@ -32,8 +32,8 @@ def test_basic_wood_production(session, player):
 
 	settlement, island = settle(session)
 
-	lj = Build(BUILDINGS.LUMBERJACK_CLASS, 30, 30, island, settlement=settlement)(player)
-	assert lj.id == BUILDINGS.LUMBERJACK_CLASS
+	lj = Build(BUILDINGS.LUMBERJACK, 30, 30, island, settlement=settlement)(player)
+	assert lj.id == BUILDINGS.LUMBERJACK
 
 	storage = lj.get_component(StorageComponent)
 	assert isinstance(storage, StorageComponent)

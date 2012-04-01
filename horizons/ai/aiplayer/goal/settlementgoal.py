@@ -40,7 +40,7 @@ class SettlementGoal(Goal):
 
 	@property
 	def can_be_activated(self):
-		return super(SettlementGoal, self).can_be_activated and self.personality.residences_required <= self.settlement.count_buildings(BUILDINGS.RESIDENTIAL_CLASS)
+		return super(SettlementGoal, self).can_be_activated and self.personality.residences_required <= self.settlement.count_buildings(BUILDINGS.RESIDENTIAL)
 
 	def __str__(self):
 		return super(SettlementGoal, self).__str__() + ', ' + self.settlement_manager.settlement.get_component(NamedComponent).name

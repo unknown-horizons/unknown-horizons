@@ -224,7 +224,7 @@ class ResourceManager(WorldObject):
 		"""Return the amount of resource still needed to upgrade at most upgrade_limit residences."""
 		limit_left = upgrade_limit
 		needed = 0
-		for residence in self.settlement_manager.settlement.buildings_by_id.get(BUILDINGS.RESIDENTIAL_CLASS, []):
+		for residence in self.settlement_manager.settlement.buildings_by_id.get(BUILDINGS.RESIDENTIAL, []):
 			if limit_left <= 0:
 				break
 			production = residence._get_upgrade_production()

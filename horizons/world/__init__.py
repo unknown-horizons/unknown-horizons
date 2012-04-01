@@ -377,7 +377,7 @@ class World(BuildingOwner, WorldObject):
 			n += 1
 
 	def init_fish_indexer(self):
-		radius = Entities.buildings[ BUILDINGS.FISHERMAN_CLASS ].radius
+		radius = Entities.buildings[ BUILDINGS.FISHER ].radius
 		buildings = self.provider_buildings.provider_by_resources[RES.FISH_ID]
 		self.fish_indexer = BuildingIndexer(radius, self.full_map, buildings=buildings)
 
@@ -421,7 +421,7 @@ class World(BuildingOwner, WorldObject):
 			point = self.get_random_possible_ship_position()
 			# Execute command directly, not via manager, because else it would be transmitted over the
 			# network to other players. Those however will do the same thing anyways.
-			ship = CreateUnit(player.worldid, UNITS.PLAYER_SHIP_CLASS, point.x, point.y)(issuer=self.session.world.player)
+			ship = CreateUnit(player.worldid, UNITS.PLAYER_SHIP, point.x, point.y)(issuer=self.session.world.player)
 			# give ship basic resources
 			for res, amount in self.session.db("SELECT resource, amount FROM start_resources"):
 				ship.get_component(StorageComponent).inventory.alter(res, amount)

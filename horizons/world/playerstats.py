@@ -57,7 +57,7 @@ class PlayerStats(WorldObject):
 				buildings[building.id] += 1
 
 				# collect info about settlers
-				if building.id == BUILDINGS.RESIDENTIAL_CLASS:
+				if building.id == BUILDINGS.RESIDENTIAL:
 					settlers[building.level] += building.inhabitants
 					settler_buildings[building.level] += 1
 					for production in building.get_component(Producer).get_productions():
@@ -69,7 +69,7 @@ class PlayerStats(WorldObject):
 									settler_resources_provided[resource_id] += happiness / production.get_production_time()
 
 				# resources held in buildings
-				if building.has_component(StorageComponent) and building.id not in [BUILDINGS.WAREHOUSE_CLASS, BUILDINGS.STORAGE_CLASS, BUILDINGS.MAIN_SQUARE_CLASS]:
+				if building.has_component(StorageComponent) and building.id not in [BUILDINGS.WAREHOUSE, BUILDINGS.STORAGE, BUILDINGS.MAIN_SQUARE]:
 					for resource_id, amount in building.get_component(StorageComponent).inventory:
 						total_resources[resource_id] += amount
 
@@ -174,7 +174,7 @@ class PlayerStats(WorldObject):
 					total += extra_amount * value * self.unavailable_resource_coefficient
 		self.resource_score = int(total * self.resource_score_coefficient)
 
-	unit_value = {UNITS.FRIGATE_CLASS: 1.5, UNITS.PLAYER_SHIP_CLASS: 1, UNITS.USABLE_FISHER_BOAT: 1, UNITS.FISHER_BOAT_CLASS: 0.05}
+	unit_value = {UNITS.FRIGATE: 1.5, UNITS.PLAYER_SHIP: 1, UNITS.USABLE_FISHER_BOAT: 1, UNITS.FISHER_BOAT: 0.05}
 	unit_score_coefficient = 10
 
 	def _calculate_unit_score(self, ships):

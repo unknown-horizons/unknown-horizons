@@ -33,26 +33,26 @@ class AbstractBrickyard(AbstractBuilding):
 
 	@classmethod
 	def register_buildings(cls):
-		cls._available_buildings[BUILDINGS.BRICKYARD_CLASS] = cls
+		cls._available_buildings[BUILDINGS.BRICKYARD] = cls
 
 class BrickyardEvaluator(BuildingEvaluator):
 	@classmethod
 	def create(cls, area_builder, x, y, orientation):
-		builder = area_builder.make_builder(BUILDINGS.BRICKYARD_CLASS, x, y, True, orientation)
+		builder = area_builder.make_builder(BUILDINGS.BRICKYARD, x, y, True, orientation)
 		if not builder:
 			return None
 
-		distance_to_clay_pit = cls._distance_to_nearest_building(area_builder, builder, BUILDINGS.CLAY_PIT_CLASS)
+		distance_to_clay_pit = cls._distance_to_nearest_building(area_builder, builder, BUILDINGS.CLAY_PIT)
 		distance_to_collector = cls._distance_to_nearest_collector(area_builder, builder)
 		if distance_to_clay_pit is None and distance_to_collector is None:
 			return None
 
 		personality = area_builder.owner.personality_manager.get('BrickyardEvaluator')
-		distance_penalty = Entities.buildings[BUILDINGS.BRICKYARD_CLASS].radius * personality.distance_penalty
+		distance_penalty = Entities.buildings[BUILDINGS.BRICKYARD].radius * personality.distance_penalty
 
 		alignment = cls._get_alignment(area_builder, builder.position.tuple_iter())
 		distance = cls._weighted_distance(distance_to_clay_pit, [(personality.collector_distance_importance, distance_to_collector)], distance_penalty)
-		value = float(Entities.buildings[BUILDINGS.BRICKYARD_CLASS].radius) / distance + alignment * personality.alignment_importance
+		value = float(Entities.buildings[BUILDINGS.BRICKYARD].radius) / distance + alignment * personality.alignment_importance
 		return BrickyardEvaluator(area_builder, builder, value)
 
 	@property
