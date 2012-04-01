@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2012-03-24 02:16+0100\n"
-"PO-Revision-Date: 2012-04-01 15:34+0200\n"
+"PO-Revision-Date: 2012-04-01 18:59+0200\n"
 "Last-Translator: Sergio <juarrox@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: es\n"
@@ -568,7 +568,7 @@ msgstr ""
 "El visor SDL está pensado solo como último recurso y tiene graves problemas "
 "gráficos. \n"
 "\n"
-"¡Utilícelo bajo su propio riesgo!"
+"¡Utilízalo bajo tu responsabilidad!"
 
 #: horizons/engine/settingshandler.py:224
 msgid "Invalid network port"
@@ -722,8 +722,8 @@ msgstr "Guardado a las {time}"
 #, python-format
 msgid "Saved {amount} time"
 msgid_plural "Saved {amount} times"
-msgstr[0] "Guardado {amount} veces"
-msgstr[1] ""
+msgstr[0] "Guardado {amount} vez"
+msgstr[1] "Guardado {amount} veces"
 
 #: horizons/gui/gui.py:625
 #, python-format
@@ -913,9 +913,9 @@ msgstr "Versión incorrecta"
 msgid "The game's version differs from your version. Every player in a multiplayer game must use the same version. This can be fixed by every player updating to the latest version. Game version: {game_version} Your version: {own_version}"
 msgstr ""
 "La versión del juego es diferente de la suya. Todos los jugadores en una "
-"partida multijugador debe utilizar la misma versión. Esto se puede "
-"solucionar actualizando a la última versión. La versión del juego: { "
-"game_version} Su versión {own_version}"
+"partida multijugador deben utilizar la misma versión. Esto se puede "
+"solucionar actualizando a la última versión. La versión del juego: "
+"{game_version} Su versión {own_version}"
 
 #: horizons/gui/modules/multiplayermenu.py:350
 #: horizons/gui/modules/singleplayermenu.py:111
