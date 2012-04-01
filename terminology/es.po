@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2012-03-31 21:42+0100\n"
-"PO-Revision-Date: 2012-03-31 23:35+0200\n"
+"PO-Revision-Date: 2012-04-01 18:38+0200\n"
 "Last-Translator: Sergio <juarrox@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: es\n"
@@ -211,7 +211,7 @@ msgid "tab"
 msgstr "pestaña"
 
 msgid "upgrade"
-msgstr "actualización"
+msgstr "mejora"
 
 msgid "your inhabitants"
 msgstr "tus habitantes"
@@ -222,7 +222,7 @@ msgstr "cerrar"
 # (poterminology) uh-tutorial/tutorial.pot (8)
 # (poterminology) uh/unknownhorizons.pot (1)
 msgid "companies"
-msgstr "negocio"
+msgstr "negocios"
 
 msgid "island"
 msgstr "isla"
@@ -365,11 +365,9 @@ msgid "built"
 msgstr "construido"
 
 # (poterminology) uh-tutorial/tutorial.pot (6)
-#
 # (poterminology) uh/unknownhorizons.pot (2)
-#
 msgid "pasture"
-msgstr "prado"
+msgstr "prado / pastos"
 
 msgid "reach"
 msgstr "llegar"
@@ -449,11 +447,9 @@ msgid "running costs"
 msgstr "costos de operación"
 
 # (poterminology) uh-tutorial/tutorial.pot (3)
-#
 # (poterminology) uh/unknownhorizons.pot (4)
-#
 msgid "sugar"
-msgstr "azucar"
+msgstr "azúcar"
 
 # (poterminology) uh-tutorial/tutorial.pot (7)
 #

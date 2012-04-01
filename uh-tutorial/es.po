@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: translate-uh@lists.unknown-horizons.org\n"
 "POT-Creation-Date: 2012-03-21 04:04+0100\n"
-"PO-Revision-Date: 2012-04-01 15:01+0200\n"
+"PO-Revision-Date: 2012-04-01 18:34+0200\n"
 "Last-Translator: Sergio <juarrox@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: es\n"
@@ -122,7 +122,7 @@ msgstr "Y ahora, vamos a empezar la partida en curso."
 #. This is a logbook page heading. Space is VERY short, please only translate to strings that fit (roughly 30 characters max).
 #: po/tutorial.py:26
 msgid "NEW TASK: SETTLE ON AN ISLAND"
-msgstr "NUEVA TAREA: ESTABLECERSE EN UNA ISLA"
+msgstr "ESTABLECERSE EN UNA ISLA"
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:28
@@ -176,7 +176,7 @@ msgid ""
 "TASK: Build a warehouse at the coast."
 msgstr ""
 "\n"
-"TAREA: Construye una lonja en la costa."
+"Construye una lonja en la costa."
 
 #. This is a logbook page heading. Space is VERY short, please only translate to strings that fit (roughly 30 characters max).
 #: po/tutorial.py:40
@@ -288,7 +288,7 @@ msgid ""
 "TASK: Build a lumberjack in a wooded area and connect it to a road."
 msgstr ""
 "\n"
-"TAREA: Construye un aserradero en un área boscoso y conéctalo a un camino."
+"Construye un aserradero en un área boscoso y conéctalo a un camino."
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:68
@@ -397,7 +397,7 @@ msgid ""
 "TASK: Build a hunter and a fisher."
 msgstr ""
 "\n"
-"TAREA: Construir un cazador y un pescador."
+"Construye un cazador y un pescador."
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:96
@@ -412,7 +412,7 @@ msgstr "Construya un puesto de caza y pesca. Conéctelos al asentamiento."
 #. This is a logbook page heading. Space is VERY short, please only translate to strings that fit (roughly 30 characters max).
 #: po/tutorial.py:100
 msgid "NEW TASK: MAIN SQUARE"
-msgstr "NUEVA TAREA: LA PLAZA PRINCIPAL"
+msgstr "LA PLAZA PRINCIPAL"
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:102
@@ -508,9 +508,9 @@ msgid ""
 "inhabitants. You also set the increment-specific global tax here and allow or "
 "deny inhabitants of this increment to upgrade to the next higher one."
 msgstr ""
-"En las diferentes pestañas de información de los diferentes niveles, puedes "
-"ver estadísticas de tus habitantes. También puedes fijar aquí un impuesto "
-"específico y global por nivel y permitir o denegar a tus habitantes de ese "
+"En las diferentes pestañas de información de crecimiento, puedes ver "
+"estadísticas de tus habitantes. También puedes fijar aquí un impuesto "
+"específico para cada nivel y permitir o denegar a tus habitantes de ese "
 "nivel que realicen mejoras para alcanzar el siguiente nivel."
 
 #. This message is displayed in the widget on the left screen part. Please keep it short enough to fit there!
@@ -623,7 +623,7 @@ msgid ""
 "TASK: Build at least three additional tents."
 msgstr ""
 "\n"
-"TAREA: Construir al menos tres tiendas adicionales."
+"Construye al menos tres tiendas adicionales."
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:150
@@ -648,7 +648,7 @@ msgstr ""
 #. This is a logbook page heading. Space is VERY short, please only translate to strings that fit (roughly 30 characters max).
 #: po/tutorial.py:154
 msgid "NEW TASK: BUILD SIGNAL FIRE"
-msgstr "CONSTRUIR UNA SEÑAL DE HUMO"
+msgstr "CONSTRUYE UNA SEÑAL DE HUMO"
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:156
@@ -712,6 +712,7 @@ msgid ""
 "After this little advertisment, the trader will also stop by and look into "
 "your warehouse if it planned to sail past it."
 msgstr ""
+"\n"
 "Tras este pequeño anuncio, el comerciante pasará y si tuviese previsto "
 "zarpar echará un vistazo en lonja."
 
@@ -755,7 +756,7 @@ msgid ""
 "TASK: Build a signal fire at the coast close to your warehouse."
 msgstr ""
 "\n"
-"Construya una señal de humo en la costa cerca de tu lonja.."
+"Construye una señal de humo en la costa cerca de tu lonja."
 
 #. This message is displayed in the widget on the left screen part. Please keep it short enough to fit there!
 #: po/tutorial.py:180
@@ -876,8 +877,7 @@ msgid ""
 "TASK: Buy as many tools as you need to have 30 tools in stock!"
 msgstr ""
 "\n"
-"TAREA: ¡Comprar tantas herramientas necesites como para mantener 30 en el "
-"almacén!"
+"¡Compra las herramientas que necesites hasta completar 30 en el almacén!"
 
 #. This message is displayed in the widget on the left screen part. Please keep it short enough to fit there!
 #: po/tutorial.py:206
@@ -1317,8 +1317,8 @@ msgid ""
 "you like."
 msgstr ""
 "\n"
-"TAREA: Construye al menos un prado alrededor de la granja y añade si quieres "
-"campos de patata."
+"Construye al menos un prado alrededor de la granja y añade si quieres campos "
+"de patata."
 
 #. This message is displayed in the widget on the left screen part. Please keep it short enough to fit there!
 #: po/tutorial.py:308
@@ -1436,8 +1436,8 @@ msgid ""
 "TASK: Build a storage tent, preferably where you need collectors."
 msgstr ""
 "\n"
-"TAREA: Construir una tienda de almacenamiento, preferentemente donde "
-"necesites transportistas."
+"Construir una tienda de almacenamiento, preferentemente donde necesites "
+"transportistas."
 
 #. This message is displayed in the widget on the left screen part. Please keep it short enough to fit there!
 #: po/tutorial.py:334
@@ -1491,7 +1491,7 @@ msgid ""
 "TASK: Build a weaver positioned so it can get wool."
 msgstr ""
 "\n"
-"TAREA: Construye una tejedora de forma que pueda recoger lana."
+"Construye una tejedora de forma que pueda recoger lana."
 
 #. This message is displayed in the widget on the left screen part. Please keep it short enough to fit there!
 #: po/tutorial.py:348

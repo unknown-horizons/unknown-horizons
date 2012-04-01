@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2012-03-24 02:16+0100\n"
-"PO-Revision-Date: 2012-04-01 15:28+0200\n"
+"PO-Revision-Date: 2012-04-01 15:34+0200\n"
 "Last-Translator: Sergio <juarrox@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: es\n"
@@ -482,11 +482,12 @@ msgstr ""
 "{player1} y {player2} han terminado su alianza y ahora están en estado de "
 "guerra."
 
+# 75%
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
 #, python-format
 msgid "{player1} and {player2} have settled their hostility."
-msgstr ""
+msgstr "{player1} y {player2} se han aliado."
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
@@ -770,7 +771,7 @@ msgstr "¡Error al borrar la partida guardada!"
 
 #. i18n this defines how each line in our help looks like. Default: '[C] = Chat'
 #: horizons/gui/gui.py:681
-#, python-format, fuzzy
+#, python-format, 
 msgid "[{key}] = {text}"
 msgstr "[{key}] = {text}"
 
@@ -1080,7 +1081,6 @@ msgid "Mining"
 msgstr "Minería"
 
 #: horizons/gui/tabs/buildtabs.py:149
-#, fuzzy
 msgid "Increment {increment}"
 msgstr "Incremento {increment}"
 
@@ -1715,7 +1715,6 @@ msgstr "6 residentes"
 # 90%
 #. (text of widget: resident_7)
 #: horizons/i18n/guitranslations.py:244
-#, fuzzy
 msgid "7 residents"
 msgstr "7 residentes"
 
@@ -1724,7 +1723,6 @@ msgstr "7 residentes"
 # 90%
 #. (text of widget: resident_8)
 #: horizons/i18n/guitranslations.py:246
-#, fuzzy
 msgid "8 residents"
 msgstr "8 residentes"
 
@@ -2492,7 +2490,6 @@ msgstr "Unirse"
 # 90%
 #. (text of widget: load_game_lbl)
 #: horizons/i18n/guitranslations.py:868
-#, fuzzy
 msgid "Load game:"
 msgstr "Cargar partida:"
 
@@ -2854,6 +2851,7 @@ msgstr "Cuartel"
 msgid "Recruits units suitable for ground combat."
 msgstr "Recluta unidades adecuadas para el combate terrestre."
 
+# Creo que se refiere al programa de diseño 3D, y no a una licuadora.
 #. name of buildings:blender
 #: horizons/i18n/objecttranslations.py:74
 msgid "Blender"
