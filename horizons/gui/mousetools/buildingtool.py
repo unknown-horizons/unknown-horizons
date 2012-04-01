@@ -359,9 +359,13 @@ class BuildingTool(NavigationTool):
 		except KeyError:
 			pass
 		else:
-			radius_only_on_island = True
-			if 'range_applies_only_on_island' in template:
-				radius_only_on_island =  template['range_applies_only_on_island']
+			radius_on_island = True
+			radius_on_water = False
+			if 'range_applies_on_island' in template:
+				radius_on_island =  template['range_applies_on_island']
+			if 'range_applies_on_water' in template:
+				radius_on_water = template['range_applies_on_water']
+			radius_only_on_island = radius_on_island and not radius_on_water
 
 			SelectableBuildingComponent.select_building(self.session, building.position, settlement, self._class.radius, radius_only_on_island)
 

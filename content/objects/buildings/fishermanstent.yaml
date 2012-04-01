@@ -15,7 +15,8 @@ buildingcosts: {1: 250, 4: 3, 6: 1}
 components:
 - SelectableComponent:
     type: building
-    range_applies_only_on_island: False
+    range_applies_on_island: False
+    range_applies_on_water: True
     tabs: [ProductionOverviewTab]
     enemy_tabs: [EnemyBuildingOverviewTab,]
 - HealthComponent: {maxhealth: 1000}

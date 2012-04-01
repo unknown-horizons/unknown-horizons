@@ -129,10 +129,11 @@ class SelectableBuildingComponent(SelectableComponent):
 		cls._selected_fake_tiles.l = []
 
 
-	def __init__(self, tabs, enemy_tabs, range_applies_only_on_island=True):
+	def __init__(self, tabs, enemy_tabs, range_applies_on_island=True, range_applies_on_water=False):
 		super(SelectableBuildingComponent, self).__init__(tabs, enemy_tabs)
 
-		self.range_applies_only_on_island = range_applies_only_on_island
+		self.range_applies_on_island = range_applies_on_island
+		self.range_applies_on_water = range_applies_on_water
 
 	def initialize(self):
 		# check for related buildings (defined in db, not yaml)
@@ -151,8 +152,10 @@ class SelectableBuildingComponent(SelectableComponent):
 		if self.instance.owner is None or not self.instance.owner.is_local_player:
 			return # don't show enemy ranges
 		renderer = self.session.view.renderer['InstanceRenderer']
+		if( not self.range_applies_on_island and self.range_applies_on_water ):
+			print "FISHER!"
 		self._do_select(renderer, self.instance.position, self.session.world,
-		                self.instance.settlement, self.instance.radius, self.range_applies_only_on_island)
+		                self.instance.settlement, self.instance.radius, ( self.range_applies_on_island and not self.range_applies_on_water ))
 
 	def set_selection_outline(self):
 		"""Only set the selection outline.
