@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2012-03-31 21:42+0100\n"
-"PO-Revision-Date: 2012-04-01 18:38+0200\n"
+"PO-Revision-Date: 2012-04-01 18:39+0200\n"
 "Last-Translator: Sergio <juarrox@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: es\n"
@@ -228,9 +228,7 @@ msgid "island"
 msgstr "isla"
 
 # (poterminology) uh-tutorial/tutorial.pot (13)
-#
 # (poterminology) uh/unknownhorizons.pot (2)
-#
 msgid "time"
 msgstr "tiempo"
 
@@ -286,9 +284,7 @@ msgid "Unknown Horizons"
 msgstr "Horizontes Desconocidos"
 
 # (poterminology) uh-tutorial/tutorial.pot (7)
-#
 # (poterminology) uh/unknownhorizons.pot (4)
-#
 msgid "wool"
 msgstr "lana"
 
@@ -390,9 +386,7 @@ msgid "your settlement"
 msgstr "tu asentamiento"
 
 # (poterminology) uh-tutorial/tutorial.pot (3)
-#
 # (poterminology) uh/unknownhorizons.pot (1)
-#
 msgid "add"
 msgstr "añadir"
 
@@ -471,12 +465,8 @@ msgstr "herramientas"
 msgid "button"
 msgstr "botón"
 
-#
-#
 # (poterminology) uh-tutorial/tutorial.pot (1)
-#
 # (poterminology) uh/unknownhorizons.pot (1)
-#
 msgid "continue"
 msgstr "continuar"
 
@@ -521,11 +511,15 @@ msgstr "modo"
 msgid "move"
 msgstr "mover"
 
+# (poterminology) uh-tutorial/tutorial.pot (4)
+# (poterminology) uh/unknownhorizons.pot (2)
+# 87%
 msgid "pioneers"
-msgstr ""
+msgstr "pioneros"
 
+# 87%
 msgid "citizens"
-msgstr ""
+msgstr "ciudadanos"
 
 # 88%
 msgid "merchants"
@@ -570,9 +564,7 @@ msgid "access"
 msgstr "acceso"
 
 # (poterminology) uh-tutorial/tutorial.pot (2)
-#
 # (poterminology) uh/unknownhorizons.pot (1)
-#
 msgid "account"
 msgstr "cuenta"
 
@@ -580,9 +572,7 @@ msgid "amount"
 msgstr "cantidad"
 
 # (poterminology) uh-tutorial/tutorial.pot (2)
-#
 # (poterminology) uh/unknownhorizons.pot (2)
-#
 msgid "build menu"
 msgstr "menú de construcción"
 
@@ -657,16 +647,12 @@ msgid "offer"
 msgstr "oferta"
 
 # (poterminology) uh-tutorial/tutorial.pot (3)
-#
 # (poterminology) uh/unknownhorizons.pot (1)
-#
 msgid "potatoes"
 msgstr "patatas"
 
 # (poterminology) uh-tutorial/tutorial.pot (4)
-#
 # (poterminology) uh/unknownhorizons.pot (1)
-#
 msgid "range"
 msgstr "alcance"
 
@@ -694,9 +680,7 @@ msgid "target"
 msgstr "objetivo"
 
 # (poterminology) uh-tutorial/tutorial.pot (2)
-#
 # (poterminology) uh/unknownhorizons.pot (1)
-#
 msgid "team"
 msgstr "equipo"
 
@@ -707,9 +691,7 @@ msgid "unable"
 msgstr "incapaz"
 
 # (poterminology) uh-tutorial/tutorial.pot (3)
-#
 # (poterminology) uh/unknownhorizons.pot (3)
-#
 msgid "active"
 msgstr "activo"
 
@@ -743,16 +725,12 @@ msgid "entries"
 msgstr "entradas"
 
 # (poterminology) uh-tutorial/tutorial.pot (2)
-#
 # (poterminology) uh/unknownhorizons.pot (1)
-#
 msgid "feature"
 msgstr "característica"
 
 # (poterminology) uh-tutorial/tutorial.pot (2)
-#
 # (poterminology) uh/unknownhorizons.pot (1)
-#
 msgid "forest"
 msgstr "bosque"
 
@@ -769,28 +747,18 @@ msgid "idle"
 msgstr "parado"
 
 # (poterminology) uh-tutorial/tutorial.pot (2)
-#
 # (poterminology) uh/unknownhorizons.pot (1)
-#
 msgid "income"
 msgstr "ingresos"
 
-#
-#
 # (poterminology) uh-tutorial/tutorial.pot (1)
-#
 # (poterminology) uh/unknownhorizons.pot (1)
-#
 msgid "information"
 msgstr "información"
 
 # (keyboard)
-#
-#
 # (poterminology) uh-tutorial/tutorial.pot (1)
-#
 # (poterminology) uh/unknownhorizons.pot (1)
-#
 msgid "key"
 msgstr "tecla"
 
@@ -830,27 +798,17 @@ msgid "return"
 msgstr "regreso"
 
 # (poterminology) uh-tutorial/tutorial.pot (2)
-#
 # (poterminology) uh/unknownhorizons.pot (1)
-#
 msgid "sale"
 msgstr "venta"
 
-#
-#
 # (poterminology) uh-tutorial/tutorial.pot (1)
-#
 # (poterminology) uh/unknownhorizons.pot (2)
-#
 msgid "screen"
 msgstr "pantalla"
 
-#
-#
 # (poterminology) uh-tutorial/tutorial.pot (1)
-#
 # (poterminology) uh/unknownhorizons.pot (2)
-#
 msgid "sound"
 msgstr "sonido"
 
@@ -867,16 +825,12 @@ msgid "tear"
 msgstr "infringir"
 
 # (poterminology) uh-tutorial/tutorial.pot (2)
-#
 # (poterminology) uh/unknownhorizons.pot (1)
-#
 msgid "from time to time"
 msgstr "de vez en cuando"
 
 # (poterminology) uh-tutorial/tutorial.pot (2)
-#
 # (poterminology) uh/unknownhorizons.pot (1)
-#
 msgid "trading"
 msgstr "comercio"
 
@@ -886,9 +840,7 @@ msgid "village"
 msgstr "pueblo / villa"
 
 # (poterminology) uh-tutorial/tutorial.pot (2)
-#
 # (poterminology) uh/unknownhorizons.pot (1)
-#
 msgid "visit"
 msgstr "visitar"
 
@@ -907,12 +859,8 @@ msgstr "tu navío"
 msgid "back"
 msgstr "atrás"
 
-#
-#
 # (poterminology) uh-tutorial/tutorial.pot (1)
-#
 # (poterminology) uh/unknownhorizons.pot (2)
-#
 msgid "build settlement"
 msgstr "construir asentamiento"
 
@@ -940,60 +888,36 @@ msgstr "vacío"
 msgid "ensure"
 msgstr "asegurar"
 
-#
-#
 # (poterminology) uh-tutorial/tutorial.pot (1)
-#
 # (poterminology) uh/unknownhorizons.pot (1)
-#
 msgid "fulfill"
 msgstr "cumplir / realizar"
 
-#
-#
 # (poterminology) uh-tutorial/tutorial.pot (1)
-#
 # (poterminology) uh/unknownhorizons.pot (1)
-#
 msgid "graphics"
 msgstr "gráficos"
 
 msgid "harvest"
 msgstr "cosecha"
 
-#
-#
 # (poterminology) uh-tutorial/tutorial.pot (1)
-#
 # (poterminology) uh/unknownhorizons.pot (1)
-#
 msgid "hunts"
 msgstr "caza"
 
-#
-#
 # (poterminology) uh-tutorial/tutorial.pot (1)
-#
 # (poterminology) uh/unknownhorizons.pot (2)
-#
 msgid "multiple"
 msgstr "múltiples"
 
-#
-#
 # (poterminology) uh-tutorial/tutorial.pot (1)
-#
 # (poterminology) uh/unknownhorizons.pot (2)
-#
 msgid "potato field"
 msgstr "campo de patatas"
 
-#
-#
 # (poterminology) uh-tutorial/tutorial.pot (1)
-#
 # (poterminology) uh/unknownhorizons.pot (2)
-#
 msgid "school"
 msgstr "escuela"
 
