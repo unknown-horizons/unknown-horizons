@@ -11,7 +11,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Translate Toolkit 1.9.0\n"
+"X-Generator: Pootle 2.1.5\n"
 
 msgid "build"
 msgstr "construir"
@@ -74,8 +74,10 @@ msgstr ""
 msgid "main square"
 msgstr "praça principal"
 
+# 85%
+#, fuzzy
 msgid "sailors"
-msgstr ""
+msgstr "marinheiro"
 
 msgid "food"
 msgstr "alimento"
@@ -271,8 +273,10 @@ msgstr ""
 msgid "move"
 msgstr ""
 
+# 87%
+#, fuzzy
 msgid "pioneers"
-msgstr ""
+msgstr "pioneiro"
 
 msgid "citizens"
 msgstr ""
@@ -346,8 +350,10 @@ msgstr ""
 msgid "offer"
 msgstr ""
 
+# 75%
+#, fuzzy
 msgid "potatoes"
-msgstr ""
+msgstr "batata"
 
 msgid "range"
 msgstr "abrangência / área de captação"
@@ -385,8 +391,10 @@ msgstr "ativo"
 msgid "afford"
 msgstr ""
 
+# 85%
+#, fuzzy
 msgid "animals"
-msgstr ""
+msgstr "animal"
 
 msgid "Captain's log"
 msgstr ""
@@ -491,8 +499,10 @@ msgstr ""
 msgid "world"
 msgstr ""
 
+# 80%
+#, fuzzy
 msgid "yield"
-msgstr ""
+msgstr "campo"
 
 msgid "your ship"
 msgstr ""
