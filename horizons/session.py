@@ -39,7 +39,6 @@ from horizons.gui.keylisteners import IngameKeyListener
 from horizons.scheduler import Scheduler
 from horizons.extscheduler import ExtScheduler
 from horizons.view import View
-from horizons.gui import Gui
 from horizons.world import World
 from horizons.entities import Entities
 from horizons.util import WorldObject, LivingObject, livingProperty, SavegameAccessor
@@ -207,7 +206,6 @@ class Session(LivingObject):
 		self.selection_groups = None
 
 		self.status_icon_manager = None
-		self.message_bus = None
 
 		horizons.main._modules.session = None
 		self._clear_caches()

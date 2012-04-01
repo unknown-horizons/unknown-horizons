@@ -92,13 +92,13 @@ class MPManager(LivingObject):
 	def can_tick(self, tick):
 		"""Checks if we can execute this tick via return value"""
 		# get new packages fom networkinteface
-		packets = None
+		packets_received = None
 		try:
-			packets = self.networkinterface.receive_all()
+			packets_received = self.networkinterface.receive_all()
 		except CommandError:
 			return Timer.TEST_SKIP
 
-		for packet in packets:
+		for packet in packets_received:
 			if isinstance(packet, CommandPacket):
 				self.log.debug("Got command packet from " + str(packet.player_id) + " for tick " + str(packet.tick))
 				self.commandsmanager.add_packet(packet)

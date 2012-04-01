@@ -22,12 +22,9 @@
 
 __all__ = ['island', 'nature', 'player', 'settlement', 'ambientsound']
 
-import bisect
 import logging
 import json
 import copy
-import itertools
-import os.path
 
 from collections import deque
 
@@ -36,25 +33,21 @@ from horizons.world.island import Island
 from horizons.world.player import HumanPlayer
 from horizons.util import Point, Rect, Circle, WorldObject
 from horizons.util.color import Color
-from horizons.constants import UNITS, BUILDINGS, RES, GROUND, GAME, WILD_ANIMAL
+from horizons.constants import UNITS, BUILDINGS, RES, GROUND, GAME
 from horizons.ai.trader import Trader
 from horizons.ai.pirate import Pirate
 from horizons.ai.aiplayer import AIPlayer
 from horizons.entities import Entities
 from horizons.util import decorators, BuildingIndexer
-from horizons.util.dbreader import DbReader
-from horizons.util.uhdbaccessor import read_savegame_template
 from horizons.world.buildingowner import BuildingOwner
 from horizons.world.diplomacy import Diplomacy
 from horizons.world.units.bullet import Bullet
 from horizons.world.units.weapon import Weapon
-from horizons.command.building import Build
 from horizons.command.unit import CreateUnit
 from horizons.world.component.healthcomponent import HealthComponent
 from horizons.world.component.storagecomponent import StorageComponent
-from horizons.world.component.selectablecomponent import SelectableComponent
 from horizons.world.disaster.disastermanager import DisasterManager
-import horizons.world.worldutils # keep like this to make origin visible
+from horizons.world import worldutils
 
 class World(BuildingOwner, WorldObject):
 	"""The World class represents an Unknown Horizons map with all its units, grounds, buildings, etc.
