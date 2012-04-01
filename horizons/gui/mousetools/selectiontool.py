@@ -26,7 +26,7 @@ from horizons.command.unit import Act
 from horizons.util import WorldObject
 from horizons.util.worldobject import WorldObjectNotFound
 from horizons.gui.mousetools.navigationtool import NavigationTool
-from horizons.world.component.selectablecomponent import SelectableComponent
+from horizons.world.component.selectablecomponent import SelectableComponent,SelectableBuildingComponent
 from horizons.constants import LAYERS
 
 class SelectionTool(NavigationTool):
@@ -222,7 +222,8 @@ class SelectionTool(NavigationTool):
 
 		# sanity:
 		# - if at least one unit, then only units
-		if any( not instance.is_building for instance in instances ):
+		unit_in_selection = any( not instance.is_building for instance in instances )
+		if unit_in_selection:
 			instances = [ instance for instance in instances if not instance.is_building ]
 		# - no multiple entities from enemy selected
 		if len(instances) > 1:
@@ -236,9 +237,39 @@ class SelectionTool(NavigationTool):
 		# apply changes
 		selected_components = set(self.filter_component(SelectableComponent, 
 					  self.filter_selectable(self.session.selected_instances)))
-		for sel_comp in selected_components - selectable:
-			sel_comp.deselect()
-		for sel_comp in selectable - selected_components:
-			sel_comp.select()
+		selected_instances = set(self.filter_selectable(self.session.selected_instances))
+
+		renderer = self.session.view.renderer['InstanceRenderer']
+		
+		#we have non-buildings in selection: do a simple deselection/seleciton routine
+		#since buildings were filtered out before anyway (units were preferred)
+		if unit_in_selection:
+				for sel_comp in selected_components - selectable:
+					sel_comp.deselect()
+				for sel_comp in selectable - selected_components:
+					sel_comp.select()
+		#if there were only buildings: do things smarter way since
+		#updating building range can get heavy for large group
+		else:
+			#below: if there is a size difference between previous selection and currently hovered
+			#apply selection routine, otherwise there's no point
+			#it assumes player can't deselect a building and add another at one mouse gesture
+			#special case when there was one building selected and user clicks another one
+			if( len(selected_components) != len(selectable) or len(selected_components) == 1 ): 
+				difference_to_deselect = selected_components - selectable
+
+				#deselect buildings that need to be deselected
+				for sel_comp in difference_to_deselect:
+					sel_comp.deselect()
+
+				#if any did, select everything once again
+				if(difference_to_deselect):
+					SelectableBuildingComponent.select_many_buildings(list(instances), renderer)
+				#otherwise it means that selection differed because new were added, in this case
+				#select new buildings
+				else:
+					SelectableBuildingComponent.select_many_buildings(list(set(instances) - selected_instances), renderer)
+					#for sel_comp in selectable - selected_components:
+						#sel_comp.select()
 
 		self.session.selected_instances = set( i.instance for i in selectable )
