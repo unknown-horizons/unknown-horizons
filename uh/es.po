@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2012-03-24 02:16+0100\n"
-"PO-Revision-Date: 2012-04-01 18:59+0200\n"
+"PO-Revision-Date: 2012-04-01 19:02+0200\n"
 "Last-Translator: Sergio <juarrox@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: es\n"
@@ -1907,7 +1907,7 @@ msgstr "Comprar/Vender recursos"
 #. (text of widget: headline_trade_history)
 #: horizons/i18n/guitranslations.py:523
 msgid "Trade history"
-msgstr "Historial del comercio"
+msgstr "Historial de comercio"
 
 #. (text of widget: headline)
 #: horizons/i18n/guitranslations.py:528
