@@ -84,13 +84,13 @@ class DepositCoverageGoal(SettlementGoal):
 		return self._translate_build_result(result)
 
 class ClayDepositCoverageGoal(DepositCoverageGoal):
-	_deposit_resource_id = RES.RAW_CLAY_ID
+	_deposit_resource_id = RES.RAW_CLAY
 
 	def get_personality_name(self):
 		return 'ClayDepositCoverageGoal'
 
 class MountainCoverageGoal(DepositCoverageGoal):
-	_deposit_resource_id = RES.RAW_IRON_ID
+	_deposit_resource_id = RES.RAW_IRON
 
 	def get_personality_name(self):
 		return 'MountainCoverageGoal'

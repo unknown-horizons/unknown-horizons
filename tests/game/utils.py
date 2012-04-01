@@ -97,8 +97,8 @@ def settle(s):
 	Create a new settlement, start with some resources.
 	"""
 	settlement, island = new_settlement(s)
-	settlement.get_component(StorageComponent).inventory.alter(RES.GOLD_ID, 5000)
-	settlement.get_component(StorageComponent).inventory.alter(RES.BOARDS_ID, 50)
-	settlement.get_component(StorageComponent).inventory.alter(RES.TOOLS_ID, 50)
-	settlement.get_component(StorageComponent).inventory.alter(RES.BRICKS_ID, 50)
+	settlement.get_component(StorageComponent).inventory.alter(RES.GOLD, 5000)
+	settlement.get_component(StorageComponent).inventory.alter(RES.BOARDS, 50)
+	settlement.get_component(StorageComponent).inventory.alter(RES.TOOLS, 50)
+	settlement.get_component(StorageComponent).inventory.alter(RES.BRICKS, 50)
 	return settlement, island

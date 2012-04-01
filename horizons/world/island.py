@@ -324,7 +324,7 @@ class Island(BuildingOwner, WorldObject):
 			self.num_trees -= 1
 
 	def get_building_index(self, resource_id):
-		if resource_id == RES.WILDANIMALFOOD_ID:
+		if resource_id == RES.WILDANIMALFOOD:
 			return self.building_indexers[BUILDINGS.TREE]
 		return None
 

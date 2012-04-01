@@ -44,8 +44,8 @@ def test_example(s, p):
 	production.pause()
 
 	# Farm has no raw wool or wool.
-	assert farm.get_component(StorageComponent).inventory[RES.LAMB_WOOL_ID] == 0
-	assert farm.get_component(StorageComponent).inventory[RES.WOOL_ID] == 0
+	assert farm.get_component(StorageComponent).inventory[RES.LAMB_WOOL] == 0
+	assert farm.get_component(StorageComponent).inventory[RES.WOOL] == 0
 
 	# Build pastures, let the game run for 31 seconds. Pastures currently need
 	# 30s to produce wool.
@@ -55,17 +55,17 @@ def test_example(s, p):
 
 	s.run(seconds=31)
 
-	assert p1.get_component(StorageComponent).inventory[RES.LAMB_WOOL_ID]
-	assert p2.get_component(StorageComponent).inventory[RES.LAMB_WOOL_ID]
+	assert p1.get_component(StorageComponent).inventory[RES.LAMB_WOOL]
+	assert p2.get_component(StorageComponent).inventory[RES.LAMB_WOOL]
 
 	# Give farm collectors a chance to get the wool from the pastures.
 	s.run(seconds=5)
 
-	assert farm.get_component(StorageComponent).inventory[RES.LAMB_WOOL_ID]
+	assert farm.get_component(StorageComponent).inventory[RES.LAMB_WOOL]
 
 	# Resume the production, let the game run for a second. The farm should have
 	# produced wool now.
 	production.pause(pause=False)
 	s.run(seconds=1)
-	assert farm.get_component(StorageComponent).inventory[RES.WOOL_ID]
+	assert farm.get_component(StorageComponent).inventory[RES.WOOL]
 

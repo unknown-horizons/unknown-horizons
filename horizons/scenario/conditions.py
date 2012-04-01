@@ -76,12 +76,12 @@ def settler_level_greater(session, limit):
 @register(periodically=True)
 def player_gold_greater(session, limit):
 	"""Returns whether the player has more gold then limit"""
-	return (session.world.player.get_component(StorageComponent).inventory[RES.GOLD_ID] > limit)
+	return (session.world.player.get_component(StorageComponent).inventory[RES.GOLD] > limit)
 
 @register(periodically=True)
 def player_gold_less(session, limit):
 	"""Returns whether the player has less gold then limit"""
-	return (session.world.player.get_component(StorageComponent).inventory[RES.GOLD_ID] < limit)
+	return (session.world.player.get_component(StorageComponent).inventory[RES.GOLD] < limit)
 
 @register(periodically=True)
 def settlement_balance_greater(session, limit):

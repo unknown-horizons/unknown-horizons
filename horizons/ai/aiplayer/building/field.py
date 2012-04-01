@@ -56,26 +56,26 @@ class AbstractField(AbstractBuilding):
 
 	@classmethod
 	def get_purpose(cls, resource_id):
-		if resource_id == RES.POTATOES_ID:
+		if resource_id == RES.POTATOES:
 			return BUILDING_PURPOSE.POTATO_FIELD
-		elif resource_id == RES.LAMB_WOOL_ID:
+		elif resource_id == RES.LAMB_WOOL:
 			return BUILDING_PURPOSE.PASTURE
-		elif resource_id == RES.RAW_SUGAR_ID:
+		elif resource_id == RES.RAW_SUGAR:
 			return BUILDING_PURPOSE.SUGARCANE_FIELD
-		elif resource_id == RES.TOBACCO_PLANTS_ID:
+		elif resource_id == RES.TOBACCO_PLANTS:
 			return BUILDING_PURPOSE.TOBACCO_FIELD
 		return None
 
 	@classmethod
 	def get_higher_level_resource(cls, resource_id):
-		if resource_id == RES.POTATOES_ID:
-			return RES.FOOD_ID
-		elif resource_id == RES.LAMB_WOOL_ID:
-			return RES.WOOL_ID
-		elif resource_id == RES.RAW_SUGAR_ID:
-			return RES.SUGAR_ID
-		elif resource_id == RES.TOBACCO_PLANTS_ID:
-			return RES.TOBACCO_LEAVES_ID
+		if resource_id == RES.POTATOES:
+			return RES.FOOD
+		elif resource_id == RES.LAMB_WOOL:
+			return RES.WOOL
+		elif resource_id == RES.RAW_SUGAR:
+			return RES.SUGAR
+		elif resource_id == RES.TOBACCO_PLANTS:
+			return RES.TOBACCO_LEAVES
 		return None
 
 	def build(self, settlement_manager, resource_id):

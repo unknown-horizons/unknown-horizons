@@ -80,9 +80,9 @@ events:
   - type: building_num_of_type_greater
     arguments: [BUILDINGS.LUMBERJACK, 0]
   - type: settlement_res_stored_greater
-    arguments: [RES.BOARDS_ID, 4]
+    arguments: [RES.BOARDS, 4]
   - type: settlement_res_stored_greater
-    arguments: [RES.FOOD_ID, 4]
+    arguments: [RES.FOOD, 4]
 
 - # basic residence setup
   actions:

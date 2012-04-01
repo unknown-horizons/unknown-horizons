@@ -30,7 +30,7 @@ class FireStationGoal(SettlementGoal):
 
 	@property
 	def can_be_activated(self):
-		return super(FireStationGoal, self).can_be_activated and self.settlement_manager.get_resource_production(RES.BRICKS_ID) > 0
+		return super(FireStationGoal, self).can_be_activated and self.settlement_manager.get_resource_production(RES.BRICKS) > 0
 
 	@property
 	def active(self):

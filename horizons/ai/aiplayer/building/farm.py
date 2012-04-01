@@ -41,13 +41,13 @@ class AbstractFarm(AbstractBuilding):
 
 	@classmethod
 	def get_purpose(cls, resource_id):
-		if resource_id == RES.FOOD_ID:
+		if resource_id == RES.FOOD:
 			return BUILDING_PURPOSE.POTATO_FIELD
-		elif resource_id == RES.WOOL_ID:
+		elif resource_id == RES.WOOL:
 			return BUILDING_PURPOSE.PASTURE
-		elif resource_id == RES.SUGAR_ID:
+		elif resource_id == RES.SUGAR:
 			return BUILDING_PURPOSE.SUGARCANE_FIELD
-		elif resource_id == RES.TOBACCO_LEAVES_ID:
+		elif resource_id == RES.TOBACCO_LEAVES:
 			return BUILDING_PURPOSE.TOBACCO_FIELD
 		return None
 

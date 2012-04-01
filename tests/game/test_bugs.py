@@ -43,12 +43,12 @@ def test_ticket_979(s, p):
 
 	# Let it work for a bit
 	s.run(seconds=60)
-	assert farm.get_component(StorageComponent).inventory[RES.FOOD_ID]
+	assert farm.get_component(StorageComponent).inventory[RES.FOOD]
 
 	# Depending on auto unloading (which we aren't interested in here),
 	# the settlement inventory may already be full of food: dispose of it
-	settlement.get_component(StorageComponent).inventory.alter(RES.FOOD_ID, -settlement.get_component(StorageComponent).inventory[RES.FOOD_ID])
-	assert settlement.get_component(StorageComponent).inventory[RES.FOOD_ID] == 0
+	settlement.get_component(StorageComponent).inventory.alter(RES.FOOD, -settlement.get_component(StorageComponent).inventory[RES.FOOD])
+	assert settlement.get_component(StorageComponent).inventory[RES.FOOD] == 0
 
 	# Build a road, connecting farm and warehouse
 	for y in range(23, 30):
@@ -94,8 +94,8 @@ def test_ticket_1005(s, p):
 	assert len(s.world.ships) == 2
 
 	builder = Build(BUILDINGS.BOATBUILDER, 35, 20, island, settlement=settlement)(p)
-	builder.get_component(StorageComponent).inventory.alter(RES.TEXTILE_ID, 5)
-	builder.get_component(StorageComponent).inventory.alter(RES.BOARDS_ID, 4)
+	builder.get_component(StorageComponent).inventory.alter(RES.TEXTILE, 5)
+	builder.get_component(StorageComponent).inventory.alter(RES.BOARDS, 4)
 	builder.get_component(Producer).add_production_by_id(15)
 
 	s.run(seconds=130)
@@ -109,8 +109,8 @@ def test_ticket_1232(s, p):
 	assert len(s.world.ships) == 2
 
 	boat_builder = Build(BUILDINGS.BOATBUILDER, 35, 20, island, settlement=settlement)(p)
-	boat_builder.get_component(StorageComponent).inventory.alter(RES.TEXTILE_ID, 10)
-	boat_builder.get_component(StorageComponent).inventory.alter(RES.BOARDS_ID, 8)
+	boat_builder.get_component(StorageComponent).inventory.alter(RES.TEXTILE, 10)
+	boat_builder.get_component(StorageComponent).inventory.alter(RES.BOARDS, 8)
 	assert isinstance(boat_builder.get_component(Producer),QueueProducer)
 
 	production_finished = [False]
@@ -123,9 +123,9 @@ def test_ticket_1232(s, p):
 	assert not boat_builder.get_component(Producer).is_active()
 	assert len(s.world.ships) == 3
 	# Make sure enough res are available
-	boat_builder.get_component(StorageComponent).inventory.alter(RES.TEXTILE_ID, 10)
-	boat_builder.get_component(StorageComponent).inventory.alter(RES.BOARDS_ID, 8)
-	boat_builder.get_component(StorageComponent).inventory.alter(RES.TOOLS_ID, 5)
+	boat_builder.get_component(StorageComponent).inventory.alter(RES.TEXTILE, 10)
+	boat_builder.get_component(StorageComponent).inventory.alter(RES.BOARDS, 8)
+	boat_builder.get_component(StorageComponent).inventory.alter(RES.TOOLS, 5)
 
 	boat_builder.get_component(Producer).add_production_by_id(PRODUCTIONLINES.HUKER)
 	assert boat_builder.get_component(Producer).is_active()
@@ -160,7 +160,7 @@ def test_ticket_1427():
 	worldid = boat_builder.worldid
 
 	# Make sure no boards are available
-	settlement.get_component(StorageComponent).inventory.alter(RES.BOARDS_ID, -1000)
+	settlement.get_component(StorageComponent).inventory.alter(RES.BOARDS, -1000)
 
 	bb_storage = boat_builder.get_component(StorageComponent)
 
@@ -171,8 +171,8 @@ def test_ticket_1427():
 
 	assert production.progress == 0.0
 
-	bb_storage.inventory.alter(RES.TEXTILE_ID, 10)
-	bb_storage.inventory.alter(RES.BOARDS_ID, 6)
+	bb_storage.inventory.alter(RES.TEXTILE, 10)
+	bb_storage.inventory.alter(RES.BOARDS, 6)
 
 	production_line = production._prod_line
 
@@ -180,7 +180,7 @@ def test_ticket_1427():
 	session.run(seconds=10)
 
 	# Check if correctly consumed wood
-	assert production_line.consumed_res[RES.BOARDS_ID] == -2
+	assert production_line.consumed_res[RES.BOARDS] == -2
 
 	# Save all production process for later
 	expected_consumed_res = production_line.consumed_res
@@ -189,7 +189,7 @@ def test_ticket_1427():
 	expected_progress = production.progress
 
 	# Make sure the producer used the boards
-	assert bb_storage.inventory[RES.BOARDS_ID] == 0
+	assert bb_storage.inventory[RES.BOARDS] == 0
 
 	fd, filename = tempfile.mkstemp()
 	os.close(fd)
@@ -225,14 +225,14 @@ def test_settler_level(s, p):
 
 	# make it happy
 	inv = settler.get_component(StorageComponent).inventory
-	to_give = inv.get_free_space_for(RES.HAPPINESS_ID)
-	inv.alter(RES.HAPPINESS_ID, to_give)
+	to_give = inv.get_free_space_for(RES.HAPPINESS)
+	inv.alter(RES.HAPPINESS, to_give)
 	level = settler.level
 
 	s.run(seconds=GAME.INGAME_TICK_INTERVAL)
 
 	# give upgrade res
-	inv.alter(RES.BOARDS_ID, 100)
+	inv.alter(RES.BOARDS, 100)
 
 	s.run(seconds=GAME.INGAME_TICK_INTERVAL)
 
@@ -247,7 +247,7 @@ def test_ticket_1523(s, p):
 
 	# Let it work for a bit
 	s.run(seconds=60)
-	assert farm.get_component(StorageComponent).inventory[RES.FOOD_ID]
+	assert farm.get_component(StorageComponent).inventory[RES.FOOD]
 
 
 	assert isinstance(farm.get_component(Producer)._Producer__utilisation, FieldUtilisation)

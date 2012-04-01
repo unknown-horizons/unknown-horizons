@@ -63,8 +63,8 @@ class PlayerStats(WorldObject):
 					for production in building.get_component(Producer).get_productions():
 						if production.get_state() is PRODUCTION.STATES.producing:
 							produced_res = production.get_produced_res()
-							if RES.HAPPINESS_ID in produced_res:
-								happiness = produced_res[RES.HAPPINESS_ID]
+							if RES.HAPPINESS in produced_res:
+								happiness = produced_res[RES.HAPPINESS]
 								for resource_id in production.get_consumed_resources():
 									settler_resources_provided[resource_id] += happiness / production.get_production_time()
 
@@ -108,7 +108,7 @@ class PlayerStats(WorldObject):
 		self._calculate_resource_score(available_resources, total_resources)
 		self._calculate_unit_score(ships)
 		self._calculate_land_score(usable_land, settlements)
-		self._calculate_money_score(running_costs, taxes, self.player.get_component(StorageComponent).inventory[RES.GOLD_ID])
+		self._calculate_money_score(running_costs, taxes, self.player.get_component(StorageComponent).inventory[RES.GOLD])
 		self._calculate_total_score()
 
 	settler_values = {
@@ -145,14 +145,14 @@ class PlayerStats(WorldObject):
 			for resource_id, res_amount in Entities.buildings[building_id].costs.iteritems():
 				resources[resource_id] += amount * res_amount
 		for resource_id, amount in resources.iteritems():
-			if resource_id == RES.GOLD_ID:
+			if resource_id == RES.GOLD:
 				total += amount # for some reason the value of gold is 0 by default
 			else:
 				total += amount * self.db.get_res_value(resource_id)
 		self.building_score = int(total * self.building_score_coefficient)
 
 	unavailable_resource_coefficient = 0.3 # the resource exists but isn't usable so it is worth less
-	overridden_resource_values = {RES.RAW_CLAY_ID: 1, RES.RAW_IRON_ID: 3}
+	overridden_resource_values = {RES.RAW_CLAY: 1, RES.RAW_IRON: 3}
 	resource_score_coefficient = 0.01
 
 	def _calculate_resource_score(self, available_resources, total_resources):

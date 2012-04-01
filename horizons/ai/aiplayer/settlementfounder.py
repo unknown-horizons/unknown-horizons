@@ -70,11 +70,11 @@ class SettlementFounder(object):
 
 		# calculate the value of the island by taking into account the available land, resources, and number of enemy settlements
 		value = flat_land
-		value += min(resources[RES.RAW_CLAY_ID], self.personality.max_raw_clay) * self.personality.raw_clay_importance
-		if resources[RES.RAW_CLAY_ID] < self.personality.min_raw_clay:
+		value += min(resources[RES.RAW_CLAY], self.personality.max_raw_clay) * self.personality.raw_clay_importance
+		if resources[RES.RAW_CLAY] < self.personality.min_raw_clay:
 			value -= self.personality.no_raw_clay_penalty
-		value += min(resources[RES.RAW_IRON_ID], self.personality.max_raw_iron) * self.personality.raw_iron_importance
-		if resources[RES.RAW_IRON_ID] < self.personality.min_raw_iron:
+		value += min(resources[RES.RAW_IRON], self.personality.max_raw_iron) * self.personality.raw_iron_importance
+		if resources[RES.RAW_IRON] < self.personality.min_raw_iron:
 			value -= self.personality.no_raw_iron_penalty
 		value -= len(island.settlements) * self.personality.enemy_settlement_penalty
 
@@ -122,7 +122,7 @@ class SettlementFounder(object):
 
 	def _have_settlement_starting_resources(self, ship, settlement, min_money, min_resources):
 		"""Returns a boolean showing whether we have enough resources to found a new settlement."""
-		if self.owner.get_component(StorageComponent).inventory[RES.GOLD_ID] < min_money:
+		if self.owner.get_component(StorageComponent).inventory[RES.GOLD] < min_money:
 			return False
 
 		if ship is not None:
@@ -143,12 +143,12 @@ class SettlementFounder(object):
 	def have_starting_resources(self, ship, settlement):
 		"""Returns a boolean showing whether we have enough resources to found a new normal settlement."""
 		return self._have_settlement_starting_resources(ship, settlement, self.personality.min_new_island_gold, \
-				                                        {RES.BOARDS_ID: self.personality.min_new_island_boards, RES.FOOD_ID: self.personality.min_new_island_food, RES.TOOLS_ID: self.personality.min_new_island_tools})
+				                                        {RES.BOARDS: self.personality.min_new_island_boards, RES.FOOD: self.personality.min_new_island_food, RES.TOOLS: self.personality.min_new_island_tools})
 
 	def have_feeder_island_starting_resources(self, ship, settlement):
 		"""Returns a boolean showing whether we have enough resources to found a new feeder island."""
 		return self._have_settlement_starting_resources(ship, settlement, self.personality.min_new_feeder_island_gold, \
-				                                        {RES.BOARDS_ID: self.personality.min_new_island_boards, RES.TOOLS_ID: self.personality.min_new_island_tools})
+				                                        {RES.BOARDS: self.personality.min_new_island_boards, RES.TOOLS: self.personality.min_new_island_tools})
 
 	def _prepare_foundation_ship(self, settlement_manager, ship, feeder_island):
 		"""Start a mission to load the settlement foundation resources on the given ship from the specified settlement."""

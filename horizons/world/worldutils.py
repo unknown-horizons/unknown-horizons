@@ -244,7 +244,7 @@ def add_nature_objects(world, natural_resource_multiplier):
 				if world.session.random.randint(0, WILD_ANIMAL.POPUlATION_INIT_RATIO) == 0: # add animal to every nth tree
 					CreateUnit(island.worldid, UNITS.WILD_ANIMAL, x, y)(issuer = None)
 				if world.session.random.random() > WILD_ANIMAL.FOOD_AVAILABLE_ON_START:
-					building.get_component(StorageComponent).inventory.alter(RES.WILDANIMALFOOD_ID, -1)
+					building.get_component(StorageComponent).inventory.alter(RES.WILDANIMALFOOD, -1)
 
 			if 'coastline' in tile.classes and world.session.random.random() < natural_resource_multiplier / 4.0:
 				# try to place fish: from the current position go to a random directions twice

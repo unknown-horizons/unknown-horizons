@@ -61,11 +61,11 @@ def test_weaver(s, p):
 
 	weaver = Build(BUILDINGS.WEAVER, 27, 30, island, settlement=settlement)(p)
 	assert weaver
-	assert weaver.get_component(StorageComponent).inventory[RES.TEXTILE_ID] == 0
+	assert weaver.get_component(StorageComponent).inventory[RES.TEXTILE] == 0
 
 	s.run(seconds=60)	# pasture 30s, farm 1s, weaver 12s
 
-	assert weaver.get_component(StorageComponent).inventory[RES.TEXTILE_ID]
+	assert weaver.get_component(StorageComponent).inventory[RES.TEXTILE]
 
 
 @game_test
@@ -80,11 +80,11 @@ def test_distillery(s, p):
 
 	distillery = Build(BUILDINGS.DISTILLERY, 27, 30, island, settlement=settlement)(p)
 	assert distillery
-	assert distillery.get_component(StorageComponent).inventory[RES.LIQUOR_ID] == 0
+	assert distillery.get_component(StorageComponent).inventory[RES.LIQUOR] == 0
 
 	s.run(seconds=60)	# sugarfield 30s, farm 1s, distillery 12s
 
-	assert distillery.get_component(StorageComponent).inventory[RES.LIQUOR_ID]
+	assert distillery.get_component(StorageComponent).inventory[RES.LIQUOR]
 
 
 @game_test
@@ -95,9 +95,9 @@ def test_potato_field(s, p):
 	settlement, island = settle(s)
 
 	farm = _build_farm(30, 30, BUILDINGS.POTATO_FIELD, island, settlement, p)
-	assert farm.get_component(StorageComponent).inventory[RES.FOOD_ID] == 0
-	assert farm.get_component(StorageComponent).inventory[RES.POTATOES_ID] == 0
+	assert farm.get_component(StorageComponent).inventory[RES.FOOD] == 0
+	assert farm.get_component(StorageComponent).inventory[RES.POTATOES] == 0
 
 	s.run(seconds=60)	# potato field 26s, farm 1s
 
-	assert farm.get_component(StorageComponent).inventory[RES.FOOD_ID]
+	assert farm.get_component(StorageComponent).inventory[RES.FOOD]

@@ -67,9 +67,9 @@ def test_fire_station(s):
 
 	inv = settlement.get_component(StorageComponent).inventory
 	# res for fire station
-	inv.alter(RES.BOARDS_ID, 10)
-	inv.alter(RES.TOOLS_ID, 10)
-	inv.alter(RES.BRICKS_ID, 10)
+	inv.alter(RES.BOARDS, 10)
+	inv.alter(RES.TOOLS, 10)
+	inv.alter(RES.BRICKS, 10)
 
 	# second lj is the pos we need
 	lj = settlement.buildings_by_id[ BUILDINGS.LUMBERJACK ][1]

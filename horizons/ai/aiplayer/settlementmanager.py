@@ -104,9 +104,9 @@ class SettlementManager(WorldObject):
 
 		# create a production chain for every building material, settler consumed resource, and resources that have to be imported from feeder islands
 		self.production_chain = {}
-		for resource_id in [RES.COMMUNITY_ID, RES.BOARDS_ID, RES.FOOD_ID, RES.TEXTILE_ID, RES.FAITH_ID, \
-						RES.EDUCATION_ID, RES.GET_TOGETHER_ID, RES.BRICKS_ID, RES.TOOLS_ID, RES.LIQUOR_ID, \
-						RES.TOBACCO_PRODUCTS_ID, RES.SALT_ID]:
+		for resource_id in [RES.COMMUNITY, RES.BOARDS, RES.FOOD, RES.TEXTILE, RES.FAITH, \
+						RES.EDUCATION, RES.GET_TOGETHER, RES.BRICKS, RES.TOOLS, RES.LIQUOR, \
+						RES.TOBACCO_PRODUCTS, RES.SALT]:
 			self.production_chain[resource_id] = ProductionChain.create(self, resource_id)
 
 		# initialise caches
@@ -243,10 +243,10 @@ class SettlementManager(WorldObject):
 	def get_resource_production(self, resource_id):
 		"""Return the current production capacity (including import) per tick of the given resource."""
 		# as long as there are enough collectors it is correct to calculate it this way
-		if resource_id == RES.LIQUOR_ID and not self.feeder_island:
+		if resource_id == RES.LIQUOR and not self.feeder_island:
 			# normal settlements go straight for get-together so their separate liquor production is zero.
 			# feeder islands have to produce liquor because get-together is not tradable
-			return self.get_resource_production(RES.GET_TOGETHER_ID) * self.production_chain[RES.GET_TOGETHER_ID].get_ratio(RES.LIQUOR_ID)
+			return self.get_resource_production(RES.GET_TOGETHER) * self.production_chain[RES.GET_TOGETHER].get_ratio(RES.LIQUOR)
 		else:
 			return self.production_chain[resource_id].get_final_production_level()
 
@@ -254,14 +254,14 @@ class SettlementManager(WorldObject):
 		"""Return the amount of resource per tick the settlement needs."""
 		if resource_id not in self.__resident_resource_usage_cache or self.__resident_resource_usage_cache[resource_id][0] != Scheduler().cur_tick:
 			total = 0
-			if resource_id == RES.BRICKS_ID:
+			if resource_id == RES.BRICKS:
 				total = self.personality.dummy_bricks_requirement if self.owner.settler_level > 0 else 0 # dummy value to cause bricks production to be built
-			elif resource_id == RES.BOARDS_ID:
+			elif resource_id == RES.BOARDS:
 				total = self.personality.dummy_boards_requirement # dummy value to cause boards production to be built
-			elif resource_id == RES.TOOLS_ID:
+			elif resource_id == RES.TOOLS:
 				total = self.personality.dummy_tools_requirement if self.owner.settler_level > 1 else 0 # dummy value to cause tools production to be built
-			elif resource_id == RES.LIQUOR_ID:
-				total = self.production_chain[RES.GET_TOGETHER_ID].get_ratio(RES.LIQUOR_ID) * self.get_resource_production_requirement(RES.GET_TOGETHER_ID)
+			elif resource_id == RES.LIQUOR:
+				total = self.production_chain[RES.GET_TOGETHER].get_ratio(RES.LIQUOR) * self.get_resource_production_requirement(RES.GET_TOGETHER)
 			else:
 				for residence in self.settlement.buildings_by_id.get(BUILDINGS.RESIDENTIAL, []):
 					for production in residence.get_component(Producer).get_productions():
@@ -324,11 +324,11 @@ class SettlementManager(WorldObject):
 		return max(0.0, total)
 
 	def _start_feeder_tick(self):
-		self.log.info('%s food requirement %.5f', self, self.get_ideal_production_level(RES.FOOD_ID))
-		self.log.info('%s textile requirement %.5f', self, self.get_ideal_production_level(RES.TEXTILE_ID))
-		self.log.info('%s liquor requirement %.5f', self, self.get_ideal_production_level(RES.LIQUOR_ID))
-		self.log.info('%s salt requirement %.5f', self, self.get_ideal_production_level(RES.SALT_ID))
-		self.log.info('%s tobacco products requirement %.5f', self, self.get_ideal_production_level(RES.TOBACCO_PRODUCTS_ID))
+		self.log.info('%s food requirement %.5f', self, self.get_ideal_production_level(RES.FOOD))
+		self.log.info('%s textile requirement %.5f', self, self.get_ideal_production_level(RES.TEXTILE))
+		self.log.info('%s liquor requirement %.5f', self, self.get_ideal_production_level(RES.LIQUOR))
+		self.log.info('%s salt requirement %.5f', self, self.get_ideal_production_level(RES.SALT))
+		self.log.info('%s tobacco products requirement %.5f', self, self.get_ideal_production_level(RES.TOBACCO_PRODUCTS))
 		self.production_builder.manage_production()
 		self.resource_manager.refresh()
 
@@ -339,16 +339,16 @@ class SettlementManager(WorldObject):
 		self.resource_manager.finish_tick()
 
 	def _start_general_tick(self):
-		self.log.info('%s food production             %.5f / %.5f', self, self.get_resource_production(RES.FOOD_ID), \
-			self.get_resource_production_requirement(RES.FOOD_ID))
-		self.log.info('%s textile production          %.5f / %.5f', self, self.get_resource_production(RES.TEXTILE_ID), \
-			self.get_resource_production_requirement(RES.TEXTILE_ID))
-		self.log.info('%s get-together production     %.5f / %.5f', self, self.get_resource_production(RES.GET_TOGETHER_ID), \
-			self.get_resource_production_requirement(RES.GET_TOGETHER_ID))
-		self.log.info('%s salt production             %.5f / %.5f', self, self.get_resource_production(RES.SALT_ID), \
-			self.get_resource_production_requirement(RES.SALT_ID))
-		self.log.info('%s tobacco products production %.5f / %.5f', self, self.get_resource_production(RES.TOBACCO_PRODUCTS_ID), \
-			self.get_resource_production_requirement(RES.TOBACCO_PRODUCTS_ID))
+		self.log.info('%s food production             %.5f / %.5f', self, self.get_resource_production(RES.FOOD), \
+			self.get_resource_production_requirement(RES.FOOD))
+		self.log.info('%s textile production          %.5f / %.5f', self, self.get_resource_production(RES.TEXTILE), \
+			self.get_resource_production_requirement(RES.TEXTILE))
+		self.log.info('%s get-together production     %.5f / %.5f', self, self.get_resource_production(RES.GET_TOGETHER), \
+			self.get_resource_production_requirement(RES.GET_TOGETHER))
+		self.log.info('%s salt production             %.5f / %.5f', self, self.get_resource_production(RES.SALT), \
+			self.get_resource_production_requirement(RES.SALT))
+		self.log.info('%s tobacco products production %.5f / %.5f', self, self.get_resource_production(RES.TOBACCO_PRODUCTS), \
+			self.get_resource_production_requirement(RES.TOBACCO_PRODUCTS))
 		self.production_builder.manage_production()
 		self.trade_manager.refresh()
 		self.resource_manager.refresh()
@@ -360,10 +360,10 @@ class SettlementManager(WorldObject):
 			# if we are on level 0 and there is a house that can be upgraded then do it.
 			if self._manual_upgrade(0, 1):
 				self._set_taxes_and_permissions_prefix('early')
-		elif self.get_resource_production(RES.BRICKS_ID) > 1e-9 and not self.settlement.count_buildings(BUILDINGS.VILLAGE_SCHOOL):
+		elif self.get_resource_production(RES.BRICKS) > 1e-9 and not self.settlement.count_buildings(BUILDINGS.VILLAGE_SCHOOL):
 			# if we just need the school then upgrade sailors manually
-			free_boards = self.settlement.get_component(StorageComponent).inventory[RES.BOARDS_ID]
-			free_boards -= Entities.buildings[BUILDINGS.VILLAGE_SCHOOL].costs[RES.BOARDS_ID]
+			free_boards = self.settlement.get_component(StorageComponent).inventory[RES.BOARDS]
+			free_boards -= Entities.buildings[BUILDINGS.VILLAGE_SCHOOL].costs[RES.BOARDS]
 			free_boards /= 2 # TODO: load this from upgrade resources
 			if free_boards > 0:
 				self._manual_upgrade(0, free_boards)

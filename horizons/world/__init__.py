@@ -378,7 +378,7 @@ class World(BuildingOwner, WorldObject):
 
 	def init_fish_indexer(self):
 		radius = Entities.buildings[ BUILDINGS.FISHER ].radius
-		buildings = self.provider_buildings.provider_by_resources[RES.FISH_ID]
+		buildings = self.provider_buildings.provider_by_resources[RES.FISH]
 		self.fish_indexer = BuildingIndexer(radius, self.full_map, buildings=buildings)
 
 	def init_new_world(self, trader_enabled, pirate_enabled, natural_resource_multiplier):

@@ -79,7 +79,7 @@ class ImproveCollectorCoverageGoal(SettlementGoal):
 
 		cost = self.production_builder.get_road_cost(path)
 		for resource_id, amount in cost.iteritems():
-			if resource_id == RES.GOLD_ID:
+			if resource_id == RES.GOLD:
 				if self.owner.get_component(StorageComponent).inventory[resource_id] < amount:
 					return BUILD_RESULT.NEED_RESOURCES
 			elif self.settlement.get_component(StorageComponent).inventory[resource_id] < amount:

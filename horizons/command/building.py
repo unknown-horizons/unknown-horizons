@@ -175,7 +175,7 @@ class Build(Command):
 			# check player, ship and settlement inventory
 			available_res = 0
 			# player
-			available_res += issuer.get_component(StorageComponent).inventory[resource] if resource == RES.GOLD_ID else 0
+			available_res += issuer.get_component(StorageComponent).inventory[resource] if resource == RES.GOLD else 0
 			# ship or settlement
 			for res_source in res_sources:
 				if res_source is not None:

@@ -67,7 +67,7 @@ def test_settler_unhappy(session, player):
 	assert not cb.called
 
 	# make it unhappy
-	settler.get_component(StorageComponent).inventory.alter(RES.HAPPINESS_ID, -settler.happiness)
+	settler.get_component(StorageComponent).inventory.alter(RES.HAPPINESS, -settler.happiness)
 	assert settler.happiness < 0.1
 	assert_called_with_icon(cb, SettlerUnhappyStatus)
 
@@ -100,7 +100,7 @@ def test_inventory_full(session, player):
 	assert not cb.called
 
 	inv = lj.get_component(StorageComponent).inventory
-	res = RES.BOARDS_ID
+	res = RES.BOARDS
 	inv.alter(res, inv.get_free_space_for( res ) )
 
 	session.run(seconds=1)

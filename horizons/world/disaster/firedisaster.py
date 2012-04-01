@@ -52,7 +52,7 @@ class FireDisaster(Disaster):
 	TIME_BEFORE_HAVOC = GAME_SPEED.TICKS_PER_SECOND * 30
 	EXPANSION_TIME = (TIME_BEFORE_HAVOC / 2) - 1 # try twice before dying
 
-	DISASTER_RES = RES.FIRE_ID
+	DISASTER_RES = RES.FIRE
 
 	def __init__(self, settlement, manager):
 		super(FireDisaster, self).__init__(settlement, manager)
