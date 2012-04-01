@@ -152,10 +152,8 @@ class SelectableBuildingComponent(SelectableComponent):
 		if self.instance.owner is None or not self.instance.owner.is_local_player:
 			return # don't show enemy ranges
 		renderer = self.session.view.renderer['InstanceRenderer']
-		if( not self.range_applies_on_island and self.range_applies_on_water ):
-			print "FISHER!"
 		self._do_select(renderer, self.instance.position, self.session.world,
-		                self.instance.settlement, self.instance.radius, ( self.range_applies_on_island and not self.range_applies_on_water ))
+		                self.instance.settlement, self.instance.radius, self.range_applies_on_island, self.range_applies_on_water )
 
 	def set_selection_outline(self):
 		"""Only set the selection outline.
@@ -172,12 +170,11 @@ class SelectableBuildingComponent(SelectableComponent):
 			super(SelectableBuildingComponent, self).deselect()
 			renderer = self.session.view.renderer['InstanceRenderer']
 			renderer.removeOutlined(self.instance._instance)
-			#renderer.removeAllColored()
 			SelectableBuildingComponent.deselect_building(self.session)
 
 	@classmethod
 	def select_building(cls, session, position, settlement,
-	                    radius, range_applies_only_on_island):
+	                    radius, range_applies_on_island, range_applies_on_water):
 		"""Select a hypothecial instance of this class. Use Case: Buildingtool.
 		Only works on a subclass of BuildingClass, since it requires certain class attributes.
 		@param session: Session instance
@@ -194,7 +191,7 @@ class SelectableBuildingComponent(SelectableComponent):
 		profile.runctx(c, globals(), locals(), outfilename)
 		"""
 		cls._do_select(renderer, position, session.world, settlement,
-		               radius, range_applies_only_on_island)
+		               radius, range_applies_on_island, range_applies_on_water)
 
 	@classmethod
 	def deselect_building(cls, session):
@@ -216,32 +213,30 @@ class SelectableBuildingComponent(SelectableComponent):
 	@classmethod
 	def select_many_buildings(cls, buildings, renderer):
 		"""Same as calling select() on many instances, but way faster.
-		Selects many buildings along with ranges, used to handle
-		range selection being deselected properly"""
+		Selects many buildings along with ranges, used when user
+		drags selection box"""
 		if not buildings:
 			return # that is not many
+
+		# component from building[0] is needed to get island as ground holder
 		comp0 = buildings[0].get_component(SelectableBuildingComponent)
 		world = comp0.session.world
 		island = world.get_island(comp0.instance.position.origin)
-		
 
-		#coast_buildings - buildings which range has to be shown on water
-		coast_buildings = []
+		# buildings which range has to be shown on water
+		water_buildings = []
 
-		#building which range has to be shown on ground
+		# buildings which range has to be shown on ground
 		ground_buildings = []
-
-		
-		water_only_buildings = []
 
 		for building in buildings:
 			comp = building.get_component(SelectableBuildingComponent)
 			comp.set_selection_outline()
 			comp._selected = True
-			if( comp.range_applies_on_island ):
+			if comp.range_applies_on_island:
 				ground_buildings.append(building)
-			if( comp.range_applies_on_water):
-				coast_buildings.append(building)
+			if comp.range_applies_on_water:
+				water_buildings.append(building)
 
 		coords = set( coord for \
 		              building in ground_buildings for \
@@ -253,37 +248,44 @@ class SelectableBuildingComponent(SelectableComponent):
 				if ( 'constructible' in tile.classes or 'coastline' in tile.classes ):
 					cls._add_selected_tile(tile, renderer)
 
-		#code below is for drawing fake range tiles on water
-		if( len(coast_buildings) > 0 ):
-			
+		# code below is for drawing fake range tiles on water
+		if water_buildings:
 			# create object to create instances from
-			if not hasattr(cls, "_fake_tile_obj"):
-				# create object to create instances from
-				cls._fake_tile_obj = horizons.main.fife.engine.getModel().createObject('fake_tile_obj', 'ground')
-				fife.ObjectVisual.create(cls._fake_tile_obj)
-	
-				img_path = 'content/gfx/base/fake_water.png'
-				img = horizons.main.fife.imagemanager.load(img_path)
-				for rotation in [45, 135, 225, 315]:
-					cls._fake_tile_obj.get2dGfxVisual().addStaticImage(rotation, img.getHandle())
-			#world = coast_buildings[0].session.world
+			SelectableBuildingComponent._create_fake_tile_obj()
+
 			layer = world.session.view.layers[LAYERS.FIELDS]
 
-			#draw fake range tiles on water for each building
-			for building in coast_buildings:
+			# draw fake range tiles on water for each building
+			for building in water_buildings:
 				comp = building.get_component(SelectableComponent)
 				position = comp.instance.position
 				radius = comp.instance.radius
 				island = world.get_island(position.origin)
 				
-				for tup in position.get_radius_coordinates(radius):
-					tile = island.get_tile_tuple(tup)
-					if tile is None:
-						inst = layer.createInstance(cls._fake_tile_obj,
-						                            fife.ModelCoordinate(tup[0], tup[1], 0), "")
-						fife.InstanceVisual.create(inst)
-						cls._selected_fake_tiles.l.append(inst)
-						renderer.addColored(inst, *cls.selection_color)
+				SelectableBuildingComponent._select_fake_water_tiles(position, island, radius, layer, renderer)
+		
+	@classmethod
+	def _create_fake_tile_obj(cls):
+		# create object to create instances from
+		if not hasattr(cls, "_fake_tile_obj"):
+			cls._fake_tile_obj = horizons.main.fife.engine.getModel().createObject('fake_tile_obj', 'ground')
+			fife.ObjectVisual.create(cls._fake_tile_obj)
+	
+			img_path = 'content/gfx/base/fake_water.png'
+			img = horizons.main.fife.imagemanager.load(img_path)
+			for rotation in [45, 135, 225, 315]:
+				cls._fake_tile_obj.get2dGfxVisual().addStaticImage(rotation, img.getHandle())
+
+	@classmethod
+	def _select_fake_water_tiles(cls, position, island, radius, layer, renderer):
+		for tup in position.get_radius_coordinates(radius):
+			tile = island.get_tile_tuple(tup)
+			if tile is None:
+				inst = layer.createInstance(cls._fake_tile_obj,
+				                            fife.ModelCoordinate(tup[0], tup[1], 0), "")
+				fife.InstanceVisual.create(inst)
+				cls._selected_fake_tiles.l.append(inst)
+				renderer.addColored(inst, *cls.selection_color)
 
 	@classmethod
 	def select_many(cls, buildings, renderer):
@@ -311,12 +313,12 @@ class SelectableBuildingComponent(SelectableComponent):
 
 	@classmethod
 	def _do_select(cls, renderer, position, world, settlement,
-	               radius, range_applies_only_on_island):
+	               radius, range_applies_on_island, range_applies_on_water):
 		island = world.get_island(position.origin)
 		if island is None:
 			return # preview isn't on island, and therefore invalid
 
-		if range_applies_only_on_island:
+		if range_applies_on_island:
 			ground_holder = None # use settlement or island as tile provider (prefer settlement, since it contains fewer tiles)
 			if settlement is None:
 				ground_holder = island
@@ -326,34 +328,15 @@ class SelectableBuildingComponent(SelectableComponent):
 			for tile in ground_holder.get_tiles_in_radius(position, radius, include_self=False):
 				if ( 'constructible' in tile.classes or 'coastline' in tile.classes ):
 					cls._add_selected_tile(tile, renderer)
-		else:
+
+		if range_applies_on_water:
 			# we have to color water too
 			# since water tiles are huge, create fake tiles and color them
-
-			if not hasattr(cls, "_fake_tile_obj"):
-				# create object to create instances from
-				cls._fake_tile_obj = horizons.main.fife.engine.getModel().createObject('fake_tile_obj', 'ground')
-				fife.ObjectVisual.create(cls._fake_tile_obj)
-
-				img_path = 'content/gfx/base/fake_water.png'
-				img = horizons.main.fife.imagemanager.load(img_path)
-				for rotation in [45, 135, 225, 315]:
-					cls._fake_tile_obj.get2dGfxVisual().addStaticImage(rotation, img.getHandle())
-
+			SelectableBuildingComponent._create_fake_tile_obj()
 			layer = world.session.view.layers[LAYERS.FIELDS]
-			# color island or fake tile
-			for tup in position.get_radius_coordinates(radius):
-				tile = island.get_tile_tuple(tup)
-				if tile is not None:
-					cls._add_selected_tile(tile, renderer)
-				else: # need extra tile
-					inst = layer.createInstance(cls._fake_tile_obj,
-					                            fife.ModelCoordinate(tup[0], tup[1], 0), "")
-					fife.InstanceVisual.create(inst)
-
-					cls._selected_fake_tiles.l.append(inst)
-					renderer.addColored(inst, *cls.selection_color)
-
+			# color fake tiles
+			SelectableBuildingComponent._select_fake_water_tiles(position, island, radius, layer, renderer)
+			
 	@classmethod
 	def _add_selected_tile(cls, tile, renderer, remember=True):
 		if remember:
@@ -363,7 +346,6 @@ class SelectableBuildingComponent(SelectableComponent):
 		obj = tile.object
 		if obj is not None:
 			renderer.addColored(obj._instance, *cls.selection_color)
-
 
 class SelectableUnitComponent(SelectableComponent):
 
@@ -384,7 +366,6 @@ class SelectableUnitComponent(SelectableComponent):
 			if self.session.view.has_change_listener(self.instance.draw_health):
 				self.session.view.remove_change_listener(self.instance.draw_health)
 
-
 class SelectableShipComponent(SelectableUnitComponent):
 
 	def select(self, reset_cam=False):
@@ -401,8 +382,6 @@ class SelectableShipComponent(SelectableUnitComponent):
 		if self._selected:
 			super(SelectableShipComponent, self).deselect()
 			self.instance._update_buoy(remove_only=True)
-
-
 
 decorators.bind_all(SelectableBuildingComponent)
 decorators.bind_all(SelectableShipComponent)

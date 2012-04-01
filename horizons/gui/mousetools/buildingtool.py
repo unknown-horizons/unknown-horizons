@@ -365,9 +365,8 @@ class BuildingTool(NavigationTool):
 				radius_on_island =  template['range_applies_on_island']
 			if 'range_applies_on_water' in template:
 				radius_on_water = template['range_applies_on_water']
-			radius_only_on_island = radius_on_island and not radius_on_water
 
-			SelectableBuildingComponent.select_building(self.session, building.position, settlement, self._class.radius, radius_only_on_island)
+			SelectableBuildingComponent.select_building(self.session, building.position, settlement, self._class.radius, radius_on_island, radius_on_water)
 
 	def _highlight_related_buildings_in_range(self, building, settlement):
 		"""Highlight directly related buildings (tree for lumberjacks) that are in range of the build preview"""

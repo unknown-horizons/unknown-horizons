@@ -113,11 +113,11 @@ class SelectionTool(NavigationTool):
 			instances = ( self.fife_instance_to_uh_instance(i) for i in instances )
 			instances = [ i for i in instances if i is not None ]
 
-			#we only consider selectable items when dragging a selection box
+			# we only consider selectable items when dragging a selection box
 			instances = self.filter_selectable(instances)
 
-			#if there's at least one of player unit, we don't select any enemies
-			#applies both to buildings and ships
+			# if there's at least one of player unit, we don't select any enemies
+			# applies both to buildings and ships
 			if( any((self.is_owned_by_player(instance) for instance in instances))):
 				instances = self.filter_owner(instances)
 
@@ -156,7 +156,7 @@ class SelectionTool(NavigationTool):
 			for i in selected:
 				i.get_component(SelectableComponent).show_menu()
 
-		#change session cursor to attacking tool if selected instances can attack
+		# change session cursor to attacking tool if selected instances can attack
 		from attackingtool import AttackingTool
 		attacking_unit_found = False
 		for i in selected:
@@ -188,9 +188,9 @@ class SelectionTool(NavigationTool):
 			self.select_old = frozenset(self.session.selected_instances) if evt.isControlPressed() else frozenset()
 
 			instances = filter(self.is_selectable, instances)
-			#on single click only one building should be selected from the hover_instances
-			#the if is for [] and [single_item] cases (they crashed)
-			#it acts as user would expect (instances[0] selects buildings in front first)
+			# on single click only one building should be selected from the hover_instances
+			# the if is for [] and [single_item] cases (they crashed)
+			# it acts as user would expect (instances[0] selects buildings in front first)
 			instances = instances if len(instances) <= 1 else [instances[0]]
 
 			self._update_selection(instances)
@@ -241,35 +241,32 @@ class SelectionTool(NavigationTool):
 
 		renderer = self.session.view.renderer['InstanceRenderer']
 		
-		#we have non-buildings in selection: do a simple deselection/seleciton routine
-		#since buildings were filtered out before anyway (units were preferred)
+		difference_to_deselect = selected_components - selectable
+		# deselect buildings or units that need to be deselected anyway
+		# it works the same for buildings and units
+		for sel_comp in difference_to_deselect:
+			sel_comp.deselect()
+
+		# we have units in selection: do a simple seleciton routine
+		# it will be called only on units since buildings were filtered before
 		if unit_in_selection:
-				for sel_comp in selected_components - selectable:
-					sel_comp.deselect()
 				for sel_comp in selectable - selected_components:
 					sel_comp.select()
-		#if there were only buildings: do things smarter way since
-		#updating building range can get heavy for large group
+		# if there were only buildings: use faster method since
+		# updating building range can get heavy for large group
 		else:
-			#below: if there is a size difference between previous selection and currently hovered
-			#apply selection routine, otherwise there's no point
-			#it assumes player can't deselect a building and add another at one mouse gesture
-			#special case when there was one building selected and user clicks another one
-			if( len(selected_components) != len(selectable) or len(selected_components) == 1 ): 
-				difference_to_deselect = selected_components - selectable
+			# below: if there is a size difference between previous selection and currently hovered
+			# apply selection routine, otherwise there's no point
+			# it assumes player can't deselect a building and add another at one mouse gesture
+			# special case when there was one building selected and user clicks another one
+			if len(selected_components) != len(selectable) or len(selected_components) == 1: 
 
-				#deselect buildings that need to be deselected
-				for sel_comp in difference_to_deselect:
-					sel_comp.deselect()
-
-				#if any did, select everything once again
-				if(difference_to_deselect):
+				# if any buildings were deselected before, select everything once again
+				if difference_to_deselect:
 					SelectableBuildingComponent.select_many_buildings(list(instances), renderer)
-				#otherwise it means that selection differed because new were added, in this case
-				#select new buildings
+				# otherwise it means that selection differed because new were added and none removed
+				# in this case select only new buildings
 				else:
 					SelectableBuildingComponent.select_many_buildings(list(set(instances) - selected_instances), renderer)
-					#for sel_comp in selectable - selected_components:
-						#sel_comp.select()
 
 		self.session.selected_instances = set( i.instance for i in selectable )
