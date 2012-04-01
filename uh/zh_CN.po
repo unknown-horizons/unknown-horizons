@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2012-03-24 02:16+0100\n"
-"PO-Revision-Date: 2012-03-28 05:17+0200\n"
+"PO-Revision-Date: 2012-03-28 05:23+0200\n"
 "Last-Translator: nifabric <nifabric@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: zh_CN\n"
@@ -460,7 +460,7 @@ msgstr "{player1} 和 {player2} 组成联盟了。"
 #: database files sql
 #, python-format
 msgid "{player1} and {player2} have ended the war and are now allied."
-msgstr ""
+msgstr "{player1} 和{player2} 已经结束了战争，现在结盟了。"
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
