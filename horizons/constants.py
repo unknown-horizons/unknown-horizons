@@ -24,6 +24,7 @@ import ctypes
 import platform
 import os
 import locale
+import sys
 
 from horizons.ext.enum import Enum
 
@@ -402,7 +403,12 @@ else:
 	if not os.path.exists(my_games):
 		os.makedirs(my_games)
 	_user_dir = os.path.join(my_games, 'unknown-horizons')
-_user_dir = unicode(_user_dir, locale.getpreferredencoding()) # this makes umlaut-paths work on win
+try:
+  _user_dir = unicode(_user_dir, locale.getpreferredencoding()) # this makes umlaut-paths work on win
+except Exception as inst:
+  _user_dir = unicode(_user_dir, sys.getfilesystemencoding()) # locale.getpreferredencoding() does not work @ mac
+
+
 
 class GFX:
 	BUILDING_OUTLINE_THRESHOLD = 96

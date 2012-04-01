@@ -166,6 +166,8 @@ class Producer(Component):
 			production.load(db, worldid)
 			self.add_production(production)
 
+		self._update_decommissioned_icon()
+
 	def save(self, db):
 		super(Producer, self).save(db)
 		for production in self.get_productions():
@@ -311,17 +313,20 @@ class Producer(Component):
 					self._inactive_productions[line_id] = production
 					del self._productions[line_id]
 					production.pause()
-
-			if self.is_active() is not self.__active:
-				self.__active = not self.__active
-				if self.__active:
-					RemoveStatusIcon.broadcast(self, self.instance, DecommissionedStatus)
-				else:
-					icon = DecommissionedStatus(self.instance)
-					AddStatusIcon.broadcast(self, icon)
+			self._update_decommissioned_icon()
 
 		self.instance._changed()
 		self.on_activity_changed(self.is_active())
+
+	def _update_decommissioned_icon(self):
+		"""Add or remove decommissioned icon."""
+		if self.is_active() is not self.__active:
+			self.__active = not self.__active
+			if self.__active:
+				RemoveStatusIcon.broadcast(self, self.instance, DecommissionedStatus)
+			else:
+				icon = DecommissionedStatus(self.instance)
+				AddStatusIcon.broadcast(self, icon)
 
 	def toggle_active(self, production=None):
 		if production is None:

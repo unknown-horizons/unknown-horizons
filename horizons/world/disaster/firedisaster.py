@@ -21,7 +21,7 @@
 # ###################################################
 
 from horizons.world.disaster import Disaster
-from horizons.messaging import AddStatusIcon, RemoveStatusIcon
+from horizons.messaging import AddStatusIcon, RemoveStatusIcon, NewDisaster
 from horizons.world.status import FireStatusIcon
 from horizons.constants import GAME_SPEED, BUILDINGS, RES, SETTLER
 from horizons.command.building import Tear
@@ -38,6 +38,7 @@ class FireDisaster(Disaster):
 	"""
 
 	TYPE = "The Flames Of The End"
+	NOTIFICATION_TYPE = 'BUILDING_ON_FIRE'
 
 	SEED_CHANCE = 0.1
 
@@ -108,6 +109,7 @@ class FireDisaster(Disaster):
 		super(FireDisaster, self).infect(building, load=load)
 		# keep in sync with load()
 		AddStatusIcon.broadcast(building, FireStatusIcon(building))
+		NewDisaster.broadcast(building.owner, building, FireDisaster)
 		self._affected_buildings.append(building)
 		havoc_time = self.TIME_BEFORE_HAVOC
 		if load:

@@ -170,6 +170,7 @@ INSERT INTO "message" VALUES('You cannot tear the warehouse, your settlements ne
 INSERT INTO "message" VALUES('The route is now configured. Start it via the "start route" button in the "configure route" menu.',1,45.0,NULL,'ROUTE_DISABLED');
 INSERT INTO "message" VALUES('Your crew refuses to leave this map.',1,20.0,NULL,'MOVE_OUTSIDE_OF_WORLD');
 INSERT INTO "message" VALUES('Cannot go here.',1,20.0,NULL,'MOVE_INVALID_LOCATION');
+INSERT INTO "message" VALUES('Your building has caught fire!',1,30.0,NULL,'BUILDING_ON_FIRE');
 CREATE TABLE ai (client_id TEXT NOT NULL, class_package TEXT NOT NULL, class_name TEXT NOT NULL);
 INSERT INTO "ai" VALUES('AIPlayer','aiplayer','AIPlayer');
 CREATE TABLE "object_sounds" (object  INTEGER PRIMARY KEY  NOT NULL  DEFAULT '' , "sound" INTEGER NOT NULL  DEFAULT '');

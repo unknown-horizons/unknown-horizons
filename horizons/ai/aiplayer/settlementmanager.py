@@ -46,12 +46,14 @@ from horizons.ai.aiplayer.goal.tradingship import TradingShipGoal
 from horizons.scheduler import Scheduler
 from horizons.util import WorldObject
 from horizons.util.python import decorators
+from horizons.command.building import Tear
 from horizons.command.uioptions import SetTaxSetting, SetSettlementUpgradePermissions
 from horizons.command.production import ToggleActive
 from horizons.constants import BUILDINGS, RES, GAME_SPEED, SETTLER
 from horizons.entities import Entities
 from horizons.world.component.storagecomponent import StorageComponent
 from horizons.world.component.namedcomponent import NamedComponent
+from horizons.world.disaster.firedisaster import FireDisaster
 from horizons.world.production.producer import Producer
 
 class SettlementManager(WorldObject):
@@ -433,6 +435,26 @@ class SettlementManager(WorldObject):
 
 		self.village_builder.display()
 		self.production_builder.display()
+
+	def handle_disaster(self, message):
+		if issubclass(message.disaster_class, FireDisaster):
+			position = message.building.position
+			fire_station_radius = Entities.buildings[BUILDINGS.FIRE_STATION_CLASS].radius
+			handled = False
+
+			for fire_station in self.settlement.buildings_by_id[BUILDINGS.FIRE_STATION_CLASS]:
+				if fire_station.position.distance(position) > fire_station_radius:
+					continue
+				# TODO: check whether the building and the fire station are connected by road
+				self.log.info('%s ignoring %s at %s because %s should be able to handle it', self, message.disaster_class.__name__, message.building, fire_station)
+				handled = True
+				break
+
+			if not handled:
+				self.log.info('%s removing %s because of %s', self, message.building, message.disaster_class.__name__)
+				Tear(message.building).execute(self.session)
+		else:
+			self.log.info('%s ignoring unknown disaster of type %s', self, message.disaster_class.__name__)
 
 	def __str__(self):
 		return '%s.SM(%s/%s)' % (self.owner, self.settlement.get_component(NamedComponent).name if hasattr(self, 'settlement') else 'unknown', self.worldid if hasattr(self, 'worldid') else 'none')
