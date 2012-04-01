@@ -712,6 +712,8 @@ msgid ""
 "After this little advertisment, the trader will also stop by and look into "
 "your warehouse if it planned to sail past it."
 msgstr ""
+"Tras este pequeño anuncio, el comerciante pasará y si tuviese previsto "
+"zarpar echará un vistazo en lonja."
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:170
@@ -1478,6 +1480,9 @@ msgid ""
 "You can place the weaver close to the farm and tear down any trail to the "
 "farm to see that it will still fetch the wool and produce."
 msgstr ""
+"Puedes colocar la tejedora al lado de la granja y olvidarte del camino y "
+"observar cómo aun así comenzará la recolección de lana y empezará la "
+"producción."
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:346

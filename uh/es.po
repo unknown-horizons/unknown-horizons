@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2012-03-24 02:16+0100\n"
-"PO-Revision-Date: 2012-04-01 12:18+0200\n"
+"PO-Revision-Date: 2012-04-01 15:28+0200\n"
 "Last-Translator: Sergio <juarrox@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: es\n"
@@ -2821,10 +2821,11 @@ msgstr "Color:"
 msgid "Player name:"
 msgstr "Nombre de jugador:"
 
+# 88%
 #. name of buildings:alvearies
 #: horizons/i18n/objecttranslations.py:53
 msgid "Alvearies"
-msgstr ""
+msgstr "Panales de miel"
 
 #. tooltip_text of buildings:alvearies
 #: horizons/i18n/objecttranslations.py:55
@@ -3335,7 +3336,7 @@ msgstr "Árbol"
 #. tooltip_text of buildings:tree
 #: horizons/i18n/objecttranslations.py:402
 msgid "Provides lumber. Chopped down by lumberjacks."
-msgstr ""
+msgstr "Proporciona madera talada por leñadores."
 
 #. name of buildings:villageschool
 #: horizons/i18n/objecttranslations.py:407
