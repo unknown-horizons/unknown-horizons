@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: translate-uh@lists.unknown-horizons.org\n"
 "POT-Creation-Date: 2012-03-21 04:04+0100\n"
-"PO-Revision-Date: 2012-04-01 12:30+0200\n"
+"PO-Revision-Date: 2012-04-01 12:56+0200\n"
 "Last-Translator: Sergio <juarrox@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: es\n"
@@ -176,12 +176,12 @@ msgid ""
 "TASK: Build a warehouse at the coast."
 msgstr ""
 "\n"
-"TAREA: Construye una sucursal en la costa."
+"TAREA: Construye una lonja en la costa."
 
 #. This is a logbook page heading. Space is VERY short, please only translate to strings that fit (roughly 30 characters max).
 #: po/tutorial.py:40
 msgid "NEW TASK: BUILD A LUMBERJACK"
-msgstr "CONSTRUYE UN ASERRADERO"
+msgstr "NUEVA TAREA: CONSTRUYE UN ASERRADERO"
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:42
@@ -562,8 +562,8 @@ msgid ""
 "connected to any of the companies."
 msgstr ""
 "\n"
-"TAREA: Construir una tienda y conectarla a la plaza principal. Las tiendas "
-"no necesitan estar conectadas a los negocios."
+"TAREA: Construye una tienda y conéctala a la plaza principal. Las tiendas no "
+"necesitan estar conectadas a los negocios."
 
 #. This message is displayed in the widget on the left screen part. Please keep it short enough to fit there!
 #: po/tutorial.py:136
@@ -623,7 +623,7 @@ msgid ""
 "TASK: Build at least three additional tents."
 msgstr ""
 "\n"
-"TAREA: Construir al menos tres tiendas de campaña adicionales."
+"TAREA: Construir al menos tres tiendas adicionales."
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:150
@@ -1328,6 +1328,9 @@ msgid ""
 "costs you pay for the building will decrease. They won't be zero, but still "
 "lower than if you keep the company producing."
 msgstr ""
+"Si se activa este modo de \"ruptura\" (que podemos llamar \"Decomiso\"), "
+"disminuirán los costes de producción que pagas por el edificio. No van a ser "
+"cero, pero serán más bajos que si los negocios estuviesen produciendo."
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:324
@@ -1386,8 +1389,8 @@ msgstr ""
 #: po/tutorial.py:334
 msgid "Build a storage tent (increment I tab) where it makes sense."
 msgstr ""
-"Construya una tienda de almacén (en la pestaña de 'Incremento 1') donde "
-"pueda ser útil."
+"Construye una tienda de almacén (en la pestaña de 'Nivel 1') donde pueda ser "
+"útil."
 
 #. This is a logbook page heading. Space is VERY short, please only translate to strings that fit (roughly 30 characters max).
 #: po/tutorial.py:336
@@ -1426,6 +1429,8 @@ msgid ""
 "\n"
 "TASK: Build a weaver positioned so it can get wool."
 msgstr ""
+"\n"
+"TAREA: Construye una tejedora de forma que pueda recoger lana."
 
 #. This message is displayed in the widget on the left screen part. Please keep it short enough to fit there!
 #: po/tutorial.py:348
@@ -1461,6 +1466,9 @@ msgid ""
 "Once you are able to keep an economy running which can satisfy this amount of "
 "consumers, you are ready to discover new Unknown Horizons!"
 msgstr ""
+"¡Una vez que seas capaz de mantener la actividad económica que permita "
+"satisfacer la demanda de los consumidores, estarás listo para descubrir "
+"nuevos Horizontes Desconocidos!"
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:358
@@ -1468,6 +1476,9 @@ msgid ""
 "You also need enough money to keep this economy running, so a positive "
 "balance (check in the warehouse tab 'Account') is required."
 msgstr ""
+"Necesitas también bastante dinero para mantener la actividad económica, así "
+"como tener un saldo positivo (compruébalo en la pestaña de la lonja "
+"\"Cuenta\")."
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:360
@@ -1476,6 +1487,9 @@ msgid ""
 "TASK: Reach a total number of 50 inhabitants and a positive balance to "
 "complete this tutorial."
 msgstr ""
+"\n"
+"TAREA: Alcanza un total de 50 habitantes y un saldo positivo para completar "
+"este tutorial."
 
 #. This is a logbook page heading. Space is VERY short, please only translate to strings that fit (roughly 30 characters max).
 #: po/tutorial.py:362
@@ -1528,6 +1542,8 @@ msgid ""
 "The best results until now were achieved by joining our IRC channel, so you "
 "could try that out first (-;"
 msgstr ""
+"Los mejores resultados hasta ahora se han conseguido uniéndose a nuestro "
+"canal IRC, así que prueba a entrar antes :-)"
 
 #. This is a logbook page heading. Space is VERY short, please only translate to strings that fit (roughly 30 characters max).
 #: po/tutorial.py:378
@@ -1554,7 +1570,7 @@ msgstr ""
 "\n"
 "¡Gracias por haber jugado al tutorial!\n"
 "\n"
-"El equipo de UH"
+"Tu equipo de UH"
 
 #. This message is displayed in the widget on the left screen part. Please keep it short enough to fit there!
 #: po/tutorial.py:382
