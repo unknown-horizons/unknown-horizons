@@ -20,7 +20,6 @@
 # ###################################################
 
 from horizons.command import GenericCommand, GenericComponentCommand
-from horizons.world.production.producer import Producer
 
 class ToggleActive(GenericComponentCommand):
 	"""Sets a production to active/inactive."""

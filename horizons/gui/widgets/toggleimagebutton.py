@@ -20,7 +20,7 @@
 # ###################################################
 
 from fife.extensions import pychan
-from fife.extensions.pychan.widgets.common import Attr, UnicodeAttr
+from fife.extensions.pychan.widgets.common import Attr
 
 
 class ToggleImageButton(pychan.widgets.ImageButton):

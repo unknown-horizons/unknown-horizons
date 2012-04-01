@@ -44,10 +44,12 @@ def parse_token(token, token_klass):
 	Allowed values: integer or token_klass.LIKE_IN_CONSTANTS
 	@param token_klass: "RES", "UNITS" or "BUILDINGS"
 	"""
-	if isinstance(token, (str, unicode)):
+	classes = {'RES': RES, 'UNITS': UNITS, 'BUILDINGS': BUILDINGS}
+
+	if isinstance(token, unicode):
 		if token.startswith(token_klass):
 			try:
-				return getattr( globals()[token_klass], token.split(".", 2)[1])
+				return getattr( classes[token_klass], token.split(".", 2)[1])
 			except AttributeError as e: # token not defined here
 				err =  "This means that you either have to add an entry in horizons/constants.py in the class %s for %s,\nor %s is actually a typo." % (token_klass, token, token)
 				raise Exception( str(e) + "\n\n" + err +"\n" )

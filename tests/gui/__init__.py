@@ -298,6 +298,8 @@ def gui_test(use_dev_map=False, use_fixture=None, ai_players=0, timeout=15 * 60,
 						print stdout
 					if cleanup_userdir:
 						recreate_userdir()
+					if not 'Traceback' in stderr:
+						stderr += '\nNo usable error output received, possibly a segfault.'
 					raise TestFailed('\n\n' + stderr)
 				else:
 					if cleanup_userdir:
