@@ -604,9 +604,7 @@ events:
     - "Vous pouvez placer le tisserand pr\xE8s de la ferme at d\xE9truire tous les\
       \ sentiers vers la ferme afin de voir qu'il ira quand-m\xEAme chercher la laine\
       \ pour en faire du tissu."
-    - !!python/unicode '
-
-      TASK: Build a weaver positioned so it can get wool.'
+    - "\nMISSION: Installer un tisserand \xE0 proximit\xE9 de la laine."
     - - Gallery
       - [content/gui/icons/buildmenu/007.png]
     type: logbook
@@ -629,12 +627,12 @@ events:
   - arguments:
     - [Headline, "MISSION : FINIR\_LE\_DIDACTICIEL"]
     - [Image, content/gui/images/background/hr.png]
-    - !!python/unicode 'Try to house a total of 50 or more inhabitants in your city
-      by providing more residential buildings.'
-    - !!python/unicode 'Once you are able to keep an economy running which can satisfy
-      this amount of consumers, you are ready to discover new Unknown Horizons!'
-    - !!python/unicode 'You also need enough money to keep this economy running, so
-      a positive balance (check in the warehouse tab ''Account'') is required.'
+    - "Essayez de loger au moins 50 habitants dans votre ville en fournissant plus\
+      \ de r\xE9sidences."
+    - "D\xE8s que votre \xE9conomie pourra satisfaire ce nombre de consommateurs vous\
+      \ serez pr\xEAt \xE0 d\xE9couvrir d'autres - Horizons Inconnus !"
+    - "Vous avez aussi besoin de suffisamment d'argent pour maintenir l'\xE9conomie,\
+      \ une balance positive est n\xE9cessaire (voir l'onglet 'Compte')."
     - !!python/unicode '
 
       TASK: Reach a total number of 50 inhabitants and a positive balance to complete
@@ -702,5 +700,5 @@ events:
     type: var_gt
 locale: fr
 mapfile: development.sqlite
-translation_status: 179 translated messages, 12 untranslated messages.
+translation_status: 183 translated messages, 8 untranslated messages.
 

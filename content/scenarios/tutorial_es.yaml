@@ -44,7 +44,7 @@ events:
       \ con el equipo!"
     - !!python/unicode 'Y ahora, vamos a empezar la partida en curso.'
     - [Pagebreak]
-    - [Headline, !!python/unicode 'NUEVA TAREA: ESTABLECERSE EN UNA ISLA']
+    - [Headline, !!python/unicode 'ESTABLECERSE EN UNA ISLA']
     - [Image, content/gui/images/background/hr.png]
     - "Para mover tu nav\xEDo, selecci\xF3nalo con el bot\xF3n izquierdo y haz clic\
       \ con el derecho sobre el punto al que quieras que vaya."
@@ -61,7 +61,7 @@ events:
       edificio.'
     - !!python/unicode '
 
-      TAREA: Construye una lonja en la costa.'
+      Construye una lonja en la costa.'
     type: logbook
   - arguments: [tutStepDone, 16]
     type: set_var
@@ -97,8 +97,7 @@ events:
       \ lo contrario los bienes permanecer\xE1n en el negocio y no ser\xE1n recolectados."
     - "Esto significa que tienes que conectar tu sucursal (o almac\xE9n) y el le\xF1\
       ador."
-    - "\nTAREA: Construye un aserradero en un \xE1rea boscoso y con\xE9ctalo a un\
-      \ camino."
+    - "\nConstruye un aserradero en un \xE1rea boscoso y con\xE9ctalo a un camino."
     - "Observa c\xF3mo un recolector recoger\xE1 tu primera producci\xF3n autom\xE1\
       tica de tableros. Los trabajadores del aserradero se reclutan autom\xE1ticamente,\
       \ no te preocupes."
@@ -148,7 +147,7 @@ events:
       n directa."
     - !!python/unicode '
 
-      TAREA: Construir un cazador y un pescador.'
+      Construye un cazador y un pescador.'
     - "\xA1No olvides conectarlos a tu almac\xE9n central mediante caminos!"
     - - Gallery
       - [content/gui/icons/buildmenu/011_h.png, content/gui/icons/buildmenu/009_h.png,
@@ -167,7 +166,7 @@ events:
     type: var_lt
 - actions:
   - arguments:
-    - [Headline, !!python/unicode 'NUEVA TAREA: LA PLAZA PRINCIPAL']
+    - [Headline, !!python/unicode 'LA PLAZA PRINCIPAL']
     - [Image, content/gui/images/background/hr.png]
     - !!python/unicode 'Tus residentes necesitan una plaza principal donde poder obtener
       sus bienes.'
@@ -199,10 +198,10 @@ events:
     - "Si tu saldo es positivo, estar\xE1s produciendo beneficios."
     - - Gallery
       - [content/gui/icons/tabwidget/mainsquare/inhabitants0_a.png]
-    - "En las diferentes pesta\xF1as de informaci\xF3n de los diferentes niveles,\
-      \ puedes ver estad\xEDsticas de tus habitantes. Tambi\xE9n puedes fijar aqu\xED\
-      \ un impuesto espec\xEDfico y global por nivel y permitir o denegar a tus habitantes\
-      \ de ese nivel que realicen mejoras para alcanzar el siguiente nivel."
+    - "En las diferentes pesta\xF1as de informaci\xF3n de crecimiento, puedes ver\
+      \ estad\xEDsticas de tus habitantes. Tambi\xE9n puedes fijar aqu\xED un impuesto\
+      \ espec\xEDfico para cada nivel y permitir o denegar a tus habitantes de ese\
+      \ nivel que realicen mejoras para alcanzar el siguiente nivel."
     type: logbook
   - arguments: [!!python/unicode 'Construya una plaza principal. Elija una zona sin
         demasiados edificios comerciales.']
@@ -265,8 +264,8 @@ events:
         \ en cuenta que aqu\xED tambi\xE9n puedes cambiar los impuestos globales.",
       !!python/unicode '
 
-        TAREA: Construir al menos tres tiendas adicionales.', "\nTRUCO: Si mantienes\
-        \ pulsado MAYUS podr\xE1s construir m\xE1s de un edificio del mismo tipo."]
+        Construye al menos tres tiendas adicionales.', "\nTRUCO: Si mantienes pulsado\
+        \ MAYUS podr\xE1s construir m\xE1s de un edificio del mismo tipo."]
     type: logbook
   - arguments: ["Construye al menos tres tiendas adicionales y con\xE9ctalas a la\
         \ plaza principal."]
@@ -282,7 +281,7 @@ events:
     type: var_lt
 - actions:
   - arguments:
-    - [Headline, "CONSTRUIR UNA SE\xD1AL DE HUMO"]
+    - [Headline, "CONSTRUYE UNA SE\xD1AL DE HUMO"]
     - [Image, content/gui/images/background/hr.png]
     - "\xBFVes un nav\xEDo pasando por tu isla de vez en cuando? Ese nav\xEDo pertenece\
       \ a un Comerciante Libre, uno de los primeros colonos en este archipi\xE9lago."
@@ -311,7 +310,7 @@ events:
       \ a \"Vender\" y viceversa."
     - "Mediante clic en una casilla puedes elegir el producto que quieres comerciar.\
       \ Lo explicaremos m\xE1s detenidamente una vez que est\xE9s listo para ello.."
-    - "\nConstruya una se\xF1al de humo en la costa cerca de tu lonja.."
+    - "\nConstruye una se\xF1al de humo en la costa cerca de tu lonja."
     type: logbook
   - arguments: ["Construye una se\xF1al de humo en la costa cerca de tu lonja.."]
     type: message
@@ -353,8 +352,8 @@ events:
       \ de una unidad puede variar.\n\xA1NO es posible cambiar los precios manualmente!"
     - "Puedes ver el saldo de comercio en la pesta\xF1a \"Cuenta\" comparando los\
       \ valores de \"Ventas\" y \"Compras\"."
-    - "\nTAREA: \xA1Comprar tantas herramientas necesites como para mantener 30 en\
-      \ el almac\xE9n!"
+    - "\n\xA1Compra las herramientas que necesites hasta completar 30 en el almac\xE9\
+      n!"
     - - Gallery
       - [content/gui/icons/resources/50/006.png]
     type: logbook
@@ -531,7 +530,7 @@ events:
       \ alrededor."
     - "Por ahora, no tienes que preocuparte mucho de esos problemas mientras no hayas\
       \ creado campos de cultivo. \xA1Vamos a cambiar eso!"
-    - "\nTAREA: Construye al menos un prado alrededor de la granja y a\xF1ade si quieres\
+    - "\nConstruye al menos un prado alrededor de la granja y a\xF1ade si quieres\
       \ campos de patata."
     - - Gallery
       - [content/gui/icons/buildmenu/018.png, content/gui/icons/buildmenu/019.png]
@@ -585,8 +584,7 @@ events:
       \ que hay."
     - !!python/unicode '
 
-      TAREA: Construir una tienda de almacenamiento, preferentemente donde necesites
-      transportistas.'
+      Construir una tienda de almacenamiento, preferentemente donde necesites transportistas.'
     - - Gallery
       - [content/gui/icons/buildmenu/002.png]
     type: logbook
@@ -616,7 +614,7 @@ events:
       \ producci\xF3n."
     - !!python/unicode '
 
-      TAREA: Construye una tejedora de forma que pueda recoger lana.'
+      Construye una tejedora de forma que pueda recoger lana.'
     - - Gallery
       - [content/gui/icons/buildmenu/007.png]
     type: logbook
