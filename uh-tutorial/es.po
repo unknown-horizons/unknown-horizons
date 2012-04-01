@@ -7,8 +7,8 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: translate-uh@lists.unknown-horizons.org\n"
 "POT-Creation-Date: 2012-03-21 04:04+0100\n"
-"PO-Revision-Date: 2012-04-01 06:54+0200\n"
-"Last-Translator: Christopher Oelmueller <chris.oelmueller+uh@gmail.com>\n"
+"PO-Revision-Date: 2012-04-01 12:30+0200\n"
+"Last-Translator: Sergio <juarrox@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: es\n"
 "MIME-Version: 1.0\n"
@@ -1075,7 +1075,7 @@ msgstr ""
 #. This is the text body of a logbook page.
 #: po/tutorial.py:264
 msgid "A shiny new tab appeared there."
-msgstr ""
+msgstr "Un nueva y reluciente pestaña apareció ahí."
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:266
@@ -1083,6 +1083,9 @@ msgid ""
 "Pioneers will demand cloth, so you need to set up a production line for cloth "
 "starting with lambs wool (which is one of the goods produced at the farm)."
 msgstr ""
+"Los pioneros reclamarán tejidos, así que necesitas fijar el inicio de una "
+"línea de producción textil con lana de oveja (que es uno de los bienes "
+"producidos en las granjas)."
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:268
@@ -1090,11 +1093,15 @@ msgid ""
 "The farm is a very special production building since it can produce not only "
 "one, but very many (and different) goods if you choose."
 msgstr ""
+"La granja es un edificio de producción especial dado que si lo deseas puedes "
+"producir muchos (y variados) bienes."
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:270
 msgid "The output of farms depends on what kind of fields you build around it."
 msgstr ""
+"La producción de las granjas depende del tipo de campos de cultivo que "
+"construyas a su alrededor."
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:272
@@ -1102,6 +1109,8 @@ msgid ""
 "\n"
 "We will have a closer look at this later."
 msgstr ""
+"\n"
+"Daremos un vistazo en profundidad más adelante."
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:274
@@ -1109,6 +1118,8 @@ msgid ""
 "Farms, like all companies producing raw materials, do not necessarily need to "
 "be connected to storage or a warehouse."
 msgstr ""
+"Las granjas, al igual que todos los negocios que producen materias primas, "
+"no necesariamente requieren estar conectadas a un almacén o a una lonja."
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:276
@@ -1142,6 +1153,8 @@ msgid ""
 "\n"
 "TASK: Build a farm."
 msgstr ""
+"\n"
+"TAREA: Construir una granja."
 
 #. This message is displayed in the widget on the left screen part. Please keep it short enough to fit there!
 #: po/tutorial.py:284
@@ -1174,6 +1187,11 @@ msgid ""
 "* Sugar field: Grows sugar which is used to distill liquor and (later) "
 "produce confectionery."
 msgstr ""
+"Aquí tenemos una breve información:\n"
+"* Pastos: Aquí viven las ovejas que producen lana.\n"
+"* Campos de patata: Crecen patatas que proporcionan alimento.\n"
+"* Cultivos de azúcar: Crece azúcar que se utiliza para destilar licor y (más "
+"tarde) elaborar productos de confitería."
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:294
@@ -1181,6 +1199,9 @@ msgid ""
 "We now only need pastures, but in case your food supply chain is too small "
 "(maybe many residential buildings) you can also produce some potatoes."
 msgstr ""
+"Ahora sólo necesitamos pastos, pero en caso de que el suministro de alimento "
+"sea demasiado corto (quizá si hay muchos edificios residenciales) también "
+"puedes escoger algunos campos de patata."
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:296
@@ -1188,6 +1209,9 @@ msgid ""
 "Note that for potatoes you will need a road connection to the farm (not to "
 "the field!) as it will be the only company to work on the goods."
 msgstr ""
+"Ten en cuenta que para las patatas necesitarás un camino que conecte a la "
+"granja (¡no al cultivo!) así como a los negocios que trabajen con esos "
+"bienes."
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:298
@@ -1206,6 +1230,9 @@ msgid ""
 "efficiency of the farm - but you need to check how many fields one farm can "
 "serve."
 msgstr ""
+"Puedes hacer una producción combinada - un único prado no alcanzará una "
+"eficiencia del 100 por ciento de la granja - pero comprueba cuántos campos "
+"de cultivo pueden servir."
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:302
@@ -1214,6 +1241,10 @@ msgid ""
 "there (to seed, harvest, herd, etc…) and because of that, the farm may be "
 "unable to serve all of the fields you built for it in time."
 msgstr ""
+"Los diferentes tipos de cultivo requieren más o menos tiempo de producción "
+"(para sembrar, cosechar, ordeñar, etc...) así que la granja no podrá atender "
+"al mismo tiempo a todos los campos de cultivo que construyas a su "
+"alrededor."
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:304
@@ -1232,15 +1263,13 @@ msgid ""
 "you like."
 msgstr ""
 "\n"
-"TAREA: Construye al menos un prado en el alcance de la granja y añade si "
-"quieres campos de patata."
+"TAREA: Construye al menos un prado alrededor de la granja y añade si quieres "
+"campos de patata."
 
 #. This message is displayed in the widget on the left screen part. Please keep it short enough to fit there!
 #: po/tutorial.py:308
 msgid "Build at least one pasture and add potato fields if you like."
-msgstr ""
-"Construye al menos un campo de pastos y agrega un campo de patatas si te "
-"apetece."
+msgstr "Construye al menos un prado y añade un campo de patatas si te apetece."
 
 #. This is a logbook page heading. Space is VERY short, please only translate to strings that fit (roughly 30 characters max).
 #: po/tutorial.py:310
@@ -1250,7 +1279,7 @@ msgstr "EL ALMACÉN"
 #. This is the text body of a logbook page.
 #: po/tutorial.py:312
 msgid "Did you watch your lumberjack recently?"
-msgstr ""
+msgstr "¿Te fijaste en el leñador?"
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:314
@@ -1258,6 +1287,9 @@ msgid ""
 "Since your warehouse does not have unlimited space to store goods, collectors "
 "will stop fetching goods from companies when stock is full."
 msgstr ""
+"Dado que en la lonja no tienes espacio ilimitado, los recolectores dejarán "
+"de recoger bienes de los negocios cuando el espacio de almacenaje esté "
+"completo."
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:316
@@ -1265,6 +1297,9 @@ msgid ""
 "So if no sailors recently wanted to upgrade their tents, you probably have a "
 "lot of boards and in that case, the lumberjack may idle."
 msgstr ""
+"Por lo que si no quieres que los marineros mejoren sus tiendas de campaña, "
+"probablemente tendrás un montón de tableros de madera y en ese caso, el "
+"leñador se detendrá."
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:318

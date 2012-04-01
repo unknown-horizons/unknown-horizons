@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2012-03-24 02:16+0100\n"
-"PO-Revision-Date: 2012-04-01 00:31+0200\n"
+"PO-Revision-Date: 2012-04-01 12:18+0200\n"
 "Last-Translator: Sergio <juarrox@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: es\n"
@@ -178,7 +178,7 @@ msgstr "bellotas"
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "alvearies"
-msgstr "Colmenas"
+msgstr "colmenas"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
@@ -410,7 +410,7 @@ msgstr "depósito de piedra"
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "stone tops"
-msgstr "tapas de piedra"
+msgstr "encimeras"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
@@ -455,7 +455,7 @@ msgstr "arboles"
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "vines"
-msgstr "viñas"
+msgstr "viñedos"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
@@ -516,8 +516,7 @@ msgstr "Nombre de archivo inválido"
 
 #: horizons/command/game.py:37
 msgid "Received an invalid filename for a save command."
-msgstr ""
-"Se ha recibido un nombre de archivo invalido para la instrucción Guardar."
+msgstr "Recibido nombre de archivo inválido para la orden Guardar."
 
 #. There was a problem during the 'save game' procedure.
 #: horizons/command/game.py:47 horizons/gui/gui.py:179
@@ -614,7 +613,7 @@ msgstr "No se puede cargar el idioma {lang}"
 
 #: horizons/engine/settingshandler.py:312
 msgid "Logging enabled"
-msgstr "Archivo de registro activado"
+msgstr "Registro de bitácora activado"
 
 #: horizons/engine/settingshandler.py:314
 #, python-format
@@ -683,7 +682,7 @@ msgstr "Confirmación para sobreescribir"
 
 #: horizons/gui/gui.py:371
 msgid "Invalid filename given"
-msgstr "el nombre de archivo dado es invalido"
+msgstr "Nombre de archivo inválido"
 
 #: horizons/gui/gui.py:379
 msgid "Please select a savegame or click on cancel."
@@ -1230,7 +1229,7 @@ msgstr "Límite: {amount}t por espacio"
 
 #: horizons/gui/widgets/logbook.py:45
 msgid "Logbook"
-msgstr "Libro de Registro"
+msgstr "Diario de a bordo"
 
 #. (text of widget: headline_statistics)
 #: horizons/gui/widgets/logbook.py:46 horizons/i18n/guitranslations.py:610
@@ -1310,7 +1309,7 @@ msgstr "Informe de producción de {settlement}"
 
 #: horizons/gui/widgets/resourceoverviewbar.py:199
 msgid "Click to add a new slot"
-msgstr "Haz click para añadir una nueva casilla"
+msgstr "Haz clic para añadir una nueva casilla"
 
 #: horizons/gui/widgets/resourceoverviewbar.py:389
 #: horizons/gui/widgets/resourceoverviewbar.py:394
@@ -2295,7 +2294,7 @@ msgstr "Rotar edificio o mapa en sentido contrario al reloj"
 #. (text of widget: lbl_ROTATE_RIGHT)
 #: horizons/i18n/guitranslations.py:752
 msgid "Rotate building or map clockwise"
-msgstr "Rotar edificio o mapa en el sentido del reloj"
+msgstr "Rotar edificio o mapa a la izquierda"
 
 #. (text of widget: lbl_SCREENSHOT)
 #: horizons/i18n/guitranslations.py:754
@@ -2857,12 +2856,12 @@ msgstr "Recluta unidades adecuadas para el combate terrestre."
 #. name of buildings:blender
 #: horizons/i18n/objecttranslations.py:74
 msgid "Blender"
-msgstr ""
+msgstr "Blender"
 
 #. tooltip_text of buildings:blender
 #: horizons/i18n/objecttranslations.py:76
 msgid "Produces condiments out of spices."
-msgstr "Produce condimentos de especias."
+msgstr "Elabora condimentos de especias."
 
 #. name of buildings:boatbuilder
 #: horizons/i18n/objecttranslations.py:81
@@ -2872,7 +2871,7 @@ msgstr "Constructor de barcos"
 #. tooltip_text of buildings:boatbuilder
 #: horizons/i18n/objecttranslations.py:83
 msgid "Builds boats and small ships. Built on coast."
-msgstr "Construye barcos y buques pequeños. Construido en la costa."
+msgstr "Construye barcos y navíos pequeños. Construido en la costa."
 
 #. name of buildings:brickyard
 #: horizons/i18n/objecttranslations.py:88
