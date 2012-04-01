@@ -33,12 +33,12 @@ class AbstractSaltPonds(AbstractBuilding):
 
 	@classmethod
 	def register_buildings(cls):
-		cls._available_buildings[BUILDINGS.SALT_PONDS_CLASS] = cls
+		cls._available_buildings[BUILDINGS.SALT_PONDS] = cls
 
 class SaltPondsEvaluator(BuildingEvaluator):
 	@classmethod
 	def create(cls, area_builder, x, y, orientation):
-		builder = area_builder.make_builder(BUILDINGS.SALT_PONDS_CLASS, x, y, True, orientation)
+		builder = area_builder.make_builder(BUILDINGS.SALT_PONDS, x, y, True, orientation)
 		if not builder:
 			return None
 

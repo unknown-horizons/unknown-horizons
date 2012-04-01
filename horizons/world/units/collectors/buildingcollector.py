@@ -316,7 +316,7 @@ class FisherShipCollector(BuildingCollector):
 		fishers = []
 		for settlement in session.world.settlements:
 			if settlement.owner == owner:
-				fishers.extend(settlement.buildings_by_id[BUILDINGS.FISHERMAN_CLASS])
+				fishers.extend(settlement.buildings_by_id[BUILDINGS.FISHER])
 		smallest_fisher = fishers.pop()
 		for fisher in fishers:
 			if len(smallest_fisher.get_local_collectors()) > len(fisher.get_local_collectors()):

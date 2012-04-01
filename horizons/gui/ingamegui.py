@@ -333,10 +333,10 @@ class IngameGui(LivingObject):
 		self.session.set_cursor('building', cls, None if unit is None else unit())
 
 	def toggle_road_tool(self):
-		if not isinstance(self.session.cursor, BuildingTool) or self.session.cursor._class.id != BUILDINGS.TRAIL_CLASS:
+		if not isinstance(self.session.cursor, BuildingTool) or self.session.cursor._class.id != BUILDINGS.TRAIL:
 			if isinstance(self.session.cursor, BuildingTool):
-				print self.session.cursor._class.id, BUILDINGS.TRAIL_CLASS
-			self._build(BUILDINGS.TRAIL_CLASS)
+				print self.session.cursor._class.id, BUILDINGS.TRAIL
+			self._build(BUILDINGS.TRAIL)
 		else:
 			self.session.set_cursor()
 

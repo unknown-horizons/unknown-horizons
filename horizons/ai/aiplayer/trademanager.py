@@ -63,7 +63,7 @@ class TradeManager(WorldObject):
 	log = logging.getLogger("ai.aiplayer.trademanager")
 
 	# resources that can be produced on another island and transported to where they are needed
-	legal_resources = [RES.FOOD_ID, RES.TEXTILE_ID, RES.LIQUOR_ID, RES.BRICKS_ID, RES.TOBACCO_PRODUCTS_ID, RES.SALT_ID]
+	legal_resources = [RES.FOOD, RES.TEXTILE, RES.LIQUOR, RES.BRICKS, RES.TOBACCO_PRODUCTS, RES.SALT]
 
 	def __init__(self, settlement_manager):
 		super(TradeManager, self).__init__()

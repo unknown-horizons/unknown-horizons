@@ -139,7 +139,7 @@ class BuildingTool(NavigationTool):
 		# If the current buildings has related buildings, also show other buildings
 		# of this class. You usually don't want overlapping ranges of e.g. lumberjacks.
 		if self._class.id in self.session.db.get_buildings_with_related_buildings() and \
-		   self._class.id != BUILDINGS.RESIDENTIAL_CLASS:
+		   self._class.id != BUILDINGS.RESIDENTIAL:
 			# TODO: generalize settler class exclusion, e.g. when refactoring it into components
 
 			related = related + [self._class.id] # don't += on retrieved data from db
@@ -280,7 +280,7 @@ class BuildingTool(NavigationTool):
 				not hasattr(self._class, "default_level_on_build") else \
 				self._class.default_level_on_build
 
-			if self._class.id == BUILDINGS.TREE_CLASS and not building.buildable:
+			if self._class.id == BUILDINGS.TREE and not building.buildable:
 				continue # Tree/ironmine that is not buildable, don't preview
 			else:
 				fife_instance, action_set_id = \
@@ -297,7 +297,7 @@ class BuildingTool(NavigationTool):
 			if settlement is not None and settlement.owner != self.session.world.player:
 				settlement = None # no fraternising with the enemy, else there would be peace
 
-			if self._class.id != BUILDINGS.WAREHOUSE_CLASS:
+			if self._class.id != BUILDINGS.WAREHOUSE:
 				# Player shouldn't be allowed to build in this case, else it can trigger
 				# a new_settlement notificaition
 				if settlement is None:
@@ -502,7 +502,7 @@ class BuildingTool(NavigationTool):
 
 			# check how to continue: either build again or escape
 			if ((evt.isShiftPressed() or \
-			    horizons.main.fife.get_uh_setting('UninterruptedBuilding')) and not self._class.id == BUILDINGS.WAREHOUSE_CLASS) or \
+			    horizons.main.fife.get_uh_setting('UninterruptedBuilding')) and not self._class.id == BUILDINGS.WAREHOUSE) or \
 			    not found_buildable or \
 			    self._class.class_package == 'path':
 				# build once more

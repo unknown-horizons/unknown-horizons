@@ -54,7 +54,7 @@ class ShipOverviewTab(OverviewTab):
 
 		if island_without_player_settlement_found:
 			events['found_settlement'] = Callback(self.instance.session.ingame_gui._build, \
-			                                     BUILDINGS.WAREHOUSE_CLASS, \
+			                                     BUILDINGS.WAREHOUSE, \
 			                                     weakref.ref(self.instance) )
 			self.widget.child_finder('found_settlement_bg').set_active()
 			self.widget.child_finder('found_settlement').set_active()
@@ -67,7 +67,7 @@ class ShipOverviewTab(OverviewTab):
 
 		cb = Callback( self.instance.session.ingame_gui.resource_overview.set_construction_mode,
 		               self.instance,
-		               Entities.buildings[BUILDINGS.WAREHOUSE_CLASS].costs)
+		               Entities.buildings[BUILDINGS.WAREHOUSE].costs)
 		events['found_settlement/mouseEntered'] = cb
 
 		cb1 = Callback(self.instance.session.ingame_gui.resource_overview.close_construction_mode)

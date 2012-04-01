@@ -85,7 +85,7 @@ class Island(BuildingOwner, WorldObject):
 			# create building indexers
 			from horizons.world.units.animal import WildAnimal
 			self.building_indexers = {}
-			self.building_indexers[BUILDINGS.TREE_CLASS] = BuildingIndexer(WildAnimal.walking_range, self, self.session.random)
+			self.building_indexers[BUILDINGS.TREE] = BuildingIndexer(WildAnimal.walking_range, self, self.session.random)
 
 		# load settlements
 		for (settlement_id,) in db("SELECT rowid FROM settlement WHERE island = ?", islandid):
@@ -299,7 +299,7 @@ class Island(BuildingOwner, WorldObject):
 				self._register_change(point.x, point.y)
 
 		# keep track of the number of trees for animal population control
-		if building.id == BUILDINGS.TREE_CLASS:
+		if building.id == BUILDINGS.TREE:
 			self.num_trees += 1
 
 		return building
@@ -320,12 +320,12 @@ class Island(BuildingOwner, WorldObject):
 			self._register_change(point.x, point.y)
 
 		# keep track of the number of trees for animal population control
-		if building.id == BUILDINGS.TREE_CLASS:
+		if building.id == BUILDINGS.TREE:
 			self.num_trees -= 1
 
 	def get_building_index(self, resource_id):
-		if resource_id == RES.WILDANIMALFOOD_ID:
-			return self.building_indexers[BUILDINGS.TREE_CLASS]
+		if resource_id == RES.WILDANIMALFOOD:
+			return self.building_indexers[BUILDINGS.TREE]
 		return None
 
 	def get_surrounding_tiles(self, where, radius = 1):
@@ -361,9 +361,9 @@ class Island(BuildingOwner, WorldObject):
 		if len(self.wild_animals) == 0:
 			# find a tree where we can place it
 			for building in self.buildings:
-				if building.id == BUILDINGS.TREE_CLASS:
+				if building.id == BUILDINGS.TREE:
 					point = building.position.origin
-					animal = Entities.units[UNITS.WILD_ANIMAL_CLASS](self, x=point.x, y=point.y, session=self.session)
+					animal = Entities.units[UNITS.WILD_ANIMAL](self, x=point.x, y=point.y, session=self.session)
 					animal.initialize()
 					return
 		# we might not find a tree, but if that's the case, wild animals would die out anyway again,

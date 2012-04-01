@@ -33,22 +33,22 @@ class AbstractTobacconist(AbstractBuilding):
 
 	@classmethod
 	def register_buildings(cls):
-		cls._available_buildings[BUILDINGS.TOBACCONIST_CLASS] = cls
+		cls._available_buildings[BUILDINGS.TOBACCONIST] = cls
 
 class TobacconistEvaluator(BuildingEvaluator):
 	@classmethod
 	def create(cls, area_builder, x, y, orientation):
-		builder = area_builder.make_builder(BUILDINGS.TOBACCONIST_CLASS, x, y, True, orientation)
+		builder = area_builder.make_builder(BUILDINGS.TOBACCONIST, x, y, True, orientation)
 		if not builder:
 			return None
 
 		distance_to_farm = None
-		for building in area_builder.settlement.buildings_by_id.get(BUILDINGS.FARM_CLASS, []):
+		for building in area_builder.settlement.buildings_by_id.get(BUILDINGS.FARM, []):
 			distance = builder.position.distance(building.position)
-			if distance <= Entities.buildings[BUILDINGS.TOBACCONIST_CLASS].radius:
+			if distance <= Entities.buildings[BUILDINGS.TOBACCONIST].radius:
 				tobacco_producer = False
 				for provider in building._get_providers():
-					if isinstance(provider, Entities.buildings[BUILDINGS.TOBACCO_FIELD_CLASS]):
+					if isinstance(provider, Entities.buildings[BUILDINGS.TOBACCO_FIELD]):
 						tobacco_producer = True
 						break
 				if tobacco_producer:
@@ -59,11 +59,11 @@ class TobacconistEvaluator(BuildingEvaluator):
 			return None # require tobacconists to have a collector building in range
 
 		personality = area_builder.owner.personality_manager.get('TobacconistEvaluator')
-		distance_penalty = Entities.buildings[BUILDINGS.TOBACCONIST_CLASS].radius * personality.distance_penalty
+		distance_penalty = Entities.buildings[BUILDINGS.TOBACCONIST].radius * personality.distance_penalty
 
 		alignment = cls._get_alignment(area_builder, builder.position.tuple_iter())
 		distance = cls._weighted_distance(distance_to_collector, [(personality.farm_distance_importance, distance_to_farm)], distance_penalty)
-		value = float(Entities.buildings[BUILDINGS.TOBACCONIST_CLASS].radius) / distance + alignment * personality.alignment_importance
+		value = float(Entities.buildings[BUILDINGS.TOBACCONIST].radius) / distance + alignment * personality.alignment_importance
 		return TobacconistEvaluator(area_builder, builder, value)
 
 	@property

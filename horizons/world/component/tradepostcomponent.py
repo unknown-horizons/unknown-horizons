@@ -120,14 +120,14 @@ class TradePostComponent(ChangeListener, Component):
 		@return bool, whether we did buy it"""
 		assert price >= 0 and amount >= 0
 		if not res in self.buy_list or \
-		   self.get_owner_inventory()[RES.GOLD_ID] < price or \
+		   self.get_owner_inventory()[RES.GOLD] < price or \
 		   self.get_inventory().get_free_space_for(res) < amount or \
 		   amount + self.get_inventory()[res] > self.buy_list[res]:
 			self._changed()
 			return False
 
 		else:
-			remnant = self.get_owner_inventory().alter(RES.GOLD_ID, -price)
+			remnant = self.get_owner_inventory().alter(RES.GOLD, -price)
 			assert remnant == 0
 			remnant = self.get_inventory().alter(res, amount)
 			assert remnant == 0
@@ -153,7 +153,7 @@ class TradePostComponent(ChangeListener, Component):
 			return False
 
 		else:
-			remnant = self.get_owner_inventory().alter(RES.GOLD_ID, price)
+			remnant = self.get_owner_inventory().alter(RES.GOLD, price)
 			assert remnant == 0
 			remnant = self.get_inventory().alter(res, -amount)
 			assert remnant == 0
@@ -185,7 +185,7 @@ class TradePostComponent(ChangeListener, Component):
 		if amount <= 0:
 			return err(_("You can not store this."), TRADE_ERROR_TYPE.PERMANENT)
 		# can't sell more than the ship's owner can afford
-		amount = min(amount, ship.owner.get_component(StorageComponent).inventory[RES.GOLD_ID] // price)
+		amount = min(amount, ship.owner.get_component(StorageComponent).inventory[RES.GOLD] // price)
 		if amount <= 0:
 			return err(_("You can not afford to buy this."), TRADE_ERROR_TYPE.TEMPORARY)
 		# can't sell more than what we have
@@ -196,8 +196,8 @@ class TradePostComponent(ChangeListener, Component):
 			return err(_("The trade partner does not sell more of this."), TRADE_ERROR_TYPE.TEMPORARY)
 
 		total_price = price * amount
-		assert self.get_owner_inventory().alter(RES.GOLD_ID, total_price) == 0
-		assert ship.owner.get_component(StorageComponent).inventory.alter(RES.GOLD_ID, -total_price) == 0
+		assert self.get_owner_inventory().alter(RES.GOLD, total_price) == 0
+		assert ship.owner.get_component(StorageComponent).inventory.alter(RES.GOLD, -total_price) == 0
 		assert self.get_inventory().alter(resource_id, -amount) == 0
 		assert ship.get_component(StorageComponent).inventory.alter(resource_id, amount) == 0
 		self.trade_history.append((Scheduler().cur_tick, ship.owner.worldid, resource_id, -amount, total_price))
@@ -231,7 +231,7 @@ class TradePostComponent(ChangeListener, Component):
 		if amount <= 0:
 			return err(_("The trade partner can not store more of this."), TRADE_ERROR_TYPE.TEMPORARY)
 		# can't buy more than we can afford
-		amount = min(amount, self.get_owner_inventory()[RES.GOLD_ID] // price)
+		amount = min(amount, self.get_owner_inventory()[RES.GOLD] // price)
 		if amount <= 0:
 			return err(_("The trade partner can not afford to buy this."), TRADE_ERROR_TYPE.TEMPORARY)
 
@@ -241,8 +241,8 @@ class TradePostComponent(ChangeListener, Component):
 			return err(_("The trade partner does not buy more of this."), TRADE_ERROR_TYPE.TEMPORARY)
 
 		total_price = price * amount
-		assert self.get_owner_inventory().alter(RES.GOLD_ID, -total_price) == 0
-		assert ship.owner.get_component(StorageComponent).inventory.alter(RES.GOLD_ID, total_price) == 0
+		assert self.get_owner_inventory().alter(RES.GOLD, -total_price) == 0
+		assert ship.owner.get_component(StorageComponent).inventory.alter(RES.GOLD, total_price) == 0
 		assert self.get_inventory().alter(resource_id, amount) == 0
 		assert ship.get_component(StorageComponent).inventory.alter(resource_id, -amount) == 0
 		self.trade_history.append((Scheduler().cur_tick, ship.owner.worldid, resource_id, amount, -total_price))

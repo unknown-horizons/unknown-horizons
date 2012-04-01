@@ -28,8 +28,8 @@ from horizons.world.component.storagecomponent import StorageComponent
 
 class AbstractIronMine(AbstractBuilding):
 	def iter_potential_locations(self, settlement_manager):
-		for building in settlement_manager.land_manager.settlement.buildings_by_id.get(BUILDINGS.MOUNTAIN_CLASS, []):
-			if building.get_component(StorageComponent).inventory[RES.RAW_IRON_ID]:
+		for building in settlement_manager.land_manager.settlement.buildings_by_id.get(BUILDINGS.MOUNTAIN, []):
+			if building.get_component(StorageComponent).inventory[RES.RAW_IRON]:
 				(x, y) = building.position.origin.to_tuple()
 				for rotation in xrange(4):
 					yield (x, y, rotation)
@@ -40,12 +40,12 @@ class AbstractIronMine(AbstractBuilding):
 
 	@classmethod
 	def register_buildings(cls):
-		cls._available_buildings[BUILDINGS.IRON_MINE_CLASS] = cls
+		cls._available_buildings[BUILDINGS.IRON_MINE] = cls
 
 class IronMineEvaluator(BuildingEvaluator):
 	@classmethod
 	def create(cls, area_builder, x, y, orientation):
-		builder = area_builder.make_builder(BUILDINGS.IRON_MINE_CLASS, x, y, True, orientation)
+		builder = area_builder.make_builder(BUILDINGS.IRON_MINE, x, y, True, orientation)
 		if not builder:
 			return None
 		return IronMineEvaluator(area_builder, builder, 0)

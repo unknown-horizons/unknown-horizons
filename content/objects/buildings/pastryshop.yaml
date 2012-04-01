@@ -23,14 +23,14 @@ components:
         produces:
         - [RES.CONFECTIONERY, 1]
         consumes:
-        - [RES.SUGAR_ID, -1]
+        - [RES.SUGAR, -1]
         - [RES.COCOA, -1]
         time: 30
       1:
         produces:
         - [RES.CONFECTIONERY, 1]
         consumes:
-        - [RES.SUGAR_ID, -1]
+        - [RES.SUGAR, -1]
         - [RES.GRAPES, -1]
         time: 30
       2:
@@ -52,7 +52,7 @@ components:
 - StorageComponent:
     inventory:
       SlotsStorage:
-        slot_sizes: {RES.SUGAR_ID: 6, RES.COCOA: 6, RES.CONFECTIONERY: 6,
+        slot_sizes: {RES.SUGAR: 6, RES.COCOA: 6, RES.CONFECTIONERY: 6,
                      RES.CANDLES: 6, RES.GRAPES: 6, RES.HONEYCOMBS: 6}
 actionsets:
   #as_pastryshop0: {level: 0}

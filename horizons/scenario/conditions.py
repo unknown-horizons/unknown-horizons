@@ -76,12 +76,12 @@ def settler_level_greater(session, limit):
 @register(periodically=True)
 def player_gold_greater(session, limit):
 	"""Returns whether the player has more gold then limit"""
-	return (session.world.player.get_component(StorageComponent).inventory[RES.GOLD_ID] > limit)
+	return (session.world.player.get_component(StorageComponent).inventory[RES.GOLD] > limit)
 
 @register(periodically=True)
 def player_gold_less(session, limit):
 	"""Returns whether the player has less gold then limit"""
-	return (session.world.player.get_component(StorageComponent).inventory[RES.GOLD_ID] < limit)
+	return (session.world.player.get_component(StorageComponent).inventory[RES.GOLD] < limit)
 
 @register(periodically=True)
 def settlement_balance_greater(session, limit):
@@ -154,14 +154,14 @@ def buildings_connected_to_warehouse_gt(session, building_class, number):
 	"""Checks whether more than number of building_class type buildings are
 	connected to a warehouse or storage."""
 	return (_building_connected_to_any_of(session, building_class, \
-	        BUILDINGS.WAREHOUSE_CLASS, BUILDINGS.STORAGE_CLASS) > number )
+	        BUILDINGS.WAREHOUSE, BUILDINGS.STORAGE) > number )
 
 @register(periodically=True)
 def buildings_connected_to_warehouse_lt(session, building_class, number):
 	"""Checks whether less than number of building_class type buildings are
 	connected to a warehouse or storage."""
 	return (_building_connected_to_any_of(session, building_class, \
-	        BUILDINGS.WAREHOUSE_CLASS, BUILDINGS.STORAGE_CLASS) < number )
+	        BUILDINGS.WAREHOUSE, BUILDINGS.STORAGE) < number )
 
 @register(periodically=True)
 def buildings_connected_to_building_gt(session, building_class, class2, number):

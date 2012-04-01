@@ -21,14 +21,14 @@ components:
     productionlines:
       0:
         produces:
-        - [RES.LIQUOR_ID, 1]
+        - [RES.LIQUOR, 1]
         consumes:
         - [RES.GRAPES, -2]
         time: 15
 - StorageComponent:
     inventory:
       SlotsStorage:
-        slot_sizes: {RES.LIQUOR_ID: 6, RES.GRAPES: 8}
+        slot_sizes: {RES.LIQUOR: 6, RES.GRAPES: 8}
 actionsets:
   #as_vintner0: {level: 0}
   as_2x2: {level: 0}

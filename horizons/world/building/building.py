@@ -113,7 +113,7 @@ class BasicBuilding(ComponentHolder, ConcreteObject):
 
 	def get_payout(self):
 		"""gets the payout from the settlement in form of it's running costs"""
-		self.owner.get_component(StorageComponent).inventory.alter(RES.GOLD_ID, -self.running_costs)
+		self.owner.get_component(StorageComponent).inventory.alter(RES.GOLD, -self.running_costs)
 
 	def remove(self):
 		"""Removes the building"""
