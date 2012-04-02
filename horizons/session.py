@@ -213,7 +213,7 @@ class Session(LivingObject):
 		self._clear_caches()
 
 		# subscriptions shouldn't survive listeners
-		MessageBus.destroy_instance()
+		MessageBus().reset()
 
 	def toggle_cursor(self, which, *args, **kwargs):
 		"""Alternate between the cursor which and default.
