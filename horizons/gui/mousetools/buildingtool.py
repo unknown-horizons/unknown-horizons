@@ -88,6 +88,8 @@ class BuildingTool(NavigationTool):
 	# archive the last roads built, for possible user notification
 	_last_road_built = []
 
+	send_hover_instances_update = False
+
 	gui = None # share gui between instances
 
 	def __init__(self, session, building, ship=None, build_related=None):
@@ -671,6 +673,7 @@ class BuildingTool(NavigationTool):
 			building.get_component(SelectableComponent).deselect()
 		self.renderer.removeAllOutlines()
 		self.renderer.removeAllColored()
+
 
 class ShipBuildingToolLogic(object):
 	"""Helper class to seperate the logic needed when building from a ship from
