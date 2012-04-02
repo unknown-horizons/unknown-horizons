@@ -206,6 +206,7 @@ class Session(LivingObject):
 		self.selected_instances = None
 		self.selection_groups = None
 
+		self.status_icon_manager.end()
 		self.status_icon_manager = None
 
 		horizons.main._modules.session = None

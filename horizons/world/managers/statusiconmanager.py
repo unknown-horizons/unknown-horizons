@@ -48,6 +48,20 @@ class StatusIconManager(object):
 		RemoveStatusIcon.subscribe(self.on_remove_icon_message)
 		WorldObjectDeleted.subscribe(self.on_worldobject_deleted_message)
 
+	def end(self):
+		self.tooltip_instance = None
+		self.tooltip_icon.hide_tooltip()
+		self.tooltip_icon = None
+
+		self.renderer = None
+		self.icons = None
+		self.session = None
+
+		AddStatusIcon.unsubscribe(self.on_add_icon_message)
+		HoverInstancesChanged.unsubscribe(self.on_hover_instances_changed)
+		RemoveStatusIcon.unsubscribe(self.on_remove_icon_message)
+		WorldObjectDeleted.unsubscribe(self.on_worldobject_deleted_message)
+
 	def on_add_icon_message(self, message):
 		"""This is called by the message bus with AddStatusIcon messages"""
 		assert isinstance(message, AddStatusIcon)
