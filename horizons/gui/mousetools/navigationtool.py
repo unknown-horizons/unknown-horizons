@@ -35,7 +35,7 @@ from fife.extensions.pychan.widgets import Icon
 class NavigationTool(CursorTool):
 	"""Navigation Class to process mouse actions ingame"""
 
-	last_event_pos = None # last received mouse event position, fife.ScreenPoint
+	last_event_pos = fife.ScreenPoint(0, 0) # last received mouse event position, fife.ScreenPoint
 
 	send_hover_instances_update = True
 	HOVER_INSTANCES_UPDATE_DELAY = 1 # sec
