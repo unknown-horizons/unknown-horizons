@@ -11,7 +11,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Translate Toolkit 1.9.0\n"
+"X-Generator: Pootle 2.1.5\n"
 
 msgid "build"
 msgstr "építés"
@@ -67,14 +67,18 @@ msgstr "klikk"
 msgid "lumberjack"
 msgstr "favágó"
 
+# 88%
+#, fuzzy
 msgid "resident"
-msgstr ""
+msgstr "lakosok"
 
 msgid "main square"
 msgstr "főtér"
 
+# 85%
+#, fuzzy
 msgid "sailors"
-msgstr ""
+msgstr "tengerész"
 
 msgid "food"
 msgstr "étel"
@@ -269,17 +273,25 @@ msgstr "mód"
 msgid "move"
 msgstr "mozgás"
 
+# 87%
+#, fuzzy
 msgid "pioneers"
-msgstr ""
+msgstr "telepes"
 
+# 87%
+#, fuzzy
 msgid "citizens"
-msgstr ""
+msgstr "polgár"
 
+# 88%
+#, fuzzy
 msgid "merchants"
-msgstr ""
+msgstr "kereskedő"
 
+# 90%
+#, fuzzy
 msgid "aristocrats"
-msgstr ""
+msgstr "arisztokrata"
 
 msgid "potato"
 msgstr "paradicsom"
@@ -287,8 +299,10 @@ msgstr "paradicsom"
 msgid "settler"
 msgstr "gyarmatos"
 
+# 80%
+#, fuzzy
 msgid "speed"
-msgstr ""
+msgstr "mag"
 
 msgid "stop"
 msgstr "állj"
@@ -344,8 +358,10 @@ msgstr ""
 msgid "offer"
 msgstr ""
 
+# 75%
+#, fuzzy
 msgid "potatoes"
-msgstr ""
+msgstr "paradicsom"
 
 msgid "range"
 msgstr "távolság"
@@ -383,14 +399,18 @@ msgstr "aktív"
 msgid "afford"
 msgstr ""
 
+# 85%
+#, fuzzy
 msgid "animals"
-msgstr ""
+msgstr "állat"
 
 msgid "Captain's log"
 msgstr "A Kapitány naplója"
 
+# 75%
+#, fuzzy
 msgid "construct"
-msgstr ""
+msgstr "építés"
 
 msgid "consume"
 msgstr "fogyasztás"
@@ -407,8 +427,10 @@ msgstr "funkció"
 msgid "forest"
 msgstr "erdő"
 
+# 80%
+#, fuzzy
 msgid "grows"
-msgstr ""
+msgstr "növekedés"
 
 msgid "hold"
 msgstr "tart"
@@ -449,8 +471,10 @@ msgstr "játszik"
 msgid "price"
 msgstr ""
 
+# 75%
+#, fuzzy
 msgid "read"
-msgstr ""
+msgstr "piros"
 
 msgid "return"
 msgstr "vissza"
@@ -470,8 +494,10 @@ msgstr ""
 msgid "store"
 msgstr ""
 
+# 75%
+#, fuzzy
 msgid "tear"
-msgstr ""
+msgstr "csapat"
 
 msgid "from time to time"
 msgstr "időről időre"
@@ -488,8 +514,10 @@ msgstr "látogatás"
 msgid "world"
 msgstr ""
 
+# 83%
+#, fuzzy
 msgid "yield"
-msgstr ""
+msgstr "hozam"
 
 msgid "your ship"
 msgstr ""
@@ -533,8 +561,10 @@ msgstr "grafika"
 msgid "harvest"
 msgstr ""
 
+# 80%
+#, fuzzy
 msgid "hunts"
-msgstr ""
+msgstr "vadászat"
 
 msgid "multiple"
 msgstr "több"
