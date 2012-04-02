@@ -3,15 +3,15 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2012-03-31 21:42+0100\n"
-"PO-Revision-Date: 2012-02-13 15:08+0200\n"
-"Last-Translator: Traveler <guillaume.pascal43@laposte.net>\n"
+"PO-Revision-Date: 2012-04-02 18:00+0200\n"
+"Last-Translator: Sebastien (seblabel) <sebastiencharpentier@laposte.net>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: fr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Translate Toolkit 1.9.0\n"
+"X-Generator: Pootle 2.1.5\n"
 
 # (poterminology) uh-tutorial/tutorial.pot (43)
 # (poterminology) uh/unknownhorizons.pot (10)
@@ -70,7 +70,7 @@ msgid "tent"
 msgstr "tente"
 
 msgid "warehouse"
-msgstr ""
+msgstr "entrepôt"
 
 # (poterminology) uh-tutorial/tutorial.pot (8)
 # (poterminology) uh/unknownhorizons.pot (14)
@@ -167,8 +167,11 @@ msgstr "cliquer / clic"
 msgid "lumberjack"
 msgstr "camp de bucheron"
 
+# (poterminology) uh-tutorial/tutorial.pot (4)
+# (poterminology) uh/unknownhorizons.pot (2)
+# 88%
 msgid "resident"
-msgstr ""
+msgstr "habitants"
 
 # (poterminology) uh-tutorial/tutorial.pot (10)
 #
@@ -177,8 +180,11 @@ msgstr ""
 msgid "main square"
 msgstr "place principale"
 
+# (poterminology) uh-tutorial/tutorial.pot (12)
+# (poterminology) uh/unknownhorizons.pot (3)
+# 85%
 msgid "sailors"
-msgstr ""
+msgstr "marins"
 
 # (poterminology) uh-tutorial/tutorial.pot (5)
 #
@@ -262,13 +268,13 @@ msgid "tab"
 msgstr "onglet / fenêtre / panneau"
 
 msgid "upgrade"
-msgstr ""
+msgstr "amélioration"
 
 msgid "your inhabitants"
-msgstr ""
+msgstr "vos habitants"
 
 msgid "close"
-msgstr ""
+msgstr "fermer"
 
 # (poterminology) uh-tutorial/tutorial.pot (8)
 #
@@ -278,7 +284,7 @@ msgid "companies"
 msgstr "entreprises"
 
 msgid "island"
-msgstr ""
+msgstr "île"
 
 # (poterminology) uh-tutorial/tutorial.pot (13)
 #
@@ -288,7 +294,7 @@ msgid "time"
 msgstr "temps"
 
 msgid "unit"
-msgstr ""
+msgstr "unité"
 
 # (poterminology) uh-tutorial/tutorial.pot (7)
 #
@@ -356,7 +362,7 @@ msgid "trail"
 msgstr "sentier"
 
 msgid "Unknown Horizons"
-msgstr ""
+msgstr "Unknown Horizons"
 
 # (poterminology) uh-tutorial/tutorial.pot (7)
 #
@@ -471,7 +477,7 @@ msgid "log"
 msgstr "journal de bord"
 
 msgid "road"
-msgstr ""
+msgstr "route"
 
 #
 #
@@ -543,7 +549,7 @@ msgid "your"
 msgstr "votre"
 
 msgid "your settlement"
-msgstr ""
+msgstr "votre colonie"
 
 # (poterminology) uh-tutorial/tutorial.pot (3)
 #
@@ -575,7 +581,7 @@ msgid "choose"
 msgstr "choisir"
 
 msgid "confectionery"
-msgstr ""
+msgstr "confiserie"
 
 # (poterminology) uh-tutorial/tutorial.pot (5)
 #
@@ -603,10 +609,10 @@ msgid "happiness"
 msgstr "satisfaction / contentement"
 
 msgid "in stock"
-msgstr ""
+msgstr "en stock"
 
 msgid "money"
-msgstr ""
+msgstr "argent"
 
 # (poterminology) uh-tutorial/tutorial.pot (4)
 # (poterminology) uh/unknownhorizons.pot (2)
@@ -653,7 +659,7 @@ msgid "tools"
 msgstr "outils"
 
 msgid "button"
-msgstr ""
+msgstr "bouton"
 
 #
 #
@@ -743,17 +749,23 @@ msgstr "le mode"
 msgid "move"
 msgstr "déplacer / déménager"
 
+# (poterminology) uh-tutorial/tutorial.pot (4)
+# (poterminology) uh/unknownhorizons.pot (2)
+# 87%
 msgid "pioneers"
-msgstr ""
+msgstr "pionniers"
 
+# 87%
 msgid "citizens"
-msgstr ""
+msgstr "citoyens"
 
+# 88%
 msgid "merchants"
-msgstr ""
+msgstr "marchands"
 
+# 90%
 msgid "aristocrats"
-msgstr ""
+msgstr "aristocrates"
 
 # (poterminology) uh-tutorial/tutorial.pot (4)
 #
@@ -775,8 +787,9 @@ msgstr "pomme de terre"
 msgid "settler"
 msgstr "colon"
 
+# 80%
 msgid "speed"
-msgstr ""
+msgstr "vitesse"
 
 # (poterminology) uh-tutorial/tutorial.pot (3)
 #
@@ -805,10 +818,10 @@ msgid "storage tent"
 msgstr "tente de stockage / entrepôt"
 
 msgid "wait"
-msgstr ""
+msgstr "attendre"
 
 msgid "access"
-msgstr ""
+msgstr "accéder"
 
 # (poterminology) uh-tutorial/tutorial.pot (2)
 #
@@ -824,7 +837,7 @@ msgid "account"
 msgstr "compte / fincances / bilan"
 
 msgid "amount"
-msgstr ""
+msgstr "montant"
 
 # (poterminology) uh-tutorial/tutorial.pot (2)
 #
@@ -940,10 +953,10 @@ msgid "liquor"
 msgstr "liqueur / alcool"
 
 msgid "location"
-msgstr ""
+msgstr "endroit"
 
 msgid "offer"
-msgstr ""
+msgstr "offre"
 
 # (poterminology) uh-tutorial/tutorial.pot (3)
 #
@@ -995,10 +1008,10 @@ msgid "solution"
 msgstr "solution"
 
 msgid "space"
-msgstr ""
+msgstr "espace"
 
 msgid "target"
-msgstr ""
+msgstr "cible"
 
 # (poterminology) uh-tutorial/tutorial.pot (2)
 #
@@ -1014,10 +1027,10 @@ msgid "team"
 msgstr "équipe"
 
 msgid "total"
-msgstr ""
+msgstr "total"
 
 msgid "unable"
-msgstr ""
+msgstr "incapable"
 
 # (poterminology) uh-tutorial/tutorial.pot (3)
 #
@@ -1033,10 +1046,13 @@ msgid "active"
 msgstr "actif"
 
 msgid "afford"
-msgstr ""
+msgstr "offrir"
 
+# (poterminology) uh-tutorial/tutorial.pot (2)
+# (poterminology) uh/unknownhorizons.pot (3)
+# 85%
 msgid "animals"
-msgstr ""
+msgstr "animaux"
 
 #
 #
