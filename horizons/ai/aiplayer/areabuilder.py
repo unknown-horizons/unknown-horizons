@@ -182,9 +182,9 @@ class AreaBuilder(WorldObject):
 			for x, y in path:
 				self.register_change(x, y, BUILDING_PURPOSE.ROAD, None)
 				building = self.island.ground_map[(x, y)].object
-				if building is not None and building.id == BUILDINGS.TRAIL_CLASS:
+				if building is not None and building.id == BUILDINGS.TRAIL:
 					continue
-				assert Builder.create(BUILDINGS.TRAIL_CLASS, self.land_manager, Point(x, y)).execute()
+				assert Builder.create(BUILDINGS.TRAIL, self.land_manager, Point(x, y)).execute()
 		return path is not None
 
 	def build_road_connection(self, builder):
@@ -200,11 +200,11 @@ class AreaBuilder(WorldObject):
 		if path is not None:
 			for x, y in path:
 				building = self.island.ground_map[(x, y)].object
-				if building is None or building.id != BUILDINGS.TRAIL_CLASS:
+				if building is None or building.id != BUILDINGS.TRAIL:
 					length += 1
 		if length == 0:
 			return {}
-		costs = copy.copy(Entities.buildings[BUILDINGS.TRAIL_CLASS].costs)
+		costs = copy.copy(Entities.buildings[BUILDINGS.TRAIL].costs)
 		for resource in costs:
 			costs[resource] *= length
 		return costs
@@ -232,7 +232,7 @@ class AreaBuilder(WorldObject):
 
 	def extend_settlement_with_tent(self, position):
 		"""Build a tent to extend the settlement towards the given position. Return a BUILD_RESULT constant."""
-		size = Entities.buildings[BUILDINGS.RESIDENTIAL_CLASS].size
+		size = Entities.buildings[BUILDINGS.RESIDENTIAL].size
 		min_distance = None
 		best_coords = None
 
@@ -259,7 +259,7 @@ class AreaBuilder(WorldObject):
 		"""Build a storage to extend the settlement towards the given position. Return a BUILD_RESULT constant."""
 		options = []
 		for x, y in self.plan:
-			builder = self.make_builder(BUILDINGS.STORAGE_CLASS, x, y, True)
+			builder = self.make_builder(BUILDINGS.STORAGE, x, y, True)
 			if not builder:
 				continue
 

@@ -40,7 +40,7 @@ def assert_called_with_icon(cb, icon):
 def test_productivity_low(session, player):
 	settlement, island = settle(session)
 
-	Build(BUILDINGS.CHARCOAL_BURNER_CLASS, 30, 30, island, settlement=settlement)(player)
+	Build(BUILDINGS.CHARCOAL_BURNER, 30, 30, island, settlement=settlement)(player)
 
 	cb = mock.Mock()
 	AddStatusIcon.subscribe(cb)
@@ -60,14 +60,14 @@ def test_settler_unhappy(session, player):
 	cb = mock.Mock()
 	AddStatusIcon.subscribe(cb)
 
-	settler = Build(BUILDINGS.RESIDENTIAL_CLASS, 30, 30, island, settlement=settlement)(player)
+	settler = Build(BUILDINGS.RESIDENTIAL, 30, 30, island, settlement=settlement)(player)
 
 	# certainly not unhappy
 	assert settler.happiness > 0.45
 	assert not cb.called
 
 	# make it unhappy
-	settler.get_component(StorageComponent).inventory.alter(RES.HAPPINESS_ID, -settler.happiness)
+	settler.get_component(StorageComponent).inventory.alter(RES.HAPPINESS, -settler.happiness)
 	assert settler.happiness < 0.1
 	assert_called_with_icon(cb, SettlerUnhappyStatus)
 
@@ -76,7 +76,7 @@ def test_settler_unhappy(session, player):
 def test_decommissioned(session, player):
 	settlement, island = settle(session)
 
-	lj = Build(BUILDINGS.LUMBERJACK_CLASS, 30, 30, island, settlement=settlement)(player)
+	lj = Build(BUILDINGS.LUMBERJACK, 30, 30, island, settlement=settlement)(player)
 
 	cb = mock.Mock()
 	AddStatusIcon.subscribe(cb)
@@ -91,7 +91,7 @@ def test_decommissioned(session, player):
 def test_inventory_full(session, player):
 	settlement, island = settle(session)
 
-	lj = Build(BUILDINGS.LUMBERJACK_CLASS, 30, 30, island, settlement=settlement)(player)
+	lj = Build(BUILDINGS.LUMBERJACK, 30, 30, island, settlement=settlement)(player)
 
 	cb = mock.Mock()
 	AddStatusIcon.subscribe(cb)
@@ -100,7 +100,7 @@ def test_inventory_full(session, player):
 	assert not cb.called
 
 	inv = lj.get_component(StorageComponent).inventory
-	res = RES.BOARDS_ID
+	res = RES.BOARDS
 	inv.alter(res, inv.get_free_space_for( res ) )
 
 	session.run(seconds=1)

@@ -36,7 +36,7 @@ class AbstractTree(AbstractBuilding):
 
 	@classmethod
 	def register_buildings(cls):
-		cls._available_buildings[BUILDINGS.TREE_CLASS] = cls
+		cls._available_buildings[BUILDINGS.TREE] = cls
 
 AbstractTree.register_buildings()
 

@@ -46,7 +46,7 @@ class AbstractFireStation(AbstractBuilding):
 
 	@classmethod
 	def register_buildings(cls):
-		cls._available_buildings[BUILDINGS.FIRE_STATION_CLASS] = cls
+		cls._available_buildings[BUILDINGS.FIRE_STATION] = cls
 
 class FireStationEvaluator(BuildingEvaluator):
 	need_collector_connection = False
@@ -56,7 +56,7 @@ class FireStationEvaluator(BuildingEvaluator):
 	def create(cls, production_builder, x, y, orientation):
 		settlement_manager = production_builder.settlement_manager
 		village_builder = settlement_manager.village_builder
-		builder = village_builder.make_builder(BUILDINGS.FIRE_STATION_CLASS, x, y, False, orientation)
+		builder = village_builder.make_builder(BUILDINGS.FIRE_STATION, x, y, False, orientation)
 		if not builder:
 			return None
 

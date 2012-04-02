@@ -74,15 +74,15 @@ events:
 
   conditions:
   - type: building_num_of_type_greater
-    arguments: [BUILDINGS.FISHERMAN_CLASS, 0]
+    arguments: [BUILDINGS.FISHER, 0]
   - type: building_num_of_type_greater
-    arguments: [BUILDINGS.HUNTER_CLASS, 0]
+    arguments: [BUILDINGS.HUNTER, 0]
   - type: building_num_of_type_greater
-    arguments: [BUILDINGS.LUMBERJACK_CLASS, 0]
+    arguments: [BUILDINGS.LUMBERJACK, 0]
   - type: settlement_res_stored_greater
-    arguments: [RES.BOARDS_ID, 4]
+    arguments: [RES.BOARDS, 4]
   - type: settlement_res_stored_greater
-    arguments: [RES.FOOD_ID, 4]
+    arguments: [RES.FOOD, 4]
 
 - # basic residence setup
   actions:
@@ -103,9 +103,9 @@ events:
 
   conditions:
   - type: building_num_of_type_greater
-    arguments: [BUILDINGS.RESIDENTIAL_CLASS, 4]
+    arguments: [BUILDINGS.RESIDENTIAL, 4]
   - type: building_num_of_type_greater
-    arguments: [BUILDINGS.MAIN_SQUARE_CLASS, 0]
+    arguments: [BUILDINGS.MAIN_SQUARE, 0]
 
 - # 250 people
   actions: # TODO: bigger map action

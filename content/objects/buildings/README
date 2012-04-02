@@ -61,13 +61,13 @@ components:
       SlotsStorage: # the common type, here we define "slots" for resource types
 				# we want to turn wood in to boards here, so we need to be able to store both
 				# therefore, we add slots of size 6 each for those resources:
-        slot_sizes: {RES.TREES_ID: 6, RES.BOARDS_ID: 6}
+        slot_sizes: {RES.TREES: 6, RES.BOARDS: 6}
 
 # If your building should collect resources via collectors, we add them here:
 - CollectingComponent:
     collectors:
 			# We want a normal worker collector, that just walks directly to all providers in the radius of the building
-      UNITS.BUILDING_COLLECTOR_CLASS: 2
+      UNITS.BUILDING_COLLECTOR: 2
 			# If you need other collectors, check the list in horizons/constants.py (under UNITS)
 			# and comments about their behaviour in horizons/world/units/collectors/buildingcollector.py
 
@@ -80,10 +80,10 @@ components:
 			# now we define what comes in and what comes out.
 			# this machine will cut raw wood in half (so you have 2 boards afterwards):
 			consumes:
-			- [RES.TREES_ID, 1]
+			- [RES.TREES, 1]
 			produces:
-			- [RES.BOARDS_ID, 2]
-			- [RES.GOLD_ID, 100] # it also magically produces gold (just to show you how you can add further entries ;)
+			- [RES.BOARDS, 2]
+			- [RES.GOLD, 100] # it also magically produces gold (just to show you how you can add further entries ;)
 			time: 30 # time in second that the production line (the machine) takes
 		# this would already suffice, you can add other production lines, just start with an unique id as above
 

@@ -19,14 +19,14 @@ components:
     productionlines:
       0:
         produces:
-        - [RES.BRICKS_ID, 1]
+        - [RES.BRICKS, 1]
         consumes:
         - [RES.STONE_TOPS, -1]
         time: 30
 - StorageComponent:
     inventory:
       SlotsStorage:
-        slot_sizes: {RES.STONE_TOPS: 4, RES.BRICKS_ID: 8}
+        slot_sizes: {RES.STONE_TOPS: 4, RES.BRICKS: 8}
 actionsets:
   #as_stonemason0: {level: 0}
   as_2x2: {level: 0}

@@ -148,7 +148,7 @@ class Build(Command):
 
 		# unload the remaining resources on the human player ship if we just founded a new settlement
 		from horizons.world.player import HumanPlayer
-		if building.id == BUILDINGS.WAREHOUSE_CLASS and isinstance(building.owner, HumanPlayer) and horizons.main.fife.get_uh_setting("AutoUnload"):
+		if building.id == BUILDINGS.WAREHOUSE and isinstance(building.owner, HumanPlayer) and horizons.main.fife.get_uh_setting("AutoUnload"):
 			ship = WorldObject.get_object_by_id(self.ship)
 			for res, amount in [(res, amount) for res, amount in ship.get_component(StorageComponent).inventory]: # copy the inventory first because otherwise we would modify it while iterating
 				amount = min(amount, building.settlement.get_component(StorageComponent).inventory.get_free_space_for(res))
@@ -174,7 +174,7 @@ class Build(Command):
 			# check player, ship and settlement inventory
 			available_res = 0
 			# player
-			available_res += issuer.get_component(StorageComponent).inventory[resource] if resource == RES.GOLD_ID else 0
+			available_res += issuer.get_component(StorageComponent).inventory[resource] if resource == RES.GOLD else 0
 			# ship or settlement
 			for res_source in res_sources:
 				if res_source is not None:

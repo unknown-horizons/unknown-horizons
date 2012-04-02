@@ -74,7 +74,7 @@ class Settler(BuildableRect, BuildingResourceHandler, BasicBuilding):
 		SettlerInhabitantsChanged.broadcast(self, self.inhabitants)
 		happiness = self.__get_data("happiness_init_value")
 		if happiness is not None:
-			self.get_component(StorageComponent).inventory.alter(RES.HAPPINESS_ID, happiness)
+			self.get_component(StorageComponent).inventory.alter(RES.HAPPINESS, happiness)
 		if self.has_status_icon:
 			self.get_component(StorageComponent).inventory.add_change_listener( self._update_status_icon )
 		# give the user a month (about 30 seconds) to build a main square in range
@@ -149,8 +149,8 @@ class Settler(BuildableRect, BuildingResourceHandler, BasicBuilding):
 	@property
 	def happiness(self):
 		difficulty = self.owner.difficulty
-		result = int(round(difficulty.extra_happiness_constant + self.get_component(StorageComponent).inventory[RES.HAPPINESS_ID] * difficulty.happiness_multiplier))
-		return max(0, min(result, self.get_component(StorageComponent).inventory.get_limit(RES.HAPPINESS_ID)))
+		result = int(round(difficulty.extra_happiness_constant + self.get_component(StorageComponent).inventory[RES.HAPPINESS] * difficulty.happiness_multiplier))
+		return max(0, min(result, self.get_component(StorageComponent).inventory.get_limit(RES.HAPPINESS)))
 
 	@property
 	def capacity_utilisation(self):
@@ -207,7 +207,7 @@ class Settler(BuildableRect, BuildingResourceHandler, BasicBuilding):
 		taxes = self.tax_base * self.settlement.tax_settings[self.level] *  happiness_tax_modifier * inhabitants_tax_modifier
 		real_taxes = int(round(taxes * self.owner.difficulty.tax_multiplier))
 
-		self.settlement.owner.get_component(StorageComponent).inventory.alter(RES.GOLD_ID, real_taxes)
+		self.settlement.owner.get_component(StorageComponent).inventory.alter(RES.GOLD, real_taxes)
 		self.last_tax_payed = real_taxes
 
 		# decrease happiness http://wiki.unknown-horizons.org/w/Settler_taxing#Formulae
@@ -219,7 +219,7 @@ class Settler(BuildableRect, BuildingResourceHandler, BasicBuilding):
 		# to simulate the more dynamic, currently implemented approach (where every event changes
 		# the happiness), we simulate discontent of taxes by this:
 		happiness_decrease -= 6
-		self.get_component(StorageComponent).inventory.alter(RES.HAPPINESS_ID, happiness_decrease)
+		self.get_component(StorageComponent).inventory.alter(RES.HAPPINESS, happiness_decrease)
 		self._changed()
 		self.log.debug("%s: pays %s taxes, -happy: %s new happiness: %s", self, real_taxes, \
 									 happiness_decrease, self.happiness)
@@ -290,7 +290,7 @@ class Settler(BuildableRect, BuildingResourceHandler, BasicBuilding):
 			SettlerUpdate.broadcast(self, self.level, 1)
 
 			# reset happiness value for new level
-			self.get_component(StorageComponent).inventory.alter(RES.HAPPINESS_ID, self.__get_data("happiness_init_value") - self.happiness)
+			self.get_component(StorageComponent).inventory.alter(RES.HAPPINESS, self.__get_data("happiness_init_value") - self.happiness)
 			self._changed()
 
 		Scheduler().add_new_object(_do_level_up, self, run_in=0)
@@ -298,7 +298,7 @@ class Settler(BuildableRect, BuildingResourceHandler, BasicBuilding):
 	def level_down(self):
 		if self.level == 0: # can't level down any more
 			# replace this building with a ruin
-			command = Build(BUILDINGS.SETTLER_RUIN_CLASS, self.position.origin.x, \
+			command = Build(BUILDINGS.SETTLER_RUIN, self.position.origin.x, \
 			                self.position.origin.y, island=self.island, settlement=self.settlement)
 
 			Scheduler().add_new_object(
@@ -314,7 +314,7 @@ class Settler(BuildableRect, BuildingResourceHandler, BasicBuilding):
 			self.level -= 1
 			self._update_level_data()
 			# reset happiness value for new level
-			self.get_component(StorageComponent).inventory.alter(RES.HAPPINESS_ID, self.__get_data("happiness_init_value") - self.happiness)
+			self.get_component(StorageComponent).inventory.alter(RES.HAPPINESS, self.__get_data("happiness_init_value") - self.happiness)
 			self.log.debug("%s: Level down to %s", self, self.level)
 			self._changed()
 
@@ -326,7 +326,7 @@ class Settler(BuildableRect, BuildingResourceHandler, BasicBuilding):
 		if not self.owner.is_local_player:
 			return # only check this for local player
 		for building in self.get_buildings_in_range():
-			if building.id == BUILDINGS.MAIN_SQUARE_CLASS:
+			if building.id == BUILDINGS.MAIN_SQUARE:
 				if StaticPather.get_path_on_roads(self.island, self, building) is not None:
 					# a main square is in range
 					return

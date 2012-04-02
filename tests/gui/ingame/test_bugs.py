@@ -34,7 +34,7 @@ def test_ticket_1352(gui):
 	yield # test needs to be a generator for now
 
 	player = gui.session.world.player
-	ship = CreateUnit(player.worldid, UNITS.FRIGATE_CLASS, 68, 10)(player)
+	ship = CreateUnit(player.worldid, UNITS.FRIGATE, 68, 10)(player)
 	x, y = ship.position.x, ship.position.y
 
 	gui.session.view.center(x, y)
@@ -206,13 +206,13 @@ def test_ticket_1447(gui):
 	yield
 
 	lumberjack = gui.session.world.islands[0].ground_map[(23, 63)].object
-	assert(lumberjack.id == BUILDINGS.LUMBERJACK_CLASS)
+	assert(lumberjack.id == BUILDINGS.LUMBERJACK)
 
 	fisher = gui.session.world.islands[0].ground_map[(20, 67)].object
-	assert(fisher.id == BUILDINGS.FISHERMAN_CLASS)
+	assert(fisher.id == BUILDINGS.FISHER)
 
 	warehouse = gui.session.world.islands[0].ground_map[(18, 63)].object
-	assert(warehouse.id == BUILDINGS.WAREHOUSE_CLASS)
+	assert(warehouse.id == BUILDINGS.WAREHOUSE)
 
 	gui.cursor_click(20, 67, 'left')
 	yield
@@ -263,7 +263,7 @@ def test_ticket_1520(gui):
 	gui.trigger('tab', 'button_1/action/default')
 	gui.cursor_click(7, 9, 'left')
 
-	assert ground_map[(7, 9)].object.id == BUILDINGS.RESIDENTIAL_CLASS
+	assert ground_map[(7, 9)].object.id == BUILDINGS.RESIDENTIAL
 
 	# Start building a mainsquare (not releasing left mouse button)
 	gui.trigger('tab', 'button_3/action/default')
