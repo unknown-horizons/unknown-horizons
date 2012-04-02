@@ -37,7 +37,9 @@ class NavigationTool(CursorTool):
 
 	last_event_pos = None # last received mouse event position, fife.ScreenPoint
 
-	HOVER_INSTANCES_UPDATE_DELAY = 0.3 # sec
+	send_hover_instances_update = True
+
+	HOVER_INSTANCES_UPDATE_DELAY = 1 # sec
 
 	def __init__(self, session):
 		super(NavigationTool, self).__init__(session)
@@ -52,6 +54,10 @@ class NavigationTool(CursorTool):
 		self.cmdlist = CmdListener()
 		horizons.main.fife.eventmanager.addCommandListener(self.cmdlist)
 		self.cmdlist.onCommand = self.onCommand
+
+		if not self.__class__.send_hover_instances_update:
+			# clear
+			self.session.message_bus.broadcast(HoverInstancesChanged(self, set()))
 
 		class CoordsTooltip(object):
 			@classmethod
@@ -131,7 +137,8 @@ class NavigationTool(CursorTool):
 			LastActivePlayerSettlementManager().update(current)
 
 		# check if instance update is scheduled
-		if not self._hover_instances_update_scheduled:
+		if self.__class__.send_hover_instances_update and \
+		   not self._hover_instances_update_scheduled:
 			self._hover_instances_update_scheduled = True
 			ExtScheduler().add_new_object(self._send_hover_instance_upate, self,
 			                              run_in=self.__class__.HOVER_INSTANCES_UPDATE_DELAY)

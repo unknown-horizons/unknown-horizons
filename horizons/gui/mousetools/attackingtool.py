@@ -32,6 +32,9 @@ class AttackingTool(SelectionTool):
 		This will be used when attacking units are selected
 		it will have to respond on right click and change cursor image when hovering enemy units
 	"""
+
+	send_hover_instances_update = False
+
 	def __init__(self, session):
 		super(AttackingTool, self).__init__(session)
 
