@@ -321,6 +321,9 @@ class Producer(Component):
 
 	def _update_decommissioned_icon(self):
 		"""Add or remove decommissioned icon."""
+		if not self.instance.has_status_icon:
+			return
+
 		if self.is_active() is not self.__active:
 			self.__active = not self.__active
 			if self.__active:
