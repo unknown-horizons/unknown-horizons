@@ -95,9 +95,9 @@ events:
       p\xF4t) et votre b\xFBcheron."
     - "\nMISSION: \xC9tablissez un b\xFBcheron dans une zone bois\xE9e et connectez\
       \ le \xE0 une route."
-    - !!python/unicode 'Watch how a collector will fetch your first self-produced
-      boards. Don''t worry about recruiting workers for the lumberjack. That happens
-      automatically.'
+    - "Observez comme un collecteur vat chercher vos premi\xE8res planches. Ne vous\
+      \ pr\xE9occupez pas de recruter des employers pour le bucheron. Cela se fait\
+      \ automatiquement."
     - - Gallery
       - [content/gui/icons/buildmenu/008.png, content/gui/icons/buildmenu/015.png,
         content/gui/icons/resources/50/004.png]
@@ -172,9 +172,9 @@ events:
       \ le p\xEAcheur ou m\xEAme jusqu'au comptoir."
     - - Gallery
       - [content/gui/icons/buildmenu/004_h.png]
-    - !!python/unicode 'You should avoid placing your main settlement tents too close
-      to your lumberjacks because building tents will clear away the trees that your
-      lumberjack needs to produce boards.'
+    - "Vous devriez \xE9viter de fonder votre campement trop pr\xE9s du bucheron car\
+      \ les tentes prennent la place du bois dont le bucheron a besion afin de produire\
+      \ des planches."
     - "Les entreprises fonctionnent sans \xEAtre connect\xE9es aux tentes, donc vous\
       \ n'avez pas besoin de construire une route entre la place centrale et par exemple\
       \ la tente du b\xFBcheron."
@@ -231,10 +231,8 @@ events:
       \ essaieront de consommer tout les biens que vous produirez mais, au moins,\
       \ ils paient les taxes et c'est votre seule fa\xE7on de gagner de l'argent pour\
       \ le moment."
-    - !!python/unicode '
-
-      TASK: Build a tent and connect it to the main square. Tents dont need to be
-      connected to any of the companies.'
+    - "\nMISSION : Construisez une tente et connectez-la \xE0 la place principale.\
+      \ Les tentes n'ont pas besoin d'\xEAtre connect\xE9es aux entreprises."
     type: logbook
   - arguments: ["Construisez une tente et connectez-la \xE0 la place centrale."]
     type: message
@@ -260,10 +258,9 @@ events:
         \ la satisfaction et les rentr\xE9es d'argent diminuent. Parfois, les habitants\
         \ peuvent en avoir vraiment marre, ils tournent alors le dos \xE0 votre village.",
       "Notez que vous pouvez r\xE9gler les taxes ici aussi.", "\nMISSION: Construisez\
-        \ au moins 3 tentes suppl\xE9mentaires.", !!python/unicode '
-
-        TIP: Holding down SHIFT eases constructing multiple buildings of the same
-        kind.']
+        \ au moins 3 tentes suppl\xE9mentaires.", "\nASTUCE : Il est plus simple de\
+        \ construire plusieurs b\xE2timents du m\xEAme type en gardant la touche SHIFT\
+        \ enfonc\xE9e."]
     type: logbook
   - arguments: ["Construisez 3 tentes suppl\xE9mentaires et reliez les \xE0 la place\
         \ centrale."]
@@ -426,8 +423,9 @@ events:
     - [Pagebreak]
     - "\nL'am\xE9lioration de l'habitat co\xFBte des ressources et peut \xEAtre limit\xE9\
       e depuis la place principale."
-    - !!python/unicode 'There also are upgrades of buildings without costs, as you
-      will see with the lumberjack. In this case, only the graphics change.'
+    - "Comme vous pouvez l'observer chez le bucheron il existe aussi des am\xE9liorations\
+      \ gratuites. Dans ce cas uniquement l'image du b\xE2timent est am\xE9lior\xE9\
+      e."
     - "Les logements am\xE9lior\xE9s peuvent h\xE9berger plus d'habitants et, de plus,\
       \ les pionniers paient plus de taxes que les marins."
     - "Comme vous l'avez peut-\xEAtre constat\xE9, le d\xE9savantage est que les pionniers\
@@ -462,9 +460,8 @@ events:
     - - Gallery
       - [content/gui/icons/tabwidget/buildmenu/level2_u.png]
     - "Un joli nouvel onglet vient d'y appara\xEEtre."
-    - !!python/unicode 'Pioneers will demand cloth, so you need to set up a production
-      line for cloth starting with lambs wool (which is one of the goods produced
-      at the farm).'
+    - "Les pionniers demanderont du tissu, vous devrez cr\xE9er une ligne de production\
+      \ en commen\xE7ant par la laine de mouton (l'un des biens produit \xE0 la ferme)."
     - "La ferme est un b\xE2timent de production tr\xE8s sp\xE9ciale puisqu'elle peut\
       \ produire plusieurs biens (diff\xE9rents) si vous le voulez."
     - "La production d'une ferme d\xE9pend du type de champ que vous placez autour\
@@ -599,17 +596,15 @@ events:
   - arguments:
     - [Headline, "MISSION\_: LE TISSERAND"]
     - [Image, content/gui/images/background/hr.png]
-    - !!python/unicode 'Now the wool production is set up, you still need a weaver
-      to produce cloth out of this wool.'
-    - !!python/unicode 'There are two spots where you can build it - either close
-      to the farm or close to a Storage Tent (or the warehouse).'
-    - !!python/unicode 'In both cases you should ensure the connection to a trail
-      as well.'
-    - !!python/unicode 'You can place the weaver close to the farm and tear down any
-      trail to the farm to see that it will still fetch the wool and produce.'
-    - !!python/unicode '
-
-      TASK: Build a weaver positioned so it can get wool.'
+    - "Maintenant que la production de laine est pr\xE8te vous avez encore besion\
+      \ d'un tisserand pour produire du tissu \xE0 partir de cette laine."
+    - "Il y a deux emplacements \xF2u vous pouvez le construire : pr\xE8s de la ferme\
+      \ ou pr\xE8s de l'entrep\xF4t (ou du comptoir)."
+    - "Dans les deux cas vous devriez \xE9galement assurer la connection avec un sentier."
+    - "Vous pouvez placer le tisserand pr\xE8s de la ferme at d\xE9truire tous les\
+      \ sentiers vers la ferme afin de voir qu'il ira quand-m\xEAme chercher la laine\
+      \ pour en faire du tissu."
+    - "\nMISSION: Installer un tisserand \xE0 proximit\xE9 de la laine."
     - - Gallery
       - [content/gui/icons/buildmenu/007.png]
     type: logbook
@@ -632,12 +627,12 @@ events:
   - arguments:
     - [Headline, "MISSION : FINIR\_LE\_DIDACTICIEL"]
     - [Image, content/gui/images/background/hr.png]
-    - !!python/unicode 'Try to house a total of 50 or more inhabitants in your city
-      by providing more residential buildings.'
-    - !!python/unicode 'Once you are able to keep an economy running which can satisfy
-      this amount of consumers, you are ready to discover new Unknown Horizons!'
-    - !!python/unicode 'You also need enough money to keep this economy running, so
-      a positive balance (check in the warehouse tab ''Account'') is required.'
+    - "Essayez de loger au moins 50 habitants dans votre ville en fournissant plus\
+      \ de r\xE9sidences."
+    - "D\xE8s que votre \xE9conomie pourra satisfaire ce nombre de consommateurs vous\
+      \ serez pr\xEAt \xE0 d\xE9couvrir d'autres - Horizons Inconnus !"
+    - "Vous avez aussi besoin de suffisamment d'argent pour maintenir l'\xE9conomie,\
+      \ une balance positive est n\xE9cessaire (voir l'onglet 'Compte')."
     - !!python/unicode '
 
       TASK: Reach a total number of 50 inhabitants and a positive balance to complete
@@ -705,6 +700,5 @@ events:
     type: var_gt
 locale: fr
 mapfile: development.sqlite
-translation_status: 169 translated messages, 3 fuzzy translations, 19 untranslated
-  messages.
+translation_status: 183 translated messages, 8 untranslated messages.
 

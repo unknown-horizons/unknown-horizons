@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2012-03-24 02:16+0100\n"
-"PO-Revision-Date: 2012-04-01 00:31+0200\n"
+"PO-Revision-Date: 2012-04-01 19:02+0200\n"
 "Last-Translator: Sergio <juarrox@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: es\n"
@@ -178,7 +178,7 @@ msgstr "bellotas"
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "alvearies"
-msgstr "Colmenas"
+msgstr "colmenas"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
@@ -410,7 +410,7 @@ msgstr "depósito de piedra"
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "stone tops"
-msgstr "tapas de piedra"
+msgstr "encimeras"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
@@ -455,7 +455,7 @@ msgstr "arboles"
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "vines"
-msgstr "viñas"
+msgstr "viñedos"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
@@ -482,11 +482,12 @@ msgstr ""
 "{player1} y {player2} han terminado su alianza y ahora están en estado de "
 "guerra."
 
+# 75%
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
 #, python-format
 msgid "{player1} and {player2} have settled their hostility."
-msgstr ""
+msgstr "{player1} y {player2} se han aliado."
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
@@ -516,8 +517,7 @@ msgstr "Nombre de archivo inválido"
 
 #: horizons/command/game.py:37
 msgid "Received an invalid filename for a save command."
-msgstr ""
-"Se ha recibido un nombre de archivo invalido para la instrucción Guardar."
+msgstr "Recibido nombre de archivo inválido para la orden Guardar."
 
 #. There was a problem during the 'save game' procedure.
 #: horizons/command/game.py:47 horizons/gui/gui.py:179
@@ -568,7 +568,7 @@ msgstr ""
 "El visor SDL está pensado solo como último recurso y tiene graves problemas "
 "gráficos. \n"
 "\n"
-"¡Utilícelo bajo su propio riesgo!"
+"¡Utilízalo bajo tu responsabilidad!"
 
 #: horizons/engine/settingshandler.py:224
 msgid "Invalid network port"
@@ -614,7 +614,7 @@ msgstr "No se puede cargar el idioma {lang}"
 
 #: horizons/engine/settingshandler.py:312
 msgid "Logging enabled"
-msgstr "Archivo de registro activado"
+msgstr "Registro de bitácora activado"
 
 #: horizons/engine/settingshandler.py:314
 #, python-format
@@ -683,7 +683,7 @@ msgstr "Confirmación para sobreescribir"
 
 #: horizons/gui/gui.py:371
 msgid "Invalid filename given"
-msgstr "el nombre de archivo dado es invalido"
+msgstr "Nombre de archivo inválido"
 
 #: horizons/gui/gui.py:379
 msgid "Please select a savegame or click on cancel."
@@ -722,8 +722,8 @@ msgstr "Guardado a las {time}"
 #, python-format
 msgid "Saved {amount} time"
 msgid_plural "Saved {amount} times"
-msgstr[0] "Guardado {amount} veces"
-msgstr[1] ""
+msgstr[0] "Guardado {amount} vez"
+msgstr[1] "Guardado {amount} veces"
 
 #: horizons/gui/gui.py:625
 #, python-format
@@ -771,7 +771,7 @@ msgstr "¡Error al borrar la partida guardada!"
 
 #. i18n this defines how each line in our help looks like. Default: '[C] = Chat'
 #: horizons/gui/gui.py:681
-#, python-format, fuzzy
+#, python-format, 
 msgid "[{key}] = {text}"
 msgstr "[{key}] = {text}"
 
@@ -913,9 +913,9 @@ msgstr "Versión incorrecta"
 msgid "The game's version differs from your version. Every player in a multiplayer game must use the same version. This can be fixed by every player updating to the latest version. Game version: {game_version} Your version: {own_version}"
 msgstr ""
 "La versión del juego es diferente de la suya. Todos los jugadores en una "
-"partida multijugador debe utilizar la misma versión. Esto se puede "
-"solucionar actualizando a la última versión. La versión del juego: { "
-"game_version} Su versión {own_version}"
+"partida multijugador deben utilizar la misma versión. Esto se puede "
+"solucionar actualizando a la última versión. La versión del juego: "
+"{game_version} Su versión {own_version}"
 
 #: horizons/gui/modules/multiplayermenu.py:350
 #: horizons/gui/modules/singleplayermenu.py:111
@@ -1081,7 +1081,6 @@ msgid "Mining"
 msgstr "Minería"
 
 #: horizons/gui/tabs/buildtabs.py:149
-#, fuzzy
 msgid "Increment {increment}"
 msgstr "Incremento {increment}"
 
@@ -1230,7 +1229,7 @@ msgstr "Límite: {amount}t por espacio"
 
 #: horizons/gui/widgets/logbook.py:45
 msgid "Logbook"
-msgstr "Libro de Registro"
+msgstr "Diario de a bordo"
 
 #. (text of widget: headline_statistics)
 #: horizons/gui/widgets/logbook.py:46 horizons/i18n/guitranslations.py:610
@@ -1310,7 +1309,7 @@ msgstr "Informe de producción de {settlement}"
 
 #: horizons/gui/widgets/resourceoverviewbar.py:199
 msgid "Click to add a new slot"
-msgstr "Haz click para añadir una nueva casilla"
+msgstr "Haz clic para añadir una nueva casilla"
 
 #: horizons/gui/widgets/resourceoverviewbar.py:389
 #: horizons/gui/widgets/resourceoverviewbar.py:394
@@ -1716,7 +1715,6 @@ msgstr "6 residentes"
 # 90%
 #. (text of widget: resident_7)
 #: horizons/i18n/guitranslations.py:244
-#, fuzzy
 msgid "7 residents"
 msgstr "7 residentes"
 
@@ -1725,7 +1723,6 @@ msgstr "7 residentes"
 # 90%
 #. (text of widget: resident_8)
 #: horizons/i18n/guitranslations.py:246
-#, fuzzy
 msgid "8 residents"
 msgstr "8 residentes"
 
@@ -1910,7 +1907,7 @@ msgstr "Comprar/Vender recursos"
 #. (text of widget: headline_trade_history)
 #: horizons/i18n/guitranslations.py:523
 msgid "Trade history"
-msgstr "Historial del comercio"
+msgstr "Historial de comercio"
 
 #. (text of widget: headline)
 #: horizons/i18n/guitranslations.py:528
@@ -2295,7 +2292,7 @@ msgstr "Rotar edificio o mapa en sentido contrario al reloj"
 #. (text of widget: lbl_ROTATE_RIGHT)
 #: horizons/i18n/guitranslations.py:752
 msgid "Rotate building or map clockwise"
-msgstr "Rotar edificio o mapa en el sentido del reloj"
+msgstr "Rotar edificio o mapa a la izquierda"
 
 #. (text of widget: lbl_SCREENSHOT)
 #: horizons/i18n/guitranslations.py:754
@@ -2493,7 +2490,6 @@ msgstr "Unirse"
 # 90%
 #. (text of widget: load_game_lbl)
 #: horizons/i18n/guitranslations.py:868
-#, fuzzy
 msgid "Load game:"
 msgstr "Cargar partida:"
 
@@ -2822,10 +2818,11 @@ msgstr "Color:"
 msgid "Player name:"
 msgstr "Nombre de jugador:"
 
+# 88%
 #. name of buildings:alvearies
 #: horizons/i18n/objecttranslations.py:53
 msgid "Alvearies"
-msgstr ""
+msgstr "Panales de miel"
 
 #. tooltip_text of buildings:alvearies
 #: horizons/i18n/objecttranslations.py:55
@@ -2854,15 +2851,16 @@ msgstr "Cuartel"
 msgid "Recruits units suitable for ground combat."
 msgstr "Recluta unidades adecuadas para el combate terrestre."
 
+# Creo que se refiere al programa de diseño 3D, y no a una licuadora.
 #. name of buildings:blender
 #: horizons/i18n/objecttranslations.py:74
 msgid "Blender"
-msgstr ""
+msgstr "Blender"
 
 #. tooltip_text of buildings:blender
 #: horizons/i18n/objecttranslations.py:76
 msgid "Produces condiments out of spices."
-msgstr "Produce condimentos de especias."
+msgstr "Elabora condimentos de especias."
 
 #. name of buildings:boatbuilder
 #: horizons/i18n/objecttranslations.py:81
@@ -2872,7 +2870,7 @@ msgstr "Constructor de barcos"
 #. tooltip_text of buildings:boatbuilder
 #: horizons/i18n/objecttranslations.py:83
 msgid "Builds boats and small ships. Built on coast."
-msgstr "Construye barcos y buques pequeños. Construido en la costa."
+msgstr "Construye barcos y navíos pequeños. Construido en la costa."
 
 #. name of buildings:brickyard
 #: horizons/i18n/objecttranslations.py:88
@@ -3336,7 +3334,7 @@ msgstr "Árbol"
 #. tooltip_text of buildings:tree
 #: horizons/i18n/objecttranslations.py:402
 msgid "Provides lumber. Chopped down by lumberjacks."
-msgstr ""
+msgstr "Proporciona madera talada por leñadores."
 
 #. name of buildings:villageschool
 #: horizons/i18n/objecttranslations.py:407

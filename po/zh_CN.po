@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2012-03-24 02:16+0100\n"
-"PO-Revision-Date: 2012-03-28 05:17+0200\n"
+"PO-Revision-Date: 2012-04-01 10:01+0200\n"
 "Last-Translator: nifabric <nifabric@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: zh_CN\n"
@@ -460,84 +460,84 @@ msgstr "{player1} 和 {player2} 组成联盟了。"
 #: database files sql
 #, python-format
 msgid "{player1} and {player2} have ended the war and are now allied."
-msgstr ""
+msgstr "{player1} 和{player2} 已经结束了战争，现在结盟了。"
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
 #, python-format
 msgid "{player1} and {player2} have ended their alliance and are now in a state of war."
-msgstr ""
+msgstr "{player1} 和{player2} 已经结束了联盟，现在处于战争状态。"
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
 #, python-format
 msgid "{player1} and {player2} have settled their hostility."
-msgstr ""
+msgstr "{player1} 和{player2} 正在敌对状态。"
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
 #, python-format
 msgid "{player1} and {player2} have terminated their alliance."
-msgstr ""
+msgstr "{player1} 和 {player2} 终止了结盟。"
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
 #, python-format
 msgid "{player1} and {player2} will fight each other to the death."
-msgstr ""
+msgstr "{player1} 和 {player2} 将斗争到底。"
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
 #, python-format
 msgid "{player}: {message}"
-msgstr ""
+msgstr "{player}：{message}"
 
 #: editor/editor.py:33
 msgid "Specify the path to FIFE root directory."
-msgstr ""
+msgstr "指定路径至FIFE根目录。"
 
 #: horizons/command/game.py:36
 msgid "Invalid filename"
-msgstr ""
+msgstr "无效的文件名"
 
 #: horizons/command/game.py:37
 msgid "Received an invalid filename for a save command."
-msgstr ""
+msgstr "保存命令中文件名无效。"
 
 #. There was a problem during the 'save game' procedure.
 #: horizons/command/game.py:47 horizons/gui/gui.py:179
 #: horizons/gui/ingamegui.py:465 horizons/gui/modules/multiplayermenu.py:133
 #: horizons/gui/modules/multiplayermenu.py:236
 msgid "Error"
-msgstr ""
+msgstr "错误"
 
 #: horizons/command/game.py:47 horizons/gui/gui.py:179
 msgid "Failed to save."
-msgstr ""
+msgstr "保存失败。"
 
 #: horizons/engine/settingsdialog.py:50
 msgid "Restart required"
-msgstr ""
+msgstr "需要重新启动。"
 
 #: horizons/engine/settingsdialog.py:51
 msgid "Some of your changes require a restart of Unknown Horizons."
-msgstr ""
+msgstr "你所做的修改需要重新启动Unknown Horizons。"
 
 #: horizons/engine/settingsdialog.py:55
 msgid "Restore default settings"
-msgstr ""
+msgstr "恢复默认设置"
 
 #: horizons/engine/settingsdialog.py:56
 msgid "Restoring the default settings will delete all changes to the settings you made so far."
-msgstr ""
+msgstr "恢复默认设置将会放弃你所做的设置修改。"
 
 #: horizons/engine/settingsdialog.py:57
 msgid "Do you want to continue?"
-msgstr ""
+msgstr "你想继续么？"
 
 #: horizons/engine/settingshandler.py:148
 msgid "Warning"
-msgstr ""
+msgstr "警告"
 
 #. i18n Warning popup shown in settings when SDL is selected as renderer.
 #: horizons/engine/settingshandler.py:150
