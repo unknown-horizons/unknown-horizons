@@ -51,6 +51,7 @@ from horizons.scenario import ScenarioEventHandler
 from horizons.world.component.ambientsoundcomponent import AmbientSoundComponent
 from horizons.constants import GAME_SPEED, PATHS
 from horizons.world.managers.statusiconmanager import StatusIconManager
+from horizons.messaging import MessageBus
 
 class Session(LivingObject):
 	"""Session class represents the games main ingame view and controls cameras and map loading.
@@ -209,6 +210,9 @@ class Session(LivingObject):
 
 		horizons.main._modules.session = None
 		self._clear_caches()
+
+		# subscriptions shouldn't survive listeners
+		MessageBus.destroy_instance()
 
 	def toggle_cursor(self, which, *args, **kwargs):
 		"""Alternate between the cursor which and default.
