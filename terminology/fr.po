@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2012-03-31 21:42+0100\n"
-"PO-Revision-Date: 2012-04-02 18:00+0200\n"
+"PO-Revision-Date: 2012-04-02 18:02+0200\n"
 "Last-Translator: Sebastien (seblabel) <sebastiencharpentier@laposte.net>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: fr\n"
@@ -1069,17 +1069,20 @@ msgstr "animaux"
 msgid "Captain's log"
 msgstr "Journal de bord"
 
+# (poterminology) uh-tutorial/tutorial.pot (3)
+# (poterminology) uh/unknownhorizons.pot (1)
+# 75%
 msgid "construct"
-msgstr ""
+msgstr "construire"
 
 msgid "consume"
 msgstr "consommer"
 
 msgid "enabled"
-msgstr ""
+msgstr "activé"
 
 msgid "entries"
-msgstr ""
+msgstr "entrées"
 
 # (poterminology) uh-tutorial/tutorial.pot (2)
 #
@@ -1132,7 +1135,7 @@ msgid "hold"
 msgstr "tenir"
 
 msgid "idle"
-msgstr ""
+msgstr "ralenti"
 
 # (poterminology) uh-tutorial/tutorial.pot (2)
 #
@@ -1180,7 +1183,7 @@ msgid "lamb wool"
 msgstr "laine de mouton"
 
 msgid "overview tab"
-msgstr ""
+msgstr "onglet aperçu"
 
 msgid "minimap"
 msgstr "mini-carte"
@@ -1189,7 +1192,7 @@ msgid "issues"
 msgstr "problèmes"
 
 msgid "plant"
-msgstr ""
+msgstr "plante"
 
 #
 #
@@ -1210,10 +1213,13 @@ msgid "playing"
 msgstr "jouant"
 
 msgid "price"
-msgstr ""
+msgstr "prix"
 
+# (poterminology) uh-tutorial/tutorial.pot (1)
+# (poterminology) uh/unknownhorizons.pot (1)
+# 75%
 msgid "read"
-msgstr ""
+msgstr "lire"
 
 #
 #
@@ -1274,13 +1280,16 @@ msgid "sound"
 msgstr "son"
 
 msgid "special"
-msgstr ""
+msgstr "spéciale"
 
 msgid "store"
-msgstr ""
+msgstr "stocker"
 
+# (poterminology) uh-tutorial/tutorial.pot (2)
+# (poterminology) uh/unknownhorizons.pot (1)
+# 75%
 msgid "tear"
-msgstr ""
+msgstr "déchirer"
 
 # (poterminology) uh-tutorial/tutorial.pot (2)
 #
@@ -1331,13 +1340,16 @@ msgid "visit"
 msgstr "visiter / la visite"
 
 msgid "world"
-msgstr ""
+msgstr "monde"
 
+# (poterminology) uh-tutorial/tutorial.pot (1)
+# (poterminology) uh/unknownhorizons.pot (1)
+# 83%
 msgid "yield"
-msgstr ""
+msgstr "rendement"
 
 msgid "your ship"
-msgstr ""
+msgstr "votre navire"
 
 # (poterminology) uh-tutorial/tutorial.pot (2)
 #
@@ -1358,16 +1370,16 @@ msgid "build settlement"
 msgstr "ériger ~ / fonder une colonie"
 
 msgid "load"
-msgstr ""
+msgstr "charger"
 
 msgid "unload"
-msgstr ""
+msgstr "décharger"
 
 msgid "command"
-msgstr ""
+msgstr "commander"
 
 msgid "completed"
-msgstr ""
+msgstr "terminé"
 
 msgid "condition"
 msgstr "condition"
@@ -1376,10 +1388,10 @@ msgid "contact"
 msgstr "contact"
 
 msgid "empty"
-msgstr ""
+msgstr "vide"
 
 msgid "ensure"
-msgstr ""
+msgstr "assurer"
 
 #
 #
@@ -1406,7 +1418,7 @@ msgid "graphics"
 msgstr "graphiques"
 
 msgid "harvest"
-msgstr ""
+msgstr "récolter"
 
 #
 #
@@ -1499,7 +1511,7 @@ msgid "signal fire"
 msgstr "feu de signalisation / phare"
 
 msgid "statistics"
-msgstr ""
+msgstr "statistiques"
 
 # (poterminology) uh-tutorial/tutorial.pot (1)
 # (poterminology) uh/unknownhorizons.pot (2)
@@ -1538,7 +1550,7 @@ msgid "temporarily"
 msgstr "temporairement"
 
 msgid "values"
-msgstr ""
+msgstr "valeurs"
 
 # (poterminology) uh-tutorial/tutorial.pot (21)
 #
