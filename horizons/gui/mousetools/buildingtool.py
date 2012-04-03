@@ -154,7 +154,7 @@ class BuildingTool(NavigationTool):
 			                        bid in related  for \
 			                        buildings_to_select in settlement.buildings_by_id[bid] ]
 
-			tiles = SelectableBuildingComponent.select_many(buildings_to_select, renderer)
+			tiles = SelectableBuildingComponent.select_many_buildings(buildings_to_select, renderer, ground_tiles=True, water_tiles=False)
 			self._related_buildings_selected_tiles = frozenset(tiles)
 		else: # we don't need to check all
 			# duplicates filtered later

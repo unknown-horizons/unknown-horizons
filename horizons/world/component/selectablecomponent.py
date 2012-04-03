@@ -211,12 +211,17 @@ class SelectableBuildingComponent(SelectableComponent):
 		return selected_tiles
 
 	@classmethod
-	def select_many_buildings(cls, buildings, renderer):
+	def select_many_buildings(cls, buildings, renderer, ground_tiles = True, water_tiles = True):
 		"""Same as calling select() on many instances, but way faster.
 		Selects many buildings along with ranges, used when user
-		drags selection box"""
+		drags selection box
+		@param buildings: iterable of buildings to select
+		@param renderer: instance of renderer
+		@param ground_tiles: should this function work on ground range buildings?
+		@param water_tiles: should this function work on water range buildings?
+		"""
 		if not buildings:
-			return # that is not many
+			return []# that is not many
 
 		# component from building[0] is needed to get island as ground holder
 		comp0 = buildings[0].get_component(SelectableBuildingComponent)
@@ -229,27 +234,28 @@ class SelectableBuildingComponent(SelectableComponent):
 		# buildings which range has to be shown on ground
 		ground_buildings = []
 
-		for building in buildings:
-			comp = building.get_component(SelectableBuildingComponent)
-			comp.set_selection_outline()
-			comp._selected = True
-			if comp.range_applies_on_island:
-				ground_buildings.append(building)
-			if comp.range_applies_on_water:
-				water_buildings.append(building)
-
-		coords = set( coord for \
-		              building in ground_buildings for \
-		              coord in building.position.get_radius_coordinates(building.radius, include_self=True) )
-
-		for coord in coords:
-			tile = island.ground_map.get(coord)
-			if tile:
-				if ( 'constructible' in tile.classes or 'coastline' in tile.classes ):
-					cls._add_selected_tile(tile, renderer)
-
+		if ground_tiles:
+			for building in buildings:
+				comp = building.get_component(SelectableBuildingComponent)
+				comp.set_selection_outline()
+				comp._selected = True
+				if comp.range_applies_on_island:
+					ground_buildings.append(building)
+				if comp.range_applies_on_water:
+					water_buildings.append(building)
+	
+			coords = set( coord for \
+			              building in ground_buildings for \
+			              coord in building.position.get_radius_coordinates(building.radius, include_self=True) )
+	
+			for coord in coords:
+				tile = island.ground_map.get(coord)
+				if tile:
+					if ( 'constructible' in tile.classes or 'coastline' in tile.classes ):
+						cls._add_selected_tile(tile, renderer)
+	
 		# code below is for drawing fake range tiles on water
-		if water_buildings:
+		if water_tiles and water_buildings:
 			# create object to create instances from
 			SelectableBuildingComponent._create_fake_tile_obj()
 
@@ -263,6 +269,7 @@ class SelectableBuildingComponent(SelectableComponent):
 				island = world.get_island(position.origin)
 				
 				SelectableBuildingComponent._select_fake_water_tiles(position, island, radius, layer, renderer)
+		return ground_buildings + water_buildings
 		
 	@classmethod
 	def _create_fake_tile_obj(cls):
