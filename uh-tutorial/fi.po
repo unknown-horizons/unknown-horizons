@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: translate-uh@lists.unknown-horizons.org\n"
 "POT-Creation-Date: 2012-03-21 04:04+0100\n"
-"PO-Revision-Date: 2012-04-03 18:42+0200\n"
+"PO-Revision-Date: 2012-04-03 19:00+0200\n"
 "Last-Translator: Aleksi <aleksi.kinnunen@ovi.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: fi\n"
@@ -941,6 +941,9 @@ msgid ""
 "After some time, they will have consumed it and then again look for a "
 "producer to collect more faith."
 msgstr ""
+"He keräävät uskovarantonsa täyteen, mutta varannotkin kuitenkin tyhjentyvät "
+"joskus. Jonkin ajan kuluttua heidän on päästävä kirkolle uudelleen "
+"täyttämään uskonnolliset tarpeensa."
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:228
@@ -950,6 +953,9 @@ msgid ""
 "tents.\n"
 "The road connection is required as well."
 msgstr ""
+"Tärkeää:\n"
+"Ei riitä, että kirkko on asuntojen lähellä, vaan sinne on oltava myös "
+"polkuyhteys."
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:230
@@ -958,6 +964,8 @@ msgid ""
 "TASK: Build a pavilion with a trail to the tents in order to fulfill your "
 "sailors' demand for faith."
 msgstr ""
+"\n"
+"Rakenna kirkko polkuyhteydellä asukkaidesi luokse."
 
 #. This message is displayed in the widget on the left screen part. Please keep it short enough to fit there!
 #: po/tutorial.py:232
@@ -975,6 +983,8 @@ msgid ""
 "All demands are fulfilled now if your inhabitants can regularly visit the "
 "main square & pavilion and your food supply is adequate."
 msgstr ""
+"Kaikki vaatimukset on nyt täytetty, kunhan asukkaasi voivat säännöllisesti "
+"vierailla keskustorilla ja kirkossa ja ruokavarantosi on riittävät."
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:238
@@ -982,6 +992,8 @@ msgid ""
 "If the sailors are happy enough, they want to advance to the next increment "
 "called Pioneers."
 msgstr ""
+"Jos merenkävijäsi ovat riittävän onnellisia, he haluavat kehittyä "
+"seuraavalle tasolle, kansoittajiksi."
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:240
@@ -989,6 +1001,8 @@ msgid ""
 "To make them happy, there is nothing else for you to do but setting taxes to "
 "a lower level since you have fulfilled all the demands of your inhabitants."
 msgstr ""
+"Voit tehdä asukkaistasi onnellisempia laskemalla veroprosenttia. Muuta sinun "
+"ei tarvitse tehdä, sillä olet jo täyttänyt asukkaidesi kaikki vaatimukset."
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:242
