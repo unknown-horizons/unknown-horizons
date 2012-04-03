@@ -175,6 +175,7 @@ class BuildingTool(NavigationTool):
 		self.renderer.addColored(tile._instance, *self.buildable_color)
 
 	def remove(self):
+		self.session.ingame_gui.resource_overview.close_construction_mode()
 		WorldObjectDeleted.unsubscribe(self._on_worldobject_deleted)
 		self._remove_listeners()
 		self._remove_building_instances()
@@ -434,7 +435,6 @@ class BuildingTool(NavigationTool):
 		self._highlighted_buildings.clear()
 
 	def on_escape(self):
-		self.session.ingame_gui.resource_overview.close_construction_mode()
 		self._build_logic.on_escape(self.session)
 		if self.__class__.gui is not None:
 			self.__class__.gui.hide()
