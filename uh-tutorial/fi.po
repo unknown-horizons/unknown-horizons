@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: translate-uh@lists.unknown-horizons.org\n"
 "POT-Creation-Date: 2012-03-21 04:04+0100\n"
-"PO-Revision-Date: 2012-04-03 17:00+0200\n"
+"PO-Revision-Date: 2012-04-03 17:41+0200\n"
 "Last-Translator: Aleksi <aleksi.kinnunen@ovi.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: fi\n"
@@ -412,13 +412,14 @@ msgstr "KESKUSTORI"
 #: po/tutorial.py:102
 msgid "Your residents need a main square where they can fetch their goods from."
 msgstr ""
+"Asukkaasi tarvitsevat keskustorin, jolta he voivat hankkia elintarvikkeensa."
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:104
 msgid ""
 "This means that they need a trail connection from their home to the main "
 "square."
-msgstr ""
+msgstr "Keskustorille pitää siis olla kulkuyhteys asukkaiden asunnoilta."
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:106
@@ -426,6 +427,9 @@ msgid ""
 "All goods in your warehouse are available at this 'market place', so your "
 "residents do not need to walk to the fisher or even to the warehouse."
 msgstr ""
+"Kaikki elintarvikkeet sivutoimistollasi ovat saatavilla tältä "
+"\"kauppapaikalta\", joten asukkaidesi ei tarvitse kävellä erikseen "
+"kalastajalle, metsästäjälle tai edes sivutoimistolle."
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:108
@@ -434,6 +438,9 @@ msgid ""
 "lumberjacks because building tents will clear away the trees that your "
 "lumberjack needs to produce boards."
 msgstr ""
+"Vältä telttojen sijoittamista puunhakkaajan läheisyyteen, sillä teltan "
+"pystyttäminen raivaa paikalla olevat puut (ja et pääse sahaamaan niitä "
+"laudoiksi hyötykäyttöön)."
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:110
@@ -441,6 +448,8 @@ msgid ""
 "Companies work without being connected to the tents, so you don't need to "
 "build a road between the main square and e.g. your lumberjack tent."
 msgstr ""
+"Yritysten toiminta jatkuu, vaikka niillä ei olisikaan kulkuyhteyttä "
+"keskustorille."
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:112
@@ -448,6 +457,8 @@ msgid ""
 "\n"
 "TASK: Build a main square."
 msgstr ""
+"\n"
+"TEHTÄVÄ: Rakenna keskustori."
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:114
@@ -455,6 +466,8 @@ msgid ""
 "\n"
 "Now let's have a closer look at the main square."
 msgstr ""
+"\n"
+"Tutustutaan kuitenkin nyt tarkemmin keskustoriin."
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:116
@@ -462,6 +475,8 @@ msgid ""
 "In the 'Account' tab you get a balance sheet of this island, featuring all "
 "costs you pay and all taxes you earn."
 msgstr ""
+"Yleiskatsauksessa näet siirtokuntasi taloudellisen tilan, kuten ansaitsemasi "
+"verot ja rakennuksien ylläpitoon kuluvat juoksevat kulut."
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:118
@@ -469,11 +484,13 @@ msgid ""
 "The items 'Sale' and 'Buy' refer to your trading balance and will be "
 "explained later on."
 msgstr ""
+"Tulot- ja Menot-kohtien perusteella määritellään siirtokuntasi taloudellinen "
+"tasapaino, josta puhumme myöhemmin lisää."
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:120
 msgid "If your balance is positive, you all-in-all make a profit."
-msgstr ""
+msgstr "Jos taloutesi on plussan puolella, siirtokuntasi tekee voittoa."
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:122
@@ -482,6 +499,9 @@ msgid ""
 "inhabitants. You also set the increment-specific global tax here and allow or "
 "deny inhabitants of this increment to upgrade to the next higher one."
 msgstr ""
+"Siirtokunnantason mukaan jaettavilla välilehdillä voit tutustua erilaisiin "
+"tilastotietoihin. Voit määritellä siirtokuntatasokohtaisen veroprosentin ja "
+"sallia tai kieltää asukkailtasi oikeudet asumustensa päivittämiseen."
 
 #. This message is displayed in the widget on the left screen part. Please keep it short enough to fit there!
 #: po/tutorial.py:124
@@ -493,7 +513,7 @@ msgstr ""
 #. This is a logbook page heading. Space is VERY short, please only translate to strings that fit (roughly 30 characters max).
 #: po/tutorial.py:126
 msgid "NEW TASK: RESIDENTIAL BUILDINGS"
-msgstr "ASUINRAKENNUKSIA"
+msgstr "ASUINRAKENNUKSET"
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:128
@@ -501,6 +521,8 @@ msgid ""
 "Settlers want to have a roof over their heads, else they won't even think of "
 "living in your city! You need to provide tents."
 msgstr ""
+"Uudisasukkaat haluavat katon päänsä päälle, muuten he eivät tule lähellekään "
+"siirtokuntaasi! Sinun pitää siis pystyttää telttoja."
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:130
@@ -508,6 +530,8 @@ msgid ""
 "Tents are the basic residential buildings. Your inhabitants will want to "
 "upgrade it when they reach higher increments."
 msgstr ""
+"Teltat ovat perusasuinrakennuksia. Asukkaasi haluavat kehittää asumustaan, "
+"kun heillä on varaa ja taitoja siihen."
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:132
@@ -516,6 +540,9 @@ msgid ""
 "you produce - but they at least pay taxes, and that's the only way you can "
 "make money for now!"
 msgstr ""
+"Uudisasukkaat eivät välttämättä vaikuta hyödyllisiltä, sillä he kuluttavat "
+"tuottamiasi elintarvikkeita. He kuitenkin maksavat veroja, ja se on tällä "
+"hetkellä ainoa tapa, jolla saat rahaa!"
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:134
@@ -524,6 +551,9 @@ msgid ""
 "TASK: Build a tent and connect it to the main square. Tents dont need to be "
 "connected to any of the companies."
 msgstr ""
+"\n"
+"TEHTÄVÄ: Rakenna teltta ja yhdistä se polulla keskustoriin. Telttoja ei "
+"tarvitse yhdistää yrityksiin."
 
 #. This message is displayed in the widget on the left screen part. Please keep it short enough to fit there!
 #: po/tutorial.py:136
@@ -536,6 +566,8 @@ msgid ""
 "\n"
 "Let's have a look at the tent overview tab."
 msgstr ""
+"\n"
+"Katsotaanpa telttayleiskatsauksen välilehteä."
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:140
@@ -545,12 +577,18 @@ msgid ""
 "* the taxes they pay and\n"
 "* the resources they demand."
 msgstr ""
+"Näet teltan asukkaiden\n"
+"* onnellisuuden,\n"
+"* maksamat verot ja\n"
+"* vaatimat resurssit."
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:142
 msgid ""
 "If their demands are fulfilled, happiness and thus your tax income increase."
 msgstr ""
+"Jos täytät heidän vaatimuksensa, onnellisuus lisääntyy ja siten myös "
+"verotulosi."
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:144
@@ -559,11 +597,14 @@ msgid ""
 "really sour and simply turn their back on your village, leaving behind a "
 "decaying ruin."
 msgstr ""
+"Jos et täytä, onnellisuus ja tulot laskevat. Asukkaat saattavat tulla hyvin "
+"happamiksi ja yksinkertaisesti kääntää selkänsä kylällesi jättäen taakseen "
+"murenevat rauniot."
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:146
 msgid "Note that you can also change the global tax settings here, too."
-msgstr ""
+msgstr "Huomaa, että veroprosenttia voi muuttaa myös telttakohtaisesti."
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:148
@@ -571,6 +612,8 @@ msgid ""
 "\n"
 "TASK: Build at least three additional tents."
 msgstr ""
+"\n"
+"TEHTÄVÄ: Rakenna vähintään kolme telttaa lisää."
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:150
@@ -579,6 +622,9 @@ msgid ""
 "TIP: Holding down SHIFT eases constructing multiple buildings of the same "
 "kind."
 msgstr ""
+"\n"
+"VIHJE: Shift-näppäimen pitäminen pohjassa helpottaa usean saman rakennuksen "
+"rakentamista."
 
 #. This message is displayed in the widget on the left screen part. Please keep it short enough to fit there!
 #: po/tutorial.py:152
@@ -597,6 +643,8 @@ msgid ""
 "Can you see the ship passing your island from time to time? That ship belongs "
 "to the Free Trader, one of the first settlers in this archipelago."
 msgstr ""
+"Oletko huomannut laivan ohittavan säännöllisesti siirtokuntasi? Alus on "
+"vapaakauppiaan, joka oli yksi saariston ensimmäisistä uudisasukkaista."
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:158
@@ -604,6 +652,8 @@ msgid ""
 "The trader will supply your settlement with necessary goods which you can't "
 "produce yet."
 msgstr ""
+"Kauppiaalta voi ostaa hyödyllisiä tarvikkeita, joita et voi tuottaa vielä "
+"itse."
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:160
@@ -611,6 +661,9 @@ msgid ""
 "You can also sell surpluses of your production, but in general consuming them "
 "(by building more tents) instead of selling them yields more profit."
 msgstr ""
+"Tarvittaessa voit myydä myös ylijäämätuotantoasi, mutta tämä kannattaa "
+"ennemminkin korvata rakentamalla lisää telttoja (jolloin asukkaita tulee "
+"lisää ja resursseja kuluu enemmän)."
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:162
@@ -618,6 +671,8 @@ msgid ""
 "Normally the trader ships just sail around and look for deals, but you can "
 "speed things up a bit."
 msgstr ""
+"Normaalisti kauppa-alukset vain kiertelevät ympäriinsä etsien hyviä "
+"kauppapaikkoja, mutta voit nopeuttaa tätä prosessia."
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:164
@@ -625,6 +680,8 @@ msgid ""
 "For this purpose, build a signal fire at the coast near your warehouse. It "
 "will show ships the way to your settlement."
 msgstr ""
+"Tätä varten rannikolle pitää rakentaa merkkituli sivutoimistosi lähelle. Se "
+"osoittaa kauppalaivoille tien siirtokuntaasi."
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:166
@@ -632,6 +689,8 @@ msgid ""
 "The signal fire has to cover the area which the ships pass through to catch "
 "them."
 msgstr ""
+"Siirtotulikaan ei näy loputtoman kauaksi, vaan sillä on tietty kantama-alue, "
+"jonka sisällä kulkevat laivat huomaavat sen."
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:168
@@ -640,11 +699,13 @@ msgid ""
 "After this little advertisment, the trader will also stop by and look into "
 "your warehouse if it planned to sail past it."
 msgstr ""
+"\n"
+"Tämän pikku mainostuksen jälkeen kauppias alkaa etsiä sivutoimistoasi."
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:170
 msgid "You can propose deals via the warehouse tab \"Buy/Sell\"."
-msgstr ""
+msgstr "Voit ehdottaa kauppoja sivutoimiston Kaupankäynti-välilehdeltä."
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:172
