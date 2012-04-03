@@ -646,18 +646,15 @@ class Gui(SingleplayerMenu, MultiplayerMenu):
 
 			from horizons.constants import VERSION
 			try:
-				if savegame_info['savegamerev'] == VERSION.SAVEGAMEREVISION:
+				#xgettext:python-format
+				details_label.text += _("Savegame version {version}").format(
+				                         version=savegame_info['savegamerev'])
+				if savegame_info['savegamerev'] != VERSION.SAVEGAMEREVISION:
 					#xgettext:python-format
-					details_label.text += _("Savegame version {version}").format(
-					                         version=savegame_info['savegamerev'])
-				else:
-					#xgettext:python-format
-					details_label.text += _("WARNING: Incompatible version {version}!").format(
-					                         version=savegame_info['savegamerev']) + u"\n"
-					#xgettext:python-format
-					details_label.text += _("Required version: {required}!").format(
-					                         required=VERSION.SAVEGAMEREVISION)
+					details_label.text += u" " + _("(potentially incompatible)")
 			except KeyError:
+				# this should only happen for very old savegames, so having this unfriendly
+				# error is ok (savegame is quite certainly fully unusable).
 				details_label.text += _("Incompatible version")
 
 
