@@ -22,51 +22,45 @@ events:
     - [Headline, !!python/unicode 'Tervetuloa Unknown Horizonsiin!']
     - [Image, content/gui/images/background/hr.png]
     - ''
-    - !!python/unicode 'This is your Captain''s log where all important information
-      is stored. A short notification of each task will be provided on the left of
-      the screen.'
-    - !!python/unicode 'If you are interested in longer descriptions, your log will
-      hopefully provide all the help you need.'
-    - !!python/unicode 'After you close this log, it can be re-opened with the "Captain''s
-      Log" icon in the top-right corner (below the mini-map, with a sealed document
-      and a feather).'
+    - "T\xE4m\xE4 on Kapteenin p\xE4iv\xE4kirja, johon kirjataan kaikki pelin kannalta\
+      \ olennaiset tiedot. Jokaisesta teht\xE4v\xE4st\xE4 ilmoitetaan pelin vasemmassa\
+      \ reunassa."
+    - "Jos haluat tiet\xE4\xE4 teht\xE4vist\xE4 lis\xE4\xE4, niin t\xE4st\xE4 p\xE4\
+      iv\xE4kirjasta pit\xE4isi l\xF6yty\xE4 tarvitsemasi tiedot."
+    - "Kun olet sulkenut t\xE4m\xE4n p\xE4iv\xE4kirjan, voit avata sen uudelleen \\\
+      \"Kapteenin p\xE4iv\xE4kirja\\\" -kuvakkeesta oikeasta yl\xE4kulmasta (pikkukartan\
+      \ alapuolelta, kuvakkeessa on sinet\xF6ity kirje ja sulka)."
     - - Gallery
       - [content/gui/icons/widgets/minimap/captainslog.png]
-    - !!python/unicode '
-
-      To see your first task, click on the button "Read next entries" in the navigation
-      panel! It looks like this:'
+    - "\nVoit tutustua ensimm\xE4iseen teht\xE4v\xE4\xE4si napsauttamalla \"Seuraava\
+      \ merkint\xE4\" -kuvaketta p\xE4iv\xE4kirjan alareunassa. Kuvake n\xE4ytt\xE4\
+      \xE4 t\xE4lt\xE4:"
     - - Gallery
       - [content/gui/images/buttons/parrow_right.png]
     - [Pagebreak]
-    - !!python/unicode '
-
-      For any suggestions on better wording, topics you would like to have explained
-      or even buggy conditions: Please tell us and we will try to improve the tutorial!'
-    - !!python/unicode '
-
-      Visit www.unknown-horizons.org for help on how to contact the team!'
-    - !!python/unicode 'And now, let''s start the actual game.'
+    - "\nJos keksit ehdotuksia paremmalle kieliopille, haluaisit kuulla jostain lis\xE4\
+      \xE4 tai t\xF6rm\xE4\xE4t vikatilanteeseen, kerrothan siit\xE4 meille, jotta\
+      \ voimme parantaa t\xE4t\xE4 harjoituspeli\xE4!"
+    - "\nKehitysryhm\xE4mme yhteystiedot on saatavilla verkkosivuiltamme osoitteesta\
+      \ www.unknown-horizons.org."
+    - !!python/unicode 'Ja nyt viimeinkin, aloitetaanpas itse peli!'
     - [Pagebreak]
     - [Headline, !!python/unicode 'ASETU SAARELLE']
     - [Image, content/gui/images/background/hr.png]
-    - !!python/unicode 'To move your ship, select it with a left click and right click
-      on the location you want it to go to.'
-    - !!python/unicode 'Once you are near the coast, the anchor-like button you see
-      in the overview tab will become active.'
+    - "Liikuta laivaasi valitsemalla se hiiren vasemmalla painikkeella ja oikealla\
+      \ sijainti, johon haluat sen menev\xE4n."
+    - "Kun olet rannikon l\xE4hell\xE4, ankkurin kuvake laivan yleiskatsauksessa muuttuu\
+      \ aktiiviseksi."
     - - Gallery
       - [content/gui/icons/ship/anchor.png]
-    - !!python/unicode 'This indicates that you are able to build a warehouse there
-      by pressing that button (called ''Build Settlement'').'
-    - !!python/unicode 'Now a preview of your building is dragged around when you
-      move the cursor.'
-    - !!python/unicode 'You can build on any spot where this preview is not shaded
-      red.
-
-      Click where you want to place your first building.'
-    - !!python/unicode '
-
-      TASK: Build a warehouse at the coast.'
+    - "T\xE4m\xE4 kertoo, ett\xE4 voit rakentaa sivutoimiston t\xE4h\xE4n napsauttamalla\
+      \ t\xE4t\xE4 painiketta (nimelt\xE4\xE4n \"Rakenna siirtokunta\")."
+    - "Hiirt\xE4 liikutellessa pit\xE4isi nyt sen yhteydess\xE4 olla sivutoimiston\
+      \ esikatselukuva."
+    - "Sivutoimiston voi rakentaa mihin tahansa, kunhan rakennuksen kuvalla ei ole\
+      \ punertavaa v\xE4ris\xE4vy\xE4. Sivutoimisto sijoitetaan rannikolle. Valitse\
+      \ sopiva paikka ja rakenna sivutoimisto napsauttamalla hiiren vasenta painiketta."
+    - "\nTEHT\xC4V\xC4: Rakenna sivutoimisto rannikolle."
     type: logbook
   - arguments: [tutStepDone, 16]
     type: set_var
@@ -77,37 +71,32 @@ events:
   - arguments:
     - [Headline, !!python/unicode 'RAKENNA PUUNHAKKAAJA']
     - [Image, content/gui/images/background/hr.png]
-    - !!python/unicode 'The construction material on your ship got unloaded automatically.
-      You can now construct some basic buildings.'
-    - !!python/unicode 'We will start with building a lumberjack.'
-    - !!python/unicode 'This is essential because, at this stage, boards are the only
-      poles your sailors can afford to hang their tents over.'
-    - !!python/unicode 'The fisherman needs some boards to build his vessel as well.'
-    - !!python/unicode 'In order to construct lumberjacks; open the build menu by
-      either clicking the big icon below the mini map or pressing B key.'
+    - !!python/unicode 'Laivasi lastina olleet tavarat puretaan siirtokuntaasi automaattisesti.
+      Voit nyt rakentaa joitain perusrakennuksia.'
+    - !!python/unicode 'Aloittakaamme puunhakkaajalla.'
+    - "Puunhakkaaja on t\xE4rke\xE4, koska sen tuottamia lautoja tarvitaan useimpiin\
+      \ rakennuksiin, kuten asukkaidesi telttoihin."
+    - "My\xF6s kalastaja tarvitsee lautoja alustensa rakentamiseen."
+    - "Rakenna puunhakkaajan n\xE4in: avaa aluksi rakennusvalikko joko napsauttamalla\
+      \ pikkukartan alapuolella olevista napeista keskimm\xE4ist\xE4 tai painamalla\
+      \ pikan\xE4pp\xE4int\xE4 B."
     - - Gallery
       - [content/gui/icons/widgets/minimap/build.png]
-    - !!python/unicode 'The build menu is sorted by increments.'
-    - !!python/unicode 'You are currently in the first increment (the Sailors level)
-      so are offered only the basic buildings.'
+    - "Rakennusvalikko on jaettu siirtokunnan tason mukaan v\xE4lilehtiin (vasen reuna)."
+    - "T\xE4ss\xE4 vaiheessa voit rakentaa vain ensimm\xE4isen eli Merenkulkijat-tason\
+      \ rakennuksia."
     - [Pagebreak]
-    - !!python/unicode '
-
-      As your civilization advances, you also gain more and more complex buildings.'
-    - !!python/unicode 'For now, select the lumberjack under ''Companies'' and build
-      it in an area with some trees around.'
-    - !!python/unicode 'You can also plant trees later - but that costs money. Use
-      what nature provided you with!'
-    - !!python/unicode 'A company always needs a trail connection to a storage or
-      warehouse, otherwise goods will remain at the company and not be collected.'
-    - !!python/unicode 'This means that you have to build a trail connecting your
-      warehouse (or storage) and lumberjack.'
-    - !!python/unicode '
-
-      TASK: Build a lumberjack in a wooded area and connect it to a road.'
-    - !!python/unicode 'Watch how a collector will fetch your first self-produced
-      boards. Don''t worry about recruiting workers for the lumberjack. That happens
-      automatically.'
+    - "\nSiirtokuntasi kehittyess\xE4 saat k\xE4ytt\xF6\xF6si uusia rakennuksia."
+    - "Nyt kuitenkin riitt\xE4\xE4, ett\xE4 valitset puunhakkaajan kohdasta \"Yritykset\"\
+      \ ja rakennat sen alueelle, jossa on riitt\xE4v\xE4sti puita."
+    - "Voit tarvittaessa istuttaa my\xF6hemmin my\xF6s puita - mutta se maksaa rahaa.\
+      \ K\xE4yt\xE4 ensisijaisesti sit\xE4, mit\xE4 luonto on sinulle tarjonnut."
+    - "Yritys tarvitsee polkuyhteyden varastoon tai sivutoimistoon, muuten tavarat\
+      \ j\xE4\xE4v\xE4t yritykselle eik\xE4 niit\xE4 saada ker\xE4tty\xE4."
+    - !!python/unicode 'Rakenna siis polku puunhakkaajalta sivutoimistolle tai varastolle.'
+    - "\nTEHT\xC4V\xC4: Rakenna puunhakkaaja mets\xE4\xE4n ja yhdist\xE4 se polkuun."
+    - "Katsele, kun ker\xE4\xE4j\xE4 hakee ensimm\xE4iset itsevalmistetut lautasi.\xC4\
+      l\xE4 huolehdi lis\xE4ty\xF6voiman palkkauksesta, sill\xE4 se tapahtuu automaattisesti."
     - - Gallery
       - [content/gui/icons/buildmenu/008.png, content/gui/icons/buildmenu/015.png,
         content/gui/icons/resources/50/004.png]
@@ -131,27 +120,25 @@ events:
   - arguments:
     - [Headline, !!python/unicode 'RUOKAVARANTO']
     - [Image, content/gui/images/background/hr.png]
-    - !!python/unicode 'You will need to have some food-producing companies, too,
-      because people in general (and especially sailors) are very hungry.'
-    - !!python/unicode 'Available companies in the first increment are the Hunter
-      and Fisher.'
-    - !!python/unicode 'The Hunter hunts animals in the forest, thus needs trees nearby.'
-    - !!python/unicode 'Note that you can place your Hunter close to the lumberjack''s
-      forest.'
-    - !!python/unicode 'It can happen that the animals don''t reproduce fast enough
-      or simply hide well.'
-    - !!python/unicode 'Conclusion: the hunter is not too reliable if you need continuous
-      supply.'
+    - "Tulet tarvitsemaan my\xF6s ruokaa tuottavia yrityksi\xE4, sill\xE4 asukkaasi\
+      \ tarvitsevat ruokaa."
+    - "Ensimm\xE4isell\xE4 tasolla voit rakentaa mets\xE4st\xE4j\xE4n ja kalastajan."
+    - "Mets\xE4st\xE4j\xE4 (yll\xE4tys yll\xE4tys) mets\xE4st\xE4\xE4 el\xE4imi\xE4\
+      \ mets\xE4st\xE4. Se tuleekin sijoittaa mets\xE4\xE4n."
+    - "Huomaa, ett\xE4 paras paikka mets\xE4st\xE4j\xE4lle on puunhakkaajan vieress\xE4\
+      ."
+    - "Mets\xE4st\xE4j\xE4n huonona puolena el\xE4imet eiv\xE4t v\xE4ltt\xE4m\xE4\
+      tt\xE4 lis\xE4\xE4nny riitt\xE4v\xE4n nopeasti tai osaavat piiloutua liian hyvin."
+    - "Johtop\xE4\xE4t\xF6s: mets\xE4st\xE4j\xE4 ei ole sataprosenttisen luotettava\
+      \ pitk\xE4nt\xE4ht\xE4imen ruokatuotantoon."
     - [Pagebreak]
-    - !!python/unicode '
-
-      The Fisher needs a coastal building site like the warehouse and a fish school
-      in range.'
-    - !!python/unicode 'He will build a small rowing vessel and catch some fish.'
-    - !!python/unicode 'This is a very constant supply at the cost of a slightly longer
-      production time per unit of food.'
-    - !!python/unicode 'A small settlement like yours can use both companies, and
-      you can better balance pros and cons if you see the direct comparison.'
+    - "\nKalastaja pit\xE4\xE4 rakentaa rannikolle kuten sivutoimistokin ja tarvitsee\
+      \ kalastuskoulun kantamaansa."
+    - "Kalastaja rakentaa pienen soutuveneen ja alkaa pyydyst\xE4m\xE4\xE4n kaloja."
+    - "Kalastus on todella pitk\xE4ik\xE4inen ruoanl\xE4hde, mutta hitaampaa kuin\
+      \ mets\xE4st\xE4minen."
+    - "Pieni asutuskeskus - kuten omasi - voi k\xE4ytt\xE4\xE4 molempia, jolloin pystyt\
+      \ paremmin tasapainottamaan hyv\xE4t ja huonot puolet."
     - !!python/unicode '
 
       TASK: Build a hunter and a fisher.'
@@ -754,6 +741,6 @@ events:
     type: var_gt
 locale: fi
 mapfile: development.sqlite
-translation_status: 37 translated messages, 2 fuzzy translations, 152 untranslated
+translation_status: 74 translated messages, 2 fuzzy translations, 115 untranslated
   messages.
 
