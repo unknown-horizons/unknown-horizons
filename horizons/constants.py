@@ -453,6 +453,7 @@ LANGUAGENAMES = _LanguageNameDict({
 	"fi"    : u'Suomi',
 	"fr"    : u'Français',
 	"gl"    : u'Galego',
+	"hr"    : u'Hrvatski',
 	"hu"    : u'Magyar',
 	"it"    : u'Italiano',
 	"ja"    : u'日本語',
