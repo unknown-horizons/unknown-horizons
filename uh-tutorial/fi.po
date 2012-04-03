@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: translate-uh@lists.unknown-horizons.org\n"
 "POT-Creation-Date: 2012-03-21 04:04+0100\n"
-"PO-Revision-Date: 2012-04-03 20:41+0200\n"
+"PO-Revision-Date: 2012-04-03 20:48+0200\n"
 "Last-Translator: Aleksi <aleksi.kinnunen@ovi.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: fi\n"
@@ -1322,6 +1322,9 @@ msgid ""
 "So if no sailors recently wanted to upgrade their tents, you probably have a "
 "lot of boards and in that case, the lumberjack may idle."
 msgstr ""
+"Joten jos asukkaasi eivät viime aikoina ole olleet kiinnostuneita "
+"päivittelemään asuntojaan ja sinulla on paljon lautoja, puunhakkaajasi "
+"saattaa olla toimettomana."
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:318
@@ -1329,6 +1332,8 @@ msgid ""
 "We can improve this situation in two different ways, and we will have a look "
 "at both of them below."
 msgstr ""
+"Voimme parantaa tilannetta kahdella eri tavalla, ja alla tutustumme "
+"molempiin."
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:320
@@ -1337,6 +1342,9 @@ msgid ""
 "This may sound strange, but click on the gear wheel you see in a lumberjack "
 "hut's overview."
 msgstr ""
+"Kaikkien yritysten toiminta voidaan väliaikaisesti keskeyttää.\n"
+"Tämä saattaa kuulostaa oudolta, mutta kokeilepa napsauttaa puunhakkaajan "
+"yleiskatsauksessa olevaa hammaspyörää."
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:322
@@ -1345,6 +1353,9 @@ msgid ""
 "costs you pay for the building will decrease. They won't be zero, but still "
 "lower than if you keep the company producing."
 msgstr ""
+"Kun tämä \"taukotila\" on käytössä, rakennuksesta maksamasi juoksevat "
+"kustannukset vähenevät. Ne eivät laske nollaan, mutta kuitenkin alemmaksi "
+"kuin yrityksen ollessa käytössä."
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:324
@@ -1353,6 +1364,9 @@ msgid ""
 "This means that you can save money when you temporarily do not need a company "
 "and do not want to tear it down, either."
 msgstr ""
+"\n"
+"Tämä tarkoittaa siis sitä, että voit säästää rahaa kun et väliaikaisesti "
+"tarvitse yritystä, mutta et myöskään halua tuhota sitä maan tasalle."
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:326
@@ -1360,6 +1374,8 @@ msgid ""
 "Another solution is to build the last increment-I building which has not been "
 "mentioned so far: the storage tent."
 msgstr ""
+"Toinen ratkaisu on rakentaa viimeinen tason I rakennus, jota ei ole vielä "
+"mainittu: varastoteltta."
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:328
@@ -1368,6 +1384,9 @@ msgid ""
 "* Offers more storage for your goods, and\n"
 "* sends its own collectors to fetch goods, just like the warehouse does."
 msgstr ""
+"Tällä rakennuksella on kaksi tarkoitusta. Se...\n"
+"* tarjoaa lisää varastotilaa tavaroillesi ja\n"
+"* lähettää omat kerääjänsä hakemaan tavaroita kuten sivutoimistokin."
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:330
@@ -1376,6 +1395,9 @@ msgid ""
 "products collected, and if the warehouse is overwhelmed with collector tasks, "
 "you can place a storage tent to help out there."
 msgstr ""
+"Yritykset voidaan siis yhdistää sivutoimiston sijasta varastoon, jolloin "
+"niiden tuotteet tulevat myös kerätyiksi. Varasto on hyödyllinen myös "
+"silloin, kun sivutoimistolla on paljon hommia keräystöissä."
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:332
@@ -1383,11 +1405,14 @@ msgid ""
 "\n"
 "TASK: Build a storage tent, preferably where you need collectors."
 msgstr ""
+"\n"
+"TEHTÄVÄ: Rakenna varastoteltta mieluiten sellaiseen paikkaan, jossa "
+"tarvitset kerääjiä."
 
 #. This message is displayed in the widget on the left screen part. Please keep it short enough to fit there!
 #: po/tutorial.py:334
 msgid "Build a storage tent (increment I tab) where it makes sense."
-msgstr "Rakenna varastoteltta (tason I-välilehdellä) järkevään paikkaan."
+msgstr "Rakenna varastoteltta (tason I välilehdellä) järkevään paikkaan."
 
 #. This is a logbook page heading. Space is VERY short, please only translate to strings that fit (roughly 30 characters max).
 #: po/tutorial.py:336
