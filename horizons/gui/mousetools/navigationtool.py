@@ -58,7 +58,7 @@ class NavigationTool(CursorTool):
 
 		if not self.__class__.send_hover_instances_update:
 			# clear
-			MessageBus().broadcast(HoverInstancesChanged(self, set()))
+			HoverInstancesChanged.broadcast(self, set())
 
 		class CoordsTooltip(object):
 			@classmethod
