@@ -7,8 +7,8 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: translate-uh@lists.unknown-horizons.org\n"
 "POT-Creation-Date: 2012-03-21 04:04+0100\n"
-"PO-Revision-Date: 2012-03-06 18:11+0200\n"
-"Last-Translator: Christopher Oelmueller <chris.oelmueller+uh@gmail.com>\n"
+"PO-Revision-Date: 2012-04-03 15:57+0200\n"
+"Last-Translator: Aleksi <aleksi.kinnunen@ovi.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: fi\n"
 "MIME-Version: 1.0\n"
@@ -56,6 +56,9 @@ msgid ""
 "This is your Captain's log where all important information is stored. A short "
 "notification of each task will be provided on the left of the screen."
 msgstr ""
+"Tämä on Kapteenin päiväkirja, johon kirjataan kaikki pelin kannalta "
+"olennaiset tiedot. Jokaisesta tehtävästä ilmoitetaan pelin vasemmassa "
+"reunassa."
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:14
@@ -63,6 +66,8 @@ msgid ""
 "If you are interested in longer descriptions, your log will hopefully provide "
 "all the help you need."
 msgstr ""
+"Jos haluat tietää tehtävistä lisää, niin tästä päiväkirjasta pitäisi löytyä "
+"tarvitsemasi tiedot."
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:16
@@ -71,6 +76,9 @@ msgid ""
 "in the top-right corner (below the mini-map, with a sealed document and a "
 "feather)."
 msgstr ""
+"Kun olet sulkenut tämän päiväkirjan, voit avata sen uudelleen \\\"Kapteenin "
+"päiväkirja\\\" -kuvakkeesta oikeasta yläkulmasta (pikkukartan alapuolelta, "
+"kuvakkeessa on sinetöity kirje ja sulka)."
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:18
@@ -79,6 +87,9 @@ msgid ""
 "To see your first task, click on the button \"Read next entries\" in the "
 "navigation panel! It looks like this:"
 msgstr ""
+"\n"
+"Voit tutustua ensimmäiseen tehtävääsi napsauttamalla \"Seuraava merkintä\" "
+"-kuvaketta päiväkirjan alareunassa. Kuvake näyttää tältä:"
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:20
@@ -88,6 +99,10 @@ msgid ""
 "explained or even buggy conditions: Please tell us and we will try to improve "
 "the tutorial!"
 msgstr ""
+"\n"
+"Jos keksit ehdotuksia paremmalle kieliopille, haluaisit kuulla jostain lisää "
+"tai törmäät vikatilanteeseen, kerrothan siitä meille, jotta voimme parantaa "
+"tätä harjoituspeliä!"
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:22
@@ -95,11 +110,14 @@ msgid ""
 "\n"
 "Visit www.unknown-horizons.org for help on how to contact the team!"
 msgstr ""
+"\n"
+"Kehitysryhmämme yhteystiedot on saatavilla verkkosivuiltamme osoitteesta www"
+".unknown-horizons.org."
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:24
 msgid "And now, let's start the actual game."
-msgstr ""
+msgstr "Ja nyt viimeinkin, aloitetaanpas itse peli!"
 
 #. This is a logbook page heading. Space is VERY short, please only translate to strings that fit (roughly 30 characters max).
 #: po/tutorial.py:26
@@ -112,6 +130,8 @@ msgid ""
 "To move your ship, select it with a left click and right click on the "
 "location you want it to go to."
 msgstr ""
+"Liikuta laivaasi valitsemalla se hiiren vasemmalla painikkeella ja oikealla "
+"sijainti, johon haluat sen menevän."
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:30
@@ -119,6 +139,8 @@ msgid ""
 "Once you are near the coast, the anchor-like button you see in the overview "
 "tab will become active."
 msgstr ""
+"Kun olet rannikon lähellä, ankkurin kuvake laivan yleiskatsauksessa muuttuu "
+"aktiiviseksi."
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:32
@@ -126,12 +148,16 @@ msgid ""
 "This indicates that you are able to build a warehouse there by pressing that "
 "button (called 'Build Settlement')."
 msgstr ""
+"Tämä kertoo, että voit rakentaa sivutoimiston tähän napsauttamalla tätä "
+"painiketta (nimeltään \"Rakenna siirtokunta\")."
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:34
 msgid ""
 "Now a preview of your building is dragged around when you move the cursor."
 msgstr ""
+"Hiirtä liikutellessa pitäisi nyt sen yhteydessä olla sivutoimiston "
+"esikatselukuva."
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:36
@@ -139,6 +165,9 @@ msgid ""
 "You can build on any spot where this preview is not shaded red.\n"
 "Click where you want to place your first building."
 msgstr ""
+"Sivutoimiston voi rakentaa mihin tahansa, kunhan rakennuksen kuvalla ei ole "
+"punertavaa värisävyä. Sivutoimisto sijoitetaan rannikolle. Valitse sopiva "
+"paikka ja rakenna sivutoimisto napsauttamalla hiiren vasenta painiketta."
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:38
@@ -146,6 +175,8 @@ msgid ""
 "\n"
 "TASK: Build a warehouse at the coast."
 msgstr ""
+"\n"
+"TEHTÄVÄ: Rakenna sivutoimisto rannikolle."
 
 #. This is a logbook page heading. Space is VERY short, please only translate to strings that fit (roughly 30 characters max).
 #: po/tutorial.py:40
