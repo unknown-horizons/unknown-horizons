@@ -41,6 +41,8 @@
 	<HBox>
 		<Icon name="map_preview_minimap" size="120,120" max_size="120,120" is_focusable="0"/>
 		<VBox>
+			<Button name="open_random_map_archive" text="Load from map archive" is_focusable="0"
+				comment="Right now, Buttons do not support text wrapping, so better try to keep this line short."/>
 			<Spacer/>
 			<Label name="map_preview_status_label" is_focusable="0"/>
 		</VBox>
