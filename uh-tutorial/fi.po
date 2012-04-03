@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: translate-uh@lists.unknown-horizons.org\n"
 "POT-Creation-Date: 2012-03-21 04:04+0100\n"
-"PO-Revision-Date: 2012-04-03 16:26+0200\n"
+"PO-Revision-Date: 2012-04-03 17:00+0200\n"
 "Last-Translator: Aleksi <aleksi.kinnunen@ovi.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: fi\n"
@@ -390,11 +390,13 @@ msgid ""
 "\n"
 "TASK: Build a hunter and a fisher."
 msgstr ""
+"\n"
+"TEHTÄVÄ: Rakenna metsästäjä ja kalastaja."
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:96
 msgid "Don't forget to connect them to your warehouse with trails!"
-msgstr ""
+msgstr "Älä unohda yhdistää niitä polulla sivutoimistoosi!"
 
 #. This message is displayed in the widget on the left screen part. Please keep it short enough to fit there!
 #: po/tutorial.py:98
