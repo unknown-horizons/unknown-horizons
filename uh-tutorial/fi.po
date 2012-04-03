@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: translate-uh@lists.unknown-horizons.org\n"
 "POT-Creation-Date: 2012-03-21 04:04+0100\n"
-"PO-Revision-Date: 2012-04-03 15:57+0200\n"
+"PO-Revision-Date: 2012-04-03 16:26+0200\n"
 "Last-Translator: Aleksi <aleksi.kinnunen@ovi.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: fi\n"
@@ -189,11 +189,13 @@ msgid ""
 "The construction material on your ship got unloaded automatically. You can "
 "now construct some basic buildings."
 msgstr ""
+"Laivasi lastina olleet tavarat puretaan siirtokuntaasi automaattisesti. Voit "
+"nyt rakentaa joitain perusrakennuksia."
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:44
 msgid "We will start with building a lumberjack."
-msgstr ""
+msgstr "Aloittakaamme puunhakkaajalla."
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:46
@@ -201,11 +203,13 @@ msgid ""
 "This is essential because, at this stage, boards are the only poles your "
 "sailors can afford to hang their tents over."
 msgstr ""
+"Puunhakkaaja on tärkeä, koska sen tuottamia lautoja tarvitaan useimpiin "
+"rakennuksiin, kuten asukkaidesi telttoihin."
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:48
 msgid "The fisherman needs some boards to build his vessel as well."
-msgstr ""
+msgstr "Myös kalastaja tarvitsee lautoja alustensa rakentamiseen."
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:50
@@ -213,11 +217,16 @@ msgid ""
 "In order to construct lumberjacks; open the build menu by either clicking the "
 "big icon below the mini map or pressing B key."
 msgstr ""
+"Rakenna puunhakkaajan näin: avaa aluksi rakennusvalikko joko napsauttamalla "
+"pikkukartan alapuolella olevista napeista keskimmäistä tai painamalla "
+"pikanäppäintä B."
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:52
 msgid "The build menu is sorted by increments."
 msgstr ""
+"Rakennusvalikko on jaettu siirtokunnan tason mukaan välilehtiin (vasen "
+"reuna)."
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:54
@@ -225,6 +234,8 @@ msgid ""
 "You are currently in the first increment (the Sailors level) so are offered "
 "only the basic buildings."
 msgstr ""
+"Tässä vaiheessa voit rakentaa vain ensimmäisen eli Merenkulkijat-tason "
+"rakennuksia."
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:56
@@ -232,6 +243,8 @@ msgid ""
 "\n"
 "As your civilization advances, you also gain more and more complex buildings."
 msgstr ""
+"\n"
+"Siirtokuntasi kehittyessä saat käyttöösi uusia rakennuksia."
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:58
@@ -239,6 +252,8 @@ msgid ""
 "For now, select the lumberjack under 'Companies' and build it in an area with "
 "some trees around."
 msgstr ""
+"Nyt kuitenkin riittää, että valitset puunhakkaajan kohdasta \"Yritykset\" ja "
+"rakennat sen alueelle, jossa on riittävästi puita."
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:60
@@ -246,6 +261,8 @@ msgid ""
 "You can also plant trees later - but that costs money. Use what nature "
 "provided you with!"
 msgstr ""
+"Voit tarvittaessa istuttaa myöhemmin myös puita - mutta se maksaa rahaa. "
+"Käytä ensisijaisesti sitä, mitä luonto on sinulle tarjonnut."
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:62
@@ -253,13 +270,15 @@ msgid ""
 "A company always needs a trail connection to a storage or warehouse, "
 "otherwise goods will remain at the company and not be collected."
 msgstr ""
+"Yritys tarvitsee polkuyhteyden varastoon tai sivutoimistoon, muuten tavarat "
+"jäävät yritykselle eikä niitä saada kerättyä."
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:64
 msgid ""
 "This means that you have to build a trail connecting your warehouse (or "
 "storage) and lumberjack."
-msgstr ""
+msgstr "Rakenna siis polku puunhakkaajalta sivutoimistolle tai varastolle."
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:66
@@ -267,6 +286,8 @@ msgid ""
 "\n"
 "TASK: Build a lumberjack in a wooded area and connect it to a road."
 msgstr ""
+"\n"
+"TEHTÄVÄ: Rakenna puunhakkaaja metsään ja yhdistä se polkuun."
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:68
@@ -274,6 +295,8 @@ msgid ""
 "Watch how a collector will fetch your first self-produced boards. Don't worry "
 "about recruiting workers for the lumberjack. That happens automatically."
 msgstr ""
+"Katsele, kun kerääjä hakee ensimmäiset itsevalmistetut lautasi.Älä huolehdi "
+"lisätyövoiman palkkauksesta, sillä se tapahtuu automaattisesti."
 
 #. This message is displayed in the widget on the left screen part. Please keep it short enough to fit there!
 #: po/tutorial.py:70
@@ -291,21 +314,25 @@ msgid ""
 "You will need to have some food-producing companies, too, because people in "
 "general (and especially sailors) are very hungry."
 msgstr ""
+"Tulet tarvitsemaan myös ruokaa tuottavia yrityksiä, sillä asukkaasi "
+"tarvitsevat ruokaa."
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:76
 msgid "Available companies in the first increment are the Hunter and Fisher."
-msgstr ""
+msgstr "Ensimmäisellä tasolla voit rakentaa metsästäjän ja kalastajan."
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:78
 msgid "The Hunter hunts animals in the forest, thus needs trees nearby."
 msgstr ""
+"Metsästäjä (yllätys yllätys) metsästää eläimiä metsästä. Se tuleekin "
+"sijoittaa metsään."
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:80
 msgid "Note that you can place your Hunter close to the lumberjack's forest."
-msgstr ""
+msgstr "Huomaa, että paras paikka metsästäjälle on puunhakkaajan vieressä."
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:82
@@ -313,12 +340,16 @@ msgid ""
 "It can happen that the animals don't reproduce fast enough or simply hide "
 "well."
 msgstr ""
+"Metsästäjän huonona puolena eläimet eivät välttämättä lisäänny riittävän "
+"nopeasti tai osaavat piiloutua liian hyvin."
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:84
 msgid ""
 "Conclusion: the hunter is not too reliable if you need continuous supply."
 msgstr ""
+"Johtopäätös: metsästäjä ei ole sataprosenttisen luotettava pitkäntähtäimen "
+"ruokatuotantoon."
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:86
@@ -327,11 +358,13 @@ msgid ""
 "The Fisher needs a coastal building site like the warehouse and a fish school "
 "in range."
 msgstr ""
+"Kalastaja pitää rakentaa rannikolle kuten sivutoimistokin ja tarvitsee "
+"kalastuskoulun kantamaansa."
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:88
 msgid "He will build a small rowing vessel and catch some fish."
-msgstr ""
+msgstr "Kalastaja rakentaa pienen soutuveneen ja alkaa pyydystämään kaloja."
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:90
@@ -339,6 +372,8 @@ msgid ""
 "This is a very constant supply at the cost of a slightly longer production "
 "time per unit of food."
 msgstr ""
+"Kalastus on todella pitkäikäinen ruoanlähde, mutta hitaampaa kuin "
+"metsästäminen."
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:92
@@ -346,6 +381,8 @@ msgid ""
 "A small settlement like yours can use both companies, and you can better "
 "balance pros and cons if you see the direct comparison."
 msgstr ""
+"Pieni asutuskeskus - kuten omasi - voi käyttää molempia, jolloin pystyt "
+"paremmin tasapainottamaan hyvät ja huonot puolet."
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:94
