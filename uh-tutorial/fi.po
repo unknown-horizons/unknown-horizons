@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: translate-uh@lists.unknown-horizons.org\n"
 "POT-Creation-Date: 2012-03-21 04:04+0100\n"
-"PO-Revision-Date: 2012-04-03 19:27+0200\n"
+"PO-Revision-Date: 2012-04-03 20:01+0200\n"
 "Last-Translator: Aleksi <aleksi.kinnunen@ovi.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: fi\n"
@@ -1137,6 +1137,8 @@ msgid ""
 "\n"
 "We will have a closer look at this later."
 msgstr ""
+"\n"
+"Tarkastelemme tätä myöhemmin."
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:274
@@ -1144,6 +1146,8 @@ msgid ""
 "Farms, like all companies producing raw materials, do not necessarily need to "
 "be connected to storage or a warehouse."
 msgstr ""
+"Resursseja valmistavat yritykset eivät välttämättä tarvitse polkuyhteyttä "
+"varastoon tai sivutoimistoon. Maatila lukeutuu näihin yrityksiin."
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:276
@@ -1152,6 +1156,8 @@ msgid ""
 "collectors from the warehouse or storage tent can reach the final company "
 "everything's fine."
 msgstr ""
+"Kunhan lopputuotannon yritykset tavoittavat maatilan, ja kerääjät "
+"sivutoimistolta tai varastolta pääsevät lopputuottajalle, kaikki on hyvin."
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:278
