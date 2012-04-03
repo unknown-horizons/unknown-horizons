@@ -294,29 +294,29 @@ class SelectableBuildingComponent(SelectableComponent):
 				cls._selected_fake_tiles.l.append(inst)
 				renderer.addColored(inst, *cls.selection_color)
 
-	@classmethod
-	def select_many(cls, buildings, renderer):
-		"""Same as calling select() on many instances, but way faster.
-		Limited functionality, only use on real buildings of a settlement."""
-		if not buildings:
-			return [] # that is not many
-		settlement = buildings[0].settlement
-
-		for building in buildings:
-			building.get_component(SelectableComponent).set_selection_outline()
-
-		coords = set( coord for \
-		              building in buildings for \
-		              coord in building.position.get_radius_coordinates(building.radius, include_self=True) )
-
-		selected_tiles = []
-		for coord in coords:
-			tile = settlement.ground_map.get(coord)
-			if tile:
-				if ( 'constructible' in tile.classes or 'coastline' in tile.classes ):
-					cls._add_selected_tile(tile, renderer)
-					selected_tiles.append(tile)
-		return selected_tiles
+#	@classmethod
+#	def select_many(cls, buildings, renderer):
+#		"""Same as calling select() on many instances, but way faster.
+#		Limited functionality, only use on real buildings of a settlement."""
+#		if not buildings:
+#			return [] # that is not many
+#		settlement = buildings[0].settlement
+#
+#		for building in buildings:
+#			building.get_component(SelectableComponent).set_selection_outline()
+#
+#		coords = set( coord for \
+#		              building in buildings for \
+#		              coord in building.position.get_radius_coordinates(building.radius, include_self=True) )
+#
+#		selected_tiles = []
+#		for coord in coords:
+#			tile = settlement.ground_map.get(coord)
+#			if tile:
+#				if ( 'constructible' in tile.classes or 'coastline' in tile.classes ):
+#					cls._add_selected_tile(tile, renderer)
+#					selected_tiles.append(tile)
+#		return selected_tiles
 
 	@classmethod
 	def _do_select(cls, renderer, position, world, settlement,
