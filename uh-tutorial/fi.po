@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: translate-uh@lists.unknown-horizons.org\n"
 "POT-Creation-Date: 2012-03-21 04:04+0100\n"
-"PO-Revision-Date: 2012-04-03 19:00+0200\n"
+"PO-Revision-Date: 2012-04-03 19:27+0200\n"
 "Last-Translator: Aleksi <aleksi.kinnunen@ovi.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: fi\n"
@@ -32,9 +32,7 @@ msgstr "Unknown Horizonsin kehittäjät"
 msgid ""
 "The tutorial:\n"
 "Build your first settlement and learn how to play!\n"
-msgstr ""
-"Harjoituspeli:\n"
-"Rakenna ensimmäinen siirtokuntasi ja opi, miten tätä peliä pelataan!\n"
+msgstr "Rakenna ensimmäinen siirtokuntasi ja opi, miten tätä peliä pelataan!\n"
 
 #. This message is displayed in the widget on the left screen part. Please keep it short enough to fit there!
 #: po/tutorial.py:8
@@ -840,7 +838,7 @@ msgid ""
 "Unknown Horizons features smart pricing, so the value of one unit can vary.\n"
 "It is NOT possible to change prices manually!"
 msgstr ""
-"Unknown Horisonzissa on älykäs hinnoittelujärjestelmä, joten hinnat voivat "
+"Unknown Horisonzsissa on älykäs hinnoittelujärjestelmä, joten hinnat voivat "
 "olla muuttuneet kauppiaan seuraavalla käyntikerralla.\n"
 "Hintoihin EI VOI vaikuttaa itse."
 
@@ -1011,6 +1009,9 @@ msgid ""
 "to bankruptcy sooner or later. For a period of time and if you know what you "
 "are doing, it is fine though."
 msgstr ""
+"Veroprosenttia ei kannata kuitenkaan koko aikaa pitää alhaalla, sillä tästä "
+"todennäköisesti aiheutuu konkurssi ennemmin tai myöhemmin. Voit kuitenkin "
+"laskea prosenttia huoletta pieniksi ajoiksi."
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:244
@@ -1019,6 +1020,9 @@ msgid ""
 "look for new construction material there to build a log house. This house "
 "will replace the old tent."
 msgstr ""
+"Jonkin ajan jälkeen ensimmäisen yksikön pitäisi kävellä keskustorille ja "
+"etsiä sieltä uusia rakennustarvikkeita rakentaakseen hirsitalon. Tämä talo "
+"korvaa vanhan teltan."
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:246
@@ -1027,6 +1031,9 @@ msgid ""
 "Such residential upgrades cost resources and can thus be restricted at the "
 "main square."
 msgstr ""
+"\n"
+"Asuinrakennusten päivitykset ovat ainoat, jotka maksavat resursseja ja joita "
+"voidaan rajoittaa."
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:248
@@ -1034,6 +1041,8 @@ msgid ""
 "There also are upgrades of buildings without costs, as you will see with the "
 "lumberjack. In this case, only the graphics change."
 msgstr ""
+"Jotkut päivitykset ovat kuitenkin maksuttomia, kuten esimerkiksi "
+"puunhakkaaja (jolloin vain ulkoasu muuttuu)."
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:250
@@ -1041,6 +1050,8 @@ msgid ""
 "Upgraded housing accomodates more inhabitants, and pioneers pay more taxes "
 "than sailors, too."
 msgstr ""
+"Päivitettyyn asumukseen mahtuu enemmän asukkaita ja lisäksi kansoittajat "
+"maksavat myös enemmän veroja kuin merenkävijät."
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:252
@@ -1049,6 +1060,9 @@ msgid ""
 "additional goods which sailors do not need - so you will need to spend this "
 "extra money to make them happy as well."
 msgstr ""
+"Kuten olet jo saattanut huomata, huonona puolena kansoittajat vaativat myös "
+"tavaroita, joita merenkävijät eivät tarvinneet - sinun pitää siis käyttää "
+"nämä ylimääräiset tuotot myös heidän onnellisena pitämiseen."
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:254
@@ -1056,6 +1070,9 @@ msgid ""
 "\n"
 "TASK: Set the tax level to Low (left end) and wait for sailors to upgrade."
 msgstr ""
+"\n"
+"TEHTÄVÄ: Aseta veroprosentti matalaksi (vasempaan päähän) ja odota "
+"merenkävijöiden päivittymistä."
 
 #. This message is displayed in the widget on the left screen part. Please keep it short enough to fit there!
 #: po/tutorial.py:256
@@ -1073,18 +1090,20 @@ msgstr "RAKENNA MAATILA"
 #. This is the text body of a logbook page.
 #: po/tutorial.py:260
 msgid "Congratulations! Some of your inhabitants have reached increment II!"
-msgstr ""
+msgstr "Onneksi olkoon! Jotkut asukkaasi ovat saavuttaneet tason II!"
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:262
 msgid ""
 "Now you have access to new buildings, take a look at the Build menu again."
 msgstr ""
+"Nyt kun sinulla on pääsy uusiin rakennuksiin, katsopas rakennusvalikkoa "
+"uudestaan."
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:264
 msgid "A shiny new tab appeared there."
-msgstr ""
+msgstr "Sinne on ilmestynyt uutukainen välilehti."
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:266
@@ -1092,6 +1111,9 @@ msgid ""
 "Pioneers will demand cloth, so you need to set up a production line for cloth "
 "starting with lambs wool (which is one of the goods produced at the farm)."
 msgstr ""
+"Kansoittajat tulevat vaatimaan vaatteita, joten sinun pitää rakentaa "
+"tuotantolinja vaatteille lampaanvillasta lähtien (joka on yksi maatilan "
+"tuottamista tarvikkeista)."
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:268
@@ -1099,11 +1121,15 @@ msgid ""
 "The farm is a very special production building since it can produce not only "
 "one, but very many (and different) goods if you choose."
 msgstr ""
+"Maatila on tärkeä tuotantorakennus, sillä se voi tuottaa todella monia (ja "
+"erilaisia) resursseja."
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:270
 msgid "The output of farms depends on what kind of fields you build around it."
 msgstr ""
+"Maatilojen tuotanto riippuu siitä, mitä peltoja olet rakentanut sen "
+"lähettyville."
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:272
