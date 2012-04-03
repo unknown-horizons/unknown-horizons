@@ -28,6 +28,7 @@ from horizons.util import WorldObject, WeakList
 from horizons.util.lastactiveplayersettlementmanager import LastActivePlayerSettlementManager
 from horizons.constants import LAYERS
 from horizons.messaging import HoverInstancesChanged
+from horizons.messaging import MessageBus
 from horizons.extscheduler import ExtScheduler
 
 from fife.extensions.pychan.widgets import Icon
@@ -57,7 +58,7 @@ class NavigationTool(CursorTool):
 
 		if not self.__class__.send_hover_instances_update:
 			# clear
-			self.session.message_bus.broadcast(HoverInstancesChanged(self, set()))
+			MessageBus().broadcast(HoverInstancesChanged(self, set()))
 
 		class CoordsTooltip(object):
 			@classmethod

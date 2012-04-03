@@ -37,6 +37,7 @@ TIMEOUT = 5.0 # we should be done before the user can start a game
 def check_for_updates(info):
 	"""Check if there's a new version.
 	@return update file contents or None"""
+	# make sure to always set info.status, but only when we're done
 	if VERSION.IS_DEV_VERSION: # no updates for git version
 		info.status = UpdateInfo.INVALID
 		return

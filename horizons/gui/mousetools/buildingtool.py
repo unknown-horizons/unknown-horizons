@@ -119,7 +119,7 @@ class BuildingTool(NavigationTool):
 			self._build_logic = SettlementBuildingToolLogic(self)
 
 		self.load_gui()
-		self.gui.show()
+		self.__class__.gui.show()
 		self.session.ingame_gui.minimap_to_front()
 
 		self.session.gui.on_escape = self.on_escape
@@ -187,9 +187,9 @@ class BuildingTool(NavigationTool):
 		self._highlighted_buildings = None
 		self._build_logic = None
 		self.buildings = None
-		if self.gui is not None:
+		if self.__class__.gui is not None:
 			self.session.view.remove_change_listener(self.draw_gui)
-			self.gui.hide()
+			self.__class__.gui.hide()
 		ExtScheduler().rem_all_classinst_calls(self)
 		super(BuildingTool, self).remove()
 
@@ -204,20 +204,20 @@ class BuildingTool(NavigationTool):
 		self._related_buildings = set( filter(check_building, self._related_buildings) )
 
 	def load_gui(self):
-		if self.gui is None:
-			self.gui = load_uh_widget("place_building.xml")
-			top_bar = self.gui.findChild(name='top_bar')
-			top_bar.position = (self.gui.size[0]/2 - top_bar.size[0]/2 -16, 50)
-			self.gui.position_technique = "right-1:top+157"
-		self.gui.mapEvents( { "rotate_left" : self.rotate_left,
+		if self.__class__.gui is None:
+			self.__class__.gui = load_uh_widget("place_building.xml")
+			top_bar = self.__class__.gui.findChild(name='top_bar')
+			top_bar.position = (self.__class__.gui.size[0]/2 - top_bar.size[0]/2 -16, 50)
+			self.__class__.gui.position_technique = "right-1:top+157"
+		self.__class__.gui.mapEvents( { "rotate_left" : self.rotate_left,
 				              "rotate_right": self.rotate_right } )
 		# set translated building name in gui
-		self.gui.findChild(name='headline').text = _('Build') + u' ' + _(self._class.name)
-		self.gui.findChild(name='running_costs').text = unicode(self._class.running_costs)
-		head_box = self.gui.findChild(name='head_box')
+		self.__class__.gui.findChild(name='headline').text = _('Build') + u' ' + _(self._class.name)
+		self.__class__.gui.findChild(name='running_costs').text = unicode(self._class.running_costs)
+		head_box = self.__class__.gui.findChild(name='head_box')
 		head_box.adaptLayout() # recalculates size of new content
 		head_box.position = ( # calculate and set new center (we cause pychan to not support it)
-				              max( self.gui.size[0]/2 - head_box.size[0]/2, 25),
+				              max( self.__class__.gui.size[0]/2 - head_box.size[0]/2, 25),
 				              head_box.position[1]
 				              )
 		head_box.adaptLayout()
@@ -241,11 +241,11 @@ class BuildingTool(NavigationTool):
 		else: # If no idle animation found, use the first you find
 			action = action_sets[action_set].keys()[0]
 		image = sorted(action_sets[action_set][action][(self.rotation+int(self.session.view.cam.getRotation())-45)%360].keys())[0]
-		building_icon = self.gui.findChild(name='building')
+		building_icon = self.__class__.gui.findChild(name='building')
 		building_icon.image = image
 		# TODO: Remove hardcoded 70
-		building_icon.position = (self.gui.size[0]/2 - building_icon.size[0]/2, self.gui.size[1]/2 - building_icon.size[1]/2 - 70)
-		self.gui.adaptLayout()
+		building_icon.position = (self.__class__.gui.size[0]/2 - building_icon.size[0]/2, self.__class__.gui.size[1]/2 - building_icon.size[1]/2 - 70)
+		self.__class__.gui.adaptLayout()
 
 	def preview_build(self, point1, point2, force=False):
 		"""Display buildings as preview if build requirements are met"""
@@ -436,8 +436,8 @@ class BuildingTool(NavigationTool):
 	def on_escape(self):
 		self.session.ingame_gui.resource_overview.close_construction_mode()
 		self._build_logic.on_escape(self.session)
-		if self.gui is not None:
-			self.gui.hide()
+		if self.__class__.gui is not None:
+			self.__class__.gui.hide()
 		self.session.set_cursor() # will call remove()
 
 	def mouseMoved(self, evt):
@@ -623,14 +623,14 @@ class BuildingTool(NavigationTool):
 		self.rotation = (self.rotation + 270) % 360
 		self.log.debug("BuildingTool: Building rotation now: %s", self.rotation)
 		self.update_preview()
-		if self.gui is not None: # Only update if a preview gui is available
+		if self.__class__.gui is not None: # Only update if a preview gui is available
 			self.draw_gui()
 
 	def rotate_left(self):
 		self.rotation = (self.rotation + 90) % 360
 		self.log.debug("BuildingTool: Building rotation now: %s", self.rotation)
 		self.update_preview()
-		if self.gui is not None: # Only update if a preview gui is available
+		if self.__class__.gui is not None: # Only update if a preview gui is available
 			self.draw_gui()
 
 	def _remove_building_instances(self):
