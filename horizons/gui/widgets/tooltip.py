@@ -49,21 +49,32 @@ class _Tooltip(object):
 		self._exited_callbacks = []
 
 	def position_tooltip(self, event):
-		if (event.getType() == fife.MouseEvent.ENTERED):
-			for i in self._entered_callbacks:
-				i()
-		if (event.getButton() == fife.MouseEvent.MIDDLE):
-			return
+		"""Calculates a nice position for the tooltip.
+		@param event: mouse event from fife or tuple screenpoint
+		"""
+		# TODO: think about nicer way of handling the polymorphism here,
+		# e.g. a position_tooltip_event and a position_tooltip_tuple
+		where = event # fife forces this to be called event, but here it can also be a tuple
+		if isinstance(where, tuple):
+			x, y = where
+		else:
+			if (where.getType() == fife.MouseEvent.ENTERED):
+				for i in self._entered_callbacks:
+					i()
+			if (where.getButton() == fife.MouseEvent.MIDDLE):
+				return
+
+			x, y = where.getX(), where.getY()
 
 		if self.gui is None:
 			self.gui = load_uh_widget('tooltip.xml')
 		widget_position = self.getAbsolutePos()
 		screen_width = horizons.main.fife.engine_settings.getScreenWidth()
-		self.gui.y = widget_position[1] + event.getY() + 5
-		if (widget_position[0] + event.getX() +self.gui.size[0] + 10) <= screen_width:
-			self.gui.x = widget_position[0] + event.getX() + 10
+		self.gui.y = widget_position[1] + y + 5
+		if (widget_position[0] + x + self.gui.size[0] + 10) <= screen_width:
+			self.gui.x = widget_position[0] + x + 10
 		else:
-			self.gui.x = widget_position[0] + event.getX() - self.gui.size[0] - 5
+			self.gui.x = widget_position[0] + x - self.gui.size[0] - 5
 		if not self.tooltip_shown:
 			ExtScheduler().add_new_object(self.show_tooltip, self, run_in=0.3, loops=0)
 			self.tooltip_shown = True

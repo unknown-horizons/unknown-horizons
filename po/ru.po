@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2012-03-24 02:16+0100\n"
-"PO-Revision-Date: 2012-03-07 18:53+0200\n"
+"PO-Revision-Date: 2012-03-07 18:54+0200\n"
 "Last-Translator: Alexander <fcxSanya@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: ru\n"
@@ -36,10 +36,12 @@ msgstr "Корабль построен."
 msgid "A new world has been created."
 msgstr "Новый мир был создан."
 
+# 81%
 #. This is a database entry: the name of an inhabitant increment (tier / level).
 #: database files sql
+#, fuzzy
 msgid "Aristocrats"
-msgstr ""
+msgstr "аристократ"
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
@@ -54,10 +56,12 @@ msgstr "Туда невозможно пройти."
 msgid "Citizens"
 msgstr "горожанин"
 
+# 77%
 #. This is a database entry: the name of an inhabitant increment (tier / level).
 #: database files sql
+#, fuzzy
 msgid "Merchants"
-msgstr ""
+msgstr "торговец"
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
@@ -2794,10 +2798,12 @@ msgstr "Цвет:"
 msgid "Player name:"
 msgstr "Имя игрока:"
 
+# 88%
 #. name of buildings:alvearies
 #: horizons/i18n/objecttranslations.py:53
+#, fuzzy
 msgid "Alvearies"
-msgstr ""
+msgstr "ульи"
 
 #. tooltip_text of buildings:alvearies
 #: horizons/i18n/objecttranslations.py:55
@@ -3208,10 +3214,13 @@ msgstr ""
 msgid "Storage Tent"
 msgstr "Хранилище"
 
+# Can we drop the 'Tent' part ? Or we need something like 'Палатка-хранилище', 'Склад-палатка' etc.
+# 75%
 #. name_1 of buildings:storagetent
 #: horizons/i18n/objecttranslations.py:334
+#, fuzzy
 msgid "Storage Hut"
-msgstr ""
+msgstr "Хранилище"
 
 # Very bad translate
 #. tooltip_text of buildings:storagetent
@@ -3253,10 +3262,12 @@ msgstr "Палатка"
 msgid "Hut"
 msgstr ""
 
+# 80%
 #. name_2 of buildings:tent
 #: horizons/i18n/objecttranslations.py:359
+#, fuzzy
 msgid "House"
-msgstr ""
+msgstr "Мышь"
 
 #. name_3 of buildings:tent
 #: horizons/i18n/objecttranslations.py:361
@@ -3368,10 +3379,12 @@ msgstr ""
 msgid "Warehouse"
 msgstr "Склад"
 
+# 76%
 #. name of buildings:weaverstent
 #: horizons/i18n/objecttranslations.py:433
+#, fuzzy
 msgid "Weaver's Hut"
-msgstr ""
+msgstr "Палатка ткача"
 
 #. tooltip_text of buildings:weaverstent
 #: horizons/i18n/objecttranslations.py:435

@@ -88,6 +88,8 @@ class BuildingTool(NavigationTool):
 	# archive the last roads built, for possible user notification
 	_last_road_built = []
 
+	send_hover_instances_update = False
+
 	gui = None # share gui between instances
 
 	def __init__(self, session, building, ship=None, build_related=None):
@@ -238,7 +240,11 @@ class BuildingTool(NavigationTool):
 			action = 'idle_full'
 		else: # If no idle animation found, use the first you find
 			action = action_sets[action_set].keys()[0]
-		image = sorted(action_sets[action_set][action][(self.rotation+int(self.session.view.cam.getRotation())-45)%360].keys())[0]
+		rotation = (self.rotation+int(self.session.view.cam.getRotation())-45)%360
+		image = sorted(action_sets[action_set][action][rotation].keys())[0]
+		if GFX.USE_ATLASES:
+			# Make sure the preview is loaded
+			horizons.main.fife.animationloader.load_image(image, action_set, action, rotation)
 		building_icon = self.gui.findChild(name='building')
 		building_icon.image = image
 		# TODO: Remove hardcoded 70
@@ -674,6 +680,7 @@ class BuildingTool(NavigationTool):
 			building.get_component(SelectableComponent).deselect()
 		self.renderer.removeAllOutlines()
 		self.renderer.removeAllColored()
+
 
 class ShipBuildingToolLogic(object):
 	"""Helper class to seperate the logic needed when building from a ship from

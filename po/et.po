@@ -7,8 +7,8 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2012-03-24 02:16+0100\n"
-"PO-Revision-Date: 2012-03-07 08:15+0200\n"
-"Last-Translator: ussikene <ussikene@gmail.com>\n"
+"PO-Revision-Date: 2012-03-07 08:18+0200\n"
+"Last-Translator: Üllar <ussikene@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: et\n"
 "MIME-Version: 1.0\n"
@@ -34,10 +34,12 @@ msgstr "Uus laev on valminud."
 msgid "A new world has been created."
 msgstr "Uus maailm on loodud."
 
+# 81%
 #. This is a database entry: the name of an inhabitant increment (tier / level).
 #: database files sql
+#, fuzzy
 msgid "Aristocrats"
-msgstr ""
+msgstr "aristokraat"
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
@@ -52,10 +54,12 @@ msgstr "Ei saa minna."
 msgid "Citizens"
 msgstr "kodanik"
 
+# 77%
 #. This is a database entry: the name of an inhabitant increment (tier / level).
 #: database files sql
+#, fuzzy
 msgid "Merchants"
-msgstr ""
+msgstr "kaupmees"
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
@@ -3196,10 +3200,12 @@ msgstr ""
 msgid "Storage Tent"
 msgstr "Laotelk"
 
+# 75%
 #. name_1 of buildings:storagetent
 #: horizons/i18n/objecttranslations.py:334
+#, fuzzy
 msgid "Storage Hut"
-msgstr ""
+msgstr "Laotelk"
 
 #. tooltip_text of buildings:storagetent
 #: horizons/i18n/objecttranslations.py:336
@@ -3236,10 +3242,12 @@ msgstr "Telk"
 msgid "Hut"
 msgstr ""
 
+# 80%
 #. name_2 of buildings:tent
 #: horizons/i18n/objecttranslations.py:359
+#, fuzzy
 msgid "House"
-msgstr ""
+msgstr "Hiir"
 
 #. name_3 of buildings:tent
 #: horizons/i18n/objecttranslations.py:361
@@ -3346,10 +3354,12 @@ msgstr ""
 msgid "Warehouse"
 msgstr "Ladu"
 
+# 76%
 #. name of buildings:weaverstent
 #: horizons/i18n/objecttranslations.py:433
+#, fuzzy
 msgid "Weaver's Hut"
-msgstr ""
+msgstr "Kuduja telk"
 
 #. tooltip_text of buildings:weaverstent
 #: horizons/i18n/objecttranslations.py:435

@@ -37,10 +37,12 @@ msgstr "Um novo mundo foi criado."
 msgid "A new world has been created."
 msgstr "Um novo mundo foi criado."
 
+# 81%
 #. This is a database entry: the name of an inhabitant increment (tier / level).
 #: database files sql
+#, fuzzy
 msgid "Aristocrats"
-msgstr ""
+msgstr "aristocrata"
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
@@ -55,10 +57,12 @@ msgstr ""
 msgid "Citizens"
 msgstr "cidadão"
 
+# 77%
 #. This is a database entry: the name of an inhabitant increment (tier / level).
 #: database files sql
+#, fuzzy
 msgid "Merchants"
-msgstr ""
+msgstr "mercador"
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
@@ -3209,10 +3213,12 @@ msgstr ""
 msgid "Storage Tent"
 msgstr "Armazém"
 
+# 75%
 #. name_1 of buildings:storagetent
 #: horizons/i18n/objecttranslations.py:334
+#, fuzzy
 msgid "Storage Hut"
-msgstr ""
+msgstr "Armazém"
 
 #. tooltip_text of buildings:storagetent
 #: horizons/i18n/objecttranslations.py:336
@@ -3249,10 +3255,12 @@ msgstr "Tenda"
 msgid "Hut"
 msgstr ""
 
+# 80%
 #. name_2 of buildings:tent
 #: horizons/i18n/objecttranslations.py:359
+#, fuzzy
 msgid "House"
-msgstr ""
+msgstr "casas"
 
 #. name_3 of buildings:tent
 #: horizons/i18n/objecttranslations.py:361
@@ -3360,10 +3368,12 @@ msgstr ""
 msgid "Warehouse"
 msgstr "casas"
 
+# 76%
 #. name of buildings:weaverstent
 #: horizons/i18n/objecttranslations.py:433
+#, fuzzy
 msgid "Weaver's Hut"
-msgstr ""
+msgstr "Tenda de tecelão"
 
 #. tooltip_text of buildings:weaverstent
 #: horizons/i18n/objecttranslations.py:435

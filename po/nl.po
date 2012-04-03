@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2012-03-24 02:16+0100\n"
-"PO-Revision-Date: 2012-03-29 11:32+0200\n"
+"PO-Revision-Date: 2012-03-29 11:41+0200\n"
 "Last-Translator: Christopher Oelmueller <chris.oelmueller+uh@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: nl\n"
@@ -34,10 +34,12 @@ msgstr "Er is een nieuw schip gebouwd."
 msgid "A new world has been created."
 msgstr "Er is een nieuwe wereld geschapen."
 
+# 81%
 #. This is a database entry: the name of an inhabitant increment (tier / level).
 #: database files sql
+#, fuzzy
 msgid "Aristocrats"
-msgstr ""
+msgstr "aristocraat"
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
@@ -51,10 +53,12 @@ msgstr "Kan hier niet naartoe."
 msgid "Citizens"
 msgstr "Burgerij"
 
+# 77%
 #. This is a database entry: the name of an inhabitant increment (tier / level).
 #: database files sql
+#, fuzzy
 msgid "Merchants"
-msgstr ""
+msgstr "koopman"
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
@@ -2396,6 +2400,7 @@ msgstr "Terug:"
 
 #. (text of widget: gamename_lbl)
 #: horizons/i18n/guitranslations.py:824 horizons/i18n/guitranslations.py:966
+#, fuzzy
 msgid "Name of the game:"
 msgstr "spel"
 
@@ -3213,10 +3218,12 @@ msgstr "Haalt rots van de berg."
 msgid "Storage Tent"
 msgstr "Opslagtent"
 
+# 75%
 #. name_1 of buildings:storagetent
 #: horizons/i18n/objecttranslations.py:334
+#, fuzzy
 msgid "Storage Hut"
-msgstr ""
+msgstr "Opslagtent"
 
 #. tooltip_text of buildings:storagetent
 #: horizons/i18n/objecttranslations.py:336
@@ -3253,10 +3260,12 @@ msgstr "Tent"
 msgid "Hut"
 msgstr ""
 
+# 80%
 #. name_2 of buildings:tent
 #: horizons/i18n/objecttranslations.py:359
+#, fuzzy
 msgid "House"
-msgstr ""
+msgstr "Muis"
 
 #. name_3 of buildings:tent
 #: horizons/i18n/objecttranslations.py:361
@@ -3365,10 +3374,12 @@ msgstr "Produceert wijn uit druiven."
 msgid "Warehouse"
 msgstr "Warenhuis"
 
+# 76%
 #. name of buildings:weaverstent
 #: horizons/i18n/objecttranslations.py:433
+#, fuzzy
 msgid "Weaver's Hut"
-msgstr ""
+msgstr "Weverstent"
 
 #. tooltip_text of buildings:weaverstent
 #: horizons/i18n/objecttranslations.py:435
