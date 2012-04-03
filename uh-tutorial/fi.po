@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: translate-uh@lists.unknown-horizons.org\n"
 "POT-Creation-Date: 2012-03-21 04:04+0100\n"
-"PO-Revision-Date: 2012-04-03 17:41+0200\n"
+"PO-Revision-Date: 2012-04-03 17:55+0200\n"
 "Last-Translator: Aleksi <aleksi.kinnunen@ovi.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: fi\n"
@@ -711,6 +711,8 @@ msgstr "Voit ehdottaa kauppoja sivutoimiston Kaupankäynti-välilehdeltä."
 #: po/tutorial.py:172
 msgid "At the 'sailors' increment, you are equipped with three trading slots."
 msgstr ""
+"Merenkävijät-tasolla sinulla on kolme kauppapaikkaa, eli voit asettaa "
+"korkeintaan kolme tarjousta vapaakauppiaalle kerrallaan."
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:174
@@ -718,6 +720,8 @@ msgid ""
 "Click on the small icon to change the slot mode from 'Buy' to 'Sell' and vice "
 "versa."
 msgstr ""
+"Voit muuttaa myyntitarjouksen ostotarjoukseksi napsauttamalla kauppapaikan "
+"vasemman yläkulman pienestä kuvakkeesta."
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:176
@@ -725,15 +729,18 @@ msgid ""
 "Click in the slot to choose the good you want to trade with. We will further "
 "explain this once you are ready to trade."
 msgstr ""
+"Valitse kaupattava tuote napsauttamalla kauppapaikkaa. Kerromme tästä "
+"ominaisuudesta myöhemmin, kun olet valmis kaupankäyntiin."
 
 # 89%
 #. This is the text body of a logbook page.
 #: po/tutorial.py:178
-#, fuzzy
 msgid ""
 "\n"
 "TASK: Build a signal fire at the coast close to your warehouse."
-msgstr "Rakenna merkkituli rannikolle sivutoimistosi lähettyville."
+msgstr ""
+"\n"
+"TEHTÄVÄ: Rakenna merkkituli rannikolle sivutoimistosi lähettyville."
 
 #. This message is displayed in the widget on the left screen part. Please keep it short enough to fit there!
 #: po/tutorial.py:180
