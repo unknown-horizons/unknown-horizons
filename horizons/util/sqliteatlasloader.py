@@ -67,13 +67,7 @@ class SQLiteAtlasLoader(object):
 		ani = fife.Animation.createAnimation()
 
 		# Set the correct loader based on the actionset
-		loader = None
-		if actionset.startswith("ts_"):
-			loader = TileSetLoader
-		elif actionset.startswith("as_"):
-			loader = ActionSetLoader
-		else:
-			assert False, "Invalid set being loaded: " + actionset
+		loader = self._get_loader(actionset)
 
 
 		frame_start, frame_end = 0.0, 0.0
@@ -120,4 +114,28 @@ class SQLiteAtlasLoader(object):
 		ani.setActionFrame(0)
 		return ani
 
+	def _get_loader(self, actionset):
+			if actionset.startswith("ts_"):
+				loader = TileSetLoader
+			elif actionset.startswith("as_"):
+				loader = ActionSetLoader
+			else:
+				assert False, "Invalid set being loaded: " + actionset
+			return loader
+
+	def load_image(self, file, actionset, action, rotation):
+		loader = self._get_loader(actionset)
+		entry = loader.get_sets()[actionset][action][int(rotation)][file]
+		# we don't need to load images at this point to query for its parameters
+		# such as width and height because we can get those from json file
+		xpos, ypos, width, height = entry[2:]
+
+		if horizons.main.fife.imagemanager.exists(file):
+			img = horizons.main.fife.imagemanager.get(file)
+		else:
+			img = horizons.main.fife.imagemanager.create(file)
+			region = fife.Rect(xpos, ypos, width, height)
+			img.useSharedImage(self.atlaslib[entry[1]], region)
+
+		return img
 
