@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: translate-uh@lists.unknown-horizons.org\n"
 "POT-Creation-Date: 2012-03-21 04:04+0100\n"
-"PO-Revision-Date: 2012-04-03 17:55+0200\n"
+"PO-Revision-Date: 2012-04-03 18:42+0200\n"
 "Last-Translator: Aleksi <aleksi.kinnunen@ovi.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: fi\n"
@@ -760,6 +760,9 @@ msgid ""
 "\n"
 "Let's continue our tutorial on how to trade."
 msgstr ""
+"Loistavaa! Vapaakauppias pysähtyy nyt säännöllisesti sivutoimistollasi.\n"
+"\n"
+"Jatketaan kaupankäyntiin tutustumisella."
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:186
@@ -767,6 +770,9 @@ msgid ""
 "After selecting a particular type of good, the green bar across the bottom of "
 "the slot (if visible) shows you how much you have in stock of this good."
 msgstr ""
+"Kun olet valinnut kauppapaikkaan resurssin, oikeassa reunassa oleva vihreä "
+"palkki näyttää, kuinka paljon tätä resurssia on varastossa. Jos resurssia ei "
+"ole yhtään, palkkia ei näy."
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:188
@@ -774,12 +780,16 @@ msgid ""
 "Dragging the slider on the right of each slot determines your 'target value' "
 "which has a different meaning on 'Buy' and 'Sell'."
 msgstr ""
+"Liikuttamalla liukusäädintä tavararuudun (kauppapaikan) oikealla puolella "
+"valitaan kuinka paljon tavaraa korkeintaan myydään tai ostetaan."
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:190
 msgid ""
 "When buying, you will buy sufficient to hold your 'target value' in stock."
 msgstr ""
+"Ostaessa liukusäätimen luku on se määrä, jonka tavoittelet olevan "
+"varastoissasi."
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:192
@@ -787,6 +797,8 @@ msgid ""
 "When selling, the 'target value' is the stock amount at which you will always "
 "stop selling until you get more of that resource again."
 msgstr ""
+"Myydessä taas luku ilmaisee määrää, jonka haluat pitää itselläsi (jota ei "
+"aseteta myyntiin)."
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:194
@@ -796,6 +808,11 @@ msgid ""
 "Having a 'Buy' slot and 5 tons in stock, a slider positioned at 9 tons will "
 "cause you to buy 4 additional tons at most."
 msgstr ""
+"\n"
+"Esimerkki:\n"
+"Tavararuutu on asetettu Osta-asentoon. Sinulla on 5 tonnia lautoja "
+"varastossa, ja olet asettanut liukusäätimen yhdeksään tonniin. Tällöin "
+"hankit korkeintaan 4 tonnia lautoja lisää."
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:196
@@ -803,6 +820,9 @@ msgid ""
 "Selling works similarly. A 'Sell' slot with 18 tons in stock and the slider "
 "positioned at 13 will sell up to 5 tons."
 msgstr ""
+"Myyminen toimii samalla tavalla. Kun Myy-asennossa oleva tavararuudun "
+"liukusäädin on 13 tonnissa ja varastossa on tavaraa 18 tonnia, tavaraa "
+"myydään korkeintaan 5 tonnia."
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:198
@@ -810,6 +830,9 @@ msgid ""
 "If the free trader however only wants to buy or sell less than your settings "
 "would allow him, you need to live with that and wait for him to return."
 msgstr ""
+"Jos vapaakauppias ei kuitenkaan ole valmis myymään/ostamaan toivomaasi "
+"määrää, et voi sille mitään, vaan joudut odottamaan kauppiaan seuraavaa "
+"käyntiä."
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:200
@@ -817,6 +840,9 @@ msgid ""
 "Unknown Horizons features smart pricing, so the value of one unit can vary.\n"
 "It is NOT possible to change prices manually!"
 msgstr ""
+"Unknown Horisonzissa on älykäs hinnoittelujärjestelmä, joten hinnat voivat "
+"olla muuttuneet kauppiaan seuraavalla käyntikerralla.\n"
+"Hintoihin EI VOI vaikuttaa itse."
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:202
@@ -824,6 +850,8 @@ msgid ""
 "You can see your trade balance in the 'Account' tab comparing the 'Sale' and "
 "'Buy' values there."
 msgstr ""
+"Budjetti-välilehdellä näet kaupankäynnin tasapainon kohdista \"Ostot\" ja "
+"\"Myynti\"."
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:204
@@ -831,6 +859,9 @@ msgid ""
 "\n"
 "TASK: Buy as many tools as you need to have 30 tools in stock!"
 msgstr ""
+"\n"
+"TEHTÄVÄ: Osta niin monta työkalua, että varastossasi on vähintään 30 "
+"työkalua!"
 
 #. This message is displayed in the widget on the left screen part. Please keep it short enough to fit there!
 #: po/tutorial.py:206
@@ -850,12 +881,12 @@ msgstr "RAKENNA KIRKKO"
 #. This is the text body of a logbook page.
 #: po/tutorial.py:212
 msgid "Those tools will be enough for the moment. Well done!"
-msgstr ""
+msgstr "Nuo työkalut riittävät hetkeksi. Hyvin tehty!"
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:214
 msgid "You now provide housing, a main square and food to your inhabitants."
-msgstr ""
+msgstr "Tarjoat nyt asuintilat, keskustorin ja ruokaa asukkaillesi."
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:216
@@ -864,6 +895,9 @@ msgid ""
 "that in the marketplace or tent tab - your sailors want a basic building "
 "where they can pray."
 msgstr ""
+"Yhä on yksi vaatimus, jota ei olla vielä täytetty, voit tarkistaa sen "
+"halutessasi toripaikasta tai teltan välilehdestä - merenkävijäsi haluavat "
+"yksinkertaisen rakennuksen, jossa voivat rukoilla."
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:218
@@ -871,6 +905,8 @@ msgid ""
 "The solution is a pavilion which the village parson quickly puts up as "
 "shelter from the sun."
 msgstr ""
+"Siksipä sinun pitää rakentaa kylääsi kirkko, jonka kyläpappi nopeasti "
+"rakentaa auringonsuojaksi."
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:220
@@ -878,6 +914,8 @@ msgid ""
 "Service buildings like this also need to be connected to the tents with a "
 "trail, else your inhabitants feel unable to reach them."
 msgstr ""
+"Kirkon kaltaiset palvelurakennukset pitää yhdistää polulla telttoihin tai "
+"muuten asukkaasi kokevat mahdottomaksi päästä niihin."
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:222
@@ -885,6 +923,8 @@ msgid ""
 "\n"
 "Note that faith is treated like a physical resource!"
 msgstr ""
+"\n"
+"Huomioi, että uskoa on kohdeltava samoin kuin muitakin resursseja!"
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:224
@@ -892,6 +932,8 @@ msgid ""
 "This means that your inhabitants need a road connection to the producer "
 "(pavilion) to pick up faith there."
 msgstr ""
+"Tämän takia sinun on tarjottava kaikille asukkaille polkuyhteys "
+"uskontuottajan (kirkon) luokse."
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:226
