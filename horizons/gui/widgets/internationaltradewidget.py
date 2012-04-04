@@ -56,7 +56,7 @@ class InternationalTradeWidget(object):
 		@param instance: ship instance used for trading
 		"""
 		self.widget = load_uh_widget('buy_sell_goods.xml')
-		self.widget.position_technique = "right:top+157"
+		self.widget.position_technique = "right+13:top+157"
 		events = {}
 		for k, v in self.exchange_size_buttons.iteritems():
 			events[v] = Callback(self.set_exchange, k)
