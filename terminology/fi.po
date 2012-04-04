@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2012-03-31 21:42+0100\n"
-"PO-Revision-Date: 2012-04-04 15:31+0200\n"
+"PO-Revision-Date: 2012-04-04 16:23+0200\n"
 "Last-Translator: Aleksi <aleksi.kinnunen@ovi.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: fi\n"
@@ -104,25 +104,25 @@ msgid "tab"
 msgstr "välilehti"
 
 msgid "upgrade"
-msgstr ""
+msgstr "päivittää, päivitys"
 
 msgid "your inhabitants"
-msgstr ""
+msgstr "asukkaasi"
 
 msgid "close"
-msgstr ""
+msgstr "sulkea, lähellä"
 
 msgid "companies"
 msgstr "yritykset"
 
 msgid "island"
-msgstr ""
+msgstr "saari"
 
 msgid "time"
 msgstr "aika"
 
 msgid "unit"
-msgstr ""
+msgstr "alus, yksikkö"
 
 msgid "balance"
 msgstr "tasapaino"
@@ -134,25 +134,25 @@ msgid "menu"
 msgstr "valikko"
 
 msgid "slot"
-msgstr "paikka / tavararuutu"
+msgstr "paikka, tavararuutu"
 
 msgid "start"
 msgstr "aloita"
 
 msgid "stock"
-msgstr "tarjonta / valikoima / varasto"
+msgstr "tarjonta, valikoima, varasto"
 
 msgid "trail"
 msgstr "polku, jälki"
 
 msgid "Unknown Horizons"
-msgstr ""
+msgstr "Unknown Horizons, -issa, -in, -iin"
 
 msgid "wool"
-msgstr "villaa"
+msgstr "villa"
 
 msgid "boards"
-msgstr "lautoja"
+msgstr "laudat"
 
 msgid "collector"
 msgstr "kerääjä"
@@ -170,7 +170,7 @@ msgid "connect"
 msgstr "yhdistää"
 
 msgid "cost"
-msgstr "kustannus"
+msgstr "kustannus, maksaa, meno"
 
 msgid "house"
 msgstr "talo"
@@ -179,7 +179,7 @@ msgid "log"
 msgstr "tukki / lokikirja"
 
 msgid "road"
-msgstr ""
+msgstr "tie, polku"
 
 #
 msgid "save"
@@ -192,7 +192,7 @@ msgid "pasture"
 msgstr "laidun"
 
 msgid "reach"
-msgstr "saavuttaa / ylettää / olla kantamassa"
+msgstr "saavuttaa"
 
 msgid "tree"
 msgstr "puu"
@@ -201,7 +201,7 @@ msgid "your"
 msgstr "sinun, -si"
 
 msgid "your settlement"
-msgstr ""
+msgstr "siirtokuntasi"
 
 msgid "add"
 msgstr "lisää"
@@ -210,10 +210,10 @@ msgid "check"
 msgstr "tarkistaa"
 
 msgid "choose"
-msgstr "valitse"
+msgstr "valita"
 
 msgid "confectionery"
-msgstr ""
+msgstr "makeinen"
 
 msgid "fisher"
 msgstr "kalastaja"
@@ -225,16 +225,16 @@ msgid "happiness"
 msgstr "onnellisuus"
 
 msgid "in stock"
-msgstr ""
+msgstr "varastossa"
 
 msgid "money"
-msgstr ""
+msgstr "raha(a)"
 
 msgid "pavilion"
 msgstr "kirkko"
 
 msgid "running costs"
-msgstr "juoksevat kustannukset"
+msgstr "juoksevat kustannukset/menot"
 
 msgid "sugar"
 msgstr "sokeri"
@@ -249,17 +249,17 @@ msgid "tools"
 msgstr "työkaluja"
 
 msgid "button"
-msgstr ""
+msgstr "painike"
 
 #
 msgid "continue"
-msgstr "jatka"
+msgstr "jatka(a)"
 
 msgid "faith"
 msgstr "usko"
 
 msgid "help"
-msgstr "ohje / apua"
+msgstr "ohje, auttaa"
 
 msgid "left"
 msgstr "jäljellä"
@@ -268,11 +268,11 @@ msgid "level"
 msgstr "taso"
 
 msgid "mode"
-msgstr "moodi / tila"
+msgstr "tila"
 
 #
 msgid "move"
-msgstr "liikuta"
+msgstr "siirtää, liikuttaa"
 
 msgid "pioneers"
 msgstr ""
@@ -284,25 +284,25 @@ msgid "merchants"
 msgstr ""
 
 msgid "aristocrats"
-msgstr ""
+msgstr "aristokraatti"
 
 msgid "potato"
 msgstr "peruna"
 
 msgid "settler"
-msgstr "uudisasukas"
+msgstr "uudisasukas (siirtokunnan taso III ja uudisasukkaat yleisesti)"
 
 msgid "speed"
 msgstr ""
 
 msgid "stop"
-msgstr "pysäytä"
+msgstr "pysäyttää"
 
 msgid "storage tent"
 msgstr "varastoteltta"
 
 msgid "wait"
-msgstr ""
+msgstr "odottaa"
 
 msgid "access"
 msgstr ""
@@ -311,7 +311,7 @@ msgid "account"
 msgstr "budjetti, (käyttäjä)tili, pankkitili"
 
 msgid "amount"
-msgstr ""
+msgstr "määrä"
 
 msgid "build menu"
 msgstr "rakennusvalikko"
@@ -323,21 +323,21 @@ msgid "construction"
 msgstr "rakentaminen"
 
 msgid "decrease"
-msgstr "vähennä"
+msgstr "vähentää"
 
 #
 msgid "description"
 msgstr "kuvaus"
 
 msgid "fish"
-msgstr "kalaa"
+msgstr "kala"
 
 #
 msgid "increase"
-msgstr "kasvata"
+msgstr "kasvattaa"
 
 msgid "lamb"
-msgstr "karitsa"
+msgstr "karitsa, (lammas)"
 
 #
 msgid "leave"
@@ -345,13 +345,13 @@ msgstr "jättää, poistua"
 
 #
 msgid "liquor"
-msgstr "juoma"
+msgstr "viini, juoma"
 
 msgid "location"
-msgstr ""
+msgstr "sijainti"
 
 msgid "offer"
-msgstr ""
+msgstr "tarjota, tarjous"
 
 msgid "potatoes"
 msgstr ""
@@ -364,7 +364,7 @@ msgstr "saavutettu"
 
 #
 msgid "run"
-msgstr "suorita"
+msgstr "suorittaa"
 
 msgid "slider"
 msgstr "vieritin"
@@ -373,16 +373,16 @@ msgid "solution"
 msgstr "ratkaisu"
 
 msgid "space"
-msgstr ""
+msgstr "tila, välilyönti"
 
 msgid "target"
-msgstr ""
+msgstr "kohde"
 
 msgid "team"
-msgstr "joukkue / ryhmä"
+msgstr "joukkue, ryhmä"
 
 msgid "total"
-msgstr ""
+msgstr "yhteensä"
 
 msgid "unable"
 msgstr ""
@@ -391,7 +391,7 @@ msgid "active"
 msgstr "aktiivinen"
 
 msgid "afford"
-msgstr ""
+msgstr "antaa, suoda, tuottaa"
 
 msgid "animals"
 msgstr ""
@@ -407,7 +407,7 @@ msgid "consume"
 msgstr "kuluttaa, kulutus"
 
 msgid "enabled"
-msgstr ""
+msgstr "käytössä"
 
 msgid "entries"
 msgstr ""
@@ -446,7 +446,7 @@ msgid "lamb wool"
 msgstr "lampaan villa"
 
 msgid "overview tab"
-msgstr ""
+msgstr "yleiskatsaus, tiedot"
 
 msgid "minimap"
 msgstr "pikkukartta"
@@ -455,7 +455,7 @@ msgid "issues"
 msgstr ""
 
 msgid "plant"
-msgstr ""
+msgstr "kasvi"
 
 #
 msgid "play"
@@ -465,14 +465,14 @@ msgid "playing"
 msgstr ""
 
 msgid "price"
-msgstr ""
+msgstr "hinta"
 
 msgid "read"
-msgstr ""
+msgstr "lukea"
 
 #
 msgid "return"
-msgstr "palaa"
+msgstr "palata"
 
 msgid "sale"
 msgstr "myynti"
@@ -486,16 +486,16 @@ msgid "sound"
 msgstr "ääni"
 
 msgid "special"
-msgstr ""
+msgstr "erityinen, erityis-"
 
 msgid "store"
-msgstr ""
+msgstr "kauppa"
 
 msgid "tear"
-msgstr ""
+msgstr "tuhota, poistaa, repiä"
 
 msgid "from time to time"
-msgstr "ajasta aikaan"
+msgstr "säännöllisesti, loputtomiin"
 
 msgid "trading"
 msgstr "kaupustelemalla"
@@ -504,16 +504,16 @@ msgid "village"
 msgstr "kylä"
 
 msgid "visit"
-msgstr "vieraile"
+msgstr "vierailla"
 
 msgid "world"
-msgstr ""
+msgstr "maailma"
 
 msgid "yield"
 msgstr ""
 
 msgid "your ship"
-msgstr ""
+msgstr "aluksesi, laivasi"
 
 msgid "back"
 msgstr "takaisin"
@@ -523,16 +523,16 @@ msgid "build settlement"
 msgstr "rakentaa siirtokunta"
 
 msgid "load"
-msgstr ""
+msgstr "ladata, lastata, käynnistää"
 
 msgid "unload"
-msgstr ""
+msgstr "purkaa lasti"
 
 msgid "command"
-msgstr ""
+msgstr "komento"
 
 msgid "completed"
-msgstr ""
+msgstr "suoritettu"
 
 msgid "condition"
 msgstr "kunto"
@@ -541,21 +541,21 @@ msgid "contact"
 msgstr ""
 
 msgid "empty"
-msgstr ""
+msgstr "tyhjä"
 
 msgid "ensure"
-msgstr ""
+msgstr "varmistaa"
 
 #
 msgid "fulfill"
-msgstr "pane täytäntöön / toteuta"
+msgstr "panna täytäntöön, toteuttaa"
 
 #
 msgid "graphics"
-msgstr "ulkoasu"
+msgstr "näyttö, grafiikka"
 
 msgid "harvest"
-msgstr ""
+msgstr "sato"
 
 #
 msgid "hunts"
@@ -567,7 +567,7 @@ msgstr "usea"
 
 #
 msgid "potato field"
-msgstr "perunamaa"
+msgstr "perunapelto"
 
 #
 msgid "school"
@@ -578,7 +578,7 @@ msgstr "siemen"
 
 #
 msgid "service"
-msgstr "palvelu/palvelus"
+msgstr "palvelu/palvelus, palvella"
 
 #
 msgid "sheep"
@@ -588,12 +588,11 @@ msgid "signal fire"
 msgstr "merkkituli"
 
 msgid "statistics"
-msgstr ""
+msgstr "tilasto"
 
 # 75%
-#, fuzzy
 msgid "clay"
-msgstr "pelaa"
+msgstr "savi"
 
 msgid "iron"
 msgstr "rauta"
@@ -615,7 +614,7 @@ msgid "temporarily"
 msgstr "väliaikaisesti"
 
 msgid "values"
-msgstr ""
+msgstr "arvot"
 
 #~ msgid "branch office"
 #~ msgstr "sivutoimisto"

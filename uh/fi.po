@@ -7,8 +7,8 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2012-03-24 02:16+0100\n"
-"PO-Revision-Date: 2012-03-09 16:20+0200\n"
-"Last-Translator: Christopher Oelmueller <chris.oelmueller+uh@gmail.com>\n"
+"PO-Revision-Date: 2012-04-04 16:39+0200\n"
+"Last-Translator: Aleksi <aleksi.kinnunen@ovi.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: fi\n"
 "MIME-Version: 1.0\n"
@@ -26,9 +26,8 @@ msgstr "Pelaaja {player} loi uuden siirtokunnan."
 # 82%
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
-#, fuzzy
 msgid "A new ship has been created."
-msgstr "Uusi maailma luotu."
+msgstr "Uusi alus luotu."
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
@@ -113,7 +112,7 @@ msgstr "Polkuja voi myös vetää."
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
 msgid "You cannot tear the warehouse, your settlements needs it."
-msgstr ""
+msgstr "Sivutoimistoa ei voi poistaa, sillä siirtokuntasi tarvitsee sitä."
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
@@ -141,9 +140,8 @@ msgstr ""
 # 86%
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
-#, fuzzy
 msgid "Your game has been autosaved."
-msgstr "Pelillesi suoritettiin pikatallennus."
+msgstr "Pelisi tallennettiin automaattisesti"
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
@@ -153,9 +151,8 @@ msgstr "Pelillesi suoritettiin pikatallennus."
 # 86%
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
-#, fuzzy
 msgid "Your game has been saved."
-msgstr "Pelillesi suoritettiin pikatallennus."
+msgstr "Pelisi on tallennettu."
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
@@ -201,9 +198,8 @@ msgstr "tykkiä"
 # 83%
 #. This is a database entry: the name of a resource.
 #: database files sql
-#, fuzzy
 msgid "cattle"
-msgstr "Karja"
+msgstr "karjaa"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
@@ -223,9 +219,8 @@ msgstr "savea"
 # 83%
 #. This is a database entry: the name of a resource.
 #: database files sql
-#, fuzzy
 msgid "clay deposit"
-msgstr "Savimaa"
+msgstr ""
 
 #. This is a database entry: the name of a resource.
 #: database files sql
@@ -351,7 +346,7 @@ msgstr "raakarautaa"
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "iron ingots"
-msgstr "rautamöhkäleitä"
+msgstr "rautaharkkoja"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
@@ -391,7 +386,7 @@ msgstr "perunoita"
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "salt"
-msgstr "suola"
+msgstr "suolaa"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
@@ -438,7 +433,7 @@ msgstr "tupakanlehtiä"
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "tobacco plants"
-msgstr "tupakanlehtiä"
+msgstr "tupakkakasveja"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
@@ -509,7 +504,7 @@ msgstr ""
 
 #: editor/editor.py:33
 msgid "Specify the path to FIFE root directory."
-msgstr "Määrittele polku FIFE-moottorin juurihakemistoon."
+msgstr "Määrittele polku FIFE-pelimoottorin hakemistoon."
 
 #: horizons/command/game.py:36
 msgid "Invalid filename"
@@ -546,6 +541,7 @@ msgstr "Palauta oletusasetukset"
 #: horizons/engine/settingsdialog.py:56
 msgid "Restoring the default settings will delete all changes to the settings you made so far."
 msgstr ""
+"Oletusasetusten palauttaminen poistaa kaikki asetuksiin tekemäsi muutokset."
 
 #: horizons/engine/settingsdialog.py:57
 msgid "Do you want to continue?"
@@ -562,8 +558,8 @@ msgid ""
 "\n"
 "Use at own risk!"
 msgstr ""
-"SDL-renderöinti on tarkoitettu vain vararatkaisuksi ja sisältää vakavia "
-"graafisia virheitä. \n"
+"SDL-renderöinti on tarkoitettu vararatkaisuksi ja sisältää vakavia graafisia "
+"virheitä. \n"
 "\n"
 "Käyttö vain omalla vastuulla!"
 
@@ -686,7 +682,7 @@ msgstr "Korvataanko peli?"
 
 #: horizons/gui/gui.py:371
 msgid "Invalid filename given"
-msgstr ""
+msgstr "Virheellinen tiedostonimi annettu"
 
 #: horizons/gui/gui.py:379
 msgid "Please select a savegame or click on cancel."
@@ -1019,9 +1015,9 @@ msgstr "Veneenveistämön yleiskatsaus"
 # 78%
 #: horizons/gui/tabs/boatbuildertab.py:101
 #, python-format
-#, python-format, fuzzy
+#, python-format, 
 msgid "{ship} (place in queue: {place})"
-msgstr "(paikka jonossa: {place})"
+msgstr "{ship} (paikka jonossa: {place})"
 
 #: horizons/gui/tabs/boatbuildertab.py:165
 msgid "Resources still needed:"
@@ -1102,6 +1098,8 @@ msgstr ""
 #: horizons/gui/tabs/buyselltab.py:186
 msgid "Set to buy or sell by clicking on that label, then adjust the amount via the slider to the right."
 msgstr ""
+"Valitse oletko ostamassa vai myymässä resurssia ja sitten määrä "
+"liikuttamalla oikean reunan vieritintä."
 
 #: horizons/gui/tabs/buyselltab.py:363
 #, python-format
@@ -1149,9 +1147,8 @@ msgstr "Yleiskatsaus"
 
 # 94%
 #: horizons/gui/tabs/overviewtab.py:148 horizons/gui/tabs/overviewtab.py:575
-#, fuzzy
 msgid "Warehouse overview"
-msgstr "Kauppatorin yleiskatsaus"
+msgstr "Sivutoimiston yleiskatsaus"
 
 #: horizons/gui/tabs/overviewtab.py:182 horizons/gui/tabs/overviewtab.py:322
 msgid "Ship overview"
