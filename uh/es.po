@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2012-03-24 02:16+0100\n"
-"PO-Revision-Date: 2012-04-01 19:02+0200\n"
+"PO-Revision-Date: 2012-04-04 23:00+0200\n"
 "Last-Translator: Sergio <juarrox@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: es\n"
@@ -1955,15 +1955,17 @@ msgstr "Pausar producción"
 msgid "Start production"
 msgstr "Comenzar producción"
 
+# El botón es muy estrecho por lo que la traducción "Guardar como configuración predeterminada" sería demasiado larga.
 #. (text of widget: make_default_btn)
 #: horizons/i18n/guitranslations.py:568
 msgid "Save as default"
-msgstr "Guardar como predeterminada"
+msgstr "Guardar"
 
+# Ancho del botón demasiado estrecho, por lo que se deja esta traducción hasta que se solvente el problema.
 #. (text of widget: reset_default_btn)
 #: horizons/i18n/guitranslations.py:570
 msgid "Restore default"
-msgstr "Restaurar predeterminada"
+msgstr "Restaurar"
 
 # 94%
 #. (text of widget: headline) Please keep the translation similarly short and concise, else the tooltip is not well understood by players.
