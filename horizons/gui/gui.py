@@ -89,22 +89,23 @@ class Gui(SingleplayerMenu, MultiplayerMenu):
 	def show_main(self):
 		"""Shows the main menu """
 		self._switch_current_widget('mainmenu', center=True, show=True, event_map = {
-			'startSingle'    : self.show_single, # first is the icon in menu
-			'start'          : self.show_single, # second is the lable in menu
-			'startMulti'     : self.show_multi,
-			'start_multi'    : self.show_multi,
-			'settingsLink'   : self.show_settings,
-			'settings'       : self.show_settings,
-			'helpLink'       : self.on_help,
-			'help'           : self.on_help,
-			'closeButton'    : self.show_quit,
-			'quit'           : self.show_quit,
-			'dead_link'      : self.on_chime, # call for help; SoC information
-			'chimebell'      : self.on_chime,
-			'creditsLink'    : self.show_credits,
-			'credits'        : self.show_credits,
-			'loadgameButton' : horizons.main.load_game,
-			'loadgame'       : horizons.main.load_game
+			'startSingle'      : self.show_single, # first is the icon in menu
+			'start'            : self.show_single, # second is the lable in menu
+			'startMulti'       : self.show_multi,
+			'start_multi'      : self.show_multi,
+			'settingsLink'     : self.show_settings,
+			'settings'         : self.show_settings,
+			'helpLink'         : self.on_help,
+			'help'             : self.on_help,
+			'closeButton'      : self.show_quit,
+			'quit'             : self.show_quit,
+			'dead_link'        : self.on_chime, # call for help; SoC information
+			'chimebell'        : self.on_chime,
+			'creditsLink'      : self.show_credits,
+			'credits'          : self.show_credits,
+			'loadgameButton'   : horizons.main.load_game,
+			'loadgame'         : horizons.main.load_game,
+			'changeBackground' : self.get_random_background_by_button
 		})
 
 		self.on_escape = self.show_quit
@@ -687,10 +688,28 @@ class Gui(SingleplayerMenu, MultiplayerMenu):
 		else: # player cancelled deletion
 			return False
 
+	def get_random_background_by_button(self):
+		"""Randomly select a background image to use. This function is triggered by
+		change background button from main menu."""
+		#we need to redraw screen to apply changes.
+		self.hide()
+		self._background_image = self._get_random_background()
+		self.show_main()
+		
+
 	def _get_random_background(self):
 		"""Randomly select a background image to use through out the game menu."""
 		available_images = glob.glob('content/gui/images/background/mainmenu/bg_*.png')
-		return random.choice(available_images)
+		#get latest background
+		latest_background = horizons.main.fife.get_uh_setting("LatestBackground")
+		#if there is a latest background then remove it from available list
+		if latest_background is not None:
+			available_images.remove(latest_background)
+		background_choice = random.choice(available_images)
+		#save current background choice
+		horizons.main.fife.set_uh_setting("LatestBackground", background_choice)
+		horizons.main.fife.save_settings()
+		return background_choice
 
 def build_help_strings(widgets):
 	"""
