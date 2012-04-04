@@ -7,8 +7,8 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: translate-uh@lists.unknown-horizons.org\n"
 "POT-Creation-Date: 2012-03-21 04:04+0100\n"
-"PO-Revision-Date: 2012-04-02 18:17+0200\n"
-"Last-Translator: Sebastien (seblabel) <sebastiencharpentier@laposte.net>\n"
+"PO-Revision-Date: 2012-04-04 21:05+0200\n"
+"Last-Translator: Traveler <guillaume.pascal43@laposte.net>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: fr\n"
 "MIME-Version: 1.0\n"
@@ -1551,7 +1551,7 @@ msgid ""
 "balance (check in the warehouse tab 'Account') is required."
 msgstr ""
 "Vous avez aussi besoin de suffisamment d'argent pour maintenir l'économie, "
-"une balance positive est nécessaire (voir l'onglet 'Compte')."
+"une balance positive est nécessaire (voir l'onglet « Compte »)."
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:360
@@ -1577,7 +1577,7 @@ msgid ""
 msgstr ""
 "Vous avez terminé toutes les tâches qui vous ont été assigné. Le monde est "
 "maintenant à vos ordres, dans l'attente de vos aspirations et de vos "
-"courageuses explorations!"
+"courageuses explorations !"
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:366
@@ -1586,7 +1586,7 @@ msgid ""
 "out:"
 msgstr ""
 "Si vous avez des suggestions sur ce que nous pourrions ou devrions "
-"améliorer, ajoutez ou proposez les à:"
+"améliorer, ajoutez ou proposez les à :"
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:368
