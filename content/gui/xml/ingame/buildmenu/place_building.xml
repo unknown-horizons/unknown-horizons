@@ -14,11 +14,13 @@
 		<ImageButton name="rotate_left" position="32,60"
 			up_image="content/gui/icons/widgets/minimap/rotate_left.png"
 			down_image="content/gui/icons/widgets/minimap/rotate_left.png"
-			hover_image="content/gui/icons/widgets/minimap/rotate_left_h.png" />
+			hover_image="content/gui/icons/widgets/minimap/rotate_left_h.png"
+			is_focusable="0" />
 		<ImageButton name="rotate_right" position="215,60"
 			up_image="content/gui/icons/widgets/minimap/rotate_right.png"
 			down_image="content/gui/icons/widgets/minimap/rotate_right.png"
-			hover_image="content/gui/icons/widgets/minimap/rotate_right_h.png" />
+			hover_image="content/gui/icons/widgets/minimap/rotate_right_h.png"
+			is_focusable="0" />
 
 		<Label position="73,65" name="running_costs_label" text="Running costs:" />
 		<Label position="189,65" name="running_costs" text="" />
