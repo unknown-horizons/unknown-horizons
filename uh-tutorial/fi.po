@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: translate-uh@lists.unknown-horizons.org\n"
 "POT-Creation-Date: 2012-03-21 04:04+0100\n"
-"PO-Revision-Date: 2012-04-03 20:48+0200\n"
+"PO-Revision-Date: 2012-04-04 14:35+0200\n"
 "Last-Translator: Aleksi <aleksi.kinnunen@ovi.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: fi\n"
@@ -709,7 +709,7 @@ msgstr "Voit ehdottaa kauppoja sivutoimiston Kaupankäynti-välilehdeltä."
 #: po/tutorial.py:172
 msgid "At the 'sailors' increment, you are equipped with three trading slots."
 msgstr ""
-"Merenkävijät-tasolla sinulla on kolme kauppapaikkaa, eli voit asettaa "
+"Merimiehet-tasolla sinulla on kolme kauppapaikkaa, eli voit asettaa "
 "korkeintaan kolme tarjousta vapaakauppiaalle kerrallaan."
 
 #. This is the text body of a logbook page.
@@ -894,7 +894,7 @@ msgid ""
 "where they can pray."
 msgstr ""
 "Yhä on yksi vaatimus, jota ei olla vielä täytetty, voit tarkistaa sen "
-"halutessasi toripaikasta tai teltan välilehdestä - merenkävijäsi haluavat "
+"halutessasi toripaikasta tai teltan välilehdestä - merimiehesi haluavat "
 "yksinkertaisen rakennuksen, jossa voivat rukoilla."
 
 #. This is the text body of a logbook page.
@@ -990,8 +990,8 @@ msgid ""
 "If the sailors are happy enough, they want to advance to the next increment "
 "called Pioneers."
 msgstr ""
-"Jos merenkävijäsi ovat riittävän onnellisia, he haluavat kehittyä "
-"seuraavalle tasolle, kansoittajiksi."
+"Jos merimiehesi ovat riittävän onnellisia, he haluavat kehittyä seuraavalle "
+"tasolle, kansoittajiksi."
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:240
@@ -1051,7 +1051,7 @@ msgid ""
 "than sailors, too."
 msgstr ""
 "Päivitettyyn asumukseen mahtuu enemmän asukkaita ja lisäksi kansoittajat "
-"maksavat myös enemmän veroja kuin merenkävijät."
+"maksavat myös enemmän veroja kuin merimiehet."
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:252
@@ -1061,8 +1061,8 @@ msgid ""
 "extra money to make them happy as well."
 msgstr ""
 "Kuten olet jo saattanut huomata, huonona puolena kansoittajat vaativat myös "
-"tavaroita, joita merenkävijät eivät tarvinneet - sinun pitää siis käyttää "
-"nämä ylimääräiset tuotot myös heidän onnellisena pitämiseen."
+"tavaroita, joita merimiehet eivät tarvinneet - sinun pitää siis käyttää nämä "
+"ylimääräiset tuotot myös heidän onnellisena pitämiseen."
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:254
@@ -1072,14 +1072,14 @@ msgid ""
 msgstr ""
 "\n"
 "TEHTÄVÄ: Aseta veroprosentti matalaksi (vasempaan päähän) ja odota "
-"merenkävijöiden päivittymistä."
+"merimiesten päivittymistä."
 
 #. This message is displayed in the widget on the left screen part. Please keep it short enough to fit there!
 #: po/tutorial.py:256
 msgid ""
 "Set the tax level to Low (left end) and wait for your sailors to upgrade."
 msgstr ""
-"Laske verotasosi alas (palkin vasempaan päähän) ja odota merenkävijöidesi "
+"Laske verotasosi alas (palkin vasempaan päähän) ja odota merimiestesi "
 "päivittyvän seuraavalle tasolle."
 
 #. This is a logbook page heading. Space is VERY short, please only translate to strings that fit (roughly 30 characters max).
@@ -1305,7 +1305,7 @@ msgstr "RAKENNA VARASTO"
 #. This is the text body of a logbook page.
 #: po/tutorial.py:312
 msgid "Did you watch your lumberjack recently?"
-msgstr "Olet vilkaissut puunhakkaajaasi lähiaikoina?"
+msgstr "Milloin olet viimeksi vilkaissut puunhakkaajaasi?"
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:314
@@ -1425,6 +1425,8 @@ msgid ""
 "Now the wool production is set up, you still need a weaver to produce cloth "
 "out of this wool."
 msgstr ""
+"Nyt kun villan tuotanto on käynnissä, tarvitset vielä kutomon tuottamaan "
+"villasta vaatteita."
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:340
@@ -1432,11 +1434,13 @@ msgid ""
 "There are two spots where you can build it - either close to the farm or "
 "close to a Storage Tent (or the warehouse)."
 msgstr ""
+"Kutomo voidaan rakentaa kolmeen paikkaan - joko maatilan, varaston tai "
+"sivutoimiston lähelle."
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:342
 msgid "In both cases you should ensure the connection to a trail as well."
-msgstr ""
+msgstr "Kaikissa tapauksissa sinun pitää luonnollisesti varmistaa polkuyhteys."
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:344
@@ -1444,6 +1448,9 @@ msgid ""
 "You can place the weaver close to the farm and tear down any trail to the "
 "farm to see that it will still fetch the wool and produce."
 msgstr ""
+"Voit testimielessä sijoittaa kutomon maatilan lähettyville ja tuhota kaikki "
+"maatilalle johtavat polut. Näin voit havaita, että kutomo saa silti "
+"noudettua villaa ja tuotettua vaatteita."
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:346
@@ -1451,6 +1458,8 @@ msgid ""
 "\n"
 "TASK: Build a weaver positioned so it can get wool."
 msgstr ""
+"\n"
+"TEHTÄVÄ: Rakenna kutomo paikkaan, josta se saa villaa."
 
 #. This message is displayed in the widget on the left screen part. Please keep it short enough to fit there!
 #: po/tutorial.py:348
@@ -1477,6 +1486,8 @@ msgid ""
 "Try to house a total of 50 or more inhabitants in your city by providing more "
 "residential buildings."
 msgstr ""
+"Yritä saada siirtokuntaasi vähintään 50 asukasta rakentamalla lisää "
+"asuinrakennuksia."
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:356
@@ -1484,6 +1495,8 @@ msgid ""
 "Once you are able to keep an economy running which can satisfy this amount of "
 "consumers, you are ready to discover new Unknown Horizons!"
 msgstr ""
+"Jos pystyt luomaan tällaisen talouden, joka kestää tällaista asukasmäärää, "
+"olet valmis lähtemään kohti Tuntematonta Horisonttia!"
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:358
@@ -1491,6 +1504,8 @@ msgid ""
 "You also need enough money to keep this economy running, so a positive "
 "balance (check in the warehouse tab 'Account') is required."
 msgstr ""
+"Tehtävän suorittamiseksi myös talouden tulee olla tasapainossa (tarkista "
+"asia Budjetti-välilehdeltä keskustorilta tai sivustoimistosta)."
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:360
@@ -1499,6 +1514,9 @@ msgid ""
 "TASK: Reach a total number of 50 inhabitants and a positive balance to "
 "complete this tutorial."
 msgstr ""
+"\n"
+"TEHTÄVÄ: Hanki vähintään 50 asukasta, varmista että taloutesi on "
+"tasapainossa ja läpäise tämä harjoituspeli."
 
 #. This is a logbook page heading. Space is VERY short, please only translate to strings that fit (roughly 30 characters max).
 #: po/tutorial.py:362
@@ -1512,6 +1530,9 @@ msgid ""
 "is now at your command, waiting for your free aspirations and brave "
 "explorations!"
 msgstr ""
+"Kaikki tämän harjoituspelin tehtävät on nyt suoritettu. Nyt siirtokunta "
+"jatkaa taivaltaan sinun tahtosi mukaan odottaen suuria tekoja ja mahtavia "
+"tutkimusmatkoja!"
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:366
@@ -1519,26 +1540,28 @@ msgid ""
 "If you have any suggestions on what we could or should improve, add or leave "
 "out:"
 msgstr ""
+"Jos sinulle jäi tästä harjoituspelistä jotain sanottavaa, kuten "
+"parannettavaa, moitittavaa tai kehuttavaa, kerro se meille:"
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:368
 msgid "www.unknown-horizons.org"
-msgstr ""
+msgstr "www.unknown-horizons.org"
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:370
 msgid "#unknown-horizons @ irc.freenode.net"
-msgstr ""
+msgstr "#unknown-horizons @ irc.freenode.net"
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:372
 msgid "team@unknown-horizons.org"
-msgstr ""
+msgstr "team@unknown-horizons.org"
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:374
 msgid "Our forums are open to you as well!"
-msgstr ""
+msgstr "Tervetuloa tutustumaan myös keskustelupalstoillemme!"
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:376
@@ -1546,6 +1569,8 @@ msgid ""
 "The best results until now were achieved by joining our IRC channel, so you "
 "could try that out first (-;"
 msgstr ""
+"Parhaat tulokset ovat tulleet IRC-kanaviltamme, joten kokeile niitä "
+"ensimmäisenä ;-)"
 
 #. This is a logbook page heading. Space is VERY short, please only translate to strings that fit (roughly 30 characters max).
 #: po/tutorial.py:378

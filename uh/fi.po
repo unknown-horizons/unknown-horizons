@@ -72,7 +72,7 @@ msgstr "Kansoittajat"
 #. This is a database entry: the name of an inhabitant increment (tier / level).
 #: database files horizons/i18n/guitranslations.py:307 sql
 msgid "Sailors"
-msgstr "Merenkävijät"
+msgstr "Merimiehet"
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
