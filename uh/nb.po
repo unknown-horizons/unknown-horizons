@@ -3199,10 +3199,12 @@ msgstr ""
 msgid "Storage Tent"
 msgstr "Lagertelt"
 
+# 75%
 #. name_1 of buildings:storagetent
 #: horizons/i18n/objecttranslations.py:334
+#, fuzzy
 msgid "Storage Hut"
-msgstr ""
+msgstr "Lagertelt"
 
 #. tooltip_text of buildings:storagetent
 #: horizons/i18n/objecttranslations.py:336
@@ -3354,10 +3356,12 @@ msgstr ""
 msgid "Warehouse"
 msgstr ""
 
+# 76%
 #. name of buildings:weaverstent
 #: horizons/i18n/objecttranslations.py:433
+#, fuzzy
 msgid "Weaver's Hut"
-msgstr ""
+msgstr "Vevertelt"
 
 #. tooltip_text of buildings:weaverstent
 #: horizons/i18n/objecttranslations.py:435
