@@ -35,29 +35,34 @@ possible and instead import the proper classes of this file.
 
 ##Versioning
 class VERSION:
-	def _set_version():
+	def _get_git_version():
 		"""Function gets latest revision of the working copy.
 		It only works in git repositories, and is actually a hack.
 		"""
 		try:
 			from run_uh import find_uh_position
-		except ImportError:
-			return u"<unknown>"
 
-		uh_path = find_uh_position()
-		git_head_path = os.path.join(uh_path, '.git', 'HEAD')
-		if os.path.exists(git_head_path):
-			head = open(git_head_path).readline().strip().partition(' ')
-			if head[2]:
-				head_file = os.path.join(uh_path, '.git', head[2])
-			else:
-				head_file = git_head_path
-			if os.path.exists(head_file):
-				return unicode(open(head_file).readline().strip()[0:7])
+			uh_path = find_uh_position()
+			git_head_path = os.path.join(uh_path, '.git', 'HEAD')
+			if os.path.exists(git_head_path):
+				head = open(git_head_path).readline().strip().partition(' ')
+				if head[2]:
+					head_file = os.path.join(uh_path, '.git', head[2])
+				else:
+					head_file = git_head_path
+				if os.path.exists(head_file):
+					return unicode(open(head_file).readline().strip()[0:7])
+		#if there is no .git directory then check for gitversion.txt
+		except ImportError:
+			try:
+				return unicode(open(os.path.join("content", "gitversion.txt")).read())
+			except IOError:
+				return u"<unknown>"
+
 		return u"<unknown>"
 
 	RELEASE_NAME    = "Unknown Horizons %s"
-	RELEASE_VERSION = _set_version()
+	RELEASE_VERSION = _get_git_version()
 	# change for release:
 	IS_DEV_VERSION = True
 	#RELEASE_VERSION = u'2011.3'
