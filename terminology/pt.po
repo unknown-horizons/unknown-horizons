@@ -11,7 +11,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Translate Toolkit 1.9.0\n"
+"X-Generator: Pootle 2.1.5\n"
 
 # (poterminology) uh-tutorial/tutorial.pot (43)
 # (poterminology) uh/unknownhorizons.pot (10)
@@ -118,8 +118,12 @@ msgstr "clique"
 msgid "lumberjack"
 msgstr "lenhador"
 
+# (poterminology) uh-tutorial/tutorial.pot (4)
+# (poterminology) uh/unknownhorizons.pot (2)
+# 88%
+#, fuzzy
 msgid "resident"
-msgstr ""
+msgstr "residentes"
 
 # (poterminology) uh-tutorial/tutorial.pot (10)
 #
@@ -128,8 +132,12 @@ msgstr ""
 msgid "main square"
 msgstr "praça principal"
 
+# (poterminology) uh-tutorial/tutorial.pot (12)
+# (poterminology) uh/unknownhorizons.pot (3)
+# 85%
+#, fuzzy
 msgid "sailors"
-msgstr ""
+msgstr "marinheiro"
 
 # (poterminology) uh-tutorial/tutorial.pot (5)
 # (poterminology) uh/unknownhorizons.pot (6)
@@ -477,17 +485,27 @@ msgstr "modo"
 msgid "move"
 msgstr "mover"
 
+# (poterminology) uh-tutorial/tutorial.pot (4)
+# (poterminology) uh/unknownhorizons.pot (2)
+# 87%
+#, fuzzy
 msgid "pioneers"
-msgstr ""
+msgstr "pioneiro"
 
+# 87%
+#, fuzzy
 msgid "citizens"
-msgstr ""
+msgstr "cidadão"
 
+# 88%
+#, fuzzy
 msgid "merchants"
-msgstr ""
+msgstr "mercador, comerciante"
 
+# 90%
+#, fuzzy
 msgid "aristocrats"
-msgstr ""
+msgstr "aristrocrata"
 
 # (poterminology) uh-tutorial/tutorial.pot (4)
 #
@@ -501,8 +519,10 @@ msgstr "batata"
 msgid "settler"
 msgstr "povoador"
 
+# 80%
+#, fuzzy
 msgid "speed"
-msgstr ""
+msgstr "semente"
 
 # (poterminology) uh-tutorial/tutorial.pot (3)
 #
@@ -655,8 +675,12 @@ msgstr "activo"
 msgid "afford"
 msgstr ""
 
+# (poterminology) uh-tutorial/tutorial.pot (2)
+# (poterminology) uh/unknownhorizons.pot (3)
+# 85%
+#, fuzzy
 msgid "animals"
-msgstr ""
+msgstr "animal"
 
 #
 #
@@ -667,8 +691,12 @@ msgstr ""
 msgid "Captain's log"
 msgstr "diário de bordo"
 
+# (poterminology) uh-tutorial/tutorial.pot (3)
+# (poterminology) uh/unknownhorizons.pot (1)
+# 75%
+#, fuzzy
 msgid "construct"
-msgstr ""
+msgstr "construção"
 
 msgid "consume"
 msgstr "consumir"
@@ -691,8 +719,12 @@ msgstr "característica, funcionalidade"
 msgid "forest"
 msgstr "floresta"
 
+# (poterminology) uh-tutorial/tutorial.pot (2)
+# (poterminology) uh/unknownhorizons.pot (1)
+# 80%
+#, fuzzy
 msgid "grows"
-msgstr ""
+msgstr "crescer"
 
 # (poterminology) uh-tutorial/tutorial.pot (2)
 # (poterminology) uh/unknownhorizons.pot (1)
@@ -749,8 +781,12 @@ msgstr "a jogar"
 msgid "price"
 msgstr ""
 
+# (poterminology) uh-tutorial/tutorial.pot (1)
+# (poterminology) uh/unknownhorizons.pot (1)
+# 75%
+#, fuzzy
 msgid "read"
-msgstr ""
+msgstr "vermelho"
 
 #
 #
@@ -788,8 +824,12 @@ msgstr ""
 msgid "store"
 msgstr ""
 
+# (poterminology) uh-tutorial/tutorial.pot (2)
+# (poterminology) uh/unknownhorizons.pot (1)
+# 75%
+#, fuzzy
 msgid "tear"
-msgstr ""
+msgstr "equipa"
 
 # (poterminology) uh-tutorial/tutorial.pot (2)
 #
@@ -820,8 +860,12 @@ msgstr "visita"
 msgid "world"
 msgstr ""
 
+# (poterminology) uh-tutorial/tutorial.pot (1)
+# (poterminology) uh/unknownhorizons.pot (1)
+# 83%
+#, fuzzy
 msgid "yield"
-msgstr ""
+msgstr "render, entregar, fornecer"
 
 msgid "your ship"
 msgstr ""
