@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2012-03-24 02:16+0100\n"
-"PO-Revision-Date: 2012-04-04 16:39+0200\n"
+"PO-Revision-Date: 2012-04-05 22:33+0200\n"
 "Last-Translator: Aleksi <aleksi.kinnunen@ovi.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: fi\n"
@@ -1201,7 +1201,7 @@ msgstr ""
 
 #: horizons/gui/tabs/overviewtab.py:313
 msgid "Tower overview"
-msgstr ""
+msgstr "Tornin yleiskatsaus"
 
 # 76%
 #: horizons/gui/tabs/overviewtab.py:330
@@ -1261,16 +1261,15 @@ msgid "Sound"
 msgstr "Äänet"
 
 #: horizons/gui/widgets/pickbeltwidget.py:93
-#, fuzzy
 msgid "Game"
-msgstr "Poistu pelistä"
+msgstr "Peli"
 
 # 95%
 #: horizons/gui/widgets/playerssettlements.py:44
 #, python-format
-#, python-format, fuzzy
+#, python-format, 
 msgid "Settlements of {player}"
-msgstr "pelaajan {player} siirtokunnat"
+msgstr "Pelaajan {player} siirtokunnat"
 
 #. (text of widget: total_score)
 #: horizons/gui/widgets/playerssettlements.py:122
@@ -1281,17 +1280,16 @@ msgstr "Yhteensä"
 # 94%
 #: horizons/gui/widgets/playersships.py:49
 #, python-format
-#, python-format, fuzzy
+#, python-format, 
 msgid "Ships of {player}"
-msgstr "pelaajan {player} alukset"
+msgstr "Pelaajan {player} alukset"
 
 # 97%
 #. (helptext of widget: name)
 #: horizons/gui/widgets/playersships.py:83
 #: horizons/i18n/guitranslations.py:499 horizons/i18n/guitranslations.py:510
-#, fuzzy
 msgid "Click to change the name of this ship"
-msgstr "Vaihda aluksen nimi napsauttamalla tätä."
+msgstr "Vaihda aluksen nimi napsauttamalla tästä."
 
 # 75%
 #. i18n There are no weapons equipped at the moment.
@@ -1524,7 +1522,7 @@ msgstr "(menetät kaikki resurssisi)"
 #. (text of widget: BB_current_order) Information about the ship currently under construction at the boat builder
 #: horizons/i18n/guitranslations.py:137
 msgid "Currently building:"
-msgstr "Parhaillaan rakennuksessa:"
+msgstr "Rakennetaan:"
 
 #. (text of widget: BB_howto_build_lbl)
 #: horizons/i18n/guitranslations.py:139
@@ -1536,13 +1534,13 @@ msgstr ""
 #. (text of widget: BB_progress_label) Refers to the resources still missing to complete the current boat builder task
 #: horizons/i18n/guitranslations.py:141
 msgid "Construction progress:"
-msgstr "Rakentamisen eteneminen:"
+msgstr "Rakennettu:"
 
 #. (text of widget: headline)
 #: horizons/i18n/guitranslations.py:143 horizons/i18n/guitranslations.py:206
 #: horizons/i18n/guitranslations.py:383
 msgid "Building overview"
-msgstr "Rakennuksen yleiskatsaus"
+msgstr "Rakennuksen tiedot"
 
 #. (helptext of widget: BB_cancel_button) abort construction of a ship, lose invested resources
 #: horizons/i18n/guitranslations.py:145
