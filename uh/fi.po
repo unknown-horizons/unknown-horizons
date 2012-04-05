@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2012-03-24 02:16+0100\n"
-"PO-Revision-Date: 2012-04-05 22:33+0200\n"
+"PO-Revision-Date: 2012-04-05 22:53+0200\n"
 "Last-Translator: Aleksi <aleksi.kinnunen@ovi.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: fi\n"
@@ -1648,7 +1648,7 @@ msgstr "Pystytä tuotantoa"
 #: horizons/i18n/guitranslations.py:208 horizons/i18n/guitranslations.py:212
 #: horizons/i18n/guitranslations.py:385 horizons/i18n/guitranslations.py:389
 msgid "Capacity utilization"
-msgstr "käyttöosuus"
+msgstr "Käyttöosuus"
 
 #. (text of widget: headline_residents_per_house)
 #: horizons/i18n/guitranslations.py:226 horizons/i18n/guitranslations.py:278
@@ -1711,34 +1711,31 @@ msgstr "5 asukasta"
 # 90%
 #. (text of widget: resident_6)
 #: horizons/i18n/guitranslations.py:242
-#, fuzzy
 msgid "6 residents"
-msgstr "2 asukasta"
+msgstr "6 asukasta"
 
 # 88%
 # 81%
 # 90%
 #. (text of widget: resident_7)
 #: horizons/i18n/guitranslations.py:244
-#, fuzzy
 msgid "7 residents"
-msgstr "2 asukasta"
+msgstr "7 asukasta"
 
 # 88%
 # 81%
 # 90%
 #. (text of widget: resident_8)
 #: horizons/i18n/guitranslations.py:246
-#, fuzzy
 msgid "8 residents"
-msgstr "2 asukasta"
+msgstr "8 asukasta"
 
 # 88%
 #. (text of widget: residents)
 #: horizons/i18n/guitranslations.py:248 horizons/i18n/guitranslations.py:290
 #: horizons/i18n/guitranslations.py:319 horizons/i18n/guitranslations.py:354
 msgid "residents"
-msgstr "asukasta"
+msgstr "asukkaita"
 
 #. (text of widget: tax_label)
 #: horizons/i18n/guitranslations.py:250 horizons/i18n/guitranslations.py:292
@@ -1921,7 +1918,7 @@ msgstr "Kauppahistoria"
 #. (text of widget: headline)
 #: horizons/i18n/guitranslations.py:528
 msgid "Select resources:"
-msgstr "Valitse raaka-aineet:"
+msgstr "Valitse resurssi:"
 
 #. (text of widget: headline_balance_label)
 #: horizons/i18n/guitranslations.py:537
@@ -1977,9 +1974,8 @@ msgstr ""
 # 94%
 #. (text of widget: headline) Please keep the translation similarly short and concise, else the tooltip is not well understood by players.
 #: horizons/i18n/guitranslations.py:572
-#, fuzzy
 msgid "Select resource:"
-msgstr "Valitse raaka-aineet:"
+msgstr "Valitse resurssi:"
 
 #. (helptext of widget: make_default_btn)
 #: horizons/i18n/guitranslations.py:574
@@ -1995,6 +1991,7 @@ msgstr ""
 #: horizons/i18n/guitranslations.py:578
 msgid "The resource you select is displayed instead of the current one. Empty by clicking on X."
 msgstr ""
+"Valitsemasi resurssi näytetään nykyisen paikalla. Tyhjennä napsauttamalla X."
 
 #. (helptext of widget: delete_warehouse) Trade route entry
 #: horizons/i18n/guitranslations.py:583
@@ -2173,7 +2170,7 @@ msgstr ""
 #. (text of widget: weapons)
 #: horizons/i18n/guitranslations.py:694
 msgid "Weapons"
-msgstr "Aseet"
+msgstr "Aseistus"
 
 #. (helptext of widget: aggressive_stance) Description of combat stance (how units behave when fighting)
 #: horizons/i18n/guitranslations.py:699
