@@ -24,6 +24,13 @@ if platform.dist()[0].lower() in ('debian', 'ubuntu'):
 else:
 	executable_path = 'bin'
 
+
+#this trick is for setting RELEASE_VERSION if the code is cloned from git repository
+if os.path.exists('.git'):
+	f = open('content/gitversion.txt', 'w')
+	f.write(VERSION.RELEASE_VERSION)
+	f.close()
+
 data = [
   (executable_path, ('unknown-horizons', )),
   ('share/pixmaps', ('content/unknown-horizons.xpm', )),
@@ -197,3 +204,7 @@ setup(
   package_data=package_data,
   data_files=data,
   cmdclass=cmdclass)
+
+#after installation remove gitversion.txt
+if os.path.exists('.git'):
+	os.unlink('content/gitversion.txt')
