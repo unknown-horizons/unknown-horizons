@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2012-03-24 02:16+0100\n"
-"PO-Revision-Date: 2012-04-06 13:31+0200\n"
+"PO-Revision-Date: 2012-04-06 14:00+0200\n"
 "Last-Translator: Aleksi <aleksi.kinnunen@ovi.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: fi\n"
@@ -2823,6 +2823,8 @@ msgstr "Mehiläispesä"
 #: horizons/i18n/objecttranslations.py:55
 msgid "Keeps bees. Produces honeycombs used for confectionery. Needs a farm."
 msgstr ""
+"Kasvattaa mehiläisiä. Tuottaa makeisten valmistukseen käytettäviä "
+"hunajakennoja. Tarvitsee maatilan."
 
 #. name of buildings:bakery
 #: horizons/i18n/objecttranslations.py:60
@@ -2837,12 +2839,12 @@ msgstr ""
 #. name of buildings:barracks
 #: horizons/i18n/objecttranslations.py:67
 msgid "Barracks"
-msgstr ""
+msgstr "Kasarmi"
 
 #. tooltip_text of buildings:barracks
 #: horizons/i18n/objecttranslations.py:69
 msgid "Recruits units suitable for ground combat."
-msgstr ""
+msgstr "Kouluttaa yksiköitä maataisteluihin."
 
 #. name of buildings:blender
 #: horizons/i18n/objecttranslations.py:74
@@ -2928,6 +2930,7 @@ msgstr ""
 #: horizons/i18n/objecttranslations.py:130
 msgid "Produces cocoa beans used for confectionery. Needs a farm."
 msgstr ""
+"Tuottaa makeistenvalmistukseen tarvittavia kaakaopapuja. Tarvitsee maatilan."
 
 #. name of buildings:cornfield
 #: horizons/i18n/objecttranslations.py:135
@@ -2937,9 +2940,8 @@ msgstr ""
 # 88%
 #. tooltip_text of buildings:cornfield
 #: horizons/i18n/objecttranslations.py:137
-#, fuzzy
 msgid "Yields corn. Needs a farm."
-msgstr "Tuottaa ruokaa. Tarvitsee maatilan."
+msgstr "Tuottaa maisseista ruokaa. Tarvitsee maatilan."
 
 # Simatehdas
 #. name of buildings:distillery
@@ -2960,7 +2962,7 @@ msgstr "Lääkäri"
 #. tooltip_text of buildings:doctor
 #: horizons/i18n/objecttranslations.py:151
 msgid "Treats diseases. Consumes herbs."
-msgstr ""
+msgstr "Parantaa sairaita. Käyttää yrttejä."
 
 #. name of buildings:farm
 #: horizons/i18n/objecttranslations.py:156
@@ -3010,7 +3012,7 @@ msgstr "Yrttitarha"
 #. tooltip_text of buildings:herbary
 #: horizons/i18n/objecttranslations.py:189
 msgid "Produces herbs. Needs a farm."
-msgstr "Tuottaa tupakkaa. Tarvitsee maatilan."
+msgstr "Tuottaa yrttejä. Tarvitsee maatilan."
 
 #. name of buildings:hunterstent
 #: horizons/i18n/objecttranslations.py:194
@@ -3040,7 +3042,7 @@ msgstr "Tukki"
 #. tooltip_text of buildings:log
 #: horizons/i18n/objecttranslations.py:210
 msgid "Road across a river."
-msgstr ""
+msgstr "Tie joen yli."
 
 #. name of buildings:lookout
 #: horizons/i18n/objecttranslations.py:215
@@ -3085,7 +3087,7 @@ msgstr "Vuori"
 #. name of buildings:pastryshop
 #: horizons/i18n/objecttranslations.py:243
 msgid "Pastry Shop"
-msgstr ""
+msgstr "Leipäkauppa"
 
 #. tooltip_text of buildings:pastryshop
 #: horizons/i18n/objecttranslations.py:245
