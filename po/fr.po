@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2012-03-24 02:16+0100\n"
-"PO-Revision-Date: 2012-03-31 10:26+0200\n"
+"PO-Revision-Date: 2012-03-31 10:28+0200\n"
 "Last-Translator: Sebastien (seblabel) <sebastiencharpentier@laposte.net>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: fr\n"
@@ -185,7 +185,6 @@ msgstr "glands"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
-#, fuzzy
 msgid "alvearies"
 msgstr "ruches"
 
@@ -3269,10 +3268,11 @@ msgstr "Récupère de la pierre d'une montagne."
 msgid "Storage Tent"
 msgstr "Tente de dépôt"
 
+# 75%
 #. name_1 of buildings:storagetent
 #: horizons/i18n/objecttranslations.py:334
 msgid "Storage Hut"
-msgstr ""
+msgstr "Tente de dépôt"
 
 #. tooltip_text of buildings:storagetent
 #: horizons/i18n/objecttranslations.py:336
@@ -3403,7 +3403,6 @@ msgstr "Vigne"
 
 #. tooltip_text of buildings:vineyard
 #: horizons/i18n/objecttranslations.py:416
-#, fuzzy
 msgid "Produces grapes for use in wine and confectionery. Needs a farm."
 msgstr ""
 "Produit des raisins pour le vin et les confiseries. Nécessite une ferme."
