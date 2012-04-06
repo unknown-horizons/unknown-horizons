@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2012-03-24 02:16+0100\n"
-"PO-Revision-Date: 2012-04-06 14:46+0200\n"
+"PO-Revision-Date: 2012-04-06 15:57+0200\n"
 "Last-Translator: Aleksi <aleksi.kinnunen@ovi.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: fi\n"
@@ -3620,15 +3620,13 @@ msgstr "Sinulla ei ole varaa ostaa tätä."
 
 # 82%
 #: horizons/world/component/tradepostcomponent.py:196
-#, fuzzy
 msgid "The trade partner does not sell more of this."
-msgstr "Kauppakumppanisi ei myy tätä."
+msgstr "Kauppakumppanisi ei myy lisää tätä."
 
 # 89%
 #: horizons/world/component/tradepostcomponent.py:220
-#, fuzzy
 msgid "The trade partner does not buy this."
-msgstr "Kauppakumppanisi ei myy tätä."
+msgstr "Kauppakumppanisi ei osta tätä."
 
 #: horizons/world/component/tradepostcomponent.py:228
 msgid "You do not possess this."
@@ -3714,10 +3712,12 @@ msgstr "Tarvitsemme kuitenkin tietoja lokitiedostosta:"
 #: run_uh.py:211
 msgid "Please give it to us via IRC or our forum, for both see http://unknown-horizons.org ."
 msgstr ""
+"Anna tiedot meille IRC-kanavallamme tai keskustelupalstallamme, lisätietoja "
+"osoitteesta http://www.unknown-horizons.org."
 
 #: run_uh.py:251
 msgid "Error: Unable to find required libraries"
-msgstr "Vaadittuja kirjastoja ei löydy"
+msgstr "Virhe: Vaadittuja kirjastoja ei löydy"
 
 #: run_uh.py:252
 msgid "We are sorry to inform you that a library that is required by Unknown Horizons, is missing and needs to be installed."
