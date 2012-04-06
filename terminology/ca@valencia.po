@@ -11,7 +11,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Translate Toolkit 1.9.0\n"
+"X-Generator: Pootle 2.1.5\n"
 
 msgid "build"
 msgstr "construir"
@@ -68,14 +68,18 @@ msgstr ""
 msgid "lumberjack"
 msgstr "llenyataire"
 
+# 88%
+#, fuzzy
 msgid "resident"
-msgstr ""
+msgstr "residents"
 
 msgid "main square"
 msgstr "plaça principal"
 
+# 85%
+#, fuzzy
 msgid "sailors"
-msgstr ""
+msgstr "mariner"
 
 msgid "food"
 msgstr "aliments"
@@ -271,17 +275,25 @@ msgstr ""
 msgid "move"
 msgstr ""
 
+# 87%
+#, fuzzy
 msgid "pioneers"
-msgstr ""
+msgstr "pioner"
 
+# 87%
+#, fuzzy
 msgid "citizens"
-msgstr ""
+msgstr "ciutadà"
 
+# 88%
+#, fuzzy
 msgid "merchants"
-msgstr ""
+msgstr "comerciant"
 
+# 90%
+#, fuzzy
 msgid "aristocrats"
-msgstr ""
+msgstr "aristòcrata"
 
 msgid "potato"
 msgstr ""
@@ -490,8 +502,10 @@ msgstr ""
 msgid "world"
 msgstr ""
 
+# 80%
+#, fuzzy
 msgid "yield"
-msgstr ""
+msgstr "camp"
 
 msgid "your ship"
 msgstr ""
