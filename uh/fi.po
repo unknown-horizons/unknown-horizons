@@ -587,9 +587,8 @@ msgstr "Virhe yritettäessä ottaa käyttöön verkkotietoja."
 # 78%
 #: horizons/engine/settingshandler.py:239
 #: horizons/gui/modules/multiplayermenu.py:56
-#, fuzzy
 msgid "Network features could not be initialized with the current configuration."
-msgstr "Verkkoa ei saatu otettua käyttöön näillä asetuksilla."
+msgstr "Verkkoa ei voitu ottaa käyttöön näillä asetuksilla."
 
 # 75%
 #: horizons/engine/settingshandler.py:240
