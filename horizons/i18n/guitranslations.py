@@ -666,6 +666,22 @@ def set_translations():
 		("total_score"                 , "text"    ): _("Total"),
 		# (text of widget: unit_score)
 		("unit_score"                  , "text"    ): _("Units"),
+		# (helptext of widget: building_score)
+		("building_score"              , "helptext"): _("Value of all the buildings in the player's settlement(s)"),
+		# (helptext of widget: land_score)
+		("land_score"                  , "helptext"): _("Value of usable land i.e Amount of Land that can be used to create buildings "),
+		# (helptext of widget: money_score)
+		("money_score"                 , "helptext"): _("Player's current treasury + income expected in near future"),
+		# (helptext of widget: player_name)
+		("player_name"                 , "helptext"): _("Player Name"),
+		# (helptext of widget: resource_score)
+		("resource_score"              , "helptext"): _("Value of resources generated from all the possible sources in the player's settlement(s)"),
+		# (helptext of widget: settler_score)
+		("settler_score"               , "helptext"): _("Value denoting the progress of the settlement(s) in terms of inhabitants, buildings and overall happiness"),
+		# (helptext of widget: total_score)
+		("total_score"                 , "helptext"): _("The total value from all individual entities or in short : Total Player Score"),
+		# (helptext of widget: unit_score)
+		("unit_score"                  , "helptext"): _("Value of all the units owned by the player"),
 		},
 
 	"players_settlements.xml" : {
@@ -957,6 +973,11 @@ def set_translations():
 		("uninterrupted_building_label", "helptext"): _("When enabled, do not exit the build mode after successful construction"),
 		# (helptext of widget: use_renderer_label)
 		("use_renderer_label"          , "helptext"): _("SDL is only meant as unsupported fallback and might cause problems!"),
+		},
+
+	"random_map_archive.xml" : {
+		# (text of widget: headline)
+		("headline"                    , "text"    ): _("Random map archive"),
 		},
 
 	"select_savegame.xml" : {
