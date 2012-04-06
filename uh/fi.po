@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2012-03-24 02:16+0100\n"
-"PO-Revision-Date: 2012-04-06 14:40+0200\n"
+"PO-Revision-Date: 2012-04-06 14:46+0200\n"
 "Last-Translator: Aleksi <aleksi.kinnunen@ovi.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: fi\n"
@@ -3610,12 +3610,13 @@ msgid "The trade partner does not sell this."
 msgstr "Kauppakumppanisi ei myy tätä."
 
 #: horizons/world/component/tradepostcomponent.py:186
+#, fuzzy
 msgid "You can not store this."
-msgstr ""
+msgstr "Sinulla ei ole tilaa tämän varastoimiseen."
 
 #: horizons/world/component/tradepostcomponent.py:190
 msgid "You can not afford to buy this."
-msgstr ""
+msgstr "Sinulla ei ole varaa ostaa tätä."
 
 # 82%
 #: horizons/world/component/tradepostcomponent.py:196
@@ -3631,26 +3632,24 @@ msgstr "Kauppakumppanisi ei myy tätä."
 
 #: horizons/world/component/tradepostcomponent.py:228
 msgid "You do not possess this."
-msgstr ""
+msgstr "Sinulla ei ole tätä."
 
 # 82%
 #: horizons/world/component/tradepostcomponent.py:232
 #, fuzzy
 msgid "The trade partner can not store more of this."
-msgstr "Kauppakumppanisi ei myy tätä."
+msgstr "Kauppakumppanillasi ei ole tilaa tämän varastoimiseen."
 
 # 82%
 # 77%
 #: horizons/world/component/tradepostcomponent.py:236
-#, fuzzy
 msgid "The trade partner can not afford to buy this."
-msgstr "Kauppakumppanisi ei myy tätä."
+msgstr "Kauppakumppanillasi ei ole varaa ostaa tätä."
 
 # 77%
 #: horizons/world/component/tradepostcomponent.py:241
-#, fuzzy
 msgid "The trade partner does not buy more of this."
-msgstr "Kauppakumppanisi ei myy tätä."
+msgstr "Kauppakumppanisi ei osta lisää tätä."
 
 #: horizons/world/traderoute.py:282
 #, python-format
