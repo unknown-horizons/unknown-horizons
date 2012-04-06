@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2012-03-24 02:16+0100\n"
-"PO-Revision-Date: 2012-04-05 22:53+0200\n"
+"PO-Revision-Date: 2012-04-06 13:31+0200\n"
 "Last-Translator: Aleksi <aleksi.kinnunen@ovi.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: fi\n"
@@ -2570,9 +2570,8 @@ msgstr "Kieli"
 
 #. (text of widget: headline_mouse)
 #: horizons/i18n/guitranslations.py:903
-#, fuzzy
 msgid "Mouse"
-msgstr "taloja"
+msgstr "Hiiri"
 
 #. (text of widget: headline_network)
 #: horizons/i18n/guitranslations.py:905
@@ -2597,9 +2596,8 @@ msgstr "Käännä pikkukarttaa pääkarttaa käännettäessä:"
 # 76%
 #. (text of widget: mouse_sensitivity_label)
 #: horizons/i18n/guitranslations.py:915
-#, fuzzy
 msgid "Mouse sensitivity:"
-msgstr "Luonnonvarat:"
+msgstr "Hiiren herkkyys:"
 
 #. (text of widget: music_volume_label)
 #: horizons/i18n/guitranslations.py:917
@@ -2756,7 +2754,7 @@ msgstr "Satunnainen kartta"
 #. (text of widget: scenario)
 #: horizons/i18n/guitranslations.py:993
 msgid "Scenario"
-msgstr "Valmis kenttä"
+msgstr "Juonipeli"
 
 #. (helptext of widget: okay)
 #: horizons/i18n/guitranslations.py:997
@@ -2819,7 +2817,7 @@ msgstr "Pelaajan nimi:"
 #. name of buildings:alvearies
 #: horizons/i18n/objecttranslations.py:53
 msgid "Alvearies"
-msgstr ""
+msgstr "Mehiläispesä"
 
 #. tooltip_text of buildings:alvearies
 #: horizons/i18n/objecttranslations.py:55
