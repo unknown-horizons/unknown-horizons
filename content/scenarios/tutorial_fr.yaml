@@ -632,7 +632,7 @@ events:
     - "D\xE8s que votre \xE9conomie pourra satisfaire ce nombre de consommateurs vous\
       \ serez pr\xEAt \xE0 d\xE9couvrir d'autres - Horizons Inconnus !"
     - "Vous avez aussi besoin de suffisamment d'argent pour maintenir l'\xE9conomie,\
-      \ une balance positive est n\xE9cessaire (voir l'onglet 'Compte')."
+      \ une balance positive est n\xE9cessaire (voir l'onglet \xAB\_Compte\_\xBB)."
     - !!python/unicode '
 
       MISSION: Atteindre un nombre total de 50 habitants et un solde positif pour
@@ -657,9 +657,9 @@ events:
     - [Image, content/gui/images/background/hr.png]
     - "Vous avez termin\xE9 toutes les t\xE2ches qui vous ont \xE9t\xE9 assign\xE9\
       . Le monde est maintenant \xE0 vos ordres, dans l'attente de vos aspirations\
-      \ et de vos courageuses explorations!"
+      \ et de vos courageuses explorations\_!"
     - "Si vous avez des suggestions sur ce que nous pourrions ou devrions am\xE9liorer,\
-      \ ajoutez ou proposez les \xE0:"
+      \ ajoutez ou proposez les \xE0\_:"
     - !!python/unicode 'www.unknown-horizons.org'
     - !!python/unicode '#unknown-horizons @ irc.freenode.net'
     - !!python/unicode 'team@unknown-horizons.org'
