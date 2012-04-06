@@ -160,6 +160,12 @@
 				</HBox>
 
 				<HBox>
+					<Label name="cursor_centered_zoom_label" text="Cursor centered zoom:" min_size="170,0"
+						helptext="When enabled, mouse's wheel zooms to the cursor" />
+					<CheckBox min_size="24,24" name="cursor_centered_zoom" />
+				</HBox>
+
+				<HBox>
 					<Label name="auto_unload_label" text="Auto-unload ship:" min_size="170,0"
 						helptext="Whether to unload the ship after founding a settlement" />
 					<CheckBox min_size="24,24" name="auto_unload" />

@@ -161,12 +161,18 @@ class NavigationTool(CursorTool):
 
 	# move up mouse wheel = zoom in
 	def mouseWheelMovedUp(self, evt):
-		self.session.view.zoom_in(True)
+		if horizons.main.fife.get_uh_setting("CursorCenteredZoom"):
+			self.session.view.zoom_in(True)
+		else:
+			self.session.view.zoom_in(False)
 		evt.consume()
 
 	# move down mouse wheel = zoom out
 	def mouseWheelMovedDown(self, evt):
-		self.session.view.zoom_out(True)
+		if horizons.main.fife.get_uh_setting("CursorCenteredZoom"):
+			self.session.view.zoom_out(True)
+		else:
+			self.session.view.zoom_out(False)
 		evt.consume()
 
 	def onCommand(self, command):
