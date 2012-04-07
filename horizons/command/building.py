@@ -19,6 +19,8 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
+from collections import defaultdict
+
 import horizons.main
 
 from horizons.entities import Entities
@@ -161,16 +163,24 @@ class Build(Command):
 		return building
 
 	@staticmethod
-	def check_resources(neededResources, costs, issuer, res_sources):
+	def check_resources(needed_res, costs, issuer, res_sources):
 		"""Check if there are enough resources available to cover the costs
-		@param neededResources: awkward dict from BuildingTool.preview_build, use {} everywhere else
+		@param needed_res: awkward dict from BuildingTool.preview_build, use {} everywhere else
 		@param costs: building costs (as in buildingclass.costs)
 		@param issuer: player that builds the building
 		@param res_sources: list of objects with inventory attribute. None values are discarded.
 		@return tuple(bool, missing_resource), True means buildable"""
 		for resource in costs:
-			neededResources[resource] = neededResources.get(resource, 0) + costs[resource]
-		for resource in neededResources:
+			needed_res[resource] = needed_res.get(resource, 0) + costs[resource]
+
+		reserved_res = defaultdict(lambda : 0) # res needed for sth else but still present
+		if hasattr(issuer.session.manager, "get_builds_in_construction"):
+			# mp game, consider res still to be subtracted
+			builds = issuer.session.manager.get_builds_in_construction()
+			for build in builds:
+				reserved_res.update( Entities.buildings[build.building_class].costs )
+
+		for resource in needed_res:
 			# check player, ship and settlement inventory
 			available_res = 0
 			# player
@@ -180,7 +190,7 @@ class Build(Command):
 				if res_source is not None:
 					available_res += res_source.get_component(StorageComponent).inventory[resource]
 
-			if available_res < neededResources[resource]:
+			if (available_res - reserved_res[resource]) < needed_res[resource]:
 				return (False, resource)
 		return (True, None)
 
