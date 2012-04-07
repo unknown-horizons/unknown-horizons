@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: translate-uh@lists.unknown-horizons.org\n"
 "POT-Creation-Date: 2012-03-21 04:04+0100\n"
-"PO-Revision-Date: 2012-04-06 21:43+0200\n"
+"PO-Revision-Date: 2012-04-08 01:04+0200\n"
 "Last-Translator: Christopher Oelmueller <chris.oelmueller+uh@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: fi\n"
@@ -33,7 +33,7 @@ msgid ""
 "The tutorial:\n"
 "Build your first settlement and learn how to play!\n"
 msgstr ""
-"\n"
+"Harjoituspeli:\n"
 "Rakenna ensimmäinen siirtokuntasi ja opi, miten tätä peliä pelataan!\n"
 
 #. This message is displayed in the widget on the left screen part. Please keep it short enough to fit there!
@@ -76,8 +76,8 @@ msgid ""
 "in the top-right corner (below the mini-map, with a sealed document and a "
 "feather)."
 msgstr ""
-"Kun olet sulkenut tämän päiväkirjan, voit avata sen uudelleen \\\"Kapteenin "
-"päiväkirja\\\" -kuvakkeesta oikeasta yläkulmasta (pikkukartan alapuolelta, "
+"Kun olet sulkenut tämän päiväkirjan, voit avata sen uudelleen \"Kapteenin "
+"päiväkirja\" -kuvakkeesta oikeasta yläkulmasta (pikkukartan alapuolelta, "
 "kuvakkeessa on sinetöity kirje ja sulka)."
 
 #. This is the text body of a logbook page.
@@ -112,7 +112,7 @@ msgid ""
 msgstr ""
 "\n"
 "Kehitysryhmämme yhteystiedot on saatavilla verkkosivuiltamme osoitteesta www"
-".unknown-horizons.org."
+".unknown-horizons.org ."
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:24
