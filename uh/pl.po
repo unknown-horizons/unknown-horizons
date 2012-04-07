@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2012-03-24 02:16+0100\n"
-"PO-Revision-Date: 2012-04-07 10:41+0200\n"
+"PO-Revision-Date: 2012-04-07 10:45+0200\n"
 "Last-Translator: Premislaus <premislaus1988@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: pl\n"
@@ -802,7 +802,7 @@ msgstr "Kliknij aby zmienić nazwę osady."
 #: horizons/gui/ingamegui.py:278
 #, fuzzy
 msgid "No diplomacy possible"
-msgstr "Dyplomacja nie możliwa"
+msgstr "Dyplomacja jest nie możliwa"
 
 #: horizons/gui/ingamegui.py:279
 #, fuzzy
@@ -1012,7 +1012,7 @@ msgstr "Proszę zgłosić to autorowi."
 #. dialog already gone
 #: horizons/gui/modules/singleplayermenu.py:464
 msgid "Click to generate a different random map"
-msgstr ""
+msgstr "Naciśnij aby wygenerować inną, losową mapę."
 
 #. (text of widget: headline)
 #. set translated building name in gui
@@ -1065,8 +1065,9 @@ msgid "Confirm order"
 msgstr "Potwierdź rozkaz"
 
 #: horizons/gui/tabs/buildrelatedtab.py:46
+#, fuzzy
 msgid "Build related fields"
-msgstr ""
+msgstr "Wybuduj zależne pola"
 
 #: horizons/gui/tabs/buildtabs.py:110
 msgid "Residents and infrastructure"
