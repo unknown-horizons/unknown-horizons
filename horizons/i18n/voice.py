@@ -58,6 +58,7 @@ class Speech:
 	MOVE_OUTSIDE_OF_WORLD = None
 	MOVE_INVALID_LOCATION = None
 	NEW_UNIT = None
+	YOU_LOST = None
 	BUILDING_ON_FIRE = None
 
 DEFAULT_LANG="en"
