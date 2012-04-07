@@ -232,12 +232,6 @@ class NavigationTool(CursorTool):
 		where = fife.Point(self.last_event_pos.x, self.last_event_pos.y)
 		instances = set(self.get_hover_instances(where))
 		# only send when there were actual changes
-<<<<<<< HEAD
-		if instances != set(self.last_hover_instances):
-			self.last_hover_instances = WeakList(instances)
-			HoverInstancesChanged.broadcast(self, instances)
-=======
 		if instances != set(self.__class__.last_hover_instances):
 			self.__class__.last_hover_instances = WeakList(instances)
-			self.session.message_bus.broadcast(HoverInstancesChanged(self, instances))
->>>>>>> master
+			HoverInstancesChanged.broadcast(self, instances)
