@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2012-03-24 02:16+0100\n"
-"PO-Revision-Date: 2012-04-06 16:22+0200\n"
+"PO-Revision-Date: 2012-04-07 10:41+0200\n"
 "Last-Translator: Premislaus <premislaus1988@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: pl\n"
@@ -273,9 +273,8 @@ msgstr "sztylet"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
-#, fuzzy
 msgid "deer food A"
-msgstr "jelenie jedzenie A"
+msgstr "jedzenie z jelenia A"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
@@ -513,7 +512,7 @@ msgstr "{player1} oraz {player2} będą od teraz ze sobą walczyć na każdym kr
 #: database files sql
 #, python-format
 msgid "{player}: {message}"
-msgstr ""
+msgstr "{player}: {message}"
 
 #: editor/editor.py:33
 msgid "Specify the path to FIFE root directory."
