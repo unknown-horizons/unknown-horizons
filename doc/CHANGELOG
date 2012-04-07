@@ -19,6 +19,7 @@ Gameplay and Balancing
    + statistics widgets: player scores, settlement/ship overview, chat history
    + Unknown Horizons automatically checks for updates on startup
    + support for CJKV translations
+   + Save/load in multiplayer games
 
 * Modifications and changes
    # lower running costs for several buildings when paused:

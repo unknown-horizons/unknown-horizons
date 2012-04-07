@@ -180,10 +180,10 @@ class BUILDINGS:
 		# think: animation contains key, if there is a path at offset value
 		# you need to sort this before iterating via sorted, since order is important here
 		action_offset_dict = {
-			'a' : (0, -1),
-			'b' : (1, 0),
-			'c' : (0, 1),
-			'd' : (-1, 0)
+		  'a' : (0, -1),
+		  'b' : (1, 0),
+		  'c' : (0, 1),
+		  'd' : (-1, 0)
 		}
 
 	class BUILD:
@@ -460,7 +460,7 @@ class PATHS:
 	CONFIG_TEMPLATE_FILE = os.path.join("content", "settings-template.xml")
 
 	DB_FILES = tuple(os.path.join("content", i) for i in \
-				           ("game.sql", "balance.sql"))
+	                 ("game.sql", "balance.sql"))
 
 	if GFX.USE_ATLASES:
 		DB_FILES = DB_FILES + (os.path.join("content", "atlas.sql"), )
@@ -513,6 +513,7 @@ LANGUAGENAMES = _LanguageNameDict({
   "fi"    : u'Suomi',
   "fr"    : u'Français',
   "gl"    : u'Galego',
+  "hr"    : u'Hrvatski',
   "hu"    : u'Magyar',
   "it"    : u'Italiano',
   "ja"    : u'日本語',

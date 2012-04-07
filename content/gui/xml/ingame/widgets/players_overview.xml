@@ -8,14 +8,14 @@
 		<VBox max_size="650,20">
 			<HBox>
 				<Label min_size="12,20" name="emblem_area" text="" />
-				<Label min_size="108,20" name="player_name" text="Name" />
-				<Label min_size="60,20" name="money_score" text="Money" />
-				<Label min_size="50,20" name="land_score" text="Land" />
-				<Label min_size="90,20" name="resource_score" text="Resources" />
-				<Label min_size="70,20" name="building_score" text="Buildings" />
-				<Label min_size="60,20" name="settler_score" text="Settlers" />
-				<Label min_size="50,20" name="unit_score" text="Units" />
-				<Label min_size="70,20" name="total_score" text="Total" />
+				<Label min_size="108,20" name="player_name" text="Name" helptext="Player Name"/>
+				<Label min_size="60,20" name="money_score" text="Money" helptext="Player's current treasury + income expected in near future"/>
+				<Label min_size="50,20" name="land_score" text="Land" helptext="Value of usable land i.e Amount of Land that can be used to create buildings "/>
+				<Label min_size="90,20" name="resource_score" text="Resources" helptext="Value of resources generated from all the possible sources in the player's settlement(s)"/>
+				<Label min_size="70,20" name="building_score" text="Buildings" helptext="Value of all the buildings in the player's settlement(s)"/>
+				<Label min_size="60,20" name="settler_score" text="Settlers" helptext="Value denoting the progress of the settlement(s) in terms of inhabitants, buildings and overall happiness"/>
+				<Label min_size="50,20" name="unit_score" text="Units" helptext="Value of all the units owned by the player"/>
+				<Label min_size="70,20" name="total_score" text="Total" helptext="The total value from all individual entities or in short : Total Player Score"/>
 			</HBox>
 		</VBox>
 

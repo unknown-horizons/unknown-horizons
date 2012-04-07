@@ -36,18 +36,17 @@ from fife.extensions.pychan.widgets import Icon
 class NavigationTool(CursorTool):
 	"""Navigation Class to process mouse actions ingame"""
 
-	last_event_pos = None # last received mouse event position, fife.ScreenPoint
+	last_event_pos = fife.ScreenPoint(0, 0) # last received mouse event position, fife.ScreenPoint
 
 	send_hover_instances_update = True
-
 	HOVER_INSTANCES_UPDATE_DELAY = 1 # sec
+	last_hover_instances = WeakList()
 
 	def __init__(self, session):
 		super(NavigationTool, self).__init__(session)
 		self._last_mmb_scroll_point = [0, 0]
 		# coordinates of last mouse positions
 		self.last_exact_world_location = fife.ExactModelCoordinate()
-		self.last_hover_instances = WeakList()
 		self._hover_instances_update_scheduled = False
 		self.middle_scroll_active = False
 
@@ -59,6 +58,11 @@ class NavigationTool(CursorTool):
 		if not self.__class__.send_hover_instances_update:
 			# clear
 			HoverInstancesChanged.broadcast(self, set())
+			self.__class__.last_hover_instances = WeakList()
+		else:
+			# need updates about scrolling here
+			self.session.view.add_change_listener(self._schedule_hover_instance_update)
+			self._schedule_hover_instance_update()
 
 		class CoordsTooltip(object):
 			@classmethod
@@ -93,6 +97,8 @@ class NavigationTool(CursorTool):
 		self.tooltip = CoordsTooltip.get_instance(self)
 
 	def remove(self):
+		if self.__class__.send_hover_instances_update:
+			self.session.view.remove_change_listener(self._schedule_hover_instance_update)
 		horizons.main.fife.eventmanager.removeCommandListener(self.cmdlist)
 		super(NavigationTool, self).remove()
 
@@ -138,12 +144,8 @@ class NavigationTool(CursorTool):
 			LastActivePlayerSettlementManager().update(current)
 
 		# check if instance update is scheduled
-		if self.__class__.send_hover_instances_update and \
-		   not self._hover_instances_update_scheduled:
-			self._hover_instances_update_scheduled = True
-			ExtScheduler().add_new_object(self._send_hover_instance_upate, self,
-			                              run_in=self.__class__.HOVER_INSTANCES_UPDATE_DELAY)
-
+		if self.__class__.send_hover_instances_update:
+			self._schedule_hover_instance_update()
 
 		# Mouse scrolling
 		x, y = 0, 0
@@ -215,6 +217,13 @@ class NavigationTool(CursorTool):
 		super(NavigationTool, self).end()
 		self.helptext = None
 
+	def _schedule_hover_instance_update(self):
+		"""Hover instances have potentially changed, do an update in a timely fashion (but not right away)"""
+		if not self._hover_instances_update_scheduled:
+			self._hover_instances_update_scheduled = True
+			ExtScheduler().add_new_object(self._send_hover_instance_upate, self,
+			                              run_in=self.__class__.HOVER_INSTANCES_UPDATE_DELAY)
+
 	def _send_hover_instance_upate(self):
 		"""Broadcast update with new instances below mouse (hovered).
 		At most called in a certain interval, not after every mouse move in
@@ -223,6 +232,12 @@ class NavigationTool(CursorTool):
 		where = fife.Point(self.last_event_pos.x, self.last_event_pos.y)
 		instances = set(self.get_hover_instances(where))
 		# only send when there were actual changes
+<<<<<<< HEAD
 		if instances != set(self.last_hover_instances):
 			self.last_hover_instances = WeakList(instances)
 			HoverInstancesChanged.broadcast(self, instances)
+=======
+		if instances != set(self.__class__.last_hover_instances):
+			self.__class__.last_hover_instances = WeakList(instances)
+			self.session.message_bus.broadcast(HoverInstancesChanged(self, instances))
+>>>>>>> master

@@ -632,11 +632,11 @@ events:
     - "D\xE8s que votre \xE9conomie pourra satisfaire ce nombre de consommateurs vous\
       \ serez pr\xEAt \xE0 d\xE9couvrir d'autres - Horizons Inconnus !"
     - "Vous avez aussi besoin de suffisamment d'argent pour maintenir l'\xE9conomie,\
-      \ une balance positive est n\xE9cessaire (voir l'onglet 'Compte')."
+      \ une balance positive est n\xE9cessaire (voir l'onglet \xAB\_Compte\_\xBB)."
     - !!python/unicode '
 
-      TASK: Reach a total number of 50 inhabitants and a positive balance to complete
-      this tutorial.'
+      MISSION: Atteindre un nombre total de 50 habitants et un solde positif pour
+      terminer ce tutoriel.'
     - - Gallery
       - [content/gui/icons/widgets/cityinfo/inhabitants.png]
     type: logbook
@@ -655,17 +655,17 @@ events:
   - arguments:
     - [Headline, "AUCUNE\_MISSION\_RESTANTE"]
     - [Image, content/gui/images/background/hr.png]
-    - !!python/unicode 'You have successfully completed all tasks that were handed
-      to you. The world is now at your command, waiting for your free aspirations
-      and brave explorations!'
-    - !!python/unicode 'If you have any suggestions on what we could or should improve,
-      add or leave out:'
+    - "Vous avez termin\xE9 toutes les t\xE2ches qui vous ont \xE9t\xE9 assign\xE9\
+      . Le monde est maintenant \xE0 vos ordres, dans l'attente de vos aspirations\
+      \ et de vos courageuses explorations\_!"
+    - "Si vous avez des suggestions sur ce que nous pourrions ou devrions am\xE9liorer,\
+      \ ajoutez ou proposez les \xE0\_:"
     - !!python/unicode 'www.unknown-horizons.org'
     - !!python/unicode '#unknown-horizons @ irc.freenode.net'
     - !!python/unicode 'team@unknown-horizons.org'
-    - !!python/unicode 'Our forums are open to you as well!'
-    - !!python/unicode 'The best results until now were achieved by joining our IRC
-      channel, so you could try that out first (-;'
+    - !!python/unicode 'Nos forums vous sont aussi ouvert !'
+    - "Les meilleurs r\xE9sultats ont \xE9t\xE9 obtenus jusqu'\xE0 pr\xE9sent en joignant\
+      \ notre canal IRC, essayez le en premier ;-)"
     - [Pagebreak]
     - [Headline, !!python/unicode 'Merci !']
     - [Image, content/gui/images/background/hr.png]
@@ -700,5 +700,5 @@ events:
     type: var_gt
 locale: fr
 mapfile: development.sqlite
-translation_status: 183 translated messages, 8 untranslated messages.
+translation_status: 191 translated messages.
 

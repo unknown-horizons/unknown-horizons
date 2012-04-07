@@ -35,10 +35,12 @@ msgstr "Egy új világot teremtettél."
 msgid "A new world has been created."
 msgstr "Egy új világot teremtettél."
 
+# 81%
 #. This is a database entry: the name of an inhabitant increment (tier / level).
 #: database files sql
+#, fuzzy
 msgid "Aristocrats"
-msgstr ""
+msgstr "arisztokrata"
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
@@ -53,10 +55,12 @@ msgstr ""
 msgid "Citizens"
 msgstr "polgár"
 
+# 77%
 #. This is a database entry: the name of an inhabitant increment (tier / level).
 #: database files sql
+#, fuzzy
 msgid "Merchants"
-msgstr ""
+msgstr "kereskedő"
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
@@ -3250,10 +3254,12 @@ msgstr ""
 msgid "Hut"
 msgstr ""
 
+# 80%
 #. name_2 of buildings:tent
 #: horizons/i18n/objecttranslations.py:359
+#, fuzzy
 msgid "House"
-msgstr ""
+msgstr "Egér"
 
 #. name_3 of buildings:tent
 #: horizons/i18n/objecttranslations.py:361
