@@ -106,6 +106,14 @@ class Ship(Unit):
 			self.session.world.ship_map[self.position.to_tuple()] = weakref.ref(self)
 			self.session.world.ship_map[self._next_target.to_tuple()] = weakref.ref(self)
 
+	def _movement_finished(self):
+		if self.in_ship_map:
+			# if the movement somehow stops, the position sticks, and the unit isn't at next_target any more
+			ship = self.session.world.ship_map.get(self._next_target.to_tuple())
+			if ship is not None and ship() is self:
+				del self.session.world.ship_map[self._next_target.to_tuple()]
+		super(Ship, self)._movement_finished()
+
 	def go(self, x, y):
 		#disable the trading route
 		if hasattr(self, 'route'):
