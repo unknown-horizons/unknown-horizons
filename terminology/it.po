@@ -11,7 +11,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Translate Toolkit 1.9.0\n"
+"X-Generator: Pootle 2.1.5\n"
 
 msgid "build"
 msgstr "costruzione"
@@ -68,14 +68,18 @@ msgstr "clicca"
 msgid "lumberjack"
 msgstr "taglialegna / tagliaboschi"
 
+# 88%
+#, fuzzy
 msgid "resident"
-msgstr ""
+msgstr "residenti"
 
 msgid "main square"
 msgstr "piazza principale"
 
+# 85%
+#, fuzzy
 msgid "sailors"
-msgstr ""
+msgstr "marinaio"
 
 msgid "food"
 msgstr "cibo"
@@ -272,17 +276,25 @@ msgstr "modo"
 msgid "move"
 msgstr "muovi"
 
+# 87%
+#, fuzzy
 msgid "pioneers"
-msgstr ""
+msgstr "pioniere"
 
+# 87%
+#, fuzzy
 msgid "citizens"
-msgstr ""
+msgstr "cittadino"
 
+# 88%
+#, fuzzy
 msgid "merchants"
-msgstr ""
+msgstr "mercante"
 
+# 90%
+#, fuzzy
 msgid "aristocrats"
-msgstr ""
+msgstr "aristocratico"
 
 msgid "potato"
 msgstr "patate"
@@ -290,8 +302,11 @@ msgstr "patate"
 msgid "settler"
 msgstr "colono"
 
+# In base alla frase.
+# 80%
+#, fuzzy
 msgid "speed"
-msgstr ""
+msgstr "seme / seminare"
 
 msgid "stop"
 msgstr "stop"
@@ -351,8 +366,10 @@ msgstr ""
 msgid "offer"
 msgstr ""
 
+# 75%
+#, fuzzy
 msgid "potatoes"
-msgstr ""
+msgstr "patate"
 
 msgid "range"
 msgstr "gamma"
@@ -391,15 +408,19 @@ msgstr "attivo"
 msgid "afford"
 msgstr ""
 
+# 85%
+#, fuzzy
 msgid "animals"
-msgstr ""
+msgstr "animale"
 
 #
 msgid "Captain's log"
 msgstr "diario del capitano"
 
+# 75%
+#, fuzzy
 msgid "construct"
-msgstr ""
+msgstr "costruzione"
 
 # Dipende dal contesto della frase.
 msgid "consume"
@@ -417,8 +438,10 @@ msgstr "caratteristica"
 msgid "forest"
 msgstr "foresta"
 
+# 80%
+#, fuzzy
 msgid "grows"
-msgstr ""
+msgstr "coltivare"
 
 msgid "hold"
 msgstr "tenere"
@@ -464,8 +487,10 @@ msgstr "giocando"
 msgid "price"
 msgstr ""
 
+# 75%
+#, fuzzy
 msgid "read"
-msgstr ""
+msgstr "rosso"
 
 #
 msgid "return"
@@ -488,8 +513,10 @@ msgstr ""
 msgid "store"
 msgstr ""
 
+# 75%
+#, fuzzy
 msgid "tear"
-msgstr ""
+msgstr "squadra"
 
 msgid "from time to time"
 msgstr "di volta in volta"
@@ -506,8 +533,10 @@ msgstr "visita"
 msgid "world"
 msgstr ""
 
+# 83%
+#, fuzzy
 msgid "yield"
-msgstr ""
+msgstr "rendimenti"
 
 msgid "your ship"
 msgstr ""
