@@ -155,8 +155,7 @@ class SingleplayerMenu(object):
 				self.active_right_side.distributeData({ 'maplist' : 0, })
 
 				if show == 'scenario': # update infos for scenario
-					lang_list.real_widget.setSelected(lang_list.items.\
-									  index(horizons.main.fife.get_locale()))
+					lang_list.selected = lang_list.items.index(horizons.main.fife.get_locale())
 					from horizons.scenario import ScenarioEventHandler, InvalidScenarioFileFormat
 					def _update_infos():
 						"""Fill in infos of selected scenario to label"""
@@ -175,24 +174,22 @@ class SingleplayerMenu(object):
 							
 							translation_status_label = self.current.findChild(name="translation_status")
 							try:
-								_translation_stats = ""
-								translation_stats = []
 								#get translation status
-								_translation_stats = yamlcache.YamlCache.get_file(new_map_name, \
+								translation_status_message = yamlcache.YamlCache.get_file(new_map_name, \
 														  game_data=True)['translation_status']
-								#find integers in translation_stats string
-								translation_stats = [int(x) for x in re.findall(r'\d+', _translation_stats)]
-								#if translation_stats' len is 3 it shows us there are fuzzy ones
+								#find integers in translation_levels string
+								translation_levels = [int(x) for x in re.findall(r'\d+', translation_status_message)]
+								#if translation_levels' len is 3 it shows us there are fuzzy ones
 								#show them as untranslated
-								if len(translation_stats) == 3:
-									translation_stats[2] += translation_stats[1]
+								if len(translation_levels) == 3:
+									translation_levels[2] += translation_levels[1]
 								#if everything is translated then set untranslated count as 0
-								if len(translation_stats) == 1:
-									translation_stats.append(0)
+								if len(translation_levels) == 1:
+									translation_levels.append(0)
 								translation_status_label.text = _("Translation status:") + '\n' + \
 									_("{translated} translated messages, {untranslated} untranslated messages")\
-									.format(translated=translation_stats[0], \
-										untranslated=translation_stats[-1])
+									.format(translated=translation_levels[0], \
+										untranslated=translation_levels[-1])
 								#if selected language is english then don't show translation status
 								translation_status_label.show()
 							#if there is no translation_status then hide it
@@ -231,7 +228,7 @@ class SingleplayerMenu(object):
 								# If default locale could not be detected use 'EN' as fallback
 								 new_locale = "en"
 
-							lang_list.real_widget.setSelected(lang_list.items.index(new_locale))
+							lang_list.selected = lang_list.items.index(new_locale)
 							_update_infos()
 							
 						try:
