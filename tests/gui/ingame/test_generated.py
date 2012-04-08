@@ -53,7 +53,7 @@ def test_build_a_settlement(gui):
 	gui.trigger('mainhud', 'build/action/default')
 
 	# Select fisher
-	gui.trigger('tab', 'button_26/action/default')
+	gui.trigger('tab', 'button_33/action/default')
 
 	# Place fisher
 	gui.cursor_click(52, 3, 'left')
@@ -72,11 +72,11 @@ def test_build_a_settlement(gui):
 	gui.cursor_click(54, 7, 'right')	# cancel
 
 	# Build lumberjack
-	gui.trigger('tab', 'button_5/action/default')
+	gui.trigger('tab', 'button_03/action/default')
 	gui.cursor_click(52, 6, 'left')
 
 	# Build main square
-	gui.trigger('tab', 'button_3/action/default')
+	gui.trigger('tab', 'button_02/action/default')
 	gui.cursor_click(53, 11, 'left')
 
 	# Select path
@@ -93,15 +93,15 @@ def test_build_a_settlement(gui):
 	gui.cursor_click(57, 13, 'right')	# cancel
 
 	# Build a tent
-	gui.trigger('tab', 'button_1/action/default')
+	gui.trigger('tab', 'button_01/action/default')
 	gui.cursor_click(58, 9, 'left')
 
 	# Build a tent
-	gui.trigger('tab', 'button_1/action/default')
+	gui.trigger('tab', 'button_01/action/default')
 	gui.cursor_click(58, 7, 'left')
 
 	# Build a tent
-	gui.trigger('tab', 'button_1/action/default')
+	gui.trigger('tab', 'button_01/action/default')
 	gui.cursor_click(58, 5, 'left')
 
 	yield TestFinished
@@ -143,18 +143,18 @@ def test_buildingtool(gui):
 	gui.trigger('mainhud', 'build/action/default')
 
 	# Select fisher
-	gui.trigger('tab', 'button_26/action/default')
+	gui.trigger('tab', 'button_33/action/default')
 
 	# Place fisher
 	build_at( (52, 3) )
 
 
 	# Build lumberjack
-	gui.trigger('tab', 'button_5/action/default')
+	gui.trigger('tab', 'button_03/action/default')
 	build_at( (52, 6) )
 
 	# Build main square
-	gui.trigger('tab', 'button_3/action/default')
+	gui.trigger('tab', 'button_02/action/default')
 	build_at( (53, 11) )
 
 	# Select path
@@ -166,15 +166,15 @@ def test_buildingtool(gui):
 	gui.cursor_click(54, 7, 'right') # cancel
 
 	# Build a tent
-	gui.trigger('tab', 'button_1/action/default')
+	gui.trigger('tab', 'button_01/action/default')
 	build_at( (58, 7) )
 
-	# Select pavilion (tent highlights
-	gui.trigger('tab', 'button_4/action/default')
+	# Select pavilion (tent highlights)
+	gui.trigger('tab', 'button_12/action/default')
 	build_at( (58, 5) )
 
-	# Build a tent (pavilion highlights
-	gui.trigger('tab', 'button_1/action/default')
+	# Build a tent (pavilion highlights)
+	gui.trigger('tab', 'button_01/action/default')
 	build_at( (58, 9) )
 
 	yield TestFinished
