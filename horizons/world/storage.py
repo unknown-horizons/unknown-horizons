@@ -73,7 +73,7 @@ class GenericStorage(ChangeListener):
 		@param amount: int amount that is to be changed. Can be negative to remove resources.
 		@return: int - amount that did not fit or was not available, depending on context.
 		"""
-		self._storage[res] += amount
+		self._storage[res] += amount # defaultdict
 		self._changed()
 		return 0
 
@@ -159,14 +159,12 @@ class SizedSpecializedStorage(SpecializedStorage):
 		return super(SizedSpecializedStorage, self).alter(res, amount)
 
 	def get_limit(self, res):
-		if res in self.__slot_limits:
-			return self.__slot_limits[res]
-		else:
-			return 0
+		return self.__slot_limits.get(res, 0)
 
 	def add_resource_slot(self, res, size):
 		"""Add a resource slot for res for the size size.
-		If the slot already exists, just update it's size to size."""
+		If the slot already exists, just update it's size to size.
+		NOTE: THIS IS NOT SAVE/LOADED HERE. It must be restored manually."""
 		super(SizedSpecializedStorage, self).add_resource_slot(res)
 		assert size >= 0
 		self.__slot_limits[res] = size
@@ -174,15 +172,9 @@ class SizedSpecializedStorage(SpecializedStorage):
 	def save(self, db, ownerid):
 		super(SizedSpecializedStorage, self).save(db, ownerid)
 		assert len(self._storage) == len(self.__slot_limits) # we have to have limits for each res
-		for res in self._storage:
-			assert res in self.__slot_limits
-			db("INSERT INTO storage_slot_limit(object, slot, value) VALUES(?, ?, ?)", \
-			   ownerid, res, self.__slot_limits[res])
 
 	def load(self, db, ownerid):
 		super(SizedSpecializedStorage, self).load(db, ownerid)
-		for res in self._storage:
-			self.__slot_limits[res] = db.get_storage_slot_limit(ownerid, res)
 
 class GlobalLimitStorage(GenericStorage):
 	"""Storage with some kind of global limit. This limit has to be interpreted in the subclass,
