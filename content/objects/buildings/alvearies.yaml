@@ -21,7 +21,6 @@ components:
         - [RES.ALVEARIES, 1]
         time: 30
 - StorageComponent:
-    inventory:
       SlotsStorage:
         slot_sizes: {RES.ALVEARIES: 1}
 actionsets:

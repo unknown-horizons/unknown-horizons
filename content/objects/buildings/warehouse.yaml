@@ -27,7 +27,6 @@ components:
         - [19, 10]
         time: 1
 - StorageComponent:
-    inventory:
         SettlementStorage: {}
 - AmbientSoundComponent:
     soundfiles: [content/audio/sounds/warehouse.ogg]

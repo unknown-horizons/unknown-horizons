@@ -21,7 +21,6 @@ components:
         - [RES.SPICE_PLANTS, 1]
         time: 30
 - StorageComponent:
-    inventory:
       SlotsStorage:
         slot_sizes: {RES.SPICE_PLANTS: 1}
 actionsets:
