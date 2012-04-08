@@ -324,9 +324,17 @@ class SavegameManager(object):
 		sfiles, snames = cls.get_scenarios(include_displaynames = True)
 		for i, sname in enumerate(snames):
 			if cls.check_scenario_availability(sname):
-				if locales is None or cls.get_scenario_info(name = sname).get('locale', 'en') in locales:
+				#get file's locale
+				cur_locale = '_' + cls.get_scenario_info(name = sname).get('locale')
+				#if the locale is nodefault then don't add it
+				#we use this locale in test scenarios and they are not included to the list
+				if cur_locale == "_nodefault":
+					continue
+				#don't add language postfix
+				sname = sname.split(cur_locale)[0]
+				if not sname in anames:
 					anames.append(sname)
-					afiles.append(sfiles[i])
+					afiles.append(sfiles[i][:sfiles[i].rfind(cur_locale)])
 		if not include_displaynames:
 			return (afiles,)
 		return (afiles, anames)
