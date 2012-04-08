@@ -19,7 +19,6 @@ components:
     enemy_tabs: [ResourceDepositOverviewTab,]
 - HealthComponent: {maxhealth: 10}
 - StorageComponent:
-    inventory:
       SlotsStorage:
         slot_sizes: {24: 1000000}
 actionsets:

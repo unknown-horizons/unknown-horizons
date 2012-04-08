@@ -50,7 +50,6 @@ components:
         - [RES.HONEYCOMBS, -1]
         time: 30
 - StorageComponent:
-    inventory:
       SlotsStorage:
         slot_sizes: {RES.SUGAR: 6, RES.COCOA: 6, RES.CONFECTIONERY: 6,
                      RES.CANDLES: 6, RES.GRAPES: 6, RES.HONEYCOMBS: 6}

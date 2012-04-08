@@ -26,7 +26,6 @@ components:
         - [RES.FIRE, -1]
        time: 1
 - StorageComponent:
-   inventory:
      SlotsStorage:
       slot_sizes: {RES.FIRE: 10}
 - CollectingComponent:

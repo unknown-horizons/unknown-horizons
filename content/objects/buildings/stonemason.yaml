@@ -24,7 +24,6 @@ components:
         - [RES.STONE_TOPS, -1]
         time: 30
 - StorageComponent:
-    inventory:
       SlotsStorage:
         slot_sizes: {RES.STONE_TOPS: 4, RES.BRICKS: 8}
 actionsets:

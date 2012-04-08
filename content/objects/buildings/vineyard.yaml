@@ -21,7 +21,6 @@ components:
         - [RES.VINES, 1]
         time: 30
 - StorageComponent:
-    inventory:
       SlotsStorage:
         slot_sizes: {RES.VINES: 1}
 actionsets:

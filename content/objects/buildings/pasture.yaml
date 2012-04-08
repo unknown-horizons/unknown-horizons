@@ -22,7 +22,6 @@ components:
         - [2, 1]
         time: 30
 - StorageComponent:
-    inventory:
       SlotsStorage:
         slot_sizes: {9: 10, 2: 1}
 - AmbientSoundComponent:

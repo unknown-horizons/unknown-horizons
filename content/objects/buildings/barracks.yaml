@@ -26,7 +26,6 @@ components:
         - [3, -1]
         time: 60
 - StorageComponent:
-    inventory:
       SlotsStorage:
         slot_sizes: {3: 99, 4: 99}
 actionsets:
