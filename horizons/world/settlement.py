@@ -41,10 +41,8 @@ class Settlement(ComponentHolder, WorldObject, ChangeListener, ResourceHandler):
 
 	component_templates = ({
 	    					'StorageComponent':
-	                            {'inventory':
 	                             {'PositiveSizedSlotStorage':
 	                              { 'limit': 0 }
-	                             }
 	                            }
 	                        }
 	                        ,
