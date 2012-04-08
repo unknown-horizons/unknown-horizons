@@ -146,8 +146,7 @@ class SingleplayerMenu(object):
 				all_languages = find_available_languages().keys()
 				all_languages.sort()
 				lang_list.items = all_languages
-				lang_list.real_widget.setSelected(lang_list.items.\
-					  index(horizons.main.fife.get_locale()))
+				lang_list.selected = lang_list.items.index(horizons.main.fife.get_locale())
 
 			self.active_right_side.distributeInitialData({ 'maplist' : maps_display, })
 			if len(maps_display) > 0:
