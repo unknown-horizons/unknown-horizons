@@ -133,7 +133,8 @@ class BuildingCollector(Collector):
 		return self.home_building.get_component(StorageComponent).inventory
 
 	def get_colleague_collectors(self):
-		return self.home_building.get_component(CollectingComponent).get_local_collectors()
+		colls = self.home_building.get_component(CollectingComponent).get_local_collectors()
+		return ( coll for coll in colls if coll is not self )
 
 	@decorators.make_constants()
 	def get_job(self):
