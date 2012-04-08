@@ -43,7 +43,6 @@ class SavegameAccessor(DbReader):
 		self._load_concrete_object()
 		self._load_production()
 		self._load_storage()
-		self._load_storage_slot_limit()
 		self._load_wildanimal()
 		self._load_unit()
 		self._load_building_collector()
@@ -150,16 +149,6 @@ class SavegameAccessor(DbReader):
 		"""Returns potentially empty list of worldids referencing storages"""
 		ownerid = int(ownerid)
 		return [] if ownerid not in self._storage else self._storage[ownerid]
-
-
-	def _load_storage_slot_limit(self):
-		self._storage_slot_limit = {}
-		for row in self("SELECT object, slot, value FROM storage_slot_limit"):
-			key = (int(row[0]), int(row[1]))
-			self._storage_slot_limit[key] = int(row[2])
-
-	def get_storage_slot_limit(self, ownerid, slot):
-		return self._storage_slot_limit[(int(ownerid), int(slot))]
 
 
 	def _load_wildanimal(self):

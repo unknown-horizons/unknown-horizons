@@ -118,8 +118,10 @@ class Settler(BuildableRect, BuildingResourceHandler, BasicBuilding):
 		for resource, amount in db.get_storage_rowids_by_ownerid(self.worldid):
 			resources[resource] = amount
 
+		# set limits to what we need
 		for res, amount in upgrade_material_production.get_consumed_resources().iteritems():
 			self.get_component(StorageComponent).inventory.add_resource_slot(res, abs(amount))
+			# [assumption added later] loading this could not have worked before because the slot was limited to 0
 			if res in resources:
 				self.get_component(StorageComponent).inventory.alter(res, resources[res])
 
