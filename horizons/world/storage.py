@@ -139,7 +139,6 @@ class SizedSpecializedStorage(SpecializedStorage):
 	"""Just like SpecializedStorage, but each res has an own limit.
 	Can take a dict {res: size, res2: size2} to init slots
 	"""
-
 	def __init__(self, slot_sizes=None):
 		super(SizedSpecializedStorage, self).__init__()
 		slot_sizes = slot_sizes or {}
@@ -171,14 +170,6 @@ class SizedSpecializedStorage(SpecializedStorage):
 		super(SizedSpecializedStorage, self).add_resource_slot(res)
 		assert size >= 0
 		self.__slot_limits[res] = size
-
-	def change_resource_slot_size(self, res, size_diff):
-		"""Changes the amount that can be stored of a certain res slot.
-		A slot for the specified resource has to exist.
-		@param res: resource id
-		@param size_diff: difference to new slot size"""
-		self.__slot_limits[res] += size_diff
-		assert self.__slot_limits[res] >= 0
 
 	def save(self, db, ownerid):
 		super(SizedSpecializedStorage, self).save(db, ownerid)
