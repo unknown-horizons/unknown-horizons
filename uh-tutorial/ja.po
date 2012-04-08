@@ -693,7 +693,7 @@ msgstr ""
 #. This message is displayed in the widget on the left screen part. Please keep it short enough to fit there!
 #: po/tutorial.py:206
 msgid "Reach an island stock of at least 30 tools."
-msgstr "工具の貯蔵を30以上にする"
+msgstr "工具の貯蔵を30以上にする。"
 
 #. This message is displayed in the widget on the left screen part. Please keep it short enough to fit there!
 #: po/tutorial.py:208

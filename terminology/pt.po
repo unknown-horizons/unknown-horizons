@@ -608,7 +608,7 @@ msgstr "deixar, largar"
 # (poterminology) uh-tutorial/tutorial.pot (1)
 # (poterminology) uh/unknownhorizons.pot (3)
 msgid "liquor"
-msgstr "álcool "
+msgstr "álcool"
 
 msgid "location"
 msgstr ""

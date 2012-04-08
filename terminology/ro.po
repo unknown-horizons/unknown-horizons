@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2012-03-31 21:42+0100\n"
-"PO-Revision-Date: 2011-12-15 00:49+0200\n"
+"PO-Revision-Date: 2011-12-15 01:10+0200\n"
 "Last-Translator: trendy <trendynickname@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: ro\n"
@@ -12,7 +12,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n==1 ? 0 : (n==0 || (n%100 > 0 && n%100 < "
 "20)) ? 1 : 2);;\n"
-"X-Generator: Translate Toolkit 1.9.0\n"
+"X-Generator: Pootle 2.1.5\n"
 
 msgid "build"
 msgstr "construire"
@@ -66,14 +66,14 @@ msgid "click"
 msgstr "clic"
 
 msgid "lumberjack"
-msgstr ""
+msgstr "tăietor de lemne"
 
 msgid "resident"
 msgstr ""
 
 #, fuzzy
 msgid "main square"
-msgstr "piață de desfacere / piață principală"
+msgstr "piață principală"
 
 msgid "sailors"
 msgstr ""
@@ -142,7 +142,7 @@ msgid "stock"
 msgstr "stoc"
 
 msgid "trail"
-msgstr ""
+msgstr "urmă"
 
 msgid "Unknown Horizons"
 msgstr ""
@@ -355,8 +355,10 @@ msgstr "rază de acțiune / interval"
 msgid "reached"
 msgstr "atins / ajuns"
 
+# 75%
+#, fuzzy
 msgid "run"
-msgstr ""
+msgstr "fugi"
 
 msgid "slider"
 msgstr "reglabil / glisor"

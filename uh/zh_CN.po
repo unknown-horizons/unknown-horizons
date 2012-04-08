@@ -7,8 +7,8 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2012-03-24 02:16+0100\n"
-"PO-Revision-Date: 2012-04-01 10:01+0200\n"
-"Last-Translator: nifabric <nifabric@gmail.com>\n"
+"PO-Revision-Date: 2012-04-08 02:03+0200\n"
+"Last-Translator: Christopher Oelmueller <chris.oelmueller+uh@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: zh_CN\n"
 "MIME-Version: 1.0\n"
@@ -104,7 +104,7 @@ msgstr "路径已配置。请通过“配置路径”菜单上的“开启路径
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
 msgid "You can also drag roads."
-msgstr "你也可以拖拽道路"
+msgstr "你也可以拖拽道路。"
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
@@ -517,7 +517,7 @@ msgstr "保存失败。"
 
 #: horizons/engine/settingsdialog.py:50
 msgid "Restart required"
-msgstr "需要重新启动。"
+msgstr "需要重新启动"
 
 #: horizons/engine/settingsdialog.py:51
 msgid "Some of your changes require a restart of Unknown Horizons."

@@ -419,7 +419,7 @@ msgstr "złoże kamienia"
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "stone tops"
-msgstr ""
+msgstr "blaty kamienne"
 
 # Resources
 #. This is a database entry: the name of a resource.
