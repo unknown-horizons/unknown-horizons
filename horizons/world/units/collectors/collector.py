@@ -362,7 +362,9 @@ class Collector(Unit):
 		# deregister at the target we're at
 		self.job.object.remove_incoming_collector(self)
 		# reconsider job now: there might now be more res available than there were when we started
-		self.job = self.check_possible_job_target_for(self.job.object, self.job.res)
+		new_job = self.check_possible_job_target_for(self.job.object, self.job.res)
+		if new_job is not None:
+			self.job.amount = new_job.amount
 
 		# transfer res (this must be the last step, it will trigger consecutive actions through the
 		# target inventory changelistener, and the collector must be in a consistent state then.
