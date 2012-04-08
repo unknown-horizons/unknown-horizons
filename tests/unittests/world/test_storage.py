@@ -108,9 +108,6 @@ class TestSpecializedStorages(TestCase):
 
 		self.assertEqual(s.alter(1, 12), 2)
 
-		s.change_resource_slot_size(1, 5)
-		self.assertEqual(s.alter(1, 5), 0)
-
 
 class TestGlobalLimitStorage(TestCase):
 
