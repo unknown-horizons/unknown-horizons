@@ -66,12 +66,12 @@ def test_found_settlement(gui):
 	gui.trigger('mainhud', 'build/action/default')
 
 	# build a lumberjack
-	gui.trigger('tab', 'button_5/action/default')
+	gui.trigger('tab', 'button_03/action/default')
 	gui.cursor_click(55, 5, 'left')
 	assert(ground_map[(55, 5)].object.id == BUILDINGS.LUMBERJACK)
 
 	# build a storage
-	gui.trigger('tab', 'button_2/action/default')
+	gui.trigger('tab', 'button_11/action/default')
 	gui.cursor_click(55, 15, 'left')
 	storage = ground_map[(55, 15)].object
 	assert(storage.id == BUILDINGS.STORAGE)
