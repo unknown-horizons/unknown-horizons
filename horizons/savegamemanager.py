@@ -327,6 +327,7 @@ class SavegameManager(object):
 				#get file's locale
 				cur_locale = '_' + cls.get_scenario_info(name = sname).get('locale')
 				#if the locale is nodefault then don't add it
+				#we use this locale in test scenarios and they are not included to the list
 				if cur_locale == "_nodefault":
 					continue
 				#don't add language postfix

@@ -25,10 +25,12 @@ import subprocess
 import sys
 import tempfile
 import os
+import re
+import locale
 
 import horizons.main
 
-from horizons.util import Callback, random_map
+from horizons.util import Callback, random_map, yamlcache
 from horizons.extscheduler import ExtScheduler
 from horizons.savegamemanager import SavegameManager
 from horizons.gui.modules import AIDataSelection, PlayerDataSelection
@@ -36,6 +38,7 @@ from horizons.constants import AI
 from horizons.gui.widgets.minimap import Minimap
 from horizons.world import World
 from horizons.util import SavegameAccessor, WorldObject, Rect
+from horizons.i18n import find_available_languages
 
 class SingleplayerMenu(object):
 
@@ -139,12 +142,12 @@ class SingleplayerMenu(object):
 				maps_display.sort(key=prefer_tutorial)
 				self.current.files.sort(key=prefer_tutorial)
 				#add all locales to lang list, select current locale as default and sort
-				from horizons.i18n import find_available_languages
 				lang_list = self.current.findChild(name="langlist")
 				all_languages = find_available_languages().keys()
 				all_languages.sort()
-				lang_list._setItems(all_languages)
-				lang_list._setSelected(lang_list._getItems().index(horizons.main.fife.get_locale()))
+				lang_list.items = all_languages
+				lang_list.real_widget.setSelected(lang_list.items.\
+					  index(horizons.main.fife.get_locale()))
 
 			self.active_right_side.distributeInitialData({ 'maplist' : maps_display, })
 			if len(maps_display) > 0:
@@ -152,87 +155,74 @@ class SingleplayerMenu(object):
 				self.active_right_side.distributeData({ 'maplist' : 0, })
 
 				if show == 'scenario': # update infos for scenario
+					lang_list.real_widget.setSelected(lang_list.items.\
+									  index(horizons.main.fife.get_locale()))
 					from horizons.scenario import ScenarioEventHandler, InvalidScenarioFileFormat
 					def _update_infos():
 						"""Fill in infos of selected scenario to label"""
 
-						#Add locale postfix to fix scenario file
-						try:
-							from re import findall	
-							#check if selected map's file ends with .yaml	
-							if self._get_selected_map().find('.yaml') == -1:
+						def _update_translation_infos(new_map_name):
+							"""Fill in translation infos of selected scenario to translation label.
+
+							It gets translation_status from new_map_file. If there is no attribute 
+							like translation_status then selected locale is the original locale of 
+							the selected scenario. In this case, hide translation_status_label.
+
+							If there are fuzzy translations, show them as untranslated.
+
+							This function also sets scenario map name using locale.
+							(e.g. tutorial -> tutorial_en.yaml)"""
+							
+							translation_status_label = self.current.findChild(name="translation_status")
+							try:
 								_translation_stats = ""
 								translation_stats = []
-								translation_status_label = self.current.findChild(name="translation_status")
-								new_map_name = self._get_selected_map() + '_' + lang_list._getSelectedItem() + '.' + SavegameManager.scenario_extension
-								try:
-									#get translation status
-									_translation_stats = ScenarioEventHandler._parse_yaml_file(new_map_name)['translation_status']
-									#find integers in translation_stats string
-									translation_stats = [int(x) for x in findall(r'\d+', _translation_stats)]
-									#if translation_stats' len is 3 it shows us there is fuzzy ones
-									#show them as untranslated
-									if len(translation_stats) == 3:
-										translation_stats[2] += translation_stats[1]
-									#if everything is translated then set untranslated count as 0
-									if len(translation_stats) == 1:
-										translation_stats.append(0)
-									translation_status_label.text = _("Translation status: \n{translated} translated messages, {untranslated} untranslated meesages").format(translated=translation_stats[0], untranslated=translation_stats[-1])
-									#if selected language is english then don't show translation status
-									if lang_list._getSelectedItem() == "en":
-										translation_status_label.hide()
-										self.current.hide()
-										self.current.show()
-									else:
-										translation_status_label.show()
-										self.current.hide()
-										self.current.show()
-								#if there is no translation_status then hide it
-								except KeyError:
-									translation_status_label.hide()
+								#get translation status
+								_translation_stats = yamlcache.YamlCache.get_file(new_map_name, \
+														  game_data=True)['translation_status']
+								#find integers in translation_stats string
+								translation_stats = [int(x) for x in re.findall(r'\d+', _translation_stats)]
+								#if translation_stats' len is 3 it shows us there are fuzzy ones
+								#show them as untranslated
+								if len(translation_stats) == 3:
+									translation_stats[2] += translation_stats[1]
+								#if everything is translated then set untranslated count as 0
+								if len(translation_stats) == 1:
+									translation_stats.append(0)
+								translation_status_label.text = _("Translation status:") + '\n' + \
+									_("{translated} translated messages, {untranslated} untranslated messages")\
+									.format(translated=translation_stats[0], \
+										untranslated=translation_stats[-1])
+								#if selected language is english then don't show translation status
+								translation_status_label.show()
+							#if there is no translation_status then hide it
+							except KeyError:
+								translation_status_label.hide()
 
+							self.current.files[ self.active_right_side.collectData('maplist') ] = new_map_name 
+							
 
-								self.current.files[ self.active_right_side.collectData('maplist') ] = new_map_name 
+						#Add locale postfix to fix scenario file
+						try:
+							#check if selected map's file ends with .yaml	
+							if self._get_selected_map().find('.yaml') == -1:
+								new_map_name = self._get_selected_map() + '_' + \
+									       lang_list._getSelectedItem() + '.' + \
+									       SavegameManager.scenario_extension
+								_update_translation_infos(new_map_name)
 							#if selected map's file ends with .yaml then get current locale
 							#to remove locale postfix from selected_map's name
 							else:
 								#get current locale to split current map file name
-								current_locale =  ScenarioEventHandler._parse_yaml_file(self._get_selected_map())['locale']
-								_translation_stats = ""
-								translation_stats = []
-								translation_status_label = self.current.findChild(name="translation_status")
-								new_map_file = self._get_selected_map()[:self._get_selected_map().find('_' + current_locale)] + '_' + lang_list._getSelectedItem() + '.' + SavegameManager.scenario_extension
-								try:
-									#get translation status
-									_translation_stats = ScenarioEventHandler._parse_yaml_file(new_map_file)['translation_status']
-									#find integers in translation_stats string
-									translation_stats = [int(x) for x in findall(r'\d+', _translation_stats)]
-									#if translation_stats' len is 3 it shows us there is fuzzy ones
-									#show them as untranslated
-									if len(translation_stats) == 3:
-										translation_stats[2] += translation_stats[1]
-									#if everything is translated then set untranslated count as 0
-									if len(translation_stats) == 1:
-										translation_stats.append(0)
-									translation_status_label.text = _("Translation status: \n{translated} translated messages, {untranslated} untranslated meesages").format(translated=translation_stats[0], untranslated=translation_stats[-1])
-									#if selected language is english then don't show translation status
-									if lang_list._getSelectedItem() == "en":
-										translation_status_label.hide()
-										self.current.hide()
-										self.current.show()
-									else:
-										translation_status_label.show()
-										self.current.hide()
-										self.current.show()
-								#if there is no translation_status then hide it
-								except KeyError:
-									translation_status_label.hide()
-								
-								
-								self.current.files[ self.active_right_side.collectData('maplist') ] = new_map_file
+								current_locale =  yamlcache.YamlCache.get_file(self._get_selected_map(), \
+													       game_data=True)['locale']
+								new_map_name = self._get_selected_map()[:self._get_selected_map().\
+									       find('_' + current_locale)] + '_' + \
+									       lang_list._getSelectedItem() + '.' + \
+									       SavegameManager.scenario_extension
+								_update_translation_infos(new_map_name)
 						#if there is no scenario with selected locale then select system's default
 						except IOError:
-							import locale
 							new_locale = ""
 							default_locale, default_encoding = locale.getdefaultlocale()
 							try:
@@ -241,10 +231,8 @@ class SingleplayerMenu(object):
 								# If default locale could not be detected use 'EN' as fallback
 								 new_locale = "en"
 
-							lang_list._setSelected(lang_list._getItems().index(new_locale))
+							lang_list.real_widget.setSelected(lang_list.items.index(new_locale))
 							_update_infos()
-							
-						
 							
 						try:
 							difficulty = ScenarioEventHandler.get_difficulty_from_file( self._get_selected_map() )
@@ -265,6 +253,12 @@ class SingleplayerMenu(object):
 					})
 					self.active_right_side.findChild(name="langlist").capture(_update_infos, event_name="keyPressed")
 					_update_infos()
+					#hide and show current window to keep bugs away from us
+					#if we don't do this, translation_label doesn't hide even if
+					#selected language is english or doesn't show if selected
+					#language has translation_status attribute
+					self.current.hide()
+					self.current.show()
 				elif show == 'campaign': # update infos for campaign
 					def _update_infos():
 						"""Fill in infos of selected campaign to label"""

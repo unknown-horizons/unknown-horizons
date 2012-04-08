@@ -10,7 +10,7 @@
 		<ListBox name="maplist" />
 	</ScrollArea>
 	<ScrollArea max_size="110,200"  min_size="140,200"  horizontal_scrollbar="0"  name="lang_list_area">
-		<ListBox name="langlist" />
+		<ListBox name="langlist" is_focusable="0"/>
 	</ScrollArea>
 	</HBox>
 
