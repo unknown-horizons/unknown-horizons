@@ -173,7 +173,7 @@ def test_ticket_1371(gui):
 	gui.trigger('mainhud', 'build/action/default')
 
 	# Build lumberjack
-	gui.trigger('tab', 'button_5/action/default')
+	gui.trigger('tab', 'button_03/action/default')
 	gui.cursor_click(52, 7, 'left')
 
 	# Select lumberjack
@@ -260,13 +260,13 @@ def test_ticket_1520(gui):
 
 	# Build a tent
 	gui.trigger('mainhud', 'build/action/default')
-	gui.trigger('tab', 'button_1/action/default')
+	gui.trigger('tab', 'button_01/action/default')
 	gui.cursor_click(7, 9, 'left')
 
 	assert ground_map[(7, 9)].object.id == BUILDINGS.RESIDENTIAL
 
 	# Start building a mainsquare (not releasing left mouse button)
-	gui.trigger('tab', 'button_3/action/default')
+	gui.trigger('tab', 'button_02/action/default')
 	gui.cursor_move(13, 11)
 	gui.cursor_press_button(13, 11, 'left')
 
@@ -299,7 +299,7 @@ def test_ticket_1509(gui):
 
 	# Build a tent
 	gui.trigger('mainhud', 'build/action/default')
-	gui.trigger('tab', 'button_1/action/default')
+	gui.trigger('tab', 'button_01/action/default')
 	gui.cursor_click(7, 10, 'left')
 
 	# Select tent
@@ -354,7 +354,7 @@ def test_pavilion_build_crash_built_via_settler_related_tab(gui):
 	gui.trigger('mainhud', 'build/action/default')
 
 	# Build settler
-	gui.trigger('tab', 'button_1/action/default')
+	gui.trigger('tab', 'button_01/action/default')
 	gui.cursor_click(52, 7, 'left')
 
 	# Select settler
