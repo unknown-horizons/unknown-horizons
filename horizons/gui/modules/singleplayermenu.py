@@ -34,7 +34,7 @@ from horizons.util import Callback, random_map, yamlcache
 from horizons.extscheduler import ExtScheduler
 from horizons.savegamemanager import SavegameManager
 from horizons.gui.modules import AIDataSelection, PlayerDataSelection
-from horizons.constants import AI
+from horizons.constants import AI, LANGUAGENAMES
 from horizons.gui.widgets.minimap import Minimap
 from horizons.world import World
 from horizons.util import SavegameAccessor, WorldObject, Rect
@@ -150,12 +150,12 @@ class SingleplayerMenu(object):
 				#show only selectable languages
 				for i in find_available_languages().keys():
 					if os.path.exists(self._get_selected_map() + '_' + i + '.' + SavegameManager.scenario_extension):
-						selectable_languages.append(i)
+						selectable_languages.append(LANGUAGENAMES[i])
 				selectable_languages.sort()
 				lang_list.items = selectable_languages
 				cur_locale = horizons.main.fife.get_locale()
-				if cur_locale in lang_list.items:
-					lang_list.selected = lang_list.items.index(cur_locale)
+				if LANGUAGENAMES[cur_locale] in lang_list.items:
+					lang_list.selected = lang_list.items.index(LANGUAGENAMES[cur_locale])
 				else:
 					lang_list.selected = 0
 
@@ -165,7 +165,6 @@ class SingleplayerMenu(object):
 				self.active_right_side.distributeData({ 'maplist' : 0, })
 
 				if show == 'scenario': # update infos for scenario
-					lang_list.selected = lang_list.items.index(horizons.main.fife.get_locale())
 					from horizons.scenario import ScenarioEventHandler, InvalidScenarioFileFormat
 					def _update_infos():
 						"""Fill in infos of selected scenario to label"""
@@ -174,7 +173,7 @@ class SingleplayerMenu(object):
 							this_locale = ""
 							new_map_name = ""
 							if locale is None:
-								this_locale = lang_list.selected_item
+								this_locale = LANGUAGENAMES.get_by_value(lang_list.selected_item)
 							else:
 								this_locale = locale
 							#check if selected map's file ends with .yaml	
@@ -200,7 +199,7 @@ class SingleplayerMenu(object):
 						#show only selectable languages
 						for i in find_available_languages().keys():
 							if os.path.exists(_find_map_filename(i)):
-								selectable_languages.append(i)
+								selectable_languages.append(LANGUAGENAMES[i])
 						selectable_languages.sort()
 						lang_list.items = selectable_languages
 						if cur_selected_language in lang_list.items:
@@ -218,8 +217,8 @@ class SingleplayerMenu(object):
 							If there are fuzzy translations, show them as untranslated.
 
 							This function also sets scenario map name using locale.
-							(e.g. tutorial -> tutorial_en.yaml)"""
-							
+						(e.g. tutorial -> tutorial_en.yaml)"""
+					
 							translation_status_label = self.current.findChild(name="translation_status")
 							try:
 								#get translation status
@@ -261,8 +260,8 @@ class SingleplayerMenu(object):
 								default_locale = "en"
 
 							#check if default_locale is in list
-							if default_locale in lang_list.items:
-								lang_list.selected = lang_list.items.index(default_locale)
+							if LANGUAGENAMES[default_locale] in lang_list.items:
+								lang_list.selected = lang_list.items.index(LANGUAGENAMES[default_locale])
 							#if default locale is not in list then select first one
 							else:
 								lang_list.selected = 0
