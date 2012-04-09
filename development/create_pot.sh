@@ -47,4 +47,8 @@ fi
              --keyword=N_:1,2
 #this also catches N_() plural-aware calls
 
+# some strings contain two entries per line => remove line numbers from both
+perl -pi -e 's,(#: .*):[0-9][0-9]*,\1,g' po/$RESULT_FILE
+perl -pi -e 's,(#: .*):[0-9][0-9]*,\1,g' po/$RESULT_FILE
+
 echo "=> Created gettext pot template file at po/$RESULT_FILE."

@@ -104,7 +104,7 @@ class ShipMission(Mission):
 
 	def _unload_all_resources(self, settlement):
 		# copy the inventory because otherwise we would be modifying it while iterating
-		for res, amount in [item for item in self.ship.get_component(StorageComponent).inventory]:
+		for res, amount in [item for item in self.ship.get_component(StorageComponent).inventory.itercontents()]:
 			self.move_resource(self.ship, settlement, res, amount)
 
 	def _move_to_warehouse_area(self, warehouse_position, success_callback, blocked_callback, failure_msg):

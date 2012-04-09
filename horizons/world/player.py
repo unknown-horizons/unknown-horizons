@@ -28,13 +28,13 @@ from horizons.scenario import CONDITIONS
 from horizons.scheduler import Scheduler
 from horizons.world.componentholder import ComponentHolder
 from horizons.world.component.storagecomponent import StorageComponent
-from horizons.util.messaging.message import SettlerUpdate, NewDisaster
+from horizons.messaging import SettlerUpdate, NewDisaster
 
 class Player(ComponentHolder, WorldObject):
 	"""Class representing a player"""
 
 	regular_player = True # either a human player or a normal AI player (not trader or pirate)
-	component_templates = ({'StorageComponent': {'inventory': {'PositiveStorage': {}}}},)
+	component_templates = ({'StorageComponent': {'PositiveStorage': {}}},)
 
 
 	def __init__(self, session, worldid, name, color, difficulty_level = None):
@@ -70,8 +70,9 @@ class Player(ComponentHolder, WorldObject):
 		self.difficulty = DifficultySettings.get_settings(difficulty_level)
 		self.settler_level = settlerlevel
 		assert self.color.is_default_color, "Player color has to be a default color"
-		self.session.message_bus.subscribe_globally(SettlerUpdate, self.notify_settler_reached_level)
-		self.session.message_bus.subscribe_locally(NewDisaster, self, self.notify_new_disaster)
+
+		SettlerUpdate.subscribe(self.notify_settler_reached_level)
+		NewDisaster.subscribe(self, self.notify_new_disaster)
 
 		if self.regular_player:
 			Scheduler().add_new_object(Callback(self.update_stats), self, run_in = 0)

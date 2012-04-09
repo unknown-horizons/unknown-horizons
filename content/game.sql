@@ -189,6 +189,10 @@ INSERT INTO "related_buildings" VALUES(20,36, 1);
 INSERT INTO "related_buildings" VALUES(20,38, 1);
 INSERT INTO "related_buildings" VALUES(20,39, 1);
 INSERT INTO "related_buildings" VALUES(20,46, 1);
+INSERT INTO "related_buildings" VALUES(20,49, 1);
+INSERT INTO "related_buildings" VALUES(20,60, 1);
+INSERT INTO "related_buildings" VALUES(20,61, 1);
+INSERT INTO "related_buildings" VALUES(20,62, 1);
 INSERT INTO "related_buildings" VALUES(3,4, 1);
 INSERT INTO "related_buildings" VALUES(3,5, 1);
 INSERT INTO "related_buildings" VALUES(3,21, 1);
@@ -509,6 +513,7 @@ INSERT INTO "resource" VALUES(1,'tools',18.5,6,1);
 INSERT INTO "resource" VALUES(1,'bricks',15,7,1);
 INSERT INTO "resource" VALUES(0,'trees',1,8,1);
 INSERT INTO "resource" VALUES(0,'grass',0,9,0);
+-- tradeable   name   value   id   show_inv
 INSERT INTO "resource" VALUES(1,'wool',2.5,10,1);
 INSERT INTO "resource" VALUES(0,'faith',NULL,11,1);
 INSERT INTO "resource" VALUES(0,'deer food A',0,12,0);
@@ -532,6 +537,7 @@ INSERT INTO "resource" VALUES(1,'salt',15,29,1);
 INSERT INTO "resource" VALUES(0,'tobacco plants',2,30,1);
 INSERT INTO "resource" VALUES(1,'tobacco leaves',2.5,31,1);
 INSERT INTO "resource" VALUES(1,'tobaccos',10,32,1);
+-- tradeable   name   value   id   show_inv
 INSERT INTO "resource" VALUES(0,'cattle',0,33,1);
 INSERT INTO "resource" VALUES(0,'pigs',0,34,1);
 INSERT INTO "resource" VALUES(0,'cattle for slaughter',2,35,1);
@@ -543,23 +549,21 @@ INSERT INTO "resource" VALUES(1,'cannon',100,40,1);
 INSERT INTO "resource" VALUES(0,'dagger',10,41,0);
 INSERT INTO "resource" VALUES(0,'grain',0,42,1); -- corn ears
 INSERT INTO "resource" VALUES(0,'corn',2,43,1);
-INSERT INTO "resource" VALUES(1,'flour',0,44,1);
---these are hidden for now, waiting for the respective building graphics
---INSERT INTO "resource" VALUES(0,'spice plants',2,45,1);
---INSERT INTO "resource" VALUES(1,'spices',2.5,46,1);
---INSERT INTO "resource" VALUES(1,'condiments',10,47,1);
---INSERT INTO "resource" VALUES(0,'stone deposit',0,51,1);
---INSERT INTO "resource" VALUES(1,'stone tops',7.5,52,1);
---INSERT INTO "resource" VALUES(0,'cocoa beans',2,53,1);
---INSERT INTO "resource" VALUES(1,'cocoa',2.5,54,1);
---INSERT INTO "resource" VALUES(1,'confectionery',10,55,1);
---INSERT INTO "resource" VALUES(1,'candles',10,56,1);
---INSERT INTO "resource" VALUES(0,'vines',2,57,1);
---INSERT INTO "resource" VALUES(1,'grapes',2.5,58,1);
---INSERT INTO "resource" VALUES(0,'alvearies',2,59,1);
---INSERT INTO "resource" VALUES(1,'honeycombs',2.5,60,1);
-INSERT INTO "resource" VALUES(0,'fire',0,99,0); --
-
+INSERT INTO "resource" VALUES(1,'flour',2.5,44,1);
+INSERT INTO "resource" VALUES(0,'spice plants',2,45,1);
+INSERT INTO "resource" VALUES(1,'spices',2.5,46,1);
+INSERT INTO "resource" VALUES(1,'condiments',10,47,1);
+INSERT INTO "resource" VALUES(0,'stone deposit',0,51,1);
+INSERT INTO "resource" VALUES(1,'stone tops',7.5,52,1);
+INSERT INTO "resource" VALUES(0,'cocoa beans',2,53,1);
+INSERT INTO "resource" VALUES(1,'cocoa',2.5,54,1);
+INSERT INTO "resource" VALUES(1,'confectionery',10,55,1);
+INSERT INTO "resource" VALUES(1,'candles',10,56,1);
+INSERT INTO "resource" VALUES(0,'vines',2,57,1);
+INSERT INTO "resource" VALUES(1,'grapes',2.5,58,1);
+INSERT INTO "resource" VALUES(0,'alvearies',2,59,1);
+INSERT INTO "resource" VALUES(1,'honeycombs',2.5,60,1);
+INSERT INTO "resource" VALUES(0,'fire',0,99,0);
 CREATE TABLE translucent_buildings(type INTEGER);
 INSERT INTO "translucent_buildings" VALUES(17);
 INSERT INTO "translucent_buildings" VALUES(34);

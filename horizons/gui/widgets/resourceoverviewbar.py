@@ -31,14 +31,13 @@ import horizons.main
 
 from horizons.constants import RES
 from horizons.world.component.storagecomponent import StorageComponent
-from horizons.util.gui import load_uh_widget, get_res_icon_path, create_resource_selection_dialog
+from horizons.gui.util import load_uh_widget, get_res_icon_path, create_resource_selection_dialog
 from horizons.util import PychanChildFinder, Callback
 from horizons.util.python.decorators import cachedmethod
-from horizons.util.messaging.message import ResourceBarResize
 from horizons.extscheduler import ExtScheduler
 from horizons.world.component.ambientsoundcomponent import AmbientSoundComponent
 from horizons.util.lastactiveplayersettlementmanager import LastActivePlayerSettlementManager
-from horizons.util.messaging.message import NewPlayerSettlementHovered
+from horizons.messaging import NewPlayerSettlementHovered, ResourceBarResize
 
 
 class ResourceOverviewBar(object):
@@ -69,19 +68,19 @@ class ResourceOverviewBar(object):
 
 	STYLE = "resource_bar"
 
-	DEFAULT_RESOURCES = [ RES.TOOLS_ID,
-	                      RES.BOARDS_ID,
-	                      RES.BRICKS_ID,
-	                      RES.FOOD_ID,
-	                      RES.TEXTILE_ID,
-	                      RES.SALT_ID]
+	DEFAULT_RESOURCES = [ RES.TOOLS,
+	                      RES.BOARDS,
+	                      RES.BRICKS,
+	                      RES.FOOD,
+	                      RES.TEXTILE,
+	                      RES.SALT]
 
 	# order should match the above, else confuses players when in build mode
 	CONSTRUCTION_RESOURCES = { # per settler increment
-	  0: [ RES.TOOLS_ID, RES.BOARDS_ID ],
-	  1: [ RES.TOOLS_ID, RES.BOARDS_ID, RES.BRICKS_ID ],
-	  2: [ RES.TOOLS_ID, RES.BOARDS_ID, RES.BRICKS_ID ],
-	  3: [ RES.TOOLS_ID, RES.BOARDS_ID, RES.BRICKS_ID ],
+	  0: [ RES.TOOLS, RES.BOARDS ],
+	  1: [ RES.TOOLS, RES.BOARDS, RES.BRICKS ],
+	  2: [ RES.TOOLS, RES.BOARDS, RES.BRICKS ],
+	  3: [ RES.TOOLS, RES.BOARDS, RES.BRICKS ],
 	}
 
 	def __init__(self, session):
@@ -92,7 +91,7 @@ class ResourceOverviewBar(object):
 		# special slot because of special properties
 		self.gold_gui = load_uh_widget(self.__class__.GOLD_ENTRY_GUI_FILE, style=self.__class__.STYLE)
 		self.gold_gui.child_finder = PychanChildFinder(self.gold_gui)
-		self.gold_gui.findChild(name="res_icon").image = get_res_icon_path(RES.GOLD_ID, 32)
+		self.gold_gui.findChild(name="res_icon").image = get_res_icon_path(RES.GOLD, 32)
 
 		self.gui = [] # list of slots
 		self.resource_configurations = weakref.WeakKeyDictionary()
@@ -103,18 +102,17 @@ class ResourceOverviewBar(object):
 
 		self._update_default_configuration()
 
-		self.session.message_bus.subscribe_globally(NewPlayerSettlementHovered, self._on_different_settlement)
+		NewPlayerSettlementHovered.subscribe(self._on_different_settlement)
 
 	def end(self):
-		self.set_inventory_instance(None, force_update=True)
+		self.set_inventory_instance( None, force_update=True )
 		self.current_instance = weakref.ref(self)
 		ExtScheduler().rem_all_classinst_calls(self)
 		self.resource_configurations.clear()
-		self.gold_gui.hide()
 		self.gold_gui = None
-		self.gui = None # hidden by set_inventory
+		self.gui = None
 		self._custom_default_resources = None
-		self.session.message_bus.unsubscribe_globally(NewPlayerSettlementHovered, self._on_different_settlement)
+		NewPlayerSettlementHovered.unsubscribe(self._on_different_settlement)
 
 	def _update_default_configuration(self):
 		# user defined variante of DEFAULT_RESOURCES (will be preferred)
@@ -250,7 +248,7 @@ class ResourceOverviewBar(object):
 		self._drop_cost_labels()
 
 		for res, amount in build_costs.iteritems():
-			assert res in res_list or res == RES.GOLD_ID
+			assert res in res_list or res == RES.GOLD
 
 			cost_label = pychan.widgets.Label(text=u"-"+unicode(amount))
 			cost_label.stylize( self.__class__.STYLE )
@@ -318,7 +316,7 @@ class ResourceOverviewBar(object):
 		delattr(self, scheduled_attr)
 
 		# set gold amount
-		gold = self.session.world.player.get_component(StorageComponent).inventory[RES.GOLD_ID]
+		gold = self.session.world.player.get_component(StorageComponent).inventory[RES.GOLD]
 		gold_available_lbl = self.gold_gui.child_finder("gold_available")
 		gold_available_lbl.text = unicode(gold)
 
@@ -351,7 +349,7 @@ class ResourceOverviewBar(object):
 			res_list = self.__class__.CONSTRUCTION_RESOURCES[lvl]
 			# also add additional res that might be needed
 			res_list += [ res for res in self._last_build_costs if \
-			              res not in res_list and res != RES.GOLD_ID ]
+			              res not in res_list and res != RES.GOLD ]
 			return res_list
 		# prefer user defaults over general defaults
 		default = self._custom_default_resources if self._custom_default_resources else self.__class__.DEFAULT_RESOURCES
@@ -478,7 +476,7 @@ class ResourceOverviewBar(object):
 			self._hide_dummy_slot()
 
 		if number_of_slots_changed:
-			self.session.message_bus.broadcast( ResourceBarResize(self) )
+			ResourceBarResize.broadcast(self)
 
 	def _hide_resource_selection_dialog(self):
 		if hasattr(self, "_res_selection_dialog"):

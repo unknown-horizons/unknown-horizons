@@ -176,7 +176,7 @@ def new_session(mapgen=create_map, rng_seed=RANDOM_SEED, human_player = True, ai
 	if ai_players > 0: # currently only ai tests use the ships
 		for player in session.world.players:
 			point = session.world.get_random_possible_ship_position()
-			ship = CreateUnit(player.worldid, UNITS.PLAYER_SHIP_CLASS, point.x, point.y)(issuer=player)
+			ship = CreateUnit(player.worldid, UNITS.PLAYER_SHIP, point.x, point.y)(issuer=player)
 			# give ship basic resources
 			for res, amount in session.db("SELECT resource, amount FROM start_resources"):
 				ship.get_component(StorageComponent).inventory.alter(res, amount)

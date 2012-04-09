@@ -1,0 +1,31 @@
+id: 55
+name:
+  2: _ Stonemason
+  4: _ Carver
+baseclass: production.ProductionBuilding
+radius: 8
+cost: 15
+cost_inactive: 5
+size_x: 2
+size_y: 2
+inhabitants_start: 1
+inhabitants_max: 1
+tooltip_text: _ Carves stone tops into bricks.
+settler_level: 2
+buildingcosts: {1: 1}
+components:
+- HealthComponent: {maxhealth: 1000}
+- ProducerComponent:
+    productionlines:
+      0:
+        produces:
+        - [RES.BRICKS, 1]
+        consumes:
+        - [RES.STONE_TOPS, -1]
+        time: 30
+- StorageComponent:
+      SlotsStorage:
+        slot_sizes: {RES.STONE_TOPS: 4, RES.BRICKS: 8}
+actionsets:
+  #as_stonemason0: {level: 0}
+  as_2x2: {level: 0}

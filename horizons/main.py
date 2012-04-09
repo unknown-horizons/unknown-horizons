@@ -46,7 +46,7 @@ from horizons.extscheduler import ExtScheduler
 from horizons.constants import AI, COLORS, GAME, PATHS, NETWORK, SINGLEPLAYER, GAME_SPEED
 from horizons.network.networkinterface import NetworkInterface
 from horizons.util import ActionSetLoader, DifficultySettings, TileSetLoader, Color, parse_port, Callback
-from horizons.util.uhdbaccessor import UhDbAccessor, read_savegame_template
+from horizons.util.uhdbaccessor import UhDbAccessor
 
 # private module pointers of this module
 class Modules(object):
@@ -142,7 +142,6 @@ def start(_command_line_arguments):
 			from tests.gui.logger import setup_gui_logger
 			setup_gui_logger()
 		except ImportError:
-			import traceback
 			traceback.print_exc()
 			print
 			print "Gui logging requires code that is only present in the repository and is not being installed."
@@ -173,7 +172,7 @@ def start(_command_line_arguments):
 	update_check_thread = threading.Thread(target=check_for_updates, args=(update_info,))
 	update_check_thread.start()
 	def update_info_handler(info):
-		if info.status == UpdateInfo.UNINITIALISED:
+		if info.status == UpdateInfo.UNINITIALISED: # check again later
 			ExtScheduler().add_new_object(Callback(update_info_handler, info), info)
 		elif info.status == UpdateInfo.READY:
 			show_new_version_hint(_modules.gui, info)
@@ -307,23 +306,22 @@ def start_singleplayer(map_file, playername = "Player", playercolor = None, is_s
 			is_scenario = is_scenario, campaign = campaign, force_player_id = force_player_id, disasters_enabled=disasters_enabled)
 	except InvalidScenarioFileFormat as e:
 		raise
-	except Exception as e:
+	except Exception:
 		# don't catch errors when we should fail fast (used by tests)
 		if os.environ.get('FAIL_FAST', False):
 			raise
-		import traceback
 		print "Failed to load", map_file
 		traceback.print_exc()
 		if _modules.session is not None and _modules.session.is_alive:
 			try:
 				_modules.session.end()
-			except Exception as e:
+			except Exception:
 				print
 				traceback.print_exc()
 				print "Additionally to failing when loading, cleanup afterwards also failed"
 		_modules.gui.show_main()
 		headline = _(u"Failed to start/load the game")
-		descr = _(u"The game you selected couldn't be started.") + u" " +\
+		descr = _(u"The game you selected could not be started.") + u" " +\
 			      _("The savegame might be broken or has been saved with an earlier version.")
 		_modules.gui.show_error_popup(headline, descr)
 		load_game(ai_players, human_ai, force_player_id=force_player_id)
@@ -331,7 +329,7 @@ def start_singleplayer(map_file, playername = "Player", playercolor = None, is_s
 
 def prepare_multiplayer(game, trader_enabled = True, pirate_enabled = True, natural_resource_multiplier = 1):
 	"""Starts a multiplayer game server
-	TODO: acctual game data parameter passing
+	TODO: actual game data parameter passing
 	"""
 	global fife, preloading, db
 
@@ -534,7 +532,6 @@ def preload_game_data(lock):
 	try:
 		import logging
 		from horizons.entities import Entities
-		from horizons.util import Callback
 		log = logging.getLogger("preload")
 		mydb = _create_main_db() # create own db reader instance, since it's not thread-safe
 		preload_functions = [ ActionSetLoader.load, \

@@ -26,7 +26,7 @@ from fife.extensions.pychan.widgets import Icon
 
 from horizons.world.status import StatusIcon
 from horizons.constants import LAYERS
-from horizons.util.messaging.message import AddStatusIcon, RemoveStatusIcon, WorldObjectDeleted, HoverInstancesChanged
+from horizons.messaging import AddStatusIcon, RemoveStatusIcon, WorldObjectDeleted, HoverInstancesChanged
 
 class StatusIconManager(object):
 	"""Manager class that manages all status icons. It listenes to AddStatusIcon
@@ -43,10 +43,24 @@ class StatusIconManager(object):
 		# we need to remove the tooltip always anyway, and along with it the entry here
 		self.tooltip_icon = Icon()
 
-		self.session.message_bus.subscribe_globally(AddStatusIcon, self.on_add_icon_message)
-		self.session.message_bus.subscribe_globally(HoverInstancesChanged, self.on_hover_instances_changed)
-		self.session.message_bus.subscribe_globally(RemoveStatusIcon, self.on_remove_icon_message)
-		self.session.message_bus.subscribe_globally(WorldObjectDeleted, self.on_worldobject_deleted_message)
+		AddStatusIcon.subscribe(self.on_add_icon_message)
+		HoverInstancesChanged.subscribe(self.on_hover_instances_changed)
+		RemoveStatusIcon.subscribe(self.on_remove_icon_message)
+		WorldObjectDeleted.subscribe(self.on_worldobject_deleted_message)
+
+	def end(self):
+		self.tooltip_instance = None
+		self.tooltip_icon.hide_tooltip()
+		self.tooltip_icon = None
+
+		self.renderer = None
+		self.icons = None
+		self.session = None
+
+		AddStatusIcon.unsubscribe(self.on_add_icon_message)
+		HoverInstancesChanged.unsubscribe(self.on_hover_instances_changed)
+		RemoveStatusIcon.unsubscribe(self.on_remove_icon_message)
+		WorldObjectDeleted.unsubscribe(self.on_worldobject_deleted_message)
 
 	def on_add_icon_message(self, message):
 		"""This is called by the message bus with AddStatusIcon messages"""

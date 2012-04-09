@@ -42,7 +42,7 @@ def test_load_inactive_production():
 	session, player = new_session()
 	settlement, island = settle(session)
 
-	lj = Build(BUILDINGS.LUMBERJACK_CLASS, 30, 30, island, settlement=settlement)(player)
+	lj = Build(BUILDINGS.LUMBERJACK, 30, 30, island, settlement=settlement)(player)
 	# Set lumberjack to inactive
 	lj.get_component(Producer).set_active(active = False)
 	worldid = lj.worldid
@@ -75,8 +75,8 @@ def create_lumberjack_production_session():
 	settlement, island = settle(session)
 
 	for x in [29, 30, 31, 32]:
-		Build(BUILDINGS.TREE_CLASS, x, 29, island, settlement=settlement,)(player)
-	building = Build(BUILDINGS.LUMBERJACK_CLASS, 30, 30, island, settlement=settlement)(player)
+		Build(BUILDINGS.TREE, x, 29, island, settlement=settlement,)(player)
+	building = Build(BUILDINGS.LUMBERJACK, 30, 30, island, settlement=settlement)(player)
 	production = building.get_component(Producer).get_productions()[0]
 
 	# wait for the lumberjack to start producing
@@ -126,17 +126,17 @@ def test_hunter_save_load():
 
 	# setup hunter, trees (to keep animals close) and animals
 
-	hunter = Build(BUILDINGS.HUNTER_CLASS, 30, 30, island, settlement=settlement)(player)
+	hunter = Build(BUILDINGS.HUNTER, 30, 30, island, settlement=settlement)(player)
 	hunter_worldid = hunter.worldid
 	del hunter # invalid after save/load
 
 	for x in xrange(27, 29):
 		for y in xrange(25, 28):
-			assert Build(BUILDINGS.TREE_CLASS, x, y, island, settlement=settlement)(player)
+			assert Build(BUILDINGS.TREE, x, y, island, settlement=settlement)(player)
 
-	CreateUnit(island.worldid, UNITS.WILD_ANIMAL_CLASS, 27, 27)(issuer=None)
-	CreateUnit(island.worldid, UNITS.WILD_ANIMAL_CLASS, 28, 27)(issuer=None)
-	CreateUnit(island.worldid, UNITS.WILD_ANIMAL_CLASS, 29, 27)(issuer=None)
+	CreateUnit(island.worldid, UNITS.WILD_ANIMAL, 27, 27)(issuer=None)
+	CreateUnit(island.worldid, UNITS.WILD_ANIMAL, 28, 27)(issuer=None)
+	CreateUnit(island.worldid, UNITS.WILD_ANIMAL, 29, 27)(issuer=None)
 
 	# utility
 	def saveload(session):

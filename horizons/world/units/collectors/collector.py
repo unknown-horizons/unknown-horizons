@@ -177,7 +177,7 @@ class Collector(Unit):
 		    self, run_in=0
 		)
 
-	def apply_state(self, state, remaining_ticks = None):
+	def apply_state(self, state, remaining_ticks=None):
 		"""Takes actions to set collector to a state. Useful after loading.
 		@param state: EnumValue from states
 		@param remaining_ticks: ticks after which current state is finished
@@ -270,10 +270,10 @@ class Collector(Unit):
 
 		# check if other collectors get this resource, because our inventory could
 		# get full if they arrive.
-		total_registered_amount_consumer = sum([ collector.job.amount for collector in \
+		total_registered_amount_consumer = sum(( collector.job.amount for collector in \
 		                                         self.get_colleague_collectors() if \
 		                                         collector.job is not None and \
-		                                         collector.job.res == res ])
+		                                         collector.job.res == res ))
 
 		inventory = self.get_home_inventory()
 
@@ -361,8 +361,13 @@ class Collector(Unit):
 		self.act("idle", self._instance.getFacingLocation(), True)
 		# deregister at the target we're at
 		self.job.object.remove_incoming_collector(self)
+		# reconsider job now: there might now be more res available than there were when we started
+		new_job = self.check_possible_job_target_for(self.job.object, self.job.res)
+		if new_job is not None:
+			self.job.amount = new_job.amount
+
 		# transfer res (this must be the last step, it will trigger consecutive actions through the
-		#               target inventory changelistener, and the collector must be in a consistent state then.
+		# target inventory changelistener, and the collector must be in a consistent state then.
 		self.transfer_res_from_target()
 		# stop playing ambient sound if any
 		if self.has_component(AmbientSoundComponent):

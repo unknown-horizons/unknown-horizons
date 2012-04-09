@@ -152,10 +152,10 @@ class GuiHelper(object):
 
 		Example:
 			c = gui.find('mainmenu')
-			gui.trigger(c, 'OkButton/action/default')
+			gui.trigger(c, 'okButton/action/default')
 
 		Equivalent to:
-			gui.trigger('mainmenu', 'OkButton/action/default')
+			gui.trigger('mainmenu', 'okButton/action/default')
 		"""
 		widget_name, event_name, group_name = event.split('/')
 

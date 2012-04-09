@@ -33,22 +33,22 @@ class AbstractDistillery(AbstractBuilding):
 
 	@classmethod
 	def register_buildings(cls):
-		cls._available_buildings[BUILDINGS.DISTILLERY_CLASS] = cls
+		cls._available_buildings[BUILDINGS.DISTILLERY] = cls
 
 class DistilleryEvaluator(BuildingEvaluator):
 	@classmethod
 	def create(cls, area_builder, x, y, orientation):
-		builder = area_builder.make_builder(BUILDINGS.DISTILLERY_CLASS, x, y, True, orientation)
+		builder = area_builder.make_builder(BUILDINGS.DISTILLERY, x, y, True, orientation)
 		if not builder:
 			return None
 
 		distance_to_farm = None
-		for building in area_builder.settlement.buildings_by_id.get(BUILDINGS.FARM_CLASS, []):
+		for building in area_builder.settlement.buildings_by_id.get(BUILDINGS.FARM, []):
 			distance = builder.position.distance(building.position)
-			if distance <= Entities.buildings[BUILDINGS.DISTILLERY_CLASS].radius:
+			if distance <= Entities.buildings[BUILDINGS.DISTILLERY].radius:
 				sugarcane_producer = False
 				for provider in building._get_providers():
-					if isinstance(provider, Entities.buildings[BUILDINGS.SUGARCANE_FIELD_CLASS]):
+					if isinstance(provider, Entities.buildings[BUILDINGS.SUGARCANE_FIELD]):
 						sugarcane_producer = True
 						break
 				if sugarcane_producer:
@@ -59,11 +59,11 @@ class DistilleryEvaluator(BuildingEvaluator):
 			return None # require distilleries to have a collector building in range
 
 		personality = area_builder.owner.personality_manager.get('DistilleryEvaluator')
-		distance_penalty = Entities.buildings[BUILDINGS.DISTILLERY_CLASS].radius * personality.distance_penalty
+		distance_penalty = Entities.buildings[BUILDINGS.DISTILLERY].radius * personality.distance_penalty
 
 		alignment = cls._get_alignment(area_builder, builder.position.tuple_iter())
 		distance = cls._weighted_distance(distance_to_collector, [(personality.farm_distance_importance, distance_to_farm)], distance_penalty)
-		value = float(Entities.buildings[BUILDINGS.DISTILLERY_CLASS].radius) / distance + alignment * personality.alignment_importance
+		value = float(Entities.buildings[BUILDINGS.DISTILLERY].radius) / distance + alignment * personality.alignment_importance
 		return DistilleryEvaluator(area_builder, builder, value)
 
 	@property

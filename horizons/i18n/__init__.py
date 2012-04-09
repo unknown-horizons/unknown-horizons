@@ -66,7 +66,7 @@ def translate_widget(untranslated, filename):
 				replace_attribute(widget, entry[0][1], entry[1])
 				widget.adaptLayout()
 	else:
-		log.debug('No translation for file %s', filename)
+		log.debug('No translation key in i18n.guitranslations for file %s', filename)
 
 	# save as weakref for updates to translations
 	translated_widgets[filename] = weakref.ref(untranslated)

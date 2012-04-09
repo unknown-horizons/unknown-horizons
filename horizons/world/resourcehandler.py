@@ -154,7 +154,7 @@ class ResourceHandler(object):
 			return 0 # we don't provide this, and give nothing away because we need it ourselves.
 		else:
 			amount_from_collectors = sum([c.job.amount for c in self.__incoming_collectors if \
-			                              c != collector and c.job.res == res])
+			                              c is not collector and c.job.res == res])
 			amount = self.get_component(StorageComponent).inventory[res] - amount_from_collectors
 			# the user can take away res, even if a collector registered for them
 			# if this happens, a negative number would be returned. Use 0 instead.

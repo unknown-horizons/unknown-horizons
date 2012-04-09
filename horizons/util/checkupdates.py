@@ -24,6 +24,7 @@ import webbrowser
 import urllib2
 
 from horizons.constants import NETWORK, VERSION
+from horizons.gui.widgets import OkButton
 
 class UpdateInfo(object):
 	INVALID, READY, UNINITIALISED = range(3)
@@ -36,6 +37,7 @@ TIMEOUT = 5.0 # we should be done before the user can start a game
 def check_for_updates(info):
 	"""Check if there's a new version.
 	@return update file contents or None"""
+	# make sure to always set info.status, but only when we're done
 	if VERSION.IS_DEV_VERSION: # no updates for git version
 		info.status = UpdateInfo.INVALID
 		return
@@ -84,5 +86,5 @@ def show_new_version_hint(gui, info):
 	popup = gui.build_popup(title, text)
 	popup.addChild( dl_btn )
 
-	gui.show_dialog(popup, {"okButton" : True})
+	gui.show_dialog(popup, {OkButton.DEFAULT_NAME : True})
 

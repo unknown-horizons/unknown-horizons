@@ -18,6 +18,5 @@ components:
     tabs: [ProductionOverviewTab]
     enemy_tabs: [EnemyBuildingOverviewTab,]
 - HealthComponent: {maxhealth: 1000}
-- StorageComponent
 actionsets:
   as_lookout0: {level: 0}

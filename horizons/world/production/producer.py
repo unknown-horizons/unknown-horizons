@@ -35,7 +35,7 @@ from horizons.world.status import ProductivityLowStatus, DecommissionedStatus, I
 from horizons.world.production.unitproduction import UnitProduction
 from horizons.command.unit import CreateUnit
 from horizons.util.changelistener import metaChangeListenerDecorator
-from horizons.util.messaging.message import AddStatusIcon, RemoveStatusIcon
+from horizons.messaging import AddStatusIcon, RemoveStatusIcon
 from horizons.world.production.utilisation import Utilisation, FullUtilisation, FieldUtilisation
 from horizons.util.python.callback import Callback
 
@@ -141,10 +141,10 @@ class Producer(Component):
 		if not self.capacity_utilisation_below(ProductivityLowStatus.threshold) is not self.__utilisation_ok:
 			self.__utilisation_ok = not self.__utilisation_ok
 			if self.__utilisation_ok:
-				self.session.message_bus.broadcast(RemoveStatusIcon(self, self.instance, ProductivityLowStatus))
+				RemoveStatusIcon.broadcast(self, self.instance, ProductivityLowStatus)
 			else:
 				icon = ProductivityLowStatus(self.instance)
-				self.session.message_bus.broadcast(AddStatusIcon(self, icon))
+				AddStatusIcon.broadcast(self, icon)
 
 	@property
 	def capacity_utilisation(self):
@@ -313,7 +313,6 @@ class Producer(Component):
 					self._inactive_productions[line_id] = production
 					del self._productions[line_id]
 					production.pause()
-
 			self._update_decommissioned_icon()
 
 		self.instance._changed()
@@ -327,10 +326,10 @@ class Producer(Component):
 		if self.is_active() is not self.__active:
 			self.__active = not self.__active
 			if self.__active:
-				self.session.message_bus.broadcast(RemoveStatusIcon(self, self.instance, DecommissionedStatus))
+				RemoveStatusIcon.broadcast(self, self.instance, DecommissionedStatus)
 			else:
 				icon = DecommissionedStatus(self.instance)
-				self.session.message_bus.broadcast(AddStatusIcon(self, icon))
+				AddStatusIcon.broadcast(self, icon)
 
 	def toggle_active(self, production=None):
 		if production is None:
@@ -360,10 +359,10 @@ class Producer(Component):
 				for prod in self.get_productions():
 					affected_res = affected_res.union( prod.get_unstorable_produced_res() )
 				self._producer_status_icon = InventoryFullStatus(self.instance, affected_res)
-				self.session.message_bus.broadcast(AddStatusIcon(self, self._producer_status_icon))
+				AddStatusIcon.broadcast(self, self._producer_status_icon)
 
 			if not full and hasattr(self, "_producer_status_icon"):
-				self.session.message_bus.broadcast(RemoveStatusIcon(self, self.instance, InventoryFullStatus))
+				RemoveStatusIcon.broadcast(self, self.instance, InventoryFullStatus)
 				del self._producer_status_icon
 
 	def get_status_icons(self):
@@ -558,12 +557,11 @@ class UnitProducer(QueueProducer):
 							if self.instance.island.get_tile(point) is None:
 								tile = self.session.world.get_tile(point)
 								if tile is not None and tile.is_water and coord not in self.session.world.ship_map:
-									found_tile = True
 									# execute bypassing the manager, it's simulated on every machine
 									CreateUnit(self.instance.owner.worldid, unit, point.x, point.y)(issuer=self.instance.owner)
-									if self.instance.owner.is_local_player:
-										# Fire a message indicating that the ship has been created
-										self.session.ingame_gui.message_widget.add(point.x, point.y, 'NEW_UNIT')
+									# Fire a message indicating that the ship has been created
+									self.session.ingame_gui.message_widget.add(None, None, 'NEW_UNIT')
+									found_tile = True
 									break
 						radius += 1
 

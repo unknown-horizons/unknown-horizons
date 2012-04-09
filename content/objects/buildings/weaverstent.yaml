@@ -27,7 +27,6 @@ components:
         - [10, -1]
         time: 12
 - StorageComponent:
-    inventory:
       SlotsStorage:
         slot_sizes: {10: 8, 3: 8}
 - CollectingComponent:

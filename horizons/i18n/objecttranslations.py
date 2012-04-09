@@ -40,6 +40,8 @@
 #
 ###############################################################################
 
+from horizons.constants import VERSION
+
 object_translations = dict()
 
 def set_translations():
@@ -106,7 +108,7 @@ def set_translations():
 		# name of buildings:charcoalburning
 		"name"                        : _("Charcoal Burning"),
 		# tooltip_text of buildings:charcoalburning
-		"tooltip_text"                : _("Burns a lot of boards to charcoal."),
+		"tooltip_text"                : _("Burns a lot of boards."),
 		},
 
 	"content/objects/buildings/claydeposit.yaml" : {
@@ -201,13 +203,6 @@ def set_translations():
 		"tooltip_text"                : _("Gets iron ore from deposit."),
 		},
 
-	"content/objects/buildings/log.yaml" : {
-		# name of buildings:log
-		"name"                        : _("Log"),
-		# tooltip_text of buildings:log
-		"tooltip_text"                : _("Road across a river."),
-		},
-
 	"content/objects/buildings/lookout.yaml" : {
 		# name of buildings:lookout
 		"name"                        : _("Lookout"),
@@ -271,13 +266,6 @@ def set_translations():
 		"tooltip_text"                : _("Yields food. Needs a farm."),
 		},
 
-	"content/objects/buildings/rampart.yaml" : {
-		# name of buildings:rampart
-		"name"                        : _("Rampart"),
-		# tooltip_text of buildings:rampart
-		"tooltip_text"                : _("Protects your settlement."),
-		},
-
 	"content/objects/buildings/ruinedtent.yaml" : {
 		# name of buildings:ruinedtent
 		"name"                        : _("Ruined Tent"),
@@ -312,8 +300,10 @@ def set_translations():
 		},
 
 	"content/objects/buildings/stonemason.yaml" : {
-		# name of buildings:stonemason
-		"name"                        : _("Stonemason"),
+		# name_2 of buildings:stonemason
+		"name_2"                      : _("Stonemason"),
+		# name_4 of buildings:stonemason
+		"name_4"                      : _("Carver"),
 		# tooltip_text of buildings:stonemason
 		"tooltip_text"                : _("Carves stone tops into bricks."),
 		},

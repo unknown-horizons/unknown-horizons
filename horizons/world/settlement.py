@@ -28,7 +28,7 @@ from horizons.constants import BUILDINGS, SETTLER
 from horizons.entities import Entities
 from horizons.util.worldobject import WorldObject
 from horizons.util.shapes.rect import Rect
-from horizons.util.messaging.message import UpgradePermissionsChanged
+from horizons.messaging import UpgradePermissionsChanged
 from horizons.util.changelistener import ChangeListener
 from horizons.world.componentholder import ComponentHolder
 from horizons.world.component.tradepostcomponent import TradePostComponent
@@ -41,10 +41,8 @@ class Settlement(ComponentHolder, WorldObject, ChangeListener, ResourceHandler):
 
 	component_templates = ({
 	    					'StorageComponent':
-	                            {'inventory':
 	                             {'PositiveSizedSlotStorage':
 	                              { 'limit': 0 }
-	                             }
 	                            }
 	                        }
 	                        ,
@@ -93,7 +91,7 @@ class Settlement(ComponentHolder, WorldObject, ChangeListener, ResourceHandler):
 		if self.upgrade_permissions[level] != allowed:
 			self.upgrade_permissions[level] = allowed
 
-			self.session.message_bus.broadcast(UpgradePermissionsChanged(self))
+			UpgradePermissionsChanged.broadcast(self)
 
 	@property
 	def inhabitants(self):
@@ -190,7 +188,7 @@ class Settlement(ComponentHolder, WorldObject, ChangeListener, ResourceHandler):
 		for building_id, building_type in \
 			  db("SELECT rowid, type FROM building WHERE location = ?", worldid):
 			building = load_building(session, db, building_type, building_id)
-			if building_type == BUILDINGS.WAREHOUSE_CLASS:
+			if building_type == BUILDINGS.WAREHOUSE:
 				self.warehouse = building
 
 		for res, amount in db("SELECT res, amount FROM settlement_produced_res WHERE settlement = ?", worldid):

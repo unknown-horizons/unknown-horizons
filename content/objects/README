@@ -6,7 +6,7 @@ If you run into any issues with the files, please don't be shy to report the pro
 We use yaml as data format, wikipedia has a nice article about it: http://en.wikipedia.org/wiki/Yaml
 
 There are some convenience names when working with buildings, resources and units.
-You can write stuff like BUILDINGS.LUMBERJACK_CLASS or RES.FOOD_ID when referring to those things.
+You can write stuff like BUILDINGS.LUMBERJACK or RES.FOOD when referring to those things.
 A complete list of these three is given in horizons/contstants.py .
 (Only those three types are currently supported.)
 Let us know if you'd find any other convenience stuff useful!

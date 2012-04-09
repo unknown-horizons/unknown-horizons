@@ -90,7 +90,6 @@ class AttackingTool(SelectionTool):
 				continue
 			try:
 				if instance.has_component(HealthComponent):
-					attackable = True
 					target = instance
 			except AttributeError:
 				pass

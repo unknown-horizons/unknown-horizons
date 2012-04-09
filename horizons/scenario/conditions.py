@@ -76,12 +76,12 @@ def settler_level_greater(session, limit):
 @register(periodically=True)
 def player_gold_greater(session, limit):
 	"""Returns whether the player has more gold then limit"""
-	return (session.world.player.get_component(StorageComponent).inventory[RES.GOLD_ID] > limit)
+	return (session.world.player.get_component(StorageComponent).inventory[RES.GOLD] > limit)
 
 @register(periodically=True)
 def player_gold_less(session, limit):
 	"""Returns whether the player has less gold then limit"""
-	return (session.world.player.get_component(StorageComponent).inventory[RES.GOLD_ID] < limit)
+	return (session.world.player.get_component(StorageComponent).inventory[RES.GOLD] < limit)
 
 @register(periodically=True)
 def settlement_balance_greater(session, limit):
@@ -154,14 +154,14 @@ def buildings_connected_to_warehouse_gt(session, building_class, number):
 	"""Checks whether more than number of building_class type buildings are
 	connected to a warehouse or storage."""
 	return (_building_connected_to_any_of(session, building_class, \
-	        BUILDINGS.WAREHOUSE_CLASS, BUILDINGS.STORAGE_CLASS) > number )
+	        BUILDINGS.WAREHOUSE, BUILDINGS.STORAGE) > number )
 
 @register(periodically=True)
 def buildings_connected_to_warehouse_lt(session, building_class, number):
 	"""Checks whether less than number of building_class type buildings are
 	connected to a warehouse or storage."""
 	return (_building_connected_to_any_of(session, building_class, \
-	        BUILDINGS.WAREHOUSE_CLASS, BUILDINGS.STORAGE_CLASS) < number )
+	        BUILDINGS.WAREHOUSE, BUILDINGS.STORAGE) < number )
 
 @register(periodically=True)
 def buildings_connected_to_building_gt(session, building_class, class2, number):
@@ -207,21 +207,16 @@ def _get_player_settlements(session):
 def _get_scenario_vars(session):
 	return session.scenario_eventhandler._scenario_variables
 
-@register()
 def _building_connected_to_any_of(session, building_class, *classes):
 	"""Returns the exact amount of buildings of type building_class that are
 	connected to any building of a class in classes. Counts all settlements."""
 	building_to_check = []
 	check_connection = []
 	for settlement in _get_player_settlements(session):
-		for building in settlement.buildings:
-			if building.id == building_class:
-				building_to_check.append(building)
-			else:
-				for b_class in classes:
-					if building.id == b_class:
-						check_connection.append(building)
-						break
+		building_to_check.extend(settlement.buildings_by_id[building_class])
+		for b_class in classes:		
+			for building in settlement.buildings_by_id[b_class]:
+				check_connection.append(building)
 	found_connected = 0
 	for building in building_to_check:
 		for check in check_connection:
@@ -240,7 +235,6 @@ def player_number_of_ships_lt(session, player_id, number):
 	number_of_ships = len([s for s in session.world.ships if s.owner.worldid == player_id])
 	return number_of_ships < number
 
-@register()
 def _building_connected_to_all_of(session, building_class, *classes):
 	"""Returns the exact amount of buildings of type building_class that are
 	connected to any building of each class in classes. Counts all settlements."""

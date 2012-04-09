@@ -72,7 +72,7 @@ class SurfaceTile(object):
 			layer_coords[1] = y+3
 		facing_loc.setLayerCoordinates(fife.ModelCoordinate(*layer_coords))
 
-		self._instance.act(action+"_"+str(self._tile_set_id), facing_loc, True)
+		self._instance.act(str('%s_%s' % (action, self._tile_set_id)), facing_loc, True)
 
 
 class Ground(SurfaceTile):

@@ -47,7 +47,7 @@ class PlayersOverview(StatsWidget):
 		emblem.min_size = (12, 20)
 
 		name = widgets.Label(name = 'player_%d' % player.worldid)
-		name.text = unicode(player.name)
+		name.text = player.name
 		name.min_size = (108, 20)
 
 		money_score = widgets.Label(name = 'money_score_%d' % player.worldid)

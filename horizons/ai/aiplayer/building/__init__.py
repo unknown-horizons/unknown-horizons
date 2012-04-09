@@ -91,7 +91,7 @@ class AbstractBuilding(object):
 		return cls(building_id, name, settler_level)
 
 	monthly_gold_cost = 50
-	resource_cost = {RES.GOLD_ID: 1, RES.BOARDS_ID: 20, RES.BRICKS_ID: 45, RES.TOOLS_ID: 50}
+	resource_cost = {RES.GOLD: 1, RES.BOARDS: 20, RES.BRICKS: 45, RES.TOOLS: 50}
 
 	def get_expected_building_cost(self):
 		"""Return a value representing the utility cost of building the building."""

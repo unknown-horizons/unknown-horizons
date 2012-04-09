@@ -81,13 +81,10 @@ class SelectableComponent(Component):
 			tabwidget = TabWidget(self.session.ingame_gui, tabs=tabs)
 
 			if jump_to_tabclass:
-				num = None
-				for i in xrange( len(tabs) ):
-					if isinstance(tabs[i], jump_to_tabclass):
-						num = i
+				for i, tab in enumerate(tabs):
+					if isinstance(tab, jump_to_tabclass):
+						tabwidget._show_tab(i)
 						break
-				if num is not None:
-					tabwidget._show_tab(num)
 
 			self.session.ingame_gui.show_menu( tabwidget )
 

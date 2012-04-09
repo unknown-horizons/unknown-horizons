@@ -8,7 +8,6 @@ components:
    soundfiles:
    - content/audio/sounds/lumberjack.ogg
 - StorageComponent:
-   inventory:
       PositiveSizedSlotStorage:
          limit: 8
 

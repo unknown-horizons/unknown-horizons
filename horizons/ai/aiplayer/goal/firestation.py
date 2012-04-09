@@ -30,7 +30,7 @@ class FireStationGoal(SettlementGoal):
 
 	@property
 	def can_be_activated(self):
-		return super(FireStationGoal, self).can_be_activated and self.settlement_manager.get_resource_production(RES.BRICKS_ID) > 0
+		return super(FireStationGoal, self).can_be_activated and self.settlement_manager.get_resource_production(RES.BRICKS) > 0
 
 	@property
 	def active(self):
@@ -39,12 +39,12 @@ class FireStationGoal(SettlementGoal):
 	def update(self):
 		super(FireStationGoal, self).update()
 		if self.can_be_activated:
-			self._is_active = any(AbstractBuilding.buildings[BUILDINGS.FIRE_STATION_CLASS].iter_potential_locations(self.settlement_manager))
+			self._is_active = any(AbstractBuilding.buildings[BUILDINGS.FIRE_STATION].iter_potential_locations(self.settlement_manager))
 		else:
 			self._is_active = False
 
 	def execute(self):
-		result = AbstractBuilding.buildings[BUILDINGS.FIRE_STATION_CLASS].build(self.settlement_manager, None)[0]
+		result = AbstractBuilding.buildings[BUILDINGS.FIRE_STATION].build(self.settlement_manager, None)[0]
 		self._log_generic_build_result(result, 'fire station')
 		return self._translate_build_result(result)
 

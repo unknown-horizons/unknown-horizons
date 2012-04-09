@@ -121,7 +121,7 @@ class FoundSettlement(ShipMission):
 
 			build_info = None
 			point = Point(x, y)
-			warehouse = Builder(BUILDINGS.WAREHOUSE_CLASS, land_manager, point, ship = ship)
+			warehouse = Builder(BUILDINGS.WAREHOUSE, land_manager, point, ship = ship)
 			if not warehouse:
 				continue
 

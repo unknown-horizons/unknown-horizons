@@ -24,7 +24,7 @@ import operator
 
 from horizons.command.production import AddProduction, RemoveFromQueue, CancelCurrentProduction
 from horizons.gui.tabs import OverviewTab
-from horizons.util.gui import get_res_icon_path
+from horizons.gui.util import get_res_icon_path
 from horizons.util import Callback
 from horizons.constants import PRODUCTIONLINES
 from horizons.world.production.producer import Producer
@@ -222,13 +222,10 @@ class BoatbuilderTab(_BoatbuilderOverviewTab):
 class BoatbuilderSelectTab(_BoatbuilderOverviewTab):
 
 	def __init__(self, instance, tabname):
-		super(BoatbuilderSelectTab, self).__init__(instance=instance, widget = 'boatbuilder_' + str(tabname) + '.xml')
+		super(BoatbuilderSelectTab, self).__init__(instance=instance,
+		          widget='boatbuilder_{name}.xml'.format(name=tabname),
+		          icon_path='content/gui/icons/tabwidget/boatbuilder/{name}_%s.png'.format(name=tabname))
 		self.init_values()
-		bb_image_path = 'content/gui/icons/tabwidget/boatbuilder/'+str(tabname)+'_%s.png'
-		self.button_up_image = bb_image_path % 'u'
-		self.button_active_image = bb_image_path % 'a'
-		self.button_down_image = bb_image_path % 'd'
-		self.button_hover_image = bb_image_path % 'h'
 
 	def start_production(self, prod_line_id):
 		AddProduction(self.producer, prod_line_id).execute(self.instance.session)

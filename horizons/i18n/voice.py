@@ -66,12 +66,12 @@ DEFAULT_VARIATION=0
 DEFAULT_SPEAKER=0
 
 def get_speech_file(category, variation_id=None, speaker_id=DEFAULT_SPEAKER):
+	#TODO expand this docstring
 	"""Get speech file path.
-	@param speaker_id: speaker id
-	@param category_id: category id, the same as sentence
+	@param category: category id, the same as sentence
 	@param variation_id: variation id of sentence
-	@params random if true variation is random if false we try to find by variation_id
-	@return: Path to Speach file or None if not exist"""
+	@param speaker_id: speaker id
+	@return: path to speech file or None if not exist"""
 	category_name = eval_category_name(category)
 	if category_name == None: return None
 	lang = horizons.main.fife.get_locale()
