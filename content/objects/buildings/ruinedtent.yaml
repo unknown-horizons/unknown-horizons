@@ -14,6 +14,5 @@ settler_level: 0
 buildingcosts: {}
 components:
 - HealthComponent: {maxhealth: 1000}
-- StorageComponent
 actionsets:
   as_ruined_tent0: {level: 0}

@@ -19,6 +19,5 @@ components:
     tabs: [TowerOverviewTab,]
     enemy_tabs: [EnemyBuildingOverviewTab,]
 - HealthComponent: {maxhealth: 1000}
-- StorageComponent
 actionsets:
   as_woodentower0: {level: 0}
