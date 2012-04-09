@@ -144,7 +144,7 @@ class SingleplayerMenu(object):
 				maps_display.sort(key=prefer_tutorial)
 				self.current.files.sort(key=prefer_tutorial)
 				#add all locales to lang list, select current locale as default and sort
-				lang_list = self.current.findChild(name="langlist")
+				lang_list = self.current.findChild(name="cjkv_langlist")
 				self.active_right_side.distributeInitialData({ 'maplist' : maps_display, })
 				# select first entry
 				self.active_right_side.distributeData({ 'maplist' : 0, })
@@ -277,17 +277,17 @@ class SingleplayerMenu(object):
 						except InvalidScenarioFileFormat as e:
 							self._show_invalid_scenario_file_popup(e)
 							return
-						self.current.findChild(name="map_difficulty").text = \
+						self.current.findChild(name="cjkv_map_difficulty").text = \
 							_("Difficulty: {difficulty}").format(difficulty=difficulty) #xgettext:python-format
-						self.current.findChild(name="map_author").text = \
+						self.current.findChild(name="cjkv_map_author").text = \
 							_("Author: {author}").format(author=author) #xgettext:python-format
-						self.current.findChild(name="map_desc").text = \
+						self.current.findChild(name="cjkv_map_desc").text = \
 							_("Description: {desc}").format(desc=desc) #xgettext:python-format
 				
-					self.active_right_side.findChild(name="langlist").mapEvents({
-						'langlist/action': _update_infos
+					self.active_right_side.findChild(name="cjkv_langlist").mapEvents({
+						'cjkv_langlist/action': _update_infos
 					})
-					self.active_right_side.findChild(name="langlist").capture(_update_infos, event_name="keyPressed")
+					self.active_right_side.findChild(name="cjkv_langlist").capture(_update_infos, event_name="keyPressed")
 					_update_infos()
 					#hide and show current window to keep bugs away from us
 					#if we don't do this, translation_label doesn't hide even if
