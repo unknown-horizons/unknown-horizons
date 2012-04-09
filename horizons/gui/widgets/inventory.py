@@ -51,7 +51,7 @@ class Inventory(pychan.widgets.Container):
 		@param ordinal: (min, max) Display ordinal scale with these boundaries instead of numbers. Currently implemented via ImageFillStatusButton.
 		"""
 		# check if we must init everything anew
-		if not self.__inited or self.inventory is not inventory:
+		if not self.__inited or self._inventory is not inventory:
 			# this inits the logic of the inventory. @see __init__().
 			self.__inited = True
 			self.ordinal = ordinal
@@ -84,7 +84,7 @@ class Inventory(pychan.widgets.Container):
 			while len(self._res_order) + len(new_res) > self._inventory.slotnum:
 				for i in xrange( self._inventory.slotnum ):
 					# search empty slot
-					if self.inventory[ self._res_order[i] ] == 0:
+					if self._inventory[ self._res_order[i] ] == 0:
 						# insert new res here
 						self._res_order[i] = new_res.pop(0)
 						if not new_res:

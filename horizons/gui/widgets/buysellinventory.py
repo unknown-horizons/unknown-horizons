@@ -49,7 +49,7 @@ class BuySellInventory(pychan.widgets.Container):
 		self.uncached = uncached
 
 	def init(self, db, inventory, limits, selling):
-		if not self.__inited or self.inventory is not inventory or \
+		if not self.__inited or self._inventory is not inventory or \
 		   self._limits != limits or self._selling != selling:
 			self.__inited = True
 			self.db = db
