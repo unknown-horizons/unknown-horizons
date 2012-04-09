@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2012-03-24 02:16+0100\n"
-"PO-Revision-Date: 2012-04-06 15:57+0200\n"
+"PO-Revision-Date: 2012-04-06 16:20+0200\n"
 "Last-Translator: Aleksi <aleksi.kinnunen@ovi.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: fi\n"
@@ -3654,9 +3654,9 @@ msgid "Trade route: going to {location}"
 msgstr "Kauppareitti: siirtymässä kohteeseen {location}"
 
 #: horizons/world/traderoute.py:286
-#, python-format, fuzzy
+#, python-format, 
 msgid "Trade route: waiting at {position}"
-msgstr "Kauppareitti: odotetaan {location}"
+msgstr "Kauppareitti: odotetaan {position}"
 
 #: horizons/world/units/ship.py:184
 #, python-format
