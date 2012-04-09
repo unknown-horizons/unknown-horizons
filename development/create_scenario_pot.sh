@@ -144,7 +144,7 @@ echo "Compiling these translations for $1:"
 for path in "$2"/*.po; do
     lang=`basename "$path" | sed "s,$1-,,;s,.po,,"`
     mo=po/mo/$lang/LC_MESSAGES
-    R='s,:,,g;s,.po,,g;s,alencia,,g;s,(po_temp_tutorial//|messages|message|translations),\t,g;s/[.,]//g'
+    R='s,:,,g;s,.po,,g;s,alencia,,g;s,(po_temp_tutorial//|po_temp_The_Unknown//|messages|message|translations),\t,g;s/[.,]//g'
     mkdir -p $mo
     msgfmt --statistics $path -o $mo/$1.mo --check-format -v 2>&1 |perl -npe "$R"
     numbers=$(msgfmt --statistics $path -o $mo/$1.mo --check-format 2>&1) # this does not include -v!
