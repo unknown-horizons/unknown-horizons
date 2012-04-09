@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2012-03-24 02:16+0100\n"
-"PO-Revision-Date: 2012-04-09 03:58+0200\n"
+"PO-Revision-Date: 2012-04-09 04:15+0200\n"
 "Last-Translator: nifabric <nifabric@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: zh_CN\n"
@@ -872,129 +872,129 @@ msgstr ""
 #: horizons/gui/modules/singleplayermenu.py:111
 #, python-format
 msgid "Recommended number of players: {number}"
-msgstr ""
+msgstr "需要玩家数量：{number}"
 
 #: horizons/gui/modules/singleplayermenu.py:156
 #: horizons/gui/modules/singleplayermenu.py:170
 #: horizons/gui/widgets/choose_next_scenario.py:44
 #, python-format
 msgid "Difficulty: {difficulty}"
-msgstr ""
+msgstr "难度：{difficulty}"
 
 #: horizons/gui/modules/singleplayermenu.py:158
 #: horizons/gui/modules/singleplayermenu.py:172
 #: horizons/gui/widgets/choose_next_scenario.py:45
 #, python-format
 msgid "Author: {author}"
-msgstr ""
+msgstr "作者：{author}"
 
 #: horizons/gui/modules/singleplayermenu.py:160
 #: horizons/gui/modules/singleplayermenu.py:174
 #: horizons/gui/widgets/choose_next_scenario.py:46
 #, python-format
 msgid "Description: {desc}"
-msgstr ""
+msgstr "描述：{desc}"
 
 #: horizons/gui/modules/singleplayermenu.py:197
 msgid "Invalid player name"
-msgstr ""
+msgstr "无效的玩家名"
 
 #: horizons/gui/modules/singleplayermenu.py:197
 msgid "You entered an invalid playername."
-msgstr ""
+msgstr "你输入了一个无效的玩家名。"
 
 #: horizons/gui/modules/singleplayermenu.py:288
 msgid "Map size:"
-msgstr ""
+msgstr "地图大小："
 
 #: horizons/gui/modules/singleplayermenu.py:298
 msgid "Water:"
-msgstr ""
+msgstr "水域："
 
 #: horizons/gui/modules/singleplayermenu.py:308
 msgid "Max island size:"
-msgstr ""
+msgstr "最大岛屿大小："
 
 #: horizons/gui/modules/singleplayermenu.py:318
 msgid "Preferred island size:"
-msgstr ""
+msgstr "推荐岛屿大小："
 
 #: horizons/gui/modules/singleplayermenu.py:328
 msgid "Island size deviation:"
-msgstr ""
+msgstr "岛屿大小偏差："
 
 #: horizons/gui/modules/singleplayermenu.py:367
 msgid "Resource density:"
-msgstr ""
+msgstr "资源密度："
 
 #: horizons/gui/modules/singleplayermenu.py:387
 msgid "Invalid scenario file"
-msgstr ""
+msgstr "无效的场景文件"
 
 #: horizons/gui/modules/singleplayermenu.py:388
 msgid "The selected file is not a valid scenario file."
-msgstr ""
+msgstr "选择的文件不是有效的场景文件。"
 
 #: horizons/gui/modules/singleplayermenu.py:389
 msgid "Error message:"
-msgstr ""
+msgstr "错误信息："
 
 #: horizons/gui/modules/singleplayermenu.py:390
 msgid "Please report this to the author."
-msgstr ""
+msgstr "请报告给作者。"
 
 #. dialog already gone
 #: horizons/gui/modules/singleplayermenu.py:464
 msgid "Click to generate a different random map"
-msgstr ""
+msgstr "点击生成不同的随机地图"
 
 #. (text of widget: headline)
 #. set translated building name in gui
 #: horizons/gui/mousetools/buildingtool.py:213
 #: horizons/i18n/guitranslations.py:64
 msgid "Build"
-msgstr ""
+msgstr "建造"
 
 #: horizons/gui/mousetools/navigationtool.py:75
 msgid "Press H to remove this hint"
-msgstr ""
+msgstr "按H键移除这条提示"
 
 #: horizons/gui/tabs/boatbuildertab.py:50
 msgid "Boat builder overview"
-msgstr ""
+msgstr "小船制造者概述"
 
 #: horizons/gui/tabs/boatbuildertab.py:101
 #, python-format
 msgid "{ship} (place in queue: {place})"
-msgstr ""
+msgstr "{ship} (进入队列: {place})"
 
 #: horizons/gui/tabs/boatbuildertab.py:165
 msgid "Resources still needed:"
-msgstr ""
+msgstr "还需资源："
 
 #: horizons/gui/tabs/boatbuildertab.py:242
 msgid "Fisher boats"
-msgstr ""
+msgstr "渔船"
 
 #. (text of widget: headline)
 #: horizons/gui/tabs/boatbuildertab.py:252
 #: horizons/i18n/guitranslations.py:156
 msgid "Trade boats"
-msgstr ""
+msgstr "商船"
 
 #. (text of widget: headline)
 #: horizons/gui/tabs/boatbuildertab.py:260
 #: horizons/i18n/guitranslations.py:173
 msgid "War boats"
-msgstr ""
+msgstr "战船"
 
 #: horizons/gui/tabs/boatbuildertab.py:267
 msgid "War ships"
-msgstr ""
+msgstr "战舰"
 
 #: horizons/gui/tabs/boatbuildertab.py:284
 msgid "Confirm order"
-msgstr ""
+msgstr "确认订单"
 
 #: horizons/gui/tabs/buildrelatedtab.py:46
 msgid "Build related fields"
