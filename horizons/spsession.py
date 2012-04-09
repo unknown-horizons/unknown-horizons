@@ -69,15 +69,6 @@ class SPSession(Session):
 			           u"unknown-horizons.org/support/"
 			self.gui.show_error_popup(headline, descr, advice)
 
-	def quickload(self):
-		"""Loads last quicksave"""
-		files = SavegameManager.get_quicksaves(include_displaynames = False)[0]
-		if len(files) == 0:
-			self.gui.show_popup(_("No quicksaves found"), _("You need to quicksave before you can quickload."))
-			return
-		self.ingame_gui.on_escape() # close widgets that might be open
-		horizons.main.load_game(savegame=files[0])
-
 	def save(self, savegamename=None):
 		"""Saves a game
 		@param savegamename: string with the full path of the savegame file or None to let user pick one

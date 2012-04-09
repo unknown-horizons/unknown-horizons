@@ -507,14 +507,19 @@ def _load_map(savegame, ai_players, human_ai, force_player_id=None):
 	load_game(savegame=map_file, force_player_id=force_player_id)
 	return True
 
-def _load_last_quicksave(force_player_id=None):
+def _load_last_quicksave(session_check,force_player_id=None):
 	"""Load last quicksave
 	@return: bool, whether loading succeded"""
 	save_files = SavegameManager.get_quicksaves()[0]
 	if not save_files:
-		print "Error: No quicksave found."
-		return False
+		if session_check is not None:
+			session_check.gui.show_popup(_("No quicksaves found"), _("You need to quicksave before you can quickload."))
+			return False
+		else:
+			print "Error: No quicksave found."
+			return False
 	save = max(save_files)
+	session_check.ingame_gui.on_escape() # close widgets that might be open
 	load_game(savegame=save, force_player_id=force_player_id)
 	return True
 
