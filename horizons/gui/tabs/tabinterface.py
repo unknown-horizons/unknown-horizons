@@ -20,8 +20,9 @@
 # ###################################################
 
 from horizons.gui.util import load_uh_widget
-from horizons.util import PychanChildFinder
+from horizons.util import PychanChildFinder, Callback
 from horizons.util.changelistener import metaChangeListenerDecorator
+from horizons.extscheduler import ExtScheduler
 
 @metaChangeListenerDecorator('remove')
 class TabInterface(object):
@@ -52,6 +53,8 @@ class TabInterface(object):
 	"""
 	lazy_loading = False
 
+	scheduled_update_delay = 0.4 # seconds, update after this time when an update is scheduled
+
 	def __init__(self, widget=None, icon_path='content/gui/images/tabwidget/tab_%s.png', **kwargs):
 		"""
 		@param widget: filename of a widget. Set this to None if you create your own widget at self.widget
@@ -73,6 +76,8 @@ class TabInterface(object):
 		self.button_hover_image = icon_path % 'h' # TabButtons hoverimage
 		self.button_active_image = icon_path % 'a' # TabButtons active image
 
+		self._refresh_scheduled = False
+
 	def init_values(self):
 		"""Call this method after the widget has been initialised."""
 		self.x_pos = self.widget.position[0]
@@ -86,6 +91,9 @@ class TabInterface(object):
 		"""Hides the current widget"""
 		self.widget.hide()
 
+		if self._refresh_scheduled:
+			ExtScheduler().rem_all_classinst_calls(self)
+
 	def is_visible(self):
 		self.ensure_loaded()
 		# naming convention clash: python vs c++
@@ -94,6 +102,16 @@ class TabInterface(object):
 	def refresh(self):
 		"""This function is called by the TabWidget to redraw the widget."""
 		pass
+
+	def _schedule_refresh(self):
+		"""Schedule a refresh soon, dropping all other refresh request, that appear until then.
+		This saves a lot of CPU time, if you have a huge island, or play on high speed."""
+		if not self._refresh_scheduled:
+			self._refresh_scheduled = True
+			def unset_flag():
+				self._refresh_scheduled = False
+			ExtScheduler().add_new_object(Callback.ChainedCallbacks(unset_flag, self.refresh),
+			                              self, run_in=self.__class__.scheduled_update_delay)
 
 	@classmethod
 	def shown_for(self, instance):

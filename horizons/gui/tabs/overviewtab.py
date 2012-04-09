@@ -22,8 +22,6 @@
 
 from horizons.gui.tabs.tabinterface import TabInterface
 
-from horizons.extscheduler import ExtScheduler
-from horizons.util import Callback
 from horizons.world.component.namedcomponent import NamedComponent
 
 
@@ -34,7 +32,6 @@ class OverviewTab(TabInterface):
 		super(OverviewTab, self).__init__(widget=widget, icon_path=icon_path)
 		self.instance = instance
 		self.init_values()
-		self._refresh_scheduled = False
 		self.helptext = _("Overview")
 
 		if self.__class__.has_stance:
@@ -48,15 +45,6 @@ class OverviewTab(TabInterface):
 			else:
 				self.widget.child_finder('player_emblem').image = emblem % 'no_player'
 
-	def _schedule_refresh(self):
-		"""Schedule a refresh soon, dropping all other refresh request, that appear until then.
-		This saves a lot of CPU time, if you have a huge island, or play on high speed."""
-		if not self._refresh_scheduled:
-			self._refresh_scheduled = True
-			def unset_flag():
-				self._refresh_scheduled = False
-			ExtScheduler().add_new_object(Callback.ChainedCallbacks(unset_flag, self.refresh),
-			                              self, run_in=0.3)
 
 	def refresh(self):
 		if (hasattr(self.instance, 'name') or self.instance.has_component(NamedComponent)) and self.widget.child_finder('name'):
@@ -97,9 +85,6 @@ class OverviewTab(TabInterface):
 		   self.instance.settlement is not None and \
 		   self.instance.settlement.has_change_listener(self._schedule_refresh):
 			self.instance.settlement.remove_change_listener(self._schedule_refresh)
-
-		if self._refresh_scheduled:
-			ExtScheduler().rem_all_classinst_calls(self)
 
 	def on_instance_removed(self):
 		self.on_remove()
