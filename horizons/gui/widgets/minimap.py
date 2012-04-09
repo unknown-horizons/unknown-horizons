@@ -550,8 +550,8 @@ class Minimap(object):
 		self.minimap_image.rendertarget.removeAll( render_name )
 		use_rotation = self._get_rotation_setting()
 		# make use of this dummy points instead of creating a fife.point instances which are consuming a lot of resources
-		dummy_point0 = fife.Point(0,0)
-		dummy_point1 = fife.Point(0,0)
+		dummy_point0 = fife.Point(0, 0)
+		dummy_point1 = fife.Point(0, 0)
 		for ship in self.world.ships:
 			if not ship.in_ship_map:
 				continue # no fisher ships, etc

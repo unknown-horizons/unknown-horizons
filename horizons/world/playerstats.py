@@ -70,17 +70,17 @@ class PlayerStats(WorldObject):
 
 				# resources held in buildings
 				if building.has_component(StorageComponent) and building.id not in [BUILDINGS.WAREHOUSE, BUILDINGS.STORAGE, BUILDINGS.MAIN_SQUARE]:
-					for resource_id, amount in building.get_component(StorageComponent).inventory:
+					for resource_id, amount in building.get_component(StorageComponent).inventory.itercontents():
 						total_resources[resource_id] += amount
 
 				# resources held by collectors
 				if building.has_component(CollectingComponent):
 					for collector in building.get_component(CollectingComponent).get_local_collectors():
-						for resource_id, amount in collector.get_component(StorageComponent).inventory:
+						for resource_id, amount in collector.get_component(StorageComponent).inventory.itercontents():
 							total_resources[resource_id] += amount
 
 			# resources in settlement inventories
-			for resource_id, amount in settlement.get_component(StorageComponent).inventory:
+			for resource_id, amount in settlement.get_component(StorageComponent).inventory.itercontents():
 				available_resources[resource_id] += amount
 
 			# land that could be built on (the building on it may need to be destroyed first)
@@ -97,7 +97,7 @@ class PlayerStats(WorldObject):
 			if ship.owner is self.player:
 				ships[ship.id] += 1
 				if ship.has_component(SelectableComponent):
-					for resource_id, amount in ship.get_component(StorageComponent).inventory:
+					for resource_id, amount in ship.get_component(StorageComponent).inventory.itercontents():
 						available_resources[resource_id] += amount
 
 		for resource_id, amount in available_resources.iteritems():

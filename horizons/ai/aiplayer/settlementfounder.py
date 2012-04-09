@@ -61,7 +61,7 @@ class SettlementFounder(object):
 							usable = False
 							break
 					if usable:
-						for resource_id, amount in object.get_component(StorageComponent).inventory:
+						for resource_id, amount in object.get_component(StorageComponent).inventory.itercontents():
 							resources[resource_id] += amount
 				continue
 			if tile.settlement is not None:
@@ -126,12 +126,12 @@ class SettlementFounder(object):
 			return False
 
 		if ship is not None:
-			for res, amount in ship.get_component(StorageComponent).inventory:
+			for res, amount in ship.get_component(StorageComponent).inventory.itercontents():
 				if res in min_resources and min_resources[res] > 0:
 					min_resources[res] = max(0, min_resources[res] - amount)
 
 		if settlement:
-			for res, amount in settlement.get_component(StorageComponent).inventory:
+			for res, amount in settlement.get_component(StorageComponent).inventory.itercontents():
 				if res in min_resources and min_resources[res] > 0:
 					min_resources[res] = max(0, min_resources[res] - amount)
 

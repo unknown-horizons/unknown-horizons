@@ -112,7 +112,10 @@ class GenericStorage(ChangeListener):
 	def __getitem__(self, res):
 		return self._storage[res] if res in self._storage else 0
 
-	def __iter__(self):
+	def iterslots(self):
+		return self._storage.iterkeys()
+
+	def itercontents(self):
 		return self._storage.iteritems()
 
 	def __str__(self):
