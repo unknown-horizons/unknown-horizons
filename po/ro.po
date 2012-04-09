@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2012-03-24 02:16+0100\n"
-"PO-Revision-Date: 2012-01-07 07:52+0200\n"
+"PO-Revision-Date: 2012-04-09 23:14+0200\n"
 "Last-Translator: Christopher Oelmueller <chris.oelmueller+uh@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: ro\n"
@@ -726,8 +726,8 @@ msgstr "Salvat la {time}"
 #, python-format
 msgid "Saved {amount} time"
 msgid_plural "Saved {amount} times"
-msgstr[0] "Salvat o dată"
-msgstr[1] "Salvat de două ori"
+msgstr[0] "Salvat o dată {amount}"
+msgstr[1] "Salvat de {amount} ori"
 msgstr[2] "Salvat de {amount} ori"
 
 #: horizons/gui/gui.py:625
@@ -788,9 +788,8 @@ msgstr ""
 #: horizons/gui/widgets/playerssettlements.py:101
 #: horizons/i18n/guitranslations.py:417 horizons/i18n/guitranslations.py:439
 #: horizons/i18n/guitranslations.py:459
-#, fuzzy
 msgid "Click to change the name of your settlement"
-msgstr "Click pentru a schimba numele coloniei."
+msgstr "Click pentru a schimba numele coloniei"
 
 #. e.g. when the pirate is disabled
 #. this dialog is pretty useless in this case
@@ -1082,9 +1081,8 @@ msgid "Mining"
 msgstr "exploatare minieră"
 
 #: horizons/gui/tabs/buildtabs.py:149
-#, fuzzy
 msgid "Increment {increment}"
-msgstr "etapă de dezvoltare"
+msgstr "nivel {increment}"
 
 #. (text of widget: headline)
 #. (helptext of widget: trade)
@@ -1288,9 +1286,8 @@ msgstr ""
 #. (helptext of widget: name)
 #: horizons/gui/widgets/playersships.py:83
 #: horizons/i18n/guitranslations.py:499 horizons/i18n/guitranslations.py:510
-#, fuzzy
 msgid "Click to change the name of this ship"
-msgstr "click aici pentru a schimba numele navei."
+msgstr "click aici pentru a schimba numele navei"
 
 #. i18n There are no weapons equipped at the moment.
 #: horizons/gui/widgets/playersships.py:99
@@ -2487,9 +2484,8 @@ msgstr "Înscrieți-vă la partidă"
 # 90%
 #. (text of widget: load_game_lbl)
 #: horizons/i18n/guitranslations.py:868
-#, fuzzy
 msgid "Load game:"
-msgstr "încarcă joc"
+msgstr "încarcă joc:"
 
 #. (text of widget: refr_gamelist_lbl)
 #: horizons/i18n/guitranslations.py:870
@@ -3688,7 +3684,7 @@ msgstr "Rută comercială: deplasare la {location}"
 #: horizons/world/traderoute.py:286
 #, python-format
 msgid "Trade route: waiting at {position}"
-msgstr "Rută comercială: așteptare la {location}"
+msgstr "Rută comercială: așteptare la {position}"
 
 #: horizons/world/units/ship.py:184
 #, python-format

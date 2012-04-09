@@ -7,8 +7,8 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2012-03-24 02:16+0100\n"
-"PO-Revision-Date: 2012-03-28 02:07+0200\n"
-"Last-Translator: Kiryx <kiryx7@gmail.com>\n"
+"PO-Revision-Date: 2012-04-07 10:45+0200\n"
+"Last-Translator: Premislaus <premislaus1988@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: pl\n"
 "MIME-Version: 1.0\n"
@@ -137,7 +137,7 @@ msgstr "Potrzebujesz więcej {resource}, aby zbudować ten budynek."
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
 msgid "You won!"
-msgstr "Wygrałeś"
+msgstr "Wygrałeś!"
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
@@ -180,7 +180,7 @@ msgstr "żołędzie"
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "alvearies"
-msgstr ""
+msgstr "ule"
 
 # Resources
 #. This is a database entry: the name of a resource.
@@ -273,9 +273,8 @@ msgstr "sztylet"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
-#, fuzzy
 msgid "deer food A"
-msgstr "jelenie jedzenie A"
+msgstr "jedzenie z jelenia A"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
@@ -420,7 +419,7 @@ msgstr "złoże kamienia"
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "stone tops"
-msgstr ""
+msgstr "blaty kamienne"
 
 # Resources
 #. This is a database entry: the name of a resource.
@@ -513,7 +512,7 @@ msgstr "{player1} oraz {player2} będą od teraz ze sobą walczyć na każdym kr
 #: database files sql
 #, python-format
 msgid "{player}: {message}"
-msgstr ""
+msgstr "{player}: {message}"
 
 #: editor/editor.py:33
 msgid "Specify the path to FIFE root directory."
@@ -803,7 +802,7 @@ msgstr "Kliknij aby zmienić nazwę osady."
 #: horizons/gui/ingamegui.py:278
 #, fuzzy
 msgid "No diplomacy possible"
-msgstr "Dyplomacja nie możliwa"
+msgstr "Dyplomacja jest nie możliwa"
 
 #: horizons/gui/ingamegui.py:279
 #, fuzzy
@@ -1013,7 +1012,7 @@ msgstr "Proszę zgłosić to autorowi."
 #. dialog already gone
 #: horizons/gui/modules/singleplayermenu.py:464
 msgid "Click to generate a different random map"
-msgstr ""
+msgstr "Naciśnij aby wygenerować inną, losową mapę."
 
 #. (text of widget: headline)
 #. set translated building name in gui
@@ -1066,8 +1065,9 @@ msgid "Confirm order"
 msgstr "Potwierdź rozkaz"
 
 #: horizons/gui/tabs/buildrelatedtab.py:46
+#, fuzzy
 msgid "Build related fields"
-msgstr ""
+msgstr "Wybuduj zależne pola"
 
 #: horizons/gui/tabs/buildtabs.py:110
 msgid "Residents and infrastructure"
@@ -3673,7 +3673,7 @@ msgstr "Partner handlowy nie sprzedaje aktualnie tego."
 
 #: horizons/world/component/tradepostcomponent.py:228
 msgid "You do not possess this."
-msgstr ""
+msgstr "Nie posiadasz tego."
 
 # 82%
 #: horizons/world/component/tradepostcomponent.py:232
@@ -3697,22 +3697,22 @@ msgstr "Partner handlowy nie sprzedaje aktualnie tego."
 #: horizons/world/traderoute.py:282
 #, python-format
 msgid "Trade route: going to {location}"
-msgstr ""
+msgstr "Szlak handlowy: zmierza do {location}"
 
 #: horizons/world/traderoute.py:286
 #, python-format
 msgid "Trade route: waiting at {position}"
-msgstr ""
+msgstr "Szlak handlowy: czeka w {position}"
 
 #: horizons/world/units/ship.py:184
 #, python-format
 msgid "Going to {location}"
-msgstr ""
+msgstr "Zmierza do{location}"
 
 #: horizons/world/units/ship.py:186
 #, python-format
 msgid "Going to {x}, {y}"
-msgstr ""
+msgstr "Zmierza do {x}, {y}"
 
 #: horizons/world/units/ship.py:191
 #, python-format
@@ -3759,16 +3759,18 @@ msgstr "Aby tego dokonać, potrzebne nam są informacje z pliku:"
 #: run_uh.py:211
 msgid "Please give it to us via IRC or our forum, for both see http://unknown-horizons.org ."
 msgstr ""
+"Prosimy o przekazanie nam tego, za pomocą naszego kanału IRC lub forum, "
+"więcej informacji znajdziesz na http://unknown-horizons.org ."
 
 #: run_uh.py:251
 msgid "Error: Unable to find required libraries"
-msgstr "Brak wymaganych bibliotek"
+msgstr "Błąd: Brak wymaganych bibliotek"
 
 #: run_uh.py:252
 msgid "We are sorry to inform you that a library that is required by Unknown Horizons, is missing and needs to be installed."
 msgstr ""
-"Prosimy o zainstalowania brakujących bibliotek, które są niezbędne do "
-"prawidłowego działania Unknow Horizons."
+"Prosimy o zainstalowanie brakujących bibliotek, które są niezbędne do "
+"prawidłowego działania Unknown Horizons."
 
 #: run_uh.py:253
 msgid "Installers for Windows users are available at \"http://pyyaml.org/wiki/PyYAML\", Linux users should find it in their packagement management system under the name \"pyyaml\" or \"python-yaml\"."
@@ -3784,7 +3786,7 @@ msgstr "Dziękujemy za grę w Unknown Horizons!"
 
 #: run_uh.py:455
 msgid "FIFE was not found."
-msgstr "FIFE nie zostało znalezione."
+msgstr "FIFE nie zostało odnalezione."
 
 #~ msgid "aristocrat"
 #~ msgstr "arystokrata"

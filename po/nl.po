@@ -741,7 +741,7 @@ msgstr[1] "{amount} keer opgeslagen"
 #: horizons/gui/gui.py:625
 #, python-format
 msgid "Savegame version {version}"
-msgstr "Savegame versie {versie}"
+msgstr "Savegame versie {version}"
 
 #: horizons/gui/gui.py:629
 #, python-format

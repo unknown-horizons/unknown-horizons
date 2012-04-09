@@ -7,8 +7,8 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2012-03-24 02:16+0100\n"
-"PO-Revision-Date: 2012-01-21 02:15+0200\n"
-"Last-Translator: Christopher Oelmueller <chris.oelmueller+uh@gmail.com>\n"
+"PO-Revision-Date: 2012-04-08 17:16+0200\n"
+"Last-Translator: Nikolay <balward@mail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: bg\n"
 "MIME-Version: 1.0\n"
@@ -3508,7 +3508,7 @@ msgstr ""
 
 #: horizons/util/checkupdates.py:76
 msgid "Click to download"
-msgstr ""
+msgstr "Натисни, за да свалиш"
 
 #: horizons/util/checkupdates.py:80
 msgid "A page has been opened in your browser."
@@ -3521,11 +3521,11 @@ msgstr ""
 
 #: horizons/world/building/buildable.py:36
 msgid "Buildings must be built on islands."
-msgstr ""
+msgstr "Сградите трябва да бъдат построение на островите."
 
 #: horizons/world/building/buildable.py:37
 msgid "The ground is not suitable for this building."
-msgstr ""
+msgstr "Позицията не е подходяща за тази сграда."
 
 #: horizons/world/building/buildable.py:38
 #: horizons/world/building/buildable.py:40
@@ -3668,6 +3668,8 @@ msgstr ""
 #: run_uh.py:252
 msgid "We are sorry to inform you that a library that is required by Unknown Horizons, is missing and needs to be installed."
 msgstr ""
+"Извиняваме се и ви информираме, че библиотеката, която е нужна за Unknown "
+"Horizons липсва и е нужно да се инсталира."
 
 #: run_uh.py:253
 msgid "Installers for Windows users are available at \"http://pyyaml.org/wiki/PyYAML\", Linux users should find it in their packagement management system under the name \"pyyaml\" or \"python-yaml\"."

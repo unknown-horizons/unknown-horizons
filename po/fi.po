@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2012-03-24 02:16+0100\n"
-"PO-Revision-Date: 2012-04-05 22:53+0200\n"
+"PO-Revision-Date: 2012-04-06 16:20+0200\n"
 "Last-Translator: Aleksi <aleksi.kinnunen@ovi.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: fi\n"
@@ -587,9 +587,8 @@ msgstr "Virhe yritettäessä ottaa käyttöön verkkotietoja."
 # 78%
 #: horizons/engine/settingshandler.py:239
 #: horizons/gui/modules/multiplayermenu.py:56
-#, fuzzy
 msgid "Network features could not be initialized with the current configuration."
-msgstr "Verkkoa ei saatu otettua käyttöön näillä asetuksilla."
+msgstr "Verkkoa ei voitu ottaa käyttöön näillä asetuksilla."
 
 # 75%
 #: horizons/engine/settingshandler.py:240
@@ -2570,9 +2569,8 @@ msgstr "Kieli"
 
 #. (text of widget: headline_mouse)
 #: horizons/i18n/guitranslations.py:903
-#, fuzzy
 msgid "Mouse"
-msgstr "taloja"
+msgstr "Hiiri"
 
 #. (text of widget: headline_network)
 #: horizons/i18n/guitranslations.py:905
@@ -2597,9 +2595,8 @@ msgstr "Käännä pikkukarttaa pääkarttaa käännettäessä:"
 # 76%
 #. (text of widget: mouse_sensitivity_label)
 #: horizons/i18n/guitranslations.py:915
-#, fuzzy
 msgid "Mouse sensitivity:"
-msgstr "Luonnonvarat:"
+msgstr "Hiiren herkkyys:"
 
 #. (text of widget: music_volume_label)
 #: horizons/i18n/guitranslations.py:917
@@ -2756,7 +2753,7 @@ msgstr "Satunnainen kartta"
 #. (text of widget: scenario)
 #: horizons/i18n/guitranslations.py:993
 msgid "Scenario"
-msgstr "Valmis kenttä"
+msgstr "Juonipeli"
 
 #. (helptext of widget: okay)
 #: horizons/i18n/guitranslations.py:997
@@ -2819,12 +2816,14 @@ msgstr "Pelaajan nimi:"
 #. name of buildings:alvearies
 #: horizons/i18n/objecttranslations.py:53
 msgid "Alvearies"
-msgstr ""
+msgstr "Mehiläispesä"
 
 #. tooltip_text of buildings:alvearies
 #: horizons/i18n/objecttranslations.py:55
 msgid "Keeps bees. Produces honeycombs used for confectionery. Needs a farm."
 msgstr ""
+"Kasvattaa mehiläisiä. Tuottaa makeisten valmistukseen käytettäviä "
+"hunajakennoja. Tarvitsee maatilan."
 
 #. name of buildings:bakery
 #: horizons/i18n/objecttranslations.py:60
@@ -2839,12 +2838,12 @@ msgstr ""
 #. name of buildings:barracks
 #: horizons/i18n/objecttranslations.py:67
 msgid "Barracks"
-msgstr ""
+msgstr "Kasarmi"
 
 #. tooltip_text of buildings:barracks
 #: horizons/i18n/objecttranslations.py:69
 msgid "Recruits units suitable for ground combat."
-msgstr ""
+msgstr "Kouluttaa yksiköitä maataisteluihin."
 
 #. name of buildings:blender
 #: horizons/i18n/objecttranslations.py:74
@@ -2930,6 +2929,7 @@ msgstr ""
 #: horizons/i18n/objecttranslations.py:130
 msgid "Produces cocoa beans used for confectionery. Needs a farm."
 msgstr ""
+"Tuottaa makeistenvalmistukseen tarvittavia kaakaopapuja. Tarvitsee maatilan."
 
 #. name of buildings:cornfield
 #: horizons/i18n/objecttranslations.py:135
@@ -2939,9 +2939,8 @@ msgstr ""
 # 88%
 #. tooltip_text of buildings:cornfield
 #: horizons/i18n/objecttranslations.py:137
-#, fuzzy
 msgid "Yields corn. Needs a farm."
-msgstr "Tuottaa ruokaa. Tarvitsee maatilan."
+msgstr "Tuottaa maisseista ruokaa. Tarvitsee maatilan."
 
 # Simatehdas
 #. name of buildings:distillery
@@ -2962,7 +2961,7 @@ msgstr "Lääkäri"
 #. tooltip_text of buildings:doctor
 #: horizons/i18n/objecttranslations.py:151
 msgid "Treats diseases. Consumes herbs."
-msgstr ""
+msgstr "Parantaa sairaita. Käyttää yrttejä."
 
 #. name of buildings:farm
 #: horizons/i18n/objecttranslations.py:156
@@ -3012,7 +3011,7 @@ msgstr "Yrttitarha"
 #. tooltip_text of buildings:herbary
 #: horizons/i18n/objecttranslations.py:189
 msgid "Produces herbs. Needs a farm."
-msgstr "Tuottaa tupakkaa. Tarvitsee maatilan."
+msgstr "Tuottaa yrttejä. Tarvitsee maatilan."
 
 #. name of buildings:hunterstent
 #: horizons/i18n/objecttranslations.py:194
@@ -3042,7 +3041,7 @@ msgstr "Tukki"
 #. tooltip_text of buildings:log
 #: horizons/i18n/objecttranslations.py:210
 msgid "Road across a river."
-msgstr ""
+msgstr "Tie joen yli."
 
 #. name of buildings:lookout
 #: horizons/i18n/objecttranslations.py:215
@@ -3087,7 +3086,7 @@ msgstr "Vuori"
 #. name of buildings:pastryshop
 #: horizons/i18n/objecttranslations.py:243
 msgid "Pastry Shop"
-msgstr ""
+msgstr "Leipäkauppa"
 
 #. tooltip_text of buildings:pastryshop
 #: horizons/i18n/objecttranslations.py:245
@@ -3127,7 +3126,7 @@ msgstr "Tarvitsee maatilan."
 #. name of buildings:potatofield
 #: horizons/i18n/objecttranslations.py:271
 msgid "Potato Field"
-msgstr "Perunamaa"
+msgstr "Perunapelto"
 
 #. tooltip_text of buildings:potatofield
 #: horizons/i18n/objecttranslations.py:273
@@ -3137,7 +3136,7 @@ msgstr "Tuottaa ruokaa. Tarvitsee maatilan."
 #. name of buildings:rampart
 #: horizons/i18n/objecttranslations.py:278
 msgid "Rampart"
-msgstr "Valli"
+msgstr "Muuri"
 
 #. tooltip_text of buildings:rampart
 #: horizons/i18n/objecttranslations.py:280
@@ -3192,7 +3191,7 @@ msgstr ""
 #. name of buildings:stonemason
 #: horizons/i18n/objecttranslations.py:318
 msgid "Stonemason"
-msgstr ""
+msgstr "Kivenhakkaaja"
 
 #. tooltip_text of buildings:stonemason
 #: horizons/i18n/objecttranslations.py:320
@@ -3217,14 +3216,13 @@ msgstr "Varastoteltta"
 # 75%
 #. name_1 of buildings:storagetent
 #: horizons/i18n/objecttranslations.py:334
-#, fuzzy
 msgid "Storage Hut"
-msgstr "Varastoteltta"
+msgstr "Varastomökki"
 
 #. tooltip_text of buildings:storagetent
 #: horizons/i18n/objecttranslations.py:336
 msgid "Extends stock and provides collectors."
-msgstr "laajentaa valikoimaa ja tarjoaa kerääjiä."
+msgstr "Laajentaa varastotilaa ja tarjoaa lisää kerääjiä."
 
 #. name of buildings:sugarfield
 #: horizons/i18n/objecttranslations.py:341
@@ -3239,7 +3237,7 @@ msgstr "Tuottaa sokeria sokeripitoisia juomia varten. Tarvitsee maatilan."
 #. name of buildings:tavern
 #: horizons/i18n/objecttranslations.py:348
 msgid "Tavern"
-msgstr "Taverna"
+msgstr "Kapakka"
 
 #. tooltip_text of buildings:tavern
 #: horizons/i18n/objecttranslations.py:350
@@ -3259,9 +3257,8 @@ msgstr ""
 # 80%
 #. name_2 of buildings:tent
 #: horizons/i18n/objecttranslations.py:359
-#, fuzzy
 msgid "House"
-msgstr "taloja"
+msgstr "Talo"
 
 #. name_3 of buildings:tent
 #: horizons/i18n/objecttranslations.py:361
@@ -3271,12 +3268,12 @@ msgstr ""
 #. name_4 of buildings:tent
 #: horizons/i18n/objecttranslations.py:363
 msgid "Estate"
-msgstr ""
+msgstr "Kartano"
 
 #. name_5 of buildings:tent
 #: horizons/i18n/objecttranslations.py:365
 msgid "Manor"
-msgstr ""
+msgstr "Linna"
 
 #. tooltip_text of buildings:tent
 #: horizons/i18n/objecttranslations.py:367
@@ -3346,45 +3343,45 @@ msgstr "Järjestää opetusta."
 #. name of buildings:vineyard
 #: horizons/i18n/objecttranslations.py:414
 msgid "Vineyard"
-msgstr ""
+msgstr "Viinitarha"
 
 #. tooltip_text of buildings:vineyard
 #: horizons/i18n/objecttranslations.py:416
 msgid "Produces grapes for use in wine and confectionery. Needs a farm."
 msgstr ""
+"Tuottaa makeisten- ja viininvalmistukseen käytettäviä viinirypäleitä. "
+"Tarvitsee maatilan."
 
 #. name of buildings:vintner
 #: horizons/i18n/objecttranslations.py:421
 msgid "Vintner"
-msgstr ""
+msgstr "Viinikauppias"
 
 #. tooltip_text of buildings:vintner
 #: horizons/i18n/objecttranslations.py:423
 msgid "Produces wine out of grapes."
-msgstr ""
+msgstr "Tuottaa viiniä viinirypäleistä."
 
 #. name of buildings:warehouse
 #: horizons/i18n/objecttranslations.py:428
-#, fuzzy
 msgid "Warehouse"
-msgstr "taloja"
+msgstr "Sivutoimisto"
 
 # 76%
 #. name of buildings:weaverstent
 #: horizons/i18n/objecttranslations.py:433
-#, fuzzy
 msgid "Weaver's Hut"
-msgstr "Kutojan teltta"
+msgstr "Kutojan mökki"
 
 #. tooltip_text of buildings:weaverstent
 #: horizons/i18n/objecttranslations.py:435
 msgid "Turns lamb wool into cloth."
-msgstr "Tekee lampaanvillasta vaatteita."
+msgstr "Valmistaa lampaanvillasta vaatteita."
 
 #. name of buildings:windmill
 #: horizons/i18n/objecttranslations.py:440
 msgid "Windmill"
-msgstr ""
+msgstr "Tuulimylly"
 
 #. tooltip_text of buildings:windmill
 #: horizons/i18n/objecttranslations.py:442
@@ -3437,6 +3434,8 @@ msgstr ""
 #: horizons/manager.py:175
 msgid "We are very sorry and hope to have this bug fixed in a future version."
 msgstr ""
+"Olemme hyvin pahoillamme tästä ja toivomme, että olemme korjanneet ongelman "
+"pelin seuraavassa versiossa."
 
 #: horizons/mpsession.py:66
 msgid "Not possible"
@@ -3539,9 +3538,8 @@ msgid "You need to quicksave before you can quickload."
 msgstr "Tarvitset pikatallennuksen ennen kuin voit pikaladata."
 
 #: horizons/util/checkupdates.py:70
-#, fuzzy
 msgid "New version of Unknown Horizons"
-msgstr "Käynnistetään Unknown Horizons"
+msgstr "Unknown Horizonsin uusi versio"
 
 #: horizons/util/checkupdates.py:72
 #, python-format
@@ -3567,12 +3565,12 @@ msgstr ""
 
 #: horizons/world/building/buildable.py:37
 msgid "The ground is not suitable for this building."
-msgstr ""
+msgstr "Maa ei sovellu tälle rakennukselle."
 
 #: horizons/world/building/buildable.py:38
 #: horizons/world/building/buildable.py:40
 msgid "You can only build this within your settlement."
-msgstr ""
+msgstr "Rakennuksen voi rakentaa vain oman siirtokuntasi sisälle."
 
 #: horizons/world/building/buildable.py:39
 msgid "This area is already occupied."
@@ -3580,7 +3578,7 @@ msgstr ""
 
 #: horizons/world/building/buildable.py:41
 msgid "Another player has already occupied this island."
-msgstr ""
+msgstr "Joku toinen pelaaja on jo valloittanut tämän saaren."
 
 #: horizons/world/building/buildable.py:42
 msgid "You can't build this on top of another building."
@@ -3592,11 +3590,11 @@ msgstr ""
 
 #: horizons/world/building/buildable.py:44
 msgid "This building must be built on the coastline."
-msgstr ""
+msgstr "Tämä rakennus pitää sijoittaa rannikolle."
 
 #: horizons/world/building/buildable.py:45
 msgid "This building requires to be placed near the ocean."
-msgstr ""
+msgstr "Tämä rakennus pitää sijoittaa meren lähelle."
 
 #: horizons/world/building/buildable.py:46
 msgid "This spot is too far away from your ship."
@@ -3604,74 +3602,71 @@ msgstr ""
 
 #: horizons/world/building/buildable.py:47
 msgid "This building can only be built on a resource source."
-msgstr ""
+msgstr "Tämä rakennus voidaan rakentaa vain raaka-ainelöydöksen päälle."
 
 #: horizons/world/component/tradepostcomponent.py:178
 msgid "The trade partner does not sell this."
 msgstr "Kauppakumppanisi ei myy tätä."
 
 #: horizons/world/component/tradepostcomponent.py:186
+#, fuzzy
 msgid "You can not store this."
-msgstr ""
+msgstr "Sinulla ei ole tilaa tämän varastoimiseen."
 
 #: horizons/world/component/tradepostcomponent.py:190
 msgid "You can not afford to buy this."
-msgstr ""
+msgstr "Sinulla ei ole varaa ostaa tätä."
 
 # 82%
 #: horizons/world/component/tradepostcomponent.py:196
-#, fuzzy
 msgid "The trade partner does not sell more of this."
-msgstr "Kauppakumppanisi ei myy tätä."
+msgstr "Kauppakumppanisi ei myy lisää tätä."
 
 # 89%
 #: horizons/world/component/tradepostcomponent.py:220
-#, fuzzy
 msgid "The trade partner does not buy this."
-msgstr "Kauppakumppanisi ei myy tätä."
+msgstr "Kauppakumppanisi ei osta tätä."
 
 #: horizons/world/component/tradepostcomponent.py:228
 msgid "You do not possess this."
-msgstr ""
+msgstr "Sinulla ei ole tätä."
 
 # 82%
 #: horizons/world/component/tradepostcomponent.py:232
 #, fuzzy
 msgid "The trade partner can not store more of this."
-msgstr "Kauppakumppanisi ei myy tätä."
+msgstr "Kauppakumppanillasi ei ole tilaa tämän varastoimiseen."
 
 # 82%
 # 77%
 #: horizons/world/component/tradepostcomponent.py:236
-#, fuzzy
 msgid "The trade partner can not afford to buy this."
-msgstr "Kauppakumppanisi ei myy tätä."
+msgstr "Kauppakumppanillasi ei ole varaa ostaa tätä."
 
 # 77%
 #: horizons/world/component/tradepostcomponent.py:241
-#, fuzzy
 msgid "The trade partner does not buy more of this."
-msgstr "Kauppakumppanisi ei myy tätä."
+msgstr "Kauppakumppanisi ei osta lisää tätä."
 
 #: horizons/world/traderoute.py:282
 #, python-format
 msgid "Trade route: going to {location}"
-msgstr ""
+msgstr "Kauppareitti: siirtymässä kohteeseen {location}"
 
 #: horizons/world/traderoute.py:286
-#, python-format
+#, python-format, 
 msgid "Trade route: waiting at {position}"
-msgstr ""
+msgstr "Kauppareitti: odotetaan {position}"
 
 #: horizons/world/units/ship.py:184
 #, python-format
 msgid "Going to {location}"
-msgstr "Menossa kohteeseen {location}"
+msgstr "Siirtymässä kohteeseen {location}"
 
 #: horizons/world/units/ship.py:186
 #, python-format
 msgid "Going to {x}, {y}"
-msgstr "Menossa kohteeseen {x}, {y}"
+msgstr "Siirtymässä sijaintiin {x}, {y}"
 
 #: horizons/world/units/ship.py:191
 #, python-format
@@ -3716,10 +3711,12 @@ msgstr "Tarvitsemme kuitenkin tietoja lokitiedostosta:"
 #: run_uh.py:211
 msgid "Please give it to us via IRC or our forum, for both see http://unknown-horizons.org ."
 msgstr ""
+"Anna tiedot meille IRC-kanavallamme tai keskustelupalstallamme, lisätietoja "
+"osoitteesta http://www.unknown-horizons.org."
 
 #: run_uh.py:251
 msgid "Error: Unable to find required libraries"
-msgstr "Vaadittuja kirjastoja ei löydy"
+msgstr "Virhe: Vaadittuja kirjastoja ei löydy"
 
 #: run_uh.py:252
 msgid "We are sorry to inform you that a library that is required by Unknown Horizons, is missing and needs to be installed."

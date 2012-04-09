@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2012-03-24 02:16+0100\n"
-"PO-Revision-Date: 2012-04-04 23:00+0200\n"
+"PO-Revision-Date: 2012-04-04 23:01+0200\n"
 "Last-Translator: Sergio <juarrox@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: es\n"
@@ -499,7 +499,7 @@ msgstr "{player1} y {player2} han concluido su alianza."
 #: database files sql
 #, python-format
 msgid "{player1} and {player2} will fight each other to the death."
-msgstr "{player1} y {playe2} se combatirán mutuamente hasta la muerte."
+msgstr "{player1} y {player2} se combatirán mutuamente hasta la muerte."
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql

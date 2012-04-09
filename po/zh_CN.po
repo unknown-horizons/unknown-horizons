@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2012-03-24 02:16+0100\n"
-"PO-Revision-Date: 2012-04-01 10:01+0200\n"
+"PO-Revision-Date: 2012-04-09 08:53+0200\n"
 "Last-Translator: nifabric <nifabric@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: zh_CN\n"
@@ -104,7 +104,7 @@ msgstr "路径已配置。请通过“配置路径”菜单上的“开启路径
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
 msgid "You can also drag roads."
-msgstr "你也可以拖拽道路"
+msgstr "你也可以拖拽道路。"
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
@@ -517,7 +517,7 @@ msgstr "保存失败。"
 
 #: horizons/engine/settingsdialog.py:50
 msgid "Restart required"
-msgstr "需要重新启动。"
+msgstr "需要重新启动"
 
 #: horizons/engine/settingsdialog.py:51
 msgid "Some of your changes require a restart of Unknown Horizons."
@@ -545,202 +545,202 @@ msgid ""
 "The SDL renderer is meant as a fallback solution only and has serious graphical glitches. \n"
 "\n"
 "Use at own risk!"
-msgstr ""
+msgstr "SDL渲染器已回退至备用模式，这意味着出现了一些图形故障。继续运行自行承担风险！"
 
 #: horizons/engine/settingshandler.py:224
 msgid "Invalid network port"
-msgstr ""
+msgstr "无效的网络端口"
 
 #: horizons/engine/settingshandler.py:225
 msgid "The port you specified is not valid. It must be a number between 1 and 65535."
-msgstr ""
+msgstr "你设置的端口号无效。它必须为1至65535之间的数字。"
 
 #: horizons/engine/settingshandler.py:226
 msgid "Please check the port you entered and make sure it is in the specified range."
-msgstr ""
+msgstr "请检查你输入的端口值并确认它在指定范围。"
 
 #: horizons/engine/settingshandler.py:238
 msgid "Failed to apply new network settings."
-msgstr ""
+msgstr "应用网络设置失败。"
 
 #: horizons/engine/settingshandler.py:239
 #: horizons/gui/modules/multiplayermenu.py:56
 msgid "Network features could not be initialized with the current configuration."
-msgstr ""
+msgstr "当前配置的网络设置不能初始化。"
 
 #: horizons/engine/settingshandler.py:240
 #: horizons/gui/modules/multiplayermenu.py:57
 msgid "Check the settings you specified in the network section."
-msgstr ""
+msgstr "检查你设定的设置方案中网络连接部分。"
 
 #. i18n This is advice for players seeing a network error with the current config
 #: horizons/engine/settingshandler.py:244
 msgid "Low port numbers sometimes require special access privileges, try 0 or a number greater than 1024."
-msgstr ""
+msgstr "小数值的端口号有时需要特殊的接入权限，尝试0或者大于1024的数值。"
 
 #: horizons/engine/settingshandler.py:274
 #, python-format
 msgid "Configured language {lang} could not be loaded"
-msgstr ""
+msgstr "配置的语言 {lang} 无法装载"
 
 #: horizons/engine/settingshandler.py:312
 msgid "Logging enabled"
-msgstr ""
+msgstr "日志已启用"
 
 #: horizons/engine/settingshandler.py:314
 #, python-format
 msgid "Logs are written to {directory}."
-msgstr ""
+msgstr "日志已写入{directory}。"
 
 #: horizons/gui/gui.py:207
 msgid "Are you sure you want to quit Unknown Horizons?"
-msgstr ""
+msgstr "你确定要退出 Unknown Horizons ？"
 
 #: horizons/gui/gui.py:208
 msgid "Quit Game"
-msgstr ""
+msgstr "退出游戏"
 
 #: horizons/gui/gui.py:214
 msgid "Are you sure you want to abort the running session?"
-msgstr ""
+msgstr "你确定要放弃运行中的对话？"
 
 #: horizons/gui/gui.py:216
 msgid "Quit Session"
-msgstr ""
+msgstr "退出对话"
 
 #: horizons/gui/gui.py:276
 msgid "No saved games"
-msgstr ""
+msgstr "没有已保存的游戏"
 
 #: horizons/gui/gui.py:276
 msgid "There are no saved games to load."
-msgstr ""
+msgstr "没有已保存的游戏可以装载。"
 
 #. (text of widget: loadgame)
 #. (text of widget: loadgame) Open a widget to select which game to load
 #: horizons/gui/gui.py:286 horizons/gui/gui.py:287
 #: horizons/i18n/guitranslations.py:779 horizons/i18n/guitranslations.py:805
 msgid "Load game"
-msgstr ""
+msgstr "装载游戏"
 
 #. (text of widget: savegame)
 #: horizons/gui/gui.py:286 horizons/gui/gui.py:287
 #: horizons/i18n/guitranslations.py:783
 msgid "Save game"
-msgstr ""
+msgstr "保存游戏"
 
 #: horizons/gui/gui.py:359
 msgid "No filename given"
-msgstr ""
+msgstr "没有指定文件名"
 
 #: horizons/gui/gui.py:359
 msgid "Please enter a valid filename."
-msgstr ""
+msgstr "请输入一个有效的文件名。"
 
 #. reshow dialog
 #. savegamename already exists
 #: horizons/gui/gui.py:364
 #, python-format
 msgid "A savegame with the name '{name}' already exists."
-msgstr ""
+msgstr "要保存的游戏存档'{name}'已存在。"
 
 #: horizons/gui/gui.py:365
 msgid "Overwrite it?"
-msgstr ""
+msgstr "覆盖它？"
 
 #: horizons/gui/gui.py:366
 msgid "Confirmation for overwriting"
-msgstr ""
+msgstr "覆盖确认"
 
 #: horizons/gui/gui.py:371
 msgid "Invalid filename given"
-msgstr ""
+msgstr "给出文件名无效"
 
 #: horizons/gui/gui.py:379
 msgid "Please select a savegame or click on cancel."
-msgstr ""
+msgstr "请选择一个游戏存档或者点击取消。"
 
 #. ok button has been pressed, but no savegame was selected
 #: horizons/gui/gui.py:379
 msgid "Select a savegame"
-msgstr ""
+msgstr "选择一个存档"
 
 #. (text of widget: scenario_details) More text describing the scenario
 #. (text of widget: headline_details_label) More text describing the savegame
 #: horizons/gui/gui.py:469 horizons/i18n/guitranslations.py:625
 #: horizons/i18n/guitranslations.py:968
 msgid "Details:"
-msgstr ""
+msgstr "详细："
 
 #: horizons/gui/gui.py:471
 msgid "Error:"
-msgstr ""
+msgstr "错误："
 
 #: horizons/gui/gui.py:605
 msgid "Unknown savedate"
-msgstr ""
+msgstr "未知的保存时间"
 
 #: horizons/gui/gui.py:608
 #, python-format
 msgid "Saved at {time}"
-msgstr ""
+msgstr "保存在{time}"
 
 #. N_ takes care of plural forms for different languages
 #: horizons/gui/gui.py:615
 #, python-format
 msgid "Saved {amount} time"
 msgid_plural "Saved {amount} times"
-msgstr[0] ""
+msgstr[0] "已保存{amount}次"
 
 #: horizons/gui/gui.py:625
 #, python-format
 msgid "Savegame version {version}"
-msgstr ""
+msgstr "游戏存档版本 {version}"
 
 #: horizons/gui/gui.py:629
 #, python-format
 msgid "WARNING: Incompatible version {version}!"
-msgstr ""
+msgstr "警告：不匹配的游戏版本 {version}！"
 
 #: horizons/gui/gui.py:632
 #, python-format
 msgid "Required version: {required}!"
-msgstr ""
+msgstr "要求版本： {required}!"
 
 #: horizons/gui/gui.py:635
 msgid "Incompatible version"
-msgstr ""
+msgstr "不匹配的版本"
 
 #: horizons/gui/gui.py:652
 msgid "No file selected"
-msgstr ""
+msgstr "没有选择文件"
 
 #: horizons/gui/gui.py:652
 msgid "You need to select a savegame to delete."
-msgstr ""
+msgstr "你需要选择一个游戏存档来删除。"
 
 #: horizons/gui/gui.py:656
 #, python-format
 msgid "Do you really want to delete the savegame '{name}'?"
-msgstr ""
+msgstr "你真的要删除游戏存档 '{name}'?"
 
 #: horizons/gui/gui.py:658
 msgid "Confirm deletion"
-msgstr ""
+msgstr "删除确认"
 
 #: horizons/gui/gui.py:663
 msgid "Error!"
-msgstr ""
+msgstr "出错！"
 
 #: horizons/gui/gui.py:663
 msgid "Failed to delete savefile!"
-msgstr ""
+msgstr "删除游戏存档失败！"
 
 #. i18n this defines how each line in our help looks like. Default: '[C] = Chat'
 #: horizons/gui/gui.py:681
 #, python-format
 msgid "[{key}] = {text}"
-msgstr ""
+msgstr "[{key}] = {text}"
 
 #. (helptext of widget: headline)
 #: horizons/gui/ingamegui.py:240 horizons/gui/tabs/mainsquaretabs.py:95
@@ -748,282 +748,285 @@ msgstr ""
 #: horizons/i18n/guitranslations.py:417 horizons/i18n/guitranslations.py:439
 #: horizons/i18n/guitranslations.py:459
 msgid "Click to change the name of your settlement"
-msgstr ""
+msgstr "点击更改你的殖民地名称"
 
 #. e.g. when the pirate is disabled
 #. this dialog is pretty useless in this case
 #: horizons/gui/ingamegui.py:278
 msgid "No diplomacy possible"
-msgstr ""
+msgstr "没有可以进行的外交"
 
 #: horizons/gui/ingamegui.py:279
 msgid "Cannot do diplomacy as there are no other players."
-msgstr ""
+msgstr "无法进行外交因为没有其他玩家。"
 
 #: horizons/gui/ingamegui.py:462
 #, python-format
 msgid "Valid map names are in the following form: {expression}"
-msgstr ""
+msgstr "有效的地图名称符合以下形式：{expression}"
 
 #: horizons/gui/ingamegui.py:464
 #, python-format
 msgid "Try a name that only contains letters and numbers."
-msgstr ""
+msgstr "尝试使用只包含字母和数字的名称。"
 
 #: horizons/gui/modules/multiplayermenu.py:44
 msgid "Unable to find pyenet"
-msgstr ""
+msgstr "没有找到 pyenet"
 
 #: horizons/gui/modules/multiplayermenu.py:45
 msgid "The multiplayer feature requires the library \"pyenet\", which couldn't be found on your system."
-msgstr ""
+msgstr "多玩家功能需要运行库“pyenet”，在你的系统中没有找到。"
 
 #: horizons/gui/modules/multiplayermenu.py:46
 msgid "Linux users: Try to install pyenet through your package manager."
-msgstr ""
+msgstr "Linux用户：尝试通过你的安装包管理器安装pyenet。"
 
 #: horizons/gui/modules/multiplayermenu.py:47
 msgid "Windows users: There is currently no reasonable support for Windows."
-msgstr ""
+msgstr "Windows用户：当前没有合适的Windows系统支持。"
 
 #: horizons/gui/modules/multiplayermenu.py:55
 msgid "Failed to initialize networking."
-msgstr ""
+msgstr "初始化网络失败。"
 
 #: horizons/gui/modules/multiplayermenu.py:117
 #: horizons/gui/modules/multiplayermenu.py:135
 msgid "Fatal Network Error"
-msgstr ""
+msgstr "严重的网络错误"
 
 #: horizons/gui/modules/multiplayermenu.py:118
 msgid "Could not connect to master server."
-msgstr ""
+msgstr "无法连接至主服务器。"
 
 #: horizons/gui/modules/multiplayermenu.py:119
 msgid "Please check your Internet connection. If it is fine, it means our master server is temporarily down."
-msgstr ""
+msgstr "请检查你的网络连接。如果正常，将意味着主服务器暂时离线了。"
 
 #: horizons/gui/modules/multiplayermenu.py:136
 msgid "Something went wrong with the network:"
-msgstr ""
+msgstr "网络连接中出现了一些错误："
 
 #: horizons/gui/modules/multiplayermenu.py:160
 msgid "Version differs!"
-msgstr ""
+msgstr "版本不同！"
 
 #: horizons/gui/modules/multiplayermenu.py:184
 #, python-format
 msgid "Map: {map_name}"
-msgstr ""
+msgstr "地图：{map_name}"
 
 #: horizons/gui/modules/multiplayermenu.py:185
 msgid "Name: {game_name}"
-msgstr ""
+msgstr "名称：{game_name}"
 
 #: horizons/gui/modules/multiplayermenu.py:187
 #, python-format
 msgid "Players: {player_amount}/{player_limit}"
-msgstr ""
+msgstr "玩家：{player_amount}/{player_limit}"
 
 #: horizons/gui/modules/multiplayermenu.py:192
 #, python-format
 msgid "Creator: {player}"
-msgstr ""
+msgstr "创建者：{player}"
 
 #: horizons/gui/modules/multiplayermenu.py:203
 msgid "This savegame is missing (click here)"
-msgstr ""
+msgstr "这份游戏存档丢失了（点击此处）"
 
 #: horizons/gui/modules/multiplayermenu.py:209
 msgid "For multiplayer load, it is currently necessary for you to ensure you have the correct savegame file."
-msgstr ""
+msgstr "要装载多玩家游戏，当前需要你确认正确的游戏存档。"
 
 #: horizons/gui/modules/multiplayermenu.py:210
 msgid "This is not nice and we hope to offer a more convenient solution very soon."
-msgstr ""
+msgstr "这不是很方便，我们将很快提供更便利的方案。"
 
 #: horizons/gui/modules/multiplayermenu.py:211
 msgid "Meanwhile, please request the file {path} from the game creator and put it in {map_directory} ."
-msgstr ""
+msgstr "同时，请向游戏创建者索取文件{path}并放置在{map_directory} ."
 
 #. (text of widget: help)
 #. (text of widget: help) Main / in-game menu entry
 #: horizons/gui/modules/multiplayermenu.py:214
 #: horizons/i18n/guitranslations.py:777 horizons/i18n/guitranslations.py:803
 msgid "Help"
-msgstr ""
+msgstr "帮助"
 
 #: horizons/gui/modules/multiplayermenu.py:218
 msgid "This is a savegame."
-msgstr ""
+msgstr "这是一份游戏存档。"
 
 #: horizons/gui/modules/multiplayermenu.py:242
 msgid "Wrong version"
-msgstr ""
+msgstr "错误的版本"
 
 #: horizons/gui/modules/multiplayermenu.py:244
 #, python-format
 msgid "The game's version differs from your version. Every player in a multiplayer game must use the same version. This can be fixed by every player updating to the latest version. Game version: {game_version} Your version: {own_version}"
 msgstr ""
+"游戏的版本与你的版本不同。在多玩家游戏中的所有玩家都必须使用相同的版本。这可以通过全体更新至最新版本来解决。游戏版本：{game_version}你的版"
+"本：{own_version}"
 
 #: horizons/gui/modules/multiplayermenu.py:350
 #: horizons/gui/modules/singleplayermenu.py:111
 #, python-format
 msgid "Recommended number of players: {number}"
-msgstr ""
+msgstr "需要玩家数量：{number}"
 
 #: horizons/gui/modules/singleplayermenu.py:156
 #: horizons/gui/modules/singleplayermenu.py:170
 #: horizons/gui/widgets/choose_next_scenario.py:44
 #, python-format
 msgid "Difficulty: {difficulty}"
-msgstr ""
+msgstr "难度：{difficulty}"
 
 #: horizons/gui/modules/singleplayermenu.py:158
 #: horizons/gui/modules/singleplayermenu.py:172
 #: horizons/gui/widgets/choose_next_scenario.py:45
 #, python-format
 msgid "Author: {author}"
-msgstr ""
+msgstr "作者：{author}"
 
 #: horizons/gui/modules/singleplayermenu.py:160
 #: horizons/gui/modules/singleplayermenu.py:174
 #: horizons/gui/widgets/choose_next_scenario.py:46
 #, python-format
 msgid "Description: {desc}"
-msgstr ""
+msgstr "描述：{desc}"
 
 #: horizons/gui/modules/singleplayermenu.py:197
 msgid "Invalid player name"
-msgstr ""
+msgstr "无效的玩家名"
 
 #: horizons/gui/modules/singleplayermenu.py:197
 msgid "You entered an invalid playername."
-msgstr ""
+msgstr "你输入了一个无效的玩家名。"
 
 #: horizons/gui/modules/singleplayermenu.py:288
 msgid "Map size:"
-msgstr ""
+msgstr "地图大小："
 
 #: horizons/gui/modules/singleplayermenu.py:298
 msgid "Water:"
-msgstr ""
+msgstr "水域："
 
 #: horizons/gui/modules/singleplayermenu.py:308
 msgid "Max island size:"
-msgstr ""
+msgstr "最大岛屿大小："
 
 #: horizons/gui/modules/singleplayermenu.py:318
 msgid "Preferred island size:"
-msgstr ""
+msgstr "推荐岛屿大小："
 
 #: horizons/gui/modules/singleplayermenu.py:328
 msgid "Island size deviation:"
-msgstr ""
+msgstr "岛屿大小偏差："
 
 #: horizons/gui/modules/singleplayermenu.py:367
 msgid "Resource density:"
-msgstr ""
+msgstr "资源密度："
 
 #: horizons/gui/modules/singleplayermenu.py:387
 msgid "Invalid scenario file"
-msgstr ""
+msgstr "无效的场景文件"
 
 #: horizons/gui/modules/singleplayermenu.py:388
 msgid "The selected file is not a valid scenario file."
-msgstr ""
+msgstr "选择的文件不是有效的场景文件。"
 
 #: horizons/gui/modules/singleplayermenu.py:389
 msgid "Error message:"
-msgstr ""
+msgstr "错误信息："
 
 #: horizons/gui/modules/singleplayermenu.py:390
 msgid "Please report this to the author."
-msgstr ""
+msgstr "请报告给作者。"
 
 #. dialog already gone
 #: horizons/gui/modules/singleplayermenu.py:464
 msgid "Click to generate a different random map"
-msgstr ""
+msgstr "点击生成不同的随机地图"
 
 #. (text of widget: headline)
 #. set translated building name in gui
 #: horizons/gui/mousetools/buildingtool.py:213
 #: horizons/i18n/guitranslations.py:64
 msgid "Build"
-msgstr ""
+msgstr "建造"
 
 #: horizons/gui/mousetools/navigationtool.py:75
 msgid "Press H to remove this hint"
-msgstr ""
+msgstr "按H键移除这条提示"
 
 #: horizons/gui/tabs/boatbuildertab.py:50
 msgid "Boat builder overview"
-msgstr ""
+msgstr "小船制造者概述"
 
 #: horizons/gui/tabs/boatbuildertab.py:101
 #, python-format
 msgid "{ship} (place in queue: {place})"
-msgstr ""
+msgstr "{ship} (进入队列: {place})"
 
 #: horizons/gui/tabs/boatbuildertab.py:165
 msgid "Resources still needed:"
-msgstr ""
+msgstr "还需资源："
 
 #: horizons/gui/tabs/boatbuildertab.py:242
 msgid "Fisher boats"
-msgstr ""
+msgstr "渔船"
 
 #. (text of widget: headline)
 #: horizons/gui/tabs/boatbuildertab.py:252
 #: horizons/i18n/guitranslations.py:156
 msgid "Trade boats"
-msgstr ""
+msgstr "商船"
 
 #. (text of widget: headline)
 #: horizons/gui/tabs/boatbuildertab.py:260
 #: horizons/i18n/guitranslations.py:173
 msgid "War boats"
-msgstr ""
+msgstr "战船"
 
 #: horizons/gui/tabs/boatbuildertab.py:267
 msgid "War ships"
-msgstr ""
+msgstr "战舰"
 
 #: horizons/gui/tabs/boatbuildertab.py:284
 msgid "Confirm order"
-msgstr ""
+msgstr "确认订单"
 
 #: horizons/gui/tabs/buildrelatedtab.py:46
+#, fuzzy
 msgid "Build related fields"
-msgstr ""
+msgstr "建造相关的田地"
 
 #: horizons/gui/tabs/buildtabs.py:110
 msgid "Residents and infrastructure"
-msgstr ""
+msgstr "居民和基础设施"
 
 #: horizons/gui/tabs/buildtabs.py:111 horizons/gui/tabs/buildtabs.py:117
 #: horizons/gui/tabs/buildtabs.py:124
 msgid "Services"
-msgstr ""
+msgstr "服务"
 
 #: horizons/gui/tabs/buildtabs.py:112 horizons/gui/tabs/buildtabs.py:115
 #: horizons/gui/tabs/buildtabs.py:122 horizons/gui/tabs/buildtabs.py:128
 msgid "Companies"
-msgstr ""
+msgstr "公司"
 
 #: horizons/gui/tabs/buildtabs.py:116 horizons/gui/tabs/buildtabs.py:123
 #: horizons/gui/tabs/buildtabs.py:129
 msgid "Fields"
-msgstr ""
+msgstr "田地"
 
 #: horizons/gui/tabs/buildtabs.py:118
 msgid "Military"
-msgstr ""
+msgstr "军事"
 
 #: horizons/gui/tabs/buildtabs.py:121
 msgid "Mining"
-msgstr ""
+msgstr "矿业"
 
 #: horizons/gui/tabs/buildtabs.py:149
 msgid "Increment {increment}"
