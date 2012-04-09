@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2012-03-24 02:16+0100\n"
-"PO-Revision-Date: 2012-04-09 04:15+0200\n"
+"PO-Revision-Date: 2012-04-09 08:53+0200\n"
 "Last-Translator: nifabric <nifabric@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: zh_CN\n"
@@ -997,35 +997,36 @@ msgid "Confirm order"
 msgstr "确认订单"
 
 #: horizons/gui/tabs/buildrelatedtab.py:46
+#, fuzzy
 msgid "Build related fields"
-msgstr ""
+msgstr "建造相关的田地"
 
 #: horizons/gui/tabs/buildtabs.py:110
 msgid "Residents and infrastructure"
-msgstr ""
+msgstr "居民和基础设施"
 
 #: horizons/gui/tabs/buildtabs.py:111 horizons/gui/tabs/buildtabs.py:117
 #: horizons/gui/tabs/buildtabs.py:124
 msgid "Services"
-msgstr ""
+msgstr "服务"
 
 #: horizons/gui/tabs/buildtabs.py:112 horizons/gui/tabs/buildtabs.py:115
 #: horizons/gui/tabs/buildtabs.py:122 horizons/gui/tabs/buildtabs.py:128
 msgid "Companies"
-msgstr ""
+msgstr "公司"
 
 #: horizons/gui/tabs/buildtabs.py:116 horizons/gui/tabs/buildtabs.py:123
 #: horizons/gui/tabs/buildtabs.py:129
 msgid "Fields"
-msgstr ""
+msgstr "田地"
 
 #: horizons/gui/tabs/buildtabs.py:118
 msgid "Military"
-msgstr ""
+msgstr "军事"
 
 #: horizons/gui/tabs/buildtabs.py:121
 msgid "Mining"
-msgstr ""
+msgstr "矿业"
 
 #: horizons/gui/tabs/buildtabs.py:149
 msgid "Increment {increment}"
