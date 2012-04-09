@@ -6,8 +6,8 @@
 #   development/copy_pofiles.sh
 
 author: "Unknown Horizonsin kehitt\xE4j\xE4t"
-description: "Rakenna ensimm\xE4inen siirtokuntasi ja opi, miten t\xE4t\xE4 peli\xE4\
-  \ pelataan!\n"
+description: "Harjoituspeli:\nRakenna ensimm\xE4inen siirtokuntasi ja opi, miten t\xE4\
+  t\xE4 peli\xE4 pelataan!\n"
 difficulty: !!python/unicode 'Harjoituspeli'
 events:
 - actions:
@@ -27,8 +27,8 @@ events:
       \ reunassa."
     - "Jos haluat tiet\xE4\xE4 teht\xE4vist\xE4 lis\xE4\xE4, niin t\xE4st\xE4 p\xE4\
       iv\xE4kirjasta pit\xE4isi l\xF6yty\xE4 tarvitsemasi tiedot."
-    - "Kun olet sulkenut t\xE4m\xE4n p\xE4iv\xE4kirjan, voit avata sen uudelleen \\\
-      \"Kapteenin p\xE4iv\xE4kirja\\\" -kuvakkeesta oikeasta yl\xE4kulmasta (pikkukartan\
+    - "Kun olet sulkenut t\xE4m\xE4n p\xE4iv\xE4kirjan, voit avata sen uudelleen \"\
+      Kapteenin p\xE4iv\xE4kirja\" -kuvakkeesta oikeasta yl\xE4kulmasta (pikkukartan\
       \ alapuolelta, kuvakkeessa on sinet\xF6ity kirje ja sulka)."
     - - Gallery
       - [content/gui/icons/widgets/minimap/captainslog.png]
@@ -42,7 +42,7 @@ events:
       \xE4 tai t\xF6rm\xE4\xE4t vikatilanteeseen, kerrothan siit\xE4 meille, jotta\
       \ voimme parantaa t\xE4t\xE4 harjoituspeli\xE4!"
     - "\nKehitysryhm\xE4mme yhteystiedot on saatavilla verkkosivuiltamme osoitteesta\
-      \ www.unknown-horizons.org."
+      \ www.unknown-horizons.org ."
     - !!python/unicode 'Ja nyt viimeinkin, aloitetaanpas itse peli!'
     - [Pagebreak]
     - [Headline, !!python/unicode 'ASETU SAARELLE']
@@ -644,16 +644,8 @@ events:
     - [Pagebreak]
     - [Headline, !!python/unicode 'Suuret kiitokset!']
     - [Image, content/gui/images/background/hr.png]
-    - !!python/unicode '
-
-
-
-
-
-      Thanks for playing the tutorial!
-
-
-      Your UH-Team'
+    - "\n\n\n\n\nKiitos, ett\xE4 pelasit t\xE4t\xE4 harjoituspeli\xE4!\n\nTerveisin,\n\
+      Unknown Horizonsin kehitt\xE4j\xE4t"
     - - Gallery
       - [content/unknown-horizons.xpm, content/gfx/misc/status_icons/as_book_flip/idle/45/book20125.png]
     type: logbook
@@ -684,5 +676,5 @@ events:
     type: var_gt
 locale: fi
 mapfile: development.sqlite
-translation_status: 189 translated messages, 1 fuzzy translation, 1 untranslated message.
+translation_status: 190 translated messages, 1 untranslated message.
 

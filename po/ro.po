@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2012-03-24 02:16+0100\n"
-"PO-Revision-Date: 2012-01-07 07:52+0200\n"
+"PO-Revision-Date: 2012-04-08 02:17+0200\n"
 "Last-Translator: Christopher Oelmueller <chris.oelmueller+uh@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: ro\n"
@@ -788,9 +788,8 @@ msgstr ""
 #: horizons/gui/widgets/playerssettlements.py:101
 #: horizons/i18n/guitranslations.py:417 horizons/i18n/guitranslations.py:439
 #: horizons/i18n/guitranslations.py:459
-#, fuzzy
 msgid "Click to change the name of your settlement"
-msgstr "Click pentru a schimba numele coloniei."
+msgstr "Click pentru a schimba numele coloniei"
 
 #. e.g. when the pirate is disabled
 #. this dialog is pretty useless in this case
@@ -1288,9 +1287,8 @@ msgstr ""
 #. (helptext of widget: name)
 #: horizons/gui/widgets/playersships.py:83
 #: horizons/i18n/guitranslations.py:499 horizons/i18n/guitranslations.py:510
-#, fuzzy
 msgid "Click to change the name of this ship"
-msgstr "click aici pentru a schimba numele navei."
+msgstr "click aici pentru a schimba numele navei"
 
 #. i18n There are no weapons equipped at the moment.
 #: horizons/gui/widgets/playersships.py:99
@@ -2487,9 +2485,8 @@ msgstr "Înscrieți-vă la partidă"
 # 90%
 #. (text of widget: load_game_lbl)
 #: horizons/i18n/guitranslations.py:868
-#, fuzzy
 msgid "Load game:"
-msgstr "încarcă joc"
+msgstr "încarcă joc:"
 
 #. (text of widget: refr_gamelist_lbl)
 #: horizons/i18n/guitranslations.py:870
