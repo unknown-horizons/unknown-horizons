@@ -33,6 +33,8 @@ from horizons.world.component.selectablecomponent import SelectableComponent
 class TradeTab(TabInterface):
 	log = logging.getLogger("gui.tradetab")
 
+	scheduled_update_delay = 0.6
+
 	# objects within this radius can be traded with, only used if the
 	# main instance does not have a radius attribute
 	radius = 5
@@ -66,6 +68,10 @@ class TradeTab(TabInterface):
 		self.set_exchange(50, initial=True)
 		if hasattr(self.instance, 'radius'):
 			self.radius = self.instance.radius
+
+	def refresh(self):
+		super(TradeTab, self).refresh()
+		self.draw_widget()
 
 	def draw_widget(self):
 		self.widget.findChild(name='ship_name').text = self.instance.get_component(NamedComponent).name
@@ -125,25 +131,24 @@ class TradeTab(TabInterface):
 	def __remove_changelisteners(self):
 		# need to be idempotent, show/hide calls it in arbitrary order
 		if self.instance:
-			self.instance.discard_change_listener(self.draw_widget)
+			self.instance.discard_change_listener(self._schedule_refresh)
 		if self.partner:
-			self.partner.get_component(StorageComponent).inventory.discard_change_listener(self.draw_widget)
-			self.partner.settlement.get_component(TradePostComponent).discard_change_listener(self.draw_widget)
+			self.partner.get_component(StorageComponent).inventory.discard_change_listener(self._schedule_refresh)
+			self.partner.settlement.get_component(TradePostComponent).discard_change_listener(self._schedule_refresh)
 
 	def __add_changelisteners(self):
 		# need to be idempotent, show/hide calls it in arbitrary order
 		if self.instance:
-			self.instance.add_change_listener(self.draw_widget, no_duplicates=True)
+			self.instance.add_change_listener(self._schedule_refresh, no_duplicates=True)
 		if self.partner:
-			self.partner.get_component(StorageComponent).inventory.add_change_listener(self.draw_widget, no_duplicates=True)
-			self.partner.settlement.get_component(TradePostComponent).add_change_listener(self.draw_widget, no_duplicates=True)
+			self.partner.get_component(StorageComponent).inventory.add_change_listener(self._schedule_refresh, no_duplicates=True)
+			self.partner.settlement.get_component(TradePostComponent).add_change_listener(self._schedule_refresh, no_duplicates=True)
 
 	def hide(self):
 		self.widget.hide()
 		self.__remove_changelisteners()
 
 	def show(self):
-		self.draw_widget()
 		self.widget.show()
 		self.__add_changelisteners()
 
