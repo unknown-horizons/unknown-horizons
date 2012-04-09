@@ -76,6 +76,8 @@ class TradeTab(TabInterface):
 	def draw_widget(self):
 		self.widget.findChild(name='ship_name').text = self.instance.get_component(NamedComponent).name
 		self.partners = self.find_partner()
+		# set up gui dynamically according to partners
+		# NOTE: init on inventories will be optimised away internally if it's only an update
 		if self.partners:
 			partner_label = self.widget.findChild(name='partners')
 			nearest_partner = self.get_nearest_partner(self.partners)
@@ -112,7 +114,7 @@ class TradeTab(TabInterface):
 				self.widget.findChild(name='international').hide()
 				inv_partner = self.widget.findChild(name='inventory_partner') # This is no BuySellInventory!
 				inv_partner.init(self.instance.session.db,
-						self.partner.get_component(StorageComponent).inventory)
+				                 self.partner.get_component(StorageComponent).inventory)
 				for button in self.get_widgets_by_class(inv_partner, ImageFillStatusButton):
 					button.button.capture(Callback(self.transfer, button.res_id, self.partner.settlement, self.instance))
 				self.widget.findChild(name='domestic').show()

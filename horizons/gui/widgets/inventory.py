@@ -159,7 +159,3 @@ class Inventory(pychan.widgets.Container):
 				if filt == None or filt(widget):
 					action(widget)
 		self.deepApply(_find_widget)
-
-	@property
-	def inventory(self):
-		return self._inventory
