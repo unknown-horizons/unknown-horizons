@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2012-03-24 02:16+0100\n"
-"PO-Revision-Date: 2012-04-09 03:41+0200\n"
+"PO-Revision-Date: 2012-04-09 03:58+0200\n"
 "Last-Translator: nifabric <nifabric@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: zh_CN\n"
@@ -780,91 +780,93 @@ msgstr "多玩家功能需要运行库“pyenet”，在你的系统中没有找
 
 #: horizons/gui/modules/multiplayermenu.py:46
 msgid "Linux users: Try to install pyenet through your package manager."
-msgstr ""
+msgstr "Linux用户：尝试通过你的安装包管理器安装pyenet。"
 
 #: horizons/gui/modules/multiplayermenu.py:47
 msgid "Windows users: There is currently no reasonable support for Windows."
-msgstr ""
+msgstr "Windows用户：当前没有合适的Windows系统支持。"
 
 #: horizons/gui/modules/multiplayermenu.py:55
 msgid "Failed to initialize networking."
-msgstr ""
+msgstr "初始化网络失败。"
 
 #: horizons/gui/modules/multiplayermenu.py:117
 #: horizons/gui/modules/multiplayermenu.py:135
 msgid "Fatal Network Error"
-msgstr ""
+msgstr "严重的网络错误"
 
 #: horizons/gui/modules/multiplayermenu.py:118
 msgid "Could not connect to master server."
-msgstr ""
+msgstr "无法连接至主服务器。"
 
 #: horizons/gui/modules/multiplayermenu.py:119
 msgid "Please check your Internet connection. If it is fine, it means our master server is temporarily down."
-msgstr ""
+msgstr "请检查你的网络连接。如果正常，将意味着主服务器暂时离线了。"
 
 #: horizons/gui/modules/multiplayermenu.py:136
 msgid "Something went wrong with the network:"
-msgstr ""
+msgstr "网络连接中出现了一些错误："
 
 #: horizons/gui/modules/multiplayermenu.py:160
 msgid "Version differs!"
-msgstr ""
+msgstr "版本不同！"
 
 #: horizons/gui/modules/multiplayermenu.py:184
 #, python-format
 msgid "Map: {map_name}"
-msgstr ""
+msgstr "地图：{map_name}"
 
 #: horizons/gui/modules/multiplayermenu.py:185
 msgid "Name: {game_name}"
-msgstr ""
+msgstr "名称：{game_name}"
 
 #: horizons/gui/modules/multiplayermenu.py:187
 #, python-format
 msgid "Players: {player_amount}/{player_limit}"
-msgstr ""
+msgstr "玩家：{player_amount}/{player_limit}"
 
 #: horizons/gui/modules/multiplayermenu.py:192
 #, python-format
 msgid "Creator: {player}"
-msgstr ""
+msgstr "创建者：{player}"
 
 #: horizons/gui/modules/multiplayermenu.py:203
 msgid "This savegame is missing (click here)"
-msgstr ""
+msgstr "这份游戏存档丢失了（点击此处）"
 
 #: horizons/gui/modules/multiplayermenu.py:209
 msgid "For multiplayer load, it is currently necessary for you to ensure you have the correct savegame file."
-msgstr ""
+msgstr "要装载多玩家游戏，当前需要你确认正确的游戏存档。"
 
 #: horizons/gui/modules/multiplayermenu.py:210
 msgid "This is not nice and we hope to offer a more convenient solution very soon."
-msgstr ""
+msgstr "这不是很方便，我们将很快提供更便利的方案。"
 
 #: horizons/gui/modules/multiplayermenu.py:211
 msgid "Meanwhile, please request the file {path} from the game creator and put it in {map_directory} ."
-msgstr ""
+msgstr "同时，请向游戏创建者索取文件{path}并放置在{map_directory} ."
 
 #. (text of widget: help)
 #. (text of widget: help) Main / in-game menu entry
 #: horizons/gui/modules/multiplayermenu.py:214
 #: horizons/i18n/guitranslations.py:777 horizons/i18n/guitranslations.py:803
 msgid "Help"
-msgstr ""
+msgstr "帮助"
 
 #: horizons/gui/modules/multiplayermenu.py:218
 msgid "This is a savegame."
-msgstr ""
+msgstr "这是一份游戏存档。"
 
 #: horizons/gui/modules/multiplayermenu.py:242
 msgid "Wrong version"
-msgstr ""
+msgstr "错误的版本"
 
 #: horizons/gui/modules/multiplayermenu.py:244
 #, python-format
 msgid "The game's version differs from your version. Every player in a multiplayer game must use the same version. This can be fixed by every player updating to the latest version. Game version: {game_version} Your version: {own_version}"
 msgstr ""
+"游戏的版本与你的版本不同。在多玩家游戏中的所有玩家都必须使用相同的版本。这可以通过全体更新至最新版本来解决。游戏版本：{game_version}你的版"
+"本：{own_version}"
 
 #: horizons/gui/modules/multiplayermenu.py:350
 #: horizons/gui/modules/singleplayermenu.py:111
