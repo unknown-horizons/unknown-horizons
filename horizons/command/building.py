@@ -152,7 +152,7 @@ class Build(Command):
 		from horizons.world.player import HumanPlayer
 		if building.id == BUILDINGS.WAREHOUSE and isinstance(building.owner, HumanPlayer) and horizons.main.fife.get_uh_setting("AutoUnload"):
 			ship = WorldObject.get_object_by_id(self.ship)
-			for res, amount in ship.get_component(StorageComponent).inventory.get_dump(): # copy the inventory first because otherwise we would modify it while iterating
+			for res, amount in ship.get_component(StorageComponent).inventory.get_dump().iteritems(): # copy the inventory first because otherwise we would modify it while iterating
 				amount = min(amount, building.settlement.get_component(StorageComponent).inventory.get_free_space_for(res))
 				# execute directly, we are already in a command
 				TransferResource(amount, res, ship, building.settlement)(issuer=issuer)
