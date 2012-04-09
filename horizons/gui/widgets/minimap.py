@@ -553,6 +553,8 @@ class Minimap(object):
 		dummy_point0 = fife.Point(0,0)
 		dummy_point1 = fife.Point(0,0)
 		for ship in self.world.ships:
+			if not ship.in_ship_map:
+				continue # no fisher ships, etc
 			coord = self._world_to_minimap( ship.position.to_tuple(), use_rotation )
 			color = ship.owner.color.to_tuple()
 			# set correct icon
