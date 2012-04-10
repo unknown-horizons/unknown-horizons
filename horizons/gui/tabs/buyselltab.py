@@ -328,6 +328,7 @@ class BuySellTab(TabInterface):
 		"""Clicks on resource slots. Left: change resource; Right: empty slot."""
 		if event.getButton() == fife.MouseEvent.LEFT:
 			self.show_resource_menu(widget.parent.id)
+			self.session.ingame_gui.minimap_to_front()
 		elif event.getButton() == fife.MouseEvent.RIGHT:
 			# remove the buy/sell offer
 			self.add_resource(0, widget.parent.id)
