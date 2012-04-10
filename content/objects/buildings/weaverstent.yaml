@@ -11,7 +11,7 @@ inhabitants_max: 2
 button_name: weaver-1
 tooltip_text: _ Turns lamb wool into cloth.
 settler_level: 1
-buildingcosts: {1: 250, 4: 3, 6: 2}
+buildingcosts: {RES.GOLD: 250, RES.BOARDS: 3, RES.TOOLS: 2}
 components:
 - SelectableComponent:
     type: building
@@ -22,13 +22,13 @@ components:
     productionlines:
       9:
         produces:
-        - [3, 1]
+        - [RES.TEXTILE, 1]
         consumes:
-        - [10, -1]
+        - [RES.WOOL, -1]
         time: 12
 - StorageComponent:
       SlotsStorage:
-        slot_sizes: {10: 8, 3: 8}
+        slot_sizes: {RES.WOOL: 8, RES.TEXTILE: 8}
 - CollectingComponent:
     collectors:
       1000002: 1

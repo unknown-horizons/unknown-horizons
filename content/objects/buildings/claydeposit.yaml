@@ -20,6 +20,6 @@ components:
 - HealthComponent: {maxhealth: 10}
 - StorageComponent:
       SlotsStorage:
-        slot_sizes: {20: 1000000}
+        slot_sizes: {RES.RAW_CLAY: 1000000}
 actionsets:
   as_clay0: {level: 0}

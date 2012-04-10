@@ -10,7 +10,7 @@ inhabitants_start: 1
 inhabitants_max: 1
 tooltip_text: _ Grinds corn into flour.
 settler_level: 3
-buildingcosts: {1: 1}
+buildingcosts: {RES.GOLD: 1}
 components:
 - SelectableComponent:
     type: building
@@ -21,13 +21,13 @@ components:
     productionlines:
       0:
         produces:
-        - [44, 1]
+        - [RES.FLOUR, 1]
         consumes:
-        - [43, -1]
+        - [RES.CORN, -1]
         time: 15
 - StorageComponent:
       SlotsStorage:
-        slot_sizes: {43: 8, 44: 8}
+        slot_sizes: {RES.CORN: 8, RES.FLOUR: 8}
 - CollectingComponent:
     collectors:
       1000002: 1

@@ -11,7 +11,7 @@ inhabitants_max: 2
 button_name: tavern-1
 tooltip_text: _ Provides get-together.
 settler_level: 2
-buildingcosts: {1: 250, 4: 4, 7: 2}
+buildingcosts: {RES.GOLD: 250, RES.BOARDS: 4, RES.BRICKS: 2}
 show_status_icons: false
 components:
 - SelectableComponent:
@@ -23,13 +23,13 @@ components:
     productionlines:
       40:
         produces:
-        - [27, 4]
+        - [RES.GET_TOGETHER, 4]
         consumes:
-        - [22, -1]
+        - [RES.LIQUOR, -1]
         time: 16
 - StorageComponent:
       SlotsStorage:
-        slot_sizes: {27: 12, 22: 4}
+        slot_sizes: {RES.GET_TOGETHER: 12, RES.LIQUOR: 4}
 - CollectingComponent:
     collectors:
       1000002: 1

@@ -10,7 +10,7 @@ inhabitants_start: 0
 inhabitants_max: 0
 tooltip_text: _ Keeps bees. Produces honeycombs used for confectionery. Needs a farm.
 settler_level: 3
-buildingcosts: {1: 150}
+buildingcosts: {RES.GOLD: 150}
 show_status_icons: false
 components:
 - HealthComponent: {maxhealth: 10}

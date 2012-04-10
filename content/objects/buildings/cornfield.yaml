@@ -10,17 +10,17 @@ inhabitants_start: 0
 inhabitants_max: 0
 tooltip_text: _ Yields corn. Needs a farm.
 settler_level: 3
-buildingcosts: {1: 150}
+buildingcosts: {RES.GOLD: 150}
 components:
 - HealthComponent: {maxhealth: 10}
 - ProducerComponent:
     productionlines:
       0:
         produces:
-        - [42, 1]
+        - [RES.GRAIN, 1]
         time: 26
 - StorageComponent:
       SlotsStorage:
-        slot_sizes: {42: 1}
+        slot_sizes: {RES.GRAIN: 1}
 actionsets:
   as_cornfield0: {level: 0}

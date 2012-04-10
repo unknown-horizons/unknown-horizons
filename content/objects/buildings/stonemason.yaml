@@ -1,7 +1,7 @@
 id: 55
 name:
-  2: _ Stonemason
-  4: _ Carver
+  RES.LAMB_WOOL: _ Stonemason
+  RES.BOARDS: _ Carver
 baseclass: production.ProductionBuilding
 radius: 8
 cost: 15
@@ -12,7 +12,7 @@ inhabitants_start: 1
 inhabitants_max: 1
 tooltip_text: _ Carves stone tops into bricks.
 settler_level: 2
-buildingcosts: {1: 1}
+buildingcosts: {RES.GOLD: 1}
 components:
 - HealthComponent: {maxhealth: 1000}
 - ProducerComponent:

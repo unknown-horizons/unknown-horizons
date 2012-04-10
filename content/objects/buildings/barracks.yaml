@@ -12,7 +12,7 @@ inhabitants_start: 6
 inhabitants_max: 6
 tooltip_text: _ Recruits units suitable for ground combat.
 settler_level: 1
-buildingcosts: {1: 1}
+buildingcosts: {RES.GOLD: 1}
 components:
 - SelectableComponent:
     type: building
@@ -23,10 +23,10 @@ components:
     productionlines:
       0:
         consumes:
-        - [3, -1]
+        - [RES.TEXTILE, -1]
         time: 60
 - StorageComponent:
       SlotsStorage:
-        slot_sizes: {3: 99, 4: 99}
+        slot_sizes: {RES.TEXTILE: 99, RES.BOARDS: 99}
 actionsets:
   as_3x3: {level: 0}

@@ -11,7 +11,7 @@ inhabitants_max: 0
 button_name: pigsty-1
 tooltip_text: _ Raises pigs. Needs a farm.
 settler_level: 2
-buildingcosts: {1: 200, 4: 2}
+buildingcosts: {RES.GOLD: 200, RES.BOARDS: 2}
 show_status_icons: false
 components:
 - HealthComponent: {maxhealth: 1000}
@@ -19,10 +19,10 @@ components:
     productionlines:
       50:
         produces:
-        - [34, 4]
+        - [RES.PIGS, 4]
         time: 60
 - StorageComponent:
       SlotsStorage:
-        slot_sizes: {34: 4, 39: 10}
+        slot_sizes: {RES.PIGS: 4, RES.ACORNS: 10}
 actionsets:
   as_pigsty0: {preview: as_preview_pigsty0, level: 0}

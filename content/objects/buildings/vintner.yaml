@@ -10,7 +10,7 @@ inhabitants_start: 3
 inhabitants_max: 3
 tooltip_text: _ Produces wine out of grapes.
 settler_level: 3
-buildingcosts: {1: 1}
+buildingcosts: {RES.GOLD: 1}
 components:
 - SelectableComponent:
     type: building

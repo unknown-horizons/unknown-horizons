@@ -10,7 +10,7 @@ inhabitants_start: 4
 inhabitants_max: 4
 tooltip_text: _ Extinguishes fires.
 settler_level: 1
-buildingcosts: {1: 750, 4: 3, 6: 2, 7: 5}
+buildingcosts: {RES.GOLD: 750, RES.BOARDS: 3, RES.TOOLS: 2, RES.BRICKS: 5}
 show_status_icons: false
 components:
 - SelectableComponent:

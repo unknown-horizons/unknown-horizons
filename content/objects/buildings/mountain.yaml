@@ -20,6 +20,6 @@ components:
 - HealthComponent: {maxhealth: 10}
 - StorageComponent:
       SlotsStorage:
-        slot_sizes: {24: 1000000}
+        slot_sizes: {RES.RAW_IRON: 1000000}
 actionsets:
   as_mountain5x5: {preview: as_preview_mountain5x5, level: 0}

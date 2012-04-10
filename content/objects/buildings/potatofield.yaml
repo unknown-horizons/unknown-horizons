@@ -11,7 +11,7 @@ inhabitants_max: 0
 button_name: potatofield-1
 tooltip_text: _ Yields food. Needs a farm.
 settler_level: 1
-buildingcosts: {1: 150}
+buildingcosts: {RES.GOLD: 150}
 show_status_icons: false
 components:
 - HealthComponent: {maxhealth: 10}
@@ -19,10 +19,10 @@ components:
     productionlines:
       22:
         produces:
-        - [15, 1]
+        - [RES.POTATOES, 1]
         time: 26
 - StorageComponent:
       SlotsStorage:
-        slot_sizes: {15: 1}
+        slot_sizes: {RES.POTATOES: 1}
 actionsets:
   as_potatofield0: {level: 0}

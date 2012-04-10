@@ -11,7 +11,7 @@ inhabitants_max: 1
 button_name: null
 tooltip_text: _ Increases the player's sight.
 settler_level: 0
-buildingcosts: {1: 100, 4: 4}
+buildingcosts: {RES.GOLD: 100, RES.BOARDS: 4}
 components:
 - SelectableComponent:
     type: building

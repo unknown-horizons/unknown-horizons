@@ -11,7 +11,7 @@ inhabitants_max: 0
 button_name: lighthouse-1
 tooltip_text: _ Allows the player to trade with the free trader.
 settler_level: 0
-buildingcosts: {1: 50, 4: 5}
+buildingcosts: {RES.GOLD: 50, RES.BOARDS: 5}
 components:
 - SelectableComponent:
     type: building
