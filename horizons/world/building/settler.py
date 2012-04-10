@@ -302,7 +302,7 @@ class Settler(BuildableRect, BuildingResourceHandler, BasicBuilding):
 			                self.position.origin.y, island=self.island, settlement=self.settlement)
 
 			Scheduler().add_new_object(
-			  Callback.ChainedCallbacks(self.remove, command), # remove, then build new
+			  Callback.ChainedCallbacks(self.remove, Callback(command, self.owner)), # remove, then build new
 			  self, run_in=0)
 
 			self.log.debug("%s: Destroyed by lack of happiness", self)
