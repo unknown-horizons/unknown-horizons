@@ -52,10 +52,10 @@ class IngameType(type):
 			super(cls, self).load(db, worldid)
 			return self
 
-		module = __import__(self.basepackage+class_package, [], [], [class_name])
-		return type.__new__(self, self.classstring + str(id) + ']',
+		module = __import__(str(self.basepackage+class_package), [], [], [str(class_name)])
+		return type.__new__(self, str(self.classstring) + str(id) + ']',
 			(getattr(module, class_name),),
-			{'load': load, 'class_package': class_package, 'class_name': class_name})
+			{'load': load, 'class_package': str(class_package), 'class_name': str(class_name)})
 
 	def _strip_translation_marks(self, string):
 		if string.startswith("_ "):

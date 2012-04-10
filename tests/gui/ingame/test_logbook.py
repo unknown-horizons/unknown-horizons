@@ -39,3 +39,20 @@ def test_logbook(gui):
 	assert gui.find(name='captains_log') is None
 
 	yield TestFinished
+
+
+@gui_test(use_fixture='boatbuilder', timeout=60)
+def test_logbook_statistics(gui):
+	"""Open the 3 three different statistic tabs in the logbook."""
+	yield
+
+	# Open statistics page in logbook
+	gui.trigger('mainhud', 'logbook/action/default')
+	gui.trigger('captains_log', 'statistics_rt/mouseClicked/default')
+
+	# Open players/ships/settlements tabs
+	gui.trigger('captains_log', 'stats_players/action/default')
+	gui.trigger('captains_log', 'stats_ships/action/default')
+	gui.trigger('captains_log', 'stats_settlements/action/default')
+
+	yield TestFinished

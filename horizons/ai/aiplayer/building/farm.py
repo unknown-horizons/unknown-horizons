@@ -41,13 +41,13 @@ class AbstractFarm(AbstractBuilding):
 
 	@classmethod
 	def get_purpose(cls, resource_id):
-		if resource_id == RES.FOOD_ID:
+		if resource_id == RES.FOOD:
 			return BUILDING_PURPOSE.POTATO_FIELD
-		elif resource_id == RES.WOOL_ID:
+		elif resource_id == RES.WOOL:
 			return BUILDING_PURPOSE.PASTURE
-		elif resource_id == RES.SUGAR_ID:
+		elif resource_id == RES.SUGAR:
 			return BUILDING_PURPOSE.SUGARCANE_FIELD
-		elif resource_id == RES.TOBACCO_LEAVES_ID:
+		elif resource_id == RES.TOBACCO_LEAVES:
 			return BUILDING_PURPOSE.TOBACCO_FIELD
 		return None
 
@@ -76,7 +76,7 @@ class AbstractFarm(AbstractBuilding):
 
 	@classmethod
 	def register_buildings(cls):
-		cls._available_buildings[BUILDINGS.FARM_CLASS] = cls
+		cls._available_buildings[BUILDINGS.FARM] = cls
 
 class FarmEvaluator(BuildingEvaluator):
 	__moves = [(-1, 0), (0, -1), (0, 1), (1, 0)]
@@ -104,7 +104,7 @@ class FarmEvaluator(BuildingEvaluator):
 
 	@classmethod
 	def _create(cls, area_builder, farm_x, farm_y, road_dx, road_dy, min_fields, field_purpose):
-		builder = area_builder.make_builder(BUILDINGS.FARM_CLASS, farm_x, farm_y, True)
+		builder = area_builder.make_builder(BUILDINGS.FARM, farm_x, farm_y, True)
 		if not builder:
 			return None
 
@@ -122,7 +122,7 @@ class FarmEvaluator(BuildingEvaluator):
 				return None
 
 			if coords in area_builder.plan and area_builder.plan[coords][0] == BUILDING_PURPOSE.NONE:
-				road = Builder.create(BUILDINGS.TRAIL_CLASS, area_builder.land_manager, Point(coords[0], coords[1]))
+				road = Builder.create(BUILDINGS.TRAIL, area_builder.land_manager, Point(coords[0], coords[1]))
 				if road:
 					farm_plan[coords] = (BUILDING_PURPOSE.ROAD, road)
 				else:
@@ -139,7 +139,7 @@ class FarmEvaluator(BuildingEvaluator):
 			if fields >= 8:
 				break # unable to place more anyway
 			coords = (farm_x + dx, farm_y + dy)
-			field = area_builder.make_builder(BUILDINGS.POTATO_FIELD_CLASS, coords[0], coords[1], False)
+			field = area_builder.make_builder(BUILDINGS.POTATO_FIELD, coords[0], coords[1], False)
 			if not field:
 				continue
 			for coords2 in field.position.tuple_iter():
@@ -269,13 +269,13 @@ class ModifiedFieldEvaluator(BuildingEvaluator):
 	def create(cls, area_builder, x, y, new_field_purpose):
 		building_id = None
 		if new_field_purpose == BUILDING_PURPOSE.POTATO_FIELD:
-			building_id = BUILDINGS.POTATO_FIELD_CLASS
+			building_id = BUILDINGS.POTATO_FIELD
 		elif new_field_purpose == BUILDING_PURPOSE.PASTURE:
-			building_id = BUILDINGS.PASTURE_CLASS
+			building_id = BUILDINGS.PASTURE
 		elif new_field_purpose == BUILDING_PURPOSE.SUGARCANE_FIELD:
-			building_id = BUILDINGS.SUGARCANE_FIELD_CLASS
+			building_id = BUILDINGS.SUGARCANE_FIELD
 		elif new_field_purpose == BUILDING_PURPOSE.TOBACCO_FIELD:
-			building_id = BUILDINGS.TOBACCO_FIELD_CLASS
+			building_id = BUILDINGS.TOBACCO_FIELD
 		builder = Builder.create(building_id, area_builder.land_manager, Point(x, y))
 		if not builder:
 			return None

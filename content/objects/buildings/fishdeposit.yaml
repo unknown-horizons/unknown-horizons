@@ -20,11 +20,10 @@ components:
       42:
         changes_animation: false
         produces:
-        - [28, 1]
+        - [RES.FISH, 1]
         time: 30
 - StorageComponent:
-    inventory:
       SlotsStorage:
-        slot_sizes: {28: 1}
+        slot_sizes: {RES.FISH: 1}
 actionsets:
   as_fish0: {level: 0}

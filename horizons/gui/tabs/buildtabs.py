@@ -22,129 +22,122 @@
 from horizons.entities import Entities
 from horizons.gui.tabs.tabinterface import TabInterface
 from horizons.command.building import Build
+from horizons.constants import BUILDINGS
 from horizons.util import Callback
 from horizons.util.lastactiveplayersettlementmanager import LastActivePlayerSettlementManager
 from horizons.util.python.roman_numerals import int_to_roman
 from horizons.world.component.storagecomponent import StorageComponent
-from horizons.util.messaging.message import NewPlayerSettlementHovered
+from horizons.messaging import NewPlayerSettlementHovered
 
 class BuildTab(TabInterface):
 	"""
 	Layout data is defined in image_data and text_data.
 	Columns in the tabs are enumerated as follows:
-	  1  2  21 22
-	  3  4  23 24
-	  5  6  25 26
-	  7  8  27 28
+	  01  11  21  31
+	  02  12  22  32
+	  03  13  23  33
+	  04  14  24  34
 	Boxes and Labels have the same number as their left upper icon.
 	Check buildtab.xml for details. Icons without image are transparent.
 	Only adds the background image and building icon for image_data entries,
 	even if more icons are defined in the xml file.
 
 	All image_data entries map an icon position in buildtab.xml to a building ID.
-	Entries in text_data are very similar, but only exist twice each row (icons
-	four times). They thus enumerate 1,3,5,7.. and 21,23,25,27.. instead.
-
-	TODO: Implement refresh() calls to BuildTabs
-	TODO: Call update_text when applying new interface language
+	Entries in text_data are very similar and use the same positioning.
+	A label with position 1 will display right above the icon at position 1.
 	"""
 	lazy_loading = True
 
 	image_data = {
 		1 : {
-			 1 : 3, # tent
-			 2 : 2, # storage tent
-			 3 : 4, # main square
-			 4 : 5, # pavilion
-			 5 : 8, # lumberjack
-			 6 : 17,# tree
-			21 : 15,# trail
-			23 : 6, # signal fire
-			25 : 9, # hunter
-			26 : 11,# fisher
+			 1 : BUILDINGS.RESIDENTIAL,
+			 2 : BUILDINGS.MAIN_SQUARE,
+			 3 : BUILDINGS.LUMBERJACK,
+			11 : BUILDINGS.STORAGE,
+			12 : BUILDINGS.PAVILION,
+			13 : BUILDINGS.TREE,
+			21 : BUILDINGS.TRAIL,
+			22 : BUILDINGS.SIGNAL_FIRE,
+			23 : BUILDINGS.HUNTER,
+			33 : BUILDINGS.FISHER,
 		      },
 		2 : {
-			 1 : 25,
-			 2 : 24,
-			 3 : 20,
-			 4 : 19,
-			 5 : 21,
-			 6 : 45,
-			21 : 7,
-			22 : 26,
-			23 : 18,
-			24 : 22,
-			25 : 12,
-			26 : 44,
+			 1 : BUILDINGS.CLAY_PIT,
+			 2 : BUILDINGS.FARM,
+			 3 : BUILDINGS.VILLAGE_SCHOOL,
+			11 : BUILDINGS.BRICKYARD,
+			12 : BUILDINGS.POTATO_FIELD,
+			13 : BUILDINGS.FIRE_STATION,
+			21 : BUILDINGS.WEAVER,
+			22 : BUILDINGS.PASTURE,
+			23 : BUILDINGS.BOATBUILDER,
+			31 : BUILDINGS.DISTILLERY,
+			32 : BUILDINGS.SUGARCANE_FIELD,
+			33 : BUILDINGS.WOODEN_TOWER,
 		      },
 		3 : {
-			 1 : 28,
-			 2 : 29,
-			 3 : 35,
-			 4 : 41,
-			 5 : 36,
-			 6 : 38,
-			 7 : 32,
-			21 : 30,
-			22 : 31,
-			23 : 37,
-#			24 : 50,
-			25 : 39,
-#			26 : 49,
-#			27 : 53,
+			 1 : BUILDINGS.IRON_MINE,
+			 2 : BUILDINGS.SALT_PONDS,
+			 3 : BUILDINGS.TOBACCO_FIELD,
+			 4 : BUILDINGS.TAVERN,
+			11 : BUILDINGS.SMELTERY,
+			12 : BUILDINGS.BUTCHERY,
+			13 : BUILDINGS.CATTLE_RUN,
+			21 : BUILDINGS.TOOLMAKER,
+			22 : BUILDINGS.TOBACCONIST,
+			23 : BUILDINGS.PIGSTY,
+			24 : BUILDINGS.BARRACKS,
+			31 : BUILDINGS.CHARCOAL_BURNER,
+			32 : BUILDINGS.BLENDER,
+			33 : BUILDINGS.SPICE_FIELD,
 		      },
 		4 : {
-			 1 : 47,
-			 2 : 48,
-			 3 : 46,
-#			 4 : 60,
-#			21 : 65,
-#			22 : 63,
-#			23 : 61,
-#			24 : 62,
+			 1 : BUILDINGS.WINDMILL,
+			 2 : BUILDINGS.CORN_FIELD,
+			11 : BUILDINGS.BAKERY,
+			12 : BUILDINGS.COCOA_FIELD,
+			21 : BUILDINGS.VINTNER,
+			22 : BUILDINGS.VINEYARD,
+			31 : BUILDINGS.PASTRY_SHOP,
+			32 : BUILDINGS.ALVEARIES,
 		      },
 		}
 
 	text_data = {
 		1 : {
 			 1 : _('Residents and infrastructure'),
-			 3 : _('Services'),
-			 5 : _('Companies'),
+			 2 : _('Services'),
+			 3 : _('Companies'),
 		      },
 		2 : {
 			 1 : _('Companies'),
-			 3 : _('Fields'),
-			 5 : _('Services'),
-			25 : _('Military'),
+			 2 : _('Fields'),
+			 3 : _('Services'),
+			23 : _('Military'),
 		      },
 		3 : {
 			 1 : _('Mining'),
-			 3 : _('Companies'),
-			 5 : _('Fields'),
-			 7 : _('Services'),
-#			27 : _('Military'),
+			 2 : _('Companies'),
+			 3 : _('Fields'),
+			 4 : _('Services'),
+			24 : _('Military'),
 		      },
 		4 : {
 			 1 : _('Companies'),
-			 3 : _('Fields'),
+			 2 : _('Fields'),
 		      },
 		}
 
 	last_active_build_tab = None
 
-	def __init__(self, tabindex = 1, callback_mapping=None, session=None):
+	def __init__(self, tabindex=1, callback_mapping=None, session=None,
+	             icon_path='content/gui/icons/tabwidget/buildmenu/level{incr}_%s.png'):
 		if callback_mapping is None:
 			callback_mapping = {}
-		super(BuildTab, self).__init__(widget = 'buildtab.xml')
+		super(BuildTab, self).__init__(widget='buildtab.xml', icon_path=icon_path.format(incr=tabindex))
 		self.session = session
 		self.tabindex = tabindex
 		self.callback_mapping = callback_mapping
-
-		icon_path = 'content/gui/icons/tabwidget/buildmenu/level{incr}_%s.png'.format(incr=self.tabindex)
-		self.button_up_image = icon_path % ('u')
-		self.button_active_image = icon_path % ('a')
-		self.button_down_image = icon_path % ('d')
-		self.button_hover_image = icon_path % ('h')
 
 		self.helptext = _("Increment {increment}").format(increment = int_to_roman(self.tabindex))
 
@@ -162,14 +155,14 @@ class BuildTab(TabInterface):
 	def update_images(self):
 		"""Shows background images and building icons where defined
 		(columns as follows, left to right):
-		# 1,3,5,7.. | 2,4,6,8.. | 21,23,25,27.. | 22,24,26,28..
+		# 1,2,3,4.. | 11,12,13,14.. | 21,22,23,24.. | 31,32,33,34..
 		"""
 		settlement = LastActivePlayerSettlementManager().get()
 		for position, building_id in self.__class__.image_data[self.tabindex].iteritems():
-			button = self.widget.child_finder('button_{position}'.format(position=position))
+			button = self.widget.child_finder('button_{position:02d}'.format(position=position))
 			building = Entities.buildings[building_id]
 
-			icon = self.widget.child_finder('icon_{position}'.format(position=position))
+			icon = self.widget.child_finder('icon_{position:02d}'.format(position=position))
 
 			#xgettext:python-format
 			button.helptext = self.session.db.get_building_tooltip(building_id)
@@ -210,7 +203,7 @@ class BuildTab(TabInterface):
 		Separated from actual build menu because called on language update.
 		"""
 		for position, heading in self.__class__.text_data[self.tabindex].iteritems():
-			lbl = self.widget.child_finder('label_{position}'.format(position=position))
+			lbl = self.widget.child_finder('label_{position:02d}'.format(position=position))
 			lbl.text = _(heading)
 
 	def refresh(self):
@@ -223,13 +216,13 @@ class BuildTab(TabInterface):
 			self.refresh()
 
 	def __remove_changelisteners(self):
-		self.session.message_bus.discard_globally(NewPlayerSettlementHovered, self.on_settlement_change)
+		NewPlayerSettlementHovered.discard(self.on_settlement_change)
 		if self.__current_settlement is not None:
 			inventory = self.__current_settlement.get_component(StorageComponent).inventory
 			inventory.discard_change_listener(self.refresh)
 
 	def __add_changelisteners(self):
-		self.session.message_bus.subscribe_globally(NewPlayerSettlementHovered, self.on_settlement_change)
+		NewPlayerSettlementHovered.subscribe(self.on_settlement_change)
 		if self.__current_settlement is not None:
 			inventory = self.__current_settlement.get_component(StorageComponent).inventory
 			if not inventory.has_change_listener(self.refresh):

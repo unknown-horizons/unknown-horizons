@@ -6,16 +6,15 @@ velocity: 12.0
 components:
 - AmbientSoundComponent
 - StorageComponent:
-   inventory:
       PositiveSizedSlotStorage:
          limit: 8
 - ProducerComponent:
     productionlines:
       16:
         produces:
-        - [13, 1]
+        - [RES.DEER_MEAT, 1]
         consumes:
-        - [12, -1]
+        - [RES.WILDANIMALFOOD, -1]
         time: 45
 
 actionsets:

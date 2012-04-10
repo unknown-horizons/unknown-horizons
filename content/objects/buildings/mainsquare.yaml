@@ -11,7 +11,7 @@ inhabitants_max: 1
 button_name: main_square-1
 tooltip_text: _ Supplies citizens with goods.
 settler_level: 0
-buildingcosts: {1: 1000, 4: 5}
+buildingcosts: {RES.GOLD: 1000, RES.BOARDS: 5}
 components:
 # NOTE: don't add a producer component, it's currently not guaranteed to work flawlessly in combination with SettlementStorage
 - SelectableComponent:
@@ -20,7 +20,6 @@ components:
     enemy_tabs: [EnemyBuildingOverviewTab,]
 - HealthComponent: {maxhealth: 1000}
 - StorageComponent:
-    inventory:
         SettlementStorage: {}
 - AmbientSoundComponent:
     soundfiles: [content/audio/sounds/main_square.ogg]

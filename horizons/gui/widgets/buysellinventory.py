@@ -25,6 +25,11 @@ from fife.extensions.pychan.widgets.common import BoolAttr
 
 from horizons.gui.widgets.imagefillstatusbutton import ImageFillStatusButton
 
+
+# TOOO:
+# This is mostly a copy of Inventory.
+# Unify wherever possible.
+
 class BuySellInventory(pychan.widgets.Container):
 	"""The buy/sell inventory widget is used to display a stock of items where the available resources are restricted.
 	It makes use of the ImageFillStatusButton to display the icons for resources and the fill bar.
@@ -44,13 +49,14 @@ class BuySellInventory(pychan.widgets.Container):
 		self.uncached = uncached
 
 	def init(self, db, inventory, limits, selling):
-		# this inits the logic of the inventory. @see __init__().
-		self.__inited = True
-		self.db = db
-		self._inventory = inventory
-		self._limits = limits
-		self._selling = selling
-		self.__icon = pychan.widgets.Icon(image="content/gui/icons/ship/civil_16.png")
+		if not self.__inited or self._inventory is not inventory or \
+		   self._limits != limits or self._selling != selling:
+			self.__inited = True
+			self.db = db
+			self._inventory = inventory
+			self._limits = limits
+			self._selling = selling
+			self.__icon = pychan.widgets.Icon(image="content/gui/icons/ship/civil_16.png")
 		self.update()
 
 	def update(self):

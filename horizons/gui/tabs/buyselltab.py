@@ -29,7 +29,7 @@ from horizons.command.uioptions import AddToBuyList, AddToSellList, RemoveFromBu
                                        RemoveFromSellList
 from horizons.gui.widgets.tradehistoryitem import TradeHistoryItem
 from horizons.util import Callback, WorldObject
-from horizons.util.gui import load_uh_widget, get_res_icon_path, create_resource_selection_dialog
+from horizons.gui.util import load_uh_widget, get_res_icon_path, create_resource_selection_dialog
 from horizons.world.component.tradepostcomponent import TradePostComponent
 from horizons.constants import TRADER
 
@@ -48,11 +48,12 @@ class BuySellTab(TabInterface):
 
 	dummy_icon_path = "content/gui/icons/resources/none_gray.png"
 
-	def __init__(self, instance, slots = 3):
+	def __init__(self, instance, slots=3, widget='buysellmenu.xml',
+	             icon_path='content/gui/icons/tabwidget/warehouse/buysell_%s.png'):
 		"""
 		Sets up the GUI and game logic for the buyselltab.
 		"""
-		super(BuySellTab, self).__init__(widget = 'buysellmenu.xml')
+		super(BuySellTab, self).__init__(widget=widget, icon_path=icon_path)
 		self.inited = False # prevents execution of commands during init
 		# this makes sharing code easier
 		self.session = instance.session
@@ -60,11 +61,6 @@ class BuySellTab(TabInterface):
 		assert isinstance(self.tradepost, TradePostComponent)
 		# don't access instance beyond this point, only components
 		self.init_values()
-		self.icon_path = 'content/gui/icons/tabwidget/warehouse/buysell_%s.png'
-		self.button_up_image = self.icon_path % 'u'
-		self.button_active_image = self.icon_path % 'a'
-		self.button_down_image = self.icon_path % 'd'
-		self.button_hover_image = self.icon_path % 'h'
 
 		# add the buy/sell slots
 		self.slots = {}

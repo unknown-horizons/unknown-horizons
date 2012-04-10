@@ -27,7 +27,7 @@ from horizons.gui.mousetools.navigationtool import NavigationTool
 from horizons.command.building import Tear
 from horizons.util import Point, WeakList
 from horizons.constants import BUILDINGS
-from horizons.util.messaging.message import WorldObjectDeleted
+from horizons.messaging import WorldObjectDeleted
 
 class TearingTool(NavigationTool):
 	"""
@@ -45,13 +45,13 @@ class TearingTool(NavigationTool):
 		self.session.ingame_gui.hide_menu()
 		horizons.main.fife.set_cursor_image("tearing")
 		self._hovering_over = WeakList()
-		self.session.message_bus.subscribe_globally(WorldObjectDeleted, self._on_object_deleted)
+		WorldObjectDeleted.subscribe(self._on_object_deleted)
 
 	def remove(self):
 		self._mark()
 		self.tear_tool_active = False
 		horizons.main.fife.set_cursor_image("default")
-		self.session.message_bus.unsubscribe_globally(WorldObjectDeleted, self._on_object_deleted)
+		WorldObjectDeleted.subscribe(self._on_object_deleted)
 		super(TearingTool, self).remove()
 
 	def mouseDragged(self, evt):
@@ -85,7 +85,7 @@ class TearingTool(NavigationTool):
 				if self._hovering_over:
 					# we're hovering over a building, but none is selected, so this tear action isn't allowed
 					warehouses = [ b for b in self._hovering_over if \
-					               b.id == BUILDINGS.WAREHOUSE_CLASS ]
+					               b.id == BUILDINGS.WAREHOUSE ]
 					if warehouses:
 						# tried to tear a warehouse, this is especially non-tearable
 						pos = warehouses[0].position.origin

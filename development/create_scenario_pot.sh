@@ -139,12 +139,12 @@ if [ "x$2" = x ]; then
 fi
 
 # Create .mo files and extract the translations using gettext.
-echo
-echo "Compiling these translations for $1:"
-for path in "$2"/*.po; do
+echo "   Compiling these translations for $1:"
+for file in $(ls $2); do
+    path=$(pwd)/$2/$file
     lang=`basename "$path" | sed "s,$1-,,;s,.po,,"`
     mo=po/mo/$lang/LC_MESSAGES
-    R='s,:,,g;s,.po,,g;s,alencia,,g;s,(po_temp_tutorial//|messages|message|translations),\t,g;s/[.,]//g'
+    R='s,:,,g;s,.po,,g;s,alencia,,g;s,(/.*//|messages|message|translations),\t,g;s/[.,]//g'
     mkdir -p $mo
     msgfmt --statistics $path -o $mo/$1.mo --check-format -v 2>&1 |perl -npe "$R"
     numbers=$(msgfmt --statistics $path -o $mo/$1.mo --check-format 2>&1) # this does not include -v!

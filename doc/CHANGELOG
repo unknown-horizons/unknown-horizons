@@ -168,7 +168,7 @@ Codebase
    # adapt all widgets to new pychan keyword API
    # removed all custom Tooltip* widgets
    # speed up build mode by 40% (6000% for buildings with related buildings)
-   # allow human-readable resource ids in object files, like RES.FOOD_ID
+   # allow human-readable resource ids in object files, like RES.FOOD
    # refactored i18n methods to replace widget content
    # improved loading speed for production lines, PathNodes, AbstractPather,
      # ComponentHolder and GlobalLimitStorage

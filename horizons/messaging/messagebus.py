@@ -21,10 +21,13 @@
 
 from collections import defaultdict
 
+from horizons.util.python.singleton import Singleton
+
 
 class MessageBus(object):
 	"""The MessageBus class is used to send Message instances from a sender to
 	one or multiple recipients."""
+	__metaclass__ = Singleton
 
 	def __init__(self):
 		# Register {MessageType: [list of receiver callbacks]}
@@ -68,4 +71,17 @@ class MessageBus(object):
 		for callback in self.local_receivers[pair]:
 			# Execute the callback
 			callback(message)
+
+	def reset(self):
+		"""Reset to initial state. Drops all subscriptions"""
+		# there shouldn't be anything left now, warn if there is
+		for messagetype, cb_list in self.global_receivers.iteritems():
+			if cb_list:
+				print "MessageBus: leftover global receivers {cb} for {messagetype}".format(cb=[str(i) for i in cb_list], messagetype=messagetype)
+		for messagetype, cb_list in self.local_receivers.iteritems():
+			if cb_list:
+				print "MessageBus: leftover local receivers {cb} for {messagetype}".format(cb=[str(i) for i in cb_list], messagetype=messagetype)
+
+		# suicide, next instance will be created on demand
+		self.__class__.destroy_instance()
 

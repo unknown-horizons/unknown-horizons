@@ -11,7 +11,7 @@ inhabitants_max: 1
 button_name: villageschool-1
 tooltip_text: _ Provides education.
 settler_level: 1
-buildingcosts: {1: 500, 4: 4, 7: 4}
+buildingcosts: {RES.GOLD: 500, RES.BOARDS: 4, RES.BRICKS: 4}
 show_status_icons: false
 components:
 - SelectableComponent:
@@ -23,11 +23,10 @@ components:
     productionlines:
       25:
         produces:
-        - [16, 1]
+        - [RES.EDUCATION, 1]
         time: 4
 - StorageComponent:
-    inventory:
       SlotsStorage:
-        slot_sizes: {16: 10}
+        slot_sizes: {RES.EDUCATION: 10}
 actionsets:
   as_school0: {level: 0}

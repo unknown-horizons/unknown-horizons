@@ -26,6 +26,8 @@
         <Setting name="FrameLimit" type="int"> 60 </Setting>
 	</Module>
 	<Module name="unknownhorizons">
+		<Setting name="CursorCenteredZoom" type="bool">True</Setting>
+		<Setting name="LatestBackground" type="str"></Setting>
 		<Setting name="AIPlayers" type="int">1</Setting>
 		<Setting name="VolumeMusic" type="float">0.20</Setting>
 		<Setting name="VolumeEffects" type="float">0.5</Setting>
@@ -51,6 +53,6 @@
 		<Setting name="DebugLog" type="bool">False</Setting>
 	</Module>
 	<Module name="meta">
-		<Setting name="SettingsVersion" type="int">17</Setting>
+		<Setting name="SettingsVersion" type="int">19</Setting>
 	</Module>
 </Settings>

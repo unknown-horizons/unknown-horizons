@@ -44,19 +44,19 @@ class AbstractSignalFire(AbstractBuilding):
 
 	@classmethod
 	def register_buildings(cls):
-		cls._available_buildings[BUILDINGS.SIGNAL_FIRE_CLASS] = cls
+		cls._available_buildings[BUILDINGS.SIGNAL_FIRE] = cls
 
 class SignalFireEvaluator(BuildingEvaluator):
 	need_collector_connection = False
 
 	@classmethod
 	def create(cls, area_builder, x, y, orientation):
-		builder = area_builder.make_builder(BUILDINGS.SIGNAL_FIRE_CLASS, x, y, cls.need_collector_connection, orientation)
+		builder = area_builder.make_builder(BUILDINGS.SIGNAL_FIRE, x, y, cls.need_collector_connection, orientation)
 		if not builder:
 			return None
 
 		sea_area = 0
-		for coords in builder.position.get_radius_coordinates(Entities.buildings[BUILDINGS.SIGNAL_FIRE_CLASS].radius):
+		for coords in builder.position.get_radius_coordinates(Entities.buildings[BUILDINGS.SIGNAL_FIRE].radius):
 			if coords in area_builder.session.world.water:
 				sea_area += 1
 

@@ -11,7 +11,7 @@ inhabitants_max: 2
 button_name: null
 tooltip_text: null
 settler_level: 0
-buildingcosts: {1: 1000, 4: 12}
+buildingcosts: {RES.GOLD: 1000, RES.BOARDS: 12}
 show_status_icons: false
 components:
 - SelectableComponent:
@@ -24,15 +24,14 @@ components:
     productionlines:
       31:
         produces:
-        - [19, 10]
+        - [RES.COMMUNITY, 10]
         time: 1
 - StorageComponent:
-    inventory:
         SettlementStorage: {}
 - AmbientSoundComponent:
     soundfiles: [content/audio/sounds/warehouse.ogg]
 - CollectingComponent:
     collectors:
-      1000008: 3
+      UNITS.STORAGE_COLLECTOR: 3
 actionsets:
   as_warehouse0: {preview: as_preview_warehouse0, level: 0}

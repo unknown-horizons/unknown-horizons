@@ -99,6 +99,15 @@ class SavegameUpgrader(object):
 		db("CREATE TABLE \"last_active_settlement\" ( type STRING NOT NULL, value INTEGER NOT NULL )")
 		db("INSERT INTO last_active_settlement(type, value) VALUES(?, ?)", "LAST_NONE_FLAG", False)
 
+	def _upgrade_to_rev57(self, db):
+		"""Change storage of scenario variables from pickle to json."""
+		import pickle
+		db.connection.text_factory = str # need to read as str, utf-8 chokes on binary pickle
+
+		for key, value in db("SELECT key, value FROM scenario_variables"):
+			value = pickle.loads(value)
+			value = json.dumps(value)
+			db("UPDATE scenario_variables SET value = ? WHERE key = ?", value, key)
 
 	def _upgrade(self):
 		# fix import loop
@@ -133,6 +142,8 @@ class SavegameUpgrader(object):
 				self._upgrade_to_rev55(db)
 			if rev < 56:
 				self._upgrade_to_rev56(db)
+			if rev < 57:
+				self._upgrade_to_rev57(db)
 
 
 			db('COMMIT')

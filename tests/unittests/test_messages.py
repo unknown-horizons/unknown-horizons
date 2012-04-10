@@ -21,8 +21,7 @@
 
 import unittest
 
-from horizons.util.messaging.message import Message
-from horizons.util.messaging.messagebus import MessageBus
+from horizons.messaging import Message
 
 import mock
 
@@ -37,65 +36,64 @@ class FooMessage(Message):
 class TestMessageBus(unittest.TestCase):
 
 	def setUp(self):
-		self.bus = MessageBus()
 		self.cb = mock.Mock()
 
+	def assert_called_once_with(self, cb, message_type, **arguments):
+		assert cb.call_count == 1
+		msg = cb.call_args[0][0]
+		for name, value in arguments.items():
+			assert getattr(msg, name) == value
+
 	def test_global_subscribe(self):
-		self.bus.subscribe_globally(ExampleMessage, self.cb)
+		ExampleMessage.subscribe(self.cb)
 
 		# correct message type, cb is called
-		msg = ExampleMessage(self)
-		self.bus.broadcast(msg)
-		self.cb.assert_called_once_with(msg)
+		ExampleMessage.broadcast(self)
+		self.assert_called_once_with(self.cb, ExampleMessage, sender=self)
 		self.cb.reset_mock()
 
 		# wrong message type, cb is not called
-		self.bus.broadcast(Message(self))
+		Message.broadcast(self)
 		self.assertFalse(self.cb.called)
 
 	def test_local_subscribe(self):
-		self.bus.subscribe_locally(ExampleMessage, self, self.cb)
+		ExampleMessage.subscribe(self.cb, sender=self)
 
 		# correct message type, correct sender, cb is called
-		msg = ExampleMessage(self)
-		self.bus.broadcast(msg)
-		self.cb.assert_called_once_with(msg)
+		ExampleMessage.broadcast(self)
+		self.assert_called_once_with(self.cb, ExampleMessage, sender=self)
 		self.cb.reset_mock()
 
 		# correct message type, wrong sender, cb is not called
-		self.bus.broadcast(ExampleMessage(1))
+		ExampleMessage.broadcast(1)
 		self.assertFalse(self.cb.called)
 		self.cb.reset_mock()
 
 		# wrong message type, correct sender, cb is not called
-		self.bus.broadcast(Message(self))
+		Message.broadcast(self)
 		self.assertFalse(self.cb.called)
 
 	def test_unsubscribe(self):
-		self.bus.subscribe_globally(ExampleMessage, self.cb)
-		self.bus.subscribe_locally(Message, self, self.cb)
-
-		msg1 = ExampleMessage(self)
-		msg2 = Message(self)
+		ExampleMessage.subscribe(self.cb)
+		Message.subscribe(self.cb, sender=self)
 
 		# broadcast local and global message, cb called two times
-		self.bus.broadcast(msg1)
-		self.bus.broadcast(msg2)
-		self.cb.assert_any_call(msg1)
-		self.cb.assert_any_call(msg2)
+		ExampleMessage.broadcast(self)
+		Message.broadcast(self)
+		assert self.cb.call_count == 2
 		self.cb.reset_mock()
 
 		# after unsubscribing globally, only the local message is received
-		self.bus.unsubscribe_globally(ExampleMessage, self.cb)
-		self.bus.broadcast(msg1)
-		self.bus.broadcast(msg2)
-		self.cb.assert_called_with(msg2)
+		ExampleMessage.unsubscribe(self.cb)
+		ExampleMessage.broadcast(self)
+		Message.broadcast(self)
+		self.assert_called_once_with(self.cb, Message, sender=self)
 		self.cb.reset_mock()
 
 		# after unsubscribing locally, all subscriptions should be gone, cb not called
-		self.bus.unsubscribe_locally(Message, self, self.cb)
-		self.bus.broadcast(msg1)
-		self.bus.broadcast(msg2)
+		Message.unsubscribe(self.cb, sender=self)
+		ExampleMessage.broadcast(self)
+		Message.broadcast(self)
 		self.assertFalse(self.cb.called)
 
 

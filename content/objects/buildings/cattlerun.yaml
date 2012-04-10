@@ -11,7 +11,7 @@ inhabitants_max: 0
 button_name: cattlerun-1
 tooltip_text: _ Raises cattle. Needs a farm.
 settler_level: 2
-buildingcosts: {1: 100, 4: 1}
+buildingcosts: {RES.GOLD: 100, RES.BOARDS: 1}
 show_status_icons: false
 components:
 - HealthComponent: {maxhealth: 10}
@@ -19,11 +19,10 @@ components:
     productionlines:
       49:
         produces:
-        - [33, 2]
+        - [RES.CATTLE, 2]
         time: 40
 - StorageComponent:
-    inventory:
       SlotsStorage:
-        slot_sizes: {9: 10, 33: 2}
+        slot_sizes: {RES.GRASS: 10, RES.CATTLE: 2}
 actionsets:
   as_cattlerun0: {level: 0}

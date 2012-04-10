@@ -1,4 +1,4 @@
-from horizons.util.gui import load_uh_widget
+from horizons.gui.util import load_uh_widget
 from horizons.util import Callback
 from horizons.extscheduler import ExtScheduler
 from horizons.savegamemanager import SavegameManager

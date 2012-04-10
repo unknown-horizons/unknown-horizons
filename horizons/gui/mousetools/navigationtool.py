@@ -27,7 +27,8 @@ from horizons.gui.mousetools.cursortool import CursorTool
 from horizons.util import WorldObject, WeakList
 from horizons.util.lastactiveplayersettlementmanager import LastActivePlayerSettlementManager
 from horizons.constants import LAYERS
-from horizons.util.messaging.message import HoverInstancesChanged
+from horizons.messaging import HoverInstancesChanged
+from horizons.messaging import MessageBus
 from horizons.extscheduler import ExtScheduler
 
 from fife.extensions.pychan.widgets import Icon
@@ -56,7 +57,7 @@ class NavigationTool(CursorTool):
 
 		if not self.__class__.send_hover_instances_update:
 			# clear
-			self.session.message_bus.broadcast(HoverInstancesChanged(self, set()))
+			HoverInstancesChanged.broadcast(self, set())
 			self.__class__.last_hover_instances = WeakList()
 		else:
 			# need updates about scrolling here
@@ -89,7 +90,7 @@ class NavigationTool(CursorTool):
 			def show_evt(self, evt):
 				if self.enabled:
 					x, y = self.cursor_tool.get_world_location_from_event(evt).to_tuple()
-					self.icon.helptext = str(x) + ', ' + str(y) + " "+_("Press H to remove this hint")
+					self.icon.helptext = u'%f, %f ' % (x, y) + _("Press H to remove this hint")
 					self.icon.position_tooltip(evt)
 					self.icon.show_tooltip()
 
@@ -162,12 +163,18 @@ class NavigationTool(CursorTool):
 
 	# move up mouse wheel = zoom in
 	def mouseWheelMovedUp(self, evt):
-		self.session.view.zoom_in(True)
+		if horizons.main.fife.get_uh_setting("CursorCenteredZoom"):
+			self.session.view.zoom_in(True)
+		else:
+			self.session.view.zoom_in(False)
 		evt.consume()
 
 	# move down mouse wheel = zoom out
 	def mouseWheelMovedDown(self, evt):
-		self.session.view.zoom_out(True)
+		if horizons.main.fife.get_uh_setting("CursorCenteredZoom"):
+			self.session.view.zoom_out(True)
+		else:
+			self.session.view.zoom_out(False)
 		evt.consume()
 
 	def onCommand(self, command):
@@ -235,4 +242,4 @@ class NavigationTool(CursorTool):
 		# only send when there were actual changes
 		if instances != set(self.__class__.last_hover_instances):
 			self.__class__.last_hover_instances = WeakList(instances)
-			self.session.message_bus.broadcast(HoverInstancesChanged(self, instances))
+			HoverInstancesChanged.broadcast(self, instances)

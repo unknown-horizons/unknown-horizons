@@ -1,7 +1,7 @@
 id: 2
 name:
   0: _ Storage Tent
-  1: _ Storage Hut
+  RES.GOLD: _ Storage Hut
 baseclass: storages.StorageTent
 radius: 17
 cost: 0
@@ -13,7 +13,7 @@ inhabitants_max: 1
 button_name: store-1
 tooltip_text: _ Extends stock and provides collectors.
 settler_level: 0
-buildingcosts: {1: 350, 4: 4}
+buildingcosts: {RES.GOLD: 350, RES.BOARDS: 4}
 components:
 - SelectableComponent:
     type: building
@@ -21,11 +21,10 @@ components:
     enemy_tabs: [EnemyBuildingOverviewTab,]
 - HealthComponent: {maxhealth: 1000}
 - StorageComponent:
-    inventory:
         SettlementStorage: {}
 - CollectingComponent:
     collectors:
-      1000008: 2
+      UNITS.STORAGE_COLLECTOR: 2
 actionsets:
   as_storagetent0: {level: 0}
   as_storagetent1: {level: 1}

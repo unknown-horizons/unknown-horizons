@@ -50,7 +50,7 @@ class AbstractFisher(AbstractBuilding):
 
 	@classmethod
 	def register_buildings(cls):
-		cls._available_buildings[BUILDINGS.FISHERMAN_CLASS] = cls
+		cls._available_buildings[BUILDINGS.FISHER] = cls
 
 class FisherEvaluator(BuildingEvaluator):
 	refill_cycle_in_tiles = 12 # TODO: replace this with a direct calculation
@@ -60,7 +60,7 @@ class FisherEvaluator(BuildingEvaluator):
 		self.__production_level = None
 
 	def get_expected_production_level(self, resource_id):
-		assert resource_id == RES.FOOD_ID
+		assert resource_id == RES.FOOD
 		if self.__production_level is None:
 			fishers_coords = [fisher.position.origin.to_tuple() for fisher in self.area_builder.owner.fishers]
 			self.__production_level = FisherSimulator.extra_productivity(self.area_builder.session, \
@@ -69,11 +69,11 @@ class FisherEvaluator(BuildingEvaluator):
 
 	@classmethod
 	def create(cls, area_builder, x, y, orientation):
-		builder = area_builder.make_builder(BUILDINGS.FISHERMAN_CLASS, x, y, True, orientation)
+		builder = area_builder.make_builder(BUILDINGS.FISHER, x, y, True, orientation)
 		if not builder:
 			return None
 
-		fisher_radius = Entities.buildings[BUILDINGS.FISHERMAN_CLASS].radius
+		fisher_radius = Entities.buildings[BUILDINGS.FISHER].radius
 		fishers_in_range = 1.0
 		for other_fisher in area_builder.owner.fishers:
 			distance = builder.position.distance(other_fisher.position)

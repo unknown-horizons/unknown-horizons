@@ -44,7 +44,7 @@ class UnitProduction(ChangingProduction):
 	@property
 	def progress(self):
 		still_needed =  sum(self._prod_line.consumed_res.itervalues())
-		all_needed = sum([amount for res, amount in self.original_prod_line.consumed_res.iteritems() if res != RES.GOLD_ID])
+		all_needed = sum([amount for res, amount in self.original_prod_line.consumed_res.iteritems() if res != RES.GOLD])
 		return 1 - float(still_needed) / all_needed
 
 	## PROTECTED METHODS
@@ -53,15 +53,15 @@ class UnitProduction(ChangingProduction):
 
 	def _check_available_res(self):
 		# Gold must be available from the beginning
-		if self._prod_line.consumed_res.get(RES.GOLD_ID, 0) > 0: # check if gold is needed
-			amount = self._prod_line.consumed_res[RES.GOLD_ID]
+		if self._prod_line.consumed_res.get(RES.GOLD, 0) > 0: # check if gold is needed
+			amount = self._prod_line.consumed_res[RES.GOLD]
 		for res, amount in self._prod_line.consumed_res.iteritems():
 			# we change the production, so the amount can become 0
 			# in this case, we must no consider this resource, as it has already been fully provided
 			if amount == 0:
 				continue # nothing to take here
-			if res == RES.GOLD_ID:
-				if self.owner_inventory[RES.GOLD_ID] > 0:
+			if res == RES.GOLD:
+				if self.owner_inventory[RES.GOLD] > 0:
 					return True
 			elif self.inventory[res] > 0:
 				return True
@@ -73,13 +73,13 @@ class UnitProduction(ChangingProduction):
 		taken = 0
 		taken_without_gold = 0
 		for res, amount in self._prod_line.consumed_res.iteritems():
-			if res == RES.GOLD_ID:
+			if res == RES.GOLD:
 				inventory = self.owner_inventory
 			else:
 				inventory = self.inventory
 			remnant = inventory.alter(res, amount) # try to get all
 			self._prod_line.change_amount(res, remnant) # set how much we still need to get
-			if return_without_gold and res != RES.GOLD_ID:
+			if return_without_gold and res != RES.GOLD:
 				taken_without_gold += abs(remnant) + amount
 			taken += abs(remnant) + amount
 		if return_without_gold:
@@ -107,7 +107,7 @@ class UnitProduction(ChangingProduction):
 
 		# calculate how much of the whole production process we can produce now
 		# and set the scheduler waiting time accordingly (e.g. half of res => wait half of prod time)
-		all_needed_res = sum( i[1] for i in self.original_prod_line.consumed_res.iteritems() if i[0] != RES.GOLD_ID )
+		all_needed_res = sum( i[1] for i in self.original_prod_line.consumed_res.iteritems() if i[0] != RES.GOLD )
 		part_of_whole_production = float(removed_res_without_gold) / all_needed_res
 		prod_time = Scheduler().get_ticks( part_of_whole_production * self._prod_line.time )
 		prod_time = max(prod_time, 1) # wait at least 1 tick

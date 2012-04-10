@@ -11,7 +11,7 @@ inhabitants_max: 1
 button_name: saltponds-1
 tooltip_text: _ Evaporates salt. Built on sea coast.
 settler_level: 2
-buildingcosts: {1: 350, 4: 4, 6: 2}
+buildingcosts: {RES.GOLD: 350, RES.BOARDS: 4, RES.TOOLS: 2}
 components:
 - SelectableComponent:
     type: building
@@ -22,11 +22,10 @@ components:
     productionlines:
       45:
         produces:
-        - [29, 2]
+        - [RES.SALT, 2]
         time: 45
 - StorageComponent:
-    inventory:
       SlotsStorage:
-        slot_sizes: {29: 8}
+        slot_sizes: {RES.SALT: 8}
 actionsets:
   as_saltponds0: {level: 0}

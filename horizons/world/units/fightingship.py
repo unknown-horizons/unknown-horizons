@@ -19,7 +19,6 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-from horizons.gui.tabs import EnemyShipOverviewTab, FightingShipOverviewTab
 from horizons.constants import WEAPONS, GAME_SPEED
 from horizons.world.units.weaponholder import MovingWeaponHolder
 from horizons.world.units.ship import Ship
@@ -50,7 +49,7 @@ class FightingShip(MovingWeaponHolder, Ship):
 
 	def act_attack(self, dest):
 		"""
-		Rotates the ship and triggeres correct animation
+		Rotates the ship and triggers correct animation
 		"""
 		# rotate the ship so it faces dest
 		# for this rotate facing location coordinates around position coordinates

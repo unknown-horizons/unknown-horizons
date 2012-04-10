@@ -1,0 +1,124 @@
+
+# DON'T EDIT THIS FILE.
+
+# It was automatically generated with development/create_scenario_pot.sh using
+# translation files from pootle. Documentation on this process is found here:
+#   development/copy_pofiles.sh
+
+author: !!python/unicode 'Kikody, UH-Team'
+description: "Eres el capit\xE1n de un nav\xEDo bajo bandera de Inglaterra en 1740.\
+  \ T\xFA y tu tripulaci\xF3n naveg\xE1is hacia una colonia inglesa en el Pac\xED\
+  fico.\nTodo iba bien hasta que se avecin\xF3 una tormenta...\n"
+difficulty: "f\xE1cil"
+events:
+- actions:
+  - arguments:
+    - [Headline, !!python/unicode '20 de Noviembre de 1740']
+    - [Image, content/gui/images/background/hr.png]
+    - "Tras cuatro d\xEDas la tormenta amain\xF3 y pudimos tomar un descanso. Pero\
+      \ nos queda poca comida y nuestro nav\xEDo se encuentra en mal estado. Hemos\
+      \ perdido los instrumentos de navegaci\xF3n y las cartas de navegaci\xF3n."
+    - "Tenemos que llegar a tierra pronto. Uno de mis hombres vi\xF3 aves pescando\
+      \ peces as\xED que la tierra no puede estar lejos. Afortunadamente, siempre\
+      \ llevamos algunas herramientas y tablas de madera a bordo para construir un\
+      \ refugio."
+    - !!python/unicode 'Tarea:
+
+      Encuentra la costa y construye un puerto.'
+    - [Pagebreak]
+    - ''
+    type: logbook
+  conditions:
+  - arguments: [0]
+    type: time_passed
+- actions:
+  - arguments:
+    - [Headline, !!python/unicode '22 de Noviembre de 1740']
+    - [Image, content/gui/images/background/hr.png]
+    - "Ya est\xE1 construido el puerto y amanece una nueva esperanza. A\xFAn me preocupan\
+      \ los pr\xF3ximos d\xEDas... nos estamos quedando sin alimentos ni materiales\
+      \ b\xE1sicos de construcci\xF3n."
+    - "Tenemos que asegurar nuestras necesidades b\xE1sicas para sobrevivir. Es hora\
+      \ de enviar a algunos hombres a recoger algo de comida y madera con la que sobrevivir\
+      \ y construir un refugio."
+    - "Tarea:\nConstruye al menos uno de cada:\n* Casa de le\xF1ador\n* Pescador\n\
+      * Cazador\nAlmacena 5 unidades de comida y tableros de madera."
+    - [Pagebreak]
+    - ''
+    type: logbook
+  conditions:
+  - arguments: [0]
+    type: settlements_num_greater
+- actions:
+  - arguments:
+    - [Headline, !!python/unicode '25 de Noviembre de 1740']
+    - [Image, content/gui/images/background/hr.png]
+    - "Hemos asegurado nuestras necesidades b\xE1sicas de comida y almacenado un poco\
+      \ de madera para continuar creciendo en nuestro asentamiento. Nuestra gente\
+      \ demanda un lugar donde vivir e intercambiar bienes para sus necesidades diarias."
+    - "Es hora de construir algunas tiendas de campa\xF1a donde vivir y una plaza\
+      \ principal para proporcionar bienes a nuestros ciudadanos."
+    - "Tarea:\nConstruye una plaza principal y al menos 10 tiendas de campa\xF1a."
+    - [Pagebreak]
+    - ''
+    type: logbook
+  conditions:
+  - arguments: [BUILDINGS.FISHER, 0]
+    type: building_num_of_type_greater
+  - arguments: [BUILDINGS.HUNTER, 0]
+    type: building_num_of_type_greater
+  - arguments: [BUILDINGS.LUMBERJACK, 0]
+    type: building_num_of_type_greater
+  - arguments: [RES.BOARDS, 4]
+    type: settlement_res_stored_greater
+  - arguments: [RES.FOOD, 4]
+    type: settlement_res_stored_greater
+- actions:
+  - arguments:
+    - [Headline, !!python/unicode '1 de Diciembre de 1740']
+    - [Image, content/gui/images/background/hr.png]
+    - "Finalmente tenemos suficiente comida y un lugar donde vivir de nuevo. Mi tienda\
+      \ no es muy c\xF3moda pero me mantiene seco y tengo la sensaci\xF3n de tener\
+      \ un techo sobre mi cabeza durante la noche."
+    - "He estado buscando las estrellas por la noche, pero sin mis cartas de navegaci\xF3\
+      n e instrumental su significado me resulta desconocido. Tengo la sensaci\xF3\
+      n de que permaneceremos aqu\xED por mucho tiempo, as\xED que tendremos que preocuparnos\
+      \ por mejorar nuestra situaci\xF3n.\nAhora solo podemos levantar una civilizaci\xF3\
+      n y encontrar un camino a casa..."
+    - !!python/unicode 'Tarea:
+
+      Haz crecer tu ciudad hasta alcanzar 250 habitantes y un saldo positivo.'
+    - [Pagebreak]
+    - ''
+    type: logbook
+  conditions:
+  - arguments: [BUILDINGS.RESIDENTIAL, 4]
+    type: building_num_of_type_greater
+  - arguments: [BUILDINGS.MAIN_SQUARE, 0]
+    type: building_num_of_type_greater
+- actions:
+  - arguments:
+    - [Headline, !!python/unicode '27 de Agosto de 1745']
+    - [Image, content/gui/images/background/hr.png]
+    - "Nuestro pueblo va muy bien, la ciudad ha alcanzado los 250 habitantes. He empezado\
+      \ a hacer uso de mi nueva casa, pero esta isla es demasiado peque\xF1a para\
+      \ permanecer aqu\xED siempre."
+    - "Deber\xEDamos cargar nuestro nav\xEDo y encontrar una isla m\xE1s grande donde\
+      \ encontrar m\xE1s espacio y recursos para mi gente. He creado un rudimentario\
+      \ mapa de navegaci\xF3n a partir de las estrellas que veo por la noche. No es\
+      \ perfecto, pero espero que sea suficiente para volver aqu\xED."
+    - "Tarea:\n\xA1Ponte en contacto con el equipo de Unknown Horizons (www.unknown-horizons.org)\
+      \ y averigua c\xF3mo puedes contribuir a hacer este escenario m\xE1s largo y\
+      \ mejor!"
+    - [Pagebreak]
+    - ''
+    type: logbook
+  conditions:
+  - arguments: [250]
+    type: settlement_inhabitants_greater
+  - arguments: [0]
+    type: player_balance_greater
+locale: es
+mapfile: development.sqlite
+translation_status: 23 translated messages.
+

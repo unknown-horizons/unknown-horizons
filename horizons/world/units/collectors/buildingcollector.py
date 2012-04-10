@@ -133,7 +133,8 @@ class BuildingCollector(Collector):
 		return self.home_building.get_component(StorageComponent).inventory
 
 	def get_colleague_collectors(self):
-		return self.home_building.get_component(CollectingComponent).get_local_collectors()
+		colls = self.home_building.get_component(CollectingComponent).get_local_collectors()
+		return ( coll for coll in colls if coll is not self )
 
 	@decorators.make_constants()
 	def get_job(self):
@@ -216,11 +217,12 @@ class BuildingCollector(Collector):
 								                                            player=self.owner)
 
 	def handle_path_home_blocked(self):
-		"""Called when we get blocked while trying to move to the job location.
-		The default action is to resume movement in a few seconds."""
-		self.log.debug("%s: got blocked while moving home, trying again in %s ticks.", \
-								   self, COLLECTORS.DEFAULT_WAIT_TICKS)
-		Scheduler().add_new_object(self.resume_movement, self, COLLECTORS.DEFAULT_WAIT_TICKS)
+		"""Called when we get blocked while trying to move to the job location. """
+		self.log.debug("%s: got blocked while moving home, teleporting home", self)
+		# make sure to get home, this prevents all movement problems by design
+		# at the expense of some jumping in very unusual corner cases
+		# NOTE: if this is seen as problem, self.resume_movement() could be tried before reverting to teleportation
+		self.teleport(self.home_building, callback=self.move_callbacks, destination_in_building=True)
 
 	def move_home(self, callback=None, action='move_full'):
 		"""Moves collector back to its home building"""
@@ -232,8 +234,10 @@ class BuildingCollector(Collector):
 		else:
 			# actually move home
 			try:
-				self.move(self.home_building, callback=callback, destination_in_building=True, action=action, \
-				          blocked_callback=self.handle_path_home_blocked)
+				# reuse reversed path of path here (assumes all jobs started at home)
+				path = None if (self.job is None or self.job.path is None) else list(reversed(self.job.path))
+				self.move(self.home_building, callback=callback, destination_in_building=True,
+				          action=action, blocked_callback=self.handle_path_home_blocked, path=path)
 				self.state = self.states.moving_home
 			except MoveNotPossible:
 				# we are in trouble.
@@ -316,7 +320,7 @@ class FisherShipCollector(BuildingCollector):
 		fishers = []
 		for settlement in session.world.settlements:
 			if settlement.owner == owner:
-				fishers.extend(settlement.buildings_by_id[BUILDINGS.FISHERMAN_CLASS])
+				fishers.extend(settlement.buildings_by_id[BUILDINGS.FISHER])
 		smallest_fisher = fishers.pop()
 		for fisher in fishers:
 			if len(smallest_fisher.get_local_collectors()) > len(fisher.get_local_collectors()):

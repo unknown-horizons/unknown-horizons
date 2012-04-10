@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<Container  size="250,450">
+<Container name="tab_account" size="250,450">
 <TabBG amount="6" />
 
 <Container position="0,70" size="600,400">
