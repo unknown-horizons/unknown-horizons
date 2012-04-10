@@ -34,6 +34,6 @@ components:
     soundfiles: [content/audio/sounds/warehouse.ogg]
 - CollectingComponent:
     collectors:
-      1000004: 1
+      UNITS.FISHER_BOAT: 1
 actionsets:
   as_fisherman0: {level: 0}

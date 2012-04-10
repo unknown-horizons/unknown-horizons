@@ -30,6 +30,6 @@ components:
 - CollectingComponent:
     collectors:
       UNITS.BUILDING_COLLECTOR: 1
-      1000019: 0
+      UNITS.DISASTER_RECOVERY_COLLECTOR: 1
 actionsets:
   as_doctor0: {level: 0}
