@@ -7,9 +7,9 @@
 		comment="Please keep the translation similarly short and concise, else the tooltip is not well understood by players." />
 	<Icon image="content/gui/images/background/hr.png" position="20,30" />
 
-	<!-- Displays list of resources to select one for trade. -->
-	<ScrollArea min_size="220,270" max_size="270,270" size="220,270" position="15,35">
-		<VBox name="resources" size="220,0">
+	<!-- Displays list of resources to select one which is displayed in this slot. -->
+	<ScrollArea min_size="225,270" max_size="225,270" size="225,270" position="15,35">
+		<VBox name="resources" size="225,0">
 		<Spacer />
 		</VBox>
 	</ScrollArea>
