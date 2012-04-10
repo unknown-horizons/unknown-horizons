@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2012-03-24 02:16+0100\n"
-"PO-Revision-Date: 2012-04-10 17:58+0200\n"
+"PO-Revision-Date: 2012-04-10 18:41+0200\n"
 "Last-Translator: Premislaus <premislaus1988@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: pl\n"
@@ -528,7 +528,7 @@ msgstr "Niepoprawna nazwa pliku"
 
 #: horizons/command/game.py:37
 msgid "Received an invalid filename for a save command."
-msgstr "Niepoprawana nazwa pliku do zapisu."
+msgstr "Otrzymał nieprawidłową nazwę pliku dla polecenia zapisz."
 
 #. There was a problem during the 'save game' procedure.
 #: horizons/command/game.py:47 horizons/gui/gui.py:179
@@ -545,7 +545,7 @@ msgstr "Nie udało się zapisać gry."
 
 #: horizons/engine/settingsdialog.py:50
 msgid "Restart required"
-msgstr "Wymagane ponowne uruchomienie"
+msgstr "Wymagane jest ponowne uruchomienie"
 
 #: horizons/engine/settingsdialog.py:51
 msgid "Some of your changes require a restart of Unknown Horizons."
@@ -553,7 +553,7 @@ msgstr "Niektóre zmiany wymagają ponownego uruchomienia Unknown Horizons."
 
 #: horizons/engine/settingsdialog.py:55
 msgid "Restore default settings"
-msgstr "Przywróć domyślne ustawienia"
+msgstr "Przywróć ustawienia domyślne"
 
 #: horizons/engine/settingsdialog.py:56
 msgid "Restoring the default settings will delete all changes to the settings you made so far."
@@ -569,6 +569,7 @@ msgstr "Czy chcesz kontynuować?"
 msgid "Warning"
 msgstr "Uwaga"
 
+# Renderer w tym przypadku jest chyba bardziej poprawny od renderowania.
 #. i18n Warning popup shown in settings when SDL is selected as renderer.
 #: horizons/engine/settingshandler.py:150
 msgid ""
@@ -576,10 +577,10 @@ msgid ""
 "\n"
 "Use at own risk!"
 msgstr ""
-"Renderowanie SDL jest przewidziane wyłącznie jako awaryjne i powoduje spore "
+"Renderer SDL jest przewidziany wyłącznie jako awaryjny i powoduje spore "
 "problemy z wyświetlaniem grafiki. \n"
 "\n"
-"Używasz na własne ryzyko!"
+"Używasz go na własne ryzyko!"
 
 #: horizons/engine/settingshandler.py:224
 msgid "Invalid network port"
@@ -588,8 +589,8 @@ msgstr "Niepoprawny port"
 #: horizons/engine/settingshandler.py:225
 msgid "The port you specified is not valid. It must be a number between 1 and 65535."
 msgstr ""
-"Port został podany nieprawidłowo. Prawidłowa wartość powinna zawierać się "
-"pomiędzy 1 do 65535."
+"Podany port jest nieprawidłowy. Poprawna wartość powinna zawierać się w "
+"zakresie 1 do 65535."
 
 #: horizons/engine/settingshandler.py:226
 msgid "Please check the port you entered and make sure it is in the specified range."
@@ -608,7 +609,7 @@ msgstr "Funkcje sieciowe nie mogą zostać zainicjowane z aktualną konfiguracj�
 #: horizons/engine/settingshandler.py:240
 #: horizons/gui/modules/multiplayermenu.py:57
 msgid "Check the settings you specified in the network section."
-msgstr "Sprawdź ustawienia określone w sekcji sieci."
+msgstr "Sprawdź swoje ustawienia sieciowe w sekcji sieci."
 
 #. i18n This is advice for players seeing a network error with the current config
 #: horizons/engine/settingshandler.py:244
@@ -641,11 +642,11 @@ msgstr "Wyjdź z gry"
 
 #: horizons/gui/gui.py:214
 msgid "Are you sure you want to abort the running session?"
-msgstr "Jesteś pewien, że chcesz zakończyć aktualną sesję?"
+msgstr "Jesteś pewien, że chcesz przerwać uruchomioną sesję?"
 
 #: horizons/gui/gui.py:216
 msgid "Quit Session"
-msgstr "Wyłącz sesję"
+msgstr "Opuść sesję"
 
 #: horizons/gui/gui.py:276
 msgid "No saved games"
@@ -653,7 +654,7 @@ msgstr "Brak zapisanych stanów gry"
 
 #: horizons/gui/gui.py:276
 msgid "There are no saved games to load."
-msgstr "Nie ma zapisanych gier które można wczytać."
+msgstr "Nie ma żadnych zapisanych gier które można by wczytać."
 
 #. (text of widget: loadgame)
 #. (text of widget: loadgame) Open a widget to select which game to load
@@ -698,7 +699,7 @@ msgstr "Niepoprawna nazwa pliku."
 
 #: horizons/gui/gui.py:379
 msgid "Please select a savegame or click on cancel."
-msgstr "Proszę wybrać rekord lub kliknąć anuluj."
+msgstr "Proszę wybrać zapis gry lub kliknąć anuluj."
 
 #. ok button has been pressed, but no savegame was selected
 #: horizons/gui/gui.py:379
@@ -814,9 +815,9 @@ msgstr "Nie możesz prowadzić dyplomacji, ponieważ nie ma innych graczy."
 
 #: horizons/gui/ingamegui.py:462
 #, python-format
-#, python-format, fuzzy
+#, python-format, 
 msgid "Valid map names are in the following form: {expression}"
-msgstr "Poprawne nazywanie map są wg. tej reguły: {expression}"
+msgstr "Poprawne nazwy map są wg. tej reguły: {expression}"
 
 #: horizons/gui/ingamegui.py:464
 #, python-format
@@ -831,7 +832,7 @@ msgstr "Nie mogę znaleźć pyenet"
 #: horizons/gui/modules/multiplayermenu.py:45
 msgid "The multiplayer feature requires the library \"pyenet\", which couldn't be found on your system."
 msgstr ""
-"Brak biblioteki \"pyenet\", która jest wymagana aby grać w trybie wielu "
+"Brak biblioteki \"pyenet\", która jest wymagana aby grać w trybie dla wielu "
 "graczy."
 
 #: horizons/gui/modules/multiplayermenu.py:46

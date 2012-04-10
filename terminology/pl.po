@@ -174,7 +174,7 @@ msgid "boards"
 msgstr "deski"
 
 msgid "collector"
-msgstr "kupiec"
+msgstr "poborca"
 
 msgid "connection"
 msgstr "połączenie"
