@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2012-03-24 02:16+0100\n"
-"PO-Revision-Date: 2012-04-10 18:56+0200\n"
+"PO-Revision-Date: 2012-04-10 19:27+0200\n"
 "Last-Translator: Premislaus <premislaus1988@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: pl\n"
@@ -934,10 +934,10 @@ msgstr "Zła wersja"
 #, python-format,
 msgid "The game's version differs from your version. Every player in a multiplayer game must use the same version. This can be fixed by every player updating to the latest version. Game version: {game_version} Your version: {own_version}"
 msgstr ""
-"Wersja gry jest inna niż twoja. Każdy gracz grający w multiplayer musi "
-"posiadać taką samą wersje gry. Ten problem może zostać rozwiązany przez "
-"aktualizacje gry przez każdego gracza do najnowszej wersji. Wersja gry: "
-"{game_version} Twoja wersja gry: {own_version}"
+"Wersja gry jest inna niż twoja. Każdy gracz grający w trybie dla wielu "
+"graczy, musi posiadać taką samą wersję gry. Ten problem może zostać "
+"rozwiązany poprzez aktualizację gry, u każdego gracza do najnowszej wersji. "
+"Wersja gry: {game_version} Twoja wersja gry: {own_version}"
 
 #: horizons/gui/modules/multiplayermenu.py:350
 #: horizons/gui/modules/singleplayermenu.py:111
@@ -1031,16 +1031,17 @@ msgstr "Zbuduj"
 
 #: horizons/gui/mousetools/navigationtool.py:75
 msgid "Press H to remove this hint"
-msgstr "Naciśnij H, aby usunąć tą wskazówkę"
+msgstr "Naciśnij H, aby usunąć tę wskazówkę"
 
 #: horizons/gui/tabs/boatbuildertab.py:50
+#, fuzzy
 msgid "Boat builder overview"
-msgstr "Podgląd budowy łodzi"
+msgstr "Podgląd budowy statku"
 
 #: horizons/gui/tabs/boatbuildertab.py:101
 #, python-format
 msgid "{ship} (place in queue: {place})"
-msgstr "{ship} (pozycje w kolejce: {place})"
+msgstr "{ship} (pozycja w kolejce: {place})"
 
 #: horizons/gui/tabs/boatbuildertab.py:165
 msgid "Resources still needed:"
@@ -1050,19 +1051,19 @@ msgstr "Wciąż wymagane surowce:"
 # 100%
 #: horizons/gui/tabs/boatbuildertab.py:242
 msgid "Fisher boats"
-msgstr "Kutry rybackie"
+msgstr "Łodzie rybackie"
 
 #. (text of widget: headline)
 #: horizons/gui/tabs/boatbuildertab.py:252
 #: horizons/i18n/guitranslations.py:156
 msgid "Trade boats"
-msgstr "Łodzie handlowe"
+msgstr "Statki handlowe"
 
 #. (text of widget: headline)
 #: horizons/gui/tabs/boatbuildertab.py:260
 #: horizons/i18n/guitranslations.py:173
 msgid "War boats"
-msgstr "Statki wojenne"
+msgstr "Okręty wojenne"
 
 #: horizons/gui/tabs/boatbuildertab.py:267
 msgid "War ships"
@@ -1089,7 +1090,7 @@ msgstr "Usługi"
 #: horizons/gui/tabs/buildtabs.py:112 horizons/gui/tabs/buildtabs.py:115
 #: horizons/gui/tabs/buildtabs.py:122 horizons/gui/tabs/buildtabs.py:128
 msgid "Companies"
-msgstr "Przemysł i rolnictwo"
+msgstr "Przedsiębiorstwa"
 
 #: horizons/gui/tabs/buildtabs.py:116 horizons/gui/tabs/buildtabs.py:123
 #: horizons/gui/tabs/buildtabs.py:129
@@ -1119,11 +1120,15 @@ msgstr "Handel"
 #: horizons/gui/tabs/buyselltab.py:139
 msgid "Click on one of the resource slots to add a trade offer."
 msgstr ""
+"Kliknij na jednym ze slotów z surowcami, aby dodać go do oferty handlowej."
 
 #. new res
 #: horizons/gui/tabs/buyselltab.py:186
+#, fuzzy
 msgid "Set to buy or sell by clicking on that label, then adjust the amount via the slider to the right."
 msgstr ""
+"Ustaw sprzedaż lub kupno klikając na oznaczeniu, następnie wskaż ilość "
+"suwakiem po prawej."
 
 #: horizons/gui/tabs/buyselltab.py:363
 #, python-format
