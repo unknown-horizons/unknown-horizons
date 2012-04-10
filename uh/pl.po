@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2012-03-24 02:16+0100\n"
-"PO-Revision-Date: 2012-04-10 18:41+0200\n"
+"PO-Revision-Date: 2012-04-10 18:56+0200\n"
 "Last-Translator: Premislaus <premislaus1988@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: pl\n"
@@ -838,17 +838,17 @@ msgstr ""
 #: horizons/gui/modules/multiplayermenu.py:46
 msgid "Linux users: Try to install pyenet through your package manager."
 msgstr ""
-"Użytkownicy Linuksa: Spróbuj zainstalować pyenet za pomocą menadżera "
+"Użytkownicy Linuksa: Spróbuj zainstalować pyenet za pomocą menedżera "
 "pakietów."
 
 #: horizons/gui/modules/multiplayermenu.py:47
 msgid "Windows users: There is currently no reasonable support for Windows."
 msgstr ""
-"Użytkownicy Windowsa: Brak obecnie rozsądnego wsparcia dla systemu Windows."
+"Użytkownicy Windowsa: Brak obecnie sensownego wsparcia dla systemu Windows."
 
 #: horizons/gui/modules/multiplayermenu.py:55
 msgid "Failed to initialize networking."
-msgstr "Inicjalizacja sieci niepowiodła się."
+msgstr "Inicjalizacja sieci nie powiodła się."
 
 #: horizons/gui/modules/multiplayermenu.py:117
 #: horizons/gui/modules/multiplayermenu.py:135
@@ -862,7 +862,7 @@ msgstr "Nie można podłączyć się do głównego serwera."
 #: horizons/gui/modules/multiplayermenu.py:119
 msgid "Please check your Internet connection. If it is fine, it means our master server is temporarily down."
 msgstr ""
-"Proszę sprawdzić połączenie z internetem. Jeśli jest w porządku oznacza to "
+"Proszę sprawdzić połączenie z internetem. Jeśli jest w porządku oznacza to, "
 "że nasz serwer jest tymczasowo wyłączony."
 
 # 97%
@@ -872,7 +872,7 @@ msgstr "Wystąpiły problemy z siecią:"
 
 #: horizons/gui/modules/multiplayermenu.py:160
 msgid "Version differs!"
-msgstr "Różne wersje!"
+msgstr "Wersje się różnią!"
 
 #: horizons/gui/modules/multiplayermenu.py:184
 #, python-format
@@ -896,19 +896,23 @@ msgstr "Twórca: : {player}"
 
 #: horizons/gui/modules/multiplayermenu.py:203
 msgid "This savegame is missing (click here)"
-msgstr "Brakujący zapis gry (kliknij tutaj)"
+msgstr "Ten zapis gry przepadł (kliknij tutaj)"
 
 #: horizons/gui/modules/multiplayermenu.py:209
 msgid "For multiplayer load, it is currently necessary for you to ensure you have the correct savegame file."
-msgstr ""
+msgstr "Aby wczytać grę dla wielu graczy, niezbędny jest prawidłowy zapis gry."
 
 #: horizons/gui/modules/multiplayermenu.py:210
 msgid "This is not nice and we hope to offer a more convenient solution very soon."
 msgstr ""
+"To nie jest miłe, ale mamy nadzieję, że jak najszybciej zaoferujemy lepsze "
+"rozwiązanie."
 
 #: horizons/gui/modules/multiplayermenu.py:211
 msgid "Meanwhile, please request the file {path} from the game creator and put it in {map_directory} ."
 msgstr ""
+"W międzyczasie, prosimy o zwrócenie się po plik {path} do twórcy gry i "
+"umieszczenie go w {map_directory} ."
 
 #. (text of widget: help)
 #. (text of widget: help) Main / in-game menu entry
@@ -919,7 +923,7 @@ msgstr "Pomoc"
 
 #: horizons/gui/modules/multiplayermenu.py:218
 msgid "This is a savegame."
-msgstr ""
+msgstr "To jest zapis gry."
 
 #: horizons/gui/modules/multiplayermenu.py:242
 msgid "Wrong version"
