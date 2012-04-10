@@ -29,7 +29,7 @@ components:
         slot_sizes: {RES.MEDICAL_HERBS: 8}
 - CollectingComponent:
     collectors:
-      1000002: 1
+      UNITS.BUILDING_COLLECTOR: 1
       1000019: 0
 actionsets:
   as_doctor0: {level: 0}

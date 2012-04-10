@@ -31,6 +31,6 @@ components:
         slot_sizes: {RES.SUGAR: 6, RES.LIQUOR: 6}
 - CollectingComponent:
     collectors:
-      1000002: 1
+      UNITS.BUILDING_COLLECTOR: 1
 actionsets:
   as_distillery0: {level: 0}

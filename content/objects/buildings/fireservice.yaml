@@ -30,6 +30,6 @@ components:
       slot_sizes: {RES.FIRE: 10}
 - CollectingComponent:
     collectors:
-      1000022: 1
+      UNITS.DISASTER_RECOVERY_COLLECTOR: 1
 actionsets:
   as_fireservice0: {level: 0}

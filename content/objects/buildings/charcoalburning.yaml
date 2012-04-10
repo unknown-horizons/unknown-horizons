@@ -31,6 +31,6 @@ components:
         slot_sizes: {RES.BOARDS: 10, RES.CHARCOAL: 2}
 - CollectingComponent:
     collectors:
-      1000002: 1
+      UNITS.BUILDING_COLLECTOR: 1
 actionsets:
   as_charcoal_burning0: {level: 0}

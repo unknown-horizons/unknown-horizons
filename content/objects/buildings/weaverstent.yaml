@@ -31,6 +31,6 @@ components:
         slot_sizes: {RES.WOOL: 8, RES.TEXTILE: 8}
 - CollectingComponent:
     collectors:
-      1000002: 1
+      UNITS.BUILDING_COLLECTOR: 1
 actionsets:
   as_weaver0: {level: 0}

@@ -31,6 +31,6 @@ components:
         slot_sizes: {RES.FOOD: 6, RES.DEER_MEAT: 4}
 - CollectingComponent:
     collectors:
-      1000014: 1
+      UNITS.HUNTER_COLLECTOR: 1
 actionsets:
   as_hunter0: {level: 0}

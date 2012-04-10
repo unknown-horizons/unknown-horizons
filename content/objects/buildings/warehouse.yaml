@@ -32,6 +32,6 @@ components:
     soundfiles: [content/audio/sounds/warehouse.ogg]
 - CollectingComponent:
     collectors:
-      1000008: 3
+      UNITS.STORAGE_COLLECTOR: 3
 actionsets:
   as_warehouse0: {preview: as_preview_warehouse0, level: 0}

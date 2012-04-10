@@ -105,7 +105,7 @@ components:
             }
 - CollectingComponent:
     collectors:
-      1000015: 1
-      1000009: 1
+      UNITS.FARM_ANIMAL_COLLECTOR: 1
+      UNITS.FIELD_COLLECTOR: 1
 actionsets:
   as_farm0: {level: 0}

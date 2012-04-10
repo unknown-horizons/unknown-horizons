@@ -31,6 +31,6 @@ components:
         slot_sizes: {RES.TOBACCO_PRODUCTS: 4, RES.TOBACCO_LEAVES: 6}
 - CollectingComponent:
     collectors:
-      1000002: 1
+      UNITS.BUILDING_COLLECTOR: 1
 actionsets:
   as_tobacconist0: {level: 0}

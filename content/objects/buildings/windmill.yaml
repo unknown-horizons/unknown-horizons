@@ -30,6 +30,6 @@ components:
         slot_sizes: {RES.CORN: 8, RES.FLOUR: 8}
 - CollectingComponent:
     collectors:
-      1000002: 1
+      UNITS.BUILDING_COLLECTOR: 1
 actionsets:
   as_windmill0: {level: 0}

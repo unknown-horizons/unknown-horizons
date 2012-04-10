@@ -31,6 +31,6 @@ components:
         slot_sizes: {RES.CLAY: 4, RES.BRICKS: 10}
 - CollectingComponent:
     collectors:
-      1000002: 1
+      UNITS.BUILDING_COLLECTOR: 1
 actionsets:
   as_brickyard0: {level: 0}

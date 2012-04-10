@@ -156,7 +156,7 @@ components:
         slot_sizes: {RES.TOBACCO_PRODUCTS: 1, RES.TEXTILE: 1, RES.FOOD: 1, RES.FAITH: 1, RES.HAPPINESS: 100, RES.EDUCATION: 1, RES.COMMUNITY: 1, RES.GET_TOGETHER: 1, RES.SALT: 1, RES.FIRE: 1}
 - CollectingComponent:
     collectors:
-      1000011: 1
+      UNITS.SETTLER_COLLECTOR: 1
 actionsets:
   as_tent0: {level: 0}
   as_tent1: {level: 0}

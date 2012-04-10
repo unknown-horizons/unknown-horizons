@@ -32,6 +32,6 @@ components:
         slot_sizes: {RES.GET_TOGETHER: 12, RES.LIQUOR: 4}
 - CollectingComponent:
     collectors:
-      1000002: 1
+      UNITS.BUILDING_COLLECTOR: 1
 actionsets:
   as_tavern0: {level: 0}

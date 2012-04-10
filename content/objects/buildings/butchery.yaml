@@ -37,6 +37,6 @@ components:
         slot_sizes: {RES.CATTLE_SLAUGHTER: 4, RES.PIGS_SLAUGHTER: 6, RES.FOOD: 12}
 - CollectingComponent:
     collectors:
-      1000002: 1
+      UNITS.BUILDING_COLLECTOR: 1
 actionsets:
   as_butchery0: {level: 0}

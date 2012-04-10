@@ -61,6 +61,6 @@ components:
         slot_sizes: {RES.CANNON: 12, RES.TEXTILE: 12, RES.BOARDS: 12, RES.TOOLS: 12}
 - CollectingComponent:
     collectors:
-      1000002: 1
+      UNITS.BUILDING_COLLECTOR: 1
 actionsets:
   as_boat_builder0: {level: 0}
