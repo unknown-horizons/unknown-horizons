@@ -4,7 +4,7 @@ use strict;
 use warnings;
 
 if ( $#ARGV + 1 < 1 ) {
-    print STDERR "usage: check_translations.pl <filename>\n";
+    print STDERR "usage: check-python-format.pl <filename>\n";
     exit 1;
 }
 
