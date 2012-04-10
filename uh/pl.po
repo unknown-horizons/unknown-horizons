@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2012-03-24 02:16+0100\n"
-"PO-Revision-Date: 2012-04-10 19:27+0200\n"
+"PO-Revision-Date: 2012-04-10 20:00+0200\n"
 "Last-Translator: Premislaus <premislaus1988@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: pl\n"
@@ -1186,7 +1186,7 @@ msgstr "Podgląd statku"
 
 #: horizons/gui/tabs/overviewtab.py:190
 msgid "The ship needs to be close to an island to found a settlement."
-msgstr ""
+msgstr "Statek musi być blisko wyspy, aby można było założyć osadę."
 
 #: horizons/gui/tabs/overviewtab.py:195
 msgid "You already have a settlement on this island."
@@ -1208,12 +1208,11 @@ msgstr "Kup/Sprzedaj"
 
 #: horizons/gui/tabs/overviewtab.py:240
 msgid "Too far from the nearest own or allied warehouse"
-msgstr ""
+msgstr "Zbyt daleko od najbliższego, własnego lub sojuszniczego magazynu."
 
 #: horizons/gui/tabs/overviewtab.py:246
-#, fuzzy
 msgid "Cannot equip trade ship with weapons"
-msgstr "Nie można wyposażyć statek handlowy bronią"
+msgstr "Nie można wyposażyć statku handlowego z bronią"
 
 #: horizons/gui/tabs/overviewtab.py:247
 msgid "It is not possible to equip a trade ship with weapons."
@@ -1229,7 +1228,7 @@ msgstr "Działa pod pokład"
 
 #: horizons/gui/tabs/overviewtab.py:313
 msgid "Tower overview"
-msgstr ""
+msgstr "Przegląd wieży"
 
 # 76%
 #: horizons/gui/tabs/overviewtab.py:330
@@ -1253,12 +1252,12 @@ msgstr "Limit: {amount}t na slot"
 
 #: horizons/gui/widgets/logbook.py:45
 msgid "Logbook"
-msgstr ""
+msgstr "Dziennik pokładowy"
 
 #. (text of widget: headline_statistics)
 #: horizons/gui/widgets/logbook.py:46 horizons/i18n/guitranslations.py:610
 msgid "Statistics"
-msgstr ""
+msgstr "Statystyki"
 
 #. (text of widget: headline)
 #. (text of widget: headline_chat)
@@ -1308,7 +1307,7 @@ msgstr "W sumie"
 #, python-format
 #, python-format,
 msgid "Ships of {player}"
-msgstr "Statek gracza - {player}"
+msgstr "Statki gracza - {player}"
 
 # 97%
 #. (helptext of widget: name)
@@ -1336,7 +1335,7 @@ msgstr "Stan produkcji {settlement}"
 
 #: horizons/gui/widgets/resourceoverviewbar.py:199
 msgid "Click to add a new slot"
-msgstr ""
+msgstr "Naciśnij aby dodać nowy slot"
 
 #: horizons/gui/widgets/resourceoverviewbar.py:389
 #: horizons/gui/widgets/resourceoverviewbar.py:394
