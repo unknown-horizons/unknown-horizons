@@ -100,13 +100,8 @@ class MainListener(fife.IKeyListener, fife.ConsoleExecuter, LivingObject):
 																													{'file': screenshotfilename})
 			evt.consume()
 		elif action == _Actions.QUICKLOAD:
-			if self.gui.session is not None:
-				# let the session do it for proper cleanup
-				self.gui.session.quickload()
-			else:
-				# no session to clean up, do it directly
-				from horizons.main import _load_last_quicksave
-				_load_last_quicksave()
+			from horizons.main import _load_last_quicksave
+			_load_last_quicksave(self.gui.session)
 			evt.consume()
 
 
