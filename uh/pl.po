@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2012-03-24 02:16+0100\n"
-"PO-Revision-Date: 2012-04-10 17:21+0200\n"
+"PO-Revision-Date: 2012-04-10 17:58+0200\n"
 "Last-Translator: Premislaus <premislaus1988@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: pl\n"
@@ -480,13 +480,13 @@ msgstr "wełna"
 #: database files sql
 #, python-format
 msgid "{player1} and {player2} have allied their forces."
-msgstr "{player1} oraz {player2} zawarli sojusz."
+msgstr "{player1} oraz {player2} sprzymierzyli swoje siły."
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
 #, python-format
 msgid "{player1} and {player2} have ended the war and are now allied."
-msgstr "{player1} oraz {player2} zakończyli wojnę i zawarli sojusz."
+msgstr "{player1} oraz {player2} zakończyli wojnę i sprzymierzyli się."
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
@@ -504,13 +504,13 @@ msgstr ""
 #: database files sql
 #, python-format
 msgid "{player1} and {player2} have terminated their alliance."
-msgstr "{player1} oraz {player2} zerwali sojusz."
+msgstr "{player1} oraz {player2} zerwali swój sojusz."
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
 #, python-format
 msgid "{player1} and {player2} will fight each other to the death."
-msgstr "{player1} oraz {player2} będą od teraz ze sobą walczyć na każdym kroku."
+msgstr "{player1} oraz {player2} będą od teraz ze sobą walczyć aż do końca."
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
@@ -520,7 +520,7 @@ msgstr "{player}: {message}"
 
 #: editor/editor.py:33
 msgid "Specify the path to FIFE root directory."
-msgstr "Podaj ścieżkę do folderu FIFE."
+msgstr "Podaj ścieżkę do głównego katalogu FIFE."
 
 #: horizons/command/game.py:36
 msgid "Invalid filename"
