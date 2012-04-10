@@ -13,7 +13,7 @@ difficulty: !!python/unicode 'leicht'
 events:
 - actions:
   - arguments:
-    - [Headline, !!python/unicode '20ter November 1740']
+    - [Headline, !!python/unicode '20. November 1740']
     - [Image, content/gui/images/background/hr.png]
     - "Nach vier Tagen hat der Sturm endlich nachgelassen und wir k\xF6nnen uns etwas\
       \ ausruhen. Allerdings haben wir nicht mehr viel Nahrung an Bord und das Schiff\
@@ -34,7 +34,7 @@ events:
     type: time_passed
 - actions:
   - arguments:
-    - [Headline, !!python/unicode '22ter November 1740']
+    - [Headline, !!python/unicode '22. November 1740']
     - [Image, content/gui/images/background/hr.png]
     - "Der Hafen ist gebaut und neue Hoffnung kommt auf. Trotzdem mache ich mir Sorgen\
       \ \xFCber die n\xE4chsten Tage... uns geht die Nahrung aus und es fehlt an Baumaterial."
@@ -51,7 +51,7 @@ events:
     type: settlements_num_greater
 - actions:
   - arguments:
-    - [Headline, !!python/unicode '25ter November 1740']
+    - [Headline, !!python/unicode '25. November 1740']
     - [Image, content/gui/images/background/hr.png]
     - "Wir haben unsere Grundbed\xFCrfnis der Nahrung abgesichert und haben etwas\
       \ Holz gesammelt, um das Wachstum unserer Siedlung voran zu treiben. Unsere\
@@ -78,7 +78,7 @@ events:
     type: settlement_res_stored_greater
 - actions:
   - arguments:
-    - [Headline, !!python/unicode '1ter Dezember 1740']
+    - [Headline, !!python/unicode '1. Dezember 1740']
     - [Image, content/gui/images/background/hr.png]
     - "Endlich haben wir genug zu essen und wieder einen Ort zum leben. Mein Zelt\
       \ ist nicht sehr komfortabel, aber es h\xE4lt mich trocken und ich habe in der\
@@ -102,13 +102,13 @@ events:
     type: building_num_of_type_greater
 - actions:
   - arguments:
-    - [Headline, !!python/unicode '27ter August 1745']
+    - [Headline, !!python/unicode '27. August 1745']
     - [Image, content/gui/images/background/hr.png]
     - "Unserer Stadt geht es gut, sie hat mittlerweile \xFCber 250 Einwohner. I habe\
       \ begonnen mich an mein neues Zuhause zu gew\xF6hnen, aber diese Insel ist zu\
       \ klein um hier f\xFCr immer zu bleiben."
     - "Wir sollten ein Schiff beladen und uns auf die Suche nach einer gr\xF6\xDF\
-      eren Insel mit mehr Platz und Ressourcen f\xFCr meine Leute begeben. I habe\
+      eren Insel mit mehr Platz und Ressourcen f\xFCr meine Leute begeben. Ich habe\
       \ mir anhand der Sterne, die ich in der Nacht sehe, wieder eine einfache Seekarte\
       \ erstellt. Sie ist nicht perfekt, aber ich hoffe sie reicht um hier her zur\xFC\
       ck zu finden."
@@ -124,5 +124,5 @@ events:
     type: player_balance_greater
 locale: de
 mapfile: development.sqlite
-translation_status: 22 translated messages, 1 untranslated message.
+translation_status: 23 translated messages.
 

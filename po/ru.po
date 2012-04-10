@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2012-03-24 02:16+0100\n"
-"PO-Revision-Date: 2012-04-08 02:19+0200\n"
+"PO-Revision-Date: 2012-04-09 23:08+0200\n"
 "Last-Translator: Christopher Oelmueller <chris.oelmueller+uh@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: ru\n"
@@ -720,10 +720,10 @@ msgstr "Сохранено в {time}"
 #. N_ takes care of plural forms for different languages
 #: horizons/gui/gui.py:615
 #, python-format
-#, fuzzy, python-format
+#, python-format
 msgid "Saved {amount} time"
 msgid_plural "Saved {amount} times"
-msgstr[0] "Еще не сохранялось"
+msgstr[0] "Сохранено {amount} раз"
 msgstr[1] "Сохранено {amount} раз"
 msgstr[2] "Сохранено {amount} раза"
 
@@ -1076,9 +1076,8 @@ msgid "Mining"
 msgstr "Горные работы"
 
 #: horizons/gui/tabs/buildtabs.py:149
-#, fuzzy
 msgid "Increment {increment}"
-msgstr "Увеличение"
+msgstr "Увеличение {increment}"
 
 #. (text of widget: headline)
 #. (helptext of widget: trade)

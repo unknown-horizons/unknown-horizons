@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2012-03-24 02:16+0100\n"
-"PO-Revision-Date: 2012-03-30 18:49+0200\n"
+"PO-Revision-Date: 2012-04-09 22:54+0200\n"
 "Last-Translator: Christopher Oelmueller <chris.oelmueller+uh@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: da\n"
@@ -758,7 +758,7 @@ msgstr "Kunne ikke slette det gemte spil!"
 #: horizons/gui/gui.py:681
 #, python-format
 msgid "[{key}] = {text}"
-msgstr "[{Nøglen}] = {tekst}"
+msgstr "[{key}] = {text}"
 
 #. (helptext of widget: headline)
 #: horizons/gui/ingamegui.py:240 horizons/gui/tabs/mainsquaretabs.py:95
@@ -781,7 +781,7 @@ msgstr "Kan ikke gøre diplomati som der ikke er andre spillere."
 #: horizons/gui/ingamegui.py:462
 #, python-format
 msgid "Valid map names are in the following form: {expression}"
-msgstr "Gyldige kort navne er i følgende form: {udtryk}"
+msgstr "Gyldige kort navne er i følgende form: {expression}"
 
 #: horizons/gui/ingamegui.py:464
 #, python-format
@@ -846,7 +846,7 @@ msgstr "Spillere: {player_amount}/{player_limit}"
 #: horizons/gui/modules/multiplayermenu.py:192
 #, python-format
 msgid "Creator: {player}"
-msgstr "Creator: {afspiller}"
+msgstr "Creator: {player}"
 
 #: horizons/gui/modules/multiplayermenu.py:203
 msgid "This savegame is missing (click here)"
@@ -890,21 +890,21 @@ msgstr "Spillets versionen adskiller sig fra din version. Hver spiller i et mult
 #: horizons/gui/modules/singleplayermenu.py:111
 #, python-format
 msgid "Recommended number of players: {number}"
-msgstr "Anbefalet antal spillere: {nummer}"
+msgstr "Anbefalet antal spillere: {number}"
 
 #: horizons/gui/modules/singleplayermenu.py:156
 #: horizons/gui/modules/singleplayermenu.py:170
 #: horizons/gui/widgets/choose_next_scenario.py:44
 #, python-format
 msgid "Difficulty: {difficulty}"
-msgstr "Sværhedsgrad: {svært}"
+msgstr "Sværhedsgrad: {difficulty}"
 
 #: horizons/gui/modules/singleplayermenu.py:158
 #: horizons/gui/modules/singleplayermenu.py:172
 #: horizons/gui/widgets/choose_next_scenario.py:45
 #, python-format
 msgid "Author: {author}"
-msgstr "Forfatter: {forfatter}"
+msgstr "Forfatter: {author}"
 
 #: horizons/gui/modules/singleplayermenu.py:160
 #: horizons/gui/modules/singleplayermenu.py:174
@@ -984,7 +984,7 @@ msgstr "Bådebygger overblik"
 #: horizons/gui/tabs/boatbuildertab.py:101
 #, python-format
 msgid "{ship} (place in queue: {place})"
-msgstr "{Skib} (plads i køen: {sted})"
+msgstr "{ship} (plads i køen: {place})"
 
 #: horizons/gui/tabs/boatbuildertab.py:165
 msgid "Resources still needed:"
@@ -3361,7 +3361,7 @@ msgstr "Filnavnet må kun bestå af bogstaver, tal, mellemrum og _. -"
 #: horizons/savegamemanager.py:360
 #, python-format
 msgid "Error: don't know how to handle condition type {condition}"
-msgstr "Fejl: ved ikke hvordan de skal håndtere tilstanden typen {tilstand}"
+msgstr "Fejl: ved ikke hvordan de skal håndtere tilstanden typen {condition}"
 
 #: horizons/savegamemanager.py:410 horizons/savegamemanager.py:416
 #, python-format

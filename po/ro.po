@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2012-03-24 02:16+0100\n"
-"PO-Revision-Date: 2012-04-08 02:17+0200\n"
+"PO-Revision-Date: 2012-04-09 23:14+0200\n"
 "Last-Translator: Christopher Oelmueller <chris.oelmueller+uh@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: ro\n"
@@ -726,8 +726,8 @@ msgstr "Salvat la {time}"
 #, python-format
 msgid "Saved {amount} time"
 msgid_plural "Saved {amount} times"
-msgstr[0] "Salvat o dată"
-msgstr[1] "Salvat de două ori"
+msgstr[0] "Salvat o dată {amount}"
+msgstr[1] "Salvat de {amount} ori"
 msgstr[2] "Salvat de {amount} ori"
 
 #: horizons/gui/gui.py:625
@@ -1081,9 +1081,8 @@ msgid "Mining"
 msgstr "exploatare minieră"
 
 #: horizons/gui/tabs/buildtabs.py:149
-#, fuzzy
 msgid "Increment {increment}"
-msgstr "etapă de dezvoltare"
+msgstr "nivel {increment}"
 
 #. (text of widget: headline)
 #. (helptext of widget: trade)
@@ -3685,7 +3684,7 @@ msgstr "Rută comercială: deplasare la {location}"
 #: horizons/world/traderoute.py:286
 #, python-format
 msgid "Trade route: waiting at {position}"
-msgstr "Rută comercială: așteptare la {location}"
+msgstr "Rută comercială: așteptare la {position}"
 
 #: horizons/world/units/ship.py:184
 #, python-format

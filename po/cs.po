@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2012-03-24 02:16+0100\n"
-"PO-Revision-Date: 2012-03-29 11:50+0200\n"
+"PO-Revision-Date: 2012-03-29 11:52+0200\n"
 "Last-Translator: Christopher Oelmueller <chris.oelmueller+uh@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: cs\n"
@@ -2502,7 +2502,7 @@ msgstr "Automaticky vyložit loď:"
 #. (text of widget: autosave_interval_label)
 #: horizons/i18n/guitranslations.py:887
 msgid "Autosave interval in minutes:"
-msgstr "Automatické ukládání každých {number} minut:"
+msgstr "Automatické ukládání každých minut:"
 
 #. (text of widget: color_depth_label)
 #: horizons/i18n/guitranslations.py:889
