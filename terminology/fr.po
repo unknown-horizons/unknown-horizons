@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2012-03-31 21:42+0100\n"
-"PO-Revision-Date: 2012-04-02 18:02+0200\n"
+"PO-Revision-Date: 2012-04-02 18:19+0200\n"
 "Last-Translator: Sebastien (seblabel) <sebastiencharpentier@laposte.net>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: fr\n"
@@ -1054,18 +1054,8 @@ msgstr "offrir"
 msgid "animals"
 msgstr "animaux"
 
-#
-#
 # (poterminology) uh-tutorial/tutorial.pot (1)
-#
 # (poterminology) uh/unknownhorizons.pot (3)
-#
-#
-#
-#
-#
-#
-#
 msgid "Captain's log"
 msgstr "Journal de bord"
 

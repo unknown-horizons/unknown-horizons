@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2012-03-24 02:16+0100\n"
-"PO-Revision-Date: 2012-04-07 10:45+0200\n"
+"PO-Revision-Date: 2012-04-10 17:21+0200\n"
 "Last-Translator: Premislaus <premislaus1988@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: pl\n"
@@ -29,13 +29,13 @@ msgstr "Nowa osada została założona przez {player}."
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
 msgid "A new ship has been created."
-msgstr "Stworzono nowy statek."
+msgstr "Nowy statek został utworzony."
 
 # Messages
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
 msgid "A new world has been created."
-msgstr "Stworzono nowy świat."
+msgstr "Nowy świat został stworzony."
 
 # 81%
 #. This is a database entry: the name of an inhabitant increment (tier / level).
@@ -108,13 +108,16 @@ msgstr "Część twoich mieszkańców wyprowadziła się."
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
+#, fuzzy
 msgid "The route is now configured. Start it via the \"start route\" button in the \"configure route\" menu."
 msgstr ""
+"Szlak jest właśnie konfigurowany. Rozpocznij za pomocą przycisku \"rozpocznij "
+"szlak\" w menu \"konfiguracja szlaku\"."
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
 msgid "You can also drag roads."
-msgstr "Możesz także przesuwać drogi."
+msgstr "Możesz także przeciągać drogi."
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
@@ -125,8 +128,8 @@ msgstr "Nie możesz wyburzyć składu, twoja osada go potrzebuje."
 #: database files sql
 msgid "You have reached the current maximum increment. Your inhabitants will not upgrade further."
 msgstr ""
-"Osiągnąłeś maksymalny poziom rozwoju cywilizacyjnego. Twoi mieszkańcy nie "
-"będą awansować na wyższy poziom."
+"Osiągnąłeś już maksymalny poziom wzrostu miasta. Twoi mieszkańcy nie będą "
+"awansować na wyższy poziom."
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
@@ -312,6 +315,7 @@ msgstr "mąka"
 msgid "food"
 msgstr "jedzenie"
 
+# Nie wiem gdzie to w grze występuje, ale może znaczyć to; zbieranie się, gromadzenie się, lub zbieranie i gromadzenie czegoś.
 #. This is a database entry: the name of a resource.
 #: database files sql
 #, fuzzy
@@ -387,7 +391,7 @@ msgstr "świnie"
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "pigs for slaughter"
-msgstr "świnie na rzeź"
+msgstr "trzoda chlewna"
 
 # Resources
 #. This is a database entry: the name of a resource.
@@ -805,7 +809,6 @@ msgid "No diplomacy possible"
 msgstr "Dyplomacja jest nie możliwa"
 
 #: horizons/gui/ingamegui.py:279
-#, fuzzy
 msgid "Cannot do diplomacy as there are no other players."
 msgstr "Nie możesz prowadzić dyplomacji, ponieważ nie ma innych graczy."
 
