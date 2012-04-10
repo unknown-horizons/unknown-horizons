@@ -279,7 +279,7 @@ def test_ticket_1561(s, p):
 def test_ticket_1693(s, p):
 	settlement, island = settle(s)
 
-	residence = Build(BUILDINGS.RESIDENTIAL_CLASS, 30, 30, island, settlement=settlement)(p)
+	residence = Build(BUILDINGS.RESIDENTIAL, 30, 30, island, settlement=settlement)(p)
 	assert residence.level == 0
 
 	# Run and wait until the settler levels down
@@ -297,5 +297,5 @@ def test_ticket_1693(s, p):
 	assert ruin.buildable_upon
 
 	# Build another one on top of the ruin
-	residence2 = Build(BUILDINGS.RESIDENTIAL_CLASS, 30, 30, island, settlement=settlement)(p)
+	residence2 = Build(BUILDINGS.RESIDENTIAL, 30, 30, island, settlement=settlement)(p)
 	assert residence2
