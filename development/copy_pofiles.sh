@@ -61,8 +61,8 @@ TL_SOURCE='../translations'  #origin (TL repo pootle export)
 TL_DIR='po/'  #destination
 TL_REGEX='s,:,,g;s,.po,  ,g;s,alencia,,g;s,(../translations/uh/|messages|message|translations),\t,g;s/[.,]//g'
 TL_TUT_REGEX='s,:,,g;s,.po,,g;s,alencia,,g;s,(../translations/s-the-unknown/|../translations/uh-tutorial/|messages|message|translations),\t,g;s/[.,]//g'
-TUTORIAL_TEMPDIR='po/po_temp_tutorial/'
-THE_UNKNOWN_TEMPDIR='po/po_temp_The_Unknown/'
+TEMPDIR='po/po_temp/'
+SCENARIOS=( 'tutorial' 'The_Unknown' )
 #
 ###############################################################################
 
@@ -95,22 +95,19 @@ old_head=$(git rev-parse HEAD)
 git pull
 new_time=$(git diff-tree -s --pretty=%ct HEAD)
 new_head=$(git rev-parse HEAD)
-if [ $new_time -le $old_time ]; then # no new strings, abort script
+if [ $new_time -lt $old_time ]; then # no new strings, abort script
 	echo 'No changes in translation export repository. Exiting.'
 	exit 1
 fi
 
 # later, we want to only copy files that were changed
-changed_interface_files=$(git diff --name-only $old_head..$new_head uh/ )
-changed_tutorial_files=$(git diff --name-only $old_head..$new_head uh-tutorial/ )
-changed_scenario_files=$(git diff --name-only $old_head..$new_head s-*/ )
+changed_interface_files=$(git diff --name-only $old_head..$new_head uh/*.po )
 
-cd $uh
 echo '=> Copying these interface translations:'
 for file in $changed_interface_files; do
 	tl_check "$TL_SOURCE/$file" | perl -npe "$TL_REGEX"
 	if [ $? -eq 3 ]; then
-		cp $TL_SOURCE/$file $TL_DIR
+		cp $TL_SOURCE/$file $uh/$TL_DIR
 	fi
 	#else msgfmt found critical errors and will print them. Fix ASAP!
 done
@@ -120,51 +117,20 @@ echo '=> Interface translation files copied.'
 echo '   To compile them, run   setup.py build_i18n'
 echo
 echo '=> Now updating tutorial and custom scenarios.'
-echo '   Creating fresh templates:'
-sh ./development/create_scenario_pot.sh tutorial
-sh ./development/create_scenario_pot.sh The_Unknown
-if [ $? -eq 0 ]; then
-	echo '   Successfully wrote templates for pootle upload:'
-	echo '     po/tutorial.pot'
-	echo '     po/The_Unknown.pot'
-else
-	echo '!! Failed! Check whether the files exist and are proper yaml files.'
-	exit 1
-fi
 
-rm -rf $TUTORIAL_TEMPDIR $THE_UNKNOWN_TEMPDIR
-mkdir $TUTORIAL_TEMPDIR $THE_UNKNOWN_TEMPDIR
-
-echo '=> Refreshing these tutorial files:'
-for file in $changed_tutorial_files; do
-	cp $TL_SOURCE/$file $TUTORIAL_TEMPDIR
-done
-echo
-echo '=> Refreshing these custom scenario files:'
-for file in $changed_scenario_files; do
-	cp $TL_SOURCE/$file $THE_UNKNOWN_TEMPDIR
+for scenario in $SCENARIOS; do
+	cd $TL_SOURCE
+	changed_files=$(git diff --name-only $old_head..$new_head uh-$scenario/*.po )
+	echo "=> Refreshing these files for $scenario:"
+	for file in $changed_files; do
+		echo "        $file"
+		cp $file $uh/$TEMPDIR
+	done
+	cd $uh
+	sh ./development/create_scenario_pot.sh $scenario $TEMPDIR
+	rm -rf $TEMPDIR && mkdir $TEMPDIR
+	echo
 done
 
-# HUGE TODO #
-# HUGE TODO #
-# HUGE TODO #
-# HUGE TODO #
-# HUGE TODO #
-#
-# implement copying custom user-contributed scenarios and also compiling them
-# (right now affects The Unknown)
-# All such scenarios will be in an own folder s-scenario-name/ in $TL_SOURCE.
-# Our compile script requires the files to be in an own folder for each such
-# scenario and has to be invoked with that scenario's name and the correct
-# folder containing all translation files as parameters.
-#
-# HUGE TODO #
-# HUGE TODO #
-# HUGE TODO #
-# HUGE TODO #
-# HUGE TODO #
-
-sh ./development/create_scenario_pot.sh tutorial $TUTORIAL_TEMPDIR
-sh ./development/create_scenario_pot.sh The_Unknown $THE_UNKNOWN_TEMPDIR
 echo
 echo '=> Success.'
