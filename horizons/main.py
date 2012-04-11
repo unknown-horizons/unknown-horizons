@@ -519,8 +519,9 @@ def _load_last_quicksave(session, force_player_id=None):
 		else:
 			session.ingame_gui.on_escape() # close widgets that might be open
 	else:
-		print "Error: No quicksave found."
-		return False
+		if not save_files:
+			print "Error: No quicksave found."
+			return False
 	save = max(save_files)
 	load_game(savegame=save, force_player_id=force_player_id)
 	return True
