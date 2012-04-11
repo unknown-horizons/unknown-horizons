@@ -308,7 +308,7 @@ class ResourceOverviewBar(object):
 		scheduled_attr = "_gold_upate_scheduled"
 		if not hasattr(self, scheduled_attr):
 			setattr(self, scheduled_attr, True)
-			ExtScheduler().add_new_object(Callback(self._update_gold, True), self, run_in=0.02)
+			ExtScheduler().add_new_object(Callback(self._update_gold, force=True), self, run_in=0.2)
 			return
 		elif not force:
 			return # these calls we want to suppress, wait for scheduled call
