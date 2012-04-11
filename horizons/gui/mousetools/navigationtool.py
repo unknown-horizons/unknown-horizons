@@ -214,6 +214,8 @@ class NavigationTool(CursorTool):
 
 	def end(self):
 		super(NavigationTool, self).end()
+		if self._hover_instances_update_scheduled:
+			ExtScheduler().rem_all_classinst_calls(self)
 		self.helptext = None
 
 	def _schedule_hover_instance_update(self):

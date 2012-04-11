@@ -32,7 +32,6 @@ from horizons.gui.widgets.minimap import Minimap
 from horizons.command.uioptions import RouteConfigCommand
 from horizons.world.component.namedcomponent import NamedComponent
 from horizons.world.component.ambientsoundcomponent import AmbientSoundComponent
-from horizons.command.game import PauseCommand, UnPauseCommand
 
 import horizons.main
 
@@ -69,10 +68,8 @@ class RouteConfig(object):
 		self.instance.route.add_change_listener(self.on_route_change, no_duplicates=True, call_listener_now=True)
 
 		self.session.ingame_gui.on_switch_main_widget(self)
-		PauseCommand(suggestion=True).execute(self.session)
 
 	def hide(self):
-		UnPauseCommand(suggestion=True).execute(self.session)
 		self.minimap.disable()
 		self._gui.hide()
 

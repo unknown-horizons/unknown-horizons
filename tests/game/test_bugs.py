@@ -27,7 +27,9 @@ from horizons.world.component.collectingcompontent import CollectingComponent
 from horizons.world.production.producer import Producer, QueueProducer
 from horizons.constants import BUILDINGS, RES, PRODUCTIONLINES, GAME
 from horizons.util.worldobject import WorldObject
+from horizons.util.shapes.point import Point
 from horizons.world.production.utilisation import FieldUtilisation
+from horizons.world.building.settler import SettlerRuin
 
 from tests.game import settle, game_test, new_session, load_session
 from tests.game.test_buildings import test_brick_production_chain, test_tool_production_chain
@@ -270,3 +272,30 @@ def test_ticket_1561(s, p):
 	residence2 = Build(BUILDINGS.RESIDENTIAL_CLASS, 30, 32, island, settlement=settlement)(p)
 	s.run(ticks=1)
 	assert residence2.level == 0
+
+
+
+@game_test
+def test_ticket_1693(s, p):
+	settlement, island = settle(s)
+
+	residence = Build(BUILDINGS.RESIDENTIAL_CLASS, 30, 30, island, settlement=settlement)(p)
+	assert residence.level == 0
+
+	# Run and wait until the settler levels down
+	s.run(seconds=250)
+
+	# get settler ruin
+	tile = island.get_tile(Point(30, 30))
+	ruin = tile.object
+
+	assert ruin is not None
+	assert isinstance(ruin, SettlerRuin)
+
+	assert ruin.owner is not None
+	assert ruin.tearable
+	assert ruin.buildable_upon
+
+	# Build another one on top of the ruin
+	residence2 = Build(BUILDINGS.RESIDENTIAL_CLASS, 30, 30, island, settlement=settlement)(p)
+	assert residence2

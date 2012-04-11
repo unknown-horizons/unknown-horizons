@@ -7,8 +7,8 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2012-03-24 02:16+0100\n"
-"PO-Revision-Date: 2012-03-07 18:54+0200\n"
-"Last-Translator: Alexander <fcxSanya@gmail.com>\n"
+"PO-Revision-Date: 2012-04-09 23:08+0200\n"
+"Last-Translator: Christopher Oelmueller <chris.oelmueller+uh@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: ru\n"
 "MIME-Version: 1.0\n"
@@ -720,10 +720,10 @@ msgstr "Сохранено в {time}"
 #. N_ takes care of plural forms for different languages
 #: horizons/gui/gui.py:615
 #, python-format
-#, fuzzy, python-format
+#, python-format
 msgid "Saved {amount} time"
 msgid_plural "Saved {amount} times"
-msgstr[0] "Еще не сохранялось"
+msgstr[0] "Сохранено {amount} раз"
 msgstr[1] "Сохранено {amount} раз"
 msgstr[2] "Сохранено {amount} раза"
 
@@ -783,9 +783,8 @@ msgstr "[{key}] = {text}"
 #: horizons/gui/widgets/playerssettlements.py:101
 #: horizons/i18n/guitranslations.py:417 horizons/i18n/guitranslations.py:439
 #: horizons/i18n/guitranslations.py:459
-#, fuzzy
 msgid "Click to change the name of your settlement"
-msgstr "Нажмите, чтобы изменить название вашего поселения."
+msgstr "Нажмите, чтобы изменить название вашего поселения"
 
 #. e.g. when the pirate is disabled
 #. this dialog is pretty useless in this case
@@ -1077,9 +1076,8 @@ msgid "Mining"
 msgstr "Горные работы"
 
 #: horizons/gui/tabs/buildtabs.py:149
-#, fuzzy
 msgid "Increment {increment}"
-msgstr "Увеличение"
+msgstr "Увеличение {increment}"
 
 #. (text of widget: headline)
 #. (helptext of widget: trade)
@@ -1277,15 +1275,14 @@ msgstr "Всего"
 #, python-format
 #, python-format, fuzzy
 msgid "Ships of {player}"
-msgstr "корабли игрока {player}"
+msgstr "Корабли игрока {player}"
 
 # 97%
 #. (helptext of widget: name)
 #: horizons/gui/widgets/playersships.py:83
 #: horizons/i18n/guitranslations.py:499 horizons/i18n/guitranslations.py:510
-#, fuzzy
 msgid "Click to change the name of this ship"
-msgstr "Кликните для изменение названия этого корабля."
+msgstr "Кликните для изменение названия этого корабля"
 
 #. i18n There are no weapons equipped at the moment.
 #: horizons/gui/widgets/playersships.py:99
@@ -2256,7 +2253,7 @@ msgstr "Быстрое сохранение"
 #. (text of widget: lbl_REMOVE_SELECTED)
 #: horizons/i18n/guitranslations.py:744
 msgid "Remove selected units / buildings"
-msgstr "Удалить выделенные единицы/сооружения."
+msgstr "Удалить выделенные единицы/сооружения"
 
 #. (text of widget: lbl_RIGHT)
 #: horizons/i18n/guitranslations.py:746
@@ -2271,12 +2268,12 @@ msgstr "Вкл. режим строительства дорог"
 #. (text of widget: lbl_ROTATE_LEFT)
 #: horizons/i18n/guitranslations.py:750
 msgid "Rotate building or map counterclockwise"
-msgstr "Повернуть здание или карту против часовой стрелки."
+msgstr "Повернуть здание или карту против часовой стрелки"
 
 #. (text of widget: lbl_ROTATE_RIGHT)
 #: horizons/i18n/guitranslations.py:752
 msgid "Rotate building or map clockwise"
-msgstr "Повернуть здание или карту по часовой стрелке."
+msgstr "Повернуть здание или карту по часовой стрелке"
 
 #. (text of widget: lbl_SCREENSHOT)
 #: horizons/i18n/guitranslations.py:754
@@ -2291,7 +2288,7 @@ msgstr "Показать список поселений"
 #. (text of widget: lbl_SHIFT)
 #: horizons/i18n/guitranslations.py:758
 msgid "Hold to place multiple buildings"
-msgstr "Удерживайте для возведения нескольких строений."
+msgstr "Удерживайте для возведения нескольких строений"
 
 #. (text of widget: lbl_SHIPS_OVERVIEW)
 #: horizons/i18n/guitranslations.py:760
@@ -2474,9 +2471,8 @@ msgstr "Войти в игру"
 # 90%
 #. (text of widget: load_game_lbl)
 #: horizons/i18n/guitranslations.py:868
-#, fuzzy
 msgid "Load game:"
-msgstr "Загрузить игру"
+msgstr "Загрузить игру:"
 
 #. (text of widget: refr_gamelist_lbl)
 #: horizons/i18n/guitranslations.py:870
@@ -2511,7 +2507,7 @@ msgstr "Обновить список активных игр"
 #. (text of widget: auto_unload_label)
 #: horizons/i18n/guitranslations.py:885
 msgid "Auto-unload ship:"
-msgstr "Авторазгрузка судна."
+msgstr "Авторазгрузка судна:"
 
 #. (text of widget: autosave_interval_label)
 #: horizons/i18n/guitranslations.py:887
@@ -2653,7 +2649,7 @@ msgstr ""
 #. (helptext of widget: edge_scrolling_label)
 #: horizons/i18n/guitranslations.py:947
 msgid "Whether to move the viewport when the mouse pointer is close to map edges"
-msgstr "Прокрутка экрана при приближении курсора к краю карты."
+msgstr "Прокрутка экрана при приближении курсора к краю карты"
 
 #. (helptext of widget: fps_label)
 #: horizons/i18n/guitranslations.py:949
