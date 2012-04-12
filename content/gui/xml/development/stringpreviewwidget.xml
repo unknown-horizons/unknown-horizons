@@ -4,7 +4,7 @@
 	<Label name="headline" text="String Previewer Tool for Scenario files" position="15,15" />
 
 	<ScrollArea min_size="300,300" position="15,35">
-		<ListBox name="scenario_list" />
+		<ListBox name="scenario_list" is_focusable="0" />
 	</ScrollArea>
 
 	<VBox position="315,45" min_size="250,300" max_size="250,300">

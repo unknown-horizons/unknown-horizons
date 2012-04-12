@@ -5,7 +5,7 @@
 	</VBox>
 	<VBox>
 		<ScrollArea min_size="40,75" >
-			<ListBox name="ai_players" />
+			<ListBox name="ai_players" is_focusable="0" />
 		</ScrollArea>
 	</VBox>
 </HBox>

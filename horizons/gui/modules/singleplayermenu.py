@@ -121,9 +121,7 @@ class SingleplayerMenu(object):
 				_update_infos()
 			# update preview whenever something is selected in the list
 			self.active_right_side.findChild(name="maplist").mapEvents({
-			  'maplist/action'              : _update_infos,
-			  'maplist/mouseWheelMovedUp'   : _update_infos,
-			  'maplist/mouseWheelMovedDown' : _update_infos
+			  'maplist/action'              : _update_infos
 			})
 			self.active_right_side.findChild(name="maplist").capture(_update_infos, event_name="keyPressed")
 			show_ai_options = True
@@ -311,9 +309,7 @@ class SingleplayerMenu(object):
 
 
 				self.active_right_side.findChild(name="maplist").mapEvents({
-					'maplist/action': _update_infos,
-					'maplist/mouseWheelMovedUp'   : _update_infos,
-					'maplist/mouseWheelMovedDown' : _update_infos
+					'maplist/action': _update_infos
 				})
 				self.active_right_side.findChild(name="maplist").capture(_update_infos, event_name="keyPressed")
 				_update_infos()

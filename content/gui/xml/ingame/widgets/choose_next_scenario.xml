@@ -10,7 +10,7 @@
 	       text="Available Scenarios" />
 	<Icon image="content/gui/images/background/hr.png" />
 	<ScrollArea max_size="300,200" horizontal_scrollbar="0">
-		<ListBox name="scenario_list" />
+		<ListBox name="scenario_list" is_focusable="0" />
 	</ScrollArea>
 
 	<Spacer />

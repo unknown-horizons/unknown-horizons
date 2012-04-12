@@ -355,9 +355,7 @@ class MultiplayerMenu(object):
 			})
 			_update_infos()
 		self.current.findChild(name="maplist").mapEvents({
-		  'maplist/action': _update_infos,
-		  'maplist/mouseWheelMovedUp'   : _update_infos,
-		  'maplist/mouseWheelMovedDown' : _update_infos
+		  'maplist/action': _update_infos
 		})
 
 		gamename_textfield = self.current.findChild(name="gamename")
