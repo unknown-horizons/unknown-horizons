@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2012-03-24 02:16+0100\n"
-"PO-Revision-Date: 2012-04-12 23:41+0200\n"
+"PO-Revision-Date: 2012-04-12 23:48+0200\n"
 "Last-Translator: Premislaus <premislaus1988@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: pl\n"
@@ -2744,7 +2744,7 @@ msgstr "Twoje zapisane gry:"
 #. (helptext of widget: cancelButton)
 #: horizons/i18n/guitranslations.py:972
 msgid "Cancel"
-msgstr ""
+msgstr "Anuluj"
 
 #. (helptext of widget: deleteButton)
 #: horizons/i18n/guitranslations.py:974
@@ -3291,29 +3291,28 @@ msgstr "Namiot"
 #. name_1 of buildings:tent
 #: horizons/i18n/objecttranslations.py:357
 msgid "Hut"
-msgstr ""
+msgstr "Chałupa"
 
 # 80%
 #. name_2 of buildings:tent
 #: horizons/i18n/objecttranslations.py:359
-#, fuzzy
 msgid "House"
-msgstr "Mysz"
+msgstr "Dom"
 
 #. name_3 of buildings:tent
 #: horizons/i18n/objecttranslations.py:361
 msgid "Stone house"
-msgstr ""
+msgstr "Kamienny dom"
 
 #. name_4 of buildings:tent
 #: horizons/i18n/objecttranslations.py:363
 msgid "Estate"
-msgstr ""
+msgstr "Posiadłość"
 
 #. name_5 of buildings:tent
 #: horizons/i18n/objecttranslations.py:365
 msgid "Manor"
-msgstr ""
+msgstr "Dwór"
 
 #. tooltip_text of buildings:tent
 #: horizons/i18n/objecttranslations.py:367
@@ -3330,10 +3329,11 @@ msgstr "Pole tytoniu"
 msgid "Produces tobacco. Needs a farm."
 msgstr "Produkcja tytoniu. Wymagana farma."
 
+# http://pl.wikipedia.org/wiki/Trafika
 #. name of buildings:tobacconist
 #: horizons/i18n/objecttranslations.py:379
 msgid "Tobacconist"
-msgstr ""
+msgstr "Trafika"
 
 #. tooltip_text of buildings:tobacconist
 #: horizons/i18n/objecttranslations.py:381
@@ -3384,7 +3384,7 @@ msgstr "Zapewnia edukację."
 #. name of buildings:vineyard
 #: horizons/i18n/objecttranslations.py:414
 msgid "Vineyard"
-msgstr ""
+msgstr "Winiarnia"
 
 #. tooltip_text of buildings:vineyard
 #: horizons/i18n/objecttranslations.py:416
@@ -3421,7 +3421,7 @@ msgstr "Wytwarza ubrania z wełny owczej."
 #. name of buildings:windmill
 #: horizons/i18n/objecttranslations.py:440
 msgid "Windmill"
-msgstr ""
+msgstr "Wiatrak"
 
 #. tooltip_text of buildings:windmill
 #: horizons/i18n/objecttranslations.py:442
@@ -3613,7 +3613,7 @@ msgstr "{building}: {description}"
 
 #: horizons/world/building/buildable.py:36
 msgid "Buildings must be built on islands."
-msgstr ""
+msgstr "Budynki muszą być stawiane na wyspie."
 
 #: horizons/world/building/buildable.py:37
 msgid "The ground is not suitable for this building."
