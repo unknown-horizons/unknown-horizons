@@ -5,7 +5,7 @@
 	<Label name="headline" text="Random map archive" position="15,15" />
 
 	<ScrollArea min_size="270,130" max_size="270,130" position="15,40">
-		<ListBox name="map_list" />
+		<ListBox name="map_list" is_focusable="0" />
 	</ScrollArea>
 
 	<VBox position="315,160" min_size="250,190" max_size="250,190">
