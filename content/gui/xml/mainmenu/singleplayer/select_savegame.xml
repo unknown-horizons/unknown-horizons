@@ -11,7 +11,7 @@
 			max_size="335,20" min_size="335,20" />
 
 		<ScrollArea max_size="300,400" horizontal_scrollbar="0" >
-			<ListBox name="savegamelist" />
+			<ListBox name="savegamelist" is_focusable="0" />
 		</ScrollArea>
 	<Spacer fixed_size="20" />
 		<HBox max_size="270,40" min_size="270,40" size="270,40" name="gamename_box"> <!-- keep sync with equivalent entry in multiplayer_creategame.xml -->
