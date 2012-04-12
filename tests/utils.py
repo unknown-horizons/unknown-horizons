@@ -88,10 +88,10 @@ class ReRunInfoPlugin(Plugin):
 	def configure(self, options, conf):
 		pass
 
- 	def formatError(self, test, err):
+	def formatError(self, test, err):
 		_, module, call = test.address()
 
-		output = ['run_tests.py', u'%s:%s' % (module, call)]
+		output = ['python', 'run_tests.py', u'%s:%s' % (module, call)]
 
 		# add necessary flags
 		if 'tests.gui' in module:
