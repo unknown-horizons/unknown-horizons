@@ -140,7 +140,7 @@ class TradeTab(TabInterface):
 		# need to be idempotent, show/hide calls it in arbitrary order
 		if self.instance:
 			self.instance.discard_change_listener(self._schedule_refresh)
-			self.instance.get_component(StorageComponent).discard_change_listener(self._schedule_refresh)
+			self.instance.get_component(StorageComponent).inventory.discard_change_listener(self._schedule_refresh)
 		if self.partner:
 			self.partner.get_component(StorageComponent).inventory.discard_change_listener(self._schedule_refresh)
 			self.partner.settlement.get_component(TradePostComponent).discard_change_listener(self._schedule_refresh)
@@ -149,7 +149,7 @@ class TradeTab(TabInterface):
 		# need to be idempotent, show/hide calls it in arbitrary order
 		if self.instance:
 			self.instance.add_change_listener(self._schedule_refresh, no_duplicates=True)
-			self.instance.get_component(StorageComponent).add_change_listener(self._schedule_refresh, no_duplicates=True)
+			self.instance.get_component(StorageComponent).inventory.add_change_listener(self._schedule_refresh, no_duplicates=True)
 		if self.partner:
 			self.partner.get_component(StorageComponent).inventory.add_change_listener(self._schedule_refresh, no_duplicates=True)
 			self.partner.settlement.get_component(TradePostComponent).add_change_listener(self._schedule_refresh, no_duplicates=True)
