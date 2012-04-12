@@ -31,9 +31,10 @@ from horizons.world.component.namedcomponent import NamedComponent
 from horizons.world.component.selectablecomponent import SelectableComponent
 
 class TradeTab(TabInterface):
+	"""Ship to tradepost trade tab"""
 	log = logging.getLogger("gui.tradetab")
 
-	scheduled_update_delay = 0.6
+	scheduled_update_delay = 0.3
 
 	# objects within this radius can be traded with, only used if the
 	# main instance does not have a radius attribute
@@ -46,19 +47,19 @@ class TradeTab(TabInterface):
 	  10: 'size_3',
 	  20: 'size_4',
 	  50: 'size_5',
-	  }
+	}
 
 	images = {
 	  'box_highlighted': 'content/gui/icons/ship/smallbutton_a.png',
 	  'box': 'content/gui/icons/ship/smallbutton.png',
-	  }
+	}
 
 	def __init__(self, instance):
 		"""
 		@param instance: ship instance used for trading
 		"""
 		super(TradeTab,self).__init__(instance=instance, widget='tradetab.xml',
-				icon_path='content/gui/icons/tabwidget/warehouse/buysell_%s.png')
+		                              icon_path='content/gui/icons/tabwidget/warehouse/buysell_%s.png')
 		events = {}
 		for k, v in self.exchange_size_buttons.iteritems():
 			events[v] = Callback(self.set_exchange, k)
@@ -96,17 +97,17 @@ class TradeTab(TabInterface):
 				self.widget.findChild(name='domestic').hide()
 				selling_inventory = self.widget.findChild(name='selling_inventory')
 				selling_inventory.init(self.instance.session.db,
-						self.partner.get_component(StorageComponent).inventory,
-						self.partner.settlement.get_component(TradePostComponent).sell_list,
-						selling=True)
+				                       self.partner.get_component(StorageComponent).inventory,
+				                       self.partner.settlement.get_component(TradePostComponent).sell_list,
+				                       selling=True)
 				for button in self.get_widgets_by_class(selling_inventory, ImageFillStatusButton):
 					button.button.capture(Callback(self.transfer, button.res_id, self.partner.settlement, True))
 
 				buying_inventory = self.widget.findChild(name='buying_inventory')
 				buying_inventory.init(self.instance.session.db,
-						self.partner.get_component(StorageComponent).inventory,
-						self.partner.settlement.get_component(TradePostComponent).buy_list,
-						selling=False)
+				                      self.partner.get_component(StorageComponent).inventory,
+				                      self.partner.settlement.get_component(TradePostComponent).buy_list,
+				                      selling=False)
 				for button in self.get_widgets_by_class(buying_inventory, ImageFillStatusButton):
 					button.button.capture(Callback(self.transfer, button.res_id, self.partner.settlement, False))
 				self.widget.findChild(name='international').show()
@@ -131,9 +132,15 @@ class TradeTab(TabInterface):
 			#self.instance.get_component(SelectableComponent).show_menu()
 
 	def __remove_changelisteners(self):
+		# never redraw on clicks immediately because of
+		# http://fife.trac.cvsdude.com/engine/ticket/387
+		# This way, there is a chance of clicks being noticed by pychan.
+		# The cost is to delay all updates, which in this case is 0.3 sec, therefore deemed bearable.
+
 		# need to be idempotent, show/hide calls it in arbitrary order
 		if self.instance:
 			self.instance.discard_change_listener(self._schedule_refresh)
+			self.instance.get_component(StorageComponent).discard_change_listener(self._schedule_refresh)
 		if self.partner:
 			self.partner.get_component(StorageComponent).inventory.discard_change_listener(self._schedule_refresh)
 			self.partner.settlement.get_component(TradePostComponent).discard_change_listener(self._schedule_refresh)
@@ -142,6 +149,7 @@ class TradeTab(TabInterface):
 		# need to be idempotent, show/hide calls it in arbitrary order
 		if self.instance:
 			self.instance.add_change_listener(self._schedule_refresh, no_duplicates=True)
+			self.instance.get_component(StorageComponent).add_change_listener(self._schedule_refresh, no_duplicates=True)
 		if self.partner:
 			self.partner.get_component(StorageComponent).inventory.add_change_listener(self._schedule_refresh, no_duplicates=True)
 			self.partner.settlement.get_component(TradePostComponent).add_change_listener(self._schedule_refresh, no_duplicates=True)
@@ -177,31 +185,30 @@ class TradeTab(TabInterface):
 			is_own = settlement.owner is self.instance.owner
 			if selling and not is_own: # ship sells resources to settlement
 				self.log.debug('InternationalTrade: %s/%s is selling %d of res %d to %s/%s',
-					self.instance.get_component(NamedComponent).name, self.instance.owner.name,
-					self.exchange, res_id,
-					settlement.get_component(NamedComponent).name, settlement.owner.name)
+				               self.instance.get_component(NamedComponent).name, self.instance.owner.name,
+				               self.exchange, res_id,
+				               settlement.get_component(NamedComponent).name, settlement.owner.name)
 				SellResource(settlement.get_component(TradePostComponent), self.instance,
-					res_id, self.exchange).execute(self.instance.session)
+				             res_id, self.exchange).execute(self.instance.session)
 			elif selling and is_own: # transfer from ship to settlement
 				self.log.debug('Trade: Transferring %s of res %s from %s/%s to %s/%s',
-					self.exchange, res_id,
-					settlement.get_component(NamedComponent).name, settlement.owner.name,
-					self.instance.get_component(NamedComponent).name, self.instance.owner.name)
+				               self.exchange, res_id,
+				               settlement.get_component(NamedComponent).name, settlement.owner.name,
+				               self.instance.get_component(NamedComponent).name, self.instance.owner.name)
 				TransferResource(self.exchange, res_id, settlement,
-					self.instance).execute(self.instance.session)
+				                 self.instance).execute(self.instance.session)
 			elif not selling and not is_own: # ship buys resources from settlement
 				self.log.debug('InternationalTrade: %s/%s is buying %d of res %d from %s/%s', \
-					self.instance.get_component(NamedComponent).name, self.instance.owner.name, self.exchange, res_id, settlement.get_component(NamedComponent).name, settlement.owner.name)
+				               self.instance.get_component(NamedComponent).name, self.instance.owner.name, self.exchange, res_id, settlement.get_component(NamedComponent).name, settlement.owner.name)
 				BuyResource(settlement.get_component(TradePostComponent), self.instance, res_id, self.exchange).execute(self.instance.session)
 			elif not selling and is_own: # transfer from settlement to ship
 				self.log.debug('Trade: Transferring %s of res %s from %s/%s to %s/%s',
-					self.exchange, res_id,
-					self.instance.get_component(NamedComponent).name, self.instance.owner.name,
-					settlement.get_component(NamedComponent).name, settlement.owner.name)
+				               self.exchange, res_id,
+				               self.instance.get_component(NamedComponent).name, self.instance.owner.name,
+				               settlement.get_component(NamedComponent).name, settlement.owner.name)
 				TransferResource(self.exchange, res_id, self.instance,
-					settlement).execute(self.instance.session)
-			# update gui
-			self.draw_widget()
+				                 settlement).execute(self.instance.session)
+			# let gui update be handled by changelisteners
 
 	def get_widgets_by_class(self, parent_widget, widget_class):
 		"""Gets all widget of a certain widget class from the tab. (e.g. pychan.widgets.Label for all labels)"""

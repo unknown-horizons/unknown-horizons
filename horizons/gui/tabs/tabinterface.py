@@ -93,6 +93,7 @@ class TabInterface(object):
 
 		if self._refresh_scheduled:
 			ExtScheduler().rem_all_classinst_calls(self)
+			self._refresh_scheduled = False
 
 	def is_visible(self):
 		self.ensure_loaded()
@@ -109,6 +110,8 @@ class TabInterface(object):
 		if not self._refresh_scheduled:
 			self._refresh_scheduled = True
 			def unset_flag():
+				# set the flag here and not in refresh() since we can't be sure whether
+				# refresh() of this class will be reached or a subclass will not call super()
 				self._refresh_scheduled = False
 			ExtScheduler().add_new_object(Callback.ChainedCallbacks(unset_flag, self.refresh),
 			                              self, run_in=self.__class__.scheduled_update_delay)
