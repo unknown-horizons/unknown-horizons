@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2012-03-24 02:16+0100\n"
-"PO-Revision-Date: 2012-04-10 20:00+0200\n"
+"PO-Revision-Date: 2012-04-12 23:41+0200\n"
 "Last-Translator: Premislaus <premislaus1988@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: pl\n"
@@ -1503,7 +1503,7 @@ msgstr "Zmień nazwę"
 #. (text of widget: old_name_label)
 #: horizons/i18n/guitranslations.py:110
 msgid "Old name:"
-msgstr ""
+msgstr "Stara nazwa:"
 
 #. (helptext of widget: okButton)
 #: horizons/i18n/guitranslations.py:112
@@ -1732,27 +1732,24 @@ msgstr "5 mieszkańców"
 # 90%
 #. (text of widget: resident_6)
 #: horizons/i18n/guitranslations.py:242
-#, fuzzy
 msgid "6 residents"
-msgstr "2 mieszkańców"
+msgstr "6 mieszkańców"
 
 # 88%
 # 81%
 # 90%
 #. (text of widget: resident_7)
 #: horizons/i18n/guitranslations.py:244
-#, fuzzy
 msgid "7 residents"
-msgstr "2 mieszkańców"
+msgstr "7 mieszkańców"
 
 # 88%
 # 81%
 # 90%
 #. (text of widget: resident_8)
 #: horizons/i18n/guitranslations.py:246
-#, fuzzy
 msgid "8 residents"
-msgstr "2 mieszkańców"
+msgstr "8 mieszkańców"
 
 # 88%
 #. (text of widget: residents)
@@ -1771,7 +1768,7 @@ msgstr "Podatki:"
 #. (text of widget: upgrades_lbl)
 #: horizons/i18n/guitranslations.py:252
 msgid "Upgrade not possible:"
-msgstr "Awans nie możliwy:"
+msgstr "Awans nie jest możliwy:"
 
 #. (helptext of widget: allow_upgrades)
 #: horizons/i18n/guitranslations.py:254
@@ -2111,7 +2108,7 @@ msgstr "Wybierz ten scenariusz"
 #. (text of widget: lbl_route_activity)
 #: horizons/i18n/guitranslations.py:634
 msgid "Route activity:"
-msgstr ""
+msgstr "Aktywność szlaku:"
 
 #. (text of widget: lbl_wait_at_load) Trade route setting: Whether to wait until all goods could be loaded.
 #: horizons/i18n/guitranslations.py:636
@@ -2546,7 +2543,7 @@ msgstr "Dołącz do wybranej gry"
 #. (helptext of widget: load)
 #: horizons/i18n/guitranslations.py:878
 msgid "Load a saved game"
-msgstr ""
+msgstr "Wczytaj zapisaną grę"
 
 #. (helptext of widget: refresh)
 #: horizons/i18n/guitranslations.py:880
@@ -2586,7 +2583,7 @@ msgstr "Głośność efektów:"
 #. (text of widget: fps_label)
 #: horizons/i18n/guitranslations.py:897
 msgid "Frame rate limit:"
-msgstr ""
+msgstr "Limit liczby klatek na sekundę:"
 
 #. (text of widget: headline_language)
 #: horizons/i18n/guitranslations.py:901
