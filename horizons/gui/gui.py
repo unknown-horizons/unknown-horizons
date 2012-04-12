@@ -332,9 +332,7 @@ class Gui(SingleplayerMenu, MultiplayerMenu):
 		                               tmp_selected_changed)
 		cb() # Refresh data on start
 		self.current.findChild(name="savegamelist").mapEvents({
-		    'savegamelist/action'              : cb,
-		    'savegamelist/mouseWheelMovedUp'   : cb,
-		    'savegamelist/mouseWheelMovedDown' : cb
+		    'savegamelist/action'              : cb
 		})
 		self.current.findChild(name="savegamelist").capture(cb, event_name="keyPressed")
 
