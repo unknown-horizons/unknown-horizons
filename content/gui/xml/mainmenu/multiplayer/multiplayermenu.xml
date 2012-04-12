@@ -51,7 +51,7 @@
 		</HBox>
 
 		<ScrollArea max_size="290,250"  min_size="290,200"  horizontal_scrollbar="0"  name="game_list_area">
-			<ListBox name="gamelist"  min_size="290,330" />
+			<ListBox name="gamelist"  min_size="290,330" is_focusable="0" />
 		</ScrollArea>
 
 		<VBox name="game_info">

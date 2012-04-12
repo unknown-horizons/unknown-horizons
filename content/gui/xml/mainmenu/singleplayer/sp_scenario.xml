@@ -5,7 +5,7 @@
 	
 		<Label text="Choose a map to play:"  name="choose_map_lbl" wrap_text="1" max_size="170,40"  min_size="140,20"/>
 		<ScrollArea max_size="170,200"  min_size="140,200"  horizontal_scrollbar="0"  name="map_list_area">
-			<ListBox name="maplist" />
+			<ListBox name="maplist" is_focusable="0" />
 		</ScrollArea>
 	</VBox>
 	<Spacer />

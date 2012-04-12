@@ -47,9 +47,7 @@ class ScenarioChooser(object):
 			       ]
 			self._gui.findChild(name="scenario_details").text = u"\n".join(text)
 		self._gui.findChild(name="scenario_list").mapEvents({
-		  'scenario_list/action': _update_infos,
-		  'scenario_list/mouseWheelMovedUp'   : _update_infos,
-		  'scenario_list/mouseWheelMovedDown' : _update_infos
+		  'scenario_list/action': _update_infos
 		})
 
 
