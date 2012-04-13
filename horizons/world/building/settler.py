@@ -103,12 +103,6 @@ class Settler(BuildableRect, BuildingResourceHandler, BasicBuilding):
 		self.session.message_bus.broadcast(SettlerUpdate(self, self.level))
 		self.run(remaining_ticks)
 
-	def load_production(self, db, worldid):
-		if db.get_production_line_id(worldid) == self.session.db.get_settler_upgrade_material_prodline(self.level + 1):
-			return SingleUseProduction.load(db, worldid)
-		else:
-			return super(Settler, self).load_production(db, worldid)
-
 	def _load_upgrade_data(self, db):
 		"""Load the upgrade production and relevant stored resources"""
 		upgrade_material_production = self._get_upgrade_production()

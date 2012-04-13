@@ -173,9 +173,6 @@ class Producer(Component):
 		for production in self.get_productions():
 			production.save(db, self.instance.worldid)
 
-	def load_production(self, db, worldid):
-		return self.production_class.load(db, worldid)
-
 	# INTERFACE
 	def add_production(self, production):
 		assert isinstance(production, Production)
@@ -466,10 +463,6 @@ class QueueProducer(Producer):
 
 			self.start_next_production()
 
-	def load_production(self, db, worldid):
-		prod = self.production_class.load(db, worldid)
-		prod.add_production_finished_listener(self.on_queue_element_finished)
-		return prod
 
 	def check_next_production_startable(self):
 		# See if we can start the next production,  this only works if the current
