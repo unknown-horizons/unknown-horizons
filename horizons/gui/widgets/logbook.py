@@ -178,9 +178,9 @@ class LogBook(PickBeltWidget):
 		if widget and widget[0]: # allow empty Labels
 			widget_type = unicode(widget[0])
 		if isinstance(widget, basestring):
-			add = Label(text=unicode(widget), wrap_text=True, max_size=(340,508))
+			add = Label(text=unicode(widget), wrap_text=True, min_size=(335, 0), max_size=(335,508))
 		elif widget_type == u'Label':
-			add = Label(text=unicode(widget[1]), wrap_text=True, max_size=(340,508))
+			add = Label(text=unicode(widget[1]), wrap_text=True, min_size=(335, 0), max_size=(335,508))
 		elif widget_type == u'Image':
 			add = Icon(image=str(widget[1]))
 		elif widget_type == u'Gallery':

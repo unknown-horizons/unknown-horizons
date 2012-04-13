@@ -21,6 +21,7 @@
 
 from fife import fife
 import copy
+import itertools
 
 import horizons.main
 
@@ -221,22 +222,30 @@ class SelectableBuildingComponent(SelectableComponent):
 		Limited functionality, only use on real buildings of a settlement."""
 		if not buildings:
 			return [] # that is not many
-		settlement = buildings[0].settlement
-
-		for building in buildings:
-			building.get_component(SelectableComponent).set_selection_outline()
-
-		coords = set( coord for \
-		              building in buildings for \
-		              coord in building.position.get_radius_coordinates(building.radius, include_self=True) )
 
 		selected_tiles = []
-		for coord in coords:
-			tile = settlement.ground_map.get(coord)
-			if tile:
-				if ( 'constructible' in tile.classes or 'coastline' in tile.classes ):
-					cls._add_selected_tile(tile, renderer)
-					selected_tiles.append(tile)
+
+		# group buildings per settlement and treat them separately
+		# they cannot share tiles, and we can then just access the settlements ground map
+		get_settlement = lambda b : b.settlement
+		buildings_sorted = sorted(buildings, key=get_settlement)
+		for settlement, buildings in itertools.groupby( buildings_sorted, get_settlement ):
+			# resolve operator
+			buildings = list(buildings)
+
+			for building in buildings:
+				building.get_component(SelectableComponent).set_selection_outline()
+
+			coords = set( coord for \
+				            building in buildings for \
+				            coord in building.position.get_radius_coordinates(building.radius, include_self=True) )
+
+			for coord in coords:
+				tile = settlement.ground_map.get(coord)
+				if tile:
+					if ( 'constructible' in tile.classes or 'coastline' in tile.classes ):
+						cls._add_selected_tile(tile, renderer)
+						selected_tiles.append(tile)
 		return selected_tiles
 
 	@classmethod
@@ -265,7 +274,7 @@ class SelectableBuildingComponent(SelectableComponent):
 				cls._fake_tile_obj = horizons.main.fife.engine.getModel().createObject('fake_tile_obj', 'ground')
 				fife.ObjectVisual.create(cls._fake_tile_obj)
 
-				img_path = 'content/gfx/base/fake_water.png'
+				img_path = 'content/gfx/fake_water.png'
 				img = horizons.main.fife.imagemanager.load(img_path)
 				for rotation in [45, 135, 225, 315]:
 					cls._fake_tile_obj.get2dGfxVisual().addStaticImage(rotation, img.getHandle())

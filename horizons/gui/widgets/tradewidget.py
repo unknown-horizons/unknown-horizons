@@ -28,6 +28,7 @@ from horizons.world.component.storagecomponent import StorageComponent
 from horizons.world.component.tradepostcomponent import TradePostComponent
 from horizons.world.component.namedcomponent import NamedComponent
 from horizons.world.component.selectablecomponent import SelectableComponent
+from horizons.extscheduler import ExtScheduler
 
 class TradeWidget(object):
 	log = logging.getLogger("gui.tradewidget")
@@ -65,6 +66,20 @@ class TradeWidget(object):
 		self.set_exchange(50, initial=True)
 		if hasattr(self.instance, 'radius'):
 			self.radius = self.instance.radius
+		self._refresh_scheduled = False
+
+
+	def _schedule_refresh(self):
+		# NOTE: this has been copied from overviewtab solely for 2012.1 as last minute fix.
+		# Don't let this be published anywhere else except for in 2012.1.
+		"""Schedule a refresh soon, dropping all other refresh request, that appear until then.
+		This saves a lot of CPU time, if you have a huge island, or play on high speed."""
+		if not self._refresh_scheduled:
+			self._refresh_scheduled = True
+			def unset_flag():
+				self._refresh_scheduled = False
+			ExtScheduler().add_new_object(Callback.ChainedCallbacks(unset_flag, self.draw_widget),
+			                              self, run_in=0.3)
 
 	def draw_widget(self):
 		self.widget.findChild(name='ship_name').text = unicode(self.instance.get_component(NamedComponent).name)
@@ -104,19 +119,35 @@ class TradeWidget(object):
 
 	def __remove_changelisteners(self):
 		# need to be idempotent, show/hide calls it in arbitrary order
-		self.instance.discard_change_listener(self.draw_widget)
-		self.partner.get_component(StorageComponent).inventory.discard_change_listener(self.draw_widget)
-		self.partner.settlement.get_component(TradePostComponent).discard_change_listener(self.draw_widget)
+
+
+		self.instance.discard_change_listener(self._schedule_refresh)
+		self.instance.get_component(StorageComponent).inventory.discard_change_listener(self._schedule_refresh)
+
+		self.partner.get_component(StorageComponent).inventory.discard_change_listener(self._schedule_refresh)
+		self.partner.settlement.get_component(TradePostComponent).discard_change_listener(self._schedule_refresh)
 
 	def __add_changelisteners(self):
 		# need to be idempotent, show/hide calls it in arbitrary order
-		self.instance.add_change_listener(self.draw_widget, no_duplicates=True)
-		self.partner.get_component(StorageComponent).inventory.add_change_listener(self.draw_widget, no_duplicates=True)
-		self.partner.settlement.get_component(TradePostComponent).add_change_listener(self.draw_widget, no_duplicates=True)
+
+		# never redraw on clicks immediately because of
+		# http://fife.trac.cvsdude.com/engine/ticket/387
+		# This way, there is a chance of clicks being noticed by pychan.
+		# The cost is to delay all updates, which in this case is 0.3 sec, therefore deemed bearable.
+
+		self.instance.add_change_listener(self._schedule_refresh, no_duplicates=True)
+		self.instance.get_component(StorageComponent).inventory.add_change_listener(self._schedule_refresh, no_duplicates=True)
+
+		self.partner.get_component(StorageComponent).inventory.add_change_listener(self._schedule_refresh, no_duplicates=True)
+		self.partner.settlement.get_component(TradePostComponent).add_change_listener(self._schedule_refresh, no_duplicates=True)
 
 	def hide(self):
 		self.widget.hide()
 		self.__remove_changelisteners()
+
+		if self._refresh_scheduled:
+			ExtScheduler().rem_all_classinst_calls(self)
+			self._refresh_scheduled = False
 
 	def show(self):
 		self.draw_widget()
@@ -147,8 +178,7 @@ class TradeWidget(object):
 			self.log.debug('TradeWidget : Transferring %s of res %s from %s to %s', self.exchange, \
 			               res_id, transfer_from, transfer_to)
 			TransferResource(self.exchange, res_id, transfer_from, transfer_to).execute(self.instance.session)
-			# update gui
-			self.draw_widget()
+			# let gui update be handled by inventory changelistener calls
 
 	def get_widgets_by_class(self, parent_widget, widget_class):
 		"""Gets all widget of a certain widget class from the tab. (e.g. pychan.widgets.Label for all labels)"""

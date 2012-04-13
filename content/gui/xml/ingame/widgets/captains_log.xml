@@ -47,7 +47,7 @@
 	</HBox>
 </VBox> <!--closes: <VBox name="statistics">-->
 
-<HBox name="chat_overview" max_size="700,508" min_size="700,508">
+<HBox name="chat_overview" max_size="700,508" min_size="700,508" padding="0">
 	<VBox name="game_messages" comment="Left page" max_size="345,508" min_size="345,508">
 		<Label name="headline_game_messages" text="Game messages"
 			wrap_text="0" max_size="323, 25" min_size="323, 25" />
@@ -55,9 +55,11 @@
 		<HBox name="header_button_row_gamemsg" padding="5">
 			<Button name="weird_button_1" text="Whole world" is_focusable="0"
 				comment="Displays all notifications and game messages" />
+			<!--
 			<Button name="wb2" text="Own settlements" is_focusable="0"
 				comment="Only filter messages important for your own settlements (disasters, new increment, ...)" />
 			<Button name="wb3" text="Whatever_fits" comment="noi18n" is_focusable="0" />
+			-->
 		</HBox>
 
 		<ScrollArea name="game_messages_scroll_area"  min_size="325,360"  max_size="325,360">
@@ -65,16 +67,21 @@
 		</ScrollArea>
 	</VBox>
 
-	<VBox name="chat" comment="Right page">
+	<VBox name="chat" comment="Right page" max_size="345,508" min_size="345,508">
 		<Label name="headline_chat" text="Chat"
 			wrap_text="0" max_size="323, 25" min_size="323, 25" />
 		<Icon image="content/gui/images/background/hr.png" />
 		<HBox name="header_button_row_chat" padding="5">
 			<Button name="weird_button_4" text="Everybody" is_focusable="0"
-				comment="Sends the chat message to all players (default)" />
+				helptext="Sends the chat messages to all players."
+				comment="Sends the chat messages to all players (default)" />
+			<!--
 			<Button name="wb5" text="Allies" is_focusable="0"
-				comment="Sends the chat message to all allied players." />
+				helptext="Sends the chat messages to all allied players."
+				comment="Sends the chat messages to all allied players." />
 			<Button name="wb6" text="Player: [select]" comment="noi18n" is_focusable="0" />
+			TODO this dropdown will allow to select a single player to send messages to (whisper)
+			-->
 		</HBox>
 
 		<ScrollArea name="chat_scroll_area"  min_size="325,360"  max_size="325,360">

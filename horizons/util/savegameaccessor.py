@@ -119,8 +119,8 @@ class SavegameAccessor(DbReader):
 			self._production_lines_by_owner[owner].append
 
 		self._production_state_history = defaultdict(lambda: deque())
-		for production_id, tick, state in self("SELECT production, tick, state FROM production_state_history ORDER BY production, tick"):
-			self._production_state_history[int(production_id)].append((tick, state))
+		for object_id, production_id, tick, state in self("SELECT object_id, production, tick, state FROM production_state_history ORDER BY object_id, production, tick"):
+			self._production_state_history[int(object_id), int(production_id)].append((tick, state))
 
 	def get_production_by_id_and_owner(self, id, ownerid):
 		# owner means worldid of entity
@@ -134,8 +134,8 @@ class SavegameAccessor(DbReader):
 		"""Returns the prod_line_id of the given production"""
 		return self._production_lines_by_owner.get(owner, [])
 
-	def get_production_state_history(self, worldid):
-		return self._production_state_history[int(worldid)]
+	def get_production_state_history(self, worldid, prod_id):
+		return self._production_state_history[int(worldid), int(prod_id)]
 
 
 	def _load_storage(self):

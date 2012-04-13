@@ -74,7 +74,6 @@ components:
             }
 - CollectingComponent:
     collectors:
-      1000015: 1
-      1000009: 1
+      1000009: 2
 actionsets:
   as_farm0: {level: 0}

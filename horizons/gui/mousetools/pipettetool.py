@@ -83,10 +83,18 @@ class PipetteTool(NavigationTool):
 
 	def _is_buildable(self, building_id):
 		# TODO: use proper buildability check once there is a system for that
-		#       (e.g. reuse from future build tabs)
+		# (e.g. reuse from future build tabs)
+		# http://trac.unknown-horizons.org/t/ticket/1706
+		not_buildable = [
+		  BUILDINGS.WAREHOUSE_CLASS,
+		  BUILDINGS.IRON_MINE_CLASS,
+		  BUILDINGS.MOUNTAIN_CLASS,
+		  BUILDINGS.CLAY_DEPOSIT_CLASS,
+		  BUILDINGS.CLAY_PIT_CLASS,
+		  ]
 		return Entities.buildings[building_id].settler_level <= \
 		       self.session.world.player.settler_level and \
-		       building_id != BUILDINGS.WAREHOUSE_CLASS
+		       building_id not in not_buildable
 
 	def _add_coloring(self,  obj):
 		if self._is_buildable(obj.id):

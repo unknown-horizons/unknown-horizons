@@ -125,6 +125,7 @@ class OverviewTab(TabInterface):
 
 		if self._refresh_scheduled:
 			ExtScheduler().rem_all_classinst_calls(self)
+			self._refresh_scheduled = False
 
 	def on_instance_removed(self):
 		self.on_remove()

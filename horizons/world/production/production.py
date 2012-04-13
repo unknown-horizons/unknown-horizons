@@ -132,7 +132,7 @@ class Production(ChangeListener):
 				 self._state == PRODUCTION.STATES.inventory_full:
 			self._add_listeners()
 
-		self._state_history = db.get_production_state_history(worldid)
+		self._state_history = db.get_production_state_history(worldid, self.prod_id)
 
 	def remove(self):
 		self._remove_listeners()
