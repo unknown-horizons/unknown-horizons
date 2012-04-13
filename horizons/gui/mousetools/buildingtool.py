@@ -428,6 +428,10 @@ class BuildingTool(NavigationTool):
 
 	def _restore_highlighted_buildings(self):
 		"""Inverse of highlight_related_buildings"""
+		# assemble list of all tiles that have are occupied by now restored buildings
+		# (if but one of them is in the range of something, the whole building
+		# might need to be colored as "in range")
+		modified_tiles = []
 		for (building, was_selected) in self._highlighted_buildings:
 			inst = building.fife_instance
 			self.renderer.removeColored(inst)
@@ -435,7 +439,11 @@ class BuildingTool(NavigationTool):
 			if was_selected:
 				self.renderer.addColored(inst, *SelectableBuildingComponent.selection_color)
 			self.renderer.removeOutlined(inst)
+			modified_tiles.extend(
+			  ( self.session.world.get_tile(point) for point in building.position )
+			)
 		self._highlighted_buildings.clear()
+		self.highlight_buildable(modified_tiles)
 
 	def on_escape(self):
 		self.session.ingame_gui.resource_overview.close_construction_mode()
