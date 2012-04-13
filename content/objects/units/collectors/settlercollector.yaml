@@ -1,4 +1,4 @@
-baseclass: collectors.StorageCollector
+baseclass: collectors.SettlerCollector
 id: 1000011
 name: SettlerCollector
 radius: 5
