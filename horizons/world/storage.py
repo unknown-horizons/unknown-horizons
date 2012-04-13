@@ -140,7 +140,7 @@ class SpecializedStorage(GenericStorage):
 
 class SizedSpecializedStorage(SpecializedStorage):
 	"""Just like SpecializedStorage, but each res has an own limit.
-	Can take a dict {res: size, res2: size2} to init slots
+	Can take a dict {res: size, res2: size2, ...} to init slots
 	"""
 	def __init__(self, slot_sizes=None):
 		super(SizedSpecializedStorage, self).__init__()
@@ -151,12 +151,14 @@ class SizedSpecializedStorage(SpecializedStorage):
 
 	def alter(self, res, amount):
 		if not self.has_resource_slot(res):
+			# TODO: this is also checked in the super class, refactor one of them away
 			return amount
 
-		storeable_amount = self.get_free_space_for(res)
-		if amount > storeable_amount: # tried to store more than limit allows
-			ret = super(SizedSpecializedStorage, self).alter(res, storeable_amount)
-			return (amount - storeable_amount ) + ret
+		if amount > 0: # can only reach limit if > 0
+			storeable_amount = self.get_free_space_for(res)
+			if amount > storeable_amount: # tried to store more than limit allows
+				ret = super(SizedSpecializedStorage, self).alter(res, storeable_amount)
+				return (amount - storeable_amount ) + ret
 
 		# no limit breach, just propagate call
 		return super(SizedSpecializedStorage, self).alter(res, amount)
