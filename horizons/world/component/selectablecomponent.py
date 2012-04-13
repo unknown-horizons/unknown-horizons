@@ -271,7 +271,7 @@ class SelectableBuildingComponent(SelectableComponent):
 				cls._fake_tile_obj = horizons.main.fife.engine.getModel().createObject('fake_tile_obj', 'ground')
 				fife.ObjectVisual.create(cls._fake_tile_obj)
 
-				img_path = 'content/gfx/base/fake_water.png'
+				img_path = 'content/gfx/fake_water.png'
 				img = horizons.main.fife.imagemanager.load(img_path)
 				for rotation in [45, 135, 225, 315]:
 					cls._fake_tile_obj.get2dGfxVisual().addStaticImage(rotation, img.getHandle())
