@@ -292,6 +292,9 @@ class SelectableBuildingComponent(SelectableComponent):
 
 	@classmethod
 	def _add_selected_tile(cls, tile, renderer, remember=True):
+		"""
+		@param remember: whether to keep track of this tile. Set to False on recolorings.
+		"""
 		if remember:
 			cls._selected_tiles.l.append(tile)
 		renderer.addColored(tile._instance, *cls.selection_color)

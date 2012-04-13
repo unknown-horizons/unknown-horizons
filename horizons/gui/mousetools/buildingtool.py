@@ -127,9 +127,10 @@ class BuildingTool(NavigationTool):
 		self.highlight_buildable()
 		WorldObjectDeleted.subscribe(self._on_worldobject_deleted)
 
-	def highlight_buildable(self, tiles_to_check=None):
-		"""Highlights all buildable tiles.
-		@param tiles_to_check: list of tiles to check for coloring."""
+	def highlight_buildable(self, tiles_to_check=None, new_buildings=True):
+		"""Highlights all buildable tiles and select buildings that are inversely related in order to show their range.
+		@param tiles_to_check: list of tiles to check for coloring.
+		@param new_buildings: Set to true if you have set tiles_to_check and there are new buildings. An internal structure for optimisation will be amended."""
 		self._build_logic.highlight_buildable(self, tiles_to_check)
 
 		# Also distinguish inversely related buildings (lumberjack for tree).
@@ -149,7 +150,7 @@ class BuildingTool(NavigationTool):
 		related = frozenset(related)
 
 		renderer = self.session.view.renderer['InstanceRenderer']
-		if tiles_to_check is None: # first run, check all
+		if tiles_to_check is None or new_buildings: # first run, check all
 			buildings_to_select = [ buildings_to_select for\
 			                        settlement in self.session.world.settlements if \
 			                        settlement.owner.is_local_player for \
@@ -429,6 +430,10 @@ class BuildingTool(NavigationTool):
 
 	def _restore_highlighted_buildings(self):
 		"""Inverse of highlight_related_buildings"""
+		# assemble list of all tiles that have are occupied by now restored buildings
+		# (if but one of them is in the range of something, the whole building
+		# might need to be colored as "in range")
+		modified_tiles = []
 		for (building, was_selected) in self._highlighted_buildings:
 			inst = building.fife_instance
 			self.renderer.removeColored(inst)
@@ -436,7 +441,11 @@ class BuildingTool(NavigationTool):
 			if was_selected:
 				self.renderer.addColored(inst, *SelectableBuildingComponent.selection_color)
 			self.renderer.removeOutlined(inst)
+			modified_tiles.extend(
+			  ( self.session.world.get_tile(point) for point in building.position )
+			)
 		self._highlighted_buildings.clear()
+		self.highlight_buildable(modified_tiles)
 
 	def on_escape(self):
 		self._build_logic.on_escape(self.session)
@@ -771,7 +780,8 @@ class SettlementBuildingToolLogic(object):
 	def _on_update(self, message):
 		if self.building_tool():
 			if self.building_tool().session.world.player == message.sender.owner:
-				self.building_tool().highlight_buildable(message.changed_tiles)
+				# this is generally caused by adding new buildings, therefore new_buildings=True
+				self.building_tool().highlight_buildable(message.changed_tiles, new_buildings=True)
 
 	def on_escape(self, session):
 		session.ingame_gui.show_build_menu() # will call remove()

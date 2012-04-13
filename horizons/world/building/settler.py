@@ -46,6 +46,7 @@ class SettlerRuin(BasicBuilding, BuildableSingle):
 	checks for buildability
 	"""
 	buildable_upon = True
+	walkable = True
 
 class Settler(BuildableRect, BuildingResourceHandler, BasicBuilding):
 	"""Represents a settlers house, that uses resources and creates inhabitants."""
