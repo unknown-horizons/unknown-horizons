@@ -47,6 +47,7 @@ from horizons.constants import AI, COLORS, GAME, PATHS, NETWORK, SINGLEPLAYER, G
 from horizons.network.networkinterface import NetworkInterface
 from horizons.util import ActionSetLoader, DifficultySettings, TileSetLoader, Color, parse_port, Callback
 from horizons.util.uhdbaccessor import UhDbAccessor
+from horizons.i18n import find_available_languages
 
 # private module pointers of this module
 class Modules(object):
@@ -393,30 +394,47 @@ def _start_map(map_name, ai_players=0, human_ai=False, is_scenario=False, campai
 	"""Start a map specified by user
 	@param map_name: name of map or path to map
 	@return: bool, whether loading succeded"""
-	# check for exact/partial matches in map list first
+	#if map is a scenario then set mapnames and paths with language extensions
+	#these lines e.g. change "tutorial" to "tutorial_en" and
+	#"content/scenarios/tutorial" to "content/scenarios/tutorial_en.yaml"
 	if is_scenario:
+		#get all available scenarios
 		maps = SavegameManager.get_available_scenarios()
-		from horizons.i18n import find_available_languages
+		#get all available languages
 		languages = find_available_languages().keys()
 		scenario_map_paths = []
 		scenario_map_names = []
-		for mapname in maps[0]:
+		#we will use "content/scenarios/tutorial_en.yaml" instead of content/scenarios/tutorial" as map_path
+		for mappath in maps[0]:
 			for language in languages:
-				scenario_map_paths.append(mapname + '_' + language + '.' + SavegameManager.scenario_extension)
-		
+				scenario_map_paths.append(mappath + '_' + language + '.' + SavegameManager.scenario_extension)
+		#we will use "tutorial_en" instead of "tutorial"
 		for mapname in maps[1]:
 			for language in languages:
 				scenario_map_names.append(mapname + '_' + language + '.' + SavegameManager.scenario_extension)
 
+		#now we have scenario map extensions/maps with language extensions
 		maps = (scenario_map_paths, scenario_map_names)
 
 	else:
 		maps = SavegameManager.get_maps()
 
 	map_file = None
+
+	#get system's language
+	game_language = fife.get_locale()
+
+	#now we have "_en.yaml" which is set to language_extension variable
+	language_extension = '_' + game_language + '.' + SavegameManager.scenario_extension
+
+	# check for exact/partial matches in map list first
 	for i in xrange(0, len(maps[1])):
 		# exact match
 		if maps[1][i] == map_name:
+			map_file = maps[0][i]
+			break
+		# we want to match when map_name is like "tutorial" not "tutorial_en"
+		if maps[1][i] == map_name + language_extension:
 			map_file = maps[0][i]
 			break
 		# check for partial match
