@@ -66,7 +66,7 @@ class Settler(BuildableRect, BuildingResourceHandler, BasicBuilding):
 
 	def __init(self, loading = False, last_tax_payed=0):
 		self.level_max = SETTLER.CURRENT_MAX_INCR # for now
-		self._update_level_data(loading = loading)
+		self._update_level_data(loading=loading, initial=True)
 		self.last_tax_payed = last_tax_payed
 		self.session.message_bus.subscribe_locally(UpgradePermissionsChanged, self.settlement, self._on_change_upgrade_permissions)
 
@@ -158,8 +158,11 @@ class Settler(BuildableRect, BuildingResourceHandler, BasicBuilding):
 		# this concept does not make sense here, so spare us the calculations
 		return 1.0
 
-	def _update_level_data(self, loading = False):
-		"""Updates all settler-related data because of a level change or because of loading"""
+	def _update_level_data(self, loading=False, initial=False):
+		"""Updates all settler-related data because of a level change or as initialisation
+		@param loading: whether called to set data after loading
+		@param initial: whether called to set data initially
+		"""
 		# taxes, inhabitants
 		self.tax_base = self.session.db.get_settler_tax_income(self.level)
 		self.inhabitants_max = self.session.db.get_settler_inhabitants_max(self.level)
@@ -168,7 +171,7 @@ class Settler(BuildableRect, BuildingResourceHandler, BasicBuilding):
 
 		# consumption:
 		# Settler productions are specified to be disabled by default in the db, so we can enable
-		# them here per level.
+		# them here per level. Production data is save/loaded, so we don't need to do anything in that case
 		if not loading:
 			prod_comp = self.get_component(Producer)
 			current_lines = prod_comp.get_production_lines()
@@ -182,8 +185,14 @@ class Settler(BuildableRect, BuildingResourceHandler, BasicBuilding):
 				# all lines, that were added here but are not used due to the current level
 				# NOTE: this contains the upgrade material production line
 				prod_comp.remove_production_by_id(line)
-		# update instance graphics
-		self.update_action_set_level(self.level)
+
+		if not initial:
+			# update instance graphics
+			# only do it when something has actually change
+
+			# TODO: this probably also isn't necessary on loading, but it's
+			# not touched before the relase (2012.1)
+			self.update_action_set_level(self.level)
 
 	def run(self, remaining_ticks=None):
 		"""Start regular tick calls"""
