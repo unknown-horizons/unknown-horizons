@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2012-03-24 02:16+0100\n"
-"PO-Revision-Date: 2012-04-12 23:48+0200\n"
+"PO-Revision-Date: 2012-04-12 23:49+0200\n"
 "Last-Translator: Premislaus <premislaus1988@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: pl\n"
@@ -498,7 +498,7 @@ msgstr "{player1} oraz {player2} zerwali sojusz i są teraz w stanie wojny."
 #: database files sql
 #, python-format
 msgid "{player1} and {player2} have settled their hostility."
-msgstr ""
+msgstr "{player1} i {player2} utrwalili swoją wrogość."
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
@@ -1211,8 +1211,9 @@ msgid "Too far from the nearest own or allied warehouse"
 msgstr "Zbyt daleko od najbliższego, własnego lub sojuszniczego magazynu."
 
 #: horizons/gui/tabs/overviewtab.py:246
+#, fuzzy
 msgid "Cannot equip trade ship with weapons"
-msgstr "Nie można wyposażyć statku handlowego z bronią"
+msgstr "Nie można wyposażyć statku handlowego w broń"
 
 #: horizons/gui/tabs/overviewtab.py:247
 msgid "It is not possible to equip a trade ship with weapons."
