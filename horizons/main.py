@@ -394,7 +394,25 @@ def _start_map(map_name, ai_players=0, human_ai=False, is_scenario=False, campai
 	@param map_name: name of map or path to map
 	@return: bool, whether loading succeded"""
 	# check for exact/partial matches in map list first
-	maps = SavegameManager.get_available_scenarios() if is_scenario else SavegameManager.get_maps()
+	if is_scenario:
+		maps = SavegameManager.get_available_scenarios()
+		from horizons.i18n import find_available_languages
+		languages = find_available_languages().keys()
+		scenario_map_paths = []
+		scenario_map_names = []
+		for mapname in maps[0]:
+			for language in languages:
+				scenario_map_paths.append(mapname + '_' + language + '.' + SavegameManager.scenario_extension)
+		
+		for mapname in maps[1]:
+			for language in languages:
+				scenario_map_names.append(mapname + '_' + language + '.' + SavegameManager.scenario_extension)
+
+		maps = (scenario_map_paths, scenario_map_names)
+
+	else:
+		maps = SavegameManager.get_maps()
+
 	map_file = None
 	for i in xrange(0, len(maps[1])):
 		# exact match
