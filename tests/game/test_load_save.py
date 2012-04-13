@@ -203,21 +203,15 @@ def test_settler_save_load():
 	assert settler
 	settler_worldid = settler.worldid
 
-	settler = settlement = island = player = None
-
-	session = saveload(session)
-
-	settler = WorldObject.get_object_by_id(settler_worldid)
-	island = settler.island
-	settlement = settler.settlement
-
 	main_square = Build(BUILDINGS.MAIN_SQUARE_CLASS, 23, 24, island, settlement=settlement)(player)
 	assert main_square
 	main_square.get_component(StorageComponent).inventory.alter(RES.FOOD_ID, 100)
 
-	session.run(seconds=300)
+	session = saveload(session)
 
-	tile = island.get_tile(Point(25, 22))
+	session.run(seconds=500)
+
+	tile = session.world.get_tile(Point(25, 22))
 
 	# tile will contain ruin in case of failure
 	assert tile.object.id == BUILDINGS.RESIDENTIAL_CLASS
