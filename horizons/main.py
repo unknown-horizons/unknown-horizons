@@ -507,7 +507,7 @@ def _load_map(savegame, ai_players, human_ai, force_player_id=None):
 	load_game(savegame=map_file, force_player_id=force_player_id)
 	return True
 
-def _load_last_quicksave(session, force_player_id=None):
+def _load_last_quicksave(session=None, force_player_id=None):
 	"""Load last quicksave
 	@param session: value of session
 	@return: bool, whether loading succeded"""
