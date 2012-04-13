@@ -7,7 +7,7 @@ in human readable form.
 Run without arguments for help
 """
 
-import os.path
+import inspect
 import sys
 
 sys.path.append(".")
@@ -27,6 +27,8 @@ init_environment()
 
 import horizons.main
 from horizons.constants import UNITS, SETTLER
+from horizons.scenario.actions import ACTIONS
+from horizons.scenario.conditions import CONDITIONS
 
 db = horizons.main._create_main_db()
 
@@ -215,6 +217,18 @@ def print_colors():
 	for id_, name, R, G, B, alpha in db("SELECT id, name, red, green, blue, alpha FROM colors"):
 		print '%2s: %12s  %3s  %3s  %3s  %3s  #' % (id_, name, R, G, B, alpha) + 3*'%02x' % (R, G, B)
 
+def print_scenario_actions():
+	print 'Available scenario actions and their arguments:'
+	for action in ACTIONS.registry:
+		arguments = inspect.getargspec(ACTIONS.get(action))[0][1:] # exclude session
+		print '%-12s  %s' % (action, arguments or '')
+
+def print_scenario_conditions():
+	print 'Available scenario conditions and their arguments:'
+	for condition in CONDITIONS.registry:
+		arguments = inspect.getargspec(CONDITIONS.get(condition))[0][1:] # exclude session
+		print '%-36s  %s' % (condition, arguments or '')
+
 def print_names():
 	text = ''
 	for (table, type) in [('city', 'player'), ('city', 'pirate'), ('ship','player'), ('ship','pirate'), ('ship','fisher'), ('ship','trader')]:
@@ -227,11 +241,13 @@ def print_names():
 	print text
 
 functions = {
+		'actions' : print_scenario_actions,
 		'buildings' : print_building,
 		'building_costs' : print_building_costs,
 		'colors' : print_colors,
 		'collectors' : print_collectors,
 		'collector_restrictions': print_collector_restrictions,
+		'conditions' : print_scenario_conditions,
 		'increments' : print_increment_data,
 		'lines' : print_production_lines,
 		'names' : print_names,
