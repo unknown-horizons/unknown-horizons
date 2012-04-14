@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2012-03-31 21:42+0100\n"
-"PO-Revision-Date: 2012-04-14 20:42+0200\n"
+"PO-Revision-Date: 2012-04-14 21:01+0200\n"
 "Last-Translator: Szontágh <szontagh.ferenc@exahost.eu>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: hu\n"
@@ -68,9 +68,8 @@ msgid "lumberjack"
 msgstr "favágó"
 
 # 88%
-#, fuzzy
 msgid "resident"
-msgstr "lakosok"
+msgstr "lakos"
 
 msgid "main square"
 msgstr "főtér"
@@ -147,7 +146,7 @@ msgid "trail"
 msgstr "ösvény"
 
 msgid "Unknown Horizons"
-msgstr "Unknown Horizons"
+msgstr "Ismeretlen vizeken"
 
 msgid "wool"
 msgstr "gyapjú"
@@ -213,7 +212,7 @@ msgid "choose"
 msgstr "választás"
 
 msgid "confectionery"
-msgstr ""
+msgstr "cukrászat"
 
 msgid "fisher"
 msgstr "halász"
@@ -384,18 +383,17 @@ msgid "total"
 msgstr "teljes"
 
 msgid "unable"
-msgstr ""
+msgstr "képtelen"
 
 msgid "active"
 msgstr "aktív"
 
 msgid "afford"
-msgstr ""
+msgstr "nyújt"
 
 # 85%
-#, fuzzy
 msgid "animals"
-msgstr "állat"
+msgstr "állatok"
 
 msgid "Captain's log"
 msgstr "A Kapitány naplója"
@@ -409,10 +407,10 @@ msgid "consume"
 msgstr "fogyasztás"
 
 msgid "enabled"
-msgstr ""
+msgstr "engedélyezett"
 
 msgid "entries"
-msgstr ""
+msgstr "bejegyzések"
 
 msgid "feature"
 msgstr "funkció"
@@ -421,15 +419,14 @@ msgid "forest"
 msgstr "erdő"
 
 # 80%
-#, fuzzy
 msgid "grows"
-msgstr "növekedés"
+msgstr "nő"
 
 msgid "hold"
 msgstr "tart"
 
 msgid "idle"
-msgstr ""
+msgstr "tétlen"
 
 msgid "income"
 msgstr "bevétel"
@@ -444,7 +441,7 @@ msgid "lamb wool"
 msgstr "bárány gyapjú"
 
 msgid "overview tab"
-msgstr ""
+msgstr "áttekintő fül"
 
 msgid "minimap"
 msgstr "kis térkép"
@@ -453,7 +450,7 @@ msgid "issues"
 msgstr "kérdések"
 
 msgid "plant"
-msgstr ""
+msgstr "növény"
 
 msgid "play"
 msgstr "játék"
@@ -462,12 +459,11 @@ msgid "playing"
 msgstr "játszik"
 
 msgid "price"
-msgstr ""
+msgstr "ár"
 
 # 75%
-#, fuzzy
 msgid "read"
-msgstr "piros"
+msgstr "olvas"
 
 msgid "return"
 msgstr "vissza"
@@ -482,15 +478,14 @@ msgid "sound"
 msgstr "hang"
 
 msgid "special"
-msgstr ""
+msgstr "speciális"
 
 msgid "store"
-msgstr ""
+msgstr "raktár"
 
-# 75%
-#, fuzzy
+# csapat? :) az a team 
 msgid "tear"
-msgstr "csapat"
+msgstr "csepp"
 
 msgid "from time to time"
 msgstr "időről időre"
@@ -505,15 +500,14 @@ msgid "visit"
 msgstr "látogatás"
 
 msgid "world"
-msgstr ""
+msgstr "világ"
 
-# 83%
-#, fuzzy
+# hozam helyett inkább kitermelés
 msgid "yield"
-msgstr "hozam"
+msgstr "kitermelés"
 
 msgid "your ship"
-msgstr ""
+msgstr "a te hajód"
 
 msgid "back"
 msgstr "vissza"
@@ -522,16 +516,16 @@ msgid "build settlement"
 msgstr "település építése"
 
 msgid "load"
-msgstr ""
+msgstr "berakodás"
 
 msgid "unload"
-msgstr ""
+msgstr "kirakodás"
 
 msgid "command"
-msgstr ""
+msgstr "parancs"
 
 msgid "completed"
-msgstr ""
+msgstr "befejezve"
 
 msgid "condition"
 msgstr "állapot"
@@ -540,10 +534,10 @@ msgid "contact"
 msgstr "kapcsolat"
 
 msgid "empty"
-msgstr ""
+msgstr "üres"
 
 msgid "ensure"
-msgstr ""
+msgstr "biztosít"
 
 msgid "fulfill"
 msgstr "eleget"
@@ -552,7 +546,7 @@ msgid "graphics"
 msgstr "grafika"
 
 msgid "harvest"
-msgstr ""
+msgstr "aratás"
 
 # 80%
 #, fuzzy
@@ -563,7 +557,7 @@ msgid "multiple"
 msgstr "több"
 
 msgid "potato field"
-msgstr ""
+msgstr "paradicsom mezők"
 
 msgid "school"
 msgstr "iskola"
@@ -581,7 +575,7 @@ msgid "signal fire"
 msgstr "jelző tűz"
 
 msgid "statistics"
-msgstr ""
+msgstr "statisztikák"
 
 msgid "clay"
 msgstr "agyag"
@@ -599,13 +593,13 @@ msgid "charcoal"
 msgstr "faszén"
 
 msgid "sugar field"
-msgstr ""
+msgstr "cukor mező"
 
 msgid "temporarily"
 msgstr "ideiglenesen"
 
 msgid "values"
-msgstr ""
+msgstr "értékek"
 
 #~ msgid "branch office"
 #~ msgstr "fiókiroda"
