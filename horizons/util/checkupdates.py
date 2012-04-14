@@ -42,7 +42,7 @@ def check_for_updates(info):
 
 	try:
 		u = urllib2.urlopen( NETWORK.UPDATE_FILE_URL, timeout=TIMEOUT )
-	except urllib2.URLErrar as e:
+	except urllib2.URLError as e:
 		print 'Failed to check for updates: ', e
 		info.status = UpdateInfo.INVALID
 		return
