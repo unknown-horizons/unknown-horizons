@@ -21,6 +21,7 @@
 
 from fife.extensions import pychan
 import webbrowser
+import urllib
 import urllib2
 
 from horizons.constants import NETWORK, VERSION
@@ -42,10 +43,10 @@ def check_for_updates(info):
 
 	# retrieve current version w.r.t. the local version.
 	# this way, possible configurations of different most recent versions should be handleable in the future.
-	url = NETWORK.UPDATE_FILE_URL.format(my_version=VERSION.RELEASE_VERSION)
-	print url
+	data = urllib.urlencode( {"my_version" : VERSION.RELEASE_VERSION} )
+	url = NETWORK.UPDATE_FILE_URL
 	try:
-		u = urllib2.urlopen( url, timeout=TIMEOUT )
+		u = urllib2.urlopen( url + "?" + data, timeout=TIMEOUT )
 	except urllib2.URLError as e:
 		print 'Failed to check for updates: ', e
 		info.status = UpdateInfo.INVALID

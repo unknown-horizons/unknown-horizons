@@ -423,7 +423,7 @@ class NETWORK:
 	SERVER_ADDRESS = "master.unknown-horizons.org"
 	SERVER_PORT = 2002
 	CLIENT_ADDRESS = None
-	UPDATE_FILE_URL = "http://updates.unknown-horizons.org/current_version.php?my_version={my_version}"
+	UPDATE_FILE_URL = "http://updates.unknown-horizons.org/current_version.php"
 
 ## TRANSLATIONS
 class _LanguageNameDict(dict):
