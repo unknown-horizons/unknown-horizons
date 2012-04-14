@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2012-03-31 21:42+0100\n"
-"PO-Revision-Date: 2012-04-14 17:30+0200\n"
+"PO-Revision-Date: 2012-04-14 20:42+0200\n"
 "Last-Translator: Szontágh <szontagh.ferenc@exahost.eu>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: hu\n"
@@ -228,7 +228,7 @@ msgid "in stock"
 msgstr "raktáron"
 
 msgid "money"
-msgstr ""
+msgstr "pénz"
 
 msgid "pavilion"
 msgstr "pavilon"
@@ -249,7 +249,7 @@ msgid "tools"
 msgstr "eszközök"
 
 msgid "button"
-msgstr ""
+msgstr "gomb"
 
 msgid "continue"
 msgstr "folytatás"
@@ -273,24 +273,20 @@ msgid "move"
 msgstr "mozgás"
 
 # 87%
-#, fuzzy
 msgid "pioneers"
-msgstr "telepes"
+msgstr "telepesek"
 
 # 87%
-#, fuzzy
 msgid "citizens"
-msgstr "polgár"
+msgstr "polgárok"
 
 # 88%
-#, fuzzy
 msgid "merchants"
-msgstr "kereskedő"
+msgstr "kereskedők"
 
 # 90%
-#, fuzzy
 msgid "aristocrats"
-msgstr "arisztokrata"
+msgstr "arisztokraták"
 
 msgid "potato"
 msgstr "paradicsom"
@@ -299,9 +295,8 @@ msgid "settler"
 msgstr "gyarmatos"
 
 # 80%
-#, fuzzy
 msgid "speed"
-msgstr "mag"
+msgstr "sebesség"
 
 msgid "stop"
 msgstr "állj"
@@ -310,16 +305,16 @@ msgid "storage tent"
 msgstr "raktár sátor"
 
 msgid "wait"
-msgstr ""
+msgstr "várakozás"
 
 msgid "access"
-msgstr ""
+msgstr "hozzáférés"
 
 msgid "account"
 msgstr "fiók"
 
 msgid "amount"
-msgstr ""
+msgstr "mennyiség"
 
 msgid "build menu"
 msgstr "építési menü"
@@ -343,7 +338,7 @@ msgid "increase"
 msgstr "növekedés"
 
 msgid "lamb"
-msgstr ""
+msgstr "bárány"
 
 msgid "leave"
 msgstr "elhagy"
@@ -352,15 +347,14 @@ msgid "liquor"
 msgstr "likőr"
 
 msgid "location"
-msgstr ""
+msgstr "helyzet"
 
 msgid "offer"
-msgstr ""
+msgstr "ajánlat"
 
 # 75%
-#, fuzzy
 msgid "potatoes"
-msgstr "paradicsom"
+msgstr "paradicsomok"
 
 msgid "range"
 msgstr "távolság"
@@ -378,16 +372,16 @@ msgid "solution"
 msgstr "megoldás"
 
 msgid "space"
-msgstr ""
+msgstr "hely"
 
 msgid "target"
-msgstr ""
+msgstr "cél"
 
 msgid "team"
 msgstr "csapat"
 
 msgid "total"
-msgstr ""
+msgstr "teljes"
 
 msgid "unable"
 msgstr ""
