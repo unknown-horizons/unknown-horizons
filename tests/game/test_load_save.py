@@ -45,7 +45,7 @@ def saveload(session):
 	os.close(fd)
 	assert session.save(savegamename=filename)
 	session.end(keep_map=True)
-	session =  load_session(filename)
+	session = load_session(filename)
 	Scheduler().before_ticking() # late init finish (not ticking already)
 	return session
 
@@ -199,13 +199,13 @@ def test_settler_save_load():
 	# 3) build main square
 	# -> settler won't load properly and not use the resources and die
 
-	settler = Build(BUILDINGS.RESIDENTIAL_CLASS, 25, 22, island, settlement=settlement)(player)
+	settler = Build(BUILDINGS.RESIDENTIAL, 25, 22, island, settlement=settlement)(player)
 	assert settler
 	settler_worldid = settler.worldid
 
-	main_square = Build(BUILDINGS.MAIN_SQUARE_CLASS, 23, 24, island, settlement=settlement)(player)
+	main_square = Build(BUILDINGS.MAIN_SQUARE, 23, 24, island, settlement=settlement)(player)
 	assert main_square
-	main_square.get_component(StorageComponent).inventory.alter(RES.FOOD_ID, 100)
+	main_square.get_component(StorageComponent).inventory.alter(RES.FOOD, 100)
 
 	session = saveload(session)
 
@@ -214,4 +214,4 @@ def test_settler_save_load():
 	tile = session.world.get_tile(Point(25, 22))
 
 	# tile will contain ruin in case of failure
-	assert tile.object.id == BUILDINGS.RESIDENTIAL_CLASS
+	assert tile.object.id == BUILDINGS.RESIDENTIAL

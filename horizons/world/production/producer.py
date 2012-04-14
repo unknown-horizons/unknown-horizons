@@ -104,7 +104,6 @@ class Producer(Component):
 					continue  # It's set to false, don't add
 				prod = self.create_production(prod_line)
 				self.add_production(prod)
-				prod.start()
 		# For newly built producers we set the utilisation to full for the first
 		# few seconds, this avoids the low productivity icon being shown every
 		# time a new producer is built
@@ -120,6 +119,10 @@ class Producer(Component):
 		return prod_lines
 
 	def create_production(self, id, load=False):
+		"""
+		@param id: production line id
+		@param load: whether the production is used for loading.
+		"""
 		data = self.production_lines[id]
 		production_class = self.production_class
 		owner_inventory = self.instance._get_owner_inventory()

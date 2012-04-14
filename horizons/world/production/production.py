@@ -52,45 +52,51 @@ class Production(ChangeListener):
 	# the special resource gold is only stored in the player's inventory.
 	# If productions want to use it, they will observer every change of it, which results in
 	# a lot calls. Therefore, this is not done by default but only for few subclasses that actually need it.
-	USES_GOLD = False
+	uses_gold = False
+
+	keep_original_prod_line = False
 
 	## INIT/DESTRUCT
-	def __init__(self, inventory, owner_inventory, prod_id, prod_data, auto_start=True, \
+	def __init__(self, inventory, owner_inventory, prod_id, prod_data, \
 	             start_finished=False, load=False, **kwargs):
+		"""
+		@param inventory: interface to the world, take res from here and put output back there
+		@param owner_inventory: same as inventory, but for gold. Usually the players'.
+		@param prod_id: int id of the production line
+		@param prod_data: ?
+		@param start_finished: Whether to start at the final state of a production
+		@param load: set to true if this production is supposed to load a saved production
+		"""
 		super(Production, self).__init__(**kwargs)
+		# this has grown to be a bit weird compared to other init/loads
+		# __init__ is always called before load, therefore load just overwrites some of the values here
 		self._state_history = deque()
 		self.prod_id = prod_id
 		self.prod_data = prod_data
-		self.__auto_start = auto_start
 		self.__start_finished = start_finished
-		self.__init(inventory, owner_inventory, prod_id, prod_data, PRODUCTION.STATES.none, Scheduler().cur_tick)
-
-		if not load and not start_finished:
-			# TODO: refactor production starting now the state is set multiple times
-			self._state = PRODUCTION.STATES.waiting_for_res
-			self._add_listeners()
-
-	def start(self):
-		if self.__start_finished:
-			self._give_produced_res()
-			self._add_listeners()
-		if self.__auto_start:
-			self._check_inventory()
-
-	def __init(self, inventory, owner_inventory, prod_id, prod_data, state, creation_tick, pause_old_state = None):
-		"""
-		@param inventory: inventory of assigned building
-		@param prod_line_id: id of production line.
-		"""
 		self.inventory = inventory
 		self.owner_inventory = owner_inventory
-		self._state = state
+
 		self._pause_remaining_ticks = None # only used in pause()
-		self._pause_old_state = pause_old_state # only used in pause()
-		self._creation_tick = creation_tick
+		self._pause_old_state = None # only used in pause()
+
+		self._creation_tick = Scheduler().cur_tick
 
 		assert isinstance(prod_id, int)
 		self._prod_line = ProductionLine(id=prod_id, data=prod_data)
+
+		if self.__class__.keep_original_prod_line: # used by unit productions
+			self.original_prod_line = self._prod_line.get_original_copy()
+
+		if not load:
+			# init production to start right away
+
+			if self.__start_finished:
+				# finish the production
+				self._give_produced_res()
+
+			self._state = PRODUCTION.STATES.waiting_for_res
+			self._add_listeners(check_now=True)
 
 	def save(self, db, owner_id):
 		"""owner_id: worldid of the owner of the producer object that owns this production"""
@@ -132,6 +138,8 @@ class Production(ChangeListener):
 			Scheduler().add_new_object(self._get_producing_callback(), self, db_data[3])
 		elif self._state == PRODUCTION.STATES.waiting_for_res or \
 				 self._state == PRODUCTION.STATES.inventory_full:
+			# no need to call now, this just restores the state before
+			# saving , where it hasn't triggered yet, therefore it won't now
 			self._add_listeners()
 
 		self._state_history = db.get_production_state_history(worldid, self.prod_id)
@@ -197,8 +205,7 @@ class Production(ChangeListener):
 			if self._state in (PRODUCTION.STATES.waiting_for_res, \
 												 PRODUCTION.STATES.inventory_full):
 				# just restore watching
-				self._add_listeners()
-				self._check_inventory()
+				self._add_listeners(check_now=True)
 
 			elif self._state == PRODUCTION.STATES.producing:
 				# restore scheduler call
@@ -345,9 +352,7 @@ class Production(ChangeListener):
 		elif self._check_available_res():
 			# we have space in our inventory and needed res are available
 			# stop listening for res
-			self.inventory.remove_change_listener(self._check_inventory)
-			if self.__class__.USES_GOLD:
-				self.owner_inventory.remove_change_listener(self._check_inventory)
+			self._remove_listeners()
 			self._start_production()
 		else:
 			# we have space in our inventory, but needed res are missing
@@ -378,19 +383,22 @@ class Production(ChangeListener):
 		self.on_production_finished()
 		if continue_producing:
 			self._state = PRODUCTION.STATES.waiting_for_res
-			self._add_listeners()
-			self._check_inventory()
+			self._add_listeners(check_now=True)
 
-	def _add_listeners(self):
-		# don't set call_listener_now to true, adding/removing changelisteners wouldn't be atomic any more
+	def _add_listeners(self, check_now=False):
+		"""Listen for changes in the inventory from now on."""
+		# don't set call_listener_now to true here, adding/removing changelisteners wouldn't be atomic any more
 		self.inventory.add_change_listener(self._check_inventory)
-		if self.__class__.USES_GOLD:
+		if self.__class__.uses_gold:
 			self.owner_inventory.add_change_listener(self._check_inventory)
+
+		if check_now: # only check now after adding everything
+			self._check_inventory()
 
 	def _remove_listeners(self):
 		# depending on state, a check_inventory listener might be active
 		self.inventory.discard_change_listener(self._check_inventory)
-		if self.__class__.USES_GOLD:
+		if self.__class__.uses_gold:
 			self.owner_inventory.discard_change_listener(self._check_inventory)
 
 	def _give_produced_res(self):
@@ -443,7 +451,8 @@ class ChangingProduction(Production):
 class SettlerProduction(ChangingProduction):
 	"""For settlers, production behaves different:
 	They produce happiness from the goods they get. They get happy immediately when the get
-	the resource (i.e. they produce at production start)"""
+	the resource (i.e. they produce at production start).
+	It needs to be a changing production since the time can be altered"""
 	def _give_produced_res(self):
 		pass # don't give any resources, when they actually should be given
 
@@ -463,13 +472,19 @@ class SingleUseProduction(Production):
 		super(SingleUseProduction, self)._finished_producing(continue_producing=False, **kwargs)
 		self._state = PRODUCTION.STATES.done
 
+
+"""
+
+This might have been used for the unit production once, its current purpose is unknown.
+
+
 class ProgressProduction(Production):
-	"""Same as Production, but starts as soon as any needed res is available (doesn't wait
-	until all of them are ready)
+	""Same as Production, but starts as soon as any needed res is available (doesn't wait until all of them are ready)
 
 	Implementation:
 	When res are available, they are removed from the production line. The prod line is
-	reloaded on a new production."""
+	reloaded on a new production.""
+	keep_original_prod_line = True
 
 	## INIT/DESTRUCT
 	def __init__(self, **kwargs):
@@ -477,7 +492,6 @@ class ProgressProduction(Production):
 		self.__init()
 
 	def __init(self, progress = 0):
-		self.original_prod_line = copy.deepcopy(self._prod_line)
 		self.progress = progress # float indicating current production progress
 
 	def save(self, db, owner_id):
@@ -497,7 +511,7 @@ class ProgressProduction(Production):
 		return False
 
 	def _remove_res_to_expend(self):
-		"""Takes as many res as there are and returns sum of amount of res taken."""
+		""Takes as many res as there are and returns sum of amount of res taken.""
 		taken = 0
 		for res, amount in self._prod_line.consumed_res.iteritems():
 			remnant = self.inventory.alter(res, amount) # try to get all
@@ -540,10 +554,7 @@ class ProgressProduction(Production):
 		self._prod_line = copy.copy(self.original_prod_line)
 
 class SingleUseProgressProduction(ProgressProduction, SingleUseProduction):
-	"""A production that needs to have a progress and also is only used one time."""
+	""A production that needs to have a progress and also is only used one time.""
+	pass
 
-	def __init__(self, **kwargs):
-		super(SingleUseProgressProduction, self).__init__(**kwargs)
-
-	def _finished_producing(self, **kwargs):
-		super(SingleUseProgressProduction, self)._finished_producing(**kwargs)
+"""

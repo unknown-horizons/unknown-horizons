@@ -26,20 +26,8 @@ from horizons.scheduler import Scheduler
 
 class UnitProduction(ChangingProduction):
 	"""Production, that produces units."""
-	USES_GOLD = True
-	def __init__(self, load=False, **kwargs):
-		super(UnitProduction, self).__init__(auto_start=False, load=load, **kwargs)
-		if not load:
-			self.__init()
-			# We have to check manually now after initing because we set auto_start to false
-			self._check_inventory()
-
-	def __init(self):
-		self.original_prod_line = self._prod_line.get_original_copy()
-
-	def load(self, db, worldid):
-		super(UnitProduction, self).load(db, worldid)
-		self.__init()
+	uses_gold = True
+	keep_original_prod_line = True
 
 	@property
 	def progress(self):
@@ -99,7 +87,7 @@ class UnitProduction(ChangingProduction):
 		if removed_res == 0:
 			# watch inventory for new res
 			self.inventory.add_change_listener(self._check_inventory)
-			if self.__class__.USES_GOLD:
+			if self.__class__.uses_gold:
 				self.owner_inventory.add_change_listener(self._check_inventory)
 			self._state = PRODUCTION.STATES.waiting_for_res
 			self._changed()
