@@ -7,8 +7,8 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2012-03-24 02:16+0100\n"
-"PO-Revision-Date: 2012-02-12 17:49+0200\n"
-"Last-Translator: probert <r.panovics@freemail.hu>\n"
+"PO-Revision-Date: 2012-04-14 21:15+0200\n"
+"Last-Translator: Szontágh <szontagh.ferenc@exahost.eu>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: hu\n"
 "MIME-Version: 1.0\n"
@@ -26,9 +26,8 @@ msgstr "{player} új települést alapított."
 # 82%
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
-#, fuzzy
 msgid "A new ship has been created."
-msgstr "Egy új világot teremtettél."
+msgstr "Elkészült egy új hajó."
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
@@ -38,34 +37,31 @@ msgstr "Egy új világot teremtettél."
 # 81%
 #. This is a database entry: the name of an inhabitant increment (tier / level).
 #: database files sql
-#, fuzzy
 msgid "Aristocrats"
-msgstr "arisztokrata"
+msgstr "Arisztokraták"
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
 msgid "Cannot go here."
-msgstr ""
+msgstr "Ide nem lehet menni"
 
 # 75%
 #. (text of widget: headline)
 #. This is a database entry: the name of an inhabitant increment (tier / level).
 #: database files horizons/i18n/guitranslations.py:224 sql
-#, fuzzy
 msgid "Citizens"
-msgstr "polgár"
+msgstr "Polgárok"
 
 # 77%
 #. This is a database entry: the name of an inhabitant increment (tier / level).
 #: database files sql
-#, fuzzy
 msgid "Merchants"
-msgstr "kereskedő"
+msgstr "Kereskedők"
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
 msgid "One of your fields requires a farm to harvest its crops."
-msgstr ""
+msgstr "A meződnek szüksége van egy farmra, hogy a termést le arathasd."
 
 #. (text of widget: headline)
 #. This is a database entry: the name of an inhabitant increment (tier / level).
@@ -107,6 +103,8 @@ msgstr "Néhány lakosod elköltözött."
 #: database files sql
 msgid "The route is now configured. Start it via the \"start route\" button in the \"configure route\" menu."
 msgstr ""
+"Az útvonal beállítva. Elindíthatod a \"útvonal indítása\" gombbal az \"útvonal "
+"beállítása\" menüből."
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
@@ -116,8 +114,9 @@ msgstr "Utakat húzva is építhetsz."
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
+#, fuzzy
 msgid "You cannot tear the warehouse, your settlements needs it."
-msgstr ""
+msgstr "Ne bántsd a raktár házat, a lakosaidnak szüksége van rá."
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
@@ -130,7 +129,7 @@ msgstr ""
 #: database files sql
 #, python-format
 msgid "You need more {resource} to build this building."
-msgstr "Több {resource} nyersanyagra van szükség az épület megépítéséhez."
+msgstr "Kevés a(z) {resource} az épület megépítéséhez."
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
@@ -151,16 +150,14 @@ msgstr "A játékmeneted automatikusan mentve lett."
 # 83%
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
-#, fuzzy
 msgid "Your game has been quicksaved."
-msgstr "A játékmeneted automatikusan mentve lett."
+msgstr "Gyors mentés kész."
 
 # 86%
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
-#, fuzzy
 msgid "Your game has been saved."
-msgstr "A játékmeneted automatikusan mentve lett."
+msgstr "A játék mentve."
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
@@ -1043,7 +1040,7 @@ msgstr "Csatahajók"
 
 #: horizons/gui/tabs/boatbuildertab.py:267
 msgid "War ships"
-msgstr "Csata hajó"
+msgstr "Csatahajók"
 
 #: horizons/gui/tabs/boatbuildertab.py:284
 msgid "Confirm order"
