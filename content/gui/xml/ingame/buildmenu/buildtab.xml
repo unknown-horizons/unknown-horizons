@@ -16,16 +16,16 @@
 		<Label position="108,11" text="" name="label_21" />
 		<Label position="162,11" text="" name="label_31" />
 		<HBox position="0,30" padding="2" name="iconbox_x1">
-			<Icon name="icon_01" />
-			<Icon name="icon_11" />
-			<Icon name="icon_21" />
-			<Icon name="icon_31" />
+			<Icon name="icon_01" size="52,52" />
+			<Icon name="icon_11" size="52,52" />
+			<Icon name="icon_21" size="52,52" />
+			<Icon name="icon_31" size="52,52" />
 		</HBox>
 		<HBox position="0,32" padding="8" name="buttonbox_x1">
-			<ImageButton name="button_01" />
-			<ImageButton name="button_11" />
-			<ImageButton name="button_21" />
-			<ImageButton name="button_31" />
+			<ImageButton name="button_01" min_size="46,46" />
+			<ImageButton name="button_11" min_size="46,46" />
+			<ImageButton name="button_21" min_size="46,46" />
+			<ImageButton name="button_31" min_size="46,46" />
 		</HBox>
 	</Container>
 
@@ -35,16 +35,16 @@
 		<Label position="108,11" text="" name="label_22" />
 		<Label position="162,11" text="" name="label_32" />
 		<HBox position="0,30" padding="2" name="iconbox_x2">
-			<Icon name="icon_02" />
-			<Icon name="icon_12" />
-			<Icon name="icon_22" />
-			<Icon name="icon_32" />
+			<Icon name="icon_02" size="52,52" />
+			<Icon name="icon_12" size="52,52" />
+			<Icon name="icon_22" size="52,52" />
+			<Icon name="icon_32" size="52,52" />
 		</HBox>
 		<HBox position="0,32" padding="8" name="buttonbox_x2">
-			<ImageButton name="button_02" />
-			<ImageButton name="button_12" />
-			<ImageButton name="button_22" />
-			<ImageButton name="button_32" />
+			<ImageButton name="button_02" min_size="46,46" />
+			<ImageButton name="button_12" min_size="46,46" />
+			<ImageButton name="button_22" min_size="46,46" />
+			<ImageButton name="button_32" min_size="46,46" />
 		</HBox>
 	</Container>
 
@@ -54,16 +54,16 @@
 		<Label position="108,11" text="" name="label_23" />
 		<Label position="162,11" text="" name="label_33" />
 		<HBox position="0,30" padding="2" name="iconbox_x3">
-			<Icon name="icon_03" />
-			<Icon name="icon_13" />
-			<Icon name="icon_23" />
-			<Icon name="icon_33" />
+			<Icon name="icon_03" size="52,52" />
+			<Icon name="icon_13" size="52,52" />
+			<Icon name="icon_23" size="52,52" />
+			<Icon name="icon_33" size="52,52" />
 		</HBox>
 		<HBox position="0,32" padding="8" name="buttonbox_x3">
-			<ImageButton name="button_03" />
-			<ImageButton name="button_13" />
-			<ImageButton name="button_23" />
-			<ImageButton name="button_33" />
+			<ImageButton name="button_03" min_size="46,46" />
+			<ImageButton name="button_13" min_size="46,46" />
+			<ImageButton name="button_23" min_size="46,46" />
+			<ImageButton name="button_33" min_size="46,46" />
 		</HBox>
 	</Container>
 
@@ -73,16 +73,16 @@
 		<Label position="108,11" text="" name="label_24" />
 		<Label position="162,11" text="" name="label_34" />
 		<HBox position="0,30" padding="2" name="iconbox_x4">
-			<Icon name="icon_04" />
-			<Icon name="icon_14" />
-			<Icon name="icon_24" />
-			<Icon name="icon_34" />
+			<Icon name="icon_04" size="52,52" />
+			<Icon name="icon_14" size="52,52" />
+			<Icon name="icon_24" size="52,52" />
+			<Icon name="icon_34" size="52,52" />
 		</HBox>
 		<HBox position="0,32" padding="8" name="buttonbox_x4">
-			<ImageButton name="button_04" />
-			<ImageButton name="button_14" />
-			<ImageButton name="button_24" />
-			<ImageButton name="button_34" />
+			<ImageButton name="button_04" min_size="46,46" />
+			<ImageButton name="button_14" min_size="46,46" />
+			<ImageButton name="button_24" min_size="46,46" />
+			<ImageButton name="button_34" min_size="46,46" />
 		</HBox>
 	</Container>
 
