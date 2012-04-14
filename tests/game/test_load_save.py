@@ -25,14 +25,29 @@ import tempfile
 from horizons.command.building import Build
 from horizons.command.production import ToggleActive
 from horizons.command.unit import CreateUnit
-from horizons.constants import BUILDINGS, PRODUCTION, UNITS, COLLECTORS
-from horizons.util.worldobject import WorldObject
+from horizons.constants import BUILDINGS, PRODUCTION, UNITS, COLLECTORS, RES
+from horizons.util import WorldObject, Point
 from horizons.world.production.producer import Producer
 from horizons.world.component.collectingcompontent import CollectingComponent
+from horizons.world.component.storagecomponent import StorageComponent
 from horizons.world.units.collectors import Collector
 from horizons.scheduler import Scheduler
 
 from tests.game import game_test, new_session, settle, load_session
+
+
+# utility
+def saveload(session):
+	"""Use like this:
+	session = saveload(session)
+	"""
+	fd, filename = tempfile.mkstemp()
+	os.close(fd)
+	assert session.save(savegamename=filename)
+	session.end(keep_map=True)
+	session =  load_session(filename)
+	Scheduler().before_ticking() # late init finish (not ticking already)
+	return session
 
 @game_test(manual_session=True)
 def test_load_inactive_production():
@@ -138,16 +153,6 @@ def test_hunter_save_load():
 	CreateUnit(island.worldid, UNITS.WILD_ANIMAL, 28, 27)(issuer=None)
 	CreateUnit(island.worldid, UNITS.WILD_ANIMAL, 29, 27)(issuer=None)
 
-	# utility
-	def saveload(session):
-		fd, filename = tempfile.mkstemp()
-		os.close(fd)
-		assert session.save(savegamename=filename)
-		session.end(keep_map=True)
-		session =  load_session(filename)
-		Scheduler().before_ticking() # late init finish (not ticking already)
-		return session
-
 	def get_hunter_collector(session):
 		hunter = WorldObject.get_object_by_id(hunter_worldid)
 		return hunter.get_component(CollectingComponent)._CollectingComponent__collectors[0]
@@ -181,3 +186,32 @@ def test_hunter_save_load():
 
 	# last state reached successfully 2 times -> finished
 
+
+@game_test(manual_session=True)
+def test_settler_save_load():
+	"""Save/loading """
+	session, player = new_session()
+	settlement, island = settle(session)
+
+	# setup:
+	# 1) build settler
+	# 2) save/load
+	# 3) build main square
+	# -> settler won't load properly and not use the resources and die
+
+	settler = Build(BUILDINGS.RESIDENTIAL_CLASS, 25, 22, island, settlement=settlement)(player)
+	assert settler
+	settler_worldid = settler.worldid
+
+	main_square = Build(BUILDINGS.MAIN_SQUARE_CLASS, 23, 24, island, settlement=settlement)(player)
+	assert main_square
+	main_square.get_component(StorageComponent).inventory.alter(RES.FOOD_ID, 100)
+
+	session = saveload(session)
+
+	session.run(seconds=500)
+
+	tile = session.world.get_tile(Point(25, 22))
+
+	# tile will contain ruin in case of failure
+	assert tile.object.id == BUILDINGS.RESIDENTIAL_CLASS

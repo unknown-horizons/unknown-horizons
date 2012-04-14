@@ -126,11 +126,6 @@ class ResourceHandler(object):
 		except AttributeError: # no owner or no inventory, either way, we don't care
 			return None
 
-	def load_production(self, db, production_id):
-		"""Load a saved production and return it. Needs to be implemented when add_production is.
-		@return Production instance"""
-		raise NotImplementedError("This function has to be overridden!")
-
 	def pickup_resources(self, res, amount, collector):
 		"""Try to get amount number of resources of id res_id that are in stock
 		and removes them from the stock. Will return smaller amount if not
