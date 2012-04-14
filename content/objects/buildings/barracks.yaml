@@ -29,4 +29,4 @@ components:
       SlotsStorage:
         slot_sizes: {RES.TEXTILE: 99, RES.BOARDS: 99}
 actionsets:
-  as_3x3: {level: 0}
+  as_barracks0: {level: 0}
