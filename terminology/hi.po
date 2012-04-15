@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2012-03-31 21:42+0100\n"
-"PO-Revision-Date: 2012-04-15 13:01+0200\n"
+"PO-Revision-Date: 2012-04-15 13:03+0200\n"
 "Last-Translator: Kinshuk <kinshuk@hashstash.in>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: hi\n"
@@ -231,7 +231,6 @@ msgstr "विस्तार"
 msgid "tree"
 msgstr "पेड़"
 
-#, fuzzy
 msgid "your"
 msgstr "आपका"
 
@@ -364,28 +363,28 @@ msgid "decrease"
 msgstr "कम करें"
 
 msgid "description"
-msgstr ""
+msgstr "विवरण"
 
 msgid "fish"
-msgstr ""
+msgstr "मछली"
 
 msgid "increase"
-msgstr ""
+msgstr "बढाएं"
 
 msgid "lamb"
-msgstr ""
+msgstr "मेमना"
 
 msgid "leave"
 msgstr ""
 
 msgid "liquor"
-msgstr ""
+msgstr "शराब"
 
 msgid "location"
-msgstr ""
+msgstr "स्थान"
 
 msgid "offer"
-msgstr ""
+msgstr "प्रस्ताव"
 
 msgid "potatoes"
 msgstr ""
