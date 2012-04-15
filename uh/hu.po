@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2012-03-24 02:16+0100\n"
-"PO-Revision-Date: 2012-04-15 09:42+0200\n"
+"PO-Revision-Date: 2012-04-15 10:01+0200\n"
 "Last-Translator: Szontágh <szontagh.ferenc@exahost.eu>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: hu\n"
@@ -3393,53 +3393,61 @@ msgstr "Szélmalom"
 #. tooltip_text of buildings:windmill
 #: horizons/i18n/objecttranslations.py:442
 msgid "Grinds corn into flour."
-msgstr ""
+msgstr "Gabonát őröl lisztté."
 
 #. name of buildings:woodentower
 #: horizons/i18n/objecttranslations.py:447
 msgid "Wooden Tower"
-msgstr ""
+msgstr "Fatorony"
 
 #. tooltip_text of buildings:woodentower
 #: horizons/i18n/objecttranslations.py:449
 msgid "Defends your settlement."
-msgstr ""
+msgstr "Védelmezi a gyarmatot."
 
 #: horizons/main.py:327
 msgid "Failed to start/load the game"
-msgstr ""
+msgstr "Nem sikerült elindítani/betölteni a játékot"
 
 #: horizons/main.py:328
 msgid "The game you selected couldn't be started."
-msgstr ""
+msgstr "A választott játékot nem sikerült elindítani."
 
 #: horizons/main.py:329
 msgid "The savegame might be broken or has been saved with an earlier version."
-msgstr ""
+msgstr "A mentés vagy megsérült vagy korábbi játékverzióval került mentésre."
 
 #: horizons/main.py:474
 #, python-format
 msgid "Due to technical reasons, the campaign file will be copied to the UH campaign directory ({path})."
 msgstr ""
+"Technikai okok miatt, a hadjárat fájl át lett másolva az UH kampány "
+"könyvtárába ({path})."
 
 #: horizons/main.py:476
 msgid "This means that changes in the file you specified will not apply to the game directly."
 msgstr ""
+"Ez azt jelenti, hogy a módosítások a fájlban nem lettek alkalmazva "
+"közvetlenül a játékban."
 
 #: horizons/main.py:478
 #, python-format
 msgid "To see the changes, either always start UH with the current arguments or edit the file {filename}."
 msgstr ""
+"Hogy lásd a módosításokat, állandóan indítsd az UH-t az aktuális "
+"paraméterekkel, vagy módosítsd a fájlt {filename}."
 
 #. if this is reached, we are screwed. Something went wrong in the simulation,
 #. but we don't know what. Stop the game.
 #: horizons/manager.py:174
 msgid "The games have run out of sync. This indicates an unknown internal error, the game cannot continue."
 msgstr ""
+"A játék kiesett a szinkronból. Ez egy ismeretlen belső hibát jelent, a játék "
+"nem folytatható."
 
 #: horizons/manager.py:175
 msgid "We are very sorry and hope to have this bug fixed in a future version."
-msgstr ""
+msgstr "Nagyon sajnáljuk, és reméljük a hiba megszűnik egy jövőbeli verzióban."
 
 #: horizons/mpsession.py:66
 msgid "Not possible"
@@ -3447,82 +3455,82 @@ msgstr "Nem lehetséges"
 
 #: horizons/mpsession.py:66
 msgid "Save/load for multiplayer games is not possible yet"
-msgstr "Mentés/betöltés a multiplayer játéknál nem lehetséges"
+msgstr "Mentés/betöltés a multiplayer játéknál nem lehetséges még"
 
 #: horizons/mpsession.py:77
 msgid "The filename must consist only of letters, numbers, spaces and _.-"
 msgstr ""
+"A fájlnév csak betűket, számokat, szóközöket és _.- karaktereket "
+"tartalmazhat"
 
 #: horizons/savegamemanager.py:360
-#, python-format
+#, python-format, fuzzy
 msgid "Error: don't know how to handle condition type {condition}"
-msgstr ""
+msgstr "Hiba: nem tudom, hogy kezeljem a következő állapot típust {condition}"
 
 #: horizons/savegamemanager.py:410 horizons/savegamemanager.py:416
 #, python-format
 msgid "Error: Cannot find campaign '{name}'."
-msgstr ""
+msgstr "Hiba: Nem találom a hadjáratot '{name}'."
 
 #: horizons/savegamemanager.py:435 horizons/savegamemanager.py:441
 #, python-format
 msgid "Error: Cannot find scenario '{name}'."
-msgstr ""
+msgstr "Hiba: Nem találom a szkenáriót '{name}'."
 
 #: horizons/scenario/actions.py:93
 msgid "You have won!"
-msgstr ""
+msgstr "Nyertél!"
 
 #: horizons/scenario/actions.py:94
 msgid "You have completed this scenario."
-msgstr ""
+msgstr "Teljesítetted a szkenáriót."
 
 # 75%
 #: horizons/scenario/actions.py:95
-#, fuzzy
 msgid "Do you want to continue playing?"
-msgstr "Folytatod?"
+msgstr "Folytatod a játékot?"
 
 #: horizons/scenario/scenarioeventhandler.py:157
 #: horizons/scenario/scenarioeventhandler.py:167
 msgid "unknown"
-msgstr ""
+msgstr "ismeretlen"
 
 #. usually invalid filename
 #: horizons/session.py:489
 msgid "Failed to create savegame file"
-msgstr "Nem sikerült létrehozni a mentést"
+msgstr "Nem sikerült létrehozni a mentés fájlját"
 
 #: horizons/session.py:490
 msgid "There has been an error while creating your savegame file."
-msgstr "Nem történt hiba a játék mentése közben."
+msgstr "Hiba történt a mentés fájljának létrehozásakor."
 
 #: horizons/session.py:491
 msgid "This usually means that the savegame name contains unsupported special characters."
 msgstr ""
-"Ez általában azt jelenti, hogy a mentés neve nem támogatott karaktereket "
-"tartalmaz."
+"Ez általában azt jelenti, hogy a mentés neve nem támogatott speciális "
+"karaktereket tartalmaz."
 
 #: horizons/session.py:499
 msgid "Access is denied"
-msgstr ""
+msgstr "Hozzáférés megtagadva"
 
 #: horizons/session.py:500
 msgid "The savegame file is probably read-only."
-msgstr ""
+msgstr "A mentás fájlja valószínűleg csak olvasható."
 
 #: horizons/session.py:503
 msgid "File used by another process"
-msgstr "Fájl által használt másik folyamat"
+msgstr "A fájlt egy másik folyamat használja"
 
 #: horizons/session.py:504
 msgid "The savegame file is currently used by another program."
-msgstr ""
+msgstr "A játékmentés fájlját jelenleg egy másik program használja."
 
 # 75%
 #: horizons/spsession.py:66
-#, fuzzy
 msgid "Failed to quicksave."
-msgstr "Nem sikerült menteni."
+msgstr "Nem sikerült a gyors mentés."
 
 #: horizons/spsession.py:67
 msgid "An error happened during quicksave. Your game has not been saved."
@@ -3531,66 +3539,69 @@ msgstr "Hiba történt a gyorsmentés közben. A játék nem lett elmentve."
 #: horizons/spsession.py:68
 msgid "If this error happens again, please contact the development team:"
 msgstr ""
+"Hogyha ez a hiba még egyszer megtörténik, kérlek vedd fel a kapcsolatot a "
+"fejlesztői csapattal:"
 
 #: horizons/spsession.py:76
 msgid "No quicksaves found"
-msgstr "Nem található gyorsmentés"
+msgstr "Nem találhatóak gyors mentések"
 
 #: horizons/spsession.py:76
 msgid "You need to quicksave before you can quickload."
-msgstr "Gyorsmentés szükséges a gyorsbetöltéshez."
+msgstr "Először egy gyors mentést kell készítened a betöltéshez."
 
 #: horizons/util/checkupdates.py:70
-#, fuzzy
 msgid "New version of Unknown Horizons"
-msgstr "Unknown Horizons indítása"
+msgstr "Új játék verzió"
 
 #: horizons/util/checkupdates.py:72
 #, python-format
 msgid "There is a more recent release of Unknown Horizons ({new_version}) than the one you are currently using ({old_version})."
 msgstr ""
+"Egy újabb kiadása jelent meg a játéknak ({new_version}) a te aktuális "
+"verziódhoz képest ({old_version})."
 
 #: horizons/util/checkupdates.py:76
 msgid "Click to download"
-msgstr ""
+msgstr "Klikk a letöltéshez"
 
 #: horizons/util/checkupdates.py:80
 msgid "A page has been opened in your browser."
-msgstr ""
+msgstr "Egy oldalt nyitottunk meg a böngésződben."
 
 #: horizons/util/uhdbaccessor.py:150
 #, python-format
 msgid "{building}: {description}"
-msgstr ""
+msgstr "{building}: {description}"
 
 #: horizons/world/building/buildable.py:36
 msgid "Buildings must be built on islands."
-msgstr ""
+msgstr "Épületeket a szigeten lehet csak építeni."
 
 #: horizons/world/building/buildable.py:37
 msgid "The ground is not suitable for this building."
-msgstr ""
+msgstr "A terület nem alkalmas ennek az épületnek."
 
 #: horizons/world/building/buildable.py:38
 #: horizons/world/building/buildable.py:40
 msgid "You can only build this within your settlement."
-msgstr ""
+msgstr "Kizárólag a gyarmatodon tudod felépíteni."
 
 #: horizons/world/building/buildable.py:39
 msgid "This area is already occupied."
-msgstr ""
+msgstr "Ez a terület már foglalt."
 
 #: horizons/world/building/buildable.py:41
 msgid "Another player has already occupied this island."
-msgstr ""
+msgstr "Egy másik játékos már elfoglalta ezt a szigetet."
 
 #: horizons/world/building/buildable.py:42
 msgid "You can't build this on top of another building."
-msgstr ""
+msgstr "Nem építheted ezt egy másik épület felé."
 
 #: horizons/world/building/buildable.py:43
 msgid "You can't build this on top of a unit."
-msgstr ""
+msgstr "Nem építheted egy egység felé."
 
 #: horizons/world/building/buildable.py:44
 msgid "This building must be built on the coastline."
