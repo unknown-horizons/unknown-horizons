@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2012-03-31 21:42+0100\n"
-"PO-Revision-Date: 2012-04-15 11:57+0200\n"
+"PO-Revision-Date: 2012-04-15 12:15+0200\n"
 "Last-Translator: Kinshuk <kinshuk@hashstash.in>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: hi\n"
@@ -254,47 +254,50 @@ msgstr "मिष्टान्न"
 msgid "fisher"
 msgstr "मछ्वारा"
 
+#, fuzzy
 msgid "free trader"
-msgstr ""
+msgstr "व्यापारी"
 
 msgid "happiness"
-msgstr ""
+msgstr "ख़ुशी"
 
+#, fuzzy
 msgid "in stock"
-msgstr ""
+msgstr "भंडार में"
 
 msgid "money"
-msgstr ""
+msgstr "धन"
 
 msgid "pavilion"
-msgstr ""
+msgstr "मंडप"
 
 msgid "running costs"
-msgstr ""
+msgstr "लागत"
 
 msgid "sugar"
-msgstr ""
+msgstr "चीनी"
 
 msgid "taxes"
-msgstr ""
+msgstr "करों"
 
 msgid "tax"
-msgstr ""
+msgstr "कर"
 
 msgid "tools"
-msgstr ""
+msgstr "औज़ार"
 
 msgid "button"
-msgstr ""
+msgstr "बटन"
 
 msgid "continue"
-msgstr ""
+msgstr "जरी रखें"
 
 msgid "faith"
-msgstr ""
+msgstr "श्रद्धा"
 
+#, fuzzy
 msgid "help"
-msgstr ""
+msgstr "सहायता"
 
 msgid "left"
 msgstr ""
