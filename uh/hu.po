@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2012-03-24 02:16+0100\n"
-"PO-Revision-Date: 2012-04-15 08:42+0200\n"
+"PO-Revision-Date: 2012-04-15 08:52+0200\n"
 "Last-Translator: Szontágh <szontagh.ferenc@exahost.eu>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: hu\n"
@@ -2674,6 +2674,9 @@ msgstr "0 esetében az alapértelmezettet meghajtót használja"
 #: horizons/i18n/guitranslations.py:945
 msgid "Don't use in normal game session. Decides whether to write debug information in the logging directory of your user directory. Slows the game down."
 msgstr ""
+"Ne használd normál játékkor. Eldöntheted, hogy írjon-e hibakeresési "
+"információkat a naplózó könyvtárba a felhasználói könyvtáradba. Lelassítja a "
+"játékot."
 
 #. (helptext of widget: edge_scrolling_label)
 #: horizons/i18n/guitranslations.py:947
@@ -2684,6 +2687,7 @@ msgstr "Nézőpont változtatása, mikor az egér a térkép széléhez ér"
 #: horizons/i18n/guitranslations.py:949
 msgid "Set the maximum frame rate used. Default: 60 fps."
 msgstr ""
+"Beállítja a maximum használt képkocka sebességet. Alapértelmezett: 60 fps"
 
 #. (helptext of widget: minimap_rotation_label)
 #: horizons/i18n/guitranslations.py:951
@@ -2760,14 +2764,13 @@ msgstr "Véletlen térkép"
 #. (text of widget: scenario)
 #: horizons/i18n/guitranslations.py:993
 msgid "Scenario"
-msgstr ""
+msgstr "Szkenárió"
 
 # 90%
 #. (helptext of widget: okay)
 #: horizons/i18n/guitranslations.py:997
-#, fuzzy
 msgid "Start game"
-msgstr "Játék megkezdése:"
+msgstr "Játék indítása"
 
 #. (text of widget: choose_map_lbl)
 #. (text of widget: headline_choose_map_lbl)
@@ -2775,52 +2778,52 @@ msgstr "Játék megkezdése:"
 #: horizons/i18n/guitranslations.py:1002 horizons/i18n/guitranslations.py:1007
 #: horizons/i18n/guitranslations.py:1019
 msgid "Choose a map to play:"
-msgstr ""
+msgstr "Válassz térképet a játékhoz:"
 
 #. (text of widget: headline_map_settings_lbl)
 #: horizons/i18n/guitranslations.py:1012
 msgid "Map settings:"
-msgstr ""
+msgstr "Térkép beállítások:"
 
 #. (text of widget: seed_string_lbl)
 #: horizons/i18n/guitranslations.py:1014
 msgid "Seed:"
-msgstr ""
+msgstr "Mag:"
 
 #. (text of widget: ai_players_label)
 #: horizons/i18n/guitranslations.py:1024
 msgid "AI players:"
-msgstr ""
+msgstr "Gépi játékosok:"
 
 #. (text of widget: headline_game_settings_lbl)
 #: horizons/i18n/guitranslations.py:1029
 msgid "Game settings:"
-msgstr ""
+msgstr "Játék beállításai:"
 
 #. (text of widget: lbl_disasters) Whether there should be disasters in the game.
 #: horizons/i18n/guitranslations.py:1031
 msgid "Disasters"
-msgstr ""
+msgstr "Katasztrófák"
 
 #. (text of widget: lbl_free_trader) Whether to create this kind of player in the game.
 #: horizons/i18n/guitranslations.py:1033
 msgid "Free Trader"
-msgstr ""
+msgstr "Szabad kereskedő"
 
 #. (text of widget: lbl_pirates) Whether to create this kind of player in the game.
 #: horizons/i18n/guitranslations.py:1035
 msgid "Pirates"
-msgstr ""
+msgstr "Kalózok"
 
 #. (text of widget: color_label)
 #: horizons/i18n/guitranslations.py:1040
 msgid "Color:"
-msgstr ""
+msgstr "Szín:"
 
 #. (text of widget: player_label)
 #: horizons/i18n/guitranslations.py:1042
 msgid "Player name:"
-msgstr ""
+msgstr "Játékos neve:"
 
 #. name of buildings:alvearies
 #: horizons/i18n/objecttranslations.py:53
@@ -2830,42 +2833,44 @@ msgstr ""
 #. tooltip_text of buildings:alvearies
 #: horizons/i18n/objecttranslations.py:55
 msgid "Keeps bees. Produces honeycombs used for confectionery. Needs a farm."
-msgstr ""
+msgstr "Méheket tart. Törökmézt állít elő a cukrászdának. Szüksége van farmra."
 
 #. name of buildings:bakery
 #: horizons/i18n/objecttranslations.py:60
 msgid "Bakery"
-msgstr ""
+msgstr "Pékség"
 
 #. tooltip_text of buildings:bakery
 #: horizons/i18n/objecttranslations.py:62
 msgid "Consumes flour. Produces food."
-msgstr ""
+msgstr "Lisztet használ fel. Élelmiszert állít elő."
 
 #. name of buildings:barracks
 #: horizons/i18n/objecttranslations.py:67
 msgid "Barracks"
-msgstr ""
+msgstr "Kaszárnya"
 
 #. tooltip_text of buildings:barracks
 #: horizons/i18n/objecttranslations.py:69
 msgid "Recruits units suitable for ground combat."
-msgstr ""
+msgstr "Egységeket toboroz szárazföldi harcokhoz."
 
+# Érdekes... 
 #. name of buildings:blender
 #: horizons/i18n/objecttranslations.py:74
 msgid "Blender"
-msgstr ""
+msgstr "Fűszeres"
 
 #. tooltip_text of buildings:blender
 #: horizons/i18n/objecttranslations.py:76
+#, fuzzy
 msgid "Produces condiments out of spices."
-msgstr ""
+msgstr "Fűszert termel."
 
 #. name of buildings:boatbuilder
 #: horizons/i18n/objecttranslations.py:81
 msgid "Boat Builder"
-msgstr ""
+msgstr "Hajó építő"
 
 #. tooltip_text of buildings:boatbuilder
 #: horizons/i18n/objecttranslations.py:83
@@ -2875,7 +2880,7 @@ msgstr "Csónakokat és kis hajókat épít. Partra épül."
 #. name of buildings:brickyard
 #: horizons/i18n/objecttranslations.py:88
 msgid "Brickyard"
-msgstr ""
+msgstr "Téglagyár"
 
 #. tooltip_text of buildings:brickyard
 #: horizons/i18n/objecttranslations.py:90
@@ -2885,7 +2890,7 @@ msgstr "Agyagból téglát készít."
 #. name of buildings:butchery
 #: horizons/i18n/objecttranslations.py:95
 msgid "Butchery"
-msgstr ""
+msgstr "Hentes"
 
 #. tooltip_text of buildings:butchery
 #: horizons/i18n/objecttranslations.py:97
@@ -2895,7 +2900,7 @@ msgstr "Malac vagy marha szükséges. Élelmiszert termel."
 #. name of buildings:cattlerun
 #: horizons/i18n/objecttranslations.py:102
 msgid "Cattle Run"
-msgstr ""
+msgstr "Szarvasmarha kifutó"
 
 #. tooltip_text of buildings:cattlerun
 #: horizons/i18n/objecttranslations.py:104
@@ -2905,7 +2910,7 @@ msgstr "Marhákat nevel. Egy farm szükséges."
 #. name of buildings:charcoalburning
 #: horizons/i18n/objecttranslations.py:109
 msgid "Charcoal Burning"
-msgstr ""
+msgstr "Szén égető"
 
 #. tooltip_text of buildings:charcoalburning
 #: horizons/i18n/objecttranslations.py:111
