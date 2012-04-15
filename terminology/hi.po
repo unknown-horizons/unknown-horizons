@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2012-03-31 21:42+0100\n"
-"PO-Revision-Date: 2012-04-15 11:36+0200\n"
+"PO-Revision-Date: 2012-04-15 11:57+0200\n"
 "Last-Translator: Kinshuk <kinshuk@hashstash.in>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: hi\n"
@@ -219,37 +219,40 @@ msgid "save"
 msgstr "संचित करें"
 
 msgid "built"
-msgstr ""
+msgstr "निर्मित"
 
 msgid "pasture"
-msgstr ""
+msgstr "चारागाह"
 
+#, fuzzy
 msgid "reach"
-msgstr ""
+msgstr "विस्तार"
 
 msgid "tree"
-msgstr ""
+msgstr "पेड़"
 
+#, fuzzy
 msgid "your"
-msgstr ""
+msgstr "आपका"
 
 msgid "your settlement"
-msgstr ""
+msgstr "आपका उपनिवेश"
 
 msgid "add"
-msgstr ""
+msgstr "जोड़ें"
 
 msgid "check"
-msgstr ""
+msgstr "जांचें"
 
 msgid "choose"
-msgstr ""
+msgstr "चुनें"
 
+#, fuzzy
 msgid "confectionery"
-msgstr ""
+msgstr "मिष्टान्न"
 
 msgid "fisher"
-msgstr ""
+msgstr "मछ्वारा"
 
 msgid "free trader"
 msgstr ""
