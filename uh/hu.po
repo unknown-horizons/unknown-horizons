@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2012-03-24 02:16+0100\n"
-"PO-Revision-Date: 2012-04-15 10:01+0200\n"
+"PO-Revision-Date: 2012-04-15 10:27+0200\n"
 "Last-Translator: Szontágh <szontagh.ferenc@exahost.eu>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: hu\n"
@@ -21,7 +21,7 @@ msgstr ""
 #: database files sql
 #, python-format
 msgid "A new settlement was founded by {player}."
-msgstr "{player} új települést alapított."
+msgstr "Egy új települést alapított {player}."
 
 # 82%
 #. This is a database entry: a messagewidget message (left part of the screen).
@@ -43,7 +43,7 @@ msgstr "Arisztokraták"
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
 msgid "Cannot go here."
-msgstr "Ide nem lehet menni"
+msgstr "Ide nem lehet menni."
 
 # 75%
 #. (text of widget: headline)
@@ -572,7 +572,7 @@ msgid ""
 "Use at own risk!"
 msgstr ""
 "Az SDL megjelenítő egy visszalépéses megoldás, és veszélyes grafikai hibákat "
-"tartalmaz.\n"
+"tartalmaz. \n"
 "\n"
 "Csak saját felelősségre!"
 
@@ -725,8 +725,8 @@ msgstr "Mentés ideje: {time}"
 #, python-format
 msgid "Saved {amount} time"
 msgid_plural "Saved {amount} times"
-msgstr[0] "Mentve {amount}x"
-msgstr[1] "Mentve {amount}x"
+msgstr[0] "Mentve {amount} alkalomszor"
+msgstr[1] "Mentve {amount} alkalomszor"
 
 #: horizons/gui/gui.py:625
 #, python-format
@@ -784,9 +784,8 @@ msgstr "[{key}] = {text}"
 #: horizons/gui/widgets/playerssettlements.py:101
 #: horizons/i18n/guitranslations.py:417 horizons/i18n/guitranslations.py:439
 #: horizons/i18n/guitranslations.py:459
-#, fuzzy
 msgid "Click to change the name of your settlement"
-msgstr "Kattints a település nevének megváltoztatásához."
+msgstr "Kattints a település nevének megváltoztatásához"
 
 #. e.g. when the pirate is disabled
 #. this dialog is pretty useless in this case
@@ -816,7 +815,7 @@ msgstr "A pyenet könyvtár nem található"
 #: horizons/gui/modules/multiplayermenu.py:45
 msgid "The multiplayer feature requires the library \"pyenet\", which couldn't be found on your system."
 msgstr ""
-"A többjátékos üzemmódhoz szükség van a \"pyenet\" programkönyvtárra, ami nem "
+"A többjátékos üzemmódhoz szükség van a \"pyenet\" programkönyvtárra, amely nem "
 "található meg a rendszereden."
 
 #: horizons/gui/modules/multiplayermenu.py:46
@@ -895,7 +894,7 @@ msgstr "Ez nem szép, reméljük hamarosan kényelmesebb megoldást tudunk nyúj
 msgid "Meanwhile, please request the file {path} from the game creator and put it in {map_directory} ."
 msgstr ""
 "Közben, kérlek kérd el a fájlt {path} a játék készítőjétől és másold be ide "
-"{map_directory}."
+"{map_directory} ."
 
 #. (text of widget: help)
 #. (text of widget: help) Main / in-game menu entry
@@ -1029,7 +1028,7 @@ msgstr "{ship} (hely a sorban:: {place})"
 
 #: horizons/gui/tabs/boatbuildertab.py:165
 msgid "Resources still needed:"
-msgstr "Szükséges nyersanyagok::"
+msgstr "Szükséges nyersanyagok:"
 
 #: horizons/gui/tabs/boatbuildertab.py:242
 msgid "Fisher boats"
@@ -1088,7 +1087,7 @@ msgstr "Bányászat"
 
 #: horizons/gui/tabs/buildtabs.py:149
 msgid "Increment {increment}"
-msgstr "Növekedés {increment}"
+msgstr "Életszínvonal {increment}"
 
 #. (text of widget: headline)
 #. (helptext of widget: trade)
@@ -1254,7 +1253,7 @@ msgstr "Üresség"
 
 #: horizons/gui/widgets/logbook.py:153
 msgid "There is nothing written in your logbook yet!"
-msgstr "Nincs semmi írva az eseménykönyvedbe eddig!"
+msgstr "Nincs semmi írva az hajónaplódba eddig!"
 
 #. (text of widget: headline_graphics)
 #: horizons/gui/widgets/pickbeltwidget.py:91
@@ -1308,7 +1307,7 @@ msgstr "Semmi"
 
 #: horizons/gui/widgets/playersships.py:101
 msgid "N/A"
-msgstr " "
+msgstr "N/A"
 
 #: horizons/gui/widgets/productionoverview.py:54
 #, python-format
@@ -1364,7 +1363,7 @@ msgstr "Legalább két különböző gyarmat kell a kereskedelmi útvonalba."
 
 #: horizons/gui/widgets/routeconfig.py:144
 msgid "Click on a settlement to add a waypoint!"
-msgstr "Klikk egy gyarmatra egy új útvonal létrehozásához."
+msgstr "Klikk egy gyarmatra egy új útvonal létrehozásához!"
 
 #: horizons/gui/widgets/routeconfig.py:187
 msgid "Loading into ship"
@@ -2541,7 +2540,7 @@ msgstr "Hajó automatikus kirakodása:"
 #. (text of widget: autosave_interval_label)
 #: horizons/i18n/guitranslations.py:887
 msgid "Autosave interval in minutes:"
-msgstr "Automatikus mentés intervallum (perc):"
+msgstr "Automatikus mentési időköz percben:"
 
 #. (text of widget: color_depth_label)
 #: horizons/i18n/guitranslations.py:889
@@ -2668,7 +2667,7 @@ msgstr "A hajó kirakodása telep megalapítása után"
 #. (helptext of widget: color_depth_label)
 #: horizons/i18n/guitranslations.py:943
 msgid "If set to 0, use the driver default"
-msgstr "0 esetében az alapértelmezettet meghajtót használja"
+msgstr "Hogyha 0-ára van állítva, a meghajtó alap beállítását használja"
 
 #. (helptext of widget: debug_log_lbl)
 #: horizons/i18n/guitranslations.py:945
@@ -2687,7 +2686,7 @@ msgstr "Nézőpont változtatása, mikor az egér a térkép széléhez ér"
 #: horizons/i18n/guitranslations.py:949
 msgid "Set the maximum frame rate used. Default: 60 fps."
 msgstr ""
-"Beállítja a maximum használt képkocka sebességet. Alapértelmezett: 60 fps"
+"Beállítja a maximum használt képkocka sebességet. Alapértelmezett: 60 fps."
 
 #. (helptext of widget: minimap_rotation_label)
 #: horizons/i18n/guitranslations.py:951
@@ -2702,7 +2701,7 @@ msgstr "0 az alapértelmezett beállítás"
 #. (helptext of widget: network_port_lbl)
 #: horizons/i18n/guitranslations.py:955
 msgid "If set to 0, use the router default"
-msgstr "0 esetében az alapértelmezett router-t használja"
+msgstr "0 esetén a router alapértelmezését használja"
 
 #. (helptext of widget: uninterrupted_building_label)
 #: horizons/i18n/guitranslations.py:957
@@ -2793,7 +2792,7 @@ msgstr "Mag:"
 #. (text of widget: ai_players_label)
 #: horizons/i18n/guitranslations.py:1024
 msgid "AI players:"
-msgstr "Gépi játékosok:"
+msgstr "AI játékosok:"
 
 #. (text of widget: headline_game_settings_lbl)
 #: horizons/i18n/guitranslations.py:1029
@@ -2997,7 +2996,7 @@ msgstr "Tüzeket olt."
 #. name of buildings:fishdeposit
 #: horizons/i18n/objecttranslations.py:170
 msgid "Fish Deposit"
-msgstr "Hal lerakat."
+msgstr "Hal lerakat"
 
 #. name of buildings:fishermanstent
 #: horizons/i18n/objecttranslations.py:175
@@ -3052,7 +3051,7 @@ msgstr ""
 #. tooltip_text of buildings:log
 #: horizons/i18n/objecttranslations.py:210
 msgid "Road across a river."
-msgstr "Út egy folyón keresztül"
+msgstr "Út egy folyón keresztül."
 
 #. name of buildings:lookout
 #: horizons/i18n/objecttranslations.py:215
@@ -3318,7 +3317,7 @@ msgstr "Szerszámkészítő"
 #. tooltip_text of buildings:toolmaker
 #: horizons/i18n/objecttranslations.py:388
 msgid "Produces tools out of iron."
-msgstr "Fémből készít szerszámokat"
+msgstr "Fémből készít szerszámokat."
 
 #. name of buildings:trail
 #: horizons/i18n/objecttranslations.py:393
@@ -3605,137 +3604,143 @@ msgstr "Nem építheted egy egység felé."
 
 #: horizons/world/building/buildable.py:44
 msgid "This building must be built on the coastline."
-msgstr ""
+msgstr "Ezt az épületet csak a parton építheted fel."
 
 #: horizons/world/building/buildable.py:45
 msgid "This building requires to be placed near the ocean."
-msgstr ""
+msgstr "Ezt az épületet az óceán közelében kell elhelyezni."
 
 #: horizons/world/building/buildable.py:46
 msgid "This spot is too far away from your ship."
-msgstr ""
+msgstr "Ez a hely túl messze van a hajódtól."
 
 #: horizons/world/building/buildable.py:47
 msgid "This building can only be built on a resource source."
-msgstr ""
+msgstr "Ezt az épületet csak nyersanyag lelőhelyre építheted."
 
 #: horizons/world/component/tradepostcomponent.py:178
 msgid "The trade partner does not sell this."
-msgstr ""
+msgstr "A kereskedő partner nem árulja ezt."
 
 #: horizons/world/component/tradepostcomponent.py:186
 msgid "You can not store this."
-msgstr ""
+msgstr "Nem tudod ezt elraktározni."
 
 #: horizons/world/component/tradepostcomponent.py:190
 msgid "You can not afford to buy this."
-msgstr ""
+msgstr "Nem tudod felajánlani vásárlásra."
 
 #: horizons/world/component/tradepostcomponent.py:196
 msgid "The trade partner does not sell more of this."
-msgstr ""
+msgstr "A kereskedő partner nem árulja már ezt."
 
 #: horizons/world/component/tradepostcomponent.py:220
 msgid "The trade partner does not buy this."
-msgstr ""
+msgstr "A kereskedő partner nem vásárol már ilyet."
 
 #: horizons/world/component/tradepostcomponent.py:228
 msgid "You do not possess this."
-msgstr ""
+msgstr "Ez nem a te tulajdonod."
 
 #: horizons/world/component/tradepostcomponent.py:232
 msgid "The trade partner can not store more of this."
-msgstr ""
+msgstr "A kereskedő partner nem tud ebből többet elraktározni."
 
 #: horizons/world/component/tradepostcomponent.py:236
 msgid "The trade partner can not afford to buy this."
-msgstr ""
+msgstr "A kereskedő partner nem tud vásárlásra biztosítani ebből."
 
 #: horizons/world/component/tradepostcomponent.py:241
 msgid "The trade partner does not buy more of this."
-msgstr ""
+msgstr "A kereskedő partner nem vásárol már többet ebből."
 
 #: horizons/world/traderoute.py:282
 #, python-format
 msgid "Trade route: going to {location}"
-msgstr ""
+msgstr "Kereskedelmi útvonal: {location} felé tart"
 
 #: horizons/world/traderoute.py:286
 #, python-format
 msgid "Trade route: waiting at {position}"
-msgstr ""
+msgstr "Kereskedelmi útvonal: várakozás itt: {position}"
 
 #: horizons/world/units/ship.py:184
 #, python-format
 msgid "Going to {location}"
-msgstr ""
+msgstr "{position} felé tart"
 
 #: horizons/world/units/ship.py:186
 #, python-format
 msgid "Going to {x}, {y}"
-msgstr ""
+msgstr "Megy ide {x}, {y}"
 
 #: horizons/world/units/ship.py:191
 #, python-format
 msgid "Idle at {location}"
-msgstr ""
+msgstr "Tétlen itt {location}"
 
 #: horizons/world/units/ship.py:193
 #, python-format
 msgid "Idle at {x}, {y}"
-msgstr ""
+msgstr "Tétlen itt {x}, {y}"
 
 # 83%
 #: horizons/world/units/ship.py:207
-#, fuzzy
 msgid "Trader"
-msgstr "Kereskedelem"
+msgstr "Kereskedő"
 
 #: horizons/world/units/weaponholder.py:453
 #, python-format
 msgid "Attacking {target} '{name}' ({owner})"
-msgstr ""
+msgstr "Támadás {target} '{name}' ({owner})"
 
 #: horizons/world/units/weaponholder.py:458
 #, python-format
 msgid "Attacking {owner}"
-msgstr ""
+msgstr "Támadás {owner}"
 
 #: run_uh.py:206
 msgid "Unknown Horizons has crashed."
-msgstr ""
+msgstr "A játék összeomlott."
 
 #: run_uh.py:208
 msgid "We are very sorry for this and want to fix underlying error."
-msgstr ""
+msgstr "Nagyon sajnáljuk, és szeretnénk kijavítani a hibát."
 
 #: run_uh.py:209
 msgid "In order to do this, we need the information from the logfile:"
-msgstr ""
+msgstr "Ehhez szükségünk van az információkra a naplófájlból:"
 
 #: run_uh.py:211
 msgid "Please give it to us via IRC or our forum, for both see http://unknown-horizons.org ."
 msgstr ""
+"Kérlek küld el IRC-n, vagy a fórumunkon, amelyet a http://unknown-"
+"horizons.org oldalon találsz meg ."
 
 #: run_uh.py:251
 msgid "Error: Unable to find required libraries"
-msgstr ""
+msgstr "Hiba: Nem találom a szükséges könyvtárakat"
 
 #: run_uh.py:252
 msgid "We are sorry to inform you that a library that is required by Unknown Horizons, is missing and needs to be installed."
 msgstr ""
+"Sajnáljuk, de szüksége van a játéknak egyes könyvtárakra, amelyeket "
+"telepítened kell."
 
 #: run_uh.py:253
 msgid "Installers for Windows users are available at \"http://pyyaml.org/wiki/PyYAML\", Linux users should find it in their packagement management system under the name \"pyyaml\" or \"python-yaml\"."
 msgstr ""
+"Windowsos telepítő elérhető a \"http://pyyaml.org/wiki/PyYAML\" oldalon, míg a "
+"Linuxos felhasználók megtalálhatják a csomagkezelőjükben \"pyyaml\" vagy "
+"\"python-yaml\" néven."
 
 #: run_uh.py:283
 msgid "Thank you for using Unknown Horizons!"
-msgstr ""
+msgstr "Köszönjük, hogy a Unknown Horizons-szal játszol!"
 
 #: run_uh.py:455
 msgid "FIFE was not found."
-msgstr ""
+msgstr "FIFE nem található."
 
 #~ msgid "aristocrat"
 #~ msgstr "arisztokrata"
