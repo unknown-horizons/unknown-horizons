@@ -3,110 +3,136 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2012-03-31 21:42+0100\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"PO-Revision-Date: 2012-04-15 08:37+0200\n"
+"Last-Translator: Kinshuk <kinshuk@hashstash.in>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: hi\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Translate Toolkit 1.9.0\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Pootle 2.1.5\n"
 
+#, fuzzy
 msgid "build"
-msgstr ""
+msgstr "निर्माण"
 
+#, fuzzy
 msgid "game"
-msgstr ""
+msgstr "खेल"
 
+#, fuzzy
 msgid "building"
-msgstr ""
+msgstr "ईमारत"
 
+#, fuzzy
 msgid "settlement"
-msgstr ""
+msgstr "उपनिवेश"
 
 msgid "farm"
-msgstr ""
+msgstr "खेत"
 
+#, fuzzy
 msgid "ship"
-msgstr ""
+msgstr "जहाज"
 
+#, fuzzy
 msgid "tent"
-msgstr ""
+msgstr "शिविर"
 
 msgid "warehouse"
-msgstr ""
+msgstr "गोदाम"
 
+#, fuzzy
 msgid "resource"
-msgstr ""
+msgstr "संसाधन"
 
+#, fuzzy
 msgid "produce"
-msgstr ""
+msgstr "उपज"
 
+#, fuzzy
 msgid "field"
-msgstr ""
+msgstr "मैदान"
 
+#, fuzzy
 msgid "map"
-msgstr ""
+msgstr "नक़्शा"
 
 msgid "trade"
-msgstr ""
+msgstr "व्यापार"
 
+#, fuzzy
 msgid "inhabitants"
-msgstr ""
+msgstr "निवासी"
 
+#, fuzzy
 msgid "buy"
-msgstr ""
+msgstr "क्रय"
 
 msgid "overview"
 msgstr ""
 
+#, fuzzy
 msgid "click"
-msgstr ""
+msgstr "क्लिक"
 
 msgid "lumberjack"
-msgstr ""
+msgstr "लकड़हारा"
 
 msgid "resident"
-msgstr ""
+msgstr "निवासी"
 
+#, fuzzy
 msgid "main square"
-msgstr ""
+msgstr "चौपाल"
 
+#, fuzzy
 msgid "sailors"
-msgstr ""
+msgstr "नाविक"
 
+#, fuzzy
 msgid "food"
-msgstr ""
+msgstr "भोजन"
 
+#, fuzzy
 msgid "increment"
-msgstr ""
+msgstr "वृद्धि"
 
+#, fuzzy
 msgid "production"
-msgstr ""
+msgstr "उत्पादन"
 
+#, fuzzy
 msgid "select"
-msgstr ""
+msgstr "चयन"
 
 msgid "sell"
-msgstr ""
+msgstr "विक्रय"
 
+#, fuzzy
 msgid "setting"
-msgstr ""
+msgstr "विकल्प"
 
+#, fuzzy
 msgid "storage"
-msgstr ""
+msgstr "भंडार"
 
+#, fuzzy
 msgid "tab"
-msgstr ""
+msgstr "टैब"
 
+#, fuzzy
 msgid "upgrade"
-msgstr ""
+msgstr "उन्नति"
 
+#, fuzzy
 msgid "your inhabitants"
-msgstr ""
+msgstr "आपके निवासी"
 
+#, fuzzy
 msgid "close"
-msgstr ""
+msgstr "बंद करें"
 
 msgid "companies"
 msgstr ""
