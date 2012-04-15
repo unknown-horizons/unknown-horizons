@@ -57,6 +57,12 @@ components:
         consumes:
         - [RES.RAW_SUGAR, -1]
         time: 1
+      8:
+        produces:
+        - [RES.MEDICAL_HERBS, 1]
+        consumes:
+        - [RES.HERBS, -1]
+        time: 1
       0:
         produces:
         - [RES.CORN, 1]
