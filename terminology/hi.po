@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2012-03-31 21:42+0100\n"
-"PO-Revision-Date: 2012-04-15 09:16+0200\n"
+"PO-Revision-Date: 2012-04-15 11:36+0200\n"
 "Last-Translator: Kinshuk <kinshuk@hashstash.in>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: hi\n"
@@ -179,38 +179,44 @@ msgstr "अंनोन होराइजंस"
 msgid "wool"
 msgstr "ऊन"
 
+#, fuzzy
 msgid "boards"
-msgstr ""
+msgstr "पट"
 
+#, fuzzy
 msgid "collector"
-msgstr ""
+msgstr "संग्राहक"
 
 msgid "connection"
-msgstr ""
+msgstr "कड़ी"
 
 msgid "fire"
-msgstr ""
+msgstr "आग"
 
+#, fuzzy
 msgid "change"
-msgstr ""
+msgstr "बदल दें"
 
+#, fuzzy
 msgid "connect"
-msgstr ""
+msgstr "सम्बद्ध करें"
 
 msgid "cost"
-msgstr ""
+msgstr "क़ीमत"
 
 msgid "house"
-msgstr ""
+msgstr "घर"
 
+#, fuzzy
 msgid "log"
-msgstr ""
+msgstr "लट्ठा"
 
 msgid "road"
-msgstr ""
+msgstr "सड़क"
 
+#, fuzzy
 msgid "save"
-msgstr ""
+msgstr "संचित करें"
 
 msgid "built"
 msgstr ""
