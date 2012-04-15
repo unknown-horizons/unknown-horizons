@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2012-03-24 02:16+0100\n"
-"PO-Revision-Date: 2012-04-14 21:15+0200\n"
+"PO-Revision-Date: 2012-04-15 07:42+0200\n"
 "Last-Translator: Szontágh <szontagh.ferenc@exahost.eu>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: hu\n"
@@ -220,7 +220,7 @@ msgstr "faszén"
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "clay"
-msgstr "anyag"
+msgstr "agyag"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
@@ -231,12 +231,12 @@ msgstr "agyaglelőhely"
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "cocoa"
-msgstr ""
+msgstr "kakaó"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "cocoa beans"
-msgstr ""
+msgstr "kakaó mag"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
@@ -251,17 +251,17 @@ msgstr "közösség"
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "condiments"
-msgstr ""
+msgstr "fűszerek"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "confectionery"
-msgstr ""
+msgstr "cukrászat"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "corn"
-msgstr ""
+msgstr "kukorica"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
@@ -286,14 +286,13 @@ msgstr "oktatás"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
-#, fuzzy
 msgid "faith"
-msgstr "bizalom"
+msgstr "hit"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "fire"
-msgstr ""
+msgstr "tűz"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
@@ -303,7 +302,7 @@ msgstr "hal"
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "flour"
-msgstr ""
+msgstr "liszt"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
@@ -318,12 +317,12 @@ msgstr "összejövetel"
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "grain"
-msgstr ""
+msgstr "gabona"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "grapes"
-msgstr ""
+msgstr "szőlő"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
@@ -343,7 +342,7 @@ msgstr "fűszernövények"
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "honeycombs"
-msgstr ""
+msgstr "törökméz"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
@@ -400,12 +399,12 @@ msgstr "só"
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "spice plants"
-msgstr ""
+msgstr "fűszer ültetvény"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "spices"
-msgstr ""
+msgstr "fűszerek"
 
 # 76%
 #. This is a database entry: the name of a resource.
@@ -416,8 +415,9 @@ msgstr "vaslelőhely"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
+#, fuzzy
 msgid "stone tops"
-msgstr ""
+msgstr "kő felsők"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
@@ -458,12 +458,12 @@ msgstr "szerszámok"
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "trees"
-msgstr ""
+msgstr "fák"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "vines"
-msgstr ""
+msgstr "bor"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
@@ -474,55 +474,57 @@ msgstr "gyapjú"
 #: database files sql
 #, python-format
 msgid "{player1} and {player2} have allied their forces."
-msgstr ""
+msgstr "{player1} és {player2} egyesítették erejüket."
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
 #, python-format
 msgid "{player1} and {player2} have ended the war and are now allied."
-msgstr ""
+msgstr "{player1} és {player2} felhagytak a háborúval és szövetségre léptek."
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
 #, python-format
 msgid "{player1} and {player2} have ended their alliance and are now in a state of war."
 msgstr ""
+"{player1} és {player2} megszüntették a szövetségüket és háborúba léptek "
+"egymás ellen."
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
 #, python-format
 msgid "{player1} and {player2} have settled their hostility."
-msgstr ""
+msgstr "{player1} és {player2} megoldották az egymás elleni rossz indulatukat."
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
 #, python-format
 msgid "{player1} and {player2} have terminated their alliance."
-msgstr ""
+msgstr "{player1} és {player2} megszakították a szövetségüket."
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
 #, python-format
 msgid "{player1} and {player2} will fight each other to the death."
-msgstr ""
+msgstr "{player1} és {player2} halálukig harcolnak egymás ellen."
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
 #, python-format
 msgid "{player}: {message}"
-msgstr ""
+msgstr "{player}: {message}"
 
 #: editor/editor.py:33
 msgid "Specify the path to FIFE root directory."
-msgstr ""
+msgstr "Add meg az elérési utat a FIFE gyökérkönyvtárához."
 
 #: horizons/command/game.py:36
 msgid "Invalid filename"
-msgstr ""
+msgstr "Hibás fájlnév"
 
 #: horizons/command/game.py:37
 msgid "Received an invalid filename for a save command."
-msgstr ""
+msgstr "Hibás fájlnevet kaptam egy mentés parancshoz."
 
 #. There was a problem during the 'save game' procedure.
 #: horizons/command/game.py:47 horizons/gui/gui.py:179
@@ -551,10 +553,12 @@ msgstr "Visszaállítás az eredeti beállításokra"
 #: horizons/engine/settingsdialog.py:56
 msgid "Restoring the default settings will delete all changes to the settings you made so far."
 msgstr ""
+"Az alapértelmezett beállítások visszaállítása törli az összes beállításodat, "
+"amit eddig módosítottál."
 
 #: horizons/engine/settingsdialog.py:57
 msgid "Do you want to continue?"
-msgstr "Folytatod?"
+msgstr "Szeretnéd folytatni?"
 
 #: horizons/engine/settingshandler.py:148
 msgid "Warning"
@@ -567,7 +571,8 @@ msgid ""
 "\n"
 "Use at own risk!"
 msgstr ""
-"Az SDL megjelenítő egy visszalépés, és veszélyes grafikai hibákat tartalmaz.\n"
+"Az SDL megjelenítő egy visszalépéses megoldás, és veszélyes grafikai hibákat "
+"tartalmaz.\n"
 "\n"
 "Csak saját felelősségre!"
 
@@ -613,12 +618,12 @@ msgstr "A beállított {lang} nyelvet nem sikerült betölteni"
 
 #: horizons/engine/settingshandler.py:312
 msgid "Logging enabled"
-msgstr ""
+msgstr "Naplózás bekapcsolva"
 
 #: horizons/engine/settingshandler.py:314
 #, python-format
 msgid "Logs are written to {directory}."
-msgstr ""
+msgstr "Naplózás mentése ide: {directory}."
 
 #: horizons/gui/gui.py:207
 msgid "Are you sure you want to quit Unknown Horizons?"
@@ -682,7 +687,7 @@ msgstr "Felülírás megerősítése"
 
 #: horizons/gui/gui.py:371
 msgid "Invalid filename given"
-msgstr ""
+msgstr "Hibás fájlnév"
 
 #: horizons/gui/gui.py:379
 msgid "Please select a savegame or click on cancel."
@@ -711,17 +716,17 @@ msgstr "Ismeretlen mentési idő"
 
 #: horizons/gui/gui.py:608
 #, python-format
-#, python-format, fuzzy
+#, python-format, 
 msgid "Saved at {time}"
-msgstr "Mentve {time}-kor"
+msgstr "Mentés ideje: {time}"
 
 #. N_ takes care of plural forms for different languages
 #: horizons/gui/gui.py:615
 #, python-format
 msgid "Saved {amount} time"
 msgid_plural "Saved {amount} times"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Mentve {amount}x"
+msgstr[1] "Mentve {amount}x"
 
 #: horizons/gui/gui.py:625
 #, python-format
@@ -740,7 +745,7 @@ msgstr "Elvárt verzió: {required}!"
 
 #: horizons/gui/gui.py:635
 msgid "Incompatible version"
-msgstr "Inkompatibilis verzió"
+msgstr "Eltérő verzió"
 
 #: horizons/gui/gui.py:652
 msgid "No file selected"
