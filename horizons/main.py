@@ -393,12 +393,24 @@ def _start_map(map_name, ai_players=0, human_ai=False, is_scenario=False, campai
 	"""Start a map specified by user
 	@param map_name: name of map or path to map
 	@return: bool, whether loading succeded"""
-	# check for exact/partial matches in map list first
-	maps = SavegameManager.get_available_scenarios() if is_scenario else SavegameManager.get_maps()
+	maps = SavegameManager.get_available_scenarios(locales=True) if is_scenario else SavegameManager.get_maps()
+
 	map_file = None
+
+	#get system's language
+	game_language = fife.get_locale()
+
+	#now we have "_en.yaml" which is set to language_extension variable
+	language_extension = '_' + game_language + '.' + SavegameManager.scenario_extension
+
+	# check for exact/partial matches in map list first
 	for i in xrange(0, len(maps[1])):
 		# exact match
 		if maps[1][i] == map_name:
+			map_file = maps[0][i]
+			break
+		# we want to match when map_name is like "tutorial" not "tutorial_en"
+		if maps[1][i] == map_name + language_extension:
 			map_file = maps[0][i]
 			break
 		# check for partial match

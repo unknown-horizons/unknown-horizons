@@ -136,7 +136,7 @@ class SingleplayerMenu(object):
 					u"please contact us via our website (http://www.unknown-horizons.org)!"
 				self.show_popup("No campaigns available yet", text)
 			elif show == 'scenario':
-				self.current.files, maps_display = SavegameManager.get_available_scenarios(locales = choosable_locales)
+				self.current.files, maps_display = SavegameManager.get_available_scenarios()
 				# get the map files and their display names. display tutorials on top.
 				prefer_tutorial = lambda x : ('tutorial' not in x, x)
 				maps_display.sort(key=prefer_tutorial)
