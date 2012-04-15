@@ -4,14 +4,14 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2012-03-31 21:42+0100\n"
 "PO-Revision-Date: 2012-01-08 15:02+0200\n"
-"Last-Translator: ussikene <ussikene@gmail.com>\n"
+"Last-Translator: Üllar <ussikene@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: et\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Translate Toolkit 1.9.0\n"
+"X-Generator: Pootle 2.1.5\n"
 
 msgid "build"
 msgstr "ehita"
@@ -67,14 +67,18 @@ msgstr "vajuta"
 msgid "lumberjack"
 msgstr "puuraidur"
 
+# 88%
+#, fuzzy
 msgid "resident"
-msgstr ""
+msgstr "elanikud"
 
 msgid "main square"
 msgstr "peaväljak"
 
+# 85%
+#, fuzzy
 msgid "sailors"
-msgstr ""
+msgstr "meremees"
 
 msgid "food"
 msgstr "toit"
@@ -270,17 +274,25 @@ msgstr "moodus"
 msgid "move"
 msgstr "liiguta"
 
+# 87%
+#, fuzzy
 msgid "pioneers"
-msgstr ""
+msgstr "teerajaja"
 
+# 87%
+#, fuzzy
 msgid "citizens"
-msgstr ""
+msgstr "kodanik"
 
+# 88%
+#, fuzzy
 msgid "merchants"
-msgstr ""
+msgstr "kaupmees"
 
+# 90%
+#, fuzzy
 msgid "aristocrats"
-msgstr ""
+msgstr "aristokraat"
 
 msgid "potato"
 msgstr "kartul"
@@ -288,8 +300,10 @@ msgstr "kartul"
 msgid "settler"
 msgstr "asunik"
 
+# 80%
+#, fuzzy
 msgid "speed"
-msgstr ""
+msgstr "seeme"
 
 msgid "stop"
 msgstr "stopp"
@@ -345,8 +359,10 @@ msgstr ""
 msgid "offer"
 msgstr ""
 
+# 75%
+#, fuzzy
 msgid "potatoes"
-msgstr ""
+msgstr "kartul"
 
 msgid "range"
 msgstr "ulatus"
@@ -387,14 +403,18 @@ msgstr "aktiivne"
 msgid "afford"
 msgstr ""
 
+# 85%
+#, fuzzy
 msgid "animals"
-msgstr ""
+msgstr "loom"
 
 msgid "Captain's log"
 msgstr "Kapteni päevik"
 
+# 75%
+#, fuzzy
 msgid "construct"
-msgstr ""
+msgstr "ehitus"
 
 msgid "consume"
 msgstr "tarbima"
@@ -411,8 +431,10 @@ msgstr "iseärasus"
 msgid "forest"
 msgstr "mets"
 
+# 80%
+#, fuzzy
 msgid "grows"
-msgstr ""
+msgstr "kasvata"
 
 msgid "hold"
 msgstr "ootel"
@@ -453,8 +475,10 @@ msgstr "mängib"
 msgid "price"
 msgstr ""
 
+# 75%
+#, fuzzy
 msgid "read"
-msgstr ""
+msgstr "punane"
 
 msgid "return"
 msgstr "tagasi"
@@ -474,8 +498,12 @@ msgstr ""
 msgid "store"
 msgstr ""
 
+# släng! meeskond(mitte just parim variant)/võistkond(imelik)???
+# Rühm oleks ka veidi imelik.
+# 75%
+#, fuzzy
 msgid "tear"
-msgstr ""
+msgstr "tiim"
 
 msgid "from time to time"
 msgstr "aegajalt"
@@ -492,8 +520,11 @@ msgstr "külasta"
 msgid "world"
 msgstr ""
 
+# üle kontrollida mängus!
+# 83%
+#, fuzzy
 msgid "yield"
-msgstr ""
+msgstr "saagikus"
 
 msgid "your ship"
 msgstr ""
@@ -537,8 +568,10 @@ msgstr "graafika"
 msgid "harvest"
 msgstr ""
 
+# 80%
+#, fuzzy
 msgid "hunts"
-msgstr ""
+msgstr "jahi"
 
 msgid "multiple"
 msgstr "mitu"
