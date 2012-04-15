@@ -12,7 +12,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=4; plural=(n%100==1 ? 0 : n%100==2 ? 1 : n%100==3 || "
 "n%100==4 ? 2 : 3);\n"
-"X-Generator: Translate Toolkit 1.9.0\n"
+"X-Generator: Pootle 2.1.5\n"
 
 msgid "build"
 msgstr "Izgradi"
@@ -69,14 +69,18 @@ msgstr "kliknite"
 msgid "lumberjack"
 msgstr "gozdar"
 
+# 88%
+#, fuzzy
 msgid "resident"
-msgstr ""
+msgstr "prebivalci"
 
 msgid "main square"
 msgstr "glavni trg"
 
+# 85%
+#, fuzzy
 msgid "sailors"
-msgstr ""
+msgstr "mornar"
 
 msgid "food"
 msgstr "hrana"
@@ -273,17 +277,25 @@ msgstr "način"
 msgid "move"
 msgstr "premakni"
 
+# 87%
+#, fuzzy
 msgid "pioneers"
-msgstr ""
+msgstr "pionir"
 
+# 87%
+#, fuzzy
 msgid "citizens"
-msgstr ""
+msgstr "državljan"
 
+# 88%
+#, fuzzy
 msgid "merchants"
-msgstr ""
+msgstr "trgovec"
 
+# 90%
+#, fuzzy
 msgid "aristocrats"
-msgstr ""
+msgstr "aristokrat"
 
 msgid "potato"
 msgstr "krompir"
@@ -291,8 +303,10 @@ msgstr "krompir"
 msgid "settler"
 msgstr "naseljenec"
 
+# 80%
+#, fuzzy
 msgid "speed"
-msgstr ""
+msgstr "seme"
 
 msgid "stop"
 msgstr "zaustavi"
@@ -352,8 +366,10 @@ msgstr ""
 msgid "offer"
 msgstr ""
 
+# 75%
+#, fuzzy
 msgid "potatoes"
-msgstr ""
+msgstr "krompir"
 
 msgid "range"
 msgstr "doseg"
@@ -392,15 +408,19 @@ msgstr "dejavno"
 msgid "afford"
 msgstr ""
 
+# 85%
+#, fuzzy
 msgid "animals"
-msgstr ""
+msgstr "žival"
 
 #
 msgid "Captain's log"
 msgstr "Kapitanov dnevnik"
 
+# 75%
+#, fuzzy
 msgid "construct"
-msgstr ""
+msgstr "izgradnja"
 
 msgid "consume"
 msgstr "porabi"
@@ -417,8 +437,10 @@ msgstr "zmožnost"
 msgid "forest"
 msgstr "gozd"
 
+# 80%
+#, fuzzy
 msgid "grows"
-msgstr ""
+msgstr "rasti"
 
 msgid "hold"
 msgstr "držati"
@@ -464,8 +486,10 @@ msgstr "igranje"
 msgid "price"
 msgstr ""
 
+# 75%
+#, fuzzy
 msgid "read"
-msgstr ""
+msgstr "rdeče"
 
 #
 msgid "return"
@@ -488,8 +512,10 @@ msgstr ""
 msgid "store"
 msgstr ""
 
+# 75%
+#, fuzzy
 msgid "tear"
-msgstr ""
+msgstr "ekipa"
 
 msgid "from time to time"
 msgstr "od časa do časa"
@@ -506,8 +532,10 @@ msgstr "obišči"
 msgid "world"
 msgstr ""
 
+# 83%
+#, fuzzy
 msgid "yield"
-msgstr ""
+msgstr "izkoristki"
 
 msgid "your ship"
 msgstr ""
