@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: translate-uh@lists.unknown-horizons.org\n"
 "POT-Creation-Date: 2012-03-21 04:04+0100\n"
-"PO-Revision-Date: 2012-04-15 15:40+0200\n"
+"PO-Revision-Date: 2012-04-15 15:41+0200\n"
 "Last-Translator: mightykai <k.janssen@home.nl>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: nl\n"
@@ -20,7 +20,7 @@ msgstr ""
 #. scenario difficulty
 #: po/tutorial.py:2
 msgid "Tutorial"
-msgstr "Tutorial"
+msgstr "Oefening"
 
 #. scenario author
 #: po/tutorial.py:4
