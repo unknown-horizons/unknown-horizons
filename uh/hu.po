@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2012-03-24 02:16+0100\n"
-"PO-Revision-Date: 2012-04-15 08:52+0200\n"
+"PO-Revision-Date: 2012-04-15 09:42+0200\n"
 "Last-Translator: Szontágh <szontagh.ferenc@exahost.eu>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: hu\n"
@@ -2915,19 +2915,18 @@ msgstr "Szén égető"
 #. tooltip_text of buildings:charcoalburning
 #: horizons/i18n/objecttranslations.py:111
 msgid "Burns a lot of boards to charcoal."
-msgstr ""
+msgstr "Rengeteg deszkát éget faszénné."
 
 # 83%
 #. name of buildings:claydeposit
 #: horizons/i18n/objecttranslations.py:116
-#, fuzzy
 msgid "Clay Deposit"
-msgstr "agyaglelőhely"
+msgstr "Agyag lelőhely"
 
 #. name of buildings:claypit
 #: horizons/i18n/objecttranslations.py:121
 msgid "Clay Pit"
-msgstr ""
+msgstr "Agyag bánya"
 
 #. tooltip_text of buildings:claypit
 #: horizons/i18n/objecttranslations.py:123
@@ -2937,29 +2936,28 @@ msgstr "Agyagot termel."
 #. name of buildings:cocoafield
 #: horizons/i18n/objecttranslations.py:128
 msgid "Cocoa Field"
-msgstr ""
+msgstr "Kakaó mező"
 
 #. tooltip_text of buildings:cocoafield
 #: horizons/i18n/objecttranslations.py:130
 msgid "Produces cocoa beans used for confectionery. Needs a farm."
-msgstr ""
+msgstr "Kakaómagot termel a cukrászatnak. Farmra van szüksége."
 
 #. name of buildings:cornfield
 #: horizons/i18n/objecttranslations.py:135
 msgid "Corn Field"
-msgstr ""
+msgstr "Kukorica mező"
 
 # 88%
 #. tooltip_text of buildings:cornfield
 #: horizons/i18n/objecttranslations.py:137
-#, fuzzy
 msgid "Yields corn. Needs a farm."
-msgstr "Ételt termel. Egy farm szükséges."
+msgstr "Kukoricát termel. Egy farmra van szüksége."
 
 #. name of buildings:distillery
 #: horizons/i18n/objecttranslations.py:142
 msgid "Distillery"
-msgstr ""
+msgstr "Szeszfőzde"
 
 #. tooltip_text of buildings:distillery
 #: horizons/i18n/objecttranslations.py:144
@@ -2969,7 +2967,7 @@ msgstr "Cukorból szeszes italt készít."
 #. name of buildings:doctor
 #: horizons/i18n/objecttranslations.py:149
 msgid "Doctor"
-msgstr ""
+msgstr "Orvos"
 
 #. tooltip_text of buildings:doctor
 #: horizons/i18n/objecttranslations.py:151
@@ -2979,7 +2977,7 @@ msgstr "Kezeli a betegségeket. Gyógynövényeket készít."
 #. name of buildings:farm
 #: horizons/i18n/objecttranslations.py:156
 msgid "Farm"
-msgstr ""
+msgstr "Farm"
 
 #. tooltip_text of buildings:farm
 #: horizons/i18n/objecttranslations.py:158
@@ -2989,22 +2987,22 @@ msgstr "Növényeket és élő állatokat nevel."
 #. name of buildings:fireservice
 #: horizons/i18n/objecttranslations.py:163
 msgid "Fire Station"
-msgstr ""
+msgstr "Tűzoltóság"
 
 #. tooltip_text of buildings:fireservice
 #: horizons/i18n/objecttranslations.py:165
 msgid "Extinguishes fires."
-msgstr ""
+msgstr "Tüzeket olt."
 
 #. name of buildings:fishdeposit
 #: horizons/i18n/objecttranslations.py:170
 msgid "Fish Deposit"
-msgstr ""
+msgstr "Hal lerakat."
 
 #. name of buildings:fishermanstent
 #: horizons/i18n/objecttranslations.py:175
 msgid "Fisherman's Tent"
-msgstr ""
+msgstr "A halász kunyhója"
 
 #. tooltip_text of buildings:fishermanstent
 #: horizons/i18n/objecttranslations.py:177
@@ -3014,12 +3012,12 @@ msgstr "Halászik a tengeren, élelmet készít."
 #. name of buildings:gravelpath
 #: horizons/i18n/objecttranslations.py:182
 msgid "Gravel Path"
-msgstr ""
+msgstr "Kavics út"
 
 #. name of buildings:herbary
 #: horizons/i18n/objecttranslations.py:187
 msgid "Herbary"
-msgstr ""
+msgstr "Gyógynövényes"
 
 #. tooltip_text of buildings:herbary
 #: horizons/i18n/objecttranslations.py:189
@@ -3029,7 +3027,7 @@ msgstr "Gyógynövényeket termel. Egy farm szükséges."
 #. name of buildings:hunterstent
 #: horizons/i18n/objecttranslations.py:194
 msgid "Hunter's Tent"
-msgstr ""
+msgstr "Vadász kunyhó"
 
 #. tooltip_text of buildings:hunterstent
 #: horizons/i18n/objecttranslations.py:196
@@ -3039,12 +3037,12 @@ msgstr "Vadakra vadászik az erdőben, élelmet készít."
 #. name of buildings:ironmine
 #: horizons/i18n/objecttranslations.py:201
 msgid "Iron Mine"
-msgstr ""
+msgstr "Fém bánya"
 
 #. tooltip_text of buildings:ironmine
 #: horizons/i18n/objecttranslations.py:203
 msgid "Gets iron ore from deposit."
-msgstr "Agyagot termel."
+msgstr "Fémet bányászik."
 
 #. name of buildings:log
 #: horizons/i18n/objecttranslations.py:208
@@ -3054,27 +3052,27 @@ msgstr ""
 #. tooltip_text of buildings:log
 #: horizons/i18n/objecttranslations.py:210
 msgid "Road across a river."
-msgstr ""
+msgstr "Út egy folyón keresztül"
 
 #. name of buildings:lookout
 #: horizons/i18n/objecttranslations.py:215
 msgid "Lookout"
-msgstr ""
+msgstr "Kilátó"
 
 #. tooltip_text of buildings:lookout
 #: horizons/i18n/objecttranslations.py:217
 msgid "Increases the player's sight."
-msgstr ""
+msgstr "Növeli a játékos látóhatárát."
 
 #. name_0 of buildings:lumberjackcamp
 #: horizons/i18n/objecttranslations.py:222
 msgid "Lumberjack Tent"
-msgstr ""
+msgstr "Favágó sátra"
 
 #. name_1 of buildings:lumberjackcamp
 #: horizons/i18n/objecttranslations.py:224
 msgid "Lumberjack Hut"
-msgstr ""
+msgstr "Favágó kunyhó"
 
 #. tooltip_text of buildings:lumberjackcamp
 #: horizons/i18n/objecttranslations.py:226
@@ -3084,7 +3082,7 @@ msgstr "Kivágja a fákat, és deszkákat készít belőlük."
 #. name of buildings:mainsquare
 #: horizons/i18n/objecttranslations.py:231
 msgid "Main Square"
-msgstr ""
+msgstr "Főtér"
 
 #. tooltip_text of buildings:mainsquare
 #: horizons/i18n/objecttranslations.py:233
@@ -3094,22 +3092,22 @@ msgstr "Ellátja a lakosokat termékekkel."
 #. name of buildings:mountain
 #: horizons/i18n/objecttranslations.py:238
 msgid "Mountain"
-msgstr ""
+msgstr "Hegy"
 
 #. name of buildings:pastryshop
 #: horizons/i18n/objecttranslations.py:243
 msgid "Pastry Shop"
-msgstr ""
+msgstr "Cukrászda"
 
 #. tooltip_text of buildings:pastryshop
 #: horizons/i18n/objecttranslations.py:245
 msgid "Produces all kinds of confectionery."
-msgstr ""
+msgstr "Mindenféle édességet termel."
 
 #. name of buildings:pasture
 #: horizons/i18n/objecttranslations.py:250
 msgid "Pasture"
-msgstr ""
+msgstr "Legelő"
 
 #. tooltip_text of buildings:pasture
 #: horizons/i18n/objecttranslations.py:252
@@ -3119,7 +3117,7 @@ msgstr "Bárányokat tenyészt. Gyapjút termel. Egy farm szükséges."
 #. name of buildings:pavilion
 #: horizons/i18n/objecttranslations.py:257
 msgid "Pavilion"
-msgstr ""
+msgstr "Pavilon"
 
 #. tooltip_text of buildings:pavilion
 #: horizons/i18n/objecttranslations.py:259
@@ -3129,17 +3127,17 @@ msgstr "Kielégíti a hajósok vallási szükségleteit."
 #. name of buildings:pigsty
 #: horizons/i18n/objecttranslations.py:264
 msgid "Pigsty"
-msgstr ""
+msgstr "Disznóól"
 
 #. tooltip_text of buildings:pigsty
 #: horizons/i18n/objecttranslations.py:266
 msgid "Raises pigs. Needs a farm."
-msgstr "Marhákat nevel. Egy farm szükséges."
+msgstr "Malacokat nevel. Egy farm szükséges."
 
 #. name of buildings:potatofield
 #: horizons/i18n/objecttranslations.py:271
 msgid "Potato Field"
-msgstr ""
+msgstr "Paradicsom föld"
 
 #. tooltip_text of buildings:potatofield
 #: horizons/i18n/objecttranslations.py:273
@@ -3149,32 +3147,32 @@ msgstr "Ételt termel. Egy farm szükséges."
 #. name of buildings:rampart
 #: horizons/i18n/objecttranslations.py:278
 msgid "Rampart"
-msgstr ""
+msgstr "Bástya"
 
 #. tooltip_text of buildings:rampart
 #: horizons/i18n/objecttranslations.py:280
 msgid "Protects your settlement."
-msgstr ""
+msgstr "Védelmezi a gyarmatod."
 
 #. name of buildings:ruinedtent
 #: horizons/i18n/objecttranslations.py:285
 msgid "Ruined Tent"
-msgstr ""
+msgstr "Romos sárot"
 
 #. name of buildings:saltponds
 #: horizons/i18n/objecttranslations.py:290
 msgid "Salt Ponds"
-msgstr ""
+msgstr "Sós tó"
 
 #. tooltip_text of buildings:saltponds
 #: horizons/i18n/objecttranslations.py:292
 msgid "Evaporates salt. Built on sea coast."
-msgstr ""
+msgstr "Sót párologtat ki. Tengerparton építhető."
 
 #. name of buildings:signalfire
 #: horizons/i18n/objecttranslations.py:297
 msgid "Signal Fire"
-msgstr ""
+msgstr "Jelző tűz"
 
 #. tooltip_text of buildings:signalfire
 #: horizons/i18n/objecttranslations.py:299
@@ -3184,52 +3182,52 @@ msgstr "Kereskedelmi szándék jelzése a szabad kereskedők felé."
 #. name of buildings:smeltery
 #: horizons/i18n/objecttranslations.py:304
 msgid "Smeltery"
-msgstr ""
+msgstr "Öntöde"
 
 #. tooltip_text of buildings:smeltery
 #: horizons/i18n/objecttranslations.py:306
 msgid "Refines all kind of ores."
-msgstr ""
+msgstr "Mindenféle ércet finomít."
 
 #. name of buildings:spicefield
 #: horizons/i18n/objecttranslations.py:311
 msgid "Spice Field"
-msgstr ""
+msgstr "Fűszer föld"
 
 #. tooltip_text of buildings:spicefield
 #: horizons/i18n/objecttranslations.py:313
 msgid "Grows spices. Needs a farm."
-msgstr ""
+msgstr "Fűszert növeszt. Farm szükséges hozzá."
 
 #. name of buildings:stonemason
 #: horizons/i18n/objecttranslations.py:318
 msgid "Stonemason"
-msgstr ""
+msgstr "Kőműves"
 
 #. tooltip_text of buildings:stonemason
 #: horizons/i18n/objecttranslations.py:320
 msgid "Carves stone tops into bricks."
-msgstr ""
+msgstr "Követ farag téglákká."
 
 #. name of buildings:stonepit
 #: horizons/i18n/objecttranslations.py:325
 msgid "Stone Pit"
-msgstr ""
+msgstr "Kőbánya"
 
 #. tooltip_text of buildings:stonepit
 #: horizons/i18n/objecttranslations.py:327
 msgid "Gets stone from a mountain."
-msgstr ""
+msgstr "Követ fejt egy hegyből."
 
 #. name_0 of buildings:storagetent
 #: horizons/i18n/objecttranslations.py:332
 msgid "Storage Tent"
-msgstr ""
+msgstr "Raktár sátor"
 
 #. name_1 of buildings:storagetent
 #: horizons/i18n/objecttranslations.py:334
 msgid "Storage Hut"
-msgstr ""
+msgstr "Raktár kunyhó"
 
 #. tooltip_text of buildings:storagetent
 #: horizons/i18n/objecttranslations.py:336
@@ -3239,7 +3237,7 @@ msgstr "Több helyet és hordárt biztosít."
 #. name of buildings:sugarfield
 #: horizons/i18n/objecttranslations.py:341
 msgid "Sugar Field"
-msgstr ""
+msgstr "Cukor mező"
 
 #. tooltip_text of buildings:sugarfield
 #: horizons/i18n/objecttranslations.py:343
@@ -3249,44 +3247,43 @@ msgstr "Szeszes ital termeléshez szükséges. Egy farm szükséges."
 #. name of buildings:tavern
 #: horizons/i18n/objecttranslations.py:348
 msgid "Tavern"
-msgstr ""
+msgstr "Kocsma"
 
 #. tooltip_text of buildings:tavern
 #: horizons/i18n/objecttranslations.py:350
 msgid "Provides get-together."
-msgstr ""
+msgstr "Társaságot biztosít."
 
 #. name_0 of buildings:tent
 #: horizons/i18n/objecttranslations.py:355
 msgid "Tent"
-msgstr ""
+msgstr "Sátor"
 
 #. name_1 of buildings:tent
 #: horizons/i18n/objecttranslations.py:357
 msgid "Hut"
-msgstr ""
+msgstr "Kunyhó"
 
 # 80%
 #. name_2 of buildings:tent
 #: horizons/i18n/objecttranslations.py:359
-#, fuzzy
 msgid "House"
-msgstr "Egér"
+msgstr "Ház"
 
 #. name_3 of buildings:tent
 #: horizons/i18n/objecttranslations.py:361
 msgid "Stone house"
-msgstr ""
+msgstr "Kőház"
 
 #. name_4 of buildings:tent
 #: horizons/i18n/objecttranslations.py:363
 msgid "Estate"
-msgstr ""
+msgstr "Birtok"
 
 #. name_5 of buildings:tent
 #: horizons/i18n/objecttranslations.py:365
 msgid "Manor"
-msgstr ""
+msgstr "Nemesi birtok"
 
 #. tooltip_text of buildings:tent
 #: horizons/i18n/objecttranslations.py:367
@@ -3296,37 +3293,37 @@ msgstr "Lakás a lakosoknak."
 #. name of buildings:tobaccofield
 #: horizons/i18n/objecttranslations.py:372
 msgid "Tobacco Field"
-msgstr ""
+msgstr "Dohányföld"
 
 #. tooltip_text of buildings:tobaccofield
 #: horizons/i18n/objecttranslations.py:374
 msgid "Produces tobacco. Needs a farm."
-msgstr "Gyógynövényeket termel. Egy farm szükséges."
+msgstr "Dohányt termel. Egy farm szükséges."
 
 #. name of buildings:tobacconist
 #: horizons/i18n/objecttranslations.py:379
 msgid "Tobacconist"
-msgstr ""
+msgstr "Dohánytermelő"
 
 #. tooltip_text of buildings:tobacconist
 #: horizons/i18n/objecttranslations.py:381
 msgid "Produces tobaccos out of tobacco."
-msgstr ""
+msgstr "Dohányterméket termel dohányból."
 
 #. name of buildings:toolmaker
 #: horizons/i18n/objecttranslations.py:386
 msgid "Toolmaker"
-msgstr ""
+msgstr "Szerszámkészítő"
 
 #. tooltip_text of buildings:toolmaker
 #: horizons/i18n/objecttranslations.py:388
 msgid "Produces tools out of iron."
-msgstr ""
+msgstr "Fémből készít szerszámokat"
 
 #. name of buildings:trail
 #: horizons/i18n/objecttranslations.py:393
 msgid "Trail"
-msgstr ""
+msgstr "Ösvény"
 
 #. tooltip_text of buildings:trail
 #: horizons/i18n/objecttranslations.py:395
@@ -3341,47 +3338,47 @@ msgstr "Fa"
 #. tooltip_text of buildings:tree
 #: horizons/i18n/objecttranslations.py:402
 msgid "Provides lumber. Chopped down by lumberjacks."
-msgstr ""
+msgstr "Fát biztosít. A favágó vágja ki."
 
 #. name of buildings:villageschool
 #: horizons/i18n/objecttranslations.py:407
 msgid "Village school"
-msgstr ""
+msgstr "Községi iskola"
 
 #. tooltip_text of buildings:villageschool
 #: horizons/i18n/objecttranslations.py:409
 msgid "Provides education."
-msgstr "Oktatást szolgáltat."
+msgstr "Oktatást biztosít."
 
 #. name of buildings:vineyard
 #: horizons/i18n/objecttranslations.py:414
 msgid "Vineyard"
-msgstr ""
+msgstr "Borászat"
 
 #. tooltip_text of buildings:vineyard
 #: horizons/i18n/objecttranslations.py:416
 msgid "Produces grapes for use in wine and confectionery. Needs a farm."
-msgstr ""
+msgstr "Szőlőt termel borhoz és a cukrászathoz. Egy farmra van szüksége."
 
 #. name of buildings:vintner
 #: horizons/i18n/objecttranslations.py:421
 msgid "Vintner"
-msgstr ""
+msgstr "Borkereskedő"
 
 #. tooltip_text of buildings:vintner
 #: horizons/i18n/objecttranslations.py:423
 msgid "Produces wine out of grapes."
-msgstr ""
+msgstr "Szőlőből készít bort."
 
 #. name of buildings:warehouse
 #: horizons/i18n/objecttranslations.py:428
 msgid "Warehouse"
-msgstr ""
+msgstr "Raktárház"
 
 #. name of buildings:weaverstent
 #: horizons/i18n/objecttranslations.py:433
 msgid "Weaver's Hut"
-msgstr ""
+msgstr "Takács kunyhó"
 
 #. tooltip_text of buildings:weaverstent
 #: horizons/i18n/objecttranslations.py:435
@@ -3391,7 +3388,7 @@ msgstr "Ruhát készít a gyapjúból."
 #. name of buildings:windmill
 #: horizons/i18n/objecttranslations.py:440
 msgid "Windmill"
-msgstr ""
+msgstr "Szélmalom"
 
 #. tooltip_text of buildings:windmill
 #: horizons/i18n/objecttranslations.py:442

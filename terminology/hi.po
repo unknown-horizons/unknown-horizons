@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2012-03-31 21:42+0100\n"
-"PO-Revision-Date: 2012-04-15 08:44+0200\n"
+"PO-Revision-Date: 2012-04-15 09:16+0200\n"
 "Last-Translator: Kinshuk <kinshuk@hashstash.in>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: hi\n"
@@ -143,35 +143,41 @@ msgstr "द्वीप"
 msgid "time"
 msgstr "समय"
 
+#, fuzzy
 msgid "unit"
-msgstr ""
+msgstr "इकाई"
 
+#, fuzzy
 msgid "balance"
-msgstr ""
+msgstr "शेष"
 
 msgid "coast"
-msgstr ""
+msgstr "तट"
 
+#, fuzzy
 msgid "menu"
-msgstr ""
+msgstr "सूचि"
 
+#, fuzzy
 msgid "slot"
-msgstr ""
+msgstr "खांचा"
 
+#, fuzzy
 msgid "start"
-msgstr ""
+msgstr "आरंभ"
 
+#, fuzzy
 msgid "stock"
-msgstr ""
+msgstr "भंडार"
 
 msgid "trail"
-msgstr ""
+msgstr "पगडंडी"
 
 msgid "Unknown Horizons"
-msgstr ""
+msgstr "अंनोन होराइजंस"
 
 msgid "wool"
-msgstr ""
+msgstr "ऊन"
 
 msgid "boards"
 msgstr ""
