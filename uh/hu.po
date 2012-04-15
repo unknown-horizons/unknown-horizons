@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2012-03-24 02:16+0100\n"
-"PO-Revision-Date: 2012-04-15 07:42+0200\n"
+"PO-Revision-Date: 2012-04-15 07:57+0200\n"
 "Last-Translator: Szontágh <szontagh.ferenc@exahost.eu>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: hu\n"
@@ -776,7 +776,7 @@ msgstr "Nem sikerült a mentés törlése!"
 #: horizons/gui/gui.py:681
 #, python-format
 msgid "[{key}] = {text}"
-msgstr ""
+msgstr "[{key}] = {text}"
 
 # 97%
 #. (helptext of widget: headline)
@@ -807,7 +807,7 @@ msgstr "A térképnevek a következő formátumban érvényesek: {expression}"
 #: horizons/gui/ingamegui.py:464
 #, python-format
 msgid "Try a name that only contains letters and numbers."
-msgstr ""
+msgstr "Próbálj olyan nevet, amelyek csak betűket és számokat tartalmaznak."
 
 #: horizons/gui/modules/multiplayermenu.py:44
 msgid "Unable to find pyenet"
@@ -865,7 +865,7 @@ msgstr "Térkép: {map_name}"
 
 #: horizons/gui/modules/multiplayermenu.py:185
 msgid "Name: {game_name}"
-msgstr ""
+msgstr "Név: {game_name}"
 
 #: horizons/gui/modules/multiplayermenu.py:187
 #, python-format
@@ -875,23 +875,27 @@ msgstr "Játékosok: {player_amount}/{player_limit}"
 #: horizons/gui/modules/multiplayermenu.py:192
 #, python-format
 msgid "Creator: {player}"
-msgstr "Létrehozó: {player}"
+msgstr "Készítő: {player}"
 
 #: horizons/gui/modules/multiplayermenu.py:203
 msgid "This savegame is missing (click here)"
-msgstr ""
+msgstr "Ez a mentés hiányzik (klikk ide)"
 
 #: horizons/gui/modules/multiplayermenu.py:209
 msgid "For multiplayer load, it is currently necessary for you to ensure you have the correct savegame file."
 msgstr ""
+"Többjátékos játék betöltéséhez jelenleg elengedhetetlen, hogy a helyes "
+"mentést használd."
 
 #: horizons/gui/modules/multiplayermenu.py:210
 msgid "This is not nice and we hope to offer a more convenient solution very soon."
-msgstr ""
+msgstr "Ez nem szép, reméljük hamarosan kényelmesebb megoldást tudunk nyújtani."
 
 #: horizons/gui/modules/multiplayermenu.py:211
 msgid "Meanwhile, please request the file {path} from the game creator and put it in {map_directory} ."
 msgstr ""
+"Közben, kérlek kérd el a fájlt {path} a játék készítőjétől és másold be ide "
+"{map_directory}."
 
 #. (text of widget: help)
 #. (text of widget: help) Main / in-game menu entry
@@ -902,7 +906,7 @@ msgstr "Segítség"
 
 #: horizons/gui/modules/multiplayermenu.py:218
 msgid "This is a savegame."
-msgstr ""
+msgstr "Ez egy játék mentés."
 
 #: horizons/gui/modules/multiplayermenu.py:242
 msgid "Wrong version"
@@ -976,17 +980,17 @@ msgstr "Szigetméret eltérés:"
 msgid "Resource density:"
 msgstr "Nyersanyagsűrűség:"
 
-# szkenárió??
+# szkenárió?? - gondolom egy játék menetet tartalmazó beállítást tároló fájl... na ezt fordítsd le
 #: horizons/gui/modules/singleplayermenu.py:387
 #, fuzzy
 msgid "Invalid scenario file"
-msgstr "Hibás szkenárió fájl"
+msgstr "Hibás forgatókönyv fájl"
 
-# szcenárió can be "forgatókönyv"
+# szcenárió can be "forgatókönyv" - not the best word for it
 #: horizons/gui/modules/singleplayermenu.py:388
 #, fuzzy
 msgid "The selected file is not a valid scenario file."
-msgstr "A kiválasztott fájl nem egy érvényes szcenárió fájl."
+msgstr "A kiválasztott fájl nem egy érvényes forgatókönyv fájl."
 
 #: horizons/gui/modules/singleplayermenu.py:389
 msgid "Error message:"
@@ -1001,7 +1005,7 @@ msgstr "Kérlek ezt jelentsd az alkotójának."
 #. dialog already gone
 #: horizons/gui/modules/singleplayermenu.py:464
 msgid "Click to generate a different random map"
-msgstr ""
+msgstr "Klikk egy másik random térkép generálásához"
 
 #. (text of widget: headline)
 #. set translated building name in gui
@@ -1021,11 +1025,11 @@ msgstr "Hajóépítő áttekintés"
 #: horizons/gui/tabs/boatbuildertab.py:101
 #, python-format
 msgid "{ship} (place in queue: {place})"
-msgstr ""
+msgstr "{ship} (hely a sorban:: {place})"
 
 #: horizons/gui/tabs/boatbuildertab.py:165
 msgid "Resources still needed:"
-msgstr "Nyersanyagok kellenek:"
+msgstr "Szükséges nyersanyagok::"
 
 #: horizons/gui/tabs/boatbuildertab.py:242
 msgid "Fisher boats"
@@ -1052,9 +1056,8 @@ msgid "Confirm order"
 msgstr "Megerősítés"
 
 #: horizons/gui/tabs/buildrelatedtab.py:46
-#, fuzzy
 msgid "Build related fields"
-msgstr "Kapcsolódó területek építése"
+msgstr "Kapcsolódó mezők építése"
 
 #: horizons/gui/tabs/buildtabs.py:110
 msgid "Residents and infrastructure"
@@ -1081,12 +1084,11 @@ msgstr "Hadsereg"
 
 #: horizons/gui/tabs/buildtabs.py:121
 msgid "Mining"
-msgstr ""
+msgstr "Bányászat"
 
 #: horizons/gui/tabs/buildtabs.py:149
-#, fuzzy
 msgid "Increment {increment}"
-msgstr "Növekedés"
+msgstr "Növekedés {increment}"
 
 #. (text of widget: headline)
 #. (helptext of widget: trade)
@@ -1098,17 +1100,21 @@ msgstr "Kereskedelem"
 
 #: horizons/gui/tabs/buyselltab.py:139
 msgid "Click on one of the resource slots to add a trade offer."
-msgstr ""
+msgstr "Klikk egy nyersanyag helyre egy új ajánlat létrehozásához."
 
 #. new res
 #: horizons/gui/tabs/buyselltab.py:186
 msgid "Set to buy or sell by clicking on that label, then adjust the amount via the slider to the right."
 msgstr ""
+"Állítsd be az eladást vagy vételt a címkére kattintással, majd állítsd be a "
+"mennyiséget a jobb oldali csúszkával."
 
 #: horizons/gui/tabs/buyselltab.py:363
 #, python-format
 msgid "Will buy {resource_name} for {price} gold/t whenever less than {limit}t are in stock."
 msgstr ""
+"Vásárolni fog {resource_name} {price} aranyért tonnánként, hogyha kevesebb "
+"van, mint {limit}t a raktárban."
 
 #: horizons/gui/tabs/buyselltab.py:367
 #, python-format
