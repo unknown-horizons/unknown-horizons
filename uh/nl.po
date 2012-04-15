@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2012-03-24 02:16+0100\n"
-"PO-Revision-Date: 2012-04-15 19:57+0200\n"
+"PO-Revision-Date: 2012-04-15 19:59+0200\n"
 "Last-Translator: mightykai <k.janssen@home.nl>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: nl\n"
@@ -2400,7 +2400,6 @@ msgstr "Terug:"
 
 #. (text of widget: gamename_lbl)
 #: horizons/i18n/guitranslations.py:824 horizons/i18n/guitranslations.py:966
-#, fuzzy
 msgid "Name of the game:"
 msgstr "Spel naam:"
 
