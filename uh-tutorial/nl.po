@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: translate-uh@lists.unknown-horizons.org\n"
 "POT-Creation-Date: 2012-03-21 04:04+0100\n"
-"PO-Revision-Date: 2012-04-15 22:17+0200\n"
+"PO-Revision-Date: 2012-04-16 16:29+0200\n"
 "Last-Translator: mightykai <k.janssen@home.nl>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: nl\n"
@@ -171,6 +171,7 @@ msgstr ""
 msgid "We will start with building a lumberjack."
 msgstr "We starten met het bouwen van een houthakkers hut."
 
+# denk dat er een beter vertaling is maar weet het nu even niet. mischien kan iemand een beter vertaling maken van de woorden die ik hier heb gebruikt.
 #. This is the text body of a logbook page.
 #: po/tutorial.py:46
 msgid ""
@@ -254,7 +255,9 @@ msgstr ""
 #. This message is displayed in the widget on the left screen part. Please keep it short enough to fit there!
 #: po/tutorial.py:70
 msgid "Build a lumberjack and connect it to the warehouse using a trail."
-msgstr "Plaats een houthakker en verbind deze met het kantoor met een pad."
+msgstr ""
+"Plaats een houthakkers hut en verbind deze met het kantoor door middel van "
+"een pad."
 
 #. This is a logbook page heading. Space is VERY short, please only translate to strings that fit (roughly 30 characters max).
 #: po/tutorial.py:72
