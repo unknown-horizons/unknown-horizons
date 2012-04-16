@@ -4,7 +4,7 @@ Unknown Horizons
 -----------------------------------------------------
 
 2012-??-??: Milestone 2012.1
-changelog date: MAR 10; rev: 473895d2fd84fbfc027154699cde73a7b33a8f8d
+changelog date: APR 14; rev: e195c6438b7134b289858c01398f88b7377da30c
 
 Gameplay and Balancing
 * New features
@@ -20,6 +20,9 @@ Gameplay and Balancing
    + Unknown Horizons automatically checks for updates on startup
    + support for CJKV translations
    + Save/load in multiplayer games
+   + bump increment to 4
+   + add building relations: corn field->farm, fire service->residential
+   + relate warehouse to signalfire
 
 * Modifications and changes
    # lower running costs for several buildings when paused:
@@ -30,10 +33,25 @@ Gameplay and Balancing
    # multiplayer mode: game names
    # boat builder now displays queue and allows modifications
    # "Branch Office" renamed to "Warehouse", "Tent Ruin" to "Ruined Tent"
+   # only allow fires from the 2nd increment onward
+   # Increase signal fire range (10 to 13)
+   # improve increment 3 house
+   # make fisher invincible
+   # Trader: Sell and buy for same price, increase max amount
+   # round displayed resource values
+   # make the AI work better on level 4
+   # make trade make smaller offers in case settlements don't accept big ones
+   # don't pause game on routeconfig (#1692)
+   # make mountains unclonable (#1703)
+   # make settler ruins walkable (#1693)
 
 * Fixed bugs and problems
    ~ main square now walkable, i.e. behaves like a road
    ~ ships only load as many tons of a res as specified in the route at max
+   ~ fix count problem in warehouse buy/sell tab
+   ~ assign appropriate level to settler on build (#1561)
+   ~ crash on hovering the resource overview bar (#1564)
+   ~ crash when trying to drag a line of buildings on the ocean (#1574)
 
 
 Media Content
@@ -42,6 +60,8 @@ Media Content
    + building: fire station
    + building: single tile roads
    + building: all rotations for the birch tree
+   + building: windmill
+   + building: bakery
    + animated status icons: full inventory, decommissioned, mine cart, book
    + animated status icons: question mark, exclamation mark, building on fire
    + sound: invalid actions / error
@@ -56,7 +76,14 @@ Media Content
    + icon: medium and large popup background images
    + icon: three new mainmenu background images
    + icon: messagewidget background images
+   + icon: new icon for tobaccos (#692)
+   + icon: Leather and tannery icons (#692)
    + font: UMing for CJKV
+   + add missing images in smeltery animation
+   + animated modification of the pirate ship
+   + add new images of the mine and mountains (#906)
+   + add new atlases for everything in content/gfx except for units
+   + add atlases for pirate1
 
 * Brush-ups and modifications
    # building: new renders of charcoal burning
@@ -65,6 +92,11 @@ Media Content
    # icon: inhabitant amount
    # icon: minimap background image
    # fish animations run at different speeds
+   # overview bar resource selection menu default config button style
+   # 300px UH logo
+   # Make farm use small cogs in production animation (#1474)
+   # 24px flour icon (#1594)
+   # remove stale mountain gfx (#1646)
 
 User Interface
 * Additions and new features
@@ -95,6 +127,14 @@ User Interface
    + re-enabled map panning with middle mouse button
    + display random background image in mainmenu
    + load and display messagewidget items in logbook game message widget
+   + add FrameLimit option (settings) that users can set the number of frames per second
+   + make esc close the chat dialog
+   + add minimap icon for pirate and neutral ships
+   + colored flags for minimap ship icons
+   + prices are now displayed in the hint for selling/buying resources
+   + notify the player when his buildings catch fire
+   + don't show decommissioned status of buildings that shouldn't have them
+   + implement tooltips for status icons
 
 * Repositioning and modifications
    # improved random name selection algorithm (prefer unused names)
@@ -110,6 +150,12 @@ User Interface
    # zooming depends on cursor location
    # brighter and hopefully less obtrusive range highlight colors
    # multiselection improvements
+   # improved resource configuration restore button
+   # end session when the game is closed
+   # individual shipicons on the minimap
+   # Use abcd shape as preview image for trail, gravel path
+   # only show building range when the building is buildable
+   # display building costs even if it's not buildable at the current position
 
 * Fixed bugs and usability problems
    ~ reduce tooltip flickering
@@ -132,6 +178,12 @@ User Interface
    ~ allow to rename ships/settlement in statistics widget
    ~ notification threshold depending on event distance wrt. time and space
    ~ lots of is_focusable fixes (buttons previously caught keyboard events)
+   ~ keep gold amount widget stable (don't blink) in resource bar (#1560)
+   ~ allow display of logbook entries with multiple pages and always show first new entry
+   ~ fix problem with minimized minimap ship icons
+   ~ stop scrolling when the mouse leaves the window
+   ~ stop windmill animation if decommissioned (#1625)
+   ~ distinguish idle and idle_full of our mill
 
 
 Codebase
@@ -163,6 +215,10 @@ Codebase
    + modular messagewidget (dynamic height depending on message)
    + use YamlCache for object files to speed up loading
    + several robustness improvements to YamlCache
+   + make catching gcn::exceptions more robust
+   + add tests for buildingtool highlights, hunter and settler save/load
+   + add new enet library-files
+   + add mac build support
 
 * Modified structures
    # adapt all widgets to new pychan keyword API
@@ -192,6 +248,10 @@ Codebase
    # removed several tables from our databases. Data now in yaml objects.
    # registry pattern to keep track of scenario actions/conditions
    # large amount of fixes and workarounds for styling widgets
+   # removed log.yaml and useless Bridge class
+   # modularize all the buildingtool functions
+   # explicit imports in horizons.i18n
+   # move language switch logic and gettext setup to horizons.i18n
 
 * Fixed crashes and inconsistencies
    ~ reduced memory leaks when ending a session
@@ -210,12 +270,11 @@ Codebase
    ~ use os-independent paths in the savegame manager
    ~ crash when trying to overwrite a read-only file on windows
    ~ some bugs in our core scheduler and timer code
-   ~ 
 
 
 User-Contributed Content
 * Translations
-   + new translations: ja, ro
+   + new translations: ja, ro, hr
    + new terminology translations: ja, ro
    + new tutorial translations: bg, et, hu, ja, ro
    # updates to translations: bg, ca, cs, de, es, et, fi, fr, hu, it, lt, nb,
