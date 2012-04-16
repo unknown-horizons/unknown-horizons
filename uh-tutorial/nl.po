@@ -102,6 +102,8 @@ msgid ""
 "\n"
 "Visit www.unknown-horizons.org for help on how to contact the team!"
 msgstr ""
+"Bezoek www.unknown-horizons.org voor help en hoe je contact kunt opnemen met "
+"het team!"
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:24
