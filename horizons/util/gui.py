@@ -171,7 +171,7 @@ def create_resource_selection_dialog(on_click, inventory, db, widget='select_tra
 			amount = inventory[res_id]
 			filled = int(float(inventory[res_id]) / float(inventory.get_limit(res_id)) * 100.0)
 			button = ImageFillStatusButton.init_for_res(db, res_id,
-			                                            amount=amount, filled=filled,
+			                                            amount=amount, filled=filled, uncached=True,
 			                                            use_inactive_icon=False)
 
 		# on click: add this res
