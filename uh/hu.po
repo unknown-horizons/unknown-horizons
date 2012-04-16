@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2012-03-24 02:16+0100\n"
-"PO-Revision-Date: 2012-04-15 10:27+0200\n"
+"PO-Revision-Date: 2012-04-16 15:41+0200\n"
 "Last-Translator: Szontágh <szontagh.ferenc@exahost.eu>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: hu\n"
@@ -114,9 +114,8 @@ msgstr "Utakat húzva is építhetsz."
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
-#, fuzzy
 msgid "You cannot tear the warehouse, your settlements needs it."
-msgstr "Ne bántsd a raktár házat, a lakosaidnak szüksége van rá."
+msgstr "Nem szakíthatod el a raktárházat, a lakosaidnak szüksége van rá."
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
@@ -176,6 +175,7 @@ msgstr "A bányád kimerült."
 msgid "acorns"
 msgstr "makk"
 
+# I don't know this word... this is misspelled?
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "alvearies"
@@ -979,17 +979,15 @@ msgstr "Szigetméret eltérés:"
 msgid "Resource density:"
 msgstr "Nyersanyagsűrűség:"
 
-# szkenárió?? - gondolom egy játék menetet tartalmazó beállítást tároló fájl... na ezt fordítsd le
+# szkenárió?? - gondolom egy játék menetet tartalmazó beállítást tároló fájl... na ezt fordítsd le:P
 #: horizons/gui/modules/singleplayermenu.py:387
-#, fuzzy
 msgid "Invalid scenario file"
-msgstr "Hibás forgatókönyv fájl"
+msgstr "Hibás szkenárió fájl"
 
 # szcenárió can be "forgatókönyv" - not the best word for it
 #: horizons/gui/modules/singleplayermenu.py:388
-#, fuzzy
 msgid "The selected file is not a valid scenario file."
-msgstr "A kiválasztott fájl nem egy érvényes forgatókönyv fájl."
+msgstr "A kiválasztott fájl nem egy érvényes szkenárió fájl."
 
 #: horizons/gui/modules/singleplayermenu.py:389
 msgid "Error message:"
@@ -1108,19 +1106,22 @@ msgstr ""
 "Állítsd be az eladást vagy vételt a címkére kattintással, majd állítsd be a "
 "mennyiséget a jobb oldali csúszkával."
 
+# Na most pl búzával így néz ki:
+# "Vásárolni fog búza 20 aranyért tonnánként, hogyha kevesebb van, mint 30t a raktárban."
 #: horizons/gui/tabs/buyselltab.py:363
 #, python-format
 msgid "Will buy {resource_name} for {price} gold/t whenever less than {limit}t are in stock."
 msgstr ""
-"Vásárolni fog {resource_name} {price} aranyért tonnánként, hogyha kevesebb "
-"van, mint {limit}t a raktárban."
+"{resource_name} vásárlása {price} aranyért tonnánként, hogyha kevesebb van a "
+"raktárban, mint {limit} tonna."
 
+# u.a. mint a 211-es. 
 #: horizons/gui/tabs/buyselltab.py:367
 #, python-format
 msgid "Will sell {resource_name} for {price} gold/t whenever more than {limit}t are available."
 msgstr ""
-"El fog adni {resource_name} {price} aranyért tonnánként, hogyha több van "
-"raktáron, mint {limit} tonna."
+"{resource_name} eladása {price} aranyért tonnánként, hogyha több van a "
+"raktárban, mint {limit} tonna."
 
 #. (text of widget: headline)
 #: horizons/gui/tabs/inventorytab.py:38 horizons/i18n/guitranslations.py:219
@@ -2337,9 +2338,8 @@ msgstr "Tulajdonos kiemelése"
 # fogalmam nincs, mi az a "Transzlucuncia"
 #. (text of widget: lbl_TRANSLUCENCY)
 #: horizons/i18n/guitranslations.py:768
-#, fuzzy
 msgid "Toggle translucency of ambient buildings"
-msgstr "Transzlucuncia váltása a környező épületeken"
+msgstr "Áttetszőség váltása a környező épületeken"
 
 #. (text of widget: lbl_UP)
 #: horizons/i18n/guitranslations.py:770
