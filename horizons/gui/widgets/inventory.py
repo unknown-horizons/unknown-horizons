@@ -125,14 +125,16 @@ class Inventory(pychan.widgets.Container):
 				self.parent.removeChildren(icons[self.ITEMS_PER_LINE-1:])
 		vbox.addChild(current_hbox)
 		self.addChild(vbox)
+		height = ImageFillStatusButton.CELL_SIZE[1] * len(self._res_order) // self.ITEMS_PER_LINE
+		self.min_size = (self.min_size[0], height)
 		if self.display_legend:
 			if isinstance(self._inventory, TotalStorage):
 				# Add total storage indicator
 				sum_stored_res = self._inventory.get_sum_of_stored_resources()
 				label = pychan.widgets.Label()
 				label.text = unicode(sum_stored_res) + u"/" + unicode(self._inventory.get_limit(None))
-				label.position = (170, 53)
-				self.__icon.position = (150, 53)
+				label.position = (150, 53)
+				self.__icon.position = (130, 53)
 				self.addChildren(label, self.__icon)
 			elif isinstance(self._inventory, PositiveSizedSlotStorage):
 				label = pychan.widgets.Label()

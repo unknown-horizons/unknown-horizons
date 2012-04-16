@@ -150,7 +150,7 @@ def create_resource_selection_dialog(on_click, inventory, db, widget='select_tra
 
 	dlg = load_uh_widget(widget)
 
-	button_width = ImageFillStatusButton.DEFAULT_BUTTON_SIZE[0] # used for dummy button
+	button_width = ImageFillStatusButton.CELL_SIZE[0] # used for dummy button
 	vbox = dlg.findChild(name="resources")
 	amount_per_line = vbox.width / button_width
 	current_hbox = pychan.widgets.HBox(name="hbox_0", padding=0)

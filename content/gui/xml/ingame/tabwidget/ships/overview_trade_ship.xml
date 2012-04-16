@@ -48,12 +48,14 @@
 
 		<Icon image="content/gui/images/background/hr.png" position="20,100" />
 
-		<Container position="22,110" size="230,70">
-			<Icon image="content/gui/images/background/inv_bg.png" position="5,4" />
-			<Icon image="content/gui/images/background/inv_bg.png" position="60,4" />
-			<Icon image="content/gui/images/background/inv_bg.png" position="115,4" />
-			<Icon image="content/gui/images/background/inv_bg.png" position="170,4" />
-			<Inventory name="inventory" size="230,70" position="0,0" uncached="1"/> <!-- uncached since icons collide with the traderoute tab -->
+		<Container position="22,110" size="230,75">
+			<HBox padding="5" min_size="215,50" max_size="215,50" position="3,2">
+				<Icon image="content/gui/images/background/inv_bg.png" />
+				<Icon image="content/gui/images/background/inv_bg.png" />
+				<Icon image="content/gui/images/background/inv_bg.png" />
+				<Icon image="content/gui/images/background/inv_bg.png" />
+			</HBox>
+			<Inventory name="inventory" size="230,70" position="4,4" uncached="1" /> <!-- uncached since icons collide with the traderoute tab -->
 		</Container>
 	</Container>
 </Container>

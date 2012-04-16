@@ -28,7 +28,7 @@ from horizons.gui.util import get_res_icon_path
 
 class ImageFillStatusButton(pychan.widgets.Container):
 
-	DEFAULT_BUTTON_SIZE = (55, 50)
+	CELL_SIZE = (54, 50) # 32x32 icon, fillbar to the right, label below, padding
 
 	def __init__(self, up_image, down_image, hover_image, text, res_id, helptext="", \
 	             filled=0, uncached=False, **kwargs):
@@ -41,7 +41,7 @@ class ImageFillStatusButton(pychan.widgets.Container):
 		self.helptext = _(helptext)
 		# res_id is used by the TradeTab for example to determine the resource this button represents
 		self.res_id = res_id
-		self.text_position = (17, 36)
+		self.text_position = (9, 30)
 		self.uncached = uncached # force no cache. needed when the same icon has to appear several times at the same time
 		self.filled = filled # <- black magic at work! this calls _draw()
 
@@ -55,9 +55,9 @@ class ImageFillStatusButton(pychan.widgets.Container):
 		@param use_inactive_icon: wheter to use inactive icon if amount == 0
 		@param uncached: force no cache. see __init__()
 		@return: ImageFillStatusButton instance"""
-		icon = get_res_icon_path(res, 50)
+		icon = get_res_icon_path('placeholder', size=32)
 		if use_inactive_icon:
-			icon_disabled = get_res_icon_path(res, 50, greyscale=True)
+			icon_disabled = get_res_icon_path(res, size=50, greyscale=True)
 		else:
 			icon_disabled = icon
 		helptext = db.get_res_name(res)
@@ -65,11 +65,10 @@ class ImageFillStatusButton(pychan.widgets.Container):
 		return cls(up_image=image, down_image=image, hover_image=image,
 		           text=unicode(amount),
 		           helptext=helptext,
-		           size=cls.DEFAULT_BUTTON_SIZE,
-		           res_id = res,
-		           filled = filled,
-		           uncached = uncached,
-		           opaque=False)
+		           size=cls.CELL_SIZE,
+		           res_id=res,
+		           filled=filled,
+		           uncached=uncached)
 
 	def _set_filled(self, percent):
 		""""@param percent: int percent that fillstatus will be green"""
@@ -106,6 +105,8 @@ class ImageFillStatusButton(pychan.widgets.Container):
 		self.label = pychan.widgets.Label(text=self.text)
 		self.label.position = self.text_position
 		self.fill_bar = pychan.widgets.Icon(image="content/gui/images/tabwidget/green_line.png")
-		self.fill_bar.position = (self.button.width-self.fill_bar.width-1, \
-		                          self.button.height-int(self.button.height/100.0*self.filled))
+		fill_level = (self.button.height * self.filled) // 100
+		self.fill_bar.size = (2*self.fill_bar.size[0]//3, fill_level)
+		# move fillbar down after resizing, since its origin is top aligned
+		self.fill_bar.position = (self.button.width, self.button.height - fill_level)
 		self.addChildren(self.button, self.fill_bar, self.label)
