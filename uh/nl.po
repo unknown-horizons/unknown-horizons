@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2012-03-24 02:16+0100\n"
-"PO-Revision-Date: 2012-04-16 19:40+0200\n"
+"PO-Revision-Date: 2012-04-16 19:57+0200\n"
 "Last-Translator: mightykai <k.janssen@home.nl>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: nl\n"
@@ -1121,11 +1121,15 @@ msgstr ""
 #, python-format
 msgid "Will buy {resource_name} for {price} gold/t whenever less than {limit}t are in stock."
 msgstr ""
+"Wil {resource_name} kopen voor {price} goudstukken /t zolang er minder zijn "
+"dan {limit} op voorraad."
 
 #: horizons/gui/tabs/buyselltab.py:367
 #, python-format
 msgid "Will sell {resource_name} for {price} gold/t whenever more than {limit}t are available."
 msgstr ""
+"Wil {resource_name} verkopen voor {price} goudstukken/t zolang er meer zijn "
+"dan {limit} op voorraad."
 
 #. (text of widget: headline)
 #: horizons/gui/tabs/inventorytab.py:38 horizons/i18n/guitranslations.py:219
@@ -1330,6 +1334,8 @@ msgstr "Herstel de configuratie naar de fabriek instellingen."
 #: horizons/gui/widgets/resourceoverviewbar.py:395
 msgid "Reset this settlement's displayed resources to the default configuration you have saved."
 msgstr ""
+"Herstel deze nederzetting's grondstoffen naar de standaard configuratie die "
+"je hebt opgeslagen."
 
 #: horizons/gui/widgets/resourceoverviewbar.py:399
 msgid "Reset to factory"
@@ -2983,7 +2989,7 @@ msgstr "Verbouwt groenten en beheert vee."
 #. name of buildings:fireservice
 #: horizons/i18n/objecttranslations.py:163
 msgid "Fire Station"
-msgstr ""
+msgstr "Brandweer"
 
 #. tooltip_text of buildings:fireservice
 #: horizons/i18n/objecttranslations.py:165
@@ -3273,10 +3279,11 @@ msgstr "Huis"
 msgid "Stone house"
 msgstr "Stenen huis"
 
+# Kan beter in game gecontroleerd worden.
 #. name_4 of buildings:tent
 #: horizons/i18n/objecttranslations.py:363
 msgid "Estate"
-msgstr ""
+msgstr "Boerderij"
 
 #. name_5 of buildings:tent
 #: horizons/i18n/objecttranslations.py:365
@@ -3378,9 +3385,8 @@ msgstr "Warenhuis"
 # 76%
 #. name of buildings:weaverstent
 #: horizons/i18n/objecttranslations.py:433
-#, fuzzy
 msgid "Weaver's Hut"
-msgstr "Weverstent"
+msgstr "Kleermakers Tent"
 
 #. tooltip_text of buildings:weaverstent
 #: horizons/i18n/objecttranslations.py:435
