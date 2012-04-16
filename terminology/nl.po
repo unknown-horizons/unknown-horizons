@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2012-03-31 21:42+0100\n"
-"PO-Revision-Date: 2012-04-16 07:42+0200\n"
+"PO-Revision-Date: 2012-04-16 07:44+0200\n"
 "Last-Translator: mightykai <k.janssen@home.nl>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: nl\n"
@@ -1047,7 +1047,7 @@ msgid "lamb wool"
 msgstr "lam wol"
 
 msgid "overview tab"
-msgstr ""
+msgstr "overzicht tab"
 
 msgid "minimap"
 msgstr "minikaart"
@@ -1125,7 +1125,7 @@ msgid "sound"
 msgstr "geluid"
 
 msgid "special"
-msgstr ""
+msgstr "speciaal"
 
 msgid "store"
 msgstr ""
@@ -1135,7 +1135,7 @@ msgstr ""
 # 75%
 #, fuzzy
 msgid "tear"
-msgstr "team"
+msgstr "traan"
 
 # (poterminology) uh-tutorial/tutorial.pot (2)
 #
@@ -1213,7 +1213,7 @@ msgid "unload"
 msgstr "lossen"
 
 msgid "command"
-msgstr ""
+msgstr "commando"
 
 msgid "completed"
 msgstr "voltooid"
@@ -1254,7 +1254,7 @@ msgid "graphics"
 msgstr "beeld"
 
 msgid "harvest"
-msgstr ""
+msgstr "oogsten"
 
 #
 #
@@ -1364,7 +1364,7 @@ msgid "temporarily"
 msgstr "tijdelijk"
 
 msgid "values"
-msgstr ""
+msgstr "waarde"
 
 # (poterminology) uh-tutorial/tutorial.pot (21)
 #
