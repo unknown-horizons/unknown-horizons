@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2012-03-31 21:42+0100\n"
-"PO-Revision-Date: 2012-04-15 16:35+0200\n"
+"PO-Revision-Date: 2012-04-16 07:42+0200\n"
 "Last-Translator: mightykai <k.janssen@home.nl>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: nl\n"
@@ -270,10 +270,10 @@ msgid "upgrade"
 msgstr ""
 
 msgid "your inhabitants"
-msgstr ""
+msgstr "Uw inwoners"
 
 msgid "close"
-msgstr ""
+msgstr "Sluiten"
 
 # (poterminology) uh-tutorial/tutorial.pot (8)
 #
@@ -285,7 +285,7 @@ msgid "companies"
 msgstr "bedrijven"
 
 msgid "island"
-msgstr ""
+msgstr "eiland"
 
 # (poterminology) uh-tutorial/tutorial.pot (13)
 #
@@ -297,7 +297,7 @@ msgid "time"
 msgstr "tijd"
 
 msgid "unit"
-msgstr ""
+msgstr "eenheid"
 
 # (poterminology) uh-tutorial/tutorial.pot (7)
 #
@@ -509,7 +509,7 @@ msgid "your"
 msgstr "uw"
 
 msgid "your settlement"
-msgstr ""
+msgstr "uw kolonie"
 
 # (poterminology) uh-tutorial/tutorial.pot (3)
 #
@@ -563,10 +563,10 @@ msgid "happiness"
 msgstr "vreugde"
 
 msgid "in stock"
-msgstr ""
+msgstr "op voorraad"
 
 msgid "money"
-msgstr ""
+msgstr "geld"
 
 # (poterminology) uh-tutorial/tutorial.pot (4)
 #
@@ -590,13 +590,9 @@ msgid "sugar"
 msgstr "suiker"
 
 # (poterminology) uh-tutorial/tutorial.pot (7)
-#
 # (poterminology) uh/unknownhorizons.pot (3)
-#
-#
-#
 msgid "taxes"
-msgstr "belasting"
+msgstr "belastingen"
 
 msgid "tax"
 msgstr "belasting"
@@ -609,7 +605,7 @@ msgid "tools"
 msgstr "gereedschap"
 
 msgid "button"
-msgstr ""
+msgstr "knop"
 
 #
 #
@@ -678,19 +674,16 @@ msgstr "verplaatsen"
 # (poterminology) uh-tutorial/tutorial.pot (4)
 # (poterminology) uh/unknownhorizons.pot (2)
 # 87%
-#, fuzzy
 msgid "pioneers"
-msgstr "pionier"
+msgstr "pioniers"
 
 # 87%
-#, fuzzy
 msgid "citizens"
-msgstr "stedeling"
+msgstr "burgers"
 
 # 88%
-#, fuzzy
 msgid "merchants"
-msgstr "koopman"
+msgstr "kooplieden"
 
 # 90%
 #, fuzzy
@@ -718,7 +711,7 @@ msgstr "kolonist"
 # 80%
 #, fuzzy
 msgid "speed"
-msgstr "zaad"
+msgstr "snelheid"
 
 # (poterminology) uh-tutorial/tutorial.pot (3)
 #
@@ -738,11 +731,12 @@ msgstr "stop"
 msgid "storage tent"
 msgstr "opslag tent"
 
+# kan natuurlijk ook wachten zijn.
 msgid "wait"
-msgstr ""
+msgstr "wacht"
 
 msgid "access"
-msgstr ""
+msgstr "toegang"
 
 # (poterminology) uh-tutorial/tutorial.pot (2)
 #
@@ -754,7 +748,7 @@ msgid "account"
 msgstr "account"
 
 msgid "amount"
-msgstr ""
+msgstr "aantal"
 
 # (poterminology) uh-tutorial/tutorial.pot (2)
 #
@@ -855,10 +849,10 @@ msgid "liquor"
 msgstr "drank"
 
 msgid "location"
-msgstr ""
+msgstr "lokatie"
 
 msgid "offer"
-msgstr ""
+msgstr "aanbieden"
 
 # (poterminology) uh-tutorial/tutorial.pot (3)
 #
@@ -924,10 +918,10 @@ msgid "team"
 msgstr "team"
 
 msgid "total"
-msgstr ""
+msgstr "totaal"
 
 msgid "unable"
-msgstr ""
+msgstr "niet beschikbaar"
 
 # (poterminology) uh-tutorial/tutorial.pot (3)
 #
@@ -939,14 +933,13 @@ msgid "active"
 msgstr "actief"
 
 msgid "afford"
-msgstr ""
+msgstr "veroorloven"
 
 # (poterminology) uh-tutorial/tutorial.pot (2)
 # (poterminology) uh/unknownhorizons.pot (3)
 # 85%
-#, fuzzy
 msgid "animals"
-msgstr "dier"
+msgstr "dieren"
 
 #
 #
@@ -968,7 +961,7 @@ msgid "consume"
 msgstr "consumeren"
 
 msgid "enabled"
-msgstr ""
+msgstr "beschikbaar"
 
 msgid "entries"
 msgstr ""
@@ -1063,7 +1056,7 @@ msgid "issues"
 msgstr "problemen"
 
 msgid "plant"
-msgstr ""
+msgstr "plant"
 
 #
 #
@@ -1087,7 +1080,7 @@ msgstr ""
 # 75%
 #, fuzzy
 msgid "read"
-msgstr "rood"
+msgstr "lees"
 
 #
 #
@@ -1181,7 +1174,7 @@ msgid "visit"
 msgstr "bezoeken"
 
 msgid "world"
-msgstr ""
+msgstr "wereld"
 
 # (poterminology) uh-tutorial/tutorial.pot (1)
 # (poterminology) uh/unknownhorizons.pot (1)
@@ -1191,7 +1184,7 @@ msgid "yield"
 msgstr "opbrengsten"
 
 msgid "your ship"
-msgstr ""
+msgstr "uw schip"
 
 # (poterminology) uh-tutorial/tutorial.pot (2)
 #
@@ -1217,13 +1210,13 @@ msgid "load"
 msgstr ""
 
 msgid "unload"
-msgstr ""
+msgstr "lossen"
 
 msgid "command"
 msgstr ""
 
 msgid "completed"
-msgstr ""
+msgstr "voltooid"
 
 # Vermoedelijk in het spel 'vereiste' ipv 'conditie'.
 msgid "condition"
@@ -1233,7 +1226,7 @@ msgid "contact"
 msgstr "contact"
 
 msgid "empty"
-msgstr ""
+msgstr "leeg"
 
 msgid "ensure"
 msgstr ""
@@ -1336,7 +1329,7 @@ msgid "signal fire"
 msgstr "signaal vuur"
 
 msgid "statistics"
-msgstr ""
+msgstr "statistieken"
 
 # (poterminology) uh-tutorial/tutorial.pot (1)
 # (poterminology) uh/unknownhorizons.pot (2)
