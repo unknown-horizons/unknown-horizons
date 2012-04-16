@@ -90,7 +90,7 @@ class Inventory(pychan.widgets.Container):
 						if not new_res:
 							break # all done
 
-		# add remaning slots for slotstorage or just add it without consideration for other storage kinds
+		# add remaining slots for slotstorage or just add it without consideration for other storage kinds
 		self._res_order += new_res
 
 		for resid in self._res_order:

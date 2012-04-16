@@ -2,11 +2,11 @@
 <Container size="250,450">
 <TabBG amount="6"/>
 
-	<Container position="0,70" size="245,350" >
+	<Container position="0,70" size="245,350">
 
-	<HBox position="22,7"  min_size="170,20"  size="230,20" >
+	<HBox position="22,7"  min_size="170,20"  size="230,20">
 	<Spacer min_size="0"  max_size="50" />
-		<Label name='headline'  border_size="0"  text="Resource deposit"/>
+		<Label name="headline"  border_size="0"  text="Resource deposit" />
 	</HBox>
 
 		<Icon image="content/gui/images/background/hr.png" position="20,30" />
@@ -17,10 +17,10 @@
 		<Icon image="content/gui/images/background/hr.png" position="20,210" />
 		-->
 		<VBox position="25,50">
-			<Label name="res_dep_description_lbl" text="This is a resource deposit where you can build a mine to dig up resources." wrap_text="1" max_size="212,100"/>
+			<Label name="res_dep_description_lbl" text="This is a resource deposit where you can build a mine to dig up resources." wrap_text="1" max_size="212,100" />
 			<Label name="res_dep_description_lbl2" text="It contains these resources:" wrap_text="1" max_size="212,100"
 				comment="It == The resource deposit" />
-			<Inventory name="inventory" size="200,100"/>
+			<Inventory name="inventory" size="200,100" />
 		</VBox>
 
 	</Container>
