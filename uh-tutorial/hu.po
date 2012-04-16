@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: translate-uh@lists.unknown-horizons.org\n"
 "POT-Creation-Date: 2012-03-21 04:04+0100\n"
-"PO-Revision-Date: 2012-04-15 10:35+0200\n"
+"PO-Revision-Date: 2012-04-15 10:36+0200\n"
 "Last-Translator: Szontágh <szontagh.ferenc@exahost.eu>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: hu\n"
@@ -1285,7 +1285,6 @@ msgstr "Köszönöm!"
 # 96%
 #. This is the text body of a logbook page.
 #: po/tutorial.py:380
-#, fuzzy
 msgid ""
 "\n"
 "\n"
