@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2012-03-24 02:16+0100\n"
-"PO-Revision-Date: 2012-04-16 15:41+0200\n"
+"PO-Revision-Date: 2012-04-16 15:44+0200\n"
 "Last-Translator: Szontágh <szontagh.ferenc@exahost.eu>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: hu\n"
@@ -2827,7 +2827,7 @@ msgstr "Játékos neve:"
 #. name of buildings:alvearies
 #: horizons/i18n/objecttranslations.py:53
 msgid "Alvearies"
-msgstr ""
+msgstr "Méhészet"
 
 #. tooltip_text of buildings:alvearies
 #: horizons/i18n/objecttranslations.py:55
@@ -3046,7 +3046,7 @@ msgstr "Fémet bányászik."
 #. name of buildings:log
 #: horizons/i18n/objecttranslations.py:208
 msgid "Log"
-msgstr ""
+msgstr "Híd"
 
 #. tooltip_text of buildings:log
 #: horizons/i18n/objecttranslations.py:210
