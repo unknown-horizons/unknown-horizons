@@ -22,6 +22,7 @@
 import os
 
 from fife.extensions import pychan
+from fife.extensions.pychan.widgets import Icon
 
 from horizons.i18n import translate_widget
 from horizons.util.python import decorators, Callback
@@ -69,10 +70,10 @@ def load_uh_widget(filename, style=None, center_widget=False):
 
 	return widget
 
+@decorators.cachedfunction
 def get_res_icon_path(res, size, greyscale=False):
-	"""Returns icons of a resource
+	"""Returns path of a resource icon or placeholder path, if icon does not exist.
 	@param res: resource id. Pass 'placeholder' to get placeholder path.
-	@return: tuple: (icon_50_path, icon_disabled_path, icon_24_path, icon_16_path, icon_32_path)
 	"""
 	icon_path = 'content/gui/icons/resources/{size}/'.format(size=size)
 	if greyscale:
@@ -81,23 +82,25 @@ def get_res_icon_path(res, size, greyscale=False):
 		icon_path = icon_path + 'placeholder.png'
 	else:
 		icon_path = icon_path + '{res:03d}.png'.format(res=res)
+	try:
+		Icon(image=icon_path)
+	except RuntimeError: # ImageManager: image not found, use placeholder or die
+		if res == 'placeholder':
+			raise Exception('Image not found: {icon_path}'.format(icon_path=icon_path))
+		else:
+			print '[WW] Image not found: {icon_path}'.format(icon_path=icon_path)
+			icon_path = get_res_icon_path('placeholder', size)
 	return icon_path
 
 def create_resource_icon(res_id, db, size=50):
-	"""Creates a pychan Icon for a resource. Helptext is set to res name.
-	Returns None if  size  parameter is invalid.
+	"""Creates a pychan Icon for a resource. Helptext is set to name of *res_id*.
+	Returns None if *size* parameter is invalid (not one of 16, 24, 32, 50).
 	@param res_id: resource id
 	@param db: dbreader for main db
 	@param size: Size of icon in px. Valid: 16, 24, 32, 50."""
-	from fife.extensions.pychan.widgets import Icon
 	widget = None
 	if size in (16, 24, 32, 50):
-		icon_path = get_res_icon_path(res_id, size)
-		try:
-			widget = Icon(image=icon_path)
-		except RuntimeError: # ImageManager: image not found, use placeholder
-			print '[WW] Image not found: {icon_path}'.format(icon_path=icon_path)
-			widget = Icon(image=get_res_icon_path('placeholder', size))
+		widget = Icon(image=get_res_icon_path(res_id, size))
 		widget.helptext = db.get_res_name(res_id)
 	return widget
 

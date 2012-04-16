@@ -52,16 +52,12 @@ class ImageFillStatusButton(pychan.widgets.Container):
 		@param res: resource id
 		@param amount: int amount of res (used to decide inactiveness and as text)
 		@param filled: percent of fill status (values are ints in [0, 100])
-		@param use_inactive_icon: wheter to use inactive icon if amount == 0
+		@param use_inactive_icon: whether to use inactive icon if amount == 0
 		@param uncached: force no cache. see __init__()
 		@return: ImageFillStatusButton instance"""
-		icon = get_res_icon_path('placeholder', size=32)
-		if use_inactive_icon:
-			icon_disabled = get_res_icon_path(res, size=50, greyscale=True)
-		else:
-			icon_disabled = icon
+		greyscale = use_inactive_icon and amount == 0
+		image = get_res_icon_path(res, 32, greyscale)
 		helptext = db.get_res_name(res)
-		image = icon_disabled if amount == 0 else icon
 		return cls(up_image=image, down_image=image, hover_image=image,
 		           text=unicode(amount),
 		           helptext=helptext,
