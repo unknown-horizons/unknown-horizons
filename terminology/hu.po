@@ -399,7 +399,6 @@ msgid "Captain's log"
 msgstr "A Kapitány naplója"
 
 # 75%
-#, fuzzy
 msgid "construct"
 msgstr "építés"
 
@@ -549,7 +548,6 @@ msgid "harvest"
 msgstr "aratás"
 
 # 80%
-#, fuzzy
 msgid "hunts"
 msgstr "vadászat"
 
