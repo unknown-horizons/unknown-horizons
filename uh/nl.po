@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2012-03-24 02:16+0100\n"
-"PO-Revision-Date: 2012-04-16 07:49+0200\n"
+"PO-Revision-Date: 2012-04-16 07:50+0200\n"
 "Last-Translator: mightykai <k.janssen@home.nl>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: nl\n"
@@ -2543,7 +2543,7 @@ msgstr "Kleur diepte:"
 #. (text of widget: debug_log_lbl)
 #: horizons/i18n/guitranslations.py:891
 msgid "Enable logging"
-msgstr ""
+msgstr "Loggen aanzetten"
 
 #. (text of widget: edge_scrolling_label)
 #: horizons/i18n/guitranslations.py:893
@@ -3267,7 +3267,7 @@ msgstr "Huis"
 #. name_3 of buildings:tent
 #: horizons/i18n/objecttranslations.py:361
 msgid "Stone house"
-msgstr ""
+msgstr "Stenen huis"
 
 #. name_4 of buildings:tent
 #: horizons/i18n/objecttranslations.py:363
@@ -3277,7 +3277,7 @@ msgstr ""
 #. name_5 of buildings:tent
 #: horizons/i18n/objecttranslations.py:365
 msgid "Manor"
-msgstr ""
+msgstr "Landhuis"
 
 #. tooltip_text of buildings:tent
 #: horizons/i18n/objecttranslations.py:367
