@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2012-03-24 02:16+0100\n"
-"PO-Revision-Date: 2012-04-16 19:57+0200\n"
+"PO-Revision-Date: 2012-04-16 20:06+0200\n"
 "Last-Translator: mightykai <k.janssen@home.nl>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: nl\n"
@@ -1232,7 +1232,7 @@ msgstr "Productie overzicht"
 
 #: horizons/gui/tabs/selectmultitab.py:56
 msgid "Selected Units"
-msgstr "Geselcteerde Eenheden"
+msgstr "Geselecteerde Eenheden"
 
 #: horizons/gui/widgets/buysellinventory.py:83
 #: horizons/gui/widgets/inventory.py:115
@@ -2098,7 +2098,7 @@ msgstr "Kies dit scenario"
 #. (text of widget: lbl_route_activity)
 #: horizons/i18n/guitranslations.py:634
 msgid "Route activity:"
-msgstr ""
+msgstr "Active route"
 
 #. (text of widget: lbl_wait_at_load) Trade route setting: Whether to wait until all goods could be loaded.
 #: horizons/i18n/guitranslations.py:636
@@ -2677,6 +2677,8 @@ msgstr "Indien 0, wordt de standaard driver gebruikt"
 #: horizons/i18n/guitranslations.py:945
 msgid "Don't use in normal game session. Decides whether to write debug information in the logging directory of your user directory. Slows the game down."
 msgstr ""
+"Niet gebruiken in normale spel sessie.  Kies waar u de debug informatie wilt "
+"wegschrijven in de map van uw gebruikers map. Maakt het spel langzamer."
 
 #. (helptext of widget: edge_scrolling_label)
 #: horizons/i18n/guitranslations.py:947
@@ -3229,9 +3231,8 @@ msgstr "Opslagtent"
 # 75%
 #. name_1 of buildings:storagetent
 #: horizons/i18n/objecttranslations.py:334
-#, fuzzy
 msgid "Storage Hut"
-msgstr "Opslagtent"
+msgstr "Opslag tent"
 
 #. tooltip_text of buildings:storagetent
 #: horizons/i18n/objecttranslations.py:336
@@ -3728,6 +3729,8 @@ msgstr "Hiervoor hebben we de informatie van het logbestand nodig:"
 #: run_uh.py:211
 msgid "Please give it to us via IRC or our forum, for both see http://unknown-horizons.org ."
 msgstr ""
+"Stuur het ons via IRC of ons forum, voor meer informatie zie http://unknown-"
+"horizons.org ."
 
 # libraries behouden maakt het zoeken naar een oplossing via google makkelijker ;)
 # Anders veranderen naar '(code-)bibliotheken'

@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2012-03-31 21:42+0100\n"
-"PO-Revision-Date: 2012-04-16 07:44+0200\n"
+"PO-Revision-Date: 2012-04-16 20:21+0200\n"
 "Last-Translator: mightykai <k.janssen@home.nl>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: nl\n"
@@ -266,8 +266,9 @@ msgstr "opslag"
 msgid "tab"
 msgstr "tab"
 
+#, fuzzy
 msgid "upgrade"
-msgstr ""
+msgstr "verbeteren"
 
 msgid "your inhabitants"
 msgstr "Uw inwoners"
@@ -363,7 +364,7 @@ msgid "trail"
 msgstr "pad"
 
 msgid "Unknown Horizons"
-msgstr ""
+msgstr "Unknown Horizons"
 
 # (poterminology) uh-tutorial/tutorial.pot (7)
 #
@@ -450,7 +451,7 @@ msgid "log"
 msgstr "blok hout"
 
 msgid "road"
-msgstr ""
+msgstr "weg"
 
 #
 #
@@ -1000,6 +1001,8 @@ msgstr "groeit"
 msgid "hold"
 msgstr "houden"
 
+# ligt er aan waar dit voor komt. 
+# is het bijv. een houthakker dan kan het werkeloos zijn 
 msgid "idle"
 msgstr ""
 
