@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2012-03-24 02:16+0100\n"
-"PO-Revision-Date: 2012-04-16 07:50+0200\n"
+"PO-Revision-Date: 2012-04-16 19:40+0200\n"
 "Last-Translator: mightykai <k.janssen@home.nl>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: nl\n"
@@ -1321,11 +1321,11 @@ msgstr "Klik om een nieuw slot toe te voegen"
 #: horizons/gui/widgets/resourceoverviewbar.py:389
 #: horizons/gui/widgets/resourceoverviewbar.py:394
 msgid "Reset to default"
-msgstr ""
+msgstr "Standaard herstellen"
 
 #: horizons/gui/widgets/resourceoverviewbar.py:390
 msgid "Reset this configuration to the factory default."
-msgstr ""
+msgstr "Herstel de configuratie naar de fabriek instellingen."
 
 #: horizons/gui/widgets/resourceoverviewbar.py:395
 msgid "Reset this settlement's displayed resources to the default configuration you have saved."
@@ -1333,11 +1333,13 @@ msgstr ""
 
 #: horizons/gui/widgets/resourceoverviewbar.py:399
 msgid "Reset to factory"
-msgstr ""
+msgstr "Fabriek instellingen herstellen."
 
 #: horizons/gui/widgets/resourceoverviewbar.py:400
 msgid "Reset the default configuration (which you see here) to the factory default for all settlements."
 msgstr ""
+"Standaard configuratie herstellen (welke je hier kan zien) naar de fabriek "
+"instellingen voor alle nederzettingen."
 
 #. (helptext of widget: start_route) Trade route
 #: horizons/gui/widgets/routeconfig.py:88 horizons/i18n/guitranslations.py:642
@@ -1979,12 +1981,14 @@ msgstr "Selecteer grondstof:"
 #. (helptext of widget: make_default_btn)
 #: horizons/i18n/guitranslations.py:574
 msgid "Save current resource configuration as default for all settlements."
-msgstr ""
+msgstr "Grondstof configuratie opslaan als standaard voor alle nederzettingen."
 
 #. (helptext of widget: reset_default_btn)
 #: horizons/i18n/guitranslations.py:576
 msgid "Reset default resource configuration for all settlements."
 msgstr ""
+"Standaard instellingen herstellen voor grondstoffen voor alle "
+"nederzettingen."
 
 #. (helptext of widget: headline) Please keep the translation similarly short and concise, else the tooltip is not well understood by players.
 #: horizons/i18n/guitranslations.py:578
@@ -2558,7 +2562,7 @@ msgstr "Effecten volume:"
 #. (text of widget: fps_label)
 #: horizons/i18n/guitranslations.py:897
 msgid "Frame rate limit:"
-msgstr ""
+msgstr "maximale beelden per seconden:"
 
 #. (text of widget: headline_language)
 #: horizons/i18n/guitranslations.py:901
@@ -2676,7 +2680,7 @@ msgstr "De map scrollen als de muis dicht langs de rand is"
 #. (helptext of widget: fps_label)
 #: horizons/i18n/guitranslations.py:949
 msgid "Set the maximum frame rate used. Default: 60 fps."
-msgstr ""
+msgstr "Stel het maximaal behaalde beelden in. Standaard: 60bps"
 
 #. (helptext of widget: minimap_rotation_label)
 #: horizons/i18n/guitranslations.py:951
