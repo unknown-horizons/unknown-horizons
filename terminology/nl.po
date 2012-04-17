@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2012-03-31 21:42+0100\n"
-"PO-Revision-Date: 2012-04-17 19:40+0200\n"
+"PO-Revision-Date: 2012-04-17 19:47+0200\n"
 "Last-Translator: mightykai <k.janssen@home.nl>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: nl\n"
@@ -174,9 +174,8 @@ msgstr "houthakker"
 # (poterminology) uh-tutorial/tutorial.pot (4)
 # (poterminology) uh/unknownhorizons.pot (2)
 # 88%
-#, fuzzy
 msgid "resident"
-msgstr "woningen"
+msgstr "Bewoner"
 
 # (poterminology) uh-tutorial/tutorial.pot (10)
 #
@@ -904,10 +903,10 @@ msgid "solution"
 msgstr "oplossing"
 
 msgid "space"
-msgstr ""
+msgstr "ruimte"
 
 msgid "target"
-msgstr ""
+msgstr "doel"
 
 # (poterminology) uh-tutorial/tutorial.pot (2)
 #
@@ -1072,7 +1071,7 @@ msgid "playing"
 msgstr "spelen"
 
 msgid "price"
-msgstr ""
+msgstr "prijs"
 
 # (poterminology) uh-tutorial/tutorial.pot (1)
 # (poterminology) uh/unknownhorizons.pot (1)
