@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2012-03-31 21:42+0100\n"
-"PO-Revision-Date: 2012-04-16 20:21+0200\n"
+"PO-Revision-Date: 2012-04-17 07:13+0200\n"
 "Last-Translator: mightykai <k.janssen@home.nl>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: nl\n"
@@ -1002,9 +1002,9 @@ msgid "hold"
 msgstr "houden"
 
 # ligt er aan waar dit voor komt. 
-# is het bijv. een houthakker dan kan het werkeloos zijn 
+# is het bijv. een houthakker dan kan het werkeloos zijn of niks aan het doen.
 msgid "idle"
-msgstr ""
+msgstr "Inactief"
 
 # (poterminology) uh-tutorial/tutorial.pot (2)
 #
