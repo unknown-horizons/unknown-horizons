@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2012-03-31 21:42+0100\n"
-"PO-Revision-Date: 2012-04-17 19:47+0200\n"
+"PO-Revision-Date: 2012-04-17 19:48+0200\n"
 "Last-Translator: mightykai <k.janssen@home.nl>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: nl\n"
@@ -189,7 +189,6 @@ msgstr "dorpsplein"
 # (poterminology) uh-tutorial/tutorial.pot (12)
 # (poterminology) uh/unknownhorizons.pot (3)
 # 85%
-#, fuzzy
 msgid "sailors"
 msgstr "zeeman"
 
@@ -265,7 +264,6 @@ msgstr "opslag"
 msgid "tab"
 msgstr "tab"
 
-#, fuzzy
 msgid "upgrade"
 msgstr "verbeteren"
 
@@ -686,7 +684,6 @@ msgid "merchants"
 msgstr "kooplieden"
 
 # 90%
-#, fuzzy
 msgid "aristocrats"
 msgstr "aristocraat"
 
@@ -709,7 +706,6 @@ msgid "settler"
 msgstr "kolonist"
 
 # 80%
-#, fuzzy
 msgid "speed"
 msgstr "snelheid"
 
@@ -909,11 +905,7 @@ msgid "target"
 msgstr "doel"
 
 # (poterminology) uh-tutorial/tutorial.pot (2)
-#
 # (poterminology) uh/unknownhorizons.pot (1)
-#
-#
-#
 msgid "team"
 msgstr "team"
 
@@ -953,7 +945,6 @@ msgstr "Logboek"
 # (poterminology) uh-tutorial/tutorial.pot (3)
 # (poterminology) uh/unknownhorizons.pot (1)
 # 75%
-#, fuzzy
 msgid "construct"
 msgstr "bouwen"
 
@@ -1076,7 +1067,6 @@ msgstr "prijs"
 # (poterminology) uh-tutorial/tutorial.pot (1)
 # (poterminology) uh/unknownhorizons.pot (1)
 # 75%
-#, fuzzy
 msgid "read"
 msgstr "lees"
 
@@ -1132,7 +1122,6 @@ msgstr "opslaan / winkel"
 # (poterminology) uh-tutorial/tutorial.pot (2)
 # (poterminology) uh/unknownhorizons.pot (1)
 # 75%
-#, fuzzy
 msgid "tear"
 msgstr "traan"
 
