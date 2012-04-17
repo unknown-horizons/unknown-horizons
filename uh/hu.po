@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2012-03-24 02:16+0100\n"
-"PO-Revision-Date: 2012-04-16 15:44+0200\n"
+"PO-Revision-Date: 2012-04-16 15:45+0200\n"
 "Last-Translator: Szontágh <szontagh.ferenc@exahost.eu>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: hu\n"
@@ -108,7 +108,6 @@ msgstr ""
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
-#, fuzzy
 msgid "You can also drag roads."
 msgstr "Utakat húzva is építhetsz."
 
@@ -171,7 +170,6 @@ msgstr "A bányád kimerült."
 
 #. This is a database entry: the name of a resource.
 #: database files sql
-#, fuzzy
 msgid "acorns"
 msgstr "makk"
 
@@ -208,7 +206,6 @@ msgstr "marha"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
-#, fuzzy
 msgid "cattle for slaughter"
 msgstr "vágómarha"
 
@@ -224,7 +221,6 @@ msgstr "agyag"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
-#, fuzzy
 msgid "clay deposit"
 msgstr "agyaglelőhely"
 
@@ -270,7 +266,6 @@ msgstr "tőr"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
-#, fuzzy
 msgid "deer food A"
 msgstr "szarvasétel A"
 
@@ -351,7 +346,6 @@ msgstr "vaslelőhely"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
-#, fuzzy
 msgid "iron ingots"
 msgstr "vasöntvények"
 
@@ -382,7 +376,6 @@ msgstr "disznók"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
-#, fuzzy
 msgid "pigs for slaughter"
 msgstr "vágódisznók"
 
@@ -409,7 +402,6 @@ msgstr "fűszerek"
 # 76%
 #. This is a database entry: the name of a resource.
 #: database files sql
-#, fuzzy
 msgid "stone deposit"
 msgstr "vaslelőhely"
 
@@ -451,7 +443,6 @@ msgstr "dohány"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
-#, fuzzy
 msgid "tools"
 msgstr "szerszámok"
 
@@ -794,7 +785,6 @@ msgid "No diplomacy possible"
 msgstr "Diplomácia nem lehetséges"
 
 #: horizons/gui/ingamegui.py:279
-#, fuzzy
 msgid "Cannot do diplomacy as there are no other players."
 msgstr "Diplomáciai kapcsolat nem lehetséges, mert nincsenek más játékosok."
 
@@ -837,12 +827,10 @@ msgid "Fatal Network Error"
 msgstr "Végzetes hálózati hiba"
 
 #: horizons/gui/modules/multiplayermenu.py:118
-#, fuzzy
 msgid "Could not connect to master server."
 msgstr "Nem sikerült kapcsolódni a főszerverhez."
 
 #: horizons/gui/modules/multiplayermenu.py:119
-#, fuzzy
 msgid "Please check your Internet connection. If it is fine, it means our master server is temporarily down."
 msgstr ""
 "Ellenőrizd az internet kapcsolatodat. Amennyiben rendben van, az azt "
@@ -1269,14 +1257,13 @@ msgid "Sound"
 msgstr "Hang"
 
 #: horizons/gui/widgets/pickbeltwidget.py:93
-#, fuzzy
 msgid "Game"
 msgstr "Játék"
 
 # 95%
 #: horizons/gui/widgets/playerssettlements.py:44
 #, python-format
-#, python-format, fuzzy
+#, python-format, 
 msgid "Settlements of {player}"
 msgstr "{player} települései"
 
@@ -1289,7 +1276,7 @@ msgstr "Összesen"
 # 94%
 #: horizons/gui/widgets/playersships.py:49
 #, python-format
-#, python-format, fuzzy
+#, python-format, 
 msgid "Ships of {player}"
 msgstr "{player} hajói"
 
@@ -1302,7 +1289,6 @@ msgstr "Kattints ide a hajó nevének megváltoztatásához"
 
 #. i18n There are no weapons equipped at the moment.
 #: horizons/gui/widgets/playersships.py:99
-#, fuzzy
 msgid "None"
 msgstr "Semmi"
 
@@ -1329,7 +1315,6 @@ msgid "Reset this configuration to the factory default."
 msgstr "A beállítás visszaállítása a gyári értékekre."
 
 #: horizons/gui/widgets/resourceoverviewbar.py:395
-#, fuzzy
 msgid "Reset this settlement's displayed resources to the default configuration you have saved."
 msgstr ""
 "A gyarmat megjelenített nyersanyagainak visszaállítása az alapértelmezett "
@@ -1736,7 +1721,6 @@ msgstr "Fejlesztés lehetetlen:"
 
 #. (helptext of widget: allow_upgrades)
 #: horizons/i18n/guitranslations.py:254
-#, fuzzy
 msgid "This is the current maximum increment!"
 msgstr "Ez a jelenlegi maximális fejlettségi szint!"
 
@@ -1812,7 +1796,6 @@ msgstr "Fegyverek:"
 # 76%
 #. (text of widget: headline)
 #: horizons/i18n/guitranslations.py:396
-#, fuzzy
 msgid "Resource deposit"
 msgstr "Nyersanyaglelőhely"
 
@@ -1905,7 +1888,6 @@ msgstr "Kereskedelmi napló"
 # 83%
 #. (text of widget: headline)
 #: horizons/i18n/guitranslations.py:528
-#, fuzzy
 msgid "Select resources:"
 msgstr "Válassz nyersanyagot:"
 
@@ -2154,7 +2136,6 @@ msgstr "Típus"
 # "Beosztás"?
 #. (text of widget: status)
 #: horizons/i18n/guitranslations.py:692
-#, fuzzy
 msgid "Status"
 msgstr "Állapot"
 
@@ -2175,7 +2156,6 @@ msgstr "Menekül"
 
 #. (helptext of widget: hold_ground_stance) Description of combat stance (how units behave when fighting)
 #: horizons/i18n/guitranslations.py:703
-#, fuzzy
 msgid "Hold ground"
 msgstr "Pozícót tart"
 
@@ -2196,7 +2176,6 @@ msgstr "Jó szórakozást."
 
 #. (text of widget: headline)
 #: horizons/i18n/guitranslations.py:714
-#, fuzzy
 msgid "Key bindings"
 msgstr "Gyorsbillentyűk"
 
@@ -2207,7 +2186,6 @@ msgstr "Építési menü mutatása"
 
 #. (text of widget: lbl_CONSOLE)
 #: horizons/i18n/guitranslations.py:720
-#, fuzzy
 msgid "Toggle console on/off"
 msgstr "Konzol ki-/bekapcsolása"
 
@@ -2238,14 +2216,12 @@ msgstr "Súgó megjelenítése"
 
 #. (text of widget: lbl_LEFT)
 #: horizons/i18n/guitranslations.py:732
-#, fuzzy
 msgid "Scroll left"
 msgstr "Görgetés balra"
 
 # 75%
 #. (text of widget: lbl_LOGBOOK)
 #: horizons/i18n/guitranslations.py:734
-#, fuzzy
 msgid "Toggle Captain's log"
 msgstr "Váltás a kapitány naplójára"
 
@@ -2276,7 +2252,6 @@ msgstr "Kiválasztott egységek / épületek eltávolítása"
 
 #. (text of widget: lbl_RIGHT)
 #: horizons/i18n/guitranslations.py:746
-#, fuzzy
 msgid "Scroll right"
 msgstr "Görgetés jobbra"
 
@@ -2318,14 +2293,12 @@ msgstr "Hajólista mutatása"
 # 82%
 #. (text of widget: lbl_SPEED_DOWN)
 #: horizons/i18n/guitranslations.py:762
-#, fuzzy
 msgid "Decrease game speed"
 msgstr "Játék lassítása"
 
 # 82%
 #. (text of widget: lbl_SPEED_UP)
 #: horizons/i18n/guitranslations.py:764
-#, fuzzy
 msgid "Increase game speed"
 msgstr "Játék gyorsítása"
 
@@ -2375,7 +2348,6 @@ msgstr "Figyelem!"
 
 #. (text of widget: credits)
 #: horizons/i18n/guitranslations.py:801
-#, fuzzy
 msgid "Credits"
 msgstr "Stáblista"
 
@@ -2650,7 +2622,6 @@ msgstr "Használt megjelenítő:"
 # 84%
 #. (helptext of widget: defaultButton)
 #: horizons/i18n/guitranslations.py:937
-#, fuzzy
 msgid "Reset to default settings"
 msgstr "Visszaállítás az eredeti beállításokra"
 
@@ -2710,7 +2681,6 @@ msgstr "Engedélyezve nem lép ki az építő üzemmódból sikeres építkezés
 
 #. (helptext of widget: use_renderer_label)
 #: horizons/i18n/guitranslations.py:959
-#, fuzzy
 msgid "SDL is only meant as unsupported fallback and might cause problems!"
 msgstr "Az SDL nem támogatott tartalék és problémákat okozhat!"
 
@@ -2862,7 +2832,6 @@ msgstr "Fűszeres"
 
 #. tooltip_text of buildings:blender
 #: horizons/i18n/objecttranslations.py:76
-#, fuzzy
 msgid "Produces condiments out of spices."
 msgstr "Fűszert termel."
 
@@ -3463,7 +3432,7 @@ msgstr ""
 "tartalmazhat"
 
 #: horizons/savegamemanager.py:360
-#, python-format, fuzzy
+#, python-format, 
 msgid "Error: don't know how to handle condition type {condition}"
 msgstr "Hiba: nem tudom, hogy kezeljem a következő állapot típust {condition}"
 
