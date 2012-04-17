@@ -234,7 +234,7 @@ class BuySellTab(TabInterface):
 			slot.findChild(name="amount").text = unicode(value)+"t"
 			icon = slot.findChild(name="icon")
 			inventory = self.tradepost.get_inventory()
-			filled = float(inventory[res_id]) / inventory.get_limit(res_id)
+			filled = (100 * inventory[res_id]) // inventory.get_limit(res_id)
 			fillbar.position = (icon.width - fillbar.width - 1,
 			                    icon.height - int(icon.height*filled))
 			# reuse code from toggle to finish setup (must switch state before, it will reset it)

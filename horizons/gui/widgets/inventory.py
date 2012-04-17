@@ -102,12 +102,12 @@ class Inventory(pychan.widgets.Container):
 
 			if self.ordinal is not None:
 				range_ = self.ordinal[1] - self.ordinal[0]
-				filled = ( float(amount - self.ordinal[0]) / range_ ) * 100
+				filled = (100 * (amount - self.ordinal[0])) // range_
 				amount = ""
 			elif isinstance(self._inventory, TotalStorage):
 				filled = 0
 			else:
-				filled = int(float(amount) / float(self._inventory.get_limit(resid)) * 100.0)
+				filled = (100 * amount) // self._inventory.get_limit(resid)
 
 			button = ImageFillStatusButton.init_for_res(self.db, resid, amount, \
 			                                            filled=filled, uncached=self.uncached)
