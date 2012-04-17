@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: translate-uh@lists.unknown-horizons.org\n"
 "POT-Creation-Date: 2012-03-21 04:04+0100\n"
-"PO-Revision-Date: 2012-04-17 19:59+0200\n"
+"PO-Revision-Date: 2012-04-17 20:51+0200\n"
 "Last-Translator: mightykai <k.janssen@home.nl>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: nl\n"
@@ -449,7 +449,7 @@ msgid ""
 "Now let's have a closer look at the main square."
 msgstr ""
 "\n"
-"Zo laten we eens kijken naar je Plein."
+"Zo, laten we eens een kijkje nemen op het plein."
 
 # Met de zin die ik heb gemaakt kunnen we wel iets moois maken lijkt me de zin vindt ik niet perfect. dus effe met zun alle de koppen bij elkaar steken :-D
 #. This is the text body of a logbook page.
@@ -458,6 +458,8 @@ msgid ""
 "In the 'Account' tab you get a balance sheet of this island, featuring all "
 "costs you pay and all taxes you earn."
 msgstr ""
+"In het 'Rekening' tab blad zie je een overzicht van al je inkomsten en "
+"uitgaven van dit eiland."
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:118
@@ -465,6 +467,8 @@ msgid ""
 "The items 'Sale' and 'Buy' refer to your trading balance and will be "
 "explained later on."
 msgstr ""
+"De onderwerpen 'Inkomsten' en 'Uitgaven' verwijzen naar je handel balans en "
+"worden later behandeld. "
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:120
