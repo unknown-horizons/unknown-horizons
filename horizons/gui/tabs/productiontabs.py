@@ -124,7 +124,7 @@ class ProductionOverviewTab(OverviewTab):
 			# fix pychans lack of dynamic container sizing
 			# the container in the xml must provide a height attribute, that is valid for
 			# one resource.
-			max_res_in_one_line = max(len(production.get_produced_res()), \
+			max_res_in_one_line = max(len(production.get_produced_resources()), \
 			                          len(production.get_consumed_resources()))
 			container.height = max_res_in_one_line * container.height
 

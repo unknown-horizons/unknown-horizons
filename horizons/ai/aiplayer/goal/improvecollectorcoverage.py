@@ -51,7 +51,7 @@ class ImproveCollectorCoverageGoal(SettlementGoal):
 				amount_paused = history[PRODUCTION.STATES.inventory_full.index] + history[PRODUCTION.STATES.paused.index]
 				if amount_paused < self.personality.min_bad_collector_coverage:
 					continue
-				for resource_id in production.get_produced_res():
+				for resource_id in production.get_produced_resources():
 					if self.settlement.get_component(StorageComponent).inventory.get_free_space_for(resource_id) > self.personality.min_free_space:
 						# this is actually problematic
 						problematic_buildings[building.worldid] = building

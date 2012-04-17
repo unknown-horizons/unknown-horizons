@@ -62,9 +62,9 @@ class PlayerStats(WorldObject):
 					settler_buildings[building.level] += 1
 					for production in building.get_component(Producer).get_productions():
 						if production.get_state() is PRODUCTION.STATES.producing:
-							produced_res = production.get_produced_res()
-							if RES.HAPPINESS in produced_res:
-								happiness = produced_res[RES.HAPPINESS]
+							produced_resources = production.get_produced_resources()
+							if RES.HAPPINESS in produced_resources:
+								happiness = produced_resources[RES.HAPPINESS]
 								for resource_id in production.get_consumed_resources():
 									settler_resources_provided[resource_id] += happiness / production.get_production_time()
 

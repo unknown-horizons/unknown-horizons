@@ -76,12 +76,12 @@ class ResourceHandler(object):
 
 	def get_produced_resources(self):
 		"""Returns the resources, that are produced by productions, that are currently active"""
-		produced_res = set()
+		produced_resources = set()
 		if self.has_component(Producer):
 			prod_comp = self.get_component(Producer)
 			for production in prod_comp._productions.itervalues():
-				produced_res.update(production.get_produced_res().iterkeys())
-		return list(produced_res)
+				produced_resources.update(production.get_produced_resources().iterkeys())
+		return list(produced_resources)
 
 	def get_stocked_provided_resources(self):
 		"""Returns provided resources, where at least 1 ton is available"""
@@ -160,15 +160,15 @@ class ResourceHandler(object):
 		"""Returns a iterable obj containing all resources this building provides.
 		This is outsourced from initiation to a method for the possiblity of overwriting it.
 		Do not alter the returned list; if you need to do so, then copy it."""
-		produced_res = set()
+		produced_resources = set()
 		for prod in self.get_component(Producer).get_productions():
-			for res in prod.get_produced_res():
-				produced_res.add(res)
+			for res in prod.get_produced_resources():
+				produced_resources.add(res)
 
 		for res in self.additional_provided_resources:
-			produced_res.add(res)
+			produced_resources.add(res)
 
-		return produced_res
+		return produced_resources
 
 	def transfer_to_storageholder(self, amount, res_id, transfer_to):
 		"""Transfers amount of res_id to transfer_to.

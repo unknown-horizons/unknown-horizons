@@ -200,8 +200,8 @@ class Producer(Component):
 	def _production_finished(self, production):
 		"""Gets called when a production finishes. Intercepts call, adds info
 		and forwards it"""
-		produced_res = production.get_produced_res()
-		self.on_production_finished(produced_res)
+		produced_resources = production.get_produced_resources()
+		self.on_production_finished(produced_resources)
 
 	def finish_production_now(self):
 		"""Cheat, makes current production finish right now (and produce the resources).

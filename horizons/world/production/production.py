@@ -21,7 +21,6 @@
 # ###################################################
 
 import logging
-import copy
 
 from collections import defaultdict, deque
 
@@ -158,7 +157,7 @@ class Production(ChangeListener):
 		"""Res that are consumed here. Returns dict {res:amount}. Interface for _prod_line."""
 		return self._prod_line.consumed_res
 
-	def get_produced_res(self):
+	def get_produced_resources(self):
 		"""Res that are produced here. Returns dict {res:amount}. Interface for _prod_line."""
 		return self._prod_line.produced_res
 

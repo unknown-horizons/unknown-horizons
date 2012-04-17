@@ -483,12 +483,12 @@ class ProductionBuilder(AreaBuilder):
 		for building in self.production_buildings:
 			producer = building.get_component(Producer)
 			for production in producer.get_productions():
-				if not production.get_produced_res():
+				if not production.get_produced_resources():
 					continue
 				all_full = True
 
 				# inventory full of the produced resources?
-				for resource_id, min_amount in production.get_produced_res().iteritems():
+				for resource_id, min_amount in production.get_produced_resources().iteritems():
 					if production.inventory.get_free_space_for(resource_id) >= min_amount:
 						all_full = False
 						break
