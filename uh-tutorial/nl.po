@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: translate-uh@lists.unknown-horizons.org\n"
 "POT-Creation-Date: 2012-03-21 04:04+0100\n"
-"PO-Revision-Date: 2012-04-17 07:51+0200\n"
+"PO-Revision-Date: 2012-04-17 19:59+0200\n"
 "Last-Translator: mightykai <k.janssen@home.nl>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: nl\n"
@@ -569,7 +569,7 @@ msgstr ""
 msgid ""
 "\n"
 "TASK: Build at least three additional tents."
-msgstr ""
+msgstr "OPDRACHT: Bouw op zen minst drie extra tenten."
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:150
