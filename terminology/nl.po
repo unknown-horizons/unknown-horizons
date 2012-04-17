@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2012-03-31 21:42+0100\n"
-"PO-Revision-Date: 2012-04-17 07:13+0200\n"
+"PO-Revision-Date: 2012-04-17 19:40+0200\n"
 "Last-Translator: mightykai <k.janssen@home.nl>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: nl\n"
@@ -534,7 +534,7 @@ msgid "choose"
 msgstr "kiezen"
 
 msgid "confectionery"
-msgstr ""
+msgstr "banketbakkerij"
 
 # (poterminology) uh-tutorial/tutorial.pot (5)
 #
@@ -965,16 +965,12 @@ msgid "enabled"
 msgstr "beschikbaar"
 
 msgid "entries"
-msgstr ""
+msgstr "inzendingen"
 
 # (poterminology) uh-tutorial/tutorial.pot (2)
-#
 # (poterminology) uh/unknownhorizons.pot (1)
-#
-#
-#
 msgid "feature"
-msgstr "functie"
+msgstr "functie / kenmerk"
 
 # (poterminology) uh-tutorial/tutorial.pot (2)
 #
@@ -1130,8 +1126,9 @@ msgstr "geluid"
 msgid "special"
 msgstr "speciaal"
 
+#, fuzzy
 msgid "store"
-msgstr ""
+msgstr "opslaan / winkel"
 
 # (poterminology) uh-tutorial/tutorial.pot (2)
 # (poterminology) uh/unknownhorizons.pot (1)
@@ -1210,7 +1207,7 @@ msgid "build settlement"
 msgstr "bouw kolonie"
 
 msgid "load"
-msgstr ""
+msgstr "laden"
 
 msgid "unload"
 msgstr "lossen"
@@ -1232,7 +1229,7 @@ msgid "empty"
 msgstr "leeg"
 
 msgid "ensure"
-msgstr ""
+msgstr "Opbrengst"
 
 #
 #
