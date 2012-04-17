@@ -118,8 +118,7 @@ def goal_reached(session, goal_number):
 def do_lose(session):
 	"""The player fails the current scenario."""
 	show_db_message(session, 'YOU_LOST')
-	#TODO rename this file to 'lose.ogg'
-	horizons.main.fife.play_sound('effects', 'content/audio/sounds/events/scenario/loose.ogg')
+	horizons.main.fife.play_sound('effects', 'content/audio/sounds/events/scenario/lose.ogg')
 	# drop events after this event
 	Scheduler().add_new_object(session.scenario_eventhandler.drop_events, session.scenario_eventhandler)
 
