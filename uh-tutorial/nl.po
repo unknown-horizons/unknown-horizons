@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: translate-uh@lists.unknown-horizons.org\n"
 "POT-Creation-Date: 2012-03-21 04:04+0100\n"
-"PO-Revision-Date: 2012-04-16 18:20+0200\n"
+"PO-Revision-Date: 2012-04-16 19:09+0200\n"
 "Last-Translator: mightykai <k.janssen@home.nl>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: nl\n"
@@ -137,7 +137,8 @@ msgid ""
 "This indicates that you are able to build a warehouse there by pressing that "
 "button (called 'Build Settlement')."
 msgstr ""
-"Dit geeft aan dat je een pakhuis kunt bouwen doo te klikken op bouw kolonie."
+"Dit geeft aan dat je een pakhuis kunt bouwen door te klikken op bouw "
+"kolonie."
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:34
