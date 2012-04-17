@@ -96,30 +96,9 @@ class ProductionOverviewTab(OverviewTab):
 
 			# fill it with input and output resources
 			in_res_container = container.findChild(name="input_res")
-			for in_res in production.get_consumed_resources():
-				filled = float(self.instance.get_component(StorageComponent).inventory[in_res]) * 100 / \
-				       self.instance.get_component(StorageComponent).inventory.get_limit(in_res)
-				in_res_container.addChild( \
-				  ImageFillStatusButton.init_for_res(self.instance.session.db,\
-				                                     in_res, \
-				                                     self.instance.get_component(StorageComponent).inventory[in_res], \
-				                                     filled, \
-				                                     use_inactive_icon=False, \
-				                                     uncached=True) \
-				)
+			self._add_resource_icons(in_res_container, production.get_consumed_resources())
 			out_res_container = container.findChild(name="output_res")
-			for out_res in production.get_produced_res():
-				filled = float(self.instance.get_component(StorageComponent).inventory[out_res]) * 100 /  \
-				       self.instance.get_component(StorageComponent).inventory.get_limit(out_res)
-				out_res_container.addChild( \
-				  ImageFillStatusButton.init_for_res(self.instance.session.db, \
-				                                     out_res, \
-				                                     self.instance.get_component(StorageComponent).inventory[out_res], \
-				                                     filled, \
-				                                     use_inactive_icon=False, \
-				                                     uncached=True) \
-				)
-
+			self._add_resource_icons(out_res_container, production.get_produced_resources())
 
 			# fix pychans lack of dynamic container sizing
 			# the container in the xml must provide a height attribute, that is valid for
@@ -148,6 +127,14 @@ class ProductionOverviewTab(OverviewTab):
 		if self.instance.has_component(Producer):
 			utilisation = int(round(self.instance.get_component(Producer).capacity_utilisation * 100))
 		self.widget.child_finder('capacity_utilisation').text = unicode(utilisation) + u'%'
+
+	def _add_resource_icons(self, container, resources):
+		for res in resources:
+			inventory = self.instance.get_component(StorageComponent).inventory
+			filled = (inventory[res] * 100) // inventory.get_limit(res)
+			container.addChild(
+				ImageFillStatusButton.init_for_res(self.instance.session.db, res,
+					inventory[res], filled, use_inactive_icon=False, uncached=True))
 
 	def show(self):
 		super(ProductionOverviewTab, self).show()
