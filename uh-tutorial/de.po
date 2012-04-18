@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: translate-uh@lists.unknown-horizons.org\n"
 "POT-Creation-Date: 2012-03-21 04:04+0100\n"
-"PO-Revision-Date: 2012-04-18 22:41+0200\n"
+"PO-Revision-Date: 2012-04-18 22:55+0200\n"
 "Last-Translator: djot <djot@hotmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: de\n"
@@ -500,6 +500,7 @@ msgstr ""
 msgid "If your balance is positive, you all-in-all make a profit."
 msgstr "Fällt die Bilanz positiv aus, macht Ihr auf dieser Insel Gewinn."
 
+# statt "nächsthöhere" "nächst höhere"
 #. This is the text body of a logbook page.
 #: po/tutorial.py:122
 msgid ""
@@ -786,6 +787,7 @@ msgstr ""
 "momentan vorrätig ist. Befindet sich keine Ware im Lager, wird auch kein "
 "Balken erscheinen."
 
+# ..."beim Einkauf und Verkauf."
 #. This is the text body of a logbook page.
 #: po/tutorial.py:188
 msgid ""
