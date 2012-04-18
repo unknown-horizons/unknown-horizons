@@ -216,6 +216,12 @@ class Producer(Component):
 		production.remove() # production "destructor"
 		if self.is_active(production):
 			del self._productions[production.get_production_line_id()]
+			#update decommissioned icon after removing production
+			self._update_decommissioned_icon()
+
+			self.instance._changed()
+			self.on_activity_changed(self.is_active())
+
 		else:
 			del self._inactive_productions[production.get_production_line_id()]
 
@@ -237,10 +243,12 @@ class Producer(Component):
 			self._get_production(prod_line_id).alter_production_time(modifier)
 
 	def remove(self):
-		super(Producer, self).remove()
 		Scheduler().rem_all_classinst_calls(self)
 		for production in self.get_productions():
 			self.remove_production(production)
+		# call super() after removing all productions since it removes the instance (make it invalid)
+		# which can be needed by changelisteners' actions (e.g. in remove_production method)
+		super(Producer, self).remove()
 		assert len(self.get_productions()) == 0 , 'Failed to remove %s ' % self.get_productions()
 
 
