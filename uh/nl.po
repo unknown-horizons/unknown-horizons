@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2012-03-24 02:16+0100\n"
-"PO-Revision-Date: 2012-04-16 20:15+0200\n"
+"PO-Revision-Date: 2012-04-18 07:25+0200\n"
 "Last-Translator: mightykai <k.janssen@home.nl>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: nl\n"
@@ -271,7 +271,7 @@ msgstr "dolk"
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "deer food A"
-msgstr "hertenvoer A"
+msgstr "herten voer A"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
@@ -1455,13 +1455,13 @@ msgstr "Draai de kaart met de klok mee (.)"
 #. (helptext of widget: speedDown)
 #: horizons/i18n/guitranslations.py:90
 msgid "Decrease game speed (-)"
-msgstr "Speelsnelheid verlagen (-)"
+msgstr "Speel snelheid verlagen (-)"
 
 # 82%
 #. (helptext of widget: speedUp)
 #: horizons/i18n/guitranslations.py:92
 msgid "Increase game speed (+)"
-msgstr "Speelsnelheid verhogen (+)"
+msgstr "Speel snelheid verhogen (+)"
 
 #. (helptext of widget: zoomIn)
 #: horizons/i18n/guitranslations.py:94
