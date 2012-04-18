@@ -59,6 +59,7 @@ class BuildTab(TabInterface):
 			21 : BUILDINGS.TRAIL,
 			22 : BUILDINGS.SIGNAL_FIRE,
 			23 : BUILDINGS.HUNTER,
+			31 : BUILDINGS.LOOKOUT,
 			33 : BUILDINGS.FISHER,
 		      },
 		2 : {

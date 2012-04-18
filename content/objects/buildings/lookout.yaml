@@ -1,21 +1,20 @@
 id: 13
 name: _ Lookout
 baseclass: building.DefaultBuilding
-radius: 10
+radius: 24
 cost: 0
 cost_inactive: 0
 size_x: 1
 size_y: 1
 inhabitants_start: 1
 inhabitants_max: 1
-button_name: null
 tooltip_text: _ Increases the player's sight.
 settler_level: 0
-buildingcosts: {RES.GOLD: 100, RES.BOARDS: 4}
+buildingcosts: {RES.GOLD: 50, RES.BOARDS: 2}
 components:
 - SelectableComponent:
     type: building
-    tabs: [ProductionOverviewTab]
+    tabs: [OverviewTab]
     enemy_tabs: [EnemyBuildingOverviewTab,]
 - HealthComponent: {maxhealth: 1000}
 actionsets:
