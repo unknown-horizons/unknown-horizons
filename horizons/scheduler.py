@@ -106,6 +106,8 @@ class Scheduler(LivingObject):
 							pass # also the callback can be deleted by e.g. rem_call
 			del self.schedule[self.cur_tick]
 
+			self.log.debug("Scheduler: finished tick %s", self.cur_tick)
+
 		# run jobs added in the loop above
 		self._run_additional_jobs()
 
