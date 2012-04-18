@@ -7,8 +7,8 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: translate-uh@lists.unknown-horizons.org\n"
 "POT-Creation-Date: 2012-03-21 04:04+0100\n"
-"PO-Revision-Date: 2012-03-21 04:29+0200\n"
-"Last-Translator: totycro <malli@gmx.at>\n"
+"PO-Revision-Date: 2012-04-18 22:41+0200\n"
+"Last-Translator: djot <djot@hotmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: de\n"
 "MIME-Version: 1.0\n"
@@ -949,6 +949,7 @@ msgid ""
 "(pavilion) to pick up faith there."
 msgstr "Eure Einwohner müssen also regelmäßig ihren Vorrat davon auffüllen."
 
+# zu Hause oder Zuhause
 #. This is the text body of a logbook page.
 #: po/tutorial.py:226
 msgid ""
@@ -956,7 +957,7 @@ msgid ""
 "producer to collect more faith."
 msgstr ""
 "Dazu benötigen sie Zugang zu einem Gebäude, das Religion produziert (dem "
-"Pavillon) und werden dann regelmäßig Religion dort abholen und zuhause "
+"Pavillon) und werden dann regelmäßig Religion dort abholen und Zuhause "
 "verbrauchen."
 
 #. This is the text body of a logbook page.

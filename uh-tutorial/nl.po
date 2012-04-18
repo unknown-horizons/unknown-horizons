@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: translate-uh@lists.unknown-horizons.org\n"
 "POT-Creation-Date: 2012-03-21 04:04+0100\n"
-"PO-Revision-Date: 2012-04-18 22:32+0200\n"
+"PO-Revision-Date: 2012-04-18 22:57+0200\n"
 "Last-Translator: mightykai <k.janssen@home.nl>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: nl\n"
@@ -86,6 +86,9 @@ msgid ""
 "To see your first task, click on the button \"Read next entries\" in the "
 "navigation panel! It looks like this:"
 msgstr ""
+"\n"
+"Om je eerst opdracht te bekijken klik je op \"volgende\" in het navigatie "
+"paneel! deze ziet er zo uit:"
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:20
@@ -95,6 +98,9 @@ msgid ""
 "explained or even buggy conditions: Please tell us and we will try to improve "
 "the tutorial!"
 msgstr ""
+"\n"
+"voor suggesties of een betere vertaling, of voor fouten: Laat het ons weten "
+"zo dat we dit kunnen op lossen!"
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:22
@@ -769,6 +775,9 @@ msgid ""
 "\n"
 "TASK: Buy as many tools as you need to have 30 tools in stock!"
 msgstr ""
+"\n"
+"OPDRACHT: Koop zo veel mogelijk gereedschap zodat je er minimaal 30 op "
+"voorraad hebt."
 
 #. This message is displayed in the widget on the left screen part. Please keep it short enough to fit there!
 #: po/tutorial.py:206
@@ -962,6 +971,7 @@ msgstr ""
 msgid ""
 "Now you have access to new buildings, take a look at the Build menu again."
 msgstr ""
+"Je beschikt nu over nieuwe gebouwen, kijk nog maar eens in het Bouw menu."
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:264
@@ -1030,6 +1040,8 @@ msgid ""
 "\n"
 "TASK: Build a farm."
 msgstr ""
+"\n"
+"OPDRACHT: Bouw een boerderij."
 
 #. This message is displayed in the widget on the left screen part. Please keep it short enough to fit there!
 #: po/tutorial.py:284
@@ -1203,6 +1215,8 @@ msgid ""
 "\n"
 "TASK: Build a storage tent, preferably where you need collectors."
 msgstr ""
+"\n"
+"OPDRACHT: Bouw een opslag tent, op een plek waar je verzamelaars nodig hebt."
 
 #. This message is displayed in the widget on the left screen part. Please keep it short enough to fit there!
 #: po/tutorial.py:334
@@ -1220,6 +1234,8 @@ msgid ""
 "Now the wool production is set up, you still need a weaver to produce cloth "
 "out of this wool."
 msgstr ""
+"Nu de wol productie op gang is, heb je kleermakers nodig om kleren te maken "
+"van de wol."
 
 # Mischien moeten we hier 3 plekken van maken.
 #. This is the text body of a logbook page.
@@ -1332,7 +1348,7 @@ msgstr ""
 #. This is the text body of a logbook page.
 #: po/tutorial.py:368
 msgid "www.unknown-horizons.org"
-msgstr ""
+msgstr "www.unknown-horizons.org"
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:370
@@ -1342,7 +1358,7 @@ msgstr ""
 #. This is the text body of a logbook page.
 #: po/tutorial.py:372
 msgid "team@unknown-horizons.org"
-msgstr ""
+msgstr "team@unknown-horizons.org"
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:374
