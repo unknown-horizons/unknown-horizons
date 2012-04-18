@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: translate-uh@lists.unknown-horizons.org\n"
 "POT-Creation-Date: 2012-03-21 04:04+0100\n"
-"PO-Revision-Date: 2012-04-17 20:51+0200\n"
+"PO-Revision-Date: 2012-04-18 22:32+0200\n"
 "Last-Translator: mightykai <k.janssen@home.nl>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: nl\n"
@@ -130,6 +130,8 @@ msgid ""
 "Once you are near the coast, the anchor-like button you see in the overview "
 "tab will become active."
 msgstr ""
+"Eenmaal aangekomen aan de kust, zal de knop met het anker actief worden in "
+"het scheepsoverzicht."
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:32
