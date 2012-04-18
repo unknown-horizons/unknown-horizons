@@ -111,6 +111,12 @@ class BuySellTab(TabInterface):
 		self.refresh()
 		ExtScheduler().add_new_object(self.refresh, self, run_in=0.4, loops = -1)
 
+	def is_visible(self):
+		# this tab sometimes is made up an extra widget, so it must also be considered
+		# when checking for visibility
+		return super(BuySellTab, self).is_visible() or \
+		       (self.resources is not None and self.resources.isVisible())
+
 	def _refresh_trade_history(self):
 		self.trade_history.removeAllChildren()
 		unused_rows = set(self.trade_history_widget_cache.keys())
