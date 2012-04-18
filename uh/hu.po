@@ -3636,7 +3636,7 @@ msgstr "Kereskedelmi útvonal: várakozás itt: {position}"
 #: horizons/world/units/ship.py:184
 #, python-format
 msgid "Going to {location}"
-msgstr "{position} felé tart"
+msgstr "{location} felé tart"
 
 #: horizons/world/units/ship.py:186
 #, python-format
