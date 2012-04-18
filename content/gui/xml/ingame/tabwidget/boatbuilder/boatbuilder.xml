@@ -34,7 +34,7 @@
 			comment="Information about the ship currently under construction at the boat builder" />
 		<HBox name="queue_container"></HBox>
 		<Label name="headline_BB_builtship_label" position="0,43" text=""/>
-		<Icon image="content/gfx/dummies/square_120.png" position="0,65"
+		<Icon image="content/gui/images/background/square_120.png" position="0,65"
 			name="BB_cur_ship_bg" />
 		<Icon name="BB_cur_ship_icon" position="2,67" />
 		<VBox position="125,75" name="BB_upgrades_box"/> 	<!-- translations? -->

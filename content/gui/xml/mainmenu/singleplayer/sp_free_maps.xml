@@ -13,19 +13,19 @@
 	<ScrollArea horizontal_scrollbar="1"  vertical_scrollbar="0"  name="opponent_list_area">
 		<HBox name="opponent_list">
 			<VBox>
-				<Icon image="content/gfx/dummies/square_80.png" helptext="Emma Stonard" />
+				<Icon image="content/gui/images/background/square_80.png" helptext="Emma Stonard" />
 			</VBox>
 			<VBox>
-				<Icon image="content/gfx/dummies/square_80.png" helptext="Arthur Gordon" />
+				<Icon image="content/gui/images/background/square_80.png" helptext="Arthur Gordon" />
 			</VBox>
 			<VBox>
-				<Icon image="content/gfx/dummies/square_80.png" helptext="Baron Hill" />
+				<Icon image="content/gui/images/background/square_80.png" helptext="Baron Hill" />
 			</VBox>
 			<VBox>
-				<Icon image="content/gfx/dummies/square_80.png" helptext="Cristina de Bolsena" />
+				<Icon image="content/gui/images/background/square_80.png" helptext="Cristina de Bolsena" />
 			</VBox>
 			<VBox>
-				<Icon image="content/gfx/dummies/square_80.png" helptext="Pietro Gonzale" />
+				<Icon image="content/gui/images/background/square_80.png" helptext="Pietro Gonzale" />
 			</VBox>
 		</HBox>
 	</ScrollArea>

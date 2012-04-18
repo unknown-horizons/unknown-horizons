@@ -11,19 +11,19 @@
 
 	<Container position="20,95" size="260,450" >
 		<!-- Ship images -->
-		<Icon image="content/gfx/dummies/square_80.png" position="0,20"
+		<Icon image="content/gui/images/background/square_80.png" position="0,20"
 				helptext="Galley: \nStorage: 1 slots of 40t \nCannons: 12 \nSpeed: fast \nHealth: 200" />
 		<CancelButton position="60,70" helptext="Can't build this ship!" />
 
-		<Icon image="content/gfx/dummies/square_80.png" position="0,107"
+		<Icon image="content/gui/images/background/square_80.png" position="0,107"
 				helptext="Big gunboat: \nStorage: 2 slots of 15t \nCannons: 20 \nSpeed: fast \nHealth: 150\nGets available after:\n  Build Shipyard" />
 		<CancelButton position="60,157" helptext="Can't build this ship!" />
 
-		<Icon image="content/gfx/dummies/square_80.png" position="0,194"
+		<Icon image="content/gui/images/background/square_80.png" position="0,194"
 				helptext="Corvette: \nStorage: 0 slots of 0t \nCannons: 0 \nSpeed:  \nHealth: 0\nGets available after:\n Build Shipyard" />
 		<CancelButton position="60,244" helptext="Can't build this ship!" />
 
-		<Icon image="content/gfx/dummies/square_80.png" position="0,281"
+		<Icon image="content/gui/images/background/square_80.png" position="0,281"
 				helptext="Frigate: \nStorage: 0 slots of 0t \nCannons: 0 \nSpeed:  \nHealth: 0 \nGets available after:\n Build Shipyard" />
 		<CancelButton position="60,331" helptext="Can't build this ship!" />
 

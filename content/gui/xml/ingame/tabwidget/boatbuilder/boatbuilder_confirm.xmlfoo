@@ -11,7 +11,7 @@
 
 	<Container position="20,110" size="95,95" >
 		<!--Current order pic-->
-		<Icon image="content/gfx/dummies/square_80.png" position="15,15" helptext="(like in the selection tabs)" />
+		<Icon image="content/gui/images/background/square_80.png" position="15,15" helptext="(like in the selection tabs)" />
 	</Container>
 
 	<Container position="130,110" size="260,100" >
