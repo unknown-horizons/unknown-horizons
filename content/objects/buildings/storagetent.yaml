@@ -1,7 +1,7 @@
 id: 2
 name:
   0: _ Storage Tent
-  RES.GOLD: _ Storage Hut
+  1: _ Storage Hut
 baseclass: storages.StorageTent
 radius: 17
 cost: 0

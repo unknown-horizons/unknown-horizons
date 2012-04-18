@@ -8,7 +8,7 @@
 id: 8
 name:
   0: _ Lumberjack Tent
-  RES.GOLD: _ Lumberjack Hut
+  1: _ Lumberjack Hut
 baseclass: production.ProductionBuilding
 radius: 3
 cost: 5
