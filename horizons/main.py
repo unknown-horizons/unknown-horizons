@@ -167,21 +167,6 @@ def start(_command_line_arguments):
 	preload_thread = threading.Thread(target=preload_game_data, args=(preload_lock,))
 	preloading = (preload_thread, preload_lock)
 
-	# initalize update checker
-	from horizons.util.checkupdates import UpdateInfo, check_for_updates, show_new_version_hint
-	update_info = UpdateInfo()
-	update_check_thread = threading.Thread(target=check_for_updates, args=(update_info,))
-	update_check_thread.start()
-	def update_info_handler(info):
-		if info.status == UpdateInfo.UNINITIALISED:
-			ExtScheduler().add_new_object(Callback(update_info_handler, info), info)
-		elif info.status == UpdateInfo.READY:
-			show_new_version_hint(_modules.gui, info)
-		elif info.status == UpdateInfo.INVALID:
-			pass # couldn't retrieve file or nothing relevant in there
-
-	update_info_handler(update_info) # schedules checks by itself
-
 	# Singleplayer seed needs to be changed before startup.
 	if command_line_arguments.sp_seed:
 		SINGLEPLAYER.SEED = command_line_arguments.sp_seed
@@ -225,6 +210,23 @@ def start(_command_line_arguments):
 		_modules.gui.show_multi()
 		_modules.gui.join_mp_game()
 	else: # no commandline parameter, show main screen
+
+		# initalize update checker
+		if not command_line_arguments.gui_test:
+			from horizons.util.checkupdates import UpdateInfo, check_for_updates, show_new_version_hint
+			update_info = UpdateInfo()
+			update_check_thread = threading.Thread(target=check_for_updates, args=(update_info,))
+			update_check_thread.start()
+			def update_info_handler(info):
+				if info.status == UpdateInfo.UNINITIALISED:
+					ExtScheduler().add_new_object(Callback(update_info_handler, info), info)
+				elif info.status == UpdateInfo.READY:
+					show_new_version_hint(_modules.gui, info)
+				elif info.status == UpdateInfo.INVALID:
+					pass # couldn't retrieve file or nothing relevant in there
+
+			update_info_handler(update_info) # schedules checks by itself
+
 		_modules.gui.show_main()
 		if not command_line_arguments.nopreload:
 			preloading[0].start()
