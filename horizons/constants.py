@@ -57,10 +57,10 @@ class VERSION:
 		return u"<unknown>"
 
 	RELEASE_NAME    = "Unknown Horizons %s"
-	RELEASE_VERSION = _set_version()
+	#RELEASE_VERSION = _set_version()
 	# change for release:
-	IS_DEV_VERSION = True
-	#RELEASE_VERSION = u'2011.3'
+	IS_DEV_VERSION = False
+	RELEASE_VERSION = u'2012.1'
 
 	## +=1 this if you changed the savegame "api"
 	SAVEGAMEREVISION= 56
@@ -148,10 +148,10 @@ class BUILDINGS:
 		# think: animation contains key, if there is a path at offset value
 		# you need to sort this before iterating via sorted, since order is important here
 		action_offset_dict = {
-		'a' : (0, -1),
-		'b' : (1, 0),
-		'c' : (0, 1),
-		'd' : (-1, 0)
+			'a' : (0, -1),
+			'b' : (1, 0),
+			'c' : (0, 1),
+			'd' : (-1, 0)
 		}
 
 	class BUILD:
@@ -364,9 +364,9 @@ else:
 		os.makedirs(my_games)
 	_user_dir = os.path.join(my_games, 'unknown-horizons')
 try:
-  _user_dir = unicode(_user_dir, locale.getpreferredencoding()) # this makes umlaut-paths work on win
+	_user_dir = unicode(_user_dir, locale.getpreferredencoding()) # this makes umlaut-paths work on win
 except Exception as inst:
-  _user_dir = unicode(_user_dir, sys.getfilesystemencoding()) # locale.getpreferredencoding() does not work @ mac
+	_user_dir = unicode(_user_dir, sys.getfilesystemencoding()) # locale.getpreferredencoding() does not work @ mac
 
 
 
@@ -400,7 +400,7 @@ class PATHS:
 	CONFIG_TEMPLATE_FILE = os.path.join("content", "settings-template.xml")
 
 	DB_FILES = tuple(os.path.join("content", i) for i in \
-	                 ("game.sql", "balance.sql"))
+		             ("game.sql", "balance.sql"))
 
 	if GFX.USE_ATLASES:
 		DB_FILES = DB_FILES + (os.path.join("content", "atlas.sql"), )
@@ -438,47 +438,46 @@ class _LanguageNameDict(dict):
 
 
 LANGUAGENAMES = _LanguageNameDict({
-	"" 			: u'System default',
-	"af"    : u'Afrikaans',
-	"bg"    : u'Български',
-	"ca"    : u'Català',
-  'ca@valencia' : u'Català de València',
-	"cs"    : u'Čeština',
-	"da"    : u'Danske',
-	"de"    : u'Deutsch',
-	"en"    : u'English',
-	"es"    : u'Español',
-	"et"    : u'Eesti',
-	"el"    : u'Ελληνικά',
-	"fi"    : u'Suomi',
-	"fr"    : u'Français',
-	"gl"    : u'Galego',
-	"hr"    : u'Hrvatski',
-	"hu"    : u'Magyar',
-	"it"    : u'Italiano',
-	"ja"    : u'日本語',
-	"lt"    : u'Lietuvių',
-	"ko"    : u'한국말/조선말',
-	"nb"    : u'Norw. Bokmål',
-	"nl"    : u'Nederlands',
-	"pl"    : u'Polski',
-	"pt_BR" : u'Português Br.',
-	"pt"    : u'Português',
-	"ro"    : u'Română',
-	"ru"    : u'Русский',
-	"sl"    : u'Slovenski',
-	"sv"    : u'Svenska',
-	"tr"    : u'Türkçe',
-	"vi"    : u'Tiếng Việt',
-	"zh_CN" : u'普通話',
-	})
+    "" 			: u'System default',
+    "af"    : u'Afrikaans',
+    "bg"    : u'Български',
+    "ca"    : u'Català',
+    'ca@valencia' : u'Català de València',
+    "cs"    : u'Čeština',
+    "da"    : u'Danske',
+    "de"    : u'Deutsch',
+    "en"    : u'English',
+    "es"    : u'Español',
+    "et"    : u'Eesti',
+    "el"    : u'Ελληνικά',
+    "fi"    : u'Suomi',
+    "fr"    : u'Français',
+    "gl"    : u'Galego',
+    "hr"    : u'Hrvatski',
+    "hu"    : u'Magyar',
+    "it"    : u'Italiano',
+    "ja"    : u'日本語',
+    "lt"    : u'Lietuvių',
+    "ko"    : u'한국말/조선말',
+    "nb"    : u'Norw. Bokmål',
+    "nl"    : u'Nederlands',
+    "pl"    : u'Polski',
+    "pt_BR" : u'Português Br.',
+    "pt"    : u'Português',
+    "ro"    : u'Română',
+    "ru"    : u'Русский',
+    "sl"    : u'Slovenski',
+    "sv"    : u'Svenska',
+    "tr"    : u'Türkçe',
+    "vi"    : u'Tiếng Việt',
+    "zh_CN" : u'普通話',
+})
 
 FONTDEFS = {
-  'ja'   : 'uming',
-  'ko'   : 'uming',
-  'vi'   : 'uming',
-  'zh_CN': 'uming',
-		}
+    'ja'   : 'uming',
+    'ko'   : 'uming',
+    'vi'   : 'uming',
+    'zh_CN': 'uming',
+}
 
 AUTO_CONTINUE_CAMPAIGN=True
-
