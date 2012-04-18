@@ -3,15 +3,15 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2012-03-31 21:42+0100\n"
-"PO-Revision-Date: 2011-08-03 14:51+0200\n"
-"Last-Translator: balward <balward@mail.com>\n"
+"PO-Revision-Date: 2011-08-03 14:52+0200\n"
+"Last-Translator: Nikolay <balward@mail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: bg\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Translate Toolkit 1.9.0\n"
+"X-Generator: Pootle 2.1.5\n"
 
 msgid "build"
 msgstr "построй"
@@ -67,14 +67,18 @@ msgstr "натисни"
 msgid "lumberjack"
 msgstr "дървар"
 
+# 88%
+#, fuzzy
 msgid "resident"
-msgstr ""
+msgstr "местни жители"
 
 msgid "main square"
 msgstr "централен площад"
 
+# 85%
+#, fuzzy
 msgid "sailors"
-msgstr ""
+msgstr "моряк"
 
 msgid "food"
 msgstr "храна"
@@ -268,17 +272,25 @@ msgstr "метод"
 msgid "move"
 msgstr "премести"
 
+# 87%
+#, fuzzy
 msgid "pioneers"
-msgstr ""
+msgstr "новозаселник"
 
+# 87%
+#, fuzzy
 msgid "citizens"
-msgstr ""
+msgstr "гражданин"
 
+# 88%
+#, fuzzy
 msgid "merchants"
-msgstr ""
+msgstr "търговец"
 
+# 90%
+#, fuzzy
 msgid "aristocrats"
-msgstr ""
+msgstr "аристократ"
 
 msgid "potato"
 msgstr "картоф"
@@ -286,8 +298,10 @@ msgstr "картоф"
 msgid "settler"
 msgstr "заселник"
 
+# 80%
+#, fuzzy
 msgid "speed"
-msgstr ""
+msgstr "садя"
 
 msgid "stop"
 msgstr "спри"
@@ -343,8 +357,10 @@ msgstr ""
 msgid "offer"
 msgstr ""
 
+# 75%
+#, fuzzy
 msgid "potatoes"
-msgstr ""
+msgstr "картоф"
 
 msgid "range"
 msgstr "обхват"
@@ -382,14 +398,18 @@ msgstr "активен"
 msgid "afford"
 msgstr ""
 
+# 85%
+#, fuzzy
 msgid "animals"
-msgstr ""
+msgstr "животно"
 
 msgid "Captain's log"
 msgstr "Дневникът на капитана"
 
+# 75%
+#, fuzzy
 msgid "construct"
-msgstr ""
+msgstr "изграждане"
 
 msgid "consume"
 msgstr "консумирам"
@@ -406,8 +426,10 @@ msgstr "характерна черта"
 msgid "forest"
 msgstr "гора"
 
+# 80%
+#, fuzzy
 msgid "grows"
-msgstr ""
+msgstr "растя"
 
 msgid "hold"
 msgstr "задържам"
@@ -448,8 +470,10 @@ msgstr "играене"
 msgid "price"
 msgstr ""
 
+# 75%
+#, fuzzy
 msgid "read"
-msgstr ""
+msgstr "червен"
 
 msgid "return"
 msgstr "върни"
@@ -469,8 +493,10 @@ msgstr ""
 msgid "store"
 msgstr ""
 
+# 75%
+#, fuzzy
 msgid "tear"
-msgstr ""
+msgstr "екип"
 
 msgid "from time to time"
 msgstr "от време на време"
@@ -487,8 +513,10 @@ msgstr "посети"
 msgid "world"
 msgstr ""
 
+# 83%
+#, fuzzy
 msgid "yield"
-msgstr ""
+msgstr "добиви"
 
 msgid "your ship"
 msgstr ""
@@ -532,8 +560,10 @@ msgstr "графики"
 msgid "harvest"
 msgstr ""
 
+# 80%
+#, fuzzy
 msgid "hunts"
-msgstr ""
+msgstr "ловувам"
 
 msgid "multiple"
 msgstr "многоброен"
