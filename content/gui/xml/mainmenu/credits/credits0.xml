@@ -31,6 +31,8 @@
 			<Label text="mihaibivol (Mihai Bivol)" />
 			<Label text="Court-Jus (Ghislain Lévêque)" />
 			<Label text="squiddy (Reiner Gerecke)" />
+			<Label text="mesutcan (Mesutcan Kurt)" />
+			<Label text="Kiryx (Krzysztof Nowak)" />
 		</VBox>
 	</VBox> <Spacer />
 </VBox>
