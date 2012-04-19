@@ -185,7 +185,7 @@ class IngameKeyListener(fife.IKeyListener, LivingObject):
 			if self.session.selected_instances:
 				# scroll to first one, we can never guarantee to display all selected units
 				instance = iter(self.session.selected_instances).next()
-				self.session.view.center( * instance.position.to_tuple())
+				self.session.view.center( * instance.position.center().to_tuple())
 				for instance in self.session.selected_instances:
 					if hasattr(instance, "path") and instance.owner.is_local_player:
 						self.session.ingame_gui.minimap.show_unit_path(instance)
