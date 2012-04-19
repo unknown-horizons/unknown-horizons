@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: translate-uh@lists.unknown-horizons.org\n"
 "POT-Creation-Date: 2012-03-21 04:04+0100\n"
-"PO-Revision-Date: 2012-04-15 10:36+0200\n"
+"PO-Revision-Date: 2012-04-19 18:37+0200\n"
 "Last-Translator: Szontágh <szontagh.ferenc@exahost.eu>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: hu\n"
@@ -109,7 +109,7 @@ msgstr ""
 #. This is the text body of a logbook page.
 #: po/tutorial.py:24
 msgid "And now, let's start the actual game."
-msgstr ""
+msgstr "És most, kezdjük el a játékot."
 
 #. This is a logbook page heading. Space is VERY short, please only translate to strings that fit (roughly 30 characters max).
 #: po/tutorial.py:26
@@ -122,6 +122,8 @@ msgid ""
 "To move your ship, select it with a left click and right click on the "
 "location you want it to go to."
 msgstr ""
+"A hajó mozgatásához, válaszd ki bal kattintással majd jobbal kattints oda, "
+"ahova irányítani szeretnéd."
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:30
@@ -129,6 +131,8 @@ msgid ""
 "Once you are near the coast, the anchor-like button you see in the overview "
 "tab will become active."
 msgstr ""
+"Hogyha egy part közelébe érsz, a vasmacska szerű gomb aktívvá válik az "
+"Áttekintő fülön."
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:32
@@ -136,12 +140,14 @@ msgid ""
 "This indicates that you are able to build a warehouse there by pressing that "
 "button (called 'Build Settlement')."
 msgstr ""
+"Ez azt jelzi, hogy fel tudsz építeni egy raktárházat a gomb megnyomásával "
+"('Gyarmat építése' gomb')."
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:34
 msgid ""
 "Now a preview of your building is dragged around when you move the cursor."
-msgstr ""
+msgstr "Az épület előnézetét húzod körbe, amikor a kurzort mozgatod."
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:36
@@ -149,6 +155,8 @@ msgid ""
 "You can build on any spot where this preview is not shaded red.\n"
 "Click where you want to place your first building."
 msgstr ""
+"Bárhova építheted, ahol az előnézet nem pirossal van árnyékolva.\n"
+"Kattints oda, ahova építeni szeretnéd az első épületed."
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:38
@@ -156,11 +164,13 @@ msgid ""
 "\n"
 "TASK: Build a warehouse at the coast."
 msgstr ""
+"\n"
+"FELADAT: Építs egy raktárházat a partra."
 
 #. This is a logbook page heading. Space is VERY short, please only translate to strings that fit (roughly 30 characters max).
 #: po/tutorial.py:40
 msgid "NEW TASK: BUILD A LUMBERJACK"
-msgstr "Új feladat: Építs egy favágóházat"
+msgstr "ÚJ FELADAT: ÉPÍTS FEL EGY FAVÁGÓT"
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:42
@@ -168,11 +178,13 @@ msgid ""
 "The construction material on your ship got unloaded automatically. You can "
 "now construct some basic buildings."
 msgstr ""
+"Az építéshez szükséges nyersanyagok a hajódról automatikusan kirakodásra "
+"kerültek. Most tudsz építeni pár alap épületet."
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:44
 msgid "We will start with building a lumberjack."
-msgstr ""
+msgstr "Egy favágó építésével fogjuk kezdeni."
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:46
@@ -185,6 +197,7 @@ msgstr ""
 #: po/tutorial.py:48
 msgid "The fisherman needs some boards to build his vessel as well."
 msgstr ""
+"A halásznak is szüksége van néhány deszkára, hogy megépíthesse a csónakját."
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:50
@@ -192,11 +205,13 @@ msgid ""
 "In order to construct lumberjacks; open the build menu by either clicking the "
 "big icon below the mini map or pressing B key."
 msgstr ""
+"A favágó megépítéséhez nyisd meg az építési menüt egy kattintással a nagy "
+"ikonon a minitérkép alatt, vagy a B billentyű lenyomásával. "
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:52
 msgid "The build menu is sorted by increments."
-msgstr ""
+msgstr "Az építési menü szintenként van sorba rendezve."
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:54
@@ -204,6 +219,8 @@ msgid ""
 "You are currently in the first increment (the Sailors level) so are offered "
 "only the basic buildings."
 msgstr ""
+"Jelenleg te az első szinten vagy (a Tengerész szinten), tehát csak az alap "
+"épületek elérhetőek."
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:56
@@ -211,6 +228,8 @@ msgid ""
 "\n"
 "As your civilization advances, you also gain more and more complex buildings."
 msgstr ""
+"\n"
+"Ahogy a civilizációd fejlődik, komplexebbnél komplexebb épületek kapsz."
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:58
@@ -218,6 +237,8 @@ msgid ""
 "For now, select the lumberjack under 'Companies' and build it in an area with "
 "some trees around."
 msgstr ""
+"Most, válaszd ki a favágót a 'Vállalatok' csoportból, és építs egyet ahol "
+"több fa van."
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:60
@@ -225,6 +246,8 @@ msgid ""
 "You can also plant trees later - but that costs money. Use what nature "
 "provided you with!"
 msgstr ""
+"Később még tudsz fákat ültetni - de pénzbe kerül. Használd, amit a természet "
+"biztosított!"
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:62
@@ -232,6 +255,9 @@ msgid ""
 "A company always needs a trail connection to a storage or warehouse, "
 "otherwise goods will remain at the company and not be collected."
 msgstr ""
+"Egy vállalkozásnak mindig szüksége van egy nyomvonalra a raktárhoz, vagy a "
+"raktárházhoz. Különben a termékek a vállalkozásban maradnak és nem lesznek "
+"begyűjtve."
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:64
@@ -239,6 +265,8 @@ msgid ""
 "This means that you have to build a trail connecting your warehouse (or "
 "storage) and lumberjack."
 msgstr ""
+"Ez azt jelenti, hogy építened kell egy utat, hogy összekösd a raktárházat "
+"(vagy raktárat) és a favágót."
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:66
@@ -246,6 +274,9 @@ msgid ""
 "\n"
 "TASK: Build a lumberjack in a wooded area and connect it to a road."
 msgstr ""
+"\n"
+"FELADAT: Építs egy favágót egy fás területre, majd úttal kösd össze a "
+"raktárépülettel."
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:68
@@ -253,6 +284,8 @@ msgid ""
 "Watch how a collector will fetch your first self-produced boards. Don't worry "
 "about recruiting workers for the lumberjack. That happens automatically."
 msgstr ""
+"Nézd a begyűjtőt, hogyan gyűjti be az első saját termelésű deszkákat. Ne "
+"aggódj a favágó munkásainak verbuválása miatt, ez automatikusan történik."
 
 #. This message is displayed in the widget on the left screen part. Please keep it short enough to fit there!
 #: po/tutorial.py:70
@@ -262,7 +295,7 @@ msgstr "Építs egy favágóházat és csatlakoztass hozzá a raktárból egy ut
 #. This is a logbook page heading. Space is VERY short, please only translate to strings that fit (roughly 30 characters max).
 #: po/tutorial.py:72
 msgid "NEW TASK: FOOD SUPPLY"
-msgstr "Új feladat: Élelmiszer ellátás"
+msgstr "ÚJ FELADAT: ÉLELMISZER ELLÁTÁS"
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:74
@@ -270,21 +303,24 @@ msgid ""
 "You will need to have some food-producing companies, too, because people in "
 "general (and especially sailors) are very hungry."
 msgstr ""
+"Szükséged lesz pár élelmet termelő vállalkozásra, mert az emberek általában "
+"(speciel most a hajósok) nagyon éhesek."
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:76
 msgid "Available companies in the first increment are the Hunter and Fisher."
-msgstr ""
+msgstr "Elérhető vállalkozások az első szinten a Vadász és a Halász."
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:78
 msgid "The Hunter hunts animals in the forest, thus needs trees nearby."
 msgstr ""
+"A Vadász vadakat vadászik az erdőben, tehát fákra van szüksége a közelben."
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:80
 msgid "Note that you can place your Hunter close to the lumberjack's forest."
-msgstr ""
+msgstr "Tehát a Vadászt helyezd közel a favágó erdejéhez."
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:82
@@ -292,6 +328,8 @@ msgid ""
 "It can happen that the animals don't reproduce fast enough or simply hide "
 "well."
 msgstr ""
+"Megtörténhet, hogy az állatok nem szaporodnak elég gyorsan, vagy szimplán "
+"elrejtőznek."
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:84
