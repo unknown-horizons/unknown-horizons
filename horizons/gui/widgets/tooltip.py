@@ -22,10 +22,12 @@
 import textwrap
 from fife import fife
 from fife.extensions import pychan
+
 import horizons.main
 
 from horizons.extscheduler import ExtScheduler
 from horizons.gui.util import load_uh_widget
+from horizons.util import Callback
 
 class _Tooltip(object):
 	"""Base class for pychan widgets overloaded with tooltip functionality"""
@@ -69,6 +71,18 @@ class _Tooltip(object):
 		if self.gui is None:
 			self.gui = load_uh_widget('tooltip.xml')
 		widget_position = self.getAbsolutePos()
+
+		# Sometimes, we get invalid events from pychan, it is probably related to changing the
+		# gui when the mouse hovers on gui elements.
+		# Random tests have given evidence to believe that pychan indicates invalid events
+		# by setting the top container's position to 0, 0.
+		# Since this position is currently unused, it can serve as invalid flag,
+		# and dropping these events seems to lead to the desired placements
+		def get_top(w): return get_top(w.parent) if w.parent else w
+		top_pos = get_top(self).position
+		if top_pos == (0, 0):
+			return
+
 		screen_width = horizons.main.fife.engine_settings.getScreenWidth()
 		self.gui.y = widget_position[1] + y + 5
 		if (widget_position[0] + x + self.gui.size[0] + 10) <= screen_width:
