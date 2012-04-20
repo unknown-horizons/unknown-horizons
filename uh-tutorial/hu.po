@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: translate-uh@lists.unknown-horizons.org\n"
 "POT-Creation-Date: 2012-03-21 04:04+0100\n"
-"PO-Revision-Date: 2012-04-20 09:53+0200\n"
+"PO-Revision-Date: 2012-04-20 10:40+0200\n"
 "Last-Translator: Szontágh <szontagh.ferenc@exahost.eu>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: hu\n"
@@ -474,7 +474,7 @@ msgstr ""
 #. This is the text body of a logbook page.
 #: po/tutorial.py:120
 msgid "If your balance is positive, you all-in-all make a profit."
-msgstr ""
+msgstr "Hogyha pozitív az egyensúly, minden egy az egyben profitot termel."
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:122
@@ -483,18 +483,22 @@ msgid ""
 "inhabitants. You also set the increment-specific global tax here and allow or "
 "deny inhabitants of this increment to upgrade to the next higher one."
 msgstr ""
+"A különböző szintek áttekintő fülein láthatod a statisztikát a lakosaidról. "
+"Beállíthatod még a szintekre vonatkozó globális adót, és engedélyezheted "
+"vagy tilthatod a lakosaidat az adott szinten, hogy fejlesszenek a következő "
+"szintre."
 
 #. This message is displayed in the widget on the left screen part. Please keep it short enough to fit there!
 #: po/tutorial.py:124
 msgid "Build a main square. Choose an area without many economy buildings."
 msgstr ""
-"Készítsen egy főteret. Válassz ki egy helyet anélkül, hogy sok gazdasági "
-"épület lenne a környéken."
+"Építs egy főteret. Válassz egy olyan helyet, ahol a környéken kevés a "
+"gazdasági épület."
 
 #. This is a logbook page heading. Space is VERY short, please only translate to strings that fit (roughly 30 characters max).
 #: po/tutorial.py:126
 msgid "NEW TASK: RESIDENTIAL BUILDINGS"
-msgstr "Új feladat: Lakóépületek"
+msgstr "ÚJ FELADAT: LAKÓ ÉPÜLETEK"
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:128
@@ -502,6 +506,9 @@ msgid ""
 "Settlers want to have a roof over their heads, else they won't even think of "
 "living in your city! You need to provide tents."
 msgstr ""
+"A telepesek tetőt szeretnének a fejük fülé, ellenkező esetben úgy fogják "
+"gondolni, hogy nem ebben a városban akarnak élni! Lakóházakat kell "
+"biztosítanod."
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:130
@@ -509,6 +516,8 @@ msgid ""
 "Tents are the basic residential buildings. Your inhabitants will want to "
 "upgrade it when they reach higher increments."
 msgstr ""
+"A sátrak az alap lakóépületek. A lakosaid szeretnék majd tovább fejleszteni, "
+"hogyha elérik a nagyobb szintet."
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:132
@@ -517,6 +526,9 @@ msgid ""
 "you produce - but they at least pay taxes, and that's the only way you can "
 "make money for now!"
 msgstr ""
+"A telepesek nem a leghasznosabbak a termékek termelésében - de ők azok, akik "
+"fizetik az adót és jelenleg még ők az egyetlen egy lehetőséged a pénz "
+"szerzésére."
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:134
@@ -525,11 +537,14 @@ msgid ""
 "TASK: Build a tent and connect it to the main square. Tents dont need to be "
 "connected to any of the companies."
 msgstr ""
+"\n"
+"FELADAT: Építs sátrakat és kapcsold őket egybe úttal a főtérrel. A sátraknak "
+"nem kell összeköttetésben lenniük a gazdasági épületekkel."
 
 #. This message is displayed in the widget on the left screen part. Please keep it short enough to fit there!
 #: po/tutorial.py:136
 msgid "Build a tent and connect it to the main square."
-msgstr "Készíts egy sátrat, és csatlakoztasd a főtérre."
+msgstr "Építs egy sátrat, és csatlakoztasd a főtérhez."
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:138
@@ -537,6 +552,8 @@ msgid ""
 "\n"
 "Let's have a look at the tent overview tab."
 msgstr ""
+"\n"
+"Nézz rá a sátrak áttekintő fülére."
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:140
@@ -546,12 +563,18 @@ msgid ""
 "* the taxes they pay and\n"
 "* the resources they demand."
 msgstr ""
+"Amit láthatsz\n"
+"* az elégedettsége ezeknek a lakosoknak,\n"
+"* az adókat amelyeket fizetnek és\n"
+"* a készletek, amelyre szükségük van."
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:142
 msgid ""
 "If their demands are fulfilled, happiness and thus your tax income increase."
 msgstr ""
+"Hogyha a szükségleteik ki vannak elégítve, az elégedettségük és az "
+"adóbevétel növekszik."
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:144
@@ -560,11 +583,14 @@ msgid ""
 "really sour and simply turn their back on your village, leaving behind a "
 "decaying ruin."
 msgstr ""
+"Hogyha nem, az elégedettség és a bevétel csökken. Néha a lakosok nagyon "
+"elégedetlenek lehetnek, ekkor szimplán hátra hagyják a faludat, maguk mögött "
+"hagyva egy lepusztult romos házat."
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:146
 msgid "Note that you can also change the global tax settings here, too."
-msgstr ""
+msgstr "Itt szintén tudod állítani a globális adót."
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:148
@@ -572,6 +598,8 @@ msgid ""
 "\n"
 "TASK: Build at least three additional tents."
 msgstr ""
+"\n"
+"FELADAT: Építsd legalább három sátrat."
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:150
@@ -580,6 +608,9 @@ msgid ""
 "TIP: Holding down SHIFT eases constructing multiple buildings of the same "
 "kind."
 msgstr ""
+"\n"
+"TIP: A SHIFT billentyű lenyomásával több épületet is építhetsz ugyan abból a "
+"típusból."
 
 #. This message is displayed in the widget on the left screen part. Please keep it short enough to fit there!
 #: po/tutorial.py:152
@@ -590,7 +621,7 @@ msgstr "Építs legalább három további sátrat és kösd be a főtérre."
 #. This is a logbook page heading. Space is VERY short, please only translate to strings that fit (roughly 30 characters max).
 #: po/tutorial.py:154
 msgid "NEW TASK: BUILD SIGNAL FIRE"
-msgstr "Új feladat: Építs kereskedelmi tűzjelet"
+msgstr "ÚJ FELADAT: ÉPÍTS EGY JELZŐTÜZET"
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:156
@@ -598,6 +629,8 @@ msgid ""
 "Can you see the ship passing your island from time to time? That ship belongs "
 "to the Free Trader, one of the first settlers in this archipelago."
 msgstr ""
+"Észrevetted, hogy egy hajó érkezik a szigetedre időről időre? Ez a hajó a "
+"Szabad Kereskedőkhöz tartozik, az első telepesek ezen a szigetvilágon."
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:158
@@ -605,6 +638,8 @@ msgid ""
 "The trader will supply your settlement with necessary goods which you can't "
 "produce yet."
 msgstr ""
+"A kereskedő ellátja majd a gyarmatodat a szükséges nyersanyagokkal, "
+"amelyeket nem tudsz még termelni."
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:160
@@ -612,6 +647,9 @@ msgid ""
 "You can also sell surpluses of your production, but in general consuming them "
 "(by building more tents) instead of selling them yields more profit."
 msgstr ""
+"Viszont a felesleget el is adhatod a termékeidből, de általában a "
+"felhasználásuk (több lakósátor építése) az eladás helyett több bevételt "
+"termel."
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:162
