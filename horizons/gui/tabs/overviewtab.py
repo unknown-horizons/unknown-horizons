@@ -109,3 +109,10 @@ class GroundUnitOverviewTab(OverviewTab):
 		weapon_storage_widget = self.widget.findChild(name='weapon_storage')
 		weapon_storage_widget.init(self.instance)
 		self.add_remove_listener(weapon_storage_widget.remove)
+
+class FireStationOverviewTab(OverviewTab):
+	def  __init__(self, instance):
+		super(FireStationOverviewTab, self).__init__(
+			widget = 'overview_firestation.xml',
+			instance = instance
+		)
