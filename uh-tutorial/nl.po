@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: translate-uh@lists.unknown-horizons.org\n"
 "POT-Creation-Date: 2012-03-21 04:04+0100\n"
-"PO-Revision-Date: 2012-04-19 08:02+0200\n"
+"PO-Revision-Date: 2012-04-20 21:55+0200\n"
 "Last-Translator: mightykai <k.janssen@home.nl>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: nl\n"
@@ -370,6 +370,8 @@ msgid ""
 "This is a very constant supply at the cost of a slightly longer production "
 "time per unit of food."
 msgstr ""
+"Dit is een zeer stabiele aanvoer voor voedsel, maar met een langere "
+"productie tijd."
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:92
@@ -377,6 +379,9 @@ msgid ""
 "A small settlement like yours can use both companies, and you can better "
 "balance pros and cons if you see the direct comparison."
 msgstr ""
+"Een zeer kleine nederzetting zoals die van u kan gebruik maken van beide "
+"bedrijven, zo kunt u een betere vergelijking maken tussen de voor -en "
+"nadelen."
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:94
