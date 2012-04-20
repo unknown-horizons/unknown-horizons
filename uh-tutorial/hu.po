@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: translate-uh@lists.unknown-horizons.org\n"
 "POT-Creation-Date: 2012-03-21 04:04+0100\n"
-"PO-Revision-Date: 2012-04-20 10:40+0200\n"
+"PO-Revision-Date: 2012-04-20 10:57+0200\n"
 "Last-Translator: Szontágh <szontagh.ferenc@exahost.eu>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: hu\n"
@@ -105,6 +105,9 @@ msgid ""
 "\n"
 "Visit www.unknown-horizons.org for help on how to contact the team!"
 msgstr ""
+"\n"
+"Látogasd meg a www.unknown-horizons.org oldalt, hogy megtudd, hogyan veheted "
+"fel a kapcsolatot a csapattal!"
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:24
@@ -657,6 +660,8 @@ msgid ""
 "Normally the trader ships just sail around and look for deals, but you can "
 "speed things up a bit."
 msgstr ""
+"Normál esetben a kereskedő hajó csak hajózik körbe és keresi az ajánlatokat, "
+"de ezt felgyorsíthatod egy kicsit."
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:164
@@ -664,6 +669,8 @@ msgid ""
 "For this purpose, build a signal fire at the coast near your warehouse. It "
 "will show ships the way to your settlement."
 msgstr ""
+"Erre a célra, építs egy jelzőtüzet a partra, a raktárházad közelébe. Ez "
+"mutatja a hajóknak az utat a gyarmatod felé."
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:166
@@ -679,16 +686,19 @@ msgid ""
 "After this little advertisment, the trader will also stop by and look into "
 "your warehouse if it planned to sail past it."
 msgstr ""
+"\n"
+"Ezután a kis reklám után, a kereskedő hajó meg fog állni és körbenéz a "
+"raktárházadban hogyha tervezte hogy arra vitorlázzon."
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:170
 msgid "You can propose deals via the warehouse tab \"Buy/Sell\"."
-msgstr ""
+msgstr "Megtervezheted az ajánlataidat a raktárház \"Vétel/Eladás\" fülén."
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:172
 msgid "At the 'sailors' increment, you are equipped with three trading slots."
-msgstr ""
+msgstr "A 'hajós' szinten, három kereskedelmi helyed van."
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:174
@@ -696,6 +706,8 @@ msgid ""
 "Click on the small icon to change the slot mode from 'Buy' to 'Sell' and vice "
 "versa."
 msgstr ""
+"Klikk a kis ikonra, hogy megváltoztasd a hely típusát 'Eladás' -ról 'Vétel' "
+"-re és fordítva."
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:176
@@ -703,6 +715,8 @@ msgid ""
 "Click in the slot to choose the good you want to trade with. We will further "
 "explain this once you are ready to trade."
 msgstr ""
+"Klikk a helyre, hogy kiválaszd azt a terméket, amellyel kereskedni "
+"szeretnél. Ezt még jobban bemutatjuk, hogyha készen állsz a kereskedésre."
 
 # 89%
 #. This is the text body of a logbook page.
@@ -712,17 +726,17 @@ msgid ""
 "TASK: Build a signal fire at the coast close to your warehouse."
 msgstr ""
 "\n"
-"Építs egy Jelző tüzet a parton a raktárad közelébe."
+"FELADAT: Építs egy Jelző tüzet a parton a raktárad közelébe."
 
 #. This message is displayed in the widget on the left screen part. Please keep it short enough to fit there!
 #: po/tutorial.py:180
 msgid "Build a signal fire at the coast close to your warehouse."
-msgstr "Építs egy Tűzjelet a parton közel a raktárhoz."
+msgstr "Építs egy jelző tüzet a parton, közel a raktárhoz."
 
 #. This is a logbook page heading. Space is VERY short, please only translate to strings that fit (roughly 30 characters max).
 #: po/tutorial.py:182
 msgid "NEW TASK: LEARN TO TRADE"
-msgstr ""
+msgstr "ÚJ FELADAT: KERESKEDELEM"
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:184
@@ -732,6 +746,10 @@ msgid ""
 "\n"
 "Let's continue our tutorial on how to trade."
 msgstr ""
+"Kitűnő! A Szabad Kereskedő most már meg fog állni a raktárházadnál időről "
+"időre.\n"
+"\n"
+"Folytassuk a bemutatót a kereskedelemmel."
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:186
@@ -768,6 +786,10 @@ msgid ""
 "Having a 'Buy' slot and 5 tons in stock, a slider positioned at 9 tons will "
 "cause you to buy 4 additional tons at most."
 msgstr ""
+"\n"
+"Például:\n"
+"Van egy 'Vásárlás' helyed és 5 tonna a raktárban, a csúszka 9 tonnára van "
+"állítva, ez azt eredményezi, hogy 4 tonnát fogsz vásárolni."
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:196
@@ -775,6 +797,9 @@ msgid ""
 "Selling works similarly. A 'Sell' slot with 18 tons in stock and the slider "
 "positioned at 13 will sell up to 5 tons."
 msgstr ""
+"Az eladás hasonlóan működik. Az \"Eladás\", amennyiben 18 tonna van raktáron "
+"és a csúszka 13-ra van állítva, azt eredményezi, hogy eladsz 5 tonnát a "
+"raktárból."
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:198
