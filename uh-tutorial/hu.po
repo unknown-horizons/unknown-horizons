@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: translate-uh@lists.unknown-horizons.org\n"
 "POT-Creation-Date: 2012-03-21 04:04+0100\n"
-"PO-Revision-Date: 2012-04-19 18:38+0200\n"
+"PO-Revision-Date: 2012-04-20 09:53+0200\n"
 "Last-Translator: Szontágh <szontagh.ferenc@exahost.eu>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: hu\n"
@@ -336,6 +336,8 @@ msgstr ""
 msgid ""
 "Conclusion: the hunter is not too reliable if you need continuous supply."
 msgstr ""
+"Végeredményben: a vadász nem a legjobb a folyamatos élelmiszer ellátás "
+"biztosításához."
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:86
@@ -344,11 +346,14 @@ msgid ""
 "The Fisher needs a coastal building site like the warehouse and a fish school "
 "in range."
 msgstr ""
+"\n"
+"A Halásznak egy parton épített épületre van szüksége, mint a raktárház, és "
+"egy hal lelőhelyre a közelben. "
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:88
 msgid "He will build a small rowing vessel and catch some fish."
-msgstr ""
+msgstr "Egy kis evezős csónakot épít és némi halat fog ki."
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:90
@@ -370,11 +375,13 @@ msgid ""
 "\n"
 "TASK: Build a hunter and a fisher."
 msgstr ""
+"\n"
+"FELADAT: Építs egy vadászt és egy halászt."
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:96
 msgid "Don't forget to connect them to your warehouse with trails!"
-msgstr ""
+msgstr "Ne felejtsd el úttal összekötni őket a raktárépületekkel."
 
 #. This message is displayed in the widget on the left screen part. Please keep it short enough to fit there!
 #: po/tutorial.py:98
@@ -384,12 +391,13 @@ msgstr "Építs egy Vadászt és egy Halászt. Csatlakoztasd őket a raktárba."
 #. This is a logbook page heading. Space is VERY short, please only translate to strings that fit (roughly 30 characters max).
 #: po/tutorial.py:100
 msgid "NEW TASK: MAIN SQUARE"
-msgstr "Új feladat: Fő tér"
+msgstr "ÚJ FELADAT: FŐTÉR"
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:102
 msgid "Your residents need a main square where they can fetch their goods from."
 msgstr ""
+"A lakosoknak egy főtérre van szükségük, ahonnan termékeket tudnak hazavinni."
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:104
@@ -397,6 +405,8 @@ msgid ""
 "This means that they need a trail connection from their home to the main "
 "square."
 msgstr ""
+"Ez annyit jelent, hogy össze kell kötni az otthonaikat és a főteret egy "
+"úttal."
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:106
@@ -404,6 +414,8 @@ msgid ""
 "All goods in your warehouse are available at this 'market place', so your "
 "residents do not need to walk to the fisher or even to the warehouse."
 msgstr ""
+"Az összes termék a raktárházadból elérhetővé válik ezzel a 'piactérrel', "
+"tehát a lakosoknak nem kell elsétálniuk a halászhoz vagy a raktárházakhoz."
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:108
@@ -412,6 +424,9 @@ msgid ""
 "lumberjacks because building tents will clear away the trees that your "
 "lumberjack needs to produce boards."
 msgstr ""
+"Figyelj arra, hogy ne építsd fel a gyarmatod lakóépületeit túl közel a "
+"favágókhoz, mert a lakóépületek miatt a fák eltűnnek, amelyből a favágónak "
+"kellene a deszkákat készítenie."
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:110
@@ -419,6 +434,8 @@ msgid ""
 "Companies work without being connected to the tents, so you don't need to "
 "build a road between the main square and e.g. your lumberjack tent."
 msgstr ""
+"A vállalkozásoknak nem szükséges az összeköttetés a lakó épületekkel, tehát "
+"nem kell utat építened a főtér és például a favágó közé."
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:112
@@ -426,6 +443,8 @@ msgid ""
 "\n"
 "TASK: Build a main square."
 msgstr ""
+"\n"
+"FELADAT: Építs egy főteret."
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:114
@@ -433,6 +452,8 @@ msgid ""
 "\n"
 "Now let's have a closer look at the main square."
 msgstr ""
+"\n"
+"Most nézz szét jobban a főterednél."
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:116
@@ -440,6 +461,8 @@ msgid ""
 "In the 'Account' tab you get a balance sheet of this island, featuring all "
 "costs you pay and all taxes you earn."
 msgstr ""
+"A 'Fiók' fülön láthatod az egyensúlyi kimutatást a szigetednek, megmutatva "
+"az összes árat, amelyet fizetsz, és az adókat amelyeket kapsz."
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:118
