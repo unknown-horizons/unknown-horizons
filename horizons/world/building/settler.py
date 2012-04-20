@@ -32,7 +32,7 @@ from horizons.world.building.buildingresourcehandler import BuildingResourceHand
 from horizons.world.production.production import SettlerProduction, SingleUseProduction
 from horizons.command.building import Build
 from horizons.util import Callback
-from horizons.world.pathfinding.pather import StaticPather
+from horizons.util.pathfinding.pather import StaticPather
 from horizons.command.production import ToggleActive
 from horizons.component.storagecomponent import StorageComponent
 from horizons.world.status import SettlerUnhappyStatus

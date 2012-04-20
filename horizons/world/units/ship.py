@@ -24,8 +24,8 @@ from fife import fife
 
 import horizons.main
 
-from horizons.world.pathfinding.pather import ShipPather, FisherShipPather
-from horizons.world.pathfinding import PathBlockedError
+from horizons.util.pathfinding.pather import ShipPather, FisherShipPather
+from horizons.util.pathfinding import PathBlockedError
 from horizons.world.units.collectors import FisherShipCollector
 from unit import Unit
 from horizons.constants import LAYERS

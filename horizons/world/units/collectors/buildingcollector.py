@@ -22,7 +22,7 @@
 from collections import deque
 
 from horizons.util import WorldObject, RadiusRect, Callback, decorators
-from horizons.world.pathfinding.pather import RoadPather, BuildingCollectorPather
+from horizons.util.pathfinding.pather import RoadPather, BuildingCollectorPather
 from horizons.constants import COLLECTORS, BUILDINGS
 from horizons.scheduler import Scheduler
 from horizons.world.units.movingobject import MoveNotPossible

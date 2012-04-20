@@ -24,7 +24,7 @@ import logging
 
 from horizons.scheduler import Scheduler
 
-from horizons.world.pathfinding import PathBlockedError
+from horizons.util.pathfinding import PathBlockedError
 from horizons.util import WorldObject, decorators, Callback
 from horizons.ext.enum import Enum
 from horizons.world.units.unit import Unit

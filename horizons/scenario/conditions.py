@@ -23,7 +23,7 @@ from horizons.constants import RES
 from horizons.constants import BUILDINGS
 from horizons.scheduler import Scheduler
 from horizons.util import Registry
-from horizons.world.pathfinding.pather import StaticPather
+from horizons.util.pathfinding.pather import StaticPather
 from horizons.component.storagecomponent import StorageComponent
 
 

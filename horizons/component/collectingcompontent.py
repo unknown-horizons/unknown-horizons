@@ -20,7 +20,7 @@
 # ###################################################
 
 
-from horizons.world.pathfinding.pathnodes import ConsumerBuildingPathNodes
+from horizons.util.pathfinding.pathnodes import ConsumerBuildingPathNodes
 from horizons import entities
 from horizons.component import Component
 

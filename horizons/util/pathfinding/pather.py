@@ -24,8 +24,8 @@ import logging
 
 from horizons.util import Point, decorators
 
-from horizons.world.pathfinding import PathBlockedError
-from horizons.world.pathfinding.pathfinding import FindPath
+from horizons.util.pathfinding import PathBlockedError
+from horizons.util.pathfinding.pathfinding import FindPath
 
 """
 In this file, you will find an interface to the pathfinding algorithm.
