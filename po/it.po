@@ -7,8 +7,8 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2012-03-24 02:16+0100\n"
-"PO-Revision-Date: 2012-01-23 19:25+0200\n"
-"Last-Translator: Christopher Oelmueller <chris.oelmueller+uh@gmail.com>\n"
+"PO-Revision-Date: 2012-04-18 11:23+0200\n"
+"Last-Translator: rayot <dmalorni@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: it\n"
 "MIME-Version: 1.0\n"
@@ -21,7 +21,7 @@ msgstr ""
 #: database files sql
 #, python-format
 msgid "A new settlement was founded by {player}."
-msgstr ""
+msgstr "Un nuovo insediamento è stato fondato da {player}."
 
 # 82%
 #. This is a database entry: a messagewidget message (left part of the screen).
@@ -1163,19 +1163,19 @@ msgstr "Costruisci insediamento"
 
 #: horizons/gui/tabs/overviewtab.py:228
 msgid "Load/Unload"
-msgstr ""
+msgstr "Carica/Scarica"
 
 #: horizons/gui/tabs/overviewtab.py:231
 msgid "Buy/Sell"
-msgstr ""
+msgstr "Compra/Vendi"
 
 #: horizons/gui/tabs/overviewtab.py:240
 msgid "Too far from the nearest own or allied warehouse"
-msgstr ""
+msgstr "Troppo distante dal più vicino magazzino proprio o alleato."
 
 #: horizons/gui/tabs/overviewtab.py:246
 msgid "Cannot equip trade ship with weapons"
-msgstr ""
+msgstr "Non è possibile equipaggiare una nave mercantile con armi"
 
 #: horizons/gui/tabs/overviewtab.py:247
 msgid "It is not possible to equip a trade ship with weapons."

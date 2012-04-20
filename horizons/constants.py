@@ -65,7 +65,7 @@ class VERSION:
 	RELEASE_VERSION = _get_git_version()
 	# change for release:
 	IS_DEV_VERSION = True
-	#RELEASE_VERSION = u'2011.3'
+	#RELEASE_VERSION = u'2012.1'
 
 	## +=1 this if you changed the savegame "api"
 	SAVEGAMEREVISION= 57
@@ -498,39 +498,39 @@ class _LanguageNameDict(dict):
 
 
 LANGUAGENAMES = _LanguageNameDict({
-  "" 			: u'System default',
-  "af"    : u'Afrikaans',
-  "bg"    : u'Български',
-  "ca"    : u'Català',
-  'ca@valencia' : u'Català de València',
-  "cs"    : u'Čeština',
-  "da"    : u'Danske',
-  "de"    : u'Deutsch',
-  "en"    : u'English',
-  "es"    : u'Español',
-  "et"    : u'Eesti',
-  "el"    : u'Ελληνικά',
-  "fi"    : u'Suomi',
-  "fr"    : u'Français',
-  "gl"    : u'Galego',
-  "hr"    : u'Hrvatski',
-  "hu"    : u'Magyar',
-  "it"    : u'Italiano',
-  "ja"    : u'日本語',
-  "lt"    : u'Lietuvių',
-  "ko"    : u'한국말/조선말',
-  "nb"    : u'Norw. Bokmål',
-  "nl"    : u'Nederlands',
-  "pl"    : u'Polski',
-  "pt_BR" : u'Português Br.',
-  "pt"    : u'Português',
-  "ro"    : u'Română',
-  "ru"    : u'Русский',
-  "sl"    : u'Slovenski',
-  "sv"    : u'Svenska',
-  "tr"    : u'Türkçe',
-  "vi"    : u'Tiếng Việt',
-  "zh_CN" : u'普通話',
+"" 			: u'System default',
+"af"    : u'Afrikaans',
+"bg"    : u'Български',
+"ca"    : u'Català',
+'ca@valencia' : u'Català de València',
+"cs"    : u'Čeština',
+"da"    : u'Danske',
+"de"    : u'Deutsch',
+"en"    : u'English',
+"es"    : u'Español',
+"et"    : u'Eesti',
+"el"    : u'Ελληνικά',
+"fi"    : u'Suomi',
+"fr"    : u'Français',
+"gl"    : u'Galego',
+"hr"    : u'Hrvatski',
+"hu"    : u'Magyar',
+"it"    : u'Italiano',
+"ja"    : u'日本語',
+"lt"    : u'Lietuvių',
+"ko"    : u'한국말/조선말',
+"nb"    : u'Norw. Bokmål',
+"nl"    : u'Nederlands',
+"pl"    : u'Polski',
+"pt_BR" : u'Português Br.',
+"pt"    : u'Português',
+"ro"    : u'Română',
+"ru"    : u'Русский',
+"sl"    : u'Slovenski',
+"sv"    : u'Svenska',
+"tr"    : u'Türkçe',
+"vi"    : u'Tiếng Việt',
+"zh_CN" : u'普通話',
 })
 
 FONTDEFS = {

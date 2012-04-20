@@ -14,8 +14,8 @@
 		<Label name="text" text="• Python developers" />
 		<Label name="text" text="Visit our IRC channel #unknown-horizons on FreeNode to get in touch with the developers and we will be happy to answer all your questions!"
 			   wrap_text="1"  max_size="280,80" />
-		<Label name="text" text="You find information on how to get started at" />
-		<Label name="text" text="http://tinyurl.com/UH-get-started" />
+		<Label name="text" text="You find information on how to get started at:" />
+		<Label name="text" text="    http://tinyurl.com/uh-get-involved" />
 		<Label name="text" text="Most developers are from Europe, so make sure to show a little patience. We read our channel logs and will always come back to you."
 			   wrap_text="1"  max_size="280,80" />
 	</VBox>
@@ -46,9 +46,9 @@
 		<HBox  size="280,80" padding="15">
 		<VBox>
 			<Label name="text" text="  ~ buildings ~ " />
-			<Label name="text" text="• animated herbs field" />
-			<Label name="text" text="• boar forest field" />
-			<Label name="text" text="• a doctor (hospital)" />
+			<Label name="text" text="• mainsquare upgrades" />
+			<Label name="text" text="• warehouse upgrades" />
+			<Label name="text" text="• settler variants (lvl 2/3/4)" />
 		</VBox>
 		<VBox>
 			<Label name="text" text="  ~ units ~ " />
