@@ -24,7 +24,7 @@ from horizons.util import Callback, WorldObject
 from horizons.util.python import decorators
 from horizons.ext.enum import Enum
 from horizons.constants import RES
-from horizons.world.component.storagecomponent import StorageComponent
+from horizons.component.storagecomponent import StorageComponent
 
 class PrepareFoundationShip(ShipMission):
 	"""

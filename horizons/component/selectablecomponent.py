@@ -25,7 +25,7 @@ import itertools
 
 import horizons.main
 
-from horizons.world.component import Component
+from horizons.component import Component
 from horizons.util import decorators
 from horizons.constants import GFX, LAYERS
 

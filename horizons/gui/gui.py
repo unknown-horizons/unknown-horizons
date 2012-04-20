@@ -38,7 +38,7 @@ from horizons.gui.keylisteners.ingamekeylistener import KeyConfig
 from horizons.gui.widgets import OkButton, CancelButton, DeleteButton
 from horizons.util import Callback
 from horizons.extscheduler import ExtScheduler
-from horizons.world.component.ambientsoundcomponent import AmbientSoundComponent
+from horizons.component.ambientsoundcomponent import AmbientSoundComponent
 from horizons.gui.util import LazyWidgetsDict
 
 from horizons.gui.modules import SingleplayerMenu, MultiplayerMenu
@@ -693,7 +693,7 @@ class Gui(SingleplayerMenu, MultiplayerMenu):
 		self.hide()
 		self._background_image = self._get_random_background()
 		self.show_main()
-		
+
 
 	def _get_random_background(self):
 		"""Randomly select a background image to use through out the game menu."""

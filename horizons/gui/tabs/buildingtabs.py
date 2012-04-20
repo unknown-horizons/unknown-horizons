@@ -24,8 +24,8 @@ from horizons.constants import GAME_SPEED
 from horizons.gui.tabs import OverviewTab
 from horizons.util import ActionSetLoader, Callback
 from horizons.scheduler import Scheduler
-from horizons.world.component.namedcomponent import NamedComponent
-from horizons.world.component.storagecomponent import StorageComponent
+from horizons.component.namedcomponent import NamedComponent
+from horizons.component.storagecomponent import StorageComponent
 
 
 class WarehouseOverviewTab(OverviewTab):

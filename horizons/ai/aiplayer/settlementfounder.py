@@ -28,7 +28,7 @@ from horizons.ai.aiplayer.mission.preparefoundationship import PrepareFoundation
 from horizons.ai.aiplayer.landmanager import LandManager
 from horizons.constants import RES, BUILDINGS
 from horizons.util.python import decorators
-from horizons.world.component.storagecomponent import StorageComponent
+from horizons.component.storagecomponent import StorageComponent
 
 class SettlementFounder(object):
 	"""This class handles the settlement founding activities of an AI player."""

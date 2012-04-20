@@ -25,7 +25,7 @@ from fife.extensions.pychan.widgets import ImageButton
 from horizons.gui.widgets.statswidget import StatsWidget
 from horizons.util.python import decorators
 from horizons.util import Callback
-from horizons.world.component.namedcomponent import NamedComponent
+from horizons.component.namedcomponent import NamedComponent
 
 class PlayersSettlements(StatsWidget):
 	"""Widget that shows a list of the player's settlements."""

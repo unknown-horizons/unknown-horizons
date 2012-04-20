@@ -25,7 +25,7 @@ from fife.extensions.pychan.widgets import HBox, Icon, Label
 
 from horizons.util import Callback
 from horizons.util.changelistener import metaChangeListenerDecorator
-from horizons.world.component.ambientsoundcomponent import AmbientSoundComponent
+from horizons.component.ambientsoundcomponent import AmbientSoundComponent
 from horizons.command.game import UnPauseCommand
 from horizons.command.misc import Chat
 from horizons.gui.widgets.pickbeltwidget import PickBeltWidget

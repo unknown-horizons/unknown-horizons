@@ -22,7 +22,7 @@
 
 from horizons.world.pathfinding.pathnodes import ConsumerBuildingPathNodes
 from horizons import entities
-from horizons.world.component import Component
+from horizons.component import Component
 
 class CollectingComponent(Component):
 	"""The CollectingBuilding class represents a object that uses collectors

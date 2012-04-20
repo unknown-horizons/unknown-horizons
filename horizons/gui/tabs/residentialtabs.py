@@ -25,7 +25,7 @@ from horizons.constants import SETTLER
 from horizons.command.uioptions import SetTaxSetting
 from horizons.gui.tabs import OverviewTab
 from horizons.gui.util import create_resource_icon
-from horizons.world.component.namedcomponent import NamedComponent
+from horizons.component.namedcomponent import NamedComponent
 from horizons.messaging import SettlerUpdate
 
 

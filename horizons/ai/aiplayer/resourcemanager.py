@@ -28,9 +28,9 @@ from horizons.util import WorldObject
 from horizons.util.python import decorators
 from horizons.constants import BUILDINGS, RES, TRADER
 from horizons.command.uioptions import AddToBuyList, RemoveFromBuyList, AddToSellList, RemoveFromSellList
-from horizons.world.component.storagecomponent import StorageComponent
-from horizons.world.component.tradepostcomponent import TradePostComponent
-from horizons.world.component.namedcomponent import NamedComponent
+from horizons.component.storagecomponent import StorageComponent
+from horizons.component.tradepostcomponent import TradePostComponent
+from horizons.component.namedcomponent import NamedComponent
 from horizons.world.settlement import Settlement
 
 class ResourceManager(WorldObject):

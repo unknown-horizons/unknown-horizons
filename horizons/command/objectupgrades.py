@@ -20,7 +20,7 @@
 # ###################################################
 
 from horizons.command import Command
-from horizons.world.component.storagecomponent import StorageComponent
+from horizons.component.storagecomponent import StorageComponent
 
 """
 Commands for ingame upgrades of objects (usually buildings).

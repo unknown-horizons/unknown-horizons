@@ -29,8 +29,8 @@ from horizons.util import WorldObject, decorators, Callback
 from horizons.ext.enum import Enum
 from horizons.world.units.unit import Unit
 from horizons.constants import COLLECTORS
-from horizons.world.component.storagecomponent import StorageComponent
-from horizons.world.component.ambientsoundcomponent import AmbientSoundComponent
+from horizons.component.storagecomponent import StorageComponent
+from horizons.component.ambientsoundcomponent import AmbientSoundComponent
 
 class Collector(Unit):
 	"""Base class for every collector. Does not depend on any home building.

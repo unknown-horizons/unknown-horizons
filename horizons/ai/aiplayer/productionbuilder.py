@@ -37,7 +37,7 @@ from horizons.util import Callback, Point, Rect
 from horizons.util.python import decorators
 from horizons.entities import Entities
 from horizons.world.production.producer import Producer
-from horizons.world.component.namedcomponent import NamedComponent
+from horizons.component.namedcomponent import NamedComponent
 
 class ProductionBuilder(AreaBuilder):
 	"""

@@ -29,7 +29,7 @@ from horizons.constants import BUILDINGS, RES, PRODUCTION
 from horizons.scheduler import Scheduler
 from horizons.util import Rect
 from horizons.entities import Entities
-from horizons.world.component.storagecomponent import StorageComponent
+from horizons.component.storagecomponent import StorageComponent
 from horizons.world.production.producer import Producer
 
 class ImproveCollectorCoverageGoal(SettlementGoal):

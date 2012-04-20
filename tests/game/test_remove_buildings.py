@@ -28,7 +28,7 @@ from horizons.command.unit import CreateUnit
 from horizons.constants import BUILDINGS, UNITS
 from horizons.util import Point
 from horizons.world.production.producer import Producer
-from horizons.world.component.storagecomponent import StorageComponent
+from horizons.component.storagecomponent import StorageComponent
 from horizons.world.pathfinding.roadpathfinder import RoadPathFinder
 
 from tests.game import settle, game_test, RANDOM_SEED

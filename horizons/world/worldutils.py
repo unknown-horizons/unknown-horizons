@@ -31,8 +31,8 @@ from horizons.util.uhdbaccessor import read_savegame_template
 from horizons.entities import Entities
 from horizons.util.dbreader import DbReader
 from horizons.util import Point
-from horizons.world.component.selectablecomponent import SelectableComponent
-from horizons.world.component.storagecomponent import StorageComponent
+from horizons.component.selectablecomponent import SelectableComponent
+from horizons.component.storagecomponent import StorageComponent
 from horizons.command.unit import CreateUnit
 
 """

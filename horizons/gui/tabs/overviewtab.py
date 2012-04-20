@@ -22,7 +22,7 @@
 
 from horizons.gui.tabs.tabinterface import TabInterface
 
-from horizons.world.component.namedcomponent import NamedComponent
+from horizons.component.namedcomponent import NamedComponent
 
 
 class OverviewTab(TabInterface):

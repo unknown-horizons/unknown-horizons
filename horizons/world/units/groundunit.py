@@ -27,7 +27,7 @@ from horizons.world.pathfinding import PathBlockedError
 from unit import Unit
 from horizons.constants import GAME_SPEED, WEAPONS
 from horizons.world.units.weaponholder import MovingWeaponHolder
-from horizons.world.component.selectablecomponent import SelectableComponent
+from horizons.component.selectablecomponent import SelectableComponent
 
 class GroundUnit(Unit):
 	"""Class representing ground unit

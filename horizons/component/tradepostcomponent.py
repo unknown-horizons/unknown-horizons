@@ -22,8 +22,8 @@
 from horizons.util import WorldObject, ChangeListener
 from horizons.constants import RES, TRADER
 from horizons.scheduler import Scheduler
-from horizons.world.component.storagecomponent import StorageComponent
-from horizons.world.component import Component
+from horizons.component.storagecomponent import StorageComponent
+from horizons.component import Component
 
 class TRADE_ERROR_TYPE(object):
 	"""Machine controlled entities need to know the difference. On this basis, they decide

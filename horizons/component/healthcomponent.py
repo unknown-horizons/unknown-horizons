@@ -22,7 +22,7 @@
 import logging
 
 from horizons.util.changelistener import metaChangeListenerDecorator
-from horizons.world.component import Component
+from horizons.component import Component
 
 @metaChangeListenerDecorator("damage_dealt")
 class HealthComponent(Component):

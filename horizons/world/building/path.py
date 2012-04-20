@@ -25,7 +25,7 @@ from horizons.constants import LAYERS, BUILDINGS
 from horizons.world.building.building import BasicBuilding
 from horizons.world.building.buildable import BuildableLine
 from horizons.scheduler import Scheduler
-from horizons.world.componentholder import ComponentHolder
+from horizons.component.componentholder import ComponentHolder
 
 
 class Path(ComponentHolder):

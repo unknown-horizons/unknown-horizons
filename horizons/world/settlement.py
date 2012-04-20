@@ -30,8 +30,8 @@ from horizons.util.worldobject import WorldObject
 from horizons.util.shapes.rect import Rect
 from horizons.messaging import UpgradePermissionsChanged
 from horizons.util.changelistener import ChangeListener
-from horizons.world.componentholder import ComponentHolder
-from horizons.world.component.tradepostcomponent import TradePostComponent
+from horizons.component.componentholder import ComponentHolder
+from horizons.component.tradepostcomponent import TradePostComponent
 from horizons.world.production.producer import Producer
 from horizons.world.resourcehandler import ResourceHandler
 

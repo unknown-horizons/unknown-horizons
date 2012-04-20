@@ -24,9 +24,9 @@ from horizons.util import Callback
 from horizons.gui.util import load_uh_widget
 from horizons.scheduler import Scheduler
 from horizons.command.unit import SetStance
-from horizons.world.component.healthcomponent import HealthComponent
-from horizons.world.component.stancecomponent import *
-from horizons.world.component.selectablecomponent import SelectableComponent
+from horizons.component.healthcomponent import HealthComponent
+from horizons.component.stancecomponent import *
+from horizons.component.selectablecomponent import SelectableComponent
 
 class SelectMultiTab(TabInterface):
 	"""

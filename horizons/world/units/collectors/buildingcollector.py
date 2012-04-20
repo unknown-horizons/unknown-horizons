@@ -27,8 +27,8 @@ from horizons.constants import COLLECTORS, BUILDINGS
 from horizons.scheduler import Scheduler
 from horizons.world.units.movingobject import MoveNotPossible
 from horizons.world.units.collectors.collector import Collector, JobList
-from horizons.world.component.storagecomponent import StorageComponent
-from horizons.world.component.collectingcompontent import CollectingComponent
+from horizons.component.storagecomponent import StorageComponent
+from horizons.component.collectingcompontent import CollectingComponent
 
 
 

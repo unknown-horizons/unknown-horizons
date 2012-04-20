@@ -25,7 +25,7 @@ from horizons.world.units.movingobject import MoveNotPossible
 from horizons.util import Point, Circle, WorldObject
 from horizons.util.python import decorators
 from horizons.constants import BUILDINGS
-from horizons.world.component.storagecomponent import StorageComponent
+from horizons.component.storagecomponent import StorageComponent
 
 class Mission(WorldObject):
 	"""

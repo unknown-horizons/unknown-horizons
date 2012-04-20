@@ -44,8 +44,8 @@ from horizons.command.uioptions import RenameObject
 from horizons.command.misc import Chat
 from horizons.command.game import SpeedDownCommand, SpeedUpCommand
 from horizons.gui.tabs.tabinterface import TabInterface
-from horizons.world.component.namedcomponent import SettlementNameComponent, NamedComponent
-from horizons.world.component.selectablecomponent import SelectableComponent
+from horizons.component.namedcomponent import SettlementNameComponent, NamedComponent
+from horizons.component.selectablecomponent import SelectableComponent
 from horizons.messaging import SettlerUpdate, SettlerInhabitantsChanged, ResourceBarResize, HoverSettlementChanged
 from horizons.util.lastactiveplayersettlementmanager import LastActivePlayerSettlementManager
 

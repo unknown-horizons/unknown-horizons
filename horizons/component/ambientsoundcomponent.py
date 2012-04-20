@@ -23,7 +23,7 @@ import random
 
 import horizons.main
 
-from horizons.world.component import Component
+from horizons.component import Component
 from horizons.extscheduler import ExtScheduler
 
 

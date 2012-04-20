@@ -19,16 +19,16 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-from component import Component
+from horizons.component import Component
 
-from horizons.world.component.storagecomponent import StorageComponent
-from horizons.world.component.namedcomponent import NamedComponent, SettlementNameComponent, ShipNameComponent, PirateShipNameComponent
-from horizons.world.component.tradepostcomponent import TradePostComponent
-from horizons.world.component.ambientsoundcomponent import AmbientSoundComponent
-from horizons.world.component.healthcomponent import HealthComponent
-from horizons.world.component.selectablecomponent import SelectableComponent
-from horizons.world.component.commandablecomponent import CommandableComponent
-from horizons.world.component.collectingcompontent import CollectingComponent
+from horizons.component.storagecomponent import StorageComponent
+from horizons.component.namedcomponent import NamedComponent, SettlementNameComponent, ShipNameComponent, PirateShipNameComponent
+from horizons.component.tradepostcomponent import TradePostComponent
+from horizons.component.ambientsoundcomponent import AmbientSoundComponent
+from horizons.component.healthcomponent import HealthComponent
+from horizons.component.selectablecomponent import SelectableComponent
+from horizons.component.commandablecomponent import CommandableComponent
+from horizons.component.collectingcompontent import CollectingComponent
 from horizons.world.production.producer import Producer, QueueProducer, UnitProducer
 
 class ComponentHolder(object):
@@ -53,7 +53,7 @@ class ComponentHolder(object):
 	it looks like.
 
 	This class manages the components, it stores them and makes them accessible.
-	Check out the actual component class in horizons/world/component/__init__.py
+	Check out the actual component class in horizons/component/__init__.py
 	"""
 
 	class_mapping = {

@@ -30,7 +30,7 @@ from horizons.util import Point
 from horizons.util.worldobject import WorldObject, WorldObjectNotFound
 from horizons.scenario import CONDITIONS
 from horizons.constants import BUILDINGS, RES
-from horizons.world.component.storagecomponent import StorageComponent
+from horizons.component.storagecomponent import StorageComponent
 
 class Build(Command):
 	"""Command class that builds an object."""

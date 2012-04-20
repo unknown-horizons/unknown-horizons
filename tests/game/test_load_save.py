@@ -28,8 +28,8 @@ from horizons.command.unit import CreateUnit
 from horizons.constants import BUILDINGS, PRODUCTION, UNITS, COLLECTORS, RES
 from horizons.util import WorldObject, Point
 from horizons.world.production.producer import Producer
-from horizons.world.component.collectingcompontent import CollectingComponent
-from horizons.world.component.storagecomponent import StorageComponent
+from horizons.component.collectingcompontent import CollectingComponent
+from horizons.component.storagecomponent import StorageComponent
 from horizons.world.units.collectors import Collector
 from horizons.scheduler import Scheduler
 

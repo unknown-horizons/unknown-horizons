@@ -23,8 +23,8 @@ from horizons.ai.aiplayer.mission import ShipMission
 from horizons.util import Callback, WorldObject
 from horizons.util.python import decorators
 from horizons.ext.enum import Enum
-from horizons.world.component.storagecomponent import StorageComponent
-from horizons.world.component.namedcomponent import NamedComponent
+from horizons.component.storagecomponent import StorageComponent
+from horizons.component.namedcomponent import NamedComponent
 
 class SpecialDomesticTrade(ShipMission):
 	"""

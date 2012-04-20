@@ -25,10 +25,9 @@ from horizons.gui.widgets.imagefillstatusbutton import ImageFillStatusButton
 from horizons.gui.tabs.tabinterface import TabInterface
 from horizons.command.uioptions import SellResource, BuyResource, TransferResource
 from horizons.util import Callback
-from horizons.world.component.tradepostcomponent import TradePostComponent
-from horizons.world.component.storagecomponent import StorageComponent
-from horizons.world.component.namedcomponent import NamedComponent
-from horizons.world.component.selectablecomponent import SelectableComponent
+from horizons.component.tradepostcomponent import TradePostComponent
+from horizons.component.storagecomponent import StorageComponent
+from horizons.component.namedcomponent import NamedComponent
 
 class TradeTab(TabInterface):
 	"""Ship to tradepost trade tab"""
@@ -128,8 +127,6 @@ class TradeTab(TabInterface):
 		else:
 			# no partner in range any more
 			pass
-			#self.widget.hide()
-			#self.instance.get_component(SelectableComponent).show_menu()
 
 	def __remove_changelisteners(self):
 		# never redraw on clicks immediately because of

@@ -22,7 +22,7 @@
 
 from horizons.constants import RES, BUILDINGS
 from horizons.command.building import Build, Tear
-from horizons.world.component.storagecomponent import StorageComponent
+from horizons.component.storagecomponent import StorageComponent
 
 from tests.game import game_test
 

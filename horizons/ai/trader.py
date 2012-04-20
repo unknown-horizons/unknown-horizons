@@ -28,7 +28,7 @@ from horizons.ai.generic import GenericAI
 from horizons.ext.enum import Enum
 from horizons.world.units.movingobject import MoveNotPossible
 from horizons.command.unit import CreateUnit
-from horizons.world.component.tradepostcomponent import TradePostComponent
+from horizons.component.tradepostcomponent import TradePostComponent
 from horizons.messaging import NewSettlement
 
 

@@ -19,11 +19,7 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-import horizons.main
-
-from horizons.world import storage
-from horizons import constants
-from horizons.world.component import Component
+from horizons.component import Component
 from horizons.world.storage import PositiveSizedSlotStorage, PositiveStorage, PositiveSizedSpecializedStorage, SettlementStorage, PositiveTotalNumSlotsStorage
 
 class StorageComponent(Component):
