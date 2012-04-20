@@ -613,6 +613,12 @@ class ResourceDepositOverviewTab(OverviewTab):
 		super(ResourceDepositOverviewTab, self).refresh()
 		self.widget.child_finder("inventory").update()
 
+class FireStationOverviewTab(OverviewTab):
+	def  __init__(self, instance):
+		super(FireStationOverviewTab, self).__init__(
+			widget = 'overview_firestation.xml',
+			instance = instance
+		)
 
 ###
 # Minor utility functions

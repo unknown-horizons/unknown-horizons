@@ -26,7 +26,7 @@ from overviewtab import OverviewTab, ProductionOverviewTab, ShipOverviewTab, \
 						EnemyShipOverviewTab, ResourceDepositOverviewTab, \
 						EnemyWarehouseOverviewTab, FarmProductionOverviewTab, \
 						FightingShipOverviewTab, GroundUnitOverviewTab, \
-            TowerOverviewTab
+            TowerOverviewTab, FireStationOverviewTab
 
 from buyselltab import BuySellTab
 from buildtabs import BuildTab
