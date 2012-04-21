@@ -3654,7 +3654,6 @@ msgid "Trade route: going to {location}"
 msgstr "Kauppareitti: siirtymässä kohteeseen {location}"
 
 #: horizons/world/traderoute.py:286
-#, python-format, 
 msgid "Trade route: waiting at {position}"
 msgstr "Kauppareitti: odotetaan {position}"
 
