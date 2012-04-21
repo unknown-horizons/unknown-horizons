@@ -7,8 +7,8 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: translate-uh@lists.unknown-horizons.org\n"
 "POT-Creation-Date: 2012-03-21 04:04+0100\n"
-"PO-Revision-Date: 2012-04-20 21:58+0200\n"
-"Last-Translator: mightykai <k.janssen@home.nl>\n"
+"PO-Revision-Date: 2012-04-21 10:58+0200\n"
+"Last-Translator: Christopher Oelmueller <chris.oelmueller+uh@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: nl\n"
 "MIME-Version: 1.0\n"
@@ -108,6 +108,7 @@ msgid ""
 "\n"
 "Visit www.unknown-horizons.org for help on how to contact the team!"
 msgstr ""
+"\n"
 "Bezoek www.unknown-horizons.org voor help en hoe je contact kunt opnemen met "
 "het team!"
 
@@ -483,7 +484,7 @@ msgid ""
 "explained later on."
 msgstr ""
 "De onderwerpen 'Inkomsten' en 'Uitgaven' verwijzen naar je handel balans en "
-"worden later behandeld. "
+"worden later behandeld."
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:120
@@ -588,7 +589,9 @@ msgstr ""
 msgid ""
 "\n"
 "TASK: Build at least three additional tents."
-msgstr "OPDRACHT: Bouw op zen minst drie extra tenten."
+msgstr ""
+"\n"
+"OPDRACHT: Bouw op zen minst drie extra tenten."
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:150
