@@ -117,7 +117,7 @@ def change_language(language=None):
 			trans.install(unicode=True, names=['ngettext',])
 		except IOError:
 			#xgettext:python-format
-			print _("Configured language {lang} could not be loaded.").format(lang=language)
+			print "Configured language {lang} could not be loaded.".format(lang=language)
 			horizons.main.fife.set_uh_setting('Language', LANGUAGENAMES[''])
 			return change_language() # recurse
 	else:
