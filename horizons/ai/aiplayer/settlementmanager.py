@@ -234,7 +234,7 @@ class SettlementManager(WorldObject):
 		settler_houses = 0
 		residences = self.settlement.buildings_by_id.get(BUILDINGS.RESIDENTIAL_CLASS, [])
 		for building in residences:
-			if building.level == SETTLER.SETTLER_LEVEL:
+			if building.level >= SETTLER.SETTLER_LEVEL:
 				settler_houses += 1
 		if settler_houses > len(residences) * self.personality.new_settlement_settler_ratio:
 			return True
