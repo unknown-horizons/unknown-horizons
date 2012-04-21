@@ -41,8 +41,6 @@ def find_available_languages():
 			key = splited[-3]
 			if not key in languages:
 				languages[key] = os.sep.join(splited[:-3])
-			#TODO we need to strip strings here if an "@" occurs and only
-			# use the language code itself (e.g. ca@valencia.po -> ca.po)
 
 	# there's always a default, which is english
 	languages[LANGUAGENAMES['']] = ''
