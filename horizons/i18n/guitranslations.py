@@ -373,6 +373,17 @@ def set_translations():
 		("selling_label"               , "text"    ): _("Selling"),
 		},
 
+	"overview_firestation.xml" : {
+		# (text of widget: headline)
+		("headline"                    , "text"    ): _("Building Overview"),
+		# (text of widget: name_label)
+		("name_label"                  , "text"    ): _("Name:"),
+		# (helptext of widget: running_costs_label)
+		("running_costs_label"         , "helptext"): _("Running costs"),
+		# (helptext of widget: running_costs)
+		("running_costs"               , "helptext"): _("Running costs"),
+		},
+
 	"overview_groundunit.xml" : {
 		# (text of widget: lbl_weapon_storage)
 		("lbl_weapon_storage"          , "text"    ): _("Weapons:"),
