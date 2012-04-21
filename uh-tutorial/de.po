@@ -101,7 +101,7 @@ msgid ""
 msgstr ""
 "\n"
 "Ihr habt Vorschläge für bessere Erklärungen, möchtet bestimmte Bereiche "
-"näher erläutert haben oder gar einen Fehler gefunden? Teilt das dem Team "
+"näher erläutert haben oder habt einen Fehler gefunden? Teilt das dem Team "
 "mit! Nur so können wir diese Einführung verbessern."
 
 #. This is the text body of a logbook page.
