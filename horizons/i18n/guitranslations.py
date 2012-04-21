@@ -375,7 +375,7 @@ def set_translations():
 
 	"overview_firestation.xml" : {
 		# (text of widget: headline)
-		("headline"                    , "text"    ): _("Building Overview"),
+		("headline"                    , "text"    ): _("Building overview"),
 		# (text of widget: name_label)
 		("name_label"                  , "text"    ): _("Name:"),
 		# (helptext of widget: running_costs_label)
