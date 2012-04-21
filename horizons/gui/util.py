@@ -63,8 +63,8 @@ def load_uh_widget(filename, style=None, center_widget=False):
 	for w in widget.findChildren():
 		if w.name.startswith("headline") or w.name == "name":
 			w.stylize('headline')
-		elif w.name.startswith("cjkv") or w.comment.startswith("cjkv"):
-			w.font = '14_black_cjkv'
+		elif w.name.startswith("uni_") or w.comment.startswith("uni_"):
+			w.font = '16_black_unifont'
 	if center_widget:
 		widget.position_technique = "automatic" # "center:center"
 

@@ -187,7 +187,7 @@
 				<HBox>
 					<Label text="Select language:" name="language_label" />
 					<ScrollArea min_size="165,180" >
-						<ListBox name="cjkv_language" is_focusable="0" />
+						<ListBox name="uni_language" is_focusable="0" />
 					</ScrollArea>
 				</HBox>
 			</VBox>
