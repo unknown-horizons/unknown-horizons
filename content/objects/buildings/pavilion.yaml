@@ -32,4 +32,4 @@ components:
     soundfiles: [content/audio/sounds/chapel.ogg]
 actionsets:
   as_sunsail0: {level: 0}
-  as_church_wooden0: {level: 1}
+  as_church_wooden0: {level: TIER.PIONEERS}

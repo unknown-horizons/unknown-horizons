@@ -7,8 +7,8 @@
 # The actionsets define how the building looks like in the different settler levels.
 id: 8
 name:
-  0: _ Lumberjack Tent
-  1: _ Lumberjack Hut
+  TIER.SAILORS: _ Lumberjack Tent
+  TIER.PIONEERS: _ Lumberjack Hut
 baseclass: production.ProductionBuilding
 radius: 3
 cost: 5
@@ -42,4 +42,4 @@ components:
       UNITS.LUMBERJACK_COLLECTOR: 1
 actionsets:
   as_lumberjack0: {level: 0}
-  as_lumberjack_barrack0: {level: 1}
+  as_lumberjack_barrack0: {level: TIER.PIONEERS}

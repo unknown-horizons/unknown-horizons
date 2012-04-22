@@ -17,4 +17,4 @@ components:
 - HealthComponent: {maxhealth: 10}
 actionsets:
   as_trail: {preview: as_preview_trail, level: 0}
-  as_gravel_path: {preview: as_preview_gravel_path, level: 1}
+  as_gravel_path: {preview: as_preview_gravel_path, level: TIER.PIONEERS}

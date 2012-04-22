@@ -21,4 +21,4 @@ components:
 - HealthComponent: {maxhealth: 1000}
 actionsets:
   as_signalfire0: {preview: as_preview_signalfire0, level: 0}
-  as_signalfire_wooden0: {level: 1}
+  as_signalfire_wooden0: {level: TIER.PIONEERS}

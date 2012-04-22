@@ -10,7 +10,7 @@ inhabitants_start: 0
 inhabitants_max: 0
 button_name: cattlerun-1
 tooltip_text: _ Raises cattle. Needs a farm.
-settler_level: 2
+settler_level: TIER.SETTLERS
 buildingcosts: {RES.GOLD: 100, RES.BOARDS: 1}
 show_status_icons: false
 components:

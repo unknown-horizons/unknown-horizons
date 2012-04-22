@@ -10,7 +10,7 @@ inhabitants_start: 1
 inhabitants_max: 1
 button_name: villageschool-1
 tooltip_text: _ Provides education.
-settler_level: 1
+settler_level: TIER.PIONEERS
 buildingcosts: {RES.GOLD: 500, RES.BOARDS: 4, RES.BRICKS: 4}
 show_status_icons: false
 components:

@@ -10,7 +10,7 @@ inhabitants_start: 0
 inhabitants_max: 0
 button_name: sugarfield-1
 tooltip_text: _ Used in liquor production. Needs a farm.
-settler_level: 1
+settler_level: TIER.PIONEERS
 buildingcosts: {RES.GOLD: 150}
 show_status_icons: false
 components:
