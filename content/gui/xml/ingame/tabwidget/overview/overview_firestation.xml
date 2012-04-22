@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<!-- Overview tab -->
+<Container  size="250,300">
+	<TabBG amount="3"/>
+
+	<Container position="0,70" size="600,400" >
+
+		<HBox position="22,7"  min_size="170,20"  size="230,20" >
+			<Spacer min_size="0"  max_size="50" />
+			<Label name="headline" text="Building overview" />
+		</HBox>
+
+		<Icon image="content/gui/images/background/hr.png" position="20,30" />
+		<Container size="260,550" position="25,43">
+			<Label name="name_label" position="0,0" text="Name:" />
+			<Label name='name' position="55,0" text="" />
+			<!--<Label position="0,25" name="health_label" text="Health:" />
+			<Label name='health' position="55,25" text="" />-->
+		</Container>
+		<HBox min_size="125,20" max_size="225,20" position="25,65">
+			<Icon name="running_costs_label" helptext="Running costs"
+				image="content/gui/icons/resources/running_costs.png" />
+			<Label name="running_costs" text=""
+				helptext="Running costs" />
+		</HBox>
+
+	</Container>
+</Container>
