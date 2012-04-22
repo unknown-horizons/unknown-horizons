@@ -247,11 +247,23 @@ def print_settler_needs():
 	comp = [ i for i in klass.component_templates if i.keys()[0] == u'ProducerComponent' ][0]
 	lines = comp.values()[0][u'productionlines']
 	per_level = defaultdict(list)
-	for data in lines.itervalues():
-		level = data.get("level", [-1])
+	for line_data in lines.itervalues():
+		level = line_data.get("level", [-1])
 		for l in level:
-			per_level[l].extend( [ res for (res, num) in data[u'consumes'] ] )
-	pprint.pprint(dict( (k, sorted(db.get_res_name(i) for i in v)) for k,v in per_level.iteritems()))
+			per_level[l].extend( [ res for (res, num) in line_data[u'consumes'] ] )
+	data = dict( (k, sorted(db.get_res_name(i) for i in v)) for k,v in per_level.iteritems())
+	print "Needed resources per increment"
+	pprint.pprint(data)
+	print '\nChanges per level:'
+	for i in xrange(len(data)-2):
+		s = str(i)+"/"+str(i+1)+": "
+		for r in data[i+1]:
+			if r not in data[i]:
+				s += "+"+r+", "
+		for r in data[i]:
+			if r not in data[i+1]:
+				s += "-"+r+", "
+		print s
 
 
 functions = {
