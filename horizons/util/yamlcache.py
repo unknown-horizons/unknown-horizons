@@ -23,6 +23,7 @@ import os
 import shelve
 import yaml
 import threading
+import traceback
 
 from horizons.constants import RES, UNITS, BUILDINGS, PATHS
 
@@ -102,16 +103,17 @@ class YamlCache(object):
 			filename = filename.encode('utf8') # shelve needs str keys
 
 		def handle_get_yaml_file_error(e, release):
-				# when something unexpected happens, shelve does not guarantee anything.
-				# since crashing on any access is part of the specified behaviour, we need to handle it.
-				# cf. http://bugs.python.org/issue14041
-				print 'Warning: Can\'t write to shelve: ', e
-				# delete cache and try again
-				os.remove(cls.cache_filename)
-				cls.cache = None
-				if release:
-					cls.lock.release()
-				return cls.get_yaml_file(filename, game_data=game_data)
+			# when something unexpected happens, shelve does not guarantee anything.
+			# since crashing on any access is part of the specified behaviour, we need to handle it.
+			# cf. http://bugs.python.org/issue14041
+			traceback.print_exc()
+			print 'Warning: Can\'t write to shelve: '+unicode(e)
+			# delete cache and try again
+			os.remove(cls.cache_filename)
+			cls.cache = None
+			if release:
+				cls.lock.release()
+			return cls.get_yaml_file(filename, game_data=game_data)
 
 		try:
 			yaml_file_in_cache = (filename in cls.cache and cls.cache[filename][0] == h)
@@ -151,6 +153,7 @@ class YamlCache(object):
 		try:
 			cls.cache = shelve.open(cls.cache_filename)
 		except UnicodeError as e:
+			traceback.print_exc()
 			print "Warning: failed to open "+cls.cache_filename+": "+unicode(e)
 			return # see _write_bin_file
 		except Exception as e:
@@ -165,7 +168,8 @@ class YamlCache(object):
 			# If there is an old database file that was created with a
 			# deprecated dbm library, opening it will fail with an obscure exception, so we delete it
 			# and simply retry.
-			print "Warning: you probably have an old cache file; deleting and retrying"
+			traceback.print_exc()
+			print "Warning: you probably have an old cache file; deleting and retrying: "+unicode(e)
 			os.remove(cls.cache_filename)
 			cls.cache = shelve.open(cls.cache_filename)
 		cls.lock.release()
