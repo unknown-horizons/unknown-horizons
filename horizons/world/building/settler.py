@@ -27,7 +27,7 @@ from horizons.scheduler import Scheduler
 from horizons.gui.tabs import SettlerOverviewTab
 from horizons.world.building.building import BasicBuilding
 from horizons.world.building.buildable import BuildableRect, BuildableSingle
-from horizons.constants import RES, BUILDINGS, GAME, SETTLER
+from horizons.constants import RES, BUILDINGS, GAME, TIER
 from horizons.world.building.buildingresourcehandler import BuildingResourceHandler
 from horizons.world.production.production import SettlerProduction, SingleUseProduction
 from horizons.command.building import Build
@@ -65,7 +65,7 @@ class Settler(BuildableRect, BuildingResourceHandler, BasicBuilding):
 		super(Settler, self).__init__(x=x, y=y, owner=owner, instance=instance, **kwargs)
 
 	def __init(self, loading = False, last_tax_payed=0):
-		self.level_max = SETTLER.CURRENT_MAX_INCR # for now
+		self.level_max = TIER.CURRENT_MAX # for now
 		self._update_level_data(loading=loading, initial=True)
 		self.last_tax_payed = last_tax_payed
 		UpgradePermissionsChanged.subscribe(self._on_change_upgrade_permissions, sender=self.settlement)

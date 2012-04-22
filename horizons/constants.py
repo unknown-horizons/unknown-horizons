@@ -364,12 +364,14 @@ class TRADER: # check resource values: ./development/print_db_data.py res
 	SELL_AMOUNT_MAX = 10
 
 # Taxes and Restrictions
+class TIER:
+	SAILORS = 0
+	PIONEERS = 1
+	SETTLERS = 2
+	CITIZENS = 3
+	CURRENT_MAX = 3 # counting starts at 0!
+
 class SETTLER:
-	SAILOR_LEVEL = 0
-	PIONEER_LEVEL = 1
-	SETTLER_LEVEL = 2
-	CITIZEN_LEVEL = 3
-	CURRENT_MAX_INCR = 3 # counting starts at 0!
 	TAX_SETTINGS_MIN = 0.5
 	TAX_SETTINGS_MAX = 1.5
 	TAX_SETTINGS_STEP = 0.1

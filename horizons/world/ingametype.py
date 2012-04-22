@@ -19,7 +19,7 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-from horizons.constants import SETTLER
+from horizons.constants import TIER
 
 class IngameType(type):
 	"""Class that is used to create Ingame-Type-Classes from yaml data.
@@ -73,7 +73,7 @@ class IngameType(type):
 			# fill up dict (fall down to highest class which has an name
 			name = None
 			self._level_specific_names = {}
-			for lvl in xrange( min(name_data), SETTLER.CURRENT_MAX_INCR+1 ):
+			for lvl in xrange(min(name_data), TIER.CURRENT_MAX + 1):
 				if lvl in name_data:
 					name = _( self._strip_translation_marks( name_data[lvl] ) )
 				assert name is not None, "name attribute is wrong: "+str(yaml_data['name'])
@@ -126,7 +126,7 @@ class IngameType(type):
 
 	def action_sets_by_level(self, action_sets):
 		as_by_level = {}
-		for i in xrange(0, SETTLER.CURRENT_MAX_INCR+1):
+		for i in xrange(TIER.CURRENT_MAX + 1):
 			as_by_level[i] = []
 			for setname, value in action_sets.iteritems():
 				if 'level' in value and value['level'] == i:
