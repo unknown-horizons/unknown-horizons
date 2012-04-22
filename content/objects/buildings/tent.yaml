@@ -41,7 +41,7 @@ components:
         produces:
         - [14, 4]
         changes_animation: false
-        level: [2]
+        level: [2, 3]
         enabled_by_default: false
         time: 90
         consumes:
