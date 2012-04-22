@@ -30,7 +30,7 @@ from horizons.command.uioptions import AddToBuyList, AddToSellList, RemoveFromBu
 from horizons.gui.widgets.tradehistoryitem import TradeHistoryItem
 from horizons.util import Callback, WorldObject
 from horizons.gui.util import load_uh_widget, get_res_icon_path, create_resource_selection_dialog
-from horizons.world.component.tradepostcomponent import TradePostComponent
+from horizons.component.tradepostcomponent import TradePostComponent
 from horizons.constants import TRADER
 
 class BuySellTab(TabInterface):

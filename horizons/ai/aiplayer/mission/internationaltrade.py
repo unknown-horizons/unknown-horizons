@@ -25,9 +25,9 @@ from horizons.util.python import decorators
 from horizons.constants import RES, TRADER
 from horizons.command.uioptions import SellResource, BuyResource
 from horizons.ext.enum import Enum
-from horizons.world.component.storagecomponent import StorageComponent
-from horizons.world.component.namedcomponent  import NamedComponent
-from horizons.world.component.tradepostcomponent import TradePostComponent
+from horizons.component.storagecomponent import StorageComponent
+from horizons.component.namedcomponent  import NamedComponent
+from horizons.component.tradepostcomponent import TradePostComponent
 
 class InternationalTrade(ShipMission):
 	"""

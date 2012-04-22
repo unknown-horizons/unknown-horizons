@@ -87,10 +87,13 @@ class _build_i18n(distutils.cmd.Command):
 			return
 		po_files = glob.glob("%s/*.po" % self.po_dir)
 		if len(po_files) and not find_executable('msgfmt'):
-			self.warn("Can't generate language files, needs msgfmt. Only native language (english) will be available")
+			self.warn("Can't generate language files, needs msgfmt. "
+				"Only native language (English) will be available. "
+				"Try installing the package 'gettext' or 'msgfmt'.")
 			return
 		if len(self.desktop_files) and not find_executable('intltool-merge'):
-			self.warn("Can't generate desktop files, needs intltool-merge")
+			self.warn("Can't generate desktop files, needs intltool-merge. "
+				"Try installing the package 'intltool'.")
 			return
 
 		data_files = self.distribution.data_files

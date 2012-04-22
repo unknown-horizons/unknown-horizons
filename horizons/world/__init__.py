@@ -44,8 +44,8 @@ from horizons.world.diplomacy import Diplomacy
 from horizons.world.units.bullet import Bullet
 from horizons.world.units.weapon import Weapon
 from horizons.command.unit import CreateUnit
-from horizons.world.component.healthcomponent import HealthComponent
-from horizons.world.component.storagecomponent import StorageComponent
+from horizons.component.healthcomponent import HealthComponent
+from horizons.component.storagecomponent import StorageComponent
 from horizons.world.disaster.disastermanager import DisasterManager
 from horizons.world import worldutils
 

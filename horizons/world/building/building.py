@@ -31,8 +31,8 @@ from horizons.util import ConstRect, Point, WorldObject, ActionSetLoader, decora
 from horizons.constants import RES, LAYERS, GAME
 from horizons.world.building.buildable import BuildableSingle
 from horizons.command.building import Build
-from horizons.world.component.storagecomponent import StorageComponent
-from horizons.world.componentholder import ComponentHolder
+from horizons.component.storagecomponent import StorageComponent
+from horizons.component.componentholder import ComponentHolder
 
 class BasicBuilding(ComponentHolder, ConcreteObject):
 	"""Class that represents a building. The building class is mainly a super class for other buildings."""

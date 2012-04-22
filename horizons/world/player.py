@@ -26,8 +26,8 @@ from horizons.world.playerstats import PlayerStats
 from horizons.util import WorldObject, Callback, Color, DifficultySettings
 from horizons.scenario import CONDITIONS
 from horizons.scheduler import Scheduler
-from horizons.world.componentholder import ComponentHolder
-from horizons.world.component.storagecomponent import StorageComponent
+from horizons.component.componentholder import ComponentHolder
+from horizons.component.storagecomponent import StorageComponent
 from horizons.messaging import SettlerUpdate, NewDisaster
 
 class Player(ComponentHolder, WorldObject):

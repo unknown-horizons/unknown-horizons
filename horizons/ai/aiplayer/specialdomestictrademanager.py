@@ -25,7 +25,7 @@ from collections import defaultdict
 
 from mission.specialdomestictrade import SpecialDomesticTrade
 from horizons.util.python import decorators
-from horizons.world.component.storagecomponent import StorageComponent
+from horizons.component.storagecomponent import StorageComponent
 
 class SpecialDomesticTradeManager(object):
 	"""

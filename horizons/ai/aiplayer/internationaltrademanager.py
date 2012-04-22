@@ -26,8 +26,8 @@ from collections import defaultdict
 from mission.internationaltrade import InternationalTrade
 from horizons.constants import RES, TRADER
 from horizons.util.python import decorators
-from horizons.world.component.storagecomponent import StorageComponent
-from horizons.world.component.tradepostcomponent import TradePostComponent
+from horizons.component.storagecomponent import StorageComponent
+from horizons.component.tradepostcomponent import TradePostComponent
 
 class InternationalTradeManager(object):
 	"""

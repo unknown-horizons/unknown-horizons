@@ -26,7 +26,7 @@ from horizons.command.building import Build, Tear
 from horizons.util.worldobject import WorldObject, WorldObjectNotFound
 from horizons.command.unit import CreateUnit
 from horizons.constants import BUILDINGS, UNITS, RES
-from horizons.world.component.storagecomponent import StorageComponent
+from horizons.component.storagecomponent import StorageComponent
 from horizons.world.production.producer import Producer
 
 from tests.game import game_test, settle

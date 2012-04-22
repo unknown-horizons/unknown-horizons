@@ -27,7 +27,7 @@ from horizons.scheduler import Scheduler
 from horizons.util import WorldObject, Point, Rect, Circle, DbReader, random_map, BuildingIndexer
 from horizons.messaging import SettlementRangeChanged, NewSettlement
 from settlement import Settlement
-from horizons.world.pathfinding.pathnodes import IslandPathNodes
+from horizons.util.pathfinding.pathnodes import IslandPathNodes
 from horizons.constants import BUILDINGS, RES, UNITS
 from horizons.scenario import CONDITIONS
 from horizons.world.buildingowner import BuildingOwner

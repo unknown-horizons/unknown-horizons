@@ -26,9 +26,9 @@ from fife.extensions.pychan.widgets import ImageButton
 from horizons.util import Callback
 from horizons.util.python import decorators
 from horizons.world.units.fightingship import FightingShip
-from horizons.world.component.healthcomponent import HealthComponent
-from horizons.world.component.namedcomponent import NamedComponent
-from horizons.world.component.selectablecomponent import SelectableComponent
+from horizons.component.healthcomponent import HealthComponent
+from horizons.component.namedcomponent import NamedComponent
+from horizons.component.selectablecomponent import SelectableComponent
 
 class PlayersShips(StatsWidget):
 	"""Widget that shows a list of the player's ships."""

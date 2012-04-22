@@ -31,7 +31,7 @@ from horizons.command.unit import CreateUnit
 from horizons.constants import GROUND, BUILDINGS, UNITS, RES
 from horizons.util import Rect, DbReader, Point
 from horizons.util.uhdbaccessor import read_savegame_template
-from horizons.world.component.storagecomponent import StorageComponent
+from horizons.component.storagecomponent import StorageComponent
 
 
 def create_map():

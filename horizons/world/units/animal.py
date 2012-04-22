@@ -24,12 +24,12 @@ import logging
 from horizons.scheduler import Scheduler
 
 from horizons.util import Point, WorldObject
-from horizons.world.pathfinding.pather import SoldierPather
+from horizons.util.pathfinding.pather import SoldierPather
 from horizons.command.unit import CreateUnit
 from collectors import Collector, BuildingCollector, JobList
 from horizons.constants import RES, WILD_ANIMAL
 from horizons.world.units.movingobject import MoveNotPossible
-from horizons.world.component.storagecomponent import StorageComponent
+from horizons.component.storagecomponent import StorageComponent
 from horizons.world.resourcehandler import ResourceHandler
 
 class Animal(ResourceHandler):

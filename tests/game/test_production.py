@@ -20,7 +20,7 @@
 # ###################################################
 
 from horizons.command.building import Build
-from horizons.world.component.storagecomponent import StorageComponent
+from horizons.component.storagecomponent import StorageComponent
 from horizons.world.production.producer import Producer
 from horizons.constants import BUILDINGS, RES, PRODUCTIONLINES, PRODUCTION
 

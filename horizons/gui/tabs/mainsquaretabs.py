@@ -27,8 +27,8 @@ from horizons.util import Callback
 from horizons.messaging import UpgradePermissionsChanged
 from horizons.command.uioptions import SetSettlementUpgradePermissions
 from horizons.constants import BUILDINGS, SETTLER
-from horizons.world.component.tradepostcomponent import TradePostComponent
-from horizons.world.component.namedcomponent import NamedComponent
+from horizons.component.tradepostcomponent import TradePostComponent
+from horizons.component.namedcomponent import NamedComponent
 
 class MainSquareTab(OverviewTab):
 	"""Tab for main square. Refreshes when one building on the settlement changes"""

@@ -24,7 +24,7 @@ from itertools import product
 
 from horizons.command.building import Build
 from horizons.constants import BUILDINGS, RES
-from horizons.world.component.storagecomponent import StorageComponent
+from horizons.component.storagecomponent import StorageComponent
 
 from tests.game import game_test, settle
 

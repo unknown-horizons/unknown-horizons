@@ -28,9 +28,9 @@ from horizons.scheduler import Scheduler
 from horizons.util import decorators
 from horizons.util.shapes.circle import Circle
 from horizons.util.shapes.point import Point
-from horizons.world.component.storagecomponent import StorageComponent
-from horizons.world.component.ambientsoundcomponent import AmbientSoundComponent
-from horizons.world.component import Component
+from horizons.component.storagecomponent import StorageComponent
+from horizons.component.ambientsoundcomponent import AmbientSoundComponent
+from horizons.component import Component
 from horizons.world.status import ProductivityLowStatus, DecommissionedStatus, InventoryFullStatus
 from horizons.world.production.unitproduction import UnitProduction
 from horizons.command.unit import CreateUnit

@@ -23,8 +23,8 @@ from horizons.constants import RES
 from horizons.constants import BUILDINGS
 from horizons.scheduler import Scheduler
 from horizons.util import Registry
-from horizons.world.pathfinding.pather import StaticPather
-from horizons.world.component.storagecomponent import StorageComponent
+from horizons.util.pathfinding.pather import StaticPather
+from horizons.component.storagecomponent import StorageComponent
 
 
 class CONDITIONS(object):
@@ -223,7 +223,7 @@ def _building_connected_to_any_of(session, building_class, *classes):
 	check_connection = []
 	for settlement in _get_player_settlements(session):
 		building_to_check.extend(settlement.buildings_by_id[building_class])
-		for b_class in classes:		
+		for b_class in classes:
 			for building in settlement.buildings_by_id[b_class]:
 				check_connection.append(building)
 	found_connected = 0

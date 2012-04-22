@@ -22,7 +22,7 @@
 from unittest import TestCase
 
 from horizons.ext.dummy import Dummy
-from horizons.world.component.healthcomponent import HealthComponent
+from horizons.component.healthcomponent import HealthComponent
 
 from mock import Mock
 

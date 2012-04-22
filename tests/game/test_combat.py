@@ -27,10 +27,10 @@ from horizons.util.worldobject import WorldObjectNotFound
 from horizons.command.unit import CreateUnit, Attack
 from horizons.command.diplomacy import AddEnemyPair, AddNeutralPair, AddAllyPair
 from horizons.command.uioptions import EquipWeaponFromInventory, UnequipWeaponToInventory
-from horizons.world.component.storagecomponent import StorageComponent
+from horizons.component.storagecomponent import StorageComponent
 from horizons.world.player import Player
 from horizons.constants import UNITS, WEAPONS
-from horizons.world.component.healthcomponent import HealthComponent
+from horizons.component.healthcomponent import HealthComponent
 
 from tests.game import game_test, new_session, load_session
 

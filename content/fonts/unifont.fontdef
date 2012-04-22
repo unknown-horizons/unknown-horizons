@@ -1,0 +1,133 @@
+[Font/13]
+
+type: truetype
+source: content/fonts/Unifont.ttf
+size: 14
+color: 255,255,255
+antialias: 1
+
+
+[Font/14]
+
+type: truetype
+source: content/fonts/Unifont.ttf
+size: 15
+color: 255,255,255
+antialias: 1
+
+
+[Font/mainmenu]
+
+type: truetype
+source: content/fonts/Unifont.ttf
+size: 22
+color: 255,255,255
+antialias: 1
+
+
+[Font/18]
+
+type: truetype
+source: content/fonts/Unifont.ttf
+size: 18
+color: 255,255,255
+antialias: 1
+
+
+[Font/small]
+
+type: truetype
+source: content/fonts/Unifont.ttf
+size: 17
+color: 255,255,255
+antialias: 1
+
+
+[Font/14_black]
+
+type: truetype
+source: content/fonts/Unifont.ttf
+size: 15
+color: 68,42,2
+antialias: 1
+
+
+[Font/18_black]
+
+type: truetype
+source: content/fonts/Unifont.ttf
+size: 19
+color: 68,42,2
+antialias: 1
+
+
+[Font/small_black]
+
+type: truetype
+source: content/fonts/Unifont.ttf
+size: 16
+color: 68,42,2
+antialias: 1
+
+
+[Font/large]
+
+type: truetype
+source: content/fonts/Unifont.ttf
+size: 24
+color: 255,255,255
+antialias: 1
+
+
+[Font/large_load]
+
+type: truetype
+source: content/fonts/Unifont.ttf
+size: 34
+color: 120,100,65
+antialias: 1
+
+
+[Font/headline]
+
+type: truetype
+source: content/fonts/Unifont.ttf
+size: 18
+color: 68,42,2
+antialias: 1
+
+
+[Font/tooltip]
+
+type: truetype
+source: content/fonts/Unifont.ttf
+size: 15
+color: 68,42,2
+antialias: 1
+
+
+[Font/message]
+
+type: truetype
+source: content/fonts/Unifont.ttf
+size: 15
+color: 255,255,255
+antialias: 1
+
+
+[Font/small_tooltip]
+
+type: truetype
+source: content/fonts/Unifont.ttf
+size: 15
+color: 255,255,255
+antialias: 1
+
+
+[Font/16_black_unifont]
+
+type: truetype
+source: content/fonts/Unifont.ttf
+size: 16
+color: 68,42,2
+antialias: 1

@@ -25,8 +25,8 @@ from horizons.world.units.movingobject import MoveNotPossible
 from horizons.util import  Circle, WorldObject, ChangeListener
 from horizons.constants import GAME_SPEED
 from horizons.scheduler import Scheduler
-from horizons.world.component.storagecomponent import StorageComponent
-from horizons.world.component.tradepostcomponent import TradePostComponent, TRADE_ERROR_TYPE
+from horizons.component.storagecomponent import StorageComponent
+from horizons.component.tradepostcomponent import TradePostComponent, TRADE_ERROR_TYPE
 
 class TradeRoute(ChangeListener):
 	"""

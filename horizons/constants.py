@@ -513,6 +513,7 @@ LANGUAGENAMES = _LanguageNameDict({
 "fi"    : u'Suomi',
 "fr"    : u'Français',
 "gl"    : u'Galego',
+"hi"    : u'मानक हिन्दी',
 "hr"    : u'Hrvatski',
 "hu"    : u'Magyar',
 "it"    : u'Italiano',
@@ -534,10 +535,39 @@ LANGUAGENAMES = _LanguageNameDict({
 })
 
 FONTDEFS = {
-  'ja'   : 'uming',
-  'ko'   : 'uming',
-  'vi'   : 'uming',
-  'zh_CN': 'uming',
+	# "af"
+	"bg"    : 'libertine',
+	# "ca"
+	"ca@valencia" : 'libertine',
+	"cs"    : 'libertine',
+	"da"    : 'libertine',
+	"de"    : 'libertine',
+	"en"    : 'libertine',
+	"es"    : 'libertine',
+	"et"    : 'libertine',
+	"el"    : 'libertine',
+	"fi"    : 'libertine',
+	"fr"    : 'libertine',
+	"gl"    : 'libertine',
+	# "hi"
+	"hr"    : 'libertine',
+	"hu"    : 'libertine',
+	"it"    : 'libertine',
+	# "ja"
+	"lt"    : 'libertine',
+	# "ko"
+	"nb"    : 'libertine',
+	"nl"    : 'libertine',
+	"pl"    : 'libertine',
+	"pt_BR" : 'libertine',
+	"pt"    : 'libertine',
+	"ro"    : 'libertine',
+	"ru"    : 'libertine',
+	"sl"    : 'libertine',
+	"sv"    : 'libertine',
+	"tr"    : 'libertine',
+	# "vi"
+	# "zh_CN"
 }
 
 AUTO_CONTINUE_CAMPAIGN=True

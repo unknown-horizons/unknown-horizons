@@ -30,12 +30,12 @@ import functools
 import horizons.main
 
 from horizons.constants import RES
-from horizons.world.component.storagecomponent import StorageComponent
+from horizons.component.storagecomponent import StorageComponent
 from horizons.gui.util import load_uh_widget, get_res_icon_path, create_resource_selection_dialog
 from horizons.util import PychanChildFinder, Callback
 from horizons.util.python.decorators import cachedmethod
 from horizons.extscheduler import ExtScheduler
-from horizons.world.component.ambientsoundcomponent import AmbientSoundComponent
+from horizons.component.ambientsoundcomponent import AmbientSoundComponent
 from horizons.util.lastactiveplayersettlementmanager import LastActivePlayerSettlementManager
 from horizons.messaging import NewPlayerSettlementHovered, ResourceBarResize
 

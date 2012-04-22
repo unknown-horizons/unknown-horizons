@@ -11,21 +11,21 @@
 
 	<Container position="20,95" size="260,450" >
 		<!-- Ship images -->
-		<Icon image="content/gfx/dummies/square_80.png" position="0,20" />
+		<Icon image="content/gui/images/background/square_80.png" position="0,20" />
 		<Icon image="content/gui/images/objects/ships/76/1000020.png" position="2,22"
 				helptext="Frigate: \nStorage: 4 slots, 30t \nCannons: 7 \nHealth: 200" />
 		<OkButton position="60,70"  name="BB_build_war1_1"  helptext="Build this ship!" /><!--
 
-		<Icon image="content/gfx/dummies/square_80.png" position="0,107"/>
+		<Icon image="content/gui/images/background/square_80.png" position="0,107"/>
 				helptext="Naval cutter: \nStorage: 2 slots of 15t \nCannons: 4 \nSpeed: x \nHealth: 100\nGets available after:\n Research 'Military Ships'" />
 		<CancelButton position="60,157" helptext="Can't build this ship!" />
 		<CancelButton position="60,70" helptext="Not yet implemented." />
 
-		<Icon image="content/gfx/dummies/square_80.png" position="0,194"/>
+		<Icon image="content/gui/images/background/square_80.png" position="0,194"/>
 				helptext="Bombadiere: \nStorage: x slots of xt \nCannons: x \nSpeed: x \nHealth: x\nGets available after:\n Research 'Military Ships'" />
 		<CancelButton position="60,70" helptext="Not yet implemented." />
 
-		<Icon image="content/gfx/dummies/square_80.png" position="0,281"
+		<Icon image="content/gui/images/background/square_80.png" position="0,281"
 				helptext="Sloop-o'-war: \nStorage: x slots of xt \nCannons: x \nSpeed: x \nHealth: x \nGets available after:\n Research 'Military Ships'" />
 		<CancelButton position="60,70" helptext="Not yet implemented." />-->
 

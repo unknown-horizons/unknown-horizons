@@ -24,7 +24,7 @@
 
 from unittest import TestCase
 
-from horizons.world.component import Component
+from horizons.component import Component
 
 
 class A(Component):

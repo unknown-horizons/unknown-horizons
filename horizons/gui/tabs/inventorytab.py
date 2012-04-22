@@ -21,7 +21,7 @@
 
 from horizons.gui.tabs.tabinterface import TabInterface
 from horizons.extscheduler import ExtScheduler
-from horizons.world.component.storagecomponent import StorageComponent
+from horizons.component.storagecomponent import StorageComponent
 
 class InventoryTab(TabInterface):
 

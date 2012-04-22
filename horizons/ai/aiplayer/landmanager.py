@@ -27,7 +27,7 @@ from collections import defaultdict
 from horizons.constants import AI, BUILDINGS, RES
 from horizons.util.python import decorators
 from horizons.util import WorldObject
-from horizons.world.component.storagecomponent import StorageComponent
+from horizons.component.storagecomponent import StorageComponent
 
 class LandManager(WorldObject):
 	"""

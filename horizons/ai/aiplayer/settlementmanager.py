@@ -51,8 +51,8 @@ from horizons.command.uioptions import SetTaxSetting, SetSettlementUpgradePermis
 from horizons.command.production import ToggleActive
 from horizons.constants import BUILDINGS, RES, GAME_SPEED, SETTLER
 from horizons.entities import Entities
-from horizons.world.component.storagecomponent import StorageComponent
-from horizons.world.component.namedcomponent import NamedComponent
+from horizons.component.storagecomponent import StorageComponent
+from horizons.component.namedcomponent import NamedComponent
 from horizons.world.disaster.firedisaster import FireDisaster
 from horizons.world.production.producer import Producer
 

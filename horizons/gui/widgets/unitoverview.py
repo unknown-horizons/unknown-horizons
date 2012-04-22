@@ -26,8 +26,8 @@ from horizons.util import Callback
 from fife.extensions.pychan.widgets import Icon
 from horizons.command.unit import SetStance
 from horizons.extscheduler import ExtScheduler
-from horizons.world.component.healthcomponent import HealthComponent
-from horizons.world.component.stancecomponent import NoneStance, AggressiveStance, HoldGroundStance, FleeStance, DEFAULT_STANCES
+from horizons.component.healthcomponent import HealthComponent
+from horizons.component.stancecomponent import NoneStance, AggressiveStance, HoldGroundStance, FleeStance, DEFAULT_STANCES
 
 class StanceWidget(pychan.widgets.Container):
 	"""Widget used for setting up the stance for one instance"""

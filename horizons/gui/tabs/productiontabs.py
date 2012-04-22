@@ -32,7 +32,7 @@ from horizons.gui.widgets.imagefillstatusbutton import ImageFillStatusButton
 from horizons.scheduler import Scheduler
 from horizons.util import Callback
 from horizons.util.pychananimation import PychanAnimation
-from horizons.world.component.storagecomponent import StorageComponent
+from horizons.component.storagecomponent import StorageComponent
 from horizons.world.production.producer import Producer
 
 

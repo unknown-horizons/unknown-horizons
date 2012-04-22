@@ -28,8 +28,8 @@ from horizons.entities import Entities
 from horizons.gui.tabs import OverviewTab, TradeTab
 from horizons.gui.widgets.routeconfig import RouteConfig
 from horizons.util import Callback
-from horizons.world.component.storagecomponent import StorageComponent
-from horizons.world.component.selectablecomponent import SelectableComponent
+from horizons.component.storagecomponent import StorageComponent
+from horizons.component.selectablecomponent import SelectableComponent
 
 
 class ShipOverviewTab(OverviewTab):

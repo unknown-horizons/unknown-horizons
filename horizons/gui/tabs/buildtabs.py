@@ -26,7 +26,7 @@ from horizons.constants import BUILDINGS
 from horizons.util import Callback
 from horizons.util.lastactiveplayersettlementmanager import LastActivePlayerSettlementManager
 from horizons.util.python.roman_numerals import int_to_roman
-from horizons.world.component.storagecomponent import StorageComponent
+from horizons.component.storagecomponent import StorageComponent
 from horizons.messaging import NewPlayerSettlementHovered
 
 class BuildTab(TabInterface):

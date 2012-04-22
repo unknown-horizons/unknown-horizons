@@ -26,7 +26,7 @@ from horizons.command.unit import Act
 from horizons.util import WorldObject
 from horizons.util.worldobject import WorldObjectNotFound
 from horizons.gui.mousetools.navigationtool import NavigationTool
-from horizons.world.component.selectablecomponent import SelectableComponent
+from horizons.component.selectablecomponent import SelectableComponent
 from horizons.constants import LAYERS
 
 class SelectionTool(NavigationTool):
@@ -51,7 +51,7 @@ class SelectionTool(NavigationTool):
 
 	def filter_component(self, component, instances):
 		"""Only get specific component from a list of world objects"""
-		return [instance.get_component(component) for instance in instances]		
+		return [instance.get_component(component) for instance in instances]
 
 	def filter_selectable(self, instances):
 		"""Only keeps selectables from a list of world objects"""
@@ -234,7 +234,7 @@ class SelectionTool(NavigationTool):
 		selectable = frozenset( self.filter_component(SelectableComponent, instances))
 
 		# apply changes
-		selected_components = set(self.filter_component(SelectableComponent, 
+		selected_components = set(self.filter_component(SelectableComponent,
 					  self.filter_selectable(self.session.selected_instances)))
 		for sel_comp in selected_components - selectable:
 			sel_comp.deselect()

@@ -23,7 +23,7 @@ from horizons.ai.aiplayer.goal import Goal
 from horizons.ai.aiplayer.constants import BUILD_RESULT
 from horizons.util.python import decorators
 from horizons.constants import BUILDINGS
-from horizons.world.component.namedcomponent import NamedComponent
+from horizons.component.namedcomponent import NamedComponent
 
 class SettlementGoal(Goal):
 	"""

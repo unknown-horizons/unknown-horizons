@@ -29,8 +29,8 @@ from horizons.ai.generic import GenericAI
 from horizons.command.unit import CreateUnit
 from horizons.world.units.ship import PirateShip, TradeShip
 from horizons.world.units.movingobject import MoveNotPossible
-from horizons.world.component.namedcomponent import NamedComponent
-from horizons.world.component.selectablecomponent import SelectableComponent
+from horizons.component.namedcomponent import NamedComponent
+from horizons.component.selectablecomponent import SelectableComponent
 
 
 class Pirate(GenericAI):

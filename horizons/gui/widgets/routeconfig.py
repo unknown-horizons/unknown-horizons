@@ -27,12 +27,11 @@ from horizons.gui.util import load_uh_widget
 from horizons.util import Callback, Point
 from fife.extensions.pychan import widgets
 from fife.extensions.pychan.widgets import ImageButton
-from horizons.world.component.storagecomponent import StorageComponent
+from horizons.component.storagecomponent import StorageComponent
 from horizons.gui.widgets.minimap import Minimap
 from horizons.command.uioptions import RouteConfigCommand
-from horizons.world.component.namedcomponent import NamedComponent
-from horizons.world.component.ambientsoundcomponent import AmbientSoundComponent
-from horizons.command.game import PauseCommand, UnPauseCommand
+from horizons.component.namedcomponent import NamedComponent
+from horizons.component.ambientsoundcomponent import AmbientSoundComponent
 from horizons.gui.widgets import OkButton
 
 import horizons.main

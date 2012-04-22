@@ -29,7 +29,7 @@ import horizons.main
 from horizons.entities import Entities
 from horizons.util import ActionSetLoader, Point, decorators
 from horizons.command.building import Build
-from horizons.world.component.selectablecomponent import SelectableBuildingComponent, SelectableComponent
+from horizons.component.selectablecomponent import SelectableBuildingComponent, SelectableComponent
 from horizons.gui.mousetools.navigationtool import NavigationTool
 from horizons.command.sounds import PlaySound
 from horizons.gui.util import load_uh_widget

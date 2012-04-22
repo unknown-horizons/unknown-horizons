@@ -31,8 +31,8 @@ from horizons.util import WorldObject
 from horizons.util.worldobject import WorldObjectNotFound
 from horizons.util.python import decorators
 from horizons.constants import RES
-from horizons.world.component.storagecomponent import StorageComponent
-from horizons.world.component.namedcomponent import NamedComponent
+from horizons.component.storagecomponent import StorageComponent
+from horizons.component.namedcomponent import NamedComponent
 
 class TradeManager(WorldObject):
 	"""

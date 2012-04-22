@@ -24,7 +24,7 @@ import horizons.main
 
 from horizons.util.living import LivingObject
 from horizons.gui.keylisteners import KeyConfig
-from horizons.world.component.selectablecomponent import SelectableComponent
+from horizons.component.selectablecomponent import SelectableComponent
 from horizons.command.game import TogglePauseCommand, SpeedDownCommand, SpeedUpCommand
 
 class IngameKeyListener(fife.IKeyListener, LivingObject):

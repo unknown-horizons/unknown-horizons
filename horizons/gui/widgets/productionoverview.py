@@ -27,7 +27,7 @@ from horizons.scheduler import Scheduler
 from horizons.util.python import decorators
 from horizons.gui.util import create_resource_icon
 from horizons.util import Callback
-from horizons.world.component.namedcomponent import NamedComponent
+from horizons.component.namedcomponent import NamedComponent
 from horizons.gui.widgets import OkButton
 
 class ProductionOverview(StatsWidget):

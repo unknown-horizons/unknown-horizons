@@ -24,11 +24,11 @@ from fife import fife
 
 from horizons.scheduler import Scheduler
 
-from horizons.world.pathfinding import PathBlockedError
+from horizons.util.pathfinding import PathBlockedError
 from horizons.util import Point, WeakMethodList, decorators
 from horizons.world.concreteobject import ConcreteObject
 from horizons.constants import GAME_SPEED
-from horizons.world.componentholder import ComponentHolder
+from horizons.component.componentholder import ComponentHolder
 from horizons.world.units import UnitClass
 
 class MoveNotPossible(Exception):

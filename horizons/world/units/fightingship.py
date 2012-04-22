@@ -22,7 +22,7 @@
 from horizons.constants import WEAPONS, GAME_SPEED
 from horizons.world.units.weaponholder import MovingWeaponHolder
 from horizons.world.units.ship import Ship
-from horizons.world.component.commandablecomponent import CommandableComponent
+from horizons.component.commandablecomponent import CommandableComponent
 
 class FightingShip(MovingWeaponHolder, Ship):
 	"""Class representing a fighting ship ship

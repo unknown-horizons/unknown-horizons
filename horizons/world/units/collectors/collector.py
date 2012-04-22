@@ -24,13 +24,13 @@ import logging
 
 from horizons.scheduler import Scheduler
 
-from horizons.world.pathfinding import PathBlockedError
+from horizons.util.pathfinding import PathBlockedError
 from horizons.util import WorldObject, decorators, Callback
 from horizons.ext.enum import Enum
 from horizons.world.units.unit import Unit
 from horizons.constants import COLLECTORS
-from horizons.world.component.storagecomponent import StorageComponent
-from horizons.world.component.ambientsoundcomponent import AmbientSoundComponent
+from horizons.component.storagecomponent import StorageComponent
+from horizons.component.ambientsoundcomponent import AmbientSoundComponent
 
 class Collector(Unit):
 	"""Base class for every collector. Does not depend on any home building.
@@ -475,7 +475,7 @@ class JobList(list):
 	"""Data structure for evaluating best jobs.
 	It's a list extended by special sort functions.
 	"""
-	order_by = Enum('rating', 'amount', 'random', 'fewest_available', 'fewest_available_and_distance', 'for_storage_collector')
+	order_by = Enum('rating', 'amount', 'random', 'fewest_available', 'fewest_available_and_distance', 'for_storage_collector', 'distance')
 
 	def __init__(self, collector, job_order):
 		"""
@@ -520,7 +520,7 @@ class JobList(list):
 	def _sort_jobs_fewest_available_and_distance(self):
 		"""Sort jobs by fewest available, but secondaryly also consider distance"""
 		# python sort is stable, so two sequenced sorts work.
-		self._sort_distance()
+		self._sort_jobs_distance()
 		self._sort_jobs_fewest_available(shuffle_first=False)
 
 	def _sort_jobs_for_storage_collector(self):
@@ -529,7 +529,7 @@ class JobList(list):
 		self._sort_jobs_fewest_available_and_distance()
 		self._sort_target_inventory_full()
 
-	def _sort_distance(self):
+	def _sort_jobs_distance(self):
 		"""Prefer targets that are nearer"""
 		self.sort(key=lambda job: self.collector.position.distance(job.object.loading_area))
 

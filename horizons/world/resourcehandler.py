@@ -21,7 +21,7 @@
 
 from horizons.gui.tabs import  ProductionOverviewTab, InventoryTab
 from horizons.constants import PRODUCTION
-from horizons.world.component.storagecomponent import StorageComponent
+from horizons.component.storagecomponent import StorageComponent
 from horizons.util.worldobject import WorldObject
 from horizons.world.production.producer import Producer
 
