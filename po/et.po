@@ -3549,7 +3549,7 @@ msgstr "Lehekülg avati sinu veebilehitsejas."
 #: horizons/util/uhdbaccessor.py:150
 #, python-format
 msgid "{building}: {description}"
-msgstr "{ehitis}: {kirjeldus}"
+msgstr "{building}: {description}"
 
 #: horizons/world/building/buildable.py:36
 msgid "Buildings must be built on islands."

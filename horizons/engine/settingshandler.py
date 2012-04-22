@@ -74,7 +74,7 @@ class SettingsHandler(object):
 
 		languages = find_available_languages().keys()
 
-		self._setting.createAndAddEntry(UH_MODULE, "Language", "cjkv_language",
+		self._setting.createAndAddEntry(UH_MODULE, "Language", "uni_language",
 				                        applyfunction=self.update_languages,
 				                        initialdata= [LANGUAGENAMES[x] for x in sorted(languages)])
 		self._setting.createAndAddEntry(UH_MODULE, "VolumeMusic", "volume_music",

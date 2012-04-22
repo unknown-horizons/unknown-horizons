@@ -11,22 +11,22 @@
 
 	<Container position="20,95" size="260,450" >
 		<!-- Ship images -->
-		<!--<Icon image="content/gfx/dummies/square_80.png" position="0,20"
+		<!--<Icon image="content/gui/images/background/square_80.png" position="0,20"
 				helptext="Boat: \nStorage: 3 slots of 15t \nCannons: none \nSpeed: fast \nHealth: 40" />-->
-		<Icon image="content/gfx/dummies/square_80.png" position="0,20" />
+		<Icon image="content/gui/images/background/square_80.png" position="0,20" />
 		<Icon image="content/gui/images/objects/ships/76/1000001.png" position="2,22"
 				helptext="Huker: \nStorage: 4 slots, 120t \nCannons: 0 \nHealth: 100" />
 		<OkButton position="60,70"  name="BB_build_trade_1"  helptext="Build this ship!" /><!--
 
-		<Icon image="content/gfx/dummies/square_80.png" position="0,107"
+		<Icon image="content/gui/images/background/square_80.png" position="0,107"
 				helptext="Courier Boat: \nStorage: 4 slots of 20t \nCannons: none \nSpeed: fast \nHealth: 80\nGets available after:\n Upgrade Boat Builder" />
 		<CancelButton position="60,157" helptext="Can't build this ship!" />
 
-		<Icon image="content/gfx/dummies/square_80.png" position="0,194"
+		<Icon image="content/gui/images/background/square_80.png" position="0,194"
 				helptext="Small merchant ship: \nStorage: 4 slots of 40t \nCannons: none \nSpeed: slow \nHealth: 150\nGets available after:\n Upgrade Boat Builder" />
 		<CancelButton position="60,244" helptext="Can't build this ship!" />
 
-		<Icon image="content/gfx/dummies/square_80.png" position="0,281"
+		<Icon image="content/gui/images/background/square_80.png" position="0,281"
 				helptext="Big merchant ship: \nStorage: 6 slots of 40t \nCannons: none \nSpeed: average \nHealth: 300 \nGets available after:\n Build Shipyard" />
 		<CancelButton position="60,331" helptext="Can't build this ship!" />-->
 

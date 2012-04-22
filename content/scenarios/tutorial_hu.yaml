@@ -22,20 +22,18 @@ events:
     - [Headline, "\xDCdv\xF6zli az Unknown Horizons!"]
     - [Image, content/gui/images/background/hr.png]
     - ''
-    - !!python/unicode 'This is your Captain''s log where all important information
-      is stored. A short notification of each task will be provided on the left of
-      the screen.'
-    - !!python/unicode 'If you are interested in longer descriptions, your log will
-      hopefully provide all the help you need.'
-    - !!python/unicode 'After you close this log, it can be re-opened with the "Captain''s
-      Log" icon in the top-right corner (below the mini-map, with a sealed document
-      and a feather).'
+    - "Ez a kapit\xE1nyod napl\xF3ja, ahol az \xF6sszes fontos inform\xE1ci\xF3 van.\
+      \ Egy r\xF6vid \xE9rtes\xEDt\xE9s megjelenik minden esem\xE9nyr\u0151l a k\xE9\
+      perny\u0151 bal sz\xE9l\xE9n."
+    - "Hogyha hosszabb le\xEDr\xE1s \xE9rdekel, a napl\xF3ban rem\xE9lhet\u0151leg\
+      \ seg\xEDts\xE9get tud ny\xFAjtani."
+    - "Miut\xE1n bez\xE1rod a napl\xF3t, \xFAjra megnyithatod a \"Kapit\xE1ny napl\xF3\
+      ja\" ikonnal a jobb fels\u0151 sarokban (a kis t\xE9rk\xE9p alatt, egy lepecs\xE9\
+      telt mapp\xE1val \xE9s egy tollal ell\xE1tott ikon)"
     - - Gallery
       - [content/gui/icons/widgets/minimap/captainslog.png]
-    - !!python/unicode '
-
-      To see your first task, click on the button "Read next entries" in the navigation
-      panel! It looks like this:'
+    - "\nAz els\u0151 feladathoz, kattints a \"K\xF6vetkez\u0151 bejegyz\xE9s elolvas\xE1\
+      sa\" gombra a navig\xE1ci\xF3s panelen! \xCDgy n\xE9z ki:"
     - - Gallery
       - [content/gui/images/buttons/parrow_right.png]
     - [Pagebreak]
@@ -325,9 +323,7 @@ events:
       to ''Sell'' and vice versa.'
     - !!python/unicode 'Click in the slot to choose the good you want to trade with.
       We will further explain this once you are ready to trade.'
-    - !!python/unicode '
-
-      TASK: Build a signal fire at the coast close to your warehouse.'
+    - "\n\xC9p\xEDts egy Jelz\u0151 t\xFCzet a parton a rakt\xE1rad k\xF6zel\xE9be."
     type: logbook
   - arguments: ["\xC9p\xEDts egy T\u0171zjelet a parton k\xF6zel a rakt\xE1rhoz."]
     type: message
@@ -718,16 +714,8 @@ events:
     - [Pagebreak]
     - [Headline, "K\xF6sz\xF6n\xF6m!"]
     - [Image, content/gui/images/background/hr.png]
-    - !!python/unicode '
-
-
-
-
-
-      Thanks for playing the tutorial!
-
-
-      Your UH-Team'
+    - "\n\n\n\n\n\n\nK\xF6sz\xF6n\xF6m hogy v\xE9gigj\xE1tszottad a gyakorl\xE1st!\n\
+      \nA te UH-Csapatod"
     - - Gallery
       - [content/unknown-horizons.xpm, content/gfx/misc/status_icons/as_book_flip/idle/45/book20125.png]
     type: logbook
@@ -758,6 +746,5 @@ events:
     type: var_gt
 locale: hu
 mapfile: development.sqlite
-translation_status: 36 translated messages, 2 fuzzy translations, 153 untranslated
-  messages.
+translation_status: 42 translated messages, 149 untranslated messages.
 

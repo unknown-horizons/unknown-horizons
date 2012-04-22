@@ -40,6 +40,9 @@
 			<Label text="Kristian Hynek (Kris_CZ)" />
 			<Label text="Petr Palička (peca)" />
 			<Label text="Vilem Soulak (Turmaleus)" />
+			<Label text="naked.in.rain" />
+			<Label text="Spek" />
+			<Label text="VMa" />
 		</VBox>
 	</VBox>
 	<VBox> <Label text="Danish"  name="headline" />
@@ -51,6 +54,7 @@
 		<VBox  name="box">
 			<Label text="Michael Skiba" />
 			<Label text="djot" />
+			<Label text="Kikody" />
 		</VBox>
 	</VBox>
 	<VBox> <Label text="Spanish"  name="headline" />
@@ -60,11 +64,15 @@
 			<Label text="Álex Plaza" />
 			<Label text="Fabio Fernández (Catharsius)" />
 			<Label text="MicMic" />
+			<Label text="stefania_m" />
+			<Label text="Andrés José Fernandez (ariktaurendil)" />
+			<Label text="Sergio Lorenzo (Juarrox)" />
 		</VBox>
 	</VBox>
 	<VBox> <Label text="Estonian"  name="headline" />
 		<VBox  name="box">
 			<Label text="Mihkel Rämmel (RM87)" />
+			<Label text="Üllar Lainväe (ussikene)" />
 		</VBox>
 	</VBox>
 	<VBox> <Label text="French"  name="headline" />
@@ -75,11 +83,24 @@
 			<Label text="Hugues Fafard (Antagonym)" />
 			<Label text="Quentin (LawNasK)" />
 			<Label text="tintou" />
+			<Label text="Antoine Pernot (mumuxe)" />
+			<Label text="Samuel Dorsaz (ajira)" />
 		</VBox>
 	</VBox>
+	<VBox> <Label text="Croatian"  name="headline" />
+		<VBox  name="box">
+			<Label text="shile" />
+		</VBox>
+	</VBox><!--Hindi not yet available in 2012.1 - my deepest apologies! ~chris
+	<VBox> <Label text="Hindi"  name="headline" />
+		<VBox  name="box">
+			<Label text="Kinshuk Sunil (kinshuksunil)" />
+		</VBox>
+	</VBox>-->
 	<VBox> <Label text="Hungarian"  name="headline" />
 		<VBox  name="box">
 			<Label text="Szontágh Ferenc (ghostarthour)" />
+			<Label text="matyi" />
 		</VBox>
 	</VBox>
 	<VBox> <Label text="Italian"  name="headline" />
@@ -87,6 +108,13 @@
 			<Label text="Fabio Pedretti" />
 			<Label text="sioux83" />
 			<Label text="tagarista" />
+			<Label text="rayot" />
+		</VBox>
+	</VBox>
+	<VBox> <Label text="Japanese"  name="headline" />
+		<VBox  name="box">
+			<Label text="naraba" />
+			<Label text="Yuki Shira (shirayuki)" />
 		</VBox>
 	</VBox>
 	<VBox> <Label text="Lithuanian"  name="headline" />
@@ -117,6 +145,8 @@
 			<Label text="angellus" />
 			<Label text="SanderOnline" />
 			<Label text="MrRuudJ" />
+			<Label text="VinWij" />
+			<Label text="mightykai" />
 		</VBox>
 	</VBox>
 	<VBox> <Label text="Polish"  name="headline" />
@@ -126,6 +156,8 @@
 			<Label text="Mateusz Bartkowski (Eugen)" />
 			<Label text="Natrius" />
 			<Label text="mtfk" />
+			<Label text="Robert Matusewicz (matekm)" />
+			<Label text="Premislaus" />
 		</VBox>
 	</VBox>
 	<VBox> <Label text="Portuguese"  name="headline" />
@@ -145,6 +177,11 @@
 			<Label text="paulodealmeida" />
 		</VBox>
 	</VBox>
+	<VBox> <Label text="Romanian"  name="headline" />
+		<VBox  name="box">
+			<Label text="trendy" />
+		</VBox>
+	</VBox>
 	<VBox> <Label text="Russian"  name="headline" />
 		<VBox  name="box">
 			<Label text="Sergei Chistyakov (devcode)" />
@@ -162,6 +199,11 @@
 			<Label text="pilen" />
 			<Label text="Nagrim" />
 			<Label text="Aleksi Kinnunen (alluk.)" />
+		</VBox>
+	</VBox>
+	<VBox> <Label text="Chinese"  name="headline" />
+		<VBox  name="box">
+			<Label text="nifabric" />
 		</VBox>
 	</VBox>
 </VBox>

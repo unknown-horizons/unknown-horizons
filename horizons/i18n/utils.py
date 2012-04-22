@@ -41,8 +41,6 @@ def find_available_languages():
 			key = splited[-3]
 			if not key in languages:
 				languages[key] = os.sep.join(splited[:-3])
-			#TODO we need to strip strings here if an "@" occurs and only
-			# use the language code itself (e.g. ca@valencia.po -> ca.po)
 
 	# there's always a default, which is english
 	languages[LANGUAGENAMES['']] = ''
@@ -51,8 +49,6 @@ def find_available_languages():
 	return languages
 
 def get_fontdef_for_locale(locale):
-	"""Returns path to the fontdef file for a locale. Libertine is default."""
-	fontdef_file = 'libertine'
-	if locale in FONTDEFS.iterkeys():
-		fontdef_file = FONTDEFS[locale]
+	"""Returns path to the fontdef file for a locale. Unifont is default."""
+	fontdef_file = FONTDEFS.get(locale, 'unifont')
 	return u'content/fonts/{filename}.fontdef'.format(filename = fontdef_file)

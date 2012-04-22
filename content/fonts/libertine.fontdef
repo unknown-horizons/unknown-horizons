@@ -124,10 +124,10 @@ color: 255,255,255
 antialias: 1
 
 
-[Font/14_black_cjkv]
+[Font/16_black_unifont]
 
 type: truetype
-source: content/fonts/UMing.ttc
-size: 15
+source: content/fonts/Unifont.ttf
+size: 16
 color: 68,42,2
 antialias: 1

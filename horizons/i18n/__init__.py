@@ -117,13 +117,14 @@ def change_language(language=None):
 			trans.install(unicode=True, names=['ngettext',])
 		except IOError:
 			#xgettext:python-format
-			print _("Configured language {lang} could not be loaded.").format(lang=language)
+			print "Configured language {lang} could not be loaded.".format(lang=language)
 			horizons.main.fife.set_uh_setting('Language', LANGUAGENAMES[''])
 			return change_language() # recurse
 	else:
 		# default locale
 		if platform.system() == "Windows": # win doesn't set the language variable by default
-			os.environ[ 'LANGUAGE' ] = locale.getdefaultlocale()[0]
+			language = locale.getdefaultlocale()[0]
+			os.environ['LANGUAGE'] = language
 		gettext.install('unknown-horizons', 'content/lang', unicode=True, names=['ngettext',])
 
 	# expose the plural-aware translate function as builtin N_ (gettext does the same to _)
@@ -131,7 +132,7 @@ def change_language(language=None):
 	__builtin__.__dict__['N_'] = __builtin__.__dict__['ngettext']
 
 	# update fonts
-	fontdef = get_fontdef_for_locale(language)
+	fontdef = get_fontdef_for_locale(language or horizons.main.fife.get_locale())
 	horizons.main.fife.pychan.loadFonts(fontdef)
 
 	# dynamically reset all translations of active widgets
