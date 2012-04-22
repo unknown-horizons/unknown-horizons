@@ -8,7 +8,9 @@ Run without arguments for help
 """
 
 import inspect
+import pprint
 import sys
+from collections import defaultdict
 
 sys.path.append(".")
 sys.path.append("./horizons")
@@ -26,7 +28,7 @@ from run_uh import init_environment
 init_environment()
 
 import horizons.main
-from horizons.constants import UNITS, SETTLER
+from horizons.constants import UNITS, SETTLER, BUILDINGS
 from horizons.scenario.actions import ACTIONS
 from horizons.scenario.conditions import CONDITIONS
 
@@ -240,6 +242,18 @@ def print_names():
 		text += '[/list]' + '\n'
 	print text
 
+def print_settler_needs():
+	klass = Entities.buildings[ BUILDINGS.RESIDENTIAL ]
+	comp = [ i for i in klass.component_templates if i.keys()[0] == u'ProducerComponent' ][0]
+	lines = comp.values()[0][u'productionlines']
+	per_level = defaultdict(list)
+	for data in lines.itervalues():
+		level = data.get("level", [-1])
+		for l in level:
+			per_level[l].extend( [ res for (res, num) in data[u'consumes'] ] )
+	pprint.pprint(dict( (k, sorted(db.get_res_name(i) for i in v)) for k,v in per_level.iteritems()))
+
+
 functions = {
 		'actions' : print_scenario_actions,
 		'buildings' : print_building,
@@ -252,6 +266,7 @@ functions = {
 		'lines' : print_production_lines,
 		'names' : print_names,
 		'resources' : print_res,
+    'settler_needs' : print_settler_needs,
 		'storage' : print_storage,
 		'units' : print_unit,
 		'verbose_lines' : print_verbose_lines,
@@ -269,6 +284,7 @@ abbrevs = {
 		'res' : 'resources',
 		'settler_lines': 'increments',
 		'sl': 'increments',
+		'sn': 'settler_needs',
 		'unit': 'units',
 		'vl': 'verbose_lines',
 		}
