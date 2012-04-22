@@ -109,8 +109,6 @@ class Scheduler(LivingObject):
 		# run jobs added in the loop above
 		self._run_additional_jobs()
 
-		assert (len(self.schedule) == 0) or self.schedule.keys()[0] > self.cur_tick
-
 	def before_ticking(self):
 		"""Called after game load and before game has started.
 		Callbacks with run_in=0 are used as generic "do this as soon as the current context
