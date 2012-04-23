@@ -29,7 +29,7 @@ from horizons.scheduler import Scheduler
 from horizons.world.units.movingobject import MoveNotPossible
 from horizons.world.units.collectors.collector import Collector, JobList, Job
 from horizons.component.storagecomponent import StorageComponent
-from horizons.component.collectingcompontent import CollectingComponent
+from horizons.component.collectingcomponent import CollectingComponent
 
 
 

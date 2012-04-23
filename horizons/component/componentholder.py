@@ -28,7 +28,7 @@ from horizons.component.ambientsoundcomponent import AmbientSoundComponent
 from horizons.component.healthcomponent import HealthComponent
 from horizons.component.selectablecomponent import SelectableComponent
 from horizons.component.commandablecomponent import CommandableComponent
-from horizons.component.collectingcompontent import CollectingComponent
+from horizons.component.collectingcomponent import CollectingComponent
 from horizons.world.production.producer import Producer, QueueProducer, UnitProducer
 
 class ComponentHolder(object):

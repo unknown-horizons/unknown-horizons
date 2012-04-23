@@ -27,7 +27,7 @@ from horizons.util import WorldObject
 from horizons.entities import Entities
 from horizons.constants import SETTLER, BUILDINGS, PRODUCTION, RES, UNITS
 from horizons.util.python import decorators
-from horizons.component.collectingcompontent import CollectingComponent
+from horizons.component.collectingcomponent import CollectingComponent
 from horizons.component.storagecomponent import StorageComponent
 from horizons.component.selectablecomponent import SelectableComponent
 from horizons.world.production.producer import Producer

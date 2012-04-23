@@ -237,7 +237,7 @@ class BuildingCollectorPather(AbstractPather):
 		super(BuildingCollectorPather, self).__init__(unit, move_diagonal=True, *args, **kwargs)
 
 	def _get_path_nodes(self):
-		from horizons.component.collectingcompontent import CollectingComponent
+		from horizons.component.collectingcomponent import CollectingComponent
 		return self.unit.home_building.get_component(CollectingComponent).path_nodes.nodes
 
 
