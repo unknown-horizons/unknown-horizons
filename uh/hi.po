@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2012-03-24 02:16+0100\n"
-"PO-Revision-Date: 2012-04-23 20:42+0200\n"
+"PO-Revision-Date: 2012-04-23 21:01+0200\n"
 "Last-Translator: Kinshuk <kinshuk@hashstash.in>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: hi\n"
@@ -179,22 +179,22 @@ msgstr "लट्ठे"
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "bricks"
-msgstr ""
+msgstr "ईंटें"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "candles"
-msgstr ""
+msgstr "मोमबत्तियां"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "cannon"
-msgstr ""
+msgstr "तोप"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "cattle"
-msgstr ""
+msgstr "मवेशी"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
@@ -204,217 +204,224 @@ msgstr ""
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "charcoal"
-msgstr ""
+msgstr "कच्चा कोयला"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "clay"
-msgstr ""
+msgstr "मिट्टी"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
+#, fuzzy
 msgid "clay deposit"
-msgstr ""
+msgstr "मिट्टी भंडार"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "cocoa"
-msgstr ""
+msgstr "कोको"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
+#, fuzzy
 msgid "cocoa beans"
-msgstr ""
+msgstr "कोको बीज"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "coins"
-msgstr ""
+msgstr "सिक्के"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "community"
-msgstr ""
+msgstr "समुदाय"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "condiments"
-msgstr ""
+msgstr "मसाले"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
+#, fuzzy
 msgid "confectionery"
-msgstr ""
+msgstr "मिष्ठान"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "corn"
-msgstr ""
+msgstr "मकई"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "dagger"
-msgstr ""
+msgstr "खंजर"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
+#, fuzzy
 msgid "deer food A"
-msgstr ""
+msgstr "हिरन का भोजन A"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "deer meat"
-msgstr ""
+msgstr "हिरन का गोश्त"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "education"
-msgstr ""
+msgstr "शिक्षा"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "faith"
-msgstr ""
+msgstr "आस्था"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "fire"
-msgstr ""
+msgstr "आग"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "fish"
-msgstr ""
+msgstr "मछ्छली"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "flour"
-msgstr ""
+msgstr "आटा"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "food"
-msgstr ""
+msgstr "भोजन"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "get-together"
-msgstr ""
+msgstr "जलसा"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "grain"
-msgstr ""
+msgstr "अनाज"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "grapes"
-msgstr ""
+msgstr "अंगूर"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "grass"
-msgstr ""
+msgstr "घास"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "happiness"
-msgstr ""
+msgstr "ख़ुशी"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "herbs"
-msgstr ""
+msgstr "जड़ी बूटी"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
+#, fuzzy
 msgid "honeycombs"
-msgstr ""
+msgstr "मधु मक्खी का छत्ता "
 
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "iron deposit"
-msgstr ""
+msgstr "लोह भंडार"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "iron ingots"
-msgstr ""
+msgstr "लोहे की सिल्लियां"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "iron ore"
-msgstr ""
+msgstr "लौह अयस्क"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "lamb wool"
-msgstr ""
+msgstr "भेड़ का ऊन"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "liquor"
-msgstr ""
+msgstr "शराब"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "medical herbs"
-msgstr ""
+msgstr "औषधीय जड़ी बूटिया"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "pigs"
-msgstr ""
+msgstr "सूअर"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "pigs for slaughter"
-msgstr ""
+msgstr "हलाल के सूअर"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "potatoes"
-msgstr ""
+msgstr "आलू"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "salt"
-msgstr ""
+msgstr "नमक"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "spice plants"
-msgstr ""
+msgstr "मसालों के पौधे"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "spices"
-msgstr ""
+msgstr "मसाले"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
+#, fuzzy
 msgid "stone deposit"
-msgstr ""
+msgstr "पत्थर भंडार"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
+#, fuzzy
 msgid "stone tops"
-msgstr ""
+msgstr "पत्थर शिखर"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "sugar"
-msgstr ""
+msgstr "चीनी"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "sugar cane"
-msgstr ""
+msgstr "गन्ना"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "textile"
-msgstr ""
+msgstr "कपड़ा"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
