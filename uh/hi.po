@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2012-03-24 02:16+0100\n"
-"PO-Revision-Date: 2012-04-23 21:01+0200\n"
+"PO-Revision-Date: 2012-04-23 21:39+0200\n"
 "Last-Translator: Kinshuk <kinshuk@hashstash.in>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: hi\n"
@@ -426,126 +426,130 @@ msgstr "कपड़ा"
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "tobacco leaves"
-msgstr ""
+msgstr "तम्बाकू के पत्ते"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "tobacco plants"
-msgstr ""
+msgstr "तम्बाकू के पत्ते"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "tobaccos"
-msgstr ""
+msgstr "तम्बाकू"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "tools"
-msgstr ""
+msgstr "औजार"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "trees"
-msgstr ""
+msgstr "पेड़"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "vines"
-msgstr ""
+msgstr "लताएँ"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "wool"
-msgstr ""
+msgstr "ऊन"
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
 #, python-format
 msgid "{player1} and {player2} have allied their forces."
-msgstr ""
+msgstr "{player1} और {player2} के बीच गठबंधन बन गया है."
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
 #, python-format
 msgid "{player1} and {player2} have ended the war and are now allied."
 msgstr ""
+"{Player1} और {player2} का युद्ध समाप्त हो गया है और शांति स्थापित हो गयी है."
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
 #, python-format
 msgid "{player1} and {player2} have ended their alliance and are now in a state of war."
 msgstr ""
+"{Player1} और {player2} की शांति भंग हो गयी है और अब दोनों युद्ध कर रहे है."
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
 #, python-format
 msgid "{player1} and {player2} have settled their hostility."
-msgstr ""
+msgstr "{Player1} और {player2} ने अपनी शत्रुता ख़त्म कर दी है."
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
 #, python-format
 msgid "{player1} and {player2} have terminated their alliance."
-msgstr ""
+msgstr "{Player1} और {player2} ने अपना गठबंधन ख़त्म कर दिया है."
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
 #, python-format
 msgid "{player1} and {player2} will fight each other to the death."
-msgstr ""
+msgstr "{Player1} और {player2} एक दुसरे के विनाश तक युद्ध करते रहेंगे."
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
 #, python-format
 msgid "{player}: {message}"
-msgstr ""
+msgstr "{player}: {message}"
 
 #: editor/editor.py:33
 msgid "Specify the path to FIFE root directory."
-msgstr ""
+msgstr "FIFE के मूल फोल्डर का पथ बताएं."
 
 #: horizons/command/game.py:36
 msgid "Invalid filename"
-msgstr ""
+msgstr "अमान्य फ़ाइल नाम"
 
 #: horizons/command/game.py:37
 msgid "Received an invalid filename for a save command."
-msgstr ""
+msgstr "सहेजन निर्देश के लिए अमान्य फाइल नाम प्राप्त हुआ."
 
 #. There was a problem during the 'save game' procedure.
 #: horizons/command/game.py:47 horizons/gui/gui.py:179
 #: horizons/gui/ingamegui.py:465 horizons/gui/modules/multiplayermenu.py:133
 #: horizons/gui/modules/multiplayermenu.py:236
 msgid "Error"
-msgstr ""
+msgstr "त्रुटि"
 
 #: horizons/command/game.py:47 horizons/gui/gui.py:179
 msgid "Failed to save."
-msgstr ""
+msgstr "सहेजने में विफल."
 
 #: horizons/engine/settingsdialog.py:50
 msgid "Restart required"
-msgstr ""
+msgstr "पुनरारंभ अपेक्षित"
 
 #: horizons/engine/settingsdialog.py:51
 msgid "Some of your changes require a restart of Unknown Horizons."
-msgstr ""
+msgstr "किये गए परिवर्तनों के कारण अननोन होरैज़न का पुनरारंभ अपेक्षित है."
 
 #: horizons/engine/settingsdialog.py:55
 msgid "Restore default settings"
-msgstr ""
+msgstr "मूलभूत विकल्पों को पुनर्स्थापित करे."
 
 #: horizons/engine/settingsdialog.py:56
 msgid "Restoring the default settings will delete all changes to the settings you made so far."
 msgstr ""
+"मूलभूत विकल्पों को पुनार्श्तापित करने से आपके किये सारे परिवर्तन मिट "
+"जायेंगे."
 
 #: horizons/engine/settingsdialog.py:57
 msgid "Do you want to continue?"
-msgstr ""
+msgstr "जारी रखें?"
 
 #: horizons/engine/settingshandler.py:148
 msgid "Warning"
-msgstr ""
+msgstr "चेतावनी"
 
 #. i18n Warning popup shown in settings when SDL is selected as renderer.
 #: horizons/engine/settingshandler.py:150
@@ -554,22 +558,27 @@ msgid ""
 "\n"
 "Use at own risk!"
 msgstr ""
+"एस डी एल रेंडरर केवल एक बचाव उपाय है. इसमें काफी गंभीर ग्राफिकल त्रुटिया है. "
+"\n"
+"अपने जोखिम पर उपयोग करे."
 
 #: horizons/engine/settingshandler.py:224
 msgid "Invalid network port"
-msgstr ""
+msgstr "अमान्य नेटवर्क पोर्ट"
 
 #: horizons/engine/settingshandler.py:225
 msgid "The port you specified is not valid. It must be a number between 1 and 65535."
 msgstr ""
+"आपके द्वारा निर्दिष्ट पोर्ट मान्य नहीं है. यह १ से ६५५३५ के बीच की कोई "
+"संख्या होनी चाहिए."
 
 #: horizons/engine/settingshandler.py:226
 msgid "Please check the port you entered and make sure it is in the specified range."
-msgstr ""
+msgstr "कृपया पोर्ट नंबर फिर से परखे और सुनिस्श्चित करे की ये सही परिधि में है."
 
 #: horizons/engine/settingshandler.py:238
 msgid "Failed to apply new network settings."
-msgstr ""
+msgstr "नए नेटवर्क सेटिंग्स लागु करने में विफल हो गए."
 
 #: horizons/engine/settingshandler.py:239
 #: horizons/gui/modules/multiplayermenu.py:56
@@ -606,15 +615,15 @@ msgstr ""
 
 #: horizons/gui/gui.py:208
 msgid "Quit Game"
-msgstr ""
+msgstr "खेल बंद करे"
 
 #: horizons/gui/gui.py:214
 msgid "Are you sure you want to abort the running session?"
-msgstr ""
+msgstr "क्या आप पक्का चालू सत्र को बंद करना चाहते है?"
 
 #: horizons/gui/gui.py:216
 msgid "Quit Session"
-msgstr ""
+msgstr "सत्र बंद करे"
 
 #: horizons/gui/gui.py:276
 msgid "No saved games"
