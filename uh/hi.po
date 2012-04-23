@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2012-03-24 02:16+0100\n"
-"PO-Revision-Date: 2012-04-23 18:00+0200\n"
+"PO-Revision-Date: 2012-04-23 18:04+0200\n"
 "Last-Translator: Kinshuk <kinshuk@hashstash.in>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: hi\n"
@@ -122,22 +122,22 @@ msgstr "आप उन्नति के चरम पे है. इससे �
 #: database files sql
 #, python-format
 msgid "You need more {resource} to build this building."
-msgstr ""
+msgstr "इस ईमारत के निर्माण में और {resource} की आवश्यकता है."
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
 msgid "You won!"
-msgstr ""
+msgstr "आप जीत गए."
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
 msgid "Your crew refuses to leave this map."
-msgstr ""
+msgstr "आपके दल ने इस नक़्शे से हटने से मना कर दिया है."
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
 msgid "Your game has been autosaved."
-msgstr ""
+msgstr "आपका खेल स्वतः सहेज लिया गया है."
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
