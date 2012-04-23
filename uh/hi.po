@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2012-03-24 02:16+0100\n"
-"PO-Revision-Date: 2012-04-23 21:39+0200\n"
+"PO-Revision-Date: 2012-04-23 21:51+0200\n"
 "Last-Translator: Kinshuk <kinshuk@hashstash.in>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: hi\n"
@@ -627,39 +627,39 @@ msgstr "सत्र बंद करे"
 
 #: horizons/gui/gui.py:276
 msgid "No saved games"
-msgstr ""
+msgstr "एक भी सहेजा हुआ खेल नहीं है"
 
 #: horizons/gui/gui.py:276
 msgid "There are no saved games to load."
-msgstr ""
+msgstr "लोड करने के लिए एक भी सहेजा हुआ खेल नहीं है."
 
 #. (text of widget: loadgame)
 #. (text of widget: loadgame) Open a widget to select which game to load
 #: horizons/gui/gui.py:286 horizons/gui/gui.py:287
 #: horizons/i18n/guitranslations.py:779 horizons/i18n/guitranslations.py:805
 msgid "Load game"
-msgstr ""
+msgstr "खेल जारी करे"
 
 #. (text of widget: savegame)
 #: horizons/gui/gui.py:286 horizons/gui/gui.py:287
 #: horizons/i18n/guitranslations.py:783
 msgid "Save game"
-msgstr ""
+msgstr "खेल सहेजे"
 
 #: horizons/gui/gui.py:359
 msgid "No filename given"
-msgstr ""
+msgstr "कोई फाइल नाम नहीं दिया गया है"
 
 #: horizons/gui/gui.py:359
 msgid "Please enter a valid filename."
-msgstr ""
+msgstr "कृपया एक मान्य फाइल नाम दर्ज करे."
 
 #. reshow dialog
 #. savegamename already exists
 #: horizons/gui/gui.py:364
 #, python-format
 msgid "A savegame with the name '{name}' already exists."
-msgstr ""
+msgstr "'{name}' नाम से पहले से एक सहेजा हुआ खेल मोजूद है."
 
 #: horizons/gui/gui.py:365
 msgid "Overwrite it?"
