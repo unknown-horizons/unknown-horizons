@@ -246,7 +246,6 @@ class Collector(Unit):
 		"""Executes the necessary actions to begin a new job"""
 		self.job.object.add_incoming_collector(self)
 
-	#@decorators.cachedmethod TODO: replace this with a version that doesn't leak
 	def check_possible_job_target(self, target):
 		"""Checks our if we "are allowed" and able to pick up from the target"""
 		# Discard building if it works for same inventory (happens when both are storage buildings

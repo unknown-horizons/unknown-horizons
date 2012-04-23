@@ -56,6 +56,9 @@ class BuildingCollector(Collector):
 		self.home_building = home_building
 		if home_building is not None:
 			self.register_at_home_building()
+		# save whether it's possible for this instance to access a target
+		# @chachedmethod is not applicable since it stores hard refs in the arguments
+		self._target_possible_cache = weakref.WeakKeyDictionary()
 
 	def save(self, db):
 		super(BuildingCollector, self).save(db)
@@ -149,8 +152,14 @@ class BuildingCollector(Collector):
 		jobs = JobList(self, self.job_ordering)
 		# iterate all building that provide one of the resources
 		for building in self.get_buildings_in_range(reslist=collectable_res):
-			if self.check_possible_job_target(building): # check if we can pickup here on principle
+			# check if we can pickup here on principle
+			target_possible = self._target_possible_cache.get(building, None)
+			if target_possible is None: # not in cache, we have to check
+				target_possible = self.check_possible_job_target(building)
+				self._target_possible_cache[building] = target_possible
 
+			if target_possible:
+				# check for res here
 				reslist = ( self.check_possible_job_target_for(building, res) for res in collectable_res )
 				reslist = [i for i in reslist if i]
 
