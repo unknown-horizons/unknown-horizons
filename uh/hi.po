@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2012-03-24 02:16+0100\n"
-"PO-Revision-Date: 2012-04-23 17:41+0200\n"
+"PO-Revision-Date: 2012-04-23 18:00+0200\n"
 "Last-Translator: Kinshuk <kinshuk@hashstash.in>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: hi\n"
@@ -76,7 +76,7 @@ msgstr "नाविक"
 #: database files sql
 #, python-format
 msgid "Screenshot has been saved to {file}."
-msgstr ""
+msgstr "स्क्रीनशॉट {file} में संचित कर लिया गया है."
 
 #. (text of widget: headline)
 #. (text of widget: settler_score)
@@ -84,37 +84,39 @@ msgstr ""
 #: database files horizons/i18n/guitranslations.py:336
 #: horizons/i18n/guitranslations.py:664 sql
 msgid "Settlers"
-msgstr ""
+msgstr "उपनिवेशी"
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
 msgid "Some of your inhabitants have no access to a main square."
-msgstr ""
+msgstr "आपके कुछ निवासियों की चौपाल तक पहुँच नहीं है."
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
 msgid "Some of your inhabitants just moved out."
-msgstr ""
+msgstr "आपके कुछ निवासी अभी अभी चले गए."
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
 msgid "The route is now configured. Start it via the \"start route\" button in the \"configure route\" menu."
 msgstr ""
+"व्यापर मार्ग अब तैयार है. \"मार्ग विवरण\" सूचि में \"प्रारंभ\" बटन के उपयोग से "
+"व्यापर शुरू करें."
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
 msgid "You can also drag roads."
-msgstr ""
+msgstr "अप सडकों को भी खीच सकते है."
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
 msgid "You cannot tear the warehouse, your settlements needs it."
-msgstr ""
+msgstr "इस गोदाम को आप नहीं डहा सकते. आपकी बस्ती को इसकी जरुरत है."
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
 msgid "You have reached the current maximum increment. Your inhabitants will not upgrade further."
-msgstr ""
+msgstr "आप उन्नति के चरम पे है. इससे आगे उन्नयन संभव नहीं है."
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
