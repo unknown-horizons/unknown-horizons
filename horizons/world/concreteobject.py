@@ -112,13 +112,14 @@ class ConcreteObject(WorldObject):
 		if exact_level:
 			action_set = action_sets_by_lvl[level][randint(0, len(action_sets_by_lvl[level])-1)] if len(action_sets_by_lvl[level]) > 0 else None
 		else: # search all levels for an action set, starting with highest one
+			print level, action_sets, action_sets_by_lvl
 			for possible_level in reversed(xrange(level+1)):
+				print possible_level
 				if len(action_sets_by_lvl[possible_level]) > 0:
 					action_set = action_sets_by_lvl[possible_level][randint(0, len(action_sets_by_lvl[possible_level])-1)]
 					break
 			if action_set is None:
 				assert False, "Couldn't find action set for obj %s(%s) in lvl %s" % (cls.id, cls.name, level)
-
 		if include_preview:
 			return (action_set, action_sets[action_set].get('preview', None))
 		else:
