@@ -231,7 +231,7 @@ class BuildingTool(NavigationTool):
 			level = self.session.world.player.settler_level if \
 				not hasattr(self._class, "default_level_on_build") else \
 				self._class.default_level_on_build
-			self.action_set = self._class.get_random_action_set(level)
+			self.action_set = self._class.get_random_action_set(level=level, include_preview=True)
 		action_set, preview_action_set = self.action_set
 		action_sets = ActionSetLoader.get_sets()
 		if preview_action_set in action_sets:

@@ -49,7 +49,7 @@ class ConcreteObject(WorldObject):
 	def __init(self):
 		self._instance = None # overwrite in subclass __init[__]
 		self._action = 'idle' # Default action is idle
-		self._action_set_id = self.get_random_action_set()[0]
+		self._action_set_id = self.get_random_action_set()
 
 		# only buildings for now
 		# NOTE: this is player dependant, therefore there must be no calls to session.random that depend on this
@@ -100,20 +100,15 @@ class ConcreteObject(WorldObject):
 		super(ConcreteObject, self).remove()
 
 	@classmethod
-	def get_random_action_set(cls, level=0, exact_level=False):
+	def get_random_action_set(cls, level=0, exact_level=False, include_preview=False):
 		"""Returns an action set for an object of type object_id in a level <= the specified level.
 		The highest level number is preferred.
-		@param db: UhDbAccessor
-		@param object_id: type id of building
 		@param level: level to prefer. a lower level might be chosen
 		@param exact_level: choose only action sets from this level. return val might be None here.
-		@return: tuple: (action_set_id, preview_action_set_id)"""
-		assert level >= 0
-
+		@return: action_set_id  or (if include_preview) tuple (action_set_id, preview_action_set_id)"""
 		action_sets_by_lvl = cls.action_sets_by_level
 		action_sets = cls.action_sets
 		action_set = None
-		preview = None
 		if exact_level:
 			action_set = action_sets_by_lvl[level][randint(0, len(action_sets_by_lvl[level])-1)] if len(action_sets_by_lvl[level]) > 0 else None
 		else: # search all levels for an action set, starting with highest one
@@ -124,9 +119,10 @@ class ConcreteObject(WorldObject):
 			if action_set is None:
 				assert False, "Couldn't find action set for obj %s(%s) in lvl %s" % (cls.id, cls.name, level)
 
-		if action_set is not None and 'preview' in action_sets[action_set]:
-			preview = action_sets[action_set]['preview']
-		return (action_set, preview)
+		if include_preview:
+			return (action_set, action_sets[action_set].get('preview', None))
+		else:
+			return action_set
 
 	@property
 	def name(self):
