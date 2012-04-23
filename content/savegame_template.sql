@@ -4,7 +4,7 @@ CREATE TABLE `map_properties` (`name` TEXT NOT NULL, `value` TEXT NOT NULL);
 CREATE TABLE `name` (`name` TEXT NOT NULL);
 CREATE TABLE `island` (`x` INTEGER NOT NULL, `y` INTEGER NOT NULL, `file` TEXT NOT NULL);
 CREATE TABLE `storage` (`object` INTEGER NOT NULL, `resource` INTEGER NOT NULL, `amount` INTEGER NOT NULL);
-CREATE TABLE `collector_job` (`object` INTEGER DEFAULT NULL, `resource` INTEGER DEFAULT NULL, `amount` INTEGER DEFAULT NULL);
+CREATE TABLE `collector_job` (`collector` INTEGER, `object` INTEGER DEFAULT NULL, `resource` INTEGER DEFAULT NULL, `amount` INTEGER DEFAULT NULL);
 CREATE TABLE "unit_path" (`unit` INTEGER NOT NULL, `index` INTEGER NOT NULL, `location` INTEGER DEFAULT NULL, `x` INTEGER DEFAULT NULL, `y` INTEGER DEFAULT NULL);
 CREATE TABLE `metadata` (`name` TEXT NOT NULL  DEFAULT '', `value` TEXT DEFAULT '');
 CREATE TABLE `view` (`zoom` FLOAT NOT NULL  DEFAULT '', `rotation` FLOAT NOT NULL  DEFAULT '', `location_x` INTEGER NOT NULL  DEFAULT '', `location_y` INTEGER NOT NULL  DEFAULT '');

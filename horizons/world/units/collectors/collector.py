@@ -21,6 +21,7 @@
 
 import operator
 import logging
+from collections import namedtuple
 
 from horizons.scheduler import Scheduler
 
@@ -141,8 +142,11 @@ class Collector(Unit):
 		# save the job
 		if self.job is not None:
 			obj_id = -1 if self.job.object is None else self.job.object.worldid
-			db("INSERT INTO collector_job(rowid, object, resource, amount) VALUES(?, ?, ?, ?)", \
-			   self.worldid, obj_id, self.job.res, self.job.amount)
+			# this is not in 3rd normal form since the object is saved multiple times but
+			# it preserves compatiblity with old savegames this way.
+			for entry in self.job.reslist:
+				db("INSERT INTO collector_job(collector, object, resource, amount) VALUES(?, ?, ?, ?)", \
+				   self.worldid, obj_id, entry.res, entry.amount)
 
 	def load(self, db, worldid):
 		super(Collector, self).load(db, worldid)
@@ -154,12 +158,14 @@ class Collector(Unit):
 		self.__init(self.states[state_id], start_hidden)
 
 		# load job
-		job_db = db("SELECT object, resource, amount FROM collector_job WHERE rowid = ?", worldid)
+		job_db = db("SELECT object, resource, amount FROM collector_job WHERE collector = ?", worldid)
 		if(len(job_db) > 0):
-			job_db = job_db[0]
+			reslist = []
+			for obj, res, amount in job_db:
+				reslist.append( Job.ResListEntry(res, amount, False) )
 			# create job with worldid of object as object. This is used to defer the target resolution,
 			# which might not have been loaded
-			self.job = Job(job_db[0], job_db[1], job_db[2])
+			self.job = Job(obj, reslist)
 
 		def fix_job_object():
 			# resolve worldid to object later
@@ -211,6 +217,10 @@ class Collector(Unit):
 	def get_colleague_collectors(self):
 		"""Returns a list of collectors, that work for the same "inventory"."""
 		return []
+
+	def get_collectable_res(self):
+		"""Return all resources the collector can collect"""
+		raise NotImplementedError
 
 	def get_job(self):
 		"""Returns the next job or None"""
@@ -270,10 +280,12 @@ class Collector(Unit):
 
 		# check if other collectors get this resource, because our inventory could
 		# get full if they arrive.
-		total_registered_amount_consumer = sum(( collector.job.amount for collector in \
-		                                         self.get_colleague_collectors() if \
-		                                         collector.job is not None and \
-		                                         collector.job.res == res ))
+		total_registered_amount_consumer = sum(
+		  entry.amount for
+		  collector in self.get_colleague_collectors() if
+		  collector.job is not None for
+		  entry in collector.job.reslist if
+		  entry.res == res )
 
 		inventory = self.get_home_inventory()
 
@@ -294,8 +306,8 @@ class Collector(Unit):
 
 		target_inventory_full = (target.get_component(StorageComponent).inventory.get_free_space_for(res) == 0)
 
-		# create a new job.
-		return Job(target, res, possible_res_amount, target_inventory_full)
+		# create a new data line.
+		return Job.ResListEntry(res, possible_res_amount, target_inventory_full)
 
 	def get_best_possible_job(self, jobs):
 		"""Return best possible job from jobs.
@@ -362,9 +374,11 @@ class Collector(Unit):
 		# deregister at the target we're at
 		self.job.object.remove_incoming_collector(self)
 		# reconsider job now: there might now be more res available than there were when we started
-		new_job = self.check_possible_job_target_for(self.job.object, self.job.res)
-		if new_job is not None:
-			self.job.amount = new_job.amount
+
+		reslist = ( self.check_possible_job_target_for(self.job.object, res) for res in self.get_collectable_res() )
+		reslist = [i for i in reslist if i]
+		if reslist:
+			self.job.reslist = reslist
 
 		# transfer res (this must be the last step, it will trigger consecutive actions through the
 		# target inventory changelistener, and the collector must be in a consistent state then.
@@ -375,12 +389,18 @@ class Collector(Unit):
 
 	def transfer_res_from_target(self):
 		"""Transfers resources from target to collector inventory"""
-		res_amount = self.job.object.pickup_resources(self.job.res, self.job.amount, self)
-		if res_amount != self.job.amount:
-			self.job.amount = res_amount # update job amount
-		remnant = self.get_component(StorageComponent).inventory.alter(self.job.res, res_amount)
-		assert remnant == 0, "%s couldn't take all of res %s; remnant: %s; planned: %s; acctual %s" % \
-		       (self, self.job.res, remnant, self.job.amount, res_amount)
+		new_reslist = []
+		for entry in self.job.reslist:
+			actual_amount = self.job.object.pickup_resources(entry.res, entry.amount, self)
+			if entry.amount != actual_amount:
+				new_reslist.append( Job.ResListEntry(entry.res, actual_amount, False) )
+			else:
+				new_reslist.append( entry )
+
+			remnant = self.get_component(StorageComponent).inventory.alter(entry.res, actual_amount)
+			assert remnant == 0, "%s couldn't take all of res %s; remnant: %s; planned: %s" % \
+				     (self, entry.res, remnant, entry.amount)
+		self.job.reslist = new_reslist
 
 	def transfer_res_to_home(self, res, amount):
 		"""Transfer resources from collector to the home inventory"""
@@ -442,33 +462,43 @@ class Collector(Unit):
 
 class Job(object):
 	"""Data structure for storing information of collector jobs"""
-	def __init__(self, obj, res, amount, target_inventory_full=False):
+	ResListEntry = namedtuple("ResListEntry", ["res", "amount", "target_inventory_full"])
+	def __init__(self, obj, reslist):
 		"""
 		@param obj: ResourceHandler that provides res
-		@param res: resource to get
-		@param amount: amount of resource to get
-		@param target_inventory_full: whether target inventory can't store any more of this res.
+		@param reslist: ResListEntry list
+			res: resource to get
+			amount: amount of resource to get
+			target_inventory_full: whether target inventory can't store any more of this res.
 		"""
-		assert isinstance(res, int)
-		assert isinstance(amount, int)
-		assert amount >= 0
+		for entry in reslist:
+			assert entry.amount >= 0
 		# can't assert that it's not 0, since the value is reset to the amount
 		# the collector actually got at the target, which might be 0. yet for new jobs
 		# amount > 0 is a necessary precondition.
 
 		self.object = obj
-		self.res = res
-		self.amount = amount
-
-		self.target_inventory_full = target_inventory_full
+		self.reslist = reslist
 
 		self.path = None # attribute to temporarily store path
 
-		# this is rather a dummy for now
-		self.rating = amount
+	@decorators.cachedproperty
+	def amount_sum(self):
+		# NOTE: only guaranteed to be correct during job search phase
+		return sum(entry.amount for entry in self.reslist)
+
+	@decorators.cachedproperty
+	def resources(self):
+		# NOTE: only guaranteed to be correct during job search phase
+		return [entry.res for entry in self.reslist]
+
+	@decorators.cachedproperty
+	def target_inventory_full_num(self):
+		# NOTE: only guaranteed to be correct during job search phase
+		return sum(1 for entry in self.reslist if entry.target_inventory_full)
 
 	def __str__(self):
-		return "Job(res: %i amount: %i)" % (self.res, self.amount)
+		return "Job(%s, %s)" % (self.object, self.reslist)
 
 
 class JobList(list):
@@ -487,7 +517,7 @@ class JobList(list):
 		# choose acctual function by name of enum value
 		sort_fun_name = '_sort_jobs_' + str(job_order)
 		if not hasattr(self, sort_fun_name):
-			self.sort_jobs = self._sort_jobs_rating
+			self.sort_jobs = self._sort_jobs_amount
 			print 'WARNING: invalid job order: ', job_order
 		else:
 			self.sort_jobs = getattr(self, sort_fun_name)
@@ -497,25 +527,23 @@ class JobList(list):
 		# (this is overwritten in __init__)
 		raise NotImplementedError
 
-	def _sort_jobs_rating(self):
-		"""Sorts jobs by job rating"""
-		self.sort(key=operator.attrgetter('rating'), reverse=True)
-
 	def _sort_jobs_random(self):
 		"""Sorts jobs randomly"""
 		self.collector.session.random.shuffle(self)
 
 	def _sort_jobs_amount(self):
 		"""Sorts the jobs by the amount of resources available"""
-		self.sort(key=operator.attrgetter('amount'), reverse=True)
+		self.sort(key=operator.attrgetter('amount_sum'), reverse=True)
 
 	def _sort_jobs_fewest_available(self, shuffle_first=True):
-		"""Prefer jobs where least amount is available in obj's inventory"""
+		"""Prefer jobs where least amount is available in obj's inventory.
+		Only considers resource of resource list with minimum amount available.
+		This is supposed to fix urgent shortages."""
 		# shuffle list before sorting, so that jobs with same value have equal chance
 		if shuffle_first:
 			self.collector.session.random.shuffle(self)
 		inventory = self.collector.get_home_inventory()
-		self.sort(key=lambda job: inventory[job.res], reverse=False)
+		self.sort(key=lambda job: min(inventory[res] for res in job.resources) , reverse=False)
 
 	def _sort_jobs_fewest_available_and_distance(self):
 		"""Sort jobs by fewest available, but secondaryly also consider distance"""
@@ -535,7 +563,7 @@ class JobList(list):
 
 	def _sort_target_inventory_full(self):
 		"""Prefer targets with full inventory"""
-		self.sort(key=operator.attrgetter('target_inventory_full'), reverse=True)
+		self.sort(key=operator.attrgetter('target_inventory_full_num'), reverse=True)
 
 	def __str__(self):
 		return str([ str(i) for i in self ])

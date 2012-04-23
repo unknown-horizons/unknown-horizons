@@ -31,9 +31,9 @@ class TestJobList(TestCase):
 
 	def create_list(self, order):
 		test_list = JobList(TestCollector(0, 0), order)
-		test_list.append(Job(TestObject(1, 3, 3), 3, 4))
-		test_list.append(Job(TestObject(2, 1, 1), 1, 2))
-		test_list.append(Job(TestObject(3, 2, 2), 2, 3))
+		test_list.append(Job(TestObject(1, 3, 3), [Job.ResListEntry(3, 4, False)]))
+		test_list.append(Job(TestObject(2, 1, 1), [Job.ResListEntry(1, 2, False)]))
+		test_list.append(Job(TestObject(3, 2, 2), [Job.ResListEntry(2, 3, False)]))
 		return test_list
 
 	def test_sort_distance(self):
@@ -59,9 +59,10 @@ class TestJobList(TestCase):
 
 	def test_sort_fewest_available_and_distance(self):
 		test_list = JobList(TestCollector(0, 0), JobList.order_by.fewest_available_and_distance)
-		test_list.append(Job(TestObject(1, 3, 3), 2, 4))
-		test_list.append(Job(TestObject(2, 1, 1), 1, 2))
-		test_list.append(Job(TestObject(3, 2, 3), 2, 3))
+
+		test_list.append(Job(TestObject(1, 3, 3), [Job.ResListEntry(2, 4, False)]))
+		test_list.append(Job(TestObject(2, 1, 1), [Job.ResListEntry(1, 2, False)]))
+		test_list.append(Job(TestObject(3, 2, 2), [Job.ResListEntry(2, 3, False)]))
 		test_list._sort_jobs_fewest_available_and_distance()
 
 		# Make sure everything was sorted in order of fewest available with secondary
@@ -72,10 +73,11 @@ class TestJobList(TestCase):
 
 	def test_sort_for_storage(self):
 		test_list = JobList(TestCollector(0, 0), JobList.order_by.for_storage_collector)
-		test_list.append(Job(TestObject(1, 3, 3), 2, 4))
-		test_list.append(Job(TestObject(2, 1, 1), 1, 2))
-		test_list.append(Job(TestObject(3, 2, 3), 2, 3))
-		test_list.append(Job(TestObject(4, 9, 0), 4, 9, target_inventory_full=True))
+
+		test_list.append(Job(TestObject(1, 3, 3), [Job.ResListEntry(2, 4, False)]))
+		test_list.append(Job(TestObject(2, 1, 1), [Job.ResListEntry(1, 2, False)]))
+		test_list.append(Job(TestObject(3, 2, 2), [Job.ResListEntry(2, 3, False)]))
+		test_list.append(Job(TestObject(4, 9, 0), [Job.ResListEntry(4, 9, target_inventory_full=True)]))
 		test_list.sort_jobs()
 
 		# Make sure everything was sorted in order of fewest available with secondary

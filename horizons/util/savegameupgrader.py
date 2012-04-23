@@ -109,6 +109,14 @@ class SavegameUpgrader(object):
 			value = json.dumps(value)
 			db("UPDATE scenario_variables SET value = ? WHERE key = ?", value, key)
 
+	def _upgrade_to_rev58(self, db):
+		data = [ i for i in db("SELECT rowid, object, resource, amount FROM collector_job") ]
+		db("DROP TABLE  collector_job")
+		db("CREATE TABLE `collector_job` (`collector` INTEGER, `object` INTEGER DEFAULT NULL, `resource` INTEGER DEFAULT NULL, `amount` INTEGER DEFAULT NULL)")
+		for row in data:
+			db("INSERT INTO collector_job(collector, object, resource, amount) VALUES(?, ?, ?, ?)", *row)
+
+
 	def _upgrade(self):
 		# fix import loop
 		from horizons.savegamemanager import SavegameManager
@@ -144,6 +152,8 @@ class SavegameUpgrader(object):
 				self._upgrade_to_rev56(db)
 			if rev < 57:
 				self._upgrade_to_rev57(db)
+			if rev < 58:
+				self._upgrade_to_rev58(db)
 
 
 			db('COMMIT')

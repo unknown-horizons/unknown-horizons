@@ -216,3 +216,22 @@ def make_constants(builtin_only=False, stoplist=[], verbose=False):
 		raise ValueError("The bind_constants decorator must have arguments.")
 	return lambda f: _make_constants(f, builtin_only, stoplist, verbose)
 
+
+# Taken from http://code.activestate.com/recipes/576563-cached-property/
+# Licenced under MIT
+# A cached property is a read-only property that is calculated on demand and automatically cached. If the value has already been calculated, the cached value is returned.
+
+def cachedproperty(f):
+	"""returns a cached property that is calculated by function f"""
+	def get(self):
+		try:
+			return self._property_cache[f]
+		except AttributeError:
+			self._property_cache = {}
+			x = self._property_cache[f] = f(self)
+			return x
+		except KeyError:
+			x = self._property_cache[f] = f(self)
+			return x
+
+	return property(get)

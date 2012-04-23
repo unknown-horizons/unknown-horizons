@@ -35,7 +35,7 @@ Storages with certain properties:
 Combinations:
 - SizedSlottedStorage: One limit, each res value must be <= the limit and >= 0.
 - PositiveTotalStorage: use case: ship inventory
-- PositiveSizedSlotStorage: every res has the same limit, only positive values (warehouse)
+- PositiveSizedSlotStorage: every res has the same limit, only positive values (warehouse, collectors)
 - PositiveSizedSpecializedStorage: Like SizedSpecializedStorage, plus only positive values.
 """
 

@@ -26,7 +26,7 @@ from horizons.util.pathfinding.pather import RoadPather, BuildingCollectorPather
 from horizons.constants import COLLECTORS, BUILDINGS
 from horizons.scheduler import Scheduler
 from horizons.world.units.movingobject import MoveNotPossible
-from horizons.world.units.collectors.collector import Collector, JobList
+from horizons.world.units.collectors.collector import Collector, JobList, Job
 from horizons.component.storagecomponent import StorageComponent
 from horizons.component.collectingcompontent import CollectingComponent
 
@@ -150,11 +150,12 @@ class BuildingCollector(Collector):
 		# iterate all building that provide one of the resources
 		for building in self.get_buildings_in_range(reslist=collectable_res):
 			if self.check_possible_job_target(building): # check if we can pickup here on principle
-				for res in collectable_res:
-					# check if we can get res here now
-					job = self.check_possible_job_target_for(building, res)
-					if job is not None:
-						jobs.append(job)
+
+				reslist = ( self.check_possible_job_target_for(building, res) for res in collectable_res )
+				reslist = [i for i in reslist if i]
+
+				if reslist: # we can do something here
+					jobs.append( Job(building, reslist) )
 
 		# TODO: find out why order of  self.get_buildings_in_range(..) and therefor order of jobs differs from client to client
 		# TODO: find out why WindAnimal.get_job(..) doesn't have this problem
@@ -181,11 +182,15 @@ class BuildingCollector(Collector):
 
 	def begin_current_job(self, job_location = None):
 		super(BuildingCollector, self).begin_current_job(job_location)
+
+		"""
+		TODO: port to multiple resources and document this
 		max_amount = min(self.get_component(StorageComponent).inventory.get_limit(self.job.res), self.job.object.get_component(StorageComponent).inventory.get_limit(self.job.res))
 		utilisation = self.job.amount / float(max_amount)
 		# only append a new element if it is different from the last one
 		if not self._job_history or abs(self._job_history[-1][1] - utilisation) > 1e-9:
 			self._job_history.append((Scheduler().cur_tick, utilisation))
+		"""
 
 	def finish_working(self, collector_already_home=False):
 		"""Called when collector has stayed at the target for a while.
@@ -200,11 +205,12 @@ class BuildingCollector(Collector):
 	def reached_home(self):
 		"""Exchanges resources with home and calls end_job"""
 		self.log.debug("%s reached home", self)
-		self.transfer_res_to_home(self.job.res, self.job.amount)
+		for entry in self.job.reslist:
+			self.transfer_res_to_home(entry.res, entry.amount)
 		self.end_job()
 
 	def get_collectable_res(self):
-		"""Return all resources the Collector can collect (depends on its home building)"""
+		"""Return all resources the collector can collect (depends on its home building)"""
 		# find needed res (only res that we have free room for) - Building function
 		return self.home_building.get_needed_resources()
 
