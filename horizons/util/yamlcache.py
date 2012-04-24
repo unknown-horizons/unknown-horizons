@@ -109,7 +109,8 @@ class YamlCache(object):
 			traceback.print_exc()
 			print 'Warning: Can\'t write to shelve: '+unicode(e)
 			# delete cache and try again
-			os.remove(cls.cache_filename)
+			if os.path.exists(cls.cache_filename):
+				os.remove(cls.cache_filename)
 			cls.cache = None
 			if release:
 				cls.lock.release()
@@ -170,7 +171,8 @@ class YamlCache(object):
 			# and simply retry.
 			traceback.print_exc()
 			print "Warning: you probably have an old cache file; deleting and retrying: "+unicode(e)
-			os.remove(cls.cache_filename)
+			if os.path.exists(cls.cache_filename):
+				os.remove(cls.cache_filename)
 			cls.cache = shelve.open(cls.cache_filename)
 		cls.lock.release()
 
