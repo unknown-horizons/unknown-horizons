@@ -199,7 +199,7 @@ msgstr "मवेशी"
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "cattle for slaughter"
-msgstr ""
+msgstr "खाद्य मवेशी "
 
 #. This is a database entry: the name of a resource.
 #: database files sql
