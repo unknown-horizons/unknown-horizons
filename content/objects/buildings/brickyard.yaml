@@ -6,9 +6,7 @@ cost: 15
 cost_inactive: 5
 size_x: 2
 size_y: 4
-inhabitants_start: 1
-inhabitants_max: 1
-button_name: brickyard-1
+inhabitants: 1
 tooltip_text: _ Turns clay into bricks.
 settler_level: TIER.PIONEERS
 buildingcosts: {RES.GOLD: 500, RES.BOARDS: 6, RES.TOOLS: 1}

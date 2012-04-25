@@ -15,8 +15,7 @@ cost: 5
 cost_inactive: 0
 size_x: 2
 size_y: 2
-inhabitants_start: 1
-inhabitants_max: 1
+inhabitants: 1
 tooltip_text: _ Chops down trees and turns them into boards.
 settler_level: TIER.SAILORS
 buildingcosts: {RES.GOLD: 250, RES.TOOLS: 2}

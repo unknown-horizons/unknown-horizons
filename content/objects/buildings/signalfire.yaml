@@ -6,9 +6,7 @@ cost: 0
 cost_inactive: 0
 size_x: 1
 size_y: 1
-inhabitants_start: 0
-inhabitants_max: 0
-button_name: lighthouse-1
+inhabitants: 0
 tooltip_text: _ Allows the player to trade with the free trader.
 settler_level: TIER.SAILORS
 buildingcosts: {RES.GOLD: 50, RES.BOARDS: 5}

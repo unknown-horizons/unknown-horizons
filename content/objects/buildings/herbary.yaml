@@ -6,9 +6,7 @@ cost: 0
 cost_inactive: 0
 size_x: 3
 size_y: 3
-inhabitants_start: 0
-inhabitants_max: 0
-button_name: herbary-1
+inhabitants: 0
 tooltip_text: _ Produces herbs. Needs a farm.
 settler_level: TIER.SETTLERS
 buildingcosts: {RES.GOLD: 150}

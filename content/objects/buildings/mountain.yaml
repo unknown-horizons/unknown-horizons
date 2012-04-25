@@ -6,9 +6,7 @@ cost: 0
 cost_inactive: 0
 size_x: 5
 size_y: 5
-inhabitants_start: 0
-inhabitants_max: 0
-button_name: null
+inhabitants: 0
 tooltip_text: null
 settler_level: TIER.NATURE
 buildingcosts: {}

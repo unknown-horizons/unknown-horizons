@@ -6,9 +6,7 @@ cost: 15
 cost_inactive: 5
 size_x: 2
 size_y: 2
-inhabitants_start: 2
-inhabitants_max: 2
-button_name: butchery-1
+inhabitants: 2
 tooltip_text: _ Needs pigs or cattle. Produces food.
 settler_level: TIER.SETTLERS
 buildingcosts: {RES.GOLD: 500, RES.TOOLS: 3, RES.BRICKS: 4}

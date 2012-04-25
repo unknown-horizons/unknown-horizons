@@ -6,9 +6,7 @@ cost: 0
 cost_inactive: 0
 size_x: 6
 size_y: 6
-inhabitants_start: 1
-inhabitants_max: 1
-button_name: main_square-1
+inhabitants: 1
 tooltip_text: _ Supplies citizens with goods.
 settler_level: TIER.SAILORS
 buildingcosts: {RES.GOLD: 1000, RES.BOARDS: 5}

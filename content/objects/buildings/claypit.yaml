@@ -6,9 +6,7 @@ cost: 15
 cost_inactive: 5
 size_x: 3
 size_y: 3
-inhabitants_start: 1
-inhabitants_max: 2
-button_name: clay-pit-1
+inhabitants: 1
 tooltip_text: _ Gets clay from deposit.
 settler_level: TIER.PIONEERS
 buildingcosts: {RES.GOLD: 500, RES.BOARDS: 10, RES.TOOLS: 2}

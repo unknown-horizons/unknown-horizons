@@ -25,7 +25,7 @@ cost: 5 # running costs in gold per month
 costs_inactive: 0 # running costs when it's turned off
 size_x: 2 # building width (should match its graphics)
 size_y: 2 # building height (should match its graphics)
-inhabitants_start: 1 # inhabitants of the building. Doesn't do anything, but counts as inhabitants number in the overview.
+inhabitants: 1 # inhabitants of the building. Doesn't do anything, but counts as inhabitants number in the overview.
 # brief description to be displayed as tooltip (don't forget the "_ ")
 tooltip_text: _ My building does fancy thing and is great in general
 settler_level: TIER.PIONEERS # building will be available from this level on.
@@ -94,12 +94,3 @@ components:
 			- [RES.GOLD, 100] # it also magically produces gold (just to show you how you can add further entries ;)
 			time: 30 # time in second that the production line (the machine) takes
 		# this would already suffice, you can add other production lines, just start with an unique id as above
-
-
-
-
-
-inhabitants_max: 1 # currently unused
-button_name: some_name # unused
-
-
