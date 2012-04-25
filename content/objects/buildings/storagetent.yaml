@@ -26,5 +26,7 @@ components:
     collectors:
       UNITS.STORAGE_COLLECTOR: 2
 actionsets:
-  as_storagetent0: {level: TIER.SAILORS}
-  as_storagetent1: {level: TIER.PIONEERS}
+  TIER.SAILORS:
+    as_storagetent0:
+  TIER.PIONEERS:
+    as_storagetent1:

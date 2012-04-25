@@ -9,4 +9,5 @@ components:
          limit: 8
 
 actionsets:
-   as_lumberjackunit0: {level: TIER.SAILORS} # TODO
+  TIER.SAILORS:
+    as_lumberjackunit0:

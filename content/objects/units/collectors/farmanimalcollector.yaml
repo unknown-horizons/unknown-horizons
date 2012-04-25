@@ -10,4 +10,5 @@ components:
          limit: 8
 
 actionsets:
-   as_herder0: {level: TIER.SAILORS}
+  TIER.SAILORS:
+    as_herder0:

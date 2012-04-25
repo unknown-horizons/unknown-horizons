@@ -33,4 +33,5 @@ components:
     collectors:
       UNITS.BUILDING_COLLECTOR: 1
 actionsets:
-  as_brickyard0: {level: TIER.SAILORS}
+  TIER.PIONEERS:
+    as_brickyard0:

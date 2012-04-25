@@ -24,4 +24,5 @@ components:
       SlotsStorage:
         slot_sizes: {RES.HERBS: 1}
 actionsets:
-  as_herbary0: {level: TIER.SAILORS}
+  TIER.SETTLERS:
+    as_herbary0:

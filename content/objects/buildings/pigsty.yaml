@@ -25,4 +25,5 @@ components:
       SlotsStorage:
         slot_sizes: {RES.PIGS: 4, RES.ACORNS: 10}
 actionsets:
-  as_pigsty0: {preview: as_preview_pigsty0, level: TIER.SAILORS}
+  TIER.SETTLERS:
+    as_pigsty0: as_preview_pigsty0

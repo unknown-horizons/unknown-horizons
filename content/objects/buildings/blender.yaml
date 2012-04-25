@@ -30,5 +30,6 @@ components:
       SlotsStorage:
         slot_sizes: {RES.SPICES: 6, RES.CONDIMENTS: 6}
 actionsets:
-  #as_blender0: {level: TIER.SAILORS}
-  as_2x2: {level: TIER.SAILORS}
+  TIER.SETTLERS:
+    #as_blender0:
+    as_2x2:

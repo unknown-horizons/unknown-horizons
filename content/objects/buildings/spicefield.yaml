@@ -24,5 +24,6 @@ components:
       SlotsStorage:
         slot_sizes: {RES.SPICE_PLANTS: 1}
 actionsets:
-  as_3x3: {level: TIER.SAILORS}  
-  #as_spicefield0: {level: TIER.SAILORS}
+  TIER.SETTLERS:
+    as_3x3:
+    #as_spicefield0:

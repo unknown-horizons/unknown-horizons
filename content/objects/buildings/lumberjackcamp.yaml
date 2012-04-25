@@ -41,5 +41,7 @@ components:
     collectors:
       UNITS.LUMBERJACK_COLLECTOR: 1
 actionsets:
-  as_lumberjack0: {level: TIER.SAILORS}
-  as_lumberjack_barrack0: {level: TIER.PIONEERS}
+  TIER.SAILORS:
+    as_lumberjack0:
+  TIER.PIONEERS:
+    as_lumberjack_barrack0:

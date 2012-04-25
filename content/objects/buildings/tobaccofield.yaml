@@ -25,4 +25,5 @@ components:
       SlotsStorage:
         slot_sizes: {RES.TOBACCO_PLANTS: 1}
 actionsets:
-  as_tobaccofield0: {level: TIER.SAILORS}
+  TIER.SETTLERS:
+    as_tobaccofield0:

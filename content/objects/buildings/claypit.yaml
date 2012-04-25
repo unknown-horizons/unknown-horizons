@@ -31,4 +31,5 @@ components:
       SlotsStorage:
         slot_sizes: {RES.RAW_CLAY: 1000000, RES.CLAY: 10}
 actionsets:
-  as_clay_pit0: {level: TIER.SAILORS}
+  TIER.PIONEERS:
+    as_clay_pit0:

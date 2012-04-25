@@ -34,4 +34,5 @@ components:
     collectors:
       UNITS.BUILDING_COLLECTOR: 1
 actionsets:
-  as_tavern0: {level: TIER.SAILORS}
+  TIER.SETTLERS:
+    as_tavern0:

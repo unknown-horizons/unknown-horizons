@@ -39,4 +39,5 @@ components:
     collectors:
       UNITS.BUILDING_COLLECTOR: 1
 actionsets:
-  as_butchery0: {level: TIER.SAILORS}
+  TIER.SETTLERS:
+    as_butchery0:

@@ -63,4 +63,5 @@ components:
     collectors:
       UNITS.BUILDING_COLLECTOR: 1
 actionsets:
-  as_boat_builder0: {level: TIER.SAILORS}
+  TIER.PIONEERS:
+    as_boat_builder0:

@@ -16,5 +16,7 @@ show_status_icons: false
 components:
 - HealthComponent: {maxhealth: 10}
 actionsets:
-  as_trail: {preview: as_preview_trail, level: TIER.SAILORS}
-  as_gravel_path: {preview: as_preview_gravel_path, level: TIER.PIONEERS}
+  TIER.SAILORS:
+    as_trail: as_preview_trail
+  TIER.PIONEERS:
+    as_gravel_path: as_preview_gravel_path

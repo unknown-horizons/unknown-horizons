@@ -113,4 +113,5 @@ components:
     collectors:
       UNITS.FIELD_COLLECTOR: 2
 actionsets:
-  as_farm0: {level: TIER.SAILORS}
+  TIER.PIONEERS:
+    as_farm0:

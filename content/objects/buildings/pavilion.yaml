@@ -31,5 +31,7 @@ components:
 - AmbientSoundComponent:
     soundfiles: [content/audio/sounds/chapel.ogg]
 actionsets:
-  as_sunsail0: {level: TIER.SAILORS}
-  as_church_wooden0: {level: TIER.PIONEERS}
+  TIER.SAILORS:
+    as_sunsail0:
+  TIER.PIONEERS:
+    as_church_wooden0:

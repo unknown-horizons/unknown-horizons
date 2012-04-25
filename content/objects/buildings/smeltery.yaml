@@ -34,4 +34,5 @@ components:
     collectors:
       UNITS.BUILDING_COLLECTOR: 2
 actionsets:
-  as_smeltery0: {level: TIER.SAILORS}
+  TIER.SETTLERS:
+    as_smeltery0:

@@ -11,4 +11,5 @@ components:
          slotnum: 4
 - ShipNameComponent
 actionsets:
-   as_fisher0: {level: TIER.SAILORS}
+  TIER.SAILORS:
+   as_fisher0:

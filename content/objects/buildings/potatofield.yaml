@@ -25,4 +25,5 @@ components:
       SlotsStorage:
         slot_sizes: {RES.POTATOES: 1}
 actionsets:
-  as_potatofield0: {level: TIER.SAILORS}
+  TIER.PIONEERS:
+    as_potatofield0:

@@ -34,4 +34,5 @@ components:
     collectors:
       UNITS.STORAGE_COLLECTOR: 3
 actionsets:
-  as_warehouse0: {preview: as_preview_warehouse0, level: TIER.SAILORS}
+  TIER.SAILORS:
+    as_warehouse0: as_preview_warehouse0

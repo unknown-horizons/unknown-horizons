@@ -32,4 +32,5 @@ components:
     collectors:
       UNITS.DISASTER_RECOVERY_COLLECTOR: 1
 actionsets:
-  as_fireservice0: {level: TIER.SAILORS}
+  TIER.PIONEERS:
+    as_fireservice0:

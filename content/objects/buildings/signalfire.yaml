@@ -20,5 +20,7 @@ components:
     enemy_tabs: [EnemyBuildingOverviewTab,]
 - HealthComponent: {maxhealth: 1000}
 actionsets:
-  as_signalfire0: {preview: as_preview_signalfire0, level: TIER.SAILORS}
-  as_signalfire_wooden0: {level: TIER.PIONEERS}
+  TIER.SAILORS:
+    as_signalfire0: as_preview_signalfire0
+  TIER.PIONEERS:
+    as_signalfire_wooden0:

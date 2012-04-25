@@ -25,4 +25,5 @@ components:
       SlotsStorage:
         slot_sizes: {RES.GRASS: 10, RES.CATTLE: 2}
 actionsets:
-  as_cattlerun0: {level: TIER.SAILORS}
+  TIER.SETTLERS:
+    as_cattlerun0:

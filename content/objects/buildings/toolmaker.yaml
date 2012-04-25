@@ -35,4 +35,5 @@ components:
     collectors:
       UNITS.BUILDING_COLLECTOR: 1
 actionsets:
-  as_toolmaker0: {level: TIER.SAILORS}
+  TIER.SETTLERS:
+    as_toolmaker0:

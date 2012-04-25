@@ -33,4 +33,5 @@ components:
     collectors:
       UNITS.BUILDING_COLLECTOR: 1
 actionsets:
-  as_charcoal_burning0: {level: TIER.SAILORS}
+  TIER.SETTLERS:
+    as_charcoal_burning0:

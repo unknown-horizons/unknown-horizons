@@ -32,4 +32,5 @@ components:
     collectors:
       UNITS.BUILDING_COLLECTOR: 1
 actionsets:
-  as_windmill0: {level: TIER.SAILORS}
+  TIER.CITIZENS:
+    as_windmill0:

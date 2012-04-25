@@ -36,4 +36,5 @@ components:
     collectors:
       UNITS.FISHER_BOAT: 1
 actionsets:
-  as_fisherman0: {level: TIER.SAILORS}
+  TIER.SAILORS:
+    as_fisherman0:

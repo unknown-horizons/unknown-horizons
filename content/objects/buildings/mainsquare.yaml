@@ -24,4 +24,5 @@ components:
 - AmbientSoundComponent:
     soundfiles: [content/audio/sounds/main_square.ogg]
 actionsets:
-  as_mainsquare0: {preview: as_preview_mainsquare0, level: TIER.SAILORS}
+  TIER.SAILORS:
+    as_mainsquare0: as_preview_mainsquare0

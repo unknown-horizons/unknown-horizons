@@ -24,5 +24,6 @@ components:
       SlotsStorage:
         slot_sizes: {RES.COCOA_BEANS: 1}
 actionsets:
-  #as_cocoafield0: {level: TIER.SAILORS}
-  as_3x3: {level: TIER.SAILORS}
+  TIER.CITIZENS:
+    #as_cocoafield0:
+    as_3x3:

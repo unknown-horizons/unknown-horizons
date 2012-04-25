@@ -29,5 +29,6 @@ components:
       SlotsStorage:
         slot_sizes: {RES.LIQUOR: 6, RES.GRAPES: 8}
 actionsets:
-  #as_vintner0: {level: TIER.SAILORS}
-  as_2x2: {level: TIER.SAILORS}
+  TIER.CITIZENS:
+    #as_vintner0:
+    as_2x2:

@@ -33,4 +33,5 @@ components:
     collectors:
       UNITS.HUNTER_COLLECTOR: 1
 actionsets:
-  as_hunter0: {level: TIER.SAILORS}
+  TIER.SAILORS:
+    as_hunter0:

@@ -28,4 +28,5 @@ components:
       SlotsStorage:
         slot_sizes: {RES.SALT: 8}
 actionsets:
-  as_saltponds0: {level: TIER.SAILORS}
+  TIER.SETTLERS:
+    as_saltponds0:

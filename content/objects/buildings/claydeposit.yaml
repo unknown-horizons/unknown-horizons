@@ -10,7 +10,7 @@ inhabitants_start: 0
 inhabitants_max: 0
 button_name: null
 tooltip_text: null
-settler_level: TIER.SAILORS
+settler_level: TIER.NATURE
 buildingcosts: {}
 components:
 - SelectableComponent:
@@ -22,4 +22,5 @@ components:
       SlotsStorage:
         slot_sizes: {RES.RAW_CLAY: 1000000}
 actionsets:
-  as_clay0: {level: TIER.SAILORS}
+  TIER.NATURE:
+    as_clay0:
