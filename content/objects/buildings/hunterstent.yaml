@@ -10,7 +10,7 @@ inhabitants_start: 1
 inhabitants_max: 1
 button_name: hunter-1
 tooltip_text: _ Hunts wild forest animals, produces food.
-settler_level: 0
+settler_level: TIER.SAILORS
 buildingcosts: {RES.GOLD: 250, RES.BOARDS: 2, RES.TOOLS: 1}
 components:
 - SelectableComponent:
@@ -33,4 +33,4 @@ components:
     collectors:
       UNITS.HUNTER_COLLECTOR: 1
 actionsets:
-  as_hunter0: {level: 0}
+  as_hunter0: {level: TIER.SAILORS}

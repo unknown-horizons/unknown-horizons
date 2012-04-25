@@ -35,12 +35,12 @@ settler_level: TIER.PIONEERS # counting start at 0 again. building will be avail
 # Now, we define what the building should look like, i.e. where the images are located.
 # In simple cases, it looks like this:
 actionsets:
-  as_hunter0: {level: 0}
+  as_hunter0: {level: TIER.SAILORS}
 # This makes the game look in the directory "as_hunter0". All buildings from level 0 on will use this
 # As you might have figured, it can also look like this:
 # actionsets:
 actionsets:
-	as_lumberjack0: {level: 0}
+	as_lumberjack0: {level: TIER.SAILORS}
 	as_lumberjack_barrack0: {level: TIER.PIONEERS}
 # If there are more entries for a level, one is chosen at random each time a building is built
 

@@ -10,7 +10,7 @@ inhabitants_start: 0
 inhabitants_max: 0
 button_name: tree-1
 tooltip_text: _ Provides lumber. Chopped down by lumberjacks.
-settler_level: 0
+settler_level: TIER.SAILORS
 buildingcosts: {RES.GOLD: 10}
 show_status_icons: false
 components:
@@ -31,13 +31,13 @@ components:
       SlotsStorage:
         slot_sizes: {RES.TREES: 1, RES.WILDANIMALFOOD: 1}
 actionsets:
-  as_tupelo2: {level: 0}
-  as_spruce1: {level: 0}
-  as_spruce0: {level: 0}
-  as_birch0: {level: 0}
-  as_tupelo0: {level: 0}
-  as_tupelo1: {level: 0}
-  as_maple3: {level: 0}
-  as_maple2: {level: 0}
-  as_maple1: {level: 0}
-  as_maple0: {level: 0}
+  as_tupelo2: {level: TIER.SAILORS}
+  as_spruce1: {level: TIER.SAILORS}
+  as_spruce0: {level: TIER.SAILORS}
+  as_birch0: {level: TIER.SAILORS}
+  as_tupelo0: {level: TIER.SAILORS}
+  as_tupelo1: {level: TIER.SAILORS}
+  as_maple3: {level: TIER.SAILORS}
+  as_maple2: {level: TIER.SAILORS}
+  as_maple1: {level: TIER.SAILORS}
+  as_maple0: {level: TIER.SAILORS}

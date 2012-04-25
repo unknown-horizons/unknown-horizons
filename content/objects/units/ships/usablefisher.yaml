@@ -18,4 +18,4 @@ components:
    maxhealth: 80
 - CommandableComponent
 actionsets:
-   as_fisher0: {level: 0}
+   as_fisher0: {level: TIER.SAILORS}

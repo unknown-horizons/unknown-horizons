@@ -10,4 +10,4 @@ components:
          limit: 8
 
 actionsets:
-   as_farmer0: {level: 0}
+   as_farmer0: {level: TIER.SAILORS}

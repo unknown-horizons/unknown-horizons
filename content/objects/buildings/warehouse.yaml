@@ -10,7 +10,7 @@ inhabitants_start: 2
 inhabitants_max: 2
 button_name: null
 tooltip_text: null
-settler_level: 0
+settler_level: TIER.SAILORS
 buildingcosts: {RES.GOLD: 1000, RES.BOARDS: 12}
 show_status_icons: false
 components:
@@ -34,4 +34,4 @@ components:
     collectors:
       UNITS.STORAGE_COLLECTOR: 3
 actionsets:
-  as_warehouse0: {preview: as_preview_warehouse0, level: 0}
+  as_warehouse0: {preview: as_preview_warehouse0, level: TIER.SAILORS}

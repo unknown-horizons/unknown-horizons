@@ -10,9 +10,9 @@ inhabitants_start: 0
 inhabitants_max: 0
 button_name: null
 tooltip_text: null
-settler_level: 0
+settler_level: TIER.SAILORS
 buildingcosts: {}
 components:
 - HealthComponent: {maxhealth: 1000}
 actionsets:
-  as_ruined_tent0: {level: 0}
+  as_ruined_tent0: {level: TIER.SAILORS}

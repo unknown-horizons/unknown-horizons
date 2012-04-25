@@ -10,7 +10,7 @@ inhabitants_start: 0
 inhabitants_max: 0
 button_name: null
 tooltip_text: null
-settler_level: 0
+settler_level: TIER.SAILORS
 buildingcosts: {}
 show_status_icons: false
 components:
@@ -26,4 +26,4 @@ components:
       SlotsStorage:
         slot_sizes: {RES.FISH: 1}
 actionsets:
-  as_fish0: {level: 0}
+  as_fish0: {level: TIER.SAILORS}

@@ -10,7 +10,7 @@ components:
          limit: 8
 
 actionsets:
-   as_male: {level: 0}
-   as_female: {level: 0}
-   as_male2: {level: 0}
-   as_female2: {level: 0}
+   as_male: {level: TIER.SAILORS}
+   as_female: {level: TIER.SAILORS}
+   as_male2: {level: TIER.SAILORS}
+   as_female2: {level: TIER.SAILORS}

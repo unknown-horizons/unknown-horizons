@@ -19,4 +19,4 @@ components:
 - CommandableComponent
 
 actionsets:
-   as_huker0: {level: 0}
+   as_huker0: {level: TIER.SAILORS}

@@ -10,7 +10,7 @@ inhabitants_start: 0
 inhabitants_max: 0
 button_name: null
 tooltip_text: null
-settler_level: 0
+settler_level: TIER.SAILORS
 buildingcosts: {}
 components:
 - SelectableComponent:
@@ -22,4 +22,4 @@ components:
       SlotsStorage:
         slot_sizes: {RES.RAW_IRON: 1000000}
 actionsets:
-  as_mountain5x5: {preview: as_preview_mountain5x5, level: 0}
+  as_mountain5x5: {preview: as_preview_mountain5x5, level: TIER.SAILORS}

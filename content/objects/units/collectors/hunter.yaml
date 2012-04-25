@@ -10,4 +10,4 @@ components:
          limit: 8
 
 actionsets:
-   as_hunterunit0: {level: 0}
+   as_hunterunit0: {level: TIER.SAILORS}
