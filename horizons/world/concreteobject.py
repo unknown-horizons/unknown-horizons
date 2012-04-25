@@ -109,13 +109,13 @@ class ConcreteObject(WorldObject):
 		The highest level number is preferred.
 		@param level: level to prefer. a lower level might be chosen
 		@param exact_level: choose only action sets from this level. return val might be None here.
-		@return: action_set_id  or (if include_preview) tuple (action_set_id, preview_action_set_id)"""
+		@return: action_set_id  or (if include_preview) tuple (action_set_id, preview_action_set_id) or None"""
 		action_sets = cls.action_sets
 		if exact_level:
 			if level in action_sets.iterkeys():
 				action_set, preview_set = random.choice(action_sets[level].items())
 			else:
-				assert False, "Couldn't find action set for obj {0}({1}) in tier {2}".format(cls.id, cls.name, level)
+				return None
 		else: # search all levels for an action set, starting with highest one
 			action_set = None
 			for possible_level in reversed(xrange(level+1)):
