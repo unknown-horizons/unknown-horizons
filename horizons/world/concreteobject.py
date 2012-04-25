@@ -111,22 +111,22 @@ class ConcreteObject(WorldObject):
 		@param exact_level: choose only action sets from this level. return val might be None here.
 		@return: action_set_id  or (if include_preview) tuple (action_set_id, preview_action_set_id) or None"""
 		action_sets = cls.action_sets
+		action_set, preview_set = None, None
 		if exact_level:
-			if level in action_sets.iterkeys():
+			if level in action_sets:
 				action_set, preview_set = random.choice(action_sets[level].items())
-			else:
-				return None
+			# if there isn't one, stick with None
 		else: # search all levels for an action set, starting with highest one
-			action_set = None
 			for possible_level in reversed(xrange(level+1)):
 				if possible_level in action_sets.iterkeys():
 					action_set, preview_set = random.choice(action_sets[possible_level].items())
 					break
-			if action_set is None:
+			if action_set is None: # didn't find a suitable one
 				# fall back to one from a higher level.
 				# this does not happen in valid games, but can happen in tests, when level
 				# constraints are ignored.
 				action_set, preview_set = action_sets.values()[0].items()[0]
+
 		if include_preview:
 			return (action_set, preview_set)
 		else:
