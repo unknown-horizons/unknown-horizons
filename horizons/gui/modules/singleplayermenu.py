@@ -541,7 +541,10 @@ class SingleplayerMenu(object):
 		def on_click(event, drag):
 			self.current.findChild(name = 'seed_string_field').text = self._generate_random_seed()
 			self._on_random_map_parameter_changed()
-		self.map_preview.update_random_map( self._get_random_map_parameters(), on_click )
+		# the user might have changed the menu since the update and we would
+		# crash if we don't find the fields with the parameters
+		if self.current is self.widgets['singleplayermenu']:
+			self.map_preview.update_random_map( self._get_random_map_parameters(), on_click )
 
 	def _get_random_map_file(self):
 		"""Used to start game"""
