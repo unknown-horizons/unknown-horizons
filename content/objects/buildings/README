@@ -16,7 +16,7 @@ name:
 	TIER.CITIZENS: _ MyAwesomeBuildingLvl4
 # in level SETTLERS, this building will have the name of level PIONEERS (the highest available one is used)
 
-# this defines some of the behaviour, either copy the class from buildings similar to yours or talk to a dev about it
+# this defines some of the behavior, either copy the class from buildings similar to yours or talk to a dev about it
 baseclass: production.Lumberjack
 
 # then some boring data
@@ -28,7 +28,7 @@ size_y: 2 # building height (should match its graphics)
 inhabitants_start: 1 # inhabitants of the building. Doesn't do anything, but counts as inhabitants number in the overview.
 # brief description to be displayed as tooltip (don't forget the "_ ")
 tooltip_text: _ My building does fancy thing and is great in general
-settler_level: TIER.PIONEERS # counting start at 0 again. building will be available from this level on.
+settler_level: TIER.PIONEERS # building will be available from this level on.
 # There are currently fluctuations with the build menu generation, so please talk to a dev to get your building in the build menu
 
 # Now, we define what the building should look like, i.e. where the images are located.
@@ -52,7 +52,7 @@ actionsets:
 # If you want to add a custom preview action set (the image displayed in the build preview tab),
 # add the set after the colon : as with as_ljsettlers0 above. This is usually not necessary.
 
-# Now, we define the heart of the buildings, it's mechanics.
+# Now, we define the heart of the buildings, its mechanics.
 # We do that by defining the components the building consists of.
 # Add whichever components of these you need
 components:
@@ -67,8 +67,8 @@ components:
 - StorageComponent
     inventory:
       SlotsStorage: # the common type, here we define "slots" for resource types
-				# we want to turn wood in to boards here, so we need to be able to store both
-				# therefore, we add slots of size 6 each for those resources:
+                    # we want to turn wood in to boards here, so we need to be able to store both
+                    # therefore, we add slots of size 6 each for those resources:
         slot_sizes: {RES.TREES: 6, RES.BOARDS: 6}
 
 # If your building should collect resources via collectors, we add them here:
@@ -77,7 +77,7 @@ components:
 			# We want a normal worker collector, that just walks directly to all providers in the radius of the building
       UNITS.BUILDING_COLLECTOR: 2
 			# If you need other collectors, check the list in horizons/constants.py (under UNITS)
-			# and comments about their behaviour in horizons/world/units/collectors/buildingcollector.py
+			# and comments about their behavior in horizons/world/units/collectors/buildingcollector.py
 
 # The collectors will collect exactly what the producer in the building needs:
 - ProducerComponent:
