@@ -1,7 +1,7 @@
 id: 55
 name:
   TIER.SETTLERS: _ Stonemason
-  4:: _ Carver
+  TIER.MERCHANTS: _ Carver
 baseclass: production.ProductionBuilding
 radius: 8
 cost: 15

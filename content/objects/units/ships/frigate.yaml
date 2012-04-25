@@ -16,7 +16,7 @@ components:
 - ShipNameComponent
 - HealthComponent:
    maxhealth: 200
-- CommandableComponent   
+- CommandableComponent
 
 actionsets:
  TIER.SAILORS:

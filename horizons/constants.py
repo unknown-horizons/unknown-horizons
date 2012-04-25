@@ -370,6 +370,8 @@ class TIER:
 	PIONEERS = 1
 	SETTLERS = 2
 	CITIZENS = 3
+	MERCHANTS = 4
+	ARISTOCRATS = 5
 	CURRENT_MAX = 3 # counting starts at 0!
 
 class SETTLER:
