@@ -75,6 +75,15 @@ def convert_game_data(data):
 		return data
 
 
+class DummyShelve(dict):
+	"""Implements the methods we use on a shelve but is really just a dict for
+	when we are unable to open a shelve.
+	"""
+	def sync(self):
+		"""No need to do that, because we are just a dummy shelve."""
+		pass
+
+
 class YamlCache(object):
 	"""Loads and caches YAML files in a shelve.
 	Threadsafe.
@@ -158,7 +167,8 @@ class YamlCache(object):
 			cls.cache = shelve.open(cls.cache_filename)
 		except UnicodeError as e:
 			cls.log.exception("Warning: Failed to open "+cls.cache_filename+": "+unicode(e))
-			return # see _write_bin_file
+			cls.cache = DummyShelve()
+			# see _write_bin_file
 		except Exception as e:
 			# 2 causes for this:
 
