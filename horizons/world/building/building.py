@@ -54,11 +54,11 @@ class BasicBuilding(ComponentHolder, ConcreteObject):
 	@param level: start in this increment
 	@param action_set_id: use this action set id. None means choose one at random
 	"""
-	def __init__(self, x, y, rotation, owner, island, level=None, action_set_id=None, **kwargs):
+	def __init__(self, x, y, rotation, owner, island, level=None, **kwargs):
 		self.__pre_init(owner, rotation, Point(x, y), level=level)
 		super(BasicBuilding, self).__init__(x=x, y=y, rotation=rotation, owner=owner, \
 								                        island=island, **kwargs)
-		self.__init( action_set_id=action_set_id )
+		self.__init()
 		self.island = island
 
 		settlements = self.island.get_settlements(self.position, owner)
@@ -85,16 +85,11 @@ class BasicBuilding(ComponentHolder, ConcreteObject):
 		else:
 			self.position = ConstRect(origin, self.size[0]-1, self.size[1]-1)
 
-	def __init(self, remaining_ticks_of_month=None, action_set_id=None):
-		if action_set_id is not None:
-			self._action_set_id = action_set_id
-		else:
-			self._action_set_id = self.get_random_action_set(self.level)
-
+	def __init(self, remaining_ticks_of_month=None):
 		self.loading_area = self.position # shape where collector get resources
 
 		origin = self.position.origin
-		self._instance, action_set_id = \
+		self._instance, _unused = \
 		  self.getInstance(self.session, origin.x, origin.y, rotation=self.rotation,\
 		                   action_set_id=self._action_set_id)
 		self._instance.setId(str(self.worldid))
@@ -199,7 +194,7 @@ class BasicBuilding(ComponentHolder, ConcreteObject):
 		search for an action set everywhere, which makes it alot more effective, if you're
 		just updating.
 		@param level: int level number"""
-		action_set = self.get_random_action_set(level, exact_level=True)
+		action_set = self.__class__.get_random_action_set(level, exact_level=True)
 		if action_set:
 			self._action_set_id = action_set # Set the new action_set
 			self.act(self._action, repeating=True)

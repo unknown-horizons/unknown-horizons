@@ -110,12 +110,18 @@ class SavegameUpgrader(object):
 			db("UPDATE scenario_variables SET value = ? WHERE key = ?", value, key)
 
 	def _upgrade_to_rev58(self, db):
+		# multiple resources for collector jobs
 		data = [ i for i in db("SELECT rowid, object, resource, amount FROM collector_job") ]
 		db("DROP TABLE  collector_job")
 		db("CREATE TABLE `collector_job` (`collector` INTEGER, `object` INTEGER DEFAULT NULL, `resource` INTEGER DEFAULT NULL, `amount` INTEGER DEFAULT NULL)")
 		for row in data:
 			db("INSERT INTO collector_job(collector, object, resource, amount) VALUES(?, ?, ?, ?)", *row)
 
+	def _upgrade_to_rev59(self, db):
+		# action set id save/load
+		db("ALTER TABLE concrete_object ADD COLUMN action_set_id STRING DEFAULT NULL")
+		# None is not a valid value, but it's hard to determine valid ones here,
+		# so as an exception, we let the loading code handle it (in ConcreteObject.load)
 
 	def _upgrade(self):
 		# fix import loop
@@ -154,6 +160,8 @@ class SavegameUpgrader(object):
 				self._upgrade_to_rev57(db)
 			if rev < 58:
 				self._upgrade_to_rev58(db)
+			if rev < 59:
+				self._upgrade_to_rev59(db)
 
 
 			db('COMMIT')

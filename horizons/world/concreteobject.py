@@ -36,7 +36,7 @@ class ConcreteObject(WorldObject):
 	is_unit = False
 	is_building = False
 
-	def __init__(self, session, **kwargs):
+	def __init__(self, session, action_set_id=None, **kwargs):
 		"""
 		@param session: Session instance this obj belongs to
 		"""
@@ -44,12 +44,13 @@ class ConcreteObject(WorldObject):
 		from horizons.session import Session
 		assert isinstance(session, Session)
 		self.session = session
-		self.__init()
+		self.__init(action_set_id)
 
-	def __init(self):
+	def __init(self, action_set_id=None):
 		self._instance = None # overwrite in subclass __init[__]
 		self._action = 'idle' # Default action is idle
-		self._action_set_id = self.get_random_action_set()
+		# NOTE: this can't be level-aware since not all ConcreteObjects have levels
+		self._action_set_id = action_set_id if action_set_id else self.__class__.get_random_action_set()
 
 		# only buildings for now
 		# NOTE: this is player dependant, therefore there must be no calls to session.random that depend on this
@@ -62,13 +63,16 @@ class ConcreteObject(WorldObject):
 
 	def save(self, db):
 		super(ConcreteObject, self).save(db)
-		db("INSERT INTO concrete_object(id, action_runtime) VALUES(?, ?)", self.worldid, \
-			 self._instance.getActionRuntime())
+		db("INSERT INTO concrete_object(id, action_runtime, action_set_id) VALUES(?, ?, ?)", self.worldid, \
+			 self._instance.getActionRuntime(), self._action_set_id)
 
 	def load(self, db, worldid):
 		super(ConcreteObject, self).load(db, worldid)
-		self.__init()
-		runtime = db.get_concrete_object_action_runtime(worldid)
+		runtime, action_set_id = db.get_concrete_object_data(worldid)
+		# action_set_id should never be None in regular games,
+		# but this information was lacking in savegames before rev 59.
+		# this is implicitly handled here.
+		self.__init(action_set_id)
 		# delay setting of runtime until load of sub/super-class has set the action
 		def set_action_runtime(self, runtime):
 			# workaround to delay resolution of self._instance, which doesn't exist yet

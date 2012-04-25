@@ -20,7 +20,7 @@ CREATE TABLE "trader_ships" ("state" INTEGER NOT NULL , remaining_ticks INTEGER,
 CREATE TABLE wildanimal (can_reproduce BOOL, health INTEGER);
 CREATE TABLE "message_widget_active" ("id" INTEGER NOT NULL  DEFAULT '' ,"read" INTEGER NOT NULL  DEFAULT '' ,"created" INTEGER NOT NULL  DEFAULT '' ,"display" INTEGER NOT NULL  DEFAULT '' ,"message" TEXT NOT NULL  DEFAULT '' , "x" INTEGER, "y" INTEGER);
 CREATE TABLE "message_widget_archive" ("id" INTEGER NOT NULL  DEFAULT '' ,"read" INTEGER NOT NULL  DEFAULT '' ,"created" INTEGER NOT NULL  DEFAULT '' ,"display" INTEGER NOT NULL  DEFAULT '' ,"message" TEXT NOT NULL  DEFAULT '' , "x" INTEGER, "y" INTEGER);
-CREATE TABLE concrete_object(id int, action_runtime int);
+CREATE TABLE concrete_object(id INTEGER, action_runtime INTEGER, action_set_id STRING);
 CREATE TABLE metadata_blob (name TEXT NOT NULL, value BLOB);
 CREATE TABLE "pirate_ships" ("state" INTEGER NOT NULL  DEFAULT 0, "remaining_ticks" INTEGER DEFAULT 0);
 CREATE TABLE storage_global_limit(object INT NOT NULL, value INT NOT NULL);

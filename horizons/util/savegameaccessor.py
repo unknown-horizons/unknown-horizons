@@ -86,10 +86,10 @@ class SavegameAccessor(DbReader):
 
 	def _load_concrete_object(self):
 		self._concrete_object = {}
-		for row in self("SELECT id, action_runtime FROM concrete_object"):
-			self._concrete_object[int(row[0])] = int(row[1])
+		for row in self("SELECT id, action_runtime, action_set_id FROM concrete_object"):
+			self._concrete_object[int(row[0])] = int(row[1]), row[2]
 
-	def get_concrete_object_action_runtime(self, worldid):
+	def get_concrete_object_data(self, worldid):
 		return self._concrete_object[int(worldid)]
 
 
