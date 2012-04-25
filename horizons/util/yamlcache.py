@@ -24,6 +24,7 @@ import shelve
 import yaml
 import threading
 import traceback
+import logging
 
 from horizons.constants import TIER, RES, UNITS, BUILDINGS, PATHS
 
@@ -85,6 +86,8 @@ class YamlCache(object):
 
 	lock = threading.Lock()
 
+	log = logging.getLogger("yamlcache")
+
 	@classmethod
 	def get_file(cls, filename, game_data=False):
 		data = cls.get_yaml_file(filename, game_data=game_data)
@@ -107,8 +110,7 @@ class YamlCache(object):
 			# when something unexpected happens, shelve does not guarantee anything.
 			# since crashing on any access is part of the specified behaviour, we need to handle it.
 			# cf. http://bugs.python.org/issue14041
-			traceback.print_exc()
-			print 'Warning: Can\'t write to shelve: '+unicode(e)
+			cls.log.exception('Warning: Can\'t write to shelve: '+unicode(e))
 			# delete cache and try again
 			if os.path.exists(cls.cache_filename):
 				os.remove(cls.cache_filename)
@@ -155,8 +157,7 @@ class YamlCache(object):
 		try:
 			cls.cache = shelve.open(cls.cache_filename)
 		except UnicodeError as e:
-			traceback.print_exc()
-			print "Warning: failed to open "+cls.cache_filename+": "+unicode(e)
+			cls.log.exception("Warning: Failed to open "+cls.cache_filename+": "+unicode(e))
 			return # see _write_bin_file
 		except Exception as e:
 			# 2 causes for this:
@@ -170,8 +171,7 @@ class YamlCache(object):
 			# If there is an old database file that was created with a
 			# deprecated dbm library, opening it will fail with an obscure exception, so we delete it
 			# and simply retry.
-			traceback.print_exc()
-			print "Warning: you probably have an old cache file; deleting and retrying: "+unicode(e)
+			cls.log.exception("Warning: You probably have an old cache file; deleting and retrying: "+unicode(e))
 			if os.path.exists(cls.cache_filename):
 				os.remove(cls.cache_filename)
 			cls.cache = shelve.open(cls.cache_filename)
