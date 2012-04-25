@@ -84,8 +84,7 @@ class IngameType(type):
 			self._name = _( self._strip_translation_marks( name_data ) )
 		self.radius = yaml_data['radius']
 		self.component_templates = yaml_data['components']
-		self.action_sets = yaml_data['actionsets']
-		self.action_sets_by_level = self.action_sets_by_level(self.action_sets)
+		self.action_sets= yaml_data['actionsets']
 		self.baseclass = yaml_data['baseclass'] # mostly only for debug
 		self._real_object = None # wrapped by _object
 
@@ -123,17 +122,6 @@ class IngameType(type):
 		if self._real_object is None:
 			self._loadObject()
 		return self._real_object
-
-	def action_sets_by_level(self, action_sets):
-		as_by_level = {}
-		for i in xrange(TIER.CURRENT_MAX + 1):
-			as_by_level[i] = []
-			for setname, value in action_sets.iteritems():
-				if 'level' in value and value['level'] == i:
-					as_by_level[i].append(setname)
-				elif 'level' not in value and i == 0:
-					as_by_level[i] = setname
-		return as_by_level
 
 	def _loadObject(self):
 		"""Inits self._real_object"""

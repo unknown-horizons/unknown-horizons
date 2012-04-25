@@ -22,7 +22,7 @@
 from horizons.scheduler import Scheduler
 from horizons.util import WorldObject, Callback, ActionSetLoader
 from horizons.world.units import UnitClass
-from random import randint
+import random
 
 class ConcreteObject(WorldObject):
 	"""Class for concrete objects like Units or Buildings.
@@ -106,22 +106,22 @@ class ConcreteObject(WorldObject):
 		@param level: level to prefer. a lower level might be chosen
 		@param exact_level: choose only action sets from this level. return val might be None here.
 		@return: action_set_id  or (if include_preview) tuple (action_set_id, preview_action_set_id)"""
-		action_sets_by_lvl = cls.action_sets_by_level
 		action_sets = cls.action_sets
-		action_set = None
 		if exact_level:
-			action_set = action_sets_by_lvl[level][randint(0, len(action_sets_by_lvl[level])-1)] if len(action_sets_by_lvl[level]) > 0 else None
+			if level in action_sets.iterkeys():
+				action_set, preview_set = random.choice(action_sets[level].items())
+			else:
+				assert False, "Couldn't find action set for obj {0}({1}) in tier {2}".format(cls.id, cls.name, level)
 		else: # search all levels for an action set, starting with highest one
-			print level, action_sets, action_sets_by_lvl
+			action_set = None
 			for possible_level in reversed(xrange(level+1)):
-				print possible_level
-				if len(action_sets_by_lvl[possible_level]) > 0:
-					action_set = action_sets_by_lvl[possible_level][randint(0, len(action_sets_by_lvl[possible_level])-1)]
+				if possible_level in action_sets.iterkeys():
+					action_set, preview_set = random.choice(action_sets[possible_level].items())
 					break
 			if action_set is None:
-				assert False, "Couldn't find action set for obj %s(%s) in lvl %s" % (cls.id, cls.name, level)
+				assert False, "Couldn't find action set for obj {0}({1}) in tier {2}".format(cls.id, cls.name, level)
 		if include_preview:
-			return (action_set, action_sets[action_set].get('preview', None))
+			return (action_set, preview_set)
 		else:
 			return action_set
 

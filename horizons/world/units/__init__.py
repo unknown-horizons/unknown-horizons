@@ -82,11 +82,13 @@ class UnitClass(IngameType):
 
 		#{ action_set : { action_id : [ load0, load1, ..., loadn ]}}
 		# (loadi are load functions of objects, there can be many per as_id and action)
-		for action_set_id in cls.action_sets:
-			if not action_set_id in cls._action_load_callbacks:
-				cls._action_load_callbacks[action_set_id] = {}
-			for action_id in action_sets[action_set_id].iterkeys():
-				if not action_id in cls._action_load_callbacks[action_set_id]:
-					cls._action_load_callbacks[action_set_id][action_id] = []
-				cls._action_load_callbacks[action_set_id][action_id].append(
-				  Callback(do_load, action_set_id, action_id))
+		# cls.action_sets looks like this: {tier1: {set1: None, set2: preview2, ..}, ..}
+		for set_dict in cls.action_sets.itervalues():
+			for action_set in set_dict.iterkeys(): # set1, set2, ...
+				if not action_set in cls._action_load_callbacks:
+					cls._action_load_callbacks[action_set] = {}
+				for action_id in action_sets[action_set].iterkeys(): # idle, move, ...
+					if not action_id in cls._action_load_callbacks[action_set]:
+						cls._action_load_callbacks[action_set][action_id] = []
+					cls._action_load_callbacks[action_set][action_id].append(
+					  Callback(do_load, action_set, action_id))

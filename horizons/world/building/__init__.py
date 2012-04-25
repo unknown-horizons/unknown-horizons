@@ -85,26 +85,26 @@ class BuildingClass(IngameType):
 			cls.log.debug("Already loaded building %s", cls.id)
 			cls._real_object = horizons.main.fife.engine.getModel().getObject(str(cls.id), 'building')
 			return
-		action_sets = cls.action_sets.iterkeys()
 		all_action_sets = ActionSetLoader.get_sets()
-		for action_set_id in action_sets:
-			for action_id in all_action_sets[action_set_id].iterkeys():
-				action = cls._real_object.createAction(action_id+"_"+str(action_set_id))
-				fife.ActionVisual.create(action)
-				for rotation in all_action_sets[action_set_id][action_id].iterkeys():
-					#print "rotation:", rotation
-					if rotation == 45:
-						command = 'left-32,bottom+' + str(cls.size[0] * 16)
-					elif rotation == 135:
-						command = 'left-' + str(cls.size[1] * 32) + ',bottom+16'
-					elif rotation == 225:
-						command = 'left-' + str((cls.size[0] + cls.size[1] - 1) * 32) + ',bottom+' + str(cls.size[1] * 16)
-					elif rotation == 315:
-						command = 'left-' + str(cls.size[0] * 32) + ',bottom+' + str((cls.size[0] + cls.size[1] - 1) * 16)
-					else:
-						assert False, "Bad rotation for action_set %(id)s: %(rotation)s for action: %(action_id)s" % \
-							   { 'id':action_set_id, 'rotation': rotation, 'action_id': action_id }
-					anim = horizons.main.fife.animationloader.loadResource(str(action_set_id)+"+"+str(action_id)+"+"+str(rotation) + ':shift:' + command)
-					action.get2dGfxVisual().addAnimation(int(rotation), anim)
-					action.setDuration(anim.getDuration())
+		# cls.action_sets looks like this: {tier1: {set1: None, set2: preview2, ..}, ..}
+		for action_set_list in cls.action_sets.itervalues():
+			for action_set_id in action_set_list.iterkeys(): # set1, set2, ...
+				for action_id in all_action_sets[action_set_id].iterkeys(): # idle, move, ...
+					action = cls._real_object.createAction(action_id+"_"+str(action_set_id))
+					fife.ActionVisual.create(action)
+					for rotation in all_action_sets[action_set_id][action_id].iterkeys():
+						if rotation == 45:
+							command = 'left-32,bottom+' + str(cls.size[0] * 16)
+						elif rotation == 135:
+							command = 'left-' + str(cls.size[1] * 32) + ',bottom+16'
+						elif rotation == 225:
+							command = 'left-' + str((cls.size[0] + cls.size[1] - 1) * 32) + ',bottom+' + str(cls.size[1] * 16)
+						elif rotation == 315:
+							command = 'left-' + str(cls.size[0] * 32) + ',bottom+' + str((cls.size[0] + cls.size[1] - 1) * 16)
+						else:
+							assert False, "Bad rotation for action_set %(id)s: %(rotation)s for action: %(action_id)s" % \
+								   { 'id':action_set_id, 'rotation': rotation, 'action_id': action_id }
+						anim = horizons.main.fife.animationloader.loadResource(str(action_set_id)+"+"+str(action_id)+"+"+str(rotation) + ':shift:' + command)
+						action.get2dGfxVisual().addAnimation(int(rotation), anim)
+						action.setDuration(anim.getDuration())
 
