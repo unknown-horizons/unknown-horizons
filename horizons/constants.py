@@ -365,6 +365,7 @@ class TRADER: # check resource values: ./development/print_db_data.py res
 
 # Taxes and Restrictions
 class TIER:
+	NATURE = 0
 	SAILORS = 0
 	PIONEERS = 1
 	SETTLERS = 2
