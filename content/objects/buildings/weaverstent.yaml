@@ -33,4 +33,4 @@ components:
     collectors:
       UNITS.BUILDING_COLLECTOR: 1
 actionsets:
-  as_weaver0: {level: 0}
+  as_weaver0: {level: TIER.SAILORS}

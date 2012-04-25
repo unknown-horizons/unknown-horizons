@@ -23,4 +23,4 @@ components:
       SlotsStorage:
         slot_sizes: {RES.GRAIN: 1}
 actionsets:
-  as_cornfield0: {level: 0}
+  as_cornfield0: {level: TIER.SAILORS}

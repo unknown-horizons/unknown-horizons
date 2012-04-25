@@ -27,4 +27,4 @@ components:
 - AmbientSoundComponent:
     soundfiles: [content/audio/sounds/sheepfield.ogg]
 actionsets:
-  as_pasture0: {level: 0}
+  as_pasture0: {level: TIER.SAILORS}

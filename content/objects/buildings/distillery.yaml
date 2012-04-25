@@ -33,4 +33,4 @@ components:
     collectors:
       UNITS.BUILDING_COLLECTOR: 1
 actionsets:
-  as_distillery0: {level: 0}
+  as_distillery0: {level: TIER.SAILORS}

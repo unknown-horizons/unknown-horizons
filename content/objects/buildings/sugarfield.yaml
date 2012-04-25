@@ -25,4 +25,4 @@ components:
       SlotsStorage:
         slot_sizes: {RES.RAW_SUGAR: 1}
 actionsets:
-  as_sugarfield0: {level: 0}
+  as_sugarfield0: {level: TIER.SAILORS}

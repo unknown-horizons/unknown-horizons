@@ -29,4 +29,4 @@ components:
       SlotsStorage:
         slot_sizes: {RES.EDUCATION: 10}
 actionsets:
-  as_school0: {level: 0}
+  as_school0: {level: TIER.SAILORS}

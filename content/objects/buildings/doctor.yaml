@@ -32,4 +32,4 @@ components:
       UNITS.BUILDING_COLLECTOR: 1
       UNITS.DISASTER_RECOVERY_COLLECTOR: 1
 actionsets:
-  as_doctor0: {level: 0}
+  as_doctor0: {level: TIER.SAILORS}

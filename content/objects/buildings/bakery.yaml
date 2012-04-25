@@ -32,4 +32,4 @@ components:
     collectors:
       UNITS.BUILDING_COLLECTOR: 1
 actionsets:
-  as_bakery0: {level: 0}
+  as_bakery0: {level: TIER.SAILORS}

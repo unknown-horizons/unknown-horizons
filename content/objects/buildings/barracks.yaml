@@ -34,4 +34,4 @@ components:
     collectors:
       UNITS.BUILDING_COLLECTOR: 1
 actionsets:
-  as_barracks0: {level: 0}
+  as_barracks0: {level: TIER.SAILORS}

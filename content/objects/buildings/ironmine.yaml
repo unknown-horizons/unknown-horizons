@@ -31,4 +31,4 @@ components:
       SlotsStorage:
         slot_sizes: {RES.RAW_IRON: 1000000, RES.IRON_ORE: 10}
 actionsets:
-  as_mine5x5: {preview: as_preview_mine5x5, level: 0}
+  as_mine5x5: {preview: as_preview_mine5x5, level: TIER.SAILORS}

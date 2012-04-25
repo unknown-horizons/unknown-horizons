@@ -32,4 +32,4 @@ components:
     collectors:
       UNITS.BUILDING_COLLECTOR: 1
 actionsets:
-  as_windmill0: {level: 0}
+  as_windmill0: {level: TIER.SAILORS}
