@@ -70,13 +70,14 @@ class UnitClass(IngameType):
 		action_sets = ActionSetLoader.get_sets()
 		# create load callbacks to be called when the actions are needed
 
-		def do_load(action_set_id, action_id):
-			action = cls._real_object.createAction(action_id+"_"+str(action_set_id))
+		def do_load(action_set, action_id):
+			params = {'id': action_set, 'action': action_id}
+			action = cls._real_object.createAction('{action}_{id}'.format(**params))
 			fife.ActionVisual.create(action)
-			for rotation in action_sets[action_set_id][action_id].iterkeys():
-				anim = horizons.main.fife.animationloader.loadResource(
-					str(action_set_id)+"+"+str(action_id)+"+"+
-					str(rotation) + ':shift:center+0,bottom+8')
+			for rotation in action_sets[action_set][action_id].iterkeys():
+				params['rot'] = rotation
+				path = '{id}+{action}+{rot}:shift:center+0,bottom+8'.format(**params)
+				anim = horizons.main.fife.animationloader.loadResource(path)
 				action.get2dGfxVisual().addAnimation(int(rotation), anim)
 				action.setDuration(anim.getDuration())
 
