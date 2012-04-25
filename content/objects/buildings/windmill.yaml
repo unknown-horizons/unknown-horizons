@@ -6,10 +6,9 @@ cost: 10
 cost_inactive: 0
 size_x: 2
 size_y: 2
-inhabitants_start: 1
-inhabitants_max: 1
+inhabitants: 1
 tooltip_text: _ Grinds corn into flour.
-settler_level: 3
+settler_level: TIER.CITIZENS
 buildingcosts: {RES.GOLD: 1}
 components:
 - SelectableComponent:
@@ -32,4 +31,5 @@ components:
     collectors:
       UNITS.BUILDING_COLLECTOR: 1
 actionsets:
-  as_windmill0: {level: 0}
+  TIER.CITIZENS:
+    as_windmill0:

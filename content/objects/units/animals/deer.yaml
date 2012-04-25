@@ -18,5 +18,6 @@ components:
         time: 45
 
 actionsets:
-   as_fallowdeer0: {level: 0}
-   as_reddeer0: {level: 0}
+ TIER.NATURE:
+   as_fallowdeer0:
+   as_reddeer0:

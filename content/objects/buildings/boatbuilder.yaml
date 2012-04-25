@@ -6,11 +6,9 @@ cost: 25
 cost_inactive: 10
 size_x: 3
 size_y: 3
-inhabitants_start: 2
-inhabitants_max: 2
-button_name: boat_builder-1
+inhabitants: 2
 tooltip_text: _ Builds boats and small ships. Built on coast.
-settler_level: 1
+settler_level: TIER.PIONEERS
 buildingcosts: {RES.GOLD: 500, RES.BOARDS: 4, RES.TOOLS: 3}
 components:
 - SelectableComponent:
@@ -63,4 +61,5 @@ components:
     collectors:
       UNITS.BUILDING_COLLECTOR: 1
 actionsets:
-  as_boat_builder0: {level: 0}
+  TIER.PIONEERS:
+    as_boat_builder0:

@@ -10,4 +10,5 @@ components:
          limit: 8
 
 actionsets:
-   as_carrier0: {level: 0}
+  TIER.SAILORS:
+    as_carrier0:

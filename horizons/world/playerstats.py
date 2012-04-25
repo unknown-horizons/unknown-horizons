@@ -25,7 +25,7 @@ from collections import defaultdict
 
 from horizons.util import WorldObject
 from horizons.entities import Entities
-from horizons.constants import SETTLER, BUILDINGS, PRODUCTION, RES, UNITS
+from horizons.constants import TIER, BUILDINGS, PRODUCTION, RES, UNITS
 from horizons.util.python import decorators
 from horizons.component.collectingcomponent import CollectingComponent
 from horizons.component.storagecomponent import StorageComponent
@@ -112,16 +112,16 @@ class PlayerStats(WorldObject):
 		self._calculate_total_score()
 
 	settler_values = {
-			SETTLER.SAILOR_LEVEL: 2,
-			SETTLER.PIONEER_LEVEL: 3,
-			SETTLER.SETTLER_LEVEL: 7,
-			SETTLER.CITIZEN_LEVEL: 15,
+			TIER.SAILORS: 2,
+			TIER.PIONEERS: 3,
+			TIER.SETTLERS: 7,
+			TIER.CITIZENS: 15,
 			}
 	settler_building_values = {
-			SETTLER.SAILOR_LEVEL: 3,
-			SETTLER.PIONEER_LEVEL: 5,
-			SETTLER.SETTLER_LEVEL: 11,
-			SETTLER.CITIZEN_LEVEL: 19,
+			TIER.SAILORS: 3,
+			TIER.PIONEERS: 5,
+			TIER.SETTLERS: 11,
+			TIER.CITIZENS: 19,
 			}
 	settler_resource_provided_coefficient = 0.1
 	settler_score_coefficient = 0.3

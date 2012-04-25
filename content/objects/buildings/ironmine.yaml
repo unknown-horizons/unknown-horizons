@@ -6,11 +6,9 @@ cost: 15
 cost_inactive: 5
 size_x: 5
 size_y: 5
-inhabitants_start: 0
-inhabitants_max: 0
-button_name: iron-mine-1
+inhabitants: 0
 tooltip_text: _ Gets iron ore from deposit.
-settler_level: 2
+settler_level: TIER.SETTLERS
 buildingcosts: {RES.GOLD: 500, RES.BOARDS: 10, RES.TOOLS: 2}
 components:
 - SelectableComponent:
@@ -31,4 +29,5 @@ components:
       SlotsStorage:
         slot_sizes: {RES.RAW_IRON: 1000000, RES.IRON_ORE: 10}
 actionsets:
-  as_mine5x5: {preview: as_preview_mine5x5, level: 0}
+  TIER.SETTLERS:
+    as_mine5x5: as_preview_mine5x5

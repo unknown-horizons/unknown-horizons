@@ -6,10 +6,9 @@ cost: 20
 cost_inactive: 5
 size_x: 2
 size_y: 2
-inhabitants_start: 3
-inhabitants_max: 3
+inhabitants: 3
 tooltip_text: _ Produces wine out of grapes.
-settler_level: 3
+settler_level: TIER.CITIZENS
 buildingcosts: {RES.GOLD: 1}
 components:
 - SelectableComponent:
@@ -29,5 +28,6 @@ components:
       SlotsStorage:
         slot_sizes: {RES.LIQUOR: 6, RES.GRAPES: 8}
 actionsets:
-  #as_vintner0: {level: 0}
-  as_2x2: {level: 0}
+  TIER.CITIZENS:
+    #as_vintner0:
+    as_2x2:

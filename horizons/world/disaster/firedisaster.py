@@ -23,7 +23,7 @@
 from horizons.world.disaster import Disaster
 from horizons.messaging import AddStatusIcon, RemoveStatusIcon, NewDisaster
 from horizons.world.status import FireStatusIcon
-from horizons.constants import GAME_SPEED, BUILDINGS, RES, SETTLER
+from horizons.constants import GAME_SPEED, BUILDINGS, RES, TIER
 from horizons.command.building import Tear
 from horizons.scheduler import Scheduler
 from horizons.util.python.callback import Callback
@@ -83,7 +83,7 @@ class FireDisaster(Disaster):
 
 	@classmethod
 	def can_breakout(cls, settlement):
-		return settlement.owner.settler_level >= SETTLER.PIONEER_LEVEL and \
+		return settlement.owner.settler_level >= TIER.PIONEERS and \
 		       settlement.count_buildings(BUILDINGS.RESIDENTIAL) > cls.MIN_SETTLERS_FOR_BREAKOUT
 
 	def expand(self):

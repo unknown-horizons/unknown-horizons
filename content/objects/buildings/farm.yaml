@@ -6,10 +6,9 @@ cost: 10
 cost_inactive: 0
 size_x: 3
 size_y: 3
-inhabitants_start: 2
-inhabitants_max: 2
+inhabitants: 2
 tooltip_text: _ Grows field crops and raises livestock.
-settler_level: 1
+settler_level: TIER.PIONEERS
 buildingcosts: {RES.GOLD: 500, RES.BOARDS: 4, RES.TOOLS: 2}
 components:
 - SelectableComponent:
@@ -113,4 +112,5 @@ components:
     collectors:
       UNITS.FIELD_COLLECTOR: 2
 actionsets:
-  as_farm0: {level: 0}
+  TIER.PIONEERS:
+    as_farm0:

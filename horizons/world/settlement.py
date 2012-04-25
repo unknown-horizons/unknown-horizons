@@ -24,7 +24,7 @@ import sqlite3
 
 from collections import defaultdict
 
-from horizons.constants import BUILDINGS, SETTLER
+from horizons.constants import BUILDINGS, TIER
 from horizons.entities import Entities
 from horizons.util.worldobject import WorldObject
 from horizons.util.shapes.rect import Rect
@@ -72,15 +72,15 @@ class Settlement(ComponentHolder, WorldObject, ChangeListener, ResourceHandler):
 	@classmethod
 	def make_default_upgrade_permissions(cls):
 		upgrade_permissions = {}
-		for level in xrange(SETTLER.CURRENT_MAX_INCR):
+		for level in xrange(TIER.CURRENT_MAX):
 			upgrade_permissions[level] = True
-		upgrade_permissions[SETTLER.CURRENT_MAX_INCR] = False
+		upgrade_permissions[TIER.CURRENT_MAX] = False
 		return upgrade_permissions
 
 	@classmethod
 	def make_default_tax_settings(cls):
 		tax_settings = {}
-		for level in xrange(SETTLER.CURRENT_MAX_INCR + 1):
+		for level in xrange(TIER.CURRENT_MAX + 1):
 			tax_settings[level] = 1.0
 		return tax_settings
 
@@ -134,7 +134,7 @@ class Settlement(ComponentHolder, WorldObject, ChangeListener, ResourceHandler):
 		for res, amount in self.produced_res.iteritems():
 			db("INSERT INTO settlement_produced_res (settlement, res, amount) VALUES(?, ?, ?)", \
 			   self.worldid, res, amount)
-		for level in xrange(SETTLER.CURRENT_MAX_INCR + 1):
+		for level in xrange(TIER.CURRENT_MAX + 1):
 			db("INSERT INTO settlement_level_properties (settlement, level, upgrading_allowed, tax_setting) VALUES(?, ?, ?, ?)", \
 				self.worldid, level, self.upgrade_permissions[level], self.tax_settings[level])
 

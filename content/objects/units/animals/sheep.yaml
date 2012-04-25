@@ -10,4 +10,5 @@ components:
          limit: 8
 
 actionsets:
-   as_sheep0: {level: 0}
+  TIER.NATURE:
+   as_sheep0:

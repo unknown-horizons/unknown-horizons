@@ -1,9 +1,9 @@
 id: 3
 name:
-  0: _ Tent
-  1: _ Hut
-  2: _ House
-  3: _ Stone house
+  TIER.SAILORS: _ Tent
+  TIER.PIONEERS: _ Hut
+  TIER.SETTLERS: _ House
+  TIER.CITIZENS: _ Stone house
   4: _ Estate
   5: _ Manor
 baseclass: settler.Settler
@@ -12,11 +12,9 @@ cost: 0
 cost_inactive: 0
 size_x: 2
 size_y: 2
-inhabitants_start: 1
-inhabitants_max: 2
-button_name: resident-1
+inhabitants: 1
 tooltip_text: _ Houses your inhabitants.
-settler_level: 0
+settler_level: TIER.SAILORS
 buildingcosts: {RES.GOLD: 100, RES.BOARDS: 2}
 # NOTE: this should be in the producer component, which currently doesn't support attributes like that
 additional_provided_resources: [RES.FIRE]
@@ -50,7 +48,7 @@ components:
         produces:
         - [RES.HAPPINESS, 5]
         changes_animation: false
-        level: [RES.LAMB_WOOL, 3]
+        level: [2, 3]
         enabled_by_default: false
         time: 180
         consumes:
@@ -77,7 +75,7 @@ components:
         produces:
         - [RES.HAPPINESS, 4]
         changes_animation: false
-        level: [RES.LAMB_WOOL, 3]
+        level: [2, 3]
         enabled_by_default: false
         time: 90
         consumes:
@@ -86,7 +84,7 @@ components:
         produces:
         - [RES.HAPPINESS, 12]
         changes_animation: false
-        level: [RES.LAMB_WOOL, 3]
+        level: [2, 3]
         enabled_by_default: false
         time: 75
         consumes:
@@ -95,7 +93,7 @@ components:
         produces:
         - [RES.HAPPINESS, 5]
         changes_animation: false
-        level: [RES.LAMB_WOOL, 3]
+        level: [2, 3]
         enabled_by_default: false
         time: 90
         consumes:
@@ -113,7 +111,7 @@ components:
         produces:
         - [RES.HAPPINESS, 5]
         changes_animation: false
-        level: [RES.GOLD, 2, 3]
+        level: [1, 2, 3]
         enabled_by_default: false
         time: 180
         consumes:
@@ -122,7 +120,7 @@ components:
         produces:
         - [RES.HAPPINESS, 3]
         changes_animation: false
-        level: [RES.GOLD, 2, 3]
+        level: [1, 2, 3]
         enabled_by_default: false
         time: 90
         consumes:
@@ -158,14 +156,18 @@ components:
     collectors:
       UNITS.SETTLER_COLLECTOR: 1
 actionsets:
-  as_tent0: {level: 0}
-  as_tent1: {level: 0}
-  as_tent2: {level: 0}
-  as_tent3: {level: 0}
-  as_tent4: {level: 0}
-  as_tent5: {level: 0}
-  as_hut1: {level: 1}
-  as_hut0: {level: 1}
-  as_house0: {level: 2}
-  as_hut2: {level: 1}
-  as_stonehouse0: {level: 3}
+  TIER.SAILORS:
+    as_tent0:
+    as_tent1:
+    as_tent2:
+    as_tent3:
+    as_tent4:
+    as_tent5:
+  TIER.PIONEERS:
+    as_hut0:
+    as_hut1:
+    as_hut2:
+  TIER.SETTLERS:
+    as_house0:
+  TIER.CITIZENS:
+    as_stonehouse0:

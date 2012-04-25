@@ -109,34 +109,6 @@ class UhDbAccessor(DbReader):
 		       sounds_special.type = ?'
 		return self.cached_query(sql, soundname)[0][0]
 
-
-	def get_random_action_set(self, object_id, level=0, exact_level=False):
-		"""Returns an action set for an object of type object_id in a level <= the specified level.
-		The highest level number is preferred.
-		@param db: UhDbAccessor
-		@param object_id: type id of building
-		@param level: level to prefer. a lower level might be chosen
-		@param exact_level: choose only action sets from this level. return val might be None here.
-		@return: tuple: (action_set_id, preview_action_set_id)"""
-		assert level >= 0
-
-		action_sets_by_lvl = Entities.buildings[object_id].action_sets_by_level
-		action_sets = Entities.buildings[object_id].action_sets
-		action_set = None
-		if exact_level:
-			action_set = action_sets_by_lvl[level][randint(0, len(action_sets_by_lvl[level])-1)] if len(action_sets_by_lvl[level]) > 0 else None
-		else: # search all levels for an action set, starting with highest one
-			for possible_level in reversed(xrange(level+1)):
-				if len(action_sets_by_lvl[possible_level]) > 0:
-					action_set = action_sets_by_lvl[possible_level][randint(0, len(action_sets_by_lvl[possible_level])-1)]
-					break
-		if action_set is None:
-			assert False, "Couldn't find action set for obj %s in lvl %s" % (object_id, level)
-
-		preview = action_sets[action_set]['preview'] if 'preview' in action_sets[action_set] else None
-		return (action_set, preview)
-
-
 	# Building table
 
 	def get_building_tooltip(self, building_class_id):

@@ -19,4 +19,5 @@ components:
 - CommandableComponent   
 
 actionsets:
-   as_frigate0: {level: 0}
+ TIER.SAILORS:
+   as_frigate0:

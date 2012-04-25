@@ -12,4 +12,5 @@ components:
          limit: 8
 
 actionsets:
-   as_lumberjackunit0: {level: 0}
+  TIER.SAILORS:
+    as_lumberjackunit0:

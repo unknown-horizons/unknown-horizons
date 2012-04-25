@@ -6,10 +6,9 @@ cost: 20
 cost_inactive: 5
 size_x: 2
 size_y: 2
-inhabitants_start: 2
-inhabitants_max: 2
+inhabitants: 2
 tooltip_text: _ Consumes flour. Produces food.
-settler_level: 3
+settler_level: TIER.CITIZENS
 buildingcosts: {RES.GOLD: 1}
 components:
 - SelectableComponent:
@@ -32,4 +31,5 @@ components:
     collectors:
       UNITS.BUILDING_COLLECTOR: 1
 actionsets:
-  as_bakery0: {level: 0}
+  TIER.CITIZENS:
+    as_bakery0:

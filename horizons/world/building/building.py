@@ -86,8 +86,10 @@ class BasicBuilding(ComponentHolder, ConcreteObject):
 			self.position = ConstRect(origin, self.size[0]-1, self.size[1]-1)
 
 	def __init(self, remaining_ticks_of_month=None, action_set_id=None):
-		self._action_set_id = action_set_id if action_set_id is not None else \
-		    self.get_random_action_set(self.level)[0]
+		if action_set_id is not None:
+			self._action_set_id = action_set_id
+		else:
+			self._action_set_id = self.get_random_action_set(self.level)
 
 		self.loading_area = self.position # shape where collector get resources
 
@@ -197,7 +199,7 @@ class BasicBuilding(ComponentHolder, ConcreteObject):
 		search for an action set everywhere, which makes it alot more effective, if you're
 		just updating.
 		@param level: int level number"""
-		action_set = self.get_random_action_set(level, exact_level=True)[0]
+		action_set = self.get_random_action_set(level, exact_level=True)
 		if action_set:
 			self._action_set_id = action_set # Set the new action_set
 			self.act(self._action, repeating=True)
@@ -277,7 +279,7 @@ class BasicBuilding(ComponentHolder, ConcreteObject):
 		facing_loc.setLayerCoordinates(fife.ModelCoordinate(*layer_coords))
 
 		if action_set_id is None:
-			action_set_id = cls.get_random_action_set(level=level)[0]
+			action_set_id = cls.get_random_action_set(level=level)
 		fife.InstanceVisual.create(instance)
 
 		action_sets = ActionSetLoader.get_sets()

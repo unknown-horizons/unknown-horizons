@@ -25,7 +25,7 @@ import yaml
 import threading
 import traceback
 
-from horizons.constants import RES, UNITS, BUILDINGS, PATHS
+from horizons.constants import TIER, RES, UNITS, BUILDINGS, PATHS
 
 try:
 	from yaml import CSafeLoader as SafeLoader
@@ -43,9 +43,9 @@ def parse_token(token, token_klass):
 	"""Helper function that tries to parse a constant name.
 	Does not do error detection, but passes unparseable stuff through.
 	Allowed values: integer or token_klass.LIKE_IN_CONSTANTS
-	@param token_klass: "RES", "UNITS" or "BUILDINGS"
+	@param token_klass: "TIER", "RES", "UNITS" or "BUILDINGS"
 	"""
-	classes = {'RES': RES, 'UNITS': UNITS, 'BUILDINGS': BUILDINGS}
+	classes = {'TIER': TIER, 'RES': RES, 'UNITS': UNITS, 'BUILDINGS': BUILDINGS}
 
 	if isinstance(token, unicode):
 		if token.startswith(token_klass):
@@ -67,6 +67,7 @@ def convert_game_data(data):
 	elif isinstance(data, (tuple, list)):
 		return type(data)( ( convert_game_data(i) for i in data) )
 	else: # leaf
+		data = parse_token(data, "TIER")
 		data = parse_token(data, "RES")
 		data = parse_token(data, "UNITS")
 		data = parse_token(data, "BUILDINGS")

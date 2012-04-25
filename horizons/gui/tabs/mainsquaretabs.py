@@ -26,7 +26,7 @@ from horizons.gui.tabs.residentialtabs import setup_tax_slider
 from horizons.util import Callback
 from horizons.messaging import UpgradePermissionsChanged
 from horizons.command.uioptions import SetSettlementUpgradePermissions
-from horizons.constants import BUILDINGS, SETTLER
+from horizons.constants import BUILDINGS, TIER
 from horizons.component.tradepostcomponent import TradePostComponent
 from horizons.component.namedcomponent import NamedComponent
 
@@ -150,7 +150,7 @@ class MainSquareSettlerLevelTab(MainSquareTab):
 
 		# refresh upgrade permissions
 		upgrades_button = self.widget.child_finder('allow_upgrades')
-		if self.__class__.LEVEL < SETTLER.CURRENT_MAX_INCR: #max incr => cannot allow upgrades
+		if self.__class__.LEVEL < TIER.CURRENT_MAX: #max incr => cannot allow upgrades
 			if self.settlement.upgrade_permissions[self.__class__.LEVEL]:
 				upgrades_button.set_active()
 				upgrades_button.helptext = _('Don\'t allow upgrades')
@@ -179,21 +179,21 @@ class MainSquareSettlerLevelTab(MainSquareTab):
 		SetSettlementUpgradePermissions(self.settlement, self.__class__.LEVEL, not self.settlement.upgrade_permissions[self.__class__.LEVEL]).execute(self.settlement.session)
 
 class MainSquareSailorsTab(MainSquareSettlerLevelTab):
-	LEVEL = SETTLER.SAILOR_LEVEL
+	LEVEL = TIER.SAILORS
 	def __init__(self, instance):
 		super(MainSquareSailorsTab, self).__init__(instance, 'mainsquare_sailors.xml')
 
 class MainSquarePioneersTab(MainSquareSettlerLevelTab):
-	LEVEL = SETTLER.PIONEER_LEVEL
+	LEVEL = TIER.PIONEERS
 	def __init__(self, instance):
 		super(MainSquarePioneersTab, self).__init__(instance, 'mainsquare_pioneers.xml')
 
 class MainSquareSettlersTab(MainSquareSettlerLevelTab):
-	LEVEL = SETTLER.SETTLER_LEVEL
+	LEVEL = TIER.SETTLERS
 	def __init__(self, instance):
 		super(MainSquareSettlersTab, self).__init__(instance, 'mainsquare_settlers.xml')
 
 class MainSquareCitizensTab(MainSquareSettlerLevelTab):
-	LEVEL = SETTLER.CITIZEN_LEVEL
+	LEVEL = TIER.CITIZENS
 	def __init__(self, instance):
 		super(MainSquareCitizensTab, self).__init__(instance, 'mainsquare_citizens.xml')
