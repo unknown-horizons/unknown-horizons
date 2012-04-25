@@ -167,8 +167,11 @@ class YamlCache(object):
 			cls.cache = shelve.open(cls.cache_filename)
 		except UnicodeError as e:
 			cls.log.exception("Warning: Failed to open "+cls.cache_filename+": "+unicode(e))
+			# This can happen with unicode characters in the path because the bdb module
+			# on win converts it internally to ascii, which fails
+			# The shelve module therefore does not support writing to paths containing non-ascii characters in general,
+			# which means we cannot store data persistently.
 			cls.cache = DummyShelve()
-			# see _write_bin_file
 		except Exception as e:
 			# 2 causes for this:
 
