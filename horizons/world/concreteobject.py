@@ -123,7 +123,10 @@ class ConcreteObject(WorldObject):
 					action_set, preview_set = random.choice(action_sets[possible_level].items())
 					break
 			if action_set is None:
-				assert False, "Couldn't find action set for obj {0}({1}) in tier {2}".format(cls.id, cls.name, level)
+				# fall back to one from a higher level.
+				# this does not happen in valid games, but can happen in tests, when level
+				# constraints are ignored.
+				action_set, preview_set = action_sets.values()[0].items()[0]
 		if include_preview:
 			return (action_set, preview_set)
 		else:
