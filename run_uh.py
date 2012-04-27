@@ -439,12 +439,8 @@ def is_fife_path(path):
 		os.path.join('engine', 'python', 'fife'),
 		os.path.join('engine', 'python', 'fife', 'extensions'))
 
-	for d in directories:
-		d = os.path.join(absolute_path, d)
-		if not os.path.exists(d):
-			return False
-
-	return True
+	return all(os.path.exists(os.path.join(absolute_path, d))
+				for d in directories)
 
 
 def restart_with_fife(fife_custom_path=None):
