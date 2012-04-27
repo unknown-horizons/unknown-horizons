@@ -7,8 +7,8 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2012-03-24 02:16+0100\n"
-"PO-Revision-Date: 2012-03-25 03:20+0200\n"
-"Last-Translator: André <andre-r@online.de>\n"
+"PO-Revision-Date: 2012-04-18 23:11+0200\n"
+"Last-Translator: djot <djot@hotmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: de\n"
 "MIME-Version: 1.0\n"
@@ -100,6 +100,7 @@ msgstr "Einige Eurer Einwohner haben keinen Zugang zu einem Marktplatz."
 msgid "Some of your inhabitants just moved out."
 msgstr "Einige Eurer Siedler haben soeben Eure Siedlung verlassen."
 
+# "Starten Sie sie" statt "es"
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
 msgid "The route is now configured. Start it via the \"start route\" button in the \"configure route\" menu."
@@ -1233,6 +1234,7 @@ msgstr "Produktions-Übersicht"
 msgid "Selected Units"
 msgstr "Angewählte Einheiten"
 
+# Einheiten kommen direkt an die Zahl/Ziffer, also 3kg, 5MB ... hier {amount}t
 #: horizons/gui/widgets/buysellinventory.py:83
 #: horizons/gui/widgets/inventory.py:115
 #, python-format
