@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2012-03-24 02:16+0100\n"
-"PO-Revision-Date: 2012-04-28 16:41+0200\n"
+"PO-Revision-Date: 2012-04-28 16:58+0200\n"
 "Last-Translator: Fedor <fedorka96@ya.ru>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: ru\n"
@@ -479,13 +479,13 @@ msgstr "{player1} и {player2} объединили свои силы."
 #: database files sql
 #, python-format
 msgid "{player1} and {player2} have ended the war and are now allied."
-msgstr ""
+msgstr "{player1} и {player2} закончили войну и объединились."
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
 #, python-format
 msgid "{player1} and {player2} have ended their alliance and are now in a state of war."
-msgstr ""
+msgstr "{player1} и {player2} разорвали союз и начали войну."
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
@@ -497,19 +497,19 @@ msgstr ""
 #: database files sql
 #, python-format
 msgid "{player1} and {player2} have terminated their alliance."
-msgstr ""
+msgstr "{player1} и {player2} разорвали союз."
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
 #, python-format
 msgid "{player1} and {player2} will fight each other to the death."
-msgstr ""
+msgstr "{player1} и {player2} будут бороться друг с другом до самой смерти."
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
 #, python-format
 msgid "{player}: {message}"
-msgstr ""
+msgstr "{player}: {message}"
 
 #: editor/editor.py:33
 msgid "Specify the path to FIFE root directory."
@@ -521,7 +521,7 @@ msgstr "Неверное имя файла"
 
 #: horizons/command/game.py:37
 msgid "Received an invalid filename for a save command."
-msgstr ""
+msgstr "Получено неверное имя файла для команды сохранения."
 
 #. There was a problem during the 'save game' procedure.
 #: horizons/command/game.py:47 horizons/gui/gui.py:179
@@ -618,7 +618,7 @@ msgstr ""
 #: horizons/engine/settingshandler.py:314
 #, python-format
 msgid "Logs are written to {directory}."
-msgstr ""
+msgstr "Лог записан в {directory}."
 
 #: horizons/gui/gui.py:207
 msgid "Are you sure you want to quit Unknown Horizons?"
@@ -861,7 +861,7 @@ msgstr "Карта: {map_name}"
 
 #: horizons/gui/modules/multiplayermenu.py:185
 msgid "Name: {game_name}"
-msgstr ""
+msgstr "Название: {game_name}"
 
 #: horizons/gui/modules/multiplayermenu.py:187
 #, python-format
@@ -871,11 +871,11 @@ msgstr "Игроков: {player_amount}/{player_limit}"
 #: horizons/gui/modules/multiplayermenu.py:192
 #, python-format
 msgid "Creator: {player}"
-msgstr "Создал: {player}"
+msgstr "Создатель: {player}"
 
 #: horizons/gui/modules/multiplayermenu.py:203
 msgid "This savegame is missing (click here)"
-msgstr ""
+msgstr "Это сохранение отсутствует (нажмите здесь)"
 
 #: horizons/gui/modules/multiplayermenu.py:209
 msgid "For multiplayer load, it is currently necessary for you to ensure you have the correct savegame file."
@@ -884,6 +884,8 @@ msgstr ""
 #: horizons/gui/modules/multiplayermenu.py:210
 msgid "This is not nice and we hope to offer a more convenient solution very soon."
 msgstr ""
+"Это не хорошо, и мы надеемся предложить более удобное решение в ближайшее "
+"время."
 
 #: horizons/gui/modules/multiplayermenu.py:211
 msgid "Meanwhile, please request the file {path} from the game creator and put it in {map_directory} ."
@@ -898,7 +900,7 @@ msgstr "Помощь"
 
 #: horizons/gui/modules/multiplayermenu.py:218
 msgid "This is a savegame."
-msgstr ""
+msgstr "Это сохранение."
 
 #: horizons/gui/modules/multiplayermenu.py:242
 msgid "Wrong version"
@@ -1087,7 +1089,7 @@ msgstr "Торговля"
 
 #: horizons/gui/tabs/buyselltab.py:139
 msgid "Click on one of the resource slots to add a trade offer."
-msgstr ""
+msgstr "Щелкните на одном из слотов для добавления торгового предложения."
 
 #. new res
 #: horizons/gui/tabs/buyselltab.py:186
