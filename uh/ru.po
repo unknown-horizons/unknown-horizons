@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2012-03-24 02:16+0100\n"
-"PO-Revision-Date: 2012-04-28 17:42+0200\n"
+"PO-Revision-Date: 2012-04-28 17:53+0200\n"
 "Last-Translator: Fedor <fedorka96@ya.ru>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: ru\n"
@@ -3042,7 +3042,7 @@ msgstr ""
 #. name_0 of buildings:lumberjackcamp
 #: horizons/i18n/objecttranslations.py:222
 msgid "Lumberjack Tent"
-msgstr ""
+msgstr "Палатка дровосека"
 
 #. name_1 of buildings:lumberjackcamp
 #: horizons/i18n/objecttranslations.py:224
@@ -3052,7 +3052,7 @@ msgstr ""
 #. tooltip_text of buildings:lumberjackcamp
 #: horizons/i18n/objecttranslations.py:226
 msgid "Chops down trees and turns them into boards."
-msgstr "Лесоруб: рубит деревья и делает из них доски."
+msgstr "Рубит деревья и делает из них доски."
 
 #. name of buildings:mainsquare
 #: horizons/i18n/objecttranslations.py:231
@@ -3061,9 +3061,8 @@ msgstr "Центральная площадь"
 
 #. tooltip_text of buildings:mainsquare
 #: horizons/i18n/objecttranslations.py:233
-#, fuzzy
 msgid "Supplies citizens with goods."
-msgstr "Центральная площадь: Снабжает жителей товарами."
+msgstr "Снабжает жителей товарами."
 
 #. name of buildings:mountain
 #: horizons/i18n/objecttranslations.py:238
@@ -3073,12 +3072,12 @@ msgstr "Гора"
 #. name of buildings:pastryshop
 #: horizons/i18n/objecttranslations.py:243
 msgid "Pastry Shop"
-msgstr ""
+msgstr "Кондитерская"
 
 #. tooltip_text of buildings:pastryshop
 #: horizons/i18n/objecttranslations.py:245
 msgid "Produces all kinds of confectionery."
-msgstr ""
+msgstr "Производит все виды кондитерских изделий."
 
 #. name of buildings:pasture
 #: horizons/i18n/objecttranslations.py:250
@@ -3087,9 +3086,8 @@ msgstr "Пастбище"
 
 #. tooltip_text of buildings:pasture
 #: horizons/i18n/objecttranslations.py:252
-#, fuzzy
 msgid "Raises sheep. Produces wool. Needs a farm."
-msgstr "Пастбище: Выращивает овец. Производит шерсть. Нуждается в ферме."
+msgstr "Выращивает овец. Производит шерсть. Нуждается в ферме."
 
 #. name of buildings:pavilion
 #: horizons/i18n/objecttranslations.py:257
@@ -3099,7 +3097,7 @@ msgstr "Святилище"
 #. tooltip_text of buildings:pavilion
 #: horizons/i18n/objecttranslations.py:259
 msgid "Fulfills religious needs of sailors."
-msgstr "Святилище: Предоставляет морякам доступ к религии."
+msgstr "Предоставляет морякам доступ к религии."
 
 #. name of buildings:pigsty
 #: horizons/i18n/objecttranslations.py:264
@@ -3108,9 +3106,8 @@ msgstr "Свинарник"
 
 #. tooltip_text of buildings:pigsty
 #: horizons/i18n/objecttranslations.py:266
-#, fuzzy
 msgid "Raises pigs. Needs a farm."
-msgstr "Свинарник: разводит свиней. Нуждается в ферме."
+msgstr "Разводит свиней. Нуждается в ферме."
 
 #. name of buildings:potatofield
 #: horizons/i18n/objecttranslations.py:271
@@ -3119,9 +3116,8 @@ msgstr "Картофельное поле"
 
 #. tooltip_text of buildings:potatofield
 #: horizons/i18n/objecttranslations.py:273
-#, fuzzy
 msgid "Yields food. Needs a farm."
-msgstr "Картофельное поле: Производит еду. Необходима ферма."
+msgstr "Производит еду. Необходима ферма."
 
 #. name of buildings:rampart
 #: horizons/i18n/objecttranslations.py:278
@@ -3130,14 +3126,13 @@ msgstr "Защитный вал"
 
 #. tooltip_text of buildings:rampart
 #: horizons/i18n/objecttranslations.py:280
-#, fuzzy
 msgid "Protects your settlement."
-msgstr "Деревянная баншя: защищает ваше поселение."
+msgstr "Защищает ваше поселение."
 
 #. name of buildings:ruinedtent
 #: horizons/i18n/objecttranslations.py:285
 msgid "Ruined Tent"
-msgstr ""
+msgstr "Разрушенная палатка"
 
 #. name of buildings:saltponds
 #: horizons/i18n/objecttranslations.py:290
@@ -3146,10 +3141,8 @@ msgstr "Солёные озёра"
 
 #. tooltip_text of buildings:saltponds
 #: horizons/i18n/objecttranslations.py:292
-#, fuzzy
 msgid "Evaporates salt. Built on sea coast."
-msgstr ""
-"Солёные озера: выпаривают соль. Должны быть расположены на морском берегу."
+msgstr "Выпаривают соль. Должны быть расположены на морском берегу."
 
 #. name of buildings:signalfire
 #: horizons/i18n/objecttranslations.py:297
@@ -3158,9 +3151,8 @@ msgstr "Сигнальный огонь"
 
 #. tooltip_text of buildings:signalfire
 #: horizons/i18n/objecttranslations.py:299
-#, fuzzy
 msgid "Allows the player to trade with the free trader."
-msgstr "Сигнальный костер: Позволяет игроку торговать со свободным торговцем."
+msgstr "Позволяет игроку торговать со свободным торговцем."
 
 #. name of buildings:smeltery
 #: horizons/i18n/objecttranslations.py:304
@@ -3169,29 +3161,28 @@ msgstr "Плавильня"
 
 #. tooltip_text of buildings:smeltery
 #: horizons/i18n/objecttranslations.py:306
-#, fuzzy
 msgid "Refines all kind of ores."
-msgstr "Плавильня: Перерабатывает все виды руды."
+msgstr "Перерабатывает все виды руды."
 
 #. name of buildings:spicefield
 #: horizons/i18n/objecttranslations.py:311
 msgid "Spice Field"
-msgstr ""
+msgstr "Поле специй"
 
 #. tooltip_text of buildings:spicefield
 #: horizons/i18n/objecttranslations.py:313
 msgid "Grows spices. Needs a farm."
-msgstr ""
+msgstr "Производит специи. Нуждается в ферме."
 
 #. name of buildings:stonemason
 #: horizons/i18n/objecttranslations.py:318
 msgid "Stonemason"
-msgstr ""
+msgstr "Каменщик"
 
 #. tooltip_text of buildings:stonemason
 #: horizons/i18n/objecttranslations.py:320
 msgid "Carves stone tops into bricks."
-msgstr ""
+msgstr "Режет камень на кирпичи."
 
 #. name of buildings:stonepit
 #: horizons/i18n/objecttranslations.py:325
@@ -3255,29 +3246,28 @@ msgstr "Палатка"
 #. name_1 of buildings:tent
 #: horizons/i18n/objecttranslations.py:357
 msgid "Hut"
-msgstr ""
+msgstr "Хижина"
 
 # 80%
 #. name_2 of buildings:tent
 #: horizons/i18n/objecttranslations.py:359
-#, fuzzy
 msgid "House"
-msgstr "Мышь"
+msgstr "Дом"
 
 #. name_3 of buildings:tent
 #: horizons/i18n/objecttranslations.py:361
 msgid "Stone house"
-msgstr ""
+msgstr "Каменный дом"
 
 #. name_4 of buildings:tent
 #: horizons/i18n/objecttranslations.py:363
 msgid "Estate"
-msgstr ""
+msgstr "Имение"
 
 #. name_5 of buildings:tent
 #: horizons/i18n/objecttranslations.py:365
 msgid "Manor"
-msgstr ""
+msgstr "Поместье"
 
 #. tooltip_text of buildings:tent
 #: horizons/i18n/objecttranslations.py:367
@@ -3352,12 +3342,12 @@ msgstr "Деревенская школа: Обеспечивает образо
 #. name of buildings:vineyard
 #: horizons/i18n/objecttranslations.py:414
 msgid "Vineyard"
-msgstr ""
+msgstr "Виноградник"
 
 #. tooltip_text of buildings:vineyard
 #: horizons/i18n/objecttranslations.py:416
 msgid "Produces grapes for use in wine and confectionery. Needs a farm."
-msgstr ""
+msgstr "Производит виноград для вина и кондитерских изделий. Необходима ферма."
 
 #. name of buildings:vintner
 #: horizons/i18n/objecttranslations.py:421
