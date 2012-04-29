@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2012-03-24 02:16+0100\n"
-"PO-Revision-Date: 2012-04-29 08:42+0200\n"
+"PO-Revision-Date: 2012-04-29 09:00+0200\n"
 "Last-Translator: Fedor <fedorka96@ya.ru>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: ru\n"
@@ -3212,9 +3212,8 @@ msgstr "Хранилище"
 # Very bad translate
 #. tooltip_text of buildings:storagetent
 #: horizons/i18n/objecttranslations.py:336
-#, fuzzy
 msgid "Extends stock and provides collectors."
-msgstr "Склад: Добавляет место для хранения ресурсов и предоставляет сборщиков."
+msgstr "Добавляет место для хранения ресурсов и предоставляет сборщиков."
 
 #. name of buildings:sugarfield
 #: horizons/i18n/objecttranslations.py:341
@@ -3380,12 +3379,12 @@ msgstr "Ткач: Производит ткань из бараньей шерс
 #. name of buildings:windmill
 #: horizons/i18n/objecttranslations.py:440
 msgid "Windmill"
-msgstr ""
+msgstr "Ветряная мельница"
 
 #. tooltip_text of buildings:windmill
 #: horizons/i18n/objecttranslations.py:442
 msgid "Grinds corn into flour."
-msgstr ""
+msgstr "Перемалывает кукурузу в муку."
 
 #. name of buildings:woodentower
 #: horizons/i18n/objecttranslations.py:447
@@ -3436,6 +3435,8 @@ msgstr ""
 #: horizons/manager.py:175
 msgid "We are very sorry and hope to have this bug fixed in a future version."
 msgstr ""
+"Мы сожалеем, и надеемся, что эта ошибка будет исправлена ​​в будущих "
+"версиях."
 
 #: horizons/mpsession.py:66
 msgid "Not possible"
@@ -3449,7 +3450,7 @@ msgstr ""
 
 #: horizons/mpsession.py:77
 msgid "The filename must consist only of letters, numbers, spaces and _.-"
-msgstr ""
+msgstr "Имя файла должно состоять только из букв, цифр, пробелов и _.-"
 
 #: horizons/savegamemanager.py:360
 #, python-format
@@ -3545,14 +3546,16 @@ msgstr "Запуск Неизведанных Горизонтов"
 #, python-format
 msgid "There is a more recent release of Unknown Horizons ({new_version}) than the one you are currently using ({old_version})."
 msgstr ""
+"Существует более поздняя версия Unknown Horizons ({new_version}) , чем та, "
+"которую вы используете ({old_version})."
 
 #: horizons/util/checkupdates.py:76
 msgid "Click to download"
-msgstr ""
+msgstr "Нажмите, чтобы скачать"
 
 #: horizons/util/checkupdates.py:80
 msgid "A page has been opened in your browser."
-msgstr ""
+msgstr "Страница была открыта в вашем браузере."
 
 #: horizons/util/uhdbaccessor.py:150
 #, python-format
@@ -3561,7 +3564,7 @@ msgstr "{building}: {description}"
 
 #: horizons/world/building/buildable.py:36
 msgid "Buildings must be built on islands."
-msgstr ""
+msgstr "Здания должны строиться на островах."
 
 #: horizons/world/building/buildable.py:37
 msgid "The ground is not suitable for this building."
@@ -3570,19 +3573,19 @@ msgstr ""
 #: horizons/world/building/buildable.py:38
 #: horizons/world/building/buildable.py:40
 msgid "You can only build this within your settlement."
-msgstr ""
+msgstr "Вы можете построить это только в пределах вашего поселения."
 
 #: horizons/world/building/buildable.py:39
 msgid "This area is already occupied."
-msgstr ""
+msgstr "Эта территория уже занята."
 
 #: horizons/world/building/buildable.py:41
 msgid "Another player has already occupied this island."
-msgstr ""
+msgstr "Другой игрок уже занял этот остров."
 
 #: horizons/world/building/buildable.py:42
 msgid "You can't build this on top of another building."
-msgstr ""
+msgstr "Вы не можете построить это на другом здании."
 
 #: horizons/world/building/buildable.py:43
 msgid "You can't build this on top of a unit."
