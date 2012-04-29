@@ -7,8 +7,8 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2012-03-24 02:16+0100\n"
-"PO-Revision-Date: 2012-04-28 21:03+0200\n"
-"Last-Translator: burlachenko <burlachenkomaxim@gmail.com>\n"
+"PO-Revision-Date: 2012-04-29 08:42+0200\n"
+"Last-Translator: Fedor <fedorka96@ya.ru>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: ru\n"
 "MIME-Version: 1.0\n"
@@ -615,7 +615,7 @@ msgstr "Настроенный язык {lang} не может быть загр
 
 #: horizons/engine/settingshandler.py:312
 msgid "Logging enabled"
-msgstr ""
+msgstr "Журналирование включено"
 
 #: horizons/engine/settingshandler.py:314
 #, python-format
@@ -1178,7 +1178,7 @@ msgstr "Покупка/Продажа"
 
 #: horizons/gui/tabs/overviewtab.py:240
 msgid "Too far from the nearest own or allied warehouse"
-msgstr ""
+msgstr "Слишком далеко от ближайшего собственного или союзного складов"
 
 #: horizons/gui/tabs/overviewtab.py:246
 msgid "Cannot equip trade ship with weapons"
@@ -1471,7 +1471,7 @@ msgstr "Сменить имя"
 #. (text of widget: old_name_label)
 #: horizons/i18n/guitranslations.py:110
 msgid "Old name:"
-msgstr ""
+msgstr "Старое название:"
 
 #. (helptext of widget: okButton)
 #: horizons/i18n/guitranslations.py:112
@@ -1957,9 +1957,8 @@ msgstr ""
 # 94%
 #. (text of widget: headline) Please keep the translation similarly short and concise, else the tooltip is not well understood by players.
 #: horizons/i18n/guitranslations.py:572
-#, fuzzy
 msgid "Select resource:"
-msgstr "Выбрать ресурсы:"
+msgstr "Выбрать ресурс:"
 
 #. (helptext of widget: make_default_btn)
 #: horizons/i18n/guitranslations.py:574
@@ -3049,7 +3048,7 @@ msgstr "Палатка дровосека"
 #. name_1 of buildings:lumberjackcamp
 #: horizons/i18n/objecttranslations.py:224
 msgid "Lumberjack Hut"
-msgstr ""
+msgstr "Хижина дровосека"
 
 #. tooltip_text of buildings:lumberjackcamp
 #: horizons/i18n/objecttranslations.py:226
@@ -3189,7 +3188,7 @@ msgstr "Режет камень на кирпичи."
 #. name of buildings:stonepit
 #: horizons/i18n/objecttranslations.py:325
 msgid "Stone Pit"
-msgstr ""
+msgstr "Каменный карьер"
 
 #. tooltip_text of buildings:stonepit
 #: horizons/i18n/objecttranslations.py:327
