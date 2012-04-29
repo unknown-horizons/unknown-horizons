@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2012-03-24 02:16+0100\n"
-"PO-Revision-Date: 2012-04-29 09:12+0200\n"
+"PO-Revision-Date: 2012-04-29 09:23+0200\n"
 "Last-Translator: Fedor <fedorka96@ya.ru>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: ru\n"
@@ -684,7 +684,7 @@ msgstr "Подтверждение перезаписи"
 
 #: horizons/gui/gui.py:371
 msgid "Invalid filename given"
-msgstr ""
+msgstr "Задано неверное имя файла"
 
 #: horizons/gui/gui.py:379
 msgid "Please select a savegame or click on cancel."

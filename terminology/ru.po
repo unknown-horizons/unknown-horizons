@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2012-03-31 21:42+0100\n"
-"PO-Revision-Date: 2012-04-29 14:00+0200\n"
+"PO-Revision-Date: 2012-04-29 14:29+0200\n"
 "Last-Translator: Fedor <fedorka96@ya.ru>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: ru\n"
@@ -70,9 +70,8 @@ msgid "lumberjack"
 msgstr "лесоруб"
 
 # 88%
-#, fuzzy
 msgid "resident"
-msgstr "жители"
+msgstr "житель"
 
 msgid "main square"
 msgstr "главная площадь"
@@ -286,14 +285,12 @@ msgid "citizens"
 msgstr "горожане"
 
 # 88%
-#, fuzzy
 msgid "merchants"
-msgstr "торговец"
+msgstr "торговцы"
 
 # 90%
-#, fuzzy
 msgid "aristocrats"
-msgstr "аристократ"
+msgstr "аристократы"
 
 msgid "potato"
 msgstr "картофель"
@@ -313,16 +310,16 @@ msgid "storage tent"
 msgstr "хранилище"
 
 msgid "wait"
-msgstr ""
+msgstr "Ждать"
 
 msgid "access"
-msgstr ""
+msgstr "Доступ"
 
 msgid "account"
 msgstr "счёт"
 
 msgid "amount"
-msgstr ""
+msgstr "количество"
 
 msgid "build menu"
 msgstr "меню строительства"
@@ -359,10 +356,10 @@ msgid "liquor"
 msgstr "алкоголь"
 
 msgid "location"
-msgstr ""
+msgstr "расположение"
 
 msgid "offer"
-msgstr ""
+msgstr "предложение"
 
 # 75%
 #, fuzzy
@@ -386,48 +383,46 @@ msgid "solution"
 msgstr "решение"
 
 msgid "space"
-msgstr ""
+msgstr "пространство"
 
 msgid "target"
-msgstr ""
+msgstr "цель"
 
 msgid "team"
 msgstr "команда"
 
 msgid "total"
-msgstr ""
+msgstr "всего"
 
 msgid "unable"
-msgstr ""
+msgstr "недоступно"
 
 msgid "active"
 msgstr "активный"
 
 msgid "afford"
-msgstr ""
+msgstr "себе"
 
 # 85%
-#, fuzzy
 msgid "animals"
-msgstr "животное"
+msgstr "животные"
 
 #
 msgid "Captain's log"
 msgstr "судовой журнал"
 
 # 75%
-#, fuzzy
 msgid "construct"
-msgstr "здание / сооружение"
+msgstr "сооружение"
 
 msgid "consume"
 msgstr "потреблять"
 
 msgid "enabled"
-msgstr ""
+msgstr "включено"
 
 msgid "entries"
-msgstr ""
+msgstr "записи"
 
 msgid "feature"
 msgstr "возможность / функция"
@@ -436,15 +431,14 @@ msgid "forest"
 msgstr "лес"
 
 # 80%
-#, fuzzy
 msgid "grows"
-msgstr "расти"
+msgstr "растёт"
 
 msgid "hold"
 msgstr "удерживать / держать"
 
 msgid "idle"
-msgstr ""
+msgstr "бездействие"
 
 msgid "income"
 msgstr "доход / прибыль"
@@ -463,7 +457,7 @@ msgid "lamb wool"
 msgstr "овечья шерсть"
 
 msgid "overview tab"
-msgstr ""
+msgstr "обзор"
 
 msgid "minimap"
 msgstr "миникарта"
@@ -472,7 +466,7 @@ msgid "issues"
 msgstr "проблемы"
 
 msgid "plant"
-msgstr ""
+msgstr "поле"
 
 #
 msgid "play"
@@ -482,12 +476,11 @@ msgid "playing"
 msgstr "играя"
 
 msgid "price"
-msgstr ""
+msgstr "цена"
 
 # 75%
-#, fuzzy
 msgid "read"
-msgstr "красный"
+msgstr "читать"
 
 #
 msgid "return"
@@ -505,15 +498,14 @@ msgid "sound"
 msgstr "звук"
 
 msgid "special"
-msgstr ""
+msgstr "специальный"
 
 msgid "store"
-msgstr ""
+msgstr "рынок"
 
 # 75%
-#, fuzzy
 msgid "tear"
-msgstr "команда"
+msgstr "разрыв"
 
 msgid "from time to time"
 msgstr "время от времени / иногда"
@@ -528,15 +520,14 @@ msgid "visit"
 msgstr "посещать"
 
 msgid "world"
-msgstr ""
+msgstr "мир"
 
 # 83%
-#, fuzzy
 msgid "yield"
-msgstr "прибыль / доходы"
+msgstr "прибыль"
 
 msgid "your ship"
-msgstr ""
+msgstr "ваш корабль"
 
 msgid "back"
 msgstr "назад"
@@ -546,16 +537,16 @@ msgid "build settlement"
 msgstr "основывать поселение"
 
 msgid "load"
-msgstr ""
+msgstr "загрузить"
 
 msgid "unload"
-msgstr ""
+msgstr "выгрузить"
 
 msgid "command"
-msgstr ""
+msgstr "команда"
 
 msgid "completed"
-msgstr ""
+msgstr "готово"
 
 msgid "condition"
 msgstr "условие"
@@ -564,10 +555,10 @@ msgid "contact"
 msgstr "контакт / контактировать"
 
 msgid "empty"
-msgstr ""
+msgstr "пусто"
 
 msgid "ensure"
-msgstr ""
+msgstr "обеспечить"
 
 #
 msgid "fulfill"
@@ -578,7 +569,7 @@ msgid "graphics"
 msgstr "графика"
 
 msgid "harvest"
-msgstr ""
+msgstr "урожай"
 
 # 3-е лицо
 msgid "hunts"
@@ -611,7 +602,7 @@ msgid "signal fire"
 msgstr "сигнальный огонь"
 
 msgid "statistics"
-msgstr ""
+msgstr "статистика"
 
 # 75%
 msgid "clay"
