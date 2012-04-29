@@ -422,6 +422,7 @@ msgstr "złoże kamienia"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
+#, fuzzy
 msgid "stone tops"
 msgstr "blaty kamienne"
 
@@ -623,7 +624,9 @@ msgstr ""
 msgid "Configured language {lang} could not be loaded"
 msgstr "Wybrany język {lang} nie mógł zostać załadowany"
 
+# To logging chyba ma inne znaczenie, normalnie znaczy to "wyręb". Pewnie to literówka w angielskiej wersji, zwłaszcza, że plik dotyczy opcji.
 #: horizons/engine/settingshandler.py:312
+#, fuzzy
 msgid "Logging enabled"
 msgstr "Logowanie włączone"
 
@@ -798,14 +801,12 @@ msgstr "[{key}] = {text}"
 #: horizons/gui/widgets/playerssettlements.py:101
 #: horizons/i18n/guitranslations.py:417 horizons/i18n/guitranslations.py:439
 #: horizons/i18n/guitranslations.py:459
-#, fuzzy
 msgid "Click to change the name of your settlement"
 msgstr "Kliknij aby zmienić nazwę osady."
 
 #. e.g. when the pirate is disabled
 #. this dialog is pretty useless in this case
 #: horizons/gui/ingamegui.py:278
-#, fuzzy
 msgid "No diplomacy possible"
 msgstr "Dyplomacja jest nie możliwa"
 
@@ -1039,7 +1040,7 @@ msgid "Boat builder overview"
 msgstr "Podgląd budowy statku"
 
 #: horizons/gui/tabs/boatbuildertab.py:101
-#, python-format
+#, python-format, fuzzy
 msgid "{ship} (place in queue: {place})"
 msgstr "{ship} (pozycja w kolejce: {place})"
 
@@ -1089,6 +1090,7 @@ msgstr "Usługi"
 
 #: horizons/gui/tabs/buildtabs.py:112 horizons/gui/tabs/buildtabs.py:115
 #: horizons/gui/tabs/buildtabs.py:122 horizons/gui/tabs/buildtabs.py:128
+#, fuzzy
 msgid "Companies"
 msgstr "Przedsiębiorstwa"
 

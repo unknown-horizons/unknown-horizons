@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2012-03-24 02:16+0100\n"
-"PO-Revision-Date: 2012-04-16 15:45+0200\n"
+"PO-Revision-Date: 2012-04-19 11:04+0200\n"
 "Last-Translator: Szontágh <szontagh.ferenc@exahost.eu>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: hu\n"
@@ -382,7 +382,7 @@ msgstr "vágódisznók"
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "potatoes"
-msgstr "krumplik"
+msgstr "krumpli"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
@@ -429,12 +429,12 @@ msgstr "textil"
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "tobacco leaves"
-msgstr "dohánylevelek"
+msgstr "dohánylevél"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "tobacco plants"
-msgstr "dohányültetvények"
+msgstr "dohányültetvény"
 
 #. This is a database entry: the name of a resource.
 #: database files sql

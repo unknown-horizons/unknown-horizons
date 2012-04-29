@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2012-03-24 02:16+0100\n"
-"PO-Revision-Date: 2012-04-18 07:25+0200\n"
+"PO-Revision-Date: 2012-04-19 19:06+0200\n"
 "Last-Translator: mightykai <k.janssen@home.nl>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: nl\n"
@@ -1424,7 +1424,7 @@ msgstr "Bouw menu (B)"
 #. (helptext of widget: destroy_tool)
 #: horizons/i18n/guitranslations.py:78
 msgid "Destroy (X)"
-msgstr "Vernietig (X)"
+msgstr "Afbreken (X)"
 
 #. (helptext of widget: diplomacyButton)
 #: horizons/i18n/guitranslations.py:80
@@ -3482,7 +3482,7 @@ msgstr "Fout: Onbekend hoe er om moet worden gegaan met probleem; {condition}."
 #: horizons/savegamemanager.py:410 horizons/savegamemanager.py:416
 #, python-format
 msgid "Error: Cannot find campaign '{name}'."
-msgstr "Fout: Can niet het verhaal '{name}' vinden."
+msgstr "Fout: Kan niet het verhaal '{name}' vinden."
 
 #: horizons/savegamemanager.py:435 horizons/savegamemanager.py:441
 #, python-format

@@ -95,7 +95,7 @@ old_head=$(git rev-parse HEAD)
 git pull
 new_time=$(git diff-tree -s --pretty=%ct HEAD)
 new_head=$(git rev-parse HEAD)
-if [ $new_time -lt $old_time ]; then # no new strings, abort script
+if [ $new_time -le $old_time ]; then # no new strings, abort script
 	echo 'No changes in translation export repository. Exiting.'
 	exit 1
 fi
