@@ -1,0 +1,93 @@
+tab1:
+- icon: content/gui/icons/tabwidget/buildmenu/level1_%s.png
+- helptext: Increment I
+- # first row
+  - Residents and infrastructure
+  - BUILDINGS.RESIDENTIAL
+  - BUILDINGS.STORAGE
+  - BUILDINGS.TRAIL
+  - BUILDINGS.LOOKOUT
+- # second row 
+  - Services
+  - BUILDINGS.STORAGE
+  - BUILDINGS.PAVILION
+  - BUILDINGS.SIGNAL_FIRE
+- # third row
+  - Companies
+  - BUILDINGS.LUMBERJACK
+  - BUILDINGS.TREE
+  - BUILDINGS.HUNTER
+  - BUILDINGS.FISHER
+
+tab2:
+- icon: content/gui/icons/tabwidget/buildmenu/level2_%s.png
+- helptext: Increment II
+- 
+  - Companies
+  - BUILDINGS.CLAY_PIT
+  - BUILDINGS.BRICKYARD
+  - BUILDINGS.WEAVER
+  - BUILDINGS.DISTILLERY
+-
+  - Fields
+  - BUILDINGS.FARM
+  - BUILDINGS.POTATO_FIELD
+  - BUILDINGS.PASTURE
+  - BUILDINGS.SUGARCANE_FIELD
+-
+  - Services
+  - BUILDINGS.VILLAGE_SCHOOL
+  - BUILDINGS.FIRE_STATION
+  - BUILDINGS.BOATBUILDER
+  - BUILDINGS.WOODEN_TOWER
+
+
+tab3:
+- icon: content/gui/icons/tabwidget/buildmenu/level3_%s.png
+- helptext: Increment III
+- 
+  - Mining
+  - BUILDINGS.IRON_MINE
+  - BUILDINGS.SMELTERY
+  - BUILDINGS.TOOLMAKER
+  - BUILDINGS.CHARCOAL_BURNER
+-
+  - Companies
+  - BUILDINGS.SALT_PONDS
+  - BUILDINGS.BUTCHERY
+  - BUILDINGS.TOBACCONIST
+  - BUILDINGS.BLENDER
+-
+  - Fields
+  - BUILDINGS.TOBACCO_FIELD
+  - BUILDINGS.CATTLE_RUN
+  - BUILDINGS.PIGSTY
+  - BUILDINGS.SPICE_FIELD
+-
+  - Services
+  - BUILDINGS.TAVERN
+  - # empty slot
+  - Military
+  - BUILDINGS.BARRACKS
+
+
+tab4:
+- icon: content/gui/icons/tabwidget/buildmenu/level4_%s.png
+- helptext: Increment IV
+- 
+  - Companies
+  - BUILDINGS.WINDMILL
+  - BUILDINGS.BAKERY
+  - BUILDINGS.VINTNER
+  - BUILDINGS.PASTRY_SHOP
+-
+  - Fields
+  - BUILDINGS.CORN_FIELD
+  - BUILDINGS.COCOA_FIELD
+  - BUILDINGS.VINEYARD
+  - BUILDINGS.ALVEARIES
+
+
+meta:
+  unlocking_strategy: per_increment
+

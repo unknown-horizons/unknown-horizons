@@ -143,12 +143,6 @@ class IngameGui(LivingObject):
 		self.resource_overview = ResourceOverviewBar(self.session)
 		ResourceBarResize.subscribe(self._on_resourcebar_resize)
 
-		# map buildings to build functions calls with their building id.
-		# This is necessary because BuildTabs have no session.
-		self.callbacks_build = dict()
-		for building_id in Entities.buildings.iterkeys():
-			self.callbacks_build[building_id] = Callback(self._build, building_id)
-
 		# Register for messages
 		SettlerUpdate.subscribe(self._on_settler_level_change)
 		SettlerInhabitantsChanged.subscribe(self._on_settler_inhabitant_change)
@@ -310,8 +304,7 @@ class IngameGui(LivingObject):
 			# indicates a mistake in the mental model of the user. Display a hint.
 			tab = TabWidget(self, tabs=[ TabInterface(widget="buildtab_no_settlement.xml") ])
 		else:
-			btabs = [BuildTab(index+1, self.callbacks_build, self.session) for index in \
-							 xrange(self.session.world.player.settler_level+1)]
+			btabs = BuildTab.create_tabs(self.session, self._build)
 			tab = TabWidget(self, tabs=btabs, name="build_menu_tab_widget", \
 											active_tab=BuildTab.last_active_build_tab)
 		self.show_menu(tab)

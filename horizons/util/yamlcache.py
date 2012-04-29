@@ -99,6 +99,7 @@ class YamlCache(object):
 
 	@classmethod
 	def get_file(cls, filename, game_data=False):
+		# TODO: this seems to not do anything, refactor it away or give it a purpose
 		data = cls.get_yaml_file(filename, game_data=game_data)
 		return data
 
