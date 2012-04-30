@@ -3,8 +3,8 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2012-03-31 21:42+0100\n"
-"PO-Revision-Date: 2012-04-29 14:29+0200\n"
-"Last-Translator: Fedor <fedorka96@ya.ru>\n"
+"PO-Revision-Date: 2012-04-30 21:21+0200\n"
+"Last-Translator: burlachenko <burlachenkomaxim@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: ru\n"
 "MIME-Version: 1.0\n"
@@ -299,9 +299,8 @@ msgid "settler"
 msgstr "поселенец"
 
 # 80%
-#, fuzzy
 msgid "speed"
-msgstr "семя / сеять / начальное значение (генератора случайных чисел)"
+msgstr "скорость / успех"
 
 msgid "stop"
 msgstr "остановить / прервать"
@@ -628,7 +627,7 @@ msgid "temporarily"
 msgstr "временно"
 
 msgid "values"
-msgstr ""
+msgstr "показатели"
 
 #~ msgid "branch office"
 #~ msgstr "контора"

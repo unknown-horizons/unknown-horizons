@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2012-03-24 02:16+0100\n"
-"PO-Revision-Date: 2012-04-29 09:23+0200\n"
+"PO-Revision-Date: 2012-04-29 14:31+0200\n"
 "Last-Translator: Fedor <fedorka96@ya.ru>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: ru\n"
@@ -882,6 +882,8 @@ msgstr "Это сохранение отсутствует (нажмите зд�
 #: horizons/gui/modules/multiplayermenu.py:209
 msgid "For multiplayer load, it is currently necessary for you to ensure you have the correct savegame file."
 msgstr ""
+"Для загрузки многопользовательской игры, в настоящее время вам необходимо "
+"убедиться в наличии файла сохранения игры."
 
 #: horizons/gui/modules/multiplayermenu.py:210
 msgid "This is not nice and we hope to offer a more convenient solution very soon."
