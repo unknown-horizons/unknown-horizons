@@ -27,17 +27,19 @@ class cachedfunction(object):
 	"""Decorator that caches a function's return value each time it is called.
 	If called later with the same arguments, the cached value is returned, and
 	not re-evaluated.
-	Does not support kwargs, since dicts are not hashable
 	"""
 	def __init__(self, func):
 		self.func = func
 		self.cache = {}
 
-	def __call__(self, *args):
+	def __call__(self, *args, **kwargs):
+		# dicts are not hashable, convert kwargs to a tuple
+		kwargs_tuple = tuple(sorted(kwargs.items()))
+
 		try:
-			return self.cache[args]
+			return self.cache[(args, kwargs_tuple)]
 		except KeyError:
-			self.cache[args] = value = self.func(*args)
+			self.cache[(args, kwargs_tuple)] = value = self.func(*args, **kwargs)
 			return value
 		except TypeError:
 			assert False, "Supplied invalid argument to cache decorator"
@@ -53,12 +55,16 @@ class cachedmethod(object):
 		self.instance = instance
 		return self
 
-	def __call__(self,*args):
+	def __call__(self, *args, **kwargs):
+		# dicts are not hashable, convert kwargs to a tuple
+		kwargs_tuple = tuple(sorted(kwargs.items()))
+
 		instance = self.instance
+
 		try:
-			return self.cache[(instance, args)]
+			return self.cache[(instance, args, kwargs_tuple)]
 		except KeyError:
-			self.cache[(instance,args)] = value = self.func(instance, *args)
+			self.cache[(instance, args, kwargs_tuple)] = value = self.func(instance, *args, **kwargs)
 			return value
 		except TypeError:
 			assert False, "Supplied invalid argument to cache decorator"
