@@ -7,8 +7,8 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2012-03-24 02:16+0100\n"
-"PO-Revision-Date: 2012-04-18 23:11+0200\n"
-"Last-Translator: djot <djot@hotmail.com>\n"
+"PO-Revision-Date: 2012-04-30 12:28+0200\n"
+"Last-Translator: Raymond <raymondv@gmx.de>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: de\n"
 "MIME-Version: 1.0\n"
@@ -1461,13 +1461,17 @@ msgstr "Karte im Uhrzeigersinn drehen (.)"
 #. (helptext of widget: speedDown)
 #: horizons/i18n/guitranslations.py:90
 msgid "Decrease game speed (-)"
-msgstr "Spielgeschwindigkeit verringern (-)"
+msgstr ""
+"Spielgeschwindigkeit \n"
+"verringern (-)"
 
 # 82%
 #. (helptext of widget: speedUp)
 #: horizons/i18n/guitranslations.py:92
 msgid "Increase game speed (+)"
-msgstr "Spielgeschwindigkeit erhöhen (+)"
+msgstr ""
+"Spielgeschwindigkeit \n"
+"erhöhen (+)"
 
 #. (helptext of widget: zoomIn)
 #: horizons/i18n/guitranslations.py:94
@@ -1556,7 +1560,7 @@ msgstr "Aktueller Baufortschritt:"
 #: horizons/i18n/guitranslations.py:143 horizons/i18n/guitranslations.py:206
 #: horizons/i18n/guitranslations.py:383
 msgid "Building overview"
-msgstr "Gebäude-Ubersicht"
+msgstr "Gebäude-Übersicht"
 
 #. (helptext of widget: BB_cancel_button) abort construction of a ship, lose invested resources
 #: horizons/i18n/guitranslations.py:145
