@@ -104,7 +104,6 @@ class BuildTab(TabInterface):
 		if self.unlocking_strategy == self.__class__.unlocking_strategies.per_increment:
 			headline_lbl.text = _(self.session.db.get_settler_name(self.tabindex))
 
-		self.refresh()
 
 	def set_content(self):
 		"""Parses self.row_definitions and sets the content accordingly"""
