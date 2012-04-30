@@ -26,7 +26,7 @@ from horizons.command.unit import Act
 from horizons.world.units.collectors.collector import Collector
 from horizons.gui.mousetools.buildingtool import BuildingTool
 from horizons.gui.mousetools.cursortool import CursorTool
-from horizons.component.collectingcompontent import CollectingComponent
+from horizons.component.collectingcomponent import CollectingComponent
 from tests.gui import TestFinished, gui_test
 from tests.gui.helper import get_player_ship
 

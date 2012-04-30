@@ -23,7 +23,7 @@ import tempfile
 
 from horizons.command.building import Build, Tear
 from horizons.component.storagecomponent import StorageComponent
-from horizons.component.collectingcompontent import CollectingComponent
+from horizons.component.collectingcomponent import CollectingComponent
 from horizons.world.production.producer import Producer, QueueProducer
 from horizons.constants import BUILDINGS, RES, PRODUCTIONLINES, GAME
 from horizons.util.worldobject import WorldObject
