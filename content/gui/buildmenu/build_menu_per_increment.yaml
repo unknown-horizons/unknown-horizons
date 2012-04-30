@@ -9,7 +9,7 @@ tab1:
   - BUILDINGS.LOOKOUT
 - # second row 
   - Services
-  - BUILDINGS.STORAGE
+  - BUILDINGS.MAIN_SQUARE
   - BUILDINGS.PAVILION
   - BUILDINGS.SIGNAL_FIRE
 - # third row
