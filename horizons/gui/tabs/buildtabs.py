@@ -23,7 +23,7 @@ from horizons.entities import Entities
 from horizons.gui.tabs.tabinterface import TabInterface
 from horizons.command.building import Build
 from horizons.constants import BUILDINGS
-from horizons.util import Callback, YamlCache
+from horizons.util import Callback, YamlCache, decorators
 from horizons.util.lastactiveplayersettlementmanager import LastActivePlayerSettlementManager
 from horizons.component.storagecomponent import StorageComponent
 from horizons.messaging import NewPlayerSettlementHovered
@@ -45,11 +45,18 @@ class BuildTab(TabInterface):
 	"""
 	lazy_loading = True
 
-	build_menu_config = "content/gui/buildmenu/build_menu_per_increment.yaml"
+	build_menu_config_per_increment = "content/gui/buildmenu/build_menu_per_increment.yaml"
+
+	build_menu_config = build_menu_config_per_increment
+
+	# Enable this instead of the line above for experimental per type menu
+	#build_menu_config = "content/gui/buildmenu/build_menu_per_type.yaml"
 
 	# NOTE: check for occurences of this when adding one, you might want to
 	#       add respective code there as well
-	unlocking_strategies = Enum("per_increment")
+	unlocking_strategies = Enum("tab_per_increment", # 1 tab per increment
+	                            "single_per_increment" # each single building unlocked if increment is unlocked
+	                            )
 
 	last_active_build_tab = None
 
@@ -62,6 +69,7 @@ class BuildTab(TabInterface):
 		"""
 		icon_path = None
 		helptext = None
+		headline = None
 		rows = []
 		for entry in data:
 			if isinstance(entry, dict):
@@ -73,8 +81,10 @@ class BuildTab(TabInterface):
 					icon_path = value
 				elif key == "helptext":
 					helptext = value
+				elif key == "headline":
+					headline = value
 				else:
-					raise InvalidBuildMenuFileFormat("Invalid key: %s\nMust be either icon or helptext"%key)
+					raise InvalidBuildMenuFileFormat("Invalid key: %s\nMust be either icon, helptext or headline." % key)
 			elif isinstance(entry, list):
 				# this is a line of data
 				rows.append(entry) # parse later on demand
@@ -93,6 +103,7 @@ class BuildTab(TabInterface):
 		self.unlocking_strategy = unlocking_strategy
 		self.row_definitions = rows
 		self.helptext = _(helptext)
+		self.headline = _(headline) if headline else headline # don't translate None
 
 	def _lazy_loading_init(self):
 		super(BuildTab, self)._lazy_loading_init()
@@ -101,7 +112,9 @@ class BuildTab(TabInterface):
 
 	def init_gui(self):
 		headline_lbl = self.widget.child_finder('headline')
-		if self.unlocking_strategy == self.__class__.unlocking_strategies.per_increment:
+		if self.headline: # prefer specific headline
+			headline_lbl.text = self.headline
+		elif self.unlocking_strategy == self.__class__.unlocking_strategies.tab_per_increment:
 			headline_lbl.text = _(self.session.db.get_settler_name(self.tabindex))
 
 
@@ -110,6 +123,10 @@ class BuildTab(TabInterface):
 		settlement = LastActivePlayerSettlementManager().get()
 		def _set_entry(button, icon, building_id):
 			"""Configure a single build menu button"""
+			if self.unlocking_strategy == self.__class__.unlocking_strategies.single_per_increment and \
+			   self._get_building_increments()[building_id] > self.session.world.player.settler_level:
+				return
+
 			building = Entities.buildings[building_id]
 			#xgettext:python-format
 			button.helptext = self.session.db.get_building_tooltip(building_id)
@@ -207,7 +224,7 @@ class BuildTab(TabInterface):
 		data = YamlCache.get_file( source, game_data=True )
 		if 'meta' not in data:
 			raise InvalidBuildMenuFileFormat("File does not contain \"meta\" section")
-		metadata = data.pop('meta')
+		metadata = data['meta']
 		if 'unlocking_strategy' not in metadata:
 			raise InvalidBuildMenuFileFormat("\"meta\" section does not contain \"unlocking_strategy\"")
 		try:
@@ -218,8 +235,10 @@ class BuildTab(TabInterface):
 		# create tab instances
 		tabs = []
 		for tab, tabdata in sorted(data.iteritems()):
+			if tab == "meta":
+				continue # not a tab
 
-			if unlocking_strategy == cls.unlocking_strategies.per_increment and len(tabs) > session.world.player.settler_level:
+			if unlocking_strategy == cls.unlocking_strategies.tab_per_increment and len(tabs) > session.world.player.settler_level:
 				break
 
 			try:
@@ -233,6 +252,24 @@ class BuildTab(TabInterface):
 
 		return tabs
 
+	@classmethod
+	@decorators.cachedfunction
+	def _get_building_increments(cls):
+		"""Returns a dictionary mapping building type ids to their increments"""
+		building_increments = {}
+		data = YamlCache.get_file( cls.build_menu_config_per_increment, game_data=True )
+		increment = -1
+		for tab, tabdata in sorted(data.iteritems()):
+			if tab == "meta":
+				continue # not a tab
 
+			increment += 1
+
+			for row in tabdata:
+				if isinstance(row, list): # actual content
+					for entry in row:
+						if isinstance(entry, int): # actual building button
+							building_increments[entry] = increment
+		return building_increments
 
 

@@ -89,5 +89,5 @@ tab4:
 
 
 meta:
-  unlocking_strategy: per_increment
+  unlocking_strategy: tab_per_increment
 

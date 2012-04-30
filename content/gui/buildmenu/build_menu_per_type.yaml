@@ -1,0 +1,26 @@
+tab1:
+- icon: content/gui/icons/tabwidget/buildmenu/level1_%s.png
+- headline: Companies
+- helptext: Companies
+-
+  - Companies
+  - BUILDINGS.LUMBERJACK
+  - BUILDINGS.FISHER
+  - BUILDINGS.CLAY_PIT
+  - BUILDINGS.IRON_MINE
+
+tab2:
+- icon: content/gui/icons/tabwidget/buildmenu/level2_%s.png
+- headline: Residential
+- helptext: Residential
+-
+  - Residential
+  - BUILDINGS.MAIN_SQUARE
+  - BUILDINGS.RESIDENTIAL
+  - BUILDINGS.TAVERN
+  - BUILDINGS.FIRE_STATION
+
+
+meta:
+  unlocking_strategy: single_per_increment
+
