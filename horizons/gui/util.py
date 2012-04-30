@@ -70,7 +70,6 @@ def load_uh_widget(filename, style=None, center_widget=False):
 
 	return widget
 
-@decorators.cachedfunction
 def get_res_icon_path(res, size, greyscale=False):
 	"""Returns path of a resource icon or placeholder path, if icon does not exist.
 	@param res: resource id. Pass 'placeholder' to get placeholder path.
