@@ -71,8 +71,10 @@ class ConcreteObject(WorldObject):
 		runtime, action_set_id = db.get_concrete_object_data(worldid)
 		# action_set_id should never be None in regular games,
 		# but this information was lacking in savegames before rev 59.
-		# this is implicitly handled here.
+		if action_set_id is None:
+			action_set_id = self.__class__.get_random_action_set(level=self.level if hasattr(self, "level") else 0)
 		self.__init(action_set_id)
+
 		# delay setting of runtime until load of sub/super-class has set the action
 		def set_action_runtime(self, runtime):
 			# workaround to delay resolution of self._instance, which doesn't exist yet
