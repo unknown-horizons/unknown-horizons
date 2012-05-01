@@ -1,26 +1,113 @@
 tab1:
 - icon: content/gui/icons/tabwidget/buildmenu/level1_%s.png
-- headline: Companies
-- helptext: Companies
+- headline: Residents and infrastructure
+- helptext: Residents and infrastructure
 -
-  - Companies
-  - BUILDINGS.LUMBERJACK
-  - BUILDINGS.FISHER
-  - BUILDINGS.CLAY_PIT
-  - BUILDINGS.IRON_MINE
+  - Infrastructure
+  - BUILDINGS.TRAIL
+  - BUILDINGS.STORAGE
+  - BUILDINGS.LOOKOUT
+  - BUILDINGS.SIGNAL_FIRE
+-
+  - Residential
+  - BUILDINGS.RESIDENTIAL
+-
+  - Services
+  - BUILDINGS.MAIN_SQUARE
+  - BUILDINGS.PAVILION
+  - BUILDINGS.VILLAGE_SCHOOL
+  - BUILDINGS.TAVERN
+-
+  - TODO #TODO find subcategory name: "Preventive" sounds really bad. suggestions?
+  - BUILDINGS.FIRE_STATION
+  - BUILDINGS.DOCTOR
 
 tab2:
 - icon: content/gui/icons/tabwidget/buildmenu/level2_%s.png
-- headline: Residential
-- helptext: Residential
+- headline: Fields
+- helptext: Fields
 -
-  - Residential
-  - BUILDINGS.MAIN_SQUARE
-  - BUILDINGS.RESIDENTIAL
-  - BUILDINGS.TAVERN
-  - BUILDINGS.FIRE_STATION
+  - Pioneers
+  - BUILDINGS.FARM
+  - BUILDINGS.PASTURE
+  - BUILDINGS.POTATO_FIELD
+  - BUILDINGS.SUGARCANE_FIELD
+-
+  - Settlers
+  - BUILDINGS.TOBACCO_FIELD
+  - BUILDINGS.CATTLE_RUN
+  - BUILDINGS.PIGSTY
+  - BUILDINGS.SPICE_FIELD
+-
+  - Citizens
+  - BUILDINGS.CORN_FIELD
+  - BUILDINGS.COCOA_FIELD
+  - BUILDINGS.VINEYARD
+  - BUILDINGS.ALVEARIES
+
+tab3:
+- icon: content/gui/icons/tabwidget/buildmenu/level3_%s.png
+- headline: Agricultural Companies #TODO find name
+- helptext: Agricultural Companies #TODO find name
+-
+  - Sea
+  - BUILDINGS.FISHER
+  - BUILDINGS.SALT_PONDS
+-
+  - Food
+  - BUILDINGS.HUNTER
+  - BUILDINGS.BUTCHERY
+  - BUILDINGS.WINDMILL
+  - BUILDINGS.BAKERY
+-
+  - BUILDINGS.WEAVER
+  - BUILDINGS.BLENDER
+-
+  - BUILDINGS.DISTILLERY
+  - BUILDINGS.TOBACCONIST
+  - BUILDINGS.VINTNER
+  - BUILDINGS.PASTRY_SHOP
+
+
+
+tab4:
+- icon: content/gui/icons/tabwidget/buildmenu/level4_%s.png
+- headline: Companies
+- helptext: Companies
+-
+  - Tree only in LJ related?
+  - BUILDINGS.LUMBERJACK
+  - BUILDINGS.TREE
+  - BUILDINGS.CHARCOAL_BURNER
+-
+  - Mining
+  - BUILDINGS.CLAY_PIT
+  - BUILDINGS.BRICKYARD
+  - BUILDINGS.IRON_MINE
+  - BUILDINGS.SMELTERY
+-
+  - BUILDINGS.TOOLMAKER
+
+tab5:
+- icon: content/gui/icons/tabwidget/buildmenu/level5_%s.png
+- headline: Military
+- helptext: Military
+-
+  - Fortifications
+  - BUILDINGS.WOODEN_TOWER
+-
+  - Military Service
+  - BUILDINGS.BOAT_BUILDER
+  - # empty
+  - BUILDINGS.BARRACKS
+
+tab6:
+- icon: content/gui/icons/tabwidget/buildmenu/level6_%s.png
+- headline: Aesthetics
+- helptext: Aesthetics
+-
+  -
 
 
 meta:
   unlocking_strategy: single_per_increment
-
