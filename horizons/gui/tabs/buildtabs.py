@@ -124,7 +124,7 @@ class BuildTab(TabInterface):
 		def _set_entry(button, icon, building_id):
 			"""Configure a single build menu button"""
 			if self.unlocking_strategy == self.__class__.unlocking_strategies.single_per_increment and \
-			   self._get_building_increments()[building_id] > self.session.world.player.settler_level:
+			   self.get_building_increments()[building_id] > self.session.world.player.settler_level:
 				return
 
 			building = Entities.buildings[building_id]
@@ -254,8 +254,9 @@ class BuildTab(TabInterface):
 
 	@classmethod
 	@decorators.cachedfunction
-	def _get_building_increments(cls):
-		"""Returns a dictionary mapping building type ids to their increments"""
+	def get_building_increments(cls):
+		"""Returns a dictionary mapping building type ids to their increments
+		@return cached dictionary (don't modifiy)"""
 		building_increments = {}
 		data = YamlCache.get_file( cls.build_menu_config_per_increment, game_data=True )
 		increment = -1
