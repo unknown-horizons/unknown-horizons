@@ -95,7 +95,7 @@ def test_ticket_1005(s, p):
 	settlement, island = settle(s)
 	assert len(s.world.ships) == 2
 
-	builder = Build(BUILDINGS.BOATBUILDER, 35, 20, island, settlement=settlement)(p)
+	builder = Build(BUILDINGS.BOAT_BUILDER, 35, 20, island, settlement=settlement)(p)
 	builder.get_component(StorageComponent).inventory.alter(RES.TEXTILE, 5)
 	builder.get_component(StorageComponent).inventory.alter(RES.BOARDS, 4)
 	builder.get_component(Producer).add_production_by_id(15)
@@ -110,7 +110,7 @@ def test_ticket_1232(s, p):
 	settlement, island = settle(s)
 	assert len(s.world.ships) == 2
 
-	boat_builder = Build(BUILDINGS.BOATBUILDER, 35, 20, island, settlement=settlement)(p)
+	boat_builder = Build(BUILDINGS.BOAT_BUILDER, 35, 20, island, settlement=settlement)(p)
 	boat_builder.get_component(StorageComponent).inventory.alter(RES.TEXTILE, 10)
 	boat_builder.get_component(StorageComponent).inventory.alter(RES.BOARDS, 8)
 	assert isinstance(boat_builder.get_component(Producer),QueueProducer)
@@ -158,7 +158,7 @@ def test_ticket_1427():
 	session, player = new_session()
 	settlement, island = settle(session)
 
-	boat_builder = Build(BUILDINGS.BOATBUILDER, 35, 20, island, settlement=settlement)(player)
+	boat_builder = Build(BUILDINGS.BOAT_BUILDER, 35, 20, island, settlement=settlement)(player)
 	worldid = boat_builder.worldid
 
 	# Make sure no boards are available

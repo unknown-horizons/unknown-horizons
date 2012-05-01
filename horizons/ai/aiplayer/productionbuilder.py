@@ -54,7 +54,7 @@ class ProductionBuilder(AreaBuilder):
 	* last_collector_improvement_road: the last tick when a new road connection was built to improve collector coverage
 	"""
 
-	coastal_building_classes = [BUILDINGS.FISHER, BUILDINGS.BOATBUILDER, BUILDINGS.SALT_PONDS]
+	coastal_building_classes = [BUILDINGS.FISHER, BUILDINGS.BOAT_BUILDER, BUILDINGS.SALT_PONDS]
 
 	def __init__(self, settlement_manager):
 		super(ProductionBuilder, self).__init__(settlement_manager)

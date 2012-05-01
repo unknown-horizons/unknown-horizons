@@ -121,7 +121,7 @@ class BUILDINGS:
 	HUNTER           =  9
 	SETTLER_RUIN     = 10
 	FISHER           = 11
-	BOATBUILDER      = 12
+	BOAT_BUILDER     = 12
 	LOOKOUT          = 13
 
 	TRAIL            = 15
