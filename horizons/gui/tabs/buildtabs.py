@@ -22,7 +22,6 @@
 from horizons.entities import Entities
 from horizons.gui.tabs.tabinterface import TabInterface
 from horizons.command.building import Build
-from horizons.constants import BUILDINGS
 from horizons.util import Callback, YamlCache, decorators
 from horizons.util.lastactiveplayersettlementmanager import LastActivePlayerSettlementManager
 from horizons.component.storagecomponent import StorageComponent
@@ -128,7 +127,6 @@ class BuildTab(TabInterface):
 				return
 
 			building = Entities.buildings[building_id]
-			#xgettext:python-format
 			button.helptext = self.session.db.get_building_tooltip(building_id)
 
 			enough_res = False # don't show building by default
@@ -160,7 +158,8 @@ class BuildTab(TabInterface):
 
 			button.capture(Callback(self.build_callback, building_id))
 
-
+		MAX_ROWS = 4
+		MAX_COLS = 4
 		for row_num, row in enumerate(self.row_definitions):
 			# we have integers for building types, strings for headlines above slots and None as empty slots
 			column = -1 # can't use enumerate, not always incremented
@@ -169,6 +168,14 @@ class BuildTab(TabInterface):
 				position = (10*column) + (row_num+1) # legacy code, first row is 1, 11, 21
 				if entry is None:
 					continue
+				elif (column + 1) > MAX_COLS: # out of 4x4 bounds
+					err = "Invalid entry '%s': column %s does not exist." % (entry, column + 1)
+					err += " Max. column amount in current layout is %s." % MAX_COLS
+					raise InvalidBuildMenuFileFormat(err)
+				elif row_num > MAX_ROWS: # out of 4x4 bounds
+					err = "Invalid entry '%s': row %s does not exist." % (entry, row_num)
+					err += " Max. row amount in current layout is %s." % MAX_ROWS
+					raise InvalidBuildMenuFileFormat(err)
 				elif isinstance(entry, basestring):
 					column -= 1 # a headline does not take away a slot
 					lbl = self.widget.child_finder('label_{position:02d}'.format(position=position))
