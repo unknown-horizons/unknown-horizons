@@ -65,6 +65,8 @@ class ResourceOverviewBar(object):
 
 	GOLD_ENTRY_GUI_FILE = "resource_overview_bar_gold.xml"
 	ENTRY_GUI_FILE = "resource_overview_bar_entry.xml"
+	ICON_POS_BALANCE = "content/gui/icons/resources/positive32.png"
+	ICON_NEG_BALANCE = "content/gui/icons/resources/negative32.png"
 
 	STYLE = "resource_bar"
 
@@ -90,8 +92,9 @@ class ResourceOverviewBar(object):
 
 		# special slot because of special properties
 		self.gold_gui = load_uh_widget(self.__class__.GOLD_ENTRY_GUI_FILE, style=self.__class__.STYLE)
+		self.gold_gui.balance_visible = False
 		self.gold_gui.child_finder = PychanChildFinder(self.gold_gui)
-		self.gold_gui.findChild(name="res_icon").image = get_res_icon_path(RES.GOLD, 32)
+		self.gold_gui.child_finder("res_icon").image = get_res_icon_path(RES.GOLD, 32)
 
 		self.gui = [] # list of slots
 		self.resource_configurations = weakref.WeakKeyDictionary()
@@ -114,6 +117,24 @@ class ResourceOverviewBar(object):
 		self._custom_default_resources = None
 		NewPlayerSettlementHovered.unsubscribe(self._on_different_settlement)
 
+	def _update_balance_display(self, toggle=False):
+		"""Callback for clicking on gold icon (ticket #1671).
+		@param toggle: Whether to enable/disable the balance display or only update icon (pos/neg)
+		"""
+		icon = self.gold_gui.child_finder('res_icon')
+		icon.capture(Callback(self._update_balance_display, True), event_name='mouseClicked')
+		if toggle:
+			self.gold_gui.balance_visible = not self.gold_gui.balance_visible
+		balance = sum(settlement.balance for settlement in self.session.world.player.settlements)
+		if self.gold_gui.balance_visible:
+			icon.image = self.ICON_NEG_BALANCE if balance < 0 else self.ICON_POS_BALANCE
+			#print balance
+			#TODO instead of printing the balance, display it in a subwidget in-game
+			# possible ideas: use building cost widget (below gold icon) and display as +10 or -25
+			# might be hairy to detect all corner cases with the actual building cost preview
+		else:
+			icon.image = get_res_icon_path(RES.GOLD, 32)
+
 	def _update_default_configuration(self):
 		# user defined variante of DEFAULT_RESOURCES (will be preferred)
 		self._custom_default_resources = None
@@ -128,6 +149,8 @@ class ResourceOverviewBar(object):
 			for position, res in enumerate(config):
 				db("INSERT INTO resource_overview_bar(object, position, resource) VALUES(?, ?, ?)",
 				   obj.worldid, position, res)
+		#db("INSERT INTO metadata (name, value) VALUES (?, ?)",
+		#	"balance_visible", self.gold_gui.balance_visible )
 
 	def load(self, db):
 		from horizons.util import WorldObject
@@ -138,6 +161,7 @@ class ResourceOverviewBar(object):
 				l.append( (pos, res) )
 			obj = WorldObject.get_object_by_id(obj)
 			self.resource_configurations[obj] = [ i[1] for i in sorted(l) ]
+		#self.gold_gui.balance_visible = db("SELECT value FROM metadata WHERE name = ?", "balance_visible")
 
 		# called when any game (also new ones) start
 		# register at player inventory for gold updates
@@ -323,6 +347,8 @@ class ResourceOverviewBar(object):
 		# reposition according to magic forumula passed down from the elders in order to support centering
 		self.gold_gui.resizeToContent() # update label size
 		gold_available_lbl.position = (33 - gold_available_lbl.size[0]/2,  51)
+
+		self._update_balance_display()
 
 	def _update_resources(self):
 		"""Same as _update_gold but for all other slots"""
