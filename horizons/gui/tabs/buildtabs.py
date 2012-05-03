@@ -44,12 +44,16 @@ class BuildTab(TabInterface):
 	"""
 	lazy_loading = True
 
-	build_menu_config_per_increment = "content/gui/buildmenu/build_menu_per_increment.yaml"
+	build_menus = [
+	  "content/gui/buildmenu/build_menu_per_increment.yaml",
+	  "content/gui/buildmenu/build_menu_per_type.yaml"
+	  ]
 
-	build_menu_config = build_menu_config_per_increment
+	build_menu_config_per_increment = build_menus[0]
 
-	# Enable this instead of the line above for experimental per type menu
-	#build_menu_config = "content/gui/buildmenu/build_menu_per_type.yaml"
+	default_build_menu_config = build_menu_config_per_increment
+
+	cur_build_menu_config = default_build_menu_config
 
 	# NOTE: check for occurences of this when adding one, you might want to
 	#       add respective code there as well
@@ -59,12 +63,13 @@ class BuildTab(TabInterface):
 
 	last_active_build_tab = None
 
-	def __init__(self, session, tabindex, data, build_callback, unlocking_strategy):
+	def __init__(self, session, tabindex, data, build_callback, unlocking_strategy, build_menu_config):
 		"""
 		@param tabindex: position of tab
 		@param data: data directly from yaml specifying the contents of this tab
 		@param build_callback: called on clicks
 		@param unlocking_strategy: element of unlocking_strategies
+		@param build_menu_config: entry of build_menus where this definition originates from
 		"""
 		icon_path = None
 		helptext = None
@@ -103,6 +108,7 @@ class BuildTab(TabInterface):
 		self.row_definitions = rows
 		self.helptext = _(helptext)
 		self.headline = _(headline) if headline else headline # don't translate None
+		self.build_menu_config = build_menu_config
 
 	def _lazy_loading_init(self):
 		super(BuildTab, self)._lazy_loading_init()
@@ -215,17 +221,27 @@ class BuildTab(TabInterface):
 		self.__class__.last_active_build_tab = self.tabindex
 		super(BuildTab, self).show()
 
+		self.widget.child_finder("switch_build_menu_config_button").capture(self._switch_build_menu_config)
+
 	def hide(self):
 		self.__remove_changelisteners()
 		super(BuildTab, self).hide()
+
+	def _switch_build_menu_config(self):
+		"""Sets next build menu config and recreates the gui"""
+		cur_index = self.__class__.build_menus.index( self.cur_build_menu_config )
+		new_index = (cur_index + 1 ) % len(self.__class__.build_menus)
+		self.__class__.cur_build_menu_config = self.__class__.build_menus[ new_index ]
+
+		self.session.ingame_gui.show_build_menu(update=True)
+
 
 	@classmethod
 	def create_tabs(cls, session, build_callback):
 		"""Create according to current build menu config
 		@param build_callback: function to call to enable build mode, has to take building type parameter
 		"""
-		# TODO: this should be configurable
-		source = cls.build_menu_config
+		source = cls.cur_build_menu_config
 
 		# parse
 		data = YamlCache.get_file( source, game_data=True )
@@ -249,7 +265,7 @@ class BuildTab(TabInterface):
 				break
 
 			try:
-				tab = BuildTab(session, len(tabs), tabdata, build_callback, unlocking_strategy)
+				tab = BuildTab(session, len(tabs), tabdata, build_callback, unlocking_strategy, source)
 				tabs.append( tab )
 			except Exception as e:
 				to_add = "\nThis error happened in %s of %s ." % (tab, source)
