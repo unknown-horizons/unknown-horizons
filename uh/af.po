@@ -7,15 +7,15 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2012-03-24 02:16+0100\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"PO-Revision-Date: 2012-05-03 22:42+0200\n"
+"Last-Translator: Raymond <raymondv@gmx.de>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: af\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
-"X-Generator: Translate Toolkit 1.8.1\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Pootle 2.1.5\n"
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
@@ -36,7 +36,7 @@ msgstr ""
 #. This is a database entry: the name of an inhabitant increment (tier / level).
 #: database files sql
 msgid "Aristocrats"
-msgstr ""
+msgstr "aristokrate"
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
@@ -47,7 +47,7 @@ msgstr ""
 #. This is a database entry: the name of an inhabitant increment (tier / level).
 #: database files horizons/i18n/guitranslations.py:224 sql
 msgid "Citizens"
-msgstr ""
+msgstr "burgers"
 
 #. This is a database entry: the name of an inhabitant increment (tier / level).
 #: database files sql
@@ -63,7 +63,7 @@ msgstr ""
 #. This is a database entry: the name of an inhabitant increment (tier / level).
 #: database files horizons/i18n/guitranslations.py:276 sql
 msgid "Pioneers"
-msgstr ""
+msgstr "pioniers"
 
 #. (text of widget: headline)
 #. This is a database entry: the name of an inhabitant increment (tier / level).
@@ -185,7 +185,7 @@ msgstr ""
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "cannon"
-msgstr ""
+msgstr "kanon"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
@@ -215,7 +215,7 @@ msgstr ""
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "cocoa"
-msgstr ""
+msgstr "kakao"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
@@ -225,7 +225,7 @@ msgstr ""
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "coins"
-msgstr ""
+msgstr "muntstukke"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
@@ -270,27 +270,27 @@ msgstr ""
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "faith"
-msgstr ""
+msgstr "geloof"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "fire"
-msgstr ""
+msgstr "vuur"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "fish"
-msgstr ""
+msgstr "vis"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "flour"
-msgstr ""
+msgstr "meel"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "food"
-msgstr ""
+msgstr "kos"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
@@ -300,7 +300,7 @@ msgstr ""
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "grain"
-msgstr ""
+msgstr "graan"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
@@ -350,7 +350,7 @@ msgstr ""
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "liquor"
-msgstr ""
+msgstr "drank"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
@@ -375,7 +375,7 @@ msgstr ""
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "salt"
-msgstr ""
+msgstr "sout"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
@@ -400,7 +400,7 @@ msgstr ""
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "sugar"
-msgstr ""
+msgstr "suiker"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
@@ -435,7 +435,7 @@ msgstr ""
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "trees"
-msgstr ""
+msgstr "bome"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
@@ -445,7 +445,7 @@ msgstr ""
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "wool"
-msgstr ""
+msgstr "wol"
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
@@ -506,7 +506,7 @@ msgstr ""
 #: horizons/gui/ingamegui.py:465 horizons/gui/modules/multiplayermenu.py:133
 #: horizons/gui/modules/multiplayermenu.py:236
 msgid "Error"
-msgstr ""
+msgstr "fout"
 
 #: horizons/command/game.py:47 horizons/gui/gui.py:179
 msgid "Failed to save."
@@ -534,7 +534,7 @@ msgstr ""
 
 #: horizons/engine/settingshandler.py:148
 msgid "Warning"
-msgstr ""
+msgstr "waarskuwing"
 
 #. i18n Warning popup shown in settings when SDL is selected as renderer.
 #: horizons/engine/settingshandler.py:150
@@ -849,7 +849,7 @@ msgstr ""
 #: horizons/gui/modules/multiplayermenu.py:214
 #: horizons/i18n/guitranslations.py:777 horizons/i18n/guitranslations.py:803
 msgid "Help"
-msgstr ""
+msgstr "help"
 
 #: horizons/gui/modules/multiplayermenu.py:218
 msgid "This is a savegame."
@@ -1008,7 +1008,7 @@ msgstr ""
 #: horizons/gui/tabs/buildtabs.py:112 horizons/gui/tabs/buildtabs.py:115
 #: horizons/gui/tabs/buildtabs.py:122 horizons/gui/tabs/buildtabs.py:128
 msgid "Companies"
-msgstr ""
+msgstr "maatskappye"
 
 #: horizons/gui/tabs/buildtabs.py:116 horizons/gui/tabs/buildtabs.py:123
 #: horizons/gui/tabs/buildtabs.py:129
@@ -1033,7 +1033,7 @@ msgstr ""
 #: horizons/i18n/guitranslations.py:490 horizons/i18n/guitranslations.py:505
 #: horizons/i18n/guitranslations.py:516
 msgid "Trade"
-msgstr ""
+msgstr "handel"
 
 #: horizons/gui/tabs/buyselltab.py:139
 msgid "Click on one of the resource slots to add a trade offer."
@@ -1167,7 +1167,7 @@ msgstr ""
 #. (text of widget: headline_statistics)
 #: horizons/gui/widgets/logbook.py:46 horizons/i18n/guitranslations.py:610
 msgid "Statistics"
-msgstr ""
+msgstr "Statistiek"
 
 #. (text of widget: headline)
 #. (text of widget: headline_chat)
@@ -1175,7 +1175,7 @@ msgstr ""
 #: horizons/gui/widgets/logbook.py:47 horizons/i18n/guitranslations.py:119
 #: horizons/i18n/guitranslations.py:606 horizons/i18n/guitranslations.py:718
 msgid "Chat"
-msgstr ""
+msgstr "Chat"
 
 #: horizons/gui/widgets/logbook.py:150
 msgid "Emptiness"
@@ -1388,7 +1388,7 @@ msgstr ""
 #. (helptext of widget: background_icon)
 #: horizons/i18n/guitranslations.py:101
 msgid "Gold"
-msgstr ""
+msgstr "goud"
 
 #. (text of widget: enter_new_name_lbl)
 #: horizons/i18n/guitranslations.py:106
