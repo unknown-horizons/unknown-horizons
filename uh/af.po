@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2012-03-24 02:16+0100\n"
-"PO-Revision-Date: 2012-05-03 22:42+0200\n"
+"PO-Revision-Date: 2012-05-03 22:51+0200\n"
 "Last-Translator: Raymond <raymondv@gmx.de>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: af\n"
@@ -1511,12 +1511,12 @@ msgstr ""
 #: horizons/i18n/guitranslations.py:162 horizons/i18n/guitranslations.py:179
 #: horizons/i18n/guitranslations.py:658
 msgid "Money"
-msgstr ""
+msgstr "geld"
 
 #. (helptext of widget: costs_003)
 #: horizons/i18n/guitranslations.py:164 horizons/i18n/guitranslations.py:181
 msgid "Cloth"
-msgstr ""
+msgstr "Lake"
 
 #. (helptext of widget: costs_004)
 #: horizons/i18n/guitranslations.py:166 horizons/i18n/guitranslations.py:183
@@ -1833,7 +1833,7 @@ msgstr ""
 #. (text of widget: taxes)
 #: horizons/i18n/guitranslations.py:547 horizons/i18n/guitranslations.py:681
 msgid "Taxes"
-msgstr ""
+msgstr "belasting"
 
 #. (helptext of widget: show_production_overview)
 #: horizons/i18n/guitranslations.py:549
@@ -1898,7 +1898,7 @@ msgstr ""
 #. (text of widget: stats_players)
 #: horizons/i18n/guitranslations.py:592
 msgid "Players"
-msgstr ""
+msgstr "spelers"
 
 #. (text of widget: stats_settlements)
 #: horizons/i18n/guitranslations.py:594
@@ -1989,17 +1989,17 @@ msgstr ""
 #. (helptext of widget: okButton)
 #: horizons/i18n/guitranslations.py:640
 msgid "Exit"
-msgstr ""
+msgstr "Verlaat"
 
 #. (helptext of widget: okButton)
 #: horizons/i18n/guitranslations.py:647
 msgid "Close"
-msgstr ""
+msgstr "sluit"
 
 #. (text of widget: building_score)
 #: horizons/i18n/guitranslations.py:652
 msgid "Buildings"
-msgstr ""
+msgstr "geboue"
 
 #. (text of widget: headline)
 #: horizons/i18n/guitranslations.py:654
@@ -2032,7 +2032,7 @@ msgstr ""
 #. (text of widget: balance)
 #: horizons/i18n/guitranslations.py:673
 msgid "Balance"
-msgstr ""
+msgstr "balanseer"
 
 #. (text of widget: health)
 #: horizons/i18n/guitranslations.py:686
@@ -2042,17 +2042,17 @@ msgstr ""
 #. (text of widget: ship_type)
 #: horizons/i18n/guitranslations.py:690
 msgid "Type"
-msgstr ""
+msgstr "tipe"
 
 #. (text of widget: status)
 #: horizons/i18n/guitranslations.py:692
 msgid "Status"
-msgstr ""
+msgstr "status"
 
 #. (text of widget: weapons)
 #: horizons/i18n/guitranslations.py:694
 msgid "Weapons"
-msgstr ""
+msgstr "wapens"
 
 #. (helptext of widget: aggressive_stance) Description of combat stance (how units behave when fighting)
 #: horizons/i18n/guitranslations.py:699
@@ -2259,17 +2259,17 @@ msgstr ""
 #. (text of widget: quit) Completely shut down UH
 #: horizons/i18n/guitranslations.py:807
 msgid "Quit"
-msgstr ""
+msgstr "Sluit"
 
 #. (text of widget: start) Opens widget to create singleplayer games (campaigns, scenarios, random maps, free play)
 #: horizons/i18n/guitranslations.py:811
 msgid "Singleplayer"
-msgstr ""
+msgstr "Singleplayer"
 
 #. (text of widget: start_multi) Opens widget to join or create multiplayer games
 #: horizons/i18n/guitranslations.py:813
 msgid "Multiplayer"
-msgstr ""
+msgstr "Multiplayer"
 
 #. (text of widget: create_game_lbl)
 #: horizons/i18n/guitranslations.py:820 horizons/i18n/guitranslations.py:858
@@ -2445,17 +2445,17 @@ msgstr ""
 #. (text of widget: headline_language)
 #: horizons/i18n/guitranslations.py:901
 msgid "Language"
-msgstr ""
+msgstr "taal"
 
 #. (text of widget: headline_mouse)
 #: horizons/i18n/guitranslations.py:903
 msgid "Mouse"
-msgstr ""
+msgstr "muis"
 
 #. (text of widget: headline_network)
 #: horizons/i18n/guitranslations.py:905
 msgid "Network"
-msgstr ""
+msgstr "Network"
 
 #. (text of widget: headline_saving)
 #: horizons/i18n/guitranslations.py:907
@@ -2530,7 +2530,7 @@ msgstr ""
 #. (helptext of widget: okButton)
 #: horizons/i18n/guitranslations.py:939
 msgid "Apply"
-msgstr ""
+msgstr "Pas"
 
 #. (helptext of widget: auto_unload_label)
 #: horizons/i18n/guitranslations.py:941
@@ -2595,7 +2595,7 @@ msgstr ""
 #. (helptext of widget: cancelButton)
 #: horizons/i18n/guitranslations.py:972
 msgid "Cancel"
-msgstr ""
+msgstr "kanselleer"
 
 #. (helptext of widget: deleteButton)
 #: horizons/i18n/guitranslations.py:974
@@ -2838,7 +2838,7 @@ msgstr ""
 #. name of buildings:farm
 #: horizons/i18n/objecttranslations.py:156
 msgid "Farm"
-msgstr ""
+msgstr "plaas"
 
 #. tooltip_text of buildings:farm
 #: horizons/i18n/objecttranslations.py:158
@@ -3128,7 +3128,7 @@ msgstr ""
 #. name_2 of buildings:tent
 #: horizons/i18n/objecttranslations.py:359
 msgid "House"
-msgstr ""
+msgstr "huis"
 
 #. name_3 of buildings:tent
 #: horizons/i18n/objecttranslations.py:361
@@ -3183,7 +3183,7 @@ msgstr ""
 #. name of buildings:trail
 #: horizons/i18n/objecttranslations.py:393
 msgid "Trail"
-msgstr ""
+msgstr "Trail"
 
 #. tooltip_text of buildings:trail
 #: horizons/i18n/objecttranslations.py:395
@@ -3193,7 +3193,7 @@ msgstr ""
 #. name of buildings:tree
 #: horizons/i18n/objecttranslations.py:400
 msgid "Tree"
-msgstr ""
+msgstr "Tree"
 
 #. tooltip_text of buildings:tree
 #: horizons/i18n/objecttranslations.py:402
@@ -3343,7 +3343,7 @@ msgstr ""
 #: horizons/scenario/scenarioeventhandler.py:157
 #: horizons/scenario/scenarioeventhandler.py:167
 msgid "unknown"
-msgstr ""
+msgstr "onbekende"
 
 #. usually invalid filename
 #: horizons/session.py:489
