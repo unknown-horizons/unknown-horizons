@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2012-03-24 02:16+0100\n"
-"PO-Revision-Date: 2012-04-08 17:16+0200\n"
+"PO-Revision-Date: 2012-04-08 17:19+0200\n"
 "Last-Translator: Nikolay <balward@mail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: bg\n"
@@ -35,10 +35,12 @@ msgstr "Един нов свят беше създаден."
 msgid "A new world has been created."
 msgstr "Един нов свят беше създаден."
 
+# 81%
 #. This is a database entry: the name of an inhabitant increment (tier / level).
 #: database files sql
+#, fuzzy
 msgid "Aristocrats"
-msgstr ""
+msgstr "аристократ"
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
@@ -53,10 +55,12 @@ msgstr ""
 msgid "Citizens"
 msgstr "гражданин"
 
+# 77%
 #. This is a database entry: the name of an inhabitant increment (tier / level).
 #: database files sql
+#, fuzzy
 msgid "Merchants"
-msgstr ""
+msgstr "търговец"
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
@@ -3222,10 +3226,12 @@ msgstr "Палатка"
 msgid "Hut"
 msgstr ""
 
+# 80%
 #. name_2 of buildings:tent
 #: horizons/i18n/objecttranslations.py:359
+#, fuzzy
 msgid "House"
-msgstr ""
+msgstr "къщи"
 
 #. name_3 of buildings:tent
 #: horizons/i18n/objecttranslations.py:361
@@ -3333,10 +3339,12 @@ msgstr ""
 msgid "Warehouse"
 msgstr "къщи"
 
+# 76%
 #. name of buildings:weaverstent
 #: horizons/i18n/objecttranslations.py:433
+#, fuzzy
 msgid "Weaver's Hut"
-msgstr ""
+msgstr "Палатката на тъкача"
 
 #. tooltip_text of buildings:weaverstent
 #: horizons/i18n/objecttranslations.py:435
