@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2012-03-24 02:16+0100\n"
-"PO-Revision-Date: 2012-05-03 22:51+0200\n"
+"PO-Revision-Date: 2012-05-04 00:36+0200\n"
 "Last-Translator: Raymond <raymondv@gmx.de>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: af\n"
@@ -230,7 +230,7 @@ msgstr "muntstukke"
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "community"
-msgstr ""
+msgstr "gemeenskap"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
@@ -245,7 +245,7 @@ msgstr ""
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "corn"
-msgstr ""
+msgstr "koring"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
@@ -265,7 +265,7 @@ msgstr ""
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "education"
-msgstr ""
+msgstr "onderwys"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
@@ -315,12 +315,12 @@ msgstr ""
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "happiness"
-msgstr ""
+msgstr "geluk"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "herbs"
-msgstr ""
+msgstr "kruie"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
@@ -440,7 +440,7 @@ msgstr "bome"
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "vines"
-msgstr ""
+msgstr "wingerd"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
