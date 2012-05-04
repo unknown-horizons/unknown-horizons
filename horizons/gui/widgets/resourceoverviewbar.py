@@ -46,14 +46,14 @@ class ResourceOverviewBar(object):
 	http://wiki.unknown-horizons.org/w/HUD
 
 	Features:
-	- display contents of currently relevant inventory (settlement/ship) [x]
-	- always show gold of local player [x]
-	- show costs of current build [x]
-	- configure the resources to show [x]
-		- per settlement [x]
-		- add new slots [x]
-		- switch displayed resources to construction relevant res on build [x]
-		- res selection consistent with other res selection dlgs [x]
+	- display contents of currently relevant inventory (settlement/ship)
+	- always show gold of local player
+	- show costs of current build
+	- configure the resources to show
+		- per settlement
+		- add new slots
+		- switch displayed resources to construction relevant res on build
+		- res selection consistent with other res selection dlgs
 
 	Invariants:
 	- it should be obvious that the res bar can be configured
@@ -534,6 +534,9 @@ class ResBarMouseTool(NavigationTool):
 	def mousePressed(self, evt):
 		self.on_click()
 		self.reset()
+		# this click should still count, especially in case the res
+		# selection dialog has been closed by other means than clicking
+		self.session.cursor.mousePressed(evt)
 
 	def reset(self):
 		"""Enable old tol again"""
