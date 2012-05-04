@@ -107,6 +107,8 @@ class ResourceOverviewBar(object):
 
 		NewPlayerSettlementHovered.subscribe(self._on_different_settlement)
 
+		ExtScheduler().add_new_object(self._update_balance_display, self, run_in=2, loops=-1)
+
 	def end(self):
 		self.set_inventory_instance( None, force_update=True )
 		self.current_instance = weakref.ref(self)
@@ -347,8 +349,6 @@ class ResourceOverviewBar(object):
 		# reposition according to magic forumula passed down from the elders in order to support centering
 		self.gold_gui.resizeToContent() # update label size
 		gold_available_lbl.position = (33 - gold_available_lbl.size[0]/2,  51)
-
-		self._update_balance_display()
 
 	def _update_resources(self):
 		"""Same as _update_gold but for all other slots"""
