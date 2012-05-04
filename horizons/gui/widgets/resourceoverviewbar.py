@@ -37,7 +37,8 @@ from horizons.util.python.decorators import cachedmethod
 from horizons.extscheduler import ExtScheduler
 from horizons.component.ambientsoundcomponent import AmbientSoundComponent
 from horizons.util.lastactiveplayersettlementmanager import LastActivePlayerSettlementManager
-from horizons.messaging import NewPlayerSettlementHovered, ResourceBarResize
+from horizons.messaging import NewPlayerSettlementHovered, ResourceBarResize, TabWidgetChanged
+from horizons.messaging.messagebus import MessageBus
 
 
 class ResourceOverviewBar(object):
@@ -103,6 +104,7 @@ class ResourceOverviewBar(object):
 		self._update_default_configuration()
 
 		NewPlayerSettlementHovered.subscribe(self._on_different_settlement)
+		TabWidgetChanged.subscribe(self._on_tab_widget_changed)
 
 	def end(self):
 		self.set_inventory_instance( None, force_update=True )
@@ -113,6 +115,7 @@ class ResourceOverviewBar(object):
 		self.gui = None
 		self._custom_default_resources = None
 		NewPlayerSettlementHovered.unsubscribe(self._on_different_settlement)
+		TabWidgetChanged.unsubscribe(self._on_tab_widget_changed)
 
 	def _update_default_configuration(self):
 		# user defined variante of DEFAULT_RESOURCES (will be preferred)
@@ -377,11 +380,8 @@ class ResourceOverviewBar(object):
 
 		# set mousetool to get notified on clicks outside the resbar area
 		if not isinstance(self.session.cursor, ResBarMouseTool):
-			def on_away_click():
-				self._hide_resource_selection_dialog()
-				self._hide_dummy_slot()
 			self.session.cursor = ResBarMouseTool(self.session, self.session.cursor,
-			                                      on_away_click)
+			                                      self.close_resource_selection_mode)
 
 
 		on_click = functools.partial(self._set_resource_slot, slot_num)
@@ -451,7 +451,7 @@ class ResourceOverviewBar(object):
 		@param slot_num: starting at 0, will be added as new slot if greater than no of slots
 		@param res_id: a resource id or 0 for remove slot
 		"""
-		self._hide_resource_selection_dialog()
+		self.close_construction_mode()
 		res_copy = self._get_current_resources()[:]
 		number_of_slots_changed = False
 		if slot_num < len(res_copy): # change existing slot
@@ -473,7 +473,6 @@ class ResourceOverviewBar(object):
 
 		if isinstance(self.session.cursor, ResBarMouseTool):
 			self.session.cursor.reset()
-			self._hide_dummy_slot()
 
 		if number_of_slots_changed:
 			ResourceBarResize.broadcast(self)
@@ -482,6 +481,15 @@ class ResourceOverviewBar(object):
 		if hasattr(self, "_res_selection_dialog"):
 			self._res_selection_dialog.hide()
 			del self._res_selection_dialog
+
+	def close_resource_selection_mode(self):
+		"""Fully disable resource selection mode"""
+		self._hide_resource_selection_dialog()
+		self._hide_dummy_slot()
+
+	def _on_tab_widget_changed(self, msg=None):
+		if hasattr(self, "_res_selection_dialog"):
+			self.close_resource_selection_mode()
 
 	def _show_dummy_slot(self):
 		"""Show the dummy button at the end to allow for addition of slots"""
