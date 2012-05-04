@@ -11,7 +11,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Translate Toolkit 1.9.0\n"
+"X-Generator: Pootle 2.1.5\n"
 
 msgid "build"
 msgstr "ビルド"
@@ -68,14 +68,18 @@ msgstr "クリック"
 msgid "lumberjack"
 msgstr "木こり"
 
+# 88%
+#, fuzzy
 msgid "resident"
-msgstr ""
+msgstr "住民"
 
 msgid "main square"
 msgstr "メイン広場"
 
+# 85%
+#, fuzzy
 msgid "sailors"
-msgstr ""
+msgstr "船乗り"
 
 msgid "food"
 msgstr "食料"
@@ -269,17 +273,25 @@ msgstr "モード"
 msgid "move"
 msgstr "移動する"
 
+# 87%
+#, fuzzy
 msgid "pioneers"
-msgstr ""
+msgstr "開拓者"
 
+# 87%
+#, fuzzy
 msgid "citizens"
-msgstr ""
+msgstr "市民"
 
+# 88%
+#, fuzzy
 msgid "merchants"
-msgstr ""
+msgstr "商人"
 
+# 90%
+#, fuzzy
 msgid "aristocrats"
-msgstr ""
+msgstr "貴族"
 
 msgid "potato"
 msgstr "ジャガイモ"
@@ -287,8 +299,10 @@ msgstr "ジャガイモ"
 msgid "settler"
 msgstr "入植者"
 
+# 80%
+#, fuzzy
 msgid "speed"
-msgstr ""
+msgstr "種をまく"
 
 msgid "stop"
 msgstr "止める"
@@ -344,8 +358,10 @@ msgstr ""
 msgid "offer"
 msgstr ""
 
+# 75%
+#, fuzzy
 msgid "potatoes"
-msgstr ""
+msgstr "ジャガイモ"
 
 msgid "range"
 msgstr "範囲"
@@ -383,14 +399,18 @@ msgstr "機能している"
 msgid "afford"
 msgstr ""
 
+# 85%
+#, fuzzy
 msgid "animals"
-msgstr ""
+msgstr "動物"
 
 msgid "Captain's log"
 msgstr "船長の航海日誌"
 
+# 75%
+#, fuzzy
 msgid "construct"
-msgstr ""
+msgstr "建設"
 
 msgid "consume"
 msgstr "消費する"
@@ -407,8 +427,10 @@ msgstr "機能"
 msgid "forest"
 msgstr "森"
 
+# 80%
+#, fuzzy
 msgid "grows"
-msgstr ""
+msgstr "育てる"
 
 msgid "hold"
 msgstr "保持する"
@@ -449,8 +471,10 @@ msgstr "遊び"
 msgid "price"
 msgstr ""
 
+# 75%
+#, fuzzy
 msgid "read"
-msgstr ""
+msgstr "赤い"
 
 msgid "return"
 msgstr "戻る"
@@ -470,8 +494,10 @@ msgstr ""
 msgid "store"
 msgstr ""
 
+# 75%
+#, fuzzy
 msgid "tear"
-msgstr ""
+msgstr "チーム"
 
 msgid "from time to time"
 msgstr "時々"
@@ -488,8 +514,10 @@ msgstr "訪れる"
 msgid "world"
 msgstr ""
 
+# 83%
+#, fuzzy
 msgid "yield"
-msgstr ""
+msgstr "譲る"
 
 msgid "your ship"
 msgstr ""
@@ -533,8 +561,10 @@ msgstr "グラフィック"
 msgid "harvest"
 msgstr ""
 
+# 80%
+#, fuzzy
 msgid "hunts"
-msgstr ""
+msgstr "狩り"
 
 msgid "multiple"
 msgstr "複数の"
