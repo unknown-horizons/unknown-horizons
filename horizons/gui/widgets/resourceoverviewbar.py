@@ -125,7 +125,7 @@ class ResourceOverviewBar(object):
 		icon.capture(Callback(self._update_balance_display, True), event_name='mouseClicked')
 		if toggle:
 			self.gold_gui.balance_visible = not self.gold_gui.balance_visible
-		balance = sum(settlement.balance for settlement in self.session.world.player.settlements)
+		balance = self.session.world.player.get_balance()
 		if self.gold_gui.balance_visible:
 			icon.image = self.ICON_NEG_BALANCE if balance < 0 else self.ICON_POS_BALANCE
 			#print balance

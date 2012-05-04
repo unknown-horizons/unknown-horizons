@@ -22,6 +22,8 @@
 """Save general python function decorators here"""
 
 from types import FunctionType, ClassType
+import time
+import functools
 
 class cachedfunction(object):
 	"""Decorator that caches a function's return value each time it is called.
@@ -48,8 +50,8 @@ class cachedfunction(object):
 class cachedmethod(object):
 	"""Same as cachedfunction, but works also for methods. Results are saved per instance"""
 	def __init__(self, func):
-		self.cache={}
-		self.func=func
+		self.cache = {}
+		self.func = func
 
 	def __get__(self, instance, cls=None):
 		self.instance = instance
@@ -68,6 +70,36 @@ class cachedmethod(object):
 			return value
 		except TypeError:
 			assert False, "Supplied invalid argument to cache decorator"
+
+
+def temporary_cachedmethod(timeout):
+	"""
+	Same as cachedproperty, but cached values only remain valid for a certain duration
+	@param timeout: number of seconds to cache the value for
+	"""
+	class _temporary_cachedmethod(cachedmethod):
+		def __init__(self, func, timeout):
+			super(_temporary_cachedmethod, self).__init__(func)
+			self.timeout = timeout
+			self.cache_dates = {}
+
+		def __call__(self, *args, **kwargs):
+			key = self.instance, args, tuple(sorted(kwargs.items()))
+
+			# check for expiration
+			if key in self.cache_dates:
+				if self.cache_dates[key] + self.timeout < time.time():
+					# expired
+					del self.cache[key]
+					del self.cache_dates[key]
+					return self(*args, **kwargs)
+			else:
+				self.cache_dates[key] = time.time() # new entry
+
+			return super(_temporary_cachedmethod, self).__call__(*args, **kwargs)
+
+	return functools.partial( _temporary_cachedmethod, timeout=timeout )
+
 
 
 # adapted from http://code.activestate.com/recipes/277940/
@@ -223,7 +255,7 @@ def make_constants(builtin_only=False, stoplist=[], verbose=False):
 	return lambda f: _make_constants(f, builtin_only, stoplist, verbose)
 
 
-# Taken from http://code.activestate.com/recipes/576563-cached-property/
+# cachedproperty taken from http://code.activestate.com/recipes/576563-cached-property/
 # Licenced under MIT
 # A cached property is a read-only property that is calculated on demand and automatically cached. If the value has already been calculated, the cached value is returned.
 

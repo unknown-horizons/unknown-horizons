@@ -23,7 +23,7 @@ import horizons.main
 
 from horizons.constants import PLAYER
 from horizons.world.playerstats import PlayerStats
-from horizons.util import WorldObject, Callback, Color, DifficultySettings
+from horizons.util import WorldObject, Callback, Color, DifficultySettings, decorators
 from horizons.scenario import CONDITIONS
 from horizons.scheduler import Scheduler
 from horizons.component.componentholder import ComponentHolder
@@ -153,6 +153,11 @@ class Player(ComponentHolder, WorldObject):
 	def end(self):
 		self.stats = None
 		self.session = None
+
+	@decorators.temporary_cachedmethod(timeout=2)
+	def get_balance(self):
+		"""This takes a while to calculate, so only do it every 2 seconds at most"""
+		return sum(settlement.balance for settlement in self.session.world.player.settlements)
 
 class HumanPlayer(Player):
 	"""Class for players that physically sit in front of the machine where the game is run"""
