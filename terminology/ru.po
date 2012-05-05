@@ -308,10 +308,10 @@ msgid "storage tent"
 msgstr "хранилище"
 
 msgid "wait"
-msgstr "Ждать"
+msgstr "ждать"
 
 msgid "access"
-msgstr "Доступ"
+msgstr "доступно"
 
 msgid "account"
 msgstr "счёт"

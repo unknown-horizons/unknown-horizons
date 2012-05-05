@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: translate-uh@lists.unknown-horizons.org\n"
 "POT-Creation-Date: 2012-03-21 04:04+0100\n"
-"PO-Revision-Date: 2012-04-21 10:58+0200\n"
+"PO-Revision-Date: 2012-05-05 10:41+0200\n"
 "Last-Translator: Christopher Oelmueller <chris.oelmueller+uh@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: nl\n"
@@ -873,6 +873,9 @@ msgid ""
 "TASK: Build a pavilion with a trail to the tents in order to fulfill your "
 "sailors' demand for faith."
 msgstr ""
+"\n"
+"OPDRACHT: Bouw een paviljoen met een pad naar de tenten om aan de vraag van "
+"de zeelieden te voldoen."
 
 #. This message is displayed in the widget on the left screen part. Please keep it short enough to fit there!
 #: po/tutorial.py:232
@@ -1149,7 +1152,7 @@ msgstr "OPDRACHT: OPSLAGRUIMTE"
 #. This is the text body of a logbook page.
 #: po/tutorial.py:312
 msgid "Did you watch your lumberjack recently?"
-msgstr ""
+msgstr "Heeft u uw houthakker nog in de gaten gehouden?"
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:314
@@ -1157,6 +1160,8 @@ msgid ""
 "Since your warehouse does not have unlimited space to store goods, collectors "
 "will stop fetching goods from companies when stock is full."
 msgstr ""
+"Omdat je pakhuis niet oneindig ruimte heeft om goederen op te slaan, stoppen "
+"de verzamelaars met het verzamelen bij de bedrijven."
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:316
@@ -1164,6 +1169,8 @@ msgid ""
 "So if no sailors recently wanted to upgrade their tents, you probably have a "
 "lot of boards and in that case, the lumberjack may idle."
 msgstr ""
+"Als een zeeman zijn tent niet wil verbeteren, heb je straks teveel planken "
+"en raken de houthakkers werkeloos."
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:318
@@ -1195,6 +1202,9 @@ msgid ""
 "This means that you can save money when you temporarily do not need a company "
 "and do not want to tear it down, either."
 msgstr ""
+"\n"
+"Dit betekend dat je geld kunt besparen als je tijdelijk geen bedrijf nodig "
+"hebt, en deze niet wilt slopen."
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:326
@@ -1210,6 +1220,10 @@ msgid ""
 "* Offers more storage for your goods, and\n"
 "* sends its own collectors to fetch goods, just like the warehouse does."
 msgstr ""
+"Dit gebouw heeft twee doelen. het:\n"
+"* Geeft je meer opslag ruimte, en\n"
+"* stuurt verzamelaars op pad om goederen te collecteren, net als het "
+"pakhuis."
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:330
@@ -1236,7 +1250,7 @@ msgstr "Plaats een opslag tent (niveau I scherm)."
 #. This is a logbook page heading. Space is VERY short, please only translate to strings that fit (roughly 30 characters max).
 #: po/tutorial.py:336
 msgid "NEW TASK: BUILD A WEAVER"
-msgstr "OPDRACHT: KLEERMAKER"
+msgstr "OPDRACHT: BOUW KLEERMAKER"
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:338
@@ -1254,11 +1268,14 @@ msgid ""
 "There are two spots where you can build it - either close to the farm or "
 "close to a Storage Tent (or the warehouse)."
 msgstr ""
+"Er zijn twee plekken waar je het kan plaatsen - of dicht bij de boerderij, "
+"opslag tent of pakhuis."
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:342
 msgid "In both cases you should ensure the connection to a trail as well."
 msgstr ""
+"in deze twee gevallen moet je er zeker van zijn dat er een verbinding is."
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:344
@@ -1301,6 +1318,8 @@ msgid ""
 "Try to house a total of 50 or more inhabitants in your city by providing more "
 "residential buildings."
 msgstr ""
+"Probeer 50 of meer bewoners in je stad te huisvesten door meer residentiële "
+"gebouwen te bouwen."
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:356

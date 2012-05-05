@@ -3,8 +3,8 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2012-03-31 21:42+0100\n"
-"PO-Revision-Date: 2012-04-10 18:18+0200\n"
-"Last-Translator: Premislaus <premislaus1988@gmail.com>\n"
+"PO-Revision-Date: 2012-05-04 19:39+0200\n"
+"Last-Translator: Anonymous Pootle User\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: pl\n"
 "MIME-Version: 1.0\n"
@@ -44,7 +44,7 @@ msgid "tent"
 msgstr "namiot"
 
 msgid "warehouse"
-msgstr ""
+msgstr "skład"
 
 msgid "resource"
 msgstr "towar"
@@ -124,7 +124,7 @@ msgid "upgrade"
 msgstr ""
 
 msgid "your inhabitants"
-msgstr ""
+msgstr "twoi mieszkańcy"
 
 msgid "close"
 msgstr ""
@@ -133,7 +133,7 @@ msgid "companies"
 msgstr "firmy"
 
 msgid "island"
-msgstr ""
+msgstr "wyspa"
 
 msgid "time"
 msgstr "czas"
@@ -203,7 +203,7 @@ msgid "log"
 msgstr "kłoda"
 
 msgid "road"
-msgstr ""
+msgstr "droga"
 
 #
 msgid "save"
@@ -235,7 +235,7 @@ msgid "your"
 msgstr "twój"
 
 msgid "your settlement"
-msgstr ""
+msgstr "twoja osada"
 
 # (poterminology) uh-tutorial/tutorial.pot (3)
 # (poterminology) uh/unknownhorizons.pot (1)
@@ -249,7 +249,7 @@ msgid "choose"
 msgstr "wybierz"
 
 msgid "confectionery"
-msgstr ""
+msgstr "cukiernia"
 
 # (poterminology) uh-tutorial/tutorial.pot (5)
 # (poterminology) uh/unknownhorizons.pot (2)
@@ -274,7 +274,7 @@ msgid "in stock"
 msgstr ""
 
 msgid "money"
-msgstr ""
+msgstr "pieniądze"
 
 msgid "pavilion"
 msgstr "pawilon"
@@ -301,7 +301,7 @@ msgid "tools"
 msgstr "narzędzia"
 
 msgid "button"
-msgstr ""
+msgstr "przycisk"
 
 #
 msgid "continue"
@@ -378,7 +378,7 @@ msgid "wait"
 msgstr ""
 
 msgid "access"
-msgstr ""
+msgstr "dostęp"
 
 # (poterminology) uh-tutorial/tutorial.pot (2)
 #
@@ -390,7 +390,7 @@ msgid "account"
 msgstr "konto"
 
 msgid "amount"
-msgstr ""
+msgstr "ilość"
 
 # (poterminology) uh-tutorial/tutorial.pot (2)
 # (poterminology) uh/unknownhorizons.pot (2)
@@ -433,10 +433,10 @@ msgid "liquor"
 msgstr "alkohol"
 
 msgid "location"
-msgstr ""
+msgstr "położenie"
 
 msgid "offer"
-msgstr ""
+msgstr "oferta"
 
 # (poterminology) uh-tutorial/tutorial.pot (3)
 #
@@ -469,10 +469,10 @@ msgid "solution"
 msgstr "rozwiązanie"
 
 msgid "space"
-msgstr ""
+msgstr "przestrzeń"
 
 msgid "target"
-msgstr ""
+msgstr "cel"
 
 # (poterminology) uh-tutorial/tutorial.pot (2)
 #
@@ -522,7 +522,7 @@ msgid "consume"
 msgstr "konsumować"
 
 msgid "enabled"
-msgstr ""
+msgstr "włączone"
 
 msgid "entries"
 msgstr ""
@@ -542,7 +542,7 @@ msgid "hold"
 msgstr "przytrzymaj"
 
 msgid "idle"
-msgstr ""
+msgstr "bezrobotni"
 
 msgid "income"
 msgstr "dochód"
@@ -570,7 +570,7 @@ msgid "issues"
 msgstr "problemy"
 
 msgid "plant"
-msgstr ""
+msgstr "rośliny"
 
 msgid "play"
 msgstr "graj"
@@ -579,7 +579,7 @@ msgid "playing"
 msgstr "granie"
 
 msgid "price"
-msgstr ""
+msgstr "cena"
 
 # (poterminology) uh-tutorial/tutorial.pot (1)
 # (poterminology) uh/unknownhorizons.pot (1)
@@ -618,10 +618,10 @@ msgid "sound"
 msgstr "dźwięk"
 
 msgid "special"
-msgstr ""
+msgstr "specjalne"
 
 msgid "store"
-msgstr ""
+msgstr "sklep"
 
 # (poterminology) uh-tutorial/tutorial.pot (2)
 # (poterminology) uh/unknownhorizons.pot (1)
@@ -655,7 +655,7 @@ msgid "visit"
 msgstr "odwiedzać"
 
 msgid "world"
-msgstr ""
+msgstr "świat"
 
 # 83%
 #, fuzzy
@@ -663,7 +663,7 @@ msgid "yield"
 msgstr "plony"
 
 msgid "your ship"
-msgstr ""
+msgstr "twój statek"
 
 # (poterminology) uh-tutorial/tutorial.pot (2)
 #
@@ -680,16 +680,16 @@ msgid "build settlement"
 msgstr "zbuduj osadę"
 
 msgid "load"
-msgstr ""
+msgstr "załaduj"
 
 msgid "unload"
-msgstr ""
+msgstr "wyładuj"
 
 msgid "command"
-msgstr ""
+msgstr "polecenie"
 
 msgid "completed"
-msgstr ""
+msgstr "ukończony/a/e"
 
 msgid "condition"
 msgstr "kondycja (stan)"
@@ -698,7 +698,7 @@ msgid "contact"
 msgstr "kontakt"
 
 msgid "empty"
-msgstr ""
+msgstr "pusty"
 
 msgid "ensure"
 msgstr ""
@@ -713,7 +713,7 @@ msgid "graphics"
 msgstr "grafika"
 
 msgid "harvest"
-msgstr ""
+msgstr "zbiory"
 
 # 80%
 #, fuzzy
@@ -752,7 +752,7 @@ msgid "signal fire"
 msgstr "ogień sygnałowy"
 
 msgid "statistics"
-msgstr ""
+msgstr "statystyki"
 
 msgid "clay"
 msgstr "glina"
@@ -777,7 +777,7 @@ msgid "temporarily"
 msgstr "tymczasowo"
 
 msgid "values"
-msgstr ""
+msgstr "wartości"
 
 #~ msgid "branch office"
 #~ msgstr "faktorii handlowej"

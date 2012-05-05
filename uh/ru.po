@@ -7,8 +7,8 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2012-03-24 02:16+0100\n"
-"PO-Revision-Date: 2012-04-30 21:30+0200\n"
-"Last-Translator: burlachenko <burlachenkomaxim@gmail.com>\n"
+"PO-Revision-Date: 2012-05-05 10:35+0200\n"
+"Last-Translator: Christopher Oelmueller <chris.oelmueller+uh@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: ru\n"
 "MIME-Version: 1.0\n"
@@ -893,6 +893,8 @@ msgstr ""
 #: horizons/gui/modules/multiplayermenu.py:211
 msgid "Meanwhile, please request the file {path} from the game creator and put it in {map_directory} ."
 msgstr ""
+"А теперь, пожалуйста, запросите файл {path} у создателя игры и поместите его "
+"в {map_directory} ."
 
 #. (text of widget: help)
 #. (text of widget: help) Main / in-game menu entry
@@ -996,7 +998,7 @@ msgstr "Пожалуйста, сообщите это разработчикам
 #. dialog already gone
 #: horizons/gui/modules/singleplayermenu.py:464
 msgid "Click to generate a different random map"
-msgstr ""
+msgstr "Нажмите для генерации другой случайной карты"
 
 #. (text of widget: headline)
 #. set translated building name in gui
@@ -1149,7 +1151,7 @@ msgstr "Просмотр"
 #: horizons/gui/tabs/overviewtab.py:148 horizons/gui/tabs/overviewtab.py:575
 #, fuzzy
 msgid "Warehouse overview"
-msgstr "Обзор рынка"
+msgstr "Обзор склада"
 
 #: horizons/gui/tabs/overviewtab.py:182 horizons/gui/tabs/overviewtab.py:322
 msgid "Ship overview"
@@ -1948,12 +1950,12 @@ msgstr "Возобновить производство"
 #. (text of widget: make_default_btn)
 #: horizons/i18n/guitranslations.py:568
 msgid "Save as default"
-msgstr ""
+msgstr "Сохранить по умолчанию"
 
 #. (text of widget: reset_default_btn)
 #: horizons/i18n/guitranslations.py:570
 msgid "Restore default"
-msgstr ""
+msgstr "Восстановить умолчания"
 
 # 94%
 #. (text of widget: headline) Please keep the translation similarly short and concise, else the tooltip is not well understood by players.
@@ -1971,12 +1973,13 @@ msgstr ""
 #. (helptext of widget: reset_default_btn)
 #: horizons/i18n/guitranslations.py:576
 msgid "Reset default resource configuration for all settlements."
-msgstr ""
+msgstr "Сброс конфигурации ресурсов по умолчанию для всех населенных пунктов."
 
 #. (helptext of widget: headline) Please keep the translation similarly short and concise, else the tooltip is not well understood by players.
 #: horizons/i18n/guitranslations.py:578
 msgid "The resource you select is displayed instead of the current one. Empty by clicking on X."
 msgstr ""
+"Выбранный ресурс отображается вместо текущего. Опустошите нажатием на X."
 
 #. (helptext of widget: delete_warehouse) Trade route entry
 #: horizons/i18n/guitranslations.py:583
@@ -2072,7 +2075,7 @@ msgstr "Выбрать этот сценарий"
 #. (text of widget: lbl_route_activity)
 #: horizons/i18n/guitranslations.py:634
 msgid "Route activity:"
-msgstr ""
+msgstr "Активность маршрута:"
 
 #. (text of widget: lbl_wait_at_load) Trade route setting: Whether to wait until all goods could be loaded.
 #: horizons/i18n/guitranslations.py:636
@@ -2313,7 +2316,7 @@ msgstr "Увеличить скорость игры"
 #. (text of widget: lbl_TILE_OWNER_HIGHLIGHT)
 #: horizons/i18n/guitranslations.py:766
 msgid "Highlight tile ownership"
-msgstr ""
+msgstr "Выделить клетку владения"
 
 #. (text of widget: lbl_TRANSLUCENCY)
 #: horizons/i18n/guitranslations.py:768
@@ -2532,7 +2535,7 @@ msgstr "Включить ведение журнала"
 #. (text of widget: edge_scrolling_label)
 #: horizons/i18n/guitranslations.py:893
 msgid "Scroll at map edge:"
-msgstr ""
+msgstr "Прокрутить к краю карты:"
 
 #. (text of widget: effect_volume_label)
 #: horizons/i18n/guitranslations.py:895
@@ -2764,7 +2767,7 @@ msgstr "Настройки карты:"
 #. (text of widget: seed_string_lbl)
 #: horizons/i18n/guitranslations.py:1014
 msgid "Seed:"
-msgstr ""
+msgstr "Источник:"
 
 #. (text of widget: ai_players_label)
 #: horizons/i18n/guitranslations.py:1024
@@ -2812,6 +2815,7 @@ msgstr "ульи"
 #: horizons/i18n/objecttranslations.py:55
 msgid "Keeps bees. Produces honeycombs used for confectionery. Needs a farm."
 msgstr ""
+"Сохраняет пчел. Производит соты для кондитерских изделий. Нуждается в ферме."
 
 #. name of buildings:bakery
 #: horizons/i18n/objecttranslations.py:60
@@ -2831,12 +2835,12 @@ msgstr "Казармы"
 #. tooltip_text of buildings:barracks
 #: horizons/i18n/objecttranslations.py:69
 msgid "Recruits units suitable for ground combat."
-msgstr ""
+msgstr "Рекруты пригодные для наземных боевых действий."
 
 #. name of buildings:blender
 #: horizons/i18n/objecttranslations.py:74
 msgid "Blender"
-msgstr ""
+msgstr "Миксер"
 
 #. tooltip_text of buildings:blender
 #: horizons/i18n/objecttranslations.py:76
@@ -2891,7 +2895,7 @@ msgstr "Костёр для углежжения"
 #. tooltip_text of buildings:charcoalburning
 #: horizons/i18n/objecttranslations.py:111
 msgid "Burns a lot of boards to charcoal."
-msgstr ""
+msgstr "Сжигает дерево на уголь."
 
 #. name of buildings:claydeposit
 #: horizons/i18n/objecttranslations.py:116
@@ -3029,7 +3033,7 @@ msgstr "Журнал"
 #. tooltip_text of buildings:log
 #: horizons/i18n/objecttranslations.py:210
 msgid "Road across a river."
-msgstr ""
+msgstr "Дорога пересекающая реку."
 
 #. name of buildings:lookout
 #: horizons/i18n/objecttranslations.py:215
@@ -3039,7 +3043,7 @@ msgstr "Наблюдательный пост"
 #. tooltip_text of buildings:lookout
 #: horizons/i18n/objecttranslations.py:217
 msgid "Increases the player's sight."
-msgstr ""
+msgstr "Расширяет поле зрения игрока."
 
 #. name_0 of buildings:lumberjackcamp
 #: horizons/i18n/objecttranslations.py:222
@@ -3194,7 +3198,7 @@ msgstr "Каменный карьер"
 #. tooltip_text of buildings:stonepit
 #: horizons/i18n/objecttranslations.py:327
 msgid "Gets stone from a mountain."
-msgstr ""
+msgstr "Получает камень с горы."
 
 # Can we drop the 'Tent' part ? Or we need something like 'Палатка-хранилище', 'Склад-палатка' etc.
 #. name_0 of buildings:storagetent
@@ -3412,7 +3416,9 @@ msgstr "Сохранение может быть повреждено или с�
 #: horizons/main.py:474
 #, python-format
 msgid "Due to technical reasons, the campaign file will be copied to the UH campaign directory ({path})."
-msgstr "Файл кампании будет скопирован в директорию с НГ ({path})."
+msgstr ""
+"По техническим причинам файл кампании будет скопирован в директорию с НГ "
+"({path})."
 
 #: horizons/main.py:476
 msgid "This means that changes in the file you specified will not apply to the game directly."
@@ -3432,6 +3438,8 @@ msgstr ""
 #: horizons/manager.py:174
 msgid "The games have run out of sync. This indicates an unknown internal error, the game cannot continue."
 msgstr ""
+"Игры не смогли синхронизироваться. Это указывает на неизвестную внутреннюю "
+"ошибку, игра не может продолжаться."
 
 #: horizons/manager.py:175
 msgid "We are very sorry and hope to have this bug fixed in a future version."
@@ -3541,7 +3549,7 @@ msgstr "Вам нужно выполнить быстрое сохранение
 #: horizons/util/checkupdates.py:70
 #, fuzzy
 msgid "New version of Unknown Horizons"
-msgstr "Запуск Неизведанных Горизонтов"
+msgstr "Новая версия Unknown Horizons"
 
 #: horizons/util/checkupdates.py:72
 #, python-format
@@ -3569,7 +3577,7 @@ msgstr "Здания должны строиться на островах."
 
 #: horizons/world/building/buildable.py:37
 msgid "The ground is not suitable for this building."
-msgstr ""
+msgstr "Земля не подходит для этого здания."
 
 #: horizons/world/building/buildable.py:38
 #: horizons/world/building/buildable.py:40
@@ -3590,7 +3598,7 @@ msgstr "Вы не можете построить это на другом зд�
 
 #: horizons/world/building/buildable.py:43
 msgid "You can't build this on top of a unit."
-msgstr ""
+msgstr "Вы не можете построить это поверх существа."
 
 #: horizons/world/building/buildable.py:44
 msgid "This building must be built on the coastline."
