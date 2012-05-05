@@ -3,68 +3,69 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2012-03-31 21:42+0100\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"PO-Revision-Date: 2012-05-05 11:13+0200\n"
+"Last-Translator: Anonymous Pootle User\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: nb\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Translate Toolkit 1.9.0\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Pootle 2.1.5\n"
 
 msgid "build"
-msgstr ""
+msgstr "bygg"
 
 msgid "game"
-msgstr ""
+msgstr "spill"
 
 msgid "building"
-msgstr ""
+msgstr "byggning"
 
 msgid "settlement"
 msgstr ""
 
 msgid "farm"
-msgstr ""
+msgstr "gård"
 
 msgid "ship"
-msgstr ""
+msgstr "båt"
 
 msgid "tent"
-msgstr ""
+msgstr "telt"
 
 msgid "warehouse"
-msgstr ""
+msgstr "varehus"
 
 msgid "resource"
-msgstr ""
+msgstr "ressurs"
 
 msgid "produce"
-msgstr ""
+msgstr "produsere"
 
 msgid "field"
 msgstr ""
 
 msgid "map"
-msgstr ""
+msgstr "kart"
 
 msgid "trade"
 msgstr ""
 
 msgid "inhabitants"
-msgstr ""
+msgstr "innbyggere"
 
 msgid "buy"
-msgstr ""
+msgstr "kjøpe"
 
 msgid "overview"
-msgstr ""
+msgstr "oversikt"
 
 msgid "click"
-msgstr ""
+msgstr "klikk"
 
 msgid "lumberjack"
-msgstr ""
+msgstr "tømmerhugger"
 
 msgid "resident"
 msgstr ""
@@ -73,25 +74,25 @@ msgid "main square"
 msgstr ""
 
 msgid "sailors"
-msgstr ""
+msgstr "seilere"
 
 msgid "food"
-msgstr ""
+msgstr "mat"
 
 msgid "increment"
-msgstr ""
+msgstr "øke"
 
 msgid "production"
-msgstr ""
+msgstr "produksjon"
 
 msgid "select"
-msgstr ""
+msgstr "velg"
 
 msgid "sell"
-msgstr ""
+msgstr "selge"
 
 msgid "setting"
-msgstr ""
+msgstr "innstilling"
 
 msgid "storage"
 msgstr ""
@@ -100,7 +101,7 @@ msgid "tab"
 msgstr ""
 
 msgid "upgrade"
-msgstr ""
+msgstr "oppgradere"
 
 msgid "your inhabitants"
 msgstr ""
