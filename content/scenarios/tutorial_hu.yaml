@@ -12,7 +12,7 @@ difficulty: "Bemutat\xF3"
 events:
 - actions:
   - arguments: ["\xC9p\xEDts egy rakt\xE1rat a tengerparthoz, \xEDgy k\xF6nnyen megk\xF6\
-        zel\xEDthet\u0151 a t\xF6bbi szabadkeresked\u0151 haj\xF3 sz\xE1m\xE1ra"]
+        zel\xEDthet\u0151 a t\xF6bbi szabadkeresked\u0151 haj\xF3 sz\xE1m\xE1ra."]
     type: message
   - arguments:
     - ''
@@ -29,7 +29,7 @@ events:
       \ seg\xEDts\xE9get tud ny\xFAjtani."
     - "Miut\xE1n bez\xE1rod a napl\xF3t, \xFAjra megnyithatod a \"Kapit\xE1ny napl\xF3\
       ja\" ikonnal a jobb fels\u0151 sarokban (a kis t\xE9rk\xE9p alatt, egy lepecs\xE9\
-      telt mapp\xE1val \xE9s egy tollal ell\xE1tott ikon)"
+      telt mapp\xE1val \xE9s egy tollal ell\xE1tott ikon)."
     - - Gallery
       - [content/gui/icons/widgets/minimap/captainslog.png]
     - "\nAz els\u0151 feladathoz, kattints a \"K\xF6vetkez\u0151 bejegyz\xE9s elolvas\xE1\
@@ -80,7 +80,7 @@ events:
       p\xEDthesse a cs\xF3nakj\xE1t."
     - "A fav\xE1g\xF3 meg\xE9p\xEDt\xE9s\xE9hez nyisd meg az \xE9p\xEDt\xE9si men\xFC\
       t egy kattint\xE1ssal a nagy ikonon a minit\xE9rk\xE9p alatt, vagy a B billenty\u0171\
-      \ lenyom\xE1s\xE1val. "
+      \ lenyom\xE1s\xE1val."
     - - Gallery
       - [content/gui/icons/widgets/minimap/build.png]
     - "Az \xE9p\xEDt\xE9si men\xFC szintenk\xE9nt van sorba rendezve."
@@ -140,7 +140,7 @@ events:
       \ ell\xE1t\xE1s biztos\xEDt\xE1s\xE1hoz."
     - [Pagebreak]
     - "\nA Hal\xE1sznak egy parton \xE9p\xEDtett \xE9p\xFCletre van sz\xFCks\xE9ge,\
-      \ mint a rakt\xE1rh\xE1z, \xE9s egy hal lel\u0151helyre a k\xF6zelben. "
+      \ mint a rakt\xE1rh\xE1z, \xE9s egy hal lel\u0151helyre a k\xF6zelben."
     - "Egy kis evez\u0151s cs\xF3nakot \xE9p\xEDt \xE9s n\xE9mi halat fog ki."
     - !!python/unicode 'This is a very constant supply at the cost of a slightly longer
       production time per unit of food.'
@@ -292,8 +292,8 @@ events:
       - [content/gui/icons/buildmenu/006_h.png]
     - "Erre a c\xE9lra, \xE9p\xEDts egy jelz\u0151t\xFCzet a partra, a rakt\xE1rh\xE1\
       zad k\xF6zel\xE9be. Ez mutatja a haj\xF3knak az utat a gyarmatod fel\xE9."
-    - !!python/unicode 'The signal fire has to cover the area which the ships pass
-      through to catch them.'
+    - "A jelz\u0151t\u0171z fedezi a ter\xFCletet, amely fel\xE9 a haj\xF3k haladnak,\
+      \ hogy elkapj\xE1k azt."
     - [Pagebreak]
     - "\nEzut\xE1n a kis rekl\xE1m ut\xE1n, a keresked\u0151 haj\xF3 meg fog \xE1\
       llni \xE9s k\xF6rben\xE9z a rakt\xE1rh\xE1zadban hogyha tervezte hogy arra vitorl\xE1\
@@ -696,8 +696,8 @@ events:
     - [Pagebreak]
     - [Headline, "K\xF6sz\xF6n\xF6m!"]
     - [Image, content/gui/images/background/hr.png]
-    - "\n\n\n\n\n\n\nK\xF6sz\xF6n\xF6m hogy v\xE9gigj\xE1tszottad a gyakorl\xE1st!\n\
-      \nA te UH-Csapatod"
+    - "\n\n\n\n\nK\xF6sz\xF6n\xF6m hogy v\xE9gigj\xE1tszottad a gyakorl\xE1st!\n\n\
+      A te UH-Csapatod"
     - - Gallery
       - [content/unknown-horizons.xpm, content/gfx/misc/status_icons/as_book_flip/idle/45/book20125.png]
     type: logbook
@@ -728,5 +728,5 @@ events:
     type: var_gt
 locale: hu
 mapfile: development.sqlite
-translation_status: 108 translated messages, 83 untranslated messages.
+translation_status: 109 translated messages, 82 untranslated messages.
 

@@ -7,8 +7,8 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2012-03-24 02:16+0100\n"
-"PO-Revision-Date: 2012-04-04 23:01+0200\n"
-"Last-Translator: Sergio <juarrox@gmail.com>\n"
+"PO-Revision-Date: 2012-05-05 10:50+0200\n"
+"Last-Translator: Christopher Oelmueller <chris.oelmueller+uh@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: es\n"
 "MIME-Version: 1.0\n"
@@ -614,7 +614,7 @@ msgstr "No se puede cargar el idioma {lang}"
 
 #: horizons/engine/settingshandler.py:312
 msgid "Logging enabled"
-msgstr "Registro de bitácora activado"
+msgstr "Registro activado"
 
 #: horizons/engine/settingshandler.py:314
 #, python-format
@@ -3164,7 +3164,7 @@ msgstr "Lagunas de agua salada"
 #. tooltip_text of buildings:saltponds
 #: horizons/i18n/objecttranslations.py:292
 msgid "Evaporates salt. Built on sea coast."
-msgstr "la sal se evapora. Construir en la costa del mar."
+msgstr "La sal se evapora. Construir en la costa del mar."
 
 #. name of buildings:signalfire
 #: horizons/i18n/objecttranslations.py:297
@@ -3611,7 +3611,7 @@ msgstr "Este edificio debe ser construido a orillas de la costa."
 
 #: horizons/world/building/buildable.py:45
 msgid "This building requires to be placed near the ocean."
-msgstr "Este edificio debe ubicarse cerca del océano"
+msgstr "Este edificio debe ubicarse cerca del océano."
 
 #: horizons/world/building/buildable.py:46
 msgid "This spot is too far away from your ship."
@@ -3643,7 +3643,7 @@ msgstr "El socio comercial no quiere comprar esto."
 
 #: horizons/world/component/tradepostcomponent.py:228
 msgid "You do not possess this."
-msgstr "Tu no posees esto."
+msgstr "Tú no posees esto."
 
 #: horizons/world/component/tradepostcomponent.py:232
 msgid "The trade partner can not store more of this."
@@ -3670,7 +3670,7 @@ msgstr "Ruta comercial: Esperar a {position}"
 #: horizons/world/units/ship.py:184
 #, python-format
 msgid "Going to {location}"
-msgstr "Vayando a {location}"
+msgstr "Ir a {location}"
 
 #: horizons/world/units/ship.py:186
 #, python-format

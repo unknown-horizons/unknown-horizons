@@ -427,8 +427,8 @@ events:
       The road connection is required as well.'
     - !!python/unicode '
 
-      TASK: Build a pavilion with a trail to the tents in order to fulfill your sailors''
-      demand for faith.'
+      OPDRACHT: Bouw een paviljoen met een pad naar de tenten om aan de vraag van
+      de zeelieden te voldoen.'
     - - Gallery
       - [content/gui/icons/buildmenu/005.png]
     type: logbook
@@ -594,11 +594,11 @@ events:
   - arguments:
     - [Headline, !!python/unicode 'OPDRACHT: OPSLAGRUIMTE']
     - [Image, content/gui/images/background/hr.png]
-    - !!python/unicode 'Did you watch your lumberjack recently?'
-    - !!python/unicode 'Since your warehouse does not have unlimited space to store
-      goods, collectors will stop fetching goods from companies when stock is full.'
-    - !!python/unicode 'So if no sailors recently wanted to upgrade their tents, you
-      probably have a lot of boards and in that case, the lumberjack may idle.'
+    - !!python/unicode 'Heeft u uw houthakker nog in de gaten gehouden?'
+    - !!python/unicode 'Omdat je pakhuis niet oneindig ruimte heeft om goederen op
+      te slaan, stoppen de verzamelaars met het verzamelen bij de bedrijven.'
+    - !!python/unicode 'Als een zeeman zijn tent niet wil verbeteren, heb je straks
+      teveel planken en raken de houthakkers werkeloos.'
     - !!python/unicode 'We can improve this situation in two different ways, and we
       will have a look at both of them below.'
     - !!python/unicode 'All companies offer to do no work at all.
@@ -613,15 +613,15 @@ events:
     - [Pagebreak]
     - !!python/unicode '
 
-      This means that you can save money when you temporarily do not need a company
-      and do not want to tear it down, either.'
+      Dit betekend dat je geld kunt besparen als je tijdelijk geen bedrijf nodig hebt,
+      en deze niet wilt slopen.'
     - !!python/unicode 'Another solution is to build the last increment-I building
       which has not been mentioned so far: the storage tent.'
-    - !!python/unicode 'This building has two purposes. It:
+    - !!python/unicode 'Dit gebouw heeft twee doelen. het:
 
-      * Offers more storage for your goods, and
+      * Geeft je meer opslag ruimte, en
 
-      * sends its own collectors to fetch goods, just like the warehouse does.'
+      * stuurt verzamelaars op pad om goederen te collecteren, net als het pakhuis.'
     - !!python/unicode 'Note that companies can also be connected to a storage in
       order to get their products collected, and if the warehouse is overwhelmed with
       collector tasks, you can place a storage tent to help out there.'
@@ -644,14 +644,14 @@ events:
     type: var_lt
 - actions:
   - arguments:
-    - [Headline, !!python/unicode 'OPDRACHT: KLEERMAKER']
+    - [Headline, !!python/unicode 'OPDRACHT: BOUW KLEERMAKER']
     - [Image, content/gui/images/background/hr.png]
     - !!python/unicode 'Nu de wol productie op gang is, heb je kleermakers nodig om
       kleren te maken van de wol.'
-    - !!python/unicode 'There are two spots where you can build it - either close
-      to the farm or close to a Storage Tent (or the warehouse).'
-    - !!python/unicode 'In both cases you should ensure the connection to a trail
-      as well.'
+    - !!python/unicode 'Er zijn twee plekken waar je het kan plaatsen - of dicht bij
+      de boerderij, opslag tent of pakhuis.'
+    - !!python/unicode 'in deze twee gevallen moet je er zeker van zijn dat er een
+      verbinding is.'
     - !!python/unicode 'You can place the weaver close to the farm and tear down any
       trail to the farm to see that it will still fetch the wool and produce.'
     - !!python/unicode '
@@ -679,8 +679,8 @@ events:
   - arguments:
     - [Headline, !!python/unicode 'OPDRACHT: VOLTOOI TUTORIAL']
     - [Image, content/gui/images/background/hr.png]
-    - !!python/unicode 'Try to house a total of 50 or more inhabitants in your city
-      by providing more residential buildings.'
+    - "Probeer 50 of meer bewoners in je stad te huisvesten door meer residenti\xEB\
+      le gebouwen te bouwen."
     - !!python/unicode 'Zodra je in staat bent de economie draaiende te houden met
       dit aantal verbruikers, ben je klaar om nieuwe onbekende horizonnen te ontdekken!'
     - !!python/unicode 'Je hebt ook genoeg geld nodig om de economie draaiende te
@@ -761,5 +761,5 @@ events:
     type: var_gt
 locale: nl
 mapfile: development.sqlite
-translation_status: 104 translated messages, 87 untranslated messages.
+translation_status: 113 translated messages, 78 untranslated messages.
 

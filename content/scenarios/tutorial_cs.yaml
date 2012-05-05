@@ -252,7 +252,7 @@ events:
     type: var_lt
 - actions:
   - arguments: ["\nNyn\xED se poj\u010Fme pod\xEDvat na p\u0159ehledovou z\xE1lo\u017E\
-        ku pro stany.", "M\u016F\u017Eete zde vid\u011Bt:* spokojenost obyvatel,\n\
+        ku pro stany.", "M\u016F\u017Eete zde vid\u011Bt:\n* spokojenost obyvatel,\n\
         * dan\u011B, kter\xE9 plat\xED\n* zdroje, kter\xE9 po\u017Eaduj\xED.", "Pokud\
         \ budou jejich po\u017Eadavky spln\u011Bny, \u0161t\u011Bst\xED a tak\xE9\
         \ p\u0159\xEDjem z dan\xED vzrostou.", "Pokud nebudou spln\u011Bny, \u0161\
@@ -596,10 +596,10 @@ events:
       ebujete a z\xE1rove\u0148 nechcete budovu strhnout."
     - "Dal\u0161\xEDm \u0159e\u0161en\xEDm je vybudov\xE1n\xED posledn\xED budovy,\
       \ kter\xE1 zat\xEDm nebyla zm\xEDn\u011Bna: skladovac\xEDho stanu."
-    - "Tato budova slou\u017E\xED ke  dvoum \xFA\u010Del\u016Fm,  a to:* Nab\xEDz\xED\
-      \ v\xEDce prostoru pro va\u0161e zbo\u017E\xED, a\n* vys\xEDl\xE1 sv\xE9 sb\u011B\
-      ra\u010De vyzvednout zbo\u017E\xED, stejn\u011B jako Obchodn\xED p\u0159\xED\
-      stav."
+    - "Tato budova slou\u017E\xED ke  dvoum \xFA\u010Del\u016Fm,  a to:\n* Nab\xED\
+      z\xED v\xEDce prostoru pro va\u0161e zbo\u017E\xED, a\n* vys\xEDl\xE1 sv\xE9\
+      \ sb\u011Bra\u010De vyzvednout zbo\u017E\xED, stejn\u011B jako Obchodn\xED p\u0159\
+      \xEDstav."
     - "Pamatujte \u017Ee v\u0161echny spole\u010Dnosti pot\u0159ebuj\xED b\xFDt spojeny\
       \ s Obchodn\xEDm p\u0159\xEDstavem pro svoz zbo\u017E\xED. Pokud m\xE1 Obchodn\xED\
       \ p\u0159\xEDstav moc \xFAkol\u016F postavte skladovac\xED stan ktery Obchodn\xED\
