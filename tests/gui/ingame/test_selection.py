@@ -35,7 +35,7 @@ def test_select_ship(gui):
 	assert gui.find('tab_base') is None
 
 	# Find player's ship
-	player_ship = get_player_ship()
+	player_ship = get_player_ship(gui.session)
 
 	gui.select([player_ship])
 	assert gui.find('overview_trade_ship')
