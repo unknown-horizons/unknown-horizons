@@ -38,7 +38,6 @@ from horizons.extscheduler import ExtScheduler
 from horizons.component.ambientsoundcomponent import AmbientSoundComponent
 from horizons.util.lastactiveplayersettlementmanager import LastActivePlayerSettlementManager
 from horizons.messaging import NewPlayerSettlementHovered, ResourceBarResize, TabWidgetChanged
-from horizons.messaging.messagebus import MessageBus
 
 
 class ResourceOverviewBar(object):
