@@ -27,7 +27,7 @@ import weakref
 import horizons.main
 
 from horizons.entities import Entities
-from horizons.util import ActionSetLoader, Point, decorators
+from horizons.util import ActionSetLoader, Point, decorators, WorldObject
 from horizons.command.building import Build
 from horizons.component.selectablecomponent import SelectableBuildingComponent, SelectableComponent
 from horizons.gui.mousetools.navigationtool import NavigationTool
@@ -327,7 +327,7 @@ class BuildingTool(NavigationTool):
 
 			# this order determines highlight priority
 			# draw ordinary ranges first, then later color related buildings (they are more important)
-			self._make_surrounding_transparent(building.position)
+			self._make_surrounding_transparent(building)
 			self._color_preview_building(building)
 			if building.buildable:
 				self._draw_preview_building_range(building, settlement)
@@ -387,11 +387,12 @@ class BuildingTool(NavigationTool):
 					self.renderer.addColored(inst, *self.related_building_color)
 
 
-	def _make_surrounding_transparent(self, building_position):
-		"""Makes the surrounding of building_position transparent"""
+	def _make_surrounding_transparent(self, building):
+		"""Makes the surrounding of building_position transparent and hide buildings
+		that are built upon (tearset)"""
 		world_contains = self.session.world.map_dimensions.contains_without_border
 		get_tile = self.session.world.get_tile
-		for coord in building_position.get_radius_coordinates(self.nearby_objects_radius, include_self=True):
+		for coord in building.position.get_radius_coordinates(self.nearby_objects_radius, include_self=True):
 			p = Point(*coord)
 			if not world_contains(p):
 				continue
@@ -400,6 +401,11 @@ class BuildingTool(NavigationTool):
 				inst = tile.object.fife_instance
 				inst.get2dGfxVisual().setTransparency( BUILDINGS.TRANSPARENCY_VALUE )
 				self._transparencified_instances.add( weakref.ref(inst) )
+
+		for to_tear_worldid in building.tearset:
+			inst = WorldObject.get_object_by_id(to_tear_worldid).fife_instance
+			inst.get2dGfxVisual().setTransparency( 255 ) # full transparency = hidden
+			self._transparencified_instances.add( weakref.ref(inst) )
 
 	def _highlight_inversely_related_buildings(self, building, settlement):
 		"""Point out buildings that are inversly relevant (e.g. lumberjacks when building trees)
@@ -675,8 +681,12 @@ class BuildingTool(NavigationTool):
 		for inst_weakref in self._transparencified_instances:
 			fife_instance = inst_weakref()
 			if fife_instance:
+				# remove transparency only if trees aren't supposed to be transparent as default
 				if not hasattr(fife_instance, "keep_translucency") or not fife_instance.keep_translucency:
 					fife_instance.get2dGfxVisual().setTransparency(0)
+				else:
+					# restore regular translucency value, can also be different
+					fife_instance.get2dGfxVisual().setTransparency( BUILDINGS.TRANSPARENCY_VALUE )
 		self._transparencified_instances.clear()
 
 	def _remove_coloring(self):
