@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2012-03-24 02:16+0100\n"
-"PO-Revision-Date: 2012-05-05 20:33+0200\n"
+"PO-Revision-Date: 2012-05-05 21:05+0200\n"
 "Last-Translator: dimitrak <dkaramperi@yahoo.gr>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: el\n"
@@ -58,7 +58,7 @@ msgstr "Έμποροι"
 #: database files sql
 msgid "One of your fields requires a farm to harvest its crops."
 msgstr ""
-"Ένα από τα πεδία σας χρειάζεται μια φάρμα για τη συγκομιδή των σοδειών της."
+"Ένα από τα χωράφια σας χρειάζεται μια φάρμα για τη συγκομιδή των σοδειών."
 
 #. (text of widget: headline)
 #. This is a database entry: the name of an inhabitant increment (tier / level).
@@ -106,7 +106,7 @@ msgstr ""
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
 msgid "You can also drag roads."
-msgstr ""
+msgstr "Επίσης, μπορείτε να κάνετε απόθεση δρόμων."
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
