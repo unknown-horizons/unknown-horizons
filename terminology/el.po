@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2012-03-31 21:42+0100\n"
-"PO-Revision-Date: 2012-05-05 20:42+0200\n"
+"PO-Revision-Date: 2012-05-05 21:01+0200\n"
 "Last-Translator: dimitrak <dkaramperi@yahoo.gr>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: el\n"
@@ -173,238 +173,238 @@ msgid "house"
 msgstr "σπίτι"
 
 msgid "log"
-msgstr "καλύβα"
+msgstr "κορμός δέντρου"
 
 msgid "road"
-msgstr ""
+msgstr "δρόμος"
 
 msgid "save"
-msgstr ""
+msgstr "αποθήκευση"
 
 msgid "built"
-msgstr ""
+msgstr "χτισμένος(-η/ο)"
 
 msgid "pasture"
-msgstr ""
+msgstr "βοσκότοπος"
 
 msgid "reach"
-msgstr ""
+msgstr "προσέγγιση"
 
 msgid "tree"
-msgstr ""
+msgstr "δέντρο"
 
 msgid "your"
 msgstr ""
 
 msgid "your settlement"
-msgstr ""
+msgstr "η αποικία σου"
 
 msgid "add"
-msgstr ""
+msgstr "προσθήκη"
 
 msgid "check"
-msgstr ""
+msgstr "έλεγχος"
 
 msgid "choose"
-msgstr ""
+msgstr "επιλογή"
 
 msgid "confectionery"
-msgstr ""
+msgstr "γλυκίσματα"
 
 msgid "fisher"
-msgstr ""
+msgstr "ψαράς"
 
 msgid "free trader"
-msgstr ""
+msgstr "ελεύθερος έμπορος"
 
 msgid "happiness"
-msgstr ""
+msgstr "ευτυχία"
 
 msgid "in stock"
-msgstr ""
+msgstr "σε απόθεμα"
 
 msgid "money"
-msgstr ""
+msgstr "χρήματα"
 
 msgid "pavilion"
-msgstr ""
+msgstr "περίπτερο"
 
 msgid "running costs"
-msgstr ""
+msgstr "κόστος λειτουργίας"
 
 msgid "sugar"
-msgstr ""
+msgstr "ζάχαρη"
 
 msgid "taxes"
-msgstr ""
+msgstr "φόροι"
 
 msgid "tax"
-msgstr ""
+msgstr "φόρος"
 
 msgid "tools"
-msgstr ""
+msgstr "εργαλεία"
 
 msgid "button"
-msgstr ""
+msgstr "κουμπί"
 
 msgid "continue"
-msgstr ""
+msgstr "συνέχεια"
 
 msgid "faith"
-msgstr ""
+msgstr "πίστη"
 
 msgid "help"
-msgstr ""
+msgstr "βοήθεια"
 
 msgid "left"
-msgstr ""
+msgstr "αριστερά"
 
 msgid "level"
-msgstr ""
+msgstr "επίπεδο"
 
 msgid "mode"
-msgstr ""
+msgstr "λειτουργία"
 
 msgid "move"
-msgstr ""
+msgstr "μετακίνηση"
 
 msgid "pioneers"
-msgstr ""
+msgstr "πιονέροι"
 
 msgid "citizens"
-msgstr ""
+msgstr "πολίτες"
 
 msgid "merchants"
-msgstr ""
+msgstr "έμποροι"
 
 msgid "aristocrats"
-msgstr ""
+msgstr "αριστοκράτες"
 
 msgid "potato"
-msgstr ""
+msgstr "πατάτα"
 
 msgid "settler"
-msgstr ""
+msgstr "άποικος"
 
 msgid "speed"
-msgstr ""
+msgstr "ταχύτητα"
 
 msgid "stop"
-msgstr ""
+msgstr "διακοπή"
 
 msgid "storage tent"
-msgstr ""
+msgstr "σκηνή αποθήκευσης"
 
 msgid "wait"
-msgstr ""
+msgstr "αναμονή"
 
 msgid "access"
-msgstr ""
+msgstr "πρόσβαση"
 
 msgid "account"
-msgstr ""
+msgstr "λογαριασμός"
 
 msgid "amount"
-msgstr ""
+msgstr "ποσότητα"
 
 msgid "build menu"
-msgstr ""
+msgstr "μενού χτισίματος"
 
 msgid "cloth"
-msgstr ""
+msgstr "ύφασμα"
 
 msgid "construction"
-msgstr ""
+msgstr "κατασκευή"
 
 msgid "decrease"
-msgstr ""
+msgstr "μείωση"
 
 msgid "description"
-msgstr ""
+msgstr "περιγραφή"
 
 msgid "fish"
-msgstr ""
+msgstr "ψάρι"
 
 msgid "increase"
-msgstr ""
+msgstr "αύξηση"
 
 msgid "lamb"
-msgstr ""
+msgstr "αρνί"
 
 msgid "leave"
-msgstr ""
+msgstr "έξοδος"
 
 msgid "liquor"
-msgstr ""
+msgstr "λικέρ"
 
 msgid "location"
-msgstr ""
+msgstr "τοποθεσία"
 
 msgid "offer"
-msgstr ""
+msgstr "προσφορά"
 
 msgid "potatoes"
-msgstr ""
+msgstr "πατάτες"
 
 msgid "range"
-msgstr ""
+msgstr "εύρος"
 
 msgid "reached"
-msgstr ""
+msgstr "προσεγγίστηκε"
 
 msgid "run"
 msgstr ""
 
 msgid "slider"
-msgstr ""
+msgstr "ρυθμιστικό"
 
 msgid "solution"
-msgstr ""
+msgstr "λύση"
 
 msgid "space"
-msgstr ""
+msgstr "χώρος"
 
 msgid "target"
-msgstr ""
+msgstr "στόχος"
 
 msgid "team"
-msgstr ""
+msgstr "ομάδα"
 
 msgid "total"
-msgstr ""
+msgstr "σύνολο"
 
 msgid "unable"
-msgstr ""
+msgstr "αδυναμία εκτέλεσης"
 
 msgid "active"
-msgstr ""
+msgstr "ενεργός(-ή/ό)"
 
 msgid "afford"
-msgstr ""
+msgstr "διαθέτω τα μέσα"
 
 msgid "animals"
-msgstr ""
+msgstr "ζώα"
 
 msgid "Captain's log"
-msgstr ""
+msgstr "Ημερολόγιο καπετάνιου"
 
 msgid "construct"
-msgstr ""
+msgstr "κατασκευή"
 
 msgid "consume"
-msgstr ""
+msgstr "κατανάλωση"
 
 msgid "enabled"
-msgstr ""
+msgstr "ενεργοποιημένο"
 
 msgid "entries"
-msgstr ""
+msgstr "καταχωρίσεις"
 
 msgid "feature"
-msgstr ""
+msgstr "λειτουργία"
 
 msgid "forest"
-msgstr ""
+msgstr "δάσος"
 
 msgid "grows"
 msgstr ""
@@ -413,166 +413,166 @@ msgid "hold"
 msgstr ""
 
 msgid "idle"
-msgstr ""
+msgstr "σε αδράνεια"
 
 msgid "income"
-msgstr ""
+msgstr "εισόδημα"
 
 msgid "information"
-msgstr ""
+msgstr "πληροφορίες"
 
 msgid "key"
-msgstr ""
+msgstr "κλειδί"
 
 msgid "lamb wool"
-msgstr ""
+msgstr "αρνίσιο μαλλί"
 
 msgid "overview tab"
-msgstr ""
+msgstr "καρτέλα επισκόπησης"
 
 msgid "minimap"
-msgstr ""
+msgstr "μίνι χάρτης"
 
 msgid "issues"
-msgstr ""
+msgstr "προβλήματα"
 
 msgid "plant"
-msgstr ""
+msgstr "φυτό"
 
 msgid "play"
-msgstr ""
+msgstr "παιχνίδι"
 
 msgid "playing"
 msgstr ""
 
 msgid "price"
-msgstr ""
+msgstr "τιμή"
 
 msgid "read"
-msgstr ""
+msgstr "ανάγνωση"
 
 msgid "return"
-msgstr ""
+msgstr "επιστροφή"
 
 msgid "sale"
-msgstr ""
+msgstr "πώληση"
 
 msgid "screen"
-msgstr ""
+msgstr "οθόνη"
 
 msgid "sound"
-msgstr ""
+msgstr "ήχος"
 
 msgid "special"
-msgstr ""
+msgstr "ειδικός(-ή/ό)"
 
 msgid "store"
-msgstr ""
+msgstr "κατάστημα"
 
 msgid "tear"
 msgstr ""
 
 msgid "from time to time"
-msgstr ""
+msgstr "κατά διαστήματα"
 
 msgid "trading"
 msgstr ""
 
 msgid "village"
-msgstr ""
+msgstr "χωριό"
 
 msgid "visit"
-msgstr ""
+msgstr "επίσκεψη"
 
 msgid "world"
-msgstr ""
+msgstr "κόσμος"
 
 msgid "yield"
-msgstr ""
+msgstr "απόδοση"
 
 msgid "your ship"
-msgstr ""
+msgstr "το πλοίο σου"
 
 msgid "back"
-msgstr ""
+msgstr "πίσω"
 
 msgid "build settlement"
-msgstr ""
+msgstr "χτίσιμο αποικίας"
 
 msgid "load"
-msgstr ""
+msgstr "φόρτωση"
 
 msgid "unload"
-msgstr ""
+msgstr "εκφόρτωση"
 
 msgid "command"
-msgstr ""
+msgstr "εντολή"
 
 msgid "completed"
-msgstr ""
+msgstr "ολοκληρώθηκε"
 
 msgid "condition"
-msgstr ""
+msgstr "κατάσταση"
 
 msgid "contact"
-msgstr ""
+msgstr "επικοινωνία"
 
 msgid "empty"
-msgstr ""
+msgstr "κενός(-ή/ό)"
 
 msgid "ensure"
-msgstr ""
+msgstr "διασφάλιση"
 
 msgid "fulfill"
-msgstr ""
+msgstr "εκπλήρωση"
 
 msgid "graphics"
-msgstr ""
+msgstr "γραφικά"
 
 msgid "harvest"
-msgstr ""
+msgstr "συγκομιδή"
 
 msgid "hunts"
-msgstr ""
+msgstr "κυνήγι"
 
 msgid "multiple"
-msgstr ""
+msgstr "πολλαπλός(-ή/ό)"
 
 msgid "potato field"
-msgstr ""
+msgstr "χωράφι πατάτας"
 
 msgid "school"
-msgstr ""
+msgstr "σχολείο"
 
 msgid "seed"
-msgstr ""
+msgstr "σπόρος"
 
 msgid "service"
-msgstr ""
+msgstr "εξυπηρέτηση"
 
 msgid "sheep"
-msgstr ""
+msgstr "πρόβατο"
 
 msgid "signal fire"
-msgstr ""
+msgstr "σήμα φωτιάς"
 
 msgid "statistics"
-msgstr ""
+msgstr "στατιστικά στοιχεία"
 
 msgid "clay"
-msgstr ""
+msgstr "άργιλος"
 
 msgid "iron"
-msgstr ""
+msgstr "σίδηρος"
 
 msgid "ore"
-msgstr ""
+msgstr "μετάλλευμα"
 
 msgid "tobacco"
-msgstr ""
+msgstr "καπνός"
 
 msgid "charcoal"
-msgstr ""
+msgstr "κάρβουνο"
 
 msgid "sugar field"
 msgstr ""
