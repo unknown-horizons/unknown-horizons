@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2012-03-24 02:16+0100\n"
-"PO-Revision-Date: 2012-04-09 23:03+0200\n"
+"PO-Revision-Date: 2012-05-05 10:54+0200\n"
 "Last-Translator: Christopher Oelmueller <chris.oelmueller+uh@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: fi\n"
@@ -141,7 +141,7 @@ msgstr ""
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
 msgid "Your game has been autosaved."
-msgstr "Pelisi tallennettiin automaattisesti"
+msgstr "Pelisi tallennettiin automaattisesti."
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
@@ -785,7 +785,7 @@ msgstr ""
 #: horizons/i18n/guitranslations.py:417 horizons/i18n/guitranslations.py:439
 #: horizons/i18n/guitranslations.py:459
 msgid "Click to change the name of your settlement"
-msgstr "Vaihda siirtokuntasi nimeä napsauttamalla tätä."
+msgstr "Vaihda siirtokuntasi nimeä napsauttamalla tätä"
 
 #. e.g. when the pirate is disabled
 #. this dialog is pretty useless in this case
@@ -1183,7 +1183,7 @@ msgstr "Osta/Myy"
 
 #: horizons/gui/tabs/overviewtab.py:240
 msgid "Too far from the nearest own or allied warehouse"
-msgstr "Liian kaukana lähimmästä omasta tai liittolaisen sivutoimistosta."
+msgstr "Liian kaukana lähimmästä omasta tai liittolaisen sivutoimistosta"
 
 #: horizons/gui/tabs/overviewtab.py:246
 msgid "Cannot equip trade ship with weapons"
@@ -1290,7 +1290,7 @@ msgstr "Pelaajan {player} alukset"
 #: horizons/gui/widgets/playersships.py:83
 #: horizons/i18n/guitranslations.py:499 horizons/i18n/guitranslations.py:510
 msgid "Click to change the name of this ship"
-msgstr "Vaihda aluksen nimi napsauttamalla tästä."
+msgstr "Vaihda aluksen nimi napsauttamalla tästä"
 
 # 75%
 #. i18n There are no weapons equipped at the moment.
@@ -2495,9 +2495,8 @@ msgstr "Liity peliin"
 # 90%
 #. (text of widget: load_game_lbl)
 #: horizons/i18n/guitranslations.py:868
-#, fuzzy
 msgid "Load game:"
-msgstr "Lataa peli"
+msgstr "Lataa peli:"
 
 #. (text of widget: refr_gamelist_lbl)
 #: horizons/i18n/guitranslations.py:870
@@ -2661,12 +2660,12 @@ msgstr "Hyväksy"
 msgid "Whether to unload the ship after founding a settlement"
 msgstr ""
 "Laivan lasti puretaan automaattisesti uuden siirtokunnan perustamisen "
-"jälkeen."
+"jälkeen"
 
 #. (helptext of widget: color_depth_label)
 #: horizons/i18n/guitranslations.py:943
 msgid "If set to 0, use the driver default"
-msgstr "Arvon ollessa 0, käytetään näyttösovittimen oletusta."
+msgstr "Arvon ollessa 0, käytetään näyttösovittimen oletusta"
 
 #. (helptext of widget: debug_log_lbl)
 #: horizons/i18n/guitranslations.py:945
@@ -2678,7 +2677,7 @@ msgstr ""
 #. (helptext of widget: edge_scrolling_label)
 #: horizons/i18n/guitranslations.py:947
 msgid "Whether to move the viewport when the mouse pointer is close to map edges"
-msgstr "Karttaa voi vierittää myös viemällä hiiren kartan reunaan."
+msgstr "Karttaa voi vierittää myös viemällä hiiren kartan reunaan"
 
 #. (helptext of widget: fps_label)
 #: horizons/i18n/guitranslations.py:949
@@ -2689,7 +2688,7 @@ msgstr "Valitse suurin sallittu kuvapäivitysnopeus. Oletus: 60fps."
 #: horizons/i18n/guitranslations.py:951
 msgid "Whether to also rotate the minimap whenever the regular map is rotated"
 msgstr ""
-"Pikkukarttaa käännetään vastaavasti kuin pelin karttaa sitä käännettäessä."
+"Pikkukarttaa käännetään vastaavasti kuin pelin karttaa sitä käännettäessä"
 
 #. (helptext of widget: mouse_sensitivity_label)
 #: horizons/i18n/guitranslations.py:953
@@ -2700,14 +2699,14 @@ msgstr "Palauta oletusasetukset"
 #. (helptext of widget: network_port_lbl)
 #: horizons/i18n/guitranslations.py:955
 msgid "If set to 0, use the router default"
-msgstr "Arvon ollessa 0, käytetään reitittimen oletusta."
+msgstr "Arvon ollessa 0, käytetään reitittimen oletusta"
 
 #. (helptext of widget: uninterrupted_building_label)
 #: horizons/i18n/guitranslations.py:957
 msgid "When enabled, do not exit the build mode after successful construction"
 msgstr ""
 "Rakennustilasta ei poistuta, ennen kuin vähintään yksi rakennus on "
-"rakennettu onnistuneesti."
+"rakennettu onnistuneesti"
 
 #. (helptext of widget: use_renderer_label)
 #: horizons/i18n/guitranslations.py:959

@@ -100,7 +100,7 @@ msgstr "colone"
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
 msgid "Some of your inhabitants have no access to a main square."
-msgstr ""
+msgstr "Alcuni abitanti non hanno accesso alla piazza principale"
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
@@ -137,12 +137,12 @@ msgstr "Necessiti più {resource} per costruire questo edificio."
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
 msgid "You won!"
-msgstr ""
+msgstr "Hai vinto!"
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
 msgid "Your crew refuses to leave this map."
-msgstr ""
+msgstr "Il tuo equipaggio rifiuta di lasciare questa mappa."
 
 # Messages
 # 86%
@@ -3621,12 +3621,12 @@ msgstr ""
 
 #: horizons/world/component/tradepostcomponent.py:241
 msgid "The trade partner does not buy more of this."
-msgstr ""
+msgstr "Il partner commerciale non intende comperare più questa merce."
 
 #: horizons/world/traderoute.py:282
 #, python-format
 msgid "Trade route: going to {location}"
-msgstr ""
+msgstr "Rotta commerciale: andando verso {location}"
 
 #: horizons/world/traderoute.py:286
 #, python-format
