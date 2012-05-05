@@ -108,6 +108,8 @@ class ResourceOverviewBar(object):
 		NewPlayerSettlementHovered.subscribe(self._on_different_settlement)
 		TabWidgetChanged.subscribe(self._on_tab_widget_changed)
 
+		# set now and then every 2 sec
+		ExtScheduler().add_new_object(self._update_balance_display, self, run_in=0)
 		ExtScheduler().add_new_object(self._update_balance_display, self, run_in=2, loops=-1)
 
 	def end(self):
@@ -120,24 +122,6 @@ class ResourceOverviewBar(object):
 		self._custom_default_resources = None
 		NewPlayerSettlementHovered.unsubscribe(self._on_different_settlement)
 		TabWidgetChanged.unsubscribe(self._on_tab_widget_changed)
-
-	def _update_balance_display(self, toggle=False):
-		"""Callback for clicking on gold icon (ticket #1671).
-		@param toggle: Whether to enable/disable the balance display or only update icon (pos/neg)
-		"""
-		icon = self.gold_gui.child_finder('res_icon')
-		icon.capture(Callback(self._update_balance_display, True), event_name='mouseClicked')
-		if toggle:
-			self.gold_gui.balance_visible = not self.gold_gui.balance_visible
-		balance = self.session.world.player.get_balance()
-		if self.gold_gui.balance_visible:
-			icon.image = self.ICON_NEG_BALANCE if balance < 0 else self.ICON_POS_BALANCE
-			#print balance
-			#TODO instead of printing the balance, display it in a subwidget in-game
-			# possible ideas: use building cost widget (below gold icon) and display as +10 or -25
-			# might be hairy to detect all corner cases with the actual building cost preview
-		else:
-			icon.image = get_res_icon_path(RES.GOLD, 32)
 
 	def _update_default_configuration(self):
 		# user defined variante of DEFAULT_RESOURCES (will be preferred)
@@ -332,11 +316,11 @@ class ResourceOverviewBar(object):
 	def _update_gold(self, force=False):
 		"""Changelistener to upate player gold"""
 		# can be called pretty often (e.g. if there's an settlement.inventory.alter() in a loop)
-		# only update every 0.2 sec at most
+		# only update every 0.3 sec at most
 		scheduled_attr = "_gold_upate_scheduled"
 		if not hasattr(self, scheduled_attr):
 			setattr(self, scheduled_attr, True)
-			ExtScheduler().add_new_object(Callback(self._update_gold, force=True), self, run_in=0.2)
+			ExtScheduler().add_new_object(Callback(self._update_gold, force=True), self, run_in=0.3)
 			return
 		elif not force:
 			return # these calls we want to suppress, wait for scheduled call
@@ -347,10 +331,33 @@ class ResourceOverviewBar(object):
 		gold = self.session.world.player.get_component(StorageComponent).inventory[RES.GOLD]
 		gold_available_lbl = self.gold_gui.child_finder("gold_available")
 		gold_available_lbl.text = unicode(gold)
-
 		# reposition according to magic forumula passed down from the elders in order to support centering
-		self.gold_gui.resizeToContent() # update label size
+		gold_available_lbl.resizeToContent() # this sets new size values
 		gold_available_lbl.position = (33 - gold_available_lbl.size[0]/2,  51)
+
+		self.gold_gui.resizeToContent() # update label size
+
+	def _update_balance_display(self, toggle=False):
+		"""Callback for clicking on gold icon (ticket #1671) and updating the value (in case toggle is False)
+		@param toggle: Whether to enable/disable the balance display or only update icon (pos/neg)
+		"""
+		icon = self.gold_gui.child_finder('res_icon')
+		icon.capture(Callback(self._update_balance_display, True), event_name='mouseClicked')
+		if toggle:
+			self.gold_gui.balance_visible = not self.gold_gui.balance_visible
+		balance = self.session.world.player.get_balance_estimation()
+		if self.gold_gui.balance_visible:
+			icon.image = self.ICON_NEG_BALANCE if balance < 0 else self.ICON_POS_BALANCE
+		else:
+			icon.image = get_res_icon_path(RES.GOLD, 32)
+
+		# display actual balance in balance label in any case
+		balance_lbl = self.gold_gui.child_finder("balance")
+		balance_lbl.text = u"{sign}{balance}".format(balance=balance, sign=u'+' if balance >= 0 else u'')
+		balance_lbl.resizeToContent()
+		balance_lbl.position = (33 - balance_lbl.size[0]/2,  68) # see _update_gold
+
+		self.gold_gui.resizeToContent() # update label size
 
 	def _update_resources(self):
 		"""Same as _update_gold but for all other slots"""

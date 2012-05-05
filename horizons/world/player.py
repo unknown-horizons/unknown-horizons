@@ -155,7 +155,7 @@ class Player(ComponentHolder, WorldObject):
 		self.session = None
 
 	@decorators.temporary_cachedmethod(timeout=2)
-	def get_balance(self):
+	def get_balance_estimation(self):
 		"""This takes a while to calculate, so only do it every 2 seconds at most"""
 		return sum(settlement.balance for settlement in self.session.world.player.settlements)
 
