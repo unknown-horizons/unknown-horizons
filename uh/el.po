@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2012-03-24 02:16+0100\n"
-"PO-Revision-Date: 2012-05-05 21:05+0200\n"
+"PO-Revision-Date: 2012-05-05 22:42+0200\n"
 "Last-Translator: dimitrak <dkaramperi@yahoo.gr>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: el\n"
@@ -112,53 +112,58 @@ msgstr "Επίσης, μπορείτε να κάνετε απόθεση δρόμ
 #: database files sql
 msgid "You cannot tear the warehouse, your settlements needs it."
 msgstr ""
+"Δεν μπορείτε να καταστρέψετε την αποθήκη. Οι αποικίες σας την χρειάζονται."
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
 msgid "You have reached the current maximum increment. Your inhabitants will not upgrade further."
 msgstr ""
+"Προσεγγίσατε το μέγιστο τρέχον βήμα. Οι κάτοικοί σας δεν είναι δυνατό να "
+"αναβαθμιστούν περαιτέρω."
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
 #, python-format
 msgid "You need more {resource} to build this building."
 msgstr ""
+"Χρειάζεστε περισσότερα από το στοιχείο \"{resource}\" για να χτίσετε αυτό το "
+"κτίριο."
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
 msgid "You won!"
-msgstr ""
+msgstr "Κερδίσατε!"
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
 msgid "Your crew refuses to leave this map."
-msgstr ""
+msgstr "Το πλήρωμά σας αρνείται να εγκαταλείψει αυτόν τον χάρτη."
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
 msgid "Your game has been autosaved."
-msgstr ""
+msgstr "Το παιχνίδι σας αποθηκεύτηκε αυτόματα."
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
 msgid "Your game has been quicksaved."
-msgstr ""
+msgstr "Το παιχνίδι σας αποθηκεύτηκε γρήγορα."
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
 msgid "Your game has been saved."
-msgstr ""
+msgstr "Το παιχνίδι σας αποθηκεύτηκε."
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
 #, python-format
 msgid "Your inhabitants reached level {level}."
-msgstr ""
+msgstr "Οι κάτοικοί σας έφτασαν στο επίπεδο {level}."
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
 msgid "Your mine has run out of resources."
-msgstr ""
+msgstr "Οι πόροι του ορυχείου σας εξαντλήθηκαν."
 
 #. This is a database entry: the name of a resource.
 #: database files sql
@@ -455,12 +460,15 @@ msgstr ""
 #, python-format
 msgid "{player1} and {player2} have allied their forces."
 msgstr ""
+"Οι παίκτες {player1} και {player2} ένωσαν τις δυνάμεις τους ως σύμμαχοι."
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
 #, python-format
 msgid "{player1} and {player2} have ended the war and are now allied."
 msgstr ""
+"Οι παίκτες {player1} και {player2} τερμάτισαν τον πόλεμο και είναι πλέον "
+"σύμμαχοι."
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
