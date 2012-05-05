@@ -3,8 +3,8 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2012-03-31 21:42+0100\n"
-"PO-Revision-Date: 2012-03-31 23:29+0200\n"
-"Last-Translator: Anonymous Pootle User\n"
+"PO-Revision-Date: 2012-05-05 20:42+0200\n"
+"Last-Translator: dimitrak <dkaramperi@yahoo.gr>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: el\n"
 "MIME-Version: 1.0\n"
@@ -14,16 +14,16 @@ msgstr ""
 "X-Generator: Pootle 2.1.5\n"
 
 msgid "build"
-msgstr ""
+msgstr "χτίσιμο"
 
 msgid "game"
-msgstr ""
+msgstr "παιχνίδι"
 
 msgid "building"
-msgstr ""
+msgstr "κτίριο"
 
 msgid "settlement"
-msgstr ""
+msgstr "αποικία"
 
 msgid "farm"
 msgstr "φάρμα"
@@ -32,148 +32,148 @@ msgid "ship"
 msgstr "πλοίο"
 
 msgid "tent"
-msgstr ""
+msgstr "σκηνή"
 
 msgid "warehouse"
-msgstr ""
+msgstr "αποθήκη"
 
 msgid "resource"
-msgstr ""
+msgstr "πόρος"
 
 msgid "produce"
-msgstr ""
+msgstr "παραγωγή"
 
 msgid "field"
-msgstr ""
+msgstr "αγρός"
 
 msgid "map"
 msgstr "χάρτης"
 
 msgid "trade"
-msgstr ""
+msgstr "εμπόριο"
 
 msgid "inhabitants"
 msgstr "κάτοικοι"
 
 msgid "buy"
-msgstr ""
+msgstr "αγορά"
 
 msgid "overview"
-msgstr ""
+msgstr "επισκόπηση"
 
 msgid "click"
-msgstr ""
+msgstr "κλικ"
 
 msgid "lumberjack"
-msgstr ""
+msgstr "ξυλοκόπος"
 
 msgid "resident"
-msgstr ""
+msgstr "κάτοικος"
 
 msgid "main square"
-msgstr ""
+msgstr "κεντρική πλατεία"
 
 msgid "sailors"
-msgstr ""
+msgstr "ναυτικοί"
 
 msgid "food"
 msgstr "τροφή"
 
 msgid "increment"
-msgstr ""
+msgstr "βήμα"
 
 msgid "production"
 msgstr "παραγωγή"
 
 msgid "select"
-msgstr ""
+msgstr "επιλογή"
 
 msgid "sell"
-msgstr ""
+msgstr "πώληση"
 
 msgid "setting"
-msgstr ""
+msgstr "ρύθμιση"
 
 msgid "storage"
-msgstr ""
+msgstr "αποθήκευση"
 
 msgid "tab"
-msgstr ""
+msgstr "καρτέλα"
 
 msgid "upgrade"
-msgstr ""
+msgstr "αναβάθμιση"
 
 msgid "your inhabitants"
-msgstr ""
+msgstr "οι κάτοικοί σας"
 
 msgid "close"
-msgstr ""
+msgstr "κλείσιμο"
 
 msgid "companies"
-msgstr ""
+msgstr "εταιρείες"
 
 msgid "island"
-msgstr ""
+msgstr "νησί"
 
 msgid "time"
 msgstr "χρόνος"
 
 msgid "unit"
-msgstr ""
+msgstr "μονάδα"
 
 msgid "balance"
-msgstr ""
+msgstr "ισορροπία"
 
 msgid "coast"
-msgstr ""
+msgstr "ακτή"
 
 msgid "menu"
 msgstr "μενού"
 
 msgid "slot"
-msgstr ""
+msgstr "υποδοχή"
 
 msgid "start"
-msgstr ""
+msgstr "εκκίνηση"
 
 msgid "stock"
-msgstr ""
+msgstr "απόθεμα"
 
 msgid "trail"
 msgstr "μονοπάτι"
 
 msgid "Unknown Horizons"
-msgstr ""
+msgstr "Άγνωστοι ορίζοντες"
 
 msgid "wool"
-msgstr ""
+msgstr "μαλλί"
 
 msgid "boards"
-msgstr ""
+msgstr "σανίδες"
 
 msgid "collector"
-msgstr ""
+msgstr "συλλέκτης"
 
 msgid "connection"
-msgstr ""
+msgstr "σύνδεση"
 
 msgid "fire"
-msgstr ""
+msgstr "πυρκαγιά"
 
 msgid "change"
 msgstr "αλλαγή"
 
 msgid "connect"
-msgstr ""
+msgstr "σύνδεση"
 
 msgid "cost"
-msgstr ""
+msgstr "κόστος"
 
 msgid "house"
-msgstr ""
+msgstr "σπίτι"
 
 msgid "log"
-msgstr ""
+msgstr "καλύβα"
 
 msgid "road"
 msgstr ""

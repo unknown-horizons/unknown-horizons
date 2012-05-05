@@ -7,75 +7,76 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2012-03-24 02:16+0100\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"PO-Revision-Date: 2012-05-05 20:33+0200\n"
+"Last-Translator: dimitrak <dkaramperi@yahoo.gr>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: el\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
-"X-Generator: Translate Toolkit 1.8.1\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Pootle 2.1.5\n"
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
 #, python-format
 msgid "A new settlement was founded by {player}."
-msgstr ""
+msgstr "Ιδρύθηκε μια νέα αποικία από τον/την {player}."
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
 msgid "A new ship has been created."
-msgstr ""
+msgstr "Δημιουργήθηκε ένα νέο πλοίο."
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
 msgid "A new world has been created."
-msgstr ""
+msgstr "Δημιουργήθηκε ένας νέος κόσμος."
 
 #. This is a database entry: the name of an inhabitant increment (tier / level).
 #: database files sql
 msgid "Aristocrats"
-msgstr ""
+msgstr "Αριστοκράτες"
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
 msgid "Cannot go here."
-msgstr ""
+msgstr "Δεν είναι δυνατή η μετάβαση εκεί."
 
 #. (text of widget: headline)
 #. This is a database entry: the name of an inhabitant increment (tier / level).
 #: database files horizons/i18n/guitranslations.py:224 sql
 msgid "Citizens"
-msgstr ""
+msgstr "Πολίτες"
 
 #. This is a database entry: the name of an inhabitant increment (tier / level).
 #: database files sql
 msgid "Merchants"
-msgstr ""
+msgstr "Έμποροι"
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
 msgid "One of your fields requires a farm to harvest its crops."
 msgstr ""
+"Ένα από τα πεδία σας χρειάζεται μια φάρμα για τη συγκομιδή των σοδειών της."
 
 #. (text of widget: headline)
 #. This is a database entry: the name of an inhabitant increment (tier / level).
 #: database files horizons/i18n/guitranslations.py:276 sql
 msgid "Pioneers"
-msgstr ""
+msgstr "Πιονέροι"
 
 #. (text of widget: headline)
 #. This is a database entry: the name of an inhabitant increment (tier / level).
 #: database files horizons/i18n/guitranslations.py:307 sql
 msgid "Sailors"
-msgstr ""
+msgstr "Ναυτικοί"
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
 #, python-format
 msgid "Screenshot has been saved to {file}."
-msgstr ""
+msgstr "Το στιγμιότυπο αποθηκεύτηκε στο αρχείο {file}."
 
 #. (text of widget: headline)
 #. (text of widget: settler_score)
@@ -83,22 +84,24 @@ msgstr ""
 #: database files horizons/i18n/guitranslations.py:336
 #: horizons/i18n/guitranslations.py:664 sql
 msgid "Settlers"
-msgstr ""
+msgstr "Άποικοι"
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
 msgid "Some of your inhabitants have no access to a main square."
-msgstr ""
+msgstr "Μερικοί από τους κατοίκους σας δεν έχουν πρόσβαση σε κεντρική πλατεία."
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
 msgid "Some of your inhabitants just moved out."
-msgstr ""
+msgstr "Μερικοί από τους κατοίκους σας μόλις μετακόμισαν."
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
 msgid "The route is now configured. Start it via the \"start route\" button in the \"configure route\" menu."
 msgstr ""
+"Η διαδρομή διαμορφώθηκε. Ξεκινήστε την μέσω του κουμπιού \"Εκκίνηση "
+"διαδρομής\" στο μενού \"Διαμόρφωση διαδρομής\"."
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
