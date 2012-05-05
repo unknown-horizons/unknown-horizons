@@ -80,7 +80,8 @@ class NavigationTool(CursorTool):
 				self.cursor_tool = cursor_tool
 				self.enabled = False
 
-				self.icon = Icon()
+				self.icon = Icon(position=(1,1)) # 0, 0 is currently not supported by tooltips
+
 
 			def toggle(self):
 				self.enabled = not self.enabled

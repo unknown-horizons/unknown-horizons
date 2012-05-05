@@ -167,11 +167,22 @@ class IngameKeyListener(fife.IKeyListener, LivingObject):
 					if group is not self.session.selection_groups[num]:
 						group -= self.session.selection_groups[num]
 			else:
-				for instance in self.session.selected_instances - self.session.selection_groups[num]:
-					instance.get_component(SelectableComponent).deselect()
-				for instance in self.session.selection_groups[num] - self.session.selected_instances:
+				# deselect
+				# we need to make sure to have a cursor capable of selection (for apply_select())
+				# this handles deselection implicitly in the destructor
+				self.session.set_cursor('selection')
+
+				# apply new selection
+				for instance in self.session.selection_groups[num]:
 					instance.get_component(SelectableComponent).select(reset_cam=True)
-				self.session.selected_instances = self.session.selection_groups[num]
+				# assign copy since it will be randomly changed, the unit should only be changed on ctrl-events
+				self.session.selected_instances = self.session.selection_groups[num].copy()
+				# show menu depending on the entities selected
+				if self.session.selected_instances:
+					self.session.cursor.apply_select()
+				else:
+					# nothing is selected here, we need to hide the menu since apply_select doesn't handle that case
+					self.session.ingame_gui.show_menu(None)
 		elif action == _Actions.QUICKSAVE:
 			self.session.quicksave() # load is only handled by the MainListener
 		elif action == _Actions.SAVE_MAP:

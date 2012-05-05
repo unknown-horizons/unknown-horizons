@@ -58,6 +58,7 @@ class AmbientSoundComponent(Component):
 			play_every = self.__class__.AMBIENT_SOUND_INTERVAL + \
 												random.randint( * self.__class__.AMBIENT_SOUND_INTERVAL_VARIANCE )
 			for soundfile in self.soundfiles:
+				#TODO remove str() -- http://fife.trac.cvsdude.com/engine/ticket/701
 				self.play_ambient(str(soundfile), loop_interval=play_every,
 				                  position=self.instance.position.center())
 
@@ -94,6 +95,7 @@ class AmbientSoundComponent(Component):
 			else:
 				self.__emitter.setRolloff(0) # reset to default
 
+			#TODO remove str() -- http://fife.trac.cvsdude.com/engine/ticket/701
 			self.__emitter.setSoundClip(horizons.main.fife.sound.soundclipmanager.load(str(soundfile)))
 
 			if loop_interval == 0:
@@ -119,6 +121,7 @@ class AmbientSoundComponent(Component):
 		"""
 		if horizons.main.fife.get_fife_setting("PlaySounds"):
 			a = AmbientSoundComponent()
+			#TODO remove str() -- http://fife.trac.cvsdude.com/engine/ticket/701
 			soundfile = horizons.main.db.get_sound_file(str(sound))
 			a.play_ambient(soundfile, position=position)
 			horizons.main.fife.sound.emitter['ambient'].remove(a.__emitter)

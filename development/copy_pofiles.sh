@@ -67,9 +67,8 @@ SCENARIOS=( 'tutorial' 'The_Unknown' )
 ###############################################################################
 
 function tl_check {
+	msgfmt --check-format --statistics -o /dev/null $1 -v 2>&1 |perl -npe  "$TL_REGEX"
 	# tells us which translations meet shipping criteria
-	msgfmt --check-format --statistics -o /dev/null $1 -v 2>&1 |perl -npe "$TL_REGEX"
-	return 3
 }
 function tl_tut_check {
 	# tells us which tutorial translations meet shipping criteria
@@ -106,10 +105,7 @@ changed_interface_files=$(git diff --name-only $old_head..$new_head uh/*.po )
 echo '=> Copying these interface translations:'
 for file in $changed_interface_files; do
 	tl_check "$TL_SOURCE/$file" | perl -npe "$TL_REGEX"
-	if [ $? -eq 3 ]; then
-		cp $TL_SOURCE/$file $uh/$TL_DIR
-	fi
-	#else msgfmt found critical errors and will print them. Fix ASAP!
+	cp $TL_SOURCE/$file $uh/$TL_DIR
 done
 
 echo

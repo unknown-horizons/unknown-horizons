@@ -7,8 +7,8 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2012-03-24 02:16+0100\n"
-"PO-Revision-Date: 2012-04-12 23:49+0200\n"
-"Last-Translator: Premislaus <premislaus1988@gmail.com>\n"
+"PO-Revision-Date: 2012-05-05 13:27+0200\n"
+"Last-Translator: let.me.test <a42939@rtrtr.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: pl\n"
 "MIME-Version: 1.0\n"
@@ -1136,11 +1136,15 @@ msgstr ""
 #, python-format
 msgid "Will buy {resource_name} for {price} gold/t whenever less than {limit}t are in stock."
 msgstr ""
+"Kupuj {resource_name} za {price} złota/t, jeśli zapasy są mniejsze niż "
+"{limit} t."
 
 #: horizons/gui/tabs/buyselltab.py:367
-#, python-format
+#, python-format, fuzzy
 msgid "Will sell {resource_name} for {price} gold/t whenever more than {limit}t are available."
 msgstr ""
+"Sprzedawaj {resource_name} za {price} złota/t, jeśli jest dostępne więcej "
+"niż {limit} t."
 
 #. (text of widget: headline)
 #: horizons/gui/tabs/inventorytab.py:38 horizons/i18n/guitranslations.py:219
@@ -1218,8 +1222,9 @@ msgid "Cannot equip trade ship with weapons"
 msgstr "Nie można wyposażyć statku handlowego w broń"
 
 #: horizons/gui/tabs/overviewtab.py:247
+#, fuzzy
 msgid "It is not possible to equip a trade ship with weapons."
-msgstr ""
+msgstr "Nie można wyposażyć statku handlowego w broń."
 
 #: horizons/gui/tabs/overviewtab.py:280
 msgid "Equip weapon"
@@ -1316,9 +1321,8 @@ msgstr "Statki gracza - {player}"
 #. (helptext of widget: name)
 #: horizons/gui/widgets/playersships.py:83
 #: horizons/i18n/guitranslations.py:499 horizons/i18n/guitranslations.py:510
-#, fuzzy
 msgid "Click to change the name of this ship"
-msgstr "Kliknij aby zmienić nazwę tego statku."
+msgstr "Kliknij, aby zmienić nazwę tego statku."
 
 # 75%
 #. i18n There are no weapons equipped at the moment.
@@ -1343,11 +1347,11 @@ msgstr "Naciśnij aby dodać nowy slot"
 #: horizons/gui/widgets/resourceoverviewbar.py:389
 #: horizons/gui/widgets/resourceoverviewbar.py:394
 msgid "Reset to default"
-msgstr ""
+msgstr "Przywróć domyślne"
 
 #: horizons/gui/widgets/resourceoverviewbar.py:390
 msgid "Reset this configuration to the factory default."
-msgstr ""
+msgstr "Przywróć konfigurację do wartości domyślnych"
 
 #: horizons/gui/widgets/resourceoverviewbar.py:395
 msgid "Reset this settlement's displayed resources to the default configuration you have saved."

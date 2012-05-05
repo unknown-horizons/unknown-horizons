@@ -37,7 +37,7 @@ from horizons.util.python.decorators import cachedmethod
 from horizons.extscheduler import ExtScheduler
 from horizons.component.ambientsoundcomponent import AmbientSoundComponent
 from horizons.util.lastactiveplayersettlementmanager import LastActivePlayerSettlementManager
-from horizons.messaging import NewPlayerSettlementHovered, ResourceBarResize
+from horizons.messaging import NewPlayerSettlementHovered, ResourceBarResize, TabWidgetChanged
 
 
 class ResourceOverviewBar(object):
@@ -46,14 +46,14 @@ class ResourceOverviewBar(object):
 	http://wiki.unknown-horizons.org/w/HUD
 
 	Features:
-	- display contents of currently relevant inventory (settlement/ship) [x]
-	- always show gold of local player [x]
-	- show costs of current build [x]
-	- configure the resources to show [x]
-		- per settlement [x]
-		- add new slots [x]
-		- switch displayed resources to construction relevant res on build [x]
-		- res selection consistent with other res selection dlgs [x]
+	- display contents of currently relevant inventory (settlement/ship)
+	- always show gold of local player
+	- show costs of current build
+	- configure the resources to show
+		- per settlement
+		- add new slots
+		- switch displayed resources to construction relevant res on build
+		- res selection consistent with other res selection dlgs
 
 	Invariants:
 	- it should be obvious that the res bar can be configured
@@ -106,6 +106,7 @@ class ResourceOverviewBar(object):
 		self._update_default_configuration()
 
 		NewPlayerSettlementHovered.subscribe(self._on_different_settlement)
+		TabWidgetChanged.subscribe(self._on_tab_widget_changed)
 
 		ExtScheduler().add_new_object(self._update_balance_display, self, run_in=2, loops=-1)
 
@@ -118,6 +119,7 @@ class ResourceOverviewBar(object):
 		self.gui = None
 		self._custom_default_resources = None
 		NewPlayerSettlementHovered.unsubscribe(self._on_different_settlement)
+		TabWidgetChanged.unsubscribe(self._on_tab_widget_changed)
 
 	def _update_balance_display(self, toggle=False):
 		"""Callback for clicking on gold icon (ticket #1671).
@@ -403,11 +405,8 @@ class ResourceOverviewBar(object):
 
 		# set mousetool to get notified on clicks outside the resbar area
 		if not isinstance(self.session.cursor, ResBarMouseTool):
-			def on_away_click():
-				self._hide_resource_selection_dialog()
-				self._hide_dummy_slot()
 			self.session.cursor = ResBarMouseTool(self.session, self.session.cursor,
-			                                      on_away_click)
+			                                      self.close_resource_selection_mode)
 
 
 		on_click = functools.partial(self._set_resource_slot, slot_num)
@@ -477,7 +476,7 @@ class ResourceOverviewBar(object):
 		@param slot_num: starting at 0, will be added as new slot if greater than no of slots
 		@param res_id: a resource id or 0 for remove slot
 		"""
-		self._hide_resource_selection_dialog()
+		self.close_construction_mode()
 		res_copy = self._get_current_resources()[:]
 		number_of_slots_changed = False
 		if slot_num < len(res_copy): # change existing slot
@@ -499,7 +498,6 @@ class ResourceOverviewBar(object):
 
 		if isinstance(self.session.cursor, ResBarMouseTool):
 			self.session.cursor.reset()
-			self._hide_dummy_slot()
 
 		if number_of_slots_changed:
 			ResourceBarResize.broadcast(self)
@@ -508,6 +506,15 @@ class ResourceOverviewBar(object):
 		if hasattr(self, "_res_selection_dialog"):
 			self._res_selection_dialog.hide()
 			del self._res_selection_dialog
+
+	def close_resource_selection_mode(self):
+		"""Fully disable resource selection mode"""
+		self._hide_resource_selection_dialog()
+		self._hide_dummy_slot()
+
+	def _on_tab_widget_changed(self, msg=None):
+		if hasattr(self, "_res_selection_dialog"):
+			self.close_resource_selection_mode()
 
 	def _show_dummy_slot(self):
 		"""Show the dummy button at the end to allow for addition of slots"""
@@ -560,6 +567,9 @@ class ResBarMouseTool(NavigationTool):
 	def mousePressed(self, evt):
 		self.on_click()
 		self.reset()
+		# this click should still count, especially in case the res
+		# selection dialog has been closed by other means than clicking
+		self.session.cursor.mousePressed(evt)
 
 	def reset(self):
 		"""Enable old tol again"""

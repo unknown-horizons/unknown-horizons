@@ -195,14 +195,17 @@ class GuiHelper(object):
 		self.session.selected_instances = set(objects)
 		self.session.cursor.apply_select()
 
-	def press_key(self, keycode):
+	def press_key(self, keycode, shift=False, ctrl=False):
 		"""Simulate a global keypress.
 
 		Example:
 			gui.press_key(gui.Key.F4)
+			gui.press_key(gui.Key.F4, ctrl=True)
 		"""
 		evt = mock.Mock()
 		evt.getKey.return_value = self.Key(keycode)
+		evt.isControlPressed.return_value = ctrl
+		evt.isShiftPressed.return_value = shift
 
 		self.session.keylistener.keyPressed(evt)
 		self.session.keylistener.keyReleased(evt)
