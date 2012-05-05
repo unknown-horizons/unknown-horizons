@@ -171,7 +171,7 @@ class IngameKeyListener(fife.IKeyListener, LivingObject):
 					instance.get_component(SelectableComponent).deselect()
 				for instance in self.session.selection_groups[num] - self.session.selected_instances:
 					instance.get_component(SelectableComponent).select(reset_cam=True)
-				self.session.selected_instances = self.session.selection_groups[num]
+				self.session.selected_instances = self.session.selection_groups[num].copy()
 		elif action == _Actions.QUICKSAVE:
 			self.session.quicksave() # load is only handled by the MainListener
 		elif action == _Actions.SAVE_MAP:
