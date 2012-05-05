@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2012-03-24 02:16+0100\n"
-"PO-Revision-Date: 2012-05-05 22:42+0200\n"
+"PO-Revision-Date: 2012-05-05 22:49+0200\n"
 "Last-Translator: dimitrak <dkaramperi@yahoo.gr>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: el\n"
@@ -475,77 +475,85 @@ msgstr ""
 #, python-format
 msgid "{player1} and {player2} have ended their alliance and are now in a state of war."
 msgstr ""
+"Οι παίκτες {player1} και {player2} τερμάτισαν τη συμμαχία τους και τώρα "
+"βρίσκονται σε κατάσταση πολέμου."
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
 #, python-format
 msgid "{player1} and {player2} have settled their hostility."
 msgstr ""
+"Οι παίκτες {player1} και {player2} τακτοποίησαν την εχθρική τους κατάσταση."
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
 #, python-format
 msgid "{player1} and {player2} have terminated their alliance."
-msgstr ""
+msgstr "Οι παίκτες {player1} και {player2} τερμάτισαν τη συμμαχία τους."
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
 #, python-format
 msgid "{player1} and {player2} will fight each other to the death."
 msgstr ""
+"Οι παίκτες {player1} και {player2} θα πολεμήσουν μεταξύ τους μέχρι θανάτου."
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
 #, python-format
 msgid "{player}: {message}"
-msgstr ""
+msgstr "Παίκτης {player}: {message}"
 
 #: editor/editor.py:33
 msgid "Specify the path to FIFE root directory."
-msgstr ""
+msgstr "Καθορίστε τη διαδρομή προς τον κατάλογο ρίζας FIFE."
 
 #: horizons/command/game.py:36
 msgid "Invalid filename"
-msgstr ""
+msgstr "Μη έγκυρο όνομα αρχείου"
 
 #: horizons/command/game.py:37
 msgid "Received an invalid filename for a save command."
-msgstr ""
+msgstr "Ελήφθη μη έγκυρο όνομα αρχείου για εντολή αποθήκευσης."
 
 #. There was a problem during the 'save game' procedure.
 #: horizons/command/game.py:47 horizons/gui/gui.py:179
 #: horizons/gui/ingamegui.py:465 horizons/gui/modules/multiplayermenu.py:133
 #: horizons/gui/modules/multiplayermenu.py:236
 msgid "Error"
-msgstr ""
+msgstr "Σφάλμα"
 
 #: horizons/command/game.py:47 horizons/gui/gui.py:179
 msgid "Failed to save."
-msgstr ""
+msgstr "Η αποθήκευση απέτυχε."
 
 #: horizons/engine/settingsdialog.py:50
 msgid "Restart required"
-msgstr ""
+msgstr "Απαιτείται επανεκκίνηση"
 
 #: horizons/engine/settingsdialog.py:51
 msgid "Some of your changes require a restart of Unknown Horizons."
 msgstr ""
+"Μερικές από τις αλλαγές σας απαιτούν επανεκκίνηση του παιχνιδιού \"Άγνωστοι "
+"ορίζοντες\"."
 
 #: horizons/engine/settingsdialog.py:55
 msgid "Restore default settings"
-msgstr ""
+msgstr "Επαναφορά προεπιλεγμένων ρυθμίσεων"
 
 #: horizons/engine/settingsdialog.py:56
 msgid "Restoring the default settings will delete all changes to the settings you made so far."
 msgstr ""
+"Με την επαναφορά των προεπιλεγμένων ρυθμίσεων θα γίνει διαγραφή όλων των "
+"αλλαγών που πραγματοποιήσατε έως τώρα."
 
 #: horizons/engine/settingsdialog.py:57
 msgid "Do you want to continue?"
-msgstr ""
+msgstr "Θέλετε να συνεχίσετε;"
 
 #: horizons/engine/settingshandler.py:148
 msgid "Warning"
-msgstr ""
+msgstr "Προειδοποίηση"
 
 #. i18n Warning popup shown in settings when SDL is selected as renderer.
 #: horizons/engine/settingshandler.py:150
@@ -554,14 +562,20 @@ msgid ""
 "\n"
 "Use at own risk!"
 msgstr ""
+"Η μηχανή απόδοσης SDL προορίζεται ως εναλλακτική λύση και εμφανίζει σοβαρά "
+"προβλήματα με τα γραφικά. \n"
+"\n"
+"Την χρησιμοποιείτε με δική σας ευθύνη!"
 
 #: horizons/engine/settingshandler.py:224
 msgid "Invalid network port"
-msgstr ""
+msgstr "Μη έγκυρη θύρα δικτύου"
 
 #: horizons/engine/settingshandler.py:225
 msgid "The port you specified is not valid. It must be a number between 1 and 65535."
 msgstr ""
+"Η θύρα που καθορίσατε δεν είναι έγκυρη. Πρέπει να είναι ένας αριθμός μεταξύ "
+"1 και 65535."
 
 #: horizons/engine/settingshandler.py:226
 msgid "Please check the port you entered and make sure it is in the specified range."
