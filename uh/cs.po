@@ -3907,8 +3907,8 @@ msgstr "FIFE nebylo nalezeno."
 #, python-format
 #~ msgid "Will sell {resource_name} whenever more than {limit}t are available."
 #~ msgstr ""
-#~ "Prodá {resource_name} kdykoli, když je ve skladu toto zboží dostupné k "
-#~ "prodeji."
+#~ "Prodá {resource_name} kdykoli, když je ve skladu toto zboží dostupné 
+#~ "{limit}k prodeji."
 
 #~ msgid "Fire Brigade"
 #~ msgstr "Hasiči"

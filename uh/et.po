@@ -4002,7 +4002,7 @@ msgstr "FIFE't ei leitud."
 
 #, python-format
 #~ msgid "settlements of {player}"
-#~ msgstr "{mängija} kolooniad"
+#~ msgstr "{player} kolooniad"
 
 #, python-format
 #~ msgid "ships of {player}"
