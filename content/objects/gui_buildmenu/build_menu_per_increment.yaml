@@ -1,19 +1,19 @@
 tab1:
 - icon: content/gui/icons/tabwidget/buildmenu/level1_%s.png
-- helptext: Increment I
+- helptext: _ Increment I
 - # first row
-  - Residents and infrastructure
+  - _ Residents and infrastructure
   - BUILDINGS.RESIDENTIAL
   - BUILDINGS.STORAGE
   - BUILDINGS.TRAIL
   - BUILDINGS.LOOKOUT
 - # second row 
-  - Services
+  - _ Services
   - BUILDINGS.MAIN_SQUARE
   - BUILDINGS.PAVILION
   - BUILDINGS.SIGNAL_FIRE
 - # third row
-  - Companies
+  - _ Companies
   - BUILDINGS.LUMBERJACK
   - BUILDINGS.TREE
   - BUILDINGS.HUNTER
@@ -21,21 +21,21 @@ tab1:
 
 tab2:
 - icon: content/gui/icons/tabwidget/buildmenu/level2_%s.png
-- helptext: Increment II
+- helptext: _ Increment II
 - 
-  - Companies
+  - _ Companies
   - BUILDINGS.CLAY_PIT
   - BUILDINGS.BRICKYARD
   - BUILDINGS.WEAVER
   - BUILDINGS.DISTILLERY
 -
-  - Fields
+  - _ Fields
   - BUILDINGS.FARM
   - BUILDINGS.POTATO_FIELD
   - BUILDINGS.PASTURE
   - BUILDINGS.SUGARCANE_FIELD
 -
-  - Services
+  - _ Services
   - BUILDINGS.VILLAGE_SCHOOL
   - BUILDINGS.FIRE_STATION
   - BUILDINGS.BOAT_BUILDER
@@ -44,44 +44,44 @@ tab2:
 
 tab3:
 - icon: content/gui/icons/tabwidget/buildmenu/level3_%s.png
-- helptext: Increment III
+- helptext: _ Increment III
 - 
-  - Mining
+  - _ Mining
   - BUILDINGS.IRON_MINE
   - BUILDINGS.SMELTERY
   - BUILDINGS.TOOLMAKER
   - BUILDINGS.CHARCOAL_BURNER
 -
-  - Companies
+  - _ Companies
   - BUILDINGS.SALT_PONDS
   - BUILDINGS.BUTCHERY
   - BUILDINGS.TOBACCONIST
   - BUILDINGS.BLENDER
 -
-  - Fields
+  - _ Fields
   - BUILDINGS.TOBACCO_FIELD
   - BUILDINGS.CATTLE_RUN
   - BUILDINGS.PIGSTY
   - BUILDINGS.SPICE_FIELD
 -
-  - Services
+  - _ Services
   - BUILDINGS.TAVERN
   - # empty slot
-  - Military
+  - _ Military
   - BUILDINGS.BARRACKS
 
 
 tab4:
 - icon: content/gui/icons/tabwidget/buildmenu/level4_%s.png
-- helptext: Increment IV
+- helptext: _ Increment IV
 - 
-  - Companies
+  - _ Companies
   - BUILDINGS.WINDMILL
   - BUILDINGS.BAKERY
   - BUILDINGS.VINTNER
   - BUILDINGS.PASTRY_SHOP
 -
-  - Fields
+  - _ Fields
   - BUILDINGS.CORN_FIELD
   - BUILDINGS.COCOA_FIELD
   - BUILDINGS.VINEYARD
@@ -90,4 +90,3 @@ tab4:
 
 meta:
   unlocking_strategy: tab_per_increment
-

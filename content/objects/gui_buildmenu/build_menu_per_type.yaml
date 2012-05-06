@@ -1,18 +1,18 @@
 tab1:
 - icon: content/gui/icons/tabwidget/buildmenu/level1_%s.png
-- headline: Residents and infrastructure
-- helptext: Residents and infrastructure
+- headline: Residents and infrastructure # Too long for label! => find better name
+- helptext: _ Residents and infrastructure
 -
-  - Infrastructure
+  - _ Infrastructure
   - BUILDINGS.TRAIL
   - BUILDINGS.STORAGE
   - BUILDINGS.LOOKOUT
   - BUILDINGS.SIGNAL_FIRE
 -
-  - Residential
+  - _ Residential
   - BUILDINGS.RESIDENTIAL
 -
-  - Services
+  - _ Services
   - BUILDINGS.MAIN_SQUARE
   - BUILDINGS.PAVILION
   - BUILDINGS.VILLAGE_SCHOOL
@@ -23,22 +23,22 @@ tab1:
 
 tab2:
 - icon: content/gui/icons/tabwidget/buildmenu/level2_%s.png
-- headline: Fields
-- helptext: Fields
+- headline: _ Fields
+- helptext: _ Fields
 -
-  - Pioneers
+  - _ Pioneers
   - BUILDINGS.FARM
   - BUILDINGS.PASTURE
   - BUILDINGS.POTATO_FIELD
   - BUILDINGS.SUGARCANE_FIELD
 -
-  - Settlers
+  - _ Settlers
   - BUILDINGS.TOBACCO_FIELD
   - BUILDINGS.CATTLE_RUN
   - BUILDINGS.PIGSTY
   - BUILDINGS.SPICE_FIELD
 -
-  - Citizens
+  - _ Citizens
   - BUILDINGS.CORN_FIELD
   - BUILDINGS.COCOA_FIELD
   - BUILDINGS.VINEYARD
@@ -49,11 +49,11 @@ tab3:
 - headline: Agricultural Companies #TODO find name
 - helptext: Agricultural Companies #TODO find name
 -
-  - Sea
+  - _ Sea
   - BUILDINGS.FISHER
   - BUILDINGS.SALT_PONDS
 -
-  - Food
+  - _ Food
   - BUILDINGS.HUNTER
   - BUILDINGS.BUTCHERY
   - BUILDINGS.WINDMILL
@@ -71,15 +71,15 @@ tab3:
 
 tab4:
 - icon: content/gui/icons/tabwidget/buildmenu/level4_%s.png
-- headline: Companies
-- helptext: Companies
+- headline: _ Companies
+- helptext: _ Companies
 -
   - Tree only in LJ related?
   - BUILDINGS.LUMBERJACK
   - BUILDINGS.TREE
   - BUILDINGS.CHARCOAL_BURNER
 -
-  - Mining
+  - _ Mining
   - BUILDINGS.CLAY_PIT
   - BUILDINGS.BRICKYARD
   - BUILDINGS.IRON_MINE
@@ -89,21 +89,21 @@ tab4:
 
 tab5:
 - icon: content/gui/icons/tabwidget/buildmenu/level5_%s.png
-- headline: Military
-- helptext: Military
+- headline: _ Military
+- helptext: _ Military
 -
-  - Fortifications
+  - _ Fortifications
   - BUILDINGS.WOODEN_TOWER
 -
-  - Military Service
+  - _ Military Service
   - BUILDINGS.BOAT_BUILDER
   - # empty
   - BUILDINGS.BARRACKS
 
 tab6:
 - icon: content/gui/icons/tabwidget/buildmenu/level6_%s.png
-- headline: Aesthetics
-- helptext: Aesthetics
+- headline: _ Aesthetics
+- helptext: _ Aesthetics
 -
   -
 
