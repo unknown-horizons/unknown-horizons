@@ -6,9 +6,9 @@
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: Unknown Horizons 2aa2607\n"
+"Project-Id-Version: Unknown Horizons 6d20491\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
-"POT-Creation-Date: 2012-04-08 02:48+0100\n"
+"POT-Creation-Date: 2012-05-06 03:25+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -45,8 +45,10 @@ msgid "Cannot go here."
 msgstr ""
 
 #. (text of widget: headline)
+#. headline_tab2_5 of gui_buildmenu:build_menu_per_type
 #. This is a database entry: the name of an inhabitant increment (tier / level).
-#: database files horizons/i18n/guitranslations.py sql
+#: database files horizons/i18n/guitranslations.py
+#: horizons/i18n/objecttranslations.py sql
 msgid "Citizens"
 msgstr ""
 
@@ -61,8 +63,10 @@ msgid "One of your fields requires a farm to harvest its crops."
 msgstr ""
 
 #. (text of widget: headline)
+#. headline_tab2_3 of gui_buildmenu:build_menu_per_type
 #. This is a database entry: the name of an inhabitant increment (tier / level).
-#: database files horizons/i18n/guitranslations.py sql
+#: database files horizons/i18n/guitranslations.py
+#: horizons/i18n/objecttranslations.py sql
 msgid "Pioneers"
 msgstr ""
 
@@ -80,9 +84,11 @@ msgstr ""
 
 #. (text of widget: headline)
 #. (text of widget: settler_score)
+#. headline_tab2_4 of gui_buildmenu:build_menu_per_type
 #. This is a database entry: the name of an inhabitant increment (tier / level).
 #: database files horizons/i18n/guitranslations.py
-#: horizons/i18n/guitranslations.py sql
+#: horizons/i18n/guitranslations.py
+#: horizons/i18n/objecttranslations.py sql
 msgid "Settlers"
 msgstr ""
 
@@ -523,6 +529,42 @@ msgstr ""
 msgid "Failed to save."
 msgstr ""
 
+#: horizons/component/tradepostcomponent.py
+msgid "The trade partner does not sell this."
+msgstr ""
+
+#: horizons/component/tradepostcomponent.py
+msgid "You can not store this."
+msgstr ""
+
+#: horizons/component/tradepostcomponent.py
+msgid "You can not afford to buy this."
+msgstr ""
+
+#: horizons/component/tradepostcomponent.py
+msgid "The trade partner does not sell more of this."
+msgstr ""
+
+#: horizons/component/tradepostcomponent.py
+msgid "The trade partner does not buy this."
+msgstr ""
+
+#: horizons/component/tradepostcomponent.py
+msgid "You do not possess this."
+msgstr ""
+
+#: horizons/component/tradepostcomponent.py
+msgid "The trade partner can not store more of this."
+msgstr ""
+
+#: horizons/component/tradepostcomponent.py
+msgid "The trade partner can not afford to buy this."
+msgstr ""
+
+#: horizons/component/tradepostcomponent.py
+msgid "The trade partner does not buy more of this."
+msgstr ""
+
 #: horizons/engine/settingsdialog.py
 msgid "Restart required"
 msgstr ""
@@ -874,6 +916,14 @@ msgid "Recommended number of players: {number}"
 msgstr ""
 
 #: horizons/gui/modules/singleplayermenu.py
+msgid "Translation status:"
+msgstr ""
+
+#: horizons/gui/modules/singleplayermenu.py
+msgid "{translated} translated messages, {untranslated} untranslated messages"
+msgstr ""
+
+#: horizons/gui/modules/singleplayermenu.py
 #: horizons/gui/modules/singleplayermenu.py
 #: horizons/gui/widgets/choose_next_scenario.py
 #, python-format
@@ -947,11 +997,9 @@ msgstr ""
 msgid "Click to generate a different random map"
 msgstr ""
 
-#. (text of widget: headline)
 #. set translated building name in gui
 #: horizons/gui/mousetools/buildingtool.py
-#: horizons/i18n/guitranslations.py
-msgid "Build"
+msgid "Build {building}"
 msgstr ""
 
 #: horizons/gui/mousetools/navigationtool.py
@@ -1012,37 +1060,6 @@ msgstr ""
 
 #: horizons/gui/tabs/buildrelatedtab.py
 msgid "Build related buildings"
-msgstr ""
-
-#: horizons/gui/tabs/buildtabs.py
-msgid "Residents and infrastructure"
-msgstr ""
-
-#: horizons/gui/tabs/buildtabs.py horizons/gui/tabs/buildtabs.py
-#: horizons/gui/tabs/buildtabs.py
-msgid "Services"
-msgstr ""
-
-#: horizons/gui/tabs/buildtabs.py horizons/gui/tabs/buildtabs.py
-#: horizons/gui/tabs/buildtabs.py horizons/gui/tabs/buildtabs.py
-msgid "Companies"
-msgstr ""
-
-#: horizons/gui/tabs/buildtabs.py horizons/gui/tabs/buildtabs.py
-#: horizons/gui/tabs/buildtabs.py
-msgid "Fields"
-msgstr ""
-
-#: horizons/gui/tabs/buildtabs.py horizons/gui/tabs/buildtabs.py
-msgid "Military"
-msgstr ""
-
-#: horizons/gui/tabs/buildtabs.py
-msgid "Mining"
-msgstr ""
-
-#: horizons/gui/tabs/buildtabs.py
-msgid "Increment {increment}"
 msgstr ""
 
 #. (text of widget: headline)
@@ -1269,8 +1286,7 @@ msgid "Reset the default configuration (which you see here) to the factory defau
 msgstr ""
 
 #. (helptext of widget: start_route) Trade route
-#: horizons/gui/widgets/routeconfig.py
-#: horizons/i18n/guitranslations.py
+#: horizons/gui/widgets/routeconfig.py horizons/i18n/guitranslations.py
 msgid "Start route"
 msgstr ""
 
@@ -1306,11 +1322,6 @@ msgstr ""
 msgid "none"
 msgstr ""
 
-#: horizons/i18n/__init__.py
-#, python-format
-msgid "Configured language {lang} could not be loaded."
-msgstr ""
-
 #. (text of widget: headline)
 #: horizons/i18n/guitranslations.py
 msgid "Game start"
@@ -1329,6 +1340,11 @@ msgstr ""
 #. (text of widget: howto_3_build_warehouse)
 #: horizons/i18n/guitranslations.py
 msgid "Afterwards, press the large button in the ship overview tab."
+msgstr ""
+
+#. (text of widget: headline)
+#: horizons/i18n/guitranslations.py
+msgid "Build"
 msgstr ""
 
 #. (text of widget: running_costs_label)
@@ -1469,7 +1485,7 @@ msgstr ""
 
 #. (text of widget: headline)
 #: horizons/i18n/guitranslations.py horizons/i18n/guitranslations.py
-#: horizons/i18n/guitranslations.py
+#: horizons/i18n/guitranslations.py horizons/i18n/guitranslations.py
 msgid "Building overview"
 msgstr ""
 
@@ -1486,8 +1502,11 @@ msgstr ""
 #. (helptext of widget: running_costs)
 #. (helptext of widget: running_costs_label)
 #. (helptext of widget: running_costs)
+#. (helptext of widget: running_costs_label)
+#. (helptext of widget: running_costs)
 #. (text of widget: running_costs_label)
 #. (text of widget: running_costs)
+#: horizons/i18n/guitranslations.py horizons/i18n/guitranslations.py
 #: horizons/i18n/guitranslations.py horizons/i18n/guitranslations.py
 #: horizons/i18n/guitranslations.py horizons/i18n/guitranslations.py
 #: horizons/i18n/guitranslations.py horizons/i18n/guitranslations.py
@@ -1727,6 +1746,12 @@ msgstr ""
 msgid "Selling"
 msgstr ""
 
+#. (text of widget: name_label)
+#: horizons/i18n/guitranslations.py horizons/i18n/guitranslations.py
+#: horizons/i18n/guitranslations.py horizons/i18n/guitranslations.py
+msgid "Name:"
+msgstr ""
+
 #. (text of widget: lbl_weapon_storage)
 #: horizons/i18n/guitranslations.py
 msgid "Weapons:"
@@ -1767,12 +1792,6 @@ msgstr ""
 #. (text of widget: signal_fire_description_lbl)
 #: horizons/i18n/guitranslations.py
 msgid "The signal fire shows the free trader how to reach your settlement in case you want to buy or sell goods."
-msgstr ""
-
-#. (text of widget: name_label)
-#: horizons/i18n/guitranslations.py horizons/i18n/guitranslations.py
-#: horizons/i18n/guitranslations.py
-msgid "Name:"
 msgstr ""
 
 #. (text of widget: trader_description_lbl)
@@ -2927,11 +2946,6 @@ msgstr ""
 msgid "Fishes the sea, produces food."
 msgstr ""
 
-#. name of buildings:gravelpath
-#: horizons/i18n/objecttranslations.py
-msgid "Gravel Path"
-msgstr ""
-
 #. name of buildings:herbary
 #: horizons/i18n/objecttranslations.py
 msgid "Herbary"
@@ -3307,6 +3321,125 @@ msgstr ""
 msgid "Defends your settlement."
 msgstr ""
 
+#. headline_tab1_2 of gui_buildmenu:build_menu_per_increment
+#. tab1_helptext of gui_buildmenu:build_menu_per_type
+#: horizons/i18n/objecttranslations.py
+#: horizons/i18n/objecttranslations.py
+msgid "Residents and infrastructure"
+msgstr ""
+
+#. headline_tab1_3 of gui_buildmenu:build_menu_per_increment
+#. headline_tab2_4 of gui_buildmenu:build_menu_per_increment
+#. headline_tab3_5 of gui_buildmenu:build_menu_per_increment
+#. headline_tab1_5 of gui_buildmenu:build_menu_per_type
+#: horizons/i18n/objecttranslations.py
+#: horizons/i18n/objecttranslations.py
+#: horizons/i18n/objecttranslations.py
+#: horizons/i18n/objecttranslations.py
+msgid "Services"
+msgstr ""
+
+#. headline_tab1_4 of gui_buildmenu:build_menu_per_increment
+#. headline_tab2_2 of gui_buildmenu:build_menu_per_increment
+#. headline_tab3_3 of gui_buildmenu:build_menu_per_increment
+#. headline_tab4_2 of gui_buildmenu:build_menu_per_increment
+#. tab4_headline of gui_buildmenu:build_menu_per_type
+#. tab4_helptext of gui_buildmenu:build_menu_per_type
+#: horizons/i18n/objecttranslations.py
+#: horizons/i18n/objecttranslations.py
+#: horizons/i18n/objecttranslations.py
+#: horizons/i18n/objecttranslations.py
+#: horizons/i18n/objecttranslations.py
+#: horizons/i18n/objecttranslations.py
+msgid "Companies"
+msgstr ""
+
+#. headline_tab2_3 of gui_buildmenu:build_menu_per_increment
+#. headline_tab3_4 of gui_buildmenu:build_menu_per_increment
+#. headline_tab4_3 of gui_buildmenu:build_menu_per_increment
+#. tab2_headline of gui_buildmenu:build_menu_per_type
+#. tab2_helptext of gui_buildmenu:build_menu_per_type
+#: horizons/i18n/objecttranslations.py
+#: horizons/i18n/objecttranslations.py
+#: horizons/i18n/objecttranslations.py
+#: horizons/i18n/objecttranslations.py
+#: horizons/i18n/objecttranslations.py
+msgid "Fields"
+msgstr ""
+
+#. headline_tab3_2 of gui_buildmenu:build_menu_per_increment
+#. headline_tab4_4 of gui_buildmenu:build_menu_per_type
+#: horizons/i18n/objecttranslations.py
+#: horizons/i18n/objecttranslations.py
+msgid "Mining"
+msgstr ""
+
+#. headline_tab3_5 of gui_buildmenu:build_menu_per_increment
+#. tab5_headline of gui_buildmenu:build_menu_per_type
+#. tab5_helptext of gui_buildmenu:build_menu_per_type
+#: horizons/i18n/objecttranslations.py
+#: horizons/i18n/objecttranslations.py
+#: horizons/i18n/objecttranslations.py
+msgid "Military"
+msgstr ""
+
+#. tab1_helptext of gui_buildmenu:build_menu_per_increment
+#: horizons/i18n/objecttranslations.py
+msgid "Increment I"
+msgstr ""
+
+#. tab2_helptext of gui_buildmenu:build_menu_per_increment
+#: horizons/i18n/objecttranslations.py
+msgid "Increment II"
+msgstr ""
+
+#. tab3_helptext of gui_buildmenu:build_menu_per_increment
+#: horizons/i18n/objecttranslations.py
+msgid "Increment III"
+msgstr ""
+
+#. tab4_helptext of gui_buildmenu:build_menu_per_increment
+#: horizons/i18n/objecttranslations.py
+msgid "Increment IV"
+msgstr ""
+
+#. headline_tab1_3 of gui_buildmenu:build_menu_per_type
+#: horizons/i18n/objecttranslations.py
+msgid "Infrastructure"
+msgstr ""
+
+#. headline_tab1_4 of gui_buildmenu:build_menu_per_type
+#: horizons/i18n/objecttranslations.py
+msgid "Residential"
+msgstr ""
+
+#. headline_tab3_3 of gui_buildmenu:build_menu_per_type
+#: horizons/i18n/objecttranslations.py
+msgid "Sea"
+msgstr ""
+
+#. headline_tab3_4 of gui_buildmenu:build_menu_per_type
+#: horizons/i18n/objecttranslations.py
+msgid "Food"
+msgstr ""
+
+#. headline_tab5_3 of gui_buildmenu:build_menu_per_type
+#: horizons/i18n/objecttranslations.py
+msgid "Fortifications"
+msgstr ""
+
+#. headline_tab5_4 of gui_buildmenu:build_menu_per_type
+#: horizons/i18n/objecttranslations.py
+msgid "Military Service"
+msgstr ""
+
+#. tab6_headline of gui_buildmenu:build_menu_per_type
+#. tab6_helptext of gui_buildmenu:build_menu_per_type
+#: horizons/i18n/objecttranslations.py
+#: horizons/i18n/objecttranslations.py
+msgid "Aesthetics"
+msgstr ""
+
 #: horizons/main.py
 msgid "Failed to start/load the game"
 msgstr ""
@@ -3331,6 +3464,14 @@ msgstr ""
 #: horizons/main.py
 #, python-format
 msgid "To see the changes, either always start UH with the current arguments or edit the file {filename}."
+msgstr ""
+
+#: horizons/main.py
+msgid "No quicksaves found"
+msgstr ""
+
+#: horizons/main.py
+msgid "You need to quicksave before you can quickload."
 msgstr ""
 
 #. if this is reached, we are screwed. Something went wrong in the simulation,
@@ -3413,14 +3554,6 @@ msgstr ""
 msgid "If this error happens again, please contact the development team:"
 msgstr ""
 
-#: horizons/spsession.py
-msgid "No quicksaves found"
-msgstr ""
-
-#: horizons/spsession.py
-msgid "You need to quicksave before you can quickload."
-msgstr ""
-
 #: horizons/util/checkupdates.py
 msgid "New version of Unknown Horizons"
 msgstr ""
@@ -3485,42 +3618,6 @@ msgstr ""
 
 #: horizons/world/building/buildable.py
 msgid "You have already settled this island."
-msgstr ""
-
-#: horizons/world/component/tradepostcomponent.py
-msgid "The trade partner does not sell this."
-msgstr ""
-
-#: horizons/world/component/tradepostcomponent.py
-msgid "You can not store this."
-msgstr ""
-
-#: horizons/world/component/tradepostcomponent.py
-msgid "You can not afford to buy this."
-msgstr ""
-
-#: horizons/world/component/tradepostcomponent.py
-msgid "The trade partner does not sell more of this."
-msgstr ""
-
-#: horizons/world/component/tradepostcomponent.py
-msgid "The trade partner does not buy this."
-msgstr ""
-
-#: horizons/world/component/tradepostcomponent.py
-msgid "You do not possess this."
-msgstr ""
-
-#: horizons/world/component/tradepostcomponent.py
-msgid "The trade partner can not store more of this."
-msgstr ""
-
-#: horizons/world/component/tradepostcomponent.py
-msgid "The trade partner can not afford to buy this."
-msgstr ""
-
-#: horizons/world/component/tradepostcomponent.py
-msgid "The trade partner does not buy more of this."
 msgstr ""
 
 #: horizons/world/status.py
