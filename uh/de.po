@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2012-05-06 22:10+0100\n"
-"PO-Revision-Date: 2012-05-06 20:57+0200\n"
+"PO-Revision-Date: 2012-05-06 23:16+0200\n"
 "Last-Translator: Raymond <raymondv@gmx.de>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: de\n"
@@ -1952,10 +1952,11 @@ msgstr "Handelsroute konfigurieren"
 msgid "Buy or sell resources"
 msgstr "Waren Ein-/Verkaufen"
 
+# Handels-Chronik is easier to read than "Handelschronik"
 #. (text of widget: headline_trade_history)
 #: horizons/i18n/guitranslations.py
 msgid "Trade history"
-msgstr "Handelschronik"
+msgstr "Handels-Chronik"
 
 #. (text of widget: headline)
 #: horizons/i18n/guitranslations.py
@@ -2211,16 +2212,20 @@ msgstr "Spielername"
 #: horizons/i18n/guitranslations.py
 msgid "Value of resources generated from all the possible sources in the player's settlement(s)"
 msgstr ""
+"Wert von Rohstoffen aus allen möglichen Quellen, die von allen Spieler "
+"Siedlung(en) generiert wurden"
 
 #. (helptext of widget: settler_score)
 #: horizons/i18n/guitranslations.py
 msgid "Value denoting the progress of the settlement(s) in terms of inhabitants, buildings and overall happiness"
 msgstr ""
+"Wert bezeichnet den Fortschritt der Siedlung(en) in Bezug auf die Einwohner, "
+"Gebäude und allgemeine Zufriedenheit"
 
 #. (helptext of widget: total_score)
 #: horizons/i18n/guitranslations.py
 msgid "The total value from all individual entities or in short : Total Player Score"
-msgstr ""
+msgstr "Der Gesamtwert aller einzelnen Einheiten oder kurz: Total Player Score"
 
 #. (helptext of widget: unit_score)
 #: horizons/i18n/guitranslations.py
