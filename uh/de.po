@@ -7,8 +7,8 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2012-05-06 03:25+0100\n"
-"PO-Revision-Date: 2012-05-06 14:10+0200\n"
-"Last-Translator: stubb <kili@mail.spaceleft.net>\n"
+"PO-Revision-Date: 2012-05-06 18:39+0200\n"
+"Last-Translator: Raymond <raymondv@gmx.de>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: de\n"
 "MIME-Version: 1.0\n"
@@ -153,7 +153,7 @@ msgstr "Ihr habt gewonnen!"
 #: database files sql
 #, fuzzy
 msgid "Your building has caught fire!"
-msgstr ""
+msgstr "Dein Gebäude hat Feuer gefangen."
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
@@ -3583,7 +3583,7 @@ msgstr ""
 #. headline_tab3_3 of gui_buildmenu:build_menu_per_type
 #: horizons/i18n/objecttranslations.py
 msgid "Sea"
-msgstr ""
+msgstr "Meer"
 
 #. headline_tab3_4 of gui_buildmenu:build_menu_per_type
 #: horizons/i18n/objecttranslations.py
@@ -3605,7 +3605,7 @@ msgstr "Militär"
 #: horizons/i18n/objecttranslations.py
 #: horizons/i18n/objecttranslations.py
 msgid "Aesthetics"
-msgstr ""
+msgstr "Ästhetik"
 
 #: horizons/main.py
 msgid "Failed to start/load the game"
@@ -3773,9 +3773,10 @@ msgstr "Eine Seite wurde in Eurem Browser geöffnet."
 msgid "{building}: {description}"
 msgstr "{building}: {description}"
 
+# 80%
 #: horizons/world/building/buildable.py
 msgid "This building must be built on an island."
-msgstr ""
+msgstr "Dieses Gebäude muss aauf der Insel errichtet werden."
 
 #: horizons/world/building/buildable.py
 msgid "This ground is not suitable for this building."
@@ -3787,7 +3788,7 @@ msgstr ""
 
 #: horizons/world/building/buildable.py
 msgid "This area is already occupied by another player."
-msgstr ""
+msgstr "Dieser Bereich wird bereits von einem anderen Spieler besetzt."
 
 #: horizons/world/building/buildable.py
 msgid "This area is already occupied by another building."
@@ -3819,23 +3820,23 @@ msgstr ""
 
 #: horizons/world/status.py
 msgid "This building is on fire!"
-msgstr ""
+msgstr "Dieses Gebäude steht in Flammen!"
 
 #: horizons/world/status.py
 msgid "These residents are unhappy."
-msgstr ""
+msgstr "Diese Bewohner sind unzufrieden."
 
 #: horizons/world/status.py
 msgid "The inventory of this building is full."
-msgstr ""
+msgstr "Das Inventar dieser Gebäude ist voll."
 
 #: horizons/world/status.py
 msgid "This building has a very low productivity."
-msgstr ""
+msgstr "Dieses Gebäude hat eine sehr niedrige Produktivität."
 
 #: horizons/world/status.py
 msgid "This building is decomissioned."
-msgstr ""
+msgstr "Dieses Gebäude worde stillgelegt."
 
 #: horizons/world/traderoute.py
 #, python-format
