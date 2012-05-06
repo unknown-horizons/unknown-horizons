@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
-"POT-Creation-Date: 2012-05-06 03:25+0100\n"
+"POT-Creation-Date: 2012-05-06 22:10+0100\n"
 "PO-Revision-Date: 2012-04-18 11:23+0200\n"
 "Last-Translator: rayot <dmalorni@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -49,7 +49,7 @@ msgstr ""
 
 # 75%
 #. (text of widget: headline)
-#. headline_tab2_5 of gui_buildmenu:build_menu_per_type
+#. headline of gui_buildmenu:build_menu_per_type
 #. This is a database entry: the name of an inhabitant increment (tier / level).
 #: database files horizons/i18n/guitranslations.py
 #: horizons/i18n/objecttranslations.py sql
@@ -71,7 +71,7 @@ msgstr ""
 
 # 75%
 #. (text of widget: headline)
-#. headline_tab2_3 of gui_buildmenu:build_menu_per_type
+#. headline of gui_buildmenu:build_menu_per_type
 #. This is a database entry: the name of an inhabitant increment (tier / level).
 #: database files horizons/i18n/guitranslations.py
 #: horizons/i18n/objecttranslations.py sql
@@ -95,7 +95,7 @@ msgstr "Screenshot è stato salvato in {file}."
 # 75%
 #. (text of widget: headline)
 #. (text of widget: settler_score)
-#. headline_tab2_4 of gui_buildmenu:build_menu_per_type
+#. headline of gui_buildmenu:build_menu_per_type
 #. This is a database entry: the name of an inhabitant increment (tier / level).
 #: database files horizons/i18n/guitranslations.py
 #: horizons/i18n/guitranslations.py
@@ -3431,31 +3431,8 @@ msgstr "Torre di Legno"
 msgid "Defends your settlement."
 msgstr "Difende la tua base."
 
-#. headline_tab1_2 of gui_buildmenu:build_menu_per_increment
-#. tab1_helptext of gui_buildmenu:build_menu_per_type
-#: horizons/i18n/objecttranslations.py
-#: horizons/i18n/objecttranslations.py
-msgid "Residents and infrastructure"
-msgstr "Residenze ed infrastrutture"
-
-#. headline_tab1_3 of gui_buildmenu:build_menu_per_increment
-#. headline_tab2_4 of gui_buildmenu:build_menu_per_increment
-#. headline_tab3_5 of gui_buildmenu:build_menu_per_increment
-#. headline_tab1_5 of gui_buildmenu:build_menu_per_type
-#: horizons/i18n/objecttranslations.py
-#: horizons/i18n/objecttranslations.py
-#: horizons/i18n/objecttranslations.py
-#: horizons/i18n/objecttranslations.py
-msgid "Services"
-msgstr "Servizi"
-
-#. headline_tab1_4 of gui_buildmenu:build_menu_per_increment
-#. headline_tab2_2 of gui_buildmenu:build_menu_per_increment
-#. headline_tab3_3 of gui_buildmenu:build_menu_per_increment
-#. headline_tab4_2 of gui_buildmenu:build_menu_per_increment
+#. headline of gui_buildmenu:build_menu_per_increment
 #. tab4_headline of gui_buildmenu:build_menu_per_type
-#. tab4_helptext of gui_buildmenu:build_menu_per_type
-#: horizons/i18n/objecttranslations.py
 #: horizons/i18n/objecttranslations.py
 #: horizons/i18n/objecttranslations.py
 #: horizons/i18n/objecttranslations.py
@@ -3464,12 +3441,8 @@ msgstr "Servizi"
 msgid "Companies"
 msgstr "Compagnie"
 
-#. headline_tab2_3 of gui_buildmenu:build_menu_per_increment
-#. headline_tab3_4 of gui_buildmenu:build_menu_per_increment
-#. headline_tab4_3 of gui_buildmenu:build_menu_per_increment
+#. headline of gui_buildmenu:build_menu_per_increment
 #. tab2_headline of gui_buildmenu:build_menu_per_type
-#. tab2_helptext of gui_buildmenu:build_menu_per_type
-#: horizons/i18n/objecttranslations.py
 #: horizons/i18n/objecttranslations.py
 #: horizons/i18n/objecttranslations.py
 #: horizons/i18n/objecttranslations.py
@@ -3477,75 +3450,67 @@ msgstr "Compagnie"
 msgid "Fields"
 msgstr "Campi"
 
-#. headline_tab3_2 of gui_buildmenu:build_menu_per_increment
-#. headline_tab4_4 of gui_buildmenu:build_menu_per_type
-#: horizons/i18n/objecttranslations.py
-#: horizons/i18n/objecttranslations.py
-msgid "Mining"
-msgstr "Minerario"
-
-#. headline_tab3_5 of gui_buildmenu:build_menu_per_increment
+#. headline of gui_buildmenu:build_menu_per_increment
 #. tab5_headline of gui_buildmenu:build_menu_per_type
-#. tab5_helptext of gui_buildmenu:build_menu_per_type
-#: horizons/i18n/objecttranslations.py
 #: horizons/i18n/objecttranslations.py
 #: horizons/i18n/objecttranslations.py
 msgid "Military"
 msgstr "Militari"
 
-#. tab1_helptext of gui_buildmenu:build_menu_per_increment
+#. headline of gui_buildmenu:build_menu_per_increment
+#. headline of gui_buildmenu:build_menu_per_type
 #: horizons/i18n/objecttranslations.py
-msgid "Increment I"
-msgstr ""
-
-#. tab2_helptext of gui_buildmenu:build_menu_per_increment
 #: horizons/i18n/objecttranslations.py
-msgid "Increment II"
-msgstr ""
+msgid "Mining"
+msgstr "Minerario"
 
-#. tab3_helptext of gui_buildmenu:build_menu_per_increment
+#. headline of gui_buildmenu:build_menu_per_increment
+#. tab1_helptext of gui_buildmenu:build_menu_per_type
 #: horizons/i18n/objecttranslations.py
-msgid "Increment III"
-msgstr ""
-
-#. tab4_helptext of gui_buildmenu:build_menu_per_increment
 #: horizons/i18n/objecttranslations.py
-msgid "Increment IV"
-msgstr ""
+msgid "Residents and infrastructure"
+msgstr "Residenze ed infrastrutture"
 
-#. headline_tab1_3 of gui_buildmenu:build_menu_per_type
+#. headline of gui_buildmenu:build_menu_per_increment
+#. headline of gui_buildmenu:build_menu_per_type
 #: horizons/i18n/objecttranslations.py
-msgid "Infrastructure"
-msgstr ""
-
-#. headline_tab1_4 of gui_buildmenu:build_menu_per_type
 #: horizons/i18n/objecttranslations.py
-msgid "Residential"
-msgstr ""
-
-#. headline_tab3_3 of gui_buildmenu:build_menu_per_type
 #: horizons/i18n/objecttranslations.py
-msgid "Sea"
-msgstr ""
+#: horizons/i18n/objecttranslations.py
+msgid "Services"
+msgstr "Servizi"
 
-#. headline_tab3_4 of gui_buildmenu:build_menu_per_type
+#. headline of gui_buildmenu:build_menu_per_type
 #: horizons/i18n/objecttranslations.py
 msgid "Food"
 msgstr "Cibo"
 
-#. headline_tab5_3 of gui_buildmenu:build_menu_per_type
+#. headline of gui_buildmenu:build_menu_per_type
 #: horizons/i18n/objecttranslations.py
 msgid "Fortifications"
 msgstr ""
 
-#. headline_tab5_4 of gui_buildmenu:build_menu_per_type
+#. headline of gui_buildmenu:build_menu_per_type
+#: horizons/i18n/objecttranslations.py
+msgid "Infrastructure"
+msgstr ""
+
+#. headline of gui_buildmenu:build_menu_per_type
 #: horizons/i18n/objecttranslations.py
 msgid "Military Service"
 msgstr ""
 
-#. tab6_headline of gui_buildmenu:build_menu_per_type
-#. tab6_helptext of gui_buildmenu:build_menu_per_type
+#. headline of gui_buildmenu:build_menu_per_type
 #: horizons/i18n/objecttranslations.py
+msgid "Residential"
+msgstr ""
+
+#. headline of gui_buildmenu:build_menu_per_type
+#: horizons/i18n/objecttranslations.py
+msgid "Sea"
+msgstr ""
+
+#. tab6_headline of gui_buildmenu:build_menu_per_type
 #: horizons/i18n/objecttranslations.py
 msgid "Aesthetics"
 msgstr ""
