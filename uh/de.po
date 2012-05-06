@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2012-05-06 03:25+0100\n"
-"PO-Revision-Date: 2012-05-06 18:55+0200\n"
+"PO-Revision-Date: 2012-05-06 20:57+0200\n"
 "Last-Translator: Raymond <raymondv@gmx.de>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: de\n"
@@ -2814,7 +2814,7 @@ msgstr "Dateinamen eingeben:"
 #. (text of widget: headline_saved_games_label)
 #: horizons/i18n/guitranslations.py
 msgid "Your saved games:"
-msgstr "Eure Speicherstände:"
+msgstr "Eure Spielstände:"
 
 #. (helptext of widget: cancelButton)
 #: horizons/i18n/guitranslations.py
@@ -2824,7 +2824,7 @@ msgstr "Abbrechen"
 #. (helptext of widget: deleteButton)
 #: horizons/i18n/guitranslations.py
 msgid "Delete selected savegame"
-msgstr "Ausgewählten Speicherstand entfernen"
+msgstr "Ausgewählten Spielstand entfernen"
 
 #. (text of widget: headline)
 #: horizons/i18n/guitranslations.py
@@ -3786,7 +3786,7 @@ msgstr ""
 
 #: horizons/world/building/buildable.py
 msgid "This building has to be built within your settlement."
-msgstr ""
+msgstr "Dieses Gebäude muss innerhalb Ihrer Siedlung errichtet werden."
 
 #: horizons/world/building/buildable.py
 msgid "This area is already occupied by another player."
@@ -3818,7 +3818,7 @@ msgstr "Dieses Gebäude kann nur auf einem Rohstoffvorkommen errichtet werden."
 
 #: horizons/world/building/buildable.py
 msgid "You have already settled this island."
-msgstr ""
+msgstr "Sie haben bereits diese Insel besiedelt."
 
 #: horizons/world/status.py
 msgid "This building is on fire!"
