@@ -127,8 +127,9 @@ msgstr "Ihr könnt das Kontor nicht abreißen, Eure Siedlung benötigt es."
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
+#, fuzzy
 msgid "You failed the scenario."
-msgstr ""
+msgstr "Du hast das Szenario verloren."
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
