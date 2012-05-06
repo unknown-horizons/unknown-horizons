@@ -7,8 +7,8 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2012-05-06 03:25+0100\n"
-"PO-Revision-Date: 2012-05-06 02:37+0200\n"
-"Last-Translator: Christopher Oelmueller <chris.oelmueller+uh@gmail.com>\n"
+"PO-Revision-Date: 2012-05-06 14:10+0200\n"
+"Last-Translator: stubb <kili@mail.spaceleft.net>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: de\n"
 "MIME-Version: 1.0\n"
@@ -151,6 +151,7 @@ msgstr "Ihr habt gewonnen!"
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
+#, fuzzy
 msgid "Your building has caught fire!"
 msgstr ""
 
@@ -790,7 +791,7 @@ msgid "Savegame version {version}"
 msgstr "Speicher-Version {version}"
 
 #: horizons/gui/gui.py
-#, python-format
+#, python-format, fuzzy
 msgid "(potentially incompatible)"
 msgstr ""
 
@@ -978,10 +979,12 @@ msgid "Recommended number of players: {number}"
 msgstr "Empfohlene Spieleranzahl: {number}"
 
 #: horizons/gui/modules/singleplayermenu.py
+#, fuzzy
 msgid "Translation status:"
 msgstr ""
 
 #: horizons/gui/modules/singleplayermenu.py
+#, fuzzy
 msgid "{translated} translated messages, {untranslated} untranslated messages"
 msgstr ""
 
@@ -2222,8 +2225,9 @@ msgstr ""
 
 #. (helptext of widget: unit_score)
 #: horizons/i18n/guitranslations.py
+#, fuzzy
 msgid "Value of all the units owned by the player"
-msgstr ""
+msgstr "Wert aller Einheiten des Spielers"
 
 # 87%
 #. (text of widget: balance)

@@ -1053,8 +1053,8 @@ msgid ""
 "main square."
 msgstr ""
 "\n"
-"Solche Wohnungsverbesserungen kosten Euch Waren kosten, daher könnt Ihr sie "
-"in den Marktplatz-Tabs einschränken."
+"Solche Wohnungsverbesserungen kosten Euch Waren, daher könnt Ihr sie in den "
+"Marktplatz-Tabs einschränken."
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:248
