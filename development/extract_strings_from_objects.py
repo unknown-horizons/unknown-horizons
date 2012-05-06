@@ -134,7 +134,7 @@ def content_from_file(filename):
 				if isinstance(subvalue, basestring):
 					add_line(subvalue, component + "_" + str(key), filename)
 		elif isinstance(value, list): # build menu definitions
-			for i, attrlist in enumerate(value):
+			for attrlist in value:
 				if isinstance(attrlist, dict):
 					for key, subvalue in attrlist.iteritems():
 						if isinstance(subvalue, basestring):
@@ -142,7 +142,7 @@ def content_from_file(filename):
 				else:
 					for subvalue in attrlist:
 						if isinstance(subvalue, basestring):
-							add_line(subvalue, 'headline_%s_%s' % (component, i), filename)
+							add_line(subvalue, 'headline', filename)
 
 	strings = sorted(object_strings)
 
