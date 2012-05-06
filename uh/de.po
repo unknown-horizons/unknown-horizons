@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2012-05-06 03:25+0100\n"
-"PO-Revision-Date: 2012-05-06 18:39+0200\n"
+"PO-Revision-Date: 2012-05-06 18:55+0200\n"
 "Last-Translator: Raymond <raymondv@gmx.de>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: de\n"
@@ -700,12 +700,12 @@ msgstr "Sitzung beenden"
 
 #: horizons/gui/gui.py
 msgid "No saved games"
-msgstr "Keine Speicherstände"
+msgstr "Keine Spielstände"
 
 # 96%
 #: horizons/gui/gui.py
 msgid "There are no saved games to load."
-msgstr "Es gibt keine Speicherstände zum Laden."
+msgstr "Es gibt keine Spielstände zum Laden."
 
 #. (text of widget: loadgame)
 #. (text of widget: loadgame) Open a widget to select which game to load
@@ -733,7 +733,7 @@ msgstr "Bitte gebt einen Dateinamen ein."
 #: horizons/gui/gui.py
 #, python-format
 msgid "A savegame with the name '{name}' already exists."
-msgstr "Ein Speicherstand mit Namen '{name}' existiert bereits."
+msgstr "Ein Spielstand mit Namen '{name}' existiert bereits."
 
 #: horizons/gui/gui.py
 msgid "Overwrite it?"
@@ -749,12 +749,12 @@ msgstr "Ungültiger Dateiname angegeben"
 
 #: horizons/gui/gui.py
 msgid "Please select a savegame or click on cancel."
-msgstr "Bitte wählt einen Speicherstand aus oder klickt auf Abbrechen."
+msgstr "Bitte wählt einen Spielstand aus oder klickt auf Abbrechen."
 
 #. ok button has been pressed, but no savegame was selected
 #: horizons/gui/gui.py
 msgid "Select a savegame"
-msgstr "Wählt einen Speicherstand"
+msgstr "Wählt einen Spielstand"
 
 #. (text of widget: scenario_details) More text describing the scenario
 #. (text of widget: headline_details_label) More text describing the savegame
@@ -788,12 +788,12 @@ msgstr[1] "{amount}-mal gespeichert"
 #: horizons/gui/gui.py
 #, python-format
 msgid "Savegame version {version}"
-msgstr "Speicher-Version {version}"
+msgstr "Spielstand-Version {version}"
 
 #: horizons/gui/gui.py
 #, python-format, fuzzy
 msgid "(potentially incompatible)"
-msgstr ""
+msgstr "(wahrscheinlich inkompatibel)"
 
 #. this should only happen for very old savegames, so having this unfriendly
 #. error is ok (savegame is quite certainly fully unusable).
@@ -808,13 +808,13 @@ msgstr "Keine Datei ausgewählt"
 # 97%
 #: horizons/gui/gui.py
 msgid "You need to select a savegame to delete."
-msgstr "Ihr müsst einen Speicherstand auswählen, um ihn zu entfernen."
+msgstr "Ihr müsst einen Spielstand auswählen, um ihn zu entfernen."
 
 # 84%
 #: horizons/gui/gui.py
 #, python-format
 msgid "Do you really want to delete the savegame '{name}'?"
-msgstr "Wollt Ihr den Speicherstand „{name}“ wirklich entfernen?"
+msgstr "Wollt Ihr den Spielstand „{name}“ wirklich entfernen?"
 
 #: horizons/gui/gui.py
 msgid "Confirm deletion"
@@ -981,12 +981,14 @@ msgstr "Empfohlene Spieleranzahl: {number}"
 #: horizons/gui/modules/singleplayermenu.py
 #, fuzzy
 msgid "Translation status:"
-msgstr ""
+msgstr "Übersetzungsstatus:"
 
 #: horizons/gui/modules/singleplayermenu.py
 #, fuzzy
 msgid "{translated} translated messages, {untranslated} untranslated messages"
 msgstr ""
+"{translated} übersetzte Nachrichten, {untranslated} nicht übersetzte "
+"Nachrichten"
 
 #: horizons/gui/modules/singleplayermenu.py
 #: horizons/gui/modules/singleplayermenu.py
@@ -2802,7 +2804,7 @@ msgstr ""
 #. (text of widget: headline)
 #: horizons/i18n/guitranslations.py
 msgid "Random map archive"
-msgstr ""
+msgstr "Zufälliges Karten-Archiv"
 
 #. (text of widget: enter_filename_label)
 #: horizons/i18n/guitranslations.py
