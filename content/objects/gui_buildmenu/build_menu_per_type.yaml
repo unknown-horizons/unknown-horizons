@@ -24,7 +24,6 @@ tab1:
 tab2:
 - icon: content/gui/icons/tabwidget/buildmenu/level2_%s.png
 - headline: _ Fields
-- helptext: _ Fields
 -
   - _ Pioneers
   - BUILDINGS.FARM
@@ -47,7 +46,6 @@ tab2:
 tab3:
 - icon: content/gui/icons/tabwidget/buildmenu/level3_%s.png
 - headline: Agricultural Companies #TODO find name
-- helptext: Agricultural Companies #TODO find name
 -
   - _ Sea
   - BUILDINGS.FISHER
@@ -72,7 +70,6 @@ tab3:
 tab4:
 - icon: content/gui/icons/tabwidget/buildmenu/level4_%s.png
 - headline: _ Companies
-- helptext: _ Companies
 -
   - Tree only in LJ related?
   - BUILDINGS.LUMBERJACK
@@ -90,7 +87,6 @@ tab4:
 tab5:
 - icon: content/gui/icons/tabwidget/buildmenu/level5_%s.png
 - headline: _ Military
-- helptext: _ Military
 -
   - _ Fortifications
   - BUILDINGS.WOODEN_TOWER
@@ -103,7 +99,6 @@ tab5:
 tab6:
 - icon: content/gui/icons/tabwidget/buildmenu/level6_%s.png
 - headline: _ Aesthetics
-- helptext: _ Aesthetics
 -
   -
 

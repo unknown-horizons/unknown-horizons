@@ -84,9 +84,9 @@ class BuildTab(TabInterface):
 				if key == "icon":
 					icon_path = value
 				elif key == "helptext":
-					helptext = value
+					helptext = value[2:] if value.startswith('_ ') else value
 				elif key == "headline":
-					headline = value
+					headline = value[2:] if value.startswith('_ ') else value
 				else:
 					raise InvalidBuildMenuFileFormat("Invalid key: %s\nMust be either icon, helptext or headline." % key)
 			elif isinstance(entry, list):
@@ -97,17 +97,18 @@ class BuildTab(TabInterface):
 
 		if not icon_path:
 			raise InvalidBuildMenuFileFormat("icon_path definition is missing.")
-		if not helptext:
-			raise InvalidBuildMenuFileFormat("helptext definition is missing.")
 
 		super(BuildTab, self).__init__(widget='buildtab.xml', icon_path=icon_path)
 		self.session = session
 		self.tabindex = tabindex
 		self.build_callback = build_callback
 		self.unlocking_strategy = unlocking_strategy
+		if self.unlocking_strategy != self.__class__.unlocking_strategies.tab_per_increment:
+			if not helptext and not headline:
+				raise InvalidBuildMenuFileFormat("helptext definition is missing.")
 		self.row_definitions = rows
-		self.helptext = _(helptext)
 		self.headline = _(headline) if headline else headline # don't translate None
+		self.helptext = _(helptext) if helptext else self.headline
 		self.build_menu_config = build_menu_config
 
 	def _lazy_loading_init(self):
@@ -185,7 +186,7 @@ class BuildTab(TabInterface):
 				elif isinstance(entry, basestring):
 					column -= 1 # a headline does not take away a slot
 					lbl = self.widget.child_finder('label_{position:02d}'.format(position=position))
-					lbl.text = _(entry)
+					lbl.text = _(entry[2:]) if entry.startswith('_ ') else entry
 				elif isinstance(entry, int):
 					button = self.widget.child_finder('button_{position:02d}'.format(position=position))
 					icon = self.widget.child_finder('icon_{position:02d}'.format(position=position))
