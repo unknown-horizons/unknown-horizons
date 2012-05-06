@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2012-05-06 22:10+0100\n"
-"PO-Revision-Date: 2012-05-06 23:16+0200\n"
+"PO-Revision-Date: 2012-05-07 00:05+0200\n"
 "Last-Translator: Raymond <raymondv@gmx.de>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: de\n"
@@ -2196,11 +2196,15 @@ msgstr "Wert aller Gebäude in den Siedlungen des Spielers"
 #: horizons/i18n/guitranslations.py
 msgid "Value of usable land i.e Amount of Land that can be used to create buildings "
 msgstr ""
+"Wert der nutzbaren Flächen, d.h. Menge an Land, mit dem Gebäude erstellt "
+"werden können"
 
 #. (helptext of widget: money_score)
 #: horizons/i18n/guitranslations.py
 msgid "Player's current treasury + income expected in near future"
 msgstr ""
+"Spieler aktuelle Schatzkammer + Einkommen, welcher in naher Zukunft zu "
+"erwarten ist"
 
 # 83%
 #. (helptext of widget: player_name)
@@ -3563,7 +3567,7 @@ msgstr "Militär"
 #. headline of gui_buildmenu:build_menu_per_type
 #: horizons/i18n/objecttranslations.py
 msgid "Residential"
-msgstr ""
+msgstr "Bewohner"
 
 #. headline of gui_buildmenu:build_menu_per_type
 #: horizons/i18n/objecttranslations.py
