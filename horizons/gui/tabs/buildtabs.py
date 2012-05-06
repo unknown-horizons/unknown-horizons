@@ -45,8 +45,8 @@ class BuildTab(TabInterface):
 	lazy_loading = True
 
 	build_menus = [
-	  "content/gui/buildmenu/build_menu_per_increment.yaml",
-	  "content/gui/buildmenu/build_menu_per_type.yaml"
+	  "content/objects/gui_buildmenu/build_menu_per_increment.yaml",
+	  "content/objects/gui_buildmenu/build_menu_per_type.yaml"
 	  ]
 
 	build_menu_config_per_increment = build_menus[0]
