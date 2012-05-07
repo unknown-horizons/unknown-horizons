@@ -30,12 +30,12 @@ import glob
 verbose = False
 
 help_message = '''
-Usage: build_mac.py [options]
+Usage: stage_build_mac.py [options]
 
 Options:
     --run                    Start app with "open ./dist/Unknown Horizons.app" when done (all is cleaned before this)
     --fife-dir=<Location>    Location of FIFE-trunk
-    --python-bin=<Location>  For people with a lot of python
+    --python-bin=<Location>  For people with a lot of python, this is totally optional!
     --verbose                Just as it sounds :) will output more info
 '''
 
@@ -56,6 +56,14 @@ def setup(fife_dir):
     if os.path.exists('./dist'):
         if verbose: print "Cleaning dist path"
         shutil.rmtree('./dist')
+        
+    #These should have cleaned out, else we remove them    
+    if os.path.exists('./src'):
+        if verbose: print "Cleaning src path"
+        shutil.rmtree('./src')
+    if os.path.exists('./fife'):
+        if verbose: print "Cleaning fife path"
+        shutil.rmtree('./fife')
     
     if verbose: print "Create src directory"
     # The source files, for building app correctly
