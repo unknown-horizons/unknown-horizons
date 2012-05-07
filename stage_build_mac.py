@@ -30,7 +30,7 @@ import glob
 verbose = False
 
 help_message = '''
-Usage: build_mac.py [options]
+Usage: stage_build_mac.py [options]
 
 Options:
     --run                    Start app with "open ./dist/Unknown Horizons.app" when done (all is cleaned before this)
