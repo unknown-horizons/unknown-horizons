@@ -71,8 +71,8 @@ class CursorToolsPatch(object):
 
 			return Point(x, y)
 
-		self.patch1 = mock.patch('horizons.gui.mousetools.CursorTool.get_world_location_from_event', patched_world_location_from_event)
-		self.patch2 = mock.patch('horizons.gui.mousetools.CursorTool.get_exact_world_location_from_event', patched_world_location_from_event)
+		self.patch1 = mock.patch('horizons.gui.mousetools.CursorTool.get_world_location', patched_world_location_from_event)
+		self.patch2 = mock.patch('horizons.gui.mousetools.CursorTool.get_exact_world_location', patched_world_location_from_event)
 
 		NavigationTool._orig_get_hover_instances = NavigationTool.get_hover_instances
 
