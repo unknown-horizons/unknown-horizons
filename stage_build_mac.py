@@ -56,6 +56,14 @@ def setup(fife_dir):
     if os.path.exists('./dist'):
         if verbose: print "Cleaning dist path"
         shutil.rmtree('./dist')
+        
+    #These should have cleaned out, else we remove them    
+    if os.path.exists('./src'):
+        if verbose: print "Cleaning src path"
+        shutil.rmtree('./src')
+    if os.path.exists('./fife'):
+        if verbose: print "Cleaning fife path"
+        shutil.rmtree('./fife')
     
     if verbose: print "Create src directory"
     # The source files, for building app correctly
