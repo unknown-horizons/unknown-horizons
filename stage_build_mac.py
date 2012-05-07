@@ -35,7 +35,7 @@ Usage: stage_build_mac.py [options]
 Options:
     --run                    Start app with "open ./dist/Unknown Horizons.app" when done (all is cleaned before this)
     --fife-dir=<Location>    Location of FIFE-trunk
-    --python-bin=<Location>  For people with a lot of python
+    --python-bin=<Location>  For people with a lot of python, this is totally optional!
     --verbose                Just as it sounds :) will output more info
 '''
 
