@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2012-05-06 22:10+0100\n"
-"PO-Revision-Date: 2012-01-07 07:50+0200\n"
+"PO-Revision-Date: 2012-05-07 22:35+0200\n"
 "Last-Translator: Christopher Oelmueller <chris.oelmueller+uh@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: sv\n"
@@ -21,14 +21,14 @@ msgstr ""
 #: database files sql
 #, python-format
 msgid "A new settlement was founded by {player}."
-msgstr ""
+msgstr "En ny bosättning grundades av {player}."
 
 # 82%
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
 #, fuzzy
 msgid "A new ship has been created."
-msgstr "En ny värld har skapats."
+msgstr "Ett nytt skepp har skapats."
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
@@ -45,7 +45,7 @@ msgstr "aristokrat"
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
 msgid "Cannot go here."
-msgstr ""
+msgstr "Kan inte åka dit."
 
 # 75%
 #. (text of widget: headline)
@@ -68,7 +68,7 @@ msgstr "borgare"
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
 msgid "One of your fields requires a farm to harvest its crops."
-msgstr ""
+msgstr "Ett av dina fält kräver en farm för att kunna skörda."
 
 # 75%
 #. (text of widget: headline)
@@ -89,7 +89,7 @@ msgstr "Sjömän"
 #: database files sql
 #, python-format
 msgid "Screenshot has been saved to {file}."
-msgstr ""
+msgstr "Screenshot har sparats till {file}."
 
 # 75%
 #. (text of widget: headline)
@@ -105,84 +105,84 @@ msgstr "Nybyggare"
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
 msgid "Some of your inhabitants have no access to a main square."
-msgstr ""
+msgstr "Några av dina invånare har kan inte ta sig till torget."
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
 msgid "Some of your inhabitants just moved out."
-msgstr ""
+msgstr "Några av dina invånare har precis flyttat ut."
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
 msgid "The route is now configured. Start it via the \"start route\" button in the \"configure route\" menu."
-msgstr ""
+msgstr "Rutten är nu klar. Starta den via \"starta rutt\"-knappen i \"konfigurera rutt\"-menyn."
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
 msgid "You can also drag roads."
-msgstr ""
+msgstr "Du kan även da vägar."
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
 msgid "You cannot tear the warehouse, your settlements needs it."
-msgstr ""
+msgstr "Du kan inte rasera din marknadsplats, din bosättning behöver den."
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
 msgid "You failed the scenario."
-msgstr ""
+msgstr "Du misslyckades med scenariot."
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
 msgid "You have reached the current maximum increment. Your inhabitants will not upgrade further."
-msgstr ""
+msgstr "Du har nått den nuvarande gränsen för antal uppgraderingar. Dina inånare kommer inte uppgradera vidare."
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
 #, python-format
 msgid "You need more {resource} to build this building."
-msgstr ""
+msgstr "Du behöver mer {resource} för att kunna bygga denna byggnad."
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
 msgid "You won!"
-msgstr ""
+msgstr "Du vann!"
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
 msgid "Your building has caught fire!"
-msgstr ""
+msgstr "Din byggnad har börjat brinna!"
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
 msgid "Your crew refuses to leave this map."
-msgstr ""
+msgstr "Din besättning vägrar lämna denna karta."
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
 msgid "Your game has been autosaved."
-msgstr ""
+msgstr "Ditt spel har autosparats."
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
 msgid "Your game has been quicksaved."
-msgstr ""
+msgstr "Ditt spel har snabbsparats."
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
 msgid "Your game has been saved."
-msgstr ""
+msgstr "Ditt spel har sparats."
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
 #, python-format
 msgid "Your inhabitants reached level {level}."
-msgstr ""
+msgstr "Dina invånare har nått level {level}."
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
 msgid "Your mine has run out of resources."
-msgstr ""
+msgstr "Din gruva har slut på resurser."
 
 #. This is a database entry: the name of a resource.
 #: database files sql
@@ -192,7 +192,7 @@ msgstr "ekollon"
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "alvearies"
-msgstr ""
+msgstr "alvearies"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
@@ -207,12 +207,12 @@ msgstr "tegel"
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "candles"
-msgstr ""
+msgstr "ljus"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "cannon"
-msgstr ""
+msgstr "kannon"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
@@ -222,7 +222,7 @@ msgstr "nötkreatur"
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "cattle for slaughter"
-msgstr ""
+msgstr "nötkreatur för slakt"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
@@ -244,12 +244,12 @@ msgstr "Lerfyndighet"
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "cocoa"
-msgstr ""
+msgstr "kakao"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "cocoa beans"
-msgstr ""
+msgstr "kakao bönor"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
@@ -259,32 +259,32 @@ msgstr "mynt"
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "community"
-msgstr ""
+msgstr "samfund"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "condiments"
-msgstr ""
+msgstr "kryddor"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "confectionery"
-msgstr ""
+msgstr "konfektyr"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "corn"
-msgstr ""
+msgstr "majs"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "dagger"
-msgstr ""
+msgstr "kniv"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "deer food A"
-msgstr ""
+msgstr "rådjursmat A"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
@@ -304,7 +304,7 @@ msgstr "tro"
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "fire"
-msgstr ""
+msgstr "eld"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
@@ -314,7 +314,7 @@ msgstr "fisk"
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "flour"
-msgstr ""
+msgstr "mjöl"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
@@ -324,17 +324,17 @@ msgstr "föda"
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "get-together"
-msgstr ""
+msgstr "sammankomst"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "grain"
-msgstr ""
+msgstr "korn"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "grapes"
-msgstr ""
+msgstr "druvor"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
@@ -354,12 +354,12 @@ msgstr "örter"
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "honeycombs"
-msgstr ""
+msgstr "vaxkakor"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "iron deposit"
-msgstr ""
+msgstr "järnfyndighet"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
@@ -384,7 +384,7 @@ msgstr "sprit"
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "medical herbs"
-msgstr ""
+msgstr "medicinska örter"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
@@ -394,7 +394,7 @@ msgstr "grisar"
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "pigs for slaughter"
-msgstr ""
+msgstr "grisar för slakt"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
@@ -409,22 +409,22 @@ msgstr "salt"
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "spice plants"
-msgstr ""
+msgstr "kryddväxter"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "spices"
-msgstr ""
+msgstr "kryddor"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "stone deposit"
-msgstr ""
+msgstr "stenfyndighet"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "stone tops"
-msgstr ""
+msgstr "sten toppar"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
@@ -434,7 +434,7 @@ msgstr "socker"
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "sugar cane"
-msgstr ""
+msgstr "sockerrör"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
@@ -444,12 +444,12 @@ msgstr "tyg"
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "tobacco leaves"
-msgstr ""
+msgstr "tobaksblad"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "tobacco plants"
-msgstr ""
+msgstr "tobaksplantor"
 
 # 87%
 #. This is a database entry: the name of a resource.
@@ -465,12 +465,12 @@ msgstr "verktyg"
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "trees"
-msgstr ""
+msgstr "träd"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "vines"
-msgstr ""
+msgstr "vinrankor"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
@@ -481,37 +481,37 @@ msgstr "ull"
 #: database files sql
 #, python-format
 msgid "{player1} and {player2} have allied their forces."
-msgstr ""
+msgstr "{player1} och {player2} är nu allierade."
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
 #, python-format
 msgid "{player1} and {player2} have ended the war and are now allied."
-msgstr ""
+msgstr "{player1} och {player2} har slutit fred och är nu allierade."
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
 #, python-format
 msgid "{player1} and {player2} have ended their alliance and are now in a state of war."
-msgstr ""
+msgstr "{player1} och {player2} har förklarat krig mot varandra."
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
 #, python-format
 msgid "{player1} and {player2} have settled their hostility."
-msgstr ""
+msgstr "{player1} och {player2} har avslutat deras fientlighet."
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
 #, python-format
 msgid "{player1} and {player2} have terminated their alliance."
-msgstr ""
+msgstr "{player1} och {player2} har avslutat sin allians."
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
 #, python-format
 msgid "{player1} and {player2} will fight each other to the death."
-msgstr ""
+msgstr "{player1} och {player2} kommer att slåss till döden."
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
@@ -812,9 +812,8 @@ msgstr ""
 #: horizons/gui/widgets/playerssettlements.py
 #: horizons/i18n/guitranslations.py horizons/i18n/guitranslations.py
 #: horizons/i18n/guitranslations.py
-#, fuzzy
 msgid "Click to change the name of your settlement"
-msgstr "Klicka för att ändra namnet på din bosättning."
+msgstr "Klicka för att ändra namnet på din bosättning"
 
 #. e.g. when the pirate is disabled
 #. this dialog is pretty useless in this case
@@ -1280,9 +1279,8 @@ msgstr ""
 #. (helptext of widget: name)
 #: horizons/gui/widgets/playersships.py
 #: horizons/i18n/guitranslations.py horizons/i18n/guitranslations.py
-#, fuzzy
 msgid "Click to change the name of this ship"
-msgstr "Tryck för att ändra namnet på fartyget."
+msgstr "Tryck för att ändra namnet på fartyget"
 
 #. i18n There are no weapons equipped at the moment.
 #: horizons/gui/widgets/playersships.py
@@ -2538,9 +2536,8 @@ msgstr "Gå med i spel"
 # 90%
 #. (text of widget: load_game_lbl)
 #: horizons/i18n/guitranslations.py
-#, fuzzy
 msgid "Load game:"
-msgstr "Ladda spel"
+msgstr "Ladda spel:"
 
 #. (text of widget: refr_gamelist_lbl)
 #: horizons/i18n/guitranslations.py
