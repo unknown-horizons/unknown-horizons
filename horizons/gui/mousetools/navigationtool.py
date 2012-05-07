@@ -90,7 +90,7 @@ class NavigationTool(CursorTool):
 
 			def show_evt(self, evt):
 				if self.enabled:
-					x, y = self.cursor_tool.get_world_location_from_event(evt).to_tuple()
+					x, y = self.cursor_tool.get_world_location(evt).to_tuple()
 					self.icon.helptext = u'%f, %f ' % (x, y) + _("Press H to remove this hint")
 					self.icon.position_tooltip(evt)
 					self.icon.show_tooltip()
@@ -135,7 +135,7 @@ class NavigationTool(CursorTool):
 		self.__class__.last_event_pos = mousepoint
 
 		# Status menu update
-		current = self.get_exact_world_location_from_event(evt)
+		current = self.get_exact_world_location(evt)
 
 		distance_ge = lambda a, b, epsilon : abs((a.x-b.x)**2 + (a.y-b.y)**2) >= epsilon**2
 

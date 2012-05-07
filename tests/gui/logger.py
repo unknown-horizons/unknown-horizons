@@ -114,7 +114,7 @@ class GuiHooks(object):
 		def deco3(func):
 			@wraps(func)
 			def wrapper(self, evt):
-				x, y = self.get_world_location_from_event(evt).to_tuple()
+				x, y = self.get_world_location(evt).to_tuple()
 				button = mouse_button.get(evt.getButton())
 				data = {
 					'tool_name': self.__class__.__name__,

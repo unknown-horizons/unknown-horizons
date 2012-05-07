@@ -135,7 +135,7 @@ class LastActivePlayerSettlementManager(object):
 			return
 		pos = self.session.cursor.__class__.last_event_pos
 		if pos is not None:
-			loc = self.session.cursor.get_exact_world_location_from_event( pos )
+			loc = self.session.cursor.get_exact_world_location( pos )
 			self.update(loc)
 
 	def _on_new_settlement_created(self, msg):
