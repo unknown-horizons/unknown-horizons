@@ -88,6 +88,11 @@ class PickBeltWidget(object):
 class OptionsPickbeltWidget(PickBeltWidget):
 	"""Widget for Options dialog with pickbelt style pages"""
 	widget_xml = 'settings.xml'
-	sections = (('graphics_settings', _(u'Graphics')), \
-							('sound_settings', _(u'Sound')), \
-							('game_settings', _(u'Game')))
+
+	def __init__(self, *args, **kwargs):
+		# can't set this as class attribute directly since it's evaluated before gettext is set up
+		self.__class__.sections = (('graphics_settings', _(u'Graphics')), \
+		                           ('sound_settings', _(u'Sound')), \
+		                           ('game_settings', _(u'Game')))
+
+		super(OptionsPickbeltWidget, self).__init__(*args, **kwargs)
