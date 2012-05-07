@@ -139,15 +139,10 @@ class BuildTab(TabInterface):
 			enough_res = False # don't show building by default
 			if settlement is not None: # settlement is None when the mouse has left the settlement
 				res_overview = self.session.ingame_gui.resource_overview
-				cbs = ( Callback( res_overview.set_construction_mode, settlement, building.costs),
-				       Callback( res_overview.close_construction_mode ) )
-
-				# can't use mapEvents since the events are taken by the tooltips.
-				# they do however provide an auxiliary way around this:
-				button.clear_entered_callbacks()
-				button.clear_exited_callbacks()
-				button.add_entered_callback(cbs[0])
-				button.add_exited_callback(cbs[1])
+				button.mapEvents({
+				  button.name+"/mouseEntered/buildtab" : Callback(res_overview.set_construction_mode, settlement, building.costs),
+				  button.name+"/mouseExited/buildtab" : res_overview.close_construction_mode
+				  })
 
 				(enough_res, missing_res) = Build.check_resources({}, building.costs, settlement.owner, [settlement])
 			#check whether to disable build menu icon (not enough res available)

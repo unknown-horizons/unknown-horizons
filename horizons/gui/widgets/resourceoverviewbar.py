@@ -209,9 +209,8 @@ class ResourceOverviewBar(object):
 				self.gui.append(entry)
 
 			entry.findChild(name="entry").position = (initial_offset + offset * i, 17)
-			background_icon = entry.findChild(name="background_icon")
-			background_icon.clear_entered_callbacks()
-			background_icon.add_entered_callback( Callback(self._show_resource_selection_dialog, i) )
+			background_icon = entry.findChild(name="entry")
+			background_icon.capture(Callback(self._show_resource_selection_dialog, i), 'mouseEntered', 'resbar')
 
 			if res != -1:
 				helptext = self.session.db.get_res_name(res)
