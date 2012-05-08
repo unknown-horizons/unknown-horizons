@@ -3,8 +3,8 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2012-03-31 21:42+0100\n"
-"PO-Revision-Date: 2011-09-23 13:56+0200\n"
-"Last-Translator: Nagrim <johansson.wiktor@gmail.com>\n"
+"PO-Revision-Date: 2012-05-08 07:34+0200\n"
+"Last-Translator: knutas <magnusknutas@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: sv\n"
 "MIME-Version: 1.0\n"
@@ -35,7 +35,7 @@ msgid "tent"
 msgstr "tält"
 
 msgid "warehouse"
-msgstr ""
+msgstr "lager"
 
 msgid "resource"
 msgstr "vara / råvara / resurs"
@@ -75,8 +75,9 @@ msgstr ""
 msgid "main square"
 msgstr "torg"
 
+# 85%
 msgid "sailors"
-msgstr ""
+msgstr "sjömän"
 
 msgid "food"
 msgstr "föda"
@@ -103,25 +104,25 @@ msgid "tab"
 msgstr "flik"
 
 msgid "upgrade"
-msgstr ""
+msgstr "uppgradering"
 
 msgid "your inhabitants"
-msgstr ""
+msgstr "invånare"
 
 msgid "close"
-msgstr ""
+msgstr "stäng"
 
 msgid "companies"
 msgstr "företag"
 
 msgid "island"
-msgstr ""
+msgstr "ö"
 
 msgid "time"
 msgstr "tid"
 
 msgid "unit"
-msgstr ""
+msgstr "enhet"
 
 msgid "balance"
 msgstr "balans"
@@ -145,7 +146,7 @@ msgid "trail"
 msgstr "stig"
 
 msgid "Unknown Horizons"
-msgstr ""
+msgstr "Okänd Horizont"
 
 msgid "wool"
 msgstr "ull"
@@ -179,7 +180,7 @@ msgid "log"
 msgstr "logg"
 
 msgid "road"
-msgstr ""
+msgstr "väg"
 
 #
 msgid "save"
@@ -202,7 +203,7 @@ msgid "your"
 msgstr "din"
 
 msgid "your settlement"
-msgstr ""
+msgstr "din bosättning"
 
 msgid "add"
 msgstr "lägga till"
@@ -214,7 +215,7 @@ msgid "choose"
 msgstr "välj / välja"
 
 msgid "confectionery"
-msgstr ""
+msgstr "konfektyr"
 
 msgid "fisher"
 msgstr "fiskare"
@@ -227,10 +228,10 @@ msgid "happiness"
 msgstr "lycka"
 
 msgid "in stock"
-msgstr ""
+msgstr "i lager"
 
 msgid "money"
-msgstr ""
+msgstr "pengar"
 
 # för kyrkobyggnad
 msgid "pavilion"
@@ -252,7 +253,7 @@ msgid "tools"
 msgstr "verktyg"
 
 msgid "button"
-msgstr ""
+msgstr "knapp"
 
 #
 msgid "continue"
@@ -296,8 +297,9 @@ msgstr "potatis"
 msgid "settler"
 msgstr "nybyggare"
 
+# 80%
 msgid "speed"
-msgstr ""
+msgstr "fart"
 
 msgid "stop"
 msgstr "stopp / stoppa"
@@ -306,16 +308,16 @@ msgid "storage tent"
 msgstr "lagertält"
 
 msgid "wait"
-msgstr ""
+msgstr "vänta"
 
 msgid "access"
-msgstr ""
+msgstr "åtkomst"
 
 msgid "account"
 msgstr "konto"
 
 msgid "amount"
-msgstr ""
+msgstr "mängd"
 
 msgid "build menu"
 msgstr "byggmenyn"
@@ -351,10 +353,10 @@ msgid "liquor"
 msgstr "sprit"
 
 msgid "location"
-msgstr ""
+msgstr "plats"
 
 msgid "offer"
-msgstr ""
+msgstr "erbjuda"
 
 msgid "potatoes"
 msgstr ""
@@ -376,25 +378,25 @@ msgid "solution"
 msgstr "lösning"
 
 msgid "space"
-msgstr ""
+msgstr "plats"
 
 msgid "target"
-msgstr ""
+msgstr "mål"
 
 msgid "team"
 msgstr "lag"
 
 msgid "total"
-msgstr ""
+msgstr "totalt"
 
 msgid "unable"
-msgstr ""
+msgstr "inte"
 
 msgid "active"
 msgstr "aktiv / verksam"
 
 msgid "afford"
-msgstr ""
+msgstr "råd"
 
 msgid "animals"
 msgstr ""
@@ -410,7 +412,7 @@ msgid "consume"
 msgstr "konsumera / förbruka"
 
 msgid "enabled"
-msgstr ""
+msgstr "aktiverad"
 
 msgid "entries"
 msgstr ""
