@@ -88,7 +88,7 @@ class Gui(SingleplayerMenu, MultiplayerMenu):
 
 	def show_main(self):
 		"""Shows the main menu """
-		self._switch_current_widget('mainmenu', center=True, show=True, event_map = {
+		self._switch_current_widget('mainmenu', center=True, show=True, event_map={
 			'startSingle'      : self.show_single, # first is the icon in menu
 			'start'            : self.show_single, # second is the lable in menu
 			'startMulti'       : self.show_multi,
@@ -221,7 +221,7 @@ class Gui(SingleplayerMenu, MultiplayerMenu):
 		@param force: whether to ask for confirmation"""
 		message = _("Are you sure you want to abort the running session?")
 
-		if force or self.show_popup(_("Quit Session"), message, show_cancel_button = True):
+		if force or self.show_popup(_("Quit Session"), message, show_cancel_button=True):
 			if self.current is not None:
 				# this can be None if not called from gui (e.g. scenario finished)
 				self.hide()
@@ -362,19 +362,19 @@ class Gui(SingleplayerMenu, MultiplayerMenu):
 		if mode == 'save': # return from textfield
 			selected_savegame = self.current.collectData('savegamefile')
 			if selected_savegame == "":
-				self.show_error_popup(windowtitle = _("No filename given"), description = _("Please enter a valid filename."))
+				self.show_error_popup(windowtitle=_("No filename given"), description=_("Please enter a valid filename."))
 				self.current = old_current
 				return self.show_select_savegame(*args) # reshow dialog
 			elif selected_savegame in map_file_display: # savegamename already exists
 				#xgettext:python-format
 				message = _("A savegame with the name '{name}' already exists.").format(
 				             name=selected_savegame) + u"\n" + _('Overwrite it?')
-				if not self.show_popup(_("Confirmation for overwriting"), message, show_cancel_button = True):
+				if not self.show_popup(_("Confirmation for overwriting"), message, show_cancel_button=True):
 					self.current = old_current
 					return self.show_select_savegame(*args) # reshow dialog
 			elif sanity_checker and sanity_criteria:
 				if not sanity_checker(selected_savegame):
-					self.show_error_popup(windowtitle = _("Invalid filename given"), description = sanity_criteria)
+					self.show_error_popup(windowtitle=_("Invalid filename given"), description=sanity_criteria)
 					self.current = old_current
 					return self.show_select_savegame(*args) # reshow dialog
 		else: # return selected item from list
@@ -418,7 +418,7 @@ class Gui(SingleplayerMenu, MultiplayerMenu):
 		return self.current is not None and self.current.isVisible()
 
 
-	def show_dialog(self, dlg, bind, event_map = None):
+	def show_dialog(self, dlg, bind, event_map=None):
 		"""Shows any pychan dialog.
 		@param dlg: dialog that is to be shown
 		@param bind: events that make the dialog return + return values{ 'ok': callback, 'cancel': callback }
@@ -504,7 +504,7 @@ class Gui(SingleplayerMenu, MultiplayerMenu):
 			else:
 				raise # it persists, we have to die.
 
-	def build_popup(self, windowtitle, message, show_cancel_button = False, size=0):
+	def build_popup(self, windowtitle, message, show_cancel_button=False, size=0):
 		""" Creates a pychan popup widget with the specified properties.
 		@param windowtitle: the title of the popup
 		@param message: the text displayed in the popup
@@ -675,7 +675,7 @@ class Gui(SingleplayerMenu, MultiplayerMenu):
 		#xgettext:python-format
 		message = _("Do you really want to delete the savegame '{name}'?").format(
 		             name=SavegameManager.get_savegamename_from_filename(selected_file))
-		if self.show_popup(_("Confirm deletion"), message, show_cancel_button = True):
+		if self.show_popup(_("Confirm deletion"), message, show_cancel_button=True):
 			try:
 				os.unlink(selected_file)
 				return True

@@ -95,7 +95,7 @@ class MultiplayerMenu(object):
 	def create_default_mp_game(self):
 		"""For debugging; creates a valid game. Call right after show_multi"""
 		self.__show_create_game()
-		self.__create_game(chosen_map = 'mp-dev')
+		self.__create_game(chosen_map='mp-dev')
 
 	def join_mp_game(self):
 		"""For debugging; joins first open game. Call right after show_multi"""
@@ -176,7 +176,7 @@ class MultiplayerMenu(object):
 	def __show_only_own_version_toggle(self):
 		self.__refresh()
 
-	def __update_game_details(self, game = None):
+	def __update_game_details(self, game=None):
 		"""Set map name and other misc data in a widget. Only possible in certain states"""
 		if game == None:
 			game = self.__get_selected_game()
@@ -228,7 +228,7 @@ class MultiplayerMenu(object):
 		if vbox is not None:
 			vbox.adaptLayout()
 
-	def __join_game(self, game = None):
+	def __join_game(self, game=None):
 		"""Joins a multiplayer game. Displays lobby for that specific game"""
 		if game == None:
 			game = self.__get_selected_game()
@@ -344,7 +344,7 @@ class MultiplayerMenu(object):
 		def _update_infos():
 			mapindex = self.current.collectData('maplist')
 			mapfile = self.current.files[mapindex]
-			number_of_players = SavegameManager.get_recommended_number_of_players( mapfile )
+			number_of_players = SavegameManager.get_recommended_number_of_players(mapfile)
 			#xgettext:python-format
 			self.current.findChild(name="recommended_number_of_players_lbl").text = \
 					_("Recommended number of players: {number}").format(number=number_of_players)

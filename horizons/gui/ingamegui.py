@@ -282,7 +282,7 @@ class IngameGui(LivingObject):
 		self.show_menu(tab)
 
 	def show_multi_select_tab(self):
-		tab = TabWidget(self, tabs = [SelectMultiTab(self.session)], name = 'select_multi')
+		tab = TabWidget(self, tabs=[SelectMultiTab(self.session)], name='select_multi')
 		self.show_menu(tab)
 
 	def show_build_menu(self, update=False):
@@ -314,7 +314,7 @@ class IngameGui(LivingObject):
 			instance.get_component(SelectableComponent).deselect()
 		self.session.selected_instances.clear()
 
-	def _build(self, building_id, unit = None):
+	def _build(self, building_id, unit=None):
 		"""Calls the games buildingtool class for the building_id.
 		@param building_id: int with the building id that is to be built.
 		@param unit: weakref to the unit, that builds (e.g. ship for warehouse)"""
@@ -438,7 +438,7 @@ class IngameGui(LivingObject):
 		}
 		self.main_gui.on_escape = self._hide_save_map_dialog
 		dialog = self.widgets['save_map']
-		name = dialog.findChild(name = 'map_name')
+		name = dialog.findChild(name='map_name')
 		name.text = u''
 		dialog.mapEvents(events)
 		name.capture(Callback(self.save_map))
