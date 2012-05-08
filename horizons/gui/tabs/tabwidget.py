@@ -25,7 +25,7 @@ import weakref
 from fife.extensions.pychan.widgets import Container, Icon, ImageButton
 
 import horizons.main
-from horizons.util.gui import load_uh_widget
+from horizons.gui.util import load_uh_widget
 from horizons.util import Callback
 from horizons.util.changelistener import metaChangeListenerDecorator
 
@@ -92,7 +92,7 @@ class TabWidget(object):
 			button.size = (50, 50)
 			button.capture(Callback(self._show_tab, index))
 			if hasattr(tab, 'helptext') and tab.helptext is not None:
-				button.helptext = unicode(tab.helptext)
+				button.helptext = tab.helptext
 			container.size = background.size
 			container.addChild(background)
 			container.addChild(button)

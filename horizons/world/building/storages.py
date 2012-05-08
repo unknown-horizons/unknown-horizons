@@ -23,11 +23,11 @@ from horizons.world.resourcehandler import StorageResourceHandler
 from horizons.world.building.buildingresourcehandler import BuildingResourceHandler
 from building import BasicBuilding
 from buildable import BuildableSingle, BuildableSingleFromShip
-from horizons.world.component.storagecomponent import StorageComponent
+from horizons.component.storagecomponent import StorageComponent
 from horizons.world.building.production import ProductionBuilding
 from horizons.world.building.path import Path
 from horizons.world.status import InventoryFullStatus
-from horizons.world.component.collectingcompontent import CollectingComponent
+from horizons.component.collectingcomponent import CollectingComponent
 
 class StorageBuilding(StorageResourceHandler, \
                       BuildingResourceHandler, BasicBuilding):

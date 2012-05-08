@@ -12,30 +12,28 @@ difficulty: "Bemutat\xF3"
 events:
 - actions:
   - arguments: ["\xC9p\xEDts egy rakt\xE1rat a tengerparthoz, \xEDgy k\xF6nnyen megk\xF6\
-        zel\xEDthet\u0151 a t\xF6bbi szabadkeresked\u0151 haj\xF3 sz\xE1m\xE1ra"]
+        zel\xEDthet\u0151 a t\xF6bbi szabadkeresked\u0151 haj\xF3 sz\xE1m\xE1ra."]
     type: message
   - arguments:
     - ''
     - - Gallery
       - [content/gfx/uh.png]
     - [Pagebreak]
-    - [Headline, "\xDCdv\xF6zli az Unknown Horizons!"]
+    - [Headline, "\xDCdv\xF6z\xF6l az Unknown Horizons!"]
     - [Image, content/gui/images/background/hr.png]
     - ''
-    - !!python/unicode 'This is your Captain''s log where all important information
-      is stored. A short notification of each task will be provided on the left of
-      the screen.'
-    - !!python/unicode 'If you are interested in longer descriptions, your log will
-      hopefully provide all the help you need.'
-    - !!python/unicode 'After you close this log, it can be re-opened with the "Captain''s
-      Log" icon in the top-right corner (below the mini-map, with a sealed document
-      and a feather).'
+    - "Ez a kapit\xE1nyod napl\xF3ja, ahol az \xF6sszes fontos inform\xE1ci\xF3 van.\
+      \ Egy r\xF6vid \xE9rtes\xEDt\xE9s megjelenik minden esem\xE9nyr\u0151l a k\xE9\
+      perny\u0151 bal sz\xE9l\xE9n."
+    - "Hogyha hosszabb le\xEDr\xE1s \xE9rdekel, a napl\xF3ban rem\xE9lhet\u0151leg\
+      \ seg\xEDts\xE9get tud ny\xFAjtani."
+    - "Miut\xE1n bez\xE1rod a napl\xF3t, \xFAjra megnyithatod a \"Kapit\xE1ny napl\xF3\
+      ja\" ikonnal a jobb fels\u0151 sarokban (a kis t\xE9rk\xE9p alatt, egy lepecs\xE9\
+      telt mapp\xE1val \xE9s egy tollal ell\xE1tott ikon)."
     - - Gallery
       - [content/gui/icons/widgets/minimap/captainslog.png]
-    - !!python/unicode '
-
-      To see your first task, click on the button "Read next entries" in the navigation
-      panel! It looks like this:'
+    - "\nAz els\u0151 feladathoz, kattints a \"K\xF6vetkez\u0151 bejegyz\xE9s elolvas\xE1\
+      sa\" gombra a navig\xE1ci\xF3s panelen! \xCDgy n\xE9z ki:"
     - - Gallery
       - [content/gui/images/buttons/parrow_right.png]
     - [Pagebreak]
@@ -43,30 +41,25 @@ events:
 
       For any suggestions on better wording, topics you would like to have explained
       or even buggy conditions: Please tell us and we will try to improve the tutorial!'
-    - !!python/unicode '
-
-      Visit www.unknown-horizons.org for help on how to contact the team!'
-    - !!python/unicode 'And now, let''s start the actual game.'
+    - "\nL\xE1togasd meg a www.unknown-horizons.org oldalt, hogy megtudd, hogyan veheted\
+      \ fel a kapcsolatot a csapattal!"
+    - "\xC9s most, kezdj\xFCk el a j\xE1t\xE9kot."
     - [Pagebreak]
     - [Headline, "\xDAj feladat: Rendezkedj be egy szigetre!"]
     - [Image, content/gui/images/background/hr.png]
-    - !!python/unicode 'To move your ship, select it with a left click and right click
-      on the location you want it to go to.'
-    - !!python/unicode 'Once you are near the coast, the anchor-like button you see
-      in the overview tab will become active.'
+    - "A haj\xF3 mozgat\xE1s\xE1hoz, v\xE1laszd ki bal kattint\xE1ssal majd jobbal\
+      \ kattints oda, ahova ir\xE1ny\xEDtani szeretn\xE9d."
+    - "Hogyha egy part k\xF6zel\xE9be \xE9rsz, a vasmacska szer\u0171 gomb akt\xED\
+      vv\xE1 v\xE1lik az \xC1ttekint\u0151 f\xFCl\xF6n."
     - - Gallery
       - [content/gui/icons/ship/anchor.png]
-    - !!python/unicode 'This indicates that you are able to build a warehouse there
-      by pressing that button (called ''Build Settlement'').'
-    - !!python/unicode 'Now a preview of your building is dragged around when you
-      move the cursor.'
-    - !!python/unicode 'You can build on any spot where this preview is not shaded
-      red.
-
-      Click where you want to place your first building.'
-    - !!python/unicode '
-
-      TASK: Build a warehouse at the coast.'
+    - "Ez azt jelzi, hogy fel tudsz \xE9p\xEDteni egy rakt\xE1rh\xE1zat a gomb megnyom\xE1\
+      s\xE1val ('Gyarmat \xE9p\xEDt\xE9se' gomb')."
+    - "Az \xE9p\xFClet el\u0151n\xE9zet\xE9t h\xFAzod k\xF6rbe, amikor a kurzort mozgatod."
+    - "B\xE1rhova \xE9p\xEDtheted, ahol az el\u0151n\xE9zet nem pirossal van \xE1\
+      rny\xE9kolva.\nKattints oda, ahova \xE9p\xEDteni szeretn\xE9d az els\u0151 \xE9\
+      p\xFCleted."
+    - "\nFELADAT: \xC9p\xEDts egy rakt\xE1rh\xE1zat a partra."
     type: logbook
   - arguments: [tutStepDone, 16]
     type: set_var
@@ -75,39 +68,41 @@ events:
     type: time_passed
 - actions:
   - arguments:
-    - [Headline, "\xDAj feladat: \xC9p\xEDts egy fav\xE1g\xF3h\xE1zat"]
+    - [Headline, "\xDAJ FELADAT: \xC9P\xCDTS FEL EGY FAV\xC1G\xD3T"]
     - [Image, content/gui/images/background/hr.png]
-    - !!python/unicode 'The construction material on your ship got unloaded automatically.
-      You can now construct some basic buildings.'
-    - !!python/unicode 'We will start with building a lumberjack.'
+    - "Az \xE9p\xEDt\xE9shez sz\xFCks\xE9ges nyersanyagok a haj\xF3dr\xF3l automatikusan\
+      \ kirakod\xE1sra ker\xFCltek. Most tudsz \xE9p\xEDteni p\xE1r alap \xE9p\xFC\
+      letet."
+    - "Egy fav\xE1g\xF3 \xE9p\xEDt\xE9s\xE9vel fogjuk kezdeni."
     - !!python/unicode 'This is essential because, at this stage, boards are the only
       poles your sailors can afford to hang their tents over.'
-    - !!python/unicode 'The fisherman needs some boards to build his vessel as well.'
-    - !!python/unicode 'In order to construct lumberjacks; open the build menu by
-      either clicking the big icon below the mini map or pressing B key.'
+    - "A hal\xE1sznak is sz\xFCks\xE9ge van n\xE9h\xE1ny deszk\xE1ra, hogy meg\xE9\
+      p\xEDthesse a cs\xF3nakj\xE1t."
+    - "A fav\xE1g\xF3 meg\xE9p\xEDt\xE9s\xE9hez nyisd meg az \xE9p\xEDt\xE9si men\xFC\
+      t egy kattint\xE1ssal a nagy ikonon a minit\xE9rk\xE9p alatt, vagy a B billenty\u0171\
+      \ lenyom\xE1s\xE1val."
     - - Gallery
       - [content/gui/icons/widgets/minimap/build.png]
-    - !!python/unicode 'The build menu is sorted by increments.'
-    - !!python/unicode 'You are currently in the first increment (the Sailors level)
-      so are offered only the basic buildings.'
+    - "Az \xE9p\xEDt\xE9si men\xFC szintenk\xE9nt van sorba rendezve."
+    - "Jelenleg te az els\u0151 szinten vagy (a Tenger\xE9sz szinten), teh\xE1t csak\
+      \ az alap \xE9p\xFCletek el\xE9rhet\u0151ek."
     - [Pagebreak]
-    - !!python/unicode '
-
-      As your civilization advances, you also gain more and more complex buildings.'
-    - !!python/unicode 'For now, select the lumberjack under ''Companies'' and build
-      it in an area with some trees around.'
-    - !!python/unicode 'You can also plant trees later - but that costs money. Use
-      what nature provided you with!'
-    - !!python/unicode 'A company always needs a trail connection to a storage or
-      warehouse, otherwise goods will remain at the company and not be collected.'
-    - !!python/unicode 'This means that you have to build a trail connecting your
-      warehouse (or storage) and lumberjack.'
-    - !!python/unicode '
-
-      TASK: Build a lumberjack in a wooded area and connect it to a road.'
-    - !!python/unicode 'Watch how a collector will fetch your first self-produced
-      boards. Don''t worry about recruiting workers for the lumberjack. That happens
-      automatically.'
+    - "\nAhogy a civiliz\xE1ci\xF3d fejl\u0151dik, komplexebbn\xE9l komplexebb \xE9\
+      p\xFCletek kapsz."
+    - "Most, v\xE1laszd ki a fav\xE1g\xF3t a 'V\xE1llalatok' csoportb\xF3l, \xE9s\
+      \ \xE9p\xEDts egyet ahol t\xF6bb fa van."
+    - "K\xE9s\u0151bb m\xE9g tudsz f\xE1kat \xFCltetni - de p\xE9nzbe ker\xFCl. Haszn\xE1\
+      ld, amit a term\xE9szet biztos\xEDtott!"
+    - "Egy v\xE1llalkoz\xE1snak mindig sz\xFCks\xE9ge van egy nyomvonalra a rakt\xE1\
+      rhoz, vagy a rakt\xE1rh\xE1zhoz. K\xFCl\xF6nben a term\xE9kek a v\xE1llalkoz\xE1\
+      sban maradnak \xE9s nem lesznek begy\u0171jtve."
+    - "Ez azt jelenti, hogy \xE9p\xEDtened kell egy utat, hogy \xF6sszek\xF6sd a rakt\xE1\
+      rh\xE1zat (vagy rakt\xE1rat) \xE9s a fav\xE1g\xF3t."
+    - "\nFELADAT: \xC9p\xEDts egy fav\xE1g\xF3t egy f\xE1s ter\xFCletre, majd \xFA\
+      ttal k\xF6sd \xF6ssze a rakt\xE1r\xE9p\xFClettel."
+    - "N\xE9zd a begy\u0171jt\u0151t, hogyan gy\u0171jti be az els\u0151 saj\xE1t\
+      \ termel\xE9s\u0171 deszk\xE1kat. Ne agg\xF3dj a fav\xE1g\xF3 munk\xE1sainak\
+      \ verbuv\xE1l\xE1sa miatt, ez automatikusan t\xF6rt\xE9nik."
     - - Gallery
       - [content/gui/icons/buildmenu/008.png, content/gui/icons/buildmenu/015.png,
         content/gui/icons/resources/50/004.png]
@@ -130,33 +125,29 @@ events:
     type: var_lt
 - actions:
   - arguments:
-    - [Headline, "\xDAj feladat: \xC9lelmiszer ell\xE1t\xE1s"]
+    - [Headline, "\xDAJ FELADAT: \xC9LELMISZER ELL\xC1T\xC1S"]
     - [Image, content/gui/images/background/hr.png]
-    - !!python/unicode 'You will need to have some food-producing companies, too,
-      because people in general (and especially sailors) are very hungry.'
-    - !!python/unicode 'Available companies in the first increment are the Hunter
-      and Fisher.'
-    - !!python/unicode 'The Hunter hunts animals in the forest, thus needs trees nearby.'
-    - !!python/unicode 'Note that you can place your Hunter close to the lumberjack''s
-      forest.'
-    - !!python/unicode 'It can happen that the animals don''t reproduce fast enough
-      or simply hide well.'
-    - !!python/unicode 'Conclusion: the hunter is not too reliable if you need continuous
-      supply.'
+    - "Sz\xFCks\xE9ged lesz p\xE1r \xE9lelmet termel\u0151 v\xE1llalkoz\xE1sra, mert\
+      \ az emberek \xE1ltal\xE1ban (speciel most a haj\xF3sok) nagyon \xE9hesek."
+    - "El\xE9rhet\u0151 v\xE1llalkoz\xE1sok az els\u0151 szinten a Vad\xE1sz \xE9\
+      s a Hal\xE1sz."
+    - "A Vad\xE1sz vadakat vad\xE1szik az erd\u0151ben, teh\xE1t f\xE1kra van sz\xFC\
+      ks\xE9ge a k\xF6zelben."
+    - "Teh\xE1t a Vad\xE1szt helyezd k\xF6zel a fav\xE1g\xF3 erdej\xE9hez."
+    - "Megt\xF6rt\xE9nhet, hogy az \xE1llatok nem szaporodnak el\xE9g gyorsan, vagy\
+      \ szimpl\xE1n elrejt\u0151znek."
+    - "V\xE9geredm\xE9nyben: a vad\xE1sz nem a legjobb a folyamatos \xE9lelmiszer\
+      \ ell\xE1t\xE1s biztos\xEDt\xE1s\xE1hoz."
     - [Pagebreak]
-    - !!python/unicode '
-
-      The Fisher needs a coastal building site like the warehouse and a fish school
-      in range.'
-    - !!python/unicode 'He will build a small rowing vessel and catch some fish.'
+    - "\nA Hal\xE1sznak egy parton \xE9p\xEDtett \xE9p\xFCletre van sz\xFCks\xE9ge,\
+      \ mint a rakt\xE1rh\xE1z, \xE9s egy hal lel\u0151helyre a k\xF6zelben."
+    - "Egy kis evez\u0151s cs\xF3nakot \xE9p\xEDt \xE9s n\xE9mi halat fog ki."
     - !!python/unicode 'This is a very constant supply at the cost of a slightly longer
       production time per unit of food.'
     - !!python/unicode 'A small settlement like yours can use both companies, and
       you can better balance pros and cons if you see the direct comparison.'
-    - !!python/unicode '
-
-      TASK: Build a hunter and a fisher.'
-    - !!python/unicode 'Don''t forget to connect them to your warehouse with trails!'
+    - "\nFELADAT: \xC9p\xEDts egy vad\xE1szt \xE9s egy hal\xE1szt."
+    - "Ne felejtsd el \xFAttal \xF6sszek\xF6tni \u0151ket a rakt\xE1r\xE9p\xFCletekkel."
     - - Gallery
       - [content/gui/icons/buildmenu/011_h.png, content/gui/icons/buildmenu/009_h.png,
         content/gui/icons/resources/50/005.png]
@@ -175,46 +166,43 @@ events:
     type: var_lt
 - actions:
   - arguments:
-    - [Headline, "\xDAj feladat: F\u0151 t\xE9r"]
+    - [Headline, "\xDAJ FELADAT: F\u0150T\xC9R"]
     - [Image, content/gui/images/background/hr.png]
-    - !!python/unicode 'Your residents need a main square where they can fetch their
-      goods from.'
-    - !!python/unicode 'This means that they need a trail connection from their home
-      to the main square.'
-    - !!python/unicode 'All goods in your warehouse are available at this ''market
-      place'', so your residents do not need to walk to the fisher or even to the
-      warehouse.'
+    - "A lakosoknak egy f\u0151t\xE9rre van sz\xFCks\xE9g\xFCk, ahonnan term\xE9keket\
+      \ tudnak hazavinni."
+    - "Ez annyit jelent, hogy \xF6ssze kell k\xF6tni az otthonaikat \xE9s a f\u0151\
+      teret egy \xFAttal."
+    - "Az \xF6sszes term\xE9k a rakt\xE1rh\xE1zadb\xF3l el\xE9rhet\u0151v\xE9 v\xE1\
+      lik ezzel a 'piact\xE9rrel', teh\xE1t a lakosoknak nem kell els\xE9t\xE1lniuk\
+      \ a hal\xE1szhoz vagy a rakt\xE1rh\xE1zakhoz."
     - - Gallery
       - [content/gui/icons/buildmenu/004_h.png]
-    - !!python/unicode 'You should avoid placing your main settlement tents too close
-      to your lumberjacks because building tents will clear away the trees that your
-      lumberjack needs to produce boards.'
-    - !!python/unicode 'Companies work without being connected to the tents, so you
-      don''t need to build a road between the main square and e.g. your lumberjack
-      tent.'
-    - !!python/unicode '
-
-      TASK: Build a main square.'
+    - "Figyelj arra, hogy ne \xE9p\xEDtsd fel a gyarmatod lak\xF3\xE9p\xFCleteit t\xFA\
+      l k\xF6zel a fav\xE1g\xF3khoz, mert a lak\xF3\xE9p\xFCletek miatt a f\xE1k elt\u0171\
+      nnek, amelyb\u0151l a fav\xE1g\xF3nak kellene a deszk\xE1kat k\xE9sz\xEDtenie."
+    - "A v\xE1llalkoz\xE1soknak nem sz\xFCks\xE9ges az \xF6sszek\xF6ttet\xE9s a lak\xF3\
+      \ \xE9p\xFCletekkel, teh\xE1t nem kell utat \xE9p\xEDtened a f\u0151t\xE9r \xE9\
+      s p\xE9ld\xE1ul a fav\xE1g\xF3 k\xF6z\xE9."
+    - "\nFELADAT: \xC9p\xEDts egy f\u0151teret."
     - [Pagebreak]
-    - !!python/unicode '
-
-      Now let''s have a closer look at the main square.'
+    - "\nMost n\xE9zz sz\xE9t jobban a f\u0151teredn\xE9l."
     - - Gallery
       - [content/gui/icons/tabwidget/warehouse/account_a.png]
-    - !!python/unicode 'In the ''Account'' tab you get a balance sheet of this island,
-      featuring all costs you pay and all taxes you earn.'
+    - "A 'Fi\xF3k' f\xFCl\xF6n l\xE1thatod az egyens\xFAlyi kimutat\xE1st a szigetednek,\
+      \ megmutatva az \xF6sszes \xE1rat, amelyet fizetsz, \xE9s az ad\xF3kat amelyeket\
+      \ kapsz."
     - !!python/unicode 'The items ''Sale'' and ''Buy'' refer to your trading balance
       and will be explained later on.'
-    - !!python/unicode 'If your balance is positive, you all-in-all make a profit.'
+    - "Hogyha pozit\xEDv az egyens\xFAly, minden egy az egyben profitot termel."
     - - Gallery
       - [content/gui/icons/tabwidget/mainsquare/inhabitants0_a.png]
-    - !!python/unicode 'In the different increment overview tabs you can see statistics
-      about your inhabitants. You also set the increment-specific global tax here
-      and allow or deny inhabitants of this increment to upgrade to the next higher
-      one.'
+    - "A k\xFCl\xF6nb\xF6z\u0151 szintek \xE1ttekint\u0151 f\xFClein l\xE1thatod a\
+      \ statisztik\xE1t a lakosaidr\xF3l. Be\xE1ll\xEDthatod m\xE9g a szintekre vonatkoz\xF3\
+      \ glob\xE1lis ad\xF3t, \xE9s enged\xE9lyezheted vagy tilthatod a lakosaidat\
+      \ az adott szinten, hogy fejlesszenek a k\xF6vetkez\u0151 szintre."
     type: logbook
-  - arguments: ["K\xE9sz\xEDtsen egy f\u0151teret. V\xE1lassz ki egy helyet an\xE9\
-        lk\xFCl, hogy sok gazdas\xE1gi \xE9p\xFClet lenne a k\xF6rny\xE9ken."]
+  - arguments: ["\xC9p\xEDts egy f\u0151teret. V\xE1lassz egy olyan helyet, ahol a\
+        \ k\xF6rny\xE9ken kev\xE9s a gazdas\xE1gi \xE9p\xFClet."]
     type: message
   - arguments: [tutStepDone, 25]
     type: set_var
@@ -233,23 +221,23 @@ events:
     type: var_lt
 - actions:
   - arguments:
-    - [Headline, "\xDAj feladat: Lak\xF3\xE9p\xFCletek"]
+    - [Headline, "\xDAJ FELADAT: LAK\xD3 \xC9P\xDCLETEK"]
     - [Image, content/gui/images/background/hr.png]
-    - !!python/unicode 'Settlers want to have a roof over their heads, else they won''t
-      even think of living in your city! You need to provide tents.'
+    - "A telepesek tet\u0151t szeretn\xE9nek a fej\xFCk f\xFCl\xE9, ellenkez\u0151\
+      \ esetben \xFAgy fogj\xE1k gondolni, hogy nem ebben a v\xE1rosban akarnak \xE9\
+      lni! Lak\xF3h\xE1zakat kell biztos\xEDtanod."
     - - Gallery
       - [content/gui/icons/buildmenu/003_h.png]
-    - !!python/unicode 'Tents are the basic residential buildings. Your inhabitants
-      will want to upgrade it when they reach higher increments.'
-    - !!python/unicode 'Settlers may not look very useful since they will try to consume
-      all goods you produce - but they at least pay taxes, and that''s the only way
-      you can make money for now!'
-    - !!python/unicode '
-
-      TASK: Build a tent and connect it to the main square. Tents dont need to be
-      connected to any of the companies.'
+    - "A s\xE1trak az alap lak\xF3\xE9p\xFCletek. A lakosaid szeretn\xE9k majd tov\xE1\
+      bb fejleszteni, hogyha el\xE9rik a nagyobb szintet."
+    - "A telepesek nem a leghasznosabbak a term\xE9kek termel\xE9s\xE9ben - de \u0151\
+      k azok, akik fizetik az ad\xF3t \xE9s jelenleg m\xE9g \u0151k az egyetlen egy\
+      \ lehet\u0151s\xE9ged a p\xE9nz szerz\xE9s\xE9re."
+    - "\nFELADAT: \xC9p\xEDts s\xE1trakat \xE9s kapcsold \u0151ket egybe \xFAttal\
+      \ a f\u0151t\xE9rrel. A s\xE1traknak nem kell \xF6sszek\xF6ttet\xE9sben lenni\xFC\
+      k a gazdas\xE1gi \xE9p\xFCletekkel."
     type: logbook
-  - arguments: ["K\xE9sz\xEDts egy s\xE1trat, \xE9s csatlakoztasd a f\u0151t\xE9rre."]
+  - arguments: ["\xC9p\xEDts egy s\xE1trat, \xE9s csatlakoztasd a f\u0151t\xE9rhez."]
     type: message
   - arguments: [tutStepDone, 28]
     type: set_var
@@ -261,24 +249,18 @@ events:
   - arguments: [tutStepDone, 28]
     type: var_lt
 - actions:
-  - arguments: [!!python/unicode '
-
-        Let''s have a look at the tent overview tab.', !!python/unicode 'You can see
-
-        * the happiness of these residents,
-
-        * the taxes they pay and
-
-        * the resources they demand.', !!python/unicode 'If their demands are fulfilled,
-        happiness and thus your tax income increase.', !!python/unicode 'If not, happiness
-        and income decrease. At some time your residents may get really sour and simply
-        turn their back on your village, leaving behind a decaying ruin.', !!python/unicode 'Note
-        that you can also change the global tax settings here, too.', !!python/unicode '
-
-        TASK: Build at least three additional tents.', !!python/unicode '
-
-        TIP: Holding down SHIFT eases constructing multiple buildings of the same
-        kind.']
+  - arguments: ["\nN\xE9zz r\xE1 a s\xE1trak \xE1ttekint\u0151 f\xFCl\xE9re.", "Amit\
+        \ l\xE1thatsz\n* az el\xE9gedetts\xE9ge ezeknek a lakosoknak,\n* az ad\xF3\
+        kat amelyeket fizetnek \xE9s\n* a k\xE9szletek, amelyre sz\xFCks\xE9g\xFC\
+        k van.", "Hogyha a sz\xFCks\xE9gleteik ki vannak el\xE9g\xEDtve, az el\xE9\
+        gedetts\xE9g\xFCk \xE9s az ad\xF3bev\xE9tel n\xF6vekszik.", "Hogyha nem, az\
+        \ el\xE9gedetts\xE9g \xE9s a bev\xE9tel cs\xF6kken. N\xE9ha a lakosok nagyon\
+        \ el\xE9gedetlenek lehetnek, ekkor szimpl\xE1n h\xE1tra hagyj\xE1k a faludat,\
+        \ maguk m\xF6g\xF6tt hagyva egy lepusztult romos h\xE1zat.", "Itt szint\xE9\
+        n tudod \xE1ll\xEDtani a glob\xE1lis ad\xF3t.", "\nFELADAT: \xC9p\xEDtsd legal\xE1\
+        bb h\xE1rom s\xE1trat.", "\nTIP: A SHIFT billenty\u0171 lenyom\xE1s\xE1val\
+        \ t\xF6bb \xE9p\xFCletet is \xE9p\xEDthetsz ugyan abb\xF3l a t\xEDpusb\xF3\
+        l."]
     type: logbook
   - arguments: ["\xC9p\xEDts legal\xE1bb h\xE1rom tov\xE1bbi s\xE1trat \xE9s k\xF6\
         sd be a f\u0151t\xE9rre."]
@@ -294,42 +276,42 @@ events:
     type: var_lt
 - actions:
   - arguments:
-    - [Headline, "\xDAj feladat: \xC9p\xEDts kereskedelmi t\u0171zjelet"]
+    - [Headline, "\xDAJ FELADAT: \xC9P\xCDTS EGY JELZ\u0150T\xDCZET"]
     - [Image, content/gui/images/background/hr.png]
-    - !!python/unicode 'Can you see the ship passing your island from time to time?
-      That ship belongs to the Free Trader, one of the first settlers in this archipelago.'
-    - !!python/unicode 'The trader will supply your settlement with necessary goods
-      which you can''t produce yet.'
-    - !!python/unicode 'You can also sell surpluses of your production, but in general
-      consuming them (by building more tents) instead of selling them yields more
-      profit.'
-    - !!python/unicode 'Normally the trader ships just sail around and look for deals,
-      but you can speed things up a bit.'
+    - "\xC9szrevetted, hogy egy haj\xF3 \xE9rkezik a szigetedre id\u0151r\u0151l id\u0151\
+      re? Ez a haj\xF3 a Szabad Keresked\u0151kh\xF6z tartozik, az els\u0151 telepesek\
+      \ ezen a szigetvil\xE1gon."
+    - "A keresked\u0151 ell\xE1tja majd a gyarmatodat a sz\xFCks\xE9ges nyersanyagokkal,\
+      \ amelyeket nem tudsz m\xE9g termelni."
+    - "Viszont a felesleget el is adhatod a term\xE9keidb\u0151l, de \xE1ltal\xE1\
+      ban a felhaszn\xE1l\xE1suk (t\xF6bb lak\xF3s\xE1tor \xE9p\xEDt\xE9se) az elad\xE1\
+      s helyett t\xF6bb bev\xE9telt termel."
+    - "Norm\xE1l esetben a keresked\u0151 haj\xF3 csak haj\xF3zik k\xF6rbe \xE9s keresi\
+      \ az aj\xE1nlatokat, de ezt felgyors\xEDthatod egy kicsit."
     - - Gallery
       - [content/gui/icons/buildmenu/006_h.png]
-    - !!python/unicode 'For this purpose, build a signal fire at the coast near your
-      warehouse. It will show ships the way to your settlement.'
-    - !!python/unicode 'The signal fire has to cover the area which the ships pass
-      through to catch them.'
+    - "Erre a c\xE9lra, \xE9p\xEDts egy jelz\u0151t\xFCzet a partra, a rakt\xE1rh\xE1\
+      zad k\xF6zel\xE9be. Ez mutatja a haj\xF3knak az utat a gyarmatod fel\xE9."
+    - "A jelz\u0151t\u0171z fedezi a ter\xFCletet, amely fel\xE9 a haj\xF3k haladnak,\
+      \ hogy elkapj\xE1k azt."
     - [Pagebreak]
-    - !!python/unicode '
-
-      After this little advertisment, the trader will also stop by and look into your
-      warehouse if it planned to sail past it.'
-    - !!python/unicode 'You can propose deals via the warehouse tab "Buy/Sell".'
+    - "\nEzut\xE1n a kis rekl\xE1m ut\xE1n, a keresked\u0151 haj\xF3 meg fog \xE1\
+      llni \xE9s k\xF6rben\xE9z a rakt\xE1rh\xE1zadban hogyha tervezte hogy arra vitorl\xE1\
+      zzon."
+    - "Megtervezheted az aj\xE1nlataidat a rakt\xE1rh\xE1z \"V\xE9tel/Elad\xE1s\"\
+      \ f\xFCl\xE9n."
     - - Gallery
       - [content/gui/icons/tabwidget/warehouse/buysell_a.png]
-    - !!python/unicode 'At the ''sailors'' increment, you are equipped with three
-      trading slots.'
-    - !!python/unicode 'Click on the small icon to change the slot mode from ''Buy''
-      to ''Sell'' and vice versa.'
-    - !!python/unicode 'Click in the slot to choose the good you want to trade with.
-      We will further explain this once you are ready to trade.'
-    - !!python/unicode '
-
-      TASK: Build a signal fire at the coast close to your warehouse.'
+    - "A 'haj\xF3s' szinten, h\xE1rom kereskedelmi helyed van."
+    - "Klikk a kis ikonra, hogy megv\xE1ltoztasd a hely t\xEDpus\xE1t 'Elad\xE1s'\
+      \ -r\xF3l 'V\xE9tel' -re \xE9s ford\xEDtva."
+    - "Klikk a helyre, hogy kiv\xE1laszd azt a term\xE9ket, amellyel kereskedni szeretn\xE9\
+      l. Ezt m\xE9g jobban bemutatjuk, hogyha k\xE9szen \xE1llsz a keresked\xE9sre."
+    - "\nFELADAT: \xC9p\xEDts egy Jelz\u0151 t\xFCzet a parton a rakt\xE1rad k\xF6\
+      zel\xE9be."
     type: logbook
-  - arguments: ["\xC9p\xEDts egy T\u0171zjelet a parton k\xF6zel a rakt\xE1rhoz."]
+  - arguments: ["\xC9p\xEDts egy jelz\u0151 t\xFCzet a parton, k\xF6zel a rakt\xE1\
+        rhoz."]
     type: message
   - arguments: [tutStepDone, 34]
     type: set_var
@@ -342,13 +324,11 @@ events:
     type: var_lt
 - actions:
   - arguments:
-    - [Headline, !!python/unicode 'NEW TASK: LEARN TO TRADE']
+    - [Headline, "\xDAJ FELADAT: KERESKEDELEM"]
     - [Image, content/gui/images/background/hr.png]
-    - !!python/unicode 'Excellent! The Free Trader will now stop by at your warehouse
-      from time to time.
-
-
-      Let''s continue our tutorial on how to trade.'
+    - "Kit\u0171n\u0151! A Szabad Keresked\u0151 most m\xE1r meg fog \xE1llni a rakt\xE1\
+      rh\xE1zadn\xE1l id\u0151r\u0151l id\u0151re.\n\nFolytassuk a bemutat\xF3t a\
+      \ kereskedelemmel."
     - !!python/unicode 'After selecting a particular type of good, the green bar across
       the bottom of the slot (if visible) shows you how much you have in stock of
       this good.'
@@ -359,14 +339,12 @@ events:
     - !!python/unicode 'When selling, the ''target value'' is the stock amount at
       which you will always stop selling until you get more of that resource again.'
     - [Pagebreak]
-    - !!python/unicode '
-
-      For example:
-
-      Having a ''Buy'' slot and 5 tons in stock, a slider positioned at 9 tons will
-      cause you to buy 4 additional tons at most.'
-    - !!python/unicode 'Selling works similarly. A ''Sell'' slot with 18 tons in stock
-      and the slider positioned at 13 will sell up to 5 tons.'
+    - "\nP\xE9ld\xE1ul:\nVan egy 'V\xE1s\xE1rl\xE1s' helyed \xE9s 5 tonna a rakt\xE1\
+      rban, a cs\xFAszka 9 tonn\xE1ra van \xE1ll\xEDtva, ez azt eredm\xE9nyezi, hogy\
+      \ 4 tonn\xE1t fogsz v\xE1s\xE1rolni."
+    - "Az elad\xE1s hasonl\xF3an m\u0171k\xF6dik. Az \"Elad\xE1s\", amennyiben 18\
+      \ tonna van rakt\xE1ron \xE9s a cs\xFAszka 13-ra van \xE1ll\xEDtva, azt eredm\xE9\
+      nyezi, hogy eladsz 5 tonn\xE1t a rakt\xE1rb\xF3l."
     - !!python/unicode 'If the free trader however only wants to buy or sell less
       than your settings would allow him, you need to live with that and wait for
       him to return.'
@@ -718,16 +696,8 @@ events:
     - [Pagebreak]
     - [Headline, "K\xF6sz\xF6n\xF6m!"]
     - [Image, content/gui/images/background/hr.png]
-    - !!python/unicode '
-
-
-
-
-
-      Thanks for playing the tutorial!
-
-
-      Your UH-Team'
+    - "\n\n\n\n\nK\xF6sz\xF6n\xF6m hogy v\xE9gigj\xE1tszottad a gyakorl\xE1st!\n\n\
+      A te UH-Csapatod"
     - - Gallery
       - [content/unknown-horizons.xpm, content/gfx/misc/status_icons/as_book_flip/idle/45/book20125.png]
     type: logbook
@@ -758,6 +728,5 @@ events:
     type: var_gt
 locale: hu
 mapfile: development.sqlite
-translation_status: 36 translated messages, 2 fuzzy translations, 153 untranslated
-  messages.
+translation_status: 109 translated messages, 82 untranslated messages.
 

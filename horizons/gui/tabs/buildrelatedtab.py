@@ -23,99 +23,78 @@
 from fife.extensions.pychan.widgets import Icon, ImageButton
 
 from horizons.gui.tabs import OverviewTab
-from horizons.util.gui import load_uh_widget
+from horizons.gui.util import load_uh_widget
 from horizons.util import Callback
 from horizons.entities import Entities
-from horizons.world.component.selectablecomponent import SelectableComponent
+from horizons.component.selectablecomponent import SelectableComponent
 
 class BuildRelatedTab(OverviewTab):
 	"""
 	Adds a special tab to each production building with at least one entry in
 	the table related_buildings. This tab acts as modified build menu tab and
-	only displays those fields actually related to the selected building.
-	Used to indicate the range of a building while e.g. building fields for it.
+	only displays those buildings actually related to the selected building.
+	Examples: tree for lumberjack; pavilion, school, etc. for inhabitants.
 	"""
-	relatedfields_gui_xml = 'relatedfields.xml'
+	template_gui_xml = 'related_buildings_container.xml'
 
-	def  __init__(self, instance, icon_path = 'content/gui/icons/tabwidget/production/related_%s.png'):
-		super(BuildRelatedTab, self).__init__(
-		    widget = 'overview_buildrelated.xml',
-		    instance = instance,
-		    icon_path = 'content/gui/icons/tabwidget/production/related_%s.png'
-		)
-		self.helptext = _("Build related fields")
+	def  __init__(self, instance, widget='related_buildings.xml',
+	              icon_path='content/gui/icons/tabwidget/production/related_%s.png'):
+		super(BuildRelatedTab, self).__init__(widget=widget, instance=instance, icon_path=icon_path)
+		self.helptext = _("Build related buildings")
 
 	def refresh(self):
 		"""
 		This function is called by the TabWidget to redraw the widget.
 		"""
-		# remove old field data
-		parent_container = self.widget.child_finder('related_fields')
+		# remove old data
+		parent_container = self.widget.child_finder('related_buildings')
 		while len(parent_container.children) > 0:
 			parent_container.removeChild(parent_container.children[0])
 
-		# Load all related Fields of this Farm
+		# load all related buildings from DB
 		building_ids = self.instance.session.db.get_related_building_ids_for_menu(self.instance.id)
-
+		sorted_ids = sorted([(b, Entities.buildings[b].settler_level) for b in building_ids], key=lambda x : x[1])
 		container = self.__get_new_container()
-		counter = 0
-		for building_id in sorted(building_ids):
-			if self._create_build_buttons(building_id, container):
-				counter += 1
-				if counter % 3 == 0:
-				# This is here because we can only check if a building was added
+		self.current_row = min(building[1] for building in sorted_ids)
+		for building_id, level in sorted_ids:
+			if level <= self.instance.owner.settler_level: # available in build menu?
+				button = self._create_build_buttons(building_id, container)
+				# check whether to start new line (for new increment row)
+				if level > self.current_row:
+					self.current_row = level
 					parent_container.addChild(container)
 					container = self.__get_new_container()
-
-		if counter % 3 != 0:
-			# Still need to add last container
-			parent_container.addChild(container)
-
+				container.findChild(name="build_button_container").addChild(button)
+				button_bg = Icon(image="content/gui/images/buttons/buildmenu_button_bg.png")
+				container.findChild(name="build_button_bg_container").addChild(button_bg)
+		# Still need to add last container
+		parent_container.addChild(container)
 		super(BuildRelatedTab, self).refresh()
 
 	def __get_new_container(self):
 		"""
 		Loads a background container xml file. Returns the loaded widget.
 		"""
-		gui = load_uh_widget(self.relatedfields_gui_xml)
-		container = gui.findChild(name="fields_container")
-		return container
-
+		gui = load_uh_widget(self.template_gui_xml)
+		return gui.findChild(name="buildings_container")
 
 	def _create_build_buttons(self, building_id, container):
-		level = Entities.buildings[building_id].settler_level
+		# {{mode}} in double braces because it is replaced as a second step
+		path = "content/gui/icons/buildmenu/{id:03d}{{mode}}.png".format(id=building_id)
+		helptext = self.instance.session.db.get_building_tooltip(building_id)
+		build_button = ImageButton(name="build{id}".format(id=building_id), helptext=helptext)
+		build_button.up_image = path.format(mode='')
+		build_button.down_image = build_button.hover_image = path.format(mode='_h')
+		build_button.capture(Callback(self.build_related, building_id))
+		return build_button
 
-		# Check if the level of the building is lower or same as the settler level
-		if level <= self.instance.owner.settler_level:
-			# {{mode}} in double braces because it is replaced as a second step
-			path = "content/gui/icons/buildmenu/{id:03d}{{mode}}.png".format(id=building_id)
-			helptext = self.instance.session.db.get_building_tooltip(building_id)
-
-			build_button = ImageButton(name="build{id}".format(id=building_id), \
-			                             helptext=helptext)
-			build_button.up_image = path.format(mode='')
-			build_button.down_image = path.format(mode='_h')
-			build_button.hover_image = path.format(mode='_h')
-			build_button.capture(Callback(self.buildField, building_id))
-
-			container.findChild(name="build_button_container").addChild(build_button)
-
-			build_button_bg = Icon(image="content/gui/images/buttons/buildmenu_button_bg.png")
-			container.findChild(name="build_button_bg_container").addChild(build_button_bg)
-
-			return True
-		else:
-			# No button built
-			return False
-
-	def buildField(self, building_id):
+	def build_related(self, building_id):
 		self.hide()
-
 		# deselect all
 		for instance in self.instance.session.selected_instances:
 			instance.get_component(SelectableComponent).deselect()
 		self.instance.session.selected_instances.clear()
 
-		self.instance.session.set_cursor('building', Entities.buildings[building_id], \
+		self.instance.session.set_cursor('building', Entities.buildings[building_id],
 		                                             ship=None,
 		                                             build_related=self.instance)

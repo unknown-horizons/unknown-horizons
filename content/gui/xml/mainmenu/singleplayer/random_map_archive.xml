@@ -1,0 +1,32 @@
+<?xml version="1.0"?>
+<Container name="random_map_archive" size="569,350" position_technique="automatic"
+	background_image="content/gui/images/background/notice350.png">
+
+	<Label name="headline" text="Random map archive" position="15,15" />
+
+	<ScrollArea min_size="270,130" max_size="270,130" position="15,40">
+		<ListBox name="map_list" is_focusable="0" />
+	</ScrollArea>
+
+	<VBox position="315,160" min_size="250,190" max_size="250,190">
+		<Icon name="current_map_preview_minimap" size="120,120" max_size="120,120" is_focusable="0" />
+		<Label name="current_map_preview_status" is_focusable="0" />
+	</VBox>
+
+	<VBox name="current_map_settings"  padding="4" position="300,35" max_size="260,300" min_size="260,300">
+		<Label name="current_map_name" is_focusable="0" />
+		<Label name="current_seed_string_lbl" min_size="150,20" text="" />
+		<Label name="current_map_size_lbl" min_size="150,20" text="" />
+		<Label name="current_water_percent_lbl" min_size="150,20" text="" />
+		<Label name="current_max_island_size_lbl" min_size="150,20" text="" />
+		<Label name="current_preferred_island_size_lbl" min_size="150,20" text="" />
+		<Label name="current_island_size_deviation_lbl" min_size="150,20" text="" />
+	</VBox>
+
+	<!--
+		<Button name="load" text="Load / Reload" />
+		<Label name="hintlbl" wrap_text="1" max_size="200,80" min_size="200,80"
+			text="Select a scenario and click on 'Load / Reload' to update the messages in the captain's log" />
+	-->
+	<OkButton position="510,290" />
+</Container>

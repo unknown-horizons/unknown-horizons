@@ -25,7 +25,7 @@ from horizons.world.building.buildingresourcehandler import BuildingResourceHand
 from horizons.entities import Entities
 from horizons.scheduler import Scheduler
 from horizons.constants import LAYERS, BUILDINGS
-from horizons.world.component.storagecomponent import StorageComponent
+from horizons.component.storagecomponent import StorageComponent
 from horizons.world.production.producer import Producer
 
 class NatureBuilding(BuildableRect, BasicBuilding):
@@ -60,7 +60,7 @@ class Field(NatureBuildingResourceHandler):
 	def _check_covered_by_farm(self):
 		"""Warn in case there is no farm nearby to cultivate the field"""
 		farm_in_range = any( (farm.position.distance( self.position ) <= farm.radius) for farm in
-		                     self.settlement.buildings_by_id[ BUILDINGS.FARM_CLASS ] )
+		                     self.settlement.buildings_by_id[ BUILDINGS.FARM ] )
 		if not farm_in_range and self.owner.is_local_player:
 			pos = self.position.origin
 			self.session.ingame_gui.message_widget.add(pos.x, pos.y, "FIELD_NEEDS_FARM",

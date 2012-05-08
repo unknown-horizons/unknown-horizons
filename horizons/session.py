@@ -39,20 +39,19 @@ from horizons.gui.keylisteners import IngameKeyListener
 from horizons.scheduler import Scheduler
 from horizons.extscheduler import ExtScheduler
 from horizons.view import View
-from horizons.gui import Gui
 from horizons.world import World
 from horizons.entities import Entities
 from horizons.util import WorldObject, LivingObject, livingProperty, SavegameAccessor
 from horizons.util.uhdbaccessor import read_savegame_template
 from horizons.util.lastactiveplayersettlementmanager import LastActivePlayerSettlementManager
-from horizons.world.component.namedcomponent import NamedComponent
-from horizons.world.component.selectablecomponent import SelectableComponent, SelectableBuildingComponent
+from horizons.component.namedcomponent import NamedComponent
+from horizons.component.selectablecomponent import SelectableComponent, SelectableBuildingComponent
 from horizons.savegamemanager import SavegameManager
 from horizons.scenario import ScenarioEventHandler
-from horizons.world.component.ambientsoundcomponent import AmbientSoundComponent
+from horizons.component.ambientsoundcomponent import AmbientSoundComponent
 from horizons.constants import GAME_SPEED, PATHS
-from horizons.util.messaging.messagebus import MessageBus
 from horizons.world.managers.statusiconmanager import StatusIconManager
+from horizons.messaging import MessageBus
 
 class Session(LivingObject):
 	"""Session class represents the games main ingame view and controls cameras and map loading.
@@ -103,7 +102,6 @@ class Session(LivingObject):
 		self.is_alive = True
 
 		self._clear_caches()
-		self.message_bus = MessageBus()
 
 		#game
 		self.random = self.create_rng(rng_seed)
@@ -194,15 +192,7 @@ class Session(LivingObject):
 		LastActivePlayerSettlementManager.destroy_instance()
 
 		self.cursor = None
-		try:
-			# This is likely to throw when the game state is invalid.
-			# Try to continue cleanup afterwards even if this fails.
-			# NOTE: This is not a proper solution, separating sessions by design (e.g. single processes) would be.
-			self.world.end() # must be called before the world ref is gone
-		except Exception:
-			import traceback
-			traceback.print_exc()
-			print 'Exception on world end(), trying to continue to cleanup'
+		self.world.end() # must be called before the world ref is gone
 		self.world = None
 		self.keylistener = None
 		self.view = None
@@ -216,11 +206,14 @@ class Session(LivingObject):
 		self.selected_instances = None
 		self.selection_groups = None
 
+		self.status_icon_manager.end()
 		self.status_icon_manager = None
-		self.message_bus = None
 
 		horizons.main._modules.session = None
 		self._clear_caches()
+
+		# subscriptions shouldn't survive listeners
+		MessageBus().reset()
 
 	def toggle_cursor(self, which, *args, **kwargs):
 		"""Alternate between the cursor which and default.

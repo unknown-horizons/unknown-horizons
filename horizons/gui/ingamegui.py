@@ -1,4 +1,4 @@
-﻿# ###################################################
+# ###################################################
 # Copyright (C) 2010 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
@@ -28,6 +28,7 @@ from horizons.util import livingProperty, LivingObject, PychanChildFinder
 from horizons.util.python import Callback
 from horizons.gui.mousetools import BuildingTool
 from horizons.gui.tabs import TabWidget, BuildTab, DiplomacyTab, SelectMultiTab
+from horizons.gui.widgets import OkButton, CancelButton
 from horizons.gui.widgets.messagewidget import MessageWidget
 from horizons.gui.widgets.minimap import Minimap
 from horizons.gui.widgets.logbook import LogBook
@@ -37,15 +38,15 @@ from horizons.gui.widgets.resourceoverviewbar import ResourceOverviewBar
 from horizons.gui.widgets.playersships import PlayersShips
 from horizons.gui.widgets.choose_next_scenario import ScenarioChooser
 from horizons.extscheduler import ExtScheduler
-from horizons.util.gui import LazyWidgetsDict
+from horizons.gui.util import LazyWidgetsDict
 from horizons.constants import BUILDINGS, GUI
 from horizons.command.uioptions import RenameObject
 from horizons.command.misc import Chat
 from horizons.command.game import SpeedDownCommand, SpeedUpCommand
 from horizons.gui.tabs.tabinterface import TabInterface
-from horizons.world.component.namedcomponent import SettlementNameComponent, NamedComponent
-from horizons.world.component.selectablecomponent import SelectableComponent
-from horizons.util.messaging.message import SettlerUpdate, SettlerInhabitantsChanged, ResourceBarResize, HoverSettlementChanged
+from horizons.component.namedcomponent import SettlementNameComponent, NamedComponent
+from horizons.component.selectablecomponent import SelectableComponent
+from horizons.messaging import SettlerUpdate, SettlerInhabitantsChanged, ResourceBarResize, HoverSettlementChanged, TabWidgetChanged
 from horizons.util.lastactiveplayersettlementmanager import LastActivePlayerSettlementManager
 
 class IngameGui(LivingObject):
@@ -140,18 +141,12 @@ class IngameGui(LivingObject):
 		self.widgets['tooltip'].hide()
 
 		self.resource_overview = ResourceOverviewBar(self.session)
-		self.session.message_bus.subscribe_globally(ResourceBarResize, self._on_resourcebar_resize)
-
-		# map buildings to build functions calls with their building id.
-		# This is necessary because BuildTabs have no session.
-		self.callbacks_build = dict()
-		for building_id in Entities.buildings.iterkeys():
-			self.callbacks_build[building_id] = Callback(self._build, building_id)
+		ResourceBarResize.subscribe(self._on_resourcebar_resize)
 
 		# Register for messages
-		self.session.message_bus.subscribe_globally(SettlerUpdate, self._on_settler_level_change)
-		self.session.message_bus.subscribe_globally(SettlerInhabitantsChanged, self._on_settler_inhabitant_change)
-		self.session.message_bus.subscribe_globally(HoverSettlementChanged, self._cityinfo_set)
+		SettlerUpdate.subscribe(self._on_settler_level_change)
+		SettlerInhabitantsChanged.subscribe(self._on_settler_inhabitant_change)
+		HoverSettlementChanged.subscribe(self._cityinfo_set)
 
 	def _on_resourcebar_resize(self, message):
 		###
@@ -181,10 +176,10 @@ class IngameGui(LivingObject):
 		self.resource_overview.end()
 		self.resource_overview = None
 		self.hide_menu()
-		self.session.message_bus.unsubscribe_globally(SettlerUpdate, self._on_settler_level_change)
-		self.session.message_bus.unsubscribe_globally(ResourceBarResize, self._on_resourcebar_resize)
-		self.session.message_bus.unsubscribe_globally(HoverSettlementChanged, self._cityinfo_set)
-		self.session.message_bus.unsubscribe_globally(SettlerInhabitantsChanged, self._on_settler_inhabitant_change)
+		SettlerUpdate.unsubscribe(self._on_settler_level_change)
+		ResourceBarResize.unsubscribe(self._on_resourcebar_resize)
+		HoverSettlementChanged.unsubscribe(self._cityinfo_set)
+		SettlerInhabitantsChanged.unsubscribe(self._on_settler_inhabitant_change)
 
 		super(IngameGui, self).end()
 
@@ -231,7 +226,7 @@ class IngameGui(LivingObject):
 		assert isinstance(message, SettlerInhabitantsChanged)
 		cityinfo = self.widgets['city_info']
 		foundlabel = cityinfo.child_finder('city_inhabitants')
-		foundlabel.text = unicode(' %s' % ((int(foundlabel.text) if foundlabel.text else 0) + message.change))
+		foundlabel.text = u' %s' % ((int(foundlabel.text) if foundlabel.text else 0) + message.change)
 		foundlabel.resizeToContent()
 
 	def update_settlement(self):
@@ -249,14 +244,14 @@ class IngameGui(LivingObject):
 
 		foundlabel = cityinfo.child_finder('owner_emblem')
 		foundlabel.image = 'content/gui/images/tabwidget/emblems/emblem_%s.png' % (self.settlement.owner.color.name)
-		foundlabel.helptext = unicode(self.settlement.owner.name)
+		foundlabel.helptext = self.settlement.owner.name
 
 		foundlabel = cityinfo.child_finder('city_name')
-		foundlabel.text = unicode(self.settlement.get_component(SettlementNameComponent).name)
+		foundlabel.text = self.settlement.get_component(SettlementNameComponent).name
 		foundlabel.resizeToContent()
 
 		foundlabel = cityinfo.child_finder('city_inhabitants')
-		foundlabel.text = unicode(' %s' % (self.settlement.inhabitants))
+		foundlabel.text = u' %s' % (self.settlement.inhabitants)
 		foundlabel.resizeToContent()
 
 		cityinfo.adaptLayout()
@@ -309,8 +304,7 @@ class IngameGui(LivingObject):
 			# indicates a mistake in the mental model of the user. Display a hint.
 			tab = TabWidget(self, tabs=[ TabInterface(widget="buildtab_no_settlement.xml") ])
 		else:
-			btabs = [BuildTab(index+1, self.callbacks_build, self.session) for index in \
-							 xrange(self.session.world.player.settler_level+1)]
+			btabs = BuildTab.create_tabs(self.session, self._build)
 			tab = TabWidget(self, tabs=btabs, name="build_menu_tab_widget", \
 											active_tab=BuildTab.last_active_build_tab)
 		self.show_menu(tab)
@@ -332,10 +326,10 @@ class IngameGui(LivingObject):
 		self.session.set_cursor('building', cls, None if unit is None else unit())
 
 	def toggle_road_tool(self):
-		if not isinstance(self.session.cursor, BuildingTool) or self.session.cursor._class.id != BUILDINGS.TRAIL_CLASS:
+		if not isinstance(self.session.cursor, BuildingTool) or self.session.cursor._class.id != BUILDINGS.TRAIL:
 			if isinstance(self.session.cursor, BuildingTool):
-				print self.session.cursor._class.id, BUILDINGS.TRAIL_CLASS
-			self._build(BUILDINGS.TRAIL_CLASS)
+				print self.session.cursor._class.id, BUILDINGS.TRAIL
+			self._build(BUILDINGS.TRAIL)
 		else:
 			self.session.set_cursor()
 
@@ -366,6 +360,8 @@ class IngameGui(LivingObject):
 				self._old_menu.add_remove_listener( Callback(self.show_menu, None) )
 			self._old_menu.show()
 			self.minimap_to_front()
+
+		TabWidgetChanged.broadcast(self)
 
 	def hide_menu(self):
 		self.show_menu(None)
@@ -398,13 +394,13 @@ class IngameGui(LivingObject):
 		"""Shows a dialog where the user can change the name of a NamedComponant.
 		The game gets paused while the dialog is executed."""
 		events = {
-			'okButton': Callback(self.change_name, instance),
-			'cancelButton': self._hide_change_name_dialog
+			OkButton.DEFAULT_NAME: Callback(self.change_name, instance),
+			CancelButton.DEFAULT_NAME: self._hide_change_name_dialog
 		}
 		self.main_gui.on_escape = self._hide_change_name_dialog
 		changename = self.widgets['change_name']
 		oldname = changename.findChild(name='old_name')
-		oldname.text =  unicode(instance.get_component(SettlementNameComponent).name)
+		oldname.text =  instance.get_component(SettlementNameComponent).name
 		newname = changename.findChild(name='new_name')
 		changename.mapEvents(events)
 		newname.capture(Callback(self.change_name, instance))
@@ -437,8 +433,8 @@ class IngameGui(LivingObject):
 	def show_save_map_dialog(self):
 		"""Shows a dialog where the user can set the name of the saved map."""
 		events = {
-			'okButton': self.save_map,
-			'cancelButton': self._hide_save_map_dialog
+			OkButton.DEFAULT_NAME: self.save_map,
+			CancelButton.DEFAULT_NAME: self._hide_save_map_dialog
 		}
 		self.main_gui.on_escape = self._hide_save_map_dialog
 		dialog = self.widgets['save_map']
@@ -502,8 +498,8 @@ class IngameGui(LivingObject):
 	def show_chat_dialog(self):
 		"""Show a dialog where the user can enter a chat message"""
 		events = {
-			'okButton': self._do_chat,
-			'cancelButton': self._hide_chat_dialog
+			OkButton.DEFAULT_NAME: self._do_chat,
+			CancelButton.DEFAULT_NAME: self._hide_chat_dialog
 		}
 		self.main_gui.on_escape = self._hide_chat_dialog
 

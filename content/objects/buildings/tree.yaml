@@ -6,12 +6,10 @@ cost: 0
 cost_inactive: 0
 size_x: 1
 size_y: 1
-inhabitants_start: 0
-inhabitants_max: 0
-button_name: tree-1
+inhabitants: 0
 tooltip_text: _ Provides lumber. Chopped down by lumberjacks.
-settler_level: 0
-buildingcosts: {1: 10}
+settler_level: TIER.NATURE
+buildingcosts: {RES.GOLD: 10}
 show_status_icons: false
 components:
 - HealthComponent: {maxhealth: 10}
@@ -20,25 +18,25 @@ components:
     productionlines:
       1:
         produces:
-        - [8, 1]
+        - [RES.TREES, 1]
         time: 60
       17:
         changes_animation: false
         produces:
-        - [12, 1]
+        - [RES.WILDANIMALFOOD, 1]
         time: 25
 - StorageComponent:
-    inventory:
       SlotsStorage:
-        slot_sizes: {8: 1, 12: 1}
+        slot_sizes: {RES.TREES: 1, RES.WILDANIMALFOOD: 1}
 actionsets:
-  as_tupelo2: {level: 0}
-  as_spruce1: {level: 0}
-  as_spruce0: {level: 0}
-  as_birch0: {level: 0}
-  as_tupelo0: {level: 0}
-  as_tupelo1: {level: 0}
-  as_maple3: {level: 0}
-  as_maple2: {level: 0}
-  as_maple1: {level: 0}
-  as_maple0: {level: 0}
+  TIER.NATURE:
+    as_tupelo2:
+    as_spruce1:
+    as_spruce0:
+    as_birch0:
+    as_tupelo0:
+    as_tupelo1:
+    as_maple3:
+    as_maple2:
+    as_maple1:
+    as_maple0:

@@ -6,12 +6,10 @@ cost: 0
 cost_inactive: 0
 size_x: 3
 size_y: 3
-inhabitants_start: 0
-inhabitants_max: 0
-button_name: potatofield-1
+inhabitants: 0
 tooltip_text: _ Yields food. Needs a farm.
-settler_level: 1
-buildingcosts: {1: 150}
+settler_level: TIER.PIONEERS
+buildingcosts: {RES.GOLD: 150}
 show_status_icons: false
 components:
 - HealthComponent: {maxhealth: 10}
@@ -19,11 +17,11 @@ components:
     productionlines:
       22:
         produces:
-        - [15, 1]
+        - [RES.POTATOES, 1]
         time: 26
 - StorageComponent:
-    inventory:
       SlotsStorage:
-        slot_sizes: {15: 1}
+        slot_sizes: {RES.POTATOES: 1}
 actionsets:
-  as_potatofield0: {level: 0}
+  TIER.PIONEERS:
+    as_potatofield0:

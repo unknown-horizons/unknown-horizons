@@ -38,7 +38,7 @@ def test_ticket_1224(gui):
 	yield # test needs to be a generator for now
 
 	settlement = gui.session.world.player.settlements[0]
-	boatbuilder = settlement.buildings_by_id[BUILDINGS.BOATBUILDER_CLASS][0]
+	boatbuilder = settlement.buildings_by_id[BUILDINGS.BOAT_BUILDER][0]
 
 	# Select boat builder
 	gui.cursor_click(64, 10, 'left')
@@ -75,7 +75,7 @@ def test_ticket_1294(gui):
 	yield # test needs to be a generator for now
 
 	settlement = gui.session.world.player.settlements[0]
-	boatbuilder = settlement.buildings_by_id[BUILDINGS.BOATBUILDER_CLASS][0]
+	boatbuilder = settlement.buildings_by_id[BUILDINGS.BOAT_BUILDER][0]
 
 	# Select boat builder
 	gui.cursor_click(64, 10, 'left')
@@ -204,7 +204,7 @@ def test_ticket_1513(gui):
 	yield # test needs to be a generator for now
 
 	settlement = gui.session.world.player.settlements[0]
-	boatbuilder = settlement.buildings_by_id[BUILDINGS.BOATBUILDER_CLASS][0]
+	boatbuilder = settlement.buildings_by_id[BUILDINGS.BOAT_BUILDER][0]
 
 	# Select boat builder
 	gui.cursor_click(64, 10, 'left')
@@ -249,7 +249,7 @@ def test_ticket_1514(gui):
 	yield # test needs to be a generator for now
 
 	settlement = gui.session.world.player.settlements[0]
-	boatbuilder = settlement.buildings_by_id[BUILDINGS.BOATBUILDER_CLASS][0]
+	boatbuilder = settlement.buildings_by_id[BUILDINGS.BOAT_BUILDER][0]
 
 	# Select boat builder
 	gui.cursor_click(64, 10, 'left')

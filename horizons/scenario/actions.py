@@ -19,6 +19,8 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
+import math
+
 import horizons.main
 
 from horizons.scheduler import Scheduler
@@ -48,42 +50,42 @@ register = ACTIONS.register
 
 
 @register(name='message')
-def show_message(session, *message):
-	"""Shows a custom message in the messagewidget. If you pass more than one message, they
-	will be shown after each other after a delay"""
+def show_message(session, *messages):
+	"""Shows a message with custom text in the messagewidget.
+	If you pass more than one message, they are shown after each other, delayed in time."""
 	delay_ticks = Scheduler().get_ticks(MESSAGES.CUSTOM_MSG_SHOW_DELAY)
 	visible_ticks = Scheduler().get_ticks(MESSAGES.CUSTOM_MSG_VISIBLE_FOR)
 	delay_iter = 1
-	for msg in message:
-		Scheduler().add_new_object(Callback(session.ingame_gui.message_widget.add_custom, None, None, \
-		                                    msg,  visible_for=visible_ticks), \
+	for msg in messages:
+		Scheduler().add_new_object(Callback(session.ingame_gui.message_widget.add_custom,
+		                                    None, None, msg, visible_for=visible_ticks),
 		                           None, run_in=delay_iter)
 		delay_iter += delay_ticks
 
 @register(name='db_message')
-def show_db_message(session, message_id):
-	"""Shows a message specified in the db on the ingame message widget"""
-	session.ingame_gui.message_widget.add(None, None, message_id)
-
-@register(name='logbook_w')
-def write_logbook_entry(session, widgets):
-	"""Adds an entry to the logbook and displays it."""
-	session.ingame_gui.logbook.add_captainslog_entry(widgets, show_logbook=True)
+def show_db_message(session, database_message_id):
+	"""Shows a message with predefined text in the messagewidget."""
+	session.ingame_gui.message_widget.add(None, None, database_message_id)
 
 @register(name='logbook')
 def show_logbook_entry_delayed(session, *widgets):
-	"""Show a logbook entry delayed by delay seconds.
+	"""Shows a logbook entry and opens the logbook after 'delay' seconds.
 
 	Set delay=0 for instant appearing.
-	#TODO get *delay* parameter working again
+	#TODO get *delay* parameter working again, it is currently not implemented!
+	@param widgets: arbitrary list of logbook widgets, including their parameters.
+	                Check widgets.logbook#add_captainslog_entry for widget documentation.
 	"""
+	def write_logbook_entry(session, widgets):
+		"""Adds an entry to the logbook and displays it."""
+		session.ingame_gui.logbook.add_captainslog_entry(widgets, show_logbook=True)
 	delay = MESSAGES.LOGBOOK_DEFAULT_DELAY
 	callback = Callback(write_logbook_entry, session, widgets)
 	Scheduler().add_new_object(callback, session.scenario_eventhandler, run_in=Scheduler().get_ticks(delay))
 
 @register(name='win')
 def do_win(session):
-	"""Called when player won"""
+	"""The player wins the current scenario. If part of a campaign, offers to start the next scenario."""
 	PauseCommand().execute(session)
 	show_db_message(session, 'YOU_HAVE_WON')
 	horizons.main.fife.play_sound('effects', "content/audio/sounds/events/scenario/win.ogg")
@@ -105,7 +107,7 @@ def do_win(session):
 
 @register(name='goal_reached')
 def goal_reached(session, goal_number):
-	"""Called when player reached a goal in a scenario"""
+	"""The player reaches a certain goal in the current scenario."""
 	# TODO : if we want, we could make this work in "scenario" mode
 	#        to allow the player to reach goals in scenarios even if
 	#        no campaign was has been loaded.
@@ -114,16 +116,16 @@ def goal_reached(session, goal_number):
 
 @register(name='lose')
 def do_lose(session):
-	"""Called when player lost"""
+	"""The player fails the current scenario."""
 	show_db_message(session, 'YOU_LOST')
-	#TODO rename this file to 'lose.ogg'
-	horizons.main.fife.play_sound('effects', 'content/audio/sounds/events/scenario/loose.ogg')
+	horizons.main.fife.play_sound('effects', 'content/audio/sounds/events/scenario/lose.ogg')
 	# drop events after this event
 	Scheduler().add_new_object(session.scenario_eventhandler.drop_events, session.scenario_eventhandler)
 
 @register()
-def set_var(session, name, value):
-	session.scenario_eventhandler._scenario_variables[name] = value
+def set_var(session, variable, value):
+	"""Assigns values to scenario variables. Overwrites previous assignments to the same variable."""
+	session.scenario_eventhandler._scenario_variables[variable] = value
 	check_callbacks = Callback.ChainedCallbacks(
 	  Callback(session.scenario_eventhandler.check_events, CONDITIONS.var_eq),
 	  Callback(session.scenario_eventhandler.check_events, CONDITIONS.var_lt),
@@ -132,22 +134,22 @@ def set_var(session, name, value):
 	Scheduler().add_new_object(check_callbacks, session.scenario_eventhandler, run_in=0)
 
 @register()
-def wait(session, time):
-	delay = Scheduler().get_ticks(time)
+def wait(session, seconds):
+	"""Postpones any other scenario events for a certain amount of seconds."""
+	delay = Scheduler().get_ticks(seconds)
 	session.scenario_eventhandler.sleep(delay)
 
 @register()
-def spawn_ships(session, owner, id, number, *position):
+def spawn_ships(session, owner_id, ship_id, number, *position):
 	"""
-	spawns a number of ships for owner
-	@param owner: the owner worldid
-	@param id: the ship id
+	Creates a number of ships controlled by a certain player around a position on the map.
+	@param owner_id: the owner worldid
+	@param ship_id: the ship id
 	@param number: number of ships to be spawned
 	@param position: position around the ships to be spawned
 	"""
 	center = Point(*position)
-	player = WorldObject.get_object_by_id(owner)
-	import math
+	player = WorldObject.get_object_by_id(owner_id)
 	# calculate a radius that should fit all the ships
 	# if it doesn't fit them all increase the radius
 	radius = int(math.sqrt(number))
@@ -156,7 +158,7 @@ def spawn_ships(session, owner, id, number, *position):
 			if (point.x, point.y) in session.world.ship_map \
 				or session.world.get_island(point) is not None:
 				continue
-			CreateUnit(owner, id, point.x, point.y)(issuer=player)
+			CreateUnit(owner_id, ship_id, point.x, point.y)(issuer=player)
 			number -= 1
 			if number == 0:
 				break

@@ -26,9 +26,9 @@ from fife.extensions.pychan.widgets import ImageButton
 from horizons.util import Callback
 from horizons.util.python import decorators
 from horizons.world.units.fightingship import FightingShip
-from horizons.world.component.healthcomponent import HealthComponent
-from horizons.world.component.namedcomponent import NamedComponent
-from horizons.world.component.selectablecomponent import SelectableComponent
+from horizons.component.healthcomponent import HealthComponent
+from horizons.component.namedcomponent import NamedComponent
+from horizons.component.selectablecomponent import SelectableComponent
 
 class PlayersShips(StatsWidget):
 	"""Widget that shows a list of the player's ships."""
@@ -71,7 +71,7 @@ class PlayersShips(StatsWidget):
 		sequence_number_label.min_size = sequence_number_label.max_size = (15, 20)
 
 		ship_name = widgets.Label(name = 'ship_name_%d' % ship.worldid)
-		ship_name.text = unicode(ship.get_component(NamedComponent).name)
+		ship_name.text = ship.get_component(NamedComponent).name
 		ship_name.min_size = ship_name.max_size = (100, 20)
 
 		rename_icon = ImageButton(name = 'rename_%d' % ship.worldid)
@@ -81,7 +81,7 @@ class PlayersShips(StatsWidget):
 		rename_icon.max_size = (20, 20) # (width, height)
 
 		ship_type = widgets.Label(name = 'ship_type_%d' % ship.worldid)
-		ship_type.text = unicode(ship.classname)
+		ship_type.text = ship.classname
 		ship_type.min_size = ship_type.max_size = (60, 20)
 
 		weapons = widgets.Label(name = 'weapons_%d' % ship.worldid)
@@ -90,7 +90,7 @@ class PlayersShips(StatsWidget):
 			for weapon_id, amount in sorted(ship.get_weapon_storage()):
 				weapon_list.append('%d %s' % (amount, self.session.db.get_res_name(weapon_id)))
 			if weapon_list:
-				weapons.text = unicode(', '.join(weapon_list))
+				weapons.text = u', '.join(weapon_list)
 			else:
 				#i18n There are no weapons equipped at the moment.
 				weapons.text = _('None')
@@ -100,7 +100,7 @@ class PlayersShips(StatsWidget):
 
 		health = widgets.Label(name = 'health_%d' % ship.worldid)
 		health_component = ship.get_component(HealthComponent)
-		health.text = unicode('%d/%d' % (health_component.health, health_component.max_health))
+		health.text = u'%d/%d' % (health_component.health, health_component.max_health)
 		health.min_size = health.max_size = (65, 20)
 
 		status = widgets.Label(name = 'status_%d' % ship.worldid)

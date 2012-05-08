@@ -11,13 +11,12 @@ name: _ MyAwesomeBuilding
 
 # or, for level-sensitive names:
 name:
-	0: _ MyAwesomeBuildingLvl1
-	1: _ MyAwesomeBuildingLvl2
-	3: _ MyAwesomeBuildingLvl4
-# in level 3, this building will have the name of level 2
-# the indexes start at 0, so 0 is the first increment
+	TIER.SAILORS: _ MyAwesomeBuildingLvl1
+	TIER.PIONEERS: _ MyAwesomeBuildingLvl2
+	TIER.CITIZENS: _ MyAwesomeBuildingLvl4
+# in level SETTLERS, this building will have the name of level PIONEERS (the highest available one is used)
 
-# this defines some of the behaviour, either copy the class from buildings similar to yours or talk to a dev about it
+# this defines some of the behavior, either copy the class from buildings similar to yours or talk to a dev about it
 baseclass: production.Lumberjack
 
 # then some boring data
@@ -26,25 +25,34 @@ cost: 5 # running costs in gold per month
 costs_inactive: 0 # running costs when it's turned off
 size_x: 2 # building width (should match its graphics)
 size_y: 2 # building height (should match its graphics)
-inhabitants_start: 1 # inhabitants of the building. Doesn't do anything, but counts as inhabitants number in the overview.
+inhabitants: 1 # inhabitants of the building. Doesn't do anything, but counts as inhabitants number in the overview.
 # brief description to be displayed as tooltip (don't forget the "_ ")
 tooltip_text: _ My building does fancy thing and is great in general
-settler_level: 1 # counting start at 0 again. building will be available from this level on.
+settler_level: TIER.PIONEERS # building will be available from this level on.
 # There are currently fluctuations with the build menu generation, so please talk to a dev to get your building in the build menu
 
 # Now, we define what the building should look like, i.e. where the images are located.
 # In simple cases, it looks like this:
 actionsets:
-  as_hunter0: {level: 0}
-# This makes the game look in the directory "as_hunter0". All buildings from level 0 on will use this
+  TIER.SAILORS:
+    as_hunter0:
+# This makes the game look in the directory "as_hunter0". All buildings from level SAILORS on will use this
 # As you might have figured, it can also look like this:
 # actionsets:
 actionsets:
-	as_lumberjack0: {level: 0}
-	as_lumberjack_barrack0: {level: 1}
-# If there are more entries for a level, one is chosen at random each time a building is built
+  TIER.SAILORS:
+    as_lumberjack0:
+  TIER.PIONEERS:
+    as_lumberjack_barrack0:
+    as_lumberjack_barrack1:
+  TIER.SETTLERS:
+    as_ljsettlers0: as_preview_ljsettlers0
+# If there are more entries for a level, one is chosen at random each time a building is built.
+# As with the names, the highest available tier is used to find graphics.
+# If you want to add a custom preview action set (the image displayed in the build preview tab),
+# add the set after the colon : as with as_ljsettlers0 above. This is usually not necessary.
 
-# Now, we define the heart of the buildings, it's mechanics.
+# Now, we define the heart of the buildings, its mechanics.
 # We do that by defining the components the building consists of.
 # Add whichever components of these you need
 components:
@@ -59,17 +67,17 @@ components:
 - StorageComponent
     inventory:
       SlotsStorage: # the common type, here we define "slots" for resource types
-				# we want to turn wood in to boards here, so we need to be able to store both
-				# therefore, we add slots of size 6 each for those resources:
-        slot_sizes: {RES.TREES_ID: 6, RES.BOARDS_ID: 6}
+                    # we want to turn wood in to boards here, so we need to be able to store both
+                    # therefore, we add slots of size 6 each for those resources:
+        slot_sizes: {RES.TREES: 6, RES.BOARDS: 6}
 
 # If your building should collect resources via collectors, we add them here:
 - CollectingComponent:
     collectors:
 			# We want a normal worker collector, that just walks directly to all providers in the radius of the building
-      UNITS.BUILDING_COLLECTOR_CLASS: 2
+      UNITS.BUILDING_COLLECTOR: 2
 			# If you need other collectors, check the list in horizons/constants.py (under UNITS)
-			# and comments about their behaviour in horizons/world/units/collectors/buildingcollector.py
+			# and comments about their behavior in horizons/world/units/collectors/buildingcollector.py
 
 # The collectors will collect exactly what the producer in the building needs:
 - ProducerComponent:
@@ -80,18 +88,9 @@ components:
 			# now we define what comes in and what comes out.
 			# this machine will cut raw wood in half (so you have 2 boards afterwards):
 			consumes:
-			- [RES.TREES_ID, 1]
+			- [RES.TREES, 1]
 			produces:
-			- [RES.BOARDS_ID, 2]
-			- [RES.GOLD_ID, 100] # it also magically produces gold (just to show you how you can add further entries ;)
+			- [RES.BOARDS, 2]
+			- [RES.GOLD, 100] # it also magically produces gold (just to show you how you can add further entries ;)
 			time: 30 # time in second that the production line (the machine) takes
 		# this would already suffice, you can add other production lines, just start with an unique id as above
-
-
-
-
-
-inhabitants_max: 1 # currently unused
-button_name: some_name # unused
-
-

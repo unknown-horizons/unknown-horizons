@@ -29,8 +29,8 @@ from horizons.ai.generic import GenericAI
 from horizons.command.unit import CreateUnit
 from horizons.world.units.ship import PirateShip, TradeShip
 from horizons.world.units.movingobject import MoveNotPossible
-from horizons.world.component.namedcomponent import NamedComponent
-from horizons.world.component.selectablecomponent import SelectableComponent
+from horizons.component.namedcomponent import NamedComponent
+from horizons.component.selectablecomponent import SelectableComponent
 
 
 class Pirate(GenericAI):
@@ -54,7 +54,7 @@ class Pirate(GenericAI):
 
 		# create a ship and place it randomly (temporary hack)
 		point = self.session.world.get_random_possible_ship_position()
-		ship = CreateUnit(self.worldid, UNITS.PIRATE_SHIP_CLASS, point.x, point.y)(issuer=self.session.world.player)
+		ship = CreateUnit(self.worldid, UNITS.PIRATE_SHIP, point.x, point.y)(issuer=self.session.world.player)
 		self.ships[ship] = self.shipStates.idle
 
 		for ship in self.ships.keys():

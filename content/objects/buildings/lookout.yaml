@@ -1,23 +1,21 @@
 id: 13
 name: _ Lookout
 baseclass: building.DefaultBuilding
-radius: 10
+radius: 24
 cost: 0
 cost_inactive: 0
 size_x: 1
 size_y: 1
-inhabitants_start: 1
-inhabitants_max: 1
-button_name: null
+inhabitants: 1
 tooltip_text: _ Increases the player's sight.
-settler_level: 0
-buildingcosts: {1: 100, 4: 4}
+settler_level: TIER.SAILORS
+buildingcosts: {RES.GOLD: 50, RES.BOARDS: 2}
 components:
 - SelectableComponent:
     type: building
-    tabs: [ProductionOverviewTab]
+    tabs: [OverviewTab]
     enemy_tabs: [EnemyBuildingOverviewTab,]
 - HealthComponent: {maxhealth: 1000}
-- StorageComponent
 actionsets:
-  as_lookout0: {level: 0}
+  TIER.SAILORS:
+    as_lookout0:

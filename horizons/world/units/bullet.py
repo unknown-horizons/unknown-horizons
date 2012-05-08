@@ -25,7 +25,7 @@ from fife import fife
 from horizons.constants import LAYERS
 from horizons.scheduler import Scheduler
 from horizons.util import WorldObject
-from horizons.world.componentholder import ComponentHolder
+from horizons.component.componentholder import ComponentHolder
 
 class Bullet(ComponentHolder, WorldObject):
 	"""
@@ -77,7 +77,7 @@ class Bullet(ComponentHolder, WorldObject):
 			fife.ObjectVisual.create(Bullet._object)
 
 			visual = self._object.get2dGfxVisual()
-			img = horizons.main.fife.imagemanager.load(image)
+			img = horizons.main.fife.imagemanager.load(str(image))
 			for rotation in [45, 135, 225, 315]:
 				visual.addStaticImage(rotation, img.getHandle())
 

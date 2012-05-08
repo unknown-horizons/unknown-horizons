@@ -23,8 +23,8 @@ from horizons.constants import RES
 from horizons.constants import BUILDINGS
 from horizons.scheduler import Scheduler
 from horizons.util import Registry
-from horizons.world.pathfinding.pather import StaticPather
-from horizons.world.component.storagecomponent import StorageComponent
+from horizons.util.pathfinding.pather import StaticPather
+from horizons.component.storagecomponent import StorageComponent
 
 
 class CONDITIONS(object):
@@ -65,163 +65,167 @@ register = CONDITIONS.register
 
 @register()
 def settlements_num_greater(session, limit):
-	"""Returns whether the number of settlements owned by the human player is greater than limit."""
+	"""Returns whether the number of player settlements is greater than *limit*."""
 	return len(_get_player_settlements(session)) > limit
 
 @register()
 def settler_level_greater(session, limit):
-	"""Returns wheter the max level of settlers is greater than limit"""
+	"""Returns whether the highest increment reached in any player settlement is greater than *limit*."""
 	return (session.world.player.settler_level > limit)
 
 @register(periodically=True)
 def player_gold_greater(session, limit):
-	"""Returns whether the player has more gold then limit"""
-	return (session.world.player.get_component(StorageComponent).inventory[RES.GOLD_ID] > limit)
+	"""Returns whether the player has more gold than *limit*."""
+	return (session.world.player.get_component(StorageComponent).inventory[RES.GOLD] > limit)
 
 @register(periodically=True)
 def player_gold_less(session, limit):
-	"""Returns whether the player has less gold then limit"""
-	return (session.world.player.get_component(StorageComponent).inventory[RES.GOLD_ID] < limit)
+	"""Returns whether the player has less gold than *limit*."""
+	return (session.world.player.get_component(StorageComponent).inventory[RES.GOLD] < limit)
 
 @register(periodically=True)
 def settlement_balance_greater(session, limit):
-	"""Returns whether at least one settlement of player has a balance > limit"""
+	"""Returns whether the balance of at least one player settlement is higher than *limit*."""
 	return any(settlement for settlement in _get_player_settlements(session) if \
 	           settlement.balance > limit)
 
 @register(periodically=True)
 def player_balance_greater(session, limit):
-	"""Returns whether the cumulative balance of all player settlements is > limit"""
+	"""Returns whether the cumulative balance of all player settlements is higher than *limit*."""
 	return (sum(settlement.balance for settlement in _get_player_settlements(session)) > limit)
 
 @register(periodically=True)
 def settlement_inhabitants_greater(session, limit):
-	"""Returns whether at least one settlement of player has more than limit inhabitants"""
+	"""Returns whether at least one player settlement has more than *limit* inhabitants."""
 	return any(settlement for settlement in _get_player_settlements(session) if \
 	           settlement.inhabitants > limit)
 
 @register(periodically=True)
 def player_inhabitants_greater(session, limit):
-	"""Returns whether all settlements of player combined have more than limit inhabitants"""
+	"""Returns whether all player settlements combined have more than *limit* inhabitants."""
 	return (sum(settlement.inhabitants for settlement in _get_player_settlements(session)) > limit)
 
 @register()
 def building_num_of_type_greater(session, building_class, limit):
-	"""Check if player has more than limit buildings on a settlement"""
+	"""Returns whether any player settlement has more than *limit* buildings of type *building_class*."""
 	for settlement in _get_player_settlements(session):
 		if len(settlement.buildings_by_id[building_class]) > limit:
 			return True
 	return False
 
 @register(periodically=True)
-def player_res_stored_greater(session, res, limit):
-	"""Returns whether all settlements of player combined have more than limit of res"""
-	return (sum(settlement.get_component(StorageComponent).inventory[res] for settlement in _get_player_settlements(session)) > limit)
+def player_res_stored_greater(session, resource, limit):
+	"""Returns whether all player settlements combined have more than *limit*
+	of *resource* in their inventories."""
+	return (sum(settlement.get_component(StorageComponent).inventory[resource] for settlement in _get_player_settlements(session)) > limit)
 
 @register(periodically=True)
-def player_res_stored_less(session, res, limit):
-	"""Returns whether all settlements of player combined have less than limit of res"""
-	return (sum(settlement.get_component(StorageComponent).inventory[res] for settlement in _get_player_settlements(session)) < limit)
+def player_res_stored_less(session, resource, limit):
+	"""Returns whether all player settlements combined have less than *limit*
+	of *resource* in their inventories."""
+	return (sum(settlement.get_component(StorageComponent).inventory[resource] for settlement in _get_player_settlements(session)) < limit)
 
 @register(periodically=True)
-def settlement_res_stored_greater(session, res, limit):
-	"""Returs whether at least one settlement of player has more than limit of res"""
+def settlement_res_stored_greater(session, resource, limit):
+	"""Returns whether at least one player settlement has more than *limit*
+	of *resource* in its inventory."""
 	return any(settlement for settlement in _get_player_settlements(session) if \
-	           settlement.get_component(StorageComponent).inventory[res] > limit)
+	           settlement.get_component(StorageComponent).inventory[resource] > limit)
 
 @register(periodically=True)
-def player_total_earnings_greater(session, total):
-	"""Returns whether the player has earned more then 'total' money with trading
-	earning = sell_income - buy_expenses"""
+def player_total_earnings_greater(session, limit):
+	"""Returns whether the player has earned more than *limit* money with
+	trading in all settlements combined. Profit = sell_income - buy_expenses."""
 	total_earning = 0
 	for settlement in _get_player_settlements(session):
 		total_earning += settlement.total_earnings
-	return total_earning > total
+	return total_earning > limit
 
 @register(periodically=True)
-def settlement_produced_res_greater(session, res, limit):
-	"""Returns whether more than limit res have been produced at one of the player's settlements"""
+def settlement_produced_res_greater(session, resource, limit):
+	"""Returns whether more than *limit* resource have been produced in any player settlement."""
 	return any(settlement for settlement in _get_player_settlements(session) if \
-	           settlement.produced_res.get(res, 0) > limit)
+	           settlement.produced_res.get(resource, 0) > limit)
 
 @register(periodically=True)
-def player_produced_res_greater(session, res, limit):
-	"""Returns whether more than limit res have been produced at all of the player's settlements combined"""
-	return sum(settlement.produced_res.get(res, 0) for settlement in _get_player_settlements(session)) > limit
+def player_produced_res_greater(session, resource, limit):
+	"""Returns whether more than *limit* of the resource *resource*
+	have been produced in all player settlements combined."""
+	return sum(settlement.produced_res.get(resource, 0) for settlement in _get_player_settlements(session)) > limit
 
 @register(periodically=True)
-def buildings_connected_to_warehouse_gt(session, building_class, number):
-	"""Checks whether more than number of building_class type buildings are
+def buildings_connected_to_warehouse_gt(session, building_class, limit):
+	"""Checks whether more than *limit* of *building_class* type buildings are
 	connected to a warehouse or storage."""
 	return (_building_connected_to_any_of(session, building_class, \
-	        BUILDINGS.WAREHOUSE_CLASS, BUILDINGS.STORAGE_CLASS) > number )
+	        BUILDINGS.WAREHOUSE, BUILDINGS.STORAGE) > limit )
 
 @register(periodically=True)
-def buildings_connected_to_warehouse_lt(session, building_class, number):
-	"""Checks whether less than number of building_class type buildings are
+def buildings_connected_to_warehouse_lt(session, building_class, limit):
+	"""Checks whether less than *limit* of *building_class* type buildings are
 	connected to a warehouse or storage."""
 	return (_building_connected_to_any_of(session, building_class, \
-	        BUILDINGS.WAREHOUSE_CLASS, BUILDINGS.STORAGE_CLASS) < number )
+	        BUILDINGS.WAREHOUSE, BUILDINGS.STORAGE) < limit )
 
 @register(periodically=True)
-def buildings_connected_to_building_gt(session, building_class, class2, number):
-	"""Checks whether more than number of building_class type buildings are
-	connected to any building of type class2."""
-	return (_building_connected_to_any_of(session, building_class, class2) > number )
+def buildings_connected_to_building_gt(session, building_class, class2, limit):
+	"""Checks whether more than *limit* of *building_class* type buildings are
+	connected to any building of type *class2*."""
+	return (_building_connected_to_any_of(session, building_class, class2) > limit )
 
 @register(periodically=True)
-def buildings_connected_to_building_lt(session, building_class, class2, number):
-	"""Checks whether less than number of building_class type buildings are
-	connected to any building of type class2."""
-	return (_building_connected_to_any_of(session, building_class, class2) < number )
+def buildings_connected_to_building_lt(session, building_class, class2, limit):
+	"""Checks whether less than *limit* of *building_class* type buildings are
+	connected to any building of type *class2*."""
+	return (_building_connected_to_any_of(session, building_class, class2) < limit )
 
 @register(periodically=True)
-def time_passed(session, secs):
-	"""Returns whether at least secs seconds have passed since start."""
-	return (Scheduler().cur_tick >= Scheduler().get_ticks(secs))
+def time_passed(session, seconds):
+	"""Returns whether at least *seconds* seconds have passed since the game started."""
+	return (Scheduler().cur_tick >= Scheduler().get_ticks(seconds))
 
 @register()
-def var_eq(session, name, value):
-	if not name in _get_scenario_vars(session):
+def var_eq(session, variable, value):
+	"""Returns whether *variable* has a value equal to *value*.
+	Returns False if variable was never set in the current session."""
+	if not variable in _get_scenario_vars(session):
 		return False
-	return (_get_scenario_vars(session)[name] == value)
+	return (_get_scenario_vars(session)[variable] == value)
 
 @register()
-def var_gt(session, name, value):
-	"""Variable greater than..."""
-	if not name in _get_scenario_vars(session):
+def var_gt(session, variable, value):
+	"""Returns whether *variable* has a value greater than *value*.
+	Returns False if variable was never set in the current session."""
+	if not variable in _get_scenario_vars(session):
 		return False
-	return (_get_scenario_vars(session)[name] > value)
+	return (_get_scenario_vars(session)[variable] > value)
 
 @register()
-def var_lt(session, name, value):
-	"""Variable less than..."""
-	if not name in _get_scenario_vars(session):
+def var_lt(session, variable, value):
+	"""Returns whether *variable* has a value less than *value*.
+	Returns False if variable was never set in the current session."""
+	if not variable in _get_scenario_vars(session):
 		return False
-	return (_get_scenario_vars(session)[name] < value)
+	return (_get_scenario_vars(session)[variable] < value)
 
 def _get_player_settlements(session):
-	"""Helper generator, returns settlements of local player"""
+	"""Helper generator, returns settlements of local player."""
 	return session.world.player.settlements
 
 def _get_scenario_vars(session):
 	return session.scenario_eventhandler._scenario_variables
 
-@register()
 def _building_connected_to_any_of(session, building_class, *classes):
-	"""Returns the exact amount of buildings of type building_class that are
-	connected to any building of a class in classes. Counts all settlements."""
+	"""Returns the exact amount of buildings of type *building_class* that are
+	connected to any building of a class in the building type list *classes*.
+	Counts all player settlements."""
 	building_to_check = []
 	check_connection = []
 	for settlement in _get_player_settlements(session):
-		for building in settlement.buildings:
-			if building.id == building_class:
-				building_to_check.append(building)
-			else:
-				for b_class in classes:
-					if building.id == b_class:
-						check_connection.append(building)
-						break
+		building_to_check.extend(settlement.buildings_by_id[building_class])
+		for b_class in classes:
+			for building in settlement.buildings_by_id[b_class]:
+				check_connection.append(building)
 	found_connected = 0
 	for building in building_to_check:
 		for check in check_connection:
@@ -231,17 +235,18 @@ def _building_connected_to_any_of(session, building_class, *classes):
 	return found_connected
 
 @register(periodically=True)
-def player_number_of_ships_gt(session, player_id, number):
+def player_number_of_ships_gt(session, player_id, limit):
+	"""Returns whether the number of ships owned by the player *player_id* is greater than *limit*."""
 	number_of_ships = len([s for s in session.world.ships if s.owner.worldid == player_id])
-	return number_of_ships > number
+	return number_of_ships > limit
 
 @register(periodically=True)
-def player_number_of_ships_lt(session, player_id, number):
+def player_number_of_ships_lt(session, player_id, limit):
+	"""Returns whether the number of ships owned by the player *player_id* is less than *limit*."""
 	number_of_ships = len([s for s in session.world.ships if s.owner.worldid == player_id])
-	return number_of_ships < number
+	return number_of_ships < limit
 
-@register()
 def _building_connected_to_all_of(session, building_class, *classes):
-	"""Returns the exact amount of buildings of type building_class that are
-	connected to any building of each class in classes. Counts all settlements."""
+	"""Returns the exact amount of buildings of type *building_class* that are
+	connected to any building of each class in *classes*. Counts all player settlements."""
 	#TODO

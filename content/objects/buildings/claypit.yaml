@@ -6,12 +6,10 @@ cost: 15
 cost_inactive: 5
 size_x: 3
 size_y: 3
-inhabitants_start: 1
-inhabitants_max: 2
-button_name: clay-pit-1
+inhabitants: 1
 tooltip_text: _ Gets clay from deposit.
-settler_level: 1
-buildingcosts: {1: 500, 4: 10, 6: 2}
+settler_level: TIER.PIONEERS
+buildingcosts: {RES.GOLD: 500, RES.BOARDS: 10, RES.TOOLS: 2}
 components:
 - SelectableComponent:
     type: building
@@ -23,13 +21,13 @@ components:
     productionlines:
       32:
         produces:
-        - [21, 1]
+        - [RES.CLAY, 1]
         consumes:
-        - [20, -1]
+        - [RES.RAW_CLAY, -1]
         time: 15
 - StorageComponent:
-    inventory:
       SlotsStorage:
-        slot_sizes: {20: 1000000, 21: 10}
+        slot_sizes: {RES.RAW_CLAY: 1000000, RES.CLAY: 10}
 actionsets:
-  as_clay_pit0: {level: 0}
+  TIER.PIONEERS:
+    as_clay_pit0:

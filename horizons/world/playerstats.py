@@ -25,11 +25,11 @@ from collections import defaultdict
 
 from horizons.util import WorldObject
 from horizons.entities import Entities
-from horizons.constants import SETTLER, BUILDINGS, PRODUCTION, RES, UNITS
+from horizons.constants import TIER, BUILDINGS, PRODUCTION, RES, UNITS
 from horizons.util.python import decorators
-from horizons.world.component.collectingcompontent import CollectingComponent
-from horizons.world.component.storagecomponent import StorageComponent
-from horizons.world.component.selectablecomponent import SelectableComponent
+from horizons.component.collectingcomponent import CollectingComponent
+from horizons.component.storagecomponent import StorageComponent
+from horizons.component.selectablecomponent import SelectableComponent
 from horizons.world.production.producer import Producer
 
 class PlayerStats(WorldObject):
@@ -57,30 +57,30 @@ class PlayerStats(WorldObject):
 				buildings[building.id] += 1
 
 				# collect info about settlers
-				if building.id == BUILDINGS.RESIDENTIAL_CLASS:
+				if building.id == BUILDINGS.RESIDENTIAL:
 					settlers[building.level] += building.inhabitants
 					settler_buildings[building.level] += 1
 					for production in building.get_component(Producer).get_productions():
 						if production.get_state() is PRODUCTION.STATES.producing:
-							produced_res = production.get_produced_res()
-							if RES.HAPPINESS_ID in produced_res:
-								happiness = produced_res[RES.HAPPINESS_ID]
+							produced_resources = production.get_produced_resources()
+							if RES.HAPPINESS in produced_resources:
+								happiness = produced_resources[RES.HAPPINESS]
 								for resource_id in production.get_consumed_resources():
 									settler_resources_provided[resource_id] += happiness / production.get_production_time()
 
 				# resources held in buildings
-				if building.has_component(StorageComponent) and building.id not in [BUILDINGS.WAREHOUSE_CLASS, BUILDINGS.STORAGE_CLASS, BUILDINGS.MAIN_SQUARE_CLASS]:
-					for resource_id, amount in building.get_component(StorageComponent).inventory:
+				if building.has_component(StorageComponent) and building.id not in [BUILDINGS.WAREHOUSE, BUILDINGS.STORAGE, BUILDINGS.MAIN_SQUARE]:
+					for resource_id, amount in building.get_component(StorageComponent).inventory.itercontents():
 						total_resources[resource_id] += amount
 
 				# resources held by collectors
 				if building.has_component(CollectingComponent):
 					for collector in building.get_component(CollectingComponent).get_local_collectors():
-						for resource_id, amount in collector.get_component(StorageComponent).inventory:
+						for resource_id, amount in collector.get_component(StorageComponent).inventory.itercontents():
 							total_resources[resource_id] += amount
 
 			# resources in settlement inventories
-			for resource_id, amount in settlement.get_component(StorageComponent).inventory:
+			for resource_id, amount in settlement.get_component(StorageComponent).inventory.itercontents():
 				available_resources[resource_id] += amount
 
 			# land that could be built on (the building on it may need to be destroyed first)
@@ -97,7 +97,7 @@ class PlayerStats(WorldObject):
 			if ship.owner is self.player:
 				ships[ship.id] += 1
 				if ship.has_component(SelectableComponent):
-					for resource_id, amount in ship.get_component(StorageComponent).inventory:
+					for resource_id, amount in ship.get_component(StorageComponent).inventory.itercontents():
 						available_resources[resource_id] += amount
 
 		for resource_id, amount in available_resources.iteritems():
@@ -108,20 +108,20 @@ class PlayerStats(WorldObject):
 		self._calculate_resource_score(available_resources, total_resources)
 		self._calculate_unit_score(ships)
 		self._calculate_land_score(usable_land, settlements)
-		self._calculate_money_score(running_costs, taxes, self.player.get_component(StorageComponent).inventory[RES.GOLD_ID])
+		self._calculate_money_score(running_costs, taxes, self.player.get_component(StorageComponent).inventory[RES.GOLD])
 		self._calculate_total_score()
 
 	settler_values = {
-			SETTLER.SAILOR_LEVEL: 2,
-			SETTLER.PIONEER_LEVEL: 3,
-			SETTLER.SETTLER_LEVEL: 7,
-			SETTLER.CITIZEN_LEVEL: 15,
+			TIER.SAILORS: 2,
+			TIER.PIONEERS: 3,
+			TIER.SETTLERS: 7,
+			TIER.CITIZENS: 15,
 			}
 	settler_building_values = {
-			SETTLER.SAILOR_LEVEL: 3,
-			SETTLER.PIONEER_LEVEL: 5,
-			SETTLER.SETTLER_LEVEL: 11,
-			SETTLER.CITIZEN_LEVEL: 19,
+			TIER.SAILORS: 3,
+			TIER.PIONEERS: 5,
+			TIER.SETTLERS: 11,
+			TIER.CITIZENS: 19,
 			}
 	settler_resource_provided_coefficient = 0.1
 	settler_score_coefficient = 0.3
@@ -145,14 +145,14 @@ class PlayerStats(WorldObject):
 			for resource_id, res_amount in Entities.buildings[building_id].costs.iteritems():
 				resources[resource_id] += amount * res_amount
 		for resource_id, amount in resources.iteritems():
-			if resource_id == RES.GOLD_ID:
+			if resource_id == RES.GOLD:
 				total += amount # for some reason the value of gold is 0 by default
 			else:
 				total += amount * self.db.get_res_value(resource_id)
 		self.building_score = int(total * self.building_score_coefficient)
 
 	unavailable_resource_coefficient = 0.3 # the resource exists but isn't usable so it is worth less
-	overridden_resource_values = {RES.RAW_CLAY_ID: 1, RES.RAW_IRON_ID: 3}
+	overridden_resource_values = {RES.RAW_CLAY: 1, RES.RAW_IRON: 3}
 	resource_score_coefficient = 0.01
 
 	def _calculate_resource_score(self, available_resources, total_resources):
@@ -174,7 +174,7 @@ class PlayerStats(WorldObject):
 					total += extra_amount * value * self.unavailable_resource_coefficient
 		self.resource_score = int(total * self.resource_score_coefficient)
 
-	unit_value = {UNITS.FRIGATE_CLASS: 1.5, UNITS.PLAYER_SHIP_CLASS: 1, UNITS.USABLE_FISHER_BOAT: 1, UNITS.FISHER_BOAT_CLASS: 0.05}
+	unit_value = {UNITS.FRIGATE: 1.5, UNITS.PLAYER_SHIP: 1, UNITS.USABLE_FISHER_BOAT: 1, UNITS.FISHER_BOAT: 0.05}
 	unit_score_coefficient = 10
 
 	def _calculate_unit_score(self, ships):

@@ -6,12 +6,10 @@ cost: 25
 cost_inactive: 10
 size_x: 3
 size_y: 3
-inhabitants_start: 2
-inhabitants_max: 2
-button_name: boat_builder-1
+inhabitants: 2
 tooltip_text: _ Builds boats and small ships. Built on coast.
-settler_level: 1
-buildingcosts: {1: 500, 4: 4, 6: 3}
+settler_level: TIER.PIONEERS
+buildingcosts: {RES.GOLD: 500, RES.BOARDS: 4, RES.TOOLS: 3}
 components:
 - SelectableComponent:
     type: building
@@ -23,45 +21,45 @@ components:
     productionlines:
       64:
         consumes:
-        - [4, -22]
-        - [3, -8]
+        - [RES.BOARDS, -22]
+        - [RES.TEXTILE, -8]
         time: 60
       68:
         consumes:
-        - [4, -42]
-        - [3, -24]
+        - [RES.BOARDS, -42]
+        - [RES.TEXTILE, -24]
         time: 60
       15:
         consumes:
-        - [1, -550]
-        - [4, -8]
-        - [3, -3]
-        - [6, -1]
+        - [RES.GOLD, -550]
+        - [RES.BOARDS, -8]
+        - [RES.TEXTILE, -3]
+        - [RES.TOOLS, -1]
         time: 60
       58:
         consumes:
-        - [1, -750]
-        - [4, -13]
-        - [40, -7]
-        - [3, -6]
-        - [6, -2]
+        - [RES.GOLD, -750]
+        - [RES.BOARDS, -13]
+        - [RES.CANNON, -7]
+        - [RES.TEXTILE, -6]
+        - [RES.TOOLS, -2]
         time: 60
       62:
         consumes:
-        - [4, -12]
-        - [3, -8]
+        - [RES.BOARDS, -12]
+        - [RES.TEXTILE, -8]
         time: 60
       63:
         consumes:
-        - [4, -14]
-        - [3, -11]
+        - [RES.BOARDS, -14]
+        - [RES.TEXTILE, -11]
         time: 60
 - StorageComponent:
-    inventory:
       SlotsStorage:
-        slot_sizes: {40: 12, 3: 12, 4: 12, 6: 12}
+        slot_sizes: {RES.CANNON: 12, RES.TEXTILE: 12, RES.BOARDS: 12, RES.TOOLS: 12}
 - CollectingComponent:
     collectors:
-      1000002: 1
+      UNITS.BUILDING_COLLECTOR: 1
 actionsets:
-  as_boat_builder0: {level: 0}
+  TIER.PIONEERS:
+    as_boat_builder0:

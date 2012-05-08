@@ -25,9 +25,10 @@ from horizons.constants import GAME_SPEED
 from horizons.gui.widgets.statswidget import StatsWidget
 from horizons.scheduler import Scheduler
 from horizons.util.python import decorators
-from horizons.util.gui import create_resource_icon
+from horizons.gui.util import create_resource_icon
 from horizons.util import Callback
-from horizons.world.component.namedcomponent import NamedComponent
+from horizons.component.namedcomponent import NamedComponent
+from horizons.gui.widgets import OkButton
 
 class ProductionOverview(StatsWidget):
 	"""
@@ -47,7 +48,7 @@ class ProductionOverview(StatsWidget):
 	def _init_gui(self):
 		super(ProductionOverview, self)._init_gui()
 		self.session.gui.on_escape = self.hide
-		self._gui.findChild(name="okButton").capture(self.hide)
+		self._gui.findChild(name=OkButton.DEFAULT_NAME).capture(self.hide)
 
 	def hide(self):
 		super(ProductionOverview, self).hide()
@@ -78,7 +79,7 @@ class ProductionOverview(StatsWidget):
 		icon.max_size = icon.min_size = icon.size = (16, 16)
 
 		label = widgets.Label(name = 'resource_%s' % resource_id)
-		label.text = unicode(res_name)
+		label.text = res_name
 		label.min_size = (100, 20)
 
 		amount_label = widgets.Label(name = 'produced_sum_%s' % resource_id)

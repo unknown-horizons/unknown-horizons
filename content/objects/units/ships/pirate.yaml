@@ -10,7 +10,6 @@ components:
     enemy_tabs: [EnemyShipOverviewTab,]
 - AmbientSoundComponent
 - StorageComponent:
-   inventory:
       PositiveTotalNumSlotStorage:
          limit: 120
          slotnum: 4
@@ -19,5 +18,6 @@ components:
    maxhealth: 250
 
 actionsets:
-   as_pirate0: {level: 0}
-   as_pirate1: {level: 0}
+  TIER.SAILORS:
+    as_pirate0:
+    as_pirate1:

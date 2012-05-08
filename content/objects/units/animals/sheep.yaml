@@ -6,9 +6,9 @@ velocity: 12.0
 components:
 - AmbientSoundComponent
 - StorageComponent:
-   inventory:
       PositiveSizedSlotStorage:
          limit: 8
 
 actionsets:
-   as_sheep0: {level: 0}
+  TIER.NATURE:
+   as_sheep0:

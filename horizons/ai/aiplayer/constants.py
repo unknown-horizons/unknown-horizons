@@ -75,35 +75,35 @@ class BUILDING_PURPOSE:
 
 	@classmethod
 	def init_translation(cls):
-		cls.purpose_to_building[cls.WAREHOUSE] = BUILDINGS.WAREHOUSE_CLASS
-		cls.purpose_to_building[cls.ROAD] = BUILDINGS.TRAIL_CLASS
-		cls.purpose_to_building[cls.FISHER] = BUILDINGS.FISHERMAN_CLASS
-		cls.purpose_to_building[cls.LUMBERJACK] = BUILDINGS.LUMBERJACK_CLASS
-		cls.purpose_to_building[cls.TREE] = BUILDINGS.TREE_CLASS
-		cls.purpose_to_building[cls.STORAGE] = BUILDINGS.STORAGE_CLASS
-		cls.purpose_to_building[cls.FARM] = BUILDINGS.FARM_CLASS
-		cls.purpose_to_building[cls.POTATO_FIELD] = BUILDINGS.POTATO_FIELD_CLASS
-		cls.purpose_to_building[cls.CLAY_PIT] = BUILDINGS.CLAY_PIT_CLASS
-		cls.purpose_to_building[cls.BRICKYARD] = BUILDINGS.BRICKYARD_CLASS
-		cls.purpose_to_building[cls.PASTURE] = BUILDINGS.PASTURE_CLASS
-		cls.purpose_to_building[cls.WEAVER] = BUILDINGS.WEAVER_CLASS
-		cls.purpose_to_building[cls.SUGARCANE_FIELD] = BUILDINGS.SUGARCANE_FIELD_CLASS
-		cls.purpose_to_building[cls.DISTILLERY] = BUILDINGS.DISTILLERY_CLASS
-		cls.purpose_to_building[cls.MAIN_SQUARE] = BUILDINGS.MAIN_SQUARE_CLASS
-		cls.purpose_to_building[cls.RESIDENCE] = BUILDINGS.RESIDENTIAL_CLASS
-		cls.purpose_to_building[cls.PAVILION] = BUILDINGS.PAVILION_CLASS
-		cls.purpose_to_building[cls.VILLAGE_SCHOOL] = BUILDINGS.VILLAGE_SCHOOL_CLASS
-		cls.purpose_to_building[cls.TAVERN] = BUILDINGS.TAVERN_CLASS
-		cls.purpose_to_building[cls.IRON_MINE] = BUILDINGS.IRON_MINE_CLASS
-		cls.purpose_to_building[cls.SMELTERY] = BUILDINGS.SMELTERY_CLASS
-		cls.purpose_to_building[cls.TOOLMAKER] = BUILDINGS.TOOLMAKER_CLASS
-		cls.purpose_to_building[cls.CHARCOAL_BURNER] = BUILDINGS.CHARCOAL_BURNER_CLASS
-		cls.purpose_to_building[cls.BOAT_BUILDER] = BUILDINGS.BOATBUILDER_CLASS
-		cls.purpose_to_building[cls.SIGNAL_FIRE] = BUILDINGS.SIGNAL_FIRE_CLASS
-		cls.purpose_to_building[cls.TOBACCO_FIELD] = BUILDINGS.TOBACCO_FIELD_CLASS
-		cls.purpose_to_building[cls.TOBACCONIST] = BUILDINGS.TOBACCONIST_CLASS
-		cls.purpose_to_building[cls.SALT_PONDS] = BUILDINGS.SALT_PONDS_CLASS
-		cls.purpose_to_building[cls.FIRE_STATION] = BUILDINGS.FIRE_STATION_CLASS
+		cls.purpose_to_building[cls.WAREHOUSE] = BUILDINGS.WAREHOUSE
+		cls.purpose_to_building[cls.ROAD] = BUILDINGS.TRAIL
+		cls.purpose_to_building[cls.FISHER] = BUILDINGS.FISHER
+		cls.purpose_to_building[cls.LUMBERJACK] = BUILDINGS.LUMBERJACK
+		cls.purpose_to_building[cls.TREE] = BUILDINGS.TREE
+		cls.purpose_to_building[cls.STORAGE] = BUILDINGS.STORAGE
+		cls.purpose_to_building[cls.FARM] = BUILDINGS.FARM
+		cls.purpose_to_building[cls.POTATO_FIELD] = BUILDINGS.POTATO_FIELD
+		cls.purpose_to_building[cls.CLAY_PIT] = BUILDINGS.CLAY_PIT
+		cls.purpose_to_building[cls.BRICKYARD] = BUILDINGS.BRICKYARD
+		cls.purpose_to_building[cls.PASTURE] = BUILDINGS.PASTURE
+		cls.purpose_to_building[cls.WEAVER] = BUILDINGS.WEAVER
+		cls.purpose_to_building[cls.SUGARCANE_FIELD] = BUILDINGS.SUGARCANE_FIELD
+		cls.purpose_to_building[cls.DISTILLERY] = BUILDINGS.DISTILLERY
+		cls.purpose_to_building[cls.MAIN_SQUARE] = BUILDINGS.MAIN_SQUARE
+		cls.purpose_to_building[cls.RESIDENCE] = BUILDINGS.RESIDENTIAL
+		cls.purpose_to_building[cls.PAVILION] = BUILDINGS.PAVILION
+		cls.purpose_to_building[cls.VILLAGE_SCHOOL] = BUILDINGS.VILLAGE_SCHOOL
+		cls.purpose_to_building[cls.TAVERN] = BUILDINGS.TAVERN
+		cls.purpose_to_building[cls.IRON_MINE] = BUILDINGS.IRON_MINE
+		cls.purpose_to_building[cls.SMELTERY] = BUILDINGS.SMELTERY
+		cls.purpose_to_building[cls.TOOLMAKER] = BUILDINGS.TOOLMAKER
+		cls.purpose_to_building[cls.CHARCOAL_BURNER] = BUILDINGS.CHARCOAL_BURNER
+		cls.purpose_to_building[cls.BOAT_BUILDER] = BUILDINGS.BOAT_BUILDER
+		cls.purpose_to_building[cls.SIGNAL_FIRE] = BUILDINGS.SIGNAL_FIRE
+		cls.purpose_to_building[cls.TOBACCO_FIELD] = BUILDINGS.TOBACCO_FIELD
+		cls.purpose_to_building[cls.TOBACCONIST] = BUILDINGS.TOBACCONIST
+		cls.purpose_to_building[cls.SALT_PONDS] = BUILDINGS.SALT_PONDS
+		cls.purpose_to_building[cls.FIRE_STATION] = BUILDINGS.FIRE_STATION
 
 		for purpose, building_id in cls.purpose_to_building.iteritems():
 			cls.building_to_purpose[building_id] = purpose

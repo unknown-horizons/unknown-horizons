@@ -25,7 +25,7 @@ from horizons.world.units.movingobject import MoveNotPossible
 from horizons.util import Point, Circle, WorldObject
 from horizons.util.python import decorators
 from horizons.constants import BUILDINGS
-from horizons.world.component.storagecomponent import StorageComponent
+from horizons.component.storagecomponent import StorageComponent
 
 class Mission(WorldObject):
 	"""
@@ -104,7 +104,7 @@ class ShipMission(Mission):
 
 	def _unload_all_resources(self, settlement):
 		# copy the inventory because otherwise we would be modifying it while iterating
-		for res, amount in [item for item in self.ship.get_component(StorageComponent).inventory]:
+		for res, amount in [item for item in self.ship.get_component(StorageComponent).inventory.itercontents()]:
 			self.move_resource(self.ship, settlement, res, amount)
 
 	def _move_to_warehouse_area(self, warehouse_position, success_callback, blocked_callback, failure_msg):

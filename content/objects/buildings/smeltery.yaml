@@ -6,12 +6,10 @@ cost: 50
 cost_inactive: 15
 size_x: 4
 size_y: 4
-inhabitants_start: 2
-inhabitants_max: 2
-button_name: smeltery-1
+inhabitants: 2
 tooltip_text: _ Refines all kind of ores.
-settler_level: 2
-buildingcosts: {1: 1250, 4: 8, 6: 4, 7: 6}
+settler_level: TIER.SETTLERS
+buildingcosts: {RES.GOLD: 1250, RES.BOARDS: 8, RES.TOOLS: 4, RES.BRICKS: 6}
 components:
 - SelectableComponent:
     type: building
@@ -22,17 +20,17 @@ components:
     productionlines:
       37:
         produces:
-        - [26, 3]
+        - [RES.IRON_INGOTS, 3]
         consumes:
-        - [25, -2]
-        - [23, -1]
+        - [RES.IRON_ORE, -2]
+        - [RES.CHARCOAL, -1]
         time: 30
 - StorageComponent:
-    inventory:
       SlotsStorage:
-        slot_sizes: {25: 6, 26: 9, 23: 6}
+        slot_sizes: {RES.IRON_ORE: 6, RES.IRON_INGOTS: 9, RES.CHARCOAL: 6}
 - CollectingComponent:
     collectors:
-      1000002: 2
+      UNITS.BUILDING_COLLECTOR: 2
 actionsets:
-  as_smeltery0: {level: 0}
+  TIER.SETTLERS:
+    as_smeltery0:

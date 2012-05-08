@@ -22,7 +22,7 @@
 
 from horizons.command.building import Build
 from horizons.constants import RES, BUILDINGS
-from horizons.world.component.storagecomponent import StorageComponent
+from horizons.component.storagecomponent import StorageComponent
 from horizons.world.production.producer import Producer
 
 from tests.game import game_test, settle
@@ -36,7 +36,7 @@ def test_example(s, p):
 	"""
 	settlement, island = settle(s)
 
-	farm = Build(BUILDINGS.FARM_CLASS, 30, 30, island, settlement=settlement)(p)
+	farm = Build(BUILDINGS.FARM, 30, 30, island, settlement=settlement)(p)
 	assert farm
 
 	# Pause the production, we want to start it explicitly later.
@@ -44,28 +44,28 @@ def test_example(s, p):
 	production.pause()
 
 	# Farm has no raw wool or wool.
-	assert farm.get_component(StorageComponent).inventory[RES.LAMB_WOOL_ID] == 0
-	assert farm.get_component(StorageComponent).inventory[RES.WOOL_ID] == 0
+	assert farm.get_component(StorageComponent).inventory[RES.LAMB_WOOL] == 0
+	assert farm.get_component(StorageComponent).inventory[RES.WOOL] == 0
 
 	# Build pastures, let the game run for 31 seconds. Pastures currently need
 	# 30s to produce wool.
-	p1 = Build(BUILDINGS.PASTURE_CLASS, 27, 30, island, settlement=settlement)(p)
-	p2 = Build(BUILDINGS.PASTURE_CLASS, 33, 30, island, settlement=settlement)(p)
+	p1 = Build(BUILDINGS.PASTURE, 27, 30, island, settlement=settlement)(p)
+	p2 = Build(BUILDINGS.PASTURE, 33, 30, island, settlement=settlement)(p)
 	assert p1 and p2
 
 	s.run(seconds=31)
 
-	assert p1.get_component(StorageComponent).inventory[RES.LAMB_WOOL_ID]
-	assert p2.get_component(StorageComponent).inventory[RES.LAMB_WOOL_ID]
+	assert p1.get_component(StorageComponent).inventory[RES.LAMB_WOOL]
+	assert p2.get_component(StorageComponent).inventory[RES.LAMB_WOOL]
 
 	# Give farm collectors a chance to get the wool from the pastures.
 	s.run(seconds=5)
 
-	assert farm.get_component(StorageComponent).inventory[RES.LAMB_WOOL_ID]
+	assert farm.get_component(StorageComponent).inventory[RES.LAMB_WOOL]
 
 	# Resume the production, let the game run for a second. The farm should have
 	# produced wool now.
 	production.pause(pause=False)
 	s.run(seconds=1)
-	assert farm.get_component(StorageComponent).inventory[RES.WOOL_ID]
+	assert farm.get_component(StorageComponent).inventory[RES.WOOL]
 

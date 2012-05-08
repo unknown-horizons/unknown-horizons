@@ -1,4 +1,4 @@
-from horizons.util.gui import load_uh_widget
+from horizons.gui.util import load_uh_widget
 from horizons.util import Callback
 from horizons.extscheduler import ExtScheduler
 from horizons.savegamemanager import SavegameManager
@@ -47,9 +47,7 @@ class ScenarioChooser(object):
 			       ]
 			self._gui.findChild(name="scenario_details").text = u"\n".join(text)
 		self._gui.findChild(name="scenario_list").mapEvents({
-		  'scenario_list/action': _update_infos,
-		  'scenario_list/mouseWheelMovedUp'   : _update_infos,
-		  'scenario_list/mouseWheelMovedDown' : _update_infos
+		  'scenario_list/action': _update_infos
 		})
 
 

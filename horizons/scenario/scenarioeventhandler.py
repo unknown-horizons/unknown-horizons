@@ -19,9 +19,9 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
+import json
 import yaml
 import copy
-import pickle
 
 from horizons.scheduler import Scheduler
 from horizons.util import Callback, LivingObject, YamlCache
@@ -116,11 +116,11 @@ class ScenarioEventHandler(LivingObject):
 			db("INSERT INTO metadata(name, value) VALUES(?, ?)", "scenario_events", self.to_yaml())
 		for key, value in self._scenario_variables.iteritems():
 			db("INSERT INTO scenario_variables(key, value) VALUES(?, ?)", key, \
-			   pickle.dumps(value, self.PICKLE_PROTOCOL))
+			   json.dumps(value))
 
 	def load(self, db):
 		for key, value in db("SELECT key, value FROM scenario_variables"):
-			self._scenario_variables[key] = pickle.loads(value)
+			self._scenario_variables[key] = json.loads(value)
 		data = db("SELECT value FROM metadata WHERE name = ?", "scenario_events")
 		if len(data) == 0:
 			return # nothing to load

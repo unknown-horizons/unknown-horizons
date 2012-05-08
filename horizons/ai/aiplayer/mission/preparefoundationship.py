@@ -24,7 +24,7 @@ from horizons.util import Callback, WorldObject
 from horizons.util.python import decorators
 from horizons.ext.enum import Enum
 from horizons.constants import RES
-from horizons.world.component.storagecomponent import StorageComponent
+from horizons.component.storagecomponent import StorageComponent
 
 class PrepareFoundationShip(ShipMission):
 	"""
@@ -78,9 +78,9 @@ class PrepareFoundationShip(ShipMission):
 	def _load_foundation_resources(self):
 		personality = self.owner.personality_manager.get('SettlementFounder')
 		if self.feeder_island:
-			max_amounts = {RES.BOARDS_ID: personality.max_new_feeder_island_boards, RES.TOOLS_ID: personality.max_new_feeder_island_tools}
+			max_amounts = {RES.BOARDS: personality.max_new_feeder_island_boards, RES.TOOLS: personality.max_new_feeder_island_tools}
 		else:
-			max_amounts = {RES.BOARDS_ID: personality.max_new_island_boards, RES.FOOD_ID: personality.max_new_island_food, RES.TOOLS_ID: personality.max_new_island_tools}
+			max_amounts = {RES.BOARDS: personality.max_new_island_boards, RES.FOOD: personality.max_new_island_food, RES.TOOLS: personality.max_new_island_tools}
 
 		for resource_id, max_amount in max_amounts.iteritems():
 			self.move_resource(self.ship, self.settlement_manager.settlement, resource_id, self.ship.get_component(StorageComponent).inventory[resource_id] - max_amount)

@@ -24,12 +24,12 @@ import logging
 from horizons.scheduler import Scheduler
 
 from horizons.util import Point, WorldObject
-from horizons.world.pathfinding.pather import SoldierPather
+from horizons.util.pathfinding.pather import SoldierPather
 from horizons.command.unit import CreateUnit
-from collectors import Collector, BuildingCollector, JobList
+from horizons.world.units.collectors import Collector, BuildingCollector, JobList, Job
 from horizons.constants import RES, WILD_ANIMAL
 from horizons.world.units.movingobject import MoveNotPossible
-from horizons.world.component.storagecomponent import StorageComponent
+from horizons.component.storagecomponent import StorageComponent
 from horizons.world.resourcehandler import ResourceHandler
 
 class Animal(ResourceHandler):
@@ -133,8 +133,8 @@ class WildAnimal(CollectorAnimal, Collector):
 		self.home_island.wild_animals.append(self)
 
 		resources = self.get_needed_resources()
-		assert resources == [RES.WILDANIMALFOOD_ID] or resources == []
-		self._required_resource_id = RES.WILDANIMALFOOD_ID
+		assert resources == [RES.WILDANIMALFOOD] or resources == []
+		self._required_resource_id = RES.WILDANIMALFOOD
 		self._building_index = self.home_island.get_building_index(self._required_resource_id)
 
 	def save(self, db):
@@ -160,6 +160,9 @@ class WildAnimal(CollectorAnimal, Collector):
 		# get home island
 		island = WorldObject.get_object_by_id(db.get_unit_owner(worldid))
 		self.__init(island, bool(can_reproduce), health)
+
+	def get_collectable_res(self):
+		return [self._required_resource_id]
 
 	def apply_state(self, state, remaining_ticks=None):
 		super(WildAnimal, self).apply_state(state, remaining_ticks)
@@ -194,10 +197,12 @@ class WildAnimal(CollectorAnimal, Collector):
 		for i in xrange(min(5, self._building_index.get_num_buildings_in_range(pos))):
 			provider = self._building_index.get_random_building_in_range(pos)
 			if provider is not None and self.check_possible_job_target(provider):
-				job = self.check_possible_job_target_for(provider, self._required_resource_id)
-				if job is not None:
-					path = self.check_move(job.object.loading_area)
+				# animals only collect one resource
+				entry = self.check_possible_job_target_for(provider, self._required_resource_id)
+				if entry:
+					path = self.check_move(provider.loading_area)
 					if path:
+						job = Job(provider, [entry])
 						job.path = path
 						return job
 

@@ -20,7 +20,6 @@
 # ###################################################
 
 from horizons.world.resourcehandler import ResourceHandler
-from horizons.gui.tabs import ProductionOverviewTab
 from horizons.world.production.producer import Producer
 
 

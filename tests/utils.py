@@ -21,6 +21,9 @@
 
 import signal
 
+from nose.plugins import Plugin
+from nose.util import ln
+
 # check if SIGALRM is supported, this is not the case on Windows
 # we might provide an alternative later, but for now, this will do
 try:
@@ -72,3 +75,39 @@ class Timer(object):
 			return
 
 		signal.alarm(0)
+
+
+class ReRunInfoPlugin(Plugin):
+	"""Print information on how to rerun a test after each failed test.
+
+	Code to add additional output taken from the Collect plugin.
+	"""
+	name = 'reruninfo'
+	enabled = True
+
+	def configure(self, options, conf):
+		pass
+
+	def formatError(self, test, err):
+		_, module, call = test.address()
+
+		output = ['python', 'run_tests.py', u'%s:%s' % (module, call)]
+
+		# add necessary flags
+		if 'tests.gui' in module:
+			output.append('-a gui')
+		elif 'tests.game.long' in module:
+			output.append('-a long')
+
+		output = u' '.join(output)
+
+		ec, ev, tb = err
+		return (ec, self.addOutputToErr(ev, output), tb)
+
+	def formatFailure(self, test, err):
+		return self.formatError(test, err)
+
+	def addOutputToErr(self, ev, output):
+		if isinstance(ev, Exception):
+			ev = unicode(ev)
+		return u'\n'.join([ev, u'', ln(u'>> rerun the test <<'), output])

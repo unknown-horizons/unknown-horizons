@@ -24,7 +24,7 @@ import horizons.main
 
 from horizons.util.living import LivingObject
 from horizons.gui.keylisteners import KeyConfig
-from horizons.world.component.selectablecomponent import SelectableComponent
+from horizons.component.selectablecomponent import SelectableComponent
 from horizons.command.game import TogglePauseCommand, SpeedDownCommand, SpeedUpCommand
 
 class IngameKeyListener(fife.IKeyListener, LivingObject):
@@ -67,9 +67,12 @@ class IngameKeyListener(fife.IKeyListener, LivingObject):
 		if self.key_scroll[0] != 0 or self.key_scroll != 0:
 			self.session.view.autoscroll_keys(self.key_scroll[0], self.key_scroll[1])
 
+		key_event_handled = True
+
 		if action == _Actions.ESCAPE:
-			if not self.session.ingame_gui.on_escape():
-				return # let the MainListener handle this
+			handled_by_ingame_gui = self.session.ingame_gui.on_escape()
+			if not handled_by_ingame_gui:
+				key_event_handled = False # let the MainListener handle this
 		elif action == _Actions.GRID:
 			gridrenderer = self.session.view.renderer['GridRenderer']
 			gridrenderer.setEnabled( not gridrenderer.isEnabled() )
@@ -164,11 +167,22 @@ class IngameKeyListener(fife.IKeyListener, LivingObject):
 					if group is not self.session.selection_groups[num]:
 						group -= self.session.selection_groups[num]
 			else:
-				for instance in self.session.selected_instances - self.session.selection_groups[num]:
-					instance.get_component(SelectableComponent).deselect()
-				for instance in self.session.selection_groups[num] - self.session.selected_instances:
+				# deselect
+				# we need to make sure to have a cursor capable of selection (for apply_select())
+				# this handles deselection implicitly in the destructor
+				self.session.set_cursor('selection')
+
+				# apply new selection
+				for instance in self.session.selection_groups[num]:
 					instance.get_component(SelectableComponent).select(reset_cam=True)
-				self.session.selected_instances = self.session.selection_groups[num]
+				# assign copy since it will be randomly changed, the unit should only be changed on ctrl-events
+				self.session.selected_instances = self.session.selection_groups[num].copy()
+				# show menu depending on the entities selected
+				if self.session.selected_instances:
+					self.session.cursor.apply_select()
+				else:
+					# nothing is selected here, we need to hide the menu since apply_select doesn't handle that case
+					self.session.ingame_gui.show_menu(None)
 		elif action == _Actions.QUICKSAVE:
 			self.session.quicksave() # load is only handled by the MainListener
 		elif action == _Actions.SAVE_MAP:
@@ -185,13 +199,15 @@ class IngameKeyListener(fife.IKeyListener, LivingObject):
 			if self.session.selected_instances:
 				# scroll to first one, we can never guarantee to display all selected units
 				instance = iter(self.session.selected_instances).next()
-				self.session.view.center( * instance.position.to_tuple())
+				self.session.view.center( * instance.position.center().to_tuple())
 				for instance in self.session.selected_instances:
 					if hasattr(instance, "path") and instance.owner.is_local_player:
 						self.session.ingame_gui.minimap.show_unit_path(instance)
 		else:
-			return
-		evt.consume()
+			key_event_handled = False # nope, nothing triggered
+
+		if key_event_handled:
+			evt.consume() # prevent other listeners from being called
 
 	def keyReleased(self, evt):
 		keyval = evt.getKey().getValue()

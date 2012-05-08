@@ -37,7 +37,7 @@ from horizons.util import Callback, Point, Rect
 from horizons.util.python import decorators
 from horizons.entities import Entities
 from horizons.world.production.producer import Producer
-from horizons.world.component.namedcomponent import NamedComponent
+from horizons.component.namedcomponent import NamedComponent
 
 class ProductionBuilder(AreaBuilder):
 	"""
@@ -54,7 +54,7 @@ class ProductionBuilder(AreaBuilder):
 	* last_collector_improvement_road: the last tick when a new road connection was built to improve collector coverage
 	"""
 
-	coastal_building_classes = [BUILDINGS.FISHERMAN_CLASS, BUILDINGS.BOATBUILDER_CLASS, BUILDINGS.SALT_PONDS_CLASS]
+	coastal_building_classes = [BUILDINGS.FISHER, BUILDINGS.BOAT_BUILDER, BUILDINGS.SALT_PONDS]
 
 	def __init__(self, settlement_manager):
 		super(ProductionBuilder, self).__init__(settlement_manager)
@@ -285,7 +285,7 @@ class ProductionBuilder(AreaBuilder):
 		"""Return a Builder object if it is allowed to be built at the location, otherwise return None (not cached)."""
 		coords = (x, y)
 		# quick check to see whether the origin square is allowed to be in the requested place
-		if building_id == BUILDINGS.CLAY_PIT_CLASS or building_id == BUILDINGS.IRON_MINE_CLASS:
+		if building_id == BUILDINGS.CLAY_PIT or building_id == BUILDINGS.IRON_MINE:
 			# clay deposits and mountains are outside the production plan until they are constructed
 			if coords in self.plan or coords not in self.settlement.ground_map:
 				return None
@@ -308,7 +308,7 @@ class ProductionBuilder(AreaBuilder):
 			for coords in builder.position.tuple_iter():
 				if coords not in self.land_manager.coastline and coords in self.plan and self.plan[coords][0] != BUILDING_PURPOSE.NONE:
 					return None
-		elif building_id in [BUILDINGS.CLAY_PIT_CLASS, BUILDINGS.IRON_MINE_CLASS]:
+		elif building_id in [BUILDINGS.CLAY_PIT, BUILDINGS.IRON_MINE]:
 			# clay deposits and mountains can't be in areas restricted by the plan
 			pass
 		else:
@@ -360,7 +360,7 @@ class ProductionBuilder(AreaBuilder):
 	def handle_lost_area(self, coords_list):
 		"""Handle losing the potential land in the given coordinates list."""
 		# remove planned fields that are now impossible
-		field_size = Entities.buildings[BUILDINGS.POTATO_FIELD_CLASS].size
+		field_size = Entities.buildings[BUILDINGS.POTATO_FIELD].size
 		removed_list = []
 		for coords, (purpose, _) in self.plan.iteritems():
 			if purpose in [BUILDING_PURPOSE.POTATO_FIELD, BUILDING_PURPOSE.PASTURE, BUILDING_PURPOSE.SUGARCANE_FIELD, BUILDING_PURPOSE.TOBACCO_FIELD]:
@@ -383,11 +383,11 @@ class ProductionBuilder(AreaBuilder):
 			if coords not in self.plan:
 				self.plan[coords] = (BUILDING_PURPOSE.NONE, None)
 
-	collector_building_classes = [BUILDINGS.WAREHOUSE_CLASS, BUILDINGS.STORAGE_CLASS]
-	field_building_classes = [BUILDINGS.POTATO_FIELD_CLASS, BUILDINGS.PASTURE_CLASS, BUILDINGS.SUGARCANE_FIELD_CLASS, BUILDINGS.TOBACCO_FIELD_CLASS]
-	production_building_classes = set([BUILDINGS.FISHERMAN_CLASS, BUILDINGS.LUMBERJACK_CLASS, BUILDINGS.FARM_CLASS, BUILDINGS.CLAY_PIT_CLASS,
-		BUILDINGS.BRICKYARD_CLASS, BUILDINGS.WEAVER_CLASS, BUILDINGS.DISTILLERY_CLASS, BUILDINGS.IRON_MINE_CLASS, BUILDINGS.SMELTERY_CLASS,
-		BUILDINGS.TOOLMAKER_CLASS, BUILDINGS.CHARCOAL_BURNER_CLASS, BUILDINGS.TOBACCONIST_CLASS, BUILDINGS.SALT_PONDS_CLASS])
+	collector_building_classes = [BUILDINGS.WAREHOUSE, BUILDINGS.STORAGE]
+	field_building_classes = [BUILDINGS.POTATO_FIELD, BUILDINGS.PASTURE, BUILDINGS.SUGARCANE_FIELD, BUILDINGS.TOBACCO_FIELD]
+	production_building_classes = set([BUILDINGS.FISHER, BUILDINGS.LUMBERJACK, BUILDINGS.FARM, BUILDINGS.CLAY_PIT,
+		BUILDINGS.BRICKYARD, BUILDINGS.WEAVER, BUILDINGS.DISTILLERY, BUILDINGS.IRON_MINE, BUILDINGS.SMELTERY,
+		BUILDINGS.TOOLMAKER, BUILDINGS.CHARCOAL_BURNER, BUILDINGS.TOBACCONIST, BUILDINGS.SALT_PONDS])
 
 	def add_building(self, building):
 		"""Called when a new building is added in the area (the building already exists during the call)."""
@@ -401,7 +401,7 @@ class ProductionBuilder(AreaBuilder):
 	def _handle_lumberjack_removal(self, building):
 		"""Release the unused trees around the lumberjack building being removed."""
 		used_trees = set()
-		for lumberjack_building in self.settlement.buildings_by_id.get(BUILDINGS.LUMBERJACK_CLASS, []):
+		for lumberjack_building in self.settlement.buildings_by_id.get(BUILDINGS.LUMBERJACK, []):
 			if lumberjack_building.worldid == building.worldid:
 				continue
 			for coords in lumberjack_building.position.get_radius_coordinates(lumberjack_building.radius):
@@ -414,7 +414,7 @@ class ProductionBuilder(AreaBuilder):
 	def _handle_farm_removal(self, building):
 		"""Handle farm removal by removing planned fields and tearing existing ones that can't be serviced by another farm."""
 		unused_fields = set()
-		farms = self.settlement.buildings_by_id.get(BUILDINGS.FARM_CLASS, [])
+		farms = self.settlement.buildings_by_id.get(BUILDINGS.FARM, [])
 		for coords in building.position.get_radius_coordinates(building.radius):
 			if not coords in self.plan:
 				continue
@@ -440,7 +440,7 @@ class ProductionBuilder(AreaBuilder):
 		self._refresh_unused_fields()
 		for unused_fields_list in self.unused_fields.itervalues():
 			for coords in unused_fields_list:
-				position = Rect.init_from_topleft_and_size_tuples(coords, Entities.buildings[BUILDINGS.POTATO_FIELD_CLASS].size)
+				position = Rect.init_from_topleft_and_size_tuples(coords, Entities.buildings[BUILDINGS.POTATO_FIELD].size)
 				if building.position.distance(position) > building.radius:
 					continue # it never belonged to the removed building
 
@@ -460,7 +460,7 @@ class ProductionBuilder(AreaBuilder):
 			# this can't be handled right now because the building still exists
 			Scheduler().add_new_object(Callback(self._refresh_unused_fields), self, run_in = 0)
 			Scheduler().add_new_object(Callback(partial(super(ProductionBuilder, self).remove_building, building)), self, run_in = 0)
-		elif building.buildable_upon or building.id == BUILDINGS.TRAIL_CLASS:
+		elif building.buildable_upon or building.id == BUILDINGS.TRAIL:
 			pass # don't react to road, trees and ruined tents being destroyed
 		else:
 			for x, y in building.position.tuple_iter():
@@ -471,9 +471,9 @@ class ProductionBuilder(AreaBuilder):
 			elif building.id in self.production_building_classes:
 				self.production_buildings.remove(building)
 
-			if building.id == BUILDINGS.LUMBERJACK_CLASS:
+			if building.id == BUILDINGS.LUMBERJACK:
 				self._handle_lumberjack_removal(building)
-			elif building.id == BUILDINGS.FARM_CLASS:
+			elif building.id == BUILDINGS.FARM:
 				self._handle_farm_removal(building)
 
 			super(ProductionBuilder, self).remove_building(building)
@@ -483,12 +483,12 @@ class ProductionBuilder(AreaBuilder):
 		for building in self.production_buildings:
 			producer = building.get_component(Producer)
 			for production in producer.get_productions():
-				if not production.get_produced_res():
+				if not production.get_produced_resources():
 					continue
 				all_full = True
 
 				# inventory full of the produced resources?
-				for resource_id, min_amount in production.get_produced_res().iteritems():
+				for resource_id, min_amount in production.get_produced_resources().iteritems():
 					if production.inventory.get_free_space_for(resource_id) >= min_amount:
 						all_full = False
 						break

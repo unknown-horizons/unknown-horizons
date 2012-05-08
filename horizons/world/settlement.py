@@ -24,14 +24,14 @@ import sqlite3
 
 from collections import defaultdict
 
-from horizons.constants import BUILDINGS, SETTLER
+from horizons.constants import BUILDINGS, TIER
 from horizons.entities import Entities
 from horizons.util.worldobject import WorldObject
 from horizons.util.shapes.rect import Rect
-from horizons.util.messaging.message import UpgradePermissionsChanged
+from horizons.messaging import UpgradePermissionsChanged
 from horizons.util.changelistener import ChangeListener
-from horizons.world.componentholder import ComponentHolder
-from horizons.world.component.tradepostcomponent import TradePostComponent
+from horizons.component.componentholder import ComponentHolder
+from horizons.component.tradepostcomponent import TradePostComponent
 from horizons.world.production.producer import Producer
 from horizons.world.resourcehandler import ResourceHandler
 
@@ -41,10 +41,8 @@ class Settlement(ComponentHolder, WorldObject, ChangeListener, ResourceHandler):
 
 	component_templates = ({
 	    					'StorageComponent':
-	                            {'inventory':
 	                             {'PositiveSizedSlotStorage':
 	                              { 'limit': 0 }
-	                             }
 	                            }
 	                        }
 	                        ,
@@ -74,15 +72,15 @@ class Settlement(ComponentHolder, WorldObject, ChangeListener, ResourceHandler):
 	@classmethod
 	def make_default_upgrade_permissions(cls):
 		upgrade_permissions = {}
-		for level in xrange(SETTLER.CURRENT_MAX_INCR):
+		for level in xrange(TIER.CURRENT_MAX):
 			upgrade_permissions[level] = True
-		upgrade_permissions[SETTLER.CURRENT_MAX_INCR] = False
+		upgrade_permissions[TIER.CURRENT_MAX] = False
 		return upgrade_permissions
 
 	@classmethod
 	def make_default_tax_settings(cls):
 		tax_settings = {}
-		for level in xrange(SETTLER.CURRENT_MAX_INCR + 1):
+		for level in xrange(TIER.CURRENT_MAX + 1):
 			tax_settings[level] = 1.0
 		return tax_settings
 
@@ -93,7 +91,7 @@ class Settlement(ComponentHolder, WorldObject, ChangeListener, ResourceHandler):
 		if self.upgrade_permissions[level] != allowed:
 			self.upgrade_permissions[level] = allowed
 
-			self.session.message_bus.broadcast(UpgradePermissionsChanged(self))
+			UpgradePermissionsChanged.broadcast(self)
 
 	@property
 	def inhabitants(self):
@@ -136,7 +134,7 @@ class Settlement(ComponentHolder, WorldObject, ChangeListener, ResourceHandler):
 		for res, amount in self.produced_res.iteritems():
 			db("INSERT INTO settlement_produced_res (settlement, res, amount) VALUES(?, ?, ?)", \
 			   self.worldid, res, amount)
-		for level in xrange(SETTLER.CURRENT_MAX_INCR + 1):
+		for level in xrange(TIER.CURRENT_MAX + 1):
 			db("INSERT INTO settlement_level_properties (settlement, level, upgrading_allowed, tax_setting) VALUES(?, ?, ?, ?)", \
 				self.worldid, level, self.upgrade_permissions[level], self.tax_settings[level])
 
@@ -190,7 +188,7 @@ class Settlement(ComponentHolder, WorldObject, ChangeListener, ResourceHandler):
 		for building_id, building_type in \
 			  db("SELECT rowid, type FROM building WHERE location = ?", worldid):
 			building = load_building(session, db, building_type, building_id)
-			if building_type == BUILDINGS.WAREHOUSE_CLASS:
+			if building_type == BUILDINGS.WAREHOUSE:
 				self.warehouse = building
 
 		for res, amount in db("SELECT res, amount FROM settlement_produced_res WHERE settlement = ?", worldid):

@@ -22,15 +22,12 @@
 import weakref
 
 
-from horizons.world.pathfinding.pather import SoldierPather
-from horizons.world.pathfinding import PathBlockedError
-from horizons.world.units.movingobject import MoveNotPossible
-from horizons.util import Point, Circle
+from horizons.util.pathfinding.pather import SoldierPather
+from horizons.util.pathfinding import PathBlockedError
 from unit import Unit
 from horizons.constants import GAME_SPEED, WEAPONS
 from horizons.world.units.weaponholder import MovingWeaponHolder
-from horizons.world.component.selectablecomponent import SelectableComponent
-from horizons.world.component.commandablecomponent import CommandableComponent
+from horizons.component.selectablecomponent import SelectableComponent
 
 class GroundUnit(Unit):
 	"""Class representing ground unit

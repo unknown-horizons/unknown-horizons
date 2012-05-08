@@ -25,7 +25,7 @@ from fife.extensions.pychan.widgets import ImageButton
 from horizons.gui.widgets.statswidget import StatsWidget
 from horizons.util.python import decorators
 from horizons.util import Callback
-from horizons.world.component.namedcomponent import NamedComponent
+from horizons.component.namedcomponent import NamedComponent
 
 class PlayersSettlements(StatsWidget):
 	"""Widget that shows a list of the player's settlements."""
@@ -89,7 +89,7 @@ class PlayersSettlements(StatsWidget):
 		sequence_number_label.min_size = sequence_number_label.max_size = (15, 20)
 
 		name = widgets.Label(name = 'name_%d' % settlement.worldid)
-		name.text = unicode(settlement.get_component(NamedComponent).name)
+		name.text = settlement.get_component(NamedComponent).name
 		name.min_size = name.max_size = (175, 20)
 
 		rename_icon = ImageButton(name = 'rename_%d' % settlement.worldid)

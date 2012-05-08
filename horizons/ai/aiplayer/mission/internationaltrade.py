@@ -25,9 +25,9 @@ from horizons.util.python import decorators
 from horizons.constants import RES, TRADER
 from horizons.command.uioptions import SellResource, BuyResource
 from horizons.ext.enum import Enum
-from horizons.world.component.storagecomponent import StorageComponent
-from horizons.world.component.namedcomponent  import NamedComponent
-from horizons.world.component.tradepostcomponent import TradePostComponent
+from horizons.component.storagecomponent import StorageComponent
+from horizons.component.namedcomponent  import NamedComponent
+from horizons.component.tradepostcomponent import TradePostComponent
 
 class InternationalTrade(ShipMission):
 	"""
@@ -102,7 +102,7 @@ class InternationalTrade(ShipMission):
 			return 0
 		price = int(self.owner.session.db.get_res_value(self.sold_resource) * TRADER.PRICE_MODIFIER_SELL)
 		return min(self.settlement.get_component(StorageComponent).inventory[self.sold_resource] - self.settlement.get_component(TradePostComponent).buy_list[self.sold_resource],
-			self.settlement.owner.get_component(StorageComponent).inventory[RES.GOLD_ID] // price, available_amount)
+			self.settlement.owner.get_component(StorageComponent).inventory[RES.GOLD] // price, available_amount)
 
 	def _reached_my_settlement(self):
 		self.log.info('%s reached my warehouse area (%s)', self, self.settlement_manager.settlement.get_component(NamedComponent).name)
@@ -136,7 +136,7 @@ class InternationalTrade(ShipMission):
 			return 0
 		price = int(self.owner.session.db.get_res_value(self.bought_resource) * TRADER.PRICE_MODIFIER_BUY)
 		return min(self.settlement.get_component(StorageComponent).inventory[self.bought_resource] - self.settlement.get_component(TradePostComponent).sell_list[self.bought_resource],
-			self.settlement_manager.owner.get_component(StorageComponent).inventory[RES.GOLD_ID] // price, needed_amount)
+			self.settlement_manager.owner.get_component(StorageComponent).inventory[RES.GOLD] // price, needed_amount)
 
 	def _reached_other_settlement(self):
 		self.log.info('%s reached the other warehouse area (%s)', self, self.settlement.get_component(NamedComponent).name)

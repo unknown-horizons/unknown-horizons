@@ -26,7 +26,8 @@ import horizons.main
 from horizons.entities import Entities
 from horizons.constants import LAYERS, BUILDINGS
 from horizons.gui.mousetools import  NavigationTool
-from horizons.world.component.ambientsoundcomponent import AmbientSoundComponent
+from horizons.gui.tabs.buildtabs import BuildTab
+from horizons.component.ambientsoundcomponent import AmbientSoundComponent
 
 
 class PipetteTool(NavigationTool):
@@ -82,19 +83,9 @@ class PipetteTool(NavigationTool):
 			self._add_coloring(obj)
 
 	def _is_buildable(self, building_id):
-		# TODO: use proper buildability check once there is a system for that
-		# (e.g. reuse from future build tabs)
-		# http://trac.unknown-horizons.org/t/ticket/1706
-		not_buildable = [
-		  BUILDINGS.WAREHOUSE_CLASS,
-		  BUILDINGS.IRON_MINE_CLASS,
-		  BUILDINGS.MOUNTAIN_CLASS,
-		  BUILDINGS.CLAY_DEPOSIT_CLASS,
-		  BUILDINGS.CLAY_PIT_CLASS,
-		  ]
-		return Entities.buildings[building_id].settler_level <= \
-		       self.session.world.player.settler_level and \
-		       building_id not in not_buildable
+		building_increments = BuildTab.get_building_increments()
+		return building_id in building_increments and \
+					 building_increments[ building_id ] <= self.session.world.player.settler_level
 
 	def _add_coloring(self,  obj):
 		if self._is_buildable(obj.id):

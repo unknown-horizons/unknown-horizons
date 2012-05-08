@@ -6,12 +6,10 @@ cost: 10
 cost_inactive: 0
 size_x: 2
 size_y: 2
-inhabitants_start: 2
-inhabitants_max: 2
-button_name: distillery-1
+inhabitants: 2
 tooltip_text: _ Turns sugar into liquor.
-settler_level: 1
-buildingcosts: {1: 250, 4: 2, 6: 2, 7: 4}
+settler_level: TIER.PIONEERS
+buildingcosts: {RES.GOLD: 250, RES.BOARDS: 2, RES.TOOLS: 2, RES.BRICKS: 4}
 components:
 - SelectableComponent:
     type: building
@@ -22,16 +20,16 @@ components:
     productionlines:
       34:
         produces:
-        - [22, 1]
+        - [RES.LIQUOR, 1]
         consumes:
-        - [18, -1]
+        - [RES.SUGAR, -1]
         time: 12
 - StorageComponent:
-    inventory:
       SlotsStorage:
-        slot_sizes: {18: 6, 22: 6}
+        slot_sizes: {RES.SUGAR: 6, RES.LIQUOR: 6}
 - CollectingComponent:
     collectors:
-      1000002: 1
+      UNITS.BUILDING_COLLECTOR: 1
 actionsets:
-  as_distillery0: {level: 0}
+  TIER.PIONEERS:
+    as_distillery0:

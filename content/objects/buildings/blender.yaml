@@ -1,0 +1,34 @@
+id: 50
+#name: _ Blender's Cottage
+name: _ Blender
+baseclass: production.ProductionBuilding
+radius: 8
+cost: 10
+cost_inactive: 0
+size_x: 2
+size_y: 2
+inhabitants: 2
+tooltip_text: _ Produces condiments out of spices.
+settler_level: TIER.SETTLERS
+buildingcosts: {RES.GOLD: 1}
+components:
+- SelectableComponent:
+    type: building
+    tabs: [ProductionOverviewTab ]
+    enemy_tabs: [EnemyBuildingOverviewTab,]
+- HealthComponent: {maxhealth: 1000}
+- ProducerComponent:
+    productionlines:
+      0:
+        produces:
+        - [RES.CONDIMENTS, 1]
+        consumes:
+        - [RES.SPICES, -2]
+        time: 15
+- StorageComponent:
+      SlotsStorage:
+        slot_sizes: {RES.SPICES: 6, RES.CONDIMENTS: 6}
+actionsets:
+  TIER.SETTLERS:
+    #as_blender0:
+    as_2x2:

@@ -20,8 +20,8 @@
 # ###################################################
 
 
-from horizons.world.component.namedcomponent import NamedComponent
-from horizons.world.component.storagecomponent import StorageComponent
+from horizons.component.namedcomponent import NamedComponent
+from horizons.component.storagecomponent import StorageComponent
 from horizons.constants import RES
 
 from tests.game import game_test
@@ -44,17 +44,17 @@ def test_traderoute_basic(s):
 	food_inv = has_food.get_component(StorageComponent).inventory
 	wood_inv = has_wood.get_component(StorageComponent).inventory
 
-	assert food_inv[RES.FOOD_ID] > 0
-	assert wood_inv[RES.BOARDS_ID] > 0
+	assert food_inv[RES.FOOD] > 0
+	assert wood_inv[RES.BOARDS] > 0
 
-	while food_inv[RES.BOARDS_ID] == 0: # first ensure wood to food
+	while food_inv[RES.BOARDS] == 0: # first ensure wood to food
 		s.run()
-	while wood_inv[RES.FOOD_ID] == 0: # traderoute also goes other way around
+	while wood_inv[RES.FOOD] == 0: # traderoute also goes other way around
 		s.run()
 
-	while food_inv.get_free_space_for(RES.BOARDS_ID) > 0: # also fill up
+	while food_inv.get_free_space_for(RES.BOARDS) > 0: # also fill up
 		s.run()
-	while wood_inv.get_free_space_for(RES.FOOD_ID) > 0: # also fill up
+	while wood_inv.get_free_space_for(RES.FOOD) > 0: # also fill up
 		s.run()
 
 	# when the whiles pass, it is ensured that traderoutes somewhat work

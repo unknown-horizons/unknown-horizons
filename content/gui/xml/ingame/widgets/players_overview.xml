@@ -19,7 +19,7 @@
 			</HBox>
 		</VBox>
 
-		<ScrollArea background_color="255,255,255,0" min_size="650,300">
+		<ScrollArea background_color="255,255,255,0" min_size="650,300" max_size="650,300">
 			<VBox name="content_vbox" />
 		</ScrollArea>
 <!--

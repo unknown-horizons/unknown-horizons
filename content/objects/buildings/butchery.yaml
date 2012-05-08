@@ -6,12 +6,10 @@ cost: 15
 cost_inactive: 5
 size_x: 2
 size_y: 2
-inhabitants_start: 2
-inhabitants_max: 2
-button_name: butchery-1
+inhabitants: 2
 tooltip_text: _ Needs pigs or cattle. Produces food.
-settler_level: 2
-buildingcosts: {1: 500, 6: 3, 7: 4}
+settler_level: TIER.SETTLERS
+buildingcosts: {RES.GOLD: 500, RES.TOOLS: 3, RES.BRICKS: 4}
 components:
 - SelectableComponent:
     type: building
@@ -22,22 +20,22 @@ components:
     productionlines:
       56:
         produces:
-        - [5, 2]
+        - [RES.FOOD, 2]
         consumes:
-        - [36, -1]
+        - [RES.PIGS_SLAUGHTER, -1]
         time: 15
       55:
         produces:
-        - [5, 2]
+        - [RES.FOOD, 2]
         consumes:
-        - [35, -1]
+        - [RES.CATTLE_SLAUGHTER, -1]
         time: 15
 - StorageComponent:
-    inventory:
       SlotsStorage:
-        slot_sizes: {35: 4, 36: 6, 5: 12}
+        slot_sizes: {RES.CATTLE_SLAUGHTER: 4, RES.PIGS_SLAUGHTER: 6, RES.FOOD: 12}
 - CollectingComponent:
     collectors:
-      1000002: 1
+      UNITS.BUILDING_COLLECTOR: 1
 actionsets:
-  as_butchery0: {level: 0}
+  TIER.SETTLERS:
+    as_butchery0:

@@ -1,0 +1,29 @@
+id: 54
+name: _ Stone Pit
+baseclass: production.Mine
+radius: 0
+cost: 15
+cost_inactive: 5
+size_x: 3
+size_y: 3
+inhabitants: 1
+tooltip_text: _ Gets stone from a mountain.
+settler_level: TIER.SETTLERS
+buildingcosts: {RES.GOLD: 1}
+components:
+- HealthComponent: {maxhealth: 1000}
+- ProducerComponent:
+    productionlines:
+      0:
+        produces:
+        - [RES.STONE_TOPS, 1]
+        consumes:
+        - [RES.STONE_DEPOSIT, -1]
+        time: 15
+- StorageComponent:
+      SlotsStorage:
+        slot_sizes: {RES.STONE_DEPOSIT: 1000000, RES.STONE_TOPS: 8}
+actionsets:
+  TIER.SETTLERS:
+    as_3x3:
+    #as_stone_pit0:

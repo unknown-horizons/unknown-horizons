@@ -23,8 +23,10 @@ import os
 import shelve
 import yaml
 import threading
+import traceback
+import logging
 
-from horizons.constants import RES, UNITS, BUILDINGS, PATHS
+from horizons.constants import TIER, RES, UNITS, BUILDINGS, PATHS
 
 try:
 	from yaml import CSafeLoader as SafeLoader
@@ -35,18 +37,21 @@ except ImportError:
 def construct_yaml_str(self, node):
 	return self.construct_scalar(node)
 SafeLoader.add_constructor(u'tag:yaml.org,2002:python/unicode', construct_yaml_str)
+SafeLoader.add_constructor(u'tag:yaml.org,2002:str', construct_yaml_str)
 
 
 def parse_token(token, token_klass):
 	"""Helper function that tries to parse a constant name.
 	Does not do error detection, but passes unparseable stuff through.
 	Allowed values: integer or token_klass.LIKE_IN_CONSTANTS
-	@param token_klass: "RES", "UNITS" or "BUILDINGS"
+	@param token_klass: "TIER", "RES", "UNITS" or "BUILDINGS"
 	"""
-	if isinstance(token, (str, unicode)):
+	classes = {'TIER': TIER, 'RES': RES, 'UNITS': UNITS, 'BUILDINGS': BUILDINGS}
+
+	if isinstance(token, unicode):
 		if token.startswith(token_klass):
 			try:
-				return getattr( globals()[token_klass], token.split(".", 2)[1])
+				return getattr( classes[token_klass], token.split(".", 2)[1])
 			except AttributeError as e: # token not defined here
 				err =  "This means that you either have to add an entry in horizons/constants.py in the class %s for %s,\nor %s is actually a typo." % (token_klass, token, token)
 				raise Exception( str(e) + "\n\n" + err +"\n" )
@@ -63,10 +68,20 @@ def convert_game_data(data):
 	elif isinstance(data, (tuple, list)):
 		return type(data)( ( convert_game_data(i) for i in data) )
 	else: # leaf
+		data = parse_token(data, "TIER")
 		data = parse_token(data, "RES")
 		data = parse_token(data, "UNITS")
 		data = parse_token(data, "BUILDINGS")
 		return data
+
+
+class DummyShelve(dict):
+	"""Implements the methods we use on a shelve but is really just a dict for
+	when we are unable to open a shelve.
+	"""
+	def sync(self):
+		"""No need to do that, because we are just a dummy shelve."""
+		pass
 
 
 class YamlCache(object):
@@ -80,8 +95,11 @@ class YamlCache(object):
 
 	lock = threading.Lock()
 
+	log = logging.getLogger("yamlcache")
+
 	@classmethod
 	def get_file(cls, filename, game_data=False):
+		# TODO: this seems to not do anything, refactor it away or give it a purpose
 		data = cls.get_yaml_file(filename, game_data=game_data)
 		return data
 
@@ -99,16 +117,17 @@ class YamlCache(object):
 			filename = filename.encode('utf8') # shelve needs str keys
 
 		def handle_get_yaml_file_error(e, release):
-				# when something unexpected happens, shelve does not guarantee anything.
-				# since crashing on any access is part of the specified behaviour, we need to handle it.
-				# cf. http://bugs.python.org/issue14041
-				print 'Warning: Can\'t write to shelve: ', e
-				# delete cache and try again
+			# when something unexpected happens, shelve does not guarantee anything.
+			# since crashing on any access is part of the specified behaviour, we need to handle it.
+			# cf. http://bugs.python.org/issue14041
+			cls.log.exception('Warning: Can\'t write to shelve: '+unicode(e))
+			# delete cache and try again
+			if os.path.exists(cls.cache_filename):
 				os.remove(cls.cache_filename)
-				cls.cache = None
-				if release:
-					cls.lock.release()
-				return cls.get_yaml_file(filename, game_data=game_data)
+			cls.cache = None
+			if release:
+				cls.lock.release()
+			return cls.get_yaml_file(filename, game_data=game_data)
 
 		try:
 			yaml_file_in_cache = (filename in cls.cache and cls.cache[filename][0] == h)
@@ -148,8 +167,12 @@ class YamlCache(object):
 		try:
 			cls.cache = shelve.open(cls.cache_filename)
 		except UnicodeError as e:
-			print "Warning: failed to open "+cls.cache_filename+": "+unicode(e)
-			return # see _write_bin_file
+			cls.log.exception("Warning: Failed to open "+cls.cache_filename+": "+unicode(e))
+			# This can happen with unicode characters in the path because the bdb module
+			# on win converts it internally to ascii, which fails
+			# The shelve module therefore does not support writing to paths containing non-ascii characters in general,
+			# which means we cannot store data persistently.
+			cls.cache = DummyShelve()
 		except Exception as e:
 			# 2 causes for this:
 
@@ -162,9 +185,17 @@ class YamlCache(object):
 			# If there is an old database file that was created with a
 			# deprecated dbm library, opening it will fail with an obscure exception, so we delete it
 			# and simply retry.
-			print "Warning: you probably have an old cache file; deleting and retrying"
-			os.remove(cls.cache_filename)
-			cls.cache = shelve.open(cls.cache_filename)
+			cls.log.exception("Warning: You probably have an old cache file; deleting and retrying: "+unicode(e))
+			if os.path.exists(cls.cache_filename):
+				os.remove(cls.cache_filename)
+			try:
+				cls.cache = shelve.open(cls.cache_filename)
+			except Exception as e:
+				# If no persistant cache can be opened the game should still be
+				# playable and not just crash.
+				cls.log.exception("Warning: Failed to open %s as cache: %s" % (
+									cls.cache_filename, unicode(e)))
+				cls.cache = DummyShelve()
 		cls.lock.release()
 
 

@@ -22,7 +22,7 @@
 from horizons.scheduler import Scheduler
 from horizons.util import WorldObject, Callback, ActionSetLoader
 from horizons.world.units import UnitClass
-from random import randint
+import random
 
 class ConcreteObject(WorldObject):
 	"""Class for concrete objects like Units or Buildings.
@@ -36,7 +36,7 @@ class ConcreteObject(WorldObject):
 	is_unit = False
 	is_building = False
 
-	def __init__(self, session, **kwargs):
+	def __init__(self, session, action_set_id=None, **kwargs):
 		"""
 		@param session: Session instance this obj belongs to
 		"""
@@ -44,12 +44,13 @@ class ConcreteObject(WorldObject):
 		from horizons.session import Session
 		assert isinstance(session, Session)
 		self.session = session
-		self.__init()
+		self.__init(action_set_id)
 
-	def __init(self):
+	def __init(self, action_set_id=None):
 		self._instance = None # overwrite in subclass __init[__]
 		self._action = 'idle' # Default action is idle
-		self._action_set_id = self.get_random_action_set()[0]
+		# NOTE: this can't be level-aware since not all ConcreteObjects have levels
+		self._action_set_id = action_set_id if action_set_id else self.__class__.get_random_action_set()
 
 		# only buildings for now
 		# NOTE: this is player dependant, therefore there must be no calls to session.random that depend on this
@@ -62,13 +63,18 @@ class ConcreteObject(WorldObject):
 
 	def save(self, db):
 		super(ConcreteObject, self).save(db)
-		db("INSERT INTO concrete_object(id, action_runtime) VALUES(?, ?)", self.worldid, \
-			 self._instance.getActionRuntime())
+		db("INSERT INTO concrete_object(id, action_runtime, action_set_id) VALUES(?, ?, ?)", self.worldid, \
+			 self._instance.getActionRuntime(), self._action_set_id)
 
 	def load(self, db, worldid):
 		super(ConcreteObject, self).load(db, worldid)
-		self.__init()
-		runtime = db.get_concrete_object_action_runtime(worldid)
+		runtime, action_set_id = db.get_concrete_object_data(worldid)
+		# action_set_id should never be None in regular games,
+		# but this information was lacking in savegames before rev 59.
+		if action_set_id is None:
+			action_set_id = self.__class__.get_random_action_set(level=self.level if hasattr(self, "level") else 0)
+		self.__init(action_set_id)
+
 		# delay setting of runtime until load of sub/super-class has set the action
 		def set_action_runtime(self, runtime):
 			# workaround to delay resolution of self._instance, which doesn't exist yet
@@ -100,33 +106,33 @@ class ConcreteObject(WorldObject):
 		super(ConcreteObject, self).remove()
 
 	@classmethod
-	def get_random_action_set(cls, level=0, exact_level=False):
+	def get_random_action_set(cls, level=0, exact_level=False, include_preview=False):
 		"""Returns an action set for an object of type object_id in a level <= the specified level.
 		The highest level number is preferred.
-		@param db: UhDbAccessor
-		@param object_id: type id of building
 		@param level: level to prefer. a lower level might be chosen
 		@param exact_level: choose only action sets from this level. return val might be None here.
-		@return: tuple: (action_set_id, preview_action_set_id)"""
-		assert level >= 0
-
-		action_sets_by_lvl = cls.action_sets_by_level
+		@return: action_set_id  or (if include_preview) tuple (action_set_id, preview_action_set_id) or None"""
 		action_sets = cls.action_sets
-		action_set = None
-		preview = None
+		action_set, preview_set = None, None
 		if exact_level:
-			action_set = action_sets_by_lvl[level][randint(0, len(action_sets_by_lvl[level])-1)] if len(action_sets_by_lvl[level]) > 0 else None
+			if level in action_sets:
+				action_set, preview_set = random.choice(action_sets[level].items())
+			# if there isn't one, stick with None
 		else: # search all levels for an action set, starting with highest one
 			for possible_level in reversed(xrange(level+1)):
-				if len(action_sets_by_lvl[possible_level]) > 0:
-					action_set = action_sets_by_lvl[possible_level][randint(0, len(action_sets_by_lvl[possible_level])-1)]
+				if possible_level in action_sets.iterkeys():
+					action_set, preview_set = random.choice(action_sets[possible_level].items())
 					break
-			if action_set is None:
-				assert False, "Couldn't find action set for obj %s(%s) in lvl %s" % (cls.id, cls.name, level)
+			if action_set is None: # didn't find a suitable one
+				# fall back to one from a higher level.
+				# this does not happen in valid games, but can happen in tests, when level
+				# constraints are ignored.
+				action_set, preview_set = action_sets.values()[0].items()[0]
 
-		if action_set is not None and 'preview' in action_sets[action_set]:
-			preview = action_sets[action_set]['preview']
-		return (action_set, preview)
+		if include_preview:
+			return (action_set, preview_set)
+		else:
+			return action_set
 
 	@property
 	def name(self):

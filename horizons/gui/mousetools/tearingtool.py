@@ -27,7 +27,7 @@ from horizons.gui.mousetools.navigationtool import NavigationTool
 from horizons.command.building import Tear
 from horizons.util import Point, WeakList
 from horizons.constants import BUILDINGS
-from horizons.util.messaging.message import WorldObjectDeleted
+from horizons.messaging import WorldObjectDeleted
 
 class TearingTool(NavigationTool):
 	"""
@@ -45,17 +45,17 @@ class TearingTool(NavigationTool):
 		self.session.ingame_gui.hide_menu()
 		horizons.main.fife.set_cursor_image("tearing")
 		self._hovering_over = WeakList()
-		self.session.message_bus.subscribe_globally(WorldObjectDeleted, self._on_object_deleted)
+		WorldObjectDeleted.subscribe(self._on_object_deleted)
 
 	def remove(self):
 		self._mark()
 		self.tear_tool_active = False
 		horizons.main.fife.set_cursor_image("default")
-		self.session.message_bus.unsubscribe_globally(WorldObjectDeleted, self._on_object_deleted)
+		WorldObjectDeleted.subscribe(self._on_object_deleted)
 		super(TearingTool, self).remove()
 
 	def mouseDragged(self, evt):
-		coords = self.get_world_location_from_event(evt).to_tuple()
+		coords = self.get_world_location(evt).to_tuple()
 		if self.coords is None:
 			self.coords = coords
 		self._mark(self.coords, coords)
@@ -63,7 +63,7 @@ class TearingTool(NavigationTool):
 
 	def mouseMoved(self,  evt):
 		super(TearingTool, self).mouseMoved(evt)
-		coords = self.get_world_location_from_event(evt).to_tuple()
+		coords = self.get_world_location(evt).to_tuple()
 		self._mark(coords)
 		evt.consume()
 
@@ -74,7 +74,7 @@ class TearingTool(NavigationTool):
 		"""Tear selected instances and set selection tool as cursor"""
 		self.log.debug("TearingTool: mouseReleased")
 		if fife.MouseEvent.LEFT == evt.getButton():
-			coords = self.get_world_location_from_event(evt).to_tuple()
+			coords = self.get_world_location(evt).to_tuple()
 			if self.coords is None:
 				self.coords = coords
 			self._mark(self.coords, coords)
@@ -85,7 +85,7 @@ class TearingTool(NavigationTool):
 				if self._hovering_over:
 					# we're hovering over a building, but none is selected, so this tear action isn't allowed
 					warehouses = [ b for b in self._hovering_over if \
-					               b.id == BUILDINGS.WAREHOUSE_CLASS ]
+					               b.id == BUILDINGS.WAREHOUSE ]
 					if warehouses:
 						# tried to tear a warehouse, this is especially non-tearable
 						pos = warehouses[0].position.origin
@@ -103,7 +103,7 @@ class TearingTool(NavigationTool):
 		if fife.MouseEvent.RIGHT == evt.getButton():
 			self.on_escape()
 		elif fife.MouseEvent.LEFT == evt.getButton():
-			self.coords = self.get_world_location_from_event(evt).to_tuple()
+			self.coords = self.get_world_location(evt).to_tuple()
 			self._mark(self.coords)
 		else:
 			return

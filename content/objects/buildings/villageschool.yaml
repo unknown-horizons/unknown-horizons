@@ -6,12 +6,10 @@ cost: 15
 cost_inactive: 5
 size_x: 2
 size_y: 2
-inhabitants_start: 1
-inhabitants_max: 1
-button_name: villageschool-1
+inhabitants: 1
 tooltip_text: _ Provides education.
-settler_level: 1
-buildingcosts: {1: 500, 4: 4, 7: 4}
+settler_level: TIER.PIONEERS
+buildingcosts: {RES.GOLD: 500, RES.BOARDS: 4, RES.BRICKS: 4}
 show_status_icons: false
 components:
 - SelectableComponent:
@@ -23,11 +21,11 @@ components:
     productionlines:
       25:
         produces:
-        - [16, 1]
+        - [RES.EDUCATION, 1]
         time: 4
 - StorageComponent:
-    inventory:
       SlotsStorage:
-        slot_sizes: {16: 10}
+        slot_sizes: {RES.EDUCATION: 10}
 actionsets:
-  as_school0: {level: 0}
+  TIER.PIONEERS:
+    as_school0:

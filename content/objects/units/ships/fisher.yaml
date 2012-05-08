@@ -6,10 +6,10 @@ velocity: 12.0
 components:
 - AmbientSoundComponent
 - StorageComponent:
-   inventory:
       PositiveTotalNumSlotStorage:
          limit: 120
          slotnum: 4
 - ShipNameComponent
 actionsets:
-   as_fisher0: {level: 0}
+  TIER.SAILORS:
+   as_fisher0:

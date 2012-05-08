@@ -19,7 +19,7 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-from horizons.constants import SETTLER
+from horizons.constants import TIER
 
 class DefaultPersonality:
 	class SettlementFounder:
@@ -194,20 +194,20 @@ class DefaultPersonality:
 		enabled = True
 		default_priority = 600
 		residences_required = 16
-		min_settler_level = SETTLER.PIONEER_LEVEL
+		min_settler_level = TIER.PIONEERS
 
 	class ClayDepositCoverageGoal:
 		enabled = True
 		default_priority = 450
 		residences_required = 0
-		min_settler_level = SETTLER.PIONEER_LEVEL
+		min_settler_level = TIER.PIONEERS
 
 		alignment_coefficient = 0.7 # the importance of alignment when choosing a location for a storage to get closer to a deposit
 
 	class DoNothingGoal:
 		enabled = True
 		default_priority = 1500 # mean priority; changing this will influence which goals are more important than doing nothing
-		min_settler_level = SETTLER.SAILOR_LEVEL
+		min_settler_level = TIER.SAILORS
 		priority_variance = 50
 		likelihood = 0.1 # likelihood that it will be active [0, 1]
 
@@ -215,7 +215,7 @@ class DefaultPersonality:
 		enabled = True
 		default_priority = 850
 		residences_required = 0
-		min_settler_level = SETTLER.SAILOR_LEVEL
+		min_settler_level = TIER.SAILORS
 
 		alignment_coefficient = 3 # the importance of alignment when choosing a location for a storage to enlarge collector coverage
 		max_interesting_collector_area = 100 # maximum collector area (of 3x3 squares) we are interested in when considering whether to enlarge the area
@@ -225,7 +225,7 @@ class DefaultPersonality:
 		enabled = True
 		default_priority = 650
 		residences_required = 16
-		min_settler_level = SETTLER.SAILOR_LEVEL
+		min_settler_level = TIER.SAILORS
 
 		feeder_island_requirement_cutoff = 30 # if there are less than this many free 3x3 squares in a settlement then a feeder island is needed
 		usable_feeder_island_cutoff = 30 # if there are less than this many free 3x3 on a feeder island then another feeder island may be needed
@@ -234,7 +234,7 @@ class DefaultPersonality:
 		enabled = True
 		default_priority = 1000
 		residences_required = 0
-		min_settler_level = SETTLER.SAILOR_LEVEL
+		min_settler_level = TIER.SAILORS
 
 		min_bad_collector_coverage = 0.5 # collector coverage should be improved when a production building is stopped for more than this amount of time
 		min_free_space = 20 # if there is less than this much free space for a resource then it doesn't matter that the building in badly covered
@@ -251,7 +251,7 @@ class DefaultPersonality:
 		enabled = True
 		default_priority = 200
 		residences_required = 0
-		min_settler_level = SETTLER.SETTLER_LEVEL
+		min_settler_level = TIER.SETTLERS
 
 		alignment_coefficient = 0.7 # the importance of alignment when choosing a location for a storage to get closer to a deposit
 
@@ -259,13 +259,13 @@ class DefaultPersonality:
 		enabled = True
 		default_priority = 750
 		residences_required = 0
-		min_settler_level = SETTLER.SAILOR_LEVEL
+		min_settler_level = TIER.SAILORS
 
 	class StorageSpaceGoal(ImproveCollectorCoverageGoal):
 		enabled = True
 		default_priority = 825
 		residences_required = 0
-		min_settler_level = SETTLER.SAILOR_LEVEL
+		min_settler_level = TIER.SAILORS
 
 		max_required_storage_space = 60 # maximum storage capacity to go for when the inventory starts to get full
 		full_storage_threshold = 5 # when there is less than this amount of free space for a resource then we might need more space
@@ -274,98 +274,98 @@ class DefaultPersonality:
 		enabled = True
 		default_priority = 480
 		residences_required = 0
-		min_settler_level = SETTLER.SAILOR_LEVEL
+		min_settler_level = TIER.SAILORS
 
 	class TradingShipGoal:
 		enabled = True
 		default_priority = 550
 		residences_required = 0
-		min_settler_level = SETTLER.SAILOR_LEVEL
+		min_settler_level = TIER.SAILORS
 
 	class FaithGoal:
 		enabled = True
 		default_priority = 700
 		residences_required = 10
-		min_settler_level = SETTLER.SAILOR_LEVEL
+		min_settler_level = TIER.SAILORS
 
 	class TextileGoal:
 		enabled = True
 		default_priority = 520
 		residences_required = 0
-		min_settler_level = SETTLER.PIONEER_LEVEL
+		min_settler_level = TIER.PIONEERS
 
 	class BricksGoal:
 		enabled = True
 		default_priority = 350
 		residences_required = 0
-		min_settler_level = SETTLER.PIONEER_LEVEL
+		min_settler_level = TIER.PIONEERS
 
 	class EducationGoal:
 		enabled = True
 		default_priority = 300
 		residences_required = 10
-		min_settler_level = SETTLER.PIONEER_LEVEL
+		min_settler_level = TIER.PIONEERS
 
 	class GetTogetherGoal:
 		enabled = True
 		default_priority = 250
 		residences_required = 10
-		min_settler_level = SETTLER.SETTLER_LEVEL
+		min_settler_level = TIER.SETTLERS
 
 	class ToolsGoal:
 		enabled = True
 		default_priority = 150
 		residences_required = 0
-		min_settler_level = SETTLER.SETTLER_LEVEL
+		min_settler_level = TIER.SETTLERS
 
 	class BoardsGoal:
 		enabled = True
 		default_priority = 950
 		residences_required = 0
-		min_settler_level = SETTLER.SAILOR_LEVEL
+		min_settler_level = TIER.SAILORS
 
 	class FoodGoal:
 		enabled = True
 		default_priority = 800
 		residences_required = 0
-		min_settler_level = SETTLER.SAILOR_LEVEL
+		min_settler_level = TIER.SAILORS
 
 	class CommunityGoal:
 		enabled = True
 		default_priority = 900
 		residences_required = 0
-		min_settler_level = SETTLER.SAILOR_LEVEL
+		min_settler_level = TIER.SAILORS
 
 	class LiquorGoal:
 		# this goal is only used on feeder islands
 		enabled = True
 		default_priority = 250
 		residences_required = 0
-		min_settler_level = SETTLER.SETTLER_LEVEL
+		min_settler_level = TIER.SETTLERS
 
 	class SaltGoal:
 		enabled = True
 		default_priority = 230
 		residences_required = 10
-		min_settler_level = SETTLER.SETTLER_LEVEL
+		min_settler_level = TIER.SETTLERS
 
 	class FeederSaltGoal:
 		enabled = True
 		default_priority = 230
 		residences_required = 0
-		min_settler_level = SETTLER.SETTLER_LEVEL
+		min_settler_level = TIER.SETTLERS
 
 	class TobaccoProductsGoal:
 		enabled = True
 		default_priority = 220
 		residences_required = 13
-		min_settler_level = SETTLER.SETTLER_LEVEL
+		min_settler_level = TIER.SETTLERS
 
 	class FeederTobaccoProductsGoal:
 		enabled = True
 		default_priority = 220
 		residences_required = 0
-		min_settler_level = SETTLER.SETTLER_LEVEL
+		min_settler_level = TIER.SETTLERS
 
 	class AbstractVillageBuilding:
 		fraction_of_assigned_residences_built = 0.75 # build a coverage building if at least this amount of the assigned residences have been built
@@ -452,7 +452,7 @@ class DefaultPersonality:
 		enabled = True
 		default_priority = 690
 		residences_required = 5
-		min_settler_level = SETTLER.SAILOR_LEVEL
+		min_settler_level = TIER.SAILORS
 
 	class AbstractFireStation:
 		fraction_of_assigned_residences_built = 0.4 # build a fire station if at least this amount of the assigned residences have been built

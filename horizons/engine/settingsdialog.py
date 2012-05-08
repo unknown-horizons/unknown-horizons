@@ -35,6 +35,10 @@ class SettingsDialog(Setting):
 	plain load_xml().
 	"""
 	def _loadWidget(self, dialog):
+		# NOTE: in the fife superclass, this is used for the main widget
+		# as well as the require-restart message. Here, we allow us to ignore
+		# the parameter since _showChangeRequireRestartDialog() is overwritten as well
+
 		wdg = OptionsPickbeltWidget().get_widget()
 		# HACK: fife settings call stylize, which breaks our styling on widget load
 		no_restyle_str = "do_not_restyle_this"
@@ -43,6 +47,29 @@ class SettingsDialog(Setting):
 			if style != no_restyle_str:
 				wdg.stylize(style)
 		wdg.stylize = no_restyle
+
+		# on_escape HACK at the interface between fife gui and uh gui.
+		# show_dialog of gui.py would handle this nicely, but to be able to
+		# reuse the fife code, we have do something here.
+
+		if horizons.main._modules.session is not None:
+			gui = horizons.main._modules.session.ingame_gui
+		else:
+			gui = horizons.main._modules.gui
+
+		# overwrite hide of widget to reset on_escape to old value when the settings
+		# dialog has been hidden
+		old_on_escape = gui.on_escape
+		old_hide = wdg.hide
+		def on_hide():
+			old_hide()
+			gui.on_escape = old_on_escape
+			return True # event is handled
+
+		# use it for escape and hide to cover all cases
+		gui.on_escape = on_hide
+		wdg.hide = on_hide
+
 		return wdg
 
 	def _showChangeRequireRestartDialog(self):

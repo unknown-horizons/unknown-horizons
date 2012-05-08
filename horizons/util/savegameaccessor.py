@@ -43,13 +43,11 @@ class SavegameAccessor(DbReader):
 		self._load_concrete_object()
 		self._load_production()
 		self._load_storage()
-		self._load_storage_slot_limit()
 		self._load_wildanimal()
 		self._load_unit()
 		self._load_building_collector()
 		self._load_production_line()
 		self._load_unit_path()
-		self._load_component()
 		self._load_storage_global_limit()
 		self._load_health()
 		self._hash = None
@@ -88,10 +86,10 @@ class SavegameAccessor(DbReader):
 
 	def _load_concrete_object(self):
 		self._concrete_object = {}
-		for row in self("SELECT id, action_runtime FROM concrete_object"):
-			self._concrete_object[int(row[0])] = int(row[1])
+		for row in self("SELECT id, action_runtime, action_set_id FROM concrete_object"):
+			self._concrete_object[int(row[0])] = int(row[1]), row[2]
 
-	def get_concrete_object_action_runtime(self, worldid):
+	def get_concrete_object_data(self, worldid):
 		return self._concrete_object[int(worldid)]
 
 
@@ -151,16 +149,6 @@ class SavegameAccessor(DbReader):
 		"""Returns potentially empty list of worldids referencing storages"""
 		ownerid = int(ownerid)
 		return [] if ownerid not in self._storage else self._storage[ownerid]
-
-
-	def _load_storage_slot_limit(self):
-		self._storage_slot_limit = {}
-		for row in self("SELECT object, slot, value FROM storage_slot_limit"):
-			key = (int(row[0]), int(row[1]))
-			self._storage_slot_limit[key] = int(row[2])
-
-	def get_storage_slot_limit(self, ownerid, slot):
-		return self._storage_slot_limit[(int(ownerid), int(slot))]
 
 
 	def _load_wildanimal(self):
@@ -223,19 +211,6 @@ class SavegameAccessor(DbReader):
 	def get_unit_path(self, worldid):
 		worldid = int(worldid)
 		return self._unit_path[worldid] if worldid in self._unit_path else None
-
-
-	def _load_component(self):
-		self._component = {}
-		for row in self("SELECT worldid, name, module, class FROM component"):
-			id = int(row[0])
-			if id not in self._component:
-				self._component[id] = []
-			self._component[id].append(row[1:])
-
-	def get_component_row(self, worldid):
-		worldid = int(worldid)
-		return self._component[worldid] if worldid in self._component else []
 
 
 	def _load_storage_global_limit(self):

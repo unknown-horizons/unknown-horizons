@@ -10,14 +10,14 @@ components:
     enemy_tabs: [EnemyShipOverviewTab,]
 - AmbientSoundComponent
 - StorageComponent:
-   inventory:
       PositiveTotalNumSlotStorage:
          limit: 120
          slotnum: 4
 - ShipNameComponent
 - HealthComponent:
    maxhealth: 200
-- CommandableComponent   
+- CommandableComponent
 
 actionsets:
-   as_frigate0: {level: 0}
+ TIER.SAILORS:
+   as_frigate0:

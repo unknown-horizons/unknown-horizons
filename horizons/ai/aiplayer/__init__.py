@@ -72,7 +72,7 @@ from horizons.util import Callback, WorldObject
 from horizons.ext.enum import Enum
 from horizons.ai.generic import GenericAI
 from horizons.util.python import decorators
-from horizons.world.component.selectablecomponent import SelectableComponent
+from horizons.component.selectablecomponent import SelectableComponent
 
 class AIPlayer(GenericAI):
 	"""This is the AI that builds settlements."""

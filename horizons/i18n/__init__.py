@@ -66,7 +66,7 @@ def translate_widget(untranslated, filename):
 				replace_attribute(widget, entry[0][1], entry[1])
 				widget.adaptLayout()
 	else:
-		log.debug('No translation for file %s', filename)
+		log.debug('No translation key in i18n.guitranslations for file %s', filename)
 
 	# save as weakref for updates to translations
 	translated_widgets[filename] = weakref.ref(untranslated)
@@ -117,7 +117,7 @@ def change_language(language=None):
 			trans.install(unicode=True, names=['ngettext',])
 		except IOError:
 			#xgettext:python-format
-			print _("Configured language {lang} could not be loaded.").format(lang=language)
+			print "Configured language {lang} could not be loaded.".format(lang=language)
 			horizons.main.fife.set_uh_setting('Language', LANGUAGENAMES[''])
 			return change_language() # recurse
 	else:
@@ -131,7 +131,7 @@ def change_language(language=None):
 	__builtin__.__dict__['N_'] = __builtin__.__dict__['ngettext']
 
 	# update fonts
-	fontdef = get_fontdef_for_locale(language)
+	fontdef = get_fontdef_for_locale(language or horizons.main.fife.get_locale())
 	horizons.main.fife.pychan.loadFonts(fontdef)
 
 	# dynamically reset all translations of active widgets

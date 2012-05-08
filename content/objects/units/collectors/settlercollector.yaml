@@ -1,4 +1,4 @@
-baseclass: collectors.StorageCollector
+baseclass: collectors.SettlerCollector
 id: 1000011
 name: SettlerCollector
 radius: 5
@@ -6,12 +6,12 @@ velocity: 12.0
 components:
 - AmbientSoundComponent
 - StorageComponent:
-   inventory:
       PositiveSizedSlotStorage:
          limit: 8
 
 actionsets:
-   as_male: {level: 0}
-   as_female: {level: 0}
-   as_male2: {level: 0}
-   as_female2: {level: 0}
+  TIER.SAILORS:
+    as_male:
+    as_female:
+    as_male2:
+    as_female2:

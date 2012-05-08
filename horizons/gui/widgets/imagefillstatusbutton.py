@@ -24,11 +24,11 @@ from fife.extensions import pychan
 from fife.extensions.pychan.widgets import ImageButton
 
 from horizons.util import Callback
-from horizons.util.gui import get_res_icon_path
+from horizons.gui.util import get_res_icon_path
 
 class ImageFillStatusButton(pychan.widgets.Container):
 
-	DEFAULT_BUTTON_SIZE = (55, 50)
+	CELL_SIZE = (54, 50) # 32x32 icon, fillbar to the right, label below, padding
 
 	def __init__(self, up_image, down_image, hover_image, text, res_id, helptext="", \
 	             filled=0, uncached=False, **kwargs):
@@ -37,11 +37,11 @@ class ImageFillStatusButton(pychan.widgets.Container):
 		in order to display the image. The container is only used, because ImageButtons can't have children.
 		This is meant to be used with the Inventory widget."""
 		super(ImageFillStatusButton, self).__init__(**kwargs)
-		self.up_image, self.down_image, self.hover_image, self.text = up_image, down_image, hover_image, unicode(text)
-		self.helptext = unicode(_(helptext))
-		# res_id is used by the TradeWidget for example to determine the resource this button represents
+		self.up_image, self.down_image, self.hover_image, self.text = up_image, down_image, hover_image, text
+		self.helptext = _(helptext)
+		# res_id is used by the TradeTab for example to determine the resource this button represents
 		self.res_id = res_id
-		self.text_position = (17, 36)
+		self.text_position = (9, 30)
 		self.uncached = uncached # force no cache. needed when the same icon has to appear several times at the same time
 		self.filled = filled # <- black magic at work! this calls _draw()
 
@@ -52,24 +52,19 @@ class ImageFillStatusButton(pychan.widgets.Container):
 		@param res: resource id
 		@param amount: int amount of res (used to decide inactiveness and as text)
 		@param filled: percent of fill status (values are ints in [0, 100])
-		@param use_inactive_icon: wheter to use inactive icon if amount == 0
+		@param use_inactive_icon: whether to use inactive icon if amount == 0
 		@param uncached: force no cache. see __init__()
 		@return: ImageFillStatusButton instance"""
-		icon = get_res_icon_path(res, 50)
-		if use_inactive_icon:
-			icon_disabled = get_res_icon_path(res, 50, greyscale=True)
-		else:
-			icon_disabled = icon
+		greyscale = use_inactive_icon and amount == 0
+		image = get_res_icon_path(res, 32, greyscale)
 		helptext = db.get_res_name(res)
-		image = icon_disabled if amount == 0 else icon
 		return cls(up_image=image, down_image=image, hover_image=image,
-		           text=str(amount),
+		           text=unicode(amount),
 		           helptext=helptext,
-		           size=cls.DEFAULT_BUTTON_SIZE,
-		           res_id = res,
-		           filled = filled,
-		           uncached = uncached,
-		           opaque=False)
+		           size=cls.CELL_SIZE,
+		           res_id=res,
+		           filled=filled,
+		           uncached=uncached)
 
 	def _set_filled(self, percent):
 		""""@param percent: int percent that fillstatus will be green"""
@@ -106,6 +101,8 @@ class ImageFillStatusButton(pychan.widgets.Container):
 		self.label = pychan.widgets.Label(text=self.text)
 		self.label.position = self.text_position
 		self.fill_bar = pychan.widgets.Icon(image="content/gui/images/tabwidget/green_line.png")
-		self.fill_bar.position = (self.button.width-self.fill_bar.width-1, \
-		                          self.button.height-int(self.button.height/100.0*self.filled))
+		fill_level = (self.button.height * self.filled) // 100
+		self.fill_bar.size = ((2 * self.fill_bar.size[0]) // 3, fill_level)
+		# move fillbar down after resizing, since its origin is top aligned
+		self.fill_bar.position = (self.button.width, self.button.height - fill_level)
 		self.addChildren(self.button, self.fill_bar, self.label)

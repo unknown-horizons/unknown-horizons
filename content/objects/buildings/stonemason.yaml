@@ -1,0 +1,31 @@
+id: 55
+name:
+  TIER.SETTLERS: _ Stonemason
+  TIER.MERCHANTS: _ Carver
+baseclass: production.ProductionBuilding
+radius: 8
+cost: 15
+cost_inactive: 5
+size_x: 2
+size_y: 2
+inhabitants: 1
+tooltip_text: _ Carves stone tops into bricks.
+settler_level: TIER.SETTLERS
+buildingcosts: {RES.GOLD: 1}
+components:
+- HealthComponent: {maxhealth: 1000}
+- ProducerComponent:
+    productionlines:
+      0:
+        produces:
+        - [RES.BRICKS, 1]
+        consumes:
+        - [RES.STONE_TOPS, -1]
+        time: 30
+- StorageComponent:
+      SlotsStorage:
+        slot_sizes: {RES.STONE_TOPS: 4, RES.BRICKS: 8}
+actionsets:
+  TIER.SETTLERS:
+    #as_stonemason0:
+    as_2x2:

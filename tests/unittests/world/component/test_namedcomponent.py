@@ -21,7 +21,7 @@
 
 from unittest import TestCase
 
-from horizons.world.component.namedcomponent import NamedComponent
+from horizons.component.namedcomponent import NamedComponent
 
 class MockNameComponent(NamedComponent):
 	def _possible_names(self):

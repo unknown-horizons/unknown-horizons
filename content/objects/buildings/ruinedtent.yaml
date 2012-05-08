@@ -6,14 +6,12 @@ cost: 0
 cost_inactive: 0
 size_x: 2
 size_y: 2
-inhabitants_start: 0
-inhabitants_max: 0
-button_name: null
+inhabitants: 0
 tooltip_text: null
-settler_level: 0
+settler_level: TIER.NATURE
 buildingcosts: {}
 components:
 - HealthComponent: {maxhealth: 1000}
-- StorageComponent
 actionsets:
-  as_ruined_tent0: {level: 0}
+  TIER.NATURE:
+    as_ruined_tent0:

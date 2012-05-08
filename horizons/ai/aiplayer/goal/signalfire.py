@@ -30,10 +30,10 @@ class SignalFireGoal(SettlementGoal):
 
 	@property
 	def active(self):
-		return super(SignalFireGoal, self).active and not self.settlement.count_buildings(BUILDINGS.SIGNAL_FIRE_CLASS)
+		return super(SignalFireGoal, self).active and not self.settlement.count_buildings(BUILDINGS.SIGNAL_FIRE)
 
 	def execute(self):
-		result = AbstractBuilding.buildings[BUILDINGS.SIGNAL_FIRE_CLASS].build(self.settlement_manager, None)[0]
+		result = AbstractBuilding.buildings[BUILDINGS.SIGNAL_FIRE].build(self.settlement_manager, None)[0]
 		self._log_generic_build_result(result, 'signal fire')
 		return self._translate_build_result(result)
 

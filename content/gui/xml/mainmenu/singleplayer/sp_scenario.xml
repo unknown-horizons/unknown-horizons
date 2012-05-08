@@ -1,17 +1,30 @@
 <?xml version="1.0"?>
-<VBox max_size="320,480"  min_size="320,480"  name="right_side">
-	<Label text="Choose a map to play:"  name="choose_map_lbl" />
-	<ScrollArea max_size="290,200"  min_size="290,200"  horizontal_scrollbar="0"  name="map_list_area">
-		<ListBox name="maplist" />
-	</ScrollArea>
+<VBox max_size="320,480"  min_size="320,480"  name="right_side" padding="2">
+	<HBox name="map_language_hbox">
+	<VBox name="map_vbox">
+	
+		<Label text="Choose a map to play:"  name="choose_map_lbl" wrap_text="1" max_size="170,40"  min_size="140,20"/>
+		<ScrollArea max_size="170,200"  min_size="140,200"  horizontal_scrollbar="0"  name="map_list_area">
+			<ListBox name="maplist" is_focusable="0" />
+		</ScrollArea>
+	</VBox>
+	<Spacer />
+	<VBox name="language_hbox">
+		<Label text="Select a language:"  name="select_lang_lbl" wrap_text="1" max_size="140,40"  min_size="140,20"/>
+		<ScrollArea max_size="140,200"  min_size="140,200"  horizontal_scrollbar="0"  name="lang_list_area">
+			<ListBox name="uni_langlist" is_focusable="0"/>
+		</ScrollArea>
+	</VBox>
+	</HBox>
 
 	<VBox name="map_info">
-		<Label name="map_author"     wrap_text="1" max_size="300,40" />
-		<Label name="map_difficulty" wrap_text="1" max_size="300,20" />
-		<Label name="map_desc"       wrap_text="1" max_size="300,120" min_size="300,120"/>
+		<Label name="uni_map_author"     wrap_text="1" max_size="300,40" />
+		<Label name="uni_map_difficulty" wrap_text="1" max_size="300,20" />
+		<Label name="uni_map_desc"       wrap_text="1" max_size="300,120" min_size="300,120"/>
 		<!--
 		<ScrollArea name="map_description_area" position="5,380"> </ScrollArea>
 		-->
+		<Label name="translation_status"/>
 	</VBox>
 
 <Spacer />

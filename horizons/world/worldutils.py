@@ -31,8 +31,8 @@ from horizons.util.uhdbaccessor import read_savegame_template
 from horizons.entities import Entities
 from horizons.util.dbreader import DbReader
 from horizons.util import Point
-from horizons.world.component.selectablecomponent import SelectableComponent
-from horizons.world.component.storagecomponent import StorageComponent
+from horizons.component.selectablecomponent import SelectableComponent
+from horizons.component.storagecomponent import StorageComponent
 from horizons.command.unit import CreateUnit
 
 """
@@ -116,8 +116,8 @@ def add_resource_deposits(world, resource_multiplier):
 	"""
 
 	moves = [(-1, 0), (0, -1), (0, 1), (1, 0)]
-	ClayDeposit = Entities.buildings[BUILDINGS.CLAY_DEPOSIT_CLASS]
-	Mountain = Entities.buildings[BUILDINGS.MOUNTAIN_CLASS]
+	ClayDeposit = Entities.buildings[BUILDINGS.CLAY_DEPOSIT]
+	Mountain = Entities.buildings[BUILDINGS.MOUNTAIN]
 	clay_deposit_locations = []
 	mountain_locations = []
 
@@ -227,8 +227,8 @@ def add_nature_objects(world, natural_resource_multiplier):
 		return
 
 	add_resource_deposits(world, natural_resource_multiplier)
-	Tree = Entities.buildings[BUILDINGS.TREE_CLASS]
-	FishDeposit = Entities.buildings[BUILDINGS.FISH_DEPOSIT_CLASS]
+	Tree = Entities.buildings[BUILDINGS.TREE]
+	FishDeposit = Entities.buildings[BUILDINGS.FISH_DEPOSIT]
 	fish_directions = [(i, j) for i in xrange(-1, 2) for j in xrange(-1, 2)]
 
 	# TODO HACK BAD THING hack the component template to make trees start finished
@@ -242,9 +242,9 @@ def add_nature_objects(world, natural_resource_multiplier):
 			   Tree.check_build(world.session, tile, check_settlement = False):
 				building = Build(Tree, x, y, island, 45 + world.session.random.randint(0, 3) * 90, ownerless = True)(issuer = None)
 				if world.session.random.randint(0, WILD_ANIMAL.POPUlATION_INIT_RATIO) == 0: # add animal to every nth tree
-					CreateUnit(island.worldid, UNITS.WILD_ANIMAL_CLASS, x, y)(issuer = None)
+					CreateUnit(island.worldid, UNITS.WILD_ANIMAL, x, y)(issuer = None)
 				if world.session.random.random() > WILD_ANIMAL.FOOD_AVAILABLE_ON_START:
-					building.get_component(StorageComponent).inventory.alter(RES.WILDANIMALFOOD_ID, -1)
+					building.get_component(StorageComponent).inventory.alter(RES.WILDANIMALFOOD, -1)
 
 			if 'coastline' in tile.classes and world.session.random.random() < natural_resource_multiplier / 4.0:
 				# try to place fish: from the current position go to a random directions twice

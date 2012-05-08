@@ -28,9 +28,9 @@ from horizons.util import WorldObject
 from horizons.util.python import decorators
 from horizons.constants import BUILDINGS, RES, TRADER
 from horizons.command.uioptions import AddToBuyList, RemoveFromBuyList, AddToSellList, RemoveFromSellList
-from horizons.world.component.storagecomponent import StorageComponent
-from horizons.world.component.tradepostcomponent import TradePostComponent
-from horizons.world.component.namedcomponent import NamedComponent
+from horizons.component.storagecomponent import StorageComponent
+from horizons.component.tradepostcomponent import TradePostComponent
+from horizons.component.namedcomponent import NamedComponent
 from horizons.world.settlement import Settlement
 
 class ResourceManager(WorldObject):
@@ -209,11 +209,11 @@ class ResourceManager(WorldObject):
 
 	def get_default_resource_requirement(self, resource_id):
 		"""Return the default amount of resource that should be in the settlement inventory."""
-		if resource_id in [RES.TOOLS_ID, RES.BOARDS_ID]:
+		if resource_id in [RES.TOOLS, RES.BOARDS]:
 			return self.personality.default_resource_requirement
-		elif self.settlement_manager.feeder_island and resource_id == RES.BRICKS_ID:
+		elif self.settlement_manager.feeder_island and resource_id == RES.BRICKS:
 			return self.personality.default_feeder_island_brick_requirement if self.settlement_manager.owner.settler_level > 0 else 0
-		elif not self.settlement_manager.feeder_island and resource_id == RES.FOOD_ID:
+		elif not self.settlement_manager.feeder_island and resource_id == RES.FOOD:
 			return self.personality.default_food_requirement
 		return 0
 
@@ -224,7 +224,7 @@ class ResourceManager(WorldObject):
 		"""Return the amount of resource still needed to upgrade at most upgrade_limit residences."""
 		limit_left = upgrade_limit
 		needed = 0
-		for residence in self.settlement_manager.settlement.buildings_by_id.get(BUILDINGS.RESIDENTIAL_CLASS, []):
+		for residence in self.settlement_manager.settlement.buildings_by_id.get(BUILDINGS.RESIDENTIAL, []):
 			if limit_left <= 0:
 				break
 			production = residence._get_upgrade_production()
@@ -254,12 +254,12 @@ class ResourceManager(WorldObject):
 
 	def manager_buysell(self):
 		"""Calculate the required inventory levels and make buy/sell decisions based on that."""
-		managed_resources = [RES.TOOLS_ID, RES.BOARDS_ID, RES.BRICKS_ID, RES.FOOD_ID, RES.TEXTILE_ID, RES.LIQUOR_ID, RES.TOBACCO_PRODUCTS_ID, RES.SALT_ID]
+		managed_resources = [RES.TOOLS, RES.BOARDS, RES.BRICKS, RES.FOOD, RES.TEXTILE, RES.LIQUOR, RES.TOBACCO_PRODUCTS, RES.SALT]
 		settlement = self.settlement_manager.settlement
 		assert isinstance(settlement, Settlement)
 		inventory = settlement.get_component(StorageComponent).inventory
 		session = self.settlement_manager.session
-		gold = self.settlement_manager.owner.get_component(StorageComponent).inventory[RES.GOLD_ID]
+		gold = self.settlement_manager.owner.get_component(StorageComponent).inventory[RES.GOLD]
 
 		buy_sell_list = [] # [(importance (lower is better), resource_id, limit, sell), ...]
 		for resource_id in managed_resources:
@@ -327,7 +327,7 @@ class ResourceManager(WorldObject):
 		result = 'ResourceManager(%s, %d)' % (self.settlement_manager.settlement.get_component(NamedComponent).name, self.worldid)
 		for resource_manager in self._data.itervalues():
 			res = resource_manager.resource_id
-			if res not in [RES.FOOD_ID, RES.TEXTILE_ID, RES.BRICKS_ID]:
+			if res not in [RES.FOOD, RES.TEXTILE, RES.BRICKS]:
 				continue
 			result += '\n' + resource_manager.__str__()
 		return result
@@ -336,7 +336,7 @@ class SingleResourceManager(WorldObject):
 	"""An object of this class keeps track of the production capacity of a single resource/building type pair of a settlement."""
 
 	epsilon = 1e-7 # epsilon for avoiding problems with miniscule values
-	virtual_resources = set([RES.FISH_ID, RES.RAW_CLAY_ID, RES.RAW_IRON_ID]) # resources that are not actually produced by player owned buildings
+	virtual_resources = set([RES.FISH, RES.RAW_CLAY, RES.RAW_IRON]) # resources that are not actually produced by player owned buildings
 	virtual_production = 9999 # pretend that virtual resources are always produced in this amount (should be larger than actually needed)
 
 	def __init__(self, settlement_manager, resource_id, building_id):

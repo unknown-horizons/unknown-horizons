@@ -36,8 +36,8 @@ class Builder(WorldObject):
 
 	rotations = [45, 135, 225, 315]
 	# don't change the orientation of the following building types
-	non_rotatable_buildings = [BUILDINGS.WAREHOUSE_CLASS, BUILDINGS.FISHERMAN_CLASS, BUILDINGS.BOATBUILDER_CLASS, \
-		BUILDINGS.IRON_MINE_CLASS, BUILDINGS.SALT_PONDS_CLASS]
+	non_rotatable_buildings = [BUILDINGS.WAREHOUSE, BUILDINGS.FISHER, BUILDINGS.BOAT_BUILDER,
+		BUILDINGS.IRON_MINE, BUILDINGS.SALT_PONDS]
 
 	def __init__(self, building_id, land_manager, point, orientation = 0, ship = None, worldid = None):
 		"""
@@ -96,7 +96,7 @@ class Builder(WorldObject):
 
 	def get_loading_area(self):
 		"""Return the position of the loading area."""
-		if self.building_id == BUILDINGS.IRON_MINE_CLASS:
+		if self.building_id == BUILDINGS.IRON_MINE:
 			return Mine.get_loading_area(self.building_id, self.rotations[self.orientation], self.position)
 		else:
 			return self.position

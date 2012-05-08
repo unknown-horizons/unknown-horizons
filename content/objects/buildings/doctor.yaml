@@ -6,12 +6,10 @@ cost: 20
 cost_inactive: 5
 size_x: 2
 size_y: 2
-inhabitants_start: 2
-inhabitants_max: 3
-button_name: doctor-1
+inhabitants: 2
 tooltip_text: _ Treats diseases. Consumes herbs.
-settler_level: 2
-buildingcosts: {1: 500, 4: 3, 6: 3, 7: 3}
+settler_level: TIER.SETTLERS
+buildingcosts: {RES.GOLD: 500, RES.BOARDS: 3, RES.TOOLS: 3, RES.BRICKS: 3}
 components:
 - SelectableComponent:
     type: building
@@ -22,15 +20,15 @@ components:
     productionlines:
       57:
         consumes:
-        - [38, -2]
+        - [RES.MEDICAL_HERBS, -2]
         time: 60
 - StorageComponent:
-    inventory:
       SlotsStorage:
-        slot_sizes: {38: 8}
+        slot_sizes: {RES.MEDICAL_HERBS: 8}
 - CollectingComponent:
     collectors:
-      1000002: 1
-      1000019: 0
+      UNITS.BUILDING_COLLECTOR: 1
+      UNITS.DISASTER_RECOVERY_COLLECTOR: 1
 actionsets:
-  as_doctor0: {level: 0}
+  TIER.SETTLERS:
+    as_doctor0:

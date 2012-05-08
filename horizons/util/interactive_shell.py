@@ -74,7 +74,7 @@ def execute(cmd_name, *args, **kwargs):
 		cmd('Pause')
 		cmd('pAuse')
 		cmd('PauseCommand')
-		cmd('CreateUnit', player.worldid, UNITS.FRIGATE_CLASS, 10, 13)
+		cmd('CreateUnit', player.worldid, UNITS.FRIGATE, 10, 13)
 	"""
 	import horizons.main
 

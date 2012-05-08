@@ -29,8 +29,8 @@ from horizons.command.uioptions import AddToBuyList, AddToSellList, RemoveFromBu
                                        RemoveFromSellList
 from horizons.gui.widgets.tradehistoryitem import TradeHistoryItem
 from horizons.util import Callback, WorldObject
-from horizons.util.gui import load_uh_widget, get_res_icon_path, create_resource_selection_dialog
-from horizons.world.component.tradepostcomponent import TradePostComponent
+from horizons.gui.util import load_uh_widget, get_res_icon_path, create_resource_selection_dialog
+from horizons.component.tradepostcomponent import TradePostComponent
 from horizons.constants import TRADER
 
 class BuySellTab(TabInterface):
@@ -48,11 +48,12 @@ class BuySellTab(TabInterface):
 
 	dummy_icon_path = "content/gui/icons/resources/none_gray.png"
 
-	def __init__(self, instance, slots = 3):
+	def __init__(self, instance, slots=3, widget='buysellmenu.xml',
+	             icon_path='content/gui/icons/tabwidget/warehouse/buysell_%s.png'):
 		"""
 		Sets up the GUI and game logic for the buyselltab.
 		"""
-		super(BuySellTab, self).__init__(widget = 'buysellmenu.xml')
+		super(BuySellTab, self).__init__(widget=widget, icon_path=icon_path)
 		self.inited = False # prevents execution of commands during init
 		# this makes sharing code easier
 		self.session = instance.session
@@ -60,11 +61,6 @@ class BuySellTab(TabInterface):
 		assert isinstance(self.tradepost, TradePostComponent)
 		# don't access instance beyond this point, only components
 		self.init_values()
-		self.icon_path = 'content/gui/icons/tabwidget/warehouse/buysell_%s.png'
-		self.button_up_image = self.icon_path % 'u'
-		self.button_active_image = self.icon_path % 'a'
-		self.button_down_image = self.icon_path % 'd'
-		self.button_hover_image = self.icon_path % 'h'
 
 		# add the buy/sell slots
 		self.slots = {}
@@ -110,6 +106,12 @@ class BuySellTab(TabInterface):
 		self.session.ingame_gui.minimap_to_front()
 		self.refresh()
 		ExtScheduler().add_new_object(self.refresh, self, run_in=0.4, loops = -1)
+
+	def is_visible(self):
+		# this tab sometimes is made up an extra widget, so it must also be considered
+		# when checking for visibility
+		return super(BuySellTab, self).is_visible() or \
+		       (self.resources is not None and self.resources.isVisible())
 
 	def _refresh_trade_history(self):
 		self.trade_history.removeAllChildren()
@@ -238,7 +240,7 @@ class BuySellTab(TabInterface):
 			slot.findChild(name="amount").text = unicode(value)+"t"
 			icon = slot.findChild(name="icon")
 			inventory = self.tradepost.get_inventory()
-			filled = float(inventory[res_id]) / inventory.get_limit(res_id)
+			filled = (100 * inventory[res_id]) // inventory.get_limit(res_id)
 			fillbar.position = (icon.width - fillbar.width - 1,
 			                    icon.height - int(icon.height*filled))
 			# reuse code from toggle to finish setup (must switch state before, it will reset it)

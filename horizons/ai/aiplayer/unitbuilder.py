@@ -39,7 +39,7 @@ class UnitBuilder(object):
 		"""Return a list of all boat builders owned by the player."""
 		result = [] # [building, ...]
 		for settlement_manager in self.owner.settlement_managers:
-			result.extend(settlement_manager.settlement.buildings_by_id.get(BUILDINGS.BOATBUILDER_CLASS, []))
+			result.extend(settlement_manager.settlement.buildings_by_id.get(BUILDINGS.BOAT_BUILDER, []))
 		return result
 
 	def build_ship(self):

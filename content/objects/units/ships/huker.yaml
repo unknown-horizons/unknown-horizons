@@ -6,11 +6,10 @@ velocity: 12.0
 components:
 - SelectableComponent:
     type: ship
-    tabs: [ShipOverviewTab,]
+    tabs: [ShipOverviewTab, TradeTab]
     enemy_tabs: [EnemyShipOverviewTab,]
 - AmbientSoundComponent
 - StorageComponent:
-   inventory:
       PositiveTotalNumSlotStorage:
          limit: 120
          slotnum: 4
@@ -20,4 +19,5 @@ components:
 - CommandableComponent
 
 actionsets:
-   as_huker0: {level: 0}
+  TIER.SAILORS:
+    as_huker0:

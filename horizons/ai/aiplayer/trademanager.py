@@ -31,8 +31,8 @@ from horizons.util import WorldObject
 from horizons.util.worldobject import WorldObjectNotFound
 from horizons.util.python import decorators
 from horizons.constants import RES
-from horizons.world.component.storagecomponent import StorageComponent
-from horizons.world.component.namedcomponent import NamedComponent
+from horizons.component.storagecomponent import StorageComponent
+from horizons.component.namedcomponent import NamedComponent
 
 class TradeManager(WorldObject):
 	"""
@@ -63,7 +63,7 @@ class TradeManager(WorldObject):
 	log = logging.getLogger("ai.aiplayer.trademanager")
 
 	# resources that can be produced on another island and transported to where they are needed
-	legal_resources = [RES.FOOD_ID, RES.TEXTILE_ID, RES.LIQUOR_ID, RES.BRICKS_ID, RES.TOBACCO_PRODUCTS_ID, RES.SALT_ID]
+	legal_resources = [RES.FOOD, RES.TEXTILE, RES.LIQUOR, RES.BRICKS, RES.TOBACCO_PRODUCTS, RES.SALT]
 
 	def __init__(self, settlement_manager):
 		super(TradeManager, self).__init__()

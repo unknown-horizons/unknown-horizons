@@ -2,7 +2,7 @@
 <VBox max_size="320,480"  min_size="320,480"  name="right_side">
 	<Label text="Choose a map to play:"  name="headline_choose_map_lbl" />
 	<ScrollArea max_size="290,140"  min_size="290,140"  horizontal_scrollbar="0"  name="map_list_area">
-		<ListBox name="maplist" />
+		<ListBox name="maplist" is_focusable="0" />
 	</ScrollArea>
 	<Label name="recommended_number_of_players_lbl" text=""/>
 	<Icon name="map_preview_minimap" size="130,130" max_size="130,130" is_focusable="0"/> 
@@ -13,19 +13,19 @@
 	<ScrollArea horizontal_scrollbar="1"  vertical_scrollbar="0"  name="opponent_list_area">
 		<HBox name="opponent_list">
 			<VBox>
-				<Icon image="content/gfx/dummies/square_80.png" helptext="Emma Stonard" />
+				<Icon image="content/gui/images/background/square_80.png" helptext="Emma Stonard" />
 			</VBox>
 			<VBox>
-				<Icon image="content/gfx/dummies/square_80.png" helptext="Arthur Gordon" />
+				<Icon image="content/gui/images/background/square_80.png" helptext="Arthur Gordon" />
 			</VBox>
 			<VBox>
-				<Icon image="content/gfx/dummies/square_80.png" helptext="Baron Hill" />
+				<Icon image="content/gui/images/background/square_80.png" helptext="Baron Hill" />
 			</VBox>
 			<VBox>
-				<Icon image="content/gfx/dummies/square_80.png" helptext="Cristina de Bolsena" />
+				<Icon image="content/gui/images/background/square_80.png" helptext="Cristina de Bolsena" />
 			</VBox>
 			<VBox>
-				<Icon image="content/gfx/dummies/square_80.png" helptext="Pietro Gonzale" />
+				<Icon image="content/gui/images/background/square_80.png" helptext="Pietro Gonzale" />
 			</VBox>
 		</HBox>
 	</ScrollArea>

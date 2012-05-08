@@ -20,24 +20,24 @@
 # ###################################################
 
 from inventorytab import InventoryTab
-from overviewtab import OverviewTab, ProductionOverviewTab, ShipOverviewTab, \
-						WarehouseOverviewTab, SettlerOverviewTab, \
-						SignalFireOverviewTab, TraderShipOverviewTab, EnemyBuildingOverviewTab, \
-						EnemyShipOverviewTab, ResourceDepositOverviewTab, \
-						EnemyWarehouseOverviewTab, FarmProductionOverviewTab, \
-						FightingShipOverviewTab, GroundUnitOverviewTab, \
-            TowerOverviewTab
-
+from tradetab import TradeTab
+from overviewtab import OverviewTab, GroundUnitOverviewTab, FireStationOverviewTab
+from buildingtabs import SignalFireOverviewTab, ResourceDepositOverviewTab, \
+						TowerOverviewTab, WarehouseOverviewTab
+from enemybuildingtabs import EnemyBuildingOverviewTab, EnemyWarehouseOverviewTab
+from productiontabs import ProductionOverviewTab, FarmProductionOverviewTab
+from residentialtabs import SettlerOverviewTab
+from shiptabs import ShipOverviewTab, FightingShipOverviewTab, \
+						TraderShipOverviewTab, EnemyShipOverviewTab
 from buyselltab import BuySellTab
 from buildtabs import BuildTab
 from tabwidget import TabWidget
-from boatbuildertab import BoatbuilderTab, BoatbuilderFisherTab, \
+from boatbuildertabs import BoatbuilderTab, BoatbuilderFisherTab, \
 						BoatbuilderTradeTab, BoatbuilderWar1Tab, \
 						BoatbuilderWar2Tab, BoatbuilderConfirmTab
-from mainsquaretabs import AccountTab, MainSquareSettlerTabSettlerTab, \
+from mainsquaretabs import AccountTab, MainSquareOverviewTab, \
 						MainSquareSailorsTab, MainSquarePioneersTab, \
-						MainSquareSettlersTab, MainSquareCitizensTab, \
-                                                MainSquareOverviewTab
+						MainSquareSettlersTab, MainSquareCitizensTab
 from buildrelatedtab import BuildRelatedTab
 
 from diplomacytab import DiplomacyTab

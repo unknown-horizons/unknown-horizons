@@ -23,7 +23,7 @@ import weakref
 
 from horizons.util.python import ManualConstructionSingleton
 from horizons.util import Point, WorldObject
-from horizons.util.messaging.message import NewPlayerSettlementHovered, HoverSettlementChanged, NewSettlement
+from horizons.messaging import NewPlayerSettlementHovered, HoverSettlementChanged, NewSettlement
 
 def resolve_weakref(ref):
 	"""Resolves a weakref to a hardref, where the ref itself can be None"""
@@ -63,7 +63,7 @@ class LastActivePlayerSettlementManager(object):
 		# can be used to detect reentering the area of _last_player_settlement
 		self._last_player_settlement_hovered_was_none = True
 
-		self.session.message_bus.subscribe_globally(NewSettlement, self._on_new_settlement_created)
+		NewSettlement.subscribe(self._on_new_settlement_created)
 
 	def save(self, db):
 		if self._last_player_settlement is not None:
@@ -94,7 +94,7 @@ class LastActivePlayerSettlementManager(object):
 		# check if it's a new settlement independent of player
 		if resolve_weakref(self._cur_settlement) is not settlement:
 			self._cur_settlement = create_weakref(settlement)
-			self.session.message_bus.broadcast(HoverSettlementChanged(self, settlement))
+			HoverSettlementChanged.broadcast(self, settlement)
 
 		# player-sensitive code
 		new_player_settlement = weakref.ref(settlement) if \
@@ -114,8 +114,7 @@ class LastActivePlayerSettlementManager(object):
 			need_msg = True
 
 		if need_msg:
-			self.session.message_bus.broadcast(
-			  NewPlayerSettlementHovered(self, resolve_weakref(new_player_settlement)))
+			NewPlayerSettlementHovered.broadcast(self, resolve_weakref(new_player_settlement))
 		self._last_player_settlement_hovered_was_none = (new_player_settlement is None)
 
 	def get(self, get_current_pos=False):
@@ -136,7 +135,7 @@ class LastActivePlayerSettlementManager(object):
 			return
 		pos = self.session.cursor.__class__.last_event_pos
 		if pos is not None:
-			loc = self.session.cursor.get_exact_world_location_from_event( pos )
+			loc = self.session.cursor.get_exact_world_location( pos )
 			self.update(loc)
 
 	def _on_new_settlement_created(self, msg):

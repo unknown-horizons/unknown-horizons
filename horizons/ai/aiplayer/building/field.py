@@ -39,7 +39,7 @@ class AbstractField(AbstractBuilding):
 			total_cost += field_spots_available * self.get_expected_building_cost()
 			extra_fields_needed -= field_spots_available
 
-		evaluators = AbstractBuilding.buildings[BUILDINGS.FARM_CLASS].get_evaluators(settlement_manager, self.get_higher_level_resource(resource_id))
+		evaluators = AbstractBuilding.buildings[BUILDINGS.FARM].get_evaluators(settlement_manager, self.get_higher_level_resource(resource_id))
 		if not evaluators:
 			return None
 
@@ -51,31 +51,31 @@ class AbstractField(AbstractBuilding):
 		#extra_farms_needed = int(math.ceil(float(extra_fields_needed) / fields_per_farm))
 
 		total_cost += self.get_expected_building_cost() * extra_fields_needed
-		total_cost += AbstractBuilding.buildings[BUILDINGS.FARM_CLASS].get_expected_building_cost() * extra_farms_needed
+		total_cost += AbstractBuilding.buildings[BUILDINGS.FARM].get_expected_building_cost() * extra_farms_needed
 		return total_cost
 
 	@classmethod
 	def get_purpose(cls, resource_id):
-		if resource_id == RES.POTATOES_ID:
+		if resource_id == RES.POTATOES:
 			return BUILDING_PURPOSE.POTATO_FIELD
-		elif resource_id == RES.LAMB_WOOL_ID:
+		elif resource_id == RES.LAMB_WOOL:
 			return BUILDING_PURPOSE.PASTURE
-		elif resource_id == RES.RAW_SUGAR_ID:
+		elif resource_id == RES.RAW_SUGAR:
 			return BUILDING_PURPOSE.SUGARCANE_FIELD
-		elif resource_id == RES.TOBACCO_PLANTS_ID:
+		elif resource_id == RES.TOBACCO_PLANTS:
 			return BUILDING_PURPOSE.TOBACCO_FIELD
 		return None
 
 	@classmethod
 	def get_higher_level_resource(cls, resource_id):
-		if resource_id == RES.POTATOES_ID:
-			return RES.FOOD_ID
-		elif resource_id == RES.LAMB_WOOL_ID:
-			return RES.WOOL_ID
-		elif resource_id == RES.RAW_SUGAR_ID:
-			return RES.SUGAR_ID
-		elif resource_id == RES.TOBACCO_PLANTS_ID:
-			return RES.TOBACCO_LEAVES_ID
+		if resource_id == RES.POTATOES:
+			return RES.FOOD
+		elif resource_id == RES.LAMB_WOOL:
+			return RES.WOOL
+		elif resource_id == RES.RAW_SUGAR:
+			return RES.SUGAR
+		elif resource_id == RES.TOBACCO_PLANTS:
+			return RES.TOBACCO_LEAVES
 		return None
 
 	def build(self, settlement_manager, resource_id):
@@ -98,10 +98,10 @@ class AbstractField(AbstractBuilding):
 
 	@classmethod
 	def register_buildings(cls):
-		cls._available_buildings[BUILDINGS.POTATO_FIELD_CLASS] = cls
-		cls._available_buildings[BUILDINGS.PASTURE_CLASS] = cls
-		cls._available_buildings[BUILDINGS.SUGARCANE_FIELD_CLASS] = cls
-		cls._available_buildings[BUILDINGS.TOBACCO_FIELD_CLASS] = cls
+		cls._available_buildings[BUILDINGS.POTATO_FIELD] = cls
+		cls._available_buildings[BUILDINGS.PASTURE] = cls
+		cls._available_buildings[BUILDINGS.SUGARCANE_FIELD] = cls
+		cls._available_buildings[BUILDINGS.TOBACCO_FIELD] = cls
 
 AbstractField.register_buildings()
 

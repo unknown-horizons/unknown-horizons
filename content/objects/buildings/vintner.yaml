@@ -1,0 +1,33 @@
+id: 65
+name: _ Vintner
+baseclass: production.ProductionBuilding
+radius: 8
+cost: 20
+cost_inactive: 5
+size_x: 2
+size_y: 2
+inhabitants: 3
+tooltip_text: _ Produces wine out of grapes.
+settler_level: TIER.CITIZENS
+buildingcosts: {RES.GOLD: 1}
+components:
+- SelectableComponent:
+    type: building
+    tabs: [ProductionOverviewTab ]
+    enemy_tabs: [EnemyBuildingOverviewTab,]
+- HealthComponent: {maxhealth: 1000}
+- ProducerComponent:
+    productionlines:
+      0:
+        produces:
+        - [RES.LIQUOR, 1]
+        consumes:
+        - [RES.GRAPES, -2]
+        time: 15
+- StorageComponent:
+      SlotsStorage:
+        slot_sizes: {RES.LIQUOR: 6, RES.GRAPES: 8}
+actionsets:
+  TIER.CITIZENS:
+    #as_vintner0:
+    as_2x2:

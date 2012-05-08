@@ -6,12 +6,10 @@ cost: 10
 cost_inactive: 0
 size_x: 2
 size_y: 2
-inhabitants_start: 2
-inhabitants_max: 2
-button_name: tobacconist-1
+inhabitants: 2
 tooltip_text: _ Produces tobaccos out of tobacco.
-settler_level: 2
-buildingcosts: {1: 250, 4: 1, 6: 2, 7: 4}
+settler_level: TIER.SETTLERS
+buildingcosts: {RES.GOLD: 250, RES.BOARDS: 1, RES.TOOLS: 2, RES.BRICKS: 4}
 components:
 - SelectableComponent:
     type: building
@@ -22,16 +20,16 @@ components:
     productionlines:
       48:
         produces:
-        - [32, 1]
+        - [RES.TOBACCO_PRODUCTS, 1]
         consumes:
-        - [31, -2]
+        - [RES.TOBACCO_LEAVES, -2]
         time: 15
 - StorageComponent:
-    inventory:
       SlotsStorage:
-        slot_sizes: {32: 4, 31: 6}
+        slot_sizes: {RES.TOBACCO_PRODUCTS: 4, RES.TOBACCO_LEAVES: 6}
 - CollectingComponent:
     collectors:
-      1000002: 1
+      UNITS.BUILDING_COLLECTOR: 1
 actionsets:
-  as_tobacconist0: {level: 0}
+  TIER.SETTLERS:
+    as_tobacconist0:

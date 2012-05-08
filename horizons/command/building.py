@@ -19,7 +19,8 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-import logging
+from collections import defaultdict
+
 import horizons.main
 
 from horizons.entities import Entities
@@ -29,7 +30,7 @@ from horizons.util import Point
 from horizons.util.worldobject import WorldObject, WorldObjectNotFound
 from horizons.scenario import CONDITIONS
 from horizons.constants import BUILDINGS, RES
-from horizons.world.component.storagecomponent import StorageComponent
+from horizons.component.storagecomponent import StorageComponent
 
 class Build(Command):
 	"""Command class that builds an object."""
@@ -149,9 +150,9 @@ class Build(Command):
 
 		# unload the remaining resources on the human player ship if we just founded a new settlement
 		from horizons.world.player import HumanPlayer
-		if building.id == BUILDINGS.WAREHOUSE_CLASS and isinstance(building.owner, HumanPlayer) and horizons.main.fife.get_uh_setting("AutoUnload"):
+		if building.id == BUILDINGS.WAREHOUSE and isinstance(building.owner, HumanPlayer) and horizons.main.fife.get_uh_setting("AutoUnload"):
 			ship = WorldObject.get_object_by_id(self.ship)
-			for res, amount in [(res, amount) for res, amount in ship.get_component(StorageComponent).inventory]: # copy the inventory first because otherwise we would modify it while iterating
+			for res, amount in ship.get_component(StorageComponent).inventory.get_dump().iteritems(): # copy the inventory first because otherwise we would modify it while iterating
 				amount = min(amount, building.settlement.get_component(StorageComponent).inventory.get_free_space_for(res))
 				# execute directly, we are already in a command
 				TransferResource(amount, res, ship, building.settlement)(issuer=issuer)
@@ -162,26 +163,34 @@ class Build(Command):
 		return building
 
 	@staticmethod
-	def check_resources(neededResources, costs, issuer, res_sources):
+	def check_resources(needed_res, costs, issuer, res_sources):
 		"""Check if there are enough resources available to cover the costs
-		@param neededResources: awkward dict from BuildingTool.preview_build, use {} everywhere else
+		@param needed_res: awkward dict from BuildingTool.preview_build, use {} everywhere else
 		@param costs: building costs (as in buildingclass.costs)
 		@param issuer: player that builds the building
 		@param res_sources: list of objects with inventory attribute. None values are discarded.
 		@return tuple(bool, missing_resource), True means buildable"""
 		for resource in costs:
-			neededResources[resource] = neededResources.get(resource, 0) + costs[resource]
-		for resource in neededResources:
+			needed_res[resource] = needed_res.get(resource, 0) + costs[resource]
+
+		reserved_res = defaultdict(lambda : 0) # res needed for sth else but still present
+		if hasattr(issuer.session.manager, "get_builds_in_construction"):
+			# mp game, consider res still to be subtracted
+			builds = issuer.session.manager.get_builds_in_construction()
+			for build in builds:
+				reserved_res.update( Entities.buildings[build.building_class].costs )
+
+		for resource in needed_res:
 			# check player, ship and settlement inventory
 			available_res = 0
 			# player
-			available_res += issuer.get_component(StorageComponent).inventory[resource] if resource == RES.GOLD_ID else 0
+			available_res += issuer.get_component(StorageComponent).inventory[resource] if resource == RES.GOLD else 0
 			# ship or settlement
 			for res_source in res_sources:
 				if res_source is not None:
 					available_res += res_source.get_component(StorageComponent).inventory[resource]
 
-			if available_res < neededResources[resource]:
+			if (available_res - reserved_res[resource]) < needed_res[resource]:
 				return (False, resource)
 		return (True, None)
 

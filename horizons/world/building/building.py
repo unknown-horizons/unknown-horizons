@@ -31,8 +31,8 @@ from horizons.util import ConstRect, Point, WorldObject, ActionSetLoader, decora
 from horizons.constants import RES, LAYERS, GAME
 from horizons.world.building.buildable import BuildableSingle
 from horizons.command.building import Build
-from horizons.world.component.storagecomponent import StorageComponent
-from horizons.world.componentholder import ComponentHolder
+from horizons.component.storagecomponent import StorageComponent
+from horizons.component.componentholder import ComponentHolder
 
 class BasicBuilding(ComponentHolder, ConcreteObject):
 	"""Class that represents a building. The building class is mainly a super class for other buildings."""
@@ -54,11 +54,11 @@ class BasicBuilding(ComponentHolder, ConcreteObject):
 	@param level: start in this increment
 	@param action_set_id: use this action set id. None means choose one at random
 	"""
-	def __init__(self, x, y, rotation, owner, island, level=None, action_set_id=None, **kwargs):
+	def __init__(self, x, y, rotation, owner, island, level=None, **kwargs):
 		self.__pre_init(owner, rotation, Point(x, y), level=level)
 		super(BasicBuilding, self).__init__(x=x, y=y, rotation=rotation, owner=owner, \
 								                        island=island, **kwargs)
-		self.__init( action_set_id=action_set_id )
+		self.__init()
 		self.island = island
 
 		settlements = self.island.get_settlements(self.position, owner)
@@ -85,14 +85,11 @@ class BasicBuilding(ComponentHolder, ConcreteObject):
 		else:
 			self.position = ConstRect(origin, self.size[0]-1, self.size[1]-1)
 
-	def __init(self, remaining_ticks_of_month=None, action_set_id=None):
-		self._action_set_id = action_set_id if action_set_id is not None else \
-		    self.get_random_action_set(self.level)[0]
-
+	def __init(self, remaining_ticks_of_month=None):
 		self.loading_area = self.position # shape where collector get resources
 
 		origin = self.position.origin
-		self._instance, action_set_id = \
+		self._instance, _unused = \
 		  self.getInstance(self.session, origin.x, origin.y, rotation=self.rotation,\
 		                   action_set_id=self._action_set_id)
 		self._instance.setId(str(self.worldid))
@@ -113,7 +110,7 @@ class BasicBuilding(ComponentHolder, ConcreteObject):
 
 	def get_payout(self):
 		"""gets the payout from the settlement in form of it's running costs"""
-		self.owner.get_component(StorageComponent).inventory.alter(RES.GOLD_ID, -self.running_costs)
+		self.owner.get_component(StorageComponent).inventory.alter(RES.GOLD, -self.running_costs)
 
 	def remove(self):
 		"""Removes the building"""
@@ -197,7 +194,7 @@ class BasicBuilding(ComponentHolder, ConcreteObject):
 		search for an action set everywhere, which makes it alot more effective, if you're
 		just updating.
 		@param level: int level number"""
-		action_set = self.get_random_action_set(level, exact_level=True)[0]
+		action_set = self.__class__.get_random_action_set(level, exact_level=True)
 		if action_set:
 			self._action_set_id = action_set # Set the new action_set
 			self.act(self._action, repeating=True)
@@ -277,7 +274,7 @@ class BasicBuilding(ComponentHolder, ConcreteObject):
 		facing_loc.setLayerCoordinates(fife.ModelCoordinate(*layer_coords))
 
 		if action_set_id is None:
-			action_set_id = cls.get_random_action_set(level=level)[0]
+			action_set_id = cls.get_random_action_set(level=level)
 		fife.InstanceVisual.create(instance)
 
 		action_sets = ActionSetLoader.get_sets()

@@ -7,7 +7,8 @@
 	<Icon name="background_icon" helptext="Gold"
 		image="content/gui/images/background/widgets/res_mon_bg.png" />
 	<Icon name="res_icon" position="17,12" />
-	<Label name="gold_available" /> <!-- positioning via magic in order to have support for centering -->
-	<Label name="gold_needed" />
+	<!-- positioning via magic in order to have support for centering -->
+	<Label name="gold_available" />
+	<Label name="balance" />
 </AutoResizeContainer>
 

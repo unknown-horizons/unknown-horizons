@@ -31,7 +31,7 @@ from horizons.constants import MULTIPLAYER
 from horizons.network.networkinterface import NetworkInterface
 from horizons.network import find_enet_module
 from horizons.util import SavegameAccessor
-from horizons.world.component.ambientsoundcomponent import AmbientSoundComponent
+from horizons.component.ambientsoundcomponent import AmbientSoundComponent
 
 enet = find_enet_module()
 
@@ -355,9 +355,7 @@ class MultiplayerMenu(object):
 			})
 			_update_infos()
 		self.current.findChild(name="maplist").mapEvents({
-		  'maplist/action': _update_infos,
-		  'maplist/mouseWheelMovedUp'   : _update_infos,
-		  'maplist/mouseWheelMovedDown' : _update_infos
+		  'maplist/action': _update_infos
 		})
 
 		gamename_textfield = self.current.findChild(name="gamename")

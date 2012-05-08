@@ -43,7 +43,8 @@ class SQLiteAtlasLoader(object):
 
 		for (atlas,) in self.atlases:
 			# print 'creating', atlas
-			img = horizons.main.fife.imagemanager.create(atlas)
+			# cast explicit to str because the imagemanager is not able to handle unicode strings
+			img = horizons.main.fife.imagemanager.create(str(atlas))
 			self.atlaslib.append(img)
 
 

@@ -6,9 +6,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
-"POT-Creation-Date: 2012-03-24 02:16+0100\n"
-"PO-Revision-Date: 2012-02-12 17:49+0200\n"
-"Last-Translator: probert <r.panovics@freemail.hu>\n"
+"POT-Creation-Date: 2012-05-06 22:10+0100\n"
+"PO-Revision-Date: 2012-04-19 11:04+0200\n"
+"Last-Translator: Szontágh <szontagh.ferenc@exahost.eu>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: hu\n"
 "MIME-Version: 1.0\n"
@@ -21,14 +21,13 @@ msgstr ""
 #: database files sql
 #, python-format
 msgid "A new settlement was founded by {player}."
-msgstr "{player} új települést alapított."
+msgstr "Egy új települést alapított {player}."
 
 # 82%
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
-#, fuzzy
 msgid "A new ship has been created."
-msgstr "Egy új világot teremtettél."
+msgstr "Elkészült egy új hajó."
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
@@ -38,44 +37,45 @@ msgstr "Egy új világot teremtettél."
 # 81%
 #. This is a database entry: the name of an inhabitant increment (tier / level).
 #: database files sql
-#, fuzzy
 msgid "Aristocrats"
-msgstr "arisztokrata"
+msgstr "Arisztokraták"
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
 msgid "Cannot go here."
-msgstr ""
+msgstr "Ide nem lehet menni."
 
 # 75%
 #. (text of widget: headline)
+#. headline of gui_buildmenu:build_menu_per_type
 #. This is a database entry: the name of an inhabitant increment (tier / level).
-#: database files horizons/i18n/guitranslations.py:224 sql
-#, fuzzy
+#: database files horizons/i18n/guitranslations.py
+#: horizons/i18n/objecttranslations.py sql
 msgid "Citizens"
-msgstr "polgár"
+msgstr "Polgárok"
 
 # 77%
 #. This is a database entry: the name of an inhabitant increment (tier / level).
 #: database files sql
-#, fuzzy
 msgid "Merchants"
-msgstr "kereskedő"
+msgstr "Kereskedők"
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
 msgid "One of your fields requires a farm to harvest its crops."
-msgstr ""
+msgstr "A meződnek szüksége van egy farmra, hogy a termést le arathasd."
 
 #. (text of widget: headline)
+#. headline of gui_buildmenu:build_menu_per_type
 #. This is a database entry: the name of an inhabitant increment (tier / level).
-#: database files horizons/i18n/guitranslations.py:276 sql
+#: database files horizons/i18n/guitranslations.py
+#: horizons/i18n/objecttranslations.py sql
 msgid "Pioneers"
 msgstr "Telepesek"
 
 #. (text of widget: headline)
 #. This is a database entry: the name of an inhabitant increment (tier / level).
-#: database files horizons/i18n/guitranslations.py:307 sql
+#: database files horizons/i18n/guitranslations.py sql
 msgid "Sailors"
 msgstr "Tengerészek"
 
@@ -87,9 +87,11 @@ msgstr "A képernyőkép a(z) {file}-ba lett elmentve."
 
 #. (text of widget: headline)
 #. (text of widget: settler_score)
+#. headline of gui_buildmenu:build_menu_per_type
 #. This is a database entry: the name of an inhabitant increment (tier / level).
-#: database files horizons/i18n/guitranslations.py:336
-#: horizons/i18n/guitranslations.py:664 sql
+#: database files horizons/i18n/guitranslations.py
+#: horizons/i18n/guitranslations.py
+#: horizons/i18n/objecttranslations.py sql
 msgid "Settlers"
 msgstr "Telepesek"
 
@@ -107,16 +109,22 @@ msgstr "Néhány lakosod elköltözött."
 #: database files sql
 msgid "The route is now configured. Start it via the \"start route\" button in the \"configure route\" menu."
 msgstr ""
+"Az útvonal beállítva. Elindíthatod a \"útvonal indítása\" gombbal az \"útvonal "
+"beállítása\" menüből."
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
-#, fuzzy
 msgid "You can also drag roads."
 msgstr "Utakat húzva is építhetsz."
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
 msgid "You cannot tear the warehouse, your settlements needs it."
+msgstr "Nem szakíthatod el a raktárházat, a lakosaidnak szüksége van rá."
+
+#. This is a database entry: a messagewidget message (left part of the screen).
+#: database files sql
+msgid "You failed the scenario."
 msgstr ""
 
 #. This is a database entry: a messagewidget message (left part of the screen).
@@ -130,7 +138,7 @@ msgstr ""
 #: database files sql
 #, python-format
 msgid "You need more {resource} to build this building."
-msgstr "Több {resource} nyersanyagra van szükség az épület megépítéséhez."
+msgstr "Kevés a(z) {resource} az épület megépítéséhez."
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
@@ -139,8 +147,13 @@ msgstr "Nyertél!"
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
-msgid "Your crew refuses to leave this map."
+msgid "Your building has caught fire!"
 msgstr ""
+
+#. This is a database entry: a messagewidget message (left part of the screen).
+#: database files sql
+msgid "Your crew refuses to leave this map."
+msgstr "A legénység nem hagyja el ezt a térképet."
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
@@ -151,16 +164,14 @@ msgstr "A játékmeneted automatikusan mentve lett."
 # 83%
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
-#, fuzzy
 msgid "Your game has been quicksaved."
-msgstr "A játékmeneted automatikusan mentve lett."
+msgstr "Gyors mentés kész."
 
 # 86%
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
-#, fuzzy
 msgid "Your game has been saved."
-msgstr "A játékmeneted automatikusan mentve lett."
+msgstr "A játék mentve."
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
@@ -175,7 +186,6 @@ msgstr "A bányád kimerült."
 
 #. This is a database entry: the name of a resource.
 #: database files sql
-#, fuzzy
 msgid "acorns"
 msgstr "makk"
 
@@ -197,7 +207,7 @@ msgstr "téglák"
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "candles"
-msgstr ""
+msgstr "gyertyák"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
@@ -211,7 +221,6 @@ msgstr "marha"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
-#, fuzzy
 msgid "cattle for slaughter"
 msgstr "vágómarha"
 
@@ -223,23 +232,22 @@ msgstr "faszén"
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "clay"
-msgstr "anyag"
+msgstr "agyag"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
-#, fuzzy
 msgid "clay deposit"
 msgstr "agyaglelőhely"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "cocoa"
-msgstr ""
+msgstr "kakaó"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "cocoa beans"
-msgstr ""
+msgstr "kakaó mag"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
@@ -254,17 +262,17 @@ msgstr "közösség"
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "condiments"
-msgstr ""
+msgstr "fűszerek"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "confectionery"
-msgstr ""
+msgstr "cukrászat"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "corn"
-msgstr ""
+msgstr "kukorica"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
@@ -273,7 +281,6 @@ msgstr "tőr"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
-#, fuzzy
 msgid "deer food A"
 msgstr "szarvasétel A"
 
@@ -289,14 +296,13 @@ msgstr "oktatás"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
-#, fuzzy
 msgid "faith"
-msgstr "bizalom"
+msgstr "hit"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "fire"
-msgstr ""
+msgstr "tűz"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
@@ -306,7 +312,7 @@ msgstr "hal"
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "flour"
-msgstr ""
+msgstr "liszt"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
@@ -321,12 +327,12 @@ msgstr "összejövetel"
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "grain"
-msgstr ""
+msgstr "gabona"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "grapes"
-msgstr ""
+msgstr "szőlő"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
@@ -346,7 +352,7 @@ msgstr "fűszernövények"
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "honeycombs"
-msgstr ""
+msgstr "törökméz"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
@@ -355,7 +361,6 @@ msgstr "vaslelőhely"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
-#, fuzzy
 msgid "iron ingots"
 msgstr "vasöntvények"
 
@@ -386,14 +391,13 @@ msgstr "disznók"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
-#, fuzzy
 msgid "pigs for slaughter"
 msgstr "vágódisznók"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "potatoes"
-msgstr "krumplik"
+msgstr "krumpli"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
@@ -403,24 +407,24 @@ msgstr "só"
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "spice plants"
-msgstr ""
+msgstr "fűszer ültetvény"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "spices"
-msgstr ""
+msgstr "fűszerek"
 
 # 76%
 #. This is a database entry: the name of a resource.
 #: database files sql
-#, fuzzy
 msgid "stone deposit"
 msgstr "vaslelőhely"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
+#, fuzzy
 msgid "stone tops"
-msgstr ""
+msgstr "kő felsők"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
@@ -440,12 +444,12 @@ msgstr "textil"
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "tobacco leaves"
-msgstr "dohánylevelek"
+msgstr "dohánylevél"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "tobacco plants"
-msgstr "dohányültetvények"
+msgstr "dohányültetvény"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
@@ -454,19 +458,18 @@ msgstr "dohány"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
-#, fuzzy
 msgid "tools"
 msgstr "szerszámok"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "trees"
-msgstr ""
+msgstr "fák"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "vines"
-msgstr ""
+msgstr "bor"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
@@ -477,436 +480,469 @@ msgstr "gyapjú"
 #: database files sql
 #, python-format
 msgid "{player1} and {player2} have allied their forces."
-msgstr ""
+msgstr "{player1} és {player2} egyesítették erejüket."
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
 #, python-format
 msgid "{player1} and {player2} have ended the war and are now allied."
-msgstr ""
+msgstr "{player1} és {player2} felhagytak a háborúval és szövetségre léptek."
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
 #, python-format
 msgid "{player1} and {player2} have ended their alliance and are now in a state of war."
 msgstr ""
+"{player1} és {player2} megszüntették a szövetségüket és háborúba léptek "
+"egymás ellen."
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
 #, python-format
 msgid "{player1} and {player2} have settled their hostility."
-msgstr ""
+msgstr "{player1} és {player2} megoldották az egymás elleni rossz indulatukat."
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
 #, python-format
 msgid "{player1} and {player2} have terminated their alliance."
-msgstr ""
+msgstr "{player1} és {player2} megszakították a szövetségüket."
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
 #, python-format
 msgid "{player1} and {player2} will fight each other to the death."
-msgstr ""
+msgstr "{player1} és {player2} halálukig harcolnak egymás ellen."
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
 #, python-format
 msgid "{player}: {message}"
-msgstr ""
+msgstr "{player}: {message}"
 
-#: editor/editor.py:33
+#: editor/editor.py
 msgid "Specify the path to FIFE root directory."
-msgstr ""
+msgstr "Add meg az elérési utat a FIFE gyökérkönyvtárához."
 
-#: horizons/command/game.py:36
+#: horizons/command/game.py
 msgid "Invalid filename"
-msgstr ""
+msgstr "Hibás fájlnév"
 
-#: horizons/command/game.py:37
+#: horizons/command/game.py
 msgid "Received an invalid filename for a save command."
-msgstr ""
+msgstr "Hibás fájlnevet kaptam egy mentés parancshoz."
 
 #. There was a problem during the 'save game' procedure.
-#: horizons/command/game.py:47 horizons/gui/gui.py:179
-#: horizons/gui/ingamegui.py:465 horizons/gui/modules/multiplayermenu.py:133
-#: horizons/gui/modules/multiplayermenu.py:236
+#: horizons/command/game.py horizons/gui/gui.py
+#: horizons/gui/ingamegui.py horizons/gui/modules/multiplayermenu.py
+#: horizons/gui/modules/multiplayermenu.py
 #, python-format
 msgid "Error"
 msgstr "Hiba"
 
-#: horizons/command/game.py:47 horizons/gui/gui.py:179
+#: horizons/command/game.py horizons/gui/gui.py
 msgid "Failed to save."
 msgstr "Nem sikerült menteni."
 
-#: horizons/engine/settingsdialog.py:50
+#: horizons/component/tradepostcomponent.py
+msgid "The trade partner does not sell this."
+msgstr "A kereskedő partner nem árulja ezt."
+
+#: horizons/component/tradepostcomponent.py
+msgid "You can not store this."
+msgstr "Nem tudod ezt elraktározni."
+
+#: horizons/component/tradepostcomponent.py
+msgid "You can not afford to buy this."
+msgstr "Nem tudod felajánlani vásárlásra."
+
+#: horizons/component/tradepostcomponent.py
+msgid "The trade partner does not sell more of this."
+msgstr "A kereskedő partner nem árulja már ezt."
+
+#: horizons/component/tradepostcomponent.py
+msgid "The trade partner does not buy this."
+msgstr "A kereskedő partner nem vásárol már ilyet."
+
+#: horizons/component/tradepostcomponent.py
+msgid "You do not possess this."
+msgstr "Ez nem a te tulajdonod."
+
+#: horizons/component/tradepostcomponent.py
+msgid "The trade partner can not store more of this."
+msgstr "A kereskedő partner nem tud ebből többet elraktározni."
+
+#: horizons/component/tradepostcomponent.py
+msgid "The trade partner can not afford to buy this."
+msgstr "A kereskedő partner nem tud vásárlásra biztosítani ebből."
+
+#: horizons/component/tradepostcomponent.py
+msgid "The trade partner does not buy more of this."
+msgstr "A kereskedő partner nem vásárol már többet ebből."
+
+#: horizons/engine/settingsdialog.py
 msgid "Restart required"
 msgstr "Újraindítás szükséges"
 
-#: horizons/engine/settingsdialog.py:51
+#: horizons/engine/settingsdialog.py
 msgid "Some of your changes require a restart of Unknown Horizons."
 msgstr "Néhány beállítás érvénybe lépése a játék újraindítását igényli."
 
-#: horizons/engine/settingsdialog.py:55
+#: horizons/engine/settingsdialog.py
 msgid "Restore default settings"
 msgstr "Visszaállítás az eredeti beállításokra"
 
-#: horizons/engine/settingsdialog.py:56
+#: horizons/engine/settingsdialog.py
 msgid "Restoring the default settings will delete all changes to the settings you made so far."
 msgstr ""
+"Az alapértelmezett beállítások visszaállítása törli az összes beállításodat, "
+"amit eddig módosítottál."
 
-#: horizons/engine/settingsdialog.py:57
+#: horizons/engine/settingsdialog.py
 msgid "Do you want to continue?"
-msgstr "Folytatod?"
+msgstr "Szeretnéd folytatni?"
 
-#: horizons/engine/settingshandler.py:148
+#: horizons/engine/settingshandler.py
 msgid "Warning"
 msgstr "Figyelmeztetés"
 
 #. i18n Warning popup shown in settings when SDL is selected as renderer.
-#: horizons/engine/settingshandler.py:150
+#: horizons/engine/settingshandler.py
 msgid ""
 "The SDL renderer is meant as a fallback solution only and has serious graphical glitches. \n"
 "\n"
 "Use at own risk!"
 msgstr ""
-"Az SDL megjelenítő egy visszalépés, és veszélyes grafikai hibákat tartalmaz.\n"
+"Az SDL megjelenítő egy visszalépéses megoldás, és veszélyes grafikai hibákat "
+"tartalmaz. \n"
 "\n"
 "Csak saját felelősségre!"
 
-#: horizons/engine/settingshandler.py:224
+#: horizons/engine/settingshandler.py
 msgid "Invalid network port"
 msgstr "Hibás hálózati port"
 
-#: horizons/engine/settingshandler.py:225
+#: horizons/engine/settingshandler.py
 msgid "The port you specified is not valid. It must be a number between 1 and 65535."
 msgstr ""
 "A port, amelyet megadtál nem valós. 1 és 65535 közötti számnak kell lennie."
 
-#: horizons/engine/settingshandler.py:226
+#: horizons/engine/settingshandler.py
 msgid "Please check the port you entered and make sure it is in the specified range."
 msgstr "Ellenörizd, hogy az általad beírt port a megadott tartományban van-e."
 
-#: horizons/engine/settingshandler.py:238
+#: horizons/engine/settingshandler.py
 msgid "Failed to apply new network settings."
 msgstr "Nem sikerült alkalmazni az új hálózati beállításokat."
 
-#: horizons/engine/settingshandler.py:239
-#: horizons/gui/modules/multiplayermenu.py:56
+#: horizons/engine/settingshandler.py
+#: horizons/gui/modules/multiplayermenu.py
 msgid "Network features could not be initialized with the current configuration."
 msgstr ""
 "A hálózati tulajdonságok nem inicializálhatóak a jelenlegi beállításokkal."
 
-#: horizons/engine/settingshandler.py:240
-#: horizons/gui/modules/multiplayermenu.py:57
+#: horizons/engine/settingshandler.py
+#: horizons/gui/modules/multiplayermenu.py
 msgid "Check the settings you specified in the network section."
 msgstr "Ellenőrizd a hálózati beállításokat."
 
 #. i18n This is advice for players seeing a network error with the current config
-#: horizons/engine/settingshandler.py:244
+#: horizons/engine/settingshandler.py
 msgid "Low port numbers sometimes require special access privileges, try 0 or a number greater than 1024."
 msgstr ""
 "Az alacsony portszámok néha különleges jogosultságokat igényelnek, próbáld "
 "meg a 0-t, vagy egy 1024-nél nagyobb számot."
 
-#: horizons/engine/settingshandler.py:274
-#, python-format
-msgid "Configured language {lang} could not be loaded"
-msgstr "A beállított {lang} nyelvet nem sikerült betölteni"
-
-#: horizons/engine/settingshandler.py:312
+#: horizons/engine/settingshandler.py
 msgid "Logging enabled"
-msgstr ""
+msgstr "Naplózás bekapcsolva"
 
-#: horizons/engine/settingshandler.py:314
+#: horizons/engine/settingshandler.py
 #, python-format
 msgid "Logs are written to {directory}."
-msgstr ""
+msgstr "Naplózás mentése ide: {directory}."
 
-#: horizons/gui/gui.py:207
+#: horizons/gui/gui.py
 msgid "Are you sure you want to quit Unknown Horizons?"
 msgstr "Valóban ki akarsz lépni a játékból?"
 
-#: horizons/gui/gui.py:208
+#: horizons/gui/gui.py
 msgid "Quit Game"
 msgstr "Kilépés"
 
-#: horizons/gui/gui.py:214
+#: horizons/gui/gui.py
 msgid "Are you sure you want to abort the running session?"
 msgstr "Valóban megszakítod a futó munkamenetet?"
 
-#: horizons/gui/gui.py:216
+#: horizons/gui/gui.py
 msgid "Quit Session"
 msgstr "Munkamenet elhagyása"
 
-#: horizons/gui/gui.py:276
+#: horizons/gui/gui.py
 msgid "No saved games"
 msgstr "Nincsenek mentett játékok"
 
-#: horizons/gui/gui.py:276
+#: horizons/gui/gui.py
 msgid "There are no saved games to load."
 msgstr "Nincsenek betölthető mentett játékok."
 
 #. (text of widget: loadgame)
 #. (text of widget: loadgame) Open a widget to select which game to load
-#: horizons/gui/gui.py:286 horizons/gui/gui.py:287
-#: horizons/i18n/guitranslations.py:779 horizons/i18n/guitranslations.py:805
+#: horizons/gui/gui.py horizons/gui/gui.py
+#: horizons/i18n/guitranslations.py horizons/i18n/guitranslations.py
 msgid "Load game"
 msgstr "Játék betöltése"
 
 #. (text of widget: savegame)
-#: horizons/gui/gui.py:286 horizons/gui/gui.py:287
-#: horizons/i18n/guitranslations.py:783
+#: horizons/gui/gui.py horizons/gui/gui.py
+#: horizons/i18n/guitranslations.py
 msgid "Save game"
 msgstr "Játék mentése"
 
-#: horizons/gui/gui.py:359
+#: horizons/gui/gui.py
 msgid "No filename given"
 msgstr "Nincs megadva fájlnév"
 
-#: horizons/gui/gui.py:359
+#: horizons/gui/gui.py
 msgid "Please enter a valid filename."
 msgstr "Adj meg egy érvényes fájlnevet."
 
 #. reshow dialog
 #. savegamename already exists
-#: horizons/gui/gui.py:364
+#: horizons/gui/gui.py
 #, python-format
 msgid "A savegame with the name '{name}' already exists."
 msgstr "Egy mentés a(z) '{name}' névvel már létezik."
 
-#: horizons/gui/gui.py:365
+#: horizons/gui/gui.py
 msgid "Overwrite it?"
 msgstr "Felülírjam?"
 
-#: horizons/gui/gui.py:366
+#: horizons/gui/gui.py
 msgid "Confirmation for overwriting"
 msgstr "Felülírás megerősítése"
 
-#: horizons/gui/gui.py:371
+#: horizons/gui/gui.py
 msgid "Invalid filename given"
-msgstr ""
+msgstr "Hibás fájlnév"
 
-#: horizons/gui/gui.py:379
+#: horizons/gui/gui.py
 msgid "Please select a savegame or click on cancel."
 msgstr "Válassz egy mentést, vagy klikk a mégsére."
 
 #. ok button has been pressed, but no savegame was selected
-#: horizons/gui/gui.py:379
+#: horizons/gui/gui.py
 msgid "Select a savegame"
 msgstr "Válassz egy mentést"
 
 #. (text of widget: scenario_details) More text describing the scenario
 #. (text of widget: headline_details_label) More text describing the savegame
-#: horizons/gui/gui.py:469 horizons/i18n/guitranslations.py:625
-#: horizons/i18n/guitranslations.py:968
+#: horizons/gui/gui.py horizons/i18n/guitranslations.py
+#: horizons/i18n/guitranslations.py
 msgid "Details:"
 msgstr "Részletek:"
 
-#: horizons/gui/gui.py:471
+#: horizons/gui/gui.py
 msgid "Error:"
 msgstr "Hiba:"
 
 # 94%
-#: horizons/gui/gui.py:605
+#: horizons/gui/gui.py
 msgid "Unknown savedate"
 msgstr "Ismeretlen mentési idő"
 
-#: horizons/gui/gui.py:608
+#: horizons/gui/gui.py
 #, python-format
-#, python-format, fuzzy
+#, python-format,
 msgid "Saved at {time}"
-msgstr "Mentve {time}-kor"
+msgstr "Mentés ideje: {time}"
 
 #. N_ takes care of plural forms for different languages
-#: horizons/gui/gui.py:615
+#: horizons/gui/gui.py
 #, python-format
 msgid "Saved {amount} time"
 msgid_plural "Saved {amount} times"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Mentve {amount} alkalomszor"
+msgstr[1] "Mentve {amount} alkalomszor"
 
-#: horizons/gui/gui.py:625
+#: horizons/gui/gui.py
 #, python-format
 msgid "Savegame version {version}"
 msgstr "Mentés verzió {version}"
 
-#: horizons/gui/gui.py:629
+#: horizons/gui/gui.py
 #, python-format
-msgid "WARNING: Incompatible version {version}!"
-msgstr "FIGYELEM: Inkompatibilis verzió {version}!"
+msgid "(potentially incompatible)"
+msgstr ""
 
-#: horizons/gui/gui.py:632
-#, python-format
-msgid "Required version: {required}!"
-msgstr "Elvárt verzió: {required}!"
-
-#: horizons/gui/gui.py:635
+#. this should only happen for very old savegames, so having this unfriendly
+#. error is ok (savegame is quite certainly fully unusable).
+#: horizons/gui/gui.py
 msgid "Incompatible version"
-msgstr "Inkompatibilis verzió"
+msgstr "Eltérő verzió"
 
-#: horizons/gui/gui.py:652
+#: horizons/gui/gui.py
 msgid "No file selected"
 msgstr "Nincs fájl kiválasztva"
 
-#: horizons/gui/gui.py:652
+#: horizons/gui/gui.py
 msgid "You need to select a savegame to delete."
 msgstr "Ki kell választanod egy mentést a törléshez."
 
-#: horizons/gui/gui.py:656
+#: horizons/gui/gui.py
 #, python-format
 msgid "Do you really want to delete the savegame '{name}'?"
 msgstr "Biztosan törölni szeretnéd a(z) '{name}' mentést?"
 
-#: horizons/gui/gui.py:658
+#: horizons/gui/gui.py
 msgid "Confirm deletion"
 msgstr "Törlés megerősítése"
 
-#: horizons/gui/gui.py:663
+#: horizons/gui/gui.py
 msgid "Error!"
 msgstr "Hiba!"
 
-#: horizons/gui/gui.py:663
+#: horizons/gui/gui.py
 msgid "Failed to delete savefile!"
 msgstr "Nem sikerült a mentés törlése!"
 
 #. i18n this defines how each line in our help looks like. Default: '[C] = Chat'
-#: horizons/gui/gui.py:681
+#: horizons/gui/gui.py
 #, python-format
 msgid "[{key}] = {text}"
-msgstr ""
+msgstr "[{key}] = {text}"
 
 # 97%
 #. (helptext of widget: headline)
-#: horizons/gui/ingamegui.py:240 horizons/gui/tabs/mainsquaretabs.py:95
-#: horizons/gui/widgets/playerssettlements.py:101
-#: horizons/i18n/guitranslations.py:417 horizons/i18n/guitranslations.py:439
-#: horizons/i18n/guitranslations.py:459
-#, fuzzy
+#: horizons/gui/ingamegui.py horizons/gui/tabs/mainsquaretabs.py
+#: horizons/gui/widgets/playerssettlements.py
+#: horizons/i18n/guitranslations.py horizons/i18n/guitranslations.py
+#: horizons/i18n/guitranslations.py
 msgid "Click to change the name of your settlement"
-msgstr "Kattints a település nevének megváltoztatásához."
+msgstr "Kattints a település nevének megváltoztatásához"
 
 #. e.g. when the pirate is disabled
 #. this dialog is pretty useless in this case
-#: horizons/gui/ingamegui.py:278
+#: horizons/gui/ingamegui.py
 msgid "No diplomacy possible"
 msgstr "Diplomácia nem lehetséges"
 
-#: horizons/gui/ingamegui.py:279
-#, fuzzy
+#: horizons/gui/ingamegui.py
 msgid "Cannot do diplomacy as there are no other players."
 msgstr "Diplomáciai kapcsolat nem lehetséges, mert nincsenek más játékosok."
 
-#: horizons/gui/ingamegui.py:462
+#: horizons/gui/ingamegui.py
 #, python-format
 msgid "Valid map names are in the following form: {expression}"
 msgstr "A térképnevek a következő formátumban érvényesek: {expression}"
 
-#: horizons/gui/ingamegui.py:464
+#: horizons/gui/ingamegui.py
 #, python-format
 msgid "Try a name that only contains letters and numbers."
-msgstr ""
+msgstr "Próbálj olyan nevet, amelyek csak betűket és számokat tartalmaznak."
 
-#: horizons/gui/modules/multiplayermenu.py:44
+#: horizons/gui/modules/multiplayermenu.py
 msgid "Unable to find pyenet"
 msgstr "A pyenet könyvtár nem található"
 
-#: horizons/gui/modules/multiplayermenu.py:45
+#: horizons/gui/modules/multiplayermenu.py
 msgid "The multiplayer feature requires the library \"pyenet\", which couldn't be found on your system."
 msgstr ""
-"A többjátékos üzemmódhoz szükség van a \"pyenet\" programkönyvtárra, ami nem "
+"A többjátékos üzemmódhoz szükség van a \"pyenet\" programkönyvtárra, amely nem "
 "található meg a rendszereden."
 
-#: horizons/gui/modules/multiplayermenu.py:46
+#: horizons/gui/modules/multiplayermenu.py
 msgid "Linux users: Try to install pyenet through your package manager."
 msgstr ""
 "Linux felhasználók: próbáld meg telepíteni a pyenet-et a csomagkezelővel."
 
-#: horizons/gui/modules/multiplayermenu.py:47
+#: horizons/gui/modules/multiplayermenu.py
 msgid "Windows users: There is currently no reasonable support for Windows."
 msgstr "Windows felhasználók: jelenleg nincs elfogadható támogatás Windowshoz."
 
-#: horizons/gui/modules/multiplayermenu.py:55
+#: horizons/gui/modules/multiplayermenu.py
 msgid "Failed to initialize networking."
 msgstr "A hálózat inicializálása sikertelen."
 
-#: horizons/gui/modules/multiplayermenu.py:117
-#: horizons/gui/modules/multiplayermenu.py:135
+#: horizons/gui/modules/multiplayermenu.py
+#: horizons/gui/modules/multiplayermenu.py
 msgid "Fatal Network Error"
 msgstr "Végzetes hálózati hiba"
 
-#: horizons/gui/modules/multiplayermenu.py:118
-#, fuzzy
+#: horizons/gui/modules/multiplayermenu.py
 msgid "Could not connect to master server."
 msgstr "Nem sikerült kapcsolódni a főszerverhez."
 
-#: horizons/gui/modules/multiplayermenu.py:119
-#, fuzzy
+#: horizons/gui/modules/multiplayermenu.py
 msgid "Please check your Internet connection. If it is fine, it means our master server is temporarily down."
 msgstr ""
 "Ellenőrizd az internet kapcsolatodat. Amennyiben rendben van, az azt "
 "jelenti, hogy a főszerverünk ideiglenesen elérhetetlen."
 
 # 97%
-#: horizons/gui/modules/multiplayermenu.py:136
+#: horizons/gui/modules/multiplayermenu.py
 msgid "Something went wrong with the network:"
 msgstr "Valami gubanc van a hálózattal:"
 
-#: horizons/gui/modules/multiplayermenu.py:160
+#: horizons/gui/modules/multiplayermenu.py
 msgid "Version differs!"
 msgstr "A verzió eltér!"
 
-#: horizons/gui/modules/multiplayermenu.py:184
+#: horizons/gui/modules/multiplayermenu.py
 #, python-format
 msgid "Map: {map_name}"
 msgstr "Térkép: {map_name}"
 
-#: horizons/gui/modules/multiplayermenu.py:185
+#: horizons/gui/modules/multiplayermenu.py
 msgid "Name: {game_name}"
-msgstr ""
+msgstr "Név: {game_name}"
 
-#: horizons/gui/modules/multiplayermenu.py:187
+#: horizons/gui/modules/multiplayermenu.py
 #, python-format
 msgid "Players: {player_amount}/{player_limit}"
 msgstr "Játékosok: {player_amount}/{player_limit}"
 
-#: horizons/gui/modules/multiplayermenu.py:192
+#: horizons/gui/modules/multiplayermenu.py
 #, python-format
 msgid "Creator: {player}"
-msgstr "Létrehozó: {player}"
+msgstr "Készítő: {player}"
 
-#: horizons/gui/modules/multiplayermenu.py:203
+#: horizons/gui/modules/multiplayermenu.py
 msgid "This savegame is missing (click here)"
-msgstr ""
+msgstr "Ez a mentés hiányzik (klikk ide)"
 
-#: horizons/gui/modules/multiplayermenu.py:209
+#: horizons/gui/modules/multiplayermenu.py
 msgid "For multiplayer load, it is currently necessary for you to ensure you have the correct savegame file."
 msgstr ""
+"Többjátékos játék betöltéséhez jelenleg elengedhetetlen, hogy a helyes "
+"mentést használd."
 
-#: horizons/gui/modules/multiplayermenu.py:210
+#: horizons/gui/modules/multiplayermenu.py
 msgid "This is not nice and we hope to offer a more convenient solution very soon."
-msgstr ""
+msgstr "Ez nem szép, reméljük hamarosan kényelmesebb megoldást tudunk nyújtani."
 
-#: horizons/gui/modules/multiplayermenu.py:211
+#: horizons/gui/modules/multiplayermenu.py
 msgid "Meanwhile, please request the file {path} from the game creator and put it in {map_directory} ."
 msgstr ""
+"Közben, kérlek kérd el a fájlt {path} a játék készítőjétől és másold be ide "
+"{map_directory} ."
 
 #. (text of widget: help)
 #. (text of widget: help) Main / in-game menu entry
-#: horizons/gui/modules/multiplayermenu.py:214
-#: horizons/i18n/guitranslations.py:777 horizons/i18n/guitranslations.py:803
+#: horizons/gui/modules/multiplayermenu.py
+#: horizons/i18n/guitranslations.py horizons/i18n/guitranslations.py
 msgid "Help"
 msgstr "Segítség"
 
-#: horizons/gui/modules/multiplayermenu.py:218
+#: horizons/gui/modules/multiplayermenu.py
 msgid "This is a savegame."
-msgstr ""
+msgstr "Ez egy játék mentés."
 
-#: horizons/gui/modules/multiplayermenu.py:242
+#: horizons/gui/modules/multiplayermenu.py
 msgid "Wrong version"
 msgstr "Hibás verzió"
 
-#: horizons/gui/modules/multiplayermenu.py:244
+#: horizons/gui/modules/multiplayermenu.py
 #, python-format
 msgid "The game's version differs from your version. Every player in a multiplayer game must use the same version. This can be fixed by every player updating to the latest version. Game version: {game_version} Your version: {own_version}"
 msgstr ""
@@ -915,629 +951,614 @@ msgstr ""
 "legutolsó verzióra frissít. A játék verziója: {game_version} A Te verziód: "
 "{own_version}"
 
-#: horizons/gui/modules/multiplayermenu.py:350
-#: horizons/gui/modules/singleplayermenu.py:111
+#: horizons/gui/modules/multiplayermenu.py
+#: horizons/gui/modules/singleplayermenu.py
 #, python-format
 msgid "Recommended number of players: {number}"
 msgstr "Játékosok ajánlott száma: {number}"
 
-#: horizons/gui/modules/singleplayermenu.py:156
-#: horizons/gui/modules/singleplayermenu.py:170
-#: horizons/gui/widgets/choose_next_scenario.py:44
+#: horizons/gui/modules/singleplayermenu.py
+msgid "Translation status:"
+msgstr ""
+
+#: horizons/gui/modules/singleplayermenu.py
+msgid "{translated} translated messages, {untranslated} untranslated messages"
+msgstr ""
+
+#: horizons/gui/modules/singleplayermenu.py
+#: horizons/gui/modules/singleplayermenu.py
+#: horizons/gui/widgets/choose_next_scenario.py
 #, python-format
 msgid "Difficulty: {difficulty}"
 msgstr "Nehézség: {difficulty}"
 
-#: horizons/gui/modules/singleplayermenu.py:158
-#: horizons/gui/modules/singleplayermenu.py:172
-#: horizons/gui/widgets/choose_next_scenario.py:45
+#: horizons/gui/modules/singleplayermenu.py
+#: horizons/gui/modules/singleplayermenu.py
+#: horizons/gui/widgets/choose_next_scenario.py
 #, python-format
 msgid "Author: {author}"
 msgstr "Szerző: {author}"
 
-#: horizons/gui/modules/singleplayermenu.py:160
-#: horizons/gui/modules/singleplayermenu.py:174
-#: horizons/gui/widgets/choose_next_scenario.py:46
+#: horizons/gui/modules/singleplayermenu.py
+#: horizons/gui/modules/singleplayermenu.py
+#: horizons/gui/widgets/choose_next_scenario.py
 #, python-format
 msgid "Description: {desc}"
 msgstr "Leírás: {desc}"
 
-#: horizons/gui/modules/singleplayermenu.py:197
+#: horizons/gui/modules/singleplayermenu.py
 msgid "Invalid player name"
 msgstr "Hibás játékos név"
 
-#: horizons/gui/modules/singleplayermenu.py:197
+#: horizons/gui/modules/singleplayermenu.py
 msgid "You entered an invalid playername."
 msgstr "Érvénytelen játékosnevet adtál meg."
 
-#: horizons/gui/modules/singleplayermenu.py:288
+#: horizons/gui/modules/singleplayermenu.py
 msgid "Map size:"
 msgstr "Térkép mérete:"
 
-#: horizons/gui/modules/singleplayermenu.py:298
+#: horizons/gui/modules/singleplayermenu.py
 msgid "Water:"
 msgstr "Víz:"
 
-#: horizons/gui/modules/singleplayermenu.py:308
+#: horizons/gui/modules/singleplayermenu.py
 msgid "Max island size:"
 msgstr "Maximális szigetméret:"
 
-#: horizons/gui/modules/singleplayermenu.py:318
+#: horizons/gui/modules/singleplayermenu.py
 msgid "Preferred island size:"
 msgstr "Preferált szigetméret:"
 
-#: horizons/gui/modules/singleplayermenu.py:328
+#: horizons/gui/modules/singleplayermenu.py
 msgid "Island size deviation:"
 msgstr "Szigetméret eltérés:"
 
-#: horizons/gui/modules/singleplayermenu.py:367
+#: horizons/gui/modules/singleplayermenu.py
 msgid "Resource density:"
 msgstr "Nyersanyagsűrűség:"
 
-# szkenárió??
-#: horizons/gui/modules/singleplayermenu.py:387
-#, fuzzy
+# szkenárió?? - gondolom egy játék menetet tartalmazó beállítást tároló fájl... na ezt fordítsd le:P
+#: horizons/gui/modules/singleplayermenu.py
 msgid "Invalid scenario file"
 msgstr "Hibás szkenárió fájl"
 
-# szcenárió can be "forgatókönyv"
-#: horizons/gui/modules/singleplayermenu.py:388
-#, fuzzy
+# szcenárió can be "forgatókönyv" - not the best word for it
+#: horizons/gui/modules/singleplayermenu.py
 msgid "The selected file is not a valid scenario file."
-msgstr "A kiválasztott fájl nem egy érvényes szcenárió fájl."
+msgstr "A kiválasztott fájl nem egy érvényes szkenárió fájl."
 
-#: horizons/gui/modules/singleplayermenu.py:389
+#: horizons/gui/modules/singleplayermenu.py
 msgid "Error message:"
 msgstr "Hibaüzenet:"
 
 # 97%
 # 100%
-#: horizons/gui/modules/singleplayermenu.py:390
+#: horizons/gui/modules/singleplayermenu.py
 msgid "Please report this to the author."
 msgstr "Kérlek ezt jelentsd az alkotójának."
 
 #. dialog already gone
-#: horizons/gui/modules/singleplayermenu.py:464
+#: horizons/gui/modules/singleplayermenu.py
 msgid "Click to generate a different random map"
+msgstr "Klikk egy másik random térkép generálásához"
+
+#. set translated building name in gui
+#: horizons/gui/mousetools/buildingtool.py
+msgid "Build {building}"
 msgstr ""
 
-#. (text of widget: headline)
-#. set translated building name in gui
-#: horizons/gui/mousetools/buildingtool.py:213
-#: horizons/i18n/guitranslations.py:64
-msgid "Build"
-msgstr "Épít"
-
-#: horizons/gui/mousetools/navigationtool.py:75
+#: horizons/gui/mousetools/navigationtool.py
 msgid "Press H to remove this hint"
 msgstr "Nyomd meg a H-t a tipp eltűntetéséhez"
 
-#: horizons/gui/tabs/boatbuildertab.py:50
+#: horizons/gui/tabs/boatbuildertabs.py
 msgid "Boat builder overview"
 msgstr "Hajóépítő áttekintés"
 
-#: horizons/gui/tabs/boatbuildertab.py:101
+#: horizons/gui/tabs/boatbuildertabs.py
 #, python-format
 msgid "{ship} (place in queue: {place})"
-msgstr ""
+msgstr "{ship} (hely a sorban:: {place})"
 
-#: horizons/gui/tabs/boatbuildertab.py:165
+#: horizons/gui/tabs/boatbuildertabs.py
 msgid "Resources still needed:"
-msgstr "Nyersanyagok kellenek:"
+msgstr "Szükséges nyersanyagok:"
 
-#: horizons/gui/tabs/boatbuildertab.py:242
+#: horizons/gui/tabs/boatbuildertabs.py
 msgid "Fisher boats"
 msgstr "Halász hajó"
 
 #. (text of widget: headline)
-#: horizons/gui/tabs/boatbuildertab.py:252
-#: horizons/i18n/guitranslations.py:156
+#: horizons/gui/tabs/boatbuildertabs.py
+#: horizons/i18n/guitranslations.py
 msgid "Trade boats"
 msgstr "Kereskedőhajók"
 
 #. (text of widget: headline)
-#: horizons/gui/tabs/boatbuildertab.py:260
-#: horizons/i18n/guitranslations.py:173
+#: horizons/gui/tabs/boatbuildertabs.py
+#: horizons/i18n/guitranslations.py
 msgid "War boats"
 msgstr "Csatahajók"
 
-#: horizons/gui/tabs/boatbuildertab.py:267
+#: horizons/gui/tabs/boatbuildertabs.py
 msgid "War ships"
-msgstr "Csata hajó"
+msgstr "Csatahajók"
 
-#: horizons/gui/tabs/boatbuildertab.py:284
+#: horizons/gui/tabs/boatbuildertabs.py
 msgid "Confirm order"
 msgstr "Megerősítés"
 
-#: horizons/gui/tabs/buildrelatedtab.py:46
-#, fuzzy
-msgid "Build related fields"
-msgstr "Kapcsolódó területek építése"
+# 94%
+#: horizons/gui/tabs/buildingtabs.py
+#: horizons/gui/tabs/enemybuildingtabs.py
+msgid "Warehouse overview"
+msgstr "Raktárház áttekintése"
 
-#: horizons/gui/tabs/buildtabs.py:110
-msgid "Residents and infrastructure"
-msgstr "Lakosok és épületek"
+#: horizons/gui/tabs/buildingtabs.py
+msgid "Tower overview"
+msgstr "Tornyok áttekintése"
 
-#: horizons/gui/tabs/buildtabs.py:111 horizons/gui/tabs/buildtabs.py:117
-#: horizons/gui/tabs/buildtabs.py:124
-msgid "Services"
-msgstr "Szolgáltatások"
+#. (text of widget: headline)
+#: horizons/gui/tabs/buildingtabs.py horizons/gui/tabs/overviewtab.py
+#: horizons/i18n/guitranslations.py
+msgid "Overview"
+msgstr "Áttekintés"
 
-#: horizons/gui/tabs/buildtabs.py:112 horizons/gui/tabs/buildtabs.py:115
-#: horizons/gui/tabs/buildtabs.py:122 horizons/gui/tabs/buildtabs.py:128
-msgid "Companies"
-msgstr "Vállalatok"
-
-#: horizons/gui/tabs/buildtabs.py:116 horizons/gui/tabs/buildtabs.py:123
-#: horizons/gui/tabs/buildtabs.py:129
-msgid "Fields"
-msgstr "Mező"
-
-#: horizons/gui/tabs/buildtabs.py:118
-msgid "Military"
-msgstr "Hadsereg"
-
-#: horizons/gui/tabs/buildtabs.py:121
-msgid "Mining"
+#: horizons/gui/tabs/buildrelatedtab.py
+msgid "Build related buildings"
 msgstr ""
-
-#: horizons/gui/tabs/buildtabs.py:149
-#, fuzzy
-msgid "Increment {increment}"
-msgstr "Növekedés"
 
 #. (text of widget: headline)
 #. (helptext of widget: trade)
-#: horizons/gui/tabs/buyselltab.py:97 horizons/i18n/guitranslations.py:477
-#: horizons/i18n/guitranslations.py:490 horizons/i18n/guitranslations.py:505
-#: horizons/i18n/guitranslations.py:516
+#: horizons/gui/tabs/buyselltab.py horizons/i18n/guitranslations.py
+#: horizons/i18n/guitranslations.py horizons/i18n/guitranslations.py
+#: horizons/i18n/guitranslations.py
 msgid "Trade"
 msgstr "Kereskedelem"
 
-#: horizons/gui/tabs/buyselltab.py:139
+#: horizons/gui/tabs/buyselltab.py
 msgid "Click on one of the resource slots to add a trade offer."
-msgstr ""
+msgstr "Klikk egy nyersanyag helyre egy új ajánlat létrehozásához."
 
 #. new res
-#: horizons/gui/tabs/buyselltab.py:186
+#: horizons/gui/tabs/buyselltab.py
 msgid "Set to buy or sell by clicking on that label, then adjust the amount via the slider to the right."
 msgstr ""
+"Állítsd be az eladást vagy vételt a címkére kattintással, majd állítsd be a "
+"mennyiséget a jobb oldali csúszkával."
 
-#: horizons/gui/tabs/buyselltab.py:363
+# Na most pl búzával így néz ki:
+# "Vásárolni fog búza 20 aranyért tonnánként, hogyha kevesebb van, mint 30t a raktárban."
+#: horizons/gui/tabs/buyselltab.py
 #, python-format
 msgid "Will buy {resource_name} for {price} gold/t whenever less than {limit}t are in stock."
 msgstr ""
+"{resource_name} vásárlása {price} aranyért tonnánként, hogyha kevesebb van a "
+"raktárban, mint {limit} tonna."
 
-#: horizons/gui/tabs/buyselltab.py:367
+# u.a. mint a 211-es.
+#: horizons/gui/tabs/buyselltab.py
 #, python-format
 msgid "Will sell {resource_name} for {price} gold/t whenever more than {limit}t are available."
 msgstr ""
+"{resource_name} eladása {price} aranyért tonnánként, hogyha több van a "
+"raktárban, mint {limit} tonna."
 
 #. (text of widget: headline)
-#: horizons/gui/tabs/inventorytab.py:38 horizons/i18n/guitranslations.py:219
+#: horizons/gui/tabs/inventorytab.py horizons/i18n/guitranslations.py
 msgid "Settlement inventory"
 msgstr "Település raktárkészlet"
 
 #. (text of widget: headline)
-#: horizons/gui/tabs/mainsquaretabs.py:66 horizons/i18n/guitranslations.py:535
+#: horizons/gui/tabs/mainsquaretabs.py horizons/i18n/guitranslations.py
 msgid "Account"
 msgstr "Fiók"
 
-#: horizons/gui/tabs/mainsquaretabs.py:93
+#: horizons/gui/tabs/mainsquaretabs.py
 msgid "Main square overview"
 msgstr "Főtér áttekintés"
 
+#: horizons/gui/tabs/mainsquaretabs.py
+msgid "Don't allow upgrades"
+msgstr "Fejlesztések tiltása"
+
+#: horizons/gui/tabs/mainsquaretabs.py
+msgid "Allow upgrades"
+msgstr "Fejlesztések engedélyezése"
+
+# 76%
+#: horizons/gui/tabs/overviewtab.py
+msgid "Unit overview"
+msgstr "Egységek áttekintése"
+
+#: horizons/gui/tabs/productiontabs.py
+#: horizons/gui/tabs/productiontabs.py
+msgid "Production overview"
+msgstr "Termelés áttekintése"
+
 #. (text of widget: headline)
-#: horizons/gui/tabs/mainsquaretabs.py:112
-#: horizons/gui/tabs/overviewtab.py:493 horizons/i18n/guitranslations.py:269
+#: horizons/gui/tabs/residentialtabs.py
+#: horizons/i18n/guitranslations.py
 msgid "Settler overview"
 msgstr "Telepes áttekintés"
 
-#: horizons/gui/tabs/mainsquaretabs.py:200
-#, fuzzy
-msgid "Don't allow upgrades"
-msgstr "Fejlődés tiltása"
+#: horizons/gui/tabs/selectmultitab.py
+msgid "Selected Units"
+msgstr "Kiválasztott egységek"
 
-#: horizons/gui/tabs/mainsquaretabs.py:203
-#, fuzzy
-msgid "Allow upgrades"
-msgstr "Fejlődés engedélyezése"
-
-#. (text of widget: headline)
-#: horizons/gui/tabs/overviewtab.py:62 horizons/gui/tabs/overviewtab.py:558
-#: horizons/i18n/guitranslations.py:466
-msgid "Overview"
-msgstr "Áttekintés"
-
-# 94%
-#: horizons/gui/tabs/overviewtab.py:148 horizons/gui/tabs/overviewtab.py:575
-#, fuzzy
-msgid "Warehouse overview"
-msgstr "raktár áttekintés"
-
-#: horizons/gui/tabs/overviewtab.py:182 horizons/gui/tabs/overviewtab.py:322
+#: horizons/gui/tabs/shiptabs.py horizons/gui/tabs/shiptabs.py
+#: horizons/gui/tabs/shiptabs.py
 msgid "Ship overview"
-msgstr "Hajó áttekintés"
+msgstr "Hajók áttekintése"
 
-#: horizons/gui/tabs/overviewtab.py:190
+#: horizons/gui/tabs/shiptabs.py
 msgid "The ship needs to be close to an island to found a settlement."
 msgstr "A hajónak egy sziget közelében kell lennie egy település alapításához."
 
-#: horizons/gui/tabs/overviewtab.py:195
+#: horizons/gui/tabs/shiptabs.py
 msgid "You already have a settlement on this island."
 msgstr "Már van egy településed ezen a szigeten."
 
 #. (helptext of widget: found_settlement)
-#: horizons/gui/tabs/overviewtab.py:203 horizons/i18n/guitranslations.py:503
-#: horizons/i18n/guitranslations.py:514
+#: horizons/gui/tabs/shiptabs.py horizons/i18n/guitranslations.py
+#: horizons/i18n/guitranslations.py
 msgid "Build settlement"
 msgstr "Település építése"
 
-#: horizons/gui/tabs/overviewtab.py:228
+#: horizons/gui/tabs/shiptabs.py
 msgid "Load/Unload"
 msgstr "Berakodás/Kirakodás"
 
-#: horizons/gui/tabs/overviewtab.py:231
+#: horizons/gui/tabs/shiptabs.py
 msgid "Buy/Sell"
 msgstr "Vásárlás/Eladás"
 
-#: horizons/gui/tabs/overviewtab.py:240
+#: horizons/gui/tabs/shiptabs.py
 msgid "Too far from the nearest own or allied warehouse"
-msgstr ""
+msgstr "Túl messze van a legközelebbi saját, vagy szövetséges raktárháztól"
 
-#: horizons/gui/tabs/overviewtab.py:246
+#: horizons/gui/tabs/shiptabs.py
 msgid "Cannot equip trade ship with weapons"
 msgstr "Nem sikerült felszerelni fegyverekkel a kereskedelmi hajót"
 
-#: horizons/gui/tabs/overviewtab.py:247
+#: horizons/gui/tabs/shiptabs.py
 msgid "It is not possible to equip a trade ship with weapons."
 msgstr "Kereskedelmi hajót nem lehet felszerelni fegyverekkel."
 
-#: horizons/gui/tabs/overviewtab.py:280
+#: horizons/gui/tabs/shiptabs.py
 msgid "Equip weapon"
 msgstr "Felfegyverzés"
 
-#: horizons/gui/tabs/overviewtab.py:284
+#: horizons/gui/tabs/shiptabs.py
 msgid "Unequip weapon"
 msgstr "Lefegyverzés"
 
-#: horizons/gui/tabs/overviewtab.py:313
-msgid "Tower overview"
-msgstr ""
-
-# 76%
-#: horizons/gui/tabs/overviewtab.py:330
-#, fuzzy
-msgid "Unit overview"
-msgstr "Hajó áttekintés"
-
-#: horizons/gui/tabs/overviewtab.py:348 horizons/gui/tabs/overviewtab.py:485
-msgid "Production overview"
-msgstr "Termelési áttekintés"
-
-#: horizons/gui/tabs/selectmultitab.py:56
-msgid "Selected Units"
-msgstr "Kiválasztott egységek"
-
-#: horizons/gui/widgets/buysellinventory.py:83
-#: horizons/gui/widgets/inventory.py:115
+#: horizons/gui/widgets/buysellinventory.py
+#: horizons/gui/widgets/inventory.py
 #, python-format
 msgid "Limit: {amount}t per slot"
 msgstr "Korlát: {amount}t helyenként"
 
-#: horizons/gui/widgets/logbook.py:45
+#: horizons/gui/widgets/logbook.py
 msgid "Logbook"
-msgstr ""
+msgstr "Naplókönyv"
 
 #. (text of widget: headline_statistics)
-#: horizons/gui/widgets/logbook.py:46 horizons/i18n/guitranslations.py:610
+#: horizons/gui/widgets/logbook.py horizons/i18n/guitranslations.py
 msgid "Statistics"
-msgstr ""
+msgstr "Statisztikák"
 
 #. (text of widget: headline)
 #. (text of widget: headline_chat)
 #. (text of widget: lbl_CHAT)
-#: horizons/gui/widgets/logbook.py:47 horizons/i18n/guitranslations.py:119
-#: horizons/i18n/guitranslations.py:606 horizons/i18n/guitranslations.py:718
+#: horizons/gui/widgets/logbook.py horizons/i18n/guitranslations.py
+#: horizons/i18n/guitranslations.py horizons/i18n/guitranslations.py
 msgid "Chat"
 msgstr "Beszélgetés"
 
-#: horizons/gui/widgets/logbook.py:150
+#: horizons/gui/widgets/logbook.py
 msgid "Emptiness"
 msgstr "Üresség"
 
-#: horizons/gui/widgets/logbook.py:153
+#: horizons/gui/widgets/logbook.py
 msgid "There is nothing written in your logbook yet!"
-msgstr "Nincs semmi írva az eseménykönyvedbe eddig!"
+msgstr "Nincs semmi írva az hajónaplódba eddig!"
 
 #. (text of widget: headline_graphics)
-#: horizons/gui/widgets/pickbeltwidget.py:91
-#: horizons/i18n/guitranslations.py:899
+#: horizons/gui/widgets/pickbeltwidget.py
+#: horizons/i18n/guitranslations.py
 msgid "Graphics"
 msgstr "Grafika"
 
 #. (text of widget: headline_sound)
-#: horizons/gui/widgets/pickbeltwidget.py:92
-#: horizons/i18n/guitranslations.py:909
+#: horizons/gui/widgets/pickbeltwidget.py
+#: horizons/i18n/guitranslations.py
 msgid "Sound"
 msgstr "Hang"
 
-#: horizons/gui/widgets/pickbeltwidget.py:93
-#, fuzzy
+#: horizons/gui/widgets/pickbeltwidget.py
 msgid "Game"
-msgstr "Kilépés"
+msgstr "Játék"
 
 # 95%
-#: horizons/gui/widgets/playerssettlements.py:44
+#: horizons/gui/widgets/playerssettlements.py
 #, python-format
-#, python-format, fuzzy
+#, python-format,
 msgid "Settlements of {player}"
 msgstr "{player} települései"
 
 #. (text of widget: total_score)
-#: horizons/gui/widgets/playerssettlements.py:122
-#: horizons/i18n/guitranslations.py:666
+#: horizons/gui/widgets/playerssettlements.py
+#: horizons/i18n/guitranslations.py
 msgid "Total"
 msgstr "Összesen"
 
 # 94%
-#: horizons/gui/widgets/playersships.py:49
+#: horizons/gui/widgets/playersships.py
 #, python-format
-#, python-format, fuzzy
+#, python-format,
 msgid "Ships of {player}"
 msgstr "{player} hajói"
 
 # 97%
 #. (helptext of widget: name)
-#: horizons/gui/widgets/playersships.py:83
-#: horizons/i18n/guitranslations.py:499 horizons/i18n/guitranslations.py:510
-#, fuzzy
+#: horizons/gui/widgets/playersships.py
+#: horizons/i18n/guitranslations.py horizons/i18n/guitranslations.py
 msgid "Click to change the name of this ship"
-msgstr "Kattints ide a hajó nevének megváltoztatásához."
+msgstr "Kattints ide a hajó nevének megváltoztatásához"
 
 #. i18n There are no weapons equipped at the moment.
-#: horizons/gui/widgets/playersships.py:99
-#, fuzzy
+#: horizons/gui/widgets/playersships.py
 msgid "None"
 msgstr "Semmi"
 
-#: horizons/gui/widgets/playersships.py:101
+#: horizons/gui/widgets/playersships.py
 msgid "N/A"
-msgstr ""
+msgstr "N/A"
 
-#: horizons/gui/widgets/productionoverview.py:54
+#: horizons/gui/widgets/productionoverview.py
 #, python-format
 msgid "Production overview of {settlement}"
 msgstr "{settlement} termelésének áttekintése"
 
-#: horizons/gui/widgets/resourceoverviewbar.py:199
+#: horizons/gui/widgets/resourceoverviewbar.py
 msgid "Click to add a new slot"
-msgstr ""
+msgstr "Klikk új hely hozzáadásához"
 
-#: horizons/gui/widgets/resourceoverviewbar.py:389
-#: horizons/gui/widgets/resourceoverviewbar.py:394
+#: horizons/gui/widgets/resourceoverviewbar.py
+#: horizons/gui/widgets/resourceoverviewbar.py
 msgid "Reset to default"
-msgstr ""
+msgstr "Visszaállítás az eredetire"
 
-#: horizons/gui/widgets/resourceoverviewbar.py:390
+#: horizons/gui/widgets/resourceoverviewbar.py
 msgid "Reset this configuration to the factory default."
-msgstr ""
+msgstr "A beállítás visszaállítása a gyári értékekre."
 
-#: horizons/gui/widgets/resourceoverviewbar.py:395
+#: horizons/gui/widgets/resourceoverviewbar.py
 msgid "Reset this settlement's displayed resources to the default configuration you have saved."
 msgstr ""
+"A gyarmat megjelenített nyersanyagainak visszaállítása az alapértelmezett "
+"beállításra, amelyet mentettél."
 
-#: horizons/gui/widgets/resourceoverviewbar.py:399
+#: horizons/gui/widgets/resourceoverviewbar.py
 msgid "Reset to factory"
-msgstr ""
+msgstr "Visszaállítás a gyári beállításokra"
 
-#: horizons/gui/widgets/resourceoverviewbar.py:400
+#: horizons/gui/widgets/resourceoverviewbar.py
 msgid "Reset the default configuration (which you see here) to the factory default for all settlements."
 msgstr ""
+"Alapértelmezett beállítás visszaállítása (amit itt látsz) a gyári "
+"beállításokra az összes gyarmatra."
 
 #. (helptext of widget: start_route) Trade route
-#: horizons/gui/widgets/routeconfig.py:88 horizons/i18n/guitranslations.py:642
+#: horizons/gui/widgets/routeconfig.py horizons/i18n/guitranslations.py
 msgid "Start route"
 msgstr "Útvonal indítása"
 
-#: horizons/gui/widgets/routeconfig.py:92
+#: horizons/gui/widgets/routeconfig.py
 msgid "Stop route"
 msgstr "Útvonal leállítása"
 
-#: horizons/gui/widgets/routeconfig.py:98
+#: horizons/gui/widgets/routeconfig.py
 msgid "Need at least two settlements"
-msgstr ""
+msgstr "Legalább két gyarmat szükséges"
 
-#: horizons/gui/widgets/routeconfig.py:99
+#: horizons/gui/widgets/routeconfig.py
 msgid "You need at least two different settlements in your route."
-msgstr ""
+msgstr "Legalább két különböző gyarmat kell a kereskedelmi útvonalba."
 
-#: horizons/gui/widgets/routeconfig.py:144
+#: horizons/gui/widgets/routeconfig.py
 msgid "Click on a settlement to add a waypoint!"
-msgstr ""
+msgstr "Klikk egy gyarmatra egy új útvonal létrehozásához!"
 
-#: horizons/gui/widgets/routeconfig.py:187
+#: horizons/gui/widgets/routeconfig.py
 msgid "Loading into ship"
-msgstr ""
+msgstr "Berakodás a hajóba"
 
-#: horizons/gui/widgets/routeconfig.py:194
+#: horizons/gui/widgets/routeconfig.py
 msgid "Unloading from ship"
-msgstr ""
+msgstr "Kirakodás a hajóból"
 
-#: horizons/gui/widgets/routeconfig.py:277
+#: horizons/gui/widgets/routeconfig.py
 msgid "Select a resource:"
 msgstr "Válassz egy nyersanyagot:"
 
-#: horizons/gui/widgets/unitoverview.py:122
+#: horizons/gui/widgets/unitoverview.py
 msgid "none"
 msgstr "semmi"
 
 #. (text of widget: headline)
-#: horizons/i18n/guitranslations.py:53
+#: horizons/i18n/guitranslations.py
 msgid "Game start"
 msgstr "Játék indítása"
 
 #. (text of widget: howto_1_need_warehouse)
-#: horizons/i18n/guitranslations.py:55
+#: horizons/i18n/guitranslations.py
 msgid "You need to found a settlement before you can construct buildings!"
 msgstr "Előbb egy települést kell alapítanod, mielőtt épületeket építenél!"
 
 #. (text of widget: howto_2_navigate_ship)
-#: horizons/i18n/guitranslations.py:57
+#: horizons/i18n/guitranslations.py
 msgid "Select your ship and approach the coast via right-click."
 msgstr "Válaszd ki a hajódat és közelítsd meg a partot jobb gombbal kattintva."
 
 #. (text of widget: howto_3_build_warehouse)
-#: horizons/i18n/guitranslations.py:59
+#: horizons/i18n/guitranslations.py
 msgid "Afterwards, press the large button in the ship overview tab."
 msgstr "Azután nyomd meg a nagy gombot a hajó áttekintés fülön."
 
+#. (text of widget: headline)
+#: horizons/i18n/guitranslations.py
+msgid "Build"
+msgstr "Épít"
+
 #. (text of widget: running_costs_label)
-#: horizons/i18n/guitranslations.py:66
+#: horizons/i18n/guitranslations.py
 msgid "Running costs:"
 msgstr "Üzemeltetési költség:"
 
 #. (helptext of widget: city_info_inhabitants)
 #. (text of widget: inhabitants)
-#: horizons/i18n/guitranslations.py:71 horizons/i18n/guitranslations.py:675
+#: horizons/i18n/guitranslations.py horizons/i18n/guitranslations.py
 msgid "Inhabitants"
 msgstr "Lakosok"
 
 #. (helptext of widget: build)
-#: horizons/i18n/guitranslations.py:76
+#: horizons/i18n/guitranslations.py
 msgid "Build menu (B)"
 msgstr "Építési menü (B)"
 
 #. (helptext of widget: destroy_tool)
-#: horizons/i18n/guitranslations.py:78
+#: horizons/i18n/guitranslations.py
 msgid "Destroy (X)"
 msgstr "Lerombol (X)"
 
 #. (helptext of widget: diplomacyButton)
-#: horizons/i18n/guitranslations.py:80
+#: horizons/i18n/guitranslations.py
 msgid "Diplomacy"
 msgstr "Diplomácia"
 
 #. (helptext of widget: gameMenuButton)
-#: horizons/i18n/guitranslations.py:82
+#: horizons/i18n/guitranslations.py
 msgid "Game menu (Esc)"
 msgstr "Játék menü (Esc)"
 
 #. (helptext of widget: logbook)
-#: horizons/i18n/guitranslations.py:84
+#: horizons/i18n/guitranslations.py
 msgid "Captain's log (L)"
 msgstr "A Kapitány naplója (L)"
 
 #. (helptext of widget: rotateLeft)
-#: horizons/i18n/guitranslations.py:86
+#: horizons/i18n/guitranslations.py
 msgid "Rotate map counterclockwise (,)"
 msgstr "Térkép forgatása óramutató járásával ellentétesen (,)"
 
 #. (helptext of widget: rotateRight)
-#: horizons/i18n/guitranslations.py:88
+#: horizons/i18n/guitranslations.py
 msgid "Rotate map clockwise (.)"
 msgstr "Térkép forgatása óramutató járásával egyezően (.)"
 
 #. (helptext of widget: speedDown)
-#: horizons/i18n/guitranslations.py:90
+#: horizons/i18n/guitranslations.py
 msgid "Decrease game speed (-)"
 msgstr "Játék lassítása (-)"
 
 #. (helptext of widget: speedUp)
-#: horizons/i18n/guitranslations.py:92
+#: horizons/i18n/guitranslations.py
 msgid "Increase game speed (+)"
 msgstr "Játék gyorsítása (+)"
 
 #. (helptext of widget: zoomIn)
-#: horizons/i18n/guitranslations.py:94
+#: horizons/i18n/guitranslations.py
 msgid "Zoom in"
 msgstr "Nagyítás"
 
 #. (helptext of widget: zoomOut)
-#: horizons/i18n/guitranslations.py:96
+#: horizons/i18n/guitranslations.py
 msgid "Zoom out"
 msgstr "Kicsinyítés"
 
 #. (helptext of widget: background_icon)
-#: horizons/i18n/guitranslations.py:101
+#: horizons/i18n/guitranslations.py
 msgid "Gold"
 msgstr "Arany"
 
 #. (text of widget: enter_new_name_lbl)
-#: horizons/i18n/guitranslations.py:106
+#: horizons/i18n/guitranslations.py
 msgid "Enter new name:"
 msgstr "Írd be az új nevet:"
 
 #. (text of widget: headline_change_name)
-#: horizons/i18n/guitranslations.py:108
+#: horizons/i18n/guitranslations.py
 msgid "Change name"
 msgstr "Névválatoztatás"
 
 #. (text of widget: old_name_label)
-#: horizons/i18n/guitranslations.py:110
+#: horizons/i18n/guitranslations.py
 msgid "Old name:"
-msgstr ""
+msgstr "Régi név:"
 
 #. (helptext of widget: okButton)
-#: horizons/i18n/guitranslations.py:112
+#: horizons/i18n/guitranslations.py
 msgid "Apply the new name"
 msgstr "Új név alkalmazása"
 
 #. (text of widget: chat_lbl)
-#: horizons/i18n/guitranslations.py:117
+#: horizons/i18n/guitranslations.py
 msgid "Enter your message:"
 msgstr "Írd be az üzenetedet:"
 
 #. (text of widget: enter_new_name_lbl)
-#: horizons/i18n/guitranslations.py:124
+#: horizons/i18n/guitranslations.py
 msgid "Enter prefix:"
 msgstr "Írd be az előtagot:"
 
 #. (text of widget: headline_change_name)
-#: horizons/i18n/guitranslations.py:126
+#: horizons/i18n/guitranslations.py
 msgid "Save map"
 msgstr "Térkép mentése"
 
 #. (helptext of widget: okButton)
-#: horizons/i18n/guitranslations.py:128
+#: horizons/i18n/guitranslations.py
 msgid "Save the map"
 msgstr "Térkép mentése"
 
 #. (text of widget: BB_cancel_build_label) abort construction of a ship, lose invested resources
-#: horizons/i18n/guitranslations.py:133
+#: horizons/i18n/guitranslations.py
 msgid "Cancel building:"
 msgstr "Építés visszavonása:"
 
 #. (text of widget: BB_cancel_warning_label) abort construction of a ship, lose invested resources
-#: horizons/i18n/guitranslations.py:135
+#: horizons/i18n/guitranslations.py
 msgid "(lose all resources)"
 msgstr "(minden nyersanyag elvész)"
 
 #. (text of widget: BB_current_order) Information about the ship currently under construction at the boat builder
-#: horizons/i18n/guitranslations.py:137
+#: horizons/i18n/guitranslations.py
 msgid "Currently building:"
 msgstr "Jelenleg épül:"
 
 #. (text of widget: BB_howto_build_lbl)
-#: horizons/i18n/guitranslations.py:139
+#: horizons/i18n/guitranslations.py
 msgid "To build a boat, click on one of the class tabs, select the desired ship and confirm the order."
 msgstr ""
 "Hajó építéséhez kattints az egyik osztályra, majd válaszd ki a hajót és "
 "erősítsd meg az utasítást."
 
 #. (text of widget: BB_progress_label) Refers to the resources still missing to complete the current boat builder task
-#: horizons/i18n/guitranslations.py:141
+#: horizons/i18n/guitranslations.py
 msgid "Construction progress:"
 msgstr "Építés előrehaladása:"
 
 #. (text of widget: headline)
-#: horizons/i18n/guitranslations.py:143 horizons/i18n/guitranslations.py:206
-#: horizons/i18n/guitranslations.py:383
+#: horizons/i18n/guitranslations.py horizons/i18n/guitranslations.py
+#: horizons/i18n/guitranslations.py horizons/i18n/guitranslations.py
 msgid "Building overview"
-msgstr "Építés áttekintés"
+msgstr "Épületek áttekintése"
 
 #. (helptext of widget: BB_cancel_button) abort construction of a ship, lose invested resources
-#: horizons/i18n/guitranslations.py:145
+#: horizons/i18n/guitranslations.py
 msgid "Cancel all building progress"
 msgstr "Minden építési folyamat visszavonása"
 
@@ -1549,187 +1570,186 @@ msgstr "Minden építési folyamat visszavonása"
 #. (helptext of widget: running_costs)
 #. (helptext of widget: running_costs_label)
 #. (helptext of widget: running_costs)
+#. (helptext of widget: running_costs_label)
+#. (helptext of widget: running_costs)
 #. (text of widget: running_costs_label)
 #. (text of widget: running_costs)
-#: horizons/i18n/guitranslations.py:147 horizons/i18n/guitranslations.py:210
-#: horizons/i18n/guitranslations.py:214 horizons/i18n/guitranslations.py:387
-#: horizons/i18n/guitranslations.py:391 horizons/i18n/guitranslations.py:437
-#: horizons/i18n/guitranslations.py:441 horizons/i18n/guitranslations.py:455
-#: horizons/i18n/guitranslations.py:461 horizons/i18n/guitranslations.py:543
-#: horizons/i18n/guitranslations.py:677
+#: horizons/i18n/guitranslations.py horizons/i18n/guitranslations.py
+#: horizons/i18n/guitranslations.py horizons/i18n/guitranslations.py
+#: horizons/i18n/guitranslations.py horizons/i18n/guitranslations.py
+#: horizons/i18n/guitranslations.py horizons/i18n/guitranslations.py
+#: horizons/i18n/guitranslations.py horizons/i18n/guitranslations.py
+#: horizons/i18n/guitranslations.py horizons/i18n/guitranslations.py
+#: horizons/i18n/guitranslations.py
 msgid "Running costs"
 msgstr "Üzemeltetési költségek"
 
 #. (helptext of widget: toggle_active_active) Pauses the current ship production, can be resumed later
-#: horizons/i18n/guitranslations.py:149
+#: horizons/i18n/guitranslations.py
 msgid "Pause"
 msgstr "Szünet"
 
 #. (helptext of widget: toggle_active_inactive) Resumes the currently paused ship production
-#: horizons/i18n/guitranslations.py:151
+#: horizons/i18n/guitranslations.py
 msgid "Resume"
 msgstr "Folytatás"
 
 #. (text of widget: headline_BB_trade_ship1) The huker is a ship class mostly used for fishing. It is the starting ship of players in Unknown Horizons. If you are not sure how to translate, just leave the field empty and it will be called Huker.
-#: horizons/i18n/guitranslations.py:158
+#: horizons/i18n/guitranslations.py
 msgid "Huker"
 msgstr ""
 
 #. (helptext of widget: BB_build_trade_1)
 #. (helptext of widget: BB_build_war1_1)
-#: horizons/i18n/guitranslations.py:160 horizons/i18n/guitranslations.py:177
+#: horizons/i18n/guitranslations.py horizons/i18n/guitranslations.py
 msgid "Build this ship!"
 msgstr "Hajó megépítése!"
 
 #. (helptext of widget: costs_001)
 #. (text of widget: money_score)
-#: horizons/i18n/guitranslations.py:162 horizons/i18n/guitranslations.py:179
-#: horizons/i18n/guitranslations.py:658
+#: horizons/i18n/guitranslations.py horizons/i18n/guitranslations.py
+#: horizons/i18n/guitranslations.py
 msgid "Money"
 msgstr "Pénz"
 
 #. (helptext of widget: costs_003)
-#: horizons/i18n/guitranslations.py:164 horizons/i18n/guitranslations.py:181
+#: horizons/i18n/guitranslations.py horizons/i18n/guitranslations.py
 msgid "Cloth"
 msgstr "Ruha"
 
 #. (helptext of widget: costs_004)
-#: horizons/i18n/guitranslations.py:166 horizons/i18n/guitranslations.py:183
+#: horizons/i18n/guitranslations.py horizons/i18n/guitranslations.py
 msgid "Boards"
 msgstr "Deszkák"
 
 #. (helptext of widget: costs_006)
-#: horizons/i18n/guitranslations.py:168 horizons/i18n/guitranslations.py:185
+#: horizons/i18n/guitranslations.py horizons/i18n/guitranslations.py
 msgid "Tools"
 msgstr "Szerszámok"
 
 #. (text of widget: headline_BB_war1_ship1)
-#: horizons/i18n/guitranslations.py:175
+#: horizons/i18n/guitranslations.py
 msgid "Frigate"
 msgstr "Fregatt"
 
 #. (helptext of widget: costs_040)
-#: horizons/i18n/guitranslations.py:187
+#: horizons/i18n/guitranslations.py
 msgid "Cannons"
 msgstr "Ágyúk"
 
 #. (text of widget: ally_label) Diplomacy state of player
-#: horizons/i18n/guitranslations.py:192
+#: horizons/i18n/guitranslations.py
 msgid "ally"
 msgstr "szövetséges"
 
 #. (text of widget: enemy_label) Diplomacy state of player
-#: horizons/i18n/guitranslations.py:194
+#: horizons/i18n/guitranslations.py
 msgid "enemy"
 msgstr "ellenség"
 
 #. (text of widget: neutral_label) Diplomacy state of player
-#: horizons/i18n/guitranslations.py:196
+#: horizons/i18n/guitranslations.py
 msgid "neutral"
 msgstr "semleges"
 
 #. (text of widget: headline)
-#: horizons/i18n/guitranslations.py:201
+#: horizons/i18n/guitranslations.py
 msgid "Build fields"
-msgstr ""
+msgstr "Mezők építése"
 
 #. (helptext of widget: capacity_utilisation_label)
 #. (helptext of widget: capacity_utilisation)
 #. (helptext of widget: capacity_utilisation_label)
 #. (helptext of widget: capacity_utilisation)
-#: horizons/i18n/guitranslations.py:208 horizons/i18n/guitranslations.py:212
-#: horizons/i18n/guitranslations.py:385 horizons/i18n/guitranslations.py:389
+#: horizons/i18n/guitranslations.py horizons/i18n/guitranslations.py
+#: horizons/i18n/guitranslations.py horizons/i18n/guitranslations.py
 msgid "Capacity utilization"
 msgstr "Kapacitás kihasználtság"
 
 #. (text of widget: headline_residents_per_house)
-#: horizons/i18n/guitranslations.py:226 horizons/i18n/guitranslations.py:278
-#: horizons/i18n/guitranslations.py:309 horizons/i18n/guitranslations.py:338
+#: horizons/i18n/guitranslations.py horizons/i18n/guitranslations.py
+#: horizons/i18n/guitranslations.py horizons/i18n/guitranslations.py
 msgid "Residents per house"
 msgstr "Lakók házanként"
 
 #. (text of widget: headline_residents_total)
-#: horizons/i18n/guitranslations.py:228 horizons/i18n/guitranslations.py:280
-#: horizons/i18n/guitranslations.py:311 horizons/i18n/guitranslations.py:340
+#: horizons/i18n/guitranslations.py horizons/i18n/guitranslations.py
+#: horizons/i18n/guitranslations.py horizons/i18n/guitranslations.py
 msgid "Summary"
 msgstr "Összefoglalás"
 
 #. (text of widget: houses)
-#: horizons/i18n/guitranslations.py:230 horizons/i18n/guitranslations.py:282
-#: horizons/i18n/guitranslations.py:313 horizons/i18n/guitranslations.py:342
+#: horizons/i18n/guitranslations.py horizons/i18n/guitranslations.py
+#: horizons/i18n/guitranslations.py horizons/i18n/guitranslations.py
 msgid "houses"
 msgstr "házak"
 
 #. (text of widget: resident_1)
-#: horizons/i18n/guitranslations.py:232 horizons/i18n/guitranslations.py:284
-#: horizons/i18n/guitranslations.py:315 horizons/i18n/guitranslations.py:344
+#: horizons/i18n/guitranslations.py horizons/i18n/guitranslations.py
+#: horizons/i18n/guitranslations.py horizons/i18n/guitranslations.py
 msgid "1 resident"
 msgstr "1 lakó"
 
 #. (text of widget: resident_2)
-#: horizons/i18n/guitranslations.py:234 horizons/i18n/guitranslations.py:286
-#: horizons/i18n/guitranslations.py:317 horizons/i18n/guitranslations.py:346
+#: horizons/i18n/guitranslations.py horizons/i18n/guitranslations.py
+#: horizons/i18n/guitranslations.py horizons/i18n/guitranslations.py
 msgid "2 residents"
 msgstr "2 lakó"
 
 #. (text of widget: resident_3)
-#: horizons/i18n/guitranslations.py:236 horizons/i18n/guitranslations.py:288
-#: horizons/i18n/guitranslations.py:348
+#: horizons/i18n/guitranslations.py horizons/i18n/guitranslations.py
+#: horizons/i18n/guitranslations.py
 msgid "3 residents"
 msgstr "3 lakó"
 
 #. (text of widget: resident_4)
-#: horizons/i18n/guitranslations.py:238 horizons/i18n/guitranslations.py:350
+#: horizons/i18n/guitranslations.py horizons/i18n/guitranslations.py
 msgid "4 residents"
 msgstr "4 lakó"
 
 #. (text of widget: resident_5)
-#: horizons/i18n/guitranslations.py:240 horizons/i18n/guitranslations.py:352
+#: horizons/i18n/guitranslations.py horizons/i18n/guitranslations.py
 msgid "5 residents"
 msgstr "5 lakó"
 
 # 90%
 #. (text of widget: resident_6)
-#: horizons/i18n/guitranslations.py:242
-#, fuzzy
+#: horizons/i18n/guitranslations.py
 msgid "6 residents"
-msgstr "2 lakó"
+msgstr "6 lakó"
 
 # 90%
 #. (text of widget: resident_7)
-#: horizons/i18n/guitranslations.py:244
-#, fuzzy
+#: horizons/i18n/guitranslations.py
 msgid "7 residents"
-msgstr "2 lakó"
+msgstr "7 lakó"
 
 # 90%
 #. (text of widget: resident_8)
-#: horizons/i18n/guitranslations.py:246
-#, fuzzy
+#: horizons/i18n/guitranslations.py
 msgid "8 residents"
-msgstr "2 lakó"
+msgstr "8 lakó"
 
 #. (text of widget: residents)
-#: horizons/i18n/guitranslations.py:248 horizons/i18n/guitranslations.py:290
-#: horizons/i18n/guitranslations.py:319 horizons/i18n/guitranslations.py:354
+#: horizons/i18n/guitranslations.py horizons/i18n/guitranslations.py
+#: horizons/i18n/guitranslations.py horizons/i18n/guitranslations.py
 msgid "residents"
 msgstr "lakosok"
 
 #. (text of widget: tax_label)
-#: horizons/i18n/guitranslations.py:250 horizons/i18n/guitranslations.py:292
-#: horizons/i18n/guitranslations.py:321 horizons/i18n/guitranslations.py:356
-#: horizons/i18n/guitranslations.py:407
+#: horizons/i18n/guitranslations.py horizons/i18n/guitranslations.py
+#: horizons/i18n/guitranslations.py horizons/i18n/guitranslations.py
+#: horizons/i18n/guitranslations.py
 msgid "Taxes:"
 msgstr "Adók:"
 
 #. (text of widget: upgrades_lbl)
-#: horizons/i18n/guitranslations.py:252
+#: horizons/i18n/guitranslations.py
 msgid "Upgrade not possible:"
 msgstr "Fejlesztés lehetetlen:"
 
 #. (helptext of widget: allow_upgrades)
-#: horizons/i18n/guitranslations.py:254
-#, fuzzy
+#: horizons/i18n/guitranslations.py
 msgid "This is the current maximum increment!"
 msgstr "Ez a jelenlegi maximális fejlettségi szint!"
 
@@ -1743,11 +1763,11 @@ msgstr "Ez a jelenlegi maximális fejlettségi szint!"
 #. (helptext of widget: taxes)
 #. (helptext of widget: paid_taxes_label)
 #. (helptext of widget: taxes)
-#: horizons/i18n/guitranslations.py:256 horizons/i18n/guitranslations.py:262
-#: horizons/i18n/guitranslations.py:296 horizons/i18n/guitranslations.py:302
-#: horizons/i18n/guitranslations.py:325 horizons/i18n/guitranslations.py:331
-#: horizons/i18n/guitranslations.py:360 horizons/i18n/guitranslations.py:366
-#: horizons/i18n/guitranslations.py:411 horizons/i18n/guitranslations.py:423
+#: horizons/i18n/guitranslations.py horizons/i18n/guitranslations.py
+#: horizons/i18n/guitranslations.py horizons/i18n/guitranslations.py
+#: horizons/i18n/guitranslations.py horizons/i18n/guitranslations.py
+#: horizons/i18n/guitranslations.py horizons/i18n/guitranslations.py
+#: horizons/i18n/guitranslations.py horizons/i18n/guitranslations.py
 msgid "Paid taxes"
 msgstr "Befizetett adók"
 
@@ -1761,100 +1781,98 @@ msgstr "Befizetett adók"
 #. (helptext of widget: tax_val_label)
 #. (helptext of widget: paid_taxes_label)
 #. (helptext of widget: tax_val_label)
-#: horizons/i18n/guitranslations.py:258 horizons/i18n/guitranslations.py:260
-#: horizons/i18n/guitranslations.py:298 horizons/i18n/guitranslations.py:300
-#: horizons/i18n/guitranslations.py:327 horizons/i18n/guitranslations.py:329
-#: horizons/i18n/guitranslations.py:362 horizons/i18n/guitranslations.py:364
-#: horizons/i18n/guitranslations.py:413 horizons/i18n/guitranslations.py:421
+#: horizons/i18n/guitranslations.py horizons/i18n/guitranslations.py
+#: horizons/i18n/guitranslations.py horizons/i18n/guitranslations.py
+#: horizons/i18n/guitranslations.py horizons/i18n/guitranslations.py
+#: horizons/i18n/guitranslations.py horizons/i18n/guitranslations.py
+#: horizons/i18n/guitranslations.py horizons/i18n/guitranslations.py
 msgid "Tax rate"
 msgstr "Adó mértéke"
 
 #. (text of widget: avg_happiness_lbl)
-#: horizons/i18n/guitranslations.py:267
+#: horizons/i18n/guitranslations.py
 msgid "Average happiness:"
 msgstr "Átlagos vidámság:"
 
 #. (text of widget: most_needed_res_lbl)
-#: horizons/i18n/guitranslations.py:271
+#: horizons/i18n/guitranslations.py
 msgid "Most needed resource:"
 msgstr "Legszükségesebb termékek:"
 
 #. (text of widget: upgrades_lbl)
-#: horizons/i18n/guitranslations.py:294 horizons/i18n/guitranslations.py:323
-#: horizons/i18n/guitranslations.py:358
+#: horizons/i18n/guitranslations.py horizons/i18n/guitranslations.py
+#: horizons/i18n/guitranslations.py
 msgid "Upgrade permissions:"
-msgstr ""
+msgstr "Fejlődési jogok:"
 
 #. (text of widget: buying_label)
 #. (text of widget: buy_expenses_label)
-#: horizons/i18n/guitranslations.py:371 horizons/i18n/guitranslations.py:473
-#: horizons/i18n/guitranslations.py:533
+#: horizons/i18n/guitranslations.py horizons/i18n/guitranslations.py
+#: horizons/i18n/guitranslations.py
 msgid "Buying"
 msgstr "Vásárlás"
 
 #. (text of widget: selling_label)
-#: horizons/i18n/guitranslations.py:373 horizons/i18n/guitranslations.py:479
+#: horizons/i18n/guitranslations.py horizons/i18n/guitranslations.py
 msgid "Selling"
 msgstr "Eladás"
 
+#. (text of widget: name_label)
+#: horizons/i18n/guitranslations.py horizons/i18n/guitranslations.py
+#: horizons/i18n/guitranslations.py horizons/i18n/guitranslations.py
+msgid "Name:"
+msgstr "Név:"
+
 #. (text of widget: lbl_weapon_storage)
-#: horizons/i18n/guitranslations.py:378
+#: horizons/i18n/guitranslations.py
 msgid "Weapons:"
 msgstr "Fegyverek:"
 
 # 76%
 #. (text of widget: headline)
-#: horizons/i18n/guitranslations.py:396
-#, fuzzy
+#: horizons/i18n/guitranslations.py
 msgid "Resource deposit"
-msgstr "Nyersanyagsűrűség:"
+msgstr "Nyersanyaglelőhely"
 
 #. (text of widget: res_dep_description_lbl)
-#: horizons/i18n/guitranslations.py:398
+#: horizons/i18n/guitranslations.py
 msgid "This is a resource deposit where you can build a mine to dig up resources."
 msgstr ""
 "Ez egy nyersanyaglelőhely, ahova bányát építhetsz a nyersanyag "
 "kitermeléséhez."
 
 #. (text of widget: res_dep_description_lbl2) It == The resource deposit
-#: horizons/i18n/guitranslations.py:400
+#: horizons/i18n/guitranslations.py
 msgid "It contains these resources:"
 msgstr "Az alábbi nyersanyagokat tartalmazza:"
 
 #. (text of widget: needed_res_label)
-#: horizons/i18n/guitranslations.py:405
+#: horizons/i18n/guitranslations.py
 msgid "Needed resources:"
 msgstr "Szükséges nyersanyagok:"
 
 # 88%
 #. (helptext of widget: happiness_label)
 #. (helptext of widget: happiness)
-#: horizons/i18n/guitranslations.py:409 horizons/i18n/guitranslations.py:425
-#, fuzzy
+#: horizons/i18n/guitranslations.py horizons/i18n/guitranslations.py
 msgid "Happiness"
-msgstr "boldogság"
+msgstr "Boldogság"
 
 #. (helptext of widget: residents_label)
 #. (helptext of widget: inhabitants)
-#: horizons/i18n/guitranslations.py:415 horizons/i18n/guitranslations.py:419
+#: horizons/i18n/guitranslations.py horizons/i18n/guitranslations.py
 msgid "Residents"
 msgstr "Lakosok"
 
 #. (text of widget: signal_fire_description_lbl)
-#: horizons/i18n/guitranslations.py:430
+#: horizons/i18n/guitranslations.py
 msgid "The signal fire shows the free trader how to reach your settlement in case you want to buy or sell goods."
 msgstr ""
 "A jelzőtűz mutatja a független kereskedőnek, hogy merre van a teleped, ha "
 "árut akarsz venni vagy eladni."
 
-#. (text of widget: name_label)
-#: horizons/i18n/guitranslations.py:435 horizons/i18n/guitranslations.py:451
-#: horizons/i18n/guitranslations.py:468
-msgid "Name:"
-msgstr "Név:"
-
 #. (text of widget: trader_description_lbl)
-#: horizons/i18n/guitranslations.py:446
+#: horizons/i18n/guitranslations.py
 msgid "This is the free trader's ship. It will visit you from time to time to buy or sell goods."
 msgstr ""
 "Ez a független kereskedő hajója. Időről időre ellátogat hozzád, hogy árukat "
@@ -1862,250 +1880,251 @@ msgstr ""
 
 #. (helptext of widget: collector_utilisation_label)
 #. (helptext of widget: collector_utilisation) Percentage describing how busy the collectors were (100% = always going for / already carrying full load of goods)
-#: horizons/i18n/guitranslations.py:453 horizons/i18n/guitranslations.py:457
+#: horizons/i18n/guitranslations.py horizons/i18n/guitranslations.py
 msgid "Collector utilisation"
 msgstr "Árubegyűjtő kihasználtság"
 
 #. (text of widget: exchange_label)
-#: horizons/i18n/guitranslations.py:475 horizons/i18n/guitranslations.py:488
-#, fuzzy
+#: horizons/i18n/guitranslations.py horizons/i18n/guitranslations.py
 msgid "Exchange:"
-msgstr "Váltás:"
+msgstr "Csere:"
 
 #. (text of widget: ship_label)
-#: horizons/i18n/guitranslations.py:481 horizons/i18n/guitranslations.py:492
+#: horizons/i18n/guitranslations.py horizons/i18n/guitranslations.py
 msgid "Ship:"
 msgstr "Hajó:"
 
 #. (text of widget: trade_with_label)
-#: horizons/i18n/guitranslations.py:483 horizons/i18n/guitranslations.py:494
+#: horizons/i18n/guitranslations.py horizons/i18n/guitranslations.py
 msgid "Trade partner:"
 msgstr "Kereskedő partner:"
 
 #. (helptext of widget: configure_route)
-#: horizons/i18n/guitranslations.py:501 horizons/i18n/guitranslations.py:512
+#: horizons/i18n/guitranslations.py horizons/i18n/guitranslations.py
 msgid "Configure trading route"
 msgstr "Kereskedelmi útvonal beállítása"
 
 #. (text of widget: headline)
-#: horizons/i18n/guitranslations.py:521
+#: horizons/i18n/guitranslations.py
 msgid "Buy or sell resources"
 msgstr "Nyersanyagok adásvétele"
 
 #. (text of widget: headline_trade_history)
-#: horizons/i18n/guitranslations.py:523
+#: horizons/i18n/guitranslations.py
 msgid "Trade history"
 msgstr "Kereskedelmi napló"
 
 # 83%
 #. (text of widget: headline)
-#: horizons/i18n/guitranslations.py:528
-#, fuzzy
+#: horizons/i18n/guitranslations.py
 msgid "Select resources:"
-msgstr "Válassz egy nyersanyagot:"
+msgstr "Válassz nyersanyagot:"
 
 #. (text of widget: headline_balance_label)
-#: horizons/i18n/guitranslations.py:537
+#: horizons/i18n/guitranslations.py
 msgid "Balance:"
 msgstr "Mérleg:"
 
 #. (text of widget: headline_expenses_label)
-#: horizons/i18n/guitranslations.py:539
+#: horizons/i18n/guitranslations.py
 msgid "Expenses:"
 msgstr "Kiadások:"
 
 #. (text of widget: headline_income_label)
-#: horizons/i18n/guitranslations.py:541
+#: horizons/i18n/guitranslations.py
 msgid "Income:"
 msgstr "Bevétel:"
 
 #. (text of widget: sell_income_label)
-#: horizons/i18n/guitranslations.py:545
+#: horizons/i18n/guitranslations.py
 msgid "Sale"
 msgstr "Eladás"
 
 #. (text of widget: taxes_label)
 #. (text of widget: taxes)
-#: horizons/i18n/guitranslations.py:547 horizons/i18n/guitranslations.py:681
+#: horizons/i18n/guitranslations.py horizons/i18n/guitranslations.py
 msgid "Taxes"
 msgstr "Adók"
 
 #. (helptext of widget: show_production_overview)
-#: horizons/i18n/guitranslations.py:549
+#: horizons/i18n/guitranslations.py
 msgid "Show resources produced in this settlement"
 msgstr "A telepen termelt nyersanyagok mutatása"
 
 #. (helptext of widget: toggle_active_active)
-#: horizons/i18n/guitranslations.py:554 horizons/i18n/guitranslations.py:561
+#: horizons/i18n/guitranslations.py horizons/i18n/guitranslations.py
 msgid "Pause production"
 msgstr "Termelés felfüggesztése"
 
 #. (helptext of widget: toggle_active_inactive)
-#: horizons/i18n/guitranslations.py:556 horizons/i18n/guitranslations.py:563
+#: horizons/i18n/guitranslations.py horizons/i18n/guitranslations.py
 msgid "Start production"
 msgstr "Termelés indítása"
 
 #. (text of widget: make_default_btn)
-#: horizons/i18n/guitranslations.py:568
+#: horizons/i18n/guitranslations.py
 msgid "Save as default"
-msgstr ""
+msgstr "Mentés mint alapértelmezett"
 
 #. (text of widget: reset_default_btn)
-#: horizons/i18n/guitranslations.py:570
+#: horizons/i18n/guitranslations.py
 msgid "Restore default"
-msgstr ""
+msgstr "Visszaállítása az alapértelmezettre"
 
 # 83%
 # 94%
 #. (text of widget: headline) Please keep the translation similarly short and concise, else the tooltip is not well understood by players.
-#: horizons/i18n/guitranslations.py:572
-#, fuzzy
+#: horizons/i18n/guitranslations.py
 msgid "Select resource:"
-msgstr "Válassz egy nyersanyagot:"
+msgstr "Válassz nyersanyagot:"
 
 #. (helptext of widget: make_default_btn)
-#: horizons/i18n/guitranslations.py:574
+#: horizons/i18n/guitranslations.py
 msgid "Save current resource configuration as default for all settlements."
 msgstr ""
+"Mentse az aktuális nyersanyag beállítást, mint alapértelmezett beállítást az "
+"összes gyarmatra."
 
 #. (helptext of widget: reset_default_btn)
-#: horizons/i18n/guitranslations.py:576
+#: horizons/i18n/guitranslations.py
 msgid "Reset default resource configuration for all settlements."
-msgstr ""
+msgstr "Alapértelmezett beállítás visszaállítása az összes gyarmatra."
 
 #. (helptext of widget: headline) Please keep the translation similarly short and concise, else the tooltip is not well understood by players.
-#: horizons/i18n/guitranslations.py:578
+#: horizons/i18n/guitranslations.py
 msgid "The resource you select is displayed instead of the current one. Empty by clicking on X."
 msgstr ""
+"A választott nyersanyag jelenik meg a mostani helyett. Ürítéshez klikk az "
+"X-re."
 
 #. (helptext of widget: delete_warehouse) Trade route entry
-#: horizons/i18n/guitranslations.py:583
+#: horizons/i18n/guitranslations.py
 msgid "Delete entry"
 msgstr "Bejegyzés törlése"
 
 #. (helptext of widget: move_down) Trade route entry
-#: horizons/i18n/guitranslations.py:585
+#: horizons/i18n/guitranslations.py
 msgid "Move down"
 msgstr "Le"
 
 #. (helptext of widget: move_up) Trade route entry
-#: horizons/i18n/guitranslations.py:587
+#: horizons/i18n/guitranslations.py
 msgid "Move up"
 msgstr "Fel"
 
 #. (text of widget: stats_players)
-#: horizons/i18n/guitranslations.py:592
+#: horizons/i18n/guitranslations.py
 msgid "Players"
-msgstr ""
+msgstr "Játékosok"
 
 #. (text of widget: stats_settlements)
-#: horizons/i18n/guitranslations.py:594
+#: horizons/i18n/guitranslations.py
 msgid "My settlements"
-msgstr ""
+msgstr "Gyarmataim"
 
 #. (text of widget: stats_ships)
-#: horizons/i18n/guitranslations.py:596
+#: horizons/i18n/guitranslations.py
 msgid "My ships"
-msgstr ""
+msgstr "Hajóim"
 
 #. (text of widget: wb2) Only filter messages important for your own settlements (disasters, new increment, ...)
-#: horizons/i18n/guitranslations.py:598
+#: horizons/i18n/guitranslations.py
 msgid "Own settlements"
-msgstr ""
+msgstr "Saját gyarmatok"
 
 #. (text of widget: wb5) Sends the chat message to all allied players.
-#: horizons/i18n/guitranslations.py:600
+#: horizons/i18n/guitranslations.py
 msgid "Allies"
-msgstr ""
+msgstr "Szövetségeseknek"
 
 #. (text of widget: weird_button_1) Displays all notifications and game messages
-#: horizons/i18n/guitranslations.py:602
+#: horizons/i18n/guitranslations.py
 msgid "Whole world"
-msgstr ""
+msgstr "Az egész világ"
 
 #. (text of widget: weird_button_4) Sends the chat message to all players (default)
-#: horizons/i18n/guitranslations.py:604
+#: horizons/i18n/guitranslations.py
 msgid "Everybody"
-msgstr ""
+msgstr "Mindenkinek"
 
 #. (text of widget: headline_game_messages)
-#: horizons/i18n/guitranslations.py:608
+#: horizons/i18n/guitranslations.py
 msgid "Game messages"
-msgstr ""
+msgstr "Játék üzenetek"
 
 #. (helptext of widget: okButton)
 #. (text of widget: start)
-#: horizons/i18n/guitranslations.py:612 horizons/i18n/guitranslations.py:787
+#: horizons/i18n/guitranslations.py horizons/i18n/guitranslations.py
 msgid "Return to game"
 msgstr "Játék folytatása"
 
 #. (helptext of widget: backwardButton) Entry of Captain's Log (logbook/diary used in scenarios)
-#: horizons/i18n/guitranslations.py:614
+#: horizons/i18n/guitranslations.py
 msgid "Read previous entries"
 msgstr "Korábbi bejegyzések olvasása"
 
 #. (helptext of widget: forwardButton) Entry of Captain's Log (logbook/diary used in scenarios)
-#: horizons/i18n/guitranslations.py:616
+#: horizons/i18n/guitranslations.py
 msgid "Read next entries"
 msgstr "Következő bejegyzések olvasása"
 
 #. (text of widget: head_left)
-#: horizons/i18n/guitranslations.py:621
+#: horizons/i18n/guitranslations.py
 msgid "Available Scenarios"
 msgstr "Elérhető küldetések"
 
 #. (text of widget: head_right)
-#: horizons/i18n/guitranslations.py:623
+#: horizons/i18n/guitranslations.py
 msgid "Scenario description"
 msgstr "Küldetés leírás"
 
 #. (helptext of widget: cancelButton) Players either select the next scenario they want to play or press this button
-#: horizons/i18n/guitranslations.py:627
+#: horizons/i18n/guitranslations.py
 msgid "Continue playing"
 msgstr "Küldetés folytatása"
 
 #. (helptext of widget: choose_scenario) Select which scenario to play
-#: horizons/i18n/guitranslations.py:629
+#: horizons/i18n/guitranslations.py
 msgid "Choose this scenario"
 msgstr "Küldetés kiválasztása"
 
 #. (text of widget: lbl_route_activity)
-#: horizons/i18n/guitranslations.py:634
+#: horizons/i18n/guitranslations.py
 msgid "Route activity:"
-msgstr ""
+msgstr "Útvonal aktivitás:"
 
 #. (text of widget: lbl_wait_at_load) Trade route setting: Whether to wait until all goods could be loaded.
-#: horizons/i18n/guitranslations.py:636
+#: horizons/i18n/guitranslations.py
 msgid "Wait at load:"
 msgstr "Várakozás berakodásra:"
 
 #. (text of widget: lbl_wait_at_unload) Trade route setting: Whether to wait until all goods could be unloaded.
-#: horizons/i18n/guitranslations.py:638
+#: horizons/i18n/guitranslations.py
 msgid "Wait at unload:"
 msgstr "Várakozás kirakodásra:"
 
 #. (helptext of widget: okButton)
-#: horizons/i18n/guitranslations.py:640
+#: horizons/i18n/guitranslations.py
 msgid "Exit"
 msgstr "Kilépés"
 
 #. (helptext of widget: okButton)
-#: horizons/i18n/guitranslations.py:647
+#: horizons/i18n/guitranslations.py
 msgid "Close"
 msgstr "Bezárás"
 
 #. (text of widget: building_score)
-#: horizons/i18n/guitranslations.py:652
+#: horizons/i18n/guitranslations.py
 msgid "Buildings"
 msgstr "Épületek"
 
 #. (text of widget: headline)
-#: horizons/i18n/guitranslations.py:654
+#: horizons/i18n/guitranslations.py
 msgid "Player scores"
 msgstr "Játékos pontok"
 
 #. (text of widget: land_score)
-#: horizons/i18n/guitranslations.py:656
+#: horizons/i18n/guitranslations.py
 msgid "Land"
 msgstr "Terület"
 
@@ -2113,1609 +2132,1765 @@ msgstr "Terület"
 #. (text of widget: player_name)
 #. (text of widget: settlement_name)
 #. (text of widget: ship_name)
-#: horizons/i18n/guitranslations.py:660 horizons/i18n/guitranslations.py:679
-#: horizons/i18n/guitranslations.py:688
-#, fuzzy
+#: horizons/i18n/guitranslations.py horizons/i18n/guitranslations.py
+#: horizons/i18n/guitranslations.py
 msgid "Name"
-msgstr "Kilépés"
+msgstr "Név"
 
 #. (text of widget: resource_score)
-#: horizons/i18n/guitranslations.py:662
+#: horizons/i18n/guitranslations.py
 msgid "Resources"
 msgstr "Nyersanyagok"
 
 #. (text of widget: unit_score)
-#: horizons/i18n/guitranslations.py:668
+#: horizons/i18n/guitranslations.py
 msgid "Units"
 msgstr "Egységek"
 
+#. (helptext of widget: building_score)
+#: horizons/i18n/guitranslations.py
+msgid "Value of all the buildings in the player's settlement(s)"
+msgstr ""
+
+#. (helptext of widget: land_score)
+#: horizons/i18n/guitranslations.py
+msgid "Value of usable land i.e Amount of Land that can be used to create buildings "
+msgstr ""
+
+#. (helptext of widget: money_score)
+#: horizons/i18n/guitranslations.py
+msgid "Player's current treasury + income expected in near future"
+msgstr ""
+
+#. (helptext of widget: player_name)
+#: horizons/i18n/guitranslations.py
+msgid "Player Name"
+msgstr ""
+
+#. (helptext of widget: resource_score)
+#: horizons/i18n/guitranslations.py
+msgid "Value of resources generated from all the possible sources in the player's settlement(s)"
+msgstr ""
+
+#. (helptext of widget: settler_score)
+#: horizons/i18n/guitranslations.py
+msgid "Value denoting the progress of the settlement(s) in terms of inhabitants, buildings and overall happiness"
+msgstr ""
+
+#. (helptext of widget: total_score)
+#: horizons/i18n/guitranslations.py
+msgid "The total value from all individual entities or in short : Total Player Score"
+msgstr ""
+
+#. (helptext of widget: unit_score)
+#: horizons/i18n/guitranslations.py
+msgid "Value of all the units owned by the player"
+msgstr ""
+
 #. (text of widget: balance)
-#: horizons/i18n/guitranslations.py:673
+#: horizons/i18n/guitranslations.py
 msgid "Balance"
 msgstr "Mérleg"
 
 #. (text of widget: health)
-#: horizons/i18n/guitranslations.py:686
+#: horizons/i18n/guitranslations.py
 msgid "Health"
 msgstr "Egészség"
 
 #. (text of widget: ship_type)
-#: horizons/i18n/guitranslations.py:690
+#: horizons/i18n/guitranslations.py
 msgid "Type"
 msgstr "Típus"
 
 # "Beosztás"?
 #. (text of widget: status)
-#: horizons/i18n/guitranslations.py:692
-#, fuzzy
+#: horizons/i18n/guitranslations.py
 msgid "Status"
 msgstr "Állapot"
 
 #. (text of widget: weapons)
-#: horizons/i18n/guitranslations.py:694
+#: horizons/i18n/guitranslations.py
 msgid "Weapons"
 msgstr "Fegyverek"
 
 #. (helptext of widget: aggressive_stance) Description of combat stance (how units behave when fighting)
-#: horizons/i18n/guitranslations.py:699
+#: horizons/i18n/guitranslations.py
 msgid "Aggressive"
 msgstr "Támadó"
 
 #. (helptext of widget: flee_stance) Description of combat stance (how units behave when fighting)
-#: horizons/i18n/guitranslations.py:701
+#: horizons/i18n/guitranslations.py
 msgid "Flee"
 msgstr "Menekül"
 
 #. (helptext of widget: hold_ground_stance) Description of combat stance (how units behave when fighting)
-#: horizons/i18n/guitranslations.py:703
-#, fuzzy
+#: horizons/i18n/guitranslations.py
 msgid "Hold ground"
 msgstr "Pozícót tart"
 
 #. (helptext of widget: none_stance) Description of combat stance (how units behave when fighting)
-#: horizons/i18n/guitranslations.py:705
+#: horizons/i18n/guitranslations.py
 msgid "Passive"
 msgstr "Passzív"
 
 #. (text of widget: fife_and_uh_team)
-#: horizons/i18n/guitranslations.py:710
+#: horizons/i18n/guitranslations.py
 msgid "The FIFE and Unknown Horizons development teams"
 msgstr "A FIFE és az Unknown Horizons fejlesztői csapat"
 
 #. (text of widget: have_fun)
-#: horizons/i18n/guitranslations.py:712
+#: horizons/i18n/guitranslations.py
 msgid "Have fun."
 msgstr "Jó szórakozást."
 
 #. (text of widget: headline)
-#: horizons/i18n/guitranslations.py:714
-#, fuzzy
+#: horizons/i18n/guitranslations.py
 msgid "Key bindings"
 msgstr "Gyorsbillentyűk"
 
 #. (text of widget: lbl_BUILD_TOOL)
-#: horizons/i18n/guitranslations.py:716
+#: horizons/i18n/guitranslations.py
 msgid "Show build menu"
 msgstr "Építési menü mutatása"
 
 #. (text of widget: lbl_CONSOLE)
-#: horizons/i18n/guitranslations.py:720
-#, fuzzy
+#: horizons/i18n/guitranslations.py
 msgid "Toggle console on/off"
 msgstr "Konzol ki-/bekapcsolása"
 
 #. (text of widget: lbl_COORD_TOOLTIP)
-#: horizons/i18n/guitranslations.py:722
+#: horizons/i18n/guitranslations.py
 msgid "Show coordinate values (Debug)"
 msgstr "Koordináták mutatása (Debug)"
 
 #. (text of widget: lbl_DESTROY_TOOL)
-#: horizons/i18n/guitranslations.py:724
+#: horizons/i18n/guitranslations.py
 msgid "Enable destruct mode"
 msgstr "Rombolás engedélyezése"
 
 #. (text of widget: lbl_DOWN)
-#: horizons/i18n/guitranslations.py:726
+#: horizons/i18n/guitranslations.py
 msgid "Scroll down"
 msgstr "Görgetés le"
 
 #. (text of widget: lbl_GRID)
-#: horizons/i18n/guitranslations.py:728
+#: horizons/i18n/guitranslations.py
 msgid "Toggle grid on/off"
 msgstr "Rács ki-/bekapcsolása"
 
 #. (text of widget: lbl_HELP)
-#: horizons/i18n/guitranslations.py:730
+#: horizons/i18n/guitranslations.py
 msgid "Display help"
 msgstr "Súgó megjelenítése"
 
 #. (text of widget: lbl_LEFT)
-#: horizons/i18n/guitranslations.py:732
-#, fuzzy
+#: horizons/i18n/guitranslations.py
 msgid "Scroll left"
 msgstr "Görgetés balra"
 
 # 75%
 #. (text of widget: lbl_LOGBOOK)
-#: horizons/i18n/guitranslations.py:734
-#, fuzzy
+#: horizons/i18n/guitranslations.py
 msgid "Toggle Captain's log"
-msgstr "A kapitány naplójának bezárása"
+msgstr "Váltás a kapitány naplójára"
 
 #. (text of widget: lbl_PAUSE)
-#: horizons/i18n/guitranslations.py:736
+#: horizons/i18n/guitranslations.py
 msgid "Pause game"
 msgstr "Játék felfüggesztése"
 
 #. (text of widget: lbl_PLAYERS_OVERVIEW)
-#: horizons/i18n/guitranslations.py:738
+#: horizons/i18n/guitranslations.py
 msgid "Show player scores"
 msgstr "Játékos pontok megmutatása"
 
 #. (text of widget: lbl_QUICKLOAD)
-#: horizons/i18n/guitranslations.py:740
+#: horizons/i18n/guitranslations.py
 msgid "Quickload"
 msgstr "Gyorsbetöltés"
 
 #. (text of widget: lbl_QUICKSAVE)
-#: horizons/i18n/guitranslations.py:742
+#: horizons/i18n/guitranslations.py
 msgid "Quicksave"
 msgstr "Gyorsmentés"
 
 #. (text of widget: lbl_REMOVE_SELECTED)
-#: horizons/i18n/guitranslations.py:744
+#: horizons/i18n/guitranslations.py
 msgid "Remove selected units / buildings"
-msgstr ""
+msgstr "Kiválasztott egységek / épületek eltávolítása"
 
 #. (text of widget: lbl_RIGHT)
-#: horizons/i18n/guitranslations.py:746
-#, fuzzy
+#: horizons/i18n/guitranslations.py
 msgid "Scroll right"
 msgstr "Görgetés jobbra"
 
 #. (text of widget: lbl_ROAD_TOOL)
-#: horizons/i18n/guitranslations.py:748
+#: horizons/i18n/guitranslations.py
 msgid "Enable road building mode"
 msgstr "Útépítés engedélyezése"
 
 #. (text of widget: lbl_ROTATE_LEFT)
-#: horizons/i18n/guitranslations.py:750
+#: horizons/i18n/guitranslations.py
 msgid "Rotate building or map counterclockwise"
 msgstr "Épület vagy térkép forgatása balra"
 
 #. (text of widget: lbl_ROTATE_RIGHT)
-#: horizons/i18n/guitranslations.py:752
+#: horizons/i18n/guitranslations.py
 msgid "Rotate building or map clockwise"
 msgstr "Épület vagy térkép forgatása jobbra"
 
 #. (text of widget: lbl_SCREENSHOT)
-#: horizons/i18n/guitranslations.py:754
+#: horizons/i18n/guitranslations.py
 msgid "Screenshot"
 msgstr "Képernyőkép"
 
 #. (text of widget: lbl_SETTLEMENTS_OVERVIEW)
-#: horizons/i18n/guitranslations.py:756
+#: horizons/i18n/guitranslations.py
 msgid "Show settlement list"
 msgstr "Teleplista mutatása"
 
 #. (text of widget: lbl_SHIFT)
-#: horizons/i18n/guitranslations.py:758
+#: horizons/i18n/guitranslations.py
 msgid "Hold to place multiple buildings"
 msgstr "Tartsd nyomva több épület lehelyezéséhez"
 
 #. (text of widget: lbl_SHIPS_OVERVIEW)
-#: horizons/i18n/guitranslations.py:760
+#: horizons/i18n/guitranslations.py
 msgid "Show ship list"
 msgstr "Hajólista mutatása"
 
 # 82%
 #. (text of widget: lbl_SPEED_DOWN)
-#: horizons/i18n/guitranslations.py:762
-#, fuzzy
+#: horizons/i18n/guitranslations.py
 msgid "Decrease game speed"
-msgstr "Játék lassítása (-)"
+msgstr "Játék lassítása"
 
 # 82%
 #. (text of widget: lbl_SPEED_UP)
-#: horizons/i18n/guitranslations.py:764
-#, fuzzy
+#: horizons/i18n/guitranslations.py
 msgid "Increase game speed"
-msgstr "Játék gyorsítása (+)"
+msgstr "Játék gyorsítása"
 
 #. (text of widget: lbl_TILE_OWNER_HIGHLIGHT)
-#: horizons/i18n/guitranslations.py:766
+#: horizons/i18n/guitranslations.py
+#, fuzzy
 msgid "Highlight tile ownership"
-msgstr ""
+msgstr "Tulajdonos kiemelése"
 
+# fogalmam nincs, mi az a "Transzlucuncia"
 #. (text of widget: lbl_TRANSLUCENCY)
-#: horizons/i18n/guitranslations.py:768
+#: horizons/i18n/guitranslations.py
 msgid "Toggle translucency of ambient buildings"
-msgstr ""
+msgstr "Áttetszőség váltása a környező épületeken"
 
 #. (text of widget: lbl_UP)
-#: horizons/i18n/guitranslations.py:770
+#: horizons/i18n/guitranslations.py
 msgid "Scroll up"
 msgstr "Görgetés felfelé"
 
 #. (helptext of widget: okButton)
 #. (helptext of widget: cancelButton)
-#: horizons/i18n/guitranslations.py:772 horizons/i18n/guitranslations.py:935
+#: horizons/i18n/guitranslations.py horizons/i18n/guitranslations.py
 msgid "Return"
 msgstr "Vissza"
 
 #. (text of widget: quit)
-#: horizons/i18n/guitranslations.py:781
+#: horizons/i18n/guitranslations.py
 msgid "Cancel game"
 msgstr "Kilépés"
 
 #. (text of widget: settings)
 #. (text of widget: settings) Main / in-game menu entry
-#: horizons/i18n/guitranslations.py:785 horizons/i18n/guitranslations.py:809
+#: horizons/i18n/guitranslations.py horizons/i18n/guitranslations.py
 msgid "Settings"
 msgstr "Beállítások"
 
 #. (text of widget: loading_label)
-#: horizons/i18n/guitranslations.py:792
+#: horizons/i18n/guitranslations.py
 msgid "Loading ..."
 msgstr "Betöltés ..."
 
 #. (text of widget: chimebell)
-#: horizons/i18n/guitranslations.py:799
+#: horizons/i18n/guitranslations.py
 msgid "Attention please!"
 msgstr "Figyelem!"
 
 #. (text of widget: credits)
-#: horizons/i18n/guitranslations.py:801
-#, fuzzy
+#: horizons/i18n/guitranslations.py
 msgid "Credits"
 msgstr "Stáblista"
 
 #. (text of widget: quit) Completely shut down UH
-#: horizons/i18n/guitranslations.py:807
+#: horizons/i18n/guitranslations.py
 msgid "Quit"
 msgstr "Kilépés"
 
 #. (text of widget: start) Opens widget to create singleplayer games (campaigns, scenarios, random maps, free play)
-#: horizons/i18n/guitranslations.py:811
+#: horizons/i18n/guitranslations.py
 msgid "Singleplayer"
 msgstr "Egyjátékos mód"
 
 #. (text of widget: start_multi) Opens widget to join or create multiplayer games
-#: horizons/i18n/guitranslations.py:813
+#: horizons/i18n/guitranslations.py
 msgid "Multiplayer"
 msgstr "Többjátékos mód"
 
 #. (text of widget: create_game_lbl)
-#: horizons/i18n/guitranslations.py:820 horizons/i18n/guitranslations.py:858
+#: horizons/i18n/guitranslations.py horizons/i18n/guitranslations.py
 msgid "Create game:"
 msgstr "Játék létrehozása:"
 
 #. (text of widget: exit_to_mp_menu_lbl)
-#: horizons/i18n/guitranslations.py:822
+#: horizons/i18n/guitranslations.py
 msgid "Back:"
 msgstr "Vissza:"
 
 #. (text of widget: gamename_lbl)
-#: horizons/i18n/guitranslations.py:824 horizons/i18n/guitranslations.py:966
+#: horizons/i18n/guitranslations.py horizons/i18n/guitranslations.py
 msgid "Name of the game:"
-msgstr ""
+msgstr "Játék neve:"
 
 #. (text of widget: headline)
-#: horizons/i18n/guitranslations.py:826
+#: horizons/i18n/guitranslations.py
 msgid "Choose a map:"
 msgstr "Térkép kiválasztás:"
 
 #. (text of widget: headline)
-#: horizons/i18n/guitranslations.py:828
+#: horizons/i18n/guitranslations.py
 msgid "Create game - Multiplayer"
 msgstr "Játék létrehozása - többjátékos mód"
 
 #. (text of widget: mp_player_limit_lbl)
-#: horizons/i18n/guitranslations.py:830
-#, fuzzy
+#: horizons/i18n/guitranslations.py
 msgid "Player limit:"
-msgstr "Játékos limit:"
+msgstr "Játékos korlát:"
 
 #. (helptext of widget: cancel)
-#: horizons/i18n/guitranslations.py:832
+#: horizons/i18n/guitranslations.py
 msgid "Exit to multiplayer menu"
 msgstr "Kilépés a többjátékos menübe"
 
 #. (helptext of widget: create)
-#: horizons/i18n/guitranslations.py:834
+#: horizons/i18n/guitranslations.py
 msgid "Create this new game"
 msgstr "Az új játék létrehozása"
 
 #. (helptext of widget: gamename_lbl)
-#: horizons/i18n/guitranslations.py:836 horizons/i18n/guitranslations.py:976
+#: horizons/i18n/guitranslations.py horizons/i18n/guitranslations.py
 msgid "This will be displayed to other players so they recognise the game."
-msgstr ""
+msgstr "Ez fog megjelenni más játékosoknak a játék beazonosításához."
 
 #. (text of widget: exit_to_mp_menu_lbl)
-#: horizons/i18n/guitranslations.py:841
+#: horizons/i18n/guitranslations.py
 msgid "Leave:"
 msgstr "Kilépés:"
 
 #. (text of widget: game_start_notice)
-#: horizons/i18n/guitranslations.py:843
+#: horizons/i18n/guitranslations.py
 msgid "The game will start as soon as enough players have joined."
 msgstr "A játék azonnal elindul, amint elég játékos csatlakozott."
 
 # 80%
 #. (text of widget: headline)
-#: horizons/i18n/guitranslations.py:845
-#, fuzzy
+#: horizons/i18n/guitranslations.py
 msgid "Chat:"
-msgstr "Beszélgetés"
+msgstr "Beszélgetés:"
 
 #. (text of widget: headline)
-#: horizons/i18n/guitranslations.py:847
+#: horizons/i18n/guitranslations.py
 msgid "Gamelobby"
-msgstr ""
+msgstr "Előszoba"
 
 #. (text of widget: startmessage)
-#: horizons/i18n/guitranslations.py:849
+#: horizons/i18n/guitranslations.py
 msgid "Game details:"
 msgstr "Játék leírás:"
 
 #. (helptext of widget: cancel)
-#: horizons/i18n/guitranslations.py:851
+#: horizons/i18n/guitranslations.py
 msgid "Exit gamelobby"
-msgstr ""
+msgstr "Előszoba elhagyása"
 
 #. (text of widget: active_games_lbl)
-#: horizons/i18n/guitranslations.py:856
+#: horizons/i18n/guitranslations.py
 msgid "Active games:"
 msgstr "Aktív játékok:"
 
 #. (text of widget: exit_to_main_menu_lbl)
 #. (text of widget: main_menu_label)
-#: horizons/i18n/guitranslations.py:860 horizons/i18n/guitranslations.py:983
+#: horizons/i18n/guitranslations.py horizons/i18n/guitranslations.py
 msgid "Main menu:"
 msgstr "Főmenü:"
 
 #. (text of widget: game_showonlyownversion)
-#: horizons/i18n/guitranslations.py:862
+#: horizons/i18n/guitranslations.py
 msgid "Only show games with the same version:"
 msgstr "Csak azonos verziójú játékok mutatása:"
 
 #. (text of widget: headline_left)
-#: horizons/i18n/guitranslations.py:864
+#: horizons/i18n/guitranslations.py
 msgid "New game - Multiplayer"
 msgstr "Új játék - többjátékos"
 
 #. (text of widget: join_game_lbl)
-#: horizons/i18n/guitranslations.py:866
+#: horizons/i18n/guitranslations.py
 msgid "Join game"
 msgstr "Csatlakozás a játékhoz"
 
 # 90%
 #. (text of widget: load_game_lbl)
-#: horizons/i18n/guitranslations.py:868
-#, fuzzy
+#: horizons/i18n/guitranslations.py
 msgid "Load game:"
-msgstr "Játék betöltése"
+msgstr "Játék betöltése:"
 
 #. (text of widget: refr_gamelist_lbl)
-#: horizons/i18n/guitranslations.py:870
+#: horizons/i18n/guitranslations.py
 msgid "Refresh list:"
 msgstr "Lista frissítése:"
 
 #. (helptext of widget: cancel)
-#: horizons/i18n/guitranslations.py:872 horizons/i18n/guitranslations.py:995
+#: horizons/i18n/guitranslations.py horizons/i18n/guitranslations.py
 msgid "Exit to main menu"
 msgstr "Kilépés a főmenübe"
 
 #. (helptext of widget: create)
-#: horizons/i18n/guitranslations.py:874
+#: horizons/i18n/guitranslations.py
 msgid "Create a new game"
 msgstr "Új játék létrhozása"
 
 #. (helptext of widget: join)
-#: horizons/i18n/guitranslations.py:876
+#: horizons/i18n/guitranslations.py
 msgid "Join the selected game"
 msgstr "Csatlakozás a kiválasztott játékhoz"
 
 #. (helptext of widget: load)
-#: horizons/i18n/guitranslations.py:878
+#: horizons/i18n/guitranslations.py
 msgid "Load a saved game"
-msgstr ""
+msgstr "Mentett játék betöltése"
 
 #. (helptext of widget: refresh)
-#: horizons/i18n/guitranslations.py:880
+#: horizons/i18n/guitranslations.py
 msgid "Refresh list of active games"
 msgstr "Aktív játékok listájának frissítése"
 
 #. (text of widget: auto_unload_label)
-#: horizons/i18n/guitranslations.py:885
+#: horizons/i18n/guitranslations.py
 msgid "Auto-unload ship:"
 msgstr "Hajó automatikus kirakodása:"
 
 #. (text of widget: autosave_interval_label)
-#: horizons/i18n/guitranslations.py:887
+#: horizons/i18n/guitranslations.py
 msgid "Autosave interval in minutes:"
-msgstr "Automatikus mentés intervallum (perc):"
+msgstr "Automatikus mentési időköz percben:"
 
 #. (text of widget: color_depth_label)
-#: horizons/i18n/guitranslations.py:889
+#: horizons/i18n/guitranslations.py
 msgid "Color depth:"
 msgstr "Színmélység:"
 
 #. (text of widget: debug_log_lbl)
-#: horizons/i18n/guitranslations.py:891
+#: horizons/i18n/guitranslations.py
 msgid "Enable logging"
-msgstr ""
+msgstr "Naplózás bekapcsolása"
 
 #. (text of widget: edge_scrolling_label)
-#: horizons/i18n/guitranslations.py:893
+#: horizons/i18n/guitranslations.py
 msgid "Scroll at map edge:"
 msgstr "A térkép szélére görgetés:"
 
 #. (text of widget: effect_volume_label)
-#: horizons/i18n/guitranslations.py:895
+#: horizons/i18n/guitranslations.py
 msgid "Effects volume:"
 msgstr "Effekt hangerő:"
 
 #. (text of widget: fps_label)
-#: horizons/i18n/guitranslations.py:897
+#: horizons/i18n/guitranslations.py
 msgid "Frame rate limit:"
-msgstr ""
+msgstr "Képkocka sebesség korlát:"
 
 #. (text of widget: headline_language)
-#: horizons/i18n/guitranslations.py:901
+#: horizons/i18n/guitranslations.py
 msgid "Language"
 msgstr "Nyelv"
 
 #. (text of widget: headline_mouse)
-#: horizons/i18n/guitranslations.py:903
+#: horizons/i18n/guitranslations.py
 msgid "Mouse"
 msgstr "Egér"
 
 #. (text of widget: headline_network)
-#: horizons/i18n/guitranslations.py:905
+#: horizons/i18n/guitranslations.py
 msgid "Network"
 msgstr "Hálózat"
 
 #. (text of widget: headline_saving)
-#: horizons/i18n/guitranslations.py:907
+#: horizons/i18n/guitranslations.py
 msgid "Saving"
 msgstr "Mentés"
 
 #. (text of widget: language_label)
-#: horizons/i18n/guitranslations.py:911
+#: horizons/i18n/guitranslations.py
 msgid "Select language:"
 msgstr "Nyelv kiválasztása:"
 
 #. (text of widget: minimap_rotation_label)
-#: horizons/i18n/guitranslations.py:913
+#: horizons/i18n/guitranslations.py
 msgid "Rotate minimap with map:"
 msgstr "Minitérkép forgatása a térképpel:"
 
 #. (text of widget: mouse_sensitivity_label)
-#: horizons/i18n/guitranslations.py:915
+#: horizons/i18n/guitranslations.py
 msgid "Mouse sensitivity:"
 msgstr "Egér érzékenység:"
 
 #. (text of widget: music_volume_label)
-#: horizons/i18n/guitranslations.py:917
+#: horizons/i18n/guitranslations.py
 msgid "Music volume:"
 msgstr "Zene hangerő:"
 
 #. (text of widget: network_port_lbl)
-#: horizons/i18n/guitranslations.py:919
+#: horizons/i18n/guitranslations.py
 msgid "Network port:"
 msgstr "Hálózati port:"
 
 #. (text of widget: number_of_autosaves_label)
-#: horizons/i18n/guitranslations.py:921
+#: horizons/i18n/guitranslations.py
 msgid "Number of autosaves:"
 msgstr "Automatikus mentések száma:"
 
 #. (text of widget: number_of_quicksaves_label)
-#: horizons/i18n/guitranslations.py:923
+#: horizons/i18n/guitranslations.py
 msgid "Number of quicksaves:"
 msgstr "Gyorsmentések száma:"
 
 #. (text of widget: screen_fullscreen_text)
-#: horizons/i18n/guitranslations.py:925
+#: horizons/i18n/guitranslations.py
 msgid "Full screen:"
 msgstr "Teljes képernyő:"
 
 #. (text of widget: screen_resolution_label)
-#: horizons/i18n/guitranslations.py:927
+#: horizons/i18n/guitranslations.py
 msgid "Screen resolution:"
 msgstr "Képernyő felbontás:"
 
 #. (text of widget: sound_enable_opt_text)
-#: horizons/i18n/guitranslations.py:929
+#: horizons/i18n/guitranslations.py
 msgid "Enable sound:"
 msgstr "Hang bekapcsolás:"
 
 #. (text of widget: uninterrupted_building_label)
-#: horizons/i18n/guitranslations.py:931
+#: horizons/i18n/guitranslations.py
 msgid "Uninterrupted building:"
 msgstr "Folyamatos építkezés:"
 
 #. (text of widget: use_renderer_label)
-#: horizons/i18n/guitranslations.py:933
+#: horizons/i18n/guitranslations.py
 msgid "Used renderer:"
-msgstr ""
+msgstr "Használt megjelenítő:"
 
 # 84%
 #. (helptext of widget: defaultButton)
-#: horizons/i18n/guitranslations.py:937
-#, fuzzy
+#: horizons/i18n/guitranslations.py
 msgid "Reset to default settings"
 msgstr "Visszaállítás az eredeti beállításokra"
 
 #. (helptext of widget: okButton)
-#: horizons/i18n/guitranslations.py:939
+#: horizons/i18n/guitranslations.py
 msgid "Apply"
 msgstr "Alkalmaz"
 
 #. (helptext of widget: auto_unload_label)
-#: horizons/i18n/guitranslations.py:941
+#: horizons/i18n/guitranslations.py
 msgid "Whether to unload the ship after founding a settlement"
 msgstr "A hajó kirakodása telep megalapítása után"
 
 #. (helptext of widget: color_depth_label)
-#: horizons/i18n/guitranslations.py:943
+#: horizons/i18n/guitranslations.py
 msgid "If set to 0, use the driver default"
-msgstr "0 esetében az alapértelmezettet meghajtót használja"
+msgstr "Hogyha 0-ára van állítva, a meghajtó alap beállítását használja"
 
 #. (helptext of widget: debug_log_lbl)
-#: horizons/i18n/guitranslations.py:945
+#: horizons/i18n/guitranslations.py
 msgid "Don't use in normal game session. Decides whether to write debug information in the logging directory of your user directory. Slows the game down."
 msgstr ""
+"Ne használd normál játékkor. Eldöntheted, hogy írjon-e hibakeresési "
+"információkat a naplózó könyvtárba a felhasználói könyvtáradba. Lelassítja a "
+"játékot."
 
 #. (helptext of widget: edge_scrolling_label)
-#: horizons/i18n/guitranslations.py:947
+#: horizons/i18n/guitranslations.py
 msgid "Whether to move the viewport when the mouse pointer is close to map edges"
 msgstr "Nézőpont változtatása, mikor az egér a térkép széléhez ér"
 
 #. (helptext of widget: fps_label)
-#: horizons/i18n/guitranslations.py:949
+#: horizons/i18n/guitranslations.py
 msgid "Set the maximum frame rate used. Default: 60 fps."
 msgstr ""
+"Beállítja a maximum használt képkocka sebességet. Alapértelmezett: 60 fps."
 
 #. (helptext of widget: minimap_rotation_label)
-#: horizons/i18n/guitranslations.py:951
+#: horizons/i18n/guitranslations.py
 msgid "Whether to also rotate the minimap whenever the regular map is rotated"
 msgstr "A minitérkép forgatása, amikor a normál térkép is elfordul"
 
 #. (helptext of widget: mouse_sensitivity_label)
-#: horizons/i18n/guitranslations.py:953
+#: horizons/i18n/guitranslations.py
 msgid "0 is default system settings"
 msgstr "0 az alapértelmezett beállítás"
 
 #. (helptext of widget: network_port_lbl)
-#: horizons/i18n/guitranslations.py:955
+#: horizons/i18n/guitranslations.py
 msgid "If set to 0, use the router default"
-msgstr "0 esetében az alapértelmezett router-t használja"
+msgstr "0 esetén a router alapértelmezését használja"
 
 #. (helptext of widget: uninterrupted_building_label)
-#: horizons/i18n/guitranslations.py:957
+#: horizons/i18n/guitranslations.py
 msgid "When enabled, do not exit the build mode after successful construction"
 msgstr "Engedélyezve nem lép ki az építő üzemmódból sikeres építkezés után"
 
 #. (helptext of widget: use_renderer_label)
-#: horizons/i18n/guitranslations.py:959
-#, fuzzy
+#: horizons/i18n/guitranslations.py
 msgid "SDL is only meant as unsupported fallback and might cause problems!"
 msgstr "Az SDL nem támogatott tartalék és problémákat okozhat!"
 
+#. (text of widget: headline)
+#: horizons/i18n/guitranslations.py
+msgid "Random map archive"
+msgstr ""
+
 #. (text of widget: enter_filename_label)
-#: horizons/i18n/guitranslations.py:964
+#: horizons/i18n/guitranslations.py
 msgid "Enter filename:"
 msgstr "Adja meg a fájl nevét:"
 
 # 76%
 #. (text of widget: headline_saved_games_label)
-#: horizons/i18n/guitranslations.py:970
+#: horizons/i18n/guitranslations.py
 msgid "Your saved games:"
 msgstr "A mentett játékaid:"
 
 #. (helptext of widget: cancelButton)
-#: horizons/i18n/guitranslations.py:972
+#: horizons/i18n/guitranslations.py
 msgid "Cancel"
 msgstr "Visszavon"
 
 #. (helptext of widget: deleteButton)
-#: horizons/i18n/guitranslations.py:974
+#: horizons/i18n/guitranslations.py
 msgid "Delete selected savegame"
 msgstr "A kiválasztott mentés törlése"
 
 #. (text of widget: headline)
-#: horizons/i18n/guitranslations.py:981
+#: horizons/i18n/guitranslations.py
 msgid "New game - Singleplayer"
 msgstr "Új játék - Egyjátékos mód"
 
 #. (text of widget: start_game_label)
-#: horizons/i18n/guitranslations.py:985
+#: horizons/i18n/guitranslations.py
 msgid "Start game:"
 msgstr "Játék megkezdése:"
 
 #. (text of widget: campaign)
-#: horizons/i18n/guitranslations.py:987
+#: horizons/i18n/guitranslations.py
 msgid "Campaign"
 msgstr "Hadjárat"
 
 #. (text of widget: free_maps)
-#: horizons/i18n/guitranslations.py:989
+#: horizons/i18n/guitranslations.py
 msgid "Free play"
 msgstr "Szabad játék"
 
 #. (text of widget: random)
-#: horizons/i18n/guitranslations.py:991
+#: horizons/i18n/guitranslations.py
 msgid "Random map"
 msgstr "Véletlen térkép"
 
 #. (text of widget: scenario)
-#: horizons/i18n/guitranslations.py:993
+#: horizons/i18n/guitranslations.py
 msgid "Scenario"
-msgstr ""
+msgstr "Szkenárió"
 
 # 90%
 #. (helptext of widget: okay)
-#: horizons/i18n/guitranslations.py:997
-#, fuzzy
+#: horizons/i18n/guitranslations.py
 msgid "Start game"
-msgstr "Játék megkezdése:"
+msgstr "Játék indítása"
 
 #. (text of widget: choose_map_lbl)
 #. (text of widget: headline_choose_map_lbl)
 #. (text of widget: choose_map_lbl)
-#: horizons/i18n/guitranslations.py:1002 horizons/i18n/guitranslations.py:1007
-#: horizons/i18n/guitranslations.py:1019
+#: horizons/i18n/guitranslations.py horizons/i18n/guitranslations.py
+#: horizons/i18n/guitranslations.py
 msgid "Choose a map to play:"
-msgstr ""
+msgstr "Válassz térképet a játékhoz:"
 
 #. (text of widget: headline_map_settings_lbl)
-#: horizons/i18n/guitranslations.py:1012
+#: horizons/i18n/guitranslations.py
 msgid "Map settings:"
-msgstr ""
+msgstr "Térkép beállítások:"
 
 #. (text of widget: seed_string_lbl)
-#: horizons/i18n/guitranslations.py:1014
+#: horizons/i18n/guitranslations.py
 msgid "Seed:"
-msgstr ""
+msgstr "Mag:"
 
 #. (text of widget: ai_players_label)
-#: horizons/i18n/guitranslations.py:1024
+#: horizons/i18n/guitranslations.py
 msgid "AI players:"
-msgstr ""
+msgstr "AI játékosok:"
 
 #. (text of widget: headline_game_settings_lbl)
-#: horizons/i18n/guitranslations.py:1029
+#: horizons/i18n/guitranslations.py
 msgid "Game settings:"
-msgstr ""
+msgstr "Játék beállításai:"
 
 #. (text of widget: lbl_disasters) Whether there should be disasters in the game.
-#: horizons/i18n/guitranslations.py:1031
+#: horizons/i18n/guitranslations.py
 msgid "Disasters"
-msgstr ""
+msgstr "Katasztrófák"
 
 #. (text of widget: lbl_free_trader) Whether to create this kind of player in the game.
-#: horizons/i18n/guitranslations.py:1033
+#: horizons/i18n/guitranslations.py
 msgid "Free Trader"
-msgstr ""
+msgstr "Szabad kereskedő"
 
 #. (text of widget: lbl_pirates) Whether to create this kind of player in the game.
-#: horizons/i18n/guitranslations.py:1035
+#: horizons/i18n/guitranslations.py
 msgid "Pirates"
-msgstr ""
+msgstr "Kalózok"
 
 #. (text of widget: color_label)
-#: horizons/i18n/guitranslations.py:1040
+#: horizons/i18n/guitranslations.py
 msgid "Color:"
-msgstr ""
+msgstr "Szín:"
 
 #. (text of widget: player_label)
-#: horizons/i18n/guitranslations.py:1042
+#: horizons/i18n/guitranslations.py
 msgid "Player name:"
-msgstr ""
+msgstr "Játékos neve:"
 
 #. name of buildings:alvearies
-#: horizons/i18n/objecttranslations.py:53
+#: horizons/i18n/objecttranslations.py
 msgid "Alvearies"
-msgstr ""
+msgstr "Méhészet"
 
 #. tooltip_text of buildings:alvearies
-#: horizons/i18n/objecttranslations.py:55
+#: horizons/i18n/objecttranslations.py
 msgid "Keeps bees. Produces honeycombs used for confectionery. Needs a farm."
-msgstr ""
+msgstr "Méheket tart. Törökmézt állít elő a cukrászdának. Szüksége van farmra."
 
 #. name of buildings:bakery
-#: horizons/i18n/objecttranslations.py:60
+#: horizons/i18n/objecttranslations.py
 msgid "Bakery"
-msgstr ""
+msgstr "Pékség"
 
 #. tooltip_text of buildings:bakery
-#: horizons/i18n/objecttranslations.py:62
+#: horizons/i18n/objecttranslations.py
 msgid "Consumes flour. Produces food."
-msgstr ""
+msgstr "Lisztet használ fel. Élelmiszert állít elő."
 
 #. name of buildings:barracks
-#: horizons/i18n/objecttranslations.py:67
+#: horizons/i18n/objecttranslations.py
 msgid "Barracks"
-msgstr ""
+msgstr "Kaszárnya"
 
 #. tooltip_text of buildings:barracks
-#: horizons/i18n/objecttranslations.py:69
+#: horizons/i18n/objecttranslations.py
 msgid "Recruits units suitable for ground combat."
-msgstr ""
+msgstr "Egységeket toboroz szárazföldi harcokhoz."
 
+# Érdekes...
 #. name of buildings:blender
-#: horizons/i18n/objecttranslations.py:74
+#: horizons/i18n/objecttranslations.py
 msgid "Blender"
-msgstr ""
+msgstr "Fűszeres"
 
 #. tooltip_text of buildings:blender
-#: horizons/i18n/objecttranslations.py:76
+#: horizons/i18n/objecttranslations.py
 msgid "Produces condiments out of spices."
-msgstr ""
+msgstr "Fűszert termel."
 
 #. name of buildings:boatbuilder
-#: horizons/i18n/objecttranslations.py:81
+#: horizons/i18n/objecttranslations.py
 msgid "Boat Builder"
-msgstr ""
+msgstr "Hajó építő"
 
 #. tooltip_text of buildings:boatbuilder
-#: horizons/i18n/objecttranslations.py:83
+#: horizons/i18n/objecttranslations.py
 msgid "Builds boats and small ships. Built on coast."
 msgstr "Csónakokat és kis hajókat épít. Partra épül."
 
 #. name of buildings:brickyard
-#: horizons/i18n/objecttranslations.py:88
+#: horizons/i18n/objecttranslations.py
 msgid "Brickyard"
-msgstr ""
+msgstr "Téglagyár"
 
 #. tooltip_text of buildings:brickyard
-#: horizons/i18n/objecttranslations.py:90
+#: horizons/i18n/objecttranslations.py
 msgid "Turns clay into bricks."
 msgstr "Agyagból téglát készít."
 
 #. name of buildings:butchery
-#: horizons/i18n/objecttranslations.py:95
+#: horizons/i18n/objecttranslations.py
 msgid "Butchery"
-msgstr ""
+msgstr "Hentes"
 
 #. tooltip_text of buildings:butchery
-#: horizons/i18n/objecttranslations.py:97
+#: horizons/i18n/objecttranslations.py
 msgid "Needs pigs or cattle. Produces food."
 msgstr "Malac vagy marha szükséges. Élelmiszert termel."
 
 #. name of buildings:cattlerun
-#: horizons/i18n/objecttranslations.py:102
+#: horizons/i18n/objecttranslations.py
 msgid "Cattle Run"
-msgstr ""
+msgstr "Szarvasmarha kifutó"
 
 #. tooltip_text of buildings:cattlerun
-#: horizons/i18n/objecttranslations.py:104
+#: horizons/i18n/objecttranslations.py
 msgid "Raises cattle. Needs a farm."
 msgstr "Marhákat nevel. Egy farm szükséges."
 
 #. name of buildings:charcoalburning
-#: horizons/i18n/objecttranslations.py:109
+#: horizons/i18n/objecttranslations.py
 msgid "Charcoal Burning"
-msgstr ""
+msgstr "Szén égető"
 
 #. tooltip_text of buildings:charcoalburning
-#: horizons/i18n/objecttranslations.py:111
-msgid "Burns a lot of boards to charcoal."
-msgstr ""
+#: horizons/i18n/objecttranslations.py
+msgid "Burns a lot of boards."
+msgstr "Rengeteg deszkát éget."
 
 # 83%
 #. name of buildings:claydeposit
-#: horizons/i18n/objecttranslations.py:116
-#, fuzzy
+#: horizons/i18n/objecttranslations.py
 msgid "Clay Deposit"
-msgstr "agyaglelőhely"
+msgstr "Agyag lelőhely"
 
 #. name of buildings:claypit
-#: horizons/i18n/objecttranslations.py:121
+#: horizons/i18n/objecttranslations.py
 msgid "Clay Pit"
-msgstr ""
+msgstr "Agyag bánya"
 
 #. tooltip_text of buildings:claypit
-#: horizons/i18n/objecttranslations.py:123
+#: horizons/i18n/objecttranslations.py
 msgid "Gets clay from deposit."
 msgstr "Agyagot termel."
 
 #. name of buildings:cocoafield
-#: horizons/i18n/objecttranslations.py:128
+#: horizons/i18n/objecttranslations.py
 msgid "Cocoa Field"
-msgstr ""
+msgstr "Kakaó mező"
 
 #. tooltip_text of buildings:cocoafield
-#: horizons/i18n/objecttranslations.py:130
+#: horizons/i18n/objecttranslations.py
 msgid "Produces cocoa beans used for confectionery. Needs a farm."
-msgstr ""
+msgstr "Kakaómagot termel a cukrászatnak. Farmra van szüksége."
 
 #. name of buildings:cornfield
-#: horizons/i18n/objecttranslations.py:135
+#: horizons/i18n/objecttranslations.py
 msgid "Corn Field"
-msgstr ""
+msgstr "Kukorica mező"
 
 # 88%
 #. tooltip_text of buildings:cornfield
-#: horizons/i18n/objecttranslations.py:137
-#, fuzzy
+#: horizons/i18n/objecttranslations.py
 msgid "Yields corn. Needs a farm."
-msgstr "Ételt termel. Egy farm szükséges."
+msgstr "Kukoricát termel. Egy farmra van szüksége."
 
 #. name of buildings:distillery
-#: horizons/i18n/objecttranslations.py:142
+#: horizons/i18n/objecttranslations.py
 msgid "Distillery"
-msgstr ""
+msgstr "Szeszfőzde"
 
 #. tooltip_text of buildings:distillery
-#: horizons/i18n/objecttranslations.py:144
+#: horizons/i18n/objecttranslations.py
 msgid "Turns sugar into liquor."
 msgstr "Cukorból szeszes italt készít."
 
 #. name of buildings:doctor
-#: horizons/i18n/objecttranslations.py:149
+#: horizons/i18n/objecttranslations.py
 msgid "Doctor"
-msgstr ""
+msgstr "Orvos"
 
 #. tooltip_text of buildings:doctor
-#: horizons/i18n/objecttranslations.py:151
+#: horizons/i18n/objecttranslations.py
 msgid "Treats diseases. Consumes herbs."
 msgstr "Kezeli a betegségeket. Gyógynövényeket készít."
 
 #. name of buildings:farm
-#: horizons/i18n/objecttranslations.py:156
+#: horizons/i18n/objecttranslations.py
 msgid "Farm"
-msgstr ""
+msgstr "Farm"
 
 #. tooltip_text of buildings:farm
-#: horizons/i18n/objecttranslations.py:158
+#: horizons/i18n/objecttranslations.py
 msgid "Grows field crops and raises livestock."
 msgstr "Növényeket és élő állatokat nevel."
 
 #. name of buildings:fireservice
-#: horizons/i18n/objecttranslations.py:163
+#: horizons/i18n/objecttranslations.py
 msgid "Fire Station"
-msgstr ""
+msgstr "Tűzoltóság"
 
 #. tooltip_text of buildings:fireservice
-#: horizons/i18n/objecttranslations.py:165
+#: horizons/i18n/objecttranslations.py
 msgid "Extinguishes fires."
-msgstr ""
+msgstr "Tüzeket olt."
 
 #. name of buildings:fishdeposit
-#: horizons/i18n/objecttranslations.py:170
+#: horizons/i18n/objecttranslations.py
 msgid "Fish Deposit"
-msgstr ""
+msgstr "Hal lerakat"
 
 #. name of buildings:fishermanstent
-#: horizons/i18n/objecttranslations.py:175
+#: horizons/i18n/objecttranslations.py
 msgid "Fisherman's Tent"
-msgstr ""
+msgstr "A halász kunyhója"
 
 #. tooltip_text of buildings:fishermanstent
-#: horizons/i18n/objecttranslations.py:177
+#: horizons/i18n/objecttranslations.py
 msgid "Fishes the sea, produces food."
 msgstr "Halászik a tengeren, élelmet készít."
 
-#. name of buildings:gravelpath
-#: horizons/i18n/objecttranslations.py:182
-msgid "Gravel Path"
-msgstr ""
-
 #. name of buildings:herbary
-#: horizons/i18n/objecttranslations.py:187
+#: horizons/i18n/objecttranslations.py
 msgid "Herbary"
-msgstr ""
+msgstr "Gyógynövényes"
 
 #. tooltip_text of buildings:herbary
-#: horizons/i18n/objecttranslations.py:189
+#: horizons/i18n/objecttranslations.py
 msgid "Produces herbs. Needs a farm."
 msgstr "Gyógynövényeket termel. Egy farm szükséges."
 
 #. name of buildings:hunterstent
-#: horizons/i18n/objecttranslations.py:194
+#: horizons/i18n/objecttranslations.py
 msgid "Hunter's Tent"
-msgstr ""
+msgstr "Vadász kunyhó"
 
 #. tooltip_text of buildings:hunterstent
-#: horizons/i18n/objecttranslations.py:196
+#: horizons/i18n/objecttranslations.py
 msgid "Hunts wild forest animals, produces food."
 msgstr "Vadakra vadászik az erdőben, élelmet készít."
 
 #. name of buildings:ironmine
-#: horizons/i18n/objecttranslations.py:201
+#: horizons/i18n/objecttranslations.py
 msgid "Iron Mine"
-msgstr ""
+msgstr "Fém bánya"
 
 #. tooltip_text of buildings:ironmine
-#: horizons/i18n/objecttranslations.py:203
+#: horizons/i18n/objecttranslations.py
 msgid "Gets iron ore from deposit."
-msgstr "Agyagot termel."
-
-#. name of buildings:log
-#: horizons/i18n/objecttranslations.py:208
-msgid "Log"
-msgstr ""
-
-#. tooltip_text of buildings:log
-#: horizons/i18n/objecttranslations.py:210
-msgid "Road across a river."
-msgstr ""
+msgstr "Fémet bányászik."
 
 #. name of buildings:lookout
-#: horizons/i18n/objecttranslations.py:215
+#: horizons/i18n/objecttranslations.py
 msgid "Lookout"
-msgstr ""
+msgstr "Kilátó"
 
 #. tooltip_text of buildings:lookout
-#: horizons/i18n/objecttranslations.py:217
+#: horizons/i18n/objecttranslations.py
 msgid "Increases the player's sight."
-msgstr ""
+msgstr "Növeli a játékos látóhatárát."
 
 #. name_0 of buildings:lumberjackcamp
-#: horizons/i18n/objecttranslations.py:222
+#: horizons/i18n/objecttranslations.py
 msgid "Lumberjack Tent"
-msgstr ""
+msgstr "Favágó sátra"
 
 #. name_1 of buildings:lumberjackcamp
-#: horizons/i18n/objecttranslations.py:224
+#: horizons/i18n/objecttranslations.py
 msgid "Lumberjack Hut"
-msgstr ""
+msgstr "Favágó kunyhó"
 
 #. tooltip_text of buildings:lumberjackcamp
-#: horizons/i18n/objecttranslations.py:226
+#: horizons/i18n/objecttranslations.py
 msgid "Chops down trees and turns them into boards."
 msgstr "Kivágja a fákat, és deszkákat készít belőlük."
 
 #. name of buildings:mainsquare
-#: horizons/i18n/objecttranslations.py:231
+#: horizons/i18n/objecttranslations.py
 msgid "Main Square"
-msgstr ""
+msgstr "Főtér"
 
 #. tooltip_text of buildings:mainsquare
-#: horizons/i18n/objecttranslations.py:233
+#: horizons/i18n/objecttranslations.py
 msgid "Supplies citizens with goods."
 msgstr "Ellátja a lakosokat termékekkel."
 
 #. name of buildings:mountain
-#: horizons/i18n/objecttranslations.py:238
+#: horizons/i18n/objecttranslations.py
 msgid "Mountain"
-msgstr ""
+msgstr "Hegy"
 
 #. name of buildings:pastryshop
-#: horizons/i18n/objecttranslations.py:243
+#: horizons/i18n/objecttranslations.py
 msgid "Pastry Shop"
-msgstr ""
+msgstr "Cukrászda"
 
 #. tooltip_text of buildings:pastryshop
-#: horizons/i18n/objecttranslations.py:245
+#: horizons/i18n/objecttranslations.py
 msgid "Produces all kinds of confectionery."
-msgstr ""
+msgstr "Mindenféle édességet termel."
 
 #. name of buildings:pasture
-#: horizons/i18n/objecttranslations.py:250
+#: horizons/i18n/objecttranslations.py
 msgid "Pasture"
-msgstr ""
+msgstr "Legelő"
 
 #. tooltip_text of buildings:pasture
-#: horizons/i18n/objecttranslations.py:252
+#: horizons/i18n/objecttranslations.py
 msgid "Raises sheep. Produces wool. Needs a farm."
 msgstr "Bárányokat tenyészt. Gyapjút termel. Egy farm szükséges."
 
 #. name of buildings:pavilion
-#: horizons/i18n/objecttranslations.py:257
+#: horizons/i18n/objecttranslations.py
 msgid "Pavilion"
-msgstr ""
+msgstr "Pavilon"
 
 #. tooltip_text of buildings:pavilion
-#: horizons/i18n/objecttranslations.py:259
+#: horizons/i18n/objecttranslations.py
 msgid "Fulfills religious needs of sailors."
 msgstr "Kielégíti a hajósok vallási szükségleteit."
 
 #. name of buildings:pigsty
-#: horizons/i18n/objecttranslations.py:264
+#: horizons/i18n/objecttranslations.py
 msgid "Pigsty"
-msgstr ""
+msgstr "Disznóól"
 
 #. tooltip_text of buildings:pigsty
-#: horizons/i18n/objecttranslations.py:266
+#: horizons/i18n/objecttranslations.py
 msgid "Raises pigs. Needs a farm."
-msgstr "Marhákat nevel. Egy farm szükséges."
+msgstr "Malacokat nevel. Egy farm szükséges."
 
 #. name of buildings:potatofield
-#: horizons/i18n/objecttranslations.py:271
+#: horizons/i18n/objecttranslations.py
 msgid "Potato Field"
-msgstr ""
+msgstr "Paradicsom föld"
 
 #. tooltip_text of buildings:potatofield
-#: horizons/i18n/objecttranslations.py:273
+#: horizons/i18n/objecttranslations.py
 msgid "Yields food. Needs a farm."
 msgstr "Ételt termel. Egy farm szükséges."
 
-#. name of buildings:rampart
-#: horizons/i18n/objecttranslations.py:278
-msgid "Rampart"
-msgstr ""
-
-#. tooltip_text of buildings:rampart
-#: horizons/i18n/objecttranslations.py:280
-msgid "Protects your settlement."
-msgstr ""
-
 #. name of buildings:ruinedtent
-#: horizons/i18n/objecttranslations.py:285
+#: horizons/i18n/objecttranslations.py
 msgid "Ruined Tent"
-msgstr ""
+msgstr "Romos sárot"
 
 #. name of buildings:saltponds
-#: horizons/i18n/objecttranslations.py:290
+#: horizons/i18n/objecttranslations.py
 msgid "Salt Ponds"
-msgstr ""
+msgstr "Sós tó"
 
 #. tooltip_text of buildings:saltponds
-#: horizons/i18n/objecttranslations.py:292
+#: horizons/i18n/objecttranslations.py
 msgid "Evaporates salt. Built on sea coast."
-msgstr ""
+msgstr "Sót párologtat ki. Tengerparton építhető."
 
 #. name of buildings:signalfire
-#: horizons/i18n/objecttranslations.py:297
+#: horizons/i18n/objecttranslations.py
 msgid "Signal Fire"
-msgstr ""
+msgstr "Jelző tűz"
 
 #. tooltip_text of buildings:signalfire
-#: horizons/i18n/objecttranslations.py:299
+#: horizons/i18n/objecttranslations.py
 msgid "Allows the player to trade with the free trader."
 msgstr "Kereskedelmi szándék jelzése a szabad kereskedők felé."
 
 #. name of buildings:smeltery
-#: horizons/i18n/objecttranslations.py:304
+#: horizons/i18n/objecttranslations.py
 msgid "Smeltery"
-msgstr ""
+msgstr "Öntöde"
 
 #. tooltip_text of buildings:smeltery
-#: horizons/i18n/objecttranslations.py:306
+#: horizons/i18n/objecttranslations.py
 msgid "Refines all kind of ores."
-msgstr ""
+msgstr "Mindenféle ércet finomít."
 
 #. name of buildings:spicefield
-#: horizons/i18n/objecttranslations.py:311
+#: horizons/i18n/objecttranslations.py
 msgid "Spice Field"
-msgstr ""
+msgstr "Fűszer föld"
 
 #. tooltip_text of buildings:spicefield
-#: horizons/i18n/objecttranslations.py:313
+#: horizons/i18n/objecttranslations.py
 msgid "Grows spices. Needs a farm."
-msgstr ""
+msgstr "Fűszert növeszt. Farm szükséges hozzá."
 
-#. name of buildings:stonemason
-#: horizons/i18n/objecttranslations.py:318
+#. name_2 of buildings:stonemason
+#: horizons/i18n/objecttranslations.py
 msgid "Stonemason"
+msgstr "Kőműves"
+
+#. name_4 of buildings:stonemason
+#: horizons/i18n/objecttranslations.py
+msgid "Carver"
 msgstr ""
 
 #. tooltip_text of buildings:stonemason
-#: horizons/i18n/objecttranslations.py:320
+#: horizons/i18n/objecttranslations.py
 msgid "Carves stone tops into bricks."
-msgstr ""
+msgstr "Követ farag téglákká."
 
 #. name of buildings:stonepit
-#: horizons/i18n/objecttranslations.py:325
+#: horizons/i18n/objecttranslations.py
 msgid "Stone Pit"
-msgstr ""
+msgstr "Kőbánya"
 
 #. tooltip_text of buildings:stonepit
-#: horizons/i18n/objecttranslations.py:327
+#: horizons/i18n/objecttranslations.py
 msgid "Gets stone from a mountain."
-msgstr ""
+msgstr "Követ fejt egy hegyből."
 
 #. name_0 of buildings:storagetent
-#: horizons/i18n/objecttranslations.py:332
+#: horizons/i18n/objecttranslations.py
 msgid "Storage Tent"
-msgstr ""
+msgstr "Raktár sátor"
 
 #. name_1 of buildings:storagetent
-#: horizons/i18n/objecttranslations.py:334
+#: horizons/i18n/objecttranslations.py
 msgid "Storage Hut"
-msgstr ""
+msgstr "Raktár kunyhó"
 
 #. tooltip_text of buildings:storagetent
-#: horizons/i18n/objecttranslations.py:336
+#: horizons/i18n/objecttranslations.py
 msgid "Extends stock and provides collectors."
 msgstr "Több helyet és hordárt biztosít."
 
 #. name of buildings:sugarfield
-#: horizons/i18n/objecttranslations.py:341
+#: horizons/i18n/objecttranslations.py
 msgid "Sugar Field"
-msgstr ""
+msgstr "Cukor mező"
 
 #. tooltip_text of buildings:sugarfield
-#: horizons/i18n/objecttranslations.py:343
+#: horizons/i18n/objecttranslations.py
 msgid "Used in liquor production. Needs a farm."
 msgstr "Szeszes ital termeléshez szükséges. Egy farm szükséges."
 
 #. name of buildings:tavern
-#: horizons/i18n/objecttranslations.py:348
+#: horizons/i18n/objecttranslations.py
 msgid "Tavern"
-msgstr ""
+msgstr "Kocsma"
 
 #. tooltip_text of buildings:tavern
-#: horizons/i18n/objecttranslations.py:350
+#: horizons/i18n/objecttranslations.py
 msgid "Provides get-together."
-msgstr ""
+msgstr "Társaságot biztosít."
 
 #. name_0 of buildings:tent
-#: horizons/i18n/objecttranslations.py:355
+#: horizons/i18n/objecttranslations.py
 msgid "Tent"
-msgstr ""
+msgstr "Sátor"
 
 #. name_1 of buildings:tent
-#: horizons/i18n/objecttranslations.py:357
+#: horizons/i18n/objecttranslations.py
 msgid "Hut"
-msgstr ""
+msgstr "Kunyhó"
 
 # 80%
 #. name_2 of buildings:tent
-#: horizons/i18n/objecttranslations.py:359
-#, fuzzy
+#: horizons/i18n/objecttranslations.py
 msgid "House"
-msgstr "Egér"
+msgstr "Ház"
 
 #. name_3 of buildings:tent
-#: horizons/i18n/objecttranslations.py:361
+#: horizons/i18n/objecttranslations.py
 msgid "Stone house"
-msgstr ""
+msgstr "Kőház"
 
 #. name_4 of buildings:tent
-#: horizons/i18n/objecttranslations.py:363
+#: horizons/i18n/objecttranslations.py
 msgid "Estate"
-msgstr ""
+msgstr "Birtok"
 
 #. name_5 of buildings:tent
-#: horizons/i18n/objecttranslations.py:365
+#: horizons/i18n/objecttranslations.py
 msgid "Manor"
-msgstr ""
+msgstr "Nemesi birtok"
 
 #. tooltip_text of buildings:tent
-#: horizons/i18n/objecttranslations.py:367
+#: horizons/i18n/objecttranslations.py
 msgid "Houses your inhabitants."
 msgstr "Lakás a lakosoknak."
 
 #. name of buildings:tobaccofield
-#: horizons/i18n/objecttranslations.py:372
+#: horizons/i18n/objecttranslations.py
 msgid "Tobacco Field"
-msgstr ""
+msgstr "Dohányföld"
 
 #. tooltip_text of buildings:tobaccofield
-#: horizons/i18n/objecttranslations.py:374
+#: horizons/i18n/objecttranslations.py
 msgid "Produces tobacco. Needs a farm."
-msgstr "Gyógynövényeket termel. Egy farm szükséges."
+msgstr "Dohányt termel. Egy farm szükséges."
 
 #. name of buildings:tobacconist
-#: horizons/i18n/objecttranslations.py:379
+#: horizons/i18n/objecttranslations.py
 msgid "Tobacconist"
-msgstr ""
+msgstr "Dohánytermelő"
 
 #. tooltip_text of buildings:tobacconist
-#: horizons/i18n/objecttranslations.py:381
+#: horizons/i18n/objecttranslations.py
 msgid "Produces tobaccos out of tobacco."
-msgstr ""
+msgstr "Dohányterméket termel dohányból."
 
 #. name of buildings:toolmaker
-#: horizons/i18n/objecttranslations.py:386
+#: horizons/i18n/objecttranslations.py
 msgid "Toolmaker"
-msgstr ""
+msgstr "Szerszámkészítő"
 
 #. tooltip_text of buildings:toolmaker
-#: horizons/i18n/objecttranslations.py:388
+#: horizons/i18n/objecttranslations.py
 msgid "Produces tools out of iron."
-msgstr ""
+msgstr "Fémből készít szerszámokat."
 
 #. name of buildings:trail
-#: horizons/i18n/objecttranslations.py:393
+#: horizons/i18n/objecttranslations.py
 msgid "Trail"
-msgstr ""
+msgstr "Ösvény"
 
 #. tooltip_text of buildings:trail
-#: horizons/i18n/objecttranslations.py:395
+#: horizons/i18n/objecttranslations.py
 msgid "Needed for collecting goods."
 msgstr "Szükséges az áruk begyűjtéséhez."
 
 #. name of buildings:tree
-#: horizons/i18n/objecttranslations.py:400
+#: horizons/i18n/objecttranslations.py
 msgid "Tree"
 msgstr "Fa"
 
 #. tooltip_text of buildings:tree
-#: horizons/i18n/objecttranslations.py:402
+#: horizons/i18n/objecttranslations.py
 msgid "Provides lumber. Chopped down by lumberjacks."
-msgstr ""
+msgstr "Fát biztosít. A favágó vágja ki."
 
 #. name of buildings:villageschool
-#: horizons/i18n/objecttranslations.py:407
+#: horizons/i18n/objecttranslations.py
 msgid "Village school"
-msgstr ""
+msgstr "Községi iskola"
 
 #. tooltip_text of buildings:villageschool
-#: horizons/i18n/objecttranslations.py:409
+#: horizons/i18n/objecttranslations.py
 msgid "Provides education."
-msgstr "Oktatást szolgáltat."
+msgstr "Oktatást biztosít."
 
 #. name of buildings:vineyard
-#: horizons/i18n/objecttranslations.py:414
+#: horizons/i18n/objecttranslations.py
 msgid "Vineyard"
-msgstr ""
+msgstr "Borászat"
 
 #. tooltip_text of buildings:vineyard
-#: horizons/i18n/objecttranslations.py:416
+#: horizons/i18n/objecttranslations.py
 msgid "Produces grapes for use in wine and confectionery. Needs a farm."
-msgstr ""
+msgstr "Szőlőt termel borhoz és a cukrászathoz. Egy farmra van szüksége."
 
 #. name of buildings:vintner
-#: horizons/i18n/objecttranslations.py:421
+#: horizons/i18n/objecttranslations.py
 msgid "Vintner"
-msgstr ""
+msgstr "Borkereskedő"
 
 #. tooltip_text of buildings:vintner
-#: horizons/i18n/objecttranslations.py:423
+#: horizons/i18n/objecttranslations.py
 msgid "Produces wine out of grapes."
-msgstr ""
+msgstr "Szőlőből készít bort."
 
 #. name of buildings:warehouse
-#: horizons/i18n/objecttranslations.py:428
+#: horizons/i18n/objecttranslations.py
 msgid "Warehouse"
-msgstr ""
+msgstr "Raktárház"
 
 #. name of buildings:weaverstent
-#: horizons/i18n/objecttranslations.py:433
+#: horizons/i18n/objecttranslations.py
 msgid "Weaver's Hut"
-msgstr ""
+msgstr "Takács kunyhó"
 
 #. tooltip_text of buildings:weaverstent
-#: horizons/i18n/objecttranslations.py:435
+#: horizons/i18n/objecttranslations.py
 msgid "Turns lamb wool into cloth."
 msgstr "Ruhát készít a gyapjúból."
 
 #. name of buildings:windmill
-#: horizons/i18n/objecttranslations.py:440
+#: horizons/i18n/objecttranslations.py
 msgid "Windmill"
-msgstr ""
+msgstr "Szélmalom"
 
 #. tooltip_text of buildings:windmill
-#: horizons/i18n/objecttranslations.py:442
+#: horizons/i18n/objecttranslations.py
 msgid "Grinds corn into flour."
-msgstr ""
+msgstr "Gabonát őröl lisztté."
 
 #. name of buildings:woodentower
-#: horizons/i18n/objecttranslations.py:447
+#: horizons/i18n/objecttranslations.py
 msgid "Wooden Tower"
-msgstr ""
+msgstr "Fatorony"
 
 #. tooltip_text of buildings:woodentower
-#: horizons/i18n/objecttranslations.py:449
+#: horizons/i18n/objecttranslations.py
 msgid "Defends your settlement."
+msgstr "Védelmezi a gyarmatot."
+
+#. headline of gui_buildmenu:build_menu_per_increment
+#. tab4_headline of gui_buildmenu:build_menu_per_type
+#: horizons/i18n/objecttranslations.py
+#: horizons/i18n/objecttranslations.py
+#: horizons/i18n/objecttranslations.py
+#: horizons/i18n/objecttranslations.py
+#: horizons/i18n/objecttranslations.py
+msgid "Companies"
+msgstr "Vállalatok"
+
+#. headline of gui_buildmenu:build_menu_per_increment
+#. tab2_headline of gui_buildmenu:build_menu_per_type
+#: horizons/i18n/objecttranslations.py
+#: horizons/i18n/objecttranslations.py
+#: horizons/i18n/objecttranslations.py
+#: horizons/i18n/objecttranslations.py
+msgid "Fields"
+msgstr "Mező"
+
+#. headline of gui_buildmenu:build_menu_per_increment
+#. tab5_headline of gui_buildmenu:build_menu_per_type
+#: horizons/i18n/objecttranslations.py
+#: horizons/i18n/objecttranslations.py
+msgid "Military"
+msgstr "Hadsereg"
+
+#. headline of gui_buildmenu:build_menu_per_increment
+#. headline of gui_buildmenu:build_menu_per_type
+#: horizons/i18n/objecttranslations.py
+#: horizons/i18n/objecttranslations.py
+msgid "Mining"
+msgstr "Bányászat"
+
+#. headline of gui_buildmenu:build_menu_per_increment
+#. tab1_helptext of gui_buildmenu:build_menu_per_type
+#: horizons/i18n/objecttranslations.py
+#: horizons/i18n/objecttranslations.py
+msgid "Residents and infrastructure"
+msgstr "Lakosok és épületek"
+
+#. headline of gui_buildmenu:build_menu_per_increment
+#. headline of gui_buildmenu:build_menu_per_type
+#: horizons/i18n/objecttranslations.py
+#: horizons/i18n/objecttranslations.py
+#: horizons/i18n/objecttranslations.py
+#: horizons/i18n/objecttranslations.py
+msgid "Services"
+msgstr "Szolgáltatások"
+
+#. headline of gui_buildmenu:build_menu_per_type
+#: horizons/i18n/objecttranslations.py
+msgid "Food"
+msgstr "Ételek"
+
+#. headline of gui_buildmenu:build_menu_per_type
+#: horizons/i18n/objecttranslations.py
+msgid "Fortifications"
 msgstr ""
 
-#: horizons/main.py:327
+#. headline of gui_buildmenu:build_menu_per_type
+#: horizons/i18n/objecttranslations.py
+msgid "Infrastructure"
+msgstr ""
+
+#. headline of gui_buildmenu:build_menu_per_type
+#: horizons/i18n/objecttranslations.py
+msgid "Military Service"
+msgstr ""
+
+#. headline of gui_buildmenu:build_menu_per_type
+#: horizons/i18n/objecttranslations.py
+msgid "Residential"
+msgstr ""
+
+#. headline of gui_buildmenu:build_menu_per_type
+#: horizons/i18n/objecttranslations.py
+msgid "Sea"
+msgstr ""
+
+#. tab6_headline of gui_buildmenu:build_menu_per_type
+#: horizons/i18n/objecttranslations.py
+msgid "Aesthetics"
+msgstr ""
+
+#: horizons/main.py
 msgid "Failed to start/load the game"
+msgstr "Nem sikerült elindítani/betölteni a játékot"
+
+#: horizons/main.py
+msgid "The game you selected could not be started."
 msgstr ""
 
-#: horizons/main.py:328
-msgid "The game you selected couldn't be started."
-msgstr ""
-
-#: horizons/main.py:329
+#: horizons/main.py
 msgid "The savegame might be broken or has been saved with an earlier version."
-msgstr ""
+msgstr "A mentés vagy megsérült vagy korábbi játékverzióval került mentésre."
 
-#: horizons/main.py:474
+#: horizons/main.py
 #, python-format
 msgid "Due to technical reasons, the campaign file will be copied to the UH campaign directory ({path})."
 msgstr ""
+"Technikai okok miatt, a hadjárat fájl át lett másolva az UH kampány "
+"könyvtárába ({path})."
 
-#: horizons/main.py:476
+#: horizons/main.py
 msgid "This means that changes in the file you specified will not apply to the game directly."
 msgstr ""
+"Ez azt jelenti, hogy a módosítások a fájlban nem lettek alkalmazva "
+"közvetlenül a játékban."
 
-#: horizons/main.py:478
+#: horizons/main.py
 #, python-format
 msgid "To see the changes, either always start UH with the current arguments or edit the file {filename}."
 msgstr ""
+"Hogy lásd a módosításokat, állandóan indítsd az UH-t az aktuális "
+"paraméterekkel, vagy módosítsd a fájlt {filename}."
+
+#: horizons/main.py
+msgid "No quicksaves found"
+msgstr "Nem találhatóak gyors mentések"
+
+#: horizons/main.py
+msgid "You need to quicksave before you can quickload."
+msgstr "Először egy gyors mentést kell készítened a betöltéshez."
 
 #. if this is reached, we are screwed. Something went wrong in the simulation,
 #. but we don't know what. Stop the game.
-#: horizons/manager.py:174
+#: horizons/manager.py
 msgid "The games have run out of sync. This indicates an unknown internal error, the game cannot continue."
 msgstr ""
+"A játék kiesett a szinkronból. Ez egy ismeretlen belső hibát jelent, a játék "
+"nem folytatható."
 
-#: horizons/manager.py:175
+#: horizons/manager.py
 msgid "We are very sorry and hope to have this bug fixed in a future version."
-msgstr ""
+msgstr "Nagyon sajnáljuk, és reméljük a hiba megszűnik egy jövőbeli verzióban."
 
-#: horizons/mpsession.py:66
+#: horizons/mpsession.py
 msgid "Not possible"
 msgstr "Nem lehetséges"
 
-#: horizons/mpsession.py:66
+#: horizons/mpsession.py
 msgid "Save/load for multiplayer games is not possible yet"
-msgstr "Mentés/betöltés a multiplayer játéknál nem lehetséges"
+msgstr "Mentés/betöltés a multiplayer játéknál nem lehetséges még"
 
-#: horizons/mpsession.py:77
+#: horizons/mpsession.py
 msgid "The filename must consist only of letters, numbers, spaces and _.-"
 msgstr ""
+"A fájlnév csak betűket, számokat, szóközöket és _.- karaktereket "
+"tartalmazhat"
 
-#: horizons/savegamemanager.py:360
-#, python-format
-msgid "Error: don't know how to handle condition type {condition}"
-msgstr ""
-
-#: horizons/savegamemanager.py:410 horizons/savegamemanager.py:416
-#, python-format
-msgid "Error: Cannot find campaign '{name}'."
-msgstr ""
-
-#: horizons/savegamemanager.py:435 horizons/savegamemanager.py:441
-#, python-format
-msgid "Error: Cannot find scenario '{name}'."
-msgstr ""
-
-#: horizons/scenario/actions.py:93
+#: horizons/scenario/actions.py
 msgid "You have won!"
-msgstr ""
+msgstr "Nyertél!"
 
-#: horizons/scenario/actions.py:94
+#: horizons/scenario/actions.py
 msgid "You have completed this scenario."
-msgstr ""
+msgstr "Teljesítetted a szkenáriót."
 
 # 75%
-#: horizons/scenario/actions.py:95
-#, fuzzy
+#: horizons/scenario/actions.py
 msgid "Do you want to continue playing?"
-msgstr "Folytatod?"
+msgstr "Folytatod a játékot?"
 
-#: horizons/scenario/scenarioeventhandler.py:157
-#: horizons/scenario/scenarioeventhandler.py:167
+#: horizons/scenario/scenarioeventhandler.py
+#: horizons/scenario/scenarioeventhandler.py
 msgid "unknown"
-msgstr ""
+msgstr "ismeretlen"
 
 #. usually invalid filename
-#: horizons/session.py:489
+#: horizons/session.py
 msgid "Failed to create savegame file"
-msgstr "Nem sikerült létrehozni a mentést"
+msgstr "Nem sikerült létrehozni a mentés fájlját"
 
-#: horizons/session.py:490
+#: horizons/session.py
 msgid "There has been an error while creating your savegame file."
-msgstr "Nem történt hiba a játék mentése közben."
+msgstr "Hiba történt a mentés fájljának létrehozásakor."
 
-#: horizons/session.py:491
+#: horizons/session.py
 msgid "This usually means that the savegame name contains unsupported special characters."
 msgstr ""
-"Ez általában azt jelenti, hogy a mentés neve nem támogatott karaktereket "
-"tartalmaz."
+"Ez általában azt jelenti, hogy a mentés neve nem támogatott speciális "
+"karaktereket tartalmaz."
 
-#: horizons/session.py:499
+#: horizons/session.py
 msgid "Access is denied"
-msgstr ""
+msgstr "Hozzáférés megtagadva"
 
-#: horizons/session.py:500
+#: horizons/session.py
 msgid "The savegame file is probably read-only."
-msgstr ""
+msgstr "A mentás fájlja valószínűleg csak olvasható."
 
-#: horizons/session.py:503
+#: horizons/session.py
 msgid "File used by another process"
-msgstr "Fájl által használt másik folyamat"
+msgstr "A fájlt egy másik folyamat használja"
 
-#: horizons/session.py:504
+#: horizons/session.py
 msgid "The savegame file is currently used by another program."
-msgstr ""
+msgstr "A játékmentés fájlját jelenleg egy másik program használja."
 
 # 75%
-#: horizons/spsession.py:66
-#, fuzzy
+#: horizons/spsession.py
 msgid "Failed to quicksave."
-msgstr "Nem sikerült menteni."
+msgstr "Nem sikerült a gyors mentés."
 
-#: horizons/spsession.py:67
+#: horizons/spsession.py
 msgid "An error happened during quicksave. Your game has not been saved."
 msgstr "Hiba történt a gyorsmentés közben. A játék nem lett elmentve."
 
-#: horizons/spsession.py:68
+#: horizons/spsession.py
 msgid "If this error happens again, please contact the development team:"
 msgstr ""
+"Hogyha ez a hiba még egyszer megtörténik, kérlek vedd fel a kapcsolatot a "
+"fejlesztői csapattal:"
 
-#: horizons/spsession.py:76
-msgid "No quicksaves found"
-msgstr "Nem található gyorsmentés"
-
-#: horizons/spsession.py:76
-msgid "You need to quicksave before you can quickload."
-msgstr "Gyorsmentés szükséges a gyorsbetöltéshez."
-
-#: horizons/util/checkupdates.py:70
-#, fuzzy
+#: horizons/util/checkupdates.py
 msgid "New version of Unknown Horizons"
-msgstr "Unknown Horizons indítása"
+msgstr "Új játék verzió"
 
-#: horizons/util/checkupdates.py:72
+#: horizons/util/checkupdates.py
 #, python-format
 msgid "There is a more recent release of Unknown Horizons ({new_version}) than the one you are currently using ({old_version})."
 msgstr ""
+"Egy újabb kiadása jelent meg a játéknak ({new_version}) a te aktuális "
+"verziódhoz képest ({old_version})."
 
-#: horizons/util/checkupdates.py:76
+#: horizons/util/checkupdates.py
 msgid "Click to download"
-msgstr ""
+msgstr "Klikk a letöltéshez"
 
-#: horizons/util/checkupdates.py:80
+#: horizons/util/checkupdates.py
 msgid "A page has been opened in your browser."
-msgstr ""
+msgstr "Egy oldalt nyitottunk meg a böngésződben."
 
-#: horizons/util/uhdbaccessor.py:150
+#: horizons/util/uhdbaccessor.py
 #, python-format
 msgid "{building}: {description}"
+msgstr "{building}: {description}"
+
+#: horizons/world/building/buildable.py
+msgid "This building must be built on an island."
 msgstr ""
 
-#: horizons/world/building/buildable.py:36
-msgid "Buildings must be built on islands."
+#: horizons/world/building/buildable.py
+msgid "This ground is not suitable for this building."
 msgstr ""
 
-#: horizons/world/building/buildable.py:37
-msgid "The ground is not suitable for this building."
+#: horizons/world/building/buildable.py
+msgid "This building has to be built within your settlement."
 msgstr ""
 
-#: horizons/world/building/buildable.py:38
-#: horizons/world/building/buildable.py:40
-msgid "You can only build this within your settlement."
+#: horizons/world/building/buildable.py
+msgid "This area is already occupied by another player."
 msgstr ""
 
-#: horizons/world/building/buildable.py:39
-msgid "This area is already occupied."
+#: horizons/world/building/buildable.py
+msgid "This area is already occupied by another building."
 msgstr ""
 
-#: horizons/world/building/buildable.py:41
-msgid "Another player has already occupied this island."
+#: horizons/world/building/buildable.py
+msgid "This area is already occupied by a unit."
 msgstr ""
 
-#: horizons/world/building/buildable.py:42
-msgid "You can't build this on top of another building."
-msgstr ""
-
-#: horizons/world/building/buildable.py:43
-msgid "You can't build this on top of a unit."
-msgstr ""
-
-#: horizons/world/building/buildable.py:44
+#: horizons/world/building/buildable.py
 msgid "This building must be built on the coastline."
+msgstr "Ezt az épületet csak a parton építheted fel."
+
+#: horizons/world/building/buildable.py
+msgid "This building has to be placed at the ocean."
 msgstr ""
 
-#: horizons/world/building/buildable.py:45
-msgid "This building requires to be placed near the ocean."
-msgstr ""
-
-#: horizons/world/building/buildable.py:46
+#: horizons/world/building/buildable.py
 msgid "This spot is too far away from your ship."
-msgstr ""
+msgstr "Ez a hely túl messze van a hajódtól."
 
-#: horizons/world/building/buildable.py:47
+#: horizons/world/building/buildable.py
 msgid "This building can only be built on a resource source."
+msgstr "Ezt az épületet csak nyersanyag lelőhelyre építheted."
+
+#: horizons/world/building/buildable.py
+msgid "You have already settled this island."
 msgstr ""
 
-#: horizons/world/component/tradepostcomponent.py:178
-msgid "The trade partner does not sell this."
+#: horizons/world/status.py
+msgid "This building is on fire!"
 msgstr ""
 
-#: horizons/world/component/tradepostcomponent.py:186
-msgid "You can not store this."
+#: horizons/world/status.py
+msgid "These residents are unhappy."
 msgstr ""
 
-#: horizons/world/component/tradepostcomponent.py:190
-msgid "You can not afford to buy this."
+#: horizons/world/status.py
+msgid "The inventory of this building is full."
 msgstr ""
 
-#: horizons/world/component/tradepostcomponent.py:196
-msgid "The trade partner does not sell more of this."
+#: horizons/world/status.py
+msgid "This building has a very low productivity."
 msgstr ""
 
-#: horizons/world/component/tradepostcomponent.py:220
-msgid "The trade partner does not buy this."
+#: horizons/world/status.py
+msgid "This building is decomissioned."
 msgstr ""
 
-#: horizons/world/component/tradepostcomponent.py:228
-msgid "You do not possess this."
-msgstr ""
-
-#: horizons/world/component/tradepostcomponent.py:232
-msgid "The trade partner can not store more of this."
-msgstr ""
-
-#: horizons/world/component/tradepostcomponent.py:236
-msgid "The trade partner can not afford to buy this."
-msgstr ""
-
-#: horizons/world/component/tradepostcomponent.py:241
-msgid "The trade partner does not buy more of this."
-msgstr ""
-
-#: horizons/world/traderoute.py:282
+#: horizons/world/traderoute.py
 #, python-format
 msgid "Trade route: going to {location}"
-msgstr ""
+msgstr "Kereskedelmi útvonal: {location} felé tart"
 
-#: horizons/world/traderoute.py:286
+#: horizons/world/traderoute.py
 #, python-format
 msgid "Trade route: waiting at {position}"
-msgstr ""
+msgstr "Kereskedelmi útvonal: várakozás itt: {position}"
 
-#: horizons/world/units/ship.py:184
+#: horizons/world/units/ship.py
 #, python-format
 msgid "Going to {location}"
-msgstr ""
+msgstr "{location} felé tart"
 
-#: horizons/world/units/ship.py:186
+#: horizons/world/units/ship.py
 #, python-format
 msgid "Going to {x}, {y}"
-msgstr ""
+msgstr "Megy ide {x}, {y}"
 
-#: horizons/world/units/ship.py:191
+#: horizons/world/units/ship.py
 #, python-format
 msgid "Idle at {location}"
-msgstr ""
+msgstr "Tétlen itt {location}"
 
-#: horizons/world/units/ship.py:193
+#: horizons/world/units/ship.py
 #, python-format
 msgid "Idle at {x}, {y}"
-msgstr ""
+msgstr "Tétlen itt {x}, {y}"
 
 # 83%
-#: horizons/world/units/ship.py:207
-#, fuzzy
+#: horizons/world/units/ship.py
 msgid "Trader"
-msgstr "Kereskedelem"
+msgstr "Kereskedő"
 
-#: horizons/world/units/weaponholder.py:453
+#: horizons/world/units/weaponholder.py
 #, python-format
 msgid "Attacking {target} '{name}' ({owner})"
-msgstr ""
+msgstr "Támadás {target} '{name}' ({owner})"
 
-#: horizons/world/units/weaponholder.py:458
+#: horizons/world/units/weaponholder.py
 #, python-format
 msgid "Attacking {owner}"
-msgstr ""
+msgstr "Támadás {owner}"
 
-#: run_uh.py:206
+#: run_uh.py
 msgid "Unknown Horizons has crashed."
-msgstr ""
+msgstr "A játék összeomlott."
 
-#: run_uh.py:208
+#: run_uh.py
 msgid "We are very sorry for this and want to fix underlying error."
-msgstr ""
+msgstr "Nagyon sajnáljuk, és szeretnénk kijavítani a hibát."
 
-#: run_uh.py:209
+#: run_uh.py
 msgid "In order to do this, we need the information from the logfile:"
-msgstr ""
+msgstr "Ehhez szükségünk van az információkra a naplófájlból:"
 
-#: run_uh.py:211
+#: run_uh.py
 msgid "Please give it to us via IRC or our forum, for both see http://unknown-horizons.org ."
 msgstr ""
+"Kérlek küld el IRC-n, vagy a fórumunkon, amelyet a http://unknown-"
+"horizons.org oldalon találsz meg ."
 
-#: run_uh.py:251
+#: run_uh.py
 msgid "Error: Unable to find required libraries"
-msgstr ""
+msgstr "Hiba: Nem találom a szükséges könyvtárakat"
 
-#: run_uh.py:252
+#: run_uh.py
 msgid "We are sorry to inform you that a library that is required by Unknown Horizons, is missing and needs to be installed."
 msgstr ""
+"Sajnáljuk, de szüksége van a játéknak egyes könyvtárakra, amelyeket "
+"telepítened kell."
 
-#: run_uh.py:253
+#: run_uh.py
 msgid "Installers for Windows users are available at \"http://pyyaml.org/wiki/PyYAML\", Linux users should find it in their packagement management system under the name \"pyyaml\" or \"python-yaml\"."
 msgstr ""
+"Windowsos telepítő elérhető a \"http://pyyaml.org/wiki/PyYAML\" oldalon, míg a "
+"Linuxos felhasználók megtalálhatják a csomagkezelőjükben \"pyyaml\" vagy "
+"\"python-yaml\" néven."
 
-#: run_uh.py:283
+#: run_uh.py
 msgid "Thank you for using Unknown Horizons!"
-msgstr ""
+msgstr "Köszönjük, hogy a Unknown Horizons-szal játszol!"
 
-#: run_uh.py:455
+#: run_uh.py
 msgid "FIFE was not found."
-msgstr ""
+msgstr "FIFE nem található."
+
+#, python-format
+#~ msgid "Configured language {lang} could not be loaded"
+#~ msgstr "A beállított {lang} nyelvet nem sikerült betölteni"
+
+#, python-format
+#~ msgid "WARNING: Incompatible version {version}!"
+#~ msgstr "FIGYELEM: Inkompatibilis verzió {version}!"
+
+#, python-format
+#~ msgid "Required version: {required}!"
+#~ msgstr "Elvárt verzió: {required}!"
+
+#~ msgid "Build related fields"
+#~ msgstr "Kapcsolódó mezők építése"
+
+#~ msgid "Increment {increment}"
+#~ msgstr "Életszínvonal {increment}"
+
+#~ msgid "Burns a lot of boards to charcoal."
+#~ msgstr "Rengeteg deszkát éget faszénné."
+
+#~ msgid "Gravel Path"
+#~ msgstr "Kavics út"
+
+#~ msgid "Log"
+#~ msgstr "Híd"
+
+#~ msgid "Road across a river."
+#~ msgstr "Út egy folyón keresztül."
+
+#~ msgid "Rampart"
+#~ msgstr "Bástya"
+
+#~ msgid "Protects your settlement."
+#~ msgstr "Védelmezi a gyarmatod."
+
+#~ msgid "The game you selected couldn't be started."
+#~ msgstr "A választott játékot nem sikerült elindítani."
+
+#, python-format, 
+#~ msgid "Error: don't know how to handle condition type {condition}"
+#~ msgstr "Hiba: nem tudom, hogy kezeljem a következő állapot típust {condition}"
+
+#, python-format
+#~ msgid "Error: Cannot find campaign '{name}'."
+#~ msgstr "Hiba: Nem találom a hadjáratot '{name}'."
+
+#, python-format
+#~ msgid "Error: Cannot find scenario '{name}'."
+#~ msgstr "Hiba: Nem találom a szkenáriót '{name}'."
+
+#~ msgid "Buildings must be built on islands."
+#~ msgstr "Épületeket a szigeten lehet csak építeni."
+
+#~ msgid "The ground is not suitable for this building."
+#~ msgstr "A terület nem alkalmas ennek az épületnek."
+
+#~ msgid "You can only build this within your settlement."
+#~ msgstr "Kizárólag a gyarmatodon tudod felépíteni."
+
+#~ msgid "This area is already occupied."
+#~ msgstr "Ez a terület már foglalt."
+
+#~ msgid "Another player has already occupied this island."
+#~ msgstr "Egy másik játékos már elfoglalta ezt a szigetet."
+
+#~ msgid "You can't build this on top of another building."
+#~ msgstr "Nem építheted ezt egy másik épület felé."
+
+#~ msgid "You can't build this on top of a unit."
+#~ msgstr "Nem építheted egy egység felé."
+
+#~ msgid "This building requires to be placed near the ocean."
+#~ msgstr "Ezt az épületet az óceán közelében kell elhelyezni."
 
 #~ msgid "aristocrat"
 #~ msgstr "arisztokrata"
@@ -3748,9 +3923,6 @@ msgstr ""
 #~ msgid "Leave Captain's log"
 #~ msgstr "A kapitány naplójának bezárása"
 
-#~ msgid "Burns a lot of boards."
-#~ msgstr "Rengeteg deszkát éget."
-
 #~ msgid "You cannot change the speed of a multiplayer game"
 #~ msgstr "Nem lehet változtatni a multiplayer játék sebességét"
 
@@ -3762,9 +3934,6 @@ msgstr ""
 
 #~ msgid "Bricks"
 #~ msgstr "Téglák"
-
-#~ msgid "Food"
-#~ msgstr "Ételek"
 
 #~ msgid "Textiles"
 #~ msgstr "Textilek"

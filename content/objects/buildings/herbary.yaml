@@ -6,23 +6,21 @@ cost: 0
 cost_inactive: 0
 size_x: 3
 size_y: 3
-inhabitants_start: 0
-inhabitants_max: 0
-button_name: herbary-1
+inhabitants: 0
 tooltip_text: _ Produces herbs. Needs a farm.
-settler_level: 2
-buildingcosts: {1: 150}
+settler_level: TIER.SETTLERS
+buildingcosts: {RES.GOLD: 150}
 components:
 - HealthComponent: {maxhealth: 10}
 - ProducerComponent:
     productionlines:
       53:
         produces:
-        - [37, 1]
+        - [RES.HERBS, 1]
         time: 30
 - StorageComponent:
-    inventory:
       SlotsStorage:
-        slot_sizes: {37: 1}
+        slot_sizes: {RES.HERBS: 1}
 actionsets:
-  as_herbary0: {level: 0}
+  TIER.SETTLERS:
+    as_herbary0:

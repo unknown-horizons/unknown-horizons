@@ -6,12 +6,12 @@
 #   development/copy_pofiles.sh
 
 author: !!python/unicode 'Het UH team'
-description: !!python/unicode 'De tutorial:
+description: !!python/unicode 'De opdracht:
 
   Plaats uw eerste kolonie en leer het spelverloop!
 
   '
-difficulty: !!python/unicode 'Tutorial'
+difficulty: !!python/unicode 'Oefening'
 events:
 - actions:
   - arguments: [!!python/unicode 'Bouw een hoofdkantoor aan de kust, zodat deze makkelijk
@@ -36,30 +36,31 @@ events:
       - [content/gui/icons/widgets/minimap/captainslog.png]
     - !!python/unicode '
 
-      To see your first task, click on the button "Read next entries" in the navigation
-      panel! It looks like this:'
+      Om je eerst opdracht te bekijken klik je op "volgende" in het navigatie paneel!
+      deze ziet er zo uit:'
     - - Gallery
       - [content/gui/images/buttons/parrow_right.png]
     - [Pagebreak]
     - !!python/unicode '
 
-      For any suggestions on better wording, topics you would like to have explained
-      or even buggy conditions: Please tell us and we will try to improve the tutorial!'
+      voor suggesties of een betere vertaling, of voor fouten: Laat het ons weten
+      zo dat we dit kunnen op lossen!'
     - !!python/unicode '
 
-      Visit www.unknown-horizons.org for help on how to contact the team!'
-    - !!python/unicode 'And now, let''s start the actual game.'
+      Bezoek www.unknown-horizons.org voor help en hoe je contact kunt opnemen met
+      het team!'
+    - !!python/unicode 'Zo, laten we nu het echte spel beginnen.'
     - [Pagebreak]
-    - [Headline, !!python/unicode 'OPDRACHT: KOLONISEER EEN EILAND']
+    - [Headline, !!python/unicode 'OPDRACHT: BEVOLK EEN EILAND']
     - [Image, content/gui/images/background/hr.png]
-    - !!python/unicode 'To move your ship, select it with a left click and right click
-      on the location you want it to go to.'
-    - !!python/unicode 'Once you are near the coast, the anchor-like button you see
-      in the overview tab will become active.'
+    - !!python/unicode 'Om je schip te verplaatsen, selecteer met de linker muis knop
+      het schip en klik vervolgens met de rechter muis knop de locatie.'
+    - !!python/unicode 'Eenmaal aangekomen aan de kust, zal de knop met het anker
+      actief worden in het scheepsoverzicht.'
     - - Gallery
       - [content/gui/icons/ship/anchor.png]
-    - !!python/unicode 'This indicates that you are able to build a warehouse there
-      by pressing that button (called ''Build Settlement'').'
+    - !!python/unicode 'Dit geeft aan dat je een pakhuis kunt bouwen door te klikken
+      op bouw kolonie.'
     - !!python/unicode 'Now a preview of your building is dragged around when you
       move the cursor.'
     - !!python/unicode 'You can build on any spot where this preview is not shaded
@@ -68,7 +69,7 @@ events:
       Click where you want to place your first building.'
     - !!python/unicode '
 
-      TASK: Build a warehouse at the coast.'
+      OPDRACHT: Bouw een pakhuis bij de kust.'
     type: logbook
   - arguments: [tutStepDone, 16]
     type: set_var
@@ -79,43 +80,44 @@ events:
   - arguments:
     - [Headline, !!python/unicode 'OPDRACHT: BOUW EEN HOUTHAKKER']
     - [Image, content/gui/images/background/hr.png]
-    - !!python/unicode 'The construction material on your ship got unloaded automatically.
-      You can now construct some basic buildings.'
-    - !!python/unicode 'We will start with building a lumberjack.'
-    - !!python/unicode 'This is essential because, at this stage, boards are the only
-      poles your sailors can afford to hang their tents over.'
-    - !!python/unicode 'The fisherman needs some boards to build his vessel as well.'
-    - !!python/unicode 'In order to construct lumberjacks; open the build menu by
-      either clicking the big icon below the mini map or pressing B key.'
+    - !!python/unicode 'De bouw matrialen op je schip worden automatisch uitgeladen.
+      Je kunt nu de basis gebouwen bouwen.'
+    - !!python/unicode 'We starten met het bouwen van een houthakkers hut.'
+    - !!python/unicode 'Dit is van essentieel belang, in dit stadium, omdat planken
+      het enige is dat een zeeman kan veroorloven om hun tenten over te hangen.'
+    - !!python/unicode 'Een visser heeft ook planken nodig om een boot te bouwen.'
+    - !!python/unicode 'Om een houthakkers hut te bouwen; open het bouw menu door
+      middel van het klikken op het grote icoontje onder de kaart of door het drukken
+      op de B toets.'
     - - Gallery
       - [content/gui/icons/widgets/minimap/build.png]
-    - !!python/unicode 'The build menu is sorted by increments.'
-    - !!python/unicode 'You are currently in the first increment (the Sailors level)
-      so are offered only the basic buildings.'
+    - !!python/unicode 'Het bouw menu is op gebouwd in een stappenplan.'
+    - !!python/unicode 'Je zit op dit moment in de begin fase (Zeeman''s niveau) je
+      hebt alleen de beschikking over de basis gebouwen.'
     - [Pagebreak]
     - !!python/unicode '
 
-      As your civilization advances, you also gain more and more complex buildings.'
-    - !!python/unicode 'For now, select the lumberjack under ''Companies'' and build
-      it in an area with some trees around.'
-    - !!python/unicode 'You can also plant trees later - but that costs money. Use
-      what nature provided you with!'
-    - !!python/unicode 'A company always needs a trail connection to a storage or
-      warehouse, otherwise goods will remain at the company and not be collected.'
-    - !!python/unicode 'This means that you have to build a trail connecting your
-      warehouse (or storage) and lumberjack.'
+      Naarmate je beschaving vordert, beschik je over meer complexere gebouwen.'
+    - !!python/unicode 'Voor nu, Selecteer houthakker onder "Bedrijven" en bouw het
+      in een omgeving met bomen.'
+    - !!python/unicode 'Je kunt later ook bomen bouwen - let wel bomen planten kost
+      geld. Gebruik wat de natuur je te bieden heeft!'
+    - !!python/unicode 'Een bedrijf moet altijd verbonden worden door middel van een
+      pad naar een pakhuis of opslag tent, anders worden de materialen niet gecollecteerd.'
+    - !!python/unicode 'Dit betekend dat je een pad moet aanleggen tussen pakhuis(of
+      opslag) en een houthakkers hut.'
     - !!python/unicode '
 
-      TASK: Build a lumberjack in a wooded area and connect it to a road.'
-    - !!python/unicode 'Watch how a collector will fetch your first self-produced
-      boards. Don''t worry about recruiting workers for the lumberjack. That happens
-      automatically.'
+      OPDRACHT: Bouw een houthakkers hut in een gebied met bomen en verbind het met
+      een pad.'
+    - !!python/unicode 'Kijk hoe een verzamelaar je eerst zelf geproduceerde planken
+      verzameld. Maak je geen zorgen over het zoeken van arbeiders, dit gebeurt automatisch.'
     - - Gallery
       - [content/gui/icons/buildmenu/008.png, content/gui/icons/buildmenu/015.png,
         content/gui/icons/resources/50/004.png]
     type: logbook
-  - arguments: [!!python/unicode 'Plaats een houthakker en verbind deze met het kantoor
-        met een pad.']
+  - arguments: [!!python/unicode 'Plaats een houthakkers hut en verbind deze met het
+        kantoor door middel van een pad.']
     type: message
   - arguments: [tutStepDone, 19]
     type: set_var
@@ -134,31 +136,33 @@ events:
   - arguments:
     - [Headline, !!python/unicode 'OPDRACHT: AANVOER VAN VOEDSEL']
     - [Image, content/gui/images/background/hr.png]
-    - !!python/unicode 'You will need to have some food-producing companies, too,
-      because people in general (and especially sailors) are very hungry.'
-    - !!python/unicode 'Available companies in the first increment are the Hunter
-      and Fisher.'
-    - !!python/unicode 'The Hunter hunts animals in the forest, thus needs trees nearby.'
-    - !!python/unicode 'Note that you can place your Hunter close to the lumberjack''s
-      forest.'
-    - !!python/unicode 'It can happen that the animals don''t reproduce fast enough
-      or simply hide well.'
-    - !!python/unicode 'Conclusion: the hunter is not too reliable if you need continuous
-      supply.'
+    - !!python/unicode 'Je hebt voedsel producerende bedrijven nodig omdat mensen
+      in het algemeen (en zeker zeelui) zijn heel hongerig.'
+    - !!python/unicode 'Beschikbare bedrijven in het begin van het spel zijn Jagers
+      en Vissers.'
+    - !!python/unicode 'Een jager jaagt op dieren in het bos, zij hebben bomen nodig.'
+    - !!python/unicode 'Merk op dat je een Jagers hut dicht bij een Houthakkers hut
+      kan plaatsen.'
+    - !!python/unicode 'Het kan dus gebeuren dat er op eens niet genoeg dieren meer
+      zijn of dat ze zich goed hebben verstopt.'
+    - !!python/unicode 'Conclusie: een jager is niet zo betrouwbaar voor een vaste
+      aanvoer van goederen.'
     - [Pagebreak]
     - !!python/unicode '
 
-      The Fisher needs a coastal building site like the warehouse and a fish school
-      in range.'
-    - !!python/unicode 'He will build a small rowing vessel and catch some fish.'
-    - !!python/unicode 'This is a very constant supply at the cost of a slightly longer
-      production time per unit of food.'
-    - !!python/unicode 'A small settlement like yours can use both companies, and
-      you can better balance pros and cons if you see the direct comparison.'
+      Een visser heeft een gebouw nodig aan de kust net zoals een pakhuis en een school
+      vissen binnen bereik.'
+    - !!python/unicode 'Hij bouwt een klein roeibootje om wat vis te vangen.'
+    - !!python/unicode 'Dit is een zeer stabiele aanvoer voor voedsel, maar met een
+      langere productie tijd.'
+    - !!python/unicode 'Een zeer kleine nederzetting zoals die van u kan gebruik maken
+      van beide bedrijven, zo kunt u een betere vergelijking maken tussen de voor
+      -en nadelen.'
     - !!python/unicode '
 
-      TASK: Build a hunter and a fisher.'
-    - !!python/unicode 'Don''t forget to connect them to your warehouse with trails!'
+      OPDRACHT: Bouw een Jager en een visser.'
+    - !!python/unicode 'Vergeet niet om deze te verbinden met het pakhuis door middel
+      van een pad!'
     - - Gallery
       - [content/gui/icons/buildmenu/011_h.png, content/gui/icons/buildmenu/009_h.png,
         content/gui/icons/resources/50/005.png]
@@ -179,35 +183,33 @@ events:
   - arguments:
     - [Headline, !!python/unicode 'OPDRACHT: MARKTPLAATS']
     - [Image, content/gui/images/background/hr.png]
-    - !!python/unicode 'Your residents need a main square where they can fetch their
-      goods from.'
-    - !!python/unicode 'This means that they need a trail connection from their home
-      to the main square.'
-    - !!python/unicode 'All goods in your warehouse are available at this ''market
-      place'', so your residents do not need to walk to the fisher or even to the
-      warehouse.'
+    - !!python/unicode 'Uw bewoners hebben behoeften aan een plein om goederen te
+      krijgen.'
+    - !!python/unicode 'Dit betekend dat ze een pad nodig hebben van hun huis naar
+      het plein.'
+    - !!python/unicode 'Alle goederen in uw pakhuis zijn beschikbaar op het "plein",
+      zodat de bewoners niet hoeven te lopen naar de visser of het pakhuis.'
     - - Gallery
       - [content/gui/icons/buildmenu/004_h.png]
-    - !!python/unicode 'You should avoid placing your main settlement tents too close
-      to your lumberjacks because building tents will clear away the trees that your
-      lumberjack needs to produce boards.'
-    - !!python/unicode 'Companies work without being connected to the tents, so you
-      don''t need to build a road between the main square and e.g. your lumberjack
-      tent.'
+    - !!python/unicode 'Probeer te vermeiden om je woon tenten te dicht bij een houthakker
+      te plaatsen dit omdat je dan bomen moet kappen die een houthakker nodig heeft.'
+    - !!python/unicode 'Bedrijven werken ook zonder deze te verbinden met een pad
+      naar de tenten, dus je hoeft geen pad te bouwen naar het plein of naar de houthakkers
+      hut.'
     - !!python/unicode '
 
-      TASK: Build a main square.'
+      OPDRACHT: Bouw een plein.'
     - [Pagebreak]
     - !!python/unicode '
 
-      Now let''s have a closer look at the main square.'
+      Zo, laten we eens een kijkje nemen op het plein.'
     - - Gallery
       - [content/gui/icons/tabwidget/warehouse/account_a.png]
-    - !!python/unicode 'In the ''Account'' tab you get a balance sheet of this island,
-      featuring all costs you pay and all taxes you earn.'
-    - !!python/unicode 'The items ''Sale'' and ''Buy'' refer to your trading balance
-      and will be explained later on.'
-    - !!python/unicode 'If your balance is positive, you all-in-all make a profit.'
+    - !!python/unicode 'In het ''Rekening'' tab blad zie je een overzicht van al je
+      inkomsten en uitgaven van dit eiland.'
+    - !!python/unicode 'De onderwerpen ''Inkomsten'' en ''Uitgaven'' verwijzen naar
+      je handel balans en worden later behandeld.'
+    - !!python/unicode 'Als je balans positief is, dan maak je winst.'
     - - Gallery
       - [content/gui/icons/tabwidget/mainsquare/inhabitants0_a.png]
     - !!python/unicode 'In the different increment overview tabs you can see statistics
@@ -237,8 +239,8 @@ events:
   - arguments:
     - [Headline, !!python/unicode 'OPDRACHT: RESIDENTIELE GEBOUWEN']
     - [Image, content/gui/images/background/hr.png]
-    - !!python/unicode 'Settlers want to have a roof over their heads, else they won''t
-      even think of living in your city! You need to provide tents.'
+    - !!python/unicode 'Kolonisten willen een dak boven hun hoofd, anders zouden ze
+      niet eens in je stad willen wonen! Je zult dus tenten moeten bouwen.'
     - - Gallery
       - [content/gui/icons/buildmenu/003_h.png]
     - !!python/unicode 'Tents are the basic residential buildings. Your inhabitants
@@ -248,8 +250,8 @@ events:
       you can make money for now!'
     - !!python/unicode '
 
-      TASK: Build a tent and connect it to the main square. Tents dont need to be
-      connected to any of the companies.'
+      OPDRACHT: Bouw een tent en verbind deze met het plein. Tenten hoeven niet verbonden
+      te worden naar een bedrijf.'
     type: logbook
   - arguments: [!!python/unicode 'Plaats een tent en verbind deze met het plein.']
     type: message
@@ -277,7 +279,7 @@ events:
         turn their back on your village, leaving behind a decaying ruin.', !!python/unicode 'Note
         that you can also change the global tax settings here, too.', !!python/unicode '
 
-        TASK: Build at least three additional tents.', !!python/unicode '
+        OPDRACHT: Bouw op zen minst drie extra tenten.', !!python/unicode '
 
         TIP: Holding down SHIFT eases constructing multiple buildings of the same
         kind.']
@@ -380,7 +382,8 @@ events:
       the ''Sale'' and ''Buy'' values there.'
     - !!python/unicode '
 
-      TASK: Buy as many tools as you need to have 30 tools in stock!'
+      OPDRACHT: Koop zo veel mogelijk gereedschap zodat je er minimaal 30 op voorraad
+      hebt.'
     - - Gallery
       - [content/gui/icons/resources/50/006.png]
     type: logbook
@@ -424,8 +427,8 @@ events:
       The road connection is required as well.'
     - !!python/unicode '
 
-      TASK: Build a pavilion with a trail to the tents in order to fulfill your sailors''
-      demand for faith.'
+      OPDRACHT: Bouw een paviljoen met een pad naar de tenten om aan de vraag van
+      de zeelieden te voldoen.'
     - - Gallery
       - [content/gui/icons/buildmenu/005.png]
     type: logbook
@@ -493,8 +496,8 @@ events:
     - [Image, content/gui/images/background/hr.png]
     - !!python/unicode 'Congratulations! Some of your inhabitants have reached increment
       II!'
-    - !!python/unicode 'Now you have access to new buildings, take a look at the Build
-      menu again.'
+    - !!python/unicode 'Je beschikt nu over nieuwe gebouwen, kijk nog maar eens in
+      het Bouw menu.'
     - - Gallery
       - [content/gui/icons/tabwidget/buildmenu/level2_u.png]
     - !!python/unicode 'A shiny new tab appeared there.'
@@ -521,7 +524,7 @@ events:
       buildings since it will need some space around it to work well.'
     - !!python/unicode '
 
-      TASK: Build a farm.'
+      OPDRACHT: Bouw een boerderij.'
     - - Gallery
       - [content/gui/icons/buildmenu/020.png]
     type: logbook
@@ -591,11 +594,11 @@ events:
   - arguments:
     - [Headline, !!python/unicode 'OPDRACHT: OPSLAGRUIMTE']
     - [Image, content/gui/images/background/hr.png]
-    - !!python/unicode 'Did you watch your lumberjack recently?'
-    - !!python/unicode 'Since your warehouse does not have unlimited space to store
-      goods, collectors will stop fetching goods from companies when stock is full.'
-    - !!python/unicode 'So if no sailors recently wanted to upgrade their tents, you
-      probably have a lot of boards and in that case, the lumberjack may idle.'
+    - !!python/unicode 'Heeft u uw houthakker nog in de gaten gehouden?'
+    - !!python/unicode 'Omdat je pakhuis niet oneindig ruimte heeft om goederen op
+      te slaan, stoppen de verzamelaars met het verzamelen bij de bedrijven.'
+    - !!python/unicode 'Als een zeeman zijn tent niet wil verbeteren, heb je straks
+      teveel planken en raken de houthakkers werkeloos.'
     - !!python/unicode 'We can improve this situation in two different ways, and we
       will have a look at both of them below.'
     - !!python/unicode 'All companies offer to do no work at all.
@@ -610,21 +613,21 @@ events:
     - [Pagebreak]
     - !!python/unicode '
 
-      This means that you can save money when you temporarily do not need a company
-      and do not want to tear it down, either.'
+      Dit betekend dat je geld kunt besparen als je tijdelijk geen bedrijf nodig hebt,
+      en deze niet wilt slopen.'
     - !!python/unicode 'Another solution is to build the last increment-I building
       which has not been mentioned so far: the storage tent.'
-    - !!python/unicode 'This building has two purposes. It:
+    - !!python/unicode 'Dit gebouw heeft twee doelen. het:
 
-      * Offers more storage for your goods, and
+      * Geeft je meer opslag ruimte, en
 
-      * sends its own collectors to fetch goods, just like the warehouse does.'
+      * stuurt verzamelaars op pad om goederen te collecteren, net als het pakhuis.'
     - !!python/unicode 'Note that companies can also be connected to a storage in
       order to get their products collected, and if the warehouse is overwhelmed with
       collector tasks, you can place a storage tent to help out there.'
     - !!python/unicode '
 
-      TASK: Build a storage tent, preferably where you need collectors.'
+      OPDRACHT: Bouw een opslag tent, op een plek waar je verzamelaars nodig hebt.'
     - - Gallery
       - [content/gui/icons/buildmenu/002.png]
     type: logbook
@@ -641,19 +644,19 @@ events:
     type: var_lt
 - actions:
   - arguments:
-    - [Headline, !!python/unicode 'OPDRACHT: KLEERMAKER']
+    - [Headline, !!python/unicode 'OPDRACHT: BOUW KLEERMAKER']
     - [Image, content/gui/images/background/hr.png]
-    - !!python/unicode 'Now the wool production is set up, you still need a weaver
-      to produce cloth out of this wool.'
-    - !!python/unicode 'There are two spots where you can build it - either close
-      to the farm or close to a Storage Tent (or the warehouse).'
-    - !!python/unicode 'In both cases you should ensure the connection to a trail
-      as well.'
+    - !!python/unicode 'Nu de wol productie op gang is, heb je kleermakers nodig om
+      kleren te maken van de wol.'
+    - !!python/unicode 'Er zijn twee plekken waar je het kan plaatsen - of dicht bij
+      de boerderij, opslag tent of pakhuis.'
+    - !!python/unicode 'in deze twee gevallen moet je er zeker van zijn dat er een
+      verbinding is.'
     - !!python/unicode 'You can place the weaver close to the farm and tear down any
       trail to the farm to see that it will still fetch the wool and produce.'
     - !!python/unicode '
 
-      TASK: Build a weaver positioned so it can get wool.'
+      OPDRACHT: Bouw een kleermaker die bij het wol kan komen.'
     - - Gallery
       - [content/gui/icons/buildmenu/007.png]
     type: logbook
@@ -676,16 +679,17 @@ events:
   - arguments:
     - [Headline, !!python/unicode 'OPDRACHT: VOLTOOI TUTORIAL']
     - [Image, content/gui/images/background/hr.png]
-    - !!python/unicode 'Try to house a total of 50 or more inhabitants in your city
-      by providing more residential buildings.'
-    - !!python/unicode 'Once you are able to keep an economy running which can satisfy
-      this amount of consumers, you are ready to discover new Unknown Horizons!'
-    - !!python/unicode 'You also need enough money to keep this economy running, so
-      a positive balance (check in the warehouse tab ''Account'') is required.'
+    - "Probeer 50 of meer bewoners in je stad te huisvesten door meer residenti\xEB\
+      le gebouwen te bouwen."
+    - !!python/unicode 'Zodra je in staat bent de economie draaiende te houden met
+      dit aantal verbruikers, ben je klaar om nieuwe onbekende horizonnen te ontdekken!'
+    - !!python/unicode 'Je hebt ook genoeg geld nodig om de economie draaiende te
+      houden, een positief balans (controleer in het pakhuis het tabblad ''Account'')
+      is aanbevolen.'
     - !!python/unicode '
 
-      TASK: Reach a total number of 50 inhabitants and a positive balance to complete
-      this tutorial.'
+      OPDRACHT: Bereik een totaal aantal inwoners van 50 en een positief balans om
+      deze opdracht te voltooien.'
     - - Gallery
       - [content/gui/icons/widgets/cityinfo/inhabitants.png]
     type: logbook
@@ -704,17 +708,16 @@ events:
   - arguments:
     - [Headline, !!python/unicode 'GEEN OPDRACHTEN RESTEREND']
     - [Image, content/gui/images/background/hr.png]
-    - !!python/unicode 'You have successfully completed all tasks that were handed
-      to you. The world is now at your command, waiting for your free aspirations
-      and brave explorations!'
-    - !!python/unicode 'If you have any suggestions on what we could or should improve,
-      add or leave out:'
+    - !!python/unicode 'U hebt met succes alle opdrachten voltooid die we u hebben
+      voorgeschoteld. De wereld ligt nu aan je voeten, wachtend op uw goeie bedoelingen!'
+    - !!python/unicode 'Als je suggesties hebt wat we kunnen verbeteren, toevoegen
+      of verwijderen:'
     - !!python/unicode 'www.unknown-horizons.org'
     - !!python/unicode '#unknown-horizons @ irc.freenode.net'
     - !!python/unicode 'team@unknown-horizons.org'
-    - !!python/unicode 'Our forums are open to you as well!'
-    - !!python/unicode 'The best results until now were achieved by joining our IRC
-      channel, so you could try that out first (-;'
+    - !!python/unicode 'Ook u bent welkom op ons forum!'
+    - !!python/unicode 'De beste resultaten tot nu toe werden bereikt door deelname
+      aan ons IRC-kanaal, dus je zou dit als eerste kunnen proberen (-;'
     - [Pagebreak]
     - [Headline, !!python/unicode 'Dank u wel!']
     - [Image, content/gui/images/background/hr.png]
@@ -758,5 +761,5 @@ events:
     type: var_gt
 locale: nl
 mapfile: development.sqlite
-translation_status: 41 translated messages, 150 untranslated messages.
+translation_status: 113 translated messages, 78 untranslated messages.
 

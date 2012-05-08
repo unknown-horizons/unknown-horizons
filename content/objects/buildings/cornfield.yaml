@@ -6,23 +6,21 @@ cost: 0
 cost_inactive: 0
 size_x: 3
 size_y: 3
-inhabitants_start: 0
-inhabitants_max: 0
+inhabitants: 0
 tooltip_text: _ Yields corn. Needs a farm.
-settler_level: 3
-buildingcosts: {1: 150}
-show_status_icons: false
+settler_level: TIER.CITIZENS
+buildingcosts: {RES.GOLD: 150}
 components:
 - HealthComponent: {maxhealth: 10}
 - ProducerComponent:
     productionlines:
       0:
         produces:
-        - [42, 1]
+        - [RES.GRAIN, 1]
         time: 26
 - StorageComponent:
-    inventory:
       SlotsStorage:
-        slot_sizes: {42: 1}
+        slot_sizes: {RES.GRAIN: 1}
 actionsets:
-  as_cornfield0: {level: 0}
+  TIER.CITIZENS:
+    as_cornfield0:

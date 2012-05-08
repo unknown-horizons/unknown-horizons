@@ -40,6 +40,8 @@
 #
 ###############################################################################
 
+from horizons.constants import VERSION
+
 object_translations = dict()
 
 def set_translations():
@@ -106,7 +108,7 @@ def set_translations():
 		# name of buildings:charcoalburning
 		"name"                        : _("Charcoal Burning"),
 		# tooltip_text of buildings:charcoalburning
-		"tooltip_text"                : _("Burns a lot of boards to charcoal."),
+		"tooltip_text"                : _("Burns a lot of boards."),
 		},
 
 	"content/objects/buildings/claydeposit.yaml" : {
@@ -175,11 +177,6 @@ def set_translations():
 		"tooltip_text"                : _("Fishes the sea, produces food."),
 		},
 
-	"content/objects/buildings/gravelpath.yaml" : {
-		# name of buildings:gravelpath
-		"name"                        : _("Gravel Path"),
-		},
-
 	"content/objects/buildings/herbary.yaml" : {
 		# name of buildings:herbary
 		"name"                        : _("Herbary"),
@@ -199,13 +196,6 @@ def set_translations():
 		"name"                        : _("Iron Mine"),
 		# tooltip_text of buildings:ironmine
 		"tooltip_text"                : _("Gets iron ore from deposit."),
-		},
-
-	"content/objects/buildings/log.yaml" : {
-		# name of buildings:log
-		"name"                        : _("Log"),
-		# tooltip_text of buildings:log
-		"tooltip_text"                : _("Road across a river."),
 		},
 
 	"content/objects/buildings/lookout.yaml" : {
@@ -271,13 +261,6 @@ def set_translations():
 		"tooltip_text"                : _("Yields food. Needs a farm."),
 		},
 
-	"content/objects/buildings/rampart.yaml" : {
-		# name of buildings:rampart
-		"name"                        : _("Rampart"),
-		# tooltip_text of buildings:rampart
-		"tooltip_text"                : _("Protects your settlement."),
-		},
-
 	"content/objects/buildings/ruinedtent.yaml" : {
 		# name of buildings:ruinedtent
 		"name"                        : _("Ruined Tent"),
@@ -312,8 +295,10 @@ def set_translations():
 		},
 
 	"content/objects/buildings/stonemason.yaml" : {
-		# name of buildings:stonemason
-		"name"                        : _("Stonemason"),
+		# name_2 of buildings:stonemason
+		"name_2"                      : _("Stonemason"),
+		# name_4 of buildings:stonemason
+		"name_4"                      : _("Carver"),
 		# tooltip_text of buildings:stonemason
 		"tooltip_text"                : _("Carves stone tops into bricks."),
 		},
@@ -445,5 +430,69 @@ def set_translations():
 		"name"                        : _("Wooden Tower"),
 		# tooltip_text of buildings:woodentower
 		"tooltip_text"                : _("Defends your settlement."),
+		},
+
+	"content/objects/gui_buildmenu/build_menu_per_increment.yaml" : {
+		# headline of gui_buildmenu:build_menu_per_increment
+		"headline"                    : _("Companies"),
+		# headline of gui_buildmenu:build_menu_per_increment
+		"headline"                    : _("Companies"),
+		# headline of gui_buildmenu:build_menu_per_increment
+		"headline"                    : _("Companies"),
+		# headline of gui_buildmenu:build_menu_per_increment
+		"headline"                    : _("Companies"),
+		# headline of gui_buildmenu:build_menu_per_increment
+		"headline"                    : _("Fields"),
+		# headline of gui_buildmenu:build_menu_per_increment
+		"headline"                    : _("Fields"),
+		# headline of gui_buildmenu:build_menu_per_increment
+		"headline"                    : _("Fields"),
+		# headline of gui_buildmenu:build_menu_per_increment
+		"headline"                    : _("Military"),
+		# headline of gui_buildmenu:build_menu_per_increment
+		"headline"                    : _("Mining"),
+		# headline of gui_buildmenu:build_menu_per_increment
+		"headline"                    : _("Residents and infrastructure"),
+		# headline of gui_buildmenu:build_menu_per_increment
+		"headline"                    : _("Services"),
+		# headline of gui_buildmenu:build_menu_per_increment
+		"headline"                    : _("Services"),
+		# headline of gui_buildmenu:build_menu_per_increment
+		"headline"                    : _("Services"),
+		},
+
+	"content/objects/gui_buildmenu/build_menu_per_type.yaml" : {
+		# headline of gui_buildmenu:build_menu_per_type
+		"headline"                    : _("Citizens"),
+		# headline of gui_buildmenu:build_menu_per_type
+		"headline"                    : _("Food"),
+		# headline of gui_buildmenu:build_menu_per_type
+		"headline"                    : _("Fortifications"),
+		# headline of gui_buildmenu:build_menu_per_type
+		"headline"                    : _("Infrastructure"),
+		# headline of gui_buildmenu:build_menu_per_type
+		"headline"                    : _("Military Service"),
+		# headline of gui_buildmenu:build_menu_per_type
+		"headline"                    : _("Mining"),
+		# headline of gui_buildmenu:build_menu_per_type
+		"headline"                    : _("Pioneers"),
+		# headline of gui_buildmenu:build_menu_per_type
+		"headline"                    : _("Residential"),
+		# headline of gui_buildmenu:build_menu_per_type
+		"headline"                    : _("Sea"),
+		# headline of gui_buildmenu:build_menu_per_type
+		"headline"                    : _("Services"),
+		# headline of gui_buildmenu:build_menu_per_type
+		"headline"                    : _("Settlers"),
+		# tab1_helptext of gui_buildmenu:build_menu_per_type
+		"tab1_helptext"               : _("Residents and infrastructure"),
+		# tab2_headline of gui_buildmenu:build_menu_per_type
+		"tab2_headline"               : _("Fields"),
+		# tab4_headline of gui_buildmenu:build_menu_per_type
+		"tab4_headline"               : _("Companies"),
+		# tab5_headline of gui_buildmenu:build_menu_per_type
+		"tab5_headline"               : _("Military"),
+		# tab6_headline of gui_buildmenu:build_menu_per_type
+		"tab6_headline"               : _("Aesthetics"),
 		},
 	}

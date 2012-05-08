@@ -7,19 +7,18 @@
 # The actionsets define how the building looks like in the different settler levels.
 id: 8
 name:
-  0: _ Lumberjack Tent
-  1: _ Lumberjack Hut
+  TIER.SAILORS: _ Lumberjack Tent
+  TIER.PIONEERS: _ Lumberjack Hut
 baseclass: production.ProductionBuilding
 radius: 3
 cost: 5
 cost_inactive: 0
 size_x: 2
 size_y: 2
-inhabitants_start: 1
-inhabitants_max: 1
+inhabitants: 1
 tooltip_text: _ Chops down trees and turns them into boards.
-settler_level: 0
-buildingcosts: {1: 250, 6: 2}
+settler_level: TIER.SAILORS
+buildingcosts: {RES.GOLD: 250, RES.TOOLS: 2}
 components:
 - SelectableComponent:
     type: building
@@ -30,17 +29,18 @@ components:
     productionlines:
       2:
         produces:
-        - [4, 1]
+        - [RES.BOARDS, 1]
         consumes:
-        - [8, -1]
+        - [RES.TREES, -1]
         time: 7
 - StorageComponent:
-    inventory:
       SlotsStorage:
-        slot_sizes: {8: 10, 4: 10}
+        slot_sizes: {RES.TREES: 10, RES.BOARDS: 10}
 - CollectingComponent:
     collectors:
-      UNITS.LUMBERJACK_COLLECTOR_CLASS: 1
+      UNITS.LUMBERJACK_COLLECTOR: 1
 actionsets:
-  as_lumberjack0: {level: 0}
-  as_lumberjack_barrack0: {level: 1}
+  TIER.SAILORS:
+    as_lumberjack0:
+  TIER.PIONEERS:
+    as_lumberjack_barrack0:

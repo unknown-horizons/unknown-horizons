@@ -29,8 +29,10 @@ class TradingShipGoal(SettlementGoal):
 
 	@property
 	def active(self):
-		return super(TradingShipGoal, self).active and self.owner.count_buildings(BUILDINGS.BOATBUILDER_CLASS) and \
-			self.owner.need_more_ships and not self.owner.unit_builder.num_ships_being_built
+		return super(TradingShipGoal, self).active \
+			and self.owner.count_buildings(BUILDINGS.BOAT_BUILDER) \
+			and self.owner.need_more_ships \
+			and not self.owner.unit_builder.num_ships_being_built
 
 	def execute(self):
 		self.settlement_manager.log.info('%s start building a ship', self)

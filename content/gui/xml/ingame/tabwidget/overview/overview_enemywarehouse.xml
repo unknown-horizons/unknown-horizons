@@ -2,11 +2,11 @@
 <!-- Enemy warehouse overview tab -->
 <Container  size="250,350">
 <TabBG amount="4"/>
-	<Icon name="player_emblem" position="25,50"/>
+	<Icon name="player_emblem" position="25,50" />
 
-	<Container position="0,70" size="600,400" >
+	<Container position="0,70" size="600,400">
 
-		<HBox position="22,7"  min_size="170,20"  size="230,20" >
+		<HBox position="22,7"  min_size="170,20"  size="230,20">
 		<Spacer min_size="0"  max_size="50" />
 			<Label name="headline" text="" /> <!-- set to owner player name-->
 		</HBox>
@@ -15,20 +15,24 @@
 
 		<!-- Resources for sale in the settlement -->
 		<Container size="520,70" position="20,40">
-			<Label name="selling_label" text="Selling" position="0,0"/>
-			<Icon image="content/gui/images/background/inv_bg.png" position="  0,20" name="slot" />
-			<Icon image="content/gui/images/background/inv_bg.png" position=" 55,20" name="slot" />
-			<Icon image="content/gui/images/background/inv_bg.png" position="110,20" name="slot" />
-			<BuySellInventory name="selling_inventory" size="300,70" position="-5,15" uncached="1"/>
+			<Label name="selling_label" text="Selling" />
+			<HBox padding="5" min_size="160,50" max_size="160,50" position="0,20">
+				<Icon image="content/gui/images/background/inv_bg.png" name="slot" />
+				<Icon image="content/gui/images/background/inv_bg.png" name="slot" />
+				<Icon image="content/gui/images/background/inv_bg.png" name="slot" />
+			</HBox>
+			<BuySellInventory name="selling_inventory" size="300,70" position="1,21" uncached="1" />
 		</Container>
 
 		<!-- Resources being bought in the settlement -->
 		<Container size="520,70" position="20,110">
-			<Label name="buying_label" text="Buying" position="0,0"/>
-			<Icon image="content/gui/images/background/inv_bg.png" position="  0,20" name="slot" />
-			<Icon image="content/gui/images/background/inv_bg.png" position=" 55,20" name="slot" />
-			<Icon image="content/gui/images/background/inv_bg.png" position="110,20" name="slot" />
-			<BuySellInventory name="buying_inventory" size="300,70" position="-5,15" uncached="1"/>
+			<Label name="buying_label" text="Buying" />
+			<HBox padding="5" min_size="160,50" max_size="160,50" position="0,20">
+				<Icon image="content/gui/images/background/inv_bg.png" name="slot" />
+				<Icon image="content/gui/images/background/inv_bg.png" name="slot" />
+				<Icon image="content/gui/images/background/inv_bg.png" name="slot" />
+			</HBox>
+			<BuySellInventory name="buying_inventory" size="300,70" position="1,21" uncached="1" />
 		</Container>		
 	</Container>
 </Container>

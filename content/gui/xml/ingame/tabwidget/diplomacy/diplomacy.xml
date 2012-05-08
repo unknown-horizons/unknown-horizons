@@ -12,11 +12,11 @@
 	
 	<VBox position="50, 50" size="70,70">
 			<Label name="ally_label" text="ally" comment="Diplomacy state of player" />
-			<CheckBox name="ally_check_box" min_size="10,10" />
+			<CheckBox name="ally_check_box" min_size="10,10" is_focusable="0"/>
 			<Label name="neutral_label" text="neutral" comment="Diplomacy state of player" />
-			<CheckBox name="neutral_check_box" min_size="10,10"/>
+			<CheckBox name="neutral_check_box" min_size="10,10" is_focusable="0"/>
 			<Label name="enemy_label" text="enemy" comment="Diplomacy state of player" />
-			<CheckBox name="enemy_check_box" min_size="10,10"/>
+			<CheckBox name="enemy_check_box" min_size="10,10" is_focusable="0"/>
 	</VBox>
 
 </Container>

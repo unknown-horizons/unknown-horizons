@@ -6,12 +6,10 @@ cost: 5
 cost_inactive: 0
 size_x: 2
 size_y: 2
-inhabitants_start: 2
-inhabitants_max: 2
-button_name: tavern-1
+inhabitants: 2
 tooltip_text: _ Provides get-together.
-settler_level: 2
-buildingcosts: {1: 250, 4: 4, 7: 2}
+settler_level: TIER.SETTLERS
+buildingcosts: {RES.GOLD: 250, RES.BOARDS: 4, RES.BRICKS: 2}
 show_status_icons: false
 components:
 - SelectableComponent:
@@ -23,16 +21,16 @@ components:
     productionlines:
       40:
         produces:
-        - [27, 4]
+        - [RES.GET_TOGETHER, 4]
         consumes:
-        - [22, -1]
+        - [RES.LIQUOR, -1]
         time: 16
 - StorageComponent:
-    inventory:
       SlotsStorage:
-        slot_sizes: {27: 12, 22: 4}
+        slot_sizes: {RES.GET_TOGETHER: 12, RES.LIQUOR: 4}
 - CollectingComponent:
     collectors:
-      1000002: 1
+      UNITS.BUILDING_COLLECTOR: 1
 actionsets:
-  as_tavern0: {level: 0}
+  TIER.SETTLERS:
+    as_tavern0:

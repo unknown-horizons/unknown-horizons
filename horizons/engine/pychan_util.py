@@ -25,6 +25,8 @@ import functools
 from fife.extensions import pychan
 from horizons.gui.style import STYLES
 
+import horizons.main
+
 def handle_gcn_exception(e, msg=None):
 	"""Called for RuntimeErrors after gcn::exceptions that smell like guichan bugs.
 	@param e: RuntimeError (python, not pychan)
@@ -39,6 +41,20 @@ def handle_gcn_exception(e, msg=None):
 def init_pychan():
 	"""General pychan initiation for uh"""
 	global STYLES
+
+	# quick hack to allow up_image/down_image values to be unicode
+	# TODO solve this problem in a better way (e.g. passing str explicitly)
+	# or waiting for a fix of http://fife.trac.cvsdude.com/engine/ticket/701
+	from fife.extensions.pychan.properties import ImageProperty
+
+	def patch_imageproperty(func):
+		def wrapper(self, obj, image):
+			if isinstance(image, unicode):
+				image = str(image)
+			return func(self, obj, image)
+		return wrapper
+
+	ImageProperty.__set__ = patch_imageproperty(ImageProperty.__set__)
 
 	# register custom widgets
 
@@ -105,6 +121,32 @@ def init_pychan():
 			# these sometimes fail with "No focushandler set (did you add the widget to the gui?)."
 			# see #1597 and #1647
 			widget.requestFocus = catch_gcn_exception_decorator(widget.requestFocus)
+
+	# set cursor to rename on hover for certain widgets
+	def add_cursor_change_on_hover_init(func):
+		@functools.wraps(func)
+		def wrapper(self, *args, **kwargs):
+			func(self, *args, **kwargs)
+			def set_cursor():
+				horizons.main.fife.set_cursor_image("rename")
+			def unset_cursor():
+				horizons.main.fife.set_cursor_image("default")
+			self.mapEvents({
+			  self.name+'/mouseEntered/cursor' : set_cursor,
+			  self.name+'/mouseExited/cursor' : unset_cursor,
+			  })
+		return wrapper
+
+	TextField = pychan.widgets.WIDGETS['TextField']
+	TextField.__init__ = add_cursor_change_on_hover_init(TextField.__init__)
+
+	# TODO: if the widget is hidden while the cursor is above it,
+	# there is no exited event. A possible workaround would be to check
+	# in short intervals whether the widget is still visible, possible also
+	# whether the mouse is still above it (the later would be necessary in
+	# case another widget is drawn above the original widget)
+	# Since that would be quite ugly, it should only be done when consulting
+	# pychan-savvy people yields no success.
 
 
 	# NOTE: there is a bug with the tuple notation: http://fife.trac.cvsdude.com/engine/ticket/656

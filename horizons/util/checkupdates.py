@@ -21,9 +21,11 @@
 
 from fife.extensions import pychan
 import webbrowser
+import urllib
 import urllib2
 
 from horizons.constants import NETWORK, VERSION
+from horizons.gui.widgets import OkButton
 
 class UpdateInfo(object):
 	INVALID, READY, UNINITIALISED = range(3)
@@ -36,13 +38,18 @@ TIMEOUT = 5.0 # we should be done before the user can start a game
 def check_for_updates(info):
 	"""Check if there's a new version.
 	@return update file contents or None"""
+	# make sure to always set info.status, but only when we're done
 	if VERSION.IS_DEV_VERSION: # no updates for git version
 		info.status = UpdateInfo.INVALID
 		return
 
+	# retrieve current version w.r.t. the local version.
+	# this way, possible configurations of different most recent versions should be handleable in the future.
+	data = urllib.urlencode( {"my_version" : VERSION.RELEASE_VERSION} )
+	url = NETWORK.UPDATE_FILE_URL
 	try:
-		u = urllib2.urlopen( NETWORK.UPDATE_FILE_URL, timeout=TIMEOUT )
-	except urllib2.URLErrar as e:
+		u = urllib2.urlopen( url + "?" + data, timeout=TIMEOUT )
+	except urllib2.URLError as e:
 		print 'Failed to check for updates: ', e
 		info.status = UpdateInfo.INVALID
 		return
@@ -84,5 +91,5 @@ def show_new_version_hint(gui, info):
 	popup = gui.build_popup(title, text)
 	popup.addChild( dl_btn )
 
-	gui.show_dialog(popup, {"okButton" : True})
+	gui.show_dialog(popup, {OkButton.DEFAULT_NAME : True})
 

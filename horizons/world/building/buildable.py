@@ -22,7 +22,7 @@
 import itertools
 
 from horizons.util import Point, Rect, decorators, Circle, WorldObject
-from horizons.world.pathfinding.roadpathfinder import RoadPathFinder
+from horizons.util.pathfinding.roadpathfinder import RoadPathFinder
 from horizons.constants import BUILDINGS
 from horizons.entities import Entities
 
@@ -94,6 +94,9 @@ class Buildable(object):
 	island, settlement, ground requirements etc. Does not care about building costs."""
 
 	irregular_conditions = False # whether all ground tiles have to fulfill the same conditions
+
+	# check this far for fuzzy build
+	CHECK_NEARBY_LOCATIONS_UP_TO_DISTANCE = 3
 
 	# INTERFACE
 
@@ -167,6 +170,44 @@ class Buildable(object):
 				          x_off, y_off in itertools.product(xrange(cls.size[0]), xrange(cls.size[1])) )
 		else:
 			return True
+
+	@classmethod
+	def check_build_fuzzy(cls, session, point, *args, **kwargs):
+		"""Same as check_build, but consider point to be a vague suggestions
+		and search nearby area for buildable position.
+		Returns one of the closest viable positions or the original position as not buildable if none can be found"""
+
+		# this is some kind of case study of applied functional programming
+
+		def filter_duplicates(gen, transform=lambda x : x):
+			"""
+			@param transform: transforms elements to hashable equivalent
+			"""
+			checked = set()
+			for elem in itertools.ifilterfalse(lambda e : transform(e) in checked, gen):
+				checked.add( transform(elem) )
+				yield elem
+
+		# generate coords near point, search coords of small circles to larger ones
+		def get_positions():
+			iters = (iter(Circle(point, radius)) for radius in xrange(cls.CHECK_NEARBY_LOCATIONS_UP_TO_DISTANCE) )
+			return itertools.chain.from_iterable( iters )
+
+		# generate positions and check for matches
+		check_pos = lambda pos : cls.check_build(session, pos, *args, **kwargs)
+		checked = itertools.imap(check_pos,
+		                         filter_duplicates( get_positions(), transform=lambda p : p.to_tuple() ) )
+
+		# filter positive solutions
+		result_generator = itertools.ifilter(lambda buildpos: buildpos.buildable, checked)
+
+		try:
+			# return first match
+			return result_generator.next()
+		except StopIteration:
+			# found none, fail with specified paramters
+			return check_pos(point)
+
 
 	# PRIVATE PARTS
 
@@ -255,7 +296,7 @@ class BuildableSingle(Buildable):
 		point2 = point2.copy() # only change copy
 		point2.x -= (cls.size[0] - 1) / 2
 		point2.y -= (cls.size[1] - 1) / 2
-		return [ cls.check_build(session, point2, rotation=rotation, ship=ship) ]
+		return [ cls.check_build_fuzzy(session, point2, rotation=rotation, ship=ship) ]
 
 class BuildableSingleEverywhere(BuildableSingle):
 	"""Buildings, that can be built everywhere. Usually not used for buildings placeable by humans."""
@@ -276,6 +317,9 @@ class BuildableRect(Buildable):
 	"""Buildings one can build as a Rectangle, such as Trees"""
 	@classmethod
 	def check_build_line(cls, session, point1, point2, rotation=45, ship=None):
+		if point1 == point2:
+			# this is actually a masked single build
+			return [cls.check_build_fuzzy(session, point1, rotation=rotation, ship=ship)]
 		possible_builds = []
 		area = Rect.init_from_corners(point1, point2)
 		# correct placement for large buildings (mouse should be at center of building)
@@ -299,7 +343,7 @@ class BuildableLine(Buildable):
 
 		# Pathfinding currently only supports buildingsize 1x1, so don't use it in this case
 		if cls.size != (1, 1):
-			return [ cls.check_build(session, point2, rotation=rotation, ship=ship) ]
+			return [ cls.check_build_fuzzy(session, point2, rotation=rotation, ship=ship) ]
 
 		# use pathfinding to get a path, then try to build along it
 		island = session.world.get_island(point1)
@@ -418,7 +462,6 @@ class BuildableSingleOnOcean(BuildableSingleOnCoast):
 
 class BuildableSingleFromShip(BuildableSingleOnOcean):
 	"""Buildings that can be build from a ship. Currently only Warehouse."""
-	CHECK_NEARBY_LOCATIONS_UP_TO_DISTANCE = 3
 	@classmethod
 	def _check_settlement(cls, session, position, ship, issuer=None):
 		# building from ship doesn't require settlements
@@ -437,41 +480,6 @@ class BuildableSingleFromShip(BuildableSingleOnOcean):
 		for s in island.settlements:
 			if s.owner == ship.owner:
 				raise _NotBuildableError(BuildableErrorTypes.ISLAND_ALREADY_SETTLED)
-
-	@classmethod
-	def check_build(cls, session, point, *args, **kwargs):
-		# The highlight for this isn't very good, it highlights buildable tiles instead
-		# of buildable positions. Therefore, we check nearby positions as well and jump to
-		# them to aid the user
-
-		def filter_duplicates(gen, transform=lambda x : x):
-			"""
-			@param transform: transforms elements to hashable equivalent
-			"""
-			checked = set()
-			for elem in itertools.ifilterfalse(lambda e : transform(e) in checked, gen):
-				checked.add( transform(elem) )
-				yield elem
-
-		# generate coords near point, search coords of small circles to larger ones
-		def get_positions():
-			iters = (iter(Circle(point, radius)) for radius in xrange(cls.CHECK_NEARBY_LOCATIONS_UP_TO_DISTANCE) )
-			return itertools.chain.from_iterable( iters )
-
-		# generate positions and check for matches
-		check_pos = lambda pos : super(BuildableSingleFromShip, cls).check_build(session, pos, *args, **kwargs)
-		checked = itertools.imap(check_pos,
-		                         filter_duplicates( get_positions(), transform=lambda p : p.to_tuple() ) )
-
-		# filter positive solutions
-		result_generator = itertools.ifilter(lambda buildpos: buildpos.buildable, checked)
-
-		try:
-			# return first match
-			return result_generator.next()
-		except StopIteration:
-			# found none, fail with specified paramters
-			return super(BuildableSingleFromShip, cls).check_build(session, point, *args, **kwargs)
 
 
 class BuildableSingleOnDeposit(BuildableSingle):

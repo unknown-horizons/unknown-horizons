@@ -18,7 +18,7 @@
 				<VBox>
 					<Label text="Screen resolution:" name="screen_resolution_label" wrap_text="1" />
 					<ScrollArea min_size="100,115" >
-						<ListBox name="screen_resolution" />
+						<ListBox name="screen_resolution" is_focusable="0" />
 					</ScrollArea>
 				</VBox>
 
@@ -28,7 +28,7 @@
 					<Label name="color_depth_label" text="Color depth:" max_size="140,20"
 						wrap_text="1" helptext="If set to 0, use the driver default" />
 					<ScrollArea min_size="80,50" >
-						<ListBox name="screen_bpp" />
+						<ListBox name="screen_bpp" is_focusable="0" />
 					</ScrollArea>
 
 				<Spacer min_size="20" />
@@ -43,7 +43,7 @@
 			<Label name="use_renderer_label" text="Used renderer:"
 				wrap_text="1" helptext="SDL is only meant as unsupported fallback and might cause problems!" />
 			<ScrollArea min_size="80,30" >
-				<ListBox name="render_backend" />
+				<ListBox name="render_backend" is_focusable="0" />
 			</ScrollArea>
 		</VBox>
 
@@ -51,7 +51,7 @@
 			<Label name="fps_label" text="Frame rate limit:"
 				wrap_text="1" helptext="Set the maximum frame rate used. Default: 60 fps." />
 			<ScrollArea min_size="80,60" >
-				<ListBox name="fps_rate" />
+				<ListBox name="fps_rate" is_focusable="0" />
 			</ScrollArea>
 		</VBox>
 	</VBox>
@@ -160,6 +160,12 @@
 				</HBox>
 
 				<HBox>
+					<Label name="cursor_centered_zoom_label" text="Cursor centered zoom:" min_size="170,0"
+						helptext="When enabled, mouse's wheel zooms to the cursor" />
+					<CheckBox min_size="24,24" name="cursor_centered_zoom" />
+				</HBox>
+
+				<HBox>
 					<Label name="auto_unload_label" text="Auto-unload ship:" min_size="170,0"
 						helptext="Whether to unload the ship after founding a settlement" />
 					<CheckBox min_size="24,24" name="auto_unload" />
@@ -181,7 +187,7 @@
 				<HBox>
 					<Label text="Select language:" name="language_label" />
 					<ScrollArea min_size="165,180" >
-						<ListBox name="cjkv_language" />
+						<ListBox name="uni_language" is_focusable="0" />
 					</ScrollArea>
 				</HBox>
 			</VBox>

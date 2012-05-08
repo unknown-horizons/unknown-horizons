@@ -66,6 +66,10 @@
 	<VBox> <Label text="2012"  name="headline" />
 		<VBox  name="box">
 			<Label text="Foaly (Resource icons)" />
+			<Label text="perher (tests for timer and scheduler)" />
+			<Label text="Vivek-sagar (tutorial modifications)" />
+			<Label text="volpino (Selection group fix)" />
+			<Label text="enno4uh (Mac build support)" />
 		</VBox>
 	</VBox>
 </VBox>

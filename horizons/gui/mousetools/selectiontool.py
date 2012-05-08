@@ -26,7 +26,7 @@ from horizons.command.unit import Act
 from horizons.util import WorldObject
 from horizons.util.worldobject import WorldObjectNotFound
 from horizons.gui.mousetools.navigationtool import NavigationTool
-from horizons.world.component.selectablecomponent import SelectableComponent
+from horizons.component.selectablecomponent import SelectableComponent
 from horizons.constants import LAYERS
 
 class SelectionTool(NavigationTool):
@@ -51,7 +51,7 @@ class SelectionTool(NavigationTool):
 
 	def filter_component(self, component, instances):
 		"""Only get specific component from a list of world objects"""
-		return [instance.get_component(component) for instance in instances]		
+		return [instance.get_component(component) for instance in instances]
 
 	def filter_selectable(self, instances):
 		"""Only keeps selectables from a list of world objects"""
@@ -145,16 +145,16 @@ class SelectionTool(NavigationTool):
 	def apply_select(self):
 		"""
 		Called when selected instances changes. (Shows their menu)
-		If one of the selected instances can attack, switch mousetool to AttackingTool
+		Does not do anything when nothing is selected, i.e. doesn't hide their menu.
+		If one of the selected instances can attack, switch mousetool to AttackingTool.
 		"""
-		if (self.session.world.health_visible_for_all_health_instances):
+		if self.session.world.health_visible_for_all_health_instances:
 			self.session.world.toggle_health_for_all_health_instances()
 		selected = self.session.selected_instances
 		if len(selected) > 1 and all( i.is_unit for i in selected ):
 			self.session.ingame_gui.show_multi_select_tab()
 		elif len(selected) == 1:
-			for i in selected:
-				i.get_component(SelectableComponent).show_menu()
+			iter(selected).next().get_component(SelectableComponent).show_menu()
 
 		#change session cursor to attacking tool if selected instances can attack
 		from attackingtool import AttackingTool
@@ -198,7 +198,7 @@ class SelectionTool(NavigationTool):
 			self.select_begin = (evt.getX(), evt.getY())
 			self.session.ingame_gui.hide_menu()
 		elif evt.getButton() == fife.MouseEvent.RIGHT:
-			target_mapcoord = self.get_exact_world_location_from_event(evt)
+			target_mapcoord = self.get_exact_world_location(evt)
 			for i in self.session.selected_instances:
 				if i.movable:
 					Act(i, target_mapcoord.x, target_mapcoord.y).execute(self.session)
@@ -234,7 +234,7 @@ class SelectionTool(NavigationTool):
 		selectable = frozenset( self.filter_component(SelectableComponent, instances))
 
 		# apply changes
-		selected_components = set(self.filter_component(SelectableComponent, 
+		selected_components = set(self.filter_component(SelectableComponent,
 					  self.filter_selectable(self.session.selected_instances)))
 		for sel_comp in selected_components - selectable:
 			sel_comp.deselect()

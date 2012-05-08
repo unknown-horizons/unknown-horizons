@@ -28,8 +28,8 @@ from horizons.ai.generic import GenericAI
 from horizons.ext.enum import Enum
 from horizons.world.units.movingobject import MoveNotPossible
 from horizons.command.unit import CreateUnit
-from horizons.world.component.tradepostcomponent import TradePostComponent
-from horizons.util.messaging.message import NewSettlement
+from horizons.component.tradepostcomponent import TradePostComponent
+from horizons.messaging import NewSettlement
 
 
 class Trader(GenericAI):
@@ -55,7 +55,7 @@ class Trader(GenericAI):
 		"""Create a ship and place it randomly"""
 		self.log.debug("Trader %s: creating new ship", self.worldid)
 		point = self.session.world.get_random_possible_ship_position()
-		ship = CreateUnit(self.worldid, UNITS.TRADER_SHIP_CLASS, point.x, point.y)(issuer=self)
+		ship = CreateUnit(self.worldid, UNITS.TRADER_SHIP, point.x, point.y)(issuer=self)
 		self.ships[ship] = self.shipStates.reached_warehouse
 		Scheduler().add_new_object(Callback(self.ship_idle, ship), self, run_in=0)
 
@@ -63,7 +63,7 @@ class Trader(GenericAI):
 		self.office = {} # { ship.worldid : warehouse }. stores the warehouse the ship is currently heading to
 		self.allured_by_signal_fire = {} # bool, used to get away from a signal fire (and not be allured again immediately)
 
-		self.session.message_bus.subscribe_globally(NewSettlement, self._on_new_settlement)
+		NewSettlement.subscribe(self._on_new_settlement)
 
 	def _on_new_settlement(self, msg):
 		# make sure there's a trader ship for 2 settlements
@@ -140,7 +140,7 @@ class Trader(GenericAI):
 			return False # don't visit signal fire again
 		for tile in self.session.world.get_tiles_in_radius(ship.position, ship.radius):
 			try:
-				if tile.object.id == BUILDINGS.SIGNAL_FIRE_CLASS:
+				if tile.object.id == BUILDINGS.SIGNAL_FIRE:
 					return tile.object
 			except AttributeError:
 				pass # tile has no object or object has no id

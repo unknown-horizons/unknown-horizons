@@ -6,12 +6,10 @@ cost: 0
 cost_inactive: 0
 size_x: 3
 size_y: 3
-inhabitants_start: 0
-inhabitants_max: 0
-button_name: sugarfield-1
+inhabitants: 0
 tooltip_text: _ Used in liquor production. Needs a farm.
-settler_level: 1
-buildingcosts: {1: 150}
+settler_level: TIER.PIONEERS
+buildingcosts: {RES.GOLD: 150}
 show_status_icons: false
 components:
 - HealthComponent: {maxhealth: 10}
@@ -19,11 +17,11 @@ components:
     productionlines:
       27:
         produces:
-        - [17, 1]
+        - [RES.RAW_SUGAR, 1]
         time: 30
 - StorageComponent:
-    inventory:
       SlotsStorage:
-        slot_sizes: {17: 1}
+        slot_sizes: {RES.RAW_SUGAR: 1}
 actionsets:
-  as_sugarfield0: {level: 0}
+  TIER.PIONEERS:
+    as_sugarfield0:

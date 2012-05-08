@@ -106,10 +106,12 @@ class Scheduler(LivingObject):
 							pass # also the callback can be deleted by e.g. rem_call
 			del self.schedule[self.cur_tick]
 
+			self.log.debug("Scheduler: finished tick %s", self.cur_tick)
+
 		# run jobs added in the loop above
 		self._run_additional_jobs()
 
-		assert (len(self.schedule) == 0) or self.schedule.keys()[0] > self.cur_tick
+		assert (not self.schedule) or self.schedule.iterkeys().next() > self.cur_tick
 
 	def before_ticking(self):
 		"""Called after game load and before game has started.

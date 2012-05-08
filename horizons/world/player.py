@@ -23,18 +23,18 @@ import horizons.main
 
 from horizons.constants import PLAYER
 from horizons.world.playerstats import PlayerStats
-from horizons.util import WorldObject, Callback, Color, DifficultySettings
+from horizons.util import WorldObject, Callback, Color, DifficultySettings, decorators
 from horizons.scenario import CONDITIONS
 from horizons.scheduler import Scheduler
-from horizons.world.componentholder import ComponentHolder
-from horizons.world.component.storagecomponent import StorageComponent
-from horizons.util.messaging.message import SettlerUpdate, NewDisaster
+from horizons.component.componentholder import ComponentHolder
+from horizons.component.storagecomponent import StorageComponent
+from horizons.messaging import SettlerUpdate, NewDisaster
 
 class Player(ComponentHolder, WorldObject):
 	"""Class representing a player"""
 
 	regular_player = True # either a human player or a normal AI player (not trader or pirate)
-	component_templates = ({'StorageComponent': {'inventory': {'PositiveStorage': {}}}},)
+	component_templates = ({'StorageComponent': {'PositiveStorage': {}}},)
 
 
 	def __init__(self, session, worldid, name, color, difficulty_level = None):
@@ -70,8 +70,9 @@ class Player(ComponentHolder, WorldObject):
 		self.difficulty = DifficultySettings.get_settings(difficulty_level)
 		self.settler_level = settlerlevel
 		assert self.color.is_default_color, "Player color has to be a default color"
-		self.session.message_bus.subscribe_globally(SettlerUpdate, self.notify_settler_reached_level)
-		self.session.message_bus.subscribe_locally(NewDisaster, self, self.notify_new_disaster)
+
+		SettlerUpdate.subscribe(self.notify_settler_reached_level)
+		NewDisaster.subscribe(self, self.notify_new_disaster)
 
 		if self.regular_player:
 			Scheduler().add_new_object(Callback(self.update_stats), self, run_in = 0)
@@ -152,6 +153,11 @@ class Player(ComponentHolder, WorldObject):
 	def end(self):
 		self.stats = None
 		self.session = None
+
+	@decorators.temporary_cachedmethod(timeout=2)
+	def get_balance_estimation(self):
+		"""This takes a while to calculate, so only do it every 2 seconds at most"""
+		return sum(settlement.balance for settlement in self.session.world.player.settlements)
 
 class HumanPlayer(Player):
 	"""Class for players that physically sit in front of the machine where the game is run"""

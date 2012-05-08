@@ -10,11 +10,11 @@ components:
     enemy_tabs: [TraderShipOverviewTab,]
 - AmbientSoundComponent
 - StorageComponent:
-   inventory:
       PositiveTotalNumSlotStorage:
          limit: 120
          slotnum: 4
 - ShipNameComponent
 
 actionsets:
-   as_trader0: {level: 0}
+  TIER.SAILORS:
+    as_trader0:

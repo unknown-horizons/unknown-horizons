@@ -6,12 +6,10 @@ cost: 0
 cost_inactive: 0
 size_x: 3
 size_y: 3
-inhabitants_start: 0
-inhabitants_max: 0
-button_name: cattlerun-1
+inhabitants: 0
 tooltip_text: _ Raises cattle. Needs a farm.
-settler_level: 2
-buildingcosts: {1: 100, 4: 1}
+settler_level: TIER.SETTLERS
+buildingcosts: {RES.GOLD: 100, RES.BOARDS: 1}
 show_status_icons: false
 components:
 - HealthComponent: {maxhealth: 10}
@@ -19,11 +17,11 @@ components:
     productionlines:
       49:
         produces:
-        - [33, 2]
+        - [RES.CATTLE, 2]
         time: 40
 - StorageComponent:
-    inventory:
       SlotsStorage:
-        slot_sizes: {9: 10, 33: 2}
+        slot_sizes: {RES.GRASS: 10, RES.CATTLE: 2}
 actionsets:
-  as_cattlerun0: {level: 0}
+  TIER.SETTLERS:
+    as_cattlerun0:

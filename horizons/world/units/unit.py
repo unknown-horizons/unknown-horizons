@@ -26,8 +26,8 @@ from fife import fife
 from horizons.world.units.movingobject import MovingObject
 from horizons.util import Point, WorldObject, WeakMethod, decorators, Callback
 from horizons.constants import LAYERS
-from horizons.world.component.healthcomponent import HealthComponent
-from horizons.world.component.storagecomponent import StorageComponent
+from horizons.component.healthcomponent import HealthComponent
+from horizons.component.storagecomponent import StorageComponent
 from horizons.extscheduler import ExtScheduler
 
 class Unit(MovingObject):
@@ -72,6 +72,7 @@ class Unit(MovingObject):
 		if hasattr(self.owner, 'remove_unit'):
 			self.owner.remove_unit(self)
 		self._instance.removeActionListener(self.InstanceActionListener)
+		ExtScheduler().rem_all_classinst_calls(self)
 		super(Unit, self).remove()
 		self.log.debug("Unit.remove finished")
 

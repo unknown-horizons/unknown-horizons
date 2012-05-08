@@ -6,12 +6,10 @@ cost: 10
 cost_inactive: 0
 size_x: 2
 size_y: 2
-inhabitants_start: 1
-inhabitants_max: 1
-button_name: toolmaker-1
+inhabitants: 1
 tooltip_text: _ Produces tools out of iron.
-settler_level: 2
-buildingcosts: {1: 500, 4: 2, 6: 2, 7: 2}
+settler_level: TIER.SETTLERS
+buildingcosts: {RES.GOLD: 500, RES.BOARDS: 2, RES.TOOLS: 2, RES.BRICKS: 2}
 components:
 - SelectableComponent:
     type: building
@@ -22,18 +20,18 @@ components:
     productionlines:
       38:
         produces:
-        - [6, 2]
+        - [RES.TOOLS, 2]
         consumes:
-        - [4, -1]
-        - [23, -1]
-        - [26, -1]
+        - [RES.BOARDS, -1]
+        - [RES.CHARCOAL, -1]
+        - [RES.IRON_INGOTS, -1]
         time: 15
 - StorageComponent:
-    inventory:
       SlotsStorage:
-        slot_sizes: {26: 4, 4: 4, 6: 8, 23: 4}
+        slot_sizes: {RES.IRON_INGOTS: 4, RES.BOARDS: 4, RES.TOOLS: 8, RES.CHARCOAL: 4}
 - CollectingComponent:
     collectors:
-      1000002: 1
+      UNITS.BUILDING_COLLECTOR: 1
 actionsets:
-  as_toolmaker0: {level: 0}
+  TIER.SETTLERS:
+    as_toolmaker0:

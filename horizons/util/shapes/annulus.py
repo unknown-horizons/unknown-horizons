@@ -77,6 +77,7 @@ class Annulus(object):
 	def distance(self, other):
 		# trap method: init data, then replace this method with real method
 		from rect import Rect, ConstRect
+		from circle import Circle
 		self._distance_functions_map = {
 			Point: self.distance_to_point,
 			ConstPoint: self.distance_to_point,

@@ -20,8 +20,6 @@
 # ###################################################
 
 from horizons.command import GenericCommand, GenericComponentCommand
-from horizons.world.component.tradepostcomponent import TradePostComponent
-from horizons.world.component.namedcomponent import NamedComponent
 
 class SetTaxSetting(GenericCommand):
 	"""Sets the taxes for a settlement."""

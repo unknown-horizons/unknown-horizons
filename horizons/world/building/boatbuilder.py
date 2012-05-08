@@ -23,7 +23,7 @@
 from building import BasicBuilding
 from buildable import BuildableSingleOnOcean
 from horizons.world.building.buildingresourcehandler import BuildingResourceHandler
-from horizons.world.component.storagecomponent import StorageComponent
+from horizons.component.storagecomponent import StorageComponent
 
 class BoatBuilder(BuildingResourceHandler, BuildableSingleOnOcean, BasicBuilding):
 

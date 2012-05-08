@@ -23,15 +23,16 @@ import weakref
 
 from fife import fife
 
-from horizons.util.gui import load_uh_widget
+from horizons.gui.util import load_uh_widget
 from horizons.util import Callback, Point
 from fife.extensions.pychan import widgets
 from fife.extensions.pychan.widgets import ImageButton
-from horizons.world.component.storagecomponent import StorageComponent
+from horizons.component.storagecomponent import StorageComponent
 from horizons.gui.widgets.minimap import Minimap
 from horizons.command.uioptions import RouteConfigCommand
-from horizons.world.component.namedcomponent import NamedComponent
-from horizons.world.component.ambientsoundcomponent import AmbientSoundComponent
+from horizons.component.namedcomponent import NamedComponent
+from horizons.component.ambientsoundcomponent import AmbientSoundComponent
+from horizons.gui.widgets import OkButton
 
 import horizons.main
 
@@ -255,7 +256,7 @@ class RouteConfig(object):
 			self._route_cmd("add_to_resource_list", position, res_id, value)
 			slider.capture(Callback(self.slider_adjust, slot, res_id, entry))
 		else:
-			slot.findChild(name="amount").text = unicode("")
+			slot.findChild(name="amount").text = u""
 
 	def handle_resource_click(self, widget, event):
 		if event.getButton() == fife.MouseEvent.LEFT:
@@ -375,9 +376,9 @@ class RouteConfig(object):
 		self.widgets.append(entry)
 
 		settlement_name_label = entry.findChild(name = "warehouse_name")
-		settlement_name_label.text = unicode(warehouse.settlement.get_component(NamedComponent).name)
+		settlement_name_label.text = warehouse.settlement.get_component(NamedComponent).name
 		player_name_label = entry.findChild(name = "player_name")
-		player_name_label.text = unicode(warehouse.owner.name)
+		player_name_label.text = warehouse.owner.name
 
 		self.add_trade_slots(entry, self.slots_per_entry)
 
@@ -478,7 +479,7 @@ class RouteConfig(object):
 		wait_at_load_box.capture(toggle_wait_at_load)
 
 		self._gui.mapEvents({
-		  'okButton' : self.hide,
+		  OkButton.DEFAULT_NAME : self.hide,
 		  'start_route/mouseClicked' : self.toggle_route
 		  })
 		self._gui.position_technique = "automatic" # "center:center"

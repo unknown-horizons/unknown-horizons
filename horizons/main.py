@@ -46,7 +46,7 @@ from horizons.extscheduler import ExtScheduler
 from horizons.constants import AI, COLORS, GAME, PATHS, NETWORK, SINGLEPLAYER, GAME_SPEED
 from horizons.network.networkinterface import NetworkInterface
 from horizons.util import ActionSetLoader, DifficultySettings, TileSetLoader, Color, parse_port, Callback
-from horizons.util.uhdbaccessor import UhDbAccessor, read_savegame_template
+from horizons.util.uhdbaccessor import UhDbAccessor
 
 # private module pointers of this module
 class Modules(object):
@@ -142,7 +142,6 @@ def start(_command_line_arguments):
 			from tests.gui.logger import setup_gui_logger
 			setup_gui_logger()
 		except ImportError:
-			import traceback
 			traceback.print_exc()
 			print
 			print "Gui logging requires code that is only present in the repository and is not being installed."
@@ -166,21 +165,6 @@ def start(_command_line_arguments):
 	preload_lock = threading.Lock()
 	preload_thread = threading.Thread(target=preload_game_data, args=(preload_lock,))
 	preloading = (preload_thread, preload_lock)
-
-	# initalize update checker
-	from horizons.util.checkupdates import UpdateInfo, check_for_updates, show_new_version_hint
-	update_info = UpdateInfo()
-	update_check_thread = threading.Thread(target=check_for_updates, args=(update_info,))
-	update_check_thread.start()
-	def update_info_handler(info):
-		if info.status == UpdateInfo.UNINITIALISED:
-			ExtScheduler().add_new_object(Callback(update_info_handler, info), info)
-		elif info.status == UpdateInfo.READY:
-			show_new_version_hint(_modules.gui, info)
-		elif info.status == UpdateInfo.INVALID:
-			pass # couldn't retrieve file or nothing relevant in there
-
-	update_info_handler(update_info) # schedules checks by itself
 
 	# Singleplayer seed needs to be changed before startup.
 	if command_line_arguments.sp_seed:
@@ -225,6 +209,23 @@ def start(_command_line_arguments):
 		_modules.gui.show_multi()
 		_modules.gui.join_mp_game()
 	else: # no commandline parameter, show main screen
+
+		# initalize update checker
+		if not command_line_arguments.gui_test:
+			from horizons.util.checkupdates import UpdateInfo, check_for_updates, show_new_version_hint
+			update_info = UpdateInfo()
+			update_check_thread = threading.Thread(target=check_for_updates, args=(update_info,))
+			update_check_thread.start()
+			def update_info_handler(info):
+				if info.status == UpdateInfo.UNINITIALISED:
+					ExtScheduler().add_new_object(Callback(update_info_handler, info), info)
+				elif info.status == UpdateInfo.READY:
+					show_new_version_hint(_modules.gui, info)
+				elif info.status == UpdateInfo.INVALID:
+					pass # couldn't retrieve file or nothing relevant in there
+
+			update_info_handler(update_info) # schedules checks by itself
+
 		_modules.gui.show_main()
 		if not command_line_arguments.nopreload:
 			preloading[0].start()
@@ -234,6 +235,9 @@ def start(_command_line_arguments):
 		return False
 
 	if command_line_arguments.gamespeed is not None:
+		if _modules.session is None:
+			print "You can only set the speed via command line in combination with a game start parameter such as --start-map, etc."
+			return False
 		_modules.session.speed_set(GAME_SPEED.TICKS_PER_SECOND*command_line_arguments.gamespeed)
 
 	if command_line_arguments.gui_test:
@@ -307,23 +311,22 @@ def start_singleplayer(map_file, playername = "Player", playercolor = None, is_s
 			is_scenario = is_scenario, campaign = campaign, force_player_id = force_player_id, disasters_enabled=disasters_enabled)
 	except InvalidScenarioFileFormat as e:
 		raise
-	except Exception as e:
+	except Exception:
 		# don't catch errors when we should fail fast (used by tests)
 		if os.environ.get('FAIL_FAST', False):
 			raise
-		import traceback
 		print "Failed to load", map_file
 		traceback.print_exc()
 		if _modules.session is not None and _modules.session.is_alive:
 			try:
 				_modules.session.end()
-			except Exception as e:
+			except Exception:
 				print
 				traceback.print_exc()
 				print "Additionally to failing when loading, cleanup afterwards also failed"
 		_modules.gui.show_main()
 		headline = _(u"Failed to start/load the game")
-		descr = _(u"The game you selected couldn't be started.") + u" " +\
+		descr = _(u"The game you selected could not be started.") + u" " +\
 			      _("The savegame might be broken or has been saved with an earlier version.")
 		_modules.gui.show_error_popup(headline, descr)
 		load_game(ai_players, human_ai, force_player_id=force_player_id)
@@ -331,7 +334,7 @@ def start_singleplayer(map_file, playername = "Player", playercolor = None, is_s
 
 def prepare_multiplayer(game, trader_enabled = True, pirate_enabled = True, natural_resource_multiplier = 1):
 	"""Starts a multiplayer game server
-	TODO: acctual game data parameter passing
+	TODO: actual game data parameter passing
 	"""
 	global fife, preloading, db
 
@@ -395,12 +398,24 @@ def _start_map(map_name, ai_players=0, human_ai=False, is_scenario=False, campai
 	"""Start a map specified by user
 	@param map_name: name of map or path to map
 	@return: bool, whether loading succeded"""
-	# check for exact/partial matches in map list first
-	maps = SavegameManager.get_available_scenarios() if is_scenario else SavegameManager.get_maps()
+	maps = SavegameManager.get_available_scenarios(locales=True) if is_scenario else SavegameManager.get_maps()
+
 	map_file = None
+
+	#get system's language
+	game_language = fife.get_locale()
+
+	#now we have "_en.yaml" which is set to language_extension variable
+	language_extension = '_' + game_language + '.' + SavegameManager.scenario_extension
+
+	# check for exact/partial matches in map list first
 	for i in xrange(0, len(maps[1])):
 		# exact match
 		if maps[1][i] == map_name:
+			map_file = maps[0][i]
+			break
+		# we want to match when map_name is like "tutorial" not "tutorial_en"
+		if maps[1][i] == map_name + language_extension:
 			map_file = maps[0][i]
 			break
 		# check for partial match
@@ -507,13 +522,21 @@ def _load_map(savegame, ai_players, human_ai, force_player_id=None):
 	load_game(savegame=map_file, force_player_id=force_player_id)
 	return True
 
-def _load_last_quicksave(force_player_id=None):
+def _load_last_quicksave(session=None, force_player_id=None):
 	"""Load last quicksave
+	@param session: value of session
 	@return: bool, whether loading succeded"""
 	save_files = SavegameManager.get_quicksaves()[0]
-	if not save_files:
-		print "Error: No quicksave found."
-		return False
+	if session is not None:
+		if not save_files:
+			session.gui.show_popup(_("No quicksaves found"), _("You need to quicksave before you can quickload."))
+			return False
+		else:
+			session.ingame_gui.on_escape() # close widgets that might be open
+	else:
+		if not save_files:
+			print "Error: No quicksave found."
+			return False
 	save = max(save_files)
 	load_game(savegame=save, force_player_id=force_player_id)
 	return True
@@ -534,7 +557,6 @@ def preload_game_data(lock):
 	try:
 		import logging
 		from horizons.entities import Entities
-		from horizons.util import Callback
 		log = logging.getLogger("preload")
 		mydb = _create_main_db() # create own db reader instance, since it's not thread-safe
 		preload_functions = [ ActionSetLoader.load, \

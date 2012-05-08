@@ -38,7 +38,7 @@ events:
       - [content/gui/images/buttons/parrow_right.png]
     - [Pagebreak]
     - "\nIhr habt Vorschl\xE4ge f\xFCr bessere Erkl\xE4rungen, m\xF6chtet bestimmte\
-      \ Bereiche n\xE4her erl\xE4utert haben oder gar einen Fehler gefunden? Teilt\
+      \ Bereiche n\xE4her erl\xE4utert haben oder habt einen Fehler gefunden? Teilt\
       \ das dem Team mit! Nur so k\xF6nnen wir diese Einf\xFChrung verbessern."
     - "\nUnter www.unknown-horizons.org k\xF6nnt Ihr das Team kontaktieren sowie auch\
       \ Hilfe erhalten."
@@ -337,7 +337,7 @@ events:
       gestellt ist, bewirkt bei einem Lagerstand von 18 Tonnen, dass bis zu 5 Tonnen
       verkauft werden.'
     - "Falls der Freie H\xE4ndler jedoch weniger verkaufen m\xF6chte als Ihr abnehmen\
-      \ w\xFCrdet, m\xFCsst ihr  Geduld haben und auf den n\xE4chsten Besuch warten."
+      \ w\xFCrdet, m\xFCsst ihr Geduld haben und auf den n\xE4chsten Besuch warten."
     - !!python/unicode 'Der Wert einer Ware kann NICHT manuell beeinflusst werden!
       Er setzt sich aus verschiedenen Faktoren zusammen und wird an die Handelssituation
       der Inselwelt angepasst.'
@@ -382,7 +382,7 @@ events:
     - "Eure Einwohner m\xFCssen also regelm\xE4\xDFig ihren Vorrat davon auff\xFC\
       llen."
     - "Dazu ben\xF6tigen sie Zugang zu einem Geb\xE4ude, das Religion produziert (dem\
-      \ Pavillon) und werden dann regelm\xE4\xDFig Religion dort abholen und zuhause\
+      \ Pavillon) und werden dann regelm\xE4\xDFig Religion dort abholen und Zuhause\
       \ verbrauchen."
     - "Es ist insbesondere NICHT ausreichend, dass das Geb\xE4ude nur in einem gewissen\
       \ Einzugsgebiet liegt. Auch ein Weg dorthin muss vom Zelt aus erreichbar sein."
@@ -421,8 +421,8 @@ events:
       gehen und nach ausreichend Baumaterial suchen, um ein Blockhaus zu errichten.
       Dieses Haus wird das alte Zelt ersetzen.'
     - [Pagebreak]
-    - "\nSolche Wohnungsverbesserungen kosten Euch Waren kosten, daher k\xF6nnt Ihr\
-      \ sie in den Marktplatz-Tabs einschr\xE4nken."
+    - "\nSolche Wohnungsverbesserungen kosten Euch Waren, daher k\xF6nnt Ihr sie in\
+      \ den Marktplatz-Tabs einschr\xE4nken."
     - "Es gibt aber auch Verbesserungen ohne Kosten, wie Ihr zum Beispiel beim Holzf\xE4\
       llerlager bemerken werdet. In diesem Fall wird nur die Geb\xE4udegraphik angepasst."
     - !!python/unicode 'Verbesserte Wohnungen beherbergen mehr Bewohner und Pioniere

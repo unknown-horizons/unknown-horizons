@@ -6,9 +6,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
-"POT-Creation-Date: 2012-03-24 02:16+0100\n"
-"PO-Revision-Date: 2012-04-06 16:20+0200\n"
-"Last-Translator: Aleksi <aleksi.kinnunen@ovi.com>\n"
+"POT-Creation-Date: 2012-05-06 22:10+0100\n"
+"PO-Revision-Date: 2012-05-05 10:54+0200\n"
+"Last-Translator: Christopher Oelmueller <chris.oelmueller+uh@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: fi\n"
 "MIME-Version: 1.0\n"
@@ -37,23 +37,25 @@ msgstr "Uusi maailma luotu."
 #. This is a database entry: the name of an inhabitant increment (tier / level).
 #: database files sql
 msgid "Aristocrats"
-msgstr ""
+msgstr "Aristokraatit"
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
 msgid "Cannot go here."
-msgstr ""
+msgstr "Tänne ei voi mennä."
 
 #. (text of widget: headline)
+#. headline of gui_buildmenu:build_menu_per_type
 #. This is a database entry: the name of an inhabitant increment (tier / level).
-#: database files horizons/i18n/guitranslations.py:224 sql
+#: database files horizons/i18n/guitranslations.py
+#: horizons/i18n/objecttranslations.py sql
 msgid "Citizens"
-msgstr ""
+msgstr "Kansalaiset"
 
 #. This is a database entry: the name of an inhabitant increment (tier / level).
 #: database files sql
 msgid "Merchants"
-msgstr ""
+msgstr "Kauppiaat"
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
@@ -62,14 +64,16 @@ msgstr "Yksi pelloistasi tarvitsee maatilan lähistölleen."
 
 # 75%
 #. (text of widget: headline)
+#. headline of gui_buildmenu:build_menu_per_type
 #. This is a database entry: the name of an inhabitant increment (tier / level).
-#: database files horizons/i18n/guitranslations.py:276 sql
+#: database files horizons/i18n/guitranslations.py
+#: horizons/i18n/objecttranslations.py sql
 msgid "Pioneers"
 msgstr "Kansoittajat"
 
 #. (text of widget: headline)
 #. This is a database entry: the name of an inhabitant increment (tier / level).
-#: database files horizons/i18n/guitranslations.py:307 sql
+#: database files horizons/i18n/guitranslations.py sql
 msgid "Sailors"
 msgstr "Merimiehet"
 
@@ -82,9 +86,11 @@ msgstr "Kuvakaappaus tallennettu tiedostoon {file}."
 # 75%
 #. (text of widget: headline)
 #. (text of widget: settler_score)
+#. headline of gui_buildmenu:build_menu_per_type
 #. This is a database entry: the name of an inhabitant increment (tier / level).
-#: database files horizons/i18n/guitranslations.py:336
-#: horizons/i18n/guitranslations.py:664 sql
+#: database files horizons/i18n/guitranslations.py
+#: horizons/i18n/guitranslations.py
+#: horizons/i18n/objecttranslations.py sql
 msgid "Settlers"
 msgstr "Uudisasukkaat"
 
@@ -116,6 +122,11 @@ msgstr "Sivutoimistoa ei voi poistaa, sillä siirtokuntasi tarvitsee sitä."
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
+msgid "You failed the scenario."
+msgstr ""
+
+#. This is a database entry: a messagewidget message (left part of the screen).
+#: database files sql
 msgid "You have reached the current maximum increment. Your inhabitants will not upgrade further."
 msgstr ""
 "Olet saavuttanut korkeimman siirtokunnan tason. Asukkaasi eivät voi enää "
@@ -134,6 +145,11 @@ msgstr "Sinä voitit!"
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
+msgid "Your building has caught fire!"
+msgstr ""
+
+#. This is a database entry: a messagewidget message (left part of the screen).
+#: database files sql
 msgid "Your crew refuses to leave this map."
 msgstr ""
 
@@ -141,7 +157,7 @@ msgstr ""
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
 msgid "Your game has been autosaved."
-msgstr "Pelisi tallennettiin automaattisesti"
+msgstr "Pelisi tallennettiin automaattisesti."
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
@@ -188,7 +204,7 @@ msgstr "tiiliä"
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "candles"
-msgstr ""
+msgstr "kynttilöitä"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
@@ -204,7 +220,7 @@ msgstr "karjaa"
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "cattle for slaughter"
-msgstr ""
+msgstr "teuraskarjaa"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
@@ -216,7 +232,6 @@ msgstr "puuhiiltä"
 msgid "clay"
 msgstr "savea"
 
-# 83%
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "clay deposit"
@@ -225,12 +240,12 @@ msgstr ""
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "cocoa"
-msgstr ""
+msgstr "kaakaota"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "cocoa beans"
-msgstr ""
+msgstr "kaakaopapuja"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
@@ -245,17 +260,17 @@ msgstr "yhteisöä"
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "condiments"
-msgstr ""
+msgstr "kastikkeita"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "confectionery"
-msgstr ""
+msgstr "makeisia"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "corn"
-msgstr ""
+msgstr "maissia"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
@@ -295,7 +310,7 @@ msgstr "kalaa"
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "flour"
-msgstr ""
+msgstr "jauhoa"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
@@ -310,12 +325,12 @@ msgstr "pitoja"
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "grain"
-msgstr ""
+msgstr "jyviä"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "grapes"
-msgstr ""
+msgstr "viinirypäleitä"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
@@ -335,11 +350,10 @@ msgstr "yrttejä"
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "honeycombs"
-msgstr ""
+msgstr "hunajakennoja"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
-#, fuzzy
 msgid "iron deposit"
 msgstr "raakarautaa"
 
@@ -391,12 +405,12 @@ msgstr "suolaa"
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "spice plants"
-msgstr ""
+msgstr "maustekasveja"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "spices"
-msgstr ""
+msgstr "mausteita"
 
 # 76%
 #. This is a database entry: the name of a resource.
@@ -448,12 +462,12 @@ msgstr "työkaluja"
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "trees"
-msgstr ""
+msgstr "puita"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "vines"
-msgstr ""
+msgstr "viiniköynnöksiä"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
@@ -464,19 +478,21 @@ msgstr "villaa"
 #: database files sql
 #, python-format
 msgid "{player1} and {player2} have allied their forces."
-msgstr ""
+msgstr "{player1} ja {player2} ovat nyt liittolaisia."
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
 #, python-format
 msgid "{player1} and {player2} have ended the war and are now allied."
-msgstr ""
+msgstr "{player1} ja {player2} ovat lopettaneet sodan ja ovat nyt liittolaisia."
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
 #, python-format
 msgid "{player1} and {player2} have ended their alliance and are now in a state of war."
 msgstr ""
+"{player1} ja {player2} ovat katkaisseet suhteensa ja julistaneet toisilleen "
+"sodan."
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
@@ -488,7 +504,7 @@ msgstr ""
 #: database files sql
 #, python-format
 msgid "{player1} and {player2} have terminated their alliance."
-msgstr ""
+msgstr "{player1} ja {player2} ovat katkaisseet suhteensa."
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
@@ -500,59 +516,103 @@ msgstr ""
 #: database files sql
 #, python-format
 msgid "{player}: {message}"
-msgstr ""
+msgstr "{player}: {message}"
 
-#: editor/editor.py:33
+#: editor/editor.py
 msgid "Specify the path to FIFE root directory."
 msgstr "Määrittele polku FIFE-pelimoottorin hakemistoon."
 
-#: horizons/command/game.py:36
+#: horizons/command/game.py
 msgid "Invalid filename"
-msgstr ""
+msgstr "Virheellinen tiedostonimi"
 
-#: horizons/command/game.py:37
+#: horizons/command/game.py
 msgid "Received an invalid filename for a save command."
 msgstr ""
 
 #. There was a problem during the 'save game' procedure.
-#: horizons/command/game.py:47 horizons/gui/gui.py:179
-#: horizons/gui/ingamegui.py:465 horizons/gui/modules/multiplayermenu.py:133
-#: horizons/gui/modules/multiplayermenu.py:236
+#: horizons/command/game.py horizons/gui/gui.py
+#: horizons/gui/ingamegui.py horizons/gui/modules/multiplayermenu.py
+#: horizons/gui/modules/multiplayermenu.py
 #, python-format
 msgid "Error"
 msgstr "Virhe"
 
-#: horizons/command/game.py:47 horizons/gui/gui.py:179
+#: horizons/command/game.py horizons/gui/gui.py
 msgid "Failed to save."
 msgstr "Tallennus epäonnistui."
 
-#: horizons/engine/settingsdialog.py:50
+#: horizons/component/tradepostcomponent.py
+msgid "The trade partner does not sell this."
+msgstr "Kauppakumppanisi ei myy tätä."
+
+#: horizons/component/tradepostcomponent.py
+#, fuzzy
+msgid "You can not store this."
+msgstr "Sinulla ei ole tilaa tämän varastoimiseen."
+
+#: horizons/component/tradepostcomponent.py
+msgid "You can not afford to buy this."
+msgstr "Sinulla ei ole varaa ostaa tätä."
+
+# 82%
+#: horizons/component/tradepostcomponent.py
+msgid "The trade partner does not sell more of this."
+msgstr "Kauppakumppanisi ei myy lisää tätä."
+
+# 89%
+#: horizons/component/tradepostcomponent.py
+msgid "The trade partner does not buy this."
+msgstr "Kauppakumppanisi ei osta tätä."
+
+#: horizons/component/tradepostcomponent.py
+msgid "You do not possess this."
+msgstr "Sinulla ei ole tätä."
+
+# 82%
+#: horizons/component/tradepostcomponent.py
+#, fuzzy
+msgid "The trade partner can not store more of this."
+msgstr "Kauppakumppanillasi ei ole tilaa tämän varastoimiseen."
+
+# 82%
+# 77%
+#: horizons/component/tradepostcomponent.py
+msgid "The trade partner can not afford to buy this."
+msgstr "Kauppakumppanillasi ei ole varaa ostaa tätä."
+
+# 77%
+#: horizons/component/tradepostcomponent.py
+msgid "The trade partner does not buy more of this."
+msgstr "Kauppakumppanisi ei osta lisää tätä."
+
+#: horizons/engine/settingsdialog.py
 msgid "Restart required"
 msgstr "Uudelleenkäynnistys vaaditaan"
 
-#: horizons/engine/settingsdialog.py:51
+#: horizons/engine/settingsdialog.py
 msgid "Some of your changes require a restart of Unknown Horizons."
 msgstr "Jotkut tekemäsi muutokset edellyttävät pelin käynnistämistä uudelleen."
 
-#: horizons/engine/settingsdialog.py:55
+#: horizons/engine/settingsdialog.py
 msgid "Restore default settings"
 msgstr "Palauta oletusasetukset"
 
-#: horizons/engine/settingsdialog.py:56
+#: horizons/engine/settingsdialog.py
 msgid "Restoring the default settings will delete all changes to the settings you made so far."
 msgstr ""
 "Oletusasetusten palauttaminen poistaa kaikki asetuksiin tekemäsi muutokset."
 
-#: horizons/engine/settingsdialog.py:57
+#: horizons/engine/settingsdialog.py
 msgid "Do you want to continue?"
 msgstr "Haluatko jatkaa?"
 
-#: horizons/engine/settingshandler.py:148
+#: horizons/engine/settingshandler.py
 msgid "Warning"
 msgstr "Varoitus"
 
 #. i18n Warning popup shown in settings when SDL is selected as renderer.
-#: horizons/engine/settingshandler.py:150
+#: horizons/engine/settingshandler.py
 msgid ""
 "The SDL renderer is meant as a fallback solution only and has serious graphical glitches. \n"
 "\n"
@@ -563,81 +623,76 @@ msgstr ""
 "\n"
 "Käyttö vain omalla vastuulla!"
 
-#: horizons/engine/settingshandler.py:224
+#: horizons/engine/settingshandler.py
 msgid "Invalid network port"
 msgstr "Virheellinen verkkoportti"
 
-#: horizons/engine/settingshandler.py:225
+#: horizons/engine/settingshandler.py
 msgid "The port you specified is not valid. It must be a number between 1 and 65535."
 msgstr ""
 "Määrittelemäsi portti on virheellinen. Portin on oltava numero väliltä 1 - "
 "65535."
 
-#: horizons/engine/settingshandler.py:226
+#: horizons/engine/settingshandler.py
 msgid "Please check the port you entered and make sure it is in the specified range."
 msgstr ""
 "Tarkista kirjoittamasi portin numero, ja varmista sen olevan tällä alueella."
 
 # 81%
-#: horizons/engine/settingshandler.py:238
+#: horizons/engine/settingshandler.py
 #, fuzzy
 msgid "Failed to apply new network settings."
 msgstr "Virhe yritettäessä ottaa käyttöön verkkotietoja."
 
 # 78%
-#: horizons/engine/settingshandler.py:239
-#: horizons/gui/modules/multiplayermenu.py:56
+#: horizons/engine/settingshandler.py
+#: horizons/gui/modules/multiplayermenu.py
 msgid "Network features could not be initialized with the current configuration."
 msgstr "Verkkoa ei voitu ottaa käyttöön näillä asetuksilla."
 
 # 75%
-#: horizons/engine/settingshandler.py:240
-#: horizons/gui/modules/multiplayermenu.py:57
+#: horizons/engine/settingshandler.py
+#: horizons/gui/modules/multiplayermenu.py
 #, fuzzy
 msgid "Check the settings you specified in the network section."
 msgstr "Tarkista verkko-osioon kirjoittamasi tiedot."
 
 #. i18n This is advice for players seeing a network error with the current config
-#: horizons/engine/settingshandler.py:244
+#: horizons/engine/settingshandler.py
 msgid "Low port numbers sometimes require special access privileges, try 0 or a number greater than 1024."
 msgstr ""
 
-#: horizons/engine/settingshandler.py:274
-#, python-format
-msgid "Configured language {lang} could not be loaded"
-msgstr "Valittua kieltä {lang} ei pystytä lataamaan"
-
-#: horizons/engine/settingshandler.py:312
+#: horizons/engine/settingshandler.py
 msgid "Logging enabled"
-msgstr ""
+msgstr "Lokitietojen tallennus"
 
-#: horizons/engine/settingshandler.py:314
+#: horizons/engine/settingshandler.py
 #, python-format
 msgid "Logs are written to {directory}."
-msgstr ""
+msgstr "Lokitiedot kirjoitetaan kansioon {directory}."
 
-#: horizons/gui/gui.py:207
+#: horizons/gui/gui.py
 msgid "Are you sure you want to quit Unknown Horizons?"
 msgstr "Haluatko varmasti lopettaa pelin?"
 
-#: horizons/gui/gui.py:208
+#: horizons/gui/gui.py
 msgid "Quit Game"
 msgstr "Poistu pelistä"
 
-#: horizons/gui/gui.py:214
+#: horizons/gui/gui.py
 msgid "Are you sure you want to abort the running session?"
 msgstr "Haluatko varmasti lopettaa käynnissä olevan pelin?"
 
-#: horizons/gui/gui.py:216
+#: horizons/gui/gui.py
 msgid "Quit Session"
 msgstr "Lopeta peli"
 
-#: horizons/gui/gui.py:276
+#: horizons/gui/gui.py
 msgid "No saved games"
 msgstr "Ei tallennettuja pelejä"
 
 # 96%
-#: horizons/gui/gui.py:276
+#: horizons/gui/gui.py
 msgid "There are no saved games to load."
 msgstr ""
 "Et ole tallentanut vielä yhtään peliä. Aloita uusi peli napsauttamalla "
@@ -645,265 +700,260 @@ msgstr ""
 
 #. (text of widget: loadgame)
 #. (text of widget: loadgame) Open a widget to select which game to load
-#: horizons/gui/gui.py:286 horizons/gui/gui.py:287
-#: horizons/i18n/guitranslations.py:779 horizons/i18n/guitranslations.py:805
+#: horizons/gui/gui.py horizons/gui/gui.py
+#: horizons/i18n/guitranslations.py horizons/i18n/guitranslations.py
 msgid "Load game"
 msgstr "Lataa peli"
 
 #. (text of widget: savegame)
-#: horizons/gui/gui.py:286 horizons/gui/gui.py:287
-#: horizons/i18n/guitranslations.py:783
+#: horizons/gui/gui.py horizons/gui/gui.py
+#: horizons/i18n/guitranslations.py
 msgid "Save game"
 msgstr "Tallenna peli"
 
-#: horizons/gui/gui.py:359
+#: horizons/gui/gui.py
 msgid "No filename given"
 msgstr "Tiedostonimeä ei annettu"
 
-#: horizons/gui/gui.py:359
+#: horizons/gui/gui.py
 msgid "Please enter a valid filename."
 msgstr "Kirjoita kelvollinen tiedostonimi."
 
 #. reshow dialog
 #. savegamename already exists
-#: horizons/gui/gui.py:364
+#: horizons/gui/gui.py
 #, python-format
 msgid "A savegame with the name '{name}' already exists."
 msgstr "Pelitallennus nimellä \"{name}\" on jo olemassa."
 
-#: horizons/gui/gui.py:365
+#: horizons/gui/gui.py
 msgid "Overwrite it?"
 msgstr "Korvataanko se?"
 
-#: horizons/gui/gui.py:366
+#: horizons/gui/gui.py
 msgid "Confirmation for overwriting"
 msgstr "Korvataanko peli?"
 
-#: horizons/gui/gui.py:371
+#: horizons/gui/gui.py
 msgid "Invalid filename given"
 msgstr "Virheellinen tiedostonimi annettu"
 
-#: horizons/gui/gui.py:379
+#: horizons/gui/gui.py
 msgid "Please select a savegame or click on cancel."
 msgstr "Valitse tallennus tai napsauta \"Peruuta\"."
 
 #. ok button has been pressed, but no savegame was selected
-#: horizons/gui/gui.py:379
+#: horizons/gui/gui.py
 msgid "Select a savegame"
 msgstr "Valitse tallennus"
 
 #. (text of widget: scenario_details) More text describing the scenario
 #. (text of widget: headline_details_label) More text describing the savegame
-#: horizons/gui/gui.py:469 horizons/i18n/guitranslations.py:625
-#: horizons/i18n/guitranslations.py:968
+#: horizons/gui/gui.py horizons/i18n/guitranslations.py
+#: horizons/i18n/guitranslations.py
 msgid "Details:"
 msgstr "Yksityiskohdat:"
 
-#: horizons/gui/gui.py:471
+#: horizons/gui/gui.py
 msgid "Error:"
 msgstr "Virhe:"
 
 # 94%
-#: horizons/gui/gui.py:605
+#: horizons/gui/gui.py
 msgid "Unknown savedate"
 msgstr "Tuntematon tallennuspäivä"
 
 # 76%
-#: horizons/gui/gui.py:608
+#: horizons/gui/gui.py
 #, python-format
 msgid "Saved at {time}"
 msgstr "Tallennettu viimeksi {time}"
 
 # 80%
 #. N_ takes care of plural forms for different languages
-#: horizons/gui/gui.py:615
+#: horizons/gui/gui.py
 #, python-format
 msgid "Saved {amount} time"
 msgid_plural "Saved {amount} times"
 msgstr[0] "Tallennettu {amount} kerran"
 msgstr[1] "Tallennettu {amount} kertaa"
 
-#: horizons/gui/gui.py:625
+#: horizons/gui/gui.py
 #, python-format
 msgid "Savegame version {version}"
 msgstr "Tallennusversio {version}"
 
-#: horizons/gui/gui.py:629
+#: horizons/gui/gui.py
 #, python-format
-msgid "WARNING: Incompatible version {version}!"
-msgstr "VAROITUS: Yhteensopimaton versio {version}!"
+msgid "(potentially incompatible)"
+msgstr ""
 
-#: horizons/gui/gui.py:632
-#, python-format
-msgid "Required version: {required}!"
-msgstr "Vaadittu versio: {required}!"
-
-#: horizons/gui/gui.py:635
+#. this should only happen for very old savegames, so having this unfriendly
+#. error is ok (savegame is quite certainly fully unusable).
+#: horizons/gui/gui.py
 msgid "Incompatible version"
 msgstr "Yhteensopimaton versio"
 
-#: horizons/gui/gui.py:652
+#: horizons/gui/gui.py
 msgid "No file selected"
 msgstr "Tiedostoa ei ole valittu"
 
 # 97%
-#: horizons/gui/gui.py:652
-#, fuzzy
+#: horizons/gui/gui.py
 msgid "You need to select a savegame to delete."
 msgstr ""
 "Valitse ensin poistettava pelitallennus napsauttamalla sitä ja yritä "
 "uudelleen."
 
 # 84%
-#: horizons/gui/gui.py:656
+#: horizons/gui/gui.py
 #, python-format
 msgid "Do you really want to delete the savegame '{name}'?"
 msgstr "Haluatko varmasti poistaa tallennuksen \"{name}\"?"
 
-#: horizons/gui/gui.py:658
+#: horizons/gui/gui.py
 msgid "Confirm deletion"
 msgstr "Vahvista poistaminen"
 
-#: horizons/gui/gui.py:663
+#: horizons/gui/gui.py
 msgid "Error!"
 msgstr "Virhe!"
 
-#: horizons/gui/gui.py:663
+#: horizons/gui/gui.py
 msgid "Failed to delete savefile!"
 msgstr "Tallennuksen poistaminen epäonnistui!"
 
 #. i18n this defines how each line in our help looks like. Default: '[C] = Chat'
-#: horizons/gui/gui.py:681
+#: horizons/gui/gui.py
 #, python-format
 msgid "[{key}] = {text}"
 msgstr ""
 
 # 97%
 #. (helptext of widget: headline)
-#: horizons/gui/ingamegui.py:240 horizons/gui/tabs/mainsquaretabs.py:95
-#: horizons/gui/widgets/playerssettlements.py:101
-#: horizons/i18n/guitranslations.py:417 horizons/i18n/guitranslations.py:439
-#: horizons/i18n/guitranslations.py:459
-#, fuzzy
+#: horizons/gui/ingamegui.py horizons/gui/tabs/mainsquaretabs.py
+#: horizons/gui/widgets/playerssettlements.py
+#: horizons/i18n/guitranslations.py horizons/i18n/guitranslations.py
+#: horizons/i18n/guitranslations.py
 msgid "Click to change the name of your settlement"
-msgstr "Vaihda siirtokuntasi nimeä napsauttamalla tätä."
+msgstr "Vaihda siirtokuntasi nimeä napsauttamalla tätä"
 
 #. e.g. when the pirate is disabled
 #. this dialog is pretty useless in this case
-#: horizons/gui/ingamegui.py:278
+#: horizons/gui/ingamegui.py
 msgid "No diplomacy possible"
 msgstr "Diplomatia ei ole käytössä"
 
-#: horizons/gui/ingamegui.py:279
+#: horizons/gui/ingamegui.py
 msgid "Cannot do diplomacy as there are no other players."
 msgstr "Muita pelaajia ei ole, joten diplomatia on tarpeetonta."
 
-#: horizons/gui/ingamegui.py:462
+#: horizons/gui/ingamegui.py
 #, python-format
 msgid "Valid map names are in the following form: {expression}"
 msgstr "Oikeat kartannimet ovat tällaisessa muodossa: {expression}"
 
-#: horizons/gui/ingamegui.py:464
+#: horizons/gui/ingamegui.py
 #, python-format
 msgid "Try a name that only contains letters and numbers."
 msgstr "Käytä nimeä jossa on vain kirjaimia ja numeroita."
 
-#: horizons/gui/modules/multiplayermenu.py:44
+#: horizons/gui/modules/multiplayermenu.py
 msgid "Unable to find pyenet"
 msgstr "Tiedostoa \"pyenet\" ei löydy"
 
-#: horizons/gui/modules/multiplayermenu.py:45
+#: horizons/gui/modules/multiplayermenu.py
 msgid "The multiplayer feature requires the library \"pyenet\", which couldn't be found on your system."
 msgstr "Moninpeli vaatii toimiakseen kirjaston \"pyenet\", jota ei ole asennettu."
 
-#: horizons/gui/modules/multiplayermenu.py:46
+#: horizons/gui/modules/multiplayermenu.py
 msgid "Linux users: Try to install pyenet through your package manager."
 msgstr "Yritä asentaa \"pyenet\" paketinhallinnallasi."
 
-#: horizons/gui/modules/multiplayermenu.py:47
+#: horizons/gui/modules/multiplayermenu.py
 msgid "Windows users: There is currently no reasonable support for Windows."
 msgstr ""
 "Windowsin käyttäjät: Tällä hetkellä emme tue tätä ominaisuutta Windowsissa."
 
-#: horizons/gui/modules/multiplayermenu.py:55
+#: horizons/gui/modules/multiplayermenu.py
 msgid "Failed to initialize networking."
 msgstr "Virhe verkon käyttöön ottamisessa."
 
-#: horizons/gui/modules/multiplayermenu.py:117
-#: horizons/gui/modules/multiplayermenu.py:135
+#: horizons/gui/modules/multiplayermenu.py
+#: horizons/gui/modules/multiplayermenu.py
 msgid "Fatal Network Error"
 msgstr "Vakava verkkovirhe"
 
-#: horizons/gui/modules/multiplayermenu.py:118
+#: horizons/gui/modules/multiplayermenu.py
 msgid "Could not connect to master server."
 msgstr "Isäntäpalvelimeen ei voitu muodostaa yhteyttä."
 
-#: horizons/gui/modules/multiplayermenu.py:119
+#: horizons/gui/modules/multiplayermenu.py
 msgid "Please check your Internet connection. If it is fine, it means our master server is temporarily down."
 msgstr ""
 "Tarkista Internet-yhteys. Jos se toimii, isäntäpalvelimellamme on "
 "väliaikainen ongelma."
 
 # 97%
-#: horizons/gui/modules/multiplayermenu.py:136
+#: horizons/gui/modules/multiplayermenu.py
 msgid "Something went wrong with the network:"
 msgstr "Verkon kanssa ilmeni ongelma:"
 
-#: horizons/gui/modules/multiplayermenu.py:160
+#: horizons/gui/modules/multiplayermenu.py
 msgid "Version differs!"
 msgstr "Versio ei ole sama!"
 
-#: horizons/gui/modules/multiplayermenu.py:184
+#: horizons/gui/modules/multiplayermenu.py
 #, python-format
 msgid "Map: {map_name}"
 msgstr "Kartta: {map_name}"
 
-#: horizons/gui/modules/multiplayermenu.py:185
+#: horizons/gui/modules/multiplayermenu.py
 msgid "Name: {game_name}"
-msgstr ""
+msgstr "Nimi: {game_name}"
 
-#: horizons/gui/modules/multiplayermenu.py:187
+#: horizons/gui/modules/multiplayermenu.py
 #, python-format
 msgid "Players: {player_amount}/{player_limit}"
 msgstr "Pelaajat: {player_amount}/{player_limit}"
 
-#: horizons/gui/modules/multiplayermenu.py:192
+#: horizons/gui/modules/multiplayermenu.py
 #, python-format
 msgid "Creator: {player}"
 msgstr "Tekijä: {player}"
 
-#: horizons/gui/modules/multiplayermenu.py:203
+#: horizons/gui/modules/multiplayermenu.py
 msgid "This savegame is missing (click here)"
 msgstr ""
 
-#: horizons/gui/modules/multiplayermenu.py:209
+#: horizons/gui/modules/multiplayermenu.py
 msgid "For multiplayer load, it is currently necessary for you to ensure you have the correct savegame file."
 msgstr ""
 
-#: horizons/gui/modules/multiplayermenu.py:210
+#: horizons/gui/modules/multiplayermenu.py
 msgid "This is not nice and we hope to offer a more convenient solution very soon."
 msgstr ""
 
-#: horizons/gui/modules/multiplayermenu.py:211
+#: horizons/gui/modules/multiplayermenu.py
 msgid "Meanwhile, please request the file {path} from the game creator and put it in {map_directory} ."
 msgstr ""
 
 #. (text of widget: help)
 #. (text of widget: help) Main / in-game menu entry
-#: horizons/gui/modules/multiplayermenu.py:214
-#: horizons/i18n/guitranslations.py:777 horizons/i18n/guitranslations.py:803
+#: horizons/gui/modules/multiplayermenu.py
+#: horizons/i18n/guitranslations.py horizons/i18n/guitranslations.py
 msgid "Help"
 msgstr "Ohje"
 
-#: horizons/gui/modules/multiplayermenu.py:218
+#: horizons/gui/modules/multiplayermenu.py
 msgid "This is a savegame."
 msgstr ""
 
-#: horizons/gui/modules/multiplayermenu.py:242
+#: horizons/gui/modules/multiplayermenu.py
 msgid "Wrong version"
 msgstr "Väärä versio"
 
-#: horizons/gui/modules/multiplayermenu.py:244
+#: horizons/gui/modules/multiplayermenu.py
 #, python-format
 msgid "The game's version differs from your version. Every player in a multiplayer game must use the same version. This can be fixed by every player updating to the latest version. Game version: {game_version} Your version: {own_version}"
 msgstr ""
@@ -913,636 +963,622 @@ msgstr ""
 "versio: {game_version} Oma versiosi: {own_version}"
 
 # 79%
-#: horizons/gui/modules/multiplayermenu.py:350
-#: horizons/gui/modules/singleplayermenu.py:111
+#: horizons/gui/modules/multiplayermenu.py
+#: horizons/gui/modules/singleplayermenu.py
 #, python-format
 msgid "Recommended number of players: {number}"
 msgstr "Pelaajien suositeltu määrä: {number}"
 
-#: horizons/gui/modules/singleplayermenu.py:156
-#: horizons/gui/modules/singleplayermenu.py:170
-#: horizons/gui/widgets/choose_next_scenario.py:44
+#: horizons/gui/modules/singleplayermenu.py
+msgid "Translation status:"
+msgstr ""
+
+#: horizons/gui/modules/singleplayermenu.py
+msgid "{translated} translated messages, {untranslated} untranslated messages"
+msgstr ""
+
+#: horizons/gui/modules/singleplayermenu.py
+#: horizons/gui/modules/singleplayermenu.py
+#: horizons/gui/widgets/choose_next_scenario.py
 #, python-format
 msgid "Difficulty: {difficulty}"
 msgstr "Vaikeustaso: {difficulty}"
 
-#: horizons/gui/modules/singleplayermenu.py:158
-#: horizons/gui/modules/singleplayermenu.py:172
-#: horizons/gui/widgets/choose_next_scenario.py:45
+#: horizons/gui/modules/singleplayermenu.py
+#: horizons/gui/modules/singleplayermenu.py
+#: horizons/gui/widgets/choose_next_scenario.py
 #, python-format
 msgid "Author: {author}"
 msgstr "Tekijä: {author}"
 
-#: horizons/gui/modules/singleplayermenu.py:160
-#: horizons/gui/modules/singleplayermenu.py:174
-#: horizons/gui/widgets/choose_next_scenario.py:46
+#: horizons/gui/modules/singleplayermenu.py
+#: horizons/gui/modules/singleplayermenu.py
+#: horizons/gui/widgets/choose_next_scenario.py
 #, python-format
 msgid "Description: {desc}"
 msgstr "Kuvaus: {desc}"
 
-#: horizons/gui/modules/singleplayermenu.py:197
+#: horizons/gui/modules/singleplayermenu.py
 msgid "Invalid player name"
 msgstr "Virheellinen pelaajanimi"
 
 # 97%
-#: horizons/gui/modules/singleplayermenu.py:197
+#: horizons/gui/modules/singleplayermenu.py
 msgid "You entered an invalid playername."
 msgstr "Antamasi pelaajanimi on virheellinen."
 
-#: horizons/gui/modules/singleplayermenu.py:288
+#: horizons/gui/modules/singleplayermenu.py
 msgid "Map size:"
 msgstr "Kartan koko:"
 
-#: horizons/gui/modules/singleplayermenu.py:298
+#: horizons/gui/modules/singleplayermenu.py
 msgid "Water:"
 msgstr "Veden määrä:"
 
-#: horizons/gui/modules/singleplayermenu.py:308
+#: horizons/gui/modules/singleplayermenu.py
 msgid "Max island size:"
 msgstr "Saaren enimmäiskoko:"
 
-#: horizons/gui/modules/singleplayermenu.py:318
+#: horizons/gui/modules/singleplayermenu.py
 msgid "Preferred island size:"
 msgstr "Saaren suosituskoko:"
 
-#: horizons/gui/modules/singleplayermenu.py:328
+#: horizons/gui/modules/singleplayermenu.py
 msgid "Island size deviation:"
 msgstr "Saarten koonvaihtelu:"
 
 # 76%
-#: horizons/gui/modules/singleplayermenu.py:367
+#: horizons/gui/modules/singleplayermenu.py
 msgid "Resource density:"
 msgstr "Luonnonvarat:"
 
-#: horizons/gui/modules/singleplayermenu.py:387
+#: horizons/gui/modules/singleplayermenu.py
 msgid "Invalid scenario file"
 msgstr "Virheellinen kenttätiedosto"
 
-#: horizons/gui/modules/singleplayermenu.py:388
+#: horizons/gui/modules/singleplayermenu.py
 msgid "The selected file is not a valid scenario file."
 msgstr ""
 
-#: horizons/gui/modules/singleplayermenu.py:389
+#: horizons/gui/modules/singleplayermenu.py
 msgid "Error message:"
 msgstr "Virheilmoitus:"
 
 # 97%
-#: horizons/gui/modules/singleplayermenu.py:390
+#: horizons/gui/modules/singleplayermenu.py
 msgid "Please report this to the author."
 msgstr "Ole hyvä ja ilmoita tästä tekijälle."
 
 #. dialog already gone
-#: horizons/gui/modules/singleplayermenu.py:464
+#: horizons/gui/modules/singleplayermenu.py
 msgid "Click to generate a different random map"
 msgstr ""
 
-#. (text of widget: headline)
 #. set translated building name in gui
-#: horizons/gui/mousetools/buildingtool.py:213
-#: horizons/i18n/guitranslations.py:64
-msgid "Build"
-msgstr "Rakenna"
+#: horizons/gui/mousetools/buildingtool.py
+msgid "Build {building}"
+msgstr ""
 
-#: horizons/gui/mousetools/navigationtool.py:75
+#: horizons/gui/mousetools/navigationtool.py
 msgid "Press H to remove this hint"
 msgstr "Piilota tämä vihje painamalla H"
 
-#: horizons/gui/tabs/boatbuildertab.py:50
+#: horizons/gui/tabs/boatbuildertabs.py
 msgid "Boat builder overview"
 msgstr "Veneenveistämön yleiskatsaus"
 
 # 78%
-#: horizons/gui/tabs/boatbuildertab.py:101
+#: horizons/gui/tabs/boatbuildertabs.py
 #, python-format
-#, python-format, 
+#, python-format,
 msgid "{ship} (place in queue: {place})"
 msgstr "{ship} (paikka jonossa: {place})"
 
-#: horizons/gui/tabs/boatbuildertab.py:165
+#: horizons/gui/tabs/boatbuildertabs.py
 msgid "Resources still needed:"
 msgstr "Puuttuvat resurssit:"
 
-#: horizons/gui/tabs/boatbuildertab.py:242
+#: horizons/gui/tabs/boatbuildertabs.py
 msgid "Fisher boats"
 msgstr "Kalastusveneet"
 
 #. (text of widget: headline)
-#: horizons/gui/tabs/boatbuildertab.py:252
-#: horizons/i18n/guitranslations.py:156
+#: horizons/gui/tabs/boatbuildertabs.py
+#: horizons/i18n/guitranslations.py
 msgid "Trade boats"
 msgstr "Kauppalaivat"
 
 #. (text of widget: headline)
-#: horizons/gui/tabs/boatbuildertab.py:260
-#: horizons/i18n/guitranslations.py:173
+#: horizons/gui/tabs/boatbuildertabs.py
+#: horizons/i18n/guitranslations.py
 msgid "War boats"
 msgstr "Sotalaivat"
 
-#: horizons/gui/tabs/boatbuildertab.py:267
+#: horizons/gui/tabs/boatbuildertabs.py
 msgid "War ships"
 msgstr "Sota-alukset"
 
-#: horizons/gui/tabs/boatbuildertab.py:284
+#: horizons/gui/tabs/boatbuildertabs.py
 msgid "Confirm order"
 msgstr "Vahvista järjestys"
 
-#: horizons/gui/tabs/buildrelatedtab.py:46
-msgid "Build related fields"
+# 94%
+#: horizons/gui/tabs/buildingtabs.py
+#: horizons/gui/tabs/enemybuildingtabs.py
+msgid "Warehouse overview"
+msgstr "Sivutoimiston yleiskatsaus"
+
+#: horizons/gui/tabs/buildingtabs.py
+msgid "Tower overview"
+msgstr "Tornin yleiskatsaus"
+
+#. (text of widget: headline)
+#: horizons/gui/tabs/buildingtabs.py horizons/gui/tabs/overviewtab.py
+#: horizons/i18n/guitranslations.py
+msgid "Overview"
+msgstr "Yleiskatsaus"
+
+#: horizons/gui/tabs/buildrelatedtab.py
+msgid "Build related buildings"
 msgstr ""
-
-#: horizons/gui/tabs/buildtabs.py:110
-msgid "Residents and infrastructure"
-msgstr "Asukkaat ja yhteiskunta"
-
-#: horizons/gui/tabs/buildtabs.py:111 horizons/gui/tabs/buildtabs.py:117
-#: horizons/gui/tabs/buildtabs.py:124
-msgid "Services"
-msgstr "Palvelut"
-
-#: horizons/gui/tabs/buildtabs.py:112 horizons/gui/tabs/buildtabs.py:115
-#: horizons/gui/tabs/buildtabs.py:122 horizons/gui/tabs/buildtabs.py:128
-msgid "Companies"
-msgstr "Yritykset"
-
-#: horizons/gui/tabs/buildtabs.py:116 horizons/gui/tabs/buildtabs.py:123
-#: horizons/gui/tabs/buildtabs.py:129
-msgid "Fields"
-msgstr "Pellot"
-
-#: horizons/gui/tabs/buildtabs.py:118
-msgid "Military"
-msgstr "Armeija"
-
-#: horizons/gui/tabs/buildtabs.py:121
-msgid "Mining"
-msgstr "Kaivostoiminta"
-
-#: horizons/gui/tabs/buildtabs.py:149
-msgid "Increment {increment}"
-msgstr "Taso {increment}"
 
 #. (text of widget: headline)
 #. (helptext of widget: trade)
-#: horizons/gui/tabs/buyselltab.py:97 horizons/i18n/guitranslations.py:477
-#: horizons/i18n/guitranslations.py:490 horizons/i18n/guitranslations.py:505
-#: horizons/i18n/guitranslations.py:516
+#: horizons/gui/tabs/buyselltab.py horizons/i18n/guitranslations.py
+#: horizons/i18n/guitranslations.py horizons/i18n/guitranslations.py
+#: horizons/i18n/guitranslations.py
 msgid "Trade"
 msgstr "Kaupankäynti"
 
-#: horizons/gui/tabs/buyselltab.py:139
+#: horizons/gui/tabs/buyselltab.py
 msgid "Click on one of the resource slots to add a trade offer."
-msgstr ""
+msgstr "Lisää kauppatarjous napsauttamalla jotain kolmesta kauppapaikasta."
 
 #. new res
-#: horizons/gui/tabs/buyselltab.py:186
+#: horizons/gui/tabs/buyselltab.py
 msgid "Set to buy or sell by clicking on that label, then adjust the amount via the slider to the right."
 msgstr ""
 "Valitse oletko ostamassa vai myymässä resurssia ja sitten määrä "
 "liikuttamalla oikean reunan vieritintä."
 
-#: horizons/gui/tabs/buyselltab.py:363
+#: horizons/gui/tabs/buyselltab.py
 #, python-format
 msgid "Will buy {resource_name} for {price} gold/t whenever less than {limit}t are in stock."
 msgstr ""
+"Ostetaan {resource_name} hintaan {price} kultaa/tonnia, jos varastossa on "
+"{resource_name} vähemmän kuin {limit}t."
 
-#: horizons/gui/tabs/buyselltab.py:367
+#: horizons/gui/tabs/buyselltab.py
 #, python-format
 msgid "Will sell {resource_name} for {price} gold/t whenever more than {limit}t are available."
 msgstr ""
+"Myydään {resource_name} hintaan {price} kultaa/tonnia, kunhan "
+"{resource_name} jää jäljelle vähintään {limit}t."
 
 #. (text of widget: headline)
-#: horizons/gui/tabs/inventorytab.py:38 horizons/i18n/guitranslations.py:219
+#: horizons/gui/tabs/inventorytab.py horizons/i18n/guitranslations.py
 msgid "Settlement inventory"
 msgstr "Siirtokunnan tavaravalikko"
 
 #. (text of widget: headline)
-#: horizons/gui/tabs/mainsquaretabs.py:66 horizons/i18n/guitranslations.py:535
+#: horizons/gui/tabs/mainsquaretabs.py horizons/i18n/guitranslations.py
 msgid "Account"
 msgstr "Budjetti"
 
-#: horizons/gui/tabs/mainsquaretabs.py:93
+#: horizons/gui/tabs/mainsquaretabs.py
 msgid "Main square overview"
 msgstr "Keskustorin yleiskatsaus"
 
-#. (text of widget: headline)
-#: horizons/gui/tabs/mainsquaretabs.py:112
-#: horizons/gui/tabs/overviewtab.py:493 horizons/i18n/guitranslations.py:269
-msgid "Settler overview"
-msgstr "Asukaskatsaus"
-
-#: horizons/gui/tabs/mainsquaretabs.py:200
+#: horizons/gui/tabs/mainsquaretabs.py
 msgid "Don't allow upgrades"
 msgstr "Älä salli päivityksiä"
 
-#: horizons/gui/tabs/mainsquaretabs.py:203
+#: horizons/gui/tabs/mainsquaretabs.py
 msgid "Allow upgrades"
 msgstr "Salli päivitykset"
 
+# 76%
+#: horizons/gui/tabs/overviewtab.py
+msgid "Unit overview"
+msgstr "Aluksen yleiskatsaus"
+
+#: horizons/gui/tabs/productiontabs.py
+#: horizons/gui/tabs/productiontabs.py
+msgid "Production overview"
+msgstr "Tuotannon yleiskatsaus"
+
 #. (text of widget: headline)
-#: horizons/gui/tabs/overviewtab.py:62 horizons/gui/tabs/overviewtab.py:558
-#: horizons/i18n/guitranslations.py:466
-msgid "Overview"
-msgstr "Yleiskatsaus"
+#: horizons/gui/tabs/residentialtabs.py
+#: horizons/i18n/guitranslations.py
+msgid "Settler overview"
+msgstr "Asukaskatsaus"
 
-# 94%
-#: horizons/gui/tabs/overviewtab.py:148 horizons/gui/tabs/overviewtab.py:575
-msgid "Warehouse overview"
-msgstr "Sivutoimiston yleiskatsaus"
+#: horizons/gui/tabs/selectmultitab.py
+msgid "Selected Units"
+msgstr "Valitut yksiköt"
 
-#: horizons/gui/tabs/overviewtab.py:182 horizons/gui/tabs/overviewtab.py:322
+#: horizons/gui/tabs/shiptabs.py horizons/gui/tabs/shiptabs.py
+#: horizons/gui/tabs/shiptabs.py
 msgid "Ship overview"
 msgstr "Aluksen yleiskatsaus"
 
-#: horizons/gui/tabs/overviewtab.py:190
+#: horizons/gui/tabs/shiptabs.py
 msgid "The ship needs to be close to an island to found a settlement."
 msgstr ""
 "Aluksen pitää olla rannikon läheisyydessä ennen siirtokunnan perustamista."
 
-#: horizons/gui/tabs/overviewtab.py:195
+#: horizons/gui/tabs/shiptabs.py
 msgid "You already have a settlement on this island."
 msgstr "Tällä saarella on jo yksi siirtokunnistasi."
 
 #. (helptext of widget: found_settlement)
-#: horizons/gui/tabs/overviewtab.py:203 horizons/i18n/guitranslations.py:503
-#: horizons/i18n/guitranslations.py:514
+#: horizons/gui/tabs/shiptabs.py horizons/i18n/guitranslations.py
+#: horizons/i18n/guitranslations.py
 msgid "Build settlement"
 msgstr "Rakenna asutuskeskus"
 
 # 91%
-#: horizons/gui/tabs/overviewtab.py:228
+#: horizons/gui/tabs/shiptabs.py
 msgid "Load/Unload"
 msgstr "Lastaa/Pura"
 
 # 88%
-#: horizons/gui/tabs/overviewtab.py:231
+#: horizons/gui/tabs/shiptabs.py
 msgid "Buy/Sell"
 msgstr "Osta/Myy"
 
-#: horizons/gui/tabs/overviewtab.py:240
+#: horizons/gui/tabs/shiptabs.py
 msgid "Too far from the nearest own or allied warehouse"
-msgstr ""
+msgstr "Liian kaukana lähimmästä omasta tai liittolaisen sivutoimistosta"
 
-#: horizons/gui/tabs/overviewtab.py:246
+#: horizons/gui/tabs/shiptabs.py
 msgid "Cannot equip trade ship with weapons"
 msgstr ""
 
-#: horizons/gui/tabs/overviewtab.py:247
+#: horizons/gui/tabs/shiptabs.py
 msgid "It is not possible to equip a trade ship with weapons."
 msgstr ""
 
-#: horizons/gui/tabs/overviewtab.py:280
+#: horizons/gui/tabs/shiptabs.py
 msgid "Equip weapon"
 msgstr ""
 
-#: horizons/gui/tabs/overviewtab.py:284
+#: horizons/gui/tabs/shiptabs.py
 msgid "Unequip weapon"
 msgstr ""
 
-#: horizons/gui/tabs/overviewtab.py:313
-msgid "Tower overview"
-msgstr "Tornin yleiskatsaus"
-
-# 76%
-#: horizons/gui/tabs/overviewtab.py:330
-#, fuzzy
-msgid "Unit overview"
-msgstr "Aluksen yleiskatsaus"
-
-#: horizons/gui/tabs/overviewtab.py:348 horizons/gui/tabs/overviewtab.py:485
-msgid "Production overview"
-msgstr "Tuotannon yleiskatsaus"
-
-#: horizons/gui/tabs/selectmultitab.py:56
-msgid "Selected Units"
-msgstr "Valitut yksiköt"
-
-#: horizons/gui/widgets/buysellinventory.py:83
-#: horizons/gui/widgets/inventory.py:115
+#: horizons/gui/widgets/buysellinventory.py
+#: horizons/gui/widgets/inventory.py
 #, python-format
 msgid "Limit: {amount}t per slot"
 msgstr "Rajoitus: {amount}t per tavararuutu"
 
-#: horizons/gui/widgets/logbook.py:45
+#: horizons/gui/widgets/logbook.py
 msgid "Logbook"
-msgstr ""
+msgstr "Päiväkirja"
 
 #. (text of widget: headline_statistics)
-#: horizons/gui/widgets/logbook.py:46 horizons/i18n/guitranslations.py:610
+#: horizons/gui/widgets/logbook.py horizons/i18n/guitranslations.py
 msgid "Statistics"
-msgstr ""
+msgstr "Tilastot"
 
 #. (text of widget: headline)
 #. (text of widget: headline_chat)
 #. (text of widget: lbl_CHAT)
-#: horizons/gui/widgets/logbook.py:47 horizons/i18n/guitranslations.py:119
-#: horizons/i18n/guitranslations.py:606 horizons/i18n/guitranslations.py:718
+#: horizons/gui/widgets/logbook.py horizons/i18n/guitranslations.py
+#: horizons/i18n/guitranslations.py horizons/i18n/guitranslations.py
 msgid "Chat"
 msgstr "Keskustelu"
 
-#: horizons/gui/widgets/logbook.py:150
+#: horizons/gui/widgets/logbook.py
 msgid "Emptiness"
 msgstr "Tyhjä"
 
-#: horizons/gui/widgets/logbook.py:153
+#: horizons/gui/widgets/logbook.py
 msgid "There is nothing written in your logbook yet!"
 msgstr "Päiväkirjaasi ei ole kirjoitettu vielä mitään!"
 
 #. (text of widget: headline_graphics)
-#: horizons/gui/widgets/pickbeltwidget.py:91
-#: horizons/i18n/guitranslations.py:899
+#: horizons/gui/widgets/pickbeltwidget.py
+#: horizons/i18n/guitranslations.py
 msgid "Graphics"
 msgstr "Grafiikka"
 
 #. (text of widget: headline_sound)
-#: horizons/gui/widgets/pickbeltwidget.py:92
-#: horizons/i18n/guitranslations.py:909
+#: horizons/gui/widgets/pickbeltwidget.py
+#: horizons/i18n/guitranslations.py
 msgid "Sound"
 msgstr "Äänet"
 
-#: horizons/gui/widgets/pickbeltwidget.py:93
+#: horizons/gui/widgets/pickbeltwidget.py
 msgid "Game"
 msgstr "Peli"
 
 # 95%
-#: horizons/gui/widgets/playerssettlements.py:44
+#: horizons/gui/widgets/playerssettlements.py
 #, python-format
-#, python-format, 
+#, python-format,
 msgid "Settlements of {player}"
 msgstr "Pelaajan {player} siirtokunnat"
 
 #. (text of widget: total_score)
-#: horizons/gui/widgets/playerssettlements.py:122
-#: horizons/i18n/guitranslations.py:666
+#: horizons/gui/widgets/playerssettlements.py
+#: horizons/i18n/guitranslations.py
 msgid "Total"
 msgstr "Yhteensä"
 
 # 94%
-#: horizons/gui/widgets/playersships.py:49
+#: horizons/gui/widgets/playersships.py
 #, python-format
-#, python-format, 
+#, python-format,
 msgid "Ships of {player}"
 msgstr "Pelaajan {player} alukset"
 
 # 97%
 #. (helptext of widget: name)
-#: horizons/gui/widgets/playersships.py:83
-#: horizons/i18n/guitranslations.py:499 horizons/i18n/guitranslations.py:510
+#: horizons/gui/widgets/playersships.py
+#: horizons/i18n/guitranslations.py horizons/i18n/guitranslations.py
 msgid "Click to change the name of this ship"
-msgstr "Vaihda aluksen nimi napsauttamalla tästä."
+msgstr "Vaihda aluksen nimi napsauttamalla tästä"
 
 # 75%
 #. i18n There are no weapons equipped at the moment.
-#: horizons/gui/widgets/playersships.py:99
+#: horizons/gui/widgets/playersships.py
 msgid "None"
 msgstr "ei mitään"
 
-#: horizons/gui/widgets/playersships.py:101
+#: horizons/gui/widgets/playersships.py
 msgid "N/A"
-msgstr ""
+msgstr "Ei"
 
 # 89%
-#: horizons/gui/widgets/productionoverview.py:54
+#: horizons/gui/widgets/productionoverview.py
 #, python-format
 msgid "Production overview of {settlement}"
 msgstr "Siirtokunnassa {settlement} tuotetut resurssit"
 
-#: horizons/gui/widgets/resourceoverviewbar.py:199
+#: horizons/gui/widgets/resourceoverviewbar.py
 msgid "Click to add a new slot"
 msgstr ""
 
-#: horizons/gui/widgets/resourceoverviewbar.py:389
-#: horizons/gui/widgets/resourceoverviewbar.py:394
+#: horizons/gui/widgets/resourceoverviewbar.py
+#: horizons/gui/widgets/resourceoverviewbar.py
 msgid "Reset to default"
 msgstr ""
 
-#: horizons/gui/widgets/resourceoverviewbar.py:390
+#: horizons/gui/widgets/resourceoverviewbar.py
 msgid "Reset this configuration to the factory default."
 msgstr ""
 
-#: horizons/gui/widgets/resourceoverviewbar.py:395
+#: horizons/gui/widgets/resourceoverviewbar.py
 msgid "Reset this settlement's displayed resources to the default configuration you have saved."
 msgstr ""
 
-#: horizons/gui/widgets/resourceoverviewbar.py:399
+#: horizons/gui/widgets/resourceoverviewbar.py
 msgid "Reset to factory"
 msgstr ""
 
-#: horizons/gui/widgets/resourceoverviewbar.py:400
+#: horizons/gui/widgets/resourceoverviewbar.py
 msgid "Reset the default configuration (which you see here) to the factory default for all settlements."
 msgstr ""
 
 #. (helptext of widget: start_route) Trade route
-#: horizons/gui/widgets/routeconfig.py:88 horizons/i18n/guitranslations.py:642
+#: horizons/gui/widgets/routeconfig.py horizons/i18n/guitranslations.py
 msgid "Start route"
 msgstr "Aloita reitti"
 
-#: horizons/gui/widgets/routeconfig.py:92
+#: horizons/gui/widgets/routeconfig.py
 msgid "Stop route"
 msgstr "Lopeta reitti"
 
-#: horizons/gui/widgets/routeconfig.py:98
+#: horizons/gui/widgets/routeconfig.py
 msgid "Need at least two settlements"
-msgstr ""
+msgstr "Liian vähän reittipisteitä"
 
-#: horizons/gui/widgets/routeconfig.py:99
+#: horizons/gui/widgets/routeconfig.py
 msgid "You need at least two different settlements in your route."
-msgstr ""
+msgstr "Reitillä pitää olla vähintään kaksi siirtokuntaa reittipisteenä."
 
-#: horizons/gui/widgets/routeconfig.py:144
+#: horizons/gui/widgets/routeconfig.py
 msgid "Click on a settlement to add a waypoint!"
 msgstr "Lisää siirtokunta reittipisteeksi napsauttamalla sitä!"
 
-#: horizons/gui/widgets/routeconfig.py:187
+#: horizons/gui/widgets/routeconfig.py
 msgid "Loading into ship"
 msgstr ""
 
-#: horizons/gui/widgets/routeconfig.py:194
+#: horizons/gui/widgets/routeconfig.py
 msgid "Unloading from ship"
 msgstr ""
 
-#: horizons/gui/widgets/routeconfig.py:277
+#: horizons/gui/widgets/routeconfig.py
 msgid "Select a resource:"
 msgstr "Valitse resurssit:"
 
-#: horizons/gui/widgets/unitoverview.py:122
+#: horizons/gui/widgets/unitoverview.py
 msgid "none"
 msgstr "ei mitään"
 
 #. (text of widget: headline)
-#: horizons/i18n/guitranslations.py:53
+#: horizons/i18n/guitranslations.py
 msgid "Game start"
 msgstr "Aloita peli"
 
 #. (text of widget: howto_1_need_warehouse)
-#: horizons/i18n/guitranslations.py:55
+#: horizons/i18n/guitranslations.py
 msgid "You need to found a settlement before you can construct buildings!"
 msgstr ""
 "Sinun pitää perustaa itsellesi siirtokunta ennen kuin voit rakentaa "
 "rakennuksia!"
 
 #. (text of widget: howto_2_navigate_ship)
-#: horizons/i18n/guitranslations.py:57
+#: horizons/i18n/guitranslations.py
 msgid "Select your ship and approach the coast via right-click."
 msgstr "Napsauta alustasi ja sitten rannikkoa hiiren oikealla näppäimellä."
 
 #. (text of widget: howto_3_build_warehouse)
-#: horizons/i18n/guitranslations.py:59
+#: horizons/i18n/guitranslations.py
 msgid "Afterwards, press the large button in the ship overview tab."
 msgstr ""
 "Tämän jälkeen napsauta isoa ankkurinnäköistä kuvaketta aluksen "
 "yleiskatsauksessa."
 
+#. (text of widget: headline)
+#: horizons/i18n/guitranslations.py
+msgid "Build"
+msgstr "Rakenna"
+
 #. (text of widget: running_costs_label)
-#: horizons/i18n/guitranslations.py:66
+#: horizons/i18n/guitranslations.py
 msgid "Running costs:"
 msgstr "Juoksevat menot:"
 
 #. (helptext of widget: city_info_inhabitants)
 #. (text of widget: inhabitants)
-#: horizons/i18n/guitranslations.py:71 horizons/i18n/guitranslations.py:675
+#: horizons/i18n/guitranslations.py horizons/i18n/guitranslations.py
 msgid "Inhabitants"
 msgstr "Asukkaat"
 
 #. (helptext of widget: build)
-#: horizons/i18n/guitranslations.py:76
+#: horizons/i18n/guitranslations.py
 msgid "Build menu (B)"
 msgstr "Rakennusvalikko (B)"
 
 #. (helptext of widget: destroy_tool)
-#: horizons/i18n/guitranslations.py:78
+#: horizons/i18n/guitranslations.py
 msgid "Destroy (X)"
 msgstr "Tuhoa (X)"
 
 #. (helptext of widget: diplomacyButton)
-#: horizons/i18n/guitranslations.py:80
+#: horizons/i18n/guitranslations.py
 msgid "Diplomacy"
 msgstr "Diplomatia"
 
 #. (helptext of widget: gameMenuButton)
-#: horizons/i18n/guitranslations.py:82
+#: horizons/i18n/guitranslations.py
 msgid "Game menu (Esc)"
 msgstr "Pelivalikko (Esc)"
 
 # 76%
 #. (helptext of widget: logbook)
-#: horizons/i18n/guitranslations.py:84
+#: horizons/i18n/guitranslations.py
 msgid "Captain's log (L)"
 msgstr "Kapteenin päiväkirja (L)"
 
 # 87%
 #. (helptext of widget: rotateLeft)
-#: horizons/i18n/guitranslations.py:86
+#: horizons/i18n/guitranslations.py
 msgid "Rotate map counterclockwise (,)"
 msgstr "Käännä karttaa vastapäivään (,)"
 
 # 83%
 #. (helptext of widget: rotateRight)
-#: horizons/i18n/guitranslations.py:88
+#: horizons/i18n/guitranslations.py
 msgid "Rotate map clockwise (.)"
 msgstr "Käännä karttaa myötäpäivään (.)"
 
 # 82%
 #. (helptext of widget: speedDown)
-#: horizons/i18n/guitranslations.py:90
+#: horizons/i18n/guitranslations.py
 msgid "Decrease game speed (-)"
 msgstr "Hidasta pelin nopeutta (-)"
 
 # 82
 #. (helptext of widget: speedUp)
-#: horizons/i18n/guitranslations.py:92
+#: horizons/i18n/guitranslations.py
 msgid "Increase game speed (+)"
 msgstr "Kiihdytä pelin nopeutta (+)"
 
 #. (helptext of widget: zoomIn)
-#: horizons/i18n/guitranslations.py:94
+#: horizons/i18n/guitranslations.py
 msgid "Zoom in"
 msgstr "Lähennä kuvaa"
 
 #. (helptext of widget: zoomOut)
-#: horizons/i18n/guitranslations.py:96
+#: horizons/i18n/guitranslations.py
 msgid "Zoom out"
 msgstr "Loitonna kuvaa"
 
 #. (helptext of widget: background_icon)
-#: horizons/i18n/guitranslations.py:101
+#: horizons/i18n/guitranslations.py
 msgid "Gold"
 msgstr "Kulta"
 
 #. (text of widget: enter_new_name_lbl)
-#: horizons/i18n/guitranslations.py:106
+#: horizons/i18n/guitranslations.py
 msgid "Enter new name:"
 msgstr "Kirjoita uusi nimi:"
 
 #. (text of widget: headline_change_name)
-#: horizons/i18n/guitranslations.py:108
+#: horizons/i18n/guitranslations.py
 msgid "Change name"
 msgstr "Vaihda nimi"
 
 #. (text of widget: old_name_label)
-#: horizons/i18n/guitranslations.py:110
+#: horizons/i18n/guitranslations.py
 msgid "Old name:"
-msgstr ""
+msgstr "Nykyinen nimi:"
 
 #. (helptext of widget: okButton)
-#: horizons/i18n/guitranslations.py:112
+#: horizons/i18n/guitranslations.py
 msgid "Apply the new name"
 msgstr "Ota uusi nimi käyttöön"
 
 #. (text of widget: chat_lbl)
-#: horizons/i18n/guitranslations.py:117
+#: horizons/i18n/guitranslations.py
 msgid "Enter your message:"
 msgstr "Kirjoita viesti:"
 
 #. (text of widget: enter_new_name_lbl)
-#: horizons/i18n/guitranslations.py:124
+#: horizons/i18n/guitranslations.py
 msgid "Enter prefix:"
 msgstr ""
 
 #. (text of widget: headline_change_name)
-#: horizons/i18n/guitranslations.py:126
+#: horizons/i18n/guitranslations.py
 msgid "Save map"
 msgstr "Tallenna kartta"
 
 #. (helptext of widget: okButton)
-#: horizons/i18n/guitranslations.py:128
+#: horizons/i18n/guitranslations.py
 msgid "Save the map"
 msgstr "Tallenna kartta"
 
 #. (text of widget: BB_cancel_build_label) abort construction of a ship, lose invested resources
-#: horizons/i18n/guitranslations.py:133
+#: horizons/i18n/guitranslations.py
 msgid "Cancel building:"
 msgstr "Peruuta rakentaminen:"
 
 #. (text of widget: BB_cancel_warning_label) abort construction of a ship, lose invested resources
-#: horizons/i18n/guitranslations.py:135
+#: horizons/i18n/guitranslations.py
 msgid "(lose all resources)"
 msgstr "(menetät kaikki resurssisi)"
 
 #. (text of widget: BB_current_order) Information about the ship currently under construction at the boat builder
-#: horizons/i18n/guitranslations.py:137
+#: horizons/i18n/guitranslations.py
 msgid "Currently building:"
 msgstr "Rakennetaan:"
 
 #. (text of widget: BB_howto_build_lbl)
-#: horizons/i18n/guitranslations.py:139
+#: horizons/i18n/guitranslations.py
 msgid "To build a boat, click on one of the class tabs, select the desired ship and confirm the order."
 msgstr ""
 "Rakenna vene napsauttamalla yhtä välilehdistä, valitsemalla haluttu alus ja "
 "vahvistamalla päätös."
 
 #. (text of widget: BB_progress_label) Refers to the resources still missing to complete the current boat builder task
-#: horizons/i18n/guitranslations.py:141
+#: horizons/i18n/guitranslations.py
 msgid "Construction progress:"
 msgstr "Rakennettu:"
 
 #. (text of widget: headline)
-#: horizons/i18n/guitranslations.py:143 horizons/i18n/guitranslations.py:206
-#: horizons/i18n/guitranslations.py:383
+#: horizons/i18n/guitranslations.py horizons/i18n/guitranslations.py
+#: horizons/i18n/guitranslations.py horizons/i18n/guitranslations.py
 msgid "Building overview"
 msgstr "Rakennuksen tiedot"
 
 #. (helptext of widget: BB_cancel_button) abort construction of a ship, lose invested resources
-#: horizons/i18n/guitranslations.py:145
+#: horizons/i18n/guitranslations.py
 msgid "Cancel all building progress"
 msgstr "Peruuta kaikki rakentamiset"
 
@@ -1554,88 +1590,90 @@ msgstr "Peruuta kaikki rakentamiset"
 #. (helptext of widget: running_costs)
 #. (helptext of widget: running_costs_label)
 #. (helptext of widget: running_costs)
+#. (helptext of widget: running_costs_label)
+#. (helptext of widget: running_costs)
 #. (text of widget: running_costs_label)
 #. (text of widget: running_costs)
-#: horizons/i18n/guitranslations.py:147 horizons/i18n/guitranslations.py:210
-#: horizons/i18n/guitranslations.py:214 horizons/i18n/guitranslations.py:387
-#: horizons/i18n/guitranslations.py:391 horizons/i18n/guitranslations.py:437
-#: horizons/i18n/guitranslations.py:441 horizons/i18n/guitranslations.py:455
-#: horizons/i18n/guitranslations.py:461 horizons/i18n/guitranslations.py:543
-#: horizons/i18n/guitranslations.py:677
+#: horizons/i18n/guitranslations.py horizons/i18n/guitranslations.py
+#: horizons/i18n/guitranslations.py horizons/i18n/guitranslations.py
+#: horizons/i18n/guitranslations.py horizons/i18n/guitranslations.py
+#: horizons/i18n/guitranslations.py horizons/i18n/guitranslations.py
+#: horizons/i18n/guitranslations.py horizons/i18n/guitranslations.py
+#: horizons/i18n/guitranslations.py horizons/i18n/guitranslations.py
+#: horizons/i18n/guitranslations.py
 msgid "Running costs"
 msgstr "Juoksevat kustannukset"
 
 #. (helptext of widget: toggle_active_active) Pauses the current ship production, can be resumed later
-#: horizons/i18n/guitranslations.py:149
+#: horizons/i18n/guitranslations.py
 msgid "Pause"
 msgstr "Pysäytä"
 
 #. (helptext of widget: toggle_active_inactive) Resumes the currently paused ship production
-#: horizons/i18n/guitranslations.py:151
+#: horizons/i18n/guitranslations.py
 msgid "Resume"
 msgstr "Jatka"
 
 #. (text of widget: headline_BB_trade_ship1) The huker is a ship class mostly used for fishing. It is the starting ship of players in Unknown Horizons. If you are not sure how to translate, just leave the field empty and it will be called Huker.
-#: horizons/i18n/guitranslations.py:158
+#: horizons/i18n/guitranslations.py
 msgid "Huker"
 msgstr ""
 
 #. (helptext of widget: BB_build_trade_1)
 #. (helptext of widget: BB_build_war1_1)
-#: horizons/i18n/guitranslations.py:160 horizons/i18n/guitranslations.py:177
+#: horizons/i18n/guitranslations.py horizons/i18n/guitranslations.py
 msgid "Build this ship!"
 msgstr "Rakenna tämä alus!"
 
 #. (helptext of widget: costs_001)
 #. (text of widget: money_score)
-#: horizons/i18n/guitranslations.py:162 horizons/i18n/guitranslations.py:179
-#: horizons/i18n/guitranslations.py:658
+#: horizons/i18n/guitranslations.py horizons/i18n/guitranslations.py
+#: horizons/i18n/guitranslations.py
 msgid "Money"
 msgstr "Raha"
 
 #. (helptext of widget: costs_003)
-#: horizons/i18n/guitranslations.py:164 horizons/i18n/guitranslations.py:181
-#, fuzzy
+#: horizons/i18n/guitranslations.py horizons/i18n/guitranslations.py
 msgid "Cloth"
 msgstr "Kangas"
 
 #. (helptext of widget: costs_004)
-#: horizons/i18n/guitranslations.py:166 horizons/i18n/guitranslations.py:183
+#: horizons/i18n/guitranslations.py horizons/i18n/guitranslations.py
 msgid "Boards"
 msgstr "Laudat"
 
 #. (helptext of widget: costs_006)
-#: horizons/i18n/guitranslations.py:168 horizons/i18n/guitranslations.py:185
+#: horizons/i18n/guitranslations.py horizons/i18n/guitranslations.py
 msgid "Tools"
 msgstr "Työkalut"
 
 #. (text of widget: headline_BB_war1_ship1)
-#: horizons/i18n/guitranslations.py:175
+#: horizons/i18n/guitranslations.py
 msgid "Frigate"
 msgstr "Fregatti"
 
 #. (helptext of widget: costs_040)
-#: horizons/i18n/guitranslations.py:187
+#: horizons/i18n/guitranslations.py
 msgid "Cannons"
 msgstr "Tykkiä"
 
 #. (text of widget: ally_label) Diplomacy state of player
-#: horizons/i18n/guitranslations.py:192
+#: horizons/i18n/guitranslations.py
 msgid "ally"
 msgstr "liittolainen"
 
 #. (text of widget: enemy_label) Diplomacy state of player
-#: horizons/i18n/guitranslations.py:194
+#: horizons/i18n/guitranslations.py
 msgid "enemy"
 msgstr "vihollinen"
 
 #. (text of widget: neutral_label) Diplomacy state of player
-#: horizons/i18n/guitranslations.py:196
+#: horizons/i18n/guitranslations.py
 msgid "neutral"
 msgstr "puolueeton"
 
 #. (text of widget: headline)
-#: horizons/i18n/guitranslations.py:201
+#: horizons/i18n/guitranslations.py
 msgid "Build fields"
 msgstr "Pystytä tuotantoa"
 
@@ -1644,64 +1682,64 @@ msgstr "Pystytä tuotantoa"
 #. (helptext of widget: capacity_utilisation)
 #. (helptext of widget: capacity_utilisation_label)
 #. (helptext of widget: capacity_utilisation)
-#: horizons/i18n/guitranslations.py:208 horizons/i18n/guitranslations.py:212
-#: horizons/i18n/guitranslations.py:385 horizons/i18n/guitranslations.py:389
+#: horizons/i18n/guitranslations.py horizons/i18n/guitranslations.py
+#: horizons/i18n/guitranslations.py horizons/i18n/guitranslations.py
 msgid "Capacity utilization"
 msgstr "Käyttöosuus"
 
 #. (text of widget: headline_residents_per_house)
-#: horizons/i18n/guitranslations.py:226 horizons/i18n/guitranslations.py:278
-#: horizons/i18n/guitranslations.py:309 horizons/i18n/guitranslations.py:338
+#: horizons/i18n/guitranslations.py horizons/i18n/guitranslations.py
+#: horizons/i18n/guitranslations.py horizons/i18n/guitranslations.py
 msgid "Residents per house"
 msgstr "Asukkaita per talo"
 
 #. (text of widget: headline_residents_total)
-#: horizons/i18n/guitranslations.py:228 horizons/i18n/guitranslations.py:280
-#: horizons/i18n/guitranslations.py:311 horizons/i18n/guitranslations.py:340
+#: horizons/i18n/guitranslations.py horizons/i18n/guitranslations.py
+#: horizons/i18n/guitranslations.py horizons/i18n/guitranslations.py
 msgid "Summary"
 msgstr "Yhteenveto"
 
 #. (text of widget: houses)
-#: horizons/i18n/guitranslations.py:230 horizons/i18n/guitranslations.py:282
-#: horizons/i18n/guitranslations.py:313 horizons/i18n/guitranslations.py:342
+#: horizons/i18n/guitranslations.py horizons/i18n/guitranslations.py
+#: horizons/i18n/guitranslations.py horizons/i18n/guitranslations.py
 msgid "houses"
 msgstr "taloja"
 
 # 88%
 # 81%
 #. (text of widget: resident_1)
-#: horizons/i18n/guitranslations.py:232 horizons/i18n/guitranslations.py:284
-#: horizons/i18n/guitranslations.py:315 horizons/i18n/guitranslations.py:344
+#: horizons/i18n/guitranslations.py horizons/i18n/guitranslations.py
+#: horizons/i18n/guitranslations.py horizons/i18n/guitranslations.py
 msgid "1 resident"
 msgstr "1 asukas"
 
 # 88%
 # 81%
 #. (text of widget: resident_2)
-#: horizons/i18n/guitranslations.py:234 horizons/i18n/guitranslations.py:286
-#: horizons/i18n/guitranslations.py:317 horizons/i18n/guitranslations.py:346
+#: horizons/i18n/guitranslations.py horizons/i18n/guitranslations.py
+#: horizons/i18n/guitranslations.py horizons/i18n/guitranslations.py
 msgid "2 residents"
 msgstr "2 asukasta"
 
 # 88%
 # 81%
 #. (text of widget: resident_3)
-#: horizons/i18n/guitranslations.py:236 horizons/i18n/guitranslations.py:288
-#: horizons/i18n/guitranslations.py:348
+#: horizons/i18n/guitranslations.py horizons/i18n/guitranslations.py
+#: horizons/i18n/guitranslations.py
 msgid "3 residents"
 msgstr "3 asukasta"
 
 # 88%
 # 81%
 #. (text of widget: resident_4)
-#: horizons/i18n/guitranslations.py:238 horizons/i18n/guitranslations.py:350
+#: horizons/i18n/guitranslations.py horizons/i18n/guitranslations.py
 msgid "4 residents"
 msgstr "4 asukasta"
 
 # 88%
 # 81%
 #. (text of widget: resident_5)
-#: horizons/i18n/guitranslations.py:240 horizons/i18n/guitranslations.py:352
+#: horizons/i18n/guitranslations.py horizons/i18n/guitranslations.py
 msgid "5 residents"
 msgstr "5 asukasta"
 
@@ -1709,7 +1747,7 @@ msgstr "5 asukasta"
 # 81%
 # 90%
 #. (text of widget: resident_6)
-#: horizons/i18n/guitranslations.py:242
+#: horizons/i18n/guitranslations.py
 msgid "6 residents"
 msgstr "6 asukasta"
 
@@ -1717,7 +1755,7 @@ msgstr "6 asukasta"
 # 81%
 # 90%
 #. (text of widget: resident_7)
-#: horizons/i18n/guitranslations.py:244
+#: horizons/i18n/guitranslations.py
 msgid "7 residents"
 msgstr "7 asukasta"
 
@@ -1725,31 +1763,31 @@ msgstr "7 asukasta"
 # 81%
 # 90%
 #. (text of widget: resident_8)
-#: horizons/i18n/guitranslations.py:246
+#: horizons/i18n/guitranslations.py
 msgid "8 residents"
 msgstr "8 asukasta"
 
 # 88%
 #. (text of widget: residents)
-#: horizons/i18n/guitranslations.py:248 horizons/i18n/guitranslations.py:290
-#: horizons/i18n/guitranslations.py:319 horizons/i18n/guitranslations.py:354
+#: horizons/i18n/guitranslations.py horizons/i18n/guitranslations.py
+#: horizons/i18n/guitranslations.py horizons/i18n/guitranslations.py
 msgid "residents"
 msgstr "asukkaita"
 
 #. (text of widget: tax_label)
-#: horizons/i18n/guitranslations.py:250 horizons/i18n/guitranslations.py:292
-#: horizons/i18n/guitranslations.py:321 horizons/i18n/guitranslations.py:356
-#: horizons/i18n/guitranslations.py:407
+#: horizons/i18n/guitranslations.py horizons/i18n/guitranslations.py
+#: horizons/i18n/guitranslations.py horizons/i18n/guitranslations.py
+#: horizons/i18n/guitranslations.py
 msgid "Taxes:"
 msgstr "Verot:"
 
 #. (text of widget: upgrades_lbl)
-#: horizons/i18n/guitranslations.py:252
+#: horizons/i18n/guitranslations.py
 msgid "Upgrade not possible:"
 msgstr "Päivittäminen ei onnistu:"
 
 #. (helptext of widget: allow_upgrades)
-#: horizons/i18n/guitranslations.py:254
+#: horizons/i18n/guitranslations.py
 msgid "This is the current maximum increment!"
 msgstr "Tämä on jo korkein saavuttamasi taso!"
 
@@ -1763,11 +1801,11 @@ msgstr "Tämä on jo korkein saavuttamasi taso!"
 #. (helptext of widget: taxes)
 #. (helptext of widget: paid_taxes_label)
 #. (helptext of widget: taxes)
-#: horizons/i18n/guitranslations.py:256 horizons/i18n/guitranslations.py:262
-#: horizons/i18n/guitranslations.py:296 horizons/i18n/guitranslations.py:302
-#: horizons/i18n/guitranslations.py:325 horizons/i18n/guitranslations.py:331
-#: horizons/i18n/guitranslations.py:360 horizons/i18n/guitranslations.py:366
-#: horizons/i18n/guitranslations.py:411 horizons/i18n/guitranslations.py:423
+#: horizons/i18n/guitranslations.py horizons/i18n/guitranslations.py
+#: horizons/i18n/guitranslations.py horizons/i18n/guitranslations.py
+#: horizons/i18n/guitranslations.py horizons/i18n/guitranslations.py
+#: horizons/i18n/guitranslations.py horizons/i18n/guitranslations.py
+#: horizons/i18n/guitranslations.py horizons/i18n/guitranslations.py
 msgid "Paid taxes"
 msgstr "Maksetut verot"
 
@@ -1782,96 +1820,96 @@ msgstr "Maksetut verot"
 #. (helptext of widget: tax_val_label)
 #. (helptext of widget: paid_taxes_label)
 #. (helptext of widget: tax_val_label)
-#: horizons/i18n/guitranslations.py:258 horizons/i18n/guitranslations.py:260
-#: horizons/i18n/guitranslations.py:298 horizons/i18n/guitranslations.py:300
-#: horizons/i18n/guitranslations.py:327 horizons/i18n/guitranslations.py:329
-#: horizons/i18n/guitranslations.py:362 horizons/i18n/guitranslations.py:364
-#: horizons/i18n/guitranslations.py:413 horizons/i18n/guitranslations.py:421
+#: horizons/i18n/guitranslations.py horizons/i18n/guitranslations.py
+#: horizons/i18n/guitranslations.py horizons/i18n/guitranslations.py
+#: horizons/i18n/guitranslations.py horizons/i18n/guitranslations.py
+#: horizons/i18n/guitranslations.py horizons/i18n/guitranslations.py
+#: horizons/i18n/guitranslations.py horizons/i18n/guitranslations.py
 msgid "Tax rate"
 msgstr "Veroprosentti"
 
 #. (text of widget: avg_happiness_lbl)
-#: horizons/i18n/guitranslations.py:267
+#: horizons/i18n/guitranslations.py
 msgid "Average happiness:"
 msgstr "Keskimääräinen onnellisuus:"
 
 #. (text of widget: most_needed_res_lbl)
-#: horizons/i18n/guitranslations.py:271
+#: horizons/i18n/guitranslations.py
 msgid "Most needed resource:"
 msgstr "Eniten kaivattu resurssi:"
 
 #. (text of widget: upgrades_lbl)
-#: horizons/i18n/guitranslations.py:294 horizons/i18n/guitranslations.py:323
-#: horizons/i18n/guitranslations.py:358
+#: horizons/i18n/guitranslations.py horizons/i18n/guitranslations.py
+#: horizons/i18n/guitranslations.py
 msgid "Upgrade permissions:"
 msgstr "Päivitysoikeudet:"
 
 #. (text of widget: buying_label)
 #. (text of widget: buy_expenses_label)
-#: horizons/i18n/guitranslations.py:371 horizons/i18n/guitranslations.py:473
-#: horizons/i18n/guitranslations.py:533
+#: horizons/i18n/guitranslations.py horizons/i18n/guitranslations.py
+#: horizons/i18n/guitranslations.py
 msgid "Buying"
 msgstr "Ostot"
 
 #. (text of widget: selling_label)
-#: horizons/i18n/guitranslations.py:373 horizons/i18n/guitranslations.py:479
+#: horizons/i18n/guitranslations.py horizons/i18n/guitranslations.py
 msgid "Selling"
 msgstr "Myynti"
 
+#. (text of widget: name_label)
+#: horizons/i18n/guitranslations.py horizons/i18n/guitranslations.py
+#: horizons/i18n/guitranslations.py horizons/i18n/guitranslations.py
+msgid "Name:"
+msgstr "Nimi:"
+
 #. (text of widget: lbl_weapon_storage)
-#: horizons/i18n/guitranslations.py:378
+#: horizons/i18n/guitranslations.py
 msgid "Weapons:"
 msgstr "Aseistus:"
 
 #. (text of widget: headline)
-#: horizons/i18n/guitranslations.py:396
+#: horizons/i18n/guitranslations.py
 msgid "Resource deposit"
 msgstr "Luonnonvara"
 
 #. (text of widget: res_dep_description_lbl)
-#: horizons/i18n/guitranslations.py:398
+#: horizons/i18n/guitranslations.py
 msgid "This is a resource deposit where you can build a mine to dig up resources."
 msgstr ""
 "Tämä on luonnonvaralöydös, josta voit kaivaa resursseja ylös louhoksen "
 "avulla."
 
 #. (text of widget: res_dep_description_lbl2) It == The resource deposit
-#: horizons/i18n/guitranslations.py:400
+#: horizons/i18n/guitranslations.py
 msgid "It contains these resources:"
 msgstr "Sisältää näitä luonnonvaroja:"
 
 #. (text of widget: needed_res_label)
-#: horizons/i18n/guitranslations.py:405
+#: horizons/i18n/guitranslations.py
 msgid "Needed resources:"
 msgstr "Tarvittavat resurssit:"
 
 #. (helptext of widget: happiness_label)
 #. (helptext of widget: happiness)
-#: horizons/i18n/guitranslations.py:409 horizons/i18n/guitranslations.py:425
+#: horizons/i18n/guitranslations.py horizons/i18n/guitranslations.py
 msgid "Happiness"
 msgstr "Onnellisuus"
 
 #. (helptext of widget: residents_label)
 #. (helptext of widget: inhabitants)
-#: horizons/i18n/guitranslations.py:415 horizons/i18n/guitranslations.py:419
+#: horizons/i18n/guitranslations.py horizons/i18n/guitranslations.py
 msgid "Residents"
 msgstr "Asukkaat"
 
 #. (text of widget: signal_fire_description_lbl)
-#: horizons/i18n/guitranslations.py:430
+#: horizons/i18n/guitranslations.py
 msgid "The signal fire shows the free trader how to reach your settlement in case you want to buy or sell goods."
 msgstr ""
 "Merkkituli näyttää vapaakauppiaalle reitin sivutoimistollesi, jonka ansiosta "
 "voit myydä ja ostaa tavaraa."
 
-#. (text of widget: name_label)
-#: horizons/i18n/guitranslations.py:435 horizons/i18n/guitranslations.py:451
-#: horizons/i18n/guitranslations.py:468
-msgid "Name:"
-msgstr "Nimi:"
-
 #. (text of widget: trader_description_lbl)
-#: horizons/i18n/guitranslations.py:446
+#: horizons/i18n/guitranslations.py
 msgid "This is the free trader's ship. It will visit you from time to time to buy or sell goods."
 msgstr ""
 "Tämä on vapaakauppiaan alus. Se vierailee silloin tällöin ostamaan ja "
@@ -1879,249 +1917,250 @@ msgstr ""
 
 #. (helptext of widget: collector_utilisation_label)
 #. (helptext of widget: collector_utilisation) Percentage describing how busy the collectors were (100% = always going for / already carrying full load of goods)
-#: horizons/i18n/guitranslations.py:453 horizons/i18n/guitranslations.py:457
+#: horizons/i18n/guitranslations.py horizons/i18n/guitranslations.py
 msgid "Collector utilisation"
 msgstr ""
 
 #. (text of widget: exchange_label)
-#: horizons/i18n/guitranslations.py:475 horizons/i18n/guitranslations.py:488
+#: horizons/i18n/guitranslations.py horizons/i18n/guitranslations.py
 msgid "Exchange:"
 msgstr "Vaihto:"
 
 #. (text of widget: ship_label)
-#: horizons/i18n/guitranslations.py:481 horizons/i18n/guitranslations.py:492
+#: horizons/i18n/guitranslations.py horizons/i18n/guitranslations.py
 msgid "Ship:"
 msgstr "Alus:"
 
 #. (text of widget: trade_with_label)
-#: horizons/i18n/guitranslations.py:483 horizons/i18n/guitranslations.py:494
+#: horizons/i18n/guitranslations.py horizons/i18n/guitranslations.py
 msgid "Trade partner:"
 msgstr "Kaupankäyntikumppani:"
 
 # 95%
 #. (helptext of widget: configure_route)
-#: horizons/i18n/guitranslations.py:501 horizons/i18n/guitranslations.py:512
+#: horizons/i18n/guitranslations.py horizons/i18n/guitranslations.py
 msgid "Configure trading route"
 msgstr "Muuta kauppareittiä"
 
 #. (text of widget: headline)
-#: horizons/i18n/guitranslations.py:521
+#: horizons/i18n/guitranslations.py
 msgid "Buy or sell resources"
 msgstr "Osta tai myy"
 
 #. (text of widget: headline_trade_history)
-#: horizons/i18n/guitranslations.py:523
+#: horizons/i18n/guitranslations.py
 msgid "Trade history"
 msgstr "Kauppahistoria"
 
 #. (text of widget: headline)
-#: horizons/i18n/guitranslations.py:528
+#: horizons/i18n/guitranslations.py
 msgid "Select resources:"
 msgstr "Valitse resurssi:"
 
 #. (text of widget: headline_balance_label)
-#: horizons/i18n/guitranslations.py:537
+#: horizons/i18n/guitranslations.py
 msgid "Balance:"
 msgstr "Tasapaino:"
 
 #. (text of widget: headline_expenses_label)
-#: horizons/i18n/guitranslations.py:539
+#: horizons/i18n/guitranslations.py
 msgid "Expenses:"
 msgstr "Menot:"
 
 #. (text of widget: headline_income_label)
-#: horizons/i18n/guitranslations.py:541
+#: horizons/i18n/guitranslations.py
 msgid "Income:"
 msgstr "Tulot:"
 
 #. (text of widget: sell_income_label)
-#: horizons/i18n/guitranslations.py:545
+#: horizons/i18n/guitranslations.py
 msgid "Sale"
 msgstr "Myynti"
 
 #. (text of widget: taxes_label)
 #. (text of widget: taxes)
-#: horizons/i18n/guitranslations.py:547 horizons/i18n/guitranslations.py:681
+#: horizons/i18n/guitranslations.py horizons/i18n/guitranslations.py
 msgid "Taxes"
 msgstr "Verot"
 
 #. (helptext of widget: show_production_overview)
-#: horizons/i18n/guitranslations.py:549
+#: horizons/i18n/guitranslations.py
 msgid "Show resources produced in this settlement"
 msgstr "Näytä tässä siirtokunnassa tuotetut resurssit"
 
 #. (helptext of widget: toggle_active_active)
-#: horizons/i18n/guitranslations.py:554 horizons/i18n/guitranslations.py:561
+#: horizons/i18n/guitranslations.py horizons/i18n/guitranslations.py
 msgid "Pause production"
 msgstr "Pysäytä tuotanto"
 
 #. (helptext of widget: toggle_active_inactive)
-#: horizons/i18n/guitranslations.py:556 horizons/i18n/guitranslations.py:563
+#: horizons/i18n/guitranslations.py horizons/i18n/guitranslations.py
 msgid "Start production"
 msgstr "Käynnistä tuotanto"
 
 #. (text of widget: make_default_btn)
-#: horizons/i18n/guitranslations.py:568
+#: horizons/i18n/guitranslations.py
 msgid "Save as default"
-msgstr ""
+msgstr "Tallenna oletukseksi"
 
 #. (text of widget: reset_default_btn)
-#: horizons/i18n/guitranslations.py:570
+#: horizons/i18n/guitranslations.py
 msgid "Restore default"
-msgstr ""
+msgstr "Palauta oletus"
 
 # 94%
 #. (text of widget: headline) Please keep the translation similarly short and concise, else the tooltip is not well understood by players.
-#: horizons/i18n/guitranslations.py:572
+#: horizons/i18n/guitranslations.py
 msgid "Select resource:"
 msgstr "Valitse resurssi:"
 
 #. (helptext of widget: make_default_btn)
-#: horizons/i18n/guitranslations.py:574
+#: horizons/i18n/guitranslations.py
 msgid "Save current resource configuration as default for all settlements."
 msgstr ""
+"Tallenna nykyinen resurssi oletukseksi tähän paikkaan kaikissa "
+"siirtokunnissa."
 
 #. (helptext of widget: reset_default_btn)
-#: horizons/i18n/guitranslations.py:576
+#: horizons/i18n/guitranslations.py
 msgid "Reset default resource configuration for all settlements."
-msgstr ""
+msgstr "Palauta tämän paikan alkuperäinen resurssi kaikissa siirtokunnissa."
 
 #. (helptext of widget: headline) Please keep the translation similarly short and concise, else the tooltip is not well understood by players.
-#: horizons/i18n/guitranslations.py:578
+#: horizons/i18n/guitranslations.py
 msgid "The resource you select is displayed instead of the current one. Empty by clicking on X."
 msgstr ""
 "Valitsemasi resurssi näytetään nykyisen paikalla. Tyhjennä napsauttamalla X."
 
 #. (helptext of widget: delete_warehouse) Trade route entry
-#: horizons/i18n/guitranslations.py:583
+#: horizons/i18n/guitranslations.py
 msgid "Delete entry"
 msgstr "Poista merkintä"
 
 #. (helptext of widget: move_down) Trade route entry
-#: horizons/i18n/guitranslations.py:585
+#: horizons/i18n/guitranslations.py
 msgid "Move down"
 msgstr "Siirrä alas"
 
 #. (helptext of widget: move_up) Trade route entry
-#: horizons/i18n/guitranslations.py:587
+#: horizons/i18n/guitranslations.py
 msgid "Move up"
 msgstr "Siirrä ylös"
 
 #. (text of widget: stats_players)
-#: horizons/i18n/guitranslations.py:592
+#: horizons/i18n/guitranslations.py
 msgid "Players"
-msgstr ""
+msgstr "Pelaajat"
 
 #. (text of widget: stats_settlements)
-#: horizons/i18n/guitranslations.py:594
+#: horizons/i18n/guitranslations.py
 msgid "My settlements"
-msgstr ""
+msgstr "Siirtokuntani"
 
 #. (text of widget: stats_ships)
-#: horizons/i18n/guitranslations.py:596
+#: horizons/i18n/guitranslations.py
 msgid "My ships"
-msgstr ""
+msgstr "Alukseni"
 
 #. (text of widget: wb2) Only filter messages important for your own settlements (disasters, new increment, ...)
-#: horizons/i18n/guitranslations.py:598
+#: horizons/i18n/guitranslations.py
 msgid "Own settlements"
-msgstr ""
+msgstr "Omat siirtokunnat"
 
 #. (text of widget: wb5) Sends the chat message to all allied players.
-#: horizons/i18n/guitranslations.py:600
+#: horizons/i18n/guitranslations.py
 msgid "Allies"
-msgstr ""
+msgstr "Liittolaiset"
 
 #. (text of widget: weird_button_1) Displays all notifications and game messages
-#: horizons/i18n/guitranslations.py:602
+#: horizons/i18n/guitranslations.py
 msgid "Whole world"
-msgstr ""
+msgstr "Maailma"
 
 #. (text of widget: weird_button_4) Sends the chat message to all players (default)
-#: horizons/i18n/guitranslations.py:604
+#: horizons/i18n/guitranslations.py
 msgid "Everybody"
-msgstr ""
+msgstr "Kaikki"
 
 #. (text of widget: headline_game_messages)
-#: horizons/i18n/guitranslations.py:608
+#: horizons/i18n/guitranslations.py
 msgid "Game messages"
-msgstr ""
+msgstr "Peliviestit"
 
 #. (helptext of widget: okButton)
 #. (text of widget: start)
-#: horizons/i18n/guitranslations.py:612 horizons/i18n/guitranslations.py:787
+#: horizons/i18n/guitranslations.py horizons/i18n/guitranslations.py
 msgid "Return to game"
 msgstr "Jatka peliä"
 
 # 80%
 #. (helptext of widget: backwardButton) Entry of Captain's Log (logbook/diary used in scenarios)
-#: horizons/i18n/guitranslations.py:614
+#: horizons/i18n/guitranslations.py
 msgid "Read previous entries"
 msgstr "Edellinen merkintä"
 
 #. (helptext of widget: forwardButton) Entry of Captain's Log (logbook/diary used in scenarios)
-#: horizons/i18n/guitranslations.py:616
+#: horizons/i18n/guitranslations.py
 msgid "Read next entries"
 msgstr "Seuraava merkintä"
 
 #. (text of widget: head_left)
-#: horizons/i18n/guitranslations.py:621
+#: horizons/i18n/guitranslations.py
 msgid "Available Scenarios"
 msgstr "Tarjolla olevan skenaariot"
 
 #. (text of widget: head_right)
-#: horizons/i18n/guitranslations.py:623
+#: horizons/i18n/guitranslations.py
 msgid "Scenario description"
 msgstr "Skenaarion kuvaus"
 
 #. (helptext of widget: cancelButton) Players either select the next scenario they want to play or press this button
-#: horizons/i18n/guitranslations.py:627
+#: horizons/i18n/guitranslations.py
 msgid "Continue playing"
 msgstr "Jatka pelaamista"
 
 #. (helptext of widget: choose_scenario) Select which scenario to play
-#: horizons/i18n/guitranslations.py:629
+#: horizons/i18n/guitranslations.py
 msgid "Choose this scenario"
 msgstr "Valitse tämä skenaario"
 
 #. (text of widget: lbl_route_activity)
-#: horizons/i18n/guitranslations.py:634
+#: horizons/i18n/guitranslations.py
 msgid "Route activity:"
-msgstr ""
+msgstr "Reitin toiminnot:"
 
 #. (text of widget: lbl_wait_at_load) Trade route setting: Whether to wait until all goods could be loaded.
-#: horizons/i18n/guitranslations.py:636
-#, fuzzy
+#: horizons/i18n/guitranslations.py
 msgid "Wait at load:"
 msgstr "Odota lastausta:"
 
 #. (text of widget: lbl_wait_at_unload) Trade route setting: Whether to wait until all goods could be unloaded.
-#: horizons/i18n/guitranslations.py:638
+#: horizons/i18n/guitranslations.py
 msgid "Wait at unload:"
 msgstr "Odota purkamista:"
 
 #. (helptext of widget: okButton)
-#: horizons/i18n/guitranslations.py:640
+#: horizons/i18n/guitranslations.py
 msgid "Exit"
 msgstr "Poistu"
 
 #. (helptext of widget: okButton)
-#: horizons/i18n/guitranslations.py:647
+#: horizons/i18n/guitranslations.py
 msgid "Close"
 msgstr "Sulje"
 
 #. (text of widget: building_score)
-#: horizons/i18n/guitranslations.py:652
+#: horizons/i18n/guitranslations.py
 msgid "Buildings"
 msgstr "Rakennukset"
 
 #. (text of widget: headline)
-#: horizons/i18n/guitranslations.py:654
+#: horizons/i18n/guitranslations.py
 msgid "Player scores"
 msgstr "Pelitulokset"
 
 #. (text of widget: land_score)
-#: horizons/i18n/guitranslations.py:656
+#: horizons/i18n/guitranslations.py
 msgid "Land"
 msgstr "Maa"
 
@@ -2129,1615 +2168,1756 @@ msgstr "Maa"
 #. (text of widget: player_name)
 #. (text of widget: settlement_name)
 #. (text of widget: ship_name)
-#: horizons/i18n/guitranslations.py:660 horizons/i18n/guitranslations.py:679
-#: horizons/i18n/guitranslations.py:688
+#: horizons/i18n/guitranslations.py horizons/i18n/guitranslations.py
+#: horizons/i18n/guitranslations.py
 msgid "Name"
 msgstr "Nimi"
 
 #. (text of widget: resource_score)
-#: horizons/i18n/guitranslations.py:662
+#: horizons/i18n/guitranslations.py
 msgid "Resources"
 msgstr "Resurssit"
 
 #. (text of widget: unit_score)
-#: horizons/i18n/guitranslations.py:668
+#: horizons/i18n/guitranslations.py
 msgid "Units"
 msgstr "Yksiköt"
 
+#. (helptext of widget: building_score)
+#: horizons/i18n/guitranslations.py
+msgid "Value of all the buildings in the player's settlement(s)"
+msgstr ""
+
+#. (helptext of widget: land_score)
+#: horizons/i18n/guitranslations.py
+msgid "Value of usable land i.e Amount of Land that can be used to create buildings "
+msgstr ""
+
+#. (helptext of widget: money_score)
+#: horizons/i18n/guitranslations.py
+msgid "Player's current treasury + income expected in near future"
+msgstr ""
+
+#. (helptext of widget: player_name)
+#: horizons/i18n/guitranslations.py
+msgid "Player Name"
+msgstr ""
+
+#. (helptext of widget: resource_score)
+#: horizons/i18n/guitranslations.py
+msgid "Value of resources generated from all the possible sources in the player's settlement(s)"
+msgstr ""
+
+#. (helptext of widget: settler_score)
+#: horizons/i18n/guitranslations.py
+msgid "Value denoting the progress of the settlement(s) in terms of inhabitants, buildings and overall happiness"
+msgstr ""
+
+#. (helptext of widget: total_score)
+#: horizons/i18n/guitranslations.py
+msgid "The total value from all individual entities or in short : Total Player Score"
+msgstr ""
+
+#. (helptext of widget: unit_score)
+#: horizons/i18n/guitranslations.py
+msgid "Value of all the units owned by the player"
+msgstr ""
+
 # 87%
 #. (text of widget: balance)
-#: horizons/i18n/guitranslations.py:673
+#: horizons/i18n/guitranslations.py
 msgid "Balance"
 msgstr "Tasapaino"
 
 #. (text of widget: health)
-#: horizons/i18n/guitranslations.py:686
+#: horizons/i18n/guitranslations.py
 msgid "Health"
-msgstr ""
+msgstr "Kunto"
 
 #. (text of widget: ship_type)
-#: horizons/i18n/guitranslations.py:690
+#: horizons/i18n/guitranslations.py
 msgid "Type"
-msgstr ""
+msgstr "Tyyppi"
 
 #. (text of widget: status)
-#: horizons/i18n/guitranslations.py:692
+#: horizons/i18n/guitranslations.py
 msgid "Status"
-msgstr ""
+msgstr "Tila"
 
 # 87%
 #. (text of widget: weapons)
-#: horizons/i18n/guitranslations.py:694
+#: horizons/i18n/guitranslations.py
 msgid "Weapons"
 msgstr "Aseistus"
 
 #. (helptext of widget: aggressive_stance) Description of combat stance (how units behave when fighting)
-#: horizons/i18n/guitranslations.py:699
+#: horizons/i18n/guitranslations.py
 msgid "Aggressive"
 msgstr "Aggressiivinen"
 
 #. (helptext of widget: flee_stance) Description of combat stance (how units behave when fighting)
-#: horizons/i18n/guitranslations.py:701
+#: horizons/i18n/guitranslations.py
 msgid "Flee"
 msgstr "Pakene"
 
 #. (helptext of widget: hold_ground_stance) Description of combat stance (how units behave when fighting)
-#: horizons/i18n/guitranslations.py:703
+#: horizons/i18n/guitranslations.py
 msgid "Hold ground"
 msgstr ""
 
 #. (helptext of widget: none_stance) Description of combat stance (how units behave when fighting)
-#: horizons/i18n/guitranslations.py:705
+#: horizons/i18n/guitranslations.py
 msgid "Passive"
 msgstr "Passiivinen"
 
 #. (text of widget: fife_and_uh_team)
-#: horizons/i18n/guitranslations.py:710
+#: horizons/i18n/guitranslations.py
 msgid "The FIFE and Unknown Horizons development teams"
 msgstr "FIFE ja Unknown Horizons -kehitysryhmät"
 
 #. (text of widget: have_fun)
-#: horizons/i18n/guitranslations.py:712
+#: horizons/i18n/guitranslations.py
 msgid "Have fun."
 msgstr "Pidä hauskaa!"
 
 #. (text of widget: headline)
-#: horizons/i18n/guitranslations.py:714
+#: horizons/i18n/guitranslations.py
 msgid "Key bindings"
 msgstr "Näppämistöasetukset"
 
 #. (text of widget: lbl_BUILD_TOOL)
-#: horizons/i18n/guitranslations.py:716
+#: horizons/i18n/guitranslations.py
 msgid "Show build menu"
 msgstr "Näytä rakennusvalikko"
 
 #. (text of widget: lbl_CONSOLE)
-#: horizons/i18n/guitranslations.py:720
+#: horizons/i18n/guitranslations.py
 msgid "Toggle console on/off"
 msgstr "Konsoli näkyviin/pois"
 
 #. (text of widget: lbl_COORD_TOOLTIP)
-#: horizons/i18n/guitranslations.py:722
+#: horizons/i18n/guitranslations.py
 msgid "Show coordinate values (Debug)"
 msgstr "Näytä koordinaatit (Debug)"
 
 #. (text of widget: lbl_DESTROY_TOOL)
-#: horizons/i18n/guitranslations.py:724
+#: horizons/i18n/guitranslations.py
 msgid "Enable destruct mode"
 msgstr "Tuhoamistyökalu"
 
 #. (text of widget: lbl_DOWN)
-#: horizons/i18n/guitranslations.py:726
+#: horizons/i18n/guitranslations.py
 msgid "Scroll down"
 msgstr "Vieritä alas"
 
 #. (text of widget: lbl_GRID)
-#: horizons/i18n/guitranslations.py:728
+#: horizons/i18n/guitranslations.py
 msgid "Toggle grid on/off"
 msgstr "Ruudukko päälle/pois"
 
 #. (text of widget: lbl_HELP)
-#: horizons/i18n/guitranslations.py:730
+#: horizons/i18n/guitranslations.py
 msgid "Display help"
 msgstr "Tuo esiin tämän ohjeen"
 
 #. (text of widget: lbl_LEFT)
-#: horizons/i18n/guitranslations.py:732
+#: horizons/i18n/guitranslations.py
 msgid "Scroll left"
 msgstr "Vieritä vasemmalle"
 
 #. (text of widget: lbl_LOGBOOK)
-#: horizons/i18n/guitranslations.py:734
+#: horizons/i18n/guitranslations.py
 msgid "Toggle Captain's log"
 msgstr "Avaa/sulje Kapteenin päiväkirja"
 
 #. (text of widget: lbl_PAUSE)
-#: horizons/i18n/guitranslations.py:736
+#: horizons/i18n/guitranslations.py
 msgid "Pause game"
 msgstr "Pysäytä peli"
 
 #. (text of widget: lbl_PLAYERS_OVERVIEW)
-#: horizons/i18n/guitranslations.py:738
+#: horizons/i18n/guitranslations.py
 msgid "Show player scores"
 msgstr "Näytä pelitulokset"
 
 #. (text of widget: lbl_QUICKLOAD)
-#: horizons/i18n/guitranslations.py:740
+#: horizons/i18n/guitranslations.py
 msgid "Quickload"
 msgstr "Pikalataus"
 
 #. (text of widget: lbl_QUICKSAVE)
-#: horizons/i18n/guitranslations.py:742
+#: horizons/i18n/guitranslations.py
 msgid "Quicksave"
 msgstr "Pikatallennus"
 
 #. (text of widget: lbl_REMOVE_SELECTED)
-#: horizons/i18n/guitranslations.py:744
+#: horizons/i18n/guitranslations.py
 msgid "Remove selected units / buildings"
 msgstr "Poista valitut yksiköt/rakennukset"
 
 #. (text of widget: lbl_RIGHT)
-#: horizons/i18n/guitranslations.py:746
+#: horizons/i18n/guitranslations.py
 msgid "Scroll right"
 msgstr "Vieritä oikealle"
 
 #. (text of widget: lbl_ROAD_TOOL)
-#: horizons/i18n/guitranslations.py:748
+#: horizons/i18n/guitranslations.py
 msgid "Enable road building mode"
-msgstr ""
+msgstr "Tienrakennustyökalu"
 
 #. (text of widget: lbl_ROTATE_LEFT)
-#: horizons/i18n/guitranslations.py:750
+#: horizons/i18n/guitranslations.py
 msgid "Rotate building or map counterclockwise"
 msgstr "Käännä rakennusta tai karttaa vastapäivään"
 
 #. (text of widget: lbl_ROTATE_RIGHT)
-#: horizons/i18n/guitranslations.py:752
+#: horizons/i18n/guitranslations.py
 msgid "Rotate building or map clockwise"
 msgstr "Käännä rakennusta tai karttaa myötäpäivään"
 
 #. (text of widget: lbl_SCREENSHOT)
-#: horizons/i18n/guitranslations.py:754
+#: horizons/i18n/guitranslations.py
 msgid "Screenshot"
 msgstr "Ota kuvakaappaus"
 
 #. (text of widget: lbl_SETTLEMENTS_OVERVIEW)
-#: horizons/i18n/guitranslations.py:756
+#: horizons/i18n/guitranslations.py
 msgid "Show settlement list"
 msgstr "Näytä asukaslista"
 
 #. (text of widget: lbl_SHIFT)
-#: horizons/i18n/guitranslations.py:758
+#: horizons/i18n/guitranslations.py
 msgid "Hold to place multiple buildings"
 msgstr "Pidä pohjassa sijoittaaksesi useita rakennuksia"
 
 #. (text of widget: lbl_SHIPS_OVERVIEW)
-#: horizons/i18n/guitranslations.py:760
+#: horizons/i18n/guitranslations.py
 msgid "Show ship list"
 msgstr "Näytä lista aluksista"
 
 #. (text of widget: lbl_SPEED_DOWN)
-#: horizons/i18n/guitranslations.py:762
+#: horizons/i18n/guitranslations.py
 msgid "Decrease game speed"
 msgstr "Hidasta pelin nopeutta"
 
 #. (text of widget: lbl_SPEED_UP)
-#: horizons/i18n/guitranslations.py:764
+#: horizons/i18n/guitranslations.py
 msgid "Increase game speed"
 msgstr "Kiihdytä pelin nopeutta"
 
 #. (text of widget: lbl_TILE_OWNER_HIGHLIGHT)
-#: horizons/i18n/guitranslations.py:766
+#: horizons/i18n/guitranslations.py
 msgid "Highlight tile ownership"
-msgstr ""
+msgstr "Korosta maa-alueen omistajat"
 
 #. (text of widget: lbl_TRANSLUCENCY)
-#: horizons/i18n/guitranslations.py:768
+#: horizons/i18n/guitranslations.py
 msgid "Toggle translucency of ambient buildings"
 msgstr "Muuta ympäristön läpikuultavuutta"
 
 #. (text of widget: lbl_UP)
-#: horizons/i18n/guitranslations.py:770
+#: horizons/i18n/guitranslations.py
 msgid "Scroll up"
 msgstr "Vieritä ylös"
 
 #. (helptext of widget: okButton)
 #. (helptext of widget: cancelButton)
-#: horizons/i18n/guitranslations.py:772 horizons/i18n/guitranslations.py:935
+#: horizons/i18n/guitranslations.py horizons/i18n/guitranslations.py
 msgid "Return"
 msgstr "Poistu"
 
 #. (text of widget: quit)
-#: horizons/i18n/guitranslations.py:781
+#: horizons/i18n/guitranslations.py
 msgid "Cancel game"
 msgstr "Poistu pelistä"
 
 #. (text of widget: settings)
 #. (text of widget: settings) Main / in-game menu entry
-#: horizons/i18n/guitranslations.py:785 horizons/i18n/guitranslations.py:809
+#: horizons/i18n/guitranslations.py horizons/i18n/guitranslations.py
 msgid "Settings"
 msgstr "Asetukset"
 
 #. (text of widget: loading_label)
-#: horizons/i18n/guitranslations.py:792
+#: horizons/i18n/guitranslations.py
 msgid "Loading ..."
 msgstr "Ladataan..."
 
 #. (text of widget: chimebell)
-#: horizons/i18n/guitranslations.py:799
+#: horizons/i18n/guitranslations.py
 msgid "Attention please!"
 msgstr "Huomio!"
 
 #. (text of widget: credits)
-#: horizons/i18n/guitranslations.py:801
+#: horizons/i18n/guitranslations.py
 msgid "Credits"
 msgstr "Tekijät"
 
 #. (text of widget: quit) Completely shut down UH
-#: horizons/i18n/guitranslations.py:807
+#: horizons/i18n/guitranslations.py
 msgid "Quit"
 msgstr "Lopeta"
 
 #. (text of widget: start) Opens widget to create singleplayer games (campaigns, scenarios, random maps, free play)
-#: horizons/i18n/guitranslations.py:811
+#: horizons/i18n/guitranslations.py
 msgid "Singleplayer"
 msgstr "Yksinpeli"
 
 #. (text of widget: start_multi) Opens widget to join or create multiplayer games
-#: horizons/i18n/guitranslations.py:813
+#: horizons/i18n/guitranslations.py
 msgid "Multiplayer"
 msgstr "Moninpeli"
 
 #. (text of widget: create_game_lbl)
-#: horizons/i18n/guitranslations.py:820 horizons/i18n/guitranslations.py:858
+#: horizons/i18n/guitranslations.py horizons/i18n/guitranslations.py
 msgid "Create game:"
 msgstr "Luo peli:"
 
 #. (text of widget: exit_to_mp_menu_lbl)
-#: horizons/i18n/guitranslations.py:822
+#: horizons/i18n/guitranslations.py
 msgid "Back:"
 msgstr "Takaisin:"
 
 #. (text of widget: gamename_lbl)
-#: horizons/i18n/guitranslations.py:824 horizons/i18n/guitranslations.py:966
+#: horizons/i18n/guitranslations.py horizons/i18n/guitranslations.py
 msgid "Name of the game:"
-msgstr ""
+msgstr "Pelin nimi:"
 
 #. (text of widget: headline)
-#: horizons/i18n/guitranslations.py:826
+#: horizons/i18n/guitranslations.py
 msgid "Choose a map:"
 msgstr "Valitse kartta:"
 
 #. (text of widget: headline)
-#: horizons/i18n/guitranslations.py:828
+#: horizons/i18n/guitranslations.py
 msgid "Create game - Multiplayer"
 msgstr "Luo peli - Moninpeli"
 
 #. (text of widget: mp_player_limit_lbl)
-#: horizons/i18n/guitranslations.py:830
+#: horizons/i18n/guitranslations.py
 msgid "Player limit:"
 msgstr "Pelaajaraja:"
 
 #. (helptext of widget: cancel)
-#: horizons/i18n/guitranslations.py:832
+#: horizons/i18n/guitranslations.py
 msgid "Exit to multiplayer menu"
 msgstr "Poistu moninpelivalikkoon"
 
 #. (helptext of widget: create)
-#: horizons/i18n/guitranslations.py:834
+#: horizons/i18n/guitranslations.py
 msgid "Create this new game"
 msgstr "Luo tämä uusi peli"
 
 #. (helptext of widget: gamename_lbl)
-#: horizons/i18n/guitranslations.py:836 horizons/i18n/guitranslations.py:976
+#: horizons/i18n/guitranslations.py horizons/i18n/guitranslations.py
 msgid "This will be displayed to other players so they recognise the game."
-msgstr ""
+msgstr "Muut pelaajat tunnistavat pelin sen nimen perusteella."
 
 #. (text of widget: exit_to_mp_menu_lbl)
-#: horizons/i18n/guitranslations.py:841
+#: horizons/i18n/guitranslations.py
 msgid "Leave:"
 msgstr "Poistu:"
 
 #. (text of widget: game_start_notice)
-#: horizons/i18n/guitranslations.py:843
+#: horizons/i18n/guitranslations.py
 msgid "The game will start as soon as enough players have joined."
 msgstr "Peli alkaa, kun tarpeeksi monta pelaajaa on liittynyt siihen."
 
 #. (text of widget: headline)
-#: horizons/i18n/guitranslations.py:845
+#: horizons/i18n/guitranslations.py
 msgid "Chat:"
 msgstr "Keskustelu:"
 
 #. (text of widget: headline)
-#: horizons/i18n/guitranslations.py:847
+#: horizons/i18n/guitranslations.py
 msgid "Gamelobby"
 msgstr "Pelihuone"
 
 #. (text of widget: startmessage)
-#: horizons/i18n/guitranslations.py:849
+#: horizons/i18n/guitranslations.py
 msgid "Game details:"
 msgstr "Pelin yksityiskohdat:"
 
 #. (helptext of widget: cancel)
-#: horizons/i18n/guitranslations.py:851
+#: horizons/i18n/guitranslations.py
 msgid "Exit gamelobby"
 msgstr "Poistu pelihuoneesta"
 
 #. (text of widget: active_games_lbl)
-#: horizons/i18n/guitranslations.py:856
+#: horizons/i18n/guitranslations.py
 msgid "Active games:"
 msgstr "Aktiivisia pelejä:"
 
 #. (text of widget: exit_to_main_menu_lbl)
 #. (text of widget: main_menu_label)
-#: horizons/i18n/guitranslations.py:860 horizons/i18n/guitranslations.py:983
+#: horizons/i18n/guitranslations.py horizons/i18n/guitranslations.py
 msgid "Main menu:"
 msgstr "Päävalikko:"
 
 # 78%
 #. (text of widget: game_showonlyownversion)
-#: horizons/i18n/guitranslations.py:862
+#: horizons/i18n/guitranslations.py
 msgid "Only show games with the same version:"
 msgstr "Näytä vain saman version pelit:"
 
 #. (text of widget: headline_left)
-#: horizons/i18n/guitranslations.py:864
+#: horizons/i18n/guitranslations.py
 msgid "New game - Multiplayer"
 msgstr "Uusi peli - Moninpeli"
 
 #. (text of widget: join_game_lbl)
-#: horizons/i18n/guitranslations.py:866
+#: horizons/i18n/guitranslations.py
 msgid "Join game"
 msgstr "Liity peliin"
 
 # 90%
 #. (text of widget: load_game_lbl)
-#: horizons/i18n/guitranslations.py:868
-#, fuzzy
+#: horizons/i18n/guitranslations.py
 msgid "Load game:"
-msgstr "Lataa peli"
+msgstr "Lataa peli:"
 
 #. (text of widget: refr_gamelist_lbl)
-#: horizons/i18n/guitranslations.py:870
+#: horizons/i18n/guitranslations.py
 msgid "Refresh list:"
 msgstr "Päivitä listaa:"
 
 #. (helptext of widget: cancel)
-#: horizons/i18n/guitranslations.py:872 horizons/i18n/guitranslations.py:995
+#: horizons/i18n/guitranslations.py horizons/i18n/guitranslations.py
 msgid "Exit to main menu"
 msgstr "Palaa päävalikkoon"
 
 #. (helptext of widget: create)
-#: horizons/i18n/guitranslations.py:874
+#: horizons/i18n/guitranslations.py
 msgid "Create a new game"
 msgstr "Luo uusi peli"
 
 #. (helptext of widget: join)
-#: horizons/i18n/guitranslations.py:876
+#: horizons/i18n/guitranslations.py
 msgid "Join the selected game"
 msgstr "Liity valitsemaasi peliin"
 
 #. (helptext of widget: load)
-#: horizons/i18n/guitranslations.py:878
+#: horizons/i18n/guitranslations.py
 msgid "Load a saved game"
-msgstr ""
+msgstr "Lataa tallennettu peli"
 
 #. (helptext of widget: refresh)
-#: horizons/i18n/guitranslations.py:880
+#: horizons/i18n/guitranslations.py
 msgid "Refresh list of active games"
 msgstr "Päivitä lista aktiivisista peleistä"
 
 #. (text of widget: auto_unload_label)
-#: horizons/i18n/guitranslations.py:885
+#: horizons/i18n/guitranslations.py
 msgid "Auto-unload ship:"
 msgstr "Pura laivan lasti automaattisesti:"
 
 #. (text of widget: autosave_interval_label)
-#: horizons/i18n/guitranslations.py:887
+#: horizons/i18n/guitranslations.py
 msgid "Autosave interval in minutes:"
 msgstr "Automaattisten tallennusten tekoväli minuuteissa:"
 
 #. (text of widget: color_depth_label)
-#: horizons/i18n/guitranslations.py:889
+#: horizons/i18n/guitranslations.py
 msgid "Color depth:"
 msgstr "Värisyvyys:"
 
 #. (text of widget: debug_log_lbl)
-#: horizons/i18n/guitranslations.py:891
+#: horizons/i18n/guitranslations.py
 msgid "Enable logging"
-msgstr ""
+msgstr "Lokitietojen tallennus"
 
 #. (text of widget: edge_scrolling_label)
-#: horizons/i18n/guitranslations.py:893
+#: horizons/i18n/guitranslations.py
 msgid "Scroll at map edge:"
 msgstr "Vieritä karttaa hiirellä:"
 
 #. (text of widget: effect_volume_label)
-#: horizons/i18n/guitranslations.py:895
+#: horizons/i18n/guitranslations.py
 msgid "Effects volume:"
 msgstr "Tehosteiden määrä:"
 
 #. (text of widget: fps_label)
-#: horizons/i18n/guitranslations.py:897
+#: horizons/i18n/guitranslations.py
 msgid "Frame rate limit:"
-msgstr ""
+msgstr "Suurin kuvanopeus:"
 
 #. (text of widget: headline_language)
-#: horizons/i18n/guitranslations.py:901
+#: horizons/i18n/guitranslations.py
 msgid "Language"
 msgstr "Kieli"
 
 #. (text of widget: headline_mouse)
-#: horizons/i18n/guitranslations.py:903
+#: horizons/i18n/guitranslations.py
 msgid "Mouse"
 msgstr "Hiiri"
 
 #. (text of widget: headline_network)
-#: horizons/i18n/guitranslations.py:905
+#: horizons/i18n/guitranslations.py
 msgid "Network"
 msgstr "Verkko"
 
 #. (text of widget: headline_saving)
-#: horizons/i18n/guitranslations.py:907
+#: horizons/i18n/guitranslations.py
 msgid "Saving"
 msgstr "Tallennukset"
 
 #. (text of widget: language_label)
-#: horizons/i18n/guitranslations.py:911
+#: horizons/i18n/guitranslations.py
 msgid "Select language:"
 msgstr "Valitse kieli:"
 
 #. (text of widget: minimap_rotation_label)
-#: horizons/i18n/guitranslations.py:913
+#: horizons/i18n/guitranslations.py
 msgid "Rotate minimap with map:"
 msgstr "Käännä pikkukarttaa pääkarttaa käännettäessä:"
 
 # 76%
 #. (text of widget: mouse_sensitivity_label)
-#: horizons/i18n/guitranslations.py:915
+#: horizons/i18n/guitranslations.py
 msgid "Mouse sensitivity:"
 msgstr "Hiiren herkkyys:"
 
 #. (text of widget: music_volume_label)
-#: horizons/i18n/guitranslations.py:917
+#: horizons/i18n/guitranslations.py
 msgid "Music volume:"
 msgstr "Musiikin äänenvoimakkuus:"
 
 #. (text of widget: network_port_lbl)
-#: horizons/i18n/guitranslations.py:919
+#: horizons/i18n/guitranslations.py
 msgid "Network port:"
 msgstr "Verkkoportti:"
 
 #. (text of widget: number_of_autosaves_label)
-#: horizons/i18n/guitranslations.py:921
+#: horizons/i18n/guitranslations.py
 msgid "Number of autosaves:"
 msgstr "Automaattisten tallennusten määrä:"
 
 #. (text of widget: number_of_quicksaves_label)
-#: horizons/i18n/guitranslations.py:923
+#: horizons/i18n/guitranslations.py
 msgid "Number of quicksaves:"
 msgstr "Pikatallennusten määrä:"
 
 #. (text of widget: screen_fullscreen_text)
-#: horizons/i18n/guitranslations.py:925
+#: horizons/i18n/guitranslations.py
 msgid "Full screen:"
 msgstr "Käytä koko näyttöä:"
 
 #. (text of widget: screen_resolution_label)
-#: horizons/i18n/guitranslations.py:927
+#: horizons/i18n/guitranslations.py
 msgid "Screen resolution:"
 msgstr "Resoluutio:"
 
 #. (text of widget: sound_enable_opt_text)
-#: horizons/i18n/guitranslations.py:929
+#: horizons/i18n/guitranslations.py
 msgid "Enable sound:"
 msgstr "Ota äänet käyttöön:"
 
 #. (text of widget: uninterrupted_building_label)
-#: horizons/i18n/guitranslations.py:931
+#: horizons/i18n/guitranslations.py
 msgid "Uninterrupted building:"
-msgstr ""
+msgstr "Keskeytymätön rakentaminen:"
 
 #. (text of widget: use_renderer_label)
-#: horizons/i18n/guitranslations.py:933
+#: horizons/i18n/guitranslations.py
 msgid "Used renderer:"
 msgstr "Valitse näyttösovitin:"
 
 #. (helptext of widget: defaultButton)
-#: horizons/i18n/guitranslations.py:937
+#: horizons/i18n/guitranslations.py
 msgid "Reset to default settings"
 msgstr "Palauta oletusasetukset"
 
 # 83%
 #. (helptext of widget: okButton)
-#: horizons/i18n/guitranslations.py:939
+#: horizons/i18n/guitranslations.py
 msgid "Apply"
 msgstr "Hyväksy"
 
 #. (helptext of widget: auto_unload_label)
-#: horizons/i18n/guitranslations.py:941
+#: horizons/i18n/guitranslations.py
 msgid "Whether to unload the ship after founding a settlement"
 msgstr ""
+"Laivan lasti puretaan automaattisesti uuden siirtokunnan perustamisen "
+"jälkeen"
 
 #. (helptext of widget: color_depth_label)
-#: horizons/i18n/guitranslations.py:943
+#: horizons/i18n/guitranslations.py
 msgid "If set to 0, use the driver default"
-msgstr ""
+msgstr "Arvon ollessa 0, käytetään näyttösovittimen oletusta"
 
 #. (helptext of widget: debug_log_lbl)
-#: horizons/i18n/guitranslations.py:945
+#: horizons/i18n/guitranslations.py
 msgid "Don't use in normal game session. Decides whether to write debug information in the logging directory of your user directory. Slows the game down."
 msgstr ""
+"Älä käytä normaalissa pelitilanteessa. Pelin virhetietoja kerätään "
+"kotikansiossasi olevaan lokitiedostoon. Hidastaa peliä."
 
 #. (helptext of widget: edge_scrolling_label)
-#: horizons/i18n/guitranslations.py:947
+#: horizons/i18n/guitranslations.py
 msgid "Whether to move the viewport when the mouse pointer is close to map edges"
-msgstr ""
+msgstr "Karttaa voi vierittää myös viemällä hiiren kartan reunaan"
 
 #. (helptext of widget: fps_label)
-#: horizons/i18n/guitranslations.py:949
+#: horizons/i18n/guitranslations.py
 msgid "Set the maximum frame rate used. Default: 60 fps."
-msgstr ""
+msgstr "Valitse suurin sallittu kuvapäivitysnopeus. Oletus: 60fps."
 
 #. (helptext of widget: minimap_rotation_label)
-#: horizons/i18n/guitranslations.py:951
+#: horizons/i18n/guitranslations.py
 msgid "Whether to also rotate the minimap whenever the regular map is rotated"
 msgstr ""
+"Pikkukarttaa käännetään vastaavasti kuin pelin karttaa sitä käännettäessä"
 
 #. (helptext of widget: mouse_sensitivity_label)
-#: horizons/i18n/guitranslations.py:953
+#: horizons/i18n/guitranslations.py
 #, fuzzy
 msgid "0 is default system settings"
 msgstr "Palauta oletusasetukset"
 
 #. (helptext of widget: network_port_lbl)
-#: horizons/i18n/guitranslations.py:955
+#: horizons/i18n/guitranslations.py
 msgid "If set to 0, use the router default"
-msgstr ""
+msgstr "Arvon ollessa 0, käytetään reitittimen oletusta"
 
 #. (helptext of widget: uninterrupted_building_label)
-#: horizons/i18n/guitranslations.py:957
+#: horizons/i18n/guitranslations.py
 msgid "When enabled, do not exit the build mode after successful construction"
 msgstr ""
+"Rakennustilasta ei poistuta, ennen kuin vähintään yksi rakennus on "
+"rakennettu onnistuneesti"
 
 #. (helptext of widget: use_renderer_label)
-#: horizons/i18n/guitranslations.py:959
+#: horizons/i18n/guitranslations.py
 msgid "SDL is only meant as unsupported fallback and might cause problems!"
+msgstr "SDL on tarkoitettu vain hätätapauksiin ja voi aiheuttaa ongelmia!"
+
+#. (text of widget: headline)
+#: horizons/i18n/guitranslations.py
+msgid "Random map archive"
 msgstr ""
 
 #. (text of widget: enter_filename_label)
-#: horizons/i18n/guitranslations.py:964
+#: horizons/i18n/guitranslations.py
 msgid "Enter filename:"
 msgstr "Kirjoita tiedostonimi:"
 
 #. (text of widget: headline_saved_games_label)
-#: horizons/i18n/guitranslations.py:970
+#: horizons/i18n/guitranslations.py
 msgid "Your saved games:"
 msgstr "Tallennetut pelit:"
 
 #. (helptext of widget: cancelButton)
-#: horizons/i18n/guitranslations.py:972
+#: horizons/i18n/guitranslations.py
 msgid "Cancel"
 msgstr "Peruuta"
 
 #. (helptext of widget: deleteButton)
-#: horizons/i18n/guitranslations.py:974
+#: horizons/i18n/guitranslations.py
 msgid "Delete selected savegame"
 msgstr "Poista valittu pelitallennus"
 
 #. (text of widget: headline)
-#: horizons/i18n/guitranslations.py:981
+#: horizons/i18n/guitranslations.py
 msgid "New game - Singleplayer"
 msgstr "Uusi peli - Yksinpeli"
 
 #. (text of widget: start_game_label)
-#: horizons/i18n/guitranslations.py:985
+#: horizons/i18n/guitranslations.py
 msgid "Start game:"
 msgstr "Aloita peli:"
 
 #. (text of widget: campaign)
-#: horizons/i18n/guitranslations.py:987
+#: horizons/i18n/guitranslations.py
 msgid "Campaign"
 msgstr "Päätehtävä"
 
 #. (text of widget: free_maps)
-#: horizons/i18n/guitranslations.py:989
+#: horizons/i18n/guitranslations.py
 msgid "Free play"
 msgstr "Vapaamuotoinen peli"
 
 #. (text of widget: random)
-#: horizons/i18n/guitranslations.py:991
+#: horizons/i18n/guitranslations.py
 msgid "Random map"
 msgstr "Satunnainen kartta"
 
 #. (text of widget: scenario)
-#: horizons/i18n/guitranslations.py:993
+#: horizons/i18n/guitranslations.py
 msgid "Scenario"
 msgstr "Juonipeli"
 
 #. (helptext of widget: okay)
-#: horizons/i18n/guitranslations.py:997
+#: horizons/i18n/guitranslations.py
 msgid "Start game"
 msgstr "Aloita peli"
 
 #. (text of widget: choose_map_lbl)
 #. (text of widget: headline_choose_map_lbl)
 #. (text of widget: choose_map_lbl)
-#: horizons/i18n/guitranslations.py:1002 horizons/i18n/guitranslations.py:1007
-#: horizons/i18n/guitranslations.py:1019
+#: horizons/i18n/guitranslations.py horizons/i18n/guitranslations.py
+#: horizons/i18n/guitranslations.py
 msgid "Choose a map to play:"
 msgstr "Valitse pelattava kartta:"
 
 #. (text of widget: headline_map_settings_lbl)
-#: horizons/i18n/guitranslations.py:1012
+#: horizons/i18n/guitranslations.py
 msgid "Map settings:"
 msgstr "Kartan asetukset:"
 
 #. (text of widget: seed_string_lbl)
-#: horizons/i18n/guitranslations.py:1014
+#: horizons/i18n/guitranslations.py
 msgid "Seed:"
-msgstr ""
+msgstr "Kartta:"
 
 #. (text of widget: ai_players_label)
-#: horizons/i18n/guitranslations.py:1024
+#: horizons/i18n/guitranslations.py
 msgid "AI players:"
 msgstr "Tietokonepelaajat:"
 
 #. (text of widget: headline_game_settings_lbl)
-#: horizons/i18n/guitranslations.py:1029
+#: horizons/i18n/guitranslations.py
 msgid "Game settings:"
 msgstr "Pelin asetukset:"
 
 #. (text of widget: lbl_disasters) Whether there should be disasters in the game.
-#: horizons/i18n/guitranslations.py:1031
+#: horizons/i18n/guitranslations.py
 msgid "Disasters"
-msgstr ""
+msgstr "Katastrofit"
 
 #. (text of widget: lbl_free_trader) Whether to create this kind of player in the game.
-#: horizons/i18n/guitranslations.py:1033
+#: horizons/i18n/guitranslations.py
 msgid "Free Trader"
 msgstr "Vapaakauppias"
 
 #. (text of widget: lbl_pirates) Whether to create this kind of player in the game.
-#: horizons/i18n/guitranslations.py:1035
+#: horizons/i18n/guitranslations.py
 msgid "Pirates"
 msgstr "Merirosvot"
 
 #. (text of widget: color_label)
-#: horizons/i18n/guitranslations.py:1040
+#: horizons/i18n/guitranslations.py
 msgid "Color:"
 msgstr "Väri:"
 
 #. (text of widget: player_label)
-#: horizons/i18n/guitranslations.py:1042
+#: horizons/i18n/guitranslations.py
 msgid "Player name:"
 msgstr "Pelaajan nimi:"
 
 #. name of buildings:alvearies
-#: horizons/i18n/objecttranslations.py:53
+#: horizons/i18n/objecttranslations.py
 msgid "Alvearies"
 msgstr "Mehiläispesä"
 
 #. tooltip_text of buildings:alvearies
-#: horizons/i18n/objecttranslations.py:55
+#: horizons/i18n/objecttranslations.py
 msgid "Keeps bees. Produces honeycombs used for confectionery. Needs a farm."
 msgstr ""
 "Kasvattaa mehiläisiä. Tuottaa makeisten valmistukseen käytettäviä "
 "hunajakennoja. Tarvitsee maatilan."
 
 #. name of buildings:bakery
-#: horizons/i18n/objecttranslations.py:60
+#: horizons/i18n/objecttranslations.py
 msgid "Bakery"
-msgstr ""
+msgstr "Leipomo"
 
 #. tooltip_text of buildings:bakery
-#: horizons/i18n/objecttranslations.py:62
+#: horizons/i18n/objecttranslations.py
 msgid "Consumes flour. Produces food."
-msgstr ""
+msgstr "Valmistaa jauhoista ruokaa."
 
 #. name of buildings:barracks
-#: horizons/i18n/objecttranslations.py:67
+#: horizons/i18n/objecttranslations.py
 msgid "Barracks"
 msgstr "Kasarmi"
 
 #. tooltip_text of buildings:barracks
-#: horizons/i18n/objecttranslations.py:69
+#: horizons/i18n/objecttranslations.py
 msgid "Recruits units suitable for ground combat."
 msgstr "Kouluttaa yksiköitä maataisteluihin."
 
 #. name of buildings:blender
-#: horizons/i18n/objecttranslations.py:74
+#: horizons/i18n/objecttranslations.py
 msgid "Blender"
 msgstr ""
 
 #. tooltip_text of buildings:blender
-#: horizons/i18n/objecttranslations.py:76
+#: horizons/i18n/objecttranslations.py
 msgid "Produces condiments out of spices."
 msgstr ""
 
 #. name of buildings:boatbuilder
-#: horizons/i18n/objecttranslations.py:81
+#: horizons/i18n/objecttranslations.py
 msgid "Boat Builder"
 msgstr "Veneenveistämö"
 
 #. tooltip_text of buildings:boatbuilder
-#: horizons/i18n/objecttranslations.py:83
+#: horizons/i18n/objecttranslations.py
 msgid "Builds boats and small ships. Built on coast."
 msgstr "Rakentaa veneitä ja pieniä laivoja. Rakennetaan rannikolle."
 
 #. name of buildings:brickyard
-#: horizons/i18n/objecttranslations.py:88
+#: horizons/i18n/objecttranslations.py
 msgid "Brickyard"
 msgstr "Savenvalamo"
 
 #. tooltip_text of buildings:brickyard
-#: horizons/i18n/objecttranslations.py:90
+#: horizons/i18n/objecttranslations.py
 msgid "Turns clay into bricks."
 msgstr "Muuttaa savea tiiliksi."
 
 #. name of buildings:butchery
-#: horizons/i18n/objecttranslations.py:95
+#: horizons/i18n/objecttranslations.py
 msgid "Butchery"
 msgstr "Teurastamo"
 
 #. tooltip_text of buildings:butchery
-#: horizons/i18n/objecttranslations.py:97
+#: horizons/i18n/objecttranslations.py
 msgid "Needs pigs or cattle. Produces food."
 msgstr "Tarvitsee sikoja tai karjaa. Tuottaa ruokaa."
 
 #. name of buildings:cattlerun
-#: horizons/i18n/objecttranslations.py:102
+#: horizons/i18n/objecttranslations.py
 msgid "Cattle Run"
 msgstr "Karjalauma"
 
 #. tooltip_text of buildings:cattlerun
-#: horizons/i18n/objecttranslations.py:104
+#: horizons/i18n/objecttranslations.py
 msgid "Raises cattle. Needs a farm."
 msgstr "Tarvitsee maatilan."
 
 #. name of buildings:charcoalburning
-#: horizons/i18n/objecttranslations.py:109
+#: horizons/i18n/objecttranslations.py
 msgid "Charcoal Burning"
 msgstr "Puuhiilen polttamo"
 
 #. tooltip_text of buildings:charcoalburning
-#: horizons/i18n/objecttranslations.py:111
-msgid "Burns a lot of boards to charcoal."
-msgstr ""
+#: horizons/i18n/objecttranslations.py
+msgid "Burns a lot of boards."
+msgstr "Polttaa paljon lautoja."
 
 #. name of buildings:claydeposit
-#: horizons/i18n/objecttranslations.py:116
+#: horizons/i18n/objecttranslations.py
 msgid "Clay Deposit"
 msgstr "Savimaa"
 
 #. name of buildings:claypit
-#: horizons/i18n/objecttranslations.py:121
+#: horizons/i18n/objecttranslations.py
 msgid "Clay Pit"
 msgstr "Savikuoppa"
 
 #. tooltip_text of buildings:claypit
-#: horizons/i18n/objecttranslations.py:123
+#: horizons/i18n/objecttranslations.py
 msgid "Gets clay from deposit."
 msgstr "Kaivaa savea savisesta maasta."
 
 #. name of buildings:cocoafield
-#: horizons/i18n/objecttranslations.py:128
+#: horizons/i18n/objecttranslations.py
 msgid "Cocoa Field"
-msgstr ""
+msgstr "Kaakaopelto"
 
 #. tooltip_text of buildings:cocoafield
-#: horizons/i18n/objecttranslations.py:130
+#: horizons/i18n/objecttranslations.py
 msgid "Produces cocoa beans used for confectionery. Needs a farm."
 msgstr ""
 "Tuottaa makeistenvalmistukseen tarvittavia kaakaopapuja. Tarvitsee maatilan."
 
 #. name of buildings:cornfield
-#: horizons/i18n/objecttranslations.py:135
+#: horizons/i18n/objecttranslations.py
 msgid "Corn Field"
-msgstr ""
+msgstr "Maissipelto"
 
 # 88%
 #. tooltip_text of buildings:cornfield
-#: horizons/i18n/objecttranslations.py:137
+#: horizons/i18n/objecttranslations.py
 msgid "Yields corn. Needs a farm."
 msgstr "Tuottaa maisseista ruokaa. Tarvitsee maatilan."
 
 # Simatehdas
 #. name of buildings:distillery
-#: horizons/i18n/objecttranslations.py:142
+#: horizons/i18n/objecttranslations.py
 msgid "Distillery"
 msgstr "Tislaamo"
 
 #. tooltip_text of buildings:distillery
-#: horizons/i18n/objecttranslations.py:144
+#: horizons/i18n/objecttranslations.py
 msgid "Turns sugar into liquor."
 msgstr "Käyttää sokeria viinanpolttoon."
 
 #. name of buildings:doctor
-#: horizons/i18n/objecttranslations.py:149
+#: horizons/i18n/objecttranslations.py
 msgid "Doctor"
 msgstr "Lääkäri"
 
 #. tooltip_text of buildings:doctor
-#: horizons/i18n/objecttranslations.py:151
+#: horizons/i18n/objecttranslations.py
 msgid "Treats diseases. Consumes herbs."
 msgstr "Parantaa sairaita. Käyttää yrttejä."
 
 #. name of buildings:farm
-#: horizons/i18n/objecttranslations.py:156
+#: horizons/i18n/objecttranslations.py
 msgid "Farm"
 msgstr "Maatila"
 
 #. tooltip_text of buildings:farm
-#: horizons/i18n/objecttranslations.py:158
+#: horizons/i18n/objecttranslations.py
 msgid "Grows field crops and raises livestock."
 msgstr "Kasvattaa peltojen satoa ja karjaa."
 
 #. name of buildings:fireservice
-#: horizons/i18n/objecttranslations.py:163
+#: horizons/i18n/objecttranslations.py
 msgid "Fire Station"
-msgstr ""
+msgstr "Paloasema"
 
 #. tooltip_text of buildings:fireservice
-#: horizons/i18n/objecttranslations.py:165
+#: horizons/i18n/objecttranslations.py
 msgid "Extinguishes fires."
-msgstr ""
+msgstr "Sammuttaa tulipaloja."
 
 #. name of buildings:fishdeposit
-#: horizons/i18n/objecttranslations.py:170
+#: horizons/i18n/objecttranslations.py
 msgid "Fish Deposit"
 msgstr "Kalaparvi"
 
 #. name of buildings:fishermanstent
-#: horizons/i18n/objecttranslations.py:175
+#: horizons/i18n/objecttranslations.py
 msgid "Fisherman's Tent"
 msgstr "Kalastajan teltta"
 
 #. tooltip_text of buildings:fishermanstent
-#: horizons/i18n/objecttranslations.py:177
+#: horizons/i18n/objecttranslations.py
 msgid "Fishes the sea, produces food."
 msgstr "Kalastaa merellä, tuottaa ruokaa."
 
-#. name of buildings:gravelpath
-#: horizons/i18n/objecttranslations.py:182
-msgid "Gravel Path"
-msgstr "Sorapolku"
-
 #. name of buildings:herbary
-#: horizons/i18n/objecttranslations.py:187
+#: horizons/i18n/objecttranslations.py
 msgid "Herbary"
 msgstr "Yrttitarha"
 
 #. tooltip_text of buildings:herbary
-#: horizons/i18n/objecttranslations.py:189
+#: horizons/i18n/objecttranslations.py
 msgid "Produces herbs. Needs a farm."
 msgstr "Tuottaa yrttejä. Tarvitsee maatilan."
 
 #. name of buildings:hunterstent
-#: horizons/i18n/objecttranslations.py:194
+#: horizons/i18n/objecttranslations.py
 msgid "Hunter's Tent"
 msgstr "Metsästäjän teltta"
 
 #. tooltip_text of buildings:hunterstent
-#: horizons/i18n/objecttranslations.py:196
+#: horizons/i18n/objecttranslations.py
 msgid "Hunts wild forest animals, produces food."
 msgstr "Metsästää metsän villieläimiä, tuottaa ruokaa."
 
 #. name of buildings:ironmine
-#: horizons/i18n/objecttranslations.py:201
+#: horizons/i18n/objecttranslations.py
 msgid "Iron Mine"
 msgstr "Rautakaivos"
 
 #. tooltip_text of buildings:ironmine
-#: horizons/i18n/objecttranslations.py:203
+#: horizons/i18n/objecttranslations.py
 msgid "Gets iron ore from deposit."
 msgstr "Kaivaa rautaa rautaesiintymästä."
 
-#. name of buildings:log
-#: horizons/i18n/objecttranslations.py:208
-msgid "Log"
-msgstr "Tukki"
-
-#. tooltip_text of buildings:log
-#: horizons/i18n/objecttranslations.py:210
-msgid "Road across a river."
-msgstr "Tie joen yli."
-
 #. name of buildings:lookout
-#: horizons/i18n/objecttranslations.py:215
+#: horizons/i18n/objecttranslations.py
 msgid "Lookout"
 msgstr "Vartiopaikka"
 
 #. tooltip_text of buildings:lookout
-#: horizons/i18n/objecttranslations.py:217
+#: horizons/i18n/objecttranslations.py
 msgid "Increases the player's sight."
 msgstr ""
 
 #. name_0 of buildings:lumberjackcamp
-#: horizons/i18n/objecttranslations.py:222
+#: horizons/i18n/objecttranslations.py
 msgid "Lumberjack Tent"
-msgstr ""
+msgstr "Puunhakkaajan teltta"
 
 #. name_1 of buildings:lumberjackcamp
-#: horizons/i18n/objecttranslations.py:224
+#: horizons/i18n/objecttranslations.py
 msgid "Lumberjack Hut"
-msgstr ""
+msgstr "Puunhakkaajan mökki"
 
 #. tooltip_text of buildings:lumberjackcamp
-#: horizons/i18n/objecttranslations.py:226
+#: horizons/i18n/objecttranslations.py
 msgid "Chops down trees and turns them into boards."
 msgstr "Kaataa puita ja tekee niistä lautoja."
 
 #. name of buildings:mainsquare
-#: horizons/i18n/objecttranslations.py:231
+#: horizons/i18n/objecttranslations.py
 msgid "Main Square"
 msgstr "Keskustori"
 
 #. tooltip_text of buildings:mainsquare
-#: horizons/i18n/objecttranslations.py:233
+#: horizons/i18n/objecttranslations.py
 msgid "Supplies citizens with goods."
 msgstr "Tarjoaa asukkaille tuotteita."
 
 #. name of buildings:mountain
-#: horizons/i18n/objecttranslations.py:238
+#: horizons/i18n/objecttranslations.py
 msgid "Mountain"
 msgstr "Vuori"
 
 #. name of buildings:pastryshop
-#: horizons/i18n/objecttranslations.py:243
+#: horizons/i18n/objecttranslations.py
 msgid "Pastry Shop"
 msgstr "Leipäkauppa"
 
 #. tooltip_text of buildings:pastryshop
-#: horizons/i18n/objecttranslations.py:245
+#: horizons/i18n/objecttranslations.py
 msgid "Produces all kinds of confectionery."
 msgstr ""
 
 #. name of buildings:pasture
-#: horizons/i18n/objecttranslations.py:250
+#: horizons/i18n/objecttranslations.py
 msgid "Pasture"
 msgstr "Laidun"
 
 #. tooltip_text of buildings:pasture
-#: horizons/i18n/objecttranslations.py:252
+#: horizons/i18n/objecttranslations.py
 msgid "Raises sheep. Produces wool. Needs a farm."
 msgstr "Kasvattaa lampaita ja tuottaa villaa. Tarvitsee maatilan."
 
 #. name of buildings:pavilion
-#: horizons/i18n/objecttranslations.py:257
+#: horizons/i18n/objecttranslations.py
 msgid "Pavilion"
 msgstr "Kirkko"
 
 #. tooltip_text of buildings:pavilion
-#: horizons/i18n/objecttranslations.py:259
+#: horizons/i18n/objecttranslations.py
 msgid "Fulfills religious needs of sailors."
 msgstr "Täyttää merenkävijöiden uskonnolliset tarpeet."
 
 #. name of buildings:pigsty
-#: horizons/i18n/objecttranslations.py:264
+#: horizons/i18n/objecttranslations.py
 msgid "Pigsty"
 msgstr "Sikalauma"
 
 #. tooltip_text of buildings:pigsty
-#: horizons/i18n/objecttranslations.py:266
+#: horizons/i18n/objecttranslations.py
 msgid "Raises pigs. Needs a farm."
 msgstr "Tarvitsee maatilan."
 
 #. name of buildings:potatofield
-#: horizons/i18n/objecttranslations.py:271
+#: horizons/i18n/objecttranslations.py
 msgid "Potato Field"
 msgstr "Perunapelto"
 
 #. tooltip_text of buildings:potatofield
-#: horizons/i18n/objecttranslations.py:273
+#: horizons/i18n/objecttranslations.py
 msgid "Yields food. Needs a farm."
 msgstr "Tuottaa ruokaa. Tarvitsee maatilan."
 
-#. name of buildings:rampart
-#: horizons/i18n/objecttranslations.py:278
-msgid "Rampart"
-msgstr "Muuri"
-
-#. tooltip_text of buildings:rampart
-#: horizons/i18n/objecttranslations.py:280
-msgid "Protects your settlement."
-msgstr "Puolustaa siirtokuntaasi."
-
 #. name of buildings:ruinedtent
-#: horizons/i18n/objecttranslations.py:285
+#: horizons/i18n/objecttranslations.py
 msgid "Ruined Tent"
-msgstr ""
+msgstr "Teltan jäännökset"
 
 #. name of buildings:saltponds
-#: horizons/i18n/objecttranslations.py:290
+#: horizons/i18n/objecttranslations.py
 msgid "Salt Ponds"
 msgstr "Suola-allas"
 
 #. tooltip_text of buildings:saltponds
-#: horizons/i18n/objecttranslations.py:292
+#: horizons/i18n/objecttranslations.py
 msgid "Evaporates salt. Built on sea coast."
 msgstr "Haihduttaa suolaa merivedestä. Rakennetaan rannikolle."
 
 #. name of buildings:signalfire
-#: horizons/i18n/objecttranslations.py:297
+#: horizons/i18n/objecttranslations.py
 msgid "Signal Fire"
 msgstr "Merkkituli"
 
 #. tooltip_text of buildings:signalfire
-#: horizons/i18n/objecttranslations.py:299
+#: horizons/i18n/objecttranslations.py
 msgid "Allows the player to trade with the free trader."
 msgstr "Päästää pelaajan käymään kauppaa vapaakauppiaan kanssa."
 
 #. name of buildings:smeltery
-#: horizons/i18n/objecttranslations.py:304
+#: horizons/i18n/objecttranslations.py
 msgid "Smeltery"
 msgstr "Sulattamo"
 
 #. tooltip_text of buildings:smeltery
-#: horizons/i18n/objecttranslations.py:306
+#: horizons/i18n/objecttranslations.py
 msgid "Refines all kind of ores."
 msgstr "Jalostaa kaikenlaisia malmeja."
 
 #. name of buildings:spicefield
-#: horizons/i18n/objecttranslations.py:311
+#: horizons/i18n/objecttranslations.py
 msgid "Spice Field"
-msgstr ""
+msgstr "Maustepelto"
 
 #. tooltip_text of buildings:spicefield
-#: horizons/i18n/objecttranslations.py:313
+#: horizons/i18n/objecttranslations.py
 msgid "Grows spices. Needs a farm."
-msgstr ""
+msgstr "Kasvattaa mausteita. Tarvitsee maatilan."
 
-#. name of buildings:stonemason
-#: horizons/i18n/objecttranslations.py:318
+#. name_2 of buildings:stonemason
+#: horizons/i18n/objecttranslations.py
 msgid "Stonemason"
 msgstr "Kivenhakkaaja"
 
+#. name_4 of buildings:stonemason
+#: horizons/i18n/objecttranslations.py
+msgid "Carver"
+msgstr ""
+
 #. tooltip_text of buildings:stonemason
-#: horizons/i18n/objecttranslations.py:320
+#: horizons/i18n/objecttranslations.py
 msgid "Carves stone tops into bricks."
 msgstr ""
 
 #. name of buildings:stonepit
-#: horizons/i18n/objecttranslations.py:325
+#: horizons/i18n/objecttranslations.py
 msgid "Stone Pit"
 msgstr ""
 
 #. tooltip_text of buildings:stonepit
-#: horizons/i18n/objecttranslations.py:327
+#: horizons/i18n/objecttranslations.py
 msgid "Gets stone from a mountain."
 msgstr ""
 
 #. name_0 of buildings:storagetent
-#: horizons/i18n/objecttranslations.py:332
+#: horizons/i18n/objecttranslations.py
 msgid "Storage Tent"
 msgstr "Varastoteltta"
 
 # 75%
 #. name_1 of buildings:storagetent
-#: horizons/i18n/objecttranslations.py:334
+#: horizons/i18n/objecttranslations.py
 msgid "Storage Hut"
 msgstr "Varastomökki"
 
 #. tooltip_text of buildings:storagetent
-#: horizons/i18n/objecttranslations.py:336
+#: horizons/i18n/objecttranslations.py
 msgid "Extends stock and provides collectors."
 msgstr "Laajentaa varastotilaa ja tarjoaa lisää kerääjiä."
 
 #. name of buildings:sugarfield
-#: horizons/i18n/objecttranslations.py:341
+#: horizons/i18n/objecttranslations.py
 msgid "Sugar Field"
 msgstr "Sokeripelto"
 
 #. tooltip_text of buildings:sugarfield
-#: horizons/i18n/objecttranslations.py:343
+#: horizons/i18n/objecttranslations.py
 msgid "Used in liquor production. Needs a farm."
 msgstr "Tuottaa sokeria sokeripitoisia juomia varten. Tarvitsee maatilan."
 
 #. name of buildings:tavern
-#: horizons/i18n/objecttranslations.py:348
+#: horizons/i18n/objecttranslations.py
 msgid "Tavern"
 msgstr "Kapakka"
 
 #. tooltip_text of buildings:tavern
-#: horizons/i18n/objecttranslations.py:350
+#: horizons/i18n/objecttranslations.py
 msgid "Provides get-together."
 msgstr "Järjestää juhlia ja pitoja."
 
 #. name_0 of buildings:tent
-#: horizons/i18n/objecttranslations.py:355
+#: horizons/i18n/objecttranslations.py
 msgid "Tent"
 msgstr "Teltta"
 
 #. name_1 of buildings:tent
-#: horizons/i18n/objecttranslations.py:357
+#: horizons/i18n/objecttranslations.py
 msgid "Hut"
-msgstr ""
+msgstr "Mökki"
 
 # 80%
 #. name_2 of buildings:tent
-#: horizons/i18n/objecttranslations.py:359
+#: horizons/i18n/objecttranslations.py
 msgid "House"
 msgstr "Talo"
 
 #. name_3 of buildings:tent
-#: horizons/i18n/objecttranslations.py:361
+#: horizons/i18n/objecttranslations.py
 msgid "Stone house"
-msgstr ""
+msgstr "Kivitalo"
 
 #. name_4 of buildings:tent
-#: horizons/i18n/objecttranslations.py:363
+#: horizons/i18n/objecttranslations.py
 msgid "Estate"
 msgstr "Kartano"
 
 #. name_5 of buildings:tent
-#: horizons/i18n/objecttranslations.py:365
+#: horizons/i18n/objecttranslations.py
 msgid "Manor"
 msgstr "Linna"
 
 #. tooltip_text of buildings:tent
-#: horizons/i18n/objecttranslations.py:367
+#: horizons/i18n/objecttranslations.py
 msgid "Houses your inhabitants."
 msgstr "Tarjoaa asuinpaikan uudisasukkaillesi."
 
 #. name of buildings:tobaccofield
-#: horizons/i18n/objecttranslations.py:372
+#: horizons/i18n/objecttranslations.py
 msgid "Tobacco Field"
 msgstr "Tupakkapelto"
 
 #. tooltip_text of buildings:tobaccofield
-#: horizons/i18n/objecttranslations.py:374
+#: horizons/i18n/objecttranslations.py
 msgid "Produces tobacco. Needs a farm."
 msgstr "Tuottaa tupakkaa. Tarvitsee maatilan."
 
 #. name of buildings:tobacconist
-#: horizons/i18n/objecttranslations.py:379
+#: horizons/i18n/objecttranslations.py
 msgid "Tobacconist"
 msgstr "Tupakkatehdas"
 
 #. tooltip_text of buildings:tobacconist
-#: horizons/i18n/objecttranslations.py:381
+#: horizons/i18n/objecttranslations.py
 msgid "Produces tobaccos out of tobacco."
 msgstr "Valmistaa tupakkaa tupakanlehdistä."
 
 #. name of buildings:toolmaker
-#: horizons/i18n/objecttranslations.py:386
+#: horizons/i18n/objecttranslations.py
 msgid "Toolmaker"
 msgstr "Työkalunvalmistaja"
 
 #. tooltip_text of buildings:toolmaker
-#: horizons/i18n/objecttranslations.py:388
+#: horizons/i18n/objecttranslations.py
 msgid "Produces tools out of iron."
 msgstr "Valmistaa työkaluja raudasta."
 
 #. name of buildings:trail
-#: horizons/i18n/objecttranslations.py:393
+#: horizons/i18n/objecttranslations.py
 msgid "Trail"
 msgstr "Polku"
 
 #. tooltip_text of buildings:trail
-#: horizons/i18n/objecttranslations.py:395
+#: horizons/i18n/objecttranslations.py
 msgid "Needed for collecting goods."
 msgstr "Vaaditaan tavaroiden keräämiselle."
 
 #. name of buildings:tree
-#: horizons/i18n/objecttranslations.py:400
+#: horizons/i18n/objecttranslations.py
 msgid "Tree"
 msgstr "Puu"
 
 #. tooltip_text of buildings:tree
-#: horizons/i18n/objecttranslations.py:402
+#: horizons/i18n/objecttranslations.py
 msgid "Provides lumber. Chopped down by lumberjacks."
-msgstr ""
+msgstr "Puunhakkaaja tuottaa puista lautoja."
 
 #. name of buildings:villageschool
-#: horizons/i18n/objecttranslations.py:407
+#: horizons/i18n/objecttranslations.py
 msgid "Village school"
 msgstr "Kyläkoulu"
 
 #. tooltip_text of buildings:villageschool
-#: horizons/i18n/objecttranslations.py:409
+#: horizons/i18n/objecttranslations.py
 msgid "Provides education."
 msgstr "Järjestää opetusta."
 
 #. name of buildings:vineyard
-#: horizons/i18n/objecttranslations.py:414
+#: horizons/i18n/objecttranslations.py
 msgid "Vineyard"
 msgstr "Viinitarha"
 
 #. tooltip_text of buildings:vineyard
-#: horizons/i18n/objecttranslations.py:416
+#: horizons/i18n/objecttranslations.py
 msgid "Produces grapes for use in wine and confectionery. Needs a farm."
 msgstr ""
 "Tuottaa makeisten- ja viininvalmistukseen käytettäviä viinirypäleitä. "
 "Tarvitsee maatilan."
 
 #. name of buildings:vintner
-#: horizons/i18n/objecttranslations.py:421
+#: horizons/i18n/objecttranslations.py
 msgid "Vintner"
 msgstr "Viinikauppias"
 
 #. tooltip_text of buildings:vintner
-#: horizons/i18n/objecttranslations.py:423
+#: horizons/i18n/objecttranslations.py
 msgid "Produces wine out of grapes."
 msgstr "Tuottaa viiniä viinirypäleistä."
 
 #. name of buildings:warehouse
-#: horizons/i18n/objecttranslations.py:428
+#: horizons/i18n/objecttranslations.py
 msgid "Warehouse"
 msgstr "Sivutoimisto"
 
 # 76%
 #. name of buildings:weaverstent
-#: horizons/i18n/objecttranslations.py:433
+#: horizons/i18n/objecttranslations.py
 msgid "Weaver's Hut"
 msgstr "Kutojan mökki"
 
 #. tooltip_text of buildings:weaverstent
-#: horizons/i18n/objecttranslations.py:435
+#: horizons/i18n/objecttranslations.py
 msgid "Turns lamb wool into cloth."
 msgstr "Valmistaa lampaanvillasta vaatteita."
 
 #. name of buildings:windmill
-#: horizons/i18n/objecttranslations.py:440
+#: horizons/i18n/objecttranslations.py
 msgid "Windmill"
 msgstr "Tuulimylly"
 
 #. tooltip_text of buildings:windmill
-#: horizons/i18n/objecttranslations.py:442
+#: horizons/i18n/objecttranslations.py
 msgid "Grinds corn into flour."
-msgstr ""
+msgstr "Jauhaa maissia jauhoksi."
 
 #. name of buildings:woodentower
-#: horizons/i18n/objecttranslations.py:447
+#: horizons/i18n/objecttranslations.py
 msgid "Wooden Tower"
 msgstr "Puutorni"
 
 #. tooltip_text of buildings:woodentower
-#: horizons/i18n/objecttranslations.py:449
+#: horizons/i18n/objecttranslations.py
 msgid "Defends your settlement."
 msgstr "Puolustaa siirtokuntaasi."
 
-#: horizons/main.py:327
+#. headline of gui_buildmenu:build_menu_per_increment
+#. tab4_headline of gui_buildmenu:build_menu_per_type
+#: horizons/i18n/objecttranslations.py
+#: horizons/i18n/objecttranslations.py
+#: horizons/i18n/objecttranslations.py
+#: horizons/i18n/objecttranslations.py
+#: horizons/i18n/objecttranslations.py
+msgid "Companies"
+msgstr "Yritykset"
+
+#. headline of gui_buildmenu:build_menu_per_increment
+#. tab2_headline of gui_buildmenu:build_menu_per_type
+#: horizons/i18n/objecttranslations.py
+#: horizons/i18n/objecttranslations.py
+#: horizons/i18n/objecttranslations.py
+#: horizons/i18n/objecttranslations.py
+msgid "Fields"
+msgstr "Pellot"
+
+#. headline of gui_buildmenu:build_menu_per_increment
+#. tab5_headline of gui_buildmenu:build_menu_per_type
+#: horizons/i18n/objecttranslations.py
+#: horizons/i18n/objecttranslations.py
+msgid "Military"
+msgstr "Armeija"
+
+#. headline of gui_buildmenu:build_menu_per_increment
+#. headline of gui_buildmenu:build_menu_per_type
+#: horizons/i18n/objecttranslations.py
+#: horizons/i18n/objecttranslations.py
+msgid "Mining"
+msgstr "Kaivostoiminta"
+
+#. headline of gui_buildmenu:build_menu_per_increment
+#. tab1_helptext of gui_buildmenu:build_menu_per_type
+#: horizons/i18n/objecttranslations.py
+#: horizons/i18n/objecttranslations.py
+msgid "Residents and infrastructure"
+msgstr "Asukkaat ja yhteiskunta"
+
+#. headline of gui_buildmenu:build_menu_per_increment
+#. headline of gui_buildmenu:build_menu_per_type
+#: horizons/i18n/objecttranslations.py
+#: horizons/i18n/objecttranslations.py
+#: horizons/i18n/objecttranslations.py
+#: horizons/i18n/objecttranslations.py
+msgid "Services"
+msgstr "Palvelut"
+
+#. headline of gui_buildmenu:build_menu_per_type
+#: horizons/i18n/objecttranslations.py
+msgid "Food"
+msgstr "Ruoka"
+
+#. headline of gui_buildmenu:build_menu_per_type
+#: horizons/i18n/objecttranslations.py
+msgid "Fortifications"
+msgstr ""
+
+#. headline of gui_buildmenu:build_menu_per_type
+#: horizons/i18n/objecttranslations.py
+msgid "Infrastructure"
+msgstr ""
+
+#. headline of gui_buildmenu:build_menu_per_type
+#: horizons/i18n/objecttranslations.py
+msgid "Military Service"
+msgstr ""
+
+#. headline of gui_buildmenu:build_menu_per_type
+#: horizons/i18n/objecttranslations.py
+msgid "Residential"
+msgstr ""
+
+#. headline of gui_buildmenu:build_menu_per_type
+#: horizons/i18n/objecttranslations.py
+msgid "Sea"
+msgstr ""
+
+#. tab6_headline of gui_buildmenu:build_menu_per_type
+#: horizons/i18n/objecttranslations.py
+msgid "Aesthetics"
+msgstr ""
+
+#: horizons/main.py
 msgid "Failed to start/load the game"
 msgstr "Pelin aloittaminen/avaaminen epäonnistui"
 
-#: horizons/main.py:328
-msgid "The game you selected couldn't be started."
-msgstr "Valitsemaasi peliä ei pystytty aloittamaan."
+#: horizons/main.py
+msgid "The game you selected could not be started."
+msgstr ""
 
-#: horizons/main.py:329
+#: horizons/main.py
 msgid "The savegame might be broken or has been saved with an earlier version."
 msgstr ""
 "Kyseinen tallennus saattaa olla rikki tai tehty pelin vanhemmalla versiolla."
 
-#: horizons/main.py:474
+#: horizons/main.py
 #, python-format
 msgid "Due to technical reasons, the campaign file will be copied to the UH campaign directory ({path})."
 msgstr ""
 
-#: horizons/main.py:476
+#: horizons/main.py
 msgid "This means that changes in the file you specified will not apply to the game directly."
 msgstr ""
 
-#: horizons/main.py:478
+#: horizons/main.py
 #, python-format
 msgid "To see the changes, either always start UH with the current arguments or edit the file {filename}."
 msgstr ""
 
+#: horizons/main.py
+msgid "No quicksaves found"
+msgstr "Yhtäkään pikatallennusta ei löytynyt"
+
+#: horizons/main.py
+msgid "You need to quicksave before you can quickload."
+msgstr "Tarvitset pikatallennuksen ennen kuin voit pikaladata."
+
 #. if this is reached, we are screwed. Something went wrong in the simulation,
 #. but we don't know what. Stop the game.
-#: horizons/manager.py:174
+#: horizons/manager.py
 msgid "The games have run out of sync. This indicates an unknown internal error, the game cannot continue."
 msgstr ""
 
-#: horizons/manager.py:175
+#: horizons/manager.py
 msgid "We are very sorry and hope to have this bug fixed in a future version."
 msgstr ""
 "Olemme hyvin pahoillamme tästä ja toivomme, että olemme korjanneet ongelman "
 "pelin seuraavassa versiossa."
 
-#: horizons/mpsession.py:66
+#: horizons/mpsession.py
 msgid "Not possible"
 msgstr "Ei mahdollista"
 
-#: horizons/mpsession.py:66
+#: horizons/mpsession.py
 msgid "Save/load for multiplayer games is not possible yet"
 msgstr "Tallentaminen/lataaminen ei ole vielä mahdollista moninpeleissä"
 
-#: horizons/mpsession.py:77
+#: horizons/mpsession.py
 msgid "The filename must consist only of letters, numbers, spaces and _.-"
 msgstr ""
+"Tiedostonimessä saa käyttää vain kirjaimia, numeroita, välilyöntejä ja "
+"merkkejä _.-"
 
-#: horizons/savegamemanager.py:360
-#, python-format
-msgid "Error: don't know how to handle condition type {condition}"
-msgstr ""
-
-# 78%
-#: horizons/savegamemanager.py:410 horizons/savegamemanager.py:416
-#, python-format
-msgid "Error: Cannot find campaign '{name}'."
-msgstr "Ei löydy kampanjaa \"{name}\"."
-
-# 81%
-# 78%
-#: horizons/savegamemanager.py:435 horizons/savegamemanager.py:441
-#, python-format
-msgid "Error: Cannot find scenario '{name}'."
-msgstr "Tallennusta \"{name}\" ei löytynyt."
-
-#: horizons/scenario/actions.py:93
+#: horizons/scenario/actions.py
 msgid "You have won!"
 msgstr "Voitit pelin!"
 
 # 97%
-#: horizons/scenario/actions.py:94
+#: horizons/scenario/actions.py
 msgid "You have completed this scenario."
 msgstr "Olet tämän tämän kentän."
 
 # 75%
-#: horizons/scenario/actions.py:95
+#: horizons/scenario/actions.py
 msgid "Do you want to continue playing?"
 msgstr "Haluatko jatkaa pelaamista?"
 
-#: horizons/scenario/scenarioeventhandler.py:157
-#: horizons/scenario/scenarioeventhandler.py:167
+#: horizons/scenario/scenarioeventhandler.py
+#: horizons/scenario/scenarioeventhandler.py
 msgid "unknown"
 msgstr "tuntematon"
 
 #. usually invalid filename
-#: horizons/session.py:489
+#: horizons/session.py
 msgid "Failed to create savegame file"
 msgstr "Tallennustiedoston luominen epäonnistui"
 
-#: horizons/session.py:490
+#: horizons/session.py
 msgid "There has been an error while creating your savegame file."
 msgstr "Yritettäessä luoda tallennustiedostoa virhe tapahtui."
 
-#: horizons/session.py:491
+#: horizons/session.py
 msgid "This usually means that the savegame name contains unsupported special characters."
 msgstr ""
 "Tämä johtuu yleensä siitä, että tallennuksen nimi sisältää erikoismerkkejä, "
 "joita ei tueta."
 
-#: horizons/session.py:499
+#: horizons/session.py
 msgid "Access is denied"
 msgstr "Pääsy estetty"
 
-#: horizons/session.py:500
+#: horizons/session.py
 msgid "The savegame file is probably read-only."
 msgstr "Tallennustiedostolle on vain lukuoikeudet."
 
-#: horizons/session.py:503
+#: horizons/session.py
 msgid "File used by another process"
 msgstr "Tiedosto on toisen prosessin käytössä"
 
-#: horizons/session.py:504
+#: horizons/session.py
 msgid "The savegame file is currently used by another program."
 msgstr "Tallennustiedosto on tällä hetkellä toisen ohjelman käytössä."
 
-#: horizons/spsession.py:66
+#: horizons/spsession.py
 msgid "Failed to quicksave."
 msgstr "Pikatallennus epäonnistui."
 
-#: horizons/spsession.py:67
+#: horizons/spsession.py
 msgid "An error happened during quicksave. Your game has not been saved."
 msgstr "Virhe tapahtui yritetettäessä pikatallennusta. Peliäsi ei tallennettu."
 
-#: horizons/spsession.py:68
+#: horizons/spsession.py
 msgid "If this error happens again, please contact the development team:"
 msgstr "Jos tämä virhe toistuu, ota yhteyttä kehitystiimiin:"
 
-#: horizons/spsession.py:76
-msgid "No quicksaves found"
-msgstr "Yhtäkään pikatallennusta ei löytynyt"
-
-#: horizons/spsession.py:76
-msgid "You need to quicksave before you can quickload."
-msgstr "Tarvitset pikatallennuksen ennen kuin voit pikaladata."
-
-#: horizons/util/checkupdates.py:70
+#: horizons/util/checkupdates.py
 msgid "New version of Unknown Horizons"
 msgstr "Unknown Horizonsin uusi versio"
 
-#: horizons/util/checkupdates.py:72
+#: horizons/util/checkupdates.py
 #, python-format
 msgid "There is a more recent release of Unknown Horizons ({new_version}) than the one you are currently using ({old_version})."
 msgstr ""
+"Unknown Horizonsista on saatavilla uusi versio ({new_version}). Nykyinen "
+"versiosi on ({old_version})."
 
-#: horizons/util/checkupdates.py:76
+#: horizons/util/checkupdates.py
 msgid "Click to download"
-msgstr ""
+msgstr "Lataa"
 
-#: horizons/util/checkupdates.py:80
+#: horizons/util/checkupdates.py
 msgid "A page has been opened in your browser."
-msgstr ""
+msgstr "Lataussivu avataan verkkoselaimeen."
 
-#: horizons/util/uhdbaccessor.py:150
+#: horizons/util/uhdbaccessor.py
 #, python-format
 msgid "{building}: {description}"
 msgstr "{building}: {description}"
 
-#: horizons/world/building/buildable.py:36
-msgid "Buildings must be built on islands."
+#: horizons/world/building/buildable.py
+msgid "This building must be built on an island."
 msgstr ""
 
-#: horizons/world/building/buildable.py:37
-msgid "The ground is not suitable for this building."
-msgstr "Maa ei sovellu tälle rakennukselle."
-
-#: horizons/world/building/buildable.py:38
-#: horizons/world/building/buildable.py:40
-msgid "You can only build this within your settlement."
-msgstr "Rakennuksen voi rakentaa vain oman siirtokuntasi sisälle."
-
-#: horizons/world/building/buildable.py:39
-msgid "This area is already occupied."
+#: horizons/world/building/buildable.py
+msgid "This ground is not suitable for this building."
 msgstr ""
 
-#: horizons/world/building/buildable.py:41
-msgid "Another player has already occupied this island."
-msgstr "Joku toinen pelaaja on jo valloittanut tämän saaren."
-
-#: horizons/world/building/buildable.py:42
-msgid "You can't build this on top of another building."
+#: horizons/world/building/buildable.py
+msgid "This building has to be built within your settlement."
 msgstr ""
 
-#: horizons/world/building/buildable.py:43
-msgid "You can't build this on top of a unit."
+#: horizons/world/building/buildable.py
+msgid "This area is already occupied by another player."
 msgstr ""
 
-#: horizons/world/building/buildable.py:44
+#: horizons/world/building/buildable.py
+msgid "This area is already occupied by another building."
+msgstr ""
+
+#: horizons/world/building/buildable.py
+msgid "This area is already occupied by a unit."
+msgstr ""
+
+#: horizons/world/building/buildable.py
 msgid "This building must be built on the coastline."
 msgstr "Tämä rakennus pitää sijoittaa rannikolle."
 
-#: horizons/world/building/buildable.py:45
-msgid "This building requires to be placed near the ocean."
-msgstr "Tämä rakennus pitää sijoittaa meren lähelle."
+#: horizons/world/building/buildable.py
+msgid "This building has to be placed at the ocean."
+msgstr ""
 
-#: horizons/world/building/buildable.py:46
+#: horizons/world/building/buildable.py
 msgid "This spot is too far away from your ship."
 msgstr ""
 
-#: horizons/world/building/buildable.py:47
+#: horizons/world/building/buildable.py
+#, fuzzy
 msgid "This building can only be built on a resource source."
 msgstr "Tämä rakennus voidaan rakentaa vain raaka-ainelöydöksen päälle."
 
-#: horizons/world/component/tradepostcomponent.py:178
-msgid "The trade partner does not sell this."
-msgstr "Kauppakumppanisi ei myy tätä."
+#: horizons/world/building/buildable.py
+msgid "You have already settled this island."
+msgstr ""
 
-#: horizons/world/component/tradepostcomponent.py:186
-#, fuzzy
-msgid "You can not store this."
-msgstr "Sinulla ei ole tilaa tämän varastoimiseen."
+#: horizons/world/status.py
+msgid "This building is on fire!"
+msgstr ""
 
-#: horizons/world/component/tradepostcomponent.py:190
-msgid "You can not afford to buy this."
-msgstr "Sinulla ei ole varaa ostaa tätä."
+#: horizons/world/status.py
+msgid "These residents are unhappy."
+msgstr ""
 
-# 82%
-#: horizons/world/component/tradepostcomponent.py:196
-msgid "The trade partner does not sell more of this."
-msgstr "Kauppakumppanisi ei myy lisää tätä."
+#: horizons/world/status.py
+msgid "The inventory of this building is full."
+msgstr ""
 
-# 89%
-#: horizons/world/component/tradepostcomponent.py:220
-msgid "The trade partner does not buy this."
-msgstr "Kauppakumppanisi ei osta tätä."
+#: horizons/world/status.py
+msgid "This building has a very low productivity."
+msgstr ""
 
-#: horizons/world/component/tradepostcomponent.py:228
-msgid "You do not possess this."
-msgstr "Sinulla ei ole tätä."
+#: horizons/world/status.py
+msgid "This building is decomissioned."
+msgstr ""
 
-# 82%
-#: horizons/world/component/tradepostcomponent.py:232
-#, fuzzy
-msgid "The trade partner can not store more of this."
-msgstr "Kauppakumppanillasi ei ole tilaa tämän varastoimiseen."
-
-# 82%
-# 77%
-#: horizons/world/component/tradepostcomponent.py:236
-msgid "The trade partner can not afford to buy this."
-msgstr "Kauppakumppanillasi ei ole varaa ostaa tätä."
-
-# 77%
-#: horizons/world/component/tradepostcomponent.py:241
-msgid "The trade partner does not buy more of this."
-msgstr "Kauppakumppanisi ei osta lisää tätä."
-
-#: horizons/world/traderoute.py:282
+#: horizons/world/traderoute.py
 #, python-format
 msgid "Trade route: going to {location}"
 msgstr "Kauppareitti: siirtymässä kohteeseen {location}"
 
-#: horizons/world/traderoute.py:286
-#, python-format, 
+#: horizons/world/traderoute.py
+#, python-format
+#, python-format,
 msgid "Trade route: waiting at {position}"
 msgstr "Kauppareitti: odotetaan {position}"
 
-#: horizons/world/units/ship.py:184
+#: horizons/world/units/ship.py
 #, python-format
 msgid "Going to {location}"
 msgstr "Siirtymässä kohteeseen {location}"
 
-#: horizons/world/units/ship.py:186
+#: horizons/world/units/ship.py
 #, python-format
 msgid "Going to {x}, {y}"
 msgstr "Siirtymässä sijaintiin {x}, {y}"
 
-#: horizons/world/units/ship.py:191
+#: horizons/world/units/ship.py
 #, python-format
 msgid "Idle at {location}"
 msgstr "Paikallaan kohteessa {location}"
 
-#: horizons/world/units/ship.py:193
+#: horizons/world/units/ship.py
 #, python-format
 msgid "Idle at {x}, {y}"
 msgstr "Paikallaan kohteessa {x}, {y}"
 
-#: horizons/world/units/ship.py:207
+#: horizons/world/units/ship.py
 msgid "Trader"
 msgstr "Kauppias"
 
-#: horizons/world/units/weaponholder.py:453
+#: horizons/world/units/weaponholder.py
 #, python-format
 msgid "Attacking {target} '{name}' ({owner})"
 msgstr "Hyökätään kohteeseen {target} '{name}' ({owner})"
 
-#: horizons/world/units/weaponholder.py:458
+#: horizons/world/units/weaponholder.py
 #, python-format
 msgid "Attacking {owner}"
 msgstr ""
 
 # 86%
-#: run_uh.py:206
-#, fuzzy
+#: run_uh.py
 msgid "Unknown Horizons has crashed."
 msgstr "Unknown Horizons kaatui."
 
 # 83%
-#: run_uh.py:208
-#, fuzzy
+#: run_uh.py
 msgid "We are very sorry for this and want to fix underlying error."
 msgstr "Olemme tästä pahoillamme, ja haluamme korjata tämän virheen."
 
-#: run_uh.py:209
+#: run_uh.py
 msgid "In order to do this, we need the information from the logfile:"
 msgstr "Tarvitsemme kuitenkin tietoja lokitiedostosta:"
 
-#: run_uh.py:211
+#: run_uh.py
 msgid "Please give it to us via IRC or our forum, for both see http://unknown-horizons.org ."
 msgstr ""
 "Anna tiedot meille IRC-kanavallamme tai keskustelupalstallamme, lisätietoja "
 "osoitteesta http://www.unknown-horizons.org."
 
-#: run_uh.py:251
+#: run_uh.py
 msgid "Error: Unable to find required libraries"
 msgstr "Virhe: Vaadittuja kirjastoja ei löydy"
 
-#: run_uh.py:252
+#: run_uh.py
 msgid "We are sorry to inform you that a library that is required by Unknown Horizons, is missing and needs to be installed."
 msgstr ""
 "Olemme pahoillamme, mutta sinulta puuttuu Unknown Horizonsin pelaamiseen "
 "vaadittava kirjasto, ja se on asennettava."
 
-#: run_uh.py:253
+#: run_uh.py
 msgid "Installers for Windows users are available at \"http://pyyaml.org/wiki/PyYAML\", Linux users should find it in their packagement management system under the name \"pyyaml\" or \"python-yaml\"."
 msgstr ""
 "Asennusohjelma Windowsille on ladattavissa osoitteesta "
 "\"http://pyyaml.org/wiki/PyYAML\", Linuxissa sen pitäisi löytyä "
 "paketinhallintajärjestelmästä hakusanalla \"pyyaml\" tai \"python-yaml\"."
 
-#: run_uh.py:283
+#: run_uh.py
 msgid "Thank you for using Unknown Horizons!"
 msgstr "Kiitos, että pelasit Unknown Horizonsia!"
 
-#: run_uh.py:455
+#: run_uh.py
 msgid "FIFE was not found."
 msgstr "FIFE:ä ei löytynyt."
+
+#, python-format
+#~ msgid "Configured language {lang} could not be loaded"
+#~ msgstr "Valittua kieltä {lang} ei pystytä lataamaan"
+
+#, python-format
+#~ msgid "WARNING: Incompatible version {version}!"
+#~ msgstr "VAROITUS: Yhteensopimaton versio {version}!"
+
+#, python-format
+#~ msgid "Required version: {required}!"
+#~ msgstr "Vaadittu versio: {required}!"
+
+#~ msgid "Increment {increment}"
+#~ msgstr "Taso {increment}"
+
+#~ msgid "Burns a lot of boards to charcoal."
+#~ msgstr "Polttaa puuhiilestä lautoja."
+
+#~ msgid "Gravel Path"
+#~ msgstr "Sorapolku"
+
+#~ msgid "Log"
+#~ msgstr "Tukki"
+
+#~ msgid "Road across a river."
+#~ msgstr "Tie joen yli."
+
+#~ msgid "Rampart"
+#~ msgstr "Muuri"
+
+#~ msgid "Protects your settlement."
+#~ msgstr "Puolustaa siirtokuntaasi."
+
+#~ msgid "The game you selected couldn't be started."
+#~ msgstr "Valitsemaasi peliä ei pystytty aloittamaan."
+
+# 78%
+#, python-format
+#~ msgid "Error: Cannot find campaign '{name}'."
+#~ msgstr "Ei löydy kampanjaa \"{name}\"."
+
+# 81%
+# 78%
+#, python-format
+#~ msgid "Error: Cannot find scenario '{name}'."
+#~ msgstr "Tallennusta \"{name}\" ei löytynyt."
+
+#~ msgid "Buildings must be built on islands."
+#~ msgstr "Rakennukset tulee sijoittaa maalle."
+
+#~ msgid "The ground is not suitable for this building."
+#~ msgstr "Maa ei sovellu tälle rakennukselle."
+
+#~ msgid "You can only build this within your settlement."
+#~ msgstr "Rakennuksen voi rakentaa vain oman siirtokuntasi sisälle."
+
+#~ msgid "This area is already occupied."
+#~ msgstr "Tämä alue on jo käytössä."
+
+#~ msgid "Another player has already occupied this island."
+#~ msgstr "Joku toinen pelaaja on jo valloittanut tämän saaren."
+
+#~ msgid "This building requires to be placed near the ocean."
+#~ msgstr "Tämä rakennus pitää sijoittaa meren lähelle."
 
 #~ msgid "pioneer"
 #~ msgstr "kansoittaja"
@@ -3766,9 +3946,6 @@ msgstr "FIFE:ä ei löytynyt."
 #~ msgid "Leave Captain's log"
 #~ msgstr "Poistu Kapteenin päiväkirjasta"
 
-#~ msgid "Burns a lot of boards."
-#~ msgstr "Polttaa paljon lautoja."
-
 #~ msgid "Lumberjack Camp"
 #~ msgstr "Puunhakkaajan leiri"
 
@@ -3789,9 +3966,6 @@ msgstr "FIFE:ä ei löytynyt."
 
 #~ msgid "Bricks"
 #~ msgstr "Tiilet"
-
-#~ msgid "Food"
-#~ msgstr "Ruoka"
 
 #~ msgid "Textiles"
 #~ msgstr "Kankaat"

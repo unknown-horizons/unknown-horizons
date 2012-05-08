@@ -63,7 +63,7 @@
 		</HBox>
 
 		<ScrollArea name="game_messages_scroll_area"  min_size="325,360"  max_size="325,360">
-			<ListBox name="game_messagebox"  min_size="325,360" max_size="325,360" />
+			<ListBox name="game_messagebox"  min_size="325,360" max_size="325,360" is_focusable="0" />
 		</ScrollArea>
 	</VBox>
 
@@ -85,7 +85,7 @@
 		</HBox>
 
 		<ScrollArea name="chat_scroll_area"  min_size="325,360"  max_size="325,360">
-			<ListBox name="chatbox"  min_size="325,360" max_size="325,360" />
+			<ListBox name="chatbox"  min_size="325,360" max_size="325,360" is_focusable="0" />
 		</ScrollArea>
 		<TextField name="chatTextField"
 			text="Enter your message here"  min_size="300,16" />

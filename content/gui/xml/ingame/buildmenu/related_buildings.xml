@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<!-- Overview of relatedfields of farms -->
+<Container size="250,500" name="overview_buildrelated">
+<TabBG amount="7"/>
+
+<Container position="0,70" size="250,400">
+	<HBox position="22,7"  min_size="170,20"  size="230,20">
+	<Spacer min_size="0"  max_size="50" />
+		<Label name="headline"  text="Related buildings" />
+	</HBox>
+
+	<Icon image="content/gui/images/background/hr.png" position="20,30" />
+
+	<VBox name="related_buildings" position="20,40"
+		max_size="230,200" min_size="230,200" size="230,200" />
+</Container>
+</Container>

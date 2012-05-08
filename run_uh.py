@@ -325,11 +325,7 @@ def setup_debugging(options):
 			def write(self, line):
 				line = unicode(line)
 				sys.__stdout__.write(line)
-				try:
-					logfile.write(line)
-				except UnicodeEncodeError:
-					# python unicode handling is weird, this has been empirically proven to work
-					logfile.write( line.encode("UTF-8") )
+				logfile.write(line.encode('UTF-8'))
 			def flush(self):
 				sys.__stdout__.flush()
 				logfile.flush()
@@ -530,8 +526,8 @@ def standalone_error_popup(headline, msg):
 
 	dlg = pychan.loadXML("content/gui/xml/startup_error_popup.xml")
 	# can't translate as translations are only set up later
-	dlg.findChild(name="headline").text = unicode(headline)
-	dlg.findChild(name="msg").text = unicode(msg)
+	dlg.findChild(name="headline").text = headline
+	dlg.findChild(name="msg").text = msg
 	dlg.mapEvents({'quit_button': do_quit})
 	dlg.show()
 

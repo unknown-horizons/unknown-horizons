@@ -26,7 +26,7 @@ from horizons.world.settlement import Settlement
 from horizons.util import WorldObject
 from horizons.scheduler import Scheduler
 from horizons.constants import GAME_SPEED
-from horizons.world.component.storagecomponent import StorageComponent
+from horizons.component.storagecomponent import StorageComponent
 
 class Disaster(WorldObject):
 	"""Prototype class for disasters."""

@@ -25,7 +25,7 @@ from unittest import TestCase
 from horizons.constants import RES
 from horizons.scheduler import Scheduler
 from horizons.world.storage import GenericStorage
-from horizons.world.component.tradepostcomponent import TradePostComponent
+from horizons.component.tradepostcomponent import TradePostComponent
 
 class TestTradePostComponent(TestCase):
 	"""
@@ -60,7 +60,7 @@ class TestTradePostComponent(TestCase):
 		Scheduler.destroy_instance()
 
 	def test_buy(self):
-		self.owner_inventory.alter(RES.GOLD_ID, 1)
+		self.owner_inventory.alter(RES.GOLD, 1)
 		self.assertFalse( self.tradepost.buy(1, 1, 1, 100) )
 		self.tradepost.add_to_buy_list(1, 2)
 		self.assertTrue( self.tradepost.buy(1, 1, 1, 100) )
@@ -71,7 +71,7 @@ class TestTradePostComponent(TestCase):
 		# ran out of money
 		self.assertFalse( self.tradepost.buy(1, 1, 1, 100) )
 
-		self.owner_inventory.alter(RES.GOLD_ID, 2)
+		self.owner_inventory.alter(RES.GOLD, 2)
 		self.assertTrue( self.tradepost.buy(1, 1, 1, 100) )
 
 		Scheduler().cur_tick += 1

@@ -10,29 +10,39 @@
 
 		<Icon image="content/gui/images/background/hr.png" position="20,30" />
 
-		<Icon image="content/gui/images/background/inv_bg.png" position="20,50" />
-		<Icon image="content/gui/images/background/inv_bg.png" position="75,50" />
-		<Icon image="content/gui/images/background/inv_bg.png" position="130,50" />
-		<Icon image="content/gui/images/background/inv_bg.png" position="185,50" />
+		<HBox padding="5" min_size="215,50" max_size="215,50" position="20,50">
+			<Icon image="content/gui/images/background/inv_bg.png" />
+			<Icon image="content/gui/images/background/inv_bg.png" />
+			<Icon image="content/gui/images/background/inv_bg.png" />
+			<Icon image="content/gui/images/background/inv_bg.png" />
+		</HBox>
 
-		<Icon image="content/gui/images/background/inv_bg.png" position="20,100" />
-		<Icon image="content/gui/images/background/inv_bg.png" position="75,100" />
-		<Icon image="content/gui/images/background/inv_bg.png" position="130,100" />
-		<Icon image="content/gui/images/background/inv_bg.png" position="185,100" />
+		<HBox padding="5" min_size="215,50" max_size="215,50" position="20,100">
+			<Icon image="content/gui/images/background/inv_bg.png" />
+			<Icon image="content/gui/images/background/inv_bg.png" />
+			<Icon image="content/gui/images/background/inv_bg.png" />
+			<Icon image="content/gui/images/background/inv_bg.png" />
+		</HBox>
 
-		<Icon image="content/gui/images/background/inv_bg.png" position="20,150" />
-		<Icon image="content/gui/images/background/inv_bg.png" position="75,150" />
-		<Icon image="content/gui/images/background/inv_bg.png" position="130,150" />
-		<Icon image="content/gui/images/background/inv_bg.png" position="185,150" />
+		<HBox padding="5" min_size="215,50" max_size="215,50" position="20,150">
+			<Icon image="content/gui/images/background/inv_bg.png" />
+			<Icon image="content/gui/images/background/inv_bg.png" />
+			<Icon image="content/gui/images/background/inv_bg.png" />
+			<Icon image="content/gui/images/background/inv_bg.png" />
+		</HBox>
 
-		<Icon image="content/gui/images/background/inv_bg.png" position="20,200" />
-		<Icon image="content/gui/images/background/inv_bg.png" position="75,200" />
-		<Icon image="content/gui/images/background/inv_bg.png" position="130,200" />
-		<Icon image="content/gui/images/background/inv_bg.png" position="185,200" />
+		<HBox padding="5" min_size="215,50" max_size="215,50" position="20,200">
+			<Icon image="content/gui/images/background/inv_bg.png" />
+			<Icon image="content/gui/images/background/inv_bg.png" />
+			<Icon image="content/gui/images/background/inv_bg.png" />
+			<Icon image="content/gui/images/background/inv_bg.png" />
+		</HBox>
 
-
-		<!-- note: this inventory size must be wrong, there's far less space than 300,300 -->
-		<Inventory name="inventory" size="300,300" position="15,46" />
+		<!-- http://fife.trac.cvsdude.com/engine/ticket/692 ::
+		<ScrollArea min_size="215,200" max_size="215,200" position="21,52" vertical_scroll_amount="50">-->
+		<ScrollArea min_size="215,200" max_size="215,200" position="21,52" name="fife_ticket_692">
+			<Inventory name="inventory" min_size="215,200" max_size="215,1000" />
+		</ScrollArea>
 	</Container>
 
 </Container>

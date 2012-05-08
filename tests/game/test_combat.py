@@ -27,10 +27,10 @@ from horizons.util.worldobject import WorldObjectNotFound
 from horizons.command.unit import CreateUnit, Attack
 from horizons.command.diplomacy import AddEnemyPair, AddNeutralPair, AddAllyPair
 from horizons.command.uioptions import EquipWeaponFromInventory, UnequipWeaponToInventory
-from horizons.world.component.storagecomponent import StorageComponent
+from horizons.component.storagecomponent import StorageComponent
 from horizons.world.player import Player
 from horizons.constants import UNITS, WEAPONS
-from horizons.world.component.healthcomponent import HealthComponent
+from horizons.component.healthcomponent import HealthComponent
 
 from tests.game import game_test, new_session, load_session
 
@@ -69,7 +69,7 @@ def one_dead(wid1, wid2):
 def test_noncombat_units(s, p):
 	return
 
-	(p0, s0), (p1, s1) = setup_combat(s, UNITS.HUKER_SHIP_CLASS)
+	(p0, s0), (p1, s1) = setup_combat(s, UNITS.HUKER_SHIP)
 
 	# healthy before
 	assert health(s0) == max_health(s0)
@@ -90,7 +90,7 @@ def test_equip(s, p):
 
 	assert WEAPONS.DEFAULT_FIGHTING_SHIP_WEAPONS_NUM > 0, "This test only makes sense with default cannons. Adapt this if you don't want default cannons."
 
-	(p0, s0), (p1, s1) = setup_combat(s, UNITS.FRIGATE_CLASS)
+	(p0, s0), (p1, s1) = setup_combat(s, UNITS.FRIGATE)
 
 	assert s0.get_component(StorageComponent).inventory[ WEAPONS.CANNON ] == 0
 	assert s0.get_weapon_storage()[ WEAPONS.CANNON ] == WEAPONS.DEFAULT_FIGHTING_SHIP_WEAPONS_NUM
@@ -136,7 +136,7 @@ def test_equip(s, p):
 @game_test
 def test_diplo0(s, p):
 
-	(p0, s0), (p1, s1) = setup_combat(s, UNITS.FRIGATE_CLASS)
+	(p0, s0), (p1, s1) = setup_combat(s, UNITS.FRIGATE)
 
 	Attack(s0, s1).execute(s)
 	# attack without war
@@ -162,7 +162,7 @@ def test_dying(s, p):
 	"""
 	Check if units actually are gone when they have died
 	"""
-	(p0, s0), (p1, s1) = setup_combat(s, UNITS.FRIGATE_CLASS)
+	(p0, s0), (p1, s1) = setup_combat(s, UNITS.FRIGATE)
 
 	AddEnemyPair(p0, p1).execute(s)
 	Attack(s0, s1).execute(s)
@@ -178,7 +178,7 @@ def test_dying(s, p):
 @game_test
 def test_diplo1(s, p):
 
-	(p0, s0), (p1, s1) = setup_combat(s, UNITS.FRIGATE_CLASS)
+	(p0, s0), (p1, s1) = setup_combat(s, UNITS.FRIGATE)
 
 	assert health(s0) == max_health(s0)
 	assert health(s1) == max_health(s1)
@@ -212,11 +212,11 @@ def test_diplo1(s, p):
 
 @game_test
 def test_unfair(s, p):
-	(p0, s0), (p1, s1) = setup_combat(s, UNITS.FRIGATE_CLASS)
+	(p0, s0), (p1, s1) = setup_combat(s, UNITS.FRIGATE)
 
 	# two against one
 
-	s0_1 = CreateUnit(p0.worldid, UNITS.FRIGATE_CLASS, 5, 5)(issuer=p0)
+	s0_1 = CreateUnit(p0.worldid, UNITS.FRIGATE, 5, 5)(issuer=p0)
 
 	AddEnemyPair(p0, p1).execute(s)
 
@@ -238,7 +238,7 @@ def test_combat_save_load():
 	"""
 
 	session, player = new_session()
-	(p0, s0), (p1, s1) = setup_combat(session, UNITS.FRIGATE_CLASS)
+	(p0, s0), (p1, s1) = setup_combat(session, UNITS.FRIGATE)
 
 	s0_worldid, s1_worldid = s0.worldid, s1.worldid
 

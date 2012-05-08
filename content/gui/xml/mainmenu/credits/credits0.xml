@@ -31,6 +31,8 @@
 			<Label text="mihaibivol (Mihai Bivol)" />
 			<Label text="Court-Jus (Ghislain Lévêque)" />
 			<Label text="squiddy (Reiner Gerecke)" />
+			<Label text="mesutcan (Mesutcan Kurt)" />
+			<Label text="Kiryx (Krzysztof Nowak)" />
 		</VBox>
 	</VBox> <Spacer />
 </VBox>
@@ -41,7 +43,7 @@
 			<Label text="dauerflucher (Andreas Lis)" />
 			<Label text="Andre_Re (Andre Reichelt)" />
 			<Label text="Kilian (Kilian K.)" />
-			<Label text="eoc (Christopher Oelmueller)" />
+			<Label text="ChrisOelmueller (Christopher Oelmueller)" />
 		</VBox>
 	</VBox>
 	<VBox> <Label text="Sound and Music Artists"  name="headline" />

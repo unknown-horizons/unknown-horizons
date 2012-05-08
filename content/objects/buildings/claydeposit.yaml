@@ -6,11 +6,9 @@ cost: 0
 cost_inactive: 0
 size_x: 3
 size_y: 3
-inhabitants_start: 0
-inhabitants_max: 0
-button_name: null
+inhabitants: 0
 tooltip_text: null
-settler_level: 0
+settler_level: TIER.NATURE
 buildingcosts: {}
 components:
 - SelectableComponent:
@@ -19,8 +17,8 @@ components:
     enemy_tabs: [ResourceDepositOverviewTab,]
 - HealthComponent: {maxhealth: 10}
 - StorageComponent:
-    inventory:
       SlotsStorage:
-        slot_sizes: {20: 1000000}
+        slot_sizes: {RES.RAW_CLAY: 1000000}
 actionsets:
-  as_clay0: {level: 0}
+  TIER.NATURE:
+    as_clay0:

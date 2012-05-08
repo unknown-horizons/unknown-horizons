@@ -1,0 +1,141 @@
+# TODO:
+# - fix spelling and grammar
+# - remove references to specific resource amounts and units where it isn't strictly necessary for the story
+# - name of ship
+# - custom start res
+# - let ship sink
+# - images?
+# - make sure the be specific about the requirements, so players certainly don't geet lost
+# - last event:
+# // depends on AI (a nation with a lot of useless trails (like the AI now builds) is not very realistic; the AI has to be slower, too):
+# [When border of another nation is reached]
+#  Today, we found out that another nation nation lifes here on the island. But we don´t know, wether they are peaceful or not.
+#   We should send a negotiator there. Then we know, wether they are friendly or not.
+#
+# for notes, see: http://wiki.unknown-horizons.org/w/Kikody%27s_scenario
+
+events:
+- # start
+  actions:
+  - type: logbook
+    arguments:
+      - [Headline, "20th November 1740"]
+      - [Image, "content/gui/images/background/hr.png"]
+      - |
+        After four days the storm finally fades and we can take a rest. But we only have little food left and our ship is in a bad shape. The navigational instruments and sea charts are lost.
+      - |
+        We have to come ashore soon. One of my jacks saw some birds hunting for fish, so land can't be far. Fortunately we always have some tools and boards onboard, so we can build some basic shelter.
+      - |
+        Task:
+        Find land and build a port.
+      - [Pagebreak]
+      - |
+
+  conditions:
+    - type: time_passed
+      arguments: [0]
+
+- # with port
+  actions:
+  - type: logbook
+    arguments:
+    - [Headline, "22nd November 1740"]
+    - [Image, "content/gui/images/background/hr.png"]
+    - |
+      The port is built and a new hope arises. I am still worried about the next days... we are running out of food and lack basic building material.
+    - |
+      We need to secure our basic needs to keep us alive. It is time to send people gathering food and lumber so that we can survive and build some shelter.
+    - |
+      Task:
+      Build at least one of each:
+      * Lumberjack
+      * Fisher
+      * Hunter
+      Collect 5 food and 5 boards.
+    - [Pagebreak]
+    - |
+
+  conditions:
+  - type: settlements_num_greater
+    arguments: [0]
+
+- # basic production setup
+  actions:
+  - type: logbook
+    arguments:
+    - [Headline, "25th November 1740"]
+    - [Image, "content/gui/images/background/hr.png"]
+    - |
+      We have secured our basic needs of food and gathered some wood to continue the growth of our new settlement. Our people demand a place to live and exchange goods for their everyday needs.
+    - |
+      It is time to build some tents to live in and a small main square to supply our citizens with goods.
+    - |
+      Task:
+      Build a main square and at least 10 tents.
+    - [Pagebreak]
+    - |
+
+  conditions:
+  - type: building_num_of_type_greater
+    arguments: [BUILDINGS.FISHER, 0]
+  - type: building_num_of_type_greater
+    arguments: [BUILDINGS.HUNTER, 0]
+  - type: building_num_of_type_greater
+    arguments: [BUILDINGS.LUMBERJACK, 0]
+  - type: settlement_res_stored_greater
+    arguments: [RES.BOARDS, 4]
+  - type: settlement_res_stored_greater
+    arguments: [RES.FOOD, 4]
+
+- # basic residence setup
+  actions:
+  - type: logbook
+    arguments:
+    - [Headline, "1st December 1740"]
+    - [Image, "content/gui/images/background/hr.png"]
+    - |
+      Finally we have enough to eat and a place to live again. My tent is not very comfortable but it keeps me dry and I have the feeling of having a roof over my head at night.
+    - |
+      I have been researching the stars at night, but without my sea charts and instruments their meaning remains unknown. I have the feeling we will be stuck here for a while, so we'll have to make the best of situation.
+      We can only try to to build up a civilisation and find a way home...
+    - |
+      Task:
+      Grow the village util you have at least 250 inhabitants and a positive balance.
+    - [Pagebreak]
+    - |
+
+  conditions:
+  - type: building_num_of_type_greater
+    arguments: [BUILDINGS.RESIDENTIAL, 4]
+  - type: building_num_of_type_greater
+    arguments: [BUILDINGS.MAIN_SQUARE, 0]
+
+- # 250 people
+  actions: # TODO: bigger map action
+  - type: logbook
+    arguments:
+    - [Headline, "27th August 1745"]
+    - [Image, "content/gui/images/background/hr.png"]
+    - |
+      Our village is doing well, the city has grown to over 250 inhabitants. I have started getting used to my new home, but this island is too small to stay here forever.
+    - |
+      We should load our ship and move out to find a bigger island offering room and resources for my people. I have created a basic navigational map again, using the stars I see at night. It is not perfect,  but I hope it will suffice to return here.
+    - |
+      Task:
+      Contact the Unknown Horizons Team (www.unknown-horizons.org) and find out how you can contribute to making this scenario longer and better!
+    - [Pagebreak]
+    - |
+  conditions:
+  - type: settlement_inhabitants_greater
+    arguments: [250]
+  - type: player_balance_greater
+    arguments: [0]
+
+
+mapfile: development.sqlite
+difficulty: easy
+author: Kikody, UH-Team
+description: |
+  You are the captain of a ship under the flag of England in 1740. You and your crew were on the way to a colony of England in the pacific ocean.
+  Everything went fine until you came into a storm....
+locale: en

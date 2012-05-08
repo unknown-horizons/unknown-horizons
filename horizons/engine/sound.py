@@ -126,6 +126,7 @@ class Sound(object):
 			assert emitter is not None, "You need to supply a initialised emitter"
 			assert soundfile is not None, "You need to supply a soundfile"
 			emitter.reset()
-			emitter.setSoundClip(horizons.main.fife.sound.soundclipmanager.load(soundfile))
+			#TODO remove str() -- http://fife.trac.cvsdude.com/engine/ticket/701
+			emitter.setSoundClip(horizons.main.fife.sound.soundclipmanager.load(str(soundfile)))
 			emitter.play()
 

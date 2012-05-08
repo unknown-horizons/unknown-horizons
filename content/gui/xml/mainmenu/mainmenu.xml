@@ -2,11 +2,10 @@
 <Container name="menu" size="1024,768"  position_technique="automatic">
 	<Icon name="background" />
 	<Icon image="content/gui/images/background/mainmenu/wheel.png" position="212,44" />
-	<Icon image="content/gui/images/logos/fife.png" position="22,20" />
-	<Icon image="content/gui/images/logos/sdl.png" position="883,20" />
-	<Icon image="content/gui/images/logos/opengl.png" position="880,100" />
+	<Icon image="content/gui/images/logos/fife.png" position="775,20" />
 
 	<Label name="version_label" text="Unknown Horizons" position="735,735" />
+	<ImageButton name="changeBackground" text="Change Background" position="755,685" />
 
 	<!-- clockwise, starting at 0 degree -->
 	<Label name="start"  text="Singleplayer"  position="531,100"

@@ -6,11 +6,9 @@ cost: 10
 cost_inactive: 0 # can't be inactive actually
 size_x: 2
 size_y: 2
-inhabitants_start: 1
-inhabitants_max: 1
-button_name: tower-1
-settler_level: 1
-buildingcosts: {1: 500, 4: 12, 6: 3, 40: 2}
+inhabitants: 1
+settler_level: TIER.PIONEERS
+buildingcosts: {RES.GOLD: 500, RES.BOARDS: 12, RES.TOOLS: 3, RES.CANNON: 2}
 tooltip_text: _ Defends your settlement.
 components:
 - SelectableComponent:
@@ -19,6 +17,6 @@ components:
     tabs: [TowerOverviewTab,]
     enemy_tabs: [EnemyBuildingOverviewTab,]
 - HealthComponent: {maxhealth: 1000}
-- StorageComponent
 actionsets:
-  as_woodentower0: {level: 0}
+  TIER.PIONEERS:
+    as_woodentower0:

@@ -21,9 +21,9 @@
 # ###################################################
 
 from horizons.world.disaster import Disaster
-from horizons.util.messaging.message import AddStatusIcon, RemoveStatusIcon, NewDisaster
+from horizons.messaging import AddStatusIcon, RemoveStatusIcon, NewDisaster
 from horizons.world.status import FireStatusIcon
-from horizons.constants import GAME_SPEED, BUILDINGS, RES, SETTLER
+from horizons.constants import GAME_SPEED, BUILDINGS, RES, TIER
 from horizons.command.building import Tear
 from horizons.scheduler import Scheduler
 from horizons.util.python.callback import Callback
@@ -52,7 +52,7 @@ class FireDisaster(Disaster):
 	TIME_BEFORE_HAVOC = GAME_SPEED.TICKS_PER_SECOND * 30
 	EXPANSION_TIME = (TIME_BEFORE_HAVOC / 2) - 1 # try twice before dying
 
-	DISASTER_RES = RES.FIRE_ID
+	DISASTER_RES = RES.FIRE
 
 	def __init__(self, settlement, manager):
 		super(FireDisaster, self).__init__(settlement, manager)
@@ -76,15 +76,15 @@ class FireDisaster(Disaster):
 	def breakout(self):
 		assert self.can_breakout(self._settlement)
 		super(FireDisaster, self).breakout()
-		possible_buildings = self._settlement.buildings_by_id[BUILDINGS.RESIDENTIAL_CLASS]
+		possible_buildings = self._settlement.buildings_by_id[BUILDINGS.RESIDENTIAL]
 		building = self._settlement.session.random.choice( possible_buildings )
 		self.infect(building)
 		self.log.debug("%s breakout out on %s at %s", self, building, building.position)
 
 	@classmethod
 	def can_breakout(cls, settlement):
-		return settlement.owner.settler_level >= SETTLER.PIONEER_LEVEL and \
-		       settlement.count_buildings(BUILDINGS.RESIDENTIAL_CLASS) > cls.MIN_SETTLERS_FOR_BREAKOUT
+		return settlement.owner.settler_level >= TIER.PIONEERS and \
+		       settlement.count_buildings(BUILDINGS.RESIDENTIAL) > cls.MIN_SETTLERS_FOR_BREAKOUT
 
 	def expand(self):
 		if not self.evaluate():
@@ -95,7 +95,7 @@ class FireDisaster(Disaster):
 		self.log.debug("%s still active, expanding..", self)
 		for building in self._affected_buildings:
 			for tile in self._settlement.get_tiles_in_radius(building.position, self.EXPANSION_RADIUS, False):
-				if tile.object is not None and tile.object.id == BUILDINGS.RESIDENTIAL_CLASS and tile.object not in self._affected_buildings:
+				if tile.object is not None and tile.object.id == BUILDINGS.RESIDENTIAL and tile.object not in self._affected_buildings:
 					if self._settlement.session.random.random() <= self.SEED_CHANCE:
 						self.infect(tile.object)
 						return
@@ -108,8 +108,8 @@ class FireDisaster(Disaster):
 		@load: (db, disaster_worldid), set on restoring infected state of savegame"""
 		super(FireDisaster, self).infect(building, load=load)
 		# keep in sync with load()
-		building.session.message_bus.broadcast(AddStatusIcon(building, FireStatusIcon(building)))
-		building.session.message_bus.broadcast(NewDisaster(building.owner, building, FireDisaster))
+		AddStatusIcon.broadcast(building, FireStatusIcon(building))
+		NewDisaster.broadcast(building.owner, building, FireDisaster)
 		self._affected_buildings.append(building)
 		havoc_time = self.TIME_BEFORE_HAVOC
 		if load:
@@ -120,7 +120,7 @@ class FireDisaster(Disaster):
 
 	def recover(self, building):
 		super(FireDisaster, self).recover(building)
-		building.session.message_bus.broadcast(RemoveStatusIcon(self, building, FireStatusIcon))
+		RemoveStatusIcon.broadcast(self, building, FireStatusIcon)
 		Scheduler().rem_call(self, Callback(self.wreak_havoc, building))
 		self._affected_buildings.remove(building)
 

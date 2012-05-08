@@ -19,16 +19,17 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
+import weakref
 from collections import deque
 
 from horizons.util import WorldObject, RadiusRect, Callback, decorators
-from horizons.world.pathfinding.pather import RoadPather, BuildingCollectorPather
+from horizons.util.pathfinding.pather import RoadPather, BuildingCollectorPather
 from horizons.constants import COLLECTORS, BUILDINGS
 from horizons.scheduler import Scheduler
 from horizons.world.units.movingobject import MoveNotPossible
-from horizons.world.units.collectors.collector import Collector, JobList
-from horizons.world.component.storagecomponent import StorageComponent
-from horizons.world.component.collectingcompontent import CollectingComponent
+from horizons.world.units.collectors.collector import Collector, JobList, Job
+from horizons.component.storagecomponent import StorageComponent
+from horizons.component.collectingcomponent import CollectingComponent
 
 
 
@@ -56,6 +57,9 @@ class BuildingCollector(Collector):
 		self.home_building = home_building
 		if home_building is not None:
 			self.register_at_home_building()
+		# save whether it's possible for this instance to access a target
+		# @chachedmethod is not applicable since it stores hard refs in the arguments
+		self._target_possible_cache = weakref.WeakKeyDictionary()
 
 	def save(self, db):
 		super(BuildingCollector, self).save(db)
@@ -133,7 +137,8 @@ class BuildingCollector(Collector):
 		return self.home_building.get_component(StorageComponent).inventory
 
 	def get_colleague_collectors(self):
-		return self.home_building.get_component(CollectingComponent).get_local_collectors()
+		colls = self.home_building.get_component(CollectingComponent).get_local_collectors()
+		return ( coll for coll in colls if coll is not self )
 
 	@decorators.make_constants()
 	def get_job(self):
@@ -148,12 +153,19 @@ class BuildingCollector(Collector):
 		jobs = JobList(self, self.job_ordering)
 		# iterate all building that provide one of the resources
 		for building in self.get_buildings_in_range(reslist=collectable_res):
-			if self.check_possible_job_target(building): # check if we can pickup here on principle
-				for res in collectable_res:
-					# check if we can get res here now
-					job = self.check_possible_job_target_for(building, res)
-					if job is not None:
-						jobs.append(job)
+			# check if we can pickup here on principle
+			target_possible = self._target_possible_cache.get(building, None)
+			if target_possible is None: # not in cache, we have to check
+				target_possible = self.check_possible_job_target(building)
+				self._target_possible_cache[building] = target_possible
+
+			if target_possible:
+				# check for res here
+				reslist = ( self.check_possible_job_target_for(building, res) for res in collectable_res )
+				reslist = [i for i in reslist if i]
+
+				if reslist: # we can do something here
+					jobs.append( Job(building, reslist) )
 
 		# TODO: find out why order of  self.get_buildings_in_range(..) and therefor order of jobs differs from client to client
 		# TODO: find out why WindAnimal.get_job(..) doesn't have this problem
@@ -180,11 +192,15 @@ class BuildingCollector(Collector):
 
 	def begin_current_job(self, job_location = None):
 		super(BuildingCollector, self).begin_current_job(job_location)
+
+		"""
+		TODO: port to multiple resources and document this
 		max_amount = min(self.get_component(StorageComponent).inventory.get_limit(self.job.res), self.job.object.get_component(StorageComponent).inventory.get_limit(self.job.res))
 		utilisation = self.job.amount / float(max_amount)
 		# only append a new element if it is different from the last one
 		if not self._job_history or abs(self._job_history[-1][1] - utilisation) > 1e-9:
 			self._job_history.append((Scheduler().cur_tick, utilisation))
+		"""
 
 	def finish_working(self, collector_already_home=False):
 		"""Called when collector has stayed at the target for a while.
@@ -199,11 +215,12 @@ class BuildingCollector(Collector):
 	def reached_home(self):
 		"""Exchanges resources with home and calls end_job"""
 		self.log.debug("%s reached home", self)
-		self.transfer_res_to_home(self.job.res, self.job.amount)
+		for entry in self.job.reslist:
+			self.transfer_res_to_home(entry.res, entry.amount)
 		self.end_job()
 
 	def get_collectable_res(self):
-		"""Return all resources the Collector can collect (depends on its home building)"""
+		"""Return all resources the collector can collect (depends on its home building)"""
 		# find needed res (only res that we have free room for) - Building function
 		return self.home_building.get_needed_resources()
 
@@ -216,11 +233,12 @@ class BuildingCollector(Collector):
 								                                            player=self.owner)
 
 	def handle_path_home_blocked(self):
-		"""Called when we get blocked while trying to move to the job location.
-		The default action is to resume movement in a few seconds."""
-		self.log.debug("%s: got blocked while moving home, trying again in %s ticks.", \
-								   self, COLLECTORS.DEFAULT_WAIT_TICKS)
-		Scheduler().add_new_object(self.resume_movement, self, COLLECTORS.DEFAULT_WAIT_TICKS)
+		"""Called when we get blocked while trying to move to the job location. """
+		self.log.debug("%s: got blocked while moving home, teleporting home", self)
+		# make sure to get home, this prevents all movement problems by design
+		# at the expense of some jumping in very unusual corner cases
+		# NOTE: if this is seen as problem, self.resume_movement() could be tried before reverting to teleportation
+		self.teleport(self.home_building, callback=self.move_callbacks, destination_in_building=True)
 
 	def move_home(self, callback=None, action='move_full'):
 		"""Moves collector back to its home building"""
@@ -232,8 +250,10 @@ class BuildingCollector(Collector):
 		else:
 			# actually move home
 			try:
-				self.move(self.home_building, callback=callback, destination_in_building=True, action=action, \
-				          blocked_callback=self.handle_path_home_blocked)
+				# reuse reversed path of path here (assumes all jobs started at home)
+				path = None if (self.job is None or self.job.path is None) else list(reversed(self.job.path))
+				self.move(self.home_building, callback=callback, destination_in_building=True,
+				          action=action, blocked_callback=self.handle_path_home_blocked, path=path)
 				self.state = self.states.moving_home
 			except MoveNotPossible:
 				# we are in trouble.
@@ -316,7 +336,7 @@ class FisherShipCollector(BuildingCollector):
 		fishers = []
 		for settlement in session.world.settlements:
 			if settlement.owner == owner:
-				fishers.extend(settlement.buildings_by_id[BUILDINGS.FISHERMAN_CLASS])
+				fishers.extend(settlement.buildings_by_id[BUILDINGS.FISHER])
 		smallest_fisher = fishers.pop()
 		for fisher in fishers:
 			if len(smallest_fisher.get_local_collectors()) > len(fisher.get_local_collectors()):

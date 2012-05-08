@@ -6,12 +6,10 @@ cost: 5
 cost_inactive: 0
 size_x: 2
 size_y: 2
-inhabitants_start: 1
-inhabitants_max: 1
-button_name: fisher-1
+inhabitants: 1
 tooltip_text: _ Fishes the sea, produces food.
-settler_level: 0
-buildingcosts: {1: 250, 4: 3, 6: 1}
+settler_level: TIER.SAILORS
+buildingcosts: {RES.GOLD: 250, RES.BOARDS: 3, RES.TOOLS: 1}
 components:
 - SelectableComponent:
     type: building
@@ -23,18 +21,18 @@ components:
     productionlines:
       11:
         produces:
-        - [5, 1]
+        - [RES.FOOD, 1]
         consumes:
-        - [28, -1]
+        - [RES.FISH, -1]
         time: 10
 - StorageComponent:
-    inventory:
       SlotsStorage:
-        slot_sizes: {28: 8, 5: 8}
+        slot_sizes: {RES.FISH: 8, RES.FOOD: 8}
 - AmbientSoundComponent:
     soundfiles: [content/audio/sounds/warehouse.ogg]
 - CollectingComponent:
     collectors:
-      1000004: 1
+      UNITS.FISHER_BOAT: 1
 actionsets:
-  as_fisherman0: {level: 0}
+  TIER.SAILORS:
+    as_fisherman0:

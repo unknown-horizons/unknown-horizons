@@ -6,12 +6,10 @@ cost: 15
 cost_inactive: 5
 size_x: 2
 size_y: 2
-inhabitants_start: 1
-inhabitants_max: 1
-button_name: church-1
+inhabitants: 1
 tooltip_text: _ Fulfills religious needs of sailors.
-settler_level: 0
-buildingcosts: {1: 500, 4: 5, 6: 2}
+settler_level: TIER.SAILORS
+buildingcosts: {RES.GOLD: 500, RES.BOARDS: 5, RES.TOOLS: 2}
 show_status_icons: false
 components:
 - SelectableComponent:
@@ -23,14 +21,15 @@ components:
     productionlines:
       13:
         produces:
-        - [11, 1]
+        - [RES.FAITH, 1]
         time: 4
 - StorageComponent:
-    inventory:
       SlotsStorage:
-        slot_sizes: {11: 10}
+        slot_sizes: {RES.FAITH: 10}
 - AmbientSoundComponent:
     soundfiles: [content/audio/sounds/chapel.ogg]
 actionsets:
-  as_sunsail0: {level: 0}
-  as_church_wooden0: {level: 1}
+  TIER.SAILORS:
+    as_sunsail0:
+  TIER.PIONEERS:
+    as_church_wooden0:

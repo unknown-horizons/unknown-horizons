@@ -31,7 +31,7 @@ from horizons.command.unit import CreateUnit
 from horizons.constants import GROUND, BUILDINGS, UNITS, RES
 from horizons.util import Rect, DbReader, Point
 from horizons.util.uhdbaccessor import read_savegame_template
-from horizons.world.component.storagecomponent import StorageComponent
+from horizons.component.storagecomponent import StorageComponent
 
 
 def create_map():
@@ -82,11 +82,11 @@ def new_settlement(session, pos=Point(30, 20)):
 	assert island, "No island found at %s" % pos
 	player = session.world.player
 
-	ship = CreateUnit(player.worldid, UNITS.PLAYER_SHIP_CLASS, pos.x, pos.y)(player)
+	ship = CreateUnit(player.worldid, UNITS.PLAYER_SHIP, pos.x, pos.y)(player)
 	for res, amount in session.db("SELECT resource, amount FROM start_resources"):
 		ship.get_component(StorageComponent).inventory.alter(res, amount)
 
-	building = Build(BUILDINGS.WAREHOUSE_CLASS, pos.x, pos.y, island, ship=ship)(player)
+	building = Build(BUILDINGS.WAREHOUSE, pos.x, pos.y, island, ship=ship)(player)
 	assert building, "Could not build warehouse at %s" % pos
 
 	return (building.settlement, island)
@@ -97,8 +97,8 @@ def settle(s):
 	Create a new settlement, start with some resources.
 	"""
 	settlement, island = new_settlement(s)
-	settlement.get_component(StorageComponent).inventory.alter(RES.GOLD_ID, 5000)
-	settlement.get_component(StorageComponent).inventory.alter(RES.BOARDS_ID, 50)
-	settlement.get_component(StorageComponent).inventory.alter(RES.TOOLS_ID, 50)
-	settlement.get_component(StorageComponent).inventory.alter(RES.BRICKS_ID, 50)
+	settlement.get_component(StorageComponent).inventory.alter(RES.GOLD, 5000)
+	settlement.get_component(StorageComponent).inventory.alter(RES.BOARDS, 50)
+	settlement.get_component(StorageComponent).inventory.alter(RES.TOOLS, 50)
+	settlement.get_component(StorageComponent).inventory.alter(RES.BRICKS, 50)
 	return settlement, island

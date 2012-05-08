@@ -21,6 +21,6 @@
 
 __all__ = ['collector','buildingcollector','animalcollector']
 
-from buildingcollector import BuildingCollector, FieldCollector, StorageCollector, FisherShipCollector, DisasterRecoveryCollector
+from buildingcollector import BuildingCollector, FieldCollector, StorageCollector, FisherShipCollector, DisasterRecoveryCollector, SettlerCollector
 from animalcollector import AnimalCollector, HunterCollector, FarmAnimalCollector
 from collector import Collector, Job, JobList

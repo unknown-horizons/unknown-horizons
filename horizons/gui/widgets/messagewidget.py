@@ -29,8 +29,8 @@ import horizons.main
 from horizons.extscheduler import ExtScheduler
 from horizons.util import LivingObject, Callback, Point
 from horizons.scheduler import Scheduler
-from horizons.util.gui import load_uh_widget
-from horizons.world.component.ambientsoundcomponent import AmbientSoundComponent
+from horizons.gui.util import load_uh_widget
+from horizons.component.ambientsoundcomponent import AmbientSoundComponent
 from horizons.i18n.voice import get_speech_file
 
 class MessageWidget(LivingObject):
@@ -176,7 +176,7 @@ class MessageWidget(LivingObject):
 		assert isinstance(index, int)
 		ExtScheduler().rem_call(self, self.hide_text) # stop hiding if a new text has been shown
 		label = self.text_widget.findChild(name='text')
-		text = unicode(self.active_messages[self.item+index].message)
+		text = self.active_messages[self.item+index].message
 		text = text.replace(r'\n', self.CHARS_PER_LINE*' ')
 		text = text.replace(r'[br]', self.CHARS_PER_LINE*' ')
 		text = textwrap.fill(text, self.CHARS_PER_LINE)
@@ -271,7 +271,7 @@ class Message(object):
 		icon = icon_id if icon_id else horizons.main.db.get_msg_icon_id(id)
 		self.up_image, self.down_image, self.hover_image = horizons.main.db.get_msg_icons(icon)
 		if message is not None:
-			assert isinstance(message, str) or isinstance(message, unicode)
+			assert isinstance(message, unicode)
 			self.message = message
 		else:
 			msg = _(horizons.main.db.get_msg_text(id))

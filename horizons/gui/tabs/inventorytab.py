@@ -21,25 +21,21 @@
 
 from horizons.gui.tabs.tabinterface import TabInterface
 from horizons.extscheduler import ExtScheduler
-from horizons.world.component.storagecomponent import StorageComponent
+from horizons.component.storagecomponent import StorageComponent
 
 class InventoryTab(TabInterface):
 
 	lazy_loading = True
 
-	def __init__(self, instance = None, widget = 'island_inventory.xml',
+	def __init__(self, instance=None, widget='island_inventory.xml',
 	             icon_path='content/gui/icons/tabwidget/common/inventory_%s.png'):
-		super(InventoryTab, self).__init__(widget = widget)
+		super(InventoryTab, self).__init__(widget=widget, icon_path=icon_path)
 		self.instance = instance
-		self.button_up_image = icon_path % 'u'
-		self.button_active_image = icon_path % 'a'
-		self.button_down_image = icon_path % 'd'
-		self.button_hover_image = icon_path % 'h'
 		self.helptext = _("Settlement inventory")
 
 	def _lazy_loading_init(self):
 		super(InventoryTab, self)._lazy_loading_init()
-		self.widget.child_finder('inventory').init(self.instance.session.db, \
+		self.widget.child_finder('inventory').init(self.instance.session.db,
 		                                           self.instance.get_component(StorageComponent).inventory)
 
 	def refresh(self):

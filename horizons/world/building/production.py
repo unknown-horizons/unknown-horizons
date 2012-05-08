@@ -30,7 +30,7 @@ from horizons.command.building import Build
 from horizons.scheduler import Scheduler
 from horizons.constants import BUILDINGS, PRODUCTION
 from horizons.world.production.producer import Producer
-from horizons.world.component.storagecomponent import StorageComponent
+from horizons.component.storagecomponent import StorageComponent
 
 class ProductionBuilding(BuildingResourceHandler, BuildableSingle, BasicBuilding):
 	pass
@@ -83,7 +83,7 @@ class Mine(BuildingResourceHandler, BuildableSingleOnDeposit, BasicBuilding):
 
 	@classmethod
 	def get_loading_area(cls, building_id, rotation, pos):
-		if building_id == BUILDINGS.MOUNTAIN_CLASS or building_id == BUILDINGS.IRON_MINE_CLASS:
+		if building_id == BUILDINGS.MOUNTAIN or building_id == BUILDINGS.IRON_MINE:
 			if rotation == 45:
 				return Rect.init_from_topleft_and_size(pos.origin.x, pos.origin.y + 1, 1, 3)
 			elif rotation == 135:

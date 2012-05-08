@@ -28,9 +28,11 @@ import glob
 import time
 import re
 import yaml
+import itertools
 
 from horizons.constants import PATHS, VERSION
 from horizons.util import DbReader, YamlCache
+from horizons.i18n import find_available_languages
 
 import horizons.main
 
@@ -317,16 +319,44 @@ class SavegameManager(object):
 		return cls.__get_saves_from_dirs([cls.scenarios_dir], include_displaynames, cls.scenario_extension, False)
 
 	@classmethod
-	def get_available_scenarios(cls, include_displaynames = True, locales = None):
+	def get_available_scenarios(cls, include_displaynames = True, locales = False):
 		"""Returns available scenarios (depending on the campaign(s) status)"""
 		afiles = []
 		anames = []
 		sfiles, snames = cls.get_scenarios(include_displaynames = True)
 		for i, sname in enumerate(snames):
 			if cls.check_scenario_availability(sname):
-				if locales is None or cls.get_scenario_info(name = sname).get('locale', 'en') in locales:
+				#get file's locale
+				cur_locale = '_' + cls.get_scenario_info(name = sname).get('locale')
+				#if the locale is nodefault then don't add it
+				#we use this locale in test scenarios and they are not included to the list
+				if cur_locale == "_nodefault":
+					continue
+				#don't add language postfix
+				sname = sname.split(cur_locale)[0]
+				if not sname in anames:
 					anames.append(sname)
-					afiles.append(sfiles[i])
+					afiles.append(sfiles[i][:sfiles[i].rfind(cur_locale)])
+
+		def _list_maps_with_language(prefixlist, language):
+			maplist = []
+			for (listitem, language) in itertools.product(prefixlist, languages):
+				maplist.append(listitem + '_' + language + '.' + SavegameManager.scenario_extension)
+
+			return maplist
+
+		#we use scenario map name + language extension
+		languages = find_available_languages().keys()
+		#we use full map paths (with language extensions)
+		scenario_map_paths = _list_maps_with_language(afiles, languages)
+		#we use full map names (with language extensions)
+		scenario_map_names = _list_maps_with_language(anames, languages)
+
+		#if needed we should return with language extensions
+		if locales:
+			afiles = scenario_map_paths
+			anames = scenario_map_names
+
 		if not include_displaynames:
 			return (afiles,)
 		return (afiles, anames)

@@ -11,7 +11,7 @@
 
 		<Label text="Chat:"  position="22,50"  name="headline" />
 		<ScrollArea name="chat_scroll_area"  min_size="300,335"  position="22,75">
-			<ListBox name="chatbox"  min_size="300,335" />
+			<ListBox name="chatbox"  min_size="300,335" is_focusable="0" />
 		</ScrollArea>
 		<TextField name="chatTextField"  position="22,420" 
 			text="Enter your message here"  min_size="300,16" />

@@ -6,12 +6,10 @@ cost: 0
 cost_inactive: 0
 size_x: 3
 size_y: 3
-inhabitants_start: 0
-inhabitants_max: 0
-button_name: pasture-1
+inhabitants: 0
 tooltip_text: _ Raises sheep. Produces wool. Needs a farm.
-settler_level: 1
-buildingcosts: {1: 100, 4: 1}
+settler_level: TIER.PIONEERS
+buildingcosts: {RES.GOLD: 100, RES.BOARDS: 1}
 show_status_icons: false
 components:
 - HealthComponent: {maxhealth: 10}
@@ -19,13 +17,13 @@ components:
     productionlines:
       5:
         produces:
-        - [2, 1]
+        - [RES.LAMB_WOOL, 1]
         time: 30
 - StorageComponent:
-    inventory:
       SlotsStorage:
-        slot_sizes: {9: 10, 2: 1}
+        slot_sizes: {RES.GRASS: 10, RES.LAMB_WOOL: 1}
 - AmbientSoundComponent:
     soundfiles: [content/audio/sounds/sheepfield.ogg]
 actionsets:
-  as_pasture0: {level: 0}
+  TIER.PIONEERS:
+    as_pasture0:

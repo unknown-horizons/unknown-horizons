@@ -27,7 +27,7 @@ from collections import defaultdict
 from horizons.constants import AI, BUILDINGS, RES
 from horizons.util.python import decorators
 from horizons.util import WorldObject
-from horizons.world.component.storagecomponent import StorageComponent
+from horizons.component.storagecomponent import StorageComponent
 
 class LandManager(WorldObject):
 	"""
@@ -116,7 +116,7 @@ class LandManager(WorldObject):
 
 	def refresh_resource_deposits(self):
 		self.resource_deposits = defaultdict(lambda: []) # {resource_id: [tile, ...]} all resource deposits of a type on the island
-		for resource_id, building_ids in {RES.RAW_CLAY_ID: [BUILDINGS.CLAY_DEPOSIT_CLASS, BUILDINGS.CLAY_PIT_CLASS], RES.RAW_IRON_ID: [BUILDINGS.MOUNTAIN_CLASS, BUILDINGS.IRON_MINE_CLASS]}.iteritems():
+		for resource_id, building_ids in {RES.RAW_CLAY: [BUILDINGS.CLAY_DEPOSIT, BUILDINGS.CLAY_PIT], RES.RAW_IRON: [BUILDINGS.MOUNTAIN, BUILDINGS.IRON_MINE]}.iteritems():
 			for building in self.island.buildings:
 				if building.id in building_ids:
 					if building.get_component(StorageComponent).inventory[resource_id] > 0:

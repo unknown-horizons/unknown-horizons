@@ -1,0 +1,107 @@
+tab1:
+- icon: content/gui/icons/tabwidget/buildmenu/level1_%s.png
+- headline: Residents and infrastructure # Too long for label! => find better name
+- helptext: _ Residents and infrastructure
+-
+  - _ Infrastructure
+  - BUILDINGS.TRAIL
+  - BUILDINGS.STORAGE
+  - BUILDINGS.LOOKOUT
+  - BUILDINGS.SIGNAL_FIRE
+-
+  - _ Residential
+  - BUILDINGS.RESIDENTIAL
+-
+  - _ Services
+  - BUILDINGS.MAIN_SQUARE
+  - BUILDINGS.PAVILION
+  - BUILDINGS.VILLAGE_SCHOOL
+  - BUILDINGS.TAVERN
+-
+  - TODO #TODO find subcategory name: "Preventive" sounds really bad. suggestions?
+  - BUILDINGS.FIRE_STATION
+
+tab2:
+- icon: content/gui/icons/tabwidget/buildmenu/level2_%s.png
+- headline: _ Fields
+-
+  - _ Pioneers
+  - BUILDINGS.FARM
+  - BUILDINGS.PASTURE
+  - BUILDINGS.POTATO_FIELD
+  - BUILDINGS.SUGARCANE_FIELD
+-
+  - _ Settlers
+  - BUILDINGS.TOBACCO_FIELD
+  - BUILDINGS.CATTLE_RUN
+  - BUILDINGS.PIGSTY
+  - BUILDINGS.SPICE_FIELD
+-
+  - _ Citizens
+  - BUILDINGS.CORN_FIELD
+  - BUILDINGS.COCOA_FIELD
+  - BUILDINGS.VINEYARD
+  - BUILDINGS.ALVEARIES
+
+tab3:
+- icon: content/gui/icons/tabwidget/buildmenu/level3_%s.png
+- headline: Agricultural Companies #TODO find name
+-
+  - _ Sea
+  - BUILDINGS.FISHER
+  - BUILDINGS.SALT_PONDS
+-
+  - _ Food
+  - BUILDINGS.HUNTER
+  - BUILDINGS.BUTCHERY
+  - BUILDINGS.WINDMILL
+  - BUILDINGS.BAKERY
+-
+  - BUILDINGS.WEAVER
+  - BUILDINGS.BLENDER
+-
+  - BUILDINGS.DISTILLERY
+  - BUILDINGS.TOBACCONIST
+  - BUILDINGS.VINTNER
+  - BUILDINGS.PASTRY_SHOP
+
+
+
+tab4:
+- icon: content/gui/icons/tabwidget/buildmenu/level4_%s.png
+- headline: _ Companies
+-
+  - Tree only in LJ related?
+  - BUILDINGS.LUMBERJACK
+  - BUILDINGS.TREE
+  - BUILDINGS.CHARCOAL_BURNER
+-
+  - _ Mining
+  - BUILDINGS.CLAY_PIT
+  - BUILDINGS.BRICKYARD
+  - BUILDINGS.IRON_MINE
+  - BUILDINGS.SMELTERY
+-
+  - BUILDINGS.TOOLMAKER
+
+tab5:
+- icon: content/gui/icons/tabwidget/buildmenu/level5_%s.png
+- headline: _ Military
+-
+  - _ Fortifications
+  - BUILDINGS.WOODEN_TOWER
+-
+  - _ Military Service
+  - BUILDINGS.BOAT_BUILDER
+  - # empty
+  - BUILDINGS.BARRACKS
+
+tab6:
+- icon: content/gui/icons/tabwidget/buildmenu/level6_%s.png
+- headline: _ Aesthetics
+-
+  -
+
+
+meta:
+  unlocking_strategy: single_per_increment

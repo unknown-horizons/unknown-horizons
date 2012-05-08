@@ -30,10 +30,10 @@ class BoatBuilderGoal(SettlementGoal):
 
 	@property
 	def active(self):
-		return super(BoatBuilderGoal, self).active and not self.owner.count_buildings(BUILDINGS.BOATBUILDER_CLASS)
+		return super(BoatBuilderGoal, self).active and not self.owner.count_buildings(BUILDINGS.BOAT_BUILDER)
 
 	def execute(self):
-		result = AbstractBuilding.buildings[BUILDINGS.BOATBUILDER_CLASS].build(self.settlement_manager, None)[0]
+		result = AbstractBuilding.buildings[BUILDINGS.BOAT_BUILDER].build(self.settlement_manager, None)[0]
 		self._log_generic_build_result(result, 'boat builder')
 		return self._translate_build_result(result)
 

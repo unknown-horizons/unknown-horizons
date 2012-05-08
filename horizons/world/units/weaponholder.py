@@ -29,11 +29,11 @@ from horizons.scheduler import Scheduler
 from horizons.util.changelistener import metaChangeListenerDecorator
 from weapon import Weapon, StackableWeapon, SetStackableWeaponNumberError
 from horizons.constants import GAME_SPEED
-from horizons.world.component.stancecomponent import HoldGroundStance, AggressiveStance, \
+from horizons.component.stancecomponent import HoldGroundStance, AggressiveStance, \
 	NoneStance, FleeStance
 from horizons.world.storage import PositiveTotalNumSlotsStorage
 from horizons.world.units.ship import Ship
-from horizons.world.component.storagecomponent import StorageComponent
+from horizons.component.storagecomponent import StorageComponent
 from horizons.util.worldobject import WorldObject
 
 @metaChangeListenerDecorator("storage_modified")

@@ -20,7 +20,7 @@
 # ###################################################
 
 import horizons.main # this must be the first import, so the correct load order of all modules is guaranteed
-from horizons.util.yamlcache import SafeLoader, YamlCache
+from horizons.util.yamlcache import YamlCache
 from horizons.util import SQLiteAnimationLoader, ActionSetLoader, TileSetLoader
 from horizons.constants import PATHS, VIEW
 
@@ -135,7 +135,7 @@ class UHObjectLoader(scripts.plugin.Plugin):
 			for filename in fnmatch.filter(filenames, '*.yaml'):
 				# This is needed for dict lookups! Do not convert to os.join!
 				full_file = root + "/" + filename
-				result = YamlCache.get_file(full_file)
+				result = YamlCache.get_file(full_file, game_data=True)
 				result['yaml_file'] = full_file
 				self._loadBuilding(result)
 
@@ -154,26 +154,27 @@ class UHObjectLoader(scripts.plugin.Plugin):
 		fife.ObjectVisual.create(object)
 
 		main_action = 'idle'
-		for action_set_id in action_sets.iterkeys():
-			for action_id in self.all_action_sets[action_set_id].iterkeys():
-				main_action = action_id+"_"+str(action_set_id)
-				action = object.createAction(main_action)
-				fife.ActionVisual.create(action)
-				for rotation in self.all_action_sets[action_set_id][action_id].iterkeys():
-					if rotation == 45:
-						command = 'left-32,bottom+' + str(size_x * 16)
-					elif rotation == 135:
-						command = 'left-' + str(size_y * 32) + ',bottom+16'
-					elif rotation == 225:
-						command = 'left-' + str((size_x + size_y - 1) * 32) + ',bottom+' + str(size_y * 16)
-					elif rotation == 315:
-						command = 'left-' + str(size_x * 32) + ',bottom+' + str((size_x + size_y - 1) * 16)
-					else:
-						assert False, "Bad rotation for action_set %(id)s: %(rotation)s for action: %(action_id)s" % \
-							   { 'id': action_set_id, 'rotation': rotation, 'action_id': action_id }
-					anim = self.animationloader.loadResource(str(action_set_id)+"+"+str(action_id)+"+"+str(rotation) + ':shift:' + command)
-					action.get2dGfxVisual().addAnimation(int(rotation), anim)
-					action.setDuration(anim.getDuration())
+		for action_set_list in action_sets.itervalues():
+			for action_set_id in action_set_list.iterkeys():
+				for action_id in self.all_action_sets[action_set_id].iterkeys():
+					main_action = action_id+"_"+str(action_set_id)
+					action = object.createAction(main_action)
+					fife.ActionVisual.create(action)
+					for rotation in self.all_action_sets[action_set_id][action_id].iterkeys():
+						if rotation == 45:
+							command = 'left-32,bottom+' + str(size_x * 16)
+						elif rotation == 135:
+							command = 'left-' + str(size_y * 32) + ',bottom+16'
+						elif rotation == 225:
+							command = 'left-' + str((size_x + size_y - 1) * 32) + ',bottom+' + str(size_y * 16)
+						elif rotation == 315:
+							command = 'left-' + str(size_x * 32) + ',bottom+' + str((size_x + size_y - 1) * 16)
+						else:
+							assert False, "Bad rotation for action_set %(id)s: %(rotation)s for action: %(action_id)s" % \
+								   { 'id': action_set_id, 'rotation': rotation, 'action_id': action_id }
+						anim = self.animationloader.loadResource(str(action_set_id)+"+"+str(action_id)+"+"+str(rotation) + ':shift:' + command)
+						action.get2dGfxVisual().addAnimation(int(rotation), anim)
+						action.setDuration(anim.getDuration())
 
 		util.addBuilding(id, name, main_action)
 

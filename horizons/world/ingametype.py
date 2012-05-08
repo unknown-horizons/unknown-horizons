@@ -19,7 +19,7 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-from horizons.constants import SETTLER
+from horizons.constants import TIER
 
 class IngameType(type):
 	"""Class that is used to create Ingame-Type-Classes from yaml data.
@@ -52,10 +52,10 @@ class IngameType(type):
 			super(cls, self).load(db, worldid)
 			return self
 
-		module = __import__(self.basepackage+class_package, [], [], [class_name])
-		return type.__new__(self, self.classstring + str(id) + ']',
+		module = __import__(str(self.basepackage+class_package), [], [], [str(class_name)])
+		return type.__new__(self, str(self.classstring) + str(id) + ']',
 			(getattr(module, class_name),),
-			{'load': load, 'class_package': class_package, 'class_name': class_name})
+			{'load': load, 'class_package': str(class_package), 'class_name': str(class_name)})
 
 	def _strip_translation_marks(self, string):
 		if string.startswith("_ "):
@@ -73,7 +73,7 @@ class IngameType(type):
 			# fill up dict (fall down to highest class which has an name
 			name = None
 			self._level_specific_names = {}
-			for lvl in xrange( min(name_data), SETTLER.CURRENT_MAX_INCR+1 ):
+			for lvl in xrange(min(name_data), TIER.CURRENT_MAX + 1):
 				if lvl in name_data:
 					name = _( self._strip_translation_marks( name_data[lvl] ) )
 				assert name is not None, "name attribute is wrong: "+str(yaml_data['name'])
@@ -85,7 +85,6 @@ class IngameType(type):
 		self.radius = yaml_data['radius']
 		self.component_templates = yaml_data['components']
 		self.action_sets = yaml_data['actionsets']
-		self.action_sets_by_level = self.action_sets_by_level(self.action_sets)
 		self.baseclass = yaml_data['baseclass'] # mostly only for debug
 		self._real_object = None # wrapped by _object
 
@@ -123,17 +122,6 @@ class IngameType(type):
 		if self._real_object is None:
 			self._loadObject()
 		return self._real_object
-
-	def action_sets_by_level(self, action_sets):
-		as_by_level = {}
-		for i in xrange(0, SETTLER.CURRENT_MAX_INCR+1):
-			as_by_level[i] = []
-			for setname, value in action_sets.iteritems():
-				if 'level' in value and value['level'] == i:
-					as_by_level[i].append(setname)
-				elif 'level' not in value and i == 0:
-					as_by_level[i] = setname
-		return as_by_level
 
 	def _loadObject(self):
 		"""Inits self._real_object"""

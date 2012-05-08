@@ -38,12 +38,12 @@ class AbstractBoatBuilder(AbstractBuilding):
 
 	@classmethod
 	def register_buildings(cls):
-		cls._available_buildings[BUILDINGS.BOATBUILDER_CLASS] = cls
+		cls._available_buildings[BUILDINGS.BOAT_BUILDER] = cls
 
 class BoatBuilderEvaluator(BuildingEvaluator):
 	@classmethod
 	def create(cls, area_builder, x, y, orientation):
-		builder = area_builder.make_builder(BUILDINGS.BOATBUILDER_CLASS, x, y, True, orientation)
+		builder = area_builder.make_builder(BUILDINGS.BOAT_BUILDER, x, y, True, orientation)
 		if not builder:
 			return None
 
@@ -63,7 +63,7 @@ class BoatBuilderEvaluator(BuildingEvaluator):
 
 		personality = area_builder.owner.personality_manager.get('BoatBuilderEvaluator')
 		alignment = cls._get_alignment(area_builder, builder.position.tuple_iter())
-		value = float(Entities.buildings[BUILDINGS.BOATBUILDER_CLASS].radius) / distance_to_collector + alignment * personality.alignment_importance
+		value = float(Entities.buildings[BUILDINGS.BOAT_BUILDER].radius) / distance_to_collector + alignment * personality.alignment_importance
 		return BoatBuilderEvaluator(area_builder, builder, value)
 
 	@property

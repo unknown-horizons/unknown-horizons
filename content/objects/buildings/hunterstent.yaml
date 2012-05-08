@@ -6,12 +6,10 @@ cost: 5
 cost_inactive: 0
 size_x: 2
 size_y: 2
-inhabitants_start: 1
-inhabitants_max: 1
-button_name: hunter-1
+inhabitants: 1
 tooltip_text: _ Hunts wild forest animals, produces food.
-settler_level: 0
-buildingcosts: {1: 250, 4: 2, 6: 1}
+settler_level: TIER.SAILORS
+buildingcosts: {RES.GOLD: 250, RES.BOARDS: 2, RES.TOOLS: 1}
 components:
 - SelectableComponent:
     type: building
@@ -22,16 +20,16 @@ components:
     productionlines:
       18:
         produces:
-        - [5, 2]
+        - [RES.FOOD, 2]
         consumes:
-        - [13, -1]
+        - [RES.DEER_MEAT, -1]
         time: 10
 - StorageComponent:
-    inventory:
       SlotsStorage:
-        slot_sizes: {5: 6, 13: 4}
+        slot_sizes: {RES.FOOD: 6, RES.DEER_MEAT: 4}
 - CollectingComponent:
     collectors:
-      1000014: 1
+      UNITS.HUNTER_COLLECTOR: 1
 actionsets:
-  as_hunter0: {level: 0}
+  TIER.SAILORS:
+    as_hunter0:

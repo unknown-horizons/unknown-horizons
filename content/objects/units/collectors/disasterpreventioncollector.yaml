@@ -5,9 +5,9 @@ radius: 5
 velocity: 12.0
 components:
 - StorageComponent:
-   inventory:
       PositiveSizedSlotStorage:
          limit: 8
 
 actionsets:
-   as_lumberjackunit0: {level: 0} # TODO
+  TIER.SAILORS:
+    as_lumberjackunit0:

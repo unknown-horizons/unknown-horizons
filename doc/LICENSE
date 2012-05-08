@@ -113,6 +113,12 @@ content/gui/icons/buildmenu/048_h.png
 content/gui/icons/buildmenu/greyscale/048.png
 More details found here: http://opengameart.org/content/food-pack
 
+"Training Map" by Clement Wu & Botanic from http://opengameart.org/content/training-map,
+"Kingdom Weapon Set" by Clint Bellanger from http://opengameart.org/content/kingdom-weapon-set,
+"Training Target" by p0ss from http://opengameart.org/content/training-target,
+"Wooden Weapon Training Set" by p0ss from http://opengameart.org/content/wooden-weapon-training-set
+used in content/gfx/buildings/settlers/barracks/as_barracks0/*
+
 
 Our own audiovisual media content is published under the terms of the
 Creative Commons Attribution Sharealike 3.0 Unported License (see CC).

@@ -4,9 +4,9 @@
 msgid "{player1} and {player2} have allied their forces."
 msgstr ""
 
-#. This is a database entry: the name of a resource.
+#. This is a database entry: a messagewidget message (left part of the screen).
 #: sql database files
-msgid "iron ore"
+msgid "Your building has caught fire!"
 msgstr ""
 
 #. This is a database entry: the name of a resource.
@@ -103,6 +103,11 @@ msgstr ""
 #. This is a database entry: the name of a resource.
 #: sql database files
 msgid "potatoes"
+msgstr ""
+
+#. This is a database entry: the name of a resource.
+#: sql database files
+msgid "iron ore"
 msgstr ""
 
 #. This is a database entry: the name of a resource.
@@ -291,6 +296,11 @@ msgstr ""
 #. This is a database entry: the name of a resource.
 #: sql database files
 msgid "stone deposit"
+msgstr ""
+
+#. This is a database entry: a messagewidget message (left part of the screen).
+#: sql database files
+msgid "You failed the scenario."
 msgstr ""
 
 #. This is a database entry: the name of a resource.

@@ -61,7 +61,7 @@ class bcolors:
 def cleanup(pyflakeserrorlist):
 	"""Methode used to filter bad errors from pyflakes"""
 	for line in list(pyflakeserrorlist):
-		if "undefined name '_'" in line or "undefined name 'N_'" in line:
+		if "undefined name '_'" in line:
 			# These messages are produced because of gettext and cannot be removed
 			# Therefore we ignore the error
 			del pyflakeserrorlist[pyflakeserrorlist.index(line)]

@@ -29,7 +29,7 @@ from horizons.constants import BUILDINGS, RES, PRODUCTION
 from horizons.scheduler import Scheduler
 from horizons.util import Rect
 from horizons.entities import Entities
-from horizons.world.component.storagecomponent import StorageComponent
+from horizons.component.storagecomponent import StorageComponent
 from horizons.world.production.producer import Producer
 
 class ImproveCollectorCoverageGoal(SettlementGoal):
@@ -51,7 +51,7 @@ class ImproveCollectorCoverageGoal(SettlementGoal):
 				amount_paused = history[PRODUCTION.STATES.inventory_full.index] + history[PRODUCTION.STATES.paused.index]
 				if amount_paused < self.personality.min_bad_collector_coverage:
 					continue
-				for resource_id in production.get_produced_res():
+				for resource_id in production.get_produced_resources():
 					if self.settlement.get_component(StorageComponent).inventory.get_free_space_for(resource_id) > self.personality.min_free_space:
 						# this is actually problematic
 						problematic_buildings[building.worldid] = building
@@ -79,7 +79,7 @@ class ImproveCollectorCoverageGoal(SettlementGoal):
 
 		cost = self.production_builder.get_road_cost(path)
 		for resource_id, amount in cost.iteritems():
-			if resource_id == RES.GOLD_ID:
+			if resource_id == RES.GOLD:
 				if self.owner.get_component(StorageComponent).inventory[resource_id] < amount:
 					return BUILD_RESULT.NEED_RESOURCES
 			elif self.settlement.get_component(StorageComponent).inventory[resource_id] < amount:
@@ -119,7 +119,7 @@ class ImproveCollectorCoverageGoal(SettlementGoal):
 
 	def _build_extra_storage(self):
 		"""Build an extra storage tent to improve collector coverage."""
-		if not self.production_builder.have_resources(BUILDINGS.STORAGE_CLASS):
+		if not self.production_builder.have_resources(BUILDINGS.STORAGE):
 			return BUILD_RESULT.NEED_RESOURCES
 
 		reachable = dict.fromkeys(self.land_manager.roads) # {(x, y): [(building worldid, distance), ...], ...}
@@ -130,7 +130,7 @@ class ImproveCollectorCoverageGoal(SettlementGoal):
 			if reachable[key] is None:
 				reachable[key] = []
 
-		storage_radius = Entities.buildings[BUILDINGS.STORAGE_CLASS].radius
+		storage_radius = Entities.buildings[BUILDINGS.STORAGE].radius
 		moves = [(-1, 0), (0, -1), (0, 1), (1, 0)]
 		for building in self._problematic_buildings:
 			distance = dict.fromkeys(reachable)
@@ -156,7 +156,7 @@ class ImproveCollectorCoverageGoal(SettlementGoal):
 
 		options = []
 		for (x, y), building_distances in reachable.iteritems():
-			builder = self.production_builder.make_builder(BUILDINGS.STORAGE_CLASS, x, y, False)
+			builder = self.production_builder.make_builder(BUILDINGS.STORAGE, x, y, False)
 			if not builder:
 				continue
 

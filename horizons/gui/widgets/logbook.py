@@ -25,10 +25,11 @@ from fife.extensions.pychan.widgets import HBox, Icon, Label
 
 from horizons.util import Callback
 from horizons.util.changelistener import metaChangeListenerDecorator
-from horizons.world.component.ambientsoundcomponent import AmbientSoundComponent
+from horizons.component.ambientsoundcomponent import AmbientSoundComponent
 from horizons.command.game import UnPauseCommand
 from horizons.command.misc import Chat
 from horizons.gui.widgets.pickbeltwidget import PickBeltWidget
+from horizons.gui.widgets import OkButton
 
 @metaChangeListenerDecorator("pause_request")
 @metaChangeListenerDecorator("unpause_request")
@@ -69,7 +70,7 @@ class LogBook(PickBeltWidget):
 		"""Initial gui setup for all subpages accessible through pickbelts."""
 		self._gui = self.get_widget()
 		self._gui.mapEvents({
-		  'okButton' : self.hide,
+		  OkButton.DEFAULT_NAME : self.hide,
 		  'backwardButton' : Callback(self._scroll, -2),
 		  'forwardButton' : Callback(self._scroll, 2),
 		  'stats_players' : Callback(self.show_statswidget, widget='players'),
@@ -157,7 +158,7 @@ class LogBook(PickBeltWidget):
 			self._display_widgets_on_page([
 			  ['Headline', _("Emptiness")],
 			  ['Image', "content/gui/images/background/hr.png"],
-			  ['Label', "\n\n"],
+			  ['Label', u"\n\n"],
 			  ['Label', _('There is nothing written in your logbook yet!')],
 				], 'left')
 		self.backward_button.set_active()
@@ -176,11 +177,11 @@ class LogBook(PickBeltWidget):
 		# json.loads() returns unicode, thus convert strings and compare to unicode
 		# Image works with str() since pychan can only use str objects as file path
 		if widget and widget[0]: # allow empty Labels
-			widget_type = unicode(widget[0])
+			widget_type = widget[0]
 		if isinstance(widget, basestring):
-			add = Label(text=unicode(widget), wrap_text=True, min_size=(335, 0), max_size=(335,508))
+			add = Label(text=unicode(widget), wrap_text=True, min_size=(335, 0), max_size=(335, 508))
 		elif widget_type == u'Label':
-			add = Label(text=unicode(widget[1]), wrap_text=True, min_size=(335, 0), max_size=(335,508))
+			add = Label(text=unicode(widget[1]), wrap_text=True, min_size=(335, 0), max_size=(335, 508))
 		elif widget_type == u'Image':
 			add = Icon(image=str(widget[1]))
 		elif widget_type == u'Gallery':
@@ -188,7 +189,7 @@ class LogBook(PickBeltWidget):
 			for image in widget[1]:
 				add.addChild(Icon(image=str(image)))
 		elif widget_type == u'Headline':
-			add = Label(text=unicode(widget[1]))
+			add = Label(text=widget[1])
 			add.stylize('headline')
 		else:
 			print '[WW] Warning: Unknown widget type {typ} in widget {wdg}'.format(
@@ -354,17 +355,14 @@ class LogBook(PickBeltWidget):
 		           self.session.ingame_gui.message_widget.archive
 		for msg in sorted(messages, key=lambda m: m.created):
 			if msg.id != 'CHAT': # those get displayed in the chat window instead
-				m = msg.message
-				if not isinstance(m, unicode):
-					m = m.decode('utf-8')
-				self.messagebox.items.append(m)
+				self.messagebox.items.append(msg.message)
 		self.messagebox.selected = len(self.messagebox.items) - 1 # scroll to bottom
 
 	def _display_chat_history(self):
 		self.chatbox.items = []
 		messages = self.session.ingame_gui.message_widget.chat
 		for msg in sorted(messages, key=lambda m: m.created):
-			self.chatbox.items.append(unicode(msg.message))
+			self.chatbox.items.append(msg.message)
 		self.chatbox.selected = len(self.chatbox.items) - 1 # scroll to bottom
 
 	def _chatfield_onfocus(self):

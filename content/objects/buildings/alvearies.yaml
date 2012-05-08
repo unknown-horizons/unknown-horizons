@@ -1,0 +1,28 @@
+id: 62
+name: _ Alvearies
+baseclass: nature.Field
+radius: 0
+cost: 0
+cost_inactive: 0
+size_x: 3
+size_y: 3
+inhabitants: 0
+tooltip_text: _ Keeps bees. Produces honeycombs used for confectionery. Needs a farm.
+settler_level: TIER.CITIZENS
+buildingcosts: {RES.GOLD: 150}
+show_status_icons: false
+components:
+- HealthComponent: {maxhealth: 10}
+- ProducerComponent:
+    productionlines:
+      0:
+        produces:
+        - [RES.ALVEARIES, 1]
+        time: 30
+- StorageComponent:
+      SlotsStorage:
+        slot_sizes: {RES.ALVEARIES: 1}
+actionsets:
+  TIER.CITIZENS:
+    #as_alvearies0:
+    as_3x3:

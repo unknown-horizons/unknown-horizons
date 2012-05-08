@@ -24,7 +24,7 @@ from fife import fife
 import horizons.main
 from horizons.command.unit import Act, Attack
 from horizons.command.diplomacy import AddEnemyPair
-from horizons.world.component.healthcomponent import HealthComponent
+from horizons.component.healthcomponent import HealthComponent
 from horizons.gui.mousetools.selectiontool import SelectionTool
 
 class AttackingTool(SelectionTool):
@@ -90,7 +90,6 @@ class AttackingTool(SelectionTool):
 				continue
 			try:
 				if instance.has_component(HealthComponent):
-					attackable = True
 					target = instance
 			except AttributeError:
 				pass

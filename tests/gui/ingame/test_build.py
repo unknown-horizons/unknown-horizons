@@ -26,7 +26,7 @@ from horizons.command.unit import Act
 from horizons.world.units.collectors.collector import Collector
 from horizons.gui.mousetools.buildingtool import BuildingTool
 from horizons.gui.mousetools.cursortool import CursorTool
-from horizons.world.component.collectingcompontent import CollectingComponent
+from horizons.component.collectingcomponent import CollectingComponent
 from tests.gui import TestFinished, gui_test
 from tests.gui.helper import get_player_ship
 
@@ -66,21 +66,21 @@ def test_found_settlement(gui):
 	gui.trigger('mainhud', 'build/action/default')
 
 	# build a lumberjack
-	gui.trigger('tab', 'button_5/action/default')
+	gui.trigger('tab', 'button_03/action/default')
 	gui.cursor_click(55, 5, 'left')
-	assert(ground_map[(55, 5)].object.id == BUILDINGS.LUMBERJACK_CLASS)
+	assert(ground_map[(55, 5)].object.id == BUILDINGS.LUMBERJACK)
 
 	# build a storage
-	gui.trigger('tab', 'button_2/action/default')
+	gui.trigger('tab', 'button_11/action/default')
 	gui.cursor_click(55, 15, 'left')
 	storage = ground_map[(55, 15)].object
-	assert(storage.id == BUILDINGS.STORAGE_CLASS)
+	assert(storage.id == BUILDINGS.STORAGE)
 
 	# connect the lumberjack and storage using a road
 	gui.trigger('tab', 'button_21/action/default')
 	for y in xrange(7, 15):
 		gui.cursor_click(55, y, 'left')
-		assert(ground_map[(55, y)].object.id == BUILDINGS.TRAIL_CLASS)
+		assert(ground_map[(55, y)].object.id == BUILDINGS.TRAIL)
 	gui.cursor_click(55, y, 'right')
 
 	# select the storage

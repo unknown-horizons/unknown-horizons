@@ -26,7 +26,7 @@ from horizons.scheduler import Scheduler
 from horizons.constants import GAME_SPEED
 from horizons.util.changelistener import metaChangeListenerDecorator
 from horizons.world.units.bullet import Bullet
-from horizons.world.component.healthcomponent import HealthComponent
+from horizons.component.healthcomponent import HealthComponent
 
 @metaChangeListenerDecorator("attack_ready")
 @metaChangeListenerDecorator("weapon_fired")

@@ -24,11 +24,11 @@ from fife import fife
 
 from horizons.scheduler import Scheduler
 
-from horizons.world.pathfinding import PathBlockedError
+from horizons.util.pathfinding import PathBlockedError
 from horizons.util import Point, WeakMethodList, decorators
 from horizons.world.concreteobject import ConcreteObject
 from horizons.constants import GAME_SPEED
-from horizons.world.componentholder import ComponentHolder
+from horizons.component.componentholder import ComponentHolder
 from horizons.world.units import UnitClass
 
 class MoveNotPossible(Exception):
@@ -113,16 +113,15 @@ class MovingObject(ComponentHolder, ConcreteObject):
 		self._move_action = 'idle'
 
 	def move(self, destination, callback = None, destination_in_building = False, action='move', \
-	         _path_calculated = False, blocked_callback = None, path = None):
+	         blocked_callback = None, path = None):
 		"""Moves unit to destination
 		@param destination: Point or Rect
 		@param callback: a parameter supported by WeakMethodList. Gets called when unit arrives.
 		@param action: action as string to use for movement
-		@param _path_calculated: only for internal use
 		@param blocked_callback: a parameter supported by WeakMethodList. Gets called when unit gets blocked.
 		@param path: a precalculated path (return value of FindPath()())
 		"""
-		if not _path_calculated and not path:
+		if not path:
 			# calculate the path
 			move_possible = self.path.calc_path(destination, destination_in_building)
 
@@ -131,8 +130,7 @@ class MovingObject(ComponentHolder, ConcreteObject):
 
 			if not move_possible:
 				raise MoveNotPossible
-
-		if path:
+		else:
 			self.path.move_on_path(path, destination_in_building=destination_in_building)
 
 		self.move_callbacks = WeakMethodList(callback)

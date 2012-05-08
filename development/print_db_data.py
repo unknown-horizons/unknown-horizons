@@ -7,8 +7,10 @@ in human readable form.
 Run without arguments for help
 """
 
-import os.path
+import inspect
+import pprint
 import sys
+from collections import defaultdict
 
 sys.path.append(".")
 sys.path.append("./horizons")
@@ -26,13 +28,15 @@ from run_uh import init_environment
 init_environment()
 
 import horizons.main
-from horizons.constants import UNITS, SETTLER
+from horizons.constants import UNITS, SETTLER, BUILDINGS
+from horizons.scenario.actions import ACTIONS
+from horizons.scenario.conditions import CONDITIONS
 
 db = horizons.main._create_main_db()
 
 # we also need to load entities to get access to the yaml data
 from horizons.extscheduler import ExtScheduler
-from horizons.world.component.storagecomponent import StorageComponent
+from horizons.component.storagecomponent import StorageComponent
 from horizons.entities import Entities
 from horizons.ext.dummy import Dummy
 ExtScheduler.create_instance(Dummy()) # sometimes needed by entities in subsequent calls
@@ -215,6 +219,18 @@ def print_colors():
 	for id_, name, R, G, B, alpha in db("SELECT id, name, red, green, blue, alpha FROM colors"):
 		print '%2s: %12s  %3s  %3s  %3s  %3s  #' % (id_, name, R, G, B, alpha) + 3*'%02x' % (R, G, B)
 
+def print_scenario_actions():
+	print 'Available scenario actions and their arguments:'
+	for action in ACTIONS.registry:
+		arguments = inspect.getargspec(ACTIONS.get(action))[0][1:] # exclude session
+		print '%-12s  %s' % (action, arguments or '')
+
+def print_scenario_conditions():
+	print 'Available scenario conditions and their arguments:'
+	for condition in CONDITIONS.registry:
+		arguments = inspect.getargspec(CONDITIONS.get(condition))[0][1:] # exclude session
+		print '%-36s  %s' % (condition, arguments or '')
+
 def print_names():
 	text = ''
 	for (table, type) in [('city', 'player'), ('city', 'pirate'), ('ship','player'), ('ship','pirate'), ('ship','fisher'), ('ship','trader')]:
@@ -226,16 +242,43 @@ def print_names():
 		text += '[/list]' + '\n'
 	print text
 
+def print_settler_needs():
+	klass = Entities.buildings[ BUILDINGS.RESIDENTIAL ]
+	comp = [ i for i in klass.component_templates if i.keys()[0] == u'ProducerComponent' ][0]
+	lines = comp.values()[0][u'productionlines']
+	per_level = defaultdict(list)
+	for line_data in lines.itervalues():
+		level = line_data.get("level", [-1])
+		for l in level:
+			per_level[l].extend( [ res for (res, num) in line_data[u'consumes'] ] )
+	data = dict( (k, sorted(db.get_res_name(i) for i in v)) for k,v in per_level.iteritems())
+	print "Needed resources per increment"
+	pprint.pprint(data)
+	print '\nChanges per level:'
+	for i in xrange(len(data)-2):
+		s = str(i)+"/"+str(i+1)+": "
+		for r in data[i+1]:
+			if r not in data[i]:
+				s += "+"+r+", "
+		for r in data[i]:
+			if r not in data[i+1]:
+				s += "-"+r+", "
+		print s
+
+
 functions = {
+		'actions' : print_scenario_actions,
 		'buildings' : print_building,
 		'building_costs' : print_building_costs,
 		'colors' : print_colors,
 		'collectors' : print_collectors,
 		'collector_restrictions': print_collector_restrictions,
+		'conditions' : print_scenario_conditions,
 		'increments' : print_increment_data,
 		'lines' : print_production_lines,
 		'names' : print_names,
 		'resources' : print_res,
+    'settler_needs' : print_settler_needs,
 		'storage' : print_storage,
 		'units' : print_unit,
 		'verbose_lines' : print_verbose_lines,
@@ -253,6 +296,7 @@ abbrevs = {
 		'res' : 'resources',
 		'settler_lines': 'increments',
 		'sl': 'increments',
+		'sn': 'settler_needs',
 		'unit': 'units',
 		'vl': 'verbose_lines',
 		}

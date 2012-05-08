@@ -1,25 +1,23 @@
 id: 3
 name:
-  0: _ Tent
-  1: _ Hut
-  2: _ House
-  3: _ Stone house
-  4: _ Estate
-  5: _ Manor
+  TIER.SAILORS: _ Tent
+  TIER.PIONEERS: _ Hut
+  TIER.SETTLERS: _ House
+  TIER.CITIZENS: _ Stone house
+  TIER.MERCHANTS: _ Estate
+  TIER.ARISTOCRATS: _ Manor
 baseclass: settler.Settler
 radius: 12
 cost: 0
 cost_inactive: 0
 size_x: 2
 size_y: 2
-inhabitants_start: 1
-inhabitants_max: 2
-button_name: resident-1
+inhabitants: 1
 tooltip_text: _ Houses your inhabitants.
-settler_level: 0
-buildingcosts: {RES.GOLD_ID: 100, 4: 2}
+settler_level: TIER.SAILORS
+buildingcosts: {RES.GOLD: 100, RES.BOARDS: 2}
 # NOTE: this should be in the producer component, which currently doesn't support attributes like that
-additional_provided_resources: [RES.FIRE_ID]
+additional_provided_resources: [RES.FIRE]
 components:
 - SelectableComponent:
     type: building
@@ -34,139 +32,144 @@ components:
         changes_animation: false
         enabled_by_default: false
         consumes:
-        - [4, -3]
-        - [7, -2]
+        - [RES.BOARDS, -3]
+        - [RES.BRICKS, -2]
         time: 1
       69:
         produces:
-        - [14, 4]
+        - [RES.HAPPINESS, 4]
         changes_animation: false
-        level: [2]
+        level: [TIER.SETTLERS, TIER.CITIZENS]
         enabled_by_default: false
         time: 90
         consumes:
-        - [29, -1]
+        - [RES.SALT, -1]
       70:
         produces:
-        - [14, 5]
+        - [RES.HAPPINESS, 5]
         changes_animation: false
-        level: [2, 3]
+        level: [TIER.SETTLERS, TIER.CITIZENS]
         enabled_by_default: false
         time: 180
         consumes:
-        - [32, -1]
+        - [RES.TOBACCO_PRODUCTS, -1]
       71:
         produces:
-        - [14, 15]
+        - [RES.HAPPINESS, 15]
         changes_animation: false
-        level: [0]
+        level: [TIER.SAILORS]
         enabled_by_default: false
         time: 60
         consumes:
-        - [RES.FOOD_ID  , -1]
+        - [RES.FOOD, -1]
       72:
         produces:
-        - [14, 5]
+        - [RES.HAPPINESS, 5]
         changes_animation: false
-        level: [0]
+        level: [TIER.SAILORS]
         enabled_by_default: false
         time: 90
         consumes:
-        - [11, -1]
+        - [RES.FAITH, -1]
       41:
         produces:
-        - [14, 4]
+        - [RES.HAPPINESS, 4]
         changes_animation: false
-        level: [2, 3]
+        level: [TIER.SETTLERS, TIER.CITIZENS]
         enabled_by_default: false
         time: 90
         consumes:
-        - [27, -1]
+        - [RES.GET_TOGETHER, -1]
       43:
         produces:
-        - [14, 12]
+        - [RES.HAPPINESS, 12]
         changes_animation: false
-        level: [2, 3]
+        level: [TIER.SETTLERS, TIER.CITIZENS]
         enabled_by_default: false
         time: 75
         consumes:
-        - [5, -1]
+        - [RES.FOOD, -1]
       44:
         produces:
-        - [14, 5]
+        - [RES.HAPPINESS, 5]
         changes_animation: false
-        level: [2, 3]
+        level: [TIER.SETTLERS, TIER.CITIZENS]
         enabled_by_default: false
         time: 90
         consumes:
-        - [16, -1]
+        - [RES.EDUCATION, -1]
       19:
         produces:
-        - [14, 13]
+        - [RES.HAPPINESS, 13]
         changes_animation: false
-        level: [1]
+        level: [TIER.PIONEERS]
         enabled_by_default: false
         time: 60
         consumes:
-        - [5, -1]
+        - [RES.FOOD, -1]
       20:
         produces:
-        - [14, 5]
+        - [RES.HAPPINESS, 5]
         changes_animation: false
-        level: [1, 2, 3]
+        level: [TIER.PIONEERS, TIER.SETTLERS, TIER.CITIZENS]
         enabled_by_default: false
         time: 180
         consumes:
-        - [3, -1]
+        - [RES.TEXTILE, -1]
       21:
         produces:
-        - [14, 3]
+        - [RES.HAPPINESS, 3]
         changes_animation: false
-        level: [1, 2, 3]
+        level: [TIER.PIONEERS, TIER.SETTLERS, TIER.CITIZENS]
         enabled_by_default: false
         time: 90
         consumes:
-        - [11, -1]
+        - [RES.FAITH, -1]
       24:
         changes_animation: false
         enabled_by_default: false
         consumes:
-        - [4, -2]
+        - [RES.BOARDS, -2]
         time: 1
       26:
         produces:
-        - [14, 3]
+        - [RES.HAPPINESS, 3]
         changes_animation: false
-        level: [1]
+        level: [TIER.PIONEERS]
         enabled_by_default: false
         time: 90
         consumes:
-        - [16, -1]
+        - [RES.EDUCATION, -1]
       30:
         produces:
-        - [14, 1]
+        - [RES.HAPPINESS, 1]
         changes_animation: false
-        level: [0, 1, 2, 3]
+        level: [TIER.SAILORS, TIER.PIONEERS, TIER.SETTLERS, TIER.CITIZENS]
         enabled_by_default: false
         time: 90
         consumes:
-        - [19, -1]
+        - [RES.COMMUNITY, -1]
 - StorageComponent:
-    inventory:
       SlotsStorage:
-        slot_sizes: {32: 1, 3: 1, 5: 1, 11: 1, 14: 100, 16: 1, 19: 1, 27: 1, 29: 1, 99: 1}
+        slot_sizes: {RES.TOBACCO_PRODUCTS: 1, RES.TEXTILE: 1, RES.FOOD: 1,
+                     RES.FAITH: 1, RES.HAPPINESS: 100, RES.EDUCATION: 1,
+                     RES.COMMUNITY: 1, RES.GET_TOGETHER: 1, RES.SALT: 1, RES.FIRE: 1}
 - CollectingComponent:
     collectors:
-      1000011: 1
+      UNITS.SETTLER_COLLECTOR: 1
 actionsets:
-  as_tent0: {level: 0}
-  as_tent1: {level: 0}
-  as_tent2: {level: 0}
-  as_tent3: {level: 0}
-  as_tent4: {level: 0}
-  as_tent5: {level: 0}
-  as_hut1: {level: 1}
-  as_hut0: {level: 1}
-  as_house0: {level: 2}
-  as_hut2: {level: 1}
-  as_stonehouse0: {level: 3}
+  TIER.SAILORS:
+    as_tent0:
+    as_tent1:
+    as_tent2:
+    as_tent3:
+    as_tent4:
+    as_tent5:
+  TIER.PIONEERS:
+    as_hut0:
+    as_hut1:
+    as_hut2:
+  TIER.SETTLERS:
+    as_house0:
+  TIER.CITIZENS:
+    as_stonehouse0:

@@ -23,32 +23,38 @@
 	<ImageButton name="startGame"
 		up_image="content/gui/icons/mainmenu/32/compass_bw.png"
 		down_image="content/gui/icons/mainmenu/32/compass.png"
-		hover_image="content/gui/icons/mainmenu/32/compass.png" />
+		hover_image="content/gui/icons/mainmenu/32/compass.png"
+		is_focusable="0"/>
 
 	<ImageButton name="savegameButton"
 		up_image="content/gui/icons/mainmenu/32/save_bw.png"
 		down_image="content/gui/icons/mainmenu/32/save.png"
-		hover_image="content/gui/icons/mainmenu/32/save.png" />
+		hover_image="content/gui/icons/mainmenu/32/save.png"
+		is_focusable="0"/>
 
 	<ImageButton name="loadgameButton"
 		up_image="content/gui/icons/mainmenu/32/load_bw.png"
 		down_image="content/gui/icons/mainmenu/32/load.png"
-		hover_image="content/gui/icons/mainmenu/32/load.png" />
+		hover_image="content/gui/icons/mainmenu/32/load.png"
+		is_focusable="0"/>
 
 	<ImageButton name="settingsLink"
 		up_image="content/gui/icons/mainmenu/32/gears_bw.png"
 		down_image="content/gui/icons/mainmenu/32/gears.png"
-		hover_image="content/gui/icons/mainmenu/32/gears.png" />
+		hover_image="content/gui/icons/mainmenu/32/gears.png"
+		is_focusable="0"/>
 
 	<ImageButton name="helpLink"
 		up_image="content/gui/icons/mainmenu/32/help_bw.png"
 		down_image="content/gui/icons/mainmenu/32/help.png"
-		hover_image="content/gui/icons/mainmenu/32/help.png" />
+		hover_image="content/gui/icons/mainmenu/32/help.png"
+		is_focusable="0"/>
 
 	<ImageButton name="closeButton"
 		up_image="content/gui/icons/mainmenu/32/door_bw.png"
 		down_image="content/gui/icons/mainmenu/32/door.png"
-		hover_image="content/gui/icons/mainmenu/32/door.png" />
+		hover_image="content/gui/icons/mainmenu/32/door.png"
+		is_focusable="0"/>
 </VBox>
 
 </Container>

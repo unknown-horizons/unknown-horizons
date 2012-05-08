@@ -30,15 +30,14 @@ import functools
 import horizons.main
 
 from horizons.constants import RES
-from horizons.world.component.storagecomponent import StorageComponent
-from horizons.util.gui import load_uh_widget, get_res_icon_path, create_resource_selection_dialog
+from horizons.component.storagecomponent import StorageComponent
+from horizons.gui.util import load_uh_widget, get_res_icon_path, create_resource_selection_dialog
 from horizons.util import PychanChildFinder, Callback
 from horizons.util.python.decorators import cachedmethod
-from horizons.util.messaging.message import ResourceBarResize
 from horizons.extscheduler import ExtScheduler
-from horizons.world.component.ambientsoundcomponent import AmbientSoundComponent
+from horizons.component.ambientsoundcomponent import AmbientSoundComponent
 from horizons.util.lastactiveplayersettlementmanager import LastActivePlayerSettlementManager
-from horizons.util.messaging.message import NewPlayerSettlementHovered
+from horizons.messaging import NewPlayerSettlementHovered, ResourceBarResize, TabWidgetChanged
 
 
 class ResourceOverviewBar(object):
@@ -47,14 +46,14 @@ class ResourceOverviewBar(object):
 	http://wiki.unknown-horizons.org/w/HUD
 
 	Features:
-	- display contents of currently relevant inventory (settlement/ship) [x]
-	- always show gold of local player [x]
-	- show costs of current build [x]
-	- configure the resources to show [x]
-		- per settlement [x]
-		- add new slots [x]
-		- switch displayed resources to construction relevant res on build [x]
-		- res selection consistent with other res selection dlgs [x]
+	- display contents of currently relevant inventory (settlement/ship)
+	- always show gold of local player
+	- show costs of current build
+	- configure the resources to show
+		- per settlement
+		- add new slots
+		- switch displayed resources to construction relevant res on build
+		- res selection consistent with other res selection dlgs
 
 	Invariants:
 	- it should be obvious that the res bar can be configured
@@ -66,22 +65,24 @@ class ResourceOverviewBar(object):
 
 	GOLD_ENTRY_GUI_FILE = "resource_overview_bar_gold.xml"
 	ENTRY_GUI_FILE = "resource_overview_bar_entry.xml"
+	ICON_POS_BALANCE = "content/gui/icons/resources/positive32.png"
+	ICON_NEG_BALANCE = "content/gui/icons/resources/negative32.png"
 
 	STYLE = "resource_bar"
 
-	DEFAULT_RESOURCES = [ RES.TOOLS_ID,
-	                      RES.BOARDS_ID,
-	                      RES.BRICKS_ID,
-	                      RES.FOOD_ID,
-	                      RES.TEXTILE_ID,
-	                      RES.SALT_ID]
+	DEFAULT_RESOURCES = [ RES.TOOLS,
+	                      RES.BOARDS,
+	                      RES.BRICKS,
+	                      RES.FOOD,
+	                      RES.TEXTILE,
+	                      RES.SALT]
 
 	# order should match the above, else confuses players when in build mode
 	CONSTRUCTION_RESOURCES = { # per settler increment
-	  0: [ RES.TOOLS_ID, RES.BOARDS_ID ],
-	  1: [ RES.TOOLS_ID, RES.BOARDS_ID, RES.BRICKS_ID ],
-	  2: [ RES.TOOLS_ID, RES.BOARDS_ID, RES.BRICKS_ID ],
-	  3: [ RES.TOOLS_ID, RES.BOARDS_ID, RES.BRICKS_ID ],
+	  0: [ RES.TOOLS, RES.BOARDS ],
+	  1: [ RES.TOOLS, RES.BOARDS, RES.BRICKS ],
+	  2: [ RES.TOOLS, RES.BOARDS, RES.BRICKS ],
+	  3: [ RES.TOOLS, RES.BOARDS, RES.BRICKS ],
 	}
 
 	def __init__(self, session):
@@ -91,8 +92,9 @@ class ResourceOverviewBar(object):
 
 		# special slot because of special properties
 		self.gold_gui = load_uh_widget(self.__class__.GOLD_ENTRY_GUI_FILE, style=self.__class__.STYLE)
+		self.gold_gui.balance_visible = False
 		self.gold_gui.child_finder = PychanChildFinder(self.gold_gui)
-		self.gold_gui.findChild(name="res_icon").image = get_res_icon_path(RES.GOLD_ID, 32)
+		self.gold_gui.child_finder("res_icon").image = get_res_icon_path(RES.GOLD, 32)
 
 		self.gui = [] # list of slots
 		self.resource_configurations = weakref.WeakKeyDictionary()
@@ -103,18 +105,23 @@ class ResourceOverviewBar(object):
 
 		self._update_default_configuration()
 
-		self.session.message_bus.subscribe_globally(NewPlayerSettlementHovered, self._on_different_settlement)
+		NewPlayerSettlementHovered.subscribe(self._on_different_settlement)
+		TabWidgetChanged.subscribe(self._on_tab_widget_changed)
+
+		# set now and then every 2 sec
+		ExtScheduler().add_new_object(self._update_balance_display, self, run_in=0)
+		ExtScheduler().add_new_object(self._update_balance_display, self, run_in=2, loops=-1)
 
 	def end(self):
-		self.set_inventory_instance(None, force_update=True)
+		self.set_inventory_instance( None, force_update=True )
 		self.current_instance = weakref.ref(self)
 		ExtScheduler().rem_all_classinst_calls(self)
 		self.resource_configurations.clear()
-		self.gold_gui.hide()
 		self.gold_gui = None
-		self.gui = None # hidden by set_inventory
+		self.gui = None
 		self._custom_default_resources = None
-		self.session.message_bus.unsubscribe_globally(NewPlayerSettlementHovered, self._on_different_settlement)
+		NewPlayerSettlementHovered.unsubscribe(self._on_different_settlement)
+		TabWidgetChanged.unsubscribe(self._on_tab_widget_changed)
 
 	def _update_default_configuration(self):
 		# user defined variante of DEFAULT_RESOURCES (will be preferred)
@@ -130,6 +137,8 @@ class ResourceOverviewBar(object):
 			for position, res in enumerate(config):
 				db("INSERT INTO resource_overview_bar(object, position, resource) VALUES(?, ?, ?)",
 				   obj.worldid, position, res)
+		#db("INSERT INTO metadata (name, value) VALUES (?, ?)",
+		#	"balance_visible", self.gold_gui.balance_visible )
 
 	def load(self, db):
 		from horizons.util import WorldObject
@@ -140,6 +149,7 @@ class ResourceOverviewBar(object):
 				l.append( (pos, res) )
 			obj = WorldObject.get_object_by_id(obj)
 			self.resource_configurations[obj] = [ i[1] for i in sorted(l) ]
+		#self.gold_gui.balance_visible = db("SELECT value FROM metadata WHERE name = ?", "balance_visible")
 
 		# called when any game (also new ones) start
 		# register at player inventory for gold updates
@@ -199,9 +209,8 @@ class ResourceOverviewBar(object):
 				self.gui.append(entry)
 
 			entry.findChild(name="entry").position = (initial_offset + offset * i, 17)
-			background_icon = entry.findChild(name="background_icon")
-			background_icon.clear_entered_callbacks()
-			background_icon.add_entered_callback( Callback(self._show_resource_selection_dialog, i) )
+			background_icon = entry.findChild(name="entry")
+			background_icon.capture(Callback(self._show_resource_selection_dialog, i), 'mouseEntered', 'resbar')
 
 			if res != -1:
 				helptext = self.session.db.get_res_name(res)
@@ -250,7 +259,7 @@ class ResourceOverviewBar(object):
 		self._drop_cost_labels()
 
 		for res, amount in build_costs.iteritems():
-			assert res in res_list or res == RES.GOLD_ID
+			assert res in res_list or res == RES.GOLD
 
 			cost_label = pychan.widgets.Label(text=u"-"+unicode(amount))
 			cost_label.stylize( self.__class__.STYLE )
@@ -306,11 +315,11 @@ class ResourceOverviewBar(object):
 	def _update_gold(self, force=False):
 		"""Changelistener to upate player gold"""
 		# can be called pretty often (e.g. if there's an settlement.inventory.alter() in a loop)
-		# only update every 0.2 sec at most
+		# only update every 0.3 sec at most
 		scheduled_attr = "_gold_upate_scheduled"
 		if not hasattr(self, scheduled_attr):
 			setattr(self, scheduled_attr, True)
-			ExtScheduler().add_new_object(Callback(self._update_gold, True), self, run_in=0.02)
+			ExtScheduler().add_new_object(Callback(self._update_gold, force=True), self, run_in=0.3)
 			return
 		elif not force:
 			return # these calls we want to suppress, wait for scheduled call
@@ -318,13 +327,36 @@ class ResourceOverviewBar(object):
 		delattr(self, scheduled_attr)
 
 		# set gold amount
-		gold = self.session.world.player.get_component(StorageComponent).inventory[RES.GOLD_ID]
+		gold = self.session.world.player.get_component(StorageComponent).inventory[RES.GOLD]
 		gold_available_lbl = self.gold_gui.child_finder("gold_available")
 		gold_available_lbl.text = unicode(gold)
-
 		# reposition according to magic forumula passed down from the elders in order to support centering
-		self.gold_gui.resizeToContent() # update label size
+		gold_available_lbl.resizeToContent() # this sets new size values
 		gold_available_lbl.position = (33 - gold_available_lbl.size[0]/2,  51)
+
+		self.gold_gui.resizeToContent() # update label size
+
+	def _update_balance_display(self, toggle=False):
+		"""Callback for clicking on gold icon (ticket #1671) and updating the value (in case toggle is False)
+		@param toggle: Whether to enable/disable the balance display or only update icon (pos/neg)
+		"""
+		icon = self.gold_gui.child_finder('res_icon')
+		icon.capture(Callback(self._update_balance_display, True), event_name='mouseClicked')
+		if toggle:
+			self.gold_gui.balance_visible = not self.gold_gui.balance_visible
+		balance = self.session.world.player.get_balance_estimation()
+		if self.gold_gui.balance_visible:
+			icon.image = self.ICON_NEG_BALANCE if balance < 0 else self.ICON_POS_BALANCE
+		else:
+			icon.image = get_res_icon_path(RES.GOLD, 32)
+
+		# display actual balance in balance label in any case
+		balance_lbl = self.gold_gui.child_finder("balance")
+		balance_lbl.text = u"{sign}{balance}".format(balance=balance, sign=u'+' if balance >= 0 else u'')
+		balance_lbl.resizeToContent()
+		balance_lbl.position = (33 - balance_lbl.size[0]/2,  68) # see _update_gold
+
+		self.gold_gui.resizeToContent() # update label size
 
 	def _update_resources(self):
 		"""Same as _update_gold but for all other slots"""
@@ -351,7 +383,7 @@ class ResourceOverviewBar(object):
 			res_list = self.__class__.CONSTRUCTION_RESOURCES[lvl]
 			# also add additional res that might be needed
 			res_list += [ res for res in self._last_build_costs if \
-			              res not in res_list and res != RES.GOLD_ID ]
+			              res not in res_list and res != RES.GOLD ]
 			return res_list
 		# prefer user defaults over general defaults
 		default = self._custom_default_resources if self._custom_default_resources else self.__class__.DEFAULT_RESOURCES
@@ -379,11 +411,8 @@ class ResourceOverviewBar(object):
 
 		# set mousetool to get notified on clicks outside the resbar area
 		if not isinstance(self.session.cursor, ResBarMouseTool):
-			def on_away_click():
-				self._hide_resource_selection_dialog()
-				self._hide_dummy_slot()
 			self.session.cursor = ResBarMouseTool(self.session, self.session.cursor,
-			                                      on_away_click)
+			                                      self.close_resource_selection_mode)
 
 
 		on_click = functools.partial(self._set_resource_slot, slot_num)
@@ -453,7 +482,7 @@ class ResourceOverviewBar(object):
 		@param slot_num: starting at 0, will be added as new slot if greater than no of slots
 		@param res_id: a resource id or 0 for remove slot
 		"""
-		self._hide_resource_selection_dialog()
+		self.close_construction_mode()
 		res_copy = self._get_current_resources()[:]
 		number_of_slots_changed = False
 		if slot_num < len(res_copy): # change existing slot
@@ -475,15 +504,23 @@ class ResourceOverviewBar(object):
 
 		if isinstance(self.session.cursor, ResBarMouseTool):
 			self.session.cursor.reset()
-			self._hide_dummy_slot()
 
 		if number_of_slots_changed:
-			self.session.message_bus.broadcast( ResourceBarResize(self) )
+			ResourceBarResize.broadcast(self)
 
 	def _hide_resource_selection_dialog(self):
 		if hasattr(self, "_res_selection_dialog"):
 			self._res_selection_dialog.hide()
 			del self._res_selection_dialog
+
+	def close_resource_selection_mode(self):
+		"""Fully disable resource selection mode"""
+		self._hide_resource_selection_dialog()
+		self._hide_dummy_slot()
+
+	def _on_tab_widget_changed(self, msg=None):
+		if hasattr(self, "_res_selection_dialog"):
+			self.close_resource_selection_mode()
 
 	def _show_dummy_slot(self):
 		"""Show the dummy button at the end to allow for addition of slots"""
@@ -536,6 +573,9 @@ class ResBarMouseTool(NavigationTool):
 	def mousePressed(self, evt):
 		self.on_click()
 		self.reset()
+		# this click should still count, especially in case the res
+		# selection dialog has been closed by other means than clicking
+		self.session.cursor.mousePressed(evt)
 
 	def reset(self):
 		"""Enable old tol again"""

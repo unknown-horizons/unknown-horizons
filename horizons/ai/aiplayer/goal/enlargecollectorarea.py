@@ -44,7 +44,7 @@ class EnlargeCollectorAreaGoal(SettlementGoal):
 		self._is_active = available_squares < min(self.personality.max_interesting_collector_area, total_squares - self.personality.max_collector_area_unreachable)
 
 	def _enlarge_collector_area(self):
-		if not self.production_builder.have_resources(BUILDINGS.STORAGE_CLASS):
+		if not self.production_builder.have_resources(BUILDINGS.STORAGE):
 			return BUILD_RESULT.NEED_RESOURCES
 
 		moves = [(-1, 0), (0, -1), (0, 1), (1, 0)] # valid moves for collectors
@@ -78,11 +78,11 @@ class EnlargeCollectorAreaGoal(SettlementGoal):
 
 		options = []
 		for (x, y), area_number in area_label.iteritems():
-			builder = self.production_builder.make_builder(BUILDINGS.STORAGE_CLASS, x, y, False)
+			builder = self.production_builder.make_builder(BUILDINGS.STORAGE, x, y, False)
 			if not builder:
 				continue
 
-			coords_set = set(builder.position.get_radius_coordinates(Entities.buildings[BUILDINGS.STORAGE_CLASS].radius))
+			coords_set = set(builder.position.get_radius_coordinates(Entities.buildings[BUILDINGS.STORAGE].radius))
 			useful_area = len(coords_set_by_area[area_number].intersection(coords_set))
 			if not useful_area:
 				continue
@@ -101,8 +101,8 @@ class EnlargeCollectorAreaGoal(SettlementGoal):
 
 		# enlarge the settlement area instead since just enlarging the collector area is impossible
 		if self.village_builder.tent_queue:
-			tent_size = Entities.buildings[BUILDINGS.RESIDENTIAL_CLASS].size
-			tent_radius = Entities.buildings[BUILDINGS.RESIDENTIAL_CLASS].radius
+			tent_size = Entities.buildings[BUILDINGS.RESIDENTIAL].size
+			tent_radius = Entities.buildings[BUILDINGS.RESIDENTIAL].radius
 			best_coords = None
 			best_area = 0
 

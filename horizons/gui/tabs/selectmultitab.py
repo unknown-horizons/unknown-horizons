@@ -21,12 +21,12 @@
 
 from tabinterface import TabInterface
 from horizons.util import Callback
-from horizons.util.gui import load_uh_widget
+from horizons.gui.util import load_uh_widget
 from horizons.scheduler import Scheduler
 from horizons.command.unit import SetStance
-from horizons.world.component.healthcomponent import HealthComponent
-from horizons.world.component.stancecomponent import *
-from horizons.world.component.selectablecomponent import SelectableComponent
+from horizons.component.healthcomponent import HealthComponent
+from horizons.component.stancecomponent import *
+from horizons.component.selectablecomponent import SelectableComponent
 
 class SelectMultiTab(TabInterface):
 	"""
@@ -34,20 +34,14 @@ class SelectMultiTab(TabInterface):
 	"""
 	max_row_entry_number = 3
 	max_column_entry_number = 4
-	def __init__(self, session = None, widget = 'overview_select_multi.xml', \
+	def __init__(self, session=None, widget='overview_select_multi.xml',
 	             icon_path='content/gui/icons/tabwidget/common/inventory_%s.png'):
-		super(SelectMultiTab, self).__init__(widget = widget)
+		super(SelectMultiTab, self).__init__(widget=widget, icon_path=icon_path)
 		self.session = session
 		self.init_values()
 
-		self.button_up_image = icon_path % 'u'
-		self.button_active_image = icon_path % 'a'
-		self.button_down_image = icon_path % 'd'
-		self.button_hover_image = icon_path % 'h'
-
 		# keep track of units that have stance
 		self.stance_unit_number = 0
-
 		# keep local track of selected instances
 		self.instances = []
 		# keep track of number of instances per type
@@ -197,7 +191,7 @@ class UnitEntry(object):
 		# get the icon of the first instance
 		self.widget.findChild(name="unit_button").up_image = self.get_thumbnail_icon(instances[0].id)
 		if show_number:
-			self.widget.findChild(name="instance_number").text = unicode(str(len(self.instances)))
+			self.widget.findChild(name="instance_number").text = unicode(len(self.instances))
 		# only two callbacks are needed so drop unwanted changelistener inheritance
 		for i in instances:
 			if not i.has_remove_listener(Callback(self.on_instance_removed, i)):
