@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2012-03-31 21:42+0100\n"
-"PO-Revision-Date: 2012-05-08 08:50+0200\n"
+"PO-Revision-Date: 2012-05-08 08:51+0200\n"
 "Last-Translator: knutas <magnusknutas@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: sv\n"
@@ -284,14 +284,20 @@ msgstr "flytta"
 msgid "pioneers"
 msgstr "pionjärer"
 
+# 87%
+#, fuzzy
 msgid "citizens"
-msgstr ""
+msgstr "medborgare"
 
+# 88%
+#, fuzzy
 msgid "merchants"
-msgstr ""
+msgstr "handelsman"
 
+# 90%
+#, fuzzy
 msgid "aristocrats"
-msgstr ""
+msgstr "aristokrat"
 
 msgid "potato"
 msgstr "potatis"
@@ -360,8 +366,10 @@ msgstr "plats"
 msgid "offer"
 msgstr "erbjuda"
 
+# 75%
+#, fuzzy
 msgid "potatoes"
-msgstr ""
+msgstr "potatis"
 
 msgid "range"
 msgstr "räckvidd"
@@ -400,15 +408,19 @@ msgstr "aktiv / verksam"
 msgid "afford"
 msgstr "råd"
 
+# 85%
+#, fuzzy
 msgid "animals"
-msgstr ""
+msgstr "djur"
 
 #
 msgid "Captain's log"
 msgstr "Kaptenens loggbok"
 
+# 75%
+#, fuzzy
 msgid "construct"
-msgstr ""
+msgstr "byggnad"
 
 msgid "consume"
 msgstr "konsumera / förbruka"
@@ -425,8 +437,10 @@ msgstr "funktion / kännetecken"
 msgid "forest"
 msgstr "skog"
 
+# 80%
+#, fuzzy
 msgid "grows"
-msgstr ""
+msgstr "växa / öka / odla"
 
 msgid "hold"
 msgstr "håll / hålla"
@@ -471,8 +485,10 @@ msgstr "spelar"
 msgid "price"
 msgstr ""
 
+# 75%
+#, fuzzy
 msgid "read"
-msgstr ""
+msgstr "röd"
 
 msgid "return"
 msgstr "tillbaka / återgå / återlämna"
@@ -495,8 +511,10 @@ msgstr ""
 msgid "store"
 msgstr ""
 
+# 75%
+#, fuzzy
 msgid "tear"
-msgstr ""
+msgstr "lag"
 
 msgid "from time to time"
 msgstr "då och då"
@@ -513,8 +531,10 @@ msgstr "besök / besöka"
 msgid "world"
 msgstr ""
 
+# 83%
+#, fuzzy
 msgid "yield"
-msgstr ""
+msgstr "ger"
 
 msgid "your ship"
 msgstr ""
@@ -561,8 +581,10 @@ msgstr "grafik"
 msgid "harvest"
 msgstr ""
 
+# 80%
+#, fuzzy
 msgid "hunts"
-msgstr ""
+msgstr "jaga / jakt / jakten"
 
 msgid "multiple"
 msgstr "flera"
