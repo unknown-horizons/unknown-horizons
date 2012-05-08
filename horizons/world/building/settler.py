@@ -35,6 +35,7 @@ from horizons.util import Callback
 from horizons.util.pathfinding.pather import StaticPather
 from horizons.command.production import ToggleActive
 from horizons.component.storagecomponent import StorageComponent
+from horizons.component.settlerupgradecomponent import SettlerUpgradeComponent
 from horizons.world.status import SettlerUnhappyStatus
 from horizons.world.production.producer import Producer
 from horizons.messaging import AddStatusIcon, RemoveStatusIcon, SettlerUpdate, SettlerInhabitantsChanged, UpgradePermissionsChanged
@@ -265,7 +266,7 @@ class Settler(BuildableRect, BuildingResourceHandler, BasicBuilding):
 			upgrade_material_prodline = self.session.db.get_settler_upgrade_material_prodline(self.level+1)
 			if self.get_component(Producer).has_production_line(upgrade_material_prodline):
 				return # already waiting for res
-			prodline_data = self.session.db.get_production_line_data(upgrade_material_prodline)
+			prodline_data = self.get_component(SettlerUpgradeComponent).get_production_line_data(self.level+1)
 			owner_inventory = self._get_owner_inventory()
 			upgrade_material_production = SingleUseProduction(self.get_component(StorageComponent).inventory, owner_inventory, \
 			                                                  upgrade_material_prodline, prodline_data)
