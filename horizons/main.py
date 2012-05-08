@@ -302,12 +302,8 @@ def start_singleplayer(map_file, playername = "Player", playercolor = None, is_s
 		for possible_color in Color:
 			if possible_color == Color[COLORS.BLACK]:
 				continue # black is used by the trader and the pirate
-			available = True
-			for player in players:
-				if player['color'].to_tuple() == possible_color.to_tuple():
-					available = False
-					break
-			if available:
+			used = any(possible_color == player['color'] for player in players)
+			if not used:
 				color = possible_color
 				break
 		players.append({'id': num + 2, 'name' : 'AI' + str(num + 1), 'color' : color, 'local' : False, 'ai': True, 'difficulty': difficulty_level[True]})

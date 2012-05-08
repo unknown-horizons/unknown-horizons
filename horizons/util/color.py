@@ -94,10 +94,7 @@ class Color(object):
 		return 'Color'+str(self.to_tuple())
 
 	def __eq__(self, other):
-		if self.r == other.r and self.g == other.g and self.b == other.b and self.a == other.a:
-			return True
-		else:
-			return False
+		return(self.r == other.r and self.g == other.g and self.b == other.b and self.a == other.a)
 
 	def __hash__(self):
 		return hash("%s%s%s%s" % (self.r, self.g, self.b, self.a))
