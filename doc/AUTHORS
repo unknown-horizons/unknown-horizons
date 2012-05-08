@@ -25,7 +25,7 @@ squiddy (Reiner Gerecke)
 dauerflucher (Andreas Lis)
 Andre (Andre Reichelt)
 Kilian] (Kilian Köppchen)
-chrisoelmueller (Christopher Oelmueller)
+ChrisOelmueller (Christopher Oelmueller)
 
 = Sound and Music Artists
 draikon (Sebastian Ahlen)
@@ -42,10 +42,6 @@ inken
 orakeldel
 lmg
 UnknownScribe (Daniel Stephens)
-
-= Map Editor
-karottenreibe (Fabian Streitel)
-ronnie_c (Moritz Beller)
 
 
 == Patchers
@@ -76,6 +72,8 @@ hoffi (GUI improvements)
 riidom (Tent and hut variations)
 abeaumont (Two renitent segfaults)
 mtfk (Voice internationalization)
+karottenreibe (Map editor)
+ronnie_c (Map editor)
 
 = 2012
 Foaly (Resource icons)
