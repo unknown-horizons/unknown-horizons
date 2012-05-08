@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2012-05-06 22:10+0100\n"
-"PO-Revision-Date: 2012-05-08 07:27+0200\n"
+"PO-Revision-Date: 2012-05-08 07:28+0200\n"
 "Last-Translator: knutas <magnusknutas@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: sv\n"
@@ -517,7 +517,7 @@ msgstr "{player}: {message}"
 
 #: editor/editor.py
 msgid "Specify the path to FIFE root directory."
-msgstr "Specifiera sökvägen till FIFE-rootkatalog"
+msgstr "Specifiera sökvägen till FIFE-rootkatalog."
 
 #: horizons/command/game.py
 msgid "Invalid filename"
