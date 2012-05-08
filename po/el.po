@@ -2,47 +2,46 @@
 # Copyright (C) YEAR The Unknown Horizons Team
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-#
-#, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: Unknown Horizons c494b13\n"
+"Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2012-05-06 22:10+0100\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"PO-Revision-Date: 2012-05-05 22:49+0200\n"
+"Last-Translator: dimitrak <dkaramperi@yahoo.gr>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
-"Language: \n"
+"Language: el\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=CHARSET\n"
+"Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Pootle 2.1.5\n"
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
 #, python-format
 msgid "A new settlement was founded by {player}."
-msgstr ""
+msgstr "Ιδρύθηκε μια νέα αποικία από τον/την {player}."
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
 msgid "A new ship has been created."
-msgstr ""
+msgstr "Δημιουργήθηκε ένα νέο πλοίο."
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
 msgid "A new world has been created."
-msgstr ""
+msgstr "Δημιουργήθηκε ένας νέος κόσμος."
 
 #. This is a database entry: the name of an inhabitant increment (tier / level).
 #: database files sql
 msgid "Aristocrats"
-msgstr ""
+msgstr "Αριστοκράτες"
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
 msgid "Cannot go here."
-msgstr ""
+msgstr "Δεν είναι δυνατή η μετάβαση εκεί."
 
 #. (text of widget: headline)
 #. headline of gui_buildmenu:build_menu_per_type
@@ -50,17 +49,18 @@ msgstr ""
 #: database files horizons/i18n/guitranslations.py
 #: horizons/i18n/objecttranslations.py sql
 msgid "Citizens"
-msgstr ""
+msgstr "Πολίτες"
 
 #. This is a database entry: the name of an inhabitant increment (tier / level).
 #: database files sql
 msgid "Merchants"
-msgstr ""
+msgstr "Έμποροι"
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
 msgid "One of your fields requires a farm to harvest its crops."
 msgstr ""
+"Ένα από τα χωράφια σας χρειάζεται μια φάρμα για τη συγκομιδή των σοδειών."
 
 #. (text of widget: headline)
 #. headline of gui_buildmenu:build_menu_per_type
@@ -68,19 +68,19 @@ msgstr ""
 #: database files horizons/i18n/guitranslations.py
 #: horizons/i18n/objecttranslations.py sql
 msgid "Pioneers"
-msgstr ""
+msgstr "Πιονέροι"
 
 #. (text of widget: headline)
 #. This is a database entry: the name of an inhabitant increment (tier / level).
 #: database files horizons/i18n/guitranslations.py sql
 msgid "Sailors"
-msgstr ""
+msgstr "Ναυτικοί"
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
 #, python-format
 msgid "Screenshot has been saved to {file}."
-msgstr ""
+msgstr "Το στιγμιότυπο αποθηκεύτηκε στο αρχείο {file}."
 
 #. (text of widget: headline)
 #. (text of widget: settler_score)
@@ -90,32 +90,35 @@ msgstr ""
 #: horizons/i18n/guitranslations.py
 #: horizons/i18n/objecttranslations.py sql
 msgid "Settlers"
-msgstr ""
+msgstr "Άποικοι"
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
 msgid "Some of your inhabitants have no access to a main square."
-msgstr ""
+msgstr "Μερικοί από τους κατοίκους σας δεν έχουν πρόσβαση σε κεντρική πλατεία."
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
 msgid "Some of your inhabitants just moved out."
-msgstr ""
+msgstr "Μερικοί από τους κατοίκους σας μόλις μετακόμισαν."
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
 msgid "The route is now configured. Start it via the \"start route\" button in the \"configure route\" menu."
 msgstr ""
+"Η διαδρομή διαμορφώθηκε. Ξεκινήστε την μέσω του κουμπιού \"Εκκίνηση "
+"διαδρομής\" στο μενού \"Διαμόρφωση διαδρομής\"."
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
 msgid "You can also drag roads."
-msgstr ""
+msgstr "Επίσης, μπορείτε να κάνετε απόθεση δρόμων."
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
 msgid "You cannot tear the warehouse, your settlements needs it."
 msgstr ""
+"Δεν μπορείτε να καταστρέψετε την αποθήκη. Οι αποικίες σας την χρειάζονται."
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
@@ -126,17 +129,21 @@ msgstr ""
 #: database files sql
 msgid "You have reached the current maximum increment. Your inhabitants will not upgrade further."
 msgstr ""
+"Προσεγγίσατε το μέγιστο τρέχον βήμα. Οι κάτοικοί σας δεν είναι δυνατό να "
+"αναβαθμιστούν περαιτέρω."
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
 #, python-format
 msgid "You need more {resource} to build this building."
 msgstr ""
+"Χρειάζεστε περισσότερα από το στοιχείο \"{resource}\" για να χτίσετε αυτό το "
+"κτίριο."
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
 msgid "You won!"
-msgstr ""
+msgstr "Κερδίσατε!"
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
@@ -146,33 +153,33 @@ msgstr ""
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
 msgid "Your crew refuses to leave this map."
-msgstr ""
+msgstr "Το πλήρωμά σας αρνείται να εγκαταλείψει αυτόν τον χάρτη."
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
 msgid "Your game has been autosaved."
-msgstr ""
+msgstr "Το παιχνίδι σας αποθηκεύτηκε αυτόματα."
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
 msgid "Your game has been quicksaved."
-msgstr ""
+msgstr "Το παιχνίδι σας αποθηκεύτηκε γρήγορα."
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
 msgid "Your game has been saved."
-msgstr ""
+msgstr "Το παιχνίδι σας αποθηκεύτηκε."
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
 #, python-format
 msgid "Your inhabitants reached level {level}."
-msgstr ""
+msgstr "Οι κάτοικοί σας έφτασαν στο επίπεδο {level}."
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
 msgid "Your mine has run out of resources."
-msgstr ""
+msgstr "Οι πόροι του ορυχείου σας εξαντλήθηκαν."
 
 #. This is a database entry: the name of a resource.
 #: database files sql
@@ -469,65 +476,72 @@ msgstr ""
 #, python-format
 msgid "{player1} and {player2} have allied their forces."
 msgstr ""
+"Οι παίκτες {player1} και {player2} ένωσαν τις δυνάμεις τους ως σύμμαχοι."
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
 #, python-format
 msgid "{player1} and {player2} have ended the war and are now allied."
 msgstr ""
+"Οι παίκτες {player1} και {player2} τερμάτισαν τον πόλεμο και είναι πλέον "
+"σύμμαχοι."
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
 #, python-format
 msgid "{player1} and {player2} have ended their alliance and are now in a state of war."
 msgstr ""
+"Οι παίκτες {player1} και {player2} τερμάτισαν τη συμμαχία τους και τώρα "
+"βρίσκονται σε κατάσταση πολέμου."
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
 #, python-format
 msgid "{player1} and {player2} have settled their hostility."
 msgstr ""
+"Οι παίκτες {player1} και {player2} τακτοποίησαν την εχθρική τους κατάσταση."
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
 #, python-format
 msgid "{player1} and {player2} have terminated their alliance."
-msgstr ""
+msgstr "Οι παίκτες {player1} και {player2} τερμάτισαν τη συμμαχία τους."
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
 #, python-format
 msgid "{player1} and {player2} will fight each other to the death."
 msgstr ""
+"Οι παίκτες {player1} και {player2} θα πολεμήσουν μεταξύ τους μέχρι θανάτου."
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
 #, python-format
 msgid "{player}: {message}"
-msgstr ""
+msgstr "Παίκτης {player}: {message}"
 
 #: editor/editor.py
 msgid "Specify the path to FIFE root directory."
-msgstr ""
+msgstr "Καθορίστε τη διαδρομή προς τον κατάλογο ρίζας FIFE."
 
 #: horizons/command/game.py
 msgid "Invalid filename"
-msgstr ""
+msgstr "Μη έγκυρο όνομα αρχείου"
 
 #: horizons/command/game.py
 msgid "Received an invalid filename for a save command."
-msgstr ""
+msgstr "Ελήφθη μη έγκυρο όνομα αρχείου για εντολή αποθήκευσης."
 
 #. There was a problem during the 'save game' procedure.
 #: horizons/command/game.py horizons/gui/gui.py
 #: horizons/gui/ingamegui.py horizons/gui/modules/multiplayermenu.py
 #: horizons/gui/modules/multiplayermenu.py
 msgid "Error"
-msgstr ""
+msgstr "Σφάλμα"
 
 #: horizons/command/game.py horizons/gui/gui.py
 msgid "Failed to save."
-msgstr ""
+msgstr "Η αποθήκευση απέτυχε."
 
 #: horizons/component/tradepostcomponent.py
 msgid "The trade partner does not sell this."
@@ -567,27 +581,31 @@ msgstr ""
 
 #: horizons/engine/settingsdialog.py
 msgid "Restart required"
-msgstr ""
+msgstr "Απαιτείται επανεκκίνηση"
 
 #: horizons/engine/settingsdialog.py
 msgid "Some of your changes require a restart of Unknown Horizons."
 msgstr ""
+"Μερικές από τις αλλαγές σας απαιτούν επανεκκίνηση του παιχνιδιού \"Άγνωστοι "
+"ορίζοντες\"."
 
 #: horizons/engine/settingsdialog.py
 msgid "Restore default settings"
-msgstr ""
+msgstr "Επαναφορά προεπιλεγμένων ρυθμίσεων"
 
 #: horizons/engine/settingsdialog.py
 msgid "Restoring the default settings will delete all changes to the settings you made so far."
 msgstr ""
+"Με την επαναφορά των προεπιλεγμένων ρυθμίσεων θα γίνει διαγραφή όλων των "
+"αλλαγών που πραγματοποιήσατε έως τώρα."
 
 #: horizons/engine/settingsdialog.py
 msgid "Do you want to continue?"
-msgstr ""
+msgstr "Θέλετε να συνεχίσετε;"
 
 #: horizons/engine/settingshandler.py
 msgid "Warning"
-msgstr ""
+msgstr "Προειδοποίηση"
 
 #. i18n Warning popup shown in settings when SDL is selected as renderer.
 #: horizons/engine/settingshandler.py
@@ -596,14 +614,20 @@ msgid ""
 "\n"
 "Use at own risk!"
 msgstr ""
+"Η μηχανή απόδοσης SDL προορίζεται ως εναλλακτική λύση και εμφανίζει σοβαρά "
+"προβλήματα με τα γραφικά. \n"
+"\n"
+"Την χρησιμοποιείτε με δική σας ευθύνη!"
 
 #: horizons/engine/settingshandler.py
 msgid "Invalid network port"
-msgstr ""
+msgstr "Μη έγκυρη θύρα δικτύου"
 
 #: horizons/engine/settingshandler.py
 msgid "The port you specified is not valid. It must be a number between 1 and 65535."
 msgstr ""
+"Η θύρα που καθορίσατε δεν είναι έγκυρη. Πρέπει να είναι ένας αριθμός μεταξύ "
+"1 και 65535."
 
 #: horizons/engine/settingshandler.py
 msgid "Please check the port you entered and make sure it is in the specified range."

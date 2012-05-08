@@ -46,7 +46,7 @@ from horizons.command.game import SpeedDownCommand, SpeedUpCommand
 from horizons.gui.tabs.tabinterface import TabInterface
 from horizons.component.namedcomponent import SettlementNameComponent, NamedComponent
 from horizons.component.selectablecomponent import SelectableComponent
-from horizons.messaging import SettlerUpdate, SettlerInhabitantsChanged, ResourceBarResize, HoverSettlementChanged
+from horizons.messaging import SettlerUpdate, SettlerInhabitantsChanged, ResourceBarResize, HoverSettlementChanged, TabWidgetChanged
 from horizons.util.lastactiveplayersettlementmanager import LastActivePlayerSettlementManager
 
 class IngameGui(LivingObject):
@@ -360,6 +360,8 @@ class IngameGui(LivingObject):
 				self._old_menu.add_remove_listener( Callback(self.show_menu, None) )
 			self._old_menu.show()
 			self.minimap_to_front()
+
+		TabWidgetChanged.broadcast(self)
 
 	def hide_menu(self):
 		self.show_menu(None)

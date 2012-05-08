@@ -38,17 +38,14 @@ class _Tooltip(object):
 	def init_tooltip(self):
 		self.gui = None
 		self.mapEvents({
-			self.name + '/mouseEntered' : self.position_tooltip,
-			self.name + '/mouseExited' : self.hide_tooltip,
-			self.name + '/mousePressed' : self.hide_tooltip,
-			self.name + '/mouseMoved' : self.position_tooltip,
-			#self.name + '/mouseReleased' : self.position_tooltip,
-			self.name + '/mouseDragged' : self.hide_tooltip
+			self.name + '/mouseEntered/tooltip' : self.position_tooltip,
+			self.name + '/mouseExited/tooltip' : self.hide_tooltip,
+			self.name + '/mousePressed/tooltip' : self.hide_tooltip,
+			self.name + '/mouseMoved/tooltip' : self.position_tooltip,
+			#self.name + '/mouseReleased/tooltip' : self.position_tooltip,
+			self.name + '/mouseDragged/tooltip' : self.hide_tooltip
 			})
 		self.tooltip_shown = False
-
-		self._entered_callbacks = []
-		self._exited_callbacks = []
 
 	def position_tooltip(self, event):
 		"""Calculates a nice position for the tooltip.
@@ -60,9 +57,6 @@ class _Tooltip(object):
 		if isinstance(where, tuple):
 			x, y = where
 		else:
-			if (where.getType() == fife.MouseEvent.ENTERED):
-				for i in self._entered_callbacks:
-					i()
 			if (where.getButton() == fife.MouseEvent.MIDDLE):
 				return
 
@@ -132,28 +126,10 @@ class _Tooltip(object):
 			self.gui.show()
 
 	def hide_tooltip(self, event=None):
-		if (event is None or event.getType() == fife.MouseEvent.EXITED):
-			for i in self._exited_callbacks:
-				i()
 		if self.gui is not None:
 			self.gui.hide()
 			self.gui.removeAllChildren()
 		ExtScheduler().rem_call(self, self.show_tooltip)
 		self.tooltip_shown = False
 
-	def add_entered_callback(self, cb):
-		"""Add a callback to always be called when the mouse enters the button (not the tooltip)"""
-		# if you already think that this is ugly, then i'll spare you
-		# from what my other solution to this problem would have looked like
-		self._entered_callbacks.append(cb)
-
-	def clear_entered_callbacks(self):
-		self._entered_callbacks = []
-
-	def add_exited_callback(self, cb):
-		"""Add a callback to always be called when the mouse exits the button (not the tooltip)"""
-		self._exited_callbacks.append(cb)
-
-	def clear_exited_callbacks(self):
-		self._exited_callbacks = []
 

@@ -145,16 +145,16 @@ class SelectionTool(NavigationTool):
 	def apply_select(self):
 		"""
 		Called when selected instances changes. (Shows their menu)
-		If one of the selected instances can attack, switch mousetool to AttackingTool
+		Does not do anything when nothing is selected, i.e. doesn't hide their menu.
+		If one of the selected instances can attack, switch mousetool to AttackingTool.
 		"""
-		if (self.session.world.health_visible_for_all_health_instances):
+		if self.session.world.health_visible_for_all_health_instances:
 			self.session.world.toggle_health_for_all_health_instances()
 		selected = self.session.selected_instances
 		if len(selected) > 1 and all( i.is_unit for i in selected ):
 			self.session.ingame_gui.show_multi_select_tab()
 		elif len(selected) == 1:
-			for i in selected:
-				i.get_component(SelectableComponent).show_menu()
+			iter(selected).next().get_component(SelectableComponent).show_menu()
 
 		#change session cursor to attacking tool if selected instances can attack
 		from attackingtool import AttackingTool
@@ -198,7 +198,7 @@ class SelectionTool(NavigationTool):
 			self.select_begin = (evt.getX(), evt.getY())
 			self.session.ingame_gui.hide_menu()
 		elif evt.getButton() == fife.MouseEvent.RIGHT:
-			target_mapcoord = self.get_exact_world_location_from_event(evt)
+			target_mapcoord = self.get_exact_world_location(evt)
 			for i in self.session.selected_instances:
 				if i.movable:
 					Act(i, target_mapcoord.x, target_mapcoord.y).execute(self.session)

@@ -5,7 +5,7 @@
 # translation files from pootle. Documentation on this process is found here:
 #   development/copy_pofiles.sh
 
-author: !!python/unicode 'The UH team'
+author: !!python/unicode 'UH teamet'
 description: !!python/unicode 'The tutorial:
 
   Build your first settlement and learn how to play!
@@ -22,7 +22,7 @@ events:
     - - Gallery
       - [content/gfx/uh.png]
     - [Pagebreak]
-    - [Headline, !!python/unicode 'Welcome to Unknown Horizons!']
+    - [Headline, !!python/unicode 'Velkommen til Unknown Horizons!']
     - [Image, content/gui/images/background/hr.png]
     - ''
     - !!python/unicode 'This is your Captain''s log where all important information
@@ -760,5 +760,5 @@ events:
     type: var_gt
 locale: da
 mapfile: development.sqlite
-translation_status: 3 translated messages, 188 untranslated messages.
+translation_status: 5 translated messages, 186 untranslated messages.
 

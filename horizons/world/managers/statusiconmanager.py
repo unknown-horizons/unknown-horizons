@@ -41,7 +41,7 @@ class StatusIconManager(object):
 
 		self.tooltip_instance = None # no weakref:
 		# we need to remove the tooltip always anyway, and along with it the entry here
-		self.tooltip_icon = Icon()
+		self.tooltip_icon = Icon(position=(1,1)) # 0, 0 is currently not supported by tooltips
 
 		AddStatusIcon.subscribe(self.on_add_icon_message)
 		HoverInstancesChanged.subscribe(self.on_hover_instances_changed)

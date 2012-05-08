@@ -24,8 +24,8 @@ squiddy (Reiner Gerecke)
 = Game-Play Design
 dauerflucher (Andreas Lis)
 Andre (Andre Reichelt)
-Kilian] (Kilian K.)
-chrisoelmueller (Christopher Oelmueller)
+Kilian] (Kilian Köppchen)
+ChrisOelmueller (Christopher Oelmueller)
 
 = Sound and Music Artists
 draikon (Sebastian Ahlen)
@@ -41,11 +41,7 @@ Manthus (Matthias Dittrich)
 inken
 orakeldel
 lmg
-Daniel Stephens
-
-= Map Editor
-Fabian Streitel (karottenreibe)
-Moritz Beller (ronnie_c)
+UnknownScribe (Daniel Stephens)
 
 
 == Patchers
@@ -76,6 +72,8 @@ hoffi (GUI improvements)
 riidom (Tent and hut variations)
 abeaumont (Two renitent segfaults)
 mtfk (Voice internationalization)
+karottenreibe (Map editor)
+ronnie_c (Map editor)
 
 = 2012
 Foaly (Resource icons)

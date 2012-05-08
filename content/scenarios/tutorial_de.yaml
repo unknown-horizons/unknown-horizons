@@ -421,8 +421,8 @@ events:
       gehen und nach ausreichend Baumaterial suchen, um ein Blockhaus zu errichten.
       Dieses Haus wird das alte Zelt ersetzen.'
     - [Pagebreak]
-    - "\nSolche Wohnungsverbesserungen kosten Euch Waren kosten, daher k\xF6nnt Ihr\
-      \ sie in den Marktplatz-Tabs einschr\xE4nken."
+    - "\nSolche Wohnungsverbesserungen kosten Euch Waren, daher k\xF6nnt Ihr sie in\
+      \ den Marktplatz-Tabs einschr\xE4nken."
     - "Es gibt aber auch Verbesserungen ohne Kosten, wie Ihr zum Beispiel beim Holzf\xE4\
       llerlager bemerken werdet. In diesem Fall wird nur die Geb\xE4udegraphik angepasst."
     - !!python/unicode 'Verbesserte Wohnungen beherbergen mehr Bewohner und Pioniere

@@ -84,7 +84,7 @@ class IngameType(type):
 			self._name = _( self._strip_translation_marks( name_data ) )
 		self.radius = yaml_data['radius']
 		self.component_templates = yaml_data['components']
-		self.action_sets= yaml_data['actionsets']
+		self.action_sets = yaml_data['actionsets']
 		self.baseclass = yaml_data['baseclass'] # mostly only for debug
 		self._real_object = None # wrapped by _object
 

@@ -36,7 +36,7 @@ class Builder(WorldObject):
 
 	rotations = [45, 135, 225, 315]
 	# don't change the orientation of the following building types
-	non_rotatable_buildings = [BUILDINGS.WAREHOUSE, BUILDINGS.FISHER, BUILDINGS.BOATBUILDER, \
+	non_rotatable_buildings = [BUILDINGS.WAREHOUSE, BUILDINGS.FISHER, BUILDINGS.BOAT_BUILDER,
 		BUILDINGS.IRON_MINE, BUILDINGS.SALT_PONDS]
 
 	def __init__(self, building_id, land_manager, point, orientation = 0, ship = None, worldid = None):

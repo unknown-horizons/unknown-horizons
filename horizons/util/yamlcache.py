@@ -188,7 +188,14 @@ class YamlCache(object):
 			cls.log.exception("Warning: You probably have an old cache file; deleting and retrying: "+unicode(e))
 			if os.path.exists(cls.cache_filename):
 				os.remove(cls.cache_filename)
-			cls.cache = shelve.open(cls.cache_filename)
+			try:
+				cls.cache = shelve.open(cls.cache_filename)
+			except Exception as e:
+				# If no persistant cache can be opened the game should still be
+				# playable and not just crash.
+				cls.log.exception("Warning: Failed to open %s as cache: %s" % (
+									cls.cache_filename, unicode(e)))
+				cls.cache = DummyShelve()
 		cls.lock.release()
 
 

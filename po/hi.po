@@ -2,47 +2,46 @@
 # Copyright (C) YEAR The Unknown Horizons Team
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-#
-#, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: Unknown Horizons c494b13\n"
+"Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2012-05-06 22:10+0100\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"PO-Revision-Date: 2012-05-01 19:44+0200\n"
+"Last-Translator: Christopher Oelmueller <chris.oelmueller+uh@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
-"Language: \n"
+"Language: hi\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=CHARSET\n"
+"Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Pootle 2.1.5\n"
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
 #, python-format
 msgid "A new settlement was founded by {player}."
-msgstr ""
+msgstr "{player} ने एक नए उपनिवेश की स्थापना की है."
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
 msgid "A new ship has been created."
-msgstr ""
+msgstr "एक नया जहाज तैयार है."
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
 msgid "A new world has been created."
-msgstr ""
+msgstr "एक नयी दुनिया की स्थापना हुई है."
 
 #. This is a database entry: the name of an inhabitant increment (tier / level).
 #: database files sql
 msgid "Aristocrats"
-msgstr ""
+msgstr "अभिजात्य गण"
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
 msgid "Cannot go here."
-msgstr ""
+msgstr "स्थान अगम्य है"
 
 #. (text of widget: headline)
 #. headline of gui_buildmenu:build_menu_per_type
@@ -50,17 +49,17 @@ msgstr ""
 #: database files horizons/i18n/guitranslations.py
 #: horizons/i18n/objecttranslations.py sql
 msgid "Citizens"
-msgstr ""
+msgstr "नागरिक"
 
 #. This is a database entry: the name of an inhabitant increment (tier / level).
 #: database files sql
 msgid "Merchants"
-msgstr ""
+msgstr "व्यापारी"
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
 msgid "One of your fields requires a farm to harvest its crops."
-msgstr ""
+msgstr "आपके खेत में उपज के लिए बिज बोने की जरुरत है."
 
 #. (text of widget: headline)
 #. headline of gui_buildmenu:build_menu_per_type
@@ -68,19 +67,19 @@ msgstr ""
 #: database files horizons/i18n/guitranslations.py
 #: horizons/i18n/objecttranslations.py sql
 msgid "Pioneers"
-msgstr ""
+msgstr "अग्रज"
 
 #. (text of widget: headline)
 #. This is a database entry: the name of an inhabitant increment (tier / level).
 #: database files horizons/i18n/guitranslations.py sql
 msgid "Sailors"
-msgstr ""
+msgstr "नाविक"
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
 #, python-format
 msgid "Screenshot has been saved to {file}."
-msgstr ""
+msgstr "स्क्रीनशॉट {file} में संचित कर लिया गया है."
 
 #. (text of widget: headline)
 #. (text of widget: settler_score)
@@ -90,32 +89,34 @@ msgstr ""
 #: horizons/i18n/guitranslations.py
 #: horizons/i18n/objecttranslations.py sql
 msgid "Settlers"
-msgstr ""
+msgstr "उपनिवेशी"
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
 msgid "Some of your inhabitants have no access to a main square."
-msgstr ""
+msgstr "आपके कुछ निवासियों की चौपाल तक पहुँच नहीं है."
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
 msgid "Some of your inhabitants just moved out."
-msgstr ""
+msgstr "आपके कुछ निवासी अभी अभी चले गए."
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
 msgid "The route is now configured. Start it via the \"start route\" button in the \"configure route\" menu."
 msgstr ""
+"व्यापर मार्ग अब तैयार है. \"मार्ग विवरण\" सूचि में \"प्रारंभ\" बटन के उपयोग से "
+"व्यापर शुरू करें."
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
 msgid "You can also drag roads."
-msgstr ""
+msgstr "अप सडकों को भी खीच सकते है."
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
 msgid "You cannot tear the warehouse, your settlements needs it."
-msgstr ""
+msgstr "इस गोदाम को आप नहीं डहा सकते. आपकी बस्ती को इसकी जरुरत है."
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
@@ -125,18 +126,18 @@ msgstr ""
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
 msgid "You have reached the current maximum increment. Your inhabitants will not upgrade further."
-msgstr ""
+msgstr "आप उन्नति के चरम पे है. इससे आगे उन्नयन संभव नहीं है."
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
 #, python-format
 msgid "You need more {resource} to build this building."
-msgstr ""
+msgstr "इस ईमारत के निर्माण में और {resource} की आवश्यकता है."
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
 msgid "You won!"
-msgstr ""
+msgstr "आप जीत गए."
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
@@ -146,388 +147,398 @@ msgstr ""
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
 msgid "Your crew refuses to leave this map."
-msgstr ""
+msgstr "आपके दल ने इस नक़्शे से हटने से मना कर दिया है."
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
 msgid "Your game has been autosaved."
-msgstr ""
+msgstr "आपका खेल स्वतः सहेज लिया गया है."
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
+#, fuzzy
 msgid "Your game has been quicksaved."
-msgstr ""
+msgstr "आपका खेल त्वरित सहेजा गया है."
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
 msgid "Your game has been saved."
-msgstr ""
+msgstr "आपका खेल सहेज लिया गया है."
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
 #, python-format
 msgid "Your inhabitants reached level {level}."
-msgstr ""
+msgstr "आपके निवासी {level} स्तर पर पहुच गए है."
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
 msgid "Your mine has run out of resources."
-msgstr ""
+msgstr "आपकी खदान में संसाधन खत्म हो चुके है."
 
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "acorns"
-msgstr ""
+msgstr "बांज्फल"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "alvearies"
-msgstr ""
+msgstr "छत्ता"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "boards"
-msgstr ""
+msgstr "लट्ठे"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "bricks"
-msgstr ""
+msgstr "ईंटें"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "candles"
-msgstr ""
+msgstr "मोमबत्तियां"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "cannon"
-msgstr ""
+msgstr "तोप"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "cattle"
-msgstr ""
+msgstr "मवेशी"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "cattle for slaughter"
-msgstr ""
+msgstr "खाद्य मवेशी "
 
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "charcoal"
-msgstr ""
+msgstr "कच्चा कोयला"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "clay"
-msgstr ""
+msgstr "मिट्टी"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
+#, fuzzy
 msgid "clay deposit"
-msgstr ""
+msgstr "मिट्टी भंडार"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "cocoa"
-msgstr ""
+msgstr "कोको"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
+#, fuzzy
 msgid "cocoa beans"
-msgstr ""
+msgstr "कोको बीज"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "coins"
-msgstr ""
+msgstr "सिक्के"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "community"
-msgstr ""
+msgstr "समुदाय"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "condiments"
-msgstr ""
+msgstr "मसाले"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
+#, fuzzy
 msgid "confectionery"
-msgstr ""
+msgstr "मिष्ठान"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "corn"
-msgstr ""
+msgstr "मकई"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "dagger"
-msgstr ""
+msgstr "खंजर"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
+#, fuzzy
 msgid "deer food A"
-msgstr ""
+msgstr "हिरन का भोजन A"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "deer meat"
-msgstr ""
+msgstr "हिरन का गोश्त"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "education"
-msgstr ""
+msgstr "शिक्षा"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "faith"
-msgstr ""
+msgstr "आस्था"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "fire"
-msgstr ""
+msgstr "आग"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "fish"
-msgstr ""
+msgstr "मछ्छली"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "flour"
-msgstr ""
+msgstr "आटा"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "food"
-msgstr ""
+msgstr "भोजन"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "get-together"
-msgstr ""
+msgstr "जलसा"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "grain"
-msgstr ""
+msgstr "अनाज"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "grapes"
-msgstr ""
+msgstr "अंगूर"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "grass"
-msgstr ""
+msgstr "घास"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "happiness"
-msgstr ""
+msgstr "ख़ुशी"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "herbs"
-msgstr ""
+msgstr "जड़ी बूटी"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
+#, fuzzy
 msgid "honeycombs"
-msgstr ""
+msgstr "मधु मक्खी का छत्ता "
 
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "iron deposit"
-msgstr ""
+msgstr "लोह भंडार"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "iron ingots"
-msgstr ""
+msgstr "लोहे की सिल्लियां"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "iron ore"
-msgstr ""
+msgstr "लौह अयस्क"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "lamb wool"
-msgstr ""
+msgstr "भेड़ का ऊन"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "liquor"
-msgstr ""
+msgstr "शराब"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "medical herbs"
-msgstr ""
+msgstr "औषधीय जड़ी बूटिया"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "pigs"
-msgstr ""
+msgstr "सूअर"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "pigs for slaughter"
-msgstr ""
+msgstr "हलाल के सूअर"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "potatoes"
-msgstr ""
+msgstr "आलू"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "salt"
-msgstr ""
+msgstr "नमक"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "spice plants"
-msgstr ""
+msgstr "मसालों के पौधे"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "spices"
-msgstr ""
+msgstr "मसाले"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
+#, fuzzy
 msgid "stone deposit"
-msgstr ""
+msgstr "पत्थर भंडार"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
+#, fuzzy
 msgid "stone tops"
-msgstr ""
+msgstr "पत्थर शिखर"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "sugar"
-msgstr ""
+msgstr "चीनी"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "sugar cane"
-msgstr ""
+msgstr "गन्ना"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "textile"
-msgstr ""
+msgstr "कपड़ा"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "tobacco leaves"
-msgstr ""
+msgstr "तम्बाकू के पत्ते"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "tobacco plants"
-msgstr ""
+msgstr "तम्बाकू के पत्ते"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "tobaccos"
-msgstr ""
+msgstr "तम्बाकू"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "tools"
-msgstr ""
+msgstr "औजार"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "trees"
-msgstr ""
+msgstr "पेड़"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "vines"
-msgstr ""
+msgstr "लताएँ"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "wool"
-msgstr ""
+msgstr "ऊन"
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
 #, python-format
 msgid "{player1} and {player2} have allied their forces."
-msgstr ""
+msgstr "{player1} और {player2} के बीच गठबंधन बन गया है."
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
 #, python-format
 msgid "{player1} and {player2} have ended the war and are now allied."
 msgstr ""
+"{player1} और {player2} का युद्ध समाप्त हो गया है और शांति स्थापित हो गयी है."
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
 #, python-format
 msgid "{player1} and {player2} have ended their alliance and are now in a state of war."
 msgstr ""
+"{player1} और {player2} की शांति भंग हो गयी है और अब दोनों युद्ध कर रहे है."
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
 #, python-format
 msgid "{player1} and {player2} have settled their hostility."
-msgstr ""
+msgstr "{player1} और {player2} ने अपनी शत्रुता ख़त्म कर दी है."
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
 #, python-format
 msgid "{player1} and {player2} have terminated their alliance."
-msgstr ""
+msgstr "{player1} और {player2} ने अपना गठबंधन ख़त्म कर दिया है."
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
 #, python-format
 msgid "{player1} and {player2} will fight each other to the death."
-msgstr ""
+msgstr "{player1} और {player2} एक दुसरे के विनाश तक युद्ध करते रहेंगे."
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
 #, python-format
 msgid "{player}: {message}"
-msgstr ""
+msgstr "{player}: {message}"
 
 #: editor/editor.py
 msgid "Specify the path to FIFE root directory."
-msgstr ""
+msgstr "FIFE के मूल फोल्डर का पथ बताएं."
 
 #: horizons/command/game.py
 msgid "Invalid filename"
-msgstr ""
+msgstr "अमान्य फ़ाइल नाम"
 
 #: horizons/command/game.py
 msgid "Received an invalid filename for a save command."
-msgstr ""
+msgstr "सहेजन निर्देश के लिए अमान्य फाइल नाम प्राप्त हुआ."
 
 #. There was a problem during the 'save game' procedure.
 #: horizons/command/game.py horizons/gui/gui.py
 #: horizons/gui/ingamegui.py horizons/gui/modules/multiplayermenu.py
 #: horizons/gui/modules/multiplayermenu.py
 msgid "Error"
-msgstr ""
+msgstr "त्रुटि"
 
 #: horizons/command/game.py horizons/gui/gui.py
 msgid "Failed to save."
-msgstr ""
+msgstr "सहेजने में विफल."
 
 #: horizons/component/tradepostcomponent.py
 msgid "The trade partner does not sell this."
@@ -567,27 +578,29 @@ msgstr ""
 
 #: horizons/engine/settingsdialog.py
 msgid "Restart required"
-msgstr ""
+msgstr "पुनरारंभ अपेक्षित"
 
 #: horizons/engine/settingsdialog.py
 msgid "Some of your changes require a restart of Unknown Horizons."
-msgstr ""
+msgstr "किये गए परिवर्तनों के कारण अननोन होरैज़न का पुनरारंभ अपेक्षित है."
 
 #: horizons/engine/settingsdialog.py
 msgid "Restore default settings"
-msgstr ""
+msgstr "मूलभूत विकल्पों को पुनर्स्थापित करे."
 
 #: horizons/engine/settingsdialog.py
 msgid "Restoring the default settings will delete all changes to the settings you made so far."
 msgstr ""
+"मूलभूत विकल्पों को पुनार्श्तापित करने से आपके किये सारे परिवर्तन मिट "
+"जायेंगे."
 
 #: horizons/engine/settingsdialog.py
 msgid "Do you want to continue?"
-msgstr ""
+msgstr "जारी रखें?"
 
 #: horizons/engine/settingshandler.py
 msgid "Warning"
-msgstr ""
+msgstr "चेतावनी"
 
 #. i18n Warning popup shown in settings when SDL is selected as renderer.
 #: horizons/engine/settingshandler.py
@@ -596,22 +609,26 @@ msgid ""
 "\n"
 "Use at own risk!"
 msgstr ""
+"एस डी एल रेंडरर केवल एक बचाव उपाय है. इसमें काफी गंभीर ग्राफिकल त्रुटिया है. "
+"अपने जोखिम पर उपयोग करे."
 
 #: horizons/engine/settingshandler.py
 msgid "Invalid network port"
-msgstr ""
+msgstr "अमान्य नेटवर्क पोर्ट"
 
 #: horizons/engine/settingshandler.py
 msgid "The port you specified is not valid. It must be a number between 1 and 65535."
 msgstr ""
+"आपके द्वारा निर्दिष्ट पोर्ट मान्य नहीं है. यह १ से ६५५३५ के बीच की कोई "
+"संख्या होनी चाहिए."
 
 #: horizons/engine/settingshandler.py
 msgid "Please check the port you entered and make sure it is in the specified range."
-msgstr ""
+msgstr "कृपया पोर्ट नंबर फिर से परखे और सुनिस्श्चित करे की ये सही परिधि में है."
 
 #: horizons/engine/settingshandler.py
 msgid "Failed to apply new network settings."
-msgstr ""
+msgstr "नए नेटवर्क सेटिंग्स लागु करने में विफल हो गए."
 
 #: horizons/engine/settingshandler.py
 #: horizons/gui/modules/multiplayermenu.py
@@ -643,51 +660,51 @@ msgstr ""
 
 #: horizons/gui/gui.py
 msgid "Quit Game"
-msgstr ""
+msgstr "खेल बंद करे"
 
 #: horizons/gui/gui.py
 msgid "Are you sure you want to abort the running session?"
-msgstr ""
+msgstr "क्या आप पक्का चालू सत्र को बंद करना चाहते है?"
 
 #: horizons/gui/gui.py
 msgid "Quit Session"
-msgstr ""
+msgstr "सत्र बंद करे"
 
 #: horizons/gui/gui.py
 msgid "No saved games"
-msgstr ""
+msgstr "एक भी सहेजा हुआ खेल नहीं है"
 
 #: horizons/gui/gui.py
 msgid "There are no saved games to load."
-msgstr ""
+msgstr "लोड करने के लिए एक भी सहेजा हुआ खेल नहीं है."
 
 #. (text of widget: loadgame)
 #. (text of widget: loadgame) Open a widget to select which game to load
 #: horizons/gui/gui.py horizons/gui/gui.py
 #: horizons/i18n/guitranslations.py horizons/i18n/guitranslations.py
 msgid "Load game"
-msgstr ""
+msgstr "खेल जारी करे"
 
 #. (text of widget: savegame)
 #: horizons/gui/gui.py horizons/gui/gui.py
 #: horizons/i18n/guitranslations.py
 msgid "Save game"
-msgstr ""
+msgstr "खेल सहेजे"
 
 #: horizons/gui/gui.py
 msgid "No filename given"
-msgstr ""
+msgstr "कोई फाइल नाम नहीं दिया गया है"
 
 #: horizons/gui/gui.py
 msgid "Please enter a valid filename."
-msgstr ""
+msgstr "कृपया एक मान्य फाइल नाम दर्ज करे."
 
 #. reshow dialog
 #. savegamename already exists
 #: horizons/gui/gui.py
 #, python-format
 msgid "A savegame with the name '{name}' already exists."
-msgstr ""
+msgstr "'{name}' नाम से पहले से एक सहेजा हुआ खेल मोजूद है."
 
 #: horizons/gui/gui.py
 msgid "Overwrite it?"

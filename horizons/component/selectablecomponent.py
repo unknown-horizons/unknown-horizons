@@ -104,6 +104,8 @@ class SelectableComponent(Component):
 	def remove(self):
 		if self.instance in self.session.selected_instances:
 			self.session.selected_instances.remove(self.instance)
+		for group in self.session.selection_groups:
+			group.discard(self)
 		if self._selected:
 			self.deselect()
 		super(SelectableComponent, self).remove()

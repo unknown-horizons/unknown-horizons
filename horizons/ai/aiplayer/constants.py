@@ -98,7 +98,7 @@ class BUILDING_PURPOSE:
 		cls.purpose_to_building[cls.SMELTERY] = BUILDINGS.SMELTERY
 		cls.purpose_to_building[cls.TOOLMAKER] = BUILDINGS.TOOLMAKER
 		cls.purpose_to_building[cls.CHARCOAL_BURNER] = BUILDINGS.CHARCOAL_BURNER
-		cls.purpose_to_building[cls.BOAT_BUILDER] = BUILDINGS.BOATBUILDER
+		cls.purpose_to_building[cls.BOAT_BUILDER] = BUILDINGS.BOAT_BUILDER
 		cls.purpose_to_building[cls.SIGNAL_FIRE] = BUILDINGS.SIGNAL_FIRE
 		cls.purpose_to_building[cls.TOBACCO_FIELD] = BUILDINGS.TOBACCO_FIELD
 		cls.purpose_to_building[cls.TOBACCONIST] = BUILDINGS.TOBACCONIST

@@ -93,6 +93,7 @@ OBJECT_PATH = 'content/objects/'
 locations_to_translate = [
 	OBJECT_PATH + 'buildings/',
 	OBJECT_PATH + 'units/ships/',
+	OBJECT_PATH + 'gui_buildmenu/',
 	]
 
 files_to_skip = [
@@ -126,12 +127,22 @@ def content_from_file(filename):
 			object_strings.append('# %s' %comment + ROWINDENT + '%-30s: %s' % (('"%s"') % component, text))
 
 	for component, value in parsed.iteritems():
-		if isinstance(value, str) or isinstance(value, unicode):
+		if isinstance(value, basestring):
 			add_line(value, component, filename)
 		elif isinstance(value, dict):
 			for key, subvalue in value.iteritems():
-				if isinstance(subvalue, str) or isinstance(subvalue, unicode):
+				if isinstance(subvalue, basestring):
 					add_line(subvalue, component + "_" + str(key), filename)
+		elif isinstance(value, list): # build menu definitions
+			for attrlist in value:
+				if isinstance(attrlist, dict):
+					for key, subvalue in attrlist.iteritems():
+						if isinstance(subvalue, basestring):
+							add_line(subvalue, component + "_" + str(key), filename)
+				else:
+					for subvalue in attrlist:
+						if isinstance(subvalue, basestring):
+							add_line(subvalue, 'headline', filename)
 
 	strings = sorted(object_strings)
 

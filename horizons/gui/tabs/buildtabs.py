@@ -22,7 +22,6 @@
 from horizons.entities import Entities
 from horizons.gui.tabs.tabinterface import TabInterface
 from horizons.command.building import Build
-from horizons.constants import BUILDINGS
 from horizons.util import Callback, YamlCache, decorators
 from horizons.util.lastactiveplayersettlementmanager import LastActivePlayerSettlementManager
 from horizons.component.storagecomponent import StorageComponent
@@ -45,12 +44,16 @@ class BuildTab(TabInterface):
 	"""
 	lazy_loading = True
 
-	build_menu_config_per_increment = "content/gui/buildmenu/build_menu_per_increment.yaml"
+	build_menus = [
+	  "content/objects/gui_buildmenu/build_menu_per_increment.yaml",
+	  "content/objects/gui_buildmenu/build_menu_per_type.yaml"
+	  ]
 
-	build_menu_config = build_menu_config_per_increment
+	build_menu_config_per_increment = build_menus[0]
 
-	# Enable this instead of the line above for experimental per type menu
-	#build_menu_config = "content/gui/buildmenu/build_menu_per_type.yaml"
+	default_build_menu_config = build_menu_config_per_increment
+
+	cur_build_menu_config = default_build_menu_config
 
 	# NOTE: check for occurences of this when adding one, you might want to
 	#       add respective code there as well
@@ -60,12 +63,13 @@ class BuildTab(TabInterface):
 
 	last_active_build_tab = None
 
-	def __init__(self, session, tabindex, data, build_callback, unlocking_strategy):
+	def __init__(self, session, tabindex, data, build_callback, unlocking_strategy, build_menu_config):
 		"""
 		@param tabindex: position of tab
 		@param data: data directly from yaml specifying the contents of this tab
 		@param build_callback: called on clicks
 		@param unlocking_strategy: element of unlocking_strategies
+		@param build_menu_config: entry of build_menus where this definition originates from
 		"""
 		icon_path = None
 		helptext = None
@@ -80,9 +84,9 @@ class BuildTab(TabInterface):
 				if key == "icon":
 					icon_path = value
 				elif key == "helptext":
-					helptext = value
+					helptext = value[2:] if value.startswith('_ ') else value
 				elif key == "headline":
-					headline = value
+					headline = value[2:] if value.startswith('_ ') else value
 				else:
 					raise InvalidBuildMenuFileFormat("Invalid key: %s\nMust be either icon, helptext or headline." % key)
 			elif isinstance(entry, list):
@@ -93,17 +97,19 @@ class BuildTab(TabInterface):
 
 		if not icon_path:
 			raise InvalidBuildMenuFileFormat("icon_path definition is missing.")
-		if not helptext:
-			raise InvalidBuildMenuFileFormat("helptext definition is missing.")
 
 		super(BuildTab, self).__init__(widget='buildtab.xml', icon_path=icon_path)
 		self.session = session
 		self.tabindex = tabindex
 		self.build_callback = build_callback
 		self.unlocking_strategy = unlocking_strategy
+		if self.unlocking_strategy != self.__class__.unlocking_strategies.tab_per_increment:
+			if not helptext and not headline:
+				raise InvalidBuildMenuFileFormat("helptext definition is missing.")
 		self.row_definitions = rows
-		self.helptext = _(helptext)
 		self.headline = _(headline) if headline else headline # don't translate None
+		self.helptext = _(helptext) if helptext else self.headline
+		self.build_menu_config = build_menu_config
 
 	def _lazy_loading_init(self):
 		super(BuildTab, self)._lazy_loading_init()
@@ -124,25 +130,19 @@ class BuildTab(TabInterface):
 		def _set_entry(button, icon, building_id):
 			"""Configure a single build menu button"""
 			if self.unlocking_strategy == self.__class__.unlocking_strategies.single_per_increment and \
-			   self._get_building_increments()[building_id] > self.session.world.player.settler_level:
+			   self.get_building_increments()[building_id] > self.session.world.player.settler_level:
 				return
 
 			building = Entities.buildings[building_id]
-			#xgettext:python-format
 			button.helptext = self.session.db.get_building_tooltip(building_id)
 
 			enough_res = False # don't show building by default
 			if settlement is not None: # settlement is None when the mouse has left the settlement
 				res_overview = self.session.ingame_gui.resource_overview
-				cbs = ( Callback( res_overview.set_construction_mode, settlement, building.costs),
-				       Callback( res_overview.close_construction_mode ) )
-
-				# can't use mapEvents since the events are taken by the tooltips.
-				# they do however provide an auxiliary way around this:
-				button.clear_entered_callbacks()
-				button.clear_exited_callbacks()
-				button.add_entered_callback(cbs[0])
-				button.add_exited_callback(cbs[1])
+				button.mapEvents({
+				  button.name+"/mouseEntered/buildtab" : Callback(res_overview.set_construction_mode, settlement, building.costs),
+				  button.name+"/mouseExited/buildtab" : res_overview.close_construction_mode
+				  })
 
 				(enough_res, missing_res) = Build.check_resources({}, building.costs, settlement.owner, [settlement])
 			#check whether to disable build menu icon (not enough res available)
@@ -160,7 +160,8 @@ class BuildTab(TabInterface):
 
 			button.capture(Callback(self.build_callback, building_id))
 
-
+		MAX_ROWS = 4
+		MAX_COLS = 4
 		for row_num, row in enumerate(self.row_definitions):
 			# we have integers for building types, strings for headlines above slots and None as empty slots
 			column = -1 # can't use enumerate, not always incremented
@@ -169,10 +170,18 @@ class BuildTab(TabInterface):
 				position = (10*column) + (row_num+1) # legacy code, first row is 1, 11, 21
 				if entry is None:
 					continue
+				elif (column + 1) > MAX_COLS: # out of 4x4 bounds
+					err = "Invalid entry '%s': column %s does not exist." % (entry, column + 1)
+					err += " Max. column amount in current layout is %s." % MAX_COLS
+					raise InvalidBuildMenuFileFormat(err)
+				elif row_num > MAX_ROWS: # out of 4x4 bounds
+					err = "Invalid entry '%s': row %s does not exist." % (entry, row_num)
+					err += " Max. row amount in current layout is %s." % MAX_ROWS
+					raise InvalidBuildMenuFileFormat(err)
 				elif isinstance(entry, basestring):
 					column -= 1 # a headline does not take away a slot
 					lbl = self.widget.child_finder('label_{position:02d}'.format(position=position))
-					lbl.text = _(entry)
+					lbl.text = _(entry[2:]) if entry.startswith('_ ') else entry
 				elif isinstance(entry, int):
 					button = self.widget.child_finder('button_{position:02d}'.format(position=position))
 					icon = self.widget.child_finder('icon_{position:02d}'.format(position=position))
@@ -208,17 +217,27 @@ class BuildTab(TabInterface):
 		self.__class__.last_active_build_tab = self.tabindex
 		super(BuildTab, self).show()
 
+		self.widget.child_finder("switch_build_menu_config_button").capture(self._switch_build_menu_config)
+
 	def hide(self):
 		self.__remove_changelisteners()
 		super(BuildTab, self).hide()
+
+	def _switch_build_menu_config(self):
+		"""Sets next build menu config and recreates the gui"""
+		cur_index = self.__class__.build_menus.index( self.cur_build_menu_config )
+		new_index = (cur_index + 1 ) % len(self.__class__.build_menus)
+		self.__class__.cur_build_menu_config = self.__class__.build_menus[ new_index ]
+
+		self.session.ingame_gui.show_build_menu(update=True)
+
 
 	@classmethod
 	def create_tabs(cls, session, build_callback):
 		"""Create according to current build menu config
 		@param build_callback: function to call to enable build mode, has to take building type parameter
 		"""
-		# TODO: this should be configurable
-		source = cls.build_menu_config
+		source = cls.cur_build_menu_config
 
 		# parse
 		data = YamlCache.get_file( source, game_data=True )
@@ -242,7 +261,7 @@ class BuildTab(TabInterface):
 				break
 
 			try:
-				tab = BuildTab(session, len(tabs), tabdata, build_callback, unlocking_strategy)
+				tab = BuildTab(session, len(tabs), tabdata, build_callback, unlocking_strategy, source)
 				tabs.append( tab )
 			except Exception as e:
 				to_add = "\nThis error happened in %s of %s ." % (tab, source)
@@ -254,8 +273,9 @@ class BuildTab(TabInterface):
 
 	@classmethod
 	@decorators.cachedfunction
-	def _get_building_increments(cls):
-		"""Returns a dictionary mapping building type ids to their increments"""
+	def get_building_increments(cls):
+		"""Returns a dictionary mapping building type ids to their increments
+		@return cached dictionary (don't modifiy)"""
 		building_increments = {}
 		data = YamlCache.get_file( cls.build_menu_config_per_increment, game_data=True )
 		increment = -1

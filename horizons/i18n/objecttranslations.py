@@ -177,11 +177,6 @@ def set_translations():
 		"tooltip_text"                : _("Fishes the sea, produces food."),
 		},
 
-	"content/objects/buildings/gravelpath.yaml" : {
-		# name of buildings:gravelpath
-		"name"                        : _("Gravel Path"),
-		},
-
 	"content/objects/buildings/herbary.yaml" : {
 		# name of buildings:herbary
 		"name"                        : _("Herbary"),
@@ -435,5 +430,69 @@ def set_translations():
 		"name"                        : _("Wooden Tower"),
 		# tooltip_text of buildings:woodentower
 		"tooltip_text"                : _("Defends your settlement."),
+		},
+
+	"content/objects/gui_buildmenu/build_menu_per_increment.yaml" : {
+		# headline of gui_buildmenu:build_menu_per_increment
+		"headline"                    : _("Companies"),
+		# headline of gui_buildmenu:build_menu_per_increment
+		"headline"                    : _("Companies"),
+		# headline of gui_buildmenu:build_menu_per_increment
+		"headline"                    : _("Companies"),
+		# headline of gui_buildmenu:build_menu_per_increment
+		"headline"                    : _("Companies"),
+		# headline of gui_buildmenu:build_menu_per_increment
+		"headline"                    : _("Fields"),
+		# headline of gui_buildmenu:build_menu_per_increment
+		"headline"                    : _("Fields"),
+		# headline of gui_buildmenu:build_menu_per_increment
+		"headline"                    : _("Fields"),
+		# headline of gui_buildmenu:build_menu_per_increment
+		"headline"                    : _("Military"),
+		# headline of gui_buildmenu:build_menu_per_increment
+		"headline"                    : _("Mining"),
+		# headline of gui_buildmenu:build_menu_per_increment
+		"headline"                    : _("Residents and infrastructure"),
+		# headline of gui_buildmenu:build_menu_per_increment
+		"headline"                    : _("Services"),
+		# headline of gui_buildmenu:build_menu_per_increment
+		"headline"                    : _("Services"),
+		# headline of gui_buildmenu:build_menu_per_increment
+		"headline"                    : _("Services"),
+		},
+
+	"content/objects/gui_buildmenu/build_menu_per_type.yaml" : {
+		# headline of gui_buildmenu:build_menu_per_type
+		"headline"                    : _("Citizens"),
+		# headline of gui_buildmenu:build_menu_per_type
+		"headline"                    : _("Food"),
+		# headline of gui_buildmenu:build_menu_per_type
+		"headline"                    : _("Fortifications"),
+		# headline of gui_buildmenu:build_menu_per_type
+		"headline"                    : _("Infrastructure"),
+		# headline of gui_buildmenu:build_menu_per_type
+		"headline"                    : _("Military Service"),
+		# headline of gui_buildmenu:build_menu_per_type
+		"headline"                    : _("Mining"),
+		# headline of gui_buildmenu:build_menu_per_type
+		"headline"                    : _("Pioneers"),
+		# headline of gui_buildmenu:build_menu_per_type
+		"headline"                    : _("Residential"),
+		# headline of gui_buildmenu:build_menu_per_type
+		"headline"                    : _("Sea"),
+		# headline of gui_buildmenu:build_menu_per_type
+		"headline"                    : _("Services"),
+		# headline of gui_buildmenu:build_menu_per_type
+		"headline"                    : _("Settlers"),
+		# tab1_helptext of gui_buildmenu:build_menu_per_type
+		"tab1_helptext"               : _("Residents and infrastructure"),
+		# tab2_headline of gui_buildmenu:build_menu_per_type
+		"tab2_headline"               : _("Fields"),
+		# tab4_headline of gui_buildmenu:build_menu_per_type
+		"tab4_headline"               : _("Companies"),
+		# tab5_headline of gui_buildmenu:build_menu_per_type
+		"tab5_headline"               : _("Military"),
+		# tab6_headline of gui_buildmenu:build_menu_per_type
+		"tab6_headline"               : _("Aesthetics"),
 		},
 	}
