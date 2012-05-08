@@ -7,8 +7,8 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2012-05-06 22:10+0100\n"
-"PO-Revision-Date: 2012-01-07 07:50+0200\n"
-"Last-Translator: Christopher Oelmueller <chris.oelmueller+uh@gmail.com>\n"
+"PO-Revision-Date: 2012-05-08 07:28+0200\n"
+"Last-Translator: knutas <magnusknutas@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: sv\n"
 "MIME-Version: 1.0\n"
@@ -38,14 +38,13 @@ msgstr "En ny värld har skapats."
 # 81%
 #. This is a database entry: the name of an inhabitant increment (tier / level).
 #: database files sql
-#, fuzzy
 msgid "Aristocrats"
-msgstr "aristokrat"
+msgstr "Aristokrat"
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
 msgid "Cannot go here."
-msgstr "Kan inte åka dit"
+msgstr "Kan inte åka dit."
 
 # 75%
 #. (text of widget: headline)
@@ -53,22 +52,20 @@ msgstr "Kan inte åka dit"
 #. This is a database entry: the name of an inhabitant increment (tier / level).
 #: database files horizons/i18n/guitranslations.py
 #: horizons/i18n/objecttranslations.py sql
-#, fuzzy
 msgid "Citizens"
-msgstr "medborgare"
+msgstr "Medborgare"
 
 # merchant kan även översättas till köpman, men krockar med översättningen av trader. Borgare är ett alternativ för att skilja dem åt.
 # 77%
 #. This is a database entry: the name of an inhabitant increment (tier / level).
 #: database files sql
-#, fuzzy
 msgid "Merchants"
-msgstr "borgare"
+msgstr "Borgare"
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
 msgid "One of your fields requires a farm to harvest its crops."
-msgstr "Ett av dina fält kräver en farm för att kunna skörda"
+msgstr "Ett av dina fält kräver en farm för att kunna skörda."
 
 # 75%
 #. (text of widget: headline)
@@ -105,12 +102,12 @@ msgstr "Nybyggare"
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
 msgid "Some of your inhabitants have no access to a main square."
-msgstr "Några av dina invånare har kan inte ta sig till torget"
+msgstr "Några av dina invånare har kan inte ta sig till torget."
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
 msgid "Some of your inhabitants just moved out."
-msgstr "Några av dina invånare har precis flyttat ut"
+msgstr "Några av dina invånare har precis flyttat ut."
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
@@ -130,7 +127,7 @@ msgstr "Du kan inte rasera din marknadsplats, din bosättning behöver den."
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
 msgid "You failed the scenario."
-msgstr "Du misslyckades med scenariot"
+msgstr "Du misslyckades med scenariot."
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
@@ -141,7 +138,7 @@ msgstr "Du har nått den nuvarande gränsen för antal uppgraderingar. Dina inå
 #: database files sql
 #, python-format
 msgid "You need more {resource} to build this building."
-msgstr "Du behöver mer {resource} för att kunna bygga denna byggnad"
+msgstr "Du behöver mer {resource} för att kunna bygga denna byggnad."
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
@@ -237,9 +234,8 @@ msgstr "lera"
 # 83%
 #. This is a database entry: the name of a resource.
 #: database files sql
-#, fuzzy
 msgid "clay deposit"
-msgstr "Lerfyndighet"
+msgstr "lerfyndighet"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
@@ -517,19 +513,19 @@ msgstr "{player1} och {player2} kommer att slåss till döden."
 #: database files sql
 #, python-format
 msgid "{player}: {message}"
-msgstr ""
+msgstr "{player}: {message}"
 
 #: editor/editor.py
 msgid "Specify the path to FIFE root directory."
-msgstr ""
+msgstr "Specifiera sökvägen till FIFE-rootkatalog."
 
 #: horizons/command/game.py
 msgid "Invalid filename"
-msgstr ""
+msgstr "Ogiltigt filnamn"
 
 #: horizons/command/game.py
 msgid "Received an invalid filename for a save command."
-msgstr ""
+msgstr "Mottog ett felaktigt filnamn vid försök att spara."
 
 #. There was a problem during the 'save game' procedure.
 #: horizons/command/game.py horizons/gui/gui.py
@@ -545,19 +541,19 @@ msgstr "Misslyckades med att spara."
 
 #: horizons/component/tradepostcomponent.py
 msgid "The trade partner does not sell this."
-msgstr ""
+msgstr "Handelspartnern säljer inte detta."
 
 #: horizons/component/tradepostcomponent.py
 msgid "You can not store this."
-msgstr ""
+msgstr "Du kan inte lagra detta."
 
 #: horizons/component/tradepostcomponent.py
 msgid "You can not afford to buy this."
-msgstr ""
+msgstr "Du har inte råd att köpa detta."
 
 #: horizons/component/tradepostcomponent.py
 msgid "The trade partner does not sell more of this."
-msgstr ""
+msgstr "Handelspartnern säljer inte mer av detta."
 
 #: horizons/component/tradepostcomponent.py
 msgid "The trade partner does not buy this."
@@ -812,9 +808,8 @@ msgstr ""
 #: horizons/gui/widgets/playerssettlements.py
 #: horizons/i18n/guitranslations.py horizons/i18n/guitranslations.py
 #: horizons/i18n/guitranslations.py
-#, fuzzy
 msgid "Click to change the name of your settlement"
-msgstr "Klicka för att ändra namnet på din bosättning."
+msgstr "Klicka för att ändra namnet på din bosättning"
 
 #. e.g. when the pirate is disabled
 #. this dialog is pretty useless in this case
@@ -1280,9 +1275,8 @@ msgstr ""
 #. (helptext of widget: name)
 #: horizons/gui/widgets/playersships.py
 #: horizons/i18n/guitranslations.py horizons/i18n/guitranslations.py
-#, fuzzy
 msgid "Click to change the name of this ship"
-msgstr "Tryck för att ändra namnet på fartyget."
+msgstr "Tryck för att ändra namnet på fartyget"
 
 #. i18n There are no weapons equipped at the moment.
 #: horizons/gui/widgets/playersships.py
@@ -2538,9 +2532,8 @@ msgstr "Gå med i spel"
 # 90%
 #. (text of widget: load_game_lbl)
 #: horizons/i18n/guitranslations.py
-#, fuzzy
 msgid "Load game:"
-msgstr "Ladda spel"
+msgstr "Ladda spel:"
 
 #. (text of widget: refr_gamelist_lbl)
 #: horizons/i18n/guitranslations.py
