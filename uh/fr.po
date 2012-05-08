@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2012-05-06 22:10+0100\n"
-"PO-Revision-Date: 2012-05-08 17:56+0200\n"
+"PO-Revision-Date: 2012-05-08 18:01+0200\n"
 "Last-Translator: Thooms <thooms.pap@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: fr\n"
@@ -3810,7 +3810,7 @@ msgstr "L'inventaire de ce bâtiment est plein."
 
 #: horizons/world/status.py
 msgid "This building has a very low productivity."
-msgstr ""
+msgstr "Ce bâtiment a une très faible productivité."
 
 #: horizons/world/status.py
 msgid "This building is decomissioned."
