@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2012-03-31 21:42+0100\n"
-"PO-Revision-Date: 2012-05-08 07:34+0200\n"
+"PO-Revision-Date: 2012-05-08 08:50+0200\n"
 "Last-Translator: knutas <magnusknutas@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: sv\n"
@@ -69,8 +69,9 @@ msgstr "klicka"
 msgid "lumberjack"
 msgstr "skogshuggare"
 
+# 88%
 msgid "resident"
-msgstr ""
+msgstr "boende"
 
 msgid "main square"
 msgstr "torg"
@@ -279,8 +280,9 @@ msgstr "läge"
 msgid "move"
 msgstr "flytta"
 
+# 87%
 msgid "pioneers"
-msgstr ""
+msgstr "pionjärer"
 
 msgid "citizens"
 msgstr ""
