@@ -262,9 +262,9 @@ def quit():
 	global fife
 	fife.quit()
 
-def start_singleplayer(map_file, playername = "Player", playercolor = None, is_scenario = False, \
-		campaign = None, ai_players = 0, human_ai = False, trader_enabled = True, pirate_enabled = True, \
-		natural_resource_multiplier = 1, force_player_id = None, disasters_enabled = True):
+def start_singleplayer(map_file, playername="Player", playercolor=None, is_scenario=False,
+		campaign=None, ai_players=0, human_ai=False, trader_enabled=True, pirate_enabled=True,
+		natural_resource_multiplier=1, force_player_id=None, disasters_enabled=True):
 	"""Starts a singleplayer game
 	@param map_file: path to map file
 	@param ai_players: number of AI players to start (excludes possible human AI)
@@ -294,7 +294,14 @@ def start_singleplayer(map_file, playername = "Player", playercolor = None, is_s
 
 	# for now just make it a bit easier for the AI
 	difficulty_level = {False: DifficultySettings.DEFAULT_LEVEL, True: DifficultySettings.EASY_LEVEL}
-	players = [{ 'id' : 1, 'name' : playername, 'color' : playercolor, 'local' : True, 'ai': human_ai, 'difficulty': difficulty_level[bool(human_ai)]}]
+	players = [{
+		'id' : 1,
+		'name' : playername,
+		'color' : playercolor,
+		'local' : True,
+		'ai' : human_ai,
+		'difficulty' : difficulty_level[bool(human_ai)],
+	}]
 
 	# add AI players with a distinct color; if none can be found then use black
 	for num in xrange(ai_players):
@@ -306,7 +313,14 @@ def start_singleplayer(map_file, playername = "Player", playercolor = None, is_s
 			if not used:
 				color = possible_color
 				break
-		players.append({'id': num + 2, 'name' : 'AI' + str(num + 1), 'color' : color, 'local' : False, 'ai': True, 'difficulty': difficulty_level[True]})
+		players.append({
+			'id' : num + 2,
+			'name' : 'AI' + str(num + 1),
+			'color' : color,
+			'local' : False,
+			'ai' : True,
+			'difficulty' : difficulty_level[True],
+		})
 
 	from horizons.scenario import InvalidScenarioFileFormat # would create import loop at top
 	try:
@@ -330,12 +344,12 @@ def start_singleplayer(map_file, playername = "Player", playercolor = None, is_s
 		_modules.gui.show_main()
 		headline = _(u"Failed to start/load the game")
 		descr = _(u"The game you selected could not be started.") + u" " +\
-			      _("The savegame might be broken or has been saved with an earlier version.")
+		        _("The savegame might be broken or has been saved with an earlier version.")
 		_modules.gui.show_error_popup(headline, descr)
 		load_game(ai_players, human_ai, force_player_id=force_player_id)
 
 
-def prepare_multiplayer(game, trader_enabled = True, pirate_enabled = True, natural_resource_multiplier = 1):
+def prepare_multiplayer(game, trader_enabled=True, pirate_enabled=True, natural_resource_multiplier=1):
 	"""Starts a multiplayer game server
 	TODO: actual game data parameter passing
 	"""
@@ -381,7 +395,7 @@ def load_game(ai_players=0, human_ai=False, savegame=None, is_scenario=False, ca
 			return False # user aborted dialog
 	_modules.gui.show_loading_screen()
 #TODO
-	start_singleplayer(savegame, is_scenario = is_scenario, campaign = campaign, \
+	start_singleplayer(savegame, is_scenario=is_scenario, campaign=campaign, \
 		ai_players=ai_players, human_ai=human_ai, pirate_enabled=pirate_enabled, \
 		trader_enabled=trader_enabled, force_player_id=force_player_id)
 	return True
@@ -445,7 +459,7 @@ def _start_map(map_name, ai_players=0, human_ai=False, is_scenario=False, campai
 	          trader_enabled=trader_enabled, pirate_enabled=pirate_enabled, force_player_id=force_player_id)
 	return True
 
-def _start_random_map(ai_players, human_ai, seed = None, force_player_id = None):
+def _start_random_map(ai_players, human_ai, seed=None, force_player_id=None):
 	from horizons.util import random_map
 	start_singleplayer(random_map.generate_map_from_seed(seed), ai_players=ai_players, human_ai=human_ai, force_player_id=force_player_id)
 	return True
@@ -479,7 +493,7 @@ def _start_campaign(campaign_name, force_player_id=None):
 			shutil.copy(campaign_name, SavegameManager.campaigns_dir)
 		# use campaign file name below
 		campaign_name = os.path.splitext( campaign_basename )[0]
-	campaign = SavegameManager.get_campaign_info(name = campaign_name)
+	campaign = SavegameManager.get_campaign_info(name=campaign_name)
 	if not campaign:
 		#xgettext:python-format
 		print u"Error: Cannot find campaign '{name}'.".format(campaign_name)
@@ -487,7 +501,8 @@ def _start_campaign(campaign_name, force_player_id=None):
 	scenarios = [sc.get('level') for sc in campaign.get('scenarios',[])]
 	if not scenarios:
 		return False
-	return _start_map(scenarios[0], 0, False, is_scenario = True, campaign = {'campaign_name': campaign_name, 'scenario_index': 0, 'scenario_name': scenarios[0]}, \
+	return _start_map(scenarios[0], 0, False, is_scenario=True,
+		campaign={'campaign_name': campaign_name, 'scenario_index': 0, 'scenario_name': scenarios[0]},
 		force_player_id=force_player_id)
 
 def _load_map(savegame, ai_players, human_ai, force_player_id=None):

@@ -27,7 +27,7 @@ from fife.extensions.pychan.widgets import Icon
 from horizons.command.unit import SetStance
 from horizons.extscheduler import ExtScheduler
 from horizons.component.healthcomponent import HealthComponent
-from horizons.component.stancecomponent import NoneStance, AggressiveStance, HoldGroundStance, FleeStance, DEFAULT_STANCES
+from horizons.component.stancecomponent import DEFAULT_STANCES
 
 class StanceWidget(pychan.widgets.Container):
 	"""Widget used for setting up the stance for one instance"""
@@ -103,7 +103,7 @@ class WeaponStorageWidget(pychan.widgets.HBox):
 		self.instance = instance
 		self.update()
 
-	def remove(self, caller = None):
+	def remove(self, caller=None):
 		self.instance = None
 
 	def update(self):
@@ -115,10 +115,10 @@ class WeaponStorageWidget(pychan.widgets.HBox):
 				weapons_added = True
 				icon_image = get_res_icon_path(weapon, 24)
 				icon_tooltip = self.instance.session.db.get_res_name(weapon)+': '+str(amount)
-				icon = Icon(image = icon_image, helptext=icon_tooltip)
+				icon = Icon(image=icon_image, helptext=icon_tooltip)
 				self.addChild(icon)
 		if not weapons_added:
 			icon_image = "content/gui/icons/resources/none.png"
-			icon = Icon(image = icon_image, helptext=_("none"))
+			icon = Icon(image=icon_image, helptext=_("none"))
 			self.addChild(icon)
 

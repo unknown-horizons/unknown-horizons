@@ -34,8 +34,8 @@ from horizons.component.storagecomponent import StorageComponent
 
 class Build(Command):
 	"""Command class that builds an object."""
-	def __init__(self, building, x, y, island, rotation = 45, \
-	             ship = None, ownerless=False, settlement=None, tearset=None, data=None, action_set_id=None):
+	def __init__(self, building, x, y, island, rotation=45, ship=None, ownerless=False,
+	             settlement=None, tearset=None, data=None, action_set_id=None):
 		"""Create the command
 		@param building: building class that is to be built or the id of the building class.
 		@param x, y: int coordinates where the object is to be built.

@@ -353,7 +353,7 @@ class RouteConfig(object):
 			slot.findChild(name="buysell").capture(Callback(self.toggle_load_unload, slot, entry))
 
 			button = slot.findChild(name="button")
-			button.capture(self.handle_resource_click, event_name = 'mouseClicked')
+			button.capture(self.handle_resource_click, event_name='mouseClicked')
 			button.up_image = self.dummy_icon_path
 			button.down_image = self.dummy_icon_path
 			button.hover_image = self.dummy_icon_path
@@ -367,15 +367,15 @@ class RouteConfig(object):
 			self.slots[entry][num] = slot
 			self.show_load_icon(slot)
 
-	def add_gui_entry(self, warehouse, resource_list = None):
+	def add_gui_entry(self, warehouse, resource_list=None):
 		vbox = self._gui.findChild(name="left_vbox")
 		entry = load_uh_widget("route_entry.xml")
 		entry.settlement = weakref.ref( warehouse.settlement )
 		self.widgets.append(entry)
 
-		settlement_name_label = entry.findChild(name = "warehouse_name")
+		settlement_name_label = entry.findChild(name="warehouse_name")
 		settlement_name_label.text = warehouse.settlement.get_component(NamedComponent).name
-		player_name_label = entry.findChild(name = "player_name")
+		player_name_label = entry.findChild(name="player_name")
 		player_name_label.text = warehouse.owner.name
 
 		self.add_trade_slots(entry, self.slots_per_entry)
@@ -489,7 +489,7 @@ class RouteConfig(object):
 		"""
 		import cProfile as profile
 		import tempfile
-		outfilename = tempfile.mkstemp(text = True)[1]
+		outfilename = tempfile.mkstemp(text=True)[1]
 		print 'profile to ', outfilename
 		profile.runctx( "self.minimap.draw()", globals(), locals(), outfilename)
 		"""

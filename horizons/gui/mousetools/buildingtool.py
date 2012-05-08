@@ -223,7 +223,7 @@ class BuildingTool(NavigationTool):
 		self.__class__.gui.mapEvents( { "rotate_left" : self.rotate_left,
 				              "rotate_right": self.rotate_right } )
 		# set translated building name in gui
-		self.__class__.gui.findChild(name='headline').text = _('Build {building}').format(building= _(self._class.name))
+		self.__class__.gui.findChild(name='headline').text = _('Build {building}').format(building=_(self._class.name))
 		self.__class__.gui.findChild(name='running_costs').text = unicode(self._class.running_costs)
 		head_box = self.__class__.gui.findChild(name='head_box')
 		head_box.adaptLayout() # recalculates size of new content
@@ -707,7 +707,7 @@ class ShipBuildingToolLogic(object):
 	def __init__(self, ship):
 		self.ship = ship
 
-	def highlight_buildable(self, building_tool, tiles_to_check = None):
+	def highlight_buildable(self, building_tool, tiles_to_check=None):
 		"""Highlights all buildable tiles.
 		@param tiles_to_check: list of tiles to check for coloring."""
 		# resolved variables from inner loops
@@ -763,7 +763,7 @@ class SettlementBuildingToolLogic(object):
 		self.building_tool = weakref.ref(building_tool)
 		self.subscribed = False
 
-	def highlight_buildable(self, building_tool, tiles_to_check = None):
+	def highlight_buildable(self, building_tool, tiles_to_check=None):
 		"""Highlights all buildable tiles.
 		@param tiles_to_check: list of tiles to check for coloring."""
 

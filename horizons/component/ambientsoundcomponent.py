@@ -113,7 +113,7 @@ class AmbientSoundComponent(Component):
 		ExtScheduler().rem_all_classinst_calls(self)
 
 	@classmethod
-	def play_special(cls, sound, position = None):
+	def play_special(cls, sound, position=None):
 		"""Plays a special sound listed in the db table sounds_special
 		from anywhere in the code and without an instance of AmbientSound.
 		@param sound: string, key in table sounds_special

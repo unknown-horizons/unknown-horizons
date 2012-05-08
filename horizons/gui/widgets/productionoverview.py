@@ -43,7 +43,7 @@ class ProductionOverview(StatsWidget):
 		super(ProductionOverview, self).__init__(settlement.session)
 		self.settlement = settlement
 		self.db = self.settlement.session.db
-		Scheduler().add_new_object(Callback(self._refresh_tick), self, run_in = GAME_SPEED.TICKS_PER_SECOND, loops = -1)
+		Scheduler().add_new_object(Callback(self._refresh_tick), self, run_in=GAME_SPEED.TICKS_PER_SECOND, loops=-1)
 
 	def _init_gui(self):
 		super(ProductionOverview, self)._init_gui()
@@ -57,7 +57,9 @@ class ProductionOverview(StatsWidget):
 	def refresh(self):
 		super(ProductionOverview, self).refresh()
 		#xgettext:python-format
-		self._gui.findChild(name = 'headline').text = _('Production overview of {settlement}').format(settlement=self.settlement.get_component(NamedComponent).name)
+		name = self.settlement.get_component(NamedComponent).name
+		text = _('Production overview of {settlement}').format(settlement=name)
+		self._gui.findChild(name='headline').text = text
 
 		for resource_id, amount in \
 		    sorted(self.settlement.produced_res.items(),
@@ -65,10 +67,10 @@ class ProductionOverview(StatsWidget):
 			self._add_line_to_gui(resource_id, amount)
 		self._content_vbox.adaptLayout()
 
-	def _add_line_to_gui(self, resource_id, amount, show_all = False):
+	def _add_line_to_gui(self, resource_id, amount, show_all=False):
 		# later we will modify which resources to be displayed (e.g. all
 		# settlements) via the switch show_all
-		res_name = self.db.get_res_name(resource_id, only_if_inventory = True)
+		res_name = self.db.get_res_name(resource_id, only_if_inventory=True)
 		# above code returns None if not shown in inventories
 		displayed = (res_name is not None) or show_all
 		if not displayed:

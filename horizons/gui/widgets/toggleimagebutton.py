@@ -39,7 +39,7 @@ class ToggleImageButton(pychan.widgets.ImageButton):
 	ACTIVE = 0
 	INACTIVE = 1
 
-	def __init__(self, inactive_image = "", **kwargs):
+	def __init__(self, inactive_image="", **kwargs):
 		self.state = None
 		super(ToggleImageButton, self).__init__(**kwargs)
 		self.state = self.ACTIVE

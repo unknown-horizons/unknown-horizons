@@ -452,7 +452,7 @@ class Minimap(object):
 
 		return True
 
-	def _recalculate(self, where = None, dump_data=False):
+	def _recalculate(self, where=None, dump_data=False):
 		"""Calculate which pixel of the minimap should display what and draw it
 		@param where: Rect of minimap coords. Defaults to self.location
 		@param dump_data: Don't draw but return calculated data"""

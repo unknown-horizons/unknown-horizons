@@ -72,9 +72,9 @@ class Inventory(pychan.widgets.Container):
 		"""Draws the inventory."""
 		if len(self.children) != 0:
 			self.removeChildren(*self.children)
-		vbox = pychan.widgets.VBox(padding = 0)
+		vbox = pychan.widgets.VBox(padding=0)
 		vbox.width = self.width
-		current_hbox = pychan.widgets.HBox(padding = 0)
+		current_hbox = pychan.widgets.HBox(padding=0)
 		index = 0
 
 		# add res to res order in case there are new ones
@@ -121,7 +121,7 @@ class Inventory(pychan.widgets.Container):
 			#if index % ((vbox.width/(self.__class__.icon_width + 10))) < 0 and index != 0:
 			if index % self.ITEMS_PER_LINE == (self.ITEMS_PER_LINE - 1) and index != 0:
 				vbox.addChild(current_hbox)
-				current_hbox = pychan.widgets.HBox(padding = 0)
+				current_hbox = pychan.widgets.HBox(padding=0)
 			index += 1
 		if (index <= self.ITEMS_PER_LINE): # Hide/Remove second line
 			icons = self.parent.findChildren(name='slot')
@@ -161,7 +161,7 @@ class Inventory(pychan.widgets.Container):
 		self.adaptLayout()
 		self.stylize('menu_black')
 
-	def apply_to_buttons(self, action, filt = None):
+	def apply_to_buttons(self, action, filt=None):
 		"""Applies action to all buttons shown in inventory
 		@param action: function called that touches button
 		@param filt: function used to filter the buttons

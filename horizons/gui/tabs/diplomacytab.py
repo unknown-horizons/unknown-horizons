@@ -29,7 +29,7 @@ class DiplomacyTab(TabInterface):
 	Diplomacy tab set per player.
 	It displays the menu for selecting the status between the local player and the tab's player
 	"""
-	def __init__(self, player, widget = 'diplomacy.xml', \
+	def __init__(self, player, widget='diplomacy.xml',
 	             icon_path='content/gui/images/tabwidget/emblems/emblem_%s.png'):
 		super(DiplomacyTab, self).__init__(widget)
 

@@ -107,7 +107,7 @@ class SelectMultiTab(TabInterface):
 	def schedule_unit_widget_refresh(self):
 		if not self._scheduled_refresh:
 			self._scheduled_refresh = True
-			Scheduler().add_new_object(self.refresh_unit_widget, self, run_in = 0)
+			Scheduler().add_new_object(self.refresh_unit_widget, self, run_in=0)
 
 	def refresh_unit_widget(self):
 		if self.instances:
@@ -182,10 +182,10 @@ class SelectMultiTab(TabInterface):
 			if unit.stance != stance:
 				# not all have the same stance, toggle none
 				return
-		self.widget.findChild(name = stance.NAME).set_active()
+		self.widget.findChild(name=stance.NAME).set_active()
 
 class UnitEntry(object):
-	def __init__(self, instances, show_number = True):
+	def __init__(self, instances, show_number=True):
 		self.instances = instances
 		self.widget = load_uh_widget("unit_entry_widget.xml")
 		# get the icon of the first instance
@@ -217,9 +217,9 @@ class UnitEntry(object):
 			health_component.remove_damage_dealt_listener(self.draw_health)
 
 		if self.instances:
-			self.widget.findChild(name = "instance_number").text = unicode(len(self.instances))
+			self.widget.findChild(name="instance_number").text = unicode(len(self.instances))
 
-	def draw_health(self, caller = None):
+	def draw_health(self, caller=None):
 		health = 0
 		max_health = 0
 		for instance in self.instances:

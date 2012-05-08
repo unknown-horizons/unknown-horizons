@@ -63,12 +63,12 @@ class HealthComponent(Component):
 		self.log.debug("dealing damage %s to %s; new health: %s", scaling_factor*damage, self.instance, self.health)
 		self.on_damage_dealt()
 
-	def check_if_alive(self, caller = None):
+	def check_if_alive(self, caller=None):
 		if self.health <= 0:
 			self.log.debug("Unit %s dies, health: %s", self.instance, self.health)
 			self.instance.remove()
 
-	def redraw_health(self, caller = None):
+	def redraw_health(self, caller=None):
 		if not self.instance:
 			return
 		if self.instance in self.session.selected_instances:
