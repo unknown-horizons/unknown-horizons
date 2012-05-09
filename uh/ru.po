@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2012-05-06 22:10+0100\n"
-"PO-Revision-Date: 2012-05-09 08:38+0200\n"
+"PO-Revision-Date: 2012-05-09 08:53+0200\n"
 "Last-Translator: burlachenko <burlachenkomaxim@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: ru\n"
@@ -1283,7 +1283,7 @@ msgstr "Звук"
 #: horizons/gui/widgets/pickbeltwidget.py
 #, fuzzy
 msgid "Game"
-msgstr "Выйти из игры"
+msgstr "Игра"
 
 # 95%
 #: horizons/gui/widgets/playerssettlements.py
@@ -1342,6 +1342,8 @@ msgstr "Сброс этой конфигурации на значения по 
 #: horizons/gui/widgets/resourceoverviewbar.py
 msgid "Reset this settlement's displayed resources to the default configuration you have saved."
 msgstr ""
+"Сбросить отображение ресурсов этого поселения к настройкам по умолчанию "
+"сохраненных вами."
 
 #: horizons/gui/widgets/resourceoverviewbar.py
 msgid "Reset to factory"
@@ -2163,7 +2165,7 @@ msgstr "Юниты"
 #. (helptext of widget: building_score)
 #: horizons/i18n/guitranslations.py
 msgid "Value of all the buildings in the player's settlement(s)"
-msgstr ""
+msgstr "Стоимость всех построек в поселении(ях) игрока."
 
 #. (helptext of widget: land_score)
 #: horizons/i18n/guitranslations.py
@@ -2173,7 +2175,7 @@ msgstr ""
 #. (helptext of widget: money_score)
 #: horizons/i18n/guitranslations.py
 msgid "Player's current treasury + income expected in near future"
-msgstr ""
+msgstr "Текущая казна игрока + доход ожидаемый в ближайшем будущем"
 
 #. (helptext of widget: player_name)
 #: horizons/i18n/guitranslations.py
