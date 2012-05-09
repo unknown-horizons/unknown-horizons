@@ -18,7 +18,7 @@ components:
 - HealthComponent: {maxhealth: 1000}
 - ProducerComponent:
     productionlines:
-      45:
+      SALT:
         produces:
         - [RES.SALT, 2]
         time: 45

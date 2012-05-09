@@ -18,21 +18,21 @@ components:
 - HealthComponent: {maxhealth: 1000}
 - ProducerComponent:
     productionlines:
-      0:
+      SUGAR_COCOA:
         produces:
         - [RES.CONFECTIONERY, 1]
         consumes:
         - [RES.SUGAR, -1]
         - [RES.COCOA, -1]
         time: 30
-      1:
+      SUGAR_GRAPES:
         produces:
         - [RES.CONFECTIONERY, 1]
         consumes:
         - [RES.SUGAR, -1]
         - [RES.GRAPES, -1]
         time: 30
-      2:
+      HONEYCOMBS_COCOA:
         produces:
         - [RES.CONFECTIONERY, 1]
         - [RES.CANDLES, 1]
@@ -40,7 +40,7 @@ components:
         - [RES.HONEYCOMBS, -1]
         - [RES.COCOA, -1]
         time: 30
-      3:
+      HONEYCOMBS_GRAPES:
         produces:
         - [RES.CONFECTIONERY, 1]
         - [RES.CANDLES, 1]

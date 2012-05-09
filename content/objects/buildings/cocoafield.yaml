@@ -15,7 +15,7 @@ components:
 - HealthComponent: {maxhealth: 10}
 - ProducerComponent:
     productionlines:
-      0:
+      COCOA_BEANS:
         produces:
         - [RES.COCOA_BEANS, 1]
         time: 30

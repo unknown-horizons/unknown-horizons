@@ -15,7 +15,7 @@ components:
 - HealthComponent: {maxhealth: 10}
 - ProducerComponent:
     productionlines:
-      22:
+      POTATOES:
         produces:
         - [RES.POTATOES, 1]
         time: 26

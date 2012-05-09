@@ -16,7 +16,7 @@ components:
 - HealthComponent: {maxhealth: 1000}
 - ProducerComponent:
     productionlines:
-      0:
+      STONE:
         produces:
         - [RES.BRICKS, 1]
         consumes:

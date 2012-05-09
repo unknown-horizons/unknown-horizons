@@ -19,7 +19,7 @@ components:
 - HealthComponent: {maxhealth: 1000}
 - ProducerComponent:
     productionlines:
-      13:
+      FAITH:
         produces:
         - [RES.FAITH, 1]
         time: 4
