@@ -28,13 +28,6 @@ components:
     utilisation:
       FullUtilisation
     productionlines:
-      35:
-        changes_animation: false
-        enabled_by_default: false
-        consumes:
-        - [RES.BOARDS, -3]
-        - [RES.BRICKS, -2]
-        time: 1
       69:
         produces:
         - [RES.HAPPINESS, 4]
@@ -125,12 +118,6 @@ components:
         time: 90
         consumes:
         - [RES.FAITH, -1]
-      24:
-        changes_animation: false
-        enabled_by_default: false
-        consumes:
-        - [RES.BOARDS, -2]
-        time: 1
       26:
         produces:
         - [RES.HAPPINESS, 3]

@@ -199,6 +199,8 @@ def print_collector_restrictions():
 			print '\t%s(%s)' % (get_obj_name(obj),obj)
 
 def print_increment_data():
+	print 'Data has been moved, this view is unavailable for now'
+	return
 	from horizons.util.python.roman_numerals import int_to_roman
 	upgrade_increments = xrange(1, SETTLER.CURRENT_MAX_INCR+1)
 	print '%15s %s %s  %s' % ('increment', 'max_inh', 'base_tax', 'upgrade_prod_line')

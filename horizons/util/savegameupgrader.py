@@ -133,6 +133,16 @@ class SavegameUpgrader(object):
 			for (obj, ) in db("SELECT rowid FROM building WHERE type = ?", obj_type):
 				db("UPDATE production SET prod_line_id = ? WHERE owner = ? and prod_line_id = ?", new_prod_line, obj, old_prod_line)
 
+	def _upgrade_to_rev61(self, db):
+		from horizons.component.settlerupgradecomponent import SettlerUpgradeComponent
+
+		# settler upgrade lines used to be the same for several levels
+		for (settler, level) in db("SELECT rowid, level FROM building WHERE type = 3"):
+			#if settler == 100268:import pdb ; pdb.set_trace()
+			# the id used to always be 35
+			db("UPDATE production SET prod_line_id = ? WHERE owner = ? and prod_line_id = 35", SettlerUpgradeComponent.get_production_line_id( level + 1 ), settler)
+
+
 
 	def _upgrade(self):
 		# fix import loop
@@ -175,6 +185,8 @@ class SavegameUpgrader(object):
 				self._upgrade_to_rev59(db)
 			if rev < 60:
 				self._upgrade_to_rev60(db)
+			if rev < 61:
+				self._upgrade_to_rev61(db)
 
 
 			db('COMMIT')

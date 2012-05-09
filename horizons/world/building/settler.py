@@ -39,6 +39,7 @@ from horizons.component.settlerupgradecomponent import SettlerUpgradeComponent
 from horizons.world.status import SettlerUnhappyStatus
 from horizons.world.production.producer import Producer
 from horizons.messaging import AddStatusIcon, RemoveStatusIcon, SettlerUpdate, SettlerInhabitantsChanged, UpgradePermissionsChanged
+from horizons.component.settlerupgradecomponent import SettlerUpgradeComponent
 
 class SettlerRuin(BasicBuilding, BuildableSingle):
 	"""Building that appears when a settler got unhappy. The building does nothing.
@@ -125,7 +126,7 @@ class Settler(BuildableRect, BuildingResourceHandler, BasicBuilding):
 		self.log.debug("%s: Waiting for material to upgrade from %s", self, self.level)
 
 	def _get_upgrade_production(self):
-		upgrade_material_prodline = self.session.db.get_settler_upgrade_material_prodline(self.level+1)
+		upgrade_material_prodline = SettlerUpgradeComponent.get_production_line_id(self.level+1)
 		if self.get_component(Producer).has_production_line(upgrade_material_prodline):
 			return self.get_component(Producer)._get_production(upgrade_material_prodline)
 		return None
@@ -263,7 +264,7 @@ class Settler(BuildableRect, BuildingResourceHandler, BasicBuilding):
 				return
 			# add a production line that gets the necessary upgrade material.
 			# when the production finishes, it calls upgrade_materials_collected.
-			upgrade_material_prodline = self.session.db.get_settler_upgrade_material_prodline(self.level+1)
+			upgrade_material_prodline = SettlerUpgradeComponent.get_production_line_id(self.level+1)
 			if self.get_component(Producer).has_production_line(upgrade_material_prodline):
 				return # already waiting for res
 			prodline_data = self.get_component(SettlerUpgradeComponent).get_production_line_data(self.level+1)

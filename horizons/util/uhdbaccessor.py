@@ -233,12 +233,6 @@ class UhDbAccessor(DbReader):
 		return self.cached_query("SELECT inhabitants FROM settler WHERE rowid=?",
 		                         building_id)[0][0]
 
-	def get_settler_upgrade_material_prodline(self, level):
-		db_result = self.cached_query("SELECT production_line FROM upgrade_material \
-		                          WHERE level = ?", level)
-		return db_result[0][0] if db_result else None
-
-
 	# Misc
 
 	def get_player_start_res(self):
