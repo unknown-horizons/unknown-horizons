@@ -7,8 +7,8 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: translate-uh@lists.unknown-horizons.org\n"
 "POT-Creation-Date: 2012-03-21 04:04+0100\n"
-"PO-Revision-Date: 2012-05-05 10:38+0200\n"
-"Last-Translator: Christopher Oelmueller <chris.oelmueller+uh@gmail.com>\n"
+"PO-Revision-Date: 2012-05-09 09:44+0200\n"
+"Last-Translator: burlachenko <burlachenkomaxim@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: ru\n"
 "MIME-Version: 1.0\n"
@@ -76,6 +76,9 @@ msgid ""
 "in the top-right corner (below the mini-map, with a sealed document and a "
 "feather)."
 msgstr ""
+"После закрытия этого журнала, он может быть вновь открыт иконкой \"Журнал "
+"Капитана\"  в правом верхнем углу (под мини-картой, в виде запечатаного "
+"документа и пера)."
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:18
@@ -96,6 +99,9 @@ msgid ""
 "explained or even buggy conditions: Please tell us and we will try to improve "
 "the tutorial!"
 msgstr ""
+"Для любых предложений по улучшению формулировки, темы, которые вы хотели бы "
+"лучше понять или даже ошибки в условиях: Пожалуйста, расскажите нам, и мы "
+"постараемся улучшить урок!"
 
 #. This is the text body of a logbook page.
 #: po/tutorial.py:22
