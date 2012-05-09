@@ -88,7 +88,6 @@ class ComponentHolder(object):
 		init the components. If someday all code is moved to components, this will
 		not be necessary any more."""
 		for component in self.__create_components():
-
 			self.add_component(component)
 
 	def __create_components(self):

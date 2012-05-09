@@ -68,7 +68,7 @@ class VERSION:
 	#RELEASE_VERSION = u'2012.1'
 
 	## +=1 this if you changed the savegame "api"
-	SAVEGAMEREVISION = 59
+	SAVEGAMEREVISION = 60
 
 	@staticmethod
 	def string():
@@ -327,7 +327,9 @@ class PRODUCTIONLINES:
 	HUKER = 15
 	FISHING_BOAT = None # will get added later
 	FRIGATE = 58
-	TREES = 2
+	TREES = 256812226
+	WOOL = 1654557398
+
 
 ## GAME-RELATED, BALANCING VALUES
 class GAME:
