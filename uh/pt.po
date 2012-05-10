@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2012-05-06 22:10+0100\n"
-"PO-Revision-Date: 2012-04-08 02:11+0200\n"
+"PO-Revision-Date: 2012-05-10 18:41+0200\n"
 "Last-Translator: Christopher Oelmueller <chris.oelmueller+uh@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: pt\n"
@@ -115,7 +115,7 @@ msgstr "Alguns dos seus habitantes mudaram-se."
 #: database files sql
 msgid "The route is now configured. Start it via the \"start route\" button in the \"configure route\" menu."
 msgstr ""
-"A rota está agora configurada. Inicie através do botão \"iniciar rota\"  no "
+"A rota está agora configurada. Inicie através do botão \"iniciar rota\" no "
 "menu \"configurar rota\"."
 
 #. This is a database entry: a messagewidget message (left part of the screen).
@@ -1727,27 +1727,24 @@ msgstr "5 residentes"
 # 90%
 #. (text of widget: resident_6)
 #: horizons/i18n/guitranslations.py
-#, fuzzy
 msgid "6 residents"
-msgstr "2 residentes"
+msgstr "6 residentes"
 
 # 88%
 # 81%
 # 90%
 #. (text of widget: resident_7)
 #: horizons/i18n/guitranslations.py
-#, fuzzy
 msgid "7 residents"
-msgstr "2 residentes"
+msgstr "7 residentes"
 
 # 88%
 # 81%
 # 90%
 #. (text of widget: resident_8)
 #: horizons/i18n/guitranslations.py
-#, fuzzy
 msgid "8 residents"
-msgstr "2 residentes"
+msgstr "8 residentes"
 
 # 88%
 #. (text of widget: residents)
@@ -2179,7 +2176,7 @@ msgstr ""
 #. (helptext of widget: player_name)
 #: horizons/i18n/guitranslations.py
 msgid "Player Name"
-msgstr ""
+msgstr "Nome do jogador"
 
 #. (helptext of widget: resource_score)
 #: horizons/i18n/guitranslations.py
@@ -2896,7 +2893,7 @@ msgstr "Padaria"
 #. tooltip_text of buildings:bakery
 #: horizons/i18n/objecttranslations.py
 msgid "Consumes flour. Produces food."
-msgstr "Gastos de farinha.  Produzir comida."
+msgstr "Gastos de farinha. Produzir comida."
 
 #. name of buildings:barracks
 #: horizons/i18n/objecttranslations.py
