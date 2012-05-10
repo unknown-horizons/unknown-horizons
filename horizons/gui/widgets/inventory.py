@@ -111,6 +111,7 @@ class Inventory(pychan.widgets.Container):
 
 			button = ImageFillStatusButton.init_for_res(self.db, resid, amount, \
 			                                            filled=filled, uncached=self.uncached)
+			button.button.name = "inventory_entry_%s" % index
 			current_hbox.addChild(button)
 
 			# old code to do this, which was bad but kept for reference
