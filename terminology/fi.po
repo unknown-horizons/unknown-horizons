@@ -425,7 +425,7 @@ msgid "hold"
 msgstr "pidä"
 
 msgid "idle"
-msgstr ""
+msgstr "työttä"
 
 msgid "income"
 msgstr ""
@@ -535,10 +535,10 @@ msgid "completed"
 msgstr "suoritettu"
 
 msgid "condition"
-msgstr "kunto"
+msgstr "ehto / kunto"
 
 msgid "contact"
-msgstr ""
+msgstr "ota yhteyttä"
 
 msgid "empty"
 msgstr "tyhjä"

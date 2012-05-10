@@ -1296,7 +1296,9 @@ msgstr ""
 #. This message is displayed in the widget on the left screen part. Please keep it short enough to fit there!
 #: po/tutorial.py:348
 msgid "Build a weaver that can somehow reach the wool of your farm."
-msgstr "Plaats een kleermaker die de wel van je boerderij kan bereiken."
+msgstr ""
+"Bouw een kleermaker die op een of andere manier bij de wol kan komen op je "
+"boerderij."
 
 #. This message is displayed in the widget on the left screen part. Please keep it short enough to fit there!
 #: po/tutorial.py:350
