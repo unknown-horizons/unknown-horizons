@@ -7,8 +7,8 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2012-05-06 22:10+0100\n"
-"PO-Revision-Date: 2012-05-05 10:35+0200\n"
-"Last-Translator: Christopher Oelmueller <chris.oelmueller+uh@gmail.com>\n"
+"PO-Revision-Date: 2012-05-09 09:37+0200\n"
+"Last-Translator: burlachenko <burlachenkomaxim@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: ru\n"
 "MIME-Version: 1.0\n"
@@ -130,7 +130,7 @@ msgstr "Вы не можете снести склад, он требуется 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
 msgid "You failed the scenario."
-msgstr ""
+msgstr "Вы провалили сценарий."
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
@@ -153,7 +153,7 @@ msgstr "Вы победили!"
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
 msgid "Your building has caught fire!"
-msgstr ""
+msgstr "Ваша постройка горит!"
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
@@ -779,7 +779,7 @@ msgstr "Сохранено под версией {version}"
 #: horizons/gui/gui.py
 #, python-format
 msgid "(potentially incompatible)"
-msgstr ""
+msgstr "(потенциально несовместимо)"
 
 #. this should only happen for very old savegames, so having this unfriendly
 #. error is ok (savegame is quite certainly fully unusable).
@@ -968,11 +968,12 @@ msgstr "Рекомендованное число игроков: {number}"
 
 #: horizons/gui/modules/singleplayermenu.py
 msgid "Translation status:"
-msgstr ""
+msgstr "Состояние перевода:"
 
 #: horizons/gui/modules/singleplayermenu.py
 msgid "{translated} translated messages, {untranslated} untranslated messages"
 msgstr ""
+"{translated} переведенные сообщения, {untranslated} непереведенные сообщения"
 
 #: horizons/gui/modules/singleplayermenu.py
 #: horizons/gui/modules/singleplayermenu.py
@@ -1053,7 +1054,7 @@ msgstr "Нажмите для генерации другой случайной
 #. set translated building name in gui
 #: horizons/gui/mousetools/buildingtool.py
 msgid "Build {building}"
-msgstr ""
+msgstr "Строить {building}"
 
 #: horizons/gui/mousetools/navigationtool.py
 msgid "Press H to remove this hint"
@@ -1116,7 +1117,7 @@ msgstr "Просмотр"
 
 #: horizons/gui/tabs/buildrelatedtab.py
 msgid "Build related buildings"
-msgstr ""
+msgstr "Строить связанные построыки"
 
 #. (text of widget: headline)
 #. (helptext of widget: trade)
@@ -1282,7 +1283,7 @@ msgstr "Звук"
 #: horizons/gui/widgets/pickbeltwidget.py
 #, fuzzy
 msgid "Game"
-msgstr "Выйти из игры"
+msgstr "Игра"
 
 # 95%
 #: horizons/gui/widgets/playerssettlements.py
@@ -1341,6 +1342,8 @@ msgstr "Сброс этой конфигурации на значения по 
 #: horizons/gui/widgets/resourceoverviewbar.py
 msgid "Reset this settlement's displayed resources to the default configuration you have saved."
 msgstr ""
+"Сбросить отображение ресурсов этого поселения к настройкам по умолчанию "
+"сохраненных вами."
 
 #: horizons/gui/widgets/resourceoverviewbar.py
 msgid "Reset to factory"
@@ -2162,7 +2165,7 @@ msgstr "Юниты"
 #. (helptext of widget: building_score)
 #: horizons/i18n/guitranslations.py
 msgid "Value of all the buildings in the player's settlement(s)"
-msgstr ""
+msgstr "Стоимость всех построек в поселении(ях) игрока."
 
 #. (helptext of widget: land_score)
 #: horizons/i18n/guitranslations.py
@@ -2172,7 +2175,7 @@ msgstr ""
 #. (helptext of widget: money_score)
 #: horizons/i18n/guitranslations.py
 msgid "Player's current treasury + income expected in near future"
-msgstr ""
+msgstr "Текущая казна игрока + доход ожидаемый в ближайшем будущем"
 
 #. (helptext of widget: player_name)
 #: horizons/i18n/guitranslations.py
@@ -2721,6 +2724,8 @@ msgstr "Если установлен 0, то использовать драй�
 #: horizons/i18n/guitranslations.py
 msgid "Don't use in normal game session. Decides whether to write debug information in the logging directory of your user directory. Slows the game down."
 msgstr ""
+"Не используйте в обычной игровой сессии. Включает функцию записи отладочной "
+"информации в каталог логов пользователя. Замедляет игру."
 
 #. (helptext of widget: edge_scrolling_label)
 #: horizons/i18n/guitranslations.py
@@ -2766,7 +2771,7 @@ msgstr ""
 #. (text of widget: headline)
 #: horizons/i18n/guitranslations.py
 msgid "Random map archive"
-msgstr ""
+msgstr "Архив случайных карт"
 
 #. (text of widget: enter_filename_label)
 #: horizons/i18n/guitranslations.py
@@ -2880,9 +2885,8 @@ msgstr "Имя игрока:"
 # 88%
 #. name of buildings:alvearies
 #: horizons/i18n/objecttranslations.py
-#, fuzzy
 msgid "Alvearies"
-msgstr "ульи"
+msgstr "Ульи"
 
 #. tooltip_text of buildings:alvearies
 #: horizons/i18n/objecttranslations.py
@@ -3236,7 +3240,7 @@ msgstr "Каменщик"
 #. name_4 of buildings:stonemason
 #: horizons/i18n/objecttranslations.py
 msgid "Carver"
-msgstr ""
+msgstr "Ре́зчик"
 
 #. tooltip_text of buildings:stonemason
 #: horizons/i18n/objecttranslations.py
@@ -3410,12 +3414,12 @@ msgstr "Производит виноград для вина и кондите�
 #. name of buildings:vintner
 #: horizons/i18n/objecttranslations.py
 msgid "Vintner"
-msgstr ""
+msgstr "Винная лавка"
 
 #. tooltip_text of buildings:vintner
 #: horizons/i18n/objecttranslations.py
 msgid "Produces wine out of grapes."
-msgstr ""
+msgstr "Производит вино из винограда"
 
 #. name of buildings:warehouse
 #: horizons/i18n/objecttranslations.py
@@ -3511,40 +3515,42 @@ msgstr "Еда"
 #. headline of gui_buildmenu:build_menu_per_type
 #: horizons/i18n/objecttranslations.py
 msgid "Fortifications"
-msgstr ""
+msgstr "Укрепления"
 
 #. headline of gui_buildmenu:build_menu_per_type
 #: horizons/i18n/objecttranslations.py
 msgid "Infrastructure"
-msgstr ""
+msgstr "инфраструктура"
 
 #. headline of gui_buildmenu:build_menu_per_type
 #: horizons/i18n/objecttranslations.py
 msgid "Military Service"
-msgstr ""
+msgstr "Военная служба"
 
 #. headline of gui_buildmenu:build_menu_per_type
 #: horizons/i18n/objecttranslations.py
 msgid "Residential"
-msgstr ""
+msgstr "Жилье"
 
 #. headline of gui_buildmenu:build_menu_per_type
 #: horizons/i18n/objecttranslations.py
 msgid "Sea"
-msgstr ""
+msgstr "Море"
 
 #. tab6_headline of gui_buildmenu:build_menu_per_type
 #: horizons/i18n/objecttranslations.py
 msgid "Aesthetics"
-msgstr ""
+msgstr "Эстетика"
 
 #: horizons/main.py
 msgid "Failed to start/load the game"
 msgstr "Не удалось запустить/загрузить игру"
 
+# 95%
+# 100%
 #: horizons/main.py
 msgid "The game you selected could not be started."
-msgstr ""
+msgstr "Выбранная вами игра не может быть запущена."
 
 #: horizons/main.py
 msgid "The savegame might be broken or has been saved with an earlier version."
@@ -3640,11 +3646,11 @@ msgstr ""
 
 #: horizons/session.py
 msgid "Access is denied"
-msgstr ""
+msgstr "Отказано в доступе"
 
 #: horizons/session.py
 msgid "The savegame file is probably read-only."
-msgstr ""
+msgstr "Файл сохраненной игры, вероятно, только для чтения."
 
 #: horizons/session.py
 msgid "File used by another process"
@@ -3696,21 +3702,27 @@ msgstr "{building}: {description}"
 msgid "This building must be built on an island."
 msgstr ""
 
+# 95%
+# 100%
 #: horizons/world/building/buildable.py
 msgid "This ground is not suitable for this building."
-msgstr ""
+msgstr "Земля не подходит для этой постройки."
 
 #: horizons/world/building/buildable.py
 msgid "This building has to be built within your settlement."
-msgstr ""
+msgstr "Эта постройка должна быть построена в границах вашего поселения."
 
+# 75%
+# 75%
 #: horizons/world/building/buildable.py
 msgid "This area is already occupied by another player."
-msgstr ""
+msgstr "Эта территория уже занята другим играком."
 
+# 75%
+# 76%
 #: horizons/world/building/buildable.py
 msgid "This area is already occupied by another building."
-msgstr ""
+msgstr "Эта территория уже занята другой постройкой."
 
 #: horizons/world/building/buildable.py
 msgid "This area is already occupied by a unit."
@@ -3720,9 +3732,11 @@ msgstr ""
 msgid "This building must be built on the coastline."
 msgstr "Это здание должно строиться на побережье."
 
+# 80%
+# 100%
 #: horizons/world/building/buildable.py
 msgid "This building has to be placed at the ocean."
-msgstr ""
+msgstr "Эта постройка должно быть размещена рядом с океаном."
 
 #: horizons/world/building/buildable.py
 msgid "This spot is too far away from your ship."
@@ -3734,15 +3748,15 @@ msgstr "Это здание может быть построено только 
 
 #: horizons/world/building/buildable.py
 msgid "You have already settled this island."
-msgstr ""
+msgstr "Вы уже заселили этот остров."
 
 #: horizons/world/status.py
 msgid "This building is on fire!"
-msgstr ""
+msgstr "Постройка горит!"
 
 #: horizons/world/status.py
 msgid "These residents are unhappy."
-msgstr ""
+msgstr "Эти жители недовольны."
 
 #: horizons/world/status.py
 msgid "The inventory of this building is full."
@@ -3750,11 +3764,11 @@ msgstr ""
 
 #: horizons/world/status.py
 msgid "This building has a very low productivity."
-msgstr ""
+msgstr "Эта постройка имеет очень низкую продуктивность."
 
 #: horizons/world/status.py
 msgid "This building is decomissioned."
-msgstr ""
+msgstr "Эта постройка выведена из эксплуатации ."
 
 #: horizons/world/traderoute.py
 #, python-format
