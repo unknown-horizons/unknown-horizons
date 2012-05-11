@@ -69,14 +69,18 @@ msgstr "klik"
 msgid "lumberjack"
 msgstr "skovhugger"
 
+# 88%
+#, fuzzy
 msgid "resident"
-msgstr ""
+msgstr "beboere"
 
 msgid "main square"
 msgstr "største torv"
 
+# 85%
+#, fuzzy
 msgid "sailors"
-msgstr ""
+msgstr "sømand"
 
 msgid "food"
 msgstr "mad"
@@ -276,17 +280,25 @@ msgstr "mode"
 msgid "move"
 msgstr "flytte"
 
+# 87%
+#, fuzzy
 msgid "pioneers"
-msgstr ""
+msgstr "pioner"
 
+# 87%
+#, fuzzy
 msgid "citizens"
-msgstr ""
+msgstr "borger"
 
+# 88%
+#, fuzzy
 msgid "merchants"
-msgstr ""
+msgstr "handelsmand"
 
+# 90%
+#, fuzzy
 msgid "aristocrats"
-msgstr ""
+msgstr "aristokrat"
 
 msgid "potato"
 msgstr "kartoffel"
@@ -294,8 +306,10 @@ msgstr "kartoffel"
 msgid "settler"
 msgstr "bosætter"
 
+# 80%
+#, fuzzy
 msgid "speed"
-msgstr ""
+msgstr "frø"
 
 msgid "stop"
 msgstr "stop"
@@ -355,8 +369,10 @@ msgstr ""
 msgid "offer"
 msgstr ""
 
+# 75%
+#, fuzzy
 msgid "potatoes"
-msgstr ""
+msgstr "kartoffel"
 
 msgid "range"
 msgstr "rækkevidde"
@@ -395,14 +411,18 @@ msgstr "aktive"
 msgid "afford"
 msgstr ""
 
+# 85%
+#, fuzzy
 msgid "animals"
-msgstr ""
+msgstr "dyr"
 
 msgid "Captain's log"
 msgstr "Kaptajnens logbog"
 
+# 75%
+#, fuzzy
 msgid "construct"
-msgstr ""
+msgstr "byggeri"
 
 msgid "consume"
 msgstr "forbrug"
@@ -419,8 +439,10 @@ msgstr "funktion"
 msgid "forest"
 msgstr "skov"
 
+# 80%
+#, fuzzy
 msgid "grows"
-msgstr ""
+msgstr "vokse"
 
 msgid "hold"
 msgstr ""
@@ -466,8 +488,10 @@ msgstr "spille"
 msgid "price"
 msgstr ""
 
+# 75%
+#, fuzzy
 msgid "read"
-msgstr ""
+msgstr "rød"
 
 #
 msgid "return"
@@ -490,8 +514,10 @@ msgstr ""
 msgid "store"
 msgstr ""
 
+# 75%
+#, fuzzy
 msgid "tear"
-msgstr ""
+msgstr "hold"
 
 msgid "from time to time"
 msgstr "fra tid til anden"
@@ -508,8 +534,10 @@ msgstr "besøg"
 msgid "world"
 msgstr ""
 
+# 83%
+#, fuzzy
 msgid "yield"
-msgstr ""
+msgstr "udbytter"
 
 msgid "your ship"
 msgstr ""
@@ -556,8 +584,10 @@ msgstr "grafik"
 msgid "harvest"
 msgstr ""
 
+# 80%
+#, fuzzy
 msgid "hunts"
-msgstr ""
+msgstr "jagt"
 
 #
 msgid "multiple"
