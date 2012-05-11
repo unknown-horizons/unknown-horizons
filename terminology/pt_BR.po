@@ -274,7 +274,6 @@ msgid "move"
 msgstr "mover"
 
 # 87%
-#, fuzzy
 msgid "pioneers"
 msgstr "pioneiros"
 
@@ -351,7 +350,6 @@ msgid "offer"
 msgstr "oferecer"
 
 # 75%
-#, fuzzy
 msgid "potatoes"
 msgstr "batatas"
 
@@ -392,7 +390,6 @@ msgid "afford"
 msgstr "dispor"
 
 # 85%
-#, fuzzy
 msgid "animals"
 msgstr "animais"
 
@@ -504,7 +501,6 @@ msgid "world"
 msgstr "mundo"
 
 # 80%
-#, fuzzy
 msgid "yield"
 msgstr ""
 "produzir (note: translation as \"campo\" is mistaken, as \"campo\" means "
