@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2012-05-06 22:10+0100\n"
-"PO-Revision-Date: 2012-01-07 07:49+0200\n"
+"PO-Revision-Date: 2012-05-10 18:46+0200\n"
 "Last-Translator: Christopher Oelmueller <chris.oelmueller+uh@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: nb\n"
@@ -813,9 +813,8 @@ msgstr ""
 #: horizons/gui/widgets/playerssettlements.py
 #: horizons/i18n/guitranslations.py horizons/i18n/guitranslations.py
 #: horizons/i18n/guitranslations.py
-#, fuzzy
 msgid "Click to change the name of your settlement"
-msgstr "Klikk for å bytte navn på bosetning."
+msgstr "Klikk for å bytte navn på bosetning"
 
 #. e.g. when the pirate is disabled
 #. this dialog is pretty useless in this case
@@ -1280,9 +1279,8 @@ msgstr ""
 #. (helptext of widget: name)
 #: horizons/gui/widgets/playersships.py
 #: horizons/i18n/guitranslations.py horizons/i18n/guitranslations.py
-#, fuzzy
 msgid "Click to change the name of this ship"
-msgstr "Klikk for å bytte navn på skipet."
+msgstr "Klikk for å bytte navn på skipet"
 
 #. i18n There are no weapons equipped at the moment.
 #: horizons/gui/widgets/playersships.py
@@ -2157,10 +2155,11 @@ msgstr ""
 msgid "Player's current treasury + income expected in near future"
 msgstr ""
 
+# 83%
 #. (helptext of widget: player_name)
 #: horizons/i18n/guitranslations.py
 msgid "Player Name"
-msgstr ""
+msgstr "Spillernavn"
 
 #. (helptext of widget: resource_score)
 #: horizons/i18n/guitranslations.py
@@ -2531,9 +2530,8 @@ msgstr "Delta i spill"
 # 90%
 #. (text of widget: load_game_lbl)
 #: horizons/i18n/guitranslations.py
-#, fuzzy
 msgid "Load game:"
-msgstr "Åpne spill"
+msgstr "Åpne spill:"
 
 #. (text of widget: refr_gamelist_lbl)
 #: horizons/i18n/guitranslations.py
@@ -3438,9 +3436,8 @@ msgstr ""
 
 #. tooltip_text of buildings:woodentower
 #: horizons/i18n/objecttranslations.py
-#, fuzzy
 msgid "Defends your settlement."
-msgstr "Bygg bosetning"
+msgstr "Bygg bosetning."
 
 #. headline of gui_buildmenu:build_menu_per_increment
 #. tab4_headline of gui_buildmenu:build_menu_per_type

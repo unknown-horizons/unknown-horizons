@@ -417,7 +417,7 @@ msgstr "mausteita"
 #: database files sql
 #, fuzzy
 msgid "stone deposit"
-msgstr "raakarautaa"
+msgstr "raakakiveä"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
@@ -1481,13 +1481,13 @@ msgstr "Käännä karttaa myötäpäivään (.)"
 #. (helptext of widget: speedDown)
 #: horizons/i18n/guitranslations.py
 msgid "Decrease game speed (-)"
-msgstr "Hidasta pelin nopeutta (-)"
+msgstr "Hidasta peliä (-)"
 
 # 82
 #. (helptext of widget: speedUp)
 #: horizons/i18n/guitranslations.py
 msgid "Increase game speed (+)"
-msgstr "Kiihdytä pelin nopeutta (+)"
+msgstr "Nopeuta peliä (+)"
 
 #. (helptext of widget: zoomIn)
 #: horizons/i18n/guitranslations.py
@@ -2107,7 +2107,7 @@ msgstr "Seuraava merkintä"
 #. (text of widget: head_left)
 #: horizons/i18n/guitranslations.py
 msgid "Available Scenarios"
-msgstr "Tarjolla olevan skenaariot"
+msgstr "Tarjolla olevat skenaariot"
 
 #. (text of widget: head_right)
 #: horizons/i18n/guitranslations.py

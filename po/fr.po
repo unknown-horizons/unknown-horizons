@@ -7,8 +7,8 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2012-05-06 22:10+0100\n"
-"PO-Revision-Date: 2012-05-08 18:01+0200\n"
-"Last-Translator: Thooms <thooms.pap@gmail.com>\n"
+"PO-Revision-Date: 2012-05-11 20:28+0200\n"
+"Last-Translator: Sebastien (seblabel) <sebastiencharpentier@laposte.net>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: fr\n"
 "MIME-Version: 1.0\n"
@@ -134,7 +134,7 @@ msgstr "Vous ne pouvez pas démolir l'entrepôt, vos colonies en ont besoin."
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
 msgid "You failed the scenario."
-msgstr ""
+msgstr "Vous avez raté le scénario."
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
@@ -159,7 +159,7 @@ msgstr "Vous avez gagné !"
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
 msgid "Your building has caught fire!"
-msgstr ""
+msgstr "Votre bâtiment a pris feu !"
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
@@ -799,7 +799,7 @@ msgstr "Version de la sauvegarde {version}"
 #: horizons/gui/gui.py
 #, python-format
 msgid "(potentially incompatible)"
-msgstr ""
+msgstr "(potentiellement incompatible)"
 
 #. this should only happen for very old savegames, so having this unfriendly
 #. error is ok (savegame is quite certainly fully unusable).
@@ -994,7 +994,7 @@ msgstr "Nombre de joueurs recommandé : {number}"
 
 #: horizons/gui/modules/singleplayermenu.py
 msgid "Translation status:"
-msgstr ""
+msgstr "État de la traduction:"
 
 #: horizons/gui/modules/singleplayermenu.py
 msgid "{translated} translated messages, {untranslated} untranslated messages"
@@ -1080,7 +1080,7 @@ msgstr "Cliquez ici pour générer une carte différente"
 #. set translated building name in gui
 #: horizons/gui/mousetools/buildingtool.py
 msgid "Build {building}"
-msgstr ""
+msgstr "Construire {building}"
 
 #: horizons/gui/mousetools/navigationtool.py
 msgid "Press H to remove this hint"
@@ -1146,7 +1146,7 @@ msgstr "Sommaire"
 
 #: horizons/gui/tabs/buildrelatedtab.py
 msgid "Build related buildings"
-msgstr ""
+msgstr "Construire des bâtiments annexes"
 
 #. (text of widget: headline)
 #. (helptext of widget: trade)
@@ -2220,42 +2220,49 @@ msgstr "Unités"
 #. (helptext of widget: building_score)
 #: horizons/i18n/guitranslations.py
 msgid "Value of all the buildings in the player's settlement(s)"
-msgstr ""
+msgstr "Valeur de tout les bâtiments de la(es) colonie(s) du joueur"
 
 #. (helptext of widget: land_score)
 #: horizons/i18n/guitranslations.py
 msgid "Value of usable land i.e Amount of Land that can be used to create buildings "
-msgstr ""
+msgstr "Valeur des terres utilisables i.e Quantité des terres constructibles"
 
 #. (helptext of widget: money_score)
 #: horizons/i18n/guitranslations.py
 msgid "Player's current treasury + income expected in near future"
-msgstr ""
+msgstr "Trésor actuel du joueur + revenu attendu prochainement"
 
+# 83%
+# 100%
 #. (helptext of widget: player_name)
 #: horizons/i18n/guitranslations.py
 msgid "Player Name"
-msgstr ""
+msgstr "Nom du joueur"
 
 #. (helptext of widget: resource_score)
 #: horizons/i18n/guitranslations.py
 msgid "Value of resources generated from all the possible sources in the player's settlement(s)"
 msgstr ""
+"Valeur des ressources générées par toutes les sources possibles dans la(les) "
+"colonie(s) du joueur"
 
 #. (helptext of widget: settler_score)
 #: horizons/i18n/guitranslations.py
 msgid "Value denoting the progress of the settlement(s) in terms of inhabitants, buildings and overall happiness"
 msgstr ""
+"Valeur indiquant la progression de(s) la(les) colonie(s) en termes "
+"d'habitants, de bâtiments et de satisfaction globale"
 
 #. (helptext of widget: total_score)
 #: horizons/i18n/guitranslations.py
 msgid "The total value from all individual entities or in short : Total Player Score"
 msgstr ""
+"La valeur totale de toutes les unités ou en bref : le Score Total du Joueur"
 
 #. (helptext of widget: unit_score)
 #: horizons/i18n/guitranslations.py
 msgid "Value of all the units owned by the player"
-msgstr ""
+msgstr "Valeur de toutes les unités possédées par le joueur"
 
 # 87%
 #. (text of widget: balance)
@@ -2828,7 +2835,7 @@ msgstr ""
 #. (text of widget: headline)
 #: horizons/i18n/guitranslations.py
 msgid "Random map archive"
-msgstr ""
+msgstr "Archive de carte aléatoire"
 
 #. (text of widget: enter_filename_label)
 #: horizons/i18n/guitranslations.py
@@ -3301,7 +3308,7 @@ msgstr "Tailleur de pierre"
 #. name_4 of buildings:stonemason
 #: horizons/i18n/objecttranslations.py
 msgid "Carver"
-msgstr ""
+msgstr "Sculteur"
 
 #. tooltip_text of buildings:stonemason
 #: horizons/i18n/objecttranslations.py
@@ -3566,22 +3573,22 @@ msgstr "Nourriture"
 #. headline of gui_buildmenu:build_menu_per_type
 #: horizons/i18n/objecttranslations.py
 msgid "Fortifications"
-msgstr ""
+msgstr "Fortifications"
 
 #. headline of gui_buildmenu:build_menu_per_type
 #: horizons/i18n/objecttranslations.py
 msgid "Infrastructure"
-msgstr ""
+msgstr "Infrastructure"
 
 #. headline of gui_buildmenu:build_menu_per_type
 #: horizons/i18n/objecttranslations.py
 msgid "Military Service"
-msgstr ""
+msgstr "Service militaire"
 
 #. headline of gui_buildmenu:build_menu_per_type
 #: horizons/i18n/objecttranslations.py
 msgid "Residential"
-msgstr ""
+msgstr "Résidence"
 
 #. headline of gui_buildmenu:build_menu_per_type
 #: horizons/i18n/objecttranslations.py
@@ -3591,7 +3598,7 @@ msgstr "Mer"
 #. tab6_headline of gui_buildmenu:build_menu_per_type
 #: horizons/i18n/objecttranslations.py
 msgid "Aesthetics"
-msgstr ""
+msgstr "Esthétique"
 
 #: horizons/main.py
 msgid "Failed to start/load the game"
@@ -3752,29 +3759,40 @@ msgstr "Une page a été ouverte dans votre navigateur."
 msgid "{building}: {description}"
 msgstr "{building}: {description}"
 
+# 80%
+# 100%
 #: horizons/world/building/buildable.py
 msgid "This building must be built on an island."
-msgstr ""
+msgstr "Ce bâtiment doit être construit sur une île."
 
+# 95%
+# 100%
 #: horizons/world/building/buildable.py
+#, fuzzy
 msgid "This ground is not suitable for this building."
-msgstr ""
+msgstr "Le terrain n'est pas adapté à ce bâtiment."
 
 #: horizons/world/building/buildable.py
 msgid "This building has to be built within your settlement."
-msgstr ""
+msgstr "Ce bâtiments doit être construit dans votre colonie."
 
+# 75%
+# 75%
 #: horizons/world/building/buildable.py
 msgid "This area is already occupied by another player."
-msgstr ""
+msgstr "Cette zone est déjà occupée par un autre joueur."
 
+# 75%
+# 76%
 #: horizons/world/building/buildable.py
 msgid "This area is already occupied by another building."
-msgstr ""
+msgstr "Cette zone est déjà occupée par un autre bâtiment."
 
+# 75%
+# 100%
 #: horizons/world/building/buildable.py
 msgid "This area is already occupied by a unit."
-msgstr ""
+msgstr "Cette zone est déjà occupée par une unité."
 
 #: horizons/world/building/buildable.py
 msgid "This building must be built on the coastline."
@@ -3794,15 +3812,15 @@ msgstr "Ce bâtiment ne peut être construit que sur un gisement."
 
 #: horizons/world/building/buildable.py
 msgid "You have already settled this island."
-msgstr ""
+msgstr "Vous avez déjà colonisé cette île."
 
 #: horizons/world/status.py
 msgid "This building is on fire!"
-msgstr ""
+msgstr "Ce bâtiment brûle!"
 
 #: horizons/world/status.py
 msgid "These residents are unhappy."
-msgstr ""
+msgstr "Ces habitants sont mécontents."
 
 #: horizons/world/status.py
 msgid "The inventory of this building is full."
@@ -3814,7 +3832,7 @@ msgstr "Ce bâtiment a une très faible productivité."
 
 #: horizons/world/status.py
 msgid "This building is decomissioned."
-msgstr ""
+msgstr "Ce bâtiment est déclassé."
 
 #: horizons/world/traderoute.py
 #, python-format

@@ -376,9 +376,9 @@ events:
     - "\xA1Bien hecho! Esas herramientas ser\xE1n suficientes de momento."
     - !!python/unicode 'Ahora proporciona casas, una plaza principal y alimento a
       tus habitantes.'
-    - "Todav\xEDa hay una demanda lejos de estar satisfecha. Puedes comprobar que\
-      \ en la plaza del mercado o en la pesta\xF1a de tiendas - tus marineros quieren\
-      \ un edificio b\xE1sico donde poder rezar."
+    - "A\xFAn hay una demanda insatisfecha. Puedes comprobar que en la plaza del mercado\
+      \ o en la pesta\xF1a de tiendas - tus marineros quieren un edificio b\xE1sico\
+      \ donde poder rezar."
     - "La soluci\xF3n es un pabell\xF3n donde refugiar del sol al p\xE1rroco del pueblo."
     - "Los edificios de Servicios como \xE9ste tambi\xE9n necesitan estar conectados\
       \ a las tiendas por medio de un camino o tus habitantes no podr\xE1n llegar\

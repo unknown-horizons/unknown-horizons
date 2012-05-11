@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2012-05-06 22:10+0100\n"
-"PO-Revision-Date: 2012-05-09 09:37+0200\n"
+"PO-Revision-Date: 2012-05-09 09:40+0200\n"
 "Last-Translator: burlachenko <burlachenkomaxim@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: ru\n"
@@ -1142,11 +1142,15 @@ msgstr ""
 #, python-format
 msgid "Will buy {resource_name} for {price} gold/t whenever less than {limit}t are in stock."
 msgstr ""
+"Купить {resource_name} за {price} золота/t когда меньше {limit}t "
+"находящегося в наличии."
 
 #: horizons/gui/tabs/buyselltab.py
 #, python-format
 msgid "Will sell {resource_name} for {price} gold/t whenever more than {limit}t are available."
 msgstr ""
+"Продать {resource_name} за {price} золота/t когда больше {limit}t "
+"имеющегося."
 
 #. (text of widget: headline)
 #: horizons/gui/tabs/inventorytab.py horizons/i18n/guitranslations.py
@@ -1352,6 +1356,8 @@ msgstr "Сброс на значения по умолчанию"
 #: horizons/gui/widgets/resourceoverviewbar.py
 msgid "Reset the default configuration (which you see here) to the factory default for all settlements."
 msgstr ""
+"Сброс настроек по умолчанию (которые вы видите здесь) к заводским по "
+"умолчанию для всех населенных пунктов."
 
 #. (helptext of widget: start_route) Trade route
 #: horizons/gui/widgets/routeconfig.py horizons/i18n/guitranslations.py
@@ -2171,6 +2177,8 @@ msgstr "Стоимость всех построек в поселении(ях)
 #: horizons/i18n/guitranslations.py
 msgid "Value of usable land i.e Amount of Land that can be used to create buildings "
 msgstr ""
+"Количество полезной земли т.е. Количество Земли, которуе можно использовать "
+"для застройки."
 
 #. (helptext of widget: money_score)
 #: horizons/i18n/guitranslations.py
@@ -2186,21 +2194,26 @@ msgstr ""
 #: horizons/i18n/guitranslations.py
 msgid "Value of resources generated from all the possible sources in the player's settlement(s)"
 msgstr ""
+"Количество ресурсов, получаемых из всех возможных источников в поселке(ках) "
+"игрока"
 
 #. (helptext of widget: settler_score)
 #: horizons/i18n/guitranslations.py
 msgid "Value denoting the progress of the settlement(s) in terms of inhabitants, buildings and overall happiness"
 msgstr ""
+"Значение обозначающие прогресс заселения(ний) с точки зрения жителей, здания "
+"и общего эмоционального состояния"
 
 #. (helptext of widget: total_score)
 #: horizons/i18n/guitranslations.py
 msgid "The total value from all individual entities or in short : Total Player Score"
 msgstr ""
+"Общая оценка всех отдельных лиц или коротко: Общее количество очков игрока"
 
 #. (helptext of widget: unit_score)
 #: horizons/i18n/guitranslations.py
 msgid "Value of all the units owned by the player"
-msgstr ""
+msgstr "Стоимость всех единиц принадлежащих игроку"
 
 # 87%
 #. (text of widget: balance)
@@ -2387,7 +2400,7 @@ msgstr "Увеличить скорость игры"
 #. (text of widget: lbl_TILE_OWNER_HIGHLIGHT)
 #: horizons/i18n/guitranslations.py
 msgid "Highlight tile ownership"
-msgstr "Выделить клетку владения"
+msgstr "Выделить область владения"
 
 #. (text of widget: lbl_TRANSLUCENCY)
 #: horizons/i18n/guitranslations.py
