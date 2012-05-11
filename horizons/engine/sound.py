@@ -25,7 +25,6 @@ import glob
 
 from fife import fife
 
-import horizons.main
 from horizons.extscheduler import ExtScheduler
 
 class Sound(object):
@@ -119,14 +118,15 @@ class Sound(object):
 
 	def play_sound(self, emitter, soundfile):
 		"""Plays a soundfile on the given emitter.
-		@param emitter: string with the emitters name in horizons.main.fife.sound.emitter that is to play the  sound
-		@param soundfile: string containing the path to the soundfile"""
+		@param emitter: string: name of emitter that is to play the sound
+		@param soundfile: string: path to the sound file we want to play
+		"""
 		if self.engine.get_fife_setting("PlaySounds"):
 			emitter = self.emitter[emitter]
 			assert emitter is not None, "You need to supply a initialised emitter"
 			assert soundfile is not None, "You need to supply a soundfile"
 			emitter.reset()
 			#TODO remove str() -- http://fife.trac.cvsdude.com/engine/ticket/701
-			emitter.setSoundClip(horizons.main.fife.sound.soundclipmanager.load(str(soundfile)))
+			emitter.setSoundClip(self.soundclipmanager.load(str(soundfile)))
 			emitter.play()
 
