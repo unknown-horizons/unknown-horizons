@@ -30,7 +30,7 @@ from horizons.network.networkinterface import MPGame
 from horizons.constants import MULTIPLAYER
 from horizons.network.networkinterface import NetworkInterface
 from horizons.network import find_enet_module
-from horizons.util import SavegameAccessor
+from horizons.util import SavegameAccessor, Callback
 from horizons.component.ambientsoundcomponent import AmbientSoundComponent
 
 enet = find_enet_module()
@@ -72,7 +72,7 @@ class MultiplayerMenu(object):
 			'join'    : self.__join_game,
 			'create'  : self.__show_create_game,
 			'load'    : self.__show_load_game,
-			'refresh' : self.__refresh,
+			'refresh' : Callback(self.__refresh, play_sound=True)
 		}
 		# store old name and color
 		self.__apply_new_nickname()
@@ -143,10 +143,13 @@ class MultiplayerMenu(object):
 		self.__apply_new_nickname()
 		self.show_main()
 
-	def __refresh(self):
+	def __refresh(self, play_sound=False):
 		"""Refresh list of games.
 		Only possible in multiplayer main menu state.
+		@param play_sound: whether to play the refresh sound
 		@return bool, whether refresh worked"""
+		if play_sound:
+			AmbientSoundComponent.play_special('refresh')
 		self.games = NetworkInterface().get_active_games(self.current.findChild(name='showonlyownversion').marked)
 		if self.games is None:
 			return False
