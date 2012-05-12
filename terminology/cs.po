@@ -171,16 +171,24 @@ msgstr "klik"
 msgid "lumberjack"
 msgstr "dřevorubec"
 
+# (poterminology) uh-tutorial/tutorial.pot (4)
+# (poterminology) uh/unknownhorizons.pot (2)
+# 88%
+#, fuzzy
 msgid "resident"
-msgstr ""
+msgstr "obyvatel"
 
 # (poterminology) uh-tutorial/tutorial.pot (10)
 # (poterminology) uh/unknownhorizons.pot (2)
 msgid "main square"
 msgstr "tržnice"
 
+# (poterminology) uh-tutorial/tutorial.pot (12)
+# (poterminology) uh/unknownhorizons.pot (3)
+# 85%
+#, fuzzy
 msgid "sailors"
-msgstr ""
+msgstr "námořník"
 
 # (poterminology) uh-tutorial/tutorial.pot (5)
 #
@@ -641,17 +649,27 @@ msgstr "režim"
 msgid "move"
 msgstr "pohyb"
 
+# (poterminology) uh-tutorial/tutorial.pot (4)
+# (poterminology) uh/unknownhorizons.pot (2)
+# 87%
+#, fuzzy
 msgid "pioneers"
-msgstr ""
+msgstr "průkopník"
 
+# 87%
+#, fuzzy
 msgid "citizens"
-msgstr ""
+msgstr "občan"
 
+# 88%
+#, fuzzy
 msgid "merchants"
-msgstr ""
+msgstr "obchodník"
 
+# 90%
+#, fuzzy
 msgid "aristocrats"
-msgstr ""
+msgstr "šlechtic"
 
 # (poterminology) uh-tutorial/tutorial.pot (4)
 #
@@ -671,8 +689,10 @@ msgstr "brambora"
 msgid "settler"
 msgstr "osadník"
 
+# 80%
+#, fuzzy
 msgid "speed"
-msgstr ""
+msgstr "osivo / semeno"
 
 # (poterminology) uh-tutorial/tutorial.pot (3)
 #
@@ -895,16 +915,24 @@ msgstr "aktivní"
 msgid "afford"
 msgstr ""
 
+# (poterminology) uh-tutorial/tutorial.pot (2)
+# (poterminology) uh/unknownhorizons.pot (3)
+# 85%
+#, fuzzy
 msgid "animals"
-msgstr ""
+msgstr "zvíře"
 
 # (poterminology) uh-tutorial/tutorial.pot (1)
 # (poterminology) uh/unknownhorizons.pot (3)
 msgid "Captain's log"
 msgstr "Lodní deník"
 
+# (poterminology) uh-tutorial/tutorial.pot (3)
+# (poterminology) uh/unknownhorizons.pot (1)
+# 75%
+#, fuzzy
 msgid "construct"
-msgstr ""
+msgstr "výstavba"
 
 msgid "consume"
 msgstr "spotřebovat"
@@ -1024,8 +1052,12 @@ msgstr "hraní"
 msgid "price"
 msgstr ""
 
+# (poterminology) uh-tutorial/tutorial.pot (1)
+# (poterminology) uh/unknownhorizons.pot (1)
+# 75%
+#, fuzzy
 msgid "read"
-msgstr ""
+msgstr "červený"
 
 #
 #
@@ -1075,8 +1107,12 @@ msgstr ""
 msgid "store"
 msgstr ""
 
+# (poterminology) uh-tutorial/tutorial.pot (2)
+# (poterminology) uh/unknownhorizons.pot (1)
+# 75%
+#, fuzzy
 msgid "tear"
-msgstr ""
+msgstr "tým"
 
 # (poterminology) uh-tutorial/tutorial.pot (2)
 #
@@ -1117,8 +1153,12 @@ msgstr "návštěva"
 msgid "world"
 msgstr ""
 
+# (poterminology) uh-tutorial/tutorial.pot (1)
+# (poterminology) uh/unknownhorizons.pot (1)
+# 83%
+#, fuzzy
 msgid "yield"
-msgstr ""
+msgstr "výnosy"
 
 msgid "your ship"
 msgstr ""
