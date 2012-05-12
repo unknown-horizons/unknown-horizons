@@ -28,10 +28,12 @@ from horizons.util import Callback
 from horizons.component.tradepostcomponent import TradePostComponent
 from horizons.component.storagecomponent import StorageComponent
 from horizons.component.namedcomponent import NamedComponent
+from horizons.component.ambientsoundcomponent import AmbientSoundComponent
+
 
 class TradeTab(TabInterface):
 	"""Ship to tradepost trade tab"""
-	log = logging.getLogger("gui.tradetab")
+	log = logging.getLogger("gui.tabs.tradetab")
 
 	scheduled_update_delay = 0.3
 
@@ -185,27 +187,30 @@ class TradeTab(TabInterface):
 				               self.instance.get_component(NamedComponent).name, self.instance.owner.name,
 				               self.exchange, res_id,
 				               settlement.get_component(NamedComponent).name, settlement.owner.name)
+				# international trading has own error handling, no signal_error
 				SellResource(settlement.get_component(TradePostComponent), self.instance,
 				             res_id, self.exchange).execute(self.instance.session)
-			elif selling and is_own: # transfer from ship to settlement
+			elif selling and is_own: # transfer from settlement to ship
 				self.log.debug('Trade: Transferring %s of res %s from %s/%s to %s/%s',
 				               self.exchange, res_id,
 				               settlement.get_component(NamedComponent).name, settlement.owner.name,
 				               self.instance.get_component(NamedComponent).name, self.instance.owner.name)
 				TransferResource(self.exchange, res_id, settlement,
-				                 self.instance).execute(self.instance.session)
+				                 self.instance, signal_errors=True).execute(self.instance.session)
+
 			elif not selling and not is_own: # ship buys resources from settlement
 				self.log.debug('InternationalTrade: %s/%s is buying %d of res %d from %s/%s', \
 				               self.instance.get_component(NamedComponent).name, self.instance.owner.name, self.exchange, res_id, settlement.get_component(NamedComponent).name, settlement.owner.name)
+				# international trading has own error handling, no signal_error
 				BuyResource(settlement.get_component(TradePostComponent), self.instance, res_id, self.exchange).execute(self.instance.session)
-			elif not selling and is_own: # transfer from settlement to ship
+			elif not selling and is_own: # transfer from ship to settlement
 				self.log.debug('Trade: Transferring %s of res %s from %s/%s to %s/%s',
 				               self.exchange, res_id,
 				               self.instance.get_component(NamedComponent).name, self.instance.owner.name,
 				               settlement.get_component(NamedComponent).name, settlement.owner.name)
 				TransferResource(self.exchange, res_id, self.instance,
-				                 settlement).execute(self.instance.session)
-			# let gui update be handled by changelisteners
+				                 settlement, signal_errors=True).execute(self.instance.session)
+			# let gui update be handled by changelisteners (mp-safe)
 
 	def get_widgets_by_class(self, parent_widget, widget_class):
 		"""Gets all widget of a certain widget class from the tab. (e.g. pychan.widgets.Label for all labels)"""
