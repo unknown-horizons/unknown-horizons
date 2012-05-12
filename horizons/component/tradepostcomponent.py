@@ -172,7 +172,7 @@ class TradePostComponent(ChangeListener, Component):
 		def err(string, err_type):
 			if not suppress_messages and ship.owner.is_local_player:
 				self.session.ingame_gui.message_widget.add_custom(ship.position.x, ship.position.y, string)
-			return 0 if not add_error_type else 0, err_type
+			return 0 if not add_error_type else (0, err_type)
 
 		if resource_id not in self.sell_list:
 			return err(_("The trade partner does not sell this."), TRADE_ERROR_TYPE.PERMANENT)
