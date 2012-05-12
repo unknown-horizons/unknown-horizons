@@ -89,14 +89,15 @@ class ResourceDepositOverviewTab(OverviewTab):
 		super(ResourceDepositOverviewTab, self).__init__(
 			widget='overview_resourcedeposit.xml',
 			instance=instance)
-		res = self.instance.session.db.get_resource_deposit_resources(self.instance.id)
-		# type: [ (res, min_amount, max_amount)]
-		# let it display starting from 0, not min_amount, else it looks like there's nothing in it
+		# display range starts 0, not min_amount, else it looks like there's nothing in it
 		# when parts of the ore have been mined already
-		res_range = 0, res[0][2]
-		self.widget.child_finder("inventory").init(self.instance.session.db, \
+		amounts = {}
+		resources = self.instance.get_component(DepositComponent).get_res_ranges()
+		for res, min_amount, max_amount in resources:
+			amounts[res] = (0, max_amount)
+		self.widget.child_finder("inventory").init(self.instance.session.db,
 		                                           self.instance.get_component(StorageComponent).inventory,
-		                                           ordinal=res_range)
+		                                           ordinal=amounts)
 	def refresh(self):
 		super(ResourceDepositOverviewTab, self).refresh()
 		self.widget.child_finder("inventory").update()

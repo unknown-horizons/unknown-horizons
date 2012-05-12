@@ -51,7 +51,7 @@ class Inventory(pychan.widgets.Container):
 
 	def init(self, db, inventory, ordinal=None):
 		"""
-		@param ordinal: (min, max) Display ordinal scale with these boundaries instead of numbers. Currently implemented via ImageFillStatusButton.
+		@param ordinal: {res: (min, max)} Display ordinal scale with these boundaries instead of numbers for a particular resource. Currently implemented via ImageFillStatusButton.
 		"""
 		# check if we must init everything anew
 		if not self.__inited or self._inventory is not inventory:
@@ -103,9 +103,9 @@ class Inventory(pychan.widgets.Container):
 
 			amount = self._inventory[resid]
 
-			if self.ordinal is not None:
-				range_ = self.ordinal[1] - self.ordinal[0]
-				filled = (100 * (amount - self.ordinal[0])) // range_
+			range_ = self.ordinal.get(resid)
+			if range_ is not None:
+				filled = (100 * (amount - range_[0])) // (range_[1] - range_[0])
 				amount = ""
 			elif isinstance(self._inventory, TotalStorage):
 				filled = 0
