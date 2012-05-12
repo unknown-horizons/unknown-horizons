@@ -247,11 +247,7 @@ class UhDbAccessor(DbReader):
 		"""Returns the amount that a storage building can store of every resource."""
 		return self("SELECT size FROM storage_building_capacity WHERE type = ?", storage_type)[0][0]
 
-	def get_resource_deposit_resources(self, deposit_id):
-		"""Returns the range of resources a resource deposit has at the beginning."""
-		return self("SELECT resource, min_amount, max_amount FROM deposit_resources WHERE id = ?", deposit_id)
-
-	# Tile stes
+	# Tile sets
 
 	def get_random_tile_set(self, ground_id):
 		"""Returns an tile set for a tile of type id"""

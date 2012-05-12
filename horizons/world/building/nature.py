@@ -113,8 +113,8 @@ class ResourceDeposit(NatureBuilding):
 			for res, amount in inventory.iteritems():
 				self.get_component(StorageComponent).inventory.alter(res, amount)
 		else: # new one
-			for resource, min_amount, max_amount in self.session.db.get_resource_deposit_resources(self.id):
-				self.get_component(StorageComponent).inventory.alter(resource, self.session.random.randint(min_amount, max_amount))
+			for res, amount in self.get_component(DepositComponent).get_random_res_amounts():
+				self.get_component(StorageComponent).inventory.alter(res, amount)
 
 class Fish(BuildableSingleEverywhere, BuildingResourceHandler, BasicBuilding):
 
