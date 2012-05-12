@@ -19,7 +19,7 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-from random import randint
+import random
 
 from horizons.constants import PATHS
 from horizons.util import decorators
@@ -254,7 +254,7 @@ class UhDbAccessor(DbReader):
 		sql = "SELECT set_id FROM tile_set \
 		       WHERE ground_id = ?"
 		db_data = self.cached_query(sql, ground_id)
-		return db_data[randint(0, len(db_data) - 1)] if db_data else None
+		return random.choice(db_data) if db_data else None
 
 	@decorators.cachedmethod
 	def get_translucent_buildings(self):
