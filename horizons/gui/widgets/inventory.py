@@ -38,6 +38,9 @@ class Inventory(pychan.widgets.Container):
 	# on the screen. this is usually not the case with single inventories, but e.g. for trading.
 	# display_legend: whether to display a string explanation about slot limits
 	ITEMS_PER_LINE = 4 # TODO: make this a xml attribute with a default value
+
+	UNUSABLE_SLOT_IMAGE = "content/gui/icons/resources/none_gray.png"
+
 	def __init__(self, uncached=False, display_legend=True, **kwargs):
 		# this inits the gui part of the inventory. @see init().
 		super(Inventory, self).__init__(**kwargs)
@@ -111,7 +114,7 @@ class Inventory(pychan.widgets.Container):
 
 			button = ImageFillStatusButton.init_for_res(self.db, resid, amount, \
 			                                            filled=filled, uncached=self.uncached)
-			button.button.name = "inventory_entry_%s" % index
+			button.button.name = "inventory_entry_%s" % index # required for gui tests
 			current_hbox.addChild(button)
 
 			# old code to do this, which was bad but kept for reference
@@ -128,6 +131,17 @@ class Inventory(pychan.widgets.Container):
 		self.addChild(vbox)
 		height = ImageFillStatusButton.CELL_SIZE[1] * len(self._res_order) // self.ITEMS_PER_LINE
 		self.min_size = (self.min_size[0], height)
+
+
+		if isinstance(self._inventory, TotalStorage):
+			# if it's full, the additional slots have to be marked as unusable (#1686)
+			# check for any res, the res type doesn't matter here
+			if self._inventory.get_free_space_for(0) == 0:
+				for i in xrange(index, self.ITEMS_PER_LINE):
+					button = pychan.widgets.Icon(image=self.__class__.UNUSABLE_SLOT_IMAGE)
+					current_hbox.addChild(button)
+
+
 		if self.display_legend:
 			if isinstance(self._inventory, TotalStorage):
 				# Add total storage indicator
