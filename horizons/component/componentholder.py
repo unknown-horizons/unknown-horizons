@@ -30,6 +30,7 @@ from horizons.component.selectablecomponent import SelectableComponent
 from horizons.component.commandablecomponent import CommandableComponent
 from horizons.component.collectingcomponent import CollectingComponent
 from horizons.component.settlerupgradecomponent import SettlerUpgradeComponent
+from horizons.component.depositcomponent import DepositComponent
 from horizons.world.production.producer import Producer, QueueProducer, UnitProducer
 
 class ComponentHolder(object):
@@ -68,6 +69,7 @@ class ComponentHolder(object):
 	    "HealthComponent": HealthComponent,
 	    'ProducerComponent': Producer,
 	    'QueueProducerComponent': QueueProducer,
+	    'DepositComponent': DepositComponent,
 	    'UnitProducerComponent': UnitProducer,
 	    'SelectableComponent': SelectableComponent,
 	    'CommandableComponent': CommandableComponent,

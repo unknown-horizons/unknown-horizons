@@ -26,6 +26,7 @@ from horizons.util import ActionSetLoader, Callback
 from horizons.scheduler import Scheduler
 from horizons.component.namedcomponent import NamedComponent
 from horizons.component.storagecomponent import StorageComponent
+from horizons.component.depositcomponent import DepositComponent
 
 
 class WarehouseOverviewTab(OverviewTab):

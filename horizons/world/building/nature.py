@@ -26,6 +26,7 @@ from horizons.entities import Entities
 from horizons.scheduler import Scheduler
 from horizons.constants import LAYERS, BUILDINGS
 from horizons.component.storagecomponent import StorageComponent
+from horizons.component.depositcomponent import DepositComponent
 from horizons.world.production.producer import Producer
 
 class NatureBuilding(BuildableRect, BasicBuilding):
