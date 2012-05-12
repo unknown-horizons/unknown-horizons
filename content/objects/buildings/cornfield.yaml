@@ -10,6 +10,7 @@ inhabitants: 0
 tooltip_text: _ Yields corn. Needs a farm.
 settler_level: TIER.CITIZENS
 buildingcosts: {RES.GOLD: 150}
+show_status_icons: false
 components:
 - HealthComponent: {maxhealth: 10}
 - ProducerComponent:
