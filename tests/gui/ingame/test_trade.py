@@ -103,6 +103,28 @@ def test_trade(gui):
 
 	assert old_ship_value == ship_inv[RES.BOARDS]
 
+	# make room on ship inventory
+	ship_inv.alter(RES.BOARDS, - ship_inv[RES.BOARDS])
+
+	# test sell now, give settlement something to sell
+	settlement.get_component(TradePostComponent).sell_list[RES.ALVEARIES] = 5
+	settlement.get_component(StorageComponent).inventory.alter(RES.ALVEARIES, 10)
+
+	# this gives us 5 alevaries
+	assert ship_inv[RES.ALVEARIES] == 0
+	# first transfer one
+	gui.trigger('buy_sell_goods', 'size_1/action/default')
+	gui.trigger('buy_sell_goods', 'buy_sell_inventory_True_entry_0/action/default')
+
+	print ship_inv[RES.ALVEARIES]
+	assert ship_inv[RES.ALVEARIES] == 1
+	assert settlement_inv[RES.ALVEARIES] == 9
+
+	# now transfer 5, should actually transfer 4
+	gui.trigger('buy_sell_goods', 'size_2/action/default')
+	gui.trigger('buy_sell_goods', 'buy_sell_inventory_True_entry_0/action/default')
+	assert ship_inv[RES.ALVEARIES] == 5
+	assert settlement_inv[RES.ALVEARIES] == 5
 
 	yield TestFinished
 
