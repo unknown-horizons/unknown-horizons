@@ -38,6 +38,7 @@ from horizons.extscheduler import ExtScheduler
 from horizons.component.ambientsoundcomponent import AmbientSoundComponent
 from horizons.util.lastactiveplayersettlementmanager import LastActivePlayerSettlementManager
 from horizons.messaging import NewPlayerSettlementHovered, ResourceBarResize, TabWidgetChanged
+from horizons.world.player import Player
 
 
 class ResourceOverviewBar(object):
@@ -68,9 +69,6 @@ class ResourceOverviewBar(object):
 
 	STATS_GUI_FILE = "resource_overview_bar_stats.xml"
 
-	ICON_POS_BALANCE = "content/gui/icons/resources/positive32.png"
-	ICON_NEG_BALANCE = "content/gui/icons/resources/negative32.png"
-
 	STYLE = "resource_bar"
 
 	DEFAULT_RESOURCES = [ RES.TOOLS,
@@ -98,9 +96,10 @@ class ResourceOverviewBar(object):
 		self.gold_gui.balance_visible = False
 		self.gold_gui.child_finder = PychanChildFinder(self.gold_gui)
 		self.gold_gui.child_finder("res_icon").image = get_res_icon_path(RES.GOLD, 32)
-		self.gold_gui.child_finder(name="balance_background").mapEvents({
-		  "balance_background/mouseEntered/stats" : self._show_stats,
+		self.gold_gui.mapEvents({
+		  "resbar_gold_container/mouseClicked/stats" : self._toggle_stats,
 		  })
+		self.gold_gui.helptext = _("Click to show statistics")
 		self.stats_gui = None
 
 		self.gui = [] # list of slots
@@ -115,9 +114,9 @@ class ResourceOverviewBar(object):
 		NewPlayerSettlementHovered.subscribe(self._on_different_settlement)
 		TabWidgetChanged.subscribe(self._on_tab_widget_changed)
 
-		# set now and then every 2 sec
+		# set now and then every few sec
 		ExtScheduler().add_new_object(self._update_balance_display, self, run_in=0)
-		ExtScheduler().add_new_object(self._update_balance_display, self, run_in=2, loops=-1)
+		ExtScheduler().add_new_object(self._update_balance_display, self, run_in=Player.STATS_UPDATE_INTERVAL, loops=-1)
 
 	def end(self):
 		self.set_inventory_instance( None, force_update=True )
@@ -144,8 +143,6 @@ class ResourceOverviewBar(object):
 			for position, res in enumerate(config):
 				db("INSERT INTO resource_overview_bar(object, position, resource) VALUES(?, ?, ?)",
 				   obj.worldid, position, res)
-		#db("INSERT INTO metadata (name, value) VALUES (?, ?)",
-		#	"balance_visible", self.gold_gui.balance_visible )
 
 	def load(self, db):
 		from horizons.util import WorldObject
@@ -156,7 +153,6 @@ class ResourceOverviewBar(object):
 				l.append( (pos, res) )
 			obj = WorldObject.get_object_by_id(obj)
 			self.resource_configurations[obj] = [ i[1] for i in sorted(l) ]
-		#self.gold_gui.balance_visible = db("SELECT value FROM metadata WHERE name = ?", "balance_visible")
 
 		# called when any game (also new ones) start
 		# register at player inventory for gold updates
@@ -343,26 +339,14 @@ class ResourceOverviewBar(object):
 
 		self.gold_gui.resizeToContent() # update label size
 
-	def _update_balance_display(self, toggle=False):
-		"""Callback for clicking on gold icon (ticket #1671) and updating the value (in case toggle is False)
-		@param toggle: Whether to enable/disable the balance display or only update icon (pos/neg)
-		"""
-		icon = self.gold_gui.child_finder('res_icon')
-		icon.capture(Callback(self._update_balance_display, True), event_name='mouseClicked')
-		if toggle:
-			self.gold_gui.balance_visible = not self.gold_gui.balance_visible
+	def _update_balance_display(self):
+		"""Updates balance info below gold icon"""
 		balance = self.session.world.player.get_balance_estimation()
-		if self.gold_gui.balance_visible:
-			icon.image = self.ICON_NEG_BALANCE if balance < 0 else self.ICON_POS_BALANCE
-		else:
-			icon.image = get_res_icon_path(RES.GOLD, 32)
-
-		# display actual balance in balance label in any case
 		balance_lbl = self.gold_gui.child_finder("balance")
 		balance_lbl.text = u"{sign}{balance}".format(balance=balance, sign=u'+' if balance >= 0 else u'')
 		balance_lbl.resizeToContent()
 		# 38
-		balance_lbl.position = (62 - balance_lbl.size[0]/2,  74) # see _update_gold
+		balance_lbl.position = (70 - balance_lbl.size[0],  74) # see _update_gold
 
 		self.gold_gui.resizeToContent() # update label size
 
@@ -546,8 +530,14 @@ class ResourceOverviewBar(object):
 		if event.getButton() == fife.MouseEvent.RIGHT:
 			self._set_resource_slot(widget.num, 0)
 
+	def _toggle_stats(self):
+		if self.stats_gui is None or not self.stats_gui.isVisible():
+			self._show_stats()
+		else:
+			self._hide_stats()
+
 	def _show_stats(self):
-		"""Show data below gold icon when balance label is hovered"""
+		"""Show data below gold icon when balance label is clicked"""
 		if self.stats_gui is None:
 			reference_icon = self.gold_gui.child_finder("balance_background")
 			self.stats_gui = load_uh_widget( self.__class__.STATS_GUI_FILE )
@@ -555,17 +545,65 @@ class ResourceOverviewBar(object):
 			self.stats_gui.position = (reference_icon.x + self.gold_gui.x,
 			                           reference_icon.y + self.gold_gui.y)
 			self.stats_gui.mapEvents({
-			  'resbar_stats_container/mouseExited/stats' : self._hide_stats
+			  'resbar_stats_container/mouseClicked/stats' : self._toggle_stats
 			  })
 
+			images = [ # these must correspond to the entries in _update_stats
+				"content/gui/images/resbar_stats/gold_icon.png",
+				"content/gui/images/resbar_stats/tools_icon.png",
+				"content/gui/images/resbar_stats/tools_icon.png",
+				"content/gui/images/resbar_stats/tools_icon.png",
+				"content/gui/images/resbar_stats/scales_icon.png",
+			  ]
 
-		# TODO: fill in values once their meaning is defined
-		# TODO: update values periodically until the dialog is being hidden
+			for num, image in enumerate(images):
+				# keep in sync with comment there until we can use that data:
+				# ./content/gui/xml/ingame/hud/resource_overview_bar_stats.xml
+				box = pychan.widgets.HBox(padding=0, min_size=(70,0), name="resbar_stats_line_%s"%num)
+				box.addChild( pychan.widgets.Icon(image=image) )
+				box.addSpacer( pychan.widgets.Spacer() )
+				box.addChild( pychan.widgets.Label(name="resbar_stats_entry_%s"%num) )
+				# workaround for fife font bug, probably http://fife.trac.cvsdude.com/engine/ticket/666
+				box.addChild( pychan.widgets.Label(text=u" ") )
 
+				if num < len(images)-1: # regular one
+					self.stats_gui.child_finder("entries_box").addChild(box)
+				else: # last one
+					self.stats_gui.child_finder("bottom_box").addChild(box)
+
+		self._update_stats()
 		self.stats_gui.show()
+
+		ExtScheduler().add_new_object(self._update_stats, self, run_in=Player.STATS_UPDATE_INTERVAL, loops=-1)
+
+	def _update_stats(self):
+		# fill in valies of stats, must correspond to images in _show_stats
+		format_display = lambda x : (u"+" if x >= 0 else u"") + unicode(x)
+		data = self.session.world.player.get_statistics()
+		# TODO: mark as expense
+		self.stats_gui.child_finder("resbar_stats_line_0").helptext = _("Running costs")
+		self.stats_gui.child_finder("resbar_stats_entry_0").text = format_display(-data.running_costs)
+
+		# TODO: mark as income
+		self.stats_gui.child_finder("resbar_stats_line_1").helptext = _("Taxes")
+		self.stats_gui.child_finder("resbar_stats_entry_1").text = format_display(data.taxes)
+
+		# TODO: mark as expense
+		self.stats_gui.child_finder("resbar_stats_line_2").helptext = _("Buy expenses")
+		self.stats_gui.child_finder("resbar_stats_entry_2").text = format_display(-data.buy_expenses)
+
+		# TODO: mark as income
+		self.stats_gui.child_finder("resbar_stats_line_3").helptext = _("Sell income")
+		self.stats_gui.child_finder("resbar_stats_entry_3").text = format_display(data.sell_income)
+
+
+		self.stats_gui.child_finder("resbar_stats_line_4").helptext = _("Balance")
+		self.stats_gui.child_finder("resbar_stats_entry_4").text = format_display(data.balance)
+
 
 	def _hide_stats(self):
 		"""Inverse of show_stats"""
+		ExtScheduler().rem_call(self, self._update_stats)
 		if self.stats_gui is not None:
 			self.stats_gui.hide()
 

@@ -112,8 +112,6 @@ def set_translations():
 		},
 
 	"resource_overview_bar_gold.xml" : {
-		# (helptext of widget: background_icon)
-		("background_icon"             , "helptext"): _("Gold"),
 		},
 
 	"change_name.xml" : {
