@@ -3565,9 +3565,11 @@ msgstr ""
 msgid "Failed to start/load the game"
 msgstr "Não foi possível iniciar/carregar o jogo"
 
+# 95%
 #: horizons/main.py
+#, fuzzy
 msgid "The game you selected could not be started."
-msgstr ""
+msgstr "O jogo seleccionado não pôde ser iniciado."
 
 #: horizons/main.py
 msgid "The savegame might be broken or has been saved with an earlier version."
@@ -3708,13 +3710,17 @@ msgstr "Foi aberta uma página no seu navegador de internet."
 msgid "{building}: {description}"
 msgstr ""
 
+# 80%
 #: horizons/world/building/buildable.py
+#, fuzzy
 msgid "This building must be built on an island."
-msgstr ""
+msgstr "Este edifício deve ser construído no litoral."
 
+# 95%
 #: horizons/world/building/buildable.py
+#, fuzzy
 msgid "This ground is not suitable for this building."
-msgstr ""
+msgstr "O solo não é dequado para este edifício."
 
 #: horizons/world/building/buildable.py
 msgid "This building has to be built within your settlement."
@@ -3728,17 +3734,21 @@ msgstr ""
 msgid "This area is already occupied by another building."
 msgstr ""
 
+# 75%
 #: horizons/world/building/buildable.py
+#, fuzzy
 msgid "This area is already occupied by a unit."
-msgstr ""
+msgstr "Esta área já está ocupada."
 
 #: horizons/world/building/buildable.py
 msgid "This building must be built on the coastline."
 msgstr "Este edifício deve ser construído no litoral."
 
+# 80%
 #: horizons/world/building/buildable.py
+#, fuzzy
 msgid "This building has to be placed at the ocean."
-msgstr ""
+msgstr "Este edifício necessita de ser colocado perto do oceano."
 
 #: horizons/world/building/buildable.py
 msgid "This spot is too far away from your ship."
