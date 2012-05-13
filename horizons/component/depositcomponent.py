@@ -21,6 +21,7 @@
 
 from horizons.component import Component
 from horizons.component.storagecomponent import StorageComponent
+from horizons.util.python.decorators import cachedmethod
 
 class DepositComponent(Component):
 	NAME = 'resource_deposit'
@@ -38,10 +39,15 @@ class DepositComponent(Component):
 		for res, amount in iterator():
 			self.instance.get_component(StorageComponent).inventory.alter(res, amount)
 
+	@cachedmethod
 	def get_res_ranges(self):
-		for res, data in self.resources.iteritems():
-			yield (res, data['min_amount'], data['max_amount'])
+		"""Generator for tuples (res_id, min, max) for each resource that the deposit
+		can contain (as defined in the object file)."""
+		return ( (res, data.get('min_amount', 0), data['max_amount'])
+		         for res, data in self.resources.iteritems() )
 
 	def get_random_res_amounts(self):
-		for res, min_amount, max_amount in self.get_res_ranges():
-			yield (res, self.session.random.randint(min_amount, max_amount))
+		"""Generator for tuples (res_id, rand_amount) for each resource that the deposit
+		can contain (as defined in the object file)."""
+		return ( (res, self.session.random.randint(min_amount, max_amount))
+		         for res, min_amount, max_amount in self.get_res_ranges() )
