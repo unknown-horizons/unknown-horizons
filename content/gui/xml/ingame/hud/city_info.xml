@@ -9,7 +9,7 @@
 		image="content/gui/icons/widgets/cityinfo/inhabitants.png" 
 		helptext="Inhabitants" />
 
-	<Label name="city_name"  text=""  position="38,20" />
+	<RenameLabel name="city_name"  text=""  position="38,20" />
 	<Label name="city_inhabitants"  position="204,20"  text="" />
 	<!-- these two are set at runtime: horizons.gui.ingamegui.update_settlement -->
 </Container>

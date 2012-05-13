@@ -8,7 +8,7 @@
 
 		<HBox position="22,7"  min_size="170,20"  size="230,20" >
 		<Spacer min_size="0"  max_size="50" />
-			<Label name="headline" text="" /> <!-- set to owner player name-->
+			<RenameLabel name="headline" text="" /> <!-- set to owner player name-->
 		</HBox>
 
 		<Icon image="content/gui/images/background/hr.png" position="20,30" />

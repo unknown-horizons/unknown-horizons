@@ -8,7 +8,7 @@
 
 	<HBox position="22,7"  min_size="170,20"  size="230,20" >
 	<Spacer min_size="0"  max_size="50" />
-		<Label name="headline" text="" helptext="Click to change the name of your settlement" />
+		<RenameLabel name="headline" text="" helptext="Click to change the name of your settlement" />
 	</HBox>
 
 	<Icon image="content/gui/images/background/hr.png" position="20,30" />

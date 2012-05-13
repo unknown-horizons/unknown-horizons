@@ -45,6 +45,7 @@ from horizons.command.misc import Chat
 from horizons.command.game import SpeedDownCommand, SpeedUpCommand
 from horizons.gui.tabs.tabinterface import TabInterface
 from horizons.component.namedcomponent import SettlementNameComponent, NamedComponent
+from horizons.component.ambientsoundcomponent import AmbientSoundComponent
 from horizons.component.selectablecomponent import SelectableComponent
 from horizons.messaging import SettlerUpdate, SettlerInhabitantsChanged, ResourceBarResize, HoverSettlementChanged, TabWidgetChanged
 from horizons.util.lastactiveplayersettlementmanager import LastActivePlayerSettlementManager
@@ -231,16 +232,19 @@ class IngameGui(LivingObject):
 
 	def update_settlement(self):
 		cityinfo = self.widgets['city_info']
+		city_name_label = cityinfo.findChild(name="city_name")
 		if self.settlement.owner.is_local_player: # allow name changes
 			cb = Callback(self.show_change_name_dialog, self.settlement)
 			helptext = _("Click to change the name of your settlement")
+			city_name_label.enable_cursor_change_on_hover()
 		else: # no name changes
-			cb = lambda : 42
+			cb = lambda : AmbientSoundComponent.play_special('error')
 			helptext = u""
+			city_name_label.disable_cursor_change_on_hover()
 		cityinfo.mapEvents({
 			'city_name': cb
 		})
-		cityinfo.findChild(name="city_name").helptext = helptext
+		city_name_label.helptext = helptext
 
 		foundlabel = cityinfo.child_finder('owner_emblem')
 		foundlabel.image = 'content/gui/images/tabwidget/emblems/emblem_%s.png' % (self.settlement.owner.color.name)

@@ -16,7 +16,7 @@
 		<Icon image="content/gui/images/background/hr.png" position="20,210" />
 
 		<HBox position="25,235">
-				<!-- The trader doesn't need health, does he?
+				<!-- The trader doesn't need health, does it?
 			<Label name="health_label" text="Health:" />
 			<Label name='health' text="" />
 				Maybe later on pirates will also try tp attack the trader and players can
