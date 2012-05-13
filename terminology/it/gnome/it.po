@@ -1,0 +1,3840 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR Free Software Foundation, Inc.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid	""
+msgstr ""
+"Project-Id-Version: glossary 0.1\n"
+"POT-Creation-Date: 2001-12-06 01:00+0100\n"
+"PO-Revision-Date: 2001-12-06 01:00+0100\n"
+"Last-Translator: Unknown\n"
+"Language-Team: Italian\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=iso-8859-1\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#
+#. "English Definition"
+msgid	"Term"
+msgstr	"Termine"
+#
+#. "Abbreviation for three-dimensional."
+# NEW MESSAGE
+msgid "3D" 
+msgstr	"3D"
+#
+#. "Use to refer to before and after noon."
+# NEW MESSAGE
+msgid "a.m./p.m." 
+msgstr	"a.m./p.m."
+#
+#. "To terminate abruptly a processing activity in a computer system because it is impossible or undesirable for the activity to process."
+msgid	"abort"
+msgstr	"interrompere"
+#
+#. "1. In character recognition systems a type of symbol that, unlike a letter or numeral, has no intrinsic meaning and must be defined before it can be interpreted. 2. In programming a data type defined by the operations that can be performed on objects of that type rahter than by the properties of the objects themselves."
+msgid	"Abstract"
+msgstr	"Abstract"
+#
+#. "1. In applications, a key or key combination used to perform a defined function. Also called shortcut key. 2. A hardware device that speeds or enhances the operation of one or more subsystems, leading to improved program performance. "
+msgid	"Accelerator"
+msgstr	"Tasto di scelta rapida"
+#
+msgid	"Accept"
+msgstr	"Accettare"
+#
+#. "1. The act of reading data from or writing data to memory. 2. Connection to the Internet or other network or system.  2. To gain entry to memory in order to read or write data."
+msgid	"access"
+msgstr	"accesso"
+#
+#. "A record of essential user information that is stored on the system.. Network accounts are created by network administrators and are used both to validate users and to administer policies-for example, permissions-related to each user."
+msgid	"Account"
+msgstr	"Account"
+#
+#. "Pertaining to the device, program, file, or portion of the screen that is currently operational or subject to command operations. "
+msgid	"Active"
+msgstr	"Attivo"
+#
+msgid	"Actor"
+msgstr	"Actor"
+#
+#. "A disk drive mechanism for moving the read/write head(s) to the location of the desired track on a disk. "
+msgid	"Actuator"
+msgstr	"Attuatore"
+#
+msgid	"Add"
+msgstr	"Aggiungere"
+#
+#. "1. A number specifying a location in memory where data is stored. 2. A unique code that specifies a particular computer (node) or site on the Internet or other network. 3. A code used to specify an e-mail destination."
+msgid	"Address"
+msgstr	"Indirizzo"
+#
+msgid	"Adjust"
+msgstr	"Adattare"
+#
+#. "The performing of maintenance tasks on a system or network"
+msgid	"Administration"
+msgstr	"Amministrazione"
+#
+msgid	"Aggregate"
+msgstr	"Aggregare"
+#
+#. "A visual or auditory signal from a computer alerting the user to an error or hazardous situation."
+msgid	"Alarm"
+msgstr	"Avviso"
+#
+#. "In an application such as a word processor, to position lines of type relative to some point, such as the page margin. The most common types of alignment are left- and right-aligned and centered. "
+msgid	"Align"
+msgstr	"Allineare"
+#
+msgid	"Allow"
+msgstr	"Consentire"
+#
+#. "A software product that is under development and has enough functionality to begin testing. "
+msgid	"Alpha"
+msgstr	"Alfa"
+#
+#. "The high-order 8 bits of a 32-bit graphics pixel used to manipulate the remaining 24 bits for purposes of coloring or masking. In computer graphics, memory associated with each pixel used to store the fractional coverage of the pixel."
+msgid	"alpha channel"
+msgstr	"Canale alfa"
+#
+#. "Pertaining to a device or signal that is continuously varying in strength or quantity, such as voltage or audio, rather than based on discrete units, such as the binary digits 1 and 0. "
+msgid	"Analog"
+msgstr	"Analogico"
+#
+#. "The evaluation of a situation or problem, including review from various aspects or points of view. In computing, analysis commonly involves such features as flow control, error control, and evaluation of efficiency."
+msgid	"Analysis"
+msgstr	"Analisi"
+#
+#. "A tag in an HTML document that defines a section of text, an icon, or other element as a link to another element in the document or to another document or file. "
+msgid	"Anchor"
+msgstr	"Ancoraggio"
+#
+#. "A logical operation combining the values of two bits (0, 1) or two Boolean values (false, true) that returns a value of 1 (true) if both input values are 1 (true) and returns a 0 (false) otherwise. "
+msgid	"AND"
+msgstr	"AND"
+#
+#. "The simulation of movement through a rapid succession of static images. "
+msgid	"Animation"
+msgstr	"Animazione"
+#
+#. "On the Internet, the standard login name used to obtain access to a public FTP file archive. "
+msgid	"Anonymous"
+msgstr	"Anonimo"
+#
+#. "A setting that allows a modem to answer an incoming call automatically. It is used in all fax machines. "
+msgid	"Answer mode"
+msgstr	"Modalità ricezione"
+#
+#. "A software technique (algorithm) for smoothing the jagged appearance of curved or diagonal lines caused by poor resolution on a display screen. "
+msgid	"Antialiasing"
+msgstr	"Antialiasing"
+#
+#. "To place or insert as an attachment by adding data to the end of a file or database or extending a character string. To attach to the end of; most often used in reference to writing a file of adding to a string."
+msgid	"Append"
+msgstr	"Aggiungere (alla fine)"
+#
+#. "An application working inside a small window in a panel. A program that can be downloaded over the Internet and executed on the recipient's machine. Applets usually have a simple user interface. "
+msgid	"Applet"
+msgstr	"Applet"
+#
+#. "The popup menu that opens when you right-click on the handle of an applet, or on any blank area in an applet. The applet popup menu can also contain applet-specific items. "
+# NEW MESSAGE
+msgid "applet popup menu" 
+msgstr	"menu popup dell'applet"
+#
+#. "A software program designed to assist in the performance of a specific task or for particlar user needs, such as word processing, accounting, or inventory management. An application usually provides an application-specific interface. "
+msgid	"Application"
+msgstr	"Applicazione"
+#
+#. "A button in the panel which launches an application or executes a command when pressed."
+msgid	"Application Launcher"
+msgstr	"Finestra di avvio di un'applicazione"
+#
+msgid	"Applix"
+msgstr	"Applix"
+#
+msgid	"Arc"
+msgstr	"Arc"
+#
+#. "A collection of several files bundled into one file by a program (such as ar, tar, bar or cpio) for shipment or archiving."
+msgid	"archive"
+msgstr	"archivio"
+#
+#. "A file that contains a set of files, such as a program with its documentation and example input files, or collected postings from a newsgroup. On UNIX systems, archive files can be created using the tar program."
+msgid	"archive file"
+msgstr	"file archivio"
+#
+msgid	"area grid"
+msgstr	"griglia"
+#
+#. "An item of information following a command. It may, for example, modify the command or identify a file to be affected. "
+msgid	"Argument"
+msgstr	"Argomento"
+#
+#. "In programming, a list of data values, all of the same type, any element of which can be referenced by an expression consisting of the array name followed by an indexing expression. An arrangement of elements in one or more dimensions."
+msgid	"Array"
+msgstr	"Array"
+#
+#. "A button that you click on to scroll through information. Arrow buttons appear at both ends of a scrollbar."
+# NEW MESSAGE
+msgid "Arrow button" 
+msgstr	"Freccia di scorrimento"
+#
+#. "The four directional keys on the numeric keypad."
+msgid	"Arrow key"
+msgstr	"Tasto freccia"
+#
+msgid	"Article"
+msgstr	"Articolo"
+#
+#. "The arrangement of a sequence of items from lowest to highest, such as from 1 to 10 or from A to Z. "
+msgid	"Ascending order"
+msgstr	"Ordine crescente"
+#
+#. "American Standard Code for Information Interchange; the standard describing a collection of characters and codes (i.e. sequences of zeros and ones, or numbers) assigned to them. ASCII characters  include Latin letters, common punctuation marks, some specific. When you see a mention of an 'ASCII file' or 'ASCII text' somewhere, it usually means a plain text file which only uses symbols defined in ASCII standard, with no formatting information such as fonts to be used. ASCII is defined as a standard of American National Standards Institute (ANSI); the offical reference is ANSI X3.4-1986."
+msgid	"Ascii"
+msgstr	"ASCII"
+#
+#. "In computer displays and graphics, the ratio of the width of an image or image area to its height. The aspect ratio is an important factor in maintaining correct proportions when an image is printed, rescaled, or incorporated into another document."
+msgid	"aspect ratio"
+msgstr	"proporzioni"
+#
+#. "Without regular time relationship; unexpected and unpredictable with respect to the execution of a program's instructions. "
+msgid	"Asynchronous"
+msgstr	"Asincrono"
+#
+#. "Any file accompanying an e-mail message in a special format so that it can be viewed or saved to disk independently of the main message body."
+msgid	"Attachment"
+msgstr	"Allegato"
+#
+#. "In a database record, the name or structure of a field. In screen displays, an element of additional information stored with each character. In markup languages such as SGML and HTML, a name-value pair within a tagged element that modifies certain features of that element. "
+msgid	"Attribute"
+msgstr	"Attributo"
+#
+#. "Relating to frequencies within the range of perception by the human ear."
+msgid	"Audio"
+msgstr	"Audio"
+#
+#. "In a multiuser or network operating system, the process by which the system validates a user's logon information. "
+msgid	"Authentication"
+msgstr	"Autenticazione"
+#
+#. "Traditionally, to author meant to write a literary work or journalistic piece. In a computer context it means to create a product for implementation via computer technology; to write a computer program or to create Web pages. "
+msgid	"Author"
+msgstr	"Scrivere"
+#
+msgid	"Autofill"
+msgstr	"Riempimento automatico"
+#
+#. "In processing, the accessibility of a computer system or resource, such as a printer, in terms of usage or of the percentage of the total amount of time the device is needed."
+msgid	"Availability"
+msgstr	"Disponibilità"
+#
+msgid	"Average"
+msgstr	"Media"
+#
+#. "In a chart or other two-dimensional system using coordinates, the horizontal line (x-axis) or vertical line (y-axis) that serves as a reference for plotting points. In a three-dimensional coordinate system, a third line (z-axis) is used to represent depth."
+msgid	"Axis"
+msgstr	"Asse"
+#
+#. "In the context of processes or tasks that are part of an operating system or program, operating without interaction with the user while the user is working on another task. In the UNIX command line, the character <literal>&amp;</literal> appended to a command will make that command run in the background."
+msgid	"Background"
+msgstr	"Background"
+#
+#. "A duplicate copy of a program, a disk, or data, made either for archiving purposes or for safeguarding valuable files from loss should the active copy be damaged or destroyed. "
+msgid	"Backup"
+msgstr	"Backup"
+#
+#. "Adjustment of sources of sound so that the final transmission adheres to an artistic standard."
+msgid	"Balance"
+msgstr	"Bilanciamento"
+#
+#. "In mathematics, a number that is raised to the power specified by an exponent. For example, in 23 = 2 × 2 × 2 = 8, the base is 2. "
+msgid	"Base"
+msgstr	"Base"
+#
+#. "An executable program, so called because the file containing the program consists of machine-readable binary digits, i.e. ones and zeroes."
+msgid	"Binary"
+msgstr	"Binario"
+#
+#. "1. Language-dependent code that allows a software library to be called from that computer language. 2. The process during which a client finds out where a server is so that the client can receive services. "
+msgid	"Binding"
+msgstr	"Binding"
+#
+#. "In statistics, a list or a function that describes the probabilities of the possible values of a random variable chosen by means of a Bernoulli sampling process. Also called Bernoulli distribution."
+msgid	"Binomial distribution"
+msgstr	"Distribuzione binomiale"
+#
+#. "The minimal possible unit of information, a digit which can take values 0 or 1. Saying that the file has length n bits is equivalent to saying that it can be written as  a sequence of n zeros and ones."
+msgid	"Bit"
+msgstr	"Bit"
+#
+#. "A data structure in memory that represents information in the form of a collection of individual bits. A bit map is used to represent a bit image. "
+msgid	"Bitmap"
+msgstr	"Bitmap"
+#
+#. "1. To not show or not display an image on part or all of the screen. 2. When no information is present in a field, the field is referred to as blank."
+msgid	"Blank"
+msgstr	"Nascondere"
+#
+msgid	"Blinking cursor"
+msgstr	"Cursore lampeggiante"
+#
+msgid	"block buffer"
+msgstr	"buffer a blocchi"
+#
+#. "A signal that is prevented from being transmitted"
+msgid	"Blocked"
+msgstr	"Bloccato"
+#
+msgid	"Blur image"
+msgstr	"Sfumatura immagine"
+#
+#. "1. In e-mail and Internet newsgroups, the content of a message. 2. In HTML, SGML, and XML, a section of a document that contains the content of the document, along with tags describing characteristics of the content."
+msgid	"body"
+msgstr	"corpo"
+#
+#. "A type style that makes the text to which it is applied appear darker and heavier than the surrounding text. "
+msgid	"Bold"
+msgstr	"Grassetto"
+#
+#. "1. A marker inserted at a specific point in a document to which the user may wish to return for later reference. 2. In Netscape Navigator, a link to a Web page or other URL that a user has stored in a local file in order to return to it later. "
+msgid	"book mark"
+msgstr	"segnalibro"
+#
+#. "Characteristic of logical (true, false) values. "
+msgid	"Boolean"
+msgstr	"Booleano"
+#
+#. "The border around a window. The titlebar and the border of a window are the components of the window frame. "
+# NEW MESSAGE
+msgid "Border" 
+msgstr	"Bordo"
+#
+#. "The boundary around a graphic image on screen. "
+msgid	"Box"
+msgstr	"Riquadro"
+#
+#. "A node intermediate between the root and the leaves in some types of logical tree structure, such as the directory tree "
+msgid	"Branch"
+msgstr	"Ramo"
+#
+msgid	"Bricks"
+msgstr	"Mattoni"
+#
+#. "To scan a database, a list of files, or the Internet, either for a particular item or for anything that seems to be of interest. "
+msgid	"Browse"
+msgstr	"Sfogliare"
+#
+#. "Software that lets a user view HTML documents and access files and software related to those documents. "
+msgid	"Browser"
+msgstr	"Browser"
+#
+#. "A region of memory reserved for use as an intermediate repository in which data is temporarily held while waiting to be transferred between two locations or devices. "
+msgid	"Buffer"
+msgstr	"Buffer"
+#
+#. "An error in coding or logic that causes a program to malfunction or to produce incorrect results. "
+msgid	"bug"
+msgstr	"bug"
+#
+msgid	"Build"
+msgstr	"Build"
+#
+#. "A typographical symbol, such as a filled or empty circle, diamond, box, or asterisk, used to set off a small block of text or each item in a list. "
+msgid	"Bullet"
+msgstr	"Punto elenco"
+#
+#. "A computer system equipped with one or more modems or other means of network access that serves as an information and message-passing center for remote users. "
+msgid	"Bulletin Board"
+msgstr	"Bulletin Board (BBS)"
+#
+#. "A circuit over which data or power is transmitted. The bus connects the processor, disk-drive controller, memory, and input/output ports-and enables them to transfer information. "
+msgid	"Bus"
+msgstr	"Bus"
+#
+#. "Temporarily performing a function or task."
+msgid	"Busy"
+msgstr	"Occupato"
+#
+#. "A button that you click on to perform an action. This action is usually to display a list of options from which you can choose. "
+# NEW MESSAGE
+msgid "... button" 
+msgstr	"pulsante ..."
+#
+#. "A user interface element that is used to start an action. "
+msgid	"Button"
+msgstr	"Pulsante"
+#
+#. "8 bits, i.e. a sequence of 8 zeros and ones.There are 256 possible such sequences, so one can also say that one byte represents a number ranging from 0 to 255. Byte is the basic building block of filesystem: all files are composed of bytes. For text files, each byte represents one symbol."
+msgid	"Byte"
+msgstr	"Byte"
+#
+#. "Refers to the C programming language, developed by Bell Laboratories in the early 1980s."
+msgid	"C"
+msgstr	"C"
+#
+#. "A short-term storage area in RAM or on the hard disk.  Many programs use caches to store recently-accessed files or other items."
+msgid	"Cache"
+msgstr	"Cache"
+#
+#. "Any device that performs arithmetic operations on numbers. "
+msgid	"Calculator"
+msgstr	"Calcolatrice"
+#
+#. "An application program in the form of an electronic calendar, commonly used for highlighting dates and scheduling appointments. "
+msgid	"Calendar"
+msgstr	"Agenda"
+#
+#. "To establish a connection through a telecommunications network. "
+msgid	"Call"
+msgstr	"Chiamare"
+#
+msgid	"Cancel"
+msgstr	"Annullare"
+#
+msgid	"canvas"
+msgstr	"tela"
+#
+#. "An application used to perform a configuration function on part of the GNOME desktop."
+# NEW MESSAGE
+msgid "capplet" 
+msgstr	"capplet"
+#
+msgid	"Caption"
+msgstr	"Didascalia"
+#
+msgid	"Case Sensitive"
+msgstr	"Maiuscole/minuscole"
+#
+#. "Groups of like settings in a property window."
+msgid	"Categories"
+msgstr	"Categorie"
+#
+#. "1. An individual compact disc, such as a CD-ROM. 2. Acronym for Carrier Detect, a signal sent from a modem to the attached computer to indicate that the modem is on line. "
+msgid	"CD"
+msgstr	"CD"
+#
+msgid	"CDE panel"
+msgstr	"Pannello del CDE"
+#
+#. "1. The intersection of a row and a column in a spreadsheet. 2. An addressable (named or numbered) storage unit for information. "
+msgid	"Cell"
+msgstr	"Cella"
+#
+msgid	"Cellular"
+msgstr	"Cellulare"
+#
+#. "To align characters around a point located in the middle of a line, page, or other defined area."
+msgid	"Center"
+msgstr	"Centrare"
+#
+#. "1. A path or link through which information passes between two devices. 2. In communications, a medium for transferring information. Depending on its type, a communications channel can carry information (data, sound, and/or video) in either analog or digital form."
+msgid	"Channel"
+msgstr	"Canale"
+#
+#. "A rectangular block of pixels that represents the space in which a given character is drawn on the screen. "
+msgid	"char cell"
+msgstr	"cella carattere"
+#
+#. "A collection of symbols, such as letters of one or several alphabets, digits, punctuation marks, etc. "
+msgid	"Character set"
+msgstr	"Set di caratteri"
+#
+#. "Real-time conversation via computer. "
+msgid	"Chat"
+msgstr	"Conversazione in linea"
+#
+#. "One of a set of bits that are added to a data message at its origin and scrutinized by the receiving process to determine whether an error has occurred during transmission. "
+msgid	"Check bit"
+msgstr	"Bit di controllo"
+#
+#. "A nonexclusive setting that shows a checkmark in a box when the setting is chosen. Check boxes are used to enable or disable one or more features or options from a set. "
+# NEW MESSAGE
+msgid "check box" 
+msgstr	"casella di controllo"
+#
+#. "In a tree structure, the relationship of a node to its immediate predecessor. "
+msgid	"child"
+msgstr	"secondario"
+#
+#. "A process initiated by another process (the parent)."
+msgid	"child process"
+msgstr	"processo figlio"
+#
+#. "To pick a course of action or assign a course of action."
+# NEW MESSAGE
+msgid "choose" 
+msgstr	"scegliere"
+#
+#. "In object-oriented programming, a generalized category that describes a group of more specific items, called objects, that can exist within it. "
+msgid	"Class"
+msgstr	"Classe"
+#
+msgid	"Classification"
+msgstr	"Classificazione"
+#
+msgid	"Clear"
+msgstr	"Cancellare"
+#
+#. "Press and release the left mouse button on an item once. You can differentiate between click on and click as follows: Click on: Use this verb when you refer to most interactive elements in the GNOME desktop, such as: GNOME-specific buttons. Buttons that represent commands that are not frequently used. All interactive elements other than buttons, such as column headings. Click: Use this verb when you refer to frequently-used command buttons."
+# NEW MESSAGE
+msgid "click on, click" 
+msgstr	"fare clic su"
+#
+#. "Press and hold the left mouse button on an item."
+# NEW MESSAGE
+msgid "click-and-hold" 
+msgstr	"fare clic e tenere premuto"
+#
+#. "The temporary buffer into which text or other data can be copied, to be used later by pasting into a different location. Most applications support the clipboard either through native mouse-based cut and paste functionality of X Window System, or through specialised menus and other interfaces."
+msgid	"Clipboard"
+msgstr	"Appunti"
+#
+#. "To change an open window into an icon on the desktop. To end an application's relationship with an open file so that the application will no longer be able to access the file without opening it again. To end a computer's connection with another computer on a network."
+msgid	"Close"
+msgstr	"Chiudere"
+#
+#. "Program instructions. Source code consists of human-readable statements written by a programmer in a programming language. Machine code consists of numerical instructions that the computer can recognize and execute and that were converted from source code."
+msgid	"code"
+msgstr	"codice"
+#
+#. "1. A memory segment containing program instructions. 2. A named and segregated portion of a program's code typically performing a specific class of operations. "
+msgid	"code segment"
+msgstr	"segmento di codice"
+#
+msgid	"Coefficient"
+msgstr	"Coefficiente"
+#
+msgid	"Collaboration"
+msgstr	"Collaborazione"
+#
+#. "To close an open item in a tree structure. To collapse an item in a tree structure, double-click on the item or click on the minus (-) sign beside the item. There are tree structures in the <TT>Menu Editor</TT> and the <TT>Control Center</TT>."
+# NEW MESSAGE
+msgid "Collapse" 
+msgstr	"Comprimere"
+#
+#. "In data handling, to merge items from two or more similar sets to create a combined set that maintains the order or sequence of items in the original sets."
+msgid	"Collate"
+msgstr	"Fascicolare"
+#
+#. "The result of two devices or network workstations trying to transmit signals at the exact same time on the same channel. "
+msgid	"Collision"
+msgstr	"Collisione"
+#
+#. "A dialog element that you use to choose a color. When you  click on a color selector button the color selector dialog is displayed. "
+# NEW MESSAGE
+msgid "Color selector button" 
+msgstr	"Pulsante del Selettore colore"
+#
+#. "A heading for a table column in a dialog."
+# NEW MESSAGE
+msgid "column heading" 
+msgstr	"titolo della colonna"
+#
+#. "An instruction to a computer program which causes an action to be carried out. Commands are usually either typed at the keyboard or chosen from a menu."
+msgid	"Command"
+msgstr	"Comando"
+#
+#. "A button that you use to start an action. Command  buttons are always rectangular in shape. A command button always has a text label,  but the label can also include a graphic."
+# NEW MESSAGE
+msgid "Command button" 
+msgstr	"Pulsante di comando"
+#
+#. "A string of text written in the command language and passed to the command interpreter for execution. It can contain a command followed by arguments, options, file names and other expressions."
+msgid	"Command Line"
+msgstr	"Riga di comando"
+#
+#. "Parameters or arguments given on the UNIX command line after a program name, which tell the program how to run. "
+msgid	"Command line options"
+msgstr	"Opzioni del comando"
+#
+msgid	"Common properties"
+msgstr	"Proprietà generali"
+#
+#. "To check two items, such as words, files, or numeric values, so as to determine whether they are the same or different. "
+msgid	"Compare"
+msgstr	"Confrontare"
+#
+#. "To string together two or more sequences into one longer sequencce (for example, to combine the two strings 'hello' and 'there' into the single string 'hello there'). "
+msgid	"Concatenate"
+msgstr	"Concatenare"
+#
+#. "The state of an expression or a variable (for example, when a result can be either true or false, or equal or not equal)."
+msgid	"Condition"
+msgstr	"Condizione"
+#
+#. "A pipe containing electric wires or cables, in order to protect them against damage from external causes."
+msgid	"Conduit"
+msgstr	"Tubo protettivo"
+#
+msgid	"Confidential"
+msgstr	"Riservato"
+#
+#. "In reference to a single microcomputer, the sum of a system's internal and external components, including memory, disk drives, keyboard, video, and generally less critical add-on hardware, such as a mouse, modem, or printer. In reference to a single microcomputer, the sum of a system's internal and external components, including memory, disk drives, keyboard, video, and generally less critical add-on hardware, such as a mouse, modem, or printer. Software (the operating system and various device drivers), the user's choices established through configuration files such as the AUTOEXEC.BAT and CONFIG.SYS files on IBM PCs and compatibles, and sometimes hardware (switches and jumpers) are needed to "configure the configuration" to work correctly. In relation to networks, the entire interconnected set of hardware, or the way in which a network is laid out-the manner in which elements are connected."
+msgid	"Configuration"
+msgstr	"Configurazione"
+#
+#. "To configure is typically a large-scale activity. By contrast, to <EM>modify</EM> is a smaller scale activity. For example, you usually use the term <EM>configure</EM> to refer to specifying settings for the entire desktop."
+# NEW MESSAGE
+msgid "Configure" 
+msgstr	"Configurare"
+#
+msgid	"Confirm"
+msgstr	"Confermare"
+#
+msgid	"Confirmation"
+msgstr	"Conferma"
+#
+#. "A physical link via wire, radio, fiber-optic cable, or other medium between two or more communications devices."
+msgid	"Connection"
+msgstr	"Connessione"
+#
+#. "In programming, a restriction on the solutions that are acceptable for a problem."
+msgid	"Constraint"
+msgstr	"Vincolo"
+#
+#. "The data that appears between the starting and ending tags of an element in an SGML or HTML document. "
+msgid	"Content"
+msgstr	"Contenuto"
+#
+#. "libgtop.pot"
+msgid	"Continue"
+msgstr	"Continuare"
+#
+#. "Management of a computer and its processing abilities so as to maintain order as tasks and activities are carried out. In a graphical user interface, an object on the screen that can be manipulated by the user to perform an action. The most common controls are buttons."
+msgid	"Control"
+msgstr	"Controllare"
+#
+#. "The process of changing from one form or format to another. Types of conversion include: data (changing the way information is represented), file (changing a file from one format to another), hardware (changing all or part of a computer system), media (transferring data from one storage media to another), software (changing a program designed for one platform so that it runs on another), and system (changing from one operating system to another)."
+msgid	"Conversion"
+msgstr	"Conversione"
+#
+#. "On the World Wide Web, a block of data that a Web server stores on a client system. When a user returns to the same Web site, the browser sends a copy of the cookie back to the server. "
+msgid	"cookie"
+msgstr	"cookie"
+#
+#. "To duplicate information and reproduce it in another part of a document, in a different file or memory location, or in a different medium. "
+msgid	"Copy"
+msgstr	"Copiare"
+#
+#. "A method of protecting the rights of an originator of a creative work, such as a text, a piece of music, a painting, or a computer program, through law. "
+msgid	"Copyright"
+msgstr	"Copyright"
+#
+#. "Acronym for Common Object Request Broker Architecture. A specification developed by the Object Management Group in 1992 in which pieces of programs (objects) communicate with other objects in other programs, even if the two programs are written in different programming languages and are running on different platforms."
+msgid	"CORBA"
+msgstr	"CORBA"
+#
+#. "A file created to hold a memory image useful for debugging problems when a program malfunctions."
+msgid	"Core file"
+msgstr	"File core"
+#
+#. "A linear transformation which in the plane maps lines into points and lines into points and in space maps points into planes and planes into points."
+msgid	"Correlation"
+msgstr	"Correlazione"
+#
+#. "An expression used to denote the power factor of a circuit, the power factor being equal to the cosine of the angle of the phase difference between the current and voltage in the circuit."
+msgid	"cos"
+msgstr	"cos"
+#
+msgid	"Cost"
+msgstr	"Costo"
+#
+msgid	"Count"
+msgstr	"Contare"
+#
+msgid	"Covariance"
+msgstr	"Covarianza"
+#
+#. "Acronym for central processing unit. The computational and control unit of a computer. The CPU is the device that interprets and executes instructions. By definition, the CPU is the chip that functions as the 'brain' of a computer. "
+msgid	"CPU"
+msgstr	"CPU"
+#
+#. "For a system or program, to fail to function correctly, resulting in the suspension of operation. A program crash results in the loss of all unsaved data and can leave the operating system unstable enough to require restarting the computer. A disk drive crash, sometimes called a disk crash, leaves the drive inoperable and can cause loss of data."
+msgid	"crash"
+msgstr	"crash"
+#
+msgid	"Create"
+msgstr	"Creare"
+#
+msgid	"Criteria range"
+msgstr	"Intervallo criteri"
+#
+#. "An error that suspends processing until the condition can be corrected either by software or by user intervention. "
+msgid	"Critical error"
+msgstr	"Errore critico"
+#
+#. "In computer graphics, to cut off part of an image, such as unneeded sections of a graphic or extra white space around the borders. "
+msgid	"Crop"
+msgstr	"Ritagliare"
+#
+msgid	"Cross-reference"
+msgstr	"Riferimento incrociato"
+#
+#. "Short for control. A designation used to label the Control key on computer keyboards. "
+msgid	"Ctrl"
+msgstr	"Ctrl"
+#
+msgid	"Cumulative"
+msgstr	"Cumulativo"
+#
+#. "The flow of electric charge through a conductor, or the amount of such flow. Current is measured in amperes. "
+msgid	"Current"
+msgstr	"Corrente"
+#
+# NEW MESSAGE
+msgid "Also used as a synonym to active." 
+msgstr	"Also used as a synonym to active."
+#
+#. "A highlighted or animated icon which indicates the current position of the mouse on the screen, or the position where keyboard input will occur in a text window."
+msgid	"cursor"
+msgstr	"cursore"
+#
+msgid	"Curve"
+msgstr	"Curva"
+#
+#. "To modify or assemble hardware or software to suit the needs or preferences of the user. "
+msgid	"Customize"
+msgstr	"Personalizzare"
+#
+msgid	"custom window"
+msgstr	"finestra personalizzata"
+#
+#. "To remove part of a document, usually placing it temporarily in memory or the clipboard so that the cut portion can be inserted (pasted) elsewhere. "
+msgid	"Cut"
+msgstr	"Tagliare"
+#
+#. "A background process providing basic system or network services. A daemon is activated only when needed, for example, to correct an error from which another program cannot recover."
+msgid	"Daemon"
+msgstr	"Daemon"
+#
+#. "An item of information."
+msgid	"Data"
+msgstr	"Dati"
+#
+#. "A file composed of records, each containing fields together with a set of operations for searching, sorting, recombining, and other functions."
+msgid	"database"
+msgstr	"database"
+#
+#. "To detect, locate, and correct logical or syntactical errors in a program or malfunctions in hardware. In hardware contexts, the term troubleshoot is the term more often used."
+msgid	"Debug"
+msgstr	"Debug"
+#
+#. "The base-10 numbering system. "
+msgid	"decimal"
+msgstr	"decimale"
+#
+msgid	"Decrease"
+msgstr	"Diminuire"
+#
+#. "A choice made by a program when the user does not specify an alternative."
+msgid	"Default"
+msgstr	"Predefinito"
+#
+#. "To eliminate text, a file, or part of a document with the intention of removing the information permanently. "
+msgid	"Delete"
+msgstr	"Eliminare"
+#
+#. "The state in which one entity relies upon specific hardware, software, or specific events for its own definition or functionality. "
+msgid	"Dependence"
+msgstr	"Dipendenza"
+#
+msgid	"Derived"
+msgstr	"Derivato"
+#
+#. "A sort that arranges items in descending order-for example, with Z preceding A and higher numbers preceding lower ones. "
+msgid	"Descending sort"
+msgstr	"Ordine decrescente"
+#
+#. "A data structure that uniquely identifies a hardware device or software function. "
+msgid	"Descriptor"
+msgstr	"Descrittore"
+#
+#. "To switch off a behavioral characteristic in a dialog."
+# NEW MESSAGE
+msgid "Deselect" 
+msgstr	"Deselezionare"
+#
+#. "The on-screen work area, on which windows, icons, and other graphical items may be placed."
+msgid	"Desktop"
+msgstr	"Desktop"
+#
+#. "The part of the desktop where there are no interface graphical items, such as panels and desktop icons.  You can middle-click and right-click on the desktop background to open menus. "
+# NEW MESSAGE
+msgid "desktop background" 
+msgstr	"sfondo del desktop"
+#
+#. "Software which provides graphical user interface for users desktop. In addtition to capabilities provided by a window manager (that is, ability to move, resize, and hide windows), a desktop environment usually also includes such elements of GUI as a File Manager with drag-and-drop capabilities, Panel used for keeping your favorite applications and applets, and a set of other utilities. Most popular desktop environments for UNIX include GNOME, KDE and CDE (soon to be replaced by GNOME). "
+msgid	"Desktop Environment"
+msgstr	"Ambiente desktop"
+#
+#. "The location (drive, folder, or directory) to which a file is copied or moved. "
+msgid	"Destination"
+msgstr	"Destinazione"
+#
+msgid	"Destroy"
+msgstr	"Distruggere"
+#
+msgid	"Detection"
+msgstr	"Rilevazione"
+#
+#. "A piece of hardware with which the system interacts, such as a hard disk, modem, printer or mouse."
+msgid	"Device"
+msgstr	"Dispositivo"
+#
+msgid	"Diagonal"
+msgstr	"Diagonale"
+#
+msgid	"Diagram"
+msgstr	"Diagramma"
+#
+#. "To establish connection that uses the public switched telephone network rather than a dedicated circuit or some other type of private network."
+msgid	"Dial"
+msgstr	"Chiamare"
+#
+#. "In a graphical user interface, a special window displayed by the system or application to solicit a response from the user. "
+msgid	"Dialog Box"
+msgstr	"Finestra di dialogo"
+#
+#. "An element that is part of a dialog. Examples of dialog elements are: check boxes, drop-down lists, fields, radio buttons, sliders, spin boxes, tabs, tabbed sections. "
+# NEW MESSAGE
+msgid "dialog element" 
+msgstr	"elemento della finestra di dialogo"
+#
+#. "An area in an application window that resembles a dialog, and where you enter data. Examples of dialog panes in the GNOME desktop include the following: The right-hand side of the Menu Editor where you modify the properties of  a menu. The right-hand side of the Control Center. "
+# NEW MESSAGE
+msgid "dialog pane" 
+msgstr	"riquadro (della finestra di dialogo)"
+#
+msgid	"Dialout Device"
+msgstr	"Dispositivo di chiamata"
+#
+#. "One of the characters used to indicate a whole number (unit) in a numbering system. In any numbering system, the number of possible digits is equal to the base used. For example, the decimal (base-10) system has 10 digits, 0 through 9."
+msgid	"Digits"
+msgstr	"Cifre"
+#
+#. "One of three or four coordinates determining a position in space or in space and time."
+msgid	"Dimension"
+msgstr	"Dimensione"
+#
+#. "glade.pot"
+msgid	"Direction"
+msgstr	"Direzione"
+#
+#. "A branch within UNIX's hierarchical file system; a 'folder' containing files or other directories (called 'subdirectories')."
+msgid	"Directory"
+msgstr	"Directory"
+#
+#. "To suppress something or to prevent it from happening. Disabling is a method of controlling system functions by disallowing certain activities. "
+msgid	"Disable"
+msgstr	"Disabilitare"
+#
+msgid	"Discard"
+msgstr	"Ignorare"
+#
+#. "To break a communications link."
+msgid	"Disconnect"
+msgstr	"Disconnettersi"
+#
+#. "Separate; individual; identifiable as a unit. "
+msgid	"Discrete"
+msgstr	"Discreto"
+#
+#. "A round platter of flexible plastic coated with a magnetic material that can be electrically charged to hold information recorded in digital (binary) form. The magnetized medium is organised in concentric tracks and sectors for storing data."
+msgid	"disk"
+msgstr	"disco"
+#
+msgid	"Dismiss"
+msgstr	"Abbandonare"
+#
+#. "1. A visual presentation of data. The visual output device of a computer. 2. Use as a verb to describe bringing an item on to the desktop that remains on the desktop until you specifically choose to close the item."
+msgid	"Display"
+msgstr	"Visualizzare"
+#
+#. "Loss or diminution of power."
+msgid	"Dissipation"
+msgstr	"Dissipazione"
+#
+#. "To allocate among locations or facilities, as in a data-processing function."
+msgid	"Distribute"
+msgstr	"Distribuire"
+#
+#. "A list of recipients on an e-mail mailing list. "
+msgid	"Distribution list"
+msgstr	"Lista di distribuzione"
+#
+#. "A technique used in computer graphics to create the illusion of varying shades of gray on a monochrome display or printer, or additional colors on a color display or printer. "
+msgid	"Dithering"
+msgstr	"Retinatura"
+#
+#. "An error condition caused by an attempt to divide a number by zero, which is mathematically undefined."
+msgid	"Division by zero"
+msgstr	"Divisione per zero"
+#
+#. "Direct Memory Access; Memory access that does not involve the microprocessor and is frequently used for data transfer directly between memory and an intelligent peripheral device, such as a disk drive."
+msgid	"DMA"
+msgstr	"DMA"
+#
+#. "Domain Name Service; converting domain names (such as www.gnome.org) into IP addresses such as 209.116.70.70. If you want to use domain names, your computer must be configured to connect to one of DNS servers which would do this conversion."
+msgid	"DNS"
+msgstr	"DNS"
+#
+#. "A collction of one or more lines of text that can be named and stored as a separate item or file which can be retrieved."
+msgid	"Document"
+msgstr	"Documento"
+#
+#. "In the Internet and other networks, a part of a naming hierarchy. The domain is the highest subdivision of a domain name in a network address, which identifies the type of entity owning the address (for example, .com for commercial users or the geographical location of the address (for example, .ie for Ireland). The domain is the last part of the address (for example, www.acm.org). "
+msgid	"Domain"
+msgstr	"Dominio"
+#
+#. "1. In the UNIX, MS-DOS, OS/2, and other operating systems, the character that separates a filename from an extension. 2. In computer graphics and printing, a small spot combined with others in a matrix of rows and columns to form a character or a graphic element in a drawing or design. The dots forming an image on the screen are called pixels. 3. In an Internet address, the character that separates the different parts of the domain name."
+msgid	"Dot"
+msgstr	"Punto"
+#
+#. "Press and release the left mouse button on an item twice. "
+# NEW MESSAGE
+msgid "double-click on" 
+msgstr	"fare doppio clic su"
+#
+#. "In communications, to transfer a file or programming instructions from a remote computer to the requesting computer over a communications line. "
+msgid	"Download"
+msgstr	"Scaricare"
+#
+#. "To click a mouse button on an object, hold the mouse button, and move  the mouse to move the object."
+# NEW MESSAGE
+msgid "Drag" 
+msgstr	"Trascinare"
+#
+#. "A drawer is a collapsible extension of a panel."
+# NEW MESSAGE
+msgid "drawer" 
+msgstr	"cassetto"
+#
+#. "In multimedia applications the area on the screen where drawing and editing functions are carried out."
+msgid	"Drawing Area"
+msgstr	"Area di disegno"
+#
+#. "To fix the position of an object that is being dragged by releasing the mouse button. To disconnect a communications line."
+msgid	"Drop"
+msgstr	"Rilasciare"
+#
+#. "A text box with a drop-down list attached. You can either type a value, or choose a value from the list."
+# NEW MESSAGE
+msgid "drop-down combination box" 
+msgstr	"casella combinata a discesa"
+#
+#. "A dialog element that you use to select one of several items. A drop-down list box has a drop-down button that you use to display the available items."
+# NEW MESSAGE
+msgid "drop-down list box" 
+msgstr	"casella di riepilogo a discesa"
+#
+msgid	"Druid"
+msgstr	"Druida"
+#
+#. "A terminal that does not contain an internal microprocessor. "
+msgid	"dumb Terminal"
+msgstr	"Terminale asincrono"
+#
+#. "To copy."
+msgid	"Duplicate..."
+msgstr	"Duplicare"
+#
+#. "Occurring immediately and concurrently or at the time of execution. It describes some action or event that occurs when and as needed. "
+msgid	"Dynamic"
+msgstr	"Dinamico"
+#
+#. "Short for electronic mail.  "
+# NEW MESSAGE
+msgid "email" 
+msgstr	"email"
+#
+#. "In communications, a signal transmitted back to the sender that is distinct from the original signal. Network connections can be tested by sending an echo back to the main computer."
+msgid	"Echo"
+msgstr	"Eco"
+#
+#. "1. In computer graphics, one or more vestors defining a portion of an object. 2. In image processing, a set of valus determined to be the dividing line between one image and another image or an image and the background."
+msgid	"Edge"
+msgstr	"Bordo"
+#
+#. "To make a change to an existing file or document. "
+msgid	"Edit"
+msgstr	"Modificare"
+#
+msgid	"Effects"
+msgstr	"Effetti"
+#
+msgid	"Eject"
+msgstr	"Espellere"
+#
+#. "A way of exchanging messages between users of computers connected to a network (local or Internet)."
+msgid	"Electronic Mail"
+msgstr	"Posta elettronica"
+#
+#. "When no information is present in a text box, refer to the text box as empty."
+# NEW MESSAGE
+msgid "empty" 
+msgstr	"vuoto"
+#
+#. "The process of a computer, device, or program imitating the function of another computer, device, or program."
+msgid	"emulation"
+msgstr	"emulazione"
+#
+#. "To activate."
+msgid	"Enable"
+msgstr	"Abilitare"
+#
+#. "A PostScript file format that can be used as an independent entity. The EPS image must be incorporated into the PostScript output of an application such as a desktop publisher. "
+msgid	"Encapsulated Postscript"
+msgstr	"Encapsulated Postscript"
+#
+#. "A correspondence between characters of some character set and character codes, i.e. internal computer presentation of the symbols. In order to be able to read a text file, you need to know its character set and encoding. In most encodings, each symbol is represented by one byte, which is equivalent to a number from 0 to 255; the characters corresponding to codes 0 to 127 coincide with the ASCII standard, while the characters with codes higher than 127 vary between encodin. The most common encoding is iso-8859-1; in addition to ASCII characters, it also contains accented letters covering most of Western European languages."
+msgid	"Encoding"
+msgstr	"Codifica"
+#
+msgid	"Engineering"
+msgstr	"Progettazione"
+#
+#. "1. The enter key on the numeric keypad. 2. Use the verb to describe the following: To input data into a text box or field by using a combination of typing from the keyboard and then pressing a key or clicking on a button."
+# NEW MESSAGE
+msgid "Enter" 
+msgstr	"Invio, Inserire"
+#
+#. "In computer-aided design and object-oriented design, an item that can be treated as a unit and as a member of a particular category or type. In object-oriented programming, an entity is oart if the definition of a class of objects."
+msgid	"Entity"
+msgstr	"Entità"
+#
+#. "A global 'setting', or configuration parameter, which is available to all applications. Each environment variable has a name and a value (which usually is a string of symbols or an integer number). Any application you run  can access any of the environmen To view all currenlty defined environment variables, use the command printenv (provided that you have GNU shell utils package installed). To modify a value of environment variable, use the command export NAME = VALUE;  if you are using bash shell or setenv NAME VALUE; if you are using csh or tcsh shell."
+msgid	"environment variable"
+msgstr	"variabile d'ambiente"
+#
+#. "A mathematical statement that indicates equality with the use of an equal sign (=) between two expressions. In programming languages, assignment statements are written in equation form. "
+msgid	"Equation"
+msgstr	"Equazione"
+#
+#. "A value or condition that is not consistent with the true, specified, or expected value or condition. "
+msgid	"Error"
+msgstr	"Errore"
+#
+#. "A protocol for network communication, developed in the 1980s and commonly used for Local Area Networks (LANs) and other network communication."
+msgid	"Ethernet"
+msgstr	"Ethernet"
+#
+#. "An action or occurrence, often generated by the user, to which a program might respond."
+msgid	"Event"
+msgstr	"Evento"
+#
+#. "In programming, a problem or change in conditions that causes the microprocessor to stop what it is doing and handle the situation in a separate routine. "
+msgid	"Exception"
+msgstr	"Eccezione"
+#
+#. "A logical operator that yields 'true' if and only if one of its operands is true and the other is false. "
+msgid	"Exclusive OR"
+msgstr	"OR esclusivo"
+#
+#. "A program/file that can be run or processed or executed  by the computer without any further translation. The term usually applies to a compiled program translated into machine code in a format that can be loaded into memory and run by a computer's processor."
+msgid	"executable file"
+msgstr	"file eseguibile"
+#
+#. "To run file as program. To perform an instruction. In programming, execution implies loading the machine code of the program into memory and then performing the instructions."
+msgid	"Execute"
+msgstr	"Eseguire"
+#
+#. "In a program, to move from the called routine back to the calling routine. "
+msgid	"Exit"
+msgstr	"Uscire"
+#
+#. "To open a closed item in a tree structure. To expand an item in a tree structure, double-click on the item or click on the plus (+) sign beside the item. There are tree structures in the Menu Editor and the Control Center. "
+# NEW MESSAGE
+msgid "Expand" 
+msgstr	"Espandere"
+#
+#. "A type of memory, up to 8 MB, that can be added to IBM PCs. Its use is defined by the Expanded Memory Specification (EMS). Expanded memory is not needed in Windows 9x, all versions of Windows NT, and Windows 2000. "
+msgid	"Expanded memory"
+msgstr	"Memoria espansa"
+#
+msgid	"expected location"
+msgstr	"posizione attesa"
+#
+#. "Synonymous of Absolute state."
+msgid	"Explicit state"
+msgstr	"Stato esplicito"
+#
+#. "A numeric format that can be used to represent very large real numbers and very small real numbers. Synonymous of Floating-point representation."
+msgid	"Exponential notation"
+msgstr	"Notazione esponenziale"
+#
+#. "To move information from one system or program to another. Files that consist only of text can be exported in ASCII (plain text format). "
+msgid	"Export"
+msgstr	"Esportare"
+#
+#. "A language construct for computing a value from one  or moe operands."
+msgid	"expression"
+msgstr	"espressione"
+#
+#. "1. A set of characters added to a filename that serves to extend or clarify its meaning or to identify a file as a member of a category. 2. A program or program module that adds functionality to or extends the effectiveness of a program. "
+msgid	"Extension"
+msgstr	"Estensione"
+#
+#. "To select and remove from a set of items those items that meet some criteria. "
+msgid	"Extract"
+msgstr	"Estrarre"
+#
+#. "In Microsoft Internet Explorer, a user-defined shortcut to a page on the World Wide Web, analogous to a bookmark in Netscape Navigator. "
+msgid	"Favorite"
+msgstr	"Preferiti"
+#
+#. "Short for facsimile. The transmission of text or graphics over telephone lines in digitized form. "
+msgid	"Fax"
+msgstr	"Fax"
+#
+#. "1. A location in a record of dialog box in which a particular type of data is stored. 2. A space in an on-screen form where the user can enter a specific item of information."
+msgid	"Field"
+msgstr	"Campo"
+#
+#. "Any piece of information (text, graphics, executable) put together and given a name. All the information you have on the hard drive is arranged as a collection of  files."
+msgid	"File"
+msgstr	"File"
+#
+#. "A menu that you can use to arrange items on your desktop. "
+# NEW MESSAGE
+msgid "File Manager menu" 
+msgstr	"Menu gestione file"
+#
+#. "The set of letters, numbers, and allowable symbols assigned to a file to distinguish it from all other files in a particular directory on a disk. "
+# NEW MESSAGE
+msgid "filename" 
+msgstr	"nome file"
+#
+#. "A collection of all the files and directories on a system arranged in a tree-like hierarchy."
+msgid	"Filesystem"
+msgstr	"File system"
+#
+#. "In computer graphics, the colored or patterned 'paint' inside an enclosed figure, such as a circle. "
+msgid	"Fill"
+msgstr	"Riempimento"
+#
+#. "In communications and electronics, hardware or software that selectively passes certain elements of a signal and eliminates or minimizes others. "
+msgid	"Filter"
+msgstr	"Filtro"
+#
+#. "Synonymous with Search. 1. To look for the location of a file. 2. To seek specific data within a file or data structure. "
+msgid	"Find"
+msgstr	"Trovare"
+#
+#. "Software routines stored in read-only memory (ROM). "
+msgid	"Firmware"
+msgstr	"Firmware"
+#
+#. "Synonymous with Monospace Font. A font (set of characters in a particular style and size), similar to that used on a typewriter, in which each character occupies the same amount of horizontal space regardless of its width."
+msgid	"Fixed Font"
+msgstr	"Carattere a spaziatura fissa"
+#
+#. "The data type name used in some programming languages, notably C, to declare variables that can store floating-point numbers. "
+msgid	"Float"
+msgstr	"Float"
+#
+#. "A round piece of flexible plastic film coated with ferric oxide particles that can hold a magnetic field. When placed inside a disk drive, the floppy disk rotates to bring different areas, or sectors, of the disk surface under the drive's read/write head, which can detect and alter the orientation of the particles' magnetic fields to represent binary 1s and 0s."
+msgid	"Floppy"
+msgstr	"Dischetto"
+#
+#. "A method of tracing the movement of different types of information through a computer system, especially with regard to security and the controls applied to ensure the integrity of the information. "
+msgid	"Flow analysis"
+msgstr	"Analisi di flusso"
+#
+#. "A graphic map of the path of control or data through the operations in a program or an information-handling system. "
+msgid	"Flowchart"
+msgstr	"Diagramma di flusso"
+#
+#. "The state in which an interface component can receive both keyboard input and mouse input. "
+# NEW MESSAGE
+msgid "focus" 
+msgstr	"stato attivo"
+#
+#. "A container for programs and files in graphical user interfaces, symbolized on the screen by a graphical image (icon) of a file folder. This container is called a directory in other systems. "
+msgid	"Folder"
+msgstr	"Cartella"
+#
+#. "A set of characters of the same typeface (such as Garamond), style (such as italic), and weight (such as bold). "
+msgid	"Font"
+msgstr	"Tipo di carattere"
+#
+#. "A dialog element that you use to choose a font. When you click  on a font selector button the font selector dialog is displayed. "
+# NEW MESSAGE
+msgid "Font selector button" 
+msgstr	"Pulsante del Selettore font"
+#
+#. "A dialog that you use to select a font. When you click on a font selector button the font selector dialog is displayed. "
+# NEW MESSAGE
+msgid "Font selector dialog" 
+msgstr	"Finestra Selettore font"
+#
+#. "One or more identifying lines printed at the bottom of a page. A footer may contain a folio (page number), a date, the author's name, and the document title. "
+msgid	"Footer"
+msgstr	"Piè di pagina"
+#
+msgid	"Forecast"
+msgstr	"Prevedere"
+#
+#. "To run a program so that its output is visible to the user, or to bring a previously 'backgrounded' program to the foreground. Programs running in the foreground can display output and receive input from the user."
+msgid	"Foreground"
+msgstr	"Foreground"
+#
+#. " A system call to create a new process.  The new process is called a child process. The original process is called a parent process. "
+msgid	"fork"
+msgstr	"duplicare"
+#
+#. "A structured document with spaces reserved for entering information and often containing special coding as well. In some applications (especially databases), a structured window, box, or other self-contained presentation element with predefined areas for entering or changing information."
+msgid	"Form"
+msgstr	"Modulo"
+#
+#. "The structure or appearance of a unit of data. The arrangement of data within a document file that typically permits the document to be read or written by a certain application. "
+msgid	"Format"
+msgstr	"Formato"
+#
+#. "A mathematical statement that describes the actions to be performed on numeric values. A formula sets up a calculation without regard to the actual values."
+msgid	"Formula"
+msgstr	"Formula"
+#
+#. "A mathematical method, developed by the French mathematician Jean-Baptiste-Joseph Fourier (1768-1830), for signal processing and signal generation tasks such as spectral analysis and image processing. It describes the strategy by which a periodic curve (a function) can be composed into elementary curves (sines and cosines)."
+msgid	"Fourier Analysis"
+msgstr	"Analisi di Fourier"
+#
+#. "A division indicated by the division sign or by a stroke bar. The dividend and the divisor are called the numerator and denominator respectively."
+msgid	"Fraction"
+msgstr	"Frazione"
+#
+#. "1. In asynchronous serial communications, a unit of transmission that is sometimes measured in elapsed time and begins with the start bit that precedes a character and ends with the last stop bit that follows the character. 2. In synchronous communications, a package of information transmitted as a single unit. 3. In motion video, a single image. 4. In the Open Look GUI, a bordered screen region that can contain application-specific object."
+msgid	"Frame"
+msgstr	"Frame"
+#
+#. "As defined by Free Software Foundation, free software is software that comes with permission for anyone to use, copy, and distribute, either verbatim or with modifications, either gratis or for a fee. In particular, this means that the source code must be This is very close, but not identical, to the notion of Open Source software. Detailed discussion of this and related topics can be found on <ulink  type='http'  url='http://www.gnu.org/philosophy/free-sw.html'>Free Software Foundation's Web page</ulink>."
+msgid	"Free Software"
+msgstr	"Software gratuito"
+#
+#. "The measure of how often a periodic event occurs, such as a signal going through a complete cycle. Frequency is usually measured in hertz (Hz)."
+msgid	"Frequency"
+msgstr	"Frequenza"
+#
+#. "A protocol for exchanging files over the Internet or local network. There is a number of utilities based on this protocol, such as gFTP; you can also use command ftp on the command line. In addition, most file managers and Web browsers have built-in FTP capabilities."
+msgid	"FTP"
+msgstr	"FTP"
+#
+#. "In a hierarchical filing system, a pathname containing all the possible components of a pathname, including the network share or drive and root directory, as well as any subdirectories and the file or object name. "
+msgid	"full pathname"
+msgstr	"percorso completo"
+#
+#. "1. The purpose of, or the action carried out by, a program or routine. 2. A general term for a subroutine. "
+msgid	"Function"
+msgstr	"Funzione"
+#
+#. "A unit for magnetic field intensity particularly used in magnetic surveys. The numerical value of the power to which a video signal voltage is raised to obtain linear light."
+msgid	"Gamma"
+msgstr	"Gamma"
+#
+#. "The branch of mathematics that deals with the construction, properties, and relationships of points, lines, angles, curves, and shapes. A adjective applied to graphics operations at the level of vertices, adges and polygons, such as transformation and clipping, as opposed to rendering."
+msgid	"Geometry"
+msgstr	"Geometria"
+#
+#. "An FTP command that instructs the server to transfer a specified file to the client. "
+msgid	"get"
+msgstr	"get"
+#
+#. "Pertaining to an entire document, file, or program rather than to a restricted segment of it. "
+msgid	"Global"
+msgstr	"Globale"
+#
+#. "The Global Menu provides a fixed menu that you can open from various places in the desktop, including the <B>Main Menu</B> button and any panel. "
+# NEW MESSAGE
+msgid "Global Menu" 
+msgstr	"Menu Globale"
+#
+#. "A freedesktop environment for UNIX and UNIX-like operating systems; one of the two leading desktop environments for Linux (the other one is KDE). For more information, please visit <ulink type='http' url='http:///www.gnome.org/'>GNOME Web site</ulink>. Officially, GNOME stands for GNU Network Object Model Environment. The only part of this name that really matters is GNU, which is there to indicate that GNOME is a part of the larger GNU project."
+msgid	"GNOME"
+msgstr	"GNOME"
+#
+#. "The icon associated with the <B>Main Menu</B> button."
+# NEW MESSAGE
+msgid "GNOME footprint" 
+msgstr	"Impronta di GNOME"
+#
+#. "The default panel that appears along the bottom of your GNOME desktop when you log on for the first time."
+# NEW MESSAGE
+msgid "GNOME Panel" 
+msgstr	"Pannello GNOME"
+#
+#. "GNU's Not UNIX; a project to develop a complete UNIX-like operating system which is free software. Combination of tools and utilities produced by GNU project with Linux kernel is widely known under the name 'Linux operating system'; more accurately, such For more information about GNU project, visit its <ulink type='http' url='http://www.gnu.org/'>Web page</ulink>."
+msgid	"GNU"
+msgstr	"GNU"
+#
+#. "A software license developed by the Free Software Foundation. In short, it allows anyone to use, copy, distribute, or sell the software, in original or modified form, as long as you distribute the program's source code along with the binaries, and you dis GPL plays an extremely important role in the free software movement; almost all of GNU project software, as well as <link linkend='linux'>Linux</link> kernel, is distributed  under GPL. For a detailed discussion of history, ideas and philosophy related to GPL and free sofware in general, visit  <ulink type="http" url="http://www.gnu.org/philosophy">FSF's Web  page</ulink>."
+msgid	"GPL"
+msgstr	"GPL"
+#
+#. "1. To capture graphical image data from a video camera or another full-motion video source and put it into memory. 2. To point to the edge of a window frame, or corner of a window, and   click to take hold of the window. After a grab action you usually drag the object. "
+msgid	"Grab"
+msgstr	"Catturare"
+#
+#. "The rate of change of a quantity with distance."
+msgid	"Gradient"
+msgstr	"Gradiente"
+#
+#. "Synonymous with Chart. A graphic or diagram that displays data or the relationships between sets of data in pictorial rather than numeric form."
+msgid	"Graph"
+msgstr	"Grafico"
+#
+#. "A visual computer environment that represents programs, files, and options with graphical images, such as icons, menus, and dialog boxes on the screen. "
+msgid	"Graphical user interface"
+msgstr	"Interfaccia utente grafica"
+#
+#. "Two sets of lines or linear elements at right angles to each other. A spreadsheet is a grid of rows and columns."
+msgid	"Grid"
+msgstr	"Griglia"
+#
+#. "A collection of elements that can be treated as a whole, such as a collection of records in a database report, or a collection of objects that can be moved and transformed as a single object in a drawing program. Also a collection of users who are referred to by a common name."
+msgid	"Group"
+msgstr	"Gruppo"
+#
+#. "A box in a dialog that groups a set of related dialog elements."
+# NEW MESSAGE
+msgid "group box" 
+msgstr	"casella di gruppo"
+#
+#. "A collection of tools for creating screen widgets such as scrollbars, menus, checkbuttons, etc. in applications. GTK is used by all GNOME applications."
+msgid	"Gtk"
+msgstr	"GTK"
+#
+#. "Acronym for Graphical User Interface."
+msgid	"GUI"
+msgstr	"GUI"
+#
+#. "The blank space or inner margin between two facing pages of a bound document."
+msgid	"Gutter"
+msgstr	"Margine interno"
+#
+#. "A person, more commonly considered a cracker, who uses computer expertise for illicit ends, such as by gaining access to computer systems without permission and tampering with programs and data. "
+msgid	"Hacker"
+msgstr	"Hacker"
+#
+#. "Any token or pointer that a program can use to identify and access an object such as a device, a file, a window, a dialog box or any resource."
+msgid	"Handle"
+msgstr	"Handle"
+#
+#. "A series of signals acknowledging that communication or the transfer of information can take place between computers or other devices. "
+msgid	"Handshake"
+msgstr	"Handshake"
+#
+#. "A device containing one or more inflexible platters coated with material in which data can be recorded magnetically, together with their read/write heads, the head-positioning mechanism, and the spindle motor in a sealed case that protects against outside contaminants."
+msgid	"Hard Disk"
+msgstr	"Disco rigido"
+#
+#. "1. In word processing or printing, text that is to appear at the top of pages. 2. Information attached to the beginning of data that contains information about the subsequent dara, such as a block of bytes in communications, a file on a disk, a set of records in a database, or an executable program. "
+msgid	"Header"
+msgstr	"Intestazione"
+#
+msgid	"Headword"
+msgstr	"Lemma"
+#
+msgid	"Hello World"
+msgstr	"Hello World"
+#
+#. "An item on a menu bar in a graphical user interface that enables the user to access the help feature of the present application. "
+msgid	"Help"
+msgstr	"Guida"
+#
+#. "Using 16 rather than 10 as the base for representing numbers. The hexadecimal system uses the digits 0 through 9 and the letters A through F (uppercase or lowercase) to represent the decimal numbers 0 through 15. "
+msgid	"Hex"
+msgstr	"Esadecimale"
+#
+#. "A file that, in order to protect it from deletion or modification, is not shown in the normal listing of the files contained in a directory. Such a file is often used to store code or data critical to the system configuration."
+msgid	"Hidden file"
+msgstr	"File nascosto"
+#
+#. "To temporarily remove the onscreen display of an application's active window while leaving the application running. "
+msgid	"Hide"
+msgstr	"Nascondere"
+#
+#. "A button that enables you to hide a panel or drawer. You can  also use hide buttons to show hidden panels. Hide buttons appear at either end of  panels and at one end of open drawers. "
+# NEW MESSAGE
+msgid "Hide button" 
+msgstr	"Pulsante Nascondi"
+#
+#. "A type of organization that, like a tree, branches into more specific units, each of which is 'owned' by the higher-level unit immediately above. "
+msgid	"hierachy"
+msgstr	"gerarchia"
+#
+#. "A visual indication that an object is in a special state, as by displaying it in reverse video (light on dark rather than dark on light, and vice versa) or with greater intensity. "
+msgid	"Highlight..."
+msgstr	"Evidenziare"
+#
+#. "A chart consisting of horizontal or vertical bars, the widths or heights of which represent the values of certain data."
+msgid	"Histogram"
+msgstr	"Istogramma"
+#
+#. "A list of the user's actions within a program, such as commands entered in an operating system shell, menus passed through using Gopher, or links followed using a Web browser."
+msgid	"History"
+msgstr	"Cronologia"
+#
+#. "A beginning position, such as the top left corner of a character-based display, the left end of a line of text, cell A1 of a spreadsheet, or the top of a document."
+msgid	"Home"
+msgstr	"Home"
+#
+#. "A directory assigned to the user by the system administrator. The home directory is the current directory when the user first logs in, and the user can return to it by entering the command cd (change directory) without a pathname. "
+msgid	"Home directory"
+msgstr	"Directory home"
+#
+#. "1. A document intended to serve as a starting point in a hypertext system, especially the World Wide Web. 2. An entry page for a set of Web pages and other files in a Web site. "
+msgid	"Home Page"
+msgstr	"Home page"
+#
+#. "A computing milieu, usually within an organization, in which only one manufacturer's hardware and one manufacturer's software are used. "
+msgid	"Homogeneous environment"
+msgstr	"Ambiente omogeneo"
+#
+#. "1. The main computer in a mainframe or minicomputer environment, that is, the computer to which terminals are connected. 2. In PC-based networks, a computer that provides access to other computers. 3. On the Internet or other large networks, a server computer that has access to other computers on the network."
+msgid	"Host"
+msgstr	"Host"
+#
+#. "The name of a specific server on a specific network within the Internet."
+msgid	"Host name"
+msgstr	"Nome host"
+#
+#. "Hot-keys are keyboard combinations used to do actions on a computer instead of using the mouse to do the same action. Hot-keys can speed up computer usage. Also known under the name <quote>keyboard shortcut</quote> or <quote>keyboard accelerator</quote>."
+msgid	"Hot Key"
+msgstr	"Tasto di scelta"
+#
+#. "Any of various routines, such as updating the clock or performing garbage collection, designed to keep the system, the environment within which a program runs, or the data structures within a program in good working order."
+msgid	"Housekeeping"
+msgstr	"Manutenzione"
+#
+#. "Acronym for Hypertext Markup Language. The markup language used for documents on the World Wide Web. HTML is an application of SGML (Standard Generalized Markup Language) that uses tags to mark elements, such as text and graphics, in a document to indicate how Web browsers should display these elements to the user and should respond to user actions such as activation of a link by means of a key press or mouse click. "
+msgid	"HTML"
+msgstr	"HTML"
+#
+#. "Hypertext Transfer Protocol; the protocol by which web pages and other web-accessible resources are delivered. Whenever you are browsing the Web, your browser uses HTTP to communicate with the Web server and request a Web page. HTTP is defined in <ulink  type='http' url='http://www.ietf.org/rfc/rfc1945.txt'>RFC 1945</ulink> (HTTP 1.0) and <ulink type='http' url='http://www.ietf.org/rfc/rfc2068.txt'>RFC 2068</ulink>  (HTTP 1.1)."
+msgid	"HTTP"
+msgstr	"HTTP"
+#
+#. "In the HSB color model, one of the three characteristics used to describe a color. Hue is the attribute that most readily distinguishes one color from other colors. It depends on the frequency of a light wave in the visible spectrum. "
+msgid	"Hue"
+msgstr	"Tonalità"
+#
+#. "A piece of hardware that can be used both for providing data to a computer and for receiving data from it, depending on the current situation. "
+msgid	"I/O subsystem"
+msgstr	"Sottosistema di I/O"
+#
+#. "A small picture used within a graphical user interface to indicate  a program, file, or other part of a computer system."
+msgid	"Icon"
+msgstr	"Icona"
+#
+#. "A dialog element that you use to choose an icon. When you click  on an icon selector button the icon selector dialog is displayed."
+# NEW MESSAGE
+msgid "Icon selector button" 
+msgstr	"Pulsante del Selettore icone"
+#
+#. "A dialog that you use to select an icon. When you click on an icon selector button the icon selector dialog is displayed."
+# NEW MESSAGE
+msgid "Icon selector dialog" 
+msgstr	"Finestra Selettore icone"
+#
+#. "Synonymous with Identifier. "
+msgid	"ID"
+msgstr	"ID"
+#
+#. "Intergrated Drive Electronics;  an interface for connecting hard drives and other similar devices to your computer. IDE is an old interface; nowadays, most drives use an enhanced version of IDE, EIDE."
+msgid	"IDE"
+msgstr	"IDE"
+#
+#. "Any text string used as a label, such as the name of a procedure or a variable in a program or the name attached to a hard disk or floppy disk. "
+msgid	"Identifier"
+msgstr	"Identificatore"
+#
+#. "1. Operational but not in use. 2. Waiting for a command."
+msgid	"Idle"
+msgstr	"Inattivo"
+#
+#. "Not allowed, or leading to invalid results. For example, an illegal character in a word processing program would be one that the program cannot recognize; an illegal operation might be impossible for a program or system because of built-in constraints. "
+msgid	"Illegal"
+msgstr	"Non valido"
+#
+#. "A stored description of a graphic picture, either as a set of brightness and color values of pixels or as a set of instructions for reproducing the picture. "
+msgid	"Image"
+msgstr	"Immagine"
+#
+#. "The process of getting an application into operation."
+msgid	"Implementation"
+msgstr	"Implementazione"
+#
+#. "To bring information from one system or program into another. "
+msgid	"Import"
+msgstr	"Importare"
+#
+#. "In an environment capable of displaying multiple on-screen windows, any window other than the one currently being used for work. "
+msgid	"Inactive window"
+msgstr	"Finestra inattiva"
+#
+msgid	"Increase"
+msgstr	"Aumentare"
+#
+#. "An update of those files only that have changed since a specific date."
+msgid	"Incremental update"
+msgstr	"Aggiornamento incrementale"
+#
+#. "Displacement of the left or right edge of a block of text in relation to the margin or to other blocks of text. "
+msgid	"Indent"
+msgstr	"Rientro"
+#
+#. "A listing of keywords and associated data that point to the location of more comprehensive information, such as files and records on a disk or in a database."
+msgid	"Index"
+msgstr	"Indice"
+#
+#. "A dial or light that displays information about the status of a device, such as a light connected to a disk drive that glows when the disk is being accessed."
+msgid	"Indicator"
+msgstr	"Indicatore"
+#
+#. "The meaning of data as it is intended to be interpreted by people. Data consists of facts, which become information when they are seen in context and convey meaning to people. "
+msgid	"Information"
+msgstr	"Informazioni"
+#
+#. "The process of assigning initial values to variables and data structures in a program to prepare them for operation."
+msgid	"initialization"
+msgstr	"inizializzazione"
+#
+msgid	"Inode"
+msgstr	"Inode"
+#
+#. "Information entered into a computer or program for processing, as from a keyboard or from a file stored on a disk drive."
+msgid	"Input"
+msgstr	"Input"
+#
+#. "The complementary tasks of gathering data for a computer or a program to work with, and of making the results of the computer's activities available to the user or to other computer processes. "
+msgid	"Input/output"
+msgstr	"Input/output"
+#
+msgid	"insensitive version"
+msgstr	"Versione non sensibile"
+#
+#. "A blinking vertical bar on the screen, such as in graphical user interfaces, that marks the location at which inserted text will appear. "
+msgid	"Insertion point"
+msgstr	"Punto di inserimento"
+#
+#. "To set in place and prepare for operation. Operating systems and application programs commonly include a disk-based installation, or setup, program that does most of the work of preparing the program to work with the computer, printer, and other devices. "
+msgid	"Install"
+msgstr	"Installare"
+#
+#. "A register (small, high-speed memory circuit within a microprocessor) that contains the address (location) of the instruction to be executed next in the program sequence."
+msgid	"instruction pointer"
+msgstr	"puntatore istruzione"
+#
+#. "The conversational exchange of input and output, as when a user enters a question or command and the system immediately responds. "
+msgid	"Interaction"
+msgstr	"Interazione"
+#
+msgid	"Intercept"
+msgstr	"Intercettare"
+#
+#. "Synonymous with Rich Text Format. An adaptation of DCA (Document Content Architecture) that is used for transferring formatted text documents between applications, even those applications running on different platforms. "
+msgid	"Interchange File Format"
+msgstr	"Interchange File Format"
+#
+#. "1. The point at which a connection is made between two elements so that they can work with each other or exchange information. 2. Software that enables a program to work with the user (the user interface, which can be a command-line interface, menu-driven, or a graphical user interface), with another program such as the operating system, or with the computer's hardware. 3. A card, plug, or other device that connects pieces of hardware with the computer."
+msgid	"Interface"
+msgstr	"Interfaccia"
+#
+msgid	"Internal bug"
+msgstr	"Bug interno"
+#
+#. "An error pertaining to the main program code"
+msgid	"Internal error"
+msgstr	"Errore interno"
+#
+msgid	"International"
+msgstr	"Internazionale"
+#
+#. "Internet is the network of millions of computers all around the world, connected to each other by some hardware means (cables, wires, phone lines, communication satellites) and communicating with each other using some standard protocols. Internet makes it possible for users of these computers to send and receive electronic mail, browse the World Wide Web, exchange files (using FTP protocol), remotely login into your computer from other places (using telnet), and more."
+msgid	"Internet"
+msgstr	"Internet"
+#
+#. "A signal sent from an I/O device to the processor rwhen an error has occurred or when assistance is needed to complete the I/O. When the processor receives an interrupt, it suspends its current operations, saves the status of its work, and transfers control to a special routine known as an interrupt handler, which contains the instructions for dealing with the particular situation that caused the interrupt. Interrupts are the processor's way of communicating with the other elements that make up a computer system."
+msgid	"Interrupt"
+msgstr	"Interrupt"
+#
+#. "An operator in relational algebra, used in database management. Given two relations (tables), A and B, that have corresponding fields (columns) containing the same types of values, then INTERSECT A, B builds a third relation containing only those tuples (rows) that appear in both A and B."
+msgid	"Intersect"
+msgstr	"Intersezione"
+#
+msgid	"Interval"
+msgstr	"Intervallo"
+#
+msgid	"Intuitive"
+msgstr	"Intuitivo"
+#
+#. "Erroneous or unrecognizable because of a flaw in reasoning or an error in input. "
+msgid	"Invalid"
+msgstr	"Non valido"
+#
+#. "To reverse something or change it to its opposite. For example, to invert the colors on a monochrome display means to change light to dark and dark to light. "
+msgid	"Invert"
+msgstr	"Invertire"
+#
+#. "The reversal of light and dark in the display of selected characters on a video screen. "
+msgid	"Invert Selection"
+msgstr	"Selezione inversa"
+#
+msgid	"Invisible"
+msgstr	"Invisibile"
+#
+#. "A unique address assigned to each computer connected to  the <link linkend='internet'>Internet</link> or a local  network. Has the form <systemitem>a.b.c.d</systemitem>, where a,b,c,d are numbers from 0 to 255, subject to a number of rules  and convention. All communication between computers on the Internet is based on IP addresses; however, on a properly set up network you can instead use domain names (such as www.gnome.org), which are automatically transformed to IP addresses using <link linkend="dns">Domain Name Service</link> (DNS)."
+msgid	"IP Address"
+msgstr	"Indirizzo IP"
+#
+#. "Acronym for Internet Relay Chat. A service that enables an Internet user to participate in a conversation on line in real time with other users. An IRC channel, maintained by an IRC server, transmits the text typed by each user who has joined the channel. "
+msgid	"IRC"
+msgstr	"IRC"
+#
+#. "A replaceable disk drive developed by Iomega fpr storing large quantities of data (500MB)."
+msgid	"Jaz Drive"
+msgstr	"Unità Jaz"
+#
+#. "A specified amount of processing performed as a unit by a computer. "
+msgid	"Job"
+msgstr	"Processo"
+#
+#. "Acronym for Joint Photographic Experts Group. An ISO/ITU standard for storing images in compressed form using a discrete cosine transform. "
+msgid	"JPEG"
+msgstr	"JPEG"
+#
+#. "1. To align vertically. 2. To align lines of text evenly along both the left and right margins of a column by inserting extra space between the words in each line. "
+msgid	"Justify"
+msgstr	"Giustificare"
+#
+#. "A desktop environment for UNIX and UNIX-like operating systems; one of two leading desktop environments for Linux (the other one is <link linkend='gnome'>GNOME</link>). For more infrmation visit <ulink type='http' url='http://www.kde.org'>KDE Web site</ulink>."
+msgid	"KDE"
+msgstr	"KDE"
+#
+#. "The core component of an operating system, responsible for basic operations such as accessing the files, input/output, managing the processor and memory resources, etc. All other tools, utilities, and applications use the kernel."
+msgid	"Kernel"
+msgstr	"Kernel"
+#
+#. "On a keyboard, the combination of a plastic keycap, a tension mechanism that suspends the keycap but allows it to be pressed down, and an electronic mechanism that records the key press and key release. "
+msgid	"Key"
+msgstr	"Tasto"
+#
+#. "A hardware unit with a set of switches that resembles a typewriter keyboard and that conveys information from a user to a computer or data communications circuit. "
+msgid	"Keyboard"
+msgstr	"Tastiera"
+#
+msgid	"Keymap control"
+msgstr	"Controllo mappa caratteri"
+#
+#. "1. A characteristic word, phrase, or code that is stored in a key field and is used to conduct sorting or searching operations on records in a database. 2. Any of the set of words that composes a given programming language or set of operating-system routines."
+msgid	"Keyword"
+msgstr	"Parola chiave"
+#
+#. "To stop or abort a process in a program or operating system. "
+msgid	"Kill"
+msgstr	"Interrompere"
+#
+#. "An application of such popularity and widespread standardization that it fuels sales of the hardware platform or operating system for which it was written. "
+msgid	"Kill app"
+msgstr	"Applicazione killer"
+#
+#. "A data unit of 1,024 bytes Abbreviated K, KB, or Kbyte. "
+msgid	"Kilobyte"
+msgstr	"Kilobyte"
+#
+#. "An identifier. A label can be a physical item, such as a stick-on tag used to identify disks and other computer equipment, or an electronic label added to floppy disks or hard disks. It can also be a word, symbol, or other group of characters used to identify a file, a storage medium, an element defined in a computer program, or a specific item in a document."
+msgid	"Label"
+msgstr	"Etichetta"
+#
+msgid	"Lambda"
+msgstr	"Lambda"
+#
+#. "A horizontal print orientation in which text or images are printed 'sideways'-s greater than the height. "
+msgid	"Landscape"
+msgstr	"Orizzontale"
+#
+#. "Any artificial language that can be used to define a sequence of instructions that can ultimately be processed and executed by the computer. "
+msgid	"Language"
+msgstr	"Linguaggio"
+#
+#. "A document preparation system based on TeX, developed by Leslie Lamport. By using simple, intuitive commands for text elements such as headers, LaTeX lets the user focus more on document content than document appearance. "
+msgid	"LaTeX"
+msgstr	"LaTeX"
+#
+#. "A symbol by which a program or application can be started."
+msgid	"launch icon"
+msgstr	"icona di avvio"
+#
+#. "A program that organizes frequently used applications and programs and that allows the user to execute/start them with a single mouse click."
+msgid	"Launcher"
+msgstr	"Programma di avvio"
+#
+#. "1. The protocol or protocols operating at a particular level within a protocol suite, such as IP within the TCP/IP suite. Each layer is responsible for providing specific services or functions for computers exchanging information over a communications network (such as the layers in the ISO/OSI reference model). 2. In communications and distributed processing, a set of rules and standards that handles a particular class of events."
+msgid	"Layer"
+msgstr	"Livello"
+#
+#. "The overall plan or design of a document system. "
+msgid	"Layout"
+msgstr	"Layout"
+#
+#. "Press and release the left mouse button on an item once. Use this term when you want to avoid ambiguity when describing an action that also involves a middle-click or a right-click."
+# NEW MESSAGE
+msgid "left-click on" 
+msgstr	"fare clic con il pulsante sinistro su"
+#
+#. "The mouse button under the first finger of the right hand in a mouse  configured for right-hand use."
+# NEW MESSAGE
+msgid "left mouse button" 
+msgstr	"pulsante sinistro del mouse"
+#
+#. "A paper format."
+msgid	"Legal"
+msgstr	"Legale"
+#
+#. "The number of linear units of storage space occupied by an object, such as a file on disk or a data structure in a program."
+msgid	"Length"
+msgstr	"Lunghezza"
+#
+#. "A paper format"
+msgid	"Letter"
+msgstr	"Lettera"
+#
+#. "In programming, a collection of routines stored in a file. "
+msgid	"Library"
+msgstr	"Libreria"
+#
+#. "A legal contract between a software provider and a user specifying the rights of the user regarding the software. "
+msgid	"License agreement"
+msgstr	"Contratto di licenza"
+#
+msgid	"Light precipitation"
+msgstr	"Leggera precipitazione"
+#
+msgid	"Limits"
+msgstr	"Limiti"
+#
+#. "1. Any wire or wires, such as power lines and telephone lines, used to transmit electrical power or signals. 2. In communications, a connection, usually a physical wire or other cable, between sending and receiving (or calling and called) devices, including telephones, computers, and terminals. 3. In programming, a statement (instruction) that occupies one line of the program."
+msgid	"Line"
+msgstr	"Linea"
+#
+msgid	"line arguments"
+msgstr	"argomenti del comando"
+#
+msgid	"linear transfer"
+msgstr	"trasferimento lineare"
+#
+#. "To connect two elements in a data structure by using index variables or pointer variables. A connection between an element in a hypertext document, such as a word, phrase, symbol, or image, and a different element in the document, another document, a file, or a script."
+msgid	"Link"
+msgstr	"Collegare"
+#
+#. "A free (as in GNU GPL) UNIX-like operating system, written in  collaboration by hundreds of developers all around the world, most of them volunteers. One of the most successful and famous  <link linkend='freesoftware'>free software</link> projects. Strictly speaking, the name 'Linux' only applies to the kernel of the operating system. Most of other tools and utilities necessary for system functioning came from GNU project, so the operating system should be properly called 'GNU/Linux'; however, for c. There is a tremendous amount of information about Linux available on the Internet; good starting points are <ulink type='http' url='http://www.linux.com'>www.linux.com</ulink>,       <ulink type='http' url='http://www.linux.org'>www.linux.org</ulink>."
+msgid	"Linux"
+msgstr	"Linux"
+#
+#. "A dialog element that you use to select one of several items. A list box has no drop-down feature."
+# NEW MESSAGE
+msgid "list box" 
+msgstr	"casella di riepilogo"
+#
+#. "To place information from storage into memory for processing, if it is data, or for execution, if it is program code."
+msgid	"load"
+msgstr	"caricare"
+#
+#. "1. In communications, a device that can be accessed directly rather than by means of a communications line. 2. In information processing, an operation performed by the computer at hand rather than by a remote computer. "
+msgid	"Local"
+msgstr	"Locale"
+#
+#. "A number specifying a location or address in memory where data is stored. "
+msgid	"Location"
+msgstr	"Posizione"
+#
+#. "1. A software security feature that requires a key or dongle in order for the application to run correctly. 2. A mechanical device on some removable storage medium (for example, the write-protect notch on a floppy disk) that prevents the contents from being overwritten."
+msgid	"Lock"
+msgstr	"Blocco"
+#
+#. "A record of transactions or activities that take place on a computer system. "
+msgid	"Log"
+msgstr	"Registro"
+#
+#. "Based on true and false alternatives as opposed to arithmetic calculation of numeric values. "
+msgid	"Logical"
+msgstr	"Logico"
+#
+#. "The process by which a user authenticates herself to a computer system, usually by typing in a username and password."
+msgid	"Login"
+msgstr	"Login"
+#
+#. "The process of terminating a session with a computer accessed through a communications line. "
+msgid	"Logout"
+msgstr	"Logout"
+#
+msgid	"Look"
+msgstr	"Aspetto"
+#
+#. "A function, often built into spreadsheet programs, in which a previously constructed table of values called a lookup table is searched for a desired item of information. "
+msgid	"Lookup"
+msgstr	"Ricerca"
+#
+#. "A set of statements in a program executed repeatedly, either a fixed number of times or until some condition is true or false. "
+msgid	"Loop"
+msgstr	"Ciclo"
+#
+#. "1. In applications, a set of keystrokes and instructions recorded and saved under a short key code or macro name. 2. In programming languages, a compound instruction put together from simpler instructions. "
+msgid	"Macro"
+msgstr	"Macro"
+#
+#. "A computer system facility that enables sending and holding messages via the computer."
+msgid	"Mail"
+msgstr	"Posta"
+#
+#. "An application which a user reads and sends their e-mail with. Also called Mail User Agent (MUA)."
+msgid	"Mail Client"
+msgstr	"Client di posta"
+#
+msgid	"Mail server"
+msgstr	"Server di posta"
+#
+#. "A protocol designator used in the HREF of a hyperlink that enables a user to send e-mail to someone. "
+msgid	"Mail to"
+msgstr	"Mail to"
+#
+#. "A disk storage area assigned to a network user for receipt of electronic messages. "
+msgid	"Mailbox"
+msgstr	"Casella postale"
+#
+#. "The set of statements in a computer program at which execution of the program begins and that invokes the subroutines of the program."
+msgid	"Main body"
+msgstr	"Corpo principale"
+#
+#. "The Main Menu provides a configurable access point to all of the main command menus and submenus in the GNOME desktop."
+# NEW MESSAGE
+msgid "Main Menu" 
+msgstr	"Menu principale"
+#
+#. "The <B>Main Menu</B> button opens the Main Menu. The default appearance of the <B>Main Menu</B> button in panels and menus is a stylized footprint icon."
+# NEW MESSAGE
+msgid "Main Menu button" 
+msgstr	"Pulsante del menu principale"
+#
+#. "Online documentation for UNIX commands and programs and the UNIX library routines available for use in C programs. These documents, also found in the UNIX Programmer's Manual, can be displayed on a user's terminal or printed using the command man."
+msgid	"Man Pages"
+msgstr	"Pagine man"
+#
+#. "Any program that is designed to perform a certain set of housekeeping tasks related to computer operation, such as the maintenance of files. "
+msgid	"Manager"
+msgstr	"Gestione"
+#
+msgid	"Manual"
+msgstr	"Manuale"
+#
+#. "A documentation resource commonly provided with UNIX programs. Manual pages typically contain concise technical listings of available command line options and other settings which affect the running of the program. Can be viewed using GNOME Help Browser or by typing commandname on the command line."
+msgid	"Manual page"
+msgstr	"Pagine man"
+#
+#. "In printing, those portions of a page-top, bottom, and sides-outside the main body of text."
+msgid	"Margins"
+msgstr	"Margini"
+#
+#. "1. In applications and data storage, a symbol or other device used to distinguish one item from others like it. 2. In digital transmission, the state of a communications line (positive or negative) corresponding to a binary 1. "
+msgid	"Mark"
+msgstr	"Segno"
+#
+#. "The process of testing whether two data items are identical or of finding a data item that is identical to a key. "
+msgid	"matching"
+msgstr	"corrispondenza"
+#
+#. "To enlarge a window to fill your desktop to the maximum area allowed, constrained by other desktop elements such as panels. You can maximize windows vertically, horizontally, or both."
+# NEW MESSAGE
+msgid "maximise" 
+msgstr	"ingrandire"
+#
+#. "Acronym for multiple-document interface. A user interface in an application that allows the user to have more than one document open at the same time. "
+msgid	"MDI"
+msgstr	"MDI"
+#
+#. "The physical material, such as paper, disk, and tape, used for storing computer-based information. "
+msgid	"media type"
+msgstr	"tipo di supporto"
+#
+#. "The value in a series of observed values that has exactly as many observed values above it as there are below."
+msgid	"Median"
+msgstr	"Mediana"
+#
+msgid	"Meeting"
+msgstr	"Riunione"
+#
+#. "A device where information can be stored and retrieved. In the most general sense, memory can refer to external storage such as disk drives or tape drives; in common usage, it refers only to a computer's main memory."
+msgid	"Memory"
+msgstr	"Memoria"
+#
+#. "A list of possible actions or options available within a program."
+msgid	"Menu"
+msgstr	"Menu"
+#
+#. "The bar at the top of a window that includes the menus for an application."
+# NEW MESSAGE
+msgid "menu bar" 
+msgstr	"barra dei menu"
+#
+#. "A special panel which is different in appearance from the GNOME Panel, but which provides the similar functionality. The Menu Panel includes textual rather  than graphical menus."
+# NEW MESSAGE
+msgid "Menu Panel" 
+msgstr	"Pannello dei menu"
+#
+#. "The title at the top of the menu when you open the menu. You can right-click on the menu title to open a popup menu."
+# NEW MESSAGE
+msgid "menu title" 
+msgstr	"titolo del menu"
+#
+#. "The left side of the Menu Editor window where you select a menu to work with."
+# NEW MESSAGE
+msgid "menu tree pane" 
+msgstr	"riquadro struttura menu"
+#
+#. "To combine two or more items, such as lists, in an ordered way and without changing the basic structure of either. "
+msgid	"Merge"
+msgstr	"Unire"
+#
+#. "Information generated by an application that informs the user about the status of a process."
+msgid	"Message"
+msgstr	"Messaggio"
+#
+#. "Data about data. For example, the title, subject, author, and size of a file constitute metadata about the file. "
+msgid	"Metadata"
+msgstr	"Metadati"
+#
+#. "A device-independent file for storing or display. "
+msgid	"Metafile"
+msgstr	"Metafile"
+#
+#. "The mouse button under the second finger of the right hand in a mouse  configured for right-hand use."
+# NEW MESSAGE
+msgid "middle mouse button" 
+msgstr	"pulsante centrale del mouse"
+#
+#. "A 'type' of the file, describing what kind of data and in which format this file contains; for example, MIME type <filename>image/jpeg</filename> is used for graphic files in JPEG format. Used by many applications (such as file manager) to determine what The acronym MIME stands for Multipurpose Internet Mail Extension, since originally it was used to describe types of files sent in e-mail."
+msgid	"Mime Type"
+msgstr	"Tipo MIME"
+#
+msgid	"mini icons"
+msgstr	"mini icone"
+#
+#. "1. In a graphical user interface, to hide a window without shutting down the program responsible for the window. 2. To reduce a window to a button on the Tasklist applet. If you minimize a window and do not have the Tasklist applet on one of your panels, use the tasklist on the Desk Guide applet to restore the window. Alternatively use the Root menu to restore a window."
+msgid	"Minimize"
+msgstr	"Ridurre a icona"
+#
+msgid	"minix"
+msgstr	"minix"
+#
+msgid	"minor faults"
+msgstr	"errori secondari"
+#
+#. "An image that is an exact duplicate of the original with the exception that one dimension is reversed. "
+msgid	"mirror"
+msgstr	"mirror"
+#
+#. "In multimedia applications, a device used to simultaneously combine and blend several inputs into one or two outputs."
+msgid	"mixer device"
+msgstr	"mixer"
+#
+#. "The value of a series of observed values that is the most frequently observed, as exhibited by a frequency-distribution curve."
+msgid	"Modal (value)"
+msgstr	"Modale (valore)"
+#
+#. "The operational state of a computer or a program. "
+msgid	"Mode"
+msgstr	"Modalità"
+#
+#. "A mathematical or graphical representation of a real-world situation or object. Models can generally be changed or manipulated so that their creators can see how the real version might be affected by modifications or varying conditions. "
+msgid	"Model"
+msgstr	"Modello"
+#
+#. "Short for modulator/demodulator. A communications device that enables a computer to transmit information over a standard telephone line. "
+msgid	"Modem"
+msgstr	"Modem"
+#
+#. "A key on the keyboard that, when held down while another key is pressed, changes the meaning of the keystroke or performs an action. "
+msgid	"Modifier"
+msgstr	"Modificatore"
+#
+#. "To modify is typically a small-scale activity. By contrast, to   configure is a larger scale activity. You usually use the term modify to refer to desktop objects. For example, you can modify the hiding policy of a panel. To modify means to make smaller adjustments to an item. These changes  are typically fine-tuning. They usually involve dealing with a specific  characteristic. "
+msgid	"Modify"
+msgstr	"Modificare"
+#
+#. "1. In programming, a collection of routines and data structures that performs a particular task or implements a particular abstract data type. 2. In hardware, a self-contained component that can provide a complete function to a system and can be interchanged with other modules that provide similar functions."
+msgid	"Module"
+msgstr	"Modulo"
+#
+#. "The device on which images generated by the computer's video adapter are displayed. "
+msgid	"Monitor"
+msgstr	"Monitor"
+#
+#. "A monitor that displays images in only one color: black on white "
+msgid	"monochrome"
+msgstr	"monocromatico"
+#
+#. "A command instructing the operating system to incorporate contents of a <link linkend='device'>device</link> (such as a hard drive or a CD-ROM) into the system's link <link linkend='filesystem'>file system</link>. Requires the device name (e.g. <filename>/dev/cdrom</filename>) and the mount point, i.e. the name of the directory under which the contents of the device will be shown (e.g., <filename>/mnt/cdrom</filename>). You must mount any device before you can access files on it, and unmount it before physically disconnnecting or removing the drive. For more information, see Appendix <citetitle>If you are new to UNIX</citetitle> in <citetitle>GNOME User's Guide</citetitle> or manual page for <command>mount</command>.>"
+msgid	"Mount"
+msgstr	"Attivare"
+#
+#. "An small icon (usually an arrow) used to indicate the position of the mouse on the <link linkend='desktop'>desktop</link>."
+msgid	"Mouse Cursor"
+msgstr	"Cursore del mouse"
+#
+#. "A command or instruction to transfer information from one location to another. "
+msgid	"Move"
+msgstr	"Spostare"
+#
+#. "Acronym for Microsoft"
+msgid	"MS"
+msgstr	"MS"
+#
+#. "Short for Microsoft Disk Operating System. A single-tasking, single-user operating system with a command-line interface, released in 1981, for IBM PCs and compatibles. "
+msgid	"MSDOS"
+msgstr	"MSDOS"
+#
+#. "Acronym for Maximum Transmission Unit, the largest unit of data that can be transmitted on a given physical medium. MTU size varies, depending on the network."
+msgid	"MTU"
+msgstr	"MTU"
+#
+#. "The pane on the left-hand side of a Nautilus window. The navigation pane displays information about the current file or folder. The navigation pane also includes tabs that provide additional functionality."
+# NEW MESSAGE
+msgid "navigation pane" 
+msgstr	"riquadro di navigazione"
+#
+#. "Nautilus is the next generation file manager for GNOME being written by Eazel."
+msgid	"Nautilus"
+msgstr	"Nautilus"
+#
+#. "See: Binomial distribution"
+msgid	"Negative Binomial"
+msgstr	"Binomiale negativa"
+#
+msgid	"Netmask"
+msgstr	"Maschera"
+#
+msgid	"Netscape"
+msgstr	"Netscape"
+#
+#. "A group of computers and associated devices that are connected by communications facilities. "
+msgid	"Network"
+msgstr	"Rete"
+#
+msgid	"News Site"
+msgstr	"Sito di news"
+#
+msgid	"NO-DAEMON"
+msgstr	"NO-DAEMON"
+#
+#. "An addressable point on a network. A device, such as a client computer, a server, or a shared printer, that is connected to the network and is capable of communicating with other network devices. "
+msgid	"node"
+msgstr	"nodo"
+#
+#. "In statistics, a type of function that describes the probabilities of the possible values of a random variable. "
+msgid	"Normal distribution"
+msgstr	"Distribuzione normale"
+#
+#. "Any computer designed to be moved easily. Notebooks or portable computers can be characterized by size and weight."
+msgid	"Notebook"
+msgstr	"Notebook"
+#
+#. "A window displayed when an application generates a warning or error message that requires action before the user can proceed."
+msgid	"Notice"
+msgstr	"Avviso"
+#
+msgid	"Notification"
+msgstr	"Notifica"
+#
+msgid	"Number"
+msgstr	"Numero"
+#
+msgid	"Number Converter"
+msgstr	"Convertitore di numeri"
+#
+msgid	"Number Theory"
+msgstr	"Teoria dei numeri"
+#
+msgid	"Numbered List"
+msgstr	"Elenco numerato"
+#
+#. "Pertaining to the digits 0 to 9."
+msgid	"Numeric"
+msgstr	"Numerico"
+#
+#. "Output from a compiler or an assembler, that was translated from the source code of a program and is itself executable machine code or is suitable for processing to produce excutable machine code. "
+msgid	"Object code"
+msgstr	"Codice oggetto"
+#
+#. "Describing a style of text created by slanting a roman font to simulate italics."
+msgid	"oblique"
+msgstr	"obliquo"
+#
+msgid	"Observations"
+msgstr	"Osservazioni"
+#
+#. "No longer required or outdated."
+msgid	"Obsolete"
+msgstr	"Obsoleto"
+#
+#. "In reference to a computing device or a program, unable to communicate with or be controlled by a computer. In reference to one or more computers, being disconnected from a network. "
+msgid	"Offline"
+msgstr	"Disconnesso"
+#
+#. "In reference to a computing device or a program, activated and ready for operation; connected to or being controlled by a system. "
+msgid	"Online"
+msgstr	"Connesso"
+#
+#. "Reciprocal of transmission ratio."
+msgid	"Opacity"
+msgstr	"Opacità"
+#
+#. "1. Being accessible. 2. Use this verb to describe opening any user interface component."
+msgid	"Open"
+msgstr	"Aperto"
+#
+#. "Refers to software for which both the executable files and the source code can be freely redistributed and re-used in other products. This term was introduced by <ulink type='http' url='http://www.opensource.org/'>Open Source Intiative</ulink>; it is very close, but not identical to the notion of <link linkend="freesoftware">free software</link> used by the Free software Foundation"
+msgid	"Open Source"
+msgstr	"Open source"
+#
+#. "The menu at the extreme right of the Menu Panel that enables you to give focus to a window. You can give focus to a window in any workspace. Unlike other panel objects, you cannot move the Open Windows menu."
+# NEW MESSAGE
+msgid "Open Windows menu" 
+msgstr	"menu Finestre aperte"
+#
+#. "The software that controls the allocation and usage of hardware resources such as memory, central processing unit (CPU) time, disk space, and peripheral devices. "
+msgid	"Operating System"
+msgstr	"Sistema operativo"
+#
+#. "1. A specific action carried out by a computer in the process of executing a program. 2. In mathematics, an action performed on a set of entities that produces a new entity. "
+msgid	"Operation"
+msgstr	"Operazione"
+#
+#. "Accepted but not required by a command or system."
+msgid	"optional"
+msgstr	"opzionale"
+#
+#. "A menu choice in many graphical user interface applications that allows the user to specify how the application will act each time it is used. Functionality or parameter that you can select in a dialog. An option can be either on or off. An option is usually represented by a check box. "
+# NEW MESSAGE
+msgid "option" 
+msgstr	"opzione"
+#
+#. "A logical operation for combining two bits (0 or 1) or two Boolean values (false or true). If one or both values are 1 (true), it returns the value 1 (true). "
+msgid	"OR"
+msgstr	"OR"
+#
+#. "1. In computing, the relative significance of a digit or byte. High-order refers to the most significant (usually leftmost) digit or byte; low-order refers to the least significant (usually rightmost) digit or byte. 2. The sequence in which arithmetic operations are performed."
+msgid	"Order"
+msgstr	"Ordine"
+#
+#. "The way text or images are printed, i.e. either lengways or sideways."
+msgid	"Orientation"
+msgstr	"Orientamento"
+#
+#. "The location of the Cartesian coordinates from which the axes that define 2-D and 3-D-space originate. This is the location (0,0)."
+msgid	"Origin"
+msgstr	"Origine"
+#
+msgid	"Orthflow"
+msgstr	"Orthflow"
+#
+msgid	"Outline"
+msgstr	"Struttura"
+#
+#. "The results of processing, whether sent to the screen or printer, stored on disk as a file, or sent to another computer in a network."
+msgid	"Output"
+msgstr	"Output"
+#
+#. "A text-entry mode in which newly typed characters replace existing characters under or to the left of the cursor insertion point. "
+msgid	"Overwrite"
+msgstr	"Sovrascrivere"
+#
+#. "The person who created a file or directory. "
+msgid	"Owner"
+msgstr	"Proprietario"
+#
+#. "To store information in a more compact form. "
+msgid	"Pack"
+msgstr	"Comprimere"
+#
+#. "A computer application consisting of one or more programs created to perform a particular type of work or grouped for modular installation."
+msgid	"Package"
+msgstr	"Pacchetto"
+#
+#. "1. A unit of information transmitted as a whole from one device to another on a network. 2. In packet-switching networks, a transmission unit of fixed maximum size."
+msgid	"Packet"
+msgstr	"Pacchetto"
+#
+#. "In data storage, the addition of one or more bits, usually zeros, to a block of data in order to fill it, to force the actual data bits into a certain position, or to prevent the data from duplicating a bit pattern that has an established meaning, such as an embedded command."
+msgid	"Padding"
+msgstr	"Spaziatura interna celle"
+#
+#. "1. In word processing, the text and display elements to be printed on one side of a sheet of paper. 2. A fixed-size block of memory (8192 contiguous byte locations). 2.  A Web-page."
+msgid	"Page"
+msgstr	"Pagina"
+#
+msgid	"Pager"
+msgstr	"Cercapersone"
+#
+#. "In paint programs, a collection of drawing tools, such as patterns, colors, brush shapes, and different line widths."
+msgid	"Palette"
+msgstr	"Tavolozza"
+#
+#. "The pane on the right-hand side of a Nautilus window. Nautilus displays your files and folders in the view pane. When you access a web page, Nautilus displays the page in the view pane."
+# NEW MESSAGE
+msgid "Pane" 
+msgstr	"Riquadro"
+#
+#. "A control area. An area on your desktop from which you can run special programs, applications, and applets."
+# NEW MESSAGE
+msgid "panel" 
+msgstr	"pannello"
+#
+#. "The menu that appears when you choose Panel from the Global Menu."
+# NEW MESSAGE
+msgid "Panel menu" 
+msgstr	"menu Pannello"
+#
+msgid	"Panelize"
+msgstr	"Pannellizzare"
+#
+#. "In programming, a value that is given to a variable before an expression is evaluated by a program. A parameter can be text, a number, or an argument name assigned to a value that is passed from one routine to another. "
+msgid	"Parameter"
+msgstr	"Parametro"
+#
+msgid	"Parcel"
+msgstr	"Pacco"
+#
+#. "To break input into smaller chunks so that a program can act upon the information."
+msgid	"Parse"
+msgstr	"Analizzare"
+#
+#. "Hard disks and other similar devices can be 'divided' into parts which, for all practical purposes, can be used as separate disks; these parts are called partitions. For example, you can create partitions of differrent types (e.g., FAT32 used by Windows and ext2 used by Linux) on the same disk, format them independently of each other, and so on."
+msgid	"Partition"
+msgstr	"Partizione"
+#
+#. "A string of typable characters (letters, numbers, punctuation marks, etc.) used to authenticate a user's identity. Required for <link linkend='login'>logging in</link>."
+msgid	"Password"
+msgstr	"Password"
+#
+#. "To insert text or a graphic that has been cut or copied from one document into a different location in the same or a different document. "
+msgid	"Paste"
+msgstr	"Incollare"
+#
+#. "1. In communications, a link between two nodes in a network. 2. A route through a structured collection of information. 3. In file storage, the route followed by the operating system through the directories to a file. "
+msgid	"Path"
+msgstr	"Percorso"
+#
+#. "Objects with meaningful regularities."
+msgid	"Pattern"
+msgstr	"Motivo"
+#
+msgid	"Peak indicator"
+msgstr	"Indicatore di picco"
+#
+#. "Statistical concept to describe the correlation coefficient between two variants."
+msgid	"Pearson Correlation"
+msgstr	"Correlazione di Pearson"
+#
+msgid	"pending signals"
+msgstr	"segnali in sospeso"
+#
+#. "The length of time required for an oscillation to complete one full cycle. "
+msgid	"Period"
+msgstr	"Periodo"
+#
+msgid	"Periodic"
+msgstr	"Periodico"
+#
+#. "Acronym for Practical Extraction and Report Language. An interpreted language, based on C and several UNIX utilities. "
+msgid	"Perl"
+msgstr	"Perl"
+#
+#. "A program in Perl is known as a script. "
+msgid	"Perl Script"
+msgstr	"Script Perl"
+#
+#. "In a networked or multiuser computer environment, the ability of a particular user to access a particular resource (to read, write, and execute its contents) by means of his or her user account. Permissions are granted by the system administrator."
+msgid	"Permission"
+msgstr	"Autorizzazione"
+#
+#. "Memory actually present in the system, as opposed to virtual memory. "
+msgid	"physical memory"
+msgstr	"memoria fisica"
+#
+msgid	"picker button"
+msgstr	"pulsante di selezione"
+#
+msgid	"Picker Settings"
+msgstr	"Impostazioni per la selezione"
+#
+#. "The ID number by which the system identifies individual processes. The first process to run on the system has PID 0."
+msgid	"PID"
+msgstr	"PID"
+#
+msgid	"Pilot device"
+msgstr	"Dispositivo pilota"
+#
+#. "1. Software connection between two programs. 2. The UNIX operator that makes the output of one command or program into the input of another. 3. A portion of memory that can be used by one process to pass information along to another.
+msgid	"Pipe"
+msgstr	"Pipe"
+#
+#. "A single element, or <quote>dot</quote>, on the computer's screen.  A pixel's colour is made up of a mixture of red, green and blue light. Screen resolution is measured in pixels."
+msgid	"Pixel"
+msgstr	"Pixel"
+#
+#. "A data structure that describes the pixel image of a graphic, including such features as color, image, resolution, dimensions, storage format, and number of bits used to describe each pixel. "
+msgid	"Pixmap"
+msgstr	"Pixmap"
+#
+msgid	"Place"
+msgstr	"Posizionare"
+#
+msgid	"Play"
+msgstr	"Riprodurre"
+#
+#. "A supplementary software program that plugs into a larger application to provide added functionality. "
+# NEW MESSAGE
+msgid "plugin" 
+msgstr	"plugin"
+#
+#. "1. A unit of measure used in printing, equal to approximately 1/72 of an inch. Character height and the amount of space (leading) between lines of text are usually specified in points. 2. A single pixel on the screen, identified by its row and column numbers."
+msgid	"Point"
+msgstr	"Punto"
+#
+#. "To position the pointer over a particular object or location without clicking."
+# NEW MESSAGE
+msgid "point to" 
+msgstr	"puntare su, spostare il puntatore su"
+#
+#. "A mathematical curve often used in statistics and simulation to represent the likelihood of some event occurring  when the average likelihood is known. "
+msgid	"Poisson distribution"
+msgstr	"Distribuzione di Poisson"
+#
+msgid	"Policy"
+msgstr	"Criteri"
+#
+#. "Any two-dimensional closed (planar) shape composed of connected line segments (vectors), such as a hexagon, an octagon, or a triangle. "
+msgid	"Polygon"
+msgstr	"Poligono"
+#
+#. "An open shape consisting of multiple connected segments. Polylines are used in CAD and other graphics programs. "
+msgid	"Polyline"
+msgstr	"Poligono aperto"
+#
+msgid	"Pooled Variance"
+msgstr	"Varianza del gruppo"
+#
+#. "A menu that opens when you right-click or middle-click on an object. A popup menu usually provides commands that are relevant to the object that you click on."
+msgid	"popup menu"
+msgstr	"menu popup"
+#
+#. "An interface through which data is transferred between a computer and other devices (such as a printer, mouse, keyboard or monitor), a network, or a direct connection to another computer. "
+msgid	"port"
+msgstr	"porta"
+#
+#. "A vertical print orientation in which the page or screen image is taller than it is wide. "
+msgid	"Portrait"
+msgstr	"Verticale"
+#
+#. "The server and associated storage and mail handling services that provide the centralized location for collection and distribution of e-mail over a network."
+msgid	"Post Office"
+msgstr	"Ufficio postale"
+#
+#. "A device or a software routine, such as a linker, that operates on data manipulated first by another processor. "
+msgid	"Post Processor"
+msgstr	"Post-processore"
+#
+#. "Synonym for Mailbox"
+msgid	"Postal Box"
+msgstr	"Casella postale"
+#
+#. "A language for desribing printed pages, developed by <ulink type='http' url='http://www.adobe.com'>Adobe Corporation</ulink>. Can be used to describe both graphics and text, black and white or color. Postscript is the de-facto standard for quality printin Postscript files can  also be saved to disk; they usually have extension <filename>.ps</filename>. There is a number of utilities for viewing Postscript files, such as <application>gv</application> or <application>ggv</application>."
+msgid	"postscript"
+msgstr	"postscript"
+#
+msgid	"power management"
+msgstr	"risparmio energia"
+#
+#. "A protocol allowing a computer to connect to a <link  linkend='tcpip'>TCP/IP</link> network via a modem.  A PPP connection allows an ordinary home computer connected to a telephone line to become a part of the Internet."
+msgid	"PPP"
+msgstr	"PPP"
+#
+#. "A menu choice in many graphical user interface applications that allows the user to specify how the application will act each time it is used. "
+msgid	"Preferences"
+msgstr	"Preferenze"
+#
+msgid	"Prefix"
+msgstr	"Prefisso"
+#
+#. "Use this verb to describe keyboard input."
+# NEW MESSAGE
+msgid "press" 
+msgstr	"premere"
+#
+#. "Describes the indented appearance of a button."
+# NEW MESSAGE
+msgid "pressed in" 
+msgstr	"premuto"
+#
+#. "In word processors and other applications, the feature that formats a document for printing but displays it on the video monitor rather than sending it directly to the printer."
+msgid	"Preview"
+msgstr	"Anteprima"
+#
+#. "For pigments these are red, yellow and blue."
+msgid	"Primary Colors"
+msgstr	"Colori primari"
+#
+#. "In computing, to send information to a printer. "
+msgid	"Print"
+msgstr	"Stampare"
+#
+#. "The area on the paper, excluding margins, where the printer can print data."
+msgid	"Print area"
+msgstr	"Area di stampa"
+#
+#. "A computer peripheral that puts text or a computer-generated image on paper or on another medium, such as a transparency film. "
+msgid	"Printer"
+msgstr	"Stampante"
+#
+#. "The relative ranking of items. Items with a higher priority have precedence in receiving the attention of the microprocessor and the use of system resources. "
+msgid	"Priority"
+msgstr	"Priorità"
+#
+#. "The concept that a user's data, such as stored files and e-mail, is not to be examined by anyone else without that user's permission. "
+msgid	"Privacy"
+msgstr	"Riservatezza"
+#
+#. "One of two keys in public key encryption. The user keeps the private key secret and uses it to encrypt digital signatures and to decrypt received messages.  "
+msgid	"Private key"
+msgstr	"Chiave privata"
+#
+#. "Messages that have been encrypted to prevent them being read by anybody but the intended recipient."
+msgid	"Private Messages"
+msgstr	"Messaggi privati"
+#
+#. "A set of special permissions granted to a  user to perform various operations on a system."
+# NEW MESSAGE
+msgid "privileges" 
+msgstr	"privilegi"
+#
+msgid	"Problem"
+msgstr	"Problema"
+#
+#. "A task run by the operating system. UNIX is a multitasking sytem, so at any given moment there are many processes running. Usually, each command or application you start is run as a new process; some applications may run several processes. In addition, th. Each process has a unique ID number  (<acronym>PID</acronym>). You can view the list of all the processes running on your system using <application>GNOME System monitor (gtop)</application> or <application>Ktop</application>."
+msgid	"Process"
+msgstr	"Processo"
+#
+#. "The unique identification numer of a programm or part of a program."
+msgid	"Process ID"
+msgstr	"ID processo"
+#
+msgid	"Processor"
+msgstr	"Processore"
+#
+#. "Short for Prodigy Information Service. An online information service founded by IBM and Sears. "
+msgid	"Prodigy"
+msgstr	"Prodigy"
+#
+#. "A sequence of instructions that can be executed by a computer. "
+msgid	"Program"
+msgstr	"Programma"
+#
+msgid	"Progress"
+msgstr	"Avanzamento"
+#
+#. "An indicator which shows the status of a process."
+msgid	"Progress Bar"
+msgstr	"Barra di avanzamento"
+#
+msgid	"project"
+msgstr	"progetto"
+#
+#. "Travel of a signal, such as an Internet packet, from its source to one or more destinations. "
+msgid	"Propagation"
+msgstr	"Propagazione"
+#
+#. "A characteristic or parameter of an object or device. Properties of a file, for example, include type, size, and creation date. "
+msgid	"Properties"
+msgstr	"Proprietà"
+#
+#. "A set of characters in a particular style and size in which a variable amount of horizontal space is allotted to each letter or number. "
+msgid	"Proportional font"
+msgstr	"Carattere proporzionale"
+#
+#. "Safeguarded against accidental erasure or change or from unwanted inspection of others."
+msgid	"Protected"
+msgstr	"Protetto"
+#
+msgid	"protected workbooks"
+msgstr	"cartelle di lavoro protette"
+#
+msgid	"Protection"
+msgstr	"Protezione"
+#
+#. "A set of rules or standards designed to enable computers to connect with one another and to exchange information with as little error as possible. "
+msgid	"Protocol"
+msgstr	"Protocollo"
+#
+msgid	"Provision"
+msgstr	"Disposizione"
+#
+#. "A computer (or the software that runs on it) that acts as a barrier between a network and the Internet by presenting only a single network address to external sites. "
+msgid	"Proxy"
+msgstr	"Proxy"
+#
+#. "A firewall component that manages Internet traffic to and from a local area network (LAN) and can provide other features, such as document caching and access control. "
+msgid	"proxy server"
+msgstr	"server proxy"
+#
+msgid	"Public"
+msgstr	"Pubblico"
+#
+#. "One of two keys in public key encryption. The user releases this key to the public, who can use it for encrypting messages to be sent to the user and for decrypting the user's digital signature. "
+msgid	"Public Key"
+msgstr	"Chiave pubblica"
+#
+#. "A specific set of instructions for extracting particular data."
+msgid	"Query"
+msgstr	"Query"
+#
+#. "A line or list formed by items in a system waiting for service. "
+msgid	"Queue"
+msgstr	"Coda"
+#
+#. "1. An FTP command that instructs the server to drop the current connection with the client from which it received the command. 2. A command in many applications for exiting the program."
+msgid	"Quit"
+msgstr	"Uscire"
+#
+msgid	"Quoting"
+msgstr	"Quotazione"
+#
+msgid	"Radar map"
+msgstr	"Mappa radar"
+#
+msgid	"Radio"
+msgstr	"Radio"
+#
+#. "In graphical user interfaces, a means of selecting one of several mutually exclusive options, usually within a dialog box. A radio button appears as a small circle that, when selected, has a smaller, filled circle inside it. "
+msgid	"Radio Button"
+msgstr	"Pulsante di scelta"
+#
+#. "Specifically, a reference to an arbitrary or unpredictable situation or event. "
+msgid	"Random"
+msgstr	"Casuale"
+#
+#. "A block of cells selected for similar treatment in a spreadsheet. "
+msgid	"Range"
+msgstr	"Intervallo"
+#
+msgid	"Rank"
+msgstr	"Rango"
+#
+#. "Specified limit to operating conditions, e.g. current rating."
+msgid	"Rating"
+msgstr	"Valore nominale"
+#
+msgid	"Ratio"
+msgstr	"Rapporto"
+#
+#. "Unprocessed, typically unformatted, data, such as a stream of bits that has not been filtered for commands or special characters. "
+msgid	"Raw data"
+msgstr	"Dati non elaborati"
+#
+msgid	"Raw memory"
+msgstr	"Memoria raw"
+#
+msgid	"Readout"
+msgstr	"Lettura"
+#
+msgid	"ready..."
+msgstr	"pronto"
+#
+#. "See Physical memory."
+msgid	"Real Memory"
+msgstr	"Memoria reale"
+#
+msgid	"real path"
+msgstr	"percorso reale"
+#
+#. "Relating to a time frame imposed by external constraints. Real-time operations are those in which the machine's activities match the human perception of time."
+msgid	"Real time"
+msgstr	"Tempo reale"
+#
+#. "To restart a computer by reloading the operating system. "
+msgid	"Reboot"
+msgstr	"Riavviare"
+#
+#. "Synonymous with Sensitivity."
+msgid	"Receptivity"
+msgstr	"Ricettività"
+#
+#. "To accept data from an external communications system, such as a local area network (LAN) or a telephone line, and store the data as a file."
+msgid	"Receive"
+msgstr	"Ricevere"
+#
+#. "1. A data structure that is a collection of fields (elements), each with its own name and type. 2. To retain or write information, usually in a file."
+msgid	"Record"
+msgstr	"Registrare"
+#
+#. "A parallelogram whose angles are right angles."
+msgid	"Rectangle"
+msgstr	"Rettangolo"
+#
+msgid	"Recurrence"
+msgstr	"Ricorrenza"
+#
+#. "The ability of a routine to call itself. Recursion enables certain algorithms to be implemented with small, simple routines."
+msgid	"Recursion"
+msgstr	"Ricorsione"
+#
+msgid	"Redisplay"
+msgstr	"Rivisualizzare"
+#
+#. "This reverses the effect of the last undo operation on an object."
+msgid	"Redo"
+msgstr	"Ripetere"
+#
+#. "1. To retrace a video screen at frequent intervals. 2. To recharge dynamic random access memory chips (DRAMs) so that they continue to retain the information stored in them. "
+msgid	"Refresh"
+msgstr	"Aggiornare"
+#
+#. "An area dedicated to or reserved for a particular purpose. "
+msgid	"Region"
+msgstr	"Regione"
+#
+#. "In statistics, an analysis of the degree to which variations in an independent variable affect a dependent variable (a variable whose value depends on the value of another variable)."
+msgid	"Regression analysis"
+msgstr	"Analisi della regressione"
+#
+msgid	"regular"
+msgstr	"regolare"
+#
+#. "A pattern representaing a class of character strings."
+msgid	"Regular expression"
+msgstr	"Espressione regolare"
+#
+#. "To govern by a set of rules or to require the adherence to standards."
+msgid	"Regulate"
+msgstr	"Regolare"
+#
+msgid	"Relationship"
+msgstr	"Relazione"
+#
+#. "1. A particular version of a piece of software, most commonly associated with the most recent version. 2. A version of a product that is available in general distribution. "
+msgid	"Release"
+msgstr	"Versione"
+#
+#. "Not in the immediate vicinity, as a computer or other device located in another place and accessible through some type of cable or communications link."
+msgid	"Remote"
+msgstr	"Remoto"
+#
+#. "To delete an item that you can restore."
+msgid	"Remove"
+msgstr	"Rimuovere"
+#
+#. "A command in most file transfer protocol (FTP) clients and in many other systems that allows the user to assign a new name to a file or files."
+msgid	"Rename"
+msgstr	"Rinominare"
+#
+#. "A command that causes all information  to be repeated."
+msgid	"Repeat"
+msgstr	"Ripetere"
+#
+#. "To put new data in the place of other data, usually after conducting a search for the data to be replaced. "
+msgid	"Replace"
+msgstr	"Sostituire"
+#
+#. "The presentation of information about a given topic, typically in printed form. Reports prepared with computers and appropriate software can include text, graphics, and charts."
+msgid	"Reports"
+msgstr	"Rapporti"
+#
+msgid	"reserved blocks"
+msgstr	"blocchi riservati"
+#
+#. "To restart a computer without turning off its power."
+msgid	"Reset"
+msgstr	"Reimpostare"
+#
+#. "Computer programs or data are resident as long as they remain on a certain storage device."
+msgid	"Resident"
+msgstr	"Residente"
+#
+msgid	"Resident memory"
+msgstr	"Memoria residente"
+#
+msgid	"Residual"
+msgstr	"Residuo"
+#
+#. "To make an object or space larger or smaller. "
+msgid	"Resize"
+msgstr	"Ridimensionare"
+#
+#. "A measurement indicating the height and width of the visible screen of a computer in pixels."
+msgid	"Resolution"
+msgstr	"Risoluzione"
+#
+#. "The data structures, templates, definition procedures, management routines, icon maps, and so forth associated with a particular resource, such as a menu, window, or dialog box. "
+msgid	"Resource element"
+msgstr	"Elemento della risorsa"
+#
+#. "Synonym of Reboot."
+msgid	"Restart"
+msgstr	"Riavviare"
+#
+#. "To restore a minimized or maximized window to the dimensions that the window had before you minimized or maximized the window."
+# NEW MESSAGE
+msgid "Restore" 
+msgstr	"Ripristinare"
+#
+#. "To take up a process exactly where it had benn interrupted or stopped."
+msgid	"Resume"
+msgstr	"Riprendere"
+#
+#. "To obtain a specific requested item or set of data by locating it and returning it to a program or to the user. "
+msgid	"Retrieve"
+msgstr	"Recuperare"
+#
+#. "mc.pot"
+msgid	"Retry"
+msgstr	"Riprovare"
+#
+#. "A key on a keyboard that is used to terminate input of a field or record or to execute the highlighted action of a dialog box. "
+msgid	"Return"
+msgstr	"Return"
+#
+#. "The reversal of light and dark in the display of selected characters on a video screen. "
+msgid	"Reverse video"
+msgstr	"Video inverso"
+#
+#. "To return to the last saved version of a document. "
+msgid	"Revert"
+msgstr	"Ripristinare"
+#
+#. "Press and release the right mouse button on an item once. "
+# NEW MESSAGE
+msgid "right-click on" 
+msgstr	"fare clic con il pulsante destro su"
+#
+#. "The mouse button under the third finger of the right hand in a mouse configured for right-hand use. "
+# NEW MESSAGE
+msgid "right mouse button" 
+msgstr	"pulsante destro del mouse"
+#
+#. "The privileged user on a UNIX system; has full control over the system and all files on it, including those of other users. Is typically used by system administartor for system maintenance."
+msgid	"Root"
+msgstr	"Root"
+#
+#. "The top level directory of a UNIX file system, containing all other files and directories. Root directory is denoted by a single slash (<filename>/</filename>)."
+msgid	"Root Directory"
+msgstr	"Directory radice"
+#
+#. "A menu that you can use to navigate between windows and workspaces."
+# NEW MESSAGE
+msgid "Root menu" 
+msgstr	"menu radice"
+#
+#. "The background of an X11 desktop, in which background images (<quote>wallpaper</quote>) or running programs may be displayed."
+msgid	"Root Window"
+msgstr	"Finestra radice"
+#
+#. "To turn a model or other graphical image so that it is viewed at a different angle."
+msgid	"Rotate"
+msgstr	"Ruotare"
+#
+#. "A series of items arranged horizontally."
+msgid	"Row"
+msgstr	"Riga"
+#
+#. "A file containing in it in a packed form all the files comprising an application (executable files, documentation, configuration, etc.), plus some extra information about the application, such as a brief description and dependency information. The RPM for. RPM format was developed by <ulink type='http'  url='http://www.redhat.com'>Red Hat, Inc</ulink>; the acronym RPM stands for RPM Package Manager."
+msgid	"RPM package"
+msgstr	"Pacchetto RPM"
+#
+#. "To execute a program, script, or application from the command line."
+msgid	"Run"
+msgstr	"Eseguire"
+#
+msgid	"Sample"
+msgstr	"Esempio"
+#
+#. "In statistics, gathering data from a representative subset of a larger group.  2. The conversion of analog signals to digital format. 3. The frequency with which samples of a physical variable, such as sound, are taken."
+msgid	"Sampling"
+msgstr	"Campionamento"
+#
+#. "In color graphics and printing, the amount of color in a specified hue. "
+msgid	"Saturation"
+msgstr	"Saturazione"
+#
+#. "To write data (typically a file) to a storage medium, such as a disk or tape."
+msgid	"Save"
+msgstr	"Salvare"
+#
+msgid	"SC/XSpread"
+msgstr	"SC/XSpread"
+#
+#. "Of or relating to the characteristic of a piece of hardware or software or a network that makes it possible for it to expand-or shrink-to meet future needs and circumstances. "
+msgid	"Scalable"
+msgstr	"Scalabile"
+#
+#. "A factor, coefficient, or variable consisting of a single value (as opposed to a record, an array, or some other complex data structure). "
+msgid	"Scalar"
+msgstr	"Scalare"
+#
+#. "A horizontal or vertical line on a graph that shows minimum, maximum, and interval values for the data plotted."
+msgid	"Scale"
+msgstr	"Scala"
+#
+#. "The amount by which a graphical image is enlarged or reduced."
+msgid	"Scaling Factor"
+msgstr	"Fattore di scala"
+#
+#. "In optical technologies, to move a light-sensitive device across an image-bearing surface such as a page of text, converting the light and dark areas on the surface to binary digits that can be interpreted by a computer."
+msgid	"Scan"
+msgstr	"Digitalizzare"
+#
+#. "An operating-system process that starts and ends tasks (programs), manages concurrently running processes, and allocates system resources. "
+msgid	"schedule manager"
+msgstr	"Gestione pianificazione"
+#
+#. "A description of a database to a database management system (DBMS) in the language provided by the DBMS. "
+msgid	"schema"
+msgstr	"schema"
+#
+#. "A floating-point method of representing a number, especially a very large or very small one, in which numbers are expressed as products consisting of a number between 1 and 10 multiplied by a power of 10. "
+msgid	"Scientific notation"
+msgstr	"Notazione scientifica"
+#
+#. "The physical monitor device of a computer, consisting of a cathode ray tube, liquid crystal display, or similar means of displaying pixels; the visible picture displayed on the monitor."
+msgid	"Screen"
+msgstr	"Schermo"
+#
+#. "A program which blanks the screen or displays pretty or entertaining graphics after a period of inactivity on the console.  Originally intended to prevent burn-in of images on older cathode-ray tubes, screensavers are now used primarily for entertainment purposes or to lock an unused terminal, requiring the user to enter a password to return to the normal display."
+msgid	"Screen Saver"
+msgstr	"Salvaschermo"
+#
+#. "A program written in an interpreted language, i.e. a language where the commands are executed one by one as you enter them (as opposed to compiled languages, in which the whole program must first be translated into machine codes (compiled) to create an executable file). By far the most common type of scripts are shell scripts, which are simply sequences of shell commands. Other popular types of scripts are javascripts used in Web pages, perl scripts and Tcl/Tk scripts."
+msgid	"Script"
+msgstr	"Script"
+#
+#. "To move a document or other data in a window in order to view a particular portion of the document. "
+msgid	"Scroll"
+msgstr	"Scorrere"
+#
+#. "In some graphical user interfaces, a vertical or horizontal navigation bar at the side or bottom of a display area that can be used with a mouse for moving around in that area. A scrollbar contains an arrow at both ends that you click on to move through window or list box. A scrollbar also contains a box that you drag to move through window or list box."
+msgid	"Scrollbars"
+msgstr	"Barre di scorrimento"
+#
+#. "Small Computer System Interface; an interface for connecting various computer components, such as hard drives. Works faster than the more common IDE interface, but is more expensive, so it is used mostly on servers."
+msgid	"SCSI"
+msgstr	"SCSI"
+#
+#. "The process of seeking a particular file or specific data. "
+msgid	"Search"
+msgstr	"Cercare"
+#
+msgid	"Search Domains"
+msgstr	"Domini di ricerca"
+#
+#. "The string of characters to be matched in a search-typically a text string."
+msgid	"search string"
+msgstr	"stringa di ricerca"
+#
+#. "Colors produced by mixing primary colors."
+msgid	"Secondary Colors"
+msgstr	"Colori secondari"
+#
+#. "A communications link that has been protected against unauthorized access, operation, or use by means of isolation from the public network, encryption, or other forms of control. "
+msgid	"Secure channel"
+msgstr	"Canale di sicurezza"
+#
+msgid	"Secure keyboard"
+msgstr	"Tastiera sicura"
+#
+#. "Protection of a computer system or network and its data from harm or loss. "
+msgid	"Security"
+msgstr	"Sicurezza"
+#
+#. "A section of a program that, when compiled, occupies a contiguous address space and that is usually position independent; that is, it can be loaded anywhere in memory. "
+msgid	"Segment"
+msgstr	"Segmento"
+#
+#. "A program crash. More precisely, this is what happens when a program tries to access resources which do not belong to it; in such a case, for security reasons the operating system immediately kills the offending program. Segfaults are almost always caused by bugs in the program."
+msgid	"Segmentation Fault"
+msgstr	"Errore di segmentazione"
+#
+#. "1. In general computer use, to specify a block of data or text on screen as the object on which an action is to be performed. Selected objects usually appear highlighte. In information processing, to choose from a number of options or alternatives. 2. To pick an item that assigns a behavioral characteristic, value, or  parameter from a predefined value or a predefined set of values."
+msgid	"Select"
+msgstr	"Selezionare"
+#
+#. "Use to describe the on or off state of a binary choice in a dialog. "
+# NEW MESSAGE
+msgid "selected/unselected" 
+msgstr	"selezionato/non selezionato"
+#
+#. "In applications, the highlighted portion of an on-screen document. "
+msgid	"Selection"
+msgstr	"Selezione"
+#
+#. "To transmit a message or file through a communications channel."
+msgid	"Send"
+msgstr	"Inviare"
+#
+msgid	"Sense"
+msgstr	"Rilevare"
+#
+#. "Capable ot receiving stimuli."
+msgid	"Sensitive"
+msgstr	"Sensibile"
+#
+#. "A punctuation character used to delimit charater strings."
+msgid	"Separator"
+msgstr	"Separatore"
+#
+#. "1. On a local area network (LAN), a computer running administrative software that controls access to the network and its resources and provides resources to computers functioning as workstations on the network. 2. On the Internet or other network, a computer or program that responds to commands from a client."
+msgid	"Server"
+msgstr	"Server"
+#
+#. "1. The time during which a program is running. In most interactive programs, a session is the time during which the program accepts input and processes information. 2. In communications, the time during which two computers maintain a connection. "
+msgid	"Session"
+msgstr	"Sessione"
+#
+#. "1. To change the value of a bit to 1. 2. To establish a particular condition."
+msgid	"Set"
+msgstr	"Impostare"
+#
+#. "Controls for choosing predetermined values."
+msgid	"Settings"
+msgstr	"Impostazioni"
+#
+#. "1. A computer along with all its devices. 2. The procedures involved in preparing a software program or application to operate within a computer."
+msgid	"Setup"
+msgstr	"Installazione"
+#
+msgid	"Severity"
+msgstr	"Gravità"
+#
+#. "To reduce a window so that only the titlebar is visible."
+# NEW MESSAGE
+msgid "shade" 
+msgstr	"arrotolare"
+#
+msgid	"shaped text"
+msgstr	"testo formattato"
+#
+#. "To make files, directories, or folders accessible to other users over a network."
+msgid	"Share"
+msgstr	"Condividere"
+#
+#. "On a local area network, a directory on a disk that is located on a computer other than the one the user is operating and that can be accessed by all users on the network. "
+msgid	"Shared Memory"
+msgstr	"Memoria condivisa"
+#
+#. "Any of a number of UNIX programs which interpret commands typed by the user before passing them to the operating system and provide other features such as command history, aliasing, and scripting.  Examples include <command>bash</command> and <command>tcsh</command>.  Shells are often displayed in a terminal window"
+msgid	"Shell"
+msgstr	"Shell"
+#
+#. "A keyboard key that, when pressed in combination with another key, gives that key an alternative meaning; for example, producing an uppercase character when a letter key is pressed. "
+msgid	"Shift key"
+msgstr	"Tasto Shift"
+#
+#. "Use to refer to a faster way to run a command."
+# NEW MESSAGE
+msgid "shortcut command" 
+msgstr	"comando abbreviato"
+#
+#. "A sequence of one or more keys or mouse clicks. The shortcut key provides a quicker and more convenient way to perform an action than the conventional way to perform the same action."
+# NEW MESSAGE
+msgid "shortcut key" 
+msgstr	"scelta rapida"
+#
+msgid	"Show"
+msgstr	"Mostrare"
+#
+#. "To close a program or operating system in a manner ensuring that no data is lost."
+msgid	"Shut Down"
+msgstr	"Chiudere"
+#
+#. "1. Any electrical quantity, such as voltage, current, or frequency, that can be used to transmit information. 2. A beep or tone from a computer's speaker or a prompt displayed on screen."
+msgid	"Signal"
+msgstr	"Segnale"
+#
+#. "A block of text that an e-mail client or a newsreader automatically places at the end of every message or article before the message or article is transmitted. "
+msgid	"signature block"
+msgstr	"blocco della forma"
+#
+#. "A sequence of data used for identification, such as text appended to an e-mail message or fax. "
+msgid	"signature"
+msgstr	"firma"
+#
+#. "A control in the upper right corner of the frame of a window. When the user clicks on the size box, the window toggles between the size the user has set for it by dragging and the maximum size. "
+msgid	"Size box"
+msgstr	"Quadratino di ridimensionamento"
+#
+#. "The difference between what is and what should be-for example, the misalignment of a page that prevents accurate reproduction, or the difference between input and output when circuits do not respond evenly to a propagated signal."
+msgid	"Skewness"
+msgstr	"Asimmetria"
+#
+msgid	"Skip"
+msgstr	"Ignorare"
+#
+msgid	"Slant"
+msgstr	"Inclinazione"
+#
+msgid	"Slashed Cross"
+msgstr	"Croce"
+#
+#. "Any device, including a computer, that is controlled by another computer, referred to as the master. "
+msgid	"slave"
+msgstr	"slave"
+#
+#. "1. In a multiprocessing environment, a temporary state of suspension during which a process remains in memory so that some event, such as an interrupt or call from another process, can 'awaken' it. 2. In programming, a state of suspension caused by a loop statement that creates an intentional delay."
+msgid	"Sleeping"
+msgstr	"Sospeso"
+#
+#. "A control used to set a value in a continuous range of values and give a visual indication of the setting."
+msgid	"slider"
+msgstr	"dispositivo di scorrimento"
+#
+#. "Acronym for Serial Line Internet Protocol. A data link protocol that allows transmission of TCP/IP data packets over dial-up telephone connections, thus enabling a computer or a LAN to be connected to the Internet or some other network. It is an older, less secure protocol than the PPP (Point-to-Point Protocol) and does not support dynamic allocation of IP addresses."
+msgid	"SLIP"
+msgstr	"SLIP"
+#
+msgid	"slow terminals"
+msgstr	"terminale lento"
+#
+#. "A synonym for intelligent. "
+msgid	"Smart"
+msgstr	"Intelligente"
+#
+#. "A terminal that contains a microprocessor and random access memory (RAM) and that does some rudimentary processing without intervention from the host computer.  "
+msgid	"Smart terminal"
+msgstr	"Terminale intelligente"
+#
+#. "1. To eliminate irregularities in statistical data by some process such as continuous averaging or by removing random (irrelevant) values. 2. In graphics, to remove jagged edges from a figure or line. "
+msgid	"smooth"
+msgstr	"smussare"
+#
+#. "Simple Mail Transfer Protocol; a protocol used for exchanging electronic mail messages between machines on a network."
+msgid	"SMTP"
+msgstr	"SMTP"
+#
+#. "A copy of main memory or video memory at a given instant, sent to the printer or hard disk. "
+msgid	"Snap"
+msgstr	"Istantanea"
+#
+msgid	"Snooze"
+msgstr	"Posporre"
+#
+#. "A software endpoint for ntwork communication."
+msgid	"Socket"
+msgstr	"Socket"
+#
+msgid	"SOCKS Server"
+msgstr	"Server SOCKS"
+#
+#. "A user-created display object that can be assigned an accelerator key combination and is linked to an operation or process."
+msgid	"soft keys"
+msgstr	"combinazione di tasti"
+#
+msgid	"software bug"
+msgstr	"errore software"
+#
+msgid	"Software Foundation"
+msgstr	"Software Foundation"
+#
+#. "A geometric shape or construction that has continuity in length, width, and depth and is treated by a program as if it had both surface and internal substance. "
+msgid	"Solid model"
+msgstr	"Modello solido"
+#
+msgid	"Solid lines"
+msgstr	"Linee solide"
+#
+#. "To organize data, typically a set of records, in a particular order. "
+msgid	"Sort"
+msgstr	"Ordinare"
+#
+#. "A type of expansion board on PC-compatible computers that allows the playback and recording of sound, such as from a WAV or MIDI file or a music CD-ROM. "
+msgid	"sound card"
+msgstr	"scheda audio"
+#
+#. "In information processing, a disk, file, document, or other collection of information from which data is taken or moved. "
+msgid	"Source"
+msgstr	"Origine"
+#
+#. "Human-readable program statements written by a programmer or developer in a high-level or assembly language that are not directly readable by a computer. Source code needs to be compiled into object code before it can be executed by a computer."
+msgid	"Source code"
+msgstr	"Codice sorgente"
+#
+#. "A character that is entered by pressing the Spacebar on the keyboard and that typically appears on the screen as a blank space."
+msgid	"Space character"
+msgstr	"Carattere di spazio"
+#
+#. "Useless e-mail.  Spam normally comes in forms of chain-letters and advertisements for websites or services."
+msgid	"Spam"
+msgstr	"Spam"
+#
+#. "Any character that is not alphabetic, numeric, or the space character (for example, a punctuation character). "
+msgid	"Special character"
+msgstr	"Carattere speciale"
+#
+#. "Use the verb specify to describe more complex methods of inputting information.  In other words use specify when referring to dialog elements such as drop-down combination box, spin box, slider, text box. "
+# NEW MESSAGE
+msgid "Specify" 
+msgstr	"Specificare"
+#
+msgid	"Spell"
+msgstr	"Ortografia"
+#
+#. "An application that employs a disk-based dictionary to check for misspellings in a document. "
+msgid	"Spell Checker"
+msgstr	"Controllo ortografico"
+#
+#. "A dialog element that allows you to either type a numeric value, or scroll through all possible values for the item. A spin box is similar to a text box with up and down arrows. "
+# NEW MESSAGE
+msgid "spin box" 
+msgstr	"casella di selezione"
+#
+#. "To store a data document in a queue, where it awaits its turn to be printed. "
+msgid	"spool"
+msgstr	"spool"
+#
+msgid	"Stabilize"
+msgstr	"Stabilizzare"
+#
+#. "A region of reserved memory in which programs store status data such as procedure and function call addresses, passed parameters, and sometimes local variables. "
+msgid	"Stack"
+msgstr	"Stack"
+#
+#. "1. A de jure technical guideline advocated by a recognized noncommercial or government organization that is used to establish uniformity in an area of hardware or software development. 2. A de facto technical guideline for hardware or software development that occurs when a product or philosophy is developed by a single company and, through success and imitation, becomes so widely used that deviation from the norm causes compatibility  problems or limits marketability."
+msgid	"Standard"
+msgstr	"Standard"
+#
+#. "In statistics, a measure of the dispersion of a group of measurements relative to the mean (average) of that group. "
+msgid	"Standard deviation"
+msgstr	"Deviazione standard"
+#
+msgid	"Standby"
+msgstr	"Standby"
+#
+#. "The process of opening an application. "
+msgid	"Start"
+msgstr	"Avviare"
+#
+#. "The process of starting or resetting a computer. "
+msgid	"Startup"
+msgstr	"Avviare"
+#
+msgid	"startup files"
+msgstr	"file di avvio"
+#
+#. "The application that takes control of the system when the computer is turned on."
+msgid	"Startup Program"
+msgstr	"Programma di avvio"
+#
+#. "Synonymous with Status"
+msgid	"State"
+msgstr	"Stato"
+#
+#. "The branch of mathematics that deals with the relationships among groups of measurements and with the relevance of similarities and differences in those relationships. "
+msgid	"Statistics"
+msgstr	"Statistica"
+#
+#. "The condition at a particular time of any of numerous elements of computing-a device, a communications channel, a network station, a program, a bit, or other element-used to report on or to control computer operations."
+msgid	"Status"
+msgstr	"Stato"
+#
+#. "The bar at the bottom of a window that provides information about the current state of what you are viewing in the window. The statusbar also provides any other contextual information."
+# NEW MESSAGE
+msgid "status bar" 
+msgstr	"barra di stato"
+#
+#. "A status dock is a panel object that displays status information."
+# NEW MESSAGE
+msgid "status dock" 
+msgstr	"indicatore di stato"
+#
+#. "A status docklet is a small window in a status dock where an application places status information."
+# NEW MESSAGE
+msgid "status docklet" 
+msgstr	"area di stato"
+#
+msgid	"step increment"
+msgstr	"incremento graduale"
+#
+msgid	"Stereotype"
+msgstr	"Stereotipo"
+#
+#. "If a window is set to stick, then the window appears in all workspaces that you view. You can use the Window menu or a task menu to switch the stick setting on and off. "
+# NEW MESSAGE
+msgid "stick" 
+msgstr	"fissa"
+#
+msgid	"sticky notes"
+msgstr	"promemoria adesivo"
+#
+msgid	"Stock Ticker"
+msgstr	"testo scorrevole con quotazioni di borsa"
+#
+#. "In computing, any device in or on which information can be kept. Microcomputers have two main types of storage: random access memory (RAM) and disk drives and other external storage media. "
+msgid	"Storage"
+msgstr	"Memorizzazione"
+#
+#. "One or more lines drawn through a selected range of text, usually to show deletion or the intent to delete."
+msgid	"Strikethrough"
+msgstr	"Barrato"
+#
+#. "A data structure composed of a sequence of characters usually representing human-readable text."
+msgid	"String"
+msgstr	"Stringa"
+#
+msgid	"stripchart program"
+msgstr	"programma stripchart"
+#
+msgid	"structure diagram"
+msgstr	"diagramma strutturale"
+#
+msgid	"Style"
+msgstr	"Stile"
+#
+#. "A directory (logical grouping of related files) within another directory."
+msgid	"Subdirectory"
+msgstr	"Sottodirectory"
+#
+#. "Topic line in an e-mail message"
+msgid	"Subject"
+msgstr	"Oggetto"
+#
+#. "A menu that resides within another menu."
+msgid	"Submenu"
+msgstr	"Sottomenu"
+#
+#. "An application, applet, command, or script that appears in a submenu."
+# NEW MESSAGE
+msgid "submenu item" 
+msgstr	"elemento del sottomenu"
+#
+#. "A function that passes a job, function or setting to the system for processing."
+msgid	"Submit"
+msgstr	"Inviare"
+#
+#. "1. In general, a network that forms part of a larger network. 2. In terms of the ISO/OSI reference model, the subnet comprises the layers below the transport layer-that is, the network, data link, and physical layers."
+msgid	"Subnet"
+msgstr	"Sottorete"
+#
+#. "One or more characters printed slightly below the baseline of surrounding text. "
+msgid	"Subscript"
+msgstr	"Pedice"
+#
+msgid	"subshell support"
+msgstr	"supporto shell secondaria"
+#
+#. "A sequential section of a string. "
+msgid	"substring"
+msgstr	"stringa secondaria"
+#
+msgid	"Suffix"
+msgstr	"Suffisso"
+#
+#. "A character printed slightly above the surrounding text, usually in smaller type. "
+msgid	"Superscript"
+msgstr	"Apice"
+#
+#. "Assistance, such as technical advice provided to customers."
+msgid	"Support"
+msgstr	"Supporto"
+#
+#. "To halt a process temporarily. "
+msgid	"Suspend"
+msgstr	"Sospendere"
+#
+#. "A swallowed application is an application that is not a panel applet, but runs inside a panel. "
+# NEW MESSAGE
+msgid "swallowed application" 
+msgstr	"applicazione inglobata"
+#
+#. "1. To exchange one item for another, as in swapping floppy disks in and out of a single drive. 2. To move segments of programs or data between memory and disk storage. "
+msgid	"Swap"
+msgstr	"Swap"
+#
+#. "1. A circuit element that has two states: on and off. 2. A control device that allows the user to choose one of two or more possible states. "
+msgid	"Switch level"
+msgstr	"Commutatore"
+#
+#. "Short for symbolic link file. A file constructed with a proprietary Microsoft format, used primarily for exchanging spreadsheet data in such a way that formatting information and intercellular data value relationships are preserved."
+msgid	"SYLK file"
+msgstr	"file SYLK"
+#
+#. "In programming, a name that represents a register, an absolute value, or a memory address (relative or absolute). "
+msgid	"Symbol"
+msgstr	"Simbolo"
+#
+#. "A file of special type which contains no data but instead, points to another file or directory. Equivalent to a shortcut under Windows."
+msgid	"Symbolic Link"
+msgstr	"Collegamento simbolico"
+#
+msgid	"Symmetric control"
+msgstr	"Controllo simmetrico"
+#
+#. "To cause to occur at the same time."
+msgid	"Synchronize"
+msgstr	"Sincronizzare"
+#
+#. "An error resulting from a statement that violates one or more of the grammatical rules of a language and is thus not 'legal'. "
+msgid	"Syntax error"
+msgstr	"Errore di sintassi"
+#
+#. "Any collection of component elements that work together to perform a task. Examples are a hardware system consisting of a microprocessor, its allied chips and circuitry, input and output devices, and peripheral devices; an operating system consisting of set of programs and data files; or a database management system used to process specific kinds of information."
+msgid	"System"
+msgstr	"Sistema"
+#
+#. "The person responsible for administration and maintenance of a computer system. A user with root privileges on a UNIX system."
+msgid	"System Administrator"
+msgstr	"Amministratore di sistema"
+#
+#. "A process that specifies the machines, devices and programs that form a particular processing system."
+msgid	"System Configuration"
+msgstr	"Configurazione del sistema"
+#
+msgid	"system settings"
+msgstr	"impostazioni del sistema"
+#
+#. "1. A character used to align lines and columns on screen and in print. 2. The part of a tabbed section that you click on to view the tabbed section. "
+msgid	"Tab"
+msgstr	"Tabulazione"
+#
+#. "A tabbed section is one of multiple logical sections that appear on a dialog. To activate a tabbed section, click on the tab on the tabbed section. "
+# NEW MESSAGE
+msgid "tabbed section" 
+msgstr	"scheda"
+#
+#. "1. In programming, a data structure usually consisting of a list of entries, each entry being identified by a unique key and containing a set of related values. 2. In relational databases, a data structure characterized by rows and columns, with data occupying or potentially occupying each cell formed by a row-column intersection."
+msgid	"Table"
+msgstr	"Tabella"
+#
+#. "1. In programming, one or more characters containing information about a file, record type, or other structure. 2. In certain types of data files, a key or an address that identifies a record and its storage location in another file.  3. In markup languages such as SGML and HTML, a code that identifies an element in a document, such as a heading or a paragraph, for the purposes of formatting, indexing, and linking information in the document."
+msgid	"tag"
+msgstr	"tag"
+#
+#. "The UNIX command that, when followed by another user's name and address, is used to generate a request for a synchronous chat session on the Internet. "
+msgid	"Talk"
+msgstr	"Talk"
+#
+msgid	"tall"
+msgstr	"alto"
+#
+#. "A file created using the <command>tar</command> (Tape ARchive) program, which conglomerates multiple files, or even a whole directory tree, into one file for easy storage or transfer.  These archives are often compressed using the gzip program and given a filename extension of .tar.gz."
+msgid	"tar archive"
+msgstr	"archivio tar"
+#
+#. "The file to which data is to be written, as in a copy operation. "
+msgid	"target file"
+msgstr	"file di destinazione"
+#
+#. "A stand-alone application or a subprogram that is run as an independent entity."
+msgid	"task"
+msgstr	"attività"
+#
+#. "A list of the tasks that are currently running on your desktop.You can see the tasklist in the following places:<UL><LI>An iconic display in the <TT>Tasklist</TT> applet. The buttons on the right side of the <TT>Tasklist</TT> applet represent your tasks. </LI><LI>A drop-down list in the <TT>Desk Guide</TT> applet. Click on the down arrow button to view a list of your tasks."
+# NEW MESSAGE
+msgid "tasklist" 
+msgstr	"elenco attività"
+#
+#. "A button that represents a window in the <TT>Tasklist</TT> applet."
+# NEW MESSAGE
+msgid "tasklist button" 
+msgstr	"pulsante dell'elenco attività"
+#
+#. "A menu that appears when you click on a tasklist button that represents a task group. A task group menu lists the windows in the task group. You can open a task menu from an item in a task group menu."
+# NEW MESSAGE
+msgid "task group menu" 
+msgstr	"menu del gruppo attività"
+#
+#. "A menu that appears when  you right-click on a tasklist button.  A task menu enables you to perform various tasks on windows and task  groups, such as minimize or restore the window or task group. A task menu  contains items such as <B>Iconify/Restore</B>,  <B>Shade/Unshade</B>, and <B>Stick/Unstick</B>.  When you open a task menu from a task group, the menu items apply to all  windows in the task group. For example, you can choose <B>Shade All</B> to shade  all windows in the task group."
+# NEW MESSAGE
+msgid "task menu" 
+msgstr	"menu attività"
+#
+msgid	"TCLASS"
+msgstr	"TCLASS"
+#
+#. "Transmission Control Protocol/Internet Protocol; pair of protocols used for all communication between computers on the Internet and most local networks. TCP/IP serves as a basis for higher level protocols (FTP, telnet, SMTP, &hellip;): all information sent from one computer to another on the Internet, be it an e-mail message or a Web page, is sent as a collection of TCP/IP packets."
+msgid	"TCP/IP"
+msgstr	"TCP/IP"
+#
+#. "A protocol allowing logging into your computer account  via Internet or local network from another computer; also, the command using this protocol.  For more information, see manual page for telnet."
+msgid	"Telnet"
+msgstr	"Telnet"
+#
+#. "A file created either in memory or on disk, by the operating system or some other program, to be used during a session and then discarded. "
+msgid	"temp file"
+msgstr	"file temporaneo"
+#
+#. "1. In image processing, a pattern that can be used to identify or match a scanned image. 2. In spreadsheet programs, a predesigned spreadsheet that contains formulas, labels, and other elements.  3. In word processing and desktop publishing programs, a predesigned document that contains formatting and, in many cases, generic text."
+msgid	"Template"
+msgstr	"Modello"
+#
+#. "A region in memory or on a storage device that is temporarily allocated for use in storing intermediate data in a computational, sorting, or transfer operation."
+msgid	"temporary buffer"
+msgstr	"buffer temporaneo"
+#
+msgid	"TERM variable"
+msgstr	"variabile TERM"
+#
+#. "Originally, a physical device, a monitor capable of showing text output with a connected keyboard. Nowadays, mostly used to refer to a window on your screen which emulates one of these terminals and provides a command line prompt for entering commands and running text-based applications."
+msgid	"Terminal"
+msgstr	"Terminale"
+#
+#. "1. With reference to software, to end a process or program. Abnormal termination occurs in response to user intervention or because of a hardware or software error. 2. With reference to hardware, to install a plug, jack, or other connector at the end of a wire or cable."
+msgid	"Terminate"
+msgstr	"Terminare"
+#
+#. "To check program correctness by trying out various sequences and input values. "
+msgid	"Test"
+msgstr	"Provare"
+#
+msgid	"Test Module"
+msgstr	"Modulo di prova"
+#
+#. "Data that consists of characters representing the words and symbols of human speech; usually, characters coded according to the ASCII standard."
+msgid	"Text"
+msgstr	"Testo"
+#
+msgid	"text area"
+msgstr	"area di testo"
+#
+#. "A dialog element where you type text. "
+# NEW MESSAGE
+msgid "text box" 
+msgstr	"casella di testo"
+#
+#. "A document file in ASCII format, containing characters, spaces, punctuation, carriage returns, and sometimes tabs and an end-of-file marker, but no formatting information. "
+msgid	"Text only"
+msgstr	"Solo testo"
+#
+msgid	"textual name"
+msgstr	"nome in formato testo"
+#
+#. "An integrated collection of graphical elements intended to give the desktop a certain look and feel.  Common theme components include matching backgrounds, icons, and window decorations. The look of GNOME desktop is determined by 2 themes: a GTK theme, which determines the look of application menus, toolbars and other widgets, and window manager theme, which determines  window borders, buttons, and window title font."
+msgid	"Theme"
+msgstr	"Tema"
+#
+#. "In image processing, a specified gray level used for producing a binary image."
+msgid	"Threshold"
+msgstr	"Soglia"
+#
+#. "A miniature version of an image or electronic version of a page that is generally used to allow quick browsing through multiple images or pages. "
+msgid	"Thumb Nails"
+msgstr	"Miniature"
+#
+#. "1. A regular, rapidly recurring signal emitted by a clocking circuit; also, the interrupt generated by this signal. "
+msgid	"Tick"
+msgstr	"Scatto"
+#
+msgid	"Ticker Properties"
+msgstr	"Proprietà testo scorrevole"
+#
+#. "In computer-graphics programming, to fill adjacent blocks of pixels on the screen with a design or pattern without allowing any blocks to overlap."
+msgid	"Tile"
+msgstr	"Affiancare"
+#
+#. "A calendar default that identifies whether times are shown acc. to a 12-hour clock or a 24-hour clock."
+msgid	"Time format"
+msgstr	"Formato dell'ora"
+#
+#. "In computing, the timekeeping and datekeeping functions maintained by the computer's operating system, used most visibly as a means of 'stamping' files with the date and time of creation or last revision."
+msgid	"time stamp"
+msgstr	"marcatore orario"
+#
+#. "An event that indicates that a predetermined amount of time has elapsed without some other expected event taking place. The time-out event is used to interrupt the process that had been waiting for the other expected event. "
+msgid	"Timeout"
+msgstr	"Timeout"
+#
+#. "A register (high-speed memory circuit) or a special circuit, chip, or software routine used to measure time intervals."
+msgid	"Timer"
+msgstr	"Timer"
+#
+msgid	"Timezone"
+msgstr	"Fuso orario"
+#
+msgid	"Timing"
+msgstr	"Sincronizzazione"
+#
+msgid	"Title"
+msgstr	"Titolo"
+#
+#. "A titlebar is a bar that appears at the top edge of a window. Typically a titlebar contains the title of the window."
+# NEW MESSAGE
+msgid "title bar" 
+msgstr	"barra del titolo"
+#
+msgid	"TODO List"
+msgstr	"elenco TODO"
+#
+#. "An electronic device with two states or a program option that can be turned on or off using the same action, such as a mouse click."
+msgid	"toggle"
+msgstr	"controllo di inversione"
+#
+#. "A button that you use to switch between one state and another."
+# NEW MESSAGE
+msgid "toggle button" 
+msgstr	"interruttore"
+#
+msgid	"Tolerance"
+msgstr	"Tolleranza"
+#
+msgid	"tool menu"
+msgstr	"menu strumenti"
+#
+#. "In an application in a graphical user interface, a row, column, or block of on-screen buttons or icons. When these buttons or icons are clicked on with the mouse, macros or certain functions of the application are activated. "
+msgid	"Toolbar"
+msgstr	"barra degli strumenti"
+#
+#. "A button in an application toolbar. Toolbar buttons are usually shortcuts to functionality that is available in the menus of the application. "
+# NEW MESSAGE
+msgid "Toolbar button" 
+msgstr	"Pulsante della barra degli strumenti"
+#
+#. "A package of compact, well-designed programs designed to do a specific task well."
+msgid	"Tool"
+msgstr	"Strumento"
+#
+msgid	"topic"
+msgstr	"argomento"
+#
+#. "The movement of data from one location to another. "
+msgid	"Transfer"
+msgstr	"Trasferimento"
+#
+#. "A statement in a programming language that transfers the flow of execution to another location in the program. "
+msgid	"Transfer statement"
+msgstr	"Istruzione di trasferimento"
+#
+#. "A relationship is transitive if when it applies from A to B and from B to C it also applies from A to C."
+msgid	"Transitive"
+msgstr	"Transitivo"
+#
+#. "In programming, to convert a program from one language to another. Translation is performed by special programs such as compilers, assemblers, and interpreters. "
+msgid	"Translate"
+msgstr	"Tradurre"
+#
+#. "1. A path or link through which information passes between two devices. A channel can be either internal or external to a microcomputer. 2. In communications, a medium for transferring information. "
+msgid	"transmission channel"
+msgstr	"canale di trasmissione"
+#
+#. "In computer use, describing a device, function, or part of a program that works so smoothly and easily that it is invisible to the user. "
+msgid	"Transparent"
+msgstr	"Trasparente"
+#
+#. "The result of rotating a matrix. To reverse, as the order of the letters h and t in hte, in correcting the spelling of the; or reversing two wires in a circuit."
+msgid	"Transpose"
+msgstr	"Trasporre"
+#
+#. "An icon on the screen, resembling a garbage can. To delete a file or eject a diskette, the user drags the icon for the file or diskette to the Trash. "
+msgid	"Trash"
+msgstr	"Cestino"
+#
+#. "A data structure containing zero or more nodes that are linked together in a hierarchical fashion. If there are any nodes, one node is the root; each node except the root is the child of one and only one other node; and each node has zero or more nodes as children."
+msgid	"Tree"
+msgstr	"Albero"
+#
+msgid	"Trim"
+msgstr	"Tagliare"
+#
+#. "Acronym for teletypewriter. A device for low-speed communications over a telephone line, consisting of a keyboard that sends a character code for each keystroke and a printer that prints characters as their codes are received. "
+msgid	"Tty"
+msgstr	"TTY"
+#
+#. "A theoretical model created by British mathematician Alan Turing in 1936 that is considered the prototype for digital computers. "
+msgid	"Turing Machine"
+msgstr	"Macchina di Turing"
+#
+#. "1. In programming, the nature of a variable, for example, integer, real number, text character, or floating-point number. 2. In printing, the characters that make up printed text, or the complete set of characters in a given size and style (font). 3. To enter text or data from the keyboard. "
+msgid	"Type"
+msgstr	"Tipo"
+#
+msgid	"type bindings"
+msgstr	"associazione di tipi"
+#
+msgid	"Type mismatch"
+msgstr	"Incongruenza di tipo"
+#
+#. "When you can not interact with a desktop interface  item, then describe the item as unavailable. "
+# NEW MESSAGE
+msgid "unavailable" 
+msgstr	"non disponibile"
+#
+#. "To restore deleted information, usually the last item deleted. "
+msgid	"Undelete"
+msgstr	"Annullare l'eliminazione"
+#
+#. "To format a selection of text so that the text is printed with a line slightly below it."
+msgid	"Underline"
+msgstr	"Sottolineare"
+#
+#. "To reverse the last action-for example, to undo a deletion, thus restoring deleted text to a document. "
+msgid	"Undo"
+msgstr	"Annullare"
+#
+msgid	"Unexpected end"
+msgstr	"Fine inattesa"
+#
+msgid	"unexpected error"
+msgstr	"errore inatteso"
+#
+#. "A character set which strives to include all symbols in all human alphabets, and all special symbol used by people. It is a work in progress; the latest version of Unicode (3.0) includes 49,194 characters and covers languages ranging from English to Chinese to Cherokee."
+msgid	"Unicode"
+msgstr	"Unicode"
+#
+#. "To remove software completely from a system, including the elimination of files and components residing in system locations such as the Registry in Windows 9x, Windows NT, or Windows 2000. "
+msgid	"Uninstall"
+msgstr	"Disinstallare"
+#
+#. "A multi-user, multitasking operating system originally developed at Bell Labs in the early 1970s by Ken Thompson and Dennis Ritchie. UNIX is a registered trademark of The Open Group.  The Open Group spell UNIX in all uppercase. Any of a large number of operating systems sharing many features with the original UNIX operating system, such as Sun's Solaris or IBM's AIX. For legal reasons, operating systems such as FreeBSD and Linux can not be called UNIX, but they do share all important features with UNIX systems; thus, they are commonly called UNIX-like."
+msgid	"UNIX"
+msgstr	"UNIX"
+#
+#. "A response to a request for a connection to a server that indicates that the network is unable to find the specified address. "
+msgid	"Unknown host"
+msgstr	"Host sconosciuto"
+#
+#. "1. To remove a storage medium, such as a tape or disk, from its drive. 2. To remove software from system memory. "
+msgid	"Unload"
+msgstr	"Scaricare"
+#
+#. "To restore a shaded window to the unshaded dimensions of the window. "
+# NEW MESSAGE
+msgid "unshade" 
+msgstr	"srotolare"
+#
+#. "A new file that has not yet been saved by the user unser a specific name."
+msgid	"Untitled"
+msgstr	"Senza nome"
+#
+#. "A new release of an existing software product. A software update usually adds relatively minor new features to a product or corrects errors (bugs) found after the program was released. To change a system or a data file to make it more current."
+msgid	"Update"
+msgstr	"Aggiornare"
+#
+#. "The new or enhanced version of a product. To change to a newer, usually more powerful or sophisticated version."
+msgid	"Upgrade"
+msgstr	"Aggiornare"
+#
+#. "The amount or percentage of time a computer system or associated hardware is functioning and available for use. "
+msgid	"Uptime"
+msgstr	"Tempo di attività"
+#
+msgid	"Urgent condition"
+msgstr	"Condizione urgente"
+#
+#. "An address or ocation of a document. Most common URL types are a Web address (such as http://www.gnome.org), a file on a FTP server (e.g., ftp://ftp.gnome.org/pub), or a file on your own local system (e.g., file:/usr/doc/). "
+msgid	"URL"
+msgstr	"URL"
+#
+#. "Universal Serial Bus; an  interface for connecting various peripherals, from keyboard to digital cameras, to the computer. "
+msgid	"USB"
+msgstr	"USB"
+#
+#. "An actual person who uses a computer system, identified by a unique username, or a virtual person or role similarly identified by a unique username.  Virtual users may be used to run daemon or other software."
+msgid	"User"
+msgstr	"Utente"
+#
+#. "Something determined by the user"
+msgid	"User defined"
+msgstr	"Definito dall'utente"
+#
+#. "gnome-core.pot"
+msgid	"user directory"
+msgstr	"directory utente"
+#
+#. "The portion of a program with which a user interacts. Types of user interfaces, or UIs, include command-line interfaces, menu-driven interfaces, and graphical user interfaces. "
+msgid	"User Interface"
+msgstr	"Interfaccia utente"
+#
+#. "A string of alphanumeric characters uniquely identifying a user of a computer system.  Most usernames are based on the user's real name, so Mary Smith might have the  username 'mary' or 'msmith'."
+msgid	"Username"
+msgstr	"Nome utente"
+#
+msgid	"Valid chars"
+msgstr	"Caratteri validi"
+#
+#. "A quantity assigned to an element such as a variable, symbol, or label. "
+msgid	"Value"
+msgstr	"Valore"
+#
+#. "In programming, a named storage location capable of containing data that can be modified during program execution. "
+msgid	"Variable"
+msgstr	"Variabile"
+#
+#. "The average of the squares of the deviations of a number of observations of a quantity from their mean value."
+msgid	"Variance"
+msgstr	"Varianza"
+#
+#. "Images generated from mathematical descriptions that determine the position, length, and direction in which lines are drawn. Objects are created as collections of lines rather than as patterns of individual dots or pixels. "
+msgid	"Vector Graphics"
+msgstr	"Immagini vettoriali"
+#
+msgid	"Vendor"
+msgstr	"Fornitore"
+#
+#. "Displaying messages as English text rather than as concise (but cryptic) codes."
+msgid	"VERBOSE"
+msgstr	"VERBOSE"
+#
+#. "To confirm either that a result is correct or that a procedure or sequence of operations has been performed."
+msgid	"Verify"
+msgstr	"Verificare"
+#
+#. "A particular issue or release of a hardware product or software title."
+msgid	"Version"
+msgstr	"Versione"
+#
+msgid	"Vertical"
+msgstr	"Verticale"
+#
+msgid	"Vertical Alignment"
+msgstr	"Allineamento verticale"
+#
+msgid	"VFS"
+msgstr	"VFS"
+#
+#. "Pertaining to the visual component of a television signal. In relation to computers, video refers to the rendering of text and graphics images on displays."
+msgid	"Video"
+msgstr	"Video"
+#
+#. "The display of data or an image from a given perspective or location. "
+msgid	"View"
+msgstr	"Visualizzare"
+#
+#. "A specified window on a display surface that marks the limits of a display. A subdivision of a workspace."
+msgid	"Viewport"
+msgstr	"Riquadro di visualizzazione"
+#
+#. "Pertaining to a device, service, or sensory input that is perceived to be what it is not in actuality, usually as more 'real' or concrete than it actually is."
+msgid	"Virtual"
+msgstr	"Virtuale"
+#
+#. "Some <link linkend='wmanager'>window managers</link> allow the user to have several virtual desktops;you could have application windows open and working on all of them, even though at every moment, only one of the virtual desktops is shown on your screen."
+msgid	"Virtual Desktop"
+msgstr	"Desktop virtuale"
+#
+#. "A feature of an application that displays data in the form of a video image. For example, some databases can interpret and show data in the form of a two- or three-dimensional model."
+msgid	"Visualization"
+msgstr	"Visualizzazione"
+#
+#. "1. A disk or tape that stores computer data. Sometimes, large hard disks are divided into several volumes, each of which is treated as a separate disk. 2. The loudness of an audio signal."
+msgid	"Volume"
+msgstr	"Volume"
+#
+#. "In a graphical user interface, a pattern or picture in the screen background that can be chosen by the user. "
+msgid	"Wallpaper"
+msgstr	"Sfondo"
+#
+msgid	"Warning"
+msgstr	"Avviso"
+#
+msgid	"Watch file"
+msgstr	"File watch"
+#
+#. "A document on the World Wide Web. A Web page consists of an HTML file, with associated files for graphics and scripts, in a particular directory on a particular machine (and thus identifiable by a URL). "
+msgid	"Web Page"
+msgstr	"Pagina Web"
+#
+#. "A location on the World Wide Web. "
+# NEW MESSAGE
+msgid "website" 
+msgstr	"sito Web"
+#
+msgid	"Weight"
+msgstr	"Spessore"
+#
+#. "A single element of a graphical user interface, such as a button, scrollbar, or text input area."
+msgid	"Widget"
+msgstr	"Widget"
+#
+msgid	"Width"
+msgstr	"Larghezza"
+#
+#. "The interface element used to display most applications under a windowing GUI such as <link linkend='xwin'>X Window System</link>.  Windows typically consist of a main area in which typing or other work occurs, a title bar (which may contain buttons to mi window-specific menus, and a scroll bar down either side of the window if required."
+msgid	"Window"
+msgstr	"Finestra"
+#
+#. "The border that appears around windows and dialogs."
+# NEW MESSAGE
+msgid "window frame" 
+msgstr	"cornice della finestra"
+#
+#. "One of the following buttons that reside in a window frame:<UL><LI><B>Close Window</B> button</LI><LI><B>Minimize</B> button</LI><LI><B>Maximize</B> button</LI><LI><B>Shade</B> button</LI></UL>"
+# NEW MESSAGE
+msgid "Window frame button" 
+msgstr	"pulsante della cornice"
+#
+#. "A group of windows. You can configure your desktop so that when you minimize one member of the group, the other windows in the group are also minimized."
+# NEW MESSAGE
+msgid "window group" 
+msgstr	"gruppo di finestre"
+#
+#. "A list of the windows that are running on your desktop. To view your window list open the Root menu then choose <B>Windows</B>."
+# NEW MESSAGE
+msgid "window list" 
+msgstr	"elenco finestre"
+#
+#. "A program which extends the capabilities of the  <link linkend='xwin'>X Window System</link> by providing most of the user-friendly <link linkend='widget'>widgets</link> people expect from a windowing system, such as window borders, buttons and menus,  wa"
+msgid	"Window Manager"
+msgstr	"Gestione finestre"
+#
+#. "The native unit of storage on a particular machine. A word is the largest amount of data that can be handled by the microprocessor in one operation and also, as a rule, the width of the main data bus. "
+msgid	"Word"
+msgstr	"Parola"
+#
+msgid	"Work"
+msgstr	"Lavoro"
+#
+#. "In a spreadsheet program, a file containing a number of related worksheets. "
+msgid	"Workbook"
+msgstr	"Cartella di lavoro"
+#
+#. "The directory in which the user's commands take place, unless another directory is specified."
+msgid	"working directory"
+msgstr	"directory di lavoro"
+#
+#. "1. The background screen area on which windows and icons are displayed. 2. A defined area in which you can work. You can create different workspaces, with different processes, but you can only work on one at any time."
+# NEW MESSAGE
+msgid "Workspace" 
+msgstr	"Area di lavoro"
+#
+#. "To continue movement, as with the cursor or a search operation, to the beginning or to a new starting point rather than stopping when the end of a series is reached. "
+msgid	"Wrap"
+msgstr	"A capo automatico"
+#
+#. "A transfer of information to a storage device, such as a disk, or to an output device, such as the monitor or printer. "
+msgid	"Write"
+msgstr	"Scrittura"
+#
+msgid	"WVLAN"
+msgstr	"WVLAN"
+#
+msgid	"X Align"
+msgstr	"Allineamento X"
+#
+msgid	"XDMCP socket"
+msgstr	"Socket XDMCP"
+#
+#. "Acronym for eXtensible Markup Language, a condensed form of SGML (Standard Generalized Markup Language). XML lets Web developers and designers create customized tags that offer greater flexibility in organizing and presenting information than is possible with the older HTML document coding system."
+msgid	"XML"
+msgstr	"XML"
+#
+#. "The arithmetic symbol (0) representing no magnitude."
+msgid	"zero"
+msgstr	"zero"
+#
+msgid	"Zigzagline"
+msgstr	"Linea a zig zag"
+#
+#. "A disk drive developed by Iomega that uses 3.5-inch removable disks (Zip disks) capable of storing 100 megabytes of data. "
+msgid	"Zip Drive"
+msgstr	"Unità Zip"
+#
+#. "To enlarge a selected portion of a graphical image or document to fill a window or the screen. "
+msgid	"Zoom"
+msgstr	"Zoom"
+#

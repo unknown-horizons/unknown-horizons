@@ -1,0 +1,3464 @@
+# Essential terminology list for general software localisation
+# License: GPL
+# Copyright Youssef Chahibi, Friedel Wolff 2006
+msgid ""
+msgstr ""
+"Project-Id-Version: Terminology\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2009-02-27 16:14+0200\n"
+"PO-Revision-Date: 2010-08-03 01:06+0200\n"
+"Last-Translator: Anonymous Pootle User\n"
+"Language-Team: KOREAN <like.a.dust@gmail.com>\n"
+"Language: ko\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"X-Generator: Pootle 2.1.0-beta2\n"
+"X-Poedit-SourceCharset: utf-8\n"
+
+msgid "abort"
+msgstr "중지"
+
+msgid "absolute"
+msgstr "절대"
+
+msgid "abstract"
+msgstr "추상"
+
+msgid "accelerator"
+msgstr "단축키"
+
+msgid "accent"
+msgstr "강조"
+
+msgid "accept"
+msgstr "허용"
+
+msgid "access"
+msgstr "접근"
+
+msgid "accessibility"
+msgstr "접근성"
+
+msgid "accessory"
+msgstr "악세사리"
+
+msgid "account"
+msgstr "계정"
+
+msgid "accuracy"
+msgstr "정확도"
+
+msgid "acquire"
+msgstr "취득"
+
+msgid "acronym"
+msgstr "머리글자"
+
+msgid "action"
+msgstr "동작"
+
+msgid "activate"
+msgstr "활성화"
+
+msgid "active"
+msgstr "활성"
+
+msgid "activity"
+msgstr "활동"
+
+msgid "adapter"
+msgstr "어댑터"
+
+msgid "add"
+msgstr "더하기"
+
+msgid "address"
+msgstr "주소"
+
+msgid "adjust"
+msgstr "조정"
+
+msgid "administration"
+msgstr "관리"
+
+msgid "administrator"
+msgstr "관리자"
+
+msgid "advanced"
+msgstr "고급"
+
+msgid "agent"
+msgstr "에이전트"
+
+msgid "agree"
+msgstr "동의"
+
+msgid "agreement"
+msgstr "사용 약관"
+
+msgid "alarm"
+msgstr "알림"
+
+msgid "alert"
+msgstr "경보"
+
+msgid "algorithm"
+msgstr "알고리즘"
+
+msgid "alias"
+msgstr "다른 이름"
+
+# تسنن" مع الرسوميات (الخطوط وخلافه)
+msgid "aliasing"
+msgstr "위신호"
+
+msgid "align"
+msgstr "정렬"
+
+msgid "alignment"
+msgstr "정렬"
+
+msgid "allow"
+msgstr "허용"
+
+msgid "alphanumeric"
+msgstr "수학용 알파벳, 숫자 기호"
+
+msgid "alternative"
+msgstr "얼터너티브 (Alternative)"
+
+msgid "amount"
+msgstr "총계"
+
+msgid "analysis"
+msgstr "분석"
+
+msgid "anchor"
+msgstr "고정점"
+
+msgid "angle"
+msgstr "각도"
+
+msgid "animate"
+msgstr "애니메이션"
+
+msgid "animation"
+msgstr "애니메이션"
+
+msgid "announce"
+msgstr "안내"
+
+msgid "announcement"
+msgstr "안내"
+
+msgid "anonymous"
+msgstr "익명"
+
+msgid "anti-aliasing"
+msgstr "부드러운 글꼴 쓰기"
+
+msgid "anti virus"
+msgstr "안티 바이러스"
+
+msgid "appear"
+msgstr "나타냄"
+
+msgid "append"
+msgstr "덧붙이기"
+
+msgid "applet"
+msgstr "애플릿"
+
+msgid "application"
+msgstr "응용프로그램"
+
+msgid "apply"
+msgstr "적용"
+
+msgid "approval"
+msgstr "찬성"
+
+msgid "approve"
+msgstr "찬성"
+
+msgid "approximate"
+msgstr "유사"
+
+msgid "arbitrary"
+msgstr "임의"
+
+msgid "archive"
+msgstr "압축파일"
+
+msgid "area"
+msgstr "영역"
+
+msgid "argument"
+msgstr "인자"
+
+msgid "arrangement"
+msgstr "정렬"
+
+msgid "arrow"
+msgstr "화살표"
+
+msgid "article"
+msgstr "기사"
+
+msgid "ascending"
+msgstr "오름차순"
+
+msgid "aspect"
+msgstr "모양"
+
+msgid "assign"
+msgstr "할당"
+
+msgid "assignment"
+msgstr "할당"
+
+msgid "asynchronous"
+msgstr "비동기"
+
+msgid "attach"
+msgstr "첨부"
+
+msgid "attachment"
+msgstr "첨부"
+
+msgid "attempt"
+msgstr "시도"
+
+msgid "attribute"
+msgstr "속성"
+
+msgid "audio"
+msgstr "오디오"
+
+msgid "authenticate"
+msgstr "인증"
+
+msgid "authentication"
+msgstr "인증"
+
+msgid "authorization"
+msgstr "승인"
+
+msgid "authorize"
+msgstr "승인"
+
+msgid "auto"
+msgstr "자동"
+
+msgid "automatic"
+msgstr "자동"
+
+msgid "availability"
+msgstr "유효성"
+
+msgid "available"
+msgstr "사용 가능"
+
+msgid "average"
+msgstr "평균"
+
+msgid "axis"
+msgstr "축"
+
+msgid "backbone"
+msgstr "백본"
+
+msgid "back-end"
+msgstr "백엔드"
+
+msgid "background"
+msgstr "배경"
+
+msgid "backup"
+msgstr "백업"
+
+msgid "bandwidth"
+msgstr "대역폭"
+
+msgid "banner"
+msgstr "배너"
+
+msgid "bar"
+msgstr "막대"
+
+msgid "base"
+msgstr "베이스"
+
+msgid "beep"
+msgstr "비프음"
+
+msgid "begin"
+msgstr "시작"
+
+msgid "behavior"
+msgstr "동작"
+
+msgid "binary"
+msgstr "이진"
+
+msgid "bind"
+msgstr "묶음"
+
+msgid "bit"
+msgstr "비트"
+
+msgid "bitmap"
+msgstr "비트맵"
+
+msgid "blank"
+msgstr "빈 칸"
+
+msgid "blink"
+msgstr "깜빡이기"
+
+msgid "block (unit)"
+msgstr "구역 (단위)"
+
+msgid "block (verb)"
+msgstr "구역 (동사)"
+
+msgid "blog"
+msgstr "블로그"
+
+msgid "blur"
+msgstr "흐릿하게"
+
+msgid "board"
+msgstr "보드"
+
+msgid "body"
+msgstr "본문"
+
+msgid "bold"
+msgstr "굵게"
+
+msgid "bookmarks"
+msgstr "책갈피"
+
+msgid "boot"
+msgstr "부트"
+
+msgid "border"
+msgstr "테두리"
+
+msgid "box"
+msgstr "상자"
+
+msgid "bracket"
+msgstr "괄호"
+
+msgid "branch"
+msgstr "가지"
+
+msgid "break"
+msgstr "중지"
+
+msgid "break (program)"
+msgstr "중지 (프로그램)"
+
+msgid "break point"
+msgstr "중지점"
+
+msgid "bridge (verb)"
+msgstr "브릿지 (동사)"
+
+msgid "bridge (noun)"
+msgstr "브릿지 (명사)"
+
+msgid "broken"
+msgstr "깨짐"
+
+msgid "browse"
+msgstr "찾아보기"
+
+msgid "browser"
+msgstr "브라우저"
+
+msgid "buffer"
+msgstr "버퍼"
+
+msgid "bug"
+msgstr "버그"
+
+msgid "build"
+msgstr "빌드"
+
+msgid "built-in"
+msgstr "내장"
+
+msgid "bullet"
+msgstr "탄환"
+
+msgid "bus"
+msgstr "버스"
+
+msgid "button"
+msgstr "버튼"
+
+msgid "byte"
+msgstr "바이트"
+
+msgid "cable"
+msgstr "케이블"
+
+msgid "cache"
+msgstr "캐쉬"
+
+msgid "calculate"
+msgstr "계산"
+
+msgid "calculator"
+msgstr "계산기"
+
+msgid "calendar"
+msgstr "달력"
+
+msgid "call"
+msgstr "호출"
+
+msgid "camera"
+msgstr "카메라"
+
+msgid "cancel"
+msgstr "취소"
+
+msgid "capability"
+msgstr "능력"
+
+msgid "capacity"
+msgstr "용량"
+
+msgid "caption"
+msgstr "캡션"
+
+msgid "capture"
+msgstr "캡쳐"
+
+msgid "card"
+msgstr "카드"
+
+msgid "case"
+msgstr "케이스"
+
+msgid "case (font)"
+msgstr "케이스 (글꼴)"
+
+msgid "catalog"
+msgstr "카탈로그"
+
+msgid "category"
+msgstr "분류"
+
+msgid "cell"
+msgstr "셀"
+
+msgid "certificate"
+msgstr "인증"
+
+msgid "certify"
+msgstr "증명"
+
+msgid "change"
+msgstr "바꾸기"
+
+msgid "channel"
+msgstr "채널"
+
+msgid "character"
+msgstr "문자"
+
+msgid "charset"
+msgstr "문자코드"
+
+msgid "chart"
+msgstr "차트"
+
+msgid "chat"
+msgstr "대화"
+
+msgid "check"
+msgstr "확인"
+
+msgid "check box"
+msgstr "확인란"
+
+msgid "child"
+msgstr "자식"
+
+msgid "choice"
+msgstr "선택"
+
+msgid "choose"
+msgstr "선택"
+
+msgid "class"
+msgstr "클래스"
+
+msgid "classic"
+msgstr "클래식"
+
+msgid "classify"
+msgstr "분류"
+
+msgid "clean"
+msgstr "지우기"
+
+msgid "clear"
+msgstr "지우기"
+
+msgid "click (noun)"
+msgstr "클릭 (명사)"
+
+msgid "click (verb)"
+msgstr "클릭 (동사)"
+
+msgid "client"
+msgstr "클라이언트"
+
+msgid "clip art"
+msgstr "클립아트"
+
+msgid "clip board"
+msgstr "클립보드"
+
+msgid "clock"
+msgstr "시계"
+
+msgid "close"
+msgstr "닫기"
+
+msgid "code (program)"
+msgstr "코드 (프로그램)"
+
+msgid "code (symbol)"
+msgstr "코드 (기호)"
+
+msgid "codec"
+msgstr "코덱"
+
+msgid "collapse"
+msgstr "줄이기"
+
+msgid "collect"
+msgstr "수집"
+
+msgid "column"
+msgstr "열"
+
+msgid "combination"
+msgstr "결합"
+
+msgid "comma"
+msgstr "콤마"
+
+msgid "command"
+msgstr "명령"
+
+msgid "comment"
+msgstr "설명"
+
+msgid "common"
+msgstr "공통 사항"
+
+msgid "communication"
+msgstr "통신"
+
+msgid "compact"
+msgstr "컴팩트"
+
+msgid "compare"
+msgstr "비교"
+
+msgid "compatibility"
+msgstr "호환성"
+
+msgid "compatible"
+msgstr "호환되는"
+
+# حويل الشفرة المصرية إلى ملفات ثنائية (برمجة
+msgid "compilation"
+msgstr "편집물"
+
+msgid "compile"
+msgstr "컴파일"
+
+msgid "compiler"
+msgstr "컴파일러"
+
+msgid "complete"
+msgstr "완전"
+
+msgid "component"
+msgstr "컴포넌트"
+
+msgid "compose"
+msgstr "작성"
+
+msgid "composition"
+msgstr "구성"
+
+msgid "compress"
+msgstr "압축"
+
+msgid "compression"
+msgstr "압축"
+
+msgid "computer"
+msgstr "컴퓨터"
+
+msgid "computing"
+msgstr "연산"
+
+msgid "concatenate"
+msgstr "연쇄적인"
+
+msgid "concurrent"
+msgstr "동시"
+
+msgid "condense"
+msgstr "응축하다"
+
+msgid "condition"
+msgstr "조건"
+
+msgid "configuration"
+msgstr "설정"
+
+msgid "configure"
+msgstr "설정"
+
+msgid "confirm"
+msgstr "확인"
+
+msgid "confirmation"
+msgstr "확인"
+
+msgid "conflict"
+msgstr "충돌"
+
+msgid "connect"
+msgstr "연결"
+
+msgid "connection"
+msgstr "연결"
+
+msgid "console"
+msgstr "콘솔"
+
+msgid "contact (noun)"
+msgstr "접촉 (명사)"
+
+msgid "contact (verb)"
+msgstr "접촉 (동사)"
+
+msgid "content"
+msgstr "내용"
+
+msgid "context"
+msgstr "문맥"
+
+msgid "continue"
+msgstr "계속"
+
+msgid "contrast"
+msgstr "대조"
+
+msgid "contributor"
+msgstr "기여자"
+
+msgid "control"
+msgstr "조절"
+
+msgid "conversion"
+msgstr "변환"
+
+msgid "convert"
+msgstr "변환"
+
+msgid "cookie"
+msgstr "쿠키"
+
+msgid "cooperative"
+msgstr "협력적인"
+
+msgid "coordinate"
+msgstr "좌표"
+
+msgid "copy (noun)"
+msgstr "복사 (명사)"
+
+msgid "copy (verb)"
+msgstr "복사 (동사)"
+
+msgid "copy left"
+msgstr "카피레프트"
+
+msgid "copy right"
+msgstr "카피라이트"
+
+msgid "correct"
+msgstr "맞춤"
+
+msgid "correspondence"
+msgstr "일치"
+
+msgid "correspondent"
+msgstr "일치하는"
+
+msgid "corrupt"
+msgstr "잘못된"
+
+msgid "count"
+msgstr "개수"
+
+msgid "countable"
+msgstr "셀 수 있는"
+
+msgid "crash"
+msgstr "충돌"
+
+msgid "create"
+msgstr "만들기"
+
+msgid "creation"
+msgstr "만듦"
+
+msgid "criteria"
+msgstr "조건"
+
+msgid "crop"
+msgstr "자르기"
+
+msgid "cross-platform"
+msgstr "크로스 플랫폼"
+
+msgid "crypt"
+msgstr "암호화"
+
+msgid "cryptology"
+msgstr "암호학"
+
+msgid "current"
+msgstr "현재"
+
+msgid "cursor"
+msgstr "커서"
+
+msgid "curve"
+msgstr "곡선"
+
+msgid "custom"
+msgstr "사용자 지정"
+
+msgid "customization"
+msgstr "사용자 지정"
+
+msgid "customize"
+msgstr "사용자 지정"
+
+msgid "cut"
+msgstr "잘라내기"
+
+msgid "cycle"
+msgstr "순환"
+
+msgid "daemon"
+msgstr "데몬"
+
+msgid "damage"
+msgstr "손상"
+
+msgid "data"
+msgstr "데이터"
+
+msgid "database"
+msgstr "데이터베이스"
+
+msgid "debug"
+msgstr "버그잡기"
+
+msgid "debugger"
+msgstr "디버거"
+
+msgid "decimal"
+msgstr "10진수"
+
+msgid "decode"
+msgstr "디코드"
+
+msgid "decompress"
+msgstr "압축해제"
+
+msgid "decrease"
+msgstr "감소"
+
+msgid "decrypt"
+msgstr "해독"
+
+msgid "decryption"
+msgstr "해독"
+
+msgid "default"
+msgstr "기본값"
+
+msgid "defect"
+msgstr "결함"
+
+msgid "define"
+msgstr "정의"
+
+msgid "definition"
+msgstr "정의"
+
+msgid "degree"
+msgstr "각도"
+
+msgid "delay"
+msgstr "지연 시간"
+
+msgid "delete"
+msgstr "삭제하기"
+
+msgid "deletion"
+msgstr "삭제"
+
+msgid "delimiter"
+msgstr "구분문자"
+
+msgid "demo"
+msgstr "시연!"
+
+msgid "deny"
+msgstr "거부"
+
+msgid "dependence"
+msgstr "의존성"
+
+msgid "dependency"
+msgstr "의존성"
+
+msgid "depth"
+msgstr "깊이"
+
+msgid "derived"
+msgstr "유래된"
+
+msgid "descending"
+msgstr "내림차순"
+
+msgid "description"
+msgstr "설명"
+
+msgid "deselect"
+msgstr "선택 해제"
+
+msgid "design"
+msgstr "디자인"
+
+msgid "desktop"
+msgstr "바탕 화면"
+
+msgid "destination"
+msgstr "대상"
+
+msgid "destroy"
+msgstr "파괴"
+
+msgid "detach"
+msgstr "떼어내기"
+
+msgid "detect"
+msgstr "찾기"
+
+msgid "develop"
+msgstr "개발"
+
+msgid "development"
+msgstr "개발"
+
+msgid "developer"
+msgstr "개발자"
+
+msgid "device"
+msgstr "장치"
+
+msgid "diagram"
+msgstr "다이어그램"
+
+msgid "dial"
+msgstr "다이얼"
+
+msgid "dialog"
+msgstr "대화상자"
+
+msgid "dialup"
+msgstr "전화걸기"
+
+msgid "difference"
+msgstr "차이점"
+
+msgid "digit"
+msgstr "자리수"
+
+msgid "digital"
+msgstr "디지털"
+
+msgid "dimension"
+msgstr "면적"
+
+msgid "directory"
+msgstr "디렉토리"
+
+msgid "disable"
+msgstr "사용 않기"
+
+msgid "disc"
+msgstr "디스크"
+
+msgid "discard"
+msgstr "버리기"
+
+msgid "disconnect"
+msgstr "연결 끊기"
+
+msgid "discussion"
+msgstr "토론"
+
+msgid "disk"
+msgstr "디스크"
+
+msgid "dispatch"
+msgstr "급파"
+
+msgid "display"
+msgstr "디스플레이"
+
+msgid "distort"
+msgstr "뒤틀기"
+
+msgid "distribute"
+msgstr "배포"
+
+msgid "distribution"
+msgstr "배포"
+
+msgid "distributor"
+msgstr "배포자"
+
+msgid "dock"
+msgstr "독(Dock)"
+
+msgid "document"
+msgstr "문서"
+
+msgid "documentation"
+msgstr "문서화"
+
+msgid "domain"
+msgstr "도메인"
+
+msgid "double click"
+msgstr "더블 클릭"
+
+msgid "download"
+msgstr "내려받기"
+
+msgid "drag"
+msgstr "끌기"
+
+msgid "draw"
+msgstr "그리기"
+
+msgid "driver"
+msgstr "드라이버"
+
+msgid "dual"
+msgstr "듀얼"
+
+msgid "dump"
+msgstr "덤프"
+
+msgid "duplicate"
+msgstr "복제"
+
+msgid "dynamic"
+msgstr "다이나믹"
+
+msgid "echo"
+msgstr "메아리"
+
+msgid "edit"
+msgstr "편집"
+
+msgid "edition"
+msgstr "편집본"
+
+msgid "editor"
+msgstr "편집기"
+
+msgid "effect"
+msgstr "효과"
+
+msgid "eject"
+msgstr "꺼내기"
+
+msgid "electronic"
+msgstr "전자의"
+
+msgid "element"
+msgstr "요소"
+
+msgid "email"
+msgstr "이메일"
+
+msgid "embed"
+msgstr "내장"
+
+msgid "emoticon"
+msgstr "이모티콘"
+
+msgid "empty"
+msgstr "빈"
+
+msgid "emulate"
+msgstr "에뮬레이트"
+
+msgid "emulation"
+msgstr "에뮬레이션"
+
+msgid "emulator"
+msgstr "에뮬레이터"
+
+msgid "enable"
+msgstr "사용"
+
+msgid "enabled"
+msgstr "사용함"
+
+msgid "encode"
+msgstr "인코드"
+
+msgid "encoding"
+msgstr "인코딩"
+
+msgid "encrypt"
+msgstr "암호화"
+
+msgid "encrypted"
+msgstr "암호화됨"
+
+msgid "encryption"
+msgstr "암호화"
+
+msgid "engine"
+msgstr "엔진"
+
+msgid "enhancement"
+msgstr "강화"
+
+msgid "enlarge"
+msgstr "늘이기"
+
+msgid "enlargement"
+msgstr "확대"
+
+msgid "enter"
+msgstr "엔터"
+
+msgid "entertainment"
+msgstr "오락"
+
+msgid "entry"
+msgstr "항목"
+
+msgid "environment"
+msgstr "환경"
+
+msgid "equalizer"
+msgstr "이퀄라이저"
+
+msgid "erase"
+msgstr "지우기"
+
+msgid "error"
+msgstr "오류"
+
+msgid "escape"
+msgstr "탈출"
+
+msgid "evaluation"
+msgstr "평가"
+
+msgid "event"
+msgstr "이벤트"
+
+msgid "exception"
+msgstr "예외"
+
+msgid "executable"
+msgstr "실행 가능"
+
+msgid "execute"
+msgstr "실행"
+
+msgid "existing"
+msgstr "존재"
+
+msgid "exit"
+msgstr "종료"
+
+msgid "expand"
+msgstr "늘이기"
+
+msgid "expansion"
+msgstr "확장"
+
+msgid "explore"
+msgstr "탐험"
+
+msgid "export"
+msgstr "내보내기"
+
+msgid "expression"
+msgstr "표현"
+
+msgid "extend"
+msgstr "확장"
+
+msgid "extensible"
+msgstr "확장성있는"
+
+msgid "extension"
+msgstr "확장"
+
+msgid "external"
+msgstr "외부"
+
+msgid "extra"
+msgstr "추가"
+
+msgid "extract"
+msgstr "추출"
+
+msgid "fail"
+msgstr "실패"
+
+# فادح: مثل خطأ فادح
+msgid "fatal"
+msgstr "치명적"
+
+msgid "fault"
+msgstr "잘못"
+
+msgid "favorite"
+msgstr "즐겨찾기"
+
+msgid "feature"
+msgstr "기능"
+
+msgid "feed"
+msgstr "피드"
+
+msgid "feedback"
+msgstr "피드백"
+
+msgid "fetch"
+msgstr "가져오기"
+
+msgid "field"
+msgstr "필드"
+
+msgid "figure"
+msgstr "숫자"
+
+msgid "file"
+msgstr "파일"
+
+msgid "fill"
+msgstr "채움"
+
+msgid "filter"
+msgstr "필터"
+
+msgid "find"
+msgstr "찾기"
+
+msgid "firewall"
+msgstr "방화벽"
+
+msgid "firmware"
+msgstr "펌웨어"
+
+msgid "fit"
+msgstr "맞추기"
+
+msgid "fix"
+msgstr "고치기"
+
+msgid "flag"
+msgstr "표시"
+
+msgid "flash"
+msgstr "플래시"
+
+msgid "flat"
+msgstr "평평함"
+
+msgid "flip"
+msgstr "뒤집기"
+
+msgid "float (verb)"
+msgstr "띄우기(동사)"
+
+msgid "flood"
+msgstr "홍수"
+
+msgid "floppy"
+msgstr "플로피"
+
+msgid "folder"
+msgstr "폴더"
+
+msgid "font"
+msgstr "글꼴"
+
+msgid "footer"
+msgstr "바닥글"
+
+msgid "form"
+msgstr "양식"
+
+msgid "format (noun)"
+msgstr "형식(명사)"
+
+msgid "format (verb)"
+msgstr "형식(동사)"
+
+msgid "formatted"
+msgstr "포맷됨"
+
+msgid "formula"
+msgstr "수식"
+
+msgid "forum"
+msgstr "포럼"
+
+msgid "fragment"
+msgstr "단편화"
+
+msgid "frame"
+msgstr "프레임"
+
+msgid "frame set"
+msgstr "프레임 설정"
+
+msgid "framework"
+msgstr "프레임워크"
+
+msgid "free software"
+msgstr "자유 소프트웨어 재단"
+
+msgid "freeze"
+msgstr "동결"
+
+msgid "frequency"
+msgstr "주파수"
+
+msgid "front end"
+msgstr "프론트 엔드"
+
+msgid "function"
+msgstr "함수"
+
+msgid "gallery"
+msgstr "갤러리"
+
+msgid "game"
+msgstr "게임"
+
+msgid "gateway"
+msgstr "게이트웨이"
+
+msgid "generate"
+msgstr "만들기"
+
+msgid "generation"
+msgstr "세대"
+
+msgid "generator"
+msgstr "생성기"
+
+msgid "generic"
+msgstr "일반"
+
+msgid "geometric"
+msgstr "기하학적인"
+
+msgid "geometry"
+msgstr "평면 도형"
+
+msgid "grab"
+msgstr "잡아내기"
+
+msgid "gradient"
+msgstr "그라디언트"
+
+msgid "grain"
+msgstr "질감 드러내기"
+
+msgid "graph"
+msgstr "그래프"
+
+msgid "graphic"
+msgstr "그래픽"
+
+msgid "graphical"
+msgstr "그래픽"
+
+msgid "graphics"
+msgstr "그래픽"
+
+msgid "gray-scale"
+msgstr "그레이스케일"
+
+msgid "grid"
+msgstr "격자"
+
+msgid "group"
+msgstr "그룹"
+
+msgid "guess"
+msgstr "추측"
+
+msgid "guest"
+msgstr "손님"
+
+msgid "handle (noun)"
+msgstr "핸들(명사)"
+
+msgid "handle (verb)"
+msgstr "핸들(동사)"
+
+msgid "handler"
+msgstr "핸들러"
+
+msgid "hardware"
+msgstr "하드웨어"
+
+msgid "hash"
+msgstr "해시"
+
+msgid "head"
+msgstr "머릿말"
+
+msgid "header"
+msgstr "머리글"
+
+msgid "height"
+msgstr "높이"
+
+msgid "help"
+msgstr "도움말"
+
+msgid "hide"
+msgstr "숨기기"
+
+#, fuzzy
+msgid "hierarchy"
+msgstr "인증서 계층 구조(_H)"
+
+msgid "high light"
+msgstr "매우 밝은색"
+
+msgid "history"
+msgstr "이력"
+
+msgid "host"
+msgstr "호스트"
+
+msgid "hostname"
+msgstr "호스트 이름"
+
+msgid "hyperlink"
+msgstr "하이퍼링크"
+
+msgid "hypertext"
+msgstr "하이퍼텍스트"
+
+msgid "icon"
+msgstr "아이콘"
+
+msgid "identify"
+msgstr ""
+
+msgid "idle"
+msgstr "유휴"
+
+msgid "ignore"
+msgstr "무시"
+
+msgid "image"
+msgstr "그림"
+
+msgid "implement"
+msgstr "구현"
+
+msgid "import"
+msgstr "가져오기"
+
+msgid "inactive"
+msgstr "비활성"
+
+msgid "inbox"
+msgstr "받은 편지함"
+
+msgid "inch"
+msgstr "인치"
+
+msgid "include"
+msgstr "포함"
+
+msgid "incoming"
+msgstr "받은 메일"
+
+msgid "incompatible"
+msgstr "호환안됨"
+
+msgid "increase"
+msgstr "증가"
+
+msgid "increment"
+msgstr "증가값"
+
+msgid "indent"
+msgstr "들여쓰기"
+
+msgid "index"
+msgstr "인덱스"
+
+msgid "indice"
+msgstr ""
+
+msgid "infect"
+msgstr ""
+
+msgid "infinite"
+msgstr ""
+
+msgid "information"
+msgstr "정보"
+
+#, fuzzy
+msgid "infrared"
+msgstr "적외선 인터페이스"
+
+msgid "initial"
+msgstr "초기값"
+
+msgid "initialize"
+msgstr "초기화"
+
+msgid "input"
+msgstr "입력"
+
+msgid "insert"
+msgstr "삽입"
+
+msgid "install"
+msgstr "설치"
+
+msgid "installer"
+msgstr "설치 프로그램"
+
+msgid "instance"
+msgstr "인스턴스"
+
+msgid "instruction"
+msgstr "명령"
+
+msgid "integer"
+msgstr "정수"
+
+msgid "integral"
+msgstr "적분"
+
+msgid "integrate"
+msgstr "통합"
+
+msgid "integration"
+msgstr "적분"
+
+#, fuzzy
+msgid "integrity"
+msgstr "올바른지 테스트(_T)"
+
+msgid "intensity"
+msgstr "농도"
+
+#, fuzzy
+msgid "interactivity"
+msgstr "상호작용 정도"
+
+msgid "interface"
+msgstr "인터페이스"
+
+msgid "internal"
+msgstr "내부"
+
+msgid "internet"
+msgstr "인터넷"
+
+msgid "interrupt"
+msgstr "인터럽트"
+
+msgid "invalid"
+msgstr "잘못됨"
+
+msgid "inverse"
+msgstr "반전"
+
+msgid "invert"
+msgstr "반전"
+
+msgid "invoke"
+msgstr ""
+
+msgid "italic"
+msgstr "이탤릭"
+
+msgid "item"
+msgstr "항목"
+
+#, fuzzy
+msgid "iteration"
+msgstr "적분"
+
+msgid "jag"
+msgstr ""
+
+#, fuzzy
+msgid "jam"
+msgstr "교통체증"
+
+msgid "job"
+msgstr "작업"
+
+msgid "join"
+msgstr "참여"
+
+msgid "joy stick"
+msgstr "조이스틱"
+
+msgid "jump"
+msgstr "이동"
+
+msgid "junk"
+msgstr "정크"
+
+msgid "justify"
+msgstr "정렬"
+
+msgid "keep"
+msgstr "유지"
+
+msgid "kernel"
+msgstr "커널"
+
+#, fuzzy
+msgid "key"
+msgstr "[키]"
+
+#, fuzzy
+msgid "keyboard"
+msgstr "키보드"
+
+#, fuzzy
+msgid "key stroke"
+msgstr "획 더하기"
+
+#, fuzzy
+msgid "key word"
+msgstr "단어 잘림 방지"
+
+#, fuzzy
+msgid "label"
+msgstr "레이블"
+
+#, fuzzy
+msgid "landscape"
+msgstr "가로 방향"
+
+#, fuzzy
+msgid "language"
+msgstr "언어"
+
+#, fuzzy
+msgid "laptop"
+msgstr "<b>노트북 배터리</b>"
+
+#, fuzzy
+msgid "launch"
+msgstr "%s 실행"
+
+#, fuzzy
+msgid "layer"
+msgstr "%d 레이어"
+
+#, fuzzy
+msgid "layout"
+msgstr "배치"
+
+#, fuzzy
+msgid "length"
+msgstr "길이:"
+
+#, fuzzy
+msgid "license"
+msgstr "사용권"
+
+#, fuzzy
+msgid "line"
+msgstr "선형"
+
+#, fuzzy
+msgid "link"
+msgstr "바로가기"
+
+#, fuzzy
+msgid "list"
+msgstr "목록"
+
+#, fuzzy
+msgid "load"
+msgstr "읽기"
+
+#, fuzzy
+msgid "local"
+msgstr "지역"
+
+msgid "localization"
+msgstr "지역화"
+
+#, fuzzy
+msgid "location"
+msgstr "위치"
+
+#, fuzzy
+msgid "log"
+msgstr "Log"
+
+#, fuzzy
+msgid "lookup"
+msgstr "찾아보기"
+
+#, fuzzy
+msgid "lower-case"
+msgstr "모두 소문자(_L)"
+
+#, fuzzy
+msgid "machine"
+msgstr "컴퓨터를 최대절전 상태로"
+
+#, fuzzy
+msgid "main board"
+msgstr "게임판 크기"
+
+msgid "maintainer"
+msgstr "관리자"
+
+msgid "maintenance"
+msgstr "관리"
+
+#, fuzzy
+msgid "manage"
+msgstr "인증서 관리"
+
+#, fuzzy
+msgid "management"
+msgstr "색상 관리"
+
+#, fuzzy
+msgid "manager"
+msgstr "관리자"
+
+#, fuzzy
+msgid "manual"
+msgstr "수동"
+
+#, fuzzy
+msgid "margin"
+msgstr "여백"
+
+#, fuzzy
+msgid "mark"
+msgstr "마크"
+
+#, fuzzy
+msgid "master"
+msgstr "마스터"
+
+#, fuzzy
+msgid "match"
+msgstr "({0}개 일치)"
+
+#, fuzzy
+msgid "maximize"
+msgstr "최대화"
+
+#, fuzzy
+msgid "memory"
+msgstr "메모리"
+
+#, fuzzy
+msgid "menu"
+msgstr "메뉴"
+
+#, fuzzy
+msgid "merge"
+msgstr "합치기(_M)"
+
+#, fuzzy
+msgid "message"
+msgstr "메세지"
+
+#, fuzzy
+msgid "method"
+msgstr "메소드"
+
+#, fuzzy
+msgid "minimize"
+msgstr "최소화"
+
+#, fuzzy
+msgid "mode"
+msgstr "방식"
+
+#, fuzzy
+msgid "modem"
+msgstr "모뎀"
+
+msgid "moderator"
+msgstr ""
+
+#, fuzzy
+msgid "modify"
+msgstr "수정"
+
+#, fuzzy
+msgid "module"
+msgstr "모듈"
+
+#, fuzzy
+msgid "monitor"
+msgstr "정보(_M)"
+
+#, fuzzy
+msgid "mosaic"
+msgstr "모자이크"
+
+#, fuzzy
+msgid "motion"
+msgstr "움직임"
+
+#, fuzzy
+msgid "mouse"
+msgstr "마우스"
+
+#, fuzzy
+msgid "move"
+msgstr "이동(_M)"
+
+#, fuzzy
+msgid "multimedia"
+msgstr "멀티미디어"
+
+msgid "multitasking"
+msgstr ""
+
+#, fuzzy
+msgid "name"
+msgstr "이름"
+
+#, fuzzy
+msgid "navigation"
+msgstr "네비게이션"
+
+#, fuzzy
+msgid "navigator"
+msgstr "네비게이션"
+
+#, fuzzy
+msgid "network"
+msgstr "네트워크(_N)"
+
+#, fuzzy
+msgid "news group"
+msgstr "동작 그룹"
+
+#, fuzzy
+msgid "next"
+msgstr "다음(_N)"
+
+#, fuzzy
+msgid "nick name"
+msgstr "접근성 이름"
+
+#, fuzzy
+msgid "no"
+msgstr "아니오"
+
+#, fuzzy
+msgid "node"
+msgstr "노드"
+
+#, fuzzy
+msgid "notation"
+msgstr "HTML 표기(_n):"
+
+#, fuzzy
+msgid "note"
+msgstr "알림"
+
+#, fuzzy
+msgid "notebook"
+msgstr "노트북"
+
+#, fuzzy
+msgid "notification"
+msgstr "알림"
+
+#, fuzzy
+msgid "notify"
+msgstr "들어감 알림"
+
+# في الرياضيات "صفر"
+# الصفة "منعدم"
+#, fuzzy
+msgid "null"
+msgstr "널 애플릿 팩토리"
+
+#, fuzzy
+msgid "number"
+msgstr "번호"
+
+#, fuzzy
+msgid "numbering"
+msgstr "번호"
+
+#, fuzzy
+msgid "object"
+msgstr "%d개 파일 (%s)"
+
+msgid "occurrence"
+msgstr ""
+
+msgid "octet"
+msgstr ""
+
+#, fuzzy
+msgid "offline"
+msgstr "오프라인"
+
+#, fuzzy
+msgid "OK"
+msgstr "확인"
+
+#, fuzzy
+msgid "online"
+msgstr "온라인"
+
+#, fuzzy
+msgid "ongoing"
+msgstr "보내는 메일"
+
+#, fuzzy
+msgid "opacity"
+msgstr "불투명도"
+
+#, fuzzy
+msgid "opaque"
+msgstr "<small>불투명</small>"
+
+#, fuzzy
+msgid "open"
+msgstr "열기"
+
+#, fuzzy
+msgid "operation"
+msgstr "동작"
+
+#, fuzzy
+msgid "option"
+msgstr "[옵션...]"
+
+#, fuzzy
+msgid "optional"
+msgstr "빈 줄 제거"
+
+#, fuzzy
+msgid "order"
+msgstr "순서"
+
+msgid "organize"
+msgstr ""
+
+#, fuzzy
+msgid "orientation"
+msgstr "방향"
+
+#, fuzzy
+msgid "original"
+msgstr "원래 환경:"
+
+#, fuzzy
+msgid "outgoing"
+msgstr "보내는 메일"
+
+#, fuzzy
+msgid "output"
+msgstr "출력.%s"
+
+#, fuzzy
+msgid "overflow"
+msgstr "스택 넘침"
+
+#, fuzzy
+msgid "override"
+msgstr "`override' 지시자"
+
+#, fuzzy
+msgid "overwrite"
+msgstr "덮어쓰기(_O)"
+
+#, fuzzy
+msgid "owner"
+msgstr "소유자:"
+
+#, fuzzy
+msgid "pack"
+msgstr "모으기 방향"
+
+#, fuzzy
+msgid "package"
+msgstr "<패키지>"
+
+#, fuzzy
+msgid "packet"
+msgstr "%lu개 패킷"
+
+#, fuzzy
+msgid "padding"
+msgstr "여백"
+
+#, fuzzy
+msgid "page"
+msgstr "쪽"
+
+#, fuzzy
+msgid "paint"
+msgstr "페인트"
+
+#, fuzzy
+msgid "pair"
+msgstr "짝"
+
+#, fuzzy
+msgid "palette"
+msgstr "색상표(_P):"
+
+#, fuzzy
+msgid "panel"
+msgstr "패널"
+
+#, fuzzy
+msgid "parallel"
+msgstr "병렬 인터페이스"
+
+#, fuzzy
+msgid "parameter"
+msgstr "매개변수 k:"
+
+msgid "parcel"
+msgstr ""
+
+#, fuzzy
+msgid "parent"
+msgstr "parent"
+
+msgid "parity"
+msgstr ""
+
+#, fuzzy
+msgid "parse"
+msgstr "해석 오류"
+
+msgid "partition"
+msgstr ""
+
+#, fuzzy
+msgid "pass"
+msgstr "패스"
+
+#, fuzzy
+msgid "password"
+msgstr "암호:"
+
+#, fuzzy
+msgid "paste"
+msgstr "붙여 넣기"
+
+#, fuzzy
+msgid "patch (noun)"
+msgstr "패치 파일"
+
+#, fuzzy
+msgid "patch (verb)"
+msgstr "패치 파일"
+
+#, fuzzy
+msgid "path"
+msgstr "경로"
+
+#, fuzzy
+msgid "pattern"
+msgstr "패턴"
+
+#, fuzzy
+msgid "pause"
+msgstr "일시 중지"
+
+msgid "peripheral"
+msgstr ""
+
+msgid "permanent"
+msgstr ""
+
+#, fuzzy
+msgid "permission"
+msgstr "권한"
+
+msgid "permutation"
+msgstr ""
+
+#, fuzzy
+msgid "physical"
+msgstr "물리적 설정"
+
+#, fuzzy
+msgid "picture"
+msgstr "Picture"
+
+#, fuzzy
+msgid "pipe"
+msgstr "파이프"
+
+#, fuzzy
+msgid "pixel"
+msgstr "픽셀"
+
+#, fuzzy
+msgid "placement"
+msgstr "배치"
+
+#, fuzzy
+msgid "plain"
+msgstr "단순"
+
+#, fuzzy
+msgid "plot (verb)"
+msgstr "설정 그래프 작성하기"
+
+msgid "plotter"
+msgstr ""
+
+#, fuzzy
+msgid "plugin"
+msgstr "플러그인"
+
+#, fuzzy
+msgid "pop up"
+msgstr "알림 팝업 창 표시"
+
+#, fuzzy
+msgid "port"
+msgstr "포트:"
+
+#, fuzzy
+msgid "position"
+msgstr "위치"
+
+#, fuzzy
+msgid "post"
+msgstr "게시 위치:"
+
+#, fuzzy
+msgid "preferences"
+msgstr "기본 설정"
+
+#, fuzzy
+msgid "prepare"
+msgstr "GIF를 위한 준비"
+
+#, fuzzy
+msgid "presentation"
+msgstr "발표(_P)"
+
+#, fuzzy
+msgid "press"
+msgstr "누르기"
+
+msgid "prevent"
+msgstr ""
+
+#, fuzzy
+msgid "preview"
+msgstr "미리 보기"
+
+#, fuzzy
+msgid "primary"
+msgstr "주요"
+
+#, fuzzy
+msgid "principal"
+msgstr "<replaceable>prin</replaceable>, 원금 (principal)"
+
+#, fuzzy
+msgid "print"
+msgstr "인쇄"
+
+#, fuzzy
+msgid "printer"
+msgstr "프린터"
+
+#, fuzzy
+msgid "priority"
+msgstr "중요도"
+
+#, fuzzy
+msgid "privacy"
+msgstr "보안"
+
+#, fuzzy
+msgid "private"
+msgstr "개인"
+
+msgid "privilege"
+msgstr ""
+
+#, fuzzy
+msgid "procedure"
+msgstr "%d 프로시저"
+
+#, fuzzy
+msgid "process"
+msgstr "프로세스"
+
+#, fuzzy
+msgid "processor"
+msgstr "프로세서"
+
+#, fuzzy
+msgid "product"
+msgstr "제품"
+
+#, fuzzy
+msgid "profile"
+msgstr "프로파일: %s"
+
+#, fuzzy
+msgid "program"
+msgstr "프로그램"
+
+msgid "programmer"
+msgstr ""
+
+#, fuzzy
+msgid "project"
+msgstr "프로젝트"
+
+#, fuzzy
+msgid "prompt"
+msgstr "입력할 형식 기다리기(_P)"
+
+#, fuzzy
+msgid "property"
+msgstr "속성"
+
+msgid "proprietary"
+msgstr ""
+
+#, fuzzy
+msgid "protect"
+msgstr "열쇠글로 보호"
+
+msgid "protection"
+msgstr ""
+
+#, !!!
+#, fuzzy, !!!
+msgid "protocol"
+msgstr "프로토콜"
+
+msgid "provide"
+msgstr ""
+
+msgid "provider"
+msgstr ""
+
+#, fuzzy
+msgid "proxy"
+msgstr "프록시"
+
+#, fuzzy
+msgid "public"
+msgstr "공개"
+
+#, fuzzy
+msgid "publish"
+msgstr "게시 위치(_P):"
+
+# في الرياضيات "صفر"
+# الصفة "منعدم"
+#, fuzzy
+msgid "pull"
+msgstr "널 애플릿 팩토리"
+
+#, fuzzy
+msgid "push"
+msgstr "푸시"
+
+#, fuzzy
+msgid "quality"
+msgstr "화질"
+
+#, fuzzy
+msgid "quantity"
+msgstr "대량 복제"
+
+msgid "quarantine"
+msgstr ""
+
+#, fuzzy
+msgid "query"
+msgstr "질의"
+
+#, fuzzy
+msgid "queue"
+msgstr "큐"
+
+#, fuzzy
+msgid "quit"
+msgstr "끝내기"
+
+#, fuzzy
+msgid "quota"
+msgstr "디스크 사용제한 사용"
+
+#, fuzzy
+msgid "quotation"
+msgstr "인용문 붙여 넣기"
+
+#, fuzzy
+msgid "quote"
+msgstr "원문을 인용"
+
+#, fuzzy
+msgid "raise"
+msgstr "채널 올리기"
+
+#, fuzzy
+msgid "random"
+msgstr "랜덤"
+
+#, fuzzy
+msgid "range"
+msgstr "범위"
+
+#, fuzzy
+msgid "rate"
+msgstr "비율"
+
+#, fuzzy
+msgid "ratio"
+msgstr "비율"
+
+#, fuzzy
+msgid "raw"
+msgstr "Raw"
+
+#, fuzzy
+msgid "ray"
+msgstr "출력 트레이(_R):"
+
+#, fuzzy
+msgid "read"
+msgstr "읽기"
+
+#, fuzzy
+msgid "read only"
+msgstr "%s (읽기 전용)"
+
+#, fuzzy
+msgid "ready"
+msgstr "준비"
+
+#, fuzzy
+msgid "real"
+msgstr "실제 이름(_R):"
+
+#, fuzzy
+msgid "reboot"
+msgstr "지금 재시작"
+
+#, fuzzy
+msgid "receipt"
+msgstr "내용 읽음 확인 보내기"
+
+#, fuzzy
+msgid "receive"
+msgstr "보내고 받기"
+
+#, fuzzy
+msgid "recognition"
+msgstr "바로가기 자동 인식"
+
+#, fuzzy
+msgid "reconnect"
+msgstr "다시 연결(&R)"
+
+#, fuzzy
+msgid "record"
+msgstr "기록:"
+
+#, fuzzy
+msgid "record (verb)"
+msgstr "녹음/녹화(_R)"
+
+#, fuzzy
+msgid "recover"
+msgstr "복구하기(_R)"
+
+#, fuzzy
+msgid "recovery"
+msgstr "파괴 복구"
+
+#
+#, fuzzy
+msgid "recursion"
+msgstr "재귀 최대값에 도달했습니다"
+
+#, fuzzy
+msgid "recursive"
+msgstr "재귀 최대값에 도달했습니다"
+
+#, fuzzy
+msgid "redirect"
+msgstr "지원되지 않는 리다이렉트"
+
+#, fuzzy
+msgid "redo"
+msgstr "다시 실행"
+
+#, fuzzy
+msgid "reduce"
+msgstr "채도 줄이기(_S)"
+
+msgid "reduction"
+msgstr ""
+
+#, fuzzy
+msgid "redundant"
+msgstr "추가 객체"
+
+#, fuzzy
+msgid "reference"
+msgstr "API 참조(_A)"
+
+msgid "referer"
+msgstr ""
+
+msgid "referral"
+msgstr ""
+
+msgid "reflexive"
+msgstr ""
+
+#, fuzzy
+msgid "refresh"
+msgstr "새로 고침"
+
+msgid "refuse"
+msgstr ""
+
+#, fuzzy
+msgid "regenerate"
+msgstr "만들기"
+
+#, fuzzy
+msgid "register"
+msgstr "레지스터"
+
+#, fuzzy
+msgid "registration"
+msgstr "등록 시간 초과:"
+
+#, fuzzy
+msgid "registry"
+msgstr "플러그인 레지스트리(_R)"
+
+#, fuzzy
+msgid "regular"
+msgstr "일반"
+
+#, fuzzy
+msgid "regulate"
+msgstr "에뮬레이트"
+
+#, fuzzy
+msgid "relay"
+msgstr "Frame Relay DLCI"
+
+#, fuzzy
+msgid "release"
+msgstr "릴리즈"
+
+#, fuzzy
+msgid "remaining"
+msgstr "남은 수:"
+
+#, fuzzy
+msgid "remind"
+msgstr "나중에 알림(_R)"
+
+#, fuzzy
+msgid "remote"
+msgstr "원격(_R)"
+
+#, fuzzy
+msgid "removable"
+msgstr "이동식 미디어"
+
+#, fuzzy
+msgid "remove"
+msgstr "지우기"
+
+#, fuzzy
+msgid "rename"
+msgstr "이름 바꾸기..."
+
+#, fuzzy
+msgid "render"
+msgstr "렌더(_R)"
+
+msgid "renew"
+msgstr ""
+
+msgid "repair"
+msgstr ""
+
+#, fuzzy
+msgid "repeat"
+msgstr "반복:"
+
+#, fuzzy
+msgid "replace"
+msgstr "바꾸기(_R)"
+
+#, fuzzy
+msgid "replicate"
+msgstr "복제"
+
+#, fuzzy
+msgid "replication"
+msgstr "응용프로그램"
+
+#, fuzzy
+msgid "reply"
+msgstr "회신"
+
+#, fuzzy
+msgid "report"
+msgstr "보고(_R)"
+
+#, fuzzy
+msgid "repository"
+msgstr "<b>저장소: </b>"
+
+#, fuzzy
+msgid "request"
+msgstr "높이 요청"
+
+#, fuzzy
+msgid "require"
+msgstr "필요한 꾸러미:"
+
+msgid "requirement"
+msgstr ""
+
+#, fuzzy
+msgid "reset"
+msgstr "원래대로(_R)"
+
+#, fuzzy
+msgid "resize"
+msgstr "크기 조절"
+
+#, fuzzy
+msgid "resolution"
+msgstr "해상도:"
+
+#, fuzzy
+msgid "resolver"
+msgstr "계정 정보 해석기"
+
+#, fuzzy
+msgid "resource"
+msgstr "자원"
+
+#, fuzzy
+msgid "response"
+msgstr "응답:"
+
+#, fuzzy
+msgid "restart"
+msgstr "게임 다시(_R)"
+
+#, fuzzy
+msgid "restore"
+msgstr "기본값으로 되돌리기(_R)"
+
+#, fuzzy
+msgid "restrict"
+msgstr "엄밀히 적용합니다."
+
+msgid "restriction"
+msgstr ""
+
+#, fuzzy
+msgid "result"
+msgstr "결과"
+
+#, fuzzy
+msgid "resume"
+msgstr "계속(_R)"
+
+#, fuzzy
+msgid "retrieve"
+msgstr "호출 중지(_R)"
+
+#, fuzzy
+msgid "retry"
+msgstr "다시 시도"
+
+#, fuzzy
+msgid "return"
+msgstr "POV %d 반환"
+
+#, fuzzy
+msgid "reverse"
+msgstr "마지막 페이지부터(_R)"
+
+#, fuzzy
+msgid "revert"
+msgstr "되돌리기(_R)"
+
+#, fuzzy
+msgid "revocation"
+msgstr "철회하는 이유 (선택 정보)"
+
+#, fuzzy
+msgid "revoke"
+msgstr "철회"
+
+#, fuzzy
+msgid "root"
+msgstr "루트 창"
+
+#, fuzzy
+msgid "rotate"
+msgstr "회전(_R)"
+
+#, fuzzy
+msgid "route"
+msgstr "라우트 서버"
+
+#, fuzzy
+msgid "router"
+msgstr "라우터 알림 서버"
+
+msgid "routine"
+msgstr ""
+
+#, fuzzy
+msgid "row"
+msgstr "행"
+
+#, fuzzy
+msgid "rule"
+msgstr "구분선"
+
+#, fuzzy
+msgid "run"
+msgstr "실행"
+
+#, fuzzy
+msgid "runtime"
+msgstr "실행 시 물어봄"
+
+#, fuzzy
+msgid "safe"
+msgstr "안전한 텔레포트:"
+
+#, fuzzy
+msgid "sample"
+msgstr "예제"
+
+#, fuzzy
+msgid "sans"
+msgstr "Sans"
+
+#, fuzzy
+msgid "save"
+msgstr "저장"
+
+#, fuzzy
+msgid "scalable"
+msgstr "화질저하없이 변형이 가능한 SVG 이미지 (*.svg)"
+
+#, fuzzy
+msgid "scale"
+msgstr "배율 조절(_S)"
+
+#, fuzzy
+msgid "scan"
+msgstr "검색"
+
+#, fuzzy
+msgid "scanner"
+msgstr "스캐너/카메라(_S)..."
+
+msgid "schedule"
+msgstr "일정"
+
+msgid "scheme"
+msgstr ""
+
+msgid "scratch"
+msgstr ""
+
+msgid "screen"
+msgstr "화면"
+
+msgid "screw"
+msgstr ""
+
+msgid "script"
+msgstr "스크립트"
+
+# من لف الشئ يلفه
+# فتقول:
+# لف ﻷعلى=scroll up ، وهكذا
+msgid "scroll"
+msgstr "스크롤"
+
+msgid "search"
+msgstr "검색"
+
+msgid "section"
+msgstr "절"
+
+#, fuzzy
+msgid "sector"
+msgstr "방향 벡터"
+
+msgid "secure"
+msgstr "보안"
+
+msgid "security"
+msgstr "보안"
+
+msgid "seek"
+msgstr "찾기"
+
+msgid "segment"
+msgstr "구획"
+
+msgid "segmentation"
+msgstr "구획화"
+
+msgid "select"
+msgstr "선택"
+
+msgid "selection"
+msgstr "선택"
+
+msgid "semantic"
+msgstr ""
+
+msgid "send"
+msgstr "보내기"
+
+#, fuzzy
+msgid "sender"
+msgstr "보내는 사람(_S):"
+
+#, fuzzy
+msgid "sensitive"
+msgstr "반응"
+
+msgid "sensor"
+msgstr ""
+
+msgid "serif"
+msgstr ""
+
+#, fuzzy
+msgid "server"
+msgstr "서버(_S):"
+
+#, fuzzy
+msgid "session"
+msgstr "세션"
+
+#, fuzzy
+msgid "set"
+msgstr "설정(_S)"
+
+#, fuzzy
+msgid "settings"
+msgstr "설정"
+
+#, fuzzy
+msgid "setup"
+msgstr "설치"
+
+#, fuzzy
+msgid "shading"
+msgstr "명암"
+
+#, fuzzy
+msgid "shadow"
+msgstr "그림자"
+
+#, fuzzy
+msgid "shape"
+msgstr "모양"
+
+#, fuzzy
+msgid "share"
+msgstr "공유(_S):"
+
+#, fuzzy
+msgid "sharp"
+msgstr "날카로운 경계선"
+
+#, fuzzy
+msgid "sheet"
+msgstr "한 장당 페이지 수"
+
+#, fuzzy
+msgid "shell"
+msgstr "쉘(_S):"
+
+#, fuzzy
+msgid "shift"
+msgstr "_X 이동:"
+
+#, fuzzy
+msgid "shortcut"
+msgstr "단축키"
+
+#, fuzzy
+msgid "show"
+msgstr "\"%s\" 다시 표시(_e)"
+
+#, fuzzy
+msgid "shrink"
+msgstr "줄어들기"
+
+#, fuzzy
+msgid "shut down"
+msgstr "컴퓨터 끄기"
+
+#, fuzzy
+msgid "side bar"
+msgstr "가장자리 창(_B)"
+
+#, fuzzy
+msgid "sign"
+msgstr "서명"
+
+#, fuzzy
+msgid "signal"
+msgstr "시그널"
+
+#, fuzzy
+msgid "signature"
+msgstr "서명"
+
+#, fuzzy
+msgid "site"
+msgstr "홈페이지:"
+
+#, fuzzy
+msgid "size"
+msgstr "크기"
+
+msgid "skew"
+msgstr ""
+
+#, fuzzy
+msgid "skip"
+msgstr "건너뛰기"
+
+#, fuzzy
+msgid "slave"
+msgstr " 슬레이브 %s: %s\n"
+
+#, fuzzy
+msgid "sleep"
+msgstr "절전 모드"
+
+#, fuzzy
+msgid "slide"
+msgstr "필름 테두리(_S)..."
+
+#, fuzzy
+msgid "slot"
+msgstr "비어 있는 슬롯"
+
+#, fuzzy
+msgid "smart"
+msgstr "똑똑한 들여쓰기"
+
+#, fuzzy
+msgid "smiley"
+msgstr "스마일리 자동 인식"
+
+#, fuzzy
+msgid "smooth"
+msgstr "부드럽게"
+
+#, fuzzy
+msgid "socket"
+msgstr "소켓"
+
+#, fuzzy
+msgid "software"
+msgstr "소프트웨어"
+
+#, fuzzy
+msgid "solid"
+msgstr "단색"
+
+#, fuzzy
+msgid "sort"
+msgstr "정렬"
+
+#, fuzzy
+msgid "source"
+msgstr "소스"
+
+#, fuzzy
+msgid "space"
+msgstr "공백"
+
+#, fuzzy
+msgid "spacing"
+msgstr "간격"
+
+#, fuzzy
+msgid "spam"
+msgstr "스팸 거르개"
+
+#, fuzzy
+msgid "span"
+msgstr "열 범위 열"
+
+#, fuzzy
+msgid "spawn"
+msgstr "열 범위 열"
+
+#, fuzzy
+msgid "specify"
+msgstr "파일 이름 지정(_F):"
+
+#, fuzzy
+msgid "speed"
+msgstr "속도:"
+
+#, fuzzy
+msgid "spelling"
+msgstr "맞춤법 검사(_S)..."
+
+#, fuzzy
+msgid "splash"
+msgstr "스플래시 화면"
+
+#, fuzzy
+msgid "split"
+msgstr "분할"
+
+#, fuzzy
+msgid "spool"
+msgstr "스풀 메일 파일 %s"
+
+#, fuzzy
+msgid "spread sheet"
+msgstr "스프레드 총량"
+
+#, fuzzy
+msgid "stack"
+msgstr "스택"
+
+#, fuzzy
+msgid "stand alone"
+msgstr "단일 모드"
+
+#, fuzzy
+msgid "standard"
+msgstr "표준"
+
+#, fuzzy
+msgid "start"
+msgstr "시작"
+
+#, fuzzy
+msgid "state"
+msgstr "상태:"
+
+#, fuzzy
+msgid "static"
+msgstr "고정"
+
+#, fuzzy
+msgid "statistics"
+msgstr "통계"
+
+#, fuzzy
+msgid "step"
+msgstr "단계(_S)"
+
+#, fuzzy
+msgid "stop"
+msgstr "중지"
+
+#, fuzzy
+msgid "storage"
+msgstr "저장 형식"
+
+#, fuzzy
+msgid "store"
+msgstr "저장고 %s을(를) 여는 중입니다"
+
+#, fuzzy
+msgid "stream"
+msgstr "스트림 모니커익스텐더"
+
+#, fuzzy
+msgid "stretch"
+msgstr "늘림"
+
+#, fuzzy
+msgid "strict"
+msgstr "엄밀히 적용합니다."
+
+#, fuzzy
+msgid "string"
+msgstr "문자열"
+
+#, fuzzy
+msgid "strip"
+msgstr "특수문자 지우기(_S)"
+
+#, fuzzy
+msgid "stroke"
+msgstr "따라 그리기(_S)"
+
+#, fuzzy
+msgid "structure"
+msgstr "구성"
+
+msgid "stub"
+msgstr ""
+
+#, fuzzy
+msgid "style"
+msgstr "모양새"
+
+#, fuzzy
+msgid "sub directory"
+msgstr "디렉토리 창"
+
+#, fuzzy
+msgid "sub folder"
+msgstr "폴더를 읽을 수 없음: %s"
+
+msgid "submission"
+msgstr ""
+
+#, fuzzy
+msgid "submit"
+msgstr "쿼리 전송"
+
+#, fuzzy
+msgid "subscribe"
+msgstr "구독"
+
+#, fuzzy
+msgid "subscription"
+msgstr "설명"
+
+#, fuzzy
+msgid "subtract"
+msgstr "빼기"
+
+msgid "succeed"
+msgstr ""
+
+msgid "suggest"
+msgstr ""
+
+#, fuzzy
+msgid "suggestion"
+msgstr "건의 사항 / 문제에 대한 설명:"
+
+#, fuzzy
+msgid "sum (noun)"
+msgstr "합계 연산자(표시)"
+
+#, fuzzy
+msgid "sum (verb)"
+msgstr "합계 연산자(표시)"
+
+#, fuzzy
+msgid "summary"
+msgstr "요약"
+
+#, fuzzy
+msgid "support"
+msgstr "<b>지원</b>"
+
+msgid "surface"
+msgstr ""
+
+#, fuzzy
+msgid "suspend"
+msgstr "절전"
+
+msgid "suspicious"
+msgstr ""
+
+#, fuzzy
+msgid "swap"
+msgstr ".h/.c 교환"
+
+#, fuzzy
+msgid "switch"
+msgstr "switch"
+
+#, fuzzy
+msgid "symbol"
+msgstr "심볼"
+
+#, fuzzy
+msgid "synchronize"
+msgstr "동기화"
+
+#, fuzzy
+msgid "syntax"
+msgstr "구문 강조"
+
+#, fuzzy
+msgid "system"
+msgstr "시스템"
+
+#, fuzzy
+msgid "tab"
+msgstr "Tab"
+
+#, fuzzy
+msgid "table"
+msgstr "테이블"
+
+#, fuzzy
+msgid "tag"
+msgstr "태그"
+
+#, fuzzy
+msgid "target"
+msgstr "대상"
+
+#, fuzzy
+msgid "template"
+msgstr "템플릿(_T)"
+
+#, fuzzy
+msgid "temporary"
+msgstr "임시 프로시저"
+
+#, fuzzy
+msgid "terminal"
+msgstr "터미널"
+
+#, fuzzy
+msgid "test"
+msgstr "테스트"
+
+#, fuzzy
+msgid "text"
+msgstr "텍스트"
+
+#, fuzzy
+msgid "texture"
+msgstr "텍스쳐"
+
+#, fuzzy
+msgid "theme"
+msgstr "테마"
+
+#, fuzzy
+msgid "thread"
+msgstr "쓰레드"
+
+#, fuzzy
+msgid "thumbnail"
+msgstr "미리보기 %d / %d"
+
+msgid "tick"
+msgstr ""
+
+#, fuzzy
+msgid "tile"
+msgstr "타일"
+
+#, fuzzy
+msgid "time"
+msgstr "<b>시간</b>"
+
+#, fuzzy
+msgid "time out"
+msgstr "시간 초과 설정(초)(&O):"
+
+#, fuzzy
+msgid "tip"
+msgstr "도구 설명"
+
+#, fuzzy
+msgid "title"
+msgstr "제목"
+
+#, fuzzy
+msgid "toggle"
+msgstr "토글"
+
+#, fuzzy
+msgid "token"
+msgstr "잠금 토큰: %s\n"
+
+#, fuzzy
+msgid "tool"
+msgstr "도구"
+
+#, fuzzy
+msgid "tool bar"
+msgstr "도구 모음"
+
+#, fuzzy
+msgid "tool box"
+msgstr "도구상자(_b)"
+
+#, fuzzy
+msgid "topic"
+msgstr "주제"
+
+#, fuzzy
+msgid "trace"
+msgstr "따라가기"
+
+#, fuzzy
+msgid "track"
+msgstr "트랙 %s"
+
+#, fuzzy
+msgid "traffic"
+msgstr "교통체증"
+
+#, fuzzy
+msgid "transfer"
+msgstr "전달"
+
+#, fuzzy
+msgid "transform"
+msgstr "변형(_T)"
+
+#, fuzzy
+msgid "transformation"
+msgstr "변형"
+
+#, fuzzy
+msgid "trap"
+msgstr "EMT 트랩"
+
+#, fuzzy
+msgid "trash"
+msgstr "휴지통"
+
+#, fuzzy
+msgid "trigger"
+msgstr "동작/시작 옵션"
+
+msgid "trouble shoot"
+msgstr ""
+
+msgid "tune"
+msgstr ""
+
+msgid "tweak"
+msgstr ""
+
+#, fuzzy
+msgid "type (noun)"
+msgstr "커브 형식"
+
+#, fuzzy
+msgid "type (verb)"
+msgstr "커브 형식"
+
+#, fuzzy
+msgid "type face"
+msgstr "글꼴"
+
+#, fuzzy
+msgid "unavailable"
+msgstr "사용할 수 없음"
+
+#, fuzzy
+msgid "undelete"
+msgstr "되살리기"
+
+#, fuzzy
+msgid "under line"
+msgstr "줄 바꿈"
+
+#, fuzzy
+msgid "undo"
+msgstr "입력 취소(_U)"
+
+#, fuzzy
+msgid "uninstall"
+msgstr "설치 취소"
+
+#, fuzzy
+msgid "unit"
+msgstr "단위"
+
+#, fuzzy
+msgid "unknown"
+msgstr "알 수 없음"
+
+#, fuzzy
+msgid "unload"
+msgstr "사용 안함"
+
+#, fuzzy
+msgid "named"
+msgstr "이름붙여 복사하기"
+
+#, fuzzy
+msgid "reachable"
+msgstr "그룹 읽기 가능"
+
+#, fuzzy
+msgid "readable"
+msgstr "그룹 읽기 가능"
+
+#, fuzzy
+msgid "unspecified"
+msgstr "알 수 없는 오류가 있습니다"
+
+#, fuzzy
+msgid "unsubscribe"
+msgstr "구독 중지"
+
+#, fuzzy
+msgid "unsupported"
+msgstr "지원하지 않음"
+
+#, fuzzy
+msgid "update"
+msgstr "갱신(_U)"
+
+#, fuzzy
+msgid "upgrade"
+msgstr "업그레이드"
+
+#, fuzzy
+msgid "upload"
+msgstr "업로드(&U)"
+
+#, fuzzy
+msgid "upper case"
+msgstr "모두 대문자(_U)"
+
+#, fuzzy
+msgid "usage"
+msgstr "사용법:"
+
+#, fuzzy
+msgid "user"
+msgstr "사용자"
+
+#, fuzzy
+msgid "user name"
+msgstr "사용자 이름"
+
+#, fuzzy
+msgid "utility"
+msgstr "유틸리티"
+
+#, fuzzy
+msgid "valid"
+msgstr "유효 기간 시작: "
+
+#, fuzzy
+msgid "validation"
+msgstr "유효성 검사 오류: %s"
+
+#, fuzzy
+msgid "validity"
+msgstr "<b>유효 기간</b>"
+
+#, fuzzy
+msgid "value"
+msgstr "값"
+
+#, fuzzy
+msgid "variable"
+msgstr "변수"
+
+#, fuzzy
+msgid "vector"
+msgstr "방향 벡터"
+
+#, fuzzy
+msgid "verbose"
+msgstr "3 - 상세"
+
+#, fuzzy
+msgid "verify"
+msgstr "검증 "
+
+#, fuzzy
+msgid "version"
+msgstr "버전"
+
+#, fuzzy
+msgid "video"
+msgstr "비디오형식"
+
+#, fuzzy
+msgid "view"
+msgstr "보기"
+
+#, fuzzy
+msgid "viewer"
+msgstr "그림 보기 프로그램"
+
+#, fuzzy
+msgid "virtual"
+msgstr "가상"
+
+msgid "virus"
+msgstr ""
+
+#, fuzzy
+msgid "visual"
+msgstr "비주얼"
+
+#, fuzzy
+msgid "volume"
+msgstr "볼륨"
+
+#, fuzzy
+msgid "wallpaper"
+msgstr "<b>바탕 화면 무늬(_W)</b>"
+
+msgid "warn"
+msgstr ""
+
+#, fuzzy
+msgid "web"
+msgstr "웹(_W)"
+
+#, fuzzy
+msgid "web cam"
+msgstr "웹 브라우저"
+
+#, fuzzy
+msgid "web master"
+msgstr "도킹 마스터"
+
+#, fuzzy
+msgid "web page"
+msgstr "웹 페이지"
+
+#, fuzzy
+msgid "widget"
+msgstr "위젯"
+
+#, fuzzy
+msgid "width"
+msgstr "너비"
+
+#, fuzzy
+msgid "wi fi"
+msgstr "찾기(_N):"
+
+#, fuzzy
+msgid "wild card"
+msgstr "베이스 카드:"
+
+#, fuzzy
+msgid "window"
+msgstr "창"
+
+#, fuzzy
+msgid "wizard"
+msgstr "Wizard"
+
+#, fuzzy
+msgid "word processor"
+msgstr "이벤트 처리기"
+
+#, fuzzy
+msgid "work around"
+msgstr "감싼(_W)"
+
+#, fuzzy
+msgid "work group"
+msgstr "동작 그룹"
+
+#, fuzzy
+msgid "work station"
+msgstr "College Station"
+
+#, fuzzy
+msgid "wrap"
+msgstr "넘어감"
+
+msgid "yes"
+msgstr "예"
+
+msgid "zone"
+msgstr "시간대"
+
+msgid "zoom"
+msgstr "확대/축소"

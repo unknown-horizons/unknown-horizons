@@ -1,0 +1,3147 @@
+# translation of essential.po to swahili
+# muhsin <mrfroasty@gmail.com>, 2009.
+msgid ""
+msgstr ""
+"Project-Id-Version: essential\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2009-02-27 16:17+0200\n"
+"PO-Revision-Date: 2010-08-03 01:18+0200\n"
+"Last-Translator: Anonymous Pootle User\n"
+"Language-Team: swahili <translation-team-sw@lists.sourceforge.net>\n"
+"Language: sw\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Pootle 2.1.0-beta2\n"
+
+# Essential terminology list for general software localisation
+# License: GPL
+# Copyright Youssef Chahibi, Friedel Wolff 2006
+# cancel=ghairi
+# Essential terminology list for general software localisation
+# License: GPL
+# Copyright Youssef Chahibi, Friedel Wolff 2006
+msgid "abort"
+msgstr "ghairi"
+
+# fix me
+msgid "absolute"
+msgstr "kabisa"
+
+msgid "abstract"
+msgstr "muhtasari"
+
+msgid "accelerator"
+msgstr "kichapuza"
+
+msgid "accent"
+msgstr "lafdhi"
+
+msgid "accept"
+msgstr "kubali"
+
+msgid "access"
+msgstr "patikana"
+
+msgid "accessibility"
+msgstr "upatikanaji"
+
+msgid "accessory"
+msgstr "bidhaa"
+
+msgid "account"
+msgstr "akaunti"
+
+msgid "accuracy"
+msgstr "uhakiki"
+
+msgid "acquire"
+msgstr "pata"
+
+msgid "acronym"
+msgstr "vifupisho"
+
+msgid "action"
+msgstr "tendo"
+
+msgid "activate"
+msgstr "amilisha"
+
+msgid "active"
+msgstr "shugulika"
+
+msgid "activity"
+msgstr "shughuli"
+
+msgid "adapter"
+msgstr "adapta"
+
+msgid "add"
+msgstr "ongeza"
+
+msgid "address"
+msgstr "Anwani"
+
+msgid "adjust"
+msgstr "rekebisha"
+
+msgid "administration"
+msgstr "utawala"
+
+msgid "administrator"
+msgstr "mkabidhi"
+
+msgid "advanced"
+msgstr "taalamu"
+
+msgid "agent"
+msgstr "kaimu"
+
+msgid "agree"
+msgstr "kubali"
+
+msgid "agreement"
+msgstr "makubaliano"
+
+# honi
+msgid "alarm"
+msgstr "king'ora"
+
+msgid "alert"
+msgstr "hadhari"
+
+msgid "algorithm"
+msgstr "miundo-mbinu"
+
+msgid "alias"
+msgstr " jina-jingine"
+
+# تسنن" مع الرسوميات (الخطوط وخلافه)<br />
+# if used in computer or signal
+msgid "aliasing"
+msgstr "uchafuzi"
+
+msgid "align"
+msgstr "oanisha"
+
+msgid "alignment"
+msgstr "usawanisho"
+
+msgid "allow"
+msgstr "ruhusu"
+
+# herufi kama za kilatini or so
+msgid "alphanumeric"
+msgstr "herufi-nambari"
+
+msgid "alternative"
+msgstr "nyingine"
+
+msgid "amount"
+msgstr "idadi"
+
+msgid "analysis"
+msgstr "uchambuzi"
+
+# fix me, no idea if this is true
+msgid "anchor"
+msgstr "nanga"
+
+msgid "angle"
+msgstr "pembe"
+
+# nafikiria ni kufanya urembo urembo
+msgid "animate"
+msgstr "rembuza"
+
+msgid "animation"
+msgstr "urembo"
+
+msgid "announce"
+msgstr "tangaza"
+
+msgid "announcement"
+msgstr "tangazo"
+
+msgid "anonymous"
+msgstr "aliejificha"
+
+# kitu cha kuzia uharibifu
+msgid "anti-aliasing"
+msgstr "dawa-haribifu"
+
+msgid "anti virus"
+msgstr "dawa-virusi"
+
+msgid "appear"
+msgstr "onekana"
+
+msgid "append"
+msgstr "subiri"
+
+msgid "applet"
+msgstr "apuleti"
+
+msgid "application"
+msgstr "programu-tumizi"
+
+msgid "apply"
+msgstr "tekeleza"
+
+msgid "approval"
+msgstr "ridhaa"
+
+msgid "approve"
+msgstr "ridhia"
+
+msgid "approximate"
+msgstr "kisia"
+
+msgid "arbitrary"
+msgstr "sio-na-lengo"
+
+msgid "archive"
+msgstr "jalada"
+
+msgid "area"
+msgstr "sehemu"
+
+msgid "argument"
+msgstr "hoja"
+
+msgid "arrangement"
+msgstr "mpangilio"
+
+msgid "arrow"
+msgstr "mshale"
+
+msgid "article"
+msgstr "nakala"
+
+msgid "ascending"
+msgstr "upandaji"
+
+msgid "aspect"
+msgstr "kipengele"
+
+msgid "assign"
+msgstr "panga"
+
+msgid "assignment"
+msgstr "kazi"
+
+msgid "asynchronous"
+msgstr "isio sawa"
+
+msgid "attach"
+msgstr "ambatanisha"
+
+# klnx:funge
+msgid "attachment"
+msgstr "ambatanisho"
+
+msgid "attempt"
+msgstr "jaribu"
+
+msgid "attribute"
+msgstr "sifa"
+
+msgid "audio"
+msgstr "sauti"
+
+msgid "authenticate"
+msgstr "halalisha"
+
+# klnx:uhalisishaji
+msgid "authentication"
+msgstr "uhalalisho"
+
+msgid "authorization"
+msgstr "uidhinishaji"
+
+msgid "authorize"
+msgstr "toa ruhusa"
+
+# klnx:automatiki
+msgid "auto"
+msgstr "kwa machine"
+
+msgid "automatic"
+msgstr "kwa machine"
+
+msgid "availability"
+msgstr "upatikanaji"
+
+msgid "available"
+msgstr "patikana"
+
+msgid "average"
+msgstr "wastani"
+
+msgid "axis"
+msgstr "mhimili"
+
+msgid "backbone"
+msgstr "uti-mgongo"
+
+# sucky translation
+msgid "back-end"
+msgstr "nyuma-mwisho"
+
+# klnx:usuli
+msgid "background"
+msgstr "muhtasari"
+
+msgid "backup"
+msgstr "hifadhi"
+
+msgid "bandwidth"
+msgstr "upana-bendi"
+
+# not found in swahili
+msgid "banner"
+msgstr "bena"
+
+msgid "bar"
+msgstr "gongo"
+
+msgid "base"
+msgstr "makalio"
+
+msgid "beep"
+msgstr "honi"
+
+msgid "begin"
+msgstr "anza"
+
+msgid "behavior"
+msgstr "tabia"
+
+# klnx:jozi
+msgid "binary"
+msgstr "kipeo cha pili"
+
+msgid "bind"
+msgstr "unganisha"
+
+msgid "bit"
+msgstr "biti"
+
+msgid "bitmap"
+msgstr "taswidoti"
+
+msgid "blank"
+msgstr "uwazi"
+
+msgid "blink"
+msgstr "konyeza"
+
+msgid "block (unit)"
+msgstr "kipande"
+
+msgid "block (verb)"
+msgstr "zuia"
+
+msgid "blog"
+msgstr "blogi"
+
+msgid "blur"
+msgstr "ukungu"
+
+msgid "board"
+msgstr "ubao"
+
+# umbile
+msgid "body"
+msgstr "umbo"
+
+msgid "bold"
+msgstr "koza"
+
+msgid "bookmarks"
+msgstr "alamisha"
+
+# no found
+msgid "boot"
+msgstr "buti"
+
+msgid "border"
+msgstr "mpaka"
+
+msgid "box"
+msgstr "boksi"
+
+msgid "bracket"
+msgstr "mabano"
+
+msgid "branch"
+msgstr "tawi"
+
+# fix me 
+# fix me
+msgid "break"
+msgstr "breki"
+
+msgid "break (program)"
+msgstr "simama"
+
+msgid "break point"
+msgstr "sehemu-kingo"
+
+msgid "bridge (verb)"
+msgstr "unganisha"
+
+msgid "bridge (noun)"
+msgstr "daraja"
+
+msgid "broken"
+msgstr "vunjika"
+
+# klnx:vinjari??
+msgid "browse"
+msgstr "tembelea"
+
+msgid "browser"
+msgstr "kitembeleaji"
+
+msgid "buffer"
+msgstr "bafa"
+
+msgid "bug"
+msgstr "hitilafu"
+
+msgid "build"
+msgstr "tengeneza"
+
+msgid "built-in"
+msgstr "jengewa-ndani"
+
+msgid "bullet"
+msgstr "risasi"
+
+msgid "bus"
+msgstr "basi"
+
+msgid "button"
+msgstr "kitufe"
+
+msgid "byte"
+msgstr "baiti"
+
+msgid "cable"
+msgstr "kamba"
+
+msgid "cache"
+msgstr "kache"
+
+msgid "calculate"
+msgstr "hesabu"
+
+# klnx:kikokotoo?
+msgid "calculator"
+msgstr "kalkuleta"
+
+msgid "calendar"
+msgstr "kalenda"
+
+msgid "call"
+msgstr "piga simu"
+
+msgid "camera"
+msgstr "kamera"
+
+msgid "cancel"
+msgstr "ghairi"
+
+msgid "capability"
+msgstr "uwezo"
+
+msgid "capacity"
+msgstr "ujazo"
+
+msgid "caption"
+msgstr "maelezo-fupisha"
+
+msgid "capture"
+msgstr "nasa"
+
+msgid "card"
+msgstr "kadi"
+
+msgid "case"
+msgstr "kesi"
+
+# no idea
+msgid "case (font)"
+msgstr "hefuri"
+
+msgid "catalog"
+msgstr "katalogi"
+
+msgid "category"
+msgstr "mgawanyo"
+
+# kwenye computer cell itakuwa ni kijumba...kama biology guys itakuwa seli
+msgid "cell"
+msgstr "kijumba"
+
+msgid "certificate"
+msgstr "cheti"
+
+msgid "certify"
+msgstr "hakikisha"
+
+msgid "change"
+msgstr "badiliko"
+
+# klnx:mkondo
+msgid "channel"
+msgstr "chanal"
+
+msgid "character"
+msgstr "herufi"
+
+msgid "charset"
+msgstr "herufi-kodi"
+
+msgid "chart"
+msgstr "chati"
+
+msgid "chat"
+msgstr "ongea"
+
+# angalia
+msgid "check"
+msgstr "tizama"
+
+msgid "check box"
+msgstr "kisanduku-tiki"
+
+msgid "child"
+msgstr "mtoto"
+
+msgid "choice"
+msgstr "chaguo"
+
+msgid "choose"
+msgstr "chagua"
+
+# darasa in other area, but i think in software mgao is better
+msgid "class"
+msgstr "mgao"
+
+msgid "classic"
+msgstr "kizimani"
+
+msgid "classify"
+msgstr "gawanya"
+
+msgid "clean"
+msgstr "safisha"
+
+msgid "clear"
+msgstr "safi"
+
+msgid "click (noun)"
+msgstr "mbonyezo"
+
+msgid "click (verb)"
+msgstr "bonyeza"
+
+msgid "client"
+msgstr "mteja"
+
+msgid "clip art"
+msgstr "pogoa-sanii"
+
+msgid "clip board"
+msgstr "pogoa-bao"
+
+msgid "clock"
+msgstr "saa"
+
+msgid "close"
+msgstr "funga"
+
+msgid "code (program)"
+msgstr "kodi"
+
+msgid "code (symbol)"
+msgstr "kodi"
+
+msgid "codec"
+msgstr "kodeki"
+
+# klnx
+msgid "collapse"
+msgstr "kunja"
+
+msgid "collect"
+msgstr "kusanya"
+
+msgid "column"
+msgstr "upana"
+
+msgid "combination"
+msgstr "mchanganyiko"
+
+msgid "comma"
+msgstr "koma"
+
+msgid "command"
+msgstr "amuru"
+
+msgid "comment"
+msgstr "komenti"
+
+msgid "common"
+msgstr "tumika sana"
+
+msgid "communication"
+msgstr "mawasiliano"
+
+msgid "compact"
+msgstr "fumba"
+
+msgid "compare"
+msgstr "linganisha"
+
+msgid "compatibility"
+msgstr "utangamano"
+
+# ref:tangamana
+msgid "compatible"
+msgstr "endana"
+
+# حويل الشفرة المصرية إلى ملفات ثنائية (برمجة
+msgid "compilation"
+msgstr "kompailesheni"
+
+msgid "compile"
+msgstr "kompaili"
+
+msgid "compiler"
+msgstr "kompaila"
+
+msgid "complete"
+msgstr "kamili"
+
+msgid "component"
+msgstr "kifaa"
+
+msgid "compose"
+msgstr "tengeneza"
+
+msgid "composition"
+msgstr "insha"
+
+msgid "compress"
+msgstr "gandamiza"
+
+msgid "compression"
+msgstr "mgandamizo"
+
+msgid "computer"
+msgstr "kompyuta"
+
+msgid "computing"
+msgstr "hesabu"
+
+msgid "concatenate"
+msgstr "unga"
+
+msgid "concurrent"
+msgstr "mbadala"
+
+msgid "condense"
+msgstr "gandamiza"
+
+msgid "condition"
+msgstr "hali"
+
+msgid "configuration"
+msgstr "usanidi"
+
+msgid "configure"
+msgstr "(ku) sanidi"
+
+msgid "confirm"
+msgstr "thibitisha"
+
+msgid "confirmation"
+msgstr "utibitisho"
+
+msgid "conflict"
+msgstr "mgongano"
+
+msgid "connect"
+msgstr "unganisha"
+
+msgid "connection"
+msgstr "muungano"
+
+msgid "console"
+msgstr "konsoli"
+
+msgid "contact (noun)"
+msgstr "anwani"
+
+msgid "contact (verb)"
+msgstr "wasiliana"
+
+msgid "content"
+msgstr "yaliyomo"
+
+msgid "context"
+msgstr "muktadha"
+
+msgid "continue"
+msgstr "endelea"
+
+msgid "contrast"
+msgstr "pambanisha"
+
+msgid "contributor"
+msgstr "mchangiaji"
+
+msgid "control"
+msgstr "kidhibiti"
+
+msgid "conversion"
+msgstr "mbadiliko"
+
+msgid "convert"
+msgstr "badilisha"
+
+msgid "cookie"
+msgstr "kuki"
+
+msgid "cooperative"
+msgstr "shirika"
+
+msgid "coordinate"
+msgstr "shirikisha"
+
+msgid "copy (noun)"
+msgstr "nakala"
+
+msgid "copy (verb)"
+msgstr "nakili"
+
+msgid "copy left"
+msgstr "nakili kushoto"
+
+msgid "copy right"
+msgstr "nakili kulia"
+
+msgid "correct"
+msgstr "rekebisha"
+
+msgid "correspondence"
+msgstr "uhusiano"
+
+msgid "correspondent"
+msgstr "muhariri"
+
+msgid "corrupt"
+msgstr "fisidi"
+
+msgid "count"
+msgstr "hesabu"
+
+msgid "countable"
+msgstr "inayohesabika"
+
+msgid "crash"
+msgstr "kwama"
+
+msgid "create"
+msgstr "unda"
+
+msgid "creation"
+msgstr "miundo"
+
+msgid "criteria"
+msgstr "kigezo"
+
+msgid "crop"
+msgstr "pogoa"
+
+# fix me 
+# fix me
+msgid "cross-platform"
+msgstr "sehemu-zote"
+
+msgid "crypt"
+msgstr "kripti"
+
+msgid "cryptology"
+msgstr "kriptoloji"
+
+msgid "current"
+msgstr "ya sasa"
+
+msgid "cursor"
+msgstr "mshale"
+
+msgid "curve"
+msgstr "mpindo"
+
+msgid "custom"
+msgstr "kienyeji"
+
+msgid "customization"
+msgstr "uenyeji"
+
+msgid "customize"
+msgstr "kudhehebu"
+
+msgid "cut"
+msgstr "kata"
+
+msgid "cycle"
+msgstr "duara"
+
+msgid "daemon"
+msgstr "dimoni"
+
+msgid "damage"
+msgstr "haribiko"
+
+msgid "data"
+msgstr "data"
+
+msgid "database"
+msgstr "databezi"
+
+msgid "debug"
+msgstr "peleleza"
+
+msgid "debugger"
+msgstr "kipelelezi"
+
+msgid "decimal"
+msgstr "desimali"
+
+msgid "decode"
+msgstr "simbua"
+
+msgid "decompress"
+msgstr "gandamizua"
+
+msgid "decrease"
+msgstr "punguza"
+
+msgid "decrypt"
+msgstr "kriptua"
+
+msgid "decryption"
+msgstr "ukripti"
+
+msgid "default"
+msgstr "chaguo-msingi"
+
+msgid "defect"
+msgstr "haribika"
+
+msgid "define"
+msgstr "fafanua"
+
+msgid "definition"
+msgstr "ufafanuzi"
+
+msgid "degree"
+msgstr "kiasi"
+
+msgid "delay"
+msgstr "chelewa"
+
+msgid "delete"
+msgstr "futa"
+
+msgid "deletion"
+msgstr "mfuto"
+
+msgid "delimiter"
+msgstr "kitenganishi"
+
+msgid "demo"
+msgstr "mfano"
+
+msgid "deny"
+msgstr "kataa"
+
+msgid "dependence"
+msgstr "jitegemea"
+
+msgid "dependency"
+msgstr "tegemezi"
+
+msgid "depth"
+msgstr "kina"
+
+msgid "derived"
+msgstr "tokana"
+
+msgid "descending"
+msgstr "mteremko"
+
+msgid "description"
+msgstr "maelezo"
+
+msgid "deselect"
+msgstr "usichague"
+
+# remba,marembo
+msgid "design"
+msgstr "rembo"
+
+msgid "desktop"
+msgstr "dawati"
+
+msgid "destination"
+msgstr "mwishilio"
+
+msgid "destroy"
+msgstr "angamiza"
+
+msgid "detach"
+msgstr "bandua"
+
+msgid "detect"
+msgstr "gundua"
+
+msgid "develop"
+msgstr "endeleza"
+
+msgid "development"
+msgstr "maendeleo"
+
+msgid "developer"
+msgstr "muendelezi"
+
+msgid "device"
+msgstr "kifaa"
+
+msgid "diagram"
+msgstr "mchoro"
+
+msgid "dial"
+msgstr "piga"
+
+msgid "dialog"
+msgstr "mazungumzo"
+
+msgid "dialup"
+msgstr "piga"
+
+msgid "difference"
+msgstr "tofauti"
+
+msgid "digit"
+msgstr "nambari"
+
+msgid "digital"
+msgstr "kinambari"
+
+msgid "dimension"
+msgstr "vipimo"
+
+msgid "directory"
+msgstr "saraka"
+
+msgid "disable"
+msgstr "lemaza"
+
+msgid "disc"
+msgstr "diski"
+
+msgid "discard"
+msgstr "poteza"
+
+msgid "disconnect"
+msgstr "tenganua"
+
+msgid "discussion"
+msgstr "malumbano"
+
+msgid "disk"
+msgstr "diski"
+
+msgid "dispatch"
+msgstr "tenganua"
+
+msgid "display"
+msgstr "onesha"
+
+msgid "distort"
+msgstr "sumbua"
+
+msgid "distribute"
+msgstr "changia"
+
+msgid "distribution"
+msgstr "mchango"
+
+msgid "distributor"
+msgstr "mchangiaji"
+
+# unga kama komputa
+msgid "dock"
+msgstr "unga"
+
+msgid "document"
+msgstr "andiko"
+
+msgid "documentation"
+msgstr "maandishi"
+
+# klnx:kikoa
+msgid "domain"
+msgstr "domaini"
+
+msgid "double click"
+msgstr "bonyeza mara mbili"
+
+# klnx:pakua
+# pakua wali? haya maneno hayako kwenye kiswahili ni bora kumodify hayo ya english.
+msgid "download"
+msgstr "daunlodi"
+
+msgid "drag"
+msgstr "kokota"
+
+msgid "draw"
+msgstr "chora"
+
+msgid "driver"
+msgstr "dereva"
+
+msgid "dual"
+msgstr "pacha"
+
+msgid "dump"
+msgstr "tupa"
+
+msgid "duplicate"
+msgstr "rudia"
+
+msgid "dynamic"
+msgstr "badilifu"
+
+msgid "echo"
+msgstr "kivuli"
+
+msgid "edit"
+msgstr "hariri"
+
+msgid "edition"
+msgstr "uhariri"
+
+msgid "editor"
+msgstr "mhariri"
+
+msgid "effect"
+msgstr "athari"
+
+msgid "eject"
+msgstr "fyatua"
+
+msgid "electronic"
+msgstr "elektroniki"
+
+# fix me
+msgid "element"
+msgstr "elementi"
+
+msgid "email"
+msgstr "barua-pepe"
+
+msgid "embed"
+msgstr "futika"
+
+msgid "emoticon"
+msgstr "kikaragosi"
+
+msgid "empty"
+msgstr "tupu"
+
+msgid "emulate"
+msgstr "igiza"
+
+msgid "emulation"
+msgstr "maigizo"
+
+msgid "emulator"
+msgstr "kiigizi"
+
+msgid "enable"
+msgstr "wezesha"
+
+msgid "enabled"
+msgstr "wezeshwa"
+
+msgid "encode"
+msgstr "unda-kodi"
+
+msgid "encoding"
+msgstr "unda-kodi"
+
+msgid "encrypt"
+msgstr "ficha "
+
+msgid "encrypted"
+msgstr "iliyofichwa"
+
+msgid "encryption"
+msgstr "ufichwaji"
+
+msgid "engine"
+msgstr "machine"
+
+msgid "enhancement"
+msgstr "hamasisha"
+
+msgid "enlarge"
+msgstr "kuzisha"
+
+msgid "enlargement"
+msgstr "ukuzisho"
+
+msgid "enter"
+msgstr "ingia"
+
+msgid "entertainment"
+msgstr "starehe"
+
+msgid "entry"
+msgstr "ingizo"
+
+msgid "environment"
+msgstr "mazingira"
+
+msgid "equalizer"
+msgstr "kisawazishi"
+
+msgid "erase"
+msgstr "futa"
+
+msgid "error"
+msgstr "hitilafu"
+
+msgid "escape"
+msgstr "epuka"
+
+msgid "evaluation"
+msgstr "tathmini"
+
+msgid "event"
+msgstr "tukio"
+
+msgid "exception"
+msgstr "isipokuwa"
+
+msgid "executable"
+msgstr "kitekelezi"
+
+msgid "execute"
+msgstr "tekeleza"
+
+msgid "existing"
+msgstr "iliyopo"
+
+msgid "exit"
+msgstr "toka"
+
+msgid "expand"
+msgstr "tanua"
+
+msgid "expansion"
+msgstr "ongezeko"
+
+msgid "explore"
+msgstr "vumbua"
+
+msgid "export"
+msgstr "hamisha"
+
+# mathematically doesnt make sense 
+# mathematically doesnt make sense
+msgid "expression"
+msgstr "msemo"
+
+msgid "extend"
+msgstr "kuzisha"
+
+msgid "extensible"
+msgstr "inayokua"
+
+msgid "extension"
+msgstr "ongezeko"
+
+msgid "external"
+msgstr "nje"
+
+msgid "extra"
+msgstr "zaidi "
+
+msgid "extract"
+msgstr "fyonza"
+
+# feli pia inafaa 
+# feli pia inafaa
+msgid "fail"
+msgstr "shindwa"
+
+# فادح: مثل خطأ فادح
+msgid "fatal"
+msgstr "baya"
+
+msgid "fault"
+msgstr "kosa"
+
+msgid "favorite"
+msgstr "zilizopendwa"
+
+msgid "feature"
+msgstr "kipengele"
+
+msgid "feed"
+msgstr "lisha"
+
+msgid "feedback"
+msgstr "maoni"
+
+msgid "fetch"
+msgstr "leta"
+
+msgid "field"
+msgstr "eneo"
+
+msgid "figure"
+msgstr "umbo"
+
+msgid "file"
+msgstr "faili"
+
+msgid "fill"
+msgstr "jaza"
+
+msgid "filter"
+msgstr "chujio"
+
+msgid "find"
+msgstr "tafuta"
+
+msgid "firewall"
+msgstr "ukuta"
+
+# nothing found in swahili
+msgid "firmware"
+msgstr "famwea"
+
+msgid "fit"
+msgstr "unga"
+
+msgid "fix"
+msgstr "tengeneza"
+
+msgid "flag"
+msgstr "viboya"
+
+msgid "flash"
+msgstr "flashi"
+
+msgid "flat"
+msgstr "tambarare"
+
+msgid "flip"
+msgstr "geuza"
+
+msgid "float (verb)"
+msgstr "elea"
+
+msgid "flood"
+msgstr "chakula"
+
+# inatosha kuwa flopi
+# klnx:tepe
+msgid "floppy"
+msgstr "flopi"
+
+msgid "folder"
+msgstr "folda"
+
+msgid "font"
+msgstr "fonti"
+
+msgid "footer"
+msgstr "wayo"
+
+msgid "form"
+msgstr "fomu"
+
+msgid "format (noun)"
+msgstr "fomati"
+
+msgid "format (verb)"
+msgstr "fomati"
+
+msgid "formatted"
+msgstr "fomatiwa"
+
+msgid "formula"
+msgstr "fomula"
+
+msgid "forum"
+msgstr "ukumbi"
+
+msgid "fragment"
+msgstr "kipande"
+
+msgid "frame"
+msgstr "fremu"
+
+msgid "frame set"
+msgstr "fremu-kusanyika"
+
+# fondeshen ya nyumba ;) fix me if u can
+msgid "framework"
+msgstr "fondeshen"
+
+msgid "free software"
+msgstr "programu-huria"
+
+msgid "freeze"
+msgstr "kwamisha"
+
+msgid "frequency"
+msgstr "frekwensi"
+
+msgid "front end"
+msgstr "mbele-mwisho"
+
+msgid "function"
+msgstr "sehemu"
+
+# fix me if u can
+msgid "gallery"
+msgstr "albamu"
+
+msgid "game"
+msgstr "mchezo"
+
+msgid "gateway"
+msgstr "lango"
+
+msgid "generate"
+msgstr "toa"
+
+msgid "generation"
+msgstr "matokeo"
+
+msgid "generator"
+msgstr "kitolea"
+
+# inayobadilika
+# kinyonga would be perfect...inabidilika rangi en pretty common in swahili
+msgid "generic"
+msgstr "kinyonga"
+
+msgid "geometric"
+msgstr "vipimo"
+
+msgid "geometry"
+msgstr "vipimo"
+
+msgid "grab"
+msgstr "shika"
+
+# sijuwi kiswahili tutasemaje, hii ni dx/dy ktk hesabu ;)
+msgid "gradient"
+msgstr "wastani"
+
+msgid "grain"
+msgstr "chenga"
+
+msgid "graph"
+msgstr "mchoro"
+
+msgid "graphic"
+msgstr "kimchoro"
+
+msgid "graphical"
+msgstr "kimchoro"
+
+msgid "graphics"
+msgstr "kimchoro"
+
+msgid "gray-scale"
+msgstr "pimo-jivu"
+
+# fix me
+msgid "grid"
+msgstr "senyenge"
+
+msgid "group"
+msgstr "kundi"
+
+msgid "guess"
+msgstr "jaalia"
+
+msgid "guest"
+msgstr "mgeni"
+
+msgid "handle (noun)"
+msgstr "kikamatio"
+
+msgid "handle (verb)"
+msgstr "kamata"
+
+msgid "handler"
+msgstr "kamatio"
+
+msgid "hardware"
+msgstr "maunzi"
+
+msgid "hash"
+msgstr "reli"
+
+msgid "head"
+msgstr "kichwa"
+
+msgid "header"
+msgstr "kichwa"
+
+msgid "height"
+msgstr "urefu"
+
+msgid "help"
+msgstr "msaada"
+
+msgid "hide"
+msgstr "ficha"
+
+msgid "hierarchy"
+msgstr "kimatawi"
+
+msgid "high light"
+msgstr "angaza"
+
+msgid "history"
+msgstr "historia"
+
+msgid "host"
+msgstr "mwenyeji"
+
+msgid "hostname"
+msgstr "mwenyeji"
+
+msgid "hyperlink"
+msgstr "anwani-mtandao"
+
+# klnx
+msgid "hypertext"
+msgstr "matinifora"
+
+msgid "icon"
+msgstr "aikoni"
+
+msgid "identify"
+msgstr "tambulisha"
+
+msgid "idle"
+msgstr "tulia"
+
+msgid "ignore"
+msgstr "dharau"
+
+# klnx:taswira
+msgid "image"
+msgstr "picha"
+
+msgid "implement"
+msgstr "tekeleza"
+
+msgid "import"
+msgstr "leta"
+
+msgid "inactive"
+msgstr "isio-shughulika"
+
+# klnx
+msgid "inbox"
+msgstr "kisanduku ingizo"
+
+msgid "inch"
+msgstr "inchi"
+
+msgid "include"
+msgstr "ingiza"
+
+msgid "incoming"
+msgstr "mapokezi"
+
+msgid "incompatible"
+msgstr "isio-endana"
+
+msgid "increase"
+msgstr "kuzisha"
+
+msgid "increment"
+msgstr "ongezeko"
+
+# klnx: (v)
+msgid "indent"
+msgstr "jongeza-ndani"
+
+msgid "index"
+msgstr "fahirisi"
+
+msgid "indice"
+msgstr "faharisi"
+
+msgid "infect"
+msgstr "ambukiza"
+
+msgid "infinite"
+msgstr "milele"
+
+# tangazo,habari,n.k
+msgid "information"
+msgstr "taarifa"
+
+msgid "infrared"
+msgstr "lenzi-nyekundu"
+
+msgid "initial"
+msgstr "mwanzo"
+
+msgid "initialize"
+msgstr "anzisha"
+
+msgid "input"
+msgstr "ingizo"
+
+msgid "insert"
+msgstr "chomeka"
+
+# klnx
+msgid "install"
+msgstr "sakinisha"
+
+msgid "installer"
+msgstr "sakinishaji"
+
+msgid "instance"
+msgstr "mfano"
+
+msgid "instruction"
+msgstr "maelekezo"
+
+msgid "integer"
+msgstr "nambari"
+
+msgid "integral"
+msgstr "kujumlisha"
+
+msgid "integrate"
+msgstr "jumlisha"
+
+msgid "integration"
+msgstr "jumlisha"
+
+msgid "integrity"
+msgstr "uadilifu"
+
+msgid "intensity"
+msgstr "ukali"
+
+msgid "interactivity"
+msgstr "uawasilianifu"
+
+msgid "interface"
+msgstr "kusano"
+
+msgid "internal"
+msgstr "ndani"
+
+# klnx:wavuti
+msgid "internet"
+msgstr "intaneti"
+
+msgid "interrupt"
+msgstr "katisha"
+
+msgid "invalid"
+msgstr "batili"
+
+msgid "inverse"
+msgstr "kinyume"
+
+# fix me
+msgid "invert"
+msgstr "nyumaza"
+
+msgid "invoke"
+msgstr "sababisha"
+
+msgid "italic"
+msgstr "zilolala"
+
+msgid "item"
+msgstr "kitu"
+
+msgid "iteration"
+msgstr "kirukishi"
+
+msgid "jag"
+msgstr "jagi"
+
+msgid "jam"
+msgstr "ganda"
+
+msgid "job"
+msgstr "kazi"
+
+msgid "join"
+msgstr "unga"
+
+msgid "joy stick"
+msgstr "jiti-cheza"
+
+msgid "jump"
+msgstr "ruka"
+
+msgid "junk"
+msgstr "taka"
+
+msgid "justify"
+msgstr "sadikisha"
+
+msgid "keep"
+msgstr "weka"
+
+# from me
+msgid "kernel"
+msgstr "kanel"
+
+msgid "key"
+msgstr "ufunguo"
+
+msgid "keyboard"
+msgstr "baobonye"
+
+# fix me..sucky translation
+msgid "key stroke"
+msgstr "funguo ubonye"
+
+msgid "key word"
+msgstr "neno-msingi"
+
+msgid "label"
+msgstr "lebo"
+
+msgid "landscape"
+msgstr "mandhari"
+
+msgid "language"
+msgstr "lugha"
+
+msgid "laptop"
+msgstr "komputa-ya-mkono"
+
+msgid "launch"
+msgstr "zindua"
+
+msgid "layer"
+msgstr "tabaka"
+
+msgid "layout"
+msgstr "mpangilio"
+
+msgid "length"
+msgstr "urefu"
+
+msgid "license"
+msgstr "ruhusa"
+
+msgid "line"
+msgstr "mstari"
+
+msgid "link"
+msgstr "kiungo"
+
+msgid "list"
+msgstr "orodha"
+
+msgid "load"
+msgstr "pakia"
+
+msgid "local"
+msgstr "hapa hapa"
+
+msgid "localization"
+msgstr "lokalaizesheni"
+
+msgid "location"
+msgstr "mahali"
+
+msgid "log"
+msgstr "kumbukumbu"
+
+msgid "lookup"
+msgstr "tafuta"
+
+msgid "lower-case"
+msgstr "hefuri-ndogo"
+
+msgid "machine"
+msgstr "mashine"
+
+msgid "main board"
+msgstr "bao kuu"
+
+msgid "maintainer"
+msgstr "mhifadhi"
+
+msgid "maintenance"
+msgstr "matengenezo"
+
+msgid "manage"
+msgstr "ongoza"
+
+# utawala
+msgid "management"
+msgstr "uongozi"
+
+msgid "manager"
+msgstr "kiongozi"
+
+# bila ya machine<br />
+# klnx:mwongozo
+msgid "manual"
+msgstr "kwa-mkono"
+
+msgid "margin"
+msgstr "mpaka"
+
+msgid "mark"
+msgstr "alama"
+
+msgid "master"
+msgstr "kuu"
+
+msgid "match"
+msgstr "oanisha"
+
+msgid "maximize"
+msgstr "tanua"
+
+msgid "memory"
+msgstr "kumbukumbu"
+
+msgid "menu"
+msgstr "menyu"
+
+msgid "merge"
+msgstr "ambatanisha"
+
+msgid "message"
+msgstr "ujumbe"
+
+msgid "method"
+msgstr "mbinu"
+
+msgid "minimize"
+msgstr "finya"
+
+msgid "mode"
+msgstr "modi"
+
+msgid "modem"
+msgstr "modemu"
+
+msgid "moderator"
+msgstr "modereta"
+
+msgid "modify"
+msgstr "rekebisha"
+
+msgid "module"
+msgstr "kijenzi"
+
+msgid "monitor"
+msgstr "monita"
+
+msgid "mosaic"
+msgstr "kivinjari-huria"
+
+msgid "motion"
+msgstr "msogeo"
+
+# klnx:puku
+msgid "mouse"
+msgstr "panya"
+
+msgid "move"
+msgstr "sogeza"
+
+msgid "multimedia"
+msgstr "medianuwai"
+
+msgid "multitasking"
+msgstr "tenda-kazi-nyingi"
+
+msgid "name"
+msgstr "jina"
+
+msgid "navigation"
+msgstr "unahodha"
+
+msgid "navigator"
+msgstr "nahodha"
+
+msgid "network"
+msgstr "mtandao"
+
+msgid "news group"
+msgstr "kundihabari"
+
+msgid "next"
+msgstr "ifuatayo"
+
+msgid "nick name"
+msgstr "lakabu"
+
+msgid "no"
+msgstr "hapana"
+
+msgid "node"
+msgstr "kitengo"
+
+msgid "notation"
+msgstr "mahali"
+
+msgid "note"
+msgstr "dondo"
+
+msgid "notebook"
+msgstr "daftari-zingatio"
+
+msgid "notification"
+msgstr "taarifa"
+
+msgid "notify"
+msgstr "taarifu"
+
+# في الرياضيات "صفر"<br />
+# الصفة "منعدم"
+msgid "null"
+msgstr "sufuri"
+
+msgid "number"
+msgstr "nambari"
+
+msgid "numbering"
+msgstr "nambari"
+
+msgid "object"
+msgstr "viumbile"
+
+msgid "occurrence"
+msgstr "tukio"
+
+msgid "octet"
+msgstr "manane"
+
+msgid "offline"
+msgstr " nje ya mkondo"
+
+msgid "OK"
+msgstr "SAWA"
+
+msgid "online"
+msgstr "mkondoni"
+
+msgid "ongoing"
+msgstr "inayoendelea"
+
+# fix me
+msgid "opacity"
+msgstr "uzibo"
+
+msgid "opaque"
+msgstr "kizinga-mwanga"
+
+msgid "open"
+msgstr "fungua"
+
+msgid "operation"
+msgstr "operesheni"
+
+msgid "option"
+msgstr "chaguo"
+
+msgid "optional"
+msgstr " -a hiari"
+
+msgid "order"
+msgstr "mpangilio"
+
+msgid "organize"
+msgstr "pangilia"
+
+msgid "orientation"
+msgstr "urekebisho"
+
+msgid "original"
+msgstr "asili"
+
+msgid "outgoing"
+msgstr "toka nje"
+
+msgid "output"
+msgstr "zao"
+
+msgid "overflow"
+msgstr "furika"
+
+msgid "override"
+msgstr "pandikiza"
+
+msgid "overwrite"
+msgstr "andikiza"
+
+msgid "owner"
+msgstr "mmiliki"
+
+msgid "pack"
+msgstr "pakti"
+
+msgid "package"
+msgstr "pakiti"
+
+msgid "packet"
+msgstr "paketi"
+
+msgid "padding"
+msgstr "sehemu-ramani"
+
+msgid "page"
+msgstr "ukurasa"
+
+msgid "paint"
+msgstr "paka rangi"
+
+msgid "pair"
+msgstr "jozi"
+
+# nothing found
+msgid "palette"
+msgstr "paleti"
+
+msgid "panel"
+msgstr "paneli"
+
+msgid "parallel"
+msgstr "sambamba"
+
+msgid "parameter"
+msgstr "kipengele"
+
+msgid "parcel"
+msgstr "furushi"
+
+msgid "parent"
+msgstr "mzee"
+
+# not found in swahili
+msgid "parity"
+msgstr "pariti"
+
+msgid "parse"
+msgstr "changanua"
+
+msgid "partition"
+msgstr "chamkano"
+
+msgid "pass"
+msgstr "pitisho"
+
+# klnx:nywila
+msgid "password"
+msgstr "neno la siri"
+
+msgid "paste"
+msgstr "bandika"
+
+msgid "patch (noun)"
+msgstr "kiraka"
+
+msgid "patch (verb)"
+msgstr "ziba"
+
+msgid "path"
+msgstr "njia"
+
+msgid "pattern"
+msgstr "kiolezo"
+
+msgid "pause"
+msgstr "pauzi"
+
+# fix me
+msgid "peripheral"
+msgstr "vifaa"
+
+msgid "permanent"
+msgstr "kudumu"
+
+msgid "permission"
+msgstr "ruhusa"
+
+msgid "permutation"
+msgstr "pamutesheni"
+
+msgid "physical"
+msgstr "kimwili"
+
+msgid "picture"
+msgstr "picha"
+
+msgid "pipe"
+msgstr "paipu"
+
+msgid "pixel"
+msgstr "piksel"
+
+msgid "placement"
+msgstr "wekezo"
+
+msgid "plain"
+msgstr "bayana"
+
+msgid "plot (verb)"
+msgstr "chora"
+
+msgid "plotter"
+msgstr "mchoraji"
+
+msgid "plugin"
+msgstr "programu-jalizi"
+
+msgid "pop up"
+msgstr "kidukizo"
+
+msgid "port"
+msgstr "poti"
+
+msgid "position"
+msgstr "pahala"
+
+msgid "post"
+msgstr "posti"
+
+# klnx
+msgid "preferences"
+msgstr "aula"
+
+msgid "prepare"
+msgstr "andaa"
+
+msgid "presentation"
+msgstr "utoaji"
+
+msgid "press"
+msgstr "bonyeza"
+
+msgid "prevent"
+msgstr "epusha"
+
+msgid "preview"
+msgstr "hakiki"
+
+msgid "primary"
+msgstr "msingi"
+
+msgid "principal"
+msgstr "kuu"
+
+msgid "print"
+msgstr "chapisha"
+
+msgid "printer"
+msgstr "printa"
+
+msgid "priority"
+msgstr "kipaumbele"
+
+msgid "privacy"
+msgstr "faragha"
+
+msgid "private"
+msgstr "ufaragha"
+
+msgid "privilege"
+msgstr "haki"
+
+msgid "procedure"
+msgstr "taratibu"
+
+msgid "process"
+msgstr "mchakato"
+
+msgid "processor"
+msgstr "prosesa"
+
+msgid "product"
+msgstr "bidhaa"
+
+msgid "profile"
+msgstr "profaili"
+
+msgid "program"
+msgstr "programu"
+
+# fix me
+msgid "programmer"
+msgstr "mwandishi-programu"
+
+msgid "project"
+msgstr "mradi"
+
+msgid "prompt"
+msgstr "uliza"
+
+msgid "property"
+msgstr "sifa"
+
+# fix me 
+# fix me
+msgid "proprietary"
+msgstr "sio huria"
+
+msgid "protect"
+msgstr "kinga"
+
+msgid "protection"
+msgstr "kinga"
+
+#, !!!
+msgid "protocol"
+msgstr "itifaki"
+
+msgid "provide"
+msgstr "toa"
+
+msgid "provider"
+msgstr "mtoaji"
+
+msgid "proxy"
+msgstr "proxi"
+
+msgid "public"
+msgstr "umma"
+
+msgid "publish"
+msgstr "chapisha"
+
+msgid "pull"
+msgstr "vuta"
+
+msgid "push"
+msgstr "sukuma"
+
+# fix me
+msgid "quality"
+msgstr "sifa"
+
+msgid "quantity"
+msgstr "idadi"
+
+msgid "quarantine"
+msgstr "karantini"
+
+msgid "query"
+msgstr "ulizo"
+
+msgid "queue"
+msgstr "foleni"
+
+msgid "quit"
+msgstr "aga"
+
+# sucky translation...pls fix me
+msgid "quota"
+msgstr "robo"
+
+# sucky translation...
+msgid "quotation"
+msgstr "nukuu"
+
+msgid "quote"
+msgstr "nukuu"
+
+msgid "raise"
+msgstr "pandisha"
+
+msgid "random"
+msgstr "bila-mpangilio"
+
+#  -fika
+msgid "range"
+msgstr "mfiko"
+
+msgid "rate"
+msgstr "idadi"
+
+msgid "ratio"
+msgstr "uwiano"
+
+# inawezekana ikawa raw=ghafi, lkn kwa software nafikiria raw as noun
+msgid "raw"
+msgstr "ghafi"
+
+msgid "ray"
+msgstr "mwale"
+
+msgid "read"
+msgstr "soma"
+
+msgid "read only"
+msgstr "soma tuu"
+
+msgid "ready"
+msgstr "tayari"
+
+msgid "real"
+msgstr "kweli"
+
+msgid "reboot"
+msgstr "buti-tena"
+
+msgid "receipt"
+msgstr "risiti"
+
+msgid "receive"
+msgstr "pokea"
+
+msgid "recognition"
+msgstr "utambulizi"
+
+msgid "reconnect"
+msgstr "unganisha-tena"
+
+msgid "record"
+msgstr "rekodi"
+
+msgid "record (verb)"
+msgstr "rekodi"
+
+msgid "recover"
+msgstr "pona"
+
+msgid "recovery"
+msgstr "afueni"
+
+#
+msgid "recursion"
+msgstr "kila-kitu"
+
+# fix me 
+# fix me
+msgid "recursive"
+msgstr "kila-kitu"
+
+msgid "redirect"
+msgstr "elekeza-tena"
+
+msgid "redo"
+msgstr "fanya-tena"
+
+msgid "reduce"
+msgstr "punguza"
+
+msgid "reduction"
+msgstr "punguzo"
+
+msgid "redundant"
+msgstr "ziada"
+
+msgid "reference"
+msgstr "chanzo"
+
+msgid "referer"
+msgstr "chanzilishi"
+
+msgid "referral"
+msgstr "anzilishi"
+
+# fix me
+msgid "reflexive"
+msgstr "shamirisho"
+
+# not like in beer ;)
+msgid "refresh"
+msgstr "burudisha"
+
+msgid "refuse"
+msgstr "kana"
+
+msgid "regenerate"
+msgstr "toa-tena"
+
+msgid "register"
+msgstr "andikisha"
+
+msgid "registration"
+msgstr "uandikishaji"
+
+msgid "registry"
+msgstr "andikisho"
+
+msgid "regular"
+msgstr "kawaida"
+
+msgid "regulate"
+msgstr "rekebisha"
+
+# sucky translation...pls fix me
+msgid "relay"
+msgstr "kisumaku"
+
+msgid "release"
+msgstr "achia"
+
+msgid "remaining"
+msgstr "mabaki"
+
+msgid "remind"
+msgstr "kumbusha"
+
+msgid "remote"
+msgstr "mbali"
+
+msgid "removable"
+msgstr "inayotoka"
+
+msgid "remove"
+msgstr "toa"
+
+msgid "rename"
+msgstr "ita-tena"
+
+msgid "render"
+msgstr "toa"
+
+msgid "renew"
+msgstr "fufua"
+
+msgid "repair"
+msgstr "rekebisha"
+
+msgid "repeat"
+msgstr "rudia"
+
+# fix me
+msgid "replace"
+msgstr "ziba"
+
+msgid "replicate"
+msgstr "toa-upya"
+
+msgid "replication"
+msgstr "marudio"
+
+msgid "reply"
+msgstr "jibu"
+
+msgid "report"
+msgstr "ripoti"
+
+msgid "repository"
+msgstr "weko"
+
+msgid "request"
+msgstr "haja"
+
+# hitaji,omba
+msgid "require"
+msgstr "pasa"
+
+msgid "requirement"
+msgstr "maombi"
+
+msgid "reset"
+msgstr "seti-upya"
+
+msgid "resize"
+msgstr "pima-upya"
+
+msgid "resolution"
+msgstr "mapana-marefu"
+
+msgid "resolver"
+msgstr "suluhishaji"
+
+msgid "resource"
+msgstr "chanzo"
+
+msgid "response"
+msgstr "itiko"
+
+msgid "restart"
+msgstr "washa-upya"
+
+msgid "restore"
+msgstr "rudisha"
+
+msgid "restrict"
+msgstr "zuia"
+
+msgid "restriction"
+msgstr "zuizi"
+
+msgid "result"
+msgstr "tokeo"
+
+msgid "resume"
+msgstr "endelea"
+
+# tafuta
+msgid "retrieve"
+msgstr "itisha"
+
+msgid "retry"
+msgstr "jaribu-tena"
+
+msgid "return"
+msgstr "rudi"
+
+msgid "reverse"
+msgstr "kinyume"
+
+msgid "revert"
+msgstr "rejesha"
+
+msgid "revocation"
+msgstr "tanguo"
+
+# fix me
+msgid "revoke"
+msgstr "batili"
+
+msgid "root"
+msgstr "mzizi"
+
+msgid "rotate"
+msgstr "zungusha"
+
+msgid "route"
+msgstr "njia"
+
+# nothing found in swahili
+msgid "router"
+msgstr "rauta"
+
+msgid "routine"
+msgstr "desturi"
+
+msgid "row"
+msgstr "mstari-mlalo"
+
+msgid "rule"
+msgstr "sheria"
+
+msgid "run"
+msgstr "kimbia"
+
+# literally itakuwa wakati wa kukimbia ;)
+msgid "runtime"
+msgstr "wakati-wa-kazi"
+
+msgid "safe"
+msgstr "salama"
+
+msgid "sample"
+msgstr "mfano"
+
+# fix me
+msgid "sans"
+msgstr "kosa"
+
+msgid "save"
+msgstr "hifadhi"
+
+msgid "scalable"
+msgstr "pimika"
+
+msgid "scale"
+msgstr "pimo"
+
+msgid "scan"
+msgstr "chuja"
+
+msgid "scanner"
+msgstr "chujio"
+
+msgid "schedule"
+msgstr "ratiba"
+
+msgid "scheme"
+msgstr "mpango"
+
+# verb
+msgid "scratch"
+msgstr "kwaruza"
+
+msgid "screen"
+msgstr "kioo"
+
+msgid "screw"
+msgstr "skurubu"
+
+msgid "script"
+msgstr "skripti"
+
+# من لف الشئ يلفه<br />
+# فتقول:<br />
+# لف ﻷعلى=scroll up ، وهكذا
+msgid "scroll"
+msgstr "panda"
+
+msgid "search"
+msgstr "tafuta"
+
+msgid "section"
+msgstr "pengele"
+
+msgid "sector"
+msgstr "sekta"
+
+msgid "secure"
+msgstr "salama"
+
+msgid "security"
+msgstr "usalama"
+
+msgid "seek"
+msgstr "tafuta"
+
+msgid "segment"
+msgstr "kitengwa"
+
+# fix me
+msgid "segmentation"
+msgstr "vitenganishi"
+
+msgid "select"
+msgstr "chagua"
+
+msgid "selection"
+msgstr "chaguo"
+
+# fix me
+msgid "semantic"
+msgstr "maana"
+
+msgid "send"
+msgstr "tuma"
+
+msgid "sender"
+msgstr "mtumaji"
+
+msgid "sensitive"
+msgstr "athirika-haraka"
+
+msgid "sensor"
+msgstr "kipima-athari"
+
+# fix me
+msgid "serif"
+msgstr "serif"
+
+msgid "server"
+msgstr "sava"
+
+msgid "session"
+msgstr "kikao"
+
+msgid "set"
+msgstr "kusanyiko"
+
+msgid "settings"
+msgstr "mipangilio"
+
+msgid "setup"
+msgstr "mpango"
+
+msgid "shading"
+msgstr "tia-kivuli"
+
+msgid "shadow"
+msgstr "kivuli"
+
+msgid "shape"
+msgstr "umbile"
+
+msgid "share"
+msgstr "hisa"
+
+msgid "sharp"
+msgstr "kali"
+
+msgid "sheet"
+msgstr "karatasi"
+
+# ganda kama la embe
+msgid "shell"
+msgstr "ganda"
+
+# inawezekana ikawa ni shift ya komputa pia
+# if its a computer shift it stays "shit" 
+# if its a computer shift it stays "shit"
+msgid "shift"
+msgstr "zamu"
+
+msgid "shortcut"
+msgstr "fupisho"
+
+msgid "show"
+msgstr "onesha"
+
+msgid "shrink"
+msgstr "kunja"
+
+msgid "shut down"
+msgstr "zima"
+
+msgid "side bar"
+msgstr "mlingoti-pembe"
+
+msgid "sign"
+msgstr "thibitisho"
+
+msgid "signal"
+msgstr "ishara"
+
+msgid "signature"
+msgstr "sahihi"
+
+msgid "site"
+msgstr "saiti"
+
+msgid "size"
+msgstr "saizi"
+
+# fix me
+msgid "skew"
+msgstr "hitilafu"
+
+msgid "skip"
+msgstr "ruka"
+
+msgid "slave"
+msgstr "mtumwa"
+
+msgid "sleep"
+msgstr "lala"
+
+msgid "slide"
+msgstr "teleza"
+
+msgid "slot"
+msgstr "sloti"
+
+msgid "smart"
+msgstr "hodari"
+
+msgid "smiley"
+msgstr "furahi"
+
+msgid "smooth"
+msgstr "laini"
+
+msgid "socket"
+msgstr "soketi"
+
+msgid "software"
+msgstr "programu"
+
+msgid "solid"
+msgstr "ngumu"
+
+msgid "sort"
+msgstr "pembua"
+
+msgid "source"
+msgstr "chanzo"
+
+msgid "space"
+msgstr "nafasi"
+
+msgid "spacing"
+msgstr "nafasi"
+
+msgid "spam"
+msgstr "spamu"
+
+msgid "span"
+msgstr "futuri"
+
+msgid "spawn"
+msgstr "totoa"
+
+msgid "specify"
+msgstr "ainisha"
+
+msgid "speed"
+msgstr "kasi"
+
+msgid "spelling"
+msgstr "uendelezo"
+
+msgid "splash"
+msgstr "splashi"
+
+msgid "split"
+msgstr "tenganisha"
+
+msgid "spool"
+msgstr "kibiringo"
+
+msgid "spread sheet"
+msgstr "karatasi-tawanyi"
+
+msgid "stack"
+msgstr "panganya"
+
+msgid "stand alone"
+msgstr "inayojitemea"
+
+msgid "standard"
+msgstr "sanifu"
+
+msgid "start"
+msgstr "anza"
+
+msgid "state"
+msgstr "hali"
+
+msgid "static"
+msgstr "iliyotulia"
+
+# fix me...sucky translation
+msgid "statistics"
+msgstr "sensa"
+
+msgid "step"
+msgstr "hatua"
+
+msgid "stop"
+msgstr "simama"
+
+msgid "storage"
+msgstr "ghala"
+
+msgid "store"
+msgstr "ghala"
+
+msgid "stream"
+msgstr "bugujika"
+
+msgid "stretch"
+msgstr "kunjua"
+
+msgid "strict"
+msgstr "kali"
+
+msgid "string"
+msgstr "tungo"
+
+msgid "strip"
+msgstr "chanuo"
+
+msgid "stroke"
+msgstr "pigo"
+
+msgid "structure"
+msgstr "muundo"
+
+msgid "stub"
+msgstr "choma"
+
+msgid "style"
+msgstr "staili"
+
+msgid "sub directory"
+msgstr "saraka-dogo"
+
+msgid "sub folder"
+msgstr "folda-dogo"
+
+msgid "submission"
+msgstr "mapokezi"
+
+msgid "submit"
+msgstr "wasilisha"
+
+msgid "subscribe"
+msgstr "andikisha"
+
+msgid "subscription"
+msgstr "uanachama"
+
+msgid "subtract"
+msgstr "toa"
+
+msgid "succeed"
+msgstr "fanikiwa"
+
+msgid "suggest"
+msgstr "shauri"
+
+msgid "suggestion"
+msgstr "maoni"
+
+msgid "sum (noun)"
+msgstr "jumla"
+
+msgid "sum (verb)"
+msgstr "jumlisha"
+
+msgid "summary"
+msgstr "ufupisho"
+
+msgid "support"
+msgstr "egemezo"
+
+msgid "surface"
+msgstr "sura"
+
+msgid "suspend"
+msgstr "zuia"
+
+msgid "suspicious"
+msgstr "enye-hitilafu"
+
+msgid "swap"
+msgstr "swap"
+
+msgid "switch"
+msgstr "badili"
+
+msgid "symbol"
+msgstr "alama"
+
+msgid "synchronize"
+msgstr "patanisha"
+
+msgid "syntax"
+msgstr "sheria"
+
+msgid "system"
+msgstr "mfumo"
+
+msgid "tab"
+msgstr "tab"
+
+msgid "table"
+msgstr "meza"
+
+msgid "tag"
+msgstr "kibandiko"
+
+# lengo
+msgid "target"
+msgstr "shabaha"
+
+msgid "template"
+msgstr "kigezo"
+
+msgid "temporary"
+msgstr "isiodumu"
+
+msgid "terminal"
+msgstr "taminali"
+
+msgid "test"
+msgstr "jaribio"
+
+msgid "text"
+msgstr "andiko"
+
+msgid "texture"
+msgstr "mfumo"
+
+msgid "theme"
+msgstr "mandhari"
+
+# fix  me
+msgid "thread"
+msgstr "toli"
+
+msgid "thumbnail"
+msgstr "picha-gumba"
+
+msgid "tick"
+msgstr "tia-raiti"
+
+msgid "tile"
+msgstr "kigae"
+
+msgid "time"
+msgstr "wakati"
+
+msgid "time out"
+msgstr "muda-umeisha"
+
+msgid "tip"
+msgstr "bahashishi"
+
+msgid "title"
+msgstr "andiko"
+
+msgid "toggle"
+msgstr "achia"
+
+msgid "token"
+msgstr "dalili"
+
+msgid "tool"
+msgstr "zana-ujenzi"
+
+msgid "tool bar"
+msgstr "zana-gongo"
+
+msgid "tool box"
+msgstr "zana-sanduku"
+
+msgid "topic"
+msgstr "mada"
+
+msgid "trace"
+msgstr "fuatisha"
+
+msgid "track"
+msgstr "maburuzo"
+
+# IT
+msgid "traffic"
+msgstr "mkondo"
+
+msgid "transfer"
+msgstr "peperusha"
+
+msgid "transform"
+msgstr "badilisha"
+
+msgid "transformation"
+msgstr "mabadiliko"
+
+msgid "trap"
+msgstr "mtego"
+
+msgid "trash"
+msgstr "debe-la-taka"
+
+msgid "trigger"
+msgstr "fyatua"
+
+msgid "trouble shoot"
+msgstr "peleleza"
+
+msgid "tune"
+msgstr "tuni"
+
+msgid "tweak"
+msgstr "finya"
+
+msgid "type (noun)"
+msgstr "aina"
+
+msgid "type (verb)"
+msgstr "andika"
+
+msgid "type face"
+msgstr "aina-sura"
+
+msgid "unavailable"
+msgstr "hapatikani"
+
+msgid "undelete"
+msgstr "futua"
+
+msgid "under line"
+msgstr "mstari-chini"
+
+msgid "undo"
+msgstr "funyua"
+
+# sucky translation..fix me
+msgid "uninstall"
+msgstr "sakunushua"
+
+msgid "unit"
+msgstr "sehemu "
+
+msgid "unknown"
+msgstr "asietambulika"
+
+msgid "unload"
+msgstr "pakuwa"
+
+msgid "named"
+msgstr "imeitwa"
+
+msgid "reachable"
+msgstr "inafikiwa"
+
+msgid "readable"
+msgstr "inasomeka"
+
+msgid "unspecified"
+msgstr "isiyo-ainishwa"
+
+msgid "unsubscribe"
+msgstr "jitoe-uanachama"
+
+msgid "unsupported"
+msgstr "haiegemezwi"
+
+# klnx
+msgid "update"
+msgstr "sasisha"
+
+# klnx
+msgid "upgrade"
+msgstr "boresha"
+
+msgid "upload"
+msgstr "pakia-nje"
+
+msgid "upper case"
+msgstr "herufi-kubwa"
+
+msgid "usage"
+msgstr "matumizi"
+
+msgid "user"
+msgstr "mtumiaji"
+
+msgid "user name"
+msgstr "jina-tumizi"
+
+msgid "utility"
+msgstr "mafaa"
+
+msgid "valid"
+msgstr "sahihifu"
+
+msgid "validation"
+msgstr "sahihifu"
+
+msgid "validity"
+msgstr "sahihifu"
+
+msgid "value"
+msgstr "kiasi"
+
+msgid "variable"
+msgstr "variebul"
+
+msgid "vector"
+msgstr "vekta"
+
+msgid "verbose"
+msgstr "maandishi-mengi"
+
+msgid "verify"
+msgstr "dhibitisha"
+
+msgid "version"
+msgstr "insha"
+
+msgid "video"
+msgstr "video"
+
+msgid "view"
+msgstr "angalia"
+
+msgid "viewer"
+msgstr "muangaliaji"
+
+msgid "virtual"
+msgstr "bila-makalio"
+
+msgid "virus"
+msgstr "kirusi"
+
+msgid "visual"
+msgstr "ya-kuona"
+
+msgid "volume"
+msgstr "sauti"
+
+msgid "wallpaper"
+msgstr "picha-ya-ukuta"
+
+msgid "warn"
+msgstr "onya"
+
+msgid "web"
+msgstr "mtandao"
+
+msgid "web cam"
+msgstr "kamera-ya-mtandao"
+
+msgid "web master"
+msgstr "mkuu-wa-mtandao"
+
+msgid "web page"
+msgstr "ukurasa-wa-mtandao"
+
+msgid "widget"
+msgstr "wiji"
+
+msgid "width"
+msgstr "mapana"
+
+msgid "wi fi"
+msgstr "wi fi"
+
+msgid "wild card"
+msgstr "kadi-mwitu"
+
+msgid "window"
+msgstr "dirisha"
+
+# klnx
+msgid "wizard"
+msgstr "sogora"
+
+msgid "word processor"
+msgstr "machine-maandishi"
+
+msgid "work around"
+msgstr "njia-ziada"
+
+msgid "work group"
+msgstr "kundi-kazi"
+
+msgid "work station"
+msgstr "stesheni-kazi"
+
+msgid "wrap"
+msgstr "zungushia"
+
+msgid "yes"
+msgstr "ndio"
+
+msgid "zone"
+msgstr "zoni"
+
+msgid "zoom"
+msgstr "kuzisha"

@@ -1,0 +1,21 @@
+The Khmer Glossaries are from:
+http://sourceforge.net/projects/khmer/files/English-Khmer%20Glossary/English-Khmer%20Glossary%20of%20Computer%20Terms%20Version%203.2/
+
+These are created by the KhmerOS project
+
+There is no explicit license in the document but since they are hosted on
+Sourceforge, which requires a FOSS license, we assume we may redistribute
+them.
+
+We have not included the:
+* Mathematics
+* Accounting
+* Statistics, and
+* Language
+dictionaries due to size issues.
+
+To prepare those do the following in OpenOffice.org
+1) Delete the first 3 rows
+2) Delete column B and D
+3) Save as .csv
+4) Run csv2po over the file

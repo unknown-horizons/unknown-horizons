@@ -1,0 +1,3031 @@
+# Vietnamese translation for Essential Pootle Terminology.
+# Copyright © 2009 Free Software Foundation, Inc.
+# Clytie Siddall <clytie@riverland.net.au>, 2009.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: essential\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2009-02-27 16:19+0200\n"
+"PO-Revision-Date: 2010-03-08 14:13+0200\n"
+"Last-Translator: Clytie Siddall <clytie@riverland.net.au>\n"
+"Language-Team: Vietnamese <vi-VN@googlegroups.com>\n"
+"Language: vi\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"X-Generator: Pootle 2.1.0-beta2\n"
+
+msgid "abort"
+msgstr "huỷ bỏ"
+
+msgid "absolute"
+msgstr "tuyệt đối"
+
+msgid "abstract"
+msgstr "(d) tổng quan, bản tóm tắt, trích yếu ; (tt) trừu tượng"
+
+msgid "accelerator"
+msgstr "phím tắt"
+
+msgid "accent"
+msgstr "dấu câu"
+
+msgid "accept"
+msgstr "chấp nhận"
+
+msgid "access"
+msgstr "truy cập"
+
+msgid "accessibility"
+msgstr "khả năng truy cập"
+
+msgid "accessory"
+msgstr "phụ tùng"
+
+msgid "account"
+msgstr "tài khoản"
+
+msgid "accuracy"
+msgstr "độ chính xác"
+
+msgid "acquire"
+msgstr "lấy"
+
+msgid "acronym"
+msgstr "từ cấu tạo"
+
+msgid "action"
+msgstr "hành vi"
+
+msgid "activate"
+msgstr "bật"
+
+msgid "active"
+msgstr "hoạt động"
+
+msgid "activity"
+msgstr "hoạt động"
+
+msgid "adapter"
+msgstr "bộ tiếp hợp"
+
+msgid "add"
+msgstr "thêm"
+
+msgid "address"
+msgstr "địa chỉ"
+
+msgid "adjust"
+msgstr "điều chỉnh"
+
+msgid "administration"
+msgstr "quản lý"
+
+msgid "administrator"
+msgstr "quản trị"
+
+msgid "advanced"
+msgstr "cấp cao"
+
+msgid "agent"
+msgstr "tác nhân"
+
+msgid "agree"
+msgstr "đồng ý"
+
+msgid "agreement"
+msgstr "thoả thuận"
+
+msgid "alarm"
+msgstr "báo thức"
+
+msgid "alert"
+msgstr "báo động"
+
+msgid "algorithm"
+msgstr "thuật toán"
+
+msgid "alias"
+msgstr "bí danh"
+
+msgid "aliasing"
+msgstr "tạo bí danh"
+
+msgid "align"
+msgstr "canh lề (văn bản); sắp hàng (đối tượng)"
+
+msgid "alignment"
+msgstr "sắp hàng"
+
+msgid "allow"
+msgstr "cho phép"
+
+msgid "alphanumeric"
+msgstr "chữ số, chữ cái"
+
+msgid "alternative"
+msgstr "xen kẽ"
+
+msgid "amount"
+msgstr "số tiền"
+
+msgid "analysis"
+msgstr "phân tích"
+
+msgid "anchor"
+msgstr "(d) neo ; (đ) thả neo"
+
+msgid "angle"
+msgstr "góc"
+
+msgid "animate"
+msgstr "hoạt cảnh"
+
+msgid "animation"
+msgstr "hoạt ảnh"
+
+msgid "announce"
+msgstr "thông báo"
+
+msgid "announcement"
+msgstr "thông báo"
+
+msgid "anonymous"
+msgstr "nặc danh"
+
+msgid "anti-aliasing"
+msgstr "làm trơn"
+
+msgid "anti virus"
+msgstr "chống vi-rút"
+
+msgid "appear"
+msgstr "xuất hiện"
+
+msgid "append"
+msgstr "phụ thêm"
+
+msgid "applet"
+msgstr "tiểu dụng"
+
+msgid "application"
+msgstr "ứng dụng"
+
+msgid "apply"
+msgstr "áp dụng"
+
+msgid "approval"
+msgstr "sự tán thành"
+
+msgid "approve"
+msgstr "tán thành"
+
+msgid "approximate"
+msgstr "xấp xỉ"
+
+msgid "arbitrary"
+msgstr "tùy ý"
+
+msgid "archive"
+msgstr "kho"
+
+msgid "area"
+msgstr "vùng"
+
+msgid "argument"
+msgstr "đối số"
+
+msgid "arrangement"
+msgstr "bố trí"
+
+msgid "arrow"
+msgstr "mũi tên"
+
+msgid "article"
+msgstr "bài, mục"
+
+msgid "ascending"
+msgstr "tăng dần"
+
+msgid "aspect"
+msgstr "khía cạnh"
+
+msgid "assign"
+msgstr "gán"
+
+msgid "assignment"
+msgstr "sự gán"
+
+msgid "asynchronous"
+msgstr "không đồng bộ"
+
+msgid "attach"
+msgstr "gửi kèm"
+
+msgid "attachment"
+msgstr "đính kèm"
+
+msgid "attempt"
+msgstr "(lần) thử"
+
+msgid "attribute"
+msgstr "thuộc tính"
+
+msgid "audio"
+msgstr "âm thanh"
+
+msgid "authenticate"
+msgstr "xác thực"
+
+msgid "authentication"
+msgstr "sự xác thực"
+
+msgid "authorization"
+msgstr "sự cho phép"
+
+msgid "authorize"
+msgstr "cho phép"
+
+msgid "auto"
+msgstr "tự động"
+
+msgid "automatic"
+msgstr "tự động"
+
+msgid "availability"
+msgstr "tính sẵn sàng"
+
+msgid "available"
+msgstr "sẵn sàng"
+
+msgid "average"
+msgstr "số trung bình"
+
+msgid "axis"
+msgstr "trục"
+
+msgid "backbone"
+msgstr "xương sống"
+
+msgid "back-end"
+msgstr "hậu phương"
+
+msgid "background"
+msgstr "nền"
+
+msgid "backup"
+msgstr "sao lưu"
+
+msgid "bandwidth"
+msgstr "băng thông"
+
+msgid "banner"
+msgstr "băng cờ"
+
+msgid "bar"
+msgstr "thanh"
+
+msgid "base"
+msgstr "cơ bản"
+
+msgid "beep"
+msgstr "(kêu) bịp"
+
+msgid "begin"
+msgstr "bắt đầu"
+
+msgid "behavior"
+msgstr "ứng xử"
+
+msgid "binary"
+msgstr "nhị phân"
+
+msgid "bind"
+msgstr "tổ hợp"
+
+msgid "bit"
+msgstr "bit"
+
+msgid "bitmap"
+msgstr "ảnh mảng"
+
+msgid "blank"
+msgstr "trắng"
+
+msgid "blink"
+msgstr "nháy"
+
+msgid "block (unit)"
+msgstr "khối"
+
+msgid "block (verb)"
+msgstr "chặn"
+
+msgid "blog"
+msgstr "nhật ký Web"
+
+msgid "blur"
+msgstr "che mờ"
+
+msgid "board"
+msgstr "bảng"
+
+msgid "body"
+msgstr "thân"
+
+msgid "bold"
+msgstr "đậm"
+
+msgid "bookmarks"
+msgstr "liên kết lưu"
+
+msgid "boot"
+msgstr "khởi động"
+
+msgid "border"
+msgstr "viền"
+
+msgid "box"
+msgstr "hộp"
+
+msgid "bracket"
+msgstr "ngoặc vu"
+
+msgid "branch"
+msgstr "nhánh"
+
+msgid "break"
+msgstr "ngắt"
+
+msgid "break (program)"
+msgstr "làm hư"
+
+msgid "break point"
+msgstr "điểm ngắt"
+
+msgid "bridge (verb)"
+msgstr "nối cầu"
+
+msgid "bridge (noun)"
+msgstr "cầu nối"
+
+msgid "broken"
+msgstr "hỏng"
+
+msgid "browse"
+msgstr "duyệt"
+
+msgid "browser"
+msgstr "trình duyệt"
+
+msgid "buffer"
+msgstr "vùng đệm"
+
+msgid "bug"
+msgstr "lỗi"
+
+msgid "build"
+msgstr "xây dựng"
+
+msgid "built-in"
+msgstr "có sẵn"
+
+msgid "bullet"
+msgstr "chấm đầu dòng"
+
+msgid "bus"
+msgstr "mạch nối"
+
+msgid "button"
+msgstr "nút"
+
+msgid "byte"
+msgstr "byte"
+
+msgid "cable"
+msgstr "cáp"
+
+msgid "cache"
+msgstr "(vùng) nhớ tạm"
+
+msgid "calculate"
+msgstr "tính"
+
+msgid "calculator"
+msgstr "bàn tính"
+
+msgid "calendar"
+msgstr "lịch"
+
+msgid "call"
+msgstr "(cuộc) gọi"
+
+msgid "camera"
+msgstr "máy ảnh, máy quay"
+
+msgid "cancel"
+msgstr "thôi"
+
+msgid "capability"
+msgstr "khả năng"
+
+msgid "capacity"
+msgstr "sức chứa"
+
+msgid "caption"
+msgstr "đầu đề"
+
+msgid "capture"
+msgstr "bắt"
+
+msgid "card"
+msgstr "thẻ, bo mạch"
+
+msgid "case"
+msgstr "trường hợp"
+
+msgid "case (font)"
+msgstr "chữ hoa/thường"
+
+msgid "catalog"
+msgstr "mục lục"
+
+msgid "category"
+msgstr "phân loại"
+
+msgid "cell"
+msgstr "ô"
+
+msgid "certificate"
+msgstr "chứng nhận"
+
+msgid "certify"
+msgstr "thị thực"
+
+msgid "change"
+msgstr "thay đổi"
+
+msgid "channel"
+msgstr "kênh"
+
+msgid "character"
+msgstr "ký tự"
+
+msgid "charset"
+msgstr "bộ ký tự"
+
+msgid "chart"
+msgstr "sơ đồ"
+
+msgid "chat"
+msgstr "chát"
+
+msgid "check"
+msgstr "kiểm tra, séc"
+
+msgid "check box"
+msgstr "hộp kiểm tra"
+
+msgid "child"
+msgstr "con"
+
+msgid "choice"
+msgstr "lựa chọn"
+
+msgid "choose"
+msgstr "chọn"
+
+msgid "class"
+msgstr "hạng"
+
+msgid "classic"
+msgstr "cổ điển"
+
+msgid "classify"
+msgstr "phân loại"
+
+msgid "clean"
+msgstr "làm sạch"
+
+msgid "clear"
+msgstr "rõ"
+
+msgid "click (noun)"
+msgstr "cú nhấn"
+
+msgid "click (verb)"
+msgstr "nhấn"
+
+msgid "client"
+msgstr "khách"
+
+msgid "clip art"
+msgstr "ảnh trích"
+
+msgid "clip board"
+msgstr "bảng nháp"
+
+msgid "clock"
+msgstr "đồng hồ"
+
+msgid "close"
+msgstr "gần"
+
+msgid "code (program)"
+msgstr "mã"
+
+msgid "code (symbol)"
+msgstr "mã"
+
+msgid "codec"
+msgstr "codec"
+
+msgid "collapse"
+msgstr "co lại"
+
+msgid "collect"
+msgstr "tập hợp"
+
+msgid "column"
+msgstr "cột"
+
+msgid "combination"
+msgstr "tổ hợp"
+
+msgid "comma"
+msgstr "dấu phẩy"
+
+msgid "command"
+msgstr "lệnh"
+
+msgid "comment"
+msgstr "chú thích"
+
+msgid "common"
+msgstr "chung"
+
+msgid "communication"
+msgstr "giao thông"
+
+msgid "compact"
+msgstr "gọn"
+
+msgid "compare"
+msgstr "so sánh"
+
+msgid "compatibility"
+msgstr "tính tương thích"
+
+msgid "compatible"
+msgstr "tương thích"
+
+msgid "compilation"
+msgstr "bản biên dịch"
+
+msgid "compile"
+msgstr "biên dịch"
+
+msgid "compiler"
+msgstr "bộ biên dịch"
+
+msgid "complete"
+msgstr "hoàn thành"
+
+msgid "component"
+msgstr "thành phần"
+
+msgid "compose"
+msgstr "soạn thảo"
+
+msgid "composition"
+msgstr "tác phẩm"
+
+msgid "compress"
+msgstr "nén"
+
+msgid "compression"
+msgstr "sự nén"
+
+msgid "computer"
+msgstr "máy tính"
+
+msgid "computing"
+msgstr "tin học"
+
+msgid "concatenate"
+msgstr "nối nhau"
+
+msgid "concurrent"
+msgstr "đồng quy, đồng thời"
+
+msgid "condense"
+msgstr "ép sát"
+
+msgid "condition"
+msgstr "điều kiện"
+
+msgid "configuration"
+msgstr "cấu hình"
+
+msgid "configure"
+msgstr "cấu hình"
+
+msgid "confirm"
+msgstr "xác nhận"
+
+msgid "confirmation"
+msgstr "sự xác nhận"
+
+msgid "conflict"
+msgstr "xung đột"
+
+msgid "connect"
+msgstr "kết nối"
+
+msgid "connection"
+msgstr "sự kết nối"
+
+msgid "console"
+msgstr "bàn giao tiếp"
+
+msgid "contact (noun)"
+msgstr "liên lạc"
+
+msgid "contact (verb)"
+msgstr "liên lạc"
+
+msgid "content"
+msgstr "nội dung"
+
+msgid "context"
+msgstr "ngữ cảnh"
+
+msgid "continue"
+msgstr "tiếp tục"
+
+msgid "contrast"
+msgstr "tương phản"
+
+msgid "contributor"
+msgstr "người đóng góp"
+
+msgid "control"
+msgstr "điều khiển"
+
+msgid "conversion"
+msgstr "sự chuyển đổi"
+
+msgid "convert"
+msgstr "chuyển đổi"
+
+msgid "cookie"
+msgstr "cookie"
+
+msgid "cooperative"
+msgstr "hợp tác"
+
+msgid "coordinate"
+msgstr "toạ độ"
+
+msgid "copy (noun)"
+msgstr "bản sao"
+
+msgid "copy (verb)"
+msgstr "chép"
+
+msgid "copy left"
+msgstr "chép trái"
+
+msgid "copy right"
+msgstr "chép phải"
+
+msgid "correct"
+msgstr "đúng"
+
+msgid "correspondence"
+msgstr "phép tương ứng, thư tín"
+
+msgid "correspondent"
+msgstr "(tt) tương ứng (với); (d) người viết thư "
+
+msgid "corrupt"
+msgstr "bị hỏng"
+
+msgid "count"
+msgstr "đếm"
+
+msgid "countable"
+msgstr "đếm được"
+
+msgid "crash"
+msgstr "hỏng"
+
+msgid "create"
+msgstr "tạo"
+
+msgid "creation"
+msgstr "sự tạo"
+
+msgid "criteria"
+msgstr "tiêu chuẩn"
+
+msgid "crop"
+msgstr "xén"
+
+msgid "cross-platform"
+msgstr "đa nền tảng"
+
+msgid "crypt"
+msgstr "mật mã"
+
+msgid "cryptology"
+msgstr "khoa mật mã"
+
+msgid "current"
+msgstr "hiện có"
+
+msgid "cursor"
+msgstr "con chạy"
+
+msgid "curve"
+msgstr "đường cong"
+
+msgid "custom"
+msgstr "tự chọn"
+
+msgid "customization"
+msgstr "sự tùy chỉnh"
+
+msgid "customize"
+msgstr "tùy chỉnh"
+
+msgid "cut"
+msgstr "cắt"
+
+msgid "cycle"
+msgstr "chu kỳ"
+
+msgid "daemon"
+msgstr "trình nền"
+
+msgid "damage"
+msgstr "làm hỏng"
+
+msgid "data"
+msgstr "dữ liệu"
+
+msgid "database"
+msgstr "cơ sở dữ liệu"
+
+msgid "debug"
+msgstr "gỡ lỗi"
+
+msgid "debugger"
+msgstr "hàm gỡ lỗi"
+
+msgid "decimal"
+msgstr "thập phân"
+
+msgid "decode"
+msgstr "giải mã"
+
+msgid "decompress"
+msgstr "giải nén"
+
+msgid "decrease"
+msgstr "giảm"
+
+msgid "decrypt"
+msgstr "giải mật mã"
+
+msgid "decryption"
+msgstr "sự giải mật mã"
+
+msgid "default"
+msgstr "mặc định"
+
+msgid "defect"
+msgstr "khuyết điểm"
+
+msgid "define"
+msgstr "xác định"
+
+msgid "definition"
+msgstr "lời xác định"
+
+msgid "degree"
+msgstr "độ"
+
+msgid "delay"
+msgstr "khoảng đợi"
+
+msgid "delete"
+msgstr "xoá"
+
+msgid "deletion"
+msgstr "sự xoá"
+
+msgid "delimiter"
+msgstr "dấu tách"
+
+msgid "demo"
+msgstr "thao diễn"
+
+msgid "deny"
+msgstr "từ chối"
+
+msgid "dependence"
+msgstr "sự phụ thuộc"
+
+msgid "dependency"
+msgstr "quan hệ phụ thuộc"
+
+msgid "depth"
+msgstr "độ sâu"
+
+msgid "derived"
+msgstr "bắt nguồn (từ)"
+
+msgid "descending"
+msgstr "giảm dần"
+
+msgid "description"
+msgstr "mô tả"
+
+msgid "deselect"
+msgstr "bỏ chọn"
+
+msgid "design"
+msgstr "thiết kế, đề cường"
+
+msgid "desktop"
+msgstr "màn hình nền"
+
+msgid "destination"
+msgstr "đích (đến)"
+
+msgid "destroy"
+msgstr "huỷ"
+
+msgid "detach"
+msgstr "tách rời"
+
+msgid "detect"
+msgstr "phát hiện"
+
+msgid "develop"
+msgstr "phát triển"
+
+msgid "development"
+msgstr "sự phát triển"
+
+msgid "developer"
+msgstr "nhà phát triển"
+
+msgid "device"
+msgstr "thiết bị"
+
+msgid "diagram"
+msgstr "biểu đồ"
+
+msgid "dial"
+msgstr "quay số"
+
+msgid "dialog"
+msgstr "hộp thoại"
+
+msgid "dialup"
+msgstr "quay số"
+
+msgid "difference"
+msgstr "hiệu"
+
+msgid "digit"
+msgstr "chữ số"
+
+msgid "digital"
+msgstr "thuật số"
+
+msgid "dimension"
+msgstr "chiều"
+
+msgid "directory"
+msgstr "thư mục"
+
+msgid "disable"
+msgstr "tắt"
+
+msgid "disc"
+msgstr "đĩa"
+
+msgid "discard"
+msgstr "huỷ"
+
+msgid "disconnect"
+msgstr "ngắt kết nối"
+
+msgid "discussion"
+msgstr "thảo luận"
+
+msgid "disk"
+msgstr "đĩa"
+
+msgid "dispatch"
+msgstr "gửi đi, điều vận"
+
+msgid "display"
+msgstr "hiển thị"
+
+msgid "distort"
+msgstr "biến dạng"
+
+msgid "distribute"
+msgstr "phân phối"
+
+msgid "distribution"
+msgstr "bản phân phối"
+
+msgid "distributor"
+msgstr "nhà phân phối"
+
+msgid "dock"
+msgstr "(cụ) neo"
+
+msgid "document"
+msgstr "tài liệu"
+
+msgid "documentation"
+msgstr "tài liệu hướng dẫn"
+
+msgid "domain"
+msgstr "miền"
+
+msgid "double click"
+msgstr "nhấn đôi"
+
+msgid "download"
+msgstr "tải về"
+
+msgid "drag"
+msgstr "kéo"
+
+msgid "draw"
+msgstr "vẽ"
+
+msgid "driver"
+msgstr "trình điều khiển"
+
+msgid "dual"
+msgstr "đôi"
+
+msgid "dump"
+msgstr "đổ"
+
+msgid "duplicate"
+msgstr "tạo bản sao"
+
+msgid "dynamic"
+msgstr "động"
+
+msgid "echo"
+msgstr "echo"
+
+msgid "edit"
+msgstr "sửa"
+
+msgid "edition"
+msgstr "bản in"
+
+msgid "editor"
+msgstr "biên tập"
+
+msgid "effect"
+msgstr "hiệu ứng"
+
+msgid "eject"
+msgstr "nhả ra"
+
+msgid "electronic"
+msgstr "điện tử"
+
+msgid "element"
+msgstr "phần tử"
+
+msgid "email"
+msgstr "địa chỉ thư"
+
+msgid "embed"
+msgstr "nhúng"
+
+msgid "emoticon"
+msgstr "biểu tượng xúc cảm"
+
+msgid "empty"
+msgstr "rỗng"
+
+msgid "emulate"
+msgstr "mô phỏng"
+
+msgid "emulation"
+msgstr "mô phỏng"
+
+msgid "emulator"
+msgstr "hàm mô phỏng"
+
+msgid "enable"
+msgstr "bật chạy, hiệu lực"
+
+msgid "enabled"
+msgstr "đã bật"
+
+msgid "encode"
+msgstr "mã hoá"
+
+msgid "encoding"
+msgstr "bảng mã"
+
+msgid "encrypt"
+msgstr "mật mã hoá"
+
+msgid "encrypted"
+msgstr "đã mã"
+
+msgid "encryption"
+msgstr "sự mật mã"
+
+msgid "engine"
+msgstr "cơ chế"
+
+msgid "enhancement"
+msgstr "tăng cường"
+
+msgid "enlarge"
+msgstr "phóng to"
+
+msgid "enlargement"
+msgstr "ảnh phóng to"
+
+msgid "enter"
+msgstr "nhập"
+
+msgid "entertainment"
+msgstr "giải trí"
+
+msgid "entry"
+msgstr "mục"
+
+msgid "environment"
+msgstr "môi trường"
+
+msgid "equalizer"
+msgstr "bộ trộn tần số"
+
+msgid "erase"
+msgstr "xoá"
+
+msgid "error"
+msgstr "lỗi"
+
+msgid "escape"
+msgstr "thoát"
+
+msgid "evaluation"
+msgstr "ước lượng"
+
+msgid "event"
+msgstr "sự kiện"
+
+msgid "exception"
+msgstr "ngoại lệ"
+
+msgid "executable"
+msgstr "thực hiện được"
+
+msgid "execute"
+msgstr "thực hiện"
+
+msgid "existing"
+msgstr "đã có"
+
+msgid "exit"
+msgstr "thoát"
+
+msgid "expand"
+msgstr "giãn ra"
+
+msgid "expansion"
+msgstr "sự mở rộng"
+
+msgid "explore"
+msgstr "thám hiểm"
+
+msgid "export"
+msgstr "xuất"
+
+msgid "expression"
+msgstr "biểu thức"
+
+msgid "extend"
+msgstr "kéo dài"
+
+msgid "extensible"
+msgstr "có thể kéo dài"
+
+msgid "extension"
+msgstr "phần mở rộng"
+
+msgid "external"
+msgstr "bên ngoài"
+
+msgid "extra"
+msgstr "thêm"
+
+msgid "extract"
+msgstr "trích ra"
+
+msgid "fail"
+msgstr "thất bại"
+
+msgid "fatal"
+msgstr "nghiêm trọng"
+
+msgid "fault"
+msgstr "sự hỏng"
+
+msgid "favorite"
+msgstr "ưa thích"
+
+msgid "feature"
+msgstr "tính năng"
+
+msgid "feed"
+msgstr "nguồn tin"
+
+msgid "feedback"
+msgstr "phản hồi"
+
+msgid "fetch"
+msgstr "lấy"
+
+msgid "field"
+msgstr "trường"
+
+msgid "figure"
+msgstr "hình"
+
+msgid "file"
+msgstr "tập tin"
+
+msgid "fill"
+msgstr "tô đầy, điền"
+
+msgid "filter"
+msgstr "lọc"
+
+msgid "find"
+msgstr "tìm"
+
+msgid "firewall"
+msgstr "tường lửa"
+
+msgid "firmware"
+msgstr "phần vững"
+
+msgid "fit"
+msgstr "vừa khít"
+
+msgid "fix"
+msgstr "sửa chữa"
+
+msgid "flag"
+msgstr "cờ"
+
+msgid "flash"
+msgstr "đèn nháy"
+
+# Name: don't translate/Tên: đừng dịch
+msgid "flat"
+msgstr "phẳng"
+
+msgid "flip"
+msgstr "lật"
+
+msgid "float (verb)"
+msgstr "nổi"
+
+msgid "flood"
+msgstr "tràn ngập"
+
+msgid "floppy"
+msgstr "đĩa mềm"
+
+msgid "folder"
+msgstr "thư mục"
+
+msgid "font"
+msgstr "phông chữ"
+
+msgid "footer"
+msgstr "chân trang"
+
+msgid "form"
+msgstr "mẫu"
+
+msgid "format (noun)"
+msgstr "định dạng"
+
+msgid "format (verb)"
+msgstr "định dạng"
+
+msgid "formatted"
+msgstr "đã định dạng"
+
+msgid "formula"
+msgstr "công thức"
+
+msgid "forum"
+msgstr "diễn đàn"
+
+msgid "fragment"
+msgstr "đoạn"
+
+msgid "frame"
+msgstr "khung"
+
+msgid "frame set"
+msgstr "bộ khung"
+
+msgid "framework"
+msgstr "khuôn khổ"
+
+msgid "free software"
+msgstr "phần mềm sử dụng tự do"
+
+msgid "freeze"
+msgstr "làm đông đặc"
+
+msgid "frequency"
+msgstr "tần số"
+
+msgid "front end"
+msgstr "giao diện"
+
+msgid "function"
+msgstr "hàm"
+
+msgid "gallery"
+msgstr "phòng trưng bày"
+
+msgid "game"
+msgstr "trò chơi"
+
+msgid "gateway"
+msgstr "cổng ra"
+
+msgid "generate"
+msgstr "tạo ra"
+
+msgid "generation"
+msgstr "sự tạo ra"
+
+msgid "generator"
+msgstr "bộ phát sinh"
+
+msgid "generic"
+msgstr "giống loài"
+
+msgid "geometric"
+msgstr "hình học"
+
+msgid "geometry"
+msgstr "dạng hình, hình học"
+
+msgid "grab"
+msgstr "lấy, thu hình, chụp ảnh"
+
+msgid "gradient"
+msgstr "dốc, dải màu"
+
+msgid "grain"
+msgstr "hạt"
+
+msgid "graph"
+msgstr "đồ thị"
+
+msgid "graphic"
+msgstr "đồ họa"
+
+msgid "graphical"
+msgstr "thuộc đồ họa"
+
+msgid "graphics"
+msgstr "đồ họa"
+
+msgid "gray-scale"
+msgstr "mức xám"
+
+msgid "grid"
+msgstr "lưới"
+
+msgid "group"
+msgstr "nhóm"
+
+msgid "guess"
+msgstr "đoán"
+
+msgid "guest"
+msgstr "khách"
+
+msgid "handle (noun)"
+msgstr "móc (kéo)"
+
+msgid "handle (verb)"
+msgstr "quản lý"
+
+msgid "handler"
+msgstr "trình quản lý"
+
+msgid "hardware"
+msgstr "phần cứng"
+
+msgid "hash"
+msgstr "hash"
+
+msgid "head"
+msgstr "đầu"
+
+msgid "header"
+msgstr "đầu trang"
+
+msgid "height"
+msgstr "độ cao"
+
+msgid "help"
+msgstr "trợ giúp"
+
+msgid "hide"
+msgstr "ẩn"
+
+msgid "hierarchy"
+msgstr "thứ bậc"
+
+msgid "high light"
+msgstr "tô sáng"
+
+msgid "history"
+msgstr "lịch sử"
+
+msgid "host"
+msgstr "máy"
+
+msgid "hostname"
+msgstr "tên máy"
+
+msgid "hyperlink"
+msgstr "siêu liên kết"
+
+msgid "hypertext"
+msgstr "siêu văn bản"
+
+msgid "icon"
+msgstr "biểu tượng"
+
+msgid "identify"
+msgstr "nhận diện"
+
+msgid "idle"
+msgstr "nghỉ"
+
+msgid "ignore"
+msgstr "bỏ qua"
+
+msgid "image"
+msgstr "ảnh"
+
+msgid "implement"
+msgstr "thực hiện"
+
+msgid "import"
+msgstr "nhập"
+
+msgid "inactive"
+msgstr "không hoạt động"
+
+msgid "inbox"
+msgstr "Hộp Thư Đến"
+
+msgid "inch"
+msgstr "insơ"
+
+msgid "include"
+msgstr "gồm"
+
+msgid "incoming"
+msgstr "gửi đến"
+
+msgid "incompatible"
+msgstr "không tương thích (với nhau)"
+
+msgid "increase"
+msgstr "tăng"
+
+msgid "increment"
+msgstr "lượng gia"
+
+msgid "indent"
+msgstr "thụt lề"
+
+msgid "index"
+msgstr "(d) chỉ mục, chỉ số, số mũ ; (đ) đặt chỉ mục"
+
+msgid "indice"
+msgstr "số mũ"
+
+msgid "infect"
+msgstr "làm nhiễm độc"
+
+msgid "infinite"
+msgstr "vô hạn"
+
+msgid "information"
+msgstr "thông tin"
+
+msgid "infrared"
+msgstr "hồng ngoại"
+
+msgid "initial"
+msgstr "đầu tiên"
+
+msgid "initialize"
+msgstr "sơ khởi"
+
+msgid "input"
+msgstr "nhập vào"
+
+msgid "insert"
+msgstr "chèn"
+
+msgid "install"
+msgstr "cài đặt"
+
+msgid "installer"
+msgstr "trình cài đặt"
+
+msgid "instance"
+msgstr "lần xảy ra"
+
+msgid "instruction"
+msgstr "hướng dẫn"
+
+msgid "integer"
+msgstr "số nguyên"
+
+msgid "integral"
+msgstr "tích phân"
+
+msgid "integrate"
+msgstr "tích phân, hợp nhất"
+
+msgid "integration"
+msgstr "sự tích phân, sự hợp nhất"
+
+msgid "integrity"
+msgstr "toàn vẹn"
+
+msgid "intensity"
+msgstr "cường độ"
+
+msgid "interactivity"
+msgstr "tính tương tác"
+
+msgid "interface"
+msgstr "giao diện"
+
+msgid "internal"
+msgstr "nội bộ"
+
+msgid "internet"
+msgstr "Internet"
+
+msgid "interrupt"
+msgstr "ngắt, gián đoạn"
+
+msgid "invalid"
+msgstr "không hợp lệ"
+
+msgid "inverse"
+msgstr "đảo"
+
+msgid "invert"
+msgstr "đảo"
+
+msgid "invoke"
+msgstr "gọi"
+
+msgid "italic"
+msgstr "nghiêng"
+
+msgid "item"
+msgstr "mục, điều"
+
+msgid "iteration"
+msgstr "lần lặp lại"
+
+msgid "jag"
+msgstr "răng cưa"
+
+msgid "jam"
+msgstr "sự kẹp chặt"
+
+msgid "job"
+msgstr "việc"
+
+msgid "join"
+msgstr "gia nhập vào, nối lại"
+
+msgid "joy stick"
+msgstr "cần chơi"
+
+msgid "jump"
+msgstr "nhảy"
+
+msgid "junk"
+msgstr "rác"
+
+msgid "justify"
+msgstr "sắp thẳng"
+
+msgid "keep"
+msgstr "giữ"
+
+msgid "kernel"
+msgstr "hạt nhân"
+
+msgid "key"
+msgstr "phím, khoá"
+
+msgid "keyboard"
+msgstr "bàn phím"
+
+msgid "key stroke"
+msgstr "động tác nhấn phím"
+
+msgid "key word"
+msgstr "từ khoá"
+
+msgid "label"
+msgstr "nhãn"
+
+msgid "landscape"
+msgstr "nằm ngang"
+
+msgid "language"
+msgstr "ngôn ngữ"
+
+msgid "laptop"
+msgstr "máy tính xách tay"
+
+msgid "launch"
+msgstr "khởi chạy"
+
+msgid "layer"
+msgstr "tầng"
+
+msgid "layout"
+msgstr "bố trí"
+
+msgid "length"
+msgstr "độ dài"
+
+msgid "license"
+msgstr "giấy phép"
+
+msgid "line"
+msgstr "dòng, đường, dây"
+
+msgid "link"
+msgstr "liên kết"
+
+msgid "list"
+msgstr "hộp thư chung"
+
+msgid "load"
+msgstr "nạp"
+
+msgid "local"
+msgstr "cục bộ"
+
+msgid "localization"
+msgstr "địa phương hoá"
+
+msgid "location"
+msgstr "đía điểm"
+
+msgid "log"
+msgstr "loga"
+
+msgid "lookup"
+msgstr "tra tìm"
+
+msgid "lower-case"
+msgstr "chữ thường"
+
+msgid "machine"
+msgstr "máy"
+
+msgid "main board"
+msgstr "bảng chính"
+
+msgid "maintainer"
+msgstr "nhà duy trì"
+
+msgid "maintenance"
+msgstr "bảo trì"
+
+msgid "manage"
+msgstr "quản lý"
+
+msgid "management"
+msgstr "sự quản lý"
+
+msgid "manager"
+msgstr "(phần mềm) bộ quản lý, (người) quản trị"
+
+msgid "manual"
+msgstr "bằng tay"
+
+msgid "margin"
+msgstr "lề"
+
+msgid "mark"
+msgstr "(d) dấu ; (đ) đánh dấu"
+
+msgid "master"
+msgstr "chủ"
+
+msgid "match"
+msgstr "khớp với"
+
+msgid "maximize"
+msgstr "phóng to"
+
+msgid "memory"
+msgstr "bộ nhớ"
+
+msgid "menu"
+msgstr "trình đơn"
+
+msgid "merge"
+msgstr "gộp, gộp lại, trộn"
+
+msgid "message"
+msgstr "thư"
+
+msgid "method"
+msgstr "phương pháp"
+
+msgid "minimize"
+msgstr "thu nhỏ"
+
+msgid "mode"
+msgstr "chế độ"
+
+msgid "modem"
+msgstr "bộ điều giải"
+
+msgid "moderator"
+msgstr "điều tiết viên"
+
+msgid "modify"
+msgstr "sửa đổi"
+
+msgid "module"
+msgstr "mô-đun"
+
+msgid "monitor"
+msgstr "màn hình"
+
+msgid "mosaic"
+msgstr "khảm"
+
+msgid "motion"
+msgstr "chuyển động"
+
+msgid "mouse"
+msgstr "chuột"
+
+msgid "move"
+msgstr "dời"
+
+msgid "multimedia"
+msgstr "đa phương tiện"
+
+msgid "multitasking"
+msgstr "đa nhiệm"
+
+msgid "name"
+msgstr "tên"
+
+msgid "navigation"
+msgstr "cách duyệt"
+
+msgid "navigator"
+msgstr "bộ tìm đường"
+
+msgid "network"
+msgstr "mạng"
+
+msgid "news group"
+msgstr "nhóm tin"
+
+msgid "next"
+msgstr "tiếp"
+
+msgid "nick name"
+msgstr "tên hiệu"
+
+msgid "no"
+msgstr "không"
+
+msgid "node"
+msgstr "điểm nút"
+
+msgid "notation"
+msgstr "kiểu ghi"
+
+msgid "note"
+msgstr "ghi chép"
+
+msgid "notebook"
+msgstr "máy xách tay; cuốn vở"
+
+msgid "notification"
+msgstr "thông báo"
+
+msgid "notify"
+msgstr "thông báo"
+
+msgid "null"
+msgstr "rỗng"
+
+msgid "number"
+msgstr "số"
+
+msgid "numbering"
+msgstr "đánh số"
+
+msgid "object"
+msgstr "đối tượng"
+
+msgid "occurrence"
+msgstr "lần xảy ra"
+
+msgid "octet"
+msgstr "nhóm tám câu"
+
+msgid "offline"
+msgstr "ngoại tuyến"
+
+msgid "OK"
+msgstr "OK"
+
+msgid "online"
+msgstr "trực tuyến"
+
+msgid "ongoing"
+msgstr "đang tiếp diễn"
+
+msgid "opacity"
+msgstr "độ đục"
+
+msgid "opaque"
+msgstr "đục"
+
+msgid "open"
+msgstr "mở"
+
+msgid "operation"
+msgstr "thao tác"
+
+msgid "option"
+msgstr "tùy chọn"
+
+msgid "optional"
+msgstr "tùy chọn"
+
+msgid "order"
+msgstr "đặt hàng"
+
+msgid "organize"
+msgstr "sắp đặt"
+
+msgid "orientation"
+msgstr "hướng"
+
+msgid "original"
+msgstr "gốc"
+
+msgid "outgoing"
+msgstr "gửi đi"
+
+msgid "output"
+msgstr "kết xuất"
+
+msgid "overflow"
+msgstr "tràn"
+
+msgid "override"
+msgstr "đè"
+
+msgid "overwrite"
+msgstr "ghi đè"
+
+msgid "owner"
+msgstr "chủ"
+
+msgid "pack"
+msgstr "đóng gói, nén"
+
+msgid "package"
+msgstr "gói"
+
+msgid "packet"
+msgstr "gói tin"
+
+msgid "padding"
+msgstr "đệm"
+
+msgid "page"
+msgstr "trang"
+
+msgid "paint"
+msgstr "sơn"
+
+msgid "pair"
+msgstr "cặp"
+
+msgid "palette"
+msgstr "bảng chọn"
+
+msgid "panel"
+msgstr "bảng điều khiển"
+
+msgid "parallel"
+msgstr "song song"
+
+msgid "parameter"
+msgstr "tham số"
+
+msgid "parcel"
+msgstr "bưu kiện"
+
+msgid "parent"
+msgstr "mẹ"
+
+msgid "parity"
+msgstr "tính chẵn lẻ"
+
+msgid "parse"
+msgstr "phân tích cú pháp"
+
+msgid "partition"
+msgstr "phân vùng"
+
+msgid "pass"
+msgstr "lần qua"
+
+msgid "password"
+msgstr "mật khẩu"
+
+msgid "paste"
+msgstr "dán"
+
+msgid "patch (noun)"
+msgstr "đắp vá"
+
+msgid "patch (verb)"
+msgstr "vá lỗi"
+
+msgid "path"
+msgstr "đường dẫn"
+
+msgid "pattern"
+msgstr "mẫu"
+
+msgid "pause"
+msgstr "tạm dừng"
+
+msgid "peripheral"
+msgstr "(thiết bị) ngoại vi"
+
+msgid "permanent"
+msgstr "bền bỉ"
+
+msgid "permission"
+msgstr "quyền truy cập"
+
+msgid "permutation"
+msgstr "phép hoán vị"
+
+msgid "physical"
+msgstr "vật lý"
+
+msgid "picture"
+msgstr "hình ảnh"
+
+msgid "pipe"
+msgstr "ống dẫn"
+
+msgid "pixel"
+msgstr "điểm ảnh"
+
+msgid "placement"
+msgstr "định vị"
+
+msgid "plain"
+msgstr "thô"
+
+msgid "plot (verb)"
+msgstr "vẽ đồ thị"
+
+msgid "plotter"
+msgstr "bộ vẽ đồ thị"
+
+msgid "plugin"
+msgstr "bổ sung"
+
+msgid "pop up"
+msgstr "tự mở"
+
+msgid "port"
+msgstr "cổng"
+
+msgid "position"
+msgstr "vị trí"
+
+msgid "post"
+msgstr "gửi"
+
+msgid "preferences"
+msgstr "tùy thích"
+
+msgid "prepare"
+msgstr "chuẩn bị"
+
+msgid "presentation"
+msgstr "trình diễn"
+
+msgid "press"
+msgstr "nhấn"
+
+msgid "prevent"
+msgstr "ngăn ngừa"
+
+msgid "preview"
+msgstr "xem thử"
+
+msgid "primary"
+msgstr "chính"
+
+msgid "principal"
+msgstr "tiền gốc, chính"
+
+msgid "print"
+msgstr "in"
+
+msgid "printer"
+msgstr "máy in"
+
+msgid "priority"
+msgstr "ưu tiên"
+
+msgid "privacy"
+msgstr "riêng tư"
+
+msgid "private"
+msgstr "riêng"
+
+msgid "privilege"
+msgstr "đặc quyền"
+
+msgid "procedure"
+msgstr "thủ tục"
+
+msgid "process"
+msgstr "(d) tiến trình; (đ) xử lý"
+
+msgid "processor"
+msgstr "bộ xử lý"
+
+msgid "product"
+msgstr "sản phẩm"
+
+msgid "profile"
+msgstr "hồ sơ"
+
+msgid "program"
+msgstr "chương trình"
+
+msgid "programmer"
+msgstr "lập trình viên"
+
+msgid "project"
+msgstr "dự án"
+
+msgid "prompt"
+msgstr "nhắc"
+
+msgid "property"
+msgstr "thuộc tính"
+
+msgid "proprietary"
+msgstr "sở hữu"
+
+msgid "protect"
+msgstr "bảo vệ"
+
+msgid "protection"
+msgstr "sự bảo vệ"
+
+msgid "protocol"
+msgstr "giao thức"
+
+msgid "provide"
+msgstr "cung cấp"
+
+msgid "provider"
+msgstr "nhà cung cấp"
+
+msgid "proxy"
+msgstr "ủy nhiệm"
+
+msgid "public"
+msgstr "công cộng"
+
+msgid "publish"
+msgstr "xuất bản"
+
+msgid "pull"
+msgstr "kéo"
+
+msgid "push"
+msgstr "đẩy"
+
+msgid "quality"
+msgstr "chất lượng"
+
+msgid "quantity"
+msgstr "số lượng"
+
+msgid "quarantine"
+msgstr "kiểm dịch"
+
+msgid "query"
+msgstr "câu hỏi"
+
+msgid "queue"
+msgstr "(d) hàng đợi; (đ) sắp hàng đợi"
+
+msgid "quit"
+msgstr "thoát"
+
+msgid "quota"
+msgstr "hạn ngạch"
+
+msgid "quotation"
+msgstr "đoạn trích dẫn"
+
+msgid "quote"
+msgstr "dấu trích dẫn"
+
+msgid "raise"
+msgstr "nâng lên"
+
+msgid "random"
+msgstr "ngẫu nhiên"
+
+msgid "range"
+msgstr "phạm_vị"
+
+msgid "rate"
+msgstr "tỷ lệ"
+
+msgid "ratio"
+msgstr "tỷ lệ"
+
+msgid "raw"
+msgstr "thô"
+
+msgid "ray"
+msgstr "tia"
+
+msgid "read"
+msgstr "đọc"
+
+msgid "read only"
+msgstr "chỉ đọc"
+
+msgid "ready"
+msgstr "sẵn sàng"
+
+msgid "real"
+msgstr "thật"
+
+msgid "reboot"
+msgstr "khởi động lại"
+
+msgid "receipt"
+msgstr "giấy biên lai"
+
+msgid "receive"
+msgstr "nhận"
+
+msgid "recognition"
+msgstr "sự nhận ra"
+
+msgid "reconnect"
+msgstr "tái kết nối"
+
+msgid "record"
+msgstr "mục ghi"
+
+msgid "record (verb)"
+msgstr "ghi (lưu), thu"
+
+msgid "recover"
+msgstr "phục hồi"
+
+msgid "recovery"
+msgstr "sự phục hồi"
+
+msgid "recursion"
+msgstr "sự đệ quy"
+
+msgid "recursive"
+msgstr "đệ qui"
+
+msgid "redirect"
+msgstr "chuyển hướng"
+
+msgid "redo"
+msgstr "làm lại"
+
+msgid "reduce"
+msgstr "giảm"
+
+msgid "reduction"
+msgstr "sự giảm"
+
+msgid "redundant"
+msgstr "thừa"
+
+msgid "reference"
+msgstr "tham chiếu"
+
+msgid "referer"
+msgstr "ai/cái tham chiếu"
+
+msgid "referral"
+msgstr "sự tham chiếu"
+
+msgid "reflexive"
+msgstr "phản xạ"
+
+msgid "refresh"
+msgstr "làm mới"
+
+msgid "refuse"
+msgstr "từ chối"
+
+msgid "regenerate"
+msgstr "tạo lại"
+
+msgid "register"
+msgstr "sổ mục"
+
+msgid "registration"
+msgstr "sự đang ký"
+
+msgid "registry"
+msgstr "bộ đăng ký"
+
+msgid "regular"
+msgstr "chính quy"
+
+msgid "regulate"
+msgstr "quy định"
+
+msgid "relay"
+msgstr "(d) bộ tiếp sóng, (đ) tiếp lại"
+
+msgid "release"
+msgstr "phát hành"
+
+msgid "remaining"
+msgstr "còn lại"
+
+msgid "remind"
+msgstr "nhắc nhở"
+
+msgid "remote"
+msgstr "từ xa"
+
+msgid "removable"
+msgstr " rời"
+
+msgid "remove"
+msgstr "bỏ"
+
+msgid "rename"
+msgstr "thay tên"
+
+msgid "render"
+msgstr "vẽ"
+
+msgid "renew"
+msgstr "gia hạn"
+
+msgid "repair"
+msgstr "sửa chữa"
+
+msgid "repeat"
+msgstr "lặp lại"
+
+msgid "replace"
+msgstr "thay thế"
+
+msgid "replicate"
+msgstr "sao lại"
+
+msgid "replication"
+msgstr "sự sao lại"
+
+msgid "reply"
+msgstr "đáp ứng"
+
+msgid "report"
+msgstr "thông báo"
+
+msgid "repository"
+msgstr "kho lưu"
+
+msgid "request"
+msgstr "yêu cầu"
+
+msgid "require"
+msgstr "yêu cầu"
+
+msgid "requirement"
+msgstr "yêu cầu"
+
+msgid "reset"
+msgstr "đặt lại"
+
+msgid "resize"
+msgstr "đổi cỡ"
+
+msgid "resolution"
+msgstr "độ phân giải"
+
+msgid "resolver"
+msgstr "bộ tháo gỡ"
+
+msgid "resource"
+msgstr "tài nguyên"
+
+msgid "response"
+msgstr "đáp ứng"
+
+msgid "restart"
+msgstr "khởi chạy lại"
+
+msgid "restore"
+msgstr "phục hồi"
+
+msgid "restrict"
+msgstr "hạn chế"
+
+msgid "restriction"
+msgstr "sự hạn chế"
+
+msgid "result"
+msgstr "kết quả"
+
+# TRANS: Action label for resuming an activity.
+msgid "resume"
+msgstr "tiếp tục lại"
+
+msgid "retrieve"
+msgstr "lấy"
+
+msgid "retry"
+msgstr "thử lại"
+
+msgid "return"
+msgstr "xuống dòng"
+
+msgid "reverse"
+msgstr "đổi chiều"
+
+msgid "revert"
+msgstr "hoàn nguyên"
+
+msgid "revocation"
+msgstr "sự thu hồi"
+
+msgid "revoke"
+msgstr "thu hồi"
+
+msgid "root"
+msgstr "người chủ"
+
+msgid "rotate"
+msgstr "xoay"
+
+msgid "route"
+msgstr "tuyến đường"
+
+msgid "router"
+msgstr "bộ định tuyến"
+
+msgid "routine"
+msgstr "hàm"
+
+msgid "row"
+msgstr "hàng"
+
+msgid "rule"
+msgstr "quy tắc"
+
+msgid "run"
+msgstr "chạy"
+
+msgid "runtime"
+msgstr "giờ chạy"
+
+msgid "safe"
+msgstr "an toàn"
+
+msgid "sample"
+msgstr "lấy mẫu"
+
+msgid "sans"
+msgstr "không chân"
+
+msgid "save"
+msgstr "lưu"
+
+msgid "scalable"
+msgstr "co giãn được"
+
+msgid "scale"
+msgstr "(d) tỷ lệ; (đ) co giãn"
+
+msgid "scan"
+msgstr "(d) bản quét; (đ) quét"
+
+msgid "scanner"
+msgstr "máy quét"
+
+msgid "schedule"
+msgstr "lịch biểu"
+
+msgid "scheme"
+msgstr "lược đồ"
+
+msgid "scratch"
+msgstr "số không"
+
+msgid "screen"
+msgstr "màn hình"
+
+msgid "screw"
+msgstr "ốc"
+
+msgid "script"
+msgstr "văn lệnh"
+
+msgid "scroll"
+msgstr "cuộn"
+
+msgid "search"
+msgstr "tìm"
+
+msgid "section"
+msgstr "phần"
+
+msgid "sector"
+msgstr "rãnh ghi"
+
+msgid "secure"
+msgstr "bảo mật"
+
+msgid "security"
+msgstr "sự bảo mật"
+
+msgid "seek"
+msgstr "tìm nơi"
+
+msgid "segment"
+msgstr "đoạn"
+
+msgid "segmentation"
+msgstr "sự chia ra từng đoạn"
+
+msgid "select"
+msgstr "chọn"
+
+msgid "selection"
+msgstr "vùng chọn"
+
+msgid "semantic"
+msgstr "ngữ nghĩa học"
+
+msgid "send"
+msgstr "gửi"
+
+msgid "sender"
+msgstr "người gửi"
+
+msgid "sensitive"
+msgstr "phân biệt"
+
+msgid "sensor"
+msgstr "máy nhạy"
+
+msgid "serif"
+msgstr "chân"
+
+msgid "server"
+msgstr "máy/trình phục vụ"
+
+msgid "session"
+msgstr "buổi hợp"
+
+msgid "set"
+msgstr "đặt"
+
+msgid "settings"
+msgstr "thiết lập"
+
+msgid "setup"
+msgstr "thiết lập"
+
+msgid "shading"
+msgstr "tô bóng"
+
+msgid "shadow"
+msgstr "bóng"
+
+msgid "shape"
+msgstr "hình"
+
+msgid "share"
+msgstr "chia sẻ"
+
+msgid "sharp"
+msgstr "sắc"
+
+msgid "sheet"
+msgstr "tờ"
+
+msgid "shell"
+msgstr "vỏ"
+
+msgid "shift"
+msgstr "dịch"
+
+msgid "shortcut"
+msgstr "phím tắt"
+
+msgid "show"
+msgstr "hiện"
+
+msgid "shrink"
+msgstr "thu nhỏ"
+
+msgid "shut down"
+msgstr "tắt máy"
+
+msgid "side bar"
+msgstr "ô lề"
+
+msgid "sign"
+msgstr "ký hiệu"
+
+msgid "signal"
+msgstr "tín hiệu"
+
+msgid "signature"
+msgstr "chữ ký"
+
+msgid "site"
+msgstr "địa chỉ Web"
+
+msgid "size"
+msgstr "kích cỡ"
+
+msgid "skew"
+msgstr "đối xứng lệch"
+
+msgid "skip"
+msgstr "bỏ qua"
+
+msgid "slave"
+msgstr "phụ"
+
+msgid "sleep"
+msgstr "ngủ"
+
+msgid "slide"
+msgstr "ảnh chiếu"
+
+msgid "slot"
+msgstr "khe"
+
+msgid "smart"
+msgstr "khéo"
+
+msgid "smiley"
+msgstr "hình cười"
+
+msgid "smooth"
+msgstr "mịn"
+
+msgid "socket"
+msgstr "ổ cắm"
+
+msgid "software"
+msgstr "phần mềm"
+
+msgid "solid"
+msgstr "đặc"
+
+msgid "sort"
+msgstr "sắp xếp"
+
+msgid "source"
+msgstr "nguồn"
+
+msgid "space"
+msgstr "dấu cách"
+
+msgid "spacing"
+msgstr "khoảng cách"
+
+msgid "spam"
+msgstr "thư rác"
+
+msgid "span"
+msgstr "(d) chiều dài, (đ) chiếm giữ"
+
+msgid "spawn"
+msgstr "tạo và thực hiện"
+
+msgid "specify"
+msgstr "ghi rõ"
+
+msgid "speed"
+msgstr "tốc độ"
+
+msgid "spelling"
+msgstr "chính tả"
+
+msgid "splash"
+msgstr "giật gân"
+
+msgid "split"
+msgstr "phần"
+
+msgid "spool"
+msgstr "ống chỉ"
+
+msgid "spread sheet"
+msgstr "bảng tính"
+
+msgid "stack"
+msgstr "đống"
+
+msgid "stand alone"
+msgstr "độc lập"
+
+msgid "standard"
+msgstr "chuẩn"
+
+msgid "start"
+msgstr "(d) đầu ; (đ) (khởi) chạy, bắt đầu"
+
+msgid "state"
+msgstr "tình trạng"
+
+msgid "static"
+msgstr "tĩnh"
+
+msgid "statistics"
+msgstr "thống kê"
+
+msgid "step"
+msgstr "bước"
+
+msgid "stop"
+msgstr "dừng"
+
+msgid "storage"
+msgstr "lưu trữ"
+
+msgid "store"
+msgstr "cất giữ"
+
+msgid "stream"
+msgstr "luồng"
+
+msgid "stretch"
+msgstr "kéo giãn"
+
+msgid "strict"
+msgstr "chặt chẽ"
+
+msgid "string"
+msgstr "chuỗi"
+
+msgid "strip"
+msgstr "mảnh"
+
+msgid "stroke"
+msgstr "nét"
+
+msgid "structure"
+msgstr "cấu trúc"
+
+msgid "stub"
+msgstr "mẩu"
+
+msgid "style"
+msgstr "kiểu dáng"
+
+msgid "sub directory"
+msgstr "thư mục con"
+
+msgid "sub folder"
+msgstr "thư mục con"
+
+msgid "submission"
+msgstr "sự đệ trình"
+
+msgid "submit"
+msgstr "gửi"
+
+msgid "subscribe"
+msgstr "đăng ký"
+
+msgid "subscription"
+msgstr "sự đăng ký"
+
+msgid "subtract"
+msgstr "trừ"
+
+msgid "succeed"
+msgstr "thành công"
+
+msgid "suggest"
+msgstr "đề nghị"
+
+msgid "suggestion"
+msgstr "sự góp ý"
+
+msgid "sum (noun)"
+msgstr "tổng"
+
+msgid "sum (verb)"
+msgstr "tính tổng"
+
+msgid "summary"
+msgstr "tóm tắt"
+
+msgid "support"
+msgstr "hỗ trợ"
+
+msgid "surface"
+msgstr "mặt"
+
+msgid "suspend"
+msgstr "ngưng"
+
+msgid "suspicious"
+msgstr "đáng ngờ"
+
+msgid "swap"
+msgstr "trao đổi"
+
+msgid "switch"
+msgstr "cái chuyển"
+
+msgid "symbol"
+msgstr "ký hiệu"
+
+msgid "synchronize"
+msgstr "đồng bộ hoá"
+
+msgid "syntax"
+msgstr "cú pháp"
+
+msgid "system"
+msgstr "hệ thống"
+
+msgid "tab"
+msgstr "tab"
+
+msgid "table"
+msgstr "bảng"
+
+msgid "tag"
+msgstr "thẻ"
+
+msgid "target"
+msgstr "đích"
+
+msgid "template"
+msgstr "mẫu"
+
+msgid "temporary"
+msgstr "tạm thời"
+
+msgid "terminal"
+msgstr "thiết bị cuối"
+
+msgid "test"
+msgstr "test"
+
+msgid "text"
+msgstr "văn bản"
+
+msgid "texture"
+msgstr "hoà tiết"
+
+msgid "theme"
+msgstr "sắc thái"
+
+msgid "thread"
+msgstr "nhánh"
+
+msgid "thumbnail"
+msgstr "ảnh mẫu"
+
+msgid "tick"
+msgstr "dấu kiểm"
+
+msgid "tile"
+msgstr "gạch lát"
+
+msgid "time"
+msgstr "thời gian"
+
+msgid "time out"
+msgstr "thời hạn"
+
+msgid "tip"
+msgstr "gợi ý"
+
+msgid "title"
+msgstr "tựa đề"
+
+msgid "toggle"
+msgstr "bật/tắt"
+
+msgid "token"
+msgstr "hiệu bài"
+
+msgid "tool"
+msgstr "công cụ"
+
+msgid "tool bar"
+msgstr "thanh công cụ"
+
+msgid "tool box"
+msgstr "hộp công cụ"
+
+msgid "topic"
+msgstr "chủ đề"
+
+msgid "trace"
+msgstr "vết"
+
+msgid "track"
+msgstr "(d) rãnh, (đ) theo dõi"
+
+msgid "traffic"
+msgstr "dung lượng"
+
+msgid "transfer"
+msgstr "truyền"
+
+msgid "transform"
+msgstr "chuyển dạng"
+
+msgid "transformation"
+msgstr "chuyển dạng"
+
+msgid "trap"
+msgstr "bẫy"
+
+msgid "trash"
+msgstr "thùng rác"
+
+msgid "trigger"
+msgstr "bộ gây nên"
+
+msgid "trouble shoot"
+msgstr "giải đáp thắc mắc"
+
+msgid "tune"
+msgstr "điều hưởng"
+
+msgid "tweak"
+msgstr "điều chỉnh"
+
+msgid "type (noun)"
+msgstr "kiểu"
+
+msgid "type (verb)"
+msgstr "gõ"
+
+msgid "type face"
+msgstr "mặt chữ"
+
+msgid "unavailable"
+msgstr "không sẵn sàng"
+
+msgid "undelete"
+msgstr "huỷ xoá"
+
+msgid "under line"
+msgstr "gạch dưới"
+
+msgid "undo"
+msgstr "hủy bước"
+
+msgid "uninstall"
+msgstr "huỷ cài đặt"
+
+msgid "unit"
+msgstr "đơn vị"
+
+msgid "unknown"
+msgstr "không rõ"
+
+msgid "unload"
+msgstr "bỏ nạp"
+
+msgid "named"
+msgstr "đặt tên"
+
+msgid "reachable"
+msgstr "có thể tới"
+
+msgid "readable"
+msgstr "đọc được"
+
+msgid "unspecified"
+msgstr "chưa xác định"
+
+msgid "unsubscribe"
+msgstr "hủy đăng ký"
+
+msgid "unsupported"
+msgstr "không được hỗ trợ"
+
+msgid "update"
+msgstr "cập nhật"
+
+msgid "upgrade"
+msgstr "nâng cấp"
+
+msgid "upload"
+msgstr "tải lên"
+
+msgid "upper case"
+msgstr "chữ hoa"
+
+msgid "usage"
+msgstr "cách sử dụng"
+
+msgid "user"
+msgstr "người dùng"
+
+msgid "user name"
+msgstr "tên người dùng"
+
+msgid "utility"
+msgstr "tiện ích"
+
+msgid "valid"
+msgstr "hợp lệ"
+
+msgid "validation"
+msgstr "hợp lệ hoá"
+
+# #-#-#-#-#  vi.po (seahorse 2.25.90)  #-#-#-#-#
+# Name: don't translate / Tên: đừng dịch
+msgid "validity"
+msgstr "tính hợp lệ"
+
+msgid "value"
+msgstr "giá trị"
+
+msgid "variable"
+msgstr "(d) biến, (tt) biến đổi"
+
+msgid "vector"
+msgstr "véc-tơ"
+
+msgid "verbose"
+msgstr "chi tiết"
+
+msgid "verify"
+msgstr "thẩm tra"
+
+msgid "version"
+msgstr "phiên bản"
+
+msgid "video"
+msgstr "phim"
+
+msgid "view"
+msgstr "xem"
+
+msgid "viewer"
+msgstr "bộ xem"
+
+msgid "virtual"
+msgstr "ảo"
+
+msgid "virus"
+msgstr "vi-rút"
+
+msgid "visual"
+msgstr "trực quan"
+
+msgid "volume"
+msgstr "khối tin, âm (lượng)"
+
+msgid "wallpaper"
+msgstr "ảnh trang trí nền"
+
+msgid "warn"
+msgstr "cảnh báo"
+
+msgid "web"
+msgstr "web"
+
+msgid "web cam"
+msgstr "máy ảnh Web"
+
+msgid "web master"
+msgstr "chủ Web"
+
+msgid "web page"
+msgstr "trang Web"
+
+msgid "widget"
+msgstr "ô điều khiển"
+
+msgid "width"
+msgstr "độ rộng"
+
+msgid "wi fi"
+msgstr "WiFi"
+
+msgid "wild card"
+msgstr "ký tự đại diện"
+
+msgid "window"
+msgstr "cửa sổ"
+
+msgid "wizard"
+msgstr "trợ lý"
+
+msgid "word processor"
+msgstr "trình xử lý từ"
+
+msgid "work around"
+msgstr "gỡ rối"
+
+msgid "work group"
+msgstr "nhóm làm việc"
+
+msgid "work station"
+msgstr "máy trạm"
+
+msgid "wrap"
+msgstr "ngắt dòng, cuộn"
+
+msgid "yes"
+msgstr "có"
+
+msgid "zone"
+msgstr "khu vực"
+
+msgid "zoom"
+msgstr "thu phóng"

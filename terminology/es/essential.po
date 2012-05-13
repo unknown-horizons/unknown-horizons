@@ -1,0 +1,3146 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2009-02-27 16:17+0200\n"
+"PO-Revision-Date: 2010-07-07 17:40+0200\n"
+"Last-Translator: CharString <chris.wesseling@xs4all.nl>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: es\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Pootle 2.1.0-beta2\n"
+
+# Essential terminology list for general software localisation
+# License: GPL
+# Copyright Youssef Chahibi, Friedel Wolff 2006
+msgid "abort"
+msgstr "abandonar"
+
+msgid "absolute"
+msgstr "absoluto"
+
+msgid "abstract"
+msgstr "abstracto"
+
+msgid "accelerator"
+msgstr "acelerador"
+
+msgid "accent"
+msgstr "acento"
+
+msgid "accept"
+msgstr "aceptar"
+
+msgid "access"
+msgstr "acceso"
+
+msgid "accessibility"
+msgstr "accesibilidad"
+
+msgid "accessory"
+msgstr "accesorio"
+
+msgid "account"
+msgstr "cuenta"
+
+msgid "accuracy"
+msgstr "precisión"
+
+msgid "acquire"
+msgstr "adquirir"
+
+msgid "acronym"
+msgstr "acrónimo"
+
+msgid "action"
+msgstr "acción"
+
+msgid "activate"
+msgstr "activar"
+
+msgid "active"
+msgstr "activo"
+
+msgid "activity"
+msgstr "actividad"
+
+msgid "adapter"
+msgstr "adaptador"
+
+msgid "add"
+msgstr "agregar"
+
+msgid "address"
+msgstr "dirección"
+
+msgid "adjust"
+msgstr "ajustar"
+
+msgid "administration"
+msgstr "administración"
+
+msgid "administrator"
+msgstr "administrador"
+
+msgid "advanced"
+msgstr "avanzado"
+
+msgid "agent"
+msgstr "agente"
+
+msgid "agree"
+msgstr "acordar"
+
+msgid "agreement"
+msgstr "acuerdo"
+
+msgid "alarm"
+msgstr "alarma"
+
+msgid "alert"
+msgstr "alerta"
+
+msgid "algorithm"
+msgstr "algoritmo"
+
+msgid "alias"
+msgstr "alias"
+
+# تسنن" مع الرسوميات (الخطوط وخلافه)
+msgid "aliasing"
+msgstr "alianza"
+
+msgid "align"
+msgstr "alinear"
+
+msgid "alignment"
+msgstr "alineación"
+
+msgid "allow"
+msgstr "permitir"
+
+msgid "alphanumeric"
+msgstr "alfanumérico"
+
+msgid "alternative"
+msgstr "alternativa"
+
+msgid "amount"
+msgstr "cantidad"
+
+msgid "analysis"
+msgstr "análisis"
+
+msgid "anchor"
+msgstr "anclaje"
+
+msgid "angle"
+msgstr "ángulo"
+
+msgid "animate"
+msgstr "animar"
+
+msgid "animation"
+msgstr "animación"
+
+msgid "announce"
+msgstr "anuncio"
+
+msgid "announcement"
+msgstr "anuncio"
+
+msgid "anonymous"
+msgstr "anónimo"
+
+msgid "anti-aliasing"
+msgstr "antialianza"
+
+msgid "anti virus"
+msgstr "antivirus"
+
+msgid "appear"
+msgstr "aparecer"
+
+msgid "append"
+msgstr "añadir"
+
+msgid "applet"
+msgstr "miniaplicación"
+
+msgid "application"
+msgstr "aplicación"
+
+msgid "apply"
+msgstr "aplicar"
+
+msgid "approval"
+msgstr "aprobación"
+
+msgid "approve"
+msgstr "aprobar"
+
+msgid "approximate"
+msgstr "aproximado"
+
+msgid "arbitrary"
+msgstr "arbitrario"
+
+msgid "archive"
+msgstr "archivo"
+
+msgid "area"
+msgstr "área"
+
+msgid "argument"
+msgstr "argumento"
+
+msgid "arrangement"
+msgstr "acuerdo"
+
+msgid "arrow"
+msgstr "flecha"
+
+msgid "article"
+msgstr "artículo"
+
+msgid "ascending"
+msgstr "ascendente"
+
+msgid "aspect"
+msgstr "aspecto"
+
+msgid "assign"
+msgstr "asignar"
+
+msgid "assignment"
+msgstr "materia"
+
+msgid "asynchronous"
+msgstr "asíncrona"
+
+msgid "attach"
+msgstr "adjuntar"
+
+msgid "attachment"
+msgstr "adjunto"
+
+# tratar?
+msgid "attempt"
+msgstr "intento"
+
+msgid "attribute"
+msgstr "atributo"
+
+msgid "audio"
+msgstr "audio"
+
+msgid "authenticate"
+msgstr "autenticar"
+
+msgid "authentication"
+msgstr "autenticación"
+
+msgid "authorization"
+msgstr "autorización"
+
+msgid "authorize"
+msgstr "autorizar"
+
+msgid "auto"
+msgstr "auto"
+
+msgid "automatic"
+msgstr "automático"
+
+msgid "availability"
+msgstr "disponibilidad"
+
+msgid "available"
+msgstr "disponible"
+
+msgid "average"
+msgstr "promedio"
+
+msgid "axis"
+msgstr "eje"
+
+msgid "backbone"
+msgstr "columna vertebral"
+
+msgid "back-end"
+msgstr "back-end"
+
+msgid "background"
+msgstr "fondo"
+
+msgid "backup"
+msgstr "copia de seguridad"
+
+msgid "bandwidth"
+msgstr "ancho de banda"
+
+# Se deja igual que en inglés
+msgid "banner"
+msgstr "banner"
+
+msgid "bar"
+msgstr "barra"
+
+msgid "base"
+msgstr "base"
+
+msgid "beep"
+msgstr "pitar (v); pitido (n)"
+
+msgid "begin"
+msgstr "empezar"
+
+msgid "behavior"
+msgstr "comportamiento"
+
+msgid "binary"
+msgstr "binario"
+
+msgid "bind"
+msgstr "vincular"
+
+msgid "bit"
+msgstr "bit"
+
+# Sinónimos: mapa de bits, imagen.
+msgid "bitmap"
+msgstr "bitmap"
+
+msgid "blank"
+msgstr "en blanco"
+
+msgid "blink"
+msgstr "parpadeo"
+
+msgid "block (unit)"
+msgstr "bloque (unidad)"
+
+msgid "block (verb)"
+msgstr "bloquear (verbo)"
+
+msgid "blog"
+msgstr "blog"
+
+msgid "blur"
+msgstr "borroso"
+
+msgid "board"
+msgstr "tablero"
+
+msgid "body"
+msgstr "cuerpo"
+
+msgid "bold"
+msgstr "negrita"
+
+msgid "bookmarks"
+msgstr "marcadores"
+
+msgid "boot"
+msgstr "inicio"
+
+msgid "border"
+msgstr "borde"
+
+msgid "box"
+msgstr "caja"
+
+msgid "bracket"
+msgstr "corchete"
+
+msgid "branch"
+msgstr "rama"
+
+msgid "break"
+msgstr "salto"
+
+msgid "break (program)"
+msgstr "fallo (programa)"
+
+msgid "break point"
+msgstr "punto de interrupción"
+
+msgid "bridge (verb)"
+msgstr "enlazar (verbo)"
+
+msgid "bridge (noun)"
+msgstr "puente"
+
+msgid "broken"
+msgstr "roto"
+
+msgid "browse"
+msgstr "examinar"
+
+msgid "browser"
+msgstr "buscador"
+
+# Se deja igual que en inglés
+msgid "buffer"
+msgstr "buffer"
+
+# Dejar la palabra en inglés también es correcto
+msgid "bug"
+msgstr "error"
+
+msgid "build"
+msgstr "construir"
+
+msgid "built-in"
+msgstr "construcción"
+
+msgid "bullet"
+msgstr "viñeta"
+
+msgid "bus"
+msgstr "bus"
+
+msgid "button"
+msgstr "botón"
+
+msgid "byte"
+msgstr "byte"
+
+msgid "cable"
+msgstr "cable"
+
+msgid "cache"
+msgstr "caché"
+
+msgid "calculate"
+msgstr "calcular"
+
+msgid "calculator"
+msgstr "calculadora"
+
+msgid "calendar"
+msgstr "calendario"
+
+# También se puede confundir con el verbo llamar
+msgid "call"
+msgstr "llamada"
+
+msgid "camera"
+msgstr "cámara"
+
+msgid "cancel"
+msgstr "cancelar"
+
+msgid "capability"
+msgstr "habilidad"
+
+msgid "capacity"
+msgstr "capacidad"
+
+msgid "caption"
+msgstr "leyenda"
+
+# También se puede confundir con el verbo capturar
+msgid "capture"
+msgstr "captura"
+
+msgid "card"
+msgstr "tarjeta"
+
+msgid "case"
+msgstr "caso"
+
+msgid "case (font)"
+msgstr "caso (fuente)"
+
+msgid "catalog"
+msgstr "catálogo"
+
+msgid "category"
+msgstr "categoría"
+
+msgid "cell"
+msgstr "celda"
+
+msgid "certificate"
+msgstr "certificado"
+
+msgid "certify"
+msgstr "certificar"
+
+# Se puede confundir con el sustantivo cambio
+msgid "change"
+msgstr "cambiar"
+
+msgid "channel"
+msgstr "canal"
+
+msgid "character"
+msgstr "carácter"
+
+msgid "charset"
+msgstr "juego de caracteres"
+
+msgid "chart"
+msgstr "gráficodiagrama"
+
+msgid "chat"
+msgstr "chat"
+
+msgid "check"
+msgstr "comprobar"
+
+msgid "check box"
+msgstr "casilla de comprobación"
+
+msgid "child"
+msgstr "secundario"
+
+msgid "choice"
+msgstr "elección"
+
+msgid "choose"
+msgstr "elegir"
+
+msgid "class"
+msgstr "clase"
+
+msgid "classic"
+msgstr "clásico"
+
+msgid "classify"
+msgstr "clasificar"
+
+msgid "clean"
+msgstr "limpiar"
+
+msgid "clear"
+msgstr "borrar"
+
+msgid "click (noun)"
+msgstr "clic"
+
+msgid "click (verb)"
+msgstr "hacer clic"
+
+msgid "client"
+msgstr "cliente"
+
+msgid "clip art"
+msgstr "clip art"
+
+msgid "clip board"
+msgstr "portapapeles"
+
+msgid "clock"
+msgstr "reloj"
+
+msgid "close"
+msgstr "cerrar"
+
+msgid "code (program)"
+msgstr "código (programa)"
+
+msgid "code (symbol)"
+msgstr "código (símbolo)"
+
+msgid "codec"
+msgstr "códec"
+
+msgid "collapse"
+msgstr "caer"
+
+msgid "collect"
+msgstr "recopilar"
+
+msgid "column"
+msgstr "columna"
+
+msgid "combination"
+msgstr "combinación"
+
+msgid "comma"
+msgstr "coma"
+
+msgid "command"
+msgstr "comando"
+
+# Se puede confundir con el sustantivo comentario
+msgid "comment"
+msgstr "comentar"
+
+msgid "common"
+msgstr "común"
+
+msgid "communication"
+msgstr "comunicación"
+
+msgid "compact"
+msgstr "compacto"
+
+msgid "compare"
+msgstr "comparar"
+
+msgid "compatibility"
+msgstr "compatibilidad"
+
+msgid "compatible"
+msgstr "compatible"
+
+# حويل الشفرة المصرية إلى ملفات ثنائية (برمجة
+msgid "compilation"
+msgstr "compilación"
+
+msgid "compile"
+msgstr "compilar"
+
+msgid "compiler"
+msgstr "compilador"
+
+# Se puede confundir con el adjetivo completo
+msgid "complete"
+msgstr "completado"
+
+msgid "component"
+msgstr "componente"
+
+msgid "compose"
+msgstr "componer"
+
+msgid "composition"
+msgstr "composición"
+
+msgid "compress"
+msgstr "comprimir"
+
+msgid "compression"
+msgstr "compresión"
+
+msgid "computer"
+msgstr "ordenador"
+
+msgid "computing"
+msgstr "informática"
+
+msgid "concatenate"
+msgstr "concatenar"
+
+msgid "concurrent"
+msgstr "simultáneo"
+
+msgid "condense"
+msgstr "condensar"
+
+msgid "condition"
+msgstr "condición"
+
+msgid "configuration"
+msgstr "configuración"
+
+msgid "configure"
+msgstr "configurar"
+
+msgid "confirm"
+msgstr "confirmar"
+
+msgid "confirmation"
+msgstr "confirmación"
+
+msgid "conflict"
+msgstr "conflicto"
+
+msgid "connect"
+msgstr "conectar"
+
+msgid "connection"
+msgstr "conexión"
+
+msgid "console"
+msgstr "consola"
+
+msgid "contact (noun)"
+msgstr "contacto"
+
+msgid "contact (verb)"
+msgstr "contactar"
+
+msgid "content"
+msgstr "contenido"
+
+msgid "context"
+msgstr "contexto"
+
+msgid "continue"
+msgstr "continuar"
+
+msgid "contrast"
+msgstr "contrastar"
+
+msgid "contributor"
+msgstr "colaborador"
+
+msgid "control"
+msgstr "control"
+
+msgid "conversion"
+msgstr "conversión"
+
+msgid "convert"
+msgstr "convertir"
+
+msgid "cookie"
+msgstr "cookie"
+
+msgid "cooperative"
+msgstr "cooperativo"
+
+msgid "coordinate"
+msgstr "coordinar"
+
+msgid "copy (noun)"
+msgstr "copia"
+
+msgid "copy (verb)"
+msgstr "copiar"
+
+# Revisar
+msgid "copy left"
+msgstr "derecho de copia, copyleft"
+
+# Revisar
+msgid "copy right"
+msgstr "derecho de autor, copyright"
+
+# Se puede confundir con el adjetivo correcto. Es necesario ver dónde se emplea para saber si es corregir o correcto. Normalmente para corregir se usa Edit (modificar o editar)
+msgid "correct"
+msgstr "corregir"
+
+msgid "correspondence"
+msgstr "correspondencia"
+
+msgid "correspondent"
+msgstr "correspondiente"
+
+msgid "corrupt"
+msgstr "corrupto"
+
+msgid "count"
+msgstr "contar"
+
+msgid "countable"
+msgstr "contable"
+
+msgid "crash"
+msgstr "caída del sistema"
+
+msgid "create"
+msgstr "crear"
+
+msgid "creation"
+msgstr "creación"
+
+msgid "criteria"
+msgstr "criterio"
+
+msgid "crop"
+msgstr "recortar"
+
+msgid "cross-platform"
+msgstr "multiplataforma"
+
+msgid "crypt"
+msgstr "encriptar"
+
+msgid "cryptology"
+msgstr "criptología"
+
+msgid "current"
+msgstr "actual"
+
+msgid "cursor"
+msgstr "cursor"
+
+msgid "curve"
+msgstr "curva"
+
+msgid "custom"
+msgstr "a medida"
+
+msgid "customization"
+msgstr "customización"
+
+msgid "customize"
+msgstr "personalizar"
+
+msgid "cut"
+msgstr "cortar"
+
+msgid "cycle"
+msgstr "ciclo"
+
+msgid "daemon"
+msgstr "demonio"
+
+msgid "damage"
+msgstr "daño"
+
+msgid "data"
+msgstr "datos"
+
+msgid "database"
+msgstr "base de datos"
+
+msgid "debug"
+msgstr "quitar el error"
+
+msgid "debugger"
+msgstr "que quita el error"
+
+msgid "decimal"
+msgstr "decimal"
+
+msgid "decode"
+msgstr "descifrar"
+
+msgid "decompress"
+msgstr "descomprimir"
+
+msgid "decrease"
+msgstr "disminuir"
+
+msgid "decrypt"
+msgstr "desencriptar"
+
+msgid "decryption"
+msgstr "desencriptación"
+
+msgid "default"
+msgstr "por defecto"
+
+msgid "defect"
+msgstr "defecto"
+
+msgid "define"
+msgstr "definir"
+
+msgid "definition"
+msgstr "definición"
+
+msgid "degree"
+msgstr "nivel"
+
+msgid "delay"
+msgstr "retrasar"
+
+msgid "delete"
+msgstr "borrar"
+
+msgid "deletion"
+msgstr "supresión"
+
+msgid "delimiter"
+msgstr "delimitador"
+
+msgid "demo"
+msgstr "demo"
+
+msgid "deny"
+msgstr "negar"
+
+# Ej. Tiene una dependencia de ...
+msgid "dependence"
+msgstr "dependencia"
+
+# Ej. Este programa depende de ...
+msgid "dependency"
+msgstr "dependencia"
+
+msgid "depth"
+msgstr "profundidad"
+
+msgid "derived"
+msgstr "obtenido"
+
+msgid "descending"
+msgstr "descendente"
+
+msgid "description"
+msgstr "descripción"
+
+msgid "deselect"
+msgstr "deseleccionar"
+
+msgid "design"
+msgstr "diseño"
+
+msgid "desktop"
+msgstr "escritorio"
+
+msgid "destination"
+msgstr "destino"
+
+msgid "destroy"
+msgstr "destruir"
+
+msgid "detach"
+msgstr "despegar"
+
+msgid "detect"
+msgstr "detectar"
+
+msgid "develop"
+msgstr "desarrollar"
+
+msgid "development"
+msgstr "desarrollo"
+
+msgid "developer"
+msgstr "desarrollador"
+
+msgid "device"
+msgstr "dispositivo"
+
+msgid "diagram"
+msgstr "diagrama"
+
+# empleado en modems, cuando marcan a un número para conectarse o en programas de VoIP para marcar un número con el que se quiere entablar una comunicación
+msgid "dial"
+msgstr "marcar"
+
+msgid "dialog"
+msgstr "diálogo"
+
+# empleado cuando se ejecuta la acción de marcar un número telefónico
+msgid "dialup"
+msgstr "marcar"
+
+msgid "difference"
+msgstr "diferencia"
+
+msgid "digit"
+msgstr "dígito"
+
+msgid "digital"
+msgstr "digital"
+
+msgid "dimension"
+msgstr "dimensión"
+
+msgid "directory"
+msgstr "directorio"
+
+msgid "disable"
+msgstr "desactivar"
+
+# En el Reino Unido se utiliza acabado en c.
+# En EEUU se utiliza acabado en k.
+msgid "disc"
+msgstr "disco"
+
+msgid "discard"
+msgstr "descartar"
+
+msgid "disconnect"
+msgstr "desconectar"
+
+msgid "discussion"
+msgstr "debate"
+
+# En EEUU se utiliza acabado en k.
+# En el Reino Unido se utiliza acabado en c.
+# 
+msgid "disk"
+msgstr "disco"
+
+# Como sustantivo es informe
+msgid "dispatch"
+msgstr "enviar"
+
+msgid "display"
+msgstr "pantalla"
+
+msgid "distort"
+msgstr "distorsionar"
+
+msgid "distribute"
+msgstr "distribuir"
+
+msgid "distribution"
+msgstr "distribución"
+
+msgid "distributor"
+msgstr "distribuidor"
+
+# empleado para ensamblar documentos
+msgid "dock"
+msgstr "acoplar"
+
+msgid "document"
+msgstr "documento"
+
+msgid "documentation"
+msgstr "documentación"
+
+msgid "domain"
+msgstr "dominio"
+
+msgid "double click"
+msgstr "doble clic"
+
+# También conocido como bajar/bajarse/descargarse.
+msgid "download"
+msgstr "descargar"
+
+msgid "drag"
+msgstr "arrastrar"
+
+msgid "draw"
+msgstr "dibujar"
+
+msgid "driver"
+msgstr "driver"
+
+msgid "dual"
+msgstr "dual"
+
+# También se puede confundir con el sustantivo basura (en términos informáticos).
+msgid "dump"
+msgstr "verter"
+
+msgid "duplicate"
+msgstr "duplicar"
+
+msgid "dynamic"
+msgstr "dinámico"
+
+msgid "echo"
+msgstr "eco"
+
+msgid "edit"
+msgstr "editar"
+
+msgid "edition"
+msgstr "edición"
+
+msgid "editor"
+msgstr "editor"
+
+msgid "effect"
+msgstr "efecto"
+
+msgid "eject"
+msgstr "expulsar"
+
+# Si hay un sustantivo femenino debe traducirse por electrónica.
+msgid "electronic"
+msgstr "electrónico"
+
+msgid "element"
+msgstr "elemento"
+
+# También se puede escribir correo-e.
+msgid "email"
+msgstr "correo electrónico"
+
+msgid "embed"
+msgstr "incrustrar"
+
+msgid "emoticon"
+msgstr "emoticono"
+
+msgid "empty"
+msgstr "vacío"
+
+msgid "emulate"
+msgstr "emular"
+
+msgid "emulation"
+msgstr "emulación"
+
+msgid "emulator"
+msgstr "emulador"
+
+msgid "enable"
+msgstr "habilitar"
+
+msgid "enabled"
+msgstr "habilitado"
+
+msgid "encode"
+msgstr "codificar"
+
+msgid "encoding"
+msgstr "codificación"
+
+msgid "encrypt"
+msgstr "cifrar"
+
+msgid "encrypted"
+msgstr "cifrado"
+
+msgid "encryption"
+msgstr "cifrado"
+
+msgid "engine"
+msgstr "motor"
+
+# También puede ser el sustantivo mejora o realce
+msgid "enhancement"
+msgstr "aumento"
+
+# También se puede utilizar este sustantivo agrandar
+msgid "enlarge"
+msgstr "ampliar"
+
+msgid "enlargement"
+msgstr "ampliación"
+
+# También puede utilizarse este verbo inscribir/inscribirse.
+msgid "enter"
+msgstr "entrar"
+
+msgid "entertainment"
+msgstr "entretenimiento"
+
+msgid "entry"
+msgstr "entrada"
+
+msgid "environment"
+msgstr "entorno"
+
+msgid "equalizer"
+msgstr "ecualizador"
+
+msgid "erase"
+msgstr "borrar"
+
+msgid "error"
+msgstr "error"
+
+# escape key: tecla de escape.
+# También puede utilizarse el verbo salir
+msgid "escape"
+msgstr "escape"
+
+msgid "evaluation"
+msgstr "evaluación"
+
+# o evento
+msgid "event"
+msgstr "evento"
+
+msgid "exception"
+msgstr "excepción"
+
+msgid "executable"
+msgstr "ejecutable"
+
+msgid "execute"
+msgstr "ejecutar"
+
+msgid "existing"
+msgstr "que existe"
+
+# También puede utilizarse como sustantivo salida.
+msgid "exit"
+msgstr "salir"
+
+msgid "expand"
+msgstr "expandir"
+
+msgid "expansion"
+msgstr "expansión"
+
+msgid "explore"
+msgstr "explorar"
+
+msgid "export"
+msgstr "exportar"
+
+msgid "expression"
+msgstr "expresión"
+
+msgid "extend"
+msgstr "extender"
+
+msgid "extensible"
+msgstr "extensible"
+
+msgid "extension"
+msgstr "extensión"
+
+msgid "external"
+msgstr "externo"
+
+msgid "extra"
+msgstr "extra"
+
+# También puede utilizarse el sustantivo extracto/fragmento
+msgid "extract"
+msgstr "extraer"
+
+msgid "fail"
+msgstr "fallar"
+
+# فادح: مثل خطأ فادح
+msgid "fatal"
+msgstr "fatal"
+
+# Como sinónimos: fallo/avería.
+msgid "fault"
+msgstr "defecto"
+
+# En femenino: favorita
+msgid "favorite"
+msgstr "favorito"
+
+msgid "feature"
+msgstr "característica"
+
+msgid "feed"
+msgstr "alimentar"
+
+# Sinónimo: comunicación continua.
+# También puede utilizarse el término en inglés feedback
+msgid "feedback"
+msgstr "retroalimentación"
+
+# ir a por algo
+msgid "fetch"
+msgstr "traer"
+
+msgid "field"
+msgstr "campo"
+
+msgid "figure"
+msgstr "cifra"
+
+msgid "file"
+msgstr "archivo"
+
+msgid "fill"
+msgstr "rellenar"
+
+msgid "filter"
+msgstr "filtro"
+
+msgid "find"
+msgstr "encontrar"
+
+msgid "firewall"
+msgstr "firewall"
+
+msgid "firmware"
+msgstr "firmware"
+
+msgid "fit"
+msgstr "caber"
+
+msgid "fix"
+msgstr "fijar"
+
+msgid "flag"
+msgstr "bandera"
+
+msgid "flash"
+msgstr "flash"
+
+# Sinónimo: fino 
+msgid "flat"
+msgstr "plano"
+
+msgid "flip"
+msgstr "voltear"
+
+msgid "float (verb)"
+msgstr "flotar"
+
+msgid "flood"
+msgstr "inundar"
+
+msgid "floppy"
+msgstr "floppy"
+
+msgid "folder"
+msgstr "carpeta"
+
+msgid "font"
+msgstr "fuente"
+
+msgid "footer"
+msgstr "pie de página"
+
+msgid "form"
+msgstr "formulario"
+
+msgid "format (noun)"
+msgstr "formato"
+
+msgid "format (verb)"
+msgstr "formatear"
+
+msgid "formatted"
+msgstr "formateado"
+
+msgid "formula"
+msgstr "formula"
+
+msgid "forum"
+msgstr "foro"
+
+msgid "fragment"
+msgstr "fragmento"
+
+# Sinónimo: estructura
+msgid "frame"
+msgstr "marco"
+
+msgid "frame set"
+msgstr "conjunto de marcos"
+
+msgid "framework"
+msgstr "entorno de trabajo"
+
+msgid "free software"
+msgstr "software libre"
+
+msgid "freeze"
+msgstr "congelar"
+
+msgid "frequency"
+msgstr "frecuencia"
+
+# principal
+msgid "front end"
+msgstr "primario"
+
+msgid "function"
+msgstr "función"
+
+msgid "gallery"
+msgstr "galería"
+
+msgid "game"
+msgstr "juego"
+
+msgid "gateway"
+msgstr "entrada"
+
+msgid "generate"
+msgstr "generar"
+
+msgid "generation"
+msgstr "generación"
+
+msgid "generator"
+msgstr "generador"
+
+msgid "generic"
+msgstr "genérico"
+
+msgid "geometric"
+msgstr "geométrico"
+
+msgid "geometry"
+msgstr "geometría"
+
+msgid "grab"
+msgstr "coger"
+
+msgid "gradient"
+msgstr "gradual"
+
+msgid "grain"
+msgstr "grano"
+
+# También puede utilizarse el sustantivo gráfica
+msgid "graph"
+msgstr "gráfico"
+
+msgid "graphic"
+msgstr "gráfico"
+
+msgid "graphical"
+msgstr "gráfico"
+
+msgid "graphics"
+msgstr "gráficos"
+
+msgid "gray-scale"
+msgstr "escala de grises"
+
+msgid "grid"
+msgstr "cuadrícula"
+
+msgid "group"
+msgstr "grupo"
+
+msgid "guess"
+msgstr "suponer"
+
+msgid "guest"
+msgstr "invitado"
+
+# mago, manilla, manija
+msgid "handle (noun)"
+msgstr "asa"
+
+msgid "handle (verb)"
+msgstr "manejar"
+
+msgid "handler"
+msgstr "manipulador"
+
+msgid "hardware"
+msgstr "hardware"
+
+# tambien es un plato de carner ocn verdura
+msgid "hash"
+msgstr "hash"
+
+msgid "head"
+msgstr "cabeza"
+
+msgid "header"
+msgstr "cabecera"
+
+msgid "height"
+msgstr "altura"
+
+msgid "help"
+msgstr "ayuda"
+
+msgid "hide"
+msgstr "ocultar"
+
+msgid "hierarchy"
+msgstr "jerarquía"
+
+# remarcar
+msgid "high light"
+msgstr "destacar"
+
+msgid "history"
+msgstr "historia"
+
+msgid "host"
+msgstr "host"
+
+msgid "hostname"
+msgstr "nombre del sistema"
+
+msgid "hyperlink"
+msgstr "hipervínculo"
+
+msgid "hypertext"
+msgstr "hipertexto"
+
+msgid "icon"
+msgstr "icono"
+
+msgid "identify"
+msgstr "identificar"
+
+msgid "idle"
+msgstr "inactivo"
+
+msgid "ignore"
+msgstr "ignorar"
+
+msgid "image"
+msgstr "imagen"
+
+msgid "implement"
+msgstr "implementar"
+
+msgid "import"
+msgstr "importar"
+
+msgid "inactive"
+msgstr "inactivo"
+
+msgid "inbox"
+msgstr "bandeja de entrada"
+
+msgid "inch"
+msgstr "pulgada"
+
+msgid "include"
+msgstr "incluir"
+
+# Úsese también en plural entrantes.
+msgid "incoming"
+msgstr "entrante"
+
+msgid "incompatible"
+msgstr "incompatible"
+
+msgid "increase"
+msgstr "aumentar"
+
+msgid "increment"
+msgstr "incrementar"
+
+msgid "indent"
+msgstr "sangrar"
+
+msgid "index"
+msgstr "índice"
+
+# ERROR GRAVE. ESTE TÉRMINO NO EXISTE EN INGLÉS
+msgid "indice"
+msgstr "Índice"
+
+msgid "infect"
+msgstr "infectar"
+
+msgid "infinite"
+msgstr "infinito"
+
+msgid "information"
+msgstr "información"
+
+msgid "infrared"
+msgstr "infrarrojo"
+
+msgid "initial"
+msgstr "inicial"
+
+msgid "initialize"
+msgstr "inicializar"
+
+# Ejemplo: input data= datos de entrada 
+msgid "input"
+msgstr "entrada"
+
+msgid "insert"
+msgstr "insertar"
+
+msgid "install"
+msgstr "instalar"
+
+msgid "installer"
+msgstr "instalador"
+
+msgid "instance"
+msgstr "ejemplo"
+
+msgid "instruction"
+msgstr "instrucción"
+
+msgid "integer"
+msgstr "número entero"
+
+msgid "integral"
+msgstr "integral"
+
+msgid "integrate"
+msgstr "integrar"
+
+msgid "integration"
+msgstr "integración"
+
+msgid "integrity"
+msgstr "integridad"
+
+msgid "intensity"
+msgstr "intensidad"
+
+msgid "interactivity"
+msgstr "interactividad"
+
+msgid "interface"
+msgstr "interfaz"
+
+msgid "internal"
+msgstr "interno"
+
+msgid "internet"
+msgstr "Internet"
+
+msgid "interrupt"
+msgstr "interrumpir"
+
+# También puede utilizarse como adjetivo en femenino inválida
+msgid "invalid"
+msgstr "inválido"
+
+msgid "inverse"
+msgstr "inverso"
+
+msgid "invert"
+msgstr "invertir"
+
+msgid "invoke"
+msgstr "invocar"
+
+msgid "italic"
+msgstr "itálica"
+
+msgid "item"
+msgstr "ítem"
+
+msgid "iteration"
+msgstr "iteración"
+
+msgid "jag"
+msgstr "juerga"
+
+# tambien significa atasco
+msgid "jam"
+msgstr "mermelada"
+
+msgid "job"
+msgstr "trabajo"
+
+# También puede utilizarse el verbo unirse
+msgid "join"
+msgstr "unir"
+
+msgid "joy stick"
+msgstr "joy stick"
+
+msgid "jump"
+msgstr "saltar"
+
+msgid "junk"
+msgstr "porqueria"
+
+msgid "justify"
+msgstr "justificar"
+
+msgid "keep"
+msgstr "mantener"
+
+# podría ser semilla o almendra también
+msgid "kernel"
+msgstr "núcleo"
+
+# clave, llave
+msgid "key"
+msgstr "tecla"
+
+msgid "keyboard"
+msgstr "teclado"
+
+#, fuzzy
+msgid "key stroke"
+msgstr "pulsación de tecla"
+
+msgid "key word"
+msgstr "palabra clave"
+
+msgid "label"
+msgstr "etiqueta"
+
+msgid "landscape"
+msgstr "paisaje"
+
+msgid "language"
+msgstr "idioma"
+
+msgid "laptop"
+msgstr "ordenador portátil"
+
+msgid "launch"
+msgstr "lanzamiento"
+
+msgid "layer"
+msgstr "capa"
+
+msgid "layout"
+msgstr "diseño"
+
+msgid "length"
+msgstr "longitud"
+
+msgid "license"
+msgstr "licencia"
+
+msgid "line"
+msgstr "línea"
+
+msgid "link"
+msgstr "enlace"
+
+# También puede utilizarse el verbo listar/enumerar
+msgid "list"
+msgstr "lista"
+
+msgid "load"
+msgstr "cargar"
+
+msgid "local"
+msgstr "local"
+
+msgid "localization"
+msgstr "localización"
+
+msgid "location"
+msgstr "ubicación"
+
+msgid "log"
+msgstr "registrar"
+
+msgid "lookup"
+msgstr "búsqueda"
+
+msgid "lower-case"
+msgstr "letra minúscula"
+
+# ¡¡OJO!! Si va acompañada del término Translation se traduce por traducción automática.
+msgid "machine"
+msgstr "máquina"
+
+msgid "main board"
+msgstr "tablero principal"
+
+msgid "maintainer"
+msgstr "mantener"
+
+msgid "maintenance"
+msgstr "mantenimiento"
+
+msgid "manage"
+msgstr "gestionar"
+
+msgid "management"
+msgstr "gestión"
+
+msgid "manager"
+msgstr "gestor"
+
+msgid "manual"
+msgstr "manual"
+
+msgid "margin"
+msgstr "margen"
+
+msgid "mark"
+msgstr "marcar"
+
+msgid "master"
+msgstr "maestro"
+
+msgid "match"
+msgstr "igualar"
+
+msgid "maximize"
+msgstr "maximizar"
+
+msgid "memory"
+msgstr "memoria"
+
+msgid "menu"
+msgstr "menú"
+
+msgid "merge"
+msgstr "fusionar"
+
+msgid "message"
+msgstr "mensaje"
+
+msgid "method"
+msgstr "método"
+
+msgid "minimize"
+msgstr "minimizar"
+
+msgid "mode"
+msgstr "modo"
+
+msgid "modem"
+msgstr "módem"
+
+msgid "moderator"
+msgstr "moderador"
+
+msgid "modify"
+msgstr "modificar"
+
+msgid "module"
+msgstr "módulo"
+
+msgid "monitor"
+msgstr "monitor"
+
+msgid "mosaic"
+msgstr "mosaico"
+
+msgid "motion"
+msgstr "señal"
+
+msgid "mouse"
+msgstr "ratón"
+
+msgid "move"
+msgstr "mover"
+
+msgid "multimedia"
+msgstr "multimedia"
+
+msgid "multitasking"
+msgstr "multitarea"
+
+msgid "name"
+msgstr "nombre"
+
+msgid "navigation"
+msgstr "navegación"
+
+msgid "navigator"
+msgstr "navegador"
+
+msgid "network"
+msgstr "red"
+
+msgid "news group"
+msgstr "grupo de noticias"
+
+msgid "next"
+msgstr "siguiente"
+
+msgid "nick name"
+msgstr "alias"
+
+msgid "no"
+msgstr "no"
+
+msgid "node"
+msgstr "nodo"
+
+msgid "notation"
+msgstr "anotación"
+
+msgid "note"
+msgstr "nota"
+
+# En países latinoamericanos se conoce como computador portátil.
+msgid "notebook"
+msgstr "ordenador portátil"
+
+msgid "notification"
+msgstr "notificación"
+
+msgid "notify"
+msgstr "notificar"
+
+# nulo
+msgid "null"
+msgstr "inválido"
+
+msgid "number"
+msgstr "número"
+
+msgid "numbering"
+msgstr "numeración"
+
+msgid "object"
+msgstr "objeto"
+
+msgid "occurrence"
+msgstr "incidencia"
+
+# significa 8 bits
+msgid "octet"
+msgstr "octeto"
+
+# Se podría utilizar el adjetivo inactivo para decir que una persona está fuera de línea.
+msgid "offline"
+msgstr "fuera de línea"
+
+# En algunos casos por cuestión de falta de espacio, se escribe OK en vez de aceptar.
+msgid "OK"
+msgstr "Aceptar"
+
+msgid "online"
+msgstr "en línea"
+
+msgid "ongoing"
+msgstr "en curso"
+
+msgid "opacity"
+msgstr "opacidad"
+
+msgid "opaque"
+msgstr "opaco"
+
+msgid "open"
+msgstr "abrir"
+
+msgid "operation"
+msgstr "operación"
+
+msgid "option"
+msgstr "opción"
+
+msgid "optional"
+msgstr "opcional"
+
+msgid "order"
+msgstr "ordenar"
+
+msgid "organize"
+msgstr "organizar"
+
+msgid "orientation"
+msgstr "orientación"
+
+msgid "original"
+msgstr "original"
+
+msgid "outgoing"
+msgstr "que sale"
+
+msgid "output"
+msgstr "salida"
+
+# besborde
+msgid "overflow"
+msgstr "desbordamiento"
+
+msgid "override"
+msgstr "invalidar"
+
+msgid "overwrite"
+msgstr "sobrescribir"
+
+msgid "owner"
+msgstr "propietario"
+
+msgid "pack"
+msgstr "empaquetar"
+
+msgid "package"
+msgstr "paquete"
+
+msgid "packet"
+msgstr "paquete"
+
+msgid "padding"
+msgstr "relleno"
+
+msgid "page"
+msgstr "página"
+
+msgid "paint"
+msgstr "pintar"
+
+msgid "pair"
+msgstr "par"
+
+msgid "palette"
+msgstr "paleta"
+
+msgid "panel"
+msgstr "panel"
+
+msgid "parallel"
+msgstr "paralelo"
+
+msgid "parameter"
+msgstr "parámetro"
+
+msgid "parcel"
+msgstr "paquete"
+
+msgid "parent"
+msgstr "matriz"
+
+msgid "parity"
+msgstr "paridad"
+
+msgid "parse"
+msgstr "analizar"
+
+msgid "partition"
+msgstr "partición"
+
+# contraseña, aprobado
+msgid "pass"
+msgstr "contraseña"
+
+msgid "password"
+msgstr "contraseña"
+
+msgid "paste"
+msgstr "pegar"
+
+msgid "patch (noun)"
+msgstr "parche"
+
+msgid "patch (verb)"
+msgstr "parche"
+
+msgid "path"
+msgstr "ruta"
+
+msgid "pattern"
+msgstr "modelo"
+
+msgid "pause"
+msgstr "pausa"
+
+msgid "peripheral"
+msgstr "periférico"
+
+msgid "permanent"
+msgstr "permanente"
+
+msgid "permission"
+msgstr "permiso"
+
+msgid "permutation"
+msgstr "permutación"
+
+msgid "physical"
+msgstr "físico"
+
+msgid "picture"
+msgstr "dibujo"
+
+msgid "pipe"
+msgstr "conducción"
+
+msgid "pixel"
+msgstr "píxel"
+
+msgid "placement"
+msgstr "colocación"
+
+msgid "plain"
+msgstr "plano"
+
+msgid "plot (verb)"
+msgstr "trazar"
+
+msgid "plotter"
+msgstr "trazador de gráficos"
+
+# no se traduce
+msgid "plugin"
+msgstr "plugin"
+
+msgid "pop up"
+msgstr "pop up"
+
+msgid "port"
+msgstr "puerto"
+
+msgid "position"
+msgstr "posición"
+
+#, fuzzy
+msgid "post"
+msgstr "comentar"
+
+msgid "preferences"
+msgstr "preferencias"
+
+msgid "prepare"
+msgstr "preparar"
+
+msgid "presentation"
+msgstr "presentación"
+
+# Sinónimos: presionar, apretar.
+msgid "press"
+msgstr "pulsar"
+
+msgid "prevent"
+msgstr "prevenir"
+
+msgid "preview"
+msgstr "previsualización"
+
+msgid "primary"
+msgstr "primario"
+
+msgid "principal"
+msgstr "principal"
+
+msgid "print"
+msgstr "imprimir"
+
+msgid "printer"
+msgstr "impresora"
+
+msgid "priority"
+msgstr "prioridad"
+
+msgid "privacy"
+msgstr "privacidad"
+
+msgid "private"
+msgstr "privado"
+
+msgid "privilege"
+msgstr "privilegio"
+
+msgid "procedure"
+msgstr "procedimiento"
+
+msgid "process"
+msgstr "proceso"
+
+msgid "processor"
+msgstr "procesador"
+
+msgid "product"
+msgstr "producto"
+
+msgid "profile"
+msgstr "perfil"
+
+msgid "program"
+msgstr "programa"
+
+msgid "programmer"
+msgstr "programador"
+
+msgid "project"
+msgstr "proyecto"
+
+msgid "prompt"
+msgstr "prompt"
+
+msgid "property"
+msgstr "propiedad"
+
+msgid "proprietary"
+msgstr "propietario"
+
+msgid "protect"
+msgstr "proteger"
+
+msgid "protection"
+msgstr "protección"
+
+#, !!!
+msgid "protocol"
+msgstr "protocolo"
+
+msgid "provide"
+msgstr "proveer"
+
+msgid "provider"
+msgstr "proveedor"
+
+# no se traduce
+msgid "proxy"
+msgstr "proxy"
+
+msgid "public"
+msgstr "público"
+
+msgid "publish"
+msgstr "publicar"
+
+# Movimiento hecho con la mano cuando tiras de alguna cosa.
+msgid "pull"
+msgstr "tirar"
+
+msgid "push"
+msgstr "empujar"
+
+msgid "quality"
+msgstr "calidad"
+
+msgid "quantity"
+msgstr "cantidad"
+
+msgid "quarantine"
+msgstr "cuarentena"
+
+msgid "query"
+msgstr "consulta"
+
+msgid "queue"
+msgstr "cola"
+
+# Sinónimos: abandonar.
+msgid "quit"
+msgstr "salir"
+
+msgid "quota"
+msgstr "cuota"
+
+msgid "quotation"
+msgstr "cita"
+
+msgid "quote"
+msgstr "citar"
+
+msgid "raise"
+msgstr "alcanzar"
+
+msgid "random"
+msgstr "aleatorio"
+
+msgid "range"
+msgstr "área"
+
+msgid "rate"
+msgstr "valorar"
+
+msgid "ratio"
+msgstr "ratio"
+
+msgid "raw"
+msgstr "crudo"
+
+msgid "ray"
+msgstr "rayo"
+
+msgid "read"
+msgstr "leer"
+
+msgid "read only"
+msgstr "sólo de lectura"
+
+msgid "ready"
+msgstr "preparado"
+
+msgid "real"
+msgstr "real"
+
+msgid "reboot"
+msgstr "reiniciar"
+
+msgid "receipt"
+msgstr "recibo"
+
+msgid "receive"
+msgstr "recibir"
+
+msgid "recognition"
+msgstr "reconocimiento"
+
+msgid "reconnect"
+msgstr "reconectar"
+
+msgid "record"
+msgstr "grabación"
+
+msgid "record (verb)"
+msgstr "grabar"
+
+msgid "recover"
+msgstr "recuperar"
+
+msgid "recovery"
+msgstr "recuperación"
+
+msgid "recursion"
+msgstr "recursividad"
+
+msgid "recursive"
+msgstr "recursivo"
+
+msgid "redirect"
+msgstr "redireccionar"
+
+msgid "redo"
+msgstr "rehacer"
+
+msgid "reduce"
+msgstr "reducir"
+
+msgid "reduction"
+msgstr "reducción"
+
+msgid "redundant"
+msgstr "redundante"
+
+msgid "reference"
+msgstr "referencia"
+
+# error gramático. es referrer
+msgid "referer"
+msgstr "referente"
+
+msgid "referral"
+msgstr "referencia"
+
+msgid "reflexive"
+msgstr "reflexivo"
+
+msgid "refresh"
+msgstr "actualizar"
+
+msgid "refuse"
+msgstr "rechazar"
+
+msgid "regenerate"
+msgstr "regenerar"
+
+msgid "register"
+msgstr "registrar"
+
+msgid "registration"
+msgstr "inscripción"
+
+msgid "registry"
+msgstr "registro"
+
+msgid "regular"
+msgstr "regular"
+
+msgid "regulate"
+msgstr "regular"
+
+msgid "relay"
+msgstr "relevo"
+
+# salida de una nueva version
+msgid "release"
+msgstr "versión"
+
+msgid "remaining"
+msgstr "que queda"
+
+msgid "remind"
+msgstr "recordar"
+
+msgid "remote"
+msgstr "remoto"
+
+msgid "removable"
+msgstr "desmontable"
+
+msgid "remove"
+msgstr "eliminar"
+
+msgid "rename"
+msgstr "renombrar"
+
+msgid "render"
+msgstr "renderizar"
+
+msgid "renew"
+msgstr "renovar"
+
+msgid "repair"
+msgstr "reparar"
+
+msgid "repeat"
+msgstr "repetir"
+
+msgid "replace"
+msgstr "sustituir"
+
+msgid "replicate"
+msgstr "replicar"
+
+msgid "replication"
+msgstr "réplica"
+
+msgid "reply"
+msgstr "contestar"
+
+# Se puede utilizar como sustantivo informe.
+msgid "report"
+msgstr "informar"
+
+msgid "repository"
+msgstr "repositorio"
+
+msgid "request"
+msgstr "petición"
+
+msgid "require"
+msgstr "requerir"
+
+msgid "requirement"
+msgstr "requerimiento"
+
+msgid "reset"
+msgstr "reiniciar"
+
+msgid "resize"
+msgstr "redimensionar"
+
+msgid "resolution"
+msgstr "resolución"
+
+# no existe este termino en ingles
+msgid "resolver"
+msgstr "resolver"
+
+msgid "resource"
+msgstr "recurso"
+
+msgid "response"
+msgstr "respuesta"
+
+msgid "restart"
+msgstr "reiniciar"
+
+msgid "restore"
+msgstr "restaurar"
+
+msgid "restrict"
+msgstr "restringir"
+
+msgid "restriction"
+msgstr "restricción"
+
+# Se puede utilizar como verbo resultar.
+msgid "result"
+msgstr "resultado"
+
+msgid "resume"
+msgstr "reanudar"
+
+msgid "retrieve"
+msgstr "recuperar"
+
+msgid "retry"
+msgstr "reintentar"
+
+msgid "return"
+msgstr "retorno"
+
+msgid "reverse"
+msgstr "reverso"
+
+msgid "revert"
+msgstr "revertir"
+
+msgid "revocation"
+msgstr "revocación"
+
+msgid "revoke"
+msgstr "revocar"
+
+msgid "root"
+msgstr "raiz"
+
+msgid "rotate"
+msgstr "girar"
+
+msgid "route"
+msgstr "ruta"
+
+msgid "router"
+msgstr "ruter"
+
+msgid "routine"
+msgstr "rutina"
+
+msgid "row"
+msgstr "fila"
+
+msgid "rule"
+msgstr "regla"
+
+msgid "run"
+msgstr "ejecutar"
+
+msgid "runtime"
+msgstr "tiempo de ejecución"
+
+msgid "safe"
+msgstr "seguro"
+
+msgid "sample"
+msgstr "ejemplo"
+
+msgid "sans"
+msgstr "sans"
+
+msgid "save"
+msgstr "guardar"
+
+msgid "scalable"
+msgstr "escalable"
+
+msgid "scale"
+msgstr "escala"
+
+# explorar
+#, fuzzy
+msgid "scan"
+msgstr "escanear"
+
+msgid "scanner"
+msgstr "escáner"
+
+msgid "schedule"
+msgstr "horario"
+
+msgid "scheme"
+msgstr "esquema"
+
+msgid "scratch"
+msgstr "marcar"
+
+msgid "screen"
+msgstr "pantalla"
+
+msgid "screw"
+msgstr "atornillar"
+
+# Se puede utilizar también el sustantivo secuencia.
+msgid "script"
+msgstr "script"
+
+# من لف الشئ يلفه
+# فتقول:
+# لف ﻷعلى=scroll up ، وهكذا
+msgid "scroll"
+msgstr "desplazar"
+
+msgid "search"
+msgstr "buscar"
+
+msgid "section"
+msgstr "sección"
+
+msgid "sector"
+msgstr "sector"
+
+msgid "secure"
+msgstr "seguro"
+
+msgid "security"
+msgstr "seguridad"
+
+msgid "seek"
+msgstr "buscar"
+
+msgid "segment"
+msgstr "segmento"
+
+msgid "segmentation"
+msgstr "segmentación"
+
+msgid "select"
+msgstr "seleccionar"
+
+msgid "selection"
+msgstr "selección"
+
+msgid "semantic"
+msgstr "semántico"
+
+msgid "send"
+msgstr "enviar"
+
+msgid "sender"
+msgstr "remitente"
+
+msgid "sensitive"
+msgstr "sensible"
+
+msgid "sensor"
+msgstr "sensor"
+
+msgid "serif"
+msgstr "serifa"
+
+msgid "server"
+msgstr "servidor"
+
+msgid "session"
+msgstr "sesión"
+
+msgid "set"
+msgstr "definir"
+
+msgid "settings"
+msgstr "configuración"
+
+msgid "setup"
+msgstr "configurar"
+
+msgid "shading"
+msgstr "sombreado"
+
+msgid "shadow"
+msgstr "sombra"
+
+msgid "shape"
+msgstr "forma"
+
+msgid "share"
+msgstr "compartir"
+
+msgid "sharp"
+msgstr "afilado"
+
+msgid "sheet"
+msgstr "hoja"
+
+msgid "shell"
+msgstr "shell"
+
+# Sinónimos: cambiar, arrastrar.
+# También se puede utilizar como nombre compuesto y su significado cambia: Shift key= tecla de mayúsuclas.
+#, fuzzy
+msgid "shift"
+msgstr "mover"
+
+msgid "shortcut"
+msgstr "atajo"
+
+msgid "show"
+msgstr "mostrar"
+
+#, fuzzy
+msgid "shrink"
+msgstr "encoger"
+
+# Sinónimos: cerrar
+msgid "shut down"
+msgstr "apagar"
+
+# También se utiliza el término en inglés sidebar.
+msgid "side bar"
+msgstr "barra lateral"
+
+msgid "sign"
+msgstr "signo"
+
+msgid "signal"
+msgstr "señal"
+
+msgid "signature"
+msgstr "firma"
+
+msgid "site"
+msgstr "sitio"
+
+msgid "size"
+msgstr "tamaño"
+
+#, fuzzy
+msgid "skew"
+msgstr "asimétrico"
+
+# Sinónimos: saltar.
+msgid "skip"
+msgstr "omitir"
+
+msgid "slave"
+msgstr "esclavo"
+
+msgid "sleep"
+msgstr "dormir"
+
+msgid "slide"
+msgstr "deslizar"
+
+msgid "slot"
+msgstr "ranura"
+
+msgid "smart"
+msgstr "inteligente"
+
+msgid "smiley"
+msgstr "smiley"
+
+msgid "smooth"
+msgstr "suavizar"
+
+msgid "socket"
+msgstr "enchufe"
+
+msgid "software"
+msgstr "software"
+
+msgid "solid"
+msgstr "sólido"
+
+# Sinónimos: clasificar.
+# Como sustantivo: clase, tipo.
+msgid "sort"
+msgstr "ordenar"
+
+msgid "source"
+msgstr "fuente"
+
+msgid "space"
+msgstr "espacio"
+
+msgid "spacing"
+msgstr "espaciado"
+
+msgid "spam"
+msgstr "spam"
+
+# Sinónimos: extender, extenderse, cruzar.
+# Como sustantivos: espaciado, envergadura, lapso.
+# Como adjetivos: útil, retentiva. Ejemplos: life span: vida útil. memory span: memoria retentiva.
+#, fuzzy
+msgid "span"
+msgstr "abarcar"
+
+# Sinónimos: producir.
+msgid "spawn"
+msgstr "generar"
+
+msgid "specify"
+msgstr "especificar"
+
+msgid "speed"
+msgstr "velocidad"
+
+msgid "spelling"
+msgstr "ortografía"
+
+msgid "splash"
+msgstr "salpicar"
+
+msgid "split"
+msgstr "partirse"
+
+msgid "spool"
+msgstr "gestionar colas"
+
+msgid "spread sheet"
+msgstr "hoja de cálculo"
+
+msgid "stack"
+msgstr "pila"
+
+#, fuzzy
+msgid "stand alone"
+msgstr "independiente"
+
+msgid "standard"
+msgstr "estándar"
+
+msgid "start"
+msgstr "iniciar"
+
+msgid "state"
+msgstr "estado"
+
+msgid "static"
+msgstr "estático"
+
+msgid "statistics"
+msgstr "estadísticas"
+
+msgid "step"
+msgstr "paso"
+
+msgid "stop"
+msgstr "parar"
+
+msgid "storage"
+msgstr "almacenamiento"
+
+msgid "store"
+msgstr "almacenar"
+
+msgid "stream"
+msgstr "corriente"
+
+msgid "stretch"
+msgstr "extender"
+
+msgid "strict"
+msgstr "estricto"
+
+msgid "string"
+msgstr "cadena"
+
+msgid "strip"
+msgstr "tira"
+
+#, fuzzy
+msgid "stroke"
+msgstr "estilo"
+
+msgid "structure"
+msgstr "estructura"
+
+msgid "stub"
+msgstr "resguardo"
+
+msgid "style"
+msgstr "estilo"
+
+msgid "sub directory"
+msgstr "subdirectorio"
+
+msgid "sub folder"
+msgstr "subcarpeta"
+
+# Otros sustantivos: sumisión.
+#, fuzzy
+msgid "submission"
+msgstr "propuesta"
+
+msgid "submit"
+msgstr "enviar"
+
+msgid "subscribe"
+msgstr "suscribirse"
+
+msgid "subscription"
+msgstr "suscripción"
+
+msgid "subtract"
+msgstr "sustraer"
+
+msgid "succeed"
+msgstr "con éxito"
+
+msgid "suggest"
+msgstr "sugerir"
+
+msgid "suggestion"
+msgstr "sugerencia"
+
+msgid "sum (noun)"
+msgstr "suma"
+
+msgid "sum (verb)"
+msgstr "sumar"
+
+msgid "summary"
+msgstr "sumario"
+
+msgid "support"
+msgstr "soporte"
+
+msgid "surface"
+msgstr "superfície"
+
+msgid "suspend"
+msgstr "suspender"
+
+msgid "suspicious"
+msgstr "sospechoso"
+
+msgid "swap"
+msgstr "intercambiar"
+
+# Como verbo: cambiar.
+#, fuzzy
+msgid "switch"
+msgstr "interruptor"
+
+msgid "symbol"
+msgstr "símbolo"
+
+msgid "synchronize"
+msgstr "sincronizar"
+
+msgid "syntax"
+msgstr "sintaxis"
+
+msgid "system"
+msgstr "sistema"
+
+# Como sustantivos: ficha, pestaña.
+#, fuzzy
+msgid "tab"
+msgstr "tabulador"
+
+msgid "table"
+msgstr "tabla"
+
+msgid "tag"
+msgstr "etiqueta"
+
+msgid "target"
+msgstr "destino"
+
+msgid "template"
+msgstr "plantilla"
+
+msgid "temporary"
+msgstr "temporal"
+
+msgid "terminal"
+msgstr "terminal"
+
+msgid "test"
+msgstr "prueba"
+
+msgid "text"
+msgstr "texto"
+
+msgid "texture"
+msgstr "textura"
+
+msgid "theme"
+msgstr "tema"
+
+#, fuzzy
+msgid "thread"
+msgstr "hilo"
+
+# También se puede dejar el término en inglés: thumbnail.
+msgid "thumbnail"
+msgstr "miniatura de una imagen"
+
+msgid "tick"
+msgstr "marcar"
+
+msgid "tile"
+msgstr ""
+
+# Sinónimos: hora.
+msgid "time"
+msgstr "tiempo"
+
+msgid "time out"
+msgstr "tiempo de espera"
+
+msgid "tip"
+msgstr "consejo"
+
+msgid "title"
+msgstr "título"
+
+msgid "toggle"
+msgstr "conmutar"
+
+msgid "token"
+msgstr "token"
+
+msgid "tool"
+msgstr "herramienta"
+
+msgid "tool bar"
+msgstr "barra de herramientas"
+
+msgid "tool box"
+msgstr "caja de herramientas"
+
+msgid "topic"
+msgstr "tema"
+
+#, fuzzy
+msgid "trace"
+msgstr "indicador"
+
+msgid "track"
+msgstr "pista"
+
+msgid "traffic"
+msgstr "tráfico"
+
+# Como verbo: transferir, traspasar, transmitir.
+msgid "transfer"
+msgstr "transferencia"
+
+msgid "transform"
+msgstr "transformar"
+
+msgid "transformation"
+msgstr "transformación"
+
+msgid "trap"
+msgstr "interceptor"
+
+msgid "trash"
+msgstr "papelera"
+
+msgid "trigger"
+msgstr "trigger"
+
+# También se puede dejar el término en inglés: trouble shoot.
+#, fuzzy
+msgid "trouble shoot"
+msgstr "localización y resolución de problemas"
+
+msgid "tune"
+msgstr "tune"
+
+msgid "tweak"
+msgstr "tweak"
+
+msgid "type (noun)"
+msgstr "tipo"
+
+msgid "type (verb)"
+msgstr "escribir"
+
+msgid "type face"
+msgstr "estilo de letras"
+
+msgid "unavailable"
+msgstr "no está disponible"
+
+msgid "undelete"
+msgstr "no borrar"
+
+msgid "under line"
+msgstr "subrayar"
+
+msgid "undo"
+msgstr "deshacer"
+
+msgid "uninstall"
+msgstr "desinstalar"
+
+msgid "unit"
+msgstr "unidad"
+
+msgid "unknown"
+msgstr "desconocido"
+
+msgid "unload"
+msgstr "descargar"
+
+msgid "named"
+msgstr "nombrado"
+
+msgid "reachable"
+msgstr "alcanzable"
+
+msgid "readable"
+msgstr "leíble"
+
+msgid "unspecified"
+msgstr "no especificado"
+
+msgid "unsubscribe"
+msgstr "no suscribirse"
+
+msgid "unsupported"
+msgstr "no soportado"
+
+msgid "update"
+msgstr "actualizar"
+
+msgid "upgrade"
+msgstr "mejorar"
+
+msgid "upload"
+msgstr "subir"
+
+msgid "upper case"
+msgstr "mayúscula"
+
+msgid "usage"
+msgstr "uso"
+
+msgid "user"
+msgstr "usuario"
+
+msgid "user name"
+msgstr "nombre de usuario"
+
+msgid "utility"
+msgstr "utilidad"
+
+msgid "valid"
+msgstr "válido"
+
+msgid "validation"
+msgstr "validación"
+
+msgid "validity"
+msgstr "validez"
+
+msgid "value"
+msgstr "valor"
+
+msgid "variable"
+msgstr "variable"
+
+msgid "vector"
+msgstr "vector"
+
+msgid "verbose"
+msgstr "verboso"
+
+msgid "verify"
+msgstr "verificar"
+
+msgid "version"
+msgstr "versión"
+
+msgid "video"
+msgstr "vídeo"
+
+# Como sustantivo: vista
+msgid "view"
+msgstr "ver"
+
+# Ejemplo: slide viewer: visor de dispositivas.
+msgid "viewer"
+msgstr "visor"
+
+msgid "virtual"
+msgstr "virtual"
+
+msgid "virus"
+msgstr "virus"
+
+msgid "visual"
+msgstr "visual"
+
+msgid "volume"
+msgstr "volumen"
+
+msgid "wallpaper"
+msgstr "papel tapiz"
+
+msgid "warn"
+msgstr "advertir"
+
+msgid "web"
+msgstr "web"
+
+msgid "web cam"
+msgstr "webcam"
+
+msgid "web master"
+msgstr "webmaster"
+
+msgid "web page"
+msgstr "página web"
+
+msgid "widget"
+msgstr "widget"
+
+msgid "width"
+msgstr "ancho"
+
+msgid "wi fi"
+msgstr "wifi"
+
+msgid "wild card"
+msgstr "comodín"
+
+msgid "window"
+msgstr "ventana"
+
+msgid "wizard"
+msgstr "asistente"
+
+msgid "word processor"
+msgstr "procesador de texto"
+
+msgid "work around"
+msgstr "work around"
+
+msgid "work group"
+msgstr "grupo de trabajo"
+
+msgid "work station"
+msgstr "estación de trabajo"
+
+msgid "wrap"
+msgstr "ajuste"
+
+msgid "yes"
+msgstr "sí"
+
+msgid "zone"
+msgstr "zona"
+
+# Como verbo: ampliar
+msgid "zoom"
+msgstr "zoom"

@@ -1,0 +1,3041 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2009-02-27 16:19+0200\n"
+"PO-Revision-Date: 2010-08-07 22:58+0200\n"
+"Last-Translator: BouRock <hitowerdigit@hotmail.com>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: tr\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"X-Generator: Pootle 2.1.0-beta2\n"
+
+# Essential terminology list for general software localisation
+# License: GPL
+# Copyright Youssef Chahibi, Friedel Wolff 2006
+msgid "abort"
+msgstr "durdur/iptal et"
+
+msgid "absolute"
+msgstr "mutlak"
+
+msgid "abstract"
+msgstr "özet"
+
+msgid "accelerator"
+msgstr "hızlandırıcı"
+
+msgid "accent"
+msgstr "vurgu"
+
+msgid "accept"
+msgstr "kabul et"
+
+msgid "access"
+msgstr "erişim"
+
+msgid "accessibility"
+msgstr "erişebilirlik"
+
+msgid "accessory"
+msgstr "donatı"
+
+msgid "account"
+msgstr "hesap"
+
+msgid "accuracy"
+msgstr "doğruluk"
+
+msgid "acquire"
+msgstr "edinmek"
+
+msgid "acronym"
+msgstr "kısaltma"
+
+msgid "action"
+msgstr "eylem"
+
+msgid "activate"
+msgstr "etkinleştir"
+
+msgid "active"
+msgstr "etkin"
+
+msgid "activity"
+msgstr "etkinlik"
+
+msgid "adapter"
+msgstr "bağdaştırıcı"
+
+msgid "add"
+msgstr "ekle"
+
+msgid "address"
+msgstr "adres"
+
+msgid "adjust"
+msgstr "ayarla"
+
+msgid "administration"
+msgstr "yönetim"
+
+msgid "administrator"
+msgstr "yönetici"
+
+msgid "advanced"
+msgstr "gelişmiş"
+
+msgid "agent"
+msgstr "aracı"
+
+msgid "agree"
+msgstr "kabul etme"
+
+msgid "agreement"
+msgstr "anlaşma"
+
+msgid "alarm"
+msgstr "alarm"
+
+msgid "alert"
+msgstr "uyarı"
+
+msgid "algorithm"
+msgstr "algoritma"
+
+# has two meanings
+msgid "alias"
+msgstr "rumuz/örtüşen"
+
+# تسنن" مع الرسوميات (الخطوط وخلافه)
+# has two meanings
+msgid "aliasing"
+msgstr "rumuzlandırma/örtüşme"
+
+msgid "align"
+msgstr "hizala"
+
+msgid "alignment"
+msgstr "hizalama"
+
+msgid "allow"
+msgstr "izin ver"
+
+msgid "alphanumeric"
+msgstr "alfanümerik"
+
+msgid "alternative"
+msgstr "diğer"
+
+msgid "amount"
+msgstr "miktar"
+
+msgid "analysis"
+msgstr "çözümleme"
+
+msgid "anchor"
+msgstr "sabitleyici"
+
+msgid "angle"
+msgstr "açı"
+
+msgid "animate"
+msgstr "canlandır"
+
+msgid "animation"
+msgstr "canlandırma"
+
+msgid "announce"
+msgstr "duyurma"
+
+msgid "announcement"
+msgstr "duyuru"
+
+msgid "anonymous"
+msgstr "anonim"
+
+msgid "anti-aliasing"
+msgstr "örtüşme önleme"
+
+msgid "anti virus"
+msgstr "anti virüs"
+
+msgid "appear"
+msgstr "belirme"
+
+msgid "append"
+msgstr "ekle"
+
+msgid "applet"
+msgstr "uygulama programı"
+
+msgid "application"
+msgstr "uygulama"
+
+msgid "apply"
+msgstr "uygula"
+
+msgid "approval"
+msgstr "onay"
+
+msgid "approve"
+msgstr "onayla"
+
+msgid "approximate"
+msgstr "benzeştirme"
+
+msgid "arbitrary"
+msgstr "gelişigüzel"
+
+msgid "archive"
+msgstr "arşiv"
+
+msgid "area"
+msgstr "alan"
+
+msgid "argument"
+msgstr "bağımsız değişken"
+
+msgid "arrangement"
+msgstr "düzenleme"
+
+msgid "arrow"
+msgstr "ok"
+
+msgid "article"
+msgstr "madde"
+
+msgid "ascending"
+msgstr "artan"
+
+msgid "aspect"
+msgstr "en-boy"
+
+msgid "assign"
+msgstr "ata"
+
+msgid "assignment"
+msgstr "atama"
+
+msgid "asynchronous"
+msgstr "eşzamansız"
+
+msgid "attach"
+msgstr "ekle"
+
+msgid "attachment"
+msgstr "ek"
+
+msgid "attempt"
+msgstr "girişim"
+
+msgid "attribute"
+msgstr "öznitelik"
+
+msgid "audio"
+msgstr "ses"
+
+msgid "authenticate"
+msgstr "doğrula"
+
+msgid "authentication"
+msgstr "kimlik doğrulama"
+
+msgid "authorization"
+msgstr "yetkilendirme"
+
+msgid "authorize"
+msgstr "yetkilendir"
+
+msgid "auto"
+msgstr "otomatik"
+
+msgid "automatic"
+msgstr "otomatik"
+
+msgid "availability"
+msgstr "kullanırlık"
+
+msgid "available"
+msgstr "kullanılabilir"
+
+msgid "average"
+msgstr "ortalama"
+
+msgid "axis"
+msgstr "eksen"
+
+msgid "backbone"
+msgstr "omurga"
+
+msgid "back-end"
+msgstr "art alanda çalışan uygulama"
+
+msgid "background"
+msgstr "arkaplan"
+
+msgid "backup"
+msgstr "yedekleme"
+
+msgid "bandwidth"
+msgstr "bant genişliği"
+
+msgid "banner"
+msgstr "afiş"
+
+msgid "bar"
+msgstr "çubuk"
+
+msgid "base"
+msgstr "taban"
+
+msgid "beep"
+msgstr "bip"
+
+msgid "begin"
+msgstr "başla"
+
+msgid "behavior"
+msgstr "davranış"
+
+msgid "binary"
+msgstr "ikili değer"
+
+msgid "bind"
+msgstr "bağla"
+
+msgid "bit"
+msgstr "bit"
+
+msgid "bitmap"
+msgstr "bit eşlem"
+
+msgid "blank"
+msgstr "boş"
+
+msgid "blink"
+msgstr "yanıp sönme"
+
+msgid "block (unit)"
+msgstr "blok (birim)"
+
+msgid "block (verb)"
+msgstr "bloke et (eylem)"
+
+msgid "blog"
+msgstr "blog"
+
+msgid "blur"
+msgstr "bulanıklaştır"
+
+msgid "board"
+msgstr "pano"
+
+msgid "body"
+msgstr "gövde"
+
+msgid "bold"
+msgstr "kalın"
+
+msgid "bookmarks"
+msgstr "yer imleri"
+
+msgid "boot"
+msgstr "ön yükleme"
+
+msgid "border"
+msgstr "sınır"
+
+msgid "box"
+msgstr "kutu"
+
+msgid "bracket"
+msgstr "köşeli ayraç"
+
+msgid "branch"
+msgstr "alt grup"
+
+msgid "break"
+msgstr "kes"
+
+msgid "break (program)"
+msgstr "durdur (program)"
+
+msgid "break point"
+msgstr "durdurma noktası"
+
+msgid "bridge (verb)"
+msgstr "köprüle (eylem)"
+
+msgid "bridge (noun)"
+msgstr "köprü (isim)"
+
+msgid "broken"
+msgstr "bozuk"
+
+msgid "browse"
+msgstr "gözat"
+
+msgid "browser"
+msgstr "tarayıcı"
+
+msgid "buffer"
+msgstr "tampon / tampon bellek"
+
+msgid "bug"
+msgstr "hata"
+
+msgid "build"
+msgstr "oluştur"
+
+msgid "built-in"
+msgstr "yerleşik"
+
+msgid "bullet"
+msgstr "madde imi"
+
+msgid "bus"
+msgstr "veri yolu"
+
+msgid "button"
+msgstr "düğme"
+
+msgid "byte"
+msgstr "bayt"
+
+msgid "cable"
+msgstr "kablo"
+
+msgid "cache"
+msgstr "ön bellek"
+
+msgid "calculate"
+msgstr "hesapla"
+
+msgid "calculator"
+msgstr "hesap makinesi"
+
+msgid "calendar"
+msgstr "takvim"
+
+msgid "call"
+msgstr "çağrı"
+
+msgid "camera"
+msgstr "kamera"
+
+msgid "cancel"
+msgstr "iptal et"
+
+msgid "capability"
+msgstr "yetenek"
+
+msgid "capacity"
+msgstr "kapasite"
+
+msgid "caption"
+msgstr "başlık"
+
+msgid "capture"
+msgstr "yakala"
+
+msgid "card"
+msgstr "kart"
+
+msgid "case"
+msgstr "durum"
+
+msgid "case (font)"
+msgstr "büyük/küçük harf (yazı tipi)"
+
+msgid "catalog"
+msgstr "katalog"
+
+msgid "category"
+msgstr "sınıflandırma"
+
+msgid "cell"
+msgstr "hücre"
+
+msgid "certificate"
+msgstr "sertifika"
+
+msgid "certify"
+msgstr "onayla"
+
+msgid "change"
+msgstr "değiştir"
+
+msgid "channel"
+msgstr "kanal"
+
+msgid "character"
+msgstr "karakter"
+
+msgid "charset"
+msgstr "karakter kümesi"
+
+msgid "chart"
+msgstr "grafik"
+
+msgid "chat"
+msgstr "sohbet"
+
+msgid "check"
+msgstr "kontrol et"
+
+msgid "check box"
+msgstr "onay kutusu"
+
+msgid "child"
+msgstr "alt"
+
+msgid "choice"
+msgstr "seçim"
+
+msgid "choose"
+msgstr "seç"
+
+msgid "class"
+msgstr "sınıf"
+
+msgid "classic"
+msgstr "klasik"
+
+msgid "classify"
+msgstr "sınıflandır"
+
+msgid "clean"
+msgstr "temiz"
+
+msgid "clear"
+msgstr "sil"
+
+msgid "click (noun)"
+msgstr "tıklama sesi (isim)"
+
+msgid "click (verb)"
+msgstr "tıklama (eylem)"
+
+msgid "client"
+msgstr "istemci"
+
+msgid "clip art"
+msgstr "hazır resim"
+
+msgid "clip board"
+msgstr "geçici taşıma panosu"
+
+msgid "clock"
+msgstr "saat"
+
+msgid "close"
+msgstr "kapat"
+
+msgid "code (program)"
+msgstr "kod (program komutları)"
+
+msgid "code (symbol)"
+msgstr "kod simgesi (simgeler)"
+
+msgid "codec"
+msgstr "kodlayıcı-kod çözücü"
+
+msgid "collapse"
+msgstr "daralt"
+
+msgid "collect"
+msgstr "topla"
+
+msgid "column"
+msgstr "sütun"
+
+msgid "combination"
+msgstr "katışım"
+
+msgid "comma"
+msgstr "virgül"
+
+msgid "command"
+msgstr "komut"
+
+msgid "comment"
+msgstr "açıklama"
+
+msgid "common"
+msgstr "yaygın"
+
+msgid "communication"
+msgstr "iletişim"
+
+msgid "compact"
+msgstr "sıkıştır"
+
+msgid "compare"
+msgstr "kıyasla"
+
+msgid "compatibility"
+msgstr "uyumluluk"
+
+msgid "compatible"
+msgstr "uyumlu"
+
+# حويل الشفرة المصرية إلى ملفات ثنائية (برمجة
+# حويل الشفرة المصرية إلى ملفات ثنائية (برمجة
+msgid "compilation"
+msgstr "derleme"
+
+msgid "compile"
+msgstr "derle"
+
+msgid "compiler"
+msgstr "derleyici"
+
+msgid "complete"
+msgstr "tamamla"
+
+msgid "component"
+msgstr "bileşen"
+
+msgid "compose"
+msgstr "oluştur"
+
+msgid "composition"
+msgstr "dizgi"
+
+msgid "compress"
+msgstr "sıkıştır"
+
+msgid "compression"
+msgstr "sıkıştırma"
+
+msgid "computer"
+msgstr "bilgisayar"
+
+msgid "computing"
+msgstr "bilgi işleme"
+
+msgid "concatenate"
+msgstr "ulamak"
+
+msgid "concurrent"
+msgstr "eşzamanlı erişim"
+
+msgid "condense"
+msgstr "yoğun"
+
+msgid "condition"
+msgstr "durum"
+
+msgid "configuration"
+msgstr "yapılandırma"
+
+msgid "configure"
+msgstr "yapılandır"
+
+msgid "confirm"
+msgstr "onayla"
+
+msgid "confirmation"
+msgstr "onaylama"
+
+msgid "conflict"
+msgstr "çatışma"
+
+msgid "connect"
+msgstr "bağlan"
+
+msgid "connection"
+msgstr "bağlantı"
+
+msgid "console"
+msgstr "konsol"
+
+msgid "contact (noun)"
+msgstr "bağlantı (isim)"
+
+msgid "contact (verb)"
+msgstr "bağlantı kur (eylem)"
+
+msgid "content"
+msgstr "içerik"
+
+msgid "context"
+msgstr "bağlam"
+
+msgid "continue"
+msgstr "devam et"
+
+msgid "contrast"
+msgstr "karşıtlık"
+
+msgid "contributor"
+msgstr "katkıda bulunan"
+
+msgid "control"
+msgstr "kontrol"
+
+msgid "conversion"
+msgstr "dönüştürme"
+
+msgid "convert"
+msgstr "dönüştür"
+
+msgid "cookie"
+msgstr "kurabiye"
+
+msgid "cooperative"
+msgstr "imeceli"
+
+msgid "coordinate"
+msgstr "eşgüdümleme"
+
+msgid "copy (noun)"
+msgstr "kopya (isim)"
+
+msgid "copy (verb)"
+msgstr "kopyala (isim)"
+
+msgid "copy left"
+msgstr "sol tarafı kopyala"
+
+msgid "copy right"
+msgstr "sağ tarafı kopyala"
+
+msgid "correct"
+msgstr "düzelt"
+
+msgid "correspondence"
+msgstr "uyuşma"
+
+msgid "correspondent"
+msgstr "uyuşan"
+
+msgid "corrupt"
+msgstr "bozuk"
+
+msgid "count"
+msgstr "say"
+
+msgid "countable"
+msgstr "sayılabilir"
+
+msgid "crash"
+msgstr "çökme"
+
+msgid "create"
+msgstr "oluştur"
+
+msgid "creation"
+msgstr "oluşturma"
+
+msgid "criteria"
+msgstr "kıstaslar"
+
+msgid "crop"
+msgstr "kırp"
+
+msgid "cross-platform"
+msgstr "çapraz platformlu"
+
+msgid "crypt"
+msgstr "şifrele"
+
+msgid "cryptology"
+msgstr "şifreleme bilimi"
+
+msgid "current"
+msgstr "mevcut"
+
+msgid "cursor"
+msgstr "imleç"
+
+msgid "curve"
+msgstr "eğri"
+
+msgid "custom"
+msgstr "özel"
+
+msgid "customization"
+msgstr "özelleştirme"
+
+msgid "customize"
+msgstr "özelleştir"
+
+msgid "cut"
+msgstr "kes"
+
+msgid "cycle"
+msgstr "döngü"
+
+msgid "daemon"
+msgstr "artalan işlemleri"
+
+msgid "damage"
+msgstr "hasar"
+
+msgid "data"
+msgstr "veri"
+
+msgid "database"
+msgstr "veritabanı"
+
+msgid "debug"
+msgstr "hata ayıkla"
+
+msgid "debugger"
+msgstr "hata ayıklayıcı"
+
+msgid "decimal"
+msgstr "ondalık"
+
+msgid "decode"
+msgstr "kodu çöz"
+
+msgid "decompress"
+msgstr "aç"
+
+msgid "decrease"
+msgstr "düşür"
+
+msgid "decrypt"
+msgstr "şifreyi aç"
+
+msgid "decryption"
+msgstr "şifreyi açma"
+
+msgid "default"
+msgstr "varsayılan"
+
+msgid "defect"
+msgstr "kusur"
+
+msgid "define"
+msgstr "tanımla"
+
+msgid "definition"
+msgstr "tanım"
+
+msgid "degree"
+msgstr "derece"
+
+msgid "delay"
+msgstr "geçiiktir"
+
+msgid "delete"
+msgstr "sil"
+
+msgid "deletion"
+msgstr "silme"
+
+msgid "delimiter"
+msgstr "sınırlandırıcı"
+
+msgid "demo"
+msgstr "tanıtım"
+
+msgid "deny"
+msgstr "dene"
+
+msgid "dependence"
+msgstr "bağımlı"
+
+msgid "dependency"
+msgstr "bağımlılık"
+
+msgid "depth"
+msgstr "derinlik"
+
+msgid "derived"
+msgstr "türetilmiş"
+
+msgid "descending"
+msgstr "azalan"
+
+msgid "description"
+msgstr "açıklama"
+
+msgid "deselect"
+msgstr "seçimi kaldır"
+
+msgid "design"
+msgstr "tasarım"
+
+msgid "desktop"
+msgstr "masa üstü"
+
+msgid "destination"
+msgstr "alış noktası"
+
+msgid "destroy"
+msgstr "sil"
+
+msgid "detach"
+msgstr "ayır"
+
+msgid "detect"
+msgstr "algıla"
+
+msgid "develop"
+msgstr "geliştir"
+
+msgid "development"
+msgstr "gelişim"
+
+msgid "developer"
+msgstr "geliştirici"
+
+msgid "device"
+msgstr "aygıt"
+
+msgid "diagram"
+msgstr "çizim"
+
+msgid "dial"
+msgstr "çevir"
+
+msgid "dialog"
+msgstr "iletişim"
+
+msgid "dialup"
+msgstr "çevirmeli bağlantı"
+
+msgid "difference"
+msgstr "farklılık"
+
+msgid "digit"
+msgstr "basamak, sayı"
+
+msgid "digital"
+msgstr "sayısal"
+
+msgid "dimension"
+msgstr "boyut"
+
+msgid "directory"
+msgstr "dizin"
+
+msgid "disable"
+msgstr "kapat"
+
+msgid "disc"
+msgstr "disk"
+
+msgid "discard"
+msgstr "çıkar"
+
+msgid "disconnect"
+msgstr "bağlantıyı kes"
+
+msgid "discussion"
+msgstr "tartışma"
+
+msgid "disk"
+msgstr "disk"
+
+msgid "dispatch"
+msgstr "dağıt/gönder"
+
+msgid "display"
+msgstr "göster/görüntü"
+
+msgid "distort"
+msgstr "eğrilt"
+
+msgid "distribute"
+msgstr "dağıt"
+
+msgid "distribution"
+msgstr "dağıtım"
+
+msgid "distributor"
+msgstr "dağıtıcı"
+
+msgid "dock"
+msgstr "kilitle"
+
+msgid "document"
+msgstr "belge"
+
+msgid "documentation"
+msgstr "belge işlem "
+
+msgid "domain"
+msgstr "alan"
+
+msgid "double click"
+msgstr "çift tıkla"
+
+msgid "download"
+msgstr "indir"
+
+msgid "drag"
+msgstr "sürükle"
+
+msgid "draw"
+msgstr "çiz"
+
+msgid "driver"
+msgstr "sürücü"
+
+msgid "dual"
+msgstr "ikili"
+
+msgid "dump"
+msgstr "döküm"
+
+msgid "duplicate"
+msgstr "çoğalt"
+
+msgid "dynamic"
+msgstr "devingen"
+
+msgid "echo"
+msgstr "yankı"
+
+msgid "edit"
+msgstr "düzenle"
+
+msgid "edition"
+msgstr "düzenleme"
+
+msgid "editor"
+msgstr "düzenleyici"
+
+msgid "effect"
+msgstr "uygula"
+
+msgid "eject"
+msgstr "çıkar"
+
+msgid "electronic"
+msgstr "elektronik"
+
+msgid "element"
+msgstr "öge"
+
+msgid "email"
+msgstr "eposta"
+
+msgid "embed"
+msgstr "katıştır"
+
+msgid "emoticon"
+msgstr "yüz ifadesi simgesi"
+
+msgid "empty"
+msgstr "boşalt"
+
+msgid "emulate"
+msgstr "öykün"
+
+msgid "emulation"
+msgstr "öykünme"
+
+msgid "emulator"
+msgstr "öykünücü"
+
+msgid "enable"
+msgstr "etkinleştir"
+
+msgid "enabled"
+msgstr "etkin"
+
+msgid "encode"
+msgstr "kodla"
+
+msgid "encoding"
+msgstr "kodlama"
+
+msgid "encrypt"
+msgstr "şifrele"
+
+msgid "encrypted"
+msgstr "şifreli"
+
+msgid "encryption"
+msgstr "şifreleme"
+
+msgid "engine"
+msgstr "motor"
+
+msgid "enhancement"
+msgstr "pekiştirme"
+
+msgid "enlarge"
+msgstr "genişlet"
+
+msgid "enlargement"
+msgstr "genişletme"
+
+msgid "enter"
+msgstr "gir"
+
+msgid "entertainment"
+msgstr "eğlence"
+
+msgid "entry"
+msgstr "giriş"
+
+msgid "environment"
+msgstr "çevre"
+
+msgid "equalizer"
+msgstr "denkleştirici"
+
+msgid "erase"
+msgstr "sil"
+
+msgid "error"
+msgstr "hata"
+
+msgid "escape"
+msgstr "vazgeç"
+
+msgid "evaluation"
+msgstr "değerlendirme"
+
+msgid "event"
+msgstr "olay"
+
+msgid "exception"
+msgstr "olağandışı durum"
+
+msgid "executable"
+msgstr "yürütülebilir"
+
+msgid "execute"
+msgstr "yürüt"
+
+msgid "existing"
+msgstr "var olan"
+
+msgid "exit"
+msgstr "çık"
+
+msgid "expand"
+msgstr "genişlet"
+
+msgid "expansion"
+msgstr "genişletme"
+
+msgid "explore"
+msgstr "araştır"
+
+msgid "export"
+msgstr "dışa aktar"
+
+msgid "expression"
+msgstr "ifade"
+
+msgid "extend"
+msgstr "büyüt"
+
+msgid "extensible"
+msgstr "geliştirilebilir"
+
+msgid "extension"
+msgstr "uzantı"
+
+msgid "external"
+msgstr "harici"
+
+msgid "extra"
+msgstr "fazladan"
+
+msgid "extract"
+msgstr "çıkar"
+
+msgid "fail"
+msgstr "başarısız olma"
+
+# فادح: مثل خطأ فادح
+msgid "fatal"
+msgstr "ölümcül"
+
+msgid "fault"
+msgstr "arıza"
+
+msgid "favorite"
+msgstr "sık kullanılan"
+
+msgid "feature"
+msgstr "özellik"
+
+msgid "feed"
+msgstr "besle"
+
+msgid "feedback"
+msgstr "geri besleme"
+
+msgid "fetch"
+msgstr "getir"
+
+msgid "field"
+msgstr "alan"
+
+msgid "figure"
+msgstr "şekil"
+
+msgid "file"
+msgstr "dosya"
+
+msgid "fill"
+msgstr "doldur"
+
+msgid "filter"
+msgstr "süzgeç"
+
+msgid "find"
+msgstr "bul"
+
+msgid "firewall"
+msgstr "ateş duvarı"
+
+msgid "firmware"
+msgstr "üretici yazılımı"
+
+msgid "fit"
+msgstr "uydur"
+
+msgid "fix"
+msgstr "onar"
+
+msgid "flag"
+msgstr "bayrak"
+
+msgid "flash"
+msgstr "yanıp sönsün"
+
+msgid "flat"
+msgstr "düz"
+
+msgid "flip"
+msgstr "döndür"
+
+msgid "float (verb)"
+msgstr "kaydır "
+
+msgid "flood"
+msgstr "taşma"
+
+msgid "floppy"
+msgstr "flopi"
+
+msgid "folder"
+msgstr "klasör"
+
+msgid "font"
+msgstr "yazı tipi"
+
+msgid "footer"
+msgstr "alt bilgi"
+
+msgid "form"
+msgstr "form/biçem"
+
+msgid "format (noun)"
+msgstr "biçim (isim)"
+
+msgid "format (verb)"
+msgstr "biçimlendir"
+
+msgid "formatted"
+msgstr "biçimlendirilmiş"
+
+msgid "formula"
+msgstr "formül"
+
+msgid "forum"
+msgstr "forum"
+
+msgid "fragment"
+msgstr "parça"
+
+msgid "frame"
+msgstr "çerçeve"
+
+msgid "frame set"
+msgstr "çerçeve kümesi"
+
+msgid "framework"
+msgstr "çatı"
+
+msgid "free software"
+msgstr "özgür/ücretsiz yazılım"
+
+msgid "freeze"
+msgstr "dondur"
+
+msgid "frequency"
+msgstr "frekans"
+
+msgid "front end"
+msgstr "ön uç"
+
+msgid "function"
+msgstr "işlev"
+
+msgid "gallery"
+msgstr "galeri"
+
+msgid "game"
+msgstr "oyun"
+
+msgid "gateway"
+msgstr "geçit"
+
+msgid "generate"
+msgstr "oluştur"
+
+msgid "generation"
+msgstr "oluşturma"
+
+msgid "generator"
+msgstr "oluşturan"
+
+msgid "generic"
+msgstr "soysal"
+
+msgid "geometric"
+msgstr "geometrik"
+
+msgid "geometry"
+msgstr "geometri"
+
+msgid "grab"
+msgstr "kavra/tut"
+
+msgid "gradient"
+msgstr "geçişli"
+
+msgid "grain"
+msgstr "tane"
+
+msgid "graph"
+msgstr "grafik"
+
+msgid "graphic"
+msgstr "grafik"
+
+msgid "graphical"
+msgstr "grafiksel"
+
+msgid "graphics"
+msgstr "grafikler"
+
+msgid "gray-scale"
+msgstr "gri ölçeği"
+
+msgid "grid"
+msgstr "ızgara"
+
+msgid "group"
+msgstr "grup/gruplandır"
+
+msgid "guess"
+msgstr "tahmin"
+
+msgid "guest"
+msgstr "konuk"
+
+msgid "handle (noun)"
+msgstr "tutamak (isim)"
+
+msgid "handle (verb)"
+msgstr "işle (eylem)"
+
+msgid "handler"
+msgstr "işleyici"
+
+msgid "hardware"
+msgstr "donanım"
+
+msgid "hash"
+msgstr "kıyım"
+
+msgid "head"
+msgstr "başlık"
+
+msgid "header"
+msgstr "üst bilgi"
+
+msgid "height"
+msgstr "yükseklik"
+
+msgid "help"
+msgstr "yardım"
+
+msgid "hide"
+msgstr "gizle"
+
+msgid "hierarchy"
+msgstr "sıralı dizi"
+
+msgid "high light"
+msgstr "vurgula"
+
+msgid "history"
+msgstr "geçmiş"
+
+msgid "host"
+msgstr "ana bilgisayar"
+
+msgid "hostname"
+msgstr "ana bilgisayar adı"
+
+msgid "hyperlink"
+msgstr "köprü"
+
+msgid "hypertext"
+msgstr "bağlantılı metin"
+
+msgid "icon"
+msgstr "simge"
+
+msgid "identify"
+msgstr "tanımla"
+
+msgid "idle"
+msgstr "boşta"
+
+msgid "ignore"
+msgstr "yoksay"
+
+msgid "image"
+msgstr "resim"
+
+msgid "implement"
+msgstr "uygula"
+
+msgid "import"
+msgstr "içe aktar"
+
+msgid "inactive"
+msgstr "etkin değil"
+
+msgid "inbox"
+msgstr "gelen kutusu"
+
+msgid "inch"
+msgstr "inç"
+
+msgid "include"
+msgstr "içer"
+
+msgid "incoming"
+msgstr "gelen"
+
+msgid "incompatible"
+msgstr "bağdaşmayan/uyuşmayan"
+
+msgid "increase"
+msgstr "artır"
+
+msgid "increment"
+msgstr "birer artır"
+
+msgid "indent"
+msgstr "girinti"
+
+msgid "index"
+msgstr "dizin/dizinle"
+
+msgid "indice"
+msgstr "dizin"
+
+msgid "infect"
+msgstr "bulaştır"
+
+msgid "infinite"
+msgstr "sonsuz"
+
+msgid "information"
+msgstr "bilgi"
+
+msgid "infrared"
+msgstr "kızılötesi"
+
+msgid "initial"
+msgstr "başlangıç"
+
+msgid "initialize"
+msgstr "başlat"
+
+msgid "input"
+msgstr "girdi/gir"
+
+msgid "insert"
+msgstr "ekle"
+
+msgid "install"
+msgstr "kur"
+
+msgid "installer"
+msgstr "kurucu"
+
+msgid "instance"
+msgstr "örnek"
+
+msgid "instruction"
+msgstr "yönerge"
+
+msgid "integer"
+msgstr "tam sayı"
+
+msgid "integral"
+msgstr "integral/tümleşik"
+
+msgid "integrate"
+msgstr "tümleştir"
+
+msgid "integration"
+msgstr "tümleştirme/integral alma"
+
+msgid "integrity"
+msgstr "doğruluk/sağlamlık"
+
+msgid "intensity"
+msgstr "yoğunluk"
+
+msgid "interactivity"
+msgstr "etkileşim"
+
+msgid "interface"
+msgstr "ara yüz"
+
+msgid "internal"
+msgstr "dahili"
+
+msgid "internet"
+msgstr "internet"
+
+msgid "interrupt"
+msgstr "kes"
+
+msgid "invalid"
+msgstr "geçersiz"
+
+msgid "inverse"
+msgstr "ters"
+
+msgid "invert"
+msgstr "tersine çevir"
+
+msgid "invoke"
+msgstr "çalıştır"
+
+msgid "italic"
+msgstr "yatık yazı"
+
+msgid "item"
+msgstr "madde"
+
+msgid "iteration"
+msgstr "yineleme/döngü"
+
+msgid "jag"
+msgstr "çentik"
+
+msgid "jam"
+msgstr "sıkışma"
+
+msgid "job"
+msgstr "iş"
+
+msgid "join"
+msgstr "birleştir"
+
+msgid "joy stick"
+msgstr "kumanda kolu"
+
+msgid "jump"
+msgstr "sıçra"
+
+msgid "junk"
+msgstr "önemsiz"
+
+msgid "justify"
+msgstr "iki yana hizala"
+
+msgid "keep"
+msgstr "koru"
+
+msgid "kernel"
+msgstr "kernel/çekirdek"
+
+msgid "key"
+msgstr "tuş/anahtar"
+
+msgid "keyboard"
+msgstr "tuş takımı, klavye"
+
+msgid "key stroke"
+msgstr "tuş vuruşu"
+
+msgid "key word"
+msgstr "anahtar sözcük"
+
+msgid "label"
+msgstr "etiket"
+
+msgid "landscape"
+msgstr "enine/manzara"
+
+msgid "language"
+msgstr "dil"
+
+msgid "laptop"
+msgstr "diz üstü"
+
+msgid "launch"
+msgstr "başlat"
+
+msgid "layer"
+msgstr "katman"
+
+msgid "layout"
+msgstr "anahat"
+
+msgid "length"
+msgstr "boy, uzunluk"
+
+msgid "license"
+msgstr "lisans"
+
+msgid "line"
+msgstr "çizgi/hat"
+
+msgid "link"
+msgstr "bağlantı"
+
+msgid "list"
+msgstr "liste"
+
+msgid "load"
+msgstr "yükle"
+
+msgid "local"
+msgstr "yerel"
+
+msgid "localization"
+msgstr "yerelleştirme"
+
+msgid "location"
+msgstr "konum"
+
+msgid "log"
+msgstr "sistem günlüğü"
+
+msgid "lookup"
+msgstr "ara"
+
+msgid "lower-case"
+msgstr "küçük harf"
+
+msgid "machine"
+msgstr "makine"
+
+msgid "main board"
+msgstr "ana kart"
+
+msgid "maintainer"
+msgstr "koruyucu"
+
+msgid "maintenance"
+msgstr "bakım"
+
+msgid "manage"
+msgstr "yönet"
+
+msgid "management"
+msgstr "yönetme"
+
+msgid "manager"
+msgstr "yönetici"
+
+msgid "manual"
+msgstr "elle/kılavuz"
+
+msgid "margin"
+msgstr "kenar"
+
+msgid "mark"
+msgstr "işaret/işaretle"
+
+msgid "master"
+msgstr "ana"
+
+msgid "match"
+msgstr "eşleştir"
+
+msgid "maximize"
+msgstr "ekranı kapla"
+
+msgid "memory"
+msgstr "bellek"
+
+msgid "menu"
+msgstr "menü"
+
+msgid "merge"
+msgstr "birleştir"
+
+msgid "message"
+msgstr "ileti"
+
+msgid "method"
+msgstr "yöntem"
+
+msgid "minimize"
+msgstr "simge durumuna küçült"
+
+msgid "mode"
+msgstr "kip"
+
+msgid "modem"
+msgstr "modem"
+
+msgid "moderator"
+msgstr "yönetici"
+
+msgid "modify"
+msgstr "değişiklik yap"
+
+msgid "module"
+msgstr "birim, modül"
+
+msgid "monitor"
+msgstr "izle/ekran"
+
+msgid "mosaic"
+msgstr "mozaik"
+
+msgid "motion"
+msgstr "hareket"
+
+msgid "mouse"
+msgstr "fare"
+
+msgid "move"
+msgstr "kaydır"
+
+msgid "multimedia"
+msgstr "çoklu ortam"
+
+msgid "multitasking"
+msgstr "çoklu görev"
+
+msgid "name"
+msgstr "ad"
+
+msgid "navigation"
+msgstr "gezinti"
+
+msgid "navigator"
+msgstr "gezgin/kılavuz"
+
+msgid "network"
+msgstr "ağ"
+
+msgid "news group"
+msgstr "haber grubu"
+
+msgid "next"
+msgstr "sonraki"
+
+msgid "nick name"
+msgstr "takma ad"
+
+msgid "no"
+msgstr "hayır"
+
+msgid "node"
+msgstr "düğüm"
+
+msgid "notation"
+msgstr "yazım/gösterim"
+
+msgid "note"
+msgstr "not, bilgi"
+
+msgid "notebook"
+msgstr "diz üstü bilgisayar"
+
+msgid "notification"
+msgstr "uyarma"
+
+msgid "notify"
+msgstr "uyar"
+
+# في الرياضيات "صفر"
+# الصفة "منعدم"
+msgid "null"
+msgstr "boş"
+
+msgid "number"
+msgstr "numara"
+
+msgid "numbering"
+msgstr "numaralandırma"
+
+msgid "object"
+msgstr "nesne"
+
+# Bu kelimeyi birkaç başka dilde nasıl çevirdiklerine baktım hepsi "olay" olarak çevrilmiş.
+msgid "occurrence"
+msgstr "olay"
+
+msgid "octet"
+msgstr "sekiz bitli bayt"
+
+msgid "offline"
+msgstr "çevrim dışı"
+
+msgid "OK"
+msgstr "TAMAM"
+
+msgid "online"
+msgstr "çevrim içi"
+
+msgid "ongoing"
+msgstr "devam eden"
+
+msgid "opacity"
+msgstr "matlık"
+
+msgid "opaque"
+msgstr "mat"
+
+msgid "open"
+msgstr "aç"
+
+msgid "operation"
+msgstr "işlem"
+
+msgid "option"
+msgstr "seçenek"
+
+msgid "optional"
+msgstr "seçimsel"
+
+msgid "order"
+msgstr "sıra/sırala"
+
+msgid "organize"
+msgstr "düzenle"
+
+msgid "orientation"
+msgstr "yönlendirme"
+
+msgid "original"
+msgstr "özgün"
+
+msgid "outgoing"
+msgstr "giden"
+
+msgid "output"
+msgstr "çıktı"
+
+msgid "overflow"
+msgstr "aşım, taşma"
+
+msgid "override"
+msgstr "üzerine yaz/geçersiz kıl"
+
+msgid "overwrite"
+msgstr "üzerine yaz"
+
+msgid "owner"
+msgstr "sahibi"
+
+msgid "pack"
+msgstr "paketle"
+
+msgid "package"
+msgstr "paket"
+
+msgid "packet"
+msgstr "paket"
+
+msgid "padding"
+msgstr "doldurma"
+
+msgid "page"
+msgstr "sayfa"
+
+msgid "paint"
+msgstr "boya"
+
+msgid "pair"
+msgstr "çift/çiftle"
+
+msgid "palette"
+msgstr "palet"
+
+msgid "panel"
+msgstr "pano"
+
+msgid "parallel"
+msgstr "paralel"
+
+msgid "parameter"
+msgstr "parametre"
+
+msgid "parcel"
+msgstr "böl"
+
+msgid "parent"
+msgstr "üst/aile"
+
+msgid "parity"
+msgstr "parite, eşlik, denklik"
+
+msgid "parse"
+msgstr "çözümle/ayrıştır"
+
+msgid "partition"
+msgstr "bölümle"
+
+msgid "pass"
+msgstr "geç/geçir/geçiş"
+
+msgid "password"
+msgstr "parola"
+
+msgid "paste"
+msgstr "yapıştır"
+
+msgid "patch (noun)"
+msgstr "yama (isim)"
+
+msgid "patch (verb)"
+msgstr "yama (eylem)"
+
+msgid "path"
+msgstr "yol"
+
+msgid "pattern"
+msgstr "desen/örüntü/kalıp"
+
+msgid "pause"
+msgstr "duraklat"
+
+msgid "peripheral"
+msgstr "çevre birimi"
+
+msgid "permanent"
+msgstr "kalıcı"
+
+msgid "permission"
+msgstr "izin"
+
+msgid "permutation"
+msgstr "permütasyon"
+
+msgid "physical"
+msgstr "fiziki"
+
+msgid "picture"
+msgstr "resim"
+
+msgid "pipe"
+msgstr "boru"
+
+msgid "pixel"
+msgstr "piksel, imgecik, benek"
+
+msgid "placement"
+msgstr "yerleştirme"
+
+msgid "plain"
+msgstr "düz, sade"
+
+msgid "plot (verb)"
+msgstr "çizdir (eylem)"
+
+msgid "plotter"
+msgstr "çizici"
+
+msgid "plugin"
+msgstr "eklenti"
+
+msgid "pop up"
+msgstr "açılan"
+
+msgid "port"
+msgstr "bağlantı noktası"
+
+msgid "position"
+msgstr "konum"
+
+msgid "post"
+msgstr "gönder"
+
+msgid "preferences"
+msgstr "tercihler, yeğlenenler"
+
+msgid "prepare"
+msgstr "hazırla"
+
+msgid "presentation"
+msgstr "sunum"
+
+msgid "press"
+msgstr "bas"
+
+msgid "prevent"
+msgstr "koru"
+
+msgid "preview"
+msgstr "ön izle"
+
+msgid "primary"
+msgstr "birincil, ana"
+
+msgid "principal"
+msgstr "temel, ana"
+
+msgid "print"
+msgstr "yazdır"
+
+msgid "printer"
+msgstr "yazıcı"
+
+msgid "priority"
+msgstr "öncelik"
+
+msgid "privacy"
+msgstr "gizlilik"
+
+msgid "private"
+msgstr "özel, gizli"
+
+msgid "privilege"
+msgstr "ayrıcalık/hak"
+
+msgid "procedure"
+msgstr "yöntem/yordam"
+
+msgid "process"
+msgstr "işle/işlem"
+
+msgid "processor"
+msgstr "işlemci"
+
+msgid "product"
+msgstr "ürün"
+
+msgid "profile"
+msgstr "profil"
+
+msgid "program"
+msgstr "program"
+
+msgid "programmer"
+msgstr "programlayıcı"
+
+msgid "project"
+msgstr "proje"
+
+msgid "prompt"
+msgstr "ekran/anında, dakik/yanıt"
+
+msgid "property"
+msgstr "özellik"
+
+msgid "proprietary"
+msgstr "özel/kişiye özel/tescilli"
+
+msgid "protect"
+msgstr "koru"
+
+msgid "protection"
+msgstr "koruma"
+
+#, !!!
+msgid "protocol"
+msgstr "protokol"
+
+msgid "provide"
+msgstr "getir/sağla"
+
+msgid "provider"
+msgstr "sağlayıcı, sağlayan"
+
+msgid "proxy"
+msgstr "vekil"
+
+msgid "public"
+msgstr "açık/ortak/kamu"
+
+msgid "publish"
+msgstr "yayımla"
+
+msgid "pull"
+msgstr "çek/iste"
+
+msgid "push"
+msgstr "it/zorla/gönder"
+
+msgid "quality"
+msgstr "kalite, nitelik"
+
+msgid "quantity"
+msgstr "miktar, nicelik"
+
+msgid "quarantine"
+msgstr "karantinaya al"
+
+msgid "query"
+msgstr "sorgu/sorgula"
+
+msgid "queue"
+msgstr "kuyruğa al"
+
+msgid "quit"
+msgstr "çık"
+
+msgid "quota"
+msgstr "kota"
+
+msgid "quotation"
+msgstr "kotalandırma/tırnak/alıntı"
+
+msgid "quote"
+msgstr "göster/bilgi"
+
+msgid "raise"
+msgstr "yükselt"
+
+msgid "random"
+msgstr "rastgele"
+
+msgid "range"
+msgstr "aralık"
+
+msgid "rate"
+msgstr "değer"
+
+msgid "ratio"
+msgstr "oran"
+
+msgid "raw"
+msgstr "işlem görmemiş"
+
+msgid "ray"
+msgstr "ışın"
+
+msgid "read"
+msgstr "oku"
+
+msgid "read only"
+msgstr "salt okunur"
+
+msgid "ready"
+msgstr "hazır"
+
+msgid "real"
+msgstr "gerçek"
+
+msgid "reboot"
+msgstr "yaniden yükle"
+
+msgid "receipt"
+msgstr "alındı bildirimi"
+
+msgid "receive"
+msgstr "al"
+
+msgid "recognition"
+msgstr "tanıma"
+
+msgid "reconnect"
+msgstr "yeniden bağlan"
+
+msgid "record"
+msgstr "kayıt"
+
+msgid "record (verb)"
+msgstr "kaydet (eylem)"
+
+msgid "recover"
+msgstr "kurtar"
+
+msgid "recovery"
+msgstr "kurtarma"
+
+#
+msgid "recursion"
+msgstr "yineleme"
+
+msgid "recursive"
+msgstr "yinelemeli"
+
+msgid "redirect"
+msgstr "yeniden yönlendir"
+
+msgid "redo"
+msgstr "tekrarla"
+
+msgid "reduce"
+msgstr "indirge"
+
+msgid "reduction"
+msgstr "indirgeme"
+
+msgid "redundant"
+msgstr "artık/yedek"
+
+msgid "reference"
+msgstr "kaynak"
+
+msgid "referer"
+msgstr "başvuran"
+
+msgid "referral"
+msgstr "başvuru"
+
+msgid "reflexive"
+msgstr "dönüşlü/yansımalı"
+
+msgid "refresh"
+msgstr "tazele"
+
+msgid "refuse"
+msgstr "reddet"
+
+msgid "regenerate"
+msgstr "yeniden oluştur"
+
+msgid "register"
+msgstr "kaydol"
+
+msgid "registration"
+msgstr "kayıt etme, kaydolma"
+
+msgid "registry"
+msgstr "kayıt defteri"
+
+msgid "regular"
+msgstr "düzenli"
+
+msgid "regulate"
+msgstr "düzenle"
+
+msgid "relay"
+msgstr "röle/aktar"
+
+msgid "release"
+msgstr "yayın/yayınla"
+
+msgid "remaining"
+msgstr "kalan"
+
+msgid "remind"
+msgstr "anımsat"
+
+msgid "remote"
+msgstr "uzaktan"
+
+msgid "removable"
+msgstr "çıkarılabilir/kaldırılabilir"
+
+msgid "remove"
+msgstr "çıkar/kaldır/sil"
+
+msgid "rename"
+msgstr "yeniden adlandır"
+
+msgid "render"
+msgstr "gerçekle"
+
+msgid "renew"
+msgstr "yenile"
+
+msgid "repair"
+msgstr "onar"
+
+msgid "repeat"
+msgstr "yinele"
+
+msgid "replace"
+msgstr "değiştir"
+
+msgid "replicate"
+msgstr "kopyala, çoğalt"
+
+msgid "replication"
+msgstr "kopyalama, çoğaltma"
+
+msgid "reply"
+msgstr "yanıtla"
+
+msgid "report"
+msgstr "rapor/rapor ver"
+
+msgid "repository"
+msgstr "yazılım deposu, yazılım havuzu"
+
+msgid "request"
+msgstr "istek/iste"
+
+msgid "require"
+msgstr "iste"
+
+msgid "requirement"
+msgstr "istek, gereksinizm"
+
+msgid "reset"
+msgstr "sıfırla"
+
+msgid "resize"
+msgstr "yeniden boyutlanndır"
+
+msgid "resolution"
+msgstr "çözünürlük"
+
+msgid "resolver"
+msgstr "çözücü"
+
+msgid "resource"
+msgstr "kaynak"
+
+msgid "response"
+msgstr "yanıt ver"
+
+msgid "restart"
+msgstr "yeniden başlat"
+
+msgid "restore"
+msgstr "eski durumuna getir, geri yükle"
+
+msgid "restrict"
+msgstr "kısıtla"
+
+msgid "restriction"
+msgstr "kısıtlama"
+
+msgid "result"
+msgstr "sonuç/sonuçlandır"
+
+msgid "resume"
+msgstr "devam et"
+
+msgid "retrieve"
+msgstr "al"
+
+msgid "retry"
+msgstr "yeniden dene"
+
+msgid "return"
+msgstr "döndür"
+
+msgid "reverse"
+msgstr "ters çevir"
+
+msgid "revert"
+msgstr "tersine çevir"
+
+msgid "revocation"
+msgstr "iptal etme, yürürlükten kaldırma"
+
+msgid "revoke"
+msgstr "iptal et"
+
+msgid "root"
+msgstr "kök, dizin kökü"
+
+msgid "rotate"
+msgstr "çevir, döndür"
+
+msgid "route"
+msgstr "yol/dolaştır/yönlendir"
+
+msgid "router"
+msgstr "yönlendirici"
+
+msgid "routine"
+msgstr "yordam"
+
+msgid "row"
+msgstr "dizi, satır"
+
+msgid "rule"
+msgstr "kural"
+
+msgid "run"
+msgstr "çalıştır"
+
+msgid "runtime"
+msgstr "çalışma zamanı"
+
+msgid "safe"
+msgstr "güvenli"
+
+msgid "sample"
+msgstr "örnek"
+
+msgid "sans"
+msgstr "sans"
+
+msgid "save"
+msgstr "kaydet"
+
+msgid "scalable"
+msgstr "ölçeklenebilir"
+
+msgid "scale"
+msgstr "ölçek/ölçekle"
+
+msgid "scan"
+msgstr "tara"
+
+msgid "scanner"
+msgstr "tarayıcı"
+
+msgid "schedule"
+msgstr "program"
+
+msgid "scheme"
+msgstr "şema"
+
+msgid "scratch"
+msgstr "çiz/karala"
+
+msgid "screen"
+msgstr "ekran"
+
+msgid "screw"
+msgstr "sıkıştır"
+
+msgid "script"
+msgstr "komut dizisi"
+
+# من لف الشئ يلفه
+# فتقول:
+# لف ﻷعلى=scroll up ، وهكذا
+msgid "scroll"
+msgstr "kaydır"
+
+msgid "search"
+msgstr "ara"
+
+msgid "section"
+msgstr "bölüm"
+
+msgid "sector"
+msgstr "dilim"
+
+msgid "secure"
+msgstr "güvenli"
+
+msgid "security"
+msgstr "güvenlik"
+
+msgid "seek"
+msgstr "ara"
+
+msgid "segment"
+msgstr "dilim"
+
+msgid "segmentation"
+msgstr "dilimlendrime"
+
+msgid "select"
+msgstr "seç"
+
+msgid "selection"
+msgstr "seçim"
+
+msgid "semantic"
+msgstr "anlamsal"
+
+msgid "send"
+msgstr "gönder"
+
+msgid "sender"
+msgstr "gönderen"
+
+msgid "sensitive"
+msgstr "hassas"
+
+msgid "sensor"
+msgstr "algılayıcı"
+
+msgid "serif"
+msgstr "serif"
+
+msgid "server"
+msgstr "sunucu"
+
+msgid "session"
+msgstr "oturum"
+
+msgid "set"
+msgstr "ayarla/ayar/küme"
+
+msgid "settings"
+msgstr "ayarlar"
+
+msgid "setup"
+msgstr "kur"
+
+msgid "shading"
+msgstr "gölgelendir"
+
+msgid "shadow"
+msgstr "gölge"
+
+msgid "shape"
+msgstr "şekil/şekillendir"
+
+msgid "share"
+msgstr "paylaş"
+
+msgid "sharp"
+msgstr "keskin/keskinleştir"
+
+msgid "sheet"
+msgstr "çalışma sayfası"
+
+msgid "shell"
+msgstr "kabuk"
+
+msgid "shift"
+msgstr "değiştir"
+
+msgid "shortcut"
+msgstr "kısayol"
+
+msgid "show"
+msgstr "göster"
+
+msgid "shrink"
+msgstr "sığdır, küçült, daralt"
+
+msgid "shut down"
+msgstr "kapat"
+
+msgid "side bar"
+msgstr "yan çubuk"
+
+msgid "sign"
+msgstr "işaret/işaretle/imzala"
+
+msgid "signal"
+msgstr "sinyal"
+
+msgid "signature"
+msgstr "imza"
+
+msgid "site"
+msgstr "site"
+
+msgid "size"
+msgstr "boyut/boyutlandır"
+
+msgid "skew"
+msgstr "eğ"
+
+msgid "skip"
+msgstr "atla, geç"
+
+msgid "slave"
+msgstr "bağımlı, slave"
+
+msgid "sleep"
+msgstr "beklemeye geç"
+
+msgid "slide"
+msgstr "slayt/geçiş/kaydır"
+
+msgid "slot"
+msgstr "yuva"
+
+msgid "smart"
+msgstr "akıllı"
+
+msgid "smiley"
+msgstr "gülen yüz"
+
+msgid "smooth"
+msgstr "yumuşak, prüzsüz"
+
+msgid "socket"
+msgstr "soket, priz, yuva"
+
+msgid "software"
+msgstr "yazılım"
+
+msgid "solid"
+msgstr "sağlam/katı"
+
+msgid "sort"
+msgstr "sırala"
+
+msgid "source"
+msgstr "kaynak"
+
+msgid "space"
+msgstr "boşluk"
+
+msgid "spacing"
+msgstr "aralama"
+
+msgid "spam"
+msgstr "spam, uygun olmayan, istenmeyen ileti"
+
+msgid "span"
+msgstr "açıklık, ölçüm aralığı/yayılma alanı"
+
+msgid "spawn"
+msgstr "oluştur"
+
+msgid "specify"
+msgstr "belirt"
+
+msgid "speed"
+msgstr "hız/hızlandır"
+
+msgid "spelling"
+msgstr "yazım denetimi/yazım"
+
+msgid "splash"
+msgstr "sıçrat, lekele"
+
+msgid "split"
+msgstr "ayır, böl"
+
+msgid "spool"
+msgstr "beklet, biriktir, kuyruğa al"
+
+msgid "spread sheet"
+msgstr "çalışma sayfası, tablo"
+
+msgid "stack"
+msgstr "yığınla"
+
+msgid "stand alone"
+msgstr "bağımsız"
+
+msgid "standard"
+msgstr "standart"
+
+msgid "start"
+msgstr "başlat"
+
+msgid "state"
+msgstr "durum"
+
+msgid "static"
+msgstr "statik, değişmeyen"
+
+msgid "statistics"
+msgstr "istatistik"
+
+msgid "step"
+msgstr "adım/adımla"
+
+msgid "stop"
+msgstr "dur, durdur"
+
+msgid "storage"
+msgstr "depolama"
+
+msgid "store"
+msgstr "depola"
+
+msgid "stream"
+msgstr "akış, yürütme"
+
+msgid "stretch"
+msgstr "uzat, genişlet"
+
+msgid "strict"
+msgstr "asıl/sıkı"
+
+msgid "string"
+msgstr "dizilim"
+
+msgid "strip"
+msgstr "şerit"
+
+msgid "stroke"
+msgstr "vuruş"
+
+msgid "structure"
+msgstr "yapı"
+
+msgid "stub"
+msgstr "koçan"
+
+msgid "style"
+msgstr "biçem"
+
+msgid "sub directory"
+msgstr "alt dizin"
+
+msgid "sub folder"
+msgstr "alt klasör"
+
+msgid "submission"
+msgstr "gönderme, teslim etme"
+
+msgid "submit"
+msgstr "gönder, teslim et"
+
+msgid "subscribe"
+msgstr "abone ol"
+
+msgid "subscription"
+msgstr "abonelik"
+
+msgid "subtract"
+msgstr "çıkar"
+
+msgid "succeed"
+msgstr "başar"
+
+msgid "suggest"
+msgstr "öner"
+
+msgid "suggestion"
+msgstr "öneri"
+
+msgid "sum (noun)"
+msgstr "toplam (isim)"
+
+msgid "sum (verb)"
+msgstr "topla (eylem)"
+
+msgid "summary"
+msgstr "özet"
+
+msgid "support"
+msgstr "destek"
+
+msgid "surface"
+msgstr "yüzey"
+
+msgid "suspend"
+msgstr "beklet"
+
+msgid "suspicious"
+msgstr "şüpheli"
+
+msgid "swap"
+msgstr "takas"
+
+msgid "switch"
+msgstr "anahtar/değiştir"
+
+msgid "symbol"
+msgstr "sembol"
+
+msgid "synchronize"
+msgstr "eşitle"
+
+msgid "syntax"
+msgstr "sözdizimi"
+
+msgid "system"
+msgstr "sistem"
+
+msgid "tab"
+msgstr "sekme"
+
+msgid "table"
+msgstr "tablo"
+
+msgid "tag"
+msgstr "etiket"
+
+msgid "target"
+msgstr "hedef"
+
+msgid "template"
+msgstr "şablon"
+
+msgid "temporary"
+msgstr "geçici"
+
+msgid "terminal"
+msgstr "terminal/uç birim"
+
+msgid "test"
+msgstr "test"
+
+msgid "text"
+msgstr "metin"
+
+msgid "texture"
+msgstr "doku"
+
+msgid "theme"
+msgstr "tema"
+
+msgid "thread"
+msgstr "tema, iş parçacığı"
+
+msgid "thumbnail"
+msgstr "küçük resim"
+
+msgid "tick"
+msgstr "işaretle"
+
+msgid "tile"
+msgstr "döşe"
+
+msgid "time"
+msgstr "zaman"
+
+msgid "time out"
+msgstr "zaman aşımı"
+
+msgid "tip"
+msgstr "öneri"
+
+msgid "title"
+msgstr "başlık"
+
+msgid "toggle"
+msgstr "değiştir"
+
+msgid "token"
+msgstr "simge, jeton"
+
+msgid "tool"
+msgstr "araç"
+
+msgid "tool bar"
+msgstr "araç çubuğu"
+
+msgid "tool box"
+msgstr "araç kutusu"
+
+msgid "topic"
+msgstr "konu, konu başlığı"
+
+msgid "trace"
+msgstr "izle"
+
+msgid "track"
+msgstr "iz, kayıt, şarkı"
+
+msgid "traffic"
+msgstr "trafik, akış"
+
+msgid "transfer"
+msgstr "aktar"
+
+msgid "transform"
+msgstr "dönüştür"
+
+msgid "transformation"
+msgstr "dönüştürme"
+
+msgid "trap"
+msgstr "tuzak"
+
+msgid "trash"
+msgstr "çöp"
+
+msgid "trigger"
+msgstr "tetikle, harekete geçir"
+
+msgid "trouble shoot"
+msgstr "sorunu gider"
+
+msgid "tune"
+msgstr "ayarla"
+
+msgid "tweak"
+msgstr "ayarla"
+
+msgid "type (noun)"
+msgstr "tür (isim)"
+
+msgid "type (verb)"
+msgstr "yaz (eylem)"
+
+msgid "type face"
+msgstr "yazı yüzü"
+
+msgid "unavailable"
+msgstr "kullanılamaz/mevcut değil"
+
+msgid "undelete"
+msgstr "silmeyi geri al"
+
+msgid "under line"
+msgstr "altını çiz"
+
+msgid "undo"
+msgstr "geri al"
+
+msgid "uninstall"
+msgstr "kaldır"
+
+msgid "unit"
+msgstr "birim"
+
+msgid "unknown"
+msgstr "bilinmeyen"
+
+msgid "unload"
+msgstr "yüklemeyi kaldır"
+
+msgid "named"
+msgstr "adlandırılmış"
+
+msgid "reachable"
+msgstr "ulaşılabilir"
+
+msgid "readable"
+msgstr "okunabilir"
+
+msgid "unspecified"
+msgstr "belirtilmemiş"
+
+msgid "unsubscribe"
+msgstr "aboneliği iptal et"
+
+msgid "unsupported"
+msgstr "desteklenmeyen, desteklenmiyor"
+
+msgid "update"
+msgstr "güncelle"
+
+msgid "upgrade"
+msgstr "yükselt"
+
+msgid "upload"
+msgstr "uzak bilgisayara, yukarı, karşıya yüklemek"
+
+msgid "upper case"
+msgstr "büyük harf"
+
+msgid "usage"
+msgstr "kullanım"
+
+msgid "user"
+msgstr "kullanıcı"
+
+msgid "user name"
+msgstr "kullanıcı adı"
+
+msgid "utility"
+msgstr "yardımcı uygulama, program"
+
+msgid "valid"
+msgstr "geçerli"
+
+msgid "validation"
+msgstr "geçerleme"
+
+msgid "validity"
+msgstr "geçerlilik"
+
+msgid "value"
+msgstr "değer"
+
+msgid "variable"
+msgstr "değişken"
+
+msgid "vector"
+msgstr "vektör"
+
+msgid "verbose"
+msgstr "ayrıntılı"
+
+msgid "verify"
+msgstr "onayla"
+
+msgid "version"
+msgstr "sürüm"
+
+msgid "video"
+msgstr "video"
+
+msgid "view"
+msgstr "görünüm"
+
+msgid "viewer"
+msgstr "görüntüleyici"
+
+msgid "virtual"
+msgstr "sanal"
+
+msgid "virus"
+msgstr "virüs"
+
+msgid "visual"
+msgstr "görsel"
+
+msgid "volume"
+msgstr "ses/hacim"
+
+msgid "wallpaper"
+msgstr "duvar kağıdı"
+
+msgid "warn"
+msgstr "uyar"
+
+msgid "web"
+msgstr "web"
+
+msgid "web cam"
+msgstr "web kamerası"
+
+msgid "web master"
+msgstr "web uzmanı"
+
+msgid "web page"
+msgstr "web sayfası"
+
+msgid "widget"
+msgstr "parçacık, bilgisayar kullanımıda yer alan her türlü parça"
+
+msgid "width"
+msgstr "genişlik"
+
+msgid "wi fi"
+msgstr "wifi, kablosuz bağlantı"
+
+msgid "wild card"
+msgstr "yıldız işareti (*)"
+
+msgid "window"
+msgstr "pencere"
+
+msgid "wizard"
+msgstr "sihirbaz"
+
+msgid "word processor"
+msgstr "kelime işlemci"
+
+msgid "work around"
+msgstr "çözüm bul"
+
+msgid "work group"
+msgstr "çalışma grubu"
+
+msgid "work station"
+msgstr "iş istasyonu"
+
+msgid "wrap"
+msgstr "kaydır"
+
+msgid "yes"
+msgstr "evet"
+
+msgid "zone"
+msgstr "bölge"
+
+# zoom in/zoom out
+msgid "zoom"
+msgstr "yakınlaştır/uzaklaştır"

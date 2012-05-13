@@ -1,0 +1,2331 @@
+# translation of fuel_en_US.po to Oriya
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+#
+# Manoj Kumar Giri <giri.manojkr@gmail.com>, 2008.
+msgid ""
+msgstr ""
+"Project-Id-Version: fuel_en_US\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2006-02-04 17:19+0530\n"
+"PO-Revision-Date: 2010-08-05 09:21+0200\n"
+"Last-Translator: admin <>\n"
+"Language-Team: Oriya\n"
+"Language: or\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Pootle 2.1.0-beta2\n"
+
+#: Files:  evolution.csv,  gdmpaneldesktop.csv,  gedit.csv,  gnometerminal.csv,  nautilus.csv,  openoffice.csv,  pidgin.csv,
+msgid "About"
+msgstr "ବିବରଣୀ"
+
+#: Files:  menu.csv,
+msgid "Accessibility"
+msgstr "ଅଭିଗମ୍ଯତା"
+
+#: Files:  menu.csv,
+msgid "Accessories"
+msgstr "ସହାୟକ ବସ୍ତୁ"
+
+#: Files:  pidgin.csv,
+msgid "Accounts"
+msgstr "ଲଗଇନ ଖାତା"
+
+#: Files:  menu.csv,
+msgid "Administration"
+msgstr "ପ୍ରଶାସନ"
+
+#: Files:  openoffice.csv,
+msgid "Alignment"
+msgstr "ପାର୍ଶ୍ବସଜ୍ଜା"
+
+#: Files:  openoffice.csv,
+msgid "Anchor"
+msgstr "ସ୍ଥିରବିନ୍ଦୁ"
+
+#: Files:  menu.csv,
+msgid "Applications"
+msgstr "ପ୍ରୟୋଗ"
+
+#: Files:  evolution.csv,
+msgid "Apply Filters"
+msgstr "ଫିଲଟର ମାନଙ୍କୁ ପ୍ରୟୋଗ କରନ୍ତୁ"
+
+#: Files:  openoffice.csv,
+msgid "Area"
+msgstr "କ୍ଷେତ୍ର"
+
+#: Files:  openoffice.csv,
+msgid "Arrange"
+msgstr "ସଜାଡନ୍ତୁ"
+
+#: Files:menu
+msgid "Authentication"
+msgstr "ବୈଧିକରଣ"
+
+#: Files:  openoffice.csv,
+msgid "AutoCorrect"
+msgstr "ସ୍ବୟଂଚାଳିତ ଭାବରେ ଠିକ କରନ୍ତୁ"
+
+#: Files:  openoffice.csv,
+msgid "Autofit"
+msgstr "ସ୍ବୟଂଚାଳିତ ଭାବରେ ଖାପଖୁଆନ୍ତୁ"
+
+#: Files:  openoffice.csv,
+msgid "AutoFormat"
+msgstr "ସ୍ବୟଂଚାଳିତ ଫର୍ମାଟ"
+
+#: Files:  openoffice.csv,
+msgid "AutoText"
+msgstr "ସ୍ବୟଂଚାଳିତ ଟେକ୍ସଟ"
+
+#: Files:  firefox.csv,  openoffice.csv,
+msgid "Back"
+msgstr "ପୂର୍ବବର୍ତ୍ତୀ"
+
+#: Files:  openoffice.csv, firefox.csv
+msgid "Bookmark"
+msgstr "ପୃଷ୍ଠାସଂକେତ"
+
+#: Files:  openoffice.csv,
+msgid "Boundaries"
+msgstr "ସୀମାରେଖା"
+
+#: Files:  pidgin.csv,
+msgid "Buddies"
+msgstr "ସାଙ୍ଗ ମାନେ"
+
+#: Files:  openoffice.csv,
+msgid "Calculate"
+msgstr "ଗଣନା କରନ୍ତୁ"
+
+#: Files:  menu.csv,
+msgid "Calculator"
+msgstr "କାଲ୍କୁଲେଟର"
+
+#: Files:  menu.csv,
+msgid "Calender"
+msgstr "କ୍ଯାଲେଣ୍ଡର"
+
+#: Files:  gdmpaneldesktop.csv,
+msgid "Cancel"
+msgstr "ବାତିଲ କରନ୍ତୁ"
+
+#: Files:  openoffice.csv,
+msgid "Caption"
+msgstr "ଶିରୋନାମା"
+
+#: Files:  openoffice.csv,
+msgid "Cells"
+msgstr "କୋଷ ଗୁଡିକ"
+
+#: Files:  openoffice.csv,
+msgid "Changes"
+msgstr "ପରିବର୍ତ୍ତନ ଗୁଡିକ"
+
+#: Files:  openoffice.csv,
+msgid "Character"
+msgstr "ଅକ୍ଷର"
+
+#: Files:  openoffice.csv,
+msgid "Chart"
+msgstr "ତାଲିକା"
+
+#: Files:  evolution.csv,
+msgid "Clear"
+msgstr "ପରିଷ୍କାର"
+
+#: Files:  gedit.csv,  nautilus.csv,  openoffice.csv,
+msgid "Close"
+msgstr "ବନ୍ଦ କରନ୍ତୁ"
+
+#: Files:  openoffice.csv,
+msgid "Column"
+msgstr "ସ୍ତମ୍ଭ"
+
+#: Files:  menu.csv,  nautilus.csv,
+msgid "Computer"
+msgstr "କମ୍ପୁଟର"
+
+#: Files:  openoffice.csv,
+msgid "Consolidate"
+msgstr "ଦୃଢକର"
+
+#: Files:  menu.csv,
+msgid "Contact"
+msgstr "ସମ୍ପର୍କ"
+
+#: Files:  evolution.csv,  gedit.csv,  gnometerminal.csv,  nautilus.csv,
+msgid "Contents"
+msgstr "ସୂଚୀପତ୍ର"
+
+#: Files:  openoffice.csv,
+msgid "Control"
+msgstr "ନିୟନ୍ତ୍ରଣ"
+
+#: Files:  openoffice.csv,
+msgid "Convert"
+msgstr "ବଦଳାନ୍ତୁ"
+
+#: Files:  evolution.csv,  firefox.csv,  gedit.csv,  gnometerminal.csv,  nautilus.csv,  openoffice.csv,
+msgid "Copy"
+msgstr "ନକଲ କରନ୍ତୁ"
+
+#: Files:  openoffice.csv,
+msgid "Create"
+msgstr "ସୃଷ୍ଟି କର"
+
+#: Files:  openoffice.csv,
+msgid "Customize"
+msgstr "ଇଚ୍ଛାରୂପଣ"
+
+#: Files:  firefox.csv,  gedit.csv,  nautilus.csv,  openoffice.csv,
+msgid "Cut"
+msgstr "କାଟନ୍ତୁ"
+
+#: Files:  openoffice.csv,
+msgid "DataPilot"
+msgstr "ତଥ୍ଯପାଇଲଟ୍"
+
+#: Files:  evolution.csv,
+msgid "Day"
+msgstr "ଦିନ"
+
+#: Files:  evolution.csv,  firefox.csv,  gedit.csv,  openoffice.csv,
+msgid "Delete"
+msgstr "ଅପସାରଣ କରନ୍ତୁ"
+
+#: Files:  menu.csv,
+msgid "Desktop"
+msgstr "ଡେସ୍କଟପ୍"
+
+#: Files:  openoffice.csv,
+msgid "Detective"
+msgstr "ଗୁପ୍ତଅନୁସନ୍ଧାନକାରୀ"
+
+#: Files:  menu.csv,
+msgid "Dictionary"
+msgstr "ଅଭିଧାନ"
+
+#: Files:  menu.csv,
+msgid "Display"
+msgstr "ପ୍ରଦର୍ଶନ"
+
+#: Files:  menu.csv,
+msgid "Documentations"
+msgstr "ଦଲିଲକରଣ"
+
+#: Files:  gedit.csv,
+msgid "Documents"
+msgstr "ଦଲିଲ"
+
+#: Files:  firefox.csv,
+msgid "Downloads"
+msgstr "ଡାଉନଲୋଡ"
+
+#: Files:  evolution.csv,
+msgid "Drafts"
+msgstr "ଡ୍ରାଫ୍ଟ"
+
+#: Files:  nautilus.csv,  openoffice.csv,
+msgid "Duplicate"
+msgstr "ନକଲ କରନ୍ତୁ"
+
+#: Files:  evolution.csv,  gedit.csv,  nautilus.csv,  openoffice.csv,
+msgid "Edit"
+msgstr "ସମ୍ପାଦନ କରନ୍ତୁ"
+
+#: Files:  openoffice.csv,
+msgid "Envelope"
+msgstr "ଲଫାପା"
+
+#: Files:  openoffice.csv,
+msgid "Exit"
+msgstr "ପ୍ରସ୍ଥାନ କରନ୍ତୁ"
+
+#: Files:  openoffice.csv,
+msgid "Export"
+msgstr "ରତ୍ପାନୀ କର"
+
+#: Files:  evolution.csv,
+msgid "Expunge"
+msgstr "କାଟନ୍ତୁ"
+
+#: Files:  firefox.csv,
+msgid "Extensions"
+msgstr "ଅନୁଲଗ୍ନ"
+
+#: Files:  openoffice.csv,
+msgid "Eyedropper"
+msgstr "ଆଇଡ୍ରପର"
+
+#: Files:  openoffice.csv,
+msgid "Fields"
+msgstr "କ୍ଷେତ୍ରଗୁଡିକ"
+
+#: Files:  evolution.csv,  firefox.csv,  gedit.csv,  gnometerminal.csv,  nautilus.csv,  openoffice.csv,
+msgid "File"
+msgstr "ଫାଇଲ"
+
+#: Files:  openoffice.csv,
+msgid "Fill"
+msgstr "ପୂର୍ଣ୍ଣ କରନ୍ତୁ"
+
+#: Files:  openoffice.csv,
+msgid "Filter"
+msgstr "ଫିଲଟର"
+
+#: Files:  gedit.csv,
+msgid "Find"
+msgstr "ଖୋଜନ୍ତୁ"
+
+#: Files:  openoffice.csv,
+msgid "Flip"
+msgstr "ଆଘାତଦିଅ"
+
+#: Files:  evolution.csv,
+msgid "Folder"
+msgstr "ଫୋଲଡର୍"
+
+#: Files:  menu.csv,
+msgid "Fonts"
+msgstr "ଅକ୍ଷରରୂପ"
+
+#: Files:  openoffice.csv,
+msgid "Footer"
+msgstr "ପାଦଟୀକା"
+
+#: Files:  openoffice.csv,
+msgid "Footnotes"
+msgstr "ପାଦଟିପପ୍ଣୀଗୁଡିକ"
+
+#: Files:  openoffice.csv,
+msgid "Form"
+msgstr "ଫର୍ମ"
+
+#: Files:  openoffice.csv,
+msgid "Format"
+msgstr "ସଜ୍ଜିକରଣ ଶୈଳୀ"
+
+#: Files:  openoffice.csv,
+msgid "Formula"
+msgstr "ସୂତ୍ର"
+
+#: Files:  evolution.csv,  firefox.csv,
+msgid "Forward"
+msgstr "ଅଗ୍ରସରକ"
+
+#: Files:  openoffice.csv,
+msgid "Frame"
+msgstr "ବନ୍ଧେଇ"
+
+#: Files:  openoffice.csv,
+msgid "Freeze"
+msgstr "ଜମାଇ ଦିଅନ୍ତୁ"
+
+#: Files:  firefox.csv,  gnometerminal.csv,  openoffice.csv,
+msgid "Full Screen"
+msgstr "ସମ୍ପୁର୍ଣ୍ଣ ପରଦା ପ୍ରଦର୍ଶନ"
+
+#: Files:  openoffice.csv,
+msgid "Function"
+msgstr "କାର୍ୟ୍ଯ"
+
+#: Files:  openoffice.csv,
+msgid "Gallery"
+msgstr "ଗ୍ଯାଲେରି"
+
+#: Files:  menu.csv,
+msgid "Graphics"
+msgstr "ଆଲେଖୀ"
+
+#: Files:  openoffice.csv,
+msgid "Grid"
+msgstr "ଜାଲ"
+
+#: Files:  openoffice.csv,
+msgid "Group"
+msgstr "ସମୂହ"
+
+#: Files:  openoffice.csv,
+msgid "Guides"
+msgstr "ଗାଇଡଗୁଡିକ"
+
+#: Files:  openoffice.csv,
+msgid "Header"
+msgstr "ଶୀର୍ଷକ"
+
+#: Files:  evolution.csv,  firefox.csv,  nautilus.csv,  openoffice.csv,  pidgin.csv,
+msgid "Help"
+msgstr "ସହାୟତା"
+
+#: Files:  gdmpaneldesktop.csv,
+msgid "Hibernate"
+msgstr "ନିଭ୍ରୁତ ଅବସ୍ଥାକୁ ନିଅନ୍ତୁ"
+
+#: Files:  firefox.csv,
+msgid "History"
+msgstr "ପୁରୁଣା ତଥ୍ଯ"
+
+#: Files:  firefox.csv,  nautilus.csv,
+msgid "Home"
+msgstr "ମୂଳସ୍ଥାନ"
+
+#: Files:  openoffice.csv,
+msgid "Hyperlink"
+msgstr "ହାଇପରଲିଙ୍କ"
+
+#: Files:  openoffice.csv,
+msgid "ImageMap"
+msgstr "ଚିତ୍ର ମାନଚିତ୍ର"
+
+#: Files:  evolution.csv,  firefox.csv,
+msgid "Import"
+msgstr "ଆୟତ କରନ୍ତୁ"
+
+#: Files:  evolution.csv,
+msgid "Inbox"
+msgstr "ଇନବକ୍ସ"
+
+#: Files:  menu.csv,
+msgid "Input Method"
+msgstr "ନିବେଶ ପ୍ରଣାଳୀ"
+
+#: Files:  openoffice.csv,
+msgid "Insert"
+msgstr "ଭର୍ତ୍ତୀ କରନ୍ତୁ"
+
+#: Files:  openoffice.csv,
+msgid "Interaction"
+msgstr "ପରସ୍ପର ସମ୍ବନ୍ଧ"
+
+#: Files:  menu.csv,
+msgid "Internet"
+msgstr "ଇଣ୍ଟରନେଟ"
+
+#: Files:  evolution.csv,
+msgid "Junk"
+msgstr "ଅଦରକାରୀ ତଥ୍ଯ"
+
+#: Files:  menu.csv,
+msgid "Keyboard"
+msgstr "କି-ବୋର୍ଡ"
+
+#: Files:  gdmpaneldesktop.csv,  menu.csv,  openoffice.csv,
+msgid "Language"
+msgstr "ଭାଷା"
+
+#: Files:  gdmpaneldesktop.csv,
+msgid "Launch"
+msgstr "ଚଳାନ୍ତୁ"
+
+#: Files:  evolution.csv,
+msgid "Layout"
+msgstr "ବିନ୍ଯାସ"
+
+#: Files:  openoffice.csv,
+msgid "Line"
+msgstr "ରେଖା"
+
+#: Files:  openoffice.csv,
+msgid "Links"
+msgstr "ଲିଙ୍କଗୁଡିକ"
+
+#: Files:  evolution.csv,
+msgid "List"
+msgstr "ତାଲିକା"
+
+#: Files:  openoffice.csv,
+msgid "Macros"
+msgstr "ମେକ୍ରୋସ"
+
+#: Files:  openoffice.csv,
+msgid "Master"
+msgstr "ପ୍ରଧାନ"
+
+#: Files:  evolution.csv,
+msgid "Message"
+msgstr "ସନ୍ଦେଶ"
+
+#: Files:  evolution.csv,
+msgid "Month"
+msgstr "ମାସ"
+
+#: Files:  menu.csv,
+msgid "Mouse"
+msgstr "ମାଉସ"
+
+#: Files:  gdmpaneldesktop.csv,
+msgid "Move"
+msgstr "ଘୁଞ୍ଚାନ୍ତୁ"
+
+#: Files:  openoffice.csv,
+msgid "Names"
+msgstr "ନାମଗୁଡିକ"
+
+#: Files:  openoffice.csv,
+msgid "Navigator"
+msgstr "ନାଭିଗେଟର"
+
+#: Files:  nautilus.csv,
+msgid "Network"
+msgstr "ନେଟୱାର୍କ"
+
+#: Files:  evolution.csv,  gedit.csv,  openoffice.csv,
+msgid "New"
+msgstr "ନୂତନ"
+
+#: Files:  evolution.csv,  openoffice.csv,
+msgid "Next"
+msgstr "ପରବର୍ତ୍ତୀ"
+
+#: Files:  openoffice.csv,
+msgid "Normal"
+msgstr "ସାଧାରଣ"
+
+#: Files:  openoffice.csv,
+msgid "Note"
+msgstr "ଟିପ୍ପଣୀ"
+
+#: Files:  openoffice.csv,
+msgid "Object"
+msgstr "ବସ୍ତୁ"
+
+#: Files:  menu.csv,
+msgid "Office"
+msgstr "କାର୍ଯ୍ଯାଳୟ"
+
+#: Files:  gedit.csv,  openoffice.csv,
+msgid "Open"
+msgstr "ଖୋଲନ୍ତୁ"
+
+#: Files:  openoffice.csv,
+msgid "Options"
+msgstr "ବିକଲ୍ପ"
+
+#: Files:  evolution.csv,
+msgid "Outbox"
+msgstr "ଆଉଟବକ୍ସ"
+
+#: Files:  openoffice.csv,
+msgid "Outline"
+msgstr "ବାହ୍ଯରେଖା"
+
+#: Files:  openoffice.csv,
+msgid "Page"
+msgstr "ପ୍ରୁଷ୍ଠା"
+
+#: Files:  openoffice.csv,
+msgid "Paragraph"
+msgstr "ପରିଚ୍ଛେଦ"
+
+#: Files:gdmpaneldesktop
+msgid "Password"
+msgstr "ପ୍ରବେଶ ସଙ୍କେତ"
+
+#: Files:  firefox.csv,  gdmpaneldesktop.csv,  gedit.csv,  gnometerminal.csv,  nautilus.csv,  openoffice.csv,
+msgid "Paste"
+msgstr "ଲଗାନ୍ତୁ"
+
+#: Files:  evolution.csv,
+msgid "Permissions"
+msgstr "ଅନୁମତି"
+
+#: Files:  evolution.csv,
+msgid "Personal"
+msgstr "ବ୍ଯକ୍ତିଗତ"
+
+#: Files:  openoffice.csv,
+msgid "Picture"
+msgstr "ଚିତ୍ର"
+
+#: Files:  menu.csv,  nautilus.csv,
+msgid "Places"
+msgstr "ସ୍ଥାନ"
+
+#: Files:  openoffice.csv,
+msgid "Plug-in"
+msgstr "ପ୍ଲଗ-ଇନ"
+
+#: Files:  openoffice.csv,
+msgid "Points"
+msgstr "ବିନ୍ଦୁ ଗୁଡିକ"
+
+#: Files:  evolution.csv,  firefox.csv,  gedit.csv,  menu.csv,  nautilus.csv,  pidgin.csv,
+msgid "Preferences"
+msgstr "ପସନ୍ଦ"
+
+#: Files:  menu.csv,
+msgid "Presentation"
+msgstr "ଉପସ୍ଥାପନ"
+
+#: Files:  firefox.csv,
+msgid "preview"
+msgstr "ପୂର୍ବାବଲୋକନ"
+
+#: Files:  evolution.csv,
+msgid "Previous"
+msgstr "ପୂର୍ବବର୍ତ୍ତୀ"
+
+#: Files:  firefox.csv, openoffice.csv, gedit.csv
+msgid "Print "
+msgstr "ମୂଦ୍ରଣୀ କରନ୍ତୁ"
+
+#: Files:  menu.csv,
+msgid "Printing"
+msgstr "ମୁଦ୍ରଣ କରୁଅଛି"
+
+#: Files:  pidgin.csv,
+msgid "Privacy"
+msgstr "ଗୋପନୀୟତା"
+
+#: Files:  gnometerminal.csv,
+msgid "Profiles"
+msgstr "ରୂପରେଖ"
+
+#: Files:  menu.csv,
+msgid "Programming"
+msgstr "ପ୍ରୋଗ୍ରାମିଙ୍ଗ"
+
+#: Files:  evolution.csv,  gdmpaneldesktop.csv,  nautilus.csv,  openoffice.csv,
+msgid "Properties"
+msgstr "ଗୁଣଧର୍ମ"
+
+#: Files:  openoffice.csv,
+msgid "Protect Cell"
+msgstr "କୋଷକୁ ସୁରକ୍ଷା ପ୍ରଦାନ କରନ୍ତୁ"
+
+#: Files:  evolution.csv,
+msgid "Purge"
+msgstr "ସଫା କରନ୍ତୁ"
+
+#: Files:  evolution.csv,  gedit.csv,  pidgin.csv,
+msgid "Quit"
+msgstr "ବିଦାୟ ନିଅନ୍ତୁ"
+
+#: Files:  firefox.csv,  gedit.csv,
+msgid "Redo"
+msgstr "ପୂର୍ବ ପଦକ୍ଷେପ"
+
+#: Files:  openoffice.csv,
+msgid "Registration"
+msgstr "ପଞ୍ଜୀକରଣ"
+
+#: Files:  firefox.csv,  nautilus.csv,  openoffice.csv,
+msgid "Reload"
+msgstr "ପୁନର୍ଧାରଣ କରନ୍ତୁ"
+
+#: Files:  evolution.csv,  nautilus.csv,
+msgid "Rename"
+msgstr "ନାମ ବଦଳାନ୍ତୁ"
+
+#: Files:  openoffice.csv,
+msgid "Repeat"
+msgstr "ପୁନର୍ବାର କରନ୍ତୁ"
+
+#: Files:  gedit.csv,
+msgid "Replace"
+msgstr "ବଦଳାନ୍ତୁ"
+
+#: Files:  gnometerminal.csv,
+msgid "Reset"
+msgstr "ପୁନଃସ୍ଥାପନ କରନ୍ତୁ"
+
+#: Files:  gdmpaneldesktop.csv,
+msgid "Restart"
+msgstr "ପୁନଃପ୍ରାରମ୍ଭ କରନ୍ତୁ"
+
+#: Files:  gedit.csv,
+msgid "Revert"
+msgstr "ପ୍ରତ୍ୟାବୃତ କରିବା"
+
+#: Files:  openoffice.csv,
+msgid "Row"
+msgstr "ପଂକ୍ତି"
+
+#: Files:  openoffice.csv,
+msgid "Ruler"
+msgstr "ଶାସକ"
+
+#: Files:  gedit.csv,  openoffice.csv,
+msgid "Save"
+msgstr "ସଂରକ୍ଷଣ କରନ୍ତୁ"
+
+#: Files:  openoffice.csv,
+msgid "Scenarios"
+msgstr "ବିବରଣଗୁଡିକ"
+
+#: Files:  menu.csv,
+msgid "Screensaver"
+msgstr "ପରଦା ସଂରକ୍ଷକ"
+
+#: Files:  openoffice.csv,
+msgid "Script"
+msgstr "ସ୍କ୍ରିପଟ"
+
+#: Files:  evolution.csv,  gedit.csv,  nautilus.csv,
+msgid "Search"
+msgstr "ଖୋଜନ୍ତୁ"
+
+#: Files:  openoffice.csv,
+msgid "Section"
+msgstr "ବିଭାଗ"
+
+#: Files:  openoffice.csv,
+msgid "Select"
+msgstr "ବାଛନ୍ତୁ"
+
+#: Files:  openoffice.csv,
+msgid "Send"
+msgstr "ପଠାନ୍ତୁ"
+
+#: Files:  evolution.csv,
+msgid "Sent"
+msgstr "ପଠାଗଲା"
+
+#: Files:  menu.csv,
+msgid "Services"
+msgstr "ସେବା"
+
+#: Files:  menu.csv,
+msgid "Sessions"
+msgstr "ଅଧିବେଶନ"
+
+#: Files:  openoffice.csv,
+msgid "Sheet"
+msgstr "ସିଟ୍"
+
+#: Files:  evolution.csv,
+msgid "Show"
+msgstr "ଦେଖାନ୍ତୁ"
+
+#: Files:  firefox.csv,
+msgid "Sidebar"
+msgstr "ପାର୍ଶ୍ବ ପଟି"
+
+#: Files:  openoffice.csv,
+msgid "Slide"
+msgstr "ସ୍ଲାଇଡ୍"
+
+#: Files:  openoffice.csv,
+msgid "Sort"
+msgstr "ସଜାଡନ୍ତୁ"
+
+#: Files:  openoffice.csv,
+msgid "Spellcheck"
+msgstr "ବର୍ଣ୍ଣଶୁଦ୍ଦୀକରଣ"
+
+#: Files:  openoffice.csv,
+msgid "Split"
+msgstr "ସ୍ପ୍ଲିଟ"
+
+#: Files:  menu.csv,  openoffice.csv,
+msgid "Spreadsheet"
+msgstr "ସ୍ପ୍ରେଡ୍ସିଟ"
+
+#: Files:  firefox.csv,  gedit.csv,
+msgid "Statusbar"
+msgstr "ଅବସ୍ଥିତି ପଟି"
+
+#: Files:  evolution.csv,  firefox.csv,  nautilus.csv,
+msgid "Stop"
+msgstr "ବନ୍ଦ କରନ୍ତୁ"
+
+#: Files:  evolution.csv,
+msgid "Subscriptions"
+msgstr "ସ୍ବୀକାରକରଣଗୁଡିକ"
+
+#: Files:  openoffice.csv,
+msgid "Subtotals"
+msgstr "ସର୍ବମୋଟ୍"
+
+#: Files:  evolution.csv,
+msgid "Summary"
+msgstr "ସାରାଂଶ"
+
+#: Files:  openoffice.csv,
+msgid "Support"
+msgstr "ସହାୟତା"
+
+#: Files:  gdmpaneldesktop.csv,  menu.csv,
+msgid "Suspend"
+msgstr "ନିଲମ୍ବନ କରନ୍ତୁ"
+
+#: Files:  menu.csv,
+msgid "System"
+msgstr "ତନ୍ତ୍ର"
+
+#: Files:  openoffice.csv,
+msgid "Table"
+msgstr "ସାରଣୀ"
+
+#: Files:  evolution.csv,  menu.csv,
+msgid "Tasks"
+msgstr "କାର୍ଯ୍ଯ"
+
+#: Files:  nautilus.csv,  openoffice.csv,
+msgid "Templates"
+msgstr "ଛାଞ୍ଚଗୁଡିକ"
+
+#: Files:  menu.csv,
+msgid "Terminal"
+msgstr "ଟର୍ମିନାଲ"
+
+#: Files:  openoffice.csv,
+msgid "Text"
+msgstr "ପାଠ୍ଯ"
+
+#: Files:  firefox.csv,
+msgid "Themes"
+msgstr "ପ୍ରସଙ୍ଗ"
+
+#: Files:  openoffice.csv,
+msgid "Toolbars"
+msgstr "ସାଧନ ପଟି"
+
+#: Files:  firefox.csv,  gedit.csv,  openoffice.csv,  pidgin.csv,
+msgid "Tools"
+msgstr "ଉପକରଣ"
+
+#: Files:  evolution.csv,  nautilus.csv,
+msgid "Trash"
+msgstr "ଆବର୍ଜନା ପାତ୍ର"
+
+#: Files:  openoffice.csv,
+msgid "Type"
+msgstr "ପ୍ରକାର"
+
+#: Files:  firefox.csv,  gedit.csv,
+msgid "Undo"
+msgstr "ପଦକ୍ଷେପ ବାତିଲ କରନ୍ତୁ"
+
+#: Files:  evolution.csv,
+msgid "Unmatched"
+msgstr "ଅମେଳ"
+
+#: Files:  openoffice.csv,
+msgid "Untitled"
+msgstr "ଶୀର୍ଷକ ହୀନ"
+
+#: Files:  openoffice.csv,
+msgid "Update"
+msgstr "ଅଦ୍ୟତନ"
+
+#: Files:  openoffice.csv,
+msgid "Validity"
+msgstr "ସଠିକତା"
+
+#: Files:  openoffice.csv,
+msgid "Versions"
+msgstr "ସଂସ୍କରଣ"
+
+#: Files:  evolution.csv,  gedit.csv,  nautilus.csv,  openoffice.csv,
+msgid "View"
+msgstr "ଦ୍ରୁଶ୍ଯ"
+
+#: Files:  evolution.csv,
+msgid "Week"
+msgstr "ସପ୍ତାହ"
+
+#: Files:  evolution.csv,
+msgid "Window"
+msgstr "ୱିଣ୍ଡୋ"
+
+#: Files:  openoffice.csv,
+msgid "Wizards"
+msgstr "ୱିଜାର୍ଡ"
+
+#: Files:  openoffice.csv,
+msgid "Wrap"
+msgstr "ଆବ୍ରୁତ କରନ୍ତୁ"
+
+#: Files:  evolution.csv,  openoffice.csv,
+msgid "Zoom"
+msgstr "ସାନବଡ କରନ୍ତୁ"
+
+#: Files:  menu.csv,
+msgid "About GNOME"
+msgstr "ନୋମ ବିଷୟରେ"
+
+#: Files:  menu.csv,
+msgid "About Me"
+msgstr "ମୋ ବିଷୟରେ"
+
+#: Files:  firefox.csv,
+msgid "About Mozilla Firefox"
+msgstr "ମୋଜିଲା ଫାୟାରଫୋକ୍ସ ବିଷୟରେ"
+
+#: Files:  gdmpaneldesktop.csv,
+msgid "About Panels"
+msgstr "ଫଳକ ମାନଙ୍କ ବିଷୟରେ"
+
+#: Files:  nautilus.csv,
+msgid "Add Bookmark"
+msgstr "ଚିହ୍ନିତ ସ୍ଥାନ ଯୋଗ କରନ୍ତୁ"
+
+#: Files:  pidgin.csv,
+msgid "Add Buddy"
+msgstr "ସାଙ୍ଗ ଯୋଗକରନ୍ତୁ"
+
+#: Files:  pidgin.csv,
+msgid "Add Chat"
+msgstr "ଗପ-ଶପ କ୍ଷେତ୍ର ଯୋଗକରନ୍ତୁ"
+
+#: Files:  pidgin.csv,
+msgid "Add Group"
+msgstr "ସମୂହ ଯୋଗକରନ୍ତୁ"
+
+#: Files: pidgin.csv,
+msgid "Add/Edit"
+msgstr "ଯୋଗକରନ୍ତୁ/ ସମ୍ପାଦନ କରନ୍ତୁ"
+
+#: Files:  evolution.csv,
+msgid "Address Book"
+msgstr "ଠିକଣା ପୁସ୍ତିକା"
+
+#: Files:  evolution.csv,
+msgid "Advanced Search"
+msgstr "ଉନ୍ନତ ସନ୍ଧାନ"
+
+#: Files:  openoffice.csv,
+msgid "Animated Image"
+msgstr "ଅନୁପ୍ରାଣୀତ ପ୍ରତିଛବି"
+
+#: Files:  evolution.csv,
+msgid "Any Category"
+msgstr "ଯେ କୌଣସି ବିଭାଗ"
+
+#: Files:  menu.csv,
+msgid "Archive Manager"
+msgstr "ଅଭିଲେଖ ପରିଚାଳକ"
+
+#: Files:  nautilus.csv,
+msgid "Arrange Items"
+msgstr "ବସ୍ତୁ ମାନଙ୍କୁ ସଜାଡନ୍ତୁ"
+
+#: Files:  evolution.csv,
+msgid "Assign Task"
+msgstr "କାର୍ଯ୍ଯ ନ୍ଯସ୍ତ କରନ୍ତୁ"
+
+#: Files:  gedit.csv,
+msgid "Autocheck Spelling"
+msgstr "ସ୍ବତଃ ବନାନ ଯାଞ୍ଚକରନ୍ତୁ"
+
+#: Files:  openoffice.csv,
+msgid "Bibliography Database"
+msgstr "ଗ୍ରନ୍ଥସୂଚୀ ତଥ୍ଯସଂଚଯ"
+
+#: Files:  openoffice.csv,
+msgid "Bibliography Entry"
+msgstr "ଗ୍ରନ୍ଥ ସୂଚୀ ପ୍ରବିଷ୍ଟି"
+
+#: Files:  gedit.csv,
+msgid "Bottom Pane"
+msgstr "ନିମ୍ନ ଫଳକ"
+
+#: Files:  nautilus.csv,
+msgid "Browse Folders"
+msgstr "ବ୍ରାଉଜର ଫୋଲଡର"
+
+#: Files:  pidgin.csv,
+msgid "Buddy Pounces"
+msgstr "ସାଙ୍ଗ ମାନଙ୍କୁ ଡାକନ୍ତୁ"
+
+#: Files:  evolution.csv,
+msgid "By Company"
+msgstr "କମ୍ପାନୀ ଅନୁଯାୟୀ"
+
+#: Files: openoffice.csv,
+msgid "Can't Restore"
+msgstr "ପୁନଃସ୍ଥାପନ କରିପାରିବ ନାହିଁ"
+
+#: Files: openoffice.csv,
+msgid "Can't Undo"
+msgstr "ପଦକ୍ଷେପ ବାତିଲ କରିପାରିବ ନାହିଁ"
+
+#: Files:  evolution.csv,
+msgid "Caret Mode"
+msgstr "କ୍ଯାରେଟ ଧାରା"
+
+#: Files:  menu.csv,
+msgid "CD Player"
+msgstr "ସି.ଡି. ଚାଳକ"
+
+#: Files:  openoffice.csv,
+msgid "Cell Contents"
+msgstr "କୋଷ ବିଷୟବସ୍ତୁ"
+
+#: Files:  openoffice.csv,
+msgid "Change Case"
+msgstr "ଅକ୍ଷର ପ୍ରକାର ବଦଳାନ୍ତୁ"
+
+#: Files:  gdmpaneldesktop.csv,
+msgid "Change Language"
+msgstr "ଭାଷା ପରିବର୍ତ୍ତନ କରନ୍ତୁ"
+
+#: Files:  gnometerminal.csv,
+msgid "Change Profile"
+msgstr "ରୂପରେଖ ପରିବର୍ତ୍ତନ କରନ୍ତୁ"
+
+#: Files:  gdmpaneldesktop.csv,
+msgid "Change Session"
+msgstr "ଅଧିବେଶନ ପରିବର୍ତ୍ତନ କରନ୍ତୁ"
+
+#: Files:  evolution.csv,  firefox.csv,
+msgid "Character Encoding"
+msgstr "ଅକ୍ଷର ସାଙ୍କେତିକରଣ"
+
+#: Files:  menu.csv,
+msgid "Character Map"
+msgstr "ଅକ୍ଷର ତାଲିକା"
+
+#: Files:  gedit.csv,
+msgid "Check Spelling"
+msgstr "ବନାନ ଯାଞ୍ଚ କରନ୍ତୁ"
+
+#: Files:  gedit.csv,
+msgid "Clear Highlight"
+msgstr "ସ୍ପଷ୍ଟ ବିଶିଷ୍ଟତା ପ୍ରଦର୍ଶନ"
+
+#: Files:  firefox.csv,
+msgid "Clear Private Data"
+msgstr "ବ୍ଯକ୍ତିଗତ ତଥ୍ଯକୁ ସଫାକରନ୍ତୁ"
+
+#: Files:  gedit.csv,
+msgid "Close All"
+msgstr "ସବୁକିଛି ବନ୍ଦ କରନ୍ତୁ"
+
+#: Files:  firefox.csv,  gnometerminal.csv,
+msgid "Close Tab"
+msgstr "ଟ୍ଯାବ ବନ୍ଦ କରନ୍ତୁ"
+
+#: Files:  evolution.csv,  firefox.csv,  gnometerminal.csv,  openoffice.csv,
+msgid "Close Window"
+msgstr "ଉଇଣ୍ଡୋକୁ ବନ୍ଦ କର"
+
+#: Files: openoffice.csv,
+msgid "Color/Grayscale"
+msgstr "ରଙ୍ଗ/ସ୍ବଚ୍ଛତା"
+
+#: Files:  openoffice.csv,
+msgid "Compare Documents"
+msgstr "ଦଲିଲ ମାନଙ୍କୁ ତୁଳନା କରନ୍ତୁ"
+
+#: Files:  openoffice.csv,
+msgid "Conditional Formatting"
+msgstr "ସର୍ତାଧୀନ ରଚନା କରିବା"
+
+#: Files:  menu.csv,
+msgid "Configuration Editor"
+msgstr "ବିନ୍ଯାସ ସମ୍ପାଦକ"
+
+#: Files:  gdmpaneldesktop.csv,
+msgid "Connection Information"
+msgstr "ସଂଯୋଗ ସୂଚନା"
+
+#: Files:  evolution.csv,
+msgid "Convert to Task"
+msgstr "କାର୍ଯ୍ଯରେ ପରିବର୍ତ୍ତନ କରନ୍ତୁ"
+
+#: Files:  gdmpaneldesktop.csv,  nautilus.csv,
+msgid "Create Document"
+msgstr "ଦଲିଲ ସୃଷ୍ଟି କର"
+
+#: Files:  gdmpaneldesktop.csv,  nautilus.csv,
+msgid "Create Folder"
+msgstr "ଫୋଲଡର ସୃଷ୍ଟି କରନ୍ତୁ"
+
+#: Files:  gdmpaneldesktop.csv,
+msgid "Create Launcher"
+msgstr "ପ୍ରଚାଳକ ସୃଷ୍ଟି କରନ୍ତୁ"
+
+#: Files:  evolution.csv,
+msgid "Create Rule"
+msgstr "ନୀୟମ ପ୍ରସ୍ତୁତ କରନ୍ତୁ"
+
+#: Files:  openoffice.csv,
+msgid "Cross-reference"
+msgstr "ପ୍ରତିନିର୍ଦ୍ଦେଶ"
+
+#: Files:  gnometerminal.csv,
+msgid "Current Locale"
+msgstr "ପ୍ରଚଳିତ ଲୋକେଲ"
+
+#: Files:  gnometerminal.csv,
+msgid "Current Profile"
+msgstr "ବର୍ତ୍ତମାନ ରୂପରେଖ"
+
+#: Files:  evolution.csv,
+msgid "Current View"
+msgstr "ପ୍ରଚଳିତ ଦୃଶ୍ଯ"
+
+#: Files:  openoffice.csv,
+msgid "Custom Animation"
+msgstr "ଜୀବନାୟନକୁ ଇଚ୍ଛାରୂପଣ କରନ୍ତୁ"
+
+#: Files:  evolution.csv,
+msgid "Day View"
+msgstr "ଦିବସ ଦ୍ରୁଶ୍ଯ"
+
+#: Files:  pidgin.csv,
+msgid "Debug Window"
+msgstr "ୱିଣ୍ଡୋକୁ ତୃଟିମୁକ୍ତ କରନ୍ତୁ"
+
+#: Files:  openoffice.csv,
+msgid "Default Formatting"
+msgstr "ପୂର୍ବାନିର୍ଦ୍ଧାରିତ ରୂପରେଖୀକରଣ"
+
+#: Files:  menu.csv,
+msgid "Default Printer"
+msgstr "ପୂର୍ବନିର୍ଦ୍ଧାରିତ ମୂଦ୍ରଣୀ"
+
+#: Files:  openoffice.csv,
+msgid "Define Range"
+msgstr "ପରିସର ମାନଙ୍କୁ ବ୍ଯାଖ୍ଯା କରନ୍ତୁ"
+
+#: Files:  evolution.csv,
+msgid "Define Views"
+msgstr "ପ୍ରଦର୍ଶନ ଗୁଡିକୁ ବ୍ଯାଖ୍ଯା କରନ୍ତୁ"
+
+#: Files:  openoffice.csv,
+msgid "Delete Cells"
+msgstr "କୋଷଗୁଡିକୁ ବିଲୋପକର"
+
+#: Files:  openoffice.csv,
+msgid "Delete Contents"
+msgstr "ସୂଚୀପତ୍ରକୁ ବିଲୋପକର"
+
+#: Files:  evolution.csv,
+msgid "Delete Message"
+msgstr "ସନ୍ଦେଶ ଅପସାରଣ କରନ୍ତୁ"
+
+#: Files:  openoffice.csv,
+msgid "Delete Slide"
+msgstr "ସ୍ଲାଇଡ ଅପସାରଣ କରନ୍ତୁ"
+
+#: Files:  menu.csv,
+msgid "Desktop Background"
+msgstr "ଡେସ୍କଟପ ପୃଷ୍ଠଭୂମି"
+
+#: Files:menu
+msgid "Desktop Effects"
+msgstr "ଡେସ୍କଟପ ଇଫେକ୍ଟସ"
+
+#: Files:  gnometerminal.csv,
+msgid "Detach Tab"
+msgstr "ଟ୍ଯାବ ବିଚ୍ଛିନ୍ନ କରନ୍ତୁ"
+
+#: Files:  openoffice.csv,
+msgid "Digital Signatures"
+msgstr "ଡିଜିଟାଲ ହସ୍ତାକ୍ଷରଗୁଡିକ"
+
+#: Files:  gedit.csv,
+msgid "Document Statistics"
+msgstr "ଦଲିଲର ପରିସଂଖ୍ଯାନ"
+
+#: Files:  firefox.csv,
+msgid "DOM Inspector"
+msgstr "DOM ନିରୀକ୍ଷକ"
+
+#: Files:  openoffice.csv,
+msgid "Duplicate Slide"
+msgstr "ନକଲି ସ୍ଲାଇଡ"
+
+#: Files:  nautilus.csv,
+msgid "Edit Bookmarks"
+msgstr "ବୁକମାର୍କକୁ ସମ୍ପାଦିତ କରନ୍ତୁ"
+
+#: Files:  openoffice.csv,
+msgid "Empty Presentation"
+msgstr "ଖାଲି ଉପସ୍ଥାପନ"
+
+#: Files:  evolution.csv,
+msgid "Empty Trash"
+msgstr "ଖାଲି ଆବର୍ଜନାପାତ୍ର"
+
+#: Files:  gdmpaneldesktop.csv,
+msgid "Enable Networking"
+msgstr "ନେଟୱାର୍କ ସେବାକୁ ସକ୍ରିୟ କରନ୍ତୁ"
+
+#: Files:  openoffice.csv,
+msgid "Exchange Database"
+msgstr "ତଥ୍ଯଧାରକୁ ଅଦଳ ବଦଳ କରନ୍ତୁ"
+
+#: Files:  openoffice.csv,
+msgid "Expand Slide"
+msgstr "ସ୍ଲାଇଡ୍ ଭର୍ତ୍ତି କର"
+
+#: Files:  gdmpaneldesktop.csv,
+msgid "Failsafe Terminal"
+msgstr "ଫେଲ-ସେଫ ଟର୍ମିନାଲ"
+
+#: Files:  openoffice.csv,
+msgid "Field Names"
+msgstr "କ୍ଷେତ୍ର ନାମ"
+
+#: Files:  openoffice.csv,
+msgid "Field Shadings"
+msgstr "କ୍ଷେତ୍ର ଛାଯାଗୁଡିକ"
+
+#: Files:  menu.csv,
+msgid "File Browser"
+msgstr "ଫାଇଲ ବ୍ରାଉଜର"
+
+#: Files:  menu.csv,
+msgid "File Management"
+msgstr "ଫାଇଲ ପରିଚାଳନା"
+
+#: Files:  pidgin.csv,
+msgid "File transfers"
+msgstr "ଫାଇଲ ବିନିମୟ"
+
+#: Files:  firefox.csv,
+msgid "Find Again"
+msgstr "ପୁନର୍ବାର ଖୋଜନ୍ତୁ"
+
+#: Files:  gedit.csv,
+msgid "Find Next"
+msgstr "ପରବର୍ତ୍ତୀ ଉପସ୍ଥିତିକୁ ଖୋଜନ୍ତୁ"
+
+#: Files:  evolution.csv,
+msgid "Find Now"
+msgstr "ବର୍ତ୍ତମାନ ଖୋଜନ୍ତୁ"
+
+#: Files:  gedit.csv,
+msgid "Find Previous"
+msgstr "ପୂର୍ବବର୍ତ୍ତୀ ଉପସ୍ଥିତିକୁ ଖୋଜନ୍ତୁ"
+
+#: Files:  openoffice.csv,
+msgid "Floating Frame"
+msgstr "ଭାସମାନ ଫ୍ରେମ"
+
+#: Files:  evolution.csv,
+msgid "Forget Passwords"
+msgstr "ପ୍ରବେଶ ସଙ୍କେତ ଭୂଲି ଯାଇଛନ୍ତି କି"
+
+#: Files:  openoffice.csv,
+msgid "Formatting Mark"
+msgstr "ଫର୍ମାଟ କରିବା ଚିହ୍ନ"
+
+#: Files:  openoffice.csv,
+msgid "Formula bar"
+msgstr "ସୂତ୍ର ପଟି"
+
+#: Files:  evolution.csv,
+msgid "Forward As"
+msgstr "ଏହିପରି ଭାବରେ ଅଗ୍ରସରଣ କରନ୍ତୁ"
+
+#: Files:  evolution.csv,
+msgid "Forward Contact"
+msgstr "ଅଗ୍ରସରଣ ସମ୍ପର୍କ"
+
+#: Files:  openoffice.csv,
+msgid "From template"
+msgstr "ଛାଞ୍ଚରୁ"
+
+#: Files:  openoffice.csv,
+msgid "Function List"
+msgstr "ପ୍ରକ୍ରିୟା ତାଲିକା"
+
+#: Files:  openoffice.csv,
+msgid "Glue Points"
+msgstr "ସଂଯୋଗ ବିନ୍ଦୁ"
+
+#: Files:  evolution.csv,
+msgid "Go To"
+msgstr "ଏଠାକୁ ଯାଆନ୍ତୁ"
+
+#: Files:  openoffice.csv,
+msgid "Goal Seek"
+msgstr "ଲକ୍ଷ୍ଯ ଖୋଜିବା"
+
+#: Files:  openoffice.csv,
+msgid "Handout Page"
+msgstr "ବିତରଣ କରାଯିବା ପୃଷ୍ଠା"
+
+#: Files:  firefox.csv,
+msgid "Help Contents"
+msgstr "ସାହାଯ୍ଯ ସୂଚୀ"
+
+#: Files:  openoffice.csv,
+msgid "Hidden Paragraphs"
+msgstr "ଗୁପ୍ତ ପରିଚ୍ଛେଦଗୁଡିକ"
+
+#: Files:  gedit.csv,
+msgid "Highlight Mode"
+msgstr "ବିଶେଷଦର୍ଶନ ଧାରା"
+
+#: Files:  menu.csv,
+msgid "Home Folder"
+msgstr "ମୂଳ ସ୍ଥାନ ଫୋଲଡର"
+
+#: Files:  openoffice.csv,
+msgid "Horizontal Ruler"
+msgstr "ଭୂସମାନ୍ତର ସ୍କେଲ"
+
+#: Files:  openoffice.csv,
+msgid "Index Entry"
+msgstr "ସୂଚୀ ପ୍ରବେଶ କର"
+
+#: Files:  gedit.csv,
+msgid "Interactive Search"
+msgstr "ପାରସ୍ପରିକ କ୍ରିୟାକ୍ଷମ ସନ୍ଧାନ"
+
+#: Files:  menu.csv,
+msgid "Internet Messenger"
+msgstr "ଇଣ୍ଟରନେଟ ବାର୍ତ୍ତା ବିନିମୟକାରୀ"
+
+#: Files:  firefox.csv,
+msgid "JavaScript Console"
+msgstr "ଜାଭା-ସ୍କ୍ରିପ୍ଟ କୋନଶୋଲ"
+
+#: Files:  gdmpaneldesktop.csv,
+msgid "Keep Aligned"
+msgstr "ସଂରେଖିତ କରନ୍ତୁ"
+
+#: Files:  gnometerminal.csv,  menu.csv,
+msgid "Keyboard Shortcuts"
+msgstr "କି-ବୋର୍ଡ ସଂକ୍ଷିପ୍ତ ପଥ"
+
+#: Files:  menu.csv,
+msgid "Keyring Manager"
+msgstr "କି-ରିଙ୍ଗ ପରିଚାଳକ"
+
+#: Files:  gdmpaneldesktop.csv,
+msgid "Last Session"
+msgstr "ଅନ୍ତିମ ଅଧିବେଶନ"
+
+#: Files:  openoffice.csv,
+msgid "Line Numbering"
+msgstr "ରେଖା ସଂଖ୍ଯାଦେବା"
+
+#: Files:  evolution.csv,
+msgid "List View"
+msgstr "ସୂଚୀ ଦ୍ରୁଶ୍ଯ"
+
+#: Files:  evolution.csv,
+msgid "Load Images"
+msgstr "ପ୍ରତିଛବି ମାନଙ୍କୁ ଧାରଣ କରନ୍ତୁ"
+
+#: Files:  menu.csv,
+msgid "Login Screen"
+msgstr "ଲଗଇନ ପରଦା"
+
+#: Files:  evolution.csv,
+msgid "Mailing List"
+msgstr "ଡାକ ପଠାଇବା ସମୂହ"
+
+#: Files:  nautilus.csv,
+msgid "Make Links"
+msgstr "ସଂଯୋଗ ପ୍ରସ୍ତୁତ କରନ୍ତୁ"
+
+#: Files:  firefox.csv,
+msgid "Manage Bookmarks"
+msgstr "ବୁକମାର୍କ ମାନଙ୍କୁ ପରିଚାଳନା କରନ୍ତୁ"
+
+#: Files:  openoffice.csv,
+msgid "Manual Break"
+msgstr "ହସ୍ତକୃତ କ୍ରମଭଙ୍ଗ"
+
+#: Files:  evolution.csv,
+msgid "Mark As"
+msgstr "ଏହିପରି ଭାବରେ ଚିହ୍ନିତ କରନ୍ତୁ"
+
+#: Files:  openoffice.csv,
+msgid "Media Player"
+msgstr "ମିଡିଆ ପ୍ଲେୟାର"
+
+#: Files:  menu.csv,
+msgid "Menu Layout"
+msgstr "ତାଲିକା ବିନ୍ଯାସ"
+
+#: Files:  openoffice.csv,
+msgid "Merge Cell"
+msgstr "କୋଷ ମାନଙ୍କୁ ମିଶାନ୍ତୁ"
+
+#: Files:  openoffice.csv,
+msgid "Merge Table"
+msgstr "ଟେବୁଲକୁ ମିଶାଅ"
+
+#: Files:  evolution.csv,
+msgid "Message Filters"
+msgstr "ସନ୍ଦେଶ ଫିଲଟର"
+
+#: Files:  evolution.csv,
+msgid "Message Source"
+msgstr "ସନ୍ଦେଶ ଉତ୍ସ"
+
+#: Files:  evolution.csv,
+msgid "Month View"
+msgstr "ମାନ ଦ୍ରୁଶ୍ଯ"
+
+#: Files:  menu.csv,
+msgid "More Preferences"
+msgstr "ଅଧିକ ପସନ୍ଦ"
+
+#: Files:  openoffice.csv,
+msgid "Multiple Operations"
+msgstr "ଏକାଧିକ କାର୍ଯ୍ଯ"
+
+#: Files:  pidgin.csv,
+msgid "Mute Sounds"
+msgstr "ଶବ୍ଦ ବନ୍ଦ କରନ୍ତୁ"
+
+#: Files:  menu.csv,
+msgid "Network Proxy"
+msgstr "ନେଟୱାର୍କ ପ୍ରୋକ୍ସି"
+
+#: Files:  menu.csv,
+msgid "Network Servers"
+msgstr "ନେଟୱାର୍କ ସେବକ"
+
+#: Files:  firefox.csv,
+msgid "New Message"
+msgstr "ନୂତନ ସନ୍ଦେଶ"
+
+#: Files:  gdmpaneldesktop.csv,
+msgid "New Panel"
+msgstr "ନୂତନ ଫଳକ"
+
+#: Files:  gnometerminal.csv,
+msgid "New Profile"
+msgstr "ନୂତନ ରୂପରେଖ"
+
+#: Files:  firefox.csv,
+msgid "New Tab"
+msgstr "ନୂତନ ଟ୍ଯାବ"
+
+#: Files:  evolution.csv,  firefox.csv,  openoffice.csv,
+msgid "New Window"
+msgstr "ନୂତନ ୱିଣ୍ଡୋ"
+
+#: Files:  gedit.csv,
+msgid "Next Document"
+msgstr "ନୂତନ ଦଲିଲ"
+
+#: Files:  gnometerminal.csv,
+msgid "Next Tab"
+msgstr "ନୂତନ ଟ୍ଯାବ"
+
+#: Files:  openoffice.csv,
+msgid "Nonprinting Characters"
+msgstr "ଅମୂଦ୍ରୀତ ଅକ୍ଷରଗୁଡିକ"
+
+#: Files:  gnometerminal.csv,  nautilus.csv,
+msgid "Normal Size"
+msgstr "ସାଧାରଣ ଆକାର"
+
+#: Files:  openoffice.csv,
+msgid "Notes Page"
+msgstr "ଟିପ୍ପଣୀ ପୃଷ୍ଠା"
+
+#: Files:  openoffice.csv,
+msgid "Number Format"
+msgstr "ସଂଖ୍ଯା ଫର୍ମାଟ"
+
+#: Files:  pidgin.csv,
+msgid "Online Help"
+msgstr "ଅନ-ଲାଇନ ସହାୟତା"
+
+#: Files:  firefox.csv,
+msgid "Open File"
+msgstr "ଫାଇଲକୁ ଖୋଲନ୍ତୁ"
+
+#: Files:  firefox.csv,  gedit.csv,  nautilus.csv,
+msgid "Open Location"
+msgstr "ଅବସ୍ଥାନ ଖୋଲନ୍ତୁ"
+
+#: Files:  nautilus.csv,
+msgid "Open Parent"
+msgstr "ପ୍ରମୂଖ ଫାଇଲକୁ ଖୋଲନ୍ତୁ"
+
+#: Files:  gnometerminal.csv,
+msgid "Open Tab"
+msgstr "ଟ୍ଯାବ ଖୋଲନ୍ତୁ"
+
+#: Files:  gdmpaneldesktop.csv,  gnometerminal.csv,
+msgid "Open Terminal"
+msgstr "ଟର୍ମିନାଲ ଖୋଲନ୍ତୁ"
+
+#: Files:  openoffice.csv,
+msgid "Outline Numbering"
+msgstr "ବାହ୍ଯରେଖାର ସଂଖ୍ଯାଦେବା"
+
+#: Files:  openoffice.csv,
+msgid "Package Manager"
+msgstr "ପ୍ଯାକେଜ ପରିଚାଳକ"
+
+#: Files:  firefox.csv,
+msgid "Page Info"
+msgstr "ପୃଷ୍ଠା ସୂଚନା"
+
+#: Files:  openoffice.csv,
+msgid "Page Number"
+msgstr "ପୃଷ୍ଠା ସଂଖ୍ଯା"
+
+#: Files:  openoffice.csv,
+msgid "Page Preview"
+msgstr "ପ୍ରୁଷ୍ଠା ପୂର୍ବାବଲୋକନ"
+
+#: Files:  firefox.csv,
+msgid "Page Setup"
+msgstr "ପୃଷ୍ଠା ବ୍ଯବସ୍ଥାପନ"
+
+#: Files:  firefox.csv,
+msgid "Page Source"
+msgstr "ପୃଷ୍ଠା ଉତ୍ସ"
+
+#: Files:  firefox.csv,
+msgid "Page Style"
+msgstr "ପୃଷ୍ଠା ଶୈଳୀ"
+
+#: Files:  menu.csv,
+msgid "PalmOS Devices"
+msgstr "PalmOS ଉପକରଣ ଗୁଡିକ"
+
+#: Files:  openoffice.csv,
+msgid "Paste Special"
+msgstr "ବିଶେଷ ଲଗାଅ"
+
+#: Files:  evolution.csv,
+msgid "Phone List"
+msgstr "ଫୋନ ତାଲିକା"
+
+#: Files:  menu.csv,
+msgid "Power Management"
+msgstr "ଶକ୍ତି ପରିଚାଳନା"
+
+#: Files:  menu.csv,
+msgid "Preferred Applications"
+msgstr "ପସନ୍ଦୀୟ ପ୍ରୟୋଗ"
+
+#: Files:  openoffice.csv,
+msgid "Presentation Wizard"
+msgstr "ଉପସ୍ଥାପନ ୱିଜାର୍ଡ"
+
+#: Files:  gedit.csv,
+msgid "Previous Document"
+msgstr "ପୂର୍ବବର୍ତ୍ତୀ ଦଲିଲ"
+
+#: Files:  gnometerminal.csv,
+msgid "Previous Tab"
+msgstr "ପୂର୍ବବର୍ତ୍ତୀ ଟ୍ଯାବ"
+
+#: Files:  openoffice.csv,
+msgid "Print Layout"
+msgstr "ମୂଦ୍ରଣ ବିନ୍ୟାସ"
+
+#: Files:  firefox.csv,
+msgid "Print preview"
+msgstr "ମୁଦ୍ରଣର ପ୍ରାକ୍ଦର୍ଶନ"
+
+#: Files:  openoffice.csv,
+msgid "Print Ranges"
+msgstr "ମୂଦ୍ରଣ ପରିସର ଗୁଡିକ"
+
+#: Files:  openoffice.csv,
+msgid "Printer Settings"
+msgstr "ମୂଦ୍ରଣୀ ବିନ୍ଯାସ"
+
+#: Files:  menu.csv,
+msgid "Project Management"
+msgstr "ଯୋଜନା ପରିଚାଳନା"
+
+#: Files:  openoffice.csv,
+msgid "Protect Document"
+msgstr "ଦଲିଲ  ସୁରକ୍ଷିତକର"
+
+#: Files:  evolution.csv,
+msgid "Quick Reference"
+msgstr "ସହଜ ନିର୍ଦ୍ଦେଶ"
+
+#: Files:  firefox.csv,
+msgid "Read Mail"
+msgstr "ଡାକ ପଢନ୍ତୁ"
+
+#: Files:  openoffice.csv,
+msgid "Recent Documents"
+msgstr "ସାମ୍ପ୍ରତିକ ଦଲିଲ"
+
+#: Files:  openoffice.csv,
+msgid "Refresh Range"
+msgstr "ସତେଜନ ପରିସର"
+
+#: Files:  openoffice.csv,
+msgid "Rehearse Timings"
+msgstr "ପୂର୍ବାଭାସ କରିବା ସମୟ"
+
+#: Files:  menu.csv,
+msgid "Remote Desktop"
+msgstr "ଦୂର ଡେସ୍କଟପ"
+
+#: Files:  pidgin.csv,
+msgid "Room List"
+msgstr "ଘର ତାଲିକା"
+
+#: Files:  menu.csv,
+msgid "Root Password"
+msgstr "ପ୍ରମୂଖ ଚାଳକର ପ୍ରବେଶ ସଙ୍କେତ"
+
+#: Files:  gedit.csv,  openoffice.csv,
+msgid "Save All"
+msgstr "ସବୁକିଛି ସଂରକ୍ଷଣ କରନ୍ତୁ"
+
+#: Files:  gedit.csv,  openoffice.csv,
+msgid "Save As"
+msgstr "ଏହିପରି ସଂରକ୍ଷଣ କରନ୍ତୁ"
+
+#: Files:  evolution.csv,
+msgid "Save Search"
+msgstr "ସନ୍ଧନକୁ ସଂରକ୍ଷଣ କରନ୍ତୁ"
+
+#: Files:  menu.csv,
+msgid "Scanner Tool"
+msgstr "କ୍ରମବୀକ୍ଷକ ଉପକରଣ"
+
+#: Files:  menu.csv,
+msgid "Screen Resolution"
+msgstr "ପରଦା ବିଭେଦନ"
+
+#: Files:  evolution.csv,
+msgid "Search Folders"
+msgstr "ଫୋଲଡର ସନ୍ଧାନ କରନ୍ତୁ"
+
+#: Files:  firefox.csv,  gedit.csv,  nautilus.csv,  openoffice.csv,
+msgid "Select All"
+msgstr "ସମସ୍ତଙ୍କୁ ଚୟନ କରନ୍ତୁ"
+
+#: Files:  evolution.csv,
+msgid "Select Date"
+msgstr "ତାରିଖ ଚୟନ କରନ୍ତୁ"
+
+#: Files:  nautilus.csv,
+msgid "Select Pattern"
+msgstr "ନମୁନା ଚୟନ କରନ୍ତୁ"
+
+#: Files:  openoffice.csv,
+msgid "Select Range"
+msgstr "ପରିସରକୁ ଚୟନ କରନ୍ତୁ"
+
+#: Files:  openoffice.csv,
+msgid "Select Text"
+msgstr "ପାଠ୍ଯ ଚୟନ କରନ୍ତୁ"
+
+#: Files:  evolution.csv,
+msgid "Select Today"
+msgstr "ଆଜିକୁ ଚୟନ କରନ୍ତୁ"
+
+#: Files:  menu.csv,
+msgid "SELinux Troubleshooter"
+msgstr "SELinux ତୃଟି ନିବାରଣ"
+
+#: Files:  firefox.csv,
+msgid "Send Link"
+msgstr "ସଂଯୋଗ ପଠାନ୍ତୁ"
+
+#: Files: evolution.csv,
+msgid "Send/Receive"
+msgstr "ପଠାନ୍ତୁ/ପାଆନ୍ତୁ"
+
+#: Files:  gedit.csv,
+msgid "Set Language"
+msgstr "ଭାଷା ବିନ୍ଯାସ କରନ୍ତୁ"
+
+#: Files:  gnometerminal.csv,
+msgid "Set Title"
+msgstr "ଶୀର୍ଷକକୁ ବିନ୍ଯାସ କରନ୍ତୁ"
+
+#: Files:  gnometerminal.csv,
+msgid "Show Menubar"
+msgstr "ମେନୁ ପଟିକୁ ପ୍ରଦର୍ଶନ କରନ୍ତୁ"
+
+#: Files:  gdmpaneldesktop.csv,
+msgid "Shut Down"
+msgstr "ବନ୍ଦ କରନ୍ତୁ"
+
+#: Files:  gedit.csv,
+msgid "Side Pane"
+msgstr "ପାର୍ଶ୍ବ ପରଦାଖଣ୍ଡ"
+
+#: Files:  openoffice.csv,
+msgid "Slide Design"
+msgstr "ସ୍ଲାଇଡ ନମୁନା"
+
+#: Files:  openoffice.csv,
+msgid "Slide Layout"
+msgstr "ସ୍ଲାଇଡ ବିନ୍ଯାସ"
+
+#: Files:  openoffice.csv,
+msgid "Slide Pane"
+msgstr "ସ୍ଲାଇଡ ପରଦାଖଣ୍ଡ"
+
+#: Files:  openoffice.csv,
+msgid "Slide Show"
+msgstr "ସ୍ଲାଇଡ ପ୍ରଦର୍ଶନ"
+
+#: Files:  openoffice.csv,
+msgid "Slide Sorter"
+msgstr "ସ୍ଲାଇଡ ବଛାଳି"
+
+#: Files:  openoffice.csv,
+msgid "Slide Transition"
+msgstr ""
+
+#: Files:  menu.csv,
+msgid "Software Updater"
+msgstr "ସଫ୍ଟୱେର ଅଦ୍ଯତକ"
+
+#: Files:  pidgin.csv,
+msgid "Sort Buddies"
+msgstr "ସାଙ୍ଗ ମାନଙ୍କୁ ସଜାଡନ୍ତୁ"
+
+#: Files:  openoffice.csv,
+msgid "Special Character"
+msgstr "ବିଶେଷ ଅକ୍ଷର"
+
+#: Files:  openoffice.csv,
+msgid "Split Cell"
+msgstr "ବିଭକ୍ତ କୋଷ"
+
+#: Files:  openoffice.csv,
+msgid "Split Table"
+msgstr "ବିଭକ୍ତ ସାରଣୀ"
+
+#: Files:  nautilus.csv,
+msgid "Stretch Icon"
+msgstr "ପ୍ରସାରିତ ଚିତ୍ରସଙ୍କେତ"
+
+#: Files:  openoffice.csv,
+msgid "Summary Slide"
+msgstr "ସାରାଂଶ ସ୍ଲାଇଡ"
+
+#: Files:  evolution.csv,
+msgid "Switcher Appearance"
+msgstr "ପରିବର୍ତ୍ତନକାରୀ ଉପସ୍ଥିତି"
+
+#: Files:  evolution.csv,
+msgid "Synchronization Options"
+msgstr "ସମକାଳୀନ ବିକଳ୍ପ"
+
+#: Files:  menu.csv,  pidgin.csv,
+msgid "System Log"
+msgstr "ତନ୍ତ୍ର ଲଗ"
+
+#: Files:  menu.csv,
+msgid "System Monitor"
+msgstr "ତନ୍ତ୍ର ପ୍ରଦର୍ଶିକା"
+
+#: Files:  menu.csv,
+msgid "System Tools"
+msgstr "ତନ୍ତ୍ର ଉପକରଣ"
+
+#: Files:  openoffice.csv,
+msgid "Table Boundaries"
+msgstr "ସାରଣୀ ପରିସୀମା"
+
+#: Files:  openoffice.csv,
+msgid "Table Properties"
+msgstr "ସାରଣୀ ଗୁଣଧର୍ମ"
+
+#: Files:  menu.csv,
+msgid "Take Screenshot"
+msgstr "ଗୋଟିଏ ଆଶୁଚିତ୍ର ନିଅନ୍ତୁ"
+
+#: Files:  openoffice.csv,
+msgid "Task Pane"
+msgstr "କାର୍ଯ୍ଯ ପରଦାଖଣ୍ଡ"
+
+#: Files:  menu.csv,
+msgid "Text Editor"
+msgstr "ପାଠ୍ଯ ସମ୍ପାଦକ"
+
+#: Files:  firefox.csv,
+msgid "Text Size"
+msgstr "ପାଠ୍ଯ ଆକାର"
+
+#: Files:  menu.csv,
+msgid "The GIMP"
+msgstr "ଗିମ୍ପ"
+
+#: Files:  menu.csv,
+msgid "Thunderbird Email"
+msgstr "ଥଣ୍ଡରବାର୍ଡ ଇ-ଡାକ"
+
+#: Files:  evolution.csv,
+msgid "Undelete Message"
+msgstr "ଅପସାରଣ କରାଯାଇ ନ ଥିବା ସନ୍ଦେଶ"
+
+#: Files:  gedit.csv,
+msgid "Unsaved Document"
+msgstr "ଅସଂରକ୍ଷିତ ଦଲିଲ"
+
+#: Files:gdmpaneldesktop
+msgid "User Name"
+msgstr "ଚାଳକ ନାମ"
+
+#: Files:  openoffice.csv,
+msgid "Value Highlighting"
+msgstr "ମୂଲ୍ଯ ବିଶିଷ୍ଟତା ପ୍ରଦର୍ଶନ"
+
+#: Files:  menu.csv,
+msgid "Vi Improved"
+msgstr "ଉନ୍ନତ Vi"
+
+#: Files:  menu.csv,
+msgid "Volume Control"
+msgstr "ପ୍ରବଳତା ନିୟନ୍ତ୍ରଣ"
+
+#: Files:  firefox.csv,
+msgid "Web Search"
+msgstr "ୱେବ ସନ୍ଧାନ"
+
+#: Files:  evolution.csv,
+msgid "Week View"
+msgstr "ସପ୍ତାହ ଦ୍ରୁଶ୍ଯ"
+
+#: Files: openoffice.csv,
+msgid "What's This"
+msgstr "ଏହା କଣ ଅଟେ"
+
+#: Files:  evolution.csv,
+msgid "With Status"
+msgstr "ସ୍ଥିତି ସହିତ"
+
+#: Files:  openoffice.csv,
+msgid "Word Count"
+msgstr "ଶବ୍ଦ ଗଣନା"
+
+#: Files:  menu.csv,
+msgid "Word Processor"
+msgstr "ଶବ୍ଦ ସଂସାଧକ"
+
+#: Files:  evolution.csv,  firefox.csv,
+msgid "Work Offline"
+msgstr "କାର୍ଯ୍ଯ ଅଫ-ଲାଇନ"
+
+#: Files:evolution
+msgid "Work Week"
+msgstr "କାର୍ଯ୍ଯ ସପ୍ତାହ"
+
+#: Files:  gnometerminal.csv,  nautilus.csv,
+msgid "Zoom In"
+msgstr "ବଡ କରନ୍ତୁ"
+
+#: Files:  gnometerminal.csv,  nautilus.csv,
+msgid "Zoom Out"
+msgstr "ସାନ କରନ୍ତୁ"
+
+#: Files:  gnometerminal.csv,
+msgid "Add or Remove"
+msgstr "ଯୋଗ କିମ୍ବା ଅପସାରଣ କରନ୍ତୁ"
+
+#: Files:  evolution.csv,
+msgid "Add Sender to Address Book"
+msgstr "ପ୍ରେରକକୁ ଠିକଣା ପୁସ୍ତିକାରେ ଯୋଗ କରନ୍ତୁ"
+
+#: Files:  gdmpaneldesktop.csv,
+msgid "Add to Panel"
+msgstr "ଫଳକରେ ଯୋଗ କରନ୍ତୁ"
+
+#: Files: menu.csv,
+msgid "Add/Remove Software"
+msgstr "ସଫ୍ଟୱେର ଯୋଗ/ଅପସାରଣ କରନ୍ତୁ"
+
+#: Files:  evolution.csv,
+msgid "Address Book Properties"
+msgstr "ଠିକଣା ପୁସ୍ତିକା ଗୁଣଧର୍ମ"
+
+#: Files:  evolution.csv,
+msgid "All Message Headers"
+msgstr "ସମସ୍ତ ସନ୍ଦେଶ ଶୀର୍ଷକ"
+
+#: Files:  menu.csv,
+msgid "Assistive Technology Preferences"
+msgstr "ସହକାରୀ ପ୍ରଯୁକ୍ତିଜ୍ଞାନ ପସନ୍ଦ"
+
+#: Files:  nautilus.csv,
+msgid "Backgrounds and Emblems"
+msgstr "ପୃଷ୍ଠଭୂମି ଏବଂ ପ୍ରତୀକ"
+
+#: Files:  firefox.csv,
+msgid "Bookmark All Tabs"
+msgstr "ଏହି ଟ୍ଯାବକୁ ବୁକମାର୍କ କରନ୍ତୁ"
+
+#: Files:  firefox.csv,
+msgid "Bookmark This Page"
+msgstr "ଏହି ପୃଷ୍ଠାକୁ ବୁକମାର୍କ କରନ୍ତୁ"
+
+#: Files:  openoffice.csv,
+msgid "Bullets and Numbering"
+msgstr "ବିନ୍ଦୁ ସଙ୍କେତ ଏବଂ ସାଙ୍କେତିକରଣ"
+
+#: Files: menu.csv, nautilus.csv,
+msgid "CD/DVD Creator"
+msgstr "CD/DVD ସୃଷ୍ଟା"
+
+#: Files:  gdmpaneldesktop.csv,
+msgid "Change Desktop Background"
+msgstr "ଡେକ୍ସଟପ ପୃଷ୍ଠଭୂମିକୁ ବଦଳାନ୍ତୁ"
+
+#: Files:  evolution.csv,
+msgid "Check for Junk"
+msgstr "ଅଦରକାରୀ ଡାକକୁ ଯାଞ୍ଚକରନ୍ତୁ"
+
+#: Files:  firefox.csv,
+msgid "Check for Updates"
+msgstr "ଅଦ୍ଯତନ ମାନଙ୍କ ପାଇଁ ଯାଞ୍ଚ କରନ୍ତୁ"
+
+#: Files:  gdmpaneldesktop.csv,
+msgid "Clean UP by Name"
+msgstr "ନାମ ଅନୁଯାୟୀ ସଜାଡନ୍ତୁ"
+
+#: Files:  nautilus.csv,
+msgid "Clean Up by Names"
+msgstr "ନାମ ଅନୁଯାୟୀ ସଜାଡନ୍ତୁ"
+
+#: Files:  nautilus.csv,
+msgid "Close all Folders"
+msgstr "ସମସ୍ତ ଫୋଲଡର ମାନଙ୍କୁ ବନ୍ଦ କରନ୍ତୁ"
+
+#: Files:  nautilus.csv,
+msgid "Close Parent Folders"
+msgstr "ପୈତୃକ ଫୋଲଡର ମାନଙ୍କୁ ବନ୍ଦ କରନ୍ତୁ"
+
+#: Files:  evolution.csv,
+msgid "Collapse All Threads"
+msgstr "ସମସ୍ତ ଥ୍ରେଡକୁ ନିପାତ କରନ୍ତୁ"
+
+#: Files:  openoffice.csv,
+msgid "Column & Row Headers"
+msgstr "ସ୍ତମ୍ଭ ଏବଂ ଧାଡି ଶୀର୍ଷକ"
+
+#: Files:  evolution.csv,
+msgid "Compose New Message"
+msgstr "ନୂତନ ସନ୍ଦେଶ ଲେଖନ୍ତୁ"
+
+#: Files:  menu.csv,  nautilus.csv,
+msgid "Connect to Server"
+msgstr "ସେବକ ସହିତ ସଂଯୋଗ ସ୍ଥାପନ କରନ୍ତୁ୍କ ସ୍ଥାପନ କରନ୍ତୁ"
+
+#: Files:  evolution.csv,
+msgid "Copy All Contact to"
+msgstr "ସମସ୍ତ ସମ୍ପର୍କକୁ ଏଠାରେ ନକଲ କରନ୍ତୁ"
+
+#: Files:  evolution.csv,
+msgid "Copy Contact to"
+msgstr "ସମ୍ପର୍କକୁ ଏଠାରେ ନକଲ କରନ୍ତୁ"
+
+#: Files:  evolution.csv,
+msgid "Copy Folder To..."
+msgstr "ଫୋଲଡରକୁ ଏଠାରେ ନକଲ କରନ୍ତୁ..."
+
+#: Files:  evolution.csv,
+msgid "Copy to Folder"
+msgstr "ଫୋଲଡରରେ ନକଲ କରନ୍ତୁ"
+
+#: Files:  evolution.csv,
+msgid "Create Search Folder from Search"
+msgstr "ସନ୍ଧାନରୁ ସନ୍ଧାନ ଫୋଲଡରକୁ ସୃଷ୍ଟି କରନ୍ତୁ"
+
+#: Files:  openoffice.csv,
+msgid "Custom Slide Show"
+msgstr "ସ୍ଲାଇଡ ପ୍ରଦର୍ଶନକୁ ଇଚ୍ଛାରୂପଣ କରନ୍ତୁ"
+
+#: Files:  menu.csv,
+msgid "Date & Time"
+msgstr "ତାରିଖ ଏବଂ ସମୟ"
+
+#: Files:  gdmpaneldesktop.csv,
+msgid "Default System Session"
+msgstr "ପୂର୍ବ ନିର୍ଦ୍ଧାରିତ ତନ୍ତ୍ର ଅଧିବେଶନ"
+
+#: Files:  openoffice.csv,
+msgid "Delete Manual Break"
+msgstr "ହସ୍ତକୃତ ବିଚ୍ଛେଦକୁ ଅପସାରଣ କରନ୍ତୁ"
+
+#: Files:  gdmpaneldesktop.csv,
+msgid "Delete This Panel"
+msgstr "ଏହି ଫଳକକୁ ଅପସାରଣ କରନ୍ତୁ"
+
+#: Files:  menu.csv,
+msgid "Disk Usage Analyzer"
+msgstr "ଡିସ୍କ ବ୍ଯବହାର ବିଧି ବିଶ୍ଳେଷକ"
+
+#: Files:  evolution.csv,
+msgid "Edit as New Message"
+msgstr "ନୂତନ ସନ୍ଦେଶ ଭାବରେ ସମ୍ପାଦନ କରନ୍ତୁ"
+
+#: Files:  evolution.csv,
+msgid "Edit Saved Search"
+msgstr "ସଂରକ୍ଷିତ ସନ୍ଧାନକୁ ସମ୍ପାଦନ କରନ୍ତୁ"
+
+#: Files:  evolution.csv,
+msgid "Expand All Threads"
+msgstr "ସମସ୍ତ ଥ୍ରେଡ ମାନଙ୍କୁ ପ୍ରସାରିତ କରନ୍ତୁ"
+
+#: Files:  openoffice.csv,
+msgid "Export as PDF"
+msgstr "PDF ଭାବରେ ନିର୍ଯ୍ଯାସିତ କରନ୍ତୁ"
+
+#: Files:  openoffice.csv,
+msgid "Find & Replace"
+msgstr "ଖୋଜନ୍ତୁ ଏବଂ ବଦଳାନ୍ତୁ"
+
+#: Files:  evolution.csv,
+msgid "Find in Message"
+msgstr "ସନ୍ଦେଶରେ ଖୋଜନ୍ତୁ"
+
+#: Files:  firefox.csv,
+msgid "Find in This Page"
+msgstr "ଏହି ପୃଷ୍ଠାରେ ଖୋଜନ୍ତୁ"
+
+#: Files:  menu.csv,
+msgid "Firefox Web Bowser"
+msgstr "Firefox ୱେବ ବ୍ରାଉଜର"
+
+#: Files:  pidgin.csv,
+msgid "Get User Info"
+msgstr "ଚାଳକର ସୂଚନା ପାଆନ୍ତୁ"
+
+#: Files:  gedit.csv,
+msgid "Go to Line"
+msgstr "ଧାଡିକୁ ଯାଆନ୍ତୁ"
+
+#: Files:  evolution.csv,
+msgid "Group By Threads"
+msgstr "ଥ୍ରେଡ ଅନୁଯାୟୀ ସମୂହ ସୃଷ୍ଟି କରନ୍ତୁ"
+
+#: Files:  menu.csv,
+msgid "Gthumb Image Viewer"
+msgstr "ଜି-ଥମ୍ବ ପ୍ରତିଛବି ପ୍ରଦର୍ଶକ"
+
+#: Files:  openoffice.csv,
+msgid "Headers & Footers"
+msgstr "ଶୀର୍ଷକ ଏବଂ ପାଦିକା"
+
+#: Files:  evolution.csv,
+msgid "Hide Deleted Messages"
+msgstr "ଅପସାରିତ ସନ୍ଦେଶ ମାନଙ୍କୁ ଲୁଚାନ୍ତୁ"
+
+#: Files:  evolution.csv,
+msgid "Hide Read Messages"
+msgstr "ପଠିତ ସନ୍ଦେଶ ମାନଙ୍କୁ ଲୁଚାନ୍ତୁ"
+
+#: Files:  evolution.csv,
+msgid "Hide Selected Messages"
+msgstr "ଚୟିତ ସନ୍ଦେଶ ମାନଙ୍କୁ ଲୁଚାନ୍ତୁ"
+
+#: Files:  openoffice.csv,
+msgid "Indexes and tables"
+msgstr "ସୂଚକ ଏବଂ ସାରଣୀ"
+
+#: Files:  openoffice.csv,
+msgid "Input Method Status"
+msgstr "ନିବେଶ ପ୍ରଣାଳୀ ଅବସ୍ଥିତି"
+
+#: Files:  gedit.csv,
+msgid "Insert Date and Time"
+msgstr "ତାରିଖ/ସମୟ ଭର୍ତ୍ତି କରନ୍ତୁ"
+
+#: Files:  menu.csv,
+msgid "IP Telephony, VoIP and Video Conferencing"
+msgstr "ଆଇ.ପି ଟେଲିଫୋନୀ, ଭି.ଓ.ଆଇ.ପି, ଭିଡିଓ କୋନଫରେନ୍ସିଙ୍ଗ"
+
+#: Files:  openoffice.csv,
+msgid "Link to External Data"
+msgstr "ବାହ୍ଯ ତଥ୍ଯ ପାଇଁ ସଂଯୋଗ"
+
+#: Files:  gdmpaneldesktop.csv,
+msgid "Lock To Panel"
+msgstr "ଫଳକରେ ତାଲା ଦେଇ ରଖନ୍ତୁ"
+
+#: Files:  menu.csv,
+msgid "Log Out root"
+msgstr "ରୁଟ ଚାଳକକୁ ଲଗ ଆଉଟ କରନ୍ତୁ"
+
+#: Files:  menu.csv,
+msgid "Logical Volume Management"
+msgstr "ତାର୍କିକ ଘନଫଳ ପରିଚାଳକ"
+
+#: Files:  openoffice.csv,
+msgid "Mail Merge Wizard"
+msgstr "ଡାକ ମିଶ୍ରଣ ୱିଜାର୍ଡ"
+
+#: Files:  evolution.csv,
+msgid "Mark All Message as Read"
+msgstr "ସମସ୍ତ ସନ୍ଦେଶ ଗୁଡିକ ପଠିତ ବୋଲି ଚିହ୍ନିତ କରନ୍ତୁ"
+
+#: Files:  menu.csv,
+msgid "Menus & Toolbars"
+msgstr "ତାଲିକା ଏବଂ ସାଧନ ପଟି"
+
+#: Files:  evolution.csv,
+msgid "Move All Contact to "
+msgstr "ସମସ୍ତ ସମ୍ପର୍କକୁ ଏଠାକୁ ପଠାନ୍ତୁ"
+
+#: Files:  evolution.csv,
+msgid "Move contact to"
+msgstr "ଏଠାକୁ ସମ୍ପର୍କକୁ ଘୁଞ୍ଚାନ୍ତୁ"
+
+#: Files:  evolution.csv,
+msgid "Move Folder To..."
+msgstr "ଫୋଲଡରକୁ ଏଠାକୁ ପଠାନ୍ତୁ..."
+
+#: Files:  gnometerminal.csv,
+msgid "Move tab to the Left"
+msgstr "ଟ୍ଯାବକୁ ବାମକୁ ପଠାନ୍ତୁ"
+
+#: Files:  gnometerminal.csv,
+msgid "Move tab to the Right"
+msgstr "ଟ୍ଯାବକୁ ଡାହାଣକୁ ପଠାନ୍ତୁ"
+
+#: Files:  evolution.csv,
+msgid "Move to Folder"
+msgstr "ଫୋଲଡରକୁ ପଠାନ୍ତୁ"
+
+#: Files:  gedit.csv,
+msgid "Move to New Window"
+msgstr "ନୂତନ ୱିଣ୍ଡୋକୁ ପଠାନ୍ତୁ"
+
+#: Files:  nautilus.csv,
+msgid "Move to Trash"
+msgstr "ଆବର୍ଜନା ପାତ୍ରରେ ପକାନ୍ତୁ"
+
+#: Files:  openoffice.csv,
+msgid "Movie and Sound"
+msgstr "ସିନେମା ଏବଂ ସାଉଣ୍ଡ"
+
+#: Files:  menu.csv,
+msgid "Multimedia System Selector "
+msgstr "ବହୁମାଧ୍ଯମ ତନ୍ତ୍ର ଚୟକ"
+
+#: Files:  pidgin.csv,
+msgid "New Instant Message"
+msgstr "ନୂତନ ତତ୍କାଳୀନ ସନ୍ଦେଶ"
+
+#: Files:  evolution.csv,
+msgid "On This Computer"
+msgstr "ଏହି କମ୍ପୁଟରରେ"
+
+#: Files:  openoffice.csv,
+msgid "Open existing presentation"
+msgstr "ଅବସ୍ଥିତ ଉପସ୍ଥାପନକୁ ଖୋଲନ୍ତୁ"
+
+#: Files:  evolution.csv,
+msgid "Open in New Window"
+msgstr "ନୂତନ ୱିଣ୍ଡୋରେ ଖୋଲନ୍ତୁ"
+
+#: Files:  nautilus.csv,
+msgid "Open in Terminal"
+msgstr "ଟର୍ମିନାଲରେ ଖୋଲନ୍ତୁ"
+
+#: Files:  openoffice.csv,
+msgid "Page Break Preview"
+msgstr "ପୃଷ୍ଠା ବିଚ୍ଛେଦ ପୂର୍ବାବଲୋକନ"
+
+#: Files:  menu.csv,
+msgid "Personal File Sharing"
+msgstr "ବ୍ଯକ୍ତିଗତ ଫାଇଲ ସହଭାଜନ"
+
+#: Files:  firefox.csv,
+msgid "Personal Toolbar Folder"
+msgstr "ବ୍ଯକ୍ତିଗତ ସାଧନ ପଟି ଫୋଲଡର"
+
+#: Files:  gdmpaneldesktop.csv,
+msgid "Please enter your user name"
+msgstr "ଦୟାକରି ଆପଣଙ୍କ ଚାଲକ ନାମକୁ ଭରଣ କରନ୍ତୁ"
+
+#: Files:  openoffice.csv,
+msgid "Position and Size"
+msgstr "ଅବସ୍ଥାନ ଏବଂ ଆକାର"
+
+#: Files:  evolution.csv,
+msgid "Post a Reply"
+msgstr "ଗୋଟିଏ ଉତ୍ତର ପଠାନ୍ତୁ"
+
+#: Files:  evolution.csv,
+msgid "Post New Message to Folder"
+msgstr "ଫୋଲଡରକୁ ନୂତନ ସନ୍ଦେଶ ପଠାନ୍ତୁ"
+
+#: Files:  evolution.csv,
+msgid "Publish calender Information"
+msgstr "କ୍ଯାଲେଣ୍ଡର ସୂଚନାକୁ ପ୍ରକାଶିତ କରନ୍ତୁ"
+
+#: Files:  menu.csv,
+msgid "Removable Drives and Media"
+msgstr "ଅପସାରଣଯୋଗ୍ଯ ଡ୍ରାଇଭର ଏବଂ ମାଧ୍ଯମ"
+
+#: Files:  gdmpaneldesktop.csv,
+msgid "Remove From Panel"
+msgstr "ଫଳକରୁ କାଢନ୍ତୁ"
+
+#: Files:  evolution.csv,
+msgid "Reply to All"
+msgstr "ସମସ୍ତଙ୍କୁ ଉତ୍ତର ଦିଅନ୍ତୁ"
+
+#: Files:  evolution.csv,
+msgid "Reply to List"
+msgstr "ସମୂହକୁ ଉତ୍ତର ଦିଅନ୍ତୁ"
+
+#: Files:  evolution.csv,
+msgid "Reply to Sender"
+msgstr "ପ୍ରେରକକୁ ଉତ୍ତର ଦିଅନ୍ତୁ"
+
+#: Files:firefox
+msgid "Report broken Web Site"
+msgstr "ଅକାମି ୱେବ ସାଇଟ ବିଷୟରେ ଜଣାନ୍ତୁ"
+
+#: Files:  gnometerminal.csv,
+msgid "Reset and Clear"
+msgstr "ପୁନଃସ୍ଥାପନ କରନ୍ତୁ ଏବଂ ସଫା କରନ୍ତୁ"
+
+#: Files:  nautilus.csv,
+msgid "Reset View to Defaults"
+msgstr "ଦୃଶ୍ଯକୁ ପୂର୍ବନିର୍ଦ୍ଧାରିତ ଭାବରେ ପୁନଃସ୍ଥାପନ କରନ୍ତୁ"
+
+#: Files: nautilus.csv,
+msgid "Restore Icon's Original Size"
+msgstr "ଚିତ୍ରସଙ୍କେତ ମାନଙ୍କର ପ୍ରକୃତ ଆକାରକୁ ପ୍ରତ୍ଯାବୃତ୍ତ କରନ୍ତୁ"
+
+#: Files:  menu.csv,
+msgid "Rhythmbox Music Player"
+msgstr "ରିଦୀମ-ବକ୍ସ ସଙ୍ଗୀତ ଚାଳକ"
+
+#: Files:  firefox.csv,
+msgid "Save Frame As"
+msgstr "ଫ୍ରେମକୁ ଏହିପରି ସଂରକ୍ଷଣ କରନ୍ତୁ"
+
+#: Files:  evolution.csv,
+msgid "Save Message"
+msgstr "ସନ୍ଦେଶକୁ ସଂରକ୍ଷଣ କରନ୍ତୁ"
+
+#: Files:  firefox.csv,
+msgid "Save Page As"
+msgstr "ଏହିପରି ଭାବରେ ପୃଷ୍ଠାକୁ ସଂରକ୍ଷଣ କରନ୍ତୁ"
+
+#: Files:  menu.csv,
+msgid "SCIM Input Method Setup"
+msgstr "SCIM ନିବେଶ ପ୍ରଣାଳୀ ବ୍ଯବସ୍ଥାପନ"
+
+#: Files:  menu.csv,
+msgid "Search for files"
+msgstr "ଫାଇଲ ମାନଙ୍କୁ ଖୋଜନ୍ତୁ"
+
+#: Files:  menu.csv,
+msgid "Security Level and Firewall"
+msgstr "ସୁରକ୍ଷା ସ୍ତର ଏବଂ ଅଗ୍ନିକବଚ"
+
+#: Files:  evolution.csv,
+msgid "Select All Messages"
+msgstr "ସମସ୍ତ ସନ୍ଦେଶ ମାନଙ୍କୁ ଚୟନ କରନ୍ତୁ"
+
+#: Files:  evolution.csv,
+msgid "Select All Text"
+msgstr "ସମସ୍ତ ପାଠ୍ଯକୁ ଚୟନ କରନ୍ତୁ"
+
+#: Files:  evolution.csv,
+msgid "Select Message Thread"
+msgstr "ସନ୍ଦେଶ ଥ୍ରେଡକୁ ଚୟନ କରନ୍ତୁ"
+
+#: Files:  evolution.csv,
+msgid "Send Message to Contact"
+msgstr "ସମ୍ପର୍କକୁ ସନ୍ଦେଶ ପଠାନ୍ତୁ"
+
+#: Files:  gnometerminal.csv,
+msgid "Set Character Encoding"
+msgstr "ଅକ୍ଷର ସାଙ୍କେତିକରଣକୁ ବିନ୍ଯାସ କରନ୍ତୁ"
+
+#: Files:  openoffice.csv,
+msgid "Sheet From File"
+msgstr "ଫାଇଲରୁ ପତ୍ର"
+
+#: Files:  pidgin.csv,
+msgid "Show empty groups"
+msgstr "ଖାଲି ସମୂହ ମାନଙ୍କୁ ଦେଖାନ୍ତୁ"
+
+#: Files:  nautilus.csv,
+msgid "Show Hidden Files"
+msgstr "ଲୁକ୍କାୟିତ ଫାଇଲ ଦର୍ଶାନ୍ତୁ"
+
+#: Files:  evolution.csv,
+msgid "Show Hidden Messages"
+msgstr "ଲୁକ୍କାୟିତ ସନ୍ଦେଶ ମାନଙ୍କୁ ଦେଖାନ୍ତୁ"
+
+#: Files:  pidgin.csv,
+msgid "Show Idle Times"
+msgstr "ନିଷ୍କ୍ରିୟ ସମୟ ଦେଖାନ୍ତୁ"
+
+#: Files:  pidgin.csv,
+msgid "Show Offline Buddies"
+msgstr "ଅଫ-ଲାଇନ ସାଙ୍ଗ ମାନଙ୍କୁ ଦେଖାନ୍ତୁ"
+
+#: Files: openoffice.csv,
+msgid "Show/Hide Slide"
+msgstr "ସ୍ଲାଇଡ ଦେଖାନ୍ତୁ/ଲୁଚାନ୍ତୁ"
+
+#: Files:  openoffice.csv,
+msgid "Slide show settings"
+msgstr "ସ୍ଲାଇଡ ପ୍ରଦର୍ଶନ ବିନ୍ଯାସ"
+
+#: Files:  menu.csv,
+msgid "Smart Card Manager"
+msgstr "ସ୍ମାର୍ଟ କାର୍ଡ ପରିଚାଳକ"
+
+#: Files:  menu.csv,
+msgid "Sound & Video"
+msgstr "ଧ୍ବନି ଏବଂ ଭିଡିଓ"
+
+#: Files:  menu.csv,
+msgid "Sound Juicer CD Extractor"
+msgstr "ସାଉଣ୍ଡ ଜୂସର ସି.ଡି. ନିର୍ଯ୍ଯାସକ"
+
+#: Files:  menu.csv,
+msgid "Soundcard Detection"
+msgstr "ସାଉଣ୍ଡ-କାର୍ଡ ଅନୁସନ୍ଧାନ"
+
+#: Files:  openoffice.csv,
+msgid "Styles and Formatting"
+msgstr "ଶୈଳୀ ଏବଂ ସଂରୂପଣ"
+
+#: Files:  evolution.csv,
+msgid "Submit Bug Report"
+msgstr "ତ୍ରୁଟି ବିବରଣୀ ଦାଖଲ କରନ୍ତୁ"
+
+#: Files: evolution.csv,
+msgid "Subscribe to Other User's Folder"
+msgstr "ଅନ୍ଯାନ୍ଯ ଚାଳକର ଫୋଲଡରର ସଦସ୍ଯତା ଗ୍ରହଣ କରନ୍ତୁ"
+
+#: Files:  menu.csv,
+msgid "Terminal Server Client"
+msgstr "ଟର୍ମିନାଲ ସେବକ ଗ୍ରାହକ"
+
+#: Files:  menu.csv,
+msgid "Users and Groups"
+msgstr "ଚାଳକ ଏବଂ ସମୂହ ମାନ"
+
+#: Files:  nautilus.csv,
+msgid "View as Icons"
+msgstr "ଚିତ୍ରସଙ୍କେତ ଭାବରେ ଦେଖନ୍ତୁ"
+
+#: Files:  nautilus.csv,
+msgid "View as List"
+msgstr "ତାଲିକା ଭାବରେ ଦେଖନ୍ତୁ"
+
+#: Files:  pidgin.csv,
+msgid "View User Log"
+msgstr "ଚାଳକ ଲଗକୁ ଦେଖନ୍ତୁ"
+
+#: Files:  evolution.csv,
+msgid "With Due Date"
+msgstr "ନିୟତ ତାରିଖ ସହିତ"
+
+#: Files:  evolution.csv,
+msgid "Work Week View"
+msgstr "କାର୍ଯ୍ଯ ସପ୍ତାହ ଦ୍ରୁଶ୍ଯ"
+
+#: Files:  openoffice.csv,
+msgid "XML Filter Settings"
+msgstr "XML ଫିଲଟର ବିନ୍ଯାସ"
