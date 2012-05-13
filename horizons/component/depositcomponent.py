@@ -20,13 +20,23 @@
 # ###################################################
 
 from horizons.component import Component
+from horizons.component.storagecomponent import StorageComponent
 
 class DepositComponent(Component):
 	NAME = 'resource_deposit'
+	DEPENDENCIES = ['StorageComponent']
 
 	def __init__(self, resources):
 		super(DepositComponent, self).__init__()
 		self.resources = resources
+
+	def initialize(self, inventory=None):
+		if inventory:
+			iterator = inventory.itercontents
+		else:
+			iterator = self.get_random_res_amounts
+		for res, amount in iterator():
+			self.instance.get_component(StorageComponent).inventory.alter(res, amount)
 
 	def get_res_ranges(self):
 		for res, data in self.resources.iteritems():
