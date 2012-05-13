@@ -65,6 +65,9 @@ class ResourceOverviewBar(object):
 
 	GOLD_ENTRY_GUI_FILE = "resource_overview_bar_gold.xml"
 	ENTRY_GUI_FILE = "resource_overview_bar_entry.xml"
+
+	STATS_GUI_FILE = "resource_overview_bar_stats.xml"
+
 	ICON_POS_BALANCE = "content/gui/icons/resources/positive32.png"
 	ICON_NEG_BALANCE = "content/gui/icons/resources/negative32.png"
 
@@ -95,6 +98,10 @@ class ResourceOverviewBar(object):
 		self.gold_gui.balance_visible = False
 		self.gold_gui.child_finder = PychanChildFinder(self.gold_gui)
 		self.gold_gui.child_finder("res_icon").image = get_res_icon_path(RES.GOLD, 32)
+		self.gold_gui.child_finder(name="balance_background").mapEvents({
+		  "balance_background/mouseEntered/stats" : self._show_stats,
+		  })
+		self.stats_gui = None
 
 		self.gui = [] # list of slots
 		self.resource_configurations = weakref.WeakKeyDictionary()
@@ -195,7 +202,7 @@ class ResourceOverviewBar(object):
 
 		# construct new slots (fill values later)
 		load_entry = lambda : load_uh_widget(self.ENTRY_GUI_FILE, style=self.__class__.STYLE)
-		initial_offset = 93
+		initial_offset = 101
 		offset = 52
 		resources = self._get_current_resources()
 		addition = [-1] if self._do_show_dummy or not resources else [] # add dummy at end for adding stuff
@@ -250,7 +257,7 @@ class ResourceOverviewBar(object):
 		self.set_inventory_instance(resource_source_instance, keep_construction_mode=True)
 
 		# label background icons
-		cost_icon_gold = "content/gui/images/background/widgets/res_mon_extra_bg.png"
+		cost_icon_gold = "content/gui/images/background/widgets/resbar_stats_bottom.png"
 		cost_icon_res = "content/gui/images/background/widgets/res_extra_bg.png"
 
 		res_list = self._get_current_resources()
@@ -279,11 +286,11 @@ class ResourceOverviewBar(object):
 
 				cur_gui.resizeToContent() # container needs to be bigger now
 			else: # must be gold
-				reference_icon = self.gold_gui.findChild(name="background_icon")
-				below = reference_icon.size[1]
+				# there is an icon with scales there, use its positioning
+				reference_icon = self.gold_gui.child_finder("balance_background")
 				cost_icon = pychan.widgets.Icon(image=cost_icon_gold,
-				                              position=(0, below) )
-				cost_label.position = (15, below) # TODO: centering
+				                              position=(reference_icon.x, reference_icon.y))
+				cost_label.position = (23, 74) # TODO: centering
 
 				self.gold_gui.addChild(cost_icon)
 				self.gold_gui.addChild(cost_label)
@@ -332,7 +339,7 @@ class ResourceOverviewBar(object):
 		gold_available_lbl.text = unicode(gold)
 		# reposition according to magic forumula passed down from the elders in order to support centering
 		gold_available_lbl.resizeToContent() # this sets new size values
-		gold_available_lbl.position = (33 - gold_available_lbl.size[0]/2,  51)
+		gold_available_lbl.position = (42 - gold_available_lbl.size[0]/2,  51)
 
 		self.gold_gui.resizeToContent() # update label size
 
@@ -354,7 +361,8 @@ class ResourceOverviewBar(object):
 		balance_lbl = self.gold_gui.child_finder("balance")
 		balance_lbl.text = u"{sign}{balance}".format(balance=balance, sign=u'+' if balance >= 0 else u'')
 		balance_lbl.resizeToContent()
-		balance_lbl.position = (33 - balance_lbl.size[0]/2,  68) # see _update_gold
+		# 38
+		balance_lbl.position = (62 - balance_lbl.size[0]/2,  74) # see _update_gold
 
 		self.gold_gui.resizeToContent() # update label size
 
@@ -537,6 +545,29 @@ class ResourceOverviewBar(object):
 		"""Called when you click on a resource slot in the bar (not the selection dialog)"""
 		if event.getButton() == fife.MouseEvent.RIGHT:
 			self._set_resource_slot(widget.num, 0)
+
+	def _show_stats(self):
+		"""Show data below gold icon when balance label is hovered"""
+		if self.stats_gui is None:
+			reference_icon = self.gold_gui.child_finder("balance_background")
+			self.stats_gui = load_uh_widget( self.__class__.STATS_GUI_FILE )
+			self.stats_gui.child_finder = PychanChildFinder(self.stats_gui)
+			self.stats_gui.position = (reference_icon.x + self.gold_gui.x,
+			                           reference_icon.y + self.gold_gui.y)
+			self.stats_gui.mapEvents({
+			  'resbar_stats_container/mouseExited/stats' : self._hide_stats
+			  })
+
+
+		# TODO: fill in values once their meaning is defined
+		# TODO: update values periodically until the dialog is being hidden
+
+		self.stats_gui.show()
+
+	def _hide_stats(self):
+		"""Inverse of show_stats"""
+		if self.stats_gui is not None:
+			self.stats_gui.hide()
 
 	##
 	# CODE FOR REFERENCE

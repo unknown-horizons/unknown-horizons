@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+<!--
+	Gui to pop up below gold icon to show general stats
+-->
+
+<AutoResizeContainer name="resbar_stats_container">
+	<!-- background -->
+	<VBox padding="0" position="0,0">
+		<Icon name="resbar_stats_bg" image="content/gui/images/background/widgets/resbar_stats_background.png"/>
+		<Icon name="resbar_stats_bottom_bg" image="content/gui/images/background/widgets/resbar_stats_bottom.png"/>
+	</VBox>
+
+	<!-- content -->
+	<!-- TODO: define meaning of icons -->
+	<VBox padding="0" position="5,2" >
+		<HBox padding="0" min_size="66,0">
+			<Icon image="content/gui/images/resbar_stats/gold_icon.png"/>
+			<Spacer/>
+			<Label name="gold_stats_value" text="+343" />
+		</HBox>
+
+		<HBox padding="0">
+			<Icon image="content/gui/images/resbar_stats/tools_icon.png"/>
+			<Spacer/>
+			<Label name="tools_stats_value" text="-11" />
+		</HBox>
+	</VBox>
+
+</AutoResizeContainer>
