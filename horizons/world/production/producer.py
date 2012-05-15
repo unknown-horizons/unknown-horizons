@@ -351,14 +351,14 @@ class Producer(Component):
 		"""Makes the instance act according to the producers
 		current state"""
 		state = self._get_current_state()
-		if (state is PRODUCTION.STATES.waiting_for_res or\
-			state is PRODUCTION.STATES.paused or\
-			state is PRODUCTION.STATES.none):
-			self.instance.act("idle", repeating=True)
-		elif state is PRODUCTION.STATES.producing:
-			self.instance.act("work", repeating=True)
+		new_action = 'idle'
+		if state is PRODUCTION.STATES.producing:
+			new_action = "work"
 		elif state is PRODUCTION.STATES.inventory_full:
-			self.instance.act("idle_full", repeating=True)
+			new_action = "idle_full"
+
+		# don't force restarts as not to disturb sequences such as tree growth
+		self.instance.act(new_action, repeating=True, force_restart=False)
 
 		if self.instance.has_status_icon:
 			full = state is PRODUCTION.STATES.inventory_full
