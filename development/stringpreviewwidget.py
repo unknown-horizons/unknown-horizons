@@ -21,7 +21,7 @@
 
 import yaml
 
-from horizons.util.gui import load_uh_widget
+from horizons.gui.util import load_uh_widget
 from horizons.savegamemanager import SavegameManager
 from horizons.gui.widgets.logbook import LogBook
 from horizons.scheduler import Scheduler
