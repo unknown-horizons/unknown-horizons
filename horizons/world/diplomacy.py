@@ -102,6 +102,13 @@ class Diplomacy(object):
 		tup = make_tup(a, b)
 		return tup not in self.allies and tup not in self.enemies
 
+	def can_trade(self, a, b):
+		# NOTE: this has not been specified w.r.t. game play
+		if a is b: # can trade with self
+			return True
+		else:
+			return not self.are_enemies(a, b)
+
 	def _get_state_string(self, tup):
 		if tup in self.enemies:
 			return 'enemy'
