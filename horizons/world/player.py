@@ -74,19 +74,18 @@ class Player(ComponentHolder, WorldObject):
 		self.color = color
 		self.difficulty = DifficultySettings.get_settings(difficulty_level)
 		self.settler_level = settlerlevel
+		self.stats = None
 		assert self.color.is_default_color, "Player color has to be a default color"
 
 		SettlerUpdate.subscribe(self.notify_settler_reached_level)
 		NewDisaster.subscribe(self, self.notify_new_disaster)
-
-		if self.regular_player:
-			Scheduler().add_new_object(Callback(self.update_stats), self, run_in = 0)
 
 	@property
 	def is_local_player(self):
 		return self is self.session.world.player
 
 	def update_stats(self):
+		# will only be enabled on demand since it takes a while to calculate
 		Scheduler().add_new_object(Callback(self.update_stats), self, run_in = PLAYER.STATS_UPDATE_FREQUENCY)
 		self.stats = PlayerStats(self)
 
