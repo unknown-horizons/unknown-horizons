@@ -285,7 +285,7 @@ class SettlementManager(WorldObject):
 		num_upgrading = 0
 		for building in self.settlement.buildings_by_id.get(BUILDINGS.RESIDENTIAL, []):
 			if building.level == level:
-				upgrade_production = building._get_upgrade_production()
+				upgrade_production = building._upgrade_production
 				if upgrade_production is not None and not upgrade_production.is_paused():
 					num_upgrading += 1
 					if num_upgrading >= limit:
@@ -294,7 +294,7 @@ class SettlementManager(WorldObject):
 		upgraded_any = False
 		for building in self.settlement.buildings_by_id.get(BUILDINGS.RESIDENTIAL, []):
 			if building.level == level:
-				upgrade_production = building._get_upgrade_production()
+				upgrade_production = building._upgrade_production
 				if upgrade_production is not None and upgrade_production.is_paused():
 					ToggleActive(building.get_component(Producer), upgrade_production).execute(self.land_manager.session)
 					num_upgrading += 1

@@ -71,6 +71,7 @@ class Settler(BuildableRect, BuildingResourceHandler, BasicBuilding):
 		self._update_level_data(loading=loading, initial=True)
 		self.last_tax_payed = last_tax_payed
 		UpgradePermissionsChanged.subscribe(self._on_change_upgrade_permissions, sender=self.settlement)
+		self._upgrade_production = None # referenced here for quick access
 
 	def initialize(self):
 		super(Settler, self).initialize()
@@ -107,9 +108,12 @@ class Settler(BuildableRect, BuildingResourceHandler, BasicBuilding):
 
 	def _load_upgrade_data(self, db):
 		"""Load the upgrade production and relevant stored resources"""
-		upgrade_material_production = self._get_upgrade_production()
-		if upgrade_material_production is None:
+		upgrade_material_prodline = SettlerUpgradeComponent.get_production_line_id(self.level+1)
+		if not self.get_component(Producer).has_production_line(upgrade_material_prodline):
 			return
+
+		upgrade_material_production = self.get_component(Producer)._get_production(upgrade_material_prodline)
+		self._upgrade_production = upgrade_material_production
 
 		resources = {}
 		for resource, amount in db.get_storage_rowids_by_ownerid(self.worldid):
@@ -125,11 +129,6 @@ class Settler(BuildableRect, BuildingResourceHandler, BasicBuilding):
 		upgrade_material_production.add_production_finished_listener(self.level_up)
 		self.log.debug("%s: Waiting for material to upgrade from %s", self, self.level)
 
-	def _get_upgrade_production(self):
-		upgrade_material_prodline = SettlerUpgradeComponent.get_production_line_id(self.level+1)
-		if self.get_component(Producer).has_production_line(upgrade_material_prodline):
-			return self.get_component(Producer)._get_production(upgrade_material_prodline)
-		return None
 
 	def remove(self):
 		UpgradePermissionsChanged.unsubscribe(self._on_change_upgrade_permissions, sender=self.settlement)
@@ -140,7 +139,7 @@ class Settler(BuildableRect, BuildingResourceHandler, BasicBuilding):
 		return self.session.world.get_settlement(self.position.origin).upgrade_permissions[self.level]
 
 	def _on_change_upgrade_permissions(self, message):
-		production = self._get_upgrade_production()
+		production = self._upgrade_production
 		if production is not None:
 			if production.is_paused() == self.upgrade_allowed:
 				ToggleActive(self.get_component(Producer), production).execute(self.session, True)
@@ -271,6 +270,7 @@ class Settler(BuildableRect, BuildingResourceHandler, BasicBuilding):
 			owner_inventory = self._get_owner_inventory()
 			upgrade_material_production = SingleUseProduction(self.get_component(StorageComponent).inventory, owner_inventory, \
 			                                                  upgrade_material_prodline, prodline_data)
+			self._upgrade_production = upgrade_material_production
 			upgrade_material_production.add_production_finished_listener(self.level_up)
 			# drive the car out of the garage to make space for the building material
 			for res, amount in upgrade_material_production.get_consumed_resources().iteritems():
@@ -285,6 +285,8 @@ class Settler(BuildableRect, BuildingResourceHandler, BasicBuilding):
 
 	def level_up(self, production = None):
 		"""Actually level up (usually called when the upgrade material has arrived)"""
+
+		self._upgrade_production = None
 
 		# just level up later that tick, it could disturb other code higher in the call stack
 
