@@ -7,15 +7,15 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2012-05-06 22:10+0100\n"
-"PO-Revision-Date: 2012-04-18 11:23+0200\n"
-"Last-Translator: rayot <dmalorni@gmail.com>\n"
+"PO-Revision-Date: 2012-05-16 13:30+0200\n"
+"Last-Translator: Mathias <mattia@mhofmann.ch>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: it\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Pootle 2.1.5\n"
+"X-Generator: Pootle 2.1.6\n"
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
@@ -28,7 +28,7 @@ msgstr "Un nuovo insediamento è stato fondato da {player}."
 #: database files sql
 #, fuzzy
 msgid "A new ship has been created."
-msgstr "Un nuovo mondo è stato creato."
+msgstr "Una nuova nave è stata costruita."
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
@@ -55,19 +55,20 @@ msgstr ""
 #: horizons/i18n/objecttranslations.py sql
 #, fuzzy
 msgid "Citizens"
-msgstr "cittadino"
+msgstr "cittadini"
 
 # 77%
 #. This is a database entry: the name of an inhabitant increment (tier / level).
 #: database files sql
 #, fuzzy
 msgid "Merchants"
-msgstr "mercante"
+msgstr "mercanti"
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
 msgid "One of your fields requires a farm to harvest its crops."
 msgstr ""
+"Uno dei tuoi campi ha bisogno di una fattoria per effettuare il raccolto"
 
 # 75%
 #. (text of widget: headline)
@@ -76,7 +77,7 @@ msgstr ""
 #: database files horizons/i18n/guitranslations.py
 #: horizons/i18n/objecttranslations.py sql
 msgid "Pioneers"
-msgstr "pioniere"
+msgstr "pionieri"
 
 #. (text of widget: headline)
 #. This is a database entry: the name of an inhabitant increment (tier / level).
@@ -101,7 +102,7 @@ msgstr "Screenshot è stato salvato in {file}."
 #: horizons/i18n/guitranslations.py
 #: horizons/i18n/objecttranslations.py sql
 msgid "Settlers"
-msgstr "colone"
+msgstr "coloni"
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
@@ -111,12 +112,14 @@ msgstr "Alcuni abitanti non hanno accesso alla piazza principale"
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
 msgid "Some of your inhabitants just moved out."
-msgstr ""
+msgstr "Alcuni dei tuoi abitanti se ne sono appena andati"
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
 msgid "The route is now configured. Start it via the \"start route\" button in the \"configure route\" menu."
 msgstr ""
+"La tua rotta è configurata. Avviala con il pulsante \"inizia rotta\" nel menu "
+"\"configura rotta\""
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
@@ -127,16 +130,19 @@ msgstr "È anche possibile trascinare le strade."
 #: database files sql
 msgid "You cannot tear the warehouse, your settlements needs it."
 msgstr ""
+"Non puoi distruggere il deposito, è indispensabile per il tuo insediamento"
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
 msgid "You failed the scenario."
-msgstr ""
+msgstr "Hai fallito lo scenario"
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
 msgid "You have reached the current maximum increment. Your inhabitants will not upgrade further."
 msgstr ""
+"Hai raggiunto l'incremento massimo attuale, i tuoi abitanti non "
+"progrediranno oltre."
 
 # 97%
 #. This is a database entry: a messagewidget message (left part of the screen).
@@ -153,12 +159,12 @@ msgstr "Hai vinto!"
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
 msgid "Your building has caught fire!"
-msgstr ""
+msgstr "Il tuo edificio è in fiamme!"
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
 msgid "Your crew refuses to leave this map."
-msgstr "Il tuo equipaggio rifiuta di lasciare questa mappa."
+msgstr "Il tuo equipaggio si rifiuta di lasciare questa mappa."
 
 # Messages
 # 86%
@@ -166,7 +172,7 @@ msgstr "Il tuo equipaggio rifiuta di lasciare questa mappa."
 #: database files sql
 #, fuzzy
 msgid "Your game has been autosaved."
-msgstr "Il vostro gioco è stato salvato."
+msgstr "La tua partita è stata salvata automaticamente."
 
 # Messages
 #. This is a database entry: a messagewidget message (left part of the screen).
@@ -178,15 +184,14 @@ msgstr "Il vostro gioco è stato salvato."
 # 86%
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
-#, fuzzy
 msgid "Your game has been saved."
-msgstr "Il vostro gioco è stato salvato."
+msgstr "Il tuo gioco è stato salvato."
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
 #, python-format
 msgid "Your inhabitants reached level {level}."
-msgstr ""
+msgstr "I tuoi abitanti hanno raggiunto il livello {level}."
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
@@ -201,7 +206,7 @@ msgstr "ghiande"
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "alvearies"
-msgstr ""
+msgstr "alveari"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
@@ -216,7 +221,7 @@ msgstr "mattoni"
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "candles"
-msgstr ""
+msgstr "candele"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
@@ -252,12 +257,12 @@ msgstr "Deposito d'argilla"
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "cocoa"
-msgstr ""
+msgstr "cacao"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "cocoa beans"
-msgstr ""
+msgstr "fave di cacao"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
@@ -272,17 +277,17 @@ msgstr "comunità"
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "condiments"
-msgstr ""
+msgstr "condimenti"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "confectionery"
-msgstr ""
+msgstr "dolciumi"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "corn"
-msgstr ""
+msgstr "mais"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
@@ -292,7 +297,7 @@ msgstr "pugnale"
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "deer food A"
-msgstr "Cervo cibo A"
+msgstr "Cibo per cervi A"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
@@ -314,7 +319,7 @@ msgstr "fede"
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "fire"
-msgstr ""
+msgstr "fuoco"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
@@ -324,7 +329,7 @@ msgstr "pesce"
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "flour"
-msgstr ""
+msgstr "farina"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
@@ -334,22 +339,22 @@ msgstr "cibo"
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "get-together"
-msgstr "incontri"
+msgstr "luogo d'incontro"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "grain"
-msgstr ""
+msgstr "grano"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "grapes"
-msgstr ""
+msgstr "uva"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "grass"
-msgstr "herba"
+msgstr "erba"
 
 # Resources
 #. This is a database entry: the name of a resource.
@@ -365,7 +370,7 @@ msgstr "erbe"
 #. This is a database entry: the name of a resource.
 #: database files sql
 msgid "honeycombs"
-msgstr ""
+msgstr "fave d'api"
 
 #. This is a database entry: the name of a resource.
 #: database files sql
@@ -3801,13 +3806,13 @@ msgstr "Impossibile trovare le librerie richieste"
 msgid "We are sorry to inform you that a library that is required by Unknown Horizons, is missing and needs to be installed."
 msgstr ""
 "Siamo spiacenti di informarvi che la libreria  richiesta da Unknown "
-"Horizons, non è presente e deve essere installato."
+"Horizons, non è presente e deve essere installata."
 
 #: run_uh.py
 msgid "Installers for Windows users are available at \"http://pyyaml.org/wiki/PyYAML\", Linux users should find it in their packagement management system under the name \"pyyaml\" or \"python-yaml\"."
 msgstr ""
-"Installazione per gli utenti windows è avviabile nel seguente sito  "
-"\"http://pyyaml.org/wiki/PyYAML\", Per utenti Linux dovrebbe trovare nel loro "
+"L'installazione per gli utenti windows è disponibile al seguente sito  "
+"\"http://pyyaml.org/wiki/PyYAML\", per gli utenti Linux dovrebbe trovarsi nel "
 "sistema di gestione pachetti sotto il nome  \"pyyaml\" o \"python-yaml\"."
 
 #: run_uh.py
@@ -3816,7 +3821,7 @@ msgstr "Grazie per aver scelto Unknown Horizons!"
 
 #: run_uh.py
 msgid "FIFE was not found."
-msgstr "FIFE não foi encontrado."
+msgstr "FIFE non è stato trovato."
 
 #~ msgid "Build related fields"
 #~ msgstr "Riempire campi correlati"
