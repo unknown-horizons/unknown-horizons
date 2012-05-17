@@ -18,7 +18,7 @@ components:
 - HealthComponent: {maxhealth: 1000}
 - ProducerComponent:
     productionlines:
-      34:
+      LIQUOR:
         produces:
         - [RES.LIQUOR, 1]
         consumes:

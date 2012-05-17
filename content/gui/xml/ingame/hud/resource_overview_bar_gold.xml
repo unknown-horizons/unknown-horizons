@@ -3,10 +3,20 @@
 	 Special resource overview bar protoype for gold.
 -->
 
-<AutoResizeContainer position="10,10">
-	<Icon name="background_icon" helptext="Gold"
-		image="content/gui/images/background/widgets/res_mon_bg.png" />
-	<Icon name="res_icon" position="17,12" />
+<AutoResizeContainer name="resbar_gold_container" position="10,10">
+
+	<!-- define balance part before rest since it needs to be below -->
+	<!-- hovering this background will show the full stats, defined in resource_overview_bar_stats -->
+	<Icon name="balance_background" position="4,73"
+		image="content/gui/images/background/widgets/resbar_stats_bottom.png"/>
+	<Icon name="scales_icon" position="9,74"
+		image="content/gui/images/resbar_stats/scales_icon.png"/>
+
+	<!-- end of balance part -->
+
+	<Icon name="background_icon" image="content/gui/images/background/widgets/res_mon_bg.png" />
+
+	<Icon name="res_icon" position="27,12" />
 	<!-- positioning via magic in order to have support for centering -->
 	<Label name="gold_available" />
 	<Label name="balance" />

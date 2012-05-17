@@ -35,8 +35,23 @@ class PlayersOverview(StatsWidget):
 
 	def refresh(self):
 		super(PlayersOverview, self).refresh()
-		for player in sorted(self.session.world.players, key = lambda player: (-player.get_latest_stats().total_score, player.worldid)):
-			self._add_line_to_gui(player)
+
+		if all(player.get_latest_stats() is not None for player in self.session.world.players):
+			for player in sorted(self.session.world.players, key = lambda player: (-player.get_latest_stats().total_score, player.worldid)):
+				self._add_line_to_gui(player)
+		else: # stats disabled
+			text = _("Player statistics are disabled by default since collecting them slows down the game.")
+			self._content_vbox.addChild( widgets.Label(text=text) )
+			text = _("You can enable them for this session by clicking below")
+			self._content_vbox.addChild( widgets.Label(text=text) )
+			btn = widgets.Button( text=_("Enable player statistics" ) )
+			def enable():
+				for player in self.session.world.players:
+					player.update_stats()
+				self.refresh()
+			btn.capture(enable)
+			self._content_vbox.addChild( btn )
+
 		self._content_vbox.adaptLayout()
 
 	def _add_line_to_gui(self, player):

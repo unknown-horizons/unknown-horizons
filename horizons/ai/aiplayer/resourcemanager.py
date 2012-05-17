@@ -227,7 +227,7 @@ class ResourceManager(WorldObject):
 		for residence in self.settlement_manager.settlement.buildings_by_id.get(BUILDINGS.RESIDENTIAL, []):
 			if limit_left <= 0:
 				break
-			production = residence._get_upgrade_production()
+			production = residence._upgrade_production
 			if production is None or production.is_paused():
 				continue
 			for res, amount in production.get_consumed_resources().iteritems():

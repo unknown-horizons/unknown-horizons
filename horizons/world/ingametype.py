@@ -19,6 +19,8 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
+import hashlib
+
 from horizons.constants import TIER
 
 class IngameType(type):
@@ -38,8 +40,8 @@ class IngameType(type):
 
 	# Base package to import from, must end with the '.', the package is appended
 	basepackage = 'horizons.world.building.'
-	# Class name beginning for the type.__new__ constructor
-	classstring = 'Type['
+	# Class name for the type.__new__ constructor
+	classstring = 'Type[{id}]'
 
 	def __new__(self, id,  yaml_data):
 		class_package = yaml_data['baseclass'].split('.')[0]
@@ -53,7 +55,7 @@ class IngameType(type):
 			return self
 
 		module = __import__(str(self.basepackage+class_package), [], [], [str(class_name)])
-		return type.__new__(self, str(self.classstring) + str(id) + ']',
+		return type.__new__(self, self.classstring.format(id=id),
 			(getattr(module, class_name),),
 			{'load': load, 'class_package': str(class_package), 'class_name': str(class_name)})
 
@@ -88,6 +90,8 @@ class IngameType(type):
 		self.baseclass = yaml_data['baseclass'] # mostly only for debug
 		self._real_object = None # wrapped by _object
 
+		self._parse_component_templates()
+
 		# TODO: move this to the producer component as soon as there is support for class attributes there
 		self.additional_provided_resources = yaml_data['additional_provided_resources'] if 'additional_provided_resources' in yaml_data else []
 
@@ -116,6 +120,37 @@ class IngameType(type):
 		* engine: horizons/engine. Direct interface to fife.
 		* ai: horizons/ai/aiplayer. Way too big to describe here.
 		"""
+
+	def _parse_component_templates(self):
+		"""Prepares misc data in self.component_templates"""
+		producer = [ comp for comp in self.component_templates if \
+		             isinstance(comp, dict) and comp.iterkeys().next() == 'ProducerComponent' ]
+		if producer:
+			# we want to support string production line ids, the code should still only see integers
+			# therefore we do a deterministic string -> int conversion here
+
+			producer_data = producer[0]['ProducerComponent']
+			original_data = producer_data['productionlines']
+
+			new_data = {}
+
+			for old_key, v in original_data.iteritems():
+				if isinstance(old_key, int):
+					new_key = old_key
+				else:
+					# hash the string
+					new_key = int(hashlib.sha1(old_key).hexdigest(), 16)
+					# crop to integer. this might not be necessary, however the legacy code operated
+					# on this data type, so problems might occur, also with respect to performance.
+					# in princpile, strings and longs should also be supported, but for the sake of
+					# safety, we use ints.
+					new_key = int( new_key % 2**31 ) # this ensures it's an integer on all reasonable platforms
+				if new_key in new_data:
+					raise Exception("Error: production line id conflict. Please change \"%s\" to anything else for \"%s\"" % (old_key, self.name))
+				new_data[new_key] = v
+
+			producer_data['productionlines'] = new_data
+
 
 	@property
 	def _object(self):

@@ -48,8 +48,6 @@ class RouteConfig(object):
 	def __init__(self, instance):
 		self.instance = instance
 
-		warehouses = instance.session.world.get_warehouses()
-		self.warehouses = dict([('%s (%s)' % (w.settlement.get_component(NamedComponent).name, w.owner.name), w) for w in warehouses])
 		if not hasattr(instance, 'route'):
 			instance.create_route()
 
@@ -405,6 +403,10 @@ class RouteConfig(object):
 		"""Add a warehouse to the list on the left side.
 		@param warehouse: Set to add a specific one, else the selected one gets added.
 		"""
+		if not self.session.world.diplomacy.can_trade(self.session.world.player, warehouse.owner):
+			self.session.ingame_gui.message_widget.add_custom(None, None, _("You are not allowed to trade with this player"))
+			return
+
 		if len(self.widgets) >= self.MAX_ENTRIES:
 			# reached max entries the gui can hold
 			AmbientSoundComponent.play_special('error')

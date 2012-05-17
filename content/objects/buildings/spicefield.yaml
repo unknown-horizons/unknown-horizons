@@ -15,7 +15,7 @@ components:
 - HealthComponent: {maxhealth: 10}
 - ProducerComponent:
     productionlines:
-      0:
+      SPICES:
         produces:
         - [RES.SPICE_PLANTS, 1]
         time: 30

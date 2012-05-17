@@ -20,73 +20,73 @@ components:
     utilisation:
       FieldUtilisation
     productionlines:
-      7:
+      WOOL:
         produces:
         - [RES.WOOL, 1]
         consumes:
         - [RES.LAMB_WOOL, -1]
         time: 1
-      47:
+      TOBACCO_LEAVES:
         produces:
         - [RES.TOBACCO_LEAVES, 1]
         consumes:
         - [RES.TOBACCO_PLANTS, -1]
         time: 1
-      51:
+      CATTLE_SLAUGHTER:
         produces:
         - [RES.CATTLE_SLAUGHTER, 1]
         consumes:
         - [RES.CATTLE, -1]
         time: 1
-      52:
+      PIGS_SLAUGHTER:
         produces:
         - [RES.PIGS_SLAUGHTER, 1]
         consumes:
         - [RES.PIGS, -1]
         time: 1
-      23:
+      POTATOES:
         produces:
         - [RES.FOOD, 1]
         consumes:
         - [RES.POTATOES, -2]
         time: 1
-      28:
+      SUGAR:
         produces:
         - [RES.SUGAR, 1]
         consumes:
         - [RES.RAW_SUGAR, -1]
         time: 1
-      8:
+      MEDICAL_HERBS:
         produces:
         - [RES.MEDICAL_HERBS, 1]
         consumes:
         - [RES.HERBS, -1]
         time: 1
-      0:
+      CORN:
         produces:
         - [RES.CORN, 1]
         consumes:
         - [RES.GRAIN, -1]
         time: 1
-      1:
+      SPICES:
         produces:
         - [RES.SPICES, 1]
         consumes:
         - [RES.SPICE_PLANTS, -1]
         time: 1
-      2:
+      COCOA:
         produces:
         - [RES.COCOA, 1]
         consumes:
         - [RES.COCOA_BEANS, -1]
         time: 1
-      3:
+      GRAPES:
         produces:
         - [RES.GRAPES, 1]
         consumes:
         - [RES.VINES, -1]
         time: 1
-      4:
+      HONEYCOMBS:
         produces:
         - [RES.HONEYCOMBS, 1]
         consumes:

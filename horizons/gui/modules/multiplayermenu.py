@@ -30,7 +30,7 @@ from horizons.network.networkinterface import MPGame
 from horizons.constants import MULTIPLAYER
 from horizons.network.networkinterface import NetworkInterface
 from horizons.network import find_enet_module
-from horizons.util import SavegameAccessor
+from horizons.util import SavegameAccessor, Callback
 from horizons.component.ambientsoundcomponent import AmbientSoundComponent
 
 enet = find_enet_module()
@@ -72,7 +72,7 @@ class MultiplayerMenu(object):
 			'join'    : self.__join_game,
 			'create'  : self.__show_create_game,
 			'load'    : self.__show_load_game,
-			'refresh' : self.__refresh,
+			'refresh' : Callback(self.__refresh, play_sound=True)
 		}
 		# store old name and color
 		self.__apply_new_nickname()
@@ -95,7 +95,7 @@ class MultiplayerMenu(object):
 	def create_default_mp_game(self):
 		"""For debugging; creates a valid game. Call right after show_multi"""
 		self.__show_create_game()
-		self.__create_game(chosen_map = 'mp-dev')
+		self.__create_game(chosen_map='mp-dev')
 
 	def join_mp_game(self):
 		"""For debugging; joins first open game. Call right after show_multi"""
@@ -143,10 +143,13 @@ class MultiplayerMenu(object):
 		self.__apply_new_nickname()
 		self.show_main()
 
-	def __refresh(self):
+	def __refresh(self, play_sound=False):
 		"""Refresh list of games.
 		Only possible in multiplayer main menu state.
+		@param play_sound: whether to play the refresh sound
 		@return bool, whether refresh worked"""
+		if play_sound:
+			AmbientSoundComponent.play_special('refresh')
 		self.games = NetworkInterface().get_active_games(self.current.findChild(name='showonlyownversion').marked)
 		if self.games is None:
 			return False
@@ -176,7 +179,7 @@ class MultiplayerMenu(object):
 	def __show_only_own_version_toggle(self):
 		self.__refresh()
 
-	def __update_game_details(self, game = None):
+	def __update_game_details(self, game=None):
 		"""Set map name and other misc data in a widget. Only possible in certain states"""
 		if game == None:
 			game = self.__get_selected_game()
@@ -228,7 +231,7 @@ class MultiplayerMenu(object):
 		if vbox is not None:
 			vbox.adaptLayout()
 
-	def __join_game(self, game = None):
+	def __join_game(self, game=None):
 		"""Joins a multiplayer game. Displays lobby for that specific game"""
 		if game == None:
 			game = self.__get_selected_game()
@@ -344,7 +347,7 @@ class MultiplayerMenu(object):
 		def _update_infos():
 			mapindex = self.current.collectData('maplist')
 			mapfile = self.current.files[mapindex]
-			number_of_players = SavegameManager.get_recommended_number_of_players( mapfile )
+			number_of_players = SavegameManager.get_recommended_number_of_players(mapfile)
 			#xgettext:python-format
 			self.current.findChild(name="recommended_number_of_players_lbl").text = \
 					_("Recommended number of players: {number}").format(number=number_of_players)

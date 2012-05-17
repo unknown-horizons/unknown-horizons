@@ -660,8 +660,8 @@ events:
     - - Gallery
       - [content/gui/icons/buildmenu/007.png]
     type: logbook
-  - arguments: [!!python/unicode 'Plaats een kleermaker die de wel van je boerderij
-        kan bereiken.']
+  - arguments: [!!python/unicode 'Bouw een kleermaker die op een of andere manier
+        bij de wol kan komen op je boerderij.']
     type: message
   - arguments: [tutStepDone, 55]
     type: set_var

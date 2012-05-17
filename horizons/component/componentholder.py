@@ -29,6 +29,7 @@ from horizons.component.healthcomponent import HealthComponent
 from horizons.component.selectablecomponent import SelectableComponent
 from horizons.component.commandablecomponent import CommandableComponent
 from horizons.component.collectingcomponent import CollectingComponent
+from horizons.component.settlerupgradecomponent import SettlerUpgradeComponent
 from horizons.world.production.producer import Producer, QueueProducer, UnitProducer
 
 class ComponentHolder(object):
@@ -71,6 +72,7 @@ class ComponentHolder(object):
 	    'SelectableComponent': SelectableComponent,
 	    'CommandableComponent': CommandableComponent,
 	    'CollectingComponent': CollectingComponent,
+	    'SettlerUpgradeComponent': SettlerUpgradeComponent,
 	}
 
 
@@ -86,7 +88,6 @@ class ComponentHolder(object):
 		init the components. If someday all code is moved to components, this will
 		not be necessary any more."""
 		for component in self.__create_components():
-
 			self.add_component(component)
 
 	def __create_components(self):

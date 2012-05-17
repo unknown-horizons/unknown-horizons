@@ -22,10 +22,10 @@
 
 import random
 import glob
+from collections import deque
 
 from fife import fife
 
-import horizons.main
 from horizons.extscheduler import ExtScheduler
 
 class Sound(object):
@@ -44,9 +44,15 @@ class Sound(object):
 		#temporarily select a random music file to play. TODO: Replace with proper playlist
 		self.ingame_music = glob.glob('content/audio/music/*.ogg')
 		self.menu_music = glob.glob('content/audio/music/menu/*.ogg')
-		self.initial_menu_music_element = None
-		self.next_menu_music_element = None
-		self.menu_music_played = False
+		# store the three most recently played files to avoid repetition
+		self.last_tracks = deque(maxlen=3)
+		if len(self.menu_music) <= 1:
+			# sad stuff: we only have few menu tracks
+			# => also play some ingame_tracks after the menu
+			# music finished, but start with the menu tracks
+			ingame_tracks = random.sample(self.ingame_music, 3)
+			self.menu_music.extend(ingame_tracks)
+			self.last_tracks.extend(ingame_tracks)
 
 		self.setup_sound()
 
@@ -73,10 +79,11 @@ class Sound(object):
 			self.emitter['speech'].setGain(self.engine.get_uh_setting("VolumeEffects"))
 			self.emitter['speech'].setLooping(False)
 			self.emitter['ambient'] = []
-			self.music_rand_element = random.randint(0, len(self.menu_music) - 1)
-			self.initial_menu_music_element = self.music_rand_element
 
-			self.check_music() # Start background music
+			# Start background music:
+			self._old_byte_pos = 0.0
+			self._old_smpl_pos = 0.0
+			self.check_music(refresh_playlist=True, play_menu_tracks=True)
 			ExtScheduler().add_new_object(self.check_music, self, loops=-1)
 
 	def disable_sound(self):
@@ -90,43 +97,42 @@ class Sound(object):
 		ExtScheduler().rem_call(self, self.check_music)
 
 
-	def check_music(self):
+	def check_music(self, refresh_playlist=False, play_menu_tracks=False):
 		"""Used as callback to check if music is still running or if we have
-		to load the next song."""
-		if self.menu_music_played == False:
-			if self.initial_menu_music_element == self.next_menu_music_element:
-				self.ingame_music.extend(self.menu_music)
-				self.music = self.ingame_music
-				self.music_rand_element = random.randint(0, len(self.ingame_music) - 1)
-				self.menu_music_played = True
-			else:
-				self.music = self.menu_music
+		to load the next song.
+		@param refresh_playlist: Whether to update the playlist type (menu, ingame).
+		refresh_playlist should e.g. be set when loading happens, after which we no longer want to play menu music.
+		The current track, however, will still finish playing before choosing a new track.
+		@param play_menu_tracks: Whether to start the playlist with menu music. Only works with refresh_playlist=True.
+		"""
+		if refresh_playlist:
+			self.music = self.menu_music if play_menu_tracks else self.ingame_music
+		self._new_byte_pos = self.emitter['bgsound'].getCursor(fife.SD_BYTE_POS)
+		self._new_smpl_pos = self.emitter['bgsound'].getCursor(fife.SD_SAMPLE_POS)
+		#TODO find cleaner way to check for this:
+		# check whether last track has finished:
+		if self._new_byte_pos == self._old_byte_pos and \
+		   self._new_smpl_pos == self._old_smpl_pos:
+			# choose random new track, but not one we played very recently
+			track = random.choice([m for m in self.music if m not in self.last_tracks])
+			self.play_sound('bgsound', track)
+			self.last_tracks.append(track)
 
-		if hasattr(self, '_bgsound_old_byte_pos') and hasattr(self, '_bgsound_old_sample_pos'):
-			if self._bgsound_old_byte_pos == self.emitter['bgsound'].getCursor(fife.SD_BYTE_POS) and \
-			   self._bgsound_old_sample_pos == self.emitter['bgsound'].getCursor(fife.SD_SAMPLE_POS):
-				# last track has finished (TODO: find cleaner way to check for this)
-				skip = 0 if len(self.music) == 1 else random.randint(1, len(self.music)-1)
-				self.music_rand_element = (self.music_rand_element + skip) % len(self.music)
-				self.play_sound('bgsound', self.music[self.music_rand_element])
-				if self.menu_music_played == False:
-					self.next_menu_music_element = self.music_rand_element
-
-		self._bgsound_old_byte_pos, self._bgsound_old_sample_pos = \
-			self.emitter['bgsound'].getCursor(fife.SD_BYTE_POS), \
-			self.emitter['bgsound'].getCursor(fife.SD_SAMPLE_POS)
+		self._old_byte_pos = self.emitter['bgsound'].getCursor(fife.SD_BYTE_POS)
+		self._old_smpl_pos = self.emitter['bgsound'].getCursor(fife.SD_SAMPLE_POS)
 
 
 	def play_sound(self, emitter, soundfile):
 		"""Plays a soundfile on the given emitter.
-		@param emitter: string with the emitters name in horizons.main.fife.sound.emitter that is to play the  sound
-		@param soundfile: string containing the path to the soundfile"""
+		@param emitter: string: name of emitter that is to play the sound
+		@param soundfile: string: path to the sound file we want to play
+		"""
 		if self.engine.get_fife_setting("PlaySounds"):
 			emitter = self.emitter[emitter]
 			assert emitter is not None, "You need to supply a initialised emitter"
 			assert soundfile is not None, "You need to supply a soundfile"
 			emitter.reset()
 			#TODO remove str() -- http://fife.trac.cvsdude.com/engine/ticket/701
-			emitter.setSoundClip(horizons.main.fife.sound.soundclipmanager.load(str(soundfile)))
+			emitter.setSoundClip(self.soundclipmanager.load(str(soundfile)))
 			emitter.play()
 

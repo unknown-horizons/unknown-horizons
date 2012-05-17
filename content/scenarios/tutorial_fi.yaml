@@ -644,7 +644,7 @@ events:
     - [Pagebreak]
     - [Headline, !!python/unicode 'Suuret kiitokset!']
     - [Image, content/gui/images/background/hr.png]
-    - "\n\n\n\n\nKiitos, ett\xE4 pelasit t\xE4t\xE4 harjoituspeli\xE4!\n\nTerveisin,\n\
+    - "\n\n\n\nKiitos, ett\xE4 pelasit t\xE4t\xE4 harjoituspeli\xE4!\n\nTerveisin,\n\
       Unknown Horizonsin kehitt\xE4j\xE4t"
     - - Gallery
       - [content/unknown-horizons.xpm, content/gfx/misc/status_icons/as_book_flip/idle/45/book20125.png]

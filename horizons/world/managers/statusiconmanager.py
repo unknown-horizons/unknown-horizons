@@ -75,6 +75,9 @@ class StatusIconManager(object):
 		# Now render the most important one
 		self.__render_status(icon_instance, self.icons[icon_instance][0])
 
+		if self.tooltip_instance is not None and self.tooltip_instance is icon_instance: # possibly have to update tooltip
+			self.on_hover_instances_changed( HoverInstancesChanged(self, [self.tooltip_instance]) )
+
 	def on_worldobject_deleted_message(self, message):
 		assert isinstance(message, WorldObjectDeleted)
 		# remove icon
@@ -83,7 +86,7 @@ class StatusIconManager(object):
 			del self.icons[message.worldobject]
 		# remove icon tooltip
 		if message.worldobject is self.tooltip_instance:
-			self.on_hover_instances_changed( HoverInstancesChanged(self, set()) )
+			self.on_hover_instances_changed( HoverInstancesChanged(self, []) )
 
 	def on_remove_icon_message(self, message):
 		"""Called by the MessageBus with RemoveStatusIcon messages."""
@@ -100,7 +103,10 @@ class StatusIconManager(object):
 					else:
 						# Render next icon
 						self.__render_status(icon_instance, self.icons[icon_instance][0])
-					return
+					break
+
+			if self.tooltip_instance is not None and self.tooltip_instance is icon_instance: # possibly have to update tooltip
+				self.on_hover_instances_changed( HoverInstancesChanged(self, [self.tooltip_instance]) )
 
 	def __render_status(self, instance, status):
 		status_string = self.get_status_string(instance)

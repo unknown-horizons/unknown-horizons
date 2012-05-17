@@ -27,6 +27,12 @@ from horizons.gui.style import STYLES
 
 import horizons.main
 
+class RenameLabel(pychan.widgets.Label):
+	"""A regular label that signals that it will display a rename dialog when clicked upon (by changing the cursor)"""
+	pass # implementation added dynamically below
+class RenameImageButton(pychan.widgets.ImageButton):
+	pass # as above
+
 def handle_gcn_exception(e, msg=None):
 	"""Called for RuntimeErrors after gcn::exceptions that smell like guichan bugs.
 	@param e: RuntimeError (python, not pychan)
@@ -57,7 +63,6 @@ def init_pychan():
 	ImageProperty.__set__ = patch_imageproperty(ImageProperty.__set__)
 
 	# register custom widgets
-
 	from horizons.gui.widgets.inventory import Inventory
 	from horizons.gui.widgets.buysellinventory import BuySellInventory
 	from horizons.gui.widgets.imagefillstatusbutton import  ImageFillStatusButton
@@ -74,7 +79,7 @@ def init_pychan():
 			   Inventory, BuySellInventory, ImageFillStatusButton,
 			   ProgressBar, StepSlider, TabBG, ToggleImageButton,
 			   HealthWidget, StanceWidget, WeaponStorageWidget,
-	       AutoResizeContainer]
+	       AutoResizeContainer, RenameLabel, RenameImageButton]
 
 	for widget in widgets:
 		pychan.widgets.registerWidget(widget)
@@ -123,22 +128,40 @@ def init_pychan():
 			widget.requestFocus = catch_gcn_exception_decorator(widget.requestFocus)
 
 	# set cursor to rename on hover for certain widgets
-	def add_cursor_change_on_hover_init(func):
-		@functools.wraps(func)
-		def wrapper(self, *args, **kwargs):
-			func(self, *args, **kwargs)
-			def set_cursor():
-				horizons.main.fife.set_cursor_image("rename")
-			def unset_cursor():
-				horizons.main.fife.set_cursor_image("default")
-			self.mapEvents({
-			  self.name+'/mouseEntered/cursor' : set_cursor,
-			  self.name+'/mouseExited/cursor' : unset_cursor,
-			  })
-		return wrapper
+	def set_cursor():
+		horizons.main.fife.set_cursor_image("rename")
+	def unset_cursor():
+		horizons.main.fife.set_cursor_image("default")
 
-	TextField = pychan.widgets.WIDGETS['TextField']
-	TextField.__init__ = add_cursor_change_on_hover_init(TextField.__init__)
+	def make_cursor_change_on_hover_class(cls):
+		# this can't be a regular class since vanilla TextFields should have it by default
+		def disable_cursor_change_on_hover(self):
+			self.mapEvents({
+				self.name+'/mouseEntered/cursor' : None,
+				self.name+'/mouseExited/cursor' : None,
+				})
+
+		def enable_cursor_change_on_hover(self):
+			self.mapEvents({
+				self.name+'/mouseEntered/cursor' : set_cursor,
+				self.name+'/mouseExited/cursor' : unset_cursor,
+				})
+
+		def add_cursor_change_on_hover_init(func):
+			@functools.wraps(func)
+			def wrapper(self, *args, **kwargs):
+				func(self, *args, **kwargs)
+				enable_cursor_change_on_hover(self)
+			return wrapper
+
+		cls.__init__ = add_cursor_change_on_hover_init(cls.__init__)
+		cls.disable_cursor_change_on_hover = disable_cursor_change_on_hover
+		cls.enable_cursor_change_on_hover = enable_cursor_change_on_hover
+
+	make_cursor_change_on_hover_class( pychan.widgets.WIDGETS['TextField'] )
+	make_cursor_change_on_hover_class( RenameLabel )
+	make_cursor_change_on_hover_class( RenameImageButton )
+
 
 	# TODO: if the widget is hidden while the cursor is above it,
 	# there is no exited event. A possible workaround would be to check

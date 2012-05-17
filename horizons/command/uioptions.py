@@ -65,8 +65,8 @@ GenericComponentCommand.allow_network(RemoveFromSellList)
 
 class TransferResource(GenericCommand):
 	"""Transfers an amount of a resource from one Storage to another"""
-	def __init__(self, amount, res_id, transfer_from, transfer_to):
-		super(TransferResource, self).__init__(transfer_from, 'transfer_to_storageholder', amount, res_id, transfer_to.worldid)
+	def __init__(self, amount, res_id, transfer_from, transfer_to, signal_errors=False):
+		super(TransferResource, self).__init__(transfer_from, 'transfer_to_storageholder', amount, res_id, transfer_to.worldid, signal_errors=signal_errors)
 
 GenericCommand.allow_network(TransferResource)
 

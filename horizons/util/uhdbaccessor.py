@@ -233,31 +233,6 @@ class UhDbAccessor(DbReader):
 		return self.cached_query("SELECT inhabitants FROM settler WHERE rowid=?",
 		                         building_id)[0][0]
 
-	def get_settler_upgrade_material_prodline(self, level):
-		db_result = self.cached_query("SELECT production_line FROM upgrade_material \
-		                          WHERE level = ?", level)
-		return db_result[0][0] if db_result else None
-
-	def get_production_line_data(self, production_line_id):
-		consumption = self.cached_query("SELECT resource, amount FROM production \
-			              WHERE production_line = ? AND amount < 0 ORDER BY amount ASC", production_line_id)
-		production = self.cached_query("SELECT resource, amount FROM production \
-			             WHERE production_line = ? AND amount > 0 ORDER BY amount ASC", production_line_id)
-		consumption = list([list(x) for x in consumption])
-		production = list([list(x) for x in production])
-		(changes_anim, time, default) = self.cached_query("SELECT changes_animation, time, enabled_by_default FROM production_line WHERE id=?", production_line_id)[0]
-		prod_line =  { 'time': int(time) }
-		if changes_anim == 0:
-			prod_line['changes_animation'] = False
-		if default == 0:
-			prod_line['enabled_by_default'] = False
-		if len(production) > 0:
-			prod_line['produces'] = production
-		if len(consumption) > 0:
-			prod_line['consumes'] = consumption
-		return prod_line
-
-
 	# Misc
 
 	def get_player_start_res(self):

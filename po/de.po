@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2012-05-06 22:10+0100\n"
-"PO-Revision-Date: 2012-05-07 00:05+0200\n"
+"PO-Revision-Date: 2012-05-07 00:13+0200\n"
 "Last-Translator: Raymond <raymondv@gmx.de>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: de\n"
@@ -176,7 +176,7 @@ msgstr "Schnellspeicherung abgeschlossen."
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql
 msgid "Your game has been saved."
-msgstr "Automatischer Speichervorgang abgeschlossen."
+msgstr "Speichervorgang abgeschlossen."
 
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: database files sql

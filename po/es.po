@@ -2071,7 +2071,7 @@ msgstr "Mundo entero"
 #. (text of widget: weird_button_4) Sends the chat message to all players (default)
 #: horizons/i18n/guitranslations.py
 msgid "Everybody"
-msgstr "Todo el mundo"
+msgstr "Para todos"
 
 #. (text of widget: headline_game_messages)
 #: horizons/i18n/guitranslations.py

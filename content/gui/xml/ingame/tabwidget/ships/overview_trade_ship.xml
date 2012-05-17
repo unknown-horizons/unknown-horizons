@@ -7,7 +7,7 @@
 		<!-- Name of Ship -->
 		<HBox position="22,7" min_size="170,20" size="230,20">
 			<Spacer min_size="0" max_size="50" />
-			<Label name="name" border_size="0" helptext="Click to change the name of this ship" />
+			<RenameLabel name="name" border_size="0" helptext="Click to change the name of this ship" />
 		</HBox>
 
 		<Icon image="content/gui/images/background/hr.png" position="20,30" />

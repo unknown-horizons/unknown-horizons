@@ -77,8 +77,7 @@ class ShipOverviewTab(OverviewTab):
 		events['found_settlement/mouseExited'] = cb
 
 	def _refresh_trade_button(self, events):
-		warehouses = self.instance.session.world.get_warehouses(self.instance.position, \
-			self.instance.radius, self.instance.owner, True)
+		warehouses = self.instance.get_tradeable_warehouses()
 
 		if warehouses:
 			if warehouses[0].owner is self.instance.owner:
@@ -93,7 +92,7 @@ class ShipOverviewTab(OverviewTab):
 			events['trade'] = None
 			self.widget.findChild(name='trade_bg').set_inactive()
 			self.widget.findChild(name='trade').set_inactive()
-			self.widget.findChild(name='trade').helptext = _('Too far from the nearest own or allied warehouse')
+			self.widget.findChild(name='trade').helptext = _('Too far from the nearest tradeable warehouse')
 
 	def _refresh_combat(self): # no combat
 		def click_on_cannons(button):

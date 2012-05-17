@@ -21,7 +21,7 @@
 
 
 from horizons.command.building import Build
-from horizons.constants import RES, BUILDINGS
+from horizons.constants import RES, BUILDINGS, PRODUCTIONLINES
 from horizons.component.storagecomponent import StorageComponent
 from horizons.world.production.producer import Producer
 
@@ -40,7 +40,7 @@ def test_example(s, p):
 	assert farm
 
 	# Pause the production, we want to start it explicitly later.
-	production = farm.get_component(Producer)._get_production(7)
+	production = farm.get_component(Producer)._get_production(PRODUCTIONLINES.WOOL)
 	production.pause()
 
 	# Farm has no raw wool or wool.

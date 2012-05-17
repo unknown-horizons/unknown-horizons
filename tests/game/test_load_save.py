@@ -20,6 +20,7 @@
 # ###################################################
 
 import os
+import bz2
 import tempfile
 
 from horizons.command.building import Build
@@ -33,7 +34,7 @@ from horizons.component.storagecomponent import StorageComponent
 from horizons.world.units.collectors import Collector
 from horizons.scheduler import Scheduler
 
-from tests.game import game_test, new_session, settle, load_session
+from tests.game import game_test, new_session, settle, load_session, TEST_FIXTURES_DIR
 
 
 # utility
@@ -215,3 +216,29 @@ def test_settler_save_load():
 
 	# tile will contain ruin in case of failure
 	assert tile.object.id == BUILDINGS.RESIDENTIAL
+
+
+@game_test(manual_session=True)
+def test_savegame_upgrade():
+	"""Loads an old savegame and keeps it running for a while"""
+	fd, filename = tempfile.mkstemp()
+	os.close(fd)
+
+	path = os.path.join(TEST_FIXTURES_DIR, 'large.sqlite.bz2')
+	compressed_data = open(path, "r").read()
+	data = bz2.decompress( compressed_data )
+	f = open(filename, "w")
+	f.write(data)
+	f.close()
+
+	# check if loading and running fails
+	session = load_session(filename)
+	session.run(seconds=30)
+
+
+
+
+
+
+
+

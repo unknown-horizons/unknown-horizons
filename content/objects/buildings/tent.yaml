@@ -28,13 +28,6 @@ components:
     utilisation:
       FullUtilisation
     productionlines:
-      35:
-        changes_animation: false
-        enabled_by_default: false
-        consumes:
-        - [RES.BOARDS, -3]
-        - [RES.BRICKS, -2]
-        time: 1
       69:
         produces:
         - [RES.HAPPINESS, 4]
@@ -125,12 +118,6 @@ components:
         time: 90
         consumes:
         - [RES.FAITH, -1]
-      24:
-        changes_animation: false
-        enabled_by_default: false
-        consumes:
-        - [RES.BOARDS, -2]
-        time: 1
       26:
         produces:
         - [RES.HAPPINESS, 3]
@@ -149,6 +136,22 @@ components:
         time: 90
         consumes:
         - [RES.COMMUNITY, -1]
+- SettlerUpgradeComponent:
+    upgrade_material_data:
+      TIER.PIONEERS:
+        - [RES.BOARDS, -4]
+      TIER.SETTLERS:
+        - [RES.BOARDS, -3]
+        - [RES.BRICKS, -2]
+      TIER.CITIZENS:
+        - [RES.BOARDS, -3]
+        - [RES.BRICKS, -2]
+      TIER.MERCHANTS:
+        - [RES.BOARDS, -3]
+        - [RES.BRICKS, -2]
+      TIER.ARISTOCRATS:
+        - [RES.BOARDS, -3]
+        - [RES.BRICKS, -2]
 - StorageComponent:
       SlotsStorage:
         slot_sizes: {RES.TOBACCO_PRODUCTS: 1, RES.TEXTILE: 1, RES.FOOD: 1,

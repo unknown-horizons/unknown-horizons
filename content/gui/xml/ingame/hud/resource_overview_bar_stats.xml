@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<!--
+	Gui to pop up below gold icon to show general stats
+-->
+
+<AutoResizeContainer name="resbar_stats_container">
+	<!-- background -->
+	<VBox padding="0" position="0,0">
+		<Icon name="resbar_stats_bg" image="content/gui/images/background/widgets/resbar_stats_background.png"/>
+		<Icon name="resbar_stats_bottom_bg" image="content/gui/images/background/widgets/resbar_stats_bottom.png"/>
+	</VBox>
+
+	<!-- content -->
+	<!-- TODO: define meaning of icons -->
+	<VBox padding="0" position="5,0" name="entries_box">
+		<!-- python code adds these here:
+		<HBox padding="0" min_size="70,0">
+			<Icon/>
+			<Spacer/>
+			<Label/>
+			<Label/>  workaround for fife font bug, probably http://fife.trac.cvsdude.com/engine/ticket/666 
+		</HBox>
+		-->
+	</VBox>
+
+	<VBox padding="0" position="5,73" name="bottom_box"/> <!-- will be filled as above -->
+
+</AutoResizeContainer>

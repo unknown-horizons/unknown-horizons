@@ -76,6 +76,7 @@ class BuySellInventory(pychan.widgets.Container):
 			# check if this res should be displayed
 			button = ImageFillStatusButton.init_for_res(self.db, resid, amount, \
 			                                            filled=0, uncached=self.uncached)
+			button.button.name = "buy_sell_inventory_%s_entry_%s" % (self._selling, index) # for tests
 			current_hbox.addChild(button)
 
 			if index % self.ITEMS_PER_LINE == (self.ITEMS_PER_LINE - 1) and index != 0:

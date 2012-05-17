@@ -19,6 +19,8 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
+import collections
+
 import horizons.main
 
 from horizons.constants import PLAYER
@@ -29,9 +31,12 @@ from horizons.scheduler import Scheduler
 from horizons.component.componentholder import ComponentHolder
 from horizons.component.storagecomponent import StorageComponent
 from horizons.messaging import SettlerUpdate, NewDisaster
+from horizons.component.tradepostcomponent import TradePostComponent
 
 class Player(ComponentHolder, WorldObject):
 	"""Class representing a player"""
+
+	STATS_UPDATE_INTERVAL = 3 # seconds
 
 	regular_player = True # either a human player or a normal AI player (not trader or pirate)
 	component_templates = ({'StorageComponent': {'PositiveStorage': {}}},)
@@ -69,19 +74,18 @@ class Player(ComponentHolder, WorldObject):
 		self.color = color
 		self.difficulty = DifficultySettings.get_settings(difficulty_level)
 		self.settler_level = settlerlevel
+		self.stats = None
 		assert self.color.is_default_color, "Player color has to be a default color"
 
 		SettlerUpdate.subscribe(self.notify_settler_reached_level)
 		NewDisaster.subscribe(self, self.notify_new_disaster)
-
-		if self.regular_player:
-			Scheduler().add_new_object(Callback(self.update_stats), self, run_in = 0)
 
 	@property
 	def is_local_player(self):
 		return self is self.session.world.player
 
 	def update_stats(self):
+		# will only be enabled on demand since it takes a while to calculate
 		Scheduler().add_new_object(Callback(self.update_stats), self, run_in = PLAYER.STATS_UPDATE_FREQUENCY)
 		self.stats = PlayerStats(self)
 
@@ -154,10 +158,29 @@ class Player(ComponentHolder, WorldObject):
 		self.stats = None
 		self.session = None
 
-	@decorators.temporary_cachedmethod(timeout=2)
+	@decorators.temporary_cachedmethod(timeout=STATS_UPDATE_INTERVAL)
 	def get_balance_estimation(self):
 		"""This takes a while to calculate, so only do it every 2 seconds at most"""
-		return sum(settlement.balance for settlement in self.session.world.player.settlements)
+		return sum(settlement.balance for settlement in self.settlements)
+
+	@decorators.temporary_cachedmethod(timeout=STATS_UPDATE_INTERVAL)
+	def get_statistics(self):
+		"""Returns a namedtuple containing player-wide statistics"""
+		Data = collections.namedtuple('Data', ['running_costs', 'taxes', 'sell_income', 'buy_expenses', 'balance'])
+		# balance is duplicated here and above such that the version above
+		# can be used independently and the one here is always perfectly in sync
+		# with the other values here
+
+		get_sum = lambda l, attr : sum ( getattr(obj, attr) for obj in l )
+		tradeposts = [ s.get_component(TradePostComponent) for s in self.settlements ]
+		return Data(
+		  running_costs = get_sum(self.settlements, 'cumulative_running_costs'),
+		  taxes = get_sum(self.settlements, 'cumulative_taxes'),
+		  sell_income = get_sum(tradeposts, 'sell_income'),
+		  buy_expenses = get_sum(tradeposts, 'buy_expenses'),
+		  balance = get_sum(self.settlements, 'balance'),
+		)
+
 
 class HumanPlayer(Player):
 	"""Class for players that physically sit in front of the machine where the game is run"""

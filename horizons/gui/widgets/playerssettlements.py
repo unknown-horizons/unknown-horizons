@@ -92,7 +92,8 @@ class PlayersSettlements(StatsWidget):
 		name.text = settlement.get_component(NamedComponent).name
 		name.min_size = name.max_size = (175, 20)
 
-		rename_icon = ImageButton(name = 'rename_%d' % settlement.worldid)
+		from horizons.engine.pychan_util import RenameImageButton
+		rename_icon = RenameImageButton(name = 'rename_%d' % settlement.worldid)
 		rename_icon.up_image = "content/gui/images/background/rename_feather_20.png"
 		rename_icon.hover_image = "content/gui/images/background/rename_feather_20_h.png"
 		rename_icon.helptext = _("Click to change the name of your settlement")

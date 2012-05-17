@@ -19,7 +19,7 @@ components:
 - HealthComponent: {maxhealth: 1000}
 - ProducerComponent:
     productionlines:
-      11:
+      FISH:
         produces:
         - [RES.FOOD, 1]
         consumes:

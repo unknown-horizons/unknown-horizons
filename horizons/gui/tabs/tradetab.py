@@ -28,16 +28,14 @@ from horizons.util import Callback
 from horizons.component.tradepostcomponent import TradePostComponent
 from horizons.component.storagecomponent import StorageComponent
 from horizons.component.namedcomponent import NamedComponent
+from horizons.component.ambientsoundcomponent import AmbientSoundComponent
+
 
 class TradeTab(TabInterface):
-	"""Ship to tradepost trade tab"""
-	log = logging.getLogger("gui.tradetab")
+	"""Ship to tradepost trade tab. International as well as national trade."""
+	log = logging.getLogger("gui.tabs.tradetab")
 
 	scheduled_update_delay = 0.3
-
-	# objects within this radius can be traded with, only used if the
-	# main instance does not have a radius attribute
-	radius = 5
 
 	# map the size buttons in the gui to an amount
 	exchange_size_buttons = {
@@ -66,8 +64,6 @@ class TradeTab(TabInterface):
 		self.instance = instance
 		self.partner = None
 		self.set_exchange(50, initial=True)
-		if hasattr(self.instance, 'radius'):
-			self.radius = self.instance.radius
 
 	def refresh(self):
 		super(TradeTab, self).refresh()
@@ -75,7 +71,7 @@ class TradeTab(TabInterface):
 
 	def draw_widget(self):
 		self.widget.findChild(name='ship_name').text = self.instance.get_component(NamedComponent).name
-		self.partners = self.find_partner()
+		self.partners = self.instance.get_tradeable_warehouses()
 		# set up gui dynamically according to partners
 		# NOTE: init on inventories will be optimised away internally if it's only an update
 		if self.partners:
@@ -178,34 +174,37 @@ class TradeTab(TabInterface):
 
 	def transfer(self, res_id, settlement, selling):
 		"""Buy or sell the resources"""
-		if self.instance.position.distance(settlement.warehouse.position) <= self.radius:
+		if self.instance.position.distance(settlement.warehouse.position) <= self.instance.radius:
 			is_own = settlement.owner is self.instance.owner
 			if selling and not is_own: # ship sells resources to settlement
 				self.log.debug('InternationalTrade: %s/%s is selling %d of res %d to %s/%s',
 				               self.instance.get_component(NamedComponent).name, self.instance.owner.name,
 				               self.exchange, res_id,
 				               settlement.get_component(NamedComponent).name, settlement.owner.name)
+				# international trading has own error handling, no signal_error
 				SellResource(settlement.get_component(TradePostComponent), self.instance,
 				             res_id, self.exchange).execute(self.instance.session)
-			elif selling and is_own: # transfer from ship to settlement
+			elif selling and is_own: # transfer from settlement to ship
 				self.log.debug('Trade: Transferring %s of res %s from %s/%s to %s/%s',
 				               self.exchange, res_id,
 				               settlement.get_component(NamedComponent).name, settlement.owner.name,
 				               self.instance.get_component(NamedComponent).name, self.instance.owner.name)
 				TransferResource(self.exchange, res_id, settlement,
-				                 self.instance).execute(self.instance.session)
+				                 self.instance, signal_errors=True).execute(self.instance.session)
+
 			elif not selling and not is_own: # ship buys resources from settlement
 				self.log.debug('InternationalTrade: %s/%s is buying %d of res %d from %s/%s', \
 				               self.instance.get_component(NamedComponent).name, self.instance.owner.name, self.exchange, res_id, settlement.get_component(NamedComponent).name, settlement.owner.name)
+				# international trading has own error handling, no signal_error
 				BuyResource(settlement.get_component(TradePostComponent), self.instance, res_id, self.exchange).execute(self.instance.session)
-			elif not selling and is_own: # transfer from settlement to ship
+			elif not selling and is_own: # transfer from ship to settlement
 				self.log.debug('Trade: Transferring %s of res %s from %s/%s to %s/%s',
 				               self.exchange, res_id,
 				               self.instance.get_component(NamedComponent).name, self.instance.owner.name,
 				               settlement.get_component(NamedComponent).name, settlement.owner.name)
 				TransferResource(self.exchange, res_id, self.instance,
-				                 settlement).execute(self.instance.session)
-			# let gui update be handled by changelisteners
+				                 settlement, signal_errors=True).execute(self.instance.session)
+			# let gui update be handled by changelisteners (mp-safe)
 
 	def get_widgets_by_class(self, parent_widget, widget_class):
 		"""Gets all widget of a certain widget class from the tab. (e.g. pychan.widgets.Label for all labels)"""
@@ -215,14 +214,6 @@ class TradeTab(TabInterface):
 				children.append(widget)
 		parent_widget.deepApply(_find_widget)
 		return children
-
-	def find_partner(self):
-		"""find all partners in radius"""
-		partners = []
-		warehouses = self.instance.session.world.get_warehouses(self.instance.position, self.radius, self.instance.owner, True)
-		if warehouses is not None:
-			partners.extend(warehouses)
-		return partners
 
 	def get_nearest_partner(self, partners):
 		nearest = None

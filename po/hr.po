@@ -2089,10 +2089,11 @@ msgstr ""
 msgid "Player's current treasury + income expected in near future"
 msgstr ""
 
+# 83%
 #. (helptext of widget: player_name)
 #: horizons/i18n/guitranslations.py
 msgid "Player Name"
-msgstr ""
+msgstr "Ime igrača"
 
 #. (helptext of widget: resource_score)
 #: horizons/i18n/guitranslations.py

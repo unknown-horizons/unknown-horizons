@@ -24,7 +24,7 @@ In this VBox a line is added per settlement in the following format:
 			<HBox>
 				<Label min_size="15,20" name="sequence_number_n" text="1" />
 				<Label min_size="175,20" name="name_n" text="St. Elmo" />
-				<Icon name="rename_n" helptext="Click to rename settlement" image="content/gui/images/background/rename_feather_20.png"/>
+				<RenameImageButton name="rename_n" helptext="Click to rename settlement" image="content/gui/images/background/rename_feather_20.png"/>
 				<Label min_size="110,20" name="inhabitants_n" text="110" />
 				<Label min_size="50,20" name="taxes_n" text="152" />
 				<Label min_size="100,20" name="running_costs_n" text="110" />

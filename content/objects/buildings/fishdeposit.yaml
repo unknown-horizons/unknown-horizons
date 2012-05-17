@@ -15,7 +15,7 @@ components:
 - HealthComponent: {maxhealth: 10}
 - ProducerComponent:
     productionlines:
-      42:
+      FISH:
         changes_animation: false
         produces:
         - [RES.FISH, 1]

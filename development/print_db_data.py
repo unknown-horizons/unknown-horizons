@@ -61,6 +61,9 @@ def get_settler_name(incr):
 	return db("SELECT name FROM settler_level WHERE level = ?", incr)[0][0]
 
 def get_prod_line(id, type):
+	print 'Data has been moved, this view is unavailable for now'
+	return
+	from horizons.util.python.roman_numerals import int_to_roman
 	consumption = db("SELECT resource, amount FROM production \
                       WHERE production_line = ? AND amount < 0 ORDER BY amount ASC", id)
 	production = db("SELECT resource, amount FROM production \
@@ -71,6 +74,8 @@ def get_prod_line(id, type):
 		return (consumption[0], production[0])
 
 def print_production_lines():
+	print 'Data has been moved, this view is unavailable for now'
+	return
 	print 'Production Lines:'
 	for (id, changes_anim, object, time, default) in db("SELECT id, changes_animation, object_id, time, enabled_by_default FROM production_line ORDER BY object_id"):
 		(consumption,production) = get_prod_line(id, list)
@@ -199,6 +204,8 @@ def print_collector_restrictions():
 			print '\t%s(%s)' % (get_obj_name(obj),obj)
 
 def print_increment_data():
+	print 'Data has been moved, this view is unavailable for now'
+	return
 	from horizons.util.python.roman_numerals import int_to_roman
 	upgrade_increments = xrange(1, SETTLER.CURRENT_MAX_INCR+1)
 	print '%15s %s %s  %s' % ('increment', 'max_inh', 'base_tax', 'upgrade_prod_line')

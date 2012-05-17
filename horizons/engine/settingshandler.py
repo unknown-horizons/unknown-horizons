@@ -146,7 +146,7 @@ class SettingsHandler(object):
 			message = _("The SDL renderer is meant as a fallback solution only and has serious graphical glitches. \n\nUse at own risk!")
 			horizons.main._modules.gui.show_popup(headline, message)
 
-	def update_slider_values(self, slider, factor = 1, unit = ''):
+	def update_slider_values(self, slider, factor=1, unit=''):
 		"""
 		slider - slider name
 		factor - value will be multiplied by factor
@@ -189,7 +189,7 @@ class SettingsHandler(object):
 			self.engine.sound.emitter['speech'].setGain(value)
 			for e in self.engine.sound.emitter['ambient']:
 				e.setGain(value*2)
-		self.update_slider_values('volume_effects', factor = 200, unit = '%')
+		self.update_slider_values('volume_effects', factor=200, unit='%')
 
 	def set_volume(self, emitter_name, value):
 		"""Sets the volume on the emitter specified by emitter_name.
@@ -207,7 +207,7 @@ class SettingsHandler(object):
 			value = self.settings_dialog.findChild(name="volume_music").value
 		if self._setting.get(FIFE_MODULE, "PlaySounds"):
 			self.engine.sound.emitter['bgsound'].setGain(value)
-		self.update_slider_values('volume_music', factor = 500, unit = '%')
+		self.update_slider_values('volume_music', factor=500, unit='%')
 
 
 	def set_network_port(self, port):

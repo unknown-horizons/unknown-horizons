@@ -536,13 +536,13 @@ class World(BuildingOwner, WorldObject):
 				break
 		return islands
 
-	def get_warehouses(self, position=None, radius=None, owner=None, include_allied=False):
+	def get_warehouses(self, position=None, radius=None, owner=None, include_tradeable=False):
 		"""Returns all warehouses on the map. Optionally only those in range
 		around the specified position.
 		@param position: Point or Rect instance.
 		@param radius: int radius to use.
 		@param owner: Player instance, list only warehouses belonging to this player.
-		@param include_allied also list the warehouses belonging to allies
+		@param include_tradeable also list the warehouses the owner can trade with
 		@return: List of warehouses.
 		"""
 		warehouses = []
@@ -558,7 +558,7 @@ class World(BuildingOwner, WorldObject):
 				if (radius is None or position is None or \
 				    warehouse.position.distance(position) <= radius) and \
 				   (owner is None or warehouse.owner == owner or
-				    (include_allied and self.diplomacy.are_allies(warehouse.owner, owner))):
+				    (include_tradeable and self.diplomacy.can_trade(warehouse.owner, owner))):
 					warehouses.append(warehouse)
 		return warehouses
 

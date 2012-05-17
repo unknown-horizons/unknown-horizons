@@ -19,8 +19,7 @@ components:
 - HealthComponent: {maxhealth: 1000}
 - ProducerComponent:
    productionlines:
-     56464472:
-       produces: []
+     FIRE:
        consumes:
         - [RES.FIRE, -1]
        time: 1

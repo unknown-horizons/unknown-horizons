@@ -170,8 +170,14 @@ class Ship(Unit):
 			ships.remove(self)
 		return ships
 
+	def get_tradeable_warehouses(self, position=None):
+		"""Returns warehouses this ship can trade with w.r.t. position, which defaults to the ships ones."""
+		if position is None:
+			position = self.position
+		return self.session.world.get_warehouses(position, self.radius, self.owner, include_tradeable=True)
+
 	def get_location_based_status(self, position):
-		warehouses = self.session.world.get_warehouses(position, self.radius, self.owner, True)
+		warehouses = self.get_tradeable_warehouses(position)
 		if warehouses:
 			warehouse = warehouses[0] # TODO: don't ignore the other possibilities
 			player_suffix = u''

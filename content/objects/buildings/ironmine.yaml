@@ -19,7 +19,7 @@ components:
 - ProducerComponent:
     is_mine: True
     productionlines:
-      36:
+      IRON_ORE:
         produces:
         - [RES.IRON_ORE, 1]
         consumes:
