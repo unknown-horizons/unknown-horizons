@@ -238,6 +238,10 @@ def start(_command_line_arguments):
 		if _modules.session is None:
 			print "You can only set the speed via command line in combination with a game start parameter such as --start-map, etc."
 			return False
+		ticks = int(GAME_SPEED.TICKS_PER_SECOND*command_line_arguments.gamespeed)
+		if ticks not in GAME_SPEED.TICK_RATES: # TODO: maybe check before loading the game
+			print "Invalid game speed parameter, must be one of: %s" % ([float(i)/GAME_SPEED.TICKS_PER_SECOND for i in GAME_SPEED.TICK_RATES])
+			return False
 		_modules.session.speed_set(GAME_SPEED.TICKS_PER_SECOND*command_line_arguments.gamespeed)
 
 	if command_line_arguments.gui_test:

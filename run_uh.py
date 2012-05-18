@@ -167,7 +167,7 @@ def get_option_parser():
 				               default=False, help="Enable the string previewer tool for scenario writers")
 	dev_group.add_option("--no-preload", dest="nopreload", action="store_true", \
 				               default=False, help="Disable preloading while in main menu")
-	dev_group.add_option("--game-speed", dest="gamespeed", metavar="<game_speed>", type="int", \
+	dev_group.add_option("--game-speed", dest="gamespeed", metavar="<game_speed>", type="float", \
 				               help="Run the game in the given speed (Values: 0.5, 1, 2, 3, 4, 6, 8, 11, 20)")
 	dev_group.add_option("--gui-test", dest="gui_test", metavar="<test>", \
 	                           default=False, help="INTERNAL. Use run_tests.py instead.")
