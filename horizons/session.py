@@ -343,7 +343,34 @@ class Session(LivingObject):
 
 	def speed_set(self, ticks, suggestion=False):
 		"""Set game speed to ticks ticks per second"""
+		old = self.timer.ticks_per_second
 		self.timer.ticks_per_second = ticks
+		self.view.map.setTimeMultiplier(float(ticks) / float(GAME_SPEED.TICKS_PER_SECOND))
+		if old == 0 and self.timer.tick_next_time is None: #back from paused state
+			if self.paused_time_missing is None:
+				# happens if e.g. a dialog pauses the game during startup on hotkeypress
+				self.timer.tick_next_time = time.time()
+			else:
+				self.timer.tick_next_time = time.time() + (self.paused_time_missing / ticks)
+		elif ticks == 0 or self.timer.tick_next_time is None:
+			# go into paused state or very early speed change (before any tick)
+			if self.timer.tick_next_time is not None:
+				self.paused_time_missing = (self.timer.tick_next_time - time.time()) * old
+			else:
+				self.paused_time_missing =  None
+			self.timer.tick_next_time = None
+		else:
+			"""
+			Under odd circumstances (anti-freeze protection just activated, game speed
+			decremented multiple times within this frame) this can delay the next tick
+			by minutes. Since the positive effects of the code aren't really observeable,
+			this code is commented out and possibly will be removed.
+
+			# correct the time until the next tick starts
+			time_to_next_tick = self.timer.tick_next_time - time.time()
+			if time_to_next_tick > 0: # only do this if we aren't late
+				self.timer.tick_next_time += (time_to_next_tick * old / ticks)
+			"""
 		self.display_speed()
 
 	def display_speed(self):

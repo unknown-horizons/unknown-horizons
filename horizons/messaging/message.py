@@ -182,6 +182,3 @@ class TabWidgetChanged(Message):
 	"""Sent when the ingamegui displays a different set of tabs, i.e. the tabwidget is exchanged.
 	The tabs are not necessarily different from the old ones."""
 	pass
-
-class GameSpeedChanged(Message):
-	arguments = ('ticks', )

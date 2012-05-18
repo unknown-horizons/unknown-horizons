@@ -27,7 +27,6 @@ import horizons.main
 
 from horizons.util import ChangeListener, Rect
 from horizons.constants import LAYERS, VIEW, GAME_SPEED
-from horizons.messaging import GameSpeedChanged
 
 class View(ChangeListener):
 	"""Class that takes care of all the camera and rendering stuff."""
@@ -82,10 +81,7 @@ class View(ChangeListener):
 		self._autoscroll = [0, 0]
 		self._autoscroll_keys = [0, 0]
 
-		GameSpeedChanged.subscribe(self._on_game_speed_changed)
-
 	def end(self):
-		GameSpeedChanged.unsubscribe(self._on_game_speed_changed)
 		horizons.main.fife.pump.remove(self.do_autoscroll)
 		self.model.deleteMaps()
 		super(View, self).end()
@@ -247,6 +243,3 @@ class View(ChangeListener):
 		self.set_zoom(zoom)
 		self.set_rotation(rotation)
 		self.center(loc_x, loc_y)
-
-	def _on_game_speed_changed(self, msg):
-		self.map.setTimeMultiplier(float(msg.ticks) / float(GAME_SPEED.TICKS_PER_SECOND))
