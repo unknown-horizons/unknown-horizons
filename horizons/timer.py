@@ -25,6 +25,8 @@ import horizons.main
 from horizons.util.living import LivingObject
 from horizons.constants import GAME_SPEED
 from horizons.scheduler import Scheduler
+from horizons.messaging import GameSpeedChanged
+from horizons.extscheduler import ExtScheduler
 
 class Timer(LivingObject):
 	"""
@@ -45,11 +47,12 @@ class Timer(LivingObject):
 		"""
 		super(Timer, self).__init__()
 		self._freeze_protection = freeze_protection
-		self.ticks_per_second = GAME_SPEED.TICKS_PER_SECOND
+		self.__ticks_per_second = GAME_SPEED.TICKS_PER_SECOND
 		self.tick_next_id = tick_next_id
 		self.tick_next_time = None
 		self.tick_func_test = []
 		self.tick_func_call = []
+		self.gamespeedmanager = GameSpeedManager(self)
 
 	def activate(self):
 		"""Actually starts the timer"""
@@ -58,7 +61,45 @@ class Timer(LivingObject):
 	def end(self):
 		if self.check_tick in horizons.main.fife.pump:
 			horizons.main.fife.pump.remove(self.check_tick)
+		self.gamespeedmanager.end()
 		super(Timer, self).end()
+
+	@property
+	def ticks_per_second(self):
+		return self.__ticks_per_second
+
+	@ticks_per_second.setter
+	def ticks_per_second(self, ticks):
+		old = self.__ticks_per_second
+		self.__ticks_per_second = ticks
+		if old == 0 and self.__tick_next_time is None: #back from paused state
+			if self.paused_time_missing is None:
+				# happens if e.g. a dialog pauses the game during startup on hotkeypress
+				self.tick_next_time = time.time()
+			else:
+				self.tick_next_time = time.time() + (self.paused_time_missing / ticks)
+		elif ticks == 0 or self.tick_next_time is None:
+			# go into paused state or very early speed change (before any tick)
+			if self.tick_next_time is not None:
+				self.paused_time_missing = (self.tick_next_time - time.time()) * old
+			else:
+				self.paused_time_missing =  None
+			self.tick_next_time = None
+		else:
+			"""
+			Under odd circumstances (anti-freeze protection just activated, game speed
+			decremented multiple times within this frame) this can delay the next tick
+			by minutes. Since the positive effects of the code aren't really observeable,
+			this code is commented out and possibly will be removed.
+
+			# correct the time until the next tick starts
+			time_to_next_tick = self.tick_next_time - time.time()
+			if time_to_next_tick > 0: # only do this if we aren't late
+				self.tick_next_time += (time_to_next_tick * old / ticks)
+			"""
+
+		GameSpeedChanged.broadcast(self, self.gamespeedmanager.get_actual_ticks_per_second())
+
 
 	def add_test(self, call):
 		"""Adds a call to the test list
@@ -91,6 +132,11 @@ class Timer(LivingObject):
 		"""
 		return int(round( seconds*GAME_SPEED.TICKS_PER_SECOND))
 
+	def _get_next_tick_time(self):
+		ticks_per_second = self.gamespeedmanager.get_actual_ticks_per_second() if self._freeze_protection else self.ticks_per_second
+		return (self.tick_next_time or time.time()) + \
+		       ( 1.0 / self.gamespeedmanager.get_actual_ticks_per_second() )
+
 	def check_tick(self):
 		"""check_tick is called by the engines _pump function to signal a frame idle."""
 		if self.ticks_per_second == 0:
@@ -101,17 +147,95 @@ class Timer(LivingObject):
 				if r == self.TEST_SKIP:
 					# If a callback changed the speed to zero, we have to exit
 					if self.ticks_per_second != 0:
-						self.tick_next_time = (self.tick_next_time or time.time()) + 1.0 / self.ticks_per_second
+						self.tick_next_time = self._get_next_tick_time()
 					return
-			if self._freeze_protection and self.tick_next_time:
+			if self._freeze_protection and self.tick_next_time: # check if it's not the first run
 				# stretch time if we're too slow
 				diff = time.time() - self.tick_next_time
+				self.gamespeedmanager.delays.append(diff)
 				if diff > self.ACCEPTABLE_TICK_DELAY:
+					print 'major delay, freeze protection kicking in ', diff
 					self.tick_next_time += self.DEFER_TICK_ON_DELAY_BY
 			for f in self.tick_func_call:
 				f(self.tick_next_id)
 			self.tick_next_id += 1
+
+
 			if self.ticks_per_second == 0:
 				# If a callback changed the speed to zero, we have to exit
 				return
-			self.tick_next_time = (self.tick_next_time or time.time()) + 1.0 / self.ticks_per_second
+			self.tick_next_time = self._get_next_tick_time()
+
+
+class GameSpeedManager(object):
+	"""Keeps track of the performance of the machine and suggests slighlty changed game speeds
+	such that the game runs smoothly
+
+	http://wiki.unknown-horizons.org/w/Dynamic_game_speed
+	"""
+
+	# if the ticks delay is nearly as big as the time it takes to calculate,
+	# we're close to overlaps
+	AVG_DELAY_THRESHOLD = (1.0 / GAME_SPEED.TICKS_PER_SECOND) * 0.65 # ~= 0.04
+
+	STEPS = 4
+
+	def __init__(self, timer):
+		self.timer = timer
+		self.delays = []
+		self.modifier = 0
+
+		ExtScheduler().add_new_object(self.check_speed, self, 0.25, loops=-1)
+
+	def end(self):
+		ExtScheduler().rem_all_classinst_calls(self)
+
+	def check_speed(self):
+		"""Analyse recent delays and react by changing the game speed if need be"""
+		if not self.delays:
+			return
+		old_mod = self.modifier
+		avg_delay = sum(self.delays) / len(self.delays)
+		self.delays = []
+		if avg_delay > self.__class__.AVG_DELAY_THRESHOLD:
+			if self.modifier >= self.__class__.STEPS:
+
+				i = GAME_SPEED.TICK_RATES.index( self.timer.ticks_per_second )
+				if i > 0:
+					# TODO: do this in a nicer way in case we want this behaviour
+					horizons.main._modules.session.speed_set( GAME_SPEED.TICK_RATES[i-1] )
+
+				self.modifier /= 2 # don't change speed in very quick succession, but be aware that another change can be required soon
+
+			else:
+				self.modifier += 1
+		else:
+			if self.modifier > 0:
+				self.modifier -= 1
+
+		print 'delay: ', avg_delay, ' new mod ', self.modifier, ' tps', self.get_actual_ticks_per_second()
+
+		if self.modifier != old_mod:
+			GameSpeedChanged.broadcast(self, self.get_actual_ticks_per_second())
+
+		# TODO: redraws on successive tick workoffs or stop the game (freeze protection)
+		# TODO: only enable in sp games for now
+		# TODO: suggest speed change to user possibly
+
+	def get_actual_ticks_per_second(self):
+		ticks_per_second = self.timer.ticks_per_second
+		if self.modifier == 0:
+			return ticks_per_second
+		else:
+			# need to set the speed to a value between current speed and next slower value
+			i = GAME_SPEED.TICK_RATES.index( ticks_per_second )
+			if i > 0:
+				lower_bound = GAME_SPEED.TICK_RATES[ i - 1 ]
+			else:
+				lower_bound = 2 # ticks per second
+
+			interval = ticks_per_second - lower_bound
+			mod = (float(interval) / self.STEPS) * self.modifier
+			mod = int(mod)
+
+			return ticks_per_second - mod
