@@ -98,6 +98,7 @@ class BuildingTool(NavigationTool):
 		self.renderer = self.session.view.renderer['InstanceRenderer']
 		self.ship = ship
 		self._class = building
+		self.__init_selectable_component()
 		self.buildings = [] # list of PossibleBuild objs
 		self.buildings_action_set_ids = [] # list action set ids of list above
 		self.buildings_fife_instances = {} # fife instances of possible builds
@@ -126,6 +127,14 @@ class BuildingTool(NavigationTool):
 
 		self.highlight_buildable()
 		WorldObjectDeleted.subscribe(self._on_worldobject_deleted)
+
+	def __init_selectable_component(self):
+		self.selectable_comp = SelectableBuildingComponent
+		try:
+			template = self._class.get_component_template(SelectableComponent.NAME)
+			self.selectable_comp = SelectableComponent.get_instance(template)
+		except KeyError:
+			pass
 
 	def highlight_buildable(self, tiles_to_check=None, new_buildings=True):
 		"""Highlights all buildable tiles and select buildings that are inversely related in order to show their range.
@@ -157,7 +166,7 @@ class BuildingTool(NavigationTool):
 			                        bid in related  for \
 			                        buildings_to_select in settlement.buildings_by_id[bid] ]
 
-			tiles = SelectableBuildingComponent.select_many(buildings_to_select, renderer)
+			tiles = self.selectable_comp.select_many(buildings_to_select, renderer)
 			self._related_buildings_selected_tiles = frozenset(tiles)
 		else: # we don't need to check all
 			# duplicates filtered later
@@ -166,7 +175,7 @@ class BuildingTool(NavigationTool):
 			for tile in tiles_to_check:
 				# check if we need to recolor the tiles
 				if tile in self._related_buildings_selected_tiles:
-					SelectableBuildingComponent._add_selected_tile(tile, renderer, remember=False)
+					self.selectable_comp._add_selected_tile(tile, renderer, remember=False)
 
 		for building in buildings_to_select:
 			self._related_buildings.add(building)
@@ -360,18 +369,11 @@ class BuildingTool(NavigationTool):
 
 	def _draw_preview_building_range(self, building, settlement):
 		"""Color the range as if the building was selected"""
-		# get required data from component definition (instance doesn't not
-		# exist yet
-		try:
-			template = self._class.get_component_template(SelectableComponent.NAME)
-		except KeyError:
-			pass
-		else:
-			radius_only_on_island = True
-			if 'range_applies_only_on_island' in template:
-				radius_only_on_island =  template['range_applies_only_on_island']
+		radius_only_on_island = True
+		if hasattr(self.selectable_comp, 'range_applies_only_on_island'):
+			radius_only_on_island =  self.selectable_comp.range_applies_only_on_island
 
-			SelectableBuildingComponent.select_building(self.session, building.position, settlement, self._class.radius, radius_only_on_island)
+		self.selectable_comp.select_building(self.session, building.position, settlement, self._class.radius, radius_only_on_island)
 
 	def _highlight_related_buildings_in_range(self, building, settlement):
 		"""Highlight directly related buildings (tree for lumberjacks) that are in range of the build preview"""
@@ -445,7 +447,7 @@ class BuildingTool(NavigationTool):
 			self.renderer.removeColored(inst)
 			# related buildings are highlighted, restore it
 			if was_selected:
-				self.renderer.addColored(inst, *SelectableBuildingComponent.selection_color)
+				self.renderer.addColored(inst, *self.selectable_comp.selection_color)
 			self.renderer.removeOutlined(inst)
 			modified_tiles.extend(
 			  ( self.session.world.get_tile(point) for point in building.position )
@@ -660,7 +662,7 @@ class BuildingTool(NavigationTool):
 		except KeyError:
 			pass
 		else:
-			deselected_tiles = SelectableBuildingComponent.deselect_building(self.session)
+			deselected_tiles = self.selectable_comp.deselect_building(self.session)
 			# redraw buildables (removal of selection might have tampered with it)
 			self.highlight_buildable(deselected_tiles)
 
