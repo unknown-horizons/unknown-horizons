@@ -77,6 +77,8 @@ class Scheduler(LivingObject):
 			horizons.main.quit()
 			return
 
+		import time
+		a = time.time()
 		if self.cur_tick in self.schedule:
 			self.log.debug("Scheduler: tick %s, cbs: %s", self.cur_tick, len(self.schedule[self.cur_tick]))
 
@@ -110,6 +112,9 @@ class Scheduler(LivingObject):
 
 		# run jobs added in the loop above
 		self._run_additional_jobs()
+		b = time.time()
+		if b-a > 0.08:
+			print 'single huge tick: ', b-a
 
 		assert (not self.schedule) or self.schedule.iterkeys().next() > self.cur_tick
 

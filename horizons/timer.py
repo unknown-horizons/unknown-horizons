@@ -72,7 +72,7 @@ class Timer(LivingObject):
 	def ticks_per_second(self, ticks):
 		old = self.__ticks_per_second
 		self.__ticks_per_second = ticks
-		if old == 0 and self.__tick_next_time is None: #back from paused state
+		if old == 0 and self.tick_next_time is None: #back from paused state
 			if self.paused_time_missing is None:
 				# happens if e.g. a dialog pauses the game during startup on hotkeypress
 				self.tick_next_time = time.time()
@@ -154,7 +154,7 @@ class Timer(LivingObject):
 				diff = time.time() - self.tick_next_time
 				self.gamespeedmanager.delays.append(diff)
 				if diff > self.ACCEPTABLE_TICK_DELAY:
-					print 'major delay, freeze protection kicking in ', diff
+					print 'major delay, freeze protection kicking in ', diff, time.time()
 					self.tick_next_time += self.DEFER_TICK_ON_DELAY_BY
 			for f in self.tick_func_call:
 				f(self.tick_next_id)
@@ -196,24 +196,18 @@ class GameSpeedManager(object):
 			return
 		old_mod = self.modifier
 		avg_delay = sum(self.delays) / len(self.delays)
+		major_delays = sum (1 for i in self.delays if i > Timer.ACCEPTABLE_TICK_DELAY)
 		self.delays = []
 		if avg_delay > self.__class__.AVG_DELAY_THRESHOLD:
-			if self.modifier >= self.__class__.STEPS:
-
-				i = GAME_SPEED.TICK_RATES.index( self.timer.ticks_per_second )
-				if i > 0:
-					# TODO: do this in a nicer way in case we want this behaviour
-					horizons.main._modules.session.speed_set( GAME_SPEED.TICK_RATES[i-1] )
-
-				self.modifier /= 2 # don't change speed in very quick succession, but be aware that another change can be required soon
-
-			else:
-				self.modifier += 1
+			self._slow_down()
 		else:
-			if self.modifier > 0:
-				self.modifier -= 1
+			self._speed_up()
 
-		print 'delay: ', avg_delay, ' new mod ', self.modifier, ' tps', self.get_actual_ticks_per_second()
+		# slow down once for every 2 freeze protection triggers, but at most one complete step
+		for i in xrange(min(major_delays/2, self.STEPS)):
+			self._slow_down()
+
+		print 'delay: ', avg_delay, ' new mod ', self.modifier, ' tps', self.get_actual_ticks_per_second(), ' major delays', major_delays
 
 		if self.modifier != old_mod:
 			GameSpeedChanged.broadcast(self, self.get_actual_ticks_per_second())
@@ -221,10 +215,29 @@ class GameSpeedManager(object):
 		# TODO: redraws on successive tick workoffs or stop the game (freeze protection)
 		# TODO: only enable in sp games for now
 		# TODO: suggest speed change to user possibly
+		# TODO: fix game pause problems
+
+	def _slow_down(self):
+		if self.modifier >= self.__class__.STEPS:
+
+			i = GAME_SPEED.TICK_RATES.index( self.timer.ticks_per_second )
+			if i > 0:
+				# TODO: do this in a nicer way in case we want this behaviour
+				horizons.main._modules.session.speed_set( GAME_SPEED.TICK_RATES[i-1] )
+
+			self.modifier /= 2 # don't change speed in very quick succession, but be aware that another change can be required soon
+
+		else:
+			self.modifier += 1
+
+	def _speed_up(self):
+		if self.modifier > 0:
+			self.modifier -= 1
+
 
 	def get_actual_ticks_per_second(self):
 		ticks_per_second = self.timer.ticks_per_second
-		if self.modifier == 0:
+		if self.modifier == 0 or ticks_per_second == 0:
 			return ticks_per_second
 		else:
 			# need to set the speed to a value between current speed and next slower value
