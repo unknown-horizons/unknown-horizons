@@ -68,7 +68,7 @@ def show_error_message(title, message):
 
 if __name__ == '__main__':
     	# mac returns an int, linux and windows a string
-	if platform.python_version_tuple()[0] in (2,'2'):
+	if platform.python_version_tuple()[0] not in (2,'2'):
 		show_error_message('Unsupported Python version', 'Python 2 is required to run Unknown Horizons.')
 
 def log():
