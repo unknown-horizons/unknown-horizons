@@ -54,8 +54,10 @@ class Fife(ApplicationBase):
 		self.engine = fife.Engine()
 		self.engine_settings = self.engine.getSettings()
 
-		logToPrompt, logToFile, debugPychan = True, True, False
-		self._log = fifelog.LogManager(self.engine, 1 if logToPrompt else 0, 1 if logToFile else 0)
+		# self._log is used by fife (extensions/fife_settings.py)
+		log_to_prompt = True
+		log_to_file = True
+		self._log = fifelog.LogManager(self.engine, log_to_prompt, not log_to_file)
 
 		self.loadSettings()
 
@@ -143,13 +145,6 @@ class Fife(ApplicationBase):
 	def init(self):
 		"""Second initialisation stage of engine
 		"""
-		logToPrompt, logToFile, debugPychan = True, True, False
-		if self._gotInited:
-			return
-		#start modules
-		self.log = fifelog.LogManager(self.engine, 1 if logToPrompt else 0, 1 if logToFile else 0)
-		#self.log.setVisibleModules('all')
-
 		self.engine.init()
 
 		#init stuff
@@ -177,7 +172,7 @@ class Fife(ApplicationBase):
 		self.cursor.set( self.cursor_images['default'] )
 
 		#init pychan
-		self.pychan.init(self.engine, debugPychan)
+		self.pychan.init(self.engine, debug=False) # debugPychan has performance impacts
 		self.pychan.setupModalExecution(self.loop, self.breakLoop)
 		self.console = self.pychan.manager.hook.guimanager.getConsole()
 

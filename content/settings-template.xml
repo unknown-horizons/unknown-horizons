@@ -16,8 +16,8 @@
 		<Setting name="DefaultFontSize" type="int"> 15 </Setting>
 		<Setting name="LogModules" type="list"> controller ; audio ; vfs ; script ; loaders ; pool ; view ; video ; model ; metamodel ; event_channel ; xml </Setting>
 		<Setting name="PychanDebug" type="bool"> False </Setting>
-		<Setting name="LogToPrompt" type="int"> 1 </Setting>
-		<Setting name="LogToFile" type="int"> 0 </Setting>
+		<Setting name="LogToPrompt" type="bool"> False </Setting>
+		<Setting name="LogToFile" type="bool"> False </Setting>
 		<Setting name="Lighting" type="int"> 0 </Setting>
 		<Setting name="GLUseFramebuffer" type="bool"> True </Setting>
 		<Setting name="GLUseNPOT" type="bool"> True </Setting>
@@ -53,6 +53,6 @@
 		<Setting name="DebugLog" type="bool">False</Setting>
 	</Module>
 	<Module name="meta">
-		<Setting name="SettingsVersion" type="int">19</Setting>
+		<Setting name="SettingsVersion" type="int">20</Setting>
 	</Module>
 </Settings>
