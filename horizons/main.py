@@ -105,7 +105,7 @@ def start(_command_line_arguments):
 	# This especially means that run_uh.py -d will *not* log FIFE as of now!
 	if 'fife' in command_line_arguments.debug_module:
 		fife._log.lm.setLogToPrompt(True)
-		# After a pending patch to FIFE was applied, we should use this instead:
+		# After the next FIFE release, we should use this instead which is possible as of r3960:
 		#fife._log.logToPrompt = True
 
 	if command_line_arguments.mp_bind:
