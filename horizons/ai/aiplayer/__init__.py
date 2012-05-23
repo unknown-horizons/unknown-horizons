@@ -85,6 +85,7 @@ class AIPlayer(GenericAI):
 	def __init__(self, session, id, name, color, difficulty_level, **kwargs):
 		super(AIPlayer, self).__init__(session, id, name, color, difficulty_level, **kwargs)
 		self.need_more_ships = False
+		self.need_more_combat_ships = True
 		self.need_feeder_island = False
 		self.personality_manager = PersonalityManager(self)
 		self.__init()
@@ -293,6 +294,10 @@ class AIPlayer(GenericAI):
 	def request_ship(self):
 		self.log.info('%s received request for more ships', self)
 		self.need_more_ships = True
+
+	def request_combat_ship(self):
+		self.log.info('%s received request for combat ships', self)
+		self.need_more_combat_ships = True
 
 	def add_building(self, building):
 		# if the id is not present then this is a new settlement that has to be handled separately
