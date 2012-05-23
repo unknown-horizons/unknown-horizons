@@ -54,10 +54,7 @@ class Fife(ApplicationBase):
 		self.engine = fife.Engine()
 		self.engine_settings = self.engine.getSettings()
 
-		# self._log is used by fife (extensions/fife_settings.py)
-		log_to_prompt = True
-		log_to_file = True
-		self._log = fifelog.LogManager(self.engine, log_to_prompt, not log_to_file)
+		super(Fife, self).initLogging()
 
 		self.loadSettings()
 
