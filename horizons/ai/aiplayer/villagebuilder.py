@@ -827,8 +827,8 @@ class VillageBuilder(AreaBuilder):
 
 	def display(self):
 		"""Show the plan on the map unless it is disabled in the settings."""
-		if not AI.HIGHLIGHT_PLANS:
-			return
+		#if not AI.HIGHLIGHT_PLANS:
+		#	return
 
 		road_colour = (30, 30, 30)
 		tent_colour = (255, 255, 255)
