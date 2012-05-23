@@ -99,6 +99,15 @@ def start(_command_line_arguments):
 	# init fife before mp_bind is parsed, since it's needed there
 	fife = Fife()
 
+	#if debug or 'fife' in command_line_arguments.debug_module:
+	# Since debug is also True if only particular debug_modules were activated (but not FIFE),
+	# we only check whether 'fife' was passed with --debug-module='fife'.
+	# This especially means that run_uh.py -d will *not* log FIFE as of now!
+	if 'fife' in command_line_arguments.debug_module:
+		fife._log.lm.setLogToPrompt(True)
+		# After a pending patch to FIFE was applied, we should use this instead:
+		#fife._log.logToPrompt = True
+
 	if command_line_arguments.mp_bind:
 		try:
 			mpieces = command_line_arguments.mp_bind.partition(':')
