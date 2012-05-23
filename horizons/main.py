@@ -99,12 +99,10 @@ def start(_command_line_arguments):
 	# init fife before mp_bind is parsed, since it's needed there
 	fife = Fife()
 
-	#if debug or 'fife' in command_line_arguments.debug_module:
-	# Since debug is also True if only particular debug_modules were activated (but not FIFE),
-	# we only check whether 'fife' was passed with --debug-module='fife'.
-	# This especially means that run_uh.py -d will *not* log FIFE as of now!
-	if 'fife' in command_line_arguments.debug_module:
-		fife._log.lm.setLogToPrompt(True)
+	if debug: # also True if a specific module is logged (but not 'fife')
+		if not (command_line_arguments.debug_module \
+		        and 'fife' not in command_line_arguments.debug_module):
+			fife._log.lm.setLogToPrompt(True)
 		# After the next FIFE release, we should use this instead which is possible as of r3960:
 		#fife._log.logToPrompt = True
 
