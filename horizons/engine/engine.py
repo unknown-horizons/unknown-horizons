@@ -172,7 +172,8 @@ class Fife(ApplicationBase):
 		self.cursor.set( self.cursor_images['default'] )
 
 		#init pychan
-		self.pychan.init(self.engine, debug=False) # debugPychan has performance impacts
+		debug_pychan = self.get_fife_setting('PychanDebug') # default is False
+		self.pychan.init(self.engine, debug_pychan) # pychan debug mode may have performance impacts
 		self.pychan.setupModalExecution(self.loop, self.breakLoop)
 		self.console = self.pychan.manager.hook.guimanager.getConsole()
 
