@@ -26,7 +26,6 @@ import locale
 
 from fife import fife
 from fife.extensions.basicapplication import ApplicationBase
-from fife.extensions import fifelog
 from fife.extensions import pychan
 from fife.extensions.serializers.simplexml import SimpleXMLSerializer
 

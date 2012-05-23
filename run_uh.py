@@ -46,7 +46,6 @@ import optparse
 import signal
 import traceback
 import platform
-import struct
 
 # NOTE: do NOT import anything from horizons.* into global scope
 # this will break any run_uh imports from other locations (e.g. _get_version())
@@ -301,7 +300,7 @@ def setup_debugging(options):
 			print('No such logger: %s' % module)
 			sys.exit(1)
 		logging.getLogger(module).setLevel(logging.DEBUG)
-	if options.debug or len(options.debug_module) > 0 or options.debug_log_only:
+	if options.debug or options.debug_module or options.debug_log_only:
 		options.debug = True
 		# also log to file
 		# init a logfile handler with a dynamic filename
