@@ -75,9 +75,7 @@ class Fife(ApplicationBase):
 
 	def _setup_settings(self, check_file_version=True):
 		_user_config_file = os.path.join( os.getcwd(), PATHS.USER_CONFIG_FILE )
-		if not os.path.exists(_user_config_file):
-			check_file_version = False
-		if check_file_version:
+		if check_file_version and os.path.exists(_user_config_file):
 			# check if user settings file is the current one
 
 			# NOTE: SimpleXMLSerializer can't handle relative paths, it fails silently
