@@ -63,10 +63,10 @@ class Fife(ApplicationBase):
 
 		self.pychan = pychan
 
-		self._doQuit = False
-		self._doBreak = False
-		self._doReturn = None
-		self._gotInited = False
+		self.quit_requested = False
+		self.break_requested = False
+		self.return_values = None
+		self._got_inited = False
 
 
 	# existing settings not part of this gui or the fife defaults
@@ -246,7 +246,7 @@ class Fife(ApplicationBase):
 	def loop(self):
 		"""
 		"""
-		while not self._doQuit:
+		while not self.quit_requested:
 			try:
 				self.engine.pump()
 			except fife.Exception as e:
@@ -254,9 +254,9 @@ class Fife(ApplicationBase):
 				break
 			for f in self.pump:
 				f()
-			if self._doBreak:
-				self._doBreak = False
-				return self._doReturn
+			if self.break_requested:
+				self.break_requested = False
+				return self.return_values
 
 	def __kill_engine(self):
 		"""Called when the engine is quit"""
@@ -267,11 +267,10 @@ class Fife(ApplicationBase):
 		"""
 		@param returnValue:
 		"""
-		self._doReturn = returnValue
-		self._doBreak = True
+		self.return_values = returnValue
+		self.break_requested = True
 
 	def quit(self):
 		""" Quits the engine.
 		"""
-		self._doQuit = True
-
+		self.quit_requested = True
