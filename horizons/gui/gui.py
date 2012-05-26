@@ -435,7 +435,7 @@ class Gui(SingleplayerMenu, MultiplayerMenu):
 				btn = dlg.findChild(name=CancelButton.DEFAULT_NAME)
 				callback = pychan_util.get_button_event(btn) if btn else None
 				if callback:
-					callback()
+					pychan.tools.applyOnlySuitable(callback, event=event, widget=btn)
 				else:
 					# escape should hide the dialog default
 					pychan.internal.get_manager().breakFromMainLoop(returnValue=False)
@@ -444,7 +444,7 @@ class Gui(SingleplayerMenu, MultiplayerMenu):
 				btn = dlg.findChild(name=OkButton.DEFAULT_NAME)
 				callback = pychan_util.get_button_event(btn) if btn else None
 				if callback:
-					callback()
+					pychan.tools.applyOnlySuitable(callback, event=event, widget=btn)
 				# can't guess a default action here
 
 		dlg.capture(_on_keypress, event_name="keyPressed")

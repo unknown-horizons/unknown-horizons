@@ -197,6 +197,9 @@ def init_pychan():
 
 def get_button_event(button):
 	"""Returns the callback that is triggered when the button is clicked on.
+	If this should run in combination with --gui-log, call the returned event callback with parameters like this:
+		pychan.tools.applyOnlySuitable(callback, event=event, widget=widget)
+
 	@param button: pychan Button"""
 	try:
 		# try dialog action
