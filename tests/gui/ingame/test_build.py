@@ -101,4 +101,26 @@ def test_found_settlement(gui):
 		yield
 	assert ground_map[(55, 15)].object is None
 
+	# open build menu again
+	gui.trigger('mainhud', 'build/action/default')
+
+	# build a fisher
+	gui.trigger('tab', 'button_33/action/default')
+	gui.cursor_click(60, 4, 'left')
+	fisher = ground_map[(60, 4)].object
+	assert(fisher.id == BUILDINGS.FISHER)
+
+	# connect the lumberjack and fisher using a road
+	gui.trigger('tab', 'button_21/action/default')
+	for x in xrange(57, 60):
+		gui.cursor_click(x, 5, 'left')
+		assert(ground_map[(x, 5)].object.id == BUILDINGS.TRAIL)
+	gui.cursor_click(x, 5, 'right')
+
+	# trigger ticket 1767
+	# build a signal fire
+	gui.trigger('tab', 'button_22/action/default')
+	gui.cursor_click(58, 5, 'left')
+	gui.cursor_click(58, 4, 'left')
+
 	yield TestFinished
