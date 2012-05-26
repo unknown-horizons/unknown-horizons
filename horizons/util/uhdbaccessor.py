@@ -199,14 +199,6 @@ class UhDbAccessor(DbReader):
 
 	# production_line table
 
-	def get_settler_production_lines(self, level):
-		"""Returns a list of settler's production lines for a specific level
-		@param level: int level for which to return the production lines
-		@return: list of production lines"""
-		return self.cached_query("SELECT production_line \
-		                          FROM settler_production_line \
-		                          WHERE level = ?", level)
-
 	def get_settler_name(self, level):
 		"""Returns the name for a specific settler level
 		@param level: int settler's level
@@ -229,9 +221,6 @@ class UhDbAccessor(DbReader):
 		return self.cached_query("SELECT inhabitants_max FROM settler_level \
 		                          WHERE level=?", level)[0][0]
 
-	def get_settler_inhabitants(self, building_id):
-		return self.cached_query("SELECT inhabitants FROM settler WHERE rowid=?",
-		                         building_id)[0][0]
 
 	# Misc
 
