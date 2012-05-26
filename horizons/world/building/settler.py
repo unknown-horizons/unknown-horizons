@@ -112,21 +112,20 @@ class Settler(BuildableRect, BuildingResourceHandler, BasicBuilding):
 		if not self.get_component(Producer).has_production_line(upgrade_material_prodline):
 			return
 
-		upgrade_material_production = self.get_component(Producer)._get_production(upgrade_material_prodline)
-		self._upgrade_production = upgrade_material_production
+		self._upgrade_production = self.get_component(Producer)._get_production(upgrade_material_prodline)
 
 		resources = {}
 		for resource, amount in db.get_storage_rowids_by_ownerid(self.worldid):
 			resources[resource] = amount
 
 		# set limits to what we need
-		for res, amount in upgrade_material_production.get_consumed_resources().iteritems():
+		for res, amount in self._upgrade_production.get_consumed_resources().iteritems():
 			self.get_component(StorageComponent).inventory.add_resource_slot(res, abs(amount))
 			# [assumption added later] loading this could not have worked before because the slot was limited to 0
 			if res in resources:
 				self.get_component(StorageComponent).inventory.alter(res, resources[res])
 
-		upgrade_material_production.add_production_finished_listener(self.level_up)
+		self._upgrade_production.add_production_finished_listener(self.level_up)
 		self.log.debug("%s: Waiting for material to upgrade from %s", self, self.level)
 
 
@@ -261,24 +260,23 @@ class Settler(BuildableRect, BuildingResourceHandler, BasicBuilding):
 						self.session.ingame_gui.message_widget.add( \
 							self.position.center().x, self.position.center().y, 'MAX_INCR_REACHED')
 				return
+			if self._upgrade_production:
+				return # already waiting for res
 			# add a production line that gets the necessary upgrade material.
 			# when the production finishes, it calls upgrade_materials_collected.
 			upgrade_material_prodline = SettlerUpgradeComponent.get_production_line_id(self.level+1)
-			if self.get_component(Producer).has_production_line(upgrade_material_prodline):
-				return # already waiting for res
 			prodline_data = self.get_component(SettlerUpgradeComponent).get_production_line_data(self.level+1)
 			owner_inventory = self._get_owner_inventory()
-			upgrade_material_production = SingleUseProduction(self.get_component(StorageComponent).inventory, owner_inventory, \
+			self._upgrade_production = SingleUseProduction(self.get_component(StorageComponent).inventory, owner_inventory, \
 			                                                  upgrade_material_prodline, prodline_data)
-			self._upgrade_production = upgrade_material_production
-			upgrade_material_production.add_production_finished_listener(self.level_up)
+			self._upgrade_production.add_production_finished_listener(self.level_up)
 			# drive the car out of the garage to make space for the building material
-			for res, amount in upgrade_material_production.get_consumed_resources().iteritems():
+			for res, amount in self._upgrade_production.get_consumed_resources().iteritems():
 				self.get_component(StorageComponent).inventory.add_resource_slot(res, abs(amount))
-			self.get_component(Producer).add_production(upgrade_material_production)
+			self.get_component(Producer).add_production(self._upgrade_production)
 			self.log.debug("%s: Waiting for material to upgrade from %s", self, self.level)
 			if not self.upgrade_allowed:
-				ToggleActive(self.get_component(Producer), upgrade_material_production).execute(self.session, True)
+				ToggleActive(self.get_component(Producer), self._upgrade_production).execute(self.session, True)
 		elif self.happiness < self.__get_data("happiness_level_down_limit"):
 			self.level_down()
 			self._changed()
