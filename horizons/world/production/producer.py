@@ -82,6 +82,8 @@ class Producer(Component):
 
 			self.production_lines = self.production_lines.copy()
 			self.production_lines.update(self.settler_upgrade_lines.get_production_lines())
+		else:
+			self.settler_upgrade_lines = None
 
 
 	def __init(self):
@@ -135,18 +137,24 @@ class Producer(Component):
 		data = self.production_lines[id]
 		production_class = self.production_class
 		owner_inventory = self.instance._get_owner_inventory()
-		return production_class(inventory=self.instance.get_component(StorageComponent).inventory, \
-				                owner_inventory=owner_inventory, prod_id=id, prod_data=data, load=load, start_finished=self.__start_finished)
 
-	def add_production_by_id(self, production_line_id, start_finished=False):
+		# not really fancy way of selecting special production class
+		if self.settler_upgrade_lines:
+			if id == self.settler_upgrade_lines.get_production_line_id(self.instance.level+1):
+				production_class = SingleUseProduction
+
+		return production_class(inventory=self.instance.get_component(StorageComponent).inventory
+		                        ,
+				                owner_inventory=owner_inventory, prod_id=id, prod_data=data,
+		                    load=load, start_finished=self.__start_finished)
+
+	def add_production_by_id(self, production_line_id):
 		"""Convenience method.
 		@param production_line_id: Production line from db
 		"""
-		production_class = self.production_class
-		owner_inventory = self.instance._get_owner_inventory()
-		self.add_production(production_class(self.instance.get_component(StorageComponent).inventory, owner_inventory, \
-				                             production_line_id, self.production_lines[production_line_id], start_finished=start_finished))
-
+		production = self.create_production(production_line_id)
+		self.add_production( production )
+		return production
 
 	def update_capacity_utilisation(self):
 		"""Called by the scheduler to update the utilisation regularly"""
