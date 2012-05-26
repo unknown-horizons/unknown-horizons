@@ -35,11 +35,10 @@ from horizons.util import Callback
 from horizons.util.pathfinding.pather import StaticPather
 from horizons.command.production import ToggleActive
 from horizons.component.storagecomponent import StorageComponent
-from horizons.component.settlerupgradecomponent import SettlerUpgradeComponent
 from horizons.world.status import SettlerUnhappyStatus
 from horizons.world.production.producer import Producer
 from horizons.messaging import AddStatusIcon, RemoveStatusIcon, SettlerUpdate, SettlerInhabitantsChanged, UpgradePermissionsChanged
-from horizons.component.settlerupgradecomponent import SettlerUpgradeComponent
+
 
 class SettlerRuin(BasicBuilding, BuildableSingle):
 	"""Building that appears when a settler got unhappy. The building does nothing.
@@ -49,6 +48,7 @@ class SettlerRuin(BasicBuilding, BuildableSingle):
 	"""
 	buildable_upon = True
 	walkable = True
+
 
 class Settler(BuildableRect, BuildingResourceHandler, BasicBuilding):
 	"""Represents a settlers house, that uses resources and creates inhabitants."""
@@ -108,7 +108,7 @@ class Settler(BuildableRect, BuildingResourceHandler, BasicBuilding):
 
 	def _load_upgrade_data(self, db):
 		"""Load the upgrade production and relevant stored resources"""
-		upgrade_material_prodline = SettlerUpgradeComponent.get_production_line_id(self.level+1)
+		upgrade_material_prodline = SettlerUpgradeData.get_production_line_id(self.level+1)
 		if not self.get_component(Producer).has_production_line(upgrade_material_prodline):
 			return
 
@@ -264,8 +264,8 @@ class Settler(BuildableRect, BuildingResourceHandler, BasicBuilding):
 				return # already waiting for res
 			# add a production line that gets the necessary upgrade material.
 			# when the production finishes, it calls upgrade_materials_collected.
-			upgrade_material_prodline = SettlerUpgradeComponent.get_production_line_id(self.level+1)
-			prodline_data = self.get_component(SettlerUpgradeComponent).get_production_line_data(self.level+1)
+			upgrade_material_prodline = SettlerUpgradeData.get_production_line_id(self.level+1)
+			prodline_data = self.get_component(Producer).settler_upgrade_lines.get_production_line_data(self.level+1)
 			owner_inventory = self._get_owner_inventory()
 			self._upgrade_production = SingleUseProduction(self.get_component(StorageComponent).inventory, owner_inventory, \
 			                                                  upgrade_material_prodline, prodline_data)
@@ -372,3 +372,40 @@ class Settler(BuildableRect, BuildingResourceHandler, BasicBuilding):
 		return int(
 		  self.session.db("SELECT value FROM balance_values WHERE name = ?", key)[0][0]
 		  )
+
+
+
+class SettlerUpgradeData(object):
+	"""This is used as glue between the old upgrade system based on sqlite data used in a non-component environment
+	and the current component version with data in yaml"""
+
+	# basically, this is arbitrary as long as it's not the same as any of the regular
+	# production lines of the settler. We reuse data that has arbitrarily been set earlier
+	# to preserve savegame compatibility.
+	production_line_ids = { 1 : 24, 2 : 35, 3: 23451, 4: 34512, 5: 45123 }
+
+	def __init__(self, producer_component, upgrade_material_data):
+		self.upgrade_material_data = upgrade_material_data
+
+	def get_production_lines(self):
+		d = {}
+		for level, prod_line_id in self.__class__.production_line_ids.iteritems():
+			d[prod_line_id] = self.get_production_line_data(level)
+		return d
+
+	def get_production_line_data(self, level):
+		"""Returns production line data for the upgrade to this level"""
+		prod_line_data = {
+		  'time': 1,
+		  'changes_animation' : 0,
+		  'enabled_by_default' : False,
+		  'save_statistics' : False,
+		  'consumes' : self.upgrade_material_data[level]
+		}
+		return prod_line_data
+
+	@classmethod
+	def get_production_line_id(cls, level):
+		"""Returns production line id for the upgrade to this level"""
+		return cls.production_line_ids[level]
+

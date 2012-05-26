@@ -29,7 +29,6 @@ from horizons.component.healthcomponent import HealthComponent
 from horizons.component.selectablecomponent import SelectableComponent
 from horizons.component.commandablecomponent import CommandableComponent
 from horizons.component.collectingcomponent import CollectingComponent
-from horizons.component.settlerupgradecomponent import SettlerUpgradeComponent
 from horizons.world.production.producer import Producer, QueueProducer, UnitProducer
 
 class ComponentHolder(object):
@@ -72,7 +71,6 @@ class ComponentHolder(object):
 	    'SelectableComponent': SelectableComponent,
 	    'CommandableComponent': CommandableComponent,
 	    'CollectingComponent': CollectingComponent,
-	    'SettlerUpgradeComponent': SettlerUpgradeComponent,
 	}
 
 
@@ -96,6 +94,9 @@ class ComponentHolder(object):
 			for entry in self.component_templates:
 				if isinstance(entry, dict):
 					for key, value in entry.iteritems():
+						# TODO: try to pass read-only data to get_instance, since it's usually
+						# cached and changes would apply to all instances
+						# dict views of python2.7 could be a start.
 						component = self.class_mapping[key].get_instance(value)
 						tmp_comp.append(component)
 				else:

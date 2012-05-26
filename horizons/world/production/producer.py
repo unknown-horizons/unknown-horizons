@@ -60,10 +60,12 @@ class Producer(Component):
 
 	# INIT
 	def __init__(self, auto_init=True, start_finished=False, productionlines=None,
-	             utilisation_calculator=None, is_mine=True, **kwargs):
+	             utilisation_calculator=None, is_mine=True, settler_upgrade_lines=None,
+	             **kwargs):
 		"""
-		@param productionline: yaml-dict for prod line data
+		@param productionline: yaml-dict for prod line data. Must not be changed since it is cached.
 		@param utilisation_calculator: one of utilisatoin_mapping
+		@param settler_upgrade_lines: data for settler upgrades. can one day be generalised to other upgrades
 		"""
 		if productionlines is None:
 			productionlines = {}
@@ -73,6 +75,13 @@ class Producer(Component):
 		self.production_lines = productionlines
 		assert utilisation_calculator is not None
 		self.__utilisation = utilisation_calculator
+
+		if settler_upgrade_lines:
+			from horizons.world.building.settler import SettlerUpgradeData
+			self.settler_upgrade_lines = SettlerUpgradeData(self, settler_upgrade_lines)
+
+			self.production_lines = self.production_lines.copy()
+			self.production_lines.update(self.settler_upgrade_lines.get_production_lines())
 
 
 	def __init(self):
