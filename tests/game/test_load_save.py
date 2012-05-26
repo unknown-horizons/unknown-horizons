@@ -26,7 +26,7 @@ import tempfile
 from horizons.command.building import Build
 from horizons.command.production import ToggleActive
 from horizons.command.unit import CreateUnit
-from horizons.constants import BUILDINGS, PRODUCTION, UNITS, RES
+from horizons.constants import BUILDINGS, PRODUCTION, UNITS, RES, GAME
 from horizons.util import WorldObject, Point
 from horizons.world.production.producer import Producer
 from horizons.component.collectingcomponent import CollectingComponent
@@ -235,6 +235,45 @@ def test_savegame_upgrade():
 	session = load_session(filename)
 	session.run(seconds=30)
 
+
+@game_test
+def test_settler_level_save_load(s, p):
+	"""
+	Verify that settler level up with save/load works
+	"""
+	for test_level in xrange(3): # test uprade 0->1, 1->2 and 2->3
+		session, player = new_session()
+		settlement, island = settle(s)
+
+		settler = Build(BUILDINGS.RESIDENTIAL, 22, 22, island, settlement=settlement)(p)
+		settler.level += test_level
+		settler_worldid = settler.worldid
+
+		# make it happy
+		inv = settler.get_component(StorageComponent).inventory
+		to_give = inv.get_free_space_for(RES.HAPPINESS)
+		inv.alter(RES.HAPPINESS, to_give)
+		level = settler.level
+
+		# wait for it to realise it's supposed to upgrade
+		s.run(seconds=GAME.INGAME_TICK_INTERVAL )
+
+		session = saveload(session)
+		settler = WorldObject.get_object_by_id(settler_worldid)
+		inv = settler.get_component(StorageComponent).inventory
+
+		# contine
+		s.run(seconds=GAME.INGAME_TICK_INTERVAL )
+
+		assert settler.level == level
+		# give upgrade res
+		inv.alter(RES.BOARDS, 100)
+		inv.alter(RES.BRICKS, 100)
+
+		s.run(seconds=GAME.INGAME_TICK_INTERVAL )
+
+		# should have leveled up
+		assert settler.level == level + 1
 
 
 
