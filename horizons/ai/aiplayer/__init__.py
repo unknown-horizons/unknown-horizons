@@ -22,6 +22,7 @@
 import logging
 
 from collections import defaultdict
+from horizons.ai.aiplayer.combatmanager import CombatManager
 
 from mission.foundsettlement import FoundSettlement
 from mission.preparefoundationship import PrepareFoundationShip
@@ -38,6 +39,7 @@ from builder import Builder
 from specialdomestictrademanager import SpecialDomesticTradeManager
 from internationaltrademanager import InternationalTradeManager
 from settlementfounder import SettlementFounder
+from unitmanager import UnitManager
 
 # all subclasses of AbstractBuilding have to be imported here to register the available buildings
 from building import AbstractBuilding
@@ -126,6 +128,8 @@ class AIPlayer(GenericAI):
 		self.fishers = []
 		self.settlement_founder = SettlementFounder(self)
 		self.unit_builder = UnitBuilder(self)
+		self.unit_manager = UnitManager(self)
+		self.combat_manager = CombatManager(self)
 		self.settlement_expansions = [] # [(coords, settlement)]
 		self.goals = [DoNothingGoal(self)]
 		self.special_domestic_trade_manager = SpecialDomesticTradeManager(self)
@@ -254,6 +258,8 @@ class AIPlayer(GenericAI):
 		self.handle_settlements()
 		self.special_domestic_trade_manager.tick()
 		self.international_trade_manager.tick()
+		self.unit_manager.tick()
+		self.combat_manager.tick()
 
 	def handle_settlements(self):
 		goals = []

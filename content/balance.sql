@@ -11,7 +11,9 @@ CREATE TABLE start_resources (resource INT, amount INT);
 INSERT INTO "start_resources" VALUES(4,30);
 INSERT INTO "start_resources" VALUES(5,30);
 INSERT INTO "start_resources" VALUES(6,30);
-INSERT INTO "start_resources" VALUES(40,12);
+--INSERT INTO "start_resources" VALUES(40,12);
+INSERT INTO "start_resources" VALUES(40,50);
+
 CREATE TABLE player_start_res (resource int not null, amount int not null);
 INSERT INTO "player_start_res" VALUES(1,30000);
 CREATE TABLE deposit_resources(id int not null, resource int not null, min_amount int not null, max_amount int not null);

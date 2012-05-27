@@ -35,7 +35,7 @@ class CombatShipGoal(SettlementGoal):
 			and not self.owner.unit_builder.num_ships_being_built
 
 	def execute(self):
-		self.settlement_manager.log.info('%s start building a ship', self)
+		self.settlement_manager.log.info('%s start building frigate', self)
 		self.owner.unit_builder.build_combat_ship()
 
 decorators.bind_all(CombatShipGoal)
