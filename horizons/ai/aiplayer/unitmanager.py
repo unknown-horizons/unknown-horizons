@@ -18,6 +18,7 @@
 # Free Software Foundation, Inc.,
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
+
 import logging
 from horizons.util.worldobject import WorldObject
 from horizons.world.units.fightingship import FightingShip
@@ -33,7 +34,7 @@ class UnitManager(WorldObject):
 	log = logging.getLogger("ai.aiplayer.unitmanager")
 
 	def __init__(self, owner):
-		super(UnitManager,self).__init__()
+		super(UnitManager, self).__init__()
 		self.owner = owner
 		self.world = owner.world
 		self.session = owner.session
@@ -52,10 +53,10 @@ class UnitManager(WorldObject):
 		self.ship_groups = []
 		ships = self.get_my_ships()
 		for i in xrange(0, len(ships), group_size):
-			self.ship_groups.append(ships[i:i+group_size])
+			self.ship_groups.append(ships[i:i + group_size])
 		## TODO DIAGNOSTIC 2 lines below
 		for i in xrange(len(self.ship_groups)):
-			self.log.info('ship group %d: %s' %(i, self.ship_groups[i]))
+			self.log.info('ship group %d: %s' % (i, self.ship_groups[i]))
 
 	def filter_enemy_ships(self, ships):
 		# TODO: Should take diplomacy into account
@@ -65,7 +66,7 @@ class UnitManager(WorldObject):
 		enemy_set = set()
 		for ship in ship_group:
 			ships_around = ship.find_nearby_ships()
-			enemy_set|=set(self.filter_enemy_ships(ships_around))
+			enemy_set |= set(self.filter_enemy_ships(ships_around))
 		return list(enemy_set)
 
 	def tick(self):

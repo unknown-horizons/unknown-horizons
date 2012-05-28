@@ -59,14 +59,14 @@ class BehaviorManager(WorldObject):
 		"""
 
 		# TODO: This should be loaded from YAML
-		self.actions[self.action_types.offensive][BehaviorActionPirateHater(self.owner)] = 0.1
-		self.actions[self.action_types.offensive][BehaviorActionCoward(self.owner)] = 0.9
+		self.actions[self.action_types.offensive][BehaviorActionPirateHater(self.owner)] = 1.0
+		self.actions[self.action_types.offensive][BehaviorActionCoward(self.owner)] = 0.0
 
 	def request_action(self, type, action_name, **environment):
 		possible_behaviors = []
 		for beh, prob in self.actions[type].iteritems():
 			if hasattr(beh, action_name):
-				possible_behaviors.append((beh,prob))
+				possible_behaviors.append((beh, prob))
 
 		# get the best action possible
 		final_action = self.get_best_behavior(possible_behaviors, action_name, dict(environment))
@@ -82,12 +82,12 @@ class BehaviorManager(WorldObject):
 
 		# instead of scaling every value to make 1.0, we scale rnd_val to sum of probabilities
 		sum_probs = sum([item[1] for item in behavior_iterable])
-		rnd_val*=sum_probs
+		rnd_val *= sum_probs
 
 		for beh, prob in behavior_iterable:
 			if (total + prob) > rnd_val:
 				return beh
-			total+=prob
+			total += prob
 		# TODO: take action certainity into account as well
 
 
@@ -96,10 +96,12 @@ class BehaviorAction(object):
 	This is an abstract BehaviorAction component.
 	"""
 	log = logging.getLogger('ai.aiplayer.behavior')
+
 	def __init__(self, owner):
 		self.owner = owner
 		self.world = owner.world
 		self.session = owner.session
+
 
 class BehaviorActionPirateHater(BehaviorAction):
 
@@ -116,8 +118,9 @@ class BehaviorActionPirateHater(BehaviorAction):
 		for ship in ship_group:
 			if not self.session.world.diplomacy.are_enemies(self.owner, enemies[0].owner):
 				AddEnemyPair(self.owner, enemies[0].owner).execute(self.session)
-			Attack(ship, enemies[0])
+			Attack(ship, enemies[0]).execute(self.session)
 		BehaviorAction.log.info('I feel urgent need to wipe out them pirates.')
+
 
 class BehaviorActionCoward(BehaviorAction):
 

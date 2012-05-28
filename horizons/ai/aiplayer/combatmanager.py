@@ -35,7 +35,7 @@ class CombatManager(WorldObject):
 	log = logging.getLogger("ai.aiplayer.combatmanager")
 
 	def __init__(self, owner):
-		super(CombatManager,self).__init__()
+		super(CombatManager, self).__init__()
 		self.owner = owner
 		self.world = owner.world
 		self.session = owner.session
@@ -46,8 +46,7 @@ class CombatManager(WorldObject):
 		for ship_group in unit_manager.get_available_ship_groups(None):
 			enemies = unit_manager.find_ships_near_group(ship_group)
 			if enemies:
-				environment = {'enemies': enemies,
-							   'ship_group': ship_group, }
+				environment = {'enemies': enemies, 'ship_group': ship_group, }
 
 				# TODO: assume it's only pirates in range, it should take enemy types into account as well
 				self.owner.behavior_manager.request_action(BehaviorManager.action_types.offensive,
@@ -60,4 +59,3 @@ class CombatManager(WorldObject):
 		self.lookout()
 
 	#TODO add save/load mechanisms
-
