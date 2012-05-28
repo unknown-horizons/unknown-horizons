@@ -22,6 +22,7 @@
 import logging
 
 from collections import defaultdict
+from horizons.ai.aiplayer.behavior import BehaviorManager
 from horizons.ai.aiplayer.combatmanager import CombatManager
 
 from mission.foundsettlement import FoundSettlement
@@ -129,6 +130,7 @@ class AIPlayer(GenericAI):
 		self.settlement_founder = SettlementFounder(self)
 		self.unit_builder = UnitBuilder(self)
 		self.unit_manager = UnitManager(self)
+		self.behavior_manager = BehaviorManager(self)
 		self.combat_manager = CombatManager(self)
 		self.settlement_expansions = [] # [(coords, settlement)]
 		self.goals = [DoNothingGoal(self)]

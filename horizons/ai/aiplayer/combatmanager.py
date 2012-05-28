@@ -20,6 +20,7 @@
 # ###################################################
 
 import logging
+from horizons.ai.aiplayer.behavior import BehaviorManager
 from horizons.command.diplomacy import AddEnemyPair
 from horizons.command.unit import Attack
 from horizons.util.worldobject import WorldObject
@@ -28,7 +29,8 @@ from horizons.world.units.fightingship import FightingShip
 
 class CombatManager(WorldObject):
 	"""
-	CombatManager objects is responsible for handling close combat in game.
+	CombatManager object is responsible for handling close combat in game.
+	It scans the environment (lookout) and requests certain actions from behavior
 	"""
 	log = logging.getLogger("ai.aiplayer.combatmanager")
 
@@ -37,25 +39,25 @@ class CombatManager(WorldObject):
 		self.owner = owner
 		self.world = owner.world
 		self.session = owner.session
-		self.enemies_in_range = []
 
 	def lookout(self):
 		unit_manager = self.owner.unit_manager
-		for ship_group in unit_manager.ship_groups:
+
+		for ship_group in unit_manager.get_available_ship_groups(None):
 			enemies = unit_manager.find_ships_near_group(ship_group)
 			if enemies:
-				self.enemies_in_range.append((ship_group, enemies))
+				environment = {'enemies': enemies,
+							   'ship_group': ship_group, }
 
-	def attack(self):
-		for ship_group, enemies in self.enemies_in_range:
-			if not self.session.world.diplomacy.are_enemies(self.owner, enemies[0]):
-				AddEnemyPair(self.owner, enemies[0].owner).execute(self.session)
-			for ship in ship_group:
-				Attack(ship, enemies[0])
+				# TODO: assume it's only pirates in range, it should take enemy types into account as well
+				self.owner.behavior_manager.request_action(BehaviorManager.action_types.offensive,
+					'attack_pirate_group', **environment)
+
+	def calculate_power_balance(self, ai_ships, enemy_ships):
+		pass
 
 	def tick(self):
 		self.lookout()
-		self.attack()
 
 	#TODO add save/load mechanisms
 

@@ -42,6 +42,11 @@ class UnitManager(WorldObject):
 	def get_my_ships(self):
 		return [ship for ship in self.world.ships if ship.owner == self.owner and isinstance(ship, FightingShip)]
 
+	def get_available_ship_groups(self, purpose):
+		# TODO: should check out if ship group is on a mission first (priority)
+		# purpose dict should contain all required info (request priority, amount of ships etc.)
+		return self.ship_groups
+
 	def regroup_ships(self):
 		group_size = 3  # TODO move to behaviour/Personalities later
 		self.ship_groups = []
