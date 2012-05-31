@@ -19,23 +19,23 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-from fife import fife
+from fife import fife, fifechan
 
 STYLES = {
 'default': {
 		'default' : {
 			'border_size': 0,
 			'margins': (0, 0),
-			'base_color' : fife.Color(40, 40, 40,   0),
-			'foreground_color' : fife.Color( 80, 80, 40,   0),
-			'background_color' : fife.Color(255,255,255, 128),
-			'selection_color' : fife.Color(80,80,40, 192),
+			'base_color' : fifechan.Color(40, 40, 40,   0),
+			'foreground_color' : fifechan.Color( 80, 80, 40,   0),
+			'background_color' : fifechan.Color(255,255,255, 128),
+			'selection_color' : fifechan.Color(80,80,40, 192),
 			'font' : '14_black',
 		},
 		'Button' : {
-			'background_color' : fife.Color(255,255,255,32),
-			'foreground_color' : fife.Color(80,80,40, 192),
-			'base_color' : fife.Color(80,80,40, 64),
+			'background_color' : fifechan.Color(255,255,255,32),
+			'foreground_color' : fifechan.Color(80,80,40, 192),
+			'base_color' : fifechan.Color(80,80,40, 64),
 			'border_size': 1,
 			'margins' : (10, 5),
 		},
@@ -43,33 +43,33 @@ STYLES = {
 			'border_size': 0
 		},
 		('CheckBox','DropDown') : {
-			'selection_color' : fife.Color(255,255,255,200),
-			'background_color' : fife.Color(255,255,255,64),
-			'foreground_color' : fife.Color(80,80,40),
-			'base_color' : fife.Color(0,0,0,0),
+			'selection_color' : fifechan.Color(255,255,255,200),
+			'background_color' : fifechan.Color(255,255,255,64),
+			'foreground_color' : fifechan.Color(80,80,40),
+			'base_color' : fifechan.Color(0,0,0,0),
 			'font' : '14_black',
 			'border_size': 0,
 		},
 		('Slider','StepSlider') : {
-			'base_color' : fife.Color(80,80,40,128),
+			'base_color' : fifechan.Color(80,80,40,128),
 		},
 		'TextField' : {
-			'selection_color' : fife.Color(255,255,255),
-			'background_color' : fife.Color(255,255,255,64),
-			'base_color' : fife.Color(0,0,0,0),
-			'foreground_color' : fife.Color(80,80,40),
+			'selection_color' : fifechan.Color(255,255,255),
+			'background_color' : fifechan.Color(255,255,255,64),
+			'base_color' : fifechan.Color(0,0,0,0),
+			'foreground_color' : fifechan.Color(80,80,40),
 			'font' : '14_black',
 		},
 		'ListBox' : {
-			'background_color' : fife.Color(0,0,0,0),
-			'foreground_color' : fife.Color(80,80,40),
-			'selection_color' : fife.Color(255,255,255,128),
+			'background_color' : fifechan.Color(0,0,0,0),
+			'foreground_color' : fifechan.Color(80,80,40),
+			'selection_color' : fifechan.Color(255,255,255,128),
 			'font' : '14_black',
 		},
 		'ScrollArea' : {
-			'background_color' : fife.Color(255,255,255,64),
-			'foreground_color' : fife.Color(80,80,40),
-			'base_color' : fife.Color(0,0,0,0),
+			'background_color' : fifechan.Color(255,255,255,64),
+			'foreground_color' : fifechan.Color(80,80,40),
+			'base_color' : fifechan.Color(0,0,0,0),
 			'font' : '14_black',
 			'horizontal_scrollbar' : 0,
 		},
@@ -78,7 +78,7 @@ STYLES = {
 		},
 		'Label' : {
 			'border_size': 0,
-			'background_color' : fife.Color(40, 40, 40, 0),
+			'background_color' : fifechan.Color(40, 40, 40, 0),
 			'font' : '14_black',
 		},
 		'Window' : {
@@ -86,7 +86,7 @@ STYLES = {
 			'margins': (10, 10),
 			'titlebar_height' : 30,
 			'font' : 'large',
-			'base_color' : fife.Color(60, 60, 60)
+			'base_color' : fifechan.Color(60, 60, 60)
 		},
 		('Container','HBox','VBox') : {
 			'opaque' : 0,
@@ -98,10 +98,10 @@ STYLES = {
 			'border_size': 0,
 			'margins': (0, 0),
 			'opaque': 0,
-			'base_color' : fife.Color(0, 0, 0, 0),
-			'foreground_color' : fife.Color(255, 255, 255),
-			'background_color' : fife.Color(0, 0, 0, 0),
-			'selection_color' : fife.Color(0, 0, 0, 0),
+			'base_color' : fifechan.Color(0, 0, 0, 0),
+			'foreground_color' : fifechan.Color(255, 255, 255),
+			'background_color' : fifechan.Color(0, 0, 0, 0),
+			'selection_color' : fifechan.Color(0, 0, 0, 0),
 			'font' : 'mainmenu'
 		},
 		'Button' : {
@@ -111,7 +111,7 @@ STYLES = {
 		'Label' : {
 			'border_size': 0,
 			'font' : 'mainmenu',
-			'background_color' : fife.Color(0, 0, 0, 102)
+			'background_color' : fifechan.Color(0, 0, 0, 102)
 		}
 },
 
@@ -120,10 +120,10 @@ STYLES = {
 			'border_size': 0,
 			'margins': (0,0),
 			'opaque': 0,
-			'base_color' : fife.Color(0,0,0,0),
-			'foreground_color' : fife.Color(255,255,255),
-			'background_color' : fife.Color(0, 0, 0, 0),
-			'selection_color' : fife.Color(0,0,0,0),
+			'base_color' : fifechan.Color(0,0,0,0),
+			'foreground_color' : fifechan.Color(255,255,255),
+			'background_color' : fifechan.Color(0, 0, 0, 0),
+			'selection_color' : fifechan.Color(0,0,0,0),
 			'font' : 'small_black'
 		},
 		'Button' : {
@@ -148,10 +148,10 @@ STYLES = {
 			'border_size': 0,
 			'margins': (0,0),
 			'opaque': 0,
-			'base_color' : fife.Color(0, 0, 0, 0),
-			'foreground_color' : fife.Color(0, 0, 0, 0),
-			'background_color' : fife.Color(0, 0, 0, 0),
-			'selection_color' : fife.Color(0, 0, 0, 0),
+			'base_color' : fifechan.Color(0, 0, 0, 0),
+			'foreground_color' : fifechan.Color(0, 0, 0, 0),
+			'background_color' : fifechan.Color(0, 0, 0, 0),
+			'selection_color' : fifechan.Color(0, 0, 0, 0),
 			'font' : 'small_black'
 		},
 		'Button' : {
@@ -169,10 +169,10 @@ STYLES = {
 			'border_size': 0,
 			'margins': (0,0),
 			'opaque': 0,
-			'base_color' : fife.Color(0,0,0,0),
-			'foreground_color' : fife.Color(255,255,255),
-			'background_color' : fife.Color(0, 0, 0, 0),
-			'selection_color' : fife.Color(0,0,0,0),
+			'base_color' : fifechan.Color(0,0,0,0),
+			'foreground_color' : fifechan.Color(255,255,255),
+			'background_color' : fifechan.Color(0, 0, 0, 0),
+			'selection_color' : fifechan.Color(0,0,0,0),
 			'font' : 'small'
 		},
 		'Button' : {
@@ -190,10 +190,10 @@ STYLES = {
 			'border_size': 0,
 			'margins': (0,0),
 			'opaque': 0,
-			'base_color' : fife.Color(0,0,0,0),
-			'foreground_color' : fife.Color(255,255,255),
-			'background_color' : fife.Color(0, 0, 0, 0),
-			'selection_color' : fife.Color(0,0,0,0),
+			'base_color' : fifechan.Color(0,0,0,0),
+			'foreground_color' : fifechan.Color(255,255,255),
+			'background_color' : fifechan.Color(0, 0, 0, 0),
+			'selection_color' : fifechan.Color(0,0,0,0),
 			'font' : 'large'
 		},
 		'Button' : {
@@ -211,10 +211,10 @@ STYLES = {
 			'border_size': 0,
 			'margins': (0,0),
 			'opaque': 0,
-			'base_color' : fife.Color(0,0,0,0),
-			'foreground_color' : fife.Color(255,255,255),
-			'background_color' : fife.Color(0, 0, 0, 0),
-			'selection_color' : fife.Color(0,0,0,0),
+			'base_color' : fifechan.Color(0,0,0,0),
+			'foreground_color' : fifechan.Color(255,255,255),
+			'background_color' : fifechan.Color(0, 0, 0, 0),
+			'selection_color' : fifechan.Color(0,0,0,0),
 			'font' : 'headline'
 		},
 		'Button' : {
@@ -234,50 +234,50 @@ STYLES = {
 			'border_size': 0,
 			'margins': (0,0),
 			'font' : '14_black',
-			'foreground_color' : fife.Color(80,80,40),
+			'foreground_color' : fifechan.Color(80,80,40),
 		},
 		'Label' : {
 			'font' : '14_black',
 		},
 		('CheckBox', 'RadioButton') : {
-			'selection_color' : fife.Color(255,255,255,200),
-			'background_color' : fife.Color(255,255,255,64),
-			'base_color' : fife.Color(0,0,0,0),
-			'foreground_color' : fife.Color(80,80,40),
+			'selection_color' : fifechan.Color(255,255,255,200),
+			'background_color' : fifechan.Color(255,255,255,64),
+			'base_color' : fifechan.Color(0,0,0,0),
+			'foreground_color' : fifechan.Color(80,80,40),
 		},
 		'DropDown' : {
-			'selection_color' : fife.Color(255,255,255,200),
-			'background_color' : fife.Color(255,255,255,128),
-			'base_color' : fife.Color(0,0,0,0),
-			'foreground_color' : fife.Color(80,80,40),
+			'selection_color' : fifechan.Color(255,255,255,200),
+			'background_color' : fifechan.Color(255,255,255,128),
+			'base_color' : fifechan.Color(0,0,0,0),
+			'foreground_color' : fifechan.Color(80,80,40),
 			'font' : '14_black',
 		},
 		('Slider','StepSlider') : {
-			'base_color' : fife.Color(80,80,40,128),
+			'base_color' : fifechan.Color(80,80,40,128),
 		},
 		'ListBox' : {
-			'background_color' : fife.Color(0,0,0,0),
-			'foreground_color' : fife.Color(80,80,40),
-			'selection_color' : fife.Color(255,255,255,128),
+			'background_color' : fifechan.Color(0,0,0,0),
+			'foreground_color' : fifechan.Color(80,80,40),
+			'selection_color' : fifechan.Color(255,255,255,128),
 			'font' : '14_black',
 		},
 		'ScrollArea' : {
-			'background_color' : fife.Color(255,255,255,64),
-			'foreground_color' : fife.Color(80,80,40),
-			'base_color' : fife.Color(0,0,0,0),
+			'background_color' : fifechan.Color(255,255,255,64),
+			'foreground_color' : fifechan.Color(80,80,40),
+			'base_color' : fifechan.Color(0,0,0,0),
 			'font' : '14_black',
 			'horizontal_scrollbar' : 0,
 		},
 		'HBox' : {
 			'font' : '14_black',
-			'foreground_color' : fife.Color(80,80,40),
+			'foreground_color' : fifechan.Color(80,80,40),
 			'opaque': 0
 		},
 		'TextField' : {
-			'selection_color' : fife.Color(255,255,255),
-			'background_color' : fife.Color(255,255,255,64),
-			'base_color' : fife.Color(0,0,0,0),
-			'foreground_color' : fife.Color(80,80,40),
+			'selection_color' : fifechan.Color(255,255,255),
+			'background_color' : fifechan.Color(255,255,255,64),
+			'base_color' : fifechan.Color(0,0,0,0),
+			'foreground_color' : fifechan.Color(80,80,40),
 			'font' : '14_black',
 		},
 		('Container','HBox','VBox') : {
@@ -313,10 +313,10 @@ STYLES = {
 			'border_size': 0,
 			'margins': (0,0),
 			'opaque': 0,
-			'base_color' : fife.Color(0,0,0,0),
-			'foreground_color' : fife.Color(255,255,255),
-			'background_color' : fife.Color(0, 0, 0, 0),
-			'selection_color' : fife.Color(0,0,0,0),
+			'base_color' : fifechan.Color(0,0,0,0),
+			'foreground_color' : fifechan.Color(255,255,255),
+			'background_color' : fifechan.Color(0, 0, 0, 0),
+			'selection_color' : fifechan.Color(0,0,0,0),
 			'font' : 'headline'
 		},
 		'Button' : {
