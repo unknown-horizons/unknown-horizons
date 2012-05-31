@@ -23,7 +23,10 @@
 import functools
 
 from fife.extensions import pychan
+
 from horizons.gui.style import STYLES
+from horizons.messaging import GuiAction
+from horizons.util import Callback
 
 import horizons.main
 
@@ -127,6 +130,37 @@ def init_pychan():
 			# see #1597 and #1647
 			widget.requestFocus = catch_gcn_exception_decorator(widget.requestFocus)
 
+
+	setup_cursor_change_on_hover()
+
+	setup_trigger_signals_on_action()
+
+
+	# NOTE: there is a bug with the tuple notation: http://fife.trac.cvsdude.com/engine/ticket/656
+	# work around this here for now:
+	def conv(d):
+		entries = []
+		for k, v in d.iteritems():
+			if isinstance(v, dict): # recurse
+				v = conv(v)
+			if isinstance(k, tuple): # resolve tuple-notation, add separate keys
+				for k_i in k:
+					entries.append( (k_i, v) )
+			else:
+				entries.append( (k, v) )
+
+		return dict(entries)
+
+	# patch uh styles
+	STYLES = conv(STYLES)
+
+	# patch fife default styles
+	pychan.manager.styles = conv(pychan.manager.styles)
+
+
+
+def setup_cursor_change_on_hover():
+
 	# set cursor to rename on hover for certain widgets
 	def set_cursor():
 		horizons.main.fife.set_cursor_image("rename")
@@ -172,27 +206,19 @@ def init_pychan():
 	# pychan-savvy people yields no success.
 
 
-	# NOTE: there is a bug with the tuple notation: http://fife.trac.cvsdude.com/engine/ticket/656
-	# work around this here for now:
-	def conv(d):
-		entries = []
-		for k, v in d.iteritems():
-			if isinstance(v, dict): # recurse
-				v = conv(v)
-			if isinstance(k, tuple): # resolve tuple-notation, add separate keys
-				for k_i in k:
-					entries.append( (k_i, v) )
-			else:
-				entries.append( (k, v) )
+def setup_trigger_signals_on_action():
+	"""Make sure that every widget sends a signal when an action event occurs"""
+	def make_action_trigger_a_signal(cls):
+		def add_action_triggers_a_signal(func):
+			@functools.wraps(func)
+			def wrapper(self, *args, **kwargs):
+				func(self, *args, **kwargs)
+				self.capture(Callback(GuiAction.broadcast, self), "action", "action_listener")
+			return wrapper
 
-		return dict(entries)
+		cls.__init__ = add_action_triggers_a_signal( cls.__init__ )
 
-	# patch uh styles
-	STYLES = conv(STYLES)
-
-	# patch fife default styles
-	pychan.manager.styles = conv(pychan.manager.styles)
-
+	make_action_trigger_a_signal(pychan.widgets.Widget)
 
 
 def get_button_event(button):
