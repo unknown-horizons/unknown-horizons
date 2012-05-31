@@ -413,8 +413,10 @@ class Minimap(object):
 			if path[i] == unit_pos:
 				position_of_unit_in_path = i
 				break
-		if len(path) > 1:
-			position_of_unit_in_path += 1 # looks nicer when unit is moving
+
+		# display units one ahead if possible, it looks nicer if the unit is moving
+		if len(path) > 1 and position_of_unit_in_path+1 < len(path):
+			position_of_unit_in_path += 1 #
 		path = path[position_of_unit_in_path:]
 
 		# draw every step-th coord

@@ -60,10 +60,12 @@ class Producer(Component):
 
 	# INIT
 	def __init__(self, auto_init=True, start_finished=False, productionlines=None,
-	             utilisation_calculator=None, is_mine=True, **kwargs):
+	             utilisation_calculator=None, is_mine=True, settler_upgrade_lines=None,
+	             **kwargs):
 		"""
-		@param productionline: yaml-dict for prod line data
+		@param productionline: yaml-dict for prod line data. Must not be changed since it is cached.
 		@param utilisation_calculator: one of utilisatoin_mapping
+		@param settler_upgrade_lines: data for settler upgrades. can one day be generalised to other upgrades
 		"""
 		if productionlines is None:
 			productionlines = {}
@@ -73,6 +75,15 @@ class Producer(Component):
 		self.production_lines = productionlines
 		assert utilisation_calculator is not None
 		self.__utilisation = utilisation_calculator
+
+		if settler_upgrade_lines:
+			from horizons.world.building.settler import SettlerUpgradeData
+			self.settler_upgrade_lines = SettlerUpgradeData(self, settler_upgrade_lines)
+
+			self.production_lines = self.production_lines.copy()
+			self.production_lines.update(self.settler_upgrade_lines.get_production_lines())
+		else:
+			self.settler_upgrade_lines = None
 
 
 	def __init(self):
@@ -126,18 +137,24 @@ class Producer(Component):
 		data = self.production_lines[id]
 		production_class = self.production_class
 		owner_inventory = self.instance._get_owner_inventory()
-		return production_class(inventory=self.instance.get_component(StorageComponent).inventory, \
-				                owner_inventory=owner_inventory, prod_id=id, prod_data=data, load=load, start_finished=self.__start_finished)
 
-	def add_production_by_id(self, production_line_id, start_finished=False):
+		# not really fancy way of selecting special production class
+		if self.settler_upgrade_lines:
+			if id == self.settler_upgrade_lines.get_production_line_id(self.instance.level+1):
+				production_class = SingleUseProduction
+
+		return production_class(inventory=self.instance.get_component(StorageComponent).inventory
+		                        ,
+				                owner_inventory=owner_inventory, prod_id=id, prod_data=data,
+		                    load=load, start_finished=self.__start_finished)
+
+	def add_production_by_id(self, production_line_id):
 		"""Convenience method.
 		@param production_line_id: Production line from db
 		"""
-		production_class = self.production_class
-		owner_inventory = self.instance._get_owner_inventory()
-		self.add_production(production_class(self.instance.get_component(StorageComponent).inventory, owner_inventory, \
-				                             production_line_id, self.production_lines[production_line_id], start_finished=start_finished))
-
+		production = self.create_production(production_line_id)
+		self.add_production( production )
+		return production
 
 	def update_capacity_utilisation(self):
 		"""Called by the scheduler to update the utilisation regularly"""

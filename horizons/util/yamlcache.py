@@ -114,7 +114,9 @@ class YamlCache(object):
 			# when something unexpected happens, shelve does not guarantee anything.
 			# since crashing on any access is part of the specified behaviour, we need to handle it.
 			# cf. http://bugs.python.org/issue14041
-			cls.log.exception('Warning: Can\'t write to shelve: '+unicode(e))
+
+			# this weird str-unicode casting is necessary for UnpicklingErrors that some shelve implementation can throw
+			cls.log.exception('Warning: Can\'t write to shelve: '+unicode(str(e), errors='ignore'))
 			# delete cache and try again
 			if os.path.exists(cls.cache_filename):
 				os.remove(cls.cache_filename)

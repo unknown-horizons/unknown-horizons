@@ -175,7 +175,7 @@ class SingleplayerMenu(object):
 								this_locale = LANGUAGENAMES.get_by_value(lang_list.selected_item)
 							else:
 								this_locale = locale
-							#check if selected map's file ends with .yaml	
+							#check if selected map's file ends with .yaml
 							if self._get_selected_map().find('.yaml') == -1:
 								new_map_name = self._get_selected_map() + '_' + \
 									       this_locale + '.' + \
@@ -184,7 +184,7 @@ class SingleplayerMenu(object):
 							#to remove locale postfix from selected_map's name
 							else:
 								#get current locale to split current map file name
-								current_locale =  yamlcache.YamlCache.get_file(self._get_selected_map(), \
+								current_locale = yamlcache.YamlCache.get_file(self._get_selected_map(), \
 													       game_data=True)['locale']
 								new_map_name = self._get_selected_map()[:self._get_selected_map().\
 									       find('_' + current_locale)] + '_' + \
@@ -192,7 +192,7 @@ class SingleplayerMenu(object):
 									       SavegameManager.scenario_extension
 
 							return new_map_name
-							
+
 						cur_selected_language = lang_list.selected_item
 						selectable_languages = []
 						#show only selectable languages
@@ -205,19 +205,19 @@ class SingleplayerMenu(object):
 							lang_list.selected = lang_list.items.index(cur_selected_language)
 						else:
 							lang_list.selected = 0
-						
+
 						def _update_translation_infos(new_map_name):
 							"""Fill in translation infos of selected scenario to translation label.
 
-							It gets translation_status from new_map_file. If there is no attribute 
-							like translation_status then selected locale is the original locale of 
+							It gets translation_status from new_map_file. If there is no attribute
+							like translation_status then selected locale is the original locale of
 							the selected scenario. In this case, hide translation_status_label.
 
 							If there are fuzzy translations, show them as untranslated.
 
 							This function also sets scenario map name using locale.
 						(e.g. tutorial -> tutorial_en.yaml)"""
-					
+
 							translation_status_label = self.current.findChild(name="translation_status")
 							try:
 								#get translation status
@@ -242,8 +242,8 @@ class SingleplayerMenu(object):
 							except KeyError:
 								translation_status_label.hide()
 
-							self.current.files[ self.active_right_side.collectData('maplist') ] = new_map_name 
-							
+							self.current.files[ self.active_right_side.collectData('maplist') ] = new_map_name
+
 
 						#Add locale postfix to fix scenario file
 						try:
@@ -266,7 +266,7 @@ class SingleplayerMenu(object):
 								lang_list.selected = 0
 
 							_update_infos()
-							
+
 						try:
 							difficulty = ScenarioEventHandler.get_difficulty_from_file( self._get_selected_map() )
 							desc = ScenarioEventHandler.get_description_from_file( self._get_selected_map() )
@@ -280,7 +280,7 @@ class SingleplayerMenu(object):
 							_("Author: {author}").format(author=author) #xgettext:python-format
 						self.current.findChild(name="uni_map_desc").text = \
 							_("Description: {desc}").format(desc=desc) #xgettext:python-format
-				
+
 					self.active_right_side.findChild(name="uni_langlist").mapEvents({
 						'uni_langlist/action': _update_infos
 					})

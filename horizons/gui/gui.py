@@ -38,6 +38,7 @@ from horizons.gui.keylisteners.ingamekeylistener import KeyConfig
 from horizons.gui.widgets import OkButton, CancelButton, DeleteButton
 from horizons.util import Callback
 from horizons.extscheduler import ExtScheduler
+from horizons.messaging import GuiAction
 from horizons.component.ambientsoundcomponent import AmbientSoundComponent
 from horizons.gui.util import LazyWidgetsDict
 
@@ -83,6 +84,8 @@ class Gui(SingleplayerMenu, MultiplayerMenu):
 
 		self.__pause_displayed = False
 		self._background_image = self._get_random_background()
+
+		GuiAction.subscribe( self._on_gui_action )
 
 # basic menu widgets
 
@@ -435,7 +438,7 @@ class Gui(SingleplayerMenu, MultiplayerMenu):
 				btn = dlg.findChild(name=CancelButton.DEFAULT_NAME)
 				callback = pychan_util.get_button_event(btn) if btn else None
 				if callback:
-					callback()
+					pychan.tools.applyOnlySuitable(callback, event=event, widget=btn)
 				else:
 					# escape should hide the dialog default
 					pychan.internal.get_manager().breakFromMainLoop(returnValue=False)
@@ -444,7 +447,7 @@ class Gui(SingleplayerMenu, MultiplayerMenu):
 				btn = dlg.findChild(name=OkButton.DEFAULT_NAME)
 				callback = pychan_util.get_button_event(btn) if btn else None
 				if callback:
-					callback()
+					pychan.tools.applyOnlySuitable(callback, event=event, widget=btn)
 				# can't guess a default action here
 
 		dlg.capture(_on_keypress, event_name="keyPressed")
@@ -708,6 +711,9 @@ class Gui(SingleplayerMenu, MultiplayerMenu):
 		horizons.main.fife.save_settings()
 		return background_choice
 
+	def _on_gui_action(self, msg):
+		AmbientSoundComponent.play_special('click')
+
 def build_help_strings(widgets):
 	"""
 	Loads the help strings from pychan object widgets (containing no key definitions)
@@ -740,3 +746,5 @@ def build_help_strings(widgets):
 
 	author_label = widgets.findChild(name='fife_and_uh_team')
 	author_label.helptext = u"www.unknown-[br]horizons.org[br]www.fifengine.net"
+
+
