@@ -214,7 +214,6 @@ class GameSpeedManager(object):
 
 		# TODO: redraws on successive tick workoffs or stop the game (freeze protection)
 		# TODO: only enable in sp games for now
-		# TODO: suggest speed change to user possibly
 		# TODO: fix game pause problems
 
 	def _slow_down(self):
@@ -223,7 +222,12 @@ class GameSpeedManager(object):
 			i = GAME_SPEED.TICK_RATES.index( self.timer.ticks_per_second )
 			if i > 0:
 				# TODO: do this in a nicer way in case we want this behaviour
-				horizons.main._modules.session.speed_set( GAME_SPEED.TICK_RATES[i-1] )
+				new_speed = GAME_SPEED.TICK_RATES[i-1]
+				horizons.main._modules.session.speed_set( new_speed )
+				horizons.main._modules.session.ingame_gui.message_widget.add_custom(
+				  None, None, _("Your machine has troubles keeping up the simulation at this speed, therefore it has been slowed down to {new_speed}").format(new_speed=(new_speed / GAME_SPEED.TICKS_PER_SECOND)))
+
+
 
 			self.modifier /= 2 # don't change speed in very quick succession, but be aware that another change can be required soon
 
