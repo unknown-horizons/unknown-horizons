@@ -99,6 +99,13 @@ def start(_command_line_arguments):
 	# init fife before mp_bind is parsed, since it's needed there
 	fife = Fife()
 
+	if debug: # also True if a specific module is logged (but not 'fife')
+		if not (command_line_arguments.debug_module \
+		        and 'fife' not in command_line_arguments.debug_module):
+			fife._log.lm.setLogToPrompt(True)
+		# After the next FIFE release, we should use this instead which is possible as of r3960:
+		#fife._log.logToPrompt = True
+
 	if command_line_arguments.mp_bind:
 		try:
 			mpieces = command_line_arguments.mp_bind.partition(':')

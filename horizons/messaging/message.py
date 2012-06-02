@@ -185,3 +185,7 @@ class TabWidgetChanged(Message):
 
 class GameSpeedChanged(Message):
 	arguments = ('ticks', )
+
+class GuiAction(Message):
+	"""Sent on events pychan classifies as "action" """
+	pass

@@ -12,7 +12,7 @@ settler_level: TIER.SAILORS
 buildingcosts: {RES.GOLD: 250, RES.BOARDS: 3, RES.TOOLS: 1}
 components:
 - SelectableComponent:
-    type: building
+    type: fisher
     range_applies_only_on_island: False
     tabs: [ProductionOverviewTab]
     enemy_tabs: [EnemyBuildingOverviewTab,]

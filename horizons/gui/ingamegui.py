@@ -44,6 +44,7 @@ from horizons.command.uioptions import RenameObject
 from horizons.command.misc import Chat
 from horizons.command.game import SpeedDownCommand, SpeedUpCommand
 from horizons.gui.tabs.tabinterface import TabInterface
+from horizons.gui.tabs import MainSquareOverviewTab
 from horizons.component.namedcomponent import SettlementNameComponent, NamedComponent
 from horizons.component.ambientsoundcomponent import AmbientSoundComponent
 from horizons.component.selectablecomponent import SelectableComponent
@@ -498,6 +499,12 @@ class IngameGui(LivingObject):
 			if hasattr(menu, "name") and menu.name == "build_menu_tab_widget":
 				# player changed and build menu is currently displayed
 				self.show_build_menu(update=True)
+
+			# TODO: Use a better measure then first tab
+			# Quite fragile, makes sure the tablist in the mainsquare menu is updated
+			if hasattr(menu, '_tabs') and isinstance(menu._tabs[0], MainSquareOverviewTab):
+				instance = list(self.session.selected_instances)[0]
+				instance.get_component(SelectableComponent).show_menu(jump_to_tabclass=type(menu.current_tab))
 
 	def show_chat_dialog(self):
 		"""Show a dialog where the user can enter a chat message"""
