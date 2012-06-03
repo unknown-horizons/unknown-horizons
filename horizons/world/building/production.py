@@ -36,7 +36,7 @@ class ProductionBuilding(BuildingResourceHandler, BuildableSingle, BasicBuilding
 	pass
 
 class Farm(ProductionBuilding):
-	def _get_providers(self):
+	def get_providers(self):
 		reach = RadiusRect(self.position, self.radius)
 		providers = self.island.get_providers_in_range(reach, reslist=self.get_needed_resources())
 		return [provider for provider in providers if isinstance(provider, Field)]
