@@ -36,7 +36,6 @@ class ProductionBuilding(BuildingResourceHandler, BuildableSingle, BasicBuilding
 	pass
 
 class Farm(ProductionBuilding):
-
 	def _get_providers(self):
 		reach = RadiusRect(self.position, self.radius)
 		providers = self.island.get_providers_in_range(reach, reslist=self.get_needed_resources())
@@ -48,7 +47,6 @@ class CoastalProducer(BuildingResourceHandler, BuildableSingleOnOcean, BasicBuil
 	pass
 
 class Fisher(BuildingResourceHandler, BuildableSingleOnCoast, BasicBuilding):
-
 	"""
 	Old selection workaround (only color fish) removed in b69c72aeef0174c42dec4039eed7b81f96f6dcaa.
 	"""
