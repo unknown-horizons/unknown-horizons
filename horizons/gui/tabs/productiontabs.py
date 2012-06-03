@@ -164,12 +164,15 @@ class ProductionOverviewTab(OverviewTab):
 		self._animations = []
 
 
-class FarmProductionOverviewTab(ProductionOverviewTab):
+class SmallProductionOverviewTab(ProductionOverviewTab):
+	"""Only display productions for which we have a related 'field' in range.
+	Requires the building class using this tab to implement get_providers().
+	"""
 	# the farm uses small buttons
 	ACTIVE_PRODUCTION_ANIM_DIR = "content/gui/images/animations/cogs/small"
 	BUTTON_BACKGROUND = "content/gui/images/buttons/msg_button_small.png"
 	def  __init__(self, instance):
-		super(FarmProductionOverviewTab, self).__init__(
+		super(SmallProductionOverviewTab, self).__init__(
 			instance = instance,
 			widget = 'overview_farm.xml',
 			production_line_gui_xml = "overview_farmproductionline.xml"
