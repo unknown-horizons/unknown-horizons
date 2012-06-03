@@ -180,12 +180,8 @@ class SmallProductionOverviewTab(ProductionOverviewTab):
 		self.helptext = _("Production overview")
 
 	def get_displayed_productions(self):
-		"""Only display productions for which we have a related field in range."""
-		possible_res = set()
-		for field in self.instance._get_providers():
-			for prodline in field.get_component(Producer).get_productions():
-				for resid in prodline.get_produced_resources().iterkeys():
-					 possible_res.add(resid)
+		possible_res = set(res for field in self.instance.get_providers()
+		                       for res in field.provided_resources)
 		all_farm_productions = self.instance.get_component(Producer).get_productions()
 		productions = [p for p in all_farm_productions
 		                 for res in p.get_consumed_resources().keys()

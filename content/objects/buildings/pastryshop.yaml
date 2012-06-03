@@ -1,6 +1,6 @@
 id: 63
 name: _ Pastry Shop
-baseclass: production.ProductionBuilding
+baseclass: production.PastryShop
 radius: 8
 cost: 25
 cost_inactive: 10

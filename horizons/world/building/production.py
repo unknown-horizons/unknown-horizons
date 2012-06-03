@@ -35,6 +35,12 @@ from horizons.component.storagecomponent import StorageComponent
 class ProductionBuilding(BuildingResourceHandler, BuildableSingle, BasicBuilding):
 	pass
 
+class PastryShop(ProductionBuilding):
+	def get_providers(self):
+		reach = RadiusRect(self.position, self.radius)
+		providers = self.island.get_providers_in_range(reach, reslist=self.get_needed_resources())
+		return [provider for provider in providers]
+
 class Farm(ProductionBuilding):
 	def get_providers(self):
 		reach = RadiusRect(self.position, self.radius)
