@@ -90,13 +90,17 @@ class ResourceHandler(ResourceTransferHandler):
 			self.__incoming_collectors[0].cancel()
 
 	## INTERFACE
-	def get_consumed_resources(self):
+	def get_consumed_resources(self, include_inactive=False):
 		"""Returns the needed resources that are used by the productions
-		currently active."""
+		currently active. *include_inactive* will also include resources
+		used in a production line that is currently inactive."""
 		needed_res = set()
 		if self.has_component(Producer):
 			prod_comp = self.get_component(Producer)
-			for production in prod_comp._productions.itervalues():
+			productions = prod_comp._productions
+			if include_inactive:
+				productions.update(prod_comp._inactive_productions)
+			for production in productions.itervalues():
 				needed_res.update(production.get_consumed_resources().iterkeys())
 		return list(needed_res)
 
