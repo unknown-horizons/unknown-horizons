@@ -50,8 +50,10 @@ class BuildTab(TabInterface):
 	  ]
 
 	build_menu_config_per_increment = build_menus[0]
+	build_menu_config_per_type = build_menus[1]
 
-	default_build_menu_config = build_menu_config_per_increment
+	#TODO changed for testing, the actual default should be "per_increment"
+	default_build_menu_config = build_menu_config_per_type
 
 	cur_build_menu_config = default_build_menu_config
 
