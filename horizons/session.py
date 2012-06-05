@@ -49,7 +49,7 @@ from horizons.component.selectablecomponent import SelectableComponent, Selectab
 from horizons.savegamemanager import SavegameManager
 from horizons.scenario import ScenarioEventHandler
 from horizons.component.ambientsoundcomponent import AmbientSoundComponent
-from horizons.constants import GAME_SPEED, PATHS
+from horizons.constants import GAME_SPEED, PATHS, LAYERS
 from horizons.world.managers.statusiconmanager import StatusIconManager
 from horizons.messaging import MessageBus
 
@@ -123,7 +123,10 @@ class Session(LivingObject):
 		LastActivePlayerSettlementManager.create_instance(self)
 
 
-		self.status_icon_manager = StatusIconManager(self)
+		self.status_icon_manager = StatusIconManager(
+		  renderer=self.view.renderer['GenericRenderer'],
+		  layer=self.view.layers[LAYERS.OBJECTS]
+		  )
 
 		self.selected_instances = set()
 		self.selection_groups = [set() for _ in range(10)]  # List of sets that holds the player assigned unit groups.
