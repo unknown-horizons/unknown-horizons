@@ -88,11 +88,25 @@ def test_general():
 
 	Starts a new server and connects 2 clients to it.
 	"""
-
 	def clients(server):
-		p1 = new_client("Client1", ['127.0.0.1', 4123])
+		p1 = new_client(u'Client1', ['127.0.0.1', 4123])
+
 		assert p1.get_active_games() == []
+
+		p1.change_name(u'NewClient1')
+		game = p1.creategame(u'development', 3, u'Game1')
+		p2 = new_client(u'Client2', ['127.0.0.1', 4234])
+
+		assert game.get_player_count() == 1
+
+		assert len(p2.get_active_games()) == 1
+
+		p2.joingame(p2.get_active_games()[0].uuid)
+
+		assert p2.isjoined() == True
+
 		p1.disconnect()
+		p2.disconnect()
 		server.kill()
 
 	setup_package()
