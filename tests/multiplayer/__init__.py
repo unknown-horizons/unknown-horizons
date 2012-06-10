@@ -30,7 +30,12 @@ from horizons.network import find_enet_module
 from horizons.extscheduler import ExtScheduler
 from horizons.ext.dummy import Dummy
 
+
 def setup_package():
+	"""Sets the network module up.
+
+	Host class' service method waits for service to start.
+	"""
 	ExtScheduler.create_instance(Dummy())
 	enet = find_enet_module()
 
@@ -41,7 +46,10 @@ def setup_package():
 
 	enet.Host = Host
 
+
 def _create_interface(name, address):
+	"""Creates network interface and sets the client up.
+	"""
 	def setup_client(self):
 		self._client = Client(name, VERSION.RELEASE_VERSION, ['127.0.0.1', 2002], address)
 	NetworkInterface._NetworkInterface__setup_client = setup_client
@@ -50,7 +58,12 @@ def _create_interface(name, address):
 	NetworkInterface.create_instance()
 	return NetworkInterface()
 
+
 def run_server():
+	"""Starts a server using subprocess.
+
+	If server closes, subprocess is also terminating.
+	"""
 	try:
 		p = subprocess.Popen([sys.executable, 'server.py', '-h', '127.0.0.1'])
 		while True:
@@ -61,18 +74,27 @@ def run_server():
 	finally:
 		p.terminate()
 
+
 def new_client(name, address):
+	"""Creates a new client using name and address.
+	"""
 	p = _create_interface(name, address)
 	p.connect()
 	return p
 
-def clients(server):
-	p1 = new_client("Client1", ['127.0.0.1', 4123])
-	assert p1.get_active_games() == []
-	p1.disconnect()
-	server.kill()
 
 def test_general():
+	"""General test for multiplayer game.
+
+	Starts a new server and connects 2 clients to it.
+	"""
+
+	def clients(server):
+		p1 = new_client("Client1", ['127.0.0.1', 4123])
+		assert p1.get_active_games() == []
+		p1.disconnect()
+		server.kill()
+
 	setup_package()
 
 	s = gevent.spawn(run_server)
