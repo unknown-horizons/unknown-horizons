@@ -110,6 +110,9 @@ def test_general():
 
 		assert p3.get_active_games() == []
 
+		assert p1.get_game().uuid == p2.get_game().uuid
+
+
 		p1.disconnect()
 		p2.disconnect()
 		p3.disconnect()
