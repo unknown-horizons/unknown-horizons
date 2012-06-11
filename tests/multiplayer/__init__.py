@@ -112,6 +112,7 @@ def test_general():
 
 		assert p1.get_game().uuid == p2.get_game().uuid
 
+		assert p1.get_game().get_player_count() == 2
 
 		p1.disconnect()
 		p2.disconnect()
