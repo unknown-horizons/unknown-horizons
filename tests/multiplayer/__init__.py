@@ -94,10 +94,13 @@ def test_general():
 		assert p1.get_active_games() == []
 
 		p1.change_name(u'NewClient1')
-		game = p1.creategame(u'development', 3, u'Game1')
-		p2 = new_client(u'Client2', ['127.0.0.1', 4234])
+
+		game = p1.creategame(u'development', 2, u'Game1')
 
 		assert game.get_player_count() == 1
+
+		p2 = new_client(u'Client2', ['127.0.0.1', 4234])
+		p3 = new_client(u'Client3', ['127.0.0.1', 4345])
 
 		assert len(p2.get_active_games()) == 1
 
@@ -105,8 +108,12 @@ def test_general():
 
 		assert p2.isjoined() == True
 
+		assert p3.get_active_games() == []
+
 		p1.disconnect()
 		p2.disconnect()
+		p3.disconnect()
+
 		server.kill()
 
 	setup_package()
