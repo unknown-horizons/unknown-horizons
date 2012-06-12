@@ -32,10 +32,13 @@
 			<Label name="game_map"/>
 			<Label name="game_name"/>
 			<Label name="game_creator"/>
-			<Label name="game_playersnum"/>
-			<Label name="game_players"/>
+
 			<Label name="game_isloaded"/>
 		</VBox>
+        <Label name="game_playersnum" position="0,200"/>
+        <ScrollArea name="players_scroll_area" min_size="300,235" position="0,220">
+            <ListBox name="playersbox" min_size="300,235" is_focusable="0" />
+        </ScrollArea>
 	</Container>
 
 </Container>
