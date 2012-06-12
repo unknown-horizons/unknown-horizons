@@ -292,6 +292,8 @@ class MPGame(object):
 		self.version    = version
 		self.name       = name
 		self.load       = load
+		self.rdyplayers = []
+		self.rdyplayers.append(self.creator)
 
 	def get_uuid(self):
 		return self.uuid
@@ -311,13 +313,25 @@ class MPGame(object):
 	def get_players(self):
 		return self.players
 
+	def get_ready_players(self):
+		return self.rdyplayers
+
 	def get_player_list(self):
 		ret_players = []
 		id = 1
 		for playername in self.get_players():
 			# TODO: add support for selecting difficulty levels to the GUI
+			player_status = False
+			try:
+				if self.get_ready_players().index(playername) != -1:
+					player_status = True
+				else:
+					player_status = False
+			except ValueError:
+				player_status = False
 			ret_players.append({'id': id, 'name': playername, 'color': Color[id], 'local': self.localname == playername, \
-				'ai': False, 'difficulty': DifficultySettings.DEFAULT_LEVEL})
+				'ai': False, 'difficulty': DifficultySettings.DEFAULT_LEVEL, 'status': 'Creator' if self.get_creator() == \
+			  playername else ('Ready' if player_status else 'Not Ready')})
 			id += 1
 		return ret_players
 

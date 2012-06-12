@@ -31,10 +31,9 @@
 		<VBox position="130,100" name="game_info">
 			<Label name="game_map"/>
 			<Label name="game_name"/>
-			<Label name="game_creator"/>
-
 			<Label name="game_isloaded"/>
 		</VBox>
+
         <Label name="game_playersnum" position="0,200"/>
         <Label name="game_player_color" position="160,200" text="Color"/>
         <Label name="game_player_status" position="240,200" text="Status"/>

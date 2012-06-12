@@ -190,10 +190,6 @@ class MultiplayerMenu(object):
 		self.current.findChild(name="game_playersnum").text =  _("Players: {player_amount}/{player_limit}").format(
 		                           player_amount=game.get_player_count(),
 		                           player_limit=game.get_player_limit())
-		creator_text = self.current.findChild(name="game_creator")
-		#xgettext:python-format
-		creator_text.text = _("Creator: {player}").format(player=game.get_creator())
-		creator_text.adaptLayout()
 		vbox_inner = self.current.findChild(name="game_info")
 		if game.load is not None: # work around limitations of current systems via messages
 			path = SavegameManager.get_multiplayersave_map(game.mapname)
@@ -423,5 +419,10 @@ class MultiplayerMenu(object):
 
 		playersbox = self.current.findChild(name="playersbox")
 
+		if not playersbox:
+			return
+
+		playersbox.items = []
+
 		for player in game.get_player_list():
-			playersbox.items.append(player['name'])
+			playersbox.items.append(player['name'] + '\t' + str(player['color']) + '\t' + player['status'])
