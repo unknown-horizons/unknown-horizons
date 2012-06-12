@@ -222,9 +222,11 @@ class MultiplayerMenu(object):
 
 			if text:
 				self.current.findChild(name="game_isloaded").text = text
-		textplayers = self.current.findChild(name="game_players")
-		if textplayers is not None:
-			textplayers.text = u", ".join(game.get_players())
+		#textplayers = self.current.findChild(name="game_players")
+		#if textplayers is not None:
+		#	textplayers.text = u", ".join(game.get_players())
+
+		self.__update_players_box(game)
 
 		vbox_inner.adaptLayout() # inner vbox always exists
 		vbox = self.current.findChild(name="gamedetailsbox")
@@ -274,7 +276,7 @@ class MultiplayerMenu(object):
 		self._switch_current_widget('multiplayer_gamelobby', center=True, event_map=event_map, hide_old=True)
 
 		self.__update_game_details(game)
-		self.current.findChild(name="game_players").text = u", ".join(game.get_players())
+
 		textfield = self.current.findChild(name="chatTextField")
 		textfield.capture(self.__send_chat_message)
 		textfield.capture(self.__chatfield_onfocus, 'mouseReleased', 'default')
@@ -415,3 +417,11 @@ class MultiplayerMenu(object):
 
 		self.__show_gamelobby()
 
+	def __update_players_box(self, game=None):
+		if not game:
+			return
+
+		playersbox = self.current.findChild(name="playersbox")
+
+		for player in game.get_player_list():
+			playersbox.items.append(player['name'])
