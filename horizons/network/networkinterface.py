@@ -316,6 +316,10 @@ class MPGame(object):
 	def get_ready_players(self):
 		return self.rdyplayers
 
+	def add_ready_player(self, player):
+		self.get_ready_players().append(player)
+
+
 	def get_player_list(self):
 		ret_players = []
 		id = 1

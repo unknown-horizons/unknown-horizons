@@ -19,6 +19,8 @@
 		<Label name="exit_to_mp_menu_lbl"  text="Leave:"  position="75,470" />
 		<CancelButton position="120,460"
 			name="cancel"  helptext="Exit gamelobby" />
+        <Label name="ready_or_start_lbl"  text=""  position="165,470" />
+        <OkButton position="210,460" name="ready_or_start"  />
 	</Container>
 
 
