@@ -282,18 +282,18 @@ class NetworkInterface(object):
 
 class MPGame(object):
 	def __init__(self, uuid, creator, mapname, maxplayers, playercnt, players, localname, version, name, load):
-		self.uuid       = uuid
-		self.creator    = creator
-		self.mapname    = mapname
-		self.maxplayers = maxplayers
-		self.playercnt  = playercnt
-		self.players    = players
-		self.localname  = localname
-		self.version    = version
-		self.name       = name
-		self.load       = load
-		self.rdyplayers = []
-		self.rdyplayers.append(self.creator)
+		self.uuid          = uuid
+		self.creator       = creator
+		self.mapname       = mapname
+		self.maxplayers    = maxplayers
+		self.playercnt     = playercnt
+		self.players       = players
+		self.localname     = localname
+		self.version       = version
+		self.name          = name
+		self.load          = load
+		self.ready_players = []
+		self.ready_players.append(self.creator)
 
 	def get_uuid(self):
 		return self.uuid
@@ -314,7 +314,7 @@ class MPGame(object):
 		return self.players
 
 	def get_ready_players(self):
-		return self.rdyplayers
+		return self.ready_players
 
 	def add_ready_player(self, player):
 		self.get_ready_players().append(player)
@@ -325,14 +325,7 @@ class MPGame(object):
 		id = 1
 		for playername in self.get_players():
 			# TODO: add support for selecting difficulty levels to the GUI
-			player_status = False
-			try:
-				if self.get_ready_players().index(playername) != -1:
-					player_status = True
-				else:
-					player_status = False
-			except ValueError:
-				player_status = False
+			player_status = True if playername in self.get_ready_players() else False
 			ret_players.append({'id': id, 'name': playername, 'color': Color[id], 'local': self.localname == playername, \
 				'ai': False, 'difficulty': DifficultySettings.DEFAULT_LEVEL, 'status': 'Creator' if self.get_creator() == \
 			  playername else ('Ready' if player_status else 'Not Ready')})
