@@ -270,7 +270,7 @@ class MultiplayerMenu(object):
 		is_creator = NetworkInterface()._client.name == game.get_creator()
 		event_map = {
 			'cancel' : self.show_multi,
-			'ready_or_start' : Callback(self.ready_or_start, game=game, creator=is_creator),
+			'ready_or_start_btn' : Callback(self.ready_or_start, game=game, creator=is_creator),
 		}
 		self.widgets.reload('multiplayer_gamelobby') # remove old chat messages, etc
 		self._switch_current_widget('multiplayer_gamelobby', center=True, event_map=event_map, hide_old=True)
