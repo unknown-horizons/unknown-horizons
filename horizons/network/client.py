@@ -68,6 +68,8 @@ class Client(object):
 			'lobbygame_chat':        [],
 			'lobbygame_join':        [],
 			'lobbygame_leave':       [],
+			'lobbygame_ready':       [],
+			'lobbygame_not_ready':   [],
 			'lobbygame_changename':  [],
 			#'lobbygame_changecolor': [],
 			'lobbygame_state':       [],
@@ -297,6 +299,13 @@ class Client(object):
 
 			oldplayers = list(self.game.players)
 			self.game = packet[1].game
+
+
+			if len(self.game.get_ready_players()) < len(packet[1].data.ready_players):
+				self.call_callbacks("lobbygame_not_ready", self.game, self.packet[1].playername)
+
+			elif len(self.game.get_ready_players()) > len(packet[1].data.ready_players):
+				self.call_callbacks("lobbygame_ready", self.game, self.packet[1].playername)
 
 			# calculate changeset
 			for pnew in self.game.players:

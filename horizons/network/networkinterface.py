@@ -177,6 +177,12 @@ class NetworkInterface(object):
 	def register_player_left_callback(self, function):
 		self._client.register_callback("lobbygame_leave", function)
 
+	def register_player_ready_callback(self, function):
+		self._client.register_callback("lobbygame_ready", function)
+
+	def register_player_not_ready_callback(self, function):
+		self._client.register_callback("lobbygame_not_ready", function)
+
 	def register_player_changed_name_callback(self, function):
 		self._client.register_callback("lobbygame_changename", function)
 
@@ -262,7 +268,7 @@ class NetworkInterface(object):
 		return ret_list
 
 	def game2mpgame(self, game):
-		return MPGame(game.uuid, game.creator, game.mapname, game.maxplayers, game.playercnt, map(lambda x: unicode(x.name), game.players), self._client.name, game.clientversion, game.name, game.load)
+		return MPGame(game.uuid, game.creator, game.mapname, game.maxplayers, game.playercnt, map(lambda x: unicode(x.name), game.players), self._client.name, game.clientversion, game.name, game.load, game.ready_players)
 
 	def get_clientversion(self):
 		return self._client.version
@@ -281,7 +287,7 @@ class NetworkInterface(object):
 
 
 class MPGame(object):
-	def __init__(self, uuid, creator, mapname, maxplayers, playercnt, players, localname, version, name, load):
+	def __init__(self, uuid, creator, mapname, maxplayers, playercnt, players, localname, version, name, load, ready_players):
 		self.uuid          = uuid
 		self.creator       = creator
 		self.mapname       = mapname
@@ -292,8 +298,7 @@ class MPGame(object):
 		self.version       = version
 		self.name          = name
 		self.load          = load
-		self.ready_players = []
-		self.ready_players.append(self.creator)
+		self.ready_players = ready_players
 
 	def get_uuid(self):
 		return self.uuid
@@ -315,13 +320,6 @@ class MPGame(object):
 
 	def get_ready_players(self):
 		return self.ready_players
-
-	def toggle_ready_player(self, player):
-		if player not in self.get_ready_players():
-			self.ready_players.append(player)
-
-		else:
-			self.ready_players.remove(player)
 
 	def get_player_list(self):
 		ret_players = []

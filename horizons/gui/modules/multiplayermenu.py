@@ -110,6 +110,8 @@ class MultiplayerMenu(object):
 		NetworkInterface().register_player_joined_callback(self.__player_joined)
 		NetworkInterface().register_player_left_callback(self.__player_left)
 		NetworkInterface().register_player_changed_name_callback(self.__player_changed_name)
+		NetworkInterface().register_player_ready_callback(self.__player_ready)
+		NetworkInterface().register_player_not_ready_callback(self.__player_not_ready)
 
 		try:
 			NetworkInterface().connect()
@@ -174,7 +176,7 @@ class MultiplayerMenu(object):
 				index = self.current.collectData('gamelist')
 				return self.games[index]
 		except:
-			return MPGame(-1, "", "", 0, 0, [], "", -1, "", False)
+			return MPGame(-1, "", "", 0, 0, [], "", -1, "", False, [])
 
 	def __show_only_own_version_toggle(self):
 		self.__refresh()
@@ -327,6 +329,12 @@ class MultiplayerMenu(object):
 	def __player_left(self, game, player):
 		self.__print_event_message(u"{player} has left the game".format(player=player.name))
 
+	def __player_ready(self, game, player):
+		self.__print_event_message(u"{player} is ready".format(player=player.name))
+
+	def __player_not_ready(self, game, player):
+		self.__print_event_message(u"{player} is not ready".format(player=player.name))
+
 	def __player_changed_name(self, game, plold, plnew, myself):
 		if myself:
 			self.__print_event_message(u"You are now known as {new_name}".format(new_name=plnew.name))
@@ -437,7 +445,12 @@ class MultiplayerMenu(object):
 			return
 
 		if not creator:
-			game.toggle_ready_player(NetworkInterface()._client.name)
+			if game.toggle_ready_player(NetworkInterface()._client.name):
+				self.__player_ready(game, NetworkInterface()._client)
+
+			else:
+				self.__player_not_ready(game, NetworkInterface()._client)
+
 			self.__update_players_box(game=game)
 
 

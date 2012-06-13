@@ -126,6 +126,8 @@ class Game(object):
 		self.players       = []
 		self.playercnt     = 0
 		self.state         = Game.State.Open
+		self.ready_players = []
+		self.toggle_ready_player(creator)
 		self.add_player(creator)
 
 	def add_player(self, player):
@@ -141,6 +143,15 @@ class Game(object):
 		self.playercnt -= 1
 		player.game = None
 		return player
+
+	def toggle_ready_player(self, player):
+		if player not in self.ready_players:
+			self.ready_players.append(player)
+			return True
+
+		else:
+			self.ready_players.remove(player)
+			return False
 
 	def clear(self):
 		for player in self.players:
