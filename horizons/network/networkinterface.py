@@ -26,7 +26,7 @@ from horizons.util import Color, DifficultySettings, parse_port
 from horizons.extscheduler import ExtScheduler
 from horizons.constants import NETWORK, VERSION
 from horizons.network.client import Client
-from horizons.network import CommandError, NetworkException, FatalError
+from horizons.network import CommandError, NetworkException, FatalError, packets
 
 import logging
 
@@ -273,7 +273,6 @@ class NetworkInterface(object):
 	def get_clientversion(self):
 		return self._client.version
 
-
 	def _handle_exception(self, e):
 		try:
 			raise e
@@ -284,6 +283,9 @@ class NetworkInterface(object):
 		except NetworkException as e:
 			self._cb_error(e, fatal=False)
 			return False
+
+	def send_toggle_ready(self, game):
+		self._client.send_toggle_ready(game)
 
 
 class MPGame(object):

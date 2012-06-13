@@ -154,3 +154,10 @@ class game_data(packet):
 # origin is 'server' as clients will send AND receive them
 SafeUnpickler.add('server', game_data)
 
+#-------------------------------------------------------------------------------
+
+class cmd_toggle_ready(packet):
+	def __init__(self, game):
+		self.game = game
+
+SafeUnpickler.add('client', cmd_toggle_ready)

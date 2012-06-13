@@ -59,6 +59,7 @@ class Server(object):
 			packets.client.cmd_chatmsg:        [ self.onchat ],
 			packets.client.cmd_changename:     [ self.onchangename ],
 			packets.client.cmd_preparedgame:   [ self.onpreparedgame ],
+			packets.client.cmd_toggle_ready:   [ self.ontoggleready ],
 			'preparegame':    [ self.preparegame ],
 			'startgame':      [ self.startgame ],
 			'leavegame':      [ self.leavegame ],
@@ -478,6 +479,13 @@ class Server(object):
 			return
 		self.call_callbacks('startgame', game)
 
+	def ontoggleready(self, peer, packet):
+		player = self.players[peer.data]
+		game = player.game
+		for _player in game.players:
+			if _player is player:
+				continue
+			self._send(_player.peer, packet.game)
 
 	def print_statistic(self, file):
 		try:

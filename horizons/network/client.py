@@ -300,13 +300,6 @@ class Client(object):
 			oldplayers = list(self.game.players)
 			self.game = packet[1].game
 
-
-			if len(self.game.get_ready_players()) < len(packet[1].data.ready_players):
-				self.call_callbacks("lobbygame_not_ready", self.game, self.packet[1].playername)
-
-			elif len(self.game.get_ready_players()) > len(packet[1].data.ready_players):
-				self.call_callbacks("lobbygame_ready", self.game, self.packet[1].playername)
-
 			# calculate changeset
 			for pnew in self.game.players:
 				found = None
@@ -339,6 +332,17 @@ class Client(object):
 		elif isinstance(packet[1], packets.client.game_data):
 			self.log.debug("[GAMEDATA] from %s" % (packet[0].address))
 			self.call_callbacks("game_data", packet[1].data)
+
+		elif isinstance(packet[1], packets.client.cmd_toggle_ready):
+			print "hede"
+
+			if len(self.game.ready_players) < len(packet[1].game.ready_players):
+				self.call_callbacks("lobbygame_not_ready", self.game, self.packet[1].playername)
+
+			elif len(self.game.ready_players) > len(packet[1].game.ready_players):
+				self.call_callbacks("lobbygame_ready", self.game, self.packet[1].playername)
+
+
 
 		return False
 
@@ -481,5 +485,9 @@ class Client(object):
 		self.game.state = Game.State.Running
 		self.mode = ClientMode.Game
 		self.call_callbacks("game_starts", self.game)
+		return True
+
+	def send_toggle_ready(self, game):
+		self.send(packets.client.cmd_toggle_ready("Test"))
 		return True
 

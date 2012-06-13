@@ -445,12 +445,13 @@ class MultiplayerMenu(object):
 			return
 
 		if not creator:
-			if game.toggle_ready_player(NetworkInterface()._client.name):
+			if NetworkInterface()._client.game.toggle_ready_player(NetworkInterface()._client.name):
 				self.__player_ready(game, NetworkInterface()._client)
 
 			else:
 				self.__player_not_ready(game, NetworkInterface()._client)
 
+			NetworkInterface().send_toggle_ready(game)
 			self.__update_players_box(game=game)
 
 
