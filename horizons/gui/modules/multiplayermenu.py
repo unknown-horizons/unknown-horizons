@@ -437,7 +437,7 @@ class MultiplayerMenu(object):
 			return
 
 		if not creator:
-			game.add_ready_player(NetworkInterface()._client.name)
+			game.toggle_ready_player(NetworkInterface()._client.name)
 			self.__update_players_box(game=game)
 
 

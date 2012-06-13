@@ -316,9 +316,12 @@ class MPGame(object):
 	def get_ready_players(self):
 		return self.ready_players
 
-	def add_ready_player(self, player):
-		self.get_ready_players().append(player)
+	def toggle_ready_player(self, player):
+		if player not in self.get_ready_players():
+			self.ready_players.append(player)
 
+		else:
+			self.ready_players.remove(player)
 
 	def get_player_list(self):
 		ret_players = []
