@@ -54,9 +54,6 @@ class UnitManager(WorldObject):
 		ships = self.get_my_ships()
 		for i in xrange(0, len(ships), group_size):
 			self.ship_groups.append(ships[i:i + group_size])
-		## TODO DIAGNOSTIC 2 lines below
-		for i in xrange(len(self.ship_groups)):
-			self.log.info('ship group %d: %s' % (i, self.ship_groups[i]))
 
 	def filter_enemy_ships(self, ships):
 		# TODO: Should take diplomacy into account
@@ -71,3 +68,17 @@ class UnitManager(WorldObject):
 
 	def tick(self):
 		self.regroup_ships()  # TODO will be called on shipstate change (sank/built)
+
+	def save(self, db):
+		pass
+
+	def _load(self, db, player):
+
+		pass
+
+	@classmethod
+	def load(cls, db, owner):
+		self = cls.__new__(cls, owner)
+		#self._load(db, player)
+		return self
+

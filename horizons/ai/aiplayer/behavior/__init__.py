@@ -37,17 +37,20 @@ class BehaviorManager(WorldObject):
 	"""
 
 	# Types of actions behavior can handle
-	action_types = Enum('offensive', 'defensive')
-
-	actions = {
-		action_types.offensive: dict(),
-		action_types.defensive: dict(),
-	}
+	action_types = Enum('offensive', 'defensive', 'idle')
 
 	log = logging.getLogger("ai.aiplayer.behaviormanager")
 
 	def __init__(self, owner):
+
 		super(BehaviorManager, self).__init__()
+
+		self.actions = {
+			self.action_types.offensive: dict(),
+			self.action_types.defensive: dict(),
+			self.action_types.idle: dict(),
+			}
+
 		self.owner = owner
 		self.world = owner.world
 		self.session = owner.session
@@ -59,8 +62,10 @@ class BehaviorManager(WorldObject):
 		"""
 
 		# TODO: This should be loaded from YAML
-		self.actions[self.action_types.offensive][BehaviorActionPirateHater(self.owner)] = 1.0
-		self.actions[self.action_types.offensive][BehaviorActionCoward(self.owner)] = 0.0
+		self.actions[self.action_types.offensive][BehaviorActionPirateHater(self.owner)] = 0.1
+		self.actions[self.action_types.offensive][BehaviorActionCoward(self.owner)] = 0.9
+
+		self.actions[self.action_types.idle][BehaviorActionBored(self.owner)] = 1.0
 
 	def request_action(self, type, action_name, **environment):
 		possible_behaviors = []
@@ -90,6 +95,12 @@ class BehaviorManager(WorldObject):
 			total += prob
 		# TODO: take action certainity into account as well
 
+	@classmethod
+	def load(cls, db, owner):
+		self = cls.__new__(cls, owner)
+		#self._load(db, player)
+		return self
+
 
 class BehaviorAction(object):
 	"""
@@ -108,9 +119,9 @@ class BehaviorActionPirateHater(BehaviorAction):
 	def __init__(self, owner):
 		super(BehaviorActionPirateHater, self).__init__(owner)
 
-	def attack_pirate_group(self, **environment):
+	def pirates_in_sight(self, **environment):
 		"""
-		Always attack pirates.
+		Always attack pirates and start wars with them.
 		"""
 		enemies = environment['enemies']
 		ship_group = environment['ship_group']
@@ -127,8 +138,41 @@ class BehaviorActionCoward(BehaviorAction):
 	def __init__(self, owner):
 		super(BehaviorActionCoward, self).__init__(owner)
 
-	def attack_pirate_group(self, **environment):
+	def pirates_in_sight(self, **environment):
 		"""
 		Dummy action, do nothing really.
 		"""
 		BehaviorAction.log.info('Pirates give me chills man.')
+
+class BehaviorActionBored(BehaviorAction):
+	def __init__(self, owner):
+		super(BehaviorActionBored, self).__init__(owner)
+
+	def no_one_in_sight(self, **enviornment):
+		"""
+		Idle action, sail randomly somewhere near.
+		"""
+
+		ship_group = enviornment['ship_group']
+		for ship in ship_group:
+			self.owner.send_ship_random(ship)
+		BehaviorAction.log.info('no_one_in_sight action')
+
+
+class BehaviorActionRegular(BehaviorAction):
+
+	def __init__(self, owner):
+		super(BehaviorActionCoward, self).__init__(owner)
+
+	def pirates_in_sight(self, **environment):
+		"""
+		Attacks pirates only if they are in conflict already.
+		"""
+		enemies = environment['enemies']
+		ship_group = environment['ship_group']
+
+		for ship in ship_group:
+			if self.session.world.diplomacy.are_enemies(self.owner, enemies[0].owner):
+				Attack(ship, enemies[0]).execute(self.session)
+		BehaviorAction.log.info('Attacking pirate player.')
+

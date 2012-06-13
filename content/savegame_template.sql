@@ -52,7 +52,7 @@ CREATE TABLE "ai_mission_found_settlement" ("land_manager" INTEGER NOT NULL , "s
 CREATE TABLE "ai_mission_international_trade" ("settlement_manager" INTEGER NOT NULL , "settlement" INTEGER NOT NULL , "ship" INTEGER NOT NULL , "bought_resource" INTEGER, "sold_resource" INTEGER, "state" INTEGER NOT NULL );
 CREATE TABLE "ai_mission_prepare_foundation_ship" ("settlement_manager" INTEGER NOT NULL , "ship" INTEGER NOT NULL , "feeder_island" BOOL NOT NULL, "state" INTEGER NOT NULL );
 CREATE TABLE "ai_personality_manager" ("personality" TEXT NOT NULL );
-CREATE TABLE "ai_player" ("need_more_ships" INTEGER NOT NULL, "need_feeder_island" INTEGER NOT NULL, "remaining_ticks" INTEGER NOT NULL);
+CREATE TABLE "ai_player" ("need_more_ships" INTEGER NOT NULL, "need_more_combat_ships" INTEGER NOT NULL, "need_feeder_island" INTEGER NOT NULL, "remaining_ticks" INTEGER NOT NULL);
 CREATE TABLE "ai_production_builder" ("settlement_manager" INTEGER NOT NULL ,"last_collector_improvement_storage" INTEGER NOT NULL ,"last_collector_improvement_road" INTEGER NOT NULL );
 CREATE TABLE "ai_production_builder_plan" ("production_builder" INTEGER NOT NULL , "x" INTEGER NOT NULL , "y" INTEGER NOT NULL , "purpose" INTEGER NOT NULL );
 CREATE TABLE "ai_resource_manager" ("settlement_manager"  NOT NULL );

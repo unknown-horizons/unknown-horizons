@@ -176,8 +176,8 @@ class AIPlayer(GenericAI):
 		calls = Scheduler().get_classinst_calls(self, current_callback)
 		assert len(calls) == 1, "got %s calls for saving %s: %s" % (len(calls), current_callback, calls)
 		remaining_ticks = max(calls.values()[0], 1)
-		db("INSERT INTO ai_player(rowid, need_more_ships, need_feeder_island, remaining_ticks) VALUES(?, ?, ?, ?)", \
-			self.worldid, self.need_more_ships, self.need_feeder_island, remaining_ticks)
+		db("INSERT INTO ai_player(rowid, need_more_ships, need_more_combat_ships, need_feeder_island, remaining_ticks) VALUES(?, ?, ?, ?, ?)", \
+			self.worldid, self.need_more_ships, self.need_more_combat_ships, self.need_feeder_island, remaining_ticks)
 
 		# save the ships
 		for ship, state in self.ships.iteritems():
@@ -198,13 +198,25 @@ class AIPlayer(GenericAI):
 		# save the personality manager
 		self.personality_manager.save(db)
 
+		# save the behavior manager
+		self.behavior_manager.save(db)
+
+		# save the unit manager
+		self.unit_manager.save(db)
+
+		# save the combat manager
+		self.combat_manager.save(db)
+
 	def _load(self, db, worldid):
 		super(AIPlayer, self)._load(db, worldid)
 		self.personality_manager = PersonalityManager.load(db, self)
+		self.unit_manager = UnitManager.load(db, self)
+		self.behavior_manager = BehaviorManager.load(db, self)
+		self.combat_manager = CombatManager.load(db, self)
 		self.__init()
 
-		self.need_more_ships, self.need_feeder_island, remaining_ticks = \
-			db("SELECT need_more_ships, need_feeder_island, remaining_ticks FROM ai_player WHERE rowid = ?", worldid)[0]
+		self.need_more_ships, self.need_feeder_island, self.need_more_combat_ships, remaining_ticks = \
+			db("SELECT need_more_ships, need_more_combat_ships, need_feeder_island, remaining_ticks FROM ai_player WHERE rowid = ?", worldid)[0]
 		Scheduler().add_new_object(Callback(self.tick), self, run_in = remaining_ticks)
 
 	def finish_loading(self, db):

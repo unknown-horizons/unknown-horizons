@@ -41,21 +41,29 @@ class CombatManager(WorldObject):
 		self.session = owner.session
 
 	def lookout(self):
-		unit_manager = self.owner.unit_manager
-
-		for ship_group in unit_manager.get_available_ship_groups(None):
-			enemies = unit_manager.find_ships_near_group(ship_group)
+		for ship_group in self.owner.unit_manager.get_available_ship_groups(None):
+			other_ships = self.owner.unit_manager.find_ships_near_group(ship_group)
+			enemies = self.owner.unit_manager.filter_enemy_ships(other_ships)
+			environment = {'enemies': enemies, 'ship_group': ship_group, }
 			if enemies:
-				environment = {'enemies': enemies, 'ship_group': ship_group, }
-
 				# TODO: assume it's only pirates in range, it should take enemy types into account as well
 				self.owner.behavior_manager.request_action(BehaviorManager.action_types.offensive,
-					'attack_pirate_group', **environment)
+					'pirates_in_sight', **environment)
+			else:
+				self.owner.behavior_manager.request_action(BehaviorManager.action_types.idle,
+					'no_one_in_sight', **environment)
+
 
 	def calculate_power_balance(self, ai_ships, enemy_ships):
 		pass
 
 	def tick(self):
 		self.lookout()
+
+	@classmethod
+	def load(cls, db, owner):
+		self = cls.__new__(cls, owner)
+		#self._load(db, player)
+		return self
 
 	#TODO add save/load mechanisms
