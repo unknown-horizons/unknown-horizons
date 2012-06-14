@@ -45,28 +45,10 @@ class BehaviorManager(WorldObject):
 
 		super(BehaviorManager, self).__init__()
 
-		self.actions = {
-			self.action_types.offensive: dict(),
-			self.action_types.defensive: dict(),
-			self.action_types.idle: dict(),
-			}
-
 		self.owner = owner
 		self.world = owner.world
 		self.session = owner.session
-		self._load_action_behaviors()
-
-	def _load_action_behaviors(self):
-		"""
-		Load action behaviors from YAML.
-		"""
-
-		# TODO: This should be loaded from YAML
-		self.actions[self.action_types.offensive][BehaviorActionPirateHater(self.owner)] = 0.1
-		self.actions[self.action_types.offensive][BehaviorActionCoward(self.owner)] = 0.05
-		#self.actions[self.action_types.offensive][BehaviorActionRegular(self.owner)] = 0.2
-
-		self.actions[self.action_types.idle][BehaviorActionBored(self.owner)] = 1.0
+		self.actions = owner.get_random_actions()
 
 	def request_action(self, type, action_name, **environment):
 		possible_behaviors = []

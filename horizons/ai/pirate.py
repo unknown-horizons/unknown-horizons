@@ -21,6 +21,7 @@
 
 import logging
 from horizons.ai.aiplayer.behavior import BehaviorManager
+from horizons.ai.aiplayer.behavior.profile import BehaviorProfile
 from horizons.ai.aiplayer.combatmanager import CombatManager, PirateCombatManager
 from horizons.ai.aiplayer.unitmanager import UnitManager
 
@@ -70,11 +71,6 @@ class Pirate(GenericAI):
 
 		Scheduler().add_new_object(Callback(self.tick), self, 32, -1)
 
-
-		#for ship in self.ships.keys():
-		#	Scheduler().add_new_object(Callback(self.send_ship, ship), self)
-		#	Scheduler().add_new_object(Callback(self.lookout, ship), self, 8, -1)
-
 		#Temporary call for ship respawns
 		Scheduler().add_new_object(Callback(self.maintain_ship_count), self, 32, -1)
 
@@ -93,6 +89,9 @@ class Pirate(GenericAI):
 
 	def tick(self):
 		self.combat_manager.tick()
+
+	def get_random_actions(self):
+		return BehaviorProfile.get_random_pirate_actions(self)
 
 	def maintain_ship_count(self):
 		if len(self.ships.keys()) < self.ship_count:

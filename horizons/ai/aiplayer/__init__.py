@@ -23,6 +23,7 @@ import logging
 
 from collections import defaultdict
 from horizons.ai.aiplayer.behavior import BehaviorManager
+from horizons.ai.aiplayer.behavior.profile import BehaviorProfile
 from horizons.ai.aiplayer.combatmanager import CombatManager
 
 from mission.foundsettlement import FoundSettlement
@@ -137,10 +138,14 @@ class AIPlayer(GenericAI):
 		self.special_domestic_trade_manager = SpecialDomesticTradeManager(self)
 		self.international_trade_manager = InternationalTradeManager(self)
 
+	def get_random_actions(self):
+		return BehaviorProfile.get_random_pirate_actions(self)
+
 	def start_mission(self, mission):
 		self.ships[mission.ship] = self.shipStates.on_a_mission
 		self.missions.add(mission)
 		mission.start()
+
 
 	def report_success(self, mission, msg):
 		if not self._enabled:

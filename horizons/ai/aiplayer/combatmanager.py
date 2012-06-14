@@ -69,7 +69,7 @@ class CombatManager(WorldObject):
 
 class PirateCombatManager(CombatManager):
 	"""
-	Pirate player required slightly different handling of combat, thus it gets specific CombatManager.
+	Pirate player requires slightly different handling of combat, thus it gets his own CombatManager.
 	Pirate player is able to use standard BehaviorComponents in it's BehaviorManager.
 	"""
 	log = logging.getLogger("ai.aiplayer.piratecombatmanager")
@@ -81,5 +81,6 @@ class PirateCombatManager(CombatManager):
 
 	def lookout(self):
 		print "pirate_ship_length %d"%(len(self.owner.ships))
+		print self.owner.behavior_manager.actions
 		self.log.info("Pirate ship length: %d"%(len(self.owner.ships)))
 		#for ship in self.owner.ships:
