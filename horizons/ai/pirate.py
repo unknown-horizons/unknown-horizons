@@ -20,6 +20,9 @@
 # ###################################################
 
 import logging
+from horizons.ai.aiplayer.behavior import BehaviorManager
+from horizons.ai.aiplayer.combatmanager import CombatManager, PirateCombatManager
+from horizons.ai.aiplayer.unitmanager import UnitManager
 
 from horizons.scheduler import Scheduler
 from horizons.util import Point, Callback, WorldObject, Circle
@@ -53,6 +56,11 @@ class Pirate(GenericAI):
 		# choose a random water tile on the coast and call it home
 		self.home_point = self.session.world.get_random_possible_coastal_ship_position()
 		self.log.debug("Pirate: home at (%d, %d), radius %d" % (self.home_point.x, self.home_point.y, self.home_radius))
+		self.world = session.world
+
+		self.combat_manager = PirateCombatManager(self)
+		self.unit_manager = UnitManager(self)
+		self.behavior_manager = BehaviorManager(self)
 
 		# create a ship and place it randomly (temporary hack)
 		for i in xrange(self.ship_count):
@@ -60,9 +68,14 @@ class Pirate(GenericAI):
 			ship = CreateUnit(self.worldid, UNITS.PIRATE_SHIP, point.x, point.y)(issuer=self.session.world.player)
 			self.ships[ship] = self.shipStates.idle
 
-		for ship in self.ships.keys():
-			Scheduler().add_new_object(Callback(self.send_ship, ship), self)
-			Scheduler().add_new_object(Callback(self.lookout, ship), self, 8, -1)
+		Scheduler().add_new_object(Callback(self.tick), self, 32, -1)
+
+
+		#for ship in self.ships.keys():
+		#	Scheduler().add_new_object(Callback(self.send_ship, ship), self)
+		#	Scheduler().add_new_object(Callback(self.lookout, ship), self, 8, -1)
+
+		#Temporary call for ship respawns
 		Scheduler().add_new_object(Callback(self.maintain_ship_count), self, 32, -1)
 
 	@staticmethod
@@ -78,14 +91,14 @@ class Pirate(GenericAI):
 				nearest_ship = ship
 		return nearest_ship
 
+	def tick(self):
+		self.combat_manager.tick()
+
 	def maintain_ship_count(self):
 		if len(self.ships.keys()) < self.ship_count:
 			point = self.session.world.get_random_possible_ship_position()
 			ship = CreateUnit(self.worldid, UNITS.PIRATE_SHIP, point.x, point.y)(issuer=self.session.world.player)
 			self.ships[ship] = self.shipStates.idle
-			Scheduler().add_new_object(Callback(self.send_ship, ship), self)
-			Scheduler().add_new_object(Callback(self.lookout, ship), self, 8, -1)
-
 
 	def lookout(self, pirate_ship):
 		if self.ships[pirate_ship] != self.shipStates.going_home:

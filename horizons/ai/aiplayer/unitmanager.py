@@ -56,7 +56,7 @@ class UnitManager(WorldObject):
 			self.ship_groups.append(ships[i:i + group_size])
 
 	def filter_enemy_ships(self, ships):
-		# TODO: Should take diplomacy into account
+		# TODO: Should later take diplomacy into account
 		return [ship for ship in ships if ship.owner != self.owner and isinstance(ship, (FightingShip, PirateShip))]
 
 	def find_ships_near_group(self, ship_group):

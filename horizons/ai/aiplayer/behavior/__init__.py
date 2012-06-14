@@ -63,7 +63,8 @@ class BehaviorManager(WorldObject):
 
 		# TODO: This should be loaded from YAML
 		self.actions[self.action_types.offensive][BehaviorActionPirateHater(self.owner)] = 0.1
-		self.actions[self.action_types.offensive][BehaviorActionCoward(self.owner)] = 0.9
+		self.actions[self.action_types.offensive][BehaviorActionCoward(self.owner)] = 0.05
+		#self.actions[self.action_types.offensive][BehaviorActionRegular(self.owner)] = 0.2
 
 		self.actions[self.action_types.idle][BehaviorActionBored(self.owner)] = 1.0
 

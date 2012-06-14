@@ -53,7 +53,6 @@ class CombatManager(WorldObject):
 				self.owner.behavior_manager.request_action(BehaviorManager.action_types.idle,
 					'no_one_in_sight', **environment)
 
-
 	def calculate_power_balance(self, ai_ships, enemy_ships):
 		pass
 
@@ -67,3 +66,20 @@ class CombatManager(WorldObject):
 		return self
 
 	#TODO add save/load mechanisms
+
+class PirateCombatManager(CombatManager):
+	"""
+	Pirate player required slightly different handling of combat, thus it gets specific CombatManager.
+	Pirate player is able to use standard BehaviorComponents in it's BehaviorManager.
+	"""
+	log = logging.getLogger("ai.aiplayer.piratecombatmanager")
+
+	def __init__(self, owner):
+		super(PirateCombatManager, self).__init__(owner)
+		self.owner = owner
+		self.session = owner.session
+
+	def lookout(self):
+		print "pirate_ship_length %d"%(len(self.owner.ships))
+		self.log.info("Pirate ship length: %d"%(len(self.owner.ships)))
+		#for ship in self.owner.ships:
