@@ -37,7 +37,6 @@ class BehaviorManager(WorldObject):
 	"""
 
 	# Types of actions behavior can handle
-	action_types = Enum('offensive', 'defensive', 'idle')
 
 	log = logging.getLogger("ai.aiplayer.behaviormanager")
 
@@ -145,7 +144,7 @@ class BehaviorActionBored(BehaviorAction):
 class BehaviorActionRegular(BehaviorAction):
 
 	def __init__(self, owner):
-		super(BehaviorActionCoward, self).__init__(owner)
+		super(BehaviorActionRegular, self).__init__(owner)
 
 	def pirates_in_sight(self, **environment):
 		"""

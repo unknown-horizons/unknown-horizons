@@ -139,7 +139,7 @@ class AIPlayer(GenericAI):
 		self.international_trade_manager = InternationalTradeManager(self)
 
 	def get_random_actions(self):
-		return BehaviorProfile.get_random_pirate_actions(self)
+		return BehaviorProfile.get_random_player_actions(self)
 
 	def start_mission(self, mission):
 		self.ships[mission.ship] = self.shipStates.on_a_mission

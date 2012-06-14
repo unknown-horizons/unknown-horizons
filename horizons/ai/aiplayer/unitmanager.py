@@ -19,7 +19,7 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-import logging
+import logging, collections
 from horizons.util.worldobject import WorldObject
 from horizons.world.units.fightingship import FightingShip
 from horizons.world.units.ship import PirateShip
@@ -29,8 +29,10 @@ class UnitManager(WorldObject):
 	"""
 	UnitManager objects is responsible for handling units in game.
 	1.Grouping combat ships into easy to handle fleets,
-	2.Distributing ships for missions when requested by other managers.
+	2.Ship filtering.
+	3.Distributing ships for missions when requested by other managers.
 	"""
+
 	log = logging.getLogger("ai.aiplayer.unitmanager")
 
 	def __init__(self, owner):
@@ -39,6 +41,8 @@ class UnitManager(WorldObject):
 		self.world = owner.world
 		self.session = owner.session
 		self.ship_groups = []
+		self.filtering_rules = collections.namedtuple('Rules', 'not_owned, hostile, ship_type')(not_owned=self._not_owned_rule,
+			hostile=self._hostile_rule, ship_type=self._ship_type_rule)
 
 	def get_my_ships(self):
 		return [ship for ship in self.world.ships if ship.owner == self.owner and isinstance(ship, FightingShip)]
@@ -55,16 +59,44 @@ class UnitManager(WorldObject):
 		for i in xrange(0, len(ships), group_size):
 			self.ship_groups.append(ships[i:i + group_size])
 
-	def filter_enemy_ships(self, ships):
-		# TODO: Should later take diplomacy into account
-		return [ship for ship in ships if ship.owner != self.owner and isinstance(ship, (FightingShip, PirateShip))]
+	# Filtering rules
+	# Use filter_ships method along with rules defined below:
+	# This approach simplifies code (does not aim to make it shorter)
+	# Instead having [ship for ship in ships if ... and ... and ... and ...]
+	# we have ships = filter_ships(player, other_ships, [get_hostile_rule(), get_ship_type_rule((PirateShip,)), ... ])
+
+	def _not_owned_rule(self):
+		"""
+		Rule stating that ship is another player's ship
+		"""
+		return lambda player, ship: player != ship.owner
+
+	def _hostile_rule(self):
+		"""
+		Rule selecting only hostile ships
+		"""
+		return lambda player, ship: self.session.world.diplomacy.are_enemies(player, ship.owner)
+
+	def _ship_type_rule(self, ship_types):
+		"""
+		Rule stating that ship is any of ship_types instances
+		"""
+		return lambda player, ship: isinstance(ship, ship_types)
+
+	def filter_ships(self, player, ships, rules):
+		"""
+		This method allows for flexible ship filtering when using lookout function
+		other_ships = unit_manager.filter_ships(self.owner, other_ships, [get_enemy_rule(), get_ship_type_rule([PirateShip])])
+		"""
+		return [ship for ship in ships if all([rule(player, ship) for rule in rules])]
 
 	def find_ships_near_group(self, ship_group):
-		enemy_set = set()
+		other_ships_set = set()
 		for ship in ship_group:
-			ships_around = ship.find_nearby_ships()
-			enemy_set |= set(self.filter_enemy_ships(ships_around))
-		return list(enemy_set)
+			nearby_ships = ship.find_nearby_ships()
+			# return only other player's ships, since we want that always anyway
+			other_ships_set |= set(self.filter_ships(self.owner, nearby_ships, [self._not_owned_rule()]))
+		return list(other_ships_set)
 
 	def tick(self):
 		self.regroup_ships()  # TODO will be called on shipstate change (sank/built)

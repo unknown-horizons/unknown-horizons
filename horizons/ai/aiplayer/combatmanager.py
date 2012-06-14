@@ -21,10 +21,12 @@
 
 import logging
 from horizons.ai.aiplayer.behavior import BehaviorManager
+from horizons.ai.aiplayer.behavior.profile import BehaviorProfile
 from horizons.command.diplomacy import AddEnemyPair
 from horizons.command.unit import Attack
 from horizons.util.worldobject import WorldObject
 from horizons.world.units.fightingship import FightingShip
+from horizons.world.units.ship import PirateShip
 
 
 class CombatManager(WorldObject):
@@ -41,16 +43,20 @@ class CombatManager(WorldObject):
 		self.session = owner.session
 
 	def lookout(self):
-		for ship_group in self.owner.unit_manager.get_available_ship_groups(None):
-			other_ships = self.owner.unit_manager.find_ships_near_group(ship_group)
-			enemies = self.owner.unit_manager.filter_enemy_ships(other_ships)
-			environment = {'enemies': enemies, 'ship_group': ship_group, }
-			if enemies:
-				# TODO: assume it's only pirates in range, it should take enemy types into account as well
-				self.owner.behavior_manager.request_action(BehaviorManager.action_types.offensive,
+		unit_manager = self.owner.unit_manager
+		rules = self.owner.unit_manager.filtering_rules
+		for ship_group in unit_manager.get_available_ship_groups(None):
+			ships_around = unit_manager.find_ships_near_group(ship_group)
+
+			# we want only PirateShips
+			pirates = unit_manager.filter_ships(self.owner, ships_around, (rules.ship_type(PirateShip), ))
+
+			environment = {'enemies': pirates, 'ship_group': ship_group, }
+			if pirates:
+				self.owner.behavior_manager.request_action(BehaviorProfile.action_types.offensive,
 					'pirates_in_sight', **environment)
 			else:
-				self.owner.behavior_manager.request_action(BehaviorManager.action_types.idle,
+				self.owner.behavior_manager.request_action(BehaviorProfile.action_types.idle,
 					'no_one_in_sight', **environment)
 
 	def calculate_power_balance(self, ai_ships, enemy_ships):
@@ -80,7 +86,14 @@ class PirateCombatManager(CombatManager):
 		self.session = owner.session
 
 	def lookout(self):
-		print "pirate_ship_length %d"%(len(self.owner.ships))
-		print self.owner.behavior_manager.actions
-		self.log.info("Pirate ship length: %d"%(len(self.owner.ships)))
-		#for ship in self.owner.ships:
+		unit_manager = self.owner.unit_manager
+		for ship, shipState in self.owner.ships.iteritems():
+			enemies = unit_manager.find_ships_near_group([ship])
+			environment = {'enemies': enemies, 'ship_group': [ship], }
+			if enemies:
+				pass
+			else:
+				self.owner.ships[ship] = self.owner.shipStates.moving_random
+				self.owner.behavior_manager.request_action(BehaviorProfile.action_types.idle,
+					'no_one_in_sight', **environment)
+
