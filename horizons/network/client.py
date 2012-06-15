@@ -301,13 +301,12 @@ class Client(object):
 				self.call_callbacks("lobbygame_toggleready", self.game, packet[1].game.ready_players[-1])
 				return True
 			elif len(self.game.ready_players) > len(packet[1].game.ready_players):
-				self.game = packet[1].game
-				found = None
 				for nonready in self.game.ready_players:
 					if nonready not in packet[1].game.ready_players:
-						found = nonready
-				self.call_callbacks("lobbygame_toggleready", self.game, found)
-				return True
+						self.game = packet[1].game
+						self.call_callbacks("lobbygame_toggleready", self.game, nonready)
+						return True
+
 
 			oldplayers = list(self.game.players)
 			self.game = packet[1].game

@@ -351,10 +351,6 @@ class Server(object):
 		for _player in game.players:
 			self.send(_player.peer, packets.server.data_gamestate(game))
 
-		# if game is full ... lets start the game
-		if game.playercnt == game.maxplayers:
-			self.call_callbacks("preparegame", game)
-
 
 	def onleavegame(self, peer, packet):
 		player = self.players[peer.data]
@@ -479,12 +475,26 @@ class Server(object):
 			return
 		self.call_callbacks('startgame', game)
 
+
 	def ontoggleready(self, peer, packet):
 		player = self.players[peer.data]
 		game = player.game
-		game.toggle_ready_player(packet.player)
-		for _player in game.players:
-			self.send(_player.peer, packets.server.data_gamestate(game))
+		if game is None:
+			return
+		if game.creator == packet.player:
+			if game.playercnt == len(game.ready_players):
+				self.call_callbacks("preparegame", game)
+			else:
+				for _player in game.players:
+					if _player.name == game.creator:
+						self.send(_player.peer, packets.server.cmd_chatmsg("SERVER", "Every player should be ready to start the game."))
+		else:
+			game.toggle_ready_player(packet.player)
+			for _player in game.players:
+				self.send(_player.peer, packets.server.data_gamestate(game))
+				if game.playercnt == len(game.ready_players):
+					self.send(_player.peer, packets.server.cmd_chatmsg("SERVER", "Everyone is ready, waiting the creator to start the game."))
+
 
 	def print_statistic(self, file):
 		try:

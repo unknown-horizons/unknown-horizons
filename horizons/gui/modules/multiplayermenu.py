@@ -310,10 +310,9 @@ class MultiplayerMenu(object):
 	def __show_gamelobby(self):
 		"""Shows lobby (gui for waiting until all players have joined). Allows chatting"""
 		game = self.__get_selected_game()
-		is_creator = NetworkInterface()._client.name == game.get_creator()
 		event_map = {
 			'cancel' : self.show_multi,
-			'ready_or_start_btn' : Callback(self.ready_or_start, game=game, creator=is_creator),
+			'ready_or_start_btn' : Callback(NetworkInterface().send_toggle_ready, NetworkInterface()._client.name),
 		}
 		self.widgets.reload('multiplayer_gamelobby') # remove old chat messages, etc
 		self._switch_current_widget('multiplayer_gamelobby', center=True, event_map=event_map, hide_old=True)
@@ -321,7 +320,7 @@ class MultiplayerMenu(object):
 		self.__update_game_details(game)
 
 		self.current.findChild(name="ready_or_start_lbl").text = u'Start: ' \
-					if is_creator else u'Ready: '
+					if NetworkInterface()._client.name == game.get_creator() else u'Ready: '
 
 		textfield = self.current.findChild(name="chatTextField")
 		textfield.capture(self.__send_chat_message)
@@ -485,10 +484,3 @@ class MultiplayerMenu(object):
 
 		for player in game.get_player_list():
 			playersbox.items.append(player['name'] + '\t' + str(player['color']) + '\t' + player['status'])
-
-	def ready_or_start(self, game=None, creator=False):
-		if not game:
-			return
-
-		if not creator:
-			NetworkInterface().send_toggle_ready(NetworkInterface()._client.name)
