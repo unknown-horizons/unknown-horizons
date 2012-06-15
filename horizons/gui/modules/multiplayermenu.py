@@ -25,6 +25,7 @@ import textwrap
 from fife.extensions import pychan
 
 from horizons.gui.modules import PlayerDataSelection
+from horizons.gui.widgets.imagebutton import OkButton, CancelButton
 from horizons.savegamemanager import SavegameManager
 from horizons.network.networkinterface import MPGame
 from horizons.constants import MULTIPLAYER
@@ -157,7 +158,8 @@ class MultiplayerMenu(object):
 			return False
 
 		self.current.distributeInitialData(
-		  {'gamelist' : map(lambda x: u"{gamename}: {name} ({players}, {limit}){version}".format(
+		  {'gamelist' : map(lambda x: u"{password}{gamename}: {name} ({players}, {limit}){version}".format(
+														password = "(Password!)" if x.get_password() else "",
 		                        name=x.get_map_name(),
 		                        gamename=x.get_name(),
 		                        players=x.get_player_count(),
@@ -176,7 +178,7 @@ class MultiplayerMenu(object):
 				index = self.current.collectData('gamelist')
 				return self.games[index]
 		except:
-			return MPGame(-1, "", "", 0, 0, [], "", -1, "", False, [])
+			return MPGame(-1, "", "", 0, 0, [], "", -1, "", False, "", [])
 
 	def __show_only_own_version_toggle(self):
 		self.__refresh()
@@ -248,12 +250,50 @@ class MultiplayerMenu(object):
 			                  game_version=game.get_version(),
 			                  own_version=NetworkInterface().get_clientversion()))
 			return
+
 		# actual join
-		join_worked = NetworkInterface().joingame(game.get_uuid())
-		if not join_worked:
-			return
-		self.__apply_new_nickname()
-		self.__show_gamelobby()
+		if game.password:
+			self.__enter_password_dialog(game)
+
+		else:
+			join_worked = NetworkInterface().joingame(game.get_uuid())
+			if not join_worked:
+				return
+			self.__apply_new_nickname()
+			self.__show_gamelobby()
+
+	def __enter_password_dialog(self, game):
+		"""Shows a dialog where the user can enter the password"""
+		set_password = self.widgets['set_password']
+		def _enter_password():
+			if set_password.collectData("password") == game.password:
+				set_password.hide()
+				join_worked = NetworkInterface().joingame(game.get_uuid())
+				if not join_worked:
+					return
+				self.__apply_new_nickname()
+				self.__show_gamelobby()
+
+			else:
+				set_password.hide()
+				self.show_popup(_("Wrong password"), _("The password you entered is wrong for this game"))
+				return False
+
+		def _cancel():
+			set_password.hide()
+			return False
+
+		events = {
+			OkButton.DEFAULT_NAME: _enter_password,
+			CancelButton.DEFAULT_NAME: _cancel
+		}
+		self.on_escape = _cancel
+
+		password = set_password.findChild(name='password')
+		password.text = u""
+		set_password.mapEvents(events)
+		set_password.show()
+		password.capture(_enter_password)
 
 	def __prepare_game(self, game):
 		self._switch_current_widget('loadingscreen', center=True, show=True)
@@ -371,7 +411,7 @@ class MultiplayerMenu(object):
 		self.current.findChild(name="maplist").mapEvents({
 		  'maplist/action': _update_infos
 		})
-
+		self.current.findChild(name="password").text = u""
 		gamename_textfield = self.current.findChild(name="gamename")
 		def clear_gamename_textfield():
 			gamename_textfield.text = u""
@@ -418,9 +458,10 @@ class MultiplayerMenu(object):
 			mapname = self.maps_display[mapindex]
 			maxplayers = self.current.collectData('playerlimit') + 2 # 1 is the first entry
 			gamename = self.current.collectData('gamename')
+			password = self.current.collectData('password')
 			load = None
 
-		game = NetworkInterface().creategame(mapname, maxplayers, gamename, load)
+		game = NetworkInterface().creategame(mapname, maxplayers, gamename, load, password)
 		if game is None:
 			return
 

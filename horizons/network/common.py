@@ -121,6 +121,7 @@ class Game(object):
 		self.maxplayers    = packet.maxplayers
 		self.name          = packet.name
 		self.load          = packet.load
+		self.password      = packet.password
 		self.creator       = creator.name
 		self.creator_sid   = creator.sid
 		self.players       = []

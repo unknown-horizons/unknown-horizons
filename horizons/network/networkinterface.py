@@ -114,10 +114,10 @@ class NetworkInterface(object):
 			except NetworkException as e:
 				self._handle_exception(e)
 
-	def creategame(self, mapname, maxplayers, name, load=None):
+	def creategame(self, mapname, maxplayers, name, load=None, password=None):
 		self.log.debug("[CREATEGAME] %s, %s, %s, %s", mapname, maxplayers, name, load)
 		try:
-			game = self._client.creategame(mapname, maxplayers, name, load)
+			game = self._client.creategame(mapname, maxplayers, name, load, password)
 		except NetworkException as e:
 			fatal = self._handle_exception(e)
 			return None
@@ -268,7 +268,7 @@ class NetworkInterface(object):
 		return ret_list
 
 	def game2mpgame(self, game):
-		return MPGame(game.uuid, game.creator, game.mapname, game.maxplayers, game.playercnt, map(lambda x: unicode(x.name), game.players), self._client.name, game.clientversion, game.name, game.load, game.ready_players)
+		return MPGame(game.uuid, game.creator, game.mapname, game.maxplayers, game.playercnt, map(lambda x: unicode(x.name), game.players), self._client.name, game.clientversion, game.name, game.load, game.password ,game.ready_players)
 
 	def get_clientversion(self):
 		return self._client.version
@@ -289,7 +289,7 @@ class NetworkInterface(object):
 
 
 class MPGame(object):
-	def __init__(self, uuid, creator, mapname, maxplayers, playercnt, players, localname, version, name, load, ready_players):
+	def __init__(self, uuid, creator, mapname, maxplayers, playercnt, players, localname, version, name, load, password, ready_players):
 		self.uuid          = uuid
 		self.creator       = creator
 		self.mapname       = mapname
@@ -300,6 +300,7 @@ class MPGame(object):
 		self.version       = version
 		self.name          = name
 		self.load          = load
+		self.password      = password
 		self.ready_players = ready_players
 
 	def get_uuid(self):
@@ -322,6 +323,9 @@ class MPGame(object):
 
 	def get_ready_players(self):
 		return self.ready_players
+
+	def get_password(self):
+		return self.password
 
 	def get_player_list(self):
 		ret_players = []
