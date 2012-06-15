@@ -18,7 +18,7 @@
 # Free Software Foundation, Inc.,
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
-
+import hashlib
 import logging
 import os.path
 import textwrap
@@ -266,7 +266,7 @@ class MultiplayerMenu(object):
 		"""Shows a dialog where the user can enter the password"""
 		set_password = self.widgets['set_password']
 		def _enter_password():
-			if set_password.collectData("password") == game.password:
+			if hashlib.sha1(set_password.collectData("password")).hexdigest() == game.password:
 				set_password.hide()
 				join_worked = NetworkInterface().joingame(game.get_uuid())
 				if not join_worked:
@@ -461,7 +461,8 @@ class MultiplayerMenu(object):
 			password = self.current.collectData('password')
 			load = None
 
-		game = NetworkInterface().creategame(mapname, maxplayers, gamename, load, password)
+		game = NetworkInterface().creategame(mapname, maxplayers, gamename, load,
+																				(hashlib.sha1(password).hexdigest() if password != "" else ""))
 		if game is None:
 			return
 
