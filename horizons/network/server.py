@@ -482,10 +482,9 @@ class Server(object):
 	def ontoggleready(self, peer, packet):
 		player = self.players[peer.data]
 		game = player.game
+		game.toggle_ready_player(packet.player)
 		for _player in game.players:
-			if _player is player:
-				continue
-			self._send(_player.peer, packet.game)
+			self.send(_player.peer, packets.server.data_gamestate(game))
 
 	def print_statistic(self, file):
 		try:

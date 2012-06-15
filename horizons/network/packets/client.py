@@ -159,7 +159,11 @@ SafeUnpickler.add('server', game_data)
 #-------------------------------------------------------------------------------
 
 class cmd_toggle_ready(packet):
-	def __init__(self, game):
-		self.game = game
+	def __init__(self, player):
+		self.player = player
+
+	def validate(self):
+		if not isinstance(self.player, unicode):
+			raise NetworkException("Invalid datatype: player")
 
 SafeUnpickler.add('client', cmd_toggle_ready)

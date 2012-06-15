@@ -128,7 +128,7 @@ class Game(object):
 		self.playercnt     = 0
 		self.state         = Game.State.Open
 		self.ready_players = []
-		self.toggle_ready_player(creator)
+		self.toggle_ready_player(creator.name)
 		self.add_player(creator)
 
 	def add_player(self, player):

@@ -68,8 +68,7 @@ class Client(object):
 			'lobbygame_chat':        [],
 			'lobbygame_join':        [],
 			'lobbygame_leave':       [],
-			'lobbygame_ready':       [],
-			'lobbygame_not_ready':   [],
+			'lobbygame_toggleready':       [],
 			'lobbygame_changename':  [],
 			#'lobbygame_changecolor': [],
 			'lobbygame_state':       [],
@@ -297,6 +296,19 @@ class Client(object):
 				return True
 			self.call_callbacks("lobbygame_state", self.game, packet[1].game)
 
+			if len(self.game.ready_players) < len(packet[1].game.ready_players):
+				self.game = packet[1].game
+				self.call_callbacks("lobbygame_toggleready", self.game, packet[1].game.ready_players[-1])
+				return True
+			elif len(self.game.ready_players) > len(packet[1].game.ready_players):
+				self.game = packet[1].game
+				found = None
+				for nonready in self.game.ready_players:
+					if nonready not in packet[1].game.ready_players:
+						found = nonready
+				self.call_callbacks("lobbygame_toggleready", self.game, found)
+				return True
+
 			oldplayers = list(self.game.players)
 			self.game = packet[1].game
 
@@ -332,17 +344,6 @@ class Client(object):
 		elif isinstance(packet[1], packets.client.game_data):
 			self.log.debug("[GAMEDATA] from %s" % (packet[0].address))
 			self.call_callbacks("game_data", packet[1].data)
-
-		elif isinstance(packet[1], packets.client.cmd_toggle_ready):
-			print "hede"
-
-			if len(self.game.ready_players) < len(packet[1].game.ready_players):
-				self.call_callbacks("lobbygame_not_ready", self.game, self.packet[1].playername)
-
-			elif len(self.game.ready_players) > len(packet[1].game.ready_players):
-				self.call_callbacks("lobbygame_ready", self.game, self.packet[1].playername)
-
-
 
 		return False
 
@@ -487,7 +488,7 @@ class Client(object):
 		self.call_callbacks("game_starts", self.game)
 		return True
 
-	def send_toggle_ready(self, game):
-		self.send(packets.client.cmd_toggle_ready("Test"))
+	def send_toggle_ready(self, player):
+		self.send(packets.client.cmd_toggle_ready(player))
 		return True
 

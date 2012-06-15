@@ -111,8 +111,7 @@ class MultiplayerMenu(object):
 		NetworkInterface().register_player_joined_callback(self.__player_joined)
 		NetworkInterface().register_player_left_callback(self.__player_left)
 		NetworkInterface().register_player_changed_name_callback(self.__player_changed_name)
-		NetworkInterface().register_player_ready_callback(self.__player_ready)
-		NetworkInterface().register_player_not_ready_callback(self.__player_not_ready)
+		NetworkInterface().register_player_toggle_ready_callback(self.__toggle_player_ready)
 
 		try:
 			NetworkInterface().connect()
@@ -373,11 +372,12 @@ class MultiplayerMenu(object):
 	def __player_left(self, game, player):
 		self.__print_event_message(u"{player} has left the game".format(player=player.name))
 
-	def __player_ready(self, game, player):
-		self.__print_event_message(u"{player} is ready".format(player=player.name))
-
-	def __player_not_ready(self, game, player):
-		self.__print_event_message(u"{player} is not ready".format(player=player.name))
+	def __toggle_player_ready(self, game, player):
+		self.__update_players_box(NetworkInterface().get_game())
+		if player in game.ready_players:
+			self.__print_event_message(u"{player} is ready".format(player=player))
+		else:
+			self.__print_event_message(u"{player} is not ready".format(player=player))
 
 	def __player_changed_name(self, game, plold, plnew, myself):
 		if myself:
@@ -491,13 +491,4 @@ class MultiplayerMenu(object):
 			return
 
 		if not creator:
-			if NetworkInterface()._client.game.toggle_ready_player(NetworkInterface()._client.name):
-				self.__player_ready(game, NetworkInterface()._client)
-
-			else:
-				self.__player_not_ready(game, NetworkInterface()._client)
-
-			NetworkInterface().send_toggle_ready(game)
-			self.__update_players_box(game=game)
-
-
+			NetworkInterface().send_toggle_ready(NetworkInterface()._client.name)

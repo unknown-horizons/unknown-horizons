@@ -48,6 +48,7 @@ class NetworkInterface(object):
 		self._client.register_callback("lobbygame_join",       self._cb_game_details_changed)
 		self._client.register_callback("lobbygame_leave",      self._cb_game_details_changed)
 		self._client.register_callback("lobbygame_changename", self._cb_game_details_changed)
+		self._client.register_callback("lobbygame_toggleready", self._cb_game_details_changed)
 		#self._client.register_callback("lobbygame_changecolor", self._cb_game_details_changed)
 		self._client.register_callback("lobbygame_starts", self._cb_game_prepare)
 		self._client.register_callback("game_starts", self._cb_game_starts)
@@ -177,11 +178,8 @@ class NetworkInterface(object):
 	def register_player_left_callback(self, function):
 		self._client.register_callback("lobbygame_leave", function)
 
-	def register_player_ready_callback(self, function):
-		self._client.register_callback("lobbygame_ready", function)
-
-	def register_player_not_ready_callback(self, function):
-		self._client.register_callback("lobbygame_not_ready", function)
+	def register_player_toggle_ready_callback(self, function):
+		self._client.register_callback("lobbygame_toggleready", function)
 
 	def register_player_changed_name_callback(self, function):
 		self._client.register_callback("lobbygame_changename", function)
@@ -284,8 +282,8 @@ class NetworkInterface(object):
 			self._cb_error(e, fatal=False)
 			return False
 
-	def send_toggle_ready(self, game):
-		self._client.send_toggle_ready(game)
+	def send_toggle_ready(self, player):
+		self._client.send_toggle_ready(player)
 
 
 class MPGame(object):
