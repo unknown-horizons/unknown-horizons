@@ -233,6 +233,19 @@ class MultiplayerMenu(object):
 		if vbox is not None:
 			vbox.adaptLayout()
 
+	def __actual_join(self, game=None):
+		"""Does the actual joining to the game.
+
+		 This method is called after everything is OK for joining."""
+		if game == None:
+			return
+
+		join_worked = NetworkInterface().joingame(game.get_uuid())
+		if not join_worked:
+			return
+		self.__apply_new_nickname()
+		self.__show_gamelobby()
+
 	def __join_game(self, game=None):
 		"""Joins a multiplayer game. Displays lobby for that specific game"""
 		if game == None:
@@ -256,32 +269,23 @@ class MultiplayerMenu(object):
 			self.__enter_password_dialog(game)
 
 		else:
-			join_worked = NetworkInterface().joingame(game.get_uuid())
-			if not join_worked:
-				return
-			self.__apply_new_nickname()
-			self.__show_gamelobby()
+			self.__actual_join(game)
+
 
 	def __enter_password_dialog(self, game):
 		"""Shows a dialog where the user can enter the password"""
-		set_password = self.widgets['set_password']
+		set_password_dialog = self.widgets['set_password']
 		def _enter_password():
-			if hashlib.sha1(set_password.collectData("password")).hexdigest() == game.password:
-				set_password.hide()
-				join_worked = NetworkInterface().joingame(game.get_uuid())
-				if not join_worked:
-					return
-				self.__apply_new_nickname()
-				self.__show_gamelobby()
+			if hashlib.sha1(set_password_dialog.collectData("password")).hexdigest() == game.password:
+				set_password_dialog.hide()
+				self.__actual_join(game)
 
 			else:
-				set_password.hide()
+				set_password_dialog.hide()
 				self.show_popup(_("Wrong password"), _("The password you entered is wrong for this game"))
-				return False
 
 		def _cancel():
-			set_password.hide()
-			return False
+			set_password_dialog.hide()
 
 		events = {
 			OkButton.DEFAULT_NAME: _enter_password,
@@ -289,10 +293,10 @@ class MultiplayerMenu(object):
 		}
 		self.on_escape = _cancel
 
-		password = set_password.findChild(name='password')
+		password = set_password_dialog.findChild(name='password')
 		password.text = u""
-		set_password.mapEvents(events)
-		set_password.show()
+		set_password_dialog.mapEvents(events)
+		set_password_dialog.show()
 		password.capture(_enter_password)
 
 	def __prepare_game(self, game):
