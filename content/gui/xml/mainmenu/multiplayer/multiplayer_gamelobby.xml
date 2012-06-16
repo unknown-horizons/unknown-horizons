@@ -36,12 +36,10 @@
 			<Label name="game_isloaded"/>
 		</VBox>
 
-		<Label name="game_playersnum" position="0,200"/>
-		<Label name="game_player_color" position="160,200" text="Color"/>
-		<Label name="game_player_status" position="240,200" text="Status"/>
-		<ScrollArea name="players_scroll_area" min_size="300,235" position="0,220">
-			<ListBox name="playersbox" min_size="300,235" is_focusable="0" />
-		</ScrollArea>
+		<Label name="game_playersnum" position="0,155"/>
+		<Label name="game_player_color" position="130,155" text="Color"/>
+		<Label name="game_player_status" position="205,155" text="Status"/>
+		<VBox name="players_vbox" position="0,180"></VBox>
 	</Container>
 
 </Container>

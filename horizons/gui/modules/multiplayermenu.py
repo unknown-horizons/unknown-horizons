@@ -475,12 +475,42 @@ class MultiplayerMenu(object):
 		if not game:
 			return
 
-		playersbox = self.current.findChild(name="playersbox")
+		players_vbox = self.current.findChild(name="players_vbox")
 
-		if not playersbox:
+		if not players_vbox:
 			return
 
-		playersbox.items = []
+		players_vbox.removeAllChildren()
+
+		gslider = pychan.widgets.Slider(name="gslider")
+		players_vbox.addChild(gslider)
+
+		def _add_player_line(player):
+			pname = pychan.widgets.Label(name="pname_%s" % player['name'])
+			pname.text = player['name']
+			pname.min_size = (130, 15)
+			pname.max_size = (130, 15)
+
+			pcolor = pychan.widgets.Label(name="pcolor_%s" % player['name'], text=u"   ")
+			pcolor.background_color = player['color']
+			pcolor.min_size = (15, 15)
+			pcolor.max_size = (15, 15)
+
+			pstatus = pychan.widgets.Label(name="pstatus_%s" % player['name'])
+			pstatus.text = "\t\t\t" + player['status']
+			pstatus.min_size = (120, 15)
+			pstatus.max_size = (120, 15)
+
+			pslider = pychan.widgets.Slider(name="pslider_%s" % player['name'])
+
+			hbox = pychan.widgets.HBox()
+			hbox.addChild(pname)
+			hbox.addChild(pcolor)
+			hbox.addChild(pstatus)
+			players_vbox.addChild(hbox)
+			players_vbox.addChild(pslider)
 
 		for player in game.get_player_list():
-			playersbox.items.append(player['name'] + '\t' + str(player['color']) + '\t' + player['status'])
+			_add_player_line(player)
+
+		players_vbox.adaptLayout()
