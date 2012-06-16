@@ -60,6 +60,7 @@ class Server(object):
 			packets.client.cmd_changename:     [ self.onchangename ],
 			packets.client.cmd_preparedgame:   [ self.onpreparedgame ],
 			packets.client.cmd_toggle_ready:   [ self.ontoggleready ],
+			packets.client.cmd_kick_player:    [ self.onkickplayer  ],
 			'preparegame':    [ self.preparegame ],
 			'startgame':      [ self.startgame ],
 			'leavegame':      [ self.leavegame ],
@@ -494,6 +495,17 @@ class Server(object):
 				self.send(_player.peer, packets.server.data_gamestate(game))
 				if game.playercnt == len(game.ready_players):
 					self.send(_player.peer, packets.server.cmd_chatmsg("SERVER", "Everyone is ready, waiting the creator to start the game."))
+
+
+	def onkickplayer(self, peer, packet):
+		player = self.players[peer.data]
+		game = player.game
+		if game is None:
+			return
+		for _player in game.players:
+			self.send(_player.peer, packets.server.cmd_chatmsg("SERVER", "User %s is kicked by creator" % _player.name))
+			if _player.name == packet.player:
+				self.send(_player.peer, packets.server.cmd_kick_player(_player))
 
 
 	def print_statistic(self, file):

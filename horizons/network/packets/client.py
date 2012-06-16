@@ -167,3 +167,13 @@ class cmd_toggle_ready(packet):
 			raise NetworkException("Invalid datatype: player")
 
 SafeUnpickler.add('client', cmd_toggle_ready)
+
+class cmd_kick_player(packet):
+	def __init__(self, player):
+		self.player = player
+
+	def validate(self):
+		if not isinstance(self.player, unicode):
+			raise NetworkException("Invalid datatype: player")
+
+SafeUnpickler.add('client', cmd_kick_player)

@@ -112,6 +112,7 @@ class MultiplayerMenu(object):
 		NetworkInterface().register_player_left_callback(self.__player_left)
 		NetworkInterface().register_player_changed_name_callback(self.__player_changed_name)
 		NetworkInterface().register_player_toggle_ready_callback(self.__toggle_player_ready)
+		NetworkInterface().register_player_kick_player_callback(self.__kick_player)
 
 		try:
 			NetworkInterface().connect()
@@ -144,6 +145,13 @@ class MultiplayerMenu(object):
 			NetworkInterface().disconnect()
 		self.__apply_new_nickname()
 		self.show_main()
+
+	def __kick_player(self, game, player):
+		if NetworkInterface().isconnected():
+			NetworkInterface().disconnect()
+		self.__apply_new_nickname()
+		self.show_multi()
+		self.show_popup(_("Kicked"), _("You have been kicked from the game by creator"))
 
 	def __refresh(self, play_sound=False):
 		"""Refresh list of games.
@@ -507,6 +515,12 @@ class MultiplayerMenu(object):
 			hbox.addChild(pname)
 			hbox.addChild(pcolor)
 			hbox.addChild(pstatus)
+
+			if NetworkInterface()._client.name == game.get_creator() and player['name'] != game.get_creator():
+				pkick = CancelButton(name="pkick_%s" % player['name'])
+				pkick.capture(Callback(NetworkInterface().send_kick_player, player['name']))
+				hbox.addChild(pkick)
+
 			players_vbox.addChild(hbox)
 			players_vbox.addChild(pslider)
 

@@ -68,8 +68,9 @@ class Client(object):
 			'lobbygame_chat':        [],
 			'lobbygame_join':        [],
 			'lobbygame_leave':       [],
-			'lobbygame_toggleready':       [],
+			'lobbygame_toggleready': [],
 			'lobbygame_changename':  [],
+			'lobbygame_kickplayer':  [],
 			#'lobbygame_changecolor': [],
 			'lobbygame_state':       [],
 			'lobbygame_starts':      [],
@@ -343,6 +344,8 @@ class Client(object):
 		elif isinstance(packet[1], packets.client.game_data):
 			self.log.debug("[GAMEDATA] from %s" % (packet[0].address))
 			self.call_callbacks("game_data", packet[1].data)
+		elif isinstance(packet[1], packets.server.cmd_kick_player):
+			self.call_callbacks("lobbygame_kickplayer", self.game, packet[1].player)
 
 		return False
 
@@ -491,3 +494,6 @@ class Client(object):
 		self.send(packets.client.cmd_toggle_ready(player))
 		return True
 
+	def send_kick_player(self, player):
+		self.send(packets.client.cmd_kick_player(player))
+		return True

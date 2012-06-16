@@ -75,3 +75,8 @@ class cmd_startgame(packet):
 
 SafeUnpickler.add('server', cmd_startgame)
 
+class cmd_kick_player(packet):
+	def __init__(self, player):
+		self.player = player
+
+SafeUnpickler.add('server', cmd_kick_player)
