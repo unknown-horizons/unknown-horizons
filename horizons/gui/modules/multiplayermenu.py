@@ -490,8 +490,8 @@ class MultiplayerMenu(object):
 
 		players_vbox.removeAllChildren()
 
-		gslider = pychan.widgets.Slider(name="gslider")
-		players_vbox.addChild(gslider)
+		gicon = pychan.widgets.Icon(name="gslider", image="content/gui/images/background/hr.png")
+		players_vbox.addChild(gicon)
 
 		def _add_player_line(player):
 			pname = pychan.widgets.Label(name="pname_%s" % player['name'])
@@ -509,7 +509,7 @@ class MultiplayerMenu(object):
 			pstatus.min_size = (120, 15)
 			pstatus.max_size = (120, 15)
 
-			pslider = pychan.widgets.Slider(name="pslider_%s" % player['name'])
+			picon = pychan.widgets.Icon(name="picon_%s" % player['name'], image="content/gui/images/background/hr.png")
 
 			hbox = pychan.widgets.HBox()
 			hbox.addChild(pname)
@@ -522,7 +522,7 @@ class MultiplayerMenu(object):
 				hbox.addChild(pkick)
 
 			players_vbox.addChild(hbox)
-			players_vbox.addChild(pslider)
+			players_vbox.addChild(picon)
 
 		for player in game.get_player_list():
 			_add_player_line(player)
