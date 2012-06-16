@@ -31,7 +31,8 @@ from horizons.constants import UNITS
 from horizons.ext.enum import Enum
 from horizons.ai.generic import GenericAI
 from horizons.command.unit import CreateUnit
-from horizons.world.units.ship import PirateShip, TradeShip
+from horizons.world.units.ship import TradeShip
+from horizons.world.units.pirateship import PirateShip
 from horizons.world.units.movingobject import MoveNotPossible
 from horizons.component.namedcomponent import NamedComponent
 from horizons.component.selectablecomponent import SelectableComponent

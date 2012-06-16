@@ -26,7 +26,7 @@ from horizons.command.diplomacy import AddEnemyPair
 from horizons.command.unit import Attack
 from horizons.util.worldobject import WorldObject
 from horizons.world.units.fightingship import FightingShip
-from horizons.world.units.ship import PirateShip
+from horizons.world.units.pirateship import PirateShip
 
 
 class CombatManager(WorldObject):
@@ -88,7 +88,6 @@ class PirateCombatManager(CombatManager):
 		for ship, shipState in self.owner.ships.iteritems():
 			enemies = unit_manager.find_ships_near_group([ship])
 			fighting_ships = unit_manager.filter_ships(self.owner, enemies, (rules.ship_type(FightingShip), ))
-			print fighting_ships
 			environment = {'enemies': fighting_ships, 'ship_group': [ship], }
 			if fighting_ships:
 				self.owner.behavior_manager.request_action(BehaviorProfile.action_types.offensive,

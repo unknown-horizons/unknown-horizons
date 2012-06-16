@@ -23,7 +23,7 @@ import logging, collections
 from operator import itemgetter
 from horizons.util.worldobject import WorldObject
 from horizons.world.units.fightingship import FightingShip
-from horizons.world.units.ship import PirateShip
+from horizons.world.units.pirateship import PirateShip
 
 
 class UnitManager(WorldObject):
