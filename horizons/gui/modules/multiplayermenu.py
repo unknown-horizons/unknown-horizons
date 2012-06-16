@@ -319,8 +319,8 @@ class MultiplayerMenu(object):
 
 		self.__update_game_details(game)
 
-		self.current.findChild(name="ready_or_start_lbl").text = u'Start: ' \
-					if NetworkInterface()._client.name == game.get_creator() else u'Ready: '
+		self.current.findChild(name="ready_or_start_lbl").text = _('Start: ') \
+					if NetworkInterface()._client.name == game.get_creator() else _('Ready: ')
 
 		textfield = self.current.findChild(name="chatTextField")
 		textfield.capture(self.__send_chat_message)
