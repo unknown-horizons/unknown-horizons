@@ -21,7 +21,7 @@
 
 import logging
 
-from horizons.ai.aiplayer.behavior.actions import BehaviorActionPirateHater, BehaviorActionCoward, BehaviorActionBored,\
+from horizons.ai.aiplayer.behavior.behavioractions import BehaviorActionPirateHater, BehaviorActionCoward, BehaviorActionBored,\
 	BehaviorActionKeepFleetTogether, BehaviorActionRegular
 from horizons.ext.enum import Enum
 from horizons.util.worldobject import WorldObject
