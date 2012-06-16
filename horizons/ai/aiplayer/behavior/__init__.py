@@ -21,9 +21,6 @@
 
 
 import logging
-from horizons.command.diplomacy import AddEnemyPair
-from horizons.command.unit import Attack
-from horizons.ext.enum import Enum
 
 from horizons.util.worldobject import WorldObject
 
@@ -84,77 +81,4 @@ class BehaviorManager(WorldObject):
 		return self
 
 
-class BehaviorAction(object):
-	"""
-	This is an abstract BehaviorAction component.
-	"""
-	log = logging.getLogger('ai.aiplayer.behavior')
-
-	def __init__(self, owner):
-		self.owner = owner
-		self.world = owner.world
-		self.session = owner.session
-
-
-class BehaviorActionPirateHater(BehaviorAction):
-
-	def __init__(self, owner):
-		super(BehaviorActionPirateHater, self).__init__(owner)
-
-	def pirates_in_sight(self, **environment):
-		"""
-		Always attack pirates and start wars with them.
-		"""
-		enemies = environment['enemies']
-		ship_group = environment['ship_group']
-
-		for ship in ship_group:
-			if not self.session.world.diplomacy.are_enemies(self.owner, enemies[0].owner):
-				AddEnemyPair(self.owner, enemies[0].owner).execute(self.session)
-			Attack(ship, enemies[0]).execute(self.session)
-		BehaviorAction.log.info('I feel urgent need to wipe out them pirates.')
-
-
-class BehaviorActionCoward(BehaviorAction):
-
-	def __init__(self, owner):
-		super(BehaviorActionCoward, self).__init__(owner)
-
-	def pirates_in_sight(self, **environment):
-		"""
-		Dummy action, do nothing really.
-		"""
-		BehaviorAction.log.info('Pirates give me chills man.')
-
-class BehaviorActionBored(BehaviorAction):
-	def __init__(self, owner):
-		super(BehaviorActionBored, self).__init__(owner)
-
-	def no_one_in_sight(self, **enviornment):
-		"""
-		Idle action, sail randomly somewhere near.
-		"""
-
-		ship_group = enviornment['ship_group']
-		for ship in ship_group:
-			self.owner.send_ship_random(ship)
-		BehaviorAction.log.info('no_one_in_sight action')
-
-
-class BehaviorActionRegular(BehaviorAction):
-
-	def __init__(self, owner):
-		super(BehaviorActionRegular, self).__init__(owner)
-
-	def pirates_in_sight(self, **environment):
-		"""
-		Attacks pirates only if they are in conflict already.
-		"""
-		enemies = environment['enemies']
-		ship_group = environment['ship_group']
-
-		for ship in ship_group:
-			if self.session.world.diplomacy.are_enemies(self.owner, enemies[0].owner):
-				Attack(ship, enemies[0]).execute(self.session)
-		BehaviorAction.log.info('Attacking pirate player.')
 

@@ -20,6 +20,7 @@
 # ###################################################
 
 import logging, collections
+from operator import itemgetter
 from horizons.util.worldobject import WorldObject
 from horizons.world.units.fightingship import FightingShip
 from horizons.world.units.ship import PirateShip
@@ -41,7 +42,7 @@ class UnitManager(WorldObject):
 		self.world = owner.world
 		self.session = owner.session
 		self.ship_groups = []
-		self.filtering_rules = collections.namedtuple('Rules', 'not_owned, hostile, ship_type')(not_owned=self._not_owned_rule,
+		self.filtering_rules = collections.namedtuple('FilteringRules', 'not_owned, hostile, ship_type')(not_owned=self._not_owned_rule,
 			hostile=self._hostile_rule, ship_type=self._ship_type_rule)
 
 	def get_my_ships(self):
@@ -85,16 +86,38 @@ class UnitManager(WorldObject):
 
 	def filter_ships(self, player, ships, rules):
 		"""
-		This method allows for flexible ship filtering when using lookout function
-		other_ships = unit_manager.filter_ships(self.owner, other_ships, [get_enemy_rule(), get_ship_type_rule([PirateShip])])
+		This method allows for flexible ship filtering.
+		usage:
+		other_ships = unit_manager.filter_ships(self.owner, other_ships, [_enemy_rule(), _ship_type_rule([PirateShip])])
 		"""
 		return [ship for ship in ships if all([rule(player, ship) for rule in rules])]
+
+	@classmethod
+	def get_closest_ships_for_each(cls, ship_group, enemies):
+		"""
+		For each ship in ship_group return an index of ship from enemies that is the closest to given ship.
+		For example ship_group=[A, B, C] , enemies = [X, Y, Z],
+		could return [(A,X), (B,Y), (C,Y)] if X was the closest to A and Y was the closest ship to both B and C
+		"""
+		# TODO: make faster than o(n^2)
+		closest = []
+		for ship in ship_group:
+			distances = ((e, ship.position.distance(e.position)) for e in enemies)
+			closest.append((ship, min(distances, key=itemgetter(1))[0]))
+		return closest
+
+	@classmethod
+	def calculate_power_balance(cls, ship_group, enemies):
+		"""
+		Calculate power balance between two ship groups.
+		"""
+		return 1.2 # TODO: implement power balance calculation
 
 	def find_ships_near_group(self, ship_group):
 		other_ships_set = set()
 		for ship in ship_group:
 			nearby_ships = ship.find_nearby_ships()
-			# return only other player's ships, since we want that always anyway
+			# return only other player's ships, since we want that in most cases anyway
 			other_ships_set |= set(self.filter_ships(self.owner, nearby_ships, [self._not_owned_rule()]))
 		return list(other_ships_set)
 
@@ -105,7 +128,6 @@ class UnitManager(WorldObject):
 		pass
 
 	def _load(self, db, player):
-
 		pass
 
 	@classmethod

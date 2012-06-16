@@ -59,9 +59,6 @@ class CombatManager(WorldObject):
 				self.owner.behavior_manager.request_action(BehaviorProfile.action_types.idle,
 					'no_one_in_sight', **environment)
 
-	def calculate_power_balance(self, ai_ships, enemy_ships):
-		pass
-
 	def tick(self):
 		self.lookout()
 
@@ -87,13 +84,17 @@ class PirateCombatManager(CombatManager):
 
 	def lookout(self):
 		unit_manager = self.owner.unit_manager
+		rules = self.owner.unit_manager.filtering_rules
 		for ship, shipState in self.owner.ships.iteritems():
 			enemies = unit_manager.find_ships_near_group([ship])
-			environment = {'enemies': enemies, 'ship_group': [ship], }
-			if enemies:
-				pass
+			fighting_ships = unit_manager.filter_ships(self.owner, enemies, (rules.ship_type(FightingShip), ))
+			print fighting_ships
+			environment = {'enemies': fighting_ships, 'ship_group': [ship], }
+			if fighting_ships:
+				self.owner.behavior_manager.request_action(BehaviorProfile.action_types.offensive,
+					'fighting_ships_in_sight', **environment)
 			else:
-				self.owner.ships[ship] = self.owner.shipStates.moving_random
-				self.owner.behavior_manager.request_action(BehaviorProfile.action_types.idle,
-					'no_one_in_sight', **environment)
+				if self.owner.ships[ship] != self.owner.shipStates.moving_random:
+					self.owner.behavior_manager.request_action(BehaviorProfile.action_types.idle,
+						'no_one_in_sight', **environment)
 
