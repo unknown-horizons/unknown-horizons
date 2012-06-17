@@ -385,23 +385,23 @@ class MultiplayerMenu(object):
 		chatbox.selected = len(chatbox.items) - 1
 
 	def __player_joined(self, game, player):
-		self.__print_event_message(u"{player} has joined the game".format(player=player.name))
+		self.__print_event_message(_("{player} has joined the game").format(player=player.name))
 
 	def __player_left(self, game, player):
-		self.__print_event_message(u"{player} has left the game".format(player=player.name))
+		self.__print_event_message(_("{player} has left the game").format(player=player.name))
 
 	def __toggle_player_ready(self, game, player):
 		self.__update_players_box(NetworkInterface().get_game())
 		if player in game.ready_players:
-			self.__print_event_message(u"{player} is ready".format(player=player))
+			self.__print_event_message(_("{player} is ready").format(player=player))
 		else:
-			self.__print_event_message(u"{player} is not ready".format(player=player))
+			self.__print_event_message(_("{player} is not ready").format(player=player))
 
 	def __player_changed_name(self, game, plold, plnew, myself):
 		if myself:
-			self.__print_event_message(u"You are now known as {new_name}".format(new_name=plnew.name))
+			self.__print_event_message(_("You are now known as {new_name}").format(new_name=plnew.name))
 		else:
-			self.__print_event_message(u"{player} is now known as {new_name}".format(player=plold.name, new_name=plnew.name))
+			self.__print_event_message(_("{player} is now known as {new_name}").format(player=plold.name, new_name=plnew.name))
 
 	def __show_create_game(self):
 		"""Shows the interface for creating a multiplayer game"""
