@@ -331,8 +331,15 @@ class MultiplayerMenu(object):
 
 		self.__update_game_details(game)
 
-		self.current.findChild(name="ready_or_start_lbl").text = _('Start: ') \
-					if NetworkInterface().get_client_name() == game.get_creator() else _('Ready: ')
+		ready_or_start_lbl = self.current.findChild(name="ready_or_start_lbl")
+		ready_or_start_btn = self.current.findChild(name="ready_or_start_btn")
+
+		if NetworkInterface().get_client_name() == game.get_creator():
+			ready_or_start_lbl.text = _('Start: ')
+			ready_or_start_btn.helptext = _("Starts the game")
+		else:
+			ready_or_start_lbl.text = _('Ready: ')
+			ready_or_start_btn.helptext = _('Sets you ready for the game')
 
 		textfield = self.current.findChild(name="chatTextField")
 		textfield.capture(self.__send_chat_message)
@@ -527,7 +534,7 @@ class MultiplayerMenu(object):
 			hbox.addChild(pstatus)
 
 			if NetworkInterface().get_client_name() == game.get_creator() and player['name'] != game.get_creator():
-				pkick = CancelButton(name="pkick_%s" % player['name'])
+				pkick = CancelButton(name="pkick_%s" % player['name'], helptext=_("Kick {player}").format(player=player['name']))
 				pkick.capture(Callback(NetworkInterface().send_kick_player, player['name']))
 				hbox.addChild(pkick)
 
