@@ -488,7 +488,7 @@ class Server(object):
 			else:
 				for _player in game.players:
 					if _player.name == game.creator:
-						self.send(_player.peer, packets.server.cmd_chatmsg("SERVER", "Every player should be ready to start the game."))
+						self.send(_player.peer, packets.server.cmd_chatmsg("SERVER", "Every player must ready to start the game."))
 		else:
 			game.toggle_ready_player(packet.player)
 			for _player in game.players:

@@ -146,11 +146,15 @@ class MultiplayerMenu(object):
 		self.__apply_new_nickname()
 		self.show_main()
 
-	def __kick_player(self, game, player):
+	def __leave_lobby(self):
+		"""Leave the game (when in lobby) and open multiplayer menu."""
 		if NetworkInterface().isconnected():
 			NetworkInterface().disconnect()
-		self.__apply_new_nickname()
-		self.show_multi()
+			self.__apply_new_nickname()
+			self.show_multi()
+
+	def __kick_player(self, game, player):
+		self.__leave_lobby()
 		self.show_popup(_("Kicked"), _("You have been kicked from the game by creator"))
 
 	def __refresh(self, play_sound=False):
@@ -320,7 +324,7 @@ class MultiplayerMenu(object):
 		game = self.__get_selected_game()
 		event_map = {
 			'cancel' : self.show_multi,
-			'ready_or_start_btn' : Callback(NetworkInterface().send_toggle_ready, NetworkInterface()._client.name),
+			'ready_or_start_btn' : Callback(NetworkInterface().send_toggle_ready, NetworkInterface().get_client_name()),
 		}
 		self.widgets.reload('multiplayer_gamelobby') # remove old chat messages, etc
 		self._switch_current_widget('multiplayer_gamelobby', center=True, event_map=event_map, hide_old=True)
@@ -328,7 +332,7 @@ class MultiplayerMenu(object):
 		self.__update_game_details(game)
 
 		self.current.findChild(name="ready_or_start_lbl").text = _('Start: ') \
-					if NetworkInterface()._client.name == game.get_creator() else _('Ready: ')
+					if NetworkInterface().get_client_name() == game.get_creator() else _('Ready: ')
 
 		textfield = self.current.findChild(name="chatTextField")
 		textfield.capture(self.__send_chat_message)
@@ -480,6 +484,12 @@ class MultiplayerMenu(object):
 		self.__show_gamelobby()
 
 	def __update_players_box(self, game=None):
+		"""Updates player list in game lobby.
+
+		This function is called when there is a change in players (or their attributes.
+		Uses players_vbox in multiplayer_gamelobby.xml and creates a hbox for each player.
+
+		Also adds kick button for game creator."""
 		if not game:
 			return
 
@@ -516,7 +526,7 @@ class MultiplayerMenu(object):
 			hbox.addChild(pcolor)
 			hbox.addChild(pstatus)
 
-			if NetworkInterface()._client.name == game.get_creator() and player['name'] != game.get_creator():
+			if NetworkInterface().get_client_name() == game.get_creator() and player['name'] != game.get_creator():
 				pkick = CancelButton(name="pkick_%s" % player['name'])
 				pkick.capture(Callback(NetworkInterface().send_kick_player, player['name']))
 				hbox.addChild(pkick)

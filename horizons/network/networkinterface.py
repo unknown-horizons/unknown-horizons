@@ -94,6 +94,9 @@ class NetworkInterface(object):
 	def __get_player_name(self):
 		return horizons.main.fife.get_uh_setting("Nickname")
 
+	def get_client_name(self):
+		return self._client.name
+
 	def connect(self):
 		"""
 		@throws: NetworkError

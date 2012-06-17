@@ -297,17 +297,18 @@ class Client(object):
 				return True
 			self.call_callbacks("lobbygame_state", self.game, packet[1].game)
 
+			#if there is more ready player then show it as chat message
 			if len(self.game.ready_players) < len(packet[1].game.ready_players):
 				self.game = packet[1].game
 				self.call_callbacks("lobbygame_toggleready", self.game, packet[1].game.ready_players[-1])
 				return True
+			#if there is less ready player then show it as chat message
 			elif len(self.game.ready_players) > len(packet[1].game.ready_players):
 				for nonready in self.game.ready_players:
 					if nonready not in packet[1].game.ready_players:
 						self.game = packet[1].game
 						self.call_callbacks("lobbygame_toggleready", self.game, nonready)
 						return True
-
 
 			oldplayers = list(self.game.players)
 			self.game = packet[1].game
