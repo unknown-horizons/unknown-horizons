@@ -339,7 +339,7 @@ class MultiplayerMenu(object):
 			ready_or_start_btn.helptext = _("Starts the game")
 		else:
 			ready_or_start_lbl.text = _('Ready: ')
-			ready_or_start_btn.helptext = _('Sets you ready for the game')
+			ready_or_start_btn.helptext = _('Sets your state to ready (necessary for the game to start)')
 
 		textfield = self.current.findChild(name="chatTextField")
 		textfield.capture(self.__send_chat_message)
@@ -502,6 +502,7 @@ class MultiplayerMenu(object):
 
 		players_vbox = self.current.findChild(name="players_vbox")
 
+		#if we are not in game lobby then return
 		if not players_vbox:
 			return
 
