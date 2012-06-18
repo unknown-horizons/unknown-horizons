@@ -150,8 +150,8 @@ class MultiplayerMenu(object):
 		"""Leave the game (when in lobby) and open multiplayer menu."""
 		if NetworkInterface().isconnected():
 			NetworkInterface().disconnect()
-			self.__apply_new_nickname()
-			self.show_multi()
+		self.__apply_new_nickname()
+		self.show_multi()
 
 	def __kick_player(self, game, player):
 		self.__leave_lobby()
