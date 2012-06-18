@@ -503,7 +503,7 @@ class Server(object):
 		if game is None:
 			return
 		for _player in game.players:
-			self.send(_player.peer, packets.server.cmd_chatmsg("SERVER", "User %s is kicked by creator" % _player.name))
+			self.send(_player.peer, packets.server.cmd_chatmsg("SERVER", "User %s is kicked by creator" % packet.player))
 			if _player.name == packet.player:
 				self.send(_player.peer, packets.server.cmd_kick_player(_player))
 
