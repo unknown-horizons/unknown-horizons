@@ -36,7 +36,6 @@ class BehaviorAction(object):
 		self.world = owner.world
 		self.session = owner.session
 
-
 # Action components below are divided into Idle, Offensive and Defensive actions.
 # This is just an arbitrary way to do this. Another good division may consist of "Aggressive, Normal,Cautious"
 # (division below is not related to the way dictionaries in BehaviorManager are named (offensive, idle, defensive))
@@ -72,6 +71,21 @@ class BehaviorActionKeepFleetTogether(BehaviorAction):
 		"""
 		pass # TODO: implement
 
+class BehaviorActionKeepFleetDispersed(BehaviorAction):
+	"""
+	Will aim to keep fleet dispersion non further than dispersion_epsilon.
+	"""
+	dispersion = 1.0 # TODO: average distance from the shipgroup weight center - should be calculated by unitmgr.
+	dispersion_epsilon = dispersion_factor*0.1
+
+	def __init__(self, owner):
+		super(BehaviorActionKeepFleetDispersed, self).__init__(owner)
+
+	def no_one_in_sight(self, **enviornment):
+		"""
+		When no enemies are in sight, disperse ship fleet (unless it already is)
+		"""
+		pass # TODO: implement
 
 # Offensive Actions
 #	Actions used when there is a possibility to engage in combat with other players.
@@ -81,6 +95,8 @@ class BehaviorActionRegular(BehaviorAction):
 	A well-balanced way to respond to situations in game.
 	"""
 	power_balance_threshold = 1.1 # TODO: Figure out a good place for these (if not just Personalities module).YAML.
+	# TODO: Add few layers of threshold
+
 
 	def __init__(self, owner):
 		super(BehaviorActionRegular, self).__init__(owner)
@@ -96,7 +112,6 @@ class BehaviorActionRegular(BehaviorAction):
 		# It's enough to check if first pirate is hostile, since there is only one pirate player.
 		if self.session.world.diplomacy.are_enemies(self.owner, pirates[0].owner) and \
 		   power_balance > self.power_balance_threshold:
-
 			# Let each ship attack it's closest enemy to maximize dps (in a way)
 			ship_pairs = UnitManager.get_closest_ships_for_each(ship_group, pirates)
 			for ship, pirate in ship_pairs:
@@ -111,8 +126,9 @@ class BehaviorActionRegular(BehaviorAction):
 		"""
 		enemies = environment['enemies']
 		ship_group = environment['ship_group']
-
-		if self.session.world.diplomacy.are_enemies(self.owner, enemies[0].owner):
+		power_balance = UnitManager.calculate_power_balance(ship_group, pirates)
+		if self.session.world.diplomacy.are_enemies(self.owner, enemies[0].owner) and \
+		   power_balance > self.power_balance_threshold:
 			for ship in ship_group:
 				Attack(ship, enemies[0]).execute(self.session)
 			BehaviorAction.log.info('ActionRegular: Attacked enemy ship')
@@ -121,6 +137,7 @@ class BehaviorActionRegular(BehaviorAction):
 
 
 class BehaviorActionCoward(BehaviorAction):
+	power_balance_threshold = 1.9
 	def __init__(self, owner):
 		super(BehaviorActionCoward, self).__init__(owner)
 
@@ -128,22 +145,25 @@ class BehaviorActionCoward(BehaviorAction):
 		"""
 		Dummy action, do nothing really.
 		"""
+		#TODO: add "common actions" module or something like that in order to avoid code repetition (add regular attack here)
 		BehaviorAction.log.info('Pirates give me chills man.')
 
 
 class BehaviorActionPirateHater(BehaviorAction):
+	power_balance_threshold = 1.5
 	def __init__(self, owner):
 		super(BehaviorActionPirateHater, self).__init__(owner)
 
 	def pirates_in_sight(self, **environment):
 		"""
-		Always attack pirates and start wars with them.
+		Breaks diplomacy and attacks pirates.
 		"""
 		enemies = environment['enemies']
 		ship_group = environment['ship_group']
 
-		for ship in ship_group:
-			if not self.session.world.diplomacy.are_enemies(self.owner, enemies[0].owner):
+		power_balance = UnitManager.calculate_power_balance(ship_group, pirates)
+
+		if power_balance > self.power_balance_threshold and \
+		   not self.session.world.diplomacy.are_enemies(self.owner, enemies[0].owner):
 				AddEnemyPair(self.owner, enemies[0].owner).execute(self.session)
-			Attack(ship, enemies[0]).execute(self.session)
 		BehaviorAction.log.info('I feel urgent need to wipe out them pirates.')

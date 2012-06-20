@@ -21,6 +21,7 @@
 
 import logging, collections
 from operator import itemgetter
+from horizons.component.healthcomponent import HealthComponent
 from horizons.util.worldobject import WorldObject
 from horizons.world.units.fightingship import FightingShip
 from horizons.world.units.pirateship import PirateShip
@@ -107,11 +108,21 @@ class UnitManager(WorldObject):
 		return closest
 
 	@classmethod
-	def calculate_power_balance(cls, ship_group, enemies):
+	def calculate_power_balance(cls, ship_group, enemy_ship_group):
 		"""
-		Calculate power balance between two ship groups.
+		Calculate power balance between two groups of ships.
 		"""
-		return 1.2 # TODO: implement power balance calculation
+
+		# dps_multiplier - 4vs2 ships equal 2 times more DPS. Multiply that factor when calculating power balance.
+		dps_multiplier = len(ship_group)/float(len(enemy_ship_group))
+
+		self_hp = 0.0
+		enemy_hp = 0.0
+		for unit in ship_group:
+			self_hp += unit.get_component(HealthComponent).health
+		for unit in enemy_ship_group:
+			enemy_hp += unit.get_component(HealthComponent).health
+		return (self_hp/enemy_hp)*dps_multiplier
 
 	def find_ships_near_group(self, ship_group):
 		other_ships_set = set()
