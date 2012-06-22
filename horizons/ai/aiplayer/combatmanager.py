@@ -22,6 +22,7 @@
 import logging
 from horizons.ai.aiplayer.behavior import BehaviorManager
 from horizons.ai.aiplayer.behavior.profile import BehaviorProfile
+from horizons.ai.aiplayer.unitmanager import UnitManager
 from horizons.command.diplomacy import AddEnemyPair
 from horizons.command.unit import Attack
 from horizons.util.worldobject import WorldObject
@@ -53,6 +54,7 @@ class CombatManager(WorldObject):
 
 			environment = {'enemies': pirates, 'ship_group': ship_group, }
 			if pirates:
+				environment['power_balance'] = UnitManager.calculate_power_balance(ship_group, pirates)
 				self.owner.behavior_manager.request_action(BehaviorProfile.action_types.offensive,
 					'pirates_in_sight', **environment)
 			else:
@@ -88,8 +90,11 @@ class PirateCombatManager(CombatManager):
 		for ship, shipState in self.owner.ships.iteritems():
 			enemies = unit_manager.find_ships_near_group([ship])
 			fighting_ships = unit_manager.filter_ships(self.owner, enemies, (rules.ship_type(FightingShip), ))
+
 			environment = {'enemies': fighting_ships, 'ship_group': [ship], }
+
 			if fighting_ships:
+				environment['power_balance'] = UnitManager.calculate_power_balance([ship], fighting_ships)
 				self.owner.behavior_manager.request_action(BehaviorProfile.action_types.offensive,
 					'fighting_ships_in_sight', **environment)
 			else:

@@ -50,15 +50,18 @@ class BehaviorManager(WorldObject):
 		possible_behaviors = []
 		for beh, prob in self.actions[type].iteritems():
 			if hasattr(beh, action_name):
-				possible_behaviors.append((beh, prob))
+				certainty = beh.certainty(action_name, **environment)
+				# final probability is the one defined in profile multiplied by certainty
+				self.log.info("%s Action:%s Probability:%s Certainty:%s" % (beh.__class__.__name__, action_name, prob, certainty))
+				possible_behaviors.append((beh, prob * certainty))
 
 		# get the best action possible
-		final_action = self.get_best_behavior(possible_behaviors, action_name, dict(environment))
+		final_action = self.get_best_behavior(possible_behaviors, action_name, **environment)
 
 		# call winning action
 		getattr(final_action, action_name)(**environment)
 
-	def get_best_behavior(self, behavior_iterable, action_name, environment_data):
+	def get_best_behavior(self, behavior_iterable, action_name, **environment):
 		"""
 		Get best behavior from behavior_iterable (linear time).
 		"""
@@ -72,13 +75,9 @@ class BehaviorManager(WorldObject):
 			if (total + prob) > rnd_val:
 				return beh
 			total += prob
-		# TODO: take action certainity into account as well
 
 	@classmethod
 	def load(cls, db, owner):
 		self = cls.__new__(cls, owner)
 		#self._load(db, player)
 		return self
-
-
-

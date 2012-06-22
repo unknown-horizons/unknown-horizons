@@ -26,6 +26,7 @@ from horizons.ai.aiplayer.behavior.behavioractions import BehaviorActionPirateHa
 from horizons.ext.enum import Enum
 from horizons.util.worldobject import WorldObject
 
+
 class BehaviorProfile(WorldObject):
 	"""
 	BehaviorProfile is an object that defines the dictionary with BehaviorComponents for AIPlayer.
@@ -60,4 +61,3 @@ class BehaviorProfile(WorldObject):
 		actions[cls.action_types.idle][BehaviorActionBored(player)] = 1.0
 
 		return actions
-

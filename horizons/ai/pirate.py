@@ -66,9 +66,7 @@ class Pirate(GenericAI):
 
 		# create a ship and place it randomly (temporary hack)
 		for i in xrange(self.ship_count):
-			point = self.session.world.get_random_possible_ship_position()
-			ship = CreateUnit(self.worldid, UNITS.PIRATE_SHIP, point.x, point.y)(issuer=self.session.world.player)
-			self.ships[ship] = self.shipStates.idle
+			self.create_ship_at_random_position()
 
 		Scheduler().add_new_object(Callback(self.tick), self, 32, -1)
 
@@ -94,11 +92,14 @@ class Pirate(GenericAI):
 	def get_random_actions(self):
 		return BehaviorProfile.get_random_pirate_actions(self)
 
+	def create_ship_at_random_position(self):
+		point = self.session.world.get_random_possible_ship_position()
+		ship = CreateUnit(self.worldid, UNITS.PIRATE_SHIP, point.x, point.y)(issuer=self.session.world.player)
+		self.ships[ship] = self.shipStates.idle
+
 	def maintain_ship_count(self):
 		if len(self.ships.keys()) < self.ship_count:
-			point = self.session.world.get_random_possible_ship_position()
-			ship = CreateUnit(self.worldid, UNITS.PIRATE_SHIP, point.x, point.y)(issuer=self.session.world.player)
-			self.ships[ship] = self.shipStates.idle
+			self.create_ship_at_random_position()
 
 	def lookout(self, pirate_ship):
 		if self.ships[pirate_ship] != self.shipStates.going_home:
