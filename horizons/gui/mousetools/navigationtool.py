@@ -193,9 +193,13 @@ class NavigationTool(CursorTool):
 		                     fife.CMD_MOUSE_FOCUS_LOST,
 		                     fife.CMD_INPUT_FOCUS_LOST)
 		if command.getCommandType() in STOP_SCROLLING_ON:
-			# a random, unreproducible crash has session set to None. Check because it doesn't hurt.
-			if self.session is not None:
+			# it has been randomly observed twice that this code is reached with session being None or
+			# partly deinitialised. Since it is unknown how fife handles this and why
+			# removeCommandListener in remove() doesn't prevent further calls, we have to catch and ignore the error
+			try:
 				self.session.view.autoscroll(0, 0) # stop autoscroll
+			except AttributeError:
+				pass
 
 	def get_hover_instances(self, where, layers=None):
 		"""
