@@ -271,7 +271,7 @@ class Message(object):
 		icon = icon_id if icon_id else horizons.main.db.get_msg_icon_id(id)
 		self.up_image, self.down_image, self.hover_image = horizons.main.db.get_msg_icons(icon)
 		if message is not None:
-			assert isinstance(message, unicode)
+			assert isinstance(message, unicode), "Message is not unicode: %s" % message
 			self.message = message
 		else:
 			msg = _(horizons.main.db.get_msg_text(id))
