@@ -48,7 +48,7 @@ class ClientMode(object):
 class Client(object):
 	log = logging.getLogger("network")
 
-	def __init__(self, name, version, server_address, client_address = None):
+	def __init__(self, name, version, server_address, client_address = None, color = None):
 		try:
 			clientaddress = enet.Address(client_address[0], client_address[1]) if client_address is not None else None
 			self.host = enet.Host(clientaddress, MAX_PEERS, 0, 0, 0)
@@ -63,6 +63,7 @@ class Client(object):
 		self.mode          = None
 		self.sid           = None
 		self.game          = None
+		self.color         = color
 		self.packetqueue   = []
 		self.callbacks     = {
 			'lobbygame_chat':        [],
@@ -71,14 +72,14 @@ class Client(object):
 			'lobbygame_toggleready': [],
 			'lobbygame_changename':  [],
 			'lobbygame_kickplayer':  [],
-			#'lobbygame_changecolor': [],
+			'lobbygame_changecolor': [],
 			'lobbygame_state':       [],
 			'lobbygame_starts':      [],
 			'game_starts':    [],
 			'game_data':      [],
 		}
 		self.register_callback('lobbygame_changename', self.onchangename, True)
-		#self.register_callback('lobbygame_changecolor', self.onchangecolor, True)
+		self.register_callback('lobbygame_changecolor', self.onchangecolor, True)
 		pass
 
 	def register_callback(self, type, callback, prepend = False, unique = True):
@@ -322,8 +323,8 @@ class Client(object):
 						myself = True if pnew.sid == self.sid else False
 						if pnew.name != pold.name:
 							self.call_callbacks("lobbygame_changename", self.game, pold, pnew, myself)
-						#if pnew.color != pold.color:
-						#	self.call_callbacks("lobbygame_changecolor", self.game, pold, pnew, myself)
+						if pnew.color != pold.color:
+							self.call_callbacks("lobbygame_changecolor", self.game, pold, pnew, myself)
 						break
 				if found is None:
 					self.call_callbacks("lobbygame_join", self.game, pnew)
@@ -376,7 +377,7 @@ class Client(object):
 		if self.mode is not ClientMode.Server:
 			raise network.NotInServerMode("We are not in server mode")
 		self.log.debug("[CREATE] mapname=%s maxplayers=%d" % (mapname, maxplayers))
-		self.send(packets.client.cmd_creategame(self.version, mapname, maxplayers, self.name, name, load, password))
+		self.send(packets.client.cmd_creategame(self.version, mapname, maxplayers, self.name, name, load, password, self.color))
 		packet = self.recv_packet([packets.cmd_error, packets.server.data_gamestate])
 		if packet is None:
 			raise network.FatalError("No reply from server")
@@ -395,7 +396,7 @@ class Client(object):
 		if self.mode is not ClientMode.Server:
 			raise network.NotInServerMode("We are not in server mode")
 		self.log.debug("[JOIN] %s" % (uuid))
-		self.send(packets.client.cmd_joingame(uuid, self.version, self.name))
+		self.send(packets.client.cmd_joingame(uuid, self.version, self.name, self.color))
 		packet = self.recv_packet([packets.cmd_error, packets.server.data_gamestate])
 		if packet is None:
 			raise network.FatalError("No reply from server")
@@ -459,6 +460,23 @@ class Client(object):
 
 	#-----------------------------------------------------------------------------
 
+	def changecolor(self, color):
+		""" NOTE: this returns False if the name must be validated by
+		 the server. In that case this will trigger a lobbygame_changecolor-
+		 event with parameter myself=True. if this functions returns true
+		 your name has been changed but there was no need to sent it to
+		 the server."""
+		if self.color == color:
+			return True
+		self.log.debug("[CHANGECOLOR] %s" % (color))
+		if self.mode is None or self.game is None:
+			self.color = color
+			return True
+		self.send(packets.client.cmd_changecolor(color))
+		return False
+
+	#-----------------------------------------------------------------------------
+
 	def onchangename(self, game, plold, plnew, myself):
 		self.log.debug("[ONCHANGENAME] %s -> %s" % (plold.name, plnew.name))
 		if myself:
@@ -467,11 +485,11 @@ class Client(object):
 
 	#-----------------------------------------------------------------------------
 
-	#def onchangecolor(self, game, plold, plnew, myself):
-	#	self.log.debug("[ONCHANGECOLOR] %s: %s -> %s" % (plnew.name, plold.color, plnew.color))
-	#	if myself:
-	#		self.color = plnew.color
-	#	return True
+	def onchangecolor(self, game, plold, plnew, myself):
+		self.log.debug("[ONCHANGECOLOR] %s: %s -> %s" % (plnew.name, plold.color, plnew.color))
+		if myself:
+			self.color = plnew.color
+		return True
 
 	#-----------------------------------------------------------------------------
 

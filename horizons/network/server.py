@@ -58,6 +58,7 @@ class Server(object):
 			packets.client.cmd_leavegame:      [ self.onleavegame ],
 			packets.client.cmd_chatmsg:        [ self.onchat ],
 			packets.client.cmd_changename:     [ self.onchangename ],
+			packets.client.cmd_changecolor:    [ self.onchangecolor ],
 			packets.client.cmd_preparedgame:   [ self.onpreparedgame ],
 			packets.client.cmd_toggle_ready:   [ self.ontoggleready ],
 			packets.client.cmd_kick_player:    [ self.onkickplayer  ],
@@ -266,6 +267,9 @@ class Server(object):
 		if not len(packet.playername):
 			self.error(peer, "Your player name cannot be empty")
 			return
+		if packet.playercolor < 1:
+			self.error(peer, "Your color is invalid")
+			return
 		if not len(packet.name):
 			packet.name = "Unnamed Game"
 		player = self.players[peer.data]
@@ -273,13 +277,11 @@ class Server(object):
 			self.error(peer, "You can't create a game while in another game")
 			return
 		player.name = unicode(packet.playername)
+		player.color = packet.playercolor
 		game = Game(packet, player)
 		logging.debug("[CREATE] [%s] %s created %s" % (game.uuid, player, game))
 		self.games.append(game)
 		self.send(peer, packets.server.data_gamestate(game))
-
-		if game.playercnt == game.maxplayers:
-			self.call_callbacks("preparegame", game)
 
 	def deletegame(self, game):
 		logging.debug("[REMOVE] [%s] %s removed" % (game.uuid, game))
@@ -346,8 +348,19 @@ class Server(object):
 			self.error(peer, "There's already a player with your name inside this game. Change your name")
 			return
 
+		#make sure player colors are unique
+		unique = True
+		for _player in game.players:
+			if _player.color == packet.playercolor:
+				unique = False
+				break
+		if not unique:
+			self.error(peer, "There's already a player with your color inside this game. Change your color")
+			return
+
 		logging.debug("[JOIN] [%s] %s joined %s" % (game.uuid, player, game))
 		player.name = packet.playername
+		player.color = packet.playercolor
 		game.add_player(player)
 		for _player in game.players:
 			self.send(_player.peer, packets.server.data_gamestate(game))
@@ -450,6 +463,40 @@ class Server(object):
 		for _player in game.players:
 			self.send(_player.peer, packets.server.data_gamestate(game))
 
+
+	def onchangecolor(self, peer, packet):
+		# NOTE: that event _only_ happens inside a lobby
+		if packet.playercolor is None:
+			self.error(peer, "You must have a color")
+			return
+		player = self.players[peer.data]
+		if player.game is None:
+			# just ignore if not inside a game
+			self.send(peer, packets.cmd_ok())
+			return
+		game = player.game
+		# don't send packets to already started games
+		if game.state is not Game.State.Open:
+			return
+
+		# ignore change to same color
+		if player.color == packet.playercolor:
+			return
+
+		# make sure player colors are unique
+		unique = True
+		for _player in game.players:
+			if _player.color == packet.playercolor:
+				unique = False
+				break
+		if not unique:
+			self.error(peer, "There's already a player with your color inside this game. Unable to change your color")
+			return
+
+		logging.debug("[CHANGECOLOR] [%s] Player:%s %s -> %s" % (game.uuid, player.name, player.color, packet.playercolor))
+		player.color = packet.playercolor
+		for _player in game.players:
+			self.send(_player.peer, packets.server.data_gamestate(game))
 
 	def gamedata(self, peer, data):
 		player = self.players[peer.data]

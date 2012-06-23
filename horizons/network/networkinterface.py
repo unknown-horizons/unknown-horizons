@@ -26,7 +26,7 @@ from horizons.util import Color, DifficultySettings, parse_port
 from horizons.extscheduler import ExtScheduler
 from horizons.constants import NETWORK, VERSION
 from horizons.network.client import Client
-from horizons.network import CommandError, NetworkException, FatalError, packets
+from horizons.network import CommandError, NetworkException, FatalError
 
 import logging
 
@@ -50,7 +50,7 @@ class NetworkInterface(object):
 		self._client.register_callback("lobbygame_changename", self._cb_game_details_changed)
 		self._client.register_callback("lobbygame_toggleready", self._cb_game_details_changed)
 		self._client.register_callback("lobbygame_kickplayer", self._cb_game_details_changed)
-		#self._client.register_callback("lobbygame_changecolor", self._cb_game_details_changed)
+		self._client.register_callback("lobbygame_changecolor", self._cb_game_details_changed)
 		self._client.register_callback("lobbygame_starts", self._cb_game_prepare)
 		self._client.register_callback("game_starts", self._cb_game_starts)
 		self._client.register_callback("game_data", self._cb_game_data)
@@ -81,18 +81,22 @@ class NetworkInterface(object):
 
 	def __setup_client(self):
 		name = self.__get_player_name()
+		color = self.__get_player_color()
 		serveraddress = [NETWORK.SERVER_ADDRESS, NETWORK.SERVER_PORT]
 		clientaddress = None
 		client_port = parse_port(horizons.main.fife.get_uh_setting("NetworkPort"), allow_zero=True)
 		if NETWORK.CLIENT_ADDRESS is not None or client_port > 0:
 			clientaddress = [NETWORK.CLIENT_ADDRESS, client_port]
 		try:
-			self._client = Client(name, VERSION.RELEASE_VERSION, serveraddress, clientaddress)
+			self._client = Client(name, VERSION.RELEASE_VERSION, serveraddress, clientaddress, color)
 		except NetworkException as e:
 			raise RuntimeError(e)
 
 	def __get_player_name(self):
 		return horizons.main.fife.get_uh_setting("Nickname")
+
+	def __get_player_color(self):
+		return horizons.main.fife.get_uh_setting("ColorID")
 
 	def get_client_name(self):
 		return self._client.name
@@ -173,6 +177,17 @@ class NetworkInterface(object):
 			self._handle_exception(e)
 			return False
 
+	def change_color(self, new_color, save=True):
+		""" see network/client.py -> changecolor() for _important_ return values"""
+		if save:
+			horizons.main.fife.set_uh_setting("ColorID", new_color)
+			horizons.main.fife.save_settings()
+		try:
+			return self._client.changecolor(new_color)
+		except NetworkException as e:
+			self._handle_exception(e)
+			return False
+
 	def register_chat_callback(self, function):
 		self._client.register_callback("lobbygame_chat", function)
 
@@ -191,8 +206,8 @@ class NetworkInterface(object):
 	def register_player_changed_name_callback(self, function):
 		self._client.register_callback("lobbygame_changename", function)
 
-	#def register_player_changed_color_callback(self, function):
-	#	self._client.register_callback("lobbygame_changecolor", function)
+	def register_player_changed_color_callback(self, function):
+		self._client.register_callback("lobbygame_changecolor", function)
 
 	def register_game_details_changed_callback(self, function, unique = True):
 		if unique and function in self.cbs_game_details_changed:
@@ -273,7 +288,7 @@ class NetworkInterface(object):
 		return ret_list
 
 	def game2mpgame(self, game):
-		return MPGame(game.uuid, game.creator, game.mapname, game.maxplayers, game.playercnt, map(lambda x: unicode(x.name), game.players), self._client.name, game.clientversion, game.name, game.load, game.password ,game.ready_players)
+		return MPGame(game.uuid, game.creator, game.mapname, game.maxplayers, game.playercnt, game.players, self._client.name, game.clientversion, game.name, game.load, game.password, game.ready_players)
 
 	def get_clientversion(self):
 		return self._client.version
@@ -338,12 +353,12 @@ class MPGame(object):
 	def get_player_list(self):
 		ret_players = []
 		id = 1
-		for playername in self.get_players():
+		for player in self.get_players():
 			# TODO: add support for selecting difficulty levels to the GUI
-			player_status = True if playername in self.get_ready_players() else False
-			ret_players.append({'id': id, 'name': playername, 'color': Color[id], 'local': self.localname == playername, \
+			player_status = True if player.name in self.get_ready_players() else False
+			ret_players.append({'id': id, 'name': player.name, 'color': Color[player.color], 'local': self.localname == player.name, \
 				'ai': False, 'difficulty': DifficultySettings.DEFAULT_LEVEL, 'status': _('Creator') if self.get_creator() == \
-			  playername else (_('Ready') if player_status else _('Not Ready'))})
+			  player.name else (_('Ready') if player_status else _('Not Ready'))})
 			id += 1
 		return ret_players
 

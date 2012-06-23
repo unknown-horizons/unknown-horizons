@@ -77,6 +77,7 @@ class MultiplayerMenu(object):
 		}
 		# store old name and color
 		self.__apply_new_nickname()
+		self.__apply_new_color()
 		# reload because changing modes (not yet implemented) will need it
 		self.widgets.reload('multiplayermenu')
 		self._switch_current_widget('multiplayermenu', center=True, event_map=event_map, hide_old=True)
@@ -111,6 +112,7 @@ class MultiplayerMenu(object):
 		NetworkInterface().register_player_joined_callback(self.__player_joined)
 		NetworkInterface().register_player_left_callback(self.__player_left)
 		NetworkInterface().register_player_changed_name_callback(self.__player_changed_name)
+		NetworkInterface().register_player_changed_color_callback(self.__player_changed_color)
 		NetworkInterface().register_player_toggle_ready_callback(self.__toggle_player_ready)
 		NetworkInterface().register_player_kick_player_callback(self.__kick_player)
 
@@ -144,6 +146,7 @@ class MultiplayerMenu(object):
 		if NetworkInterface().isconnected():
 			NetworkInterface().disconnect()
 		self.__apply_new_nickname()
+		self.__apply_new_color()
 		self.show_main()
 
 	def __leave_lobby(self):
@@ -151,6 +154,7 @@ class MultiplayerMenu(object):
 		if NetworkInterface().isconnected():
 			NetworkInterface().disconnect()
 		self.__apply_new_nickname()
+		self.__apply_new_color()
 		self.show_multi()
 
 	def __kick_player(self, game, player):
@@ -255,6 +259,7 @@ class MultiplayerMenu(object):
 		if not join_worked:
 			return
 		self.__apply_new_nickname()
+		self.__apply_new_color()
 		self.__show_gamelobby()
 
 	def __join_game(self, game=None):
@@ -353,6 +358,11 @@ class MultiplayerMenu(object):
 			playername = self.current.playerdata.get_player_name()
 			NetworkInterface().change_name(playername)
 
+	def __apply_new_color(self):
+		if hasattr(self.current, 'playerdata'):
+			playercolor = self.current.playerdata.get_player_color()
+			NetworkInterface().change_color(playercolor.id)
+
 	def __chatfield_onfocus(self):
 		textfield = self.current.findChild(name="chatTextField")
 		textfield.text = u""
@@ -403,6 +413,12 @@ class MultiplayerMenu(object):
 		else:
 			self.__print_event_message(_("{player} is now known as {new_name}").format(player=plold.name, new_name=plnew.name))
 
+	def __player_changed_color(self, game, plold, plnew, myself):
+		if myself:
+			self.__print_event_message(_("You changed your color").format(new_name=plnew.name))
+		else:
+			self.__print_event_message(_("{player} changed its color").format(player=plold.name, new_name=plnew.name))
+
 	def __show_create_game(self):
 		"""Shows the interface for creating a multiplayer game"""
 		event_map = {
@@ -410,6 +426,7 @@ class MultiplayerMenu(object):
 			'create' : self.__create_game
 		}
 		self.__apply_new_nickname()
+		self.__apply_new_color()
 		self._switch_current_widget('multiplayer_creategame', center=True, event_map=event_map, hide_old=True)
 
 		self.current.files, self.maps_display = SavegameManager.get_maps()
