@@ -554,6 +554,11 @@ class MultiplayerMenu(object):
 			if NetworkInterface().get_client_name() == game.get_creator() and player['name'] != game.get_creator():
 				pkick = CancelButton(name="pkick_%s" % player['name'], helptext=_("Kick {player}").format(player=player['name']))
 				pkick.capture(Callback(NetworkInterface().send_kick_player, player['name']))
+				pkick.up_image = "content/gui/images/buttons/delete_small.png"
+				pkick.down_image = "content/gui/images/buttons/delete_small.png"
+				pkick.hover_image = "content/gui/images/buttons/delete_small_h.png"
+				pkick.min_size = (20, 15)
+				pkick.max_size = (20, 15)
 				hbox.addChild(pkick)
 
 			players_vbox.addChild(hbox)
