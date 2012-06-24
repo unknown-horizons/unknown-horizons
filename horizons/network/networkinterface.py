@@ -142,9 +142,9 @@ class NetworkInterface(object):
 					return True
 				except CommandError as e:
 					self.log.debug("NetworkInterface: failed to join")
-					if e.message.find('name') != -1:
+					if 'name' in e.message:
 						self.change_name( self.__get_player_name() + unicode(i), save=False )
-					elif e.message.find('color') != -1:
+					elif 'color' in e.message:
 						self.change_color(self.__get_player_color() + i, save=False)
 				i += 1
 			self._client.joingame(uuid)
