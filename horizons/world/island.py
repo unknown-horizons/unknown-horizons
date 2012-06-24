@@ -157,7 +157,7 @@ class Island(BuildingOwner, WorldObject):
 
 		"""TUTORIAL:
 		The next step will be an overview of the component system, which you will need
-		to understand in order to see how our actual game object (buildings, units) work. Please proceed to horizons/world/componentholder.py
+		to understand in order to see how our actual game object (buildings, units) work. Please proceed to horizons/component/componentholder.py
 		"""
 
 	def save(self, db):
