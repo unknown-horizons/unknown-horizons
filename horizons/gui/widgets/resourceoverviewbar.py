@@ -403,10 +403,9 @@ class ResourceOverviewBar(object):
 		needs ENTRY_Y_OFFSET to determine the maximum widget height.
 		"""
 		item_amount = len(self._get_current_resources())
-		# add dummy slot length to size iff it is shown (True == 1)
-		x = self.INITIAL_X_OFFSET + self.ENTRY_X_OFFSET * (item_amount + self._do_show_dummy)
-		y = self.ENTRY_Y_OFFSET + self.CONSTRUCTION_LABEL_HEIGHT * self.construction_mode
-		return (x, y)
+		width = self.INITIAL_X_OFFSET + self.ENTRY_X_OFFSET * item_amount
+		height = self.ENTRY_Y_OFFSET + self.CONSTRUCTION_LABEL_HEIGHT * self.construction_mode
+		return (width, height)
 
 
 	###
