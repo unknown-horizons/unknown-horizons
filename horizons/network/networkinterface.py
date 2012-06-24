@@ -355,7 +355,7 @@ class MPGame(object):
 		id = 1
 		for player in self.get_players():
 			# TODO: add support for selecting difficulty levels to the GUI
-			player_status = True if player.name in self.get_ready_players() else False
+			player_status = player.name in self.get_ready_players()
 			ret_players.append({'id': id, 'name': player.name, 'color': Color[player.color], 'local': self.localname == player.name, \
 				'ai': False, 'difficulty': DifficultySettings.DEFAULT_LEVEL, 'status': _('Creator') if self.get_creator() == \
 			  player.name else (_('Ready') if player_status else _('Not Ready'))})

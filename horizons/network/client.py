@@ -320,7 +320,7 @@ class Client(object):
 				for pold in oldplayers:
 					if pnew.sid == pold.sid:
 						found = pold
-						myself = True if pnew.sid == self.sid else False
+						myself = pnew.sid == self.sid
 						if pnew.name != pold.name:
 							self.call_callbacks("lobbygame_changename", self.game, pold, pnew, myself)
 						if pnew.color != pold.color:
