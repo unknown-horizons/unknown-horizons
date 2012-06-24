@@ -65,7 +65,13 @@ class ResourceOverviewBar(object):
 	"""
 
 	GOLD_ENTRY_GUI_FILE = "resource_overview_bar_gold.xml"
+	INITIAL_X_OFFSET = 100 # length of money icon (87px) + padding (10px left, 3px right)
+
 	ENTRY_GUI_FILE = "resource_overview_bar_entry.xml"
+	ENTRY_X_OFFSET = 52 # length of entry icons (49px) + padding (3px right)
+	ENTRY_Y_OFFSET = 17 # only padding (17px top)!
+	ENTRY_Y_HEIGHT = 66 # only height of entry icons (66px)!
+	CONSTRUCTION_LABEL_HEIGHT = 22 # height of extra label shown in build preview mode
 
 	STATS_GUI_FILE = "resource_overview_bar_stats.xml"
 
@@ -198,8 +204,6 @@ class ResourceOverviewBar(object):
 
 		# construct new slots (fill values later)
 		load_entry = lambda : load_uh_widget(self.ENTRY_GUI_FILE, style=self.__class__.STYLE)
-		initial_offset = 101
-		offset = 52
 		resources = self._get_current_resources()
 		addition = [-1] if self._do_show_dummy or not resources else [] # add dummy at end for adding stuff
 		for i, res in enumerate( resources + addition ):
@@ -211,7 +215,8 @@ class ResourceOverviewBar(object):
 				entry = load_entry()
 				self.gui.append(entry)
 
-			entry.findChild(name="entry").position = (initial_offset + offset * i, 17)
+			entry.findChild(name="entry").position = (self.INITIAL_X_OFFSET + i * self.ENTRY_X_OFFSET,
+			                                          self.ENTRY_Y_OFFSET)
 			background_icon = entry.findChild(name="entry")
 			background_icon.capture(Callback(self._show_resource_selection_dialog, i), 'mouseEntered', 'resbar')
 
@@ -387,6 +392,21 @@ class ResourceOverviewBar(object):
 			return self.current_instance().get_component(StorageComponent).inventory
 		else:
 			return None
+
+	def get_size(self):
+		"""
+		Returns (x,y) size tuple.
+		Used by the cityinfo to determine how to change its position if the widgets
+		overlap using default positioning (resource bar can get arbitrarily long).
+		Note that the money icon has the same offset effect as all entry icons have
+		(height 73 + padding 10 == height 66 + padding 17), thus the calculation only
+		needs ENTRY_Y_OFFSET to determine the maximum widget height.
+		"""
+		item_amount = len(self._get_current_resources())
+		# add dummy slot length to size iff it is shown (True == 1)
+		x = self.INITIAL_X_OFFSET + self.ENTRY_X_OFFSET * (item_amount + self._do_show_dummy)
+		y = self.ENTRY_Y_OFFSET + self.CONSTRUCTION_LABEL_HEIGHT * self.construction_mode
+		return (x, y)
 
 
 	###
