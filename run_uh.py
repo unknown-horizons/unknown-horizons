@@ -23,10 +23,10 @@
 
 """TUTORIAL: Welcome to the Unknown Horizons in-code tutorial!
 This is a guide for people who are interested in how the code works.
-All parts of it are marked with 'TUTORIAL', every entry contains a pointer
-to the next step. Have fun :-)
+All parts of it are marked with 'TUTORIAL', and every entry contains
+a pointer to the next step. Have fun :-)
 
-This is the Unknown Horizons launcher, it looks for FIFE and tries
+This is the Unknown Horizons launcher; it looks for FIFE and tries
 to start the game. You usually don't need to work with this directly.
 If you want to dig into the game, continue to horizons/main.py. """
 
@@ -289,7 +289,7 @@ def setup_debugging(options):
 
 	# not too nice way of sharing code, but it is necessary because code from this file
 	# can't be accessed elsewhere on every distribution, and we can't just access other code.
-	# however passing options is guaranteed to work
+	# however, passing options is guaranteed to work
 	options.setup_debugging = setup_debugging
 
 	# apply options
@@ -385,7 +385,7 @@ def init_environment():
 		# (but skip on second run, else we've got an endless loop)
 		find_FIFE(options.fife_path)
 
-	#find FIFE and setup search paths, if it can't be imported yet
+	# find FIFE and setup search paths, if it can't be imported yet
 	setup_fife(sys.argv)
 
 
@@ -426,7 +426,7 @@ def get_fife_path(fife_custom_path=None):
 
 				log().debug("Found FIFE in %s", fife_path)
 
-				#add python paths (<fife>/engine/extensions <fife>/engine/swigwrappers/python)
+				# add python paths (<fife>/engine/extensions <fife>/engine/swigwrappers/python)
 				pythonpaths = [ os.path.join( fife_path, 'engine/python') ]
 				for path in pythonpaths:
 					if os.path.exists(path):
@@ -436,7 +436,7 @@ def get_fife_path(fife_custom_path=None):
 					else:
 						os.environ['PYTHONPATH'] = path
 
-				#add windows paths (<fife>/.)
+				# add windows paths (<fife>/.)
 				if 'PATH' in os.environ:
 					os.environ['PATH'] += os.path.pathsep + fife_path
 				else:

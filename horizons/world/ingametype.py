@@ -34,8 +34,8 @@ class IngameType(type):
 	The __new__() function uses quite some python magic to construct the new class.
 
 	TUTORIAL:
-	Check out the __new__() function if you feel your pretty good with python and
-	are interested in how it all works,	otherwise, continue to the __init__() function.
+	Check out the __new__() function if you feel you're pretty good with python and
+	are interested in how it all works. Otherwise, continue to the __init__() function.
 	"""
 
 	# Base package to import from, must end with the '.', the package is appended
@@ -99,9 +99,9 @@ class IngameType(type):
 		specific to buildings and units can be found in horizons/world/{buildings/units}/__init__.py
 		which contains the unit and building specific attributes and loading.
 
-		By now you should know the basic constructs used in uh, so we feel comfortable
-		stoping the tutorial here. Be sure to join our IRC channel and idle around there.
-		You'll find tasks for getting into the code in our trac.unknown-horizons.org
+		By now you should know the basic constructs used in UH, so we feel comfortable
+		stopping the tutorial here. Be sure to join our IRC channel and idle around there.
+		You'll find tasks for getting into the code in our trac.unknown-horizons.org.
 
 		Other relevant parts of the code you might be interested in are:
 		* commands: horizons/commands. Abstracts all user interactions.
@@ -110,13 +110,13 @@ class IngameType(type):
 		* scenario: horizons/scenario. Condition-action system for scenarios and full campaigns
 		* automatic tests: tests/. Contains unit tests, gui tests and game (system) tests
 		* networking: horizons/network. Sending stuff over the wire
-		* concreteobject: horizons/world/concreteobject.py. Things with graphicals representation
+		* concreteobject: horizons/world/concreteobject.py. Things with graphical representations
 		* gui: horizons/gui. The ugly parts. IngameGui and Gui, tabs and widgets.
 		* production: horizons/world/production
 		** Producer: producer component, manages everything
 		** ProductionLine: keeps data about the different production lines.
-		** Production: the alive version of the production line.Used when a building
-		               actually produces something, stores progress and the li ke.
+		** Production: the alive version of the production line. Used when a building
+		               actually produces something, stores progress and the like.
 		* engine: horizons/engine. Direct interface to fife.
 		* ai: horizons/ai/aiplayer. Way too big to describe here.
 		"""

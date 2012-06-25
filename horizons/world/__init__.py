@@ -52,8 +52,8 @@ from horizons.world import worldutils
 class World(BuildingOwner, WorldObject):
 	"""The World class represents an Unknown Horizons map with all its units, grounds, buildings, etc.
 
-	It inherits from BuildingOwner, amongst other things, so it has building management capabilities.
-	There is always one big reference per building. It is stored either in the world, the island
+	It inherits from BuildingOwner, among other things, so it has building management capabilities.
+	There is always one big reference per building, which is stored in either the world, the island,
 	or the settlement.
 
 	The main components of the world are:
@@ -91,7 +91,7 @@ class World(BuildingOwner, WorldObject):
 		for island in self.islands:
 			island.end()
 		for player in self.players:
-			player.end() # end players after game entites, since they usually depend on players
+			player.end() # end players after game entities, since they usually depend on players
 
 		self.session = None
 		self.properties = None
@@ -120,7 +120,7 @@ class World(BuildingOwner, WorldObject):
 		All essential and non-essential parts of the world are set up here, you don't need to
 		know everything that happens.
 		"""
-		#load properties
+		# load properties
 		self.properties = {}
 		for (name, value) in savegame_db("SELECT name, value FROM map_properties"):
 			self.properties[name] = json.loads(value)
@@ -186,8 +186,9 @@ class World(BuildingOwner, WorldObject):
 			Entities.units[typeid].load(self.session, savegame_db, worldid)
 
 		if self.session.is_game_loaded():
-			# let trader and pirate command it's ships. we have to do this here cause ships have to be
-			# initialised for this, and they have to exist before ships are loaded.
+			# let trader and pirate command their ships. we have to do this here
+			# because ships have to be initialised for this, and they have
+			# to exist before ships are loaded.
 			if self.trader:
 				self.trader.load_ship_states(savegame_db)
 			if self.pirate:
@@ -210,7 +211,7 @@ class World(BuildingOwner, WorldObject):
 		self.inited = True
 		"""TUTORIAL:
 		To dig deeper, you should now continue to horizons/world/island.py,
-		to check out how buildings and settlements are added to the map"""
+		to check out how buildings and settlements are added to the map."""
 
 
 
@@ -348,7 +349,8 @@ class World(BuildingOwner, WorldObject):
 			or multiple candidates.')
 
 	def _init_water_bodies(self):
-		""" This function runs the flood fill algorithm on the water to make it easy to recognise different water bodies """
+		"""This function runs the flood fill algorithm on the water to make it easy
+		to recognise different water bodies."""
 		moves = [(-1, -1), (-1, 0), (-1, 1), (0, -1), (0, 1), (1, -1), (1, 0), (1, 1)]
 
 		n = 0
@@ -377,17 +379,17 @@ class World(BuildingOwner, WorldObject):
 	def init_new_world(self, trader_enabled, pirate_enabled, natural_resource_multiplier):
 		"""
 		This should be called if a new map is loaded (not a savegame, a fresh
-		map). In other words when it is loaded for the first time.
+		map). In other words, when it is loaded for the first time.
 
 		NOTE: commands for creating the world objects are executed directly,
-		      bypassing the manager
+		      bypassing the manager.
 		      This is necessary because else the commands would be transmitted
 		      over the wire in network games.
 
 		@return: the coordinates of the players first ship
 		"""
 
-		# workaround: the creation of all the objects causes a lot of logging output, we don't need
+		# workaround: the creation of all the objects causes a lot of logging output we don't need.
 		#             therefore, reset the levels for now
 		loggers_to_silence = { 'world.production' : None }
 		for logger_name in loggers_to_silence:
@@ -445,25 +447,25 @@ class World(BuildingOwner, WorldObject):
 					break
 
 	def get_random_possible_ground_unit_position(self):
-		"""Returns a position in water, that is not at the border of the world.
+		"""Returns a position in water that is not at the border of the world.
 		@return: Point"""
 		return worldutils.get_random_possible_ground_unit_position(self)
 
 	def get_random_possible_ship_position(self):
-		"""Returns a position in water, that is not at the border of the world
+		"""Returns a position in water that is not at the border of the world.
 		@return: Point"""
 		return worldutils.get_random_possible_ship_position(self)
 
 	def get_random_possible_coastal_ship_position(self):
-		"""Returns a position in water, that is not at the border of the world
-		but on the coast of an island
+		"""Returns a position in water that is not at the border of the world
+		but on the coast of an island.
 		@return: Point"""
 		return worldutils.get_random_possible_coastal_ship_position(self)
 
 	#----------------------------------------------------------------------
 	def get_tiles_in_radius(self, position, radius, shuffle=False):
-		"""Returns a all tiles in the radius around the point.
-		This is a generator, make sure you use it appropriately.
+		"""Returns all tiles in the radius around the point.
+		This is a generator; make sure you use it appropriately.
 		@param position: Point instance
 		@return List of tiles in radius.
 		"""
@@ -472,7 +474,7 @@ class World(BuildingOwner, WorldObject):
 
 	def get_points_in_radius(self, position, radius, shuffle=False):
 		"""Returns all points in the radius around the point.
-		This is a generator, make sure you use it appropriately.
+		This is a generator; make sure you use it appropriately.
 		@param position: Point instance
 		@return List of points in radius.
 		"""
@@ -517,7 +519,7 @@ class World(BuildingOwner, WorldObject):
 		return settlements
 
 	def get_island(self, point):
-		"""Returns the island for that coordinate, if none is found, returns None.
+		"""Returns the island for that coordinate. If none is found, returns None.
 		@param point: instance of Point"""
 		# NOTE: keep code synchronised with duplicated code below
 		return self.island_map.get(point.to_tuple())
@@ -537,7 +539,7 @@ class World(BuildingOwner, WorldObject):
 		return islands
 
 	def get_warehouses(self, position=None, radius=None, owner=None, include_tradeable=False):
-		"""Returns all warehouses on the map. Optionally only those in range
+		"""Returns all warehouses on the map, optionally only those in range
 		around the specified position.
 		@param position: Point or Rect instance.
 		@param radius: int radius to use.
@@ -563,7 +565,7 @@ class World(BuildingOwner, WorldObject):
 		return warehouses
 
 	def get_ships(self, position=None, radius=None):
-		"""Returns all ships on the map. Optionally only those in range
+		"""Returns all ships on the map, optionally only those in range
 		around the specified position.
 		@param position: Point or Rect instance.
 		@param radius: int radius to use.
