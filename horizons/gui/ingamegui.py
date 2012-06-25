@@ -211,6 +211,9 @@ class IngameGui(LivingObject):
 	def update_settlement(self):
 		city_name_label = self.cityinfo.child_finder('city_name')
 		if self.settlement.owner.is_local_player: # allow name changes
+			# Update settlement on the resource overview to make sure it
+			# is setup correctly for the coming calculations
+			self.resource_overview.set_inventory_instance(self.settlement)
 			cb = Callback(self.show_change_name_dialog, self.settlement)
 			helptext = _("Click to change the name of your settlement")
 			city_name_label.enable_cursor_change_on_hover()
