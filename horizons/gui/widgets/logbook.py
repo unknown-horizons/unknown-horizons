@@ -37,7 +37,7 @@ class LogBook(PickBeltWidget):
 	"""Implementation of the logbook as described here:
 	http://wiki.unknown-horizons.org/w/Message_System
 
-	It displays longer messages, that are essential for scenarios.
+	It displays longer messages, which are essential for scenarios.
 	Headings can be specified for each entry.
 	"""
 	widget_xml = 'captains_log.xml'
@@ -51,7 +51,7 @@ class LogBook(PickBeltWidget):
 		self.statistics_index = [i for i,sec in enumerate(self.sections) if sec[0] == 'statistics'][0]
 		super(LogBook, self).__init__()
 		self.session = session
-		self._widgets = [] # list of lists of all widgets added to a logbook page
+		self._parameters = [] # list of lists of all parameters added to a logbook page
 		self._cur_entry = None # remember current location; 0 to len(messages)-1
 		self._hiding_widget = False # True if and only if the widget is currently in the process of being hidden
 		self.stats_visible = None
@@ -148,14 +148,14 @@ class LogBook(PickBeltWidget):
 
 	def _redraw_captainslog(self):
 		"""Redraws gui. Necessary when current message has changed."""
-		if len(self._widgets) > 0: # there is something to display if this has items
-			self._display_widgets_on_page(self._widgets[self._cur_entry], 'left')
-			if self._cur_entry+1 < len(self._widgets): # check for content on right page
-				self._display_widgets_on_page(self._widgets[self._cur_entry+1], 'right')
+		if len(self._parameters) > 0: # there is something to display if this has items
+			self._display_parameters_on_page(self._parameters[self._cur_entry], 'left')
+			if self._cur_entry+1 < len(self._parameters): # check for content on right page
+				self._display_parameters_on_page(self._parameters[self._cur_entry+1], 'right')
 			else:
-				self._display_widgets_on_page([], 'right') # display empty page
+				self._display_parameters_on_page([], 'right') # display empty page
 		else:
-			self._display_widgets_on_page([
+			self._display_parameters_on_page([
 			  ['Headline', _("Emptiness")],
 			  ['Image', "content/gui/images/background/hr.png"],
 			  ['Label', u"\n\n"],
@@ -163,57 +163,58 @@ class LogBook(PickBeltWidget):
 				], 'left')
 		self.backward_button.set_active()
 		self.forward_button.set_active()
-		if len(self._widgets) == 0 or self._cur_entry == 0:
+		if len(self._parameters) == 0 or self._cur_entry == 0:
 			self.backward_button.set_inactive()
-		if len(self._widgets) == 0 or self._cur_entry >= len(self._widgets) - 2:
+		if len(self._parameters) == 0 or self._cur_entry >= len(self._parameters) - 2:
 			self.forward_button.set_inactive()
 		self._gui.adaptLayout()
+
 
 ########
 #        LOGBOOK  SUBWIDGET
 ########
 
-	def parse_logbook_item(self, widget):
+	def parse_logbook_item(self, parameter):
 		# json.loads() returns unicode, thus convert strings and compare to unicode
 		# Image works with str() since pychan can only use str objects as file path
-		if widget and widget[0]: # allow empty Labels
-			widget_type = widget[0]
-		if isinstance(widget, basestring):
-			add = Label(text=unicode(widget), wrap_text=True, min_size=(335, 0), max_size=(335, 508))
-		elif widget_type == u'Label':
-			add = Label(text=unicode(widget[1]), wrap_text=True, min_size=(335, 0), max_size=(335, 508))
-		elif widget_type == u'Image':
-			add = Icon(image=str(widget[1]))
-		elif widget_type == u'Gallery':
+		if parameter and parameter[0]: # allow empty Labels
+			parameter_type = parameter[0]
+		if isinstance(parameter, basestring):
+			add = Label(text=unicode(parameter), wrap_text=True, min_size=(335, 0), max_size=(335, 508))
+		elif parameter_type == u'Label':
+			add = Label(text=unicode(parameter[1]), wrap_text=True, min_size=(335, 0), max_size=(335, 508))
+		elif parameter_type == u'Image':
+			add = Icon(image=str(parameter[1]))
+		elif parameter_type == u'Gallery':
 			add = HBox()
-			for image in widget[1]:
+			for image in parameter[1]:
 				add.addChild(Icon(image=str(image)))
-		elif widget_type == u'Headline':
-			add = Label(text=widget[1])
+		elif parameter_type == u'Headline':
+			add = Label(text=parameter[1])
 			add.stylize('headline')
 		else:
-			print '[WW] Warning: Unknown widget type {typ} in widget {wdg}'.format(
-				typ=widget[0], wdg=widget)
+			print '[WW] Warning: Unknown parameter type {typ} in parameter {prm}'.format(
+				typ=parameter[0], prm=parameter)
 			add = None
 		return add
 
-	def _display_widgets_on_page(self, widgets, page):
+	def _display_parameters_on_page(self, parameters, page):
 		"""
-		@param widgets: widget list, cf. docstring of add_captainslog_entry
+		@param parameters: parameter list, cf. docstring of add_captainslog_entry
 		@param page: 'left' or 'right'
 		"""
-		widgetbox = self._gui.findChild(name="custom_widgets_{page}".format(page=page))
-		widgetbox.removeAllChildren()
-		for widget_definition in widgets:
-			add = self.parse_logbook_item(widget_definition)
+		parameterbox = self._gui.findChild(name="custom_widgets_{page}".format(page=page))
+		parameterbox.removeAllChildren()
+		for parameter_definition in parameters:
+			add = self.parse_logbook_item(parameter_definition)
 			if add is not None:
-				widgetbox.addChild(add)
+				parameterbox.addChild(add)
 
-	def add_captainslog_entry(self, widgets, show_logbook=True):
-		"""Adds an entry to the logbook VBoxes consisting of a widget list.
+	def add_captainslog_entry(self, parameters, show_logbook=True):
+		"""Adds an entry to the logbook VBoxes consisting of a parameter list.
 		Check e.g. content/scenarios/tutorial_en.yaml for real-life usage.
 
-		@param widgets: Each item in here is a list like the following:
+		@param parameters: Each item in here is a list like the following:
 		[Label, "Awesome text to be displayed as a label"]
 		"Shortcut notation for a Label"
 		[Headline, "Label to be styled as headline (in small caps)"]
@@ -222,22 +223,22 @@ class LogBook(PickBeltWidget):
 		[Pagebreak]  <==  not implemented yet
 		"""
 		#TODO last line of message text sometimes get eaten. Ticket #535
-		def _split_on_pagebreaks(widgets):
-			"""This black magic splits the widget list on each ['Pagebreak']
+		def _split_on_pagebreaks(parameters):
+			"""This black magic splits the parameter list on each ['Pagebreak']
 			>> [['a','a'], ['b','b'], ['Pagebreak'], ['c','c'], ['d','d']]
 			>>>> into [[['a', 'a'], ['b', 'b']], [['c', 'c'], ['d', 'd']]]
 			#TODO n successive pagebreaks should insert (n-1) blank pages (currently 0 are inserted)
 			"""
-			return [list(l[1]) for l in groupby(widgets, lambda x: x != ['Pagebreak']) if l[0]]
+			return [list(l[1]) for l in groupby(parameters, lambda x: x != ['Pagebreak']) if l[0]]
 
-		for widget_list in _split_on_pagebreaks(widgets):
-			self._widgets.append(widget_list)
-			for widget_definition in widget_list:
-				self.parse_logbook_item(widget_definition)
+		for parameter_list in _split_on_pagebreaks(parameters):
+			self._parameters.append(parameter_list)
+			for parameter_definition in parameter_list:
+				self.parse_logbook_item(parameter_definition)
 		# if a new entry contains more than one page, we want to display the first
-		# unread message. note that len(widgets) starts at 1 and _cur_entry at 0.
+		# unread message. note that len(parameters) starts at 1 and _cur_entry at 0.
 		# position always refers to the left page, so only multiples of 2 are valid
-		len_old = len(self._widgets) - len(_split_on_pagebreaks(widgets))
+		len_old = len(self._parameters) - len(_split_on_pagebreaks(parameters))
 		if len_old % 2 == 1: # uneven amount => empty last page, space for 1 new
 			self._cur_entry = len_old - 1
 		else: # even amount => all pages filled. we could display two new messages
@@ -245,17 +246,17 @@ class LogBook(PickBeltWidget):
 		if show_logbook and hasattr(self, "_gui"):
 			self._redraw_captainslog()
 			self.show()
-
+		
 	def clear(self):
 		"""Remove all entries"""
-		self._widgets = []
+		self._parameters = []
 		self._cur_entry = None
 
 	def get_cur_entry(self):
 		return self._cur_entry
 
 	def set_cur_entry(self, cur_entry):
-		if cur_entry < 0 or cur_entry >= len(self._widgets):
+		if cur_entry < 0 or cur_entry >= len(self._parameters):
 			raise ValueError
 		self._cur_entry = cur_entry
 		self._redraw_captainslog()
@@ -263,10 +264,10 @@ class LogBook(PickBeltWidget):
 	def _scroll(self, direction):
 		"""Scroll back or forth one message.
 		@param direction: -1 or 1"""
-		if len(self._widgets) == 0:
+		if len(self._parameters) == 0:
 			return
 		new_cur = self._cur_entry + direction
-		if new_cur < 0 or new_cur >= len(self._widgets):
+		if new_cur < 0 or new_cur >= len(self._parameters):
 			return # invalid scroll
 		self._cur_entry = new_cur
 		AmbientSoundComponent.play_special('flippage')
