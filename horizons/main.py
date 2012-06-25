@@ -22,7 +22,7 @@
 """This is the main game file. It has grown over the years from a collection of global
 variables (sic!) to something holding mainly the main gui and game session, as well as
 a reference to the engine object (fife).
-The functions below are used to start different kinds of games
+The functions below are used to start different kinds of games.
 
 TUTORIAL:
 Continue to horizons.session for further ingame digging.
@@ -104,7 +104,7 @@ def start(_command_line_arguments):
 		        and 'fife' not in command_line_arguments.debug_module):
 			fife._log.lm.setLogToPrompt(True)
 		# After the next FIFE release, we should use this instead which is possible as of r3960:
-		#fife._log.logToPrompt = True
+		# fife._log.logToPrompt = True
 
 	if command_line_arguments.mp_bind:
 		try:
@@ -140,7 +140,7 @@ def start(_command_line_arguments):
 		fife.set_uh_setting("ClientID", client_id)
 		fife.save_settings()
 
-	# Install gui logger, needs to be done before instanciating Gui, otherwise we miss
+	# Install gui logger, needs to be done before instantiating Gui, otherwise we miss
 	# the events of the main menu buttons
 	if command_line_arguments.log_gui:
 		if command_line_arguments.gui_test:
@@ -409,10 +409,10 @@ def _start_map(map_name, ai_players=0, human_ai=False, is_scenario=False, campai
 
 	map_file = None
 
-	#get system's language
+	# get system's language
 	game_language = fife.get_locale()
 
-	#now we have "_en.yaml" which is set to language_extension variable
+	# now we have "_en.yaml" which is set to language_extension variable
 	language_extension = '_' + game_language + '.' + SavegameManager.scenario_extension
 
 	# check for exact/partial matches in map list first
