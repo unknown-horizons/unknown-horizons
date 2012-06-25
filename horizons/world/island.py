@@ -36,7 +36,7 @@ from horizons.gui.widgets.minimap import Minimap
 class Island(BuildingOwner, WorldObject):
 	"""The Island class represents an island. It contains a list of all things on the map
 	that belong to the island. This comprises ground tiles as well as buildings,
-	nature objects (which are buildings) and units.
+	nature objects (which are buildings), and units.
 	All those objects also have a reference to the island, making it easy to determine to which island the instance belongs.
 	An Island instance is created during map creation, when all tiles are added to the map.
 	@param origin: Point instance - Position of the (0, 0) ground tile.
@@ -47,16 +47,16 @@ class Island(BuildingOwner, WorldObject):
 	* grounds_map -  a dictionary that binds tuples of coordinates with a reference to the tile:
 	                  { (x, y): tileref, ...}
 					  This is important for pathfinding and quick tile fetching.
-	* position - a Rect that borders the island with the smallest possible area
+	* position - a Rect that borders the island with the smallest possible area.
 	* buildings - a list of all Building instances that are present on the island.
 	* settlements - a list of all Settlement instances that are present on the island.
 	* path_nodes - a special dictionary used by the pather to save paths.
 
 	TUTORIAL:
 	Why do we use a separate __init() function, and do not use the __init__() function?
-	Simple, if we load the game, the class is not loaded as new instance, so the __init__
-	function is not called. Rather the load function is called. So everything that new
-	classes and loaded classes share to initialize, comes into the __init() function.
+	Simple: if we load the game, the class is not loaded as a new instance, so the __init__
+	function is not called. Rather, the load function is called, so everything that new
+	classes and loaded classes share to initialize goes into the __init() function.
 	This is the common way of doing this in Unknown Horizons, so better get used to it :)
 	NOTE: The components work a bit different, but this code here is mostly not component oriented.
 
@@ -157,7 +157,8 @@ class Island(BuildingOwner, WorldObject):
 
 		"""TUTORIAL:
 		The next step will be an overview of the component system, which you will need
-		to understand in order to see how our actual game object (buildings, units) work. Please proceed to horizons/component/componentholder.py
+		to understand in order to see how our actual game object (buildings, units) work.
+		Please proceed to horizons/component/componentholder.py.
 		"""
 
 	def save(self, db):
@@ -227,7 +228,7 @@ class Island(BuildingOwner, WorldObject):
 
 	def add_existing_settlement(self, position, radius, settlement, load=False):
 		"""Same as add_settlement, but uses settlement from parameter.
-		May also be called for extension of an existing settlement by a new building. (this
+		May also be called for extension of an existing settlement by a new building (this
 		is useful for loading, where every loaded building extends the radius of its settlement).
 		@param position: Rect
 		@param load: whether it has been called during load"""
