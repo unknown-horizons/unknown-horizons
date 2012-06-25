@@ -19,6 +19,8 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
+import logging
+
 import json
 from itertools import groupby
 from fife.extensions.pychan.widgets import HBox, Icon, Label
@@ -30,6 +32,7 @@ from horizons.command.game import UnPauseCommand
 from horizons.command.misc import Chat
 from horizons.gui.widgets.pickbeltwidget import PickBeltWidget
 from horizons.gui.widgets import OkButton
+from horizons.scenario.actions import show_message
 
 @metaChangeListenerDecorator("pause_request")
 @metaChangeListenerDecorator("unpause_request")
@@ -40,6 +43,8 @@ class LogBook(PickBeltWidget):
 	It displays longer messages, which are essential for scenarios.
 	Headings can be specified for each entry.
 	"""
+	log = logging.getLogger('gui.widgets.logbook')
+	
 	widget_xml = 'captains_log.xml'
 	style = None
 	page_pos = (170,38)
@@ -52,6 +57,7 @@ class LogBook(PickBeltWidget):
 		super(LogBook, self).__init__()
 		self.session = session
 		self._parameters = [] # list of lists of all parameters added to a logbook page
+		self._messages = {} # dict of messages to display on page close and their associated display flags, i.e. whether they have been displayed; e.g. {"This is a message" : false}
 		self._cur_entry = None # remember current location; 0 to len(messages)-1
 		self._hiding_widget = False # True if and only if the widget is currently in the process of being hidden
 		self.stats_visible = None
@@ -134,6 +140,12 @@ class LogBook(PickBeltWidget):
 			self._hide_statswidgets()
 			self._gui.hide()
 			self._hiding_widget = False
+			if self._messages:
+				for message in self._messages:
+					if not self._messages[message]: # message has not been displayed
+						show_message(self.session, message)
+						self._messages[message] = True
+				#self._messages = [] # I hope this doesn't cause problems with message buildup
 		# Make sure the game is unpaused always and in any case
 		UnPauseCommand(suggestion=False).execute(self.session)
 
@@ -192,10 +204,20 @@ class LogBook(PickBeltWidget):
 		elif parameter_type == u'Headline':
 			add = Label(text=parameter[1])
 			add.stylize('headline')
+		elif parameter_type == u'Message':
+			add = None
+			# parameters are re-read on page reload.
+			# duplicate_message stops messages from
+			# being duplicated on page reload.
+			duplicate_message = any(msg == parameter[1] for msg in self._messages)
+
+			if not duplicate_message:
+				self._messages[parameter[1]] = False # has not been displayed
 		else:
 			print '[WW] Warning: Unknown parameter type {typ} in parameter {prm}'.format(
 				typ=parameter[0], prm=parameter)
 			add = None
+		self.log.debug("parameter added of type %s", parameter_type)
 		return add
 
 	def _display_parameters_on_page(self, parameters, page):
@@ -220,6 +242,7 @@ class LogBook(PickBeltWidget):
 		[Headline, "Label to be styled as headline (in small caps)"]
 		[Image, "content/gui/images/path/to/the/file.png"]
 		[Gallery, ["/path/1.png", "/path/file.png", "/file/3.png"]]
+		[Message, "Text to display as a notification on logbook close"]
 		[Pagebreak]  <==  not implemented yet
 		"""
 		#TODO last line of message text sometimes get eaten. Ticket #535
