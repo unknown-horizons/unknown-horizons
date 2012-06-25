@@ -289,7 +289,7 @@ class MultiplayerMenu(object):
 
 
 	def __enter_password_dialog(self, game):
-		"""Shows a dialog where the user can enter the password"""
+		"""Shows a dialog where the player can enter the password"""
 		set_password_dialog = self.widgets['set_password']
 		def _enter_password():
 			if hashlib.sha1(set_password_dialog.collectData("password")).hexdigest() == game.password:
@@ -529,13 +529,19 @@ class MultiplayerMenu(object):
 		players_vbox.addChild(gicon)
 
 		def _add_player_line(player):
-			pname = pychan.widgets.Label(name="pname_%s" % player['name'])
+			pname = pychan.widgets.Label(name="pname_%s" % player['name'],\
+							helptext=_("Click here to change your name and/or color"))
 			pname.text = player['name']
+			if player['name'] == NetworkInterface().get_client_name():
+				pname.capture(Callback(self.__show_change_player_details_popup))
 			pname.min_size = (130, 15)
 			pname.max_size = (130, 15)
 
-			pcolor = pychan.widgets.Label(name="pcolor_%s" % player['name'], text=u"   ")
+			pcolor = pychan.widgets.Label(name="pcolor_%s" % player['name'], text=u"   ", \
+							 helptext=_("Click here to change your name and/or color"))
 			pcolor.background_color = player['color']
+			if player['name'] == NetworkInterface().get_client_name():
+				pcolor.capture(Callback(self.__show_change_player_details_popup))
 			pcolor.min_size = (15, 15)
 			pcolor.max_size = (15, 15)
 
@@ -568,3 +574,28 @@ class MultiplayerMenu(object):
 			_add_player_line(player)
 
 		players_vbox.adaptLayout()
+
+	def __show_change_player_details_popup(self):
+		"""Shows a dialog where the player can change its name and/or color"""
+		set_player_details_dialog = self.widgets['set_player_details']
+		#remove all children of color and name pop-up and then show them
+		set_player_details_dialog.findChild(name="playerdataselectioncontainer").removeAllChildren()
+		#assign playerdata to self.current.playerdata to use self.__apply_new_color() and __apply_new_nickname()
+		self.current.playerdata = PlayerDataSelection(set_player_details_dialog, self.widgets)
+
+		def _change_playerdata():
+			self.__apply_new_color()
+			self.__apply_new_nickname()
+			set_player_details_dialog.hide()
+
+		def _cancel():
+			set_player_details_dialog.hide()
+
+		events = {
+			OkButton.DEFAULT_NAME: _change_playerdata,
+			CancelButton.DEFAULT_NAME: _cancel
+		}
+		self.on_escape = _cancel
+
+		set_player_details_dialog.mapEvents(events)
+		set_player_details_dialog.show()
