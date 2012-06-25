@@ -60,8 +60,8 @@ class Address(object):
 
 class Player(object):
 	def __init__(self, peer, sid, protocol = 0):
-		# pickle doesn't use all of this attributes
-		# for more detail check __getstate__ method
+		# pickle doesn't use all of these attributes
+		# for more detail check __getstate__()
 		self.peer     = peer
 		assert(isinstance(self.peer, enet.Peer))
 		self.address  = Address(self.peer.address)
