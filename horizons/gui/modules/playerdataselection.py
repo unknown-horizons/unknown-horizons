@@ -30,7 +30,7 @@ class PlayerDataSelection(object):
 	"""Subwidget for selecting player name and color.
 	Used by Multiplayer and Singleplayer menu."""
 
-	def __init__(self, parent_gui, widgets):
+	def __init__(self, parent_gui, widgets, color_palette=None):
 		"""
 		Adds the playerdataselection container to a parent gui
 		@param parent_gui: a pychan gui object containing a container named "playerdataselectioncontainer"
@@ -47,14 +47,14 @@ class PlayerDataSelection(object):
 		events = {}
 
 		# need the id to save it as int in settings file.
-		for color_id, color in enumerate(Color):
+		for color in (Color if color_palette is None else color_palette):
 			label = Label(name = u'{color}'.format(color=color.name),
 			              text = u"    ",
 			              max_size = (20,20),
 			              min_size = (20,20),
 			              background_color = color)
 			events['{label}/mouseClicked'.format(label=color.name)] = \
-			                             Callback(self._set_color, color_id+1)
+			                             Callback(self._set_color, color.id)
 			colorlabels.append(label)
 
 		# split into three rows with at max 5 entries in each row

@@ -33,6 +33,7 @@ from horizons.network.networkinterface import NetworkInterface
 from horizons.network import find_enet_module
 from horizons.util import SavegameAccessor, Callback
 from horizons.component.ambientsoundcomponent import AmbientSoundComponent
+from horizons.util.color import Color
 
 enet = find_enet_module()
 
@@ -577,16 +578,32 @@ class MultiplayerMenu(object):
 
 	def __show_change_player_details_popup(self):
 		"""Shows a dialog where the player can change its name and/or color"""
+
+		def _get_unused_colors():
+			"""Returns unused colors list in a game """
+
+			unused_color_list = []
+
+			for color in Color:
+				used = False
+				for player in NetworkInterface().get_game().get_player_list():
+					if player['color'] == color and player['name'] != NetworkInterface().get_client_name():
+						used = True
+				if not used:
+					unused_color_list.append(color)
+			return unused_color_list
+
 		set_player_details_dialog = self.widgets['set_player_details']
 		#remove all children of color and name pop-up and then show them
 		set_player_details_dialog.findChild(name="playerdataselectioncontainer").removeAllChildren()
 		#assign playerdata to self.current.playerdata to use self.__apply_new_color() and __apply_new_nickname()
-		self.current.playerdata = PlayerDataSelection(set_player_details_dialog, self.widgets)
+		self.current.playerdata = PlayerDataSelection(set_player_details_dialog, self.widgets, color_palette=_get_unused_colors())
 
 		def _change_playerdata():
-			self.__apply_new_color()
 			self.__apply_new_nickname()
+			self.__apply_new_color()
 			set_player_details_dialog.hide()
+			self.__update_game_details()
 
 		def _cancel():
 			set_player_details_dialog.hide()
