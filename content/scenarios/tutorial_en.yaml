@@ -5,7 +5,6 @@
 events:
 - # Show a message after starting the game (how to move)
   actions:
-#   - {type: message, arguments: ["Build a warehouse at the coast, so it is easy accessible for other ships like the Free Trader."]}
    - type: logbook
      arguments:
      - [Message, "Build a warehouse at the coast, so it is easily accessible for other ships like the Free Trader."]
@@ -102,7 +101,6 @@ events:
           "content/gui/icons/buildmenu/015.png",
           "content/gui/icons/resources/50/004.png",
        ]]
-#  - {type: message, arguments: ["Build a lumberjack and connect it to the warehouse using a trail."]}
    - {type: set_var, arguments: ["tutStepDone", 19]}
   conditions:
    - type: settlement_res_stored_greater

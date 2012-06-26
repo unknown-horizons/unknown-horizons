@@ -140,12 +140,10 @@ class LogBook(PickBeltWidget):
 			self._hide_statswidgets()
 			self._gui.hide()
 			self._hiding_widget = False
-			if self._messages:
-				for message in self._messages:
-					if not self._messages[message]: # message has not been displayed
-						show_message(self.session, message)
-						self._messages[message] = True
-				#self._messages = [] # I hope this doesn't cause problems with message buildup
+			for message, displayed in self._messages.iteritems():
+				if not displayed: # message has not yet been displayed
+					show_message(self.session, message)
+					self._messages[message] = True # message has now been displayed
 		# Make sure the game is unpaused always and in any case
 		UnPauseCommand(suggestion=False).execute(self.session)
 
@@ -209,7 +207,7 @@ class LogBook(PickBeltWidget):
 			# parameters are re-read on page reload.
 			# duplicate_message stops messages from
 			# being duplicated on page reload.
-			duplicate_message = any(msg == parameter[1] for msg in self._messages)
+			duplicate_message = parameter[1] in self._messages
 
 			if not duplicate_message:
 				self._messages[parameter[1]] = False # has not been displayed
