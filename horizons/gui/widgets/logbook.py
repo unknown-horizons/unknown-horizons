@@ -111,7 +111,7 @@ class LogBook(PickBeltWidget):
 		super(LogBook, self).update_view(number)
 
 	def save(self, db):
-		db("INSERT INTO logbook(widgets) VALUES(?)", json.dumps(self._widgets))
+		db("INSERT INTO logbook(widgets) VALUES(?)", json.dumps(self._parameters))
 		db("INSERT INTO metadata(name, value) VALUES(?, ?)", \
 		   "logbook_cur_entry", self._cur_entry)
 
