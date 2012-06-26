@@ -465,11 +465,11 @@ class MultiplayerMenu(object):
 		ret = self.show_select_savegame(mode='mp_load')
 		if ret is None: # user aborted
 			return
-		path, gamename = ret
+		path, gamename, gamepassword = ret
 		# get name from path
 		paths, names = SavegameManager.get_multiplayersaves()
 		mapname = names[paths.index(path)]
-		self.__create_game(load=(mapname, gamename))
+		self.__create_game(load=(mapname, gamename, gamepassword))
 
 
 	def __create_game(self, load=None, chosen_map=None):
@@ -481,9 +481,10 @@ class MultiplayerMenu(object):
 		"""
 		# create the game
 		if load:
-			mapname, gamename = load
+			mapname, gamename, gamepassword = load
 			path = SavegameManager.get_multiplayersave_map(mapname)
 			maxplayers = SavegameAccessor.get_players_num(path)
+			password = gamepassword
 			load = SavegameAccessor.get_hash(path)
 		else:
 			mapindex = None

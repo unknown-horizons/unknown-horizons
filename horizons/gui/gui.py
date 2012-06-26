@@ -295,15 +295,22 @@ class Gui(SingleplayerMenu, MultiplayerMenu):
 		self.current.findChild(name=OkButton.DEFAULT_NAME).helptext = _('Save game') if mode == 'save' else _('Load game')
 
 		name_box = self.current.findChild(name="gamename_box")
+		password_box = self.current.findChild(name="gamepassword_box")
 		if mp and mode == 'load': # have gamename
 			name_box.parent.showChild(name_box)
+			password_box.parent.showChild(password_box)
 			gamename_textfield = self.current.findChild(name="gamename")
-			def clear_gamename_textfield():
+			gamepassword_textfield = self.current.findChild(name="gamepassword")
+			gamepassword_textfield.text = u""
+			def clear_gamedetails_textfields():
 				gamename_textfield.text = u""
-			gamename_textfield.capture(clear_gamename_textfield, 'mouseReleased', 'default')
+				gamepassword_textfield.text = u""
+			gamename_textfield.capture(clear_gamedetails_textfields, 'mouseReleased', 'default')
 		else:
 			if name_box not in name_box.parent.hidden_children:
 				name_box.parent.hideChild(name_box)
+			if password_box not in name_box.parent.hidden_children:
+				password_box.parent.hideChild(password_box)
 
 		self.current.show()
 
@@ -388,7 +395,7 @@ class Gui(SingleplayerMenu, MultiplayerMenu):
 
 		if mp and mode == 'load': # also name
 			gamename_textfield = self.current.findChild(name="gamename")
-			ret = selected_savegame, self.current.collectData('gamename')
+			ret = selected_savegame, self.current.collectData('gamename'), self.current.collectData('gamepassword')
 		else:
 			ret = selected_savegame
 		self.current = old_current # reuse old widget

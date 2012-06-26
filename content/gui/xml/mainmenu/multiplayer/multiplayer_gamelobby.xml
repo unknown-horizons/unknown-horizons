@@ -36,10 +36,10 @@
 			<Label name="game_isloaded"/>
 		</VBox>
 
-		<Label name="game_playersnum" position="0,155"/>
-		<Label name="game_player_color" position="130,155" text="Color"/>
-		<Label name="game_player_status" position="205,155" text="Status"/>
-		<VBox name="players_vbox" position="0,180"></VBox>
+		<Label name="game_playersnum" position="0,175"/>
+		<Label name="game_player_color" position="130,175" text="Color"/>
+		<Label name="game_player_status" position="205,175" text="Status"/>
+		<VBox name="players_vbox" position="0,190"></VBox>
 	</Container>
 
 </Container>
