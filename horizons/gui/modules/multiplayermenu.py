@@ -582,16 +582,9 @@ class MultiplayerMenu(object):
 		def _get_unused_colors():
 			"""Returns unused colors list in a game """
 
-			unused_color_list = []
-
-			for color in Color:
-				used = False
-				for player in NetworkInterface().get_game().get_player_list():
-					if player['color'] == color and player['name'] != NetworkInterface().get_client_name():
-						used = True
-				if not used:
-					unused_color_list.append(color)
-			return unused_color_list
+			assigned = [p["color"] for p in NetworkInterface().get_game().get_player_list()  if p["name"] != NetworkInterface().get_client_name() ]
+			available = set(Color) - set(assigned)
+			return available
 
 		set_player_details_dialog = self.widgets['set_player_details']
 		#remove all children of color and name pop-up and then show them

@@ -98,3 +98,6 @@ class Color(object):
 			return True
 		else:
 			return False
+
+	def __hash__(self):
+		return hash("%s%s%s%s" % (self.r, self.g, self.b, self.a))
