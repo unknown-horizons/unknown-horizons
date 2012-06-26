@@ -101,6 +101,9 @@ class NetworkInterface(object):
 	def get_client_name(self):
 		return self._client.name
 
+	def get_client_color(self):
+		return self._client.color
+
 	def connect(self):
 		"""
 		@throws: NetworkError
@@ -182,6 +185,8 @@ class NetworkInterface(object):
 
 	def change_color(self, new_color, save=True):
 		""" see network/client.py -> changecolor() for _important_ return values"""
+		if new_color > len(set(Color)):
+			new_color %= len(set(Color))
 		if save:
 			horizons.main.fife.set_uh_setting("ColorID", new_color)
 			horizons.main.fife.save_settings()

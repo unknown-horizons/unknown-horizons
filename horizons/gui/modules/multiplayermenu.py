@@ -591,6 +591,8 @@ class MultiplayerMenu(object):
 		set_player_details_dialog.findChild(name="playerdataselectioncontainer").removeAllChildren()
 		#assign playerdata to self.current.playerdata to use self.__apply_new_color() and __apply_new_nickname()
 		self.current.playerdata = PlayerDataSelection(set_player_details_dialog, self.widgets, color_palette=_get_unused_colors())
+		self.current.playerdata.set_player_name(NetworkInterface().get_client_name())
+		self.current.playerdata.set_color(NetworkInterface().get_client_color())
 
 		def _change_playerdata():
 			self.__apply_new_nickname()

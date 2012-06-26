@@ -41,7 +41,7 @@ class PlayerDataSelection(object):
 
 		self.colors = self.gui.findChild(name = 'playercolor')
 		self.selected_color = horizons.main.fife.get_uh_setting("ColorID") # starts at 1!
-		self._set_color(self.selected_color)
+		self.set_color(self.selected_color)
 
 		colorlabels = []
 		events = {}
@@ -54,7 +54,7 @@ class PlayerDataSelection(object):
 			              min_size = (20,20),
 			              background_color = color)
 			events['{label}/mouseClicked'.format(label=color.name)] = \
-			                             Callback(self._set_color, color.id)
+			                             Callback(self.set_color, color.id)
 			colorlabels.append(label)
 
 		# split into three rows with at max 5 entries in each row
@@ -70,7 +70,7 @@ class PlayerDataSelection(object):
 		parent_gui.findChild(name="playerdataselectioncontainer").addChild( self.gui )
 		parent_gui.mapEvents(events)
 
-	def _set_color(self, color_id):
+	def set_color(self, color_id):
 		"""Updates the background color of large label where players
 		see their currently chosen color. Stores result in settings.
 		@param color_id: int. Gets converted to FIFE Color object.
@@ -78,6 +78,11 @@ class PlayerDataSelection(object):
 		self.selected_color = Color[color_id]
 		horizons.main.fife.set_uh_setting("ColorID", color_id)
 		self.gui.findChild(name='selectedcolor').background_color = Color[color_id]
+
+	def set_player_name(self, playername):
+		self.gui.distributeData({
+			'playername': unicode(playername),
+			})
 
 	def get_player_name(self):
 		"""Returns the name that was entered by the user"""
