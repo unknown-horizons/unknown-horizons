@@ -105,11 +105,6 @@ class LogBook(PickBeltWidget):
 		"""
 		self.current_mode = number
 		
-		# if self._cur_entry > len(self._page_ids), 
-		# append 0 until we reach self._cur_entry, which is an integer
-		#for x in xrange( len(self._page_ids), self._cur_entry ): # xrange is faster
-		#	self._page_ids.append(0)
-		
 		# self.session might not exist yet during callback setup for pickbelts
 		if hasattr(self, 'session'):
 			self._hide_statswidgets()
@@ -134,10 +129,8 @@ class LogBook(PickBeltWidget):
 	def show(self, msg_id=None):
 		if not hasattr(self,'_gui'):
 			self._init_gui()
-		self.log.debug("msg_id = %s", msg_id)
 		if msg_id:
 			self._cur_entry = self._page_ids[msg_id]
-			self.log.debug("self._cur_entry = %s", self._cur_entry)
 		if not self.is_visible():
 			self._gui.show()
 			self._redraw_captainslog()
@@ -156,7 +149,6 @@ class LogBook(PickBeltWidget):
 				if not displayed: # message has not yet been displayed
 					for msg_id in show_message(self.session, "logbook", message):
 						self._page_ids[msg_id] = self._cur_entry
-						self.log.debug("_page_ids[%s] = %s", msg_id, self._page_ids[msg_id])
 					self._messages[message] = True # message has now been displayed
 		# Make sure the game is unpaused always and in any case
 		UnPauseCommand(suggestion=False).execute(self.session)
