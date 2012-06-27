@@ -53,15 +53,16 @@ register = ACTIONS.register
 def show_message(session, type=None, *messages):
 	"""Shows a message with custom text in the messagewidget.
 	If you pass more than one message, they are shown after each other, delayed in time."""
-	delay_ticks = Scheduler().get_ticks(MESSAGES.CUSTOM_MSG_SHOW_DELAY)
+#	delay_ticks = Scheduler().get_ticks(MESSAGES.CUSTOM_MSG_SHOW_DELAY)
 	visible_ticks = Scheduler().get_ticks(MESSAGES.CUSTOM_MSG_VISIBLE_FOR)
-	delay_iter = 1
-	for msg in messages:
-		Scheduler().add_new_object(Callback(session.ingame_gui.message_widget.add_custom,
-		                                    None, None, msg, msg_type=type, visible_for=visible_ticks),
-		                           None, run_in=delay_iter)
-		delay_iter += delay_ticks
-	return [msg.created for msg in messages] # this needs to be the return value of session.ingame_gui.message_widget.add_custom()
+#	delay_iter = 1
+#	for msg in messages:
+#		Scheduler().add_new_object(Callback(session.ingame_gui.message_widget.add_custom,
+#		                                    None, None, msg, msg_type=type, visible_for=visible_ticks),
+#		                           None, run_in=delay_iter)
+#		delay_iter += delay_ticks
+	return [session.ingame_gui.message_widget.add_custom(None, None, msg, msg_type=type, visible_for=visible_ticks)
+	        for msg in messages]
 
 @register(name='db_message')
 def show_db_message(session, database_message_id):

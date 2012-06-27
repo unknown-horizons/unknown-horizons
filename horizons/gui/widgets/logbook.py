@@ -54,7 +54,7 @@ class LogBook(PickBeltWidget):
 
 	def __init__(self, session):
 		self.statistics_index = [i for i,sec in enumerate(self.sections) if sec[0] == 'statistics'][0]
-		self._page_ids = {} # dict mapping self.current_page to message.msgcount
+		self._page_ids = {} # dict mapping self._cur_entry to message.msgcount
 		super(LogBook, self).__init__()
 		self.session = session
 		self._parameters = [] # list of lists of all parameters added to a logbook page
@@ -63,7 +63,7 @@ class LogBook(PickBeltWidget):
 		self._hiding_widget = False # True if and only if the widget is currently in the process of being hidden
 		self.stats_visible = None
 		self.last_stats_widget = 'players'
-		self.current_page = 0
+		self.current_mode = 0 # used to determine if the logbook is on the statistics page
 		self._init_gui()
 
 #		self.add_captainslog_entry([
@@ -103,11 +103,11 @@ class LogBook(PickBeltWidget):
 	def update_view(self, number=0):
 		""" update_view from PickBeltWidget, cleaning up the logbook subwidgets
 		"""
-		self.current_page = number
+		self.current_mode = number
 		
-		# if self.current_page > len(self._page_ids), 
-		# append 0 until we reach self.current_page, which is an integer
-		#for x in xrange( len(self._page_ids), self.current_page ): # xrange is faster
+		# if self._cur_entry > len(self._page_ids), 
+		# append 0 until we reach self._cur_entry, which is an integer
+		#for x in xrange( len(self._page_ids), self._cur_entry ): # xrange is faster
 		#	self._page_ids.append(0)
 		
 		# self.session might not exist yet during callback setup for pickbelts
@@ -136,10 +136,12 @@ class LogBook(PickBeltWidget):
 			self._init_gui()
 		self.log.debug("msg_id = %s", msg_id)
 		if msg_id:
-			self.current_page = self._page_ids[msg_id]
+			self._cur_entry = self._page_ids[msg_id]
+			self.log.debug("self._cur_entry = %s", self._cur_entry)
 		if not self.is_visible():
 			self._gui.show()
-			if self.current_page == self.statistics_index:
+			self._redraw_captainslog()
+			if self.current_mode == self.statistics_index:
 				self.show_statswidget(self.last_stats_widget)
 			self.session.ingame_gui.on_switch_main_widget(self)
 
@@ -153,7 +155,8 @@ class LogBook(PickBeltWidget):
 			for message, displayed in self._messages.iteritems():
 				if not displayed: # message has not yet been displayed
 					for msg_id in show_message(self.session, "logbook", message):
-						self._page_ids[msg_id] = self.current_page
+						self._page_ids[msg_id] = self._cur_entry
+						self.log.debug("_page_ids[%s] = %s", msg_id, self._page_ids[msg_id])
 					self._messages[message] = True # message has now been displayed
 		# Make sure the game is unpaused always and in any case
 		UnPauseCommand(suggestion=False).execute(self.session)
@@ -226,7 +229,7 @@ class LogBook(PickBeltWidget):
 			print '[WW] Warning: Unknown parameter type {typ} in parameter {prm}'.format(
 				typ=parameter[0], prm=parameter)
 			add = None
-		self.log.debug("parameter added of type %s", parameter_type)
+		#self.log.debug("parameter added of type %s", parameter_type)
 		return add
 
 	def _display_parameters_on_page(self, parameters, page):
@@ -320,7 +323,7 @@ class LogBook(PickBeltWidget):
 
 	def show_statswidget(self, widget='players'):
 		"""Shows logbook with Statistics page selected"""
-		if self.current_page != self.statistics_index:
+		if self.current_mode != self.statistics_index:
 			self.update_view(self.statistics_index)
 		self._hide_statswidgets()
 		if widget:
