@@ -219,6 +219,7 @@ class Island(BuildingOwner, WorldObject):
 		self.session.ingame_gui.message_widget.add(position.center().x, \
 		                                           position.center().y, \
 		                                           'NEW_SETTLEMENT', \
+		                                           None, \
 		                                           {'player':player.name}, \
 		                                           self.session.world.player == player)
 

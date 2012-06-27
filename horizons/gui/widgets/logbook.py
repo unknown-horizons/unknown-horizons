@@ -54,6 +54,7 @@ class LogBook(PickBeltWidget):
 
 	def __init__(self, session):
 		self.statistics_index = [i for i,sec in enumerate(self.sections) if sec[0] == 'statistics'][0]
+		self._page_ids = {} # dict mapping self.current_page to message.msgcount
 		super(LogBook, self).__init__()
 		self.session = session
 		self._parameters = [] # list of lists of all parameters added to a logbook page
@@ -103,6 +104,12 @@ class LogBook(PickBeltWidget):
 		""" update_view from PickBeltWidget, cleaning up the logbook subwidgets
 		"""
 		self.current_page = number
+		
+		# if self.current_page > len(self._page_ids), 
+		# append 0 until we reach self.current_page, which is an integer
+		#for x in xrange( len(self._page_ids), self.current_page ): # xrange is faster
+		#	self._page_ids.append(0)
+		
 		# self.session might not exist yet during callback setup for pickbelts
 		if hasattr(self, 'session'):
 			self._hide_statswidgets()
@@ -124,9 +131,12 @@ class LogBook(PickBeltWidget):
 		if (value and value[0] and value[0][0]):
 			self.set_cur_entry(int(value[0][0])) # this also redraws
 
-	def show(self):
+	def show(self, msg_id=None):
 		if not hasattr(self,'_gui'):
 			self._init_gui()
+		self.log.debug("msg_id = %s", msg_id)
+		if msg_id:
+			self.current_page = self._page_ids[msg_id]
 		if not self.is_visible():
 			self._gui.show()
 			if self.current_page == self.statistics_index:
@@ -142,7 +152,8 @@ class LogBook(PickBeltWidget):
 			self._hiding_widget = False
 			for message, displayed in self._messages.iteritems():
 				if not displayed: # message has not yet been displayed
-					show_message(self.session, message)
+					for msg_id in show_message(self.session, "logbook", message):
+						self._page_ids[msg_id] = self.current_page
 					self._messages[message] = True # message has now been displayed
 		# Make sure the game is unpaused always and in any case
 		UnPauseCommand(suggestion=False).execute(self.session)

@@ -50,7 +50,7 @@ register = ACTIONS.register
 
 
 @register(name='message')
-def show_message(session, *messages):
+def show_message(session, type=None, *messages):
 	"""Shows a message with custom text in the messagewidget.
 	If you pass more than one message, they are shown after each other, delayed in time."""
 	delay_ticks = Scheduler().get_ticks(MESSAGES.CUSTOM_MSG_SHOW_DELAY)
@@ -58,9 +58,10 @@ def show_message(session, *messages):
 	delay_iter = 1
 	for msg in messages:
 		Scheduler().add_new_object(Callback(session.ingame_gui.message_widget.add_custom,
-		                                    None, None, msg, visible_for=visible_ticks),
+		                                    None, None, msg, msg_type=type, visible_for=visible_ticks),
 		                           None, run_in=delay_iter)
 		delay_iter += delay_ticks
+	return [msg.created for msg in messages] # this needs to be the return value of session.ingame_gui.message_widget.add_custom()
 
 @register(name='db_message')
 def show_db_message(session, database_message_id):
@@ -79,7 +80,7 @@ def show_logbook_entry_delayed(session, *parameters):
 	"""
 	def write_logbook_entry(session, parameters):
 		"""Adds an entry to the logbook and displays it.
-		On logbook close, displays a notification defined in the YAML."""
+		On logbook close, displays a notification message defined in the YAML."""
 		session.ingame_gui.logbook.add_captainslog_entry(parameters, show_logbook=True)
 	delay = MESSAGES.LOGBOOK_DEFAULT_DELAY
 	callback = Callback(write_logbook_entry, session, parameters)
