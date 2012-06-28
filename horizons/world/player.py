@@ -152,7 +152,7 @@ class Player(ComponentHolder, WorldObject):
 		"""The message bus calls this when a building is 'infected' with a disaster."""
 		if self.is_local_player:
 			pos = message.building.position.center()
-			self.session.ingame_gui.message_widget.add(pos.x, pos.y, message.disaster_class.NOTIFICATION_TYPE)
+			self.session.ingame_gui.message_widget.add(x=pos.x, y=pos.y, string_id=message.disaster_class.NOTIFICATION_TYPE)
 
 	def end(self):
 		self.stats = None
@@ -189,10 +189,10 @@ class HumanPlayer(Player):
 		if level_up:
 			# add message and update ingame gui
 			coords = (message.sender.position.center().x, message.sender.position.center().y)
-			self.session.ingame_gui.message_widget.add(coords[0], coords[1], \
-			                                                    'SETTLER_LEVEL_UP',
-			                                                    {'level': message.level+1})
+			self.session.ingame_gui.message_widget.add(x=coords[0], y=coords[1], \
+			                                                    string_id='SETTLER_LEVEL_UP',
+			                                                    message_dict={'level': message.level+1})
 		return level_up
 
 	def notify_mine_empty(self, mine):
-		self.session.ingame_gui.message_widget.add(mine.position.center().x, mine.position.center().y, 'MINE_EMPTY')
+		self.session.ingame_gui.message_widget.add(x=mine.position.center().x, y=mine.position.center().y, string_id='MINE_EMPTY')

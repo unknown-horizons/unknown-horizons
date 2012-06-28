@@ -80,7 +80,7 @@ class MessageWidget(LivingObject):
 		self._last_message = {} # used to detect fast subsequent messages in add()
 		self.draw_widget()
 
-	def add(self, x, y, string_id, msg_type=None, message_dict=None, creation_tick=None, sound_file=True, check_duplicate=False):
+	def add(self, x, y, string_id, msg_type=None, message_dict=None, sound_file=True, check_duplicate=False):
 		"""Adds a message to the MessageWidget.
 		@param x, y: int coordinates where the action took place. Clicks on the message will then focus that spot.
 		@param id: message id string, needed to retrieve the message text from the content database.
@@ -112,7 +112,7 @@ class MessageWidget(LivingObject):
 		Instead, directly provides text and icon to be shown (messagetext, icon_id)
 		@param visible_for: how many seconds the message will stay visible in the widget
 		"""
-		return self._add_message(Message(x, y, None, msg_type=msg_type, display=visible_for, created=self.msgcount.next(), message=messagetext, icon_id=icon_id))
+		return self._add_message(Message(x=x, y=y, id=None, msg_type=msg_type, display=visible_for, created=self.msgcount.next(), message=messagetext, icon_id=icon_id))
 
 	def add_chat(self, player, messagetext, icon_id=1):
 		""" See docstring for add().
@@ -249,11 +249,11 @@ class MessageWidget(LivingObject):
 	def load(self, db):
 		messages = db("SELECT id, x, y, read, created, display, message FROM message_widget_active ORDER BY created ASC")
 		for (msg_id, x, y, read, created, display, message) in messages:
-			msg = Message(x, y, msg_id, created, bool(read), bool(display), message)
+			msg = Message(x=x, y=y, id=msg_id, created=created, read=bool(read), display=bool(display), message=message)
 			self.active_messages.append(msg)
 		messages = db("SELECT id, x, y, read, created, display, message FROM message_widget_archive ORDER BY created ASC")
 		for (msg_id, x, y, read, created, display, message) in messages:
-			msg = Message(x, y, msg_id, created, bool(read), bool(display), message)
+			msg = Message(x=x, y=y, id=msg_id, created=created, read=bool(read), display=bool(display), message=message)
 			if msg_id == 'CHAT':
 				self.chat.append(msg)
 			else:
@@ -275,7 +275,7 @@ class Message(object):
 	@param count: a unique message id number
 	@param message_dict: dict with strings to replace in the message, e.g. {'player': 'Arthus'}
 	"""
-	def __init__(self, x, y, id, created, msg_type=None, read=False, display=None, message=None, message_dict=None, icon_id=None):
+	def __init__(self, x, y, id, created, msg_type=None, read=False, display=None, message=None, message_dict=None, icon_id=None):		
 		self.x, self.y = x, y
 		self.id = id
 		self.type = msg_type

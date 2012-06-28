@@ -65,7 +65,7 @@ class CommandableComponent(Component):
 		if move_target is None: # can't move
 			if self.instance.owner.is_local_player:
 				if self.session.world.get_tile(Point(x, y)) is None: # not even in world
-					self.session.ingame_gui.message_widget.add(x, y, "MOVE_OUTSIDE_OF_WORLD")
+					self.session.ingame_gui.message_widget.add(x=x, y=y, string_id="MOVE_OUTSIDE_OF_WORLD")
 				else: # in world, but still unreachable
-					self.session.ingame_gui.message_widget.add(x, y, "MOVE_INVALID_LOCATION")
+					self.session.ingame_gui.message_widget.add(x=x, y=y, string_id="MOVE_INVALID_LOCATION")
 			return None
