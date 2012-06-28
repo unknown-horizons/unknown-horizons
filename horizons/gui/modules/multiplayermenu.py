@@ -240,9 +240,6 @@ class MultiplayerMenu(object):
 
 			if text:
 				self.current.findChild(name="game_isloaded").text = text
-		#textplayers = self.current.findChild(name="game_players")
-		#if textplayers is not None:
-		#	textplayers.text = u", ".join(game.get_players())
 
 		self.__update_players_box(game)
 
@@ -428,9 +425,9 @@ class MultiplayerMenu(object):
 
 	def __player_changed_color(self, game, plold, plnew, myself):
 		if myself:
-			self.__print_event_message(_("You changed your color").format(new_name=plnew.name))
+			self.__print_event_message(_("You changed your color"))
 		else:
-			self.__print_event_message(_("{player} changed its color").format(player=plold.name, new_name=plnew.name))
+			self.__print_event_message(_("{player} changed its color").format(player=plnew.name))
 
 	def __fetch_game(self, game):
 		self.__print_event_message(_("You fetched the savegame data"))
