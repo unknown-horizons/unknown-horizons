@@ -60,6 +60,8 @@ class NetworkInterface(object):
 
 	def get_game(self):
 		game = self._client.game
+		if game is None:
+			return None
 		return self.game2mpgame(game)
 
 	def isconnected(self):
@@ -217,6 +219,9 @@ class NetworkInterface(object):
 	def register_player_changed_color_callback(self, function):
 		self._client.register_callback("lobbygame_changecolor", function)
 
+	def register_player_fetch_game_callback(self, function):
+		self._client.register_callback("savegame_data", function)
+
 	def register_game_details_changed_callback(self, function, unique = True):
 		if unique and function in self.cbs_game_details_changed:
 			return
@@ -317,6 +322,9 @@ class NetworkInterface(object):
 
 	def send_kick_player(self, player):
 		self._client.send_kick_player(player)
+
+	def send_fetch_game(self, clientversion, uuid):
+		self._client.send_fetch_game(clientversion, uuid)
 
 
 class MPGame(object):

@@ -62,6 +62,8 @@ class Server(object):
 			packets.client.cmd_preparedgame:   [ self.onpreparedgame ],
 			packets.client.cmd_toggle_ready:   [ self.ontoggleready ],
 			packets.client.cmd_kick_player:    [ self.onkickplayer  ],
+		  packets.client.cmd_fetch_game:     [ self.onfetchgame   ],
+		  packets.client.savegame_data:      [ self.onsavegamedata ],
 			'preparegame':    [ self.preparegame ],
 			'startgame':      [ self.startgame ],
 			'leavegame':      [ self.leavegame ],
@@ -305,6 +307,18 @@ class Server(object):
 		self.send(peer, gameslist)
 
 
+	def __find_game_from_uuid(self, packet):
+		game = None
+		for _game in self.games:
+			if (packet.clientversion != _game.clientversion):
+				continue
+			if (packet.uuid != _game.uuid):
+				continue
+			game = _game
+			break
+		return game
+
+
 	def onjoingame(self, peer, packet):
 		if len(packet.uuid) != 32:
 			self.error(peer, "Invalid game UUID")
@@ -320,14 +334,8 @@ class Server(object):
 			self.error(peer, "You can't join a game while in another game")
 			return
 
-		game = None
-		for _game in self.games:
-			if (packet.clientversion != _game.clientversion):
-				continue
-			if (packet.uuid != _game.uuid):
-				continue
-			game = _game
-			break
+		game = self.__find_game_from_uuid(packet)
+
 		if game is None:
 			self.error(peer, "Unknown game or game is running a different version")
 			return
@@ -553,6 +561,27 @@ class Server(object):
 			self.send(_player.peer, packets.server.cmd_chatmsg("SERVER", "User %s is kicked by creator" % packet.player))
 			if _player.name == packet.player:
 				self.send(_player.peer, packets.server.cmd_kick_player(_player))
+
+	def onfetchgame(self, peer, packet):
+		player = self.players[peer.data]
+		game = player.game
+
+		if game is not None:
+			self.error(peer, "You can't fetch a game while in another game")
+
+		fetch_game = self.__find_game_from_uuid(packet)
+
+		for _player in fetch_game.players:
+			if _player.name == fetch_game.creator:
+				self.send(_player.peer, packets.server.cmd_fetch_game(player.sid))
+
+	def onsavegamedata(self, peer, packet):
+		player = self.players[peer.data]
+		game = player.game
+
+		for _player in game.players:
+			if _player.sid == packet.psid:
+				self.send(_player.peer, packets.server.savegame_data(packet.data, player.sid, game.mapname))
 
 
 	def print_statistic(self, file):

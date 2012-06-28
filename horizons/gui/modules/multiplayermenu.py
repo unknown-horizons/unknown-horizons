@@ -116,6 +116,7 @@ class MultiplayerMenu(object):
 		NetworkInterface().register_player_changed_color_callback(self.__player_changed_color)
 		NetworkInterface().register_player_toggle_ready_callback(self.__toggle_player_ready)
 		NetworkInterface().register_player_kick_player_callback(self.__kick_player)
+		NetworkInterface().register_player_fetch_game_callback(self.__fetch_game)
 
 		try:
 			NetworkInterface().connect()
@@ -213,10 +214,10 @@ class MultiplayerMenu(object):
 		vbox_inner = self.current.findChild(name="game_info")
 		if game.load is not None: # work around limitations of current systems via messages
 			path = SavegameManager.get_multiplayersave_map(game.mapname)
+			btn_name = "save_missing_help_button"
+			btn = vbox_inner.findChild(name=btn_name)
 			if SavegameAccessor.get_hash(path) != game.load:
 				text = ""
-				btn_name = "save_missing_help_button"
-				btn = vbox_inner.findChild(name=btn_name)
 				if btn is None:
 					btn = pychan.widgets.Button(name=btn_name,
 					                            text=_("This savegame is missing (click here)"))
@@ -225,9 +226,8 @@ class MultiplayerMenu(object):
 						vbox_inner.addChild( btn )
 					else:
 						vbox_inner.insertChildBefore( btn, last_elem )
-				btn_text = _(u"For multiplayer load, it is currently necessary for you to ensure you have the correct savegame file.") + u"\n"
-				btn_text += _(u"This is not nice and we hope to offer a more convenient solution very soon.") + u"\n"
-				btn_text += _(u"Meanwhile, please request the file {path} from the game creator and put it in {map_directory} .").format(path=os.path.basename(path), map_directory=os.path.dirname(path))
+				btn_text = _(u"For multiplayer load, it is necessary for you to have the correct savegame file.") + u"\n"
+				btn_text += _(u"The file will be downloaded when you join the game.")
 				btn.btn_text = btn_text
 				def show():
 					self.show_popup(_("Help"), btn_text, size=1)
@@ -235,6 +235,8 @@ class MultiplayerMenu(object):
 
 			else:
 				text = _(u"This is a savegame.")
+				if btn is not None:
+					btn.hide()
 
 			if text:
 				self.current.findChild(name="game_isloaded").text = text
@@ -268,8 +270,8 @@ class MultiplayerMenu(object):
 		if game == None:
 			game = self.__get_selected_game()
 		if game.load is not None and SavegameAccessor.get_hash(SavegameManager.get_multiplayersave_map(game.mapname)) != game.load:
-			self.show_popup(_("Error"), self.current.findChild(name="save_missing_help_button").btn_text, size=1)
-			return
+			NetworkInterface().send_fetch_game(NetworkInterface().get_clientversion(), game.get_uuid())
+
 		if game.get_uuid() == -1: # -1 signals no game
 			AmbientSoundComponent.play_special('error')
 			return
@@ -325,12 +327,22 @@ class MultiplayerMenu(object):
 		import horizons.main
 		horizons.main.start_multiplayer(game)
 
+	def __send_toggle_ready(self):
+		game = NetworkInterface().get_game()
+
+		if game.load is not None and \
+		SavegameAccessor.get_hash(SavegameManager.get_multiplayersave_map(game.mapname)) != game.load:
+			self.__print_event_message("You are fetching savegame data. You must wait for it")
+			return
+
+		NetworkInterface().send_toggle_ready(NetworkInterface().get_client_name())
+
 	def __show_gamelobby(self):
 		"""Shows lobby (gui for waiting until all players have joined). Allows chatting"""
 		game = self.__get_selected_game()
 		event_map = {
 			'cancel' : self.show_multi,
-			'ready_or_start_btn' : Callback(NetworkInterface().send_toggle_ready, NetworkInterface().get_client_name()),
+			'ready_or_start_btn' : self.__send_toggle_ready,
 		}
 		self.widgets.reload('multiplayer_gamelobby') # remove old chat messages, etc
 		self._switch_current_widget('multiplayer_gamelobby', center=True, event_map=event_map, hide_old=True)
@@ -419,6 +431,10 @@ class MultiplayerMenu(object):
 			self.__print_event_message(_("You changed your color").format(new_name=plnew.name))
 		else:
 			self.__print_event_message(_("{player} changed its color").format(player=plold.name, new_name=plnew.name))
+
+	def __fetch_game(self, game):
+		self.__print_event_message(_("You fetched the savegame data"))
+		self.__update_game_details()
 
 	def __show_create_game(self):
 		"""Shows the interface for creating a multiplayer game"""

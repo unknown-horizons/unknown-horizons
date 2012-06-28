@@ -21,11 +21,13 @@
 
 import logging
 import datetime
+import bz2
 
 from horizons.network import packets
 from horizons import network
 from horizons.network.common import *
 from horizons.network import find_enet_module
+from horizons.savegamemanager import SavegameManager
 
 enet = find_enet_module()
 # during pyenets move to cpython they renamed a few constants...
@@ -77,6 +79,7 @@ class Client(object):
 			'lobbygame_starts':      [],
 			'game_starts':    [],
 			'game_data':      [],
+		  'savegame_data':  [],
 		}
 		self.register_callback('lobbygame_changename', self.onchangename, True)
 		self.register_callback('lobbygame_changecolor', self.onchangecolor, True)
@@ -348,6 +351,15 @@ class Client(object):
 			self.call_callbacks("game_data", packet[1].data)
 		elif isinstance(packet[1], packets.server.cmd_kick_player):
 			self.call_callbacks("lobbygame_kickplayer", self.game, packet[1].player)
+		elif isinstance(packet[1], packets.server.cmd_fetch_game):
+			if self.game is None:
+				return True
+			path = SavegameManager.get_multiplayersave_map(self.game.mapname)
+			compressed_data = bz2.compress(open(path).read())
+			self.send(packets.client.savegame_data(compressed_data, packet[1].psid))
+		elif isinstance(packet[1], packets.server.savegame_data):
+			open(SavegameManager.get_multiplayersave_map(packet[1].mapname), "w").write(bz2.decompress(packet[1].data))
+			self.call_callbacks("savegame_data", self.game)
 
 		return False
 
@@ -516,3 +528,6 @@ class Client(object):
 	def send_kick_player(self, player):
 		self.send(packets.client.cmd_kick_player(player))
 		return True
+
+	def send_fetch_game(self, clientversion, uuid):
+		self.send(packets.client.cmd_fetch_game(clientversion, uuid))
