@@ -145,7 +145,6 @@ class SavegameUpgrader(object):
 	def _upgrade_to_rev62(self, db):
 		# added a message parameter to the logbook which needs to be saved
 		db("CREATE TABLE logbook_messages ( message STRING, displayed BOOL )")
-		#db("INSERT INTO logbook_messages(message, displayed) VALUES(?, ?)", "", True)
 
 	def _upgrade(self):
 		# fix import loop

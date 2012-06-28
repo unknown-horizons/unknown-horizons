@@ -126,7 +126,7 @@ class LogBook(PickBeltWidget):
 			self.add_captainslog_entry(widgets, show_logbook=False)
 
 		for msg, displayed in db("SELECT message, displayed FROM logbook_messages"):
-			self._messages[unicode(msg)] = (displayed == 1) # convert from int to bool
+			self._messages[unicode(msg)] = bool(displayed) # convert from int to bool
 			#self.log.debug()
 			self.log.debug("self._messages[%s] = %s", msg, self._messages[msg])
 		
