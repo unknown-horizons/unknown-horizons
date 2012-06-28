@@ -114,6 +114,8 @@ class LogBook(PickBeltWidget):
 
 	def save(self, db):
 		db("INSERT INTO logbook(widgets) VALUES(?)", json.dumps(self._parameters))
+		for message, displayed in self._messages.iteritems():
+			db("INSERT INTO logbook_messages(message, displayed) VALUES(?, ?)", message, displayed)
 		db("INSERT INTO metadata(name, value) VALUES(?, ?)", \
 		   "logbook_cur_entry", self._cur_entry)
 
@@ -122,6 +124,12 @@ class LogBook(PickBeltWidget):
 		widget_list = json.loads(db_data[0][0] if db_data else "[]")
 		for widgets in widget_list:
 			self.add_captainslog_entry(widgets, show_logbook=False)
+
+		for msg, displayed in db("SELECT message, displayed FROM logbook_messages"):
+			self._messages[unicode(msg)] = (displayed == 1) # convert from int to bool
+			#self.log.debug()
+			self.log.debug("self._messages[%s] = %s", msg, self._messages[msg])
+		
 		value = db('SELECT value FROM metadata WHERE name = "logbook_cur_entry"')
 		if (value and value[0] and value[0][0]):
 			self.set_cur_entry(int(value[0][0])) # this also redraws
