@@ -90,7 +90,7 @@ class NetworkInterface(object):
 		if NETWORK.CLIENT_ADDRESS is not None or client_port > 0:
 			clientaddress = [NETWORK.CLIENT_ADDRESS, client_port]
 		try:
-			self._client = Client(name, VERSION.RELEASE_VERSION, serveraddress, clientaddress, color)
+			self._client = Client(name, VERSION.RELEASE_VERSION, serveraddress, clientaddress, color, self.__get_client_id())
 		except NetworkException as e:
 			raise RuntimeError(e)
 
@@ -99,6 +99,12 @@ class NetworkInterface(object):
 
 	def __get_player_color(self):
 		return horizons.main.fife.get_uh_setting("ColorID")
+
+	def __get_client_id(self):
+		return horizons.main.fife.get_uh_setting("ClientID")
+
+	def get_client_id(self):
+		return self._client.clientid
 
 	def get_client_name(self):
 		return self._client.name
@@ -372,9 +378,9 @@ class MPGame(object):
 		for player in self.get_players():
 			# TODO: add support for selecting difficulty levels to the GUI
 			player_status = player.name in self.get_ready_players()
-			ret_players.append({'id': id, 'name': player.name, 'color': Color[player.color], 'local': self.localname == player.name, \
-				'ai': False, 'difficulty': DifficultySettings.DEFAULT_LEVEL, 'status': _('Creator') if self.get_creator() == \
-			  player.name else (_('Ready') if player_status else _('Not Ready'))})
+			ret_players.append({'id': id, 'name': player.name, 'color': Color[player.color], 'clientid': player.clientid, \
+			  'local': self.localname == player.name, 'ai': False, 'difficulty': DifficultySettings.DEFAULT_LEVEL, \
+			  'status': _('Creator') if self.get_creator() == player.name else (_('Ready') if player_status else _('Not Ready'))})
 			id += 1
 		return ret_players
 

@@ -280,6 +280,7 @@ class Server(object):
 			return
 		player.name = unicode(packet.playername)
 		player.color = packet.playercolor
+		player.clientid = packet.clientid
 		game = Game(packet, player)
 		logging.debug("[CREATE] [%s] %s created %s" % (game.uuid, player, game))
 		self.games.append(game)
@@ -369,6 +370,7 @@ class Server(object):
 		logging.debug("[JOIN] [%s] %s joined %s" % (game.uuid, player, game))
 		player.name = packet.playername
 		player.color = packet.playercolor
+		player.clientid = packet.clientid
 		game.add_player(player)
 		for _player in game.players:
 			self.send(_player.peer, packets.server.data_gamestate(game))

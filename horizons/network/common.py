@@ -67,6 +67,7 @@ class Player(object):
 		self.address  = Address(self.peer.address)
 		self.sid      = sid
 		self.protocol = protocol
+		self.clientid = None
 		self.name     = None
 		self.color    = None
 		self.game     = None
@@ -91,7 +92,7 @@ class Player(object):
 
 	# for pickle: return only relevant data to the player
 	def __getstate__(self):
-		return { 'sid': self.sid, 'address': None, 'name': self.name, 'color': self.color }
+		return { 'sid': self.sid, 'address': None, 'name': self.name, 'color': self.color, 'clientid': self.clientid }
 
 	def __str__(self):
 		if self.name:

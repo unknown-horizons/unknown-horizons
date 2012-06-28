@@ -364,7 +364,7 @@ def prepare_multiplayer(game, trader_enabled = True, pirate_enabled = True, natu
 		map_file = SavegameManager.get_map( game.get_map_name() )
 
 	_modules.session.load(map_file,
-	                      game.get_player_list(), trader_enabled, pirate_enabled, natural_resource_multiplier)
+	                      game.get_player_list(), trader_enabled, pirate_enabled, natural_resource_multiplier, is_multiplayer=True)
 
 def start_multiplayer(game):
 	_modules.session.start()

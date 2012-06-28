@@ -50,7 +50,7 @@ class ClientMode(object):
 class Client(object):
 	log = logging.getLogger("network")
 
-	def __init__(self, name, version, server_address, client_address = None, color = None):
+	def __init__(self, name, version, server_address, client_address = None, color = None, clientid = None):
 		try:
 			clientaddress = enet.Address(client_address[0], client_address[1]) if client_address is not None else None
 			self.host = enet.Host(clientaddress, MAX_PEERS, 0, 0, 0)
@@ -65,6 +65,7 @@ class Client(object):
 		self.mode          = None
 		self.sid           = None
 		self.game          = None
+		self.clientid      = clientid
 		self.color         = color
 		self.packetqueue   = []
 		self.callbacks     = {
@@ -389,7 +390,7 @@ class Client(object):
 		if self.mode is not ClientMode.Server:
 			raise network.NotInServerMode("We are not in server mode")
 		self.log.debug("[CREATE] mapname=%s maxplayers=%d" % (mapname, maxplayers))
-		self.send(packets.client.cmd_creategame(self.version, mapname, maxplayers, self.name, name, load, password, self.color))
+		self.send(packets.client.cmd_creategame(self.version, mapname, maxplayers, self.name, name, load, password, self.color, self.clientid))
 		packet = self.recv_packet([packets.cmd_error, packets.server.data_gamestate])
 		if packet is None:
 			raise network.FatalError("No reply from server")
@@ -408,7 +409,7 @@ class Client(object):
 		if self.mode is not ClientMode.Server:
 			raise network.NotInServerMode("We are not in server mode")
 		self.log.debug("[JOIN] %s" % (uuid))
-		self.send(packets.client.cmd_joingame(uuid, self.version, self.name, self.color))
+		self.send(packets.client.cmd_joingame(uuid, self.version, self.name, self.color, self.clientid))
 		packet = self.recv_packet([packets.cmd_error, packets.server.data_gamestate])
 		if packet is None:
 			raise network.FatalError("No reply from server")

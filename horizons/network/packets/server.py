@@ -75,11 +75,15 @@ class cmd_startgame(packet):
 
 SafeUnpickler.add('server', cmd_startgame)
 
+#-------------------------------------------------------------------------------
+
 class cmd_kick_player(packet):
 	def __init__(self, player):
 		self.player = player
 
 SafeUnpickler.add('server', cmd_kick_player)
+
+#-------------------------------------------------------------------------------
 
 class cmd_fetch_game(packet):
 	def __init__(self, psid):
@@ -88,6 +92,7 @@ class cmd_fetch_game(packet):
 
 SafeUnpickler.add('server', cmd_fetch_game)
 
+#-------------------------------------------------------------------------------
 
 class savegame_data(packet):
 	def __init__(self, data, psid, mapname):

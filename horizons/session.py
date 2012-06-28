@@ -254,7 +254,7 @@ class Session(LivingObject):
 
 	def load(self, savegame, players, trader_enabled, pirate_enabled,
 	         natural_resource_multiplier, is_scenario=False, campaign=None,
-	         force_player_id=None, disasters_enabled=True):
+	         force_player_id=None, disasters_enabled=True, is_multiplayer=False):
 		"""Loads a map. Key method for starting a game.
 		@param savegame: path to the savegame database.
 		@param players: iterable of dictionaries containing id, name, color, local, ai, and difficulty
@@ -302,7 +302,7 @@ class Session(LivingObject):
 			# NOTE: this must be sorted before iteration, cause there is no defined order for
 			#       iterating a dict, and it must happen in the same order for mp games.
 			for i in sorted(players, lambda p1, p2: cmp(p1['id'], p2['id'])):
-				self.world.setup_player(i['id'], i['name'], i['color'], i['local'], i['ai'], i['difficulty'])
+				self.world.setup_player(i['id'], i['name'], i['color'], i['clientid'] if is_multiplayer else None, i['local'], i['ai'], i['difficulty'])
 			self.world.set_forced_player(force_player_id)
 			center = self.world.init_new_world(trader_enabled, pirate_enabled, natural_resource_multiplier)
 			self.view.center(center[0], center[1])

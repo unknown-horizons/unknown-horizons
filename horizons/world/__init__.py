@@ -486,7 +486,7 @@ class World(BuildingOwner, WorldObject):
 				# don't yield if point is not in map, those points don't exist
 				yield point
 
-	def setup_player(self, id, name, color, local, is_ai, difficulty_level):
+	def setup_player(self, id, name, color, clientid, local, is_ai, difficulty_level):
 		"""Sets up a new Player instance and adds her to the active world.
 		Only used for new games. Loading old players is done in _init().
 		@param local: bool, whether the player is the one sitting on front of this machine."""
@@ -495,7 +495,7 @@ class World(BuildingOwner, WorldObject):
 		if is_ai: # a human controlled AI player
 			player = AIPlayer(self.session, id, name, color, difficulty_level)
 		else:
-			player = HumanPlayer(self.session, id, name, color, difficulty_level)
+			player = HumanPlayer(self.session, id, name, color, clientid, difficulty_level)
 		player.initialize(inv)  # Componentholder init
 		if local:
 			self.player = player

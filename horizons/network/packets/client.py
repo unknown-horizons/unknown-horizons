@@ -28,11 +28,12 @@ class cmd_creategame(packet):
 	maxplayers    = None
 	playername    = None
 	playercolor   = None
+	clientid      = None
 	name          = u"Unnamed Game"
 	load          = None
 	password      = None
 
-	def __init__(self, clientver, mapname, maxplayers, playername, name, load=None, password=None, playercolor=None):
+	def __init__(self, clientver, mapname, maxplayers, playername, name, load=None, password=None, playercolor=None, clientid=None):
 		"""
 		@param load: whether it's a loaded game
 		"""
@@ -44,6 +45,7 @@ class cmd_creategame(packet):
 		self.load          = load
 		self.password      = None if password == "" else password
 		self.playercolor   = playercolor
+		self.clientid      = clientid
 
 	def validate(self):
 		if not isinstance(self.clientversion, unicode):
@@ -92,12 +94,14 @@ class cmd_joingame(packet):
 	clientversion = None
 	playername    = None
 	playercolor   = None
+	clientid      = None
 
-	def __init__(self, uuid, clientver, playername, playercolor):
+	def __init__(self, uuid, clientver, playername, playercolor, clientid):
 		self.uuid          = uuid
 		self.clientversion = clientver
 		self.playername    = playername
 		self.playercolor   = playercolor
+		self.clientid      = clientid
 
 	def validate(self):
 		if not isinstance(self.uuid, str):
@@ -190,6 +194,7 @@ class cmd_toggle_ready(packet):
 
 SafeUnpickler.add('client', cmd_toggle_ready)
 
+#-------------------------------------------------------------------------------
 
 class cmd_kick_player(packet):
 	def __init__(self, player):
@@ -201,6 +206,7 @@ class cmd_kick_player(packet):
 
 SafeUnpickler.add('client', cmd_kick_player)
 
+#-------------------------------------------------------------------------------
 
 class cmd_fetch_game(packet):
 	def __init__(self, clientversion, uuid):
@@ -215,6 +221,7 @@ class cmd_fetch_game(packet):
 
 SafeUnpickler.add('client', cmd_fetch_game)
 
+#-------------------------------------------------------------------------------
 
 class savegame_data(packet):
 	def __init__(self, data, psid):
