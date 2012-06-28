@@ -33,34 +33,34 @@ INSERT INTO "ground_class" VALUES(5, 'coastline');
 INSERT INTO "ground_class" VALUES(7, 'constructible');
 
 CREATE TABLE "unit" (
+	"id" INT NOT NULL,
 	"name" TEXT NOT NULL,
 	"class_package" TEXT NOT NULL,
 	"class_type" TEXT NOT NULL,
 	"base_velocity" REAL DEFAULT '12.0',
-	"radius" INT DEFAULT 5,
-	"id" INT
+	"radius" INT DEFAULT '5'
 );
-INSERT INTO "unit" VALUES('Huker', 'ship', 'Ship', 5.0, 5, 1000001);
-INSERT INTO "unit" VALUES('BuildingCollector', 'collectors', 'BuildingCollector', 12.0, 5, 1000002);
-INSERT INTO "unit" VALUES('Sheep', 'animal', 'FarmAnimal', 12.0, 3, 1000003);
-INSERT INTO "unit" VALUES('Fisher', 'ship', 'FisherShip', 12.0, 5, 1000004);
-INSERT INTO "unit" VALUES('Pirate Ship', 'ship', 'PirateShip', 12.0, 5, 1000005);
-INSERT INTO "unit" VALUES('Trader', 'ship', 'TradeShip', 12.0, 8, 1000006);
-INSERT INTO "unit" VALUES('AnimalCarriage', 'collectors', 'AnimalCollector', 12.0, 5, 1000007);
-INSERT INTO "unit" VALUES('StorageCollector', 'collectors', 'StorageCollector', 12.0, 5, 1000008);
-INSERT INTO "unit" VALUES('FieldCollector', 'collectors', 'FieldCollector', 12.0, 5, 1000009);
-INSERT INTO "unit" VALUES('LumberjackCollector', 'collectors', 'FieldCollector', 12.0, 5, 1000010);
-INSERT INTO "unit" VALUES('SettlerCollector', 'collectors', 'StorageCollector', 12.0, 5, 1000011);
-INSERT INTO "unit" VALUES('Deer', 'animal', 'WildAnimal', 12.0, 5, 1000013);
-INSERT INTO "unit" VALUES('HunterCollector', 'collectors', 'HunterCollector', 12.0, 5, 1000014);
-INSERT INTO "unit" VALUES('FarmAnimalCollector', 'collectors', 'FarmAnimalCollector', 12.0, 5, 1000015);
-INSERT INTO "unit" VALUES('UsableFisher', 'ship', 'Ship', 12.0, 5, 1000016);
-INSERT INTO "unit" VALUES('Cattle', 'animal', 'FarmAnimal', 12.0, 3, 1000017);
-INSERT INTO "unit" VALUES('Boar', 'animal', 'FarmAnimal', 12.0, 5, 1000018);
-INSERT INTO "unit" VALUES('Doctor', 'collectors', 'DisasterRecoveryCollector', 12.0, 5, 1000019);
-INSERT INTO "unit" VALUES('Frigate', 'fightingship', 'FightingShip', 12.0, 5, 1000020);
-INSERT INTO "unit" VALUES('BomberMan', 'groundunit', 'FightingGroundUnit', 10.0, 5, 1000021);
-INSERT INTO "unit" VALUES('Firefighter', 'collectors', 'DisasterRecoveryCollector', 12.0, 5, 1000022);
+INSERT INTO "unit" VALUES(1000001, 'Huker', 'ship', 'Ship', 5.0, 5);
+INSERT INTO "unit" VALUES(1000002, 'BuildingCollector', 'collectors', 'BuildingCollector', 12.0, 5);
+INSERT INTO "unit" VALUES(1000003, 'Sheep', 'animal', 'FarmAnimal', 12.0, 3);
+INSERT INTO "unit" VALUES(1000004, 'Fisher', 'ship', 'FisherShip', 12.0, 5);
+INSERT INTO "unit" VALUES(1000005, 'Pirate Ship', 'ship', 'PirateShip', 12.0, 5);
+INSERT INTO "unit" VALUES(1000006, 'Trader', 'ship', 'TradeShip', 12.0, 8);
+INSERT INTO "unit" VALUES(1000007, 'AnimalCarriage', 'collectors', 'AnimalCollector', 12.0, 5);
+INSERT INTO "unit" VALUES(1000008, 'StorageCollector', 'collectors', 'StorageCollector', 12.0, 5);
+INSERT INTO "unit" VALUES(1000009, 'FieldCollector', 'collectors', 'FieldCollector', 12.0, 5);
+INSERT INTO "unit" VALUES(1000010, 'LumberjackCollector', 'collectors', 'FieldCollector', 12.0, 5);
+INSERT INTO "unit" VALUES(1000011, 'SettlerCollector', 'collectors', 'StorageCollector', 12.0, 5);
+INSERT INTO "unit" VALUES(1000013, 'Deer', 'animal', 'WildAnimal', 12.0, 5);
+INSERT INTO "unit" VALUES(1000014, 'HunterCollector', 'collectors', 'HunterCollector', 12.0, 5);
+INSERT INTO "unit" VALUES(1000015, 'FarmAnimalCollector', 'collectors', 'FarmAnimalCollector', 12.0, 5);
+INSERT INTO "unit" VALUES(1000016, 'UsableFisher', 'ship', 'Ship', 12.0, 5);
+INSERT INTO "unit" VALUES(1000017, 'Cattle', 'animal', 'FarmAnimal', 12.0, 3);
+INSERT INTO "unit" VALUES(1000018, 'Boar', 'animal', 'FarmAnimal', 12.0, 5);
+INSERT INTO "unit" VALUES(1000019, 'Doctor', 'collectors', 'DisasterRecoveryCollector', 12.0, 5);
+INSERT INTO "unit" VALUES(1000020, 'Frigate', 'fightingship', 'FightingShip', 12.0, 5);
+INSERT INTO "unit" VALUES(1000021, 'BomberMan', 'groundunit', 'FightingGroundUnit', 10.0, 5);
+INSERT INTO "unit" VALUES(1000022, 'Firefighter', 'collectors', 'DisasterRecoveryCollector', 12.0, 5);
 
 CREATE TABLE "speech" (
 	"group_id" INT NOT NULL DEFAULT 0,
@@ -74,22 +74,22 @@ INSERT INTO "speech" VALUES(2, 'content/audio/sounds/events/new_settlement.ogg')
 INSERT INTO "speech" VALUES(3, 'content/audio/sounds/events/new_era.ogg');
 
 CREATE TABLE "sounds" (
-	"file" TEXT NOT NULL DEFAULT '',
-	"id" NOT NULL DEFAULT -1
+	"id" NOT NULL,
+	"file" TEXT NOT NULL
 );
-INSERT INTO "sounds" VALUES('content/audio/sounds/sheepfield.ogg',  1);
-INSERT INTO "sounds" VALUES('content/audio/sounds/ships_bell.ogg',  2);
-INSERT INTO "sounds" VALUES('content/audio/sounds/build.ogg',       3);
-INSERT INTO "sounds" VALUES('content/audio/sounds/lumberjack.ogg',  4);
-INSERT INTO "sounds" VALUES('content/audio/sounds/warehouse.ogg',   5);
-INSERT INTO "sounds" VALUES('content/audio/sounds/main_square.ogg', 6);
-INSERT INTO "sounds" VALUES('content/audio/sounds/chapel.ogg',      7);
-INSERT INTO "sounds" VALUES('content/audio/sounds/ships_bell.ogg',  8);
-INSERT INTO "sounds" VALUES('content/audio/sounds/invalid.ogg',     9);
-INSERT INTO "sounds" VALUES('content/audio/sounds/flippage.ogg',   10);
-INSERT INTO "sounds" VALUES('content/audio/sounds/success.ogg',    11);
-INSERT INTO "sounds" VALUES('content/audio/sounds/refresh.ogg',    12);
-INSERT INTO "sounds" VALUES('content/audio/sounds/click.ogg',      13);
+INSERT INTO "sounds" VALUES( 1, 'content/audio/sounds/sheepfield.ogg');
+INSERT INTO "sounds" VALUES( 2, 'content/audio/sounds/ships_bell.ogg');
+INSERT INTO "sounds" VALUES( 3, 'content/audio/sounds/build.ogg');
+INSERT INTO "sounds" VALUES( 4, 'content/audio/sounds/lumberjack.ogg');
+INSERT INTO "sounds" VALUES( 5, 'content/audio/sounds/warehouse.ogg');
+INSERT INTO "sounds" VALUES( 6, 'content/audio/sounds/main_square.ogg');
+INSERT INTO "sounds" VALUES( 7, 'content/audio/sounds/chapel.ogg');
+INSERT INTO "sounds" VALUES( 8, 'content/audio/sounds/ships_bell.ogg');
+INSERT INTO "sounds" VALUES( 9, 'content/audio/sounds/invalid.ogg');
+INSERT INTO "sounds" VALUES(10, 'content/audio/sounds/flippage.ogg');
+INSERT INTO "sounds" VALUES(11, 'content/audio/sounds/success.ogg');
+INSERT INTO "sounds" VALUES(12, 'content/audio/sounds/refresh.ogg');
+INSERT INTO "sounds" VALUES(13, 'content/audio/sounds/click.ogg');
 
 CREATE TABLE "sounds_special" (
 	"type" TEXT NOT NULL,
@@ -171,7 +171,8 @@ INSERT INTO "ai" VALUES('AIPlayer', 'aiplayer', 'AIPlayer');
 
 CREATE TABLE "object_sounds" (
 	"object" INT PRIMARY KEY NOT NULL DEFAULT '',
-	"sound" INT NOT NULL DEFAULT '');
+	"sound" INT NOT NULL DEFAULT ''
+);
 INSERT INTO "object_sounds" VALUES(1, 5);
 INSERT INTO "object_sounds" VALUES(4, 6);
 INSERT INTO "object_sounds" VALUES(5, 7);
@@ -184,7 +185,13 @@ CREATE TABLE "related_buildings" (
 	"related_building" INT,
 	"show_in_menu" BOOL NOT NULL DEFAULT ('1')
 );
-INSERT INTO "related_buildings" VALUES(8, 17, 1);
+INSERT INTO "related_buildings" VALUES( 3,  4, 1);
+INSERT INTO "related_buildings" VALUES( 3,  5, 1);
+INSERT INTO "related_buildings" VALUES( 3, 21, 1);
+INSERT INTO "related_buildings" VALUES( 3, 32, 1);
+INSERT INTO "related_buildings" VALUES( 3, 42, 1);
+INSERT INTO "related_buildings" VALUES( 6,  1, 0);
+INSERT INTO "related_buildings" VALUES( 8, 17, 1);
 INSERT INTO "related_buildings" VALUES(20, 18, 1);
 INSERT INTO "related_buildings" VALUES(20, 19, 1);
 INSERT INTO "related_buildings" VALUES(20, 22, 1);
@@ -196,13 +203,7 @@ INSERT INTO "related_buildings" VALUES(20, 49, 1);
 INSERT INTO "related_buildings" VALUES(20, 60, 1);
 INSERT INTO "related_buildings" VALUES(20, 61, 1);
 INSERT INTO "related_buildings" VALUES(20, 62, 1);
-INSERT INTO "related_buildings" VALUES(3, 4, 1);
-INSERT INTO "related_buildings" VALUES(3, 5, 1);
-INSERT INTO "related_buildings" VALUES(3, 21, 1);
-INSERT INTO "related_buildings" VALUES(3, 32, 1);
-INSERT INTO "related_buildings" VALUES(3, 42, 1);
-INSERT INTO "related_buildings" VALUES(6, 1, 0);
-INSERT INTO "related_buildings" VALUES(45, 3, 0);
+INSERT INTO "related_buildings" VALUES(45,  3, 0);
 
 CREATE TABLE "mine" (
 	"mine" INT NOT NULL,
@@ -212,85 +213,85 @@ INSERT INTO "mine" VALUES(25, 23);
 INSERT INTO "mine" VALUES(28, 34);
 
 CREATE TABLE "tile_set" (
-	"set_id" TEXT NOT NULL,
-	"ground_id" INT NOT NULL
+	"ground_id" INT NOT NULL,
+	"set_id" TEXT NOT NULL
 );
-INSERT INTO "tile_set" VALUES('ts_deep0', 0);
-INSERT INTO "tile_set" VALUES('ts_shallow0', 1);
-INSERT INTO "tile_set" VALUES('ts_shallow-deep0', 2);
-INSERT INTO "tile_set" VALUES('ts_grass0', 3);
-INSERT INTO "tile_set" VALUES('ts_grass-beach0', 4);
-INSERT INTO "tile_set" VALUES('ts_beach-shallow0', 5);
-INSERT INTO "tile_set" VALUES('ts_beach0', 6);
+INSERT INTO "tile_set" VALUES(0, 'ts_deep0');
+INSERT INTO "tile_set" VALUES(1, 'ts_shallow0');
+INSERT INTO "tile_set" VALUES(2, 'ts_shallow-deep0');
+INSERT INTO "tile_set" VALUES(3, 'ts_grass0');
+INSERT INTO "tile_set" VALUES(4, 'ts_grass-beach0');
+INSERT INTO "tile_set" VALUES(5, 'ts_beach-shallow0');
+INSERT INTO "tile_set" VALUES(6, 'ts_beach0');
 
 CREATE TABLE "resource" (
-	"tradeable" BOOL NOT NULL DEFAULT (0),
-	"name" TEXT NOT NULL,
-	"value" REAL,
 	"id" INT NOT NULL,
+	"name" TEXT NOT NULL,
+	"value" REAL,  -- If NULL, not a physical resource. If 0, just worthless.
+	"tradeable" BOOL NOT NULL DEFAULT (0),
 	"shown_in_inventory" BOOL NOT NULL DEFAULT (1)
 );
-INSERT INTO "resource" VALUES(0, 'coins', 0, 1, 0);
-INSERT INTO "resource" VALUES(0, 'lamb wool', 2, 2, 1);
-INSERT INTO "resource" VALUES(1, 'textile', 6.5, 3, 1);
-INSERT INTO "resource" VALUES(1, 'boards', 1.25, 4, 1);
-INSERT INTO "resource" VALUES(1, 'food', 2, 5, 1);
-INSERT INTO "resource" VALUES(1, 'tools', 18.5, 6, 1);
-INSERT INTO "resource" VALUES(1, 'bricks', 15, 7, 1);
-INSERT INTO "resource" VALUES(0, 'trees', 1, 8, 1);
-INSERT INTO "resource" VALUES(0, 'grass', 0, 9, 0);
+INSERT INTO "resource" VALUES( 1, 'coins', 0, 0, 0);
+INSERT INTO "resource" VALUES( 2, 'lamb wool', 2, 0, 1);
+INSERT INTO "resource" VALUES( 3, 'textile', 6.5, 1, 1);
+INSERT INTO "resource" VALUES( 4, 'boards', 1.25, 1, 1);
+INSERT INTO "resource" VALUES( 5, 'food', 2, 1, 1);
+INSERT INTO "resource" VALUES( 6, 'tools', 18.5, 1, 1);
+INSERT INTO "resource" VALUES( 7, 'bricks', 15, 1, 1);
+INSERT INTO "resource" VALUES( 8, 'trees', 1, 0, 1);
+INSERT INTO "resource" VALUES( 9, 'grass', 0, 0, 0);
 -- tradeable   name   value   id   show_inv
-INSERT INTO "resource" VALUES(1, 'wool', 2.5, 10, 1);
-INSERT INTO "resource" VALUES(0, 'faith', NULL, 11, 1);
-INSERT INTO "resource" VALUES(0, 'deer food A', 0, 12, 0);
-INSERT INTO "resource" VALUES(0, 'deer meat', 2, 13, 0);
-INSERT INTO "resource" VALUES(0, 'happiness', NULL, 14, 0);
-INSERT INTO "resource" VALUES(0, 'potatoes', 2, 15, 1);
-INSERT INTO "resource" VALUES(0, 'education', NULL, 16, 0);
-INSERT INTO "resource" VALUES(0, 'sugar cane', 2, 17, 1);
-INSERT INTO "resource" VALUES(1, 'sugar', 2.5, 18, 1);
-INSERT INTO "resource" VALUES(0, 'community', NULL, 19, 0);
-INSERT INTO "resource" VALUES(0, 'clay deposit', 0, 20, 1);
-INSERT INTO "resource" VALUES(1, 'clay', 7.5, 21, 1);
-INSERT INTO "resource" VALUES(1, 'liquor', 6.5, 22, 1);
-INSERT INTO "resource" VALUES(1, 'charcoal', 6.5, 23, 1);
-INSERT INTO "resource" VALUES(0, 'iron deposit', 0, 24, 1);
-INSERT INTO "resource" VALUES(1, 'iron ore', 7.5, 25, 1);
-INSERT INTO "resource" VALUES(1, 'iron ingots', 24, 26, 1);
-INSERT INTO "resource" VALUES(0, 'get-together', NULL, 27, 0);
-INSERT INTO "resource" VALUES(0, 'fish', 0, 28, 0);
-INSERT INTO "resource" VALUES(1, 'salt', 15, 29, 1);
-INSERT INTO "resource" VALUES(0, 'tobacco plants', 2, 30, 1);
-INSERT INTO "resource" VALUES(1, 'tobacco leaves', 2.5, 31, 1);
-INSERT INTO "resource" VALUES(1, 'tobaccos', 10, 32, 1);
+INSERT INTO "resource" VALUES(10, 'wool', 2.5, 1, 1);
+INSERT INTO "resource" VALUES(11, 'faith', NULL, 0, 1);
+INSERT INTO "resource" VALUES(12, 'deer food A', 0, 0, 0);
+INSERT INTO "resource" VALUES(13, 'deer meat', 2, 0, 0);
+INSERT INTO "resource" VALUES(14, 'happiness', NULL, 0, 0);
+INSERT INTO "resource" VALUES(15, 'potatoes', 2, 0, 1);
+INSERT INTO "resource" VALUES(16, 'education', NULL, 0, 0);
+INSERT INTO "resource" VALUES(17, 'sugar cane', 2, 0, 1);
+INSERT INTO "resource" VALUES(18, 'sugar', 2.5, 1, 1);
+INSERT INTO "resource" VALUES(19, 'community', NULL, 0, 0);
+INSERT INTO "resource" VALUES(20, 'clay deposit', 0, 0, 1);
+INSERT INTO "resource" VALUES(21, 'clay', 7.5, 1, 1);
+INSERT INTO "resource" VALUES(22, 'liquor', 6.5, 1, 1);
+INSERT INTO "resource" VALUES(23, 'charcoal', 6.5, 1, 1);
+INSERT INTO "resource" VALUES(24, 'iron deposit', 0, 0, 1);
+INSERT INTO "resource" VALUES(25, 'iron ore', 7.5, 1, 1);
+INSERT INTO "resource" VALUES(26, 'iron ingots', 24, 1, 1);
+INSERT INTO "resource" VALUES(27, 'get-together', NULL, 0, 0);
+INSERT INTO "resource" VALUES(28, 'fish', 0, 0, 0);
+INSERT INTO "resource" VALUES(29, 'salt', 15, 1, 1);
+INSERT INTO "resource" VALUES(30, 'tobacco plants', 2, 0, 1);
+INSERT INTO "resource" VALUES(31, 'tobacco leaves', 2.5, 1, 1);
+INSERT INTO "resource" VALUES(32, 'tobaccos', 10, 1, 1);
 -- tradeable   name   value   id   show_inv
-INSERT INTO "resource" VALUES(0, 'cattle', 0, 33, 1);
-INSERT INTO "resource" VALUES(0, 'pigs', 0, 34, 1);
-INSERT INTO "resource" VALUES(0, 'cattle for slaughter', 2, 35, 1);
-INSERT INTO "resource" VALUES(0, 'pigs for slaughter', 2, 36, 1);
-INSERT INTO "resource" VALUES(0, 'herbs', 0, 37, 1);
-INSERT INTO "resource" VALUES(0, 'medical herbs', 2.5, 38, 0);
-INSERT INTO "resource" VALUES(0, 'acorns', 0, 39, 1);
-INSERT INTO "resource" VALUES(1, 'cannon', 100, 40, 1);
-INSERT INTO "resource" VALUES(0, 'dagger', 10, 41, 0);
-INSERT INTO "resource" VALUES(0, 'grain', 0, 42, 1); -- corn ears
-INSERT INTO "resource" VALUES(0, 'corn', 2, 43, 1);
-INSERT INTO "resource" VALUES(1, 'flour', 2.5, 44, 1);
-INSERT INTO "resource" VALUES(0, 'spice plants', 2, 45, 1);
-INSERT INTO "resource" VALUES(1, 'spices', 2.5, 46, 1);
-INSERT INTO "resource" VALUES(1, 'condiments', 10, 47, 1);
-INSERT INTO "resource" VALUES(0, 'stone deposit', 0, 51, 1);
-INSERT INTO "resource" VALUES(1, 'stone tops', 7.5, 52, 1);
-INSERT INTO "resource" VALUES(0, 'cocoa beans', 2, 53, 1);
-INSERT INTO "resource" VALUES(1, 'cocoa', 2.5, 54, 1);
-INSERT INTO "resource" VALUES(1, 'confectionery', 10, 55, 1);
-INSERT INTO "resource" VALUES(1, 'candles', 10, 56, 1);
-INSERT INTO "resource" VALUES(0, 'vines', 2, 57, 1);
-INSERT INTO "resource" VALUES(1, 'grapes', 2.5, 58, 1);
+INSERT INTO "resource" VALUES(33, 'cattle', 0, 0, 1);
+INSERT INTO "resource" VALUES(34, 'pigs', 0, 0, 1);
+INSERT INTO "resource" VALUES(35, 'cattle for slaughter', 2, 0, 1);
+INSERT INTO "resource" VALUES(36, 'pigs for slaughter', 2, 0, 1);
+INSERT INTO "resource" VALUES(37, 'herbs', 0, 0, 1);
+INSERT INTO "resource" VALUES(38, 'medical herbs', 2.5, 0, 0);
+INSERT INTO "resource" VALUES(39, 'acorns', 0, 0, 1);
+INSERT INTO "resource" VALUES(40, 'cannon', 100, 1, 1);
+INSERT INTO "resource" VALUES(41, 'dagger', 10, 0, 0);
+INSERT INTO "resource" VALUES(42, 'grain', 0, 0, 1); -- corn ears
+INSERT INTO "resource" VALUES(43, 'corn', 2, 0, 1);
+INSERT INTO "resource" VALUES(44, 'flour', 2.5, 1, 1);
+INSERT INTO "resource" VALUES(45, 'spice plants', 2, 0, 1);
+INSERT INTO "resource" VALUES(46, 'spices', 2.5, 1, 1);
+INSERT INTO "resource" VALUES(47, 'condiments', 10, 1, 1);
+INSERT INTO "resource" VALUES(51, 'stone deposit', 0, 0, 1);
+INSERT INTO "resource" VALUES(52, 'stone tops', 7.5, 1, 1);
+INSERT INTO "resource" VALUES(53, 'cocoa beans', 2, 0, 1);
+INSERT INTO "resource" VALUES(54, 'cocoa', 2.5, 1, 1);
+INSERT INTO "resource" VALUES(55, 'confectionery', 10, 1, 1);
+INSERT INTO "resource" VALUES(56, 'candles', 10, 1, 1);
+INSERT INTO "resource" VALUES(57, 'vines', 2, 0, 1);
+INSERT INTO "resource" VALUES(58, 'grapes', 2.5, 1, 1);
 -- tradeable   name   value   id   show_inv
-INSERT INTO "resource" VALUES(0, 'alvearies', 2, 59, 1);
-INSERT INTO "resource" VALUES(1, 'honeycombs', 2.5, 60, 1);
-INSERT INTO "resource" VALUES(0, 'fire', 0, 99, 0);
+INSERT INTO "resource" VALUES(59, 'alvearies', 2, 0, 1);
+INSERT INTO "resource" VALUES(60, 'honeycombs', 2.5, 1, 1);
+INSERT INTO "resource" VALUES(99, 'fire', NULL, 0, 0);
 
 CREATE TABLE "translucent_buildings" (
 	"type" INT
@@ -312,13 +313,13 @@ CREATE TABLE "weapon" (
 	"bullet_image" TEXT
 );
 INSERT INTO "weapon" VALUES(40, 'ranged', 7, 5, 15, 3, 4, 2, 1, 'content/gfx/misc/cannonballs/cannonball.png');
-INSERT INTO "weapon" VALUES(41, 'melee', 3, 1, 1, 3, 2, 1, 0, '');
+INSERT INTO "weapon" VALUES(41, 'melee',  3, 1,  1, 3, 2, 1, 0, '');
 
 CREATE TABLE "settler_level" (
-	"level" INT NOT NULL DEFAULT (''),
-	"name" TEXT NOT NULL DEFAULT (''),
-	"tax_income" INT NOT NULL DEFAULT (''),
-	"inhabitants_max" INT
+	"level" INT NOT NULL,
+	"name" TEXT NOT NULL,
+	"tax_income" INT NOT NULL,
+	"inhabitants_max" INT NOT NULL
 );
 -------------------------------   tier    name    taxes  max_inhabitants
 INSERT INTO "settler_level" VALUES(0, 'Sailors',      3,  2);
