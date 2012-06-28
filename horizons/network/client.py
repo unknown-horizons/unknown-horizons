@@ -531,3 +531,4 @@ class Client(object):
 
 	def send_fetch_game(self, clientversion, uuid):
 		self.send(packets.client.cmd_fetch_game(clientversion, uuid))
+		return True
