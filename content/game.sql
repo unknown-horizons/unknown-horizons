@@ -103,6 +103,85 @@ INSERT INTO "sounds_special" VALUES('success',  11);
 INSERT INTO "sounds_special" VALUES('refresh',  12);
 INSERT INTO "sounds_special" VALUES('click',    13);
 
+CREATE TABLE "collector_restrictions" (
+	"collector" INT,
+	"object" INT
+);
+INSERT INTO "collector_restrictions" VALUES(1000011,  4);
+INSERT INTO "collector_restrictions" VALUES(1000011,  5);
+INSERT INTO "collector_restrictions" VALUES(1000011, 21);
+INSERT INTO "collector_restrictions" VALUES(1000011, 32);
+
+CREATE TABLE "message" (
+	"id_string" TEXT NOT NULL,
+	"icon" INT NOT NULL,
+	"visible_for" REAL NOT NULL,
+	"speech_group_id" INT
+); -- When you add new message groups, remember to update  horizons/i18n/voice.py !
+INSERT INTO "message" VALUES('AUTOSAVE',         3, 15.0, NULL);
+INSERT INTO "message" VALUES('BUILDING_ON_FIRE', 1, 30.0, NULL);
+INSERT INTO "message" VALUES('CHAT',             1, 30.0, NULL);
+INSERT INTO "message" VALUES('DIPLOMACY_STATUS_ALLY_ENEMY',    1, 10.0, NULL);
+INSERT INTO "message" VALUES('DIPLOMACY_STATUS_ALLY_NEUTRAL',  1, 10.0, NULL);
+INSERT INTO "message" VALUES('DIPLOMACY_STATUS_ENEMY_ALLY',    1, 10.0, NULL);
+INSERT INTO "message" VALUES('DIPLOMACY_STATUS_ENEMY_NEUTRAL', 1, 10.0, NULL);
+INSERT INTO "message" VALUES('DIPLOMACY_STATUS_NEUTRAL_ALLY',  1, 10.0, NULL);
+INSERT INTO "message" VALUES('DIPLOMACY_STATUS_NEUTRAL_ENEMY', 1, 10.0, NULL);
+INSERT INTO "message" VALUES('DRAG_ROADS_HINT',  1, 20.0, NULL);
+INSERT INTO "message" VALUES('FIELD_NEEDS_FARM', 1, 30.0, NULL);
+INSERT INTO "message" VALUES('MAX_INCR_REACHED', 1, 45.0, NULL);
+INSERT INTO "message" VALUES('MINE_EMPTY',       1, 30.0, NULL);
+INSERT INTO "message" VALUES('MOVE_INVALID_LOCATION', 1, 20.0, NULL);
+INSERT INTO "message" VALUES('MOVE_OUTSIDE_OF_WORLD', 1, 20.0, NULL);
+INSERT INTO "message" VALUES('NEED_MORE_RES',    1, 10.0, NULL);
+INSERT INTO "message" VALUES('NEW_SETTLEMENT',   1, 30.0, 2);
+INSERT INTO "message" VALUES('NEW_UNIT',         1, 15.0, 1);
+INSERT INTO "message" VALUES('NEW_WORLD',        1, 15.0, 1);
+INSERT INTO "message" VALUES('NO_MAIN_SQUARE_IN_RANGE', 1, 30.0, NULL);
+INSERT INTO "message" VALUES('QUICKSAVE',        3, 15.0, NULL);
+INSERT INTO "message" VALUES('ROUTE_DISABLED',   1, 45.0, NULL);
+INSERT INTO "message" VALUES('SAVED_GAME',       3, 15.0, NULL);
+INSERT INTO "message" VALUES('SCREENSHOT',       2, 20.0, NULL);
+INSERT INTO "message" VALUES('SETTLER_LEVEL_UP', 1, 30.0, 3);
+INSERT INTO "message" VALUES('SETTLERS_MOVED_OUT', 1, 40.0, NULL);
+INSERT INTO "message" VALUES('WAREHOUSE_NOT_TEARABLE', 1, 30.0, NULL);
+INSERT INTO "message" VALUES('YOU_HAVE_WON',     1, 60.0, NULL);
+INSERT INTO "message" VALUES('YOU_LOST',         1, 60.0, NULL);
+
+CREATE TABLE "message_text" (
+	"id_string" TEXT NOT NULL,
+	"text" TEXT NOT NULL
+);
+INSERT INTO "message_text" VALUES('AUTOSAVE',         'Your game has been autosaved.');
+INSERT INTO "message_text" VALUES('BUILDING_ON_FIRE', 'Your building has caught fire!');
+INSERT INTO "message_text" VALUES('CHAT',             '{player}: {message}');
+INSERT INTO "message_text" VALUES('DIPLOMACY_STATUS_ALLY_ENEMY',    '{player1} and {player2} have ended their alliance and are now in a state of war.');
+INSERT INTO "message_text" VALUES('DIPLOMACY_STATUS_ALLY_NEUTRAL',  '{player1} and {player2} have terminated their alliance.');
+INSERT INTO "message_text" VALUES('DIPLOMACY_STATUS_ENEMY_ALLY',    '{player1} and {player2} have ended the war and are now allied.');
+INSERT INTO "message_text" VALUES('DIPLOMACY_STATUS_ENEMY_NEUTRAL', '{player1} and {player2} have settled their hostility.');
+INSERT INTO "message_text" VALUES('DIPLOMACY_STATUS_NEUTRAL_ALLY',  '{player1} and {player2} have allied their forces.');
+INSERT INTO "message_text" VALUES('DIPLOMACY_STATUS_NEUTRAL_ENEMY', '{player1} and {player2} will fight each other to the death.');
+INSERT INTO "message_text" VALUES('DRAG_ROADS_HINT',  'You can also drag roads.');
+INSERT INTO "message_text" VALUES('FIELD_NEEDS_FARM', 'One of your fields requires a farm to harvest its crops.');
+INSERT INTO "message_text" VALUES('MINE_EMPTY',       'Your mine has run out of resources.');
+INSERT INTO "message_text" VALUES('MAX_INCR_REACHED', 'You have reached the current maximum increment. Your inhabitants will not upgrade further.');
+INSERT INTO "message_text" VALUES('MOVE_INVALID_LOCATION', 'Cannot go here.');
+INSERT INTO "message_text" VALUES('MOVE_OUTSIDE_OF_WORLD', 'Your crew refuses to leave this map.');
+INSERT INTO "message_text" VALUES('NEED_MORE_RES',    'You need more {resource} to build this building.');
+INSERT INTO "message_text" VALUES('NEW_SETTLEMENT',   'A new settlement was founded by {player}.');
+INSERT INTO "message_text" VALUES('NEW_UNIT',         'A new ship has been created.');
+INSERT INTO "message_text" VALUES('NEW_WORLD',        'A new world has been created.');
+INSERT INTO "message_text" VALUES('NO_MAIN_SQUARE_IN_RANGE', 'Some of your inhabitants have no access to a main square.');
+INSERT INTO "message_text" VALUES('QUICKSAVE',        'Your game has been quicksaved.');
+INSERT INTO "message_text" VALUES('ROUTE_DISABLED',   'The route is now configured. Start it via the "start route" button in the "configure route" menu.');
+INSERT INTO "message_text" VALUES('SAVED_GAME',       'Your game has been saved.');
+INSERT INTO "message_text" VALUES('SCREENSHOT',       'Screenshot has been saved to {file}.');
+INSERT INTO "message_text" VALUES('SETTLER_LEVEL_UP', 'Your inhabitants reached level {level}.');
+INSERT INTO "message_text" VALUES('SETTLERS_MOVED_OUT', 'Some of your inhabitants just moved out.');
+INSERT INTO "message_text" VALUES('WAREHOUSE_NOT_TEARABLE', 'You cannot tear the warehouse, your settlements needs it.');
+INSERT INTO "message_text" VALUES('YOU_HAVE_WON',     'You won!');
+INSERT INTO "message_text" VALUES('YOU_LOST',         'You failed the scenario.');
+
 CREATE TABLE "message_icon" (
 	"icon_id" INT NOT NULL,
 	"up_image" TEXT NOT NULL,
@@ -114,53 +193,6 @@ INSERT INTO "message_icon" VALUES(2, 'content/gui/icons/widgets/messages/msg_sys
 INSERT INTO "message_icon" VALUES(3, 'content/gui/icons/widgets/messages/msg_save_n.png',   'content/gui/icons/widgets/messages/msg_save_d.png',   'content/gui/icons/widgets/messages/msg_save_h.png');
 INSERT INTO "message_icon" VALUES(4, 'content/gui/icons/widgets/messages/msg_anchor_n.png', 'content/gui/icons/widgets/messages/msg_anchor_d.png', 'content/gui/icons/widgets/messages/msg_anchor_h.png');
 INSERT INTO "message_icon" VALUES(5, 'content/gui/icons/widgets/messages/msg_money_n.png',  'content/gui/icons/widgets/messages/msg_money_d.png',  'content/gui/icons/widgets/messages/msg_money_h.png');
-
-CREATE TABLE "collector_restrictions" (
-	"collector" INT,
-	"object" INT
-);
-INSERT INTO "collector_restrictions" VALUES(1000011,  4);
-INSERT INTO "collector_restrictions" VALUES(1000011,  5);
-INSERT INTO "collector_restrictions" VALUES(1000011, 21);
-INSERT INTO "collector_restrictions" VALUES(1000011, 32);
-
-CREATE TABLE "message" (
-	"text" TEXT NOT NULL,
-	"icon" INT NOT NULL,
-	"visible_for" REAL NOT NULL,
-	"speech_group_id" INT,
-	"id_string" TEXT
-);
--- When you add new message groups, remember to update  horizons/i18n/voice.py !
-INSERT INTO "message" VALUES('{player}: {message}', 1, 30.0, NULL, 'CHAT');
-INSERT INTO "message" VALUES('A new settlement was founded by {player}.', 1, 30.0, 2, 'NEW_SETTLEMENT');
-INSERT INTO "message" VALUES('A new world has been created.', 1, 15.0, 1, 'NEW_WORLD');
-INSERT INTO "message" VALUES('A new ship has been created.', 1, 15.0, 1, 'NEW_UNIT');
-INSERT INTO "message" VALUES('Your game has been saved.', 3, 15.0, NULL, 'SAVED_GAME');
-INSERT INTO "message" VALUES('Your game has been autosaved.', 3, 15.0, NULL, 'AUTOSAVE');
-INSERT INTO "message" VALUES('Your game has been quicksaved.', 3, 15.0, NULL, 'QUICKSAVE');
-INSERT INTO "message" VALUES('Screenshot has been saved to {file}.', 2, 20.0, NULL, 'SCREENSHOT');
-INSERT INTO "message" VALUES('Your inhabitants reached level {level}.', 1, 30.0, 3, 'SETTLER_LEVEL_UP');
-INSERT INTO "message" VALUES('You need more {resource} to build this building.', 1, 10.0, NULL, 'NEED_MORE_RES');
-INSERT INTO "message" VALUES('Some of your inhabitants have no access to a main square.', 1, 30.0, NULL, 'NO_MAIN_SQUARE_IN_RANGE');
-INSERT INTO "message" VALUES('Some of your inhabitants just moved out.', 1, 40.0, NULL, 'SETTLERS_MOVED_OUT');
-INSERT INTO "message" VALUES('You won!', 1, 60.0, NULL, 'YOU_HAVE_WON');
-INSERT INTO "message" VALUES('You failed the scenario.', 1, 60.0, NULL, 'YOU_LOST');
-INSERT INTO "message" VALUES('Your mine has run out of resources.', 1, 30.0, NULL, 'MINE_EMPTY');
-INSERT INTO "message" VALUES('You can also drag roads.', 1, 20.0, NULL, 'DRAG_ROADS_HINT');
-INSERT INTO "message" VALUES('{player1} and {player2} have allied their forces.', 1, 10.0, NULL, 'DIPLOMACY_STATUS_NEUTRAL_ALLY');
-INSERT INTO "message" VALUES('{player1} and {player2} have ended the war and are now allied.', 1, 10.0, NULL, 'DIPLOMACY_STATUS_ENEMY_ALLY');
-INSERT INTO "message" VALUES('{player1} and {player2} have ended their alliance and are now in a state of war.', 1, 10.0, NULL, 'DIPLOMACY_STATUS_ALLY_ENEMY');
-INSERT INTO "message" VALUES('{player1} and {player2} will fight each other to the death.', 1, 10.0, NULL, 'DIPLOMACY_STATUS_NEUTRAL_ENEMY');
-INSERT INTO "message" VALUES('{player1} and {player2} have terminated their alliance.', 1, 10.0, NULL, 'DIPLOMACY_STATUS_ALLY_NEUTRAL');
-INSERT INTO "message" VALUES('{player1} and {player2} have settled their hostility.', 1, 10.0, NULL, 'DIPLOMACY_STATUS_ENEMY_NEUTRAL');
-INSERT INTO "message" VALUES('One of your fields requires a farm to harvest its crops.', 1, 30.0, NULL, 'FIELD_NEEDS_FARM');
-INSERT INTO "message" VALUES('You have reached the current maximum increment. Your inhabitants will not upgrade further.', 1, 45.0, NULL, 'MAX_INCR_REACHED');
-INSERT INTO "message" VALUES('You cannot tear the warehouse, your settlements needs it.', 1, 30.0, NULL, 'WAREHOUSE_NOT_TEARABLE');
-INSERT INTO "message" VALUES('The route is now configured. Start it via the "start route" button in the "configure route" menu.', 1, 45.0, NULL, 'ROUTE_DISABLED');
-INSERT INTO "message" VALUES('Your crew refuses to leave this map.', 1, 20.0, NULL, 'MOVE_OUTSIDE_OF_WORLD');
-INSERT INTO "message" VALUES('Cannot go here.', 1, 20.0, NULL, 'MOVE_INVALID_LOCATION');
-INSERT INTO "message" VALUES('Your building has caught fire!', 1, 30.0, NULL, 'BUILDING_ON_FIRE');
 
 CREATE TABLE "ai" (
 	"client_id" TEXT NOT NULL,
