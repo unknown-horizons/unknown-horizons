@@ -19,7 +19,7 @@
 # 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA
 # ###################################################
 
-import gevent
+#import gevent
 import subprocess
 import sys
 
@@ -41,7 +41,7 @@ def setup_package():
 
 	class Host(enet.Host):
 		def service(self, *args, **kwargs):
-			gevent.sleep(0)
+			#gevent.sleep(0)
 			return super(Host, self).service(*args, **kwargs)
 
 	enet.Host = Host
@@ -67,7 +67,7 @@ def run_server():
 	try:
 		p = subprocess.Popen([sys.executable, 'server.py', '-h', '127.0.0.1'])
 		while True:
-			gevent.sleep(0)
+			#gevent.sleep(0)
 			p.poll()
 			if p.returncode:
 				break
@@ -122,6 +122,6 @@ def test_general():
 
 	setup_package()
 
-	s = gevent.spawn(run_server)
-	c = gevent.spawn_later(3, clients, s)
-	gevent.joinall([c, s])
+	#s = gevent.spawn(run_server)
+	#c = gevent.spawn_later(3, clients, s)
+	#gevent.joinall([c, s])
