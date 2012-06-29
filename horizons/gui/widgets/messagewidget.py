@@ -80,7 +80,7 @@ class MessageWidget(LivingObject):
 		self._last_message = {} # used to detect fast subsequent messages in add()
 		self.draw_widget()
 
-	def add(self, x, y, string_id, msg_type=None, message_dict=None, sound_file=True, check_duplicate=False):
+	def add(self, string_id, x=None, y=None, msg_type=None, message_dict=None, sound_file=True, check_duplicate=False):
 		"""Adds a message to the MessageWidget.
 		@param x, y: int coordinates where the action took place. Clicks on the message will then focus that spot.
 		@param id: message id string, needed to retrieve the message text from the content database.
@@ -106,7 +106,7 @@ class MessageWidget(LivingObject):
 							}.get(sound_file, sound_file)
 		return self._add_message(Message(x, y, string_id, msg_type=msg_type, created=self.msgcount.next(), message_dict=message_dict), sound)
 
-	def add_custom(self, x, y, messagetext, msg_type=None, visible_for=40, icon_id=1):
+	def add_custom(self, messagetext, x=None, y=None, msg_type=None, visible_for=40, icon_id=1):
 		""" See docstring for add().
 		Uses no predefined message template from content database like add() does.
 		Instead, directly provides text and icon to be shown (messagetext, icon_id)
