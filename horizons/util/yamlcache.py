@@ -130,7 +130,7 @@ class YamlCache(object):
 			return handle_get_file_error(e, release=False)
 
 		if not yaml_file_in_cache:
-			data = yaml.load( f, Loader = SafeLoader ) # returns one line of YAML?
+			data = yaml.load( f, Loader = SafeLoader )
 			if game_data: # need to convert some values
 				try:
 					data = convert_game_data(data)
