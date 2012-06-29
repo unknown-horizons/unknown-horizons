@@ -142,6 +142,8 @@ class MessageWidget(LivingObject):
 		self.show_text(0)
 		ExtScheduler().add_new_object(self.hide_text, self, self.SHOW_NEW_MESSAGE_TEXT)
 		
+		self.session.ingame_gui.logbook.display_message_history() # update message history on new message
+		
 		return message.created
 
 	def draw_widget(self):

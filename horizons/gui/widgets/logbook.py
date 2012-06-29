@@ -371,7 +371,8 @@ class LogBook(PickBeltWidget):
 #TODO list:
 #  [ ] use message bus to check for new updates
 #  [ ] only display new message on update, not reload whole history
-#  [ ] update message history on new game messages. not on sending a chat line
+#  [x] update message history on new game messages. not on sending a chat line
+#  [ ] implement word wrapping for message history display
 #
 ########
 
@@ -381,10 +382,9 @@ class LogBook(PickBeltWidget):
 		if msg:
 			Chat(msg).execute(self.session)
 			self.textfield.text = u''
-		self._display_message_history()
 		self._display_chat_history()
 
-	def _display_message_history(self):
+	def display_message_history(self):
 		self.messagebox.items = []
 		messages = self.session.ingame_gui.message_widget.active_messages + \
 		           self.session.ingame_gui.message_widget.archive
