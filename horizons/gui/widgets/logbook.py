@@ -58,7 +58,8 @@ class LogBook(PickBeltWidget):
 		super(LogBook, self).__init__()
 		self.session = session
 		self._parameters = [] # list of lists of all parameters added to a logbook page
-		self._messages = {} # dict of messages to display on page close and their associated display flags, i.e. whether they have been displayed; e.g. {"This is a message" : false}
+		self._message_log = [] # list of all messages that have been displayed
+		self._messages_to_display = [] # list messages to display on page close
 		self._cur_entry = None # remember current location; 0 to len(messages)-1
 		self._hiding_widget = False # True if and only if the widget is currently in the process of being hidden
 		self.stats_visible = None
@@ -114,8 +115,8 @@ class LogBook(PickBeltWidget):
 
 	def save(self, db):
 		db("INSERT INTO logbook(widgets) VALUES(?)", json.dumps(self._parameters))
-		for message, displayed in self._messages.iteritems():
-			db("INSERT INTO logbook_messages(message, displayed) VALUES(?, ?)", message, displayed)
+		for message in self._message_log:
+			db("INSERT INTO logbook_messages(message) VALUES(?)", message)
 		db("INSERT INTO metadata(name, value) VALUES(?, ?)", \
 		   "logbook_cur_entry", self._cur_entry)
 
@@ -125,11 +126,10 @@ class LogBook(PickBeltWidget):
 		for widgets in widget_list:
 			self.add_captainslog_entry(widgets, show_logbook=False)
 
-		for msg, displayed in db("SELECT message, displayed FROM logbook_messages"):
-			self._messages[unicode(msg)] = bool(displayed) # convert from int to bool
-			#self.log.debug()
-			self.log.debug("self._messages[%s] = %s", msg, self._messages[msg])
-		
+		for msg in db("SELECT message FROM logbook_messages"):
+			self._message_log.append(unicode(msg[0])) # why do I need this? why is it a tuple? ask nihathrael
+		self._messages_to_display = [] # this is needed for some reason
+			
 		value = db('SELECT value FROM metadata WHERE name = "logbook_cur_entry"')
 		if (value and value[0] and value[0][0]):
 			self.set_cur_entry(int(value[0][0])) # this also redraws
@@ -153,11 +153,13 @@ class LogBook(PickBeltWidget):
 			self._hide_statswidgets()
 			self._gui.hide()
 			self._hiding_widget = False
-			for message, displayed in self._messages.iteritems():
-				if not displayed: # message has not yet been displayed
-					for msg_id in show_message(self.session, "logbook", message):
-						self._page_ids[msg_id] = self._cur_entry
-					self._messages[message] = True # message has now been displayed
+			
+			for message in self._messages_to_display:
+				for msg_id in show_message(self.session, "logbook", message):
+					self._page_ids[msg_id] = self._cur_entry
+
+			self._message_log.extend(self._messages_to_display)
+			self._messages_to_display = []
 		# Make sure the game is unpaused always and in any case
 		UnPauseCommand(suggestion=False).execute(self.session)
 
@@ -221,10 +223,11 @@ class LogBook(PickBeltWidget):
 			# parameters are re-read on page reload.
 			# duplicate_message stops messages from
 			# being duplicated on page reload.
-			duplicate_message = parameter[1] in self._messages
-
+			parameter[1] = unicode(parameter[1])
+			duplicate_message = (parameter[1] in self._message_log) or (parameter[1] in self._messages_to_display)
+	
 			if not duplicate_message:
-				self._messages[unicode(parameter[1])] = False # the new message has not been displayed
+				self._messages_to_display.append(parameter[1]) # the new message has not been displayed
 		else:
 			print '[WW] Warning: Unknown parameter type {typ} in parameter {prm}'.format(
 				typ=parameter[0], prm=parameter)
@@ -387,7 +390,7 @@ class LogBook(PickBeltWidget):
 	def display_message_history(self):
 		self.messagebox.items = []
 		messages = self.session.ingame_gui.message_widget.active_messages + \
-		           self.session.ingame_gui.message_widget.archive
+		        self.session.ingame_gui.message_widget.archive
 		for msg in sorted(messages, key=lambda m: m.created):
 			if msg.id != 'CHAT': # those get displayed in the chat window instead
 				self.messagebox.items.append(msg.message)
