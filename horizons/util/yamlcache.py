@@ -154,7 +154,7 @@ class YamlCache(object):
 
 			cls.lock.release()
 
-		return cls.cache[filename][1] # returns data
+		return cls.cache[filename][1] # returns an object from the YAML
 
 	@classmethod
 	def _open_cache(cls):

@@ -225,8 +225,8 @@ class LogBook(PickBeltWidget):
 			# duplicate_message stops messages from
 			# being duplicated on page reload.
 			message = parameter[1]
-			duplicate_message = (message in self._message_log) or (message in self._messages_to_display)
-	
+			duplicate_message = message in self._messages_to_display # message is already going to be displayed
+
 			if not duplicate_message:
 				self._messages_to_display.append(message) # the new message has not been displayed
 		else:
