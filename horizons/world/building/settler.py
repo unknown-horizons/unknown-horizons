@@ -147,7 +147,14 @@ class Settler(BuildableRect, BuildingResourceHandler, BasicBuilding):
 
 
 	def remove(self):
+		
+		#Send update to ingamegui for removing the size of this settlement.
+		self.session.message_bus.broadcast(SettlerInhabitantsChanged(self, -self.inhabitants))
+		
+		self.session.message_bus.unsubscribe_locally(UpgradePermissionsChanged, self.settlement, self._on_change_upgrade_permissions)
+		
 		UpgradePermissionsChanged.unsubscribe(self._on_change_upgrade_permissions, sender=self.settlement)
+
 		super(Settler, self).remove()
 
 	@property
