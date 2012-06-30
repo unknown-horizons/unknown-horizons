@@ -127,8 +127,8 @@ class LogBook(PickBeltWidget):
 			self.add_captainslog_entry(widgets, show_logbook=False)
 
 		for msg in db("SELECT message FROM logbook_messages"):
-			self._message_log.append(unicode(msg[0])) # why do I need this? why is it a tuple? ask nihathrael
-		self._messages_to_display = [] # this is needed for some reason
+			self._message_log.append(msg[0]) # each line of the table is one tuple
+		self._messages_to_display = [] # wipe it on load, otherwise all previous messages get displayed
 			
 		value = db('SELECT value FROM metadata WHERE name = "logbook_cur_entry"')
 		if (value and value[0] and value[0][0]):
@@ -155,6 +155,7 @@ class LogBook(PickBeltWidget):
 			self._hiding_widget = False
 			
 			for message in self._messages_to_display:
+				# show all messages and map them to the current logbook page
 				for msg_id in show_message(self.session, "logbook", message):
 					self._page_ids[msg_id] = self._cur_entry
 
@@ -223,11 +224,11 @@ class LogBook(PickBeltWidget):
 			# parameters are re-read on page reload.
 			# duplicate_message stops messages from
 			# being duplicated on page reload.
-			parameter[1] = unicode(parameter[1])
-			duplicate_message = (parameter[1] in self._message_log) or (parameter[1] in self._messages_to_display)
+			message = parameter[1]
+			duplicate_message = (message in self._message_log) or (message in self._messages_to_display)
 	
 			if not duplicate_message:
-				self._messages_to_display.append(parameter[1]) # the new message has not been displayed
+				self._messages_to_display.append(message) # the new message has not been displayed
 		else:
 			print '[WW] Warning: Unknown parameter type {typ} in parameter {prm}'.format(
 				typ=parameter[0], prm=parameter)
