@@ -147,6 +147,8 @@ class Settler(BuildableRect, BuildingResourceHandler, BasicBuilding):
 
 
 	def remove(self):
+		SettlerInhabitantsChanged.broadcast(self, -self.inhabitants)
+
 		UpgradePermissionsChanged.unsubscribe(self._on_change_upgrade_permissions, sender=self.settlement)
 		super(Settler, self).remove()
 
