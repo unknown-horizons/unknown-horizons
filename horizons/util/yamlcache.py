@@ -74,7 +74,6 @@ def convert_game_data(data):
 		data = parse_token(data, "BUILDINGS")
 		return data
 
-
 class DummyShelve(dict):
 	"""Implements the methods we use on a shelve but is really just a dict for
 	when we are unable to open a shelve.
@@ -155,7 +154,7 @@ class YamlCache(object):
 
 			cls.lock.release()
 
-		return cls.cache[filename][1]
+		return cls.cache[filename][1] # returns an object from the YAML
 
 	@classmethod
 	def _open_cache(cls):

@@ -54,15 +54,17 @@ class LogBook(PickBeltWidget):
 
 	def __init__(self, session):
 		self.statistics_index = [i for i,sec in enumerate(self.sections) if sec[0] == 'statistics'][0]
+		self._page_ids = {} # dict mapping self._cur_entry to message.msgcount
 		super(LogBook, self).__init__()
 		self.session = session
 		self._parameters = [] # list of lists of all parameters added to a logbook page
-		self._messages = {} # dict of messages to display on page close and their associated display flags, i.e. whether they have been displayed; e.g. {"This is a message" : false}
+		self._message_log = [] # list of all messages that have been displayed
+		self._messages_to_display = [] # list messages to display on page close
 		self._cur_entry = None # remember current location; 0 to len(messages)-1
 		self._hiding_widget = False # True if and only if the widget is currently in the process of being hidden
 		self.stats_visible = None
 		self.last_stats_widget = 'players'
-		self.current_page = 0
+		self.current_mode = 0 # used to determine if the logbook is on the statistics page
 		self._init_gui()
 
 #		self.add_captainslog_entry([
@@ -102,7 +104,8 @@ class LogBook(PickBeltWidget):
 	def update_view(self, number=0):
 		""" update_view from PickBeltWidget, cleaning up the logbook subwidgets
 		"""
-		self.current_page = number
+		self.current_mode = number
+		
 		# self.session might not exist yet during callback setup for pickbelts
 		if hasattr(self, 'session'):
 			self._hide_statswidgets()
@@ -112,6 +115,8 @@ class LogBook(PickBeltWidget):
 
 	def save(self, db):
 		db("INSERT INTO logbook(widgets) VALUES(?)", json.dumps(self._parameters))
+		for message in self._message_log:
+			db("INSERT INTO logbook_messages(message) VALUES(?)", message)
 		db("INSERT INTO metadata(name, value) VALUES(?, ?)", \
 		   "logbook_cur_entry", self._cur_entry)
 
@@ -120,16 +125,24 @@ class LogBook(PickBeltWidget):
 		widget_list = json.loads(db_data[0][0] if db_data else "[]")
 		for widgets in widget_list:
 			self.add_captainslog_entry(widgets, show_logbook=False)
+
+		for msg in db("SELECT message FROM logbook_messages"):
+			self._message_log.append(msg[0]) # each line of the table is one tuple
+		self._messages_to_display = [] # wipe it on load, otherwise all previous messages get displayed
+			
 		value = db('SELECT value FROM metadata WHERE name = "logbook_cur_entry"')
 		if (value and value[0] and value[0][0]):
 			self.set_cur_entry(int(value[0][0])) # this also redraws
 
-	def show(self):
+	def show(self, msg_id=None):
 		if not hasattr(self,'_gui'):
 			self._init_gui()
+		if msg_id:
+			self._cur_entry = self._page_ids[msg_id]
 		if not self.is_visible():
 			self._gui.show()
-			if self.current_page == self.statistics_index:
+			self._redraw_captainslog()
+			if self.current_mode == self.statistics_index:
 				self.show_statswidget(self.last_stats_widget)
 			self.session.ingame_gui.on_switch_main_widget(self)
 
@@ -140,10 +153,14 @@ class LogBook(PickBeltWidget):
 			self._hide_statswidgets()
 			self._gui.hide()
 			self._hiding_widget = False
-			for message, displayed in self._messages.iteritems():
-				if not displayed: # message has not yet been displayed
-					show_message(self.session, message)
-					self._messages[message] = True # message has now been displayed
+			
+			for message in self._messages_to_display:
+				# show all messages and map them to the current logbook page
+				for msg_id in show_message(self.session, "logbook", message):
+					self._page_ids[msg_id] = self._cur_entry
+
+			self._message_log.extend(self._messages_to_display)
+			self._messages_to_display = []
 		# Make sure the game is unpaused always and in any case
 		UnPauseCommand(suggestion=False).execute(self.session)
 
@@ -207,15 +224,15 @@ class LogBook(PickBeltWidget):
 			# parameters are re-read on page reload.
 			# duplicate_message stops messages from
 			# being duplicated on page reload.
-			duplicate_message = parameter[1] in self._messages
+			message = parameter[1]
+			duplicate_message = message in self._messages_to_display # message is already going to be displayed
 
 			if not duplicate_message:
-				self._messages[parameter[1]] = False # has not been displayed
+				self._messages_to_display.append(message) # the new message has not been displayed
 		else:
 			print '[WW] Warning: Unknown parameter type {typ} in parameter {prm}'.format(
 				typ=parameter[0], prm=parameter)
 			add = None
-		self.log.debug("parameter added of type %s", parameter_type)
 		return add
 
 	def _display_parameters_on_page(self, parameters, page):
@@ -309,7 +326,7 @@ class LogBook(PickBeltWidget):
 
 	def show_statswidget(self, widget='players'):
 		"""Shows logbook with Statistics page selected"""
-		if self.current_page != self.statistics_index:
+		if self.current_mode != self.statistics_index:
 			self.update_view(self.statistics_index)
 		self._hide_statswidgets()
 		if widget:
@@ -358,7 +375,8 @@ class LogBook(PickBeltWidget):
 #TODO list:
 #  [ ] use message bus to check for new updates
 #  [ ] only display new message on update, not reload whole history
-#  [ ] update message history on new game messages. not on sending a chat line
+#  [x] update message history on new game messages. not on sending a chat line
+#  [ ] implement word wrapping for message history display
 #
 ########
 
@@ -368,13 +386,12 @@ class LogBook(PickBeltWidget):
 		if msg:
 			Chat(msg).execute(self.session)
 			self.textfield.text = u''
-		self._display_message_history()
 		self._display_chat_history()
 
-	def _display_message_history(self):
+	def display_message_history(self):
 		self.messagebox.items = []
 		messages = self.session.ingame_gui.message_widget.active_messages + \
-		           self.session.ingame_gui.message_widget.archive
+		        self.session.ingame_gui.message_widget.archive
 		for msg in sorted(messages, key=lambda m: m.created):
 			if msg.id != 'CHAT': # those get displayed in the chat window instead
 				self.messagebox.items.append(msg.message)
