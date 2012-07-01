@@ -48,8 +48,8 @@ class UnitManager(WorldObject):
 		self.filtering_rules = collections.namedtuple('FilteringRules', 'not_owned, hostile, ship_type')(not_owned=self._not_owned_rule,
 			hostile=self._hostile_rule, ship_type=self._ship_type_rule)
 
-	def get_my_ships(self):
-		return [ship for ship in self.world.ships if ship.owner == self.owner and isinstance(ship, FightingShip)]
+	def get_fighting_ships(self):
+		return [ship for ship in self.owner.ships if isinstance(ship, FightingShip)]
 
 	def get_available_ship_groups(self, purpose):
 		# TODO: should check out if ship group is on a mission first (priority)
@@ -59,7 +59,7 @@ class UnitManager(WorldObject):
 	def regroup_ships(self):
 		group_size = 3  # TODO move to behaviour/Personalities later
 		self.ship_groups = []
-		ships = self.get_my_ships()
+		ships = self.get_fighting_ships()
 		for i in xrange(0, len(ships), group_size):
 			self.ship_groups.append(ships[i:i + group_size])
 
