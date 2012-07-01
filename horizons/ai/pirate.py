@@ -50,7 +50,7 @@ class Pirate(GenericAI):
 	caught_ship_radius = 5
 	home_radius = 2
 
-	ship_count = 5
+	ship_count = 4
 
 	def __init__(self, session, id, name, color, **kwargs):
 		super(Pirate, self).__init__(session, id, name, color, **kwargs)

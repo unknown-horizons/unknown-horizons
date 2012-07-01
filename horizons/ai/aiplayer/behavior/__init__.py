@@ -51,15 +51,17 @@ class BehaviorManager(WorldObject):
 		for beh, prob in self.actions[type].iteritems():
 			if hasattr(beh, action_name):
 				certainty = beh.certainty(action_name, **environment)
-				# final probability is the one defined in profile multiplied by certainty
-				self.log.info("%s Action:%s Probability:%s Certainty:%s" % (beh.__class__.__name__, action_name, prob, certainty))
+				# final probability is the one defined in profile multiplied by it's certainty
+				self.log.info("%s Action:%s Probability:%s Certainty:%s FinalProbability:%s" % (beh.__class__.__name__,
+					action_name, prob, certainty, prob * certainty))
 				possible_behaviors.append((beh, prob * certainty))
 
 		# get the best action possible
 		final_action = self.get_best_behavior(possible_behaviors, action_name, **environment)
 
-		# call winning action
-		getattr(final_action, action_name)(**environment)
+		# call winning action if any is possible
+		if hasattr(final_action, action_name):
+			getattr(final_action, action_name)(**environment)
 
 	def get_best_behavior(self, behavior_iterable, action_name, **environment):
 		"""

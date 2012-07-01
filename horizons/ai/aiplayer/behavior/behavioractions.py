@@ -24,6 +24,7 @@ from horizons.command.diplomacy import AddEnemyPair
 from horizons.command.unit import Attack
 
 import logging
+from horizons.world.units.movingobject import MoveNotPossible
 
 
 class BehaviorAction(object):
@@ -40,8 +41,8 @@ class BehaviorAction(object):
 		# Witchery below is a way to have certainty() always return the same certainty if it's not defined per behavior.
 		self._certainty = defaultdict(lambda: (lambda **env: self.default_certainty))
 
-	def certainty(self, action_name, **enviornment):
-		return self._certainty[action_name](**enviornment)
+	def certainty(self, action_name, **environment):
+		return self._certainty[action_name](**environment)
 
 # Action components below are divided into Idle, Offensive and Defensive actions.
 # This is just an arbitrary way to do this. Another good division may consist of "Aggressive, Normal,Cautious"
@@ -60,38 +61,61 @@ class BehaviorActionBored(BehaviorAction):
 	def __init__(self, owner):
 		super(BehaviorActionBored, self).__init__(owner)
 
-	def no_one_in_sight(self, **enviornment):
+	def no_one_in_sight(self, **environment):
 		"""
 		Idle action, sail randomly when no ship was spotted nearby.
 		"""
-		ship_group = enviornment['ship_group']
+		ship_group = environment['ship_group']
 		for ship in ship_group:
 			self.owner.send_ship_random(ship)
 		BehaviorAction.log.info('no_one_in_sight action')
 
 
 class BehaviorActionKeepFleetTogether(BehaviorAction):
+
+	dispersion_threshold = 20.0 # TODO: move to YAML/Personality
+
 	def __init__(self, owner):
 		super(BehaviorActionKeepFleetTogether, self).__init__(owner)
 
-	def no_one_in_sight(self, **enviornment):
+		# TODO: consider ditching certainty for this one, or at least dispersion calculations
+		def certainty_no_one_in_sight(**env):
+			ship_group = env['ship_group']
+			if len(ship_group) > 1:
+				dispersion = UnitManager.calculate_ship_dispersion(ship_group)
+				if dispersion <= self.dispersion_threshold:
+					return BehaviorAction.default_certainty
+			return 0.0
+		self._certainty['no_one_in_sight'] = certainty_no_one_in_sight
+
+	def no_one_in_sight(self, **environment):
 		"""
 		When no enemies are in sight, and the groups is dispersed, bring the whole fleet together.
 		"""
-		pass  # TODO: implement
+
+		ship_group = environment['ship_group']
+		# TODO: find a good way to bring ships together, (mainly solve issue when weight center is inaccessible)
 
 
 class BehaviorActionKeepFleetDispersed(BehaviorAction):
 	"""
 	Will aim to keep fleet dispersion non further than dispersion_epsilon.
 	"""
-	dispersion = 1.0  # TODO: average distance from the shipgroup weight center - should be calculated by unitmgr.
-	dispersion_epsilon = dispersion * 0.1
+	dispersion_threshold = 15.0
 
 	def __init__(self, owner):
 		super(BehaviorActionKeepFleetDispersed, self).__init__(owner)
 
-	def no_one_in_sight(self, **enviornment):
+		def certainty_no_one_in_sight(**env):
+			ship_group = env['ship_group']
+			if len(ship_group) > 1:
+				dispersion = UnitManager.calculate_ship_dispersion(ship_group)
+				if dispersion <= self.dispersion_threshold:
+					return BehaviorAction.default_certainty
+			return 0.0
+		self._certainty['no_one_in_sight'] = certainty_no_one_in_sight
+
+	def no_one_in_sight(self, **environment):
 		"""
 		When no enemies are in sight, disperse ship fleet (unless it already is)
 		"""
@@ -102,18 +126,18 @@ class BehaviorActionKeepFleetDispersed(BehaviorAction):
 #	It is also reasonable to flee from enemies if they are much stronger.
 
 # Common certainty functions for offensive actions
-def certainty_power_balance_exp(**enviornment):
+def certainty_power_balance_exp(**environment):
 	"""
 	Return power_balance^2, altering the exponent will impact the weight certainty has.
 	"""
-	return BehaviorAction.default_certainty * (enviornment['power_balance'] ** 2)
+	return BehaviorAction.default_certainty * (environment['power_balance'] ** 2)
 
-def certainty_power_balance_inverse(**enviornment):
+def certainty_power_balance_inverse(**environment):
 	"""
 	Return power_balance reciprocal,
 	"""
 
-	return BehaviorAction.default_certainty * (1./enviornment['power_balance'])
+	return BehaviorAction.default_certainty * (1./environment['power_balance'])
 
 class BehaviorActionRegular(BehaviorAction):
 	"""

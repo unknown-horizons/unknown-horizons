@@ -20,8 +20,10 @@
 # ###################################################
 
 import logging, collections
+from math import sqrt
 from operator import itemgetter
 from horizons.component.healthcomponent import HealthComponent
+from horizons.util.shapes.point import Point
 from horizons.util.worldobject import WorldObject
 from horizons.world.units.fightingship import FightingShip
 from horizons.world.units.pirateship import PirateShip
@@ -123,6 +125,20 @@ class UnitManager(WorldObject):
 		for unit in enemy_ship_group:
 			enemy_hp += unit.get_component(HealthComponent).health
 		return (self_hp/enemy_hp)*dps_multiplier
+
+	@classmethod
+	def calculate_ship_dispersion(cls, ship_group):
+		"""
+		There are many solutions to solve the problem of caculating ship_group dispersion efficiently.
+		We generally care about computing that in linear time, rather than having accurate numbers in O(n^2).
+		We settle for a diagonal of a bounding box for the whole group.
+		@return: dis
+		"""
+		positions = [ship.position for ship in ship_group]
+		bottom_left = Point(min(positions, key=lambda pos:pos.x).x, min(positions,key=lambda pos:pos.y).y)
+		top_right = Point(max(positions, key=lambda pos:pos.x).x, max(positions,key=lambda pos:pos.y).y)
+		diag = bottom_left.distance_to_point(top_right)
+		return diag
 
 	def find_ships_near_group(self, ship_group):
 		other_ships_set = set()
