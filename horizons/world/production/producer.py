@@ -312,7 +312,7 @@ class Producer(Component):
 			return False
 		else:
 			assert production.get_production_line_id() in self._productions or \
-				   production.get_production_line_id() in self._inactive_productions
+			       production.get_production_line_id() in self._inactive_productions
 			return not production.is_paused()
 
 	def set_active(self, production=None, active=True):

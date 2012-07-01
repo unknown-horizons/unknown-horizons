@@ -68,19 +68,21 @@ def show_db_message(session, database_message_id):
 	session.ingame_gui.message_widget.add(None, None, database_message_id)
 
 @register(name='logbook')
-def show_logbook_entry_delayed(session, *widgets):
+def show_logbook_entry_delayed(session, *parameters):
 	"""Shows a logbook entry and opens the logbook after 'delay' seconds.
+	Displays a YAML-defined notification message on logbook close.
 
 	Set delay=0 for instant appearing.
 	#TODO get *delay* parameter working again, it is currently not implemented!
-	@param widgets: arbitrary list of logbook widgets, including their parameters.
-	                Check widgets.logbook#add_captainslog_entry for widget documentation.
+	@param parameters: arbitrary list of logbook parameters, including their values.
+	                Check widgets.logbook#add_captainslog_entry for parameter documentation.
 	"""
-	def write_logbook_entry(session, widgets):
-		"""Adds an entry to the logbook and displays it."""
-		session.ingame_gui.logbook.add_captainslog_entry(widgets, show_logbook=True)
+	def write_logbook_entry(session, parameters):
+		"""Adds an entry to the logbook and displays it.
+		On logbook close, displays a notification defined in the YAML."""
+		session.ingame_gui.logbook.add_captainslog_entry(parameters, show_logbook=True)
 	delay = MESSAGES.LOGBOOK_DEFAULT_DELAY
-	callback = Callback(write_logbook_entry, session, widgets)
+	callback = Callback(write_logbook_entry, session, parameters)
 	Scheduler().add_new_object(callback, session.scenario_eventhandler, run_in=Scheduler().get_ticks(delay))
 
 @register(name='win')

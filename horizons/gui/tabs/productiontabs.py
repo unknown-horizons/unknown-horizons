@@ -20,6 +20,7 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
+import operator
 import weakref
 from fife.extensions import pychan
 
@@ -50,6 +51,13 @@ class ProductionOverviewTab(OverviewTab):
 		self.production_line_gui_xml = production_line_gui_xml
 		self._animations = []
 
+	def get_displayed_productions(self):
+		"""List all possible productions of a buildings sorted by production line id.
+		Overwritten in some child classes (e.g. farm tab).
+		"""
+		productions = self.instance.get_component(Producer).get_productions()
+		return sorted(productions, key=operator.methodcaller('get_production_line_id'))
+
 	def refresh(self):
 		"""This function is called by the TabWidget to redraw the widget."""
 		self._refresh_utilisation()
@@ -65,9 +73,7 @@ class ProductionOverviewTab(OverviewTab):
 
 		# create a container for each production
 		# sort by production line id to have a consistent (basically arbitrary) order
-		for production in sorted(self.instance.get_component(Producer).get_productions(), \
-								             key=(lambda x: x.get_production_line_id())):
-
+		for production in self.get_displayed_productions():
 			# we need to be notified of small production changes, that aren't passed through the instance
 			production.add_change_listener(self._schedule_refresh, no_duplicates=True)
 
@@ -150,7 +156,7 @@ class ProductionOverviewTab(OverviewTab):
 
 	def _cleanup(self):
 		Scheduler().rem_all_classinst_calls(self)
-		for production in self.instance.get_component(Producer).get_productions():
+		for production in self.get_displayed_productions():
 			production.discard_change_listener(self._schedule_refresh)
 		for anim in self._animations:
 			if anim():
@@ -158,14 +164,26 @@ class ProductionOverviewTab(OverviewTab):
 		self._animations = []
 
 
-class FarmProductionOverviewTab(ProductionOverviewTab):
+class SmallProductionOverviewTab(ProductionOverviewTab):
+	"""Only display productions for which we have a related 'field' in range.
+	Requires the building class using this tab to implement get_providers().
+	"""
 	# the farm uses small buttons
 	ACTIVE_PRODUCTION_ANIM_DIR = "content/gui/images/animations/cogs/small"
 	BUTTON_BACKGROUND = "content/gui/images/buttons/msg_button_small.png"
 	def  __init__(self, instance):
-		super(FarmProductionOverviewTab, self).__init__(
+		super(SmallProductionOverviewTab, self).__init__(
 			instance = instance,
 			widget = 'overview_farm.xml',
 			production_line_gui_xml = "overview_farmproductionline.xml"
 		)
 		self.helptext = _("Production overview")
+
+	def get_displayed_productions(self):
+		possible_res = set(res for field in self.instance.get_providers()
+		                       for res in field.provided_resources)
+		all_farm_productions = self.instance.get_component(Producer).get_productions()
+		productions = set([p for p in all_farm_productions
+		                     for res in p.get_consumed_resources().keys()
+		                   if res in possible_res])
+		return sorted(productions, key=operator.methodcaller('get_production_line_id'))

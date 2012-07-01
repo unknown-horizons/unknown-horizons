@@ -87,7 +87,7 @@ class Component(object):
 	def get_instance(cls, arguments=None):
 		"""
 		This function is used to instantiate classes from yaml data. Override this if
-		the component has more than just a basic constructor with primitiv types
+		the component has more than just a basic constructor with primitive types
 		(takes Custom classes as arguments e.g. Storages)
 		"""
 		arguments = arguments or {}

@@ -90,13 +90,17 @@ class ResourceHandler(ResourceTransferHandler):
 			self.__incoming_collectors[0].cancel()
 
 	## INTERFACE
-	def get_consumed_resources(self):
+	def get_consumed_resources(self, include_inactive=False):
 		"""Returns the needed resources that are used by the productions
-		currently active."""
+		currently active. *include_inactive* will also include resources
+		used in a production line that is currently inactive."""
 		needed_res = set()
 		if self.has_component(Producer):
 			prod_comp = self.get_component(Producer)
-			for production in prod_comp._productions.itervalues():
+			productions = prod_comp._productions
+			if include_inactive:
+				productions.update(prod_comp._inactive_productions)
+			for production in productions.itervalues():
 				needed_res.update(production.get_consumed_resources().iterkeys())
 		return list(needed_res)
 
@@ -124,7 +128,7 @@ class ResourceHandler(ResourceTransferHandler):
 		return list(consumed_res)
 
 	def get_currently_not_consumed_resources(self):
-		"""Needed, but not currenlty consumed resources.
+		"""Needed, but not currently consumed resources.
 		Opposite of get_currently_consumed_resources."""
 		# use set types since they support the proper operation
 		currently_consumed = frozenset(self.get_currently_consumed_resources())
@@ -133,8 +137,8 @@ class ResourceHandler(ResourceTransferHandler):
 
 	def get_needed_resources(self):
 		"""Returns list of resources, where free space in the inventory exists."""
-		return [res for res in self.get_consumed_resources() if \
-						self.get_component(StorageComponent).inventory.get_free_space_for(res) > 0]
+		return [res for res in self.get_consumed_resources()
+		            if self.get_component(StorageComponent).inventory.get_free_space_for(res) > 0]
 
 	def add_incoming_collector(self, collector):
 		assert collector not in self.__incoming_collectors

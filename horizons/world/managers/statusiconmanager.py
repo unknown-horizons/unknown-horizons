@@ -25,23 +25,27 @@ from fife import fife
 from fife.extensions.pychan.widgets import Icon
 
 from horizons.world.status import StatusIcon
-from horizons.constants import LAYERS
 from horizons.messaging import AddStatusIcon, RemoveStatusIcon, WorldObjectDeleted, HoverInstancesChanged
+from horizons.gui.mousetools import NavigationTool
 
 class StatusIconManager(object):
 	"""Manager class that manages all status icons. It listenes to AddStatusIcon
 	and RemoveStatusIcon messages on the main message bus"""
 
-	def __init__(self, session):
-		self.session = session
+	def __init__(self, renderer, layer):
+		"""
+		@param renderer: Renderer used to render the icons
+		@param layer: map layer, needed to place icon
+		"""
+		self.layer = layer
+		self.renderer = renderer
+
 		# {instance: [list of icons]}
 		self.icons = {}
-		# Renderer used to render the icons
-		self.renderer = self.session.view.renderer['GenericRenderer']
 
 		self.tooltip_instance = None # no weakref:
 		# we need to remove the tooltip always anyway, and along with it the entry here
-		self.tooltip_icon = Icon(position=(1,1)) # 0, 0 is currently not supported by tooltips
+		self.tooltip_icon = Icon(position=(1, 1)) # 0, 0 is currently not supported by tooltips
 
 		AddStatusIcon.subscribe(self.on_add_icon_message)
 		HoverInstancesChanged.subscribe(self.on_hover_instances_changed)
@@ -55,7 +59,6 @@ class StatusIconManager(object):
 
 		self.renderer = None
 		self.icons = None
-		self.session = None
 
 		AddStatusIcon.unsubscribe(self.on_add_icon_message)
 		HoverInstancesChanged.unsubscribe(self.on_hover_instances_changed)
@@ -117,12 +120,11 @@ class StatusIconManager(object):
 		# pixel-offset on screen (will be constant across zoom-levels)
 		rel = fife.Point(0, -30)
 
-		layer = self.session.view.layers[LAYERS.OBJECTS]
 
 		pos = instance.position
 
 		# trial and error has brought me to this (it's supposed to hit the center)
-		loc = fife.Location(layer)
+		loc = fife.Location(self.layer)
 		loc.setExactLayerCoordinates(
 		  fife.ExactModelCoordinate(
 		    pos.origin.x + float(pos.width) / 4,
@@ -169,6 +171,6 @@ class StatusIconManager(object):
 
 			self.tooltip_icon.helptext = icon.helptext
 
-			pos = self.session.cursor.last_event_pos
+			pos = NavigationTool.last_event_pos
 			self.tooltip_icon.position_tooltip( (pos.x, pos.y) )
 			self.tooltip_icon.show_tooltip()

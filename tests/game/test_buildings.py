@@ -19,7 +19,6 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-
 from itertools import product
 
 from horizons.command.building import Build, Tear
@@ -193,4 +192,3 @@ def test_tree_production(s, p):
 		inv.alter(RES.TREES, -1)
 
 	# here, n tons of wood have been produced
-

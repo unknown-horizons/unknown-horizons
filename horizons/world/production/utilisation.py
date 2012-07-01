@@ -68,7 +68,7 @@ class FieldUtilisation(Utilisation):
 		Calculate productivity by the number of fields nearby.
 		"""
 
-		result = float(len(instance.instance._get_providers())) / self.max_fields_possible
+		result = float(len(instance.instance.get_providers())) / self.max_fields_possible
 		# sanity checks for theoretically impossible cases:
 		result = min(result, 1.0)
 		result = max(result, 0.0)

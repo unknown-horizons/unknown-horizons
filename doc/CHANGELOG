@@ -3,6 +3,86 @@ Unknown Horizons
 
 -----------------------------------------------------
 
+2012-??-??: Milestone 2012.2
+changelog date: JUN 29; rev: c18abf1e803de4ca957f80f5a815fdf205e78733
+
+Gameplay and Balancing
+* New features
+  + new buildings: alvearies, barracks, blender, cocoa field, doctor,
+      herbary, lookout, pastry shop, spice field, vineyard, vintner
+  + build preview jumps to valid build locations nearby
+* Modifications and changes
+  # collectors pick up resources produced while walking over - #929
+  # collectors can retrieve multiple resources at the same time - #994
+  # fire station: 4 bricks (was: 5), tavern: 4 bricks (was: 2)
+* Fixed bugs and problems
+  ~ fixed wrong graphics of tree growth sequence - #924
+
+Media Content
+* New files and features
+  + building: barracks, lookout
+  + font: GNU Unifont as general font fallback
+  + sound: error sound, refresh sound, click sound (Kinshuk)
+* Brush-ups and modifications
+  # resource icons are now 32px everywhere
+
+User Interface
+* Additions and new features
+  + Balance display in top left corner (click to expand) - #1671
+  + new cursor above TextFields when keyboard input is possible - #674
+  + Esc triggers the cancel action, Enter the ok action in all dialogs
+  + menu background image can be toggled and persists
+  + mouse wheel zoom behavior can be changed in settings
+  + list to select available scenario translations, shows completeness
+  + error sounds for invalid and impossible actions
+  + click sound for all gui actions
+* Repositioning and modifications
+  # BuildRelated tabs now use one line per tier
+  # cleaned up production overview layout and settlement inventories
+  # boat builder layout improvements and proper queue icons
+  # mouse wheel no longer changes ListBox selection, only scrolls view
+  # highlight fish deposits in range of fishers, improve fish highlight
+  # only display farm production lines that have fields in range
+* Fixed bugs and usability problems
+  ~ only display status icons when and where they make sense
+  ~ multiplayer: check required building costs early - #1486
+  ~ do not show fisher boats on minimap
+  ~ used action sets are stored in savegame
+
+Codebase
+* New functionalities
+  + icon_path and delayed updates are now available in TabInterface
+  + setup: creates content/gitversion.txt containing detected git HEAD
+  + build menu layouts can be defined via yaml
+  + kwargs support for cachedfunction and cachedmethod
+  + 'fife' logger, activate by --debug-module='fife' or -d
+* Modified structures
+  # less verbose api for horizons.messaging
+  # unify InternationalTradeWidget and TradeWidget as TradeTab
+  # soft constants instead of hardcoded numerical ids in yaml files
+* Fixed crashes and inconsistencies
+  ~ use unicode everywhere, only convert it when talking to fife
+  ~ storages provide itercontents() and iterslots() instead of __iter__
+
+User-Contributed Content
+* Translations
+   + new translations:
+   + new terminology translations:
+   + new tutorial translations:
+   + new translations of 'The Unknown': de, es
+
+* Campaigns, scenarios and maps
+
+* New team members with this release, Annotations
+   + Push access was granted to: mesutcank, Kiryx,
+   + We accepted pull requests or patches by:
+     Foaly, Srijan Mishra, Vivek Sagar, MasterofJOKers, Magnus Knutas,
+     desophos,
+   + Translators that joined our teams and contributed several strings:
+     Please refer to the credits!
+
+-----------------------------------------------------
+
 2012-04-22: Milestone 2012.1
 changelog date: APR 22; rev: 589a1f461b749b1d05bd29ae7e73dd19ce52677f
 

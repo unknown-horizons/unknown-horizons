@@ -18,6 +18,7 @@
 # Free Software Foundation, Inc.,
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
+
 import os
 import tempfile
 
@@ -68,6 +69,7 @@ def test_ticket_979(s, p):
 	# Let the collector reach the not existing target
 	s.run(seconds=10)
 
+
 @game_test
 def test_ticket_1016(s, p):
 	settlement, island = settle(s)
@@ -87,7 +89,6 @@ def test_ticket_1016(s, p):
 				break
 
 	s.run(seconds=30)
-
 
 
 @game_test
@@ -150,6 +151,7 @@ def test_tool_brick_interference():
 	"""
 	test_tool_production_chain()
 	test_brick_production_chain()
+
 
 @game_test(manual_session=True)
 def test_ticket_1427():
@@ -241,6 +243,7 @@ def test_settler_level(s, p):
 	# should have leveled up
 	assert settler.level == level + 1
 
+
 @game_test
 def test_ticket_1523(s, p):
 	settlement, island = settle(s)
@@ -257,6 +260,7 @@ def test_ticket_1523(s, p):
 	assert not farm.get_component(Producer).capacity_utilisation_below(0.4)
 	assert farm.get_component(Producer).capacity_utilisation > 0.4
 
+
 @game_test
 def test_ticket_1561(s, p):
 	settlement, island = settle(s)
@@ -272,7 +276,6 @@ def test_ticket_1561(s, p):
 	residence2 = Build(BUILDINGS.RESIDENTIAL, 30, 32, island, settlement=settlement)(p)
 	s.run(ticks=1)
 	assert residence2.level == 0
-
 
 
 @game_test

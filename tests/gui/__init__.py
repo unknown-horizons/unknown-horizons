@@ -161,11 +161,18 @@ class TestRunner(object):
 		self._engine = engine
 		self._gui_handlers = []
 
+		self._custom_setup()
 		self._filter_traceback()
 		test = self._load_test(test_path)
 		test_gen = test(GuiHelper(self._engine.pychan, self))
 		self._gui_handlers.append(test_gen)
 		self._start()
+
+	def _custom_setup(self):
+		"""Change build menu to 'per increment' for tests."""
+		from horizons.gui.tabs import BuildTab
+
+		BuildTab.default_build_menu_config = BuildTab.cur_build_menu_config = BuildTab.build_menu_config_per_increment
 
 	def _filter_traceback(self):
 		"""Remove test internals from exception tracebacks.

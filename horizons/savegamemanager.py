@@ -466,7 +466,7 @@ class SavegameManager(object):
 				print "Error: Cannot find scenario '{name}'.".format(name=filename)
 				return {}
 			index = sfiles.index(filename)
-		data = YamlCache.get_file(sfiles[index])
+		data = YamlCache.get_file(sfiles[index], game_data=True)
 		return data
 
 	@classmethod
