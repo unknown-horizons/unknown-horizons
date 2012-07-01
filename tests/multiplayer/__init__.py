@@ -19,9 +19,10 @@
 # 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA
 # ###################################################
 
-#import gevent
 import subprocess
 import sys
+
+from nose.plugins.skip import SkipTest
 
 from horizons.constants import VERSION
 from horizons.network.client import Client
@@ -30,6 +31,11 @@ from horizons.network import find_enet_module
 from horizons.extscheduler import ExtScheduler
 from horizons.ext.dummy import Dummy
 
+
+try:
+	import gevent
+except ImportError:
+	gevent = None
 
 def setup_package():
 	"""Sets the network module up.
@@ -41,7 +47,7 @@ def setup_package():
 
 	class Host(enet.Host):
 		def service(self, *args, **kwargs):
-			#gevent.sleep(0)
+			gevent.sleep(0)
 			return super(Host, self).service(*args, **kwargs)
 
 	enet.Host = Host
@@ -67,7 +73,7 @@ def run_server():
 	try:
 		p = subprocess.Popen([sys.executable, 'server.py', '-h', '127.0.0.1'])
 		while True:
-			#gevent.sleep(0)
+			gevent.sleep(0)
 			p.poll()
 			if p.returncode:
 				break
@@ -87,7 +93,12 @@ def test_general():
 	"""General test for multiplayer game.
 
 	Starts a new server and connects 2 clients to it.
+	Requires python-gevent package. If not exists
+	pass this test
 	"""
+	if not gevent:
+		raise SkipTest
+
 	def clients(server):
 		p1 = new_client(u'Client1', ['127.0.0.1', 4123])
 
@@ -122,6 +133,6 @@ def test_general():
 
 	setup_package()
 
-	#s = gevent.spawn(run_server)
-	#c = gevent.spawn_later(3, clients, s)
-	#gevent.joinall([c, s])
+	s = gevent.spawn(run_server)
+	c = gevent.spawn_later(3, clients, s)
+	gevent.joinall([c, s])
