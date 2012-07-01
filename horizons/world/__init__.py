@@ -495,7 +495,7 @@ class World(BuildingOwner, WorldObject):
 		inv = self.session.db.get_player_start_res()
 		player = None
 		if is_ai: # a human controlled AI player
-			player = AIPlayer(self.session, id, name, color, difficulty_level)
+			player = AIPlayer(self.session, id, name, color, clientid, difficulty_level)
 		else:
 			player = HumanPlayer(self.session, id, name, color, clientid, difficulty_level)
 		player.initialize(inv)  # Componentholder init
