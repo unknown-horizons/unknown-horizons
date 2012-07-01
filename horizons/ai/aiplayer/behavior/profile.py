@@ -21,8 +21,8 @@
 
 import logging
 
-from horizons.ai.aiplayer.behavior.behavioractions import BehaviorActionPirateHater, BehaviorActionCoward, BehaviorActionBored,\
-	BehaviorActionKeepFleetTogether, BehaviorActionRegular
+from horizons.ai.aiplayer.behavior.behavioractions import BehaviorActionPirateHater, BehaviorActionCoward,\
+	BehaviorActionKeepFleetTogether, BehaviorActionRegular, BehaviorActionPirateRoutine
 from horizons.ext.enum import Enum
 from horizons.util.worldobject import WorldObject
 
@@ -58,6 +58,6 @@ class BehaviorProfile(WorldObject):
 			cls.action_types.idle: dict(),
 		}
 		actions[cls.action_types.offensive][BehaviorActionRegular(player)] = 1.0
-		actions[cls.action_types.idle][BehaviorActionBored(player)] = 1.0
+		actions[cls.action_types.idle][BehaviorActionPirateRoutine(player)] = 1.0
 
 		return actions

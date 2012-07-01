@@ -24,6 +24,8 @@ from horizons.command.diplomacy import AddEnemyPair
 from horizons.command.unit import Attack
 
 import logging
+from horizons.util.python.callback import Callback
+from horizons.util.shapes.circle import Circle
 from horizons.world.units.movingobject import MoveNotPossible
 
 
@@ -56,10 +58,26 @@ class BehaviorAction(object):
 #	Actions used in situations when there are no ships nearby.
 #	Possible usage may be: scouting, sailing randomly, sailing back to main settlement
 
-class BehaviorActionBored(BehaviorAction):
+class BehaviorActionPirateRoutine(BehaviorAction):
+	"""
+	Idle behavior for Pirate player. It has to be specialized for Pirate since general AI does not have home_point.
+	Responsible for pirate ships routine when no one is around. States change in a loop:
+	idle -> moving_random -> going_home -> idle
+	"""
 
 	def __init__(self, owner):
-		super(BehaviorActionBored, self).__init__(owner)
+		super(BehaviorActionPirateRoutine, self).__init__(owner)
+
+	def _arrived_home(self, ship):
+		self.owner.ships[ship] = self.owner.shipStates.idle
+
+	def _sail_home(self, ship):
+		try:
+			ship.move(Circle(self.owner.home_point, self.owner.home_radius), Callback(self._arrived_home, ship))
+			self.owner.ships[ship] = self.owner.shipStates.going_home
+		except MoveNotPossible:
+			self.owner.ships[ship] = self.owner.shipStates.idle
+			self.log.debug('Pirate %s: Ship %s: unable to move home at %s' % (self.owner.worldid, ship, self.owner.home_point))
 
 	def no_one_in_sight(self, **environment):
 		"""
@@ -67,7 +85,13 @@ class BehaviorActionBored(BehaviorAction):
 		"""
 		ship_group = environment['ship_group']
 		for ship in ship_group:
-			self.owner.send_ship_random(ship)
+			if self.owner.ships[ship] == self.owner.shipStates.idle:
+				point = self.session.world.get_random_possible_ship_position()
+				try:
+					ship.move(point, Callback(self._sail_home, ship))
+					self.owner.ships[ship] = self.owner.shipStates.moving_random
+				except MoveNotPossible:
+					self.log.debug('Pirate %s: Ship %s: unable to move random at %s' % (self.owner.worldid, ship, point))
 		BehaviorAction.log.info('no_one_in_sight action')
 
 
