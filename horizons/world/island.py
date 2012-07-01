@@ -216,10 +216,10 @@ class Island(BuildingOwner, WorldObject):
 		settlement.initialize()
 		self.add_existing_settlement(position, radius, settlement, load)
 		# TODO: Move this to command, this message should not appear while loading
-		self.session.ingame_gui.message_widget.add(x=position.center().x, \
-		                                           y=position.center().y, \
-		                                           string_id='NEW_SETTLEMENT', \
-		                                           message_dict={'player':player.name}, \
+		self.session.ingame_gui.message_widget.add(string_id='NEW_SETTLEMENT',
+		                                           x=position.center().x,
+		                                           y=position.center().y,
+		                                           message_dict={'player':player.name},
 		                                           sound_file=self.session.world.player == player)
 
 		NewSettlement.broadcast(self, settlement)
