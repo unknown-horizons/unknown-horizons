@@ -126,7 +126,7 @@ class LogBook(PickBeltWidget):
 			self.add_captainslog_entry(widgets, show_logbook=False)
 
 		for msg, displayed in db("SELECT message, displayed FROM logbook_messages"):
-			self._messages[unicode(msg)] = (displayed == 1) # convert from int to bool
+			self._messages[unicode(msg)] = bool(displayed) # convert from int to bool
 			#self.log.debug()
 			self.log.debug("self._messages[%s] = %s", msg, self._messages[msg])
 		
@@ -224,12 +224,11 @@ class LogBook(PickBeltWidget):
 			duplicate_message = parameter[1] in self._messages
 
 			if not duplicate_message:
-				self._messages[parameter[1]] = False # has not been displayed
+				self._messages[unicode(parameter[1])] = False # the new message has not been displayed
 		else:
 			print '[WW] Warning: Unknown parameter type {typ} in parameter {prm}'.format(
 				typ=parameter[0], prm=parameter)
 			add = None
-		#self.log.debug("parameter added of type %s", parameter_type)
 		return add
 
 	def _display_parameters_on_page(self, parameters, page):
@@ -372,7 +371,8 @@ class LogBook(PickBeltWidget):
 #TODO list:
 #  [ ] use message bus to check for new updates
 #  [ ] only display new message on update, not reload whole history
-#  [ ] update message history on new game messages. not on sending a chat line
+#  [x] update message history on new game messages. not on sending a chat line
+#  [ ] implement word wrapping for message history display
 #
 ########
 
@@ -382,10 +382,9 @@ class LogBook(PickBeltWidget):
 		if msg:
 			Chat(msg).execute(self.session)
 			self.textfield.text = u''
-		self._display_message_history()
 		self._display_chat_history()
 
-	def _display_message_history(self):
+	def display_message_history(self):
 		self.messagebox.items = []
 		messages = self.session.ingame_gui.message_widget.active_messages + \
 		           self.session.ingame_gui.message_widget.archive

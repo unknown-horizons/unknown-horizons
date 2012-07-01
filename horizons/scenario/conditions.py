@@ -267,10 +267,11 @@ def _building_in_range_of(session, building_class, *classes):
 		for b_class in classes:
 			for building in settlement.buildings_by_id[b_class]:
 				check_inrange.append(building)
-	found_inrange = 0
+
+	#TODO: optimize this loop
 	for building in building_to_check:
+		buildings_in_range = building.get_buildings_in_range()
 		for check in check_inrange:
-			if check in building.get_buildings_in_range():
-				found_inrange = True
-				break
-	return found_inrange
+			if check in buildings_in_range:
+				return True # building found in range
+	return False # building not found in range
