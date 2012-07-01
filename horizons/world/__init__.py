@@ -432,7 +432,7 @@ class World(BuildingOwner, WorldObject):
 			self.pirate = Pirate(self.session, 99998, "Captain Blackbeard", Color())
 
 		# Fire a message for new world creation
-		self.session.ingame_gui.message_widget.add(None, None, 'NEW_WORLD')
+		self.session.ingame_gui.message_widget.add(None, None, 'NEW_WORLD', None)
 		assert ret_coords is not None, "Return coords are None. No players loaded?"
 		return ret_coords
 
