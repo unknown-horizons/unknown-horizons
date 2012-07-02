@@ -181,6 +181,7 @@ class Settler(BuildableRect, BuildingResourceHandler, BasicBuilding):
 		# taxes, inhabitants
 		self.tax_base = self.session.db.get_settler_tax_income(self.level)
 		self.inhabitants_max = self.session.db.get_settler_inhabitants_max(self.level)
+		self.inhabitants_min = self.session.db.get_settler_inhabitants_min(self.level)
 		if self.inhabitants > self.inhabitants_max: # crop settlers at level down
 			self.inhabitants = self.inhabitants_max
 
@@ -270,7 +271,8 @@ class Settler(BuildableRect, BuildingResourceHandler, BasicBuilding):
 
 	def level_check(self):
 		"""Checks whether we should level up or down."""
-		if self.happiness > self.__get_data("happiness_level_up_requirement"):
+		if self.happiness > self.__get_data("happiness_level_up_requirement") and \
+		   self.inhabitants >= self.inhabitants_min:
 			if self.level >= self.level_max:
 				# max level reached already, can't allow an update
 				if self.owner.is_local_player:
@@ -287,7 +289,8 @@ class Settler(BuildableRect, BuildingResourceHandler, BasicBuilding):
 			if not self.upgrade_allowed:
 				ToggleActive(self.get_component(Producer), self._upgrade_production).execute(self.session, True)
 
-		elif self.happiness < self.__get_data("happiness_level_down_limit"):
+		elif self.happiness < self.__get_data("happiness_level_down_limit") or \
+		     self.inhabitants < self.inhabitants_min:
 			self.level_down()
 			self._changed()
 
