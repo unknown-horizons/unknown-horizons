@@ -260,18 +260,11 @@ def _building_in_range_of(session, building_class, *classes):
 	"""Returns whether there is any building of type *building_class*
 	in range of any building of a class in the building type list *classes*.
 	Counts all player settlements."""
-	building_to_check = []
-	check_inrange = []
-	for settlement in _get_player_settlements(session):
-		building_to_check.extend(settlement.buildings_by_id[building_class])
-		for b_class in classes:
-			for building in settlement.buildings_by_id[b_class]:
-				check_inrange.append(building)
-
-	#TODO: optimize this loop
-	for building in building_to_check:
-		buildings_in_range = building.get_buildings_in_range()
-		for check in check_inrange:
-			if check in buildings_in_range:
-				return True # building found in range
+				
+	for settlement in _get_player_settlements(session): # iterate through settlements
+		for building in settlement.buildings_by_id[building_class]: # iterate through all buildings of building_class
+			for other_class in classes: # iterate through all given other classes
+				for building2 in settlement.buildings_by_id[other_class]: # iterate through all buildings of other_class
+					if building.position.distance( building2.position ) <= building.radius: # building in range of building2
+						return True
 	return False # building not found in range
