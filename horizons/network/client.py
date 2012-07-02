@@ -260,7 +260,7 @@ class Client(object):
 
 	# return the first received packet of type [in packettypes]
 	def recv_packet(self, packettypes = None, timeout = SERVER_TIMEOUT):
-		if len(self.packetqueue) > 0:
+		if self.packetqueue:
 			if packettypes is None:
 				return self.packetqueue.pop(0)
 			for packettype in packettypes:

@@ -78,7 +78,7 @@ class AnimalField(Field):
 		super(AnimalField, self).create_collector()
 
 	def remove(self):
-		while len(self.animals) > 0:
+		while self.animals:
 			self.animals[0].cancel(continue_action=lambda : 42) # don't continue
 			self.animals[0].remove()
 		super(AnimalField, self).remove()

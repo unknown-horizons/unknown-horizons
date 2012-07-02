@@ -455,7 +455,7 @@ class MultiplayerMenu(object):
 			#xgettext:python-format
 			self.current.findChild(name="recommended_number_of_players_lbl").text = \
 					_("Recommended number of players: {number}").format(number=number_of_players)
-		if len(self.maps_display) > 0: # select first entry
+		if self.maps_display: # select first entry
 			self.current.distributeData({
 				'maplist' : 0,
 				'playerlimit' : 0

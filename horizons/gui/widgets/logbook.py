@@ -158,7 +158,7 @@ class LogBook(PickBeltWidget):
 
 	def _redraw_captainslog(self):
 		"""Redraws gui. Necessary when current message has changed."""
-		if len(self._parameters) > 0: # there is something to display if this has items
+		if self._parameters: # there is something to display if this has items
 			self._display_parameters_on_page(self._parameters[self._cur_entry], 'left')
 			if self._cur_entry+1 < len(self._parameters): # check for content on right page
 				self._display_parameters_on_page(self._parameters[self._cur_entry+1], 'right')

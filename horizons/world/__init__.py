@@ -310,7 +310,7 @@ class World(BuildingOwner, WorldObject):
 			player = None
 			# check if player is an ai
 			ai_data = self.session.db("SELECT class_package, class_name FROM ai WHERE client_id = ?", client_id)
-			if len(ai_data) > 0:
+			if ai_data:
 				class_package, class_name = ai_data[0]
 				# import ai class and call load on it
 				module = __import__('horizons.ai.'+class_package, fromlist=[str(class_name)])

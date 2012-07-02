@@ -115,7 +115,7 @@ class SingleplayerMenu(object):
 				self.current.findChild(name="recommended_number_of_players_lbl").text = \
 					_("Recommended number of players: {number}").format(number=number_of_players)
 				self.map_preview.update_map(self._get_selected_map())
-			if len(maps_display) > 0:
+			if maps_display:
 				# select first entry
 				self.active_right_side.distributeData({ 'maplist' : 0, })
 				_update_infos()
@@ -159,7 +159,7 @@ class SingleplayerMenu(object):
 					lang_list.selected = 0
 
 			self.active_right_side.distributeInitialData({ 'maplist' : maps_display, })
-			if len(maps_display) > 0:
+			if maps_display:
 				# select first entry
 				self.active_right_side.distributeData({ 'maplist' : 0, })
 

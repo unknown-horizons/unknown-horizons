@@ -57,7 +57,7 @@ def ondisconnect(*args):
 def onlist(*args):
   global client
   games = client.listgames(*args)
-  if len(games) > 0:
+  if games:
     print "[GAMESLIST]"
     for game in games:
       print "  [%s] map=%s maxplayers=%d playercnt=%d name=%s" % (game.uuid, game.mapname, game.maxplayers, game.playercnt, game.name)
@@ -139,7 +139,7 @@ def onauto(*args):
       return
   client.connect()
   games = client.listgames(mapname, maxplayers)
-  if len(games) > 0:
+  if games:
     game = client.joingame(games[0].uuid)
   else:
     game = client.creategame(mapname, maxplayers, gamename)

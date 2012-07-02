@@ -93,7 +93,7 @@ class AreaBuilder(WorldObject):
 		moves = [(-1, 0), (0, -1), (0, 1), (1, 0)]
 		queue = deque([item for item in distance.iteritems()])
 
-		while len(queue) > 0:
+		while queue:
 			(coords, dist) = queue.popleft()
 			for dx, dy in moves:
 				coords2 = (coords[0] + dx, coords[1] + dy)
