@@ -166,18 +166,23 @@ class MessageWidget(LivingObject):
 					button.name + "/mouseEntered": Callback(self.show_text, index),
 					button.name + "/mouseExited": self.hide_text
 				}
-				callback = None
+				# init callback to something callable to improve robustness
+				callback = Callback(lambda: None)
 				if message.x is not None and message.y is not None:
 					# move camera to source of event on click, if there is a source
 					callback = Callback.ChainedCallbacks(
-				          Callback(self.session.view.center, message.x, message.y),
-				          Callback(self.session.ingame_gui.minimap.highlight, (message.x, message.y) )
-				        )						
+					        callback, # this makes it so the order of callback assignment doesn't matter
+					        Callback(self.session.view.center, message.x, message.y),
+					        Callback(self.session.ingame_gui.minimap.highlight, (message.x, message.y) )
+				        )
 				if message.type == "logbook":
 					# open logbook to relevant page
-					callback = Callback(self.session.ingame_gui.logbook.show, message.created)
-					self.log.debug("created = %s", message.created)
-				if callback: events[button.name] = callback
+					callback = Callback.ChainedCallbacks(
+					        callback, # this makes it so the order of callback assignment doesn't matter
+					        Callback(self.session.ingame_gui.logbook.show, message.created)
+					)
+				if callback:
+					events[button.name] = callback
 				
 				button.mapEvents(events)
 				button_space.addChild(button)

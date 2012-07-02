@@ -128,7 +128,9 @@ class LogBook(PickBeltWidget):
 
 		for msg in db("SELECT message FROM logbook_messages"):
 			self._message_log.append(msg[0]) # each line of the table is one tuple
-		self._messages_to_display = [] # wipe it on load, otherwise all previous messages get displayed
+		# wipe self._messages_to_display on load, otherwise all previous messages get displayed
+		#TODO: figure out why this is necessary
+		self._messages_to_display = []
 			
 		value = db('SELECT value FROM metadata WHERE name = "logbook_cur_entry"')
 		if (value and value[0] and value[0][0]):
