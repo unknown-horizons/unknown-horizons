@@ -381,7 +381,7 @@ class MultiplayerMenu(object):
 	def __send_chat_message(self):
 		"""Sends a chat message. Called when user presses enter in the input field"""
 		msg = self.current.findChild(name="chatTextField").text
-		if len(msg):
+		if msg:
 			self.current.findChild(name="chatTextField").text = u""
 			NetworkInterface().chat(msg)
 
