@@ -89,14 +89,20 @@ class PirateCombatManager(CombatManager):
 		rules = self.owner.unit_manager.filtering_rules
 		for ship, shipState in self.owner.ships.iteritems():
 			enemies = unit_manager.find_ships_near_group([ship])
-			fighting_ships = unit_manager.filter_ships(self.owner, enemies, (rules.ship_type(FightingShip), ))
+			environment = {'ship_group': [ship], }
 
-			environment = {'enemies': fighting_ships, 'ship_group': [ship], }
+			if enemies:
+				fighting_ships = unit_manager.filter_ships(self.owner, enemies, (rules.ship_type(FightingShip), rules.hostile()))
 
-			if fighting_ships:
-				environment['power_balance'] = UnitManager.calculate_power_balance([ship], fighting_ships)
-				self.owner.behavior_manager.request_action(BehaviorProfile.action_types.offensive,
-					'fighting_ships_in_sight', **environment)
+				if fighting_ships:
+					environment['enemies'] = fighting_ships
+					environment['power_balance'] = UnitManager.calculate_power_balance([ship], fighting_ships)
+					self.owner.behavior_manager.request_action(BehaviorProfile.action_types.offensive,
+						'fighting_ships_in_sight', **environment)
+				elif shipState in [self.owner.shipStates.moving_random, self.owner.shipStates.chasing_ship, self.owner.shipStates.idle]:
+					environment['enemies'] = enemies
+					self.owner.behavior_manager.request_action(BehaviorProfile.action_types.idle,
+						'trading_ships_in_sight', **environment)
 			else:
 				if self.owner.ships[ship] != self.owner.shipStates.moving_random:
 					self.owner.behavior_manager.request_action(BehaviorProfile.action_types.idle,

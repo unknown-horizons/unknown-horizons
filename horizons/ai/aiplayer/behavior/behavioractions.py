@@ -24,6 +24,7 @@ from horizons.command.diplomacy import AddEnemyPair
 from horizons.command.unit import Attack
 
 import logging
+from horizons.component.namedcomponent import NamedComponent
 from horizons.util.python.callback import Callback
 from horizons.util.shapes.circle import Circle
 from horizons.world.units.movingobject import MoveNotPossible
@@ -33,7 +34,7 @@ class BehaviorAction(object):
 	"""
 	This is an abstract BehaviorAction component.
 	"""
-	log = logging.getLogger('ai.aiplayer.behavioraction')
+	log = logging.getLogger('ai.aiplayer.behavior.behavioractions')
 	default_certainty = 1.0
 
 	def __init__(self, owner):
@@ -65,19 +66,66 @@ class BehaviorActionPirateRoutine(BehaviorAction):
 	idle -> moving_random -> going_home -> idle
 	"""
 
+	sail_home_chance = 0.3 # sail_home_chance to sail home, 1-sail_home_chance to sail randomly
+
+	caught_ship_radius = 5
+	home_radius = 2
+
 	def __init__(self, owner):
 		super(BehaviorActionPirateRoutine, self).__init__(owner)
 
-	def _arrived_home(self, ship):
+	def _arrived(self, ship):
+		self.log.debug('Pirate %s: Ship %s(%s): arrived at destination' % (self.owner.worldid,
+			ship.get_component(NamedComponent).name, self.owner.ships[ship]))
 		self.owner.ships[ship] = self.owner.shipStates.idle
+
+	def _chase_closest_ship(self, pirate_ship):
+		ship = self.owner.get_nearest_player_ship(pirate_ship)
+		if ship:
+			self.owner.ships[pirate_ship] = self.owner.shipStates.chasing_ship
+
+			# if ship was caught
+			if ship.position.distance(pirate_ship.position) <= self.caught_ship_radius:
+				self.log.debug('Pirate %s: Ship %s(%s) caught %s' % (self.owner.worldid,
+					pirate_ship.get_component(NamedComponent).name, self.owner.ships[pirate_ship], ship))
+				self._sail_home(pirate_ship)
+			else:
+				try:
+					pirate_ship.move(Circle(ship.position, self.caught_ship_radius - 1), Callback(self._sail_home, pirate_ship))
+					self.owner.ships[pirate_ship] = self.owner.shipStates.chasing_ship
+					self.log.debug('Pirate %s: Ship %s(%s) chasing %s' % (self.owner.worldid,
+						pirate_ship.get_component(NamedComponent).name, self.owner.ships[pirate_ship], ship.get_component(NamedComponent).name))
+				except MoveNotPossible:
+					self.log.debug('Pirate %s: Ship %s(%s) unable to chase the closest ship %s' % (self.owner.worldid,
+						pirate_ship.get_component(NamedComponent).name, self.owner.ships[pirate_ship], ship.get_component(NamedComponent).name))
+					self.owner.ships[pirate_ship] = self.owner.shipStates.idle
 
 	def _sail_home(self, ship):
 		try:
-			ship.move(Circle(self.owner.home_point, self.owner.home_radius), Callback(self._arrived_home, ship))
+			ship.move(Circle(self.owner.home_point, self.home_radius), Callback(self._arrived, ship))
 			self.owner.ships[ship] = self.owner.shipStates.going_home
+			self.log.debug('Pirate %s: Ship %s(%s): sailing home at %s' % (self.owner.worldid, ship.get_component(NamedComponent).name,
+				self.owner.ships[ship], self.owner.home_point))
 		except MoveNotPossible:
 			self.owner.ships[ship] = self.owner.shipStates.idle
-			self.log.debug('Pirate %s: Ship %s: unable to move home at %s' % (self.owner.worldid, ship, self.owner.home_point))
+			self.log.debug('Pirate %s: Ship %s: unable to move home at %s' % (self.owner.worldid, ship.get_component(NamedComponent).name, self.owner.home_point))
+
+	def _sail_random(self, ship):
+		point = self.session.world.get_random_possible_ship_position()
+		try:
+			ship.move(point, Callback(self._arrived, ship))
+			self.owner.ships[ship] = self.owner.shipStates.moving_random
+			self.log.debug('Pirate %s: Ship %s(%s): moving random at %s' % (self.owner.worldid, ship.get_component(NamedComponent).name,
+				self.owner.ships[ship], point))
+		except MoveNotPossible:
+			self.owner.ships[ship] = self.owner.shipStates.idle
+			self.log.debug('Pirate %s: Ship %s: unable to move random at %s' % (self.owner.worldid, ship.get_component(NamedComponent).name, point))
+
+	def trading_ships_in_sight(self, **environment):
+		ship_group = environment['ship_group']
+		for ship in ship_group:
+			self._chase_closest_ship(ship)
+		self.log.debug('trading_ships_in_sight action')
 
 	def no_one_in_sight(self, **environment):
 		"""
@@ -85,14 +133,13 @@ class BehaviorActionPirateRoutine(BehaviorAction):
 		"""
 		ship_group = environment['ship_group']
 		for ship in ship_group:
+			rand_val = self.session.random.random()
 			if self.owner.ships[ship] == self.owner.shipStates.idle:
-				point = self.session.world.get_random_possible_ship_position()
-				try:
-					ship.move(point, Callback(self._sail_home, ship))
-					self.owner.ships[ship] = self.owner.shipStates.moving_random
-				except MoveNotPossible:
-					self.log.debug('Pirate %s: Ship %s: unable to move random at %s' % (self.owner.worldid, ship, point))
-		BehaviorAction.log.info('no_one_in_sight action')
+				if rand_val < self.sail_home_chance:
+					self._sail_home(ship)
+				else:
+					self._sail_random(ship)
+		self.log.debug('no_one_in_sight action')
 
 
 class BehaviorActionKeepFleetTogether(BehaviorAction):
