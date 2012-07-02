@@ -180,6 +180,11 @@ def buildings_connected_to_building_lt(session, building_class, class2, limit):
 	return (_building_connected_to_any_of(session, building_class, class2) < limit )
 
 @register(periodically=True)
+def building_in_range(session, building_class1, building_class2):
+	"""Checks whether there is a building_class2 in range of a building_class1."""
+	return _building_in_range_of(session, building_class1, building_class2)
+
+@register(periodically=True)
 def time_passed(session, seconds):
 	"""Returns whether at least *seconds* seconds have passed since the game started."""
 	return (Scheduler().cur_tick >= Scheduler().get_ticks(seconds))
@@ -250,3 +255,16 @@ def _building_connected_to_all_of(session, building_class, *classes):
 	"""Returns the exact amount of buildings of type *building_class* that are
 	connected to any building of each class in *classes*. Counts all player settlements."""
 	#TODO
+
+def _building_in_range_of(session, building_class, *classes):
+	"""Returns whether there is any building of type *building_class*
+	in range of any building of a class in the building type list *classes*.
+	Counts all player settlements."""
+				
+	for settlement in _get_player_settlements(session): # iterate through settlements
+		for building in settlement.buildings_by_id[building_class]: # iterate through all buildings of building_class
+			for other_class in classes: # iterate through all given other classes
+				for building2 in settlement.buildings_by_id[other_class]: # iterate through all buildings of other_class
+					if building.position.distance( building2.position ) <= building.radius: # building in range of building2
+						return True
+	return False # building not found in range
