@@ -269,7 +269,7 @@ class Producer(Component):
 		# call super() after removing all productions since it removes the instance (make it invalid)
 		# which can be needed by changelisteners' actions (e.g. in remove_production method)
 		super(Producer, self).remove()
-		assert len(self.get_productions()) == 0 , 'Failed to remove %s ' % self.get_productions()
+		assert not self.get_productions() , 'Failed to remove %s ' % self.get_productions()
 
 
 	# PROTECTED METHODS

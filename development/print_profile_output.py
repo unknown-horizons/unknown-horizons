@@ -4,7 +4,7 @@ import pstats
 import sys
 
 
-if len(sys.argv) == 0:
+if not sys.argv:
 	print 'profile_output.py file [ sortstats [ ( callees | callers ) ] ]'
 	sys.exit(1)
 

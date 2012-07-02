@@ -283,7 +283,7 @@ class Gui(SingleplayerMenu, MultiplayerMenu):
 				map_files, map_file_display = SavegameManager.get_saves()
 			else:
 				map_files, map_file_display = SavegameManager.get_multiplayersaves()
-			if len(map_files) == 0:
+			if not map_files:
 				self.show_popup(_("No saved games"), _("There are no saved games to load."))
 				return
 		else: # don't show autosave and quicksave on save

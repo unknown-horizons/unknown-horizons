@@ -147,7 +147,7 @@ class BuildingCollector(Collector):
 			return None
 
 		collectable_res = self.get_collectable_res()
-		if len(collectable_res) == 0:
+		if not collectable_res:
 			return None
 
 		jobs = JobList(self, self.job_ordering)
@@ -324,7 +324,7 @@ class SettlerCollector(StorageCollector):
 class FisherShipCollector(BuildingCollector):
 
 	def __init__(self, *args, **kwargs):
-		if len(args) == 0:
+		if not args:
 			# We haven't preset a home_building, so search for one!
 			home_building = self.get_smallest_fisher(kwargs['session'], kwargs['owner'])
 			super(FisherShipCollector, self).__init__(home_building=home_building, *args, **kwargs)

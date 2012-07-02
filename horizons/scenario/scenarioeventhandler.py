@@ -122,7 +122,7 @@ class ScenarioEventHandler(LivingObject):
 		for key, value in db("SELECT key, value FROM scenario_variables"):
 			self._scenario_variables[key] = json.loads(value)
 		data = db("SELECT value FROM metadata WHERE name = ?", "scenario_events")
-		if len(data) == 0:
+		if not data:
 			return # nothing to load
 		self._apply_data( self._parse_yaml( data[0][0] ) )
 

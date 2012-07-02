@@ -133,7 +133,7 @@ def start(_command_line_arguments):
 	# init game parts
 
 	client_id = fife.get_uh_setting("ClientID")
-	if client_id is None or len(client_id) == 0:
+	if not client_id:
 		# We need a new client id
 		client_id = "".join("-" if c in (8, 13, 18, 23) else \
 		                    random.choice("0123456789abcdef") for c in xrange(0, 36))

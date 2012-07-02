@@ -173,9 +173,9 @@ class LogBook(PickBeltWidget):
 				], 'left')
 		self.backward_button.set_active()
 		self.forward_button.set_active()
-		if len(self._parameters) == 0 or self._cur_entry == 0:
+		if not self._parameters or self._cur_entry == 0:
 			self.backward_button.set_inactive()
-		if len(self._parameters) == 0 or self._cur_entry >= len(self._parameters) - 2:
+		if not self._parameters or self._cur_entry >= len(self._parameters) - 2:
 			self.forward_button.set_inactive()
 		self._gui.adaptLayout()
 
@@ -285,7 +285,7 @@ class LogBook(PickBeltWidget):
 	def _scroll(self, direction):
 		"""Scroll back or forth one message.
 		@param direction: -1 or 1"""
-		if len(self._parameters) == 0:
+		if not self._parameters:
 			return
 		new_cur = self._cur_entry + direction
 		if new_cur < 0 or new_cur >= len(self._parameters):

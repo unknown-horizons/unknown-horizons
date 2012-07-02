@@ -157,7 +157,7 @@ for id, name, c_type, c_package, x, y, radius, cost, cost_inactive, inhabitants_
 		result['components'].append({'ProducerComponent': {'productionlines': production_lines}})
 
 	query_result = db("SELECT resource, size FROM storage WHERE object_id=?", id)
-	if len(query_result) == 0:
+	if not query_result:
 		result['components'].append('StorageComponent')
 	else:
 		slot_sizes = {}

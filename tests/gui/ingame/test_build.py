@@ -42,7 +42,7 @@ def test_found_settlement(gui):
 	target = (68, 10)
 	gui.session.view.center(*target)
 
-	assert len(player.settlements) == 0
+	assert not player.settlements
 
 	ship = get_player_ship(gui.session)
 	Act(ship, *target)(player)

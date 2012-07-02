@@ -322,7 +322,7 @@ class World(BuildingOwner, WorldObject):
 
 			if client_id == horizons.main.fife.get_uh_setting("ClientID"):
 				self.player = player
-			elif client_id is not None and len(ai_data) == 0:
+			elif client_id is not None and not ai_data:
 				# possible human player candidate with different client id
 				human_players.append(player)
 		self.owner_highlight_active = False
