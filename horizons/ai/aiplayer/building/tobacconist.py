@@ -47,7 +47,7 @@ class TobacconistEvaluator(BuildingEvaluator):
 			distance = builder.position.distance(building.position)
 			if distance <= Entities.buildings[BUILDINGS.TOBACCONIST].radius:
 				tobacco_producer = False
-				for provider in building._get_providers():
+				for provider in building.get_providers():
 					if isinstance(provider, Entities.buildings[BUILDINGS.TOBACCO_FIELD]):
 						tobacco_producer = True
 						break

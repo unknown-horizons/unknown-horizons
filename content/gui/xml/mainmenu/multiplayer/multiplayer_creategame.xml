@@ -71,6 +71,11 @@
 			<Label text="Name of the game:" name="gamename_lbl" helptext="This will be displayed to other players so they recognise the game."/>
 			<TextField name="gamename" text="Unnamed Game" max_size="250,20" min_size="150,20" />
 		</HBox>
+
+		<HBox>
+			<Label text="Password of the game:" name="password_lbl" helptext="This game's password. Required to join this game."/>
+			<TextField name="password" text="" max_size="250,20" min_size="150,20" />
+		</HBox>
 	</VBox>> <!-- right_side -->
 
 	<HBox min_size="0,30" position="600, 490">

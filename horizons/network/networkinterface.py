@@ -48,7 +48,9 @@ class NetworkInterface(object):
 		self._client.register_callback("lobbygame_join",       self._cb_game_details_changed)
 		self._client.register_callback("lobbygame_leave",      self._cb_game_details_changed)
 		self._client.register_callback("lobbygame_changename", self._cb_game_details_changed)
-		#self._client.register_callback("lobbygame_changecolor", self._cb_game_details_changed)
+		self._client.register_callback("lobbygame_toggleready", self._cb_game_details_changed)
+		self._client.register_callback("lobbygame_kickplayer", self._cb_game_details_changed)
+		self._client.register_callback("lobbygame_changecolor", self._cb_game_details_changed)
 		self._client.register_callback("lobbygame_starts", self._cb_game_prepare)
 		self._client.register_callback("game_starts", self._cb_game_starts)
 		self._client.register_callback("game_data", self._cb_game_data)
@@ -58,6 +60,8 @@ class NetworkInterface(object):
 
 	def get_game(self):
 		game = self._client.game
+		if game is None:
+			return None
 		return self.game2mpgame(game)
 
 	def isconnected(self):
@@ -79,18 +83,34 @@ class NetworkInterface(object):
 
 	def __setup_client(self):
 		name = self.__get_player_name()
+		color = self.__get_player_color()
 		serveraddress = [NETWORK.SERVER_ADDRESS, NETWORK.SERVER_PORT]
 		clientaddress = None
 		client_port = parse_port(horizons.main.fife.get_uh_setting("NetworkPort"), allow_zero=True)
 		if NETWORK.CLIENT_ADDRESS is not None or client_port > 0:
 			clientaddress = [NETWORK.CLIENT_ADDRESS, client_port]
 		try:
-			self._client = Client(name, VERSION.RELEASE_VERSION, serveraddress, clientaddress)
+			self._client = Client(name, VERSION.RELEASE_VERSION, serveraddress, clientaddress, color, self.__get_client_id())
 		except NetworkException as e:
 			raise RuntimeError(e)
 
 	def __get_player_name(self):
 		return horizons.main.fife.get_uh_setting("Nickname")
+
+	def __get_player_color(self):
+		return horizons.main.fife.get_uh_setting("ColorID")
+
+	def __get_client_id(self):
+		return horizons.main.fife.get_uh_setting("ClientID")
+
+	def get_client_id(self):
+		return self._client.clientid
+
+	def get_client_name(self):
+		return self._client.name
+
+	def get_client_color(self):
+		return self._client.color
 
 	def connect(self):
 		"""
@@ -114,10 +134,10 @@ class NetworkInterface(object):
 			except NetworkException as e:
 				self._handle_exception(e)
 
-	def creategame(self, mapname, maxplayers, name, load=None):
+	def creategame(self, mapname, maxplayers, name, load=None, password=None):
 		self.log.debug("[CREATEGAME] %s, %s, %s, %s", mapname, maxplayers, name, load)
 		try:
-			game = self._client.creategame(mapname, maxplayers, name, load)
+			game = self._client.creategame(mapname, maxplayers, name, load, password)
 		except NetworkException as e:
 			fatal = self._handle_exception(e)
 			return None
@@ -127,13 +147,16 @@ class NetworkInterface(object):
 		"""Join a game with a certain uuid"""
 		i = 2
 		try:
-			while i < 10: # try 10 different names
+			while i < 10: # try 10 different names and colors
 				try:
 					self._client.joingame(uuid)
 					return True
-				except CommandError:
+				except CommandError as e:
 					self.log.debug("NetworkInterface: failed to join")
-				self.change_name( self.__get_player_name() + unicode(i), save=False )
+					if 'name' in e.message:
+						self.change_name( self.__get_player_name() + unicode(i), save=False )
+					elif 'color' in e.message:
+						self.change_color(self.__get_player_color() + i, save=False)
 				i += 1
 			self._client.joingame(uuid)
 		except NetworkException as e:
@@ -168,6 +191,19 @@ class NetworkInterface(object):
 			self._handle_exception(e)
 			return False
 
+	def change_color(self, new_color, save=True):
+		""" see network/client.py -> changecolor() for _important_ return values"""
+		if new_color > len(set(Color)):
+			new_color %= len(set(Color))
+		if save:
+			horizons.main.fife.set_uh_setting("ColorID", new_color)
+			horizons.main.fife.save_settings()
+		try:
+			return self._client.changecolor(new_color)
+		except NetworkException as e:
+			self._handle_exception(e)
+			return False
+
 	def register_chat_callback(self, function):
 		self._client.register_callback("lobbygame_chat", function)
 
@@ -177,11 +213,20 @@ class NetworkInterface(object):
 	def register_player_left_callback(self, function):
 		self._client.register_callback("lobbygame_leave", function)
 
+	def register_player_toggle_ready_callback(self, function):
+		self._client.register_callback("lobbygame_toggleready", function)
+
+	def register_player_kick_player_callback(self, function):
+		self._client.register_callback("lobbygame_kickplayer", function)
+
 	def register_player_changed_name_callback(self, function):
 		self._client.register_callback("lobbygame_changename", function)
 
-	#def register_player_changed_color_callback(self, function):
-	#	self._client.register_callback("lobbygame_changecolor", function)
+	def register_player_changed_color_callback(self, function):
+		self._client.register_callback("lobbygame_changecolor", function)
+
+	def register_player_fetch_game_callback(self, function):
+		self._client.register_callback("savegame_data", function)
 
 	def register_game_details_changed_callback(self, function, unique = True):
 		if unique and function in self.cbs_game_details_changed:
@@ -262,11 +307,10 @@ class NetworkInterface(object):
 		return ret_list
 
 	def game2mpgame(self, game):
-		return MPGame(game.uuid, game.creator, game.mapname, game.maxplayers, game.playercnt, map(lambda x: unicode(x.name), game.players), self._client.name, game.clientversion, game.name, game.load)
+		return MPGame(game.uuid, game.creator, game.mapname, game.maxplayers, game.playercnt, game.players, self._client.name, game.clientversion, game.name, game.load, game.password, game.ready_players)
 
 	def get_clientversion(self):
 		return self._client.version
-
 
 	def _handle_exception(self, e):
 		try:
@@ -279,19 +323,30 @@ class NetworkInterface(object):
 			self._cb_error(e, fatal=False)
 			return False
 
+	def send_toggle_ready(self, player):
+		self._client.send_toggle_ready(player)
+
+	def send_kick_player(self, player):
+		self._client.send_kick_player(player)
+
+	def send_fetch_game(self, clientversion, uuid):
+		self._client.send_fetch_game(clientversion, uuid)
+
 
 class MPGame(object):
-	def __init__(self, uuid, creator, mapname, maxplayers, playercnt, players, localname, version, name, load):
-		self.uuid       = uuid
-		self.creator    = creator
-		self.mapname    = mapname
-		self.maxplayers = maxplayers
-		self.playercnt  = playercnt
-		self.players    = players
-		self.localname  = localname
-		self.version    = version
-		self.name       = name
-		self.load       = load
+	def __init__(self, uuid, creator, mapname, maxplayers, playercnt, players, localname, version, name, load, password, ready_players):
+		self.uuid          = uuid
+		self.creator       = creator
+		self.mapname       = mapname
+		self.maxplayers    = maxplayers
+		self.playercnt     = playercnt
+		self.players       = players
+		self.localname     = localname
+		self.version       = version
+		self.name          = name
+		self.load          = load
+		self.password      = password
+		self.ready_players = ready_players
 
 	def get_uuid(self):
 		return self.uuid
@@ -311,13 +366,21 @@ class MPGame(object):
 	def get_players(self):
 		return self.players
 
+	def get_ready_players(self):
+		return self.ready_players
+
+	def get_password(self):
+		return self.password
+
 	def get_player_list(self):
 		ret_players = []
 		id = 1
-		for playername in self.get_players():
+		for player in self.get_players():
 			# TODO: add support for selecting difficulty levels to the GUI
-			ret_players.append({'id': id, 'name': playername, 'color': Color[id], 'local': self.localname == playername, \
-				'ai': False, 'difficulty': DifficultySettings.DEFAULT_LEVEL})
+			player_status = player.name in self.get_ready_players()
+			ret_players.append({'id': id, 'name': player.name, 'color': Color[player.color], 'clientid': player.clientid, \
+			  'local': self.localname == player.name, 'ai': False, 'difficulty': DifficultySettings.DEFAULT_LEVEL, \
+			  'status': _('Creator') if self.get_creator() == player.name else (_('Ready') if player_status else _('Not Ready'))})
 			id += 1
 		return ret_players
 

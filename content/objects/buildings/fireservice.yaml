@@ -9,7 +9,7 @@ size_y: 2
 inhabitants: 4
 tooltip_text: _ Extinguishes fires.
 settler_level: TIER.PIONEERS
-buildingcosts: {RES.GOLD: 750, RES.BOARDS: 3, RES.TOOLS: 2, RES.BRICKS: 5}
+buildingcosts: {RES.GOLD: 750, RES.BOARDS: 3, RES.TOOLS: 2, RES.BRICKS: 4}
 show_status_icons: false
 components:
 - SelectableComponent:

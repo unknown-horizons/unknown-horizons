@@ -58,7 +58,12 @@ class Server(object):
 			packets.client.cmd_leavegame:      [ self.onleavegame ],
 			packets.client.cmd_chatmsg:        [ self.onchat ],
 			packets.client.cmd_changename:     [ self.onchangename ],
+			packets.client.cmd_changecolor:    [ self.onchangecolor ],
 			packets.client.cmd_preparedgame:   [ self.onpreparedgame ],
+			packets.client.cmd_toggle_ready:   [ self.ontoggleready ],
+			packets.client.cmd_kick_player:    [ self.onkickplayer  ],
+		  packets.client.cmd_fetch_game:     [ self.onfetchgame   ],
+		  packets.client.savegame_data:      [ self.onsavegamedata ],
 			'preparegame':    [ self.preparegame ],
 			'startgame':      [ self.startgame ],
 			'leavegame':      [ self.leavegame ],
@@ -264,6 +269,9 @@ class Server(object):
 		if not len(packet.playername):
 			self.error(peer, "Your player name cannot be empty")
 			return
+		if packet.playercolor < 1:
+			self.error(peer, "Your color is invalid")
+			return
 		if not len(packet.name):
 			packet.name = "Unnamed Game"
 		player = self.players[peer.data]
@@ -271,13 +279,12 @@ class Server(object):
 			self.error(peer, "You can't create a game while in another game")
 			return
 		player.name = unicode(packet.playername)
+		player.color = packet.playercolor
+		player.clientid = packet.clientid
 		game = Game(packet, player)
 		logging.debug("[CREATE] [%s] %s created %s" % (game.uuid, player, game))
 		self.games.append(game)
 		self.send(peer, packets.server.data_gamestate(game))
-
-		if game.playercnt == game.maxplayers:
-			self.call_callbacks("preparegame", game)
 
 	def deletegame(self, game):
 		logging.debug("[REMOVE] [%s] %s removed" % (game.uuid, game))
@@ -301,6 +308,18 @@ class Server(object):
 		self.send(peer, gameslist)
 
 
+	def __find_game_from_uuid(self, packet):
+		game = None
+		for _game in self.games:
+			if (packet.clientversion != _game.clientversion):
+				continue
+			if (packet.uuid != _game.uuid):
+				continue
+			game = _game
+			break
+		return game
+
+
 	def onjoingame(self, peer, packet):
 		if len(packet.uuid) != 32:
 			self.error(peer, "Invalid game UUID")
@@ -316,14 +335,8 @@ class Server(object):
 			self.error(peer, "You can't join a game while in another game")
 			return
 
-		game = None
-		for _game in self.games:
-			if (packet.clientversion != _game.clientversion):
-				continue
-			if (packet.uuid != _game.uuid):
-				continue
-			game = _game
-			break
+		game = self.__find_game_from_uuid(packet)
+
 		if game is None:
 			self.error(peer, "Unknown game or game is running a different version")
 			return
@@ -344,15 +357,23 @@ class Server(object):
 			self.error(peer, "There's already a player with your name inside this game. Change your name")
 			return
 
+		#make sure player colors are unique
+		unique = True
+		for _player in game.players:
+			if _player.color == packet.playercolor:
+				unique = False
+				break
+		if not unique:
+			self.error(peer, "There's already a player with your color inside this game. Change your color")
+			return
+
 		logging.debug("[JOIN] [%s] %s joined %s" % (game.uuid, player, game))
 		player.name = packet.playername
+		player.color = packet.playercolor
+		player.clientid = packet.clientid
 		game.add_player(player)
 		for _player in game.players:
 			self.send(_player.peer, packets.server.data_gamestate(game))
-
-		# if game is full ... lets start the game
-		if game.playercnt == game.maxplayers:
-			self.call_callbacks("preparegame", game)
 
 
 	def onleavegame(self, peer, packet):
@@ -453,6 +474,40 @@ class Server(object):
 			self.send(_player.peer, packets.server.data_gamestate(game))
 
 
+	def onchangecolor(self, peer, packet):
+		# NOTE: that event _only_ happens inside a lobby
+		if packet.playercolor is None:
+			self.error(peer, "You must have a color")
+			return
+		player = self.players[peer.data]
+		if player.game is None:
+			# just ignore if not inside a game
+			self.send(peer, packets.cmd_ok())
+			return
+		game = player.game
+		# don't send packets to already started games
+		if game.state is not Game.State.Open:
+			return
+
+		# ignore change to same color
+		if player.color == packet.playercolor:
+			return
+
+		# make sure player colors are unique
+		unique = True
+		for _player in game.players:
+			if _player.color == packet.playercolor:
+				unique = False
+				break
+		if not unique:
+			self.error(peer, "There's already a player with your color inside this game. Unable to change your color")
+			return
+
+		logging.debug("[CHANGECOLOR] [%s] Player:%s %s -> %s" % (game.uuid, player.name, player.color, packet.playercolor))
+		player.color = packet.playercolor
+		for _player in game.players:
+			self.send(_player.peer, packets.server.data_gamestate(game))
+
 	def gamedata(self, peer, data):
 		player = self.players[peer.data]
 		game = player.game
@@ -477,6 +532,58 @@ class Server(object):
 		if readycount != game.playercnt:
 			return
 		self.call_callbacks('startgame', game)
+
+
+	def ontoggleready(self, peer, packet):
+		player = self.players[peer.data]
+		game = player.game
+		if game is None:
+			return
+		if game.creator == packet.player:
+			if game.playercnt == len(game.ready_players):
+				self.call_callbacks("preparegame", game)
+			else:
+				for _player in game.players:
+					if _player.name == game.creator:
+						self.send(_player.peer, packets.server.cmd_chatmsg("SERVER", "Every player must be ready to start the game."))
+		else:
+			game.toggle_ready_player(packet.player)
+			for _player in game.players:
+				self.send(_player.peer, packets.server.data_gamestate(game))
+				if game.playercnt == len(game.ready_players):
+					self.send(_player.peer, packets.server.cmd_chatmsg("SERVER", "Everyone is ready, waiting the creator to start the game."))
+
+
+	def onkickplayer(self, peer, packet):
+		player = self.players[peer.data]
+		game = player.game
+		if game is None:
+			return
+		for _player in game.players:
+			self.send(_player.peer, packets.server.cmd_chatmsg("SERVER", "User %s is kicked by creator" % packet.player))
+			if _player.name == packet.player:
+				self.send(_player.peer, packets.server.cmd_kick_player(_player))
+
+	def onfetchgame(self, peer, packet):
+		player = self.players[peer.data]
+		game = player.game
+
+		if game is not None:
+			self.error(peer, "You can't fetch a game while in another game")
+
+		fetch_game = self.__find_game_from_uuid(packet)
+
+		for _player in fetch_game.players:
+			if _player.name == fetch_game.creator:
+				self.send(_player.peer, packets.server.cmd_fetch_game(player.sid))
+
+	def onsavegamedata(self, peer, packet):
+		player = self.players[peer.data]
+		game = player.game
+
+		for _player in game.players:
+			if _player.sid == packet.psid:
+				self.send(_player.peer, packets.server.savegame_data(packet.data, player.sid, game.mapname))
 
 
 	def print_statistic(self, file):

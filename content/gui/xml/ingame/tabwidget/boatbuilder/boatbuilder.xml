@@ -4,20 +4,15 @@
 <TabBG amount="8"/>
 
 	<Container position="0,70" size="260,80" >
-
 		<HBox position="22,7"  min_size="170,20"  size="230,20" >
 		<Spacer min_size="0"  max_size="50" />
-			<Label name="headline"  text="Building overview" />
+			<Label name='name' position="25,40" text="" />
 		</HBox>
 
 		<Icon image="content/gui/images/background/hr.png" position="20,30" />
-		<Label name='name' position="25,40" text="" />
-		<Icon name="running_costs_label"	position="180,62" helptext="Running costs"
+		<Icon name="running_costs_label"	position="180,40" helptext="Running costs"
 			image="content/gui/icons/resources/running_costs.png" />
-		<Label name="running_costs" position="200,62" text="" />
-		<!--<Label position="," name="health_label" text="Health:" />
-		<Label name='health' position="," text="" />-->
-
+		<Label name="running_costs" position="200,40" text="" />
 	</Container>
 
 	<!--	ONLY ACTIVE WHEN NOT BUILDING -->
@@ -28,27 +23,27 @@
 
 	<!--	ONLY ACTIVE WHEN BUILDING -->
 
-	<Container position="25,133" size="260,190" name="container_active">
+	<Container position="25,110" size="260,210" name="container_active">
 		<!-- Current order, pause -->
 		<Label name="BB_current_order" position="0,0" text="Currently building:"
 			comment="Information about the ship currently under construction at the boat builder" />
-		<HBox name="queue_container"></HBox>
-		<Label name="headline_BB_builtship_label" position="0,43" text=""/>
-		<Icon image="content/gui/images/background/square_120.png" position="0,65"
+		<HBox name="queue_container" position="0,18" />
+		<Label name="headline_BB_builtship_label" position="0,63" text="" />
+		<Icon image="content/gui/images/background/square_120.png" position="0,85"
 			name="BB_cur_ship_bg" />
-		<Icon name="BB_cur_ship_icon" position="2,67" />
-		<VBox position="125,75" name="BB_upgrades_box"/> 	<!-- translations? -->
+		<Icon name="BB_cur_ship_icon" position="2,87" />
+		<VBox position="125,95" name="BB_upgrades_box" />
 
 		<!-- one of those button gets removed at runtime -->
 		<ImageButton up_image="content/gui/icons/templates/production/toggle_active_n.png"
 			down_image="content/gui/icons/templates/production/toggle_active_d.png"
 			hover_image="content/gui/icons/templates/production/toggle_active_h.png"
-			position="145,130"  border_size="0"  name="toggle_active_active"
+			position="140,150"  border_size="0"  name="toggle_active_active"
 			comment="Pauses the current ship production, can be resumed later"  helptext="Pause" />
 		<ImageButton up_image="content/gui/icons/templates/production/toggle_inactive_n.png"
 			down_image="content/gui/icons/templates/production/toggle_inactive_d.png"
 			hover_image="content/gui/icons/templates/production/toggle_inactive_h.png"
-			position="145,130"  border_size="0"  name="toggle_active_inactive"
+			position="140,150"  border_size="0"  name="toggle_active_inactive"
 		comment="Resumes the currently paused ship production"  helptext="Resume" />
 	</Container>
 

@@ -21,11 +21,13 @@
 
 import logging
 import datetime
+import bz2
 
 from horizons.network import packets
 from horizons import network
 from horizons.network.common import *
 from horizons.network import find_enet_module
+from horizons.savegamemanager import SavegameManager
 
 enet = find_enet_module()
 # during pyenets move to cpython they renamed a few constants...
@@ -48,7 +50,7 @@ class ClientMode(object):
 class Client(object):
 	log = logging.getLogger("network")
 
-	def __init__(self, name, version, server_address, client_address = None):
+	def __init__(self, name, version, server_address, client_address = None, color = None, clientid = None):
 		try:
 			clientaddress = enet.Address(client_address[0], client_address[1]) if client_address is not None else None
 			self.host = enet.Host(clientaddress, MAX_PEERS, 0, 0, 0)
@@ -63,20 +65,25 @@ class Client(object):
 		self.mode          = None
 		self.sid           = None
 		self.game          = None
+		self.clientid      = clientid
+		self.color         = color
 		self.packetqueue   = []
 		self.callbacks     = {
 			'lobbygame_chat':        [],
 			'lobbygame_join':        [],
 			'lobbygame_leave':       [],
+			'lobbygame_toggleready': [],
 			'lobbygame_changename':  [],
-			#'lobbygame_changecolor': [],
+			'lobbygame_kickplayer':  [],
+			'lobbygame_changecolor': [],
 			'lobbygame_state':       [],
 			'lobbygame_starts':      [],
 			'game_starts':    [],
 			'game_data':      [],
+		  'savegame_data':  [],
 		}
 		self.register_callback('lobbygame_changename', self.onchangename, True)
-		#self.register_callback('lobbygame_changecolor', self.onchangecolor, True)
+		self.register_callback('lobbygame_changecolor', self.onchangecolor, True)
 		pass
 
 	def register_callback(self, type, callback, prepend = False, unique = True):
@@ -295,6 +302,19 @@ class Client(object):
 				return True
 			self.call_callbacks("lobbygame_state", self.game, packet[1].game)
 
+			#if there is more ready player then show it as chat message
+			if len(self.game.ready_players) < len(packet[1].game.ready_players):
+				self.game = packet[1].game
+				self.call_callbacks("lobbygame_toggleready", self.game, packet[1].game.ready_players[-1])
+				return True
+			#if there is less ready player then show it as chat message
+			elif len(self.game.ready_players) > len(packet[1].game.ready_players):
+				for nonready in self.game.ready_players:
+					if nonready not in packet[1].game.ready_players:
+						self.game = packet[1].game
+						self.call_callbacks("lobbygame_toggleready", self.game, nonready)
+						return True
+
 			oldplayers = list(self.game.players)
 			self.game = packet[1].game
 
@@ -304,11 +324,11 @@ class Client(object):
 				for pold in oldplayers:
 					if pnew.sid == pold.sid:
 						found = pold
-						myself = True if pnew.sid == self.sid else False
+						myself = pnew.sid == self.sid
 						if pnew.name != pold.name:
 							self.call_callbacks("lobbygame_changename", self.game, pold, pnew, myself)
-						#if pnew.color != pold.color:
-						#	self.call_callbacks("lobbygame_changecolor", self.game, pold, pnew, myself)
+						if pnew.color != pold.color:
+							self.call_callbacks("lobbygame_changecolor", self.game, pold, pnew, myself)
 						break
 				if found is None:
 					self.call_callbacks("lobbygame_join", self.game, pnew)
@@ -330,6 +350,17 @@ class Client(object):
 		elif isinstance(packet[1], packets.client.game_data):
 			self.log.debug("[GAMEDATA] from %s" % (packet[0].address))
 			self.call_callbacks("game_data", packet[1].data)
+		elif isinstance(packet[1], packets.server.cmd_kick_player):
+			self.call_callbacks("lobbygame_kickplayer", self.game, packet[1].player)
+		elif isinstance(packet[1], packets.server.cmd_fetch_game):
+			if self.game is None:
+				return True
+			path = SavegameManager.get_multiplayersave_map(self.game.mapname)
+			compressed_data = bz2.compress(open(path).read())
+			self.send(packets.client.savegame_data(compressed_data, packet[1].psid))
+		elif isinstance(packet[1], packets.server.savegame_data):
+			open(SavegameManager.get_multiplayersave_map(packet[1].mapname), "w").write(bz2.decompress(packet[1].data))
+			self.call_callbacks("savegame_data", self.game)
 
 		return False
 
@@ -353,13 +384,13 @@ class Client(object):
 
 	#-----------------------------------------------------------------------------
 
-	def creategame(self, mapname, maxplayers, name, load=None):
+	def creategame(self, mapname, maxplayers, name, load=None, password=None):
 		if self.mode is None:
 			raise network.NotConnected()
 		if self.mode is not ClientMode.Server:
 			raise network.NotInServerMode("We are not in server mode")
 		self.log.debug("[CREATE] mapname=%s maxplayers=%d" % (mapname, maxplayers))
-		self.send(packets.client.cmd_creategame(self.version, mapname, maxplayers, self.name, name, load))
+		self.send(packets.client.cmd_creategame(self.version, mapname, maxplayers, self.name, name, load, password, self.color, self.clientid))
 		packet = self.recv_packet([packets.cmd_error, packets.server.data_gamestate])
 		if packet is None:
 			raise network.FatalError("No reply from server")
@@ -378,7 +409,7 @@ class Client(object):
 		if self.mode is not ClientMode.Server:
 			raise network.NotInServerMode("We are not in server mode")
 		self.log.debug("[JOIN] %s" % (uuid))
-		self.send(packets.client.cmd_joingame(uuid, self.version, self.name))
+		self.send(packets.client.cmd_joingame(uuid, self.version, self.name, self.color, self.clientid))
 		packet = self.recv_packet([packets.cmd_error, packets.server.data_gamestate])
 		if packet is None:
 			raise network.FatalError("No reply from server")
@@ -442,6 +473,23 @@ class Client(object):
 
 	#-----------------------------------------------------------------------------
 
+	def changecolor(self, color):
+		""" NOTE: this returns False if the name must be validated by
+		 the server. In that case this will trigger a lobbygame_changecolor-
+		 event with parameter myself=True. if this functions returns true
+		 your name has been changed but there was no need to sent it to
+		 the server."""
+		if self.color == color:
+			return True
+		self.log.debug("[CHANGECOLOR] %s" % (color))
+		if self.mode is None or self.game is None:
+			self.color = color
+			return True
+		self.send(packets.client.cmd_changecolor(color))
+		return False
+
+	#-----------------------------------------------------------------------------
+
 	def onchangename(self, game, plold, plnew, myself):
 		self.log.debug("[ONCHANGENAME] %s -> %s" % (plold.name, plnew.name))
 		if myself:
@@ -450,11 +498,11 @@ class Client(object):
 
 	#-----------------------------------------------------------------------------
 
-	#def onchangecolor(self, game, plold, plnew, myself):
-	#	self.log.debug("[ONCHANGECOLOR] %s: %s -> %s" % (plnew.name, plold.color, plnew.color))
-	#	if myself:
-	#		self.color = plnew.color
-	#	return True
+	def onchangecolor(self, game, plold, plnew, myself):
+		self.log.debug("[ONCHANGECOLOR] %s: %s -> %s" % (plnew.name, plold.color, plnew.color))
+		if myself:
+			self.color = plnew.color
+		return True
 
 	#-----------------------------------------------------------------------------
 
@@ -474,3 +522,14 @@ class Client(object):
 		self.call_callbacks("game_starts", self.game)
 		return True
 
+	def send_toggle_ready(self, player):
+		self.send(packets.client.cmd_toggle_ready(player))
+		return True
+
+	def send_kick_player(self, player):
+		self.send(packets.client.cmd_kick_player(player))
+		return True
+
+	def send_fetch_game(self, clientversion, uuid):
+		self.send(packets.client.cmd_fetch_game(clientversion, uuid))
+		return True

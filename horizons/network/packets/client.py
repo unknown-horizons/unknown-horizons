@@ -27,10 +27,13 @@ class cmd_creategame(packet):
 	mapname       = None
 	maxplayers    = None
 	playername    = None
+	playercolor   = None
+	clientid      = None
 	name          = u"Unnamed Game"
 	load          = None
+	password      = None
 
-	def __init__(self, clientver, mapname, maxplayers, playername, name, load=None):
+	def __init__(self, clientver, mapname, maxplayers, playername, name, load=None, password=None, playercolor=None, clientid=None):
 		"""
 		@param load: whether it's a loaded game
 		"""
@@ -40,6 +43,9 @@ class cmd_creategame(packet):
 		self.playername    = playername
 		self.name          = name
 		self.load          = load
+		self.password      = None if password == "" else password
+		self.playercolor   = playercolor
+		self.clientid      = clientid
 
 	def validate(self):
 		if not isinstance(self.clientversion, unicode):
@@ -54,6 +60,8 @@ class cmd_creategame(packet):
 			raise NetworkException("Invalid datatype: name")
 		if self.load is not None and not isinstance(self.load, str):
 			raise NetworkException("Invalid datatype: load")
+		if not isinstance(self.playercolor, int):
+			raise NetworkException("Invalid datatype: playercolor")
 
 SafeUnpickler.add('client', cmd_creategame)
 
@@ -85,11 +93,15 @@ class cmd_joingame(packet):
 	uuid          = None
 	clientversion = None
 	playername    = None
+	playercolor   = None
+	clientid      = None
 
-	def __init__(self, uuid, clientver, playername):
+	def __init__(self, uuid, clientver, playername, playercolor, clientid):
 		self.uuid          = uuid
 		self.clientversion = clientver
 		self.playername    = playername
+		self.playercolor   = playercolor
+		self.clientid      = clientid
 
 	def validate(self):
 		if not isinstance(self.uuid, str):
@@ -98,6 +110,8 @@ class cmd_joingame(packet):
 			raise NetworkException("Invalid datatype: clientversion")
 		if not isinstance(self.playername, unicode):
 			raise NetworkException("Invalid datatype: playername")
+		if not isinstance(self.playercolor, int):
+			raise NetworkException("Invalid datatype: playercolor")
 
 SafeUnpickler.add('client', cmd_joingame)
 
@@ -139,6 +153,20 @@ SafeUnpickler.add('client', cmd_changename)
 
 #-------------------------------------------------------------------------------
 
+class cmd_changecolor(packet):
+	playercolor = None
+
+	def __init__(self, playercolor):
+		self.playercolor = playercolor
+
+	def validate(self):
+		if not isinstance(self.playercolor, int):
+			raise NetworkException("Invalid datatype: playercolor")
+
+SafeUnpickler.add('client', cmd_changecolor)
+
+#-------------------------------------------------------------------------------
+
 class cmd_preparedgame(packet):
 	def __init__(self):
 		"""ctor"""
@@ -154,3 +182,50 @@ class game_data(packet):
 # origin is 'server' as clients will send AND receive them
 SafeUnpickler.add('server', game_data)
 
+#-------------------------------------------------------------------------------
+
+class cmd_toggle_ready(packet):
+	def __init__(self, player):
+		self.player = player
+
+	def validate(self):
+		if not isinstance(self.player, unicode):
+			raise NetworkException("Invalid datatype: player")
+
+SafeUnpickler.add('client', cmd_toggle_ready)
+
+#-------------------------------------------------------------------------------
+
+class cmd_kick_player(packet):
+	def __init__(self, player):
+		self.player = player
+
+	def validate(self):
+		if not isinstance(self.player, unicode):
+			raise NetworkException("Invalid datatype: player")
+
+SafeUnpickler.add('client', cmd_kick_player)
+
+#-------------------------------------------------------------------------------
+
+class cmd_fetch_game(packet):
+	def __init__(self, clientversion, uuid):
+		self.clientversion = clientversion
+		self.uuid = uuid
+
+	def validate(self):
+		if not isinstance(self.uuid, str):
+			raise NetworkException("Invalid datatype: uuid")
+		if not isinstance(self.clientversion, unicode):
+			raise NetworkException("Invalid datatype: clientversion")
+
+SafeUnpickler.add('client', cmd_fetch_game)
+
+#-------------------------------------------------------------------------------
+
+class savegame_data(packet):
+	def __init__(self, data, psid):
+		self.data = data
+		self.psid = psid
+
+SafeUnpickler.add('client', savegame_data)
