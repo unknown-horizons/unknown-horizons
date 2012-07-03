@@ -247,7 +247,7 @@ def test_settler_level_save_load(s, p):
 		settler = Build(BUILDINGS.RESIDENTIAL, 22, 22, island, settlement=settlement)(p)
 		settler.level += test_level
 		settler_worldid = settler.worldid
-
+		
 		# make it happy
 		inv = settler.get_component(StorageComponent).inventory
 		to_give = inv.get_free_space_for(RES.HAPPINESS)
@@ -261,13 +261,16 @@ def test_settler_level_save_load(s, p):
 		settler = WorldObject.get_object_by_id(settler_worldid)
 		inv = settler.get_component(StorageComponent).inventory
 
-		# contine
+		# continue
 		s.run(seconds=GAME.INGAME_TICK_INTERVAL)
 
 		assert settler.level == level
 		# give upgrade res
 		inv.alter(RES.BOARDS, 100)
 		inv.alter(RES.BRICKS, 100)
+		
+		# give it max population
+		settler.inhabitants = settler.inhabitants_max		
 
 		s.run(seconds=GAME.INGAME_TICK_INTERVAL)
 
