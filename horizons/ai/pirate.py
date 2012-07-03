@@ -152,7 +152,11 @@ class Pirate(GenericAI):
 		#self.behavior_manager = BehaviorManager.load(db, self)
 		#self.combat_manager = PirateCombatManager.load(db, self)
 
-		remaining_ticks = db("SELECT remaining_ticks FROM ai_pirate WHERE rowid = ?", worldid)[0][0]
+		try:
+			remaining_ticks, = db("SELECT remaining_ticks FROM ai_pirate WHERE rowid = ?", worldid)[0]
+		except IndexError:
+			# in case of nonexistent records in old savegames
+			remaining_ticks = 1
 		Scheduler().add_new_object(Callback(self.tick), self, remaining_ticks, -1, 32)
 
 		home = db("SELECT x, y FROM pirate_home_point")[0]
@@ -169,7 +173,7 @@ class Pirate(GenericAI):
 			ship = WorldObject.get_object_by_id(ship_id)
 			self.ships[ship] = state
 			if remaining_ticks:
-				pass
+				pass # TODO load new move callbacks from behavior
 				# load move callback
 			# SAVE MOVE CALLBACK THOUGH!
 			#assert remaining_ticks is not None

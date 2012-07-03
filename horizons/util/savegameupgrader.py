@@ -146,6 +146,12 @@ class SavegameUpgrader(object):
 		# added a message parameter to the logbook which needs to be saved
 		db("CREATE TABLE logbook_messages ( message STRING )")
 
+	def _upgrade_to_rev63(self, db):
+		# added a table for pirate's 'tick' callback
+		db("CREATE TABLE ai_pirate (remaining_ticks INTEGER NOT NULL DEFAULT 1)")
+		# added flag to aiplayer for fighting ships request
+		db("ALTER TABLE ai_player ADD COLUMN need_more_combat_ships INTEGER NOT NULL DEFAULT 1")
+
 	def _upgrade(self):
 		# fix import loop
 		from horizons.savegamemanager import SavegameManager
@@ -191,6 +197,8 @@ class SavegameUpgrader(object):
 				self._upgrade_to_rev61(db)
 			if rev < 62:
 				self._upgrade_to_rev62(db)
+			if rev < 63:
+				self._upgrade_to_rev63(db)
 
 			db('COMMIT')
 			db.close()
