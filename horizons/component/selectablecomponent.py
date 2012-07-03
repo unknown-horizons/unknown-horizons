@@ -283,20 +283,21 @@ class SelectableBuildingComponent(SelectableComponent):
 	@classmethod
 	def _init_fake_tile(cls):
 		"""Sets the _fake_tile_obj class variable with a ready to use fife object. To create a new fake tile, use _add_fake_tile()"""
-		if not hasattr(cls, "_fake_tile_obj"):
+		# use fixed SelectableBuildingComponent here, to make sure subclasses also read the same variable
+		if not hasattr(SelectableBuildingComponent, "_fake_tile_obj"):
 			# create object to create instances from
-			cls._fake_tile_obj = horizons.main.fife.engine.getModel().createObject('fake_tile_obj', 'ground')
-			fife.ObjectVisual.create(cls._fake_tile_obj)
+			SelectableBuildingComponent._fake_tile_obj = horizons.main.fife.engine.getModel().createObject('fake_tile_obj', 'ground')
+			fife.ObjectVisual.create(SelectableBuildingComponent._fake_tile_obj)
 
 			img_path = 'content/gfx/fake_water.png'
 			img = horizons.main.fife.imagemanager.load(img_path)
 			for rotation in [45, 135, 225, 315]:
-				cls._fake_tile_obj.get2dGfxVisual().addStaticImage(rotation, img.getHandle())
+				SelectableBuildingComponent._fake_tile_obj.get2dGfxVisual().addStaticImage(rotation, img.getHandle())
 
 	@classmethod
 	def _add_fake_tile(cls, x, y, layer, renderer):
 		"""Adds a fake tile to the position. Requires 'cls._fake_tile_obj' to be set."""
-		inst = layer.createInstance(cls._fake_tile_obj,
+		inst = layer.createInstance(SelectableBuildingComponent._fake_tile_obj,
 	                                fife.ModelCoordinate(x, y, 0), "")
 		fife.InstanceVisual.create(inst)
 		cls._selected_fake_tiles.l.append(inst)

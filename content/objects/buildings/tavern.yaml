@@ -9,7 +9,7 @@ size_y: 2
 inhabitants: 2
 tooltip_text: _ Provides get-together.
 settler_level: TIER.SETTLERS
-buildingcosts: {RES.GOLD: 250, RES.BOARDS: 4, RES.BRICKS: 2}
+buildingcosts: {RES.GOLD: 250, RES.BOARDS: 4, RES.BRICKS: 4}
 show_status_icons: false
 components:
 - SelectableComponent:

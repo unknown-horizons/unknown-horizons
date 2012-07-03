@@ -38,6 +38,7 @@ from horizons.gui.keylisteners.ingamekeylistener import KeyConfig
 from horizons.gui.widgets import OkButton, CancelButton, DeleteButton
 from horizons.util import Callback
 from horizons.extscheduler import ExtScheduler
+from horizons.messaging import GuiAction
 from horizons.component.ambientsoundcomponent import AmbientSoundComponent
 from horizons.gui.util import LazyWidgetsDict
 
@@ -83,6 +84,8 @@ class Gui(SingleplayerMenu, MultiplayerMenu):
 
 		self.__pause_displayed = False
 		self._background_image = self._get_random_background()
+
+		GuiAction.subscribe( self._on_gui_action )
 
 # basic menu widgets
 
@@ -295,15 +298,22 @@ class Gui(SingleplayerMenu, MultiplayerMenu):
 		self.current.findChild(name=OkButton.DEFAULT_NAME).helptext = _('Save game') if mode == 'save' else _('Load game')
 
 		name_box = self.current.findChild(name="gamename_box")
+		password_box = self.current.findChild(name="gamepassword_box")
 		if mp and mode == 'load': # have gamename
 			name_box.parent.showChild(name_box)
+			password_box.parent.showChild(password_box)
 			gamename_textfield = self.current.findChild(name="gamename")
-			def clear_gamename_textfield():
+			gamepassword_textfield = self.current.findChild(name="gamepassword")
+			gamepassword_textfield.text = u""
+			def clear_gamedetails_textfields():
 				gamename_textfield.text = u""
-			gamename_textfield.capture(clear_gamename_textfield, 'mouseReleased', 'default')
+				gamepassword_textfield.text = u""
+			gamename_textfield.capture(clear_gamedetails_textfields, 'mouseReleased', 'default')
 		else:
 			if name_box not in name_box.parent.hidden_children:
 				name_box.parent.hideChild(name_box)
+			if password_box not in name_box.parent.hidden_children:
+				password_box.parent.hideChild(password_box)
 
 		self.current.show()
 
@@ -388,7 +398,7 @@ class Gui(SingleplayerMenu, MultiplayerMenu):
 
 		if mp and mode == 'load': # also name
 			gamename_textfield = self.current.findChild(name="gamename")
-			ret = selected_savegame, self.current.collectData('gamename')
+			ret = selected_savegame, self.current.collectData('gamename'), self.current.collectData('gamepassword')
 		else:
 			ret = selected_savegame
 		self.current = old_current # reuse old widget
@@ -435,7 +445,7 @@ class Gui(SingleplayerMenu, MultiplayerMenu):
 				btn = dlg.findChild(name=CancelButton.DEFAULT_NAME)
 				callback = pychan_util.get_button_event(btn) if btn else None
 				if callback:
-					callback()
+					pychan.tools.applyOnlySuitable(callback, event=event, widget=btn)
 				else:
 					# escape should hide the dialog default
 					pychan.internal.get_manager().breakFromMainLoop(returnValue=False)
@@ -444,7 +454,7 @@ class Gui(SingleplayerMenu, MultiplayerMenu):
 				btn = dlg.findChild(name=OkButton.DEFAULT_NAME)
 				callback = pychan_util.get_button_event(btn) if btn else None
 				if callback:
-					callback()
+					pychan.tools.applyOnlySuitable(callback, event=event, widget=btn)
 				# can't guess a default action here
 
 		dlg.capture(_on_keypress, event_name="keyPressed")
@@ -708,6 +718,9 @@ class Gui(SingleplayerMenu, MultiplayerMenu):
 		horizons.main.fife.save_settings()
 		return background_choice
 
+	def _on_gui_action(self, msg):
+		AmbientSoundComponent.play_special('click')
+
 def build_help_strings(widgets):
 	"""
 	Loads the help strings from pychan object widgets (containing no key definitions)
@@ -740,3 +753,5 @@ def build_help_strings(widgets):
 
 	author_label = widgets.findChild(name='fife_and_uh_team')
 	author_label.helptext = u"www.unknown-[br]horizons.org[br]www.fifengine.net"
+
+

@@ -42,19 +42,20 @@ class Player(ComponentHolder, WorldObject):
 	component_templates = ({'StorageComponent': {'PositiveStorage': {}}},)
 
 
-	def __init__(self, session, worldid, name, color, difficulty_level = None):
+	def __init__(self, session, worldid, name, color, clientid = None, difficulty_level = None):
 		"""
 		@param session: Session instance
 		@param worldid: player's worldid
 		@param name: user-chosen name
 		@param color: color of player (as Color)
+		@param clientid: id of client
 		@param inventory: {res: value} that are put in the players inventory
 		"""
 		if False:
 			assert isinstance(session, horizons.session.Session)
 		self.session = session
 		super(Player, self).__init__(worldid=worldid)
-		self.__init(name, color, difficulty_level)
+		self.__init(name, color, clientid, difficulty_level)
 
 	def initialize(self, inventory):
 		super(Player, self).initialize()
@@ -62,7 +63,7 @@ class Player(ComponentHolder, WorldObject):
 			for res, value in inventory.iteritems():
 				self.get_component(StorageComponent).inventory.alter(res, value)
 
-	def __init(self, name, color, difficulty_level, settlerlevel = 0):
+	def __init(self, name, color, clientid, difficulty_level, settlerlevel = 0):
 		assert isinstance(color, Color)
 		assert (isinstance(name, str) or isinstance(name, unicode)) and len(name) > 0
 		try:
@@ -72,6 +73,7 @@ class Player(ComponentHolder, WorldObject):
 			# however, if unicode() gets a parameter, it will fail if the string is already unicode.
 			self.name = unicode(name, errors='ignore')
 		self.color = color
+		self.clientid = clientid
 		self.difficulty = DifficultySettings.get_settings(difficulty_level)
 		self.settler_level = settlerlevel
 		self.stats = None
@@ -100,8 +102,9 @@ class Player(ComponentHolder, WorldObject):
 
 	def save(self, db):
 		super(Player, self).save(db)
-		client_id = None if self is not self.session.world.player else \
-		          horizons.main.fife.get_uh_setting("ClientID")
+		client_id = None if self is not self.session.world.player and \
+		                    self.clientid is None else self.clientid
+
 		db("INSERT INTO player(rowid, name, color, client_id, settler_level, difficulty_level) VALUES(?, ?, ?, ?, ?, ?)", \
 			 self.worldid, self.name, self.color.id, client_id, self.settler_level, self.difficulty.level if self.difficulty is not None else None)
 
@@ -117,8 +120,8 @@ class Player(ComponentHolder, WorldObject):
 		Player instance, which is used e.g. in Trader.load"""
 		super(Player, self).load(db, worldid)
 
-		color, name, settlerlevel, difficulty_level = db("SELECT color, name, settler_level, difficulty_level FROM player WHERE rowid = ?", worldid)[0]
-		self.__init(name, Color[color], difficulty_level, settlerlevel = settlerlevel)
+		color, name, client_id, settlerlevel, difficulty_level = db("SELECT color, name, client_id, settler_level, difficulty_level FROM player WHERE rowid = ?", worldid)[0]
+		self.__init(name, Color[color], client_id, difficulty_level, settlerlevel = settlerlevel)
 
 	def notify_unit_path_blocked(self, unit):
 		"""Notify the user that a unit stopped moving
@@ -152,7 +155,7 @@ class Player(ComponentHolder, WorldObject):
 		"""The message bus calls this when a building is 'infected' with a disaster."""
 		if self.is_local_player:
 			pos = message.building.position.center()
-			self.session.ingame_gui.message_widget.add(pos.x, pos.y, message.disaster_class.NOTIFICATION_TYPE)
+			self.session.ingame_gui.message_widget.add(x=pos.x, y=pos.y, string_id=message.disaster_class.NOTIFICATION_TYPE)
 
 	def end(self):
 		self.stats = None
@@ -189,10 +192,10 @@ class HumanPlayer(Player):
 		if level_up:
 			# add message and update ingame gui
 			coords = (message.sender.position.center().x, message.sender.position.center().y)
-			self.session.ingame_gui.message_widget.add(coords[0], coords[1], \
-			                                                    'SETTLER_LEVEL_UP',
-			                                                    {'level': message.level+1})
+			self.session.ingame_gui.message_widget.add(x=coords[0], y=coords[1], \
+			                                                    string_id='SETTLER_LEVEL_UP',
+			                                                    message_dict={'level': message.level+1})
 		return level_up
 
 	def notify_mine_empty(self, mine):
-		self.session.ingame_gui.message_widget.add(mine.position.center().x, mine.position.center().y, 'MINE_EMPTY')
+		self.session.ingame_gui.message_widget.add(x=mine.position.center().x, y=mine.position.center().y, string_id='MINE_EMPTY')

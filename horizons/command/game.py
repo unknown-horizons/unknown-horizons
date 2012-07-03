@@ -42,7 +42,7 @@ class SaveCommand(Command):
 
 		success = session._do_save( path )
 		if success:
-			session.ingame_gui.message_widget.add(None, None, 'SAVED_GAME') # TODO: distinguish auto/quick/normal
+			session.ingame_gui.message_widget.add(x=None, y=None, string_id='SAVED_GAME') # TODO: distinguish auto/quick/normal
 		else:
 			session.gui.show_popup(_('Error'), _('Failed to save.'))
 

@@ -47,7 +47,7 @@ class DistilleryEvaluator(BuildingEvaluator):
 			distance = builder.position.distance(building.position)
 			if distance <= Entities.buildings[BUILDINGS.DISTILLERY].radius:
 				sugarcane_producer = False
-				for provider in building._get_providers():
+				for provider in building.get_providers():
 					if isinstance(provider, Entities.buildings[BUILDINGS.SUGARCANE_FIELD]):
 						sugarcane_producer = True
 						break

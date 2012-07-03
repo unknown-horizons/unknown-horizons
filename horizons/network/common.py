@@ -60,12 +60,16 @@ class Address(object):
 
 class Player(object):
 	def __init__(self, peer, sid, protocol = 0):
+		# pickle doesn't use all of these attributes
+		# for more detail check __getstate__()
 		self.peer     = peer
 		assert(isinstance(self.peer, enet.Peer))
 		self.address  = Address(self.peer.address)
 		self.sid      = sid
 		self.protocol = protocol
+		self.clientid = None
 		self.name     = None
+		self.color    = None
 		self.game     = None
 		self.ready    = False
 
@@ -88,7 +92,7 @@ class Player(object):
 
 	# for pickle: return only relevant data to the player
 	def __getstate__(self):
-		return { 'sid': self.sid, 'address': None, 'name': self.name }
+		return { 'sid': self.sid, 'address': None, 'name': self.name, 'color': self.color, 'clientid': self.clientid }
 
 	def __str__(self):
 		if self.name:
@@ -121,11 +125,14 @@ class Game(object):
 		self.maxplayers    = packet.maxplayers
 		self.name          = packet.name
 		self.load          = packet.load
+		self.password      = packet.password
 		self.creator       = creator.name
 		self.creator_sid   = creator.sid
 		self.players       = []
 		self.playercnt     = 0
 		self.state         = Game.State.Open
+		self.ready_players = []
+		self.toggle_ready_player(creator.name)
 		self.add_player(creator)
 
 	def add_player(self, player):
@@ -141,6 +148,15 @@ class Game(object):
 		self.playercnt -= 1
 		player.game = None
 		return player
+
+	def toggle_ready_player(self, player):
+		if player not in self.ready_players:
+			self.ready_players.append(player)
+			return True
+
+		else:
+			self.ready_players.remove(player)
+			return False
 
 	def clear(self):
 		for player in self.players:

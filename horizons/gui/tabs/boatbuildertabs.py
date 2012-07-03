@@ -43,10 +43,7 @@ class BoatbuilderTab(_BoatbuilderOverviewTab):
 	SHIP_THUMBNAIL = "content/gui/icons/unit_thumbnails/{type_id}.png"
 
 	def __init__(self, instance):
-		super(BoatbuilderTab, self).__init__(
-			widget = 'boatbuilder.xml',
-			instance = instance
-		)
+		super(BoatbuilderTab, self).__init__(widget='boatbuilder.xml', instance=instance)
 		self.helptext = _("Boat builder overview")
 
 	def refresh(self):
@@ -78,9 +75,9 @@ class BoatbuilderTab(_BoatbuilderOverviewTab):
 				main_container.insertChildBefore( main_container.progress_container, self.widget.findChild(name="BB_needed_resources_container"))
 				progress_container = main_container.progress_container
 
-			progress = self.producer.get_production_progress()
-			self.widget.findChild(name='progress').progress = progress*100
-			self.widget.findChild(name='BB_progress_perc').text = unicode(math.floor(progress*100))+u"%"
+			progress = math.floor(self.producer.get_production_progress() * 100)
+			self.widget.findChild(name='progress').progress = progress
+			self.widget.findChild(name='BB_progress_perc').text = u'{progress}%'.format(progress=progress)
 
 			# remove other container, but save it
 			if container_inactive is not None:
@@ -94,8 +91,7 @@ class BoatbuilderTab(_BoatbuilderOverviewTab):
 			queue = self.producer.get_unit_production_queue()
 			queue_container = container_active.findChild(name="queue_container")
 			queue_container.removeAllChildren()
-			for i in enumerate(queue):
-				place_in_queue, unit_type = i
+			for place_in_queue, unit_type in enumerate(queue):
 				image = self.__class__.SHIP_THUMBNAIL.format(type_id=unit_type)
 				#xgettext:python-format
 				helptext = _(u"{ship} (place in queue: {place})").format(

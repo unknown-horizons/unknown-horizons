@@ -19,23 +19,27 @@
 		<Label name="exit_to_mp_menu_lbl"  text="Leave:"  position="75,470" />
 		<CancelButton position="120,460"
 			name="cancel"  helptext="Exit gamelobby" />
+        <Label name="ready_or_start_lbl"  text=""  position="165,470" />
+        <OkButton position="210,460" name="ready_or_start_btn"  />
 	</Container>
 
 
 	<Container size="320,500"  position="420,32"  name="right_page">
 		<Label name="game_start_notice"  position="0,50" 
 			max_size="300,40"  wrap_text="1" 
-			text="The game will start as soon as enough players have joined." />
+			text="The game will start as soon as players are ready and creator starts the game." />
 
 		<Label name="startmessage"  text="Game details:"  position="0,100" />
 		<VBox position="130,100" name="game_info">
 			<Label name="game_map"/>
 			<Label name="game_name"/>
-			<Label name="game_creator"/>
-			<Label name="game_playersnum"/>
-			<Label name="game_players"/>
 			<Label name="game_isloaded"/>
 		</VBox>
+
+		<Label name="game_playersnum" position="0,175"/>
+		<Label name="game_player_color" position="130,175" text="Color"/>
+		<Label name="game_player_status" position="205,175" text="Status"/>
+		<VBox name="players_vbox" position="0,190"></VBox>
 	</Container>
 
 </Container>

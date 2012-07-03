@@ -1,13 +1,13 @@
-# logbook_w writes an entry without showing the book
+﻿# logbook_w writes an entry without showing the book
 # logbook[head,msg] shows an entry with 8 sec delay
 # logbook[head,msg,time] shows an entry after time sec delay
 
 events:
 - # Show a message after starting the game (how to move)
   actions:
-   - {type: message, arguments: ["Build a warehouse at the coast, so it is easy accessible for other ships like the Free Trader."]}
    - type: logbook
      arguments:
+     - [Message, "Build a warehouse at the coast, so it is easily accessible for other ships like the Free Trader."]
      - "\n\n\n"
      - [Gallery, ["content/gfx/uh.png"]]
      - [Pagebreak]
@@ -61,6 +61,7 @@ events:
   actions:
    - type: logbook
      arguments:
+     - [Message, "Build a lumberjack and connect it to the warehouse using a trail."]
      - [Headline, "NEW TASK: BUILD A LUMBERJACK"]
      - [Image, "content/gui/images/background/hr.png"]
      - |
@@ -100,7 +101,6 @@ events:
           "content/gui/icons/buildmenu/015.png",
           "content/gui/icons/resources/50/004.png",
        ]]
-   - {type: message, arguments: ["Build a lumberjack and connect it to the warehouse using a trail."]}
    - {type: set_var, arguments: ["tutStepDone", 19]}
   conditions:
    - type: settlement_res_stored_greater
@@ -117,6 +117,7 @@ events:
   actions:
    - type: logbook
      arguments:
+     - [Message, "Build a hunter and a fisher. Connect them to the warehouse."]
      - [Headline, "NEW TASK: FOOD SUPPLY"]
      - [Image, "content/gui/images/background/hr.png"]
      - |
@@ -151,7 +152,6 @@ events:
           "content/gui/icons/buildmenu/009_h.png",
           "content/gui/icons/resources/50/005.png",
        ]]
-   - {type: message, arguments: ["Build a hunter and a fisher. Connect them to the warehouse."]}
    - {type: set_var, arguments: ["tutStepDone", 22]}
   conditions:
    - type: buildings_connected_to_warehouse_gt
@@ -164,6 +164,7 @@ events:
   actions:
    - type: logbook
      arguments:
+     - [Message, "Build a main square. Choose an area without many economy buildings."]
      - [Headline, "NEW TASK: MAIN SQUARE"]
      - [Image, "content/gui/images/background/hr.png"]
      - |
@@ -194,7 +195,6 @@ events:
      - [Gallery, ["content/gui/icons/tabwidget/mainsquare/inhabitants0_a.png"]]
      - |
        In the different increment overview tabs you can see statistics about your inhabitants. You also set the increment-specific global tax here and allow or deny inhabitants of this increment to upgrade to the next higher one.
-   - {type: message, arguments: ["Build a main square. Choose an area without many economy buildings."]}
    - {type: set_var, arguments: ["tutStepDone", 25]}
   conditions:
    - type: building_num_of_type_greater
@@ -213,6 +213,7 @@ events:
   actions:
    - type: logbook
      arguments:
+     - [Message, "Build a tent and connect it to the main square."]
      - [Headline, "NEW TASK: RESIDENTIAL BUILDINGS"]
      - [Image, "content/gui/images/background/hr.png"]
      - |
@@ -225,7 +226,6 @@ events:
      - |
 
        TASK: Build a tent and connect it to the main square. Tents dont need to be connected to any of the companies.
-   - {type: message, arguments: ["Build a tent and connect it to the main square."]}
    - {type: set_var, arguments: ["tutStepDone", 28]}
   conditions:
    - type: building_num_of_type_greater
@@ -238,6 +238,7 @@ events:
   actions:
    - type: logbook
      arguments:
+     - [Message, "Build at least three additional tents and connect them to the main square."]
      - |
 
        Let's have a look at the tent overview tab.
@@ -258,7 +259,6 @@ events:
      - |
 
        TIP: Holding down SHIFT eases constructing multiple buildings of the same kind.
-   - {type: message, arguments: ["Build at least three additional tents and connect them to the main square."]}
    - {type: set_var, arguments: ["tutStepDone", 31]}
   conditions:
    - type: buildings_connected_to_building_gt
@@ -271,6 +271,7 @@ events:
   actions:
    - type: logbook
      arguments:
+     - [Message, "Build a signal fire at the coast close to your warehouse."]
      - [Headline, "NEW TASK: BUILD SIGNAL FIRE"]
      - [Image, "content/gui/images/background/hr.png"]
      - |
@@ -302,7 +303,6 @@ events:
      - |
 
        TASK: Build a signal fire at the coast close to your warehouse.
-   - {type: message, arguments: ["Build a signal fire at the coast close to your warehouse."]}
    - {type: set_var, arguments: ["tutStepDone", 34]}
   conditions:
    - type: buildings_connected_to_building_gt
@@ -315,6 +315,7 @@ events:
   actions:
    - type: logbook
      arguments:
+     - [Message, "Reach an island stock of at least 30 tools. Note that this might take a while."]
      - [Headline, "NEW TASK: LEARN TO TRADE"]
      - [Image, "content/gui/images/background/hr.png"]
      - |
@@ -347,12 +348,12 @@ events:
 
        TASK: Buy as many tools as you need to have 30 tools in stock!
      - [Gallery, ["content/gui/icons/resources/50/006.png"]]
-   - {type: message, arguments: ["Reach an island stock of at least 30 tools.", "Note that this might take a while."]}
-     # Multiple messages: Each gets shown after a certain delay (usually horizons.constants.CUSTOM_MSG_SHOW_DELAY)
    - {type: set_var, arguments: ["tutStepDone", 37]}
   conditions:
    - type: building_num_of_type_greater
-     arguments: [6, 0]
+     arguments: [6,0]
+   - type: building_in_range
+     arguments: [6,1]
    - type: var_gt
      arguments: ["tutStepDone", 33]
    - {type: var_lt, arguments: ["tutStepDone", 37]}
@@ -361,6 +362,7 @@ events:
   actions:
    - type: logbook
      arguments:
+     - [Message, "Build a pavilion with connection to the tents."]
      - [Headline, "NEW TASK: BUILD A PAVILION"]
      - [Image, "content/gui/images/background/hr.png"]
      - |
@@ -389,7 +391,6 @@ events:
 
        TASK: Build a pavilion with a trail to the tents in order to fulfill your sailors' demand for faith.
      - [Gallery, ["content/gui/icons/buildmenu/005.png"]]
-   - {type: message, arguments: ["Build a pavilion with connection to the tents."]}
    - {type: set_var, arguments: ["tutStepDone", 40]}
   conditions:
    - type: settlement_res_stored_greater
@@ -402,6 +403,7 @@ events:
   actions:
    - type: logbook
      arguments:
+     - [Message, "Set the tax level to Low (left end) and wait for your sailors to upgrade."]
      - [Headline, "NEW TASK: NEXT INCREMENT"]
      - [Image, "content/gui/images/background/hr.png"]
      - |
@@ -428,7 +430,6 @@ events:
 
        TASK: Set the tax level to Low (left end) and wait for sailors to upgrade.
      - [Gallery, ["content/gfx/buildings/pioneers/residential/as_hut0/idle/45/0.png"]]
-   - {type: message, arguments: ["Set the tax level to Low (left end) and wait for your sailors to upgrade."]}
    - {type: set_var, arguments: ["tutStepDone", 43]}
   conditions:
    - type: buildings_connected_to_building_gt
@@ -441,6 +442,7 @@ events:
   actions:
    - type: logbook
      arguments:
+     - [Message, "Build a farm and keep some empty space around it."]
      - [Headline, "NEW TASK: BUILD A FARM"]
      - [Image, "content/gui/images/background/hr.png"]
      - |
@@ -472,7 +474,6 @@ events:
 
        TASK: Build a farm.
      - [Gallery, ["content/gui/icons/buildmenu/020.png"]]
-   - {type: message, arguments: ["Build a farm and keep some empty space around it."]}
    - {type: set_var, arguments: ["tutStepDone", 46]}
   conditions:
    - type: settler_level_greater
@@ -485,6 +486,7 @@ events:
   actions:
    - type: logbook
      arguments:
+     - [Message, "Build at least one pasture and add potato fields if you like."]
      - [Headline, "NEW TASK: BUILD FIELDS"]
      - [Image, "content/gui/images/background/hr.png"]
      - |
@@ -515,7 +517,6 @@ events:
        TASK: Build at least one pasture in the farm's range and add potato fields if you like.
      - [Gallery, ["content/gui/icons/buildmenu/018.png",
                   "content/gui/icons/buildmenu/019.png"]]
-   - {type: message, arguments: ["Build at least one pasture and add potato fields if you like."]}
    - {type: set_var, arguments: ["tutStepDone", 49]}
   conditions:
    - type: building_num_of_type_greater
@@ -528,6 +529,7 @@ events:
   actions:
    - type: logbook
      arguments:
+     - [Message, "Build a storage tent (increment I tab) where it makes sense."]
      - [Headline, "NEW TASK: BUILD STORAGE"]
      - [Image, "content/gui/images/background/hr.png"]
      - |
@@ -560,7 +562,6 @@ events:
 
        TASK: Build a storage tent, preferably where you need collectors.
      - [Gallery, ["content/gui/icons/buildmenu/002.png"]]
-   - {type: message, arguments: ["Build a storage tent (increment I tab) where it makes sense."]}
    - {type: set_var, arguments: ["tutStepDone", 52]}
   conditions:
    - type: building_num_of_type_greater
@@ -574,6 +575,7 @@ events:
   actions:
    - type: logbook
      arguments:
+     - [Message, "Build a weaver that can somehow reach the wool of your farm."]
      - [Headline, "NEW TASK: BUILD A WEAVER"]
      - [Image, "content/gui/images/background/hr.png"]
      - |
@@ -588,7 +590,6 @@ events:
 
        TASK: Build a weaver positioned so it can get wool.
      - [Gallery, ["content/gui/icons/buildmenu/007.png"]]
-   - {type: message, arguments: ["Build a weaver that can somehow reach the wool of your farm."]}
    - {type: set_var, arguments: ["tutStepDone", 55]}
   conditions:
    - type: building_num_of_type_greater
@@ -599,9 +600,9 @@ events:
 
 - # how to win
   actions:
-   - {type: message, arguments: ["House a total of 50 or more inhabitants in your city to complete the tutorial. You need a positive balance."]}
    - type: logbook
      arguments:
+     - [Message, "House a total of 50 or more inhabitants in your city to complete the tutorial. You need a positive balance."]
      - [Headline, "NEW TASK: COMPLETE TUTORIAL"]
      - [Image, "content/gui/images/background/hr.png"]
      - |
@@ -628,6 +629,7 @@ events:
   actions:
    - type: logbook
      arguments:
+     - [Message, "Congratulations! You have reached the end of this tutorial and are ready to meet new challenges!"]
      - [Headline, "NO TASKS LEFT"]
      - [Image, "content/gui/images/background/hr.png"]
      - |
@@ -677,7 +679,6 @@ events:
 - # Winning conditions
   actions:
    - {type: win}
-   - {type: message, arguments: ["Congratulations! You have reached the end of this tutorial and are ready to meet new challenges!"]}
   conditions:
    - type: var_gt
      arguments: ["tutStepDone", 60]

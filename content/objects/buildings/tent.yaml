@@ -136,8 +136,7 @@ components:
         time: 90
         consumes:
         - [RES.COMMUNITY, -1]
-- SettlerUpgradeComponent:
-    upgrade_material_data:
+    settler_upgrade_lines:
       TIER.PIONEERS:
         - [RES.BOARDS, -4]
       TIER.SETTLERS:
@@ -176,3 +175,5 @@ actionsets:
     as_house0:
   TIER.CITIZENS:
     as_stonehouse0:
+    as_stonehouse1:
+    as_stonehouse3:

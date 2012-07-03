@@ -29,7 +29,6 @@ from horizons.component.healthcomponent import HealthComponent
 from horizons.component.selectablecomponent import SelectableComponent
 from horizons.component.commandablecomponent import CommandableComponent
 from horizons.component.collectingcomponent import CollectingComponent
-from horizons.component.settlerupgradecomponent import SettlerUpgradeComponent
 from horizons.world.production.producer import Producer, QueueProducer, UnitProducer
 
 class ComponentHolder(object):
@@ -38,23 +37,23 @@ class ComponentHolder(object):
 	It can be inherited by all objects that can hold components
 
 	TUTORIAL:
-	I can't explain component-oriented architecture to you here, but i can give you
+	I can't explain component-oriented architecture to you here, but I can give you
 	an overview of how we use it:
 	Instead of putting all different features of entities into single classes,
-	as it's common in OOP, every feature is put into a component. This should
+	as is common in OOP, each feature is put into a component. This should
 	increase the encapsulation, and it's easier if an object consists of 15 independent
 	building blocks than if it were 15 classes, where many override the same function call
 	and fight about who gets called first.
 	Check class_mapping for a complete list of the different components we use.
 
-	The components are stored in a dict, the key is their name (a string).
+	The components are stored in a dict, where the key is their name (a string).
 	This is necessary so objects can be defined as a collection of their components in
 	human readable format. This is done via yaml files in content/objects in our case.
 	You could check out e.g. content/objects/buildings/lumberjackcamp.yaml to see what
 	it looks like.
 
-	This class manages the components, it stores them and makes them accessible.
-	Check out the actual component class in horizons/component/__init__.py
+	This class manages the components; it stores them and makes them accessible.
+	Check out the actual component class in horizons/component/__init__.py.
 	"""
 
 	class_mapping = {
@@ -72,7 +71,6 @@ class ComponentHolder(object):
 	    'SelectableComponent': SelectableComponent,
 	    'CommandableComponent': CommandableComponent,
 	    'CollectingComponent': CollectingComponent,
-	    'SettlerUpgradeComponent': SettlerUpgradeComponent,
 	}
 
 
@@ -81,7 +79,7 @@ class ComponentHolder(object):
 		self.components = {}
 
 	def initialize(self):
-		"""Has to be called every time an componentholder is created. This is not
+		"""Has to be called every time a componentholder is created. This is not
 		in __init__() because we need to make sure that all other sub/parent classes
 		have been inited, for example the ConcreteObject class. This is to ensure
 		that all member variables of sub/parent classes are correctly set when we
@@ -96,6 +94,9 @@ class ComponentHolder(object):
 			for entry in self.component_templates:
 				if isinstance(entry, dict):
 					for key, value in entry.iteritems():
+						# TODO: try to pass read-only data to get_instance, since it's usually
+						# cached and changes would apply to all instances
+						# dict views of python2.7 could be a start.
 						component = self.class_mapping[key].get_instance(value)
 						tmp_comp.append(component)
 				else:
