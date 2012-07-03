@@ -149,8 +149,12 @@ class SavegameUpgrader(object):
 	def _upgrade_to_rev63(self, db):
 		# added a table for pirate's 'tick' callback
 		db("CREATE TABLE ai_pirate (remaining_ticks INTEGER NOT NULL DEFAULT 1)")
+		db("INSERT INTO ai_pirate (rowid, remaining_ticks) SELECT p.rowid, 1 FROM player p WHERE p.is_pirate")
 		# added flag to aiplayer for fighting ships request
 		db("ALTER TABLE ai_player ADD COLUMN need_more_combat_ships INTEGER NOT NULL DEFAULT 1")
+
+		# update stance for every pirate player ship
+		db("INSERT INTO stance (worldid, stance, state) SELECT u.rowid, \"hold_ground_stance\", \"idle\" FROM unit u, player p WHERE u.owner=p.rowid AND p.is_pirate=1")
 
 	def _upgrade(self):
 		# fix import loop

@@ -127,36 +127,16 @@ class Pirate(GenericAI):
 		for ship in self.ships:
 			# prepare values
 			ship_state = self.ships[ship]
-			# if ship has any move callbacks
-			#current_callback = Callback(self.lookout, ship)
-			#calls = Scheduler().get_classinst_calls(self, current_callback)
-			#assert len(calls) == 1, "got %s calls for saving %s: %s" %(len(calls), current_callback, calls)
-			#remaining_ticks = max(calls.values()[0], 1)
+			# TODO: save ship move callbacks
 
 			db("INSERT INTO pirate_ships(rowid, state) VALUES(?, ?)",
 				ship.worldid, ship_state.index)
 
-		## save the behavior manager
-		#self.behavior_manager.save(db)
-
-		## save the unit manager
-		#self.unit_manager.save(db)
-
-		## save the combat manager
-		#self.combat_manager.save(db)
-
 	def _load(self, db, worldid):
 		super(Pirate, self)._load(db, worldid)
 		self.__init()
-		#self.unit_manager = UnitManager.load(db, self)
-		#self.behavior_manager = BehaviorManager.load(db, self)
-		#self.combat_manager = PirateCombatManager.load(db, self)
 
-		try:
-			remaining_ticks, = db("SELECT remaining_ticks FROM ai_pirate WHERE rowid = ?", worldid)[0]
-		except IndexError:
-			# in case of nonexistent records in old savegames
-			remaining_ticks = 1
+		remaining_ticks, = db("SELECT remaining_ticks FROM ai_pirate WHERE rowid = ?", worldid)[0]
 		Scheduler().add_new_object(Callback(self.tick), self, remaining_ticks, -1, 32)
 
 		home = db("SELECT x, y FROM pirate_home_point")[0]
@@ -174,11 +154,6 @@ class Pirate(GenericAI):
 			self.ships[ship] = state
 			if remaining_ticks:
 				pass # TODO load new move callbacks from behavior
-				# load move callback
-			# SAVE MOVE CALLBACK THOUGH!
-			#assert remaining_ticks is not None
-			#Scheduler().add_new_object(Callback(self.lookout, ship), self, remaining_ticks, -1, 8)
-			#ship.add_move_callback(Callback(self.ship_idle, ship))
 
 	def remove_unit(self, unit):
 		"""Called when a ship which is owned by the pirate is removed or killed."""
