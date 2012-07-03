@@ -204,20 +204,20 @@ class AIPlayer(GenericAI):
 		self.personality_manager.save(db)
 
 		# save the behavior manager
-		self.behavior_manager.save(db)
+		#self.behavior_manager.save(db)
 
 		# save the unit manager
-		self.unit_manager.save(db)
+		#self.unit_manager.save(db)
 
 		# save the combat manager
-		self.combat_manager.save(db)
+		#self.combat_manager.save(db)
 
 	def _load(self, db, worldid):
 		super(AIPlayer, self)._load(db, worldid)
 		self.personality_manager = PersonalityManager.load(db, self)
-		self.unit_manager = UnitManager.load(db, self)
-		self.behavior_manager = BehaviorManager.load(db, self)
-		self.combat_manager = CombatManager.load(db, self)
+		#self.unit_manager = UnitManager.load(db, self)
+		#self.behavior_manager = BehaviorManager.load(db, self)
+		#self.combat_manager = CombatManager.load(db, self)
 		self.__init()
 
 		self.need_more_ships, self.need_feeder_island, self.need_more_combat_ships, remaining_ticks = \

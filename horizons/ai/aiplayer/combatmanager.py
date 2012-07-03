@@ -30,7 +30,7 @@ from horizons.world.units.fightingship import FightingShip
 from horizons.world.units.pirateship import PirateShip
 
 
-class CombatManager(WorldObject):
+class CombatManager(object):
 	"""
 	CombatManager object is responsible for handling close combat in game.
 	It scans the environment (lookout) and requests certain actions from behavior
@@ -81,6 +81,7 @@ class PirateCombatManager(CombatManager):
 
 	def __init__(self, owner):
 		super(PirateCombatManager, self).__init__(owner)
+		# todo: remove 2 lines below
 		self.owner = owner
 		self.session = owner.session
 
@@ -107,4 +108,11 @@ class PirateCombatManager(CombatManager):
 				if self.owner.ships[ship] != self.owner.shipStates.moving_random:
 					self.owner.behavior_manager.request_action(BehaviorProfile.action_types.idle,
 						'no_one_in_sight', **environment)
+
+	@classmethod
+	def load(cls, db, owner):
+		#self = cls.__new__(cls, owner)
+		self = cls(owner)
+		#self._load(db, player)
+		return self
 

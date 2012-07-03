@@ -29,7 +29,7 @@ from horizons.world.units.fightingship import FightingShip
 from horizons.world.units.pirateship import PirateShip
 
 
-class UnitManager(WorldObject):
+class UnitManager(object):
 	"""
 	UnitManager objects is responsible for handling units in game.
 	1.Grouping combat ships into easy to handle fleets,
@@ -40,7 +40,6 @@ class UnitManager(WorldObject):
 	log = logging.getLogger("ai.aiplayer.unitmanager")
 
 	def __init__(self, owner):
-		super(UnitManager, self).__init__()
 		self.owner = owner
 		self.world = owner.world
 		self.session = owner.session
@@ -150,16 +149,3 @@ class UnitManager(WorldObject):
 
 	def tick(self):
 		self.regroup_ships()  # TODO will be called on shipstate change (sank/built)
-
-	def save(self, db):
-		pass
-
-	def _load(self, db, player):
-		pass
-
-	@classmethod
-	def load(cls, db, owner):
-		self = cls.__new__(cls, owner)
-		#self._load(db, player)
-		return self
-

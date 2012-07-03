@@ -25,7 +25,7 @@ import logging
 from horizons.util.worldobject import WorldObject
 
 
-class BehaviorManager(WorldObject):
+class BehaviorManager(object):
 	"""
 	BehaviorManager holds BehaviorComponents.
 	Entities such as CombatManager or StrategyManager ask BehaviorManager to perform
@@ -38,9 +38,6 @@ class BehaviorManager(WorldObject):
 	log = logging.getLogger("ai.aiplayer.behaviormanager")
 
 	def __init__(self, owner):
-
-		super(BehaviorManager, self).__init__()
-
 		self.owner = owner
 		self.world = owner.world
 		self.session = owner.session
@@ -77,9 +74,3 @@ class BehaviorManager(WorldObject):
 			if (total + prob) > rnd_val:
 				return beh
 			total += prob
-
-	@classmethod
-	def load(cls, db, owner):
-		self = cls.__new__(cls, owner)
-		#self._load(db, player)
-		return self
