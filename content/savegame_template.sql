@@ -153,6 +153,11 @@ CREATE TABLE "logbook" (
 	"widgets" TEXT
 );
 
+CREATE TABLE "logbook_messages" (
+	"message" TEXT,
+	"displayed" BOOL
+);
+
 CREATE TABLE "trade_values" (
 	"object" INT NOT NULL,
 	"total_income" INT NOT NULL,
