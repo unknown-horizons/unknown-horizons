@@ -59,6 +59,7 @@ class BehaviorAction(object):
 #	Actions used in situations when there are no ships nearby.
 #	Possible usage may be: scouting, sailing randomly, sailing back to main settlement
 
+
 class BehaviorActionPirateRoutine(BehaviorAction):
 	"""
 	Idle behavior for Pirate player. It has to be specialized for Pirate since general AI does not have home_point.
@@ -66,7 +67,7 @@ class BehaviorActionPirateRoutine(BehaviorAction):
 	idle -> moving_random -> going_home -> idle
 	"""
 
-	sail_home_chance = 0.3 # sail_home_chance to sail home, 1-sail_home_chance to sail randomly
+	sail_home_chance = 0.3  # sail_home_chance to sail home, 1-sail_home_chance to sail randomly
 
 	caught_ship_radius = 5
 	home_radius = 2
@@ -125,7 +126,7 @@ class BehaviorActionPirateRoutine(BehaviorAction):
 		ship_group = environment['ship_group']
 		for ship in ship_group:
 			self._chase_closest_ship(ship)
-		self.log.debug('Pirate routine: Ship:%s trading_ships_in_sight',ship.get_component(NamedComponent).name)
+		self.log.debug('Pirate routine: Ship:%s trading_ships_in_sight', ship.get_component(NamedComponent).name)
 
 	def no_one_in_sight(self, **environment):
 		"""
@@ -140,12 +141,12 @@ class BehaviorActionPirateRoutine(BehaviorAction):
 				else:
 					self._sail_random(ship)
 
-		self.log.debug('Pirate routine: Ship:%s no_one_in_sight',ship.get_component(NamedComponent).name)
+		self.log.debug('Pirate routine: Ship:%s no_one_in_sight', ship.get_component(NamedComponent).name)
 
 
 class BehaviorActionKeepFleetTogether(BehaviorAction):
 
-	dispersion_threshold = 20.0 # TODO: move to YAML/Personality
+	dispersion_threshold = 20.0  # TODO: move to YAML/Personality
 
 	def __init__(self, owner):
 		super(BehaviorActionKeepFleetTogether, self).__init__(owner)
@@ -197,6 +198,7 @@ class BehaviorActionKeepFleetDispersed(BehaviorAction):
 #	Actions used when there is a possibility to engage in combat with other players.
 #	It is also reasonable to flee from enemies if they are much stronger.
 
+
 # Common certainty functions for offensive actions
 def certainty_power_balance_exp(**environment):
 	"""
@@ -204,12 +206,14 @@ def certainty_power_balance_exp(**environment):
 	"""
 	return BehaviorAction.default_certainty * (environment['power_balance'] ** 2)
 
+
 def certainty_power_balance_inverse(**environment):
 	"""
 	Return power_balance reciprocal,
 	"""
 
-	return BehaviorAction.default_certainty * (1./environment['power_balance'])
+	return BehaviorAction.default_certainty * (1. / environment['power_balance'])
+
 
 class BehaviorActionRegular(BehaviorAction):
 	"""
@@ -269,7 +273,8 @@ class BehaviorActionBreakDiplomacy(BehaviorAction):
 
 		if not self.session.world.diplomacy.are_enemies(self.owner, enemies[0].owner):
 			AddEnemyPair(self.owner, enemies[0].owner).execute(self.session)
-		BehaviorAction.log.info('Player:%s broke diplomacy with %s'%(self.owner.name, enemies[0].owner.name))
+		BehaviorAction.log.info('Player:%s broke diplomacy with %s' % (self.owner.name, enemies[0].owner.name))
+
 
 class BehaviorActionCoward(BehaviorAction):
 

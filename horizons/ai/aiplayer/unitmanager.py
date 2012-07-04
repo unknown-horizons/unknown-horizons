@@ -19,7 +19,8 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-import logging, collections
+import collections
+import logging
 from math import sqrt
 from operator import itemgetter
 from horizons.component.healthcomponent import HealthComponent
@@ -122,7 +123,7 @@ class UnitManager(object):
 		"""
 
 		# dps_multiplier - 4vs2 ships equal 2 times more DPS. Multiply that factor when calculating power balance.
-		dps_multiplier = len(ship_group)/float(len(enemy_ship_group))
+		dps_multiplier = len(ship_group) / float(len(enemy_ship_group))
 
 		self_hp = 0.0
 		enemy_hp = 0.0
@@ -130,7 +131,7 @@ class UnitManager(object):
 			self_hp += unit.get_component(HealthComponent).health
 		for unit in enemy_ship_group:
 			enemy_hp += unit.get_component(HealthComponent).health
-		return (self_hp/enemy_hp)*dps_multiplier
+		return (self_hp / enemy_hp) * dps_multiplier
 
 	@classmethod
 	def calculate_ship_dispersion(cls, ship_group):
@@ -141,10 +142,10 @@ class UnitManager(object):
 		@return: dis
 		"""
 		positions = [ship.position for ship in ship_group]
-		bottom_left = Point(min(positions, key=lambda pos:pos.x).x, min(positions,key=lambda pos:pos.y).y)
-		top_right = Point(max(positions, key=lambda pos:pos.x).x, max(positions,key=lambda pos:pos.y).y)
-		diag = bottom_left.distance_to_point(top_right)
-		return diag
+		bottom_left = Point(min(positions, key=lambda position: position.x).x, min(positions, key=lambda position: position.y).y)
+		top_right = Point(max(positions, key=lambda position: position.x).x, max(positions, key=lambda position: position.y).y)
+		diagonal = bottom_left.distance_to_point(top_right)
+		return diagonal
 
 	def find_ships_near_group(self, ship_group):
 		other_ships_set = set()

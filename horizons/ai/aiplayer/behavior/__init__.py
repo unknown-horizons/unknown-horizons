@@ -45,13 +45,13 @@ class BehaviorManager(object):
 
 	def request_action(self, type, action_name, **environment):
 		possible_behaviors = []
-		for beh, prob in self.actions[type].iteritems():
-			if hasattr(beh, action_name):
-				certainty = beh.certainty(action_name, **environment)
+		for behavior, probability in self.actions[type].iteritems():
+			if hasattr(behavior, action_name):
+				certainty = behavior.certainty(action_name, **environment)
 				# final probability is the one defined in profile multiplied by it's certainty
 				self.log.info("Player:%s Behavior:%s Action:%s (p: %s ,c: %s ,f: %s)" % (self.owner.name,
-					beh.__class__.__name__, action_name, prob, certainty, prob * certainty))
-				possible_behaviors.append((beh, prob * certainty))
+					behavior.__class__.__name__, action_name, probability, certainty, probability * certainty))
+				possible_behaviors.append((behavior, probability * certainty))
 
 		# get the best action possible
 		final_action = self.get_best_behavior(possible_behaviors, action_name, **environment)
@@ -64,13 +64,13 @@ class BehaviorManager(object):
 		"""
 		Get best behavior from behavior_iterable (linear time).
 		"""
-		total, rnd_val = 0, self.session.random.random()
+		total, random_value = 0.0, self.session.random.random()
 
-		# instead of scaling every value to make 1.0, we scale rnd_val to sum of probabilities
+		# instead of scaling every value to make 1.0, we scale random_value to sum of probabilities
 		sum_probs = sum([item[1] for item in behavior_iterable])
-		rnd_val *= sum_probs
+		random_value *= sum_probs
 
-		for beh, prob in behavior_iterable:
-			if (total + prob) > rnd_val:
-				return beh
-			total += prob
+		for behavior, probability in behavior_iterable:
+			if (total + probability) > random_value:
+				return behavior
+			total += probability
