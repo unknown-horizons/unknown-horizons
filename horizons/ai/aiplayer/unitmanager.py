@@ -23,6 +23,7 @@ import logging, collections
 from math import sqrt
 from operator import itemgetter
 from horizons.component.healthcomponent import HealthComponent
+from horizons.component.selectablecomponent import SelectableComponent
 from horizons.util.shapes.point import Point
 from horizons.util.worldobject import WorldObject
 from horizons.world.units.fightingship import FightingShip
@@ -44,8 +45,8 @@ class UnitManager(object):
 		self.world = owner.world
 		self.session = owner.session
 		self.ship_groups = []
-		self.filtering_rules = collections.namedtuple('FilteringRules', 'not_owned, hostile, ship_type')(not_owned=self._not_owned_rule,
-			hostile=self._hostile_rule, ship_type=self._ship_type_rule)
+		self.filtering_rules = collections.namedtuple('FilteringRules', 'not_owned, hostile, ship_type, selectable')(not_owned=self._not_owned_rule,
+			hostile=self._hostile_rule, ship_type=self._ship_type_rule, selectable=self._selectable_rule)
 
 	def get_fighting_ships(self):
 		return [ship for ship in self.owner.ships if isinstance(ship, FightingShip)]
@@ -85,6 +86,12 @@ class UnitManager(object):
 		Rule stating that ship is any of ship_types instances
 		"""
 		return lambda player, ship: isinstance(ship, ship_types)
+
+	def _selectable_rule(self):
+		"""
+		Rule stating that ship has to be selectable.
+		"""
+		return lambda player, ship: ship.has_component(SelectableComponent)
 
 	def filter_ships(self, player, ships, rules):
 		"""
@@ -144,7 +151,7 @@ class UnitManager(object):
 		for ship in ship_group:
 			nearby_ships = ship.find_nearby_ships()
 			# return only other player's ships, since we want that in most cases anyway
-			other_ships_set |= set(self.filter_ships(self.owner, nearby_ships, [self._not_owned_rule()]))
+			other_ships_set |= set(self.filter_ships(self.owner, nearby_ships, [self._not_owned_rule(), self._selectable_rule()]))
 		return list(other_ships_set)
 
 	def tick(self):

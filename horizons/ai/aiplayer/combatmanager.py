@@ -35,7 +35,7 @@ class CombatManager(object):
 	CombatManager object is responsible for handling close combat in game.
 	It scans the environment (lookout) and requests certain actions from behavior
 	"""
-	log = logging.getLogger("ai.aiplayer.combatmanager")
+	log = logging.getLogger("ai.aiplayer.behavior.combatmanager")
 
 	def __init__(self, owner):
 		super(CombatManager, self).__init__()
@@ -51,10 +51,18 @@ class CombatManager(object):
 
 			# we want only PirateShips
 			pirates = unit_manager.filter_ships(self.owner, ships_around, (rules.ship_type(PirateShip), ))
-
-			environment = {'enemies': pirates, 'ship_group': ship_group, }
-			if pirates:
+			fighting_ships = unit_manager.filter_ships(self.owner, ships_around, (rules.ship_type(FightingShip), ))
+			environment = {'ship_group': ship_group}
+			if fighting_ships:
+				environment['enemies'] = fighting_ships
+				environment['power_balance'] = UnitManager.calculate_power_balance(ship_group, fighting_ships)
+				self.log.debug("Player: %s vs Player: %s -> power_balance:%s" % (self.owner.name, fighting_ships[0].owner.name, environment['power_balance']))
+				self.owner.behavior_manager.request_action(BehaviorProfile.action_types.offensive,
+					'fighting_ships_in_sight', **environment)
+			elif pirates:
+				environment = {'enemies': pirates, 'ship_group': ship_group, }
 				environment['power_balance'] = UnitManager.calculate_power_balance(ship_group, pirates)
+				self.log.debug("Player: %s vs Player: %s -> power_balance:%s" % (self.owner.name, pirates[0].owner.name, environment['power_balance']))
 				self.owner.behavior_manager.request_action(BehaviorProfile.action_types.offensive,
 					'pirates_in_sight', **environment)
 			else:
@@ -64,13 +72,6 @@ class CombatManager(object):
 	def tick(self):
 		self.lookout()
 
-	@classmethod
-	def load(cls, db, owner):
-		self = cls.__new__(cls, owner)
-		#self._load(db, player)
-		return self
-
-	#TODO add save/load mechanisms
 
 class PirateCombatManager(CombatManager):
 	"""
@@ -89,30 +90,23 @@ class PirateCombatManager(CombatManager):
 		unit_manager = self.owner.unit_manager
 		rules = self.owner.unit_manager.filtering_rules
 		for ship, shipState in self.owner.ships.iteritems():
-			enemies = unit_manager.find_ships_near_group([ship])
+			ships_around = unit_manager.find_ships_near_group([ship])
 			environment = {'ship_group': [ship], }
 
-			if enemies:
-				fighting_ships = unit_manager.filter_ships(self.owner, enemies, (rules.ship_type(FightingShip), rules.hostile()))
+			if ships_around:
+				fighting_ships = unit_manager.filter_ships(self.owner, ships_around, (rules.ship_type(FightingShip), rules.hostile()))
 
 				if fighting_ships:
 					environment['enemies'] = fighting_ships
 					environment['power_balance'] = UnitManager.calculate_power_balance([ship], fighting_ships)
+					self.log.debug("Player: %s vs Player: %s -> power_balance:%s" % (self.owner.name, fighting_ships[0].owner.name, environment['power_balance']))
 					self.owner.behavior_manager.request_action(BehaviorProfile.action_types.offensive,
 						'fighting_ships_in_sight', **environment)
 				elif shipState in [self.owner.shipStates.moving_random, self.owner.shipStates.chasing_ship, self.owner.shipStates.idle]:
-					environment['enemies'] = enemies
+					environment['enemies'] = ships_around
 					self.owner.behavior_manager.request_action(BehaviorProfile.action_types.idle,
 						'trading_ships_in_sight', **environment)
 			else:
 				if self.owner.ships[ship] != self.owner.shipStates.moving_random:
 					self.owner.behavior_manager.request_action(BehaviorProfile.action_types.idle,
 						'no_one_in_sight', **environment)
-
-	@classmethod
-	def load(cls, db, owner):
-		#self = cls.__new__(cls, owner)
-		self = cls(owner)
-		#self._load(db, player)
-		return self
-

@@ -35,7 +35,7 @@ class BehaviorManager(object):
 
 	# Types of actions behavior can handle
 
-	log = logging.getLogger("ai.aiplayer.behaviormanager")
+	log = logging.getLogger("ai.aiplayer.behavior.behaviormanager")
 
 	def __init__(self, owner):
 		self.owner = owner
@@ -49,8 +49,8 @@ class BehaviorManager(object):
 			if hasattr(beh, action_name):
 				certainty = beh.certainty(action_name, **environment)
 				# final probability is the one defined in profile multiplied by it's certainty
-				self.log.info("%s Action:%s Probability:%s Certainty:%s FinalProbability:%s" % (beh.__class__.__name__,
-					action_name, prob, certainty, prob * certainty))
+				self.log.info("Player:%s Behavior:%s Action:%s (p: %s ,c: %s ,f: %s)" % (self.owner.name,
+					beh.__class__.__name__, action_name, prob, certainty, prob * certainty))
 				possible_behaviors.append((beh, prob * certainty))
 
 		# get the best action possible

@@ -125,7 +125,7 @@ class BehaviorActionPirateRoutine(BehaviorAction):
 		ship_group = environment['ship_group']
 		for ship in ship_group:
 			self._chase_closest_ship(ship)
-		self.log.debug('trading_ships_in_sight action')
+		self.log.debug('Pirate routine: Ship:%s trading_ships_in_sight',ship.get_component(NamedComponent).name)
 
 	def no_one_in_sight(self, **environment):
 		"""
@@ -139,7 +139,8 @@ class BehaviorActionPirateRoutine(BehaviorAction):
 					self._sail_home(ship)
 				else:
 					self._sail_random(ship)
-		self.log.debug('no_one_in_sight action')
+
+		self.log.debug('Pirate routine: Ship:%s no_one_in_sight',ship.get_component(NamedComponent).name)
 
 
 class BehaviorActionKeepFleetTogether(BehaviorAction):
@@ -254,6 +255,22 @@ class BehaviorActionRegular(BehaviorAction):
 			BehaviorAction.log.info('ActionRegular: Enemy ship was not hostile')
 
 
+class BehaviorActionBreakDiplomacy(BehaviorAction):
+	"""
+	Temporary action for breaking diplomacy with other players.
+	"""
+
+	def __init__(self, owner):
+		super(BehaviorActionBreakDiplomacy, self).__init__(owner)
+
+	def fighting_ships_in_sight(self, **environment):
+		enemies = environment['enemies']
+		ship_group = environment['ship_group']
+
+		if not self.session.world.diplomacy.are_enemies(self.owner, enemies[0].owner):
+			AddEnemyPair(self.owner, enemies[0].owner).execute(self.session)
+		BehaviorAction.log.info('Player:%s broke diplomacy with %s'%(self.owner.name, enemies[0].owner.name))
+
 class BehaviorActionCoward(BehaviorAction):
 
 	def __init__(self, owner):
@@ -272,11 +289,24 @@ class BehaviorActionCoward(BehaviorAction):
 		BehaviorAction.log.info('Pirates give me chills man.')
 
 
+def certainty_are_enemies(**environment):
+	"""
+	returns 0.0 if two players are enemies already, default certainty otherwise.
+	"""
+	enemies = environment['enemies']
+	ship_group = environment['ship_group']
+
+	player = ship_group[0].owner
+	enemy_player = enemies[0].owner
+
+	return 0.0 if player.session.world.diplomacy.are_enemies(player, enemy_player) else BehaviorAction.default_certainty
+
+
 class BehaviorActionPirateHater(BehaviorAction):
 
 	def __init__(self, owner):
 		super(BehaviorActionPirateHater, self).__init__(owner)
-		#self._certainty['pirates_in_sight'] = lambda **env: certainty_power_balance(**env)/2
+		self._certainty['pirates_in_sight'] = certainty_are_enemies
 
 	def pirates_in_sight(self, **environment):
 		"""
