@@ -257,7 +257,7 @@ class Session(LivingObject):
 
 	def load(self, savegame, players, trader_enabled, pirate_enabled,
 	         natural_resource_multiplier, is_scenario=False, campaign=None,
-	         force_player_id=None, disasters_enabled=True, is_multiplayer=False):
+	         force_player_id=None, disasters_enabled=True, is_multiplayer=False, mp_conditions=None):
 		"""Loads a map. Key method for starting a game.
 		@param savegame: path to the savegame database.
 		@param players: iterable of dictionaries containing id, name, color, local, ai, and difficulty
@@ -268,6 +268,10 @@ class Session(LivingObject):
 		TUTORIAL: Here you see how the vital game elements (and some random things that are also required)
 		are initialised.
 		"""
+
+		if mp_conditions:
+			self.scenario_eventhandler = ScenarioEventHandler(self, data=mp_conditions)
+
 		if is_scenario:
 			# savegame is a yaml file, that contains reference to actual map file
 			self.scenario_eventhandler = ScenarioEventHandler(self, savegame)

@@ -195,7 +195,7 @@ class MultiplayerMenu(object):
 				index = self.current.collectData('gamelist')
 				return self.games[index]
 		except:
-			return MPGame(-1, "", "", 0, 0, [], "", -1, "", False, "", [])
+			return MPGame(-1, "", "", 0, 0, [], "", -1, "", False, "", [], None)
 
 	def __show_only_own_version_toggle(self):
 		self.__refresh()
@@ -515,8 +515,10 @@ class MultiplayerMenu(object):
 			password = self.current.collectData('password')
 			load = None
 
+		mp_conditions = None
+
 		game = NetworkInterface().creategame(mapname, maxplayers, gamename, load,
-																				(hashlib.sha1(password).hexdigest() if password != "" else ""))
+																				(hashlib.sha1(password).hexdigest() if password != "" else ""), mp_conditions)
 		if game is None:
 			return
 

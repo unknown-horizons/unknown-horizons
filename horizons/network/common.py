@@ -126,6 +126,7 @@ class Game(object):
 		self.name          = packet.name
 		self.load          = packet.load
 		self.password      = packet.password
+		self.mp_conditions = packet.mp_conditions
 		self.creator       = creator.name
 		self.creator_sid   = creator.sid
 		self.players       = []

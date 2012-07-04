@@ -32,8 +32,9 @@ class cmd_creategame(packet):
 	name          = u"Unnamed Game"
 	load          = None
 	password      = None
+	mp_conditions = None
 
-	def __init__(self, clientver, mapname, maxplayers, playername, name, load=None, password=None, playercolor=None, clientid=None):
+	def __init__(self, clientver, mapname, maxplayers, playername, name, load=None, password=None, playercolor=None, clientid=None, mp_conditions=None):
 		"""
 		@param load: whether it's a loaded game
 		"""
@@ -46,6 +47,7 @@ class cmd_creategame(packet):
 		self.password      = None if password == "" else password
 		self.playercolor   = playercolor
 		self.clientid      = clientid
+		self.mp_conditions = mp_conditions
 
 	def validate(self):
 		if not isinstance(self.clientversion, unicode):

@@ -134,10 +134,10 @@ class NetworkInterface(object):
 			except NetworkException as e:
 				self._handle_exception(e)
 
-	def creategame(self, mapname, maxplayers, name, load=None, password=None):
+	def creategame(self, mapname, maxplayers, name, load=None, password=None, mp_conditions=None):
 		self.log.debug("[CREATEGAME] %s, %s, %s, %s", mapname, maxplayers, name, load)
 		try:
-			game = self._client.creategame(mapname, maxplayers, name, load, password)
+			game = self._client.creategame(mapname, maxplayers, name, load, password, mp_conditions)
 		except NetworkException as e:
 			fatal = self._handle_exception(e)
 			return None
@@ -307,7 +307,7 @@ class NetworkInterface(object):
 		return ret_list
 
 	def game2mpgame(self, game):
-		return MPGame(game.uuid, game.creator, game.mapname, game.maxplayers, game.playercnt, game.players, self._client.name, game.clientversion, game.name, game.load, game.password, game.ready_players)
+		return MPGame(game.uuid, game.creator, game.mapname, game.maxplayers, game.playercnt, game.players, self._client.name, game.clientversion, game.name, game.load, game.password, game.ready_players, game.mp_conditions)
 
 	def get_clientversion(self):
 		return self._client.version
@@ -334,7 +334,7 @@ class NetworkInterface(object):
 
 
 class MPGame(object):
-	def __init__(self, uuid, creator, mapname, maxplayers, playercnt, players, localname, version, name, load, password, ready_players):
+	def __init__(self, uuid, creator, mapname, maxplayers, playercnt, players, localname, version, name, load, password, ready_players, mp_conditions):
 		self.uuid          = uuid
 		self.creator       = creator
 		self.mapname       = mapname
@@ -347,6 +347,7 @@ class MPGame(object):
 		self.load          = load
 		self.password      = password
 		self.ready_players = ready_players
+		self.mp_conditions = mp_conditions
 
 	def get_uuid(self):
 		return self.uuid
@@ -371,6 +372,9 @@ class MPGame(object):
 
 	def get_password(self):
 		return self.password
+
+	def get_mp_conditions(self):
+		return self.mp_conditions
 
 	def get_player_list(self):
 		ret_players = []

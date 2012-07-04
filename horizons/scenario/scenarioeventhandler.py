@@ -63,7 +63,7 @@ class ScenarioEventHandler(LivingObject):
 
 	PICKLE_PROTOCOL = 2
 
-	def __init__(self, session, scenariofile = None):
+	def __init__(self, session, scenariofile = None, data = None):
 		"""
 		@param session: Session instance
 		@param scenariofile: yaml file that describes the scenario
@@ -80,6 +80,9 @@ class ScenarioEventHandler(LivingObject):
 			self._event_conditions[cond] = set()
 		if scenariofile:
 			self._apply_data( self._parse_yaml_file( scenariofile ) )
+
+		elif data:
+			self._apply_data(data)
 
 		self.sleep_ticks_remaining = 0
 
