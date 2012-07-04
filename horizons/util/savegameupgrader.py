@@ -154,7 +154,7 @@ class SavegameUpgrader(object):
 		db("ALTER TABLE ai_player ADD COLUMN need_more_combat_ships INTEGER NOT NULL DEFAULT 1")
 
 		# update stance for every pirate player ship
-		db("INSERT INTO stance (worldid, stance, state) SELECT u.rowid, \"hold_ground_stance\", \"idle\" FROM unit u, player p WHERE u.owner=p.rowid AND p.is_pirate=1")
+		db('INSERT INTO stance (worldid, stance, state) SELECT u.rowid, "hold_ground_stance", "idle" FROM unit u, player p WHERE u.owner=p.rowid AND p.is_pirate=1')
 
 	def _upgrade(self):
 		# fix import loop
