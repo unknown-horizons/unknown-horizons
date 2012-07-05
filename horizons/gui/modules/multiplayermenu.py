@@ -195,7 +195,7 @@ class MultiplayerMenu(object):
 				index = self.current.collectData('gamelist')
 				return self.games[index]
 		except:
-			return MPGame(-1, "", "", 0, 0, [], "", -1, "", False, "", [], None)
+			return MPGame.empty()
 
 	def __show_only_own_version_toggle(self):
 		self.__refresh()

@@ -396,3 +396,7 @@ class MPGame(object):
 
 	def __str__(self):
 		return "%s (%d/%d)" % (self.get_map_name(), self.get_player_count(), self.get_player_limit())
+
+	@classmethod
+	def empty(cls):
+		return cls(-1, "", "", 0, 0, [], "", -1, "", False, "", [], None)
