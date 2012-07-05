@@ -437,6 +437,7 @@ class MultiplayerMenu(object):
 		"""Shows the interface for creating a multiplayer game"""
 		event_map = {
 			'cancel' : self.show_multi,
+			'select_conditions_button': self.__set_conditions_popup,
 			'create' : self.__create_game
 		}
 		self.__apply_new_nickname()
@@ -517,6 +518,9 @@ class MultiplayerMenu(object):
 
 		mp_conditions = None
 
+
+		mp_conditions = self.conditions
+
 		game = NetworkInterface().creategame(mapname, maxplayers, gamename, load,
 																				(hashlib.sha1(password).hexdigest() if password != "" else ""), mp_conditions)
 		if game is None:
@@ -591,6 +595,32 @@ class MultiplayerMenu(object):
 			_add_player_line(player)
 
 		players_vbox.adaptLayout()
+
+	def __set_conditions_popup(self):
+		set_conditions_dialog = self.widgets['set_conditions']
+
+		def _set_conditions():
+			try:
+				gold_amount = int(set_conditions_dialog.findChild(name="gold_amount").text)
+			except ValueError:
+				gold_amount = None
+			if gold_amount:
+				self.conditions = [{u'type': u'settlement_res_stored_greater', u'arguments': [u'RES.GOLD', gold_amount]}]
+			#self.conditions = [{u'type': u'time_passed', u'arguments': [0]}]
+			set_conditions_dialog.hide()
+
+		def _cancel():
+			set_conditions_dialog.hide()
+
+		events = {
+			OkButton.DEFAULT_NAME: _set_conditions,
+			CancelButton.DEFAULT_NAME: _cancel
+		}
+		self.on_escape = _cancel
+
+		set_conditions_dialog.mapEvents(events)
+
+		set_conditions_dialog.show()
 
 	def __show_change_player_details_popup(self):
 		"""Shows a dialog where the player can change its name and/or color"""

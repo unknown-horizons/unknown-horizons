@@ -36,6 +36,9 @@
 					<ListBox name="playerlimit" is_focusable="0" />
 				</ScrollArea>
 			</HBox>
+
+			<Button name="select_conditions_button" text="select conditions"></Button>
+
 		</VBox>
 
 		<Label name="exit_to_mp_menu_lbl"  text="Back:"  position="60,470" />

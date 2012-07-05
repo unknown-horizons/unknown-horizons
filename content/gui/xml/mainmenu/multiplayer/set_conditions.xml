@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<Container name="set_conditions_dialog_window" size="374,290" position="325,235"
+	background_image="content/gui/images/background/notice290.png">
+
+<VBox position="50,30" padding="10">
+	<Label name="headline_set_conditions" text="Set Conditions" />
+	<Icon image="content/gui/images/background/hr.png" />
+
+	<HBox>
+		<Label text="Gold Amount: " />
+		<TextField name="gold_amount" />
+	</HBox>
+
+	<HBox>
+		<CancelButton />
+		<OkButton />
+	</HBox>
+</VBox>
+
+</Container>
