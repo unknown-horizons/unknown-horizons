@@ -25,6 +25,7 @@ from horizons.ai.aiplayer.behavior.profile import BehaviorProfile
 from horizons.ai.aiplayer.unitmanager import UnitManager
 from horizons.command.diplomacy import AddEnemyPair
 from horizons.command.unit import Attack
+from horizons.component.namedcomponent import NamedComponent
 from horizons.util.worldobject import WorldObject
 from horizons.world.units.fightingship import FightingShip
 from horizons.world.units.pirateship import PirateShip
@@ -47,6 +48,8 @@ class CombatManager(object):
 		unit_manager = self.owner.unit_manager
 		rules = self.owner.unit_manager.filtering_rules
 		for ship_group in unit_manager.get_available_ship_groups(None):
+			for ship in ship_group:
+				self.log.debug("Ship:%s state:%s"%(ship.get_component(NamedComponent).name, self.owner.ships[ship]))
 			ships_around = unit_manager.find_ships_near_group(ship_group)
 
 			# we want only PirateShips
@@ -66,8 +69,10 @@ class CombatManager(object):
 				self.owner.behavior_manager.request_action(BehaviorProfile.action_types.offensive,
 					'pirates_in_sight', **environment)
 			else:
-				self.owner.behavior_manager.request_action(BehaviorProfile.action_types.idle,
-					'no_one_in_sight', **environment)
+				# execute idle action only if whole fleet is idle
+				if all([self.owner.ships[ship] == self.owner.shipStates.idle for ship in ship_group]):
+					self.owner.behavior_manager.request_action(BehaviorProfile.action_types.idle,
+						'no_one_in_sight', **environment)
 
 	def tick(self):
 		self.lookout()

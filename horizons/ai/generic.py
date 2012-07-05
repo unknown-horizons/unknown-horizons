@@ -31,7 +31,7 @@ from horizons.constants import GAME_SPEED
 class GenericAI(Player):
 	"""Class for AI players implementing generic stuff."""
 
-	shipStates = Enum('idle', 'moving_random')
+	shipStates = Enum('idle', 'moving_random', 'fleeing_combat')
 
 	def __init__(self, *args, **kwargs):
 		super(GenericAI, self).__init__(*args, **kwargs)

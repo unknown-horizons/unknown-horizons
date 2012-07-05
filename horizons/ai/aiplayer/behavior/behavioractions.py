@@ -29,6 +29,21 @@ from horizons.util.python.callback import Callback
 from horizons.util.shapes.circle import Circle
 from horizons.world.units.movingobject import MoveNotPossible
 
+class CommonBehaviorCallbacks:
+	log = logging.getLogger('ai.aiplayer.behavior.behavioractions')
+
+	@staticmethod
+	def _arrived(ship):
+		"""
+		Callback function executed once ship arrives at the destination after certain action.
+		Be it after fleeing battle, sailing randomly, scouting etc.
+		"""
+		owner = ship.owner
+		previous_state = owner.ships[ship]
+		owner.ships[ship] = owner.shipStates.idle
+
+		CommonBehaviorCallbacks.log.debug('Player %s: Ship %s: arrived at destination after "%s"' % (owner.name,
+		   ship.get_component(NamedComponent).name, previous_state))
 
 class BehaviorAction(object):
 	"""
@@ -59,7 +74,6 @@ class BehaviorAction(object):
 #	Actions used in situations when there are no ships nearby.
 #	Possible usage may be: scouting, sailing randomly, sailing back to main settlement
 
-
 class BehaviorActionPirateRoutine(BehaviorAction):
 	"""
 	Idle behavior for Pirate player. It has to be specialized for Pirate since general AI does not have home_point.
@@ -74,11 +88,6 @@ class BehaviorActionPirateRoutine(BehaviorAction):
 
 	def __init__(self, owner):
 		super(BehaviorActionPirateRoutine, self).__init__(owner)
-
-	def _arrived(self, ship):
-		self.log.debug('Pirate %s: Ship %s(%s): arrived at destination' % (self.owner.worldid,
-			ship.get_component(NamedComponent).name, self.owner.ships[ship]))
-		self.owner.ships[ship] = self.owner.shipStates.idle
 
 	def _chase_closest_ship(self, pirate_ship):
 		ship = self.owner.get_nearest_player_ship(pirate_ship)
@@ -103,7 +112,7 @@ class BehaviorActionPirateRoutine(BehaviorAction):
 
 	def _sail_home(self, ship):
 		try:
-			ship.move(Circle(self.owner.home_point, self.home_radius), Callback(self._arrived, ship))
+			ship.move(Circle(self.owner.home_point, self.home_radius), Callback(CommonBehaviorCallbacks._arrived, ship))
 			self.owner.ships[ship] = self.owner.shipStates.going_home
 			self.log.debug('Pirate %s: Ship %s(%s): sailing home at %s' % (self.owner.worldid, ship.get_component(NamedComponent).name,
 				self.owner.ships[ship], self.owner.home_point))
@@ -114,7 +123,7 @@ class BehaviorActionPirateRoutine(BehaviorAction):
 	def _sail_random(self, ship):
 		point = self.session.world.get_random_possible_ship_position()
 		try:
-			ship.move(point, Callback(self._arrived, ship))
+			ship.move(point, Callback(CommonBehaviorCallbacks._arrived, ship))
 			self.owner.ships[ship] = self.owner.shipStates.moving_random
 			self.log.debug('Pirate %s: Ship %s(%s): moving random at %s' % (self.owner.worldid, ship.get_component(NamedComponent).name,
 				self.owner.ships[ship], point))
@@ -142,6 +151,31 @@ class BehaviorActionPirateRoutine(BehaviorAction):
 					self._sail_random(ship)
 
 		self.log.debug('Pirate routine: Ship:%s no_one_in_sight', ship.get_component(NamedComponent).name)
+
+class BehaviorActionScoutRandomlyNearby(BehaviorAction):
+	"""
+	Sends fleet to a spot nearby.
+	Used mainly for aesthetics (equivalent of "idle" animation)
+	"""
+	scouting_radius = 10
+
+	def __init__(self, owner):
+		super(BehaviorActionScoutRandomlyNearby, self).__init__(owner)
+
+	def no_one_in_sight(self, **environment):
+		"""
+		Idle action, sail randomly somewhere near
+		"""
+		ship_group = environment['ship_group']
+		first_ship = ship_group[0]
+		points = self.session.world.get_points_in_radius(first_ship.position,self.scouting_radius, shuffle=True)
+		point = list(points)[0]
+		for ship in ship_group:
+			try:
+				ship.move(point, Callback(CommonBehaviorCallbacks._arrived, ship))
+				self.owner.ships[ship] = self.owner.shipStates.scouting
+			except MoveNotPossible:
+				self.log.debug("ScoutRandomlyNearby move was not possible")
 
 
 class BehaviorActionKeepFleetTogether(BehaviorAction):
@@ -219,11 +253,26 @@ class BehaviorActionRegular(BehaviorAction):
 	"""
 	A well-balanced way to respond to situations in game.
 	"""
+	power_balance_threshold = 1.05
+
+	flee_home_radius = 5
 
 	def __init__(self, owner):
 		super(BehaviorActionRegular, self).__init__(owner)
 		self._certainty['pirates_in_sight'] = certainty_power_balance_exp
 		self._certainty['fighting_ships_in_sight'] = certainty_power_balance_exp
+
+	def _flee_home(self, ship):
+		home_position = None
+		for settlement in self.owner.session.world.settlements:
+			if settlement.owner == self.owner:
+				home_position = settlement.warehouse.position
+				break
+		try:
+			ship.move(Circle(home_position.origin, self.flee_home_radius), Callback(CommonBehaviorCallbacks._arrived, ship))
+			self.owner.ships[ship] = self.owner.shipStates.fleeing_combat
+		except MoveNotPossible:
+			self.log.info("Ship:%s couldn't flee, move was not possible"%(ship.get_component(NamedComponent).name))
 
 	def pirates_in_sight(self, **environment):
 		"""
@@ -252,9 +301,14 @@ class BehaviorActionRegular(BehaviorAction):
 		power_balance = environment['power_balance']
 
 		if self.session.world.diplomacy.are_enemies(self.owner, enemies[0].owner):
-			for ship in ship_group:
-				Attack(ship, enemies[0]).execute(self.session)
-			BehaviorAction.log.info('ActionRegular: Attacked enemy ship')
+			if power_balance >= self.power_balance_threshold:
+				for ship in ship_group:
+					Attack(ship, enemies[0]).execute(self.session)
+				BehaviorAction.log.info('ActionRegular: Attacked enemy ship')
+			else:
+				for ship in ship_group:
+					self._flee_home(ship)
+				BehaviorAction.log.info('ActionRegular: Fled from combat')
 		else:
 			BehaviorAction.log.info('ActionRegular: Enemy ship was not hostile')
 

@@ -81,7 +81,7 @@ from horizons.component.selectablecomponent import SelectableComponent
 class AIPlayer(GenericAI):
 	"""This is the AI that builds settlements."""
 
-	shipStates = Enum.get_extended(GenericAI.shipStates, 'on_a_mission')
+	shipStates = Enum.get_extended(GenericAI.shipStates, 'on_a_mission', 'scouting')
 
 	log = logging.getLogger("ai.aiplayer")
 	tick_interval = 32
@@ -428,6 +428,9 @@ class AIPlayer(GenericAI):
 		self.fishers = None
 		self.settlement_founder = None
 		self.unit_builder = None
+		self.unit_manager = None
+		self.behavior_manager = None
+		self.combat_manager = None
 		self.settlement_expansions = None
 		self.goals = None
 		self.special_domestic_trade_manager = None
