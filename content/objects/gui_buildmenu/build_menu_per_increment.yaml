@@ -63,9 +63,10 @@ tab3:
 -
   - _ Services
   - BUILDINGS.TAVERN
-  - # empty slot
+  - BUILDINGS.DOCTOR
   - _ Military
   - BUILDINGS.BARRACKS
+  - # empty slot
 
 
 tab4:

@@ -20,6 +20,7 @@ tab1:
 -
   - TODO #TODO find subcategory name: "Preventive" sounds really bad. suggestions?
   - BUILDINGS.FIRE_STATION
+  - BUILDINGS.DOCTOR
 
 tab2:
 - icon: content/gui/icons/tabwidget/buildmenu/level2_%s.png
