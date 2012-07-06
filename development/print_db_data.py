@@ -82,12 +82,12 @@ def print_production_lines():
 
 		str = 'Line %2s of %2s:%-16s %5s sec %s %s ' % (id, object, get_obj_name(object), time, ('D' if default else ' '), ('C' if changes_anim else ' '))
 
-		if len(consumption) > 0:
+		if consumption:
 			str += 'uses: '
 			for res, amount in consumption:
 				str += '%2s %-16s ' % (-amount, get_res_name(res) + '(%s)' % res)
 
-		if len(production) > 0:
+		if production:
 			str += '\t=> '
 			for res, amount in production:
 				str +=  '%2s %-16s ' % (amount, get_res_name(res) + '(%s)' % res)

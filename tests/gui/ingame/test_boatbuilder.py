@@ -103,7 +103,7 @@ def test_ticket_1294(gui):
 	# Unpause huker construction
 	gui.trigger('BB_main_tab', 'toggle_active_inactive/action/default')
 
-	while len(producer.get_productions()) > 0:
+	while producer.get_productions():
 		yield
 
 	yield TestFinished

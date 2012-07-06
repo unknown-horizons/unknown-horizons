@@ -217,7 +217,7 @@ class SavegameManager(object):
 		try:
 			for key in metadata.iterkeys():
 				result = db("SELECT `value` FROM `metadata` WHERE `name` = ?", key)
-				if len(result) > 0:
+				if result:
 					assert(len(result) == 1)
 					metadata[key] = cls.savegame_metadata_types[key](result[0][0])
 		except sqlite3.OperationalError as e:

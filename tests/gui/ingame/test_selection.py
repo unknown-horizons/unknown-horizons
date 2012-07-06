@@ -79,7 +79,7 @@ def test_selection_groups(gui):
 	gui.press_key(gui.Key.NUM_1, ctrl=True)
 
 	gui.select( [] )
-	assert len(gui.session.selected_instances) == 0
+	assert not gui.session.selected_instances
 
 	# check group
 	gui.press_key(gui.Key.NUM_1)
@@ -118,6 +118,6 @@ def test_selection_groups(gui):
 
 	# no group
 	gui.press_key(gui.Key.NUM_3)
-	assert len(gui.session.selected_instances) == 0
+	assert not gui.session.selected_instances
 
 	yield TestFinished

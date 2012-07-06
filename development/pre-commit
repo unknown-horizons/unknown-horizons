@@ -90,7 +90,7 @@ for fname in files_modified:
 		errors = cleanup(errors)
 		stderrors.extend(errors)
 
-		if len(stderrors):
+		if stderrors:
 			print >>sys.stderr, "\rChecking syntax on %s:" %(fname), bcolors.FAIL, "FAILED!", bcolors.ENDC
 			for line in stderrors:
 				print >>sys.stderr, "\t", line

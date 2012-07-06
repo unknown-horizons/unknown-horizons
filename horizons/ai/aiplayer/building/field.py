@@ -86,7 +86,7 @@ class AbstractField(AbstractBuilding):
 		if not self.have_resources(settlement_manager):
 			return (BUILD_RESULT.NEED_RESOURCES, None)
 
-		assert len(production_builder.unused_fields[purpose]) > 0, 'expected field spot to be available'
+		assert production_builder.unused_fields[purpose], 'expected field spot to be available'
 		coords = production_builder.unused_fields[purpose][0]
 		builder = Builder.create(self.id, settlement_manager.land_manager, Point(coords[0], coords[1]))
 		building = builder.execute()

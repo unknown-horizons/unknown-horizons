@@ -269,7 +269,7 @@ class Producer(Component):
 		# call super() after removing all productions since it removes the instance (make it invalid)
 		# which can be needed by changelisteners' actions (e.g. in remove_production method)
 		super(Producer, self).remove()
-		assert len(self.get_productions()) == 0 , 'Failed to remove %s ' % self.get_productions()
+		assert not self.get_productions() , 'Failed to remove %s ' % self.get_productions()
 
 
 	# PROTECTED METHODS
@@ -494,12 +494,11 @@ class QueueProducer(Producer):
 	def check_next_production_startable(self):
 		# See if we can start the next production,  this only works if the current
 		# production is done
-		#print "Check production"
 		state = self._get_current_state()
-		return (state is PRODUCTION.STATES.done or\
-				state is PRODUCTION.STATES.none or\
-				state is PRODUCTION.STATES.paused) and\
-			   (len(self.production_queue) > 0)
+		return len(self.production_queue) > 0 and \
+		       (state is PRODUCTION.STATES.done or
+		        state is PRODUCTION.STATES.none or
+		        state is PRODUCTION.STATES.paused)
 
 	def on_queue_element_finished(self, production):
 		"""Callback used for the SingleUseProduction"""

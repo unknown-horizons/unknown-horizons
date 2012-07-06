@@ -381,7 +381,7 @@ class MultiplayerMenu(object):
 	def __send_chat_message(self):
 		"""Sends a chat message. Called when user presses enter in the input field"""
 		msg = self.current.findChild(name="chatTextField").text
-		if len(msg):
+		if msg:
 			self.current.findChild(name="chatTextField").text = u""
 			NetworkInterface().chat(msg)
 
@@ -455,7 +455,7 @@ class MultiplayerMenu(object):
 			#xgettext:python-format
 			self.current.findChild(name="recommended_number_of_players_lbl").text = \
 					_("Recommended number of players: {number}").format(number=number_of_players)
-		if len(self.maps_display) > 0: # select first entry
+		if self.maps_display: # select first entry
 			self.current.distributeData({
 				'maplist' : 0,
 				'playerlimit' : 0

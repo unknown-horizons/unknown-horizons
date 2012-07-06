@@ -65,7 +65,7 @@ class Player(ComponentHolder, WorldObject):
 
 	def __init(self, name, color, clientid, difficulty_level, settlerlevel = 0):
 		assert isinstance(color, Color)
-		assert (isinstance(name, str) or isinstance(name, unicode)) and len(name) > 0
+		assert isinstance(name, basestring) and name
 		try:
 			self.name = unicode(name)
 		except UnicodeDecodeError:

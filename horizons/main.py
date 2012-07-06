@@ -83,7 +83,7 @@ def start(_command_line_arguments):
 			mpieces = command_line_arguments.mp_master.partition(':')
 			NETWORK.SERVER_ADDRESS = mpieces[0]
 			# only change port if port is specified
-			if len(mpieces[2]) > 0:
+			if mpieces[2]:
 				NETWORK.SERVER_PORT = parse_port(mpieces[2], allow_zero=True)
 		except ValueError:
 			print "Error: Invalid syntax in --mp-master commandline option. Port must be a number between 1 and 65535."
@@ -133,7 +133,7 @@ def start(_command_line_arguments):
 	# init game parts
 
 	client_id = fife.get_uh_setting("ClientID")
-	if client_id is None or len(client_id) == 0:
+	if not client_id:
 		# We need a new client id
 		client_id = "".join("-" if c in (8, 13, 18, 23) else \
 		                    random.choice("0123456789abcdef") for c in xrange(0, 36))

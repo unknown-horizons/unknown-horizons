@@ -26,7 +26,7 @@ import os
 
 args = sys.argv[1:]
 
-if len(args) == 0:
+if not args:
 	print "USAGE: "+sys.argv[0]+" map1.sqlite map2.sqlite ... mapx.sqlite"
 	print
 	print "maps will be saved as \"mapx.map\""

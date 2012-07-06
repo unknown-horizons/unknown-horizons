@@ -45,7 +45,7 @@ class SPManager(LivingObject):
 		@param local: Whether to only execute command here (doesn't make sense in singleplayer
 		"""
 		# if we are in demo playback mode, every incoming command has to be thrown away.
-		if len(self.commands) > 0:
+		if self.commands:
 			return
 		ret = command(issuer = self.session.world.player) # actually execute the command
 		# some commands might have a return value, so forward it

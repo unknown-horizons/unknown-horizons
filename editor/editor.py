@@ -57,7 +57,7 @@ if __name__ == '__main__':
 		plugin_dir = uh_path + '/editor/plugins'
 	options = MockOptions()
 	mapfile = None
-	if len(argv) > 0:
+	if argv:
 		mapfile = argv[0]
 
 	from scripts.editor import Editor, TDS

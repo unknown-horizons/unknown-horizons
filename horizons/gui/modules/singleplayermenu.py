@@ -115,7 +115,7 @@ class SingleplayerMenu(object):
 				self.current.findChild(name="recommended_number_of_players_lbl").text = \
 					_("Recommended number of players: {number}").format(number=number_of_players)
 				self.map_preview.update_map(self._get_selected_map())
-			if len(maps_display) > 0:
+			if maps_display:
 				# select first entry
 				self.active_right_side.distributeData({ 'maplist' : 0, })
 				_update_infos()
@@ -159,7 +159,7 @@ class SingleplayerMenu(object):
 					lang_list.selected = 0
 
 			self.active_right_side.distributeInitialData({ 'maplist' : maps_display, })
-			if len(maps_display) > 0:
+			if maps_display:
 				# select first entry
 				self.active_right_side.distributeData({ 'maplist' : 0, })
 
@@ -325,7 +325,7 @@ class SingleplayerMenu(object):
 		""" Starts a single player horizons. """
 		assert self.current is self.widgets['singleplayermenu']
 		playername = self.current.playerdata.get_player_name()
-		if len(playername) == 0:
+		if not playername:
 			self.show_popup(_("Invalid player name"), _("You entered an invalid playername."))
 			return
 		playercolor = self.current.playerdata.get_player_color()

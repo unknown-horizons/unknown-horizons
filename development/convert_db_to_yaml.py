@@ -142,22 +142,22 @@ for id, name, c_type, c_package, x, y, radius, cost, cost_inactive, inhabitants_
 			prod_line['changes_animation'] = False
 		if default == 0:
 			prod_line['enabled_by_default'] = False
-		if len(production) > 0:
+		if production:
 			prod_line['produces'] = production
-		if len(consumption) > 0:
+		if consumption:
 			prod_line['consumes'] = consumption
 
 		level = db("SELECT level from settler_production_line WHERE production_line=?", prodlineid)
-		if len(level) > 0:
+		if level:
 			prod_line['level'] = [ x for (x,) in level]
 
 		production_lines[prodlineid] = prod_line
 
-	if len(production_lines) > 0:
+	if production_lines:
 		result['components'].append({'ProducerComponent': {'productionlines': production_lines}})
 
 	query_result = db("SELECT resource, size FROM storage WHERE object_id=?", id)
-	if len(query_result) == 0:
+	if not query_result:
 		result['components'].append('StorageComponent')
 	else:
 		slot_sizes = {}
