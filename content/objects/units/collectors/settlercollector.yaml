@@ -8,6 +8,12 @@ components:
 - StorageComponent:
       PositiveSizedSlotStorage:
          limit: 8
+- RestrictedPickup:
+    allowed:
+    - BUILDINGS.MAIN_SQUARE
+    - BUILDINGS.PAVILION
+    - BUILDINGS.VILLAGE_SCHOOL
+    - BUILDINGS.TAVERN
 
 actionsets:
   TIER.SAILORS:
