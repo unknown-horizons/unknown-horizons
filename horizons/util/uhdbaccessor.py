@@ -172,7 +172,7 @@ class UhDbAccessor(DbReader):
 		"""
 		@param msg_id_string: string id of the message
 		"""
-		sql = "SELECT text FROM message WHERE id_string = ?"
+		sql = "SELECT text FROM message_text WHERE id_string = ?"
 		return self.cached_query(sql, msg_id_string)[0][0]
 
 	def get_msg_icon_id(self, msg_id_string):
