@@ -60,7 +60,7 @@ class Producer(Component):
 
 	# INIT
 	def __init__(self, auto_init=True, start_finished=False, productionlines=None,
-	             utilisation_calculator=None, is_mine=True, settler_upgrade_lines=None,
+	             utilisation_calculator=None, is_mine_for=None, settler_upgrade_lines=None,
 	             **kwargs):
 		"""
 		@param productionline: yaml-dict for prod line data. Must not be changed since it is cached.
@@ -425,7 +425,7 @@ class Producer(Component):
 		else:
 			utilisation = Utilisation()
 
-		if arguments.get('is_mine'):
+		if arguments.get('is_mine_for'):
 			# this is more of an aspect than an actual subclass, but python doesn't allow
 			# fast aspect-oriented programming
 			cls = MineProducer

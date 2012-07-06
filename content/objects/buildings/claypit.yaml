@@ -17,7 +17,7 @@ components:
     enemy_tabs: [EnemyBuildingOverviewTab,]
 - HealthComponent: {maxhealth: 1000}
 - ProducerComponent:
-    is_mine: True
+    is_mine_for: BUILDINGS.CLAY_DEPOSIT
     productionlines:
       32:
         produces:
