@@ -275,7 +275,7 @@ class IngameGui(LivingObject):
 		players.add(self.session.world.pirate)
 		players.discard(self.session.world.player)
 		players.discard(None) # e.g. when the pirate is disabled
-		if len(players) == 0: # this dialog is pretty useless in this case
+		if not players: # this dialog is pretty useless in this case
 			self.main_gui.show_popup(_("No diplomacy possible"), \
 			                         _("Cannot do diplomacy as there are no other players."))
 			return
@@ -430,7 +430,7 @@ class IngameGui(LivingObject):
 		"""
 		new_name = self.widgets['change_name'].collectData('new_name')
 		self.widgets['change_name'].findChild(name='new_name').text = u''
-		if not (len(new_name) == 0 or new_name.isspace()):
+		if not new_name or new_name.isspace():
 			# different namedcomponent classes share the name
 			RenameObject(instance.get_component_by_name(NamedComponent.NAME), new_name).execute(self.session)
 		self._hide_change_name_dialog()

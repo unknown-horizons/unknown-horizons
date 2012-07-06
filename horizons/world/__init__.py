@@ -310,7 +310,7 @@ class World(BuildingOwner, WorldObject):
 			player = None
 			# check if player is an ai
 			ai_data = self.session.db("SELECT class_package, class_name FROM ai WHERE client_id = ?", client_id)
-			if len(ai_data) > 0:
+			if ai_data:
 				class_package, class_name = ai_data[0]
 				# import ai class and call load on it
 				module = __import__('horizons.ai.'+class_package, fromlist=[str(class_name)])
@@ -322,7 +322,7 @@ class World(BuildingOwner, WorldObject):
 
 			if client_id == horizons.main.fife.get_uh_setting("ClientID"):
 				self.player = player
-			elif client_id is not None and len(ai_data) == 0:
+			elif client_id is not None and not ai_data:
 				# possible human player candidate with different client id
 				human_players.append(player)
 		self.owner_highlight_active = False

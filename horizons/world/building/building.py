@@ -148,7 +148,7 @@ class BasicBuilding(ComponentHolder, ConcreteObject):
 		remaining_ticks_of_month = None
 		if self.has_running_costs:
 			db_data = db("SELECT ticks FROM remaining_ticks_of_month WHERE rowid=?", worldid)
-			if len(db_data) == 0:
+			if not db_data:
 				# this can happen when running costs are set when there were no before
 				# we shouldn't crash because of changes in yaml code, still it's suspicous
 				print 'WARNING: object %s of type %s does not know when to pay its rent.'

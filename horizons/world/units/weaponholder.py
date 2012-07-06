@@ -138,7 +138,7 @@ class WeaponHolder(object):
 		"""
 		self.log.debug("%s remove weapon %s", self, weapon_id)
 		weapons = [w for w in self._weapon_storage if w.weapon_id == weapon_id]
-		if len(weapons) == 0:
+		if not weapons:
 			self.log.debug("%s can't remove, no weapons there", self)
 			return False
 		#remove last weapon added

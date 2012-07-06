@@ -42,7 +42,7 @@ for root, dirs, files in os.walk('.'):
 	if 'Setup.exe' in files:
 		files.remove('Setup.exe')
 
-	if not len(files) == 0 or not len(dirs) == 0:
+	if files or dirs:
 		rootp = root[2:]
 		if rootp[:4] == 'fife':
 			if rootp[-4:] == 'fife' and len(rootp.split('\\')) == 1:
@@ -71,7 +71,7 @@ for f in installed_files:
 for d in installed_dirs:
 	pref = ""
 	for i in d.split('/'):
-		pref = i if len(pref) == 0 else "%s/%s" % (pref, i)
+		pref = i if not pref else "%s/%s" % (pref, i)
 		remd.append( ('	RMDir "$INSTDIR/%s"' % pref).replace('/', '\\'))
 
 if len(sys.argv) > 1:

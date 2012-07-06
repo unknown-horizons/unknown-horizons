@@ -41,7 +41,7 @@ def test_fire_destroy(s):
 	# need this so that fires can break out
 	s.world.player.settler_level = 1
 
-	assert len(settlement.buildings_by_id[ BUILDINGS.RESIDENTIAL ]) > 0
+	assert settlement.buildings_by_id[ BUILDINGS.RESIDENTIAL ]
 	old_num = len(settlement.buildings_by_id[ BUILDINGS.RESIDENTIAL ])
 
 	while not dis_man._active_disaster:
@@ -80,7 +80,7 @@ def test_fire_station(s):
 	Tear(lj)(owner)
 	assert Build(BUILDINGS.FIRE_STATION, pos.x, pos.y, island, settlement=settlement)(owner)
 
-	assert len(settlement.buildings_by_id[ BUILDINGS.RESIDENTIAL ]) > 0
+	assert settlement.buildings_by_id[ BUILDINGS.RESIDENTIAL ]
 	old_num = len(settlement.buildings_by_id[ BUILDINGS.RESIDENTIAL ])
 
 	for i in xrange(5): # 5 fires

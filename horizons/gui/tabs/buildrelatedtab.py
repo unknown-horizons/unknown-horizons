@@ -48,7 +48,7 @@ class BuildRelatedTab(OverviewTab):
 		"""
 		# remove old data
 		parent_container = self.widget.child_finder('related_buildings')
-		while len(parent_container.children) > 0:
+		while parent_container.children:
 			parent_container.removeChild(parent_container.children[0])
 
 		# load all related buildings from DB

@@ -159,7 +159,7 @@ class Collector(Unit):
 
 		# load job
 		job_db = db("SELECT object, resource, amount FROM collector_job WHERE collector = ?", worldid)
-		if(len(job_db) > 0):
+		if job_db:
 			reslist = []
 			for obj, res, amount in job_db:
 				reslist.append( Job.ResListEntry(res, amount, False) )
@@ -360,7 +360,7 @@ class Collector(Unit):
 		# play working sound
 		if self.has_component(AmbientSoundComponent):
 			am_comp = self.get_component(AmbientSoundComponent)
-			if len(am_comp.soundfiles) > 0:
+			if am_comp.soundfiles:
 				am_comp.play_ambient(am_comp.soundfiles[0], position=self.position)
 		self.state = self.states.working
 

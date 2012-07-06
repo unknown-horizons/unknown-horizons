@@ -141,7 +141,7 @@ class MainListener(fife.IKeyListener, fife.ConsoleExecuter, LivingObject):
 					horizons.main.fife.console.println(p)
 				self.copy.write(string)
 			def __del__(self):
-				if len(self.buffer) > 0:
+				if self.buffer:
 					self.write('\n')
 		sys.stdout = console_file(oldout)
 		try:

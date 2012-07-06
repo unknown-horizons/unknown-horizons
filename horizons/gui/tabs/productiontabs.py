@@ -64,7 +64,7 @@ class ProductionOverviewTab(OverviewTab):
 
 		# remove old production line data
 		parent_container = self.widget.child_finder('production_lines')
-		while len(parent_container.children) > 0:
+		while parent_container.children:
 			child = parent_container.children[-1]
 			if hasattr(child, "anim"):
 				child.anim.stop()

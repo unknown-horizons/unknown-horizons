@@ -236,7 +236,7 @@ class View(ChangeListener):
 	def load(self, db):
 		# NOTE: this is no class function, since view is initiated before loading
 		res = db("SELECT zoom, rotation, location_x, location_y FROM view")
-		if len(res) == 0 :
+		if not res:
 			# no view info
 			return
 		zoom, rotation, loc_x, loc_y = res[0]

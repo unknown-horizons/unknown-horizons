@@ -171,7 +171,7 @@ class Trader(GenericAI):
 		               (warehouse is None))
 		#TODO maybe this kind of list should be saved somewhere, as this is pretty performance intense
 		warehouses = self.session.world.get_warehouses()
-		if len(warehouses) == 0: # there aren't any warehouses, move randomly
+		if not warehouses: # there aren't any warehouses, move randomly
 			self.send_ship_random(ship)
 		else: # select a warehouse
 			if warehouse is None:

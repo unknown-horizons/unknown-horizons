@@ -73,7 +73,7 @@ class CollectingComponent(Component):
 				collector.remove()
 			else:
 				collector.decouple_from_home_building()
-		assert len([c for c in self.__collectors]) == 0
+		assert not [c for c in self.__collectors]
 		super(CollectingComponent, self).remove()
 		self.__collectors = None
 		self.path_nodes = None

@@ -37,7 +37,7 @@ for line in file:
 			translations[i][0] += line
 
 	elif state == 2:
-		if line.startswith("#") or len(line) == 0:
+		if line.startswith("#") or not line:
 			state = 0
 			i += 1
 		else:
