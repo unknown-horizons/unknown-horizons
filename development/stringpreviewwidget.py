@@ -19,9 +19,8 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-import yaml
-
 from horizons.gui.util import load_uh_widget
+from horizons.util import YamlCache
 from horizons.savegamemanager import SavegameManager
 from horizons.gui.widgets.logbook import LogBook
 from horizons.scheduler import Scheduler
@@ -55,7 +54,7 @@ class StringPreviewWidget(object):
 		date to logbook messages. Those are loaded after Load/Reload is clicked.
 		"""
 		scenario_file_path = self.scenarios[0][self.listbox.selected]
-		data = yaml.load(open(scenario_file_path, 'r'))
+		data = YamlCache.load_yaml_data(open(scenario_file_path, 'r'))
 		try:
 			stats = data['translation_status']
 		except KeyError as err:
@@ -76,7 +75,7 @@ class StringPreviewWidget(object):
 
 			# get logbook actions from scenario file and add them to our logbook
 			scenario_file_path = self.scenarios[0][self.listbox.selected]
-			data = yaml.load(open(scenario_file_path, 'r'))
+			data = YamlCache.load_yaml_data(open(scenario_file_path, 'r'))
 			events = data['events']
 			for event in events:
 				for action in event['actions']:

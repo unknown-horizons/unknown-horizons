@@ -44,7 +44,7 @@ class LogBook(PickBeltWidget):
 	Headings can be specified for each entry.
 	"""
 	log = logging.getLogger('gui.widgets.logbook')
-	
+
 	widget_xml = 'captains_log.xml'
 	style = None
 	page_pos = (170,38)
@@ -105,7 +105,7 @@ class LogBook(PickBeltWidget):
 		""" update_view from PickBeltWidget, cleaning up the logbook subwidgets
 		"""
 		self.current_mode = number
-		
+
 		# self.session might not exist yet during callback setup for pickbelts
 		if hasattr(self, 'session'):
 			self._hide_statswidgets()
@@ -129,9 +129,8 @@ class LogBook(PickBeltWidget):
 		for msg in db("SELECT message FROM logbook_messages"):
 			self._message_log.append(msg[0]) # each line of the table is one tuple
 		# wipe self._messages_to_display on load, otherwise all previous messages get displayed
-		#TODO: figure out why this is necessary
 		self._messages_to_display = []
-			
+
 		value = db('SELECT value FROM metadata WHERE name = "logbook_cur_entry"')
 		if (value and value[0] and value[0][0]):
 			self.set_cur_entry(int(value[0][0])) # this also redraws
@@ -155,7 +154,7 @@ class LogBook(PickBeltWidget):
 			self._hide_statswidgets()
 			self._gui.hide()
 			self._hiding_widget = False
-			
+
 			for message in self._messages_to_display:
 				# show all messages and map them to the current logbook page
 				for msg_id in show_message(self.session, "logbook", message):
@@ -286,7 +285,7 @@ class LogBook(PickBeltWidget):
 		if show_logbook and hasattr(self, "_gui"):
 			self._redraw_captainslog()
 			self.show()
-		
+
 	def clear(self):
 		"""Remove all entries"""
 		self._parameters = []

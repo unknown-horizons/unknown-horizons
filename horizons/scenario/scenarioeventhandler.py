@@ -26,14 +26,8 @@ import copy
 from horizons.scheduler import Scheduler
 from horizons.util import Callback, LivingObject, YamlCache
 
-from horizons.scenario.actions import ACTIONS
-from horizons.scenario.conditions import CONDITIONS
+from horizons.scenario import ACTIONS, CONDITIONS
 
-
-try:
-	from yaml import CLoader as Loader
-except ImportError:
-	from yaml import Loader
 
 class InvalidScenarioFileFormat(Exception):
 	def __init__(self, msg=None):
@@ -188,7 +182,7 @@ class ScenarioEventHandler(LivingObject):
 	@staticmethod
 	def _parse_yaml(string_or_stream):
 		try:
-			return yaml.load(string_or_stream, Loader=Loader)
+			return YamlCache.load_yaml_data(string_or_stream)
 		except Exception as e: # catch anything yaml or functions that yaml calls might throw
 			raise InvalidScenarioFileFormat(str(e))
 
@@ -197,7 +191,7 @@ class ScenarioEventHandler(LivingObject):
 		return YamlCache.get_file(filename, game_data=True)
 
 	def _apply_data(self, data):
-		"""Apply data to self loaded via yaml.load
+		"""Apply data to self loaded via from yaml
 		@param data: return value of yaml.load or _parse_yaml resp.
 		"""
 		self._data = data

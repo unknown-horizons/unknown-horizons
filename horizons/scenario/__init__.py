@@ -21,4 +21,5 @@
 
 
 from conditions import CONDITIONS
+from actions import ACTIONS
 from scenarioeventhandler import ScenarioEventHandler, InvalidScenarioFileFormat

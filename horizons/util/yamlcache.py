@@ -86,6 +86,8 @@ class DummyShelve(dict):
 class YamlCache(object):
 	"""Loads and caches YAML files in a shelve.
 	Threadsafe.
+
+	Use get_file for files to cache (default case) or load_yaml_data for special use cases (behaves like yaml.load).
 	"""
 	cache = None
 	cache_filename = os.path.join(PATHS.USER_DIR, 'yamldata.cache')
@@ -97,7 +99,17 @@ class YamlCache(object):
 	log = logging.getLogger("yamlcache")
 
 	@classmethod
+	def load_yaml_data(self, string_or_stream):
+		"""Use this instead of yaml.load everywhere in uh in case get_file isn't useable"""
+		return yaml.load( string_or_stream, Loader=SafeLoader )
+
+
+	@classmethod
 	def get_file(cls, filename, game_data=False):
+		"""Get contents of a yaml file
+		@param filename: path to the file
+		@param game_data: Whether this file contains data like BUILDINGS.LUMBERJACk to resolve
+		"""
 		# calc the hash
 		f = open(filename, 'r')
 		h = hash(f.read())
@@ -130,7 +142,7 @@ class YamlCache(object):
 			return handle_get_file_error(e, release=False)
 
 		if not yaml_file_in_cache:
-			data = yaml.load( f, Loader = SafeLoader )
+			data = cls.load_yaml_data( f )
 			if game_data: # need to convert some values
 				try:
 					data = convert_game_data(data)
