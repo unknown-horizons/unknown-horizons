@@ -246,7 +246,7 @@ def main():
 	try:
 		import yaml
 	except ImportError:
-		headline = _("Error: Unable to find required libraries")
+		headline = _("Error: Unable to find required library \"PyYAML\".")
 		msg = _("We are sorry to inform you that a library that is required by Unknown Horizons, is missing and needs to be installed.") + "\n" + \
 		    _("Installers for Windows users are available at \"http://pyyaml.org/wiki/PyYAML\", Linux users should find it in their packagement management system under the name \"pyyaml\" or \"python-yaml\".")
 		standalone_error_popup(headline, msg)
