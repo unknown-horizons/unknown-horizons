@@ -201,17 +201,6 @@ CREATE TABLE "ai" (
 );
 INSERT INTO "ai" VALUES('AIPlayer', 'aiplayer', 'AIPlayer');
 
-CREATE TABLE "object_sounds" (
-	"object" INT PRIMARY KEY NOT NULL DEFAULT '',
-	"sound" INT NOT NULL DEFAULT ''
-);
-INSERT INTO "object_sounds" VALUES(1, 5);
-INSERT INTO "object_sounds" VALUES(4, 6);
-INSERT INTO "object_sounds" VALUES(5, 7);
-INSERT INTO "object_sounds" VALUES(11, 5);
-INSERT INTO "object_sounds" VALUES(18, 1);
-INSERT INTO "object_sounds" VALUES(1000010, 4);
-
 CREATE TABLE "related_buildings" (
 	"building" INT,
 	"related_building" INT,
