@@ -76,11 +76,12 @@ class ScenarioEventHandler(LivingObject):
 		# map: condition types -> events
 		self._event_conditions = {}
 		self._scenario_variables = {} # variables for set_var, var_eq ...
+
 		for cond in CONDITIONS.registry.keys():
 			self._event_conditions[cond] = set()
+
 		if scenariofile:
 			self._apply_data( self._parse_yaml_file( scenariofile ) )
-
 		elif data:
 			self._apply_data(data)
 
