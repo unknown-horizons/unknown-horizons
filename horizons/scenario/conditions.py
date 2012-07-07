@@ -248,8 +248,12 @@ def player_number_of_ships_lt(session, player_id, limit):
 
 @register(periodically=True)
 def player_total_score_gt(session, limit):
-	"""Returns whether the player's latest total score is greater than *limit*."""
-	session.world.player.update_stats()
+	"""Returns whether the player's latest total score is greater than *limit*.
+
+	Starts updating stats if necessary."""
+	if not session.world.player.get_latest_stats():
+		session.world.player.update_stats()
+
 	return session.world.player.get_latest_stats().total_score > limit
 
 def _building_connected_to_all_of(session, building_class, *classes):
