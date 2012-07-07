@@ -71,9 +71,9 @@ class IngameType(type):
 		# self._level_specifc_names is optional and contains a dict like this: { level_id : name }
 		# (with entries for all increments in which it is active)
 		name_data = yaml_data['name']
+		name = None
 		if isinstance(name_data, dict): # { level_id : name }
 			# fill up dict (fall down to highest class which has an name
-			name = None
 			self._level_specific_names = {}
 			for lvl in xrange(min(name_data), TIER.CURRENT_MAX + 1):
 				if lvl in name_data:
@@ -93,7 +93,7 @@ class IngameType(type):
 		self._parse_component_templates()
 
 		# TODO: move this to the producer component as soon as there is support for class attributes there
-		self.additional_provided_resources = yaml_data['additional_provided_resources'] if 'additional_provided_resources' in yaml_data else []
+		self.additional_provided_resources = yaml_data.get('additional_provided_resources', [])
 
 		"""TUTORIAL: Now you know the basic attributes each type has. Further attributes
 		specific to buildings and units can be found in horizons/world/{buildings/units}/__init__.py

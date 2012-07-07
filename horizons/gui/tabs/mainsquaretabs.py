@@ -163,7 +163,7 @@ class MainSquareSettlerLevelTab(MainSquareTab):
 		houses = 0
 		residents = 0
 		for number in xrange(1, self.max_inhabitants + 1):
-			house_count = resident_counts[number] if number in resident_counts else 0
+			house_count = resident_counts.get(number, 0)
 			self.widget.child_finder('resident_count_%d' % number).text = unicode(house_count)
 			houses += house_count
 			residents += house_count * number

@@ -110,7 +110,7 @@ class GenericStorage(ChangeListener):
 		return copy.deepcopy(self._storage)
 
 	def __getitem__(self, res):
-		return self._storage[res] if res in self._storage else 0
+		return self._storage.get(res, 0)
 
 	def iterslots(self):
 		return self._storage.iterkeys()

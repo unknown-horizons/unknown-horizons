@@ -77,8 +77,7 @@ class SavegameAccessor(DbReader):
 
 	def get_settlement_owner(self, worldid):
 		"""Returns the id of the owner of the settlement or None otherwise"""
-		worldid = int(worldid)
-		return None if worldid not in self._settlement else self._settlement[worldid][0]
+		return self._settlement.get(int(worldid), [None])[0]
 
 	def get_settlement_island(self, worldid):
 		return self._settlement[int(worldid)][1]
@@ -147,8 +146,7 @@ class SavegameAccessor(DbReader):
 
 	def get_storage_rowids_by_ownerid(self, ownerid):
 		"""Returns potentially empty list of worldids referencing storages"""
-		ownerid = int(ownerid)
-		return [] if ownerid not in self._storage else self._storage[ownerid]
+		return self._storage.get(int(ownerid), [])
 
 
 	def _load_wildanimal(self):
@@ -181,8 +179,7 @@ class SavegameAccessor(DbReader):
 
 	def get_building_collectors_data(self, worldid):
 		"""Returns (id of the building collector's home or None otherwise, creation_tick)"""
-		worldid = int(worldid)
-		return None if worldid not in self._building_collector else self._building_collector[worldid]
+		return self._building_collector.get(int(worldid))
 
 	def get_building_collector_job_history(self, worldid):
 		return self._building_collector_job_history[int(worldid)]
@@ -209,8 +206,7 @@ class SavegameAccessor(DbReader):
 			self._unit_path[id].append(row[1:])
 
 	def get_unit_path(self, worldid):
-		worldid = int(worldid)
-		return self._unit_path[worldid] if worldid in self._unit_path else None
+		return self._unit_path.get(int(worldid))
 
 
 	def _load_storage_global_limit(self):

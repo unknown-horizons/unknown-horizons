@@ -284,7 +284,7 @@ class Session(LivingObject):
 
 		# load how often the game has been saved (used to know the difference between
 		# a loaded and a new game)
-		self.savecounter = 0 if not 'savecounter' in savegame_data else savegame_data['savecounter']
+		self.savecounter = savegame_data.get('savecounter', 0)
 
 		if savegame_data.get('rng_state', None):
 			rng_state_list = json.loads( savegame_data['rng_state'] )
