@@ -437,7 +437,6 @@ class MultiplayerMenu(object):
 		"""Shows the interface for creating a multiplayer game"""
 		event_map = {
 			'cancel' : self.show_multi,
-			'select_conditions_button': self.__set_conditions_popup,
 			'create' : self.__create_game
 		}
 		self.__apply_new_nickname()
@@ -494,6 +493,40 @@ class MultiplayerMenu(object):
 		@param chosen_map: the name of the map to start a new game on (overrides the gui)
 		"""
 		# create the game
+		def _set_conditions():
+			try:
+				gold_amount = int(self.current.findChild(name="gold_amount").text)
+			except ValueError:
+				gold_amount = None
+
+			try:
+				increment_limit = int(self.current.findChild(name="increment_limit").text)
+			except ValueError:
+				increment_limit = None
+
+			try:
+				time_limit = int(self.current.findChild(name="time_limit").text)
+			except ValueError:
+				time_limit = None
+
+			try:
+				score_limit = int(self.current.findChild(name="score_limit").text)
+			except ValueError:
+				score_limit = None
+
+			conditions = []
+
+			if gold_amount:
+				conditions.append({u'type': u'player_gold_greater', u'arguments': [gold_amount]})
+			if increment_limit:
+				conditions.append({u'type': u'settler_level_greater', u'arguments': [increment_limit]})
+			if time_limit:
+				conditions.append({u'type': u'time_passed', u'arguments': [time_limit]})
+			if score_limit:
+				conditions.append({u'type': u'player_total_score_gt', u'arguments': [score_limit]})
+
+			return conditions
+
 		if load:
 			mapname, gamename, gamepassword = load
 			path = SavegameManager.get_multiplayersave_map(mapname)
@@ -516,10 +549,7 @@ class MultiplayerMenu(object):
 			password = self.current.collectData('password')
 			load = None
 
-		mp_conditions = None
-
-
-		mp_conditions = self.conditions
+		mp_conditions = _set_conditions()
 
 		game = NetworkInterface().creategame(mapname, maxplayers, gamename, load,
 																				(hashlib.sha1(password).hexdigest() if password != "" else ""), mp_conditions)
@@ -595,55 +625,6 @@ class MultiplayerMenu(object):
 			_add_player_line(player)
 
 		players_vbox.adaptLayout()
-
-	def __set_conditions_popup(self):
-		set_conditions_dialog = self.widgets['set_conditions']
-
-		def _set_conditions():
-			try:
-				gold_amount = int(set_conditions_dialog.findChild(name="gold_amount").text)
-			except ValueError:
-				gold_amount = None
-
-			try:
-				increment_limit = int(set_conditions_dialog.findChild(name="increment_limit").text)
-			except ValueError:
-				increment_limit = None
-
-			try:
-				time_limit = int(set_conditions_dialog.findChild(name="time_limit").text)
-			except ValueError:
-				time_limit = None
-
-			try:
-				score_limit = int(set_conditions_dialog.findChild(name="score_limit").text)
-			except ValueError:
-				score_limit = None
-
-			self.conditions = []
-
-			if gold_amount:
-				self.conditions.append({u'type': u'player_gold_greater', u'arguments': [gold_amount]})
-			if increment_limit:
-				self.conditions.append({u'type': u'settler_level_greater', u'arguments': [increment_limit]})
-			if time_limit:
-				self.conditions.append({u'type': u'time_passed', u'arguments': [time_limit]})
-			if score_limit:
-				self.conditions.append({u'type': u'player_total_score_gt', u'arguments': [score_limit]})
-			set_conditions_dialog.hide()
-
-		def _cancel():
-			set_conditions_dialog.hide()
-
-		events = {
-			OkButton.DEFAULT_NAME: _set_conditions,
-			CancelButton.DEFAULT_NAME: _cancel
-		}
-		self.on_escape = _cancel
-
-		set_conditions_dialog.mapEvents(events)
-
-		set_conditions_dialog.show()
 
 	def __show_change_player_details_popup(self):
 		"""Shows a dialog where the player can change its name and/or color"""

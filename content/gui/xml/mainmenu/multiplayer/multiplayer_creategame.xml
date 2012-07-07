@@ -20,7 +20,7 @@
 		<Icon image="content/gui/images/background/hr.png" position="52,140" />
 	-->
 
-		<VBox position="50,250">
+		<VBox position="50,50">
 	<!-- Later, this box will contain more settings depending on the chosen mode like:
 	CAMPAIGN MAPS:	not much, maybe difficulty and en-/disable saves
 	RANDOM MAPS:	map size, island size, how much resources 
@@ -36,8 +36,36 @@
 					<ListBox name="playerlimit" is_focusable="0" />
 				</ScrollArea>
 			</HBox>
+			<Icon image="content/gui/images/background/hr.png" />
+			<Label name="headline_set_conditions" text="Set Conditions" />
+			<Icon image="content/gui/images/background/hr.png" />
 
-			<Button name="select_conditions_button" text="select conditions"></Button>
+			<HBox>
+				<Label text="Gold Amount: " />
+				<TextField name="gold_amount" />
+			</HBox>
+
+			<HBox>
+				<Label text="Score Limit: " />
+				<TextField name="score_limit" />
+			</HBox>
+
+			<HBox>
+				<Label text="Time Limit: " />
+				<TextField name="time_limit" />
+			</HBox>
+
+			<HBox>
+				<Label text="Increment Limit: " />
+				<TextField name="increment_limit" />
+			</HBox>
+
+			<Icon image="content/gui/images/background/hr.png" />
+
+			<HBox>
+				<Label text="Kill the King Mode: " />
+				<CheckBox name="kill_the_king_mode" />
+			</HBox>
 
 		</VBox>
 
