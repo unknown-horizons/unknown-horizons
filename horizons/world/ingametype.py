@@ -68,20 +68,25 @@ class IngameType(type):
 	def __init__(self, id, yaml_data):
 		self.id = id
 		# self._name is always some default name
-		# self._level_specifc_names is optional and contains a dict like this: { level_id : name }
-		# (with entries for all increments in which it is active)
+		# self._level_specific_names is optional and contains a dict like this: { level_id : name }
+		# (with entries for all tiers in which it is active)
 		name_data = yaml_data['name']
-		name = None
+		start_tier = yaml_data.get('settler_level', TIER.NATURE) # first tier where object is available
 		if isinstance(name_data, dict): # { level_id : name }
-			# fill up dict (fall down to highest class which has an name
+			# fill up dict (fall down to highest tier which has a name specified
 			self._level_specific_names = {}
-			for lvl in xrange(min(name_data), TIER.CURRENT_MAX + 1):
-				if lvl in name_data:
-					name = _( self._strip_translation_marks( name_data[lvl] ) )
-				assert name is not None, "name attribute is wrong: "+str(yaml_data['name'])
-				self._level_specific_names[lvl] = name
-			_name = name_data[ min(name_data) ] # use first as default
-			self._name = _( self._strip_translation_marks( _name ) )
+			for lvl in xrange(start_tier, TIER.CURRENT_MAX + 1):
+				name = name_data.get(lvl)
+				if name is None:
+					name = self._level_specific_names.get(lvl - 1)
+					assert name is not None, "Error in object file:\n" + \
+					"'name' attribute needs to at least describe tier %s. " + \
+					"Found:\n%s" % (name_data, start_tier)
+					self._level_specific_names[lvl] = name
+				else:
+					self._level_specific_names[lvl] = _(self._strip_translation_marks(name))
+
+			self._name = self._level_specific_names[start_tier] # default name: lowest available
 		else: # assume just one string
 			self._name = _( self._strip_translation_marks( name_data ) )
 		self.radius = yaml_data['radius']
