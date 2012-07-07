@@ -23,7 +23,6 @@ components:
       31:
         produces:
         - [RES.COMMUNITY, 10]
-        time: 1
 - StorageComponent:
         SettlementStorage: {}
 - AmbientSoundComponent:

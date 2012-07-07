@@ -33,9 +33,13 @@ class ProductionLine(object):
 
 	def __init(self):
 		self._init_finished = False
-		self.time = self.__data['time'] # time in seconds that production takes
-		self.changes_animation = self.__data['changes_animation'] if 'changes_animation' in self.__data else True # whether this prodline influences animation
-		self.save_statistics = self.__data['save_statistics'] if 'save_statistics' in self.__data else True #whether statistics about this production line should be kept
+		# time in seconds that production takes:
+		self.time = self.__data.get('time', 1)
+		# whether this prodline influences animation:
+		self.changes_animation = self.__data.get('changes_animation', True)
+		# whether statistics about this production line should be kept:
+		self.save_statistics = self.__data.get('save_statistics', True)
+
 		# here we store all resource information.
 		# needed resources have a negative amount, produced ones are positive.
 		self.production = {}
@@ -62,7 +66,7 @@ class ProductionLine(object):
 
 	def alter_production_time(self, modifier):
 		"""Sets time to original production time multiplied by modifier"""
-		self.time = self.__data['time'] * modifier
+		self.time = self.__data.get('time', 1) * modifier
 
 	def change_amount(self, res, amount):
 		"""Alters an amount of a res at runtime. Because of redundancy, you can only change

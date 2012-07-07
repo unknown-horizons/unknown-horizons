@@ -22,7 +22,6 @@ components:
      FIRE:
        consumes:
         - [RES.FIRE, -1]
-       time: 1
 - StorageComponent:
      SlotsStorage:
       slot_sizes: {RES.FIRE: 10}
