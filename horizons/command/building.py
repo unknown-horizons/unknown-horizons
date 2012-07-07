@@ -150,10 +150,15 @@ class Build(Command):
 
 		# unload the remaining resources on the human player ship if we just founded a new settlement
 		from horizons.world.player import HumanPlayer
-		if building.id == BUILDINGS.WAREHOUSE and isinstance(building.owner, HumanPlayer) and horizons.main.fife.get_uh_setting("AutoUnload"):
+		if building.id == BUILDINGS.WAREHOUSE \
+		and isinstance(building.owner, HumanPlayer) \
+		and horizons.main.fife.get_uh_setting("AutoUnload"):
 			ship = WorldObject.get_object_by_id(self.ship)
-			for res, amount in ship.get_component(StorageComponent).inventory.get_dump().iteritems(): # copy the inventory first because otherwise we would modify it while iterating
-				amount = min(amount, building.settlement.get_component(StorageComponent).inventory.get_free_space_for(res))
+			ship_inv = ship.get_component(StorageComponent).inventory
+			settlement_inv = building.settlement.get_component(StorageComponent).inventory
+			# copy the inventory first because otherwise we would modify it while iterating
+			for res, amount in ship_inv.get_dump().iteritems():
+				amount = min(amount, settlement_inv.get_free_space_for(res))
 				# execute directly, we are already in a command
 				TransferResource(amount, res, ship, building.settlement)(issuer=issuer)
 

@@ -153,7 +153,7 @@ class MainSquareSettlerLevelTab(MainSquareTab):
 		if self.__class__.LEVEL < TIER.CURRENT_MAX: #max incr => cannot allow upgrades
 			if self.settlement.upgrade_permissions[self.__class__.LEVEL]:
 				upgrades_button.set_active()
-				upgrades_button.helptext = _('Don\'t allow upgrades')
+				upgrades_button.helptext = _("Don't allow upgrades")
 			else:
 				upgrades_button.set_inactive()
 				upgrades_button.helptext = _('Allow upgrades')
