@@ -604,9 +604,32 @@ class MultiplayerMenu(object):
 				gold_amount = int(set_conditions_dialog.findChild(name="gold_amount").text)
 			except ValueError:
 				gold_amount = None
+
+			try:
+				increment_limit = int(set_conditions_dialog.findChild(name="increment_limit").text)
+			except ValueError:
+				increment_limit = None
+
+			try:
+				time_limit = int(set_conditions_dialog.findChild(name="time_limit").text)
+			except ValueError:
+				time_limit = None
+
+			try:
+				score_limit = int(set_conditions_dialog.findChild(name="score_limit").text)
+			except ValueError:
+				score_limit = None
+
+			self.conditions = []
+
 			if gold_amount:
-				self.conditions = [{u'type': u'settlement_res_stored_greater', u'arguments': [u'RES.GOLD', gold_amount]}]
-			#self.conditions = [{u'type': u'time_passed', u'arguments': [0]}]
+				self.conditions.append({u'type': u'player_gold_greater', u'arguments': [gold_amount]})
+			if increment_limit:
+				self.conditions.append({u'type': u'settler_level_greater', u'arguments': [increment_limit]})
+			if time_limit:
+				self.conditions.append({u'type': u'time_passed', u'arguments': [time_limit]})
+			if score_limit:
+				self.conditions.append({u'type': u'player_total_score_gt', u'arguments': [score_limit]})
 			set_conditions_dialog.hide()
 
 		def _cancel():

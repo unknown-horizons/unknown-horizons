@@ -12,6 +12,28 @@
 	</HBox>
 
 	<HBox>
+		<Label text="Score Limit: " />
+		<TextField name="score_limit" />
+	</HBox>
+
+	<HBox>
+		<Label text="Time Limit: " />
+		<TextField name="time_limit" />
+	</HBox>
+
+	<HBox>
+		<Label text="Increment Limit: " />
+		<TextField name="increment_limit" />
+	</HBox>
+
+	<Icon image="content/gui/images/background/hr.png" />
+
+	<HBox>
+		<Label text="Kill the King Mode: " />
+		<CheckBox name="kill_the_king_mode" />
+	</HBox>
+
+	<HBox>
 		<CancelButton />
 		<OkButton />
 	</HBox>

@@ -246,6 +246,12 @@ def player_number_of_ships_lt(session, player_id, limit):
 	number_of_ships = len([s for s in session.world.ships if s.owner.worldid == player_id])
 	return number_of_ships < limit
 
+@register(periodically=True)
+def player_total_score_gt(session, limit):
+	"""Returns whether the player's latest total score is greater than *limit*."""
+	session.world.player.update_stats()
+	return session.world.player.get_latest_stats().total_score > limit
+
 def _building_connected_to_all_of(session, building_class, *classes):
 	"""Returns the exact amount of buildings of type *building_class* that are
 	connected to any building of each class in *classes*. Counts all player settlements."""
