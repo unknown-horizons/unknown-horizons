@@ -22,7 +22,8 @@
 import logging
 
 from horizons.ai.aiplayer.behavior.behavioractions import BehaviorActionPirateHater, BehaviorActionCoward,\
-	BehaviorActionKeepFleetTogether, BehaviorActionRegular, BehaviorActionPirateRoutine, BehaviorActionBreakDiplomacy, BehaviorActionScoutRandomlyNearby
+	BehaviorActionKeepFleetTogether, BehaviorActionRegular, BehaviorActionPirateRoutine, BehaviorActionBreakDiplomacy,\
+BehaviorActionScoutRandomlyNearby, BehaviorActionDoNothing, BehaviorActionRegularPirate, BehaviorActionScoutRandomlyFar
 from horizons.ext.enum import Enum
 from horizons.util.worldobject import WorldObject
 
@@ -47,8 +48,11 @@ class BehaviorProfile(WorldObject):
 		#actions[cls.action_types.offensive][BehaviorActionCoward(player)] = 0.0
 		actions[cls.action_types.offensive][BehaviorActionRegular(player)] = 0.8
 		actions[cls.action_types.offensive][BehaviorActionBreakDiplomacy(player)] = 0.1
-		actions[cls.action_types.idle][BehaviorActionKeepFleetTogether(player)] = 0.1
-		actions[cls.action_types.idle][BehaviorActionScoutRandomlyNearby(player)] = 1.0
+
+		#actions[cls.action_types.idle][BehaviorActionKeepFleetTogether(player)] = 0.1
+		#actions[cls.action_types.idle][BehaviorActionScoutRandomlyNearby(player)] = 0.5
+		actions[cls.action_types.idle][BehaviorActionScoutRandomlyFar(player)] = 0.5
+		#actions[cls.action_types.idle][BehaviorActionDoNothing(player)] = 1.0
 
 		return actions
 
@@ -59,7 +63,8 @@ class BehaviorProfile(WorldObject):
 			cls.action_types.defensive: dict(),
 			cls.action_types.idle: dict(),
 		}
-		actions[cls.action_types.offensive][BehaviorActionRegular(player)] = 1.0
+		actions[cls.action_types.offensive][BehaviorActionRegularPirate(player)] = 1.0
 		actions[cls.action_types.idle][BehaviorActionPirateRoutine(player)] = 1.0
+		actions[cls.action_types.idle][BehaviorActionDoNothing(player)] = 0.5
 
 		return actions
