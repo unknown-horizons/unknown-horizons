@@ -362,19 +362,19 @@ class MultiplayerMenu(object):
 
 		if mp_conditions:
 
-			if mp_conditions['gold_amount']:
+			if mp_conditions.has_key('gold_amount'):
 				gold_amount_label = pychan.Label(text=_("Gold Amount Limit: {limit}").format(limit=mp_conditions['gold_amount']['arguments'][0]))
 				conditions_vbox.addChild(gold_amount_label)
 
-			if mp_conditions['score_limit']:
+			if mp_conditions.has_key('score_limit'):
 				score_limit_label = pychan.Label(text=_("Score Limit: {limit}").format(limit=mp_conditions['score_limit']['arguments'][0]))
 				conditions_vbox.addChild(score_limit_label)
 
-			if mp_conditions['time_limit']:
+			if mp_conditions.has_key('time_limit'):
 				time_limit_label = pychan.Label(text=_("Time Limit: {limit}").format(limit=mp_conditions['time_limit']['arguments'][0]))
 				conditions_vbox.addChild(time_limit_label)
 
-			if mp_conditions['increment_limit']:
+			if mp_conditions.has_key('increment_limit'):
 				increment_limit_label = pychan.Label(text=_("Increment Limit: {limit}").format(limit=mp_conditions['increment_limit']['arguments'][0]))
 				conditions_vbox.addChild(increment_limit_label)
 
