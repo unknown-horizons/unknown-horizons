@@ -23,6 +23,7 @@ import logging
 
 from collections import defaultdict
 from horizons.ai.aiplayer.behavior import BehaviorManager
+from horizons.ai.aiplayer.behavior.behavioractions import BehaviorMoveCallback
 from horizons.ai.aiplayer.behavior.profile import BehaviorProfile
 from horizons.ai.aiplayer.combatmanager import CombatManager
 
@@ -81,7 +82,7 @@ from horizons.component.selectablecomponent import SelectableComponent
 class AIPlayer(GenericAI):
 	"""This is the AI that builds settlements."""
 
-	shipStates = Enum.get_extended(GenericAI.shipStates, 'on_a_mission', 'scouting')
+	shipStates = Enum.get_extended(GenericAI.shipStates, 'on_a_mission', 'scouting', 'fleeing_combat')
 
 	log = logging.getLogger("ai.aiplayer")
 	tick_interval = 32
@@ -227,10 +228,23 @@ class AIPlayer(GenericAI):
 	def finish_loading(self, db):
 		""" This is called separately because most objects are loaded after the player. """
 
+
 		# load the ships
+		# set up AIPlayer state to move callback mapping. Used for game loading.
+
+		aiplayer_state_move_callback = {
+			self.shipStates.fleeing_combat: BehaviorMoveCallback._arrived,
+			self.shipStates.moving_random: BehaviorMoveCallback._arrived,
+			# TODO: currently scouting phases are not saved. Fixing that will require altering current database
+			self.shipStates.scouting: BehaviorMoveCallback._arrived,
+		}
+
 		for ship_id, state_id in db("SELECT rowid, state FROM ai_ship WHERE owner = ?", self.worldid):
 			ship = WorldObject.get_object_by_id(ship_id)
-			self.ships[ship] = self.shipStates[state_id]
+			state = self.shipStates[state_id]
+			self.ships[ship] = state
+			if state in aiplayer_state_move_callback:
+				ship.add_move_callback(Callback(aiplayer_state_move_callback[state], ship))
 
 		# load the land managers
 		for (worldid,) in db("SELECT rowid FROM ai_land_manager WHERE owner = ?", self.worldid):

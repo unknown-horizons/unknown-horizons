@@ -44,15 +44,15 @@ class BehaviorProfile(WorldObject):
 			cls.action_types.defensive: dict(),
 			cls.action_types.idle: dict(),
 			}
-		actions[cls.action_types.offensive][BehaviorActionPirateHater(player)] = 0.1
+		#actions[cls.action_types.offensive][BehaviorActionPirateHater(player)] = 0.1
 		#actions[cls.action_types.offensive][BehaviorActionCoward(player)] = 0.0
-		actions[cls.action_types.offensive][BehaviorActionRegular(player)] = 0.8
+		actions[cls.action_types.offensive][BehaviorActionRegular(player)] = 2.0
 		actions[cls.action_types.offensive][BehaviorActionBreakDiplomacy(player)] = 0.1
 
 		#actions[cls.action_types.idle][BehaviorActionKeepFleetTogether(player)] = 0.1
-		#actions[cls.action_types.idle][BehaviorActionScoutRandomlyNearby(player)] = 0.5
-		actions[cls.action_types.idle][BehaviorActionScoutRandomlyFar(player)] = 0.5
-		#actions[cls.action_types.idle][BehaviorActionDoNothing(player)] = 1.0
+		actions[cls.action_types.idle][BehaviorActionScoutRandomlyNearby(player)] = 0.3
+		actions[cls.action_types.idle][BehaviorActionScoutRandomlyFar(player)] = 0.7
+		actions[cls.action_types.idle][BehaviorActionDoNothing(player)] = 1.0
 
 		return actions
 

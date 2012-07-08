@@ -21,6 +21,7 @@
 
 import logging
 from horizons.ai.aiplayer.behavior import BehaviorManager
+from horizons.ai.aiplayer.behavior.behavioractions import BehaviorActionPirateRoutine, BehaviorMoveCallback
 from horizons.ai.aiplayer.behavior.profile import BehaviorProfile
 from horizons.ai.aiplayer.combatmanager import CombatManager, PirateCombatManager
 from horizons.ai.aiplayer.unitmanager import UnitManager
@@ -147,13 +148,24 @@ class Pirate(GenericAI):
 	def load_ship_states(self, db):
 		# load ships one by one from db (ship instances themselves are loaded already, but
 		# we have to use them here)
+
+		# set up Pirate state to move callback mapping.
+		pirate_state_move_callback = {
+			self.shipStates.chasing_ship: BehaviorMoveCallback._sail_home,
+			self.shipStates.moving_random: BehaviorMoveCallback._arrived,
+			self.shipStates.going_home: BehaviorMoveCallback._arrived,
+		}
+
 		for ship_id, state_id, remaining_ticks in \
 				db("SELECT rowid, state, remaining_ticks FROM pirate_ships"):
 			state = self.shipStates[state_id]
 			ship = WorldObject.get_object_by_id(ship_id)
 			self.ships[ship] = state
 			if remaining_ticks:
-				pass # TODO load new move callbacks from behavior
+				pass # TODO remaining ticks aren't used in database. Don't remove them just yet.
+
+			if state in pirate_state_move_callback:
+				ship.add_move_callback(Callback(pirate_state_move_callback[state], ship))
 
 	def remove_unit(self, unit):
 		"""Called when a ship which is owned by the pirate is removed or killed."""
