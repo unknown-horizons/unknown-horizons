@@ -10,11 +10,18 @@
 		<Icon image="content/gui/images/background/hr.png"  position="52,30" />
 
 		<Label text="Chat:"  position="22,50"  name="headline" />
-		<ScrollArea name="chat_scroll_area"  min_size="300,335"  position="22,75">
-			<ListBox name="chatbox"  min_size="300,335" is_focusable="0" />
+		<ScrollArea name="chat_scroll_area"  min_size="300,205"  position="22,75">
+			<ListBox name="chatbox"  min_size="300,205" is_focusable="0" />
 		</ScrollArea>
-		<TextField name="chatTextField"  position="22,420" 
+		<TextField name="chatTextField"  position="22,290"
 			text="Enter your message here"  min_size="300,16" />
+
+		<Icon image="content/gui/images/background/hr.png" position="22,320"/>
+
+		<VBox name="conditions_vbox" position="22,330">
+
+
+		</VBox>
 
 		<Label name="exit_to_mp_menu_lbl"  text="Leave:"  position="75,470" />
 		<CancelButton position="120,460"

@@ -356,6 +356,32 @@ class MultiplayerMenu(object):
 			ready_or_start_lbl.text = _('Ready: ')
 			ready_or_start_btn.helptext = _('Sets your state to ready (necessary for the game to start)')
 
+		mp_conditions = game.get_mp_conditions()
+
+		conditions_vbox = self.current.findChild(name="conditions_vbox")
+
+		if mp_conditions:
+
+			if mp_conditions['gold_amount']:
+				gold_amount_label = pychan.Label(text=_("Gold Amount Limit: {limit}").format(limit=mp_conditions['gold_amount']['arguments'][0]))
+				conditions_vbox.addChild(gold_amount_label)
+
+			if mp_conditions['score_limit']:
+				score_limit_label = pychan.Label(text=_("Score Limit: {limit}").format(limit=mp_conditions['score_limit']['arguments'][0]))
+				conditions_vbox.addChild(score_limit_label)
+
+			if mp_conditions['time_limit']:
+				time_limit_label = pychan.Label(text=_("Time Limit: {limit}").format(limit=mp_conditions['time_limit']['arguments'][0]))
+				conditions_vbox.addChild(time_limit_label)
+
+			if mp_conditions['increment_limit']:
+				increment_limit_label = pychan.Label(text=_("Increment Limit: {limit}").format(limit=mp_conditions['increment_limit']['arguments'][0]))
+				conditions_vbox.addChild(increment_limit_label)
+
+		else:
+			no_condition_label = pychan.Label(text=_("There is no game condition."))
+			conditions_vbox.addChild(no_condition_label)
+
 		textfield = self.current.findChild(name="chatTextField")
 		textfield.capture(self.__send_chat_message)
 		textfield.capture(self.__chatfield_onfocus, 'mouseReleased', 'default')
@@ -514,16 +540,16 @@ class MultiplayerMenu(object):
 			except ValueError:
 				score_limit = None
 
-			conditions = []
+			conditions = {}
 
 			if gold_amount:
-				conditions.append({u'type': u'player_gold_greater', u'arguments': [gold_amount]})
+				conditions['gold_amount'] = {u'type': u'player_gold_greater', u'arguments': [gold_amount]}
 			if increment_limit:
-				conditions.append({u'type': u'settler_level_greater', u'arguments': [increment_limit]})
+				conditions['increment_limit'] = {u'type': u'settler_level_greater', u'arguments': [increment_limit]}
 			if time_limit:
-				conditions.append({u'type': u'time_passed', u'arguments': [time_limit]})
+				conditions['time_limit'] = {u'type': u'time_passed', u'arguments': [time_limit]}
 			if score_limit:
-				conditions.append({u'type': u'player_total_score_gt', u'arguments': [score_limit]})
+				conditions['score_limit'] = {u'type': u'player_total_score_gt', u'arguments': [score_limit]}
 
 			return conditions
 
