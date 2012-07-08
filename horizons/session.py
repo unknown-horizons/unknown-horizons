@@ -270,7 +270,7 @@ class Session(LivingObject):
 		"""
 
 		if mp_conditions:
-			mp_conditions = {u'events': [{u'conditions': mp_conditions, u'actions': [{u'type': u'logbook', u'arguments': [[u'Message', u'']]}]}]}
+			mp_conditions = {u'events': [{u'conditions': mp_conditions.values(), u'actions': [{u'type': u'logbook', u'arguments': [[u'Message', u'']]}]}]}
 			self.scenario_eventhandler = ScenarioEventHandler(self, data=mp_conditions)
 
 		if is_scenario:
