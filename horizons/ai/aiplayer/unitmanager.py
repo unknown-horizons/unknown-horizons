@@ -58,7 +58,7 @@ class UnitManager(object):
 		return self.ship_groups
 
 	def regroup_ships(self):
-		group_size = 3  # TODO move to behaviour/Personalities later
+		group_size = 2  # TODO move to behaviour/Personalities later
 		self.ship_groups = []
 		ships = self.get_fighting_ships()
 		for i in xrange(0, len(ships), group_size):
