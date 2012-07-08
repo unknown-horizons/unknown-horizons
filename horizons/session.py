@@ -52,6 +52,7 @@ from horizons.component.ambientsoundcomponent import AmbientSoundComponent
 from horizons.constants import GAME_SPEED, PATHS, LAYERS
 from horizons.world.managers.statusiconmanager import StatusIconManager
 from horizons.messaging import MessageBus
+from horizons import gameconditions
 
 class Session(LivingObject):
 	"""The Session class represents the game's main ingame view and controls cameras and map loading.
@@ -270,7 +271,7 @@ class Session(LivingObject):
 		"""
 
 		if mp_conditions:
-			mp_conditions = {u'events': [{u'conditions': mp_conditions.values(), u'actions': [{u'type': u'logbook', u'arguments': [[u'Message', u'']]}]}]}
+			mp_conditions = gameconditions.conditions_to_yaml(mp_conditions)
 			self.scenario_eventhandler = ScenarioEventHandler(self, data=mp_conditions)
 
 		if is_scenario:

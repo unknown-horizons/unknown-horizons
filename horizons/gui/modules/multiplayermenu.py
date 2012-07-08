@@ -34,6 +34,7 @@ from horizons.network import find_enet_module
 from horizons.util import SavegameAccessor, Callback
 from horizons.component.ambientsoundcomponent import AmbientSoundComponent
 from horizons.util.color import Color
+from horizons import gameconditions
 
 enet = find_enet_module()
 
@@ -363,19 +364,19 @@ class MultiplayerMenu(object):
 		if mp_conditions:
 
 			if mp_conditions.has_key('gold_amount'):
-				gold_amount_label = pychan.Label(text=_("Gold Amount Limit: {limit}").format(limit=mp_conditions['gold_amount']['arguments'][0]))
+				gold_amount_label = pychan.Label(text=gameconditions.get_gold_limit(mp_conditions))
 				conditions_vbox.addChild(gold_amount_label)
 
 			if mp_conditions.has_key('score_limit'):
-				score_limit_label = pychan.Label(text=_("Score Limit: {limit}").format(limit=mp_conditions['score_limit']['arguments'][0]))
+				score_limit_label = pychan.Label(text=gameconditions.get_score_limit(mp_conditions))
 				conditions_vbox.addChild(score_limit_label)
 
 			if mp_conditions.has_key('time_limit'):
-				time_limit_label = pychan.Label(text=_("Time Limit: {limit}").format(limit=mp_conditions['time_limit']['arguments'][0]))
+				time_limit_label = pychan.Label(text=gameconditions.get_time_limit(mp_conditions))
 				conditions_vbox.addChild(time_limit_label)
 
 			if mp_conditions.has_key('increment_limit'):
-				increment_limit_label = pychan.Label(text=_("Increment Limit: {limit}").format(limit=mp_conditions['increment_limit']['arguments'][0]))
+				increment_limit_label = pychan.Label(text=gameconditions.get_increment_limit(mp_conditions))
 				conditions_vbox.addChild(increment_limit_label)
 
 		else:
@@ -543,13 +544,13 @@ class MultiplayerMenu(object):
 			conditions = {}
 
 			if gold_amount:
-				conditions['gold_amount'] = {u'type': u'player_gold_greater', u'arguments': [gold_amount]}
+				conditions['gold_amount'] = gameconditions.set_gold_amount(gold_amount)
 			if increment_limit:
-				conditions['increment_limit'] = {u'type': u'settler_level_greater', u'arguments': [increment_limit]}
+				conditions['increment_limit'] = gameconditions.set_increment_limit(increment_limit)
 			if time_limit:
-				conditions['time_limit'] = {u'type': u'time_passed', u'arguments': [time_limit]}
+				conditions['time_limit'] = gameconditions.set_time_limit(time_limit)
 			if score_limit:
-				conditions['score_limit'] = {u'type': u'player_total_score_gt', u'arguments': [score_limit]}
+				conditions['score_limit'] = gameconditions.set_score_limit(score_limit)
 
 			return conditions
 
