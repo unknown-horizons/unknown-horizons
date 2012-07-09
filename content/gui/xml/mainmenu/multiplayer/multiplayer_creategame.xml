@@ -56,8 +56,8 @@
 			</HBox>
 
 			<HBox>
-				<Label text="Increment Limit: " />
-				<TextField name="increment_limit" />
+				<Label text="Tier Limit: " />
+				<TextField name="tier_limit" />
 			</HBox>
 
 			<Icon image="content/gui/images/background/hr.png" />

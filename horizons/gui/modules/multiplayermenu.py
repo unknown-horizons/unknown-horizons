@@ -375,9 +375,9 @@ class MultiplayerMenu(object):
 				time_limit_label = pychan.Label(text=gameconditions.get_time_limit(mp_conditions))
 				conditions_vbox.addChild(time_limit_label)
 
-			if 'increment_limit' in mp_conditions :
-				increment_limit_label = pychan.Label(text=gameconditions.get_increment_limit(mp_conditions))
-				conditions_vbox.addChild(increment_limit_label)
+			if 'tier_limit' in mp_conditions :
+				tier_limit_label = pychan.Label(text=gameconditions.get_tier_limit(mp_conditions))
+				conditions_vbox.addChild(tier_limit_label)
 
 		else:
 			no_condition_label = pychan.Label(text=_("There is no game condition."))
@@ -527,9 +527,9 @@ class MultiplayerMenu(object):
 				gold_amount = None
 
 			try:
-				increment_limit = int(self.current.findChild(name="increment_limit").text)
+				tier_limit = int(self.current.findChild(name="tier_limit").text)
 			except ValueError:
-				increment_limit = None
+				tier_limit = None
 
 			try:
 				time_limit = int(self.current.findChild(name="time_limit").text)
@@ -545,8 +545,8 @@ class MultiplayerMenu(object):
 
 			if gold_amount:
 				conditions['gold_amount'] = gameconditions.set_gold_amount(gold_amount)
-			if increment_limit:
-				conditions['increment_limit'] = gameconditions.set_increment_limit(increment_limit)
+			if tier_limit:
+				conditions['tier_limit'] = gameconditions.set_tier_limit(tier_limit)
 			if time_limit:
 				conditions['time_limit'] = gameconditions.set_time_limit(time_limit)
 			if score_limit:
