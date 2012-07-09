@@ -24,11 +24,11 @@
 """This file includes conditions that are used in Unknown Horizons."""
 
 def set_gold_amount(gold_amount):
-	return {u'type': u'player_gold_greater', u'arguments': [gold_amount]}
+	return {u'type': u'player_gold_greater', u'arguments': [gold_amount, True]}
 
 
 def set_increment_limit(increment_limit):
-	return {u'type': u'settler_level_greater', u'arguments': [increment_limit]}
+	return {u'type': u'settler_level_greater', u'arguments': [increment_limit, True]}
 
 
 def set_time_limit(time_limit):
@@ -36,7 +36,7 @@ def set_time_limit(time_limit):
 
 
 def set_score_limit(score_limit):
-		return {u'type': u'player_total_score_gt', u'arguments': [score_limit]}
+		return {u'type': u'player_total_score_gt', u'arguments': [score_limit, True]}
 
 
 def get_gold_limit(mp_conditions):
