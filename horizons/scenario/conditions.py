@@ -69,28 +69,14 @@ def settlements_num_greater(session, limit):
 	return len(_get_player_settlements(session)) > limit
 
 @register()
-def settler_level_greater(session, limit, multiplayer=False):
+def settler_level_greater(session, limit):
 	"""Returns whether the highest increment reached in any player settlement is greater than *limit*."""
-	if multiplayer:
-		for player in session.world.players:
-			if player.settler_level > limit:
-				return True
-
-		return False
-
-	return (session.world.player.settler_level > limit)
+	return any(p.settler_level > limit for p in session.world.players)
 
 @register(periodically=True)
 def player_gold_greater(session, limit, multiplayer=False):
 	"""Returns whether the player has more gold than *limit*."""
-	if multiplayer:
-		for player in session.world.players:
-			if player.get_component(StorageComponent).inventory[RES.GOLD] > limit:
-				return True
-
-		return False
-
-	return (session.world.player.get_component(StorageComponent).inventory[RES.GOLD] > limit)
+	return any(p.get_component(StorageComponent).inventory[RES.GOLD] > limit for p in session.world.players)
 
 @register(periodically=True)
 def player_gold_less(session, limit):
@@ -261,24 +247,18 @@ def player_number_of_ships_lt(session, player_id, limit):
 	return number_of_ships < limit
 
 @register(periodically=True)
-def player_total_score_gt(session, limit, multiplayer=False):
+def player_total_score_gt(session, limit):
 	"""Returns whether the player's latest total score is greater than *limit*.
 
 	Starts updating stats if necessary."""
-	if multiplayer:
-		for player in session.world.players:
-			if not player.get_latest_stats():
-				player.update_stats()
+	for player in session.world.players:
+		if not player.get_latest_stats():
+			player.update_stats()
 
-			if player.get_latest_stats().total_score > limit:
-				return True
+		if player.get_latest_stats().total_score > limit:
+			return True
 
-		return False
-
-	if not session.world.player.get_latest_stats():
-		session.world.player.update_stats()
-
-	return session.world.player.get_latest_stats().total_score > limit
+	return False
 
 def _building_connected_to_all_of(session, building_class, *classes):
 	"""Returns the exact amount of buildings of type *building_class* that are
