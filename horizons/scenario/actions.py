@@ -124,6 +124,12 @@ def do_lose(session):
 	# drop events after this event
 	Scheduler().add_new_object(session.scenario_eventhandler.drop_events, session.scenario_eventhandler)
 
+@register(name='mp_win')
+def mp_win(session):
+	"""The player wins the current game."""
+	show_db_message(session, 'YOU_HAVE_WON')
+	horizons.main.fife.play_sound('effects', "content/audio/sounds/events/scenario/win.ogg")
+
 @register()
 def set_var(session, variable, value):
 	"""Assigns values to scenario variables. Overwrites previous assignments to the same variable."""

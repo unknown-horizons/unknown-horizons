@@ -56,4 +56,4 @@ def get_tier_limit(mp_conditions):
 
 
 def conditions_to_yaml(mp_conditions):
-	return {u'events': [{u'conditions': mp_conditions.values(), u'actions': [{u'type': u'logbook', u'arguments': [[u'Message', u'']]}]}]}
+	return {u'events': [{u'conditions': mp_conditions.values(), u'actions': [{u'type': u'mp_win'}]}]}
