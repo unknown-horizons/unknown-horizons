@@ -69,14 +69,24 @@ def settlements_num_greater(session, limit):
 	return len(_get_player_settlements(session)) > limit
 
 @register()
-def settler_level_greater(session, limit):
+def settler_level_greater(session, limit, multiplayer=False):
 	"""Returns whether the highest increment reached in any player settlement is greater than *limit*."""
-	return any(p.settler_level > limit for p in session.world.players)
+	if multiplayer:
+		players = session.world.players
+	else:
+		players = session.world.player
+
+	return any(p.settler_level > limit for p in players)
 
 @register(periodically=True)
 def player_gold_greater(session, limit, multiplayer=False):
 	"""Returns whether the player has more gold than *limit*."""
-	return any(p.get_component(StorageComponent).inventory[RES.GOLD] > limit for p in session.world.players)
+	if multiplayer:
+		players = session.world.players
+	else:
+		players = session.world.player
+
+	return any(p.get_component(StorageComponent).inventory[RES.GOLD] > limit for p in players)
 
 @register(periodically=True)
 def player_gold_less(session, limit):
@@ -247,11 +257,17 @@ def player_number_of_ships_lt(session, player_id, limit):
 	return number_of_ships < limit
 
 @register(periodically=True)
-def player_total_score_gt(session, limit):
+def player_total_score_gt(session, limit, multiplayer=False):
 	"""Returns whether the player's latest total score is greater than *limit*.
 
 	Starts updating stats if necessary."""
-	for player in session.world.players:
+
+	if multiplayer:
+		players = session.world.players
+	else:
+		players = session.world.player
+
+	for player in players:
 		if not player.get_latest_stats():
 			player.update_stats()
 
