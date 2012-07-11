@@ -47,7 +47,9 @@
 					<Icon name="screenshot" />
 					<Label name="headline_details_label"  text="Details:"
 						comment="More text describing the savegame" />
-					<VBox name="savegamedetails_box" min_size="300,80" />
+					<Label name="savegamedetails_lbl"  text=""  wrap_text="1"
+						min_size="290, 0"  max_size="290, 290" />
+
 				</VBox>
 
 <!-- here a small screenshot will help the player to recognise the saved file -->

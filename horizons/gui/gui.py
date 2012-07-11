@@ -319,7 +319,7 @@ class Gui(SingleplayerMenu, MultiplayerMenu):
 
 		if not hasattr(self, 'filename_hbox'):
 			self.filename_hbox = self.current.findChild(name='enter_filename')
-			self.filename_hbox_parent = self.filename_hbox._getParent()
+			self.filename_hbox_parent = self.filename_hbox.parent
 
 		if mode == 'save': # only show enter_filename on save
 			self.filename_hbox_parent.showChild(self.filename_hbox)
@@ -588,10 +588,6 @@ class Gui(SingleplayerMenu, MultiplayerMenu):
 		def tmp_show_details():
 			"""Fetches details of selected savegame and displays it"""
 			gui.findChild(name="screenshot").image = None
-			box = gui.findChild(name="savegamedetails_box")
-			old_label = box.findChild(name="savegamedetails_lbl")
-			if old_label is not None:
-				box.removeChild(old_label)
 			map_file = None
 			map_file_index = gui.collectData(savegamelist)
 			if map_file_index == -1:
@@ -628,8 +624,7 @@ class Gui(SingleplayerMenu, MultiplayerMenu):
 					os.unlink(filename)
 
 			# savegamedetails
-			details_label = pychan.widgets.Label(min_size=(290, 0), max_size=(290, 290), wrap_text=True)
-			details_label.name = "savegamedetails_lbl"
+			details_label = gui.findChild(name="savegamedetails_lbl")
 			details_label.text = u""
 			if savegame_info['timestamp'] == -1:
 				details_label.text += _("Unknown savedate")
@@ -660,10 +655,6 @@ class Gui(SingleplayerMenu, MultiplayerMenu):
 				# this should only happen for very old savegames, so having this unfriendly
 				# error is ok (savegame is quite certainly fully unusable).
 				details_label.text += _("Incompatible version")
-
-
-			box.addChild( details_label )
-
 
 			gui.adaptLayout()
 		return tmp_show_details
