@@ -216,8 +216,8 @@ class ProductionBuilder(AreaBuilder):
 
 	def display(self):
 		"""Show the plan on the map unless it is disabled in the settings."""
-		#if not AI.HIGHLIGHT_PLANS:
-		#	return
+		if not AI.HIGHLIGHT_PLANS:
+			return
 
 		road_colour = (30, 30, 30)
 		fisher_colour = (128, 128, 128)

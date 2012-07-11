@@ -304,8 +304,8 @@ class LandManager(WorldObject):
 
 	def display(self):
 		"""Show the plan on the map unless it is disabled in the settings."""
-		#if not AI.HIGHLIGHT_PLANS:
-		#	return
+		if not AI.HIGHLIGHT_PLANS:
+			return
 
 		village_colour = (255, 255, 255)
 		production_colour = (255, 255, 0)
