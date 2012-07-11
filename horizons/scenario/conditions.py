@@ -74,7 +74,7 @@ def settler_level_greater(session, limit, multiplayer=False):
 	if multiplayer:
 		players = session.world.players
 	else:
-		players = session.world.player
+		players = [session.world.player]
 
 	return any(p.settler_level > limit for p in players)
 
@@ -84,7 +84,7 @@ def player_gold_greater(session, limit, multiplayer=False):
 	if multiplayer:
 		players = session.world.players
 	else:
-		players = session.world.player
+		players = [session.world.player]
 
 	return any(p.get_component(StorageComponent).inventory[RES.GOLD] > limit for p in players)
 
@@ -265,7 +265,7 @@ def player_total_score_gt(session, limit, multiplayer=False):
 	if multiplayer:
 		players = session.world.players
 	else:
-		players = session.world.player
+		players = [session.world.player]
 
 	for player in players:
 		if not player.get_latest_stats():
