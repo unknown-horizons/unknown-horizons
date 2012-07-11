@@ -40,24 +40,24 @@
 			<Label name="headline_set_conditions" text="Set Conditions" />
 			<Icon image="content/gui/images/background/hr.png" />
 
-			<HBox>
-				<Label text="Gold Amount: " />
-				<TextField name="gold_amount" />
+			<HBox name="gold_amount_hbox">
+				<Label name="gold_amount_label" text="Gold Amount: " />
+				<StepSlider name="gold_amount_slider" step_length="1" />
 			</HBox>
 
-			<HBox>
-				<Label text="Score Limit: " />
-				<TextField name="score_limit" />
+			<HBox name="score_limit_hbox">
+				<Label name="score_limit_label" text="Score Limit: "  />
+				<StepSlider name="score_limit_slider" step_length="1" />
 			</HBox>
 
-			<HBox>
-				<Label text="Time Limit: " />
-				<TextField name="time_limit" />
+			<HBox name="time_limit_hbox">
+				<Label name="time_limit_label" text="Time Limit: " />
+				<StepSlider name="time_limit_slider" step_length="1" />
 			</HBox>
 
-			<HBox>
-				<Label text="Tier Limit: " />
-				<TextField name="tier_limit" />
+			<HBox name="tier_limit_hbox">
+				<Label name="tier_limit_label" text="Tier Limit: " />
+				<StepSlider name="tier_limit_slider" step_length="1" />
 			</HBox>
 
 			<Icon image="content/gui/images/background/hr.png" />

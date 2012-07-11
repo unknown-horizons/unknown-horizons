@@ -460,6 +460,11 @@ class MultiplayerMenu(object):
 		self.__print_event_message(_("You fetched the savegame data"))
 		self.__update_game_details()
 
+	gold_amounts = [0, 100, 200, 300, 400, 500]
+	score_limits = [0, 100, 200, 300, 400, 500]
+	time_limits = [0, 10, 60, 120, 600, 36000]
+	tier_limits = [0, 2, 3, 4, 5, 6]
+
 	def __show_create_game(self):
 		"""Shows the interface for creating a multiplayer game"""
 		event_map = {
@@ -493,6 +498,48 @@ class MultiplayerMenu(object):
 		})
 		self.current.findChild(name="password").text = u""
 		gamename_textfield = self.current.findChild(name="gamename")
+
+		gold_amount_slider = self.current.findChild(name="gold_amount_slider")
+		gold_amount_label = self.current.findChild(name="gold_amount_label")
+		def on_gold_amount_slider_change():
+			gold_amount_label.text = _("Gold Amount: ") + unicode(self.gold_amounts[int(gold_amount_slider.value)])
+
+		gold_amount_slider.capture(on_gold_amount_slider_change)
+		gold_amount_slider.value = 0.0
+		gold_amount_slider.scale_end = float(len(self.gold_amounts) - 1)
+		on_gold_amount_slider_change()
+
+		score_limit_slider = self.current.findChild(name="score_limit_slider")
+		score_limit_label = self.current.findChild(name="score_limit_label")
+		def on_score_limit_slider_change():
+			score_limit_label.text = _("Score Limit: ") + unicode(self.score_limits[int(score_limit_slider.value)])
+
+		score_limit_slider.capture(on_score_limit_slider_change)
+		score_limit_slider.value = 0.0
+		score_limit_slider.scale_end = float(len(self.score_limits) - 1)
+		on_score_limit_slider_change()
+
+		time_limit_slider = self.current.findChild(name="time_limit_slider")
+		time_limit_label = self.current.findChild(name="time_limit_label")
+		def on_time_limit_slider_change():
+			time_limit_label.text = _("Time Limit: ") + unicode(self.time_limits[int(time_limit_slider.value)])
+
+		time_limit_slider.capture(on_time_limit_slider_change)
+		time_limit_slider.value = 0.0
+		time_limit_slider.scale_end = float(len(self.time_limits) - 1)
+		on_time_limit_slider_change()
+
+		tier_limit_slider = self.current.findChild(name="tier_limit_slider")
+		tier_limit_label = self.current.findChild(name="tier_limit_label")
+		def on_tier_limit_slider_change():
+			tier_limit_label.text = _("Tier Limit: ") + unicode(self.tier_limits[int(tier_limit_slider.value)])
+
+		tier_limit_slider.capture(on_tier_limit_slider_change)
+		tier_limit_slider.value = 0.0
+		tier_limit_slider.scale_end = float(len(self.tier_limits) - 1)
+		on_tier_limit_slider_change()
+
+
 		def clear_gamename_textfield():
 			gamename_textfield.text = u""
 		gamename_textfield.capture(clear_gamename_textfield, 'mouseReleased', 'default')
@@ -521,25 +568,10 @@ class MultiplayerMenu(object):
 		"""
 		# create the game
 		def _set_conditions():
-			try:
-				gold_amount = int(self.current.findChild(name="gold_amount").text)
-			except ValueError:
-				gold_amount = None
-
-			try:
-				tier_limit = int(self.current.findChild(name="tier_limit").text)
-			except ValueError:
-				tier_limit = None
-
-			try:
-				time_limit = int(self.current.findChild(name="time_limit").text)
-			except ValueError:
-				time_limit = None
-
-			try:
-				score_limit = int(self.current.findChild(name="score_limit").text)
-			except ValueError:
-				score_limit = None
+			gold_amount = int(self.current.findChild(name="gold_amount_label").text.split(' ')[-1])
+			tier_limit = int(self.current.findChild(name="tier_limit_label").text.split(' ')[-1])
+			time_limit = int(self.current.findChild(name="time_limit_label").text.split(' ')[-1])
+			score_limit = int(self.current.findChild(name="score_limit_label").text.split(' ')[-1])
 
 			conditions = {}
 
