@@ -127,23 +127,6 @@ class BehaviorActionScoutRandomlyNearby(BehaviorAction):
 		for ship in ship_group:
 			BehaviorMoveCallback._sail_near(ship, point)
 
-class BehaviorActionScoutRandomlyFar(BehaviorAction):
-	"""
-	Sends fleet on a long scout spot and sets them back on the starting point.
-	"""
-
-	def __init__(self, owner):
-		super(BehaviorActionScoutRandomlyFar, self).__init__(owner)
-
-	def no_one_in_sight(self, **environment):
-
-		point = self.session.world.get_random_possible_ship_position()
-
-		ship_group = environment['ship_group']
-		for ship in ship_group:
-			BehaviorMoveCallback._sail_far_and_return(ship, point)
-
-
 class BehaviorActionKeepFleetTogether(BehaviorAction):
 
 	dispersion_threshold = 20.0  # TODO: move to YAML/Personality

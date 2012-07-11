@@ -23,7 +23,7 @@ import logging
 
 from horizons.ai.aiplayer.behavior.behavioractions import BehaviorActionPirateHater, BehaviorActionCoward,\
 	BehaviorActionKeepFleetTogether, BehaviorActionRegular, BehaviorActionPirateRoutine, BehaviorActionBreakDiplomacy,\
-BehaviorActionScoutRandomlyNearby, BehaviorActionDoNothing, BehaviorActionRegularPirate, BehaviorActionScoutRandomlyFar
+BehaviorActionScoutRandomlyNearby, BehaviorActionDoNothing, BehaviorActionRegularPirate
 from horizons.ext.enum import Enum
 from horizons.util.worldobject import WorldObject
 
@@ -34,6 +34,7 @@ class BehaviorProfile(WorldObject):
 	If it proves to be useful it will handle loading AI profiles from YAML.
 	"""
 	action_types = Enum('offensive', 'defensive', 'idle')
+	strategy_types = Enum('offensive', 'idle')
 
 	log = logging.getLogger("ai.aiplayer.behaviorprofile")
 
@@ -45,13 +46,12 @@ class BehaviorProfile(WorldObject):
 			cls.action_types.idle: dict(),
 			}
 		#actions[cls.action_types.offensive][BehaviorActionPirateHater(player)] = 0.1
-		#actions[cls.action_types.offensive][BehaviorActionCoward(player)] = 0.0
+		actions[cls.action_types.offensive][BehaviorActionCoward(player)] = 0.1
 		actions[cls.action_types.offensive][BehaviorActionRegular(player)] = 2.0
-		actions[cls.action_types.offensive][BehaviorActionBreakDiplomacy(player)] = 0.1
+		#actions[cls.action_types.offensive][BehaviorActionBreakDiplomacy(player)] = 0.1
 
 		#actions[cls.action_types.idle][BehaviorActionKeepFleetTogether(player)] = 0.1
-		actions[cls.action_types.idle][BehaviorActionScoutRandomlyNearby(player)] = 0.3
-		actions[cls.action_types.idle][BehaviorActionScoutRandomlyFar(player)] = 0.7
+		#actions[cls.action_types.idle][BehaviorActionScoutRandomlyNearby(player)] = 0.2
 		actions[cls.action_types.idle][BehaviorActionDoNothing(player)] = 1.0
 
 		return actions

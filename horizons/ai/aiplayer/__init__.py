@@ -26,6 +26,8 @@ from horizons.ai.aiplayer.behavior import BehaviorManager
 from horizons.ai.aiplayer.behavior.behavioractions import BehaviorMoveCallback
 from horizons.ai.aiplayer.behavior.profile import BehaviorProfile
 from horizons.ai.aiplayer.combatmanager import CombatManager
+from horizons.ai.aiplayer.mission.combat.scouting import ScoutingMission
+from horizons.ai.aiplayer.strategymanager import StrategyManager
 
 from mission.foundsettlement import FoundSettlement
 from mission.preparefoundationship import PrepareFoundationShip
@@ -86,6 +88,7 @@ class AIPlayer(GenericAI):
 
 	log = logging.getLogger("ai.aiplayer")
 	tick_interval = 32
+	tick_long_interval = 128
 
 	def __init__(self, session, id, name, color, clientid, difficulty_level, **kwargs):
 		super(AIPlayer, self).__init__(session, id, name, color, clientid, difficulty_level, **kwargs)
@@ -107,6 +110,7 @@ class AIPlayer(GenericAI):
 					position = ai_players
 				ai_players += 1
 		Scheduler().add_new_object(Callback(self.tick), self, run_in = self.tick_interval * position / ai_players + 1)
+		Scheduler().add_new_object(Callback(self.tick_long), self, run_in = self.tick_long_interval * position / ai_players + 1)
 
 	def finish_init(self):
 		# initialise the things that couldn't be initialised before because of the loading order
@@ -132,6 +136,7 @@ class AIPlayer(GenericAI):
 		self.settlement_founder = SettlementFounder(self)
 		self.unit_builder = UnitBuilder(self)
 		self.unit_manager = UnitManager(self)
+		self.strategy_manager = StrategyManager(self)
 		self.behavior_manager = BehaviorManager(self)
 		self.combat_manager = CombatManager(self)
 		self.settlement_expansions = [] # [(coords, settlement)]
@@ -182,8 +187,14 @@ class AIPlayer(GenericAI):
 		calls = Scheduler().get_classinst_calls(self, current_callback)
 		assert len(calls) == 1, "got %s calls for saving %s: %s" % (len(calls), current_callback, calls)
 		remaining_ticks = max(calls.values()[0], 1)
-		db("INSERT INTO ai_player(rowid, need_more_ships, need_more_combat_ships, need_feeder_island, remaining_ticks) VALUES(?, ?, ?, ?, ?)", \
-			self.worldid, self.need_more_ships, self.need_more_combat_ships, self.need_feeder_island, remaining_ticks)
+
+		current_callback_long = Callback(self.tick_long)
+		calls = Scheduler().get_classinst_calls(self, current_callback_long)
+		assert len(calls) == 1, "got %s calls for saving %s: %s" % (len(calls), current_callback_long, calls)
+		remaining_ticks_long = max(calls.values()[0], 1)
+
+		db("INSERT INTO ai_player(rowid, need_more_ships, need_more_combat_ships, need_feeder_island, remaining_ticks, remaining_ticks_long) VALUES(?, ?, ?, ?, ?, ?)", \
+			self.worldid, self.need_more_ships, self.need_more_combat_ships, self.need_feeder_island, remaining_ticks, remaining_ticks_long)
 
 		# save the ships
 		for ship, state in self.ships.iteritems():
@@ -221,15 +232,15 @@ class AIPlayer(GenericAI):
 		#self.combat_manager = CombatManager.load(db, self)
 		self.__init()
 
-		self.need_more_ships, self.need_feeder_island, self.need_more_combat_ships, remaining_ticks = \
-			db("SELECT need_more_ships, need_more_combat_ships, need_feeder_island, remaining_ticks FROM ai_player WHERE rowid = ?", worldid)[0]
+		self.need_more_ships, self.need_feeder_island, self.need_more_combat_ships, remaining_ticks , remaining_ticks_long= \
+			db("SELECT need_more_ships, need_more_combat_ships, need_feeder_island, remaining_ticks, remaining_ticks_long FROM ai_player WHERE rowid = ?", worldid)[0]
 		Scheduler().add_new_object(Callback(self.tick), self, run_in = remaining_ticks)
+		Scheduler().add_new_object(Callback(self.tick_long), self, run_in = remaining_ticks_long)
 
 	def finish_loading(self, db):
 		""" This is called separately because most objects are loaded after the player. """
 
 
-		# load the ships
 		# set up AIPlayer state to move callback mapping. Used for game loading.
 
 		aiplayer_state_move_callback = {
@@ -240,12 +251,21 @@ class AIPlayer(GenericAI):
 			self.shipStates.scouting: BehaviorMoveCallback._arrived,
 		}
 
+		# load the ships in combat
+
 		for ship_id, state_id in db("SELECT rowid, state FROM ai_ship WHERE owner = ?", self.worldid):
 			ship = WorldObject.get_object_by_id(ship_id)
 			state = self.shipStates[state_id]
 			self.ships[ship] = state
 			if state in aiplayer_state_move_callback:
 				ship.add_move_callback(Callback(aiplayer_state_move_callback[state], ship))
+
+		# load combat missions
+
+		# scouting
+		db_result = db("SELECT rowid FROM ai_mission_scouting WHERE owner = ?", self.worldid)
+		for (mission_id,) in db_result:
+			self.missions.add(ScoutingMission.load(db, mission_id, self.report_success, self.report_failure))
 
 		# load the land managers
 		for (worldid,) in db("SELECT rowid FROM ai_land_manager WHERE owner = ?", self.worldid):
@@ -294,6 +314,13 @@ class AIPlayer(GenericAI):
 		self.international_trade_manager.tick()
 		self.unit_manager.tick()
 		self.combat_manager.tick()
+
+	def tick_long(self):
+		"""
+		Same as above but used for reasoning that is not required to be called as often (such as diplomacy, strategy etc.)
+		"""
+		Scheduler().add_new_object(Callback(self.tick_long), self, run_in = self.tick_long_interval)
+		self.strategy_manager.tick()
 
 	def handle_settlements(self):
 		goals = []

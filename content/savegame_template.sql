@@ -52,8 +52,9 @@ CREATE TABLE "ai_mission_domestic_trade" ("source_settlement_manager" INTEGER NO
 CREATE TABLE "ai_mission_found_settlement" ("land_manager" INTEGER NOT NULL , "ship" INTEGER NOT NULL , "warehouse_builder" INTEGER NOT NULL, "state" INTEGER NOT NULL );
 CREATE TABLE "ai_mission_international_trade" ("settlement_manager" INTEGER NOT NULL , "settlement" INTEGER NOT NULL , "ship" INTEGER NOT NULL , "bought_resource" INTEGER, "sold_resource" INTEGER, "state" INTEGER NOT NULL );
 CREATE TABLE "ai_mission_prepare_foundation_ship" ("settlement_manager" INTEGER NOT NULL , "ship" INTEGER NOT NULL , "feeder_island" BOOL NOT NULL, "state" INTEGER NOT NULL );
+CREATE TABLE "ai_mission_scouting" ("owner" INTEGER NOT NULL , "ship" INTEGER NOT NULL , "starting_point_x" INTEGER NOT NULL, "starting_point_y" INTEGER NOT NULL, "target_point_x" INTEGER NOT NULL, "target_point_y" INTEGER NOT NULL, "state" INTEGER NOT NULL );
 CREATE TABLE "ai_personality_manager" ("personality" TEXT NOT NULL );
-CREATE TABLE "ai_player" ("need_more_ships" INTEGER NOT NULL, "need_more_combat_ships" INTEGER NOT NULL DEFAULT 1, "need_feeder_island" INTEGER NOT NULL, "remaining_ticks" INTEGER NOT NULL);
+CREATE TABLE "ai_player" ("need_more_ships" INTEGER NOT NULL, "need_more_combat_ships" INTEGER NOT NULL DEFAULT 1, "need_feeder_island" INTEGER NOT NULL, "remaining_ticks" INTEGER NOT NULL, "remaining_ticks_long" INTEGER NOT NULL);
 CREATE TABLE "ai_pirate" ("remaining_ticks" INTEGER NOT NULL DEFAULT 1);
 CREATE TABLE "ai_production_builder" ("settlement_manager" INTEGER NOT NULL ,"last_collector_improvement_storage" INTEGER NOT NULL ,"last_collector_improvement_road" INTEGER NOT NULL );
 CREATE TABLE "ai_production_builder_plan" ("production_builder" INTEGER NOT NULL , "x" INTEGER NOT NULL , "y" INTEGER NOT NULL , "purpose" INTEGER NOT NULL );

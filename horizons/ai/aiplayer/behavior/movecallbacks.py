@@ -52,64 +52,9 @@ class BehaviorMoveCallback:
 		owner.ships[ship] = owner.shipStates.idle
 
 	@classmethod
-	def _generate_return_callback(cls, ship):
-		"""
-		Returns a callable class instance used as a callback parameter that sets the ship on it's starting point.
-		Used when the ship is set to sail somewhere and then ordered to return to the same spot again.
-
-		NOTE: Use it in callback this way: Callback(_generate_return_callback(ship), ship) instead of: Callback(_generate_return_callback, ship)
-		"""
-		starting_point = ship.position.copy()
-
-		# Instead of returning a function, we return a class instance (with __call__ defined).
-		# It was required to save the callback properly in database.
-		class SailBack:
-			def __init__(self, point):
-				self.point = point
-
-			def __call__(self, ship):
-				# we create a point from ship original position. Not that it's _ship (external argument) not ship
-				owner = ship.owner
-				point = self.point
-				try:
-					# Once it arrives back we want to call _arrived method as well
-					# There's no need to change ship state since this method will be called after the ship is already on it's way
-					ship.move(Circle(point, cls.sail_point_range), Callback(cls._arrived, ship))
-					cls.log.debug('Player: %s Ship: %s(%s): returning starting point after scouting far (phase 2) at %s' % (owner.worldid,
-						ship.get_component(NamedComponent).name, owner.ships[ship], point))
-				except MoveNotPossible:
-					cls.log.debug('Player: %s Ship: %s unable to sail back to starting position (phase 2) at %s' % (owner.worldid,
-						ship.get_component(NamedComponent).name, point))
-					# TODO: sail home instead going idle
-					owner.ships[ship] = owner.shipStates.idle
-
-		return SailBack(starting_point)
-
-	@classmethod
-	def _sail_far_and_return(cls, ship, point=None):
-		"""
-		General move callback. Send ship to a point and make it sail back.
-		"""
-		owner = ship.owner
-
-		# if point was not provided, generate one
-		if not point:
-			point = owner.session.world.get_random_possible_ship_position()
-		try:
-			callback_fun = cls._generate_return_callback(ship)
-			ship.move(Circle(point, cls.sail_point_range), Callback(callback_fun, ship))
-			owner.ships[ship] = owner.shipStates.scouting
-			cls.log.debug('Player: %s Ship: %s(%s) scouting far (phase 1) at %s' % (owner.worldid,
-				ship.get_component(NamedComponent).name, owner.ships[ship], point))
-		except MoveNotPossible:
-			owner.ships[ship] = owner.shipStates.idle
-			cls.log.debug('Player: %s Ship: %s unable to scout far (phase 1) at %s' % (owner.worldid,
-				ship.get_component(NamedComponent).name, point))
-
-	@classmethod
 	def _sail_near(cls, ship, point=None):
 		"""
-		General move callback. Sends ship to a point nearby.
+		Sends ship to a point nearby.
 		"""
 		owner = ship.owner
 		try:

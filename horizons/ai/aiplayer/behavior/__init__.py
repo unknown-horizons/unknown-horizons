@@ -60,6 +60,8 @@ class BehaviorManager(object):
 		if hasattr(final_action, action_name):
 			getattr(final_action, action_name)(**environment)
 
+	def request_strategy(self, type, strategy_name, **environment):
+		possible_strategies = []
 	def get_best_behavior(self, behavior_iterable, action_name, **environment):
 		"""
 		Get best behavior from behavior_iterable (linear time).

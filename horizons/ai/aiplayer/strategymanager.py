@@ -22,6 +22,7 @@
 import logging
 from horizons.ai.aiplayer.behavior import BehaviorManager
 from horizons.ai.aiplayer.behavior.profile import BehaviorProfile
+from horizons.ai.aiplayer.mission.combat.scouting import ScoutingMission
 from horizons.ai.aiplayer.unitmanager import UnitManager
 from horizons.command.diplomacy import AddEnemyPair
 from horizons.command.unit import Attack
@@ -49,7 +50,17 @@ class StrategyManager(object):
 		self.unit_manager = owner.unit_manager
 
 	def handle_strategy(self):
-		pass
+		# TODO: Think of a good way to scan game for certain things here.
+		# Create some "Condition" abstraction for that i.e. AreHostileShipsEasyToSingleOut.check(), IsEnemyConsiderablyWeakerAndHostile().check() etc.
+		# Then create mission if any of these occur. Probably attach certain priority/certainty measure to each one in case of many hits.
+
+		# All it does currently is send idle ships to scouting missions
+		fleets = self.unit_manager.get_available_ship_groups(None)
+		for fleet in fleets:
+			for ship in fleet:
+				if self.owner.ships[ship] == self.owner.shipStates.idle:
+					scouting_mission = ScoutingMission.create(self.owner.report_success, self.owner.report_failure, ship)
+					self.owner.start_mission(scouting_mission)
 
 	def tick(self):
 		self.handle_strategy()
