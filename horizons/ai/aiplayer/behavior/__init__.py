@@ -33,8 +33,6 @@ class BehaviorManager(object):
 	behavior probability and likelihood of success.
 	"""
 
-	# Types of actions behavior can handle
-
 	log = logging.getLogger("ai.aiplayer.behavior.behaviormanager")
 
 	def __init__(self, owner):
@@ -61,7 +59,7 @@ class BehaviorManager(object):
 			getattr(final_action, action_name)(**environment)
 
 	def request_strategy(self, type, strategy_name, **environment):
-		possible_strategies = []
+		pass
 	def get_best_behavior(self, behavior_iterable, action_name, **environment):
 		"""
 		Get best behavior from behavior_iterable (linear time).
