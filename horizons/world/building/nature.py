@@ -25,7 +25,6 @@ from horizons.world.building.buildingresourcehandler import BuildingResourceHand
 from horizons.entities import Entities
 from horizons.scheduler import Scheduler
 from horizons.constants import LAYERS, BUILDINGS
-from horizons.component.storagecomponent import StorageComponent
 from horizons.world.production.producer import Producer
 
 class NatureBuilding(BuildableRect, BasicBuilding):
@@ -105,15 +104,6 @@ class ResourceDeposit(NatureBuilding):
 
 	def __init__(self, *args, **kwargs):
 		super(ResourceDeposit, self).__init__(*args, **kwargs)
-
-	def initialize(self, inventory=None):
-		super(ResourceDeposit, self).initialize()
-		if inventory:
-			for res, amount in inventory.iteritems():
-				self.get_component(StorageComponent).inventory.alter(res, amount)
-		else: # new one
-			for resource, min_amount, max_amount in self.session.db.get_resource_deposit_resources(self.id):
-				self.get_component(StorageComponent).inventory.alter(resource, self.session.random.randint(min_amount, max_amount))
 
 class Fish(BuildableSingleEverywhere, BuildingResourceHandler, BasicBuilding):
 

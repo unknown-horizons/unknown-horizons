@@ -22,6 +22,7 @@
 from horizons.component import Component
 
 from horizons.component.storagecomponent import StorageComponent
+from horizons.component.depositcomponent import DepositComponent
 from horizons.component.namedcomponent import NamedComponent, SettlementNameComponent, ShipNameComponent, PirateShipNameComponent
 from horizons.component.tradepostcomponent import TradePostComponent
 from horizons.component.ambientsoundcomponent import AmbientSoundComponent
@@ -67,6 +68,7 @@ class ComponentHolder(object):
 	    "HealthComponent": HealthComponent,
 	    'ProducerComponent': Producer,
 	    'QueueProducerComponent': QueueProducer,
+	    'DepositComponent': DepositComponent,
 	    'UnitProducerComponent': UnitProducer,
 	    'SelectableComponent': SelectableComponent,
 	    'CommandableComponent': CommandableComponent,

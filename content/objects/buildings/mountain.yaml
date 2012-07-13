@@ -16,6 +16,11 @@ components:
     tabs: [ResourceDepositOverviewTab,]
     enemy_tabs: [ResourceDepositOverviewTab,]
 - HealthComponent: {maxhealth: 10}
+- DepositComponent:
+    resources:
+      RES.RAW_IRON:
+        min_amount: 375
+        max_amount: 625
 - StorageComponent:
       SlotsStorage:
         slot_sizes: {RES.RAW_IRON: 1000000}
