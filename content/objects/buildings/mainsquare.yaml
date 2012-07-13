@@ -24,3 +24,5 @@ components:
 actionsets:
   TIER.SAILORS:
     as_mainsquare0: as_preview_mainsquare0
+  TIER.PIONEERS:
+    as_mainsquare_wooden0: as_preview_mainsquare_wooden0
