@@ -21,9 +21,9 @@
 
 import os
 import shelve
+import sys
 import yaml
 import threading
-import traceback
 import logging
 
 from horizons.constants import TIER, RES, UNITS, BUILDINGS, PATHS
@@ -90,7 +90,9 @@ class YamlCache(object):
 	Use get_file for files to cache (default case) or load_yaml_data for special use cases (behaves like yaml.load).
 	"""
 	cache = None
-	cache_filename = os.path.join(PATHS.USER_DIR, 'yamldata.cache')
+
+	# encode the filename, the shelve module doesn't handle unicode paths very well (uses ASCII to encode them)
+	cache_filename = os.path.join(PATHS.USER_DIR, 'yamldata.cache').encode(sys.getfilesystemencoding())
 
 	sync_scheduled = False
 
@@ -174,6 +176,8 @@ class YamlCache(object):
 		try:
 			cls.cache = shelve.open(cls.cache_filename)
 		except UnicodeError as e:
+			# TODO remove this exception handling once we verified that it doesn't happen anymore
+
 			if os.environ.get('FAIL_FAST', False):
 				raise
 			cls.log.exception("Warning: Failed to open "+cls.cache_filename+": "+unicode(e))

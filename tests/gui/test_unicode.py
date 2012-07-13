@@ -45,6 +45,7 @@ def dummy(gui):
 	"""This test will end the game immediately."""
 	yield
 	yield TestFinished
+dummy.__original__ = dummy
 
 
 def test_user_dir_contains_non_ascii():
