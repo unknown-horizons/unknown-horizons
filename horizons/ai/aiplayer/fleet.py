@@ -19,11 +19,14 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 import logging
+from collections import Counter
 from weakref import WeakKeyDictionary
 from horizons.component.namedcomponent import NamedComponent
 from horizons.ext.enum import Enum
 from horizons.util.python.callback import Callback
 from horizons.util.worldobject import WorldObject
+from horizons.world.units.movingobject import MoveNotPossible
+
 
 class Fleet(WorldObject):
 
@@ -31,12 +34,15 @@ class Fleet(WorldObject):
 
 	# ship states inside a fleet, fleet doesn't care about AIPlayer.shipStates since it doesn't do any reasoning.
 	# all fleet cares about is to move ships from A to B.
-	shipStates = Enum('idle', 'moving', 'reached')
+	shipStates = Enum('idle', 'moving', 'blocked', 'reached')
 
+	# state for a fleet as a whole
 	fleetStates = Enum('idle', 'moving')
 
 	def __init__(self, ships):
 		super(Fleet, self).__init__()
+
+		assert len(ships) > 0, "request to create a fleet from  %s ships" % (len(ships))
 		self.__init(ships)
 
 	def __init(self, ships):
@@ -46,7 +52,6 @@ class Fleet(WorldObject):
 			self._ships[ship] = self.shipStates.idle
 			ship.add_remove_listener(self._lost_ship)
 		self.state = self.fleetStates.idle
-
 
 	def get_ships(self):
 		return self._ships.keys()
@@ -62,26 +67,29 @@ class Fleet(WorldObject):
 		"""
 		if self._was_target_reached():
 			self._fleet_reached()
+		# TODO: Check if fleet has 0 members, then request to get destroyed OR make unitmanager check for that in it's tick.
 
 	def _get_ship_states_count(self):
-		counts = {
-			self.shipStates.idle: 0,
-			self.shipStates.moving: 0,
-			self.shipStates.reached: 0,
-		}
-		for ship, state in self._ships.iteritems():
-			counts[state]+=1
-		return counts
+		"""
+		Returns Counter about how many ships are in state idle, moving, reached.
+		"""
+		return Counter(self._ships.values())
 
 	def _was_target_reached(self):
 		"""
 		Checks whether required ratio of ships reached the target.
 		"""
 		state_counts = self._get_ship_states_count()
-		reached, total = state_counts[self.shipStates.reached], len(self._ships)
-		if self.ratio <= float(reached)/total:
+
+		# below: include blocked ships as "reached" as well since there's not much more left to do,
+		# and it's better than freezing the whole fleet
+		reached = state_counts[self.shipStates.reached] + state_counts[self.shipStates.blocked]
+		total = len(self._ships)
+		print reached, total, self.ratio
+		if self.ratio <= float(reached) / total:
 			return True
-		return False
+		else:
+			return False
 
 	def _ship_reached(self, ship):
 		"""
@@ -101,10 +109,23 @@ class Fleet(WorldObject):
 
 		self.callback()
 
-	def move(self, destination, callback = None, ratio = 1.0):
+	def _move_ship(self, ship, destination, callback):
+		# retry ad infinitum. Not the most elegant solution but will do for a while.
+		# TODO: Think of a better way to resolve blocks
+		try:
+			ship.move(destination, callback=callback, blocked_callback=Callback(self._move_ship, ship, destination, callback))
+		except MoveNotPossible:
+			self._ships[ship] = self.shipStates.blocked
+
+	def move(self, destination, callback=None, ratio=1.0):
 		"""
 		Move fleet to a destination.
-		@param ratio: what percentage of ships has to reach destination in order for the move to be considered done (0.0 - 1.0)
+		@param ratio: what percentage of ships has to reach destination in order for the move to be considered done:
+			0.0 - None (not really useful, executes as reached right away)
+			0.0001 - effectively ANY ship
+			1.0 - ALL of the ships
+			0.5 - at least half of the ships
+			etc.
 		"""
 
 		self.state = self.fleetStates.moving
@@ -113,14 +134,14 @@ class Fleet(WorldObject):
 		# attach empty callback if not provided
 		self.callback = callback if callback else lambda: None
 
-		# This is a place to do something fancier later like preserving ship formation instead sailing to the same point
+		# This is a good place to do something fancier later like preserving ship formation instead sailing to the same point
 		for ship in self._ships.keys():
 			self._ships[ship] = self.shipStates.moving
-			ship.move(destination, Callback(self._ship_reached, ship))
+			self._move_ship(ship, destination, Callback(self._ship_reached, ship))
 
 	def size(self):
 		return len(self._ships)
 
 	def __str__(self):
-		ships_str = "\n " + "\n ".join(["%s (%s)"%(ship.get_component(NamedComponent).name, self._ships[ship]) for ship in self._ships.keys()])
+		ships_str = "\n " + "\n ".join(["%s (fleet:%s, global:%s)" % (ship.get_component(NamedComponent).name, self._ships[ship], self.owner.ships[ship]) for ship in self._ships.keys()])
 		return "Fleet: %s (%s) %s" % (self.worldid, self.state, ships_str)

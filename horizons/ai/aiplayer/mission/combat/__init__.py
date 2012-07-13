@@ -21,33 +21,42 @@
 from horizons.ai.aiplayer.mission import Mission
 
 class FleetMission(Mission):
-	def __init__(self, success_callback, failure_callback, fleet):
-		super(FleetMission, self).__init__(success_callback, failure_callback, fleet.owner)
-		self.__init(fleet)
+	def __init__(self, success_callback, failure_callback, ships):
+		super(FleetMission, self).__init__(success_callback, failure_callback, ships[0].owner)
+		self.__init(ships)
 
-	def __init(self, fleet):
-		self.fleet = fleet
+	def __init(self, ships):
 		self.unit_manager = self.owner.unit_manager
-		for ship in fleet.ships:
+		self.fleet = self.unit_manager.create_fleet(ships)
+		self.strategy_manager = self.owner.strategy_manager
+		for ship in self.fleet.get_ships():
+			self.owner.ships[ship] = self.owner.shipStates.on_a_mission
 			ship.add_remove_listener(self.lost_ship)
 
-	def load(self, db, worldid, success_callback, failure_callback, ship):
-		super(FleetMission, self).load(db, worldid, success_callback, failure_callback, ship.owner)
-		self.__init(ship)
+	def load(self, db, worldid, success_callback, failure_callback, fleet):
+		super(FleetMission, self).load(db, worldid, success_callback, failure_callback, fleet.owner)
+		self.__init(fleet)
+
+	def report_success(self):
+		self.success_callback(self)
+
+	def report_failure(self):
+		self.failure_callback(self)
 
 	def _dismiss_fleet(self):
-		for ship in self.fleet.ships:
+		for ship in self.fleet.get_ships():
 			self.owner.ships[ship] = self.owner.shipStates.idle
 			ship.remove_remove_listener(self.lost_ship)
+			ship.stop()
 		self.unit_manager.destroy_fleet(self.fleet)
 
 	def report_success(self, msg):
 		self._dismiss_fleet()
-		super(FleetMission, self).report_success(msg)
+		self.success_callback(self, msg)
 
 	def report_failure(self, msg):
 		self._dismiss_fleet()
-		super(FleetMission, self).report_failure(msg)
+		self.failure_callback(self, msg)
 
 	def lost_ship(self):
 		if self.fleet.size() == 0:
@@ -57,4 +66,4 @@ class FleetMission(Mission):
 		super(FleetMission, self).cancel()
 
 	def __str__(self):
-		return super(FleetMission, self).__str__() + (' using %s' % (self.ship if hasattr(self, 'ship') else 'unknown ship'))
+		return super(FleetMission, self).__str__() + (' using %s' % (self.fleet if hasattr(self, 'fleet') else 'unknown fleet'))

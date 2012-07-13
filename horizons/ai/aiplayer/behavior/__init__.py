@@ -60,6 +60,7 @@ class BehaviorManager(object):
 
 	def request_strategy(self, type, strategy_name, **environment):
 		pass
+
 	def get_best_behavior(self, behavior_iterable, action_name, **environment):
 		"""
 		Get best behavior from behavior_iterable (linear time).

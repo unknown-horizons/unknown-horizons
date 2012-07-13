@@ -30,6 +30,7 @@ from horizons.util.python.callback import Callback
 from horizons.util.shapes.circle import Circle
 from horizons.world.units.movingobject import MoveNotPossible
 
+
 class BehaviorAction(object):
 	"""
 	This is an abstract BehaviorAction component.
@@ -59,6 +60,7 @@ class BehaviorAction(object):
 #	Actions used in situations when there are no ships nearby.
 #	Possible usage may be: scouting, sailing randomly, sailing back to main settlement
 
+
 class BehaviorActionDoNothing(BehaviorAction):
 	"""
 	Action that does nothing. Used mainly for idle actions (we don't want to scout too often).
@@ -69,7 +71,6 @@ class BehaviorActionDoNothing(BehaviorAction):
 
 	def no_one_in_sight(self, **environment):
 		pass
-
 
 
 class BehaviorActionPirateRoutine(BehaviorAction):
@@ -83,7 +84,6 @@ class BehaviorActionPirateRoutine(BehaviorAction):
 
 	def __init__(self, owner):
 		super(BehaviorActionPirateRoutine, self).__init__(owner)
-
 
 	def trading_ships_in_sight(self, **environment):
 		ship_group = environment['ship_group']
@@ -106,6 +106,7 @@ class BehaviorActionPirateRoutine(BehaviorAction):
 
 		self.log.debug('Pirate routine: Ship:%s no_one_in_sight', ship.get_component(NamedComponent).name)
 
+
 class BehaviorActionScoutRandomlyNearby(BehaviorAction):
 	"""
 	Sends fleet to a spot nearby.
@@ -122,10 +123,11 @@ class BehaviorActionScoutRandomlyNearby(BehaviorAction):
 		"""
 		ship_group = environment['ship_group']
 		first_ship = ship_group[0]
-		points = self.session.world.get_points_in_radius(first_ship.position,self.scouting_radius, shuffle=True)
+		points = self.session.world.get_points_in_radius(first_ship.position, self.scouting_radius, shuffle=True)
 		point = list(points)[0]
 		for ship in ship_group:
 			BehaviorMoveCallback._sail_near(ship, point)
+
 
 class BehaviorActionKeepFleetTogether(BehaviorAction):
 
@@ -203,7 +205,6 @@ class BehaviorActionRegular(BehaviorAction):
 	A well-balanced way to respond to situations in game.
 	"""
 	power_balance_threshold = 1.00
-
 
 	def __init__(self, owner):
 		super(BehaviorActionRegular, self).__init__(owner)

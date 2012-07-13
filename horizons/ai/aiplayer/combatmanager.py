@@ -48,8 +48,6 @@ class CombatManager(object):
 		unit_manager = self.owner.unit_manager
 		rules = self.owner.unit_manager.filtering_rules
 		for ship_group in unit_manager.get_available_ship_groups(None):
-			for ship in ship_group:
-				self.log.debug("Ship:%s state:%s at %s"%(ship.get_component(NamedComponent).name, self.owner.ships[ship], ship.position))
 			ships_around = unit_manager.find_ships_near_group(ship_group)
 
 			# we want only PirateShips

@@ -20,7 +20,7 @@
 # ###################################################
 
 import logging
-from horizons.ai.aiplayer.mission import Mission
+from horizons.ai.aiplayer.mission.combat import FleetMission
 from horizons.ext.enum import Enum
 from horizons.util.python.callback import Callback
 
@@ -31,7 +31,7 @@ from horizons.constants import BUILDINGS
 from horizons.component.storagecomponent import StorageComponent
 
 
-class ScoutingMission(Mission):
+class ScoutingMission(FleetMission):
 	"""
 	This is an example of a scouting mission.
 	Send ship from point A to point B, and then to point A again.
@@ -40,16 +40,15 @@ class ScoutingMission(Mission):
 	target_point_range = 5
 	starting_point_range = 5
 
-	def __init__(self, success_callback, failure_callback, ship, target_point):
-		super(ScoutingMission, self).__init__(success_callback, failure_callback, ship.owner)
-		self.__init(ship, target_point)
+	def __init__(self, success_callback, failure_callback, fleet, target_point):
+		super(ScoutingMission, self).__init__(success_callback, failure_callback, fleet)
+		self.__init(target_point)
 
-	def __init(self, ship, target_point):
-		self.ship = ship
+	def __init(self, target_point):
 		self.target_point = target_point
-		self.ship.add_remove_listener(self.cancel)
 
 	def save(self, db):
+		# TODO: Fix save/load according to fleet
 		super(ScoutingMission, self).save(db)
 		db("INSERT INTO ai_mission_scouting(rowid, owner, ship, starting_point_x, starting_point_y, target_point_x, target_point_y, state) VALUES(?, ?, ?, ?, ?, ?, ?, ?)", \
 			self.worldid, self.owner.worldid, self.ship.worldid, self.starting_point.x, self.starting_point.y, self.target_point.x, self.target_point.y, self.state.index)
@@ -61,6 +60,7 @@ class ScoutingMission(Mission):
 		return self
 
 	def _load(self, db, worldid, success_callback, failure_callback):
+		# TODO: Fix according to fleet
 		db_result = db("SELECT owner, ship, starting_point_x, starting_point_y, target_point_x, target_point_y, state FROM ai_mission_scouting WHERE rowid = ?", worldid)[0]
 		owner = WorldObject.get_object_by_id(db_result[0])
 		self.ship = WorldObject.get_object_by_id(db_result[1])
@@ -72,12 +72,11 @@ class ScoutingMission(Mission):
 		if self.state == self.missionStates.sailing_to_target:
 			self.ship.add_move_callback(Callback(self.go_back))
 		elif self.state == self.missionStates.going_back:
-			self.ship.add_move_callback(Callback(self.report_success, "Scouting mission successful "))
+			self.ship.add_move_callback(Callback(self.report_success, "Ships arrived at target"))
 		else:
 			assert False, 'invalid state'
 
 	def cancel(self):
-		self.ship.stop()
 		super(ScoutingMission, self).cancel()
 
 	def start(self):
@@ -86,23 +85,23 @@ class ScoutingMission(Mission):
 
 	def go_back(self):
 		try:
-			self.ship.move(Circle(self.starting_point, self.starting_point_range), Callback(self.report_success,"Scouting mission was a success"))
+			self.fleet.move(Circle(self.starting_point, self.starting_point_range), Callback(self.report_success, "Ships arrived at target"), 1.0)
 		except MoveNotPossible:
-			self.report_failure("Couldn't move")
+			self.report_failure("Move was not possible when going back")
 
 	def set_off(self):
 		if not self.target_point:
 			self.target_point = self.owner.session.world.get_random_possible_ship_position()
 
-		self.starting_point = self.ship.position
+		self.starting_point = self.fleet.get_ships()[0].position
 
 		try:
-			self.ship.move(Circle(self.target_point, self.target_point_range), Callback(self.go_back))
+			self.fleet.move(Circle(self.target_point, self.target_point_range), Callback(self.go_back), 1.0)
 		except MoveNotPossible:
-			self.report_failure("Couldn't move")
+			self.report_failure("Move was not possible when moving to target")
 
 	@classmethod
-	def create(cls, success_callback, failure_callback, ship, target_point=None):
-		return ScoutingMission(success_callback, failure_callback, ship, target_point)
+	def create(cls, success_callback, failure_callback, fleet, target_point=None):
+		return ScoutingMission(success_callback, failure_callback, fleet, target_point)
 
 decorators.bind_all(ScoutingMission)

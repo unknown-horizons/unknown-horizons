@@ -25,6 +25,7 @@ from horizons.util.python.callback import Callback
 from horizons.util.shapes.circle import Circle
 from horizons.world.units.movingobject import MoveNotPossible
 
+
 class BehaviorMoveCallback:
 	"""
 	Container class for general purpose ship moves and move callbacks.
@@ -48,7 +49,7 @@ class BehaviorMoveCallback:
 		"""
 		owner = ship.owner
 		cls.log.debug('Player %s: Ship %s: arrived at destination after "%s"' % (owner.name,
-		   ship.get_component(NamedComponent).name, owner.ships[ship]))
+			ship.get_component(NamedComponent).name, owner.ships[ship]))
 		owner.ships[ship] = owner.shipStates.idle
 
 	@classmethod
@@ -74,13 +75,13 @@ class BehaviorMoveCallback:
 				break
 
 		if not home_position:
-			cls.log.info("Ship:%s couldn't flee home, home_position not found"%(ship.get_component(NamedComponent).name))
+			cls.log.info("Ship:%s couldn't flee home, home_position not found" % (ship.get_component(NamedComponent).name))
 			return
 		try:
 			ship.move(Circle(home_position.origin, cls.flee_home_radius), Callback(cls._arrived, ship))
 			owner.ships[ship] = owner.shipStates.fleeing_combat
 		except MoveNotPossible:
-			cls.log.info("Ship:%s couldn't flee, move was not possible -> going idle"%(ship.get_component(NamedComponent).name))
+			cls.log.info("Ship:%s couldn't flee, move was not possible -> going idle" % (ship.get_component(NamedComponent).name))
 			owner.ships[ship] = owner.shipStates.idle
 
 	# Pirate moves and callbacks used for pirate routine
@@ -133,4 +134,3 @@ class BehaviorMoveCallback:
 		except MoveNotPossible:
 			owner.ships[pirate_ship] = owner.shipStates.idle
 			cls.log.debug('Pirate %s: Ship %s: unable to move random at %s' % (owner.worldid, pirate_ship.get_component(NamedComponent).name, point))
-

@@ -21,8 +21,10 @@
 
 import collections
 import logging
+import weakref
 from math import sqrt
 from operator import itemgetter
+from horizons.ai.aiplayer.fleet import Fleet
 from horizons.component.healthcomponent import HealthComponent
 from horizons.component.selectablecomponent import SelectableComponent
 from horizons.util.shapes.point import Point
@@ -46,16 +48,41 @@ class UnitManager(object):
 		self.world = owner.world
 		self.session = owner.session
 		self.ship_groups = []
-		self.filtering_rules = collections.namedtuple('FilteringRules', 'not_owned, hostile, ship_type, selectable')(not_owned=self._not_owned_rule,
-			hostile=self._hostile_rule, ship_type=self._ship_type_rule, selectable=self._selectable_rule)
 
-	def get_fighting_ships(self):
-		return [ship for ship in self.owner.ships if isinstance(ship, FightingShip)]
+		# quickly get fleet assigned to given ship. Ship -> Fleet dictionary
+		self.ships = weakref.WeakKeyDictionary()
+
+		# fleets
+		self.fleets = set()
+
+		self.filtering_rules = collections.namedtuple('FilteringRules', 'not_owned, hostile, ship_type, selectable,'
+			'ship_state, not_in_fleet')(not_owned=self._not_owned_rule, hostile=self._hostile_rule,
+			ship_type=self._ship_type_rule, selectable=self._selectable_rule, ship_state=self._ship_state_rule,
+			not_in_fleet=self._ship_not_in_fleet)
+
+	def get_fighting_ships(self, filtering_rules=None):
+		ships = [ship for ship in self.owner.ships if isinstance(ship, FightingShip)]
+		if filtering_rules:
+			ships = self.filter_ships(self.owner, ships, filtering_rules)
+
+		return ships
 
 	def get_available_ship_groups(self, purpose):
 		# TODO: should check out if ship group is on a mission first (priority)
 		# purpose dict should contain all required info (request priority, amount of ships etc.)
 		return self.ship_groups
+
+	def create_fleet(self, ships):
+		fleet = Fleet(ships)
+		for ship in ships:
+			self.ships[ship] = fleet
+		self.fleets.add(fleet)
+		return fleet
+
+	def destroy_fleet(self, fleet):
+		for ship in fleet.get_ships():
+			del self.ships[ship]
+		self.fleets.remove(fleet)
 
 	def regroup_ships(self):
 		group_size = 2  # TODO move to behaviour/Personalities later
@@ -88,6 +115,20 @@ class UnitManager(object):
 		"""
 		return lambda player, ship: isinstance(ship, ship_types)
 
+	def _ship_state_rule(self, ship_states):
+		"""
+		Rule stating that ship has to be in any of given states.
+		"""
+		if not isinstance(ship_states, collections.Iterable):
+			ship_states = (ship_states,)
+		return lambda player, ship: (ship.owner.ships[ship] in ship_states)
+
+	def _ship_not_in_fleet(self):
+		"""
+		Rule stating that ship is not assigned to any of the fleets.
+		"""
+		return lambda player, ship: (ship not in self.ships)
+
 	def _selectable_rule(self):
 		"""
 		Rule stating that ship has to be selectable.
@@ -98,8 +139,12 @@ class UnitManager(object):
 		"""
 		This method allows for flexible ship filtering.
 		usage:
-		other_ships = unit_manager.filter_ships(self.owner, other_ships, [_enemy_rule(), _ship_type_rule([PirateShip])])
+		other_ships = unit_manager.filter_ships(self.owner, other_ships, [_not_owned_rule(), _ship_type_rule([PirateShip])])
+
+		Note that player is Player instance requesting for filtering, while ships is an iterable of ships.
 		"""
+		if not isinstance(rules, collections.Iterable):
+			rules = (rules,)
 		return [ship for ship in ships if all([rule(player, ship) for rule in rules])]
 
 	@classmethod
