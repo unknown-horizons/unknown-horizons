@@ -22,6 +22,7 @@
 from horizons.component import Component
 
 from horizons.component.storagecomponent import StorageComponent
+from horizons.component.depositcomponent import DepositComponent
 from horizons.component.namedcomponent import NamedComponent, SettlementNameComponent, ShipNameComponent, PirateShipNameComponent
 from horizons.component.tradepostcomponent import TradePostComponent
 from horizons.component.ambientsoundcomponent import AmbientSoundComponent
@@ -30,7 +31,6 @@ from horizons.component.selectablecomponent import SelectableComponent
 from horizons.component.commandablecomponent import CommandableComponent
 from horizons.component.collectingcomponent import CollectingComponent
 from horizons.component.settlerupgradecomponent import SettlerUpgradeComponent
-from horizons.component.depositcomponent import DepositComponent
 from horizons.world.production.producer import Producer, QueueProducer, UnitProducer
 
 class ComponentHolder(object):
