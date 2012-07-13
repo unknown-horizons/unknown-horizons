@@ -174,6 +174,8 @@ class YamlCache(object):
 		try:
 			cls.cache = shelve.open(cls.cache_filename)
 		except UnicodeError as e:
+			if os.environ.get('FAIL_FAST', False):
+				raise
 			cls.log.exception("Warning: Failed to open "+cls.cache_filename+": "+unicode(e))
 			# This can happen with unicode characters in the path because the bdb module
 			# on win converts it internally to ascii, which fails

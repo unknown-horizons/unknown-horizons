@@ -230,7 +230,8 @@ class TestRunner(object):
 			pass
 
 
-def gui_test(use_dev_map=False, use_fixture=None, ai_players=0, timeout=15 * 60, cleanup_userdir=False):
+def gui_test(use_dev_map=False, use_fixture=None, ai_players=0, timeout=15 * 60, cleanup_userdir=False,
+			 _user_dir=None):
 	"""Magic nose integration.
 
 	use_dev_map		-	starts the game with --start-dev-map
@@ -286,7 +287,7 @@ def gui_test(use_dev_map=False, use_fixture=None, ai_players=0, timeout=15 * 60,
 			# savegame could not be loaded (instead of showing an error popup)
 			env = os.environ.copy()
 			env['FAIL_FAST'] = '1'
-			env['UH_USER_DIR'] = TEST_USER_DIR
+			env['UH_USER_DIR'] = _user_dir or TEST_USER_DIR
 
 			# Start game
 			proc = subprocess.Popen(args, stdout=stdout, stderr=stderr, env=env)
