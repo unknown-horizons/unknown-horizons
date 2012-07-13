@@ -103,10 +103,10 @@ class Inventory(pychan.widgets.Container):
 
 			amount = self._inventory[resid]
 
-			range_ = self.ordinal.get(resid)
-			if range_ is not None:
-				filled = (100 * (amount - range_[0])) // (range_[1] - range_[0])
-				amount = ""
+			if self.ordinal:
+				lower, upper = self.ordinal.get(resid, (0, 100))
+				filled = (100 * (amount - lower)) // (upper - lower)
+				amount = "" # do not display exact information for resource deposits
 			elif isinstance(self._inventory, TotalStorage):
 				filled = 0
 			else:
