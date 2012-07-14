@@ -19,7 +19,7 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-from random import randint
+import random
 
 from horizons.constants import PATHS
 from horizons.util import decorators
@@ -244,18 +244,14 @@ class UhDbAccessor(DbReader):
 		"""Returns the amount that a storage building can store of every resource."""
 		return self("SELECT size FROM storage_building_capacity WHERE type = ?", storage_type)[0][0]
 
-	def get_resource_deposit_resources(self, deposit_id):
-		"""Returns the range of resources a resource deposit has at the beginning."""
-		return self("SELECT resource, min_amount, max_amount FROM deposit_resources WHERE id = ?", deposit_id)
-
-	# Tile stes
+	# Tile sets
 
 	def get_random_tile_set(self, ground_id):
 		"""Returns an tile set for a tile of type id"""
 		sql = "SELECT set_id FROM tile_set \
 		       WHERE ground_id = ?"
 		db_data = self.cached_query(sql, ground_id)
-		return db_data[randint(0, len(db_data) - 1)] if db_data else None
+		return random.choice(db_data) if db_data else None
 
 	@decorators.cachedmethod
 	def get_translucent_buildings(self):
