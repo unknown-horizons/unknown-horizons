@@ -60,3 +60,14 @@ def get_all_subclasses(cls):
 			result.add(subclass)
 			result.update(get_all_subclasses(subclass))
 	return result
+
+def recursive_replace(seq, message_dict):
+	"""In a nested list, find keys of a dict and replace them with values."""
+	new_seq = []
+	for item in seq:
+		if isinstance(item, list) or isinstance(item, tuple):
+			new_seq.append(recursive_replace(item, message_dict))
+		else:
+			# append message_dict[item] to new seq if item in message_dict, else append item
+			new_seq.append(message_dict.get(item,item))
+	return new_seq

@@ -28,6 +28,7 @@ from horizons.util import Callback, LivingObject, YamlCache
 
 from horizons.scenario import ACTIONS, CONDITIONS
 
+from horizons.util.python.__init__ import recursive_replace
 
 class InvalidScenarioFileFormat(Exception):
 	def __init__(self, msg=None):
@@ -36,7 +37,7 @@ class InvalidScenarioFileFormat(Exception):
 		super(InvalidScenarioFileFormat, self).__init__(msg)
 
 class ScenarioEventHandler(LivingObject):
-	"""Handles event, that make up a scenario. See wiki.
+	"""Handles events that make up a scenario. See wiki.
 	An instance of this class is bound to a set of events. On a new scenario, you need a new instance.
 
 	Scenarios consist of condition-action events.
@@ -72,8 +73,9 @@ class ScenarioEventHandler(LivingObject):
 		self._scenario_variables = {} # variables for set_var, var_eq ...
 		for cond in CONDITIONS.registry.keys():
 			self._event_conditions[cond] = set()
+		self.scenariofile = scenariofile
 		if scenariofile:
-			self._apply_data( self._parse_yaml_file( scenariofile ) )
+			self._apply_data( self._parse_yaml_file( self.scenariofile ) )
 
 		self.sleep_ticks_remaining = 0
 
@@ -83,7 +85,7 @@ class ScenarioEventHandler(LivingObject):
 	def start(self):
 		# Add the check_events method to the scheduler to be checked every few seconds
 		Scheduler().add_new_object(self._scheduled_check, self, \
-				                   run_in = Scheduler().get_ticks(self.CHECK_CONDITIONS_INTERVAL), loops = -1)
+		                           run_in = Scheduler().get_ticks(self.CHECK_CONDITIONS_INTERVAL), loops = -1)
 
 	def sleep(self, ticks):
 		"""Sleep the ScenarioEventHandler for number of ticks. This delays all
@@ -174,6 +176,22 @@ class ScenarioEventHandler(LivingObject):
 		except KeyError:
 			return _("unknown")
 
+	@classmethod
+	def _get_message_constants_from_file(cls, filename):
+		"""Returns custom message constants from a yaml file.
+		Returns None if constants aren't specified.
+		@throws InvalidScenarioFile"""
+		try:
+			return cls._parse_yaml_file(filename)['MESSAGES']
+		except KeyError:
+			return None
+
+	@classmethod
+	def replace_message_constants(cls, filename, data):
+		"""Replaces message constants with their associated text."""
+		message_dict = cls._get_message_constants_from_file(filename)
+		return recursive_replace(data, message_dict)
+
 	def drop_events(self):
 		"""Removes all events. Useful when player lost."""
 		while self._events:
@@ -196,7 +214,7 @@ class ScenarioEventHandler(LivingObject):
 		"""
 		self._data = data
 		for event_dict in self._data['events']:
-			event = _Event(self.session, event_dict)
+			event = _Event(self.session, self.scenariofile, event_dict)
 			self._events.append( event )
 			for cond in event.conditions:
 				self._event_conditions[ cond.cond_type ].add( event )
@@ -239,13 +257,13 @@ def assert_type(var, expected_type, name):
 
 class _Event(object):
 	"""Internal data structure representing an event."""
-	def __init__(self, session, event_dict):
+	def __init__(self, session, scenariofile, event_dict):
 		self.session = session
 		self.actions = []
 		self.conditions = []
 		assert_type(event_dict['actions'], list, "actions")
 		for action_dict in event_dict['actions']:
-			self.actions.append( _Action(action_dict) )
+			self.actions.append( _Action(scenariofile, action_dict) )
 		assert_type(event_dict['conditions'], list, "conditions")
 		for cond_dict in event_dict['conditions']:
 			self.conditions.append( _Condition(session, cond_dict) )
@@ -267,7 +285,7 @@ class _Event(object):
 
 class _Action(object):
 	"""Internal data structure representing an ingame scenario action"""
-	def __init__(self, action_dict):
+	def __init__(self, scenariofile, action_dict):
 		assert_type(action_dict, dict, "action specification")
 
 		try:
@@ -280,6 +298,8 @@ class _Action(object):
 			raise InvalidScenarioFileFormat('Found invalid action type: %s' % self.action_type)
 
 		self.arguments = action_dict.get('arguments', [])
+		if scenariofile:
+			self.arguments = ScenarioEventHandler.replace_message_constants(scenariofile, self.arguments)
 
 	def __call__(self, session):
 		"""Executes action."""
@@ -289,7 +309,6 @@ class _Action(object):
 		"""Returns yaml representation of self"""
 		arguments_yaml = dump_dict_to_yaml(self.arguments)
 		return "{arguments: %s, type: %s}" % (arguments_yaml, self.action_type)
-
 
 class _Condition(object):
 	"""Internal data structure representing a condition"""
@@ -319,7 +338,6 @@ class _Condition(object):
 		arguments_yaml = dump_dict_to_yaml(self.arguments)
 		return '{arguments: %s, type: "%s"}' % ( arguments_yaml, self.cond_type)
 
-
 def dump_dict_to_yaml(data):
 	"""Wrapper for dumping yaml data using common parameters"""
 	# NOTE: the line below used to end with this: .replace('\n', '')
@@ -327,4 +345,3 @@ def dump_dict_to_yaml(data):
 
 	# default_flow_style: makes use of short list notation without newlines (required here)
 	return yaml.safe_dump(data, line_break='\n', default_flow_style=True)
-
