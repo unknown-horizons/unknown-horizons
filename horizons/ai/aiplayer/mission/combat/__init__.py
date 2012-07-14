@@ -19,29 +19,35 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 from horizons.ai.aiplayer.mission import Mission
+from horizons.ext.enum import Enum
 
 class FleetMission(Mission):
+
+	missionStates = Enum('created')
+
+
 	def __init__(self, success_callback, failure_callback, ships):
 		super(FleetMission, self).__init__(success_callback, failure_callback, ships[0].owner)
 		self.__init(ships)
+		self.state = self.missionStates.created
+
+		# flag stating whether mission is currently waiting for CombatManager to finish combat (CombatManager either cancels the mission or continues it).
+		self.combat_phase = False
+
+		# flag stating whether CombatManager can initiate combat when enemy approaches in the horizon.
+		self.can_interfere = False
 
 	def __init(self, ships):
 		self.unit_manager = self.owner.unit_manager
+		self.session = self.owner.session
 		self.fleet = self.unit_manager.create_fleet(ships)
 		self.strategy_manager = self.owner.strategy_manager
 		for ship in self.fleet.get_ships():
 			self.owner.ships[ship] = self.owner.shipStates.on_a_mission
 			ship.add_remove_listener(self.lost_ship)
 
-	def load(self, db, worldid, success_callback, failure_callback, fleet):
-		super(FleetMission, self).load(db, worldid, success_callback, failure_callback, fleet.owner)
-		self.__init(fleet)
-
-	def report_success(self):
-		self.success_callback(self)
-
-	def report_failure(self):
-		self.failure_callback(self)
+		# combatIntermissions is dictionary of type 'missionState -> (won_function, lost_function)' stating which function should be called after combat was finished in state X.
+		self.combatIntermissions = {}
 
 	def _dismiss_fleet(self):
 		for ship in self.fleet.get_ships():
@@ -60,10 +66,22 @@ class FleetMission(Mission):
 
 	def lost_ship(self):
 		if self.fleet.size() == 0:
-			self.cancel()
+			self.cancel('Lost all of the ships')
 
-	def cancel(self):
-		super(FleetMission, self).cancel()
+	# continue / abort methods are called by CombatManager after it handles combat.
+	# CombatManager decides whether the battle was successful (and the mission should be continued) or unsuccessful (mission should be aborted)
+	def continue_mission(self):
+		assert self.combat_phase, "request to continue mission without it being in combat_phase in the first place"
+		assert self.state in self.combatIntermissions, "request to continue mission from not defined state: %s" % self.state
+		self.combatIntermissions[self.state][0]()
+
+	def abort_mission(self, msg):
+		assert self.combat_phase, "request to abort mission without it being in combat_phase in the first place"
+		assert self.state in self.combatIntermissions, "request to abort mission from not defined state: %s" % self.state
+		self.combatIntermissions[self.state][1]()
+
+	def cancel(self, msg):
+		self.report_failure(msg)
 
 	def __str__(self):
 		return super(FleetMission, self).__str__() + (' using %s' % (self.fleet if hasattr(self, 'fleet') else 'unknown fleet'))

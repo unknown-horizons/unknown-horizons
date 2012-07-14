@@ -64,9 +64,12 @@ class UnitManager(object):
 		ships = [ship for ship in self.owner.ships if isinstance(ship, FightingShip)]
 		if filtering_rules:
 			ships = self.filter_ships(self.owner, ships, filtering_rules)
-
 		return ships
 
+	def get_available_missions(self):
+		return [mission for mission in self.owner.strategy_manager.missions if mission.combat_phase]
+
+	# TODO: depreciated
 	def get_available_ship_groups(self, purpose):
 		# TODO: should check out if ship group is on a mission first (priority)
 		# purpose dict should contain all required info (request priority, amount of ships etc.)
@@ -84,12 +87,11 @@ class UnitManager(object):
 			del self.ships[ship]
 		self.fleets.remove(fleet)
 
-	def regroup_ships(self):
-		group_size = 2  # TODO move to behaviour/Personalities later
-		self.ship_groups = []
-		ships = self.get_fighting_ships()
-		for i in xrange(0, len(ships), group_size):
-			self.ship_groups.append(ships[i:i + group_size])
+	def check_for_dead_fleets(self):
+		pass
+		#for fleet in self.fleets:
+		#	if fleet.size() == 0:
+		#		self.destroy_fleet(fleet)
 
 	# Filtering rules
 	# Use filter_ships method along with rules defined below:
@@ -201,4 +203,4 @@ class UnitManager(object):
 		return list(other_ships_set)
 
 	def tick(self):
-		self.regroup_ships()  # TODO will be called on shipstate change (sank/built)
+		self.check_for_dead_fleets()
