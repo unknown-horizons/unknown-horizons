@@ -24,6 +24,7 @@ from weakref import WeakKeyDictionary
 from horizons.component.namedcomponent import NamedComponent
 from horizons.ext.enum import Enum
 from horizons.util.python.callback import Callback
+from horizons.util.shapes.circle import Circle
 from horizons.util.worldobject import WorldObject
 from horizons.world.units.movingobject import MoveNotPossible
 
@@ -111,11 +112,22 @@ class Fleet(WorldObject):
 
 	def _move_ship(self, ship, destination, callback):
 		# retry ad infinitum. Not the most elegant solution but will do for a while.
-		# TODO: Think of a better way to resolve blocks
+		# TODO: Think of a better way to resolve self-blocks
+		# Idea: mark ship as "blocked" through state and check whether they all are near the destination anyway
+		# 1. If they don't make them sail again.
+		# 2. If they do, assume they reached the spot.
 		try:
 			ship.move(destination, callback=callback, blocked_callback=Callback(self._move_ship, ship, destination, callback))
 		except MoveNotPossible:
 			self._ships[ship] = self.shipStates.blocked
+
+	def _get_circle_size(self):
+		"""
+		Destination circle size for movement calls.
+		"""
+
+		return 5
+		#return min(self.size(), 5)
 
 	def move(self, destination, callback=None, ratio=1.0):
 		"""
@@ -127,6 +139,10 @@ class Fleet(WorldObject):
 			0.5 - at least half of the ships
 			etc.
 		"""
+
+		# it's ok to specify single point for a destination only when there's only one ship in a fleet
+		if not isinstance(destination, Circle) and self.size() > 1:
+			destination = Circle(destination, self._get_circle_size())
 
 		self.state = self.fleetStates.moving
 		self.ratio = ratio

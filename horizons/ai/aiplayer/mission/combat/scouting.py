@@ -36,56 +36,22 @@ class ScoutingMission(FleetMission):
 	This is an example of a scouting mission.
 	Send ship from point A to point B, and then to point A again.
 	"""
-	missionStates = Enum('created', 'sailing_to_target', 'going_back')
-	target_point_range = 5
-	starting_point_range = 5
+	missionStates = Enum.get_extended(FleetMission.missionStates, 'sailing_to_target', 'going_back')
 
-	def __init__(self, success_callback, failure_callback, fleet, target_point):
-		super(ScoutingMission, self).__init__(success_callback, failure_callback, fleet)
+	def __init__(self, success_callback, failure_callback, ships, target_point):
+		super(ScoutingMission, self).__init__(success_callback, failure_callback, ships)
 		self.__init(target_point)
 
 	def __init(self, target_point):
 		self.target_point = target_point
 
-	def save(self, db):
-		# TODO: Fix save/load according to fleet
-		super(ScoutingMission, self).save(db)
-		db("INSERT INTO ai_mission_scouting(rowid, owner, ship, starting_point_x, starting_point_y, target_point_x, target_point_y, state) VALUES(?, ?, ?, ?, ?, ?, ?, ?)", \
-			self.worldid, self.owner.worldid, self.ship.worldid, self.starting_point.x, self.starting_point.y, self.target_point.x, self.target_point.y, self.state.index)
-
-	@classmethod
-	def load(cls, db, worldid, success_callback, failure_callback):
-		self = cls.__new__(cls)
-		self._load(db, worldid, success_callback, failure_callback)
-		return self
-
-	def _load(self, db, worldid, success_callback, failure_callback):
-		# TODO: Fix according to fleet
-		db_result = db("SELECT owner, ship, starting_point_x, starting_point_y, target_point_x, target_point_y, state FROM ai_mission_scouting WHERE rowid = ?", worldid)[0]
-		owner = WorldObject.get_object_by_id(db_result[0])
-		self.ship = WorldObject.get_object_by_id(db_result[1])
-		self.starting_point = Point(db_result[2], db_result[3])
-		self.target_point = Point(db_result[4], db_result[5])
-		self.state = self.missionStates[db_result[6]]
-		super(ScoutingMission, self).load(db, worldid, success_callback, failure_callback, owner)
-
-		if self.state == self.missionStates.sailing_to_target:
-			self.ship.add_move_callback(Callback(self.go_back))
-		elif self.state == self.missionStates.going_back:
-			self.ship.add_move_callback(Callback(self.report_success, "Ships arrived at target"))
-		else:
-			assert False, 'invalid state'
-
-	def cancel(self):
-		super(ScoutingMission, self).cancel()
-
 	def start(self):
-		self.state = self.missionStates.sailing_to_target
 		self.set_off()
 
 	def go_back(self):
 		try:
-			self.fleet.move(Circle(self.starting_point, self.starting_point_range), Callback(self.report_success, "Ships arrived at target"), 1.0)
+			self.fleet.move(self.starting_point, Callback(self.report_success, "Ships arrived at target"), 1.0)
+			self.state = self.missionStates.going_back
 		except MoveNotPossible:
 			self.report_failure("Move was not possible when going back")
 
@@ -96,7 +62,8 @@ class ScoutingMission(FleetMission):
 		self.starting_point = self.fleet.get_ships()[0].position
 
 		try:
-			self.fleet.move(Circle(self.target_point, self.target_point_range), Callback(self.go_back), 1.0)
+			self.fleet.move(self.target_point, Callback(self.go_back), 1.0)
+			self.state = self.missionStates.sailing_to_target
 		except MoveNotPossible:
 			self.report_failure("Move was not possible when moving to target")
 

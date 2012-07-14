@@ -24,6 +24,7 @@ from horizons.ai.aiplayer.behavior import BehaviorManager
 from horizons.ai.aiplayer.behavior.profile import BehaviorProfile
 from horizons.ai.aiplayer.fleet import Fleet
 from horizons.ai.aiplayer.mission.combat.scouting import ScoutingMission
+from horizons.ai.aiplayer.mission.combat.surpriseattack import SurpriseAttack
 from horizons.ai.aiplayer.unitmanager import UnitManager
 from horizons.command.diplomacy import AddEnemyPair
 from horizons.command.unit import Attack
@@ -88,8 +89,19 @@ class StrategyManager(object):
 		print "//IDLE SHIPS:"
 
 		if idle_ships and len(idle_ships) >= 2:
-			scouting_mission = ScoutingMission.create(self.report_success, self.report_failure, idle_ships)
-			self.start_mission(scouting_mission)
+			return_point = idle_ships[0].position
+			target_point = self.owner.session.world.get_random_possible_ship_position()
+
+			enemy_player = None
+			for player in self.session.world.players:
+				print player, player.name, hasattr(player, 'home_point')
+				if hasattr(player, 'home_point'):
+					enemy_player = player
+
+			attack_mission = SurpriseAttack.create(self.report_success, self.report_failure, idle_ships, return_point, target_point, enemy_player)
+			self.start_mission(attack_mission)
+			#scouting_mission = ScoutingMission.create(self.report_success, self.report_failure, idle_ships)
+			#self.start_mission(scouting_mission)
 
 		print "MISSIONS"
 		for mission in list(self.missions):
