@@ -32,15 +32,6 @@ CREATE TABLE "player_start_res" (
 );
 INSERT INTO "player_start_res" VALUES(1, 30000);
 
-CREATE TABLE "deposit_resources" (
-	"id" INT NOT NULL,
-	"resource" INT NOT NULL,
-	"min_amount" INT NOT NULL,
-	"max_amount" INT NOT NULL
-);
-INSERT INTO "deposit_resources" VALUES(23, 20, 750, 1250);
-INSERT INTO "deposit_resources" VALUES(34, 24, 375, 625);
-
 CREATE TABLE "storage_building_capacity" (
 	"type" INT,
 	"size" INT
