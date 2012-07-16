@@ -19,16 +19,6 @@ components:
 - HealthComponent: {maxhealth: 1000}
 - UnitProducerComponent:
     productionlines:
-      64:
-        consumes:
-        - [RES.BOARDS, -22]
-        - [RES.TEXTILE, -8]
-        time: 60
-      68:
-        consumes:
-        - [RES.BOARDS, -42]
-        - [RES.TEXTILE, -24]
-        time: 60
       15:
         produces:
         - [UNITS.HUKER_SHIP, 1]
@@ -47,16 +37,6 @@ components:
         - [RES.CANNON, -7]
         - [RES.TEXTILE, -6]
         - [RES.TOOLS, -2]
-        time: 60
-      62:
-        consumes:
-        - [RES.BOARDS, -12]
-        - [RES.TEXTILE, -8]
-        time: 60
-      63:
-        consumes:
-        - [RES.BOARDS, -14]
-        - [RES.TEXTILE, -11]
         time: 60
 - StorageComponent:
       SlotsStorage:
