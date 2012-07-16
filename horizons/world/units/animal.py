@@ -110,14 +110,14 @@ class WildAnimal(CollectorAnimal, Collector):
 	work_duration = 96
 	pather_class = SoldierPather
 
-	def __init__(self, owner, start_hidden=False, can_reproduce = True, **kwargs):
+	def __init__(self, owner, start_hidden=False, can_reproduce=True, **kwargs):
 		super(WildAnimal, self).__init__(start_hidden=start_hidden, owner=owner, **kwargs)
 		self.__init(owner, can_reproduce)
 		self.log.debug("Wild animal %s created at "+str(self.position)+\
 									 "; can_reproduce: %s; population now: %s", \
 				self.worldid, can_reproduce, len(self.home_island.wild_animals))
 
-	def __init(self, island, can_reproduce, health = None):
+	def __init(self, island, can_reproduce, health=None):
 		"""
 		@param island: Hard reference to island
 		@param can_reproduce: bool

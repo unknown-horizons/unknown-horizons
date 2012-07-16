@@ -42,7 +42,7 @@ class Player(ComponentHolder, WorldObject):
 	component_templates = ({'StorageComponent': {'PositiveStorage': {}}},)
 
 
-	def __init__(self, session, worldid, name, color, clientid = None, difficulty_level = None):
+	def __init__(self, session, worldid, name, color, clientid=None, difficulty_level=None):
 		"""
 		@param session: Session instance
 		@param worldid: player's worldid
@@ -63,7 +63,7 @@ class Player(ComponentHolder, WorldObject):
 			for res, value in inventory.iteritems():
 				self.get_component(StorageComponent).inventory.alter(res, value)
 
-	def __init(self, name, color, clientid, difficulty_level, settlerlevel = 0):
+	def __init(self, name, color, clientid, difficulty_level, settlerlevel=0):
 		assert isinstance(color, Color)
 		assert isinstance(name, basestring) and name
 		try:

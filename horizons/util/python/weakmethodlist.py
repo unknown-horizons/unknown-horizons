@@ -24,7 +24,7 @@ from weakmethod import WeakMethod
 class WeakMethodList(list):
 	"""A class that handles zero to n callbacks."""
 
-	def __init__(self, callbacks = None):
+	def __init__(self, callbacks=None):
 		"""
 		@param callbacks: None, a function, a list of functions, or a tuple of functions
 		"""

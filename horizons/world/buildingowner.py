@@ -64,7 +64,7 @@ class BuildingOwner(object):
 		self.buildings.remove(building)
 		assert building not in self.buildings
 
-	def get_settlements(self, rect, player = None):
+	def get_settlements(self, rect, player=None):
 		"""Returns the list of settlements for the coordinates describing a rect.
 		@param rect: Area to search for settlements
 		@return: list of Settlement instances at that position."""

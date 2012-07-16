@@ -66,7 +66,7 @@ class Settler(BuildableRect, BuildingResourceHandler, BasicBuilding):
 		kwargs['level'] = self.__class__.default_level_on_build # settlers always start in first level
 		super(Settler, self).__init__(x=x, y=y, owner=owner, instance=instance, **kwargs)
 
-	def __init(self, loading = False, last_tax_payed=0):
+	def __init(self, loading=False, last_tax_payed=0):
 		self.level_max = TIER.CURRENT_MAX # for now
 		self._update_level_data(loading=loading, initial=True)
 		self.last_tax_payed = last_tax_payed
@@ -294,7 +294,7 @@ class Settler(BuildableRect, BuildingResourceHandler, BasicBuilding):
 			self.level_down()
 			self._changed()
 
-	def level_up(self, production = None):
+	def level_up(self, production=None):
 		"""Actually level up (usually called when the upgrade material has arrived)"""
 
 		self._upgrade_production = None

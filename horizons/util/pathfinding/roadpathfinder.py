@@ -38,7 +38,7 @@ class RoadPathFinder(object):
 		relative_current_coords = (current_coords[0] - min_x, current_coords[1] - min_y)
 		return ((relative_previous_coords, relative_current_coords) in cls.__counterclockwise_turns) ^ clockwise
 
-	def __call__(self, path_nodes, source, destination, clockwise = True):
+	def __call__(self, path_nodes, source, destination, clockwise=True):
 		"""
 		Return the path from the source to the destination or None if it is impossible.
 

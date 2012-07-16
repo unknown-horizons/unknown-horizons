@@ -99,7 +99,7 @@ class BuildingCollector(Collector):
 		assert Scheduler().cur_tick == Scheduler.FIRST_TICK_ID - 1
 		self._job_history = db.get_building_collector_job_history(worldid)
 
-	def register_at_home_building(self, unregister = False):
+	def register_at_home_building(self, unregister=False):
 		"""Creates reference for self at home building (only hard reference except for
 		in job.object)
 		@param unregister: whether to reverse registration
@@ -111,7 +111,7 @@ class BuildingCollector(Collector):
 			else:
 				self.home_building.get_component(CollectingComponent).add_local_collector(self)
 
-	def apply_state(self, state, remaining_ticks = None):
+	def apply_state(self, state, remaining_ticks=None):
 		super(BuildingCollector, self).apply_state(state, remaining_ticks)
 		if state == self.states.moving_home:
 			# collector is on its way home
@@ -190,7 +190,7 @@ class BuildingCollector(Collector):
 		if not self._job_history or abs(self._job_history[-1][1]) > 1e-9:
 			self._job_history.append((Scheduler().cur_tick, 0))
 
-	def begin_current_job(self, job_location = None):
+	def begin_current_job(self, job_location=None):
 		super(BuildingCollector, self).begin_current_job(job_location)
 
 		"""
@@ -261,7 +261,7 @@ class BuildingCollector(Collector):
 				# this is an unsolved problem also in reality, so we are forced to use an unconventional solution.
 				self.teleport(self.home_building, callback=callback, destination_in_building=True)
 
-	def cancel(self, continue_action = None):
+	def cancel(self, continue_action=None):
 		"""Cancels current job and moves back home"""
 		self.log.debug("%s cancel", self)
 		if continue_action is None:

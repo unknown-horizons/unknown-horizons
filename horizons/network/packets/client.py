@@ -72,7 +72,7 @@ class cmd_listgames(packet):
 	mapname       = None
 	maxplayers    = None
 
-	def __init__(self, clientver, mapname = None, maxplayers = None):
+	def __init__(self, clientver, mapname=None, maxplayers=None):
 		self.clientversion = clientver
 		self.mapname       = mapname
 		self.maxplayers    = maxplayers

@@ -662,7 +662,7 @@ class VillageBuilder(AreaBuilder):
 					self.tent_queue.append(coords)
 		return result
 
-	def _recreate_tent_queue(self, removal_location = None):
+	def _recreate_tent_queue(self, removal_location=None):
 		"""Recreate the tent queue making sure that the possibly removed location is missing."""
 		queue = []
 		for coords, (purpose, (_, seq_no)) in self.plan.iteritems():
@@ -691,7 +691,7 @@ class VillageBuilder(AreaBuilder):
 				all_built = False
 		self.roads_built = all_built
 
-	def build_tent(self, coords = None):
+	def build_tent(self, coords=None):
 		"""Build the next tent (or the specified one if coords is not None)."""
 		if not self.tent_queue:
 			return BUILD_RESULT.IMPOSSIBLE

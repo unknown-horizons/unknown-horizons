@@ -101,7 +101,7 @@ class Weapon(object):
 		self.attack_ready = True
 		self.on_attack_ready()
 
-	def fire(self, destination, position, bullet_delay = 0):
+	def fire(self, destination, position, bullet_delay=0):
 		"""
 		Fires the weapon at a certain destination
 		@param destination: Point with position where weapon will be fired

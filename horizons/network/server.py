@@ -36,7 +36,7 @@ logging.basicConfig(format = '[%(asctime)-15s] [%(levelname)s] %(message)s',
 		level = logging.DEBUG)
 
 class Server(object):
-	def __init__(self, hostname, port, statistic_file = None):
+	def __init__(self, hostname, port, statistic_file=None):
 		packets.SafeUnpickler.set_mode(client = False)
 		self.host = None
 		self.hostname = hostname
@@ -91,7 +91,7 @@ class Server(object):
 		return uuid.uuid4().hex
 
 
-	def register_callback(self, type, callback, prepend = False):
+	def register_callback(self, type, callback, prepend=False):
 		if type in self.callbacks:
 			if prepend:
 				self.callbacks[type].insert(0, callback)
@@ -138,20 +138,20 @@ class Server(object):
 				logging.warning("Invalid packet (%u)" % (event.type))
 
 
-	def send(self, peer, packet, channelid = 0):
+	def send(self, peer, packet, channelid=0):
 		if self.host is None:
 			raise network.NotConnected("Server is not running")
 		packet.send(peer, None, channelid)
 		self.host.flush()
 
-	def _send(self, peer, data, channelid = 0):
+	def _send(self, peer, data, channelid=0):
 		if self.host is None:
 			raise network.NotConnected("Server is not running")
 		packets.packet._send(peer, data, channelid)
 		self.host.flush()
 
 
-	def disconnect(self, peer, later = True):
+	def disconnect(self, peer, later=True):
 		logging.debug("[DISCONNECT] Disconnecting client %s" % (peer.address))
 		try:
 			if later:
@@ -166,7 +166,7 @@ class Server(object):
 		self.send(peer, packets.cmd_error(message))
 
 
-	def fatalerror(self, peer, message, later = True):
+	def fatalerror(self, peer, message, later=True):
 		self.send(peer, packets.cmd_fatalerror(message))
 		self.disconnect(peer, later)
 
@@ -397,7 +397,7 @@ class Server(object):
 			self.call_callbacks('deletegame', game)
 
 
-	def terminategame(self, game, player = None):
+	def terminategame(self, game, player=None):
 		logging.debug("[TERMINATE] [%s] (by %s)" % (game.uuid, player if player is not None else None))
 		for _player in game.players:
 			if _player.peer.state == enet.PEER_STATE_CONNECTED:

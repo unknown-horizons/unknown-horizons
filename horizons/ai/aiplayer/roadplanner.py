@@ -35,7 +35,7 @@ class RoadPlanner(object):
 	* not close to boundaries (coast, mountains, etc.)
 	"""
 
-	def __call__(self, personality, source, destination, destination_beacon, path_nodes, blocked_coords = set()):
+	def __call__(self, personality, source, destination, destination_beacon, path_nodes, blocked_coords=None):
 		"""
 		Return the path from the source to the destination or None if it is impossible.
 
@@ -46,7 +46,7 @@ class RoadPlanner(object):
 		@param path_nodes: dict {(x, y): penalty}
 		@param blocked_coords: temporarily blocked coordinates set([(x, y), ...])
 		"""
-
+		blocked_coords = blocked_coords or set()
 		target_blocked = True
 		for coords in destination:
 			if coords not in blocked_coords and coords in path_nodes:

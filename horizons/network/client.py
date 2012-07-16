@@ -50,7 +50,7 @@ class ClientMode(object):
 class Client(object):
 	log = logging.getLogger("network")
 
-	def __init__(self, name, version, server_address, client_address = None, color = None, clientid = None):
+	def __init__(self, name, version, server_address, client_address=None, color=None, clientid=None):
 		try:
 			clientaddress = enet.Address(client_address[0], client_address[1]) if client_address is not None else None
 			self.host = enet.Host(clientaddress, MAX_PEERS, 0, 0, 0)
@@ -86,7 +86,7 @@ class Client(object):
 		self.register_callback('lobbygame_changecolor', self.onchangecolor, True)
 		pass
 
-	def register_callback(self, type, callback, prepend = False, unique = True):
+	def register_callback(self, type, callback, prepend=False, unique=True):
 		if type in self.callbacks:
 			if unique and callback in self.callbacks[type]:
 				return
@@ -131,7 +131,7 @@ class Client(object):
 
 	#-----------------------------------------------------------------------------
 
-	def disconnect(self, server_may_disconnect = False, later = False):
+	def disconnect(self, server_may_disconnect=False, later=False):
 		""" disconnect should _never_ throw an exception """
 		self.mode = None
 		if self.serverpeer is None:
@@ -207,7 +207,7 @@ class Client(object):
 
 	#-----------------------------------------------------------------------------
 
-	def send(self, packet, channelid = 0):
+	def send(self, packet, channelid=0):
 		if self.serverpeer is None:
 			raise network.NotConnected()
 		if self.mode is ClientMode.Game:
@@ -217,7 +217,7 @@ class Client(object):
 	#-----------------------------------------------------------------------------
 
 	# wait for event from network
-	def _recv_event(self, timeout = SERVER_TIMEOUT):
+	def _recv_event(self, timeout=SERVER_TIMEOUT):
 		if self.serverpeer is None:
 			raise network.NotConnected()
 		event = self.host.service(timeout)
@@ -234,7 +234,7 @@ class Client(object):
 		return event
 
 	# receives event from network and returns the unpacked packet
-	def recv(self, timeout = SERVER_TIMEOUT):
+	def recv(self, timeout=SERVER_TIMEOUT):
 		event = self._recv_event(timeout)
 		if event is None:
 			return None
@@ -259,7 +259,7 @@ class Client(object):
 			return [event.peer, packet]
 
 	# return the first received packet of type [in packettypes]
-	def recv_packet(self, packettypes = None, timeout = SERVER_TIMEOUT):
+	def recv_packet(self, packettypes=None, timeout=SERVER_TIMEOUT):
 		if self.packetqueue:
 			if packettypes is None:
 				return self.packetqueue.pop(0)
@@ -366,7 +366,7 @@ class Client(object):
 
 	#-----------------------------------------------------------------------------
 
-	def listgames(self, mapname = None, maxplayers = None, onlyThisVersion = False):
+	def listgames(self, mapname=None, maxplayers=None, onlyThisVersion=False):
 		if self.mode is None:
 			raise network.NotConnected()
 		if self.mode is not ClientMode.Server:

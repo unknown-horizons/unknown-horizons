@@ -37,8 +37,8 @@ class FindPath(object):
 	log = logging.getLogger("world.pathfinding")
 
 	@decorators.make_constants()
-	def __call__(self, source, destination, path_nodes, blocked_coords = list(),
-				       diagonal = False, make_target_walkable = True):
+	def __call__(self, source, destination, path_nodes, blocked_coords=None,
+		        diagonal=False, make_target_walkable=True):
 		"""
 		@param source: Rect, Point or BasicBuilding
 		@param destination: Rect, Point or BasicBuilding
@@ -62,7 +62,7 @@ class FindPath(object):
 		self.source = source
 		self.destination = destination
 		self.path_nodes = path_nodes
-		self.blocked_coords = blocked_coords
+		self.blocked_coords = blocked_coords or []
 		self.diagonal = diagonal
 		self.make_target_walkable = make_target_walkable
 

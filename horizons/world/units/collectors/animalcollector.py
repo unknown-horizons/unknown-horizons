@@ -46,7 +46,7 @@ class AnimalCollector(BuildingCollector):
 	def load(self, db, worldid):
 		super(AnimalCollector, self).load(db, worldid)
 
-	def apply_state(self, state, remaining_ticks = None):
+	def apply_state(self, state, remaining_ticks=None):
 		super(AnimalCollector, self).apply_state(state, remaining_ticks)
 		if state == self.states.waiting_for_animal_to_stop:
 			# register at target
@@ -56,7 +56,7 @@ class AnimalCollector(BuildingCollector):
 			if not self.__class__.kill_animal:
 				self.setup_new_job() # register at target if it's still alive
 
-	def cancel(self, continue_action = None):
+	def cancel(self, continue_action=None):
 		if self.job is not None:
 			if self.state == self.states.waiting_for_animal_to_stop:
 				self.job.object.remove_stop_after_job()

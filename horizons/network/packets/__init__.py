@@ -77,7 +77,7 @@ class SafeUnpickler(object):
 				PICKLE_SAFE[origin][module].add(name)
 
 	@classmethod
-	def set_mode(self, client = True):
+	def set_mode(self, client=True):
 		global PICKLE_RECIEVE_FROM
 		if client:
 			PICKLE_RECIEVE_FROM = 'server'
@@ -115,13 +115,13 @@ class packet(object):
 	def serialize(self):
 		return cPickle.dumps(self, PICKLE_PROTOCOL)
 
-	def send(self, peer, sid = None, channelid = 0):
+	def send(self, peer, sid=None, channelid=0):
 		if sid is not None:
 			self.sid = sid
 		self._send(peer, self.serialize(), channelid)
 
 	@staticmethod
-	def _send(peer, data, channelid = 0):
+	def _send(peer, data, channelid=0):
 		packet = enet.Packet(data, enet.PACKET_FLAG_RELIABLE)
 		peer.send(channelid, packet)
 
@@ -150,7 +150,7 @@ SafeUnpickler.add('common', cmd_fatalerror)
 
 #-------------------------------------------------------------------------------
 
-def unserialize(data, validate = False):
+def unserialize(data, validate=False):
 	mypacket = SafeUnpickler.loads(data)
 	if validate and not (hasattr(mypacket.validate, '__func__') and mypacket.validate.__func__ is packet.validate.__func__):
 		mypacket.validate()

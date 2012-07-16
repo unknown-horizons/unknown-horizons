@@ -342,7 +342,7 @@ class WeaponHolder(object):
 		self.remove_target()
 
 
-	def fire_all_weapons(self, dest, rotated = False, bullet_delay = 0):
+	def fire_all_weapons(self, dest, rotated=False, bullet_delay=0):
 		"""
 		Fires all weapons in storage at a given position
 		@param dest: Point with the given position
@@ -486,7 +486,7 @@ class MovingWeaponHolder(WeaponHolder):
 		if Scheduler().rem_call(self, self._move_tick):
 			Scheduler().add_new_object(Callback(self._move_tick, resume=False), self, ticks)
 
-	def _move_and_attack(self, destination, not_possible_action = None, in_range_callback = None):
+	def _move_and_attack(self, destination, not_possible_action=None, in_range_callback=None):
 		"""
 		Callback for moving to a destination, then attack
 		@param destination : moving destination

@@ -87,7 +87,7 @@ class Ship(Unit):
 	def create_route(self):
 		self.route = TradeRoute(self)
 
-	def _move_tick(self, resume = False):
+	def _move_tick(self, resume=False):
 		"""Keeps track of the ship's position in the global ship_map"""
 		if self.in_ship_map:
 			del self.session.world.ship_map[self.position.to_tuple()]

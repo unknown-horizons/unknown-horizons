@@ -39,7 +39,7 @@ class Builder(WorldObject):
 	non_rotatable_buildings = [BUILDINGS.WAREHOUSE, BUILDINGS.FISHER, BUILDINGS.BOAT_BUILDER,
 		BUILDINGS.IRON_MINE, BUILDINGS.SALT_PONDS]
 
-	def __init__(self, building_id, land_manager, point, orientation = 0, ship = None, worldid = None):
+	def __init__(self, building_id, land_manager, point, orientation=0, ship=None, worldid=None):
 		"""
 		@param building_id: the id of the building class
 		@param land_manager: LandManager instance
@@ -110,7 +110,7 @@ class Builder(WorldObject):
 		#self.log.debug('%s.execute(): %s', self.__class__.__name__, result)
 		return result
 
-	def have_resources(self, extra_resources = None):
+	def have_resources(self, extra_resources=None):
 		"""Return a boolean showing whether we have the resources to build the building right now."""
 		# the copy has to be made because Build.check_resources modifies it
 		extra_resources = copy.copy(extra_resources) if extra_resources is not None else {}

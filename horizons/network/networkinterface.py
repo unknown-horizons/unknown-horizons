@@ -228,7 +228,7 @@ class NetworkInterface(object):
 	def register_player_fetch_game_callback(self, function):
 		self._client.register_callback("savegame_data", function)
 
-	def register_game_details_changed_callback(self, function, unique = True):
+	def register_game_details_changed_callback(self, function, unique=True):
 		if unique and function in self.cbs_game_details_changed:
 			return
 		self.cbs_game_details_changed.append(function)
@@ -237,7 +237,7 @@ class NetworkInterface(object):
 		for callback in self.cbs_game_details_changed:
 			callback()
 
-	def register_game_prepare_callback(self, function, unique = True):
+	def register_game_prepare_callback(self, function, unique=True):
 		if unique and function in self.cbs_game_prepare:
 			return
 		self.cbs_game_prepare.append(function)
@@ -246,7 +246,7 @@ class NetworkInterface(object):
 		for callback in self.cbs_game_prepare:
 			callback(self.get_game())
 
-	def register_game_starts_callback(self, function, unique = True):
+	def register_game_starts_callback(self, function, unique=True):
 		if unique and function in self.cbs_game_starts:
 			return
 		self.cbs_game_starts.append(function)
@@ -258,7 +258,7 @@ class NetworkInterface(object):
 	def _cb_game_data(self, data):
 		self.received_packets.append(data)
 
-	def register_error_callback(self, function, unique = True):
+	def register_error_callback(self, function, unique=True):
 		if unique and function in self.cbs_error:
 			return
 		self.cbs_error.append(function)
@@ -267,7 +267,7 @@ class NetworkInterface(object):
 		for callback in self.cbs_error:
 			callback(exception, fatal)
 
-	def get_active_games(self, only_this_version_allowed = False):
+	def get_active_games(self, only_this_version_allowed=False):
 		"""Returns a list of active games or None on fatal error"""
 		ret_mp_games = []
 		try:

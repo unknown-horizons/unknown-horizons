@@ -229,7 +229,7 @@ class Scheduler(LivingObject):
 
 		return removed_calls
 
-	def get_classinst_calls(self, instance, callback = None):
+	def get_classinst_calls(self, instance, callback=None):
 		"""Returns all CallbackObjects of instance.
 		Optionally, a specific callback can be specified.
 		@param instance: the instance to execute the call

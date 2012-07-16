@@ -61,7 +61,7 @@ class Color(object):
 	 name: name of the Color or None
 	"""
 	__metaclass__ = ColorMeta
-	def __init__(self, r = 0, g = 0, b = 0, a = 255):
+	def __init__(self, r=0, g=0, b=0, a=255):
 		"""
 		@params: float (0.0, 1.0) or int (0, 255)
 		"""

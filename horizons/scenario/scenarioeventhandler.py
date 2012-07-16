@@ -57,7 +57,7 @@ class ScenarioEventHandler(LivingObject):
 
 	PICKLE_PROTOCOL = 2
 
-	def __init__(self, session, scenariofile = None):
+	def __init__(self, session, scenariofile=None):
 		"""
 		@param session: Session instance
 		@param scenariofile: yaml file that describes the scenario

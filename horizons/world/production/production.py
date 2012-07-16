@@ -195,7 +195,7 @@ class Production(ChangeListener):
 	def is_paused(self):
 		return self._state == PRODUCTION.STATES.paused
 
-	def pause(self, pause = True):
+	def pause(self, pause=True):
 		self.log.debug("Production pause: %s", pause)
 		if not pause: # do unpause
 			# switch state
@@ -495,7 +495,7 @@ class ProgressProduction(Production):
 		super(ProgressProduction, self).__init__(**kwargs)
 		self.__init()
 
-	def __init(self, progress = 0):
+	def __init(self, progress=0):
 		self.progress = progress # float indicating current production progress
 
 	def save(self, db, owner_id):

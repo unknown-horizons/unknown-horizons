@@ -217,7 +217,7 @@ class AreaBuilder(WorldObject):
 		"""
 		return self.get_road_cost(self._get_road_to_builder(builder))
 
-	def make_builder(self, building_id, x, y, needs_collector, orientation = 0):
+	def make_builder(self, building_id, x, y, needs_collector, orientation=0):
 		"""
 		Return a Builder object containing the info.
 

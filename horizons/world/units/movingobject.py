@@ -91,7 +91,7 @@ class MovingObject(ComponentHolder, ConcreteObject):
 		"""Returns whether unit is currently moving"""
 		return self.__is_moving
 
-	def stop(self, callback = None):
+	def stop(self, callback=None):
 		"""Stops a unit with currently no possibility to continue the movement.
 		The unit actually stops moving when current move (to the next coord) is finished.
 		@param callback: a parameter supported by WeakMethodList. is executed immediately if unit isn't moving
@@ -112,8 +112,8 @@ class MovingObject(ComponentHolder, ConcreteObject):
 		# this case shouldn't happen, but no other action might be available (e.g. ships)
 		self._move_action = 'idle'
 
-	def move(self, destination, callback = None, destination_in_building = False, action='move',
-	         blocked_callback = None, path = None):
+	def move(self, destination, callback=None, destination_in_building=False, action='move',
+	         blocked_callback=None, path=None):
 		"""Moves unit to destination
 		@param destination: Point or Rect
 		@param callback: a parameter supported by WeakMethodList. Gets called when unit arrives.
@@ -153,7 +153,7 @@ class MovingObject(ComponentHolder, ConcreteObject):
 		self.move_callbacks.execute()
 
 	@decorators.make_constants()
-	def _move_tick(self, resume = False):
+	def _move_tick(self, resume=False):
 		"""Called by the scheduler, moves the unit one step for this tick.
 		"""
 		assert self._next_target is not None
@@ -245,7 +245,7 @@ class MovingObject(ComponentHolder, ConcreteObject):
 				Scheduler().add_new_object(self._conditional_callbacks[cond], self)
 				del self._conditional_callbacks[cond]
 
-	def teleport(self, destination, callback = None, destination_in_building = False):
+	def teleport(self, destination, callback=None, destination_in_building=False):
 		"""Like move, but nearly instantaneous"""
 		if hasattr(destination, "position"):
 			destination_coord = destination.position.center().to_tuple()

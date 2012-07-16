@@ -157,7 +157,7 @@ class ProductionBuilder(AreaBuilder):
 		self.__collector_area_cache = (self.last_change_id, collector_area)
 		return collector_area
 
-	def count_available_squares(self, size, max_num = None):
+	def count_available_squares(self, size, max_num=None):
 		"""
 		Count the number of available and usable (covered by collectors) size x size squares.
 
@@ -321,7 +321,7 @@ class ProductionBuilder(AreaBuilder):
 			return None
 		return builder
 
-	def make_builder(self, building_id, x, y, needs_collector, orientation = 0):
+	def make_builder(self, building_id, x, y, needs_collector, orientation=0):
 		"""Return a Builder object if it is allowed to be built at the location, otherwise return None (cached)."""
 		coords = (x, y)
 		key = (building_id, coords, needs_collector, orientation)

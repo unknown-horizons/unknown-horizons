@@ -35,7 +35,7 @@ class Bullet(ComponentHolder, WorldObject):
 	_object = None
 	owner = None
 
-	def __init__(self, image, source, dest, needed_ticks, session, offset = True, worldid = None):
+	def __init__(self, image, source, dest, needed_ticks, session, offset=True, worldid=None):
 		"""
 		@param image: path to file with bullet image
 		@param source: Point with starting position

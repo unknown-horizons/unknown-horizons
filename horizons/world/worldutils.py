@@ -155,7 +155,7 @@ def add_resource_deposits(world, resource_multiplier):
 				object_sum = world.session.random.random() * last_sum
 				pos = bisect.bisect_left(total_sum, object_sum, 0, len(total_sum) - 2)
 				x, y = locations[pos][1]
-				if object_class.check_build(world.session, Point(x, y), check_settlement = False):
+				if object_class.check_build(world.session, Point(x, y), check_settlement=False):
 					Build(object_class, x, y, locations[pos][2], 45 + world.session.random.randint(0, 3) * 90, ownerless = True)(issuer = None)
 					break
 
@@ -239,7 +239,7 @@ def add_nature_objects(world, natural_resource_multiplier):
 		for (x, y), tile in sorted(island.ground_map.iteritems()):
 			# add tree to every nth tile and an animal to one in every M trees
 			if world.session.random.randint(0, 2) == 0 and \
-			   Tree.check_build(world.session, tile, check_settlement = False):
+			   Tree.check_build(world.session, tile, check_settlement=False):
 				building = Build(Tree, x, y, island, 45 + world.session.random.randint(0, 3) * 90, ownerless = True)(issuer = None)
 				if world.session.random.randint(0, WILD_ANIMAL.POPUlATION_INIT_RATIO) == 0: # add animal to every nth tree
 					CreateUnit(island.worldid, UNITS.WILD_ANIMAL, x, y)(issuer = None)

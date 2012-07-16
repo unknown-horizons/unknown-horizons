@@ -31,7 +31,7 @@ class BuildingIndexer(object):
 	building that provides resource X in my range'.
 	"""
 
-	def __init__(self, radius, coords_list, random = None, buildings=None):
+	def __init__(self, radius, coords_list, random=None, buildings=None):
 		"""
 		Create a BuildingIndexer
 		@param radius: int, maximum required radius of the buildings

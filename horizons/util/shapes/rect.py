@@ -159,7 +159,7 @@ class Rect(object):
 		"""Returns list of all coordinates, that are in the Rect """
 		return [ (x, y) for x in xrange(self.left, self.right+1) for y in xrange(self.top, self.bottom+1) ]
 
-	def get_radius_coordinates(self, radius, include_self = False):
+	def get_radius_coordinates(self, radius, include_self=False):
 		"""Returns list of all coordinates (as tuples), that are in the radius
 		This is a generator.
 		@param include_self: whether to include coords in self"""

@@ -37,7 +37,7 @@ class AbstractPather(object):
 	"""Abstract Interface for pathfinding for use by Unit.
 	Use only subclasses!"""
 	log = logging.getLogger("world.pathfinding")
-	def __init__(self, unit, move_diagonal, session, make_target_walkable = True):
+	def __init__(self, unit, move_diagonal, session, make_target_walkable=True):
 		"""
 		@param unit: instance of unit, to which the pather belongs
 		@param move_diagonal: whether the unit may walk diagonally
@@ -89,8 +89,8 @@ class AbstractPather(object):
 				source = building
 		return source
 
-	def calc_path(self, destination, destination_in_building = False, check_only = False,
-	              source = None):
+	def calc_path(self, destination, destination_in_building=False, check_only=False,
+	              source=None):
 		"""Calculates a path to destination
 		@param destination: a destination supported by pathfinding
 		@param destination_in_building: bool, whether destination is in a building.
@@ -119,7 +119,7 @@ class AbstractPather(object):
 
 		return True
 
-	def move_on_path(self, path, source = None, destination_in_building = False):
+	def move_on_path(self, path, source=None, destination_in_building=False):
 		"""Start moving on a precalculated path.
 		@param path: return value of FindPath()()
 		"""

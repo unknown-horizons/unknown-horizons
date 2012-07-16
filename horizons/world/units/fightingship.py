@@ -41,7 +41,7 @@ class FightingShip(MovingWeaponHolder, Ship):
 		self.get_component(CommandableComponent).go(x, y)
 		self.stop_attack()
 
-	def fire_all_weapons(self, dest, rotate = True, bullet_delay = GAME_SPEED.TICKS_PER_SECOND):
+	def fire_all_weapons(self, dest, rotate=True, bullet_delay=GAME_SPEED.TICKS_PER_SECOND):
 		"""
 		Fire weapons at rotated coordinates
 		"""

@@ -57,7 +57,7 @@ class GroundUnit(Unit):
 		del self.session.world.ground_unit_map[self.position.to_tuple()]
 
 
-	def _move_tick(self, resume = False):
+	def _move_tick(self, resume=False):
 		del self.session.world.ground_unit_map[self.position.to_tuple()]
 
 		try:

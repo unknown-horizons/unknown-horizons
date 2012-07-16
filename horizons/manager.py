@@ -275,7 +275,7 @@ class MPCheckupHashManager(MPPacketmanager):
 			return True
 		return super(MPCheckupHashManager, self).is_tick_ready(tick)
 
-	def are_checkup_hash_values_equal(self, tick, cb_diff = None):
+	def are_checkup_hash_values_equal(self, tick, cb_diff=None):
 		"""
 		@param packages for tick
 		@param cb_diff: called in case hashes differ

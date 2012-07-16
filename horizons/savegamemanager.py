@@ -179,7 +179,7 @@ class SavegameManager(object):
 		return name
 
 	@classmethod
-	def delete_dispensable_savegames(cls, autosaves = False, quicksaves = False):
+	def delete_dispensable_savegames(cls, autosaves=False, quicksaves=False):
 		"""Delete savegames that are no longer needed
 		@param autosaves, quicksaves: Bool, set to true if this kind of saves should be cleaned
 		"""
@@ -276,13 +276,13 @@ class SavegameManager(object):
 		os.unlink(screenshot_filename)
 
 	@classmethod
-	def get_regular_saves(cls, include_displaynames = True):
+	def get_regular_saves(cls, include_displaynames=True):
 		"""Returns all savegames, that were saved via the ingame save dialog"""
 		cls.log.debug("Savegamemanager: regular saves from: %s", cls.savegame_dir)
 		return cls.__get_saves_from_dirs([cls.savegame_dir], include_displaynames, None, True)
 
 	@classmethod
-	def get_maps(cls, include_displaynames = True):
+	def get_maps(cls, include_displaynames=True):
 		cls.log.debug("Savegamemanager: get maps from %s", cls.maps_dir)
 		return cls.__get_saves_from_dirs([cls.maps_dir], include_displaynames, None, False)
 
@@ -295,31 +295,31 @@ class SavegameManager(object):
 		return os.path.join(cls.multiplayersave_dir, name + "." + cls.savegame_extension)
 
 	@classmethod
-	def get_saves(cls, include_displaynames = True):
+	def get_saves(cls, include_displaynames=True):
 		"""Returns all savegames"""
 		cls.log.debug("Savegamemanager: get saves from %s, %s, %s", cls.savegame_dir,
 		              cls.autosave_dir, cls.quicksave_dir)
 		return cls.__get_saves_from_dirs([cls.savegame_dir, cls.autosave_dir, cls.quicksave_dir], include_displaynames, None, True)
 
 	@classmethod
-	def get_multiplayersaves(cls, include_displaynames = True):
+	def get_multiplayersaves(cls, include_displaynames=True):
 		cls.log.debug("Savegamemanager: get saves from %s, %s, %s", cls.multiplayersave_dir)
 		return cls.__get_saves_from_dirs([cls.multiplayersave_dir], include_displaynames, None, True)
 
 	@classmethod
-	def get_quicksaves(cls, include_displaynames = True):
+	def get_quicksaves(cls, include_displaynames=True):
 		"""Returns all savegames, that were saved via quicksave"""
 		cls.log.debug("Savegamemanager: quicksaves from: %s", cls.quicksave_dir)
 		return cls.__get_saves_from_dirs([cls.quicksave_dir], include_displaynames, None, True)
 
 	@classmethod
-	def get_scenarios(cls, include_displaynames = True):
+	def get_scenarios(cls, include_displaynames=True):
 		"""Returns all scenarios"""
 		cls.log.debug("Savegamemanager: scenarios from: %s", cls.scenarios_dir)
 		return cls.__get_saves_from_dirs([cls.scenarios_dir], include_displaynames, cls.scenario_extension, False)
 
 	@classmethod
-	def get_available_scenarios(cls, include_displaynames = True, locales = False):
+	def get_available_scenarios(cls, include_displaynames=True, locales=False):
 		"""Returns available scenarios (depending on the campaign(s) status)"""
 		afiles = []
 		anames = []
@@ -404,7 +404,7 @@ class SavegameManager(object):
 		return {}
 
 	@classmethod
-	def get_campaigns(cls, include_displaynames = True, include_scenario_list = False, campaign_data = False):
+	def get_campaigns(cls, include_displaynames=True, include_scenario_list=False, campaign_data=False):
 		"""Returns all campaigns
 		@param include_displaynames: should we return the name of the campaign
 		@param include_scenario_list: should we return the list of scenarios in the campaign
@@ -428,7 +428,7 @@ class SavegameManager(object):
 		return (files, names, scenarios_lists, campaign_datas)
 
 	@classmethod
-	def get_campaign_info(cls, name = "", filename = ""):
+	def get_campaign_info(cls, name="", filename=""):
 		"""Return this campaign's data"""
 		assert (name or filename)
 		cfiles, cnames, cscenarios, cdatas = cls.get_campaigns(include_displaynames = True, include_scenario_list = True, campaign_data = True)
@@ -453,7 +453,7 @@ class SavegameManager(object):
 		return infos
 
 	@classmethod
-	def get_scenario_info(cls, name = "", filename = ""):
+	def get_scenario_info(cls, name="", filename=""):
 		"""Return this scenario data"""
 		sfiles, snames = cls.get_scenarios(include_displaynames = True)
 		if name:

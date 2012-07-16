@@ -36,7 +36,7 @@ class Tower(BuildableSingle, StationaryWeaponHolder, BasicBuilding):
 			for i in xrange(self.costs.get(weapon_type, 0)):
 				self.add_weapon_to_storage(weapon_type)
 
-	def fire_all_weapons(self, dest, rotate = True):
+	def fire_all_weapons(self, dest, rotate=True):
 		super(Tower, self).fire_all_weapons(dest, rotate)
 
 	def update_range(self, caller=None):

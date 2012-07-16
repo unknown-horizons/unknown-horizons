@@ -23,7 +23,7 @@
 import platform
 import os
 
-def find_enet_module(client = True):
+def find_enet_module(client=True):
 	# Try to find installed version first
 	try:
 		import enet

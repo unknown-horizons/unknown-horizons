@@ -30,7 +30,7 @@ __all__ = [
 ]
 
 class Address(object):
-	def __init__(self, address, port = None):
+	def __init__(self, address, port=None):
 		if isinstance(address, enet.Address):
 			self.host = address.host
 			self.port = address.port
@@ -59,7 +59,7 @@ class Address(object):
 #-----------------------------------------------------------------------------
 
 class Player(object):
-	def __init__(self, peer, sid, protocol = 0):
+	def __init__(self, peer, sid, protocol=0):
 		# pickle doesn't use all of these attributes
 		# for more detail check __getstate__()
 		self.peer     = peer
@@ -110,7 +110,7 @@ class Game(object):
 		Prepare = 1
 		Running = 2
 
-		def __init__(self, state = Open):
+		def __init__(self, state=Open):
 			self.state = state
 
 		def __str__(self):

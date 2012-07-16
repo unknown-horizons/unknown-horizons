@@ -204,7 +204,7 @@ class TradeRoute(ChangeListener):
 		# the ship was blocked while it was already moving so try again
 		self.move_to_next_route_warehouse(advance_waypoint = False)
 
-	def move_to_next_route_warehouse(self, advance_waypoint = True):
+	def move_to_next_route_warehouse(self, advance_waypoint=True):
 		next_destination = self.get_next_destination(advance_waypoint)
 		if next_destination == None:
 			return

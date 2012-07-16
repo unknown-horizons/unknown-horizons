@@ -295,12 +295,12 @@ def start_singleplayer(map_file, playername="Player", playercolor=None, is_scena
 	# for now just make it a bit easier for the AI
 	difficulty_level = {False: DifficultySettings.DEFAULT_LEVEL, True: DifficultySettings.EASY_LEVEL}
 	players = [{
-		'id' : 1,
-		'name' : playername,
-		'color' : playercolor,
-		'local' : True,
-		'ai' : human_ai,
-		'difficulty' : difficulty_level[bool(human_ai)],
+		'id': 1,
+		'name': playername,
+		'color': playercolor,
+		'local': True,
+		'ai': human_ai,
+		'difficulty': difficulty_level[bool(human_ai)],
 	}]
 
 	# add AI players with a distinct color; if none can be found then use black
@@ -324,9 +324,10 @@ def start_singleplayer(map_file, playername="Player", playercolor=None, is_scena
 
 	from horizons.scenario import InvalidScenarioFileFormat # would create import loop at top
 	try:
-		_modules.session.load(map_file, players, trader_enabled, pirate_enabled, natural_resource_multiplier,
-			is_scenario = is_scenario, campaign = campaign, force_player_id = force_player_id, disasters_enabled=disasters_enabled)
-	except InvalidScenarioFileFormat as e:
+		_modules.session.load(map_file, players, trader_enabled, pirate_enabled,
+			natural_resource_multiplier, is_scenario=is_scenario, campaign=campaign,
+			force_player_id=force_player_id, disasters_enabled=disasters_enabled)
+	except InvalidScenarioFileFormat:
 		raise
 	except Exception:
 		# don't catch errors when we should fail fast (used by tests)

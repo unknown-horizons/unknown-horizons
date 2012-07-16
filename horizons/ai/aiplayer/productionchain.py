@@ -130,7 +130,7 @@ class ProductionChainSubtreeChoice(object):
 		for option in self.options:
 			option.assign_identifier(self.identifier)
 
-	def __str__(self, level = 0):
+	def __str__(self, level=0):
 		result = '%sChoice between %d options: %.5f\n' % ('  ' * level, len(self.options), self.get_final_production_level())
 		for option in self.options:
 			result += option.__str__(level + 1)
@@ -244,7 +244,7 @@ class ProductionChainSubtree(object):
 		"""Return a boolean showing whether this subtree is currently available."""
 		return self.settlement_manager.owner.settler_level >= self.abstract_building.settler_level
 
-	def __str__(self, level = 0):
+	def __str__(self, level=0):
 		result = '%sProduce %d (ratio %.2f) in %s (%.5f, %.5f)\n' % ('  ' * level, self.resource_id,
 			self.production_ratio, self.abstract_building.name, self.get_root_production_level(), self.get_final_production_level())
 		for child in self.children:

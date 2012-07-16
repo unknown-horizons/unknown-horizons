@@ -329,7 +329,7 @@ class Island(BuildingOwner, WorldObject):
 			return self.building_indexers[BUILDINGS.TREE]
 		return None
 
-	def get_surrounding_tiles(self, where, radius = 1):
+	def get_surrounding_tiles(self, where, radius=1):
 		"""Returns tiles around point with specified radius.
 		@param point: instance of Point, or object with get_surrounding()"""
 		if hasattr(where, "get_surrounding"):

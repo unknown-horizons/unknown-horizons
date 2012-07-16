@@ -172,7 +172,7 @@ class View(ChangeListener):
 		map_point = self.session.view.cam.toMapCoordinates(screen_point, False)
 		self.session.view.center(map_point.x, map_point.y)
 
-	def zoom_out(self, track_cursor = False):
+	def zoom_out(self, track_cursor=False):
 		zoom = self.cam.getZoom() * VIEW.ZOOM_LEVELS_FACTOR
 		if(zoom < VIEW.ZOOM_MIN):
 			zoom = VIEW.ZOOM_MIN
@@ -180,7 +180,7 @@ class View(ChangeListener):
 			self._prepare_zoom_to_cursor(zoom)
 		self.set_zoom(zoom)
 
-	def zoom_in(self, track_cursor = False):
+	def zoom_in(self, track_cursor=False):
 		zoom = self.cam.getZoom() / VIEW.ZOOM_LEVELS_FACTOR
 		if(zoom > VIEW.ZOOM_MAX):
 			zoom = VIEW.ZOOM_MAX
