@@ -73,15 +73,6 @@ INSERT INTO "sounds_special" VALUES('success',  11);
 INSERT INTO "sounds_special" VALUES('refresh',  12);
 INSERT INTO "sounds_special" VALUES('click',    13);
 
-CREATE TABLE "collector_restrictions" (
-	"collector" INT,
-	"object" INT
-);
-INSERT INTO "collector_restrictions" VALUES(1000011,  4);
-INSERT INTO "collector_restrictions" VALUES(1000011,  5);
-INSERT INTO "collector_restrictions" VALUES(1000011, 21);
-INSERT INTO "collector_restrictions" VALUES(1000011, 32);
-
 CREATE TABLE "message" (
 	"id_string" TEXT NOT NULL,
 	"icon" INT NOT NULL,
