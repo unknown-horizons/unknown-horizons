@@ -8,7 +8,7 @@
 	are added. This happens in UH code. The height attribute specified here is used as base value.
 	If there are n res in one column, the container will have the size n * height.
 -->
-<Container size="240,44" position="25,110" name="production_line_container">
+<AutoResizeContainer size="240,44" position="25,110" name="production_line_container">
 	<VBox name="input_res" position="2,-06" />
 
 	<Icon image="content/gui/icons/templates/production/production_arrow.png" position="60,12"/>
@@ -26,4 +26,4 @@
 
 	<VBox name="output_res" position="157,-06" />
 
-</Container>
+</AutoResizeContainer>
