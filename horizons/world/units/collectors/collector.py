@@ -61,9 +61,9 @@ class Collector(Unit):
 	# is important, because every state must have a distinct number.
 	# Handling of subclass specific states is done by subclass.
 	states = Enum('idle', # doing nothing, waiting for job
-	              'moving_to_target', \
-	              'working', \
-	              'moving_home', \
+	              'moving_to_target',
+	              'working',
+	              'moving_home',
 	              'waiting_for_animal_to_stop', # herder: wait for job target to finish for collecting
 	              'waiting_for_herder', # animal: has stopped, now waits for herder
 	              'no_job_walking_randomly', # animal: like idle, but moving instead of standing still
@@ -75,12 +75,10 @@ class Collector(Unit):
 
 	# INIT/DESTRUCT
 
-	def __init__(self, x, y, slots = 1, start_hidden=True, **kwargs):
-		super(Collector, self).__init__(slots = slots, \
-		                                x = x, \
-		                                y = y, \
+	def __init__(self, x, y, slots=1, start_hidden=True, **kwargs):
+		super(Collector, self).__init__(slots=slots,
+		                                x=x, y=y,
 		                                **kwargs)
-
 
 		self.__init(self.states.idle, start_hidden)
 
@@ -127,7 +125,7 @@ class Collector(Unit):
 			        (current_callback, [ str(i) for i in Scheduler().get_classinst_calls(self).keys() ])
 			remaining_ticks = max(calls.values()[0], 1) # save a number > 0
 
-		db("INSERT INTO collector(rowid, state, remaining_ticks, start_hidden) VALUES(?, ?, ?, ?)", \
+		db("INSERT INTO collector(rowid, state, remaining_ticks, start_hidden) VALUES(?, ?, ?, ?)",
 		   self.worldid, self.state.index, remaining_ticks, self.start_hidden)
 
 		# save the job
@@ -136,7 +134,7 @@ class Collector(Unit):
 			# this is not in 3rd normal form since the object is saved multiple times but
 			# it preserves compatiblity with old savegames this way.
 			for entry in self.job.reslist:
-				db("INSERT INTO collector_job(collector, object, resource, amount) VALUES(?, ?, ?, ?)", \
+				db("INSERT INTO collector_job(collector, object, resource, amount) VALUES(?, ?, ?, ?)",
 				   self.worldid, obj_id, entry.res, entry.amount)
 
 	def load(self, db, worldid):
@@ -289,7 +287,7 @@ class Collector(Unit):
 			#self.log.debug("nojob: no collector inventory space")
 			return None
 
-		possible_res_amount = min(res_amount, home_inventory_free_space, \
+		possible_res_amount = min(res_amount, home_inventory_free_space,
 		                          collector_inventory_free_space)
 
 		target_inventory_full = (target.get_component(StorageComponent).inventory.get_free_space_for(res) == 0)
@@ -313,7 +311,7 @@ class Collector(Unit):
 
 		return None
 
-	def begin_current_job(self, job_location = None):
+	def begin_current_job(self, job_location=None):
 		"""Starts executing the current job by registering itself and moving to target.
 		@param job_location: Where collector should work. default: job.object.loading_area"""
 		self.log.debug("%s prepares job %s", self, self.job)
@@ -321,8 +319,8 @@ class Collector(Unit):
 		self.show()
 		if job_location is None:
 			job_location = self.job.object.loading_area
-		self.move(job_location, self.begin_working, \
-		          destination_in_building = self.destination_always_in_building, \
+		self.move(job_location, self.begin_working,
+		          destination_in_building = self.destination_always_in_building,
 		          blocked_callback = self.handle_path_to_job_blocked, path=self.job.path)
 		self.state = self.states.moving_to_target
 
@@ -336,7 +334,7 @@ class Collector(Unit):
 	def handle_path_to_job_blocked(self):
 		"""Called when we get blocked while trying to move to the job location.
 		The default action is to resume movement in a few seconds."""
-		self.log.debug("%s: got blocked while moving to the job location, trying again in %s ticks.", \
+		self.log.debug("%s: got blocked while moving to the job location, trying again in %s ticks.",
 			self, COLLECTORS.DEFAULT_WAIT_TICKS)
 		Scheduler().add_new_object(self.resume_movement, self, COLLECTORS.DEFAULT_WAIT_TICKS)
 

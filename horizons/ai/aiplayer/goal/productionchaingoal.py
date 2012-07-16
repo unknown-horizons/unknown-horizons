@@ -21,7 +21,7 @@
 
 from horizons.ai.aiplayer.goal.settlementgoal import SettlementGoal
 from horizons.ai.aiplayer.constants import BUILD_RESULT
-from horizons.constants import BUILDINGS, RES
+from horizons.constants import RES
 from horizons.util.python import decorators
 
 class ProductionChainGoal(SettlementGoal):
@@ -106,8 +106,9 @@ class ToolsGoal(ProductionChainGoal):
 
 	@property
 	def can_be_activated(self):
-		return super(ToolsGoal, self).can_be_activated and self.production_builder.have_deposit(RES.RAW_IRON) and \
-			self.settlement_manager.get_resource_production(RES.BRICKS) > 0
+		return super(ToolsGoal, self).can_be_activated \
+		   and self.production_builder.have_deposit(RES.RAW_IRON) \
+		   and self.settlement_manager.get_resource_production(RES.BRICKS) > 0
 
 class BoardsGoal(ProductionChainGoal):
 	def __init__(self, settlement_manager):

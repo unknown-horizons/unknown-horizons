@@ -61,7 +61,7 @@ class Callback(object):
 		return not self.__eq__(other)
 
 	def __hash__(self):
-		return hash((self.callback, self.args, \
+		return hash((self.callback, self.args,
 		             tuple(self.kwargs.iteritems()))) # to tuple, dict is unhashable
 
 	def __str__(self):

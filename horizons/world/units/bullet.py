@@ -82,7 +82,7 @@ class Bullet(ComponentHolder, WorldObject):
 				visual.addStaticImage(rotation, img.getHandle())
 
 
-		self._instance = session.view.layers[LAYERS.FIELDS].createInstance( \
+		self._instance = session.view.layers[LAYERS.FIELDS].createInstance(
 			self._object, fife.ModelCoordinate(int(self.x),int(self.y), 0), str(self.worldid))
 		fife.InstanceVisual.create(self._instance)
 		location = fife.Location(self._instance.getLocation().getLayer())
@@ -108,5 +108,5 @@ class Bullet(ComponentHolder, WorldObject):
 		Scheduler().add_new_object(self._move_tick, self, 1)
 
 	def save(self, db):
-		db("INSERT INTO bullet(worldid, startx, starty, destx, desty, speed, image) VALUES(?, ?, ?, ?, ?, ?, ?)", \
+		db("INSERT INTO bullet(worldid, startx, starty, destx, desty, speed, image) VALUES(?, ?, ?, ?, ?, ?, ?)",
 			self.worldid, self.x, self.y, self.dest_x, self.dest_y, self.needed_ticks, self.image)

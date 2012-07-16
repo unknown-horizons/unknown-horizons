@@ -93,7 +93,7 @@ class SpecialDomesticTradeManager(object):
 						continue # the source settlement doesn't have a surplus of the resource
 
 					price = self.session.db.get_res_value(resource_id)
-					tradable_amount = min(ship.get_component(StorageComponent).inventory.get_limit(resource_id), limit - destination_inventory[resource_id], \
+					tradable_amount = min(ship.get_component(StorageComponent).inventory.get_limit(resource_id), limit - destination_inventory[resource_id],
 						source_inventory[resource_id] - source_resource_manager.resource_requirements[resource_id])
 					options[(source_settlement_manager, destination_settlement_manager)].append((tradable_amount * price, tradable_amount, price, resource_id))
 

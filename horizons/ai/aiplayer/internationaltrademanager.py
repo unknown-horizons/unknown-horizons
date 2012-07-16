@@ -88,7 +88,7 @@ class InternationalTradeManager(object):
 					if my_inventory[resource_id] <= resource_manager.resource_requirements[resource_id]:
 						continue # my settlement is unable to sell the resource
 					price = int(self.session.db.get_res_value(resource_id) * TRADER.PRICE_MODIFIER_SELL)
-					tradable_amount = min(my_inventory[resource_id] - resource_manager.resource_requirements[resource_id], \
+					tradable_amount = min(my_inventory[resource_id] - resource_manager.resource_requirements[resource_id],
 						limit - settlement.get_component(StorageComponent).inventory[resource_id], ship.get_component(StorageComponent).inventory.get_limit(), settlement.owner.get_component(StorageComponent).inventory[RES.GOLD] // price)
 					options[(settlement, settlement_manager)].append((tradable_amount * price, tradable_amount, resource_id, True))
 
@@ -101,7 +101,7 @@ class InternationalTradeManager(object):
 					if my_inventory[resource_id] >= resource_manager.resource_requirements[resource_id]:
 						continue # my settlement doesn't want to buy the resource
 					price = int(self.session.db.get_res_value(resource_id) * TRADER.PRICE_MODIFIER_BUY)
-					tradable_amount = min(resource_manager.resource_requirements[resource_id] - my_inventory[resource_id], \
+					tradable_amount = min(resource_manager.resource_requirements[resource_id] - my_inventory[resource_id],
 						settlement.get_component(StorageComponent).inventory[resource_id] - limit, ship.get_component(StorageComponent).inventory.get_limit(), self.owner.get_component(StorageComponent).inventory[RES.GOLD] // price)
 					options[(settlement, settlement_manager)].append((tradable_amount * price, tradable_amount, resource_id, False))
 		if not options:

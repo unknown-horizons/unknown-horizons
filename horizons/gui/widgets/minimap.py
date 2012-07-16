@@ -179,7 +179,7 @@ class Minimap(object):
 		if not self.preview:
 			self._timed_update(force=True)
 			ExtScheduler().rem_all_classinst_calls(self)
-			ExtScheduler().add_new_object(self._timed_update, self, \
+			ExtScheduler().add_new_object(self._timed_update, self,
 			                              self.SHIP_DOT_UPDATE_INTERVAL, -1)
 
 	def dump_data(self):
@@ -236,9 +236,9 @@ class Minimap(object):
 
 		for i in xrange(0, 4):
 			self.minimap_image.rendertarget.addLine(self._get_render_name("cam"),
-			                                        minimap_corners_as_point[i], \
-												                      minimap_corners_as_point[ (i+1) % 4],
-			                                        *self.COLORS["cam"])
+			                                        minimap_corners_as_point[i],
+			                                        minimap_corners_as_point[ (i+1) % 4],
+			                                                         *self.COLORS["cam"])
 
 	@classmethod
 	def update(cls, tup):
@@ -257,8 +257,8 @@ class Minimap(object):
 		  minimap_point[0] + self.location.left,
 		  minimap_point[1] + self.location.top,
 		)
-		rect = Rect.init_from_topleft_and_size(minimap_point[0], minimap_point[1], \
-								                           int(round(1/world_to_minimap[0])) + 1, \
+		rect = Rect.init_from_topleft_and_size(minimap_point[0], minimap_point[1],
+								                           int(round(1/world_to_minimap[0])) + 1,
 								                           int(round(1/world_to_minimap[1])) + 1)
 		self._recalculate(rect)
 
@@ -266,12 +266,12 @@ class Minimap(object):
 		"""Configures icon so that clicks get mapped here.
 		The current gui requires, that the minimap is drawn behind an icon."""
 		self.overlay_icon = icon
-		icon.mapEvents({ \
-			icon.name + '/mousePressed' : self._on_click, \
-			icon.name + '/mouseDragged' : self._on_drag, \
-			icon.name + '/mouseEntered' : self._mouse_entered, \
-		  icon.name + '/mouseMoved' : self._mouse_moved,
-			icon.name + '/mouseExited' : self._mouse_exited \
+		icon.mapEvents({
+			icon.name + '/mousePressed' : self._on_click,
+			icon.name + '/mouseDragged' : self._on_drag,
+			icon.name + '/mouseEntered' : self._mouse_entered,
+			icon.name + '/mouseMoved' : self._mouse_moved,
+			icon.name + '/mouseExited' : self._mouse_exited,
 		})
 
 	def on_click(self, event, drag):
@@ -732,17 +732,17 @@ class Minimap(object):
 		@param tup: (x, y) as ints
 		@return tuple"""
 		pixel_per_coord_x, pixel_per_coord_y = self._world_to_minimap_ratio
-		return ( \
-			int(round(float(tup[0] - self.world.min_x)/pixel_per_coord_x))+self.location.left, \
-			int(round(float(tup[1] - self.world.min_y)/pixel_per_coord_y))+self.location.top \
+		return (
+			int(round(float(tup[0] - self.world.min_x)/pixel_per_coord_x))+self.location.left,
+			int(round(float(tup[1] - self.world.min_y)/pixel_per_coord_y))+self.location.top
 		)
 
 	def _minimap_coord_to_world_coord(self, tup):
 		"""Inverse to _world_coord_to_minimap_coord"""
 		pixel_per_coord_x, pixel_per_coord_y = self._world_to_minimap_ratio
-		return ( \
-			int(round( (tup[0] - self.location.left) * pixel_per_coord_x))+self.world.min_x, \
-			int(round( (tup[1] - self.location.top)* pixel_per_coord_y))+self.world.min_y \
+		return (
+			int(round( (tup[0] - self.location.left) * pixel_per_coord_x))+self.world.min_x,
+			int(round( (tup[1] - self.location.top)* pixel_per_coord_y))+self.world.min_y
 		)
 
 	def get_size(self):

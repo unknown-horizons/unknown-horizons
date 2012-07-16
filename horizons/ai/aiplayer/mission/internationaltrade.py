@@ -49,7 +49,7 @@ class InternationalTrade(ShipMission):
 
 	def save(self, db):
 		super(InternationalTrade, self).save(db)
-		db("INSERT INTO ai_mission_international_trade(rowid, settlement_manager, settlement, ship, bought_resource, sold_resource, state) VALUES(?, ?, ?, ?, ?, ?, ?)", \
+		db("INSERT INTO ai_mission_international_trade(rowid, settlement_manager, settlement, ship, bought_resource, sold_resource, state) VALUES(?, ?, ?, ?, ?, ?, ?)",
 			self.worldid, self.settlement_manager.worldid, self.settlement.worldid, self.ship.worldid, self.bought_resource, self.sold_resource, self.state.index)
 
 	@classmethod
@@ -86,11 +86,11 @@ class InternationalTrade(ShipMission):
 		else:
 			self.state = self.missionStates.moving_to_other_settlement
 			self._move_to_other_settlement()
-		self.log.info('%s started an international trade mission between %s and %s to sell %s and buy %s using %s', self, \
+		self.log.info('%s started an international trade mission between %s and %s to sell %s and buy %s using %s', self,
 			self.settlement_manager.settlement.get_component(NamedComponent).name, self.settlement.get_component(NamedComponent).name, self.sold_resource, self.bought_resource, self.ship)
 
 	def _move_to_my_settlement(self):
-		self._move_to_warehouse_area(self.settlement_manager.settlement.warehouse.position, Callback(self._reached_my_settlement), \
+		self._move_to_warehouse_area(self.settlement_manager.settlement.warehouse.position, Callback(self._reached_my_settlement),
 			Callback(self._move_to_my_settlement), 'Unable to move to my settlement (%s)' % self.settlement_manager.settlement.get_component(NamedComponent).name)
 
 	def _get_max_sellable_amount(self, available_amount):
@@ -120,7 +120,7 @@ class InternationalTrade(ShipMission):
 		self._move_to_other_settlement()
 
 	def _move_to_other_settlement(self):
-		self._move_to_warehouse_area(self.settlement.warehouse.position, Callback(self._reached_other_settlement), \
+		self._move_to_warehouse_area(self.settlement.warehouse.position, Callback(self._reached_other_settlement),
 			Callback(self._move_to_other_settlement), 'Unable to move to the other settlement (%s)' % self.settlement.get_component(NamedComponent).name)
 
 	def _get_max_buyable_amount(self):
@@ -161,7 +161,7 @@ class InternationalTrade(ShipMission):
 		self._return_to_my_settlement()
 
 	def _return_to_my_settlement(self):
-		self._move_to_warehouse_area(self.settlement_manager.settlement.warehouse.position, Callback(self._returned_to_my_settlement), \
+		self._move_to_warehouse_area(self.settlement_manager.settlement.warehouse.position, Callback(self._returned_to_my_settlement),
 			Callback(self._return_to_my_settlement), 'Unable to return to %s' % self.settlement_manager.settlement.get_component(NamedComponent).name)
 
 	def _returned_to_my_settlement(self):

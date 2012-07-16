@@ -58,15 +58,15 @@ class Builder(WorldObject):
 		self.ship = ship
 
 		check_settlement = ship is None
-		self.build_position = Entities.buildings[building_id].check_build(self.session, point, \
-			rotation = self.rotations[orientation], check_settlement = check_settlement, ship = ship, \
+		self.build_position = Entities.buildings[building_id].check_build(self.session, point,
+			rotation = self.rotations[orientation], check_settlement = check_settlement, ship = ship,
 			issuer = self.land_manager.owner)
 		self.position = self.build_position.position
 
 	def save(self, db):
 		super(Builder, self).save(db)
-		db("INSERT INTO ai_builder(rowid, building_type, x, y, orientation, ship) VALUES(?, ?, ?, ?, ?, ?)", \
-			self.worldid, self.building_id, self.point.x, self.point.y, self.orientation, \
+		db("INSERT INTO ai_builder(rowid, building_type, x, y, orientation, ship) VALUES(?, ?, ?, ?, ?, ?)",
+			self.worldid, self.building_id, self.point.x, self.point.y, self.orientation,
 			None if self.ship is None else self.ship.worldid)
 
 	@classmethod
@@ -103,8 +103,8 @@ class Builder(WorldObject):
 
 	def execute(self):
 		"""Build the building."""
-		cmd = Build(self.building_id, self.point.x, self.point.y, self.land_manager.island, \
-			self._get_rotation(), settlement = self.land_manager.settlement, \
+		cmd = Build(self.building_id, self.point.x, self.point.y, self.land_manager.island,
+			self._get_rotation(), settlement = self.land_manager.settlement,
 			ship = self.ship, tearset = self.build_position.tearset)
 		result = cmd(self.land_manager.owner)
 		#self.log.debug('%s.execute(): %s', self.__class__.__name__, result)
@@ -115,7 +115,7 @@ class Builder(WorldObject):
 		# the copy has to be made because Build.check_resources modifies it
 		extra_resources = copy.copy(extra_resources) if extra_resources is not None else {}
 		inventories = [self.land_manager.settlement, self.ship]
-		(enough_res, _) = Build.check_resources(extra_resources, \
+		(enough_res, _) = Build.check_resources(extra_resources,
 			Entities.buildings[self.building_id].costs, self.land_manager.owner, inventories)
 		return enough_res
 

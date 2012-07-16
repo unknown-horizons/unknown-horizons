@@ -63,7 +63,7 @@ class FisherEvaluator(BuildingEvaluator):
 		assert resource_id == RES.FOOD
 		if self.__production_level is None:
 			fishers_coords = [fisher.position.origin.to_tuple() for fisher in self.area_builder.owner.fishers]
-			self.__production_level = FisherSimulator.extra_productivity(self.area_builder.session, \
+			self.__production_level = FisherSimulator.extra_productivity(self.area_builder.session,
 				fishers_coords, self.builder.position.origin.to_tuple())
 		return self.__production_level
 

@@ -27,7 +27,6 @@ import horizons.main
 
 from horizons.extscheduler import ExtScheduler
 from horizons.gui.util import load_uh_widget
-from horizons.util import Callback
 
 class _Tooltip(object):
 	"""Base class for pychan widgets overloaded with tooltip functionality"""
@@ -108,14 +107,14 @@ class _Tooltip(object):
 			top_image = pychan.widgets.Icon(image='content/gui/images/background/widgets/tooltip_bg_top.png', position=(0, 0))
 			self.gui.addChild(top_image)
 			for i in xrange(0, line_count):
-				middle_image = pychan.widgets.Icon( \
+				middle_image = pychan.widgets.Icon(
 				        image='content/gui/images/background/widgets/tooltip_bg_middle.png',
-				        position=(top_image.position[0], \
+				        position=(top_image.position[0],
 				                  top_image.position[1] + self.SIZE_BG_TOP + self.LINE_HEIGHT * i))
 				self.gui.addChild(middle_image)
-			bottom_image = pychan.widgets.Icon( \
+			bottom_image = pychan.widgets.Icon(
 			        image='content/gui/images/background/widgets/tooltip_bg_bottom.png',
-			        position=(top_image.position[0], \
+			        position=(top_image.position[0],
 			                  top_image.position[1] + self.SIZE_BG_TOP + self.LINE_HEIGHT * line_count))
 			self.gui.addChild(bottom_image)
 			label = pychan.widgets.Label(text=u"", position=(10, 5))

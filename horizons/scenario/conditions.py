@@ -86,7 +86,7 @@ def player_gold_less(session, limit):
 @register(periodically=True)
 def settlement_balance_greater(session, limit):
 	"""Returns whether the balance of at least one player settlement is higher than *limit*."""
-	return any(settlement for settlement in _get_player_settlements(session) if \
+	return any(settlement for settlement in _get_player_settlements(session) if
 	           settlement.balance > limit)
 
 @register(periodically=True)
@@ -97,7 +97,7 @@ def player_balance_greater(session, limit):
 @register(periodically=True)
 def settlement_inhabitants_greater(session, limit):
 	"""Returns whether at least one player settlement has more than *limit* inhabitants."""
-	return any(settlement for settlement in _get_player_settlements(session) if \
+	return any(settlement for settlement in _get_player_settlements(session) if
 	           settlement.inhabitants > limit)
 
 @register(periodically=True)
@@ -129,7 +129,7 @@ def player_res_stored_less(session, resource, limit):
 def settlement_res_stored_greater(session, resource, limit):
 	"""Returns whether at least one player settlement has more than *limit*
 	of *resource* in its inventory."""
-	return any(settlement for settlement in _get_player_settlements(session) if \
+	return any(settlement for settlement in _get_player_settlements(session) if
 	           settlement.get_component(StorageComponent).inventory[resource] > limit)
 
 @register(periodically=True)
@@ -144,7 +144,7 @@ def player_total_earnings_greater(session, limit):
 @register(periodically=True)
 def settlement_produced_res_greater(session, resource, limit):
 	"""Returns whether more than *limit* resource have been produced in any player settlement."""
-	return any(settlement for settlement in _get_player_settlements(session) if \
+	return any(settlement for settlement in _get_player_settlements(session) if
 	           settlement.produced_res.get(resource, 0) > limit)
 
 @register(periodically=True)
@@ -157,14 +157,14 @@ def player_produced_res_greater(session, resource, limit):
 def buildings_connected_to_warehouse_gt(session, building_class, limit):
 	"""Checks whether more than *limit* of *building_class* type buildings are
 	connected to a warehouse or storage."""
-	return (_building_connected_to_any_of(session, building_class, \
+	return (_building_connected_to_any_of(session, building_class,
 	        BUILDINGS.WAREHOUSE, BUILDINGS.STORAGE) > limit )
 
 @register(periodically=True)
 def buildings_connected_to_warehouse_lt(session, building_class, limit):
 	"""Checks whether less than *limit* of *building_class* type buildings are
 	connected to a warehouse or storage."""
-	return (_building_connected_to_any_of(session, building_class, \
+	return (_building_connected_to_any_of(session, building_class,
 	        BUILDINGS.WAREHOUSE, BUILDINGS.STORAGE) < limit )
 
 @register(periodically=True)

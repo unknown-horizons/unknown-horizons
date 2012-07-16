@@ -557,7 +557,7 @@ class World(BuildingOwner, WorldObject):
 		for island in islands:
 			for settlement in island.settlements:
 				warehouse = settlement.warehouse
-				if (radius is None or position is None or \
+				if (radius is None or position is None or
 				    warehouse.position.distance(position) <= radius) and \
 				   (owner is None or warehouse.owner == owner or
 				    (include_tradeable and self.diplomacy.can_trade(warehouse.owner, owner))):

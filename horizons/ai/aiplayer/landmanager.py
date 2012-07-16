@@ -74,13 +74,13 @@ class LandManager(WorldObject):
 
 	def save(self, db):
 		super(LandManager, self).save(db)
-		db("INSERT INTO ai_land_manager(rowid, owner, island, feeder_island) VALUES(?, ?, ?, ?)", self.worldid, \
+		db("INSERT INTO ai_land_manager(rowid, owner, island, feeder_island) VALUES(?, ?, ?, ?)", self.worldid,
 			self.owner.worldid, self.island.worldid, self.feeder_island)
 		for (x, y) in self.production:
-			db("INSERT INTO ai_land_manager_coords(land_manager, x, y, purpose) VALUES(?, ?, ?, ?)", \
+			db("INSERT INTO ai_land_manager_coords(land_manager, x, y, purpose) VALUES(?, ?, ?, ?)",
 				self.worldid, x, y, self.purpose.production)
 		for (x, y) in self.village:
-			db("INSERT INTO ai_land_manager_coords(land_manager, x, y, purpose) VALUES(?, ?, ?, ?)", \
+			db("INSERT INTO ai_land_manager_coords(land_manager, x, y, purpose) VALUES(?, ?, ?, ?)",
 				self.worldid, x, y, self.purpose.village)
 
 	@classmethod

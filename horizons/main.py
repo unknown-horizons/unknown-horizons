@@ -100,7 +100,7 @@ def start(_command_line_arguments):
 	fife = Fife()
 
 	if debug: # also True if a specific module is logged (but not 'fife')
-		if not (command_line_arguments.debug_module \
+		if not (command_line_arguments.debug_module
 		        and 'fife' not in command_line_arguments.debug_module):
 			fife._log.lm.setLogToPrompt(True)
 		# After the next FIFE release, we should use this instead which is possible as of r3960:
@@ -135,7 +135,7 @@ def start(_command_line_arguments):
 	client_id = fife.get_uh_setting("ClientID")
 	if not client_id:
 		# We need a new client id
-		client_id = "".join("-" if c in (8, 13, 18, 23) else \
+		client_id = "".join("-" if c in (8, 13, 18, 23) else
 		                    random.choice("0123456789abcdef") for c in xrange(0, 36))
 		fife.set_uh_setting("ClientID", client_id)
 		fife.save_settings()
@@ -184,17 +184,17 @@ def start(_command_line_arguments):
 	elif command_line_arguments.start_random_map:
 		startup_worked = _start_random_map(command_line_arguments.ai_players, command_line_arguments.human_ai, force_player_id=command_line_arguments.force_player_id)
 	elif command_line_arguments.start_specific_random_map is not None:
-		startup_worked = _start_random_map(command_line_arguments.ai_players, command_line_arguments.human_ai, \
+		startup_worked = _start_random_map(command_line_arguments.ai_players, command_line_arguments.human_ai,
 			seed=command_line_arguments.start_specific_random_map, force_player_id=command_line_arguments.force_player_id)
 	elif command_line_arguments.start_map is not None:
-		startup_worked = _start_map(command_line_arguments.start_map, command_line_arguments.ai_players, \
+		startup_worked = _start_map(command_line_arguments.start_map, command_line_arguments.ai_players,
 			command_line_arguments.human_ai, force_player_id=command_line_arguments.force_player_id)
 	elif command_line_arguments.start_scenario is not None:
 		startup_worked = _start_map(command_line_arguments.start_scenario, 0, False, True, force_player_id=command_line_arguments.force_player_id)
 	elif command_line_arguments.start_campaign is not None:
 		startup_worked = _start_campaign(command_line_arguments.start_campaign, force_player_id=command_line_arguments.force_player_id)
 	elif command_line_arguments.load_map is not None:
-		startup_worked = _load_map(command_line_arguments.load_map, command_line_arguments.ai_players, \
+		startup_worked = _load_map(command_line_arguments.load_map, command_line_arguments.ai_players,
 			command_line_arguments.human_ai, command_line_arguments.force_player_id)
 	elif command_line_arguments.load_quicksave is not None:
 		startup_worked = _load_last_quicksave()
@@ -202,7 +202,7 @@ def start(_command_line_arguments):
 		tiny = [ i for i in SavegameManager.get_maps()[0] if 'tiny' in i ]
 		if not tiny:
 			tiny = SavegameManager.get_map()[0]
-		startup_worked = _start_map(tiny[0], ai_players=0, human_ai=False, trader_enabled=False, pirate_enabled=False, \
+		startup_worked = _start_map(tiny[0], ai_players=0, human_ai=False, trader_enabled=False, pirate_enabled=False,
 			force_player_id=command_line_arguments.force_player_id)
 		from development.stringpreviewwidget import StringPreviewWidget
 		__string_previewer = StringPreviewWidget(_modules.session)
@@ -324,7 +324,7 @@ def start_singleplayer(map_file, playername="Player", playercolor=None, is_scena
 
 	from horizons.scenario import InvalidScenarioFileFormat # would create import loop at top
 	try:
-		_modules.session.load(map_file, players, trader_enabled, pirate_enabled, natural_resource_multiplier, \
+		_modules.session.load(map_file, players, trader_enabled, pirate_enabled, natural_resource_multiplier,
 			is_scenario = is_scenario, campaign = campaign, force_player_id = force_player_id, disasters_enabled=disasters_enabled)
 	except InvalidScenarioFileFormat as e:
 		raise
@@ -395,8 +395,8 @@ def load_game(ai_players=0, human_ai=False, savegame=None, is_scenario=False, ca
 			return False # user aborted dialog
 	_modules.gui.show_loading_screen()
 #TODO
-	start_singleplayer(savegame, is_scenario=is_scenario, campaign=campaign, \
-		ai_players=ai_players, human_ai=human_ai, pirate_enabled=pirate_enabled, \
+	start_singleplayer(savegame, is_scenario=is_scenario, campaign=campaign,
+		ai_players=ai_players, human_ai=human_ai, pirate_enabled=pirate_enabled,
 		trader_enabled=trader_enabled, force_player_id=force_player_id)
 	return True
 
@@ -480,7 +480,7 @@ def _start_campaign(campaign_name, force_player_id=None):
 		# check if the user specified a file in the UH campaign dir
 		campaign_basename = os.path.basename( campaign_name )
 		path_in_campaign_dir = os.path.join(SavegameManager.campaigns_dir, campaign_basename)
-		if not (os.path.exists(path_in_campaign_dir) and \
+		if not (os.path.exists(path_in_campaign_dir) and
 		        os.path.samefile(campaign_name, path_in_campaign_dir)):
 			#xgettext:python-format
 			string = _("Due to technical reasons, the campaign file will be copied to the UH campaign directory ({path}).").format(path=SavegameManager.campaigns_dir)
@@ -577,10 +577,10 @@ def preload_game_data(lock):
 		from horizons.entities import Entities
 		log = logging.getLogger("preload")
 		mydb = _create_main_db() # create own db reader instance, since it's not thread-safe
-		preload_functions = [ ActionSetLoader.load, \
+		preload_functions = [ ActionSetLoader.load,
 		                      TileSetLoader.load,
-		                      Callback(Entities.load_grounds, mydb, load_now=True), \
-		                      Callback(Entities.load_buildings, mydb, load_now=True), \
+		                      Callback(Entities.load_grounds, mydb, load_now=True),
+		                      Callback(Entities.load_buildings, mydb, load_now=True),
 		                      Callback(Entities.load_units, load_now=True) ]
 		for f in preload_functions:
 			if not lock.acquire(False):

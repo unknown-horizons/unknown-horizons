@@ -112,7 +112,7 @@ class Inventory(pychan.widgets.Container):
 			else:
 				filled = (100 * amount) // self._inventory.get_limit(resid)
 
-			button = ImageFillStatusButton.init_for_res(self.db, resid, amount, \
+			button = ImageFillStatusButton.init_for_res(self.db, resid, amount,
 			                                            filled=filled, uncached=self.uncached)
 			button.button.name = "inventory_entry_%s" % index # required for gui tests
 			current_hbox.addChild(button)

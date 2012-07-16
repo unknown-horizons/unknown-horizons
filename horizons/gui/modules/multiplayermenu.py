@@ -18,10 +18,11 @@
 # Free Software Foundation, Inc.,
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
+
 import hashlib
 import logging
-import os.path
 import textwrap
+
 from fife.extensions import pychan
 
 from horizons.gui.modules import PlayerDataSelection
@@ -139,8 +140,8 @@ class MultiplayerMenu(object):
 		if not fatal:
 			self.show_popup(_("Error"), unicode(exception))
 		else:
-			self.show_popup(_("Fatal Network Error"), \
-		                 _("Something went wrong with the network:") + u'\n' + \
+			self.show_popup(_("Fatal Network Error"),
+		                 _("Something went wrong with the network:") + u'\n' +
 		                 unicode(exception) )
 			self.quit_session(force=True)
 

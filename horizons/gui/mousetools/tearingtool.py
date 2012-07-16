@@ -116,7 +116,7 @@ class TearingTool(NavigationTool):
 		if len(edges) == 1:
 			edges = (edges[0], edges[0])
 		elif len(edges) == 2:
-			edges = ((min(edges[0][0], edges[1][0]), min(edges[0][1], edges[1][1])), \
+			edges = ((min(edges[0][0], edges[1][0]), min(edges[0][1], edges[1][1])),
 					 (max(edges[0][0], edges[1][0]), max(edges[0][1], edges[1][1])))
 		else:
 			edges = None
@@ -137,7 +137,7 @@ class TearingTool(NavigationTool):
 							if b not in self.selected:
 								self.selected.append(b)
 			for i in self.selected:
-				self.session.view.renderer['InstanceRenderer'].addColored(i._instance, \
+				self.session.view.renderer['InstanceRenderer'].addColored(i._instance,
 				                                                          *self.tear_selection_color)
 		self.log.debug("TearingTool: mark done")
 

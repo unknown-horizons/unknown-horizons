@@ -198,7 +198,7 @@ class LimitedMoveStance(StanceComponent):
 		"""
 		Returns closest attackable unit in radius
 		"""
-		enemies = [u for u in self.session.world.get_health_instances(self.instance.position.center(), radius) \
+		enemies = [u for u in self.session.world.get_health_instances(self.instance.position.center(), radius)
 		           if self.session.world.diplomacy.are_enemies(u.owner, self.instance.owner)]
 
 		if not enemies:
@@ -290,7 +290,7 @@ class FleeStance(StanceComponent):
 		"""
 		Gets the closest unit that can fire to instance
 		"""
-		enemies = [u for u in self.session.world.get_health_instances(self.instance.position.center(), self.lookout_distance) \
+		enemies = [u for u in self.session.world.get_health_instances(self.instance.position.center(), self.lookout_distance)
 		           if self.session.world.diplomacy.are_enemies(u.owner, self.instance.owner) and hasattr(u, '_max_range')]
 
 		if not enemies:

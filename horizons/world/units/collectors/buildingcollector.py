@@ -68,14 +68,14 @@ class BuildingCollector(Collector):
 
 		# save home_building and creation tick
 		translated_creation_tick = self._creation_tick - current_tick + 1 #  pre-translate the tick number for the loading process
-		db("INSERT INTO building_collector(rowid, home_building, creation_tick) VALUES(?, ?, ?)", \
+		db("INSERT INTO building_collector(rowid, home_building, creation_tick) VALUES(?, ?, ?)",
 			 self.worldid, self.home_building.worldid if self.home_building is not None else None, translated_creation_tick)
 
 		# save job history
 		for tick, utilisation in self._job_history:
 				# pre-translate the tick number for the loading process
 			translated_tick = tick - current_tick + Scheduler.FIRST_TICK_ID
-			db("INSERT INTO building_collector_job_history(collector, tick, utilisation) VALUES(?, ?, ?)", \
+			db("INSERT INTO building_collector_job_history(collector, tick, utilisation) VALUES(?, ?, ?)",
 				 self.worldid, translated_tick, utilisation)
 
 	def load(self, db, worldid):
@@ -229,7 +229,7 @@ class BuildingCollector(Collector):
 		Overwrite in subclasses that need ranges around the pickup.
 		@param res: optional, only search for buildings that provide res"""
 		reach = RadiusRect(self.home_building.position, self.home_building.radius)
-		return self.home_building.island.get_providers_in_range(reach, reslist=reslist, \
+		return self.home_building.island.get_providers_in_range(reach, reslist=reslist,
 								                                            player=self.owner)
 
 	def handle_path_home_blocked(self):

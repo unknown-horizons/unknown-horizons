@@ -177,7 +177,7 @@ class BuySellTab(TabInterface):
 		@param res_id: int - resource id
 		@param slot: int - slot number of the slot that is to be set
 		"""
-		self.log.debug("BuySellTab add_resource() resid: %s; slot_id %s; value: %s", \
+		self.log.debug("BuySellTab add_resource() resid: %s; slot_id %s; value: %s",
 		                                          res_id,    slot_id,    value)
 
 		keep_hint = False

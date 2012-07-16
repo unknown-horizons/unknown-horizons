@@ -84,27 +84,27 @@ class SelectionTool(NavigationTool):
 			self.session.view.renderer['GenericRenderer'].removeAll(self.__class__._SELECTION_RECTANGLE_NAME)
 			if do_multi:
 				# draw a rectangle
-				a = fife.Point(min(self.select_begin[0], evt.getX()), \
+				a = fife.Point(min(self.select_begin[0], evt.getX()),
 											 min(self.select_begin[1], evt.getY()))
-				b = fife.Point(max(self.select_begin[0], evt.getX()), \
+				b = fife.Point(max(self.select_begin[0], evt.getX()),
 											 min(self.select_begin[1], evt.getY()))
-				c = fife.Point(max(self.select_begin[0], evt.getX()), \
+				c = fife.Point(max(self.select_begin[0], evt.getX()),
 											 max(self.select_begin[1], evt.getY()))
-				d = fife.Point(min(self.select_begin[0], evt.getX()), \
+				d = fife.Point(min(self.select_begin[0], evt.getX()),
 											 max(self.select_begin[1], evt.getY()))
-				self.session.view.renderer['GenericRenderer'].addLine(self.__class__._SELECTION_RECTANGLE_NAME, \
+				self.session.view.renderer['GenericRenderer'].addLine(self.__class__._SELECTION_RECTANGLE_NAME,
 				                                                      fife.RendererNode(a), fife.RendererNode(b), 200, 200, 200)
-				self.session.view.renderer['GenericRenderer'].addLine(self.__class__._SELECTION_RECTANGLE_NAME, \
+				self.session.view.renderer['GenericRenderer'].addLine(self.__class__._SELECTION_RECTANGLE_NAME,
 				                                                      fife.RendererNode(b), fife.RendererNode(c), 200, 200, 200)
-				self.session.view.renderer['GenericRenderer'].addLine(self.__class__._SELECTION_RECTANGLE_NAME, \
+				self.session.view.renderer['GenericRenderer'].addLine(self.__class__._SELECTION_RECTANGLE_NAME,
 				                                                      fife.RendererNode(d), fife.RendererNode(c), 200, 200, 200)
-				self.session.view.renderer['GenericRenderer'].addLine(self.__class__._SELECTION_RECTANGLE_NAME, \
+				self.session.view.renderer['GenericRenderer'].addLine(self.__class__._SELECTION_RECTANGLE_NAME,
 				                                                      fife.RendererNode(a), fife.RendererNode(d), 200, 200, 200)
 
 			instances = self.session.view.cam.getMatchingInstances(\
-				fife.Rect(min(self.select_begin[0], evt.getX()), \
-									min(self.select_begin[1], evt.getY()), \
-									abs(evt.getX() - self.select_begin[0]), \
+				fife.Rect(min(self.select_begin[0], evt.getX()),
+									min(self.select_begin[1], evt.getY()),
+									abs(evt.getX() - self.select_begin[0]),
 									abs(evt.getY() - self.select_begin[1])) if do_multi else fife.ScreenPoint(evt.getX(), evt.getY()),
 			  self.session.view.layers[LAYERS.OBJECTS],
 			  False) # False for accurate

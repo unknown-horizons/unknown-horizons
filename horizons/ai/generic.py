@@ -71,7 +71,7 @@ class GenericAI(Player):
 	def notify_unit_path_blocked(self, unit):
 		self.log.warning("%s %s: ship blocked", self.__class__.__name__, self.worldid)
 		# retry moving ship in 2 secs
-		Scheduler().add_new_object(Callback(self.ship_idle, unit), self, \
+		Scheduler().add_new_object(Callback(self.ship_idle, unit), self,
 		                           GAME_SPEED.TICKS_PER_SECOND * 2)
 
 	def end(self):

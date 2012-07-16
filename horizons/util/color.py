@@ -42,7 +42,7 @@ class ColorMeta(type):
 		"""Gets a color by name or id in the db"""
 		if key == 0:
 			return None
-		r, g, b = horizons.main.db('SELECT red, green, blue FROM colors WHERE name = ? OR id = ?', \
+		r, g, b = horizons.main.db('SELECT red, green, blue FROM colors WHERE name = ? OR id = ?',
 		                           key, key)[0]
 		c = Color(r, g, b)
 		return c

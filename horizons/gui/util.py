@@ -126,8 +126,8 @@ class LazyWidgetsDict(dict):
 		We do styling before setting headlines to the default headline style.
 		If you want your headlines to not be styled, rename them.
 		"""
-		self[widgetname] = load_uh_widget(widgetname+'.xml', \
-		                                  style=self.styles.get(widgetname),\
+		self[widgetname] = load_uh_widget(widgetname+'.xml',
+		                                  style=self.styles.get(widgetname),
 		                                  center_widget=self.center_widgets)
 
 	def reload(self, widgetname):

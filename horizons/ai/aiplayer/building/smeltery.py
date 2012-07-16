@@ -52,7 +52,7 @@ class SmelteryEvaluator(BuildingEvaluator):
 		distance_penalty = Entities.buildings[BUILDINGS.SMELTERY].radius * personality.distance_penalty
 
 		alignment = cls._get_alignment(area_builder, builder.position.tuple_iter())
-		distance = cls._weighted_distance(distance_to_iron_mine, [(personality.collector_distance_importance, distance_to_collector), \
+		distance = cls._weighted_distance(distance_to_iron_mine, [(personality.collector_distance_importance, distance_to_collector),
 			(personality.charcoal_burner_distance_importance, distance_to_charcoal_burner)], distance_penalty)
 		value = float(Entities.buildings[BUILDINGS.SMELTERY].radius) / distance + alignment * personality.alignment_importance
 		return SmelteryEvaluator(area_builder, builder, value)

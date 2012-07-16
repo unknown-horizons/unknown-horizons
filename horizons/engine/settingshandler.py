@@ -66,7 +66,7 @@ class SettingsHandler(object):
 		self._setting.createAndAddEntry(UH_MODULE, "CursorCenteredZoom", "cursor_centered_zoom")
 		self._setting.createAndAddEntry(UH_MODULE, "UninterruptedBuilding", "uninterrupted_building")
 		self._setting.createAndAddEntry(UH_MODULE, "AutoUnload", "auto_unload")
-		self._setting.createAndAddEntry(UH_MODULE, "MinimapRotation", "minimaprotation", \
+		self._setting.createAndAddEntry(UH_MODULE, "MinimapRotation", "minimaprotation",
 				                        applyfunction=update_minimap)
 
 		self._setting.createAndAddEntry(FIFE_MODULE, "BitsPerPixel", "screen_bpp",
@@ -97,7 +97,7 @@ class SettingsHandler(object):
 		self._setting.createAndAddEntry(FIFE_MODULE, "FrameLimit", "fps_rate",
 				                        initialdata=[30, 45, 60, 90, 120], requiresrestart=True)
 
-		self._setting.createAndAddEntry(FIFE_MODULE, "MouseSensitivity", "mousesensitivity", \
+		self._setting.createAndAddEntry(FIFE_MODULE, "MouseSensitivity", "mousesensitivity",
 				                        #read comment in set_mouse_sensitivity function about this
 				                        #applyfunction=self.set_mouse_sensitivity, \
 				                        requiresrestart=True)

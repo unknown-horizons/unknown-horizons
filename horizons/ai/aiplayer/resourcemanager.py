@@ -78,7 +78,7 @@ class ResourceManager(WorldObject):
 		for settlement_manager_id, reserved_storage in self.trade_storage.iteritems():
 			for resource_id, amount in reserved_storage.iteritems():
 				if amount > 1e-9:
-					db("INSERT INTO ai_resource_manager_trade_storage(resource_manager, settlement_manager, resource, amount) VALUES(?, ?, ?, ?)", \
+					db("INSERT INTO ai_resource_manager_trade_storage(resource_manager, settlement_manager, resource, amount) VALUES(?, ?, ?, ?)",
 					   self.worldid, settlement_manager_id, resource_id, amount)
 		for resource_id, amount in self.resource_requirements.iteritems():
 			db("INSERT INTO ai_resource_manager_requirement(resource_manager, resource, amount) VALUES(?, ?, ?)", self.worldid, resource_id, amount)
@@ -354,7 +354,7 @@ class SingleResourceManager(WorldObject):
 
 	def save(self, db, resource_manager_id):
 		super(SingleResourceManager, self).save(db)
-		db("INSERT INTO ai_single_resource_manager(rowid, resource_manager, resource_id, building_id, low_priority, available, total) VALUES(?, ?, ?, ?, ?, ?, ?)", \
+		db("INSERT INTO ai_single_resource_manager(rowid, resource_manager, resource_id, building_id, low_priority, available, total) VALUES(?, ?, ?, ?, ?, ?, ?)",
 		   self.worldid, resource_manager_id, self.resource_id, self.building_id, self.low_priority, self.available, self.total)
 		for identifier, (quota, priority) in self.quotas.iteritems():
 			db("INSERT INTO ai_single_resource_manager_quota(single_resource_manager, identifier, quota, priority) VALUES(?, ?, ?, ?)", self.worldid, identifier, quota, priority)

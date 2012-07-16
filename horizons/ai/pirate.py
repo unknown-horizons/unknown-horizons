@@ -130,7 +130,7 @@ class Pirate(GenericAI):
 
 		if not done:
 			ship = self.get_nearest_player_ship(pirate_ship)
-			if self.ships[pirate_ship] == self.shipStates.chasing_ship and (ship is None or \
+			if self.ships[pirate_ship] == self.shipStates.chasing_ship and (ship is None or
 					ship.position.distance(pirate_ship.position) <= self.caught_ship_radius):
 				# caught the ship, go home
 				try:

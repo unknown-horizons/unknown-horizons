@@ -46,7 +46,7 @@ class SurfaceTile(object):
 		self.object = None
 		self.session = session
 
-		self._instance = session.view.layers[self.layer].createInstance(self._object, \
+		self._instance = session.view.layers[self.layer].createInstance(self._object,
 				                                                        fife.ModelCoordinate(int(x), int(y), 0), "")
 		fife.InstanceVisual.create(self._instance)
 
@@ -146,8 +146,8 @@ class GroundClass(type):
 				action = cls._object.createAction(action_id+"_"+str(tile_set_id))
 				fife.ActionVisual.create(action)
 				for rotation in tile_sets[tile_set_id][action_id].iterkeys():
-					anim = horizons.main.fife.animationloader.loadResource( \
-						str(tile_set_id)+"+"+str(action_id)+"+"+ \
+					anim = horizons.main.fife.animationloader.loadResource(
+						str(tile_set_id)+"+"+str(action_id)+"+"+
 						str(rotation) + ':shift:center+0,bottom+8')
 					action.get2dGfxVisual().addAnimation(int(rotation), anim)
 					action.setDuration(anim.getDuration())

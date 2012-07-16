@@ -43,7 +43,7 @@ class SpecialDomesticTrade(ShipMission):
 
 	def save(self, db):
 		super(SpecialDomesticTrade, self).save(db)
-		db("INSERT INTO ai_mission_special_domestic_trade(rowid, source_settlement_manager, destination_settlement_manager, ship, state) VALUES(?, ?, ?, ?, ?)", \
+		db("INSERT INTO ai_mission_special_domestic_trade(rowid, source_settlement_manager, destination_settlement_manager, ship, state) VALUES(?, ?, ?, ?, ?)",
 			self.worldid, self.source_settlement_manager.worldid, self.destination_settlement_manager.worldid, self.ship.worldid, self.state.index)
 
 	@classmethod
@@ -71,11 +71,11 @@ class SpecialDomesticTrade(ShipMission):
 	def start(self):
 		self.state = self.missionStates.moving_to_source_settlement
 		self._move_to_source_settlement()
-		self.log.info('%s started a special domestic trade mission from %s to %s using %s', self, \
+		self.log.info('%s started a special domestic trade mission from %s to %s using %s', self,
 			self.source_settlement_manager.settlement.get_component(NamedComponent).name, self.destination_settlement_manager.settlement.get_component(NamedComponent).name, self.ship)
 
 	def _move_to_source_settlement(self):
-		self._move_to_warehouse_area(self.source_settlement_manager.settlement.warehouse.position, Callback(self._reached_source_settlement), \
+		self._move_to_warehouse_area(self.source_settlement_manager.settlement.warehouse.position, Callback(self._reached_source_settlement),
 			Callback(self._move_to_source_settlement), 'Unable to move to the source settlement (%s)' % self.source_settlement_manager.settlement.get_component(NamedComponent).name)
 
 	def _load_resources(self):
@@ -92,7 +92,7 @@ class SpecialDomesticTrade(ShipMission):
 				continue # the source settlement doesn't have a surplus of the resource
 
 			price = self.owner.session.db.get_res_value(resource_id)
-			tradable_amount = min(self.ship.get_component(StorageComponent).inventory.get_limit(resource_id), limit - destination_inventory[resource_id], \
+			tradable_amount = min(self.ship.get_component(StorageComponent).inventory.get_limit(resource_id), limit - destination_inventory[resource_id],
 				source_inventory[resource_id] - source_resource_manager.resource_requirements[resource_id])
 			options.append((tradable_amount * price, tradable_amount, resource_id))
 
@@ -113,7 +113,7 @@ class SpecialDomesticTrade(ShipMission):
 			self.report_failure('No resources to transport')
 
 	def _move_to_destination_settlement(self):
-		self._move_to_warehouse_area(self.destination_settlement_manager.settlement.warehouse.position, Callback(self._reached_destination_settlement), \
+		self._move_to_warehouse_area(self.destination_settlement_manager.settlement.warehouse.position, Callback(self._reached_destination_settlement),
 			Callback(self._move_to_destination_settlement), 'Unable to move to the destination settlement (%s)' % self.destination_settlement_manager.settlement.get_component(NamedComponent).name)
 
 	def _reached_destination_settlement(self):

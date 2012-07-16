@@ -117,7 +117,7 @@ class LogBook(PickBeltWidget):
 		db("INSERT INTO logbook(widgets) VALUES(?)", json.dumps(self._parameters))
 		for message in self._message_log:
 			db("INSERT INTO logbook_messages(message) VALUES(?)", message)
-		db("INSERT INTO metadata(name, value) VALUES(?, ?)", \
+		db("INSERT INTO metadata(name, value) VALUES(?, ?)",
 		   "logbook_cur_entry", self._cur_entry)
 
 	def load(self, db):

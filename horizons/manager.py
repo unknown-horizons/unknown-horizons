@@ -114,14 +114,14 @@ class MPManager(LivingObject):
 		# in case of lags this code would be executed multiple times for the same tick)
 		if self._last_local_commands_send_tick < tick:
 			self._last_local_commands_send_tick = tick
-			commandpacket = CommandPacket(self.calculate_execution_tick(tick), \
+			commandpacket = CommandPacket(self.calculate_execution_tick(tick),
 					self.session.world.player.worldid, self.gamecommands)
 			self.gamecommands = []
 			self.commandsmanager.add_packet(commandpacket)
 			self.log.debug("sending command for tick %d" % (commandpacket.tick))
 			self.networkinterface.send_to_all_clients(commandpacket)
 
-			self.localcommandsmanager.add_packet(CommandPacket(self.calculate_execution_tick(tick), \
+			self.localcommandsmanager.add_packet(CommandPacket(self.calculate_execution_tick(tick),
 					self.session.world.player.worldid, self.localcommands))
 			self.localcommands = []
 
@@ -129,7 +129,7 @@ class MPManager(LivingObject):
 			if self.calculate_hash_tick(tick) % self.HASH_EVAL_DISTANCE == 0:
 				hash_value = self.session.world.get_checkup_hash()
 				#self.log.debug("MPManager: Checkup hash for tick %s is %s", tick, hash_value)
-				checkuphashpacket = CheckupHashPacket(self.calculate_hash_tick(tick), \
+				checkuphashpacket = CheckupHashPacket(self.calculate_hash_tick(tick),
 			                              self.session.world.player.worldid, hash_value)
 				self.checkuphashmanager.add_packet(checkuphashpacket)
 				self.log.debug("sending checkuphash for tick %d" % (checkuphashpacket.tick))
@@ -286,9 +286,9 @@ class MPCheckupHashManager(MPPacketmanager):
 			if pkges[0].checkup_hash != pkg.checkup_hash:
 				if cb_diff is not None:
 					localplayerid = self.mpmanager.session.world.player.worldid
-					cb_diff("local" if pkges[0].player_id==localplayerid else "pl#%02d" % (pkges[0].player_id), \
-						pkges[0].checkup_hash, \
-						"local" if pkg.player_id==localplayerid else "pl#%02d" % (pkg.player_id), \
+					cb_diff("local" if pkges[0].player_id==localplayerid else "pl#%02d" % (pkges[0].player_id),
+						pkges[0].checkup_hash,
+						"local" if pkg.player_id==localplayerid else "pl#%02d" % (pkg.player_id),
 						pkg.checkup_hash)
 				return False
 		return True

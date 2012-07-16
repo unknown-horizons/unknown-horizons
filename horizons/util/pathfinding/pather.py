@@ -105,7 +105,7 @@ class AbstractPather(object):
 		# call algorithm
 		# to use a different pathfinding code, just change the following line
 		path = FindPath()(source, destination, self._get_path_nodes(),
-											self._get_blocked_coords(), self.move_diagonal, \
+											self._get_blocked_coords(), self.move_diagonal,
 											self.make_target_walkable)
 
 		if path is None:
@@ -152,7 +152,7 @@ class AbstractPather(object):
 			self.cur -= 1 # reset, since move is not possible
 			# try to calculate another path
 			if not self.calc_path(Point(*self.path[-1]), self.destination_in_building):
-				self.log.info("tile suddenly %s %s blocked for %s %s", \
+				self.log.info("tile suddenly %s %s blocked for %s %s",
 											self.path[self.cur][0], self.path[self.cur][1], self.unit, self.unit.worldid)
 				# no other path can be found. since the problem cannot be fixed here,
 				# we raise an exception
@@ -187,7 +187,7 @@ class AbstractPather(object):
 		# current position is calculated on loading through unit position
 		if self.path:
 			for step in xrange(len(self.path)):
-				db("INSERT INTO unit_path(`unit`, `index`, `x`, `y`) VALUES(?, ?, ?, ?)", \
+				db("INSERT INTO unit_path(`unit`, `index`, `x`, `y`) VALUES(?, ?, ?, ?)",
 					 unitid, step, self.path[step][0], self.path[step][1])
 
 	def load(self, db, worldid):
@@ -210,7 +210,7 @@ class AbstractPather(object):
 class ShipPather(AbstractPather):
 	"""Pather for ships (units that move on water tiles)"""
 	def __init__(self, unit, *args, **kwargs):
-		super(ShipPather, self).__init__(unit, move_diagonal=True,make_target_walkable = False, \
+		super(ShipPather, self).__init__(unit, move_diagonal=True,make_target_walkable = False,
 		                                 *args, **kwargs)
 
 	def _get_path_nodes(self):
@@ -255,7 +255,7 @@ class SoldierPather(AbstractPather):
 	"""Pather for units, that move absolutely freely (such as soldiers)
 	Their path list is maintained by IslandPathNodes"""
 	def __init__(self, unit, *args, **kwargs):
-		super(SoldierPather, self).__init__(unit, move_diagonal=True, \
+		super(SoldierPather, self).__init__(unit, move_diagonal=True,
 																				make_target_walkable=False, *args, **kwargs)
 
 	def _get_path_nodes(self):
@@ -273,7 +273,7 @@ class SoldierPather(AbstractPather):
 		if path_blocked:
 			# update list in island, so that new path calculations consider this obstacle
 			island.path_nodes.reset_tile_walkability(point)
-			self.log.debug("tile %s %s blocked for %s %s on island", point[0], point[1], \
+			self.log.debug("tile %s %s blocked for %s %s on island", point[0], point[1],
 										 self.unit, self.unit.worldid);
 			return path_blocked
 		else:

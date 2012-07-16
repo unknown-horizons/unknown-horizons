@@ -245,7 +245,7 @@ class ProductionChainSubtree(object):
 		return self.settlement_manager.owner.settler_level >= self.abstract_building.settler_level
 
 	def __str__(self, level = 0):
-		result = '%sProduce %d (ratio %.2f) in %s (%.5f, %.5f)\n' % ('  ' * level, self.resource_id, \
+		result = '%sProduce %d (ratio %.2f) in %s (%.5f, %.5f)\n' % ('  ' * level, self.resource_id,
 			self.production_ratio, self.abstract_building.name, self.get_root_production_level(), self.get_final_production_level())
 		for child in self.children:
 			result += child.__str__(level + 1)

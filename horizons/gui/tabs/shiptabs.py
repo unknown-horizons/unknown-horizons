@@ -53,9 +53,9 @@ class ShipOverviewTab(OverviewTab):
 				helptext = _("You already have a settlement on this island.")
 
 		if island_without_player_settlement_found:
-			events['found_settlement'] = Callback(self.instance.session.ingame_gui._build, \
-			                                     BUILDINGS.WAREHOUSE, \
-			                                     weakref.ref(self.instance) )
+			events['found_settlement'] = Callback(self.instance.session.ingame_gui._build,
+			                                      BUILDINGS.WAREHOUSE,
+			                                      weakref.ref(self.instance) )
 			self.widget.child_finder('found_settlement_bg').set_active()
 			self.widget.child_finder('found_settlement').set_active()
 			self.widget.child_finder('found_settlement').helptext = _("Build settlement")

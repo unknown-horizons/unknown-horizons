@@ -173,7 +173,7 @@ class AreaBuilder(WorldObject):
 		destination_coords = set(self.iter_possible_road_coords(loading_area, builder.position))
 		beacon = Rect.init_from_borders(loading_area.left - 1, loading_area.top - 1, loading_area.right + 1, loading_area.bottom + 1)
 
-		return RoadPlanner()(self.owner.personality_manager.get('RoadPlanner'), collector_coords, \
+		return RoadPlanner()(self.owner.personality_manager.get('RoadPlanner'), collector_coords,
 			destination_coords, beacon, self.get_path_nodes(), blocked_coords = blocked_coords)
 
 	def build_road(self, path):

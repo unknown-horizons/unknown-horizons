@@ -112,7 +112,7 @@ class MovingObject(ComponentHolder, ConcreteObject):
 		# this case shouldn't happen, but no other action might be available (e.g. ships)
 		self._move_action = 'idle'
 
-	def move(self, destination, callback = None, destination_in_building = False, action='move', \
+	def move(self, destination, callback = None, destination_in_building = False, action='move',
 	         blocked_callback = None, path = None):
 		"""Moves unit to destination
 		@param destination: Point or Rect
@@ -125,7 +125,7 @@ class MovingObject(ComponentHolder, ConcreteObject):
 			# calculate the path
 			move_possible = self.path.calc_path(destination, destination_in_building)
 
-			self.log.debug("%s: move to %s; possible: %s; is_moving: %s", self, \
+			self.log.debug("%s: move to %s; possible: %s; is_moving: %s", self,
 			               destination, move_possible, self.is_moving())
 
 			if not move_possible:
@@ -207,7 +207,7 @@ class MovingObject(ComponentHolder, ConcreteObject):
 					# technically, the ship doesn't move, but it is in the process of moving,
 					# as it will continue soon in general. Needed in border cases for add_move_callback
 					self.__is_moving = True
-					Scheduler().add_new_object(self._move_tick, self, \
+					Scheduler().add_new_object(self._move_tick, self,
 					                           GAME_SPEED.TICKS_PER_SECOND * 2)
 				self.log.debug("Unit %s: path is blocked, no way around", self)
 				return
@@ -230,7 +230,7 @@ class MovingObject(ComponentHolder, ConcreteObject):
 		UnitClass.ensure_action_loaded(self._action_set_id, self._move_action) # lazy load move action
 
 		# it's safe to use location here (thisown is 0, set by swig, and setLocation uses reference)
-		self._instance.move(self._move_action+"_"+str(self._action_set_id), self._fife_location, \
+		self._instance.move(self._move_action+"_"+str(self._action_set_id), self._fife_location,
 												float(self.session.timer.get_ticks(1)) / move_time[0])
 		# coords per sec
 

@@ -43,7 +43,7 @@ class FoundSettlement(ShipMission):
 
 	def save(self, db):
 		super(FoundSettlement, self).save(db)
-		db("INSERT INTO ai_mission_found_settlement(rowid, land_manager, ship, warehouse_builder, state) VALUES(?, ?, ?, ?, ?)", \
+		db("INSERT INTO ai_mission_found_settlement(rowid, land_manager, ship, warehouse_builder, state) VALUES(?, ?, ?, ?, ?)",
 			self.worldid, self.land_manager.worldid, self.ship.worldid, self.warehouse_location.worldid, self.state.index)
 		assert isinstance(self.warehouse_location, Builder)
 		self.warehouse_location.save(db)
@@ -77,7 +77,7 @@ class FoundSettlement(ShipMission):
 			self.report_failure('No possible warehouse location')
 			return
 
-		self._move_to_warehouse_area(self.warehouse_location.position, Callback(self._reached_destination_area), \
+		self._move_to_warehouse_area(self.warehouse_location.position, Callback(self._reached_destination_area),
 			Callback(self._move_to_destination_area), 'Move not possible')
 
 	def _reached_destination_area(self):

@@ -47,7 +47,7 @@ class WeakMethod(object):
 		if isinstance(other, WeakMethod):
 			# check also if either instance is None or else if instances are equal
 			return self.function == other.function and \
-						 (other.instance is None if self.instance is None else \
+						 (other.instance is None if self.instance is None else
 							self.instance() == other.instance())
 		elif callable(other):
 			return self == WeakMethod(other)

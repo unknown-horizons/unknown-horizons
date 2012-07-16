@@ -140,7 +140,7 @@ class WildAnimal(CollectorAnimal, Collector):
 	def save(self, db):
 		super(WildAnimal, self).save(db)
 		# save members
-		db("INSERT INTO wildanimal(rowid, health, can_reproduce) VALUES(?, ?, ?)", \
+		db("INSERT INTO wildanimal(rowid, health, can_reproduce) VALUES(?, ?, ?)",
 			 self.worldid, self.health, int(self.can_reproduce))
 		# set island as owner
 		db("UPDATE unit SET owner = ? WHERE rowid = ?", self.home_island.worldid, self.worldid)
@@ -150,7 +150,7 @@ class WildAnimal(CollectorAnimal, Collector):
 			calls = Scheduler().get_classinst_calls(self, self.handle_no_possible_job)
 			assert(len(calls) == 1), 'calls: %s' % calls
 			remaining_ticks = max(calls.values()[0], 1) # we have to save a number > 0
-			db("UPDATE collector SET remaining_ticks = ? WHERE rowid = ?", \
+			db("UPDATE collector SET remaining_ticks = ? WHERE rowid = ?",
 				 remaining_ticks, self.worldid)
 
 	def load(self, db, worldid):
@@ -251,7 +251,7 @@ class WildAnimal(CollectorAnimal, Collector):
 
 		self.log.debug("%s REPRODUCING", self)
 		# create offspring
-		CreateUnit(self.owner.worldid, self.id, self.position.x, self.position.y, \
+		CreateUnit(self.owner.worldid, self.id, self.position.x, self.position.y,
 		           can_reproduce = self.next_clone_can_reproduce())(issuer=None)
 		# reset own resources
 		for res in self.get_consumed_resources():
@@ -275,7 +275,7 @@ class WildAnimal(CollectorAnimal, Collector):
 		super(WildAnimal, self).cancel(continue_action=continue_action)
 
 	def __str__(self):
-		return "%s(health=%s)" % (super(WildAnimal, self).__str__(), \
+		return "%s(health=%s)" % (super(WildAnimal, self).__str__(),
 															self.health if hasattr(self, 'health') else None)
 
 
@@ -288,7 +288,7 @@ class FarmAnimal(CollectorAnimal, BuildingCollector):
 	grazingTime = 2
 
 	def __init__(self, home_building, start_hidden=False, **kwargs):
-		super(FarmAnimal, self).__init__(home_building = home_building, \
+		super(FarmAnimal, self).__init__(home_building = home_building,
 																 start_hidden = start_hidden, **kwargs)
 
 	def register_at_home_building(self, unregister=False):

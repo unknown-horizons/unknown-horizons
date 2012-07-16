@@ -56,7 +56,7 @@ class Production(ChangeListener):
 	keep_original_prod_line = False
 
 	## INIT/DESTRUCT
-	def __init__(self, inventory, owner_inventory, prod_id, prod_data, \
+	def __init__(self, inventory, owner_inventory, prod_id, prod_data,
 	             start_finished=False, load=False, **kwargs):
 		"""
 		@param inventory: interface to the world, take res from here and put output back there
@@ -111,15 +111,17 @@ class Production(ChangeListener):
 		# use a number > 0 for ticks
 		if remaining_ticks < 1:
 			remaining_ticks = 1
-		db('INSERT INTO production(rowid, state, prod_line_id, remaining_ticks, _pause_old_state, creation_tick, owner) VALUES(?, ?, ?, ?, ?, ?, ?)', \
-		     None, self._state.index, self._prod_line.id, remaining_ticks, \
-			 None if self._pause_old_state is None else self._pause_old_state.index, translated_creation_tick, owner_id)
+		db('INSERT INTO production(rowid, state, prod_line_id, remaining_ticks, \
+		      _pause_old_state, creation_tick, owner) VALUES(?, ?, ?, ?, ?, ?, ?)',
+		         None, self._state.index, self._prod_line.id, remaining_ticks, 
+		         None if self._pause_old_state is None else self._pause_old_state.index,
+			    translated_creation_tick, owner_id)
 
 		# save state history
 		for tick, state in self._state_history:
 				# pre-translate the tick number for the loading process
 			translated_tick = tick - current_tick + 1
-			db("INSERT INTO production_state_history(production, tick, state, object_id) VALUES(?, ?, ?, ?)", \
+			db("INSERT INTO production_state_history(production, tick, state, object_id) VALUES(?, ?, ?, ?)",
 				 self.prod_id, translated_tick, state, owner_id)
 
 	def load(self, db, worldid):
@@ -201,14 +203,14 @@ class Production(ChangeListener):
 			self._pause_old_state = None
 
 			# apply state
-			if self._state in (PRODUCTION.STATES.waiting_for_res, \
+			if self._state in (PRODUCTION.STATES.waiting_for_res,
 												 PRODUCTION.STATES.inventory_full):
 				# just restore watching
 				self._add_listeners(check_now=True)
 
 			elif self._state == PRODUCTION.STATES.producing:
 				# restore scheduler call
-				Scheduler().add_new_object(self._get_producing_callback(), self, \
+				Scheduler().add_new_object(self._get_producing_callback(), self,
 																   self._pause_remaining_ticks)
 			else:
 				assert False, 'Unhandled production state: %s' % self._pause_old_state
@@ -217,7 +219,7 @@ class Production(ChangeListener):
 			self._pause_old_state = self._state
 			self._state = PRODUCTION.STATES.paused
 
-			if self._pause_old_state in (PRODUCTION.STATES.waiting_for_res, \
+			if self._pause_old_state in (PRODUCTION.STATES.waiting_for_res,
 												           PRODUCTION.STATES.inventory_full):
 				self._remove_listeners()
 			elif self._pause_old_state == PRODUCTION.STATES.producing:

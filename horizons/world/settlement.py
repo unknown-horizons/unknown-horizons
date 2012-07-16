@@ -106,7 +106,7 @@ class Settlement(ComponentHolder, WorldObject, ChangeListener, ResourceHandler):
 	@property
 	def cumulative_taxes(self):
 		"""Return sum of all taxes payed in this settlement in 1 tax round"""
-		return sum([building.last_tax_payed for building in self.buildings if \
+		return sum([building.last_tax_payed for building in self.buildings if
 								hasattr(building, 'last_tax_payed')])
 
 	@property
@@ -132,10 +132,10 @@ class Settlement(ComponentHolder, WorldObject, ChangeListener, ResourceHandler):
 		db("INSERT INTO settlement (rowid, island, owner) VALUES(?, ?, ?)",
 			self.worldid, islandid, self.owner.worldid)
 		for res, amount in self.produced_res.iteritems():
-			db("INSERT INTO settlement_produced_res (settlement, res, amount) VALUES(?, ?, ?)", \
+			db("INSERT INTO settlement_produced_res (settlement, res, amount) VALUES(?, ?, ?)",
 			   self.worldid, res, amount)
 		for level in xrange(TIER.CURRENT_MAX + 1):
-			db("INSERT INTO settlement_level_properties (settlement, level, upgrading_allowed, tax_setting) VALUES(?, ?, ?, ?)", \
+			db("INSERT INTO settlement_level_properties (settlement, level, upgrading_allowed, tax_setting) VALUES(?, ?, ?, ?)",
 				self.worldid, level, self.upgrade_permissions[level], self.tax_settings[level])
 
 		# dump ground data via json, it's orders of magnitude faster than sqlite

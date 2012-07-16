@@ -142,12 +142,12 @@ class SettlementFounder(object):
 
 	def have_starting_resources(self, ship, settlement):
 		"""Returns a boolean showing whether we have enough resources to found a new normal settlement."""
-		return self._have_settlement_starting_resources(ship, settlement, self.personality.min_new_island_gold, \
+		return self._have_settlement_starting_resources(ship, settlement, self.personality.min_new_island_gold,
 				                                        {RES.BOARDS: self.personality.min_new_island_boards, RES.FOOD: self.personality.min_new_island_food, RES.TOOLS: self.personality.min_new_island_tools})
 
 	def have_feeder_island_starting_resources(self, ship, settlement):
 		"""Returns a boolean showing whether we have enough resources to found a new feeder island."""
-		return self._have_settlement_starting_resources(ship, settlement, self.personality.min_new_feeder_island_gold, \
+		return self._have_settlement_starting_resources(ship, settlement, self.personality.min_new_feeder_island_gold,
 				                                        {RES.BOARDS: self.personality.min_new_island_boards, RES.TOOLS: self.personality.min_new_island_tools})
 
 	def _prepare_foundation_ship(self, settlement_manager, ship, feeder_island):

@@ -89,7 +89,7 @@ class SettlementManager(WorldObject):
 		self.__init_goals()
 
 		if not self.feeder_island:
-			self._set_taxes_and_permissions(self.personality.initial_sailor_taxes, self.personality.initial_pioneer_taxes, \
+			self._set_taxes_and_permissions(self.personality.initial_sailor_taxes, self.personality.initial_pioneer_taxes,
 				self.personality.initial_citizen_taxes, self.personality.initial_settler_taxes, self.personality.initial_sailor_upgrades, \
 				self.personality.initial_pioneer_upgrades, self.personality.initial_settler_upgrades)
 
@@ -104,8 +104,8 @@ class SettlementManager(WorldObject):
 
 		# create a production chain for every building material, settler consumed resource, and resources that have to be imported from feeder islands
 		self.production_chain = {}
-		for resource_id in [RES.COMMUNITY, RES.BOARDS, RES.FOOD, RES.TEXTILE, RES.FAITH, \
-						RES.EDUCATION, RES.GET_TOGETHER, RES.BRICKS, RES.TOOLS, RES.LIQUOR, \
+		for resource_id in [RES.COMMUNITY, RES.BOARDS, RES.FOOD, RES.TEXTILE, RES.FAITH,
+						RES.EDUCATION, RES.GET_TOGETHER, RES.BRICKS, RES.TOOLS, RES.LIQUOR,
 						RES.TOBACCO_PRODUCTS, RES.SALT]:
 			self.production_chain[resource_id] = ProductionChain.create(self, resource_id)
 
@@ -147,7 +147,7 @@ class SettlementManager(WorldObject):
 
 	def save(self, db):
 		super(SettlementManager, self).save(db)
-		db("INSERT INTO ai_settlement_manager(rowid, land_manager) VALUES(?, ?)", \
+		db("INSERT INTO ai_settlement_manager(rowid, land_manager) VALUES(?, ?)",
 			self.worldid, self.land_manager.worldid)
 
 		self.village_builder.save(db)
@@ -224,7 +224,7 @@ class SettlementManager(WorldObject):
 		sailor_upgrades = getattr(self.personality, '%s_sailor_upgrades' % prefix)
 		pioneer_upgrades = getattr(self.personality, '%s_pioneer_upgrades' % prefix)
 		settler_upgrades = getattr(self.personality, '%s_settler_upgrades' % prefix)
-		self._set_taxes_and_permissions(sailor_taxes, pioneer_taxes, settler_taxes, citizen_taxes, \
+		self._set_taxes_and_permissions(sailor_taxes, pioneer_taxes, settler_taxes, citizen_taxes,
 			sailor_upgrades, pioneer_upgrades, settler_upgrades)
 
 	def can_provide_resources(self):
@@ -339,15 +339,15 @@ class SettlementManager(WorldObject):
 		self.resource_manager.finish_tick()
 
 	def _start_general_tick(self):
-		self.log.info('%s food production             %.5f / %.5f', self, self.get_resource_production(RES.FOOD), \
+		self.log.info('%s food production             %.5f / %.5f', self, self.get_resource_production(RES.FOOD),
 			self.get_resource_production_requirement(RES.FOOD))
-		self.log.info('%s textile production          %.5f / %.5f', self, self.get_resource_production(RES.TEXTILE), \
+		self.log.info('%s textile production          %.5f / %.5f', self, self.get_resource_production(RES.TEXTILE),
 			self.get_resource_production_requirement(RES.TEXTILE))
-		self.log.info('%s get-together production     %.5f / %.5f', self, self.get_resource_production(RES.GET_TOGETHER), \
+		self.log.info('%s get-together production     %.5f / %.5f', self, self.get_resource_production(RES.GET_TOGETHER),
 			self.get_resource_production_requirement(RES.GET_TOGETHER))
-		self.log.info('%s salt production             %.5f / %.5f', self, self.get_resource_production(RES.SALT), \
+		self.log.info('%s salt production             %.5f / %.5f', self, self.get_resource_production(RES.SALT),
 			self.get_resource_production_requirement(RES.SALT))
-		self.log.info('%s tobacco products production %.5f / %.5f', self, self.get_resource_production(RES.TOBACCO_PRODUCTS), \
+		self.log.info('%s tobacco products production %.5f / %.5f', self, self.get_resource_production(RES.TOBACCO_PRODUCTS),
 			self.get_resource_production_requirement(RES.TOBACCO_PRODUCTS))
 		self.production_builder.manage_production()
 		self.trade_manager.refresh()

@@ -148,7 +148,7 @@ class TradeManager(WorldObject):
 			if actual_amount <= 0:
 				continue # TODO: consider unloading the resources if there is more than needed
 			any_transferred = True
-			self.log.info('Transfer %d of %d to %s for a journey from %s to %s, total amount %d', actual_amount, \
+			self.log.info('Transfer %d of %d to %s for a journey from %s to %s, total amount %d', actual_amount,
 				resource_id, ship, self.settlement_manager.settlement.get_component(NamedComponent).name, destination_settlement_manager.settlement.get_component(NamedComponent).name, amount)
 			old_amount = self.settlement_manager.settlement.get_component(StorageComponent).inventory[resource_id]
 			mission.move_resource(ship, self.settlement_manager.settlement, resource_id, -actual_amount)
@@ -178,9 +178,9 @@ class TradeManager(WorldObject):
 					total_amount += available_amount
 			ships_needed = int(max(math.ceil(num_resources / float(ship_resource_slots)), math.ceil(total_amount / float(ship_capacity))))
 			if ships_needed > self.ships_sent[settlement_manager.worldid]:
-				self.log.info('have %d ships, need %d ships, %d resource types, %d total amount', \
+				self.log.info('have %d ships, need %d ships, %d resource types, %d total amount',
 					self.ships_sent[settlement_manager.worldid], ships_needed, num_resources, total_amount)
-				options.append((total_amount - ship_capacity * self.ships_sent[settlement_manager.worldid], \
+				options.append((total_amount - ship_capacity * self.ships_sent[settlement_manager.worldid],
 					num_resources - ship_resource_slots * self.ships_sent[settlement_manager.worldid], settlement_manager.worldid))
 		return None if not options else WorldObject.get_object_by_id(max(options)[2])
 
@@ -203,7 +203,7 @@ class TradeManager(WorldObject):
 		self.ships_sent[source_settlement_manager.worldid] += 1
 
 	def __str__(self):
-		result = 'TradeManager(%s, %s)' % (self.settlement_manager.settlement.get_component(NamedComponent).name if hasattr(self.settlement_manager, 'settlement') else 'unknown', \
+		result = 'TradeManager(%s, %s)' % (self.settlement_manager.settlement.get_component(NamedComponent).name if hasattr(self.settlement_manager, 'settlement') else 'unknown',
 			self.worldid if hasattr(self, 'worldid') else 'none')
 		for resource_manager in self.data.itervalues():
 			result += '\n' + resource_manager.__str__()
@@ -231,13 +231,13 @@ class SingleResourceTradeManager(WorldObject):
 
 	def save(self, db, trade_manager_id):
 		super(SingleResourceTradeManager, self).save(db)
-		db("INSERT INTO ai_single_resource_trade_manager(rowid, trade_manager, resource_id, available, total) VALUES(?, ?, ?, ?, ?)", \
+		db("INSERT INTO ai_single_resource_trade_manager(rowid, trade_manager, resource_id, available, total) VALUES(?, ?, ?, ?, ?)",
 			self.worldid, trade_manager_id, self.resource_id, self.available, self.total)
 		for identifier, quota in self.quotas.iteritems():
-			db("INSERT INTO ai_single_resource_trade_manager_quota(single_resource_trade_manager, identifier, quota) VALUES(?, ?, ?)", \
+			db("INSERT INTO ai_single_resource_trade_manager_quota(single_resource_trade_manager, identifier, quota) VALUES(?, ?, ?)",
 				self.worldid, identifier, quota)
 		for settlement_manager_id, amount in self.partners.iteritems():
-			db("INSERT INTO ai_single_resource_trade_manager_partner(single_resource_trade_manager, settlement_manager, amount) VALUES(?, ?, ?)", \
+			db("INSERT INTO ai_single_resource_trade_manager_partner(single_resource_trade_manager, settlement_manager, amount) VALUES(?, ?, ?)",
 				self.worldid, settlement_manager_id, amount)
 
 	def _load(self, db, settlement_manager, worldid):

@@ -62,7 +62,7 @@ class Point(object):
 		return ((self.x - other[0]) ** 2 + (self.y - other[1]) ** 2) ** 0.5
 
 	def distance_to_rect(self, other):
-		return ((max(other.left - self.x, 0, self.x - other.right) ** 2) + \
+		return ((max(other.left - self.x, 0, self.x - other.right) ** 2) +
 						(max(other.top - self.y, 0, self.y - other.bottom) ** 2)) ** 0.5
 
 	def distance_to_circle(self, other):

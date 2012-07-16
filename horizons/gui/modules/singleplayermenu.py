@@ -176,7 +176,7 @@ class SingleplayerMenu(object):
 							else:
 								this_locale = locale
 							#check if selected map's file ends with .yaml
-							if self._get_selected_map().find('.yaml') == -1:
+							if '.yaml' not in self._get_selected_map():
 								new_map_name = self._get_selected_map() + '_' + \
 									       this_locale + '.' + \
 									       SavegameManager.scenario_extension
@@ -184,9 +184,9 @@ class SingleplayerMenu(object):
 							#to remove locale postfix from selected_map's name
 							else:
 								#get current locale to split current map file name
-								current_locale = yamlcache.YamlCache.get_file(self._get_selected_map(), \
+								current_locale = yamlcache.YamlCache.get_file(self._get_selected_map(),
 													       game_data=True)['locale']
-								new_map_name = self._get_selected_map()[:self._get_selected_map().\
+								new_map_name = self._get_selected_map()[:self._get_selected_map().
 									       find('_' + current_locale)] + '_' + \
 									       this_locale + '.' + \
 									       SavegameManager.scenario_extension
@@ -525,7 +525,7 @@ class SingleplayerMenu(object):
 		"""Shows a popup complaining about invalid scenario file.
 		@param exception: Something that str() will convert to an error message"""
 		print "Error: ", unicode(str(exception))
-		self.show_error_popup(_("Invalid scenario file"), \
+		self.show_error_popup(_("Invalid scenario file"),
 								          description=_("The selected file is not a valid scenario file."),
 								          details=_("Error message:") + u' ' + unicode(str(exception)),
 								          advice=_("Please report this to the author."))

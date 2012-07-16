@@ -337,7 +337,7 @@ class Gui(SingleplayerMenu, MultiplayerMenu):
 
 		self.current.distributeInitialData({'savegamelist' : map_file_display})
 		self.current.distributeData({'savegamelist' : -1}) # Don't select anything by default
-		cb = Callback.ChainedCallbacks(Gui._create_show_savegame_details(self.current, map_files, 'savegamelist'), \
+		cb = Callback.ChainedCallbacks(Gui._create_show_savegame_details(self.current, map_files, 'savegamelist'),
 		                               tmp_selected_changed)
 		cb() # Refresh data on start
 		self.current.findChild(name="savegamelist").mapEvents({

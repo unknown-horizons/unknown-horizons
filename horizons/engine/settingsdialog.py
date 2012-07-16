@@ -83,7 +83,7 @@ class SettingsDialog(Setting):
 		msg = _("Restoring the default settings will delete all changes to the settings you made so far.") + \
 			u" " + _("Do you want to continue?")
 		try:
-			confirmed = horizons.main._modules.gui.show_popup(title, msg, \
+			confirmed = horizons.main._modules.gui.show_popup(title, msg,
 						                                      show_cancel_button=True)
 		except AttributeError: #no gui available, called by e.g. cmd line param
 			confirmed = True

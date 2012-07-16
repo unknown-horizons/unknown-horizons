@@ -112,7 +112,7 @@ def change_language(language=None):
 			# English is not shipped as .mo file, thus if English is
 			# selected we use NullTranslations to get English output.
 			fallback = (language == 'en')
-			trans = gettext.translation('unknown-horizons', find_available_languages()[language], \
+			trans = gettext.translation('unknown-horizons', find_available_languages()[language],
 										languages=[language], fallback=fallback)
 			trans.install(unicode=True, names=['ngettext',])
 		except IOError:

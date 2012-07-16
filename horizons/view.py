@@ -53,10 +53,10 @@ class View(ChangeListener):
 			self.layers.append(self.map.createLayer(str(i), cellgrid))
 			self.layers[i].setPathingStrategy(fife.CELL_EDGES_ONLY)
 
-		self.cam = self.map.addCamera("main", self.layers[len(self.layers) - 1], \
-		                               fife.Rect(0, 0, \
-		                                         horizons.main.fife.engine_settings.getScreenWidth(), \
-		                                         horizons.main.fife.engine_settings.getScreenHeight()) \
+		self.cam = self.map.addCamera("main", self.layers[len(self.layers) - 1],
+		                               fife.Rect(0, 0,
+		                                         horizons.main.fife.engine_settings.getScreenWidth(),
+		                                         horizons.main.fife.engine_settings.getScreenHeight())
 		                               )
 		self.cam.setCellImageDimensions(*VIEW.CELL_IMAGE_DIMENSIONS)
 		self.cam.setRotation(VIEW.ROTATION)
@@ -65,8 +65,8 @@ class View(ChangeListener):
 
 		self.cam.resetRenderers()
 		self.renderer = {}
-		for r in ('InstanceRenderer', 'GridRenderer', \
-		          'CellSelectionRenderer', 'BlockingInfoRenderer', 'FloatingTextRenderer', \
+		for r in ('InstanceRenderer', 'GridRenderer',
+		          'CellSelectionRenderer', 'BlockingInfoRenderer', 'FloatingTextRenderer',
 		          'QuadTreeRenderer', 'CoordinateRenderer', 'GenericRenderer'):
 			self.renderer[r] = getattr(fife, r).getInstance(self.cam) if hasattr(fife, r) else self.cam.getRenderer(r)
 			self.renderer[r].clearActiveLayers()
@@ -117,8 +117,8 @@ class View(ChangeListener):
 			self.time_last_autoscroll = time.time()
 			return
 		t = time.time()
-		self.scroll( \
-		  (self._autoscroll[0]+self._autoscroll_keys[0]) * GAME_SPEED.TICKS_PER_SECOND * (t - self.time_last_autoscroll), \
+		self.scroll(
+		  (self._autoscroll[0]+self._autoscroll_keys[0]) * GAME_SPEED.TICKS_PER_SECOND * (t - self.time_last_autoscroll),
 		  (self._autoscroll[1]+self._autoscroll_keys[1]) * GAME_SPEED.TICKS_PER_SECOND * (t - self.time_last_autoscroll))
 		self.time_last_autoscroll = t
 		self._changed()
@@ -219,12 +219,12 @@ class View(ChangeListener):
 		"""Returns the coords of what is displayed on the screen as Rect"""
 		coords = self.cam.getLocationRef().getLayerCoordinates()
 		cell_dim = self.cam.getCellImageDimensions()
-		screen_width_as_coords = (horizons.main.fife.engine_settings.getScreenWidth()/cell_dim.x + 1, \
+		screen_width_as_coords = (horizons.main.fife.engine_settings.getScreenWidth()/cell_dim.x + 1,
 		                          horizons.main.fife.engine_settings.getScreenHeight()/cell_dim.y + 1)
 		zoom = self.get_zoom()
 		screen_width_as_coords = (int(screen_width_as_coords[0] / zoom) ,
 		                          int(screen_width_as_coords[1] / zoom))
-		return Rect.init_from_topleft_and_size(coords.x - (screen_width_as_coords[0]/2), \
+		return Rect.init_from_topleft_and_size(coords.x - (screen_width_as_coords[0]/2),
 		                                       coords.y - (screen_width_as_coords[1]/2),
 		                                       *screen_width_as_coords)
 

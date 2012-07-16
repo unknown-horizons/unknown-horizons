@@ -262,7 +262,7 @@ class WeaponHolder(object):
 		Executes every few seconds, doing movement depending on the stance.
 		Static WeaponHolders are aggressive, attacking all enemies that are in range
 		"""
-		enemies = [u for u in self.session.world.get_health_instances(self.position.center(), self._max_range) \
+		enemies = [u for u in self.session.world.get_health_instances(self.position.center(), self._max_range)
 			if self.session.world.diplomacy.are_enemies(u.owner, self.owner)]
 
 		self.log.debug("%s stance tick, found enemies: %s", self, [str(i) for i in enemies])

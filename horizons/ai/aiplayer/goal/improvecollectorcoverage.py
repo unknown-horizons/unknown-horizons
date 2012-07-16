@@ -72,7 +72,7 @@ class ImproveCollectorCoverageGoal(SettlementGoal):
 		pos = building.loading_area
 		beacon = Rect.init_from_borders(pos.left - 1, pos.top - 1, pos.right + 1, pos.bottom + 1)
 
-		path = RoadPlanner()(self.owner.personality_manager.get('RoadPlanner'), collector_coords, \
+		path = RoadPlanner()(self.owner.personality_manager.get('RoadPlanner'), collector_coords,
 			destination_coords, beacon, self.production_builder.get_path_nodes())
 		if path is None:
 			return BUILD_RESULT.IMPOSSIBLE
@@ -111,7 +111,7 @@ class ImproveCollectorCoverageGoal(SettlementGoal):
 			result = self._build_extra_road_connection(building, collector_building)
 			if result == BUILD_RESULT.OK:
 				self.production_builder.last_collector_improvement_road = current_tick
-				self.log.info('%s connected %s at %d, %d with %s at %d, %d', self, building.name, building.position.origin.x, \
+				self.log.info('%s connected %s at %d, %d with %s at %d, %d', self, building.name, building.position.origin.x,
 					building.position.origin.y, collector_building.name, collector_building.position.origin.x, collector_building.position.origin.y)
 			return result
 		self.log.info('%s found no good way to connect buildings that need more collectors to existing collector buildings', self)

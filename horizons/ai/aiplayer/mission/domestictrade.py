@@ -40,7 +40,7 @@ class DomesticTrade(ShipMission):
 
 	def save(self, db):
 		super(DomesticTrade, self).save(db)
-		db("INSERT INTO ai_mission_domestic_trade(rowid, source_settlement_manager, destination_settlement_manager, ship, state) VALUES(?, ?, ?, ?, ?)", \
+		db("INSERT INTO ai_mission_domestic_trade(rowid, source_settlement_manager, destination_settlement_manager, ship, state) VALUES(?, ?, ?, ?, ?)",
 			self.worldid, self.source_settlement_manager.worldid, self.destination_settlement_manager.worldid, self.ship.worldid, self.state.index)
 
 	@classmethod
@@ -70,7 +70,7 @@ class DomesticTrade(ShipMission):
 		self._move_to_source_warehouse_area()
 
 	def _move_to_source_warehouse_area(self):
-		self._move_to_warehouse_area(self.source_settlement_manager.settlement.warehouse.position, Callback(self._reached_source_warehouse_area), \
+		self._move_to_warehouse_area(self.source_settlement_manager.settlement.warehouse.position, Callback(self._reached_source_warehouse_area),
 			Callback(self._move_to_source_warehouse_area), 'First move not possible')
 
 	def _reached_source_warehouse_area(self):
@@ -83,7 +83,7 @@ class DomesticTrade(ShipMission):
 			self.report_failure('No need for the ship at the source warehouse')
 
 	def _move_to_destination_warehouse_area(self):
-		self._move_to_warehouse_area(self.destination_settlement_manager.settlement.warehouse.position, Callback(self._reached_destination_warehouse_area), \
+		self._move_to_warehouse_area(self.destination_settlement_manager.settlement.warehouse.position, Callback(self._reached_destination_warehouse_area),
 			Callback(self._move_to_destination_warehouse_area), 'Second move not possible')
 
 	def _reached_destination_warehouse_area(self):

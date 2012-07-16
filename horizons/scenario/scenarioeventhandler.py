@@ -82,7 +82,7 @@ class ScenarioEventHandler(LivingObject):
 
 	def start(self):
 		# Add the check_events method to the scheduler to be checked every few seconds
-		Scheduler().add_new_object(self._scheduled_check, self, \
+		Scheduler().add_new_object(self._scheduled_check, self,
 				                   run_in = Scheduler().get_ticks(self.CHECK_CONDITIONS_INTERVAL), loops = -1)
 
 	def sleep(self, ticks):
@@ -109,7 +109,7 @@ class ScenarioEventHandler(LivingObject):
 		if self.inited: # only save in case we have data applied
 			db("INSERT INTO metadata(name, value) VALUES(?, ?)", "scenario_events", self.to_yaml())
 		for key, value in self._scenario_variables.iteritems():
-			db("INSERT INTO scenario_variables(key, value) VALUES(?, ?)", key, \
+			db("INSERT INTO scenario_variables(key, value) VALUES(?, ?)", key,
 			   json.dumps(value))
 
 	def load(self, db):
@@ -261,7 +261,7 @@ class _Event(object):
 	def to_yaml(self):
 		"""Returns yaml representation of self"""
 		return '{ actions: [ %s ] , conditions: [ %s ]  }' % \
-			   (', '.join(action.to_yaml() for action in self.actions), \
+			   (', '.join(action.to_yaml() for action in self.actions),
 				', '.join(cond.to_yaml() for cond in self.conditions))
 
 

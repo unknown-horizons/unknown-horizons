@@ -27,7 +27,6 @@ from horizons.world.units.movingobject import MovingObject
 from horizons.util import Point, WorldObject, WeakMethod, decorators, Callback
 from horizons.constants import LAYERS
 from horizons.component.healthcomponent import HealthComponent
-from horizons.component.storagecomponent import StorageComponent
 from horizons.extscheduler import ExtScheduler
 from horizons.world.resourcehandler import ResourceTransferHandler
 
@@ -53,7 +52,7 @@ class Unit(MovingObject, ResourceTransferHandler):
 		self.InstanceActionListener.onInstanceActionFrame = lambda *args : None
 		self.InstanceActionListener.thisown = 0 # fife will claim ownership of this
 
-		self._instance = self.session.view.layers[LAYERS.OBJECTS].createInstance( \
+		self._instance = self.session.view.layers[LAYERS.OBJECTS].createInstance(
 			self.__class__._object, fife.ModelCoordinate(int(x), int(y), 0), str(self.worldid))
 		fife.InstanceVisual.create(self._instance)
 		location = fife.Location(self._instance.getLocation().getLayer())
@@ -83,8 +82,8 @@ class Unit(MovingObject, ResourceTransferHandler):
 		@param action: string representing the action that is finished.
 		"""
 		location = fife.Location(self._instance.getLocation().getLayer())
-		location.setExactLayerCoordinates(fife.ExactModelCoordinate( \
-			self.position.x + self.position.x - self.last_position.x, \
+		location.setExactLayerCoordinates(fife.ExactModelCoordinate(
+			self.position.x + self.position.x - self.last_position.x,
 			self.position.y + self.position.y - self.last_position.y, 0))
 		if action.getId() != ('move_' + self._action_set_id):
 			self.act(self._action, self._instance.getFacingLocation(), True)
@@ -137,17 +136,17 @@ class Unit(MovingObject, ResourceTransferHandler):
 
 		if health != 0: # draw healthy part of health bar
 			renderer.addQuad(render_name,
-			                fife.RendererNode(self._instance, fife.Point(-width/2, y_pos - height)), \
-			                fife.RendererNode(self._instance, fife.Point(-width/2, y_pos)), \
-			                mid_node_down, \
-			                mid_node_up, \
+			                fife.RendererNode(self._instance, fife.Point(-width/2, y_pos - height)),
+			                fife.RendererNode(self._instance, fife.Point(-width/2, y_pos)),
+			                mid_node_down,
+			                mid_node_up,
 			                0, 255, 0)
 		if health != max_health: # draw damaged part
 			renderer.addQuad(render_name,
-			                 mid_node_up, \
-			                 mid_node_down, \
-			                 fife.RendererNode(self._instance, fife.Point(width/2, y_pos)), \
-			                 fife.RendererNode(self._instance, fife.Point(width/2, y_pos - height)), \
+			                 mid_node_up,
+			                 mid_node_down,
+			                 fife.RendererNode(self._instance, fife.Point(width/2, y_pos)),
+			                 fife.RendererNode(self._instance, fife.Point(width/2, y_pos - height)),
 			                 255, 0, 0)
 
 	def hide(self):
@@ -164,8 +163,7 @@ class Unit(MovingObject, ResourceTransferHandler):
 
 		owner_id = 0 if self.owner is None else self.owner.worldid
 		db("INSERT INTO unit (rowid, type, x, y, owner) VALUES(?, ?, ?, ?, ?)",
-			self.worldid, self.__class__.id, self.position.x, self.position.y, \
-					owner_id)
+			self.worldid, self.__class__.id, self.position.x, self.position.y, owner_id)
 
 	def load(self, db, worldid):
 		super(Unit, self).load(db, worldid)

@@ -237,8 +237,8 @@ class SelectableBuildingComponent(SelectableComponent):
 			for building in buildings:
 				building.get_component(SelectableComponent).set_selection_outline()
 
-			coords = set( coord for \
-			              building in buildings for \
+			coords = set( coord for
+			              building in buildings for
 			              coord in building.position.get_radius_coordinates(building.radius, include_self=True) )
 
 			for coord in coords:

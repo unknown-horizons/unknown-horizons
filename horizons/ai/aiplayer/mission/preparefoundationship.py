@@ -43,7 +43,7 @@ class PrepareFoundationShip(ShipMission):
 
 	def save(self, db):
 		super(PrepareFoundationShip, self).save(db)
-		db("INSERT INTO ai_mission_prepare_foundation_ship(rowid, settlement_manager, ship, feeder_island, state) VALUES(?, ?, ?, ?, ?)", \
+		db("INSERT INTO ai_mission_prepare_foundation_ship(rowid, settlement_manager, ship, feeder_island, state) VALUES(?, ?, ?, ?, ?)",
 			self.worldid, self.settlement_manager.worldid, self.ship.worldid, self.feeder_island, self.state.index)
 
 	@classmethod
@@ -58,7 +58,7 @@ class PrepareFoundationShip(ShipMission):
 		self.warehouse = self.settlement_manager.settlement.warehouse
 		self.feeder_island = db_result[2]
 		self.state = self.missionStates[db_result[3]]
-		super(PrepareFoundationShip, self).load(db, worldid, success_callback, failure_callback, \
+		super(PrepareFoundationShip, self).load(db, worldid, success_callback, failure_callback,
 			WorldObject.get_object_by_id(db_result[1]))
 
 		if self.state == self.missionStates.moving:
@@ -72,7 +72,7 @@ class PrepareFoundationShip(ShipMission):
 		self._move_to_destination_area()
 
 	def _move_to_destination_area(self):
-		self._move_to_warehouse_area(self.warehouse.position, Callback(self._reached_destination_area), \
+		self._move_to_warehouse_area(self.warehouse.position, Callback(self._reached_destination_area),
 			Callback(self._move_to_destination_area), 'Move not possible')
 
 	def _load_foundation_resources(self):

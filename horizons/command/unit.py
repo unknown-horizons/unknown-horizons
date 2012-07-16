@@ -92,7 +92,7 @@ class CreateUnit(Command):
 		@param issuer: the issuer of the command
 		"""
 		owner = WorldObject.get_object_by_id(self.owner_id)
-		unit = Entities.units[self.unit_id](session=owner.session, owner=owner, \
+		unit = Entities.units[self.unit_id](session=owner.session, owner=owner,
 		                                    x=self.x, y=self.y, **self.kwargs)
 		unit.initialize()
 		return unit

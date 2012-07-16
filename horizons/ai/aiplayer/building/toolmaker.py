@@ -54,8 +54,8 @@ class ToolmakerEvaluator(BuildingEvaluator):
 		personality = area_builder.owner.personality_manager.get('ToolmakerEvaluator')
 		distance_penalty = Entities.buildings[BUILDINGS.TOOLMAKER].radius * personality.distance_penalty
 
-		distance = cls._weighted_distance(distance_to_collector, [(personality.smeltery_distance_importance, distance_to_smeltery), \
-			(personality.charcoal_burner_distance_importance, distance_to_charcoal_burner), (personality.lumberjack_distance_importance, distance_to_lumberjack)], \
+		distance = cls._weighted_distance(distance_to_collector, [(personality.smeltery_distance_importance, distance_to_smeltery),
+			(personality.charcoal_burner_distance_importance, distance_to_charcoal_burner), (personality.lumberjack_distance_importance, distance_to_lumberjack)],
 			distance_penalty)
 		value = float(Entities.buildings[BUILDINGS.TOOLMAKER].radius) / distance + alignment * personality.alignment_importance
 		return ToolmakerEvaluator(area_builder, builder, value)

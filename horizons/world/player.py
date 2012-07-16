@@ -105,7 +105,7 @@ class Player(ComponentHolder, WorldObject):
 		client_id = None if self is not self.session.world.player and \
 		                    self.clientid is None else self.clientid
 
-		db("INSERT INTO player(rowid, name, color, client_id, settler_level, difficulty_level) VALUES(?, ?, ?, ?, ?, ?)", \
+		db("INSERT INTO player(rowid, name, color, client_id, settler_level, difficulty_level) VALUES(?, ?, ?, ?, ?, ?)",
 			 self.worldid, self.name, self.color.id, client_id, self.settler_level, self.difficulty.level if self.difficulty is not None else None)
 
 	@classmethod
@@ -192,7 +192,7 @@ class HumanPlayer(Player):
 		if level_up:
 			# add message and update ingame gui
 			coords = (message.sender.position.center().x, message.sender.position.center().y)
-			self.session.ingame_gui.message_widget.add(x=coords[0], y=coords[1], \
+			self.session.ingame_gui.message_widget.add(x=coords[0], y=coords[1],
 			                                                    string_id='SETTLER_LEVEL_UP',
 			                                                    message_dict={'level': message.level+1})
 		return level_up

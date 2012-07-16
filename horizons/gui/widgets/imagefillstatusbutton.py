@@ -30,7 +30,7 @@ class ImageFillStatusButton(pychan.widgets.Container):
 
 	CELL_SIZE = (54, 50) # 32x32 icon, fillbar to the right, label below, padding
 
-	def __init__(self, up_image, down_image, hover_image, text, res_id, helptext="", \
+	def __init__(self, up_image, down_image, hover_image, text, res_id, helptext="",
 	             filled=0, uncached=False, **kwargs):
 		"""Represents the image in the ingame gui, with a bar to show how full the inventory is for that resource
 		Derives from pychan.widgets.Container, but also takes the args of the pychan.widgets.Imagebutton,

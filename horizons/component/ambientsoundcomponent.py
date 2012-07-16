@@ -67,7 +67,7 @@ class AmbientSoundComponent(Component):
 		self.__init()
 		# don't start playing all at once
 
-		interval = (0, self.__class__.AMBIENT_SOUND_INTERVAL + \
+		interval = (0, self.__class__.AMBIENT_SOUND_INTERVAL +
 		            self.__class__.AMBIENT_SOUND_INTERVAL_VARIANCE[1])
 		run_in = random.randint( *interval )
 		ExtScheduler().add_new_object(self._init_playing, self, run_in=run_in)

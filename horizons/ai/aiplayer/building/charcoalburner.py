@@ -53,7 +53,7 @@ class CharcoalBurnerEvaluator(BuildingEvaluator):
 		distance_to_lumberjack = cls._distance_to_nearest_building(area_builder, builder, BUILDINGS.LUMBERJACK)
 		alignment = cls._get_alignment(area_builder, builder.position.tuple_iter())
 
-		distance = cls._weighted_distance(distance_to_collector, [(personality.lumberjack_distance_importance, distance_to_lumberjack), \
+		distance = cls._weighted_distance(distance_to_collector, [(personality.lumberjack_distance_importance, distance_to_lumberjack),
 			(personality.iron_mine_distance_importance, distance_to_iron_mine)], distance_penalty)
 		value = float(Entities.buildings[BUILDINGS.CHARCOAL_BURNER].radius) / distance + alignment * personality.alignment_importance
 		return CharcoalBurnerEvaluator(area_builder, builder, value)

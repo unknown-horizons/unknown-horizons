@@ -124,7 +124,7 @@ class BoatbuilderTab(_BoatbuilderOverviewTab):
 				# restore inactive button, if it isn't in the gui
 				if button_inactive is None:
 					# insert at the end
-					container_active.insertChild(container_active.button_inactive, \
+					container_active.insertChild(container_active.button_inactive,
 					                             len(container_active.children))
 				container_active.mapEvents({
 				  'toggle_active_inactive' : Callback(self.producer.set_active, active=True)
@@ -138,7 +138,7 @@ class BoatbuilderTab(_BoatbuilderOverviewTab):
 				# restore active button, if it isn't in the gui
 				if button_active is None:
 					# insert at the end
-					container_active.insertChild(container_active.button_active, \
+					container_active.insertChild(container_active.button_active,
 					                             len(container_active.children))
 
 				container_active.mapEvents({

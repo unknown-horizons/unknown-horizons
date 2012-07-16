@@ -109,15 +109,15 @@ class ProductionOverviewTab(OverviewTab):
 			# fix pychans lack of dynamic container sizing
 			# the container in the xml must provide a height attribute, that is valid for
 			# one resource.
-			max_res_in_one_line = max(len(production.get_produced_resources()), \
+			max_res_in_one_line = max(len(production.get_produced_resources()),
 			                          len(production.get_consumed_resources()))
 			container.height = max_res_in_one_line * container.height
 
 
 			# active toggle_active button
-			container.mapEvents( \
+			container.mapEvents(
 			  { 'toggle_active': \
-			    Callback(ToggleActive(self.instance.get_component(Producer), production).execute, self.instance.session) \
+			    Callback(ToggleActive(self.instance.get_component(Producer), production).execute, self.instance.session)
 			    } )
 			# NOTE: this command causes a refresh, so we needn't change the toggle_active-button-image
 			container.stylize('menu_black')

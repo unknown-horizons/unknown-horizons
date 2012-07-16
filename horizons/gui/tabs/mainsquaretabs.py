@@ -56,7 +56,7 @@ class MainSquareTab(OverviewTab):
 class AccountTab(MainSquareTab):
 	"""Display basic income and expenses of a settlement"""
 	def __init__(self, instance):
-		super(AccountTab, self).__init__(instance=instance, widget='tab_account.xml', \
+		super(AccountTab, self).__init__(instance=instance, widget='tab_account.xml',
 		                                 icon_path='content/gui/icons/tabwidget/warehouse/account_%s.png')
 		self.helptext = _("Account")
 

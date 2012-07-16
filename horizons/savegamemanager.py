@@ -82,7 +82,7 @@ class SavegameManager(object):
 
 	# metadata of a savegame with default values
 	savegame_metadata = { 'timestamp' : -1,	'savecounter' : 0, 'savegamerev' : 0, 'rng_state' : "" }
-	savegame_metadata_types = { 'timestamp' : float, 'savecounter' : int, 'savegamerev': int, \
+	savegame_metadata_types = { 'timestamp' : float, 'savecounter' : int, 'savegamerev': int,
 	                            'rng_state' : str } # 'screenshot' : NoneType }
 
 	campaign_status_file = os.path.join(savegame_dir, 'campaign_status.yaml')

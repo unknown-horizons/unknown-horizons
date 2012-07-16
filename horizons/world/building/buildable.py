@@ -330,8 +330,8 @@ class BuildableRect(Buildable):
 
 		for x in xrange(area.left, area.right+1, cls.size[0]):
 			for y in xrange(area.top, area.bottom+1, cls.size[1]):
-				possible_builds.append( \
-				  cls.check_build(session, Point(x, y), rotation=rotation, ship=ship) \
+				possible_builds.append(
+				  cls.check_build(session, Point(x, y), rotation=rotation, ship=ship)
 				)
 		return possible_builds
 

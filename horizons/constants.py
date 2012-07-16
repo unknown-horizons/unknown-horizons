@@ -466,7 +466,7 @@ class PATHS:
 
 	CONFIG_TEMPLATE_FILE = os.path.join("content", "settings-template.xml")
 
-	DB_FILES = tuple(os.path.join("content", i) for i in \
+	DB_FILES = tuple(os.path.join("content", i) for i in
 	                 ("game.sql", "balance.sql", "names.sql"))
 
 	if GFX.USE_ATLASES:

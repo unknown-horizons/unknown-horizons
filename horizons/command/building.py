@@ -74,9 +74,9 @@ class Build(Command):
 
 		# check once agaion. needed for MP because of the execution delay.
 		buildable_class = Entities.buildings[self.building_class]
-		build_position = buildable_class.check_build(session, Point(self.x, self.y), \
-		  rotation=self.rotation,\
-			check_settlement=issuer is not None, \
+		build_position = buildable_class.check_build(session, Point(self.x, self.y),
+			rotation=self.rotation,
+			check_settlement=issuer is not None,
 			ship=WorldObject.get_object_by_id(self.ship) if self.ship is not None else None,
 			issuer=issuer)
 
@@ -101,8 +101,8 @@ class Build(Command):
 		# collect data before objs are torn
 		# required by e.g. the mines to find out about the status of the resource deposit
 		if hasattr(Entities.buildings[self.building_class], "get_prebuild_data"):
-			self.data.update( \
-			  Entities.buildings[self.building_class].get_prebuild_data(session, Point(self.x, self.y)) \
+			self.data.update(
+			  Entities.buildings[self.building_class].get_prebuild_data(session, Point(self.x, self.y))
 			  )
 
 		for worldid in sorted(self.tearset): # make sure iteration is the same order everywhere
@@ -112,14 +112,11 @@ class Build(Command):
 			except WorldObjectNotFound: # obj might have been removed already
 				pass
 
-		building = Entities.buildings[self.building_class]( \
-			session=session, \
-			x=self.x, y=self.y, \
-			rotation=self.rotation, owner=issuer if not self.ownerless else None, \
-			island=island, \
-			instance=None, \
-		  action_set_id=self.action_set_id, \
-		  **self.data
+		building = Entities.buildings[self.building_class](
+			session=session, x=self.x, y=self.y, rotation=self.rotation,
+			island=island, action_set_id=self.action_set_id, instance=None,
+			owner=issuer if not self.ownerless else None,
+			**self.data
 		)
 		building.initialize(**self.data)
 		# initialize must be called immediately after the construction
