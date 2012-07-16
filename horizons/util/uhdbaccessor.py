@@ -274,7 +274,7 @@ class UhDbAccessor(DbReader):
 
 	def get_unit_type_name(self, type_id):
 		"""Returns the name of a unit type identified by its type"""
-		return self.cached_query("SELECT name FROM unit where id = ?", type_id)[0][0]
+		return Entities.units[type_id].name
 
 
 def read_savegame_template(db):
