@@ -257,7 +257,7 @@ class UhDbAccessor(DbReader):
 	def get_translucent_buildings(self):
 		"""Returns building types that should become translucent on demand"""
 		# use set because of quick contains check
-		return frozenset( i[0] for i in self("SELECT type FROM translucent_buildings") )
+		return frozenset( id for (id, b) in Entities.buildings.iteritems() if b.translucent )
 
 	# Weapon table
 

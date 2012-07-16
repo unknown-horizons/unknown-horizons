@@ -10,6 +10,7 @@ inhabitants: 0
 tooltip_text: null
 settler_level: TIER.NATURE
 buildingcosts: {}
+translucent: true
 components:
 - SelectableComponent:
     type: building

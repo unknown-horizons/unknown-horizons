@@ -284,13 +284,6 @@ INSERT INTO "resource" VALUES(59, 'alvearies', 2, 0, 1);
 INSERT INTO "resource" VALUES(60, 'honeycombs', 2.5, 1, 1);
 INSERT INTO "resource" VALUES(99, 'fire', NULL, 0, 0);
 
-CREATE TABLE "translucent_buildings" (
-	"type" INT
-);
-INSERT INTO "translucent_buildings" VALUES(17);
-INSERT INTO "translucent_buildings" VALUES(34);
-INSERT INTO "translucent_buildings" VALUES(28);
-
 CREATE TABLE "weapon" (
 	"id" INT,
 	"type" TEXT,

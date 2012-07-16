@@ -10,6 +10,7 @@ inhabitants: 0
 tooltip_text: _ Gets iron ore from deposit.
 settler_level: TIER.SETTLERS
 buildingcosts: {RES.GOLD: 500, RES.BOARDS: 10, RES.TOOLS: 2}
+translucent: true
 components:
 - SelectableComponent:
     type: building

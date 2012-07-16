@@ -11,6 +11,7 @@ tooltip_text: _ Provides lumber. Chopped down by lumberjacks.
 settler_level: TIER.NATURE
 buildingcosts: {RES.GOLD: 10}
 show_status_icons: false
+translucent: true
 components:
 - HealthComponent: {maxhealth: 10}
 - ProducerComponent:
