@@ -28,7 +28,6 @@ from horizons.util import Callback
 from horizons.component.tradepostcomponent import TradePostComponent
 from horizons.component.storagecomponent import StorageComponent
 from horizons.component.namedcomponent import NamedComponent
-from horizons.component.ambientsoundcomponent import AmbientSoundComponent
 
 
 class TradeTab(TabInterface):
@@ -55,7 +54,7 @@ class TradeTab(TabInterface):
 		"""
 		@param instance: ship instance used for trading
 		"""
-		super(TradeTab,self).__init__(instance=instance, widget='tradetab.xml',
+		super(TradeTab,self).__init__(widget='tradetab.xml',
 		                              icon_path='content/gui/icons/tabwidget/warehouse/buysell_%s.png')
 		events = {}
 		for k, v in self.exchange_size_buttons.iteritems():

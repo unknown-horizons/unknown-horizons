@@ -647,7 +647,7 @@ class ResBarMouseTool(NavigationTool):
 		self.session.cursor.mousePressed(evt)
 
 	def reset(self):
-		"""Enable old tol again"""
+		"""Enable old tool again"""
 		if self.old_tool:
 			self.session.cursor = self.old_tool
 		self.remove()
