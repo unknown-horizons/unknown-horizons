@@ -22,6 +22,7 @@
 from fife import fife
 import copy
 import itertools
+import operator
 
 import horizons.main
 
@@ -228,9 +229,8 @@ class SelectableBuildingComponent(SelectableComponent):
 
 		# group buildings per settlement and treat them separately
 		# they cannot share tiles, and we can then just access the settlements ground map
-		get_settlement = lambda b : b.settlement
-		buildings_sorted = sorted(buildings, key=get_settlement)
-		for settlement, buildings in itertools.groupby( buildings_sorted, get_settlement ):
+		buildings_sorted = sorted(buildings, key=operator.attrgetter('settlement'))
+		for settlement, buildings in itertools.groupby( buildings_sorted, operator.attrgetter('settlement') ):
 			# resolve operator
 			buildings = list(buildings)
 
