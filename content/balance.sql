@@ -5,18 +5,6 @@ CREATE TABLE "animals" (
 );
 INSERT INTO "animals" VALUES(18, 1000003, 3);
 
-CREATE TABLE "unit_production" (
-	"production_line" INT NOT NULL,
-	"unit" INT NOT NULL,
-	"amount" INT NOT NULL
-);
-INSERT INTO "unit_production" VALUES(15, 1000001, 1);
-INSERT INTO "unit_production" VALUES(58, 1000020, 1);
-INSERT INTO "unit_production" VALUES(62, 1000016, 1);
-INSERT INTO "unit_production" VALUES(63, 1000016, 1);
-INSERT INTO "unit_production" VALUES(64, 1000016, 1);
-INSERT INTO "unit_production" VALUES(68, 1000016, 1);
-
 CREATE TABLE "start_resources" (
 	"resource" INT,
 	"amount" INT

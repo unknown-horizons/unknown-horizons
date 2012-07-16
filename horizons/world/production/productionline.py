@@ -20,7 +20,7 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-import horizons.main
+from horizons.constants import UNITS
 
 class ProductionLine(object):
 	"""Class that collects the production line data."""
@@ -45,19 +45,18 @@ class ProductionLine(object):
 		self.production = {}
 		self.produced_res = {} # contains only produced
 		self.consumed_res = {} # contains only consumed
+		self.unit_production = {} # Stores unit_id: amount entries, if units are to be produced
 		if 'produces' in self.__data:
-			for res, amount in self.__data['produces']:
-				self.production[res] = amount
-				self.produced_res[res] = amount
+			for produced_object, amount in self.__data['produces']:
+				if produced_object < UNITS.DIFFERENCE_BUILDING_UNIT_ID:
+					self.production[produced_object] = amount
+					self.produced_res[produced_object] = amount
+				else:
+					self.unit_production[produced_object] = amount
 		if 'consumes' in self.__data:
 			for res, amount in self.__data['consumes']:
 				self.production[res] = amount
 				self.consumed_res[res] = amount
-		# Stores unit_id: amount entries, if units are to be produced by this production line
-		self.unit_production = {}
-		# TODO: move this data into yaml files
-		for unit, amount in horizons.main.db.cached_query("SELECT unit, amount FROM unit_production WHERE production_line = ?", self.id):
-			self.unit_production[int(unit)] = amount # Store the correct unit id =>  -1.000.000
 
 		self._init_finished = True
 

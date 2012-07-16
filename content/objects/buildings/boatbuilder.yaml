@@ -30,6 +30,8 @@ components:
         - [RES.TEXTILE, -24]
         time: 60
       15:
+        produces:
+        - [UNITS.HUKER_SHIP, 1]
         consumes:
         - [RES.GOLD, -550]
         - [RES.BOARDS, -8]
@@ -37,6 +39,8 @@ components:
         - [RES.TOOLS, -1]
         time: 60
       58:
+        produces:
+        - [UNITS.FRIGATE, 1]
         consumes:
         - [RES.GOLD, -750]
         - [RES.BOARDS, -13]
