@@ -31,6 +31,7 @@ from horizons.ext.enum import Enum
 from horizons.world.units.unit import Unit
 from horizons.constants import COLLECTORS
 from horizons.component.storagecomponent import StorageComponent
+from horizons.component.restrictedpickup import RestrictedPickup
 from horizons.component.ambientsoundcomponent import AmbientSoundComponent
 
 class Collector(Unit):
@@ -93,16 +94,6 @@ class Collector(Unit):
 			self.hide()
 
 		self.job = None # here we store the current job as Job object
-
-		# list of class ids of buildings, where we may pick stuff up
-		# empty means pick up from everywhere
-		# NOTE: this is not allowed to change at runtime.
-		self.possible_target_classes = []
-		for (object_class,) in self.session.db("SELECT object FROM collector_restrictions WHERE \
-		                                        collector = ?", self.id):
-			self.possible_target_classes.append(object_class)
-		self.is_restricted = (len(self.possible_target_classes) != 0)
-
 
 	def remove(self):
 		"""Removes the instance. Useful when the home building is destroyed"""
@@ -254,10 +245,8 @@ class Collector(Unit):
 			#self.log.debug("nojob: same inventory")
 			return False
 
-		# check if we're allowed to pick up there
-		if self.is_restricted and target.id not in self.possible_target_classes:
-			#self.log.debug("nojob: %s is restricted", target.id)
-			return False
+		if self.has_component(RestrictedPickup): # check if we're allowed to pick up there
+			return self.get_component(RestrictedPickup).pickup_allowed_at(target.id)
 
 		# pathfinding would fit in here, but it's too expensive,
 		# we just do that at targets where we are sure to get a lot of res later on.
