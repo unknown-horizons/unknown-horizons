@@ -55,6 +55,7 @@ class FindPath(object):
 		# commented out checks since BasicBuilding can't be imported here
 		#assert(isinstance(source, (Rect, Point, BasicBuilding)))
 		#assert(isinstance(destination, (Rect, Point, BasicBuilding)))
+		blocked_coords = blocked_coords or []
 		assert(isinstance(path_nodes, (dict, list, set)))
 		assert(isinstance(blocked_coords, (dict, list, set)))
 
@@ -62,7 +63,7 @@ class FindPath(object):
 		self.source = source
 		self.destination = destination
 		self.path_nodes = path_nodes
-		self.blocked_coords = blocked_coords or []
+		self.blocked_coords = blocked_coords
 		self.diagonal = diagonal
 		self.make_target_walkable = make_target_walkable
 
