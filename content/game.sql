@@ -32,36 +32,6 @@ INSERT INTO "ground_class" VALUES(6, 'constructible');
 INSERT INTO "ground_class" VALUES(5, 'coastline');
 INSERT INTO "ground_class" VALUES(7, 'constructible');
 
-CREATE TABLE "unit" (
-	"id" INT NOT NULL,
-	"name" TEXT NOT NULL,
-	"class_package" TEXT NOT NULL,
-	"class_type" TEXT NOT NULL,
-	"base_velocity" REAL DEFAULT '12.0',
-	"radius" INT DEFAULT '5'
-);
-INSERT INTO "unit" VALUES(1000001, 'Huker', 'ship', 'Ship', 5.0, 5);
-INSERT INTO "unit" VALUES(1000002, 'BuildingCollector', 'collectors', 'BuildingCollector', 12.0, 5);
-INSERT INTO "unit" VALUES(1000003, 'Sheep', 'animal', 'FarmAnimal', 12.0, 3);
-INSERT INTO "unit" VALUES(1000004, 'Fisher', 'ship', 'FisherShip', 12.0, 5);
-INSERT INTO "unit" VALUES(1000005, 'Pirate Ship', 'ship', 'PirateShip', 12.0, 5);
-INSERT INTO "unit" VALUES(1000006, 'Trader', 'ship', 'TradeShip', 12.0, 8);
-INSERT INTO "unit" VALUES(1000007, 'AnimalCarriage', 'collectors', 'AnimalCollector', 12.0, 5);
-INSERT INTO "unit" VALUES(1000008, 'StorageCollector', 'collectors', 'StorageCollector', 12.0, 5);
-INSERT INTO "unit" VALUES(1000009, 'FieldCollector', 'collectors', 'FieldCollector', 12.0, 5);
-INSERT INTO "unit" VALUES(1000010, 'LumberjackCollector', 'collectors', 'FieldCollector', 12.0, 5);
-INSERT INTO "unit" VALUES(1000011, 'SettlerCollector', 'collectors', 'StorageCollector', 12.0, 5);
-INSERT INTO "unit" VALUES(1000013, 'Deer', 'animal', 'WildAnimal', 12.0, 5);
-INSERT INTO "unit" VALUES(1000014, 'HunterCollector', 'collectors', 'HunterCollector', 12.0, 5);
-INSERT INTO "unit" VALUES(1000015, 'FarmAnimalCollector', 'collectors', 'FarmAnimalCollector', 12.0, 5);
-INSERT INTO "unit" VALUES(1000016, 'UsableFisher', 'ship', 'Ship', 12.0, 5);
-INSERT INTO "unit" VALUES(1000017, 'Cattle', 'animal', 'FarmAnimal', 12.0, 3);
-INSERT INTO "unit" VALUES(1000018, 'Boar', 'animal', 'FarmAnimal', 12.0, 5);
-INSERT INTO "unit" VALUES(1000019, 'Doctor', 'collectors', 'DisasterRecoveryCollector', 12.0, 5);
-INSERT INTO "unit" VALUES(1000020, 'Frigate', 'fightingship', 'FightingShip', 12.0, 5);
-INSERT INTO "unit" VALUES(1000021, 'BomberMan', 'groundunit', 'FightingGroundUnit', 10.0, 5);
-INSERT INTO "unit" VALUES(1000022, 'Firefighter', 'collectors', 'DisasterRecoveryCollector', 12.0, 5);
-
 CREATE TABLE "speech" (
 	"group_id" INT NOT NULL DEFAULT 0,
 	"file" TEXT NOT NULL
