@@ -70,8 +70,7 @@ class Inventory(pychan.widgets.Container):
 
 	def _draw(self):
 		"""Draws the inventory."""
-		if len(self.children) != 0:
-			self.removeChildren(*self.children)
+		self.removeAllChildren()
 		vbox = pychan.widgets.VBox(padding=0)
 		vbox.width = self.width
 		current_hbox = pychan.widgets.HBox(padding=0)

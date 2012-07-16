@@ -80,7 +80,7 @@ class SettlerOverviewTab(OverviewTab):
 		"""Updates the container that displays the needed resources of the settler"""
 		container = self.widget.findChild(name="needed_res")
 		# remove icons from the container
-		container.removeChildren(*container.children)
+		container.removeAllChildren()
 
 		# create new ones
 		resources = self.instance.get_currently_not_consumed_resources()

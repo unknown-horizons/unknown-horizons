@@ -65,11 +65,10 @@ class BuySellInventory(pychan.widgets.Container):
 
 	def _draw(self):
 		"""Draws the inventory."""
-		if len(self.children) != 0:
-			self.removeChildren(*self.children)
-		vbox = pychan.widgets.VBox(padding = 0)
+		self.removeAllChildren()
+		vbox = pychan.widgets.VBox(padding=0)
 		vbox.width = self.width
-		current_hbox = pychan.widgets.HBox(padding = 0)
+		current_hbox = pychan.widgets.HBox(padding=0)
 		index = 0
 		for resid, limit in sorted(self._limits.iteritems()):
 			amount = max(0, self._inventory[resid] - limit) if self._selling else max(0, limit - self._inventory[resid])
