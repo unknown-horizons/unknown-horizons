@@ -144,9 +144,10 @@ def print_building():
 		 b.size[0], b.size[1], b.radius, b.baseclass)
 
 def print_unit():
-	print "Units (id: name from class)"
-	for id, name, c_type, c_package in db("SELECT id, name, class_type, class_package FROM unit"):
-		print "%2s: %-22s from %s.%s" % ((id - UNITS.DIFFERENCE_BUILDING_UNIT_ID), name, c_package, c_type)
+	print "Units (id: name (radius) from class)"
+	for u in Entities.units.itervalues():
+		print "%2s: %-22s (%2s) from %s" % ((u.id - UNITS.DIFFERENCE_BUILDING_UNIT_ID),
+			u.name, u.radius, u.baseclass)
 	print "Add %s to each ID if you want to use them." % UNITS.DIFFERENCE_BUILDING_UNIT_ID
 
 def print_storage():
