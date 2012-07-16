@@ -313,8 +313,8 @@ def setup_debugging(options):
 		if options.logfile:
 			logfilename = options.logfile
 		else:
-			logfilename = os.path.join(PATHS.LOG_DIR, "unknown-horizons-%s.log" % \
-												         time.strftime("%Y-%m-%d_%H-%M-%S"))
+			logfilename = os.path.join(PATHS.LOG_DIR, "unknown-horizons-%s.log" %
+			                           time.strftime("%Y-%m-%d_%H-%M-%S"))
 		print('Logging to %s' % logfilename.encode('utf-8', 'replace'))
 		# create logfile
 		logfile = open(logfilename, 'w')
