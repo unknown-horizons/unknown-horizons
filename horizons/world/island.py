@@ -187,17 +187,11 @@ class Island(BuildingOwner, WorldObject):
 		"""Returns whether a tile is on island or not.
 		@param point: Point contains position of the tile.
 		@return: tile instance if tile is on island, else None."""
-		try:
-			return self.ground_map[(point.x, point.y)]
-		except KeyError:
-			return None
+		return self.ground_map.get((point.x, point.y))
 
 	def get_tile_tuple(self, tup):
 		"""Overloaded get_tile, takes a tuple as argument"""
-		try:
-			return self.ground_map[tup]
-		except KeyError:
-			return None
+		return self.ground_map.get(tup)
 
 	def get_tiles_tuple(self, tuples):
 		"""Same as get_tile, but takes a list of tuples.

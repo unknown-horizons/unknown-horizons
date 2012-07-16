@@ -73,7 +73,8 @@ def get_speech_file(category, variation_id=None, speaker_id=DEFAULT_SPEAKER):
 	@param speaker_id: speaker id
 	@return: path to speech file or None if not exist"""
 	category_name = eval_category_name(category)
-	if category_name == None: return None
+	if category_name == None:
+		return None
 	lang = horizons.main.fife.get_locale()
 	path = prepare_path(lang, category_name, variation_id, speaker_id)
 	if path == None:
@@ -82,9 +83,10 @@ def get_speech_file(category, variation_id=None, speaker_id=DEFAULT_SPEAKER):
 
 def prepare_path(lang, category_name, var_id, spkr_id):
 	dir_path = get_dir_path(lang, category_name, spkr_id)
-	if not os.path.isdir(dir_path): return None
+	if not os.path.isdir(dir_path):
+		return None
 	file_path = get_file_path(dir_path, var_id)
-	if (file_path != None) and os.path.isfile(file_path):
+	if file_path is not None and os.path.isfile(file_path):
 		return file_path
 
 def get_file_path(dir_name, var_id):
