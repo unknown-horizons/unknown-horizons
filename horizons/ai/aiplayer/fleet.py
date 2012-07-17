@@ -38,7 +38,7 @@ class Fleet(WorldObject):
 	3. resolve MoveNotPossible exceptions.
 	"""
 
-	log = logging.getLogger("ai.aiplayer.fleet")
+	log = logging.getLogger("ai.aiplayer.fleetmission")
 
 	# ship states inside a fleet, fleet doesn't care about AIPlayer.shipStates since it doesn't do any reasoning.
 	# all fleet cares about is to move ships from A to B.
@@ -47,19 +47,20 @@ class Fleet(WorldObject):
 	# state for a fleet as a whole
 	fleetStates = Enum('idle', 'moving')
 
-	def __init__(self, ships):
+	def __init__(self, ships, destroy_callback=None):
 		super(Fleet, self).__init__()
 
 		assert len(ships) > 0, "request to create a fleet from  %s ships" % (len(ships))
-		self.__init(ships)
+		self.__init(ships, destroy_callback)
 
-	def __init(self, ships):
+	def __init(self, ships, destroy_callback):
 		self.owner = ships[0].owner
 		self._ships = WeakKeyDictionary()
 		for ship in ships:
 			self._ships[ship] = self.shipStates.idle
-			ship.add_remove_listener(self._lost_ship)
+			ship.add_remove_listener(Callback(self._lost_ship, ship))
 		self.state = self.fleetStates.idle
+		self.destroy_callback = destroy_callback
 
 	def get_ships(self):
 		return self._ships.keys()
@@ -67,15 +68,20 @@ class Fleet(WorldObject):
 	def destroy(self):
 		for ship in self._ships.keys():
 			ship.remove_remove_listener(self._lost_ship)
+		if self.destroy_callback:
+			self.destroy_callback()
 
-	def _lost_ship(self):
+	def _lost_ship(self, ship):
 		"""
 		Used when fleet was on the move and one of the ships was killed during that.
 		This way fleet has to check whether the target point was reached.
 		"""
-		if self._was_target_reached():
+		if ship in self._ships:
+			del self._ships[ship]
+		if self.size() == 0:
+			self.destroy()
+		elif self._was_target_reached():
 			self._fleet_reached()
-		# TODO: Check if fleet has 0 members, then request to get destroyed OR make unitmanager check for that in it's tick.
 
 	def _get_ship_states_count(self):
 		"""
@@ -93,7 +99,6 @@ class Fleet(WorldObject):
 		# and it's better than freezing the whole fleet
 		reached = state_counts[self.shipStates.reached] + state_counts[self.shipStates.blocked]
 		total = len(self._ships)
-		print reached, total, self.ratio
 		if self.ratio <= float(reached) / total:
 			return True
 		else:
@@ -103,6 +108,7 @@ class Fleet(WorldObject):
 		"""
 		Called when a single ship reaches destination.
 		"""
+		self.log.debug("Fleet %s, Ship %s reached the destination" % (self.worldid, ship.get_component(NamedComponent).name))
 		self._ships[ship] = self.shipStates.reached
 		if self._was_target_reached():
 			self._fleet_reached()
@@ -111,6 +117,7 @@ class Fleet(WorldObject):
 		"""
 		Called when whole fleet reaches destination.
 		"""
+		self.log.debug("Fleet %s reached the destination" % self.worldid)
 		self.state = self.fleetStates.idle
 		for ship in self._ships.keys():
 			self._ships[ship] = self.shipStates.idle
@@ -131,11 +138,7 @@ class Fleet(WorldObject):
 
 	def _get_circle_size(self):
 		"""
-<<<<<<< HEAD
-		Destination circle size for movement calls.
-=======
 		Destination circle size for movement calls that involve more than one ship.
->>>>>>> combat_integration_test
 		"""
 
 		return 5
@@ -157,10 +160,6 @@ class Fleet(WorldObject):
 		if isinstance(destination, Point) and self.size() > 1:
 			destination = Circle(destination, self._get_circle_size())
 
-		# it's ok to specify single point for a destination only when there's only one ship in a fleet
-		if not isinstance(destination, Circle) and self.size() > 1:
-			destination = Circle(destination, self._get_circle_size())
-
 		self.state = self.fleetStates.moving
 		self.ratio = ratio
 
@@ -175,5 +174,5 @@ class Fleet(WorldObject):
 		return len(self._ships)
 
 	def __str__(self):
-		ships_str = "\n " + "\n ".join(["%s (fleet:%s, global:%s)" % (ship.get_component(NamedComponent).name, self._ships[ship], self.owner.ships[ship]) for ship in self._ships.keys()])
+		ships_str = "\n " + "\n ".join(["%s (fleet state:%s)" % (ship.get_component(NamedComponent).name, self._ships[ship]) for ship in self._ships.keys()])
 		return "Fleet: %s (%s) %s" % (self.worldid, self.state, ships_str)

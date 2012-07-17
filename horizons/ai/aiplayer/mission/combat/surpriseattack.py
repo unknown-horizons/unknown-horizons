@@ -58,7 +58,7 @@ class SurpriseAttack(FleetMission):
 		self.set_off()
 
 	def set_off(self):
-		self.log.debug("Player %s, Mission %s, 1/4 set off to point %s" % (self.owner.name, self.__class__.__name__, self.target_point))
+		self.log.debug("Player %s, Mission %s, 1/4 set off from point %s to point %s" % (self.owner.name, self.__class__.__name__, self.return_point, self.target_point))
 		try:
 			self.fleet.move(self.target_point, Callback(self.break_diplomacy))
 			self.state = self.missionStates.sailing_to_target
@@ -68,6 +68,7 @@ class SurpriseAttack(FleetMission):
 	def break_diplomacy(self):
 		self.log.debug("Player %s, Mission %s, 2/4 breaking diplomacy with Player %s" % (self.owner.name, self.__class__.__name__, self.enemy_player.name))
 		if not self.session.world.diplomacy.are_enemies(self.owner, self.enemy_player):
+			#pass
 			AddEnemyPair(self.owner, self.enemy_player).execute(self.session)
 		self.in_combat()
 

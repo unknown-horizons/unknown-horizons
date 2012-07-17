@@ -28,6 +28,8 @@ from horizons.ai.aiplayer.behavior.profile import BehaviorProfile
 from horizons.ai.aiplayer.combatmanager import CombatManager
 from horizons.ai.aiplayer.mission.combat.scouting import ScoutingMission
 from horizons.ai.aiplayer.strategymanager import StrategyManager
+from horizons.component.stancecomponent import StanceComponent, NoneStance
+from horizons.world.units.weaponholder import MovingWeaponHolder
 
 from mission.foundsettlement import FoundSettlement
 from mission.preparefoundationship import PrepareFoundationShip
@@ -123,6 +125,8 @@ class AIPlayer(GenericAI):
 			if ship.owner == self and ship.has_component(SelectableComponent) and ship not in self.ships:
 				self.log.info('%s Added %s to the fleet', self, ship)
 				self.ships[ship] = self.shipStates.idle
+				if isinstance(ship, MovingWeaponHolder):
+					ship.stance = NoneStance
 		self.need_more_ships = False
 
 	def __init(self):

@@ -53,7 +53,8 @@ class CombatManager(object):
 
 	def lookout(self):
 		filters = self.unit_manager.filtering_rules
-		# handle fleets in combat first:
+
+		# handle fleets that explicitly request to be in combat
 		for mission in self.unit_manager.get_missions_in_combat():
 			fleet = mission.fleet
 
@@ -61,13 +62,15 @@ class CombatManager(object):
 
 			ships_around = self.unit_manager.find_ships_near_group(ship_group)
 			ships_around = self.unit_manager.filter_ships(self.owner, ships_around, (filters.hostile()))
-			pirates = self.unit_manager.filter_ships(self.owner, ships_around, (filters.ship_type(PirateShip), ))
-			fighting_ships = self.unit_manager.filter_ships(self.owner, ships_around, (filters.ship_type(FightingShip), ))
+			pirate_ships = self.unit_manager.filter_ships(self.owner, ships_around, (filters.pirate(), ))
+			fighting_ships = self.unit_manager.filter_ships(self.owner, ships_around, (filters.fighting(), ))
+			working_ships = self.unit_manager.filter_ships(self.owner, ships_around, (filters.working(), ))
+
 			environment = {'ship_group': ship_group}
 
 			# check if mission combat was resolved
 			# TODO: Use behavior component to determine when the battle ends
-			if ship_group and not fighting_ships and not pirates:
+			if ship_group and not fighting_ships and not pirate_ships and not working_ships:
 				mission.continue_mission()
 			elif not ship_group:
 				mission.abort_mission()
@@ -79,29 +82,39 @@ class CombatManager(object):
 				self.log.debug("Player: %s vs Player: %s -> power_balance:%s" % (self.owner.name, fighting_ships[0].owner.name, environment['power_balance']))
 				self.owner.behavior_manager.request_action(BehaviorProfile.action_types.offensive,
 					'fighting_ships_in_sight', **environment)
-			elif pirates:
-				environment = {'enemies': pirates, 'ship_group': ship_group, }
-				environment['power_balance'] = UnitManager.calculate_power_balance(ship_group, pirates)
-				self.log.debug("Player: %s vs Player: %s -> power_balance:%s" % (self.owner.name, pirates[0].owner.name, environment['power_balance']))
+			elif pirate_ships:
+				environment = {'enemies': pirate_ships, 'ship_group': ship_group, }
+				environment['power_balance'] = UnitManager.calculate_power_balance(ship_group, pirate_ships)
+				self.log.debug("Player: %s vs Player: %s -> power_balance:%s" % (self.owner.name, pirate_ships[0].owner.name, environment['power_balance']))
 				self.owner.behavior_manager.request_action(BehaviorProfile.action_types.offensive,
 					'pirates_in_sight', **environment)
+			elif working_ships:
+				environment = {'enemies': working_ships, 'ship_group': ship_group, }
+				self.owner.behavior_manager.request_action(BehaviorProfile.action_types.offensive,
+					'worker_ships_in_sight', **environment)
 			else:
 				# execute idle action only if whole fleet is idle
 				if all([self.owner.ships[ship] == self.owner.shipStates.idle for ship in ship_group]):
 					self.owner.behavior_manager.request_action(BehaviorProfile.action_types.idle,
 						'no_one_in_sight', **environment)
 
-		# for idle ships that are wandering around the map
+		# handle fleets that may way to be in combat, but request for it first
+		# TODO
 
-		"""
-		#rules = (filters.ship_state(self.owner.shipStates.in_combat), )
-		for ship_group in self.unit_manager.get_fighting_ships(rules):
-			ship_group = [ship_group, ]
+		# handle idle ships that are wandering around the map
+		rules = (filters.not_in_fleet(), filters.fighting() )
+		for ship in self.unit_manager.get_ships(rules):
+
+			# Turn into one-ship group, since reasoning is based around groups of ships
+			ship_group = [ship, ]
+			# TODO: create artificial groups by dividing ships that are near into groups based on their distance
+
 			ships_around = self.unit_manager.find_ships_near_group(ship_group)
 
 			# we want only PirateShips
-			pirates = self.unit_manager.filter_ships(self.owner, ships_around, (filters.ship_type(PirateShip), ))
-			fighting_ships = self.unit_manager.filter_ships(self.owner, ships_around, (filters.ship_type(FightingShip), ))
+			pirate_ships = self.unit_manager.filter_ships(self.owner, ships_around, (filters.pirate(), ))
+			fighting_ships = self.unit_manager.filter_ships(self.owner, ships_around, (filters.fighting(), ))
+			working_ships = self.unit_manager.filter_ships(self.owner, ships_around, (filters.working(), ))
 			environment = {'ship_group': ship_group}
 			if fighting_ships:
 				environment['enemies'] = fighting_ships
@@ -109,18 +122,21 @@ class CombatManager(object):
 				self.log.debug("Player: %s vs Player: %s -> power_balance:%s" % (self.owner.name, fighting_ships[0].owner.name, environment['power_balance']))
 				self.owner.behavior_manager.request_action(BehaviorProfile.action_types.offensive,
 					'fighting_ships_in_sight', **environment)
-			elif pirates:
-				environment = {'enemies': pirates, 'ship_group': ship_group, }
-				environment['power_balance'] = UnitManager.calculate_power_balance(ship_group, pirates)
-				self.log.debug("Player: %s vs Player: %s -> power_balance:%s" % (self.owner.name, pirates[0].owner.name, environment['power_balance']))
+			elif pirate_ships:
+				environment = {'enemies': pirate_ships, 'ship_group': ship_group, }
+				environment['power_balance'] = UnitManager.calculate_power_balance(ship_group, pirate_ships)
+				self.log.debug("Player: %s vs Player: %s -> power_balance:%s" % (self.owner.name, pirate_ships[0].owner.name, environment['power_balance']))
 				self.owner.behavior_manager.request_action(BehaviorProfile.action_types.offensive,
 					'pirates_in_sight', **environment)
+			elif working_ships:
+				environment = {'enemies': working_ships, 'ship_group': ship_group, }
+				self.owner.behavior_manager.request_action(BehaviorProfile.action_types.offensive,
+					'working_ships_in_sight', **environment)
 			else:
 				# execute idle action only if whole fleet is idle
 				if all([self.owner.ships[ship] == self.owner.shipStates.idle for ship in ship_group]):
 					self.owner.behavior_manager.request_action(BehaviorProfile.action_types.idle,
 						'no_one_in_sight', **environment)
-		"""
 
 	def tick(self):
 		self.lookout()

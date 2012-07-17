@@ -51,6 +51,7 @@ class UnitBuilder(object):
 		self.log.info('%s started building trading ship', self)
 
 	def build_combat_ship(self):
+		"""Build a new frigate ship"""
 		boat_builder = self._get_boat_builders()[0]
 		AddProduction(boat_builder.get_component(Producer), PRODUCTIONLINES.FRIGATE).execute(self.owner.session)
 		production = boat_builder.get_component(Producer)._get_production(PRODUCTIONLINES.FRIGATE)

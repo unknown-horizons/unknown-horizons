@@ -56,12 +56,12 @@ class UnitManager(object):
 		self.fleets = set()
 
 		self.filtering_rules = collections.namedtuple('FilteringRules', 'not_owned, hostile, ship_type, selectable,'
-			'ship_state, not_in_fleet')(not_owned=self._not_owned_rule, hostile=self._hostile_rule,
+			'ship_state, not_in_fleet, working, pirate, fighting')(not_owned=self._not_owned_rule, hostile=self._hostile_rule,
 			ship_type=self._ship_type_rule, selectable=self._selectable_rule, ship_state=self._ship_state_rule,
-			not_in_fleet=self._ship_not_in_fleet)
+			not_in_fleet=self._ship_not_in_fleet, working=self._is_worker, pirate=self._is_pirate, fighting=self._is_fighter)
 
-	def get_fighting_ships(self, filtering_rules=None):
-		ships = [ship for ship in self.owner.ships if isinstance(ship, FightingShip)]
+	def get_ships(self, filtering_rules=None):
+		ships = [ship for ship in self.owner.ships]
 		if filtering_rules:
 			ships = self.filter_ships(self.owner, ships, filtering_rules)
 		return ships
@@ -75,8 +75,8 @@ class UnitManager(object):
 		# purpose dict should contain all required info (request priority, amount of ships etc.)
 		return self.ship_groups
 
-	def create_fleet(self, ships):
-		fleet = Fleet(ships)
+	def create_fleet(self, ships, destroy_callback=None):
+		fleet = Fleet(ships, destroy_callback)
 		for ship in ships:
 			self.ships[ship] = fleet
 		self.fleets.add(fleet)
@@ -84,8 +84,10 @@ class UnitManager(object):
 
 	def destroy_fleet(self, fleet):
 		for ship in fleet.get_ships():
-			del self.ships[ship]
-		self.fleets.remove(fleet)
+			if ship in self.ships:
+				del self.ships[ship]
+		if fleet in self.fleets:
+			self.fleets.remove(fleet)
 
 	def check_for_dead_fleets(self):
 		pass
@@ -98,6 +100,23 @@ class UnitManager(object):
 	# This approach simplifies code (does not aim to make it shorter)
 	# Instead having [ship for ship in ships if ... and ... and ... and ...]
 	# we have ships = filter_ships(player, other_ships, [get_hostile_rule(), get_ship_type_rule((PirateShip,)), ... ])
+	def _is_fighter(self):
+		"""
+		Rule stating that ship is a fighting ship (but not a pirate ship.
+		"""
+		return lambda player, ship: isinstance(ship, FightingShip) and not isinstance(ship, PirateShip)
+
+	def _is_pirate(self):
+		return lambda player, ship: isinstance(ship, PirateShip)
+
+	def _is_worker(self):
+		return lambda player, ship: ship.name == "Huker"
+
+	def _ship_type_rule(self, ship_types):
+		"""
+		Rule stating that ship is any of ship_types instances
+		"""
+		return lambda player, ship: isinstance(ship, ship_types)
 
 	def _not_owned_rule(self):
 		"""
@@ -111,11 +130,6 @@ class UnitManager(object):
 		"""
 		return lambda player, ship: self.session.world.diplomacy.are_enemies(player, ship.owner)
 
-	def _ship_type_rule(self, ship_types):
-		"""
-		Rule stating that ship is any of ship_types instances
-		"""
-		return lambda player, ship: isinstance(ship, ship_types)
 
 	def _ship_state_rule(self, ship_states):
 		"""

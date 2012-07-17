@@ -42,7 +42,7 @@ class StrategyManager(object):
 	StrategyManager object is responsible for handling major decisions in game such as
 	sending fleets to battle, keeping track of diplomacy between players, declare wars.
 	"""
-	log = logging.getLogger("ai.aiplayer.behavior.strategymanager")
+	log = logging.getLogger("ai.aiplayer.fleetmission")
 
 	def __init__(self, owner):
 		super(StrategyManager, self).__init__()
@@ -72,6 +72,42 @@ class StrategyManager(object):
 		self.missions.add(mission)
 		mission.start()
 
+	def handle_strategy_tmp(self):
+		filters = self.unit_manager.filtering_rules
+		rules = (filters.ship_state((self.owner.shipStates.idle,)), filters.not_in_fleet())
+		idle_ships = self.unit_manager.get_fighting_ships(rules)
+
+		print "IDLE SHIPS:"
+		for ship in self.unit_manager.get_fighting_ships():
+			print "NAME:",ship.name, ship.get_component(NamedComponent).name, self.owner.ships[ship]
+		print "IDLE SHIPS FILTERED:"
+		for ship in idle_ships:
+			print ship.get_component(NamedComponent).name
+		print "//IDLE SHIPS:"
+
+		if idle_ships and len(idle_ships) >= 2:
+			#return_point = idle_ships[0].position.copy()
+			#return_point = Circle(return_point, 5)
+			target_point = self.owner.session.world.get_random_possible_ship_position()
+
+
+			scouting_mission = ScoutingMission.create(self.report_success, self.report_failure, idle_ships, target_point)
+			self.start_mission(scouting_mission)
+			#scouting_mission = ScoutingMission.create(self.report_success, self.report_failure, idle_ships)
+			#self.start_mission(scouting_mission)
+
+		print "MISSIONS"
+		for mission in list(self.missions):
+			print mission
+		print "//MISSIONS"
+
+		print "UNIT MANAGER"
+		for fleet in list(self.unit_manager.fleets):
+			print fleet
+		for ship, fleet in self.unit_manager.ships.iteritems():
+			print ship.get_component(NamedComponent).name, fleet.worldid
+		print "//UNIT MANAGER"
+
 	def handle_strategy(self):
 		# TODO: Think of a good way to scan game for certain things here.
 		# Please DON'T mind the mess here.
@@ -79,21 +115,16 @@ class StrategyManager(object):
 		# Then create mission if any of these occur. Probably attach certain priority/certainty measure to each one in case of many hits.
 
 		filters = self.unit_manager.filtering_rules
-		rules = (filters.ship_state((self.owner.shipStates.idle,)), filters.not_in_fleet())
-		idle_ships = self.unit_manager.get_fighting_ships(rules)
+		rules = (filters.ship_state((self.owner.shipStates.idle,)), filters.fighting(), filters.not_in_fleet())
+		idle_ships = self.unit_manager.get_ships(rules)
 
 		print "IDLE SHIPS:"
-		for ship in self.unit_manager.get_fighting_ships():
-			print ship.get_component(NamedComponent).name, self.owner.ships[ship]
-		print "IDLE SHIPS FILTERED:"
 		for ship in idle_ships:
 			print ship.get_component(NamedComponent).name
 		print "//IDLE SHIPS:"
 
 		if idle_ships and len(idle_ships) >= 2:
 			return_point = idle_ships[0].position.copy()
-			return_point = Circle(return_point, 5)
-			#target_point = self.owner.session.world.get_random_possible_ship_position()
 
 			enemy_player = None
 			for player in self.session.world.players:
@@ -108,8 +139,6 @@ class StrategyManager(object):
 
 				attack_mission = SurpriseAttack.create(self.report_success, self.report_failure, idle_ships, target_point, return_point, enemy_player)
 				self.start_mission(attack_mission)
-			#scouting_mission = ScoutingMission.create(self.report_success, self.report_failure, idle_ships)
-			#self.start_mission(scouting_mission)
 
 		print "MISSIONS"
 		for mission in list(self.missions):
@@ -135,4 +164,5 @@ class StrategyManager(object):
 		"""
 
 	def tick(self):
+		#self.handle_strategy_tmp()
 		self.handle_strategy()

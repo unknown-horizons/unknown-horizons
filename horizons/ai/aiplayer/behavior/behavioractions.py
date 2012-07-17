@@ -240,7 +240,7 @@ class BehaviorActionRegular(BehaviorAction):
 		if self.session.world.diplomacy.are_enemies(self.owner, enemies[0].owner):
 			for ship in ship_group:
 				Attack(ship, enemies[0]).execute(self.session)
-				BehaviorAction.log.info('ActionRegular: Attacked enemy ship')
+			BehaviorAction.log.info('ActionRegular: Attacked enemy ship')
 
 			# TODO: Don't flee when already near warehouse since there's nothing much to do anyway
 			#if power_balance >= self.power_balance_threshold:
@@ -251,6 +251,20 @@ class BehaviorActionRegular(BehaviorAction):
 			#	BehaviorAction.log.info('Player:%s Fled from combat' % self.owner.name)
 		else:
 			BehaviorAction.log.info('ActionRegular: Enemy ship was not hostile')
+
+	def working_ships_in_sight(self, **environment):
+		"""
+		Attacks working ships only if they are hostile.
+		"""
+		enemies = environment['enemies']
+		ship_group = environment['ship_group']
+
+		if self.session.world.diplomacy.are_enemies(self.owner, enemies[0].owner):
+			for ship in ship_group:
+				Attack(ship, enemies[0]).execute(self.session)
+			BehaviorAction.log.info('ActionRegular: Attacked enemy worker ship')
+		else:
+			BehaviorAction.log.info('ActionRegular: Enemy worker was not hostile')
 
 
 class BehaviorActionRegularPirate(BehaviorAction):

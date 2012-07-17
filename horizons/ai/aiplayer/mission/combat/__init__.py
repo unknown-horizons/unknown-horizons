@@ -23,6 +23,7 @@ import logging
 
 from horizons.ai.aiplayer.mission import Mission
 from horizons.ext.enum import Enum
+from horizons.util.python.callback import Callback
 
 class FleetMission(Mission):
 
@@ -44,11 +45,10 @@ class FleetMission(Mission):
 	def __init(self, ships):
 		self.unit_manager = self.owner.unit_manager
 		self.session = self.owner.session
-		self.fleet = self.unit_manager.create_fleet(ships)
+		self.fleet = self.unit_manager.create_fleet(ships=ships, destroy_callback=Callback(self.cancel, "All ships were destroyed"))
 		self.strategy_manager = self.owner.strategy_manager
 		for ship in self.fleet.get_ships():
 			self.owner.ships[ship] = self.owner.shipStates.on_a_mission
-			ship.add_remove_listener(self.lost_ship)
 
 		# combatIntermissions is dictionary of type 'missionState -> (won_function, lost_function)'
 		# stating which function should be called after combat phase was finished (winning or losing).
@@ -58,7 +58,6 @@ class FleetMission(Mission):
 	def _dismiss_fleet(self):
 		for ship in self.fleet.get_ships():
 			self.owner.ships[ship] = self.owner.shipStates.idle
-			ship.remove_remove_listener(self.lost_ship)
 			ship.stop()
 		self.unit_manager.destroy_fleet(self.fleet)
 
