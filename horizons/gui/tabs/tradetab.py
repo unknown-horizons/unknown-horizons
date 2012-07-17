@@ -192,8 +192,10 @@ class TradeTab(TabInterface):
 				                 self.instance, signal_errors=True).execute(self.instance.session)
 
 			elif not selling and not is_own: # ship buys resources from settlement
-				self.log.debug('InternationalTrade: %s/%s is buying %d of res %d from %s/%s', \
-				               self.instance.get_component(NamedComponent).name, self.instance.owner.name, self.exchange, res_id, settlement.get_component(NamedComponent).name, settlement.owner.name)
+				self.log.debug('InternationalTrade: %s/%s is buying %d of res %d from %s/%s',
+				               self.instance.get_component(NamedComponent).name,
+				               self.instance.owner.name, self.exchange, res_id,
+				               settlement.get_component(NamedComponent).name, settlement.owner.name)
 				# international trading has own error handling, no signal_error
 				BuyResource(settlement.get_component(TradePostComponent), self.instance, res_id, self.exchange).execute(self.instance.session)
 			elif not selling and is_own: # transfer from ship to settlement

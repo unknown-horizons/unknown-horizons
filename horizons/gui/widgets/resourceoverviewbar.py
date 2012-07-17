@@ -374,7 +374,7 @@ class ResourceOverviewBar(object):
 			lvl = self.session.world.player.settler_level
 			res_list = self.__class__.CONSTRUCTION_RESOURCES[lvl]
 			# also add additional res that might be needed
-			res_list += [ res for res in self._last_build_costs if \
+			res_list += [ res for res in self._last_build_costs if
 			              res not in res_list and res != RES.GOLD ]
 			return res_list
 		# prefer user defaults over general defaults

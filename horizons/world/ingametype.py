@@ -128,7 +128,7 @@ class IngameType(type):
 
 	def _parse_component_templates(self):
 		"""Prepares misc data in self.component_templates"""
-		producer = [ comp for comp in self.component_templates if \
+		producer = [ comp for comp in self.component_templates if
 		             isinstance(comp, dict) and comp.iterkeys().next() == 'ProducerComponent' ]
 		if producer:
 			# we want to support string production line ids, the code should still only see integers

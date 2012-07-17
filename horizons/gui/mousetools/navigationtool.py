@@ -28,7 +28,6 @@ from horizons.util import WorldObject, WeakList
 from horizons.util.lastactiveplayersettlementmanager import LastActivePlayerSettlementManager
 from horizons.constants import LAYERS
 from horizons.messaging import HoverInstancesChanged
-from horizons.messaging import MessageBus
 from horizons.extscheduler import ExtScheduler
 
 from fife.extensions.pychan.widgets import Icon
@@ -212,8 +211,9 @@ class NavigationTool(CursorTool):
 
 		all_instances = []
 		for layer in layers:
-			instances = self.session.view.cam.getMatchingInstances(\
-		    fife.ScreenPoint(where.getX(), where.getY()), self.session.view.layers[layer], False) # False for accurate
+			instances = self.session.view.cam.getMatchingInstances(
+				fife.ScreenPoint(where.getX(), where.getY()),
+				self.session.view.layers[layer], False) # False for accurate
 			all_instances.extend(instances)
 
 		hover_instances = []
