@@ -238,16 +238,17 @@ class BehaviorActionRegular(BehaviorAction):
 		power_balance = environment['power_balance']
 
 		if self.session.world.diplomacy.are_enemies(self.owner, enemies[0].owner):
-			if power_balance >= self.power_balance_threshold:
-				for ship in ship_group:
-					Attack(ship, enemies[0]).execute(self.session)
+			for ship in ship_group:
+				Attack(ship, enemies[0]).execute(self.session)
 				BehaviorAction.log.info('ActionRegular: Attacked enemy ship')
 
 			# TODO: Don't flee when already near warehouse since there's nothing much to do anyway
-			else:
-				for ship in ship_group:
-					BehaviorMoveCallback._flee_home(ship)
-				BehaviorAction.log.info('Player:%s Fled from combat' % self.owner.name)
+			#if power_balance >= self.power_balance_threshold:
+			#	pass
+			#else:
+			#	for ship in ship_group:
+			#		BehaviorMoveCallback._flee_home(ship)
+			#	BehaviorAction.log.info('Player:%s Fled from combat' % self.owner.name)
 		else:
 			BehaviorAction.log.info('ActionRegular: Enemy ship was not hostile')
 

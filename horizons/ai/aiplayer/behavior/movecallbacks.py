@@ -79,6 +79,7 @@ class BehaviorMoveCallback:
 			return
 		try:
 			ship.move(Circle(home_position.origin, cls.flee_home_radius), Callback(cls._arrived, ship))
+			# TODO:fix after changes! there is no such thing as fleeing_combat anymore
 			owner.ships[ship] = owner.shipStates.fleeing_combat
 		except MoveNotPossible:
 			cls.log.info("Ship:%s couldn't flee, move was not possible -> going idle" % (ship.get_component(NamedComponent).name))

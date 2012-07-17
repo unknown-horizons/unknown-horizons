@@ -18,6 +18,9 @@
 # Free Software Foundation, Inc.,
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
+
+import logging
+
 from horizons.ai.aiplayer.mission import Mission
 from horizons.ext.enum import Enum
 
@@ -25,6 +28,7 @@ class FleetMission(Mission):
 
 	missionStates = Enum('created')
 
+	log = logging.getLogger("ai.aiplayer.fleetmission")
 
 	def __init__(self, success_callback, failure_callback, ships):
 		super(FleetMission, self).__init__(success_callback, failure_callback, ships[0].owner)
@@ -46,7 +50,9 @@ class FleetMission(Mission):
 			self.owner.ships[ship] = self.owner.shipStates.on_a_mission
 			ship.add_remove_listener(self.lost_ship)
 
-		# combatIntermissions is dictionary of type 'missionState -> (won_function, lost_function)' stating which function should be called after combat was finished in state X.
+		# combatIntermissions is dictionary of type 'missionState -> (won_function, lost_function)'
+		# stating which function should be called after combat phase was finished (winning or losing).
+		# each combatIntermission entry should implement that.
 		self.combatIntermissions = {}
 
 	def _dismiss_fleet(self):
@@ -69,7 +75,7 @@ class FleetMission(Mission):
 			self.cancel('Lost all of the ships')
 
 	# continue / abort methods are called by CombatManager after it handles combat.
-	# CombatManager decides whether the battle was successful (and the mission should be continued) or unsuccessful (mission should be aborted)
+	# CombatManager decides whether the battle was successful (and if the mission should be continued) or unsuccessful (mission should be aborted)
 	def continue_mission(self):
 		assert self.combat_phase, "request to continue mission without it being in combat_phase in the first place"
 		assert self.state in self.combatIntermissions, "request to continue mission from not defined state: %s" % self.state
@@ -84,4 +90,4 @@ class FleetMission(Mission):
 		self.report_failure(msg)
 
 	def __str__(self):
-		return super(FleetMission, self).__str__() + (' using %s' % (self.fleet if hasattr(self, 'fleet') else 'unknown fleet'))
+		return super(FleetMission, self).__str__() + (' using %s' % (self.fleet if hasattr(self, 'fleet') else 'unknown fleet')) + '(mission state:%s)' % self.state

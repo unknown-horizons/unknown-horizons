@@ -66,7 +66,7 @@ class UnitManager(object):
 			ships = self.filter_ships(self.owner, ships, filtering_rules)
 		return ships
 
-	def get_available_missions(self):
+	def get_missions_in_combat(self):
 		return [mission for mission in self.owner.strategy_manager.missions if mission.combat_phase]
 
 	# TODO: depreciated
@@ -163,6 +163,7 @@ class UnitManager(object):
 			closest.append((ship, min(distances, key=itemgetter(1))[0]))
 		return closest
 
+
 	@classmethod
 	def calculate_power_balance(cls, ship_group, enemy_ship_group):
 		"""
@@ -204,3 +205,8 @@ class UnitManager(object):
 
 	def tick(self):
 		self.check_for_dead_fleets()
+
+	# TODO: Consider refactoring below
+	# World filtering utils (non-unit related) below, maybe consider creating a separate class for that or simply put in StrategyManager
+	def get_player_settlements(self, player):
+		return [settlement for settlement in self.session.world.settlements if settlement.owner == player]

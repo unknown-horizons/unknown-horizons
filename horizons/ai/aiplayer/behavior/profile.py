@@ -46,7 +46,7 @@ class BehaviorProfile(WorldObject):
 			cls.action_types.idle: dict(),
 			}
 		#actions[cls.action_types.offensive][BehaviorActionPirateHater(player)] = 0.1
-		actions[cls.action_types.offensive][BehaviorActionCoward(player)] = 0.1
+		#actions[cls.action_types.offensive][BehaviorActionCoward(player)] = 0.1
 		actions[cls.action_types.offensive][BehaviorActionRegular(player)] = 2.0
 		#actions[cls.action_types.offensive][BehaviorActionBreakDiplomacy(player)] = 0.1
 

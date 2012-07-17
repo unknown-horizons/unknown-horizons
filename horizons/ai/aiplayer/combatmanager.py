@@ -54,7 +54,7 @@ class CombatManager(object):
 	def lookout(self):
 		filters = self.unit_manager.filtering_rules
 		# handle fleets in combat first:
-		for mission in self.unit_manager.get_available_missions():
+		for mission in self.unit_manager.get_missions_in_combat():
 			fleet = mission.fleet
 
 			ship_group = fleet.get_ships()
