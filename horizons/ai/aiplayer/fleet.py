@@ -25,11 +25,18 @@ from horizons.component.namedcomponent import NamedComponent
 from horizons.ext.enum import Enum
 from horizons.util.python.callback import Callback
 from horizons.util.shapes.circle import Circle
+from horizons.util.shapes.point import Point
 from horizons.util.worldobject import WorldObject
 from horizons.world.units.movingobject import MoveNotPossible
 
 
 class Fleet(WorldObject):
+	"""
+	Fleet object is responsible for moving a group of ship around the map in an ordered manner, that is:
+	1. provide a single move callback for a fleet as a whole,
+	2. resolve self-blocks in a group of ships
+	3. resolve MoveNotPossible exceptions.
+	"""
 
 	log = logging.getLogger("ai.aiplayer.fleet")
 
@@ -108,7 +115,8 @@ class Fleet(WorldObject):
 		for ship in self._ships.keys():
 			self._ships[ship] = self.shipStates.idle
 
-		self.callback()
+		if self.callback:
+			self.callback()
 
 	def _move_ship(self, ship, destination, callback):
 		# retry ad infinitum. Not the most elegant solution but will do for a while.
@@ -123,7 +131,7 @@ class Fleet(WorldObject):
 
 	def _get_circle_size(self):
 		"""
-		Destination circle size for movement calls.
+		Destination circle size for movement calls that involve more than one ship.
 		"""
 
 		return 5
@@ -133,22 +141,22 @@ class Fleet(WorldObject):
 		"""
 		Move fleet to a destination.
 		@param ratio: what percentage of ships has to reach destination in order for the move to be considered done:
-			0.0 - None (not really useful, executes as reached right away)
+			0.0 - None (not really useful, executes the callback right away)
 			0.0001 - effectively ANY ship
 			1.0 - ALL of the ships
 			0.5 - at least half of the ships
 			etc.
 		"""
+		assert self.size() > 0, "ordered to move a fleet consisting of 0 ships"
 
 		# it's ok to specify single point for a destination only when there's only one ship in a fleet
-		if not isinstance(destination, Circle) and self.size() > 1:
+		if isinstance(destination, Point) and self.size() > 1:
 			destination = Circle(destination, self._get_circle_size())
 
 		self.state = self.fleetStates.moving
 		self.ratio = ratio
 
-		# attach empty callback if not provided
-		self.callback = callback if callback else lambda: None
+		self.callback = callback
 
 		# This is a good place to do something fancier later like preserving ship formation instead sailing to the same point
 		for ship in self._ships.keys():

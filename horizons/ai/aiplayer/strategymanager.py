@@ -30,6 +30,8 @@ from horizons.command.diplomacy import AddEnemyPair
 from horizons.command.unit import Attack
 from horizons.component.namedcomponent import NamedComponent
 from horizons.util.python.callback import Callback
+from horizons.util.shapes.circle import Circle
+from horizons.util.shapes.point import Point
 from horizons.util.worldobject import WorldObject
 from horizons.world.units.fightingship import FightingShip
 from horizons.world.units.pirateship import PirateShip
@@ -89,17 +91,23 @@ class StrategyManager(object):
 		print "//IDLE SHIPS:"
 
 		if idle_ships and len(idle_ships) >= 2:
-			return_point = idle_ships[0].position
-			target_point = self.owner.session.world.get_random_possible_ship_position()
+			return_point = idle_ships[0].position.copy()
+			return_point = Circle(return_point, 5)
+			#target_point = self.owner.session.world.get_random_possible_ship_position()
 
 			enemy_player = None
 			for player in self.session.world.players:
-				print player, player.name, hasattr(player, 'home_point')
-				if hasattr(player, 'home_point'):
+				if player != self.owner:
 					enemy_player = player
 
-			attack_mission = SurpriseAttack.create(self.report_success, self.report_failure, idle_ships, return_point, target_point, enemy_player)
-			self.start_mission(attack_mission)
+			if enemy_player:
+				# target point is enemy's first warehouse position
+				target_point = self.unit_manager.get_player_settlements(enemy_player)[0].warehouse.position
+				(x, y) = target_point.get_coordinates()[4]
+				target_point = Circle(Point(x, y), 5)
+
+				attack_mission = SurpriseAttack.create(self.report_success, self.report_failure, idle_ships, target_point, return_point, enemy_player)
+				self.start_mission(attack_mission)
 			#scouting_mission = ScoutingMission.create(self.report_success, self.report_failure, idle_ships)
 			#self.start_mission(scouting_mission)
 
