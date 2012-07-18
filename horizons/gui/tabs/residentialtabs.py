@@ -86,6 +86,7 @@ class SettlerOverviewTab(OverviewTab):
 		resources = self.instance.get_currently_not_consumed_resources()
 		for res in resources:
 			icon = create_resource_icon(res, self.instance.session.db)
+			icon.max_size = icon.min_size = icon.size = (32, 32)
 			container.addChild(icon)
 
 		container.adaptLayout()

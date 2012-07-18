@@ -70,7 +70,7 @@ def load_uh_widget(filename, style=None, center_widget=False):
 
 	return widget
 
-def get_res_icon_path(res, size, greyscale=False):
+def get_res_icon_path(res, size=32, greyscale=False):
 	"""Returns path of a resource icon or placeholder path, if icon does not exist.
 	@param res: resource id. Pass 'placeholder' to get placeholder path.
 	"""
@@ -91,16 +91,12 @@ def get_res_icon_path(res, size, greyscale=False):
 			icon_path = get_res_icon_path('placeholder', size)
 	return icon_path
 
-def create_resource_icon(res_id, db, size=50):
+def create_resource_icon(res_id, db):
 	"""Creates a pychan Icon for a resource. Helptext is set to name of *res_id*.
-	Returns None if *size* parameter is invalid (not one of 16, 24, 32, 50).
 	@param res_id: resource id
-	@param db: dbreader for main db
-	@param size: Size of icon in px. Valid: 16, 24, 32, 50."""
-	widget = None
-	if size in (16, 24, 32, 50):
-		widget = Icon(image=get_res_icon_path(res_id, size))
-		widget.helptext = db.get_res_name(res_id)
+	@param db: dbreader for main db"""
+	widget = Icon(image=get_res_icon_path(res_id))
+	widget.helptext = db.get_res_name(res_id)
 	return widget
 
 class LazyWidgetsDict(dict):

@@ -74,9 +74,9 @@ class ProductionOverview(StatsWidget):
 			return
 		res_name = self.db.get_res_name(resource_id)
 
-		icon = create_resource_icon(resource_id, self.db, size=16)
+		icon = create_resource_icon(resource_id, self.db)
 		icon.name = 'icon_%s' % resource_id
-		icon.max_size = icon.min_size = icon.size = (16, 16)
+		icon.max_size = icon.min_size = icon.size = (20, 20)
 
 		label = widgets.Label(name = 'resource_%s' % resource_id)
 		label.text = res_name
