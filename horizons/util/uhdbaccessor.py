@@ -49,20 +49,15 @@ class UhDbAccessor(DbReader):
 
 	# Resource table
 
-	def get_res_name(self, id, only_if_tradeable=False, only_if_inventory=False):
-		"""
-		Returns the name to a specific resource id.
-		@param id: int resource's id, of which the name is returned
-		"""
-		sql = "SELECT name FROM resource WHERE id = ?"
-		if only_if_tradeable:
-			sql += " AND tradeable = 1"
-		if only_if_inventory:
-			sql += " AND shown_in_inventory = 1"
-		try:
-			return _(self.cached_query(sql, id)[0][0])
-		except IndexError:
-			return None
+	def get_res_name(self, id):
+		"""Returns the translated name for a specific resource id.
+		@param id: int resource's id, of which the name is returned """
+		name = self.cached_query("SELECT name FROM resource WHERE id = ?", id)[0][0]
+		return _(name)
+
+	def get_res_inventory_display(self, id):
+		sql = "SELECT shown_in_inventory FROM resource WHERE id = ?"
+		return self.cached_query(sql, id)[0][0]
 
 	def get_res_value(self, id):
 		"""Returns the resource's value
