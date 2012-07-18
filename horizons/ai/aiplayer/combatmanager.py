@@ -60,6 +60,9 @@ class CombatManager(object):
 
 			ship_group = fleet.get_ships()
 
+			if not ship_group:
+				mission.abort_mission()
+
 			ships_around = self.unit_manager.find_ships_near_group(ship_group)
 			ships_around = self.unit_manager.filter_ships(self.owner, ships_around, (filters.hostile()))
 			pirate_ships = self.unit_manager.filter_ships(self.owner, ships_around, (filters.pirate(), ))
@@ -67,13 +70,6 @@ class CombatManager(object):
 			working_ships = self.unit_manager.filter_ships(self.owner, ships_around, (filters.working(), ))
 
 			environment = {'ship_group': ship_group}
-
-			# check if mission combat was resolved
-			# TODO: Use behavior component to determine when the battle ends
-			if ship_group and not fighting_ships and not pirate_ships and not working_ships:
-				mission.continue_mission()
-			elif not ship_group:
-				mission.abort_mission()
 
 			# begin combat if it's still unresolved
 			if fighting_ships:
@@ -83,20 +79,17 @@ class CombatManager(object):
 				self.owner.behavior_manager.request_action(BehaviorProfile.action_types.offensive,
 					'fighting_ships_in_sight', **environment)
 			elif pirate_ships:
-				environment = {'enemies': pirate_ships, 'ship_group': ship_group, }
+				environment['enemies'] = working_ships
 				environment['power_balance'] = UnitManager.calculate_power_balance(ship_group, pirate_ships)
 				self.log.debug("Player: %s vs Player: %s -> power_balance:%s" % (self.owner.name, pirate_ships[0].owner.name, environment['power_balance']))
 				self.owner.behavior_manager.request_action(BehaviorProfile.action_types.offensive,
 					'pirates_in_sight', **environment)
 			elif working_ships:
-				environment = {'enemies': working_ships, 'ship_group': ship_group, }
+				environment['enemies'] = working_ships
 				self.owner.behavior_manager.request_action(BehaviorProfile.action_types.offensive,
-					'worker_ships_in_sight', **environment)
+					'working_ships_in_sight', **environment)
 			else:
-				# execute idle action only if whole fleet is idle
-				if all([self.owner.ships[ship] == self.owner.shipStates.idle for ship in ship_group]):
-					self.owner.behavior_manager.request_action(BehaviorProfile.action_types.idle,
-						'no_one_in_sight', **environment)
+				mission.continue_mission()
 
 		# handle fleets that may way to be in combat, but request for it first
 		# TODO
@@ -123,13 +116,13 @@ class CombatManager(object):
 				self.owner.behavior_manager.request_action(BehaviorProfile.action_types.offensive,
 					'fighting_ships_in_sight', **environment)
 			elif pirate_ships:
-				environment = {'enemies': pirate_ships, 'ship_group': ship_group, }
+				environment['enemies'] =  pirate_ships
 				environment['power_balance'] = UnitManager.calculate_power_balance(ship_group, pirate_ships)
 				self.log.debug("Player: %s vs Player: %s -> power_balance:%s" % (self.owner.name, pirate_ships[0].owner.name, environment['power_balance']))
 				self.owner.behavior_manager.request_action(BehaviorProfile.action_types.offensive,
 					'pirates_in_sight', **environment)
 			elif working_ships:
-				environment = {'enemies': working_ships, 'ship_group': ship_group, }
+				environment['enemies'] = working_ships
 				self.owner.behavior_manager.request_action(BehaviorProfile.action_types.offensive,
 					'working_ships_in_sight', **environment)
 			else:

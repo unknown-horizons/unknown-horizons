@@ -19,7 +19,7 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 import logging
-from collections import Counter
+from collections import defaultdict
 from weakref import WeakKeyDictionary
 from horizons.component.namedcomponent import NamedComponent
 from horizons.ext.enum import Enum
@@ -87,7 +87,10 @@ class Fleet(WorldObject):
 		"""
 		Returns Counter about how many ships are in state idle, moving, reached.
 		"""
-		return Counter(self._ships.values())
+		counter = defaultdict(lambda: 0)
+		for value in self._ships.values():
+			counter[value] += 1
+		return counter
 
 	def _was_target_reached(self):
 		"""
@@ -134,6 +137,7 @@ class Fleet(WorldObject):
 		try:
 			ship.move(destination, callback=callback, blocked_callback=Callback(self._move_ship, ship, destination, callback))
 		except MoveNotPossible:
+			self._was_target_reached()
 			self._ships[ship] = self.shipStates.blocked
 
 	def _get_circle_size(self):
