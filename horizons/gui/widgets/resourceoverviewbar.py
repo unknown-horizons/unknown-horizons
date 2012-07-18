@@ -95,7 +95,9 @@ class ResourceOverviewBar(object):
 		self.gold_gui = load_uh_widget(self.__class__.GOLD_ENTRY_GUI_FILE, style=self.__class__.STYLE)
 		self.gold_gui.balance_visible = False
 		self.gold_gui.child_finder = PychanChildFinder(self.gold_gui)
-		self.gold_gui.child_finder("res_icon").image = get_res_icon_path(RES.GOLD, 32)
+		gold_icon = self.gold_gui.child_finder("res_icon")
+		gold_icon.image = get_res_icon_path(RES.GOLD)
+		gold_icon.max_size = gold_icon.min_size = gold_icon.size = (32, 32)
 		self.gold_gui.mapEvents({
 		  "resbar_gold_container/mouseClicked/stats" : self._toggle_stats,
 		  })
@@ -219,8 +221,9 @@ class ResourceOverviewBar(object):
 				helptext = self.session.db.get_res_name(res)
 				icon = entry.findChild(name="res_icon")
 				icon.num = i
-				icon.image = get_res_icon_path(res, 24)
-				icon.capture(self._on_res_slot_click, event_name = 'mouseClicked')
+				icon.image = get_res_icon_path(res)
+				icon.max_size = icon.min_size = icon.size = (24, 24)
+				icon.capture(self._on_res_slot_click, event_name='mouseClicked')
 			else:
 				helptext = _("Click to add a new slot")
 				entry.show() # this will not be filled as the other res
