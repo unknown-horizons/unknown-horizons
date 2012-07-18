@@ -89,7 +89,7 @@ class UhDbAccessor(DbReader):
 		if only_inventory:
 			sql += " AND shown_in_inventory = 1 "
 		query = self.cached_query(sql)
-		format_data = lambda res: (res, get_res_icon_path(res, 50))
+		format_data = lambda res: (res, get_res_icon_path(res))
 		return [format_data(row[0]) for row in query]
 
 	# Sound table

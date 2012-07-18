@@ -227,8 +227,8 @@ class BuySellTab(TabInterface):
 			button.up_image = None
 			button.hover_image = None
 		else:
-			icon = get_res_icon_path(res_id, 50)
-			icon_disabled = get_res_icon_path(res_id, 50, greyscale=True)
+			icon = get_res_icon_path(res_id)
+			icon_disabled = get_res_icon_path(res_id, greyscale=True)
 			button.up_image = icon
 			button.down_image = icon
 			button.hover_image = icon_disabled
@@ -237,7 +237,7 @@ class BuySellTab(TabInterface):
 			# use some python magic to assign a res attribute to the slot to
 			# save which res_id it stores
 			slider.capture(Callback(self.slider_adjust, res_id, slot.id))
-			slot.findChild(name="amount").text = unicode(value)+"t"
+			slot.findChild(name="amount").text = u"{amount:-5d}t".format(amount=value)
 			icon = slot.findChild(name="icon")
 			inventory = self.tradepost.get_inventory()
 			filled = (100 * inventory[res_id]) // inventory.get_limit(res_id)
@@ -322,7 +322,7 @@ class BuySellTab(TabInterface):
 			self.add_buy_to_settlement(res_id, limit, slot_id)
 		elif action == "sell":
 			self.add_sell_to_settlement(res_id, limit, slot_id)
-		self.slots[slot_id].findChild(name="amount").text = unicode(limit)+u't'
+		self.slots[slot_id].findChild(name="amount").text = u"{amount:-5d}t".format(amount=limit)
 		self.slots[slot_id].adaptLayout()
 		self._update_hint(slot_id)
 
