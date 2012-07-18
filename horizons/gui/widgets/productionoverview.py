@@ -19,6 +19,8 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
+from operator import itemgetter
+
 from fife.extensions.pychan import widgets
 
 from horizons.constants import GAME_SPEED
@@ -61,9 +63,8 @@ class ProductionOverview(StatsWidget):
 		text = _('Production overview of {settlement}').format(settlement=name)
 		self._gui.findChild(name='headline').text = text
 
-		for resource_id, amount in \
-		    sorted(self.settlement.produced_res.items(),
-		           key = lambda data: data[1], reverse = True):
+		data = sorted(self.settlement.produced_res.items(), key=itemgetter(1), reverse=True)
+		for resource_id, amount in data:
 			self._add_line_to_gui(resource_id, amount)
 		self._content_vbox.adaptLayout()
 
