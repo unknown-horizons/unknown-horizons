@@ -29,7 +29,7 @@ import functools
 
 import horizons.main
 
-from horizons.constants import RES
+from horizons.constants import TIER, RES
 from horizons.component.storagecomponent import StorageComponent
 from horizons.gui.util import load_uh_widget, get_res_icon_path, create_resource_selection_dialog
 from horizons.util import PychanChildFinder, Callback
@@ -79,11 +79,11 @@ class ResourceOverviewBar(object):
 	                      RES.SALT]
 
 	# order should match the above, else confuses players when in build mode
-	CONSTRUCTION_RESOURCES = { # per settler increment
-	  0: [ RES.TOOLS, RES.BOARDS ],
-	  1: [ RES.TOOLS, RES.BOARDS, RES.BRICKS ],
-	  2: [ RES.TOOLS, RES.BOARDS, RES.BRICKS ],
-	  3: [ RES.TOOLS, RES.BOARDS, RES.BRICKS ],
+	CONSTRUCTION_RESOURCES = { # per inhabitant tier
+	  TIER.SAILORS:  [ RES.TOOLS, RES.BOARDS ],
+	  TIER.PIONEERS: [ RES.TOOLS, RES.BOARDS, RES.BRICKS ],
+	  TIER.SETTLERS: [ RES.TOOLS, RES.BOARDS, RES.BRICKS ],
+	  TIER.CITIZENS: [ RES.TOOLS, RES.BOARDS, RES.BRICKS ],
 	}
 
 	def __init__(self, session):
