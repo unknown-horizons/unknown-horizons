@@ -229,10 +229,8 @@ class UhDbAccessor(DbReader):
 
 	def get_player_start_res(self):
 		"""Returns resources, that players should get at startup as dict: { res : amount }"""
-		ret = {}
-		for res, amount in self.cached_query("SELECT resource, amount FROM player_start_res"):
-			ret[res] = amount
-		return ret
+		start_res = self.cached_query("SELECT resource, amount FROM player_start_res")
+		return dict(start_res)
 
 	@decorators.cachedmethod
 	def get_storage_building_capacity(self, storage_type):
