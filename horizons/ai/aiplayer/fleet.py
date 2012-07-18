@@ -23,6 +23,7 @@ from collections import defaultdict
 from weakref import WeakKeyDictionary
 from horizons.component.namedcomponent import NamedComponent
 from horizons.ext.enum import Enum
+from horizons.scheduler import Scheduler
 from horizons.util.python.callback import Callback
 from horizons.util.shapes.circle import Circle
 from horizons.util.shapes.point import Point
@@ -43,6 +44,8 @@ class Fleet(WorldObject):
 	# ship states inside a fleet, fleet doesn't care about AIPlayer.shipStates since it doesn't do any reasoning.
 	# all fleet cares about is to move ships from A to B.
 	shipStates = Enum('idle', 'moving', 'blocked', 'reached')
+
+	RETRY_BLOCKED_TICKS = 16
 
 	# state for a fleet as a whole
 	fleetStates = Enum('idle', 'moving')
@@ -136,9 +139,11 @@ class Fleet(WorldObject):
 		# 2. If they do, assume they reached the spot.
 		try:
 			ship.move(destination, callback=callback, blocked_callback=Callback(self._move_ship, ship, destination, callback))
+			self._ships[ship] = self.shipStates.moving
 		except MoveNotPossible:
-			self._was_target_reached()
 			self._ships[ship] = self.shipStates.blocked
+			if not self._was_target_reached():
+				Scheduler().add_new_object(Callback(self._retry_moving_blocked_ships), self, run_in = self.RETRY_BLOCKED_TICKS)
 
 	def _get_circle_size(self):
 		"""
@@ -147,6 +152,13 @@ class Fleet(WorldObject):
 
 		return 5
 		#return min(self.size(), 5)
+
+	def _retry_moving_blocked_ships(self):
+		if self.state != self.fleetStates.moving:
+			return
+
+		for ship in filter(lambda ship: self._ships[ship] == self.shipStates.blocked, self.get_ships()):
+			self._move_ship(ship, self.destination, Callback(self._ship_reached, ship))
 
 	def move(self, destination, callback=None, ratio=1.0):
 		"""
@@ -164,6 +176,7 @@ class Fleet(WorldObject):
 		if isinstance(destination, Point) and self.size() > 1:
 			destination = Circle(destination, self._get_circle_size())
 
+		self.destination = destination
 		self.state = self.fleetStates.moving
 		self.ratio = ratio
 
@@ -171,7 +184,6 @@ class Fleet(WorldObject):
 
 		# This is a good place to do something fancier later like preserving ship formation instead sailing to the same point
 		for ship in self._ships.keys():
-			self._ships[ship] = self.shipStates.moving
 			self._move_ship(ship, destination, Callback(self._ship_reached, ship))
 
 	def size(self):

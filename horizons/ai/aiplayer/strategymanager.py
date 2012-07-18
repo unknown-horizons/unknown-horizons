@@ -74,13 +74,10 @@ class StrategyManager(object):
 
 	def handle_strategy_tmp(self):
 		filters = self.unit_manager.filtering_rules
-		rules = (filters.ship_state((self.owner.shipStates.idle,)), filters.not_in_fleet())
-		idle_ships = self.unit_manager.get_fighting_ships(rules)
+		rules = (filters.ship_state((self.owner.shipStates.idle,)), filters.fighting(), filters.not_in_fleet())
+		idle_ships = self.unit_manager.get_ships(rules)
 
 		print "IDLE SHIPS:"
-		for ship in self.unit_manager.get_fighting_ships():
-			print "NAME:",ship.name, ship.get_component(NamedComponent).name, self.owner.ships[ship]
-		print "IDLE SHIPS FILTERED:"
 		for ship in idle_ships:
 			print ship.get_component(NamedComponent).name
 		print "//IDLE SHIPS:"
@@ -164,5 +161,5 @@ class StrategyManager(object):
 		"""
 
 	def tick(self):
-		#self.handle_strategy_tmp()
-		self.handle_strategy()
+		self.handle_strategy_tmp()
+		#self.handle_strategy()
