@@ -39,14 +39,16 @@ class TradeHistoryItem(pychan.widgets.Container):
 		gold_amount_label.text = u'{gold:+5d}'.format(gold=gold)
 
 		gold_icon = self.findChild(name='gold_icon')
-		gold_icon.image = get_res_icon_path(RES.GOLD, 16)
+		gold_icon.image = get_res_icon_path(RES.GOLD)
+		gold_icon.max_size = gold_icon.min_size = gold_icon.size = (16, 16)
 		gold_icon.helptext = player.session.db.get_res_name(RES.GOLD)
 
 		resource_amount_label = self.findChild(name='resource_amount')
 		resource_amount_label.text = u'{amount:+5d}'.format(amount=amount)
 
 		resource_icon = self.findChild(name='resource_icon')
-		resource_icon.image = get_res_icon_path(resource_id, 16)
+		resource_icon.image = get_res_icon_path(resource_id)
+		resource_icon.max_size = resource_icon.min_size = resource_icon.size = (16, 16)
 		resource_icon.helptext = player.session.db.get_res_name(resource_id)
 
 		self.size = self.widget.size
