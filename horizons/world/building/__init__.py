@@ -87,34 +87,34 @@ class BuildingClass(IngameType):
 			return
 		all_action_sets = ActionSetLoader.get_sets()
 
-		# NOTE: the code below is basically duplicated in UHObjectLoader._loadBuilding in the editor
-		def do_load(action_set, action_id):
-			params = {'id': action_set, 'action': action_id}
-			action = cls._real_object.createAction('{action}_{id}'.format(**params))
-			fife.ActionVisual.create(action)
-			for rotation in all_action_sets[action_set][action_id].iterkeys():
-				params['rot'] = rotation
-				if rotation == 45:
-					params['left'] = 32
-					params['botm'] = 16 * cls.size[0]
-				elif rotation == 135:
-					params['left'] = 32 * cls.size[1]
-					params['botm'] = 16
-				elif rotation == 225:
-					params['left'] = 32 * (cls.size[0] + cls.size[1] - 1)
-					params['botm'] = 16 * cls.size[1]
-				elif rotation == 315:
-					params['left'] = 32 * cls.size[0]
-					params['botm'] = 16 * (cls.size[0] + cls.size[1] - 1)
-				else:
-					assert False, "Bad rotation for action_set {id}: {rot} for action: {action}".format(**params)
-				path = '{id}+{action}+{rot}:shift:left-{left},bottom+{botm}'.format(**params)
-				anim = horizons.main.fife.animationloader.loadResource(path)
-				action.get2dGfxVisual().addAnimation(int(rotation), anim)
-				action.setDuration(anim.getDuration())
-
 		# cls.action_sets looks like this: {tier1: {set1: None, set2: preview2, ..}, ..}
 		for action_set_list in cls.action_sets.itervalues():
-			for action_set in action_set_list.iterkeys(): # set1, set2, ...
-				for action_id in all_action_sets[action_set].iterkeys(): # idle, move, ...
-					do_load(action_set, action_id)
+			for action_set in action_set_list: # set1, set2, ...
+				for action_id in all_action_sets[action_set]: # idle, move, ...
+					cls._do_load(all_action_sets, action_set, action_id)
+
+	#NOTE: the code below is basically duplicated in UHObjectLoader._loadBuilding in the editor
+	def _do_load(cls, all_action_sets, action_set, action_id):
+		params = {'id': action_set, 'action': action_id}
+		action = cls._real_object.createAction('{action}_{id}'.format(**params))
+		fife.ActionVisual.create(action)
+		for rotation in all_action_sets[action_set][action_id]:
+			params['rot'] = rotation
+			if rotation == 45:
+				params['left'] = 32
+				params['botm'] = 16 * cls.size[0]
+			elif rotation == 135:
+				params['left'] = 32 * cls.size[1]
+				params['botm'] = 16
+			elif rotation == 225:
+				params['left'] = 32 * (cls.size[0] + cls.size[1] - 1)
+				params['botm'] = 16 * cls.size[1]
+			elif rotation == 315:
+				params['left'] = 32 * cls.size[0]
+				params['botm'] = 16 * (cls.size[0] + cls.size[1] - 1)
+			else:
+				assert False, "Bad rotation for action_set {id}: {rot} for action: {action}".format(**params)
+			path = '{id}+{action}+{rot}:shift:left-{left},bottom+{botm}'.format(**params)
+			anim = horizons.main.fife.animationloader.loadResource(path)
+			action.get2dGfxVisual().addAnimation(int(rotation), anim)
+			action.setDuration(anim.getDuration())
