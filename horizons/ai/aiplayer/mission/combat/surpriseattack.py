@@ -41,7 +41,7 @@ class SurpriseAttack(FleetMission):
 	4. Return home (point B).
 	"""
 
-	missionStates = Enum.get_extended(FleetMission.missionStates, 'sailing_to_target', 'in_combat', 'going_back')
+	missionStates = Enum.get_extended(FleetMission.missionStates, 'sailing_to_target', 'in_combat', 'breaking_diplomacy', 'going_back')
 
 	def __init__(self, success_callback, failure_callback, ships, target_point, return_point, enemy_player):
 		super(SurpriseAttack, self).__init__(success_callback, failure_callback, ships)
@@ -66,21 +66,19 @@ class SurpriseAttack(FleetMission):
 			self.report_failure("Move was not possible when moving to target")
 
 	def break_diplomacy(self):
+		self.state = self.missionStates.breaking_diplomacy
 		self.log.debug("Player %s, Mission %s, 2/4 breaking diplomacy with Player %s" % (self.owner.name, self.__class__.__name__, self.enemy_player.name))
 		if not self.session.world.diplomacy.are_enemies(self.owner, self.enemy_player):
-			#pass
 			AddEnemyPair(self.owner, self.enemy_player).execute(self.session)
 		self.in_combat()
 
 	def in_combat(self):
 		self.log.debug("Player %s, Mission %s, 3/4 in combat" % (self.owner.name, self.__class__.__name__))
 		self.state = self.missionStates.in_combat
-		self.combat_phase = True
 		# TODO: turn combat_phase into a Property and check whether current state is a key self.combatIntermission
 
 	def go_back(self):
 		self.log.debug("Player %s, Mission %s, 4/4 going back after combat to point %s" % (self.owner.name, self.__class__.__name__, self.return_point))
-		self.combat_phase = False
 		try:
 			self.fleet.move(self.return_point, Callback(self.report_success, "Ships arrived at return point"))
 			self.state = self.missionStates.going_back
@@ -88,7 +86,6 @@ class SurpriseAttack(FleetMission):
 			self.report_failure("Move was not possible when going back")
 
 	def flee_home(self):
-		self.combat_phase = False
 
 		# check if fleet still exists
 		if self.fleet.size() > 0:

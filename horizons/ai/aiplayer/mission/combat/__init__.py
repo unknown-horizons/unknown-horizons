@@ -36,8 +36,6 @@ class FleetMission(Mission):
 		self.__init(ships)
 		self.state = self.missionStates.created
 
-		# flag stating whether mission is currently waiting for CombatManager to finish combat (CombatManager either cancels the mission or continues it).
-		self.combat_phase = False
 
 		# flag stating whether CombatManager can initiate combat when enemy approaches in the horizon.
 		self.can_interfere = False
@@ -54,6 +52,14 @@ class FleetMission(Mission):
 		# stating which function should be called after combat phase was finished (winning or losing).
 		# each combatIntermission entry should implement that.
 		self.combatIntermissions = {}
+
+	@property
+	def combat_phase(self):
+		"""
+		Property stating whether mission is currently waiting for CombatManager to finish combat
+		(CombatManager either cancels the mission or continues it).
+		"""
+		return self.state in self.combatIntermissions
 
 	def _dismiss_fleet(self):
 		for ship in self.fleet.get_ships():
@@ -72,6 +78,9 @@ class FleetMission(Mission):
 	def lost_ship(self):
 		if self.fleet.size() == 0:
 			self.cancel('Lost all of the ships')
+
+	def pause_mission(self):
+		pass
 
 	# continue / abort methods are called by CombatManager after it handles combat.
 	# CombatManager decides whether the battle was successful (and if the mission should be continued) or unsuccessful (mission should be aborted)

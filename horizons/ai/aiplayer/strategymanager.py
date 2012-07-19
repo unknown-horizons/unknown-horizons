@@ -161,5 +161,5 @@ class StrategyManager(object):
 		"""
 
 	def tick(self):
-		self.handle_strategy_tmp()
-		#self.handle_strategy()
+		#self.handle_strategy_tmp()
+		self.handle_strategy()
