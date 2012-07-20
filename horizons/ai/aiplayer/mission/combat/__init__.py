@@ -36,6 +36,7 @@ class FleetMission(Mission):
 		self.__init(ships)
 		self.state = self.missionStates.created
 
+		self.combat_phase = False
 
 		# flag stating whether CombatManager can initiate combat when enemy approaches in the horizon.
 		self.can_interfere = False
@@ -52,14 +53,6 @@ class FleetMission(Mission):
 		# stating which function should be called after combat phase was finished (winning or losing).
 		# each combatIntermission entry should implement that.
 		self.combatIntermissions = {}
-
-	@property
-	def combat_phase(self):
-		"""
-		Property stating whether mission is currently waiting for CombatManager to finish combat
-		(CombatManager either cancels the mission or continues it).
-		"""
-		return self.state in self.combatIntermissions
 
 	def _dismiss_fleet(self):
 		for ship in self.fleet.get_ships():
@@ -80,22 +73,30 @@ class FleetMission(Mission):
 			self.cancel('Lost all of the ships')
 
 	def pause_mission(self):
-		pass
+		self.log.debug("Player %s, Mission %s, pausing mission at state %s" % (self.owner.name, self.__class__.__name__, self.state))
+		self.combat_phase = True
+		for ship in self.fleet.get_ships():
+			ship.stop()
 
 	# continue / abort methods are called by CombatManager after it handles combat.
 	# CombatManager decides whether the battle was successful (and if the mission should be continued) or unsuccessful (mission should be aborted)
 	def continue_mission(self):
 		assert self.combat_phase, "request to continue mission without it being in combat_phase in the first place"
 		assert self.state in self.combatIntermissions, "request to continue mission from not defined state: %s" % self.state
+		self.log.debug("Player %s, Mission %s, continuing mission at state %s" % (self.owner.name, self.__class__.__name__, self.state))
+		self.combat_phase = False
 		self.combatIntermissions[self.state][0]()
 
 	def abort_mission(self, msg):
 		assert self.combat_phase, "request to abort mission without it being in combat_phase in the first place"
 		assert self.state in self.combatIntermissions, "request to abort mission from not defined state: %s" % self.state
+		self.log.debug("Player %s, Mission %s, aborting mission at state %s" % (self.owner.name, self.__class__.__name__, self.state))
+		self.combat_phase = False
 		self.combatIntermissions[self.state][1]()
 
 	def cancel(self, msg):
 		self.report_failure(msg)
 
 	def __str__(self):
-		return super(FleetMission, self).__str__() + (' using %s' % (self.fleet if hasattr(self, 'fleet') else 'unknown fleet')) + '(mission state:%s)' % self.state
+		return super(FleetMission, self).__str__() + (' using %s' % (self.fleet if hasattr(self, 'fleet') else 'unknown fleet')) + \
+			'(mission state:%s, combat_phase:%s)' % (self.state, self.combat_phase)

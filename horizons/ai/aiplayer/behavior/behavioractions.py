@@ -239,6 +239,7 @@ class BehaviorActionRegular(BehaviorAction):
 
 		if self.session.world.diplomacy.are_enemies(self.owner, enemies[0].owner):
 			for ship in ship_group:
+				print "@@@ATTACK:",ship.get_component(NamedComponent).name, enemies[0].get_component(NamedComponent).name
 				Attack(ship, enemies[0]).execute(self.session)
 			BehaviorAction.log.info('ActionRegular: Attacked enemy ship')
 

@@ -66,9 +66,6 @@ class UnitManager(object):
 			ships = self.filter_ships(self.owner, ships, filtering_rules)
 		return ships
 
-	def get_missions_in_combat(self):
-		return [mission for mission in self.owner.strategy_manager.missions if mission.combat_phase]
-
 	# TODO: depreciated
 	def get_available_ship_groups(self, purpose):
 		# TODO: should check out if ship group is on a mission first (priority)

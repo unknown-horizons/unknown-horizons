@@ -52,7 +52,12 @@ class SurpriseAttack(FleetMission):
 		self.return_point = return_point
 		self.enemy_player = enemy_player
 
-		self.combatIntermissions = {self.missionStates.in_combat: (self.go_back, self.flee_home), }
+		self.combatIntermissions = {
+			self.missionStates.sailing_to_target: (self.set_off, self.flee_home),
+			self.missionStates.in_combat: (self.go_back, self.flee_home),
+			self.missionStates.going_back: (self.go_back, self.flee_home),
+			self.missionStates.breaking_diplomacy: (self.break_diplomacy, self.flee_home),
+		}
 
 	def start(self):
 		self.set_off()
@@ -73,6 +78,7 @@ class SurpriseAttack(FleetMission):
 		self.in_combat()
 
 	def in_combat(self):
+		self.combat_phase = True
 		self.log.debug("Player %s, Mission %s, 3/4 in combat" % (self.owner.name, self.__class__.__name__))
 		self.state = self.missionStates.in_combat
 		# TODO: turn combat_phase into a Property and check whether current state is a key self.combatIntermission

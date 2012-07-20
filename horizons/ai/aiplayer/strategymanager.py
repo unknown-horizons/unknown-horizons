@@ -72,6 +72,24 @@ class StrategyManager(object):
 		self.missions.add(mission)
 		mission.start()
 
+	def get_missions(self, condition=None):
+		"""
+		Get missions filtered by certain condition (by default return all missions)
+		"""
+		if condition:
+			return [mission for mission in self.missions if condition(mission)]
+		else:
+			return self.missions
+
+	def request_to_pause_mission(self, mission):
+		"""
+		@return: returns True is mission is allowed to pause, False otherwise
+		@rtype: bool
+		"""
+		# TODO: make that decision based on environment (**environment as argument)
+		mission.pause_mission()
+		return True
+
 	def handle_strategy_tmp(self):
 		filters = self.unit_manager.filtering_rules
 		rules = (filters.ship_state((self.owner.shipStates.idle,)), filters.fighting(), filters.not_in_fleet())
@@ -83,15 +101,10 @@ class StrategyManager(object):
 		print "//IDLE SHIPS:"
 
 		if idle_ships and len(idle_ships) >= 2:
-			#return_point = idle_ships[0].position.copy()
-			#return_point = Circle(return_point, 5)
 			target_point = self.owner.session.world.get_random_possible_ship_position()
-
 
 			scouting_mission = ScoutingMission.create(self.report_success, self.report_failure, idle_ships, target_point)
 			self.start_mission(scouting_mission)
-			#scouting_mission = ScoutingMission.create(self.report_success, self.report_failure, idle_ships)
-			#self.start_mission(scouting_mission)
 
 		print "MISSIONS"
 		for mission in list(self.missions):
