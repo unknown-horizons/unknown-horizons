@@ -200,7 +200,13 @@ class YamlCache(object):
 			# and simply retry.
 			cls.log.exception("Warning: You probably have an old cache file; deleting and retrying: "+unicode(e))
 			if os.path.exists(cls.cache_filename):
-				os.remove(cls.cache_filename)
+				try:
+					os.remove(cls.cache_filename)
+				except Exception as e:
+					# this can sometimes fail due to lack of privileges / shelve not using the right file name
+					cls.log.exception("Warning: Failed to remove %s as cache: %s" % (
+									cls.cache_filename, unicode(e)))
+
 			try:
 				cls.cache = shelve.open(cls.cache_filename)
 			except Exception as e:
@@ -210,7 +216,6 @@ class YamlCache(object):
 									cls.cache_filename, unicode(e)))
 				cls.cache = DummyShelve()
 		cls.lock.release()
-
 
 	@classmethod
 	def _do_sync(cls):
