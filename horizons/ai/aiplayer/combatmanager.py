@@ -175,9 +175,6 @@ class PirateCombatManager(CombatManager):
 
 	def __init__(self, owner):
 		super(PirateCombatManager, self).__init__(owner)
-		# todo: remove 2 lines below
-		self.owner = owner
-		self.session = owner.session
 
 	def lookout(self):
 		filters = self.unit_manager.filtering_rules

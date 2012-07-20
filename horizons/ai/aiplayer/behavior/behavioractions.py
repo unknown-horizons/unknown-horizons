@@ -22,7 +22,6 @@ from collections import defaultdict
 from horizons.ai.aiplayer.behavior.movecallbacks import BehaviorMoveCallback
 from horizons.ai.aiplayer.unitmanager import UnitManager
 from horizons.command.diplomacy import AddEnemyPair
-from horizons.command.unit import Attack
 
 import logging
 from horizons.component.namedcomponent import NamedComponent
@@ -224,7 +223,7 @@ class BehaviorActionRegular(BehaviorAction):
 			# Let each ship attack it's closest enemy to maximize dps (in a way)
 			ship_pairs = UnitManager.get_closest_ships_for_each(ship_group, pirates)
 			for ship, pirate in ship_pairs:
-				Attack(ship, pirate).execute(self.session)
+				ship.attack(enemies[0])
 			BehaviorAction.log.info('Attacking pirate player.')
 		else:
 			BehaviorAction.log.info('Not attacking pirate player.')
@@ -240,7 +239,7 @@ class BehaviorActionRegular(BehaviorAction):
 		if self.session.world.diplomacy.are_enemies(self.owner, enemies[0].owner):
 			for ship in ship_group:
 				print "@@@ATTACK:",ship.get_component(NamedComponent).name, enemies[0].get_component(NamedComponent).name
-				Attack(ship, enemies[0]).execute(self.session)
+				ship.attack(enemies[0])
 			BehaviorAction.log.info('ActionRegular: Attacked enemy ship')
 
 			# TODO: Don't flee when already near warehouse since there's nothing much to do anyway
@@ -262,7 +261,7 @@ class BehaviorActionRegular(BehaviorAction):
 
 		if self.session.world.diplomacy.are_enemies(self.owner, enemies[0].owner):
 			for ship in ship_group:
-				Attack(ship, enemies[0]).execute(self.session)
+				ship.attack(enemies[0])
 			BehaviorAction.log.info('ActionRegular: Attacked enemy worker ship')
 		else:
 			BehaviorAction.log.info('ActionRegular: Enemy worker was not hostile')
@@ -287,7 +286,7 @@ class BehaviorActionRegularPirate(BehaviorAction):
 		if self.session.world.diplomacy.are_enemies(self.owner, enemies[0].owner):
 			if power_balance >= self.power_balance_threshold:
 				for ship in ship_group:
-					Attack(ship, enemies[0]).execute(self.session)
+					ship.attack(enemies[0])
 				BehaviorAction.log.info('ActionRegularPirate: Attacked enemy ship')
 
 			# TODO: else: Sail to pirate home
