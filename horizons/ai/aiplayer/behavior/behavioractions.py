@@ -241,14 +241,6 @@ class BehaviorActionRegular(BehaviorAction):
 				print "@@@ATTACK:",ship.get_component(NamedComponent).name, enemies[0].get_component(NamedComponent).name
 				ship.attack(enemies[0])
 			BehaviorAction.log.info('ActionRegular: Attacked enemy ship')
-
-			# TODO: Don't flee when already near warehouse since there's nothing much to do anyway
-			#if power_balance >= self.power_balance_threshold:
-			#	pass
-			#else:
-			#	for ship in ship_group:
-			#		BehaviorMoveCallback._flee_home(ship)
-			#	BehaviorAction.log.info('Player:%s Fled from combat' % self.owner.name)
 		else:
 			BehaviorAction.log.info('ActionRegular: Enemy ship was not hostile')
 

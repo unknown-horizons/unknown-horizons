@@ -79,12 +79,10 @@ class ShipMission(Mission):
 		self.__init(ship)
 
 	def report_success(self, msg):
-		print "@@@REPORTED SUCCESS", msg
 		self.ship.remove_remove_listener(self.cancel)
 		super(ShipMission, self).report_success(msg)
 
 	def report_failure(self, msg):
-		print "@@@REPORTED FAILURE", msg
 		self.ship.remove_remove_listener(self.cancel)
 		super(ShipMission, self).report_failure(msg)
 

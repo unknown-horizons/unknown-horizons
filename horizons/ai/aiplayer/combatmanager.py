@@ -158,6 +158,12 @@ class CombatManager(object):
 			if fighting_ships:
 				if self.owner.strategy_manager.request_to_pause_mission(mission):
 					self.handle_mission_combat(mission)
+			elif working_ships:
+				if self.owner.strategy_manager.request_to_pause_mission(mission):
+					self.handle_mission_combat(mission)
+			elif pirate_ships:
+				if self.owner.strategy_manager.request_to_pause_mission(mission):
+					self.handle_mission_combat(mission)
 
 		# handle idle ships that are wandering around the map
 		self.handle_casual_combat()

@@ -65,7 +65,8 @@ class StrategyManager(object):
 
 	def end_mission(self, mission):
 		self.log.info("Player: %s|StrategyManager|Mission %s ended", self.owner.worldid, mission)
-		self.missions.remove(mission)
+		if mission in self.missions:
+			self.missions.remove(mission)
 
 	def start_mission(self, mission):
 		self.log.info("Player: %s|StrategyManager|Mission %s started", self.owner.worldid, mission)
@@ -136,10 +137,11 @@ class StrategyManager(object):
 		if idle_ships and len(idle_ships) >= 2:
 			return_point = idle_ships[0].position.copy()
 
-			enemy_player = None
+			other_players = []
 			for player in self.session.world.players:
 				if player != self.owner:
-					enemy_player = player
+					other_players.append(player)
+			enemy_player = self.session.random.choice(other_players) if other_players else None
 
 			if enemy_player:
 				# target point is enemy's first warehouse position
