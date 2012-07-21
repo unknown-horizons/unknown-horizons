@@ -208,38 +208,16 @@ class SingleplayerMenu(object):
 
 						def _update_translation_infos(new_map_name):
 							"""Fill in translation infos of selected scenario to translation label.
-
-							It gets translation_status from new_map_file. If there is no attribute
-							like translation_status then selected locale is the original locale of
-							the selected scenario. In this case, hide translation_status_label.
-
-							If there are fuzzy translations, show them as untranslated.
-
 							This function also sets scenario map name using locale.
-						(e.g. tutorial -> tutorial_en.yaml)"""
+							(e.g. tutorial -> tutorial_en.yaml)"""
 
 							translation_status_label = self.current.findChild(name="translation_status")
-							try:
-								#get translation status
-								translation_status_message = yamlcache.YamlCache.get_file(new_map_name, \
-														  game_data=True)['translation_status']
-								#find integers in translation_levels string
-								translation_levels = [int(x) for x in re.findall(r'\d+', translation_status_message)]
-								#if translation_levels' len is 3 it shows us there are fuzzy ones
-								#show them as untranslated
-								if len(translation_levels) == 3:
-									translation_levels[2] += translation_levels[1]
-								#if everything is translated then set untranslated count as 0
-								if len(translation_levels) == 1:
-									translation_levels.append(0)
-								translation_status_label.text = _("Translation status:") + '\n' + \
-									_("{translated} translated messages, {untranslated} untranslated messages")\
-									.format(translated=translation_levels[0], \
-										untranslated=translation_levels[-1])
-								#if selected language is english then don't show translation status
+							yamldata = yamlcache.YamlCache.get_file(new_map_name, game_data=True)
+							translation_status = yamldata.get('translation_status')
+							if translation_status:
+								translation_status_label.text = translation_status
 								translation_status_label.show()
-							#if there is no translation_status then hide it
-							except KeyError:
+							else:
 								translation_status_label.hide()
 
 							self.current.files[ self.active_right_side.collectData('maplist') ] = new_map_name
@@ -258,7 +236,6 @@ class SingleplayerMenu(object):
 								# If default locale could not be detected use 'EN' as fallback
 								default_locale = "en"
 
-							#check if default_locale is in list
 							if LANGUAGENAMES[default_locale] in lang_list.items:
 								lang_list.selected = lang_list.items.index(LANGUAGENAMES[default_locale])
 							else: # select first one
