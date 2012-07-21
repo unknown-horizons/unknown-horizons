@@ -146,13 +146,10 @@ class SingleplayerMenu(object):
 				self.active_right_side.distributeInitialData({ 'maplist' : maps_display, })
 				# select first entry
 				self.active_right_side.distributeData({ 'maplist' : 0, })
-				selectable_languages = []
-				#show only selectable languages
-				for i in find_available_languages().keys():
-					if os.path.exists(self._get_selected_map() + '_' + i + '.' + SavegameManager.scenario_extension):
-						selectable_languages.append(LANGUAGENAMES[i])
-				selectable_languages.sort()
-				lang_list.items = selectable_languages
+				available_languages = sorted(
+					[ LANGUAGENAMES[lang] for lang in find_available_languages()
+									  if os.path.exists(self._find_map_filename(lang)) ])
+				lang_list.items = available_languages
 				cur_locale = horizons.main.fife.get_locale()
 				if LANGUAGENAMES[cur_locale] in lang_list.items:
 					lang_list.selected = lang_list.items.index(LANGUAGENAMES[cur_locale])
@@ -167,40 +164,12 @@ class SingleplayerMenu(object):
 				if show == 'scenario': # update infos for scenario
 					def _update_infos():
 						"""Fill in infos of selected scenario to label"""
-						def _find_map_filename(locale=None):
-							"""Finds the selected map's filename with its locale."""
-							this_locale = ""
-							new_map_name = ""
-							if locale is None:
-								this_locale = LANGUAGENAMES.get_by_value(lang_list.selected_item)
-							else:
-								this_locale = locale
-							#check if selected map's file ends with .yaml
-							if '.yaml' not in self._get_selected_map():
-								new_map_name = self._get_selected_map() + '_' + \
-									       this_locale + '.' + \
-									       SavegameManager.scenario_extension
-							#if selected map's file ends with .yaml then get current locale
-							#to remove locale postfix from selected_map's name
-							else:
-								#get current locale to split current map file name
-								current_locale = yamlcache.YamlCache.get_file(self._get_selected_map(),
-													       game_data=True)['locale']
-								new_map_name = self._get_selected_map()[:self._get_selected_map().
-									       find('_' + current_locale)] + '_' + \
-									       this_locale + '.' + \
-									       SavegameManager.scenario_extension
-
-							return new_map_name
 
 						cur_selected_language = lang_list.selected_item
-						selectable_languages = []
-						#show only selectable languages
-						for i in find_available_languages().keys():
-							if os.path.exists(_find_map_filename(i)):
-								selectable_languages.append(LANGUAGENAMES[i])
-						selectable_languages.sort()
-						lang_list.items = selectable_languages
+						available_languages = sorted(
+							[ LANGUAGENAMES[lang] for lang in find_available_languages()
+						                           if os.path.exists(self._find_map_filename(lang)) ])
+						lang_list.items = available_languages
 						if cur_selected_language in lang_list.items:
 							lang_list.selected = lang_list.items.index(cur_selected_language)
 						else:
@@ -222,17 +191,15 @@ class SingleplayerMenu(object):
 
 							self.current.files[ self.active_right_side.collectData('maplist') ] = new_map_name
 
-
-						#Add locale postfix to fix scenario file
-						try:
-							_update_translation_infos(_find_map_filename())
+						try: # Add locale postfix to fix scenario file
+							for_locale = LANGUAGENAMES.get_by_value(lang_list.selected_item)
+							_update_translation_infos(self._find_map_filename(for_locale))
 						#if there is no scenario with selected locale then select system's default
 						except IOError:
-							default_locale = ""
-							_default_locale, default_encoding = locale.getdefaultlocale()
+							default_locale, default_encoding = locale.getdefaultlocale()
 							try:
-								default_locale = _default_locale.split('_')[0]
-							except:
+								default_locale = default_locale.split('_')[0]
+							except: #TODO what kind of Exception happens here
 								# If default locale could not be detected use 'EN' as fallback
 								default_locale = "en"
 
@@ -504,6 +471,14 @@ class SingleplayerMenu(object):
 								          description=_("The selected file is not a valid scenario file."),
 								          details=_("Error message:") + u' ' + unicode(str(exception)),
 								          advice=_("Please report this to the author."))
+	def _find_map_filename(self, for_locale):
+		"""Finds the selected map's filename with its locale."""
+		prefix = self._get_selected_map()
+		if self._get_selected_map().endswith('.yaml'):
+			yamldata = yamlcache.YamlCache.get_file(self._get_selected_map(), game_data=True)
+			for_locale = yamldata['locale']
+			prefix = prefix.split('_' + for_locale)[0]
+		return prefix + '_' + for_locale + '.' + SavegameManager.scenario_extension
 
 	def _save_player_name(self):
 		if hasattr(self.current, 'playerdata'):
