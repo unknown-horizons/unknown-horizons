@@ -149,30 +149,16 @@ class ScenarioEventHandler(LivingObject):
 		return self._data['mapfile']
 
 	@classmethod
-	def get_description_from_file(cls, filename):
-		"""Returns the description from a yaml file.
+	def get_metadata_from_file(cls, filename):
+		"""Returns (difficulty, author, description) from a yaml file.
+		Returns "unknown" for all of these fields not specified.
 		@throws InvalidScenarioFile"""
-		return cls._parse_yaml_file(filename)['description']
-
-	@classmethod
-	def get_difficulty_from_file(cls, filename):
-		"""Returns the difficulty of a yaml file.
-		Returns _("unknown") if difficulty isn't specified.
-		@throws InvalidScenarioFile"""
-		try:
-			return cls._parse_yaml_file(filename)['difficulty']
-		except KeyError:
-			return _("unknown")
-
-	@classmethod
-	def get_author_from_file(cls, filename):
-		"""Returns the author of a yaml file.
-		Returns _("unknown") if difficulty isn't specified.
-		@throws InvalidScenarioFile"""
-		try:
-			return cls._parse_yaml_file(filename)['author']
-		except KeyError:
-			return _("unknown")
+		fallback = _('unknown')
+		yamldata = cls._parse_yaml_file(filename)
+		difficulty = yamldata.get('difficulty', fallback)
+		author = yamldata.get('author', fallback)
+		desc = yamldata.get('description', fallback)
+		return difficulty, author, desc
 
 	def drop_events(self):
 		"""Removes all events. Useful when player lost."""

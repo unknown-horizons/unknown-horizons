@@ -40,6 +40,7 @@ from horizons.gui.widgets.minimap import Minimap
 from horizons.world import World
 from horizons.util import SavegameAccessor, WorldObject, Rect
 from horizons.i18n import find_available_languages
+from horizons.scenario import ScenarioEventHandler, InvalidScenarioFileFormat
 
 class SingleplayerMenu(object):
 
@@ -164,7 +165,6 @@ class SingleplayerMenu(object):
 				self.active_right_side.distributeData({ 'maplist' : 0, })
 
 				if show == 'scenario': # update infos for scenario
-					from horizons.scenario import ScenarioEventHandler, InvalidScenarioFileFormat
 					def _update_infos():
 						"""Fill in infos of selected scenario to label"""
 						def _find_map_filename(locale=None):
@@ -261,16 +261,14 @@ class SingleplayerMenu(object):
 							#check if default_locale is in list
 							if LANGUAGENAMES[default_locale] in lang_list.items:
 								lang_list.selected = lang_list.items.index(LANGUAGENAMES[default_locale])
-							#if default locale is not in list then select first one
-							else:
+							else: # select first one
 								lang_list.selected = 0
 
 							_update_infos()
 
 						try:
-							difficulty = ScenarioEventHandler.get_difficulty_from_file( self._get_selected_map() )
-							desc = ScenarioEventHandler.get_description_from_file( self._get_selected_map() )
-							author = ScenarioEventHandler.get_author_from_file( self._get_selected_map() )
+							difficulty, author, desc = \
+								ScenarioEventHandler.get_metadata_from_file( self._get_selected_map() )
 						except InvalidScenarioFileFormat as e:
 							self._show_invalid_scenario_file_popup(e)
 							return
