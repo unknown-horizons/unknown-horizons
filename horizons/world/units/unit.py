@@ -169,7 +169,7 @@ class Unit(MovingObject, ResourceTransferHandler):
 		super(Unit, self).load(db, worldid)
 
 		x, y, owner_id = db("SELECT x, y, owner FROM unit WHERE rowid = ?", worldid)[0]
-		if (owner_id == 0):
+		if owner_id == 0:
 			owner = None
 		else:
 			owner = WorldObject.get_object_by_id(owner_id)

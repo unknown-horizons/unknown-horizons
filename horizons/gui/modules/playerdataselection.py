@@ -39,7 +39,7 @@ class PlayerDataSelection(object):
 		widgets.reload( 'playerdataselection' )
 		self.gui = widgets[ 'playerdataselection' ]
 
-		self.colors = self.gui.findChild(name = 'playercolor')
+		self.colors = self.gui.findChild(name='playercolor')
 		self.selected_color = horizons.main.fife.get_uh_setting("ColorID") # starts at 1!
 		self.set_color(self.selected_color)
 
