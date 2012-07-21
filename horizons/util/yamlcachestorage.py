@@ -73,7 +73,8 @@ class YamlCacheStorage(object):
 		try:
 			obj._reload()
 		except Exception as e:
-			cls.log.exception("Warning: Failed to open %s as cache: %s" % (filename, unicode(e)))
+			e = unicode(str(e), errors='replace')
+			cls.log.exception("Warning: Failed to open %s as cache: %s" % (filename, e))
 			obj._clear()
 		return obj
 
