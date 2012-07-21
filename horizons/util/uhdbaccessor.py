@@ -79,7 +79,7 @@ class UhDbAccessor(DbReader):
 		return map(lambda x: x[0], db_data)
 
 	def get_res_id_and_icon(self, only_tradeable=False, only_inventory=False):
-		"""Returns a list of all resources and the matching icons.
+		"""Returns a list of all resources and the matching icon paths.
 		@param only_tradeable: return only those you can trade.
 		@param only_inventory: return only those displayed in inventories.
 		@return: list of tuples: (resource ids, resource icon)"""

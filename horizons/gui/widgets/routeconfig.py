@@ -219,7 +219,7 @@ class RouteConfig(object):
 		position = self.widgets.index(entry)
 		#remove old resource from waypoints
 		res = self.resource_for_icon[button.up_image.source]
-		if res is not 0:
+		if res != 0:
 			self._route_cmd("remove_from_resource_list", position, res)
 
 		icon = self.icon_for_resource[res_id]
@@ -452,7 +452,7 @@ class RouteConfig(object):
 		                       use_rotation=False,
 		                       on_click=on_click)
 
-		resources = self.session.db.get_res_id_and_icon(True)
+		resources = self.session.db.get_res_id_and_icon(only_tradeable=True)
 		# map an icon for a resource
 		# map a resource for an icon
 		self.resource_for_icon = {}
