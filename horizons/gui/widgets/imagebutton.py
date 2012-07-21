@@ -34,9 +34,11 @@ class OkButton(ImageButton):
 	def __init__(self, name=None, **kwargs):
 		if name is None:
 			name = self.__class__.DEFAULT_NAME
+		size = (34, 40)
 		super(OkButton, self).__init__(
 			name=name,
-			is_focusable = False,
+			is_focusable=False,
+			max_size=size, min_size=size, size=size,
 			up_image="content/gui/images/buttons/ok.png",
 			hover_image="content/gui/images/buttons/ok_h.png",
 			down_image="content/gui/images/buttons/ok.png", **kwargs)
@@ -53,9 +55,11 @@ class CancelButton(ImageButton):
 	def __init__(self, name=None, **kwargs):
 		if name is None:
 			name = self.__class__.DEFAULT_NAME
+		size = (34, 40)
 		super(CancelButton, self).__init__(
 			name=name,
-			is_focusable = False,
+			is_focusable=False,
+			max_size=size, min_size=size, size=size,
 			up_image="content/gui/images/buttons/close.png",
 			hover_image="content/gui/images/buttons/close_h.png",
 			down_image="content/gui/images/buttons/close.png", **kwargs)
@@ -72,9 +76,11 @@ class DeleteButton(ImageButton):
 	def __init__(self, name=None,  **kwargs):
 		if name is None:
 			name = self.__class__.DEFAULT_NAME
+		size = (34, 40)
 		super(DeleteButton, self).__init__(
 			name=name,
-			is_focusable = False,
+			is_focusable=False,
+			max_size=size, min_size=size, size=size,
 			up_image="content/gui/images/buttons/delete.png",
 			hover_image="content/gui/images/buttons/delete_h.png",
 			down_image="content/gui/images/buttons/delete.png", **kwargs)
