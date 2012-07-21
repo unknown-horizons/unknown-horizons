@@ -38,11 +38,24 @@ class YamlCacheStorage(object):
 
 	log = logging.getLogger("yamlcachestorage")
 
+	version = 1
+
 	def __init__(self, filename):
 		super(YamlCacheStorage, self).__init__()
 		self._filename = filename
 		self._data = {}
 		self.log.debug('%s.__init__', self)
+
+	@classmethod
+	def _validate(cls, data):
+		"""Make sure data is a tuple (version no, _data dict) with the right version."""
+		if not isinstance(data, tuple):
+			return False
+		if len(data) != 2:
+			return False
+		if not isinstance(data[1], dict):
+			return False
+		return data[0] == cls.version
 
 	def _reload(self):
 		"""Load the cache from disk if possible. Create an empty cache otherwise."""
@@ -50,9 +63,10 @@ class YamlCacheStorage(object):
 			self.log.debug('%s._reload(loading from file)', self)
 			file = open(self._filename)
 			try:
-				self._data = pickle.load(file)
-				if not isinstance(self._data, dict):
+				data = pickle.load(file)
+				if not self._validate(data):
 					raise RuntimeError('Bad YamlCacheStorage data format')
+				self._data = data[1]
 			finally:
 				file.close()
 			self.log.debug('%s._reload(success)', self)
@@ -84,7 +98,7 @@ class YamlCacheStorage(object):
 		try:
 			file = open(self._filename, 'wb')
 			try:
-				pickle.dump(self._data, file)
+				pickle.dump((self.version, self._data), file)
 			finally:
 				file.close()
 		except Exception as e:
@@ -97,12 +111,15 @@ class YamlCacheStorage(object):
 		self._data = None
 
 	def __getitem__(self, key):
+		self.log.debug("%s.__getitem__('%s')", self, key)
 		return self._data[key]
 
 	def __setitem__(self, key, value):
+		self.log.debug("%s.__setitem__('%s', data excluded)", self, key)
 		self._data[key] = value
 
 	def __contains__(self, item):
+		self.log.debug("%s.__contains__('%s')", self, item)
 		return item in self._data
 
 	def __str__(self):
