@@ -25,7 +25,6 @@ import subprocess
 import sys
 import tempfile
 import os
-import re
 import locale
 
 import horizons.main
@@ -85,11 +84,10 @@ class SingleplayerMenu(object):
 			'random'    : Callback(self._select_single, show='random'),
 			'free_maps' : Callback(self._select_single, show='free_maps')
 		}
+		self.current.mapEvents(event_map)
 
 		# init gui for subcategory
-		del event_map[show]
 		right_side = self.widgets['sp_%s' % show]
-		show_ai_options = False
 		self.current.findChild(name=show).marked = True
 		self.current.aidata.hide()
 
@@ -98,28 +96,28 @@ class SingleplayerMenu(object):
 			self.active_right_side.parent.hideChild(self.active_right_side)
 		right_side.parent.showChild(right_side)
 		self.active_right_side = right_side
-		self._current_mode = show
 
 		if show == 'random':
-			show_ai_options = True
 			self._setup_random_map_selection(right_side)
 			self._setup_game_settings_selection()
 			self._on_random_map_parameter_changed()
 			self.active_right_side.findChild(name="open_random_map_archive").capture(self._open_random_map_archive)
+			self.current.aidata.show()
+
 		elif show == 'free_maps':
 			self.current.files, maps_display = SavegameManager.get_maps()
 
 			self.active_right_side.distributeInitialData({ 'maplist' : maps_display, })
-			if maps_display:
-				# select first entry
-				self.active_right_side.distributeData({ 'maplist' : 0, })
-				self._update_free_map_infos()
 			# update preview whenever something is selected in the list
-			self.active_right_side.findChild(name="maplist").mapEvents({
+			self.active_right_side.mapEvents({
 			  'maplist/action': self._update_free_map_infos,
 			})
-			show_ai_options = True
 			self._setup_game_settings_selection()
+			if maps_display: # select first entry
+				self.active_right_side.distributeData({'maplist': 0})
+			self.current.aidata.show()
+			self._update_free_map_infos()
+
 		elif show == 'campaign':
 			# tell people that we don't have any content
 			text = u"We currently don't have any campaigns available for you. " + \
@@ -129,11 +127,11 @@ class SingleplayerMenu(object):
 
 			self.current.files, maps_display = SavegameManager.get_campaigns()
 			self.active_right_side.distributeInitialData({ 'maplist' : maps_display, })
-			if maps_display: # select first entry
-				self.active_right_side.distributeData({ 'maplist' : 0, })
-			self.active_right_side.findChild(name="maplist").mapEvents({
+			self.active_right_side.mapEvents({
 				'maplist/action': self._update_campaign_infos
 			})
+			if maps_display: # select first entry
+				self.active_right_side.distributeData({'maplist': 0})
 			self._update_campaign_infos()
 
 		elif show == 'scenario':
@@ -145,26 +143,20 @@ class SingleplayerMenu(object):
 			#add all locales to lang list, select current locale as default and sort
 			lang_list = self.current.findChild(name="uni_langlist")
 			self.active_right_side.distributeInitialData({ 'maplist' : maps_display, })
-			# select first entry
-			self.active_right_side.distributeData({ 'maplist' : 0, })
+			if maps_display: # select first entry
+				self.active_right_side.distributeData({'maplist': 0})
 			lang_list.items = self._get_available_languages()
 			cur_locale = horizons.main.fife.get_locale()
 			if LANGUAGENAMES[cur_locale] in lang_list.items:
 				lang_list.selected = lang_list.items.index(LANGUAGENAMES[cur_locale])
 			else:
 				lang_list.selected = 0
-			self.active_right_side.findChild(name="maplist").mapEvents({
+			self.active_right_side.mapEvents({
 				'maplist/action': self._update_scenario_infos,
-			})
-			self.active_right_side.findChild(name="uni_langlist").mapEvents({
 				'uni_langlist/action': self._update_scenario_infos,
 			})
 			self._update_scenario_infos()
 
-		self.current.mapEvents(event_map)
-
-		if show_ai_options:
-			self.current.aidata.show()
 		self.current.show()
 		self.on_escape = self.show_main
 
@@ -193,7 +185,6 @@ class SingleplayerMenu(object):
 
 		self.show_loading_screen()
 		if is_scenario:
-			from horizons.scenario import InvalidScenarioFileFormat
 			try:
 				horizons.main.start_singleplayer(map_file, playername, playercolor, is_scenario=is_scenario)
 			except InvalidScenarioFileFormat as e:
@@ -206,12 +197,6 @@ class SingleplayerMenu(object):
 				self._select_single(show='campaign')
 			scenario = campaign_info.get('scenarios')[0].get('level')
 			map_file = campaign_info.get('scenario_files').get(scenario)
-			# TODO : why this does not work ?
-			#
-			#	horizons.main.start_singleplayer(map_file, playername, playercolor, is_scenario=True, campaign={
-			#		'campaign_name': campaign_info.get('codename'), 'scenario_index': 0, 'scenario_name': scenario
-			#		})
-			#
 			horizons.main._start_map(scenario, ai_players=0, human_ai=False, is_scenario=True, campaign={
 				'campaign_name': campaign_info.get('codename'), 'scenario_index': 0, 'scenario_name': scenario
 			})
