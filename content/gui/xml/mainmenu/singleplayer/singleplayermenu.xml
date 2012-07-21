@@ -32,7 +32,7 @@
 	<!-- load the proper xml submenu template (scenario, random maps, free play, ..) -->
 	<VBox max_size="320,480"  min_size="320,480"  position="520,152"  name="right_side_box" />
 
-	<HBox min_size="0,40" position="640, 600">
+	<HBox max_size="320,40"  min_size="320,40"  position="520,610">
 	<Spacer />
 		<Label name="start_game_label"  text="Start game:" />
 		<OkButton name="okay"  helptext="Start game" />
