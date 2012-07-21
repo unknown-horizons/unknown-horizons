@@ -110,145 +110,56 @@ class SingleplayerMenu(object):
 			self.current.files, maps_display = SavegameManager.get_maps()
 
 			self.active_right_side.distributeInitialData({ 'maplist' : maps_display, })
-			def _update_infos():
-				number_of_players = SavegameManager.get_recommended_number_of_players( self._get_selected_map() )
-				#xgettext:python-format
-				self.current.findChild(name="recommended_number_of_players_lbl").text = \
-					_("Recommended number of players: {number}").format(number=number_of_players)
-				self.map_preview.update_map(self._get_selected_map())
 			if maps_display:
 				# select first entry
 				self.active_right_side.distributeData({ 'maplist' : 0, })
-				_update_infos()
+				self._update_free_map_infos()
 			# update preview whenever something is selected in the list
 			self.active_right_side.findChild(name="maplist").mapEvents({
-			  'maplist/action'              : _update_infos
+			  'maplist/action': self._update_free_map_infos,
 			})
-			self.active_right_side.findChild(name="maplist").capture(_update_infos, event_name="keyPressed")
 			show_ai_options = True
 			self._setup_game_settings_selection()
-		else:
-			if show == 'campaign':
-				self.current.files, maps_display = SavegameManager.get_campaigns()
-				# tell people that we don't have any content
-				text = u"We currently don't have any campaigns available for you. " + \
-					u"If you are interested in adding campaigns to Unknown Horizons, " + \
-					u"please contact us via our website (http://www.unknown-horizons.org)!"
-				self.show_popup("No campaigns available yet", text)
-			elif show == 'scenario':
-				self.current.files, maps_display = SavegameManager.get_available_scenarios()
-				# get the map files and their display names. display tutorials on top.
-				prefer_tutorial = lambda x : ('tutorial' not in x, x)
-				maps_display.sort(key=prefer_tutorial)
-				self.current.files.sort(key=prefer_tutorial)
-				#add all locales to lang list, select current locale as default and sort
-				lang_list = self.current.findChild(name="uni_langlist")
-				self.active_right_side.distributeInitialData({ 'maplist' : maps_display, })
-				# select first entry
-				self.active_right_side.distributeData({ 'maplist' : 0, })
-				lang_list.items = self._get_available_languages()
-				cur_locale = horizons.main.fife.get_locale()
-				if LANGUAGENAMES[cur_locale] in lang_list.items:
-					lang_list.selected = lang_list.items.index(LANGUAGENAMES[cur_locale])
-				else:
-					lang_list.selected = 0
+		elif show == 'campaign':
+			# tell people that we don't have any content
+			text = u"We currently don't have any campaigns available for you. " + \
+				u"If you are interested in adding campaigns to Unknown Horizons, " + \
+				u"please contact us via our website (http://www.unknown-horizons.org)!"
+			self.show_popup("No campaigns available yet", text)
 
+			self.current.files, maps_display = SavegameManager.get_campaigns()
 			self.active_right_side.distributeInitialData({ 'maplist' : maps_display, })
-			if maps_display:
-				# select first entry
+			if maps_display: # select first entry
 				self.active_right_side.distributeData({ 'maplist' : 0, })
+			self.active_right_side.findChild(name="maplist").mapEvents({
+				'maplist/action': self._update_campaign_infos
+			})
+			self._update_campaign_infos()
 
-				if show == 'scenario': # update infos for scenario
-					def _update_infos():
-						"""Fill in infos of selected scenario to label"""
-
-						cur_selected_language = lang_list.selected_item
-						lang_list.items = self._get_available_languages()
-						if cur_selected_language in lang_list.items:
-							lang_list.selected = lang_list.items.index(cur_selected_language)
-						else:
-							lang_list.selected = 0
-
-						def _update_translation_infos(new_map_name):
-							"""Fill in translation infos of selected scenario to translation label.
-							This function also sets scenario map name using locale.
-							(e.g. tutorial -> tutorial_en.yaml)"""
-
-							translation_status_label = self.current.findChild(name="translation_status")
-							yamldata = yamlcache.YamlCache.get_file(new_map_name, game_data=True)
-							translation_status = yamldata.get('translation_status')
-							if translation_status:
-								translation_status_label.text = translation_status
-								translation_status_label.show()
-							else:
-								translation_status_label.hide()
-
-							self.current.files[ self.active_right_side.collectData('maplist') ] = new_map_name
-
-						try: # Add locale postfix to fix scenario file
-							for_locale = LANGUAGENAMES.get_by_value(lang_list.selected_item)
-							_update_translation_infos(self._find_map_filename(for_locale))
-						#if there is no scenario with selected locale then select system's default
-						except IOError:
-							default_locale, default_encoding = locale.getdefaultlocale()
-							try:
-								default_locale = default_locale.split('_')[0]
-							except: #TODO what kind of Exception happens here
-								# If default locale could not be detected use 'EN' as fallback
-								default_locale = "en"
-
-							if LANGUAGENAMES[default_locale] in lang_list.items:
-								lang_list.selected = lang_list.items.index(LANGUAGENAMES[default_locale])
-							else: # select first one
-								lang_list.selected = 0
-
-							_update_infos()
-
-						try:
-							difficulty, author, desc = \
-								ScenarioEventHandler.get_metadata_from_file( self._get_selected_map() )
-						except InvalidScenarioFileFormat as e:
-							self._show_invalid_scenario_file_popup(e)
-							return
-						self.current.findChild(name="uni_map_difficulty").text = \
-							_("Difficulty: {difficulty}").format(difficulty=difficulty) #xgettext:python-format
-						self.current.findChild(name="uni_map_author").text = \
-							_("Author: {author}").format(author=author) #xgettext:python-format
-						self.current.findChild(name="uni_map_desc").text = \
-							_("Description: {desc}").format(desc=desc) #xgettext:python-format
-
-					self.active_right_side.findChild(name="uni_langlist").mapEvents({
-						'uni_langlist/action': _update_infos
-					})
-					self.active_right_side.findChild(name="uni_langlist").capture(_update_infos, event_name="keyPressed")
-					_update_infos()
-					#hide and show current window to keep bugs away from us
-					#if we don't do this, translation_label doesn't hide even if
-					#selected language is english or doesn't show if selected
-					#language has translation_status attribute
-					self.current.hide()
-					self.current.show()
-				elif show == 'campaign': # update infos for campaign
-					def _update_infos():
-						"""Fill in infos of selected campaign to label"""
-						campaign_info = SavegameManager.get_campaign_info(filename = self._get_selected_map())
-						if not campaign_info:
-							self._show_invalid_scenario_file_popup("Unknown error")
-							return
-						self.current.findChild(name="map_difficulty").text = \
-							_("Difficulty: {difficulty}").format(difficulty=campaign_info.get('difficulty', '')) #xgettext:python-format
-						self.current.findChild(name="map_author").text = \
-							_("Author: {author}").format(author=campaign_info.get('author', '')) #xgettext:python-format
-						self.current.findChild(name="map_desc").text = \
-							_("Description: {desc}").format(desc=campaign_info.get('description', '')) #xgettext:python-format
-
-
-				self.active_right_side.findChild(name="maplist").mapEvents({
-					'maplist/action': _update_infos
-				})
-				self.active_right_side.findChild(name="maplist").capture(_update_infos, event_name="keyPressed")
-				_update_infos()
-
+		elif show == 'scenario':
+			self.current.files, maps_display = SavegameManager.get_available_scenarios()
+			# get the map files and their display names. display tutorials on top.
+			prefer_tutorial = lambda x : ('tutorial' not in x, x)
+			maps_display.sort(key=prefer_tutorial)
+			self.current.files.sort(key=prefer_tutorial)
+			#add all locales to lang list, select current locale as default and sort
+			lang_list = self.current.findChild(name="uni_langlist")
+			self.active_right_side.distributeInitialData({ 'maplist' : maps_display, })
+			# select first entry
+			self.active_right_side.distributeData({ 'maplist' : 0, })
+			lang_list.items = self._get_available_languages()
+			cur_locale = horizons.main.fife.get_locale()
+			if LANGUAGENAMES[cur_locale] in lang_list.items:
+				lang_list.selected = lang_list.items.index(LANGUAGENAMES[cur_locale])
+			else:
+				lang_list.selected = 0
+			self.active_right_side.findChild(name="maplist").mapEvents({
+				'maplist/action': self._update_scenario_infos,
+			})
+			self.active_right_side.findChild(name="uni_langlist").mapEvents({
+				'uni_langlist/action': self._update_scenario_infos,
+			})
+			self._update_scenario_infos()
 
 		self.current.mapEvents(event_map)
 
@@ -449,7 +360,6 @@ class SingleplayerMenu(object):
 		popup.mapEvents({OkButton.DEFAULT_NAME : popup.hide})
 		popup.show()
 
-
 	def _get_natural_resource_multiplier(self):
 		return self.resource_densities[int(self.widgets['game_settings'].findChild(name='resource_density_slider').value)]
 
@@ -462,18 +372,94 @@ class SingleplayerMenu(object):
 		@param exception: Something that str() will convert to an error message"""
 		print "Error: ", unicode(str(exception))
 		self.show_error_popup(_("Invalid scenario file"),
-								          description=_("The selected file is not a valid scenario file."),
-								          details=_("Error message:") + u' ' + unicode(str(exception)),
-								          advice=_("Please report this to the author."))
+		                      description=_("The selected file is not a valid scenario file."),
+		                      details=_("Error message:") + u' ' + unicode(str(exception)),
+		                      advice=_("Please report this to the author."))
 
-	def _find_map_filename(self, for_locale, mapfile=None):
+	def _update_free_map_infos(self):
+		number_of_players = SavegameManager.get_recommended_number_of_players( self._get_selected_map() )
+		#xgettext:python-format
+		self.current.findChild(name="recommended_number_of_players_lbl").text = \
+			_("Recommended number of players: {number}").format(number=number_of_players)
+		self.map_preview.update_map(self._get_selected_map())
+
+	def _update_scenario_infos(self):
+		"""Fill in infos of selected scenario to label"""
+		lang_list = self.current.findChild(name="uni_langlist")
+		cur_selected_language = lang_list.selected_item
+		lang_list.items = self._get_available_languages()
+		if cur_selected_language in lang_list.items:
+			lang_list.selected = lang_list.items.index(cur_selected_language)
+		else:
+			lang_list.selected = 0
+
+		cur_locale = LANGUAGENAMES.get_by_value(lang_list.selected_item)
+		translated_scenario = self._find_map_filename(cur_locale)
+		if os.path.exists(translated_scenario):
+			self._update_scenario_translation_infos(translated_scenario)
+		else:
+			default_locale, default_encoding = locale.getdefaultlocale()
+			possibilities = [ # try to find a file for the system locale before falling back to en
+				default_locale,
+				default_locale.split('_')[0],
+				'en',
+			]
+			for lang in possibilities:
+				if LANGUAGENAMES[lang] in lang_list.items:
+					lang_list.selected = lang_list.items.index(LANGUAGENAMES[lang])
+					break
+			else: # (for-else: else only runs if no break occured) select first one
+				lang_list.selected = 0
+
+		try:
+			difficulty, author, desc = \
+				ScenarioEventHandler.get_metadata_from_file( self._get_selected_map() )
+		except InvalidScenarioFileFormat as e:
+			self._show_invalid_scenario_file_popup(e)
+			return
+
+		self.current.findChild(name="uni_map_difficulty").text = \
+			_("Difficulty: {difficulty}").format(difficulty=difficulty) #xgettext:python-format
+		self.current.findChild(name="uni_map_author").text = \
+			_("Author: {author}").format(author=author) #xgettext:python-format
+		self.current.findChild(name="uni_map_desc").text = \
+			_("Description: {desc}").format(desc=desc) #xgettext:python-format
+
+	def _update_campaign_infos(self):
+		"""Fill in infos of selected campaign to label"""
+		campaign_info = SavegameManager.get_campaign_info(filename = self._get_selected_map())
+		if not campaign_info:
+			self._show_invalid_scenario_file_popup("Unknown error")
+			return
+		self.current.findChild(name="map_difficulty").text = \
+			_("Difficulty: {difficulty}").format(difficulty=campaign_info.get('difficulty', '')) #xgettext:python-format
+		self.current.findChild(name="map_author").text = \
+			_("Author: {author}").format(author=campaign_info.get('author', '')) #xgettext:python-format
+		self.current.findChild(name="map_desc").text = \
+			_("Description: {desc}").format(desc=campaign_info.get('description', '')) #xgettext:python-format
+
+	def _update_scenario_translation_infos(self, new_map_name):
+		"""Fill in translation infos of selected scenario to translation label.
+		This function also sets scenario map name using locale.
+		(e.g. tutorial -> tutorial_en.yaml)"""
+		translation_status_label = self.current.findChild(name="translation_status")
+		yamldata = yamlcache.YamlCache.get_file(new_map_name, game_data=True)
+		translation_status = yamldata.get('translation_status')
+		if translation_status:
+			translation_status_label.text = translation_status
+			translation_status_label.show()
+		else:
+			translation_status_label.hide()
+
+		self.current.files[ self.active_right_side.collectData('maplist') ] = new_map_name
+	def _find_map_filename(self, cur_locale, mapfile=None):
 		"""Finds the given map's filename with its locale."""
 		mapfile = mapfile or self._get_selected_map()
 		if mapfile.endswith('.yaml'):
 			yamldata = yamlcache.YamlCache.get_file(mapfile, game_data=True)
 			split_locale = yamldata['locale']
 			mapfile = mapfile.split('_' + split_locale)[0]
-		return mapfile + '_' + for_locale + '.' + SavegameManager.scenario_extension
+		return mapfile + '_' + cur_locale + '.' + SavegameManager.scenario_extension
 
 	def _get_available_languages(self, mapfile=None):
 		return sorted(
