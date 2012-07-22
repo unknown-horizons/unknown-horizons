@@ -41,10 +41,10 @@ class BuySellTab(TabInterface):
 	"""
 	log = logging.getLogger("gui")
 
-	buy_button_path =  "content/gui/images/tabwidget/buysell_buy.png"
-	buy_hover_button_path =  "content/gui/images/tabwidget/buysell_buy_hover.png"
-	sell_button_path = "content/gui/images/tabwidget/buysell_sell.png"
-	sell_hover_button_path = "content/gui/images/tabwidget/buysell_sell_hover.png"
+	buy_button_path =  "content/gui/images/tabwidget/ship_to_warehouse.png"
+	buy_hover_button_path =  "content/gui/images/tabwidget/buysell_toggle.png"
+	sell_button_path = "content/gui/images/tabwidget/warehouse_to_ship.png"
+	sell_hover_button_path = "content/gui/images/tabwidget/buysell_toggle.png"
 
 	dummy_icon_path = "content/gui/icons/resources/none_gray.png"
 
@@ -392,9 +392,11 @@ class BuySellTab(TabInterface):
 		button = slot.findChild(name="buysell")
 		button.up_image = self.buy_button_path
 		button.hover_image = self.buy_hover_button_path
+		button.helptext = _("Buying")
 
 	def _show_sell(self, slot):
 		"""Make slot show sell button. Purely visual change"""
 		button = slot.findChild(name="buysell")
 		button.up_image = self.sell_button_path
 		button.hover_image = self.sell_hover_button_path
+		button.helptext = _("Selling")

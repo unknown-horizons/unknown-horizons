@@ -1,19 +1,21 @@
 <?xml version="1.0"?>
-<Container size="350,50">
+<Container size="350,60">
 	<Label name="warehouse_name" position="0,7" text=""/>
 	<Label name="player_name" position="0,27" text=""/>
-	<ImageButton name="delete_warehouse" position="290,15" border_size="0"
+
+	<ImageButton name="move_up" position="290,6" border_size="0"
+		up_image="content/gui/images/buttons/up_15.png"
+		down_image="content/gui/images/buttons/up_15.png"
+		hover_image="content/gui/images/buttons/up_15_h.png"
+		helptext="Move up"  comment="Trade route entry" />
+
+	<ImageButton name="delete_warehouse" position="290,23" border_size="0"
 		up_image="content/gui/images/buttons/delete_small.png"
 		down_image="content/gui/images/buttons/delete_small.png"
 		hover_image="content/gui/images/buttons/delete_small_h.png"
 		helptext="Delete entry"  comment="Trade route entry" />
 
-	<ImageButton name="move_up" position="290,0" border_size="0"
-		up_image="content/gui/images/buttons/up_15.png"
-		down_image="content/gui/images/buttons/up_15.png"
-		hover_image="content/gui/images/buttons/up_15_h.png"
-		helptext="Move up"  comment="Trade route entry" />
-	<ImageButton name="move_down" position="290,34" border_size="0"
+	<ImageButton name="move_down" position="290,44" border_size="0"
 		up_image="content/gui/images/buttons/down_15.png"
 		down_image="content/gui/images/buttons/down_15.png"
 		hover_image="content/gui/images/buttons/down_15_h.png"

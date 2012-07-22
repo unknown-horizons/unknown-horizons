@@ -43,7 +43,8 @@ class RouteConfig(object):
 	dummy_icon_path = "content/gui/icons/resources/none_gray.png"
 	buy_button_path = "content/gui/images/tabwidget/warehouse_to_ship.png"
 	sell_button_path = "content/gui/images/tabwidget/ship_to_warehouse.png"
-	MAX_ENTRIES = 6
+	hover_button_path =  "content/gui/images/tabwidget/buysell_toggle.png"
+	MAX_ENTRIES = 7
 	MIN_ENTRIES = 2
 	def __init__(self, instance):
 		self.instance = instance
@@ -179,14 +180,14 @@ class RouteConfig(object):
 	def show_load_icon(self, slot):
 		button = slot.findChild(name="buysell")
 		button.up_image = self.buy_button_path
-		button.hover_image = self.buy_button_path
+		button.hover_image = self.hover_button_path
 		button.helptext = _("Loading into ship")
 		slot.action = "load"
 
 	def show_unload_icon(self, slot):
 		button = slot.findChild(name="buysell")
 		button.up_image = self.sell_button_path
-		button.hover_image = self.sell_button_path
+		button.hover_image = self.hover_button_path
 		button.helptext = _("Unloading from ship")
 		slot.action = "unload"
 
@@ -195,7 +196,7 @@ class RouteConfig(object):
 		res_button = slot.findChild(name="button")
 		res = self.resource_for_icon[res_button.up_image.source]
 
-		if res is not 0:
+		if res != 0:
 			self._route_cmd("toggle_load_unload", position, res)
 
 		if slot.action is "unload":
@@ -224,6 +225,7 @@ class RouteConfig(object):
 
 		icon = self.icon_for_resource[res_id]
 		button.up_image, button.down_image, button.hover_image = icon, icon, icon
+		button.max_size = button.min_size = button.size = (32, 32)
 
 		#hide the resource menu
 		self.hide_resource_menu()
@@ -296,18 +298,16 @@ class RouteConfig(object):
 				continue
 			cb = Callback(self.add_resource, slot, res_id, entry)
 			if res_id == 0 or inventory is None: # no fillbar e.g. on dead settlement (shouldn't happen) or dummy slot
-				button = ImageButton(size=(46, 46))
+				button = ImageButton(size=(32, 32))
 				icon = self.icon_for_resource[res_id]
 				button.up_image, button.down_image, button.hover_image = icon, icon, icon
-				button.capture(cb)
 			else: # button with fillbar
 				amount = inventory[res_id]
 				filled = int(float(inventory[res_id]) / float(inventory.get_limit(res_id)) * 100.0)
 				button = ImageFillStatusButton.init_for_res(self.session.db, res_id,
 			                                            	amount=amount, filled=filled,
 			                                            	use_inactive_icon=False)
-				button.button.capture(cb)
-
+			button.button.capture(cb)
 
 			current_hbox.addChild(button)
 			if index >= amount_per_line:
@@ -336,13 +336,13 @@ class RouteConfig(object):
 		self.resource_menu_shown = False
 		self._gui.findChild(name="resources").removeAllChildren()
 
-	def add_trade_slots(self, entry, num):
+	def add_trade_slots(self, entry, slot_amount):
 		x_position = 105
 		#initialize slots with empty dict
 		self.slots[entry] = {}
-		for num in range(0, num):
+		for num in range(slot_amount):
 			slot = load_uh_widget('trade_single_slot.xml')
-			slot.position = x_position, 0
+			slot.position = (x_position, 0)
 
 			slot.action = "load"
 
@@ -388,8 +388,8 @@ class RouteConfig(object):
 			self.add_resource(self.slots[entry][index - 1],
 			                  res_id,
 			                  entry,
-			                  has_value = True,
-			                  value = resource_list[res_id])
+			                  has_value=True,
+			                  value=resource_list[res_id])
 			index += 1
 
 		entry.mapEvents({
