@@ -20,18 +20,19 @@
 # ###################################################
 
 import weakref
+import functools
 
 from fife import fife
 
 from horizons.gui.util import load_uh_widget
 from horizons.util import Callback, Point
 from fife.extensions.pychan import widgets
-from fife.extensions.pychan.widgets import ImageButton
 from horizons.component.storagecomponent import StorageComponent
 from horizons.gui.widgets.minimap import Minimap
 from horizons.command.uioptions import RouteConfigCommand
 from horizons.component.namedcomponent import NamedComponent
 from horizons.component.ambientsoundcomponent import AmbientSoundComponent
+from horizons.gui.util import create_resource_selection_dialog
 from horizons.gui.widgets import OkButton
 
 import horizons.main
@@ -215,7 +216,7 @@ class RouteConfig(object):
 		self._route_cmd("add_to_resource_list", position, res_id, amount)
 		slot.adaptLayout()
 
-	def add_resource(self, slot, res_id, entry, has_value=False, value=0):
+	def add_resource(self, res_id, slot=None, entry=None, has_value=False, value=0):
 		button = slot.findChild(name="button")
 		position = self.widgets.index(entry)
 		#remove old resource from waypoints
@@ -263,7 +264,7 @@ class RouteConfig(object):
 			self.show_resource_menu(widget.parent, widget.parent.parent)
 		elif event.getButton() == fife.MouseEvent.RIGHT:
 			# remove the load/unload order
-			self.add_resource(widget.parent, 0, widget.parent.parent)
+			self.add_resource(slot=widget.parent, res_id=0, entry=widget.parent.parent)
 
 	def show_resource_menu(self, slot, entry):
 		position = self.widgets.index(entry)
@@ -271,70 +272,33 @@ class RouteConfig(object):
 			self.hide_resource_menu()
 		self.resource_menu_shown = True
 
-		vbox = self._gui.findChild(name="resources")
-		lbl = widgets.Label(name='select_res_label', text=_('Select a resource:'))
-		vbox.addChild( lbl )
-
-		scrollarea = widgets.ScrollArea(name="resources_scrollarea")
-		res_box = widgets.VBox()
-		scrollarea.addChild(res_box)
-		vbox.addChild(scrollarea)
-
-		# TODO: use create_resource_selection_dialog from util/gui.py
-
-		#hardcoded for 5 works better than vbox.width / button_width
-		amount_per_line = 5
-
-		current_hbox = widgets.HBox(max_size="326,46")
-		index = 1
-
+		on_click = functools.partial(self.add_resource, slot=slot, entry=entry)
 		settlement = entry.settlement()
 		inventory = settlement.get_component(StorageComponent).inventory if settlement else None
-		from horizons.gui.widgets.imagefillstatusbutton import ImageFillStatusButton
+		widget = 'traderoute_resource_selection.xml'
 
-		for res_id in sorted(self.icon_for_resource):
-			if res_id in self.instance.route.waypoints[position]['resource_list'] and \
-			   slot.findChild(name='button').up_image.source is not self.icon_for_resource[res_id]:
-				continue
-			cb = Callback(self.add_resource, slot, res_id, entry)
-			if res_id == 0 or inventory is None: # no fillbar e.g. on dead settlement (shouldn't happen) or dummy slot
-				button = ImageButton(size=(32, 32))
-				icon = self.icon_for_resource[res_id]
-				button.up_image, button.down_image, button.hover_image = icon, icon, icon
-			else: # button with fillbar
-				amount = inventory[res_id]
-				filled = int(float(inventory[res_id]) / float(inventory.get_limit(res_id)) * 100.0)
-				button = ImageFillStatusButton.init_for_res(self.session.db, res_id,
-			                                            	amount=amount, filled=filled,
-			                                            	use_inactive_icon=False)
-			button.button.capture(cb)
+		def res_filter(res_id):
+			same_icon = slot.findChild(name='button').up_image.source == self.icon_for_resource[res_id]
+			already_listed = res_id in self.instance.route.waypoints[position]['resource_list']
+			return not (same_icon or already_listed)
 
-			current_hbox.addChild(button)
-			if index >= amount_per_line:
-				index -= amount_per_line
-				res_box.addChild(current_hbox)
-				current_hbox = widgets.HBox(max_size="326,26")
-			index += 1
-		current_hbox.addSpacer(widgets.Spacer())
-		#TODO this spacer does absolutely nothing.
-		res_box.addChild(current_hbox)
+		dlg = create_resource_selection_dialog(on_click=on_click, inventory=inventory,
+			db=self.session.db, widget=widget, amount_per_line=6, res_filter=res_filter)
 
+		self._gui.findChild(name="traderoute_resources").addChild(dlg)
 		self._gui.adaptLayout()
 		self._resource_selection_area_layout_hack_fix()
 
 	def _resource_selection_area_layout_hack_fix(self):
 		# no one knows why this is necessary, but sometimes we need to set the values anew
-		vbox = self._gui.findChild(name="resources")
+		vbox = self._gui.findChild(name="traderoute_resources")
 		scrollarea = vbox.findChild(name="resources_scrollarea")
 		if scrollarea:
-			scrollarea.max_width = 316
-			scrollarea.width = 316
-			vbox.max_width = 316
-			vbox.width = 316
+			scrollarea.max_width = scrollarea.width = vbox.max_width = vbox.width = 320
 
 	def hide_resource_menu(self):
 		self.resource_menu_shown = False
-		self._gui.findChild(name="resources").removeAllChildren()
+		self._gui.findChild(name="traderoute_resources").removeAllChildren()
 
 	def add_trade_slots(self, entry, slot_amount):
 		x_position = 105
@@ -385,9 +349,9 @@ class RouteConfig(object):
 		for res_id in resource_list:
 			if index > self.slots_per_entry:
 				break
-			self.add_resource(self.slots[entry][index - 1],
-			                  res_id,
-			                  entry,
+			self.add_resource(slot=self.slots[entry][index - 1],
+			                  res_id=res_id,
+			                  entry=entry,
 			                  has_value=True,
 			                  value=resource_list[res_id])
 			index += 1

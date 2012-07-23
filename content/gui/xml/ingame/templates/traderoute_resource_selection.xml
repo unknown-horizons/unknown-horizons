@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<VBox name="traderoute_resource_selection" position="0,5" max_size="330,155" min_size="330,155">
+
+	<Label name='select_res_label'  text='Select a resource:' />
+
+	<!-- Displays list of resources to select one which is displayed in this slot. -->
+	<ScrollArea min_size="330,135" max_size="330,135" size="330,135" name="resources_scrollarea">
+		<VBox name="resources" max_size="326,42000" min_size="326,0">
+		<Spacer />
+		</VBox>
+	</ScrollArea>
+</VBox>
