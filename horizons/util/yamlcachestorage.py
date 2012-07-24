@@ -38,13 +38,13 @@ class YamlCacheStorage(object):
 
 	log = logging.getLogger("yamlcachestorage")
 
+	# Increment this when the users of this class change the way they use it.
 	version = 1
 
 	def __init__(self, filename):
 		super(YamlCacheStorage, self).__init__()
 		self._filename = filename
 		self._data = {}
-		self.log.debug('%s.__init__', self)
 
 	@classmethod
 	def _validate(cls, data):
@@ -60,7 +60,7 @@ class YamlCacheStorage(object):
 	def _reload(self):
 		"""Load the cache from disk if possible. Create an empty cache otherwise."""
 		if os.path.exists(self._filename):
-			self.log.debug('%s._reload(loading from file)', self)
+			self.log.debug('%s._reload(): loading cache from disk', self)
 			file = open(self._filename)
 			try:
 				data = pickle.load(file)
@@ -69,14 +69,13 @@ class YamlCacheStorage(object):
 				self._data = data[1]
 			finally:
 				file.close()
-			self.log.debug('%s._reload(success)', self)
+			self.log.debug('%s._reload(): successfully loaded cache from disk', self)
 		else:
-			self.log.debug('%s._reload(no existing file: start new cache)', self)
 			self._clear()
 
 	def _clear(self):
 		"""Clear the cache in memory."""
-		self.log.debug('%s._clear', self)
+		self.log.debug('%s._clear(): creating a new cache', self)
 		self._data = {}
 
 	@classmethod
@@ -87,38 +86,44 @@ class YamlCacheStorage(object):
 		try:
 			obj._reload()
 		except Exception as e:
+			# Ignore all exceptions because loading the cache from disk is not critical.
 			e = unicode(str(e), errors='replace')
-			cls.log.exception("Warning: Failed to open %s as cache: %s" % (filename, e))
+			cls.log.warning("Warning: Failed to open %s as cache: %s\nThis warning is expected when upgrading from old versions.\n" % (filename, e))
 			obj._clear()
 		return obj
 
 	def sync(self):
 		"""Write the file to disk if possible. Do nothing otherwise."""
-		self.log.debug('%s.sync', self)
 		try:
 			file = open(self._filename, 'wb')
 			try:
 				pickle.dump((self.version, self._data), file)
+				self.log.debug('%s.sync(): success', self)
 			finally:
 				file.close()
 		except Exception as e:
-			self.log.exception("Warning: Unable to save cache into %s: %s" % (self._filename, unicode(e)))
+			# Ignore all exceptions because saving the cache on disk is not critical.
+			self.log.warning("Warning: Unable to save cache into %s: %s" % (self._filename, unicode(e)))
 
 	def close(self):
-		self.log.debug('%s.close', self)
+		"""Write the file to disk if possible and then invalidate the object in memory."""
+		self.log.debug('%s.close()', self)
 		self.sync()
 		self._filename = None
 		self._data = None
 
 	def __getitem__(self, key):
+		"""This function enables the following syntax: cache[key]"""
 		self.log.debug("%s.__getitem__('%s')", self, key)
 		return self._data[key]
 
 	def __setitem__(self, key, value):
+		"""This function enables the following syntax: cache[key] = value"""
 		self.log.debug("%s.__setitem__('%s', data excluded)", self, key)
 		self._data[key] = value
 
 	def __contains__(self, item):
+		"""This function enables the following syntax: item in cache"""
 		self.log.debug("%s.__contains__('%s')", self, item)
 		return item in self._data
 
