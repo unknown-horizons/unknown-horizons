@@ -84,11 +84,11 @@ events:
    - {type: set_var, arguments: ["tutStepDone", 19]}
   conditions:
    - type: settlement_res_stored_greater
-     arguments: [4, 9]
+     arguments: [RES.BOARDS, 9]
    - type: settlement_res_stored_greater
-     arguments: [5, 9]
+     arguments: [RES.FOOD, 9]
    - type: settlement_res_stored_greater
-     arguments: [6, 9]
+     arguments: [RES.TOOLS, 9]
    - type: var_gt
      arguments: ["tutStepDone", 15]
    - {type: var_lt, arguments: ["tutStepDone", 19]}
@@ -126,7 +126,7 @@ events:
    - {type: set_var, arguments: ["tutStepDone", 22]}
   conditions:
    - type: buildings_connected_to_warehouse_gt
-     arguments: [8, 0]
+     arguments: [BUILDINGS.LUMBERJACK, 0]
    - type: var_gt
      arguments: ["tutStepDone", 18]
    - {type: var_lt, arguments: ["tutStepDone", 22]}
@@ -160,13 +160,13 @@ events:
    - {type: set_var, arguments: ["tutStepDone", 25]}
   conditions:
    - type: building_num_of_type_greater
-     arguments: [9, 0]
+     arguments: [BUILDINGS.HUNTER, 0]
    - type: building_num_of_type_greater
-     arguments: [11, 0]
+     arguments: [BUILDINGS.FISHER, 0]
    - type: buildings_connected_to_warehouse_gt
-     arguments: [9, 0]
+     arguments: [BUILDINGS.HUNTER, 0]
    - type: buildings_connected_to_warehouse_gt
-     arguments: [11, 0]
+     arguments: [BUILDINGS.FISHER, 0]
    - type: var_gt
      arguments: ["tutStepDone", 21]
    - {type: var_lt, arguments: ["tutStepDone", 25]}
@@ -188,7 +188,7 @@ events:
    - {type: set_var, arguments: ["tutStepDone", 28]}
   conditions:
    - type: building_num_of_type_greater
-     arguments: [4, 0]
+     arguments: [BUILDINGS.MAIN_SQUARE, 0]
    - type: var_gt
      arguments: ["tutStepDone", 24]
    - {type: var_lt, arguments: ["tutStepDone", 28]}
@@ -218,7 +218,7 @@ events:
    - {type: set_var, arguments: ["tutStepDone", 31]}
   conditions:
    - type: buildings_connected_to_building_gt
-     arguments: [3,4,0]
+     arguments: [BUILDINGS.RESIDENTIAL, BUILDINGS.MAIN_SQUARE, 0]
    - type: var_gt
      arguments: ["tutStepDone", 27]
    - {type: var_lt, arguments: ["tutStepDone", 31]}
@@ -252,7 +252,7 @@ events:
    - {type: set_var, arguments: ["tutStepDone", 34]}
   conditions:
    - type: buildings_connected_to_building_gt
-     arguments: [3,4,3]
+     arguments: [BUILDINGS.RESIDENTIAL, BUILDINGS.MAIN_SQUARE, 3]
    - type: var_gt
      arguments: ["tutStepDone", 30]
    - {type: var_lt, arguments: ["tutStepDone", 34]}
@@ -290,9 +290,9 @@ events:
    - {type: set_var, arguments: ["tutStepDone", 37]}
   conditions:
    - type: building_num_of_type_greater
-     arguments: [6,0]
+     arguments: [BUILDINGS.SIGNAL_FIRE, 0]
    - type: building_in_range
-     arguments: [6,1]
+     arguments: [BUILDINGS.SIGNAL_FIRE, BUILDINGS.WAREHOUSE]
    - type: var_gt
      arguments: ["tutStepDone", 33]
    - {type: var_lt, arguments: ["tutStepDone", 37]}
@@ -326,7 +326,7 @@ events:
    - {type: set_var, arguments: ["tutStepDone", 40]}
   conditions:
    - type: settlement_res_stored_greater
-     arguments: [6, 29]
+     arguments: [RES.TOOLS, 29]
    - type: var_gt
      arguments: ["tutStepDone", 36]
    - {type: var_lt, arguments: ["tutStepDone", 40]}
@@ -357,7 +357,7 @@ events:
    - {type: set_var, arguments: ["tutStepDone", 43]}
   conditions:
    - type: buildings_connected_to_building_gt
-     arguments: [3,5,3]
+     arguments: [BUILDINGS.RESIDENTIAL, BUILDINGS.PAVILION, 3]
    - type: var_gt
      arguments: ["tutStepDone", 39]
    - {type: var_lt, arguments: ["tutStepDone", 43]}
@@ -391,7 +391,7 @@ events:
    - {type: set_var, arguments: ["tutStepDone", 46]}
   conditions:
    - type: settler_level_greater
-     arguments: [0]
+     arguments: [TIER.SAILORS]
    - type: var_gt
      arguments: ["tutStepDone", 42]
    - {type: var_lt, arguments: ["tutStepDone", 46]}
@@ -427,7 +427,7 @@ events:
    - {type: set_var, arguments: ["tutStepDone", 49]}
   conditions:
    - type: building_num_of_type_greater
-     arguments: [20, 0]
+     arguments: [BUILDINGS.FARM, 0]
    - type: var_gt
      arguments: ["tutStepDone", 45]
    - {type: var_lt, arguments: ["tutStepDone", 49]}
@@ -466,7 +466,7 @@ events:
    - {type: set_var, arguments: ["tutStepDone", 52]}
   conditions:
    - type: building_num_of_type_greater
-     arguments: [18, 0]
+     arguments: [BUILDINGS.PASTURE, 0]
    - type: var_gt
      arguments: ["tutStepDone", 48]
    - {type: var_lt, arguments: ["tutStepDone", 52]}
@@ -490,7 +490,7 @@ events:
    - {type: set_var, arguments: ["tutStepDone", 55]}
   conditions:
    - type: building_num_of_type_greater
-     arguments: [2, 0]
+     arguments: [BUILDINGS.STORAGE, 0]
    - type: var_gt
      arguments: ["tutStepDone", 51]
    - {type: var_lt, arguments: ["tutStepDone", 55]}
@@ -512,9 +512,9 @@ events:
    - {type: set_var, arguments: ["tutStepDone", 58]}
   conditions:
    - type: settlement_res_stored_greater
-     arguments: [3, 0]
+     arguments: [RES.TEXTILE, 0]
    - type: building_num_of_type_greater
-     arguments: [7, 0]
+     arguments: [BUILDINGS.WEAVER, 0]
    - type: var_gt
      arguments: ["tutStepDone", 54]
    - {type: var_lt, arguments: ["tutStepDone", 58]}
@@ -555,9 +555,9 @@ events:
    - type: settlement_inhabitants_greater
      arguments: [50]
    - type: building_num_of_type_greater
-     arguments: [3, 3]
+     arguments: [BUILDINGS.RESIDENTIAL, 3]
    - type: settler_level_greater
-     arguments: [0]
+     arguments: [TIER.SAILORS]
    - type: player_balance_greater
      arguments: [0]
    - type: var_gt
