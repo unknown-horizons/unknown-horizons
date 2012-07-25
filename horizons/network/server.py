@@ -226,7 +226,7 @@ class Server(object):
 		packet = None
 		try:
 			packet = packets.unserialize(event.packet.data, True)
-		except Exception, e:
+		except Exception as e:
 			logging.warning("[RECEIVE] Unknown or malformed packet from %s: %s!" % (peer.address, e))
 			self.fatalerror(event.peer, "Unknown or malformed packet. Please check your game version")
 			return

@@ -66,7 +66,7 @@ class ChangeListener(object):
 			if listener:
 				try:
 					listener()
-				except ReferenceError, e:
+				except ReferenceError as e:
 					# listener object is dead, don't crash since it doesn't need updates now anyway
 					print 'Warning: the dead are listening to', self, ': ', e
 					import traceback
