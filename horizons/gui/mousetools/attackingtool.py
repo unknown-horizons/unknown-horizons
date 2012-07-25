@@ -88,10 +88,7 @@ class AttackingTool(SelectionTool):
 			if not self.session.world.diplomacy.are_enemies(local_player, instance.owner) \
 				and not evt.isShiftPressed():
 				continue
-			try:
-				if instance.has_component(HealthComponent):
-					target = instance
-			except AttributeError:
-				pass
+			if instance.has_component(HealthComponent):
+				target = instance
 		return target
 
