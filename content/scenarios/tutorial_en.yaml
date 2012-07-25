@@ -45,7 +45,7 @@ events:
 
        TASK: Build a warehouse at the coast.
    - type: set_var
-     arguments: ["tutStepDone", 16]
+     arguments: ["tutorial_progress", 16]
   conditions:
    - type: time_passed
      arguments: [0]
@@ -83,7 +83,7 @@ events:
           "content/gui/icons/resources/50/004.png",
        ]]
    - type: set_var
-     arguments: ["tutStepDone", 19]
+     arguments: ["tutorial_progress", 19]
   conditions:
    - type: settlement_res_stored_greater
      arguments: [RES.BOARDS, 9]
@@ -92,9 +92,9 @@ events:
    - type: settlement_res_stored_greater
      arguments: [RES.TOOLS, 9]
    - type: var_gt
-     arguments: ["tutStepDone", 15]
+     arguments: ["tutorial_progress", 15]
    - type: var_lt
-     arguments: ["tutStepDone", 19]
+     arguments: ["tutorial_progress", 19]
 
 - # food supply: hunter and fisher
   actions:
@@ -127,14 +127,14 @@ events:
           "content/gui/icons/resources/50/005.png",
        ]]
    - type: set_var
-     arguments: ["tutStepDone", 22]
+     arguments: ["tutorial_progress", 22]
   conditions:
    - type: buildings_connected_to_warehouse_gt
      arguments: [BUILDINGS.LUMBERJACK, 0]
    - type: var_gt
-     arguments: ["tutStepDone", 18]
+     arguments: ["tutorial_progress", 18]
    - type: var_lt
-     arguments: ["tutStepDone", 22]
+     arguments: ["tutorial_progress", 22]
 
 - # main square
   actions:
@@ -163,7 +163,7 @@ events:
      - [Gallery, ["content/gui/icons/tabwidget/mainsquare/inhabitants0_a.png"]]
      - In the different increment overview tabs you can see statistics about your inhabitants. You also set the increment-specific global tax here and allow or deny inhabitants of this increment to upgrade to the next higher one.
    - type: set_var
-     arguments: ["tutStepDone", 25]
+     arguments: ["tutorial_progress", 25]
   conditions:
    - type: building_num_of_type_greater
      arguments: [BUILDINGS.HUNTER, 0]
@@ -174,9 +174,9 @@ events:
    - type: buildings_connected_to_warehouse_gt
      arguments: [BUILDINGS.FISHER, 0]
    - type: var_gt
-     arguments: ["tutStepDone", 21]
+     arguments: ["tutorial_progress", 21]
    - type: var_lt
-     arguments: ["tutStepDone", 25]
+     arguments: ["tutorial_progress", 25]
 
 - # 1 tent
   actions:
@@ -193,14 +193,14 @@ events:
 
        TASK: Build a tent and connect it to the main square. Tents dont need to be connected to any of the companies.
    - type: set_var
-     arguments: ["tutStepDone", 28]
+     arguments: ["tutorial_progress", 28]
   conditions:
    - type: building_num_of_type_greater
      arguments: [BUILDINGS.MAIN_SQUARE, 0]
    - type: var_gt
-     arguments: ["tutStepDone", 24]
+     arguments: ["tutorial_progress", 24]
    - type: var_lt
-     arguments: ["tutStepDone", 28]
+     arguments: ["tutorial_progress", 28]
 
 - # 4 tents
   actions:
@@ -225,14 +225,14 @@ events:
 
        TIP: Holding down SHIFT eases constructing multiple buildings of the same kind.
    - type: set_var
-     arguments: ["tutStepDone", 31]
+     arguments: ["tutorial_progress", 31]
   conditions:
    - type: buildings_connected_to_building_gt
      arguments: [BUILDINGS.RESIDENTIAL, BUILDINGS.MAIN_SQUARE, 0]
    - type: var_gt
-     arguments: ["tutStepDone", 27]
+     arguments: ["tutorial_progress", 27]
    - type: var_lt
-     arguments: ["tutStepDone", 31]
+     arguments: ["tutorial_progress", 31]
 
 - # Build a signal fire
   actions:
@@ -261,14 +261,14 @@ events:
 
        TASK: Build a signal fire at the coast close to your warehouse.
    - type: set_var
-     arguments: ["tutStepDone", 34]
+     arguments: ["tutorial_progress", 34]
   conditions:
    - type: buildings_connected_to_building_gt
      arguments: [BUILDINGS.RESIDENTIAL, BUILDINGS.MAIN_SQUARE, 3]
    - type: var_gt
-     arguments: ["tutStepDone", 30]
+     arguments: ["tutorial_progress", 30]
    - type: var_lt
-     arguments: ["tutStepDone", 34]
+     arguments: ["tutorial_progress", 34]
 
 - # Trading
   actions:
@@ -301,16 +301,16 @@ events:
        TASK: Buy as many tools as you need to have 30 tools in stock!
      - [Gallery, ["content/gui/icons/resources/50/006.png"]]
    - type: set_var
-     arguments: ["tutStepDone", 37]
+     arguments: ["tutorial_progress", 37]
   conditions:
    - type: building_num_of_type_greater
      arguments: [BUILDINGS.SIGNAL_FIRE, 0]
    - type: building_in_range
      arguments: [BUILDINGS.SIGNAL_FIRE, BUILDINGS.WAREHOUSE]
    - type: var_gt
-     arguments: ["tutStepDone", 33]
+     arguments: ["tutorial_progress", 33]
    - type: var_lt
-     arguments: ["tutStepDone", 37]
+     arguments: ["tutorial_progress", 37]
 
 - # build pavilion
   actions:
@@ -339,14 +339,14 @@ events:
        TASK: Build a pavilion with a trail to the tents in order to fulfill your sailors' demand for faith.
      - [Gallery, ["content/gui/icons/buildmenu/005.png"]]
    - type: set_var
-     arguments: ["tutStepDone", 40]
+     arguments: ["tutorial_progress", 40]
   conditions:
    - type: settlement_res_stored_greater
      arguments: [RES.TOOLS, 29]
    - type: var_gt
-     arguments: ["tutStepDone", 36]
+     arguments: ["tutorial_progress", 36]
    - type: var_lt
-     arguments: ["tutStepDone", 40]
+     arguments: ["tutorial_progress", 40]
 
 - # Upgrade housing
   actions:
@@ -372,14 +372,14 @@ events:
        TASK: Set the tax level to Low (left end) and wait for sailors to upgrade.
      - [Gallery, ["content/gfx/buildings/pioneers/residential/as_hut0/idle/45/0.png"]]
    - type: set_var
-     arguments: ["tutStepDone", 43]
+     arguments: ["tutorial_progress", 43]
   conditions:
    - type: buildings_connected_to_building_gt
      arguments: [BUILDINGS.RESIDENTIAL, BUILDINGS.PAVILION, 3]
    - type: var_gt
-     arguments: ["tutStepDone", 39]
+     arguments: ["tutorial_progress", 39]
    - type: var_lt
-     arguments: ["tutStepDone", 43]
+     arguments: ["tutorial_progress", 43]
 
 - # build farm
   actions:
@@ -408,14 +408,14 @@ events:
        TASK: Build a farm.
      - [Gallery, ["content/gui/icons/buildmenu/020.png"]]
    - type: set_var
-     arguments: ["tutStepDone", 46]
+     arguments: ["tutorial_progress", 46]
   conditions:
    - type: settler_level_greater
      arguments: [TIER.SAILORS]
    - type: var_gt
-     arguments: ["tutStepDone", 42]
+     arguments: ["tutorial_progress", 42]
    - type: var_lt
-     arguments: ["tutStepDone", 46]
+     arguments: ["tutorial_progress", 46]
 
 - # farm finished, build fields now (pasture)
   actions:
@@ -446,14 +446,14 @@ events:
      - [Gallery, ["content/gui/icons/buildmenu/018.png",
                   "content/gui/icons/buildmenu/019.png"]]
    - type: set_var
-     arguments: ["tutStepDone", 49]
+     arguments: ["tutorial_progress", 49]
   conditions:
    - type: building_num_of_type_greater
      arguments: [BUILDINGS.FARM, 0]
    - type: var_gt
-     arguments: ["tutStepDone", 45]
+     arguments: ["tutorial_progress", 45]
    - type: var_lt
-     arguments: ["tutStepDone", 49]
+     arguments: ["tutorial_progress", 49]
 
 - # storage tent
   actions:
@@ -487,14 +487,14 @@ events:
        TASK: Build a storage tent, preferably where you need collectors.
      - [Gallery, ["content/gui/icons/buildmenu/002.png"]]
    - type: set_var
-     arguments: ["tutStepDone", 52]
+     arguments: ["tutorial_progress", 52]
   conditions:
    - type: building_num_of_type_greater
      arguments: [BUILDINGS.PASTURE, 0]
    - type: var_gt
-     arguments: ["tutStepDone", 48]
+     arguments: ["tutorial_progress", 48]
    - type: var_lt
-     arguments: ["tutStepDone", 52]
+     arguments: ["tutorial_progress", 52]
 
 
 - # Weavers for processing the stuff from pastures
@@ -513,14 +513,14 @@ events:
        TASK: Build a weaver positioned so it can get wool.
      - [Gallery, ["content/gui/icons/buildmenu/007.png"]]
    - type: set_var
-     arguments: ["tutStepDone", 55]
+     arguments: ["tutorial_progress", 55]
   conditions:
    - type: building_num_of_type_greater
      arguments: [BUILDINGS.STORAGE, 0]
    - type: var_gt
-     arguments: ["tutStepDone", 51]
+     arguments: ["tutorial_progress", 51]
    - type: var_lt
-     arguments: ["tutStepDone", 55]
+     arguments: ["tutorial_progress", 55]
 
 - # how to win
   actions:
@@ -537,16 +537,16 @@ events:
        TASK: Reach a total number of 50 inhabitants and a positive balance to complete this tutorial.
      - [Gallery, ["content/gui/icons/widgets/cityinfo/inhabitants.png"]]
    - type: set_var
-     arguments: ["tutStepDone", 58]
+     arguments: ["tutorial_progress", 58]
   conditions:
    - type: settlement_res_stored_greater
      arguments: [RES.TEXTILE, 0]
    - type: building_num_of_type_greater
      arguments: [BUILDINGS.WEAVER, 0]
    - type: var_gt
-     arguments: ["tutStepDone", 54]
+     arguments: ["tutorial_progress", 54]
    - type: var_lt
-     arguments: ["tutStepDone", 58]
+     arguments: ["tutorial_progress", 58]
 
 - # final message
   actions:
@@ -578,7 +578,7 @@ events:
      - [Gallery, ["content/unknown-horizons.xpm",
                   "content/gfx/misc/status_icons/as_book_flip/idle/45/book20125.png"]]
    - type: set_var
-     arguments: ["tutStepDone", 61]
+     arguments: ["tutorial_progress", 61]
   conditions:
    - type: settlements_num_greater
      arguments: [0]
@@ -591,16 +591,16 @@ events:
    - type: player_balance_greater
      arguments: [0]
    - type: var_gt
-     arguments: ["tutStepDone", 57]
+     arguments: ["tutorial_progress", 57]
    - type: var_lt
-     arguments: ["tutStepDone", 61]
+     arguments: ["tutorial_progress", 61]
 
 - # Winning conditions
   actions:
    - type: win
   conditions:
    - type: var_gt
-     arguments: ["tutStepDone", 60]
+     arguments: ["tutorial_progress", 60]
 
 mapfile: development.sqlite
 difficulty: Tutorial
