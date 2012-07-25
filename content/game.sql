@@ -130,7 +130,7 @@ INSERT INTO "message_text" VALUES('MOVE_INVALID_LOCATION', 'Cannot go here.');
 INSERT INTO "message_text" VALUES('MOVE_OUTSIDE_OF_WORLD', 'Your crew refuses to leave this map.');
 INSERT INTO "message_text" VALUES('NEED_MORE_RES',    'You need more {resource} to build this building.');
 INSERT INTO "message_text" VALUES('NEW_SETTLEMENT',   'A new settlement was founded by {player}.');
-INSERT INTO "message_text" VALUES('NEW_UNIT',         'A new ship has been created.');
+INSERT INTO "message_text" VALUES('NEW_UNIT',         'A new ship by the name of {name} has been created.');
 INSERT INTO "message_text" VALUES('NEW_WORLD',        'A new world has been created.');
 INSERT INTO "message_text" VALUES('NO_MAIN_SQUARE_IN_RANGE', 'Some of your inhabitants have no access to a main square.');
 INSERT INTO "message_text" VALUES('QUICKSAVE',        'Your game has been quicksaved.');

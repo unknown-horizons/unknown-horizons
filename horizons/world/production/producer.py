@@ -38,6 +38,7 @@ from horizons.util.changelistener import metaChangeListenerDecorator
 from horizons.messaging import AddStatusIcon, RemoveStatusIcon
 from horizons.world.production.utilisation import Utilisation, FullUtilisation, FieldUtilisation
 from horizons.util.python.callback import Callback
+from horizons.component.namedcomponent import NamedComponent
 
 @metaChangeListenerDecorator("production_finished")
 @metaChangeListenerDecorator("activity_changed")
@@ -578,9 +579,9 @@ class UnitProducer(QueueProducer):
 								tile = self.session.world.get_tile(point)
 								if tile is not None and tile.is_water and coord not in self.session.world.ship_map:
 									# execute bypassing the manager, it's simulated on every machine
-									CreateUnit(self.instance.owner.worldid, unit, point.x, point.y)(issuer=self.instance.owner)
+									u = CreateUnit(self.instance.owner.worldid, unit, point.x, point.y)(issuer=self.instance.owner)
 									# Fire a message indicating that the ship has been created
-									self.session.ingame_gui.message_widget.add(x=None, y=None, string_id='NEW_UNIT')
+									self.session.ingame_gui.message_widget.add(x=point.x, y=point.y, string_id='NEW_UNIT', message_dict={'name' : u.get_component(NamedComponent).name})
 									found_tile = True
 									break
 						radius += 1
