@@ -334,7 +334,7 @@ class World(BuildingOwner, WorldObject):
 			# this would be the case if the savegame originates from a different installation.
 			# if there's more than one of this kind, we can't be sure what to select.
 			# TODO: create interface for selecting player, if we want this
-			if(len(human_players) == 1):
+			if len(human_players) == 1:
 				# exactly one player, we can quite safely use this one
 				self.player = human_players[0]
 			elif not human_players and self.players:

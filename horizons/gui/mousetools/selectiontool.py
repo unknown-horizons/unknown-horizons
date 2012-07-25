@@ -118,12 +118,12 @@ class SelectionTool(NavigationTool):
 
 			#if there's at least one of player unit, we don't select any enemies
 			#applies both to buildings and ships
-			if( any((self.is_owned_by_player(instance) for instance in instances))):
+			if any((self.is_owned_by_player(instance) for instance in instances)):
 				instances = self.filter_owner(instances)
 
 			self._update_selection( instances, do_multi )
 
-		elif (evt.getButton() == fife.MouseEvent.RIGHT):
+		elif evt.getButton() == fife.MouseEvent.RIGHT:
 			pass
 		else:
 			super(SelectionTool, self).mouseDragged(evt)
@@ -135,7 +135,7 @@ class SelectionTool(NavigationTool):
 			self.apply_select()
 			del self.select_begin, self.select_old
 			self.session.view.renderer['GenericRenderer'].removeAll(self.__class__._SELECTION_RECTANGLE_NAME)
-		elif (evt.getButton() == fife.MouseEvent.RIGHT):
+		elif evt.getButton() == fife.MouseEvent.RIGHT:
 			pass
 		else:
 			super(SelectionTool, self).mouseReleased(evt)

@@ -122,7 +122,7 @@ class Inventory(pychan.widgets.Container):
 				vbox.addChild(current_hbox)
 				current_hbox = pychan.widgets.HBox(padding=0)
 			index += 1
-		if (index <= self.ITEMS_PER_LINE): # Hide/Remove second line
+		if index <= self.ITEMS_PER_LINE: # Hide/Remove second line
 			icons = self.parent.findChildren(name='slot')
 			if len(icons) > self.ITEMS_PER_LINE:
 				self.parent.removeChildren(icons[self.ITEMS_PER_LINE-1:])

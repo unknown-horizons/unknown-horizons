@@ -185,7 +185,7 @@ class Server(object):
 		# NOTE: ALWAYS initialize peer.data
 		event.peer.data = player.sid
 
-		if (player.protocol > 0):
+		if player.protocol > 0:
 			logging.warning("[CONNECT] %s runs old or unsupported protocol" % (player))
 			self.fatalerror(event.peer, "Old or unsupported multiplayer protocol. Please check your game version")
 			return
@@ -311,9 +311,9 @@ class Server(object):
 	def __find_game_from_uuid(self, packet):
 		game = None
 		for _game in self.games:
-			if (packet.clientversion != _game.clientversion):
+			if packet.clientversion != _game.clientversion:
 				continue
-			if (packet.uuid != _game.uuid):
+			if packet.uuid != _game.uuid:
 				continue
 			game = _game
 			break

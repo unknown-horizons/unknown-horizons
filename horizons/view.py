@@ -174,7 +174,7 @@ class View(ChangeListener):
 
 	def zoom_out(self, track_cursor=False):
 		zoom = self.cam.getZoom() * VIEW.ZOOM_LEVELS_FACTOR
-		if(zoom < VIEW.ZOOM_MIN):
+		if zoom < VIEW.ZOOM_MIN:
 			zoom = VIEW.ZOOM_MIN
 		if track_cursor:
 			self._prepare_zoom_to_cursor(zoom)
@@ -182,7 +182,7 @@ class View(ChangeListener):
 
 	def zoom_in(self, track_cursor=False):
 		zoom = self.cam.getZoom() / VIEW.ZOOM_LEVELS_FACTOR
-		if(zoom > VIEW.ZOOM_MAX):
+		if zoom > VIEW.ZOOM_MAX:
 			zoom = VIEW.ZOOM_MAX
 		if track_cursor:
 			self._prepare_zoom_to_cursor(zoom)

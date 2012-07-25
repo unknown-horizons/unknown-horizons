@@ -39,8 +39,8 @@ class AttackingTool(SelectionTool):
 		super(AttackingTool, self).__init__(session)
 
 	def mousePressed(self, evt):
-		if (evt.getButton() == fife.MouseEvent.RIGHT):
-			target_mapcoord = self.session.view.cam.toMapCoordinates(\
+		if evt.getButton() == fife.MouseEvent.RIGHT:
+			target_mapcoord = self.session.view.cam.toMapCoordinates(
 				fife.ScreenPoint(evt.getX(), evt.getY()), False)
 
 			target = self._get_attackable_instance(evt)

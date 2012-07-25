@@ -104,16 +104,16 @@ class NavigationTool(CursorTool):
 		super(NavigationTool, self).remove()
 
 	def mousePressed(self, evt):
-		if (evt.getButton() == fife.MouseEvent.MIDDLE):
+		if evt.getButton() == fife.MouseEvent.MIDDLE:
 			self._last_mmb_scroll_point = (evt.getX(), evt.getY())
 			self.middle_scroll_active = True
 
 	def mouseReleased(self, evt):
-		if (evt.getButton() == fife.MouseEvent.MIDDLE):
+		if evt.getButton() == fife.MouseEvent.MIDDLE:
 			self.middle_scroll_active = False
 
 	def mouseDragged(self, evt):
-		if (evt.getButton() == fife.MouseEvent.MIDDLE):
+		if evt.getButton() == fife.MouseEvent.MIDDLE:
 			if self.middle_scroll_active:
 				scroll_by = ( self._last_mmb_scroll_point[0] - evt.getX(),
 				              self._last_mmb_scroll_point[1] - evt.getY() )

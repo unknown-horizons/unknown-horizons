@@ -100,6 +100,6 @@ def setup_tax_slider(slider, val_label, settlement, level):
 	slider.stylize('book')
 	def on_slider_change():
 		val_label.text = unicode(slider.value)
-		if(settlement.tax_settings[level] != slider.value):
+		if settlement.tax_settings[level] != slider.value:
 			SetTaxSetting(settlement, level, slider.value).execute(settlement.session)
 	slider.capture(on_slider_change)

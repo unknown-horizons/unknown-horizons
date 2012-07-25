@@ -56,7 +56,7 @@ class _Tooltip(object):
 		if isinstance(where, tuple):
 			x, y = where
 		else:
-			if (where.getButton() == fife.MouseEvent.MIDDLE):
+			if where.getButton() == fife.MouseEvent.MIDDLE:
 				return
 
 			x, y = where.getX(), where.getY()
@@ -71,7 +71,8 @@ class _Tooltip(object):
 		# by setting the top container's position to 0, 0.
 		# Since this position is currently unused, it can serve as invalid flag,
 		# and dropping these events seems to lead to the desired placements
-		def get_top(w): return get_top(w.parent) if w.parent else w
+		def get_top(w):
+			return get_top(w.parent) if w.parent else w
 		top_pos = get_top(self).position
 		if top_pos == (0, 0):
 			return
