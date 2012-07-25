@@ -209,8 +209,6 @@ class LogBook(PickBeltWidget):
 			parameter_type = parameter[0]
 		if isinstance(parameter, basestring):
 			add = Label(text=unicode(parameter), wrap_text=True, min_size=(335, 0), max_size=(335, 508))
-		elif not parameter:
-			add = None
 		elif parameter_type == u'Label':
 			add = Label(text=unicode(parameter[1]), wrap_text=True, min_size=(335, 0), max_size=(335, 508))
 		elif parameter_type == u'Image':
