@@ -82,34 +82,33 @@ for event in scenario['events']:
 		at = action['type']
 		if at not in ('message', 'logbook'):
 			continue
-		elif at == 'message':
-			comment = COMMENT_MESSAGEWIDGET
-			for argument in action['arguments']:
-				if isinstance(argument, int) or not argument:
-					# ignore strings that only consist of newlines
-					continue
-				argument = prep(argument)
-				write(comment, argument)
 		elif at == 'logbook':
 			for widget_def in action['arguments']:
+				if not widget_def:
+					continue
 				if isinstance(widget_def, basestring):
 					content = widget_def.rstrip('\n')
 					# ignore strings that only consist of newlines
-					if content:
-						comment = COMMENT_TEXT
-						widget = prep(content)
-					else:
+					if not content:
 						continue
+					comment = COMMENT_TEXT
+					widget = prep(content)
 				elif widget_def[0] == 'Label' and widget_def[1]:
 					content = widget_def[1].rstrip('\n')
 					# ignore strings that only consist of newlines
-					if content:
-						comment = COMMENT_TEXT
-						widget = prep(content)
-					else:
+					if not content:
 						continue
+					comment = COMMENT_TEXT
+					widget = prep(content)
 				elif widget_def[0] == 'Headline':
 					comment = COMMENT_HEADING
+					widget = prep(widget_def[1].rstrip('\n'))
+				elif widget_def[0] == 'Message' and widget_def[1]:
+					content = widget_def[1].rstrip('\n')
+					# ignore strings that only consist of newlines
+					if not content:
+						continue
+					comment = COMMENT_MESSAGEWIDGET
 					widget = prep(widget_def[1].rstrip('\n'))
 				elif widget_def[0] in ('Image', 'Gallery', 'Pagebreak'):
 					continue
@@ -128,6 +127,11 @@ xgettext --output-dir=po --output=$1.pot \
          --msgid-bugs-address=translate-uh@lists.unknown-horizons.org \
          po/$1.py
 rm po/$1.py
+
+# some strings contain two entries per line => remove line numbers from both
+perl -pi -e 's,(#: .*):[0-9][0-9]*,\1,g' po/$1.pot
+perl -pi -e 's,(#: .*):[0-9][0-9]*,\1,g' po/$1.pot
+
 
 diff=$(git diff --numstat po/$1.pot |awk '{print $1;}')
 if [ $diff -le 2 ]; then      # only changed version and date (two lines)
