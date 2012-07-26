@@ -97,7 +97,7 @@ class Player(ComponentHolder, WorldObject):
 	@property
 	def settlements(self):
 		"""Calculate settlements dynamically to save having a redundant list here"""
-		return [ settlement for settlement in self.session.world.settlements if \
+		return [ settlement for settlement in self.session.world.settlements if
 		         settlement.owner == self ]
 
 	def save(self, db):
@@ -192,8 +192,8 @@ class HumanPlayer(Player):
 		if level_up:
 			# add message and update ingame gui
 			self.session.ingame_gui.message_widget.add(point=message.sender.position.center(),
-			                                                    string_id='SETTLER_LEVEL_UP',
-			                                                    message_dict={'level': message.level+1})
+			                                           string_id='SETTLER_LEVEL_UP',
+			                                           message_dict={'level': message.level+1})
 		return level_up
 
 	def notify_mine_empty(self, mine):
