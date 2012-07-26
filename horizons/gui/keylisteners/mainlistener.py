@@ -96,7 +96,7 @@ class MainListener(fife.IKeyListener, fife.ConsoleExecuter, LivingObject):
 			horizons.main.fife.engine.getRenderBackend().captureScreen(screenshotfilename)
 			if self.gui.session is not None:
 				# ingame message if there is a session
-				self.gui.session.ingame_gui.message_widget.add(x=None, y=None, string_id='SCREENSHOT',
+				self.gui.session.ingame_gui.message_widget.add(point=None, string_id='SCREENSHOT',
 																													message_dict={'file': screenshotfilename})
 		elif action == _Actions.QUICKLOAD:
 			from horizons.main import _load_last_quicksave

@@ -245,7 +245,7 @@ class MessageWidget(LivingObject):
 	def save(self, db):
 		for message in self.active_messages:
 			if message.id is not None and message.id != 'CHAT': # only save default messages (for now)
-				db("INSERT INTO message_widget_active (id, x, y, read, created, display, message) VALUES (?, ?, ?, ?, ?, ?, ?)", message.id, message.x, message.y, int(message.read), message.created, message.display, message.message)
+				db("INSERT INTO message_widget_active (id, x, y,, read, created, display, message) VALUES (?, ?, ?, ?, ?, ?, ?)", message.id, message.x, message.y, int(message.read), message.created, message.display, message.message)
 		for message in self.archive:
 			if message.id is not None and message.id != 'CHAT':
 				db("INSERT INTO message_widget_archive (id, x, y, read, created, display, message) VALUES (?, ?, ?, ?, ?, ?, ?)", message.id, message.x, message.y, int(message.read), message.created, message.display, message.message)

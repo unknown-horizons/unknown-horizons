@@ -55,13 +55,13 @@ def show_message(session, type=None, *messages):
 	If you pass more than one message, they are shown simultaneously."""
 	visible_ticks = Scheduler().get_ticks(MESSAGES.CUSTOM_MSG_VISIBLE_FOR)
 	
-	return [session.ingame_gui.message_widget.add_custom(x=None, y=None, messagetext=msg, msg_type=type, visible_for=visible_ticks)
+	return [session.ingame_gui.message_widget.add_custom(point=None, messagetext=msg, msg_type=type, visible_for=visible_ticks)
 	        for msg in messages]
 
 @register(name='db_message')
 def show_db_message(session, database_message_id):
 	"""Shows a message with predefined text in the messagewidget."""
-	session.ingame_gui.message_widget.add(x=None, y=None, string_id=database_message_id)
+	session.ingame_gui.message_widget.add(point=None, string_id=database_message_id)
 
 @register(name='logbook')
 def show_logbook_entry_delayed(session, *parameters):
