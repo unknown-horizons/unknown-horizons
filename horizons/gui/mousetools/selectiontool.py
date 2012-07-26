@@ -155,7 +155,7 @@ class SelectionTool(NavigationTool):
 		from horizons.gui.mousetools.attackingtool import AttackingTool
 		attacking_unit_found = False
 		for i in selected:
-			if hasattr(i, 'attack') and i.owner == self.session.world.player:
+			if hasattr(i, 'attack') and i.owner.is_local_player:
 				attacking_unit_found = True
 				self.deselect_at_end = False # Handover to AttackingTool without deselecting
 				break

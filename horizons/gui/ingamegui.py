@@ -178,7 +178,7 @@ class IngameGui(LivingObject):
 		old_was_player_settlement = False
 		if self.settlement is not None:
 			self.settlement.remove_change_listener(self.update_settlement)
-			old_was_player_settlement = (self.settlement.owner == self.session.world.player)
+			old_was_player_settlement = self.settlement.owner.is_local_player
 
 		# save reference to new "current" settlement in self.settlement
 		self.settlement = settlement

@@ -790,7 +790,7 @@ class SettlementBuildingToolLogic(object):
 
 	def _on_update(self, message):
 		if self.building_tool():
-			if self.building_tool().session.world.player == message.sender.owner:
+			if message.sender.owner.is_local_player:
 				# this is generally caused by adding new buildings, therefore new_buildings=True
 				self.building_tool().highlight_buildable(message.changed_tiles, new_buildings=True)
 
