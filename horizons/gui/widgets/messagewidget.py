@@ -80,15 +80,13 @@ class MessageWidget(LivingObject):
 		self._last_message = {} # used to detect fast subsequent messages in add()
 		self.draw_widget()
 
-	def add(self, string_id, point=None, msg_type=None, message_dict=None, sound_file=True, check_duplicate=False):
+	def add(self, string_id, point=None, msg_type=None, message_dict=None, play_sound=True, check_duplicate=False):
 		"""Adds a message to the MessageWidget.
 		@param point: point where the action took place. Clicks on the message will then focus that spot.
 		@param id: message id string, needed to retrieve the message text from the content database.
 		@param type: message type; determines what happens on click
 		@param message_dict: dict with strings to replace in the message, e.g. {'player': 'Arthus'}
-		@param sound_file: if True: play default message speech for string_id
-		                   if False: do not play sound
-		                   if sound file path: play this sound file
+		@param play_sound: whether to play the default message speech for string_id
 		@param check_duplicate: check for pseudo-duplicates (similar messages recently nearby)
 		"""
 		if check_duplicate:
@@ -100,10 +98,7 @@ class MessageWidget(LivingObject):
 					return
 			self._last_message[string_id] = (Scheduler().cur_tick, point)
 
-		sound = {
-							True: get_speech_file(string_id),
-							False: None
-							}.get(sound_file, sound_file)
+		sound = get_speech_file(string_id) if play_sound else None
 		return self._add_message(Message(point, string_id, msg_type=msg_type, created=self.msgcount.next(), message_dict=message_dict), sound)
 
 	def add_custom(self, messagetext, point=None, msg_type=None, visible_for=40, icon_id=1):

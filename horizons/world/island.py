@@ -213,7 +213,7 @@ class Island(BuildingOwner, WorldObject):
 		self.session.ingame_gui.message_widget.add(string_id='NEW_SETTLEMENT',
 		                                           point=position.center(),
 		                                           message_dict={'player':player.name},
-		                                           sound_file=self.session.world.player == player)
+		                                           play_sound=player.is_local_player)
 
 		NewSettlement.broadcast(self, settlement)
 
