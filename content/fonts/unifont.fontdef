@@ -52,6 +52,15 @@ color: 68,42,2
 antialias: 1
 
 
+[Font/14_bold]
+
+type: truetype
+source: content/fonts/Unifont.ttf
+size: 15
+color: 68,42,2
+antialias: 1
+
+
 [Font/18_black]
 
 type: truetype
