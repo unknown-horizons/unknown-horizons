@@ -80,9 +80,9 @@ class MessageWidget(LivingObject):
 		self._last_message = {} # used to detect fast subsequent messages in add()
 		self.draw_widget()
 
-	def add(self, string_id, x=None, y=None, msg_type=None, message_dict=None, sound_file=True, check_duplicate=False):
+	def add(self, string_id, point=None, msg_type=None, message_dict=None, sound_file=True, check_duplicate=False):
 		"""Adds a message to the MessageWidget.
-		@param x, y: int coordinates where the action took place. Clicks on the message will then focus that spot.
+		@param point: point where the action took place. Clicks on the message will then focus that spot.
 		@param id: message id string, needed to retrieve the message text from the content database.
 		@param type: message type; determines what happens on click
 		@param message_dict: dict with strings to replace in the message, e.g. {'player': 'Arthus'}
@@ -95,30 +95,30 @@ class MessageWidget(LivingObject):
 			if string_id in self._last_message:
 				when, where = self._last_message[string_id]
 				if when > Scheduler().cur_tick - Scheduler().get_ticks(self.__class__._DUPLICATE_TIME_THRESHOLD) and \
-				   where.distance( (x, y) ) < self.__class__._DUPLICATE_SPACE_THRESHOLD:
+				   where.distance(point) < self.__class__._DUPLICATE_SPACE_THRESHOLD:
 					# there has been a message nearby recently, abort
 					return
-			self._last_message[string_id] = (Scheduler().cur_tick, Point(x, y))
+			self._last_message[string_id] = (Scheduler().cur_tick, point)
 
 		sound = {
 							True: get_speech_file(string_id),
 							False: None
 							}.get(sound_file, sound_file)
-		return self._add_message(Message(x, y, string_id, msg_type=msg_type, created=self.msgcount.next(), message_dict=message_dict), sound)
+		return self._add_message(Message(point, string_id, msg_type=msg_type, created=self.msgcount.next(), message_dict=message_dict), sound)
 
-	def add_custom(self, messagetext, x=None, y=None, msg_type=None, visible_for=40, icon_id=1):
+	def add_custom(self, messagetext, point=None, msg_type=None, visible_for=40, icon_id=1):
 		""" See docstring for add().
 		Uses no predefined message template from content database like add() does.
 		Instead, directly provides text and icon to be shown (messagetext, icon_id)
 		@param visible_for: how many seconds the message will stay visible in the widget
 		"""
-		return self._add_message(Message(x=x, y=y, id=None, msg_type=msg_type, display=visible_for, created=self.msgcount.next(), message=messagetext, icon_id=icon_id))
+		return self._add_message(Message(point=point, id=None, msg_type=msg_type, display=visible_for, created=self.msgcount.next(), message=messagetext, icon_id=icon_id))
 
 	def add_chat(self, player, messagetext, icon_id=1):
 		""" See docstring for add().
 		"""
 		message_dict = {'player': player, 'message': messagetext}
-		self.add(x=None, y=None, string_id='CHAT', msg_type=None, message_dict=message_dict)
+		self.add(point=None, string_id='CHAT', msg_type=None, message_dict=message_dict)
 		self.chat.append(self.active_messages[0])
 
 	def _add_message(self, message, sound=None):
@@ -245,7 +245,7 @@ class MessageWidget(LivingObject):
 	def save(self, db):
 		for message in self.active_messages:
 			if message.id is not None and message.id != 'CHAT': # only save default messages (for now)
-				db("INSERT INTO message_widget_active (id, x, y, read, created, display, message) VALUES (?, ?, ?, ?, ?, ?, ?)", message.id, message.x, message.y, int(message.read), message.created, message.display, message.message)
+				db("INSERT INTO message_widget_active (id, point, read, created, display, message) VALUES (?, ?, ?, ?, ?, ?, ?)", message.id, message.x, message.y, int(message.read), message.created, message.display, message.message)
 		for message in self.archive:
 			if message.id is not None and message.id != 'CHAT':
 				db("INSERT INTO message_widget_archive (id, x, y, read, created, display, message) VALUES (?, ?, ?, ?, ?, ?, ?)", message.id, message.x, message.y, int(message.read), message.created, message.display, message.message)
@@ -256,11 +256,11 @@ class MessageWidget(LivingObject):
 	def load(self, db):
 		messages = db("SELECT id, x, y, read, created, display, message FROM message_widget_active ORDER BY created ASC")
 		for (msg_id, x, y, read, created, display, message) in messages:
-			msg = Message(x=x, y=y, id=msg_id, created=created, read=bool(read), display=bool(display), message=message)
+			msg = Message(point=Point(x, y), id=msg_id, created=created, read=bool(read), display=bool(display), message=message)
 			self.active_messages.append(msg)
 		messages = db("SELECT id, x, y, read, created, display, message FROM message_widget_archive ORDER BY created ASC")
 		for (msg_id, x, y, read, created, display, message) in messages:
-			msg = Message(x=x, y=y, id=msg_id, created=created, read=bool(read), display=bool(display), message=message)
+			msg = Message(point=Point(x, y), id=msg_id, created=created, read=bool(read), display=bool(display), message=message)
 			if msg_id == 'CHAT':
 				self.chat.append(msg)
 			else:
@@ -282,8 +282,10 @@ class Message(object):
 	@param count: a unique message id number
 	@param message_dict: dict with strings to replace in the message, e.g. {'player': 'Arthus'}
 	"""
-	def __init__(self, x, y, id, created, msg_type=None, read=False, display=None, message=None, message_dict=None, icon_id=None):		
-		self.x, self.y = x, y
+	def __init__(self, point, id, created, msg_type=None, read=False, display=None, message=None, message_dict=None, icon_id=None):
+		self.x, self.y = None, None
+		if point is not None:
+			self.x, self.y = point.x, point.y
 		self.id = id
 		self.type = msg_type
 		self.read = read

@@ -581,7 +581,8 @@ class UnitProducer(QueueProducer):
 									# execute bypassing the manager, it's simulated on every machine
 									u = CreateUnit(self.instance.owner.worldid, unit, point.x, point.y)(issuer=self.instance.owner)
 									# Fire a message indicating that the ship has been created
-									self.session.ingame_gui.message_widget.add(x=point.x, y=point.y, string_id='NEW_UNIT', message_dict={'name' : u.get_component(NamedComponent).name})
+									name = u.get_component(NamedComponent).name
+									self.session.ingame_gui.message_widget.add(string_id='NEW_UNIT', point=point, message_dict={'name' : name})
 									found_tile = True
 									break
 						radius += 1

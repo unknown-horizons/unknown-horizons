@@ -89,7 +89,7 @@ class TearingTool(NavigationTool):
 					if warehouses:
 						# tried to tear a warehouse, this is especially non-tearable
 						pos = warehouses[0].position.origin
-						self.session.ingame_gui.message_widget.add( x=pos.x, y=pos.y, string_id="WAREHOUSE_NOT_TEARABLE" )
+						self.session.ingame_gui.message_widget.add(point=pos, string_id="WAREHOUSE_NOT_TEARABLE" )
 
 			self.selected = WeakList()
 			self._hovering_over = WeakList()

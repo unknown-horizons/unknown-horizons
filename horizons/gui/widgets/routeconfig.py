@@ -79,7 +79,7 @@ class RouteConfig(object):
 
 		# make sure user knows that it's not enabled (if it appears to be complete)
 		if not self.instance.route.enabled and self.instance.route.can_enable():
-			self.session.ingame_gui.message_widget.add(x=None, y=None, string_id="ROUTE_DISABLED")
+			self.session.ingame_gui.message_widget.add(point=None, string_id="ROUTE_DISABLED")
 
 	def on_instance_removed(self):
 		self.hide()
@@ -368,7 +368,7 @@ class RouteConfig(object):
 		@param warehouse: Set to add a specific one, else the selected one gets added.
 		"""
 		if not self.session.world.diplomacy.can_trade(self.session.world.player, warehouse.owner):
-			self.session.ingame_gui.message_widget.add_custom(x=None, y=None, messagetext=_("You are not allowed to trade with this player"))
+			self.session.ingame_gui.message_widget.add_custom(point=None, messagetext=_("You are not allowed to trade with this player"))
 			return
 
 		if len(self.widgets) >= self.MAX_ENTRIES:

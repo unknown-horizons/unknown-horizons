@@ -62,7 +62,7 @@ class Field(NatureBuildingResourceHandler):
 		                     self.settlement.buildings_by_id[ BUILDINGS.FARM ] )
 		if not farm_in_range and self.owner.is_local_player:
 			pos = self.position.origin
-			self.session.ingame_gui.message_widget.add(x=pos.x, y=pos.y, string_id="FIELD_NEEDS_FARM",
+			self.session.ingame_gui.message_widget.add(point=pos, string_id="FIELD_NEEDS_FARM",
 			                                           check_duplicate=True)
 
 class AnimalField(Field):

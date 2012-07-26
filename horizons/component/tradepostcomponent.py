@@ -171,7 +171,7 @@ class TradePostComponent(ChangeListener, Component):
 
 		def err(string, err_type):
 			if not suppress_messages and ship.owner.is_local_player:
-				self.session.ingame_gui.message_widget.add_custom(x=ship.position.x, y=ship.position.y, messagetext=string)
+				self.session.ingame_gui.message_widget.add_custom(point=ship.position, messagetext=string)
 			return 0 if not add_error_type else (0, err_type)
 
 		if resource_id not in self.sell_list:
@@ -213,7 +213,7 @@ class TradePostComponent(ChangeListener, Component):
 
 		def err(string, err_type):
 			if not suppress_messages and ship.owner.is_local_player:
-				self.session.ingame_gui.message_widget.add_custom(x=ship.position.x, y=ship.position.y, messagetext=string)
+				self.session.ingame_gui.message_widget.add_custom(point=ship.position, messagetext=string)
 			return 0 if not add_error_type else 0, err_type
 
 		if resource_id not in self.buy_list:

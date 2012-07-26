@@ -279,7 +279,7 @@ class Settler(BuildableRect, BuildingResourceHandler, BasicBuilding):
 					if not self.__class__._max_increment_reached_notification_displayed:
 						self.__class__._max_increment_reached_notification_displayed = True
 						self.session.ingame_gui.message_widget.add(
-							x=self.position.center().x, y=self.position.center().y, string_id='MAX_INCR_REACHED')
+							point=self.position.center(), string_id='MAX_INCR_REACHED')
 				return
 			if self._upgrade_production:
 				return # already waiting for res
@@ -328,7 +328,7 @@ class Settler(BuildableRect, BuildingResourceHandler, BasicBuilding):
 			self.log.debug("%s: Destroyed by lack of happiness", self)
 			if self.owner.is_local_player:
 				# check_duplicate: only trigger once for different settlers of a neighborhood
-				self.session.ingame_gui.message_widget.add(x=self.position.center().x, y=self.position.center().y,
+				self.session.ingame_gui.message_widget.add(point=self.position.center(),
 			                                           string_id='SETTLERS_MOVED_OUT', check_duplicate=True)
 		else:
 			self.level -= 1
@@ -352,7 +352,7 @@ class Settler(BuildableRect, BuildingResourceHandler, BasicBuilding):
 					return
 		# no main square found
 		# check_duplicate: only trigger once for different settlers of a neighborhood
-		self.session.ingame_gui.message_widget.add(x=self.position.origin.x, y=self.position.origin.y,
+		self.session.ingame_gui.message_widget.add(point=self.position.origin,
 		                                           string_id='NO_MAIN_SQUARE_IN_RANGE', check_duplicate=True)
 
 	def level_upgrade(self, lvl):
