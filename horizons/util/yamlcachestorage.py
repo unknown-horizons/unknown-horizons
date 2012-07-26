@@ -81,7 +81,7 @@ class YamlCacheStorage(object):
 	@classmethod
 	def open(cls, filename):
 		"""Open the cache specified by the file name or create an empty one otherwise."""
-		cls.log.debug('YamlCacheStorage.open(\'%s\')', filename)
+		cls.log.debug("YamlCacheStorage.open('%s')", filename)
 		obj = YamlCacheStorage(filename)
 		try:
 			obj._reload()

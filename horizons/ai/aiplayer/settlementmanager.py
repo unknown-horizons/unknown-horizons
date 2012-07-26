@@ -194,16 +194,16 @@ class SettlementManager(WorldObject):
 	def _set_taxes_and_permissions(self, sailor_taxes, pioneer_taxes, settler_taxes, citizen_taxes, sailor_upgrades, pioneer_upgrades, settler_upgrades):
 		"""Set new tax settings and building permissions."""
 		if abs(self.settlement.tax_settings[TIER.SAILORS] - sailor_taxes) > 1e-9:
-			self.log.info('%s set sailors\' taxes from %.1f to %.1f', self, self.settlement.tax_settings[TIER.SAILORS], sailor_taxes)
+			self.log.info("%s set sailors' taxes from %.1f to %.1f", self, self.settlement.tax_settings[TIER.SAILORS], sailor_taxes)
 			SetTaxSetting(self.settlement, TIER.SAILORS, sailor_taxes).execute(self.land_manager.session)
 		if abs(self.settlement.tax_settings[TIER.PIONEERS] - pioneer_taxes) > 1e-9:
-			self.log.info('%s set pioneers\' taxes from %.1f to %.1f', self, self.settlement.tax_settings[TIER.PIONEERS], pioneer_taxes)
+			self.log.info("%s set pioneers' taxes from %.1f to %.1f", self, self.settlement.tax_settings[TIER.PIONEERS], pioneer_taxes)
 			SetTaxSetting(self.settlement, TIER.PIONEERS, pioneer_taxes).execute(self.land_manager.session)
 		if abs(self.settlement.tax_settings[TIER.SETTLERS] - settler_taxes) > 1e-9:
-			self.log.info('%s set settlers\' taxes from %.1f to %.1f', self, self.settlement.tax_settings[TIER.SETTLERS], settler_taxes)
+			self.log.info("%s set settlers' taxes from %.1f to %.1f", self, self.settlement.tax_settings[TIER.SETTLERS], settler_taxes)
 			SetTaxSetting(self.settlement, TIER.SETTLERS, settler_taxes).execute(self.land_manager.session)
 		if abs(self.settlement.tax_settings[TIER.CITIZENS] - citizen_taxes) > 1e-9:
-			self.log.info('%s set citizens\' taxes from %.1f to %.1f', self, self.settlement.tax_settings[TIER.CITIZENS], citizen_taxes)
+			self.log.info("%s set citizens' taxes from %.1f to %.1f", self, self.settlement.tax_settings[TIER.CITIZENS], citizen_taxes)
 			SetTaxSetting(self.settlement, TIER.CITIZENS, citizen_taxes).execute(self.land_manager.session)
 		if self.settlement.upgrade_permissions[TIER.SAILORS] != sailor_upgrades:
 			self.log.info('%s set sailor upgrade permissions to %s', self, sailor_upgrades)

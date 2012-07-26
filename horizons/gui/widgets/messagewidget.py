@@ -300,7 +300,7 @@ class Message(object):
 				self.message = msg.format(**message_dict if message_dict is not None else {})
 			except KeyError as err:
 				self.message = msg
-				print u"Warning: Unsubstituted string {err} in {id} message \"{msg}\", dict {dic}".format(
+				print u'Warning: Unsubstituted string {err} in {id} message "{msg}", dict {dic}'.format(
 				       err=err, msg=msg, id=id, dic=message_dict)
 
 	def __repr__(self):

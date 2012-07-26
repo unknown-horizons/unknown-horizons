@@ -290,7 +290,7 @@ class Minimap(object):
 				Act(i, *map_coord).execute(self.session)
 		elif event.getButton() == fife.MouseEvent.LEFT:
 			if self.view is None:
-				print 'Warning: Can\'t handle minimap clicks since we have no view object'
+				print "Warning: Can't handle minimap clicks since we have no view object"
 			else:
 				self.view.center(*map_coord)
 

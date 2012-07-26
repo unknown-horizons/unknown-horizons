@@ -251,9 +251,9 @@ def main():
 	try:
 		import yaml
 	except ImportError:
-		headline = _("Error: Unable to find required library \"PyYAML\".")
+		headline = _('Error: Unable to find required library "PyYAML".')
 		msg = _("We are sorry to inform you that a library that is required by Unknown Horizons, is missing and needs to be installed.") + "\n" + \
-		    _("Installers for Windows users are available at \"http://pyyaml.org/wiki/PyYAML\", Linux users should find it in their packagement management system under the name \"pyyaml\" or \"python-yaml\".")
+		    _('Installers for Windows users are available at "http://pyyaml.org/wiki/PyYAML", Linux users should find it in their packagement management system under the name "pyyaml" or "python-yaml".')
 		standalone_error_popup(headline, msg)
 		exit(1)
 
@@ -489,8 +489,8 @@ def find_FIFE(fife_custom_path=None):
 		log().debug("Restarting with args %s", args)
 		os.execvp(args[0], args)
 	else:
-		args[1] = "\"%s\"" % args[1]
-		args += [ "--logfile", "\"%s\"" % logfilename ]
+		args[1] = '"%s"' % args[1]
+		args += [ "--logfile", '"%s"' % logfilename ]
 		log().debug("Restarting using windows workaround with args %s", args)
 		os.system(" ".join(args))
 		sys.exit(0)
@@ -498,7 +498,7 @@ def find_FIFE(fife_custom_path=None):
 def log_paths():
 	"""Prints debug info about paths to log"""
 	log().debug("SYS.PATH: %s", sys.path)
-	log().debug("PATHSEP: \"%s\" SEP: \"%s\"", os.path.pathsep, os.path.sep)
+	log().debug('PATHSEP: "%s" SEP: "%s"', os.path.pathsep, os.path.sep)
 	log().debug("LD_LIBRARY_PATH: %s", os.environ['LD_LIBRARY_PATH'])
 	log().debug("PATH: %s", os.environ['PATH'])
 	log().debug("PYTHONPATH %s", os.environ.get('PYTHONPATH', '<undefined>'))

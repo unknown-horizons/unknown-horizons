@@ -74,11 +74,11 @@ class LastActivePlayerSettlementManager(object):
 		db("INSERT INTO last_active_settlement(type, value) VALUES(?, ?)", "LAST_NONE_FLAG", self._last_player_settlement_hovered_was_none)
 
 	def load(self, db):
-		data = db("SELECT value FROM last_active_settlement WHERE type = \"PLAYER\"")
+		data = db('SELECT value FROM last_active_settlement WHERE type = "PLAYER"')
 		self._last_player_settlement = weakref.ref(WorldObject.get_object_by_id(data[0][0])) if data else None
-		data = db("SELECT value FROM last_active_settlement WHERE type = \"ANY\"")
+		data = db('SELECT value FROM last_active_settlement WHERE type = "ANY"')
 		self._cur_settlement = weakref.ref(WorldObject.get_object_by_id(data[0][0])) if data else None
-		data = db("SELECT value FROM last_active_settlement WHERE type = \"LAST_NONE_FLAG\"")
+		data = db('SELECT value FROM last_active_settlement WHERE type = "LAST_NONE_FLAG"')
 		self._last_player_settlement_hovered_was_none = bool(data[0][0])
 
 	def remove(self):

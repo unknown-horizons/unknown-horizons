@@ -39,13 +39,13 @@ class SavegameUpgrader(object):
 		self.final_path = None
 
 	def _upgrade_to_rev49(self, db):
-		db("CREATE TABLE \"resource_overview_bar\" (object INTEGER NOT NULL, position INTEGER NOT NULL, resource INTEGER NOT NULL)")
+		db('CREATE TABLE "resource_overview_bar" (object INTEGER NOT NULL, position INTEGER NOT NULL, resource INTEGER NOT NULL)')
 
 	def _upgrade_to_rev50(self, db):
-		db("UPDATE stance set stance = \"hold_ground_stance\" where stance =\"hold_ground\"")
-		db("UPDATE stance set stance = \"none_stance\" where stance =\"none\"")
-		db("UPDATE stance set stance = \"flee_stance\" where stance =\"flee_stance\"")
-		db("UPDATE stance set stance = \"aggressive_stance\" where stance =\"aggressive\"")
+		db('UPDATE stance set stance = "hold_ground_stance" where stance = "hold_ground"')
+		db('UPDATE stance set stance = "none_stance" where stance = "none"')
+		db('UPDATE stance set stance = "flee_stance" where stance = "flee_stance"')
+		db('UPDATE stance set stance = "aggressive_stance" where stance = "aggressive"')
 
 	def _upgrade_to_rev51(self, db):
 		# add fire slot to settlers. Use direct numbers since only these work and they must never change.
@@ -96,7 +96,7 @@ class SavegameUpgrader(object):
 			   obj, 42, 6)
 
 	def _upgrade_to_rev56(self, db):
-		db("CREATE TABLE \"last_active_settlement\" ( type STRING NOT NULL, value INTEGER NOT NULL )")
+		db('CREATE TABLE "last_active_settlement" ( type STRING NOT NULL, value INTEGER NOT NULL )')
 		db("INSERT INTO last_active_settlement(type, value) VALUES(?, ?)", "LAST_NONE_FLAG", False)
 
 	def _upgrade_to_rev57(self, db):

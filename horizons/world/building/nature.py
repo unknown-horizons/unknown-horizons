@@ -51,7 +51,7 @@ class Field(NatureBuildingResourceHandler):
 			prod_comp = self.get_component(Producer)
 			productions = prod_comp.get_productions()
 			if not productions:
-				print 'Warning: Field is assumed to always produce, but doesn\'t. ', self
+				print "Warning: Field is assumed to always produce, but doesn't.", self
 			else:
 				run_in = Scheduler().get_ticks(productions[0].get_production_time())
 				Scheduler().add_new_object(self._check_covered_by_farm, self, run_in=run_in)

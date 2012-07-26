@@ -475,7 +475,7 @@ def _start_campaign(campaign_name, force_player_id=None):
 		# This is not very clean, but it's safe.
 
 		if not campaign_name.endswith(".yaml"):
-			print "Error: campaign filenames have to end in \".yaml\"."
+			print 'Error: campaign filenames have to end in ".yaml".'
 			return False
 
 		# check if the user specified a file in the UH campaign dir
