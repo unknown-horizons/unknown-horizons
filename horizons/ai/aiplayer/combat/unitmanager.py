@@ -22,13 +22,11 @@
 import collections
 import logging
 import weakref
-from math import sqrt
 from operator import itemgetter
-from horizons.ai.aiplayer.fleet import Fleet
+from horizons.ai.aiplayer.combat.fleet import Fleet
 from horizons.component.healthcomponent import HealthComponent
 from horizons.component.selectablecomponent import SelectableComponent
 from horizons.util.shapes.point import Point
-from horizons.util.worldobject import WorldObject
 from horizons.world.units.fightingship import FightingShip
 from horizons.world.units.pirateship import PirateShip
 

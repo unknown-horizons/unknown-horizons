@@ -21,23 +21,9 @@
 
 import logging
 
-from horizons.ai.aiplayer.behavior import BehaviorManager
-from horizons.ai.aiplayer.behavior.profile import BehaviorProfile
 from horizons.ai.aiplayer.combat.condition import Condition, get_all_conditions
-from horizons.ai.aiplayer.fleet import Fleet
-from horizons.ai.aiplayer.mission.combat.scouting import ScoutingMission
-from horizons.ai.aiplayer.mission.combat.surpriseattack import SurpriseAttack
-from horizons.ai.aiplayer.unitmanager import UnitManager
-from horizons.command.diplomacy import AddEnemyPair
-from horizons.command.unit import Attack
 from horizons.ai.aiplayer.strategy.condition import  get_all_conditions
 from horizons.component.namedcomponent import NamedComponent
-from horizons.util.python.callback import Callback
-from horizons.util.shapes.circle import Circle
-from horizons.util.shapes.point import Point
-from horizons.util.worldobject import WorldObject
-from horizons.world.units.fightingship import FightingShip
-from horizons.world.units.pirateship import PirateShip
 
 
 class StrategyManager(object):

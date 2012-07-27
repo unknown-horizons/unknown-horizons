@@ -25,8 +25,8 @@ from collections import defaultdict
 from horizons.ai.aiplayer.behavior import BehaviorManager
 from horizons.ai.aiplayer.behavior.behavioractions import BehaviorMoveCallback
 from horizons.ai.aiplayer.behavior.profile import BehaviorProfile
-from horizons.ai.aiplayer.combatmanager import CombatManager
-from horizons.ai.aiplayer.mission.combat.scouting import ScoutingMission
+from horizons.ai.aiplayer.combat.combatmanager import CombatManager
+from horizons.ai.aiplayer.strategy.mission.scouting import ScoutingMission
 from horizons.ai.aiplayer.strategy.strategymanager import StrategyManager
 from horizons.component.stancecomponent import  NoneStance
 from horizons.world.units.weaponholder import MovingWeaponHolder
@@ -46,7 +46,7 @@ from builder import Builder
 from specialdomestictrademanager import SpecialDomesticTradeManager
 from internationaltrademanager import InternationalTradeManager
 from settlementfounder import SettlementFounder
-from unitmanager import UnitManager
+from horizons.ai.aiplayer.combat.unitmanager import UnitManager
 
 # all subclasses of AbstractBuilding have to be imported here to register the available buildings
 from building import AbstractBuilding

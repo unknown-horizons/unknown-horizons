@@ -21,16 +21,10 @@
 
 import logging
 from weakref import WeakKeyDictionary
-from horizons.ai.aiplayer.behavior import BehaviorManager
 from horizons.ai.aiplayer.behavior.profile import BehaviorProfile
-from horizons.ai.aiplayer.unitmanager import UnitManager
-from horizons.command.diplomacy import AddEnemyPair
-from horizons.command.unit import Attack
-from horizons.component.namedcomponent import NamedComponent
+from horizons.ai.aiplayer.combat.unitmanager import UnitManager
 from horizons.ext.enum import Enum
-from horizons.util.worldobject import WorldObject
 from horizons.world.units.fightingship import FightingShip
-from horizons.world.units.pirateship import PirateShip
 
 
 class CombatManager(object):

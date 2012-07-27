@@ -21,20 +21,19 @@
 
 import logging
 from horizons.ai.aiplayer.behavior import BehaviorManager
-from horizons.ai.aiplayer.behavior.behavioractions import BehaviorActionPirateRoutine, BehaviorMoveCallback
+from horizons.ai.aiplayer.behavior.behavioractions import  BehaviorMoveCallback
 from horizons.ai.aiplayer.behavior.profile import BehaviorProfile
-from horizons.ai.aiplayer.combatmanager import CombatManager, PirateCombatManager
-from horizons.ai.aiplayer.unitmanager import UnitManager
+from horizons.ai.aiplayer.combat.combatmanager import  PirateCombatManager
+from horizons.ai.aiplayer.combat.unitmanager import UnitManager
 
 from horizons.scheduler import Scheduler
-from horizons.util import Point, Callback, WorldObject, Circle
+from horizons.util import Point, Callback, WorldObject
 from horizons.constants import UNITS
 from horizons.ext.enum import Enum
 from horizons.ai.generic import GenericAI
 from horizons.command.unit import CreateUnit
 from horizons.world.units.ship import TradeShip
 from horizons.world.units.pirateship import PirateShip
-from horizons.world.units.movingobject import MoveNotPossible
 from horizons.component.namedcomponent import NamedComponent
 from horizons.component.selectablecomponent import SelectableComponent
 

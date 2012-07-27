@@ -20,8 +20,8 @@
 # ###################################################
 from collections import defaultdict
 from horizons.ai.aiplayer.behavior.movecallbacks import BehaviorMoveCallback
-from horizons.ai.aiplayer.mission.combat.surpriseattack import SurpriseAttack
-from horizons.ai.aiplayer.unitmanager import UnitManager
+from horizons.ai.aiplayer.strategy.mission.surpriseattack import SurpriseAttack
+from horizons.ai.aiplayer.combat.unitmanager import UnitManager
 from horizons.command.diplomacy import AddEnemyPair
 
 import logging
