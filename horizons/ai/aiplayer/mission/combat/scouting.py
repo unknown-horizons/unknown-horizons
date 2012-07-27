@@ -19,16 +19,12 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-import logging
 from horizons.ai.aiplayer.mission.combat import FleetMission
 from horizons.ext.enum import Enum
 from horizons.util.python.callback import Callback
 
 from horizons.world.units.movingobject import MoveNotPossible
-from horizons.util import Point, Circle, WorldObject
 from horizons.util.python import decorators
-from horizons.constants import BUILDINGS
-from horizons.component.storagecomponent import StorageComponent
 
 
 class ScoutingMission(FleetMission):

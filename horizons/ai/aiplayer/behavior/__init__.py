@@ -21,6 +21,7 @@
 
 
 import logging
+from horizons.ext.enum import Enum
 
 from horizons.util.worldobject import WorldObject
 
@@ -32,6 +33,7 @@ class BehaviorManager(object):
 	and action, or create a mission object. BehaviorManager does these based on
 	behavior probability and likelihood of success.
 	"""
+	behaviorTypes = Enum("action", "strategy")
 
 	log = logging.getLogger("ai.aiplayer.behavior.behaviormanager")
 
@@ -40,7 +42,33 @@ class BehaviorManager(object):
 		self.world = owner.world
 		self.session = owner.session
 		self.actions = owner.get_random_actions()
+		self.strategies = owner.get_random_strategies()
 
+	def request_behavior(self, type, action_name, behavior_list, **environment):
+		possible_behaviors = []
+		for behavior, probability in behavior_list[type].iteritems():
+			if hasattr(behavior, action_name):
+				certainty = behavior.certainty(action_name, **environment)
+				# final probability is the one defined in profile multiplied by it's certainty
+				self.log.info("Player:%s Behavior:%s Function:%s (p: %s ,c: %s ,f: %s)" % (self.owner.name,
+					behavior.__class__.__name__, action_name, probability, certainty, probability * certainty))
+				possible_behaviors.append((behavior, probability * certainty))
+		print possible_behaviors
+
+		# get the best action possible
+		final_action = self.get_best_behavior(possible_behaviors)
+
+		# call winning action if any is possible
+		if hasattr(final_action, action_name):
+			return getattr(final_action, action_name)(**environment)
+
+	def request_action(self, type, action_name, **environment):
+		return self.request_behavior(type, action_name, self.actions, **environment)
+
+	def request_strategy(self, type, strategy_name, **environment):
+		return self.request_behavior(type, strategy_name, self.strategies, **environment)
+
+		"""
 	def request_action(self, type, action_name, **environment):
 		possible_behaviors = []
 		for behavior, probability in self.actions[type].iteritems():
@@ -52,16 +80,30 @@ class BehaviorManager(object):
 				possible_behaviors.append((behavior, probability * certainty))
 
 		# get the best action possible
-		final_action = self.get_best_behavior(possible_behaviors, action_name, **environment)
+		final_action = self.get_best_behavior(possible_behaviors)
 
 		# call winning action if any is possible
 		if hasattr(final_action, action_name):
 			getattr(final_action, action_name)(**environment)
 
 	def request_strategy(self, type, strategy_name, **environment):
-		pass
+		possible_strategies = []
+		for behavior, probability in self.strategies[type].iteritems():
+			if hasattr(behavior, strategy_name):
+				certainty = behavior.certainty(strategy_name, **environment)
+				self.log.info("Player:%s Behavior:%s Strategy:%s (p: %s ,c: %s ,f: %s)" % (self.owner.name,
+					behavior.__class__.__name__, strategy_name, probability, certainty, probability * certainty))
+				possible_strategies.append((behavior, probability * certainty))
 
-	def get_best_behavior(self, behavior_iterable, action_name, **environment):
+		# get the best action possible
+		final_behavior = self.get_best_behavior(possible_strategies)
+
+		# call winning action if any is possible
+		if hasattr(final_behavior, strategy_name):
+			return getattr(final_behavior, strategy_name)(**environment)
+		"""
+
+	def get_best_behavior(self, behavior_iterable):
 		"""
 		Get best behavior from behavior_iterable (linear time).
 		"""

@@ -20,14 +20,17 @@
 # ###################################################
 
 import logging
+
 from horizons.ai.aiplayer.behavior import BehaviorManager
 from horizons.ai.aiplayer.behavior.profile import BehaviorProfile
+from horizons.ai.aiplayer.combat.condition import Condition, get_all_conditions
 from horizons.ai.aiplayer.fleet import Fleet
 from horizons.ai.aiplayer.mission.combat.scouting import ScoutingMission
 from horizons.ai.aiplayer.mission.combat.surpriseattack import SurpriseAttack
 from horizons.ai.aiplayer.unitmanager import UnitManager
 from horizons.command.diplomacy import AddEnemyPair
 from horizons.command.unit import Attack
+from horizons.ai.aiplayer.strategy.condition import  get_all_conditions
 from horizons.component.namedcomponent import NamedComponent
 from horizons.util.python.callback import Callback
 from horizons.util.shapes.circle import Circle
@@ -54,6 +57,7 @@ class StrategyManager(object):
 		self.session = owner.session
 		self.unit_manager = owner.unit_manager
 		self.missions = set()
+		self.conditions = get_all_conditions(self.owner)
 
 	def report_success(self, mission, msg):
 		self.log.info("Player: %s|StrategyManager|Mission %s was a success: %s", self.owner.worldid, mission, msg)
@@ -91,90 +95,65 @@ class StrategyManager(object):
 		mission.pause_mission()
 		return True
 
-	def handle_strategy_tmp(self):
-		filters = self.unit_manager.filtering_rules
-		rules = (filters.ship_state((self.owner.shipStates.idle,)), filters.fighting(), filters.not_in_fleet())
-		idle_ships = self.unit_manager.get_ships(rules)
-
-		print "IDLE SHIPS:"
-		for ship in idle_ships:
-			print ship.get_component(NamedComponent).name
-		print "//IDLE SHIPS:"
-
-		if idle_ships and len(idle_ships) >= 2:
-			target_point = self.owner.session.world.get_random_possible_ship_position()
-
-			scouting_mission = ScoutingMission.create(self.report_success, self.report_failure, idle_ships, target_point)
-			self.start_mission(scouting_mission)
-
-		print "MISSIONS"
-		for mission in list(self.missions):
-			print mission
-		print "//MISSIONS"
-
-		print "UNIT MANAGER"
-		for fleet in list(self.unit_manager.fleets):
-			print fleet
-		for ship, fleet in self.unit_manager.ships.iteritems():
-			print ship.get_component(NamedComponent).name, fleet.worldid
-		print "//UNIT MANAGER"
-
 	def handle_strategy(self):
-		# TODO: Think of a good way to scan game for certain things here.
-		# Please DON'T mind the mess here.
-		# Create some "Condition" abstraction for that i.e. AreHostileShipsEasyToSingleOut.check(), IsEnemyConsiderablyWeakerAndHostile().check() etc.
-		# Then create mission if any of these occur. Probably attach certain priority/certainty measure to each one in case of many hits.
-
 		filters = self.unit_manager.filtering_rules
 		rules = (filters.ship_state((self.owner.shipStates.idle,)), filters.fighting(), filters.not_in_fleet())
+
+		# Get all available ships that can take part in a mission
 		idle_ships = self.unit_manager.get_ships(rules)
 
-		print "IDLE SHIPS:"
+		# Get all other players
+		other_players = [player for player in self.session.world.players if player != self.owner]
+
+		# Prepare environment
+		environment = {'idle_ships': idle_ships, 'players': other_players}
+
+		# Check which conditions occur
+		occuring_conditions = []
+
+		print
+		print
+		print "CONDITIONS"
+		for condition in self.conditions.keys():
+			condition_outcome = condition.check(**environment)
+			print " ",condition.__class__.__name__,":", ("Yes" if condition_outcome else "No")
+			if condition_outcome:
+				occuring_conditions.append((condition, condition_outcome))
+
+		# Nothing to do when none of the conditions occur
+		if occuring_conditions:
+			# Choose the most important one
+			selected_condition, selected_outcome = sorted(occuring_conditions, key = lambda c: self.conditions[c[0]] * c[1]['certainty'], reverse=True)[0]
+			print "SELECTED:"
+			print selected_condition.__class__.__name__
+			for k,v in selected_outcome.iteritems():
+				print " %s: %s"%(k,v)
+			print "//CONDITIONS"
+
+			# Insert condition-gathered info into environment
+			for k, v in selected_outcome.iteritems():
+				environment[k]=v
+
+			# Try to execute a mission that resolves given condition the best
+			mission = self.owner.behavior_manager.request_strategy(**environment)
+			if mission:
+				self.start_mission(mission)
+
+		## TODO: Debugging section, remove later
+		print "IDLE SHIPS"
 		for ship in idle_ships:
-			print ship.get_component(NamedComponent).name
-		print "//IDLE SHIPS:"
-
-		if idle_ships and len(idle_ships) >= 2:
-			return_point = idle_ships[0].position.copy()
-
-			other_players = []
-			for player in self.session.world.players:
-				if player != self.owner:
-					other_players.append(player)
-			enemy_player = self.session.random.choice(other_players) if other_players else None
-
-			if enemy_player:
-				# target point is enemy's first warehouse position
-				target_point = self.unit_manager.get_player_settlements(enemy_player)[0].warehouse.position
-				(x, y) = target_point.get_coordinates()[4]
-				target_point = Circle(Point(x, y), 5)
-
-				attack_mission = SurpriseAttack.create(self.report_success, self.report_failure, idle_ships, target_point, return_point, enemy_player)
-				self.start_mission(attack_mission)
-
+			print " ",ship.get_component(NamedComponent).name
+		print "//IDLE SHIPS"
 		print "MISSIONS"
 		for mission in list(self.missions):
-			print mission
+			print " ",mission
 		print "//MISSIONS"
-
 		print "UNIT MANAGER"
 		for fleet in list(self.unit_manager.fleets):
-			print fleet
+			print " ", fleet
 		for ship, fleet in self.unit_manager.ships.iteritems():
 			print ship.get_component(NamedComponent).name, fleet.worldid
 		print "//UNIT MANAGER"
-
-		# All it does currently is send idle ships to scouting missions
-
-		"""
-		fleets = self.unit_manager.get_available_ship_groups(None)
-		for fleet in fleets:
-			for ship in fleet:
-				if self.owner.ships[ship] == self.owner.shipStates.idle:
-					scouting_mission = ScoutingMission.create(self.owner.report_success, self.owner.report_failure, ship)
-					self.owner.start_mission(scouting_mission)
-		"""
 
 	def tick(self):
-		#self.handle_strategy_tmp()
 		self.handle_strategy()

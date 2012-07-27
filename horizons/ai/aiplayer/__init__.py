@@ -27,8 +27,8 @@ from horizons.ai.aiplayer.behavior.behavioractions import BehaviorMoveCallback
 from horizons.ai.aiplayer.behavior.profile import BehaviorProfile
 from horizons.ai.aiplayer.combatmanager import CombatManager
 from horizons.ai.aiplayer.mission.combat.scouting import ScoutingMission
-from horizons.ai.aiplayer.strategymanager import StrategyManager
-from horizons.component.stancecomponent import StanceComponent, NoneStance
+from horizons.ai.aiplayer.strategy.strategymanager import StrategyManager
+from horizons.component.stancecomponent import  NoneStance
 from horizons.world.units.weaponholder import MovingWeaponHolder
 
 from mission.foundsettlement import FoundSettlement
@@ -150,6 +150,9 @@ class AIPlayer(GenericAI):
 
 	def get_random_actions(self):
 		return BehaviorProfile.get_random_player_actions(self)
+
+	def get_random_strategies(self):
+		return BehaviorProfile.get_random_player_strategies(self)
 
 	def start_mission(self, mission):
 		self.ships[mission.ship] = self.shipStates.on_a_mission

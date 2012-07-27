@@ -28,19 +28,20 @@ from horizons.world.units.movingobject import MoveNotPossible
 from horizons.util.python import decorators
 
 
-class SurpriseAttack(FleetMission):
+class ChaseShipsAndAttack(FleetMission):
 	"""
-	This is a basic attack mission.
-	1. Send fleet to point A
-	2. Break diplomacy with enemy player P if he is not hostile,
-	3. Begin combat phase
-	4. Return home (point B).
+	This is one of the basic attack missions.
+	1. Sail to given ship on the map until the fleet is in close range
+	2. Begin combat phase
+	3. go to 1 if ship is still alive
+
+	This mission may work the best for 2 ships fleet
 	"""
 
-	missionStates = Enum.get_extended(FleetMission.missionStates, 'sailing_to_target', 'in_combat', 'breaking_diplomacy', 'going_back')
+	missionStates = Enum.get_extended(FleetMission.missionStates, 'sailing_to_target', 'in_combat')
 
 	def __init__(self, success_callback, failure_callback, ships, target_point, return_point, enemy_player):
-		super(SurpriseAttack, self).__init__(success_callback, failure_callback, ships)
+		super(ChaseShipsAndAttack, self).__init__(success_callback, failure_callback, ships)
 		self.__init(target_point, return_point, enemy_player)
 
 	def __init(self, target_point, return_point, enemy_player):
@@ -88,7 +89,6 @@ class SurpriseAttack(FleetMission):
 			self.report_failure("Move was not possible when going back")
 
 	def flee_home(self):
-
 		# check if fleet still exists
 		if self.fleet.size() > 0:
 			try:
@@ -101,6 +101,6 @@ class SurpriseAttack(FleetMission):
 
 	@classmethod
 	def create(cls, success_callback, failure_callback, fleet, target_point, return_point, enemy_player):
-		return SurpriseAttack(success_callback, failure_callback, fleet, target_point, return_point, enemy_player)
+		return ChaseShipsAndAttack(success_callback, failure_callback, fleet, target_point, return_point, enemy_player)
 
-decorators.bind_all(SurpriseAttack)
+decorators.bind_all(ChaseShipsAndAttackAttack)

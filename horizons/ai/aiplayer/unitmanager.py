@@ -221,3 +221,10 @@ class UnitManager(object):
 	# World filtering utils (non-unit related) below, maybe consider creating a separate class for that or simply put in StrategyManager
 	def get_player_settlements(self, player):
 		return [settlement for settlement in self.session.world.settlements if settlement.owner == player]
+
+	def get_player_islands(self, player):
+		return [settlement.island for settlement in self.session.world.settlements if settlement.owner == player]
+
+	def get_player_ships(self, player):
+		return [ship for ship in self.session.world.ships if ship.owner == player]
+

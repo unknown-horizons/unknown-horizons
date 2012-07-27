@@ -20,14 +20,14 @@
 # ###################################################
 from collections import defaultdict
 from horizons.ai.aiplayer.behavior.movecallbacks import BehaviorMoveCallback
+from horizons.ai.aiplayer.mission.combat.surpriseattack import SurpriseAttack
 from horizons.ai.aiplayer.unitmanager import UnitManager
 from horizons.command.diplomacy import AddEnemyPair
 
 import logging
 from horizons.component.namedcomponent import NamedComponent
-from horizons.util.python.callback import Callback
 from horizons.util.shapes.circle import Circle
-from horizons.world.units.movingobject import MoveNotPossible
+from horizons.util.shapes.point import Point
 
 
 class BehaviorAction(object):
@@ -39,6 +39,7 @@ class BehaviorAction(object):
 
 	def __init__(self, owner):
 		self.owner = owner
+		self.unit_manager = owner.unit_manager
 		self.world = owner.world
 		self.session = owner.session
 		# Witchery below is a way to have certainty() always return the same certainty if it's not defined per behavior.
@@ -209,6 +210,7 @@ class BehaviorActionRegular(BehaviorAction):
 		super(BehaviorActionRegular, self).__init__(owner)
 		self._certainty['pirates_in_sight'] = certainty_power_balance_exp
 		self._certainty['fighting_ships_in_sight'] = certainty_power_balance_exp
+		self._certainty['players_share_island'] = self._certainty_fleet_size
 
 	def pirates_in_sight(self, **environment):
 		"""
@@ -258,6 +260,45 @@ class BehaviorActionRegular(BehaviorAction):
 		else:
 			BehaviorAction.log.info('ActionRegular: Enemy worker was not hostile')
 
+	def _certainty_fleet_size(self, **environment):
+		"""
+		Dummy certainty that checks for a fleets size only.
+		"""
+		idle_ships = environment['idle_ships']
+		if len(idle_ships) < 2:
+			return 0.0
+
+		return self.default_certainty
+
+	def players_share_island(self, **environment):
+		"""
+		Response to players sharing an island with AI player.
+		Regular AI should simply attack given player.
+		"""
+		enemy_players = environment['players']
+		idle_ships = environment['idle_ships']
+
+		# TODO: pick the one that has the most land to get back (BehaviorCoward may aim for easiest to beat opponent)
+		enemy_player = enemy_players[0]
+
+		mission = None
+
+		settlements = self.owner.unit_manager.get_player_settlements(enemy_player)
+		if not settlements:
+			return None
+
+		target_point = settlements[0].warehouse.position
+		(x, y) = target_point.get_coordinates()[4]
+		target_point = Circle(Point(x, y), 5)
+
+		if idle_ships and len(idle_ships) >= 2:
+			return_point = idle_ships[0].position.copy()
+			mission = SurpriseAttack.create(self.owner.strategy_manager.report_success,
+				self.owner.strategy_manager.report_failure, idle_ships, target_point, return_point, enemy_player)
+		return mission
+
+	def hostile_players(self, **environment):
+		pass
 
 class BehaviorActionRegularPirate(BehaviorAction):
 

@@ -34,7 +34,7 @@ class BehaviorProfile(WorldObject):
 	If it proves to be useful it will handle loading AI profiles from YAML.
 	"""
 	action_types = Enum('offensive', 'defensive', 'idle')
-	strategy_types = Enum('offensive', 'idle')
+	strategy_types = Enum('offensive', 'idle', 'diplomatic')
 
 	log = logging.getLogger("ai.aiplayer.behaviorprofile")
 
@@ -55,6 +55,20 @@ class BehaviorProfile(WorldObject):
 		actions[cls.action_types.idle][BehaviorActionDoNothing(player)] = 1.0
 
 		return actions
+
+	@classmethod
+	def get_random_player_strategies(cls, player):
+		strategies = {
+			cls.strategy_types.offensive: dict(),
+			cls.strategy_types.diplomatic: dict(),
+		}
+		strategies[cls.strategy_types.offensive][BehaviorActionRegular(player)] = 1.0
+
+		return strategies
+
+	@classmethod
+	def get_random_pirate_strategies(cls, player):
+		return {}
 
 	@classmethod
 	def get_random_pirate_actions(cls, player):
