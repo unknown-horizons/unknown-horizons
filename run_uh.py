@@ -232,8 +232,11 @@ def main():
 	signal.signal(signal.SIGINT, functools.partial(exithandler, 130))
 	signal.signal(signal.SIGTERM, functools.partial(exithandler, 1))
 
-	# use locale-specific time.strftime handling
-	locale.setlocale(locale.LC_TIME, '')
+	# use locale-specific time.strftime handling.
+	try:
+		locale.setlocale(locale.LC_TIME, '')
+	except locale.Error: # Workaround for "locale.Error: unsupported locale setting"
+		pass
 
 	#chdir to Unknown Horizons root
 	os.chdir( find_uh_position() )
