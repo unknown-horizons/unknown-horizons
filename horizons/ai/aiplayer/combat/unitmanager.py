@@ -26,6 +26,7 @@ from operator import itemgetter
 from horizons.ai.aiplayer.combat.fleet import Fleet
 from horizons.component.healthcomponent import HealthComponent
 from horizons.component.selectablecomponent import SelectableComponent
+from horizons.util.shapes.circle import Circle
 from horizons.util.shapes.point import Point
 from horizons.world.units.fightingship import FightingShip
 from horizons.world.units.pirateship import PirateShip
@@ -224,5 +225,9 @@ class UnitManager(object):
 		return [settlement.island for settlement in self.session.world.settlements if settlement.owner == player]
 
 	def get_player_ships(self, player):
-		return [ship for ship in self.session.world.ships if ship.owner == player]
+		return [ship for ship in self.session.world.ships if ship.owner == player and ship.has_component(SelectableComponent)]
 
+	def get_warehouse_position(self, settlement):
+		target_point = settlement.position
+		(x, y) = target_point.get_coordinates()[4]
+		return Circle(Point(x, y), 5)

@@ -112,13 +112,13 @@ class StrategyManager(object):
 			selected_condition, selected_outcome = sorted(occuring_conditions, key = lambda c: self.conditions[c[0]] * c[1]['certainty'], reverse=True)[0]
 			print "SELECTED:"
 			print selected_condition.__class__.__name__
-			for k,v in selected_outcome.iteritems():
-				print " %s: %s"%(k,v)
+			for key, value in selected_outcome.iteritems():
+				print " %s: %s" % (key, value)
 			print "//CONDITIONS"
 
 			# Insert condition-gathered info into environment
-			for k, v in selected_outcome.iteritems():
-				environment[k]=v
+			for key, value in selected_outcome.iteritems():
+				environment[key] = value
 
 			# Try to execute a mission that resolves given condition the best
 			mission = self.owner.behavior_manager.request_strategy(**environment)
@@ -126,20 +126,24 @@ class StrategyManager(object):
 				self.start_mission(mission)
 
 		## TODO: Debugging section, remove later
+		"""j
 		print "IDLE SHIPS"
 		for ship in idle_ships:
 			print " ",ship.get_component(NamedComponent).name
 		print "//IDLE SHIPS"
+		"""
 		print "MISSIONS"
 		for mission in list(self.missions):
 			print " ",mission
 		print "//MISSIONS"
-		print "UNIT MANAGER"
+		"""
+		print "FLEETS"
 		for fleet in list(self.unit_manager.fleets):
 			print " ", fleet
 		for ship, fleet in self.unit_manager.ships.iteritems():
 			print ship.get_component(NamedComponent).name, fleet.worldid
-		print "//UNIT MANAGER"
+		print "//FLEETS"
+		"""
 
 	def tick(self):
 		self.handle_strategy()

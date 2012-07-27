@@ -20,6 +20,7 @@
 # ###################################################
 from collections import defaultdict
 from horizons.ai.aiplayer.behavior.movecallbacks import BehaviorMoveCallback
+from horizons.ai.aiplayer.strategy.mission.chaseshipsandattack import ChaseShipsAndAttack
 from horizons.ai.aiplayer.strategy.mission.surpriseattack import SurpriseAttack
 from horizons.ai.aiplayer.combat.unitmanager import UnitManager
 from horizons.command.diplomacy import AddEnemyPair
@@ -298,7 +299,26 @@ class BehaviorActionRegular(BehaviorAction):
 		return mission
 
 	def hostile_players(self, **environment):
-		pass
+		"""
+		Arrage an attack for hostile ships.
+		"""
+		enemy_players = environment['players']
+		idle_ships = environment['idle_ships']
+
+		# TODO: pick the player according to better condition
+		enemy_player = enemy_players[0]
+
+		enemy_ships = self.unit_manager.get_player_ships(enemy_player)
+
+		if not enemy_ships or len(idle_ships) < 2:
+			return None
+
+		# TODO: pick target ship better
+		target_ship = enemy_ships[0]
+		mission = ChaseShipsAndAttack.create(self.owner.strategy_manager.report_success,
+			self.owner.strategy_manager.report_failure, idle_ships, target_ship)
+
+		return mission
 
 class BehaviorActionRegularPirate(BehaviorAction):
 

@@ -53,13 +53,10 @@ class BehaviorManager(object):
 				self.log.info("Player:%s Behavior:%s Function:%s (p: %s ,c: %s ,f: %s)" % (self.owner.name,
 					behavior.__class__.__name__, action_name, probability, certainty, probability * certainty))
 				possible_behaviors.append((behavior, probability * certainty))
-		print possible_behaviors
 
-		# get the best action possible
+		# get the best action possible if any is available
 		final_action = self.get_best_behavior(possible_behaviors)
-
-		# call winning action if any is possible
-		if hasattr(final_action, action_name):
+		if final_action:
 			return getattr(final_action, action_name)(**environment)
 
 	def request_action(self, type, action_name, **environment):
@@ -67,41 +64,6 @@ class BehaviorManager(object):
 
 	def request_strategy(self, type, strategy_name, **environment):
 		return self.request_behavior(type, strategy_name, self.strategies, **environment)
-
-		"""
-	def request_action(self, type, action_name, **environment):
-		possible_behaviors = []
-		for behavior, probability in self.actions[type].iteritems():
-			if hasattr(behavior, action_name):
-				certainty = behavior.certainty(action_name, **environment)
-				# final probability is the one defined in profile multiplied by it's certainty
-				self.log.info("Player:%s Behavior:%s Action:%s (p: %s ,c: %s ,f: %s)" % (self.owner.name,
-					behavior.__class__.__name__, action_name, probability, certainty, probability * certainty))
-				possible_behaviors.append((behavior, probability * certainty))
-
-		# get the best action possible
-		final_action = self.get_best_behavior(possible_behaviors)
-
-		# call winning action if any is possible
-		if hasattr(final_action, action_name):
-			getattr(final_action, action_name)(**environment)
-
-	def request_strategy(self, type, strategy_name, **environment):
-		possible_strategies = []
-		for behavior, probability in self.strategies[type].iteritems():
-			if hasattr(behavior, strategy_name):
-				certainty = behavior.certainty(strategy_name, **environment)
-				self.log.info("Player:%s Behavior:%s Strategy:%s (p: %s ,c: %s ,f: %s)" % (self.owner.name,
-					behavior.__class__.__name__, strategy_name, probability, certainty, probability * certainty))
-				possible_strategies.append((behavior, probability * certainty))
-
-		# get the best action possible
-		final_behavior = self.get_best_behavior(possible_strategies)
-
-		# call winning action if any is possible
-		if hasattr(final_behavior, strategy_name):
-			return getattr(final_behavior, strategy_name)(**environment)
-		"""
 
 	def get_best_behavior(self, behavior_iterable):
 		"""
@@ -111,6 +73,10 @@ class BehaviorManager(object):
 
 		# instead of scaling every value to make 1.0, we scale random_value to sum of probabilities
 		sum_probs = sum([item[1] for item in behavior_iterable])
+
+		if abs(sum_probs) < 1e-7:
+			return None
+
 		random_value *= sum_probs
 
 		for behavior, probability in behavior_iterable:

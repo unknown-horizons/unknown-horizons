@@ -21,8 +21,10 @@
 
 from horizons.ai.aiplayer.mission.combat import FleetMission
 from horizons.command.diplomacy import AddEnemyPair
+from horizons.component.namedcomponent import NamedComponent
 from horizons.ext.enum import Enum
 from horizons.util.python.callback import Callback
+from horizons.util.shapes.circle import Circle
 
 from horizons.world.units.movingobject import MoveNotPossible
 from horizons.util.python import decorators
@@ -38,69 +40,77 @@ class ChaseShipsAndAttack(FleetMission):
 	This mission may work the best for 2 ships fleet
 	"""
 
-	missionStates = Enum.get_extended(FleetMission.missionStates, 'sailing_to_target', 'in_combat')
+	missionStates = Enum.get_extended(FleetMission.missionStates, 'sailing_to_target', 'in_combat', 'going_home')
+	target_range = 5
 
-	def __init__(self, success_callback, failure_callback, ships, target_point, return_point, enemy_player):
+	def __init__(self, success_callback, failure_callback, ships, target_ship):
 		super(ChaseShipsAndAttack, self).__init__(success_callback, failure_callback, ships)
-		self.__init(target_point, return_point, enemy_player)
+		self.__init(target_ship)
 
-	def __init(self, target_point, return_point, enemy_player):
-		self.target_point = target_point
-		self.return_point = return_point
-		self.enemy_player = enemy_player
+	def __init(self, target_ship):
+		self.target_ship = target_ship
 
 		self.combatIntermissions = {
-			self.missionStates.sailing_to_target: (self.set_off, self.flee_home),
-			self.missionStates.in_combat: (self.go_back, self.flee_home),
-			self.missionStates.going_back: (self.go_back, self.flee_home),
-			self.missionStates.breaking_diplomacy: (self.break_diplomacy, self.flee_home),
+			self.missionStates.sailing_to_target: (self.sail_to_target, self.flee_home),
+			self.missionStates.in_combat: (self.check_ship_alive, self.flee_home),
+			self.missionStates.going_home: (self.flee_home, self.flee_home),
 		}
 
 	def start(self):
-		self.set_off()
+		self.sail_to_target()
 
-	def set_off(self):
-		self.log.debug("Player %s, Mission %s, 1/4 set off from point %s to point %s" % (self.owner.name, self.__class__.__name__, self.return_point, self.target_point))
+	def sail_to_target(self):
+		self.log.debug("Player %s, Mission %s, 1/2 set off to ship %s at %s" % (self.owner.name, self.__class__.__name__,
+			self.target_ship.get_component(NamedComponent).name, self.target_ship.position))
 		try:
-			self.fleet.move(self.target_point, Callback(self.break_diplomacy))
+			self.fleet.move(Circle(self.target_ship.position, self.target_range), Callback(self.was_reached))
 			self.state = self.missionStates.sailing_to_target
 		except MoveNotPossible:
 			self.report_failure("Move was not possible when moving to target")
 
-	def break_diplomacy(self):
-		self.state = self.missionStates.breaking_diplomacy
-		self.log.debug("Player %s, Mission %s, 2/4 breaking diplomacy with Player %s" % (self.owner.name, self.__class__.__name__, self.enemy_player.name))
-		if not self.session.world.diplomacy.are_enemies(self.owner, self.enemy_player):
-			AddEnemyPair(self.owner, self.enemy_player).execute(self.session)
-		self.in_combat()
+	def was_reached(self):
+		if self.target_ship.in_ship_map:
+			if any((ship.position.distance(self.target_ship.position) <= self.target_range+1 for ship in self.fleet.get_ships())):
+				# target ship reached: execute combat
+				self.state = self.missionStates.in_combat
+				self.in_combat()
+			else:
+				# target ship was not reached: sail again
+				self.state = self.missionStates.sailing_to_target
+				self.sail_to_target()
+		else:
+			# ship was destroyed
+			self.report_success("Ship was destroyed")
+
+	def check_ship_alive(self):
+		if self.target_ship.in_ship_map:
+			self.was_reached()
+		else:
+			self.report_success("Target ship was eliminated")
 
 	def in_combat(self):
+		if not self.session.world.diplomacy.are_enemies(self.owner, self.target_ship.owner):
+			self.report_failure("Target ship was not hostile. Aborting mission.")
+			return
 		self.combat_phase = True
-		self.log.debug("Player %s, Mission %s, 3/4 in combat" % (self.owner.name, self.__class__.__name__))
+		self.log.debug("Player %s, Mission %s, 2/2 in combat" % (self.owner.name, self.__class__.__name__))
 		self.state = self.missionStates.in_combat
-		# TODO: turn combat_phase into a Property and check whether current state is a key self.combatIntermission
-
-	def go_back(self):
-		self.log.debug("Player %s, Mission %s, 4/4 going back after combat to point %s" % (self.owner.name, self.__class__.__name__, self.return_point))
-		try:
-			self.fleet.move(self.return_point, Callback(self.report_success, "Ships arrived at return point"))
-			self.state = self.missionStates.going_back
-		except MoveNotPossible:
-			self.report_failure("Move was not possible when going back")
 
 	def flee_home(self):
 		# check if fleet still exists
 		if self.fleet.size() > 0:
 			try:
-				self.fleet.move(self.return_point, Callback(self.report_failure, "Combat was lost, ships fled home successfully"))
-				self.state = self.missionStates.going_back
+				home_settlement = self.unit_manager.get_player_settlements(self.owner)[0]
+				return_point = self.unit_manager.get_warehouse_position(home_settlement)
+				self.fleet.move(return_point, Callback(self.report_failure, "Combat was lost, ships fled home successfully"))
+				self.state = self.missionStates.going_home
 			except MoveNotPossible:
 				self.report_failure("Combat was lost, ships couldn't flee home")
 		else:
 			self.report_failure("Combat was lost, all ships were wiped out")
 
 	@classmethod
-	def create(cls, success_callback, failure_callback, fleet, target_point, return_point, enemy_player):
-		return ChaseShipsAndAttack(success_callback, failure_callback, fleet, target_point, return_point, enemy_player)
+	def create(cls, success_callback, failure_callback, fleet, target_ship):
+		return ChaseShipsAndAttack(success_callback, failure_callback, fleet, target_ship)
 
-decorators.bind_all(ChaseShipsAndAttackAttack)
+decorators.bind_all(ChaseShipsAndAttack)

@@ -79,7 +79,6 @@ class ConditionHostile(Condition):
 	def __init__(self, owner):
 		super(ConditionHostile, self).__init__(owner)
 
-
 	def check(self, **environment):
 		other_players = environment['players']
 
