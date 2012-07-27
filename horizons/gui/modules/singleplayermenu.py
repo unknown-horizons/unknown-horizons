@@ -357,7 +357,11 @@ class SingleplayerMenu(object):
 		if os.path.exists(translated_scenario):
 			self._update_scenario_translation_infos(translated_scenario)
 		else:
-			default_locale, default_encoding = locale.getdefaultlocale()
+			try:
+				default_locale, default_encoding = locale.getdefaultlocale()
+			except ValueError: # OS X sometimes returns 'UTF-8' as locale, which is a ValueError
+				default_locale = 'en'
+
 			possibilities = [ # try to find a file for the system locale before falling back to en
 				default_locale,
 				default_locale.split('_')[0],
