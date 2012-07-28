@@ -32,6 +32,7 @@ class FleetMission(Mission):
 	log = logging.getLogger("ai.aiplayer.fleetmission")
 
 	def __init__(self, success_callback, failure_callback, ships):
+		assert len(ships)>0, "Attempt to create a fleet mission out of 0 ships"
 		super(FleetMission, self).__init__(success_callback, failure_callback, ships[0].owner)
 		self.__init(ships)
 		self.state = self.missionStates.created

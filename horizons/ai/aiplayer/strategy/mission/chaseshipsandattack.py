@@ -19,7 +19,7 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-from horizons.ai.aiplayer.mission.combat import FleetMission
+from horizons.ai.aiplayer.strategy.mission import FleetMission
 from horizons.command.diplomacy import AddEnemyPair
 from horizons.component.namedcomponent import NamedComponent
 from horizons.ext.enum import Enum

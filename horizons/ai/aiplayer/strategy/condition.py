@@ -104,6 +104,7 @@ class ConditionNeutral(Condition):
 		else:
 			return None
 
+
 class ConditionDebug(Condition):
 	"""
 	For testing purposes, always happens
@@ -112,6 +113,7 @@ class ConditionDebug(Condition):
 	def check(self, **environment):
 		players = environment['players']
 		return {'players': players, 'certainty': self.default_certainty, 'strategy_name': 'neutral_players', 'type': BehaviorProfile.strategy_types.diplomatic}
+
 
 def get_all_conditions(player):
 		conditions = {

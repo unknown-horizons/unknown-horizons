@@ -21,9 +21,7 @@
 
 import logging
 
-from horizons.ai.aiplayer.combat.condition import Condition, get_all_conditions
-from horizons.ai.aiplayer.strategy.condition import  get_all_conditions
-from horizons.component.namedcomponent import NamedComponent
+from horizons.ai.aiplayer.strategy.condition import get_all_conditions
 
 
 class StrategyManager(object):
@@ -98,7 +96,6 @@ class StrategyManager(object):
 		occuring_conditions = []
 
 		print
-		print
 		print "CONDITIONS"
 		for condition in self.conditions.keys():
 			condition_outcome = condition.check(**environment)
@@ -126,7 +123,7 @@ class StrategyManager(object):
 				self.start_mission(mission)
 
 		## TODO: Debugging section, remove later
-		"""j
+		"""
 		print "IDLE SHIPS"
 		for ship in idle_ships:
 			print " ",ship.get_component(NamedComponent).name
