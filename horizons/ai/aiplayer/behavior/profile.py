@@ -51,7 +51,7 @@ class BehaviorProfile(WorldObject):
 		#actions[cls.action_types.offensive][BehaviorActionBreakDiplomacy(player)] = 0.1
 
 		#actions[cls.action_types.idle][BehaviorActionKeepFleetTogether(player)] = 0.1
-		#actions[cls.action_types.idle][BehaviorActionScoutRandomlyNearby(player)] = 0.2
+		actions[cls.action_types.idle][BehaviorActionScoutRandomlyNearby(player)] = 0.1
 		actions[cls.action_types.idle][BehaviorActionDoNothing(player)] = 1.0
 
 		return actions

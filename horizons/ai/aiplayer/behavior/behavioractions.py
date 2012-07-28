@@ -206,12 +206,14 @@ class BehaviorActionRegular(BehaviorAction):
 	A well-balanced way to respond to situations in game.
 	"""
 	power_balance_threshold = 1.00
+	minimum_ship_amount = 1
 
 	def __init__(self, owner):
 		super(BehaviorActionRegular, self).__init__(owner)
 		self._certainty['pirates_in_sight'] = certainty_power_balance_exp
 		self._certainty['fighting_ships_in_sight'] = certainty_power_balance_exp
-		self._certainty['players_share_island'] = self._certainty_fleet_size
+		self._certainty['player_shares_island'] = self._certainty_player_shares_island
+		self._certainty['hostile_player'] = self._certainty_hostile_player
 
 	def pirates_in_sight(self, **environment):
 		"""
@@ -260,12 +262,24 @@ class BehaviorActionRegular(BehaviorAction):
 		else:
 			BehaviorAction.log.info('ActionRegular: Enemy worker was not hostile')
 
-	def _certainty_fleet_size(self, **environment):
+	def _certainty_player_shares_island(self, **environment):
 		"""
 		Dummy certainty that checks for a fleets size only.
 		"""
 		idle_ships = environment['idle_ships']
-		if len(idle_ships) < 2:
+
+		if len(idle_ships) < self.minimum_ship_amount:
+			return 0.0
+
+		return self.default_certainty
+
+	def _certainty_hostile_player(self, **environment):
+		enemy_player = environment['player']
+		idle_ships = environment['idle_ships']
+
+		enemy_ships = self.unit_manager.get_player_ships(enemy_player)
+
+		if not enemy_ships or len(idle_ships) < self.minimum_ship_amount:
 			return 0.0
 
 		return self.default_certainty
@@ -278,19 +292,15 @@ class BehaviorActionRegular(BehaviorAction):
 		enemy_player = environment['player']
 		idle_ships = environment['idle_ships']
 
-		mission = None
-
 		settlements = self.owner.unit_manager.get_player_settlements(enemy_player)
 
 		if not settlements:
 			return None
 		target_point = self.unit_manager.get_warehouse_position(settlements[0])
 
-		# TODO: remove that condition since certainty should take care of that
-		if idle_ships and len(idle_ships) >= 2:
-			return_point = idle_ships[0].position.copy()
-			mission = SurpriseAttack.create(self.owner.strategy_manager.report_success,
-				self.owner.strategy_manager.report_failure, idle_ships, target_point, return_point, enemy_player)
+		return_point = idle_ships[0].position.copy()
+		mission = SurpriseAttack.create(self.owner.strategy_manager.report_success,
+			self.owner.strategy_manager.report_failure, idle_ships, target_point, return_point, enemy_player)
 		return mission
 
 	def hostile_player(self, **environment):
@@ -299,11 +309,7 @@ class BehaviorActionRegular(BehaviorAction):
 		"""
 		enemy_player = environment['player']
 		idle_ships = environment['idle_ships']
-
 		enemy_ships = self.unit_manager.get_player_ships(enemy_player)
-
-		if not enemy_ships or len(idle_ships) < 2:
-			return None
 
 		# TODO: pick target ship better
 		target_ship = enemy_ships[0]
@@ -337,7 +343,6 @@ class BehaviorActionRegularPirate(BehaviorAction):
 			# TODO: else: Sail to pirate home
 		else:
 			BehaviorAction.log.info('ActionRegularPirate: Enemy ship was not hostile')
-
 
 class BehaviorActionBreakDiplomacy(BehaviorAction):
 	"""

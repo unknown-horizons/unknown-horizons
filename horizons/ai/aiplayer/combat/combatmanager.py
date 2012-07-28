@@ -148,14 +148,13 @@ class CombatManager(object):
 			fighting_ships = self.unit_manager.filter_ships(self.owner, ships_around, (filters.fighting(), ))
 			working_ships = self.unit_manager.filter_ships(self.owner, ships_around, (filters.working(), ))
 
-			# TODO: for now only test for hostile fighting ships
 			if fighting_ships:
 				if self.owner.strategy_manager.request_to_pause_mission(mission):
 					self.handle_mission_combat(mission)
-			elif working_ships:
+			elif pirate_ships:
 				if self.owner.strategy_manager.request_to_pause_mission(mission):
 					self.handle_mission_combat(mission)
-			elif pirate_ships:
+			elif working_ships:
 				if self.owner.strategy_manager.request_to_pause_mission(mission):
 					self.handle_mission_combat(mission)
 

@@ -60,30 +60,8 @@ class BehaviorMoveCallback:
 		owner = ship.owner
 		try:
 			ship.move(Circle(point, cls.sail_point_range), Callback(cls._arrived, ship))
-			owner.ships[ship] = owner.shipStates.moving_random
 		except MoveNotPossible:
 			cls.log.debug("ScoutRandomlyNearby move was not possible -> go idle")
-			owner.ships[ship] = owner.shipStates.idle
-
-	@classmethod
-	def _flee_home(cls, ship):
-		owner = ship.owner
-		home_position = None
-		for settlement in owner.session.world.settlements:
-			if settlement.owner == owner:
-				home_position = settlement.warehouse.position
-				break
-
-		if not home_position:
-			cls.log.info("Ship:%s couldn't flee home, home_position not found" % (ship.get_component(NamedComponent).name))
-			return
-		try:
-			ship.move(Circle(home_position.origin, cls.flee_home_radius), Callback(cls._arrived, ship))
-			# TODO:fix after changes! there is no such thing as fleeing_combat anymore
-			owner.ships[ship] = owner.shipStates.fleeing_combat
-		except MoveNotPossible:
-			cls.log.info("Ship:%s couldn't flee, move was not possible -> going idle" % (ship.get_component(NamedComponent).name))
-			owner.ships[ship] = owner.shipStates.idle
 
 	# Pirate moves and callbacks used for pirate routine
 	@classmethod
