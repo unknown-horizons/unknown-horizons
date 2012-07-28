@@ -39,6 +39,7 @@ class FleetMission(Mission):
 
 		self.combat_phase = False
 
+		# TODO: remove if not used
 		# flag stating whether CombatManager can initiate combat when enemy approaches in the horizon.
 		self.can_interfere = False
 
@@ -52,7 +53,7 @@ class FleetMission(Mission):
 
 		# combatIntermissions is dictionary of type 'missionState -> (won_function, lost_function)'
 		# stating which function should be called after combat phase was finished (winning or losing).
-		# each combatIntermission entry should implement that.
+		# each combatIntermission entry should provide both
 		self.combatIntermissions = {}
 
 	def _dismiss_fleet(self):

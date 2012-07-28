@@ -22,6 +22,7 @@
 import logging
 
 from horizons.ai.aiplayer.strategy.condition import get_all_conditions
+from horizons.component.namedcomponent import NamedComponent
 
 
 class StrategyManager(object):
@@ -43,6 +44,10 @@ class StrategyManager(object):
 		self.missions = set()
 		self.conditions = get_all_conditions(self.owner)
 
+		# Dictionary of condition__hash => mission. condition__hash is a key since it's searched for more often. Values are
+		# unique because of WorldObject inheritance, but it makes removing items from it in O(n).
+		self.conditions_being_resolved = {}
+
 	def report_success(self, mission, msg):
 		self.log.info("Player: %s|StrategyManager|Mission %s was a success: %s", self.owner.worldid, mission, msg)
 		self.end_mission(mission)
@@ -56,10 +61,23 @@ class StrategyManager(object):
 		if mission in self.missions:
 			self.missions.remove(mission)
 
+		# remove condition lock after mission ends
+		self.unlock_condition(mission)
+
 	def start_mission(self, mission):
 		self.log.info("Player: %s|StrategyManager|Mission %s started", self.owner.worldid, mission)
 		self.missions.add(mission)
 		mission.start()
+
+	def lock_condition(self, condition, mission):
+		self.conditions_being_resolved[condition] = mission
+
+	def unlock_condition(self, mission):
+		# values (FleetMission) are unique so it's possible to remove them this way:
+		for condition, value in self.conditions_being_resolved.iteritems():
+			if mission == value:
+				del self.conditions_being_resolved[condition]
+				return
 
 	def get_missions(self, condition=None):
 		"""
@@ -92,19 +110,30 @@ class StrategyManager(object):
 		# Check which conditions occur
 		occuring_conditions = []
 
+		environment = {'idle_ships': idle_ships}
+
 		print
 		print "CONDITIONS"
 		for player in other_players:
 
 			# Prepare environment
-			environment = {'idle_ships': idle_ships, 'player': player}
+			environment['player'] = player
 
 			print "", player.name
 			for condition in self.conditions.keys():
+
+				# Check whether given condition is already being resolved
+				if condition.get_identifier(**environment) in self.conditions_being_resolved:
+					print "  ",condition.__class__.__name__, ": Locked"
+					continue
+
 				condition_outcome = condition.check(**environment)
 				print "  ",condition.__class__.__name__, ":", ("Yes" if condition_outcome else "No")
 				if condition_outcome:
 					occuring_conditions.append((condition, condition_outcome))
+
+			# Revert environment to previous state
+			del environment['player']
 
 		# Nothing to do when none of the conditions occur
 		if occuring_conditions:
@@ -124,6 +153,7 @@ class StrategyManager(object):
 			mission = self.owner.behavior_manager.request_strategy(**environment)
 			if mission:
 				self.start_mission(mission)
+				self.lock_condition(selected_condition.get_identifier(**environment), mission)
 
 		## TODO: Debugging section, remove later
 		"""
@@ -136,14 +166,12 @@ class StrategyManager(object):
 		for mission in list(self.missions):
 			print " ",mission
 		print "//MISSIONS"
-		"""
 		print "FLEETS"
 		for fleet in list(self.unit_manager.fleets):
 			print " ", fleet
 		for ship, fleet in self.unit_manager.ships.iteritems():
 			print ship.get_component(NamedComponent).name, fleet.worldid
 		print "//FLEETS"
-		"""
 
 	def tick(self):
 		self.handle_strategy()

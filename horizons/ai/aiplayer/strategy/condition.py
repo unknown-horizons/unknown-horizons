@@ -78,7 +78,7 @@ class ConditionSharingSettlement(Condition):
 			return None
 
 	def get_identifier(self, **environment):
-		return Condition.get_identifier(**environment) + environment['player'].name
+		return super(ConditionSharingSettlement, self).get_identifier(**environment) + environment['player'].name
 
 class ConditionHostile(Condition):
 	"""
@@ -100,7 +100,7 @@ class ConditionHostile(Condition):
 			return None
 
 	def get_identifier(self, **environment):
-		return Condition.get_identifier(**environment) + environment['player'].name
+		return super(ConditionHostile, self).get_identifier(**environment) + environment['player'].name
 
 class ConditionNeutral(Condition):
 	"""
@@ -118,7 +118,7 @@ class ConditionNeutral(Condition):
 			return None
 
 	def get_identifier(self, **environment):
-		return Condition.get_identifier(**environment) + environment['player'].name
+		return super(ConditionNeutral, self).get_identifier(**environment) + environment['player'].name
 
 
 class ConditionDebug(Condition):
@@ -131,7 +131,7 @@ class ConditionDebug(Condition):
 		return {'player': player, 'certainty': self.default_certainty, 'strategy_name': 'neutral_player', 'type': BehaviorProfile.strategy_types.diplomatic}
 
 	def get_identifier(self, **environment):
-		return Condition.get_identifier(**environment) + environment['player'].name
+		return super(ConditionDebug, self).get_identifier(**environment) + environment['player'].name
 
 
 def get_all_conditions(player):
