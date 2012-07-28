@@ -241,7 +241,6 @@ class BehaviorActionRegular(BehaviorAction):
 
 		if self.session.world.diplomacy.are_enemies(self.owner, enemies[0].owner):
 			for ship in ship_group:
-				print "@@@ATTACK:",ship.get_component(NamedComponent).name, enemies[0].get_component(NamedComponent).name
 				ship.attack(enemies[0])
 			BehaviorAction.log.info('ActionRegular: Attacked enemy ship')
 		else:
@@ -271,42 +270,35 @@ class BehaviorActionRegular(BehaviorAction):
 
 		return self.default_certainty
 
-	def players_share_island(self, **environment):
+	def player_shares_island(self, **environment):
 		"""
-		Response to players sharing an island with AI player.
+		Response to player that shares an island with AI player.
 		Regular AI should simply attack given player.
 		"""
-		enemy_players = environment['players']
+		enemy_player = environment['player']
 		idle_ships = environment['idle_ships']
-
-		# TODO: pick the one that has the most land to get back (BehaviorCoward may aim for easiest to beat opponent)
-		enemy_player = enemy_players[0]
 
 		mission = None
 
 		settlements = self.owner.unit_manager.get_player_settlements(enemy_player)
+
 		if not settlements:
 			return None
+		target_point = self.unit_manager.get_warehouse_position(settlements[0])
 
-		target_point = settlements[0].warehouse.position
-		(x, y) = target_point.get_coordinates()[4]
-		target_point = Circle(Point(x, y), 5)
-
+		# TODO: remove that condition since certainty should take care of that
 		if idle_ships and len(idle_ships) >= 2:
 			return_point = idle_ships[0].position.copy()
 			mission = SurpriseAttack.create(self.owner.strategy_manager.report_success,
 				self.owner.strategy_manager.report_failure, idle_ships, target_point, return_point, enemy_player)
 		return mission
 
-	def hostile_players(self, **environment):
+	def hostile_player(self, **environment):
 		"""
 		Arrage an attack for hostile ships.
 		"""
-		enemy_players = environment['players']
+		enemy_player = environment['player']
 		idle_ships = environment['idle_ships']
-
-		# TODO: pick the player according to better condition
-		enemy_player = enemy_players[0]
 
 		enemy_ships = self.unit_manager.get_player_ships(enemy_player)
 

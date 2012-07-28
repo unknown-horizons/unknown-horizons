@@ -228,6 +228,6 @@ class UnitManager(object):
 		return [ship for ship in self.session.world.ships if ship.owner == player and ship.has_component(SelectableComponent)]
 
 	def get_warehouse_position(self, settlement):
-		target_point = settlement.position
+		target_point = settlement.warehouse.position
 		(x, y) = target_point.get_coordinates()[4]
 		return Circle(Point(x, y), 5)

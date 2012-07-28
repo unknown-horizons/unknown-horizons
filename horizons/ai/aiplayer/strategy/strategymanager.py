@@ -89,19 +89,22 @@ class StrategyManager(object):
 		# Get all other players
 		other_players = [player for player in self.session.world.players if player != self.owner]
 
-		# Prepare environment
-		environment = {'idle_ships': idle_ships, 'players': other_players}
-
 		# Check which conditions occur
 		occuring_conditions = []
 
 		print
 		print "CONDITIONS"
-		for condition in self.conditions.keys():
-			condition_outcome = condition.check(**environment)
-			print " ",condition.__class__.__name__,":", ("Yes" if condition_outcome else "No")
-			if condition_outcome:
-				occuring_conditions.append((condition, condition_outcome))
+		for player in other_players:
+
+			# Prepare environment
+			environment = {'idle_ships': idle_ships, 'player': player}
+
+			print "", player.name
+			for condition in self.conditions.keys():
+				condition_outcome = condition.check(**environment)
+				print "  ",condition.__class__.__name__, ":", ("Yes" if condition_outcome else "No")
+				if condition_outcome:
+					occuring_conditions.append((condition, condition_outcome))
 
 		# Nothing to do when none of the conditions occur
 		if occuring_conditions:

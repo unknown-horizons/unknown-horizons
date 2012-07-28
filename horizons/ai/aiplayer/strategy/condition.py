@@ -46,63 +46,79 @@ class Condition(object):
 		"""
 		raise NotImplementedError("This is an abstract class")
 
+	def get_identifier(self, **environment):
+		"""
+		Based on information contained in **environment return an Unique identifier for given condition.
+		User for checking whether given condition is already being resolved by a mission in progress.
+		@return: unique identifier
+		@rtype: str
+		"""
+		return self.__class__.__name__
+
+
 class ConditionSharingSettlement(Condition):
 	"""
-	States whether any player shares a settlement with AI.
+	States whether given player shares a settlement with AI.
 	Raises "attack_enemy_player" strategy
 	"""
 	def __init__(self, owner):
 		super(ConditionSharingSettlement, self).__init__(owner)
 
 	def check(self, **environment):
-		other_players = environment['players']
+		other_player = environment['player']
+
 		my_islands = set(self.unit_manager.get_player_islands(self.owner))
+		enemy_islands = set(self.unit_manager.get_player_islands(other_player))
 
-		players_sharing = []
-		for player in other_players:
-			enemy_islands = set(self.unit_manager.get_player_islands(player))
-
-			# checks whether player share the same island
-			if my_islands & enemy_islands:
-				# TODO: maybe base certainty on power balance ?
-				players_sharing.append(player)
-
-		if players_sharing:
-			return {'players': players_sharing, 'certainty': self.default_certainty, 'strategy_name': 'players_share_island', 'type': BehaviorProfile.strategy_types.offensive}
+		# checks whether player share the same island
+		if my_islands & enemy_islands:
+			# TODO: maybe base certainty on power balance or % of territory that he "stole" ?
+			return {'player': other_player, 'certainty': self.default_certainty, 'strategy_name': 'player_shares_island', 'type': BehaviorProfile.strategy_types.offensive}
 		else:
 			return None
 
+	def get_identifier(self, **environment):
+		return Condition.get_identifier(**environment) + environment['player'].name
+
 class ConditionHostile(Condition):
 	"""
-	States whether there is a hostile player that can be attacked.
+	States whether there is a hostile player that can be attacked (i.e. has ships that can be destroyed)
 	"""
 	def __init__(self, owner):
 		super(ConditionHostile, self).__init__(owner)
 
 	def check(self, **environment):
-		other_players = environment['players']
+		player= environment['player']
 
-		hostile_players = [player for player in other_players if self.session.world.diplomacy.are_enemies(self.owner, player)]
+		if not self.session.world.diplomacy.are_enemies(self.owner, player):
+			return None
 
-		if hostile_players:
-			return {'players': hostile_players, 'certainty': self.default_certainty, 'strategy_name': 'hostile_players', 'type': BehaviorProfile.strategy_types.offensive}
+		hostile_ships = self.unit_manager.get_player_ships(player)
+		if hostile_ships:
+			return {'player': player, 'certainty': self.default_certainty, 'strategy_name': 'hostile_player', 'type': BehaviorProfile.strategy_types.offensive}
 		else:
 			return None
+
+	def get_identifier(self, **environment):
+		return Condition.get_identifier(**environment) + environment['player'].name
 
 class ConditionNeutral(Condition):
 	"""
-	States whether there is a neutral player on the map.
+	States whether given player is neutral.
+	What it aims to do is not only find if given player is neutral, but also sort them,
+	i.e. penalize if given neutral is ally with our enemies etc.
+	This way in case of any diplomatic actions it's possible to have a "safe" ally
 	"""
 
 	def check(self, **environment):
-		other_players = environment['players']
-
-		neutral_players = [player for player in other_players if self.session.world.diplomacy.are_neutral(self.owner, player)]
-
-		if neutral_players:
-			return {'players': neutral_players, 'certainty': self.default_certainty, 'strategy_name': 'neutral_players', 'type': BehaviorProfile.strategy_types.diplomatic}
+		player = environment['player']
+		if self.session.world.diplomacy.are_neutral(self.owner, player):
+			return {'player': player, 'certainty': self.default_certainty, 'strategy_name': 'neutral_player', 'type': BehaviorProfile.strategy_types.diplomatic}
 		else:
 			return None
+
+	def get_identifier(self, **environment):
+		return Condition.get_identifier(**environment) + environment['player'].name
 
 
 class ConditionDebug(Condition):
@@ -111,8 +127,11 @@ class ConditionDebug(Condition):
 	"""
 
 	def check(self, **environment):
-		players = environment['players']
-		return {'players': players, 'certainty': self.default_certainty, 'strategy_name': 'neutral_players', 'type': BehaviorProfile.strategy_types.diplomatic}
+		player = environment['player']
+		return {'player': player, 'certainty': self.default_certainty, 'strategy_name': 'neutral_player', 'type': BehaviorProfile.strategy_types.diplomatic}
+
+	def get_identifier(self, **environment):
+		return Condition.get_identifier(**environment) + environment['player'].name
 
 
 def get_all_conditions(player):
@@ -120,7 +139,7 @@ def get_all_conditions(player):
 			#ConditionDebug(player):10.0,
 			ConditionHostile(player): 1.1,
 			ConditionSharingSettlement(player): 1.0,
-			ConditionNeutral(player): 0.9,
+			ConditionNeutral(player): 0.3,
 			}
 		return conditions
 
