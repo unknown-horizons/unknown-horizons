@@ -508,23 +508,21 @@ def _start_campaign(campaign_name, force_player_id=None):
 
 def _load_map(savegame, ai_players, human_ai, force_player_id=None):
 	"""Load a map specified by user.
-	@param savegame: eiter the displayname of a savegame or a path to a savegame
+	@param savegame: either the displayname of a savegame or a path to a savegame
 	@return: bool, whether loading succeded"""
 	# first check for partial or exact matches in the normal savegame list
-	saves = SavegameManager.get_saves()
+	filenames, mapnames = SavegameManager.get_saves()
 	map_file = None
-	for i in xrange(0, len(saves[1])):
-		# exact match
-		if saves[1][i] == savegame:
-			map_file = saves[0][i]
+	for name, filename in zip(mapnames, filenames):
+		if name == savegame: # exact match
+			map_file = filename
 			break
-		# check for partial match
-		if saves[1][i].startswith(savegame):
+		if name.startswith(savegame): # check for partial match
 			if map_file is not None:
 				# multiple matches, collect all for output
-				map_file += u'\n' + saves[0][i]
+				map_file += u'\n' + filename
 			else:
-				map_file = saves[0][i]
+				map_file = filename
 	if map_file is None:
 		# not a savegame, check for path to file or fail
 		if os.path.exists(savegame):
