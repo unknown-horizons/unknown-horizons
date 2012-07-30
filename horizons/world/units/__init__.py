@@ -67,28 +67,28 @@ class UnitClass(IngameType):
 		cls._real_object.setPather(horizons.main.fife.engine.getModel().getPather('RoutePather'))
 		cls._real_object.setBlocking(False)
 		cls._real_object.setStatic(False)
-		action_sets = ActionSetLoader.get_sets()
+		all_action_sets = ActionSetLoader.get_sets()
 		# create load callbacks to be called when the actions are needed
-
-		def do_load(action_set_id, action_id):
-			action = cls._real_object.createAction(action_id+"_"+str(action_set_id))
-			fife.ActionVisual.create(action)
-			for rotation in action_sets[action_set_id][action_id].iterkeys():
-				anim = horizons.main.fife.animationloader.loadResource(
-					str(action_set_id)+"+"+str(action_id)+"+"+
-					str(rotation) + ':shift:center+0,bottom+8')
-				action.get2dGfxVisual().addAnimation(int(rotation), anim)
-				action.setDuration(anim.getDuration())
-
 		#{ action_set : { action_id : [ load0, load1, ..., loadn ]}}
 		# (loadi are load functions of objects, there can be many per as_id and action)
 		# cls.action_sets looks like this: {tier1: {set1: None, set2: preview2, ..}, ..}
 		for set_dict in cls.action_sets.itervalues():
-			for action_set in set_dict.iterkeys(): # set1, set2, ...
+			for action_set in set_dict: # set1, set2, ...
 				if not action_set in cls._action_load_callbacks:
 					cls._action_load_callbacks[action_set] = {}
-				for action_id in action_sets[action_set].iterkeys(): # idle, move, ...
+				for action_id in all_action_sets[action_set]: # idle, move, ...
 					if not action_id in cls._action_load_callbacks[action_set]:
 						cls._action_load_callbacks[action_set][action_id] = []
 					cls._action_load_callbacks[action_set][action_id].append(
-					  Callback(do_load, action_set, action_id))
+					  Callback(cls._do_load, all_action_sets, action_set, action_id))
+
+	def _do_load(cls, all_action_sets, action_set, action_id):
+		params = {'id': action_set, 'action': action_id}
+		action = cls._real_object.createAction('{action}_{id}'.format(**params))
+		fife.ActionVisual.create(action)
+		for rotation in all_action_sets[action_set][action_id]:
+			params['rot'] = rotation
+			path = '{id}+{action}+{rot}:shift:center+0,bottom+8'.format(**params)
+			anim = horizons.main.fife.animationloader.loadResource(path)
+			action.get2dGfxVisual().addAnimation(int(rotation), anim)
+			action.setDuration(anim.getDuration())
