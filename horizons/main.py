@@ -464,7 +464,6 @@ def _start_campaign(campaign_name, force_player_id=None):
 		campaign_name = os.path.splitext( campaign_basename )[0]
 	campaign = SavegameManager.get_campaign_info(name=campaign_name)
 	if not campaign:
-		#xgettext:python-format
 		print u"Error: Cannot find campaign '{name}'.".format(campaign_name)
 		return False
 	scenarios = [sc.get('level') for sc in campaign.get('scenarios',[])]
@@ -511,7 +510,6 @@ def _find_matching_map(name_or_path, savegames):
 		if os.path.exists(name_or_path):
 			return map_file
 		else:
-			#xgettext:python-format
 			print u"Error: Cannot find savegame or map '{name}'.".format(name=name_or_path)
 			return
 
