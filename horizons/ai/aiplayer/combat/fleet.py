@@ -65,6 +65,32 @@ class Fleet(WorldObject):
 		self.state = self.fleetStates.idle
 		self.destroy_callback = destroy_callback
 
+	def save(self, db):
+		super(Fleet, self).save(db)
+		# save the fleet
+		# save destination if fleet is moving somewhere
+		if self.state == self.fleetStates.moving and hasattr(self, 'destination'):
+			x, y = None, None
+			if isinstance(self.destination, Circle):
+				x, y = self.destination.center.x, self.destination.center.y
+			elif isinstance(self.destination, Point):
+				x, y = self.destination.x, self.destination.y
+			else:
+				assert False, "destination is neither a Circle nor a Point: %s" % self.destination.__class__.__name__
+			db("INSERT INTO fleet (rowid, owner, state, dest_x, dest_y) VALUES(?, ?, ?, ?, ?)",
+				self.worldid, self.owner.worldid, self.state.index, x, y)
+
+		# save ships, rowid is ship's worldid since single ship can't be in two fleets at once
+		for ship in self.get_ships():
+			db("INSERT INTO fleet_ship (rowid, fleet, state", ship.worldid, self.worldid, self._ships[ship].index)
+
+	@classmethod
+	def load(cls, worldid, db, destroy_callback=None):
+		# TODO:Think of refactoring here
+		self = cls.__new__(cls)
+		self._load(db, owner)
+		return self
+
 	def get_ships(self):
 		return self._ships.keys()
 

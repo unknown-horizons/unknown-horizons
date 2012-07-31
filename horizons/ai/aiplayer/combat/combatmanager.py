@@ -39,6 +39,9 @@ class CombatManager(object):
 
 	def __init__(self, owner):
 		super(CombatManager, self).__init__()
+		self.__init(owner)
+
+	def __init(self, owner):
 		self.owner = owner
 		self.unit_manager = owner.unit_manager
 		self.world = owner.world

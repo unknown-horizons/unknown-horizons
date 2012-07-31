@@ -56,6 +56,17 @@ class FleetMission(Mission):
 		# each combatIntermission entry should provide both
 		self.combatIntermissions = {}
 
+	def save(self, db):
+		# save fleet here and mission state
+		pass
+
+	def load(self, db, worldid, success_callback, failure_callback, owner):
+		super(FleetMission, self).load(db, worldid, success_callback, failure_callback, owner)
+		self.__init(success_callback, failure_callback, owner)
+
+	def _load(self, ships):
+		pass
+
 	def _dismiss_fleet(self):
 		for ship in self.fleet.get_ships():
 			self.owner.ships[ship] = self.owner.shipStates.idle

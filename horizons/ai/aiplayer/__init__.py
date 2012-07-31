@@ -234,9 +234,10 @@ class AIPlayer(GenericAI):
 	def _load(self, db, worldid):
 		super(AIPlayer, self)._load(db, worldid)
 		self.personality_manager = PersonalityManager.load(db, self)
-		#self.unit_manager = UnitManager.load(db, self)
+		self.unit_manager = UnitManager.load(db, self)
 		#self.behavior_manager = BehaviorManager.load(db, self)
 		#self.combat_manager = CombatManager.load(db, self)
+		self.strategy_manager = StrategyManager.load(db, self)
 		self.__init()
 
 		self.need_more_ships, self.need_feeder_island, self.need_more_combat_ships, remaining_ticks , remaining_ticks_long= \
@@ -247,15 +248,13 @@ class AIPlayer(GenericAI):
 	def finish_loading(self, db):
 		""" This is called separately because most objects are loaded after the player. """
 
-
 		# set up AIPlayer state to move callback mapping. Used for game loading.
 
 		aiplayer_state_move_callback = {
-			self.shipStates.fleeing_combat: BehaviorMoveCallback._arrived,
-			self.shipStates.moving_random: BehaviorMoveCallback._arrived,
-			# TODO: scouting phases are not saved yet. It's easily fixable by adding more states to shipState
+			#self.shipStates.fleeing_combat: BehaviorMoveCallback._arrived,
+			#self.shipStates.moving_random: BehaviorMoveCallback._arrived,
 			# and using approach above, but think of something more flexible
-			self.shipStates.scouting: BehaviorMoveCallback._arrived,
+			#self.shipStates.scouting: BehaviorMoveCallback._arrived,
 		}
 
 		# load the ships in combat
@@ -267,12 +266,15 @@ class AIPlayer(GenericAI):
 			if state in aiplayer_state_move_callback:
 				ship.add_move_callback(Callback(aiplayer_state_move_callback[state], ship))
 
-		# load combat missions
+		# load strategy manager
 
+		self.strategy_manager.finish_loading(db)
 		# scouting
+		# TODO missions are loaded in finish_loading now
 		db_result = db("SELECT rowid FROM ai_mission_scouting WHERE owner = ?", self.worldid)
 		for (mission_id,) in db_result:
 			self.missions.add(ScoutingMission.load(db, mission_id, self.report_success, self.report_failure))
+
 
 		# load the land managers
 		for (worldid,) in db("SELECT rowid FROM ai_land_manager WHERE owner = ?", self.worldid):

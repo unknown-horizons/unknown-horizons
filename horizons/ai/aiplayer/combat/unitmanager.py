@@ -28,11 +28,12 @@ from horizons.component.healthcomponent import HealthComponent
 from horizons.component.selectablecomponent import SelectableComponent
 from horizons.util.shapes.circle import Circle
 from horizons.util.shapes.point import Point
+from horizons.util.worldobject import WorldObject
 from horizons.world.units.fightingship import FightingShip
 from horizons.world.units.pirateship import PirateShip
 
 
-class UnitManager(object):
+class UnitManager(WorldObject):
 	"""
 	UnitManager objects is responsible for handling units in game.
 	1.Grouping combat ships into easy to handle fleets,
@@ -43,10 +44,13 @@ class UnitManager(object):
 	log = logging.getLogger("ai.aiplayer.unitmanager")
 
 	def __init__(self, owner):
+		super(UnitManager, self).__init__()
+		self.__init(owner)
+
+	def __init(self, owner):
 		self.owner = owner
 		self.world = owner.world
 		self.session = owner.session
-		self.ship_groups = []
 
 		# quickly get fleet assigned to given ship. Ship -> Fleet dictionary
 		self.ships = weakref.WeakKeyDictionary()
@@ -65,11 +69,17 @@ class UnitManager(object):
 			ships = self.filter_ships(self.owner, ships, filtering_rules)
 		return ships
 
-	# TODO: depreciated
-	def get_available_ship_groups(self, purpose):
-		# TODO: should check out if ship group is on a mission first (priority)
-		# purpose dict should contain all required info (request priority, amount of ships etc.)
-		return self.ship_groups
+	def save(self, db):
+		pass
+
+	def _load(self, db, owner, worldid):
+		self.__init(owner)
+
+	@classmethod
+	def load(cls, db, owner):
+		self = cls.__new__(cls)
+		self._load(db, owner)
+		return self
 
 	def create_fleet(self, ships, destroy_callback=None):
 		fleet = Fleet(ships, destroy_callback)
