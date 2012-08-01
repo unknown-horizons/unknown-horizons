@@ -57,15 +57,12 @@ class FleetMission(Mission):
 		self.combatIntermissions = {}
 
 	def save(self, db):
-		# save fleet here and mission state
-		pass
+		super(FleetMission, self).save(db)
 
-	def load(self, db, worldid, success_callback, failure_callback, owner):
+	def load(self, db, worldid, success_callback, failure_callback, owner, fleet, state):
 		super(FleetMission, self).load(db, worldid, success_callback, failure_callback, owner)
-		self.__init(success_callback, failure_callback, owner)
-
-	def _load(self, ships):
-		pass
+		fleet.destroy_callback = Callback(self.cancel, "All ships were destroyed")
+		self.state = state
 
 	def _dismiss_fleet(self):
 		for ship in self.fleet.get_ships():

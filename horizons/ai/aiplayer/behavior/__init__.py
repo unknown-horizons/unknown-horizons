@@ -38,6 +38,10 @@ class BehaviorManager(object):
 	log = logging.getLogger("ai.aiplayer.behavior.behaviormanager")
 
 	def __init__(self, owner):
+		super(BehaviorManager, self).__init__()
+		self.__init(owner)
+
+	def __init(self, owner):
 		self.owner = owner
 		self.world = owner.world
 		self.session = owner.session

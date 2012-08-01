@@ -23,6 +23,9 @@ from horizons.ai.aiplayer.strategy.mission import FleetMission
 from horizons.command.diplomacy import AddEnemyPair
 from horizons.ext.enum import Enum
 from horizons.util.python.callback import Callback
+from horizons.util.shapes.circle import Circle
+from horizons.util.shapes.point import Point
+from horizons.util.worldobject import WorldObject
 
 from horizons.world.units.movingobject import MoveNotPossible
 from horizons.util.python import decorators
@@ -54,6 +57,40 @@ class SurpriseAttack(FleetMission):
 			self.missionStates.going_back: (self.go_back, self.flee_home),
 			self.missionStates.breaking_diplomacy: (self.break_diplomacy, self.flee_home),
 		}
+
+		# Fleet callbacks corresponding to given state
+		self._load_fleet_callbacks = {
+			self.missionStates.sailing_to_target: Callback(self.break_diplomacy),
+			self.missionStates.going_back: Callback(self.report_success, "Ships arrived at return point"),
+		}
+	def save(self, db):
+		db("INSERT INTO ai_mission_surprise_attack (rowid, owner_id, fleet_id, enemy_player_id, target_point_x, target_point_y, target_point_radius, "
+		   "return_point_x, return_point_y, state_id) VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?)", self.worldid, self.owner.worldid,
+			self.fleet.worldid, self.enemy_player.worldid, self.target_point.center.x, self.target_point.center.y, self.target_point.radius,
+			self.return_point.x, self.return_point.y, self.state.index)
+
+
+	@classmethod
+	def load(cls, worldid, owner, db, success_callback, failure_callback):
+		self = cls.__new__(cls)
+		self._load(worldid, owner, db, success_callback, failure_callback)
+		return self
+
+	def _load(self, worldid, owner, db, success_callback, failure_callback):
+		db_result = db("SELECT fleet_id, enemy_player_id, target_point_x, target_point_y, target_point_radius, return_point_x, return_point_y, "
+					   "state_id FROM ai_mission_surprise_attack WHERE rowid = ?", worldid)[0]
+		fleet_id, enemy_player_id, target_point_x, target_point_y, target_point_radius, return_point_x, return_point_y, state_id = db_result
+		fleet = WorldObject.get_object_by_id(fleet_id)
+		state = self.missionStates[fleet_id]
+		super(SurpriseAttack, self).load(db, worldid, success_callback, failure_callback, owner, fleet, state)
+
+		target_point = Circle(Point(target_point_x, target_point_y), target_point_radius)
+		return_point = Point(return_point_x, return_point_y)
+		enemy_player = WorldObject.get_object_by_id(enemy_player_id)
+		self.__init(target_point, return_point, enemy_player)
+
+		if self.state in self._load_fleet_callbacks:
+			self.fleet.callback = self._load_fleet_callbacks[self.state]
 
 	def start(self):
 		self.set_off()

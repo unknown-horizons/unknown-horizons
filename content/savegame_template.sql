@@ -68,26 +68,33 @@ CREATE TABLE "ai_single_resource_trade_manager" ("trade_manager" INTEGER NOT NUL
 CREATE TABLE "ai_single_resource_trade_manager_partner" ("single_resource_trade_manager" INTEGER NOT NULL , "settlement_manager" INTEGER NOT NULL , "amount" DOUBLE NOT NULL );
 CREATE TABLE "ai_single_resource_trade_manager_quota" ("single_resource_trade_manager" INTEGER NOT NULL , "identifier" TEXT NOT NULL , "quota" DOUBLE NOT NULL );
 
-CREATE TABLE "fleet" ("owner" INTEGER NOT NULL, "state" INTEGER NOT NULL, "dest_x" INTEGER, "dest_y" INTEGER)
-CREATE TABLE "fleet_ship" ("fleet" INTEGER NOT NULL, "ship" INTEGER NOT NULL, "state" INTEGER NOT NULL)
-CREATE TABLE "ai_mission_scouting" ("owner" INTEGER NOT NULL , "fleet" INTEGER NOT NULL , "starting_point_x" INTEGER NOT NULL, "starting_point_y" INTEGER NOT NULL, "target_point_x" INTEGER NOT NULL, "target_point_y" INTEGER NOT NULL, "state" INTEGER NOT NULL );
-CREATE TABLE "ai_mission_surprise_attack" (
-  "owner" INTEGER NOT NULL,
-  "fleet" INTEGER NOT NULL,
-  "enemy_player" INTEGER NOT NULL,
-  "target_point_x" INTEGER NOT NULL,
-  "target_point_y" INTEGER NOT NULL,
+CREATE TABLE "fleet" ("fleet_id" INTEGER NOT NULL, "owner_id" INTEGER NOT NULL, "state_id" INTEGER NOT NULL, "dest_x" INTEGER, "dest_y" INTEGER, "radius" INTEGER, "ratio" DOUBLE);
+CREATE TABLE "fleet_ship" ("fleet_id" INTEGER NOT NULL, "ship_id" INTEGER NOT NULL, "state_id" INTEGER NOT NULL);
+CREATE TABLE "ai_mission_scouting" (
+  "owner_id" INTEGER NOT NULL ,
+  "fleet_id" INTEGER NOT NULL ,
   "starting_point_x" INTEGER NOT NULL,
   "starting_point_y" INTEGER NOT NULL,
-  "state" INTEGER NOT NULL )
+  "target_point_x" INTEGER NOT NULL,
+  "target_point_y" INTEGER NOT NULL,
+  "state_id" INTEGER NOT NULL );
+CREATE TABLE "ai_mission_surprise_attack" (
+  "owner_id" INTEGER NOT NULL,
+  "fleet_id" INTEGER NOT NULL,
+  "enemy_player_id" INTEGER NOT NULL,
+  "target_point_x" INTEGER NOT NULL,
+  "target_point_y" INTEGER NOT NULL,
+  "target_point_radius" INTEGER NOT NULL,
+  "return_point_x" INTEGER NOT NULL,
+  "return_point_y" INTEGER NOT NULL,
+  "state_id" INTEGER NOT NULL );
 CREATE TABLE "ai_mission_chase_ships_and_attack" (
   "owner" INTEGER NOT NULL,
   "fleet" INTEGER NOT NULL,
   --"current_spot_x" INTEGER NOT NULL,
   --"current_spot_y" INTEGER NOT NULL,
   "target_ship" INTEGER NOT NULL,
-  "state" INTEGER NOT NULL,
-)
+  "state" INTEGER NOT NULL );
 
 CREATE TABLE "ai_trade_manager" ("settlement_manager" INTEGER NOT NULL );
 CREATE TABLE "ai_village_builder" ("settlement_manager" INTEGER NOT NULL ,"num_sections" INTEGER NOT NULL ,"current_section" INTEGER NOT NULL );

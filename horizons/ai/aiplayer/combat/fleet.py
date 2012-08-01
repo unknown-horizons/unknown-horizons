@@ -56,8 +56,10 @@ class Fleet(WorldObject):
 		assert len(ships) > 0, "request to create a fleet from  %s ships" % (len(ships))
 		self.__init(ships, destroy_callback)
 
-	def __init(self, ships, destroy_callback):
+	def __init(self, ships, destroy_callback=None):
 		self.owner = ships[0].owner
+
+		# dictionary of ship => state
 		self._ships = WeakKeyDictionary()
 		for ship in ships:
 			self._ships[ship] = self.shipStates.idle
@@ -69,26 +71,62 @@ class Fleet(WorldObject):
 		super(Fleet, self).save(db)
 		# save the fleet
 		# save destination if fleet is moving somewhere
+		db("INSERT INTO fleet (fleet_id, owner_id, state_id) VALUES(?, ?, ?)", self.worldid, self.owner.worldid, self.state.index)
+
 		if self.state == self.fleetStates.moving and hasattr(self, 'destination'):
-			x, y = None, None
-			if isinstance(self.destination, Circle):
-				x, y = self.destination.center.x, self.destination.center.y
-			elif isinstance(self.destination, Point):
+			if isinstance(self.destination, Point):
 				x, y = self.destination.x, self.destination.y
+				db("UPDATE fleet SET dest_x = ?, dest_y = ? WHERE fleet_id = ?", x, y, self.worldid)
+			elif isinstance(self.destination, Circle):
+				x, y, radius = self.destination.center.x, self.destination.center.y, self.destination.radius
+				db("UPDATE fleet SET dest_x = ?, dest_y = ?, radius = ? WHERE fleet_id = ?", x, y, radius, self.worldid)
 			else:
 				assert False, "destination is neither a Circle nor a Point: %s" % self.destination.__class__.__name__
-			db("INSERT INTO fleet (rowid, owner, state, dest_x, dest_y) VALUES(?, ?, ?, ?, ?)",
-				self.worldid, self.owner.worldid, self.state.index, x, y)
 
-		# save ships, rowid is ship's worldid since single ship can't be in two fleets at once
+		if hasattr(self, "ratio"):
+			db("UPDATE fleet SET ratio = ? WHERE fleet_id = ?", self.ratio, self.worldid)
+
+		# save ships
 		for ship in self.get_ships():
-			db("INSERT INTO fleet_ship (rowid, fleet, state", ship.worldid, self.worldid, self._ships[ship].index)
+			db("INSERT INTO fleet_ship (ship_id, fleet_id, state_id) VALUES(?, ?, ?)", ship.worldid, self.worldid, self._ships[ship].index)
+
+	def _load(self, worldid, owner, db, destroy_callback):
+		super(Fleet, self).load(db, worldid)
+		self.owner = owner
+		state_id, dest_x, dest_y, radius, ratio =  db("SELECT state_id, dest_x, dest_y, radius, ratio FROM fleet WHERE fleet_id = ?", worldid)[0]
+
+		if radius: #Circle
+			self.destination = Circle(Point(dest_x, dest_x), radius)
+		elif dest_x and dest_y: #Point
+			self.destination = Point(dest_x, dest_y)
+		else: #No destination
+			pass
+
+		if ratio:
+			self.ratio = ratio
+
+		ships_states =[(WorldObject.get_object_by_id(ship_id), self.shipStates[state_id]) for ship_id, state_id in db("SELECT ship_id, state_id FROM fleet_ship WHERE fleet_id = ?", worldid)]
+		ships = [item[0] for item in ships_states]
+
+		self.__init(ships, destroy_callback)
+		self.state = self.fleetStates[state_id]
+
+		for ship, state in ships_states:
+			self._ships[ship] = state
+
+		if self.state == self.fleetStates.moving:
+			for ship in self.get_ships():
+				if self._ships[ship] == self.shipStates.moving:
+					self._move_ship(ship, self.destination, Callback(self._ship_reached, ship))
+
+		if destroy_callback:
+			self.destroy_callback = destroy_callback
+			# TODO FINISH
 
 	@classmethod
-	def load(cls, worldid, db, destroy_callback=None):
-		# TODO:Think of refactoring here
+	def load(cls, worldid, owner, db, destroy_callback=None):
 		self = cls.__new__(cls)
-		self._load(db, owner)
+		self._load(worldid, owner, db, destroy_callback)
 		return self
 
 	def get_ships(self):

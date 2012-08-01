@@ -33,7 +33,7 @@ from horizons.world.units.fightingship import FightingShip
 from horizons.world.units.pirateship import PirateShip
 
 
-class UnitManager(WorldObject):
+class UnitManager(object):
 	"""
 	UnitManager objects is responsible for handling units in game.
 	1.Grouping combat ships into easy to handle fleets,
@@ -70,10 +70,17 @@ class UnitManager(WorldObject):
 		return ships
 
 	def save(self, db):
-		pass
+		for fleet in list(self.fleets):
+			fleet.save(db)
 
-	def _load(self, db, owner, worldid):
+	def _load(self, db, owner):
 		self.__init(owner)
+		fleets_id = db("SELECT fleet_id from fleet where owner_id = ?", self.owner.worldid)
+		for (fleet_id,) in fleets_id:
+			fleet = Fleet.load(fleet_id, owner,db)
+			self.fleets.add(fleet)
+			for ship in fleet.get_ships():
+				self.ships[ship] = fleet
 
 	@classmethod
 	def load(cls, db, owner):

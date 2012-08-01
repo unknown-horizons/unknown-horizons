@@ -23,6 +23,7 @@ import logging
 
 from horizons.ai.aiplayer.strategy.condition import get_all_conditions
 from horizons.ai.aiplayer.strategy.mission.scouting import ScoutingMission
+from horizons.ai.aiplayer.strategy.mission.surpriseattack import SurpriseAttack
 from horizons.component.namedcomponent import NamedComponent
 
 
@@ -50,22 +51,26 @@ class StrategyManager(object):
 		self.conditions_being_resolved = {}
 
 	def save(self, db):
-		pass
+		for mission in list(self.missions):
+			mission.save(db)
 
 	@classmethod
 	def load(cls, db, owner):
 		self = cls.__new__(cls)
+		super(StrategyManager, self).__init__()
+		self.__init(owner)
 		self._load(db, owner)
 		return self
 
-	def _load(self, db, owner, worldid):
-		self.__init(owner)
+	def _load(self, db, owner):
+		pass
+		#db_result = db("SELECT rowid FROM ai_mission_scouting WHERE owner = ?", self.owner.worldid)
+		#for (mission_id,) in db_result:
+		#	self.missions.add(ScoutingMission.load(db, mission_id, self.report_success, self.report_failure))
 
-	def finish_loading(self, db):
-
-		db_result = db("SELECT rowid FROM ai_mission_scouting WHERE owner = ?", self.owner.worldid)
+		db_result = db("SELECT rowid FROM ai_mission_surprise_attack WHERE owner_id = ?", self.owner.worldid)
 		for (mission_id,) in db_result:
-			self.missions.add(ScoutingMission.load(db, mission_id, self.report_success, self.report_failure))
+			self.missions.add(SurpriseAttack.load(db, mission_id, self.report_success, self.report_failure, self.owner))
 
 	def report_success(self, mission, msg):
 		self.log.info("Player: %s|StrategyManager|Mission %s was a success: %s", self.owner.worldid, mission, msg)

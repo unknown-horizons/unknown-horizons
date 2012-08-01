@@ -159,7 +159,6 @@ class AIPlayer(GenericAI):
 		self.missions.add(mission)
 		mission.start()
 
-
 	def report_success(self, mission, msg):
 		if not self._enabled:
 			return
@@ -226,18 +225,20 @@ class AIPlayer(GenericAI):
 		#self.behavior_manager.save(db)
 
 		# save the unit manager
-		#self.unit_manager.save(db)
+		self.unit_manager.save(db)
 
 		# save the combat manager
 		#self.combat_manager.save(db)
 
+		# save the strategy manager
+		self.strategy_manager.save(db)
+
 	def _load(self, db, worldid):
 		super(AIPlayer, self)._load(db, worldid)
 		self.personality_manager = PersonalityManager.load(db, self)
-		self.unit_manager = UnitManager.load(db, self)
 		#self.behavior_manager = BehaviorManager.load(db, self)
 		#self.combat_manager = CombatManager.load(db, self)
-		self.strategy_manager = StrategyManager.load(db, self)
+		#self.strategy_manager = StrategyManager.load(db, self)
 		self.__init()
 
 		self.need_more_ships, self.need_feeder_island, self.need_more_combat_ships, remaining_ticks , remaining_ticks_long= \
@@ -266,14 +267,18 @@ class AIPlayer(GenericAI):
 			if state in aiplayer_state_move_callback:
 				ship.add_move_callback(Callback(aiplayer_state_move_callback[state], ship))
 
+
+		self.unit_manager = UnitManager.load(db, self)
 		# load strategy manager
 
-		self.strategy_manager.finish_loading(db)
+		self.strategy_manager = StrategyManager.load(db, self)
+
+		#self.strategy_manager.finish_loading(db)
 		# scouting
 		# TODO missions are loaded in finish_loading now
-		db_result = db("SELECT rowid FROM ai_mission_scouting WHERE owner = ?", self.worldid)
-		for (mission_id,) in db_result:
-			self.missions.add(ScoutingMission.load(db, mission_id, self.report_success, self.report_failure))
+		#db_result = db("SELECT rowid FROM ai_mission_scouting WHERE owner = ?", self.worldid)
+		#for (mission_id,) in db_result:
+		#	self.missions.add(ScoutingMission.load(db, mission_id, self.report_success, self.report_failure))
 
 
 		# load the land managers
