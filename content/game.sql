@@ -252,7 +252,7 @@ INSERT INTO "resource" VALUES(34, 'pigs', 0, 0, 1);
 INSERT INTO "resource" VALUES(35, 'cattle for slaughter', 2, 0, 1);
 INSERT INTO "resource" VALUES(36, 'pigs for slaughter', 2, 0, 1);
 INSERT INTO "resource" VALUES(37, 'herbs', 0, 0, 1);
-INSERT INTO "resource" VALUES(38, 'medical herbs', 2.5, 0, 0);
+INSERT INTO "resource" VALUES(38, 'medical herbs', 2.5, 1, 1);
 INSERT INTO "resource" VALUES(39, 'acorns', 0, 0, 1);
 INSERT INTO "resource" VALUES(40, 'cannon', 100, 1, 1);
 INSERT INTO "resource" VALUES(41, 'dagger', 10, 0, 0);
