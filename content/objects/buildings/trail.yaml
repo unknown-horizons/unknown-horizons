@@ -18,3 +18,5 @@ actionsets:
     as_trail: as_preview_trail
   TIER.PIONEERS:
     as_gravel_path: as_preview_gravel_path
+  TIER.CITIZENS:
+    as_stone_path: as_preview_stone_path
