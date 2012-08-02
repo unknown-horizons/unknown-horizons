@@ -55,7 +55,7 @@ class Minimap(object):
 		}
 
 
-	WAREHOUSE_IMAGE = "content/gui/icons/resources/16/placeholder.png"
+	WAREHOUSE_IMAGE = "content/gui/icons/minimap/warehouse.png"
 	SHIP_NEUTRAL = "content/gui/icons/minimap/ship_neutral.png"
 	SHIP_PIRATE = "content/gui/icons/minimap/pirate.png"
 
