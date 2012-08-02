@@ -20,6 +20,7 @@
 # ###################################################
 
 import logging
+import random
 
 from horizons.ai.aiplayer.behavior.behavioractions import BehaviorActionPirateHater, BehaviorActionCoward,\
 	BehaviorActionKeepFleetTogether, BehaviorActionRegular, BehaviorActionPirateRoutine, BehaviorActionBreakDiplomacy,\
@@ -39,11 +40,10 @@ class BehaviorProfile(WorldObject):
 	log = logging.getLogger("ai.aiplayer.behaviorprofile")
 
 	@classmethod
-	def get_random_player_actions(cls, player):
-		token = player.behavior_manager.profile_token
+	def get_random_player_actions(cls, player, token):
 
-		random = random.Random()
-		random.seed(token)
+		random_generator = random.Random()
+		random_generator.seed(token)
 		# TODO: use new random generator to select a player actions randomly (controlled randomness, since seed is set)
 
 		actions = {
@@ -63,8 +63,7 @@ class BehaviorProfile(WorldObject):
 		return actions
 
 	@classmethod
-	def get_random_pirate_actions(cls, player):
-		token = player.behavior_manager.profile_token
+	def get_random_pirate_actions(cls, player, token):
 		actions = {
 			cls.action_types.offensive: dict(),
 			cls.action_types.defensive: dict(),
@@ -77,8 +76,7 @@ class BehaviorProfile(WorldObject):
 		return actions
 
 	@classmethod
-	def get_random_player_strategies(cls, player):
-		token = player.behavior_manager.profile_token
+	def get_random_player_strategies(cls, player, token):
 		strategies = {
 			cls.strategy_types.offensive: dict(),
 			cls.strategy_types.diplomatic: dict(),
@@ -88,8 +86,7 @@ class BehaviorProfile(WorldObject):
 		return strategies
 
 	@classmethod
-	def get_random_pirate_strategies(cls, player):
-		token = player.behavior_manager.profile_token
+	def get_random_pirate_strategies(cls, player, token):
 		return {}
 
 	@classmethod

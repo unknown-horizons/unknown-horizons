@@ -148,11 +148,11 @@ class AIPlayer(GenericAI):
 		self.special_domestic_trade_manager = SpecialDomesticTradeManager(self)
 		self.international_trade_manager = InternationalTradeManager(self)
 
-	def get_random_actions(self):
-		return BehaviorProfile.get_random_player_actions(self)
+	def get_random_actions(self, token):
+		return BehaviorProfile.get_random_player_actions(self, token)
 
-	def get_random_strategies(self):
-		return BehaviorProfile.get_random_player_strategies(self)
+	def get_random_strategies(self, token):
+		return BehaviorProfile.get_random_player_strategies(self, token)
 
 	def start_mission(self, mission):
 		self.ships[mission.ship] = self.shipStates.on_a_mission
@@ -222,7 +222,7 @@ class AIPlayer(GenericAI):
 		self.personality_manager.save(db)
 
 		# save the behavior manager
-		#self.behavior_manager.save(db)
+		self.behavior_manager.save(db)
 
 		# save the unit manager
 		self.unit_manager.save(db)
@@ -236,10 +236,12 @@ class AIPlayer(GenericAI):
 	def _load(self, db, worldid):
 		super(AIPlayer, self)._load(db, worldid)
 		self.personality_manager = PersonalityManager.load(db, self)
-		#self.behavior_manager = BehaviorManager.load(db, self)
 		#self.combat_manager = CombatManager.load(db, self)
 		#self.strategy_manager = StrategyManager.load(db, self)
 		self.__init()
+
+		# load BehaviorManager
+		self.behavior_manager = BehaviorManager.load(db, self)
 
 		self.need_more_ships, self.need_feeder_island, self.need_more_combat_ships, remaining_ticks , remaining_ticks_long= \
 			db("SELECT need_more_ships, need_more_combat_ships, need_feeder_island, remaining_ticks, remaining_ticks_long FROM ai_player WHERE rowid = ?", worldid)[0]

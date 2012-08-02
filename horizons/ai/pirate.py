@@ -92,11 +92,11 @@ class Pirate(GenericAI):
 		# Temporary function for pirates respawn
 		self.maintain_ship_count()
 
-	def get_random_actions(self):
-		return BehaviorProfile.get_random_pirate_actions(self)
+	def get_random_actions(self, token):
+		return BehaviorProfile.get_random_pirate_actions(self, token)
 
-	def get_random_strategies(self):
-		return BehaviorProfile.get_random_pirate_strategies(self)
+	def get_random_strategies(self, token):
+		return BehaviorProfile.get_random_pirate_strategies(self, token)
 
 	def create_ship_at_random_position(self):
 		point = self.session.world.get_random_possible_ship_position()
