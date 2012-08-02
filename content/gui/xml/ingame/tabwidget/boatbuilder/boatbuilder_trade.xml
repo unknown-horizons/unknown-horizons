@@ -37,30 +37,30 @@
 		<Label name="headline_BB_trade_ship1"  position="0,3" text="Huker"
 			comment="The huker is a ship class mostly used for fishing. It is the starting ship of players in Unknown Horizons. If you are not sure how to translate, just leave the field empty and it will be called Huker." />
 
-		<Icon image="content/gui/icons/resources/16/004.png" position="13,25" helptext="Boards"  name="costs_004" />
+		<Icon image="content/gui/icons/resources/32/004.png" min_size="16,16" max_size="16,16" size="16,16" position="13,25" helptext="Boards"  name="costs_004" />
 		<Label position="35,25" text="08t"  name="noi18n"  comment="noi18n" /> <!-- maybe get this info out of a sqlite. could depend on difficulty.-->
-		<Icon image="content/gui/icons/resources/16/003.png" position="13,45" helptext="Cloth"   name="costs_003" />
+		<Icon image="content/gui/icons/resources/32/003.png" min_size="16,16" max_size="16,16" size="16,16" position="13,45" helptext="Cloth"   name="costs_003" />
 		<Label position="35,45" text="03t"  name="noi18n"  comment="noi18n" />
-		<Icon image="content/gui/icons/resources/16/006.png" position="68,25" helptext="Tools"   name="costs_006" /><!--
+		<Icon image="content/gui/icons/resources/32/006.png" min_size="16,16" max_size="16,16" size="16,16" position="68,25" helptext="Tools"   name="costs_006" /><!--
 		<Label position="90,25" text="01t"  name="noi18n"  comment="noi18n" />
-		<Icon image="content/gui/icons/resources/16/040.png" position="68,45" helptext="Cannons" name="costs_040" />
+		<Icon image="content/gui/icons/resources/32/040.png" min_size="16,16" max_size="16,16" size="16,16" position="68,45" helptext="Cannons" name="costs_040" />
 		<Label position="90,45" text="00t" />-->
-		<Icon image="content/gui/icons/resources/16/001.png" position="13,65" helptext="Money"   name="costs_001" />
+		<Icon image="content/gui/icons/resources/32/001.png" min_size="16,16" max_size="16,16" size="16,16" position="13,65" helptext="Money"   name="costs_001" />
 		<Label position="35,65" text="550"  name="noi18n"  comment="noi18n" />
 	</Container>
 	<!--
 	<Container position="110,197" size="260,87" >
 		<Label position="0,3" text="Courier boat" />
 
-		<Icon image="content/gui/icons/resources/16/004.png" position="13,25" helptext="Boards" />
+		<Icon image="content/gui/icons/resources/32/004.png" min_size="16,16" max_size="16,16" size="16,16" position="13,25" helptext="Boards" />
 		<Label position="35,25" text="12t" />
-		<Icon image="content/gui/icons/resources/16/003.png" position="13,45" helptext="Cloth" />
+		<Icon image="content/gui/icons/resources/32/003.png" min_size="16,16" max_size="16,16" size="16,16" position="13,45" helptext="Cloth" />
 		<Label position="35,45" text="08t" />
-		<Icon image="content/gui/icons/resources/16/006.png" position="68,25" helptext="Ropes" />
+		<Icon image="content/gui/icons/resources/32/006.png" min_size="16,16" max_size="16,16" size="16,16" position="68,25" helptext="Ropes" />
 		<Label position="90,25" text="00t" />
-		<Icon image="content/gui/icons/resources/16/005.png" position="68,45" helptext="Cannons" />
+		<Icon image="content/gui/icons/resources/32/005.png" min_size="16,16" max_size="16,16" size="16,16" position="68,45" helptext="Cannons" />
 		<Label position="90,45" text="00t" />
-		<Icon image="content/gui/icons/resources/16/001.png" position="13,65" helptext="Money" />
+		<Icon image="content/gui/icons/resources/32/001.png" min_size="16,16" max_size="16,16" size="16,16" position="13,65" helptext="Money" />
 		<Label position="35,65" text="500" />
 	</Container>
 
