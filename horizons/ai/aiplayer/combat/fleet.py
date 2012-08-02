@@ -96,7 +96,7 @@ class Fleet(WorldObject):
 		state_id, dest_x, dest_y, radius, ratio =  db("SELECT state_id, dest_x, dest_y, radius, ratio FROM fleet WHERE fleet_id = ?", worldid)[0]
 
 		if radius: #Circle
-			self.destination = Circle(Point(dest_x, dest_x), radius)
+			self.destination = Circle(Point(dest_x, dest_y), radius)
 		elif dest_x and dest_y: #Point
 			self.destination = Point(dest_x, dest_y)
 		else: #No destination
@@ -117,7 +117,7 @@ class Fleet(WorldObject):
 		if self.state == self.fleetStates.moving:
 			for ship in self.get_ships():
 				if self._ships[ship] == self.shipStates.moving:
-					self._move_ship(ship, self.destination, Callback(self._ship_reached, ship))
+					ship.add_move_callback(Callback(self._ship_reached, ship))
 
 		if destroy_callback:
 			self.destroy_callback = destroy_callback
@@ -192,6 +192,7 @@ class Fleet(WorldObject):
 		for ship in self._ships.keys():
 			self._ships[ship] = self.shipStates.idle
 
+		print "HI FLEEEET@@@@@@@2", self.callback
 		if self.callback:
 			self.callback()
 

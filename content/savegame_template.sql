@@ -87,7 +87,8 @@ CREATE TABLE "ai_mission_surprise_attack" (
   "target_point_radius" INTEGER NOT NULL,
   "return_point_x" INTEGER NOT NULL,
   "return_point_y" INTEGER NOT NULL,
-  "state_id" INTEGER NOT NULL );
+  "state_id" INTEGER NOT NULL,
+  "combat_phase" BOOL NOT NULL);
 CREATE TABLE "ai_mission_chase_ships_and_attack" (
   "owner" INTEGER NOT NULL,
   "fleet" INTEGER NOT NULL,

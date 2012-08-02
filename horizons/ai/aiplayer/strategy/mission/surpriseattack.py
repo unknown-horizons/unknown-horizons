@@ -65,9 +65,9 @@ class SurpriseAttack(FleetMission):
 		}
 	def save(self, db):
 		db("INSERT INTO ai_mission_surprise_attack (rowid, owner_id, fleet_id, enemy_player_id, target_point_x, target_point_y, target_point_radius, "
-		   "return_point_x, return_point_y, state_id) VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?)", self.worldid, self.owner.worldid,
+		   "return_point_x, return_point_y, state_id, combat_phase) VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)", self.worldid, self.owner.worldid,
 			self.fleet.worldid, self.enemy_player.worldid, self.target_point.center.x, self.target_point.center.y, self.target_point.radius,
-			self.return_point.x, self.return_point.y, self.state.index)
+			self.return_point.x, self.return_point.y, self.state.index, self.combat_phase)
 
 
 	@classmethod
@@ -78,11 +78,11 @@ class SurpriseAttack(FleetMission):
 
 	def _load(self, worldid, owner, db, success_callback, failure_callback):
 		db_result = db("SELECT fleet_id, enemy_player_id, target_point_x, target_point_y, target_point_radius, return_point_x, return_point_y, "
-					   "state_id FROM ai_mission_surprise_attack WHERE rowid = ?", worldid)[0]
-		fleet_id, enemy_player_id, target_point_x, target_point_y, target_point_radius, return_point_x, return_point_y, state_id = db_result
+					   "state_id, combat_phase FROM ai_mission_surprise_attack WHERE rowid = ?", worldid)[0]
+		fleet_id, enemy_player_id, target_point_x, target_point_y, target_point_radius, return_point_x, return_point_y, state_id, combat_phase = db_result
 		fleet = WorldObject.get_object_by_id(fleet_id)
-		state = self.missionStates[fleet_id]
-		super(SurpriseAttack, self).load(db, worldid, success_callback, failure_callback, owner, fleet, state)
+		state = self.missionStates[state_id]
+		super(SurpriseAttack, self).load(db, worldid, success_callback, failure_callback, owner, fleet, state, combat_phase)
 
 		target_point = Circle(Point(target_point_x, target_point_y), target_point_radius)
 		return_point = Point(return_point_x, return_point_y)

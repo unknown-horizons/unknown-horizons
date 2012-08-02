@@ -70,7 +70,7 @@ class StrategyManager(object):
 
 		db_result = db("SELECT rowid FROM ai_mission_surprise_attack WHERE owner_id = ?", self.owner.worldid)
 		for (mission_id,) in db_result:
-			self.missions.add(SurpriseAttack.load(db, mission_id, self.report_success, self.report_failure, self.owner))
+			self.missions.add(SurpriseAttack.load(mission_id, self.owner, db,self.report_success, self.report_failure))
 
 	def report_success(self, mission, msg):
 		self.log.info("Player: %s|StrategyManager|Mission %s was a success: %s", self.owner.worldid, mission, msg)
