@@ -63,14 +63,25 @@ class StrategyManager(object):
 		return self
 
 	def _load(self, db, owner):
-		pass
-		#db_result = db("SELECT rowid FROM ai_mission_scouting WHERE owner = ?", self.owner.worldid)
-		#for (mission_id,) in db_result:
-		#	self.missions.add(ScoutingMission.load(db, mission_id, self.report_success, self.report_failure))
+		missions_to_load =  (
+			("ai_mission_scouting", ScoutingMission),
+			("ai_mission_surprise_attack", SurpriseAttack),
+		)
+
+		"""# TODO: Use this later
+		for db_table, class_name in missions_to_load:
+			db_result = db("SELECT rowid FROM ? WHERE owner_id = ?", db_table, self.owner.worldid)
+			for (mission_id,) in db_result:
+				self.missions.add(class_name.load(mission_id, self.owner, db, self.report_success, self.report_failure))
+				"""
+
+		db_result = db("SELECT rowid FROM ai_mission_scouting WHERE owner_id = ?", self.owner.worldid)
+		for (mission_id,) in db_result:
+			self.missions.add(ScoutingMission.load(mission_id, self.owner, db, self.report_success, self.report_failure))
 
 		db_result = db("SELECT rowid FROM ai_mission_surprise_attack WHERE owner_id = ?", self.owner.worldid)
 		for (mission_id,) in db_result:
-			self.missions.add(SurpriseAttack.load(mission_id, self.owner, db,self.report_success, self.report_failure))
+			self.missions.add(SurpriseAttack.load(mission_id, self.owner, db, self.report_success, self.report_failure))
 
 	def report_success(self, mission, msg):
 		self.log.info("Player: %s|StrategyManager|Mission %s was a success: %s", self.owner.worldid, mission, msg)

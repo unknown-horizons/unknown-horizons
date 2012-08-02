@@ -77,7 +77,8 @@ CREATE TABLE "ai_mission_scouting" (
   "starting_point_y" INTEGER NOT NULL,
   "target_point_x" INTEGER NOT NULL,
   "target_point_y" INTEGER NOT NULL,
-  "state_id" INTEGER NOT NULL );
+  "state_id" INTEGER NOT NULL,
+  "combat_phase" BOOL NOT NULL);
 CREATE TABLE "ai_mission_surprise_attack" (
   "owner_id" INTEGER NOT NULL,
   "fleet_id" INTEGER NOT NULL,

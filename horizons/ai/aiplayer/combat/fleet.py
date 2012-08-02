@@ -192,7 +192,6 @@ class Fleet(WorldObject):
 		for ship in self._ships.keys():
 			self._ships[ship] = self.shipStates.idle
 
-		print "HI FLEEEET@@@@@@@2", self.callback
 		if self.callback:
 			self.callback()
 

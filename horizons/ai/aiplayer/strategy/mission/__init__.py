@@ -44,10 +44,15 @@ class FleetMission(Mission):
 		self.combat_phase = False
 		self.state = self.missionStates.created
 
-		# combatIntermissions is dictionary of type 'missionState -> (won_function, lost_function)'
-		# stating which function should be called after combat phase was finished (winning or losing).
-		# each combatIntermission entry should provide both
+		# combatIntermissions states which function should be called after combat phase was finished (winning or losing).
+		# each combatIntermission entry should provide both, It is the CombatManager that decides which function to call
+		# Dictionary of type: missionState => (won_function, lost_function)
 		self.combatIntermissions = {}
+
+		# _state_fleet_callbacks states which callback is supposed to be called by the fleet when it reaches the target point
+		# based on given mission state. Used when changing mission (initiating new mission phase) states and loading game (restarting mission from given state)
+		# Dictionary of type: missionState => Callback object
+		self._state_fleet_callbacks = {}
 
 	def _init_fleet(self, ships):
 		self.fleet = self.unit_manager.create_fleet(ships=ships, destroy_callback=Callback(self.cancel, "All ships were destroyed"))
@@ -63,7 +68,7 @@ class FleetMission(Mission):
 		fleet.destroy_callback = Callback(self.cancel, "All ships were destroyed")
 		self.state = state
 		self.fleet = fleet
-		self.combat_phase = combat_phase
+		self.combat_phase = bool(combat_phase)
 
 	def _dismiss_fleet(self):
 		for ship in self.fleet.get_ships():

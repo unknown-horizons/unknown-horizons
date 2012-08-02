@@ -40,7 +40,7 @@ class SurpriseAttack(FleetMission):
 	4. Return home (point B).
 	"""
 
-	missionStates = Enum.get_extended(FleetMission.missionStates, 'sailing_to_target', 'in_combat', 'breaking_diplomacy', 'going_back')
+	missionStates = Enum.get_extended(FleetMission.missionStates, 'sailing_to_target', 'in_combat', 'breaking_diplomacy', 'going_back', 'fleeing_home')
 
 	def __init__(self, success_callback, failure_callback, ships, target_point, return_point, enemy_player):
 		super(SurpriseAttack, self).__init__(success_callback, failure_callback, ships)
@@ -52,17 +52,20 @@ class SurpriseAttack(FleetMission):
 		self.enemy_player = enemy_player
 
 		self.combatIntermissions = {
-			self.missionStates.sailing_to_target: (self.set_off, self.flee_home),
+			self.missionStates.sailing_to_target: (self.sail_to_target, self.flee_home),
 			self.missionStates.in_combat: (self.go_back, self.flee_home),
 			self.missionStates.going_back: (self.go_back, self.flee_home),
 			self.missionStates.breaking_diplomacy: (self.break_diplomacy, self.flee_home),
+			self.missionStates.fleeing_home: (self.flee_home, self.flee_home),
 		}
 
 		# Fleet callbacks corresponding to given state
-		self._load_fleet_callbacks = {
+		self._state_fleet_callbacks = {
 			self.missionStates.sailing_to_target: Callback(self.break_diplomacy),
 			self.missionStates.going_back: Callback(self.report_success, "Ships arrived at return point"),
+			self.missionStates.fleeing_home: Callback(self.report_failure, "Combat was lost, ships fled home successfully"),
 		}
+
 	def save(self, db):
 		db("INSERT INTO ai_mission_surprise_attack (rowid, owner_id, fleet_id, enemy_player_id, target_point_x, target_point_y, target_point_radius, "
 		   "return_point_x, return_point_y, state_id, combat_phase) VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)", self.worldid, self.owner.worldid,
@@ -89,13 +92,13 @@ class SurpriseAttack(FleetMission):
 		enemy_player = WorldObject.get_object_by_id(enemy_player_id)
 		self.__init(target_point, return_point, enemy_player)
 
-		if self.state in self._load_fleet_callbacks:
-			self.fleet.callback = self._load_fleet_callbacks[self.state]
+		if self.state in self._state_fleet_callbacks:
+			self.fleet.callback = self._state_fleet_callbacks[self.state]
 
 	def start(self):
-		self.set_off()
+		self.sail_to_target()
 
-	def set_off(self):
+	def sail_to_target(self):
 		self.log.debug("Player %s, Mission %s, 1/4 set off from point %s to point %s" % (self.owner.name, self.__class__.__name__, self.return_point, self.target_point))
 		try:
 			self.fleet.move(self.target_point, Callback(self.break_diplomacy))
@@ -125,12 +128,10 @@ class SurpriseAttack(FleetMission):
 			self.report_failure("Move was not possible when going back")
 
 	def flee_home(self):
-
-		# check if fleet still exists
 		if self.fleet.size() > 0:
 			try:
 				self.fleet.move(self.return_point, Callback(self.report_failure, "Combat was lost, ships fled home successfully"))
-				self.state = self.missionStates.going_back
+				self.state = self.missionStates.fleeing_home
 			except MoveNotPossible:
 				self.report_failure("Combat was lost, ships couldn't flee home")
 		else:

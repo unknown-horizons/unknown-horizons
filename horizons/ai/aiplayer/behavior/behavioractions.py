@@ -21,6 +21,7 @@
 from collections import defaultdict
 from horizons.ai.aiplayer.behavior.movecallbacks import BehaviorMoveCallback
 from horizons.ai.aiplayer.strategy.mission.chaseshipsandattack import ChaseShipsAndAttack
+from horizons.ai.aiplayer.strategy.mission.scouting import ScoutingMission
 from horizons.ai.aiplayer.strategy.mission.surpriseattack import SurpriseAttack
 from horizons.ai.aiplayer.combat.unitmanager import UnitManager
 from horizons.command.diplomacy import AddEnemyPair
@@ -214,6 +215,7 @@ class BehaviorActionRegular(BehaviorAction):
 		self._certainty['fighting_ships_in_sight'] = certainty_power_balance_exp
 		self._certainty['player_shares_island'] = self._certainty_player_shares_island
 		self._certainty['hostile_player'] = self._certainty_hostile_player
+		self._certainty['debug'] = self._certainty_ship_amount
 
 	def pirates_in_sight(self, **environment):
 		"""
@@ -273,6 +275,14 @@ class BehaviorActionRegular(BehaviorAction):
 
 		return self.default_certainty
 
+	def _certainty_ship_amount(self, **environment):
+		idle_ships = environment['idle_ships']
+
+		if len(idle_ships) < self.minimum_ship_amount:
+			return 0.0
+		else:
+			return self.default_certainty
+
 	def _certainty_hostile_player(self, **environment):
 		enemy_player = environment['player']
 		idle_ships = environment['idle_ships']
@@ -316,6 +326,14 @@ class BehaviorActionRegular(BehaviorAction):
 		mission = ChaseShipsAndAttack.create(self.owner.strategy_manager.report_success,
 			self.owner.strategy_manager.report_failure, idle_ships, target_ship)
 
+		return mission
+
+	def debug(self, **environment):
+		"""
+		For debugging purposes.
+		"""
+		idle_ships = environment['idle_ships']
+		mission = ScoutingMission.create(self.owner.strategy_manager.report_success, self.owner.strategy_manager.report_failure, idle_ships)
 		return mission
 
 class BehaviorActionRegularPirate(BehaviorAction):
