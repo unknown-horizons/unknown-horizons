@@ -40,6 +40,12 @@ class BehaviorProfile(WorldObject):
 
 	@classmethod
 	def get_random_player_actions(cls, player):
+		token = player.behavior_manager.profile_token
+
+		random = random.Random()
+		random.seed(token)
+		# TODO: use new random generator to select a player actions randomly (controlled randomness, since seed is set)
+
 		actions = {
 			cls.action_types.offensive: dict(),
 			cls.action_types.defensive: dict(),
@@ -57,21 +63,8 @@ class BehaviorProfile(WorldObject):
 		return actions
 
 	@classmethod
-	def get_random_player_strategies(cls, player):
-		strategies = {
-			cls.strategy_types.offensive: dict(),
-			cls.strategy_types.diplomatic: dict(),
-		}
-		strategies[cls.strategy_types.offensive][BehaviorActionRegular(player)] = 1.0
-
-		return strategies
-
-	@classmethod
-	def get_random_pirate_strategies(cls, player):
-		return {}
-
-	@classmethod
 	def get_random_pirate_actions(cls, player):
+		token = player.behavior_manager.profile_token
 		actions = {
 			cls.action_types.offensive: dict(),
 			cls.action_types.defensive: dict(),
@@ -82,3 +75,28 @@ class BehaviorProfile(WorldObject):
 		actions[cls.action_types.idle][BehaviorActionDoNothing(player)] = 0.5
 
 		return actions
+
+	@classmethod
+	def get_random_player_strategies(cls, player):
+		token = player.behavior_manager.profile_token
+		strategies = {
+			cls.strategy_types.offensive: dict(),
+			cls.strategy_types.diplomatic: dict(),
+		}
+		strategies[cls.strategy_types.offensive][BehaviorActionRegular(player)] = 1.0
+
+		return strategies
+
+	@classmethod
+	def get_random_pirate_strategies(cls, player):
+		token = player.behavior_manager.profile_token
+		return {}
+
+	@classmethod
+	def get_profile_token(cls, player):
+		"""
+		Returns a token for given player profile. Token is used when requesting for a random behavior profile.
+		Because it is guaranteed to get exactly the same player profile for given token, instead of storing
+		whole Profile in database, we store a single number (token).
+		"""
+		return player.session.random.randint(0,10000)

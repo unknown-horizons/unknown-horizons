@@ -21,9 +21,11 @@
 
 
 import logging
+from horizons.ai.aiplayer.behavior.profile import BehaviorProfile
 from horizons.ext.enum import Enum
 
 from horizons.util.worldobject import WorldObject
+
 
 
 class BehaviorManager(object):
@@ -45,6 +47,27 @@ class BehaviorManager(object):
 		self.owner = owner
 		self.world = owner.world
 		self.session = owner.session
+
+		self.profile_token = BehaviorProfile.get_profile_token(self.owner)
+		self.actions = owner.get_random_actions()
+		self.strategies = owner.get_random_strategies()
+
+	def save(self, db):
+		db("INSERT INTO ai_behavior_manager (owner_id, profile_token) VALUES(?, ?)", self.owner.worldid, self.profile_token)
+
+	@classmethod
+	def load(cls, db, owner):
+		self = cls.__new__(cls)
+		super(BehaviorManager, self).__init__()
+		self.__init(owner)
+		self._load(db, owner)
+		return self
+
+	def _load(self, db, owner):
+		(profile_token,) = db("SELECT profile_token FROM ai_behavior_manager WHERE owner_id = ?", self.owner.worldid)[0]
+		self.profile_token = profile_token
+
+		# this time they will be loaded with a correct token
 		self.actions = owner.get_random_actions()
 		self.strategies = owner.get_random_strategies()
 

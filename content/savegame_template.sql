@@ -70,6 +70,7 @@ CREATE TABLE "ai_single_resource_trade_manager_quota" ("single_resource_trade_ma
 
 CREATE TABLE "fleet" ("fleet_id" INTEGER NOT NULL, "owner_id" INTEGER NOT NULL, "state_id" INTEGER NOT NULL, "dest_x" INTEGER, "dest_y" INTEGER, "radius" INTEGER, "ratio" DOUBLE);
 CREATE TABLE "fleet_ship" ("fleet_id" INTEGER NOT NULL, "ship_id" INTEGER NOT NULL, "state_id" INTEGER NOT NULL);
+CREATE TABLE "ai_behavior_manager" ("owner_id" INTEGER NOT NULL, "profile_token" INTEGER NOT NULL)
 CREATE TABLE "ai_mission_scouting" (
   "owner_id" INTEGER NOT NULL ,
   "fleet_id" INTEGER NOT NULL ,
