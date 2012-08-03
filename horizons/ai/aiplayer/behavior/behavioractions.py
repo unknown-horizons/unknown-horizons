@@ -230,7 +230,7 @@ class BehaviorActionRegular(BehaviorAction):
 			# Let each ship attack it's closest enemy to maximize dps (in a way)
 			ship_pairs = UnitManager.get_closest_ships_for_each(ship_group, pirates)
 			for ship, pirate in ship_pairs:
-				ship.attack(enemies[0])
+				ship.attack(pirates[0])
 			BehaviorAction.log.info('Attacking pirate player.')
 		else:
 			BehaviorAction.log.info('Not attacking pirate player.')
