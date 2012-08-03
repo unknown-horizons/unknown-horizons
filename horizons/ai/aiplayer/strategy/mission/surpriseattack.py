@@ -67,33 +67,21 @@ class SurpriseAttack(FleetMission):
 		}
 
 	def save(self, db):
-		db("INSERT INTO ai_mission_surprise_attack (rowid, owner_id, fleet_id, enemy_player_id, target_point_x, target_point_y, target_point_radius, "
-		   "return_point_x, return_point_y, state_id, combat_phase) VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)", self.worldid, self.owner.worldid,
-			self.fleet.worldid, self.enemy_player.worldid, self.target_point.center.x, self.target_point.center.y, self.target_point.radius,
-			self.return_point.x, self.return_point.y, self.state.index, self.combat_phase)
-
-
-	@classmethod
-	def load(cls, worldid, owner, db, success_callback, failure_callback):
-		self = cls.__new__(cls)
-		self._load(worldid, owner, db, success_callback, failure_callback)
-		return self
+		super(SurpriseAttack, self).save(db)
+		db("INSERT INTO ai_mission_surprise_attack (rowid, enemy_player_id, target_point_x, target_point_y, target_point_radius, "
+		   "return_point_x, return_point_y) VALUES(?, ?, ?, ?, ?, ?, ?)", self.worldid, self.enemy_player.worldid, self.target_point.center.x,
+			self.target_point.center.y, self.target_point.radius, self.return_point.x, self.return_point.y)
 
 	def _load(self, worldid, owner, db, success_callback, failure_callback):
-		db_result = db("SELECT fleet_id, enemy_player_id, target_point_x, target_point_y, target_point_radius, return_point_x, return_point_y, "
-					   "state_id, combat_phase FROM ai_mission_surprise_attack WHERE rowid = ?", worldid)[0]
-		fleet_id, enemy_player_id, target_point_x, target_point_y, target_point_radius, return_point_x, return_point_y, state_id, combat_phase = db_result
-		fleet = WorldObject.get_object_by_id(fleet_id)
-		state = self.missionStates[state_id]
-		super(SurpriseAttack, self).load(db, worldid, success_callback, failure_callback, owner, fleet, state, combat_phase)
+		super(SurpriseAttack, self)._load(db, worldid, success_callback, failure_callback, owner)
+		db_result = db("SELECT enemy_player_id, target_point_x, target_point_y, target_point_radius, return_point_x, return_point_y "
+					   "FROM ai_mission_surprise_attack WHERE rowid = ?", worldid)[0]
+		enemy_player_id, target_point_x, target_point_y, target_point_radius, return_point_x, return_point_y = db_result
 
 		target_point = Circle(Point(target_point_x, target_point_y), target_point_radius)
 		return_point = Point(return_point_x, return_point_y)
 		enemy_player = WorldObject.get_object_by_id(enemy_player_id)
 		self.__init(target_point, return_point, enemy_player)
-
-		if self.state in self._state_fleet_callbacks:
-			self.fleet.callback = self._state_fleet_callbacks[self.state]
 
 	def start(self):
 		self.sail_to_target()
@@ -101,7 +89,7 @@ class SurpriseAttack(FleetMission):
 	def sail_to_target(self):
 		self.log.debug("Player %s, Mission %s, 1/4 set off from point %s to point %s" % (self.owner.name, self.__class__.__name__, self.return_point, self.target_point))
 		try:
-			self.fleet.move(self.target_point, Callback(self.break_diplomacy))
+			self.fleet.move(self.target_point, self._state_fleet_callbacks[self.missionStates.sailing_to_target])
 			self.state = self.missionStates.sailing_to_target
 		except MoveNotPossible:
 			self.report_failure("Move was not possible when moving to target")
@@ -122,7 +110,7 @@ class SurpriseAttack(FleetMission):
 	def go_back(self):
 		self.log.debug("Player %s, Mission %s, 4/4 going back after combat to point %s" % (self.owner.name, self.__class__.__name__, self.return_point))
 		try:
-			self.fleet.move(self.return_point, Callback(self.report_success, "Ships arrived at return point"))
+			self.fleet.move(self.return_point, self._state_fleet_callbacks[self.missionStates.going_back])
 			self.state = self.missionStates.going_back
 		except MoveNotPossible:
 			self.report_failure("Move was not possible when going back")
@@ -130,7 +118,7 @@ class SurpriseAttack(FleetMission):
 	def flee_home(self):
 		if self.fleet.size() > 0:
 			try:
-				self.fleet.move(self.return_point, Callback(self.report_failure, "Combat was lost, ships fled home successfully"))
+				self.fleet.move(self.return_point, self._state_fleet_callbacks[self.missionStates.fleeing_home])
 				self.state = self.missionStates.fleeing_home
 			except MoveNotPossible:
 				self.report_failure("Combat was lost, ships couldn't flee home")

@@ -24,10 +24,13 @@ import logging
 from horizons.ai.aiplayer.mission import Mission
 from horizons.ext.enum import Enum
 from horizons.util.python.callback import Callback
+from horizons.util.worldobject import WorldObject
 
 class FleetMission(Mission):
 
 	missionStates = Enum('created')
+
+	# db_table name has to be overwritten by the concrete mission
 
 	log = logging.getLogger("ai.aiplayer.fleetmission")
 
@@ -61,14 +64,37 @@ class FleetMission(Mission):
 
 	def save(self, db):
 		super(FleetMission, self).save(db)
+		db("INSERT INTO ai_fleet_mission (rowid, owner_id, fleet_id, state_id, combat_phase) VALUES(?, ?, ?, ?, ?)", self.worldid,
+			self.owner.worldid, self.fleet.worldid, self.state.index, self.combat_phase)
 
-	def load(self, db, worldid, success_callback, failure_callback, owner, fleet, state, combat_phase):
+	@classmethod
+	def load(cls, worldid, owner, db, success_callback, failure_callback):
+		self = cls.__new__(cls)
+		self._load(worldid, owner, db, success_callback, failure_callback)
+		self._initialize_mission()
+		return self
+
+	def _load(self, db, worldid, success_callback, failure_callback, owner):
 		super(FleetMission, self).load(db, worldid, success_callback, failure_callback, owner)
 		self.__init()
-		fleet.destroy_callback = Callback(self.cancel, "All ships were destroyed")
-		self.state = state
-		self.fleet = fleet
+
+		fleet_id, state_id, combat_phase = db("SELECT fleet_id, state_id, combat_phase FROM ai_fleet_mission WHERE rowid = ?", worldid)[0]
+
+		self.fleet = WorldObject.get_object_by_id(fleet_id)
+		self.state = self.missionStates[state_id]
 		self.combat_phase = bool(combat_phase)
+
+	def _initialize_mission(self):
+		"""
+		Initializes mission after loading is finished.
+		"""
+
+		# Add move callback for fleet, dependent on loaded fleet state
+		if self.state in self._state_fleet_callbacks:
+			self.fleet.callback = self._state_fleet_callbacks[self.state]
+
+		# Add destroy callback, the same for every case of fleet being destroyed
+		self.fleet.destroy_callback = Callback(self.cancel, "All ships were destroyed")
 
 	def _dismiss_fleet(self):
 		for ship in self.fleet.get_ships():

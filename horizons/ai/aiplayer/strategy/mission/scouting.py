@@ -62,31 +62,14 @@ class ScoutingMission(FleetMission):
 		self.sail_to_target()
 
 	def save(self, db):
-		db("INSERT INTO ai_mission_scouting (rowid, owner_id, fleet_id, starting_point_x, starting_point_y, target_point_x, "
-			"target_point_y, state_id, combat_phase) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)", self.worldid, self.owner.worldid, self.fleet.worldid,
-			self.starting_point.x, self.starting_point.y, self.target_point.x, self.target_point.y, self.state.index, self.combat_phase)
-
-	@classmethod
-	def load(cls, worldid, owner, db, success_callback, failure_callback):
-		self = cls.__new__(cls)
-		self._load(worldid, owner, db, success_callback, failure_callback)
-		return self
+		super(ScoutingMission, self).save(db)
+		db("INSERT INTO ai_scouting_mission (rowid, starting_point_x, starting_point_y, target_point_x, target_point_y) VALUES(?, ?, ?, ?, ?)",
+			self.worldid, self.starting_point.x, self.starting_point.y, self.target_point.x, self.target_point.y)
 
 	def _load(self, worldid, owner, db, success_callback, failure_callback):
-		db_result = db("SELECT fleet_id, starting_point_x, starting_point_y, target_point_x, target_point_y, "
-					   "state_id, combat_phase FROM ai_mission_scouting WHERE rowid = ?", worldid)[0]
-
-		fleet_id, starting_point_x, starting_point_y, target_point_x, target_point_y, state_id, combat_phase = db_result
-		fleet = WorldObject.get_object_by_id(fleet_id)
-		state = self.missionStates[state_id]
-		super(ScoutingMission, self).load(db,worldid, success_callback, failure_callback, owner, fleet, state, combat_phase)
-
-		starting_point = Point(starting_point_x, starting_point_y)
-		target_point = Point(target_point_x, target_point_y)
-		self.__init(target_point, starting_point)
-
-		if self.state in self._state_fleet_callbacks:
-			self.fleet.callback = self._state_fleet_callbacks[self.state]
+		super(ScoutingMission, self)._load(db, worldid, success_callback, failure_callback, owner)
+		db_result = db("SELECT target_point_x, target_point_y, starting_point_x, starting_point_y FROM ai_scouting_mission WHERE rowid = ?", worldid)[0]
+		self.__init(Point(*db_result[:2]), Point(*db_result[2:]))
 
 	def go_back(self):
 		"""

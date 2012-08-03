@@ -25,6 +25,7 @@ from horizons.component.namedcomponent import NamedComponent
 from horizons.ext.enum import Enum
 from horizons.util.python.callback import Callback
 from horizons.util.shapes.circle import Circle
+from horizons.util.worldobject import WorldObject
 
 from horizons.world.units.movingobject import MoveNotPossible
 from horizons.util.python import decorators
@@ -40,7 +41,7 @@ class ChaseShipsAndAttack(FleetMission):
 	This mission may work the best for 2 ships fleet
 	"""
 
-	missionStates = Enum.get_extended(FleetMission.missionStates, 'sailing_to_target', 'in_combat', 'going_home')
+	missionStates = Enum.get_extended(FleetMission.missionStates, 'sailing_to_target', 'in_combat', 'fleeing_home')
 	target_range = 5
 
 	def __init__(self, success_callback, failure_callback, ships, target_ship):
@@ -53,8 +54,24 @@ class ChaseShipsAndAttack(FleetMission):
 		self.combatIntermissions = {
 			self.missionStates.sailing_to_target: (self.sail_to_target, self.flee_home),
 			self.missionStates.in_combat: (self.check_ship_alive, self.flee_home),
-			self.missionStates.going_home: (self.flee_home, self.flee_home),
+			self.missionStates.fleeing_home: (self.flee_home, self.flee_home),
 		}
+
+		self._state_fleet_callbacks = {
+			self.missionStates.sailing_to_target: Callback(self.was_reached),
+			self.missionStates.fleeing_home: Callback(self.report_failure, "Combat was lost, ships fled home successfully"),
+		}
+
+	def save(self, db):
+		super(ChaseShipsAndAttack, self).save(db)
+		db("INSERT INTO ai_mission_chase_ships_and_attack (rowid, target_ship_id) VALUES(?, ?)", self.worldid, self.target_ship.worldid)
+
+	def _load(self, worldid, owner, db, success_callback, failure_callback):
+		super(ChaseShipsAndAttack, self)._load(db, worldid, success_callback, failure_callback, owner)
+		(target_ship_id,)= db("SELECT target_ship_id FROM ai_mission_chase_ships_and_attack WHERE rowid = ?", worldid)[0]
+
+		target_ship = WorldObject.get_object_by_id(target_ship_id)
+		self.__init(target_ship)
 
 	def start(self):
 		self.sail_to_target()
@@ -63,7 +80,7 @@ class ChaseShipsAndAttack(FleetMission):
 		self.log.debug("Player %s, Mission %s, 1/2 set off to ship %s at %s" % (self.owner.name, self.__class__.__name__,
 			self.target_ship.get_component(NamedComponent).name, self.target_ship.position))
 		try:
-			self.fleet.move(Circle(self.target_ship.position, self.target_range), Callback(self.was_reached))
+			self.fleet.move(Circle(self.target_ship.position, self.target_range), self._state_fleet_callbacks[self.missionStates.sailing_to_target])
 			self.state = self.missionStates.sailing_to_target
 		except MoveNotPossible:
 			self.report_failure("Move was not possible when moving to target")
@@ -102,8 +119,8 @@ class ChaseShipsAndAttack(FleetMission):
 			try:
 				home_settlement = self.unit_manager.get_player_settlements(self.owner)[0]
 				return_point = self.unit_manager.get_warehouse_position(home_settlement)
-				self.fleet.move(return_point, Callback(self.report_failure, "Combat was lost, ships fled home successfully"))
-				self.state = self.missionStates.going_home
+				self.fleet.move(return_point, self._state_fleet_callbacks[self.missionStates.fleeing_home])
+				self.state = self.missionStates.fleeing_home
 			except MoveNotPossible:
 				self.report_failure("Combat was lost, ships couldn't flee home")
 		else:

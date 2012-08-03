@@ -71,33 +71,30 @@ CREATE TABLE "ai_single_resource_trade_manager_quota" ("single_resource_trade_ma
 CREATE TABLE "fleet" ("fleet_id" INTEGER NOT NULL, "owner_id" INTEGER NOT NULL, "state_id" INTEGER NOT NULL, "dest_x" INTEGER, "dest_y" INTEGER, "radius" INTEGER, "ratio" DOUBLE);
 CREATE TABLE "fleet_ship" ("fleet_id" INTEGER NOT NULL, "ship_id" INTEGER NOT NULL, "state_id" INTEGER NOT NULL);
 CREATE TABLE "ai_behavior_manager" ("owner_id" INTEGER NOT NULL, "profile_token" INTEGER NOT NULL);
-CREATE TABLE "ai_mission_scouting" (
+
+CREATE TABLE "ai_fleet_mission" (
   "owner_id" INTEGER NOT NULL ,
   "fleet_id" INTEGER NOT NULL ,
-  "starting_point_x" INTEGER NOT NULL,
-  "starting_point_y" INTEGER NOT NULL,
+  "state_id" INTEGER NOT NULL,
+  "combat_phase" BOOL NOT NULL );
+
+CREATE TABLE "ai_scouting_mission" (
   "target_point_x" INTEGER NOT NULL,
   "target_point_y" INTEGER NOT NULL,
-  "state_id" INTEGER NOT NULL,
-  "combat_phase" BOOL NOT NULL);
+  "starting_point_x" INTEGER NOT NULL,
+  "starting_point_y" INTEGER NOT NULL );
+
 CREATE TABLE "ai_mission_surprise_attack" (
-  "owner_id" INTEGER NOT NULL,
-  "fleet_id" INTEGER NOT NULL,
   "enemy_player_id" INTEGER NOT NULL,
   "target_point_x" INTEGER NOT NULL,
   "target_point_y" INTEGER NOT NULL,
   "target_point_radius" INTEGER NOT NULL,
   "return_point_x" INTEGER NOT NULL,
-  "return_point_y" INTEGER NOT NULL,
-  "state_id" INTEGER NOT NULL,
-  "combat_phase" BOOL NOT NULL);
+  "return_point_y" INTEGER NOT NULL );
 CREATE TABLE "ai_mission_chase_ships_and_attack" (
-  "owner" INTEGER NOT NULL,
-  "fleet" INTEGER NOT NULL,
-  --"current_spot_x" INTEGER NOT NULL,
-  --"current_spot_y" INTEGER NOT NULL,
-  "target_ship" INTEGER NOT NULL,
-  "state" INTEGER NOT NULL );
+  --"current_target_x" INTEGER NOT NULL,
+  --"current_target_y" INTEGER NOT NULL,
+  "target_ship_id" INTEGER NOT NULL );
 
 CREATE TABLE "ai_trade_manager" ("settlement_manager" INTEGER NOT NULL );
 CREATE TABLE "ai_village_builder" ("settlement_manager" INTEGER NOT NULL ,"num_sections" INTEGER NOT NULL ,"current_section" INTEGER NOT NULL );

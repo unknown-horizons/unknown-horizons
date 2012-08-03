@@ -22,6 +22,7 @@
 import logging
 
 from horizons.ai.aiplayer.strategy.condition import get_all_conditions
+from horizons.ai.aiplayer.strategy.mission.chaseshipsandattack import ChaseShipsAndAttack
 from horizons.ai.aiplayer.strategy.mission.scouting import ScoutingMission
 from horizons.ai.aiplayer.strategy.mission.surpriseattack import SurpriseAttack
 from horizons.component.namedcomponent import NamedComponent
@@ -50,6 +51,11 @@ class StrategyManager(object):
 		# unique because of WorldObject inheritance, but it makes removing items from it in O(n).
 		self.conditions_being_resolved = {}
 
+		self.missions_to_db_tables =  {
+			ScoutingMission: "ai_scouting_mission",
+			SurpriseAttack: "ai_mission_surprise_attack",
+		}
+
 	def save(self, db):
 		for mission in list(self.missions):
 			mission.save(db)
@@ -63,25 +69,26 @@ class StrategyManager(object):
 		return self
 
 	def _load(self, db, owner):
-		missions_to_load =  (
-			("ai_mission_scouting", ScoutingMission),
-			("ai_mission_surprise_attack", SurpriseAttack),
-		)
-
-		"""# TODO: Use this later
-		for db_table, class_name in missions_to_load:
+		# TODO: Use this later
+		"""
+		for db_table, class_name in self.missions_to_db_tables:
 			db_result = db("SELECT rowid FROM ? WHERE owner_id = ?", db_table, self.owner.worldid)
 			for (mission_id,) in db_result:
 				self.missions.add(class_name.load(mission_id, self.owner, db, self.report_success, self.report_failure))
-				"""
+		"""
 
-		db_result = db("SELECT rowid FROM ai_mission_scouting WHERE owner_id = ?", self.owner.worldid)
+		db_result = db("SELECT m.rowid FROM ai_scouting_mission m, ai_fleet_mission f WHERE f.owner_id = ? and m.rowid = f.rowid", self.owner.worldid)
 		for (mission_id,) in db_result:
 			self.missions.add(ScoutingMission.load(mission_id, self.owner, db, self.report_success, self.report_failure))
 
-		db_result = db("SELECT rowid FROM ai_mission_surprise_attack WHERE owner_id = ?", self.owner.worldid)
+		db_result = db("SELECT m.rowid FROM ai_mission_surprise_attack m, ai_fleet_mission f WHERE f.owner_id = ? and m.rowid = f.rowid", self.owner.worldid)
 		for (mission_id,) in db_result:
 			self.missions.add(SurpriseAttack.load(mission_id, self.owner, db, self.report_success, self.report_failure))
+
+		db_result = db("SELECT m.rowid FROM ai_mission_chase_ships_and_attack m, ai_fleet_mission f WHERE f.owner_id = ? and m.rowid = f.rowid", self.owner.worldid)
+		for (mission_id,) in db_result:
+			self.missions.add(ChaseShipsAndAttack.load(mission_id, self.owner, db, self.report_success, self.report_failure))
+
 
 	def report_success(self, mission, msg):
 		self.log.info("Player: %s|StrategyManager|Mission %s was a success: %s", self.owner.worldid, mission, msg)

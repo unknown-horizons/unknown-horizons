@@ -136,7 +136,7 @@ class ConditionDebug(Condition):
 
 def get_all_conditions(player):
 		conditions = {
-			ConditionDebug(player):10.0,
+			#ConditionDebug(player):10.0,
 			ConditionHostile(player): 1.1,
 			ConditionSharingSettlement(player): 1.0,
 			ConditionNeutral(player): 0.3,
