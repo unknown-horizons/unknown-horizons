@@ -184,8 +184,11 @@ class SavegameUpgrader(object):
 		db('CREATE TABLE "fleet" ("fleet_id" INTEGER NOT NULL, "owner_id" INTEGER NOT NULL, "state_id" INTEGER NOT NULL, "dest_x" '
 		   'INTEGER, "dest_y" INTEGER, "radius" INTEGER, "ratio" DOUBLE)')
 
-		# Ships per given fleet
+		# ships per given fleet
 		db('CREATE TABLE "fleet_ship" ("fleet_id" INTEGER NOT NULL, "ship_id" INTEGER NOT NULL, "state_id" INTEGER NOT NULL)')
+
+		# CombatManager's ship states
+		db('CREATE TABLE "ai_combat_ship" ( "owner_id" INTEGER NOT NULL, "ship_id" INTEGER NOT NULL, "state_id" INTEGER NOT NULL )')
 
 	def _upgrade(self):
 		# fix import loop

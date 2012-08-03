@@ -72,6 +72,11 @@ CREATE TABLE "fleet" ("fleet_id" INTEGER NOT NULL, "owner_id" INTEGER NOT NULL, 
 CREATE TABLE "fleet_ship" ("fleet_id" INTEGER NOT NULL, "ship_id" INTEGER NOT NULL, "state_id" INTEGER NOT NULL);
 CREATE TABLE "ai_behavior_manager" ("owner_id" INTEGER NOT NULL, "profile_token" INTEGER NOT NULL);
 
+CREATE TABLE "ai_combat_ship" (
+  "owner_id" INTEGER NOT NULL,
+  "ship_id" INTEGER NOT NULL,
+  "state_id" INTEGER NOT NULL );
+
 CREATE TABLE "ai_fleet_mission" (
   "owner_id" INTEGER NOT NULL ,
   "fleet_id" INTEGER NOT NULL ,

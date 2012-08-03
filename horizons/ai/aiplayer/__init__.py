@@ -228,7 +228,7 @@ class AIPlayer(GenericAI):
 		self.unit_manager.save(db)
 
 		# save the combat manager
-		#self.combat_manager.save(db)
+		self.combat_manager.save(db)
 
 		# save the strategy manager
 		self.strategy_manager.save(db)
@@ -251,37 +251,20 @@ class AIPlayer(GenericAI):
 	def finish_loading(self, db):
 		""" This is called separately because most objects are loaded after the player. """
 
-		# set up AIPlayer state to move callback mapping. Used for game loading.
-
-		aiplayer_state_move_callback = {
-			#self.shipStates.fleeing_combat: BehaviorMoveCallback._arrived,
-			#self.shipStates.moving_random: BehaviorMoveCallback._arrived,
-			# and using approach above, but think of something more flexible
-			#self.shipStates.scouting: BehaviorMoveCallback._arrived,
-		}
-
-		# load the ships in combat
+		# load the ships
 
 		for ship_id, state_id in db("SELECT rowid, state FROM ai_ship WHERE owner = ?", self.worldid):
 			ship = WorldObject.get_object_by_id(ship_id)
-			state = self.shipStates[state_id]
-			self.ships[ship] = state
-			if state in aiplayer_state_move_callback:
-				ship.add_move_callback(Callback(aiplayer_state_move_callback[state], ship))
+			self.ships[ship] = self.shipStates[state_id]
 
-
+		# load unit manager
 		self.unit_manager = UnitManager.load(db, self)
-		# load strategy manager
 
+		# load strategy manager
 		self.strategy_manager = StrategyManager.load(db, self)
 
-		#self.strategy_manager.finish_loading(db)
-		# scouting
-		# TODO missions are loaded in finish_loading now
-		#db_result = db("SELECT rowid FROM ai_mission_scouting WHERE owner = ?", self.worldid)
-		#for (mission_id,) in db_result:
-		#	self.missions.add(ScoutingMission.load(db, mission_id, self.report_success, self.report_failure))
-
+		# load combat manager
+		self.combat_manager = CombatManager.load(db, self)
 
 		# load the land managers
 		for (worldid,) in db("SELECT rowid FROM ai_land_manager WHERE owner = ?", self.worldid):

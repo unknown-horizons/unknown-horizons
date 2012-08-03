@@ -24,6 +24,7 @@ from weakref import WeakKeyDictionary
 from horizons.ai.aiplayer.behavior.profile import BehaviorProfile
 from horizons.ai.aiplayer.combat.unitmanager import UnitManager
 from horizons.ext.enum import Enum
+from horizons.util.worldobject import WorldObject
 from horizons.world.units.fightingship import FightingShip
 
 
@@ -49,6 +50,25 @@ class CombatManager(object):
 
 		# Dictionary of ship => shipState
 		self.ships = WeakKeyDictionary()
+
+	def save(self, db):
+		for ship, state in self.ships.iteritems():
+			db("INSERT INTO ai_combat_ship (owner_id, ship_id, state_id) VALUES (?, ?, ?)", self.owner.worldid, ship.worldid, state.index)
+
+	@classmethod
+	def load(cls, db, owner):
+		self = cls.__new__(cls)
+		self._load(db, owner)
+		return self
+
+	def _load(self, db, owner):
+		self.__init(owner)
+
+		db_result = db("SELECT ship_id, state_id FROM ai_combat_ship WHERE owner_id = ?", self.owner.worldid)
+		for (ship_id, state_id,) in db_result:
+			ship = WorldObject.get_object_by_id(ship_id)
+			state = self.shipStates[state_id]
+			self.ships[ship] = state
 
 	def handle_mission_combat(self, mission):
 		"""
