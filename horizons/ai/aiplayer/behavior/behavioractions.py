@@ -211,13 +211,13 @@ class BehaviorActionRegular(BehaviorAction):
 
 	def __init__(self, owner):
 		super(BehaviorActionRegular, self).__init__(owner)
-		self._certainty['pirates_in_sight'] = certainty_power_balance_exp
+		self._certainty['pirate_ships_in_sight'] = certainty_power_balance_exp
 		self._certainty['fighting_ships_in_sight'] = certainty_power_balance_exp
 		self._certainty['player_shares_island'] = self._certainty_player_shares_island
 		self._certainty['hostile_player'] = self._certainty_hostile_player
 		self._certainty['debug'] = self._certainty_ship_amount
 
-	def pirates_in_sight(self, **environment):
+	def pirate_ships_in_sight(self, **environment):
 		"""
 		Attacks pirates only if they are enemies already and the power balance is advantageous.
 		"""
@@ -387,9 +387,9 @@ class BehaviorActionCoward(BehaviorAction):
 		# (higher power_balance -> lesser chance of doing nothing)
 		# TODO: skip cowardice if already in war with pirates (pirates will attack anyway)
 		# TODO: figure out why it gives unusually high certainty
-		self._certainty['pirates_in_sight'] = certainty_power_balance_inverse
+		self._certainty['pirate_ships_in_sight'] = certainty_power_balance_inverse
 
-	def pirates_in_sight(self, **environment):
+	def pirate_ships_in_sight(self, **environment):
 		"""
 		Dummy action, do nothing really.
 		"""
@@ -414,9 +414,9 @@ class BehaviorActionPirateHater(BehaviorAction):
 
 	def __init__(self, owner):
 		super(BehaviorActionPirateHater, self).__init__(owner)
-		self._certainty['pirates_in_sight'] = certainty_are_enemies
+		self._certainty['pirate_ships_in_sight'] = certainty_are_enemies
 
-	def pirates_in_sight(self, **environment):
+	def pirate_ships_in_sight(self, **environment):
 		"""
 		Breaks diplomacy and attacks pirates.
 		"""

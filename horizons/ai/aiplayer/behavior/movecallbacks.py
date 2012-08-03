@@ -32,8 +32,6 @@ class BehaviorMoveCallback:
 	"""
 	log = logging.getLogger('ai.aiplayer.behavior.movecallbacks')
 
-	flee_home_radius = 5
-
 	# when sending whole fleet somewhere don't specify exact point, so ships don't block each other
 	sail_point_range = 5
 

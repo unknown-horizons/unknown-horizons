@@ -48,8 +48,8 @@ class StrategyManager(object):
 		self.missions = set()
 		self.conditions = get_all_conditions(self.owner)
 
-		# Dictionary of condition__hash => mission. condition__hash is a key since it's searched for more often. Values are
-		# unique because of WorldObject inheritance, but it makes removing items from it in O(n).
+		# Dictionary of Condition_hash => FleetMission. Condition_hash is a key since it's searched for more often. Values are
+		# unique because of WorldObject's inheritance, but it makes removing items from it in O(n).
 		self.conditions_being_resolved = {}
 
 		self.missions_to_db_tables =  {

@@ -46,6 +46,8 @@ class CombatManager(object):
 		self.unit_manager = owner.unit_manager
 		self.world = owner.world
 		self.session = owner.session
+
+		# Dictionary of ship => shipState
 		self.ships = WeakKeyDictionary()
 
 	def handle_mission_combat(self, mission):
@@ -61,7 +63,7 @@ class CombatManager(object):
 			mission.abort_mission()
 
 		ships_around = self.unit_manager.find_ships_near_group(ship_group)
-		ships_around = self.unit_manager.filter_ships(self.owner, ships_around, (filters.hostile()))
+		ships_around = self.unit_manager.filter_ships(self.owner, ships_around, (filters.hostile(), ))
 		pirate_ships = self.unit_manager.filter_ships(self.owner, ships_around, (filters.pirate(), ))
 		fighting_ships = self.unit_manager.filter_ships(self.owner, ships_around, (filters.fighting(), ))
 		working_ships = self.unit_manager.filter_ships(self.owner, ships_around, (filters.working(), ))
@@ -76,16 +78,17 @@ class CombatManager(object):
 			self.owner.behavior_manager.request_action(BehaviorProfile.action_types.offensive,
 				'fighting_ships_in_sight', **environment)
 		elif pirate_ships:
-			environment['enemies'] = working_ships
+			environment['enemies'] = pirate_ships
 			environment['power_balance'] = UnitManager.calculate_power_balance(ship_group, pirate_ships)
 			self.log.debug("Player: %s vs Player: %s -> power_balance:%s" % (self.owner.name, pirate_ships[0].owner.name, environment['power_balance']))
 			self.owner.behavior_manager.request_action(BehaviorProfile.action_types.offensive,
-				'pirates_in_sight', **environment)
+				'pirate_ships_in_sight', **environment)
 		elif working_ships:
 			environment['enemies'] = working_ships
 			self.owner.behavior_manager.request_action(BehaviorProfile.action_types.offensive,
 				'working_ships_in_sight', **environment)
 		else:
+			# no one else is around to fight -> continue mission
 			mission.continue_mission()
 
 	def handle_casual_combat(self):
@@ -116,7 +119,7 @@ class CombatManager(object):
 				environment['power_balance'] = UnitManager.calculate_power_balance(ship_group, pirate_ships)
 				self.log.debug("Player: %s vs Player: %s -> power_balance:%s" % (self.owner.name, pirate_ships[0].owner.name, environment['power_balance']))
 				self.owner.behavior_manager.request_action(BehaviorProfile.action_types.offensive,
-					'pirates_in_sight', **environment)
+					'pirate_ships_in_sight', **environment)
 			elif working_ships:
 				environment['enemies'] = working_ships
 				self.owner.behavior_manager.request_action(BehaviorProfile.action_types.offensive,
