@@ -330,8 +330,8 @@ CREATE TABLE "ai_player" (
 	"need_more_ships" INT NOT NULL,
 	"need_more_combat_ships" INTEGER NOT NULL DEFAULT 1,
 	"need_feeder_island" INT NOT NULL,
-	"remaining_ticks" INT NOT NULL
-	"remaining_ticks_long" INTEGER NOT NULL,
+	"remaining_ticks" INT NOT NULL,
+	"remaining_ticks_long" INTEGER NOT NULL
 );
 
 CREATE TABLE "ai_pirate" (
@@ -403,8 +403,8 @@ CREATE TABLE "ai_combat_ship" (
 );
 
 CREATE TABLE "ai_fleet_mission" (
-	"owner_id" INTEGER NOT NULL ,
-	"fleet_id" INTEGER NOT NULL ,
+	"owner_id" INTEGER NOT NULL,
+	"fleet_id" INTEGER NOT NULL,
 	"state_id" INTEGER NOT NULL,
 	"combat_phase" BOOL NOT NULL
 );
