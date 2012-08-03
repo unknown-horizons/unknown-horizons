@@ -146,6 +146,50 @@ class SavegameUpgrader(object):
 		# added a message parameter to the logbook which needs to be saved
 		db("CREATE TABLE logbook_messages ( message STRING )")
 
+	def _upgrade_to_rev63(self, db):
+		# adds a table for pirate's 'tick' callback
+		db("CREATE TABLE ai_pirate (remaining_ticks INTEGER NOT NULL DEFAULT 1)")
+		db("INSERT INTO ai_pirate (rowid, remaining_ticks) SELECT p.rowid, 1 FROM player p WHERE p.is_pirate")
+		# added flag to aiplayer for fighting ships request
+		db("ALTER TABLE ai_player ADD COLUMN need_more_combat_ships INTEGER NOT NULL DEFAULT 1")
+
+		# update stance for every pirate player ship
+		db('INSERT INTO stance (worldid, stance, state) SELECT u.rowid, "hold_ground_stance", "idle" FROM unit u, player p WHERE u.owner=p.rowid AND p.is_pirate=1')
+
+		# update ai_player with long callback function column
+		db("ALTER TABLE ai_player ADD COLUMN remaining_ticks_long INTEGER NOT NULL DEFAULT 1")
+
+		# Combat missions below:
+		# Abstract FleetMission data
+		db('CREATE TABLE "ai_fleet_mission" ( "owner_id" INTEGER NOT NULL , "fleet_id" INTEGER NOT NULL , "state_id" INTEGER NOT NULL, "combat_phase" BOOL NOT NULL )')
+		# ScoutingMission
+		db('CREATE TABLE "ai_scouting_mission" ("owner" INTEGER NOT NULL , "ship" INTEGER NOT NULL , "starting_point_x" INTEGER NOT NULL, '
+		   '"starting_point_y" INTEGER NOT NULL, "target_point_x" INTEGER NOT NULL, "target_point_y" INTEGER NOT NULL, "state" INTEGER NOT NULL )')
+		# SurpriseAttack
+		db('CREATE TABLE "ai_mission_surprise_attack" ("enemy_player_id" INTEGER NOT NULL, "target_point_x" INTEGER NOT NULL, "target_point_y" INTEGER NOT NULL,'
+			'"target_point_radius" INTEGER NOT NULL, "return_point_x" INTEGER NOT NULL, "return_point_y" INTEGER NOT NULL )')
+		# ChaseShipsAndAttack
+		db('CREATE TABLE "ai_mission_chase_ships_and_attack" ("target_ship_id" INTEGER NOT NULL )')
+
+		# BehaviorManager
+		db('CREATE TABLE "ai_behavior_manager" ("owner_id" INTEGER NOT NULL, "profile_token" INTEGER NOT NULL)')
+
+		# No previous token was present, choose anything really
+		db('INSERT INTO ai_behavior_manager (owner_id, profile_token) SELECT p.rowid, 42 FROM player p')
+
+		# Locks for Conditions being resolved by StrategyManager
+		db('CREATE TABLE "ai_condition_lock" ("owner_id" INTEGER NOT NULL, "condition" TEXT NOT NULL, "mission_id" INTEGER NOT NULL)')
+
+		# Fleets
+		db('CREATE TABLE "fleet" ("fleet_id" INTEGER NOT NULL, "owner_id" INTEGER NOT NULL, "state_id" INTEGER NOT NULL, "dest_x" '
+		   'INTEGER, "dest_y" INTEGER, "radius" INTEGER, "ratio" DOUBLE)')
+
+		# ships per given fleet
+		db('CREATE TABLE "fleet_ship" ("fleet_id" INTEGER NOT NULL, "ship_id" INTEGER NOT NULL, "state_id" INTEGER NOT NULL)')
+
+		# CombatManager's ship states
+		db('CREATE TABLE "ai_combat_ship" ( "owner_id" INTEGER NOT NULL, "ship_id" INTEGER NOT NULL, "state_id" INTEGER NOT NULL )')
+
 	def _upgrade(self):
 		# fix import loop
 		from horizons.savegamemanager import SavegameManager
@@ -191,6 +235,8 @@ class SavegameUpgrader(object):
 				self._upgrade_to_rev61(db)
 			if rev < 62:
 				self._upgrade_to_rev62(db)
+			if rev < 63:
+				self._upgrade_to_rev63(db)
 
 			db('COMMIT')
 			db.close()

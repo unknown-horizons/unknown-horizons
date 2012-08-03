@@ -282,6 +282,12 @@ class DefaultPersonality:
 		residences_required = 0
 		min_settler_level = TIER.SAILORS
 
+	class CombatShipGoal:
+		enabled = True
+		default_priority = 560
+		residences_required = 0
+		min_settler_level = TIER.SAILORS
+
 	class FaithGoal:
 		enabled = True
 		default_priority = 700
