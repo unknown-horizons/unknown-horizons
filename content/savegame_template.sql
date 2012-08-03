@@ -96,6 +96,12 @@ CREATE TABLE "ai_mission_chase_ships_and_attack" (
   --"current_target_y" INTEGER NOT NULL,
   "target_ship_id" INTEGER NOT NULL );
 
+CREATE TABLE "ai_condition_lock" (
+  "owner_id" INTEGER NOT NULL,
+  "condition" TEXT NOT NULL,
+  "mission_id" INTEGER NOT NULL
+);
+
 CREATE TABLE "ai_trade_manager" ("settlement_manager" INTEGER NOT NULL );
 CREATE TABLE "ai_village_builder" ("settlement_manager" INTEGER NOT NULL ,"num_sections" INTEGER NOT NULL ,"current_section" INTEGER NOT NULL );
 CREATE TABLE "ai_village_builder_plan" ("village_builder" INTEGER NOT NULL , "x" INTEGER NOT NULL , "y" INTEGER NOT NULL , "purpose" INTEGER NOT NULL , "section" INTEGER, "seq_no" INTEGER);

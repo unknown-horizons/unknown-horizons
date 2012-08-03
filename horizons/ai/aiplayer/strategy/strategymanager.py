@@ -26,6 +26,7 @@ from horizons.ai.aiplayer.strategy.mission.chaseshipsandattack import ChaseShips
 from horizons.ai.aiplayer.strategy.mission.scouting import ScoutingMission
 from horizons.ai.aiplayer.strategy.mission.surpriseattack import SurpriseAttack
 from horizons.component.namedcomponent import NamedComponent
+from horizons.util.worldobject import WorldObject
 
 
 class StrategyManager(object):
@@ -60,6 +61,9 @@ class StrategyManager(object):
 		for mission in list(self.missions):
 			mission.save(db)
 
+		for condition, mission in self.conditions_being_resolved.iteritems():
+			db("INSERT INTO ai_condition_lock (owner_id, condition, mission_id) VALUES(?, ?, ?)", self.owner.worldid, condition, mission.worldid )
+
 	@classmethod
 	def load(cls, db, owner):
 		self = cls.__new__(cls)
@@ -88,6 +92,11 @@ class StrategyManager(object):
 		db_result = db("SELECT m.rowid FROM ai_mission_chase_ships_and_attack m, ai_fleet_mission f WHERE f.owner_id = ? and m.rowid = f.rowid", self.owner.worldid)
 		for (mission_id,) in db_result:
 			self.missions.add(ChaseShipsAndAttack.load(mission_id, self.owner, db, self.report_success, self.report_failure))
+
+		# load condition locks
+		db_result = db("SELECT condition, mission_id FROM ai_condition_lock WHERE owner_id = ?", self.owner.worldid)
+		for (condition, mission_id) in db_result:
+			self.conditions_being_resolved[condition] = WorldObject.get_object_by_id(mission_id)
 
 
 	def report_success(self, mission, msg):

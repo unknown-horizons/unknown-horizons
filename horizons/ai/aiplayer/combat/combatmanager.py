@@ -35,7 +35,7 @@ class CombatManager(object):
 	log = logging.getLogger("ai.aiplayer.behavior.combatmanager")
 
 	# states to keep track of combat movement of each ship.
-	shipCombatStates = Enum('idle', 'attacking', 'fleeing')
+	shipStates = Enum('idle', 'attacking', 'moving', 'fleeing')
 
 	def __init__(self, owner):
 		super(CombatManager, self).__init__()
@@ -174,6 +174,8 @@ class PirateCombatManager(CombatManager):
 	Pirate player is able to use standard BehaviorComponents in it's BehaviorManager.
 	"""
 	log = logging.getLogger("ai.aiplayer.piratecombatmanager")
+
+	shipStates = Enum.get_extended(CombatManager.shipStates, 'chasing_ship', 'going_home') #also: idle, attacking, moving, fleeing
 
 	def __init__(self, owner):
 		super(PirateCombatManager, self).__init__(owner)
