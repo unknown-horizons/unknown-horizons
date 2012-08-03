@@ -159,8 +159,33 @@ class SavegameUpgrader(object):
 		# update ai_player with long callback function column
 		db("ALTER TABLE ai_player ADD COLUMN remaining_ticks_long INTEGER NOT NULL DEFAULT 1")
 
-		# db changes after introducing scouting mission
-		db('CREATE TABLE "ai_mission_scouting" ("owner" INTEGER NOT NULL , "ship" INTEGER NOT NULL , "starting_point_x" INTEGER NOT NULL, "starting_point_y" INTEGER NOT NULL, "target_point_x" INTEGER NOT NULL, "target_point_y" INTEGER NOT NULL, "state" INTEGER NOT NULL )')
+		# Combat missions below:
+		# Abstract FleetMission data
+		db('CREATE TABLE "ai_fleet_mission" ( "owner_id" INTEGER NOT NULL , "fleet_id" INTEGER NOT NULL , "state_id" INTEGER NOT NULL, "combat_phase" BOOL NOT NULL )')
+		# ScoutingMission
+		db('CREATE TABLE "ai_scouting_mission" ("owner" INTEGER NOT NULL , "ship" INTEGER NOT NULL , "starting_point_x" INTEGER NOT NULL, '
+		   '"starting_point_y" INTEGER NOT NULL, "target_point_x" INTEGER NOT NULL, "target_point_y" INTEGER NOT NULL, "state" INTEGER NOT NULL )')
+		# SurpriseAttack
+		db('CREATE TABLE "ai_mission_surprise_attack" ("enemy_player_id" INTEGER NOT NULL, "target_point_x" INTEGER NOT NULL, "target_point_y" INTEGER NOT NULL,'
+			'"target_point_radius" INTEGER NOT NULL, "return_point_x" INTEGER NOT NULL, "return_point_y" INTEGER NOT NULL )')
+		# ChaseShipsAndAttack
+		db('CREATE TABLE "ai_mission_chase_ships_and_attack" ("target_ship_id" INTEGER NOT NULL )')
+
+		# BehaviorManager
+		db('CREATE TABLE "ai_behavior_manager" ("owner_id" INTEGER NOT NULL, "profile_token" INTEGER NOT NULL)')
+
+		# No previous token was present, choose anything really
+		db('INSERT INTO ai_behavior_manager (owner_id, profile_token) SELECT p.rowid, 42 FROM player p')
+
+		# Locks for Conditions being resolved by StrategyManager
+		db('CREATE TABLE "ai_condition_lock" ("owner_id" INTEGER NOT NULL, "condition" TEXT NOT NULL, "mission_id" INTEGER NOT NULL)')
+
+		# Fleets
+		db('CREATE TABLE "fleet" ("fleet_id" INTEGER NOT NULL, "owner_id" INTEGER NOT NULL, "state_id" INTEGER NOT NULL, "dest_x" '
+		   'INTEGER, "dest_y" INTEGER, "radius" INTEGER, "ratio" DOUBLE)')
+
+		# Ships per given fleet
+		db('CREATE TABLE "fleet_ship" ("fleet_id" INTEGER NOT NULL, "ship_id" INTEGER NOT NULL, "state_id" INTEGER NOT NULL)')
 
 	def _upgrade(self):
 		# fix import loop

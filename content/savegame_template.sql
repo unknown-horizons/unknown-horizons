@@ -92,8 +92,6 @@ CREATE TABLE "ai_mission_surprise_attack" (
   "return_point_x" INTEGER NOT NULL,
   "return_point_y" INTEGER NOT NULL );
 CREATE TABLE "ai_mission_chase_ships_and_attack" (
-  --"current_target_x" INTEGER NOT NULL,
-  --"current_target_y" INTEGER NOT NULL,
   "target_ship_id" INTEGER NOT NULL );
 
 CREATE TABLE "ai_condition_lock" (
