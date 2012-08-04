@@ -121,7 +121,8 @@ class Fleet(WorldObject):
 
 		if destroy_callback:
 			self.destroy_callback = destroy_callback
-			# TODO FINISH
+
+		# TODO: Finish blocked ticks, or change the way blocks are handled
 
 	@classmethod
 	def load(cls, worldid, owner, db, destroy_callback=None):
@@ -254,5 +255,8 @@ class Fleet(WorldObject):
 		return len(self._ships)
 
 	def __str__(self):
-		ships_str = "\n " + "\n ".join(["%s (fleet state:%s)" % (ship.get_component(NamedComponent).name, self._ships[ship]) for ship in self._ships.keys()])
-		return "Fleet: %s (%s) %s" % (self.worldid, self.state, ships_str)
+		if hasattr(self, '_ships'):
+			ships_str = "\n   " + "\n   ".join(["%s (fleet state:%s)" % (ship.get_component(NamedComponent).name, self._ships[ship]) for ship in self._ships.keys()])
+		else:
+			ships_str = 'N/A'
+		return "Fleet: %s , state: %s, ships:%s" % (self.worldid, (self.state if hasattr(self, 'state') else 'unknown state'), ships_str)

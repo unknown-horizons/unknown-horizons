@@ -140,5 +140,8 @@ class FleetMission(Mission):
 		self.report_failure(msg)
 
 	def __str__(self):
-		return super(FleetMission, self).__str__() + (' using %s' % (self.fleet if hasattr(self, 'fleet') else 'unknown fleet')) + \
-			'(mission state:%s, combat_phase:%s)' % (self.state, self.combat_phase)
+		return super(FleetMission, self).__str__() + \
+		(' using %s' % (self.fleet if hasattr(self, 'fleet') else 'unknown fleet')) + \
+		('(mission state:%s,' % (self.state if hasattr(self, 'state') else 'unknown state')) + \
+		('combat_phase:%s)' % ( self.combat_phase if hasattr(self, 'combat_phase') else 'N/A'))
+
