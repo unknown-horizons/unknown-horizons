@@ -55,6 +55,10 @@ class UnitManager(object):
 		# quickly get fleet assigned to given ship. Ship -> Fleet dictionary
 		self.ships = weakref.WeakKeyDictionary()
 
+		# TODO: Make profile dependent, e.g. larger combat range for more aggressive players
+		# OR NOT, because it's an value related more to perception rather than behavior.
+		self.combat_range = 15
+
 		# fleets
 		self.fleets = set()
 
@@ -221,10 +225,13 @@ class UnitManager(object):
 		diagonal = bottom_left.distance_to_point(top_right)
 		return diagonal
 
-	def find_ships_near_group(self, ship_group):
+	def find_ships_near_group(self, ship_group, radius=None):
+		if not radius:
+			radius = self.combat_range
+
 		other_ships_set = set()
 		for ship in ship_group:
-			nearby_ships = ship.find_nearby_ships()
+			nearby_ships = ship.find_nearby_ships(radius)
 			# return only other player's ships, since we want that in most cases anyway
 			other_ships_set |= set(self.filter_ships(nearby_ships, [self._not_owned_rule(), self._selectable_rule()]))
 		return list(other_ships_set)
@@ -243,7 +250,14 @@ class UnitManager(object):
 	def get_player_ships(self, player):
 		return [ship for ship in self.session.world.ships if ship.owner == player and ship.has_component(SelectableComponent)]
 
-	def get_warehouse_position(self, settlement):
+	def get_warehouse_point(self, settlement):
+		"""
+		Return point of given settlement's warehouse.
+		Be careful with sailing directly to given warehouse
+		"""
 		target_point = settlement.warehouse.position
 		(x, y) = target_point.get_coordinates()[4]
-		return Circle(Point(x, y), 5)
+		return Point(x, y)
+
+	def get_warehouse_area(self, settlement, range):
+		return Circle(self.get_warehouse_point(settlement), range)

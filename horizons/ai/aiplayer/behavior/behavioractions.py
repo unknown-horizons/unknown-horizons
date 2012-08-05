@@ -293,6 +293,7 @@ class BehaviorActionRegular(BehaviorAction):
 			ship_pairs = UnitManager.get_closest_ships_for_each(ship_group, pirates)
 			for ship, pirate in ship_pairs:
 				ship.attack(pirates[0])
+				a = ship._minimum_range
 			BehaviorAction.log.info('Attacking pirate player.')
 		else:
 			BehaviorAction.log.info('Not attacking pirate player.')
@@ -368,7 +369,7 @@ class BehaviorActionRegular(BehaviorAction):
 
 		if not settlements:
 			return None
-		target_point = self.unit_manager.get_warehouse_position(settlements[0])
+		target_point = self.unit_manager.get_warehouse_area(settlements[0], 13)
 
 		return_point = idle_ships[0].position.copy()
 		mission = SurpriseAttack.create(self.owner.strategy_manager.report_success,

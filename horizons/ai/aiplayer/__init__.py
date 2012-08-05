@@ -129,7 +129,7 @@ class AIPlayer(GenericAI):
 				if isinstance(ship, MovingWeaponHolder):
 					ship.stance = NoneStance
 				if isinstance(ship, FightingShip):
-					self.combat_manager.ships[ship] = self.combat_manager.shipStates.idle
+					self.combat_manager.add_new_unit(ship)
 		self.need_more_ships = False
 		# TODO: self.need_more_combat_ships = False
 
@@ -383,6 +383,7 @@ class AIPlayer(GenericAI):
 			return
 		if unit in self.ships:
 			del self.ships[unit]
+		self.combat_manager.remove_unit(unit)
 
 	def count_buildings(self, building_id):
 		return sum(settlement_manager.settlement.count_buildings(building_id) for settlement_manager in self.settlement_managers)

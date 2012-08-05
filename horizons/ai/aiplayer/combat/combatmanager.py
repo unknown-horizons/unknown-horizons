@@ -20,10 +20,14 @@
 # ###################################################
 
 import logging
+from fife import fife
 from weakref import WeakKeyDictionary
+import horizons
 from horizons.ai.aiplayer.behavior.profile import BehaviorProfile
 from horizons.ai.aiplayer.combat.unitmanager import UnitManager
+from horizons.constants import LAYERS
 from horizons.ext.enum import Enum
+from horizons.util.python.callback import Callback
 from horizons.util.worldobject import WorldObject
 from horizons.world.units.fightingship import FightingShip
 
@@ -55,6 +59,15 @@ class CombatManager(object):
 		for ship, state in self.ships.iteritems():
 			db("INSERT INTO ai_combat_ship (owner_id, ship_id, state_id) VALUES (?, ?, ?)", self.owner.worldid, ship.worldid, state.index)
 
+	def add_new_unit(self, ship, state = None):
+		if not state:
+			state = self.shipStates.idle
+		self.ships[ship] = state
+
+	def remove_unit(self, ship):
+		if ship in self.ships:
+			del self.ships[ship]
+
 	@classmethod
 	def load(cls, db, owner):
 		self = cls.__new__(cls)
@@ -68,7 +81,7 @@ class CombatManager(object):
 		for (ship_id, state_id,) in db_result:
 			ship = WorldObject.get_object_by_id(ship_id)
 			state = self.shipStates[state_id]
-			self.ships[ship] = state
+			self.add_new_ship(ship, state)
 
 	def handle_mission_combat(self, mission):
 		"""
@@ -110,6 +123,80 @@ class CombatManager(object):
 		else:
 			# no one else is around to fight -> continue mission
 			mission.continue_mission()
+
+	# DISPLAY RELATED FUNCTIONS
+	def _init_fake_tile(self):
+		"""Sets the _fake_tile_obj class variable with a ready to use fife object. To create a new fake tile, use _add_fake_tile()"""
+		# use fixed SelectableBuildingComponent here, to make sure subclasses also read the same variable
+		if not hasattr(self, "_fake_tile_obj"):
+			# create object to create instances from
+			self._fake_tile_obj = horizons.main.fife.engine.getModel().createObject('fake_tile_obj'+str(self.owner.worldid), 'ground')
+			fife.ObjectVisual.create(self._fake_tile_obj)
+
+			img_path = 'content/gfx/fake_water.png'
+			img = horizons.main.fife.imagemanager.load(img_path)
+			for rotation in [45, 135, 225, 315]:
+				self._fake_tile_obj.get2dGfxVisual().addStaticImage(rotation, img.getHandle())
+		if not hasattr(self, '_selected_fake_tiles'):
+			self._selected_fake_tiles = []
+
+	def _add_fake_tile(self, x, y, layer, renderer, color):
+		"""Adds a fake tile to the position. Requires 'self._fake_tile_obj' to be set."""
+		inst = layer.createInstance(self._fake_tile_obj, fife.ModelCoordinate(x, y, 0), "")
+		fife.InstanceVisual.create(inst)
+		self._selected_fake_tiles.append(inst)
+		renderer.addColored(inst, *color)
+	def _clear_fake_tiles(self):
+		if not hasattr(self, '_selected_fake_tiles'):
+			return
+		renderer = self.session.view.renderer['InstanceRenderer']
+		for tile in self._selected_fake_tiles:
+			renderer.removeColored(tile)
+			self.session.view.layers[LAYERS.FIELDS].deleteInstance(tile)
+		self._selected_fake_tiles = []
+
+	def _highlight_circle(self, position, radius, color):
+		renderer = self.session.view.renderer['InstanceRenderer']
+		layer = self.session.world.session.view.layers[LAYERS.FIELDS]
+		for point in self.session.world.get_points_in_radius(position, radius):
+			self._add_fake_tile(point.x, point.y, layer, renderer, color)
+
+
+	def display(self):
+		"""
+		Display combat ranges
+		"""
+		is_on = True
+		#is_on = False
+		if not is_on:
+			return
+
+		combat_range_color = (180, 0, 0)
+		attack_range_color = (150, 100, 0)
+		close_range_color = (0, 0, 100)
+		renderer = self.session.view.renderer['InstanceRenderer']
+
+		self._clear_fake_tiles()
+		self._init_fake_tile()
+
+		layer = self.session.world.session.view.layers[LAYERS.FIELDS]
+
+		for ship, state in self.ships.iteritems():
+			range = self.unit_manager.combat_range
+			self._highlight_circle(ship.position, range, combat_range_color)
+			self._highlight_circle(ship.position, 7, attack_range_color)
+			self._highlight_circle(ship.position, 5, close_range_color)
+				#try:
+				#	renderer.addColored(tile._instance, *combat_range_color)
+				#except AttributeError:
+				#if tile is not None:
+				#	cls._add_selected_tile(tile, renderer)
+				#else: # need extra tile
+				#	cls._add_fake_tile(tup[0], tup[1], layer, renderer)
+			#circle = Circle.
+			#tile = self.island.ground_map[coords]
+			#if purpose != BUILDING_PURPOSE.NONE:
+
 
 	def handle_casual_combat(self):
 		"""
@@ -190,6 +277,7 @@ class CombatManager(object):
 
 	def tick(self):
 		self.lookout()
+		self.display()
 
 
 class PirateCombatManager(CombatManager):

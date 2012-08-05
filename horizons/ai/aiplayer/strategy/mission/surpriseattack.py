@@ -34,7 +34,7 @@ from horizons.util.python import decorators
 class SurpriseAttack(FleetMission):
 	"""
 	This is a basic attack mission.
-	1. Send fleet to point A
+	1. Send fleet to a Point (or Circle) A
 	2. Break diplomacy with enemy player P if he is not hostile,
 	3. Begin combat phase
 	4. Return home (point B).

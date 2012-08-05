@@ -63,6 +63,7 @@ class Fleet(WorldObject):
 		self._ships = WeakKeyDictionary()
 		for ship in ships:
 			self._ships[ship] = self.shipStates.idle
+			#TODO: @below, this caused errors on one occasion but I was not able to reproduce it.
 			ship.add_remove_listener(Callback(self._lost_ship, ship))
 		self.state = self.fleetStates.idle
 		self.destroy_callback = destroy_callback
@@ -215,7 +216,7 @@ class Fleet(WorldObject):
 		Destination circle size for movement calls that involve more than one ship.
 		"""
 
-		return 5
+		return 10
 		#return min(self.size(), 5)
 
 	def _retry_moving_blocked_ships(self):

@@ -87,7 +87,7 @@ class ChaseShipsAndAttack(FleetMission):
 
 	def was_reached(self):
 		if self.target_ship.in_ship_map:
-			if any((ship.position.distance(self.target_ship.position) <= self.target_range+1 for ship in self.fleet.get_ships())):
+			if any((ship.position.distance(self.target_ship.position) <= self.target_range + 1 for ship in self.fleet.get_ships())):
 				# target ship reached: execute combat
 				self.state = self.missionStates.in_combat
 				self.in_combat()
@@ -118,7 +118,7 @@ class ChaseShipsAndAttack(FleetMission):
 		if self.fleet.size() > 0:
 			try:
 				home_settlement = self.unit_manager.get_player_settlements(self.owner)[0]
-				return_point = self.unit_manager.get_warehouse_position(home_settlement)
+				return_point = self.unit_manager.get_warehouse_area(home_settlement, 10)
 				self.fleet.move(return_point, self._state_fleet_callbacks[self.missionStates.fleeing_home])
 				self.state = self.missionStates.fleeing_home
 			except MoveNotPossible:
