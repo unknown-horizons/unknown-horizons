@@ -70,8 +70,8 @@ class Pirate(GenericAI):
 	def __init(self):
 		self.world = self.session.world
 		self.unit_manager = UnitManager(self)
-		self.behavior_manager = BehaviorManager(self)
 		self.combat_manager = PirateCombatManager(self)
+		self.behavior_manager = BehaviorManager(self)
 
 	@staticmethod
 	def get_nearest_player_ship(base_ship):

@@ -29,6 +29,7 @@ from horizons.ai.aiplayer.combat.combatmanager import CombatManager
 from horizons.ai.aiplayer.strategy.mission.scouting import ScoutingMission
 from horizons.ai.aiplayer.strategy.strategymanager import StrategyManager
 from horizons.component.stancecomponent import  NoneStance
+from horizons.world.units.fightingship import FightingShip
 from horizons.world.units.weaponholder import MovingWeaponHolder
 
 from mission.foundsettlement import FoundSettlement
@@ -127,7 +128,10 @@ class AIPlayer(GenericAI):
 				self.ships[ship] = self.shipStates.idle
 				if isinstance(ship, MovingWeaponHolder):
 					ship.stance = NoneStance
+				if isinstance(ship, FightingShip):
+					self.combat_manager.ships[ship] = self.combat_manager.shipStates.idle
 		self.need_more_ships = False
+		# TODO: self.need_more_combat_ships = False
 
 	def __init(self):
 		self._enabled = True # whether this player is enabled (currently disabled at the end of the game)
@@ -140,9 +144,9 @@ class AIPlayer(GenericAI):
 		self.settlement_founder = SettlementFounder(self)
 		self.unit_builder = UnitBuilder(self)
 		self.unit_manager = UnitManager(self)
-		self.strategy_manager = StrategyManager(self)
-		self.behavior_manager = BehaviorManager(self)
 		self.combat_manager = CombatManager(self)
+		self.behavior_manager = BehaviorManager(self)
+		self.strategy_manager = StrategyManager(self)
 		self.settlement_expansions = [] # [(coords, settlement)]
 		self.goals = [DoNothingGoal(self)]
 		self.special_domestic_trade_manager = SpecialDomesticTradeManager(self)
@@ -221,8 +225,6 @@ class AIPlayer(GenericAI):
 		# save the personality manager
 		self.personality_manager.save(db)
 
-		# save the behavior manager
-		self.behavior_manager.save(db)
 
 		# save the unit manager
 		self.unit_manager.save(db)
@@ -230,18 +232,16 @@ class AIPlayer(GenericAI):
 		# save the combat manager
 		self.combat_manager.save(db)
 
+		# save the behavior manager
+		self.behavior_manager.save(db)
+
 		# save the strategy manager
 		self.strategy_manager.save(db)
 
 	def _load(self, db, worldid):
 		super(AIPlayer, self)._load(db, worldid)
 		self.personality_manager = PersonalityManager.load(db, self)
-		#self.combat_manager = CombatManager.load(db, self)
-		#self.strategy_manager = StrategyManager.load(db, self)
 		self.__init()
-
-		# load BehaviorManager
-		self.behavior_manager = BehaviorManager.load(db, self)
 
 		self.need_more_ships, self.need_feeder_island, self.need_more_combat_ships, remaining_ticks , remaining_ticks_long= \
 			db("SELECT need_more_ships, need_more_combat_ships, need_feeder_island, remaining_ticks, remaining_ticks_long FROM ai_player WHERE rowid = ?", worldid)[0]
@@ -260,11 +260,14 @@ class AIPlayer(GenericAI):
 		# load unit manager
 		self.unit_manager = UnitManager.load(db, self)
 
-		# load strategy manager
-		self.strategy_manager = StrategyManager.load(db, self)
-
 		# load combat manager
 		self.combat_manager = CombatManager.load(db, self)
+
+		# load BehaviorManager
+		self.behavior_manager = BehaviorManager.load(db, self)
+
+		# load strategy manager
+		self.strategy_manager = StrategyManager.load(db, self)
 
 		# load the land managers
 		for (worldid,) in db("SELECT rowid FROM ai_land_manager WHERE owner = ?", self.worldid):

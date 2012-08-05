@@ -66,7 +66,7 @@ class UnitManager(object):
 	def get_ships(self, filtering_rules=None):
 		ships = [ship for ship in self.owner.ships]
 		if filtering_rules:
-			ships = self.filter_ships(self.owner, ships, filtering_rules)
+			ships = self.filter_ships(ships, filtering_rules)
 		return ships
 
 	def save(self, db):
@@ -112,37 +112,36 @@ class UnitManager(object):
 	# Use filter_ships method along with rules defined below:
 	# This approach simplifies code (does not aim to make it shorter)
 	# Instead having [ship for ship in ships if ... and ... and ... and ...]
-	# we have ships = filter_ships(player, other_ships, [get_hostile_rule(), get_ship_type_rule((PirateShip,)), ... ])
+	# we have ships = filter_ships(other_ships, [get_hostile_rule(), get_ship_type_rule((PirateShip,)), ... ])
 	def _is_fighter(self):
 		"""
-		Rule stating that ship is a fighting ship (but not a pirate ship.
+		Rule stating that ship is a fighting ship, but not a pirate ship.
 		"""
-		return lambda player, ship: isinstance(ship, FightingShip) and not isinstance(ship, PirateShip)
+		return lambda ship: isinstance(ship, FightingShip) and not isinstance(ship, PirateShip)
 
 	def _is_pirate(self):
-		return lambda player, ship: isinstance(ship, PirateShip)
+		return lambda ship: isinstance(ship, PirateShip)
 
 	def _is_worker(self):
-		return lambda player, ship: ship.name == "Huker"
+		return lambda ship: ship.name == "Huker"
 
 	def _ship_type_rule(self, ship_types):
 		"""
 		Rule stating that ship is any of ship_types instances
 		"""
-		return lambda player, ship: isinstance(ship, ship_types)
+		return lambda ship: isinstance(ship, ship_types)
 
 	def _not_owned_rule(self):
 		"""
 		Rule stating that ship is another player's ship
 		"""
-		return lambda player, ship: player != ship.owner
+		return lambda ship: self.owner != ship.owner
 
 	def _hostile_rule(self):
 		"""
 		Rule selecting only hostile ships
 		"""
-		return lambda player, ship: self.session.world.diplomacy.are_enemies(player, ship.owner)
-
+		return lambda ship: self.session.world.diplomacy.are_enemies(self.owner, ship.owner)
 
 	def _ship_state_rule(self, ship_states):
 		"""
@@ -150,31 +149,31 @@ class UnitManager(object):
 		"""
 		if not isinstance(ship_states, collections.Iterable):
 			ship_states = (ship_states,)
-		return lambda player, ship: (ship.owner.ships[ship] in ship_states)
+		return lambda ship: (ship.owner.ships[ship] in ship_states)
 
 	def _ship_not_in_fleet(self):
 		"""
 		Rule stating that ship is not assigned to any of the fleets.
 		"""
-		return lambda player, ship: (ship not in self.ships)
+		return lambda ship: (ship not in self.ships)
 
 	def _selectable_rule(self):
 		"""
 		Rule stating that ship has to be selectable.
 		"""
-		return lambda player, ship: ship.has_component(SelectableComponent)
+		return lambda ship: ship.has_component(SelectableComponent)
 
-	def filter_ships(self, player, ships, rules):
+	def filter_ships(self, ships, rules):
 		"""
 		This method allows for flexible ship filtering.
 		usage:
-		other_ships = unit_manager.filter_ships(self.owner, other_ships, [_not_owned_rule(), _ship_type_rule([PirateShip])])
+		other_ships = unit_manager.filter_ships(other_ships, [_not_owned_rule(), _ship_type_rule([PirateShip])])
 
 		Note that player is Player instance requesting for filtering, while ships is an iterable of ships.
 		"""
 		if not isinstance(rules, collections.Iterable):
 			rules = (rules,)
-		return [ship for ship in ships if all([rule(player, ship) for rule in rules])]
+		return [ship for ship in ships if all([rule(ship) for rule in rules])]
 
 	@classmethod
 	def get_closest_ships_for_each(cls, ship_group, enemies):
@@ -227,7 +226,7 @@ class UnitManager(object):
 		for ship in ship_group:
 			nearby_ships = ship.find_nearby_ships()
 			# return only other player's ships, since we want that in most cases anyway
-			other_ships_set |= set(self.filter_ships(self.owner, nearby_ships, [self._not_owned_rule(), self._selectable_rule()]))
+			other_ships_set |= set(self.filter_ships(nearby_ships, [self._not_owned_rule(), self._selectable_rule()]))
 		return list(other_ships_set)
 
 	def tick(self):

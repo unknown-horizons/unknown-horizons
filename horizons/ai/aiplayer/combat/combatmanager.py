@@ -83,10 +83,10 @@ class CombatManager(object):
 			mission.abort_mission()
 
 		ships_around = self.unit_manager.find_ships_near_group(ship_group)
-		ships_around = self.unit_manager.filter_ships(self.owner, ships_around, (filters.hostile(), ))
-		pirate_ships = self.unit_manager.filter_ships(self.owner, ships_around, (filters.pirate(), ))
-		fighting_ships = self.unit_manager.filter_ships(self.owner, ships_around, (filters.fighting(), ))
-		working_ships = self.unit_manager.filter_ships(self.owner, ships_around, (filters.working(), ))
+		ships_around = self.unit_manager.filter_ships(ships_around, (filters.hostile(), ))
+		pirate_ships = self.unit_manager.filter_ships(ships_around, (filters.pirate(), ))
+		fighting_ships = self.unit_manager.filter_ships(ships_around, (filters.fighting(), ))
+		working_ships = self.unit_manager.filter_ships(ships_around, (filters.working(), ))
 
 		environment = {'ship_group': ship_group}
 
@@ -124,9 +124,9 @@ class CombatManager(object):
 			# TODO: create artificial groups by dividing ships that are near into groups based on their distance
 
 			ships_around = self.unit_manager.find_ships_near_group(ship_group)
-			pirate_ships = self.unit_manager.filter_ships(self.owner, ships_around, (filters.pirate(), ))
-			fighting_ships = self.unit_manager.filter_ships(self.owner, ships_around, (filters.fighting(), ))
-			working_ships = self.unit_manager.filter_ships(self.owner, ships_around, (filters.working(), ))
+			pirate_ships = self.unit_manager.filter_ships(ships_around, (filters.pirate(), ))
+			fighting_ships = self.unit_manager.filter_ships(ships_around, (filters.fighting(), ))
+			working_ships = self.unit_manager.filter_ships(ships_around, (filters.working(), ))
 			environment = {'ship_group': ship_group}
 			if fighting_ships:
 				environment['enemies'] = fighting_ships
@@ -146,7 +146,8 @@ class CombatManager(object):
 					'working_ships_in_sight', **environment)
 			else:
 				# execute idle action only if whole fleet is idle
-				if all([self.owner.ships[ship] == self.owner.shipStates.idle for ship in ship_group]):
+				# we check for AIPlayer state here
+				if all((self.owner.ships[ship] == self.owner.shipStates.idle for ship in ship_group)):
 					self.owner.behavior_manager.request_action(BehaviorProfile.action_types.idle,
 						'no_one_in_sight', **environment)
 
@@ -169,10 +170,10 @@ class CombatManager(object):
 			# test first whether requesting for combat is of any use (any ships nearby)
 			ship_group = mission.fleet.get_ships()
 			ships_around = self.unit_manager.find_ships_near_group(ship_group)
-			ships_around = self.unit_manager.filter_ships(self.owner, ships_around, (filters.hostile()))
-			pirate_ships = self.unit_manager.filter_ships(self.owner, ships_around, (filters.pirate(), ))
-			fighting_ships = self.unit_manager.filter_ships(self.owner, ships_around, (filters.fighting(), ))
-			working_ships = self.unit_manager.filter_ships(self.owner, ships_around, (filters.working(), ))
+			ships_around = self.unit_manager.filter_ships(ships_around, (filters.hostile()))
+			pirate_ships = self.unit_manager.filter_ships(ships_around, (filters.pirate(), ))
+			fighting_ships = self.unit_manager.filter_ships(ships_around, (filters.fighting(), ))
+			working_ships = self.unit_manager.filter_ships(ships_around, (filters.working(), ))
 
 			if fighting_ships:
 				if self.owner.strategy_manager.request_to_pause_mission(mission):
@@ -210,7 +211,7 @@ class PirateCombatManager(CombatManager):
 			environment = {'ship_group': [ship], }
 
 			if ships_around:
-				fighting_ships = self.unit_manager.filter_ships(self.owner, ships_around, (filters.ship_type(FightingShip), filters.hostile()))
+				fighting_ships = self.unit_manager.filter_ships(ships_around, (filters.ship_type(FightingShip), filters.hostile()))
 
 				if fighting_ships:
 					environment['enemies'] = fighting_ships

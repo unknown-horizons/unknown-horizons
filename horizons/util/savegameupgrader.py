@@ -26,7 +26,7 @@ import shutil
 import tempfile
 
 from horizons.util.python import decorators
-from horizons.constants import VERSION
+from horizons.constants import VERSION, UNITS
 from horizons.util import DbReader
 
 class SavegameUpgrader(object):
@@ -154,7 +154,7 @@ class SavegameUpgrader(object):
 		db("ALTER TABLE ai_player ADD COLUMN need_more_combat_ships INTEGER NOT NULL DEFAULT 1")
 
 		# update stance for every pirate player ship
-		db('INSERT INTO stance (worldid, stance, state) SELECT u.rowid, "hold_ground_stance", "idle" FROM unit u, player p WHERE u.owner=p.rowid AND p.is_pirate=1')
+		db('INSERT INTO stance (worldid, stance, state) SELECT u.rowid, "none_stance", "idle" FROM unit u, player p WHERE u.owner=p.rowid AND p.is_pirate=1')
 
 		# update ai_player with long callback function column
 		db("ALTER TABLE ai_player ADD COLUMN remaining_ticks_long INTEGER NOT NULL DEFAULT 1")
@@ -189,6 +189,9 @@ class SavegameUpgrader(object):
 
 		# CombatManager's ship states
 		db('CREATE TABLE "ai_combat_ship" ( "owner_id" INTEGER NOT NULL, "ship_id" INTEGER NOT NULL, "state_id" INTEGER NOT NULL )')
+
+		# Set CombatManager's state of ship to idle
+		db('INSERT INTO ai_combat_ship (owner_id, ship_id, state_id) SELECT p.rowid, u.rowid, 0 FROM player p, unit u WHERE u.owner = p.rowid AND u.type=? and p.client_id="AIPlayer"', UNITS.FRIGATE)
 
 	def _upgrade(self):
 		# fix import loop
