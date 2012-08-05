@@ -128,7 +128,8 @@ class ConditionDebug(Condition):
 
 	def check(self, **environment):
 		player = environment['player']
-		return {'player': player, 'certainty': self.default_certainty, 'strategy_name': 'debug', 'type': BehaviorProfile.strategy_types.offensive}
+		#return {'player': player, 'certainty': self.default_certainty, 'strategy_name': 'debug', 'type': BehaviorProfile.strategy_types.offensive}
+		return {'player': player, 'certainty': self.default_certainty, 'strategy_name': 'player_shares_island', 'type': BehaviorProfile.strategy_types.offensive}
 
 	def get_identifier(self, **environment):
 		return super(ConditionDebug, self).get_identifier(**environment) + str(environment['player'].worldid)
@@ -136,7 +137,7 @@ class ConditionDebug(Condition):
 
 def get_all_conditions(player):
 		conditions = {
-			#ConditionDebug(player):10.0,
+			ConditionDebug(player):10.0,
 			ConditionHostile(player): 1.1,
 			ConditionSharingSettlement(player): 1.0,
 			ConditionNeutral(player): 0.3,

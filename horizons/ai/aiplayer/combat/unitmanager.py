@@ -57,7 +57,7 @@ class UnitManager(object):
 
 		# TODO: Make profile dependent, e.g. larger combat range for more aggressive players
 		# OR NOT, because it's an value related more to perception rather than behavior.
-		self.combat_range = 15
+		self.combat_range = 18
 
 		# fleets
 		self.fleets = set()

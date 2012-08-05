@@ -386,6 +386,7 @@ class SettlementManager(WorldObject):
 	def _add_goals(self, goals):
 		"""Add the settlement's goals that can be activated to the goals list."""
 		for goal in self._goals:
+			print goal.get_personality_name()
 			if goal.can_be_activated:
 				goal.update()
 				goals.append(goal)
