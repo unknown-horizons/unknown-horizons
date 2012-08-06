@@ -231,7 +231,7 @@ class RES:
 	MEDICAL_HERBS    = 38
 	ACORNS           = 39
 	CANNON           = WEAPONS.CANNON
-	DAGGER           = 41
+	DAGGER           = WEAPONS.DAGGER
 	GRAIN            = 42
 	CORN             = 43
 	FLOUR            = 44
@@ -505,40 +505,40 @@ class _LanguageNameDict(dict):
 
 
 LANGUAGENAMES = _LanguageNameDict({
-"" 			: u'System default',
-"af"    : u'Afrikaans',
-"bg"    : u'Български',
-"ca"    : u'Català',
-'ca@valencia' : u'Català de València',
-"cs"    : u'Čeština',
-"da"    : u'Danske',
-"de"    : u'Deutsch',
-"en"    : u'English',
-"es"    : u'Español',
-"et"    : u'Eesti',
-"el"    : u'Ελληνικά',
-"fi"    : u'Suomi',
-"fr"    : u'Français',
-"gl"    : u'Galego',
-"hi"    : u'मानक हिन्दी',
-"hr"    : u'Hrvatski',
-"hu"    : u'Magyar',
-"it"    : u'Italiano',
-"ja"    : u'日本語',
-"lt"    : u'Lietuvių',
-"ko"    : u'한국말/조선말',
-"nb"    : u'Norw. Bokmål',
-"nl"    : u'Nederlands',
-"pl"    : u'Polski',
-"pt_BR" : u'Português Br.',
-"pt"    : u'Português',
-"ro"    : u'Română',
-"ru"    : u'Русский',
-"sl"    : u'Slovenski',
-"sv"    : u'Svenska',
-"tr"    : u'Türkçe',
-"vi"    : u'Tiếng Việt',
-"zh_CN" : u'普通話',
+	""      : u'System default',
+	"af"    : u'Afrikaans',
+	"bg"    : u'Български',
+	"ca"    : u'Català',
+	'ca@valencia' : u'Català de València',
+	"cs"    : u'Čeština',
+	"da"    : u'Danske',
+	"de"    : u'Deutsch',
+	"en"    : u'English',
+	"es"    : u'Español',
+	"et"    : u'Eesti',
+	"el"    : u'Ελληνικά',
+	"fi"    : u'Suomi',
+	"fr"    : u'Français',
+	"gl"    : u'Galego',
+	"hi"    : u'मानक हिन्दी',
+	"hr"    : u'Hrvatski',
+	"hu"    : u'Magyar',
+	"it"    : u'Italiano',
+	"ja"    : u'日本語',
+	"lt"    : u'Lietuvių',
+	"ko"    : u'한국말/조선말',
+	"nb"    : u'Norw. Bokmål',
+	"nl"    : u'Nederlands',
+	"pl"    : u'Polski',
+	"pt_BR" : u'Português Br.',
+	"pt"    : u'Português',
+	"ro"    : u'Română',
+	"ru"    : u'Русский',
+	"sl"    : u'Slovenski',
+	"sv"    : u'Svenska',
+	"tr"    : u'Türkçe',
+	"vi"    : u'Tiếng Việt',
+	"zh_CN" : u'普通話',
 })
 
 FONTDEFS = {
