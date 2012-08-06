@@ -189,6 +189,7 @@ class CombatManager(object):
 		"""
 		Display combat ranges.
 		"""
+
 		highlight_on = True
 		if not highlight_on:
 			return
@@ -288,7 +289,7 @@ class CombatManager(object):
 
 	def tick(self):
 		self.lookout()
-		self.display()
+		#self.display()
 
 
 class PirateCombatManager(CombatManager):

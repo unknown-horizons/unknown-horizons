@@ -209,6 +209,7 @@ class UnitManager(object):
 			self_hp += unit.get_component(HealthComponent).health
 		for unit in enemy_ship_group:
 			enemy_hp += unit.get_component(HealthComponent).health
+
 		return (self_hp / enemy_hp) * dps_multiplier
 
 	@classmethod

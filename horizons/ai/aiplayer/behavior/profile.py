@@ -24,7 +24,7 @@ import random
 
 from horizons.ai.aiplayer.behavior.behavioractions import BehaviorActionPirateHater, BehaviorActionCoward,\
 	BehaviorActionKeepFleetTogether, BehaviorActionRegular, BehaviorActionPirateRoutine, BehaviorActionBreakDiplomacy,\
-BehaviorActionScoutRandomlyNearby, BehaviorActionDoNothing, BehaviorActionRegularPirate
+BehaviorActionScoutRandomlyNearby, BehaviorActionDoNothing, BehaviorActionRegularPirate, BehaviorActionAggressive
 from horizons.ext.enum import Enum
 from horizons.util.worldobject import WorldObject
 
@@ -37,7 +37,7 @@ class BehaviorProfile(WorldObject):
 	action_types = Enum('offensive', 'defensive', 'idle')
 	strategy_types = Enum('offensive', 'idle', 'diplomatic')
 
-	log = logging.getLogger("ai.aiplayer.behaviorprofile")
+	log = logging.getLogger("ai.aiplayer.behavior.profile")
 
 	@classmethod
 	def get_random_player_actions(cls, player, token):
@@ -84,6 +84,9 @@ class BehaviorProfile(WorldObject):
 			cls.strategy_types.diplomatic: dict(),
 		}
 		strategies[cls.strategy_types.offensive][BehaviorActionRegular(player)] = 1.0
+
+		strategies[cls.strategy_types.diplomatic][BehaviorActionAggressive(player)] = 0.01
+		strategies[cls.strategy_types.diplomatic][BehaviorActionRegular(player)] = 0.99
 
 		return strategies
 

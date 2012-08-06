@@ -28,6 +28,7 @@ from horizons.command.diplomacy import AddEnemyPair
 
 import logging
 from horizons.component.namedcomponent import NamedComponent
+from horizons.constants import BUILDINGS
 from horizons.util.python.callback import Callback
 from horizons.util.shapes.circle import Circle
 from horizons.util.shapes.point import Point
@@ -293,7 +294,6 @@ class BehaviorActionRegular(BehaviorAction):
 			ship_pairs = UnitManager.get_closest_ships_for_each(ship_group, pirates)
 			for ship, pirate in ship_pairs:
 				ship.attack(pirates[0])
-				a = ship._minimum_range
 			BehaviorAction.log.info('Attacking pirate player.')
 		else:
 			BehaviorAction.log.info('Not attacking pirate player.')
@@ -390,6 +390,49 @@ class BehaviorActionRegular(BehaviorAction):
 			self.owner.strategy_manager.report_failure, idle_ships, target_ship)
 
 		return mission
+
+	def neutral_player(self, **environment):
+		"""
+		Not concerned about neutral players.
+		"""
+		return None
+
+class BehaviorActionAggressive(BehaviorAction):
+
+	def __init__(self, owner):
+		super(BehaviorActionAggressive, self).__init__(owner)
+		self._certainty['neutral_player'] = self._certainty_neutral_player
+
+	def _certainty_neutral_player(self, **environment):
+		idle_ships = environment['idle_ships']
+
+		if len(idle_ships) > 0:
+			return self.default_certainty
+		elif self.owner.count_buildings(BUILDINGS.BOAT_BUILDER):
+			return self.default_certainty
+		else:
+			return 0.0
+
+	def neutral_player(self, **environment):
+		"""
+		Start war with neutral player
+		 - make a SurpriseAttack if possible.
+		 - break diplomacy otherwise.
+		"""
+		idle_ships = environment['idle_ships']
+		enemy_player = environment['player']
+
+		if len(idle_ships) > 0:
+			mission = SurpriseAttack.create(self.owner.strategy_manager.report_success,
+				self.owner.strategy_manager.report_failure, idle_ships, target_point, return_point, enemy_player)
+			return mission
+		else:
+			AddEnemyPair(self.owner, enemy_player).execute(self.session)
+
+class BehaviorActionDebug(BehaviorAction):
+
+	def __init__(self, owner):
+		super(BehaviorActionDebug, self).__init__(owner)
 
 	def debug(self, **environment):
 		"""

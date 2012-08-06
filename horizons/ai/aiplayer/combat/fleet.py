@@ -39,7 +39,7 @@ class Fleet(WorldObject):
 	3. resolve MoveNotPossible exceptions.
 	"""
 
-	log = logging.getLogger("ai.aiplayer.fleetmission")
+	log = logging.getLogger("ai.aiplayer.fleet")
 
 	# ship states inside a fleet, fleet doesn't care about AIPlayer.shipStates since it doesn't do any reasoning.
 	# all fleet cares about is to move ships from A to B.

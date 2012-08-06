@@ -102,6 +102,7 @@ class Pirate(GenericAI):
 		point = self.session.world.get_random_possible_ship_position()
 		ship = CreateUnit(self.worldid, UNITS.PIRATE_SHIP, point.x, point.y)(issuer=self.session.world.player)
 		self.ships[ship] = self.shipStates.idle
+		self.combat_manager.add_new_unit(ship)
 
 	def maintain_ship_count(self):
 		if len(self.ships.keys()) < self.ship_count:
@@ -173,4 +174,5 @@ class Pirate(GenericAI):
 	def remove_unit(self, unit):
 		"""Called when a ship which is owned by the pirate is removed or killed."""
 		del self.ships[unit]
+		self.combat_manager.remove_unit(unit)
 		Scheduler().rem_call(self, Callback(self.lookout, unit))
