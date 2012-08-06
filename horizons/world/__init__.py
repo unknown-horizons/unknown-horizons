@@ -145,7 +145,7 @@ class World(BuildingOwner, WorldObject):
 			load_building(self.session, savegame_db, building_typeid, building_worldid)
 
 		# use a dict because it's directly supported by the pathfinding algo
-		self.water = dict.fromkeys(list(self.ground_map), 1.0)
+		self.water = dict((tile, 1.0) for tile in self.ground_map)
 		self._init_water_bodies()
 		self.sea_number = self.water_body[(self.min_x, self.min_y)]
 
@@ -355,7 +355,7 @@ class World(BuildingOwner, WorldObject):
 		moves = [(-1, -1), (-1, 0), (-1, 1), (0, -1), (0, 1), (1, -1), (1, 0), (1, 1)]
 
 		n = 0
-		self.water_body = dict.fromkeys(self.water)
+		self.water_body = dict(self.water)
 		for coords, num in self.water_body.iteritems():
 			if num is not None:
 				continue
@@ -574,11 +574,7 @@ class World(BuildingOwner, WorldObject):
 		"""
 		if position is not None and radius is not None:
 			circle = Circle(position, radius)
-			ships = []
-			for ship in self.ships:
-				if circle.contains(ship.position):
-					ships.append(ship)
-			return ships
+			return [ship for ship in self.ships if circle.contains(ship.position)]
 		else:
 			return self.ships
 
@@ -586,11 +582,7 @@ class World(BuildingOwner, WorldObject):
 		"""@see get_ships"""
 		if position is not None and radius is not None:
 			circle = Circle(position, radius)
-			units = []
-			for unit in self.ground_units:
-				if circle.contains(unit.position):
-					units.append(unit)
-			return units
+			return [unit for unit in self.ground_units if circle.contains(unit.position)]
 		else:
 			return self.ground_units
 
@@ -603,11 +595,9 @@ class World(BuildingOwner, WorldObject):
 				for building in island.buildings:
 					if circle.contains(building.position.center()):
 						buildings.append(building)
+			return buildings
 		else:
-			for island in self.islands:
-				for building in island.buildings:
-					buildings.append(building)
-		return buildings
+			return [b for b in island.buildings for island in self.islands]
 
 	def get_all_buildings(self):
 		"""Yields all buildings independent of owner"""
@@ -641,10 +631,8 @@ class World(BuildingOwner, WorldObject):
 			self.trader.save(db)
 		if self.pirate is not None:
 			self.pirate.save(db)
-		for ship in self.ships:
-			ship.save(db)
-		for ground_unit in self.ground_units:
-			ground_unit.save(db)
+		for unit in self.ships + self.ground_units:
+			unit.save(db)
 		for bullet in self.bullets:
 			bullet.save(db)
 		self.diplomacy.save(db)
