@@ -51,7 +51,7 @@ class View(ChangeListener):
 		self.layers = []
 		for i in xrange(0, LAYERS.NUM):
 			self.layers.append(self.map.createLayer(str(i), cellgrid))
-			self.layers[i].setPathingStrategy(fife.CELL_EDGES_ONLY)
+			self.layers[i].setPathingStrategy(fife.CELL_EDGES_AND_DIAGONALS)
 			self.layers[i].setWalkable(True)
 
 		self.map.initializeCellCaches()
