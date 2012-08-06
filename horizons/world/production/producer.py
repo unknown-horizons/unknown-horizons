@@ -493,7 +493,7 @@ class QueueProducer(Producer):
 
 
 	def check_next_production_startable(self):
-		# See if we can start the next production,  this only works if the current
+		# See if we can start the next production, this only works if the current
 		# production is done
 		state = self._get_current_state()
 		return len(self.production_queue) > 0 and \

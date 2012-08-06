@@ -108,11 +108,8 @@ class ResourceDeposit(NatureBuilding):
 class Fish(BuildableSingleEverywhere, BuildingResourceHandler, BasicBuilding):
 
 	def __init__(self, *args, **kwargs):
-		super(Fish,  self).__init__(*args, **kwargs)
+		super(Fish, self).__init__(*args, **kwargs)
 
 		# Make the fish run at different speeds
-		multiplier =  0.7 + self.session.random.random() * 0.6
+		multiplier = 0.7 + self.session.random.random() * 0.6
 		self._instance.setTimeMultiplier(multiplier)
-
-
-

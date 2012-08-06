@@ -73,7 +73,7 @@ class DeleteButton(ImageButton):
 	down_image="content/gui/images/buttons/delete.png"
 	"""
 	DEFAULT_NAME = 'deleteButton'
-	def __init__(self, name=None,  **kwargs):
+	def __init__(self, name=None, **kwargs):
 		if name is None:
 			name = self.__class__.DEFAULT_NAME
 		size = (34, 40)

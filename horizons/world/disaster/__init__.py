@@ -34,7 +34,7 @@ class Disaster(WorldObject):
 
 	TYPE = None # string to identify type
 
-	# Chance this disaster is seeded into a settlement in a tick of  the
+	# Chance this disaster is seeded into a settlement in a tick of the
 	# disaster manager
 	SEED_CHANCE = 0.5
 

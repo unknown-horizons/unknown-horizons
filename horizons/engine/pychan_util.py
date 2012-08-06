@@ -68,7 +68,7 @@ def init_pychan():
 	# register custom widgets
 	from horizons.gui.widgets.inventory import Inventory
 	from horizons.gui.widgets.buysellinventory import BuySellInventory
-	from horizons.gui.widgets.imagefillstatusbutton import  ImageFillStatusButton
+	from horizons.gui.widgets.imagefillstatusbutton import ImageFillStatusButton
 	from horizons.gui.widgets.progressbar import ProgressBar
 	from horizons.gui.widgets.toggleimagebutton import ToggleImageButton
 	from horizons.gui.widgets.imagebutton import CancelButton, DeleteButton, OkButton
@@ -79,10 +79,10 @@ def init_pychan():
 	from horizons.gui.widgets.tooltip import _Tooltip
 
 	widgets = [OkButton, CancelButton, DeleteButton,
-			   Inventory, BuySellInventory, ImageFillStatusButton,
-			   ProgressBar, StepSlider, TabBG, ToggleImageButton,
-			   HealthWidget, StanceWidget, WeaponStorageWidget,
-	       AutoResizeContainer, RenameLabel, RenameImageButton]
+	           Inventory, BuySellInventory, ImageFillStatusButton,
+	           ProgressBar, StepSlider, TabBG, ToggleImageButton,
+	           HealthWidget, StanceWidget, WeaponStorageWidget,
+	           AutoResizeContainer, RenameLabel, RenameImageButton]
 
 	for widget in widgets:
 		pychan.widgets.registerWidget(widget)

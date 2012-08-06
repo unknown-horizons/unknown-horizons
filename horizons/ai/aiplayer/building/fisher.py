@@ -151,7 +151,7 @@ class FisherSimulator(object):
 				break
 
 			if not found_fish:
-				heapq.heappush(heap, (tick +  COLLECTORS.DEFAULT_WAIT_TICKS, fisher_coords))
+				heapq.heappush(heap, (tick + COLLECTORS.DEFAULT_WAIT_TICKS, fisher_coords))
 		return float(fish_caught) / cls.simulation_time
 
 AbstractFisher.register_buildings()

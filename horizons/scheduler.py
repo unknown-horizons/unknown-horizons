@@ -217,7 +217,7 @@ class Scheduler(LivingObject):
 				if obj.callback == callback:
 					del self.calls_by_instance[instance][i]
 					test += 1
-			assert test == removed_calls,  "%s, %s" % (test, removed_calls)
+			assert test == removed_calls, "%s, %s" % (test, removed_calls)
 			if not self.calls_by_instance[instance]:
 				del self.calls_by_instance[instance]
 

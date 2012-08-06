@@ -167,8 +167,8 @@ class BuildingCollector(Collector):
 				if reslist: # we can do something here
 					jobs.append( Job(building, reslist) )
 
-		# TODO: find out why order of  self.get_buildings_in_range(..) and therefor order of jobs differs from client to client
-		# TODO: find out why WindAnimal.get_job(..) doesn't have this problem
+		# TODO: find out why order of  self.get_buildings_in_range(..) and therefore order of jobs differs from client to client
+		# TODO: find out why WildAnimal.get_job(..) doesn't have this problem
 		# for MP-Games the jobs must have the same ordering to ensure get_best_possible_job(..) returns the same result
 		jobs.sort(key=lambda job: job.object.worldid)
 

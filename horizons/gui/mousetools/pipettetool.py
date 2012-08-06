@@ -24,8 +24,8 @@ from fife import fife
 import horizons.main
 
 from horizons.entities import Entities
-from horizons.constants import LAYERS, BUILDINGS
-from horizons.gui.mousetools import  NavigationTool
+from horizons.constants import LAYERS
+from horizons.gui.mousetools import NavigationTool
 from horizons.gui.tabs.buildtabs import BuildTab
 from horizons.component.ambientsoundcomponent import AmbientSoundComponent
 
@@ -50,10 +50,10 @@ class PipetteTool(NavigationTool):
 	def on_escape(self):
 		self.session.set_cursor()
 
-	def mouseMoved(self,  evt):
+	def mouseMoved(self, evt):
 		self.update_coloring(evt)
 
-	def mousePressed(self,  evt):
+	def mousePressed(self, evt):
 		if evt.getButton() == fife.MouseEvent.LEFT:
 			obj = self._get_object(evt)
 			if obj and self._is_buildable(obj.id):
@@ -68,7 +68,7 @@ class PipetteTool(NavigationTool):
 			self.on_escape()
 			evt.consume()
 		else:
-			super(PipetteTool,  self).mouseClicked(evt)
+			super(PipetteTool, self).mouseClicked(evt)
 
 	def _get_object(self, evt):
 		for obj in self.get_hover_instances(evt, layers=[LAYERS.FIELDS, LAYERS.OBJECTS]):
@@ -85,9 +85,9 @@ class PipetteTool(NavigationTool):
 	def _is_buildable(self, building_id):
 		building_increments = BuildTab.get_building_increments()
 		return building_id in building_increments and \
-					 building_increments[ building_id ] <= self.session.world.player.settler_level
+		       building_increments[ building_id ] <= self.session.world.player.settler_level
 
-	def _add_coloring(self,  obj):
+	def _add_coloring(self, obj):
 		if self._is_buildable(obj.id):
 			self.renderer.addColored(obj.fife_instance,
 			                         *self.__class__.HIGHLIGHT_COLOR)

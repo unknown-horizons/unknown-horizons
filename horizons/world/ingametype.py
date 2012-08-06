@@ -43,7 +43,7 @@ class IngameType(type):
 	# Class name for the type.__new__ constructor
 	classstring = 'Type[{id}]'
 
-	def __new__(self, id,  yaml_data):
+	def __new__(self, id, yaml_data):
 		class_package = yaml_data['baseclass'].split('.')[0]
 		class_name = yaml_data['baseclass'].split('.')[1]
 

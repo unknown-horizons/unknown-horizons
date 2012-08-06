@@ -233,7 +233,7 @@ def bind_all(mc, builtin_only=False, stoplist=None, verbose=False):
 		return
 	for k, v in d.items():
 		if type(v) is FunctionType:
-			newv = _make_constants(v, builtin_only, stoplist,  verbose)
+			newv = _make_constants(v, builtin_only, stoplist, verbose)
 			setattr(mc, k, newv)
 		elif type(v) in (type, ClassType):
 			bind_all(v, builtin_only, stoplist, verbose)

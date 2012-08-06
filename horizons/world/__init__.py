@@ -621,8 +621,8 @@ class World(BuildingOwner, WorldObject):
 	def get_health_instances(self, position=None, radius=None):
 		"""Returns all instances that have health"""
 		instances = []
-		for instance in self.get_ships(position, radius)+\
-				self.get_ground_units(position, radius):
+		for instance in self.get_ships(position, radius) + \
+		                self.get_ground_units(position, radius):
 			if instance.has_component(HealthComponent):
 				instances.append(instance)
 		return instances

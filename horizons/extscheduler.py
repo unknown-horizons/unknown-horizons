@@ -28,7 +28,7 @@ from horizons.util import ManualConstructionSingleton
 class _ExtCallbackObject(object):
 	"""Class used by the ExtScheduler Class to organize callbacks."""
 
-	def __init__(self,  callback, class_instance, run_in=1, loops=1):
+	def __init__(self, callback, class_instance, run_in=1, loops=1):
 		"""Creates the CallbackObject instance.
 		@param callback: lambda function callback, which is called run_in ticks.
 		@param class_instance: class instance the original function(not the lambda function!) belongs to.
@@ -78,7 +78,7 @@ class ExtScheduler(object):
 
 	def add_object(self, obj):
 		"""Adds a new CallbackObject instance to the callbacks list
-		@param object: CallbackObject type object, containing all necessary  information
+		@param object: CallbackObject type object, containing all necessary information
 		"""
 		if obj.loops > 0:
 			obj.loops -= 1
@@ -109,11 +109,10 @@ class ExtScheduler(object):
 		"""
 		for tup in self.schedule:
 			if tup[1].class_instance is instance and tup[1].callback == callback:
-				# don't destory heap
+				# don't destroy heap
 				tup[1] = self.__class__.NOOP
 
 	def __del__(self):
 		self.schedule = []
 		self.pump.remove(self.tick)
 		self.pump = None
-

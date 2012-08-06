@@ -22,7 +22,7 @@
 import copy
 
 from horizons.world.units.movingobject import MoveNotPossible
-from horizons.util import  Circle, WorldObject, ChangeListener
+from horizons.util import Circle, WorldObject, ChangeListener
 from horizons.constants import GAME_SPEED
 from horizons.scheduler import Scheduler
 from horizons.component.storagecomponent import StorageComponent
@@ -110,7 +110,7 @@ class TradeRoute(ChangeListener):
 		"""Transfer resources, wait if necessary and move to next warehouse when possible"""
 		warehouse = self.get_location()['warehouse']
 		resource_list = self.current_transfer or self.get_location()['resource_list']
-		suppress_messages = self.current_transfer is not None # no messages from  second try on
+		suppress_messages = self.current_transfer is not None # no messages from second try on
 
 		if self.current_transfer is not None:
 			for res in copy.copy(self.current_transfer):
@@ -174,7 +174,7 @@ class TradeRoute(ChangeListener):
 
 				inv_comp = self.ship.get_component(StorageComponent)
 				if amount_transferred < status.remaining_transfers[res] and \
-				   inv_comp.inventory.get_free_space_for(res) > 0 and\
+				   inv_comp.inventory.get_free_space_for(res) > 0 and \
 				   inv_comp.inventory[res] < self.get_location()['resource_list'][res]:
 					status.settlement_provides_enough_res = False
 				status.remaining_transfers[res] -= amount_transferred
@@ -216,7 +216,7 @@ class TradeRoute(ChangeListener):
 
 		try:
 			self.ship.move(Circle(warehouse.position.center(), self.ship.radius), self.on_route_warehouse_reached,
-						   blocked_callback = self.on_ship_blocked)
+			               blocked_callback = self.on_ship_blocked)
 		except MoveNotPossible:
 			# retry in 5 seconds
 			Scheduler().add_new_object(self.on_ship_blocked, self, GAME_SPEED.TICKS_PER_SECOND * 5)
