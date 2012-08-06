@@ -86,7 +86,7 @@ class World(BuildingOwner, WorldObject):
 		# destructor-like thing.
 		super(World, self).end()
 
-		for ship in [ship for ship in self.ships]:
+		for ship in self.ships[:]:
 			ship.remove()
 		for island in self.islands:
 			island.end()
@@ -237,15 +237,16 @@ class World(BuildingOwner, WorldObject):
 
 			data = {'player1' : player1, 'player2' : player2}
 
-			self.session.ingame_gui.message_widget.add(point=None,
-                string_id='DIPLOMACY_STATUS_'+old_state.upper()+"_"+new_state.upper(), message_dict=data)
+			string_id = 'DIPLOMACY_STATUS_{old}_{new}'.format(old=old_state.upper(),
+			                                                  new=new_state.upper())
+			self.session.ingame_gui.message_widget.add(point=None, string_id=string_id,
+			                                           message_dict=data)
 
 		self.diplomacy.add_diplomacy_status_changed_listener(notify_change)
 
 	def _load_disasters(self, savegame_db):
 		# disasters are only enabled if they are explicitly set to be enabled
-		disasters_disabled = not ('disasters_enabled' in self.properties and
-		                          self.properties['disasters_enabled'])
+		disasters_disabled = not self.properties.get('disasters_enabled')
 		self.disaster_manager = DisasterManager(self.session, disabled=disasters_disabled)
 		if self.session.is_game_loaded():
 			self.disaster_manager.load(savegame_db)
@@ -260,10 +261,10 @@ class World(BuildingOwner, WorldObject):
 		#calculate map dimensions
 		self.min_x, self.min_y, self.max_x, self.max_y = 0, 0, 0, 0
 		for i in self.islands:
-			self.min_x = i.rect.left if self.min_x is None or i.rect.left < self.min_x else self.min_x
-			self.min_y = i.rect.top if self.min_y is None or i.rect.top < self.min_y else self.min_y
-			self.max_x = i.rect.right if self.max_x is None or i.rect.right > self.max_x else self.max_x
-			self.max_y = i.rect.bottom if self.max_y is None or i.rect.bottom > self.max_y else self.max_y
+			self.min_x = min(i.rect.left, self.min_x)
+			self.min_y = min(i.rect.top, self.min_y)
+			self.max_x = max(i.rect.right, self.max_x)
+			self.max_y = max(i.rect.bottom, self.max_y)
 		self.min_x -= 10
 		self.min_y -= 10
 		self.max_x += 10
