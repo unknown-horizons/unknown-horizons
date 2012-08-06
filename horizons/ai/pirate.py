@@ -21,7 +21,7 @@
 
 import logging
 from horizons.ai.aiplayer.behavior import BehaviorManager
-from horizons.ai.aiplayer.behavior.behavioractions import  BehaviorMoveCallback
+from horizons.ai.aiplayer.behavior.behaviorcomponents import BehaviorMoveCallback
 from horizons.ai.aiplayer.behavior.profile import BehaviorProfile
 from horizons.ai.aiplayer.combat.combatmanager import  PirateCombatManager
 from horizons.ai.aiplayer.combat.unitmanager import UnitManager
@@ -108,14 +108,6 @@ class Pirate(GenericAI):
 		if len(self.ships.keys()) < self.ship_count:
 			self.create_ship_at_random_position()
 
-	# TODO : remove function below
-	def lookout(self, pirate_ship):
-		if self.ships[pirate_ship] != self.shipStates.going_home:
-			ship = self.get_nearest_player_ship(pirate_ship)
-			if ship:
-				self.log.debug("Pirate: Scout found ship: %s" % ship.get_component(NamedComponent).name)
-				self.send_ship(pirate_ship)
-
 	def save(self, db):
 		super(Pirate, self).save(db)
 		db("UPDATE player SET is_pirate = 1 WHERE rowid = ?", self.worldid)
@@ -175,4 +167,3 @@ class Pirate(GenericAI):
 		"""Called when a ship which is owned by the pirate is removed or killed."""
 		del self.ships[unit]
 		self.combat_manager.remove_unit(unit)
-		Scheduler().rem_call(self, Callback(self.lookout, unit))

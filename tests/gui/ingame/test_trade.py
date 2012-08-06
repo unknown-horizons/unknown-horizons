@@ -116,7 +116,6 @@ def test_trade(gui):
 	gui.trigger('buy_sell_goods', 'size_1/action/default')
 	gui.trigger('buy_sell_goods', 'buy_sell_inventory_True_entry_0/action/default')
 
-	print ship_inv[RES.ALVEARIES]
 	assert ship_inv[RES.ALVEARIES] == 1
 	assert settlement_inv[RES.ALVEARIES] == 9
 

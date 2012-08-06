@@ -22,9 +22,9 @@
 import logging
 import random
 
-from horizons.ai.aiplayer.behavior.behavioractions import BehaviorActionPirateHater, BehaviorActionCoward,\
-	BehaviorActionKeepFleetTogether, BehaviorActionRegular, BehaviorActionPirateRoutine, BehaviorActionBreakDiplomacy,\
-BehaviorActionScoutRandomlyNearby, BehaviorActionDoNothing, BehaviorActionRegularPirate, BehaviorActionAggressive
+from horizons.ai.aiplayer.behavior.behaviorcomponents import BehaviorPirateHater, BehaviorCoward,\
+	BehaviorKeepFleetTogether, BehaviorRegular, BehaviorPirateRoutine, BehaviorBreakDiplomacy,\
+	BehaviorDoNothing, BehaviorRegularPirate, BehaviorAggressive
 from horizons.ext.enum import Enum
 from horizons.util.worldobject import WorldObject
 
@@ -51,16 +51,16 @@ class BehaviorProfile(WorldObject):
 			cls.action_types.defensive: dict(),
 			cls.action_types.idle: dict(),
 			}
-		#actions[cls.action_types.offensive][BehaviorActionPirateHater(player)] = 0.1
-		#actions[cls.action_types.offensive][BehaviorActionCoward(player)] = 0.1
-		actions[cls.action_types.offensive][BehaviorActionRegular(player)] = 2.0
-		#actions[cls.action_types.offensive][BehaviorActionBreakDiplomacy(player)] = 0.1
+		#actions[cls.action_types.offensive][BehaviorPirateHater(player)] = 0.1
+		#actions[cls.action_types.offensive][BehaviorCoward(player)] = 0.1
+		actions[cls.action_types.offensive][BehaviorRegular(player)] = 2.0
+		#actions[cls.action_types.offensive][BehaviorBreakDiplomacy(player)] = 0.1
 
-		#actions[cls.action_types.idle][BehaviorActionKeepFleetTogether(player)] = 0.1
+		#actions[cls.action_types.idle][BehaviorKeepFleetTogether(player)] = 0.1
 
 		#TODO: remove this behavior
-		#actions[cls.action_types.idle][BehaviorActionScoutRandomlyNearby(player)] = 0.1
-		actions[cls.action_types.idle][BehaviorActionDoNothing(player)] = 1.0
+		#actions[cls.action_types.idle][BehaviorScoutRandomlyNearby(player)] = 0.1
+		actions[cls.action_types.idle][BehaviorDoNothing(player)] = 1.0
 
 		return actions
 
@@ -71,9 +71,9 @@ class BehaviorProfile(WorldObject):
 			cls.action_types.defensive: dict(),
 			cls.action_types.idle: dict(),
 		}
-		actions[cls.action_types.offensive][BehaviorActionRegularPirate(player)] = 1.0
-		actions[cls.action_types.idle][BehaviorActionPirateRoutine(player)] = 1.0
-		actions[cls.action_types.idle][BehaviorActionDoNothing(player)] = 0.5
+		actions[cls.action_types.offensive][BehaviorRegularPirate(player)] = 1.0
+		actions[cls.action_types.idle][BehaviorPirateRoutine(player)] = 1.0
+		actions[cls.action_types.idle][BehaviorDoNothing(player)] = 0.5
 
 		return actions
 
@@ -83,10 +83,10 @@ class BehaviorProfile(WorldObject):
 			cls.strategy_types.offensive: dict(),
 			cls.strategy_types.diplomatic: dict(),
 		}
-		strategies[cls.strategy_types.offensive][BehaviorActionRegular(player)] = 1.0
+		strategies[cls.strategy_types.offensive][BehaviorRegular(player)] = 1.0
 
-		strategies[cls.strategy_types.diplomatic][BehaviorActionAggressive(player)] = 0.01
-		strategies[cls.strategy_types.diplomatic][BehaviorActionRegular(player)] = 0.99
+		strategies[cls.strategy_types.diplomatic][BehaviorAggressive(player)] = 0.01
+		strategies[cls.strategy_types.diplomatic][BehaviorRegular(player)] = 0.99
 
 		return strategies
 

@@ -23,10 +23,8 @@ import logging
 
 from collections import defaultdict
 from horizons.ai.aiplayer.behavior import BehaviorManager
-from horizons.ai.aiplayer.behavior.behavioractions import BehaviorMoveCallback
 from horizons.ai.aiplayer.behavior.profile import BehaviorProfile
 from horizons.ai.aiplayer.combat.combatmanager import CombatManager
-from horizons.ai.aiplayer.strategy.mission.scouting import ScoutingMission
 from horizons.ai.aiplayer.strategy.strategymanager import StrategyManager
 from horizons.component.stancecomponent import  NoneStance
 from horizons.world.units.fightingship import FightingShip
@@ -131,7 +129,7 @@ class AIPlayer(GenericAI):
 				if isinstance(ship, FightingShip):
 					self.combat_manager.add_new_unit(ship)
 		self.need_more_ships = False
-		self.need_more_combat_ships = False
+		#self.need_more_combat_ships = False
 
 	def __init(self):
 		self._enabled = True # whether this player is enabled (currently disabled at the end of the game)
@@ -145,8 +143,8 @@ class AIPlayer(GenericAI):
 		self.unit_builder = UnitBuilder(self)
 		self.unit_manager = UnitManager(self)
 		self.combat_manager = CombatManager(self)
-		self.behavior_manager = BehaviorManager(self)
 		self.strategy_manager = StrategyManager(self)
+		self.behavior_manager = BehaviorManager(self)
 		self.settlement_expansions = [] # [(coords, settlement)]
 		self.goals = [DoNothingGoal(self)]
 		self.special_domestic_trade_manager = SpecialDomesticTradeManager(self)
@@ -232,11 +230,12 @@ class AIPlayer(GenericAI):
 		# save the combat manager
 		self.combat_manager.save(db)
 
+		# save the strategy manager
+		self.strategy_manager.save(db)
+
 		# save the behavior manager
 		self.behavior_manager.save(db)
 
-		# save the strategy manager
-		self.strategy_manager.save(db)
 
 	def _load(self, db, worldid):
 		super(AIPlayer, self)._load(db, worldid)
@@ -263,11 +262,11 @@ class AIPlayer(GenericAI):
 		# load combat manager
 		self.combat_manager = CombatManager.load(db, self)
 
-		# load BehaviorManager
-		self.behavior_manager = BehaviorManager.load(db, self)
-
 		# load strategy manager
 		self.strategy_manager = StrategyManager.load(db, self)
+
+		# load BehaviorManager
+		self.behavior_manager = BehaviorManager.load(db, self)
 
 		# load the land managers
 		for (worldid,) in db("SELECT rowid FROM ai_land_manager WHERE owner = ?", self.worldid):

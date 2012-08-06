@@ -114,7 +114,7 @@ class DefaultPersonality:
 		default_resource_requirement = 30 # try to always have this much tools and boards in settlement inventory
 		default_food_requirement = 30 # try to always have this much food in settlement inventory in settlements with a village
 		default_feeder_island_brick_requirement = 20 # try to always have this much bricks in feeder island inventory (active on level > 0)
-		default_cannon_requirement = 2
+		default_cannon_requirement = 4
 
 		# the following constants affect the way the AI buys and sells resources
 		reserve_time = 1000 # number of ticks to pre-reserve resources for
@@ -463,7 +463,3 @@ class DefaultPersonality:
 
 	class AbstractFireStation:
 		fraction_of_assigned_residences_built = 0.4 # build a fire station if at least this amount of the assigned residences have been built
-
-# CombatPersonality
-	class StrategyManager:
-		condition_priority_ship_threshold = 1.0 # conditions with this or higher priority ask owner to build more ships if none are available

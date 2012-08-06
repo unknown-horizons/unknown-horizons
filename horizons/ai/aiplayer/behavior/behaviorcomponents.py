@@ -35,12 +35,13 @@ from horizons.util.shapes.point import Point
 from horizons.world.units.movingobject import MoveNotPossible
 
 
-class BehaviorAction(object):
+class BehaviorComponent(object):
 	"""
-	This is an abstract BehaviorAction component.
+	This is an abstract BehaviorComponent - a building block for AI Behavior.
 	"""
-	log = logging.getLogger('ai.aiplayer.behavior.behavioractions')
+	log = logging.getLogger('ai.aiplayer.behavior.behaviorcomponents')
 	default_certainty = 1.0
+	minimal_fleet_size = 1
 
 	def __init__(self, owner):
 		self.owner = owner
@@ -48,38 +49,29 @@ class BehaviorAction(object):
 		self.unit_manager = owner.unit_manager
 		self.world = owner.world
 		self.session = owner.session
+
 		# Witchery below is a way to have certainty() always return the same certainty if it's not defined per behavior.
 		self._certainty = defaultdict(lambda: (lambda **env: self.default_certainty))
 
 	def certainty(self, action_name, **environment):
 		return self._certainty[action_name](**environment)
 
-# Action components below are divided into Idle, Offensive and Defensive actions.
-# This is just an arbitrary way to do this. Another good division may consist of "Aggressive, Normal,Cautious"
+# Components below are roughly divided into "Aggressive, Normal,Cautious" etc.
 # (division below is not related to the way dictionaries in BehaviorManager are named (offensive, idle, defensive))
 
-# Defensive Actions
-#	Actions used in response to being attacked.
-#	Possible usage may be: sailing back to main settlement, fleeing battle, sending reinforcements
-
-# Idle Actions
-#	Actions used in situations when there are no ships nearby.
-#	Possible usage may be: scouting, sailing randomly, sailing back to main settlement
-
-
-class BehaviorActionDoNothing(BehaviorAction):
+class BehaviorDoNothing(BehaviorComponent):
 	"""
-	Action that does nothing. Used mainly for idle actions (we don't want to scout too often).
+	Behavior that does nothing. Used mainly for idle actions (we don't want to scout too often).
 	"""
 
 	def __init__(self, owner):
-		super(BehaviorActionDoNothing, self).__init__(owner)
+		super(BehaviorDoNothing, self).__init__(owner)
 
 	def no_one_in_sight(self, **environment):
 		pass
 
 
-class BehaviorActionPirateRoutine(BehaviorAction):
+class BehaviorPirateRoutine(BehaviorComponent):
 	"""
 	Idle behavior for Pirate player. It has to be specialized for Pirate since general AI does not have home_point.
 	Responsible for pirate ships routine when no one is around. States change in a loop:
@@ -91,7 +83,7 @@ class BehaviorActionPirateRoutine(BehaviorAction):
 	pirate_home_radius = 2
 
 	def __init__(self, owner):
-		super(BehaviorActionPirateRoutine, self).__init__(owner)
+		super(BehaviorPirateRoutine, self).__init__(owner)
 
 	def no_one_in_sight(self, **environment):
 		"""
@@ -106,13 +98,13 @@ class BehaviorActionPirateRoutine(BehaviorAction):
 				else:
 					self._sail_random(ship)
 
-			self.log.debug('Pirate routine: Ship:%s no_one_in_sight', ship.get_component(NamedComponent).name)
+			self.log.debug('BehaviorPirateRoutine: Ship:%s no_one_in_sight' % ship.get_component(NamedComponent).name)
 
 	def trading_ships_in_sight(self, **environment):
 		ship_group = environment['ship_group']
 		for ship in ship_group:
 			self._chase_closest_ship(ship)
-			self.log.debug('Pirate routine: Ship:%s trading_ships_in_sight', ship.get_component(NamedComponent).name)
+			self.log.debug('BehaviorPirateRoutine: Ship:%s trading_ships_in_sight' % ship.get_component(NamedComponent).name)
 
 	def _arrived(self, ship):
 		"""
@@ -171,35 +163,12 @@ class BehaviorActionPirateRoutine(BehaviorAction):
 			owner.ships[pirate_ship] = owner.shipStates.idle
 			self.log.debug('Pirate %s: Ship %s: unable to move random at %s' % (owner.worldid, pirate_ship.get_component(NamedComponent).name, point))
 
-
-class BehaviorActionScoutRandomlyNearby(BehaviorAction):
-	"""
-	Sends fleet to a spot nearby.
-	Used mainly for aesthetics (equivalent of "idle" animation)
-	"""
-	scouting_radius = 10
-
-	def __init__(self, owner):
-		super(BehaviorActionScoutRandomlyNearby, self).__init__(owner)
-
-	def no_one_in_sight(self, **environment):
-		"""
-		Idle action, sail randomly somewhere near
-		"""
-		ship_group = environment['ship_group']
-		first_ship = ship_group[0]
-		points = self.session.world.get_points_in_radius(first_ship.position, self.scouting_radius, shuffle=True)
-		point = list(points)[0]
-		for ship in ship_group:
-			BehaviorMoveCallback._sail_near(ship, point)
-
-
-class BehaviorActionKeepFleetTogether(BehaviorAction):
+class BehaviorKeepFleetTogether(BehaviorComponent):
 
 	dispersion_threshold = 20.0  # TODO: move to YAML/Personality
 
 	def __init__(self, owner):
-		super(BehaviorActionKeepFleetTogether, self).__init__(owner)
+		super(BehaviorKeepFleetTogether, self).__init__(owner)
 
 		# TODO: consider ditching certainty for this one, or at least dispersion calculations
 		def certainty_no_one_in_sight(**env):
@@ -207,7 +176,7 @@ class BehaviorActionKeepFleetTogether(BehaviorAction):
 			if len(ship_group) > 1:
 				dispersion = UnitManager.calculate_ship_dispersion(ship_group)
 				if dispersion <= self.dispersion_threshold:
-					return BehaviorAction.default_certainty
+					return BehaviorComponent.default_certainty
 			return 0.0
 		self._certainty['no_one_in_sight'] = certainty_no_one_in_sight
 
@@ -220,21 +189,21 @@ class BehaviorActionKeepFleetTogether(BehaviorAction):
 		# TODO: find a good way to bring ships together, (mainly solve issue when weight center is inaccessible)
 
 
-class BehaviorActionKeepFleetDispersed(BehaviorAction):
+class BehaviorKeepFleetDispersed(BehaviorComponent):
 	"""
 	Will aim to keep fleet dispersion non further than dispersion_epsilon.
 	"""
 	dispersion_threshold = 15.0
 
 	def __init__(self, owner):
-		super(BehaviorActionKeepFleetDispersed, self).__init__(owner)
+		super(BehaviorKeepFleetDispersed, self).__init__(owner)
 
 		def certainty_no_one_in_sight(**env):
 			ship_group = env['ship_group']
 			if len(ship_group) > 1:
 				dispersion = UnitManager.calculate_ship_dispersion(ship_group)
 				if dispersion <= self.dispersion_threshold:
-					return BehaviorAction.default_certainty
+					return BehaviorComponent.default_certainty
 			return 0.0
 		self._certainty['no_one_in_sight'] = certainty_no_one_in_sight
 
@@ -254,7 +223,7 @@ def certainty_power_balance_exp(**environment):
 	"""
 	Return power_balance^2, altering the exponent will impact the weight certainty has.
 	"""
-	return BehaviorAction.default_certainty * (environment['power_balance'] ** 2)
+	return BehaviorComponent.default_certainty * (environment['power_balance'] ** 2)
 
 
 def certainty_power_balance_inverse(**environment):
@@ -262,18 +231,17 @@ def certainty_power_balance_inverse(**environment):
 	Return power_balance reciprocal,
 	"""
 
-	return BehaviorAction.default_certainty * (1. / environment['power_balance'])
+	return BehaviorComponent.default_certainty * (1. / environment['power_balance'])
 
 
-class BehaviorActionRegular(BehaviorAction):
+class BehaviorRegular(BehaviorComponent):
 	"""
 	A well-balanced way to respond to situations in game.
 	"""
 	power_balance_threshold = 1.00
-	minimum_ship_amount = 1
 
 	def __init__(self, owner):
-		super(BehaviorActionRegular, self).__init__(owner)
+		super(BehaviorRegular, self).__init__(owner)
 		self._certainty['pirate_ships_in_sight'] = certainty_power_balance_exp
 		self._certainty['fighting_ships_in_sight'] = certainty_power_balance_exp
 		self._certainty['player_shares_island'] = self._certainty_player_shares_island
@@ -294,9 +262,9 @@ class BehaviorActionRegular(BehaviorAction):
 			ship_pairs = UnitManager.get_closest_ships_for_each(ship_group, pirates)
 			for ship, pirate in ship_pairs:
 				ship.attack(pirates[0])
-			BehaviorAction.log.info('Attacking pirate player.')
+			BehaviorComponent.log.info('Attacking pirate player.')
 		else:
-			BehaviorAction.log.info('Not attacking pirate player.')
+			BehaviorComponent.log.info('Not attacking pirate player.')
 
 	def fighting_ships_in_sight(self, **environment):
 		"""
@@ -309,9 +277,9 @@ class BehaviorActionRegular(BehaviorAction):
 		if self.session.world.diplomacy.are_enemies(self.owner, enemies[0].owner):
 			for ship in ship_group:
 				ship.attack(enemies[0])
-			BehaviorAction.log.info('ActionRegular: Attacked enemy ship')
+			BehaviorComponent.log.info('ActionRegular: Attacked enemy ship')
 		else:
-			BehaviorAction.log.info('ActionRegular: Enemy ship was not hostile')
+			BehaviorComponent.log.info('ActionRegular: Enemy ship was not hostile')
 
 	def working_ships_in_sight(self, **environment):
 		"""
@@ -323,9 +291,9 @@ class BehaviorActionRegular(BehaviorAction):
 		if self.session.world.diplomacy.are_enemies(self.owner, enemies[0].owner):
 			for ship in ship_group:
 				ship.attack(enemies[0])
-			BehaviorAction.log.info('ActionRegular: Attacked enemy worker ship')
+			BehaviorComponent.log.info('ActionRegular: Attacked enemy worker ship')
 		else:
-			BehaviorAction.log.info('ActionRegular: Enemy worker was not hostile')
+			BehaviorComponent.log.info('ActionRegular: Enemy worker was not hostile')
 
 	def _certainty_player_shares_island(self, **environment):
 		"""
@@ -333,7 +301,7 @@ class BehaviorActionRegular(BehaviorAction):
 		"""
 		idle_ships = environment['idle_ships']
 
-		if len(idle_ships) < self.minimum_ship_amount:
+		if len(idle_ships) < self.minimal_fleet_size:
 			return 0.0
 
 		return self.default_certainty
@@ -341,7 +309,7 @@ class BehaviorActionRegular(BehaviorAction):
 	def _certainty_ship_amount(self, **environment):
 		idle_ships = environment['idle_ships']
 
-		if len(idle_ships) < self.minimum_ship_amount:
+		if len(idle_ships) < self.minimal_fleet_size:
 			return 0.0
 		else:
 			return self.default_certainty
@@ -352,7 +320,7 @@ class BehaviorActionRegular(BehaviorAction):
 
 		enemy_ships = self.unit_manager.get_player_ships(enemy_player)
 
-		if not enemy_ships or len(idle_ships) < self.minimum_ship_amount:
+		if not enemy_ships or len(idle_ships) < self.minimal_fleet_size:
 			return 0.0
 
 		return self.default_certainty
@@ -397,16 +365,16 @@ class BehaviorActionRegular(BehaviorAction):
 		"""
 		return None
 
-class BehaviorActionAggressive(BehaviorAction):
+class BehaviorAggressive(BehaviorComponent):
 
 	def __init__(self, owner):
-		super(BehaviorActionAggressive, self).__init__(owner)
+		super(BehaviorAggressive, self).__init__(owner)
 		self._certainty['neutral_player'] = self._certainty_neutral_player
 
 	def _certainty_neutral_player(self, **environment):
 		idle_ships = environment['idle_ships']
 
-		if len(idle_ships) > 0:
+		if len(idle_ships) >= self.minimal_fleet_size:
 			return self.default_certainty
 		elif self.owner.count_buildings(BUILDINGS.BOAT_BUILDER):
 			return self.default_certainty
@@ -429,10 +397,10 @@ class BehaviorActionAggressive(BehaviorAction):
 		else:
 			AddEnemyPair(self.owner, enemy_player).execute(self.session)
 
-class BehaviorActionDebug(BehaviorAction):
+class BehaviorDebug(BehaviorComponent):
 
 	def __init__(self, owner):
-		super(BehaviorActionDebug, self).__init__(owner)
+		super(BehaviorDebug, self).__init__(owner)
 
 	def debug(self, **environment):
 		"""
@@ -442,12 +410,12 @@ class BehaviorActionDebug(BehaviorAction):
 		mission = ScoutingMission.create(self.owner.strategy_manager.report_success, self.owner.strategy_manager.report_failure, idle_ships)
 		return mission
 
-class BehaviorActionRegularPirate(BehaviorAction):
+class BehaviorRegularPirate(BehaviorComponent):
 
 	power_balance_threshold = 1.0
 
 	def __init__(self, owner):
-		super(BehaviorActionRegularPirate, self).__init__(owner)
+		super(BehaviorRegularPirate, self).__init__(owner)
 		self._certainty['fighting_ships_in_sight'] = certainty_power_balance_exp
 
 	def fighting_ships_in_sight(self, **environment):
@@ -462,19 +430,19 @@ class BehaviorActionRegularPirate(BehaviorAction):
 			if power_balance >= self.power_balance_threshold:
 				for ship in ship_group:
 					ship.attack(enemies[0])
-				BehaviorAction.log.info('ActionRegularPirate: Attacked enemy ship')
+				BehaviorComponent.log.info('ActionRegularPirate: Attacked enemy ship')
 
 			# TODO: else: Sail to pirate home
 		else:
-			BehaviorAction.log.info('ActionRegularPirate: Enemy ship was not hostile')
+			BehaviorComponent.log.info('ActionRegularPirate: Enemy ship was not hostile')
 
-class BehaviorActionBreakDiplomacy(BehaviorAction):
+class BehaviorBreakDiplomacy(BehaviorComponent):
 	"""
 	Temporary action for breaking diplomacy with other players.
 	"""
 
 	def __init__(self, owner):
-		super(BehaviorActionBreakDiplomacy, self).__init__(owner)
+		super(BehaviorBreakDiplomacy, self).__init__(owner)
 
 	def fighting_ships_in_sight(self, **environment):
 		enemies = environment['enemies']
@@ -482,13 +450,13 @@ class BehaviorActionBreakDiplomacy(BehaviorAction):
 
 		if not self.session.world.diplomacy.are_enemies(self.owner, enemies[0].owner):
 			AddEnemyPair(self.owner, enemies[0].owner).execute(self.session)
-		BehaviorAction.log.info('Player:%s broke diplomacy with %s' % (self.owner.name, enemies[0].owner.name))
+		BehaviorComponent.log.info('Player:%s broke diplomacy with %s' % (self.owner.name, enemies[0].owner.name))
 
 
-class BehaviorActionCoward(BehaviorAction):
+class BehaviorCoward(BehaviorComponent):
 
 	def __init__(self, owner):
-		super(BehaviorActionCoward, self).__init__(owner)
+		super(BehaviorCoward, self).__init__(owner)
 		# Certainty here is a hyperbolic function from power_balance
 		# (higher power_balance -> lesser chance of doing nothing)
 		# TODO: skip cowardice if already in war with pirates (pirates will attack anyway)
@@ -500,7 +468,7 @@ class BehaviorActionCoward(BehaviorAction):
 		Dummy action, do nothing really.
 		"""
 		#TODO: add "common actions" module or something like that in order to avoid code repetition (add regular attack here)
-		BehaviorAction.log.info('Pirates give me chills man.')
+		BehaviorComponent.log.info('Pirates give me chills man.')
 
 
 def certainty_are_enemies(**environment):
@@ -513,13 +481,13 @@ def certainty_are_enemies(**environment):
 	player = ship_group[0].owner
 	enemy_player = enemies[0].owner
 
-	return 0.0 if player.session.world.diplomacy.are_enemies(player, enemy_player) else BehaviorAction.default_certainty
+	return 0.0 if player.session.world.diplomacy.are_enemies(player, enemy_player) else BehaviorComponent.default_certainty
 
 
-class BehaviorActionPirateHater(BehaviorAction):
+class BehaviorPirateHater(BehaviorComponent):
 
 	def __init__(self, owner):
-		super(BehaviorActionPirateHater, self).__init__(owner)
+		super(BehaviorPirateHater, self).__init__(owner)
 		self._certainty['pirate_ships_in_sight'] = certainty_are_enemies
 
 	def pirate_ships_in_sight(self, **environment):
@@ -532,4 +500,4 @@ class BehaviorActionPirateHater(BehaviorAction):
 
 		if not self.session.world.diplomacy.are_enemies(self.owner, enemies[0].owner):
 				AddEnemyPair(self.owner, enemies[0].owner).execute(self.session)
-		BehaviorAction.log.info('I feel urgent need to wipe out them pirates.')
+		BehaviorComponent.log.info('I feel urgent need to wipe out them pirates.')

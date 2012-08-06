@@ -52,12 +52,12 @@ class StrategyManager(object):
 		# unique because of WorldObject's inheritance, but it makes removing items from it in O(n).
 		self.conditions_being_resolved = {}
 
-		self.missions_to_db_tables =  {
+		self.missions_to_load =  {
 			ScoutingMission: "ai_scouting_mission",
 			SurpriseAttack: "ai_mission_surprise_attack",
+			ChaseShipsAndAttack: "ai_mission_chase_ships_and_attack",
 		}
 
-		self.personality = self.owner.personality_manager.get('StrategyManager')
 
 	def save(self, db):
 		for mission in list(self.missions):
@@ -71,18 +71,17 @@ class StrategyManager(object):
 		self = cls.__new__(cls)
 		super(StrategyManager, self).__init__()
 		self.__init(owner)
-		self._load(db, owner)
+		self._load(db)
 		return self
 
-	def _load(self, db, owner):
-		# TODO: Use this later
-		"""
-		for db_table, class_name in self.missions_to_db_tables:
-			db_result = db("SELECT rowid FROM ? WHERE owner_id = ?", db_table, self.owner.worldid)
+	def _load(self, db):
+		for class_name, db_table in self.missions_to_load.iteritems():
+			db_result = db("SELECT m.rowid FROM %s m, ai_fleet_mission f WHERE f.owner_id = ? and m.rowid = f.rowid" % db_table, self.owner.worldid)
 			for (mission_id,) in db_result:
 				self.missions.add(class_name.load(mission_id, self.owner, db, self.report_success, self.report_failure))
-		"""
 
+		#TODO: Kept for debugging purposes, remove later
+		"""
 		db_result = db("SELECT m.rowid FROM ai_scouting_mission m, ai_fleet_mission f WHERE f.owner_id = ? and m.rowid = f.rowid", self.owner.worldid)
 		for (mission_id,) in db_result:
 			self.missions.add(ScoutingMission.load(mission_id, self.owner, db, self.report_success, self.report_failure))
@@ -94,6 +93,7 @@ class StrategyManager(object):
 		db_result = db("SELECT m.rowid FROM ai_mission_chase_ships_and_attack m, ai_fleet_mission f WHERE f.owner_id = ? and m.rowid = f.rowid", self.owner.worldid)
 		for (mission_id,) in db_result:
 			self.missions.add(ChaseShipsAndAttack.load(mission_id, self.owner, db, self.report_success, self.report_failure))
+		"""
 
 		# load condition locks
 		db_result = db("SELECT condition, mission_id FROM ai_condition_lock WHERE owner_id = ?", self.owner.worldid)
@@ -141,7 +141,7 @@ class StrategyManager(object):
 		else:
 			return self.missions
 
-	def request_to_pause_mission(self, mission):
+	def request_to_pause_mission(self, mission, **environment):
 		"""
 		@return: returns True is mission is allowed to pause, False otherwise
 		@rtype: bool
@@ -192,10 +192,6 @@ class StrategyManager(object):
 		if occuring_conditions:
 			# Choose the most important one
 			selected_condition, selected_outcome = sorted(occuring_conditions, key = lambda c: self.conditions[c[0]] * c[1]['certainty'], reverse=True)[0]
-
-			# if no ships are available and condition is crucial enough, consider building combat ships
-			if not idle_ships and self.conditions[selected_condition] >= self.personality.condition_priority_ship_threshold:
-				self.owner.request_combat_ship()
 
 			print "SELECTED:"
 			print selected_condition.__class__.__name__
