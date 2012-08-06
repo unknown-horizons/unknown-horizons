@@ -124,7 +124,7 @@ class CombatManager(object):
 			# no one else is around to fight -> continue mission
 			mission.continue_mission()
 
-	# DISPLAY RELATED FUNCTIONS
+	# DISPLAY-RELATED FUNCTIONS
 	def _init_fake_tile(self):
 		"""Sets the _fake_tile_obj class variable with a ready to use fife object. To create a new fake tile, use _add_fake_tile()"""
 		# use fixed SelectableBuildingComponent here, to make sure subclasses also read the same variable

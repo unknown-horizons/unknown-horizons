@@ -243,7 +243,7 @@ class AIPlayer(GenericAI):
 		self.personality_manager = PersonalityManager.load(db, self)
 		self.__init()
 
-		self.need_more_ships, self.need_feeder_island, self.need_more_combat_ships, remaining_ticks , remaining_ticks_long= \
+		self.need_more_ships, self.need_more_combat_ships, self.need_feeder_island, remaining_ticks, remaining_ticks_long= \
 			db("SELECT need_more_ships, need_more_combat_ships, need_feeder_island, remaining_ticks, remaining_ticks_long FROM ai_player WHERE rowid = ?", worldid)[0]
 		Scheduler().add_new_object(Callback(self.tick), self, run_in = remaining_ticks)
 		Scheduler().add_new_object(Callback(self.tick_long), self, run_in = remaining_ticks_long)
