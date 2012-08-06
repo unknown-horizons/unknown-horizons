@@ -53,7 +53,7 @@ class View(ChangeListener):
 			self.layers.append(self.map.createLayer(str(i), cellgrid))
 			self.layers[i].setPathingStrategy(fife.CELL_EDGES_ONLY)
 
-		self.cam = self.map.addCamera("main", self.layers[len(self.layers) - 1],
+		self.cam = self.map.addCamera("main", self.layers[-1],
 		                               fife.Rect(0, 0,
 		                                         horizons.main.fife.engine_settings.getScreenWidth(),
 		                                         horizons.main.fife.engine_settings.getScreenHeight())
