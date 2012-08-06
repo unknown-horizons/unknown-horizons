@@ -229,8 +229,7 @@ class Fife(ApplicationBase):
 		"""
 		assert self._gotInited
 
-		# there probably is a reason why this is here
-		self._setting.entries[FIFE_MODULE]['ScreenResolution'].initialdata = get_screen_resolutions()
+		self._setting.setAvailableScreenResolutions(get_screen_resolutions())
 
 		self.engine.initializePumping()
 		self.loop()
