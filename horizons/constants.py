@@ -298,6 +298,9 @@ class GROUND:
 	DEEP_WATER_SOUTHWEST1 = (2, "curve_out", 45)
 	DEEP_WATER_NORTHWEST1 = (2, "curve_out", 315)
 
+class ACTION_SETS:
+	DEFAULT_ANIMATION_LENGTH = 500
+
 class GAME_SPEED:
 	TICKS_PER_SECOND = 16
 	TICK_RATES = [ int(i * TICKS_PER_SECOND) for i in (0.5, 1, 2, 3, 4, 6, 8, 11, 20) ]
