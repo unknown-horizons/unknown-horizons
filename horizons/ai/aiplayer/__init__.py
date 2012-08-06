@@ -131,7 +131,7 @@ class AIPlayer(GenericAI):
 				if isinstance(ship, FightingShip):
 					self.combat_manager.add_new_unit(ship)
 		self.need_more_ships = False
-		# TODO: self.need_more_combat_ships = False
+		self.need_more_combat_ships = False
 
 	def __init(self):
 		self._enabled = True # whether this player is enabled (currently disabled at the end of the game)

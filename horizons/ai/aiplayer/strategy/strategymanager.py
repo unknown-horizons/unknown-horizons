@@ -57,6 +57,8 @@ class StrategyManager(object):
 			SurpriseAttack: "ai_mission_surprise_attack",
 		}
 
+		self.personality = self.owner.personality_manager.get('StrategyManager')
+
 	def save(self, db):
 		for mission in list(self.missions):
 			mission.save(db)
@@ -190,6 +192,11 @@ class StrategyManager(object):
 		if occuring_conditions:
 			# Choose the most important one
 			selected_condition, selected_outcome = sorted(occuring_conditions, key = lambda c: self.conditions[c[0]] * c[1]['certainty'], reverse=True)[0]
+
+			# if no ships are available and condition is crucial enough, consider building combat ships
+			if not idle_ships and self.conditions[selected_condition] >= self.personality.condition_priority_ship_threshold:
+				self.owner.request_combat_ship()
+
 			print "SELECTED:"
 			print selected_condition.__class__.__name__
 			for key, value in selected_outcome.iteritems():
