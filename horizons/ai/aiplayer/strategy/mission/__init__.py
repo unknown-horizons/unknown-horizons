@@ -28,7 +28,7 @@ from horizons.util.worldobject import WorldObject
 
 class FleetMission(Mission):
 
-	missionStates = Enum('created')
+	missionStates = Enum('created', 'fleeing_home')
 
 	# db_table name has to be overwritten by the concrete mission
 

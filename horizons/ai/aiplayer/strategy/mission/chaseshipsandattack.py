@@ -41,7 +41,7 @@ class ChaseShipsAndAttack(FleetMission):
 	This mission may work the best for 2 ships fleet
 	"""
 
-	missionStates = Enum.get_extended(FleetMission.missionStates, 'sailing_to_target', 'in_combat', 'fleeing_home')
+	missionStates = Enum.get_extended(FleetMission.missionStates, 'sailing_to_target', 'in_combat')
 	target_range = 5
 
 	def __init__(self, success_callback, failure_callback, ships, target_ship):

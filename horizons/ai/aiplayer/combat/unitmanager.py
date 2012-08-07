@@ -73,6 +73,10 @@ class UnitManager(object):
 			ships = self.filter_ships(ships, filtering_rules)
 		return ships
 
+	def remove_unit(self, ship):
+		if ship in self.ships:
+			del self.ships[ship]
+
 	def save(self, db):
 		for fleet in list(self.fleets):
 			fleet.save(db)

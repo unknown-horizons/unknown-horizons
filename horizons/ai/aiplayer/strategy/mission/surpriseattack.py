@@ -40,7 +40,7 @@ class SurpriseAttack(FleetMission):
 	4. Return home (point B).
 	"""
 
-	missionStates = Enum.get_extended(FleetMission.missionStates, 'sailing_to_target', 'in_combat', 'breaking_diplomacy', 'going_back', 'fleeing_home')
+	missionStates = Enum.get_extended(FleetMission.missionStates, 'sailing_to_target', 'in_combat', 'breaking_diplomacy', 'going_back')
 
 	def __init__(self, success_callback, failure_callback, ships, target_point, return_point, enemy_player):
 		super(SurpriseAttack, self).__init__(success_callback, failure_callback, ships)

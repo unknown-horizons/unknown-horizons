@@ -39,6 +39,9 @@ class Condition(object):
 		self.session = owner.session
 		self.unit_manager = owner.unit_manager
 
+		# States whether given condition can be locked
+		self.lockable = True
+
 	def check(self, **environment):
 		"""
 		Based on information contained in **environment, determine wheter given condition occurs.
@@ -133,3 +136,18 @@ class ConditionDebug(Condition):
 
 	def get_identifier(self, **environment):
 		return super(ConditionDebug, self).get_identifier(**environment) + str(environment['player'].worldid)
+
+class ConditionPirateRoutinePossible(Condition):
+	"""
+	Currently always occurs, when pirate has more conditions/strategies to work on, this may change.
+	"""
+	def __init__(self, owner):
+		super(ConditionPirateRoutinePossible, self).__init__(owner)
+		self.lockable = False
+
+	def check(self,  **environment):
+		return {'certainty': self.default_certainty, 'strategy_name': 'pirate_routine', 'type': BehaviorManager.strategy_types.idle}
+
+	def get_identifier(self, **environment):
+		return super(ConditionPirateRoutinePossible, self).get_identifier(**environment)
+

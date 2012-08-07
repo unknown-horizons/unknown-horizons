@@ -22,6 +22,7 @@
 import logging
 
 from horizons.ai.aiplayer.strategy.mission.chaseshipsandattack import ChaseShipsAndAttack
+from horizons.ai.aiplayer.strategy.mission.pirateroutine import PirateRoutine
 from horizons.ai.aiplayer.strategy.mission.scouting import ScoutingMission
 from horizons.ai.aiplayer.strategy.mission.surpriseattack import SurpriseAttack
 from horizons.component.namedcomponent import NamedComponent
@@ -116,7 +117,7 @@ class StrategyManager(object):
 		if mission in self.missions:
 			self.missions.remove(mission)
 
-		# remove condition lock after mission ends
+		# remove condition lock (if condition was lockable) after mission ends
 		self.unlock_condition(mission)
 
 	def start_mission(self, mission):
@@ -153,6 +154,8 @@ class StrategyManager(object):
 		return True
 
 	def handle_strategy(self):
+		if True:
+			return
 		filters = self.unit_manager.filtering_rules
 		rules = (filters.ship_state((self.owner.shipStates.idle,)), filters.fighting(), filters.not_in_fleet())
 
@@ -209,7 +212,8 @@ class StrategyManager(object):
 			mission = self.owner.behavior_manager.request_strategy(**environment)
 			if mission:
 				self.start_mission(mission)
-				self.lock_condition(selected_condition.get_identifier(**environment), mission)
+				if selected_condition.lockable:
+					self.lock_condition(selected_condition.get_identifier(**environment), mission)
 
 		## TODO: Debugging section, remove later
 		"""
@@ -231,3 +235,106 @@ class StrategyManager(object):
 
 	def tick(self):
 		self.handle_strategy()
+
+
+class PirateStrategyManager(StrategyManager):
+
+	def __init__(self, owner):
+		super(PirateStrategyManager, self).__init__(owner)
+		self.__init(owner)
+
+	def handle_strategy(self):
+		filters = self.unit_manager.filtering_rules
+		rules = (filters.ship_state((self.owner.shipStates.idle,)), filters.pirate(), filters.not_in_fleet())
+
+		# Get all available ships that can take part in a mission
+		idle_ships = self.unit_manager.get_ships(rules)
+
+		# Get all other players
+		other_players = [player for player in self.session.world.players if player != self.owner]
+
+		# Check which conditions occur
+		occuring_conditions = []
+
+
+		print
+		print "IDLE SHIPS"
+		for ship in idle_ships:
+			print ship.get_component(NamedComponent).name
+		print
+		print "CONDITIONS"
+		environment = {'idle_ships': idle_ships}
+
+		for player in other_players:
+
+			# Prepare environment
+			environment['player'] = player
+
+			print "", player.name
+			for condition in self.conditions.keys():
+
+				# Check whether given condition is already being resolved
+				if condition.get_identifier(**environment) in self.conditions_being_resolved:
+					print "  ",condition.__class__.__name__, ": Locked"
+					continue
+
+				condition_outcome = condition.check(**environment)
+				print "  ",condition.__class__.__name__, ":", ("Yes" if condition_outcome else "No")
+				if condition_outcome:
+					occuring_conditions.append((condition, condition_outcome))
+
+			# Revert environment to previous state
+			del environment['player']
+
+		# Nothing to do when none of the conditions occur
+		if occuring_conditions:
+			# Choose the most important one
+			selected_condition, selected_outcome = sorted(occuring_conditions, key = lambda c: self.conditions[c[0]] * c[1]['certainty'], reverse=True)[0]
+
+			print "SELECTED:"
+			print selected_condition.__class__.__name__
+			for key, value in selected_outcome.iteritems():
+				print " %s: %s" % (key, value)
+			print "//CONDITIONS"
+
+			# Insert condition-gathered info into environment
+			for key, value in selected_outcome.iteritems():
+				environment[key] = value
+
+			# Try to execute a mission that resolves given condition the best
+			mission = self.owner.behavior_manager.request_strategy(**environment)
+			if mission:
+				self.start_mission(mission)
+				if selected_condition.lockable:
+					self.lock_condition(selected_condition.get_identifier(**environment), mission)
+
+		## TODO: Debugging section, remove later
+		"""
+		print "IDLE SHIPS"
+		for ship in idle_ships:
+			print " ",ship.get_component(NamedComponent).name
+		print "//IDLE SHIPS"
+		"""
+		print "MISSIONS"
+		for mission in list(self.missions):
+			print " ",mission
+		print "//MISSIONS"
+		print "FLEETS"
+		for fleet in list(self.unit_manager.fleets):
+			print " ", fleet
+		for ship, fleet in self.unit_manager.ships.iteritems():
+			print ship.get_component(NamedComponent).name, fleet.worldid
+		print "//FLEETS"
+
+	@classmethod
+	def load(cls, db, owner):
+		self = cls.__new__(cls)
+		super(PirateStrategyManager, self).__init__(owner)
+		self.__init(owner)
+		self._load(db)
+		return self
+
+	def __init(self, owner):
+		self.missions_to_load =  {
+			PirateRoutine: "ai_mission_pirate_routine",
+		}

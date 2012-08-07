@@ -159,6 +159,9 @@ class SavegameUpgrader(object):
 		# update ai_player with long callback function column
 		db("ALTER TABLE ai_player ADD COLUMN remaining_ticks_long INTEGER NOT NULL DEFAULT 1")
 
+		# update ai_pirate with long callback function column
+		db("ALTER TABLE ai_pirate ADD COLUMN remaining_ticks_long INTEGER NOT NULL DEFAULT 1")
+
 		# Combat missions below:
 		# Abstract FleetMission data
 		db('CREATE TABLE "ai_fleet_mission" ( "owner_id" INTEGER NOT NULL , "fleet_id" INTEGER NOT NULL , "state_id" INTEGER NOT NULL, "combat_phase" BOOL NOT NULL )')
@@ -192,6 +195,13 @@ class SavegameUpgrader(object):
 
 		# Set CombatManager's state of ship to idle
 		db('INSERT INTO ai_combat_ship (owner_id, ship_id, state_id) SELECT p.rowid, u.rowid, 0 FROM player p, unit u WHERE u.owner = p.rowid AND u.type=? and p.client_id="AIPlayer"', UNITS.FRIGATE)
+
+		# Same for pirate ships
+		db('INSERT INTO ai_combat_ship (owner_id, ship_id, state_id) SELECT p.rowid, u.rowid, 0 FROM ai_pirate p, unit u WHERE u.owner = p.rowid')
+
+		# save pirate routine mission
+		db('CREATE TABLE "ai_mission_pirate_routine" ("target_point_x" INTEGER NOT NULL, "target_point_y" INTEGER NOT NULL )')
+
 
 	def _upgrade(self):
 		# fix import loop

@@ -36,7 +36,7 @@ class ScoutingMission(FleetMission):
 	1. Send fleet to a point on the map
 	2. Fleet returns to starting position of ships[0] (first ship)
 	"""
-	missionStates = Enum.get_extended(FleetMission.missionStates, 'sailing_to_target', 'going_back', 'fleeing_home')
+	missionStates = Enum.get_extended(FleetMission.missionStates, 'sailing_to_target', 'going_back')
 
 	def __init__(self, success_callback, failure_callback, ships, target_point):
 		super(ScoutingMission, self).__init__(success_callback, failure_callback, ships)

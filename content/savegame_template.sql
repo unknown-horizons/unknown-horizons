@@ -335,7 +335,8 @@ CREATE TABLE "ai_player" (
 );
 
 CREATE TABLE "ai_pirate" (
-	"remaining_ticks" INTEGER NOT NULL DEFAULT 1
+	"remaining_ticks" INTEGER NOT NULL DEFAULT 1,
+	"remaining_ticks_long" INTEGER NOT NULL
 );
 
 CREATE TABLE "ai_production_builder" (
@@ -427,6 +428,11 @@ CREATE TABLE "ai_mission_surprise_attack" (
 
 CREATE TABLE "ai_mission_chase_ships_and_attack" (
 	"target_ship_id" INTEGER NOT NULL
+);
+
+CREATE TABLE "ai_mission_pirate_routine" (
+	"target_point_x" INTEGER NOT NULL,
+	"target_point_y" INTEGER NOT NULL
 );
 
 CREATE TABLE "ai_condition_lock" (

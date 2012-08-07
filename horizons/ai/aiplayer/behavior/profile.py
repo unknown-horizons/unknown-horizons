@@ -26,7 +26,7 @@ from horizons.ai.aiplayer.behavior import BehaviorManager
 from horizons.ai.aiplayer.behavior.behaviorcomponents import BehaviorPirateHater, BehaviorCoward,\
 	BehaviorKeepFleetTogether, BehaviorRegular, BehaviorPirateRoutine, BehaviorBreakDiplomacy,\
 	BehaviorDoNothing, BehaviorRegularPirate, BehaviorAggressive
-from horizons.ai.aiplayer.strategy.condition import ConditionNeutral, ConditionSharingSettlement, ConditionHostile, ConditionDebug
+from horizons.ai.aiplayer.strategy.condition import ConditionNeutral, ConditionSharingSettlement, ConditionHostile, ConditionDebug, ConditionPirateRoutinePossible
 from horizons.ext.enum import Enum
 from horizons.util.worldobject import WorldObject
 
@@ -65,17 +65,14 @@ class BehaviorProfile(WorldObject):
 		return actions
 
 	@classmethod
-	def get_random_pirate_actions(cls, player, token):
-		actions = {
-			BehaviorManager.action_types.offensive: dict(),
-			BehaviorManager.action_types.defensive: dict(),
-			BehaviorManager.action_types.idle: dict(),
+	def get_random_player_conditions(cls, player, token):
+		conditions = {
+			#ConditionDebug(player):10.0,
+			ConditionHostile(player): 1.1,
+			ConditionSharingSettlement(player): 1.0,
+			ConditionNeutral(player): 0.3,
 		}
-		actions[BehaviorManager.action_types.offensive][BehaviorRegularPirate(player)] = 1.0
-		actions[BehaviorManager.action_types.idle][BehaviorPirateRoutine(player)] = 1.0
-		actions[BehaviorManager.action_types.idle][BehaviorDoNothing(player)] = 0.5
-
-		return actions
+		return conditions
 
 	@classmethod
 	def get_random_player_strategies(cls, player, token):
@@ -91,20 +88,31 @@ class BehaviorProfile(WorldObject):
 		return strategies
 
 	@classmethod
-	def get_random_player_conditions(cls, player, token):
-		conditions = {
-			#ConditionDebug(player):10.0,
-			ConditionHostile(player): 1.1,
-			ConditionSharingSettlement(player): 1.0,
-			ConditionNeutral(player): 0.3,
+	def get_random_pirate_actions(cls, player, token):
+		actions = {
+			BehaviorManager.action_types.offensive: dict(),
+			BehaviorManager.action_types.defensive: dict(),
+			BehaviorManager.action_types.idle: dict(),
 		}
-		return conditions
+		actions[BehaviorManager.action_types.offensive][BehaviorRegularPirate(player)] = 1.0
+		#actions[BehaviorManager.action_types.idle][BehaviorPirateRoutine(player)] = 1.0
+		actions[BehaviorManager.action_types.idle][BehaviorDoNothing(player)] = 0.5
+
+		return actions
 
 	@classmethod
 	def get_random_pirate_conditions(cls, player, token):
-		return {}
+		return {
+			ConditionPirateRoutinePossible(player): 1.0,
+		}
 
 	@classmethod
 	def get_random_pirate_strategies(cls, player, token):
-		return {}
+		strategies = {
+			BehaviorManager.strategy_types.idle: dict(),
+		}
+
+		strategies[BehaviorManager.strategy_types.idle][BehaviorRegularPirate(player)] = 1.0
+
+		return strategies
 

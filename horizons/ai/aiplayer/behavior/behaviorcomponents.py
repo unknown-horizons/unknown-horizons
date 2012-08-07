@@ -21,6 +21,7 @@
 from collections import defaultdict
 from horizons.ai.aiplayer.behavior.movecallbacks import BehaviorMoveCallback
 from horizons.ai.aiplayer.strategy.mission.chaseshipsandattack import ChaseShipsAndAttack
+from horizons.ai.aiplayer.strategy.mission.pirateroutine import PirateRoutine
 from horizons.ai.aiplayer.strategy.mission.scouting import ScoutingMission
 from horizons.ai.aiplayer.strategy.mission.surpriseattack import SurpriseAttack
 from horizons.ai.aiplayer.combat.unitmanager import UnitManager
@@ -238,7 +239,7 @@ class BehaviorRegular(BehaviorComponent):
 	"""
 	A well-balanced way to respond to situations in game.
 	"""
-	power_balance_threshold = 1.00
+	power_balance_threshold = 1.0
 
 	def __init__(self, owner):
 		super(BehaviorRegular, self).__init__(owner)
@@ -424,6 +425,7 @@ class BehaviorRegularPirate(BehaviorComponent):
 	def __init__(self, owner):
 		super(BehaviorRegularPirate, self).__init__(owner)
 		self._certainty['fighting_ships_in_sight'] = certainty_power_balance_exp
+		self._certainty['pirate_routine'] = self._certainty_pirate_routine
 
 	def fighting_ships_in_sight(self, **environment):
 		"""
@@ -433,15 +435,36 @@ class BehaviorRegularPirate(BehaviorComponent):
 		ship_group = environment['ship_group']
 		power_balance = environment['power_balance']
 
-		if self.session.world.diplomacy.are_enemies(self.owner, enemies[0].owner):
-			if power_balance >= self.power_balance_threshold:
-				for ship in ship_group:
-					ship.attack(enemies[0])
-				BehaviorComponent.log.info('ActionRegularPirate: Attacked enemy ship')
-
-			# TODO: else: Sail to pirate home
-		else:
+		if not self.session.world.diplomacy.are_enemies(self.owner, enemies[0].owner):
 			BehaviorComponent.log.info('ActionRegularPirate: Enemy ship was not hostile')
+			return
+
+		#if power_balance >= self.power_balance_threshold:
+		for ship in ship_group:
+			ship.attack(enemies[0])
+		BehaviorComponent.log.info('ActionRegularPirate: Attacked enemy ship')
+		#else:
+		#	BehaviorComponent.log.info('ActionRegularPirate: Enemy was too strong')
+
+	def _certainty_pirate_routine(self, **environment):
+		idle_ships = environment['idle_ships']
+		if len(idle_ships) >= self.minimal_fleet_size:
+			return self.default_certainty
+		else:
+			return 0.0
+
+	def pirate_routine(self, **environment):
+		"""
+		Strategy that spawns pirate's idle-sailing routine.
+		"""
+		idle_ships = environment['idle_ships']
+
+		# Use a one-ship group:
+		idle_ships = idle_ships[:1]
+
+		mission = PirateRoutine.create(self.owner.strategy_manager.report_success, self.owner.strategy_manager.report_failure, idle_ships)
+		BehaviorComponent.log.info('BehaviorRegularPirate: pirate_routine request')
+		return mission
 
 class BehaviorBreakDiplomacy(BehaviorComponent):
 	"""

@@ -194,6 +194,7 @@ class AIPlayer(GenericAI):
 
 		# save the player
 		db("UPDATE player SET client_id = 'AIPlayer' WHERE rowid = ?", self.worldid)
+
 		current_callback = Callback(self.tick)
 		calls = Scheduler().get_classinst_calls(self, current_callback)
 		assert len(calls) == 1, "got %s calls for saving %s: %s" % (len(calls), current_callback, calls)
@@ -385,6 +386,7 @@ class AIPlayer(GenericAI):
 		if unit in self.ships:
 			del self.ships[unit]
 		self.combat_manager.remove_unit(unit)
+		self.unit_manager.remove_unit(unit)
 
 	def count_buildings(self, building_id):
 		return sum(settlement_manager.settlement.count_buildings(building_id) for settlement_manager in self.settlement_managers)
