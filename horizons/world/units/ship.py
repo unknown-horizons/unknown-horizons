@@ -207,10 +207,6 @@ class Ship(Unit):
 			#xgettext:python-format
 			return (_('Idle at {x}, {y}').format(x=self.position.x, y=self.position.y), self.position)
 
-class PirateShip(Ship):
-	"""Represents a pirate ship."""
-	pass
-
 class TradeShip(Ship):
 	"""Represents a trade ship."""
 	health_bar_y = -220

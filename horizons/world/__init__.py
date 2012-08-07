@@ -192,7 +192,7 @@ class World(BuildingOwner, WorldObject):
 			if self.trader:
 				self.trader.load_ship_states(savegame_db)
 			if self.pirate:
-				self.pirate.load_ship_states(savegame_db)
+				self.pirate.finish_loading(savegame_db)
 
 			# load the AI stuff only when we have AI players
 			if any(isinstance(player, AIPlayer) for player in self.players):

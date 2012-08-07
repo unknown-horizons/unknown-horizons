@@ -114,6 +114,7 @@ class DefaultPersonality:
 		default_resource_requirement = 30 # try to always have this much tools and boards in settlement inventory
 		default_food_requirement = 30 # try to always have this much food in settlement inventory in settlements with a village
 		default_feeder_island_brick_requirement = 20 # try to always have this much bricks in feeder island inventory (active on level > 0)
+		default_cannon_requirement = 4
 
 		# the following constants affect the way the AI buys and sells resources
 		reserve_time = 1000 # number of ticks to pre-reserve resources for
@@ -279,6 +280,12 @@ class DefaultPersonality:
 	class TradingShipGoal:
 		enabled = True
 		default_priority = 550
+		residences_required = 0
+		min_settler_level = TIER.SAILORS
+
+	class CombatShipGoal:
+		enabled = True
+		default_priority = 560
 		residences_required = 0
 		min_settler_level = TIER.SAILORS
 

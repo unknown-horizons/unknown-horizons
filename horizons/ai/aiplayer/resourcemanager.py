@@ -211,6 +211,9 @@ class ResourceManager(WorldObject):
 		"""Return the default amount of resource that should be in the settlement inventory."""
 		if resource_id in [RES.TOOLS, RES.BOARDS]:
 			return self.personality.default_resource_requirement
+		elif resource_id == RES.CANNON and self.settlement_manager.settlement.count_buildings(BUILDINGS.BOAT_BUILDER) \
+			and self.settlement_manager.settlement.owner.need_more_combat_ships:
+			return self.personality.default_cannon_requirement
 		elif self.settlement_manager.feeder_island and resource_id == RES.BRICKS:
 			return self.personality.default_feeder_island_brick_requirement if self.settlement_manager.owner.settler_level > 0 else 0
 		elif not self.settlement_manager.feeder_island and resource_id == RES.FOOD:
@@ -254,7 +257,7 @@ class ResourceManager(WorldObject):
 
 	def manager_buysell(self):
 		"""Calculate the required inventory levels and make buy/sell decisions based on that."""
-		managed_resources = [RES.TOOLS, RES.BOARDS, RES.BRICKS, RES.FOOD, RES.TEXTILE, RES.LIQUOR, RES.TOBACCO_PRODUCTS, RES.SALT]
+		managed_resources = [RES.TOOLS, RES.BOARDS, RES.BRICKS, RES.FOOD, RES.TEXTILE, RES.LIQUOR, RES.TOBACCO_PRODUCTS, RES.SALT, RES.CANNON]
 		settlement = self.settlement_manager.settlement
 		assert isinstance(settlement, Settlement)
 		inventory = settlement.get_component(StorageComponent).inventory
