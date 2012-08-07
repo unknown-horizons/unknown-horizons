@@ -154,8 +154,6 @@ class StrategyManager(object):
 		return True
 
 	def handle_strategy(self):
-		if True:
-			return
 		filters = self.unit_manager.filtering_rules
 		rules = (filters.ship_state((self.owner.shipStates.idle,)), filters.fighting(), filters.not_in_fleet())
 
@@ -170,23 +168,20 @@ class StrategyManager(object):
 
 		environment = {'idle_ships': idle_ships}
 
-		print
-		print "CONDITIONS"
 		for player in other_players:
-
 			# Prepare environment
+			self.log.debug("Conditions occuring against player %s" % player.name)
 			environment['player'] = player
 
-			print "", player.name
 			for condition in self.conditions.keys():
 
 				# Check whether given condition is already being resolved
 				if condition.get_identifier(**environment) in self.conditions_being_resolved:
-					print "  ",condition.__class__.__name__, ": Locked"
+					self.log.debug("  %s: Locked" % condition.__class__.__name__)
 					continue
 
 				condition_outcome = condition.check(**environment)
-				print "  ",condition.__class__.__name__, ":", ("Yes" if condition_outcome else "No")
+				self.log.debug("  %s: %s" % (condition.__class__.__name__, ("Yes" if condition_outcome else "No")))
 				if condition_outcome:
 					occuring_conditions.append((condition, condition_outcome))
 
@@ -198,15 +193,12 @@ class StrategyManager(object):
 			# Choose the most important one
 			selected_condition, selected_outcome = sorted(occuring_conditions, key = lambda c: self.conditions[c[0]] * c[1]['certainty'], reverse=True)[0]
 
-			print "SELECTED:"
-			print selected_condition.__class__.__name__
+			self.log.debug("Selected condition: %s", selected_condition.__class__.__name__)
 			for key, value in selected_outcome.iteritems():
-				print " %s: %s" % (key, value)
-			print "//CONDITIONS"
-
-			# Insert condition-gathered info into environment
-			for key, value in selected_outcome.iteritems():
+				# Insert condition-gathered info into environment
 				environment[key] = value
+				self.log.debug(" %s: %s" % (key, value))
+
 
 			# Try to execute a mission that resolves given condition the best
 			mission = self.owner.behavior_manager.request_strategy(**environment)
@@ -215,27 +207,16 @@ class StrategyManager(object):
 				if selected_condition.lockable:
 					self.lock_condition(selected_condition.get_identifier(**environment), mission)
 
-		## TODO: Debugging section, remove later
-		"""
-		print "IDLE SHIPS"
-		for ship in idle_ships:
-			print " ",ship.get_component(NamedComponent).name
-		print "//IDLE SHIPS"
-		"""
-		print "MISSIONS"
+		self.log.debug("Missions:")
 		for mission in list(self.missions):
-			print " ",mission
-		print "//MISSIONS"
-		print "FLEETS"
+			self.log.debug("%s" % mission)
+
+		self.log.debug("Fleets:")
 		for fleet in list(self.unit_manager.fleets):
-			print " ", fleet
-		for ship, fleet in self.unit_manager.ships.iteritems():
-			print ship.get_component(NamedComponent).name, fleet.worldid
-		print "//FLEETS"
+			self.log.debug("%s" % fleet)
 
 	def tick(self):
 		self.handle_strategy()
-
 
 class PirateStrategyManager(StrategyManager):
 
@@ -256,30 +237,21 @@ class PirateStrategyManager(StrategyManager):
 		# Check which conditions occur
 		occuring_conditions = []
 
-
-		print
-		print "IDLE SHIPS"
-		for ship in idle_ships:
-			print ship.get_component(NamedComponent).name
-		print
-		print "CONDITIONS"
 		environment = {'idle_ships': idle_ships}
-
 		for player in other_players:
-
 			# Prepare environment
+			self.log.debug("Conditions occuring against player %s" % player.name)
 			environment['player'] = player
-
-			print "", player.name
 			for condition in self.conditions.keys():
 
 				# Check whether given condition is already being resolved
 				if condition.get_identifier(**environment) in self.conditions_being_resolved:
-					print "  ",condition.__class__.__name__, ": Locked"
+					self.log.debug("  %s: Locked" % condition.__class__.__name__)
 					continue
 
 				condition_outcome = condition.check(**environment)
-				print "  ",condition.__class__.__name__, ":", ("Yes" if condition_outcome else "No")
+
+				self.log.debug("  %s: %s" % (condition.__class__.__name__, ("Yes" if condition_outcome else "No")))
 				if condition_outcome:
 					occuring_conditions.append((condition, condition_outcome))
 
@@ -291,14 +263,10 @@ class PirateStrategyManager(StrategyManager):
 			# Choose the most important one
 			selected_condition, selected_outcome = sorted(occuring_conditions, key = lambda c: self.conditions[c[0]] * c[1]['certainty'], reverse=True)[0]
 
-			print "SELECTED:"
-			print selected_condition.__class__.__name__
+			self.log.debug("Selected condition: %s", selected_condition.__class__.__name__)
 			for key, value in selected_outcome.iteritems():
-				print " %s: %s" % (key, value)
-			print "//CONDITIONS"
-
-			# Insert condition-gathered info into environment
-			for key, value in selected_outcome.iteritems():
+				# Insert condition-gathered info into environment
+				self.log.debug(" %s: %s" % (key, value))
 				environment[key] = value
 
 			# Try to execute a mission that resolves given condition the best
@@ -308,23 +276,13 @@ class PirateStrategyManager(StrategyManager):
 				if selected_condition.lockable:
 					self.lock_condition(selected_condition.get_identifier(**environment), mission)
 
-		## TODO: Debugging section, remove later
-		"""
-		print "IDLE SHIPS"
-		for ship in idle_ships:
-			print " ",ship.get_component(NamedComponent).name
-		print "//IDLE SHIPS"
-		"""
-		print "MISSIONS"
+		self.log.debug("Missions:")
 		for mission in list(self.missions):
-			print " ",mission
-		print "//MISSIONS"
-		print "FLEETS"
+			self.log.debug("%s" % mission)
+
+		self.log.debug("Fleets:")
 		for fleet in list(self.unit_manager.fleets):
-			print " ", fleet
-		for ship, fleet in self.unit_manager.ships.iteritems():
-			print ship.get_component(NamedComponent).name, fleet.worldid
-		print "//FLEETS"
+			self.log.debug("%s" % fleet)
 
 	@classmethod
 	def load(cls, db, owner):

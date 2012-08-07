@@ -300,7 +300,7 @@ class CombatManager(object):
 
 	def tick(self):
 		self.lookout()
-		#self.display()
+		self.display()
 
 
 class PirateCombatManager(CombatManager):
