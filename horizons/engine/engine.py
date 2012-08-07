@@ -220,7 +220,7 @@ class Fife(ApplicationBase):
 		try:
 			default_locale, default_encoding = locale.getdefaultlocale()
 			return default_locale.split('_')[0]
-		except ValueError: # OS X sometimes returns 'UTF-8' as locale, which is a ValueError
+		except (ValueError, AttributeError): # OS X sometimes returns 'UTF-8' as locale, which is a ValueError
 			# If default locale could not be detected use 'EN' as fallback
 			return "en"
 
