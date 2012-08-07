@@ -242,9 +242,6 @@ class UnitManager(object):
 
 	# TODO: Consider refactoring below
 	# World filtering utils (non-unit related) below, maybe consider creating a separate class for that or simply put in StrategyManager
-	def get_player_settlements(self, player):
-		return [settlement for settlement in self.session.world.settlements if settlement.owner == player]
-
 	def get_player_islands(self, player):
 		return [settlement.island for settlement in self.session.world.settlements if settlement.owner == player]
 
@@ -260,5 +257,5 @@ class UnitManager(object):
 		(x, y) = target_point.get_coordinates()[4]
 		return Point(x, y)
 
-	def get_warehouse_area(self, settlement, range):
+	def get_warehouse_area(self, settlement, range=10):
 		return Circle(self.get_warehouse_point(settlement), range)

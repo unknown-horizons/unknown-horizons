@@ -98,6 +98,9 @@ class Pirate(GenericAI):
 	def get_random_strategies(self, token):
 		return BehaviorProfile.get_random_pirate_strategies(self, token)
 
+	def get_random_conditions(self, token):
+		return BehaviorProfile.get_random_pirate_conditions(self, token)
+
 	def create_ship_at_random_position(self):
 		point = self.session.world.get_random_possible_ship_position()
 		ship = CreateUnit(self.worldid, UNITS.PIRATE_SHIP, point.x, point.y)(issuer=self.session.world.player)

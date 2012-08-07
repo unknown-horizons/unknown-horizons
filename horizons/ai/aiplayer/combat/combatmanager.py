@@ -23,7 +23,7 @@ import logging
 from fife import fife
 from weakref import WeakKeyDictionary
 import horizons
-from horizons.ai.aiplayer.behavior.profile import BehaviorProfile
+from horizons.ai.aiplayer.behavior import BehaviorManager
 from horizons.ai.aiplayer.combat.unitmanager import UnitManager
 from horizons.constants import LAYERS
 from horizons.ext.enum import Enum
@@ -108,17 +108,17 @@ class CombatManager(object):
 			environment['enemies'] = fighting_ships
 			environment['power_balance'] = UnitManager.calculate_power_balance(ship_group, fighting_ships)
 			self.log.debug("Player: %s vs Player: %s -> power_balance:%s" % (self.owner.name, fighting_ships[0].owner.name, environment['power_balance']))
-			self.owner.behavior_manager.request_action(BehaviorProfile.action_types.offensive,
+			self.owner.behavior_manager.request_action(BehaviorManager.action_types.offensive,
 				'fighting_ships_in_sight', **environment)
 		elif pirate_ships:
 			environment['enemies'] = pirate_ships
 			environment['power_balance'] = UnitManager.calculate_power_balance(ship_group, pirate_ships)
 			self.log.debug("Player: %s vs Player: %s -> power_balance:%s" % (self.owner.name, pirate_ships[0].owner.name, environment['power_balance']))
-			self.owner.behavior_manager.request_action(BehaviorProfile.action_types.offensive,
+			self.owner.behavior_manager.request_action(BehaviorManager.action_types.offensive,
 				'pirate_ships_in_sight', **environment)
 		elif working_ships:
 			environment['enemies'] = working_ships
-			self.owner.behavior_manager.request_action(BehaviorProfile.action_types.offensive,
+			self.owner.behavior_manager.request_action(BehaviorManager.action_types.offensive,
 				'working_ships_in_sight', **environment)
 		else:
 			# no one else is around to fight -> continue mission
@@ -231,23 +231,23 @@ class CombatManager(object):
 				environment['enemies'] = fighting_ships
 				environment['power_balance'] = UnitManager.calculate_power_balance(ship_group, fighting_ships)
 				self.log.debug("Player: %s vs Player: %s -> power_balance:%s" % (self.owner.name, fighting_ships[0].owner.name, environment['power_balance']))
-				self.owner.behavior_manager.request_action(BehaviorProfile.action_types.offensive,
+				self.owner.behavior_manager.request_action(BehaviorManager.action_types.offensive,
 					'fighting_ships_in_sight', **environment)
 			elif pirate_ships:
 				environment['enemies'] =  pirate_ships
 				environment['power_balance'] = UnitManager.calculate_power_balance(ship_group, pirate_ships)
 				self.log.debug("Player: %s vs Player: %s -> power_balance:%s" % (self.owner.name, pirate_ships[0].owner.name, environment['power_balance']))
-				self.owner.behavior_manager.request_action(BehaviorProfile.action_types.offensive,
+				self.owner.behavior_manager.request_action(BehaviorManager.action_types.offensive,
 					'pirate_ships_in_sight', **environment)
 			elif working_ships:
 				environment['enemies'] = working_ships
-				self.owner.behavior_manager.request_action(BehaviorProfile.action_types.offensive,
+				self.owner.behavior_manager.request_action(BehaviorManager.action_types.offensive,
 					'working_ships_in_sight', **environment)
 			else:
 				# execute idle action only if whole fleet is idle
 				# we check for AIPlayer state here
 				if all((self.owner.ships[ship] == self.owner.shipStates.idle for ship in ship_group)):
-					self.owner.behavior_manager.request_action(BehaviorProfile.action_types.idle,
+					self.owner.behavior_manager.request_action(BehaviorManager.action_types.idle,
 						'no_one_in_sight', **environment)
 
 	def lookout(self):
@@ -321,13 +321,13 @@ class PirateCombatManager(CombatManager):
 					environment['enemies'] = fighting_ships
 					environment['power_balance'] = UnitManager.calculate_power_balance([ship], fighting_ships)
 					self.log.debug("Player: %s vs Player: %s -> power_balance:%s" % (self.owner.name, fighting_ships[0].owner.name, environment['power_balance']))
-					self.owner.behavior_manager.request_action(BehaviorProfile.action_types.offensive,
+					self.owner.behavior_manager.request_action(BehaviorManager.action_types.offensive,
 						'fighting_ships_in_sight', **environment)
 				elif shipState in [self.owner.shipStates.moving_random, self.owner.shipStates.chasing_ship, self.owner.shipStates.idle]:
 					environment['enemies'] = ships_around
-					self.owner.behavior_manager.request_action(BehaviorProfile.action_types.idle,
+					self.owner.behavior_manager.request_action(BehaviorManager.action_types.idle,
 						'trading_ships_in_sight', **environment)
 			else:
 				if self.owner.ships[ship] != self.owner.shipStates.moving_random:
-					self.owner.behavior_manager.request_action(BehaviorProfile.action_types.idle,
+					self.owner.behavior_manager.request_action(BehaviorManager.action_types.idle,
 						'no_one_in_sight', **environment)

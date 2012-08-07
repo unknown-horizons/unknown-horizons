@@ -156,6 +156,9 @@ class AIPlayer(GenericAI):
 	def get_random_strategies(self, token):
 		return BehaviorProfile.get_random_player_strategies(self, token)
 
+	def get_random_conditions(self, token):
+		return BehaviorProfile.get_random_player_conditions(self, token)
+
 	def start_mission(self, mission):
 		self.ships[mission.ship] = self.shipStates.on_a_mission
 		self.missions.add(mission)
@@ -235,7 +238,6 @@ class AIPlayer(GenericAI):
 
 		# save the behavior manager
 		self.behavior_manager.save(db)
-
 
 	def _load(self, db, worldid):
 		super(AIPlayer, self)._load(db, worldid)

@@ -21,12 +21,7 @@
 
 
 import logging
-from horizons.ai.aiplayer.behavior.profile import BehaviorProfile
 from horizons.ext.enum import Enum
-
-from horizons.util.worldobject import WorldObject
-
-
 
 class BehaviorManager(object):
 	"""
@@ -35,7 +30,8 @@ class BehaviorManager(object):
 	and action, or create a mission object. BehaviorManager does these based on
 	behavior probability and likelihood of success.
 	"""
-	behaviorTypes = Enum("action", "strategy")
+	action_types = Enum('offensive', 'defensive', 'idle')
+	strategy_types = Enum('offensive', 'idle', 'diplomatic')
 
 	log = logging.getLogger("ai.aiplayer.behavior.behaviormanager")
 
@@ -48,9 +44,10 @@ class BehaviorManager(object):
 		self.world = owner.world
 		self.session = owner.session
 
-		self.profile_token = BehaviorProfile.get_profile_token(self.owner)
+		self.profile_token = self.get_profile_token()
 		self.actions = owner.get_random_actions(self.profile_token)
 		self.strategies = owner.get_random_strategies(self.profile_token)
+		self.conditions = owner.get_random_conditions(self.profile_token)
 
 	def save(self, db):
 		db("INSERT INTO ai_behavior_manager (owner_id, profile_token) VALUES(?, ?)", self.owner.worldid, self.profile_token)
@@ -110,3 +107,11 @@ class BehaviorManager(object):
 			if (total + probability) > random_value:
 				return behavior
 			total += probability
+
+	def get_profile_token(self):
+		"""
+		Returns a random token for player profile. Token is used when requesting for a random behavior profile.
+		Because it is guaranteed to get exactly the same player profile for given token, instead of storing
+		whole Profile in database, we store a single number (token) which on load() generates same set of actions.
+		"""
+		return self.session.random.randint(0,10000)

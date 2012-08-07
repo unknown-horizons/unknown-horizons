@@ -333,11 +333,10 @@ class BehaviorRegular(BehaviorComponent):
 		enemy_player = environment['player']
 		idle_ships = environment['idle_ships']
 
-		settlements = self.owner.unit_manager.get_player_settlements(enemy_player)
-
-		if not settlements:
+		if not enemy_player.settlements:
 			return None
-		target_point = self.unit_manager.get_warehouse_area(settlements[0], 13)
+
+		target_point = self.unit_manager.get_warehouse_area(enemy_player.settlements[0], 13)
 
 		return_point = idle_ships[0].position.copy()
 		mission = SurpriseAttack.create(self.owner.strategy_manager.report_success,
@@ -389,6 +388,14 @@ class BehaviorAggressive(BehaviorComponent):
 		"""
 		idle_ships = environment['idle_ships']
 		enemy_player = environment['player']
+
+		if not enemy_player.settlements:
+			return None
+		target_point = self.unit_manager.get_warehouse_area(enemy_player.settlements[0])
+
+		if not self.owner.settlements:
+			return None
+		return_point = self.unit_manager.get_warehouse_area(self.owner.settlements[0], 15)
 
 		if len(idle_ships) > 0:
 			mission = SurpriseAttack.create(self.owner.strategy_manager.report_success,

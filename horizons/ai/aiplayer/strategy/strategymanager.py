@@ -21,7 +21,6 @@
 
 import logging
 
-from horizons.ai.aiplayer.strategy.condition import get_all_conditions
 from horizons.ai.aiplayer.strategy.mission.chaseshipsandattack import ChaseShipsAndAttack
 from horizons.ai.aiplayer.strategy.mission.scouting import ScoutingMission
 from horizons.ai.aiplayer.strategy.mission.surpriseattack import SurpriseAttack
@@ -46,7 +45,6 @@ class StrategyManager(object):
 		self.session = owner.session
 		self.unit_manager = owner.unit_manager
 		self.missions = set()
-		self.conditions = get_all_conditions(self.owner)
 
 		# Dictionary of Condition_hash => FleetMission. Condition_hash is a key since it's searched for more often. Values are
 		# unique because of WorldObject's inheritance, but it makes removing items from it in O(n).
@@ -58,6 +56,10 @@ class StrategyManager(object):
 			ChaseShipsAndAttack: "ai_mission_chase_ships_and_attack",
 		}
 
+	@property
+	def conditions(self):
+		# conditions are held in behavior manager since they are a part of behavior profile (just like actions and strategies)
+		return self.owner.behavior_manager.conditions
 
 	def save(self, db):
 		for mission in list(self.missions):

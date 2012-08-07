@@ -20,7 +20,7 @@
 # ###################################################
 
 import logging
-from horizons.ai.aiplayer.behavior.profile import BehaviorProfile
+from horizons.ai.aiplayer.behavior.profile import BehaviorManager
 
 
 class Condition(object):
@@ -73,7 +73,7 @@ class ConditionSharingSettlement(Condition):
 		# checks whether player share the same island
 		if my_islands & enemy_islands:
 			# TODO: maybe base certainty on power balance or % of territory that he "stole" ?
-			return {'player': other_player, 'certainty': self.default_certainty, 'strategy_name': 'player_shares_island', 'type': BehaviorProfile.strategy_types.offensive}
+			return {'player': other_player, 'certainty': self.default_certainty, 'strategy_name': 'player_shares_island', 'type': BehaviorManager.strategy_types.offensive}
 		else:
 			return None
 
@@ -95,7 +95,7 @@ class ConditionHostile(Condition):
 
 		hostile_ships = self.unit_manager.get_player_ships(player)
 		if hostile_ships:
-			return {'player': player, 'certainty': self.default_certainty, 'strategy_name': 'hostile_player', 'type': BehaviorProfile.strategy_types.offensive}
+			return {'player': player, 'certainty': self.default_certainty, 'strategy_name': 'hostile_player', 'type': BehaviorManager.strategy_types.offensive}
 		else:
 			return None
 
@@ -113,7 +113,7 @@ class ConditionNeutral(Condition):
 	def check(self, **environment):
 		player = environment['player']
 		if self.session.world.diplomacy.are_neutral(self.owner, player):
-			return {'player': player, 'certainty': self.default_certainty, 'strategy_name': 'neutral_player', 'type': BehaviorProfile.strategy_types.diplomatic}
+			return {'player': player, 'certainty': self.default_certainty, 'strategy_name': 'neutral_player', 'type': BehaviorManager.strategy_types.diplomatic}
 		else:
 			return None
 
@@ -128,19 +128,8 @@ class ConditionDebug(Condition):
 
 	def check(self, **environment):
 		player = environment['player']
-		#return {'player': player, 'certainty': self.default_certainty, 'strategy_name': 'debug', 'type': BehaviorProfile.strategy_types.offensive}
-		return {'player': player, 'certainty': self.default_certainty, 'strategy_name': 'player_shares_island', 'type': BehaviorProfile.strategy_types.offensive}
+		#return {'player': player, 'certainty': self.default_certainty, 'strategy_name': 'debug', 'type': BehaviorManager.strategy_types.offensive}
+		return {'player': player, 'certainty': self.default_certainty, 'strategy_name': 'player_shares_island', 'type': BehaviorManager.strategy_types.offensive}
 
 	def get_identifier(self, **environment):
 		return super(ConditionDebug, self).get_identifier(**environment) + str(environment['player'].worldid)
-
-
-def get_all_conditions(player):
-		conditions = {
-			#ConditionDebug(player):10.0,
-			ConditionHostile(player): 1.1,
-			ConditionSharingSettlement(player): 1.0,
-			ConditionNeutral(player): 0.3,
-			}
-		return conditions
-

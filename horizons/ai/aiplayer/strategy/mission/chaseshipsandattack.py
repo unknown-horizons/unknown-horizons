@@ -117,7 +117,7 @@ class ChaseShipsAndAttack(FleetMission):
 		# check if fleet still exists
 		if self.fleet.size() > 0:
 			try:
-				home_settlement = self.unit_manager.get_player_settlements(self.owner)[0]
+				home_settlement = self.owner.settlements[0]
 				return_point = self.unit_manager.get_warehouse_area(home_settlement, 10)
 				self.fleet.move(return_point, self._state_fleet_callbacks[self.missionStates.fleeing_home])
 				self.state = self.missionStates.fleeing_home
