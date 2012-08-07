@@ -60,6 +60,7 @@ class BehaviorComponent(object):
 # Components below are roughly divided into "Aggressive, Normal,Cautious" etc.
 # (division below is not related to the way dictionaries in BehaviorManager are named (offensive, idle, defensive))
 
+
 class BehaviorDoNothing(BehaviorComponent):
 	"""
 	Behavior that does nothing. Used mainly for idle actions (we don't want to scout too often).
@@ -163,6 +164,7 @@ class BehaviorPirateRoutine(BehaviorComponent):
 		except MoveNotPossible:
 			owner.ships[pirate_ship] = owner.shipStates.idle
 			self.log.debug('Pirate %s: Ship %s: unable to move random at %s' % (owner.worldid, pirate_ship.get_component(NamedComponent).name, point))
+
 
 class BehaviorKeepFleetTogether(BehaviorComponent):
 
@@ -365,6 +367,7 @@ class BehaviorRegular(BehaviorComponent):
 		"""
 		return None
 
+
 class BehaviorAggressive(BehaviorComponent):
 
 	def __init__(self, owner):
@@ -384,8 +387,8 @@ class BehaviorAggressive(BehaviorComponent):
 	def neutral_player(self, **environment):
 		"""
 		Start war with neutral player
-		 - make a SurpriseAttack if possible.
-		 - break diplomacy otherwise.
+		-make a SurpriseAttack if possible.
+		-break diplomacy otherwise.
 		"""
 		idle_ships = environment['idle_ships']
 		enemy_player = environment['player']
@@ -405,6 +408,7 @@ class BehaviorAggressive(BehaviorComponent):
 		else:
 			AddEnemyPair(self.owner, enemy_player).execute(self.session)
 
+
 class BehaviorDebug(BehaviorComponent):
 
 	def __init__(self, owner):
@@ -417,6 +421,7 @@ class BehaviorDebug(BehaviorComponent):
 		idle_ships = environment['idle_ships']
 		mission = ScoutingMission.create(self.owner.strategy_manager.report_success, self.owner.strategy_manager.report_failure, idle_ships)
 		return mission
+
 
 class BehaviorRegularPirate(BehaviorComponent):
 
@@ -465,6 +470,7 @@ class BehaviorRegularPirate(BehaviorComponent):
 		mission = PirateRoutine.create(self.owner.strategy_manager.report_success, self.owner.strategy_manager.report_failure, idle_ships)
 		BehaviorComponent.log.info('BehaviorRegularPirate: pirate_routine request')
 		return mission
+
 
 class BehaviorBreakDiplomacy(BehaviorComponent):
 	"""

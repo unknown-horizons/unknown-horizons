@@ -68,7 +68,7 @@ class ChaseShipsAndAttack(FleetMission):
 
 	def _load(self, worldid, owner, db, success_callback, failure_callback):
 		super(ChaseShipsAndAttack, self)._load(db, worldid, success_callback, failure_callback, owner)
-		(target_ship_id,)= db("SELECT target_ship_id FROM ai_mission_chase_ships_and_attack WHERE rowid = ?", worldid)[0]
+		(target_ship_id,) = db("SELECT target_ship_id FROM ai_mission_chase_ships_and_attack WHERE rowid = ?", worldid)[0]
 
 		target_ship = WorldObject.get_object_by_id(target_ship_id)
 		self.__init(target_ship)

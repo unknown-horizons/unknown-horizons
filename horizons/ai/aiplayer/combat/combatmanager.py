@@ -59,7 +59,7 @@ class CombatManager(object):
 		for ship, state in self.ships.iteritems():
 			db("INSERT INTO ai_combat_ship (owner_id, ship_id, state_id) VALUES (?, ?, ?)", self.owner.worldid, ship.worldid, state.index)
 
-	def add_new_unit(self, ship, state = None):
+	def add_new_unit(self, ship, state=None):
 		if not state:
 			state = self.shipStates.idle
 		self.ships[ship] = state
@@ -130,7 +130,7 @@ class CombatManager(object):
 		# use fixed SelectableBuildingComponent here, to make sure subclasses also read the same variable
 		if not hasattr(CombatManager, "_fake_range_tile_obj"):
 			# create object to create instances from
-			CombatManager._fake_range_tile_obj= horizons.main.fife.engine.getModel().createObject('_fake_range_tile_obj', 'ground')
+			CombatManager._fake_range_tile_obj = horizons.main.fife.engine.getModel().createObject('_fake_range_tile_obj', 'ground')
 			fife.ObjectVisual.create(CombatManager._fake_range_tile_obj)
 
 			img_path = 'content/gfx/fake_water.png'
@@ -178,11 +178,11 @@ class CombatManager(object):
 			else:
 				self._add_fake_tile(tup[0], tup[1], layer, renderer, color)
 
-	def _highlight_circle(self, position, radius, color, border_color = None):
+	def _highlight_circle(self, position, radius, color, border_color=None):
 		points = self.session.world.get_points_in_radius(position, radius)
 		self._highlight_points(points, color)
 		if border_color:
-			points = self.session.world.get_points_in_radius(position, radius-1)
+			points = self.session.world.get_points_in_radius(position, radius - 1)
 			self._highlight_points(points, border_color)
 
 	def display(self):
@@ -194,7 +194,7 @@ class CombatManager(object):
 		if not highlight_on:
 			return
 
-		combat_range_color = (180,0,0)
+		combat_range_color = (180, 0, 0)
 		combat_range_color_border = (255, 0, 0)
 		attack_range_color = (150, 100, 0)
 		attack_range_color_border = (200, 160, 0)
@@ -224,7 +224,6 @@ class CombatManager(object):
 		fighting_ships = self.unit_manager.filter_ships(ships_around, (filters.fighting(), ))
 		working_ships = self.unit_manager.filter_ships(ships_around, (filters.working(), ))
 
-
 		if fighting_ships:
 			environment = {'enemies': fighting_ships}
 			if self.owner.strategy_manager.request_to_pause_mission(mission, **environment):
@@ -238,14 +237,13 @@ class CombatManager(object):
 			if self.owner.strategy_manager.request_to_pause_mission(mission, **environment):
 				self.handle_mission_combat(mission)
 
-
 	def handle_casual_combat(self):
 		"""
 		Handles combat for ships wandering around the map (not assigned to any fleet/mission).
 		"""
 		filters = self.unit_manager.filtering_rules
 
-		rules = (filters.not_in_fleet(), filters.fighting() )
+		rules = (filters.not_in_fleet(), filters.fighting())
 		for ship in self.unit_manager.get_ships(rules):
 			# Turn into one-ship group, since reasoning is based around groups of ships
 			ship_group = [ship, ]
@@ -263,7 +261,7 @@ class CombatManager(object):
 				self.owner.behavior_manager.request_action(BehaviorManager.action_types.offensive,
 					'fighting_ships_in_sight', **environment)
 			elif pirate_ships:
-				environment['enemies'] =  pirate_ships
+				environment['enemies'] = pirate_ships
 				environment['power_balance'] = UnitManager.calculate_power_balance(ship_group, pirate_ships)
 				self.log.debug("Player: %s vs Player: %s -> power_balance:%s" % (self.owner.name, pirate_ships[0].owner.name, environment['power_balance']))
 				self.owner.behavior_manager.request_action(BehaviorManager.action_types.offensive,
@@ -310,7 +308,7 @@ class PirateCombatManager(CombatManager):
 	"""
 	log = logging.getLogger("ai.aiplayer.piratecombatmanager")
 
-	shipStates = Enum.get_extended(CombatManager.shipStates, 'chasing_ship', 'going_home') #also: idle, attacking, moving, fleeing
+	shipStates = Enum.get_extended(CombatManager.shipStates, 'chasing_ship', 'going_home')  # also: idle, attacking, moving, fleeing
 
 	def __init__(self, owner):
 		super(PirateCombatManager, self).__init__(owner)
@@ -377,7 +375,7 @@ class PirateCombatManager(CombatManager):
 		"""
 		filters = self.unit_manager.filtering_rules
 
-		rules = (filters.not_in_fleet(), filters.pirate() )
+		rules = (filters.not_in_fleet(), filters.pirate(), )
 		for ship in self.unit_manager.get_ships(rules):
 			# Turn into one-ship group, since reasoning is based around groups of ships
 			ship_group = [ship, ]

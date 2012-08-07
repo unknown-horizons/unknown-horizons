@@ -85,7 +85,7 @@ class UnitManager(object):
 		self.__init(owner)
 		fleets_id = db("SELECT fleet_id from fleet where owner_id = ?", self.owner.worldid)
 		for (fleet_id,) in fleets_id:
-			fleet = Fleet.load(fleet_id, owner,db)
+			fleet = Fleet.load(fleet_id, owner, db)
 			self.fleets.add(fleet)
 			for ship in fleet.get_ships():
 				self.ships[ship] = fleet
@@ -196,7 +196,6 @@ class UnitManager(object):
 			distances = ((e, ship.position.distance(e.position)) for e in enemies)
 			closest.append((ship, min(distances, key=itemgetter(1))[0]))
 		return closest
-
 
 	@classmethod
 	def calculate_power_balance(cls, ship_group, enemy_ship_group):

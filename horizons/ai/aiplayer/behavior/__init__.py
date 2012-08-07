@@ -23,6 +23,7 @@
 import logging
 from horizons.ext.enum import Enum
 
+
 class BehaviorManager(object):
 	"""
 	BehaviorManager holds BehaviorComponents.
@@ -114,4 +115,4 @@ class BehaviorManager(object):
 		Because it is guaranteed to get exactly the same player profile for given token, instead of storing
 		whole Profile in database, we store a single number (token) which on load() generates same set of actions.
 		"""
-		return self.session.random.randint(0,10000)
+		return self.session.random.randint(0, 10000)

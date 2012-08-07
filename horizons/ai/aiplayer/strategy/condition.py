@@ -83,6 +83,7 @@ class ConditionSharingSettlement(Condition):
 	def get_identifier(self, **environment):
 		return super(ConditionSharingSettlement, self).get_identifier(**environment) + str(environment['player'].worldid)
 
+
 class ConditionHostile(Condition):
 	"""
 	States whether there is a hostile player that can be attacked (i.e. has ships that can be destroyed)
@@ -91,7 +92,7 @@ class ConditionHostile(Condition):
 		super(ConditionHostile, self).__init__(owner)
 
 	def check(self, **environment):
-		player= environment['player']
+		player = environment['player']
 
 		if not self.session.world.diplomacy.are_enemies(self.owner, player):
 			return None
@@ -104,6 +105,7 @@ class ConditionHostile(Condition):
 
 	def get_identifier(self, **environment):
 		return super(ConditionHostile, self).get_identifier(**environment) + str(environment['player'].worldid)
+
 
 class ConditionNeutral(Condition):
 	"""
@@ -137,6 +139,7 @@ class ConditionDebug(Condition):
 	def get_identifier(self, **environment):
 		return super(ConditionDebug, self).get_identifier(**environment) + str(environment['player'].worldid)
 
+
 class ConditionPirateRoutinePossible(Condition):
 	"""
 	Currently always occurs, when pirate has more conditions/strategies to work on, this may change.
@@ -145,9 +148,8 @@ class ConditionPirateRoutinePossible(Condition):
 		super(ConditionPirateRoutinePossible, self).__init__(owner)
 		self.lockable = False
 
-	def check(self,  **environment):
+	def check(self, **environment):
 		return {'certainty': self.default_certainty, 'strategy_name': 'pirate_routine', 'type': BehaviorManager.strategy_types.idle}
 
 	def get_identifier(self, **environment):
 		return super(ConditionPirateRoutinePossible, self).get_identifier(**environment)
-

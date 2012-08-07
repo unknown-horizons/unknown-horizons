@@ -84,7 +84,7 @@ class Pirate(GenericAI):
 		nearest_ship = None
 		for ship in base_ship.find_nearby_ships():
 			if isinstance(ship, (PirateShip, TradeShip)) or not ship.has_component(SelectableComponent):
-				continue # don't attack these ships
+				continue  # don't attack these ships
 			distance = base_ship.position.distance_to_point(ship.position)
 			if lowest_distance is None or distance < lowest_distance:
 				lowest_distance = distance
@@ -190,10 +190,8 @@ class Pirate(GenericAI):
 		# load BehaviorManager
 		self.behavior_manager = BehaviorManager.load(db, self)
 
-
 	def remove_unit(self, unit):
 		"""Called when a ship which is owned by the pirate is removed or killed."""
 		del self.ships[unit]
 		self.combat_manager.remove_unit(unit)
 		self.unit_manager.remove_unit(unit)
-

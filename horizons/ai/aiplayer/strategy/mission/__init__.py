@@ -26,6 +26,7 @@ from horizons.ext.enum import Enum
 from horizons.util.python.callback import Callback
 from horizons.util.worldobject import WorldObject
 
+
 class FleetMission(Mission):
 
 	missionStates = Enum('created', 'fleeing_home')
@@ -35,7 +36,7 @@ class FleetMission(Mission):
 	log = logging.getLogger("ai.aiplayer.fleetmission")
 
 	def __init__(self, success_callback, failure_callback, ships):
-		assert len(ships)>0, "Attempt to create a fleet mission out of 0 ships"
+		assert len(ships) > 0, "Attempt to create a fleet mission out of 0 ships"
 		super(FleetMission, self).__init__(success_callback, failure_callback, ships[0].owner)
 		self.__init()
 		self._init_fleet(ships)
@@ -143,5 +144,4 @@ class FleetMission(Mission):
 		return super(FleetMission, self).__str__() + \
 		(' using %s' % (self.fleet if hasattr(self, 'fleet') else 'unknown fleet')) + \
 		('(mission state:%s,' % (self.state if hasattr(self, 'state') else 'unknown state')) + \
-		('combat_phase:%s)' % ( self.combat_phase if hasattr(self, 'combat_phase') else 'N/A'))
-
+		('combat_phase:%s)' % (self.combat_phase if hasattr(self, 'combat_phase') else 'N/A'))

@@ -115,4 +115,3 @@ class BehaviorProfile(WorldObject):
 		strategies[BehaviorManager.strategy_types.idle][BehaviorRegularPirate(player)] = 1.0
 
 		return strategies
-

@@ -51,7 +51,7 @@ class StrategyManager(object):
 		# unique because of WorldObject's inheritance, but it makes removing items from it in O(n).
 		self.conditions_being_resolved = {}
 
-		self.missions_to_load =  {
+		self.missions_to_load = {
 			ScoutingMission: "ai_scouting_mission",
 			SurpriseAttack: "ai_mission_surprise_attack",
 			ChaseShipsAndAttack: "ai_mission_chase_ships_and_attack",
@@ -67,7 +67,7 @@ class StrategyManager(object):
 			mission.save(db)
 
 		for condition, mission in self.conditions_being_resolved.iteritems():
-			db("INSERT INTO ai_condition_lock (owner_id, condition, mission_id) VALUES(?, ?, ?)", self.owner.worldid, condition, mission.worldid )
+			db("INSERT INTO ai_condition_lock (owner_id, condition, mission_id) VALUES(?, ?, ?)", self.owner.worldid, condition, mission.worldid)
 
 	@classmethod
 	def load(cls, db, owner):
@@ -102,7 +102,6 @@ class StrategyManager(object):
 		db_result = db("SELECT condition, mission_id FROM ai_condition_lock WHERE owner_id = ?", self.owner.worldid)
 		for (condition, mission_id) in db_result:
 			self.conditions_being_resolved[condition] = WorldObject.get_object_by_id(mission_id)
-
 
 	def report_success(self, mission, msg):
 		self.log.info("Player: %s|StrategyManager|Mission %s was a success: %s", self.owner.worldid, mission, msg)
@@ -153,12 +152,17 @@ class StrategyManager(object):
 		mission.pause_mission()
 		return True
 
-	def handle_strategy(self):
+	def get_ships_for_mission(self):
 		filters = self.unit_manager.filtering_rules
 		rules = (filters.ship_state((self.owner.shipStates.idle,)), filters.fighting(), filters.not_in_fleet())
+		idle_ships = self.unit_manager.get_ships(rules)
+
+		return idle_ships
+
+	def handle_strategy(self):
 
 		# Get all available ships that can take part in a mission
-		idle_ships = self.unit_manager.get_ships(rules)
+		idle_ships = self.get_ships_for_mission()
 
 		# Get all other players
 		other_players = [player for player in self.session.world.players if player != self.owner]
@@ -191,14 +195,13 @@ class StrategyManager(object):
 		# Nothing to do when none of the conditions occur
 		if occuring_conditions:
 			# Choose the most important one
-			selected_condition, selected_outcome = sorted(occuring_conditions, key = lambda c: self.conditions[c[0]] * c[1]['certainty'], reverse=True)[0]
+			selected_condition, selected_outcome = sorted(occuring_conditions, key=lambda c: self.conditions[c[0]] * c[1]['certainty'], reverse=True)[0]
 
 			self.log.debug("Selected condition: %s", selected_condition.__class__.__name__)
 			for key, value in selected_outcome.iteritems():
 				# Insert condition-gathered info into environment
 				environment[key] = value
 				self.log.debug(" %s: %s" % (key, value))
-
 
 			# Try to execute a mission that resolves given condition the best
 			mission = self.owner.behavior_manager.request_strategy(**environment)
@@ -218,71 +221,19 @@ class StrategyManager(object):
 	def tick(self):
 		self.handle_strategy()
 
+
 class PirateStrategyManager(StrategyManager):
 
 	def __init__(self, owner):
 		super(PirateStrategyManager, self).__init__(owner)
 		self.__init(owner)
 
-	def handle_strategy(self):
+	def get_ships_for_mission(self):
 		filters = self.unit_manager.filtering_rules
 		rules = (filters.ship_state((self.owner.shipStates.idle,)), filters.pirate(), filters.not_in_fleet())
-
-		# Get all available ships that can take part in a mission
 		idle_ships = self.unit_manager.get_ships(rules)
 
-		# Get all other players
-		other_players = [player for player in self.session.world.players if player != self.owner]
-
-		# Check which conditions occur
-		occuring_conditions = []
-
-		environment = {'idle_ships': idle_ships}
-		for player in other_players:
-			# Prepare environment
-			self.log.debug("Conditions occuring against player %s" % player.name)
-			environment['player'] = player
-			for condition in self.conditions.keys():
-
-				# Check whether given condition is already being resolved
-				if condition.get_identifier(**environment) in self.conditions_being_resolved:
-					self.log.debug("  %s: Locked" % condition.__class__.__name__)
-					continue
-
-				condition_outcome = condition.check(**environment)
-
-				self.log.debug("  %s: %s" % (condition.__class__.__name__, ("Yes" if condition_outcome else "No")))
-				if condition_outcome:
-					occuring_conditions.append((condition, condition_outcome))
-
-			# Revert environment to previous state
-			del environment['player']
-
-		# Nothing to do when none of the conditions occur
-		if occuring_conditions:
-			# Choose the most important one
-			selected_condition, selected_outcome = sorted(occuring_conditions, key = lambda c: self.conditions[c[0]] * c[1]['certainty'], reverse=True)[0]
-
-			self.log.debug("Selected condition: %s", selected_condition.__class__.__name__)
-			for key, value in selected_outcome.iteritems():
-				# Insert condition-gathered info into environment
-				self.log.debug(" %s: %s" % (key, value))
-				environment[key] = value
-
-			# Try to execute a mission that resolves given condition the best
-			mission = self.owner.behavior_manager.request_strategy(**environment)
-			if mission:
-				self.start_mission(mission)
-				if selected_condition.lockable:
-					self.lock_condition(selected_condition.get_identifier(**environment), mission)
-
-		self.log.debug("Missions:")
-		for mission in list(self.missions):
-			self.log.debug("%s" % mission)
-
-		self.log.debug("Fleets:")
-		for fleet in list(self.unit_manager.fleets):
-			self.log.debug("%s" % fleet)
+		return idle_ships
 
 	@classmethod
 	def load(cls, db, owner):
@@ -293,6 +244,6 @@ class PirateStrategyManager(StrategyManager):
 		return self
 
 	def __init(self, owner):
-		self.missions_to_load =  {
+		self.missions_to_load = {
 			PirateRoutine: "ai_mission_pirate_routine",
 		}

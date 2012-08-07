@@ -82,6 +82,7 @@ from horizons.ai.generic import GenericAI
 from horizons.util.python import decorators
 from horizons.component.selectablecomponent import SelectableComponent
 
+
 class AIPlayer(GenericAI):
 	"""This is the AI that builds settlements."""
 
@@ -98,7 +99,7 @@ class AIPlayer(GenericAI):
 		self.need_feeder_island = False
 		self.personality_manager = PersonalityManager(self)
 		self.__init()
-		Scheduler().add_new_object(Callback(self.finish_init), self, run_in = 0)
+		Scheduler().add_new_object(Callback(self.finish_init), self, run_in=0)
 
 	def start(self):
 		""" Start the AI tick process. Try to space out their ticks evenly. """
@@ -110,8 +111,8 @@ class AIPlayer(GenericAI):
 				if player is self:
 					position = ai_players
 				ai_players += 1
-		Scheduler().add_new_object(Callback(self.tick), self, run_in = self.tick_interval * position / ai_players + 1)
-		Scheduler().add_new_object(Callback(self.tick_long), self, run_in = self.tick_long_interval * position / ai_players + 1)
+		Scheduler().add_new_object(Callback(self.tick), self, run_in=self.tick_interval * position / ai_players + 1)
+		Scheduler().add_new_object(Callback(self.tick_long), self, run_in=self.tick_long_interval * position / ai_players + 1)
 
 	def finish_init(self):
 		# initialise the things that couldn't be initialised before because of the loading order
@@ -132,7 +133,7 @@ class AIPlayer(GenericAI):
 		#self.need_more_combat_ships = False
 
 	def __init(self):
-		self._enabled = True # whether this player is enabled (currently disabled at the end of the game)
+		self._enabled = True  # whether this player is enabled (currently disabled at the end of the game)
 		self.world = self.session.world
 		self.islands = {}
 		self.settlement_managers = []
@@ -145,7 +146,7 @@ class AIPlayer(GenericAI):
 		self.combat_manager = CombatManager(self)
 		self.strategy_manager = StrategyManager(self)
 		self.behavior_manager = BehaviorManager(self)
-		self.settlement_expansions = [] # [(coords, settlement)]
+		self.settlement_expansions = []  # [(coords, settlement)]
 		self.goals = [DoNothingGoal(self)]
 		self.special_domestic_trade_manager = SpecialDomesticTradeManager(self)
 		self.international_trade_manager = InternationalTradeManager(self)
@@ -227,7 +228,6 @@ class AIPlayer(GenericAI):
 		# save the personality manager
 		self.personality_manager.save(db)
 
-
 		# save the unit manager
 		self.unit_manager.save(db)
 
@@ -245,10 +245,10 @@ class AIPlayer(GenericAI):
 		self.personality_manager = PersonalityManager.load(db, self)
 		self.__init()
 
-		self.need_more_ships, self.need_more_combat_ships, self.need_feeder_island, remaining_ticks, remaining_ticks_long= \
+		self.need_more_ships, self.need_more_combat_ships, self.need_feeder_island, remaining_ticks, remaining_ticks_long = \
 			db("SELECT need_more_ships, need_more_combat_ships, need_feeder_island, remaining_ticks, remaining_ticks_long FROM ai_player WHERE rowid = ?", worldid)[0]
-		Scheduler().add_new_object(Callback(self.tick), self, run_in = remaining_ticks)
-		Scheduler().add_new_object(Callback(self.tick_long), self, run_in = remaining_ticks_long)
+		Scheduler().add_new_object(Callback(self.tick), self, run_in=remaining_ticks)
+		Scheduler().add_new_object(Callback(self.tick_long), self, run_in=remaining_ticks_long)
 
 	def finish_loading(self, db):
 		""" This is called separately because most objects are loaded after the player. """
@@ -310,7 +310,7 @@ class AIPlayer(GenericAI):
 				self.missions.add(InternationalTrade.load(db, mission_id, self.report_success, self.report_failure))
 
 	def tick(self):
-		Scheduler().add_new_object(Callback(self.tick), self, run_in = self.tick_interval)
+		Scheduler().add_new_object(Callback(self.tick), self, run_in=self.tick_interval)
 		self.settlement_founder.tick()
 		self.handle_enemy_expansions()
 		self.handle_settlements()
@@ -323,7 +323,7 @@ class AIPlayer(GenericAI):
 		"""
 		Same as above but used for reasoning that is not required to be called as often (such as diplomacy, strategy etc.)
 		"""
-		Scheduler().add_new_object(Callback(self.tick_long), self, run_in = self.tick_long_interval)
+		Scheduler().add_new_object(Callback(self.tick_long), self, run_in=self.tick_long_interval)
 		self.strategy_manager.tick()
 
 	def handle_settlements(self):
@@ -334,14 +334,14 @@ class AIPlayer(GenericAI):
 				goals.append(goal)
 		for settlement_manager in self.settlement_managers:
 			settlement_manager.tick(goals)
-		goals.sort(reverse = True)
+		goals.sort(reverse=True)
 
-		settlements_blocked = set() # set([settlement_manager_id, ...])
+		settlements_blocked = set()  # set([settlement_manager_id, ...])
 		for goal in goals:
 			if not goal.active:
 				continue
 			if isinstance(goal, SettlementGoal) and goal.settlement_manager.worldid in settlements_blocked:
-				continue # can't build anything in this settlement
+				continue  # can't build anything in this settlement
 			result = goal.execute()
 			if result == GOAL_RESULT.SKIP:
 				self.log.info('%s, skipped goal %s', self, goal)
@@ -351,7 +351,7 @@ class AIPlayer(GenericAI):
 				goal.settlement_manager.need_materials = True
 			else:
 				self.log.info('%s all further goals during this tick blocked by goal %s', self, goal)
-				break # built something; stop because otherwise the AI could look too fast
+				break  # built something; stop because otherwise the AI could look too fast
 
 		self.log.info('%s had %d active goals', self, sum(goal.active for goal in goals))
 		for goal in goals:
@@ -400,7 +400,7 @@ class AIPlayer(GenericAI):
 
 	def notify_new_disaster(self, message):
 		super(AIPlayer, self).notify_new_disaster(message)
-		Scheduler().add_new_object(Callback(self._settlement_manager_by_settlement_id[message.building.settlement.worldid].handle_disaster, message), self, run_in = 0)
+		Scheduler().add_new_object(Callback(self._settlement_manager_by_settlement_id[message.building.settlement.worldid].handle_disaster, message), self, run_in=0)
 
 	def on_settlement_expansion(self, settlement, coords):
 		""" stores the ownership change in a list for later processing """
@@ -409,16 +409,16 @@ class AIPlayer(GenericAI):
 
 	def handle_enemy_expansions(self):
 		if not self.settlement_expansions:
-			return # no changes in land ownership
+			return  # no changes in land ownership
 
 		change_lists = defaultdict(lambda: [])
 		for coords, settlement in self.settlement_expansions:
 			if settlement.island.worldid not in self.islands:
-				continue # we don't have a settlement there and have no current plans to create one
+				continue  # we don't have a settlement there and have no current plans to create one
 			change_lists[settlement.island.worldid].append(coords)
 		self.settlement_expansions = []
 		if not change_lists:
-			return # no changes in land ownership on islands we care about
+			return  # no changes in land ownership on islands we care about
 
 		for island_id, changed_coords in change_lists.iteritems():
 			affects_us = False
@@ -428,7 +428,7 @@ class AIPlayer(GenericAI):
 					affects_us = True
 					break
 			if not affects_us:
-				continue # we weren't using that land anyway
+				continue  # we weren't using that land anyway
 
 			settlement_manager = None
 			for potential_settlement_manager in self.settlement_managers:

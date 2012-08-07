@@ -94,19 +94,19 @@ class Fleet(WorldObject):
 	def _load(self, worldid, owner, db, destroy_callback):
 		super(Fleet, self).load(db, worldid)
 		self.owner = owner
-		state_id, dest_x, dest_y, radius, ratio =  db("SELECT state_id, dest_x, dest_y, radius, ratio FROM fleet WHERE fleet_id = ?", worldid)[0]
+		state_id, dest_x, dest_y, radius, ratio = db("SELECT state_id, dest_x, dest_y, radius, ratio FROM fleet WHERE fleet_id = ?", worldid)[0]
 
-		if radius: #Circle
+		if radius:  # Circle
 			self.destination = Circle(Point(dest_x, dest_y), radius)
-		elif dest_x and dest_y: #Point
+		elif dest_x and dest_y:  # Point
 			self.destination = Point(dest_x, dest_y)
-		else: #No destination
+		else:  # No destination
 			pass
 
 		if ratio:
 			self.ratio = ratio
 
-		ships_states =[(WorldObject.get_object_by_id(ship_id), self.shipStates[state_id]) for ship_id, state_id in db("SELECT ship_id, state_id FROM fleet_ship WHERE fleet_id = ?", worldid)]
+		ships_states = [(WorldObject.get_object_by_id(ship_id), self.shipStates[state_id]) for ship_id, state_id in db("SELECT ship_id, state_id FROM fleet_ship WHERE fleet_id = ?", worldid)]
 		ships = [item[0] for item in ships_states]
 
 		self.__init(ships, destroy_callback)
@@ -209,7 +209,7 @@ class Fleet(WorldObject):
 		except MoveNotPossible:
 			self._ships[ship] = self.shipStates.blocked
 			if not self._was_target_reached():
-				Scheduler().add_new_object(Callback(self._retry_moving_blocked_ships), self, run_in = self.RETRY_BLOCKED_TICKS)
+				Scheduler().add_new_object(Callback(self._retry_moving_blocked_ships), self, run_in=self.RETRY_BLOCKED_TICKS)
 
 	def _get_circle_size(self):
 		"""

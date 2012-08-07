@@ -69,13 +69,13 @@ class SurpriseAttack(FleetMission):
 	def save(self, db):
 		super(SurpriseAttack, self).save(db)
 		db("INSERT INTO ai_mission_surprise_attack (rowid, enemy_player_id, target_point_x, target_point_y, target_point_radius, "
-		   "return_point_x, return_point_y) VALUES(?, ?, ?, ?, ?, ?, ?)", self.worldid, self.enemy_player.worldid, self.target_point.center.x,
+			"return_point_x, return_point_y) VALUES(?, ?, ?, ?, ?, ?, ?)", self.worldid, self.enemy_player.worldid, self.target_point.center.x,
 			self.target_point.center.y, self.target_point.radius, self.return_point.x, self.return_point.y)
 
 	def _load(self, worldid, owner, db, success_callback, failure_callback):
 		super(SurpriseAttack, self)._load(db, worldid, success_callback, failure_callback, owner)
 		db_result = db("SELECT enemy_player_id, target_point_x, target_point_y, target_point_radius, return_point_x, return_point_y "
-					   "FROM ai_mission_surprise_attack WHERE rowid = ?", worldid)[0]
+						"FROM ai_mission_surprise_attack WHERE rowid = ?", worldid)[0]
 		enemy_player_id, target_point_x, target_point_y, target_point_radius, return_point_x, return_point_y = db_result
 
 		target_point = Circle(Point(target_point_x, target_point_y), target_point_radius)
