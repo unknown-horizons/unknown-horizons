@@ -523,7 +523,8 @@ def _load_last_quicksave(session=None, force_player_id=None):
 	save_files = SavegameManager.get_quicksaves()[0]
 	if session is not None:
 		if not save_files:
-			session.gui.show_popup(_("No quicksaves found"), _("You need to quicksave before you can quickload."))
+			session.gui.show_popup(_("No quicksaves found"),
+			                       _("You need to quicksave before you can quickload."))
 			return False
 		else:
 			session.ingame_gui.on_escape() # close widgets that might be open
