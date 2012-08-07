@@ -67,7 +67,7 @@ class View(ChangeListener):
 		self.cam.setCellImageDimensions(*VIEW.CELL_IMAGE_DIMENSIONS)
 		self.cam.setRotation(VIEW.ROTATION)
 		self.cam.setTilt(VIEW.TILT)
-		self.cam.setZoom(VIEW.ZOOM)
+		self.cam.setZoom(VIEW.ZOOM_DEFAULT)
 
 		self.cam.resetRenderers()
 		self.renderer = {}
