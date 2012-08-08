@@ -1,5 +1,9 @@
 id: 15
-name: _ Trail
+name:
+  TIER.SAILORS: _ Trail
+  TIER.PIONEERS: _ Gravel Path
+  TIER.CITIZENS: _ Cobblestone Street
+# TIER.ARISTOCRATS: _ Avenue
 baseclass: path.Road
 radius: 0
 cost: 0
