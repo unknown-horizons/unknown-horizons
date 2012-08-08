@@ -58,7 +58,8 @@ class BehaviorProfileAggressive(BehaviorProfile):
 		self.actions[BehaviorManager.action_types.idle][BehaviorDoNothing(player)] = 1.0
 
 		self.strategies[BehaviorManager.strategy_types.offensive][BehaviorRegular(player)] = 1.0
-		self.strategies[BehaviorManager.strategy_types.diplomatic][BehaviorRegular(player)] = 1.0
+		self.strategies[BehaviorManager.strategy_types.diplomatic][BehaviorAggressive(player)] = 0.02
+		self.strategies[BehaviorManager.strategy_types.diplomatic][BehaviorRegular(player)] = 0.98
 
 
 class BehaviorProfileBalanced(BehaviorProfile):
@@ -77,8 +78,7 @@ class BehaviorProfileBalanced(BehaviorProfile):
 		self.actions[BehaviorManager.action_types.idle][BehaviorDoNothing(player)] = 1.0
 
 		self.strategies[BehaviorManager.strategy_types.offensive][BehaviorRegular(player)] = 1.0
-		self.strategies[BehaviorManager.strategy_types.diplomatic][BehaviorAggressive(player)] = 0.02
-		self.strategies[BehaviorManager.strategy_types.diplomatic][BehaviorRegular(player)] = 0.98
+		self.strategies[BehaviorManager.strategy_types.diplomatic][BehaviorRegular(player)] = 1.0
 
 
 class BehaviorProfilePirateRegular(BehaviorProfile):
@@ -141,7 +141,7 @@ class BehaviorProfileManager(object):
 def get_available_player_profiles():
 	return (
 		(BehaviorProfileAggressive, 0.4),
-		(BehaviorProfileBalanced, 0.6),
+		#(BehaviorProfileBalanced, 0.6),
 	)
 
 def get_available_pirate_profiles():

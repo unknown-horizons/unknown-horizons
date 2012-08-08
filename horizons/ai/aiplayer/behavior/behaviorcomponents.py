@@ -282,8 +282,10 @@ class BehaviorRegular(BehaviorComponent):
 			return
 
 		if self.session.world.diplomacy.are_enemies(self.owner, enemies[0].owner):
-			for ship in ship_group:
-				ship.attack(enemies[0])
+			ship_pairs = UnitManager.get_closest_ships_for_each(ship_group, pirates)
+			for ship, enemy_ship in ship_pairs:
+				ship.attack(enemy_ship)
+
 			BehaviorComponent.log.info('%s: Attacked enemy ship', self.__class__.__name__)
 		else:
 			BehaviorComponent.log.info('%s: Enemy ship was not hostile', self.__class__.__name__)
@@ -438,6 +440,18 @@ class BehaviorAggressive(BehaviorComponent):
 			return mission
 		else:
 			AddEnemyPair(self.owner, enemy_player).execute(self.session)
+
+
+class BehaviorCautious(BehaviorComponent):
+
+	def __init__(self, owner):
+		super(BehaviorCautious, self).__init__(owner)
+
+	def neutral_player(self, **environment):
+		"""
+		Not concerned about neutral players.
+		"""
+		return None
 
 
 class BehaviorDebug(BehaviorComponent):

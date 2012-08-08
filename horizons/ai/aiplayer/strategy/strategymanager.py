@@ -185,7 +185,7 @@ class StrategyManager(object):
 					continue
 
 				condition_outcome = condition.check(**environment)
-				self.log.debug("  %s: %s", (condition.__class__.__name__, ("Yes" if condition_outcome else "No")))
+				self.log.debug("  %s: %s", condition.__class__.__name__, ("Yes" if condition_outcome else "No"))
 				if condition_outcome:
 					occuring_conditions.append((condition, condition_outcome))
 
@@ -203,7 +203,7 @@ class StrategyManager(object):
 			for key, value in selected_outcome.iteritems():
 				# Insert condition-gathered info into environment
 				environment[key] = value
-				self.log.debug(" %s: %s", (key, value))
+				self.log.debug(" %s: %s", key, value)
 
 			# Try to execute a mission that resolves given condition the best
 			mission = self.owner.behavior_manager.request_strategy(**environment)
