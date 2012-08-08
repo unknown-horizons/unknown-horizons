@@ -113,7 +113,7 @@ class GroundClass(type):
 		for (name,) in db("SELECT class FROM ground_class WHERE ground = ?", id):
 			self.classes.append(name)
 		if id != -1	:
-			self._tile_set_id = db.get_random_tile_set(id)[0]
+			self._tile_set_id = db.get_random_tile_set(id)
 			self._loadObject(db)
 
 	def __new__(self, db, id):

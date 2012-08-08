@@ -240,11 +240,11 @@ class UhDbAccessor(DbReader):
 	# Tile sets
 
 	def get_random_tile_set(self, ground_id):
-		"""Returns an tile set for a tile of type id"""
+		"""Returns a tile set for a tile of type ground_id"""
 		sql = "SELECT set_id FROM tile_set \
 		       WHERE ground_id = ?"
 		db_data = self.cached_query(sql, ground_id)
-		return random.choice(db_data) if db_data else None
+		return random.choice(db_data)[0] if db_data else None
 
 	@decorators.cachedmethod
 	def get_translucent_buildings(self):
