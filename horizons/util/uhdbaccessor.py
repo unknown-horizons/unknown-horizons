@@ -196,7 +196,7 @@ class UhDbAccessor(DbReader):
 		"""Returns the name for a specific settler level
 		@param level: int settler's level
 		@return: string settler's level name"""
-		sql = "SELECT name FROM settler_level WHERE level = ?",
+		sql = "SELECT name FROM settler_level WHERE level = ?"
 		return self.cached_query(sql, level)[0][0]
 
 	def get_settler_house_name(self, level):
