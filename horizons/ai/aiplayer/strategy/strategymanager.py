@@ -195,7 +195,8 @@ class StrategyManager(object):
 		# Nothing to do when none of the conditions occur
 		if occuring_conditions:
 			# Choose the most important one
-			selected_condition, selected_outcome = sorted(occuring_conditions, key=lambda c: self.conditions[c[0]] * c[1]['certainty'], reverse=True)[0]
+			selected_condition, selected_outcome = sorted(occuring_conditions,
+				key=lambda (condition, outcome): self.conditions[condition] * outcome['certainty'], reverse=True)[0]
 
 			self.log.debug("Selected condition: %s", selected_condition.__class__.__name__)
 			for key, value in selected_outcome.iteritems():

@@ -393,15 +393,14 @@ class BehaviorAggressive(BehaviorComponent):
 		idle_ships = environment['idle_ships']
 		enemy_player = environment['player']
 
-		if not enemy_player.settlements:
+		# Nothing to do when AI or enemy don't have a settlement yet
+		if not enemy_player.settlements or not self.owner.settlements:
 			return None
-		target_point = self.unit_manager.get_warehouse_area(enemy_player.settlements[0])
 
-		if not self.owner.settlements:
-			return None
-		return_point = self.unit_manager.get_warehouse_area(self.owner.settlements[0], 15)
-
-		if len(idle_ships) > 0:
+		# Send a surprise attack if there are ships available, otherwise simply declare war
+		if idle_ships:
+			target_point = self.unit_manager.get_warehouse_area(enemy_player.settlements[0])
+			return_point = self.unit_manager.get_warehouse_area(self.owner.settlements[0], 15)
 			mission = SurpriseAttack.create(self.owner.strategy_manager.report_success,
 				self.owner.strategy_manager.report_failure, idle_ships, target_point, return_point, enemy_player)
 			return mission

@@ -53,7 +53,7 @@ class Fleet(WorldObject):
 	def __init__(self, ships, destroy_callback=None):
 		super(Fleet, self).__init__()
 
-		assert len(ships) > 0, "request to create a fleet from  %s ships" % (len(ships))
+		assert ships, "request to create a fleet from  %s ships" % (len(ships))
 		self.__init(ships, destroy_callback)
 
 	def __init(self, ships, destroy_callback=None):
