@@ -141,7 +141,7 @@ class BehaviorProfileManager(object):
 def get_available_player_profiles():
 	return (
 		(BehaviorProfileAggressive, 0.4),
-		#(BehaviorProfileBalanced, 0.6),
+		(BehaviorProfileBalanced, 0.6),
 	)
 
 def get_available_pirate_profiles():

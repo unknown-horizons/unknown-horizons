@@ -355,7 +355,7 @@ class World(BuildingOwner, WorldObject):
 		moves = [(-1, -1), (-1, 0), (-1, 1), (0, -1), (0, 1), (1, -1), (1, 0), (1, 1)]
 
 		n = 0
-		self.water_body = dict(self.water)
+		self.water_body = dict.fromkeys(self.water)
 		for coords, num in self.water_body.iteritems():
 			if num is not None:
 				continue
