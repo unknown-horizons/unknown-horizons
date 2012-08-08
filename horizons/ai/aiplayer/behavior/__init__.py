@@ -40,13 +40,13 @@ class BehaviorManager(object):
 		super(BehaviorManager, self).__init__()
 		self.__init(owner)
 
+		self.profile_token = self.get_profile_token()
+		self.profile = owner.get_random_profile(self.profile_token)
+
 	def __init(self, owner):
 		self.owner = owner
 		self.world = owner.world
 		self.session = owner.session
-
-		self.profile_token = self.get_profile_token()
-		self.profile = owner.get_random_profile(self.profile_token)
 
 	def save(self, db):
 		db("INSERT INTO ai_behavior_manager (owner_id, profile_token) VALUES(?, ?)", self.owner.worldid, self.profile_token)
@@ -72,8 +72,8 @@ class BehaviorManager(object):
 			if hasattr(behavior, action_name):
 				certainty = behavior.certainty(action_name, **environment)
 				# final probability is the one defined in profile multiplied by it's certainty
-				self.log.info("Player:%s Behavior:%s Function:%s (p: %s ,c: %s ,f: %s)" % (self.owner.name,
-					behavior.__class__.__name__, action_name, probability, certainty, probability * certainty))
+				self.log.info("Player:%s Behavior:%s Function:%s (p: %s ,c: %s ,f: %s)", self.owner.name,
+					behavior.__class__.__name__, action_name, probability, certainty, probability * certainty)
 				possible_behaviors.append((behavior, probability * certainty))
 
 		# get the best action possible if any is available

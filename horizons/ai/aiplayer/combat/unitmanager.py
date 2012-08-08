@@ -184,6 +184,10 @@ class UnitManager(object):
 		return [ship for ship in ships if all([rule(ship) for rule in rules])]
 
 	@classmethod
+	def get_lowest_hp_ship(cls, ship_group):
+		return min(ship_group, key=lambda ship: ship.get_component(HealthComponent).health)
+
+	@classmethod
 	def get_closest_ships_for_each(cls, ship_group, enemies):
 		"""
 		For each ship in ship_group return an index of ship from enemies that is the closest to given ship.

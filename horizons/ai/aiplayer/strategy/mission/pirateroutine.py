@@ -85,7 +85,7 @@ class PirateRoutine(FleetMission):
 		self.sail_to_target()
 
 	def sail_to_target(self):
-		self.log.debug("Pirate %s, Mission %s, 1/2 set off to random point at %s" % (self.owner.name, self.__class__.__name__, self.target_point))
+		self.log.debug("Pirate %s, Mission %s, 1/2 set off to random point at %s", self.owner.name, self.__class__.__name__, self.target_point)
 		try:
 			self.fleet.move(self.target_point, self._state_fleet_callbacks[self.missionStates.sailing_to_target])
 			self.state = self.missionStates.sailing_to_target
@@ -93,7 +93,7 @@ class PirateRoutine(FleetMission):
 			self.report_failure("Move was not possible when moving to target")
 
 	def go_home(self):
-		self.log.debug("Pirate %s, Mission %s, 2/2 going home at point %s" % (self.owner.name, self.__class__.__name__, self.owner.home_point))
+		self.log.debug("Pirate %s, Mission %s, 2/2 going home at point %s", self.owner.name, self.__class__.__name__, self.owner.home_point)
 		try:
 			self.fleet.move(self.owner.home_point, self._state_fleet_callbacks[self.missionStates.going_home])
 			self.state = self.missionStates.going_home

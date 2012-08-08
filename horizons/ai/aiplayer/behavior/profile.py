@@ -26,7 +26,7 @@ from horizons.ai.aiplayer.behavior import BehaviorManager
 
 from horizons.ai.aiplayer.behavior.behaviorcomponents import BehaviorPirateHater, BehaviorCoward,\
 	BehaviorKeepFleetTogether, BehaviorRegular, BehaviorPirateRoutine, BehaviorBreakDiplomacy,\
-	BehaviorDoNothing, BehaviorRegularPirate, BehaviorAggressive
+	BehaviorDoNothing, BehaviorRegularPirate, BehaviorAggressive, BehaviorAggressivePirate
 from horizons.ai.aiplayer.strategy.condition import ConditionNeutral, ConditionSharingSettlement, ConditionHostile, ConditionDebug, ConditionPirateRoutinePossible
 
 
@@ -53,7 +53,8 @@ class BehaviorProfileAggressive(BehaviorProfile):
 			ConditionNeutral(player): 0.3,
 		}
 
-		self.actions[BehaviorManager.action_types.offensive][BehaviorRegular(player)] = 2.0
+		self.actions[BehaviorManager.action_types.offensive][BehaviorRegular(player)] = 0.35
+		self.actions[BehaviorManager.action_types.offensive][BehaviorAggressive(player)] = 0.65
 		self.actions[BehaviorManager.action_types.idle][BehaviorDoNothing(player)] = 1.0
 
 		self.strategies[BehaviorManager.strategy_types.offensive][BehaviorRegular(player)] = 1.0
@@ -71,7 +72,8 @@ class BehaviorProfileBalanced(BehaviorProfile):
 			ConditionNeutral(player): 0.3,
 		}
 
-		self.actions[BehaviorManager.action_types.offensive][BehaviorRegular(player)] = 2.0
+		self.actions[BehaviorManager.action_types.offensive][BehaviorRegular(player)] = 0.8
+		self.actions[BehaviorManager.action_types.offensive][BehaviorAggressive(player)] = 0.2
 		self.actions[BehaviorManager.action_types.idle][BehaviorDoNothing(player)] = 1.0
 
 		self.strategies[BehaviorManager.strategy_types.offensive][BehaviorRegular(player)] = 1.0
@@ -88,7 +90,8 @@ class BehaviorProfilePirateRegular(BehaviorProfile):
 			ConditionPirateRoutinePossible(player): 1.0,
 		}
 
-		self.actions[BehaviorManager.action_types.offensive][BehaviorRegularPirate(player)] = 1.0
+		self.actions[BehaviorManager.action_types.offensive][BehaviorRegularPirate(player)] = 0.75
+		self.actions[BehaviorManager.action_types.offensive][BehaviorAggressivePirate(player)] = 0.25
 		self.actions[BehaviorManager.action_types.idle][BehaviorDoNothing(player)] = 0.5
 
 		self.strategies[BehaviorManager.strategy_types.idle][BehaviorRegularPirate(player)] = 1.0
@@ -130,7 +133,7 @@ class BehaviorProfileManager(object):
 				break
 			total += probability
 
-		cls.log.debug("BehaviorProfileManager: Player %s was given %s" % (player.name, chosen_profile.__name__))
+		cls.log.debug("BehaviorProfileManager: Player %s was given %s", player.name, chosen_profile.__name__)
 		return chosen_profile(player)
 
 # Each AI player is assigned a Profile with certain probability.

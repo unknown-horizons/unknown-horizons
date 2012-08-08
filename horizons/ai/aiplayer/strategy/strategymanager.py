@@ -174,18 +174,18 @@ class StrategyManager(object):
 
 		for player in other_players:
 			# Prepare environment
-			self.log.debug("Conditions occuring against player %s" % player.name)
+			self.log.debug("Conditions occuring against player %s", player.name)
 			environment['player'] = player
 
 			for condition in self.conditions.keys():
 
 				# Check whether given condition is already being resolved
 				if condition.get_identifier(**environment) in self.conditions_being_resolved:
-					self.log.debug("  %s: Locked" % condition.__class__.__name__)
+					self.log.debug("  %s: Locked", condition.__class__.__name__)
 					continue
 
 				condition_outcome = condition.check(**environment)
-				self.log.debug("  %s: %s" % (condition.__class__.__name__, ("Yes" if condition_outcome else "No")))
+				self.log.debug("  %s: %s", (condition.__class__.__name__, ("Yes" if condition_outcome else "No")))
 				if condition_outcome:
 					occuring_conditions.append((condition, condition_outcome))
 
@@ -195,14 +195,15 @@ class StrategyManager(object):
 		# Nothing to do when none of the conditions occur
 		if occuring_conditions:
 			# Choose the most important one
-			selected_condition, selected_outcome = sorted(occuring_conditions,
-				key=lambda (condition, outcome): self.conditions[condition] * outcome['certainty'], reverse=True)[0]
+
+			selected_condition, selected_outcome = max(occuring_conditions,
+				key=lambda (condition, outcome): self.conditions[condition] * outcome['certainty'])
 
 			self.log.debug("Selected condition: %s", selected_condition.__class__.__name__)
 			for key, value in selected_outcome.iteritems():
 				# Insert condition-gathered info into environment
 				environment[key] = value
-				self.log.debug(" %s: %s" % (key, value))
+				self.log.debug(" %s: %s", (key, value))
 
 			# Try to execute a mission that resolves given condition the best
 			mission = self.owner.behavior_manager.request_strategy(**environment)
@@ -213,11 +214,11 @@ class StrategyManager(object):
 
 		self.log.debug("Missions:")
 		for mission in list(self.missions):
-			self.log.debug("%s" % mission)
+			self.log.debug("%s", mission)
 
 		self.log.debug("Fleets:")
 		for fleet in list(self.unit_manager.fleets):
-			self.log.debug("%s" % fleet)
+			self.log.debug("%s", fleet)
 
 	def tick(self):
 		self.handle_strategy()

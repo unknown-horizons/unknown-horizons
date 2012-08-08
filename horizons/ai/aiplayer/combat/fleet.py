@@ -180,7 +180,7 @@ class Fleet(WorldObject):
 		"""
 		Called when a single ship reaches destination.
 		"""
-		self.log.debug("Fleet %s, Ship %s reached the destination" % (self.worldid, ship.get_component(NamedComponent).name))
+		self.log.debug("Fleet %s, Ship %s reached the destination", self.worldid, ship.get_component(NamedComponent).name)
 		self._ships[ship] = self.shipStates.reached
 		if self._was_target_reached():
 			self._fleet_reached()
@@ -189,7 +189,7 @@ class Fleet(WorldObject):
 		"""
 		Called when whole fleet reaches destination.
 		"""
-		self.log.debug("Fleet %s reached the destination" % self.worldid)
+		self.log.debug("Fleet %s reached the destination", self.worldid)
 		self.state = self.fleetStates.idle
 		for ship in self._ships.keys():
 			self._ships[ship] = self.shipStates.idle

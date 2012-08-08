@@ -105,13 +105,13 @@ class CombatManager(object):
 		if fighting_ships:
 			environment['enemies'] = fighting_ships
 			environment['power_balance'] = UnitManager.calculate_power_balance(ship_group, fighting_ships)
-			self.log.debug("Player: %s vs Player: %s -> power_balance:%s" % (self.owner.name, fighting_ships[0].owner.name, environment['power_balance']))
+			self.log.debug("Player: %s vs Player: %s -> power_balance:%s", self.owner.name, fighting_ships[0].owner.name, environment['power_balance'])
 			self.owner.behavior_manager.request_action(BehaviorManager.action_types.offensive,
 				'fighting_ships_in_sight', **environment)
 		elif pirate_ships:
 			environment['enemies'] = pirate_ships
 			environment['power_balance'] = UnitManager.calculate_power_balance(ship_group, pirate_ships)
-			self.log.debug("Player: %s vs Player: %s -> power_balance:%s" % (self.owner.name, pirate_ships[0].owner.name, environment['power_balance']))
+			self.log.debug("Player: %s vs Player: %s -> power_balance:%s", self.owner.name, pirate_ships[0].owner.name, environment['power_balance'])
 			self.owner.behavior_manager.request_action(BehaviorManager.action_types.offensive,
 				'pirate_ships_in_sight', **environment)
 		elif working_ships:
@@ -253,13 +253,13 @@ class CombatManager(object):
 			if fighting_ships:
 				environment['enemies'] = fighting_ships
 				environment['power_balance'] = UnitManager.calculate_power_balance(ship_group, fighting_ships)
-				self.log.debug("Player: %s vs Player: %s -> power_balance:%s" % (self.owner.name, fighting_ships[0].owner.name, environment['power_balance']))
+				self.log.debug("Player: %s vs Player: %s -> power_balance:%s", self.owner.name, fighting_ships[0].owner.name, environment['power_balance'])
 				self.owner.behavior_manager.request_action(BehaviorManager.action_types.offensive,
 					'fighting_ships_in_sight', **environment)
 			elif pirate_ships:
 				environment['enemies'] = pirate_ships
 				environment['power_balance'] = UnitManager.calculate_power_balance(ship_group, pirate_ships)
-				self.log.debug("Player: %s vs Player: %s -> power_balance:%s" % (self.owner.name, pirate_ships[0].owner.name, environment['power_balance']))
+				self.log.debug("Player: %s vs Player: %s -> power_balance:%s", self.owner.name, pirate_ships[0].owner.name, environment['power_balance'])
 				self.owner.behavior_manager.request_action(BehaviorManager.action_types.offensive,
 					'pirate_ships_in_sight', **environment)
 			elif working_ships:
@@ -332,7 +332,7 @@ class PirateCombatManager(CombatManager):
 		if fighting_ships:
 			environment['enemies'] = fighting_ships
 			environment['power_balance'] = UnitManager.calculate_power_balance(ship_group, fighting_ships)
-			self.log.debug("Player: %s vs Player: %s -> power_balance:%s" % (self.owner.name, fighting_ships[0].owner.name, environment['power_balance']))
+			self.log.debug("Player: %s vs Player: %s -> power_balance:%s", self.owner.name, fighting_ships[0].owner.name, environment['power_balance'])
 			self.owner.behavior_manager.request_action(BehaviorManager.action_types.offensive,
 				'fighting_ships_in_sight', **environment)
 		elif working_ships:
@@ -383,7 +383,7 @@ class PirateCombatManager(CombatManager):
 			if fighting_ships:
 				environment['enemies'] = fighting_ships
 				environment['power_balance'] = UnitManager.calculate_power_balance(ship_group, fighting_ships)
-				self.log.debug("Player: %s vs Player: %s -> power_balance:%s" % (self.owner.name, fighting_ships[0].owner.name, environment['power_balance']))
+				self.log.debug("Player: %s vs Player: %s -> power_balance:%s", self.owner.name, fighting_ships[0].owner.name, environment['power_balance'])
 				self.owner.behavior_manager.request_action(BehaviorManager.action_types.offensive,
 					'fighting_ships_in_sight', **environment)
 			elif working_ships:

@@ -61,7 +61,7 @@ class Pirate(GenericAI):
 
 		# choose a random water tile on the coast and call it home
 		self.home_point = self.session.world.get_random_possible_coastal_ship_position()
-		self.log.debug("Pirate: home at (%d, %d), radius %d" % (self.home_point.x, self.home_point.y, self.home_radius))
+		self.log.debug("Pirate: home at (%d, %d), radius %d", self.home_point.x, self.home_point.y, self.home_radius)
 		self.__init()
 
 		# create a ship and place it randomly (temporary hack)
@@ -161,7 +161,7 @@ class Pirate(GenericAI):
 		home = db("SELECT x, y FROM pirate_home_point")[0]
 		self.home_point = Point(home[0], home[1])
 
-		self.log.debug("Pirate: home at (%d, %d), radius %d" % (self.home_point.x, self.home_point.y, self.home_radius))
+		self.log.debug("Pirate: home at (%d, %d), radius %d", self.home_point.x, self.home_point.y, self.home_radius)
 
 	def finish_loading(self, db):
 		# load ships one by one from db (ship instances themselves are loaded already, but

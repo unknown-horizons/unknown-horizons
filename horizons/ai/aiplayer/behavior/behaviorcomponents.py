@@ -265,9 +265,9 @@ class BehaviorRegular(BehaviorComponent):
 			ship_pairs = UnitManager.get_closest_ships_for_each(ship_group, pirates)
 			for ship, pirate in ship_pairs:
 				ship.attack(pirates[0])
-			BehaviorComponent.log.info('Attacking pirate player.')
+			BehaviorComponent.log.info('%s: Attacked pirate ship', self.__class__.__name__)
 		else:
-			BehaviorComponent.log.info('Not attacking pirate player.')
+			BehaviorComponent.log.info('%s: Pirate ship was not hostile', self.__class__.__name__)
 
 	def fighting_ships_in_sight(self, **environment):
 		"""
@@ -277,12 +277,16 @@ class BehaviorRegular(BehaviorComponent):
 		ship_group = environment['ship_group']
 		power_balance = environment['power_balance']
 
+		if power_balance >= self.power_balance_threshold:
+			BehaviorComponent.log.info('%s: Enemy group is too strong', self.__class__.__name__)
+			return
+
 		if self.session.world.diplomacy.are_enemies(self.owner, enemies[0].owner):
 			for ship in ship_group:
 				ship.attack(enemies[0])
-			BehaviorComponent.log.info('ActionRegular: Attacked enemy ship')
+			BehaviorComponent.log.info('%s: Attacked enemy ship', self.__class__.__name__)
 		else:
-			BehaviorComponent.log.info('ActionRegular: Enemy ship was not hostile')
+			BehaviorComponent.log.info('%s: Enemy ship was not hostile', self.__class__.__name__)
 
 	def working_ships_in_sight(self, **environment):
 		"""
@@ -294,9 +298,9 @@ class BehaviorRegular(BehaviorComponent):
 		if self.session.world.diplomacy.are_enemies(self.owner, enemies[0].owner):
 			for ship in ship_group:
 				ship.attack(enemies[0])
-			BehaviorComponent.log.info('ActionRegular: Attacked enemy worker ship')
+			BehaviorComponent.log.info('%s: Attacked enemy ship', self.__class__.__name__)
 		else:
-			BehaviorComponent.log.info('ActionRegular: Enemy worker was not hostile')
+			BehaviorComponent.log.info('%s: Enemy worker was not hostile', self.__class__.__name__)
 
 	def _certainty_player_shares_island(self, **environment):
 		"""
@@ -370,9 +374,37 @@ class BehaviorRegular(BehaviorComponent):
 
 class BehaviorAggressive(BehaviorComponent):
 
+	power_balance_threshold = 0.8 # allow to attack targets that are slightly stronger
+
 	def __init__(self, owner):
 		super(BehaviorAggressive, self).__init__(owner)
 		self._certainty['neutral_player'] = self._certainty_neutral_player
+		self._certainty['fighting_ships_in_sight'] = self._certainty_fighting_ships_in_sight
+
+	def _certainty_fighting_ships_in_sight(self, **environment):
+		pass
+
+	def fighting_ships_in_sight(self, **environment):
+		"""
+		Attacks frigates only if they are enemies already and the power balance is advantageous.
+		"""
+		enemies = environment['enemies']
+		ship_group = environment['ship_group']
+		power_balance = environment['power_balance']
+
+		if power_balance < self.power_balance_threshold:
+			BehaviorComponent.log.info('%s: Enemy group is too strong', self.__class__.__name__)
+			return
+
+		# attack ship with the lowest HP
+		target_ship = UnitManager.get_lowest_hp_ship(enemies)
+
+		if self.session.world.diplomacy.are_enemies(self.owner, target_ship.owner):
+			for ship in ship_group:
+				ship.attack(target_ship)
+			BehaviorComponent.log.info('%s: Attacked enemy ship', self.__class__.__name__)
+		else:
+			BehaviorComponent.log.info('%s: Enemy ship was not hostile', self.__class__.__name__)
 
 	def _certainty_neutral_player(self, **environment):
 		idle_ships = environment['idle_ships']
@@ -439,16 +471,17 @@ class BehaviorRegularPirate(BehaviorComponent):
 		ship_group = environment['ship_group']
 		power_balance = environment['power_balance']
 
-		if not self.session.world.diplomacy.are_enemies(self.owner, enemies[0].owner):
-			BehaviorComponent.log.info('ActionRegularPirate: Enemy ship was not hostile')
+		if power_balance < self.power_balance_threshold:
+			BehaviorComponent.log.info('%s: Enemy ship was too strong, did not attack', self.__class__.__name__)
 			return
 
-		#if power_balance >= self.power_balance_threshold:
+		if not self.session.world.diplomacy.are_enemies(self.owner, enemies[0].owner):
+			BehaviorComponent.log.info('%s: Enemy ship was not hostile', self.__class__.__name__)
+			return
+
 		for ship in ship_group:
 			ship.attack(enemies[0])
-		BehaviorComponent.log.info('ActionRegularPirate: Attacked enemy ship')
-		#else:
-		#	BehaviorComponent.log.info('ActionRegularPirate: Enemy was too strong')
+		BehaviorComponent.log.info('%s: Attacked enemy ship', self.__class__.__name__)
 
 	def _certainty_pirate_routine(self, **environment):
 		idle_ships = environment['idle_ships']
@@ -470,6 +503,28 @@ class BehaviorRegularPirate(BehaviorComponent):
 		BehaviorComponent.log.info('BehaviorRegularPirate: pirate_routine request')
 		return mission
 
+class BehaviorAggressivePirate(BehaviorComponent):
+
+	def __init__(self, owner):
+		super(BehaviorAggressivePirate, self).__init__(owner)
+		self._certainty['fighting_ships_in_sight'] = certainty_power_balance_exp
+
+	def fighting_ships_in_sight(self, **environment):
+		"""
+		Attacks frigates only if they are enemies. Does not care about power balance.
+		"""
+
+		enemies = environment['enemies']
+		ship_group = environment['ship_group']
+
+		if not self.session.world.diplomacy.are_enemies(self.owner, enemies[0].owner):
+			BehaviorComponent.log.info('%s: Enemy ship was not hostile', self.__class__.__name__)
+			return
+
+		target_ship = UnitManager.get_lowest_hp_ship(enemies)
+		for ship in ship_group:
+			ship.attack(target_ship)
+		BehaviorComponent.log.info('%s: Attacked enemy ship', self.__class__.__name__)
 
 class BehaviorBreakDiplomacy(BehaviorComponent):
 	"""

@@ -77,8 +77,8 @@ class ChaseShipsAndAttack(FleetMission):
 		self.sail_to_target()
 
 	def sail_to_target(self):
-		self.log.debug("Player %s, Mission %s, 1/2 set off to ship %s at %s" % (self.owner.name, self.__class__.__name__,
-			self.target_ship.get_component(NamedComponent).name, self.target_ship.position))
+		self.log.debug("Player %s, Mission %s, 1/2 set off to ship %s at %s", self.owner.name, self.__class__.__name__,
+			self.target_ship.get_component(NamedComponent).name, self.target_ship.position)
 		try:
 			self.fleet.move(Circle(self.target_ship.position, self.target_range), self._state_fleet_callbacks[self.missionStates.sailing_to_target])
 			self.state = self.missionStates.sailing_to_target
@@ -110,7 +110,7 @@ class ChaseShipsAndAttack(FleetMission):
 			self.report_failure("Target ship was not hostile. Aborting mission.")
 			return
 		self.combat_phase = True
-		self.log.debug("Player %s, Mission %s, 2/2 in combat" % (self.owner.name, self.__class__.__name__))
+		self.log.debug("Player %s, Mission %s, 2/2 in combat", self.owner.name, self.__class__.__name__)
 		self.state = self.missionStates.in_combat
 
 	def flee_home(self):
