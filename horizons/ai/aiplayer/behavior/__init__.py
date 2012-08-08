@@ -46,9 +46,7 @@ class BehaviorManager(object):
 		self.session = owner.session
 
 		self.profile_token = self.get_profile_token()
-		self.actions = owner.get_random_actions(self.profile_token)
-		self.strategies = owner.get_random_strategies(self.profile_token)
-		self.conditions = owner.get_random_conditions(self.profile_token)
+		self.profile = owner.get_random_profile(self.profile_token)
 
 	def save(self, db):
 		db("INSERT INTO ai_behavior_manager (owner_id, profile_token) VALUES(?, ?)", self.owner.worldid, self.profile_token)
@@ -66,8 +64,7 @@ class BehaviorManager(object):
 		self.profile_token = profile_token
 
 		# this time they will be loaded with a correct token
-		self.actions = owner.get_random_actions(self.profile_token)
-		self.strategies = owner.get_random_strategies(self.profile_token)
+		self.profile = owner.get_random_profile(self.profile_token)
 
 	def request_behavior(self, type, action_name, behavior_list, **environment):
 		possible_behaviors = []
@@ -85,10 +82,13 @@ class BehaviorManager(object):
 			return getattr(final_action, action_name)(**environment)
 
 	def request_action(self, type, action_name, **environment):
-		return self.request_behavior(type, action_name, self.actions, **environment)
+		return self.request_behavior(type, action_name, self.profile.actions, **environment)
 
 	def request_strategy(self, type, strategy_name, **environment):
-		return self.request_behavior(type, strategy_name, self.strategies, **environment)
+		return self.request_behavior(type, strategy_name, self.profile.strategies, **environment)
+
+	def get_conditions(self):
+		return self.profile.conditions
 
 	def get_best_behavior(self, behavior_iterable):
 		"""

@@ -60,7 +60,7 @@ class StrategyManager(object):
 	@property
 	def conditions(self):
 		# conditions are held in behavior manager since they are a part of behavior profile (just like actions and strategies)
-		return self.owner.behavior_manager.conditions
+		return self.owner.behavior_manager.get_conditions()
 
 	def save(self, db):
 		for mission in list(self.missions):

@@ -22,7 +22,7 @@
 import logging
 from horizons.ai.aiplayer.behavior import BehaviorManager
 from horizons.ai.aiplayer.behavior.behaviorcomponents import BehaviorMoveCallback
-from horizons.ai.aiplayer.behavior.profile import BehaviorProfile
+from horizons.ai.aiplayer.behavior.profile import BehaviorProfileManager
 from horizons.ai.aiplayer.combat.combatmanager import  PirateCombatManager
 from horizons.ai.aiplayer.combat.unitmanager import UnitManager
 from horizons.ai.aiplayer.strategy.strategymanager import PirateStrategyManager
@@ -100,14 +100,8 @@ class Pirate(GenericAI):
 	def tick_long(self):
 		self.strategy_manager.tick()
 
-	def get_random_actions(self, token):
-		return BehaviorProfile.get_random_pirate_actions(self, token)
-
-	def get_random_strategies(self, token):
-		return BehaviorProfile.get_random_pirate_strategies(self, token)
-
-	def get_random_conditions(self, token):
-		return BehaviorProfile.get_random_pirate_conditions(self, token)
+	def get_random_profile(self, token):
+		return BehaviorProfileManager.get_random_pirate_profile(self, token)
 
 	def create_ship_at_random_position(self):
 		point = self.session.world.get_random_possible_ship_position()

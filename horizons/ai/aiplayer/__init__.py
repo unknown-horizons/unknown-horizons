@@ -23,7 +23,7 @@ import logging
 
 from collections import defaultdict
 from horizons.ai.aiplayer.behavior import BehaviorManager
-from horizons.ai.aiplayer.behavior.profile import BehaviorProfile
+from horizons.ai.aiplayer.behavior.profile import BehaviorProfileManager
 from horizons.ai.aiplayer.combat.combatmanager import CombatManager
 from horizons.ai.aiplayer.strategy.strategymanager import StrategyManager
 from horizons.component.stancecomponent import  NoneStance
@@ -151,14 +151,8 @@ class AIPlayer(GenericAI):
 		self.special_domestic_trade_manager = SpecialDomesticTradeManager(self)
 		self.international_trade_manager = InternationalTradeManager(self)
 
-	def get_random_actions(self, token):
-		return BehaviorProfile.get_random_player_actions(self, token)
-
-	def get_random_strategies(self, token):
-		return BehaviorProfile.get_random_player_strategies(self, token)
-
-	def get_random_conditions(self, token):
-		return BehaviorProfile.get_random_player_conditions(self, token)
+	def get_random_profile(self, token):
+		return BehaviorProfileManager.get_random_player_profile(self, token)
 
 	def start_mission(self, mission):
 		self.ships[mission.ship] = self.shipStates.on_a_mission
