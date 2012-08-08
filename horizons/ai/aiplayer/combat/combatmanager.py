@@ -25,11 +25,9 @@ from weakref import WeakKeyDictionary
 import horizons
 from horizons.ai.aiplayer.behavior import BehaviorManager
 from horizons.ai.aiplayer.combat.unitmanager import UnitManager
-from horizons.constants import LAYERS
+from horizons.constants import LAYERS, AI
 from horizons.ext.enum import Enum
-from horizons.util.python.callback import Callback
 from horizons.util.worldobject import WorldObject
-from horizons.world.units.fightingship import FightingShip
 
 
 class CombatManager(object):
@@ -189,9 +187,7 @@ class CombatManager(object):
 		"""
 		Display combat ranges.
 		"""
-
-		highlight_on = True
-		if not highlight_on:
+		if not AI.HIGHLIGHT_COMBAT:
 			return
 
 		combat_range_color = (180, 0, 0)
