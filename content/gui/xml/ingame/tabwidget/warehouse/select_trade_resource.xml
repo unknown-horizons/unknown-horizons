@@ -2,13 +2,15 @@
 <Container size="260,450">
 <TabBG amount="6" />
 
-<Container name="content" position="0,70" size="250,330">
+<Container name="content" position="10,70" size="225,305">
 	<Label name="headline" text="Select resources:" position="50,7" />
 	<Icon image="content/gui/images/background/hr.png" position="20,30" />
 	<!-- Displays list of resources to select one for trade. -->
-	<VBox name="resources" size="220,0" position="15,35">
-	<Spacer />
-	</VBox>
+	<ScrollArea min_size="217,270" max_size="217,270" position="8,35">
+		<VBox name="resources" size="217,0" position="0,0">
+			<Spacer />
+		</VBox>
+	</ScrollArea>
 </Container>
 
 </Container>
