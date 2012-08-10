@@ -70,12 +70,11 @@ class SelectionTool(NavigationTool):
 	def fife_instance_to_uh_instance(self, instance):
 		"""Visual fife instance to uh game logic object or None"""
 		i_id = instance.getId()
-		if i_id != '':
-			try:
-				return WorldObject.get_object_by_id(int(i_id))
-			except WorldObjectNotFound:
-				return None
-		else:
+		if i_id == '':
+			return None
+		try:
+			return WorldObject.get_object_by_id(int(i_id))
+		except WorldObjectNotFound:
 			return None
 
 	def mouseDragged(self, evt):
