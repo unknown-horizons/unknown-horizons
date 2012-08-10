@@ -32,7 +32,7 @@ class Inventory(pychan.widgets.Container):
 	It can be used like any other widget inside of xmls, but for full functionality the inventory
 	has to be manually set, or use the TabWidget, which will autoset it (was made to be done this way).
 
-	XML use: <inventory />, can take all the parameters that pychan.widgets.Container can."""
+	XML use: <Inventory />, can take all the parameters that pychan.widgets.Container can."""
 	ATTRIBUTES = pychan.widgets.Container.ATTRIBUTES + [BoolAttr('uncached'), BoolAttr('display_legend'), IntAttr("items_per_line")]
 	# uncached: required when resource icons should appear multiple times at any given moment
 	# on the screen. this is usually not the case with single inventories, but e.g. for trading.
