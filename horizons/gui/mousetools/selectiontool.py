@@ -79,32 +79,27 @@ class SelectionTool(NavigationTool):
 
 	def mouseDragged(self, evt):
 		if evt.getButton() == fife.MouseEvent.LEFT and hasattr(self, 'select_begin'):
-			do_multi = ((self.select_begin[0] - evt.getX()) ** 2 + (self.select_begin[1] - evt.getY()) ** 2) >= 10 # from 3px (3*3 + 1)
+			x, y = self.select_begin
+			xx, yy = evt.getX(), evt.getY()
+			do_multi = ( (x - xx) ** 2 + (y - yy) ** 2 ) >= 10 # from 3px (3*3 + 1)
 			self.session.view.renderer['GenericRenderer'].removeAll(self.__class__._SELECTION_RECTANGLE_NAME)
 			if do_multi:
 				# draw a rectangle
-				a = fife.Point(min(self.select_begin[0], evt.getX()),
-											 min(self.select_begin[1], evt.getY()))
-				b = fife.Point(max(self.select_begin[0], evt.getX()),
-											 min(self.select_begin[1], evt.getY()))
-				c = fife.Point(max(self.select_begin[0], evt.getX()),
-											 max(self.select_begin[1], evt.getY()))
-				d = fife.Point(min(self.select_begin[0], evt.getX()),
-											 max(self.select_begin[1], evt.getY()))
-				self.session.view.renderer['GenericRenderer'].addLine(self.__class__._SELECTION_RECTANGLE_NAME,
-				                                                      fife.RendererNode(a), fife.RendererNode(b), 200, 200, 200)
-				self.session.view.renderer['GenericRenderer'].addLine(self.__class__._SELECTION_RECTANGLE_NAME,
-				                                                      fife.RendererNode(b), fife.RendererNode(c), 200, 200, 200)
-				self.session.view.renderer['GenericRenderer'].addLine(self.__class__._SELECTION_RECTANGLE_NAME,
-				                                                      fife.RendererNode(d), fife.RendererNode(c), 200, 200, 200)
-				self.session.view.renderer['GenericRenderer'].addLine(self.__class__._SELECTION_RECTANGLE_NAME,
-				                                                      fife.RendererNode(a), fife.RendererNode(d), 200, 200, 200)
-
+				xmin, xmax = min(x, xx), max(x, xx)
+				ymin, ymax = min(y, yy), max(y, yy)
+				a = fife.Point(xmin, ymin)
+				b = fife.Point(xmax, ymin)
+				c = fife.Point(xmax, ymax)
+				d = fife.Point(xmin, ymax)
+				self._draw_rect_line(a, b)
+				self._draw_rect_line(b, c)
+				self._draw_rect_line(d, c)
+				self._draw_rect_line(d, a)
+				area = fife.Rect(xmin, ymin, xmax - xmin, ymax - ymin)
+			else:
+				area = fife.ScreenPoint(xx, yy)
 			instances = self.session.view.cam.getMatchingInstances(
-				fife.Rect(min(self.select_begin[0], evt.getX()),
-						min(self.select_begin[1], evt.getY()),
-						abs(evt.getX() - self.select_begin[0]),
-						abs(evt.getY() - self.select_begin[1])) if do_multi else fife.ScreenPoint(evt.getX(), evt.getY()),
+				area,
 				self.session.view.layers[LAYERS.OBJECTS],
 				False) # False for accurate
 
@@ -207,6 +202,12 @@ class SelectionTool(NavigationTool):
 			return
 		evt.consume()
 
+	def _draw_rect_line(self, start, end):
+		renderer = self.session.view.renderer['GenericRenderer']
+		renderer.addLine(self.__class__._SELECTION_RECTANGLE_NAME,
+		                 fife.RendererNode(start), fife.RendererNode(end),
+		                 200, 200, 200)
+
 	def _update_selection(self, instances, do_multi=False):
 		"""
 		self.select_old are old instances still relevant now (esp. on ctrl)
@@ -235,7 +236,7 @@ class SelectionTool(NavigationTool):
 
 		# apply changes
 		selected_components = set(self.filter_component(SelectableComponent,
-					  self.filter_selectable(self.session.selected_instances)))
+		                          self.filter_selectable(self.session.selected_instances)))
 		for sel_comp in selected_components - selectable:
 			sel_comp.deselect()
 		for sel_comp in selectable - selected_components:
