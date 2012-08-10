@@ -157,7 +157,8 @@ class SelectionTool(NavigationTool):
 			iter(selected).next().get_component(SelectableComponent).show_menu()
 
 		#change session cursor to attacking tool if selected instances can attack
-		from attackingtool import AttackingTool
+		# local import to prevent cycle
+		from horizons.gui.mousetools.attackingtool import AttackingTool
 		attacking_unit_found = False
 		for i in selected:
 			if hasattr(i, 'attack') and i.owner == self.session.world.player:
