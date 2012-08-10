@@ -47,7 +47,7 @@ class Inventory(pychan.widgets.Container):
 		self.__inited = False
 		self.uncached = uncached
 		self.display_legend = display_legend
-		self.items_per_line = items_per_line
+		self.items_per_line = items_per_line or 1 # negative values are fine, 0 is not
 
 	def init(self, db, inventory, ordinal=None):
 		"""
@@ -116,9 +116,7 @@ class Inventory(pychan.widgets.Container):
 			button.button.name = "inventory_entry_%s" % index # required for gui tests
 			current_hbox.addChild(button)
 
-			# old code to do this, which was bad but kept for reference
-			#if index % ((vbox.width/(self.__class__.icon_width + 10))) < 0 and index != 0:
-			if index % self.items_per_line == (self.items_per_line - 1) and index != 0:
+			if index % self.items_per_line == self.items_per_line - 1:
 				vbox.addChild(current_hbox)
 				current_hbox = pychan.widgets.HBox(padding=0)
 			index += 1

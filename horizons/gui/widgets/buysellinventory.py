@@ -45,8 +45,8 @@ class BuySellInventory(pychan.widgets.Container):
 		super(BuySellInventory, self).__init__(**kwargs)
 		self._inventory = None
 		self.__inited = False
-		self.items_per_line = items_per_line
 		self.uncached = uncached
+		self.items_per_line = items_per_line or 1
 
 	def init(self, db, inventory, limits, selling):
 		if not self.__inited or self._inventory is not inventory or \
@@ -78,7 +78,7 @@ class BuySellInventory(pychan.widgets.Container):
 			button.button.name = "buy_sell_inventory_%s_entry_%s" % (self._selling, index) # for tests
 			current_hbox.addChild(button)
 
-			if index % self.items_per_line == (self.items_per_line - 1) and index != 0:
+			if index % self.items_per_line == self.items_per_line - 1:
 				vbox.addChild(current_hbox)
 				current_hbox = pychan.widgets.HBox(padding = 0)
 			index += 1
