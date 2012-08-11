@@ -552,10 +552,10 @@ class ResourceOverviewBar(object):
 			  })
 
 			images = [ # these must correspond to the entries in _update_stats
-				"content/gui/images/resbar_stats/gold_icon.png",
-				"content/gui/images/resbar_stats/tools_icon.png",
-				"content/gui/images/resbar_stats/tools_icon.png",
-				"content/gui/images/resbar_stats/tools_icon.png",
+				"content/gui/images/resbar_stats/expense.png",
+				"content/gui/images/resbar_stats/income.png",
+				"content/gui/images/resbar_stats/buy.png",
+				"content/gui/images/resbar_stats/sell.png",
 				"content/gui/images/resbar_stats/scales_icon.png",
 			  ]
 
