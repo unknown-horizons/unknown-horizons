@@ -27,6 +27,7 @@ from horizons.ai.aiplayer.behavior import BehaviorManager
 from horizons.ai.aiplayer.combat.unitmanager import UnitManager
 from horizons.constants import LAYERS, AI
 from horizons.ext.enum import Enum
+from horizons.util.shapes.point import Point
 from horizons.util.worldobject import WorldObject
 
 
@@ -40,6 +41,8 @@ class CombatManager(object):
 	# states to keep track of combat movement of each ship.
 	shipStates = Enum('idle', 'attacking', 'moving', 'fleeing')
 
+	combat_range = 18
+
 	def __init__(self, owner):
 		super(CombatManager, self).__init__()
 		self.__init(owner)
@@ -52,6 +55,20 @@ class CombatManager(object):
 
 		# Dictionary of ship => shipState
 		self.ships = WeakKeyDictionary()
+
+	@classmethod
+	def close_range(cls, ship):
+		"""
+		Range used when wanting to get close to ships.
+		"""
+		return (2*ship._max_range + ship._min_range)/3 + 1
+
+	@classmethod
+	def fallback_range(cls, ship):
+		"""
+		Range used when wanting to get away from ships.
+		"""
+		return cls.combat_range - 1
 
 	def save(self, db):
 		for ship, state in self.ships.iteritems():
@@ -93,7 +110,7 @@ class CombatManager(object):
 		if not ship_group:
 			mission.abort_mission()
 
-		ships_around = self.unit_manager.find_ships_near_group(ship_group)
+		ships_around = self.unit_manager.find_ships_near_group(ship_group, self.combat_range)
 		ships_around = self.unit_manager.filter_ships(ships_around, (filters.hostile(), ))
 		pirate_ships = self.unit_manager.filter_ships(ships_around, (filters.pirate(), ))
 		fighting_ships = self.unit_manager.filter_ships(ships_around, (filters.fighting(), ))
@@ -176,12 +193,10 @@ class CombatManager(object):
 			else:
 				self._add_fake_tile(tup[0], tup[1], layer, renderer, color)
 
-	def _highlight_circle(self, position, radius, color, border_color=None):
-		points = self.session.world.get_points_in_radius(position, radius)
-		self._highlight_points(points, color)
-		if border_color:
-			points = self.session.world.get_points_in_radius(position, radius - 1)
-			self._highlight_points(points, border_color)
+	def _highlight_circle(self, position, radius, color):
+		points = set(self.session.world.get_points_in_radius(position, radius))
+		points2 = set(self.session.world.get_points_in_radius(position, radius-1))
+		self._highlight_points(list(points-points2), color)
 
 	def display(self):
 		"""
@@ -190,21 +205,23 @@ class CombatManager(object):
 		if not AI.HIGHLIGHT_COMBAT:
 			return
 
-		combat_range_color = (180, 0, 0)
-		combat_range_color_border = (255, 0, 0)
-		attack_range_color = (150, 100, 0)
-		attack_range_color_border = (200, 160, 0)
+		combat_range_color = (80, 0, 250)
+		attack_range_color = (255, 0, 0)
 		close_range_color = (0, 0, 100)
-		close_range_color_border = (0, 0, 200)
+		fallback_range_color = (0, 180, 100)
+		center_point_color = (0, 200, 0)
 
 		self._clear_fake_tiles()
 		self._init_fake_tile()
 
 		for ship, state in self.ships.iteritems():
-			range = self.unit_manager.combat_range
-			self._highlight_circle(ship.position, range, combat_range_color, combat_range_color_border)
-			self._highlight_circle(ship.position, 15, attack_range_color, attack_range_color_border)
-			self._highlight_circle(ship.position, 10, close_range_color, close_range_color_border)
+			range = self.combat_range
+			self._highlight_circle(ship.position, range, combat_range_color)
+			self._highlight_circle(ship.position, self.close_range(ship), close_range_color)
+			self._highlight_circle(ship.position, self.fallback_range(ship), fallback_range_color)
+			self._highlight_circle(ship.position, ship._max_range, attack_range_color)
+			self._highlight_circle(ship.position, ship._min_range, attack_range_color)
+			self._highlight_points([ship.position], center_point_color)
 
 	def handle_uncertain_combat(self, mission):
 		"""
@@ -214,7 +231,7 @@ class CombatManager(object):
 
 		# test first whether requesting for combat is of any use (any ships nearby)
 		ship_group = mission.fleet.get_ships()
-		ships_around = self.unit_manager.find_ships_near_group(ship_group)
+		ships_around = self.unit_manager.find_ships_near_group(ship_group, self.combat_range)
 		ships_around = self.unit_manager.filter_ships(ships_around, (filters.hostile()))
 		pirate_ships = self.unit_manager.filter_ships(ships_around, (filters.pirate(), ))
 		fighting_ships = self.unit_manager.filter_ships(ships_around, (filters.fighting(), ))
@@ -245,7 +262,7 @@ class CombatManager(object):
 			ship_group = [ship, ]
 			# TODO: create artificial groups by dividing ships that are near into groups based on their distance
 
-			ships_around = self.unit_manager.find_ships_near_group(ship_group)
+			ships_around = self.unit_manager.find_ships_near_group(ship_group, self.combat_range)
 			pirate_ships = self.unit_manager.filter_ships(ships_around, (filters.pirate(), ))
 			fighting_ships = self.unit_manager.filter_ships(ships_around, (filters.fighting(), ))
 			working_ships = self.unit_manager.filter_ships(ships_around, (filters.working(), ))
@@ -321,7 +338,7 @@ class PirateCombatManager(CombatManager):
 		if not ship_group:
 			mission.abort_mission()
 
-		ships_around = self.unit_manager.find_ships_near_group(ship_group)
+		ships_around = self.unit_manager.find_ships_near_group(ship_group, self.combat_range)
 		ships_around = self.unit_manager.filter_ships(ships_around, (filters.hostile(), ))
 		fighting_ships = self.unit_manager.filter_ships(ships_around, (filters.fighting(), ))
 		working_ships = self.unit_manager.filter_ships(ships_around, (filters.working(), ))
@@ -351,7 +368,7 @@ class PirateCombatManager(CombatManager):
 
 		# test first whether requesting for combat is of any use (any ships nearby)
 		ship_group = mission.fleet.get_ships()
-		ships_around = self.unit_manager.find_ships_near_group(ship_group)
+		ships_around = self.unit_manager.find_ships_near_group(ship_group, self.combat_range)
 		ships_around = self.unit_manager.filter_ships(ships_around, (filters.hostile()))
 		fighting_ships = self.unit_manager.filter_ships(ships_around, (filters.fighting(), ))
 		working_ships = self.unit_manager.filter_ships(ships_around, (filters.working(), ))
@@ -376,7 +393,7 @@ class PirateCombatManager(CombatManager):
 			# Turn into one-ship group, since reasoning is based around groups of ships
 			ship_group = [ship, ]
 
-			ships_around = self.unit_manager.find_ships_near_group(ship_group)
+			ships_around = self.unit_manager.find_ships_near_group(ship_group, self.combat_range)
 			fighting_ships = self.unit_manager.filter_ships(ships_around, (filters.fighting(), ))
 			working_ships = self.unit_manager.filter_ships(ships_around, (filters.working(), ))
 			environment = {'ship_group': ship_group}

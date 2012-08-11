@@ -26,7 +26,7 @@ from horizons.ai.aiplayer.behavior import BehaviorManager
 
 from horizons.ai.aiplayer.behavior.behaviorcomponents import BehaviorPirateHater, BehaviorCoward,\
 	BehaviorKeepFleetTogether, BehaviorRegular, BehaviorPirateRoutine, BehaviorBreakDiplomacy,\
-	BehaviorDoNothing, BehaviorRegularPirate, BehaviorAggressive, BehaviorAggressivePirate
+	BehaviorDoNothing, BehaviorRegularPirate, BehaviorAggressive, BehaviorAggressivePirate, BehaviorDebug
 from horizons.ai.aiplayer.strategy.condition import ConditionNeutral, ConditionSharingSettlement, ConditionHostile, ConditionDebug, ConditionPirateRoutinePossible
 
 
@@ -40,6 +40,23 @@ class BehaviorProfile(object):
 		self.actions = dict(((action_type, dict()) for action_type in BehaviorManager.action_types))
 		self.strategies = dict(((strategy_type, dict()) for strategy_type in BehaviorManager.strategy_types))
 		self.conditions = {}
+
+
+class BehaviorProfileDebug(BehaviorProfile):
+
+	def __init__(self, player):
+		super(BehaviorProfileDebug, self).__init__()
+
+		self.conditions = {
+			ConditionHostile(player): 1.1,
+			ConditionSharingSettlement(player): 1.0,
+			ConditionNeutral(player): 0.3,
+		}
+
+		self.actions[BehaviorManager.action_types.offensive][BehaviorDebug(player)] = 1.0
+
+		self.strategies[BehaviorManager.strategy_types.offensive][BehaviorRegular(player)] = 1.0
+		self.strategies[BehaviorManager.strategy_types.diplomatic][BehaviorAggressive(player)] = 0.02
 
 
 class BehaviorProfileAggressive(BehaviorProfile):
@@ -140,8 +157,9 @@ class BehaviorProfileManager(object):
 # actions, strategies and conditions are encapsulated inside a profile itself.
 def get_available_player_profiles():
 	return (
-		(BehaviorProfileAggressive, 0.4),
-		(BehaviorProfileBalanced, 0.6),
+		#(BehaviorProfileAggressive, 0.4),
+		#(BehaviorProfileBalanced, 0.6),
+		(BehaviorProfileDebug, 1.0),
 	)
 
 def get_available_pirate_profiles():

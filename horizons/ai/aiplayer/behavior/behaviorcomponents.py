@@ -20,6 +20,7 @@
 # ###################################################
 from collections import defaultdict
 from horizons.ai.aiplayer.behavior.movecallbacks import BehaviorMoveCallback
+from horizons.ai.aiplayer.combat.combatmanager import CombatManager
 from horizons.ai.aiplayer.strategy.mission.chaseshipsandattack import ChaseShipsAndAttack
 from horizons.ai.aiplayer.strategy.mission.pirateroutine import PirateRoutine
 from horizons.ai.aiplayer.strategy.mission.scouting import ScoutingMission
@@ -55,7 +56,9 @@ class BehaviorComponent(object):
 		self._certainty = defaultdict(lambda: (lambda **env: self.default_certainty))
 
 	def certainty(self, action_name, **environment):
-		return self._certainty[action_name](**environment)
+		certainty = self._certainty[action_name](**environment)
+		assert certainty is not None, "Certainty function returned None instead of a float. Certainty in %s for %s" % (self.__class__.__name__, action_name)
+		return certainty
 
 # Components below are roughly divided into "Aggressive, Normal,Cautious" etc.
 # (division below is not related to the way dictionaries in BehaviorManager are named (offensive, idle, defensive))
@@ -277,12 +280,12 @@ class BehaviorRegular(BehaviorComponent):
 		ship_group = environment['ship_group']
 		power_balance = environment['power_balance']
 
-		if power_balance >= self.power_balance_threshold:
+		if power_balance > self.power_balance_threshold:
 			BehaviorComponent.log.info('%s: Enemy group is too strong', self.__class__.__name__)
 			return
 
 		if self.session.world.diplomacy.are_enemies(self.owner, enemies[0].owner):
-			ship_pairs = UnitManager.get_closest_ships_for_each(ship_group, pirates)
+			ship_pairs = UnitManager.get_closest_ships_for_each(ship_group, enemies)
 			for ship, enemy_ship in ship_pairs:
 				ship.attack(enemy_ship)
 
@@ -384,7 +387,7 @@ class BehaviorAggressive(BehaviorComponent):
 		self._certainty['fighting_ships_in_sight'] = self._certainty_fighting_ships_in_sight
 
 	def _certainty_fighting_ships_in_sight(self, **environment):
-		pass
+		return self.default_certainty
 
 	def fighting_ships_in_sight(self, **environment):
 		"""
@@ -466,6 +469,39 @@ class BehaviorDebug(BehaviorComponent):
 		idle_ships = environment['idle_ships']
 		mission = ScoutingMission.create(self.owner.strategy_manager.report_success, self.owner.strategy_manager.report_failure, idle_ships)
 		return mission
+
+	def fighting_ships_in_sight(self, **environment):
+		"""
+		Attacks frigates only if they are enemies already and the power balance is advantageous.
+		"""
+		enemies = environment['enemies']
+		ship_group = environment['ship_group']
+		power_balance = environment['power_balance']
+
+		range_function = CombatManager.close_range if power_balance>=1.0 else CombatManager.fallback_range
+
+		if self.session.world.diplomacy.are_enemies(self.owner, enemies[0].owner):
+			ship_pairs = UnitManager.get_closest_ships_for_each(ship_group, enemies)
+			for ship, enemy_ship in ship_pairs:
+				BehaviorMoveCallback.attack_from_range(ship, enemy_ship, range_function(ship))
+			BehaviorComponent.log.info('%s: Attacked ship', self.__class__.__name__)
+		else:
+			BehaviorComponent.log.info('%s: Enemy ship was not hostile', self.__class__.__name__)
+
+	def working_ships_in_sight(self, **environment):
+		"""
+		Attacks working ships only if they are hostile.
+		"""
+		enemies = environment['enemies']
+		ship_group = environment['ship_group']
+
+		if self.session.world.diplomacy.are_enemies(self.owner, enemies[0].owner):
+			for ship in ship_group:
+				ship.attack(enemies[0])
+			BehaviorComponent.log.info('%s: Attacked enemy ship', self.__class__.__name__)
+		else:
+			BehaviorComponent.log.info('%s: Enemy worker was not hostile', self.__class__.__name__)
+
 
 
 class BehaviorRegularPirate(BehaviorComponent):

@@ -55,10 +55,6 @@ class UnitManager(object):
 		# quickly get fleet assigned to given ship. Ship -> Fleet dictionary
 		self.ships = weakref.WeakKeyDictionary()
 
-		# TODO: Make profile dependent, e.g. larger combat range for more aggressive players
-		# OR NOT, because it's an value related more to perception rather than behavior.
-		self.combat_range = 18
-
 		# fleets
 		self.fleets = set()
 
@@ -202,6 +198,15 @@ class UnitManager(object):
 		return closest
 
 	@classmethod
+	def get_best_targets_for_each(cls, ship_group, enemies):
+		"""
+		For each ship in ship_group return an index of ship from enemies that is the closest to given ship.
+		For example ship_group=[A, B, C] , enemies = [X, Y, Z],
+		could return [(A,X), (B,Y), (C,Y)] if X was the closest to A and Y was the closest ship to both B and C
+		"""
+		pass
+
+	@classmethod
 	def calculate_power_balance(cls, ship_group, enemy_ship_group):
 		"""
 		Calculate power balance between two groups of ships.
@@ -233,10 +238,7 @@ class UnitManager(object):
 		diagonal = bottom_left.distance_to_point(top_right)
 		return diagonal
 
-	def find_ships_near_group(self, ship_group, radius=None):
-		if not radius:
-			radius = self.combat_range
-
+	def find_ships_near_group(self, ship_group, radius):
 		other_ships_set = set()
 		for ship in ship_group:
 			nearby_ships = ship.find_nearby_ships(radius)

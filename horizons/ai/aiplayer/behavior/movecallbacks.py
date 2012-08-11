@@ -20,8 +20,10 @@
 # ###################################################
 
 import logging
+from horizons.ai.aiplayer.combat.combatmanager import CombatManager
 from horizons.component.namedcomponent import NamedComponent
 from horizons.util.python.callback import Callback
+from horizons.util.shapes.annulus import Annulus
 from horizons.util.shapes.circle import Circle
 from horizons.world.units.movingobject import MoveNotPossible
 
@@ -32,82 +34,26 @@ class BehaviorMoveCallback:
 	"""
 	log = logging.getLogger('ai.aiplayer.behavior.movecallbacks')
 
-	# when sending whole fleet somewhere don't specify exact point, so ships don't block each other
-	sail_point_range = 5
-
-	pirate_caught_ship_radius = 5
-	pirate_home_radius = 2
+	@classmethod
+	def _get_annulus(cls, position, range, range_delta):
+		return Annulus(position, max(0, range - range_delta), range + range_delta)
 
 	@classmethod
-	def _arrived(cls, ship):
+	def attack_from_range(cls, ship, enemy, range, range_delta=1):
 		"""
-		Callback function executed once ship arrives at the destination after certain action.
-		Be it after fleeing battle, sailing randomly, scouting etc.
-		Practically only changes ship state to idle.
+		Move to given range from ship and try to Attack.
 		"""
-		owner = ship.owner
-		cls.log.debug('Player %s: Ship %s: arrived at destination after "%s"' % (owner.name,
-			ship.get_component(NamedComponent).name, owner.ships[ship]))
-		owner.ships[ship] = owner.shipStates.idle
-
-	@classmethod
-	def _sail_near(cls, ship, point=None):
-		"""
-		Sends ship to a point nearby.
-		"""
-		owner = ship.owner
-		try:
-			ship.move(Circle(point, cls.sail_point_range), Callback(cls._arrived, ship))
-		except MoveNotPossible:
-			cls.log.debug("ScoutRandomlyNearby move was not possible -> go idle")
-
-	# Pirate moves and callbacks used for pirate routine
-	@classmethod
-	def _chase_closest_ship(cls, pirate_ship):
-		owner = pirate_ship.owner
-		ship = owner.get_nearest_player_ship(pirate_ship)
-		if ship:
-			owner.ships[pirate_ship] = owner.shipStates.chasing_ship
-
-			# if ship was caught
-			if ship.position.distance(pirate_ship.position) <= cls.pirate_caught_ship_radius:
-				cls.log.debug('Pirate %s: Ship %s(%s) caught %s' % (owner.worldid,
-					pirate_ship.get_component(NamedComponent).name, owner.ships[pirate_ship], ship))
-				cls._sail_home(pirate_ship)
-			else:
-				try:
-					pirate_ship.move(Circle(ship.position, cls.pirate_caught_ship_radius - 1), Callback(cls._sail_home, pirate_ship))
-					owner.ships[pirate_ship] = owner.shipStates.chasing_ship
-					cls.log.debug('Pirate %s: Ship %s(%s) chasing %s' % (owner.worldid,
-						pirate_ship.get_component(NamedComponent).name, owner.ships[pirate_ship], ship.get_component(NamedComponent).name))
-				except MoveNotPossible:
-					cls.log.debug('Pirate %s: Ship %s(%s) unable to chase the closest ship %s' % (owner.worldid,
-						pirate_ship.get_component(NamedComponent).name, owner.ships[pirate_ship], ship.get_component(NamedComponent).name))
-					owner.ships[pirate_ship] = owner.shipStates.idle
-
-	@classmethod
-	def _sail_home(cls, pirate_ship):
-		owner = pirate_ship.owner
-		try:
-			pirate_ship.move(Circle(owner.home_point, cls.pirate_home_radius), Callback(cls._arrived, pirate_ship))
-			owner.ships[pirate_ship] = owner.shipStates.going_home
-			cls.log.debug('Pirate %s: Ship %s(%s): sailing home at %s' % (owner.worldid, pirate_ship.get_component(NamedComponent).name,
-				owner.ships[pirate_ship], owner.home_point))
-		except MoveNotPossible:
-			owner.ships[pirate_ship] = owner.shipStates.idle
-			cls.log.debug('Pirate %s: Ship %s: unable to move home at %s' % (owner.worldid, pirate_ship.get_component(NamedComponent).name, owner.home_point))
-
-	@classmethod
-	def _sail_random(cls, pirate_ship):
-
-		owner = pirate_ship.owner
-		session = owner.session
-		point = session.world.get_random_possible_ship_position()
-		try:
-			pirate_ship.move(point, Callback(cls._arrived, pirate_ship))
-			owner.ships[pirate_ship] = owner.shipStates.moving_random
-			cls.log.debug('Pirate %s: Ship %s(%s): moving random at %s' % (owner.worldid, pirate_ship.get_component(NamedComponent).name,
-				owner.ships[pirate_ship], point))
-		except MoveNotPossible:
-			owner.ships[pirate_ship] = owner.shipStates.idle
-			cls.log.debug('Pirate %s: Ship %s: unable to move random at %s' % (owner.worldid, pirate_ship.get_component(NamedComponent).name, point))
+		args = (ship, enemy, range, range_delta,)
+		distance = ship.position.distance(enemy.position)
+		cls.log.debug("attack_from_range: Ship: %s, Enemy: %s, distance: %s, range: %s, range_delta: %s", ship.get_component(NamedComponent).name,
+			enemy.get_component(NamedComponent).name, distance, range, range_delta)
+		if abs(distance - range) > range_delta:
+			try:
+				target = cls._get_annulus(enemy.position, range, range_delta)
+				ship.move(target, callback=Callback(cls.attack_from_range, *args))
+				cls.log.debug("%s: attack_from_range: Moving towards the target", cls.__name__)
+			except MoveNotPossible:
+				cls.log.debug("%s: attack_from_range: Move was not possible", cls.__name__)
+		else:
+			cls.log.debug("%s: attack_from_range: Attacked enemy unit", cls.__name__)
+			ship.attack(enemy)
