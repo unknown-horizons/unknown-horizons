@@ -147,13 +147,13 @@ class UnitManager(object):
 		"""
 		return lambda ship: self.session.world.diplomacy.are_enemies(self.owner, ship.owner)
 
-	def _ship_state_rule(self, ship_states):
+	def _ship_state_rule(self, state_dict, ship_states):
 		"""
 		Rule stating that ship has to be in any of given states.
 		"""
 		if not isinstance(ship_states, collections.Iterable):
 			ship_states = (ship_states,)
-		return lambda ship: (ship.owner.ships[ship] in ship_states)
+		return lambda ship: (state_dict[ship] in ship_states)
 
 	def _ship_not_in_fleet(self):
 		"""

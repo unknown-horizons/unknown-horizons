@@ -18,6 +18,7 @@
 # Free Software Foundation, Inc.,
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
+from collections import defaultdict
 
 import logging
 from fife import fife
@@ -25,8 +26,10 @@ from weakref import WeakKeyDictionary
 import horizons
 from horizons.ai.aiplayer.behavior import BehaviorManager
 from horizons.ai.aiplayer.combat.unitmanager import UnitManager
+from horizons.component.namedcomponent import NamedComponent
 from horizons.constants import LAYERS, AI
 from horizons.ext.enum import Enum
+from horizons.util.python.defaultweakkeydictionary import DefaultWeakKeyDictionary
 from horizons.util.shapes.point import Point
 from horizons.util.worldobject import WorldObject
 
@@ -36,10 +39,11 @@ class CombatManager(object):
 	CombatManager object is responsible for handling close combat in game.
 	It scans the environment (lookout) and requests certain actions from behavior
 	"""
-	log = logging.getLogger("ai.aiplayer.behavior.combatmanager")
+	log = logging.getLogger("ai.aiplayer.combat.combatmanager")
 
 	# states to keep track of combat movement of each ship.
-	shipStates = Enum('idle', 'attacking', 'moving', 'fleeing')
+
+	shipStates = Enum('idle', 'moving_and_attacking', 'moving')
 
 	combat_range = 18
 
@@ -54,7 +58,7 @@ class CombatManager(object):
 		self.session = owner.session
 
 		# Dictionary of ship => shipState
-		self.ships = WeakKeyDictionary()
+		self.ships = DefaultWeakKeyDictionary(lambda ship: self.shipStates.idle)
 
 	@classmethod
 	def close_range(cls, ship):
@@ -74,10 +78,18 @@ class CombatManager(object):
 		for ship, state in self.ships.iteritems():
 			db("INSERT INTO ai_combat_ship (owner_id, ship_id, state_id) VALUES (?, ?, ?)", self.owner.worldid, ship.worldid, state.index)
 
+	def set_ship_state(self, ship, state):
+		self.ships[ship] = state
+
+	def get_ship_state(self, ship):
+		if ship not in self.ships:
+			self.ships[ship] = self.shipStates.idle
+		return self.ships[ship]
+
 	def add_new_unit(self, ship, state=None):
 		if not state:
 			state = self.shipStates.idle
-		self.ships[ship] = state
+		self.set_ship_state(ship, state)
 
 	def remove_unit(self, ship):
 		if ship in self.ships:
@@ -97,47 +109,6 @@ class CombatManager(object):
 			ship = WorldObject.get_object_by_id(ship_id)
 			state = self.shipStates[state_id]
 			self.add_new_unit(ship, state)
-
-	def handle_mission_combat(self, mission):
-		"""
-		Routine for handling combat in mission that requests for it.
-		"""
-		filters = self.unit_manager.filtering_rules
-		fleet = mission.fleet
-
-		ship_group = fleet.get_ships()
-
-		if not ship_group:
-			mission.abort_mission()
-
-		ships_around = self.unit_manager.find_ships_near_group(ship_group, self.combat_range)
-		ships_around = self.unit_manager.filter_ships(ships_around, (filters.hostile(), ))
-		pirate_ships = self.unit_manager.filter_ships(ships_around, (filters.pirate(), ))
-		fighting_ships = self.unit_manager.filter_ships(ships_around, (filters.fighting(), ))
-		working_ships = self.unit_manager.filter_ships(ships_around, (filters.working(), ))
-
-		environment = {'ship_group': ship_group}
-
-		# begin combat if it's still unresolved
-		if fighting_ships:
-			environment['enemies'] = fighting_ships
-			environment['power_balance'] = UnitManager.calculate_power_balance(ship_group, fighting_ships)
-			self.log.debug("Player: %s vs Player: %s -> power_balance:%s", self.owner.name, fighting_ships[0].owner.name, environment['power_balance'])
-			self.owner.behavior_manager.request_action(BehaviorManager.action_types.offensive,
-				'fighting_ships_in_sight', **environment)
-		elif pirate_ships:
-			environment['enemies'] = pirate_ships
-			environment['power_balance'] = UnitManager.calculate_power_balance(ship_group, pirate_ships)
-			self.log.debug("Player: %s vs Player: %s -> power_balance:%s", self.owner.name, pirate_ships[0].owner.name, environment['power_balance'])
-			self.owner.behavior_manager.request_action(BehaviorManager.action_types.offensive,
-				'pirate_ships_in_sight', **environment)
-		elif working_ships:
-			environment['enemies'] = working_ships
-			self.owner.behavior_manager.request_action(BehaviorManager.action_types.offensive,
-				'working_ships_in_sight', **environment)
-		else:
-			# no one else is around to fight -> continue mission
-			mission.continue_mission()
 
 	# DISPLAY-RELATED FUNCTIONS
 	def _init_fake_tile(self):
@@ -223,6 +194,48 @@ class CombatManager(object):
 			self._highlight_circle(ship.position, ship._min_range, attack_range_color)
 			self._highlight_points([ship.position], center_point_color)
 
+	def handle_mission_combat(self, mission):
+		"""
+		Routine for handling combat in mission that requests for it.
+		"""
+		filters = self.unit_manager.filtering_rules
+		fleet = mission.fleet
+
+		ship_group = fleet.get_ships()
+		ship_group = self.unit_manager.filter_ships(ship_group, (filters.ship_state(self.ships, self.shipStates.idle)))
+
+		if not ship_group:
+			mission.abort_mission()
+
+		ships_around = self.unit_manager.find_ships_near_group(ship_group, self.combat_range)
+		ships_around = self.unit_manager.filter_ships(ships_around, (filters.hostile(), ))
+		pirate_ships = self.unit_manager.filter_ships(ships_around, (filters.pirate(), ))
+		fighting_ships = self.unit_manager.filter_ships(ships_around, (filters.fighting(), ))
+		working_ships = self.unit_manager.filter_ships(ships_around, (filters.working(), ))
+
+		environment = {'ship_group': ship_group}
+
+		# begin combat if it's still unresolved
+		if fighting_ships:
+			environment['enemies'] = fighting_ships
+			environment['power_balance'] = UnitManager.calculate_power_balance(ship_group, fighting_ships)
+			self.log.debug("Player: %s vs Player: %s -> power_balance:%s", self.owner.name, fighting_ships[0].owner.name, environment['power_balance'])
+			self.owner.behavior_manager.request_action(BehaviorManager.action_types.offensive,
+				'fighting_ships_in_sight', **environment)
+		elif pirate_ships:
+			environment['enemies'] = pirate_ships
+			environment['power_balance'] = UnitManager.calculate_power_balance(ship_group, pirate_ships)
+			self.log.debug("Player: %s vs Player: %s -> power_balance:%s", self.owner.name, pirate_ships[0].owner.name, environment['power_balance'])
+			self.owner.behavior_manager.request_action(BehaviorManager.action_types.offensive,
+				'pirate_ships_in_sight', **environment)
+		elif working_ships:
+			environment['enemies'] = working_ships
+			self.owner.behavior_manager.request_action(BehaviorManager.action_types.offensive,
+				'working_ships_in_sight', **environment)
+		else:
+			# no one else is around to fight -> continue mission
+			mission.continue_mission()
+
 	def handle_uncertain_combat(self, mission):
 		"""
 		Handles fleets that may way to be in combat.
@@ -231,6 +244,9 @@ class CombatManager(object):
 
 		# test first whether requesting for combat is of any use (any ships nearby)
 		ship_group = mission.fleet.get_ships()
+
+		# filter out ships that are already doing a combat move
+		ship_group = self.unit_manager.filter_ships(ship_group, (filters.ship_state(self.ships, self.shipStates.idle)))
 		ships_around = self.unit_manager.find_ships_near_group(ship_group, self.combat_range)
 		ships_around = self.unit_manager.filter_ships(ships_around, (filters.hostile()))
 		pirate_ships = self.unit_manager.filter_ships(ships_around, (filters.pirate(), ))
@@ -256,7 +272,7 @@ class CombatManager(object):
 		"""
 		filters = self.unit_manager.filtering_rules
 
-		rules = (filters.not_in_fleet(), filters.fighting())
+		rules = (filters.not_in_fleet(), filters.fighting(), filters.ship_state(self.ships, self.shipStates.idle))
 		for ship in self.unit_manager.get_ships(rules):
 			# Turn into one-ship group, since reasoning is based around groups of ships
 			ship_group = [ship, ]
@@ -309,6 +325,12 @@ class CombatManager(object):
 		# handle idle ships that are wandering around the map
 		self.handle_casual_combat()
 
+		# Log ship states every tick
+		if self.log.isEnabledFor(logging.DEBUG):
+			self.log.debug("Player:%s Ships combat states:", self.owner.name)
+			for ship, state in self.ships.iteritems():
+				self.log.debug(" %s: %s", ship.get_component(NamedComponent).name, state)
+
 	def tick(self):
 		self.lookout()
 		self.display()
@@ -334,6 +356,7 @@ class PirateCombatManager(CombatManager):
 		fleet = mission.fleet
 
 		ship_group = fleet.get_ships()
+		ship_group = self.unit_manager.filter_ships(ship_group, (filters.ship_state(self.ships, self.shipStates.idle)))
 
 		if not ship_group:
 			mission.abort_mission()
@@ -368,6 +391,7 @@ class PirateCombatManager(CombatManager):
 
 		# test first whether requesting for combat is of any use (any ships nearby)
 		ship_group = mission.fleet.get_ships()
+		ship_group = self.unit_manager.filter_ships(ship_group, (filters.ship_state(self.ships, self.shipStates.idle)))
 		ships_around = self.unit_manager.find_ships_near_group(ship_group, self.combat_range)
 		ships_around = self.unit_manager.filter_ships(ships_around, (filters.hostile()))
 		fighting_ships = self.unit_manager.filter_ships(ships_around, (filters.fighting(), ))
@@ -388,7 +412,7 @@ class PirateCombatManager(CombatManager):
 		"""
 		filters = self.unit_manager.filtering_rules
 
-		rules = (filters.not_in_fleet(), filters.pirate(), )
+		rules = (filters.not_in_fleet(), filters.pirate(), filters.ship_state(self.ships, self.shipStates.idle))
 		for ship in self.unit_manager.get_ships(rules):
 			# Turn into one-ship group, since reasoning is based around groups of ships
 			ship_group = [ship, ]
