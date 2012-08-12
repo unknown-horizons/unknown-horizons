@@ -262,17 +262,14 @@ class IngameGui(LivingObject):
 			self.cityinfo.pos = ('center', 'top')
 			xoff = +0
 			yoff = +4
-			self.cityinfo.redraw_resbar = False
 		elif blocked < width < resbar[0] + blocked: # large resbar / small resolution
 			self.cityinfo.pos = ('center', 'top')
 			xoff = +0
 			yoff = -21 # upper screen edge
-			self.cityinfo.redraw_resbar = True
 		else:
 			self.cityinfo.pos = ('left', 'top')
 			xoff = resbar[0] + (width - blocked - resbar[0]) // 2
 			yoff = +4
-			self.cityinfo.redraw_resbar = False
 
 		self.cityinfo.offset = (xoff, yoff)
 		self.cityinfo.position_technique = "{pos[0]}{off[0]:+d}:{pos[1]}{off[1]:+d}".format(
@@ -280,8 +277,6 @@ class IngameGui(LivingObject):
 				off=self.cityinfo.offset )
 		self.cityinfo.hide()
 		self.cityinfo.show()
-		if self.cityinfo.redraw_resbar:
-			self.resource_overview.redraw()
 
 	def minimap_to_front(self):
 		"""Make sure the full right top gui is visible and not covered by some dialog"""

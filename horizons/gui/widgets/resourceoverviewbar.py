@@ -511,13 +511,12 @@ class ResourceOverviewBar(object):
 
 		self.resource_configurations[self.current_instance()] = res_copy
 
+		if number_of_slots_changed:
+			ResourceBarResize.broadcast(self)
 		self.redraw()
 
 		if isinstance(self.session.cursor, ResBarMouseTool):
 			self.session.cursor.reset()
-
-		if number_of_slots_changed:
-			ResourceBarResize.broadcast(self)
 
 	def _hide_resource_selection_dialog(self):
 		if hasattr(self, "_res_selection_dialog"):
