@@ -78,7 +78,8 @@ class Ship(Unit):
 		if self.session.view.has_change_listener(self.draw_health):
 			self.session.view.remove_change_listener(self.draw_health)
 		if self.in_ship_map:
-			del self.session.world.ship_map[self.position.to_tuple()]
+			if self.position.to_tuple() in self.session.world.ship_map:
+				del self.session.world.ship_map[self.position.to_tuple()]
 			if self._next_target.to_tuple() in self.session.world.ship_map:
 				del self.session.world.ship_map[self._next_target.to_tuple()]
 			self.in_ship_map = False
@@ -89,7 +90,7 @@ class Ship(Unit):
 
 	def _move_tick(self, resume=False):
 		"""Keeps track of the ship's position in the global ship_map"""
-		if self.in_ship_map:
+		if self.in_ship_map and self.position.to_tuple() in self.session.world.ship_map:
 			del self.session.world.ship_map[self.position.to_tuple()]
 
 		try:
