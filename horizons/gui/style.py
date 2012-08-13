@@ -194,16 +194,11 @@ STYLES = {
 			'foreground_color' : fife.Color(255,255,255),
 			'background_color' : fife.Color(0, 0, 0, 0),
 			'selection_color' : fife.Color(0,0,0,0),
-			'font' : 'large'
-		},
-		'Button' : {
-			'font' : '18',
-			'border_size': 0,
-			'margins' : (0,0)
-		},
-		'Label' : {
 			'font' : '18'
-		}
+		},
+		'Label': {
+			#HACK apply defaults to xml widgets without adaptLayout code
+		},
 },
 
 'headline': { # style for headlines
