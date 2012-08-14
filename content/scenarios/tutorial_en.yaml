@@ -69,7 +69,7 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - [Gallery, [
        "content/gui/icons/buildmenu/008.png",
        "content/gui/icons/buildmenu/015.png",
-       "content/gui/icons/resources/50/004.png",
+       "content/gui/icons/resources/32/004.png",
     ]]
 
 
@@ -98,7 +98,7 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - [Gallery, [
        "content/gui/icons/buildmenu/011_h.png",
        "content/gui/icons/buildmenu/009_h.png",
-       "content/gui/icons/resources/50/005.png",
+       "content/gui/icons/resources/32/005.png",
     ]]
 
 
@@ -212,7 +212,7 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - |
 
     TASK: Buy as many tools as you need to have 30 tools in stock!
-  - [Gallery, ["content/gui/icons/resources/50/006.png"]]
+  - [Gallery, ["content/gui/icons/resources/32/006.png"]]
 
 
 - &PAVILION
