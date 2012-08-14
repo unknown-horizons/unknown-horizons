@@ -457,22 +457,11 @@ class BehaviorCautious(BehaviorComponent):
 		return None
 
 
-class BehaviorDebug(BehaviorComponent):
-
-	def __init__(self, owner):
-		super(BehaviorDebug, self).__init__(owner)
-
-	def debug(self, **environment):
-		"""
-		For debugging purposes.
-		"""
-		idle_ships = environment['idle_ships']
-		mission = ScoutingMission.create(self.owner.strategy_manager.report_success, self.owner.strategy_manager.report_failure, idle_ships)
-		return mission
+class BehaviorSmart(BehaviorComponent):
 
 	def fighting_ships_in_sight(self, **environment):
 		"""
-		Attacks frigates only if they are enemies already and the power balance is advantageous.
+		Attacks frigates, and keeps distance based on power balance.
 		"""
 		enemies = environment['enemies']
 		ship_group = environment['ship_group']
@@ -486,11 +475,12 @@ class BehaviorDebug(BehaviorComponent):
 		ship_pairs = UnitManager.get_closest_ships_for_each(ship_group, enemies)
 		for ship, enemy_ship in ship_pairs:
 			if self.session.world.diplomacy.are_enemies(ship.owner, enemy_ship.owner):
-				BehaviorMoveCallback.attack_from_range(ship, enemy_ship, range_function(ship))
-				BehaviorComponent.log.info('%s: Attack: %s	%s', self.__class__.__name__,
+				BehaviorMoveCallback.maintain_distance_and_attack(ship, enemy_ship, range_function(ship))
+				BehaviorComponent.log.info('%s: Attack: %s -> %s', self.__class__.__name__,
 					ship.get_component(NamedComponent).name, enemy_ship.get_component(NamedComponent).name)
 			else:
-				BehaviorComponent.log.info('%s: Enemy ship was not hostile', self.__class__.__name__)
+				BehaviorComponent.log.info('%s: Enemy ship %s was not hostile', self.__class__.__name__,
+					ship.get_component(NamedComponent).name)
 
 	def working_ships_in_sight(self, **environment):
 		"""
@@ -500,12 +490,28 @@ class BehaviorDebug(BehaviorComponent):
 		ship_group = environment['ship_group']
 
 		if self.session.world.diplomacy.are_enemies(self.owner, enemies[0].owner):
-			for ship in ship_group:
-				ship.attack(enemies[0])
+			# working ships won't respond with fire, each ship should attack the closest one, and chase them if necessary.
+			ship_pairs = UnitManager.get_closest_ships_for_each(ship_group, enemies)
+			for ship, enemy_ship in ship_pairs:
+				range_function = CombatManager.close_range
+				BehaviorMoveCallback.maintain_distance_and_attack(ship, enemy_ship, range_function(ship))
 			BehaviorComponent.log.info('%s: Attacked enemy ship', self.__class__.__name__)
 		else:
 			BehaviorComponent.log.info('%s: Enemy worker was not hostile', self.__class__.__name__)
 
+
+class BehaviorDebug(BehaviorComponent):
+
+	def __init__(self, owner):
+		super(BehaviorDebug, self).__init__(owner)
+
+	def debug(self, **environment):
+		"""
+		For debugging purposes.
+		"""
+		idle_ships = environment['idle_ships']
+		mission = ScoutingMission.create(self.owner.strategy_manager.report_success, self.owner.strategy_manager.report_failure, idle_ships)
+		return mission
 
 
 class BehaviorRegularPirate(BehaviorComponent):

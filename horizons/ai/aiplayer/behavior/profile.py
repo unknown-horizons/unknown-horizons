@@ -26,7 +26,7 @@ from horizons.ai.aiplayer.behavior import BehaviorManager
 
 from horizons.ai.aiplayer.behavior.behaviorcomponents import BehaviorPirateHater, BehaviorCoward,\
 	BehaviorKeepFleetTogether, BehaviorRegular, BehaviorPirateRoutine, BehaviorBreakDiplomacy,\
-	BehaviorDoNothing, BehaviorRegularPirate, BehaviorAggressive, BehaviorAggressivePirate, BehaviorDebug
+	BehaviorDoNothing, BehaviorRegularPirate, BehaviorAggressive, BehaviorAggressivePirate, BehaviorDebug, BehaviorSmart
 from horizons.ai.aiplayer.strategy.condition import ConditionNeutral, ConditionSharingSettlement, ConditionHostile, ConditionDebug, ConditionPirateRoutinePossible
 
 
@@ -53,7 +53,7 @@ class BehaviorProfileDebug(BehaviorProfile):
 			ConditionNeutral(player): 0.3,
 		}
 
-		self.actions[BehaviorManager.action_types.offensive][BehaviorDebug(player)] = 1.0
+		self.actions[BehaviorManager.action_types.offensive][BehaviorSmart(player)] = 1.0
 
 		self.strategies[BehaviorManager.strategy_types.offensive][BehaviorRegular(player)] = 1.0
 		self.strategies[BehaviorManager.strategy_types.diplomatic][BehaviorAggressive(player)] = 0.02
