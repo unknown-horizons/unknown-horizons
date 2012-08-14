@@ -83,21 +83,6 @@ class StrategyManager(object):
 			for (mission_id,) in db_result:
 				self.missions.add(class_name.load(mission_id, self.owner, db, self.report_success, self.report_failure))
 
-		#TODO: Kept for debugging purposes, remove later
-		"""
-		db_result = db("SELECT m.rowid FROM ai_scouting_mission m, ai_fleet_mission f WHERE f.owner_id = ? and m.rowid = f.rowid", self.owner.worldid)
-		for (mission_id,) in db_result:
-			self.missions.add(ScoutingMission.load(mission_id, self.owner, db, self.report_success, self.report_failure))
-
-		db_result = db("SELECT m.rowid FROM ai_mission_surprise_attack m, ai_fleet_mission f WHERE f.owner_id = ? and m.rowid = f.rowid", self.owner.worldid)
-		for (mission_id,) in db_result:
-			self.missions.add(SurpriseAttack.load(mission_id, self.owner, db, self.report_success, self.report_failure))
-
-		db_result = db("SELECT m.rowid FROM ai_mission_chase_ships_and_attack m, ai_fleet_mission f WHERE f.owner_id = ? and m.rowid = f.rowid", self.owner.worldid)
-		for (mission_id,) in db_result:
-			self.missions.add(ChaseShipsAndAttack.load(mission_id, self.owner, db, self.report_success, self.report_failure))
-		"""
-
 		# load condition locks
 		db_result = db("SELECT condition, mission_id FROM ai_condition_lock WHERE owner_id = ?", self.owner.worldid)
 		for (condition, mission_id) in db_result:

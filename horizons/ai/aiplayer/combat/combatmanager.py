@@ -25,10 +25,12 @@ from fife import fife
 from weakref import WeakKeyDictionary
 import horizons
 from horizons.ai.aiplayer.behavior import BehaviorManager
+from horizons.ai.aiplayer.behavior.movecallbacks import BehaviorMoveCallback
 from horizons.ai.aiplayer.combat.unitmanager import UnitManager
 from horizons.component.namedcomponent import NamedComponent
 from horizons.constants import LAYERS, AI
 from horizons.ext.enum import Enum
+from horizons.util.python.callback import Callback
 from horizons.util.python.defaultweakkeydictionary import DefaultWeakKeyDictionary
 from horizons.util.shapes.point import Point
 from horizons.util.worldobject import WorldObject
@@ -43,7 +45,7 @@ class CombatManager(object):
 
 	# states to keep track of combat movement of each ship.
 
-	shipStates = Enum('idle', 'moving_and_attacking', 'moving')
+	shipStates = Enum('idle', 'moving')
 
 	combat_range = 18
 
@@ -89,6 +91,7 @@ class CombatManager(object):
 	def add_new_unit(self, ship, state=None):
 		if not state:
 			state = self.shipStates.idle
+
 		self.set_ship_state(ship, state)
 
 	def remove_unit(self, ship):
@@ -108,6 +111,11 @@ class CombatManager(object):
 		for (ship_id, state_id,) in db_result:
 			ship = WorldObject.get_object_by_id(ship_id)
 			state = self.shipStates[state_id]
+
+			# add move callbacks corresponding to given state
+			if state == self.shipStates.moving:
+				ship.add_move_callback(Callback(BehaviorMoveCallback._arrived, ship))
+
 			self.add_new_unit(ship, state)
 
 	# DISPLAY-RELATED FUNCTIONS
@@ -343,7 +351,7 @@ class PirateCombatManager(CombatManager):
 	"""
 	log = logging.getLogger("ai.aiplayer.piratecombatmanager")
 
-	shipStates = Enum.get_extended(CombatManager.shipStates, 'chasing_ship', 'going_home')  # also: idle, attacking, moving, fleeing
+	shipStates = Enum.get_extended(CombatManager.shipStates, 'chasing_ship', 'going_home')
 
 	def __init__(self, owner):
 		super(PirateCombatManager, self).__init__(owner)

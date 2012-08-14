@@ -20,7 +20,6 @@
 # ###################################################
 
 import logging
-from horizons.ai.aiplayer.combat.combatmanager import CombatManager
 from horizons.component.namedcomponent import NamedComponent
 from horizons.util.python.callback import Callback
 from horizons.util.shapes.annulus import Annulus
