@@ -239,7 +239,7 @@ class SavegameAccessor(DbReader):
 		h = hashlib.sha1()
 		h.update(fd.read())
 		filehash = h.hexdigest()
-		fd.close();
+		fd.close()
 		return filehash
 
 decorators.bind_all(SavegameAccessor)

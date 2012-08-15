@@ -274,7 +274,7 @@ class SoldierPather(AbstractPather):
 			# update list in island, so that new path calculations consider this obstacle
 			island.path_nodes.reset_tile_walkability(point)
 			self.log.debug("tile %s %s blocked for %s %s on island", point[0], point[1],
-										 self.unit, self.unit.worldid);
+										 self.unit, self.unit.worldid)
 			return path_blocked
 		else:
 			# also check in super class

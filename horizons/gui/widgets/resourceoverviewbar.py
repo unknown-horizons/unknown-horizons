@@ -570,10 +570,10 @@ class ResourceOverviewBar(object):
 			  })
 
 			images = [ # these must correspond to the entries in _update_stats
-				"content/gui/images/resbar_stats/gold_icon.png",
-				"content/gui/images/resbar_stats/tools_icon.png",
-				"content/gui/images/resbar_stats/tools_icon.png",
-				"content/gui/images/resbar_stats/tools_icon.png",
+				"content/gui/images/resbar_stats/expense.png",
+				"content/gui/images/resbar_stats/income.png",
+				"content/gui/images/resbar_stats/buy.png",
+				"content/gui/images/resbar_stats/sell.png",
 				"content/gui/images/resbar_stats/scales_icon.png",
 			  ]
 
@@ -601,19 +601,16 @@ class ResourceOverviewBar(object):
 		# fill in valies of stats, must correspond to images in _show_stats
 		format_display = lambda x : (u"+" if x >= 0 else u"") + unicode(x)
 		data = self.session.world.player.get_statistics()
-		# TODO: mark as expense
+
 		self.stats_gui.child_finder("resbar_stats_line_0").helptext = _("Running costs")
 		self.stats_gui.child_finder("resbar_stats_entry_0").text = format_display(-data.running_costs)
 
-		# TODO: mark as income
 		self.stats_gui.child_finder("resbar_stats_line_1").helptext = _("Taxes")
 		self.stats_gui.child_finder("resbar_stats_entry_1").text = format_display(data.taxes)
 
-		# TODO: mark as expense
 		self.stats_gui.child_finder("resbar_stats_line_2").helptext = _("Buy expenses")
 		self.stats_gui.child_finder("resbar_stats_entry_2").text = format_display(-data.buy_expenses)
 
-		# TODO: mark as income
 		self.stats_gui.child_finder("resbar_stats_line_3").helptext = _("Sell income")
 		self.stats_gui.child_finder("resbar_stats_entry_3").text = format_display(data.sell_income)
 
