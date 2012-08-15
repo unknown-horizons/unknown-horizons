@@ -211,9 +211,21 @@ class NavigationTool(CursorTool):
 
 		all_instances = []
 		for layer in layers:
+			x = where.getX()
+			y = where.getY()
 			instances = self.session.view.cam.getMatchingInstances(
-				fife.ScreenPoint(where.getX(), where.getY()),
+				fife.ScreenPoint(x, y),
 				self.session.view.layers[layer], False) # False for accurate
+
+			# if no instances found, try again and search within a 8px radius
+			if not instances:
+				selectionRadius = 8
+				radius = fife.Rect(x - selectionRadius, y - selectionRadius,
+				                   selectionRadius * 2, selectionRadius * 2)
+
+				instances = self.session.view.cam.getMatchingInstances(radius,
+									self.session.view.layers[layer])
+
 			all_instances.extend(instances)
 
 		hover_instances = []

@@ -300,7 +300,7 @@ class TradeRoute(ChangeListener):
 		if self.current_transfer:
 			for res, amount in self.current_transfer.iteritems():
 				db("INSERT INTO ship_route_current_transfer(ship_id, res, amount) VALUES(?, ?, ?)",
-				   worldid, res, amount);
+				   worldid, res, amount)
 
 		for entry in self.waypoints:
 			index = self.waypoints.index(entry)

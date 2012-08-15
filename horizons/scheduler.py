@@ -288,9 +288,6 @@ class _CallbackObject(object):
 
 		self.callback = callback
 
-		# TODO: check if this is used anywhere, it seems to be deprecated
-		self.scheduler = scheduler
-
 		self.run_in = run_in
 		self.loops = loops
 		self.loop_interval = loop_interval if loop_interval is not None else run_in
