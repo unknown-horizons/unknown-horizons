@@ -61,6 +61,15 @@ color: 68,42,2
 antialias: 1
 
 
+[Font/14_bold_light]
+
+type: truetype
+source: content/fonts/Unifont.ttf
+size: 15
+color: 188,154,114
+antialias: 1
+
+
 [Font/18_black]
 
 type: truetype
@@ -103,6 +112,15 @@ type: truetype
 source: content/fonts/Unifont.ttf
 size: 18
 color: 68,42,2
+antialias: 1
+
+
+[Font/headline_light]
+
+type: truetype
+source: content/fonts/Unifont.ttf
+size: 18
+color: 188,154,114
 antialias: 1
 
 

@@ -1019,6 +1019,8 @@ def set_translations():
 		("uninterrupted_building_label", "text"    ): _("Uninterrupted building:"),
 		# (text of widget: use_renderer_label)
 		("use_renderer_label"          , "text"    ): _("Used renderer:"),
+		# (text of widget: quote_type_label)
+		("quote_type_label"          , "text"    ): _("Choose a quote type: "),
 		# (helptext of widget: cancelButton)
 		("cancelButton"                , "helptext"): _("Return"),
 		# (helptext of widget: defaultButton)
@@ -1045,6 +1047,8 @@ def set_translations():
 		("uninterrupted_building_label", "helptext"): _("When enabled, do not exit the build mode after successful construction"),
 		# (helptext of widget: use_renderer_label)
 		("use_renderer_label"          , "helptext"): _("SDL is only meant as unsupported fallback and might cause problems!"),
+		# (helptext of widget: quote_type_label)
+		("quote_type_label"            , "helptext"    ): _("What kind of quote to display while loading a game"),
 		},
 
 	"random_map_archive.xml" : {
