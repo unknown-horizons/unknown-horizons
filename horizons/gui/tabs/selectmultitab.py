@@ -201,12 +201,10 @@ class UnitEntry(object):
 				health_component.add_damage_dealt_listener(self.draw_health)
 		self.draw_health()
 
-	def get_thumbnail_icon(self, id):
-		"""
-		Returns the name of the Thumbnail Icon for unit with id
-		"""
+	def get_thumbnail_icon(self, unit_id):
+		"""Returns path of the thumbnail icon for unit with id *unit_id*."""
 		#TODO get a system for loading thumbnail by id
-		return "content/gui/icons/unit_thumbnails/"+str(id)+".png"
+		return "content/gui/icons/units/thumbnails/{unit_id}.png".format(unit_id=unit_id)
 
 	def on_instance_removed(self, instance):
 		self.instances.remove(instance)

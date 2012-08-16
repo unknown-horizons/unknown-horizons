@@ -40,7 +40,7 @@ class _BoatbuilderOverviewTab(OverviewTab):
 
 class BoatbuilderTab(_BoatbuilderOverviewTab):
 
-	SHIP_THUMBNAIL = "content/gui/icons/unit_thumbnails/{type_id}.png"
+	SHIP_THUMBNAIL = "content/gui/icons/units/thumbnails/{type_id}.png"
 
 	def __init__(self, instance):
 		super(BoatbuilderTab, self).__init__(widget='boatbuilder.xml', instance=instance)
