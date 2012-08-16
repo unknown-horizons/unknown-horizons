@@ -29,6 +29,7 @@ import tempfile
 import logging
 from fife import fife
 from fife.extensions import pychan
+from horizons.gui.quotes import GAMEPLAY_TIPS, FUN_QUOTES
 
 import horizons.main
 
@@ -585,6 +586,25 @@ class Gui(SingleplayerMenu, MultiplayerMenu):
 		bg = self.current.findChild(name='background')
 		if bg:
 			bg.image = self._background_image
+
+		# Add 'Quote of the Load' to loading screen:
+		if new_widget == "loadingscreen":
+			qotl_type_label = self.current.findChild(name='qotl_type_label')
+			qotl_label = self.current.findChild(name='qotl_label')
+			quote_type = int(horizons.main.fife.get_uh_setting("QuotesType"))
+			if quote_type == 2:
+				quote_type = random.randint(0, 1) # choose a random type
+
+			if quote_type == 0:
+				name = GAMEPLAY_TIPS["name"]
+				items = GAMEPLAY_TIPS["items"]
+			else:
+				name = FUN_QUOTES["name"]
+				items = FUN_QUOTES["items"]
+
+			qotl_type_label.text = name
+			random.shuffle(items) # shuffle for more random
+			qotl_label.text = random.choice(items) # choose a random quote / gameplay tip
 
 		if center:
 			self.current.position_technique = "automatic" # == "center:center"

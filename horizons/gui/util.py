@@ -43,7 +43,6 @@ def get_gui_files_map():
 					print u'Another file by the name {name} already exists. Please use unique names!'.format(name=i)
 	return xml_files
 
-
 def load_uh_widget(filename, style=None, center_widget=False):
 	"""Loads a pychan widget from an xml file and applies uh-specific modifications
 	"""
