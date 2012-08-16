@@ -299,8 +299,13 @@ class Gui(SingleplayerMenu, MultiplayerMenu):
 
 		# Prepare widget
 		old_current = self._switch_current_widget('select_savegame')
-		self.current.findChild(name='headline').text = _('Save game') if mode == 'save' else _('Load game')
-		self.current.findChild(name=OkButton.DEFAULT_NAME).helptext = _('Save game') if mode == 'save' else _('Load game')
+		if mode == 'save':
+			helptext = _('Save game')
+		elif mode == 'load':
+			helptext = _('Load game')
+		# else: not a valid mode, so we can as well crash on the following
+		self.current.findChild(name='headline').text = helptext
+		self.current.findChild(name=OkButton.DEFAULT_NAME).helptext = helptext
 
 		name_box = self.current.findChild(name="gamename_box")
 		password_box = self.current.findChild(name="gamepassword_box")
