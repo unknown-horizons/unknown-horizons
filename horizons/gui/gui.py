@@ -338,21 +338,20 @@ class Gui(SingleplayerMenu, MultiplayerMenu):
 
 		def tmp_selected_changed():
 			"""Fills in the name of the savegame in the textbox when selected in the list"""
-			if mode == 'save': # set textbox only if we are in save mode
-				if self.current.collectData('savegamelist') == -1: # set blank if nothing is selected
-					self.current.findChild(name="savegamefile").text = u""
-				else:
-					self.current.distributeData(
-						{'savegamefile' : map_file_display[self.current.collectData('savegamelist')]})
+			if mode != 'save': # set textbox only if we are in save mode
+				return
+			if self.current.collectData('savegamelist') == -1: # set blank if nothing is selected
+				self.current.findChild(name="savegamefile").text = u""
+			else:
+				savegamefile = map_file_display[self.current.collectData('savegamelist')]
+				self.current.distributeData({'savegamefile': savegamefile})
 
-		self.current.distributeInitialData({'savegamelist' : map_file_display})
-		self.current.distributeData({'savegamelist' : -1}) # Don't select anything by default
-		cb = Callback.ChainedCallbacks(Gui._create_show_savegame_details(self.current, map_files, 'savegamelist'),
-		                               tmp_selected_changed)
+		self.current.distributeInitialData({'savegamelist': map_file_display})
+		self.current.distributeData({'savegamelist': -1}) # Don't select anything by default
+		cb_details = Gui._create_show_savegame_details(self.current, map_files, 'savegamelist')
+		cb = Callback.ChainedCallbacks(cb_details, tmp_selected_changed)
 		cb() # Refresh data on start
-		self.current.findChild(name="savegamelist").mapEvents({
-			'savegamelist/action'              : cb
-		})
+		self.current.mapEvents({'savegamelist/action': cb})
 		self.current.findChild(name="savegamelist").capture(cb, event_name="keyPressed")
 
 		bind = {
@@ -382,7 +381,8 @@ class Gui(SingleplayerMenu, MultiplayerMenu):
 		if mode == 'save': # return from textfield
 			selected_savegame = self.current.collectData('savegamefile')
 			if selected_savegame == "":
-				self.show_error_popup(windowtitle=_("No filename given"), description=_("Please enter a valid filename."))
+				self.show_error_popup(windowtitle=_("No filename given"),
+				                      description=_("Please enter a valid filename."))
 				self.current = old_current
 				return self.show_select_savegame(*args) # reshow dialog
 			elif selected_savegame in map_file_display: # savegamename already exists
@@ -394,7 +394,8 @@ class Gui(SingleplayerMenu, MultiplayerMenu):
 					return self.show_select_savegame(*args) # reshow dialog
 			elif sanity_checker and sanity_criteria:
 				if not sanity_checker(selected_savegame):
-					self.show_error_popup(windowtitle=_("Invalid filename given"), description=sanity_criteria)
+					self.show_error_popup(windowtitle=_("Invalid filename given"),
+					                      description=sanity_criteria)
 					self.current = old_current
 					return self.show_select_savegame(*args) # reshow dialog
 		else: # return selected item from list
@@ -486,10 +487,12 @@ class Gui(SingleplayerMenu, MultiplayerMenu):
 		popup = self.build_popup(windowtitle, message, show_cancel_button, size=size)
 		# ok should be triggered on enter, therefore we need to focus the button
 		# pychan will only allow it after the widgets is shown
-		ExtScheduler().add_new_object(lambda : popup.findChild(name=OkButton.DEFAULT_NAME).requestFocus(), self, run_in=0)
+		def focus_ok_button():
+			popup.findChild(name=OkButton.DEFAULT_NAME).requestFocus()
+		ExtScheduler().add_new_object(focus_ok_button, self, run_in=0)
 		if show_cancel_button:
-			return self.show_dialog(popup,{OkButton.DEFAULT_NAME : True,
-			                               CancelButton.DEFAULT_NAME : False})
+			return self.show_dialog(popup, {OkButton.DEFAULT_NAME : True,
+			                                CancelButton.DEFAULT_NAME : False})
 		else:
 			return self.show_dialog(popup, {OkButton.DEFAULT_NAME : True})
 
@@ -509,9 +512,10 @@ class Gui(SingleplayerMenu, MultiplayerMenu):
 		if advice:
 			msg += advice + u"\n"
 		if details:
-			msg += _(u"Details:") + u" " + details
+			msg += _("Details: {error_details}").format(error_details=details)
 		try:
-			self.show_popup( _(u"Error:") + u" " + windowtitle, msg, show_cancel_button=False)
+			self.show_popup( _("Error: {error_message}").format(error_message=windowtitle),
+			                 msg, show_cancel_button=False)
 		except SystemExit: # user really wants us to die
 			raise
 		except:
