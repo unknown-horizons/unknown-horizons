@@ -51,8 +51,9 @@
 		<Setting name="AutoUnload" type="bool">True</Setting>
 		<Setting name="ResourceOverviewBarConfiguration" type="str"></Setting>
 		<Setting name="DebugLog" type="bool">False</Setting>
+		<Setting name="QuotesType" type="int">0</Setting>
 	</Module>
 	<Module name="meta">
-		<Setting name="SettingsVersion" type="int"> 21 </Setting>
+		<Setting name="SettingsVersion" type="int"> 22 </Setting>
 	</Module>
 </Settings>
