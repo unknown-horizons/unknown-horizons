@@ -1048,7 +1048,7 @@ def set_translations():
 		# (helptext of widget: use_renderer_label)
 		("use_renderer_label"          , "helptext"): _("SDL is only meant as unsupported fallback and might cause problems!"),
 		# (helptext of widget: quote_type_label)
-		("quote_type_label"            , "helptext"    ): _("What should be displayed while loading a game"),
+		("quote_type_label"            , "helptext"    ): _("What kind of quote to display while loading a game"),
 		},
 
 	"random_map_archive.xml" : {

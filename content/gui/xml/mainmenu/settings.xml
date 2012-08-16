@@ -181,9 +181,9 @@
             <VBox name="quote_settings" padding="2" max_size="280,85" min_size="280,85">
                 <HBox>
                     <Label name="quote_type_label" text="Choose a quote type:" min_size="170,0"
-                           helptext="What should be displayed while loading a game" />
+                           helptext="What kind of quote to display while loading a game" />
                     <ScrollArea min_size="110,85" >
-                        <ListBox name="qoutestype" is_focusable="0" min_size="100,85" />
+                        <ListBox name="quotestype" is_focusable="0" min_size="100,85" />
                     </ScrollArea>
                 </HBox>
             </VBox>

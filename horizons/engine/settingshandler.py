@@ -70,7 +70,7 @@ class SettingsHandler(object):
 		self._setting.createAndAddEntry(UH_MODULE, "MinimapRotation", "minimaprotation",
 				                        applyfunction=update_minimap)
 
-		self._setting.createAndAddEntry(UH_MODULE, "QuotesType", "qoutestype",
+		self._setting.createAndAddEntry(UH_MODULE, "QuotesType", "quotestype",
 		                                initialdata=QUOTES_SETTINGS,
 		                                applyfunction=self.set_quotestype)
 
@@ -153,7 +153,7 @@ class SettingsHandler(object):
 
 	def set_quotestype(self, *args):
 		type = 0
-		if len(args) > 0:
+		if args:
 			type = int(args[0])
 		self._setting.set(UH_MODULE, "QuotesType", type)
 

@@ -30,7 +30,7 @@ from horizons.constants import TIER
 # Fun Quotes should not be translated...
 FUN_QUOTES = {
 	'name': _("Quotes"),
-    'items': [
+	'items': [
 	    "beer, the cause and solution to all problems of humanity",
 	    "trying is the first step t'wards failing. ",
 	    "# nobody actually knows how the code below works. ",
@@ -48,7 +48,7 @@ FUN_QUOTES = {
 
 GAMEPLAY_TIPS = {
 	'name': _("Gameplay Tips"),
-    'items': [
+	'items': [
 	    _("Press 'ESC' to access Game Menu. "),
 	    _("Use 'SHIFT' to place multiple buildings. "),
 	    _("Currently only the first {tier} tiers are playable. ").format(
@@ -61,4 +61,4 @@ GAMEPLAY_TIPS = {
 """ This are the options you can select in the Settings what type of quotes should be
 displayed during load
 """
-QUOTES_SETTINGS = (_("Helpful Tips"), _("Fun Quotes"), _("Mixed"))
+QUOTES_SETTINGS = (GAMEPLAY_TIPS['name'], FUN_QUOTES['name'], _("Mixed"))
