@@ -114,8 +114,10 @@ class Gui(SingleplayerMenu, MultiplayerMenu):
 		self.on_escape = self.show_quit
 
 	def toggle_pause(self):
-		"""
-		Show Pause menu
+		"""Shows in-game pause menu if the game is currently not paused.
+		Else unpauses and hides the menu. Multiple layers of the 'paused' concept exist;
+		if two widgets are opened which would both pause the game, we do not want to
+		unpause after only one of them is closed. Uses PauseCommand and UnPauseCommand.
 		"""
 		# TODO: logically, this now belongs to the ingame_gui (it used to be different)
 		#       this manifests itself by the need for the __pause_displayed hack below
