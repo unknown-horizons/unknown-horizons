@@ -20,15 +20,17 @@
 # ###################################################
 
 import math
-import operator
+from operator import itemgetter
+
+from fife.extensions.pychan.widgets import Icon, HBox, Label, Container
 
 from horizons.command.production import AddProduction, RemoveFromQueue, CancelCurrentProduction
 from horizons.gui.tabs import OverviewTab
 from horizons.gui.util import create_resource_icon
+from horizons.gui.widgets import OkButton, CancelButton
 from horizons.util import Callback
-from horizons.constants import PRODUCTIONLINES
+from horizons.constants import PRODUCTIONLINES, RES, UNITS
 from horizons.world.production.producer import Producer
-from fife.extensions.pychan.widgets import Icon, HBox, Label
 
 class _BoatbuilderOverviewTab(OverviewTab):
 	"""Private class all classes here inherit."""
@@ -49,6 +51,8 @@ class BoatbuilderTab(_BoatbuilderOverviewTab):
 	def refresh(self):
 		"""This function is called by the TabWidget to redraw the widget."""
 		super(BoatbuilderTab, self).refresh()
+
+		THUMB_PATH = "content/gui/images/objects/ships/116/%s.png"
 
 		main_container = self.widget.findChild(name="BB_main_tab")
 		container_active = main_container.findChild(name="container_active")
@@ -111,7 +115,7 @@ class BoatbuilderTab(_BoatbuilderOverviewTab):
 			name = self.instance.session.db.get_unit_type_name(produced_unit_id)
 			container_active.findChild(name="headline_BB_builtship_label").text = _(name)
 			container_active.findChild(name="BB_cur_ship_icon").helptext = "Storage: 4 slots, 120t \nHealth: 100"
-			container_active.findChild(name="BB_cur_ship_icon").image = "content/gui/images/objects/ships/116/%s.png" % (produced_unit_id)
+			container_active.findChild(name="BB_cur_ship_icon").image = THUMB_PATH % produced_unit_id
 
 			button_active = container_active.findChild(name="toggle_active_active")
 			button_inactive = container_active.findChild(name="toggle_active_inactive")
@@ -157,7 +161,7 @@ class BoatbuilderTab(_BoatbuilderOverviewTab):
 			needed_res = production.get_consumed_resources()
 			# Now sort! -amount is the positive value, drop unnecessary res (amount 0)
 			needed_res = dict((res, -amount) for res, amount in needed_res.iteritems() if amount < 0)
-			needed_res = sorted(needed_res.iteritems(), key=operator.itemgetter(1), reverse=True)
+			needed_res = sorted(needed_res.iteritems(), key=itemgetter(1), reverse=True)
 			needed_res_container.removeAllChildren()
 			for i, (res, amount) in enumerate(needed_res):
 				icon = create_resource_icon(res, self.instance.session.db)
@@ -206,48 +210,118 @@ class BoatbuilderTab(_BoatbuilderOverviewTab):
 # * abort building process: delete task, remove all resources, display [start view] again
 
 class BoatbuilderSelectTab(_BoatbuilderOverviewTab):
-
-	def __init__(self, instance, tabname):
-		super(BoatbuilderSelectTab, self).__init__(instance=instance,
-		          widget='boatbuilder_{name}.xml'.format(name=tabname),
-		          icon_path='content/gui/icons/tabwidget/boatbuilder/{name}_%s.png'.format(name=tabname))
+	def __init__(self, instance, ships, iconname, helptext):
+		super(BoatbuilderSelectTab, self).__init__(
+				instance=instance,
+		          widget='boatbuilder_showcase.xml',
+		          icon_path='content/gui/icons/tabwidget/boatbuilder/{name}_%s.png'.format(name=iconname))
+		self.add_showcases(ships)
+		self.helptext = helptext
+		self.widget.findChild(name='headline').text = helptext
 		self.init_values()
+
+	def add_showcases(self, ships):
+		showcases = self.widget.findChild(name='showcases')
+		for i, (ship, prodline) in enumerate(ships):
+			showcase = self.build_ship_info(i, ship, prodline)
+			showcases.addChild(showcase)
+
+	def build_ship_info(self, index, ship, prodline):
+		size = (260, 90)
+		widget = Container(name='showcase_%s' % index, position=(0, 20 + index*90),
+		                   min_size=size, max_size=size, size=size)
+		bg_icon = Icon(image='content/gui/images/background/square_80.png', name='bg_%s'%index)
+		widget.addChild(bg_icon)
+
+		icon_path = 'content/gui/images/objects/ships/76/{unit_id}.png'.format(unit_id=ship)
+		unit_icon = Icon(image=icon_path, name='icon_%s'%index, position=(2, 2),
+		                 helptext=_('important data'))
+		widget.addChild(unit_icon)
+
+		# if not buildable, this returns string with reason why to be displayed as helptext
+		#ship_unbuildable = self.is_ship_unbuildable(ship)
+		ship_unbuildable = False
+		if not ship_unbuildable:
+			button = OkButton(position=(60, 50), name='ok_%s'%index, helptext=_('Build this ship!'))
+			button.capture(Callback(self.start_production, prodline))
+		else:
+			button = CancelButton(position=(60, 50), name='ok_%s'%index,
+			helptext=ship_unbuildable)
+
+		widget.addChild(button)
+
+		#TODO since this code uses the boat builder as producer, the
+		# gold cost of ships is in consumed res is always 0 since it
+		# is paid from player inventory, not from the boat builder one.
+		production = self.producer.create_production(prodline)
+		# consumed == negative, reverse to sort in *ascending* order:
+		costs = sorted(production.get_consumed_resources().iteritems(), key=itemgetter(1))
+		for i, (res, amount) in enumerate(costs):
+			xoffset = 103 + (i  % 2) * 55
+			yoffset =  20 + (i // 2) * 20
+			icon = create_resource_icon(res, self.instance.session.db)
+			icon.max_size = icon.min_size = icon.size = (16, 16)
+			icon.position = (xoffset, yoffset)
+			label = Label(name='cost_%s_%s' % (index, i))
+			if res == RES.GOLD:
+				label.text = unicode(-amount)
+			else:
+				label.text = u'{amount:02}t'.format(amount=-amount)
+			label.position = (22 + xoffset, yoffset)
+			widget.addChild(icon)
+			widget.addChild(label)
+		return widget
 
 	def start_production(self, prod_line_id):
 		AddProduction(self.producer, prod_line_id).execute(self.instance.session)
 		# show overview tab
 		self.instance.session.ingame_gui.get_cur_menu()._show_tab(0)
 
-class BoatbuilderFisherTab(BoatbuilderSelectTab):
 
+class BoatbuilderFisherTab(BoatbuilderSelectTab):
 	def __init__(self, instance):
-		super(BoatbuilderFisherTab, self).__init__(instance, 'fisher')
-		self.helptext = _("Fisher boats")
-		# TODO: generalize this hard coded value
-		events = { 'BB_build_fisher_1' : Callback(self.start_production, PRODUCTIONLINES.FISHING_BOAT) }
-		self.widget.mapEvents(events)
+		ships = [
+			#(UNITS.FISHER_BOAT, PRODUCTIONLINES.FISHING_BOAT),
+			#(UNITS.CUTTER, PRODUCTIONLINES.xxx),
+			#(UNITS.HERRING_FISHER, PRODUCTIONLINES.xxx),
+			#(UNITS.WHALER, PRODUCTIONLINES.xxx),
+		]
+		helptext = _("Fisher boats")
+		super(BoatbuilderFisherTab, self).__init__(instance, ships, 'fisher', helptext)
+
 
 class BoatbuilderTradeTab(BoatbuilderSelectTab):
-
 	def __init__(self, instance):
-		super(BoatbuilderTradeTab, self).__init__(instance, 'trade')
-		events = { 'BB_build_trade_1' : Callback(self.start_production, PRODUCTIONLINES.HUKER) }
-		self.helptext = _("Trade boats")
-		self.widget.mapEvents(events)
+		ships = [
+			(UNITS.HUKER_SHIP, PRODUCTIONLINES.HUKER),
+			#(UNITS.COURIER_BOAT, PRODUCTIONLINES.xxx),
+			#(UNITS.SMALL_MERCHANT, PRODUCTIONLINES.xxx),
+			#(UNITS.BIG_MERCHANT, PRODUCTIONLINES.xxx),
+		]
+		helptext = _("Trade boats")
+		super(BoatbuilderTradeTab, self).__init__(instance, ships, 'trade', helptext)
 
 class BoatbuilderWar1Tab(BoatbuilderSelectTab):
-
 	def __init__(self, instance):
-		super(BoatbuilderWar1Tab, self).__init__(instance, 'war1')
-		events = { 'BB_build_war1_1' : Callback(self.start_production, PRODUCTIONLINES.FRIGATE) }
-		self.helptext = _("War boats")
-		self.widget.mapEvents(events)
+		ships = [
+			#(UNITS.SMALL_GUNBOAT, PRODUCTIONLINES.SMALL_GUNBOAT),
+			#(UNITS.NAVAL_CUTTER, PRODUCTIONLINES.NAVAL_CUTTER),
+			#(UNITS.BOMBADIERE, PRODUCTIONLINES.BOMBADIERE),
+			#(UNITS.SLOOP_O_WAR, PRODUCTIONLINES.SLOOP_O_WAR),
+		]
+		helptext = _("War boats")
+		super(BoatbuilderWar1Tab, self).__init__(instance, ships, 'war1', helptext)
 
 class BoatbuilderWar2Tab(BoatbuilderSelectTab):
-
 	def __init__(self, instance):
-		super(BoatbuilderWar2Tab, self).__init__(instance, 'war2')
-		self.helptext = _("War ships")
+		ships = [
+			#(UNITS.GALLEY, PRODUCTIONLINES.GALLEY),
+			#(UNITS.BIG_GUNBOAT, PRODUCTIONLINES.BIG_GUNBOAT),
+			#(UNITS.CORVETTE, PRODUCTIONLINES.CORVETTE),
+			(UNITS.FRIGATE, PRODUCTIONLINES.FRIGATE),
+		]
+		helptext = _("War ships")
+		super(BoatbuilderWar2Tab, self).__init__(instance, ships, 'war2', helptext)
 
 # these tabs additionally request functions for:
 # * goto: show [confirm view] tab (not accessible via tab button in the end)

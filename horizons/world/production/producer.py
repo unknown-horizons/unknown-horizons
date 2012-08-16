@@ -144,10 +144,9 @@ class Producer(Component):
 			if id == self.settler_upgrade_lines.get_production_line_id(self.instance.level+1):
 				production_class = SingleUseProduction
 
-		return production_class(inventory=self.instance.get_component(StorageComponent).inventory
-		                        ,
-				                owner_inventory=owner_inventory, prod_id=id, prod_data=data,
-		                    load=load, start_finished=self.__start_finished)
+		return production_class(inventory=self.instance.get_component(StorageComponent).inventory,
+		                        owner_inventory=owner_inventory, prod_id=id, prod_data=data,
+		                        load=load, start_finished=self.__start_finished)
 
 	def add_production_by_id(self, production_line_id):
 		"""Convenience method.

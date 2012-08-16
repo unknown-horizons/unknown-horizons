@@ -13,8 +13,7 @@ buildingcosts: {RES.GOLD: 500, RES.BOARDS: 4, RES.TOOLS: 3}
 components:
 - SelectableComponent:
     type: building
-    tabs: [BoatbuilderTab, BoatbuilderTradeTab, BoatbuilderWar1Tab]
-    # , BoatbuilderTradeTab, BoatbuilderWar1Tab, BoatbuilderWar2Tab, BoatbuilderConfirmTab)
+    tabs: [BoatbuilderTab, BoatbuilderTradeTab, BoatbuilderWar2Tab]
     enemy_tabs: [EnemyBuildingOverviewTab,]
 - HealthComponent: {maxhealth: 1000}
 - UnitProducerComponent:
