@@ -54,7 +54,7 @@ def test_ticket_1224(gui):
 	gui.trigger('tab_base', '1/action/default')
 
 	# Build huker
-	gui.trigger('boatbuilder_trade', 'BB_build_trade_1/action/default')
+	gui.trigger('boatbuilder_showcase', 'ok_0/action/default')
 
 	# Wait until production starts
 	producer = boatbuilder.get_component(Producer)
@@ -84,7 +84,7 @@ def test_ticket_1294(gui):
 	gui.trigger('tab_base', '1/action/default')
 
 	# Build huker
-	gui.trigger('boatbuilder_trade', 'BB_build_trade_1/action/default')
+	gui.trigger('boatbuilder_showcase', 'ok_0/action/default')
 
 	# Pause huker construction
 	gui.trigger('BB_main_tab', 'toggle_active_active/action/default')
@@ -93,7 +93,7 @@ def test_ticket_1294(gui):
 	gui.trigger('tab_base', '2/action/default')
 
 	# Build frigate
-	gui.trigger('boatbuilder_war1', 'BB_build_war1_1/action/default')
+	gui.trigger('boatbuilder_showcase', 'ok_0/action/default')
 
 	# Wait until production ends
 	producer = boatbuilder.get_component(Producer)
@@ -123,13 +123,13 @@ def test_remove_from_queue(gui):
 	gui.trigger('tab_base', '1/action/default')
 
 	# Build huker
-	gui.trigger('boatbuilder_trade', 'BB_build_trade_1/action/default')
+	gui.trigger('boatbuilder_showcase', 'ok_0/action/default')
 
 	# Select war ships tab
 	gui.trigger('tab_base', '2/action/default')
 
 	# Build frigate
-	gui.trigger('boatbuilder_war1', 'BB_build_war1_1/action/default')
+	gui.trigger('boatbuilder_showcase', 'ok_0/action/default')
 
 	# Cancel queue -> crash
 	gui.trigger('BB_main_tab', 'queue_elem_0/mouseClicked/default')
@@ -150,13 +150,13 @@ def test_cancel_ticket_1424(gui):
 	gui.trigger('tab_base', '1/action/default')
 
 	# Build huker
-	gui.trigger('boatbuilder_trade', 'BB_build_trade_1/action/default')
+	gui.trigger('boatbuilder_showcase', 'ok_0/action/default')
 
 	# Select war ships tab
 	gui.trigger('tab_base', '2/action/default')
 
 	# Build frigate
-	gui.trigger('boatbuilder_war1', 'BB_build_war1_1/action/default')
+	gui.trigger('boatbuilder_showcase', 'ok_0/action/default')
 
 	# Cancel build completely -> crash
 	gui.trigger('BB_main_tab', 'BB_cancel_button/mouseClicked/default')
@@ -178,13 +178,13 @@ def test_save_load_ticket_1421(gui):
 	gui.trigger('tab_base', '1/action/default')
 
 	# Build huker
-	gui.trigger('boatbuilder_trade', 'BB_build_trade_1/action/default')
+	gui.trigger('boatbuilder_showcase', 'ok_0/action/default')
 
 	# Select war ships tab
 	gui.trigger('tab_base', '2/action/default')
 
 	# Build frigate
-	gui.trigger('boatbuilder_war1', 'BB_build_war1_1/action/default')
+	gui.trigger('boatbuilder_showcase', 'ok_0/action/default')
 
 	fd, filename = tempfile.mkstemp()
 	os.close(fd)
@@ -220,7 +220,7 @@ def test_ticket_1513(gui):
 	gui.trigger('tab_base', '1/action/default')
 
 	# Build huker
-	gui.trigger('boatbuilder_trade', 'BB_build_trade_1/action/default')
+	gui.trigger('boatbuilder_showcase', 'ok_0/action/default')
 
 	# Wait until production starts
 	producer = boatbuilder.get_component(Producer)
@@ -261,7 +261,7 @@ def test_ticket_1514(gui):
 	gui.trigger('tab_base', '1/action/default')
 
 	# Build huker
-	gui.trigger('boatbuilder_trade', 'BB_build_trade_1/action/default')
+	gui.trigger('boatbuilder_showcase', 'ok_0/action/default')
 
 	assert gui.find('BB_cancel_button')
 
