@@ -193,12 +193,15 @@ class Gui(SingleplayerMenu, MultiplayerMenu):
 			self.show_popup(_('Error'), _('Failed to save.'))
 
 	def show_settings(self):
+		"""Displays settings gui derived from the FIFE settings module."""
 		horizons.main.fife.show_settings()
 
 	_help_is_displayed = False
 	def on_help(self):
-		"""Called on help action
-		Toggles help screen via static variable help_is_displayed"""
+		"""Called on help action.
+		Toggles help screen via static variable *help_is_displayed*.
+		Can be called both from main menu and in-game interface.
+		"""
 		help_dlg = self.widgets['help']
 		if not self._help_is_displayed:
 			self._help_is_displayed = True
@@ -216,13 +219,13 @@ class Gui(SingleplayerMenu, MultiplayerMenu):
 			help_dlg.hide()
 
 	def show_quit(self):
-		"""Shows the quit dialog """
+		"""Shows the quit dialog. Closes the game unless the dialog is cancelled."""
 		message = _("Are you sure you want to quit Unknown Horizons?")
 		if self.show_popup(_("Quit Game"), message, show_cancel_button=True):
 			horizons.main.quit()
 
 	def quit_session(self, force=False):
-		"""Quits the current session.
+		"""Quits the current session. Usually returns to main menu afterwards.
 		@param force: whether to ask for confirmation"""
 		message = _("Are you sure you want to abort the running session?")
 
@@ -268,7 +271,7 @@ class Gui(SingleplayerMenu, MultiplayerMenu):
 
 	def show_select_savegame(self, mode, sanity_checker=None, sanity_criteria=None):
 		"""Shows menu to select a savegame.
-		@param mode: 'save', 'load' or 'mp_load'
+		@param mode: Valid options are 'save', 'load', 'mp_load', 'mp_save'
 		@param sanity_checker: only allow manually entered names that pass this test
 		@param sanity_criteria: explain which names are allowed to the user
 		@return: Path to savegamefile or None"""
