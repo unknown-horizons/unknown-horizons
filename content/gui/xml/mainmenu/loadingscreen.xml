@@ -9,7 +9,7 @@
     <Label name="qotl_type_label" position="360,662" text=" " font="headline_light"
            max_size="315,80" min_size="315,80" wrap_text="0" />
     <Label name="qotl_label" position="360,688" text=" - " font="14_bold_light"
-            max_size="315,75" min_size="315,75" wrap_text="1" background_color="0,255,0" />
+            max_size="315,75" min_size="315,75" wrap_text="1" />
 	<Label name="version_label" position="745,735"
 		text="Unknown Horizons Alpha" font="mainmenu" />
 </Container>
