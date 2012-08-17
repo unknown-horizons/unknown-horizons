@@ -495,6 +495,12 @@ class NETWORK:
 	CLIENT_ADDRESS = None
 	UPDATE_FILE_URL = "http://updates.unknown-horizons.org/current_version.php"
 
+## HAPPINESS
+class HAPPINESS:
+	SAD_LEVEL = 30
+	# AVERAGE_LEVEL is betweed SAD_LEVEL and HAPPY_LEVEL
+	HAPPY_LEVEL = 70
+
 ## TRANSLATIONS
 class _LanguageNameDict(dict):
 	def __getitem__(self, key):

@@ -21,7 +21,7 @@
 # ###################################################
 
 from horizons.util import Callback, ActionSetLoader
-from horizons.constants import SETTLER
+from horizons.constants import SETTLER, HAPPINESS
 from horizons.command.uioptions import SetTaxSetting
 from horizons.gui.tabs import OverviewTab
 from horizons.gui.util import create_resource_icon
@@ -64,11 +64,11 @@ class SettlerOverviewTab(OverviewTab):
 
 	def refresh(self):
 		happiness_icon_path = "content/gui/icons/templates/happiness/"
-		if self.instance.happiness <= 30:
+		if self.instance.happiness <= HAPPINESS.SAD_LEVEL:
 			happiness_icon_path += "sad.png"
-		elif 30 < self.instance.happiness < 70:
+		elif HAPPINESS.SAD_LEVEL < self.instance.happiness < HAPPINESS.HAPPY_LEVEL:
 			happiness_icon_path += "average.png"
-		elif self.instance.happiness >= 70:
+		elif self.instance.happiness >= HAPPINESS.HAPPY_LEVEL:
 			happiness_icon_path += "happy.png"
 
 		self.widget.child_finder('happiness_label').image = happiness_icon_path
