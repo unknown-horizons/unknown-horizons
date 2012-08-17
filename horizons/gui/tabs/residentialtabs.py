@@ -64,7 +64,6 @@ class SettlerOverviewTab(OverviewTab):
 
 	def refresh(self):
 		happiness_icon_path = "content/gui/icons/templates/happiness/"
-		print self.instance.happiness
 		if self.instance.happiness <= 30:
 			happiness_icon_path += "sad.png"
 		elif 30 < self.instance.happiness < 70:
