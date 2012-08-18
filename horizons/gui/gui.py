@@ -720,7 +720,6 @@ class Gui(SingleplayerMenu, MultiplayerMenu):
 		self._background_image = self._get_random_background()
 		self.show_main()
 
-
 	def _get_random_background(self):
 		"""Randomly select a background image to use through out the game menu."""
 		available_images = glob.glob('content/gui/images/background/mainmenu/bg_*.png')
@@ -758,7 +757,7 @@ def build_help_strings(widgets):
 
 	labels = widgets.getNamedChildren()
 	# filter misc labels that do not describe key functions
-	labels = dict( [(name, lbl) for (name, lbl) in labels.items() if name.startswith('lbl_')] )
+	labels = dict( (name, lbl) for (name, lbl) in labels.iteritems() if name.startswith('lbl_') )
 
 	# now prepend the actual keys to the function strings defined in xml
 	for (name, lbl) in labels.items():
@@ -770,5 +769,3 @@ def build_help_strings(widgets):
 
 	author_label = widgets.findChild(name='fife_and_uh_team')
 	author_label.helptext = u"www.unknown-[br]horizons.org[br]www.fifengine.net"
-
-
