@@ -19,10 +19,8 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-from horizons.component.collectingcomponent import CollectingComponent
 from horizons.messaging import ResourceProduced
-from horizons.world.building.buildable import BuildableRect
-from horizons.world.resourcehandler import ResourceHandler, StorageResourceHandler
+from horizons.world.resourcehandler import ResourceHandler
 from horizons.world.production.producer import Producer
 
 class BuildingResourceHandler(ResourceHandler):
@@ -31,6 +29,7 @@ class BuildingResourceHandler(ResourceHandler):
 	"""
 	def __init__(self, island, **kwargs):
 		super(BuildingResourceHandler, self).__init__(island=island, **kwargs)
+		self.island = island
 
 	def initialize(self):
 		super(BuildingResourceHandler, self).initialize()
@@ -55,22 +54,17 @@ class BuildingResourceHandler(ResourceHandler):
 			self.get_component(Producer).remove_production_finished_listener(self.on_production_finished)
 
 	def on_production_finished(self, caller, resources):
-		if self.is_valid_production_building():
+		if self.is_valid_tradable_resource(resources):
 			ResourceProduced.broadcast(self, resources)
 
-	def is_valid_production_building(self):
-		""" Checks if the building is a valid production building.
-		Invalid production buildings are:
-		 - Trees
-		 - Housings
-		 - Storage buildings and branch offices
-		 - Resource deposits
-		 - ...
+	def is_valid_tradable_resource(self, resources):
+		""" Checks if the produced resource tradable (can be carried by collectors).
 		"""
-		return self.has_component(CollectingComponent) and \
-		       self.owner is not None and \
-		       not issubclass(type(self), StorageResourceHandler) and \
-		       not issubclass(type(self), BuildableRect)
+		if not resources or not len(resources.keys()):
+			return False
+
+		return resources.keys()[0] in \
+		       self.island.session.db.get_res(only_tradeable=True, only_inventory=True)
 
 	def _set_running_costs_to_status(self, caller, is_active):
 		current_setting_is_active = self.running_costs_active()

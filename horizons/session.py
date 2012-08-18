@@ -217,6 +217,8 @@ class Session(LivingObject):
 
 		self.status_icon_manager.end()
 		self.status_icon_manager = None
+		self.production_finished_icon_manager.end()
+		self.production_finished_icon_manager = None
 
 		horizons.main._modules.session = None
 		self._clear_caches()

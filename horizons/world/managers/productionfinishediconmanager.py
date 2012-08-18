@@ -28,7 +28,7 @@ from horizons.scheduler import Scheduler
 from horizons.util.python.callback import Callback
 
 class ProductionFinishedIconManager(object):
-	"""Manager class that manages all production finished icons. It listenes to
+	"""Manager class that manages all production finished icons. It listens to
 	 ResourceProduced messages on the main message bus"""
 
 	def __init__(self, renderer, layer):
@@ -39,26 +39,31 @@ class ProductionFinishedIconManager(object):
 		self.layer = layer
 		self.renderer = renderer
 		self.run = dict()
-		self.animation_steps = 15
+		self.animation_duration = 20
+		self.animation_steps = 1
 
 		ResourceProduced.subscribe(self._on_resource_produced)
 
 	def end(self):
 		self.renderer = None
-
 		ResourceProduced.unsubscribe(self._on_resource_produced)
 
 	def _on_resource_produced(self, message):
 		"""This is called by the message bus with ResourceProduced messages"""
 		assert isinstance(message, ResourceProduced)
 
+		# if we get an empty dictionary, abort
+		if not message.produced_resources or not len(message.produced_resources.keys()):
+			return
+
 		res = message.produced_resources.keys()[0]
 		group = self.get_resource_string(message.sender, res)
-		self.run[group] = 1
+		self.run[group] = self.animation_steps
 
 		tick_callback = Callback(self.__render_icon, message.sender, group, res)
 		finish_callback = Callback(self.remove_icon, group)
-		Scheduler().add_new_object(tick_callback, self, finish_callback=finish_callback, run_in=1, loops=self.animation_steps)
+		Scheduler().add_new_object(tick_callback, self, finish_callback=finish_callback,
+		                           run_in=1, loops=self.animation_duration)
 
 	def __render_icon(self, instance, group, res):
 		""" This renders the icon. It calculates the position of the icon.
@@ -67,11 +72,11 @@ class ProductionFinishedIconManager(object):
 		# TODO: Try to unify the __render methods of this class and statusiconmanager.py!
 		self.renderer.removeAll(group)
 
-		# self.run[group] is used for the moving up animation
-		rel = fife.Point(0, -35 - self.run[group])
-		self.run[group] += 2
-
 		pos = instance.position
+		# self.run[group] is used for the moving up animation
+		# use -50 here to get some more offset in height
+		rel = fife.Point(0, -50 - self.run[group])
+		self.run[group] += self.animation_steps
 
 		loc = fife.Location(self.layer)
 		loc.setExactLayerCoordinates(
@@ -84,7 +89,7 @@ class ProductionFinishedIconManager(object):
 		node = fife.RendererNode(loc, rel)
 
 		bg_image = horizons.main.fife.imagemanager.load("content/gui/images/background/sq.png")
-		res_icon = horizons.main.fife.imagemanager.load(get_res_icon_path(res, 32, False))
+		res_icon = horizons.main.fife.imagemanager.load(get_res_icon_path(res))
 		self.renderer.addImage(group, node, bg_image)
 		self.renderer.resizeImage(group, node, res_icon, 23, 23)
 
@@ -97,5 +102,4 @@ class ProductionFinishedIconManager(object):
 
 	def get_resource_string(self, instance, res):
 		"""Returns the render name for resource icons of this instance"""
-		resource_string = "produced_resource_" + str(res) + "_" + str(instance.position.origin)
-		return resource_string
+		return "produced_resource_" + str(res) + "_" + str(instance.position.origin)
