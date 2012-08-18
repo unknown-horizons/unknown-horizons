@@ -75,7 +75,8 @@ class ProductionFinishedIconManager(object):
 		pos = instance.position
 		# self.run[group] is used for the moving up animation
 		# use -50 here to get some more offset in height
-		rel = fife.Point(0, -50 - self.run[group])
+		bg_rel = fife.Point(0, -50 - self.run[group])
+		rel = fife.Point(-14, -50 - self.run[group])
 		self.run[group] += self.animation_steps
 
 		loc = fife.Location(self.layer)
@@ -86,11 +87,12 @@ class ProductionFinishedIconManager(object):
 		  )
 		)
 
+		bg_node = fife.RendererNode(loc, bg_rel)
 		node = fife.RendererNode(loc, rel)
 
-		bg_image = horizons.main.fife.imagemanager.load("content/gui/images/background/sq.png")
+		bg_image = horizons.main.fife.imagemanager.load("content/gui/images/background/produced_notification.png")
 		res_icon = horizons.main.fife.imagemanager.load(get_res_icon_path(res))
-		self.renderer.addImage(group, node, bg_image)
+		self.renderer.addImage(group, bg_node, bg_image)
 		self.renderer.resizeImage(group, node, res_icon, 23, 23)
 
 	def remove_icon(self, group):
