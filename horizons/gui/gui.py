@@ -565,6 +565,22 @@ class Gui(SingleplayerMenu, MultiplayerMenu):
 
 	def show_loading_screen(self):
 		self._switch_current_widget('loadingscreen', center=True, show=True)
+		# Add 'Quote of the Load' to loading screen:
+		qotl_type_label = self.current.findChild(name='qotl_type_label')
+		qotl_label = self.current.findChild(name='qotl_label')
+		quote_type = int(horizons.main.fife.get_uh_setting("QuotesType"))
+		if quote_type == 2:
+			quote_type = random.randint(0, 1) # choose a random type
+
+		if quote_type == 0:
+			name = GAMEPLAY_TIPS["name"]
+			items = GAMEPLAY_TIPS["items"]
+		elif quote_type == 1:
+			name = FUN_QUOTES["name"]
+			items = FUN_QUOTES["items"]
+
+		qotl_type_label.text = name
+		qotl_label.text = random.choice(items) # choose a random quote / gameplay tip
 
 # helper
 
@@ -582,30 +598,10 @@ class Gui(SingleplayerMenu, MultiplayerMenu):
 			self.hide()
 		self.log.debug("Gui: setting current to %s", new_widget)
 		self.current = self.widgets[new_widget]
-		# Set background image
 		bg = self.current.findChild(name='background')
 		if bg:
+			# Set background image
 			bg.image = self._background_image
-
-		# Add 'Quote of the Load' to loading screen:
-		if new_widget == "loadingscreen":
-			qotl_type_label = self.current.findChild(name='qotl_type_label')
-			qotl_label = self.current.findChild(name='qotl_label')
-			quote_type = int(horizons.main.fife.get_uh_setting("QuotesType"))
-			if quote_type == 2:
-				quote_type = random.randint(0, 1) # choose a random type
-
-			if quote_type == 0:
-				name = GAMEPLAY_TIPS["name"]
-				items = GAMEPLAY_TIPS["items"]
-			else:
-				name = FUN_QUOTES["name"]
-				items = FUN_QUOTES["items"]
-
-			qotl_type_label.text = name
-			random.shuffle(items) # shuffle for more random
-			qotl_label.text = random.choice(items) # choose a random quote / gameplay tip
-
 		if center:
 			self.current.position_technique = "automatic" # == "center:center"
 		if event_map:
@@ -663,10 +659,9 @@ class Gui(SingleplayerMenu, MultiplayerMenu):
 			if savegame_info['timestamp'] == -1:
 				details_label.text += _("Unknown savedate")
 			else:
+				savetime = time.strftime("%c", time.localtime(savegame_info['timestamp']))
 				#xgettext:python-format
-				details_label.text += _("Saved at {time}").format(
-				                         time=time.strftime("%c",
-				                         time.localtime(savegame_info['timestamp'])).decode('utf-8'))
+				details_label.text += _("Saved at {time}").format(time=savetime.decode('utf-8'))
 			details_label.text += u'\n'
 			counter = savegame_info['savecounter']
 			# N_ takes care of plural forms for different languages
