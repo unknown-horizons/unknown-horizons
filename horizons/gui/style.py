@@ -102,7 +102,7 @@ STYLES = {
 			'foreground_color' : fife.Color(255, 255, 255),
 			'background_color' : fife.Color(0, 0, 0, 0),
 			'selection_color' : fife.Color(0, 0, 0, 0),
-			'font' : 'mainmenu'
+			'font' : 'headline_light'
 		},
 		'Button' : {
 			'border_size': 0,

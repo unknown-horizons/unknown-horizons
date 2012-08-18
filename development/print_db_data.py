@@ -43,40 +43,60 @@ ExtScheduler.create_instance(Dummy()) # sometimes needed by entities in subseque
 Entities.load_buildings(db, load_now=True)
 Entities.load_units(load_now=True)
 
+unit_name_mapping = dict( (u.id, u.name) for u in Entities.units.itervalues() )
 
 def get_obj_name(obj):
 	global db
 	if obj < UNITS.DIFFERENCE_BUILDING_UNIT_ID:
 		return db("SELECT name FROM building where id = ?", obj)[0][0]
 	else:
-		return db("SELECT name FROM unit where id = ?", obj)[0][0]
+		return unit_name_mapping[obj]
 
 def get_res_name(res):
 	global db
-	name = db("SELECT name FROM resource WHERE id = ?", res)[0][0]
+	try:
+		name = db("SELECT name FROM resource WHERE id = ?", res)[0][0]
+	except IndexError: # might be a unit instead
+		name = get_obj_name(res)
 	return name
 
 def get_settler_name(incr):
 	global db
 	return db("SELECT name FROM settler_level WHERE level = ?", incr)[0][0]
 
-def get_prod_line(id, type):
-	print 'Data has been moved, this view is unavailable for now'
-	return
-	from horizons.util.python.roman_numerals import int_to_roman
-	consumption = db("SELECT resource, amount FROM production \
-                      WHERE production_line = ? AND amount < 0 ORDER BY amount ASC", id)
-	production = db("SELECT resource, amount FROM production \
-                     WHERE production_line = ? AND amount > 0 ORDER BY amount ASC", id)
-	if type is list:
-		return (consumption, production)
-	elif type is tuple:
-		return (consumption[0], production[0])
+def format_prodline(line_list, depth):
+	for res, amount in line_list:
+		print ' '*depth, '{amount:>4} {name:16} ({id:2})'.format(
+			amount=abs(amount), name=get_res_name(res), id=res)
 
 def print_production_lines():
-	print 'Data has been moved, this view is unavailable for now'
+	print 'Production lines per building:'
+	for b in Entities.buildings.itervalues():
+		print '\n', b.name, '\n', '='*len(b.name)
+		for comp in b.component_templates:
+			if not isinstance(comp, dict):
+				continue
+			for name, data in comp.iteritems():
+				if 'produce' not in name.lower():
+					continue
+				for id, dct in data.get('productionlines').iteritems():
+					if not dct:
+						continue
+					changes_animation = dct.get('changes_animation') is None
+					changes_anim_text = changes_animation and 'changes animation' or 'does not change animation'
+					disabled_by_default = dct.get('enabled_by_default') is not None
+					enabled_text = (disabled_by_default and 'not ' or '') + 'enabled by default'
+					time = dct.get('time') or 1
+					print '{time:>3}s'.format(time=time), '('+changes_anim_text+',', enabled_text+')'
+					consumes = dct.get('consumes')
+					if consumes:
+						print '   consumes'
+						format_prodline(consumes, 4)
+					produces = dct.get('produces')
+					if produces:
+						print '   produces'
+						format_prodline(produces, 4)
 	return
-	print 'Production Lines:'
 	for (id, changes_anim, object, time, default) in db("SELECT id, changes_animation, object_id, time, enabled_by_default FROM production_line ORDER BY object_id"):
 		(consumption,production) = get_prod_line(id, list)
 
@@ -207,12 +227,11 @@ def print_collector_restrictions():
 def print_increment_data():
 	print 'Data has been moved, this view is unavailable for now'
 	return
-	from horizons.util.python.roman_numerals import int_to_roman
 	upgrade_increments = xrange(1, SETTLER.CURRENT_MAX_INCR+1)
 	print '%15s %s %s  %s' % ('increment', 'max_inh', 'base_tax', 'upgrade_prod_line')
 	print '=' * 64
 	for inc, name, inh, tax in db('SELECT level, name, inhabitants_max, tax_income FROM settler_level'):
-		str = '%3s %11s %5s    %4s' % (int_to_roman(inc+1), name, inh, tax)
+		str = '%3s %11s %5s    %4s' % ((inc+1), name, inh, tax)
 		if inc+1 in upgrade_increments:
 			line = db("SELECT production_line FROM upgrade_material WHERE level = ?", inc+1)[0][0]
 			str += 5 * ' ' + '%2s: ' % line
@@ -286,10 +305,10 @@ functions = {
 		'lines' : print_production_lines,
 		'names' : print_names,
 		'resources' : print_res,
-    'settler_needs' : print_settler_needs,
+		'settler_needs' : print_settler_needs,
 		'storage' : print_storage,
 		'units' : print_unit,
-		'verbose_lines' : print_verbose_lines,
+		'verbose_lines' : print_production_lines,
 		}
 abbrevs = {
 		'b' : 'buildings',
@@ -301,6 +320,7 @@ abbrevs = {
 		'i' : 'increments',
 		'increment' : 'increments',
 		'n' : 'names',
+		'pl' : 'lines',
 		'res' : 'resources',
 		'settler_lines': 'increments',
 		'sl': 'increments',

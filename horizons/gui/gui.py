@@ -278,12 +278,11 @@ class Gui(SingleplayerMenu, MultiplayerMenu):
 		@return: Path to savegamefile or None"""
 		assert mode in ('save', 'load', 'mp_load', 'mp_save')
 		map_files, map_file_display = None, None
-		mp = False
 		args = mode, sanity_checker, sanity_criteria # for reshow
-		if mode.startswith('mp'):
+		mp = mode.startswith('mp_')
+		if mp:
 			mode = mode[3:]
-			mp = True
-			# below this line, mp_load == load, mp_save == save
+		# below this line, mp_load == load, mp_save == save
 		if mode == 'load':
 			if not mp:
 				map_files, map_file_display = SavegameManager.get_saves()
@@ -460,7 +459,7 @@ class Gui(SingleplayerMenu, MultiplayerMenu):
 					pychan.tools.applyOnlySuitable(callback, event=event, widget=btn)
 				else:
 					# escape should hide the dialog default
-					pychan.internal.get_manager().breakFromMainLoop(returnValue=False)
+					horizons.main.fife.pychanmanager.breakFromMainLoop(returnValue=False)
 					dlg.hide()
 			elif event.getKey().getValue() == fife.Key.ENTER: # convention says use ok action
 				btn = dlg.findChild(name=OkButton.DEFAULT_NAME)
