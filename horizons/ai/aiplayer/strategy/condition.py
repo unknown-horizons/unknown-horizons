@@ -126,6 +126,23 @@ class ConditionNeutral(Condition):
 		return super(ConditionNeutral, self).get_identifier(**environment) + str(environment['player'].worldid)
 
 
+class ConditionAllied(Condition):
+	"""
+	States whether given player is ally.
+	"""
+
+	def check(self, **environment):
+		player = environment['player']
+		if self.session.world.diplomacy.are_allies(self.owner, player):
+			return {'player': player, 'certainty': self.default_certainty, 'strategy_name': 'allied_player', 'type': BehaviorManager.strategy_types.diplomatic}
+		else:
+			return None
+
+
+	def get_identifier(self, **environment):
+		return super(ConditionAllied, self).get_identifier(**environment) + str(environment['player'].worldid)
+
+
 class ConditionDebug(Condition):
 	"""
 	For testing purposes, always happens
@@ -133,8 +150,8 @@ class ConditionDebug(Condition):
 
 	def check(self, **environment):
 		player = environment['player']
-		#return {'player': player, 'certainty': self.default_certainty, 'strategy_name': 'debug', 'type': BehaviorManager.strategy_types.offensive}
-		return {'player': player, 'certainty': self.default_certainty, 'strategy_name': 'player_shares_island', 'type': BehaviorManager.strategy_types.offensive}
+		return {'player': player, 'certainty': self.default_certainty, 'strategy_name': 'debug', 'type': BehaviorManager.strategy_types.diplomatic}
+		#return {'player': player, 'certainty': self.default_certainty, 'strategy_name': 'player_shares_island', 'type': BehaviorManager.strategy_types.offensive}
 
 	def get_identifier(self, **environment):
 		return super(ConditionDebug, self).get_identifier(**environment) + str(environment['player'].worldid)

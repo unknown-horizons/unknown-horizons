@@ -18,15 +18,22 @@
 # Free Software Foundation, Inc.,
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
+import collections
 
 import logging
+from horizons.ai.aiplayer.combat.unitmanager import UnitManager
 
 from horizons.ai.aiplayer.strategy.mission.chaseshipsandattack import ChaseShipsAndAttack
 from horizons.ai.aiplayer.strategy.mission.pirateroutine import PirateRoutine
 from horizons.ai.aiplayer.strategy.mission.scouting import ScoutingMission
 from horizons.ai.aiplayer.strategy.mission.surpriseattack import SurpriseAttack
+from horizons.component.healthcomponent import HealthComponent
 from horizons.component.namedcomponent import NamedComponent
+from horizons.component.storagecomponent import StorageComponent
+from horizons.constants import RES
+from horizons.util.python import trim_value, map_balance
 from horizons.util.worldobject import WorldObject
+from horizons.world.player import Player
 
 
 class StrategyManager(object):
@@ -61,6 +68,126 @@ class StrategyManager(object):
 	def conditions(self):
 		# conditions are held in behavior manager since they are a part of behavior profile (just like actions and strategies)
 		return self.owner.behavior_manager.get_conditions()
+
+	def calculate_player_wealth_balance(self, other_player):
+		"""
+		Calculates wealth balance between two players.
+		Wealth balance of 1.2 means that self.owner is 1.2 times wealthier than other_player.
+		@param other_player: other player matched against self.owner
+		@type other_player: Player
+		"""
+
+		gold_weight = 0.25 # we don't value gold that much
+		resources_weight = 0.75
+
+		resource_values = []
+		for player in [self.owner, other_player]:
+			resources_value = 0.0
+			for settlement in player.settlements:
+				resources_value += sum((self.session.db.get_res_value(resource) * amount for resource, amount\
+					in settlement.get_component(StorageComponent).inventory.itercontents() if self.session.db.get_res_value(resource)))
+			resource_values.append(resources_value)
+		ai_resources, enemy_resources = resource_values
+
+		ai_gold = self.owner.get_component(StorageComponent).inventory[RES.GOLD]
+		enemy_gold = other_player.get_component(StorageComponent).inventory[RES.GOLD]
+		return (ai_resources * resources_weight + ai_gold * gold_weight) / (enemy_resources * resources_weight + enemy_gold * gold_weight)
+
+	def calculate_player_power_balance(self, other_player):
+		"""
+		Calculates power balance between two players.
+		Power balance of 1.2 means that self.owner is 1.2 times stronger than other_player
+
+		@param other_player: other player who is matched against self.owner
+		@type other_player: Player
+		@return: power balance between self.owner and other_player
+		@rtype: float
+		"""
+
+		min_balance = 10e-7
+		max_balance = 1000.0
+
+		ships = self.owner.ships.keys()
+		ships = self.unit_manager.filter_ships(ships, (self.unit_manager.filtering_rules.fighting(),))
+		enemy_ships = self.unit_manager.get_player_ships(other_player)
+		enemy_ships = self.unit_manager.filter_ships(enemy_ships, (self.unit_manager.filtering_rules.fighting(),))
+
+		# infinitely more powerful
+		if len(ships) and not len(enemy_ships):
+			return max_balance
+
+		# infinitely less powerful
+		elif not len(ships) and len(enemy_ships):
+			return min_balance
+		elif not len(ships) and not len(enemy_ships):
+			return 1.0
+
+		return UnitManager.calculate_power_balance(ships, enemy_ships)
+
+	def calculate_player_terrain_balance(self, other_player):
+		"""
+		Calculates balance between sizes of terrain, i.e. size on map.
+		Terrain balance of 1.2 means that self.owner has 1.2 times larger terrain than other_player
+		"""
+
+		min_balance = 10e-7
+		max_balance = 1000.0
+
+		terrains = []
+		island_counts = []
+		for player in [self.owner, other_player]:
+			terrain_total = 0
+			islands = set()
+			for settlement in player.settlements:
+				terrain_total += len(settlement.ground_map)
+				islands.add(settlement.island)
+			terrains.append(terrain_total)
+			island_counts.append(len(islands))
+
+		ai_terrain, enemy_terrain = terrains
+		ai_islands, enemy_islands = island_counts
+
+		# if not
+		if ai_islands and not enemy_islands:
+			return max_balance
+		if not ai_islands and enemy_islands:
+			return min_balance
+		if not ai_islands and not enemy_islands:
+			return 1.0
+
+		island_count_balance = float(ai_islands) / float(enemy_islands)
+
+		# it favors having 3 islands of total size X, than 2 of total size X (or bigger)
+		return (float(ai_terrain) / float(enemy_terrain)) * island_count_balance
+
+	def calculate_player_balance(self, player, trimming_factor=10.0, linear_boundary=10.0):
+		"""
+		Calculate power balance between self.owner and other player.
+
+		trimming_factor: Since any balance returns values of (0, inf) we agree to assume if x < 0.1 -> x = 0.1 and if x > 10.0 -> x=10.0
+		linear_boundary: boundary of [-10.0, 10.0] for new balance scale
+
+		@param player: player to calculate balance against
+		@type player: Player
+		@param trimming_factor: trim actual balance values to range [1./trimming_factor, trimming_factor] e.g. [0.1, 10.0]
+		@type trimming_factor: float
+		@param linear_boundary: boundaries of new balance scale [-linear_boundary, linear_boundary], e.g. [-10.0, 10.0]
+		@type linear_boundary: float
+		@return: unified balance for various variables
+		@rtype: collections.namedtuple
+		"""
+		wealth_balance = self.owner.strategy_manager.calculate_player_wealth_balance(player)
+		power_balance = self.owner.strategy_manager.calculate_player_power_balance(player)
+		terrain_balance = self.owner.strategy_manager.calculate_player_terrain_balance(player)
+		balance = {
+			'wealth':wealth_balance,
+			'power':power_balance,
+			'terrain':terrain_balance,
+		}
+		balance = dict(( (key, trim_value(value, 1./trimming_factor, trimming_factor)) for key, value in balance.iteritems()))
+		balance = dict(( (key, map_balance(value, trimming_factor, linear_boundary)) for key, value in balance.iteritems()))
+
+		return collections.namedtuple('Balance', 'wealth, power, terrain')(**balance)
 
 	def save(self, db):
 		for mission in list(self.missions):

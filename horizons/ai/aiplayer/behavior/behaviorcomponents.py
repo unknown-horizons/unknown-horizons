@@ -31,6 +31,8 @@ from horizons.command.diplomacy import AddEnemyPair
 import logging
 from horizons.component.namedcomponent import NamedComponent
 from horizons.constants import BUILDINGS
+from horizons.ext.enum import Enum
+from horizons.util.python import trim_value, map_balance
 from horizons.util.python.callback import Callback
 from horizons.util.shapes.circle import Circle
 from horizons.util.shapes.point import Point
@@ -59,6 +61,20 @@ class BehaviorComponent(object):
 		certainty = self._certainty[action_name](**environment)
 		assert certainty is not None, "Certainty function returned None instead of a float. Certainty in %s for %s" % (self.__class__.__name__, action_name)
 		return certainty
+
+	# common certainties used by various behaviors
+	def _certainty_has_boat_builder(self, **environment):
+		if self.owner.count_buildings(BUILDINGS.BOAT_BUILDER):
+			return self.default_certainty
+		else:
+			return 0.0
+
+	def _certainty_has_fleet(self, **environment):
+		idle_ships = environment['idle_ships']
+		if idle_ships:
+			return self.default_certainty
+		else:
+			return 0.0
 
 # Components below are roughly divided into "Aggressive, Normal,Cautious" etc.
 # (division below is not related to the way dictionaries in BehaviorManager are named (offensive, idle, defensive))
@@ -500,6 +516,266 @@ class BehaviorSmart(BehaviorComponent):
 			BehaviorComponent.log.info('%s: Enemy worker was not hostile', self.__class__.__name__)
 
 
+# Behaviors calculate single value against each of the players (you can think of it as of respect, or "relationship_score" values towards other player)
+# Each AI values different traits in others. Based on that value AI can break diplomacy with an ally, declare a war, or
+# act the other way around: form an alliance
+class BehaviorDiplomatic(BehaviorComponent):
+	"""
+	Behaviors that handle diplomacy.
+	"""
+
+	# value to which each function is related, so even when relationship_score is at the peek somewhere (e.g. it's value is 1.0)
+	# probability to actually choose given action is peek/upper_boundary (0.2 in case of upper_boundary = 5.0)
+	upper_boundary = 5.0
+
+	# possible actions behavior can take
+	actions = Enum('wait', 'war', 'peace', 'neutral')
+
+	def calculate_relationship_score(self, balance, weights):
+		"""
+		Calculate total relationship_score based on balances and their weights.
+		Count only balances that have weight defined (this way "default" weight is 0)
+		"""
+		return sum((getattr(balance, key) * value for key, value in weights.iteritems()))
+
+	def _move_f(self, f, v_x, v_y):
+		"""
+		Return function f moved by vector (v_x, v_y)
+		"""
+		return lambda x: f(x - v_x) + v_y
+
+	def handle_diplomacy(self, parameters, **environment):
+		"""
+		Main function responsible for handling diplomacy.
+		"""
+		player = environment['player']
+		balance =  self.owner.strategy_manager.calculate_player_balance(player)
+		relationship_score = self.calculate_relationship_score(balance, self.weights)
+		action = self._get_action(relationship_score, **parameters)
+		self._perform_action(action, **environment)
+
+	def _perform_action(self, action, **environment):
+		"""
+		Execute action from actions Enum.
+		"""
+		player = environment['player']
+
+		# ideally this shouldn't automatically change diplomacy for both players (i.e. add_pair) but do it for one side only.
+
+		if action == self.actions.war:
+			self.session.world.diplomacy.add_enemy_pair(self.owner, player)
+		elif action == self.actions.peace:
+			self.session.world.diplomacy.add_ally_pair(self.owner, player)
+		elif action == self.actions.neutral:
+			self.session.world.diplomacy.add_neutral_pair(self.owner, player)
+
+	def _get_quadratic_function(self, mid, root, peek=1.0):
+		"""
+		Functions for border distributions such as enemy or ally (left or right parabola).
+		@param mid: value on axis X that is to be center of the parabola
+		@type mid: float
+		@param root: value on axis X which is a crossing point of axis OX and the function itself
+		@type root: float
+		@param peek: value on axis Y which is a peek of a function
+		@type peek: float
+		@return: quadratic function
+		@rtype: lambda(x)
+		"""
+
+		# base function is upside-down parabola, stretched in X in order to have roots at exactly 'root' value.
+		# (-1. / (abs(mid - root) ** 2)) part is for stretching the parabola in X axis and flipping it upside down, we have to use
+		# abs(mid - root) because it's later moved by mid
+		base = lambda x: (-1. / (abs(mid - root) ** 2)) * (x ** 2)
+
+		# we move the function so it looks like "distribution", i.e. move it far left(or right), and assume the peek is 1.0
+		moved = self._move_f(base, mid, peek)
+
+		# in case of negative values of f(x) we want to have 0.0 instead
+		final_function = lambda x: max(0.0, moved(x))
+
+		return final_function
+
+	def get_enemy_function(self, root, peek=1.0):
+		return self._get_quadratic_function(-10.0, root, peek)
+
+	def get_ally_function(self, root, peek=1.0):
+		return self._get_quadratic_function(10.0, root, peek)
+
+	def get_neutral_function(self, mid, root, peek=1.0):
+		return self._get_quadratic_function(mid, root, peek)
+
+	def _choose_random_from_tuple(self, tuple):
+		"""
+		Choose random action from tuple of (name, value)
+		"""
+		total_probability = sum((item[1] for item in tuple))
+		random_value = self.session.random.random() * total_probability
+		counter = 0.0
+		for item in tuple:
+			if item[1] + counter >= random_value:
+				return item[0]
+			else:
+				counter+= item[1]
+
+	def _get_action(self, relationship_score, **parameters):
+		possible_actions = []
+		if 'enemy' in parameters:
+			enemy_params = parameters['enemy']
+			possible_actions.append((self.actions.war, self.get_enemy_function(*enemy_params)(relationship_score), ))
+
+		if 'ally' in parameters:
+			ally_params = parameters['ally']
+			possible_actions.append((self.actions.peace, self.get_ally_function(*ally_params)(relationship_score), ))
+
+		if 'neutral' in parameters:
+			neutral_params = parameters['neutral']
+			possible_actions.append((self.actions.neutral, self.get_neutral_function(*neutral_params)(relationship_score), ))
+
+		max_probability = max((item[1] for item in possible_actions))
+		random_value = self.session.random.random() * self.upper_boundary
+		if random_value < max_probability: #do something
+			return self._choose_random_from_tuple(possible_actions)
+		else:
+			return self.actions.wait
+
+class BehaviorEvil(BehaviorDiplomatic):
+	"""
+	Diplomatic behavior.
+	Evil AI likes players that are:
+		- stronger
+		- bigger (in terms of terrain)
+		- wealthier
+	Neutral towards:
+		- poorer
+	Dislikes:
+		- weaker
+		- smaller
+	"""
+
+	# negative weights favors opposite balance, e.g. enemy is stronger => higher relationship_score
+	weights = {
+		'power': -0.6,
+		'terrain': -0.3,
+		'wealth': -0.1,
+	}
+
+	def __init__(self, owner):
+		super(BehaviorEvil, self).__init__(owner)
+		# TODO: commented for testing, uncomment later
+		#self._certainty['hostile_player'] = self._certainty_has_fleet
+		#self._certainty['neutral_player'] = self._certainty_has_boat_builder
+
+	def hostile_player(self, **environment):
+		"""
+		Calculate balance, and change diplomacy towards a player to neutral or ally.
+		This has a very small chance though, since BehaviorEvil enjoys to be in a war.
+		"""
+
+		# Parameters are crucial in determining how AI should behave:
+		# 'ally' and 'enemy' parameters are tuples of 1 or 2 values that set width or width and height of the parabola.
+		# By default parabola peek is fixed at 1.0, but could be changed (by providing second parameter)
+		# to manipulate the chance with which given actions is called
+		# 'neutral' parameter is a tuple up to three values, first one determining where the center of the parabola is
+
+		parameters = {
+			'neutral':(0.0, 2.0, 0.2, ), # parabola with the center at 0.0, of root at 2.0 and -2.0. Peek at 0.5 (on Y axis)
+			'ally': (7.0, ),
+		}
+		self.handle_diplomacy(parameters, **environment)
+
+	def neutral_player(self, **environment):
+		parameters = {
+			'enemy':(0.1, ),
+			'ally': (5.0, 0.7, ),
+		}
+		self.handle_diplomacy(parameters, **environment)
+
+	def allied_player(self, **environment):
+		parameters = {
+			'neutral':(-2.0, -0.5, 0.2, ), # parabola with the center at -2.0, of root at -0.5 (the other at -3.5). Peek at 0.2 (on Y axis)
+			'enemy': (-2.2, ), # smaller chance to go straight from allied to hostile
+		}
+		self.handle_diplomacy(parameters, **environment)
+
+
+class BehaviorGood(BehaviorDiplomatic):
+	"""
+	Diplomatic behavior.
+	Good AI likes players that are:
+		- weaker
+		- smaller
+	Neutral towards:
+		- wealth
+	Dislikes:
+		-
+	"""
+
+	weights = {
+		'power': 0.6,
+		'terrain': 0.4,
+		'wealth': 0.0,
+	}
+
+	def hostile_player(self, **environment):
+		parameters = {
+			'neutral':(-2.0, -0.5, 0.2, ),
+			'ally': (1.0, ),
+		}
+		self.handle_diplomacy(parameters, **environment)
+
+	def neutral_player(self, **environment):
+		parameters = {
+			'ally': (5.0, ),
+			'enemy': (-3.0, ),
+		}
+		self.handle_diplomacy(parameters, **environment)
+
+	def allied_player(self, **environment):
+		parameters = {
+			'neutral':(-3.0, -1.5, 0.2, ),
+			'enemy': (-5.0, ),
+		}
+		self.handle_diplomacy(parameters, **environment)
+
+class BehaviorNeutral(BehaviorDiplomatic):
+	"""
+	Diplomatic behavior.
+	Neutral AI likes players that are:
+		- wealthier
+	Neutral towards:
+		- strength
+		- size (favor bigger though)
+	Dislikes:
+		-
+	"""
+
+	weights = {
+		'wealth': -0.8,
+		'power': -0.1,
+		'terrain': -0.1,
+	}
+
+	def hostile_player(self, **environment):
+		parameters = {
+			'neutral':(0.0, 2.0, 0.3, ),
+			'ally': (4.0, ),
+		}
+		self.handle_diplomacy(parameters, **environment)
+
+	def neutral_player(self, **environment):
+		parameters = {
+			'ally': (5.0, ),
+			'enemy': (-5.0, ),
+		}
+		self.handle_diplomacy(parameters, **environment)
+
+	def allied_player(self, **environment):
+		parameters = {
+			'neutral':(-1.0, 0.0, 0.3, ),
+			'enemy': (-7.0, ),
+		}
+		self.handle_diplomacy(parameters, **environment)
+
 class BehaviorDebug(BehaviorComponent):
 
 	def __init__(self, owner):
@@ -509,9 +785,8 @@ class BehaviorDebug(BehaviorComponent):
 		"""
 		For debugging purposes.
 		"""
-		idle_ships = environment['idle_ships']
-		mission = ScoutingMission.create(self.owner.strategy_manager.report_success, self.owner.strategy_manager.report_failure, idle_ships)
-		return mission
+
+		return None
 
 
 class BehaviorRegularPirate(BehaviorComponent):

@@ -173,11 +173,14 @@ class UnitManager(object):
 		usage:
 		other_ships = unit_manager.filter_ships(other_ships, [_not_owned_rule(), _ship_type_rule([PirateShip])])
 
-		Note that player is Player instance requesting for filtering, while ships is an iterable of ships.
+		@param ships: iterable of ships to filter
+		@type ships: iterable
+		@param rules: conditions each ship has to meet (AND)
+		@type rules: iterable of lambda(ship) or single lambda(ship)
 		"""
 		if not isinstance(rules, collections.Iterable):
 			rules = (rules,)
-		return [ship for ship in ships if all([rule(ship) for rule in rules])]
+		return [ship for ship in ships if all((rule(ship) for rule in rules))]
 
 	@classmethod
 	def get_lowest_hp_ship(cls, ship_group):
@@ -210,17 +213,23 @@ class UnitManager(object):
 	def calculate_power_balance(cls, ship_group, enemy_ship_group):
 		"""
 		Calculate power balance between two groups of ships.
+
+		@param ship_group: iterable of ships to be counted as a numerator
+		@type ship_group: Iterable
+		@param enemy_ship_group: iterable of ships to be counted as denominator
+		@type enemy_ship_group: Iterable
+		@return: power balance between two ship groups
+		@rtype: float
 		"""
+
+		assert len(ship_group), "Request to calculate balance with 0 ships in ship_group"
+		assert len(enemy_ship_group), "Request to calculate balance with 0 ships in enemy_ship_group"
 
 		# dps_multiplier - 4vs2 ships equal 2 times more DPS. Multiply that factor when calculating power balance.
 		dps_multiplier = len(ship_group) / float(len(enemy_ship_group))
 
-		self_hp = 0.0
-		enemy_hp = 0.0
-		for unit in ship_group:
-			self_hp += unit.get_component(HealthComponent).health
-		for unit in enemy_ship_group:
-			enemy_hp += unit.get_component(HealthComponent).health
+		self_hp = float(sum((ship.get_component(HealthComponent).health for ship in ship_group)))
+		enemy_hp = float(sum((ship.get_component(HealthComponent).health for ship in enemy_ship_group)))
 
 		return (self_hp / enemy_hp) * dps_multiplier
 
@@ -230,7 +239,8 @@ class UnitManager(object):
 		There are many solutions to solve the problem of caculating ship_group dispersion efficiently.
 		We generally care about computing that in linear time, rather than having accurate numbers in O(n^2).
 		We settle for a diagonal of a bounding box for the whole group.
-		@return: dis
+		@return: dispersion factor
+		@rtype: float
 		"""
 		positions = [ship.position for ship in ship_group]
 		bottom_left = Point(min(positions, key=lambda position: position.x).x, min(positions, key=lambda position: position.y).y)

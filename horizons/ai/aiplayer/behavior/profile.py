@@ -26,8 +26,8 @@ from horizons.ai.aiplayer.behavior import BehaviorManager
 
 from horizons.ai.aiplayer.behavior.behaviorcomponents import BehaviorPirateHater, BehaviorCoward,\
 	BehaviorKeepFleetTogether, BehaviorRegular, BehaviorPirateRoutine, BehaviorBreakDiplomacy,\
-	BehaviorDoNothing, BehaviorRegularPirate, BehaviorAggressive, BehaviorAggressivePirate, BehaviorDebug, BehaviorSmart
-from horizons.ai.aiplayer.strategy.condition import ConditionNeutral, ConditionSharingSettlement, ConditionHostile, ConditionDebug, ConditionPirateRoutinePossible
+	BehaviorDoNothing, BehaviorRegularPirate, BehaviorAggressive, BehaviorAggressivePirate, BehaviorDebug, BehaviorSmart, BehaviorEvil
+from horizons.ai.aiplayer.strategy.condition import ConditionNeutral, ConditionSharingSettlement, ConditionHostile, ConditionDebug, ConditionPirateRoutinePossible, ConditionAllied
 
 
 class BehaviorProfile(object):
@@ -49,14 +49,18 @@ class BehaviorProfileDebug(BehaviorProfile):
 
 		self.conditions = {
 			ConditionHostile(player): 1.1,
-			ConditionSharingSettlement(player): 1.0,
-			ConditionNeutral(player): 0.3,
+			#ConditionSharingSettlement(player): 1.0,
+			ConditionNeutral(player): 0.4,
+			ConditionAllied(player): 0.3,
+			#ConditionDebug(player): 1.0,
 		}
 
 		self.actions[BehaviorManager.action_types.offensive][BehaviorSmart(player)] = 1.0
 
 		self.strategies[BehaviorManager.strategy_types.offensive][BehaviorRegular(player)] = 1.0
-		self.strategies[BehaviorManager.strategy_types.diplomatic][BehaviorAggressive(player)] = 0.02
+		#self.strategies[BehaviorManager.strategy_types.diplomatic][BehaviorAggressive(player)] = 0.02
+		#self.strategies[BehaviorManager.strategy_types.diplomatic][BehaviorDebug(player)] = 1.0
+		self.strategies[BehaviorManager.strategy_types.diplomatic][BehaviorEvil(player)] = 1.0
 
 
 class BehaviorProfileAggressive(BehaviorProfile):
