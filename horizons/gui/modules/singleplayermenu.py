@@ -413,8 +413,8 @@ class SingleplayerMenu(object):
 			translation_status_label.show()
 		else:
 			translation_status_label.hide()
-
 		self.current.files[ self.active_right_side.collectData('maplist') ] = new_map_name
+
 	def _find_map_filename(self, cur_locale, mapfile=None):
 		"""Finds the given map's filename with its locale."""
 		mapfile = mapfile or self._get_selected_map()
@@ -472,16 +472,16 @@ class MapPreview(object):
 			self.minimap.end()
 		world = self._load_raw_world(map_file)
 		self.minimap = Minimap(self._get_map_preview_icon(),
-			                     session=None,
-			                     view=None,
-			                     world=world,
-			                     targetrenderer=horizons.main.fife.targetrenderer,
-			                     imagemanager=horizons.main.fife.imagemanager,
-			                     cam_border=False,
-			                     use_rotation=False,
-			                     tooltip=None,
-			                     on_click=None,
-			                     preview=True)
+		                       session=None,
+		                       view=None,
+		                       world=world,
+		                       targetrenderer=horizons.main.fife.targetrenderer,
+		                       imagemanager=horizons.main.fife.imagemanager,
+		                       cam_border=False,
+		                       use_rotation=False,
+		                       tooltip=None,
+		                       on_click=None,
+		                       preview=True)
 		self.minimap.draw()
 
 	def update_random_map(self, map_params, on_click):
@@ -515,16 +515,16 @@ class MapPreview(object):
 					if self.minimap is not None:
 						self.minimap.end()
 					self.minimap = Minimap(icon,
-																 session=None,
-																 view=None,
-																 world=None,
-																 targetrenderer=horizons.main.fife.targetrenderer,
-																 imagemanager=horizons.main.fife.imagemanager,
-																 cam_border=False,
-																 use_rotation=False,
-																 tooltip=tooltip,
-																 on_click=on_click,
-																 preview=True)
+					                       session=None,
+					                       view=None,
+					                       world=None,
+					                       targetrenderer=horizons.main.fife.targetrenderer,
+					                       imagemanager=horizons.main.fife.imagemanager,
+					                       cam_border=False,
+					                       use_rotation=False,
+					                       tooltip=tooltip,
+					                       on_click=on_click,
+					                       preview=True)
 					self.minimap.draw_data( data )
 					icon.show()
 					self._set_map_preview_status(u"")
@@ -561,14 +561,14 @@ class MapPreview(object):
 		world = cls._load_raw_world(map_file)
 		location = Rect.init_from_topleft_and_size_tuples( (0, 0), size)
 		minimap = Minimap(location,
-											session=None,
-											view=None,
-											world=world,
-											targetrenderer=Dummy(),
-											imagemanager=Dummy(),
-											cam_border=False,
-											use_rotation=False,
-											preview=True)
+		                  session=None,
+		                  view=None,
+		                  world=world,
+		                  targetrenderer=Dummy(),
+		                  imagemanager=Dummy(),
+		                  cam_border=False,
+		                  use_rotation=False,
+		                  preview=True)
 		# communicate via stdout
 		print minimap.dump_data()
 
