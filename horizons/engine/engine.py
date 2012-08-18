@@ -172,6 +172,7 @@ class Fife(ApplicationBase):
 		self.console = self.pychan.manager.hook.guimanager.getConsole()
 
 		init_pychan()
+		self.pychanmanager = pychan.internal.get_manager()
 
 		self._setting_handler.apply_settings()
 

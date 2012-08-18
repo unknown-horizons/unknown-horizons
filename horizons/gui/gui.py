@@ -459,7 +459,7 @@ class Gui(SingleplayerMenu, MultiplayerMenu):
 					pychan.tools.applyOnlySuitable(callback, event=event, widget=btn)
 				else:
 					# escape should hide the dialog default
-					pychan.internal.get_manager().breakFromMainLoop(returnValue=False)
+					horizons.main.fife.pychanmanager.breakFromMainLoop(returnValue=False)
 					dlg.hide()
 			elif event.getKey().getValue() == fife.Key.ENTER: # convention says use ok action
 				btn = dlg.findChild(name=OkButton.DEFAULT_NAME)
