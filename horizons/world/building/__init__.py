@@ -67,9 +67,10 @@ class BuildingClass(IngameType):
 		self.show_status_icons = yaml_data.get('show_status_icons', True)
 		self.translucent = yaml_data.get('translucent', False)
 		# for mines: on which deposit is it buildable
-		buildable_on_deposit_type = db("SELECT deposit FROM mine WHERE mine = ?", self.id)
-		if buildable_on_deposit_type:
-			self.buildable_on_deposit_type = buildable_on_deposit_type[0][0]
+		self.buildable_on_deposit_type = None
+		for component in yaml_data.get('components'):
+			if 'ProducerComponent' in component:
+				self.buildable_on_deposit_type = component['ProducerComponent'].get('is_mine_for')
 
 	def __str__(self):
 		return "Building[{id}]({name})".format(id=self.id, name=self.name)
