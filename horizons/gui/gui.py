@@ -578,8 +578,8 @@ class Gui(SingleplayerMenu, MultiplayerMenu):
 			name = FUN_QUOTES["name"]
 			items = FUN_QUOTES["items"]
 
-		qotl_type_label.text = name
-		qotl_label.text = random.choice(items) # choose a random quote / gameplay tip
+		qotl_type_label.text = unicode(name)
+		qotl_label.text = unicode(random.choice(items)) # choose a random quote / gameplay tip
 
 # helper
 

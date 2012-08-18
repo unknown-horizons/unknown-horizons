@@ -253,11 +253,11 @@ class Settler(BuildableRect, BuildingResourceHandler, BasicBuilding):
 	def inhabitant_check(self):
 		"""Checks whether or not the population of this settler should increase or decrease"""
 		change = 0
-		if self.happiness > self.__get_data("happiness_inhabitants_increase_requirement") and \
+		if self.happiness > self.session.db.get_settler_happiness_increase_requirement() and \
 			 self.inhabitants < self.inhabitants_max:
 			change = 1
 			self.log.debug("%s: inhabitants increase to %s", self, self.inhabitants)
-		elif self.happiness < self.__get_data("happiness_inhabitants_decrease_limit") and \
+		elif self.happiness < self.session.db.get_settler_happiness_decrease_limit() and \
 		     self.inhabitants > 1:
 			change = -1
 			self.log.debug("%s: inhabitants decrease to %s", self, self.inhabitants)
