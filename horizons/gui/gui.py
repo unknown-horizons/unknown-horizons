@@ -670,7 +670,7 @@ class Gui(SingleplayerMenu, MultiplayerMenu):
 			                         "Saved {amount} times",
 			                         counter).format(amount=counter)
 			details_label.text += u'\n'
-			details_label.stylize('book_t')
+			details_label.stylize('book')
 
 			from horizons.constants import VERSION
 			try:

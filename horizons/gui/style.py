@@ -280,29 +280,6 @@ STYLES = {
 		},
 },
 
-'book_t': { # same as book, only styles anything text-related
-	    'default' : {
-			'font' : '14_black',
-		},
-		'Label' : {
-			'font' : '14_black',
-		},
-		'ListBox' : {
-			'font' : '14_black',
-		},
-		'ScrollArea' : {
-			'font' : '14_black',
-			'horizontal_scrollbar' : 0,
-		},
-		'HBox' : {
-			'font' : '14_black',
-			'opaque': 0
-		},
-		'TextField' : {
-			'font' : '14_black',
-		}
-},
-
 'tooltip': { # style for tooltips
 		'default' : {
 			'border_size': 0,
