@@ -100,6 +100,9 @@ class Scheduler(LivingObject):
 				else: # gone for good
 					if callback.class_instance in self.calls_by_instance:
 						# this can already be removed by e.g. rem_all_classinst_calls
+						if callback.finish_callback is not None:
+							callback.finish_callback()
+
 						try:
 							self.calls_by_instance[callback.class_instance].remove(callback)
 						except ValueError:
@@ -148,14 +151,14 @@ class Scheduler(LivingObject):
 					self.calls_by_instance[callback_obj.class_instance] = []
 				self.calls_by_instance[callback_obj.class_instance].append( callback_obj )
 
-	def add_new_object(self, callback, class_instance, run_in=1, loops=1, loop_interval=None):
+	def add_new_object(self, callback, class_instance, run_in=1, loops=1, loop_interval=None, finish_callback=None):
 		"""Creates a new CallbackObject instance and calls the self.add_object() function.
 		@param callback: lambda function callback, which is called run_in ticks.
 		@param class_instance: class instance the function belongs to.
 		@param run_in: int number of ticks after which the callback is called. Defaults to 1, run next tick.
 		@param loops: How often the callback is called. -1 = infinite times. Defautls to 1, run once.
 		@param loop_interval: Delay between subsequent loops in ticks. Defaults to run_in."""
-		callback_obj = _CallbackObject(self, callback, class_instance, run_in, loops, loop_interval)
+		callback_obj = _CallbackObject(self, callback, class_instance, run_in, loops, loop_interval, finish_callback=finish_callback)
 		self.add_object(callback_obj)
 
 	def rem_object(self, callback_obj):
@@ -275,7 +278,7 @@ class Scheduler(LivingObject):
 
 class _CallbackObject(object):
 	"""Class used by the TimerManager Class to organize callbacks."""
-	def __init__(self, scheduler, callback, class_instance, run_in, loops, loop_interval):
+	def __init__(self, scheduler, callback, class_instance, run_in, loops, loop_interval, finish_callback=None):
 		"""Creates the CallbackObject instance.
 		@param scheduler: reference to the scheduler, necessary to react properly on weak reference callbacks
 		@see Scheduler.add_new_object
@@ -287,6 +290,7 @@ class _CallbackObject(object):
 		assert loop_interval == None or loop_interval > 0
 
 		self.callback = callback
+		self.finish_callback = finish_callback
 
 		self.run_in = run_in
 		self.loops = loops

@@ -51,6 +51,7 @@ from horizons.savegamemanager import SavegameManager
 from horizons.scenario import ScenarioEventHandler
 from horizons.component.ambientsoundcomponent import AmbientSoundComponent
 from horizons.constants import GAME_SPEED, PATHS, LAYERS
+from horizons.world.managers.productionfinishediconmanager import ProductionFinishedIconManager
 from horizons.world.managers.statusiconmanager import StatusIconManager
 from horizons.messaging import MessageBus
 
@@ -128,6 +129,10 @@ class Session(LivingObject):
 		  renderer=self.view.renderer['GenericRenderer'],
 		  layer=self.view.layers[LAYERS.OBJECTS]
 		  )
+		self.production_finished_icon_manager = ProductionFinishedIconManager(
+			renderer=self.view.renderer['GenericRenderer'],
+			layer=self.view.layers[LAYERS.OBJECTS]
+		)
 
 		self.selected_instances = set()
 		self.selection_groups = [set() for _ in range(10)]  # List of sets that holds the player assigned unit groups.
@@ -212,6 +217,8 @@ class Session(LivingObject):
 
 		self.status_icon_manager.end()
 		self.status_icon_manager = None
+		self.production_finished_icon_manager.end()
+		self.production_finished_icon_manager = None
 
 		horizons.main._modules.session = None
 		self._clear_caches()
