@@ -18,13 +18,12 @@
 # Free Software Foundation, Inc.,
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
-from horizons.component.collectingcomponent import CollectingComponent
-from horizons.messaging.message import ResourceProduced
-from horizons.world.building.buildable import BuildableRect
 
+from horizons.component.collectingcomponent import CollectingComponent
+from horizons.messaging import ResourceProduced
+from horizons.world.building.buildable import BuildableRect
 from horizons.world.resourcehandler import ResourceHandler, StorageResourceHandler
 from horizons.world.production.producer import Producer
-
 
 class BuildingResourceHandler(ResourceHandler):
 	"""A Resourcehandler that is also a building.
@@ -55,9 +54,23 @@ class BuildingResourceHandler(ResourceHandler):
 			self.get_component(Producer).remove_activity_changed_listener(self._set_running_costs_to_status)
 			self.get_component(Producer).remove_production_finished_listener(self.on_production_finished)
 
-	def on_production_finished(self, caller, ressources):
-		if self.has_component(CollectingComponent) and self.owner is not None and not issubclass(type(self), StorageResourceHandler) and not issubclass(type(self), BuildableRect):
-			ResourceProduced.broadcast(self, ressources)
+	def on_production_finished(self, caller, resources):
+		if self.is_valid_production_building():
+			ResourceProduced.broadcast(self, resources)
+
+	def is_valid_production_building(self):
+		""" Checks if the building is a valid production building.
+		Invalid production buildings are:
+		 - Trees
+		 - Housings
+		 - Storage buildings and branch offices
+		 - Resource deposits
+		 - ...
+		"""
+		return self.has_component(CollectingComponent) and \
+		       self.owner is not None and \
+		       not issubclass(type(self), StorageResourceHandler) and \
+		       not issubclass(type(self), BuildableRect)
 
 	def _set_running_costs_to_status(self, caller, is_active):
 		current_setting_is_active = self.running_costs_active()

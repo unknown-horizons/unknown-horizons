@@ -18,13 +18,12 @@
 # Free Software Foundation, Inc.,
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
-from horizons.gui.util import get_res_icon_path
-
-import horizons.main
 
 from fife import fife
-from fife.extensions.pychan.widgets import Icon
-from horizons.messaging.message import ResourceProduced
+
+import horizons.main
+from horizons.gui.util import get_res_icon_path
+from horizons.messaging import ResourceProduced
 from horizons.scheduler import Scheduler
 from horizons.util.python.callback import Callback
 
@@ -40,6 +39,7 @@ class ProductionFinishedIconManager(object):
 		self.layer = layer
 		self.renderer = renderer
 		self.run = dict()
+		self.animation_steps = 15
 
 		ResourceProduced.subscribe(self._on_resource_produced)
 
@@ -58,13 +58,16 @@ class ProductionFinishedIconManager(object):
 
 		tick_callback = Callback(self.__render_icon, message.sender, group, res)
 		finish_callback = Callback(self.remove_icon, group)
-		Scheduler().add_new_object(tick_callback, self, finish_callback=finish_callback, run_in=1, loops=13)
+		Scheduler().add_new_object(tick_callback, self, finish_callback=finish_callback, run_in=1, loops=self.animation_steps)
 
 	def __render_icon(self, instance, group, res):
-		# Clean icons
+		""" This renders the icon. It calculates the position of the icon.
+		Most parts of this were copied from horizons/world/managers/statusiconmanager.py
+		"""
+		# TODO: Try to unify the __render methods of this class and statusiconmanager.py!
 		self.renderer.removeAll(group)
 
-		# pixel-offset on screen (will be constant across zoom-levels)
+		# self.run[group] is used for the moving up animation
 		rel = fife.Point(0, -35 - self.run[group])
 		self.run[group] += 2
 
@@ -80,15 +83,19 @@ class ProductionFinishedIconManager(object):
 
 		node = fife.RendererNode(loc, rel)
 
-		self.renderer.addImage(group, node, horizons.main.fife.imagemanager.load("content/gui/images/background/sq.png"))
-		self.renderer.resizeImage(group, node, horizons.main.fife.imagemanager.load(get_res_icon_path(res, 32, False)), 24, 24)
+		bg_image = horizons.main.fife.imagemanager.load("content/gui/images/background/sq.png")
+		res_icon = horizons.main.fife.imagemanager.load(get_res_icon_path(res, 32, False))
+		self.renderer.addImage(group, node, bg_image)
+		self.renderer.resizeImage(group, node, res_icon, 23, 23)
 
 	def remove_icon(self, group):
+		""" Remove the icon after the animation finished
+		Also removes the entry in the run-dictionary.
+		"""
 		self.renderer.removeAll(group)
 		del self.run[group]
 
 	def get_resource_string(self, instance, res):
-		"""Returns render name for resource icons of this instance"""
+		"""Returns the render name for resource icons of this instance"""
 		resource_string = "produced_resource_" + str(res) + "_" + str(instance.position.origin)
-		print resource_string
 		return resource_string
