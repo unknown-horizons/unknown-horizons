@@ -227,12 +227,11 @@ def print_collector_restrictions():
 def print_increment_data():
 	print 'Data has been moved, this view is unavailable for now'
 	return
-	from horizons.util.python.roman_numerals import int_to_roman
 	upgrade_increments = xrange(1, SETTLER.CURRENT_MAX_INCR+1)
 	print '%15s %s %s  %s' % ('increment', 'max_inh', 'base_tax', 'upgrade_prod_line')
 	print '=' * 64
 	for inc, name, inh, tax in db('SELECT level, name, inhabitants_max, tax_income FROM settler_level'):
-		str = '%3s %11s %5s    %4s' % (int_to_roman(inc+1), name, inh, tax)
+		str = '%3s %11s %5s    %4s' % ((inc+1), name, inh, tax)
 		if inc+1 in upgrade_increments:
 			line = db("SELECT production_line FROM upgrade_material WHERE level = ?", inc+1)[0][0]
 			str += 5 * ' ' + '%2s: ' % line
