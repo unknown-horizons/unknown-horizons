@@ -169,15 +169,7 @@ class Gui(SingleplayerMenu, MultiplayerMenu):
 				'quit'     : events['e_quit'],
 			})
 
-			# load transparent background, that de facto prohibits access to other
-			# gui elements by eating all events
-			height = horizons.main.fife.engine_settings.getScreenHeight()
-			width = horizons.main.fife.engine_settings.getScreenWidth()
-			image = horizons.main.fife.imagemanager.loadBlank(width, height)
-			image = fife.GuiImage(image)
-			self.current.additional_widget = pychan.Icon(image=image)
-			self.current.additional_widget.position = (0, 0)
-			self.current.additional_widget.show()
+			self.show_modal_background()
 			self.current.show()
 
 			PauseCommand(suggestion=True).execute(self.session)
@@ -477,12 +469,13 @@ class Gui(SingleplayerMenu, MultiplayerMenu):
 		self.dialog_executed = False
 		return ret
 
-	def show_popup(self, windowtitle, message, show_cancel_button=False, size=0):
+	def show_popup(self, windowtitle, message, show_cancel_button=False, size=0, modal=True):
 		"""Displays a popup with the specified text
 		@param windowtitle: the title of the popup
 		@param message: the text displayed in the popup
 		@param show_cancel_button: boolean, show cancel button or not
 		@param size: 0, 1 or 2. Larger means bigger.
+		@param modal: Whether to block user interaction while displaying the popup
 		@return: True on ok, False on cancel (if no cancel button, always True)
 		"""
 		popup = self.build_popup(windowtitle, message, show_cancel_button, size=size)
@@ -491,6 +484,8 @@ class Gui(SingleplayerMenu, MultiplayerMenu):
 		def focus_ok_button():
 			popup.findChild(name=OkButton.DEFAULT_NAME).requestFocus()
 		ExtScheduler().add_new_object(focus_ok_button, self, run_in=0)
+		if modal:
+			self.show_modal_background()
 		if show_cancel_button:
 			return self.show_dialog(popup, {OkButton.DEFAULT_NAME : True,
 			                                CancelButton.DEFAULT_NAME : False})
@@ -562,6 +557,19 @@ class Gui(SingleplayerMenu, MultiplayerMenu):
 		popup.findChild(name='popup_message').text = _(_(message))
 		popup.adaptLayout() # recalculate widths
 		return popup
+
+	def show_modal_background(self):
+		""" Loads transparent background that de facto prohibits
+		access to other gui elements by eating all input events.
+		Used for modal popups and our in-game menu.
+		"""
+		height = horizons.main.fife.engine_settings.getScreenHeight()
+		width = horizons.main.fife.engine_settings.getScreenWidth()
+		image = horizons.main.fife.imagemanager.loadBlank(width, height)
+		image = fife.GuiImage(image)
+		self.current.additional_widget = pychan.Icon(image=image)
+		self.current.additional_widget.position = (0, 0)
+		self.current.additional_widget.show()
 
 	def show_loading_screen(self):
 		self._switch_current_widget('loadingscreen', center=True, show=True)
