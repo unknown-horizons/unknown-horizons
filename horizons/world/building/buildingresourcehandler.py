@@ -18,8 +18,11 @@
 # Free Software Foundation, Inc.,
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
+from horizons.component.collectingcomponent import CollectingComponent
+from horizons.messaging.message import ResourceProduced
+from horizons.world.building.buildable import BuildableRect
 
-from horizons.world.resourcehandler import ResourceHandler
+from horizons.world.resourcehandler import ResourceHandler, StorageResourceHandler
 from horizons.world.production.producer import Producer
 
 
@@ -38,6 +41,7 @@ class BuildingResourceHandler(ResourceHandler):
 		self.island.provider_buildings.append(self)
 		if self.has_component(Producer):
 			self.get_component(Producer).add_activity_changed_listener(self._set_running_costs_to_status)
+			self.get_component(Producer).add_production_finished_listener(self.on_production_finished)
 			self._set_running_costs_to_status(None, self.get_component(Producer).is_active())
 
 	def load(self, db, worldid):
@@ -49,6 +53,11 @@ class BuildingResourceHandler(ResourceHandler):
 		self.island.provider_buildings.remove(self)
 		if self.has_component(Producer):
 			self.get_component(Producer).remove_activity_changed_listener(self._set_running_costs_to_status)
+			self.get_component(Producer).remove_production_finished_listener(self.on_production_finished)
+
+	def on_production_finished(self, caller, ressources):
+		if self.has_component(CollectingComponent) and self.owner is not None and not issubclass(type(self), StorageResourceHandler) and not issubclass(type(self), BuildableRect):
+			ResourceProduced.broadcast(self, ressources)
 
 	def _set_running_costs_to_status(self, caller, is_active):
 		current_setting_is_active = self.running_costs_active()
