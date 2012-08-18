@@ -168,7 +168,7 @@ class Collector(Unit):
 		Scheduler().add_new_object(
 		  Callback.ChainedCallbacks(
 		    fix_job_object,
-		  	Callback(self.apply_state, self.state, remaining_ticks)),
+		    Callback(self.apply_state, self.state, remaining_ticks)),
 		    self, run_in=0
 		)
 
@@ -216,7 +216,7 @@ class Collector(Unit):
 		raise NotImplementedError
 
 
-	# BEHAVIOUR
+	# BEHAVIOR
 	def search_job(self):
 		"""Search for a job, only called if the collector does not have a job.
 		If no job is found, a new search will be scheduled in a few ticks."""
@@ -236,7 +236,7 @@ class Collector(Unit):
 		self.job.object.add_incoming_collector(self)
 
 	def check_possible_job_target(self, target):
-		"""Checks our if we "are allowed" and able to pick up from the target"""
+		"""Checks if we "are allowed" and able to pick up from the target"""
 		# Discard building if it works for same inventory (happens when both are storage buildings
 		# or home_building is checked out)
 		if target.get_component(StorageComponent).inventory is self.get_home_inventory():
@@ -385,7 +385,7 @@ class Collector(Unit):
 
 			remnant = self.get_component(StorageComponent).inventory.alter(entry.res, actual_amount)
 			assert remnant == 0, "%s couldn't take all of res %s; remnant: %s; planned: %s" % \
-				     (self, entry.res, remnant, entry.amount)
+			       (self, entry.res, remnant, entry.amount)
 		self.job.reslist = new_reslist
 
 	def transfer_res_to_home(self, res, amount):
