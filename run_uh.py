@@ -151,6 +151,8 @@ def get_option_parser():
 	             help="Set the player with id <force_player_id> as the active (human) player.")
 	ai_group.add_option("--ai-highlights", dest="ai_highlights", action="store_true",
 	             help="Shows AI plans as highlights (for development only).")
+	ai_group.add_option("--ai-combat-highlights", dest="ai_combat_highlights", action="store_true",
+	             help="Highlights combat ranges for units controlled by AI Players (for development only).")
 	p.add_option_group(ai_group)
 
 	dev_group = optparse.OptionGroup(p, "Development options")

@@ -1,0 +1,85 @@
+\documentclass[a4paper,10pt]{report}
+\usepackage[margin=0.9in]{geometry}
+\usepackage[utf8]{inputenc}
+
+% used for footnote numeration in tables
+\usepackage{fmtcount}
+
+% drawing images (graphs, state diagrams)
+\usepackage{tikz}
+
+\usepackage{amssymb}
+\usepackage{fancyvrb}
+\usepackage{verbatim}
+\usepackage{framed}
+\usepackage{graphicx}
+\usepackage{amssymb}
+%\usepackage[section,subsection,subsubsection]{extraplaceins}
+\usepackage{multirow}
+\usepackage{fancyhdr}
+\usepackage{color}
+\usepackage{titlesec}
+\usepackage{nameref}
+\usepackage{graphicx}
+
+\usepackage{ifpdf}
+
+% little icons in the middle of a text
+\newcommand{\vcenteredinclude}[1]{\begingroup
+\setbox0=\hbox{\includegraphics[width=0.5cm]{#1}}%
+\parbox{\wd0}{\box0}\endgroup}
+
+% tables across few pages
+\usepackage{longtable}
+
+\usepackage{ifpdf}
+\ifpdf
+\usepackage[pdftex,unicode]{hyperref}
+\else
+\usepackage[dvips,unicode]{hyperref}
+\fi
+
+% Hyperlinks
+\hypersetup{
+  colorlinks=false,
+  urlbordercolor={1 1 1}
+}
+
+% Glossary
+% Change name for 'Glossary' section
+%\newcommand*{\glossaryname}{Terms and Abbreviations}
+%\usepackage[toc]{glossaries}
+%\makeglossaries
+%
+% Chapter formatting
+%\titleformat{\chapter}[block]
+%{\normalfont\huge\bfseries}{\thechapter.}{0.25in}{\Huge}
+\titlespacing*{\chapter}{0pt}{-19pt}{0pt}
+
+% Header and Footer
+\fancyhead{}
+\fancypagestyle{plain}{
+\fancyhf{}
+\fancyhead[L]{\href{http://www.unknown-horizons.org}{\includegraphics[width=1.5cm]{gfx/uh_logo.png}}}
+
+\fancyhead[R]{Unknown Horizons - GSoC 2012 - Combat AI}
+\fancyfoot[C]{- \thepage\ -}
+
+\renewcommand{\footrulewidth}{1pt}}
+
+% Table padding
+\def\arraystretch{1.5}
+
+\setcounter{secnumdepth}{2}
+\setcounter{tocdepth}{3}
+
+\begin{document}
+\pagestyle{plain}
+
+%\let\stdsection\section
+%\renewcommand\section{\FloatBarrier\newpage\stdsection}
+
+\tableofcontents
+\input{diplomacy.tex}
+%\printglossaries
+\end{document}

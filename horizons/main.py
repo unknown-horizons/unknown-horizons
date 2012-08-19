@@ -117,6 +117,8 @@ def start(_command_line_arguments):
 
 	if command_line_arguments.ai_highlights:
 		AI.HIGHLIGHT_PLANS = True
+	if command_line_arguments.ai_combat_highlights:
+		AI.HIGHLIGHT_COMBAT = True
 	if command_line_arguments.human_ai:
 		AI.HUMAN_AI = True
 
