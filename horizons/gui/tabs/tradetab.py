@@ -153,6 +153,7 @@ class TradeTab(TabInterface):
 	def show(self):
 		self.widget.show()
 		self.__add_changelisteners()
+		self.refresh()
 
 	def set_exchange(self, size, initial=False):
 		"""

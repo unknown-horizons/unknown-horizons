@@ -18,8 +18,8 @@
 
 			<!-- happiness and residents -->
 			<Label name='name' position="0,140" text="" />
-			<Icon name="happiness_label" position="0,166"
-				image="content/gui/icons/resources/running_costs.png"
+			<Icon name="happiness_label" position="0,167"
+				image="content/gui/icons/templates/happiness/average.png"
 				helptext="Happiness" />
 			<Icon position="20,165" image="content/gui/images/background/bar_bg.png" size="80,20" />
 			<ProgressBar name='happiness' position="21,166" size="78,18" helptext="Happiness" />

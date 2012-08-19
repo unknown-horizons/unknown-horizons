@@ -223,6 +223,14 @@ class UhDbAccessor(DbReader):
 			sql = "SELECT inhabitants_max FROM settler_level WHERE level=?"
 			return self.cached_query(sql, level-1)[0][0]
 
+	def get_settler_happiness_increase_requirement(self):
+		sql = "SELECT value FROM balance_values WHERE name='happiness_inhabitants_increase_requirement'"
+		return self.cached_query(sql)[0][0]
+
+	def get_settler_happiness_decrease_limit(self):
+		sql = "SELECT value FROM balance_values WHERE name='happiness_inhabitants_decrease_limit'"
+		return self.cached_query(sql)[0][0]
+
 	# Misc
 
 	def get_player_start_res(self):
