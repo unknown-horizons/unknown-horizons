@@ -39,8 +39,8 @@ class ProductionFinishedIconManager(object):
 		self.layer = layer
 		self.renderer = renderer
 		self.run = dict()
-		self.animation_duration = 20
-		self.animation_steps = 1
+		self.animation_duration = 20 # The duration how long the image moves up
+		self.animation_steps = 1 # The steps that the image makes every run
 		self.background = "content/gui/images/background/produced_notification.png"
 
 		ResourceProduced.subscribe(self._on_resource_produced)
