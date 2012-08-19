@@ -186,3 +186,7 @@ class TabWidgetChanged(Message):
 class GuiAction(Message):
 	"""Sent on events pychan classifies as "action" """
 	pass
+
+class ResourceProduced(Message):
+	"""Sent when a production building finished the production of a resource """
+	arguments = ('produced_resources', )

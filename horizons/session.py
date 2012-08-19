@@ -51,6 +51,7 @@ from horizons.savegamemanager import SavegameManager
 from horizons.scenario import ScenarioEventHandler
 from horizons.component.ambientsoundcomponent import AmbientSoundComponent
 from horizons.constants import GAME_SPEED, PATHS, LAYERS
+from horizons.world.managers.productionfinishediconmanager import ProductionFinishedIconManager
 from horizons.world.managers.statusiconmanager import StatusIconManager
 from horizons.messaging import MessageBus
 
@@ -128,11 +129,28 @@ class Session(LivingObject):
 		  renderer=self.view.renderer['GenericRenderer'],
 		  layer=self.view.layers[LAYERS.OBJECTS]
 		  )
+		self.production_finished_icon_manager = None
+		self.create_production_finished_icon_manager()
+
 
 		self.selected_instances = set()
 		self.selection_groups = [set() for _ in range(10)]  # List of sets that holds the player assigned unit groups.
 
 		self._old_autosave_interval = None
+
+	def create_production_finished_icon_manager(self):
+		""" Checks the settings if we should display resrouce icons.
+		If True: Create the ProductionFinishedIconManager
+		If False and a manager is currently running: End it
+		"""
+		show_resource_icons = bool(horizons.main.fife.get_uh_setting("ShowResourceIcons"))
+		if show_resource_icons:
+			self.production_finished_icon_manager = ProductionFinishedIconManager(
+				renderer=self.view.renderer['GenericRenderer'],
+				layer=self.view.layers[LAYERS.OBJECTS]
+			)
+		else:
+			self.end_production_finished_icon_manager()
 
 	def start(self):
 		"""Actually starts the game."""
@@ -169,12 +187,19 @@ class Session(LivingObject):
 		AIPlayer.clear_caches()
 		SelectableBuildingComponent.reset()
 
+	def end_production_finished_icon_manager(self):
+		if self.production_finished_icon_manager is not None:
+			self.production_finished_icon_manager.end()
+			self.production_finished_icon_manager = None
+
 	def end(self):
 		self.log.debug("Ending session")
 		self.is_alive = False
 
 		self.gui.session = None
 
+		# Has to be done here, cause the manager uses Scheduler!
+		self.end_production_finished_icon_manager()
 		Scheduler().rem_all_classinst_calls(self)
 		ExtScheduler().rem_all_classinst_calls(self)
 
@@ -440,6 +465,9 @@ class Session(LivingObject):
 			self._pause_stack -= 1
 			if self._pause_stack == 0:
 				self.speed_set(self.paused_ticks_per_second)
+
+				# check if resource icons should be displayed (possible changes in settings)
+				self.create_production_finished_icon_manager()
 
 	def speed_toggle_pause(self, suggestion=False):
 		if self.speed_is_paused():
