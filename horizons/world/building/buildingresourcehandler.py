@@ -60,7 +60,7 @@ class BuildingResourceHandler(ResourceHandler):
 	def is_valid_tradable_resource(self, resources):
 		""" Checks if the produced resource tradable (can be carried by collectors).
 		"""
-		if not resources or not len(resources.keys()):
+		if not resources or not resources.keys():
 			return False
 
 		return resources.keys()[0] in \

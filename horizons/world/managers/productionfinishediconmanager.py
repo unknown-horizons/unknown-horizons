@@ -58,7 +58,7 @@ class ProductionFinishedIconManager(object):
 		assert isinstance(message, ResourceProduced)
 
 		# if we get an empty dictionary, abort
-		if not message.produced_resources or not len(message.produced_resources.keys()):
+		if not message.produced_resources or not message.produced_resources.keys():
 			return
 
 		res, amount = message.produced_resources.items()[0] # TODO multiple resources
