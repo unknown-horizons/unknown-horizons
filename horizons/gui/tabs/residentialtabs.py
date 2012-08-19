@@ -36,11 +36,15 @@ class SettlerOverviewTab(OverviewTab):
 			instance = instance
 		)
 		self.helptext = _("Settler overview")
-		self.widget.findChild(name="headline").text = self.instance.settlement.get_component(NamedComponent).name
-		setup_tax_slider(self.widget.child_finder('tax_slider'), self.widget.child_finder('tax_val_label'),
-		                  self.instance.settlement, self.instance.level)
+		name = self.instance.settlement.get_component(NamedComponent).name
+		self.widget.findChild(name="headline").text = name
+		setup_tax_slider(self.widget.child_finder('tax_slider'),
+		                 self.widget.child_finder('tax_val_label'),
+		                 self.instance.settlement,
+		                 self.instance.level)
 
-		self.widget.child_finder('tax_val_label').text = unicode(self.instance.settlement.tax_settings[self.instance.level])
+		taxes = self.instance.settlement.tax_settings[self.instance.level]
+		self.widget.child_finder('tax_val_label').text = unicode(taxes)
 		action_set = ActionSetLoader.get_sets()[self.instance._action_set_id]
 		action_gfx = action_set.items()[0][1]
 		image = action_gfx[45].keys()[0]
@@ -48,9 +52,12 @@ class SettlerOverviewTab(OverviewTab):
 
 	def on_settler_level_change(self, message):
 		assert isinstance(message, SettlerUpdate)
-		setup_tax_slider(self.widget.child_finder('tax_slider'), self.widget.child_finder('tax_val_label'),
-		                  self.instance.settlement, message.level)
-		self.widget.child_finder('tax_val_label').text = unicode(self.instance.settlement.tax_settings[self.instance.level])
+		setup_tax_slider(self.widget.child_finder('tax_slider'),
+		                 self.widget.child_finder('tax_val_label'),
+		                 self.instance.settlement,
+		                 message.level)
+		taxes = self.instance.settlement.tax_settings[self.instance.level]
+		self.widget.child_finder('tax_val_label').text = unicode(taxes)
 		imgs = ActionSetLoader.get_sets()[self.instance._action_set_id].items()[0][1]
 		self.widget.findChild(name="building_image").image = imgs[45].keys()[0]
 
@@ -64,11 +71,13 @@ class SettlerOverviewTab(OverviewTab):
 
 	def refresh(self):
 		happiness_icon_path = "content/gui/icons/templates/happiness/"
-		if self.instance.happiness <= self.instance.session.db.get_settler_happiness_decrease_limit():
+		sad = self.instance.session.db.get_settler_happiness_decrease_limit()
+		happy = self.instance.session.db.get_settler_happiness_increase_limit()
+		if self.instance.happiness <= sad:
 			happiness_icon_path += "sad.png"
-		elif self.instance.session.db.get_settler_happiness_decrease_limit() < self.instance.happiness < self.instance.session.db.get_settler_happiness_increase_requirement():
+		elif sad < self.instance.happiness < happy:
 			happiness_icon_path += "average.png"
-		elif self.instance.happiness >= self.instance.session.db.get_settler_happiness_increase_requirement():
+		elif self.instance.happiness >= happy:
 			happiness_icon_path += "happy.png"
 
 		self.widget.child_finder('happiness_label').image = happiness_icon_path
@@ -78,9 +87,11 @@ class SettlerOverviewTab(OverviewTab):
 		                                               self.instance.inhabitants_max)
 		self.widget.child_finder('taxes').text = unicode(self.instance.last_tax_payed)
 		self.update_consumed_res()
-		self.widget.findChild(name="headline").text = self.instance.settlement.get_component(NamedComponent).name
+		name = self.instance.settlement.get_component(NamedComponent).name
+		self.widget.findChild(name="headline").text = name
 		events = {
-				'headline': Callback(self.instance.session.ingame_gui.show_change_name_dialog, self.instance.settlement)
+				'headline': Callback(self.instance.session.ingame_gui.show_change_name_dialog,
+				                     self.instance.settlement)
 		         }
 		self.widget.mapEvents(events)
 		super(SettlerOverviewTab, self).refresh()
