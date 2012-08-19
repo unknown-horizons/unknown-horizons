@@ -45,6 +45,10 @@ class ProductionFinishedIconManager(object):
 		ResourceProduced.subscribe(self._on_resource_produced)
 
 	def end(self):
+		Scheduler().rem_all_classinst_calls(self)
+		for group in self.run.keys():
+			self.renderer.removeAll(group)
+		self.run = None
 		self.renderer = None
 		ResourceProduced.unsubscribe(self._on_resource_produced)
 

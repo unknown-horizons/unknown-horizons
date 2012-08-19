@@ -73,6 +73,7 @@ class SettingsHandler(object):
 		self._setting.createAndAddEntry(UH_MODULE, "QuotesType", "quotestype",
 		                                initialdata=QUOTES_SETTINGS,
 		                                applyfunction=self.set_quotestype)
+		self._setting.createAndAddEntry(UH_MODULE, "ShowResourceIcons", "show_resource_icons")
 
 		self._setting.createAndAddEntry(FIFE_MODULE, "BitsPerPixel", "screen_bpp",
 				                        initialdata=[0, 16, 32], requiresrestart=True)
