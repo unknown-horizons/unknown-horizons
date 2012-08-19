@@ -179,7 +179,7 @@
 
                 <HBox>
                     <Label name="show_resource_icons_lbl" text="Show resource icons: " min_size="170,0"
-                           helptext="Shows a icon over a production building when it finished producing a resource. " />
+                           helptext="Whether to show resource icons over buildings whenever they finish production. " />
                     <CheckBox min_size="24,24" name="show_resource_icons" />
                 </HBox>
 			</VBox>

@@ -1050,7 +1050,7 @@ def set_translations():
 		# (helptext of widget: use_renderer_label)
 		("use_renderer_label"          , "helptext"): _("SDL is only meant as unsupported fallback and might cause problems!"),
 		# (helptext of widget: show_resource_icons_lbl)
-		("show_resource_icons_lbl"          , "helptext"    ): _("Shows a icon over a production building when it finished producing a resource."),
+		("show_resource_icons_lbl"          , "helptext"    ): _("Whether to show resource icons over buildings whenever they finish production."),
 		# (helptext of widget: quote_type_label)
 		("quote_type_label"            , "helptext"    ): _("What kind of quote to display while loading a game"),
 		},
