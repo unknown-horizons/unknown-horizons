@@ -106,6 +106,29 @@ import sys
 from yaml import load
 from yaml import SafeLoader as Loader
 
+from horizons.constants import TIER, RES, UNITS, BUILDINGS
+
+# cannot import parse_token from horizons.util.yamlcache here!
+#TODO Make sure to keep both in sync and/or fix the import trouble!
+def parse_token(token, token_klass):
+	"""Helper function that tries to parse a constant name.
+	Does not do error detection, but passes unparseable stuff through.
+	Allowed values: integer or token_klass.LIKE_IN_CONSTANTS
+	@param token_klass: "TIER", "RES", "UNITS" or "BUILDINGS"
+	"""
+	classes = {'TIER': TIER, 'RES': RES, 'UNITS': UNITS, 'BUILDINGS': BUILDINGS}
+
+	if not isinstance(token, basestring):
+		return token # probably numeric already
+	if not token.startswith(token_klass):
+		return token
+	try:
+		return getattr( classes[token_klass], token.split(".", 2)[1])
+	except AttributeError as e: # token not defined here
+		err = "This means that you either have to add an entry in horizons/constants.py "\
+		      "in the class %s for %s,\nor %s is actually a typo." % (token_klass, token, token)
+		raise Exception( str(e) + "\n\n" + err +"\n" )
+
 def list_all_files():
 	result = []
 	for folder in locations_to_translate:
@@ -120,29 +143,31 @@ def content_from_file(filename):
 	object_strings = []
 	if not parsed:
 		return ''
-	def add_line(value, component, filename):
+	def add_line(value, component, sep, key, filename):
 		if value.startswith('_ '):
 			text = '_("{value}")'.format(value=value[2:])
-			comment = '%s of %s' %(component, filename.rsplit('.yaml')[0].split(OBJECT_PATH)[1].replace('/',':'))
+			component = component + sep + str(parse_token(key, 'TIER'))
+			filename = filename.rsplit('.yaml')[0].split(OBJECT_PATH)[1].replace('/',':')
+			comment = '%s of %s' %(component, filename)
 			object_strings.append('# %s' %comment + ROWINDENT + '%-30s: %s' % (('"%s"') % component, text))
 
 	for component, value in parsed.iteritems():
 		if isinstance(value, basestring):
-			add_line(value, component, filename)
+			add_line(value, component, '', '', filename)
 		elif isinstance(value, dict):
 			for key, subvalue in value.iteritems():
 				if isinstance(subvalue, basestring):
-					add_line(subvalue, component + "_" + str(key), filename)
+					add_line(subvalue, component, "_", str(key), filename)
 		elif isinstance(value, list): # build menu definitions
 			for attrlist in value:
 				if isinstance(attrlist, dict):
 					for key, subvalue in attrlist.iteritems():
 						if isinstance(subvalue, basestring):
-							add_line(subvalue, component + "_" + str(key), filename)
+							add_line(subvalue, component, "_", str(key), filename)
 				else:
 					for subvalue in attrlist:
 						if isinstance(subvalue, basestring):
-							add_line(subvalue, 'headline', filename)
+							add_line(subvalue, 'headline', '', '', filename)
 
 	strings = sorted(object_strings)
 
