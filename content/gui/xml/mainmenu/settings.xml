@@ -161,7 +161,7 @@
 
 				<HBox>
 					<Label name="cursor_centered_zoom_label" text="Cursor centered zoom:" min_size="170,0"
-						helptext="When enabled, mouse's wheel zooms to the cursor" />
+						helptext="When enabled, mouse wheel zoom will use the cursor position as new viewport center" />
 					<CheckBox min_size="24,24" name="cursor_centered_zoom" />
 				</HBox>
 
@@ -172,14 +172,14 @@
 				</HBox>
 
 				<HBox>
-					<Label name="debug_log_lbl" text="Enable logging" min_size="170,0"
+					<Label name="debug_log_lbl" text="Enable logging:" min_size="170,0"
 						helptext="Don't use in normal game session. Decides whether to write debug information in the logging directory of your user directory. Slows the game down." />
 					<CheckBox min_size="24,24" name="debug_log" />
 				</HBox>
 
 				<HBox>
-					<Label name="show_resource_icons_lbl" text="Show resource icons: " min_size="170,0"
-						helptext="Shows a icon over a production building when it finished producing a resource. " />
+					<Label name="show_resource_icons_lbl" text="Production indicators:" min_size="170,0"
+						helptext="Whether to show resource icons over buildings whenever they finish production" />
 					<CheckBox min_size="24,24" name="show_resource_icons" />
 				</HBox>
 			</VBox>
