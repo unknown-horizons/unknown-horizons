@@ -92,9 +92,7 @@ class ProductionFinishedIconManager(object):
 
 		bg_image = horizons.main.fife.imagemanager.load("content/gui/images/background/produced_notification.png")
 		res_icon = horizons.main.fife.imagemanager.load(get_res_icon_path(res))
-		font = horizons.main.fife.pychanmanager.getFont('14')
 		self.renderer.addImage(group, bg_node, bg_image)
-		self.renderer.addText(group, node, font, ' '*12 + '{amount:>4d}'.format(amount=1))
 		self.renderer.resizeImage(group, node, res_icon, 23, 23)
 
 	def remove_icon(self, group):
