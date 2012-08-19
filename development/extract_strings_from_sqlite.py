@@ -72,7 +72,7 @@ Base = sqlalchemy.ext.declarative.declarative_base()
 #
 
 class Message(Base):
-	__tablename__ = 'message'
+	__tablename__ = 'message_text'
 
 	text = sqlalchemy.Column(sqlalchemy.String, primary_key=True)
 
