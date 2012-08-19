@@ -33,7 +33,10 @@ class UnitProduction(ChangingProduction):
 	def progress(self):
 		still_needed =  sum(self._prod_line.consumed_res.itervalues())
 		all_needed = sum([amount for res, amount in self.original_prod_line.consumed_res.iteritems() if res != RES.GOLD])
-		return 1 - float(still_needed) / all_needed
+		progress = 1 - float(still_needed) / all_needed
+		if progress < 0:
+			progress = 0
+		return progress
 
 	## PROTECTED METHODS
 	def _get_producing_callback(self):
