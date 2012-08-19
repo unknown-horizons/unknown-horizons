@@ -1,5 +1,5 @@
 tab1:
-- icon: content/gui/icons/tabwidget/buildmenu/level1_%s.png
+- icon: content/gui/icons/tabwidget/buildmenu/class/residential_%s.png
 - headline: Residents and infrastructure # Too long for label! => find better name
 - helptext: _ Residents and infrastructure
 -
@@ -23,7 +23,7 @@ tab1:
   - BUILDINGS.DOCTOR
 
 tab2:
-- icon: content/gui/icons/tabwidget/buildmenu/level2_%s.png
+- icon: content/gui/icons/tabwidget/buildmenu/class/fields_%s.png
 - headline: _ Fields
 -
   - _ Pioneers
@@ -45,7 +45,7 @@ tab2:
   - BUILDINGS.ALVEARIES
 
 tab3:
-- icon: content/gui/icons/tabwidget/buildmenu/level3_%s.png
+- icon: content/gui/icons/tabwidget/buildmenu/class/agricultural_companies_%s.png
 - headline: Agricultural Companies #TODO find name
 -
   - _ Sea
@@ -69,7 +69,7 @@ tab3:
 
 
 tab4:
-- icon: content/gui/icons/tabwidget/buildmenu/level4_%s.png
+- icon: content/gui/icons/tabwidget/buildmenu/class/companies_%s.png
 - headline: _ Companies
 -
   - Tree only in LJ related?
@@ -86,7 +86,7 @@ tab4:
   - BUILDINGS.TOOLMAKER
 
 tab5:
-- icon: content/gui/icons/tabwidget/buildmenu/level5_%s.png
+- icon: content/gui/icons/tabwidget/buildmenu/class/military_%s.png
 - headline: _ Military
 -
   - _ Fortifications
@@ -98,7 +98,7 @@ tab5:
   - BUILDINGS.BARRACKS
 
 tab6:
-- icon: content/gui/icons/tabwidget/buildmenu/level6_%s.png
+- icon: content/gui/icons/tabwidget/buildmenu/class/aesthetics_%s.png
 - headline: _ Aesthetics
 -
   -

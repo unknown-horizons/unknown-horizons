@@ -1,5 +1,5 @@
 tab1:
-- icon: content/gui/icons/tabwidget/buildmenu/level1_%s.png
+- icon: content/gui/icons/tabwidget/buildmenu/tier/tier1_%s.png
 - # first row
   - _ Residents and infrastructure
   - BUILDINGS.RESIDENTIAL
@@ -19,7 +19,7 @@ tab1:
   - BUILDINGS.FISHER
 
 tab2:
-- icon: content/gui/icons/tabwidget/buildmenu/level2_%s.png
+- icon: content/gui/icons/tabwidget/buildmenu/tier/tier2_%s.png
 - 
   - _ Companies
   - BUILDINGS.CLAY_PIT
@@ -41,7 +41,7 @@ tab2:
 
 
 tab3:
-- icon: content/gui/icons/tabwidget/buildmenu/level3_%s.png
+- icon: content/gui/icons/tabwidget/buildmenu/tier/tier3_%s.png
 - 
   - _ Mining
   - BUILDINGS.IRON_MINE
@@ -70,7 +70,7 @@ tab3:
 
 
 tab4:
-- icon: content/gui/icons/tabwidget/buildmenu/level4_%s.png
+- icon: content/gui/icons/tabwidget/buildmenu/tier/tier4_%s.png
 - 
   - _ Companies
   - BUILDINGS.WINDMILL
