@@ -177,22 +177,22 @@
 					<CheckBox min_size="24,24" name="debug_log" />
 				</HBox>
 
-                <HBox>
-                    <Label name="show_resource_icons_lbl" text="Show resource icons: " min_size="170,0"
-                           helptext="Shows a icon over a production building when it finished producing a resource. " />
-                    <CheckBox min_size="24,24" name="show_resource_icons" />
-                </HBox>
+				<HBox>
+					<Label name="show_resource_icons_lbl" text="Show resource icons: " min_size="170,0"
+						helptext="Shows a icon over a production building when it finished producing a resource. " />
+					<CheckBox min_size="24,24" name="show_resource_icons" />
+				</HBox>
 			</VBox>
 
-            <VBox name="quote_settings" padding="2" max_size="280,85" min_size="280,85">
-                <HBox>
-                    <Label name="quote_type_label" text="Choose a quote type:" min_size="170,0"
-                           helptext="What kind of quote to display while loading a game" />
-                    <ScrollArea min_size="110,85" >
-                        <ListBox name="quotestype" is_focusable="0" min_size="100,85" />
-                    </ScrollArea>
-                </HBox>
-            </VBox>
+			<VBox name="quote_settings" padding="2" max_size="280,85" min_size="280,85">
+				<HBox>
+					<Label name="quote_type_label" text="Choose a quote type:" min_size="170,0"
+						   helptext="What kind of quote to display while loading a game" />
+					<ScrollArea min_size="110,85" >
+						<ListBox name="quotestype" is_focusable="0" min_size="100,85" />
+					</ScrollArea>
+				</HBox>
+			</VBox>
 		</VBox>
 
 		<!-- Right pane -->
@@ -230,6 +230,6 @@
 	<DropDown name="lighting_model" min_size="20,0" position="10000,0" />
 
 <!-- Pickbelts to the right -->
-    <Container name="right_pickbelts" position="835,0" size="170,580" />
+	<Container name="right_pickbelts" position="835,0" size="170,580" />
 
 </Container>
