@@ -107,5 +107,8 @@ class ProductionFinishedIconManager(object):
 		del self.run[group]
 
 	def get_resource_string(self, instance, res):
-		"""Returns the render name for resource icons of this instance"""
-		return "produced_resource_" + str(res) + "_" + str(instance.position.origin)
+		"""Returns the render name for resource icons of this instance
+		This key MUST be unique!
+		"""
+		return "produced_resource_" + str(res) + "_" + str(instance.position.origin)\
+		       + "_" + str(Scheduler().cur_tick)
