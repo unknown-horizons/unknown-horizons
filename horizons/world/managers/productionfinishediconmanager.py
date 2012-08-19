@@ -20,6 +20,7 @@
 # ###################################################
 
 from fife import fife
+from horizons.constants import GAME_SPEED
 
 import horizons.main
 from horizons.gui.util import get_res_icon_path
@@ -61,14 +62,22 @@ class ProductionFinishedIconManager(object):
 		if not message.produced_resources or not message.produced_resources.keys():
 			return
 
+		# makes the animation independent from game speed
+		cur_ticks_per_second = Scheduler().timer.ticks_per_second
+		interval = None
+		if cur_ticks_per_second > GAME_SPEED.TICKS_PER_SECOND:
+			interval = (cur_ticks_per_second // GAME_SPEED.TICKS_PER_SECOND) - 1
+
 		res, amount = message.produced_resources.items()[0] # TODO multiple resources
 		group = self.get_resource_string(message.sender, res)
 		self.run[group] = self.animation_steps
 
 		tick_callback = Callback(self.__render_icon, message.sender, group, res, amount)
 		finish_callback = Callback(self.remove_icon, group)
+
 		Scheduler().add_new_object(tick_callback, self, finish_callback=finish_callback,
-		                           run_in=1, loops=self.animation_duration)
+		                           run_in=1, loops=self.animation_duration,
+		                           loop_interval=interval)
 
 	def __render_icon(self, instance, group, res, amount):
 		""" This renders the icon. It calculates the position of the icon.
