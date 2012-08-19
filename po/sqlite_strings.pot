@@ -95,11 +95,6 @@ msgstr ""
 msgid "cocoa"
 msgstr ""
 
-#. This is a database entry: a messagewidget message (left part of the screen).
-#: sql database files
-msgid "A new ship has been created."
-msgstr ""
-
 #. This is a database entry: the name of a resource.
 #: sql database files
 msgid "potatoes"
@@ -159,7 +154,7 @@ msgstr ""
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: sql database files
 #, python-format
-msgid "A new settlement was founded by {player}."
+msgid "{player1} and {player2} have terminated their alliance."
 msgstr ""
 
 #. This is a database entry: a messagewidget message (left part of the screen).
@@ -403,6 +398,12 @@ msgstr ""
 msgid "flour"
 msgstr ""
 
+#. This is a database entry: a messagewidget message (left part of the screen).
+#: sql database files
+#, python-format
+msgid "A new ship by the name of {name} has been created."
+msgstr ""
+
 #. This is a database entry: the name of an inhabitant increment (tier / level).
 #: sql database files
 msgid "Citizens"
@@ -456,7 +457,7 @@ msgstr ""
 #. This is a database entry: a messagewidget message (left part of the screen).
 #: sql database files
 #, python-format
-msgid "{player1} and {player2} have terminated their alliance."
+msgid "A new settlement was founded by {player}."
 msgstr ""
 
 #. This is a database entry: the name of a resource.

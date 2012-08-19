@@ -32,13 +32,12 @@ from horizons.component.storagecomponent import StorageComponent
 from horizons.component.collectingcomponent import CollectingComponent
 
 
-
 class BuildingCollector(Collector):
 	"""Collector, that works for a building and gets its needed resources.
 	Essentially extends the Collector by a home building.
 
-	Nearly all of the time, the collector has to has a home_building.
-	Only fisher ships violate this rule in case their home building get's demolished.
+	Nearly all of the time, the collector has to have a home_building.
+	Only fisher ships violate this rule in case their home building gets demolished.
 	Therefore, this class is not functional with home_building == None,
 	but basic facilities (esp. save/load) have to work.
 	"""
@@ -303,6 +302,7 @@ class BuildingCollector(Collector):
 		#assert -1e-7 < total_utilisation / float(history_length) < 1 + 1e-7
 		return total_utilisation / float(history_length)
 
+
 class StorageCollector(BuildingCollector):
 	""" Same as BuildingCollector, except that it moves on roads.
 	Used in storage facilities.
@@ -311,15 +311,18 @@ class StorageCollector(BuildingCollector):
 	destination_always_in_building = True
 	job_ordering = JobList.order_by.for_storage_collector
 
+
 class FieldCollector(BuildingCollector):
 	""" Similar to the BuildingCollector but used on farms for example.
 	The main difference is that it uses a different way to sort it's jobs, to make for a nicer
 	look of farm using."""
 	job_ordering = JobList.order_by.random
 
+
 class SettlerCollector(StorageCollector):
 	"""Collector for settlers."""
 	pass
+
 
 class FisherShipCollector(BuildingCollector):
 
@@ -350,6 +353,7 @@ class FisherShipCollector(BuildingCollector):
 		@param res: optional, only search for buildings that provide res"""
 		reach = RadiusRect(self.home_building.position, self.home_building.radius)
 		return self.session.world.get_providers_in_range(reach, reslist=reslist)
+
 
 class DisasterRecoveryCollector(StorageCollector):
 	"""Collects disasters such as fire or pestilence."""

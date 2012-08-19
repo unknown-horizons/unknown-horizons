@@ -372,8 +372,12 @@ def set_translations():
 		},
 
 	"content/objects/buildings/trail.yaml" : {
-		# name of buildings:trail
-		"name"                        : _("Trail"),
+		# name_0 of buildings:trail
+		"name_0"                      : _("Trail"),
+		# name_1 of buildings:trail
+		"name_1"                      : _("Gravel Path"),
+		# name_3 of buildings:trail
+		"name_3"                      : _("Cobblestone Street"),
 		# tooltip_text of buildings:trail
 		"tooltip_text"                : _("Needed for collecting goods."),
 		},
