@@ -41,6 +41,7 @@ class ProductionFinishedIconManager(object):
 		self.run = dict()
 		self.animation_duration = 20
 		self.animation_steps = 1
+		self.background = "content/gui/images/background/produced_notification.png"
 
 		ResourceProduced.subscribe(self._on_resource_produced)
 
@@ -60,16 +61,16 @@ class ProductionFinishedIconManager(object):
 		if not message.produced_resources or not len(message.produced_resources.keys()):
 			return
 
-		res = message.produced_resources.keys()[0]
+		res, amount = message.produced_resources.items()[0] # TODO multiple resources
 		group = self.get_resource_string(message.sender, res)
 		self.run[group] = self.animation_steps
 
-		tick_callback = Callback(self.__render_icon, message.sender, group, res)
+		tick_callback = Callback(self.__render_icon, message.sender, group, res, amount)
 		finish_callback = Callback(self.remove_icon, group)
 		Scheduler().add_new_object(tick_callback, self, finish_callback=finish_callback,
 		                           run_in=1, loops=self.animation_duration)
 
-	def __render_icon(self, instance, group, res):
+	def __render_icon(self, instance, group, res, amount):
 		""" This renders the icon. It calculates the position of the icon.
 		Most parts of this were copied from horizons/world/managers/statusiconmanager.py
 		"""
@@ -94,10 +95,13 @@ class ProductionFinishedIconManager(object):
 		bg_node = fife.RendererNode(loc, bg_rel)
 		node = fife.RendererNode(loc, rel)
 
-		bg_image = horizons.main.fife.imagemanager.load("content/gui/images/background/produced_notification.png")
+		bg_image = horizons.main.fife.imagemanager.load(self.background)
 		res_icon = horizons.main.fife.imagemanager.load(get_res_icon_path(res))
+		font = horizons.main.fife.pychanmanager.getFont('mainmenu')
+
 		self.renderer.addImage(group, bg_node, bg_image)
-		self.renderer.resizeImage(group, node, res_icon, 23, 23)
+		self.renderer.resizeImage(group, node, res_icon, 24, 24)
+		self.renderer.addText(group, node, font, ' '*9 + '{amount:>2d}'.format(amount=amount))
 
 	def remove_icon(self, group):
 		""" Remove the icon after the animation finished
