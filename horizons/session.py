@@ -198,6 +198,8 @@ class Session(LivingObject):
 
 		self.gui.session = None
 
+		# Has to be done here, cause the manager uses Scheduler!
+		self.end_production_finished_icon_manager()
 		Scheduler().rem_all_classinst_calls(self)
 		ExtScheduler().rem_all_classinst_calls(self)
 
@@ -235,7 +237,6 @@ class Session(LivingObject):
 
 		self.status_icon_manager.end()
 		self.status_icon_manager = None
-		self.end_production_finished_icon_manager()
 
 		horizons.main._modules.session = None
 		self._clear_caches()
