@@ -184,62 +184,6 @@ class BehaviorPirateRoutine(BehaviorComponent):
 			owner.ships[pirate_ship] = owner.shipStates.idle
 			self.log.debug('Pirate %s: Ship %s: unable to move random at %s' % (owner.worldid, pirate_ship.get_component(NamedComponent).name, point))
 
-
-class BehaviorKeepFleetTogether(BehaviorComponent):
-
-	dispersion_threshold = 20.0  # TODO: move to YAML/Personality
-
-	def __init__(self, owner):
-		super(BehaviorKeepFleetTogether, self).__init__(owner)
-
-		# TODO: consider ditching certainty for this one, or at least dispersion calculations
-		def certainty_no_one_in_sight(**env):
-			ship_group = env['ship_group']
-			if len(ship_group) > 1:
-				dispersion = UnitManager.calculate_ship_dispersion(ship_group)
-				if dispersion <= self.dispersion_threshold:
-					return BehaviorComponent.default_certainty
-			return 0.0
-		self._certainty['no_one_in_sight'] = certainty_no_one_in_sight
-
-	def no_one_in_sight(self, **environment):
-		"""
-		When no enemies are in sight, and the groups is dispersed, bring the whole fleet together.
-		"""
-
-		ship_group = environment['ship_group']
-		# TODO: find a good way to bring ships together, (mainly solve issue when weight center is inaccessible)
-
-
-class BehaviorKeepFleetDispersed(BehaviorComponent):
-	"""
-	Will aim to keep fleet dispersion non further than dispersion_epsilon.
-	"""
-	dispersion_threshold = 15.0
-
-	def __init__(self, owner):
-		super(BehaviorKeepFleetDispersed, self).__init__(owner)
-
-		def certainty_no_one_in_sight(**env):
-			ship_group = env['ship_group']
-			if len(ship_group) > 1:
-				dispersion = UnitManager.calculate_ship_dispersion(ship_group)
-				if dispersion <= self.dispersion_threshold:
-					return BehaviorComponent.default_certainty
-			return 0.0
-		self._certainty['no_one_in_sight'] = certainty_no_one_in_sight
-
-	def no_one_in_sight(self, **environment):
-		"""
-		When no enemies are in sight, disperse ship fleet (unless it already is)
-		"""
-		pass  # TODO: implement
-
-# Offensive Actions
-#	Actions used when there is a possibility to engage in combat with other players.
-#	It is also reasonable to flee from enemies if they are much stronger.
-
-
 # Common certainty functions for offensive actions
 def certainty_power_balance_exp(**environment):
 	"""
@@ -264,7 +208,7 @@ class BehaviorRegular(BehaviorComponent):
 
 	def __init__(self, owner):
 		super(BehaviorRegular, self).__init__(owner)
-		self._certainty['pirate_ships_in_sight'] = certainty_power_balance_exp
+		self._certainty['pirate_ships_in_sight'] = relationship_score
 		self._certainty['fighting_ships_in_sight'] = certainty_power_balance_exp
 		self._certainty['player_shares_island'] = self._certainty_player_shares_island
 		self._certainty['hostile_player'] = self._certainty_hostile_player
@@ -621,15 +565,15 @@ class BehaviorDiplomatic(BehaviorComponent):
 		possible_actions = []
 		if 'enemy' in parameters:
 			enemy_params = parameters['enemy']
-			possible_actions.append((self.actions.war, self.get_enemy_function(*enemy_params)(relationship_score), ))
+			possible_actions.append((self.actions.war, self.get_enemy_function(**enemy_params)(relationship_score), ))
 
 		if 'ally' in parameters:
 			ally_params = parameters['ally']
-			possible_actions.append((self.actions.peace, self.get_ally_function(*ally_params)(relationship_score), ))
+			possible_actions.append((self.actions.peace, self.get_ally_function(**ally_params)(relationship_score), ))
 
 		if 'neutral' in parameters:
 			neutral_params = parameters['neutral']
-			possible_actions.append((self.actions.neutral, self.get_neutral_function(*neutral_params)(relationship_score), ))
+			possible_actions.append((self.actions.neutral, self.get_neutral_function(**neutral_params)(relationship_score), ))
 
 		max_probability = max((item[1] for item in possible_actions))
 		random_value = self.session.random.random() * self.upper_boundary
@@ -637,6 +581,26 @@ class BehaviorDiplomatic(BehaviorComponent):
 			return self._choose_random_from_tuple(possible_actions)
 		else:
 			return self.actions.wait
+
+	def hostile_player(self, **environment):
+		"""
+		Calculate balance, and change diplomacy towards a player to neutral or ally.
+		This has a very small chance though, since BehaviorEvil enjoys to be in a war.
+		"""
+
+		# Parameters are crucial in determining how AI should behave:
+		# 'ally' and 'enemy' parameters are tuples of 1 or 2 values that set width or width and height of the parabola.
+		# By default parabola peek is fixed at 1.0, but could be changed (by providing second parameter)
+		# to manipulate the chance with which given actions is called
+		# 'neutral' parameter is a tuple up to three values, first one determining where the center of the parabola is
+
+		self.handle_diplomacy(self.parameters_hostile, **environment)
+
+	def neutral_player(self, **environment):
+		self.handle_diplomacy(self.parameters_neutral, **environment)
+
+	def allied_player(self, **environment):
+		self.handle_diplomacy(self.parameters_allied, **environment)
 
 class BehaviorEvil(BehaviorDiplomatic):
 	"""
@@ -655,47 +619,29 @@ class BehaviorEvil(BehaviorDiplomatic):
 	# negative weights favors opposite balance, e.g. enemy is stronger => higher relationship_score
 	weights = {
 		'power': -0.6,
-		'terrain': -0.3,
-		'wealth': -0.1,
+		'wealth': -0.3,
+		'terrain': -0.1,
 	}
+
+	parameters_hostile = {
+		'neutral': {'mid':0.0, 'root':2.0, 'peek':0.2}, # parabola with the center at 0.0, of root at 2.0 and -2.0. Peek at 0.5 (on Y axis)
+		'ally': {'root':7.0, },
+	}
+	parameters_neutral = {
+		'enemy': {'root':-1.0, },
+		'ally': {'root':5.0, 'peek':0.7, },
+	}
+	parameters_allied = {
+		'neutral': {'mid':-2.0, 'root':-0.5, 'peek':0.2, }, # parabola with the center at -2.0, of root at -0.5 (the other at -3.5). Peek at 0.2 (on Y axis)
+		'enemy': {'root': -3.5, }, # smaller chance to go straight from allied to hostile
+	}
+
 
 	def __init__(self, owner):
 		super(BehaviorEvil, self).__init__(owner)
-		# TODO: commented for testing, uncomment later
 		#self._certainty['hostile_player'] = self._certainty_has_fleet
 		#self._certainty['neutral_player'] = self._certainty_has_boat_builder
 
-	def hostile_player(self, **environment):
-		"""
-		Calculate balance, and change diplomacy towards a player to neutral or ally.
-		This has a very small chance though, since BehaviorEvil enjoys to be in a war.
-		"""
-
-		# Parameters are crucial in determining how AI should behave:
-		# 'ally' and 'enemy' parameters are tuples of 1 or 2 values that set width or width and height of the parabola.
-		# By default parabola peek is fixed at 1.0, but could be changed (by providing second parameter)
-		# to manipulate the chance with which given actions is called
-		# 'neutral' parameter is a tuple up to three values, first one determining where the center of the parabola is
-
-		parameters = {
-			'neutral':(0.0, 2.0, 0.2, ), # parabola with the center at 0.0, of root at 2.0 and -2.0. Peek at 0.5 (on Y axis)
-			'ally': (7.0, ),
-		}
-		self.handle_diplomacy(parameters, **environment)
-
-	def neutral_player(self, **environment):
-		parameters = {
-			'enemy':(0.1, ),
-			'ally': (5.0, 0.7, ),
-		}
-		self.handle_diplomacy(parameters, **environment)
-
-	def allied_player(self, **environment):
-		parameters = {
-			'neutral':(-2.0, -0.5, 0.2, ), # parabola with the center at -2.0, of root at -0.5 (the other at -3.5). Peek at 0.2 (on Y axis)
-			'enemy': (-2.2, ), # smaller chance to go straight from allied to hostile
-		}
-		self.handle_diplomacy(parameters, **environment)
 
 
 class BehaviorGood(BehaviorDiplomatic):
@@ -716,26 +662,20 @@ class BehaviorGood(BehaviorDiplomatic):
 		'wealth': 0.0,
 	}
 
-	def hostile_player(self, **environment):
-		parameters = {
-			'neutral':(-2.0, -0.5, 0.2, ),
-			'ally': (1.0, ),
-		}
-		self.handle_diplomacy(parameters, **environment)
+	parameters_hostile = {
+		'neutral': {'mid': -2.0, 'root': -0.5, 'peek': 0.2, },
+		'ally': {'root': 1.0, },
+	}
 
-	def neutral_player(self, **environment):
-		parameters = {
-			'ally': (5.0, ),
-			'enemy': (-3.0, ),
-		}
-		self.handle_diplomacy(parameters, **environment)
+	parameters_neutral = {
+		'ally': {'root': 5.0, },
+		'enemy': {'root': -3.0, },
+	}
 
-	def allied_player(self, **environment):
-		parameters = {
-			'neutral':(-3.0, -1.5, 0.2, ),
-			'enemy': (-5.0, ),
-		}
-		self.handle_diplomacy(parameters, **environment)
+	parameters_allied = {
+		'neutral': {'mid': -3.0, 'root': -1.5, 'peek': 0.2, },
+		'enemy': {'root': -5.0, },
+	}
 
 class BehaviorNeutral(BehaviorDiplomatic):
 	"""
@@ -755,26 +695,20 @@ class BehaviorNeutral(BehaviorDiplomatic):
 		'terrain': -0.1,
 	}
 
-	def hostile_player(self, **environment):
-		parameters = {
-			'neutral':(0.0, 2.0, 0.3, ),
-			'ally': (4.0, ),
-		}
-		self.handle_diplomacy(parameters, **environment)
+	parameters_hostile = {
+		'neutral': {'mid': 0.0, 'root': 2.0, 'peek': 0.3, },
+		'ally': {'root': 4.0, },
+	}
 
-	def neutral_player(self, **environment):
-		parameters = {
-			'ally': (5.0, ),
-			'enemy': (-5.0, ),
-		}
-		self.handle_diplomacy(parameters, **environment)
+	parameters_neutral = {
+		'ally': {'root': 5.0, },
+		'enemy': {'root': -5.0, },
+	}
 
-	def allied_player(self, **environment):
-		parameters = {
-			'neutral':(-1.0, 0.0, 0.3, ),
-			'enemy': (-7.0, ),
-		}
-		self.handle_diplomacy(parameters, **environment)
+	parameters_allied = {
+		'neutral':{'mid': -1.0, 'root': 0.0, 'peek': 0.3, },
+		'enemy': {'root': -7.0, },
+	}
 
 class BehaviorDebug(BehaviorComponent):
 
@@ -884,15 +818,12 @@ class BehaviorCoward(BehaviorComponent):
 		super(BehaviorCoward, self).__init__(owner)
 		# Certainty here is a hyperbolic function from power_balance
 		# (higher power_balance -> lesser chance of doing nothing)
-		# TODO: skip cowardice if already in war with pirates (pirates will attack anyway)
-		# TODO: figure out why it gives unusually high certainty
 		self._certainty['pirate_ships_in_sight'] = certainty_power_balance_inverse
 
 	def pirate_ships_in_sight(self, **environment):
 		"""
 		Dummy action, do nothing really.
 		"""
-		#TODO: add "common actions" module or something like that in order to avoid code repetition (add regular attack here)
 		BehaviorComponent.log.info('Pirates give me chills man.')
 
 

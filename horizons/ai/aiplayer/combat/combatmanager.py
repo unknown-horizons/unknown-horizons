@@ -284,7 +284,8 @@ class CombatManager(object):
 		for ship in self.unit_manager.get_ships(rules):
 			# Turn into one-ship group, since reasoning is based around groups of ships
 			ship_group = [ship, ]
-			# TODO: create artificial groups by dividing ships that are near into groups based on their distance
+			# TODO: create artificial groups by dividing ships that are nearby into groups based on their distance.
+			# This may end up being costly, so postpone until we have more cpu resources to spare.
 
 			ships_around = self.unit_manager.find_ships_near_group(ship_group, self.combat_range)
 			pirate_ships = self.unit_manager.filter_ships(ships_around, (filters.pirate(), ))

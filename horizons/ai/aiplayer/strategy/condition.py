@@ -75,7 +75,6 @@ class ConditionSharingSettlement(Condition):
 
 		# checks whether player share the same island
 		if my_islands & enemy_islands:
-			# TODO: maybe base certainty on power balance or % of territory that he "stole" ?
 			return {'player': other_player, 'certainty': self.default_certainty, 'strategy_name': 'player_shares_island', 'type': BehaviorManager.strategy_types.offensive}
 		else:
 			return None

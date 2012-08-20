@@ -96,18 +96,31 @@
 	\end{itemize}
 \end{par}
 
-\subsection{Definitions of the functions}
+\subsection{Functions definitions and guidelines on balancing}
 	As explained before, we have to define 9 sets of parameters totally. 
-	This is done inside each of the functions (\textbf{hostile\_player, neutral\_player} and \textbf{allied\_player}) for each of the components (\textbf{BehaviorEvil, BehaviorNeutral} and \textbf{BehaviorGood}). 
+	This is done for each of the functions (\textbf{hostile\_player, neutral\_player} and \textbf{allied\_player}) for each of the components (\textbf{BehaviorEvil, BehaviorNeutral} and \textbf{BehaviorGood}), as static parameters in class definition.
 	Parameters given for each functions are:
 	\begin{itemize}
-		\item \textbf{midpoint} - position of the "peek" on X axis (this is fixed for hostile (WAR) and ally (PEACE) functions on -10.0 and 10.0 respectively).
+		\item \textbf{mid} - "Midpoint" or position of the "peek" on X axis (this is fixed for hostile (WAR) and ally (PEACE) functions on -10.0 and 10.0 respectively).
 		\item \textbf{root} - point on X axis that's the intersection point of OX axis and function itself. This is somewhat equivalent to $threshold$ value.
 		\item \textbf{peek} - how tall should the function be, i.e. what's the maximum value it can achieve at peek point. By default this is 1.0.
 	\end{itemize}
 
 	Additionally there's also $upper\_boundary$ value which determines how big the probability to $WAIT$ is.
 
+	Function parameters are provided in each of the BehaviorComponents (Evil, Neutral and Good) in form of a python dictionary, e.g.
+\begin{Verbatim}[frame=lines, numbers=left]
+	parameters_hostile = {
+		'neutral': {'mid': 0.0, 'root': 2.0, 'peek': 0.3, }
+		'ally': {'root': 4.0 }
+	}
+\end{Verbatim}
+
+	To give you a feeling how each parameter alters the chance for given action to be executed, let's use blue function $NEUTRAL$ in \ref{fig:diplomacy2} as an example. 
+	High ``peek'' would make the function taller, increasing its chance to be called when the parameter ``relationship\_score'' is somewhere between 0.4 and 6.2). 
+	The roots (0.4 and 6.2) would remain the same. If you were to alter the ``root'' parameter, you'd make function broader. 
+	Function shown on the figure has parameters 'mid' and 'root' equal to 2.9 and 0.4 respectively (notice that parameters like 2.9 and 6.2 would return the same function). 
+	Notice that 'root' parameter is simply a point on OX that the function should intersect, so it's directly connected with it's 'mid' value.
 \subsection{Characteristics of the model}
 	Model comes with certain advantages and disadvantages.
 	\begin{itemize}

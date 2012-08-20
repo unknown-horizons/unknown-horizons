@@ -25,8 +25,8 @@ import random
 from horizons.ai.aiplayer.behavior import BehaviorManager
 
 from horizons.ai.aiplayer.behavior.behaviorcomponents import BehaviorPirateHater, BehaviorCoward,\
-	BehaviorKeepFleetTogether, BehaviorRegular, BehaviorPirateRoutine, BehaviorBreakDiplomacy,\
-	BehaviorDoNothing, BehaviorRegularPirate, BehaviorAggressive, BehaviorAggressivePirate, BehaviorDebug, BehaviorSmart, BehaviorEvil
+	BehaviorRegular, BehaviorPirateRoutine, BehaviorBreakDiplomacy,\
+	BehaviorDoNothing, BehaviorRegularPirate, BehaviorAggressive, BehaviorAggressivePirate, BehaviorDebug, BehaviorSmart, BehaviorEvil, BehaviorNeutral, BehaviorGood, BehaviorCautious
 from horizons.ai.aiplayer.strategy.condition import ConditionNeutral, ConditionSharingSettlement, ConditionHostile, ConditionDebug, ConditionPirateRoutinePossible, ConditionAllied
 
 
@@ -72,6 +72,7 @@ class BehaviorProfileAggressive(BehaviorProfile):
 			ConditionHostile(player): 1.1,
 			ConditionSharingSettlement(player): 1.0,
 			ConditionNeutral(player): 0.3,
+			ConditionAllied(player): 0.3,
 		}
 
 		self.actions[BehaviorManager.action_types.offensive][BehaviorRegular(player)] = 0.35
@@ -79,8 +80,10 @@ class BehaviorProfileAggressive(BehaviorProfile):
 		self.actions[BehaviorManager.action_types.idle][BehaviorDoNothing(player)] = 1.0
 
 		self.strategies[BehaviorManager.strategy_types.offensive][BehaviorRegular(player)] = 1.0
-		self.strategies[BehaviorManager.strategy_types.diplomatic][BehaviorAggressive(player)] = 0.02
-		self.strategies[BehaviorManager.strategy_types.diplomatic][BehaviorRegular(player)] = 0.98
+
+		self.strategies[BehaviorManager.strategy_types.diplomatic][BehaviorAggressive(player)] = 0.05
+		self.strategies[BehaviorManager.strategy_types.diplomatic][BehaviorEvil(player)] = 0.75
+		self.strategies[BehaviorManager.strategy_types.diplomatic][BehaviorNeutral(player)] = 0.2
 
 
 class BehaviorProfileBalanced(BehaviorProfile):
@@ -92,6 +95,7 @@ class BehaviorProfileBalanced(BehaviorProfile):
 			ConditionHostile(player): 1.1,
 			ConditionSharingSettlement(player): 1.0,
 			ConditionNeutral(player): 0.3,
+			ConditionAllied(player): 0.29,
 		}
 
 		self.actions[BehaviorManager.action_types.offensive][BehaviorRegular(player)] = 0.8
@@ -99,7 +103,29 @@ class BehaviorProfileBalanced(BehaviorProfile):
 		self.actions[BehaviorManager.action_types.idle][BehaviorDoNothing(player)] = 1.0
 
 		self.strategies[BehaviorManager.strategy_types.offensive][BehaviorRegular(player)] = 1.0
-		self.strategies[BehaviorManager.strategy_types.diplomatic][BehaviorRegular(player)] = 1.0
+
+		self.strategies[BehaviorManager.strategy_types.diplomatic][BehaviorEvil(player)] = 0.05
+		self.strategies[BehaviorManager.strategy_types.diplomatic][BehaviorNeutral(player)] = 0.9
+		self.strategies[BehaviorManager.strategy_types.diplomatic][BehaviorGood(player)] = 0.05
+
+class BehaviorProfileCautious(BehaviorProfile):
+
+	def __init__(self, player):
+		super(BehaviorProfileCautious, self).__init__()
+
+		self.conditions = {
+			ConditionHostile(player): 0.9,
+			#ConditionSharingSettlement(player): 1.0,  # does not respond to enemy sharing a settlement
+			ConditionNeutral(player): 0.3,
+			ConditionAllied(player): 0.29,
+		}
+
+		self.actions[BehaviorManager.action_types.offensive][BehaviorRegular(player)] = 0.8
+		self.actions[BehaviorManager.action_types.idle][BehaviorDoNothing(player)] = 1.0
+
+		self.strategies[BehaviorManager.strategy_types.offensive][BehaviorRegular(player)] = 1.0
+		self.strategies[BehaviorManager.strategy_types.diplomatic][BehaviorGood(player)] = 0.7
+		self.strategies[BehaviorManager.strategy_types.diplomatic][BehaviorNeutral(player)] = 0.3
 
 
 class BehaviorProfilePirateRegular(BehaviorProfile):
@@ -161,9 +187,10 @@ class BehaviorProfileManager(object):
 # actions, strategies and conditions are encapsulated inside a profile itself.
 def get_available_player_profiles():
 	return (
-		#(BehaviorProfileAggressive, 0.4),
-		#(BehaviorProfileBalanced, 0.6),
-		(BehaviorProfileDebug, 1.0),
+		(BehaviorProfileCautious, 0.3),
+		(BehaviorProfileAggressive, 0.1),
+		(BehaviorProfileBalanced, 0.6),
+		#(BehaviorProfileDebug, 1.0),
 	)
 
 def get_available_pirate_profiles():
