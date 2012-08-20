@@ -228,7 +228,7 @@ class BuildTab(TabInterface):
 		super(BuildTab, self).hide()
 
 	def _set_switch_layout_button_image(self, button):
-		image_path = "content/gui/icons/buildmenu/"
+		image_path = "content/gui/icons/tabwidget/buildmenu/"
 		if self.__class__.cur_build_menu_config is self.build_menu_config_per_type:
 			button.up_image = image_path + "tier.png"
 		else:
