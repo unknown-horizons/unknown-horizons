@@ -50,6 +50,7 @@
 		<VBox  name="box">
 			<Label text="draikon (Sebastian Ahlen)" />
 			<Label text="novatlan (Tobias Escher)" />
+			<Label text="ThomasD (Thomas Davey)" />
 		</VBox>
 	</VBox>
 	<VBox> <Label text="Graphic Artists"  name="headline" />
