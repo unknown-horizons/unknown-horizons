@@ -54,7 +54,11 @@ GAMEPLAY_TIPS = {
 	    _("Currently only the first {tier} tiers are playable. ").format(
 		    tier=TIER.CURRENT_MAX + 1),
 	    _("You can pause the game with 'P'. "),
-	    _("You can drag roads by holding the left mousebutton. ")
+	    _("You can drag roads by holding the left mousebutton. "),
+	    _("You can build multiple buildings by holding the 'SHIFT' key."),
+	    _("You can increase the happiness of your citizens by lowering the taxes."),
+	    _("Build firestations and doctors to protect your citizens from fire and disease."),
+	    _("Build storage tents to increase your storage capacity.")
     ]
 }
 
