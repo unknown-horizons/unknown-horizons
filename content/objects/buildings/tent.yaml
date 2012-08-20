@@ -18,6 +18,13 @@ settler_level: TIER.SAILORS
 buildingcosts: {RES.GOLD: 100, RES.BOARDS: 2}
 # NOTE: this should be in the producer component, which currently doesn't support attributes like that
 additional_provided_resources: [RES.FIRE]
+havoc_times:
+  TIER.SAILORS: 30
+  TIER.PIONEERS: 40
+  TIER.SETTLERS: 45
+  TIER.CITIZENS: 60
+  TIER.MERCHANTS: 70
+  TIER.ARISTOCRATS: 85
 components:
 - SelectableComponent:
     type: building

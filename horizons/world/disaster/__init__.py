@@ -39,7 +39,7 @@ class Disaster(WorldObject):
 	SEED_CHANCE = 0.5
 
 	# Time in ticks this disasters pauses between each expansion
-	EXPANSION_TIME = GAME_SPEED.TICKS_PER_SECOND * 5
+	DEFAULT_EXPANSION_TIME = GAME_SPEED.TICKS_PER_SECOND * 5
 
 	# Resource to distribute to infected buildings
 	#	This is how preventory units (doctors) spot affected buildings.
@@ -54,6 +54,7 @@ class Disaster(WorldObject):
 		assert isinstance(settlement, Settlement), "Not a settlement!"
 		self._settlement = settlement
 		self._manager = manager
+		self.expansion_time = self.DEFAULT_EXPANSION_TIME
 
 	def save(self, db):
 		ticks = Scheduler().get_remaining_ticks(self, self.expand, True)
@@ -63,7 +64,7 @@ class Disaster(WorldObject):
 	def load(self, db, worldid):
 		ticks = db("SELECT remaining_ticks_expand from disaster where rowid = ?", worldid)[0][0]
 		Scheduler().add_new_object(self.expand, self, run_in=ticks, loops=-1,
-		                           loop_interval=self.EXPANSION_TIME)
+		                           loop_interval=self.expansion_time)
 
 	def evaluate(self):
 		"""Called to evaluate if this disaster is still active"""
@@ -95,7 +96,7 @@ class Disaster(WorldObject):
 
 	def breakout(self):
 		"""Picks (a) object(s) to start a breakout."""
-		Scheduler().add_new_object(self.expand, self, run_in=self.EXPANSION_TIME, loops=-1)
+		Scheduler().add_new_object(self.expand, self, run_in=self.expansion_time, loops=-1)
 
 	def wreak_havoc(self, building):
 		"""The implementation to whatever the disaster does to affected
