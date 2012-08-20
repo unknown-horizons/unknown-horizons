@@ -49,12 +49,16 @@ FUN_QUOTES = {
 GAMEPLAY_TIPS = {
 	'name': _("Gameplay Tips"),
 	'items': [
-	    _("Press 'ESC' to access Game Menu. "),
-	    _("Use 'SHIFT' to place multiple buildings. "),
-	    _("Currently only the first {tier} tiers are playable. ").format(
+	    _("Press 'ESC' to access Game Menu."),
+	    _("Use 'SHIFT' to place multiple buildings."),
+	    _("Currently only the first {tier} tiers are playable.").format(
 		    tier=TIER.CURRENT_MAX + 1),
-	    _("You can pause the game with 'P'. "),
-	    _("You can drag roads by holding the left mousebutton. ")
+	    _("You can pause the game with 'P'."),
+	    _("You can drag roads by holding the left mousebutton."),
+	    _("You can build multiple buildings by holding the 'SHIFT' key."),
+	    _("You can increase the happiness of your inhabitants by lowering the taxes."),
+	    _("Build firestations and doctors to protect your inhabitants from fire and disease."),
+	    _("Build storage tents to increase your storage capacity.")
     ]
 }
 
