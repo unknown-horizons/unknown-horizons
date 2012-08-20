@@ -219,11 +219,21 @@ class BuildTab(TabInterface):
 		self.__class__.last_active_build_tab = self.tabindex
 		super(BuildTab, self).show()
 
-		self.widget.child_finder("switch_build_menu_config_button").capture(self._switch_build_menu_config)
+		button = self.widget.child_finder("switch_build_menu_config_button")
+		self._set_switch_layout_button_image(button)
+		button.capture(self._switch_build_menu_config)
 
 	def hide(self):
 		self.__remove_changelisteners()
 		super(BuildTab, self).hide()
+
+	def _set_switch_layout_button_image(self, button):
+		image_path = "content/gui/icons/buildmenu/"
+		if self.__class__.cur_build_menu_config is self.build_menu_config_per_type:
+			button.up_image = image_path + "tier.png"
+		else:
+			button.up_image = image_path + "class.png"
+		self.switch_layout_button_needs_update = False
 
 	def _switch_build_menu_config(self):
 		"""Sets next build menu config and recreates the gui"""
