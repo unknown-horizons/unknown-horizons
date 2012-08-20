@@ -24,7 +24,7 @@ from horizons.world.disaster import Disaster
 from horizons.messaging import AddStatusIcon, RemoveStatusIcon, NewDisaster
 from horizons.world.status import FireStatusIcon
 from horizons.constants import GAME_SPEED, BUILDINGS, RES, TIER
-from horizons.command.building import Tear
+from horizons.command.building import Build
 from horizons.scheduler import Scheduler
 from horizons.util.python.callback import Callback
 from horizons.util import WorldObject
@@ -49,14 +49,14 @@ class FireDisaster(Disaster):
 	# settlement before this disaster can break loose
 	MIN_SETTLERS_FOR_BREAKOUT = 5
 
-	TIME_BEFORE_HAVOC = GAME_SPEED.TICKS_PER_SECOND * 30
-	EXPANSION_TIME = (TIME_BEFORE_HAVOC / 2) - 1 # try twice before dying
+	DEFAULT_HAVOC_TIME = GAME_SPEED.TICKS_PER_SECOND * 30
 
 	DISASTER_RES = RES.FIRE
 
 	def __init__(self, settlement, manager):
 		super(FireDisaster, self).__init__(settlement, manager)
 		self._affected_buildings = []
+		self.havoc_time = self.DEFAULT_HAVOC_TIME
 
 	def save(self, db):
 		super(FireDisaster, self).save(db)
@@ -75,9 +75,18 @@ class FireDisaster(Disaster):
 
 	def breakout(self):
 		assert self.can_breakout(self._settlement)
-		super(FireDisaster, self).breakout()
 		possible_buildings = self._settlement.buildings_by_id[BUILDINGS.RESIDENTIAL]
 		building = self._settlement.session.random.choice( possible_buildings )
+
+		# Calculate havoc and expansion time depending on building level
+		if hasattr(building, 'havoc_times') and building.havoc_times:
+			havoc_time_of_building = building.havoc_times[building.level]
+			self.havoc_time = GAME_SPEED.TICKS_PER_SECOND * havoc_time_of_building
+
+		self.expansion_time = (self.havoc_time / 2) - 1
+
+		# breakout after havoc and expansion times are calculated
+		super(FireDisaster, self).breakout()
 		self.infect(building)
 		self.log.debug("%s breakout out on %s at %s", self, building, building.position)
 
@@ -111,12 +120,12 @@ class FireDisaster(Disaster):
 		AddStatusIcon.broadcast(building, FireStatusIcon(building))
 		NewDisaster.broadcast(building.owner, building, FireDisaster)
 		self._affected_buildings.append(building)
-		havoc_time = self.TIME_BEFORE_HAVOC
+
 		if load:
 			db, worldid = load
-			havoc_time = db("SELECT remaining_ticks_havoc FROM fire_disaster WHERE disaster = ? AND building = ?", worldid, building.worldid)[0][0]
+			self.havoc_time = db("SELECT remaining_ticks_havoc FROM fire_disaster WHERE disaster = ? AND building = ?", worldid, building.worldid)[0][0]
 
-		Scheduler().add_new_object(Callback(self.wreak_havoc, building), self, run_in=havoc_time)
+		Scheduler().add_new_object(Callback(self.wreak_havoc, building), self, run_in=self.havoc_time)
 
 	def recover(self, building):
 		super(FireDisaster, self).recover(building)
@@ -130,4 +139,11 @@ class FireDisaster(Disaster):
 	def wreak_havoc(self, building):
 		super(FireDisaster, self).wreak_havoc(building)
 		self._affected_buildings.remove(building)
-		Tear(building).execute(self._settlement.session)
+
+		# Create a ruin at buildings position
+		command = Build(BUILDINGS.SETTLER_RUIN, building.position.origin.x,
+		                building.position.origin.y, island=building.island, settlement=building.settlement)
+
+		Scheduler().add_new_object(
+			Callback.ChainedCallbacks(building.remove, Callback(command, building.owner)), # remove, then build new
+			building, run_in=0)

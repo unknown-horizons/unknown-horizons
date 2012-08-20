@@ -66,6 +66,7 @@ class BuildingClass(IngameType):
 		self.has_running_costs = (self.running_costs != 0)
 		self.show_status_icons = yaml_data.get('show_status_icons', True)
 		self.translucent = yaml_data.get('translucent', False)
+		self.havoc_times = yaml_data.get('havoc_times', True)
 		# for mines: on which deposit is it buildable
 		buildable_on_deposit_type = db("SELECT deposit FROM mine WHERE mine = ?", self.id)
 		if buildable_on_deposit_type:
