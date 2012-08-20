@@ -52,8 +52,8 @@ def set_translations():
 		},
 
 	"buildtab.xml" : {
-		# (text of widget: switch_build_menu_config_button)
-		("switch_build_menu_config_button", "text"    ): _("switch layout"),
+		# (helptext of widget: switch_build_menu_config_button)
+		("switch_build_menu_config_button", "helptext"    ): _("switch layout"),
 		},
 
 	"buildtab_no_settlement.xml" : {
