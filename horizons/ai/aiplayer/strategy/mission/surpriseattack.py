@@ -105,7 +105,6 @@ class SurpriseAttack(FleetMission):
 		self.combat_phase = True
 		self.log.debug("Player %s, Mission %s, 3/4 in combat", self.owner.name, self.__class__.__name__)
 		self.state = self.missionStates.in_combat
-		# TODO: turn combat_phase into a Property and check whether current state is a key self.combatIntermission
 
 	def go_back(self):
 		self.log.debug("Player %s, Mission %s, 4/4 going back after combat to point %s", self.owner.name, self.__class__.__name__, self.return_point)

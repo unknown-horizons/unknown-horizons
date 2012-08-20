@@ -208,7 +208,7 @@ class BehaviorRegular(BehaviorComponent):
 
 	def __init__(self, owner):
 		super(BehaviorRegular, self).__init__(owner)
-		self._certainty['pirate_ships_in_sight'] = relationship_score
+		self._certainty['pirate_ships_in_sight'] = certainty_power_balance_exp
 		self._certainty['fighting_ships_in_sight'] = certainty_power_balance_exp
 		self._certainty['player_shares_island'] = self._certainty_player_shares_island
 		self._certainty['hostile_player'] = self._certainty_hostile_player

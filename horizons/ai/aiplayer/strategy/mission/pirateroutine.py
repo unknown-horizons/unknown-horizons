@@ -66,8 +66,6 @@ class PirateRoutine(FleetMission):
 			self.missionStates.fleeing_home: Callback(self.report_failure, "Mission was a failure, ships fled home successfully"),
 		}
 
-	# TODO: LIST:
-	# - ai_combat_ship state for pirate in db!
 	def save(self, db):
 		super(PirateRoutine, self).save(db)
 		db("INSERT INTO ai_mission_pirate_routine (rowid, target_point_x, target_point_y) VALUES(?, ?, ?)", self.worldid,

@@ -259,8 +259,6 @@ class UnitManager(object):
 	def tick(self):
 		self.check_for_dead_fleets()
 
-	# TODO: Consider refactoring below
-	# World filtering utils (non-unit related) below, maybe consider creating a separate class for that or simply put in StrategyManager
 	def get_player_islands(self, player):
 		return [settlement.island for settlement in self.session.world.settlements if settlement.owner == player]
 

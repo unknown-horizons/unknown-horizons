@@ -124,8 +124,6 @@ class Fleet(WorldObject):
 		if destroy_callback:
 			self.destroy_callback = destroy_callback
 
-		# TODO: Finish blocked ticks, or change the way blocks are handled
-
 	@classmethod
 	def load(cls, worldid, owner, db, destroy_callback=None):
 		self = cls.__new__(cls)
@@ -200,7 +198,6 @@ class Fleet(WorldObject):
 
 	def _move_ship(self, ship, destination, callback):
 		# retry ad infinitum. Not the most elegant solution but will do for a while.
-		# TODO: Think of a better way to resolve self-blocks
 		# Idea: mark ship as "blocked" through state and check whether they all are near the destination anyway
 		# 1. If they don't make them sail again.
 		# 2. If they do, assume they reached the spot.
