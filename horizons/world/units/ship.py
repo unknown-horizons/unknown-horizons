@@ -78,7 +78,10 @@ class Ship(Unit):
 		if self.session.view.has_change_listener(self.draw_health):
 			self.session.view.remove_change_listener(self.draw_health)
 		if self.in_ship_map:
-			del self.session.world.ship_map[self.position.to_tuple()]
+			if self.position.to_tuple() in self.session.world.ship_map:
+				del self.session.world.ship_map[self.position.to_tuple()]
+			else:
+				self.log.error("Ship %s had in_ship_map flag set as True but tuple %s was not found in world.ship_map", self, self.position.to_tuple())
 			if self._next_target.to_tuple() in self.session.world.ship_map:
 				del self.session.world.ship_map[self._next_target.to_tuple()]
 			self.in_ship_map = False
@@ -89,8 +92,12 @@ class Ship(Unit):
 
 	def _move_tick(self, resume=False):
 		"""Keeps track of the ship's position in the global ship_map"""
-		if self.in_ship_map:
+
+		# TODO: Originally, only self.in_ship_map should suffice here, but KeyError is raised during combat.
+		if self.in_ship_map and self.position.to_tuple() in self.session.world.ship_map:
 			del self.session.world.ship_map[self.position.to_tuple()]
+		elif self.in_ship_map:  # logging purposes only
+			self.log.error("Ship %s had in_ship_map flag set as True but tuple %s was not found in world.ship_map", self, self.position.to_tuple())
 
 		try:
 			super(Ship, self)._move_tick(resume)
@@ -206,10 +213,6 @@ class Ship(Unit):
 				return (_('Idle at {location}').format(location=location_based_status), self.position)
 			#xgettext:python-format
 			return (_('Idle at {x}, {y}').format(x=self.position.x, y=self.position.y), self.position)
-
-class PirateShip(Ship):
-	"""Represents a pirate ship."""
-	pass
 
 class TradeShip(Ship):
 	"""Represents a trade ship."""

@@ -60,3 +60,36 @@ def get_all_subclasses(cls):
 			result.add(subclass)
 			result.update(get_all_subclasses(subclass))
 	return result
+
+
+def map_balance(value, n, m):
+	"""
+	Maps balance value defined in codomain of [1/n, n] for n >= 1, into linear balance (codomain of [-m, m]),
+	having 1.0 as equal point for n-based balance, and 0.0 as equal point for linear balance.
+
+	@param value: value to be mapped
+	@type value: float
+	@param n: fraction denominator
+	@type n: float
+	@param m: linear boundary
+	@type m: float
+	@return: value mapped into new balance type
+	@rtype: float
+	"""
+
+	# normally we'd need to have special cases for value < 1.0 and value > 1.0
+	# but we turn cases of 1/n into n instead
+	if value < 1.0:
+		value = 1./value
+		m *= -1
+
+	return ((value - 1.0) / (n - 1.0)) * m
+
+
+def trim_value(value, min, max):
+	if value < min:
+		return min
+	elif value > max:
+		return max
+	else:
+		return value
