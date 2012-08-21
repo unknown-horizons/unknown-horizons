@@ -110,3 +110,9 @@ class DecommissionedStatus(StatusIcon):
 	icon = 'as_decommissioned+idle+45'
 	_helptext = _(u"This building is decomissioned.")
 
+
+class PestilenceStatus(StatusIcon):
+	priority = 2000
+	icon = 'as_pestilence+idle+45'
+	_helptext = _(u"The inhabitants of this building have the plague.")
+
