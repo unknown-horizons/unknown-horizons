@@ -46,7 +46,7 @@ tab2:
 
 tab3:
 - icon: content/gui/icons/tabwidget/buildmenu/class/agricultural_companies_%s.png
-- headline: Agriculture #TODO better name?
+- headline: _ Agriculture #TODO better name?
 -
   - _ Sea
   - BUILDINGS.FISHER
