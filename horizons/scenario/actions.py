@@ -23,7 +23,7 @@ import math
 from horizons.component.storagecomponent import StorageComponent
 
 import horizons.main
-from horizons.messaging.message import SettlerUpdate
+from horizons.messaging import SettlerUpdate
 
 from horizons.scheduler import Scheduler
 from horizons.util import Callback, WorldObject, Point, Circle, Registry
