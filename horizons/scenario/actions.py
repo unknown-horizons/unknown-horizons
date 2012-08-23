@@ -20,10 +20,8 @@
 # ###################################################
 
 import math
-from horizons.component.storagecomponent import StorageComponent
 
 import horizons.main
-from horizons.messaging import SettlerUpdate
 
 from horizons.scheduler import Scheduler
 from horizons.util import Callback, WorldObject, Point, Circle, Registry
@@ -32,6 +30,8 @@ from horizons.scenario import CONDITIONS
 from horizons.savegamemanager import SavegameManager
 from horizons.constants import MESSAGES, AUTO_CONTINUE_CAMPAIGN
 from horizons.command.game import PauseCommand, UnPauseCommand
+from horizons.messaging import SettlerUpdate
+from horizons.component.storagecomponent import StorageComponent
 
 
 class ACTIONS(object):
