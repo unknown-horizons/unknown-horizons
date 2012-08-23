@@ -182,17 +182,18 @@ class BehaviorProfileDebug(BehaviorProfile):
 		#self.strategies[BehaviorManager.strategy_types.diplomatic][BehaviorAggressive(player)] = 0.02
 		#self.strategies[BehaviorManager.strategy_types.diplomatic][BehaviorDebug(player)] = 1.0
 		#self.strategies[BehaviorManager.strategy_types.diplomatic][BehaviorEvil(player)] = 1.0
-		self.strategies[BehaviorManager.strategy_types.diplomatic][BehaviorGood(player)] = 1.0
+		#self.strategies[BehaviorManager.strategy_types.diplomatic][BehaviorGood(player)] = 1.0
+		self.strategies[BehaviorManager.strategy_types.diplomatic][BehaviorNeutral(player)] = 1.0
 
 
 # Each AI player is assigned a Profile with certain probability.
 # actions, strategies and conditions are encapsulated inside a profile itself.
 def get_available_player_profiles():
 	return (
-		#(BehaviorProfileCautious, 0.3),
-		#(BehaviorProfileAggressive, 0.1),
-		#(BehaviorProfileBalanced, 0.6),
-		(BehaviorProfileDebug, 1.0),
+		(BehaviorProfileCautious, 0.3),
+		(BehaviorProfileAggressive, 0.1),
+		(BehaviorProfileBalanced, 0.6),
+		#(BehaviorProfileDebug, 1.0),
 	)
 
 def get_available_pirate_profiles():

@@ -30,9 +30,9 @@ sys.path.append(".")
 sys.path.append("./horizons")
 sys.path.append("./horizons/util")
 
-from horizons.ai.aiplayer.behavior.diplomacysettings import Settings
-
 # So far I couldn't easily pull these functions from the code itself, so check if these match with code in BehaviorDiplomatic (ai.aiplayer.behavior.behaviorcomponents.py)
+#from horizons.ai.aiplayer.behavior.diplomacysettings import Settings
+
 def _move_f(f, v_x, v_y):
 		"""
 		Return function f moved by vector (v_x, v_y)
@@ -66,8 +66,6 @@ def _get_quadratic_function(mid, root, peek=1.0):
 		final_function = lambda x: max(0.0, moved(x) * peek)
 
 		return final_function
-
-
 
 def get_enemy_function(root, peek=1.0):
 	return _get_quadratic_function(-10.0, root, peek)

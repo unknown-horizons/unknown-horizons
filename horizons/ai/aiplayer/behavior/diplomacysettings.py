@@ -20,13 +20,13 @@
 # ###################################################
 
 
-class Settings:
+class DiplomacySettings:
 	class Evil:
 		# negative weights favors opposite balance, e.g. enemy is stronger => higher relationship_score
 		weights = {
-		'power': -0.6,
-		'wealth': -0.3,
-		'terrain': -0.1,
+			'power': -0.6,
+			'wealth': -0.3,
+			'terrain': -0.1,
 		}
 
 		parameters_hostile = {
@@ -43,9 +43,9 @@ class Settings:
 		}
 	class Good:
 		weights = {
-		'power': 0.6,
-		'terrain': 0.4,
-		'wealth': 0.0,
+			'power': 0.4,
+			'terrain': 0.4,
+			'wealth': 0.0,
 		}
 
 		parameters_hostile = {
@@ -64,9 +64,9 @@ class Settings:
 		}
 	class Neutral:
 		weights = {
-		'wealth': -0.8,
-		'power': -0.1,
-		'terrain': -0.1,
+			'wealth': -0.8,
+			'power': -0.1,
+			'terrain': -0.1,
 		}
 
 		parameters_hostile = {

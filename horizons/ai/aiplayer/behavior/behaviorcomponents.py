@@ -19,7 +19,7 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 from collections import defaultdict
-from horizons.ai.aiplayer.behavior.diplomacysettings import Settings
+from horizons.ai.aiplayer.behavior.diplomacysettings import DiplomacySettings
 from horizons.ai.aiplayer.behavior.movecallbacks import BehaviorMoveCallback
 from horizons.ai.aiplayer.combat.combatmanager import CombatManager
 from horizons.ai.aiplayer.strategy.mission.chaseshipsandattack import ChaseShipsAndAttack
@@ -626,10 +626,10 @@ class BehaviorEvil(BehaviorDiplomatic):
 		self._certainty['hostile_player'] = self._certainty_has_fleet
 		self._certainty['neutral_player'] = self._certainty_has_boat_builder
 
-	weights = Settings.Evil.weights
-	parameters_hostile = Settings.Evil.parameters_hostile
-	parameters_neutral = Settings.Evil.parameters_neutral
-	parameters_allied = Settings.Evil.parameters_allied
+	weights = DiplomacySettings.Evil.weights
+	parameters_hostile = DiplomacySettings.Evil.parameters_hostile
+	parameters_neutral = DiplomacySettings.Evil.parameters_neutral
+	parameters_allied = DiplomacySettings.Evil.parameters_allied
 
 
 class BehaviorGood(BehaviorDiplomatic):
@@ -644,10 +644,10 @@ class BehaviorGood(BehaviorDiplomatic):
 		-
 	"""
 
-	weights = Settings.Good.weights
-	parameters_hostile = Settings.Good.parameters_hostile
-	parameters_neutral = Settings.Good.parameters_neutral
-	parameters_allied = Settings.Good.parameters_allied
+	weights = DiplomacySettings.Good.weights
+	parameters_hostile = DiplomacySettings.Good.parameters_hostile
+	parameters_neutral = DiplomacySettings.Good.parameters_neutral
+	parameters_allied = DiplomacySettings.Good.parameters_allied
 
 
 class BehaviorNeutral(BehaviorDiplomatic):
@@ -662,10 +662,10 @@ class BehaviorNeutral(BehaviorDiplomatic):
 		-
 	"""
 
-	weights = Settings.Neutral.weights
-	parameters_hostile = Settings.Neutral.parameters_hostile
-	parameters_neutral = Settings.Neutral.parameters_neutral
-	parameters_allied = Settings.Neutral.parameters_allied
+	weights = DiplomacySettings.Neutral.weights
+	parameters_hostile = DiplomacySettings.Neutral.parameters_hostile
+	parameters_neutral = DiplomacySettings.Neutral.parameters_neutral
+	parameters_allied = DiplomacySettings.Neutral.parameters_allied
 
 class BehaviorDebug(BehaviorComponent):
 
