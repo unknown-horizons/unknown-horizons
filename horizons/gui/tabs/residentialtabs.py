@@ -71,16 +71,20 @@ class SettlerOverviewTab(OverviewTab):
 
 	def refresh(self):
 		happiness_icon_path = "content/gui/icons/templates/happiness/"
+		happiness_helptext = _("satisfied")
 		sad = self.instance.session.db.get_settler_happiness_decrease_limit()
 		happy = self.instance.session.db.get_settler_happiness_increase_requirement()
 		if self.instance.happiness <= sad:
 			happiness_icon_path += "sad.png"
+			happiness_helptext = _("sad")
 		elif sad < self.instance.happiness < happy:
 			happiness_icon_path += "average.png"
 		elif self.instance.happiness >= happy:
 			happiness_icon_path += "happy.png"
+			happiness_helptext = _("happy")
 
 		self.widget.child_finder('happiness_label').image = happiness_icon_path
+		self.widget.child_finder('happiness_label').helptext = happiness_helptext
 		self.widget.child_finder('happiness').progress = self.instance.happiness
 		self.widget.child_finder('inhabitants').text = u"%s/%s" % (
 		                                               self.instance.inhabitants,
