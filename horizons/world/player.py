@@ -80,7 +80,7 @@ class Player(ComponentHolder, WorldObject):
 		assert self.color.is_default_color, "Player color has to be a default color"
 
 		SettlerUpdate.subscribe(self.notify_settler_reached_level)
-		NewDisaster.subscribe(self, self.notify_new_disaster)
+		NewDisaster.subscribe(self.notify_new_disaster, sender=self)
 
 	@property
 	def is_local_player(self):
