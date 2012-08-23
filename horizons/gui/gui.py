@@ -421,25 +421,23 @@ class Gui(SingleplayerMenu, MultiplayerMenu):
 		self.log.debug("Gui: hiding current: %s", self.current)
 		if self.current is not None:
 			self.current.hide()
-			try:
-				self.current.additional_widget.hide()
-				del self.current.additional_widget
-			except AttributeError:
-				pass # only used for some widgets, e.g. pause
+			self.hide_modal_background()
 
 	def is_visible(self):
 		return self.current is not None and self.current.isVisible()
 
-
-	def show_dialog(self, dlg, bind, event_map=None):
+	def show_dialog(self, dlg, bind, event_map=None, modal=False):
 		"""Shows any pychan dialog.
 		@param dlg: dialog that is to be shown
 		@param bind: events that make the dialog return + return values{ 'ok': callback, 'cancel': callback }
 		@param event_map: dictionary with callbacks for buttons. See pychan docu: pychan.widget.mapEvents()
+		@param modal: Whether to block user interaction while displaying the dialog
 		"""
 		self.current_dialog = dlg
 		if event_map is not None:
 			dlg.mapEvents(event_map)
+		if modal:
+			self.show_modal_background()
 
 		# handle escape and enter keypresses
 		def _on_keypress(event, dlg=dlg): # rebind to make sure this dlg is used
@@ -466,6 +464,8 @@ class Gui(SingleplayerMenu, MultiplayerMenu):
 		self.dialog_executed = True
 		ret = dlg.execute(bind)
 		self.dialog_executed = False
+		if modal:
+			self.hide_modal_background()
 		return ret
 
 	def show_popup(self, windowtitle, message, show_cancel_button=False, size=0, modal=True):
@@ -483,13 +483,13 @@ class Gui(SingleplayerMenu, MultiplayerMenu):
 		def focus_ok_button():
 			popup.findChild(name=OkButton.DEFAULT_NAME).requestFocus()
 		ExtScheduler().add_new_object(focus_ok_button, self, run_in=0)
-		if modal:
-			self.show_modal_background()
 		if show_cancel_button:
 			return self.show_dialog(popup, {OkButton.DEFAULT_NAME : True,
-			                                CancelButton.DEFAULT_NAME : False})
+			                                CancelButton.DEFAULT_NAME : False},
+			                        modal=modal)
 		else:
-			return self.show_dialog(popup, {OkButton.DEFAULT_NAME : True})
+			return self.show_dialog(popup, {OkButton.DEFAULT_NAME : True},
+			                        modal=modal)
 
 	def show_error_popup(self, windowtitle, description, advice=None, details=None, _first=True):
 		"""Displays a popup containing an error message.
@@ -569,6 +569,13 @@ class Gui(SingleplayerMenu, MultiplayerMenu):
 		self.current.additional_widget = pychan.Icon(image=image)
 		self.current.additional_widget.position = (0, 0)
 		self.current.additional_widget.show()
+
+	def hide_modal_background(self):
+		try:
+			self.current.additional_widget.hide()
+			del self.current.additional_widget
+		except AttributeError:
+			pass # only used for some widgets, e.g. pause
 
 	def show_loading_screen(self):
 		self._switch_current_widget('loadingscreen', center=True, show=True)
