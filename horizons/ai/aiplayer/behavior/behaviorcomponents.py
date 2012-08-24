@@ -471,7 +471,7 @@ class BehaviorDiplomatic(BehaviorComponent):
 
 	# value to which each function is related, so even when relationship_score is at the peek somewhere (e.g. it's value is 1.0)
 	# probability to actually choose given action is peek/upper_boundary (0.2 in case of upper_boundary = 5.0)
-	upper_boundary = 5.0
+	upper_boundary = DiplomacySettings.upper_boundary
 
 	# possible actions behavior can take
 	actions = Enum('wait', 'war', 'peace', 'neutral')
@@ -483,7 +483,8 @@ class BehaviorDiplomatic(BehaviorComponent):
 		"""
 		return sum((getattr(balance, key) * value for key, value in weights.iteritems()))
 
-	def _move_f(self, f, v_x, v_y):
+	@classmethod
+	def _move_f(cls, f, v_x, v_y):
 		"""
 		Return function f moved by vector (v_x, v_y)
 		"""
@@ -515,7 +516,8 @@ class BehaviorDiplomatic(BehaviorComponent):
 		elif action == self.actions.neutral:
 			self.session.world.diplomacy.add_neutral_pair(self.owner, player)
 
-	def _get_quadratic_function(self, mid, root, peek=1.0):
+	@classmethod
+	def _get_quadratic_function(cls, mid, root, peek=1.0):
 		"""
 		Functions for border distributions such as enemy or ally (left or right parabola).
 		@param mid: value on axis X that is to be center of the parabola
@@ -535,7 +537,7 @@ class BehaviorDiplomatic(BehaviorComponent):
 		base = lambda x: (-1. / (abs(mid - root) ** 2)) * (x ** 2)
 
 		# we move the function so it looks like "distribution", i.e. move it far left(or right), and assume the peek is 1.0
-		moved = self._move_f(base, mid, 1.0)
+		moved = cls._move_f(base, mid, 1.0)
 
 		# in case of negative values of f(x) we want to have 0.0 instead
 		# we multiply by peek here in order to scale function in Y
@@ -543,14 +545,17 @@ class BehaviorDiplomatic(BehaviorComponent):
 
 		return final_function
 
-	def get_enemy_function(self, root, peek=1.0):
-		return self._get_quadratic_function(-10.0, root, peek)
+	@classmethod
+	def get_enemy_function(cls, root, peek=1.0):
+		return cls._get_quadratic_function(-10.0, root, peek)
 
-	def get_ally_function(self, root, peek=1.0):
-		return self._get_quadratic_function(10.0, root, peek)
+	@classmethod
+	def get_ally_function(cls, root, peek=1.0):
+		return cls._get_quadratic_function(10.0, root, peek)
 
-	def get_neutral_function(self, mid, root, peek=1.0):
-		return self._get_quadratic_function(mid, root, peek)
+	@classmethod
+	def get_neutral_function(cls, mid, root, peek=1.0):
+		return cls._get_quadratic_function(mid, root, peek)
 
 	def _choose_random_from_tuple(self, tuple):
 		"""

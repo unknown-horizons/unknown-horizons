@@ -21,6 +21,7 @@
 
 
 class DiplomacySettings:
+	upper_boundary = 5.0
 	class Evil:
 		# negative weights favors opposite balance, e.g. enemy is stronger => higher relationship_score
 		weights = {

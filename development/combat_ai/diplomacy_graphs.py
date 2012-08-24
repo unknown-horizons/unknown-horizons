@@ -20,8 +20,14 @@
 # ###################################################
 
 """
-This is a balancing tool for diplomacy which makes setting diplomacy parameters (such as mid, root or peek)
+This is a balancing tool for diplomacy which makes setting diplomacy parameters (such as mid, root or peek) easier.
 It requires matplotlib (along with pylab) library in order to plot functions.
+
+Usage:
+1. Run the script from UH root, i.e. python development/combat_ai/diplomacy_graphs.py
+2. A graph should appear on screen displaying current functions for each of the settings (see parameter_sets below)
+3. After you close the plot window, next one should appear
+4. Uncomment functions from parameter_sets you don't want to have displayed
 """
 
 from pylab import *
@@ -30,51 +36,26 @@ sys.path.append(".")
 sys.path.append("./horizons")
 sys.path.append("./horizons/util")
 
-# So far I couldn't easily pull these functions from the code itself, so check if these match with code in BehaviorDiplomatic (ai.aiplayer.behavior.behaviorcomponents.py)
-#from horizons.ai.aiplayer.behavior.diplomacysettings import Settings
+try:
+	import run_uh
+except ImportError as e:
+	print e.message
+	print "Please run from Unknown Horizons root dir"
+	sys.exit(1)
 
-def _move_f(f, v_x, v_y):
-		"""
-		Return function f moved by vector (v_x, v_y)
-		"""
-		return lambda x: f(x - v_x) + v_y
+from run_uh import init_environment
+init_environment()
 
-def _get_quadratic_function(mid, root, peek=1.0):
-		"""
-		Functions for border distributions such as enemy or ally (left or right parabola).
-		@param mid: value on axis X that is to be center of the parabola
-		@type mid: float
-		@param root: value on axis X which is a crossing point of axis OX and the function itself
-		@type root: float
-		@param peek: value on axis Y which is a peek of a function
-		@type peek: float
-		@return: quadratic function
-		@rtype: lambda(x)
-		"""
+import horizons.main
 
-		# base function is upside-down parabola, stretched in X in order to have roots at exactly 'root' value.
-		# (-1. / (abs(mid - root) ** 2)) part is for stretching the parabola in X axis and flipping it upside down, we have to use
-		# abs(mid - root) because it's later moved by mid
-		# Note: Multiply by 1./abs(mid-root) to scale function in X (e.g. if mid is 1.0 and root is 1.5 -> make original x^2 function 2 times narrower
-		base = lambda x: (-1. / (abs(mid - root) ** 2)) * (x ** 2)
+from horizons.ai.aiplayer.behavior.diplomacysettings import DiplomacySettings
+from horizons.ai.aiplayer.behavior.behaviorcomponents import BehaviorDiplomatic
 
-		# we move the function so it looks like "distribution", i.e. move it far left(or right), and assume the peek is 1.0
-		moved = _move_f(base, mid, 1.0)
-
-		# in case of negative values of f(x) we want to have 0.0 instead
-		# we multiply by peek here in order to scale function in Y
-		final_function = lambda x: max(0.0, moved(x) * peek)
-
-		return final_function
-
-def get_enemy_function(root, peek=1.0):
-	return _get_quadratic_function(-10.0, root, peek)
-
-def get_ally_function(root, peek=1.0):
-	return _get_quadratic_function(10.0, root, peek)
-
-def get_neutral_function(mid, root, peek=1.0):
-	return _get_quadratic_function(mid, root, peek)
+_move_f = BehaviorDiplomatic._move_f
+_get_quadratic_function = BehaviorDiplomatic._get_quadratic_function
+get_enemy_function = BehaviorDiplomatic.get_enemy_function
+get_ally_function = BehaviorDiplomatic.get_ally_function
+get_neutral_function = BehaviorDiplomatic.get_neutral_function
 
 def diplomacy_graph():
 	header = "Diplomacy function"
@@ -85,29 +66,45 @@ def diplomacy_graph():
 	# Second parameter is color
 	upper_boundary = 5.0
 
-	parameters = {
-		'ally': {'root': 5.0, },
-		'enemy': {'root': -6.7, },
-	}
+	parameter_sets = (
 
-	functions = [
-		(get_enemy_function(**parameters['enemy']), 'r'), # typical hostile (aka. WAR) function
-		#(get_neutral_function(**parameters['neutral']), 'b'), # neutral function
-		(get_ally_function(**parameters['ally']), 'g'), # ally function
-	 ]
+		("BehaviorGood.allied_player", DiplomacySettings.Good.parameters_allied),
+		("BehaviorGood.neutral_player", DiplomacySettings.Good.parameters_neutral),
+		("BehaviorGood.hostile_player", DiplomacySettings.Good.parameters_hostile),
+
+		("BehaviorNeutral.allied_player", DiplomacySettings.Neutral.parameters_hostile),
+		("BehaviorNeutral.neutral_player", DiplomacySettings.Neutral.parameters_neutral),
+		("BehaviorNeutral.hostile_player", DiplomacySettings.Neutral.parameters_hostile),
+
+		("BehaviorEvil.allied_player", DiplomacySettings.Evil.parameters_hostile),
+		("BehaviorEvil.neutral_player", DiplomacySettings.Evil.parameters_neutral),
+		("BehaviorEvil.hostile_player", DiplomacySettings.Evil.parameters_hostile),
+
+	)
+
+
 	x = [-10, 10]
 	y = [upper_boundary]*2
 	plot (x,y,color='y', marker=None)
-	for f, c in functions:
-		gen = [(x/10.0, f(x/10.0)) for x in xrange(-100, 100) ]
-		x = [item[0] for item in gen]
-		y = [item[1] for item in gen]
-		plot(x,y, color=c,marker=None)
-		xlabel(x_label)
-		ylabel(y_label)
-		title(header)
-		grid(True)
-	show()
+	for parameter_name, parameters in parameter_sets:
+		functions = []
+		if 'enemy' in parameters:
+			functions.append((get_enemy_function(**parameters['enemy']),'r'))
+		if 'ally' in parameters:
+			functions.append((get_ally_function(**parameters['ally']), 'g'))
+		if 'neutral' in parameters:
+			functions.append((get_neutral_function(**parameters['neutral']), 'b'))
+
+		for f, c in functions:
+			gen = [(x/10.0, f(x/10.0)) for x in xrange(-100, 100) ]
+			x = [item[0] for item in gen]
+			y = [item[1] for item in gen]
+			plot(x,y, color=c,marker=None)
+			xlabel(x_label)
+			ylabel(y_label)
+			title(parameter_name)
+			grid(True)
+		show()
 
 if(__name__=="__main__"):
 	diplomacy_graph()
