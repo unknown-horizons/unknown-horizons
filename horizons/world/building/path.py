@@ -86,3 +86,4 @@ class Path(ComponentHolder):
 class Road(Path, BasicBuilding, BuildableLine):
 	"""Actual buildable road."""
 	layer = LAYERS.FIELDS
+	VELOCITY_MODIFIER = 3

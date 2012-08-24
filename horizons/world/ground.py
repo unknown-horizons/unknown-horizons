@@ -108,7 +108,6 @@ class GroundClass(type):
 		"""
 		self.id = id
 		self._object = None
-		self.velocity = {}
 		self.classes = ['ground[' + str(id) + ']']
 		for (name,) in db("SELECT class FROM ground_class WHERE ground = ?", id):
 			self.classes.append(name)

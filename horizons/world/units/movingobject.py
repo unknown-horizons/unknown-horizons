@@ -276,10 +276,15 @@ class MovingObject(ComponentHolder, ConcreteObject):
 		@return: (int, int)
 		"""
 		tile = self.session.world.get_tile(self.position)
-		if self.id in tile.velocity:
-			return tile.velocity[self.id]
-		else:
-			return (12, 17) # standard values
+		straight = 12 # default
+		diagonal = 17 # default
+
+		if tile.object is not None and hasattr(tile.object, "VELOCITY_MODIFIER"):
+			assert tile.object.VELOCITY_MODIFIER < straight
+			straight -= tile.object.VELOCITY_MODIFIER
+			diagonal -= tile.object.VELOCITY_MODIFIER
+		
+		return straight, diagonal
 
 	def get_estimated_travel_time(self, destination):
 		path = self.path.calc_path(destination, check_only = True)
