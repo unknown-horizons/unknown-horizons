@@ -198,9 +198,15 @@ def print_storage():
 
 def print_collectors():
 	print 'Collectors: (building amount collector)'
-	for b, coll, amount in db("SELECT object_id, collector_class, count FROM \
-			collectors ORDER BY object_id ASC"):
-		print "%2s: %-18s %s %s (%s)" % (b, get_obj_name(b), amount, get_obj_name(coll), coll)
+	for b in Entities.buildings.itervalues():
+		for comp in b.component_templates:
+			if not isinstance(comp, dict):
+				continue
+			for name, data in comp.iteritems():
+				if 'collect' not in name.lower():
+					continue
+				for id, amount in data.get('collectors').iteritems():
+					print "%2s: %-18s %s %s (%s)" % (b.id, b.name, amount, get_obj_name(id), id)
 
 def print_building_costs():
 	print 'Building costs:'
