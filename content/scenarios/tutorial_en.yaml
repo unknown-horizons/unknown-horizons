@@ -1,4 +1,4 @@
-﻿# The actual scenario definitions follow in "events" after "logbook-data".
+# The actual scenario definitions follow in "events" after "logbook-data".
 #
 logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logbook, arguments: *ANCHOR}
 # All anchors are replaced by the YAML parser upon file load, there is no UH code related to this magic.
@@ -268,7 +268,7 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - [Image, "content/gui/images/background/hr.png"]
   - Congratulations! Some of your inhabitants have reached increment II!
   - Now you have access to new buildings, take a look at the Build menu again.
-  - [Gallery, ["content/gui/icons/tabwidget/buildmenu/level2_u.png"]]
+  - [Gallery, ["content/gui/icons/tabwidget/buildmenu/tier/tier2_u.png"]]
   - A shiny new tab appeared there.
   - Pioneers will demand cloth, so you need to set up a production line for cloth starting with lambs wool (which is one of the goods produced at the farm).
   - The farm is a very special production building since it can produce not only one, but very many (and different) goods if you choose.
@@ -396,7 +396,7 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
 
     Your UH-Team
   - [Gallery, ["content/unknown-horizons.xpm",
-               "content/gfx/misc/status_icons/as_book_flip/idle/45/book20125.png"]]
+               "content/gfx/misc/status_icons/as_book_flip/idle/45/003.png"]]
 
 
 
