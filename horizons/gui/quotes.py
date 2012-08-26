@@ -42,7 +42,9 @@ FUN_QUOTES = {
 	    "strength is the capacity to break a chocolate bar into four pieces with your bare hands - and then eat just one of the pieces",
 	    "If one does not know to which port one is sailing, no wind is favorable",
 	    "The pessimist complains about the wind; \nthe optimist expects it to change; \nthe realist adjusts the sails",
-	    "Travel beyond the horizon and discover unknown worlds!"
+	    "Travel beyond the horizon and discover unknown worlds!",
+	    "War... war never changes",
+	    "Support Unknown Horizons with Cookies!"
     ]
 }
 
@@ -58,7 +60,9 @@ GAMEPLAY_TIPS = {
 	    _("You can build multiple buildings by holding the 'SHIFT' key."),
 	    _("You can increase the happiness of your inhabitants by lowering the taxes."),
 	    _("Build fire stations and doctors to protect your inhabitants from fire and disease."),
-	    _("Build storage tents to increase your storage capacity.")
+	    _("Build storage tents to increase your storage capacity."),
+	    _("Make sure every house is in range of a marketplace."),
+	    _("Press 'T' to make trees transparent.")
     ]
 }
 
