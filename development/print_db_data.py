@@ -97,25 +97,10 @@ def print_production_lines():
 					if produces:
 						print '   produces'
 						format_prodline(produces, 4)
-	return
-	for (id, changes_anim, object, time, default) in db("SELECT id, changes_animation, object_id, time, enabled_by_default FROM production_line ORDER BY object_id"):
-		(consumption,production) = get_prod_line(id, list)
-
-		str = 'Line %2s of %2s:%-16s %5s sec %s %s ' % (id, object, get_obj_name(object), time, ('D' if default else ' '), ('C' if changes_anim else ' '))
-
-		if consumption:
-			str += 'uses: '
-			for res, amount in consumption:
-				str += '%2s %-16s ' % (-amount, get_res_name(res) + '(%s)' % res)
-
-		if production:
-			str += '\t=> '
-			for res, amount in production:
-				str +=  '%2s %-16s ' % (amount, get_res_name(res) + '(%s)' % res)
-
-		print str
 
 def print_verbose_lines():
+	print 'Data has been moved, this view is unavailable for now'
+	return
 	def _output_helper_prodlines(string, list):
 		if len(list) == 1:
 			for res, amount in list:
@@ -137,16 +122,6 @@ def print_verbose_lines():
 		_output_helper_prodlines('consume', consumption)
 		_output_helper_prodlines('produce', production)
 
-
-def strw(s, width=0):
-	"""returns string with at least width chars"""
-	s = str(s)
-	slen = len(s)
-	diff = width - slen
-	if diff > 0: s += " "*diff
-	return s
-
-
 def print_res():
 	print 'Resources' + '\n' + '%2s: %-15s %5s %10s %19s' % ('id', 'resource', 'value', 'tradeable', 'shown_in_inventory')
 	print '=' * 56
@@ -161,7 +136,7 @@ def print_building():
 	print '\n' + '=' * 23 + 'R===P' + '=' * 50
 	for b in Entities.buildings.itervalues():
 		print "%2s: %-16s %3s / %2s %5sx%1s %4s   %s" % \
-		(b.id, b.name, b.running_costs or '--', b.running_costs_inactive or '--', \
+		(b.id, b.name, b.running_costs or '--', b.running_costs_inactive or '--',
 		 b.size[0], b.size[1], b.radius, b.baseclass)
 
 def print_unit():
@@ -187,8 +162,6 @@ def print_storage():
 		print '%s(%i) can store:' % (b.name, b.id)
 		for res, amount in inv.values()[0].values()[0].iteritems():
 			print "\t%2s tons of %s(%s)" % (amount, get_res_name(res), res)
-
-
 
 	print "\nAll others can store 30 tons of each res:" # show buildings with default storage
 	return
@@ -347,8 +320,6 @@ for (x,y) in abbrevs.iteritems(): # add convenience abbreviations to possible fl
 	flags[x] = functions[y]
 
 args = sys.argv
-
-print 'WARNING: most of the features are currently broken since units and buildings are now represented differently.'
 
 if len(args) == 1:
 	print 'Start with one of those args: %s \nSupported abbreviations: %s' % (sorted(functions.keys()), sorted(abbrevs.keys()))
