@@ -20,10 +20,11 @@
 # ###################################################
 
 import logging
+import math
+
 from fife import fife
 
 from horizons.scheduler import Scheduler
-
 from horizons.util.pathfinding import PathBlockedError
 from horizons.util import Point, WeakMethodList, decorators
 from horizons.world.concreteobject import ConcreteObject
@@ -281,8 +282,9 @@ class MovingObject(ComponentHolder, ConcreteObject):
 
 		if tile.object is not None and hasattr(tile.object, "VELOCITY_MODIFIER"):
 			assert tile.object.VELOCITY_MODIFIER < straight
-			straight -= tile.object.VELOCITY_MODIFIER
-			diagonal -= tile.object.VELOCITY_MODIFIER
+			modifier = tile.object.VELOCITY_MODIFIER
+			straight -= modifier
+			diagonal -= int(math.sqrt(2) * modifier)
 		
 		return straight, diagonal
 
