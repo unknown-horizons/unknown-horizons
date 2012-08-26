@@ -43,6 +43,7 @@ ExtScheduler.create_instance(Dummy()) # sometimes needed by entities in subseque
 Entities.load_buildings(db, load_now=True)
 Entities.load_units(load_now=True)
 
+building_name_mapping = dict( (b.id, b.name) for b in Entities.buildings.itervalues() )
 unit_name_mapping = dict( (u.id, u.name) for u in Entities.units.itervalues() )
 
 def get_obj_name(obj):
@@ -225,10 +226,16 @@ def print_building_costs():
 		print "%2i: %s" % (b.id, b.name)
 
 def print_collector_restrictions():
-	for c, in db("SELECT DISTINCT collector FROM collector_restrictions"):
-		print '%s(%s) is restricted to:' % (get_obj_name(c), c)
-		for obj, in db("SELECT object FROM collector_restrictions WHERE collector = ?", c):
-			print '\t%s(%s)' % (get_obj_name(obj),obj)
+	for u in Entities.units.itervalues():
+		for comp in u.component_templates:
+			if not isinstance(comp, dict):
+				continue
+			for name, data in comp.iteritems():
+				if 'restricted' not in name.lower():
+					continue
+				print '%s(%s) is restricted to:' % (u.class_name, u.id)
+				for building in data.get('allowed'):
+					print '\t%s(%s)' % (building_name_mapping[building], building)
 
 def print_increment_data():
 	print 'Data has been moved, this view is unavailable for now'
