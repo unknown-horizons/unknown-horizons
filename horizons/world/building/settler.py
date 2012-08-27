@@ -317,14 +317,7 @@ class Settler(BuildableRect, BuildingResourceHandler, BasicBuilding):
 
 	def level_down(self):
 		if self.level == 0: # can't level down any more
-			# replace this building with a ruin
-			command = Build(BUILDINGS.SETTLER_RUIN, self.position.origin.x,
-			                self.position.origin.y, island=self.island, settlement=self.settlement)
-
-			Scheduler().add_new_object(
-			  Callback.ChainedCallbacks(self.remove, Callback(command, self.owner)), # remove, then build new
-			  self, run_in=0)
-
+			self.make_ruin()
 			self.log.debug("%s: Destroyed by lack of happiness", self)
 			if self.owner.is_local_player:
 				# check_duplicate: only trigger once for different settlers of a neighborhood
@@ -340,6 +333,16 @@ class Settler(BuildableRect, BuildingResourceHandler, BasicBuilding):
 
 			# Notify the world about the level down
 			SettlerUpdate.broadcast(self, self.level, -1)
+
+	def make_ruin(self):
+		""" Replaces itself with a ruin.
+		"""
+		command = Build(BUILDINGS.SETTLER_RUIN, self.position.origin.x,
+		                self.position.origin.y, island=self.island, settlement=self.settlement)
+
+		# Remove the building and then place the Ruin
+		Scheduler().add_new_object(Callback.ChainedCallbacks(
+			self.remove, Callback(command, self.owner)), self, run_in=0)
 
 	def _check_main_square_in_range(self):
 		"""Notifies the user via a message in case there is no main square in range"""
