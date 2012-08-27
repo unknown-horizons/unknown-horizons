@@ -445,7 +445,7 @@ class IngameGui(LivingObject):
 		"""
 		new_name = self.widgets['change_name'].collectData('new_name')
 		self.widgets['change_name'].findChild(name='new_name').text = u''
-		if not new_name or new_name.isspace():
+		if not new_name or not new_name.isspace():
 			# different namedcomponent classes share the name
 			RenameObject(instance.get_component_by_name(NamedComponent.NAME), new_name).execute(self.session)
 		self._hide_change_name_dialog()
