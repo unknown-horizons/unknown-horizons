@@ -189,4 +189,4 @@ class GuiAction(Message):
 
 class ResourceProduced(Message):
 	"""Sent when a production building finished the production of a resource """
-	arguments = ('produced_resources', )
+	arguments = ('caller', 'produced_resources', )

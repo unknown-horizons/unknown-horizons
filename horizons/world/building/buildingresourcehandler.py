@@ -55,7 +55,7 @@ class BuildingResourceHandler(ResourceHandler):
 
 	def on_production_finished(self, caller, resources):
 		if self.is_valid_tradable_resource(resources):
-			ResourceProduced.broadcast(self, resources)
+			ResourceProduced.broadcast(self, caller, resources)
 
 	def is_valid_tradable_resource(self, resources):
 		""" Checks if the produced resource tradable (can be carried by collectors).
