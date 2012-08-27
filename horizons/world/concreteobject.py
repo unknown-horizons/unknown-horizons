@@ -19,12 +19,14 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
+import random
+
+from horizons.constants import ACTION_SETS
 from horizons.scheduler import Scheduler
 from horizons.util.loaders.actionsetloader import ActionSetLoader
 from horizons.util.python.callback import Callback
 from horizons.util.worldobject import WorldObject
 from horizons.world.units import UnitClass
-import random
 
 class ConcreteObject(WorldObject):
 	"""Class for concrete objects like Units or Buildings.
@@ -116,33 +118,45 @@ class ConcreteObject(WorldObject):
 		super(ConcreteObject, self).remove()
 
 	@classmethod
-	def get_random_action_set(cls, level=0, exact_level=False, include_preview=False):
+	def weighted_choice(cls, weighted_dict):
+		""" http://eli.thegreenplace.net/2010/01/22/weighted-random-generation-in-python/
+		"""
+		# usually we do not need any magic because there only is one set:
+		if len(weighted_dict) == 1:
+			return weighted_dict.keys()[0]
+		weights = sum(w or ACTION_SETS.DEFAULT_WEIGHT
+		              for i, w in weighted_dict.iteritems())
+		rnd = random.random() * weights
+		for action_set, weight in weighted_dict.iteritems():
+			rnd -= weight or ACTION_SETS.DEFAULT_WEIGHT
+			if rnd < 0:
+				return action_set
+
+	@classmethod
+	def get_random_action_set(cls, level=0, exact_level=False):
 		"""Returns an action set for an object of type object_id in a level <= the specified level.
 		The highest level number is preferred.
 		@param level: level to prefer. a lower level might be chosen
 		@param exact_level: choose only action sets from this level. return val might be None here.
-		@return: action_set_id or (if include_preview) tuple (action_set_id, preview_action_set_id) or None"""
+		@return: action_set_id or None"""
 		action_sets = cls.action_sets
-		action_set, preview_set = None, None
+		action_set = None
 		if exact_level:
 			if level in action_sets:
-				action_set, preview_set = random.choice(action_sets[level].items())
+				action_set = cls.weighted_choice(action_sets[level])
 			# if there isn't one, stick with None
 		else: # search all levels for an action set, starting with highest one
 			for possible_level in reversed(xrange(level+1)):
 				if possible_level in action_sets.iterkeys():
-					action_set, preview_set = random.choice(action_sets[possible_level].items())
+					action_set = cls.weighted_choice(action_sets[possible_level])
 					break
 			if action_set is None: # didn't find a suitable one
 				# fall back to one from a higher level.
 				# this does not happen in valid games, but can happen in tests, when level
 				# constraints are ignored.
-				action_set, preview_set = action_sets.values()[0].items()[0]
+				action_set, weight = action_sets.values()[0].items()[0]
 
-		if include_preview:
-			return (action_set, preview_set)
-		else:
-			return action_set
+		return action_set
 
 	@property
 	def name(self):
