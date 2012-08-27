@@ -146,7 +146,6 @@ class Session(LivingObject):
 		show_resource_icons = bool(horizons.main.fife.get_uh_setting("ShowResourceIcons"))
 		if show_resource_icons:
 			self.production_finished_icon_manager = ProductionFinishedIconManager(
-				session=self,
 				renderer=self.view.renderer['GenericRenderer'],
 				layer=self.view.layers[LAYERS.OBJECTS]
 			)

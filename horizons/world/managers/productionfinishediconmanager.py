@@ -32,13 +32,12 @@ class ProductionFinishedIconManager(object):
 	"""Manager class that manages all production finished icons. It listens to
 	 ResourceProduced messages on the main message bus"""
 
-	def __init__(self, session, renderer, layer):
+	def __init__(self, renderer, layer):
 		"""
 		@param renderer: Renderer used to render the icons
 		@param layer: map layer, needed to place icon
 		"""
 		self.layer = layer
-		self.session = session
 		self.renderer = renderer
 		self.run = dict()
 		self.animation_duration = 20 # The duration how long the image moves up
@@ -53,7 +52,6 @@ class ProductionFinishedIconManager(object):
 			self.renderer.removeAll(group)
 		self.run = None
 		self.renderer = None
-		self.session = None
 		ResourceProduced.unsubscribe(self._on_resource_produced)
 
 	def _on_resource_produced(self, message):
@@ -62,7 +60,7 @@ class ProductionFinishedIconManager(object):
 
 		# if we get an empty dictionary, abort
 		if (not message.produced_resources or not message.produced_resources.keys()) or \
-			message.caller.instance.owner != self.session.world.player:
+			not message.caller.instance.owner.is_local_player:
 			return
 
 		# makes the animation independent from game speed
