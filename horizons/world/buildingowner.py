@@ -19,7 +19,7 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-
+from horizons.world.building.production import ProductionBuilding
 from horizons.world.providerhandler import ProviderHandler
 from horizons.util import decorators, Point
 from horizons.util.shapes.radiusshape import RadiusRect
@@ -135,6 +135,27 @@ class BuildingOwner(object):
 				r1 = provider.position
 				if ((max(r1.left - r2.right, 0, r2.left - r1.right) ** 2) + (max(r1.top - r2.bottom, 0, r2.top - r1.bottom) ** 2)) <= radius_squared:
 					yield provider
+
+	@decorators.make_constants()
+	def get_specialized_producers_in_range(self, provider, player=None):
+		"""Returns all instances of specialized producers within the specified shape.
+		NOTE: Specifing the res parameter is usually a huge speed gain.
+		@param provider: the provider building
+		@param player: Player instance, only buildings belonging to this player
+		@return: list of producers"""
+		resource_list = provider.get_produced_resources()
+		if not player and hasattr(provider, "owner"):
+			player = provider.owner
+
+		# filter out those that aren't in range
+		r2 = provider.position
+		for res in resource_list:
+			buildings = filter(lambda building: isinstance(building, ProductionBuilding), self.buildings)
+			for building in buildings:
+				if (player is None or player == building.owner) and res in building.get_needed_resources():
+					r1 = building.position
+					if ((max(r1.left - r2.right, 0, r2.left - r1.right) ** 2) + (max(r1.top - r2.bottom, 0, r2.top - r1.bottom) ** 2)) <= building.radius ** 2:
+						yield building
 
 	def save(self, db):
 		for building in self.buildings:

@@ -24,7 +24,6 @@ import logging
 from collections import namedtuple
 
 from horizons.scheduler import Scheduler
-
 from horizons.util.pathfinding import PathBlockedError
 from horizons.util import WorldObject, decorators, Callback
 from horizons.ext.enum import Enum
@@ -532,16 +531,17 @@ class JobList(list):
 		self.sort(key=lambda job: min(inventory[res] for res in job.resources) , reverse=False)
 
 	def _sort_jobs_fewest_available_and_distance(self):
-		"""Sort jobs by fewest available, but secondaryly also consider distance"""
+		"""Sort jobs by distance, but secondaryly also consider fewest available resources"""
 		# python sort is stable, so two sequenced sorts work.
-		self._sort_jobs_distance()
 		self._sort_jobs_fewest_available(shuffle_first=False)
+		self._sort_jobs_distance()
 
 	def _sort_jobs_for_storage_collector(self):
 		"""Special sophisticated sorting routing for storage collectors.
 		Same as fewest_available_and_distance_, but also considers whether target inv is full."""
 		self._sort_jobs_fewest_available_and_distance()
 		self._sort_target_inventory_full()
+		self._sort_no_specialized_producer_in_range()
 
 	def _sort_jobs_distance(self):
 		"""Prefer targets that are nearer"""
@@ -551,8 +551,16 @@ class JobList(list):
 		"""Prefer targets with full inventory"""
 		self.sort(key=operator.attrgetter('target_inventory_full_num'), reverse=True)
 
+	def _sort_no_specialized_producer_in_range(self):
+		"""Prefer targets with no specialized producer in range"""
+		self.sort(key=self.sort_by_specialized_producer)
+
+	def sort_by_specialized_producer(self, job):
+		producers = list(job.object.island.get_specialized_producers_in_range(job.object))
+		return int(len(producers) > 0)
+
 	def __str__(self):
-		return str([ str(i) for i in self ])
+		return str([ unicode(i) for i in self ])
 
 
 decorators.bind_all(Collector)
