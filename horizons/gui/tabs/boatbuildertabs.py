@@ -108,24 +108,17 @@ class BoatbuilderTab(_BoatbuilderOverviewTab):
 
 			button_active = container_active.findChild(name="toggle_active_active")
 			button_inactive = container_active.findChild(name="toggle_active_inactive")
+			to_active = not self.producer.is_active()
 
-			if not self.producer.is_active(): # if production is paused
-				if not button_active in button_active.parent.hidden_children:
-					button_active.parent.hideChild(button_active)
-				button_inactive.parent.showChild(button_inactive)
+			if not to_active: # swap what we want to show and hide
+				button_active, button_inactive = button_inactive, button_active
+			if not button_active in button_active.parent.hidden_children:
+				button_active.parent.hideChild(button_active)
+			button_inactive.parent.showChild(button_inactive)
 
-				container_active.mapEvents({
-				  'toggle_active_inactive' : Callback(self.producer.set_active, active=True)
-				})
-				# TODO: make this button do sth
-			else:
-				if not button_inactive in button_inactive.parent.hidden_children:
-					button_inactive.parent.hideChild(button_inactive)
-				button_active.parent.showChild(button_active)
+			set_active_cb = Callback(self.producer.set_active, active=to_active)
+			button_inactive.capture(set_active_cb, event_name="mouseClicked")
 
-				container_active.mapEvents({
-				  'toggle_active_active' : Callback(self.producer.set_active, active=False)
-				})
 			upgrades_box = container_active.findChild(name="BB_upgrades_box")
 			for child in upgrades_box.children[:]:
 				upgrades_box.removeChild(child)
