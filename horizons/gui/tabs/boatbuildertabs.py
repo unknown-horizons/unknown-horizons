@@ -98,11 +98,13 @@ class BoatbuilderTab(_BoatbuilderOverviewTab):
 				queue_container.addChild( icon )
 
 			# Set built ship info
-			produced_unit_id = self.producer._get_production(production_lines[0]).get_produced_units().keys()[0]
+			production_line = self.producer._get_production(production_lines[0])
+			produced_unit_id = production_line.get_produced_units().keys()[0]
 			name = self.instance.session.db.get_unit_type_name(produced_unit_id)
 			container_active.findChild(name="headline_BB_builtship_label").text = _(name)
-			container_active.findChild(name="BB_cur_ship_icon").helptext = "Storage: 4 slots, 120t \nHealth: 100"
-			container_active.findChild(name="BB_cur_ship_icon").image = THUMB_PATH % produced_unit_id
+			ship_icon = container_active.findChild(name="BB_cur_ship_icon")
+			ship_icon.helptext = "Storage: 4 slots, 120t \nHealth: 100"
+			ship_icon.image = THUMB_PATH % produced_unit_id
 
 			button_active = container_active.findChild(name="toggle_active_active")
 			button_inactive = container_active.findChild(name="toggle_active_inactive")
