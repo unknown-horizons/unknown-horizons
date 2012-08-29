@@ -120,8 +120,7 @@ class BoatbuilderTab(_BoatbuilderOverviewTab):
 			button_inactive.capture(set_active_cb, event_name="mouseClicked")
 
 			upgrades_box = container_active.findChild(name="BB_upgrades_box")
-			for child in upgrades_box.children[:]:
-				upgrades_box.removeChild(child)
+			upgrades_box.removeAllChildren()
 #			upgrades_box.addChild( pychan.widgets.Label(text=u"+ love") )
 #			upgrades_box.addChild( pychan.widgets.Label(text=u"+ affection") )
 # no upgrades in 2010.1 release ---^
