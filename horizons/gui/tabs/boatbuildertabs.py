@@ -65,31 +65,18 @@ class BoatbuilderTab(_BoatbuilderOverviewTab):
 		production_lines = self.producer.get_production_lines()
 
 		if production_lines:
-
-			if cancel_container is None:
-				main_container.addChild(main_container.cancel_container)
-				cancel_container = main_container.cancel_container
-
-			if needed_res_container is None:
-				main_container.insertChildBefore(main_container.needed_res_container, cancel_container)
-				needed_res_container = main_container.needed_res_container
+			cancel_container.parent.showChild(cancel_container)
+			needed_res_container.parent.showChild(needed_res_container)
 
 			# Set progress
-			if progress_container is None:
-				main_container.insertChildBefore( main_container.progress_container, self.widget.findChild(name="BB_needed_resources_container"))
-				progress_container = main_container.progress_container
-
+			progress_container.parent.showChild(progress_container)
 			progress = math.floor(self.producer.get_production_progress() * 100)
 			self.widget.findChild(name='progress').progress = progress
 			self.widget.findChild(name='BB_progress_perc').text = u'{progress}%'.format(progress=progress)
 
-			# remove other container, but save it
-			if container_inactive is not None:
-				main_container.container_inactive = container_inactive
-				main_container.removeChild( container_inactive )
-			if container_active is None:
-				main_container.insertChildBefore( main_container.container_active, progress_container)
-				container_active = main_container.container_active
+			container_active.parent.showChild(container_active)
+			if not container_inactive in container_inactive.parent.hidden_children:
+				container_inactive.parent.hideChild(container_inactive)
 
 			# Update boatbuilder queue
 			queue = self.producer.get_unit_production_queue()
@@ -121,29 +108,18 @@ class BoatbuilderTab(_BoatbuilderOverviewTab):
 			button_inactive = container_active.findChild(name="toggle_active_inactive")
 
 			if not self.producer.is_active(): # if production is paused
-				# remove active button, if it's there, and save a reference to it
-				if button_active is not None:
-					container_active.button_active = button_active
-					container_active.removeChild( button_active )
-				# restore inactive button, if it isn't in the gui
-				if button_inactive is None:
-					# insert at the end
-					container_active.insertChild(container_active.button_inactive,
-					                             len(container_active.children))
+				if not button_active in button_active.parent.hidden_children:
+					button_active.parent.hideChild(button_active)
+				button_inactive.parent.showChild(button_inactive)
+
 				container_active.mapEvents({
 				  'toggle_active_inactive' : Callback(self.producer.set_active, active=True)
 				})
 				# TODO: make this button do sth
 			else:
-				# remove inactive button, if it's there, and save a reference to it
-				if button_inactive is not None:
-					container_active.button_inactive = button_inactive
-					container_active.removeChild( button_inactive )
-				# restore active button, if it isn't in the gui
-				if button_active is None:
-					# insert at the end
-					container_active.insertChild(container_active.button_active,
-					                             len(container_active.children))
+				if not button_inactive in button_inactive.parent.hidden_children:
+					button_inactive.parent.hideChild(button_inactive)
+				button_active.parent.showChild(button_active)
 
 				container_active.mapEvents({
 				  'toggle_active_active' : Callback(self.producer.set_active, active=False)
@@ -177,26 +153,10 @@ class BoatbuilderTab(_BoatbuilderOverviewTab):
 			cancel_button.capture(cancel_cb, event_name="mouseClicked")
 
 		else: # display sth when nothing is produced
-			# remove other container, but save it
-			if container_active is not None:
-				main_container.container_active = container_active
-				main_container.removeChild( container_active )
-			if container_inactive is None:
-				main_container.insertChildBefore( main_container.container_inactive, progress_container)
-				container_inactive = main_container.container_inactive
-
-			if progress_container is not None:
-				main_container.progress_container = progress_container
-				main_container.removeChild(progress_container)
-
-			if needed_res_container is not None:
-				main_container.needed_res_container = needed_res_container
-				main_container.removeChild(needed_res_container)
-
-			if cancel_container is not None:
-				main_container.cancel_container = cancel_container
-				main_container.removeChild(cancel_container)
-
+			container_inactive.parent.showChild(container_inactive)
+			for w in (container_active, progress_container, needed_res_container, cancel_container):
+				if not w in w.parent.hidden_children:
+					w.parent.hideChild(w)
 
 		self.widget.adaptLayout()
 
