@@ -19,6 +19,7 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 from collections import defaultdict
+from horizons.ai.aiplayer.behavior.diplomacysettings import DiplomacySettings
 from horizons.ai.aiplayer.behavior.movecallbacks import BehaviorMoveCallback
 from horizons.ai.aiplayer.combat.combatmanager import CombatManager
 from horizons.ai.aiplayer.strategy.mission.chaseshipsandattack import ChaseShipsAndAttack
@@ -470,7 +471,7 @@ class BehaviorDiplomatic(BehaviorComponent):
 
 	# value to which each function is related, so even when relationship_score is at the peek somewhere (e.g. it's value is 1.0)
 	# probability to actually choose given action is peek/upper_boundary (0.2 in case of upper_boundary = 5.0)
-	upper_boundary = 5.0
+	upper_boundary = DiplomacySettings.upper_boundary
 
 	# possible actions behavior can take
 	actions = Enum('wait', 'war', 'peace', 'neutral')
@@ -482,7 +483,8 @@ class BehaviorDiplomatic(BehaviorComponent):
 		"""
 		return sum((getattr(balance, key) * value for key, value in weights.iteritems()))
 
-	def _move_f(self, f, v_x, v_y):
+	@classmethod
+	def _move_f(cls, f, v_x, v_y):
 		"""
 		Return function f moved by vector (v_x, v_y)
 		"""
@@ -496,6 +498,7 @@ class BehaviorDiplomatic(BehaviorComponent):
 		balance =  self.owner.strategy_manager.calculate_player_balance(player)
 		relationship_score = self.calculate_relationship_score(balance, self.weights)
 		action = self._get_action(relationship_score, **parameters)
+		self.log.debug("%s vs %s | Dipomacy: balance:%s, relationship_score:%s, action:%s", self.owner.name, player.name, balance, relationship_score, action)
 		self._perform_action(action, **environment)
 
 	def _perform_action(self, action, **environment):
@@ -513,7 +516,8 @@ class BehaviorDiplomatic(BehaviorComponent):
 		elif action == self.actions.neutral:
 			self.session.world.diplomacy.add_neutral_pair(self.owner, player)
 
-	def _get_quadratic_function(self, mid, root, peek=1.0):
+	@classmethod
+	def _get_quadratic_function(cls, mid, root, peek=1.0):
 		"""
 		Functions for border distributions such as enemy or ally (left or right parabola).
 		@param mid: value on axis X that is to be center of the parabola
@@ -529,24 +533,29 @@ class BehaviorDiplomatic(BehaviorComponent):
 		# base function is upside-down parabola, stretched in X in order to have roots at exactly 'root' value.
 		# (-1. / (abs(mid - root) ** 2)) part is for stretching the parabola in X axis and flipping it upside down, we have to use
 		# abs(mid - root) because it's later moved by mid
+		# Note: Multiply by 1./abs(mid-root) to scale function in X (e.g. if mid is 1.0 and root is 1.5 -> make original x^2 function 2 times narrower
 		base = lambda x: (-1. / (abs(mid - root) ** 2)) * (x ** 2)
 
 		# we move the function so it looks like "distribution", i.e. move it far left(or right), and assume the peek is 1.0
-		moved = self._move_f(base, mid, peek)
+		moved = cls._move_f(base, mid, 1.0)
 
 		# in case of negative values of f(x) we want to have 0.0 instead
-		final_function = lambda x: max(0.0, moved(x))
+		# we multiply by peek here in order to scale function in Y
+		final_function = lambda x: max(0.0, moved(x) * peek)
 
 		return final_function
 
-	def get_enemy_function(self, root, peek=1.0):
-		return self._get_quadratic_function(-10.0, root, peek)
+	@classmethod
+	def get_enemy_function(cls, root, peek=1.0):
+		return cls._get_quadratic_function(-10.0, root, peek)
 
-	def get_ally_function(self, root, peek=1.0):
-		return self._get_quadratic_function(10.0, root, peek)
+	@classmethod
+	def get_ally_function(cls, root, peek=1.0):
+		return cls._get_quadratic_function(10.0, root, peek)
 
-	def get_neutral_function(self, mid, root, peek=1.0):
-		return self._get_quadratic_function(mid, root, peek)
+	@classmethod
+	def get_neutral_function(cls, mid, root, peek=1.0):
+		return cls._get_quadratic_function(mid, root, peek)
 
 	def _choose_random_from_tuple(self, tuple):
 		"""
@@ -616,32 +625,16 @@ class BehaviorEvil(BehaviorDiplomatic):
 		- smaller
 	"""
 
-	# negative weights favors opposite balance, e.g. enemy is stronger => higher relationship_score
-	weights = {
-		'power': -0.6,
-		'wealth': -0.3,
-		'terrain': -0.1,
-	}
-
-	parameters_hostile = {
-		'neutral': {'mid':0.0, 'root':2.0, 'peek':0.2}, # parabola with the center at 0.0, of root at 2.0 and -2.0. Peek at 0.5 (on Y axis)
-		'ally': {'root':7.0, },
-	}
-	parameters_neutral = {
-		'enemy': {'root':-1.0, },
-		'ally': {'root':5.0, 'peek':0.7, },
-	}
-	parameters_allied = {
-		'neutral': {'mid':-2.0, 'root':-0.5, 'peek':0.2, }, # parabola with the center at -2.0, of root at -0.5 (the other at -3.5). Peek at 0.2 (on Y axis)
-		'enemy': {'root': -3.5, }, # smaller chance to go straight from allied to hostile
-	}
-
 
 	def __init__(self, owner):
 		super(BehaviorEvil, self).__init__(owner)
-		#self._certainty['hostile_player'] = self._certainty_has_fleet
-		#self._certainty['neutral_player'] = self._certainty_has_boat_builder
+		self._certainty['hostile_player'] = self._certainty_has_fleet
+		self._certainty['neutral_player'] = self._certainty_has_boat_builder
 
+	weights = DiplomacySettings.Evil.weights
+	parameters_hostile = DiplomacySettings.Evil.parameters_hostile
+	parameters_neutral = DiplomacySettings.Evil.parameters_neutral
+	parameters_allied = DiplomacySettings.Evil.parameters_allied
 
 
 class BehaviorGood(BehaviorDiplomatic):
@@ -656,26 +649,11 @@ class BehaviorGood(BehaviorDiplomatic):
 		-
 	"""
 
-	weights = {
-		'power': 0.6,
-		'terrain': 0.4,
-		'wealth': 0.0,
-	}
+	weights = DiplomacySettings.Good.weights
+	parameters_hostile = DiplomacySettings.Good.parameters_hostile
+	parameters_neutral = DiplomacySettings.Good.parameters_neutral
+	parameters_allied = DiplomacySettings.Good.parameters_allied
 
-	parameters_hostile = {
-		'neutral': {'mid': -2.0, 'root': -0.5, 'peek': 0.2, },
-		'ally': {'root': 1.0, },
-	}
-
-	parameters_neutral = {
-		'ally': {'root': 5.0, },
-		'enemy': {'root': -3.0, },
-	}
-
-	parameters_allied = {
-		'neutral': {'mid': -3.0, 'root': -1.5, 'peek': 0.2, },
-		'enemy': {'root': -5.0, },
-	}
 
 class BehaviorNeutral(BehaviorDiplomatic):
 	"""
@@ -689,26 +667,10 @@ class BehaviorNeutral(BehaviorDiplomatic):
 		-
 	"""
 
-	weights = {
-		'wealth': -0.8,
-		'power': -0.1,
-		'terrain': -0.1,
-	}
-
-	parameters_hostile = {
-		'neutral': {'mid': 0.0, 'root': 2.0, 'peek': 0.3, },
-		'ally': {'root': 4.0, },
-	}
-
-	parameters_neutral = {
-		'ally': {'root': 5.0, },
-		'enemy': {'root': -5.0, },
-	}
-
-	parameters_allied = {
-		'neutral':{'mid': -1.0, 'root': 0.0, 'peek': 0.3, },
-		'enemy': {'root': -7.0, },
-	}
+	weights = DiplomacySettings.Neutral.weights
+	parameters_hostile = DiplomacySettings.Neutral.parameters_hostile
+	parameters_neutral = DiplomacySettings.Neutral.parameters_neutral
+	parameters_allied = DiplomacySettings.Neutral.parameters_allied
 
 class BehaviorDebug(BehaviorComponent):
 

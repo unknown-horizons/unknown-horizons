@@ -42,27 +42,6 @@ class BehaviorProfile(object):
 		self.conditions = {}
 
 
-class BehaviorProfileDebug(BehaviorProfile):
-
-	def __init__(self, player):
-		super(BehaviorProfileDebug, self).__init__()
-
-		self.conditions = {
-			ConditionHostile(player): 1.1,
-			#ConditionSharingSettlement(player): 1.0,
-			ConditionNeutral(player): 0.4,
-			ConditionAllied(player): 0.3,
-			#ConditionDebug(player): 1.0,
-		}
-
-		self.actions[BehaviorManager.action_types.offensive][BehaviorSmart(player)] = 1.0
-
-		self.strategies[BehaviorManager.strategy_types.offensive][BehaviorRegular(player)] = 1.0
-		#self.strategies[BehaviorManager.strategy_types.diplomatic][BehaviorAggressive(player)] = 0.02
-		#self.strategies[BehaviorManager.strategy_types.diplomatic][BehaviorDebug(player)] = 1.0
-		self.strategies[BehaviorManager.strategy_types.diplomatic][BehaviorEvil(player)] = 1.0
-
-
 class BehaviorProfileAggressive(BehaviorProfile):
 
 	def __init__(self, player):
@@ -182,6 +161,30 @@ class BehaviorProfileManager(object):
 
 		cls.log.debug("BehaviorProfileManager: Player %s was given %s", player.name, chosen_profile.__name__)
 		return chosen_profile(player)
+
+
+class BehaviorProfileDebug(BehaviorProfile):
+
+	def __init__(self, player):
+		super(BehaviorProfileDebug, self).__init__()
+
+		self.conditions = {
+			#ConditionHostile(player): 1.1,
+			#ConditionSharingSettlement(player): 1.0,
+			ConditionNeutral(player): 0.4,
+			#ConditionAllied(player): 0.3,
+			#ConditionDebug(player): 1.0,
+		}
+
+		self.actions[BehaviorManager.action_types.offensive][BehaviorSmart(player)] = 1.0
+
+		self.strategies[BehaviorManager.strategy_types.offensive][BehaviorRegular(player)] = 1.0
+		#self.strategies[BehaviorManager.strategy_types.diplomatic][BehaviorAggressive(player)] = 0.02
+		#self.strategies[BehaviorManager.strategy_types.diplomatic][BehaviorDebug(player)] = 1.0
+		#self.strategies[BehaviorManager.strategy_types.diplomatic][BehaviorEvil(player)] = 1.0
+		#self.strategies[BehaviorManager.strategy_types.diplomatic][BehaviorGood(player)] = 1.0
+		self.strategies[BehaviorManager.strategy_types.diplomatic][BehaviorNeutral(player)] = 1.0
+
 
 # Each AI player is assigned a Profile with certain probability.
 # actions, strategies and conditions are encapsulated inside a profile itself.
