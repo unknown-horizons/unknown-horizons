@@ -18,7 +18,7 @@
 # Free Software Foundation, Inc.,
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
-from fife.fife import Rect
+from horizons.util.shapes.rect import Rect
 from tests.unittests import TestCase
 
 from horizons.constants import RES, BUILDINGS
