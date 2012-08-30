@@ -43,6 +43,7 @@ class _BoatbuilderOverviewTab(OverviewTab):
 class BoatbuilderTab(_BoatbuilderOverviewTab):
 
 	SHIP_THUMBNAIL = "content/gui/icons/units/thumbnails/{type_id}.png"
+	SHIP_PREVIEW_IMG = "content/gui/images/objects/ships/116/{type_id}.png"
 
 	def __init__(self, instance):
 		super(BoatbuilderTab, self).__init__(widget='boatbuilder.xml', instance=instance)
@@ -51,8 +52,6 @@ class BoatbuilderTab(_BoatbuilderOverviewTab):
 	def refresh(self):
 		"""This function is called by the TabWidget to redraw the widget."""
 		super(BoatbuilderTab, self).refresh()
-
-		THUMB_PATH = "content/gui/images/objects/ships/116/%s.png"
 
 		main_container = self.widget.findChild(name="BB_main_tab")
 		container_active = main_container.findChild(name="container_active")
@@ -104,7 +103,7 @@ class BoatbuilderTab(_BoatbuilderOverviewTab):
 			container_active.findChild(name="headline_BB_builtship_label").text = _(name)
 			ship_icon = container_active.findChild(name="BB_cur_ship_icon")
 			ship_icon.helptext = "Storage: 4 slots, 120t \nHealth: 100"
-			ship_icon.image = THUMB_PATH % produced_unit_id
+			ship_icon.image = self.__class__.SHIP_PREVIEW_IMG.format(type_id=produced_unit_id)
 
 			button_active = container_active.findChild(name="toggle_active_active")
 			button_inactive = container_active.findChild(name="toggle_active_inactive")
