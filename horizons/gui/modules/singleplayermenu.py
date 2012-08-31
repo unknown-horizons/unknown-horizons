@@ -38,7 +38,7 @@ from horizons.world import World
 from horizons.util.python.callback import Callback
 from horizons.util.random_map import generate_random_map, generate_random_seed
 from horizons.util.savegameaccessor import SavegameAccessor
-from horizons.util.shapes.rect import Rect
+from horizons.util.shapes import Rect
 from horizons.util.worldobject import WorldObject
 from horizons.util.yamlcache import YamlCache
 from horizons.i18n import find_available_languages

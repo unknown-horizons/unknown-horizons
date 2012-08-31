@@ -26,9 +26,7 @@ from fife import fife
 
 from horizons.extscheduler import ExtScheduler
 from horizons.util.python.decorators import bind_all
-from horizons.util.shapes.circle import Circle
-from horizons.util.shapes.point import Point
-from horizons.util.shapes.rect import Rect
+from horizons.util.shapes import Circle, Point, Rect
 from horizons.command.unit import Act
 from horizons.component.namedcomponent import NamedComponent
 

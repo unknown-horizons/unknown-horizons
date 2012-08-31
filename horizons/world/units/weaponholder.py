@@ -25,8 +25,7 @@ import math
 
 from horizons.util.changelistener import metaChangeListenerDecorator
 from horizons.util.python.callback import Callback
-from horizons.util.shapes.annulus import Annulus
-from horizons.util.shapes.point import Point
+from horizons.util.shapes import Annulus, Point
 from horizons.util.worldobject import WorldObject
 from horizons.world.units.movingobject import MoveNotPossible
 from horizons.scheduler import Scheduler

@@ -21,7 +21,7 @@
 
 from horizons.util.python import Const
 from horizons.util.python.decorators import bind_all
-from horizons.util.shapes.point import Point, ConstPoint
+from horizons.util.shapes import Point, ConstPoint
 
 class Rect(object):
 	def __init__(self, *args):
@@ -105,8 +105,7 @@ class Rect(object):
 		return Rect.init_from_borders(self.left, self.top, self.right, self.bottom)
 
 	def distance(self, other):
-		from horizons.util.shapes.annulus import Annulus
-		from horizons.util.shapes.circle import Circle
+		from horizons.util.shapes import Annulus, Circle
 		# trap method: init data, then replace this method with real method
 		self._distance_functions_map = {
 		  Point: self.distance_to_point,

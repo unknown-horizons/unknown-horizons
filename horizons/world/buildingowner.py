@@ -22,8 +22,7 @@
 from horizons.world.building.production import ProductionBuilding
 from horizons.world.providerhandler import ProviderHandler
 from horizons.util.python import decorators
-from horizons.util.shapes.point import Point
-from horizons.util.shapes.radiusshape import RadiusRect
+from horizons.util.shapes import Point, RadiusRect
 
 """
 Simple building management functionality.

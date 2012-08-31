@@ -22,7 +22,7 @@
 import logging
 
 from horizons.util.python.callback import Callback
-from horizons.util.shapes.point import Point
+from horizons.util.shapes import Point
 from horizons.scheduler import Scheduler
 from horizons.constants import GAME_SPEED
 from horizons.util.changelistener import metaChangeListenerDecorator

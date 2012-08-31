@@ -26,8 +26,7 @@ import horizons.main
 from horizons.scheduler import Scheduler
 from horizons.util.python.callback import Callback
 from horizons.util.python.registry import Registry
-from horizons.util.shapes.point import Point
-from horizons.util.shapes.circle import Circle
+from horizons.util.shapes import Point, Circle
 from horizons.util.worldobject import WorldObject
 from horizons.command.unit import CreateUnit
 from horizons.scenario import CONDITIONS

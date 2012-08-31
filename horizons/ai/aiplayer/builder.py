@@ -26,7 +26,7 @@ from horizons.entities import Entities
 from horizons.constants import BUILDINGS
 from horizons.command.building import Build
 from horizons.util.python import decorators
-from horizons.util.shapes.point import Point
+from horizons.util.shapes import Point
 from horizons.util.worldobject import WorldObject
 from horizons.world.building.production import Mine
 

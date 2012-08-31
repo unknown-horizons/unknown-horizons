@@ -28,9 +28,7 @@ from horizons.util.buildingindexer import BuildingIndexer
 from horizons.util.dbreader import DbReader
 from horizons.util.pathfinding.pathnodes import IslandPathNodes
 from horizons.util.random_map import is_random_island_id_string, create_random_island
-from horizons.util.shapes.circle import Circle
-from horizons.util.shapes.point import Point
-from horizons.util.shapes.rect import Rect
+from horizons.util.shapes import Circle, Point, Rect
 from horizons.util.worldobject import WorldObject
 from horizons.messaging import SettlementRangeChanged, NewSettlement
 from settlement import Settlement

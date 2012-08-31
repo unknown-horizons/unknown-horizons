@@ -20,8 +20,7 @@
 # ###################################################
 
 from horizons.component import Component
-from horizons.util.shapes.annulus import Annulus
-from horizons.util.shapes.circle import Circle
+from horizons.util.shapes import Annulus, Circle
 from horizons.util.python.callback import Callback
 from horizons.scheduler import Scheduler
 

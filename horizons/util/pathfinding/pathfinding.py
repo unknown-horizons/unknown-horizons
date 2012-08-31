@@ -22,7 +22,7 @@
 import logging
 
 from horizons.util.python import decorators
-from horizons.util.shapes.point import Point
+from horizons.util.shapes import Point
 
 """
 This file contains only the pathfinding algorithm. It is implemented in a callable class

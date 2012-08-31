@@ -24,7 +24,7 @@ from fife import fife
 
 from horizons.scheduler import Scheduler
 
-from horizons.util.shapes.point import Point
+from horizons.util.shapes import Point
 from horizons.util.pathfinding import PathBlockedError
 from horizons.util.python import decorators
 from horizons.util.python.weakmethodlist import WeakMethodList

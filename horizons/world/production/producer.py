@@ -26,8 +26,7 @@ from horizons.world.production.production import Production, SingleUseProduction
 from horizons.constants import PRODUCTION
 from horizons.scheduler import Scheduler
 from horizons.util.python import decorators
-from horizons.util.shapes.circle import Circle
-from horizons.util.shapes.point import Point
+from horizons.util.shapes import Circle, Point
 from horizons.component.storagecomponent import StorageComponent
 from horizons.component.ambientsoundcomponent import AmbientSoundComponent
 from horizons.component import Component

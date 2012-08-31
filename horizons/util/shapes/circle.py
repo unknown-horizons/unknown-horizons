@@ -20,7 +20,7 @@
 # ###################################################
 
 from horizons.util.python.decorators import bind_all
-from horizons.util.shapes.point import ConstPoint, Point
+from horizons.util.shapes import ConstPoint, Point
 
 class Circle(object):
 	"""Class for the shape of a circle
@@ -61,8 +61,7 @@ class Circle(object):
 		return not self.__eq__(other)
 
 	def distance(self, other):
-		from horizons.util.shapes.annulus import Annulus
-		from horizons.util.shapes.rect import Rect, ConstRect
+		from horizons.util.shapes import Annulus, Rect, ConstRect
 		# trap method: init data, then replace this method with real method
 		self._distance_functions_map = {
 			Point: self.distance_to_point,

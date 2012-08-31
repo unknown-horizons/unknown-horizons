@@ -29,7 +29,7 @@ from horizons.constants import UNITS, BUILDINGS, RES, WILD_ANIMAL
 from horizons.command.building import Build
 from horizons.entities import Entities
 from horizons.util.dbreader import DbReader
-from horizons.util.shapes.point import Point
+from horizons.util.shapes import Point
 from horizons.util.uhdbaccessor import read_savegame_template
 from horizons.component.selectablecomponent import SelectableComponent
 from horizons.component.storagecomponent import StorageComponent

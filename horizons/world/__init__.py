@@ -34,9 +34,7 @@ from horizons.world.player import HumanPlayer
 from horizons.util.buildingindexer import BuildingIndexer
 from horizons.util.color import Color
 from horizons.util.python import decorators
-from horizons.util.shapes.circle import Circle
-from horizons.util.shapes.point import Point
-from horizons.util.shapes.rect import Rect
+from horizons.util.shapes import Circle, Point, Rect
 from horizons.util.worldobject import WorldObject
 from horizons.constants import UNITS, BUILDINGS, RES, GROUND, GAME
 from horizons.ai.trader import Trader

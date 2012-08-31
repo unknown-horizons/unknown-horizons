@@ -24,7 +24,7 @@ import logging
 from horizons.scheduler import Scheduler
 
 from horizons.util.pathfinding.pather import SoldierPather
-from horizons.util.shapes.point import Point
+from horizons.util.shapes import Point
 from horizons.util.worldobject import WorldObject
 from horizons.command.unit import CreateUnit
 from horizons.world.units.collectors import Collector, BuildingCollector, JobList, Job

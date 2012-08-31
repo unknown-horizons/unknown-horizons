@@ -23,7 +23,7 @@ import weakref
 import logging
 
 from horizons.util.python import decorators
-from horizons.util.shapes.point import Point
+from horizons.util.shapes import Point
 
 from horizons.util.pathfinding import PathBlockedError
 from horizons.util.pathfinding.pathfinding import FindPath

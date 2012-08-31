@@ -18,6 +18,7 @@
 # Free Software Foundation, Inc.,
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
+
 from fife.fife import Rect
 from tests.unittests import TestCase
 
@@ -25,7 +26,7 @@ from horizons.constants import RES, BUILDINGS
 from horizons.world.building.production import ProductionBuilding
 from horizons.world.island import Island
 from horizons.world.units.collectors.collector import Job, JobList
-from horizons.util.shapes.point import Point
+from horizons.util.shapes import Point
 
 
 class TestJobList(TestCase):

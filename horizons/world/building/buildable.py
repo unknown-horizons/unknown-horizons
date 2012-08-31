@@ -23,9 +23,7 @@ import itertools
 
 from horizons.util.pathfinding.roadpathfinder import RoadPathFinder
 from horizons.util.python import decorators
-from horizons.util.shapes.circle import Circle
-from horizons.util.shapes.point import Point
-from horizons.util.shapes.rect import Rect
+from horizons.util.shapes import Circle, Point, Rect
 from horizons.util.worldobject import WorldObject
 from horizons.constants import BUILDINGS
 from horizons.entities import Entities

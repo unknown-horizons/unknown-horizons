@@ -18,18 +18,18 @@
 # Free Software Foundation, Inc.,
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
+
 import logging
 from collections import defaultdict
 from weakref import WeakKeyDictionary
+
 from horizons.component.namedcomponent import NamedComponent
 from horizons.ext.enum import Enum
 from horizons.scheduler import Scheduler
 from horizons.util.python.callback import Callback
-from horizons.util.shapes.circle import Circle
-from horizons.util.shapes.point import Point
+from horizons.util.shapes import Circle, Point
 from horizons.util.worldobject import WorldObject
 from horizons.world.units.movingobject import MoveNotPossible
-
 
 class Fleet(WorldObject):
 	"""

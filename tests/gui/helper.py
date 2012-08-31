@@ -33,7 +33,7 @@ import horizons.main
 from horizons.constants import GAME_SPEED
 from horizons.gui.mousetools import NavigationTool
 from horizons.scheduler import Scheduler
-from horizons.util.shapes.point import Point
+from horizons.util.shapes import Point
 
 def get_player_ship(session):
 	for ship in session.world.ships:

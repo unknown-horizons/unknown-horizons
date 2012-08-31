@@ -27,7 +27,7 @@ from horizons.ai.aiplayer.combat.unitmanager import UnitManager
 from horizons.ai.aiplayer.strategy.strategymanager import PirateStrategyManager
 from horizons.scheduler import Scheduler
 from horizons.util.python.callback import Callback
-from horizons.util.shapes.point import Point
+from horizons.util.shapes import Point
 from horizons.util.worldobject import WorldObject
 from horizons.constants import UNITS
 from horizons.ext.enum import Enum

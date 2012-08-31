@@ -19,3 +19,8 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
+from horizons.util.shapes.annulus import Annulus
+from horizons.util.shapes.circle import Circle
+from horizons.util.shapes.point import ConstPoint, Point
+from horizons.util.shapes.radiusshape import RadiusRect, RadiusShape
+from horizons.util.shapes.rect import ConstRect, Rect

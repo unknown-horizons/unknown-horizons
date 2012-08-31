@@ -20,13 +20,9 @@
 # ###################################################
 
 from horizons.ai.aiplayer.strategy.mission import FleetMission
-from horizons.command.diplomacy import AddEnemyPair
-from horizons.component.namedcomponent import NamedComponent
 from horizons.ext.enum import Enum
 from horizons.util.python.callback import Callback
-from horizons.util.shapes.circle import Circle
-from horizons.util.shapes.point import Point
-from horizons.util.worldobject import WorldObject
+from horizons.util.shapes import Point
 
 from horizons.world.units.movingobject import MoveNotPossible
 from horizons.util.python import decorators

@@ -27,7 +27,7 @@ from horizons.world.units.movingobject import MovingObject
 from horizons.util.python import decorators
 from horizons.util.python.callback import Callback
 from horizons.util.python.weakmethod import WeakMethod
-from horizons.util.shapes.point import Point
+from horizons.util.shapes import Point
 from horizons.util.worldobject import WorldObject
 from horizons.constants import LAYERS
 from horizons.component.healthcomponent import HealthComponent
