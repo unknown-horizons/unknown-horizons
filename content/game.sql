@@ -187,13 +187,6 @@ INSERT INTO "related_buildings" VALUES(20, 61, 1);
 INSERT INTO "related_buildings" VALUES(20, 62, 1);
 INSERT INTO "related_buildings" VALUES(45,  3, 0);
 
-CREATE TABLE "mine" (
-	"mine" INT NOT NULL,
-	"deposit" INT NOT NULL
-);
-INSERT INTO "mine" VALUES(25, 23);
-INSERT INTO "mine" VALUES(28, 34);
-
 CREATE TABLE "tile_set" (
 	"ground_id" INT NOT NULL,
 	"set_id" TEXT NOT NULL

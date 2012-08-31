@@ -37,7 +37,7 @@ class AbstractFakeResourceDeposit(AbstractBuilding):
 
 
 	def __init_production_lines(self):
-		production_lines = self._get_producer_building().get_component_template(Producer.NAME)['productionlines']
+		production_lines = self._get_producer_building().get_component_template(Producer)['productionlines']
 		for key, value in production_lines.iteritems():
 			production_line = ProductionLine(key, value)
 			production_line.id = None

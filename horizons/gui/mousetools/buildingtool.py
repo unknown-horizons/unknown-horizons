@@ -131,7 +131,7 @@ class BuildingTool(NavigationTool):
 	def __init_selectable_component(self):
 		self.selectable_comp = SelectableBuildingComponent
 		try:
-			template = self._class.get_component_template(SelectableComponent.NAME)
+			template = self._class.get_component_template(SelectableComponent)
 			self.selectable_comp = SelectableComponent.get_instance(template)
 		except KeyError:
 			pass
@@ -657,7 +657,7 @@ class BuildingTool(NavigationTool):
 		"""Deletes fife instances of buildings"""
 
 		try:
-			self._class.get_component_template(SelectableComponent.NAME)
+			self._class.get_component_template(SelectableComponent)
 		except KeyError:
 			pass
 		else:
