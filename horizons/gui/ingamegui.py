@@ -24,7 +24,8 @@ import horizons.main
 from fife import fife
 
 from horizons.entities import Entities
-from horizons.util import livingProperty, LivingObject, PychanChildFinder
+from horizons.util.living import livingProperty, LivingObject
+from horizons.util.pychanchildfinder import PychanChildFinder
 from horizons.util.python import Callback
 from horizons.gui.mousetools import BuildingTool
 from horizons.gui.tabs import TabWidget, BuildTab, DiplomacyTab, SelectMultiTab
