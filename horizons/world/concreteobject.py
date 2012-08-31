@@ -20,7 +20,9 @@
 # ###################################################
 
 from horizons.scheduler import Scheduler
-from horizons.util import WorldObject, Callback, ActionSetLoader
+from horizons.util.loaders.actionsetloader import ActionSetLoader
+from horizons.util.python.callback import Callback
+from horizons.util.worldobject import WorldObject
 from horizons.world.units import UnitClass
 import random
 

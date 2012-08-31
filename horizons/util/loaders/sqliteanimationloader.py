@@ -23,7 +23,8 @@ from fife import fife
 
 import horizons.main
 
-from horizons.util import ActionSetLoader, TileSetLoader
+from horizons.util.loaders.actionsetloader import ActionSetLoader
+from horizons.util.loaders.tilesetloader import TileSetLoader
 
 class SQLiteAnimationLoader(object):
 	"""Loads animations from a SQLite database.

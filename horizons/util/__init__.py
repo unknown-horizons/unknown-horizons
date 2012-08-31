@@ -24,11 +24,6 @@ __all__ = []
 from buildingindexer import BuildingIndexer
 from changelistener import ChangeListener
 from worldobject import WorldObject
-from loaders.actionsetloader import ActionSetLoader
-from loaders.tilesetloader import TileSetLoader
-from savegameaccessor import SavegameAccessor
-from sqliteanimationloader import SQLiteAnimationLoader
-from sqliteatlasloader import SQLiteAtlasLoader
 
 from shapes.point import Point, ConstPoint
 from shapes.rect import Rect, ConstRect

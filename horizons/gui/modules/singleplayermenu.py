@@ -28,9 +28,6 @@ import locale
 
 import horizons.main
 
-from horizons.util.python import Callback
-from horizons.util.random_map import generate_random_map, generate_random_seed
-from horizons.util.yamlcache import yamlcache
 from horizons.extscheduler import ExtScheduler
 from horizons.savegamemanager import SavegameManager
 from horizons.gui.modules import AIDataSelection, PlayerDataSelection
@@ -38,7 +35,12 @@ from horizons.constants import AI, LANGUAGENAMES
 from horizons.gui.widgets import OkButton
 from horizons.gui.widgets.minimap import Minimap
 from horizons.world import World
-from horizons.util import SavegameAccessor, WorldObject, Rect
+from horizons.util.python import Callback
+from horizons.util.random_map import generate_random_map, generate_random_seed
+from horizons.util.savegameaccessor import SavegameAccessor
+from horizons.util.shapes.rect import Rect
+from horizons.util.worldobject import WorldObject
+from horizons.util.yamlcache import YamlCache
 from horizons.i18n import find_available_languages
 from horizons.scenario import ScenarioEventHandler, InvalidScenarioFileFormat
 
@@ -408,7 +410,7 @@ class SingleplayerMenu(object):
 		This function also sets scenario map name using locale.
 		(e.g. tutorial -> tutorial_en.yaml)"""
 		translation_status_label = self.current.findChild(name="translation_status")
-		yamldata = yamlcache.YamlCache.get_file(new_map_name, game_data=True)
+		yamldata = YamlCache.get_file(new_map_name, game_data=True)
 		translation_status = yamldata.get('translation_status')
 		if translation_status:
 			translation_status_label.text = translation_status
@@ -421,7 +423,7 @@ class SingleplayerMenu(object):
 		"""Finds the given map's filename with its locale."""
 		mapfile = mapfile or self._get_selected_map()
 		if mapfile.endswith('.yaml'):
-			yamldata = yamlcache.YamlCache.get_file(mapfile, game_data=True)
+			yamldata = YamlCache.get_file(mapfile, game_data=True)
 			split_locale = yamldata['locale']
 			mapfile = mapfile.split('_' + split_locale)[0]
 		return mapfile + '_' + cur_locale + '.' + SavegameManager.scenario_extension

@@ -27,7 +27,10 @@ import weakref
 import horizons.main
 
 from horizons.entities import Entities
-from horizons.util import ActionSetLoader, Point, decorators, WorldObject
+from horizons.util.loaders.actionsetloader import ActionSetLoader
+from horizons.util.python import decorators
+from horizons.util.shapes.point import Point
+from horizons.util.worldobject import WorldObject
 from horizons.command.building import Build
 from horizons.component.selectablecomponent import SelectableBuildingComponent, SelectableComponent
 from horizons.gui.mousetools.navigationtool import NavigationTool

@@ -26,7 +26,8 @@ import logging
 from fife import fife
 
 import horizons.main
-from horizons.util import ActionSetLoader, Callback
+from horizons.util.loaders.actionsetloader import ActionSetLoader
+from horizons.util.python.callback import Callback
 from horizons.world.ingametype import IngameType
 
 class UnitClass(IngameType):

@@ -27,7 +27,7 @@ import logging
 import horizons.main
 from fife import fife
 
-from horizons.util import ActionSetLoader
+from horizons.util.loaders.actionsetloader import ActionSetLoader
 from horizons.i18n.objecttranslations import object_translations
 from horizons.world.ingametype import IngameType
 
