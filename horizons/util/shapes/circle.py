@@ -19,11 +19,10 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-
-from point import Point
-
 from horizons.util.python.decorators import bind_all
-from horizons.util.shapes.point import ConstPoint
+from horizons.util.shapes.annulus import Annulus
+from horizons.util.shapes.point import ConstPoint, Point
+from horizons.util.shapes.rect import Rect, ConstRect
 
 class Circle(object):
 	"""Class for the shape of a circle
@@ -81,8 +80,6 @@ class Circle(object):
 
 	def distance(self, other):
 		# trap method: init data, then replace this method with real method
-		from rect import Rect, ConstRect
-		from annulus import Annulus
 		self._distance_functions_map = {
 			Point: self.distance_to_point,
 			ConstPoint: self.distance_to_point,

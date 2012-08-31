@@ -19,11 +19,8 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-
-from point import Point
-
 from horizons.util.python.decorators import bind_all
-from horizons.util.shapes.point import ConstPoint
+from horizons.util.shapes.point import ConstPoint, Point
 
 class Annulus(object):
 	"""Class for the shape of an annulus
