@@ -22,7 +22,8 @@
 from fife import fife
 
 from horizons.util.python.decorators import bind_all
-from horizons.util.python import Const, Shape
+from horizons.util.python import Const
+from horizons.util.shapes import Shape
 
 class Point(Shape):
 	def __init__(self, x, y):
