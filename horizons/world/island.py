@@ -24,7 +24,8 @@ import logging
 from horizons.entities import Entities
 from horizons.scheduler import Scheduler
 
-from horizons.util import WorldObject, Point, Rect, Circle, DbReader, random_map, BuildingIndexer
+from horizons.util import WorldObject, Point, Rect, Circle, random_map, BuildingIndexer
+from horizons.util.dbreader import DbReader
 from horizons.messaging import SettlementRangeChanged, NewSettlement
 from settlement import Settlement
 from horizons.util.pathfinding.pathnodes import IslandPathNodes

@@ -433,8 +433,10 @@ def _start_map(map_name, ai_players=0, human_ai=False, is_scenario=False, campai
 	return True
 
 def _start_random_map(ai_players, human_ai, seed=None, force_player_id=None):
-	from horizons.util import random_map
-	start_singleplayer(random_map.generate_map_from_seed(seed), ai_players=ai_players, human_ai=human_ai, force_player_id=force_player_id)
+	from horizons.util.random_map import generate_map_from_seed
+	start_singleplayer(generate_map_from_seed(seed),
+	                   ai_players=ai_players, human_ai=human_ai,
+	                   force_player_id=force_player_id)
 	return True
 
 def _start_campaign(campaign_name, force_player_id=None):

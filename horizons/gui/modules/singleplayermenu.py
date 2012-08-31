@@ -28,7 +28,9 @@ import locale
 
 import horizons.main
 
-from horizons.util import Callback, random_map, yamlcache
+from horizons.util.python import Callback
+from horizons.util.random_map import generate_random_map, generate_random_seed
+from horizons.util.yamlcache import yamlcache
 from horizons.extscheduler import ExtScheduler
 from horizons.savegamemanager import SavegameManager
 from horizons.gui.modules import AIDataSelection, PlayerDataSelection
@@ -219,7 +221,7 @@ class SingleplayerMenu(object):
 	def _setup_random_map_selection(self, widget):
 		seed_string_field = widget.findChild(name='seed_string_field')
 		seed_string_field.capture(self._on_random_map_parameter_changed)
-		seed_string_field.text = random_map.generate_random_seed(seed_string_field.text)
+		seed_string_field.text = generate_random_seed(seed_string_field.text)
 
 		map_size_slider = widget.findChild(name='map_size_slider')
 		def on_map_size_slider_change():
@@ -438,7 +440,7 @@ class SingleplayerMenu(object):
 		"""Called to update the map preview"""
 		def on_click(event, drag):
 			seed_string_field = self.current.findChild(name='seed_string_field')
-			seed_string_field.text = random_map.generate_random_seed(seed_string_field.text)
+			seed_string_field.text = generate_random_seed(seed_string_field.text)
 			self._on_random_map_parameter_changed()
 		# the user might have changed the menu since the update and we would
 		# crash if we don't find the fields with the parameters
@@ -451,7 +453,7 @@ class SingleplayerMenu(object):
 
 	@classmethod
 	def _generate_random_map(cls, parameters):
-		return random_map.generate_map( *parameters )
+		return generate_random_map( *parameters )
 
 
 class MapPreview(object):

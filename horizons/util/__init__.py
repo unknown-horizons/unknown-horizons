@@ -27,12 +27,10 @@ from worldobject import WorldObject
 from loaders.actionsetloader import ActionSetLoader
 from loaders.tilesetloader import TileSetLoader
 from pychanchildfinder import PychanChildFinder
-from dbreader import DbReader
 from savegameaccessor import SavegameAccessor
 from sqliteanimationloader import SQLiteAnimationLoader
 from sqliteatlasloader import SQLiteAtlasLoader
 from difficultysettings import DifficultySettings
-from yamlcache import YamlCache
 
 from shapes.point import Point, ConstPoint
 from shapes.rect import Rect, ConstRect
