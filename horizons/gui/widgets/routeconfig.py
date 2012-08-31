@@ -25,7 +25,8 @@ import functools
 from fife import fife
 
 from horizons.gui.util import load_uh_widget
-from horizons.util import Callback, Point
+from horizons.util.python.callback import Callback
+from horizons.util.shapes.point import Point
 from fife.extensions.pychan import widgets
 from horizons.component.storagecomponent import StorageComponent
 from horizons.gui.widgets.minimap import Minimap

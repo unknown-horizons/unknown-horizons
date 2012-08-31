@@ -22,7 +22,8 @@
 import weakref
 
 from horizons.util.python import ManualConstructionSingleton
-from horizons.util import Point, WorldObject
+from horizons.util.shapes.point import Point
+from horizons.util.worldobject import WorldObject
 from horizons.messaging import NewPlayerSettlementHovered, HoverSettlementChanged, NewSettlement
 
 def resolve_weakref(ref):

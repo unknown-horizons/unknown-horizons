@@ -26,7 +26,7 @@ import horizons.main
 from horizons.entities import Entities
 from horizons.command import Command
 from horizons.command.uioptions import TransferResource
-from horizons.util import Point
+from horizons.util.shapes.point import Point
 from horizons.util.worldobject import WorldObject, WorldObjectNotFound
 from horizons.scenario import CONDITIONS
 from horizons.constants import BUILDINGS, RES

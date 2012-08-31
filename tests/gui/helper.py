@@ -25,16 +25,15 @@ Cleaner interface to various game/gui functions to make tests easier.
 
 import contextlib
 from collections import deque
-
 import mock
 
-import horizons.main
 from fife import fife
+
+import horizons.main
 from horizons.constants import GAME_SPEED
 from horizons.gui.mousetools import NavigationTool
 from horizons.scheduler import Scheduler
-from horizons.util import Point
-
+from horizons.util.shapes.point import Point
 
 def get_player_ship(session):
 	for ship in session.world.ships:

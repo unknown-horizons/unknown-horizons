@@ -27,10 +27,10 @@ from collections import deque
 
 from horizons.constants import UNITS, BUILDINGS, RES, WILD_ANIMAL
 from horizons.command.building import Build
-from horizons.util.uhdbaccessor import read_savegame_template
 from horizons.entities import Entities
 from horizons.util.dbreader import DbReader
-from horizons.util import Point
+from horizons.util.shapes.point import Point
+from horizons.util.uhdbaccessor import read_savegame_template
 from horizons.component.selectablecomponent import SelectableComponent
 from horizons.component.storagecomponent import StorageComponent
 from horizons.command.unit import CreateUnit

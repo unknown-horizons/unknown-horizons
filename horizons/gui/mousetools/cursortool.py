@@ -24,7 +24,7 @@ import logging
 from fife import fife
 import horizons.main
 
-from horizons.util import Point
+from horizons.util.shapes.point import Point
 
 
 # round half towards plus infinity

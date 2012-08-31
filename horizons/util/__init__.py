@@ -21,11 +21,6 @@
 
 __all__ = []
 
-from changelistener import ChangeListener
 from worldobject import WorldObject
 
-from shapes.point import Point, ConstPoint
-from shapes.rect import Rect, ConstRect
-
 from python import Callback
-from python import decorators

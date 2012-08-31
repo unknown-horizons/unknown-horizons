@@ -27,7 +27,8 @@ from horizons.command.building import Build
 from horizons.command.production import ToggleActive
 from horizons.command.unit import CreateUnit
 from horizons.constants import BUILDINGS, PRODUCTION, UNITS, RES, GAME
-from horizons.util import WorldObject, Point
+from horizons.util.shapes.point import Point
+from horizons.util.worldobject import WorldObject
 from horizons.world.production.producer import Producer
 from horizons.component.collectingcomponent import CollectingComponent
 from horizons.component.storagecomponent import StorageComponent
