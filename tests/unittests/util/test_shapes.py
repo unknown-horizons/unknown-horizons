@@ -25,7 +25,9 @@
 
 import unittest
 
-from horizons.util import Point, Rect, Circle
+from horizons.util.shapes.circle import Circle
+from horizons.util.shapes.point import Point
+from horizons.util.shapes.rect import Rect
 
 class TestPathfinding(unittest.TestCase):
 

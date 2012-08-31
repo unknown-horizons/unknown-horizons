@@ -24,9 +24,11 @@ import json
 import horizons.main
 from fife import fife
 
-from horizons.util import Point, Rect, Circle
 from horizons.extscheduler import ExtScheduler
 from horizons.util.python.decorators import bind_all
+from horizons.util.shapes.circle import Circle
+from horizons.util.shapes.point import Point
+from horizons.util.shapes.rect import Rect
 from horizons.command.unit import Act
 from horizons.component.namedcomponent import NamedComponent
 

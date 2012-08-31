@@ -22,8 +22,11 @@
 from horizons.ai.aiplayer.mission import ShipMission
 from horizons.ai.aiplayer.builder import Builder
 from horizons.constants import BUILDINGS
-from horizons.util import Point, Circle, Callback, WorldObject
 from horizons.util.python import decorators
+from horizons.util.python.callback import Callback
+from horizons.util.shapes.circle import Circle
+from horizons.util.shapes.point import Point
+from horizons.util.worldobject import WorldObject
 from horizons.ext.enum import Enum
 
 class FoundSettlement(ShipMission):

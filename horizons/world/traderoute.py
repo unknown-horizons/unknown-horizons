@@ -22,7 +22,9 @@
 import copy
 
 from horizons.world.units.movingobject import MoveNotPossible
-from horizons.util import Circle, WorldObject, ChangeListener
+from horizons.util.changelistener import ChangeListener
+from horizons.util.shapes.circle import Circle
+from horizons.util.worldobject import WorldObject
 from horizons.constants import GAME_SPEED
 from horizons.scheduler import Scheduler
 from horizons.component.storagecomponent import StorageComponent

@@ -22,7 +22,8 @@
 import logging
 
 from horizons.component import Component
-from horizons.util import Point, Circle
+from horizons.util.shapes.circle import Circle
+from horizons.util.shapes.point import Point
 
 class CommandableComponent(Component):
 	"""

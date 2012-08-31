@@ -24,11 +24,16 @@ import logging
 from horizons.entities import Entities
 from horizons.scheduler import Scheduler
 
-from horizons.util import WorldObject, Point, Rect, Circle, random_map, BuildingIndexer
+from horizons.util.buildingindexer import BuildingIndexer
 from horizons.util.dbreader import DbReader
+from horizons.util.pathfinding.pathnodes import IslandPathNodes
+from horizons.util.random_map import is_random_island_id_string, create_random_island
+from horizons.util.shapes.circle import Circle
+from horizons.util.shapes.point import Point
+from horizons.util.shapes.rect import Rect
+from horizons.util.worldobject import WorldObject
 from horizons.messaging import SettlementRangeChanged, NewSettlement
 from settlement import Settlement
-from horizons.util.pathfinding.pathnodes import IslandPathNodes
 from horizons.constants import BUILDINGS, RES, UNITS
 from horizons.scenario import CONDITIONS
 from horizons.world.buildingowner import BuildingOwner
@@ -102,9 +107,9 @@ class Island(BuildingOwner, WorldObject):
 
 	def _get_island_db(self):
 		# check if filename is a random map
-		if random_map.is_random_island_id_string(self.file):
+		if is_random_island_id_string(self.file):
 			# it's a random map id, create this map and load it
-			return random_map.create_random_island(self.file)
+			return create_random_island(self.file)
 		return DbReader(self.file) # Create a new DbReader instance to load the maps file.
 
 	def __init(self, origin, filename, preview=False):

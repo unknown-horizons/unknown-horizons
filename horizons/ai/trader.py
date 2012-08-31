@@ -22,7 +22,9 @@
 import logging
 
 from horizons.scheduler import Scheduler
-from horizons.util import Callback, WorldObject, Circle
+from horizons.util.python.callback import Callback
+from horizons.util.shapes.circle import Circle
+from horizons.util.worldobject import WorldObject
 from horizons.constants import UNITS, BUILDINGS, TRADER
 from horizons.ai.generic import GenericAI
 from horizons.ext.enum import Enum

@@ -27,7 +27,9 @@ import re
 import string
 import copy
 
-from horizons.util import Circle, Rect, Point
+from horizons.util.shapes.circle import Circle
+from horizons.util.shapes.point import Point
+from horizons.util.shapes.rect import Rect
 from horizons.util.dbreader import DbReader
 from horizons.util.uhdbaccessor import read_savegame_template
 from horizons.constants import GROUND
