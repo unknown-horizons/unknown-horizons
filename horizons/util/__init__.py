@@ -26,8 +26,6 @@ from worldobject import WorldObject
 
 from shapes.point import Point, ConstPoint
 from shapes.rect import Rect, ConstRect
-from shapes.radiusshape import RadiusRect
-from shapes.annulus import Annulus
 
 from python import Callback
 from python import decorators

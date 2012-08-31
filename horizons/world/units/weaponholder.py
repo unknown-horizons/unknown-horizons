@@ -23,18 +23,20 @@ import weakref
 import logging
 import math
 
-from horizons.util import Annulus, Point, Callback
+from horizons.util.changelistener import metaChangeListenerDecorator
+from horizons.util.python.callback import Callback
+from horizons.util.shapes.annulus import Annulus
+from horizons.util.shapes.point import Point
+from horizons.util.worldobject import WorldObject
 from horizons.world.units.movingobject import MoveNotPossible
 from horizons.scheduler import Scheduler
-from horizons.util.changelistener import metaChangeListenerDecorator
-from weapon import Weapon, StackableWeapon, SetStackableWeaponNumberError
 from horizons.constants import GAME_SPEED
 from horizons.component.stancecomponent import HoldGroundStance, AggressiveStance, \
 	NoneStance, FleeStance
 from horizons.world.storage import PositiveTotalNumSlotsStorage
 from horizons.world.units.ship import Ship
+from horizons.world.units.weapon import Weapon, StackableWeapon, SetStackableWeaponNumberError
 from horizons.component.storagecomponent import StorageComponent
-from horizons.util.worldobject import WorldObject
 
 @metaChangeListenerDecorator("storage_modified")
 @metaChangeListenerDecorator("user_attack_issued")
