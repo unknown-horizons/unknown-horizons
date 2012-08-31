@@ -40,13 +40,13 @@ class Circle(Shape):
 
 	def contains(self, point):
 		assert isinstance(point, Point)
-		return point.distance_to_point(self.center) <= self.radius
+		return point.distance(self.center) <= self.radius
 
 	def center(self):
 		return self.center
 
 	def intersects_rect(self, rect):
-		return rect.distance_to_point(self.center) > self.radius
+		return rect.distance(self.center) > self.radius
 
 	def __str__(self):
 		return "Circle(center=%s,radius=%s)" % (self.center, self.radius)
