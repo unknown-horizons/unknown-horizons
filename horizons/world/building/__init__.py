@@ -30,6 +30,7 @@ from fife import fife
 from horizons.util import ActionSetLoader
 from horizons.i18n.objecttranslations import object_translations
 from horizons.world.ingametype import IngameType
+from horizons.world.production.producer import Producer
 
 class BuildingClass(IngameType):
 	log = logging.getLogger('world.building')
@@ -68,10 +69,12 @@ class BuildingClass(IngameType):
 		self.translucent = yaml_data.get('translucent', False)
 		# for mines: on which deposit is it buildable
 		self.buildable_on_deposit_type = None
-		for component in yaml_data.get('components'):
-			if 'ProducerComponent' in component:
-				self.buildable_on_deposit_type = component['ProducerComponent'].get('is_mine_for')
-
+		try:
+			component_template = self.get_component_template(Producer)
+			self.buildable_on_deposit_type = component_template.get('is_mine_for')
+		except KeyError:
+			pass
+			
 	def __str__(self):
 		return "Building[{id}]({name})".format(id=self.id, name=self.name)
 
