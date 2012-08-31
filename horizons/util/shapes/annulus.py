@@ -38,18 +38,12 @@ class Annulus(object):
 
 	def get_coordinates(self):
 		"""Returns all coordinates, that are in the annulus"""
-		coords = []
-		for i in self.tuple_iter():
-			coords.append(i)
-		return coords
+		return [coord for coord in self.tuple_iter()]
 
 	def contains(self, point):
 		assert isinstance(point, Point)
-		if point.distance_to_point(self.center) <= self.max_radius and\
-		   point.distance_to_point(self.center) >= self.min_radius:
-			return True
-		else:
-			return False
+		return point.distance_to_point(self.center) <= self.max_radius and \
+		       point.distance_to_point(self.center) >= self.min_radius
 
 	def center(self):
 		return self.center
@@ -59,12 +53,9 @@ class Annulus(object):
 
 	def __eq__(self, other):
 		try:
-			if self.center == other.center and \
-				 self.min_radius == other.min_radius and \
-				 self.max_radius == other.max_radius:
-				return True
-			else:
-				return False
+			return self.center == other.center and \
+			       self.min_radius == other.min_radius and \
+			       self.max_radius == other.max_radius
 		except AttributeError:
 			return False
 
@@ -72,9 +63,9 @@ class Annulus(object):
 		return not self.__eq__(other)
 
 	def distance(self, other):
+		from horizons.util.shapes.circle import Circle
+		from horizons.util.shapes.rect import Rect, ConstRect
 		# trap method: init data, then replace this method with real method
-		from rect import Rect, ConstRect
-		from circle import Circle
 		self._distance_functions_map = {
 			Point: self.distance_to_point,
 			ConstPoint: self.distance_to_point,
@@ -131,4 +122,3 @@ class Annulus(object):
 					yield (x, y)
 
 bind_all(Annulus)
-

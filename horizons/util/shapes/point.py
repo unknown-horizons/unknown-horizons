@@ -63,7 +63,7 @@ class Point(object):
 
 	def distance_to_rect(self, other):
 		return ((max(other.left - self.x, 0, self.x - other.right) ** 2) +
-						(max(other.top - self.y, 0, self.y - other.bottom) ** 2)) ** 0.5
+		        (max(other.top - self.y, 0, self.y - other.bottom) ** 2)) ** 0.5
 
 	def distance_to_circle(self, other):
 		dist = self.distance(other.center) - other.radius
@@ -106,7 +106,7 @@ class Point(object):
 
 	def contains(self, point):
 		"""For compatibility with Rect"""
-		return (self.x == point.x and self.y == point.y)
+		return self.x == point.x and self.y == point.y
 
 	def __str__(self):
 		""" nice representation for debugging purposes """
@@ -116,10 +116,10 @@ class Point(object):
 		if other is None:
 			return False
 		elif isinstance(other, Point):
-			return (self.x == other.x and self.y == other.y)
+			return self.x == other.x and self.y == other.y
 		else: # other is tuple
 			try:
-				return (self.x == other[0] and self.y == other[1])
+				return self.x == other[0] and self.y == other[1]
 			except TypeError:
 				return False
 
@@ -151,4 +151,3 @@ class ConstPoint(Const, Point):
 
 bind_all(Point)
 bind_all(ConstPoint)
-

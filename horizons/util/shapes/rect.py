@@ -19,11 +19,9 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-from point import Point, ConstPoint
-from circle import Circle
-
-from horizons.util.python.decorators import bind_all
 from horizons.util.python import Const
+from horizons.util.python.decorators import bind_all
+from horizons.util.shapes.point import Point, ConstPoint
 
 class Rect(object):
 	def __init__(self, *args):
@@ -107,9 +105,9 @@ class Rect(object):
 		return Rect.init_from_borders(self.left, self.top, self.right, self.bottom)
 
 	def distance(self, other):
-		"""Calculates distance to another object"""
+		from horizons.util.shapes.annulus import Annulus
+		from horizons.util.shapes.circle import Circle
 		# trap method: init data, then replace this method with real method
-		from annulus import Annulus
 		self._distance_functions_map = {
 		  Point: self.distance_to_point,
 		  ConstPoint: self.distance_to_point,
@@ -139,13 +137,15 @@ class Rect(object):
 		Don't use this, unless you are sure that distance() is too slow."""
 		other_x = other[0]
 		other_y = other[1]
-		return ((max(self.left - other_x, 0, other_x - self.right) ** 2) + (max(self.top - other_y, 0, other_y - self.bottom) ** 2)) ** 0.5
+		return ((max(self.left - other_x, 0, other_x - self.right) ** 2) +
+		        (max(self.top - other_y, 0, other_y - self.bottom) ** 2)) ** 0.5
 
 	def distance_to_rect(self, other):
 		"""Calculates distance to an instance of Rect.
 		Don't use this, unless you are sure that distance() is too slow."""
 		# NOTE: this is duplicated in buildingowner.get_providers_in_range
-		return ((max(self.left - other.right, 0, other.left - self.right) ** 2) + (max(self.top - other.bottom, 0, other.top - self.bottom) ** 2)) ** 0.5
+		return ((max(self.left - other.right, 0, other.left - self.right) ** 2) +
+		        (max(self.top - other.bottom, 0, other.top - self.bottom) ** 2)) ** 0.5
 
 	def distance_to_circle(self, other):
 		dist = self.distance_to_point(other.center) - other.radius
@@ -166,26 +166,6 @@ class Rect(object):
 		# NOTE: this function has to be very fast, since it's blocking on building select
 		#       therefore, the distance_to_tuple function is inlined manually.
 		"""
-		OLD HORRIBLY SLOW, BUT CORRECT ALGO:
-
-		left, right, top, bottom = self.left, self.right, self.top, self.bottom
-		if not include_self:
-			self_coords = self.get_coordinates()
-			return  [ (x, y)
-			          for x in xrange(left-radius, right+radius+1)
-			          for y in xrange(top-radius, bottom+radius+1) if
-			          (x, y) not in self_coords and
-			          (((max(left - x, 0, x - right) ** 2) + (max(top - y, 0, y - bottom) ** 2)) ** 0.5 ) <= radius ]
-
-
-		else:
-			return  [ (x, y)
-			          for x in xrange(left-radius, right+radius+1)
-			          for y in xrange(top-radius, bottom+radius+1) if
-			          (((max(left - x, 0, x - right) ** 2) + (max(top - y, 0, y - bottom) ** 2)) ** 0.5 ) <= radius ]
-		"""
-
-		"""
 		ALGORITHM:
 		Idea:
 		calculate the borders of the shape for every line (y-axis) to the left and the right
@@ -197,8 +177,6 @@ class Rect(object):
 		Here, since we only got along one axis, we know that the border coords are right + radius, etc.
 		q.e.d. ;)
 		"""
-
-
 		borders = {}
 
 		# start with special case
@@ -271,14 +249,16 @@ class Rect(object):
 		"""
 		if not self.intersects(rect):
 			return None
-		return Rect(max(self.left, rect.left), max(self.top, rect.top), min(self.right, rect.right), min(self.bottom, rect.bottom))
+		return Rect(max(self.left, rect.left), max(self.top, rect.top),
+		            min(self.right, rect.right), min(self.bottom, rect.bottom))
 
 	def intersects(self, rect):
 		""" Returns if the rectangle intersects with the rect parameter.
 		@param rect: Rect that will be intersected with this rect.
 		@return: A bool.
 		"""
-		return not (rect.right < self.left or self.right < rect.left or rect.bottom < self.top or self.bottom < rect.top)
+		return not (rect.right < self.left or self.right < rect.left
+		            or rect.bottom < self.top or self.bottom < rect.top)
 
 	def get_corners(self):
 		"""Returns corners of rect in this order: topleft topright bottomright bottomleft
@@ -312,10 +292,10 @@ class Rect(object):
 		return "Rect(o:(%s,%s),w:%s,h:%s)" % (self.left, self.top, self.width, self.height)
 
 	def __eq__(self, other):
-		if isinstance(other, Rect):
-			return (self.top==other.top and self.left==other.left and self.right==other.right and self.bottom==other.bottom)
-		else:
+		if not isinstance(other, Rect):
 			return False
+		return (self.top == other.top and self.left == other.left
+		        and self.right == other.right and self.bottom == other.bottom)
 
 	def __ne__(self, other):
 		return not self.__eq__(other)
@@ -342,9 +322,12 @@ class Rect(object):
 				yield x, y
 
 	def iter_without_border(self):
-		"""There are 2 points of view about what width means. You can eiter include the last
-		point's area, or just consider points itself without any extensions. This iter iterates over
-		the points witout extensions, default is the other in other methods."""
+		"""There are 2 possible interpretations about what *width* means.
+		You can either include the last point in the area calculation or
+		just consider points without any extensions.
+		This method iterates over the points without extensions, while the
+		default iteration behavior in other methods is to include said area.
+		"""
 		for x in xrange(self.left, self.right):
 			for y in xrange(self.top, self.bottom):
 				yield Point(x, y)
@@ -352,10 +335,9 @@ class Rect(object):
 
 class ConstRect(Const, Rect):
 	"""An immutable Rect.
-	Can be used to to manual const-only optimisation"""
+	Can be used for manual const-only optimisation"""
 	pass
 
 
 bind_all(Rect)
 bind_all(Const)
-
