@@ -71,7 +71,8 @@ class BoatbuilderTab(_BoatbuilderOverviewTab):
 			progress_container.parent.showChild(progress_container)
 			progress = math.floor(self.producer.get_production_progress() * 100)
 			self.widget.findChild(name='progress').progress = progress
-			self.widget.findChild(name='BB_progress_perc').text = u'{progress}%'.format(progress=progress)
+			progress_perc = self.widget.findChild(name='BB_progress_perc')
+			progress_perc.text = u'{progress}%'.format(progress=progress)
 
 			container_active.parent.showChild(container_active)
 			if not container_inactive in container_inactive.parent.hidden_children:
@@ -83,17 +84,15 @@ class BoatbuilderTab(_BoatbuilderOverviewTab):
 			queue_container.removeAllChildren()
 			for place_in_queue, unit_type in enumerate(queue):
 				image = self.__class__.SHIP_THUMBNAIL.format(type_id=unit_type)
-				#xgettext:python-format
-				helptext = _(u"{ship} (place in queue: {place})").format(
-				               ship=self.instance.session.db.get_unit_type_name(unit_type),
-				               place=place_in_queue+1 )
+				helptext = _(u"{ship} (place in queue: {place})") #xgettext:python-format
+				helptext.format(ship=self.instance.session.db.get_unit_type_name(unit_type),
+				                place=place_in_queue+1)
 				# people don't count properly, always starting at 1..
 				icon_name = "queue_elem_"+str(place_in_queue)
 				icon = Icon(name=icon_name, image=image, helptext=helptext)
-				icon.capture(
-				  Callback(RemoveFromQueue(self.producer, place_in_queue).execute, self.instance.session),
-				  event_name="mouseClicked"
-				)
+				rm_from_queue_cb = Callback(RemoveFromQueue(self.producer, place_in_queue).execute,
+				                            self.instance.session)
+				icon.capture(rm_from_queue_cb, event_name="mouseClicked")
 				queue_container.addChild( icon )
 
 			# Set built ship info
