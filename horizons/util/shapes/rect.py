@@ -24,8 +24,9 @@ from circle import Circle
 
 from horizons.util.python.decorators import bind_all
 from horizons.util.python import Const
+from horizons.util.shapes import Shape
 
-class Rect(object):
+class Rect(Shape):
 	def __init__(self, *args):
 		if len(args) == 2 and isinstance(args[0], Point) and isinstance(args[1], Point): #args: edge1, edge2
 			self.top = min(args[0].y, args[1].y)
@@ -105,55 +106,6 @@ class Rect(object):
 
 	def copy(self):
 		return Rect.init_from_borders(self.left, self.top, self.right, self.bottom)
-
-	def distance(self, other):
-		"""Calculates distance to another object"""
-		# trap method: init data, then replace this method with real method
-		from annulus import Annulus
-		self._distance_functions_map = {
-		  Point: self.distance_to_point,
-		  ConstPoint: self.distance_to_point,
-		  Rect: self.distance_to_rect,
-		  ConstRect: self.distance_to_rect,
-		  Circle: self.distance_to_rect,
-		  tuple: self.distance_to_tuple,
-		  Annulus: self.distance_to_annulus
-		}
-		self.distance = self.__real_distance
-		return self.distance(other)
-
-	def __real_distance(self, other):
-		try:
-			return self._distance_functions_map[other.__class__](other)
-		except KeyError:
-			return other.distance(self)
-
-	def distance_to_point(self, other):
-		"""Calculates distance to an instance of Point.
-		Don't use this, unless you are sure that distance() is too slow."""
-		return ((max(self.left - other.x, 0, other.x - self.right) ** 2) +
-						(max(self.top - other.y, 0, other.y - self.bottom) ** 2)) ** 0.5
-
-	def distance_to_tuple(self, other):
-		"""Calculates distance to a coordinate as tuple (x, y)
-		Don't use this, unless you are sure that distance() is too slow."""
-		other_x = other[0]
-		other_y = other[1]
-		return ((max(self.left - other_x, 0, other_x - self.right) ** 2) + (max(self.top - other_y, 0, other_y - self.bottom) ** 2)) ** 0.5
-
-	def distance_to_rect(self, other):
-		"""Calculates distance to an instance of Rect.
-		Don't use this, unless you are sure that distance() is too slow."""
-		# NOTE: this is duplicated in buildingowner.get_providers_in_range
-		return ((max(self.left - other.right, 0, other.left - self.right) ** 2) + (max(self.top - other.bottom, 0, other.top - self.bottom) ** 2)) ** 0.5
-
-	def distance_to_circle(self, other):
-		dist = self.distance_to_point(other.center) - other.radius
-		return dist if dist >= 0 else 0
-
-	def distance_to_annulus(self, other):
-		dist = self.distance_to_point(other.center) - other.max_radius
-		return dist if dist >= 0 else 0
 
 	def get_coordinates(self):
 		"""Returns list of all coordinates, that are in the Rect """

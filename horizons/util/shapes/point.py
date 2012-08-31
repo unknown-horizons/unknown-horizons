@@ -23,59 +23,15 @@ from fife import fife
 
 from horizons.util.python.decorators import bind_all
 from horizons.util.python import Const
+from horizons.util.shapes import Shape
 
-class Point(object):
+class Point(Shape):
 	def __init__(self, x, y):
 		self.x = x
 		self.y = y
 
 	def copy(self):
 		return Point(self.x, self.y)
-
-	def distance(self, other):
-		# trap method: init data, then replace this method with real method
-		from circle import Circle
-		from rect import Rect, ConstRect
-		from annulus import Annulus
-		self._distance_functions_map = {
-			Point: self.distance_to_point,
-			ConstPoint: self.distance_to_point,
-			tuple: self.distance_to_tuple,
-			Circle: self.distance_to_circle,
-			Rect: self.distance_to_rect,
-			ConstRect: self.distance_to_rect,
-			Annulus: self.distance_to_annulus
-		}
-		self.distance = self.__real_distance
-		return self.distance(other)
-
-	def __real_distance(self, other):
-		try:
-			return self._distance_functions_map[other.__class__](other)
-		except KeyError:
-			return other.distance(self)
-
-	def distance_to_point(self, other):
-		return ((self.x - other.x) ** 2 + (self.y - other.y) ** 2) ** 0.5
-
-	def distance_to_tuple(self, other):
-		return ((self.x - other[0]) ** 2 + (self.y - other[1]) ** 2) ** 0.5
-
-	def distance_to_rect(self, other):
-		return ((max(other.left - self.x, 0, self.x - other.right) ** 2) +
-						(max(other.top - self.y, 0, self.y - other.bottom) ** 2)) ** 0.5
-
-	def distance_to_circle(self, other):
-		dist = self.distance(other.center) - other.radius
-		return dist if dist >= 0 else 0
-
-	def distance_to_annulus(self, other):
-		dist = self.distance(other.center)
-		if dist < other.min_radius:
-			return other.min_radius - dist
-		if dist > other.max_radius:
-			return dist - other.max_radius
-		return 0
 
 	def get_coordinates(self):
 		""" Returns point as coordinate

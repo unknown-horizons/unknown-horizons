@@ -245,7 +245,7 @@ class UnitManager(object):
 		positions = [ship.position for ship in ship_group]
 		bottom_left = Point(min(positions, key=lambda position: position.x).x, min(positions, key=lambda position: position.y).y)
 		top_right = Point(max(positions, key=lambda position: position.x).x, max(positions, key=lambda position: position.y).y)
-		diagonal = bottom_left.distance_to_point(top_right)
+		diagonal = bottom_left.distance(top_right)
 		return diagonal
 
 	def find_ships_near_group(self, ship_group, radius):

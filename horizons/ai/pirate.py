@@ -85,7 +85,7 @@ class Pirate(GenericAI):
 		for ship in base_ship.find_nearby_ships():
 			if isinstance(ship, (PirateShip, TradeShip)) or not ship.has_component(SelectableComponent):
 				continue  # don't attack these ships
-			distance = base_ship.position.distance_to_point(ship.position)
+			distance = base_ship.position.distance(ship.position)
 			if lowest_distance is None or distance < lowest_distance:
 				lowest_distance = distance
 				nearest_ship = ship

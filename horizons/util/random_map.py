@@ -432,7 +432,7 @@ def generate_map(seed, map_size, water_percent, max_island_size, preferred_islan
 			rect = Rect.init_from_topleft_and_size(x, y, width, height)
 			blocked = False
 			for existing_island in islands:
-				if existing_island.distance_to_rect(rect) < min_island_separation:
+				if existing_island.distance(rect) < min_island_separation:
 					blocked = True
 					break
 			if not blocked:

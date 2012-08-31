@@ -127,7 +127,7 @@ class FoundSettlement(ShipMission):
 
 			cost = 0
 			for coords in land_manager.village:
-				distance = point.distance_to_tuple(coords)
+				distance = point.distance(coords)
 				if distance < personality.too_close_penalty_threshold:
 					cost += personality.too_close_constant_penalty + personality.too_close_linear_penalty / (distance + 1.0)
 				else:

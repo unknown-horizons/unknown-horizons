@@ -153,7 +153,7 @@ class BuildingOwner(object):
 				radius_spared = building.radius ** 2
 				if (player is None or player == building.owner) and \
 				   res in building.get_needed_resources() and \
-				   building.position.distance_to_rect(provider.position) <= radius_spared:
+				   building.position.distance(provider.position) <= radius_spared:
 					yield building
 
 	def save(self, db):
