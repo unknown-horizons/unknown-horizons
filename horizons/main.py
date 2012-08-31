@@ -49,7 +49,8 @@ from horizons.util.color import Color
 from horizons.util.difficultysettings import DifficultySettings
 from horizons.util.loaders.actionsetloader import ActionSetLoader
 from horizons.util.loaders.tilesetloader import TileSetLoader
-from horizons.util.python import Callback, parse_port
+from horizons.util.python import parse_port
+from horizons.util.python.callback import Callback
 from horizons.util.uhdbaccessor import UhDbAccessor
 
 # private module pointers of this module

@@ -24,7 +24,9 @@ import logging
 from fife import fife
 
 from horizons.world.units.movingobject import MovingObject
-from horizons.util.python import Callback, decorators, WeakMethod
+from horizons.util.python import decorators
+from horizons.util.python.callback import Callback
+from horizons.util.python.weakmethod import WeakMethod
 from horizons.util.shapes.point import Point
 from horizons.util.worldobject import WorldObject
 from horizons.constants import LAYERS

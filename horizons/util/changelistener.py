@@ -19,8 +19,8 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-from horizons.util.python import WeakMethodList
 from horizons.util.python.callback import Callback
+from horizons.util.python.weakmethodlist import WeakMethodList
 
 class ChangeListener(object):
 	"""Trivial ChangeListener.

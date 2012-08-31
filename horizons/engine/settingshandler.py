@@ -29,7 +29,8 @@ import horizons.main
 
 from horizons.gui.quotes import QUOTES_SETTINGS
 from horizons.i18n import change_language, find_available_languages
-from horizons.util.python import Callback, parse_port
+from horizons.util.python import parse_port
+from horizons.util.python.callback import Callback
 from horizons.extscheduler import ExtScheduler
 from horizons.constants import LANGUAGENAMES, PATHS
 from horizons.network.networkinterface import NetworkInterface

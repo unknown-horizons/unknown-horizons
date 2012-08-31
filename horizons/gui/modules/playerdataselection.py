@@ -23,7 +23,7 @@ import horizons.main
 from fife.extensions.pychan.widgets import HBox, Label
 
 from horizons.util.color import Color
-from horizons.util.python import Callback
+from horizons.util.python.callback import Callback
 
 class PlayerDataSelection(object):
 	"""Subwidget for selecting player name and color.

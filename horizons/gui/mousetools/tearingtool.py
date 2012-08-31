@@ -25,7 +25,7 @@ import horizons.main
 
 from horizons.gui.mousetools.navigationtool import NavigationTool
 from horizons.command.building import Tear
-from horizons.util.python import WeakList
+from horizons.util.python.weaklist import WeakList
 from horizons.util.shapes.point import Point
 from horizons.constants import BUILDINGS
 from horizons.messaging import WorldObjectDeleted

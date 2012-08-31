@@ -26,7 +26,7 @@ from fife import fife
 from horizons.entities import Entities
 from horizons.util.living import livingProperty, LivingObject
 from horizons.util.pychanchildfinder import PychanChildFinder
-from horizons.util.python import Callback
+from horizons.util.python.callback import Callback
 from horizons.gui.mousetools import BuildingTool
 from horizons.gui.tabs import TabWidget, BuildTab, DiplomacyTab, SelectMultiTab
 from horizons.gui.widgets import OkButton, CancelButton

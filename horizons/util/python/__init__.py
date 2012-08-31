@@ -25,13 +25,6 @@ but rather a generic enhancement of the programming language.
 """
 
 import decorators
-from callback import Callback
-from weaklist import WeakList
-from weakmethod import WeakMethod
-from weakmethodlist import WeakMethodList
-from singleton import Singleton, ManualConstructionSingleton
-from registry import Registry
-
 
 class Const(object):
 	"""An immutable type. Think C++-like const"""

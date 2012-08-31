@@ -26,7 +26,8 @@ from horizons.scheduler import Scheduler
 
 from horizons.util.shapes.point import Point
 from horizons.util.pathfinding import PathBlockedError
-from horizons.util.python import decorators, WeakMethodList
+from horizons.util.python import decorators
+from horizons.util.python.weakmethodlist import WeakMethodList
 from horizons.world.concreteobject import ConcreteObject
 from horizons.constants import GAME_SPEED
 from horizons.component.componentholder import ComponentHolder

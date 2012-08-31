@@ -35,7 +35,7 @@ from horizons.constants import AI, LANGUAGENAMES
 from horizons.gui.widgets import OkButton
 from horizons.gui.widgets.minimap import Minimap
 from horizons.world import World
-from horizons.util.python import Callback
+from horizons.util.python.callback import Callback
 from horizons.util.random_map import generate_random_map, generate_random_seed
 from horizons.util.savegameaccessor import SavegameAccessor
 from horizons.util.shapes.rect import Rect

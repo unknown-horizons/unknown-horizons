@@ -23,7 +23,7 @@ import logging
 import fnmatch
 import os
 
-from horizons.util.python import Callback
+from horizons.util.python.callback import Callback
 from horizons.util.yamlcache import YamlCache
 
 class _EntitiesLazyDict(dict):
