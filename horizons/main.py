@@ -45,7 +45,9 @@ from horizons.gui import Gui
 from horizons.extscheduler import ExtScheduler
 from horizons.constants import AI, COLORS, GAME, PATHS, NETWORK, SINGLEPLAYER, GAME_SPEED
 from horizons.network.networkinterface import NetworkInterface
-from horizons.util import ActionSetLoader, DifficultySettings, TileSetLoader, Color, parse_port, Callback
+from horizons.util import ActionSetLoader, DifficultySettings, TileSetLoader, parse_port
+from horizons.util.color import Color
+from horizons.util.python import Callback
 from horizons.util.uhdbaccessor import UhDbAccessor
 
 # private module pointers of this module

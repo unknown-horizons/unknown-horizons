@@ -22,8 +22,8 @@
 import tempfile
 import os
 
-from horizons.util import Color, WorldObject
-from horizons.util.worldobject import WorldObjectNotFound
+from horizons.util.color import Color
+from horizons.util.worldobject import WorldObject, WorldObjectNotFound
 from horizons.command.unit import CreateUnit, Attack
 from horizons.command.diplomacy import AddEnemyPair, AddNeutralPair, AddAllyPair
 from horizons.command.uioptions import EquipWeaponFromInventory, UnequipWeaponToInventory

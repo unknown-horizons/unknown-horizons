@@ -24,7 +24,6 @@ __all__ = []
 from living import livingProperty, LivingObject
 from buildingindexer import BuildingIndexer
 from changelistener import ChangeListener
-from color import Color
 from worldobject import WorldObject
 from loaders.actionsetloader import ActionSetLoader
 from loaders.tilesetloader import TileSetLoader
@@ -44,9 +43,6 @@ from shapes.annulus import Annulus
 
 from python import Callback
 from python import decorators
-from python import WeakList
-from python import WeakMethod
-from python import WeakMethodList
 from python import Singleton, ManualConstructionSingleton
 from python import parse_port
 from python import get_all_subclasses

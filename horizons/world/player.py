@@ -25,7 +25,10 @@ import horizons.main
 
 from horizons.constants import PLAYER
 from horizons.world.playerstats import PlayerStats
-from horizons.util import WorldObject, Callback, Color, DifficultySettings, decorators
+from horizons.util import DifficultySettings
+from horizons.util.color import Color
+from horizons.util.python import Callback, decorators
+from horizons.util.worldobject import WorldObject
 from horizons.scenario import CONDITIONS
 from horizons.scheduler import Scheduler
 from horizons.component.componentholder import ComponentHolder

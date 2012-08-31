@@ -22,7 +22,8 @@
 import horizons.main
 
 from horizons.util.python.singleton import ManualConstructionSingleton
-from horizons.util import Color, DifficultySettings, parse_port
+from horizons.util import DifficultySettings, parse_port
+from horizons.util.color import Color
 from horizons.extscheduler import ExtScheduler
 from horizons.constants import NETWORK, VERSION
 from horizons.network.client import Client

@@ -35,7 +35,9 @@ from horizons.ext.dummy import Dummy
 from horizons.extscheduler import ExtScheduler
 from horizons.scheduler import Scheduler
 from horizons.spsession import SPSession
-from horizons.util import Color, DbReader, SavegameAccessor, DifficultySettings, WorldObject
+from horizons.util import DbReader, SavegameAccessor, DifficultySettings
+from horizons.util.color import Color
+from horizons.util.worldobject import WorldObject
 from horizons.component.storagecomponent import StorageComponent
 
 from tests import RANDOM_SEED
