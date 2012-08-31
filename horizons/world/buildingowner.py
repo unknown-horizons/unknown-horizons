@@ -138,8 +138,7 @@ class BuildingOwner(object):
 
 	@decorators.make_constants()
 	def get_specialized_producers_in_range(self, provider, player=None):
-		"""Returns all instances of specialized producers within the specified shape.
-		NOTE: Specifing the res parameter is usually a huge speed gain.
+		"""Returns all instances of specialized producers.
 		@param provider: the provider building
 		@param player: Player instance, only buildings belonging to this player
 		@return: list of producers"""
@@ -148,14 +147,14 @@ class BuildingOwner(object):
 			player = provider.owner
 
 		# filter out those that aren't in range
-		r2 = provider.position
 		for res in resource_list:
 			buildings = filter(lambda building: isinstance(building, ProductionBuilding), self.buildings)
 			for building in buildings:
-				if (player is None or player == building.owner) and res in building.get_needed_resources():
-					r1 = building.position
-					if ((max(r1.left - r2.right, 0, r2.left - r1.right) ** 2) + (max(r1.top - r2.bottom, 0, r2.top - r1.bottom) ** 2)) <= building.radius ** 2:
-						yield building
+				radius_spared = building.radius ** 2
+				if (player is None or player == building.owner) and \
+				   res in building.get_needed_resources() and \
+				   building.position.distance(provider.position) <= radius_spared:
+					yield building
 
 	def save(self, db):
 		for building in self.buildings:

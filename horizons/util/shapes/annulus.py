@@ -20,9 +20,9 @@
 # ###################################################
 
 from horizons.util.python.decorators import bind_all
-from horizons.util.shapes import ConstPoint, Point
+from horizons.util.shapes import Point, Shape
 
-class Annulus(object):
+class Annulus(Shape):
 	"""Class for the shape of an annulus
 	You can access center and radius of the annulus as public members."""
 	def __init__(self, center, min_radius, max_radius):
@@ -60,50 +60,6 @@ class Annulus(object):
 
 	def __ne__(self, other):
 		return not self.__eq__(other)
-
-	def distance(self, other):
-		from horizons.util.shapes import Circle, Rect, ConstRect
-		# trap method: init data, then replace this method with real method
-		self._distance_functions_map = {
-			Point: self.distance_to_point,
-			ConstPoint: self.distance_to_point,
-			tuple: self.distance_to_tuple,
-			Circle: self.distance_to_circle,
-			Rect: self.distance_to_rect,
-			ConstRect: self.distance_to_rect,
-			Annulus: self.distance_to_annulus
-		}
-		self.distance = self.__real_distance
-		return self.distance(other)
-
-	def __real_distance(self, other):
-		try:
-			return self._distance_functions_map[other.__class__](other)
-		except KeyError:
-			return other.distance(self)
-
-	def distance_to_point(self, other):
-		return other.distance_to_annulus(self)
-
-	def distance_to_tuple(self, other):
-		dist = ((self.center.x - other[0]) ** 2 + (self.center.y - other[1]) ** 2) ** 0.5
-		if dist < self.min_radius:
-			return self.min_radius - dist
-		if dist > self.max_radius:
-			return dist - self.max_radius
-		return 0
-
-	#TODO check and fix these methods
-	def distance_to_rect(self, other):
-		return other.distance_to_annulus(self)
-
-	def distance_to_circle(self, other):
-		dist = self.distance(other.center) - self.max_radius - other.radius
-		return dist if dist >= 0 else 0
-
-	def distance_to_annulus(self, other):
-		dist = self.distance(other.center) - self.max_radius - other.max_radius
-		return dist if dist >= 0 else 0
 
 	def __iter__(self):
 		for x, y in self.tuple_iter():

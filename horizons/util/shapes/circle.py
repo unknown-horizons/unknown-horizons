@@ -20,9 +20,9 @@
 # ###################################################
 
 from horizons.util.python.decorators import bind_all
-from horizons.util.shapes import ConstPoint, Point
+from horizons.util.shapes import ConstPoint, Point, Shape
 
-class Circle(object):
+class Circle(Shape):
 	"""Class for the shape of a circle
 	You can access center and radius of the circle as public members."""
 	def __init__(self, center, radius):
@@ -60,45 +60,6 @@ class Circle(object):
 	def __ne__(self, other):
 		return not self.__eq__(other)
 
-	def distance(self, other):
-		from horizons.util.shapes import Annulus, Rect, ConstRect
-		# trap method: init data, then replace this method with real method
-		self._distance_functions_map = {
-			Point: self.distance_to_point,
-			ConstPoint: self.distance_to_point,
-			tuple: self.distance_to_tuple,
-			Circle: self.distance_to_circle,
-			Rect: self.distance_to_rect,
-			ConstRect: self.distance_to_rect,
-			Annulus: self.distance_to_annulus
-		}
-		self.distance = self.__real_distance
-		return self.distance(other)
-
-	def __real_distance(self, other):
-		try:
-			return self._distance_functions_map[other.__class__](other)
-		except KeyError:
-			return other.distance(self)
-
-	def distance_to_point(self, other):
-		return other.distance_to_circle(self)
-
-	def distance_to_tuple(self, other):
-		dist = ((self.center.x - other[0]) ** 2 + (self.center.y - other[1]) ** 2) ** 0.5 - self.radius
-		return dist if dist >= 0 else 0
-
-	def distance_to_rect(self, other):
-		return other.distance_to_circle(self)
-
-	def distance_to_circle(self, other):
-		dist = self.distance(other.center) - self.radius - other.radius
-		return dist if dist >= 0 else 0
-
-	def distance_to_annulus(self, other):
-		dist = self.distance(other.center) - self.radius - other.max_radius
-		return dist if dist >= 0 else 0
-
 	def __iter__(self):
 		"""Iterates through all coords in circle as Point"""
 		for x, y in self.tuple_iter():
@@ -108,14 +69,14 @@ class Circle(object):
 		"""Iterates through all coords in circle as tuple"""
 		for x in xrange(self.center.x-self.radius, self.center.x+self.radius+1):
 			for y in xrange(self.center.y-self.radius, self.center.y+self.radius+1):
-				if self.center.distance_to_tuple((x, y)) <= self.radius:
+				if self.center.distance((x, y)) <= self.radius:
 					yield (x, y)
 
 	def get_border_coordinates(self, bordersize=1):
 		"""Returns only coordinates at the border. Very naive implementation"""
 		for x in xrange(self.center.x-self.radius, self.center.x+self.radius+1):
 			for y in xrange(self.center.y-self.radius, self.center.y+self.radius+1):
-				if (self.radius - bordersize) <= self.center.distance_to_tuple((x, y)) <= self.radius:
+				if (self.radius - bordersize) <= self.center.distance((x, y)) <= self.radius:
 					yield (x,y)
 
 bind_all(Circle)

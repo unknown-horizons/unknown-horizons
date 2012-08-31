@@ -162,7 +162,7 @@ class HunterCollector(AnimalCollector):
 	kill_animal = True
 
 	def get_animals_in_range(self, res=None):
-		dist = self.home_building.position.distance_to_point
+		dist = self.home_building.position.distance
 		radius = self.home_building.radius
 		return [ animal for animal in self.home_building.island.wild_animals if
 		         dist(animal.position) <= radius ]

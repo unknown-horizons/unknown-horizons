@@ -212,7 +212,7 @@ class TradeRoute(ChangeListener):
 			return
 
 		warehouse = next_destination['warehouse']
-		if self.ship.position.distance_to_point(warehouse.position.center()) <= self.ship.radius:
+		if self.ship.position.distance(warehouse.position.center()) <= self.ship.radius:
 			self.on_route_warehouse_reached()
 			return
 
