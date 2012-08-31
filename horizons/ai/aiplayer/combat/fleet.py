@@ -89,7 +89,8 @@ class Fleet(WorldObject):
 
 		# save ships
 		for ship in self.get_ships():
-			db("INSERT INTO fleet_ship (ship_id, fleet_id, state_id) VALUES(?, ?, ?)", ship.worldid, self.worldid, self._ships[ship].index)
+			db("INSERT INTO fleet_ship (ship_id, fleet_id, state_id) VALUES(?, ?, ?)",
+			   ship.worldid, self.worldid, self._ships[ship].index)
 
 	def _load(self, worldid, owner, db, destroy_callback):
 		super(Fleet, self).load(db, worldid)
@@ -108,7 +109,9 @@ class Fleet(WorldObject):
 
 		self.state = self.fleetStates[state_id]
 
-		ships_states = [(WorldObject.get_object_by_id(ship_id), self.shipStates[ship_state_id]) for ship_id, ship_state_id in db("SELECT ship_id, state_id FROM fleet_ship WHERE fleet_id = ?", worldid)]
+		ships_states = [(WorldObject.get_object_by_id(ship_id), self.shipStates[ship_state_id])
+		                for ship_id, ship_state_id
+		                in db("SELECT ship_id, state_id FROM fleet_ship WHERE fleet_id = ?", worldid)]
 		ships = [item[0] for item in ships_states]
 
 		self.__init(ships, destroy_callback)
@@ -170,10 +173,7 @@ class Fleet(WorldObject):
 		# and it's better than freezing the whole fleet
 		reached = state_counts[self.shipStates.reached] + state_counts[self.shipStates.blocked]
 		total = len(self._ships)
-		if self.ratio <= float(reached) / total:
-			return True
-		else:
-			return False
+		return self.ratio <= float(reached) / total
 
 	def _ship_reached(self, ship):
 		"""
@@ -213,7 +213,6 @@ class Fleet(WorldObject):
 		"""
 		Destination circle size for movement calls that involve more than one ship.
 		"""
-
 		return 10
 		#return min(self.size(), 5)
 

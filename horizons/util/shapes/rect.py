@@ -311,9 +311,8 @@ class Rect(object):
 
 	def __iter__(self):
 		"""Generates an iterator, that returns Points"""
-		for x in xrange(self.left, self.right+1):
-			for y in xrange(self.top, self.bottom+1):
-				yield Point(x, y)
+		for x, y in self.tuple_iter():
+			yield Point(x, y)
 
 	def tuple_iter(self):
 		"""Generates an iterator, that returns tuples"""

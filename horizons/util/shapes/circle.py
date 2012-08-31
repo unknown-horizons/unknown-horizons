@@ -102,10 +102,8 @@ class Circle(object):
 
 	def __iter__(self):
 		"""Iterates through all coords in circle as Point"""
-		for x in xrange(self.center.x-self.radius, self.center.x+self.radius+1):
-			for y in xrange(self.center.y-self.radius, self.center.y+self.radius+1):
-				if self.center.distance_to_tuple((x, y)) <= self.radius:
-					yield Point(x, y)
+		for x, y in self.tuple_iter():
+			yield Point(x, y)
 
 	def tuple_iter(self):
 		"""Iterates through all coords in circle as tuple"""
