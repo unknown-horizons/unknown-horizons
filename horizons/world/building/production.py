@@ -24,7 +24,7 @@ from horizons.world.building.buildingresourcehandler import BuildingResourceHand
 from horizons.world.building.building import BasicBuilding
 from horizons.world.building.buildable import BuildableSingle, BuildableSingleOnCoast, BuildableSingleOnDeposit, BuildableSingleOnOcean
 from horizons.world.building.nature import Field
-from horizons.util import Rect
+from horizons.util.shapes.rect import Rect
 from horizons.util.shapes.radiusshape import RadiusRect
 from horizons.command.building import Build
 from horizons.scheduler import Scheduler

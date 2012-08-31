@@ -27,7 +27,7 @@ import operator
 import horizons.main
 
 from horizons.component import Component
-from horizons.util import decorators
+from horizons.util.python import decorators
 from horizons.util.shapes.radiusshape import RadiusRect
 from horizons.constants import GFX, LAYERS, RES
 

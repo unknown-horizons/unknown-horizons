@@ -25,7 +25,9 @@ from collections import namedtuple
 
 from horizons.scheduler import Scheduler
 from horizons.util.pathfinding import PathBlockedError
-from horizons.util import WorldObject, decorators, Callback
+from horizons.util.python import decorators
+from horizons.util.python.callback import Callback
+from horizons.util.worldobject import WorldObject
 from horizons.ext.enum import Enum
 from horizons.world.units.unit import Unit
 from horizons.constants import COLLECTORS

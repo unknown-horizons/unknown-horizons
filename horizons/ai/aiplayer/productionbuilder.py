@@ -33,8 +33,10 @@ from horizons.command.building import Tear
 from horizons.command.production import ToggleActive
 from horizons.constants import AI, BUILDINGS
 from horizons.scheduler import Scheduler
-from horizons.util import Callback, Point, Rect
 from horizons.util.python import decorators
+from horizons.util.python.callback import Callback
+from horizons.util.shapes.point import Point
+from horizons.util.shapes.rect import Rect
 from horizons.entities import Entities
 from horizons.world.production.producer import Producer
 from horizons.component.namedcomponent import NamedComponent

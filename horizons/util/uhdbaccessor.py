@@ -22,7 +22,7 @@
 import random
 
 from horizons.constants import PATHS
-from horizons.util import decorators
+from horizons.util.python import decorators
 from horizons.util.dbreader import DbReader
 from horizons.gui.util import get_res_icon_path
 from horizons.entities import Entities
