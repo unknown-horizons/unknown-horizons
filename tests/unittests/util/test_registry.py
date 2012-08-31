@@ -21,7 +21,7 @@
 
 import unittest
 
-from horizons.util import Registry
+from horizons.util.python.registry import Registry
 
 
 class RegistryTest(unittest.TestCase):

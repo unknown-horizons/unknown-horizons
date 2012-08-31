@@ -43,4 +43,3 @@ from python import decorators
 from python import Singleton, ManualConstructionSingleton
 from python import parse_port
 from python import get_all_subclasses
-from python import Registry
