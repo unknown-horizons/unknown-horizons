@@ -24,12 +24,12 @@ import logging
 
 from fife import fife
 from fife.extensions.fife_settings import FIFE_MODULE
-from horizons.gui.quotes import QUOTES_SETTINGS
 
 import horizons.main
 
+from horizons.gui.quotes import QUOTES_SETTINGS
 from horizons.i18n import change_language, find_available_languages
-from horizons.util import Callback, parse_port
+from horizons.util.python import Callback, parse_port
 from horizons.extscheduler import ExtScheduler
 from horizons.constants import LANGUAGENAMES, PATHS
 from horizons.network.networkinterface import NetworkInterface

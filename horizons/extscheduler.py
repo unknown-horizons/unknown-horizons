@@ -22,7 +22,7 @@
 import time
 import heapq
 
-from horizons.util import ManualConstructionSingleton
+from horizons.util.python import ManualConstructionSingleton
 
 
 class _ExtCallbackObject(object):

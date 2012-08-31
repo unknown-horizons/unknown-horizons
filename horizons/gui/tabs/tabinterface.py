@@ -20,8 +20,9 @@
 # ###################################################
 
 from horizons.gui.util import load_uh_widget
-from horizons.util import PychanChildFinder, Callback
 from horizons.util.changelistener import metaChangeListenerDecorator
+from horizons.util.pychanchildfinder import PychanChildFinder
+from horizons.util.python import Callback
 from horizons.extscheduler import ExtScheduler
 
 @metaChangeListenerDecorator('remove')

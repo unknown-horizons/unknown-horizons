@@ -26,11 +26,9 @@ from changelistener import ChangeListener
 from worldobject import WorldObject
 from loaders.actionsetloader import ActionSetLoader
 from loaders.tilesetloader import TileSetLoader
-from pychanchildfinder import PychanChildFinder
 from savegameaccessor import SavegameAccessor
 from sqliteanimationloader import SQLiteAnimationLoader
 from sqliteatlasloader import SQLiteAtlasLoader
-from difficultysettings import DifficultySettings
 
 from shapes.point import Point, ConstPoint
 from shapes.rect import Rect, ConstRect
@@ -40,6 +38,3 @@ from shapes.annulus import Annulus
 
 from python import Callback
 from python import decorators
-from python import Singleton, ManualConstructionSingleton
-from python import parse_port
-from python import get_all_subclasses

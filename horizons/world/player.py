@@ -25,8 +25,8 @@ import horizons.main
 
 from horizons.constants import PLAYER
 from horizons.world.playerstats import PlayerStats
-from horizons.util import DifficultySettings
 from horizons.util.color import Color
+from horizons.util.difficultysettings import DifficultySettings
 from horizons.util.python import Callback, decorators
 from horizons.util.worldobject import WorldObject
 from horizons.scenario import CONDITIONS
