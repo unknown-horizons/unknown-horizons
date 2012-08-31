@@ -117,6 +117,8 @@ def start(_command_line_arguments):
 
 	if command_line_arguments.ai_highlights:
 		AI.HIGHLIGHT_PLANS = True
+	if command_line_arguments.ai_combat_highlights:
+		AI.HIGHLIGHT_COMBAT = True
 	if command_line_arguments.human_ai:
 		AI.HUMAN_AI = True
 
@@ -412,49 +414,17 @@ def _start_dev_map(ai_players, human_ai, force_player_id):
 	load_game(ai_players, human_ai, m, force_player_id=force_player_id)
 	return True
 
-def _start_map(map_name, ai_players=0, human_ai=False, is_scenario=False, campaign=None, pirate_enabled=True, trader_enabled=True, force_player_id=None):
+def _start_map(map_name, ai_players=0, human_ai=False, is_scenario=False, campaign=None,
+               pirate_enabled=True, trader_enabled=True, force_player_id=None):
 	"""Start a map specified by user
 	@param map_name: name of map or path to map
 	@return: bool, whether loading succeded"""
-	maps = SavegameManager.get_available_scenarios(locales=True) if is_scenario else SavegameManager.get_maps()
-
-	map_file = None
-
-	# get system's language
-	game_language = fife.get_locale()
-
-	# now we have "_en.yaml" which is set to language_extension variable
-	language_extension = '_' + game_language + '.' + SavegameManager.scenario_extension
-
-	# check for exact/partial matches in map list first
-	for i in xrange(0, len(maps[1])):
-		# exact match
-		if maps[1][i] == map_name:
-			map_file = maps[0][i]
-			break
-		# we want to match when map_name is like "tutorial" not "tutorial_en"
-		if maps[1][i] == map_name + language_extension:
-			map_file = maps[0][i]
-			break
-		# check for partial match
-		if maps[1][i].startswith(map_name):
-			if map_file is not None:
-				# multiple matches, collect all for output
-				map_file += u'\n' + maps[0][i]
-			else:
-				map_file = maps[0][i]
-	if map_file is None:
-		# not a map name, check for path to file or fail
-		if os.path.exists(map_name):
-			map_file = map_name
-		else:
-			#xgettext:python-format
-			print u"Error: Cannot find map '{name}'.".format(name=map_name)
-			return False
-	if len(map_file.splitlines()) > 1:
-		print "Error: Found multiple matches:"
-		for match in map_file.splitlines():
-			print os.path.basename(match)
+	if is_scenario:
+		savegames = SavegameManager.get_available_scenarios(locales=True)
+	else:
+		savegames = SavegameManager.get_maps()
+	map_file = _find_matching_map(map_name, savegames)
+	if not map_file:
 		return False
 	load_game(ai_players, human_ai, map_file, is_scenario, campaign=campaign,
 	          trader_enabled=trader_enabled, pirate_enabled=pirate_enabled, force_player_id=force_player_id)
@@ -475,7 +445,7 @@ def _start_campaign(campaign_name, force_player_id=None):
 		# This is not very clean, but it's safe.
 
 		if not campaign_name.endswith(".yaml"):
-			print "Error: campaign filenames have to end in \".yaml\"."
+			print 'Error: campaign filenames have to end in ".yaml".'
 			return False
 
 		# check if the user specified a file in the UH campaign dir
@@ -496,7 +466,6 @@ def _start_campaign(campaign_name, force_player_id=None):
 		campaign_name = os.path.splitext( campaign_basename )[0]
 	campaign = SavegameManager.get_campaign_info(name=campaign_name)
 	if not campaign:
-		#xgettext:python-format
 		print u"Error: Cannot find campaign '{name}'.".format(campaign_name)
 		return False
 	scenarios = [sc.get('level') for sc in campaign.get('scenarios',[])]
@@ -508,38 +477,46 @@ def _start_campaign(campaign_name, force_player_id=None):
 
 def _load_map(savegame, ai_players, human_ai, force_player_id=None):
 	"""Load a map specified by user.
-	@param savegame: eiter the displayname of a savegame or a path to a savegame
+	@param savegame: either the displayname of a savegame or a path to a savegame
 	@return: bool, whether loading succeded"""
 	# first check for partial or exact matches in the normal savegame list
-	saves = SavegameManager.get_saves()
-	map_file = None
-	for i in xrange(0, len(saves[1])):
-		# exact match
-		if saves[1][i] == savegame:
-			map_file = saves[0][i]
-			break
-		# check for partial match
-		if saves[1][i].startswith(savegame):
-			if map_file is not None:
-				# multiple matches, collect all for output
-				map_file += u'\n' + saves[0][i]
-			else:
-				map_file = saves[0][i]
-	if map_file is None:
-		# not a savegame, check for path to file or fail
-		if os.path.exists(savegame):
-			map_file = savegame
-		else:
-			#xgettext:python-format
-			print u"Error: Cannot find savegame '{name}'.".format(name=savegame)
-			return False
-	if len(map_file.splitlines()) > 1:
-		print "Error: Found multiple matches:"
-		for match in map_file.splitlines():
-			print os.path.basename(match)
+	savegames = SavegameManager.get_saves()
+	map_file = _find_matching_map(savegame, savegames)
+	if not map_file:
 		return False
 	load_game(savegame=map_file, force_player_id=force_player_id)
 	return True
+
+def _find_matching_map(name_or_path, savegames):
+	"""*name_or_path* is either a map/savegame name or path to a map/savegame file."""
+	game_language = fife.get_locale()
+	# now we have "_en.yaml" which is set to language_extension variable
+	language_extension = '_' + game_language + '.' + SavegameManager.scenario_extension
+	map_file = None
+	for filename, name in zip(*savegames):
+		if name in (name_or_path, name_or_path + language_extension):
+			# exact match or "tutorial" matching "tutorial_en.yaml"
+			return filename
+		if name.startswith(name_or_path): # check for partial match
+			if map_file is not None:
+				# multiple matches, collect all for output
+				map_file += u'\n' + filename
+			else:
+				map_file = filename
+	if map_file is not None:
+		if len(map_file.splitlines()) > 1:
+			print "Error: Found multiple matches:"
+			for name_or_path in map_file.splitlines():
+				print os.path.basename(name_or_path)
+			return
+		else:
+			return map_file
+	else: # not a savegame, check for path to file or fail
+		if os.path.exists(name_or_path):
+			return name_or_path
+		else:
+			print u"Error: Cannot find savegame or map '{name}'.".format(name=name_or_path)
+			return
 
 def _load_last_quicksave(session=None, force_player_id=None):
 	"""Load last quicksave
@@ -548,7 +525,8 @@ def _load_last_quicksave(session=None, force_player_id=None):
 	save_files = SavegameManager.get_quicksaves()[0]
 	if session is not None:
 		if not save_files:
-			session.gui.show_popup(_("No quicksaves found"), _("You need to quicksave before you can quickload."))
+			session.gui.show_popup(_("No quicksaves found"),
+			                       _("You need to quicksave before you can quickload."))
 			return False
 		else:
 			session.ingame_gui.on_escape() # close widgets that might be open

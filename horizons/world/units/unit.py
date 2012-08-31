@@ -134,14 +134,14 @@ class Unit(MovingObject, ResourceTransferHandler):
 		mid_node_up = fife.RendererNode(self._instance, relative_up)
 		mid_node_down = fife.RendererNode(self._instance, relative_dn)
 
-		if health != 0: # draw healthy part of health bar
+		if health > 0: # draw healthy part of health bar
 			renderer.addQuad(render_name,
 			                fife.RendererNode(self._instance, fife.Point(-width/2, y_pos - height)),
 			                fife.RendererNode(self._instance, fife.Point(-width/2, y_pos)),
 			                mid_node_down,
 			                mid_node_up,
 			                0, 255, 0)
-		if health != max_health: # draw damaged part
+		if health < max_health: # draw damaged part
 			renderer.addQuad(render_name,
 			                 mid_node_up,
 			                 mid_node_down,
@@ -169,7 +169,7 @@ class Unit(MovingObject, ResourceTransferHandler):
 		super(Unit, self).load(db, worldid)
 
 		x, y, owner_id = db("SELECT x, y, owner FROM unit WHERE rowid = ?", worldid)[0]
-		if (owner_id == 0):
+		if owner_id == 0:
 			owner = None
 		else:
 			owner = WorldObject.get_object_by_id(owner_id)

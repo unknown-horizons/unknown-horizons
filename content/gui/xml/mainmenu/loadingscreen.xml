@@ -2,9 +2,13 @@
 <Container size="1024,768" name="loadingscreen">
 	<Icon name="background" />
 	<Icon image="content/gui/images/background/mainmenu/loading.png" position="387,316" />
-	<Label name="loading_label" position="400,360"
-		text="Loading ..." font="large_load"
+	<Icon image="content/gui/images/background/mainmenu/quotearea.png" position="0,561" />
+
+	<Label name="loading_label" position="400,360" text="Loading ..." font="large_load"
 		max_size="250,50" min_size="150,50" />
-	<Label name="version_label" position="745,735"
-		text="Unknown Horizons Alpha" font="mainmenu" />
+	<Label name="qotl_type_label" position="360,662" text="" font="headline_light"
+		max_size="315,80" min_size="315,80" wrap_text="0" />
+	<Label name="qotl_label" position="360,688" text="" font="14_bold_light"
+		max_size="315,75" min_size="315,75" wrap_text="1" />
+	<Label name="version_label" position="780,735" font="headline_light" />
 </Container>

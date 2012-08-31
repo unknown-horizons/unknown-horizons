@@ -80,7 +80,7 @@ class DepositCoverageGoal(SettlementGoal):
 
 	def execute(self):
 		result = self._improve_deposit_coverage()
-		self._log_generic_build_result(result,  'deposit coverage storage')
+		self._log_generic_build_result(result, 'deposit coverage storage')
 		return self._translate_build_result(result)
 
 class ClayDepositCoverageGoal(DepositCoverageGoal):

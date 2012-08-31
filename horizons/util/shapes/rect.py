@@ -189,7 +189,7 @@ class Rect(object):
 		ALGORITHM:
 		Idea:
 		calculate the borders of the shape for every line (y-axis) to the left and the right
-	  and fill it up later.
+		and fill it up later.
 		The borders are calculated this way:
 		Take a corner (here we use top right) and calculate a quarter of a circle (top right quarter).
 		This can be mirrored to every other corner.
@@ -292,7 +292,7 @@ class Rect(object):
 		# top and bottom
 		surrounding_top = self.top - 1
 		surrounding_bottom = self.bottom + 1
-		for x in xrange(self.left,  self.right + 1):
+		for x in xrange(self.left, self.right + 1):
 			yield (x, surrounding_bottom)
 			yield (x, surrounding_top)
 		# left and right

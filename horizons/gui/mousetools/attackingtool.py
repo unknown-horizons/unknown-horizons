@@ -39,8 +39,8 @@ class AttackingTool(SelectionTool):
 		super(AttackingTool, self).__init__(session)
 
 	def mousePressed(self, evt):
-		if (evt.getButton() == fife.MouseEvent.RIGHT):
-			target_mapcoord = self.session.view.cam.toMapCoordinates(\
+		if evt.getButton() == fife.MouseEvent.RIGHT:
+			target_mapcoord = self.session.view.cam.toMapCoordinates(
 				fife.ScreenPoint(evt.getX(), evt.getY()), False)
 
 			target = self._get_attackable_instance(evt)
@@ -88,10 +88,7 @@ class AttackingTool(SelectionTool):
 			if not self.session.world.diplomacy.are_enemies(local_player, instance.owner) \
 				and not evt.isShiftPressed():
 				continue
-			try:
-				if instance.has_component(HealthComponent):
-					target = instance
-			except AttributeError:
-				pass
+			if instance.has_component(HealthComponent):
+				target = instance
 		return target
 

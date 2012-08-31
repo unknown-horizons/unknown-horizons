@@ -80,8 +80,7 @@ class TabInterface(object):
 
 	def init_values(self):
 		"""Call this method after the widget has been initialised."""
-		self.x_pos = self.widget.position[0]
-		self.y_pos = self.widget.position[1]
+		self.x_pos, self.y_pos = self.widget.position
 
 	def show(self):
 		"""Shows the current widget"""
@@ -162,11 +161,11 @@ class TabInterface(object):
 	y_pos = property(_get_y, _set_y)
 
 	def _get_position(self):
-		"""Returns the widget's position as"""
+		"""Returns the widget's position"""
 		return self.widget.position
 
 	def _set_position(self, value):
-		"""Sets the widgets position"""
+		"""Sets the widgets position to tuple *value*"""
 		self.widget.position = value
 
 	# Shortcut to set and retrieve the widget's current y position.

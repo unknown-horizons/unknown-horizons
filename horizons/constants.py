@@ -68,7 +68,7 @@ class VERSION:
 	#RELEASE_VERSION = u'2012.1'
 
 	## +=1 this if you changed the savegame "api"
-	SAVEGAMEREVISION = 61
+	SAVEGAMEREVISION = 62
 
 	@staticmethod
 	def string():
@@ -231,7 +231,7 @@ class RES:
 	MEDICAL_HERBS    = 38
 	ACORNS           = 39
 	CANNON           = WEAPONS.CANNON
-	DAGGER           = 41
+	DAGGER           = WEAPONS.DAGGER
 	GRAIN            = 42
 	CORN             = 43
 	FLOUR            = 44
@@ -298,6 +298,9 @@ class GROUND:
 	DEEP_WATER_SOUTHWEST1 = (2, "curve_out", 45)
 	DEEP_WATER_NORTHWEST1 = (2, "curve_out", 315)
 
+class ACTION_SETS:
+	DEFAULT_ANIMATION_LENGTH = 500
+
 class GAME_SPEED:
 	TICKS_PER_SECOND = 16
 	TICK_RATES = [ int(i * TICKS_PER_SECOND) for i in (0.5, 1, 2, 3, 4, 6, 8, 11, 20) ]
@@ -308,11 +311,11 @@ class COLORS:
 class VIEW:
 	ZOOM_MAX = 1
 	ZOOM_MIN = 0.25
+	ZOOM_DEFAULT = 1
 	ZOOM_LEVELS_FACTOR = 0.875
 	CELL_IMAGE_DIMENSIONS = (64, 32)
 	ROTATION = 45.0
 	TILT = -60
-	ZOOM = 1
 
 ## The Production States available in the game sorted by importance from least
 ## to most important
@@ -351,6 +354,7 @@ class MESSAGES:
 # AI values read from the command line; use the values below unless overridden by the CLI or the GUI
 class AI:
 	HIGHLIGHT_PLANS = False # whether to show the AI players' plans on the map
+	HIGHLIGHT_COMBAT = False # whether to show the AI players' combat ranges around each unit
 	HUMAN_AI = False # whether the human player is controlled by the AI
 
 class TRADER: # check resource values: ./development/print_db_data.py res
@@ -505,40 +509,40 @@ class _LanguageNameDict(dict):
 
 
 LANGUAGENAMES = _LanguageNameDict({
-"" 			: u'System default',
-"af"    : u'Afrikaans',
-"bg"    : u'Български',
-"ca"    : u'Català',
-'ca@valencia' : u'Català de València',
-"cs"    : u'Čeština',
-"da"    : u'Danske',
-"de"    : u'Deutsch',
-"en"    : u'English',
-"es"    : u'Español',
-"et"    : u'Eesti',
-"el"    : u'Ελληνικά',
-"fi"    : u'Suomi',
-"fr"    : u'Français',
-"gl"    : u'Galego',
-"hi"    : u'मानक हिन्दी',
-"hr"    : u'Hrvatski',
-"hu"    : u'Magyar',
-"it"    : u'Italiano',
-"ja"    : u'日本語',
-"lt"    : u'Lietuvių',
-"ko"    : u'한국말/조선말',
-"nb"    : u'Norw. Bokmål',
-"nl"    : u'Nederlands',
-"pl"    : u'Polski',
-"pt_BR" : u'Português Br.',
-"pt"    : u'Português',
-"ro"    : u'Română',
-"ru"    : u'Русский',
-"sl"    : u'Slovenski',
-"sv"    : u'Svenska',
-"tr"    : u'Türkçe',
-"vi"    : u'Tiếng Việt',
-"zh_CN" : u'普通話',
+	""      : u'System default',
+	"af"    : u'Afrikaans',
+	"bg"    : u'Български',
+	"ca"    : u'Català',
+	'ca@valencia' : u'Català de València',
+	"cs"    : u'Čeština',
+	"da"    : u'Danske',
+	"de"    : u'Deutsch',
+	"en"    : u'English',
+	"es"    : u'Español',
+	"et"    : u'Eesti',
+	"el"    : u'Ελληνικά',
+	"fi"    : u'Suomi',
+	"fr"    : u'Français',
+	"gl"    : u'Galego',
+	"hi"    : u'मानक हिन्दी',
+	"hr"    : u'Hrvatski',
+	"hu"    : u'Magyar',
+	"it"    : u'Italiano',
+	"ja"    : u'日本語',
+	"lt"    : u'Lietuvių',
+	"ko"    : u'한국말/조선말',
+	"nb"    : u'Norw. Bokmål',
+	"nl"    : u'Nederlands',
+	"pl"    : u'Polski',
+	"pt_BR" : u'Português Br.',
+	"pt"    : u'Português',
+	"ro"    : u'Română',
+	"ru"    : u'Русский',
+	"sl"    : u'Slovenski',
+	"sv"    : u'Svenska',
+	"tr"    : u'Türkçe',
+	"vi"    : u'Tiếng Việt',
+	"zh_CN" : u'普通話',
 })
 
 FONTDEFS = {

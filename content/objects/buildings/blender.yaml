@@ -10,7 +10,7 @@ size_y: 2
 inhabitants: 2
 tooltip_text: _ Produces condiments out of spices.
 settler_level: TIER.SETTLERS
-buildingcosts: {RES.GOLD: 1}
+buildingcosts: {RES.GOLD: 500, RES.BOARDS: 3, RES.TOOLS: 2, RES.BRICKS: 3}
 components:
 - SelectableComponent:
     type: building
@@ -28,6 +28,9 @@ components:
 - StorageComponent:
       SlotsStorage:
         slot_sizes: {RES.SPICES: 6, RES.CONDIMENTS: 6}
+- CollectingComponent:
+    collectors:
+      UNITS.BUILDING_COLLECTOR: 1
 actionsets:
   TIER.SETTLERS:
     #as_blender0:

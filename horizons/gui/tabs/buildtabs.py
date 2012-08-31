@@ -52,8 +52,7 @@ class BuildTab(TabInterface):
 	build_menu_config_per_increment = build_menus[0]
 	build_menu_config_per_type = build_menus[1]
 
-	#TODO changed for testing, the actual default should be "per_increment"
-	default_build_menu_config = build_menu_config_per_type
+	default_build_menu_config = build_menu_config_per_increment
 
 	cur_build_menu_config = default_build_menu_config
 
@@ -219,18 +218,30 @@ class BuildTab(TabInterface):
 		self.__class__.last_active_build_tab = self.tabindex
 		super(BuildTab, self).show()
 
-		self.widget.child_finder("switch_build_menu_config_button").capture(self._switch_build_menu_config)
+		button = self.widget.child_finder("switch_build_menu_config_button")
+		self._set_switch_layout_button_image(button)
+		button.capture(self._switch_build_menu_config)
 
 	def hide(self):
 		self.__remove_changelisteners()
 		super(BuildTab, self).hide()
 
+	def _set_switch_layout_button_image(self, button):
+		image_path = "content/gui/icons/tabwidget/buildmenu/"
+		if self.__class__.cur_build_menu_config is self.build_menu_config_per_type:
+			button.up_image = image_path + "tier.png"
+		else:
+			button.up_image = image_path + "class.png"
+		self.switch_layout_button_needs_update = False
+
 	def _switch_build_menu_config(self):
 		"""Sets next build menu config and recreates the gui"""
 		cur_index = self.__class__.build_menus.index( self.cur_build_menu_config )
-		new_index = (cur_index + 1 ) % len(self.__class__.build_menus)
+		new_index = (cur_index + 1) % len(self.__class__.build_menus)
 		self.__class__.cur_build_menu_config = self.__class__.build_menus[ new_index ]
 
+		# after switch set active tab to first
+		self.__class__.last_active_build_tab = 0
 		self.session.ingame_gui.show_build_menu(update=True)
 
 
@@ -244,14 +255,14 @@ class BuildTab(TabInterface):
 		# parse
 		data = YamlCache.get_file( source, game_data=True )
 		if 'meta' not in data:
-			raise InvalidBuildMenuFileFormat("File does not contain \"meta\" section")
+			raise InvalidBuildMenuFileFormat('File does not contain "meta" section')
 		metadata = data['meta']
 		if 'unlocking_strategy' not in metadata:
-			raise InvalidBuildMenuFileFormat("\"meta\" section does not contain \"unlocking_strategy\"")
+			raise InvalidBuildMenuFileFormat('"meta" section does not contain "unlocking_strategy"')
 		try:
 			unlocking_strategy = cls.unlocking_strategies.get_item_for_string( metadata['unlocking_strategy'] )
 		except KeyError:
-			raise InvalidBuildMenuFileFormat("Invalid entry for \"unlocking_strategy\"")
+			raise InvalidBuildMenuFileFormat('Invalid entry for "unlocking_strategy"')
 
 		# create tab instances
 		tabs = []

@@ -106,7 +106,7 @@ class WeakList(list):
 
 	def __remove_ref(self, ref):
 		"""
-        When an object from the list is destroy,  this
+        When an object from the list is destroy, this
         method is call to remove it from list
         """
 
@@ -134,13 +134,13 @@ class WeakList(list):
 	def pop(self, index=-1):
 		return list.pop(self, index)()
 
-	def sort(self, cmp=None,  key=None,  reverse=False):
+	def sort(self, cmp=None, key=None, reverse=False):
 		sortable = list(self)
 		sortable.sort(cmp, key, reverse)
 		del self[:]
 		self.extend(sortable)
 
-	def insert(self,  index,  obj):
+	def insert(self, index, obj):
 		list.insert(self, index, self.__new_weakref(obj))
 
 

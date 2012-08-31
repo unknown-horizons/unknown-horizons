@@ -153,7 +153,7 @@ class StatusIconManager(object):
 		# only those that have icons
 		instances = (i for i in instances if i in self.icons)
 		# and belong to the player
-		instances = [i for i in instances if \
+		instances = [i for i in instances if
 		             hasattr(i, "owner" ) and
 		             hasattr(i.owner, "is_local_player") and
 		             i.owner.is_local_player]

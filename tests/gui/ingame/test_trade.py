@@ -114,7 +114,7 @@ def test_trade(gui):
 	assert ship_inv[RES.ALVEARIES] == 0
 	# first transfer one
 	gui.trigger('buy_sell_goods', 'size_1/action/default')
-	gui.trigger('buy_sell_goods', 'buy_sell_inventory_True_entry_0/action/default')
+	gui.trigger('buy_sell_goods', 'buy_sell_inventory_True_entry_1/action/default')
 
 	print ship_inv[RES.ALVEARIES]
 	assert ship_inv[RES.ALVEARIES] == 1
@@ -122,7 +122,7 @@ def test_trade(gui):
 
 	# now transfer 5, should actually transfer 4
 	gui.trigger('buy_sell_goods', 'size_2/action/default')
-	gui.trigger('buy_sell_goods', 'buy_sell_inventory_True_entry_0/action/default')
+	gui.trigger('buy_sell_goods', 'buy_sell_inventory_True_entry_1/action/default')
 	assert ship_inv[RES.ALVEARIES] == 5
 	assert settlement_inv[RES.ALVEARIES] == 5
 

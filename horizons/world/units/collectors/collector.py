@@ -24,7 +24,6 @@ import logging
 from collections import namedtuple
 
 from horizons.scheduler import Scheduler
-
 from horizons.util.pathfinding import PathBlockedError
 from horizons.util import WorldObject, decorators, Callback
 from horizons.ext.enum import Enum
@@ -168,7 +167,7 @@ class Collector(Unit):
 		Scheduler().add_new_object(
 		  Callback.ChainedCallbacks(
 		    fix_job_object,
-		  	Callback(self.apply_state, self.state, remaining_ticks)),
+		    Callback(self.apply_state, self.state, remaining_ticks)),
 		    self, run_in=0
 		)
 
@@ -216,7 +215,7 @@ class Collector(Unit):
 		raise NotImplementedError
 
 
-	# BEHAVIOUR
+	# BEHAVIOR
 	def search_job(self):
 		"""Search for a job, only called if the collector does not have a job.
 		If no job is found, a new search will be scheduled in a few ticks."""
@@ -236,7 +235,7 @@ class Collector(Unit):
 		self.job.object.add_incoming_collector(self)
 
 	def check_possible_job_target(self, target):
-		"""Checks our if we "are allowed" and able to pick up from the target"""
+		"""Checks if we "are allowed" and able to pick up from the target"""
 		# Discard building if it works for same inventory (happens when both are storage buildings
 		# or home_building is checked out)
 		if target.get_component(StorageComponent).inventory is self.get_home_inventory():
@@ -385,7 +384,7 @@ class Collector(Unit):
 
 			remnant = self.get_component(StorageComponent).inventory.alter(entry.res, actual_amount)
 			assert remnant == 0, "%s couldn't take all of res %s; remnant: %s; planned: %s" % \
-				     (self, entry.res, remnant, entry.amount)
+			       (self, entry.res, remnant, entry.amount)
 		self.job.reslist = new_reslist
 
 	def transfer_res_to_home(self, res, amount):
@@ -532,16 +531,17 @@ class JobList(list):
 		self.sort(key=lambda job: min(inventory[res] for res in job.resources) , reverse=False)
 
 	def _sort_jobs_fewest_available_and_distance(self):
-		"""Sort jobs by fewest available, but secondaryly also consider distance"""
+		"""Sort jobs by distance, but secondarily also consider fewest available resources"""
 		# python sort is stable, so two sequenced sorts work.
-		self._sort_jobs_distance()
 		self._sort_jobs_fewest_available(shuffle_first=False)
+		self._sort_jobs_distance()
 
 	def _sort_jobs_for_storage_collector(self):
 		"""Special sophisticated sorting routing for storage collectors.
 		Same as fewest_available_and_distance_, but also considers whether target inv is full."""
 		self._sort_jobs_fewest_available_and_distance()
 		self._sort_target_inventory_full()
+		self._sort_no_specialized_producer_in_range()
 
 	def _sort_jobs_distance(self):
 		"""Prefer targets that are nearer"""
@@ -551,8 +551,15 @@ class JobList(list):
 		"""Prefer targets with full inventory"""
 		self.sort(key=operator.attrgetter('target_inventory_full_num'), reverse=True)
 
+	def _sort_no_specialized_producer_in_range(self):
+		"""Prefer targets with no specialized producer in range"""
+		sort_function = lambda job: int(len(
+			list(job.object.island.get_specialized_producers_in_range(job.object))) > 0)
+
+		self.sort(key=sort_function)
+
 	def __str__(self):
-		return str([ str(i) for i in self ])
+		return unicode([ unicode(i) for i in self ])
 
 
 decorators.bind_all(Collector)

@@ -139,7 +139,7 @@ class LimitedMoveStance(StanceComponent):
 		self.stance_radius = 0
 		self.move_range = 0
 		# get instance data after it was inited
-		Scheduler().add_new_object(self.get_instance_data, self, run_in = 0)
+		Scheduler().add_new_object(self.get_instance_data, self, run_in=0)
 
 	def get_instance_data(self):
 		# get a copy of the center Point object

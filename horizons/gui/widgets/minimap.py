@@ -55,7 +55,7 @@ class Minimap(object):
 		}
 
 
-	WAREHOUSE_IMAGE = "content/gui/icons/resources/16/placeholder.png"
+	WAREHOUSE_IMAGE = "content/gui/icons/minimap/warehouse.png"
 	SHIP_NEUTRAL = "content/gui/icons/minimap/ship_neutral.png"
 	SHIP_PIRATE = "content/gui/icons/minimap/pirate.png"
 
@@ -290,7 +290,7 @@ class Minimap(object):
 				Act(i, *map_coord).execute(self.session)
 		elif event.getButton() == fife.MouseEvent.LEFT:
 			if self.view is None:
-				print 'Warning: Can\'t handle minimap clicks since we have no view object'
+				print "Warning: Can't handle minimap clicks since we have no view object"
 			else:
 				self.view.center(*map_coord)
 

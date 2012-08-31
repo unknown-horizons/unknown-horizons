@@ -172,6 +172,7 @@ class Fife(ApplicationBase):
 		self.console = self.pychan.manager.hook.guimanager.getConsole()
 
 		init_pychan()
+		self.pychanmanager = pychan.internal.get_manager()
 
 		self._setting_handler.apply_settings()
 
@@ -217,11 +218,13 @@ class Fife(ApplicationBase):
 			if langname == self.get_uh_setting('Language'):
 				if not langname == 'System default':
 					return locale_code
-		default_locale, default_encoding = locale.getdefaultlocale()
 		try:
+			default_locale, default_encoding = locale.getdefaultlocale()
 			return default_locale.split('_')[0]
-		except:
-			# If default locale could not be detected use 'EN' as fallback
+		except (ValueError, AttributeError):
+			# OS X sometimes returns 'UTF-8' as locale, which is a ValueError.
+			# If no locale is set at all, the split will fail, which is an AttributeError.
+			# Use 'EN' as fallback in both cases since we cannot reasonably detect the locale.
 			return "en"
 
 	def run(self):
@@ -229,8 +232,7 @@ class Fife(ApplicationBase):
 		"""
 		assert self._gotInited
 
-		# there probably is a reason why this is here
-		self._setting.entries[FIFE_MODULE]['ScreenResolution'].initialdata = get_screen_resolutions()
+		self._setting.setAvailableScreenResolutions(get_screen_resolutions())
 
 		self.engine.initializePumping()
 		self.loop()

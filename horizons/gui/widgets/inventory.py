@@ -21,7 +21,7 @@
 
 from fife.extensions import pychan
 
-from fife.extensions.pychan.widgets.common import BoolAttr
+from fife.extensions.pychan.widgets.common import BoolAttr, IntAttr
 
 from horizons.gui.widgets.imagefillstatusbutton import ImageFillStatusButton
 from horizons.world.storage import TotalStorage, PositiveSizedSlotStorage, PositiveTotalNumSlotsStorage
@@ -32,22 +32,22 @@ class Inventory(pychan.widgets.Container):
 	It can be used like any other widget inside of xmls, but for full functionality the inventory
 	has to be manually set, or use the TabWidget, which will autoset it (was made to be done this way).
 
-	XML use: <inventory />, can take all the parameters that pychan.widgets.Container can."""
-	ATTRIBUTES = pychan.widgets.Container.ATTRIBUTES + [BoolAttr('uncached'), BoolAttr('display_legend')]
+	XML use: <Inventory />, can take all the parameters that pychan.widgets.Container can."""
+	ATTRIBUTES = pychan.widgets.Container.ATTRIBUTES + [BoolAttr('uncached'), BoolAttr('display_legend'), IntAttr("items_per_line")]
 	# uncached: required when resource icons should appear multiple times at any given moment
 	# on the screen. this is usually not the case with single inventories, but e.g. for trading.
 	# display_legend: whether to display a string explanation about slot limits
-	ITEMS_PER_LINE = 4 # TODO: make this a xml attribute with a default value
 
 	UNUSABLE_SLOT_IMAGE = "content/gui/icons/resources/none_gray.png"
 
-	def __init__(self, uncached=False, display_legend=True, **kwargs):
+	def __init__(self, uncached=False, display_legend=True, items_per_line=4, **kwargs):
 		# this inits the gui part of the inventory. @see init().
 		super(Inventory, self).__init__(**kwargs)
 		self._inventory = None
 		self.__inited = False
 		self.uncached = uncached
 		self.display_legend = display_legend
+		self.items_per_line = items_per_line or 1 # negative values are fine, 0 is not
 
 	def init(self, db, inventory, ordinal=None):
 		"""
@@ -116,19 +116,17 @@ class Inventory(pychan.widgets.Container):
 			button.button.name = "inventory_entry_%s" % index # required for gui tests
 			current_hbox.addChild(button)
 
-			# old code to do this, which was bad but kept for reference
-			#if index % ((vbox.width/(self.__class__.icon_width + 10))) < 0 and index != 0:
-			if index % self.ITEMS_PER_LINE == (self.ITEMS_PER_LINE - 1) and index != 0:
+			if index % self.items_per_line == self.items_per_line - 1:
 				vbox.addChild(current_hbox)
 				current_hbox = pychan.widgets.HBox(padding=0)
 			index += 1
-		if (index <= self.ITEMS_PER_LINE): # Hide/Remove second line
+		if index <= self.items_per_line: # Hide/Remove second line
 			icons = self.parent.findChildren(name='slot')
-			if len(icons) > self.ITEMS_PER_LINE:
-				self.parent.removeChildren(icons[self.ITEMS_PER_LINE-1:])
+			if len(icons) > self.items_per_line:
+				self.parent.removeChildren(icons[self.items_per_line-1:])
 		vbox.addChild(current_hbox)
 		self.addChild(vbox)
-		height = ImageFillStatusButton.CELL_SIZE[1] * len(self._res_order) // self.ITEMS_PER_LINE
+		height = ImageFillStatusButton.CELL_SIZE[1] * len(self._res_order) // self.items_per_line
 		self.min_size = (self.min_size[0], height)
 
 
@@ -136,7 +134,7 @@ class Inventory(pychan.widgets.Container):
 			# if it's full, the additional slots have to be marked as unusable (#1686)
 			# check for any res, the res type doesn't matter here
 			if self._inventory.get_free_space_for(0) == 0:
-				for i in xrange(index, self.ITEMS_PER_LINE):
+				for i in xrange(index, self.items_per_line):
 					button = pychan.widgets.Icon(image=self.__class__.UNUSABLE_SLOT_IMAGE)
 					current_hbox.addChild(button)
 

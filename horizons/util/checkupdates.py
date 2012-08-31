@@ -19,10 +19,11 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-from fife.extensions import pychan
 import webbrowser
 import urllib
 import urllib2
+
+from fife.extensions import pychan
 
 from horizons.constants import NETWORK, VERSION
 from horizons.gui.widgets import OkButton
@@ -58,8 +59,8 @@ def check_for_updates(info):
 	link = u.readline()
 	u.close()
 
-	version = version[:len(version)-1] # remove newlines
-	link = link[:len(link)-1] # remove newlines
+	version = version[:-1] # remove newlines
+	link = link[:-1] # remove newlines
 
 	if version != VERSION.RELEASE_VERSION:
 		# there is a new version
@@ -91,5 +92,4 @@ def show_new_version_hint(gui, info):
 	popup = gui.build_popup(title, text)
 	popup.addChild( dl_btn )
 
-	gui.show_dialog(popup, {OkButton.DEFAULT_NAME : True})
-
+	gui.show_dialog(popup, {OkButton.DEFAULT_NAME : True}, modal=True)

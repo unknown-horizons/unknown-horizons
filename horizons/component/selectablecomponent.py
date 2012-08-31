@@ -193,7 +193,7 @@ class SelectableBuildingComponent(SelectableComponent):
 		"""
 		import cProfile as profile
 		import tempfile
-		outfilename = tempfile.mkstemp(text = True)[1]
+		outfilename = tempfile.mkstemp(text=True)[1]
 		print 'profile to ', outfilename
 		c = "cls._do_select(renderer, position, session.world, settlement)"
 		profile.runctx(c, globals(), locals(), outfilename)

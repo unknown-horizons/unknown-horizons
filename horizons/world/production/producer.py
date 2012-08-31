@@ -38,6 +38,7 @@ from horizons.util.changelistener import metaChangeListenerDecorator
 from horizons.messaging import AddStatusIcon, RemoveStatusIcon
 from horizons.world.production.utilisation import Utilisation, FullUtilisation, FieldUtilisation
 from horizons.util.python.callback import Callback
+from horizons.component.namedcomponent import NamedComponent
 
 @metaChangeListenerDecorator("production_finished")
 @metaChangeListenerDecorator("activity_changed")
@@ -143,10 +144,9 @@ class Producer(Component):
 			if id == self.settler_upgrade_lines.get_production_line_id(self.instance.level+1):
 				production_class = SingleUseProduction
 
-		return production_class(inventory=self.instance.get_component(StorageComponent).inventory
-		                        ,
-				                owner_inventory=owner_inventory, prod_id=id, prod_data=data,
-		                    load=load, start_finished=self.__start_finished)
+		return production_class(inventory=self.instance.get_component(StorageComponent).inventory,
+		                        owner_inventory=owner_inventory, prod_id=id, prod_data=data,
+		                        load=load, start_finished=self.__start_finished)
 
 	def add_production_by_id(self, production_line_id):
 		"""Convenience method.
@@ -492,7 +492,7 @@ class QueueProducer(Producer):
 
 
 	def check_next_production_startable(self):
-		# See if we can start the next production,  this only works if the current
+		# See if we can start the next production, this only works if the current
 		# production is done
 		state = self._get_current_state()
 		return len(self.production_queue) > 0 and \
@@ -578,9 +578,10 @@ class UnitProducer(QueueProducer):
 								tile = self.session.world.get_tile(point)
 								if tile is not None and tile.is_water and coord not in self.session.world.ship_map:
 									# execute bypassing the manager, it's simulated on every machine
-									CreateUnit(self.instance.owner.worldid, unit, point.x, point.y)(issuer=self.instance.owner)
+									u = CreateUnit(self.instance.owner.worldid, unit, point.x, point.y)(issuer=self.instance.owner)
 									# Fire a message indicating that the ship has been created
-									self.session.ingame_gui.message_widget.add(x=None, y=None, string_id='NEW_UNIT')
+									name = u.get_component(NamedComponent).name
+									self.session.ingame_gui.message_widget.add(string_id='NEW_UNIT', point=point, message_dict={'name' : name})
 									found_tile = True
 									break
 						radius += 1

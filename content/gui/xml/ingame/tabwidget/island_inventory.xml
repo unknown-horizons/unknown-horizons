@@ -10,28 +10,35 @@
 
 		<Icon image="content/gui/images/background/hr.png" position="20,30" />
 
-		<HBox padding="5" min_size="215,50" max_size="215,50" position="20,50">
+		<HBox padding="5" min_size="215,50" max_size="215,50" position="20,40">
 			<Icon image="content/gui/images/background/inv_bg.png" />
 			<Icon image="content/gui/images/background/inv_bg.png" />
 			<Icon image="content/gui/images/background/inv_bg.png" />
 			<Icon image="content/gui/images/background/inv_bg.png" />
 		</HBox>
 
-		<HBox padding="5" min_size="215,50" max_size="215,50" position="20,100">
+		<HBox padding="5" min_size="215,50" max_size="215,50" position="20,90">
 			<Icon image="content/gui/images/background/inv_bg.png" />
 			<Icon image="content/gui/images/background/inv_bg.png" />
 			<Icon image="content/gui/images/background/inv_bg.png" />
 			<Icon image="content/gui/images/background/inv_bg.png" />
 		</HBox>
 
-		<HBox padding="5" min_size="215,50" max_size="215,50" position="20,150">
+		<HBox padding="5" min_size="215,50" max_size="215,50" position="20,140">
 			<Icon image="content/gui/images/background/inv_bg.png" />
 			<Icon image="content/gui/images/background/inv_bg.png" />
 			<Icon image="content/gui/images/background/inv_bg.png" />
 			<Icon image="content/gui/images/background/inv_bg.png" />
 		</HBox>
 
-		<HBox padding="5" min_size="215,50" max_size="215,50" position="20,200">
+		<HBox padding="5" min_size="215,50" max_size="215,50" position="20,190">
+			<Icon image="content/gui/images/background/inv_bg.png" />
+			<Icon image="content/gui/images/background/inv_bg.png" />
+			<Icon image="content/gui/images/background/inv_bg.png" />
+			<Icon image="content/gui/images/background/inv_bg.png" />
+		</HBox>
+
+		<HBox padding="5" min_size="215,50" max_size="215,50" position="20,240">
 			<Icon image="content/gui/images/background/inv_bg.png" />
 			<Icon image="content/gui/images/background/inv_bg.png" />
 			<Icon image="content/gui/images/background/inv_bg.png" />
@@ -40,8 +47,8 @@
 
 		<!-- http://fife.trac.cvsdude.com/engine/ticket/692 ::
 		<ScrollArea min_size="215,200" max_size="215,200" position="21,52" vertical_scroll_amount="50">-->
-		<ScrollArea min_size="215,200" max_size="215,200" position="21,52" name="fife_ticket_692">
-			<Inventory name="inventory" min_size="215,200" max_size="215,1000" />
+		<ScrollArea min_size="215,250" max_size="215,250" position="21,42" name="fife_ticket_692">
+			<Inventory name="inventory" min_size="215,250" max_size="215,1000" items_per_line="4" />
 		</ScrollArea>
 	</Container>
 

@@ -43,7 +43,7 @@ class IngameType(type):
 	# Class name for the type.__new__ constructor
 	classstring = 'Type[{id}]'
 
-	def __new__(self, id,  yaml_data):
+	def __new__(self, id, yaml_data):
 		class_package = yaml_data['baseclass'].split('.')[0]
 		class_name = yaml_data['baseclass'].split('.')[1]
 
@@ -128,7 +128,7 @@ class IngameType(type):
 
 	def _parse_component_templates(self):
 		"""Prepares misc data in self.component_templates"""
-		producer = [ comp for comp in self.component_templates if \
+		producer = [ comp for comp in self.component_templates if
 		             isinstance(comp, dict) and comp.iterkeys().next() == 'ProducerComponent' ]
 		if producer:
 			# we want to support string production line ids, the code should still only see integers

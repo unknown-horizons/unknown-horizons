@@ -129,10 +129,10 @@ class Weapon(object):
 		Scheduler().add_new_object(self.make_attack_ready, self, ready_ticks)
 
 		if self.bullet_image:
-			Scheduler().add_new_object(\
+			Scheduler().add_new_object(
 				Callback(Bullet, self.bullet_image, position, destination, impact_ticks - bullet_delay, self.session),
 				self,
-				run_in = bullet_delay)
+				run_in=bullet_delay)
 		self.log.debug("fired %s at %s, impact in %s", self, destination, impact_ticks - bullet_delay)
 
 		self.attack_ready = False

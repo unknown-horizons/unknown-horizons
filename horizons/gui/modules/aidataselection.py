@@ -47,10 +47,10 @@ class AIDataSelection(object):
 		return self.gui.collectData('ai_players')
 
 	def show(self):
-		self.gui.parent.showChild(self.gui);
+		self.gui.parent.showChild(self.gui)
 		self.hidden = False
 		
 	def hide(self):
 		if not self.hidden:
-			self.gui.parent.hideChild(self.gui);
+			self.gui.parent.hideChild(self.gui)
 			self.hidden = True

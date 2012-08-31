@@ -32,7 +32,7 @@ class SaveCommand(Command):
 		session = issuer.session
 		try:
 			path = SavegameManager.create_multiplayersave_filename(self.name)
-		except RuntimeError, e:
+		except RuntimeError as e:
 			headline = _("Invalid filename")
 			msg = _("Received an invalid filename for a save command.")
 			session.gui.show_error_popup(headline, msg, unicode(e))
@@ -42,7 +42,7 @@ class SaveCommand(Command):
 
 		success = session._do_save( path )
 		if success:
-			session.ingame_gui.message_widget.add(x=None, y=None, string_id='SAVED_GAME') # TODO: distinguish auto/quick/normal
+			session.ingame_gui.message_widget.add(point=None, string_id='SAVED_GAME') # TODO: distinguish auto/quick/normal
 		else:
 			session.gui.show_popup(_('Error'), _('Failed to save.'))
 

@@ -474,6 +474,31 @@ def generate_map(seed, map_size, water_percent, max_island_size, preferred_islan
 
 	return filename
 
+def generate_random_seed(seed):
+	rand = random.Random(seed)
+	if rand.randint(0, 1) == 0:
+		# generate a random string of 1-5 letters a-z with a dash if there are 4 or more letters
+		seq = ''
+		for i in xrange(rand.randint(1, 5)):
+			seq += chr(97 + rand.randint(0, 25))
+		if len(seq) > 3:
+			split = rand.randint(2, len(seq) - 2)
+			seq = seq[:split] + '-' + seq[split:]
+		return unicode(seq)
+	else:
+		# generate a numeric seed
+		fields = rand.randint(1, 3)
+		if fields == 1:
+			# generate a five digit integer
+			return unicode(rand.randint(10000, 99999))
+		else:
+			# generate a sequence of 2 or 3 dash separated fields of integers 10-9999
+			parts = []
+			for i in xrange(fields):
+				power = rand.randint(1, 3)
+				parts.append(str(rand.randint(10 ** power, 10 ** (power + 1) - 1)))
+			return unicode('-'.join(parts))
+
 def generate_map_from_seed(seed):
 	"""
 	Generates a random map with the given seed and default parameters.

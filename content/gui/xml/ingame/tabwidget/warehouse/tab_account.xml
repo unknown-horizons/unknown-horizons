@@ -13,22 +13,27 @@
 	<Container size="260,250" position="25,43">
 
 		<Label name="headline_income_label" position="0,0" text="Income:" />
-		<Label name="taxes_label" position="10,20" text="Taxes"/>
+		<Icon image="content/gui/images/resbar_stats/income.png" position="0,20" />
+		<Label name="taxes_label" position="19,20" text="Taxes"/>
 		<Label position="160,20" name="taxes" min_size="100,15" />
 
-		<Label name="sell_income_label" position="10,40" text="Sale" />
+		<Icon image="content/gui/images/resbar_stats/sell.png" position="0,40" />
+		<Label name="sell_income_label" position="19,40" text="Sale" />
 		<Label position="160,40" name="sale" min_size="100,15" />
 
 
 		<Label name="headline_expenses_label" position="0,70" text="Expenses:" />
 
-		<Label name="running_costs_label" position="10,90" text="Running costs"/>
+		<Icon image="content/gui/images/resbar_stats/expense.png" position="0,90" />
+		<Label name="running_costs_label" position="19,90" text="Running costs"/>
 		<Label position="160,90" name="running_costs" min_size="100,15"/>
 
-		<Label name="buy_expenses_label" position="10,110" text="Buying" />
+		<Icon image="content/gui/images/resbar_stats/buy.png" position="0,110" />
+		<Label name="buy_expenses_label" position="19,110" text="Buying" />
 		<Label position="160,110" name="buying" min_size="100,15" />
 
-		<Label name="headline_balance_label" position="0,140" text="Balance:" />
+		<Icon image="content/gui/images/resbar_stats/scales_icon.png" position="0,144" />
+		<Label name="headline_balance_label" position="19,140" text="Balance:" />
 		<Label position="160,140" name="balance" min_size="100,15" />
 	</Container>
 

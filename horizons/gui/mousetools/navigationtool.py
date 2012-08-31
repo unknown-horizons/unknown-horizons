@@ -28,7 +28,6 @@ from horizons.util import WorldObject, WeakList
 from horizons.util.lastactiveplayersettlementmanager import LastActivePlayerSettlementManager
 from horizons.constants import LAYERS
 from horizons.messaging import HoverInstancesChanged
-from horizons.messaging import MessageBus
 from horizons.extscheduler import ExtScheduler
 
 from fife.extensions.pychan.widgets import Icon
@@ -105,16 +104,16 @@ class NavigationTool(CursorTool):
 		super(NavigationTool, self).remove()
 
 	def mousePressed(self, evt):
-		if (evt.getButton() == fife.MouseEvent.MIDDLE):
+		if evt.getButton() == fife.MouseEvent.MIDDLE:
 			self._last_mmb_scroll_point = (evt.getX(), evt.getY())
 			self.middle_scroll_active = True
 
 	def mouseReleased(self, evt):
-		if (evt.getButton() == fife.MouseEvent.MIDDLE):
+		if evt.getButton() == fife.MouseEvent.MIDDLE:
 			self.middle_scroll_active = False
 
 	def mouseDragged(self, evt):
-		if (evt.getButton() == fife.MouseEvent.MIDDLE):
+		if evt.getButton() == fife.MouseEvent.MIDDLE:
 			if self.middle_scroll_active:
 				scroll_by = ( self._last_mmb_scroll_point[0] - evt.getX(),
 				              self._last_mmb_scroll_point[1] - evt.getY() )
@@ -212,8 +211,21 @@ class NavigationTool(CursorTool):
 
 		all_instances = []
 		for layer in layers:
-			instances = self.session.view.cam.getMatchingInstances(\
-		    fife.ScreenPoint(where.getX(), where.getY()), self.session.view.layers[layer], False) # False for accurate
+			x = where.getX()
+			y = where.getY()
+			instances = self.session.view.cam.getMatchingInstances(
+				fife.ScreenPoint(x, y),
+				self.session.view.layers[layer], False) # False for accurate
+
+			# if no instances found, try again and search within a 8px radius
+			if not instances:
+				selectionRadius = 8
+				radius = fife.Rect(x - selectionRadius, y - selectionRadius,
+				                   selectionRadius * 2, selectionRadius * 2)
+
+				instances = self.session.view.cam.getMatchingInstances(radius,
+									self.session.view.layers[layer])
+
 			all_instances.extend(instances)
 
 		hover_instances = []

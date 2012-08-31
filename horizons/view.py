@@ -51,9 +51,15 @@ class View(ChangeListener):
 		self.layers = []
 		for i in xrange(0, LAYERS.NUM):
 			self.layers.append(self.map.createLayer(str(i), cellgrid))
-			self.layers[i].setPathingStrategy(fife.CELL_EDGES_ONLY)
+			self.layers[i].setPathingStrategy(fife.CELL_EDGES_AND_DIAGONALS)
+			if hasattr(self.layers[i], 'setWalkable'):
+				self.layers[i].setWalkable(True)
 
-		self.cam = self.map.addCamera("main", self.layers[len(self.layers) - 1],
+		if hasattr(self.map, 'initializeCellCaches'):
+			self.map.initializeCellCaches()
+			self.map.finalizeCellCaches()
+
+		self.cam = self.map.addCamera("main", self.layers[-1],
 		                               fife.Rect(0, 0,
 		                                         horizons.main.fife.engine_settings.getScreenWidth(),
 		                                         horizons.main.fife.engine_settings.getScreenHeight())
@@ -61,7 +67,7 @@ class View(ChangeListener):
 		self.cam.setCellImageDimensions(*VIEW.CELL_IMAGE_DIMENSIONS)
 		self.cam.setRotation(VIEW.ROTATION)
 		self.cam.setTilt(VIEW.TILT)
-		self.cam.setZoom(VIEW.ZOOM)
+		self.cam.setZoom(VIEW.ZOOM_DEFAULT)
 
 		self.cam.resetRenderers()
 		self.renderer = {}
@@ -174,7 +180,7 @@ class View(ChangeListener):
 
 	def zoom_out(self, track_cursor=False):
 		zoom = self.cam.getZoom() * VIEW.ZOOM_LEVELS_FACTOR
-		if(zoom < VIEW.ZOOM_MIN):
+		if zoom < VIEW.ZOOM_MIN:
 			zoom = VIEW.ZOOM_MIN
 		if track_cursor:
 			self._prepare_zoom_to_cursor(zoom)
@@ -182,7 +188,7 @@ class View(ChangeListener):
 
 	def zoom_in(self, track_cursor=False):
 		zoom = self.cam.getZoom() / VIEW.ZOOM_LEVELS_FACTOR
-		if(zoom > VIEW.ZOOM_MAX):
+		if zoom > VIEW.ZOOM_MAX:
 			zoom = VIEW.ZOOM_MAX
 		if track_cursor:
 			self._prepare_zoom_to_cursor(zoom)

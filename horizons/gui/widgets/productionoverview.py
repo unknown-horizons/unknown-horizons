@@ -19,6 +19,8 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
+from operator import itemgetter
+
 from fife.extensions.pychan import widgets
 
 from horizons.constants import GAME_SPEED
@@ -61,24 +63,20 @@ class ProductionOverview(StatsWidget):
 		text = _('Production overview of {settlement}').format(settlement=name)
 		self._gui.findChild(name='headline').text = text
 
-		for resource_id, amount in \
-		    sorted(self.settlement.produced_res.items(),
-		           key = lambda data: data[1], reverse = True):
+		data = sorted(self.settlement.produced_res.items(), key=itemgetter(1), reverse=True)
+		for resource_id, amount in data:
 			self._add_line_to_gui(resource_id, amount)
 		self._content_vbox.adaptLayout()
 
 	def _add_line_to_gui(self, resource_id, amount, show_all=False):
-		# later we will modify which resources to be displayed (e.g. all
-		# settlements) via the switch show_all
-		res_name = self.db.get_res_name(resource_id, only_if_inventory=True)
-		# above code returns None if not shown in inventories
-		displayed = (res_name is not None) or show_all
+		displayed = self.db.get_res_inventory_display(resource_id)
 		if not displayed:
 			return
+		res_name = self.db.get_res_name(resource_id)
 
-		icon = create_resource_icon(resource_id, self.db, size=16)
+		icon = create_resource_icon(resource_id, self.db)
 		icon.name = 'icon_%s' % resource_id
-		icon.max_size = icon.min_size = icon.size = (16, 16)
+		icon.max_size = icon.min_size = icon.size = (20, 20)
 
 		label = widgets.Label(name = 'resource_%s' % resource_id)
 		label.text = res_name

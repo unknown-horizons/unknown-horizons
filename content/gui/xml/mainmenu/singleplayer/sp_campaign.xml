@@ -6,9 +6,9 @@
 	</ScrollArea>
 
 	<VBox name="map_info">
-		<Label name="map_author"     wrap_text="1" max_size="300,40" />
-		<Label name="map_difficulty" wrap_text="1" max_size="300,20" />
-		<Label name="map_desc"       wrap_text="1" max_size="300,120"/>
+		<Label name="map_author"     wrap_text="1" max_size="300,40"  min_size="300,40" />
+		<Label name="map_difficulty" wrap_text="1" max_size="300,20"  min_size="300,20" />
+		<Label name="map_desc"       wrap_text="1" max_size="300,120" min_size="300,120"/>
 		<!--
 		<ScrollArea name="map_description_area" position="5,380"> </ScrollArea>
 		-->

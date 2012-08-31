@@ -43,58 +43,64 @@ ExtScheduler.create_instance(Dummy()) # sometimes needed by entities in subseque
 Entities.load_buildings(db, load_now=True)
 Entities.load_units(load_now=True)
 
+building_name_mapping = dict( (b.id, b.name) for b in Entities.buildings.itervalues() )
+unit_name_mapping = dict( (u.id, u.name) for u in Entities.units.itervalues() )
 
 def get_obj_name(obj):
 	global db
 	if obj < UNITS.DIFFERENCE_BUILDING_UNIT_ID:
 		return db("SELECT name FROM building where id = ?", obj)[0][0]
 	else:
-		return db("SELECT name FROM unit where id = ?", obj)[0][0]
+		return unit_name_mapping[obj]
 
 def get_res_name(res):
 	global db
-	name = db("SELECT name FROM resource WHERE id = ?", res)[0][0]
+	try:
+		name = db("SELECT name FROM resource WHERE id = ?", res)[0][0]
+	except IndexError: # might be a unit instead
+		name = get_obj_name(res)
 	return name
 
 def get_settler_name(incr):
 	global db
 	return db("SELECT name FROM settler_level WHERE level = ?", incr)[0][0]
 
-def get_prod_line(id, type):
-	print 'Data has been moved, this view is unavailable for now'
-	return
-	from horizons.util.python.roman_numerals import int_to_roman
-	consumption = db("SELECT resource, amount FROM production \
-                      WHERE production_line = ? AND amount < 0 ORDER BY amount ASC", id)
-	production = db("SELECT resource, amount FROM production \
-                     WHERE production_line = ? AND amount > 0 ORDER BY amount ASC", id)
-	if type is list:
-		return (consumption, production)
-	elif type is tuple:
-		return (consumption[0], production[0])
+def format_prodline(line_list, depth):
+	for res, amount in line_list:
+		print ' '*depth, '{amount:>4} {name:16} ({id:2})'.format(
+			amount=abs(amount), name=get_res_name(res), id=res)
 
 def print_production_lines():
-	print 'Data has been moved, this view is unavailable for now'
-	return
-	print 'Production Lines:'
-	for (id, changes_anim, object, time, default) in db("SELECT id, changes_animation, object_id, time, enabled_by_default FROM production_line ORDER BY object_id"):
-		(consumption,production) = get_prod_line(id, list)
-
-		str = 'Line %2s of %2s:%-16s %5s sec %s %s ' % (id, object, get_obj_name(object), time, ('D' if default else ' '), ('C' if changes_anim else ' '))
-
-		if consumption:
-			str += 'uses: '
-			for res, amount in consumption:
-				str += '%2s %-16s ' % (-amount, get_res_name(res) + '(%s)' % res)
-
-		if production:
-			str += '\t=> '
-			for res, amount in production:
-				str +=  '%2s %-16s ' % (amount, get_res_name(res) + '(%s)' % res)
-
-		print str
+	print 'Production lines per building:'
+	for b in Entities.buildings.itervalues():
+		print '\n', b.name, '\n', '='*len(b.name)
+		for comp in b.component_templates:
+			if not isinstance(comp, dict):
+				continue
+			for name, data in comp.iteritems():
+				if 'produce' not in name.lower():
+					continue
+				for id, dct in data.get('productionlines').iteritems():
+					if not dct:
+						continue
+					changes_animation = dct.get('changes_animation') is None
+					changes_anim_text = changes_animation and 'changes animation' or 'does not change animation'
+					disabled_by_default = dct.get('enabled_by_default') is not None
+					enabled_text = (disabled_by_default and 'not ' or '') + 'enabled by default'
+					time = dct.get('time') or 1
+					print '{time:>3}s'.format(time=time), '('+changes_anim_text+',', enabled_text+')'
+					consumes = dct.get('consumes')
+					if consumes:
+						print '   consumes'
+						format_prodline(consumes, 4)
+					produces = dct.get('produces')
+					if produces:
+						print '   produces'
+						format_prodline(produces, 4)
 
 def print_verbose_lines():
+	print 'Data has been moved, this view is unavailable for now'
+	return
 	def _output_helper_prodlines(string, list):
 		if len(list) == 1:
 			for res, amount in list:
@@ -116,16 +122,6 @@ def print_verbose_lines():
 		_output_helper_prodlines('consume', consumption)
 		_output_helper_prodlines('produce', production)
 
-
-def strw(s, width=0):
-	"""returns string with at least width chars"""
-	s = str(s)
-	slen = len(s)
-	diff = width - slen
-	if diff > 0: s += " "*diff
-	return s
-
-
 def print_res():
 	print 'Resources' + '\n' + '%2s: %-15s %5s %10s %19s' % ('id', 'resource', 'value', 'tradeable', 'shown_in_inventory')
 	print '=' * 56
@@ -140,7 +136,7 @@ def print_building():
 	print '\n' + '=' * 23 + 'R===P' + '=' * 50
 	for b in Entities.buildings.itervalues():
 		print "%2s: %-16s %3s / %2s %5sx%1s %4s   %s" % \
-		(b.id, b.name, b.running_costs or '--', b.running_costs_inactive or '--', \
+		(b.id, b.name, b.running_costs or '--', b.running_costs_inactive or '--',
 		 b.size[0], b.size[1], b.radius, b.baseclass)
 
 def print_unit():
@@ -167,8 +163,6 @@ def print_storage():
 		for res, amount in inv.values()[0].values()[0].iteritems():
 			print "\t%2s tons of %s(%s)" % (amount, get_res_name(res), res)
 
-
-
 	print "\nAll others can store 30 tons of each res:" # show buildings with default storage
 	return
 	all = set(db('SELECT id FROM building'))
@@ -178,9 +172,15 @@ def print_storage():
 
 def print_collectors():
 	print 'Collectors: (building amount collector)'
-	for b, coll, amount in db("SELECT object_id, collector_class, count FROM \
-			collectors ORDER BY object_id ASC"):
-		print "%2s: %-18s %s %s (%s)" % (b, get_obj_name(b), amount, get_obj_name(coll), coll)
+	for b in Entities.buildings.itervalues():
+		for comp in b.component_templates:
+			if not isinstance(comp, dict):
+				continue
+			for name, data in comp.iteritems():
+				if 'collect' not in name.lower():
+					continue
+				for id, amount in data.get('collectors').iteritems():
+					print "%2s: %-18s %s %s (%s)" % (b.id, b.name, amount, get_obj_name(id), id)
 
 def print_building_costs():
 	print 'Building costs:'
@@ -199,20 +199,25 @@ def print_building_costs():
 		print "%2i: %s" % (b.id, b.name)
 
 def print_collector_restrictions():
-	for c, in db("SELECT DISTINCT collector FROM collector_restrictions"):
-		print '%s(%s) is restricted to:' % (get_obj_name(c), c)
-		for obj, in db("SELECT object FROM collector_restrictions WHERE collector = ?", c):
-			print '\t%s(%s)' % (get_obj_name(obj),obj)
+	for u in Entities.units.itervalues():
+		for comp in u.component_templates:
+			if not isinstance(comp, dict):
+				continue
+			for name, data in comp.iteritems():
+				if 'restricted' not in name.lower():
+					continue
+				print '%s(%s) is restricted to:' % (u.class_name, u.id)
+				for building in data.get('allowed'):
+					print '\t%s(%s)' % (building_name_mapping[building], building)
 
 def print_increment_data():
 	print 'Data has been moved, this view is unavailable for now'
 	return
-	from horizons.util.python.roman_numerals import int_to_roman
 	upgrade_increments = xrange(1, SETTLER.CURRENT_MAX_INCR+1)
 	print '%15s %s %s  %s' % ('increment', 'max_inh', 'base_tax', 'upgrade_prod_line')
 	print '=' * 64
 	for inc, name, inh, tax in db('SELECT level, name, inhabitants_max, tax_income FROM settler_level'):
-		str = '%3s %11s %5s    %4s' % (int_to_roman(inc+1), name, inh, tax)
+		str = '%3s %11s %5s    %4s' % ((inc+1), name, inh, tax)
 		if inc+1 in upgrade_increments:
 			line = db("SELECT production_line FROM upgrade_material WHERE level = ?", inc+1)[0][0]
 			str += 5 * ' ' + '%2s: ' % line
@@ -286,10 +291,10 @@ functions = {
 		'lines' : print_production_lines,
 		'names' : print_names,
 		'resources' : print_res,
-    'settler_needs' : print_settler_needs,
+		'settler_needs' : print_settler_needs,
 		'storage' : print_storage,
 		'units' : print_unit,
-		'verbose_lines' : print_verbose_lines,
+		'verbose_lines' : print_production_lines,
 		}
 abbrevs = {
 		'b' : 'buildings',
@@ -301,6 +306,7 @@ abbrevs = {
 		'i' : 'increments',
 		'increment' : 'increments',
 		'n' : 'names',
+		'pl' : 'lines',
 		'res' : 'resources',
 		'settler_lines': 'increments',
 		'sl': 'increments',
@@ -314,8 +320,6 @@ for (x,y) in abbrevs.iteritems(): # add convenience abbreviations to possible fl
 	flags[x] = functions[y]
 
 args = sys.argv
-
-print 'WARNING: most of the features are currently broken since units and buildings are now represented differently.'
 
 if len(args) == 1:
 	print 'Start with one of those args: %s \nSupported abbreviations: %s' % (sorted(functions.keys()), sorted(abbrevs.keys()))

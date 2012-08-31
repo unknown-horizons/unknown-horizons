@@ -29,6 +29,7 @@ import tempfile
 import logging
 from fife import fife
 from fife.extensions import pychan
+from horizons.gui.quotes import GAMEPLAY_TIPS, FUN_QUOTES
 
 import horizons.main
 
@@ -114,8 +115,10 @@ class Gui(SingleplayerMenu, MultiplayerMenu):
 		self.on_escape = self.show_quit
 
 	def toggle_pause(self):
-		"""
-		Show Pause menu
+		"""Shows in-game pause menu if the game is currently not paused.
+		Else unpauses and hides the menu. Multiple layers of the 'paused' concept exist;
+		if two widgets are opened which would both pause the game, we do not want to
+		unpause after only one of them is closed. Uses PauseCommand and UnPauseCommand.
 		"""
 		# TODO: logically, this now belongs to the ingame_gui (it used to be different)
 		#       this manifests itself by the need for the __pause_displayed hack below
@@ -166,15 +169,7 @@ class Gui(SingleplayerMenu, MultiplayerMenu):
 				'quit'     : events['e_quit'],
 			})
 
-			# load transparent background, that de facto prohibits access to other
-			# gui elements by eating all events
-			height = horizons.main.fife.engine_settings.getScreenHeight()
-			width = horizons.main.fife.engine_settings.getScreenWidth()
-			image = horizons.main.fife.imagemanager.loadBlank(width, height)
-			image = fife.GuiImage(image)
-			self.current.additional_widget = pychan.Icon(image=image)
-			self.current.additional_widget.position = (0, 0)
-			self.current.additional_widget.show()
+			self.show_modal_background()
 			self.current.show()
 
 			PauseCommand(suggestion=True).execute(self.session)
@@ -191,12 +186,15 @@ class Gui(SingleplayerMenu, MultiplayerMenu):
 			self.show_popup(_('Error'), _('Failed to save.'))
 
 	def show_settings(self):
+		"""Displays settings gui derived from the FIFE settings module."""
 		horizons.main.fife.show_settings()
 
 	_help_is_displayed = False
 	def on_help(self):
-		"""Called on help action
-		Toggles help screen via static variable help_is_displayed"""
+		"""Called on help action.
+		Toggles help screen via static variable *help_is_displayed*.
+		Can be called both from main menu and in-game interface.
+		"""
 		help_dlg = self.widgets['help']
 		if not self._help_is_displayed:
 			self._help_is_displayed = True
@@ -214,13 +212,13 @@ class Gui(SingleplayerMenu, MultiplayerMenu):
 			help_dlg.hide()
 
 	def show_quit(self):
-		"""Shows the quit dialog """
+		"""Shows the quit dialog. Closes the game unless the dialog is cancelled."""
 		message = _("Are you sure you want to quit Unknown Horizons?")
 		if self.show_popup(_("Quit Game"), message, show_cancel_button=True):
 			horizons.main.quit()
 
 	def quit_session(self, force=False):
-		"""Quits the current session.
+		"""Quits the current session. Usually returns to main menu afterwards.
 		@param force: whether to ask for confirmation"""
 		message = _("Are you sure you want to abort the running session?")
 
@@ -266,18 +264,17 @@ class Gui(SingleplayerMenu, MultiplayerMenu):
 
 	def show_select_savegame(self, mode, sanity_checker=None, sanity_criteria=None):
 		"""Shows menu to select a savegame.
-		@param mode: 'save', 'load' or 'mp_load'
+		@param mode: Valid options are 'save', 'load', 'mp_load', 'mp_save'
 		@param sanity_checker: only allow manually entered names that pass this test
 		@param sanity_criteria: explain which names are allowed to the user
 		@return: Path to savegamefile or None"""
 		assert mode in ('save', 'load', 'mp_load', 'mp_save')
 		map_files, map_file_display = None, None
-		mp = False
 		args = mode, sanity_checker, sanity_criteria # for reshow
-		if mode.startswith('mp'):
+		mp = mode.startswith('mp_')
+		if mp:
 			mode = mode[3:]
-			mp = True
-			# below this line, mp_load == load, mp_save == save
+		# below this line, mp_load == load, mp_save == save
 		if mode == 'load':
 			if not mp:
 				map_files, map_file_display = SavegameManager.get_saves()
@@ -294,8 +291,13 @@ class Gui(SingleplayerMenu, MultiplayerMenu):
 
 		# Prepare widget
 		old_current = self._switch_current_widget('select_savegame')
-		self.current.findChild(name='headline').text = _('Save game') if mode == 'save' else _('Load game')
-		self.current.findChild(name=OkButton.DEFAULT_NAME).helptext = _('Save game') if mode == 'save' else _('Load game')
+		if mode == 'save':
+			helptext = _('Save game')
+		elif mode == 'load':
+			helptext = _('Load game')
+		# else: not a valid mode, so we can as well crash on the following
+		self.current.findChild(name='headline').text = helptext
+		self.current.findChild(name=OkButton.DEFAULT_NAME).helptext = helptext
 
 		name_box = self.current.findChild(name="gamename_box")
 		password_box = self.current.findChild(name="gamepassword_box")
@@ -328,21 +330,20 @@ class Gui(SingleplayerMenu, MultiplayerMenu):
 
 		def tmp_selected_changed():
 			"""Fills in the name of the savegame in the textbox when selected in the list"""
-			if mode == 'save': # set textbox only if we are in save mode
-				if self.current.collectData('savegamelist') == -1: # set blank if nothing is selected
-					self.current.findChild(name="savegamefile").text = u""
-				else:
-					self.current.distributeData(
-						{'savegamefile' : map_file_display[self.current.collectData('savegamelist')]})
+			if mode != 'save': # set textbox only if we are in save mode
+				return
+			if self.current.collectData('savegamelist') == -1: # set blank if nothing is selected
+				self.current.findChild(name="savegamefile").text = u""
+			else:
+				savegamefile = map_file_display[self.current.collectData('savegamelist')]
+				self.current.distributeData({'savegamefile': savegamefile})
 
-		self.current.distributeInitialData({'savegamelist' : map_file_display})
-		self.current.distributeData({'savegamelist' : -1}) # Don't select anything by default
-		cb = Callback.ChainedCallbacks(Gui._create_show_savegame_details(self.current, map_files, 'savegamelist'),
-		                               tmp_selected_changed)
+		self.current.distributeInitialData({'savegamelist': map_file_display})
+		self.current.distributeData({'savegamelist': -1}) # Don't select anything by default
+		cb_details = Gui._create_show_savegame_details(self.current, map_files, 'savegamelist')
+		cb = Callback.ChainedCallbacks(cb_details, tmp_selected_changed)
 		cb() # Refresh data on start
-		self.current.findChild(name="savegamelist").mapEvents({
-			'savegamelist/action'              : cb
-		})
+		self.current.mapEvents({'savegamelist/action': cb})
 		self.current.findChild(name="savegamelist").capture(cb, event_name="keyPressed")
 
 		bind = {
@@ -372,7 +373,8 @@ class Gui(SingleplayerMenu, MultiplayerMenu):
 		if mode == 'save': # return from textfield
 			selected_savegame = self.current.collectData('savegamefile')
 			if selected_savegame == "":
-				self.show_error_popup(windowtitle=_("No filename given"), description=_("Please enter a valid filename."))
+				self.show_error_popup(windowtitle=_("No filename given"),
+				                      description=_("Please enter a valid filename."))
 				self.current = old_current
 				return self.show_select_savegame(*args) # reshow dialog
 			elif selected_savegame in map_file_display: # savegamename already exists
@@ -384,7 +386,8 @@ class Gui(SingleplayerMenu, MultiplayerMenu):
 					return self.show_select_savegame(*args) # reshow dialog
 			elif sanity_checker and sanity_criteria:
 				if not sanity_checker(selected_savegame):
-					self.show_error_popup(windowtitle=_("Invalid filename given"), description=sanity_criteria)
+					self.show_error_popup(windowtitle=_("Invalid filename given"),
+					                      description=sanity_criteria)
 					self.current = old_current
 					return self.show_select_savegame(*args) # reshow dialog
 		else: # return selected item from list
@@ -418,25 +421,23 @@ class Gui(SingleplayerMenu, MultiplayerMenu):
 		self.log.debug("Gui: hiding current: %s", self.current)
 		if self.current is not None:
 			self.current.hide()
-			try:
-				self.current.additional_widget.hide()
-				del self.current.additional_widget
-			except AttributeError:
-				pass # only used for some widgets, e.g. pause
+			self.hide_modal_background()
 
 	def is_visible(self):
 		return self.current is not None and self.current.isVisible()
 
-
-	def show_dialog(self, dlg, bind, event_map=None):
+	def show_dialog(self, dlg, bind, event_map=None, modal=False):
 		"""Shows any pychan dialog.
 		@param dlg: dialog that is to be shown
 		@param bind: events that make the dialog return + return values{ 'ok': callback, 'cancel': callback }
 		@param event_map: dictionary with callbacks for buttons. See pychan docu: pychan.widget.mapEvents()
+		@param modal: Whether to block user interaction while displaying the dialog
 		"""
 		self.current_dialog = dlg
 		if event_map is not None:
 			dlg.mapEvents(event_map)
+		if modal:
+			self.show_modal_background()
 
 		# handle escape and enter keypresses
 		def _on_keypress(event, dlg=dlg): # rebind to make sure this dlg is used
@@ -448,7 +449,7 @@ class Gui(SingleplayerMenu, MultiplayerMenu):
 					pychan.tools.applyOnlySuitable(callback, event=event, widget=btn)
 				else:
 					# escape should hide the dialog default
-					pychan.internal.get_manager().breakFromMainLoop(returnValue=False)
+					horizons.main.fife.pychanmanager.breakFromMainLoop(returnValue=False)
 					dlg.hide()
 			elif event.getKey().getValue() == fife.Key.ENTER: # convention says use ok action
 				btn = dlg.findChild(name=OkButton.DEFAULT_NAME)
@@ -463,25 +464,32 @@ class Gui(SingleplayerMenu, MultiplayerMenu):
 		self.dialog_executed = True
 		ret = dlg.execute(bind)
 		self.dialog_executed = False
+		if modal:
+			self.hide_modal_background()
 		return ret
 
-	def show_popup(self, windowtitle, message, show_cancel_button=False, size=0):
+	def show_popup(self, windowtitle, message, show_cancel_button=False, size=0, modal=True):
 		"""Displays a popup with the specified text
 		@param windowtitle: the title of the popup
 		@param message: the text displayed in the popup
 		@param show_cancel_button: boolean, show cancel button or not
 		@param size: 0, 1 or 2. Larger means bigger.
+		@param modal: Whether to block user interaction while displaying the popup
 		@return: True on ok, False on cancel (if no cancel button, always True)
 		"""
 		popup = self.build_popup(windowtitle, message, show_cancel_button, size=size)
 		# ok should be triggered on enter, therefore we need to focus the button
 		# pychan will only allow it after the widgets is shown
-		ExtScheduler().add_new_object(lambda : popup.findChild(name=OkButton.DEFAULT_NAME).requestFocus(), self, run_in=0)
+		def focus_ok_button():
+			popup.findChild(name=OkButton.DEFAULT_NAME).requestFocus()
+		ExtScheduler().add_new_object(focus_ok_button, self, run_in=0)
 		if show_cancel_button:
-			return self.show_dialog(popup,{OkButton.DEFAULT_NAME : True,
-			                               CancelButton.DEFAULT_NAME : False})
+			return self.show_dialog(popup, {OkButton.DEFAULT_NAME : True,
+			                                CancelButton.DEFAULT_NAME : False},
+			                        modal=modal)
 		else:
-			return self.show_dialog(popup, {OkButton.DEFAULT_NAME : True})
+			return self.show_dialog(popup, {OkButton.DEFAULT_NAME : True},
+			                        modal=modal)
 
 	def show_error_popup(self, windowtitle, description, advice=None, details=None, _first=True):
 		"""Displays a popup containing an error message.
@@ -499,9 +507,10 @@ class Gui(SingleplayerMenu, MultiplayerMenu):
 		if advice:
 			msg += advice + u"\n"
 		if details:
-			msg += _(u"Details:") + u" " + details
+			msg += _("Details: {error_details}").format(error_details=details)
 		try:
-			self.show_popup( _(u"Error:") + u" " + windowtitle, msg, show_cancel_button=False)
+			self.show_popup( _("Error: {error_message}").format(error_message=windowtitle),
+			                 msg, show_cancel_button=False)
 		except SystemExit: # user really wants us to die
 			raise
 		except:
@@ -548,8 +557,44 @@ class Gui(SingleplayerMenu, MultiplayerMenu):
 		popup.adaptLayout() # recalculate widths
 		return popup
 
+	def show_modal_background(self):
+		""" Loads transparent background that de facto prohibits
+		access to other gui elements by eating all input events.
+		Used for modal popups and our in-game menu.
+		"""
+		height = horizons.main.fife.engine_settings.getScreenHeight()
+		width = horizons.main.fife.engine_settings.getScreenWidth()
+		image = horizons.main.fife.imagemanager.loadBlank(width, height)
+		image = fife.GuiImage(image)
+		self.current.additional_widget = pychan.Icon(image=image)
+		self.current.additional_widget.position = (0, 0)
+		self.current.additional_widget.show()
+
+	def hide_modal_background(self):
+		try:
+			self.current.additional_widget.hide()
+			del self.current.additional_widget
+		except AttributeError:
+			pass # only used for some widgets, e.g. pause
+
 	def show_loading_screen(self):
 		self._switch_current_widget('loadingscreen', center=True, show=True)
+		# Add 'Quote of the Load' to loading screen:
+		qotl_type_label = self.current.findChild(name='qotl_type_label')
+		qotl_label = self.current.findChild(name='qotl_label')
+		quote_type = int(horizons.main.fife.get_uh_setting("QuotesType"))
+		if quote_type == 2:
+			quote_type = random.randint(0, 1) # choose a random type
+
+		if quote_type == 0:
+			name = GAMEPLAY_TIPS["name"]
+			items = GAMEPLAY_TIPS["items"]
+		elif quote_type == 1:
+			name = FUN_QUOTES["name"]
+			items = FUN_QUOTES["items"]
+
+		qotl_type_label.text = unicode(name)
+		qotl_label.text = unicode(random.choice(items)) # choose a random quote / gameplay tip
 
 # helper
 
@@ -567,11 +612,10 @@ class Gui(SingleplayerMenu, MultiplayerMenu):
 			self.hide()
 		self.log.debug("Gui: setting current to %s", new_widget)
 		self.current = self.widgets[new_widget]
-		# Set background image
 		bg = self.current.findChild(name='background')
 		if bg:
+			# Set background image
 			bg.image = self._background_image
-
 		if center:
 			self.current.position_technique = "automatic" # == "center:center"
 		if event_map:
@@ -629,10 +673,9 @@ class Gui(SingleplayerMenu, MultiplayerMenu):
 			if savegame_info['timestamp'] == -1:
 				details_label.text += _("Unknown savedate")
 			else:
+				savetime = time.strftime("%c", time.localtime(savegame_info['timestamp']))
 				#xgettext:python-format
-				details_label.text += _("Saved at {time}").format(
-				                         time=time.strftime("%c",
-				                         time.localtime(savegame_info['timestamp'])).decode('utf-8'))
+				details_label.text += _("Saved at {time}").format(time=savetime.decode('utf-8'))
 			details_label.text += u'\n'
 			counter = savegame_info['savecounter']
 			# N_ takes care of plural forms for different languages
@@ -641,7 +684,7 @@ class Gui(SingleplayerMenu, MultiplayerMenu):
 			                         "Saved {amount} times",
 			                         counter).format(amount=counter)
 			details_label.text += u'\n'
-			details_label.stylize('book_t')
+			details_label.stylize('book')
 
 			from horizons.constants import VERSION
 			try:
@@ -691,7 +734,6 @@ class Gui(SingleplayerMenu, MultiplayerMenu):
 		self._background_image = self._get_random_background()
 		self.show_main()
 
-
 	def _get_random_background(self):
 		"""Randomly select a background image to use through out the game menu."""
 		available_images = glob.glob('content/gui/images/background/mainmenu/bg_*.png')
@@ -729,7 +771,7 @@ def build_help_strings(widgets):
 
 	labels = widgets.getNamedChildren()
 	# filter misc labels that do not describe key functions
-	labels = dict( [(name, lbl) for (name, lbl) in labels.items() if name.startswith('lbl_')] )
+	labels = dict( (name, lbl) for (name, lbl) in labels.iteritems() if name.startswith('lbl_') )
 
 	# now prepend the actual keys to the function strings defined in xml
 	for (name, lbl) in labels.items():
@@ -741,5 +783,3 @@ def build_help_strings(widgets):
 
 	author_label = widgets.findChild(name='fife_and_uh_team')
 	author_label.helptext = u"www.unknown-[br]horizons.org[br]www.fifengine.net"
-
-

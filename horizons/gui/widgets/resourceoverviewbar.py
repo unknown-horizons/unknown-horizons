@@ -29,7 +29,7 @@ import functools
 
 import horizons.main
 
-from horizons.constants import RES
+from horizons.constants import TIER, RES
 from horizons.component.storagecomponent import StorageComponent
 from horizons.gui.util import load_uh_widget, get_res_icon_path, create_resource_selection_dialog
 from horizons.util import PychanChildFinder, Callback
@@ -65,7 +65,13 @@ class ResourceOverviewBar(object):
 	"""
 
 	GOLD_ENTRY_GUI_FILE = "resource_overview_bar_gold.xml"
+	INITIAL_X_OFFSET = 100 # length of money icon (87px) + padding (10px left, 3px right)
+
 	ENTRY_GUI_FILE = "resource_overview_bar_entry.xml"
+	ENTRY_X_OFFSET = 52 # length of entry icons (49px) + padding (3px right)
+	ENTRY_Y_OFFSET = 17 # only padding (17px top)!
+	ENTRY_Y_HEIGHT = 66 # only height of entry icons (66px)!
+	CONSTRUCTION_LABEL_HEIGHT = 22 # height of extra label shown in build preview mode
 
 	STATS_GUI_FILE = "resource_overview_bar_stats.xml"
 
@@ -79,11 +85,11 @@ class ResourceOverviewBar(object):
 	                      RES.SALT]
 
 	# order should match the above, else confuses players when in build mode
-	CONSTRUCTION_RESOURCES = { # per settler increment
-	  0: [ RES.TOOLS, RES.BOARDS ],
-	  1: [ RES.TOOLS, RES.BOARDS, RES.BRICKS ],
-	  2: [ RES.TOOLS, RES.BOARDS, RES.BRICKS ],
-	  3: [ RES.TOOLS, RES.BOARDS, RES.BRICKS ],
+	CONSTRUCTION_RESOURCES = { # per inhabitant tier
+	  TIER.SAILORS:  [ RES.TOOLS, RES.BOARDS ],
+	  TIER.PIONEERS: [ RES.TOOLS, RES.BOARDS, RES.BRICKS ],
+	  TIER.SETTLERS: [ RES.TOOLS, RES.BOARDS, RES.BRICKS ],
+	  TIER.CITIZENS: [ RES.TOOLS, RES.BOARDS, RES.BRICKS ],
 	}
 
 	def __init__(self, session):
@@ -95,7 +101,9 @@ class ResourceOverviewBar(object):
 		self.gold_gui = load_uh_widget(self.__class__.GOLD_ENTRY_GUI_FILE, style=self.__class__.STYLE)
 		self.gold_gui.balance_visible = False
 		self.gold_gui.child_finder = PychanChildFinder(self.gold_gui)
-		self.gold_gui.child_finder("res_icon").image = get_res_icon_path(RES.GOLD, 32)
+		gold_icon = self.gold_gui.child_finder("res_icon")
+		gold_icon.image = get_res_icon_path(RES.GOLD)
+		gold_icon.max_size = gold_icon.min_size = gold_icon.size = (32, 32)
 		self.gold_gui.mapEvents({
 		  "resbar_gold_container/mouseClicked/stats" : self._toggle_stats,
 		  })
@@ -198,8 +206,6 @@ class ResourceOverviewBar(object):
 
 		# construct new slots (fill values later)
 		load_entry = lambda : load_uh_widget(self.ENTRY_GUI_FILE, style=self.__class__.STYLE)
-		initial_offset = 101
-		offset = 52
 		resources = self._get_current_resources()
 		addition = [-1] if self._do_show_dummy or not resources else [] # add dummy at end for adding stuff
 		for i, res in enumerate( resources + addition ):
@@ -211,7 +217,8 @@ class ResourceOverviewBar(object):
 				entry = load_entry()
 				self.gui.append(entry)
 
-			entry.findChild(name="entry").position = (initial_offset + offset * i, 17)
+			entry.findChild(name="entry").position = (self.INITIAL_X_OFFSET + i * self.ENTRY_X_OFFSET,
+			                                          self.ENTRY_Y_OFFSET)
 			background_icon = entry.findChild(name="entry")
 			background_icon.capture(Callback(self._show_resource_selection_dialog, i), 'mouseEntered', 'resbar')
 
@@ -219,8 +226,9 @@ class ResourceOverviewBar(object):
 				helptext = self.session.db.get_res_name(res)
 				icon = entry.findChild(name="res_icon")
 				icon.num = i
-				icon.image = get_res_icon_path(res, 24)
-				icon.capture(self._on_res_slot_click, event_name = 'mouseClicked')
+				icon.image = get_res_icon_path(res)
+				icon.max_size = icon.min_size = icon.size = (24, 24)
+				icon.capture(self._on_res_slot_click, event_name='mouseClicked')
 			else:
 				helptext = _("Click to add a new slot")
 				entry.show() # this will not be filled as the other res
@@ -374,7 +382,7 @@ class ResourceOverviewBar(object):
 			lvl = self.session.world.player.settler_level
 			res_list = self.__class__.CONSTRUCTION_RESOURCES[lvl]
 			# also add additional res that might be needed
-			res_list += [ res for res in self._last_build_costs if \
+			res_list += [ res for res in self._last_build_costs if
 			              res not in res_list and res != RES.GOLD ]
 			return res_list
 		# prefer user defaults over general defaults
@@ -387,6 +395,20 @@ class ResourceOverviewBar(object):
 			return self.current_instance().get_component(StorageComponent).inventory
 		else:
 			return None
+
+	def get_size(self):
+		"""
+		Returns (x,y) size tuple.
+		Used by the cityinfo to determine how to change its position if the widgets
+		overlap using default positioning (resource bar can get arbitrarily long).
+		Note that the money icon has the same offset effect as all entry icons have
+		(height 73 + padding 10 == height 66 + padding 17), thus the calculation only
+		needs ENTRY_Y_OFFSET to determine the maximum widget height.
+		"""
+		item_amount = len(self._get_current_resources())
+		width = self.INITIAL_X_OFFSET + self.ENTRY_X_OFFSET * item_amount
+		height = self.ENTRY_Y_OFFSET + self.CONSTRUCTION_LABEL_HEIGHT * self.construction_mode
+		return (width, height)
 
 
 	###
@@ -492,13 +514,12 @@ class ResourceOverviewBar(object):
 
 		self.resource_configurations[self.current_instance()] = res_copy
 
+		if number_of_slots_changed:
+			ResourceBarResize.broadcast(self)
 		self.redraw()
 
 		if isinstance(self.session.cursor, ResBarMouseTool):
 			self.session.cursor.reset()
-
-		if number_of_slots_changed:
-			ResourceBarResize.broadcast(self)
 
 	def _hide_resource_selection_dialog(self):
 		if hasattr(self, "_res_selection_dialog"):
@@ -549,10 +570,10 @@ class ResourceOverviewBar(object):
 			  })
 
 			images = [ # these must correspond to the entries in _update_stats
-				"content/gui/images/resbar_stats/gold_icon.png",
-				"content/gui/images/resbar_stats/tools_icon.png",
-				"content/gui/images/resbar_stats/tools_icon.png",
-				"content/gui/images/resbar_stats/tools_icon.png",
+				"content/gui/images/resbar_stats/expense.png",
+				"content/gui/images/resbar_stats/income.png",
+				"content/gui/images/resbar_stats/buy.png",
+				"content/gui/images/resbar_stats/sell.png",
 				"content/gui/images/resbar_stats/scales_icon.png",
 			  ]
 
@@ -580,19 +601,16 @@ class ResourceOverviewBar(object):
 		# fill in valies of stats, must correspond to images in _show_stats
 		format_display = lambda x : (u"+" if x >= 0 else u"") + unicode(x)
 		data = self.session.world.player.get_statistics()
-		# TODO: mark as expense
+
 		self.stats_gui.child_finder("resbar_stats_line_0").helptext = _("Running costs")
 		self.stats_gui.child_finder("resbar_stats_entry_0").text = format_display(-data.running_costs)
 
-		# TODO: mark as income
 		self.stats_gui.child_finder("resbar_stats_line_1").helptext = _("Taxes")
 		self.stats_gui.child_finder("resbar_stats_entry_1").text = format_display(data.taxes)
 
-		# TODO: mark as expense
 		self.stats_gui.child_finder("resbar_stats_line_2").helptext = _("Buy expenses")
 		self.stats_gui.child_finder("resbar_stats_entry_2").text = format_display(-data.buy_expenses)
 
-		# TODO: mark as income
 		self.stats_gui.child_finder("resbar_stats_line_3").helptext = _("Sell income")
 		self.stats_gui.child_finder("resbar_stats_entry_3").text = format_display(data.sell_income)
 

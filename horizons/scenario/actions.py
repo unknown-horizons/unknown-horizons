@@ -30,6 +30,8 @@ from horizons.scenario import CONDITIONS
 from horizons.savegamemanager import SavegameManager
 from horizons.constants import MESSAGES, AUTO_CONTINUE_CAMPAIGN
 from horizons.command.game import PauseCommand, UnPauseCommand
+from horizons.messaging import SettlerUpdate
+from horizons.component.storagecomponent import StorageComponent
 
 
 class ACTIONS(object):
@@ -55,13 +57,13 @@ def show_message(session, type=None, *messages):
 	If you pass more than one message, they are shown simultaneously."""
 	visible_ticks = Scheduler().get_ticks(MESSAGES.CUSTOM_MSG_VISIBLE_FOR)
 	
-	return [session.ingame_gui.message_widget.add_custom(x=None, y=None, messagetext=msg, msg_type=type, visible_for=visible_ticks)
+	return [session.ingame_gui.message_widget.add_custom(point=None, messagetext=msg, msg_type=type, visible_for=visible_ticks)
 	        for msg in messages]
 
 @register(name='db_message')
 def show_db_message(session, database_message_id):
 	"""Shows a message with predefined text in the messagewidget."""
-	session.ingame_gui.message_widget.add(x=None, y=None, string_id=database_message_id)
+	session.ingame_gui.message_widget.add(point=None, string_id=database_message_id)
 
 @register(name='logbook')
 def show_logbook_entry_delayed(session, *parameters):
@@ -136,6 +138,30 @@ def wait(session, seconds):
 	"""Postpones any other scenario events for a certain amount of seconds."""
 	delay = Scheduler().get_ticks(seconds)
 	session.scenario_eventhandler.sleep(delay)
+
+@register()
+def alter_inventory(session, resource, amount):
+	"""Alters the inventory of each settlement."""
+	for settlement in session.world.settlements:
+		if settlement.owner == session.world.player and settlement.warehouse:
+			settlement.warehouse.get_component(StorageComponent).inventory.alter(
+					resource, amount)
+
+@register()
+def highlight_position(session, x, y, play_sound=False, color=(0,0,0)):
+	"""Highlights a position on the minimap.
+	color is a optional parameter that defines the color of the highlight. """
+	session.ingame_gui.minimap.highlight((x,y), color=color)
+	if play_sound:
+		horizons.main.fife.play_sound('effects', 'content/audio/sounds/ships_bell.ogg')
+
+@register()
+def change_increment(session, increment):
+	""" Changes the increment of the settlements. """
+	for settlement in session.world.settlements:
+		if settlement.owner == session.world.player:
+			# Settler levels are zero-based!
+			SettlerUpdate.broadcast(settlement.warehouse, increment - 1, increment - 1)
 
 @register()
 def spawn_ships(session, owner_id, ship_id, number, *position):

@@ -151,6 +151,8 @@ def get_option_parser():
 	             help="Set the player with id <force_player_id> as the active (human) player.")
 	ai_group.add_option("--ai-highlights", dest="ai_highlights", action="store_true",
 	             help="Shows AI plans as highlights (for development only).")
+	ai_group.add_option("--ai-combat-highlights", dest="ai_combat_highlights", action="store_true",
+	             help="Highlights combat ranges for units controlled by AI Players (for development only).")
 	p.add_option_group(ai_group)
 
 	dev_group = optparse.OptionGroup(p, "Development options")
@@ -232,8 +234,11 @@ def main():
 	signal.signal(signal.SIGINT, functools.partial(exithandler, 130))
 	signal.signal(signal.SIGTERM, functools.partial(exithandler, 1))
 
-	# use locale-specific time.strftime handling
-	locale.setlocale(locale.LC_TIME, '')
+	# use locale-specific time.strftime handling.
+	try:
+		locale.setlocale(locale.LC_TIME, '')
+	except locale.Error: # Workaround for "locale.Error: unsupported locale setting"
+		pass
 
 	#chdir to Unknown Horizons root
 	os.chdir( find_uh_position() )
@@ -251,9 +256,9 @@ def main():
 	try:
 		import yaml
 	except ImportError:
-		headline = _("Error: Unable to find required library \"PyYAML\".")
+		headline = _('Error: Unable to find required library "PyYAML".')
 		msg = _("We are sorry to inform you that a library that is required by Unknown Horizons, is missing and needs to be installed.") + "\n" + \
-		    _("Installers for Windows users are available at \"http://pyyaml.org/wiki/PyYAML\", Linux users should find it in their packagement management system under the name \"pyyaml\" or \"python-yaml\".")
+		    _('Installers for Windows users are available at "http://pyyaml.org/wiki/PyYAML", Linux users should find it in their packagement management system under the name "pyyaml" or "python-yaml".')
 		standalone_error_popup(headline, msg)
 		exit(1)
 
@@ -489,8 +494,8 @@ def find_FIFE(fife_custom_path=None):
 		log().debug("Restarting with args %s", args)
 		os.execvp(args[0], args)
 	else:
-		args[1] = "\"%s\"" % args[1]
-		args += [ "--logfile", "\"%s\"" % logfilename ]
+		args[1] = '"%s"' % args[1]
+		args += [ "--logfile", '"%s"' % logfilename ]
 		log().debug("Restarting using windows workaround with args %s", args)
 		os.system(" ".join(args))
 		sys.exit(0)
@@ -498,7 +503,7 @@ def find_FIFE(fife_custom_path=None):
 def log_paths():
 	"""Prints debug info about paths to log"""
 	log().debug("SYS.PATH: %s", sys.path)
-	log().debug("PATHSEP: \"%s\" SEP: \"%s\"", os.path.pathsep, os.path.sep)
+	log().debug('PATHSEP: "%s" SEP: "%s"', os.path.pathsep, os.path.sep)
 	log().debug("LD_LIBRARY_PATH: %s", os.environ['LD_LIBRARY_PATH'])
 	log().debug("PATH: %s", os.environ['PATH'])
 	log().debug("PYTHONPATH %s", os.environ.get('PYTHONPATH', '<undefined>'))

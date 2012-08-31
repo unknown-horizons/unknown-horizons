@@ -27,7 +27,7 @@ if [ ! `which dialog 2>/dev/null` ] ; then
 fi
 
 clear
-dialog --title "Info" --yesno "This script will download and Compile fife and Unknown Horizons. Do you want to proceed?" 8 40
+dialog --title "Info" --yesno "This script will download and compile fife and Unknown Horizons. Do you want to proceed?" 8 40
 
 if [ "$?" = 1 ]; then
 	exit 0

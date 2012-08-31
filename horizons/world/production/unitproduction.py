@@ -31,8 +31,10 @@ class UnitProduction(ChangingProduction):
 
 	@property
 	def progress(self):
-		still_needed =  sum(self._prod_line.consumed_res.itervalues())
-		all_needed = sum([amount for res, amount in self.original_prod_line.consumed_res.iteritems() if res != RES.GOLD])
+		get_amount = lambda items: sum(amount for res, amount in items.iteritems() if res != RES.GOLD)
+
+		still_needed =  get_amount(self._prod_line.consumed_res)
+		all_needed = get_amount(self.original_prod_line.consumed_res)
 		return 1 - float(still_needed) / all_needed
 
 	## PROTECTED METHODS

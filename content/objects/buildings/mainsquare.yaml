@@ -26,3 +26,7 @@ actionsets:
     as_mainsquare0: as_preview_mainsquare0
   TIER.PIONEERS:
     as_mainsquare_wooden0: as_preview_mainsquare_wooden0
+  TIER.SETTLERS:
+    as_mainsquare_timberframed0: as_preview_mainsquare_timberframed0
+  TIER.CITIZENS:
+    as_mainsquare_stone0: as_preview_mainsquare_stone0

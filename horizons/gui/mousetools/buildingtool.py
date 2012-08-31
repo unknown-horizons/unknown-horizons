@@ -518,7 +518,7 @@ class BuildingTool(NavigationTool):
 				BuildingTool._last_road_built.append(now)
 				if len(BuildingTool._last_road_built) > 2:
 					if (now - BuildingTool._last_road_built[-3]) < 1.2:
-						self.session.ingame_gui.message_widget.add(x=None, y=None, string_id="DRAG_ROADS_HINT")
+						self.session.ingame_gui.message_widget.add(point=None, string_id="DRAG_ROADS_HINT")
 						# don't display hint multiple times at the same build situation
 						BuildingTool._last_road_built = []
 					BuildingTool._last_road_built = BuildingTool._last_road_built[-3:]
@@ -592,15 +592,14 @@ class BuildingTool(NavigationTool):
 					if building.problem is not None:
 						msg = building.problem[1]
 						self.session.ingame_gui.message_widget.add_custom(
-						  x=building.position.origin.x, y=building.position.origin.y,
-						  messagetext=msg)
+						  point=building.position.origin, messagetext=msg)
 
 					# check whether to issue a missing res notification
 					# we need the localized resource name here
 					elif building in self.buildings_missing_resources:
 						res_name = self.session.db.get_res_name( self.buildings_missing_resources[building] )
 						self.session.ingame_gui.message_widget.add(
-						  x=building.position.origin.x, y=building.position.origin.y,
+						  point=building.position.origin,
 						  string_id='NEED_MORE_RES', message_dict={'resource' : res_name})
 
 		self.buildings = []

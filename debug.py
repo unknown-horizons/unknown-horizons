@@ -41,7 +41,7 @@ if __name__ == '__main__':
 	setup_fife(sys.argv)
 
 	args = sys.argv[1:]
-	print 'Executing with proper fife path: \"%s\" with args %s' % (sys.argv[1], args)
+	print 'Executing with proper fife path: "%s" with args %s' % (sys.argv[1], args)
 	os.execvp(sys.argv[1], args)
 else:
 	import inspect

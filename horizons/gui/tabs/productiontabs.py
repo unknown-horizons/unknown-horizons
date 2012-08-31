@@ -107,10 +107,10 @@ class ProductionOverviewTab(OverviewTab):
 			self._add_resource_icons(out_res_container, production.get_produced_resources())
 
 			# active toggle_active button
-			container.mapEvents(
-			  { 'toggle_active': \
-			    Callback(ToggleActive(self.instance.get_component(Producer), production).execute, self.instance.session)
-			    } )
+			toggle_active = ToggleActive(self.instance.get_component(Producer), production)
+			container.mapEvents({
+				'toggle_active': Callback(toggle_active.execute, self.instance.session)
+			})
 			# NOTE: this command causes a refresh, so we needn't change the toggle_active-button-image
 			container.stylize('menu_black')
 			parent_container.addChild(container)

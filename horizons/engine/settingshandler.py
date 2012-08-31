@@ -24,6 +24,7 @@ import logging
 
 from fife import fife
 from fife.extensions.fife_settings import FIFE_MODULE
+from horizons.gui.quotes import QUOTES_SETTINGS
 
 import horizons.main
 
@@ -68,6 +69,11 @@ class SettingsHandler(object):
 		self._setting.createAndAddEntry(UH_MODULE, "AutoUnload", "auto_unload")
 		self._setting.createAndAddEntry(UH_MODULE, "MinimapRotation", "minimaprotation",
 				                        applyfunction=update_minimap)
+
+		self._setting.createAndAddEntry(UH_MODULE, "QuotesType", "quotestype",
+		                                initialdata=QUOTES_SETTINGS,
+		                                applyfunction=self.set_quotestype)
+		self._setting.createAndAddEntry(UH_MODULE, "ShowResourceIcons", "show_resource_icons")
 
 		self._setting.createAndAddEntry(FIFE_MODULE, "BitsPerPixel", "screen_bpp",
 				                        initialdata=[0, 16, 32], requiresrestart=True)
@@ -145,6 +151,12 @@ class SettingsHandler(object):
 			#i18n Warning popup shown in settings when SDL is selected as renderer.
 			message = _("The SDL renderer is meant as a fallback solution only and has serious graphical glitches. \n\nUse at own risk!")
 			horizons.main._modules.gui.show_popup(headline, message)
+
+	def set_quotestype(self, *args):
+		type = 0
+		if args:
+			type = int(args[0])
+		self._setting.set(UH_MODULE, "QuotesType", type)
 
 	def update_slider_values(self, slider, factor=1, unit=''):
 		"""

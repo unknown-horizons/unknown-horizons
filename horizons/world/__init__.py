@@ -86,7 +86,7 @@ class World(BuildingOwner, WorldObject):
 		# destructor-like thing.
 		super(World, self).end()
 
-		for ship in [ship for ship in self.ships]:
+		for ship in self.ships[:]:
 			ship.remove()
 		for island in self.islands:
 			island.end()
@@ -145,7 +145,7 @@ class World(BuildingOwner, WorldObject):
 			load_building(self.session, savegame_db, building_typeid, building_worldid)
 
 		# use a dict because it's directly supported by the pathfinding algo
-		self.water = dict.fromkeys(list(self.ground_map), 1.0)
+		self.water = dict((tile, 1.0) for tile in self.ground_map)
 		self._init_water_bodies()
 		self.sea_number = self.water_body[(self.min_x, self.min_y)]
 
@@ -192,7 +192,7 @@ class World(BuildingOwner, WorldObject):
 			if self.trader:
 				self.trader.load_ship_states(savegame_db)
 			if self.pirate:
-				self.pirate.load_ship_states(savegame_db)
+				self.pirate.finish_loading(savegame_db)
 
 			# load the AI stuff only when we have AI players
 			if any(isinstance(player, AIPlayer) for player in self.players):
@@ -237,15 +237,16 @@ class World(BuildingOwner, WorldObject):
 
 			data = {'player1' : player1, 'player2' : player2}
 
-			self.session.ingame_gui.message_widget.add(
-			  x=None, y=None, string_id='DIPLOMACY_STATUS_'+old_state.upper()+"_"+new_state.upper(), message_dict=data)
+			string_id = 'DIPLOMACY_STATUS_{old}_{new}'.format(old=old_state.upper(),
+			                                                  new=new_state.upper())
+			self.session.ingame_gui.message_widget.add(point=None, string_id=string_id,
+			                                           message_dict=data)
 
 		self.diplomacy.add_diplomacy_status_changed_listener(notify_change)
 
 	def _load_disasters(self, savegame_db):
 		# disasters are only enabled if they are explicitly set to be enabled
-		disasters_disabled = not ('disasters_enabled' in self.properties and
-		                          self.properties['disasters_enabled'])
+		disasters_disabled = not self.properties.get('disasters_enabled')
 		self.disaster_manager = DisasterManager(self.session, disabled=disasters_disabled)
 		if self.session.is_game_loaded():
 			self.disaster_manager.load(savegame_db)
@@ -260,10 +261,10 @@ class World(BuildingOwner, WorldObject):
 		#calculate map dimensions
 		self.min_x, self.min_y, self.max_x, self.max_y = 0, 0, 0, 0
 		for i in self.islands:
-			self.min_x = i.rect.left if self.min_x is None or i.rect.left < self.min_x else self.min_x
-			self.min_y = i.rect.top if self.min_y is None or i.rect.top < self.min_y else self.min_y
-			self.max_x = i.rect.right if self.max_x is None or i.rect.right > self.max_x else self.max_x
-			self.max_y = i.rect.bottom if self.max_y is None or i.rect.bottom > self.max_y else self.max_y
+			self.min_x = min(i.rect.left, self.min_x)
+			self.min_y = min(i.rect.top, self.min_y)
+			self.max_x = max(i.rect.right, self.max_x)
+			self.max_y = max(i.rect.bottom, self.max_y)
 		self.min_x -= 10
 		self.min_y -= 10
 		self.max_x += 10
@@ -334,7 +335,7 @@ class World(BuildingOwner, WorldObject):
 			# this would be the case if the savegame originates from a different installation.
 			# if there's more than one of this kind, we can't be sure what to select.
 			# TODO: create interface for selecting player, if we want this
-			if(len(human_players) == 1):
+			if len(human_players) == 1:
 				# exactly one player, we can quite safely use this one
 				self.player = human_players[0]
 			elif not human_players and self.players:
@@ -432,7 +433,7 @@ class World(BuildingOwner, WorldObject):
 			self.pirate = Pirate(self.session, 99998, "Captain Blackbeard", Color())
 
 		# Fire a message for new world creation
-		self.session.ingame_gui.message_widget.add(x=None, y=None, string_id='NEW_WORLD')
+		self.session.ingame_gui.message_widget.add(point=None, string_id='NEW_WORLD')
 		assert ret_coords is not None, "Return coords are None. No players loaded?"
 		return ret_coords
 
@@ -573,11 +574,7 @@ class World(BuildingOwner, WorldObject):
 		"""
 		if position is not None and radius is not None:
 			circle = Circle(position, radius)
-			ships = []
-			for ship in self.ships:
-				if circle.contains(ship.position):
-					ships.append(ship)
-			return ships
+			return [ship for ship in self.ships if circle.contains(ship.position)]
 		else:
 			return self.ships
 
@@ -585,11 +582,7 @@ class World(BuildingOwner, WorldObject):
 		"""@see get_ships"""
 		if position is not None and radius is not None:
 			circle = Circle(position, radius)
-			units = []
-			for unit in self.ground_units:
-				if circle.contains(unit.position):
-					units.append(unit)
-			return units
+			return [unit for unit in self.ground_units if circle.contains(unit.position)]
 		else:
 			return self.ground_units
 
@@ -602,11 +595,9 @@ class World(BuildingOwner, WorldObject):
 				for building in island.buildings:
 					if circle.contains(building.position.center()):
 						buildings.append(building)
+			return buildings
 		else:
-			for island in self.islands:
-				for building in island.buildings:
-					buildings.append(building)
-		return buildings
+			return [b for b in island.buildings for island in self.islands]
 
 	def get_all_buildings(self):
 		"""Yields all buildings independent of owner"""
@@ -620,8 +611,8 @@ class World(BuildingOwner, WorldObject):
 	def get_health_instances(self, position=None, radius=None):
 		"""Returns all instances that have health"""
 		instances = []
-		for instance in self.get_ships(position, radius)+\
-				self.get_ground_units(position, radius):
+		for instance in self.get_ships(position, radius) + \
+		                self.get_ground_units(position, radius):
 			if instance.has_component(HealthComponent):
 				instances.append(instance)
 		return instances
@@ -640,10 +631,8 @@ class World(BuildingOwner, WorldObject):
 			self.trader.save(db)
 		if self.pirate is not None:
 			self.pirate.save(db)
-		for ship in self.ships:
-			ship.save(db)
-		for ground_unit in self.ground_units:
-			ground_unit.save(db)
+		for unit in self.ships + self.ground_units:
+			unit.save(db)
 		for bullet in self.bullets:
 			bullet.save(db)
 		self.diplomacy.save(db)

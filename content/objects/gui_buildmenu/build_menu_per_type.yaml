@@ -1,6 +1,6 @@
 tab1:
-- icon: content/gui/icons/tabwidget/buildmenu/level1_%s.png
-- headline: Residents and infrastructure # Too long for label! => find better name
+- icon: content/gui/icons/tabwidget/buildmenu/class/residential_%s.png
+- headline: _ Settlement
 - helptext: _ Residents and infrastructure
 -
   - _ Infrastructure
@@ -18,12 +18,12 @@ tab1:
   - BUILDINGS.VILLAGE_SCHOOL
   - BUILDINGS.TAVERN
 -
-  - TODO #TODO find subcategory name: "Preventive" sounds really bad. suggestions?
+  - _ Precaution #TODO better name?
   - BUILDINGS.FIRE_STATION
   - BUILDINGS.DOCTOR
 
 tab2:
-- icon: content/gui/icons/tabwidget/buildmenu/level2_%s.png
+- icon: content/gui/icons/tabwidget/buildmenu/class/fields_%s.png
 - headline: _ Fields
 -
   - _ Pioneers
@@ -45,8 +45,8 @@ tab2:
   - BUILDINGS.ALVEARIES
 
 tab3:
-- icon: content/gui/icons/tabwidget/buildmenu/level3_%s.png
-- headline: Agricultural Companies #TODO find name
+- icon: content/gui/icons/tabwidget/buildmenu/class/agricultural_companies_%s.png
+- headline: _ Agriculture #TODO better name?
 -
   - _ Sea
   - BUILDINGS.FISHER
@@ -58,9 +58,11 @@ tab3:
   - BUILDINGS.WINDMILL
   - BUILDINGS.BAKERY
 -
+  - _ Workshops
   - BUILDINGS.WEAVER
   - BUILDINGS.BLENDER
 -
+  - _ Workshops
   - BUILDINGS.DISTILLERY
   - BUILDINGS.TOBACCONIST
   - BUILDINGS.VINTNER
@@ -69,12 +71,12 @@ tab3:
 
 
 tab4:
-- icon: content/gui/icons/tabwidget/buildmenu/level4_%s.png
+- icon: content/gui/icons/tabwidget/buildmenu/class/companies_%s.png
 - headline: _ Companies
 -
-  - Tree only in LJ related?
+  - _ Wood
   - BUILDINGS.LUMBERJACK
-  - BUILDINGS.TREE
+  - BUILDINGS.TREE # Only show Tree entry in LJ related tab?
   - BUILDINGS.CHARCOAL_BURNER
 -
   - _ Mining
@@ -83,10 +85,11 @@ tab4:
   - BUILDINGS.IRON_MINE
   - BUILDINGS.SMELTERY
 -
+  - _ Workshops
   - BUILDINGS.TOOLMAKER
 
 tab5:
-- icon: content/gui/icons/tabwidget/buildmenu/level5_%s.png
+- icon: content/gui/icons/tabwidget/buildmenu/class/military_%s.png
 - headline: _ Military
 -
   - _ Fortifications
@@ -98,7 +101,7 @@ tab5:
   - BUILDINGS.BARRACKS
 
 tab6:
-- icon: content/gui/icons/tabwidget/buildmenu/level6_%s.png
+- icon: content/gui/icons/tabwidget/buildmenu/class/aesthetics_%s.png
 - headline: _ Aesthetics
 -
   -

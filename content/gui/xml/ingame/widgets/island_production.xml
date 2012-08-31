@@ -12,7 +12,7 @@
 <!--
 In this VBox a line is added per sensible resource in the following format:
 		<HBox>
-			<Icon image="content/gui/icons/resources/16/4.png" />
+			<Icon image="content/gui/icons/resources/32/4.png" max_size="16,16" min_size="16,16" size="16,16" />
 			<Label max_size="70, 20" min_size="70,20" name="resource_4"  text="Boards" />
 			<Label name="produced_sum_4"  text="17314" />
 		</HBox>

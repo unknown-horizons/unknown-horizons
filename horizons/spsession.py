@@ -52,7 +52,7 @@ class SPSession(Session):
 		success = self._do_save(SavegameManager.create_autosave_filename())
 		if success:
 			SavegameManager.delete_dispensable_savegames(autosaves = True)
-			self.ingame_gui.message_widget.add(x=None, y=None, string_id='AUTOSAVE')
+			self.ingame_gui.message_widget.add(point=None, string_id='AUTOSAVE')
 
 	def quicksave(self):
 		"""Called when user presses the quicksave hotkey"""
@@ -61,7 +61,7 @@ class SPSession(Session):
 		success = self._do_save(SavegameManager.create_quicksave_filename())
 		if success:
 			SavegameManager.delete_dispensable_savegames(quicksaves = True)
-			self.ingame_gui.message_widget.add(x=None, y=None, string_id='QUICKSAVE')
+			self.ingame_gui.message_widget.add(point=None, string_id='QUICKSAVE')
 		else:
 			headline = _(u"Failed to quicksave.")
 			descr = _(u"An error happened during quicksave. Your game has not been saved.")
@@ -82,5 +82,5 @@ class SPSession(Session):
 
 		success= self._do_save(savegamename)
 		if success:
-			self.ingame_gui.message_widget.add(x=None, y=None, string_id='SAVED_GAME')
+			self.ingame_gui.message_widget.add(point=None, string_id='SAVED_GAME')
 		return success

@@ -22,8 +22,8 @@
 		<Setting name="GLUseFramebuffer" type="bool"> True </Setting>
 		<Setting name="GLUseNPOT" type="bool"> True </Setting>
 		<Setting name="MouseSensitivity" type="float"> 0.0 </Setting>
-        <Setting name="FrameLimitEnabled" type="bool"> True </Setting>
-        <Setting name="FrameLimit" type="int"> 60 </Setting>
+		<Setting name="FrameLimitEnabled" type="bool"> True </Setting>
+		<Setting name="FrameLimit" type="int"> 60 </Setting>
 	</Module>
 	<Module name="unknownhorizons">
 		<Setting name="CursorCenteredZoom" type="bool">True</Setting>
@@ -51,8 +51,10 @@
 		<Setting name="AutoUnload" type="bool">True</Setting>
 		<Setting name="ResourceOverviewBarConfiguration" type="str"></Setting>
 		<Setting name="DebugLog" type="bool">False</Setting>
+		<Setting name="QuotesType" type="int">0</Setting>
+		<Setting name="ShowResourceIcons" type="bool">True</Setting>
 	</Module>
 	<Module name="meta">
-		<Setting name="SettingsVersion" type="int"> 21 </Setting>
+		<Setting name="SettingsVersion" type="int"> 23 </Setting>
 	</Module>
 </Settings>

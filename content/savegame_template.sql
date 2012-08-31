@@ -1,5 +1,6 @@
 PRAGMA foreign_keys=OFF;
 BEGIN TRANSACTION;
+
 CREATE TABLE "map_properties" (
 	"name" TEXT NOT NULL,
 	"value" TEXT NOT NULL
@@ -327,8 +328,15 @@ CREATE TABLE "ai_personality_manager" (
 
 CREATE TABLE "ai_player" (
 	"need_more_ships" INT NOT NULL,
+	"need_more_combat_ships" INTEGER NOT NULL DEFAULT 1,
 	"need_feeder_island" INT NOT NULL,
-	"remaining_ticks" INT NOT NULL
+	"remaining_ticks" INT NOT NULL,
+	"remaining_ticks_long" INTEGER NOT NULL
+);
+
+CREATE TABLE "ai_pirate" (
+	"remaining_ticks" INTEGER NOT NULL DEFAULT 1,
+	"remaining_ticks_long" INTEGER NOT NULL
 );
 
 CREATE TABLE "ai_production_builder" (
@@ -368,6 +376,69 @@ CREATE TABLE "ai_settlement_manager" (
 CREATE TABLE "ai_ship" (
 	"owner" INT NOT NULL,
 	"state" INT NOT NULL 
+);
+
+CREATE TABLE "fleet" (
+	"fleet_id" INTEGER NOT NULL,
+	"owner_id" INTEGER NOT NULL,
+	"state_id" INTEGER NOT NULL,
+	"dest_x" INTEGER, "dest_y" INTEGER,
+	"radius" INTEGER, "ratio" DOUBLE
+);
+
+CREATE TABLE "fleet_ship" (
+	"fleet_id" INTEGER NOT NULL,
+	"ship_id" INTEGER NOT NULL,
+	"state_id" INTEGER NOT NULL
+);
+
+CREATE TABLE "ai_behavior_manager" (
+	"owner_id" INTEGER NOT NULL,
+	"profile_token" INTEGER NOT NULL
+);
+
+CREATE TABLE "ai_combat_ship" (
+	"owner_id" INTEGER NOT NULL,
+	"ship_id" INTEGER NOT NULL,
+	"state_id" INTEGER NOT NULL
+);
+
+CREATE TABLE "ai_fleet_mission" (
+	"owner_id" INTEGER NOT NULL,
+	"fleet_id" INTEGER NOT NULL,
+	"state_id" INTEGER NOT NULL,
+	"combat_phase" BOOL NOT NULL
+);
+
+CREATE TABLE "ai_scouting_mission" (
+	"target_point_x" INTEGER NOT NULL,
+	"target_point_y" INTEGER NOT NULL,
+	"starting_point_x" INTEGER NOT NULL,
+	"starting_point_y" INTEGER NOT NULL
+);
+
+CREATE TABLE "ai_mission_surprise_attack" (
+	"enemy_player_id" INTEGER NOT NULL,
+	"target_point_x" INTEGER NOT NULL,
+	"target_point_y" INTEGER NOT NULL,
+	"target_point_radius" INTEGER NOT NULL,
+	"return_point_x" INTEGER NOT NULL,
+	"return_point_y" INTEGER NOT NULL
+);
+
+CREATE TABLE "ai_mission_chase_ships_and_attack" (
+	"target_ship_id" INTEGER NOT NULL
+);
+
+CREATE TABLE "ai_mission_pirate_routine" (
+	"target_point_x" INTEGER NOT NULL,
+	"target_point_y" INTEGER NOT NULL
+);
+
+CREATE TABLE "ai_condition_lock" (
+	"owner_id" INTEGER NOT NULL,
+	"condition" TEXT NOT NULL,
+	"mission_id" INTEGER NOT NULL
 );
 
 CREATE TABLE "ai_single_resource_manager" (

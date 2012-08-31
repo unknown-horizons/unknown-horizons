@@ -24,7 +24,6 @@ from horizons.world.disaster import Disaster
 from horizons.messaging import AddStatusIcon, RemoveStatusIcon, NewDisaster
 from horizons.world.status import FireStatusIcon
 from horizons.constants import GAME_SPEED, BUILDINGS, RES, TIER
-from horizons.command.building import Tear
 from horizons.scheduler import Scheduler
 from horizons.util.python.callback import Callback
 from horizons.util import WorldObject
@@ -130,4 +129,4 @@ class FireDisaster(Disaster):
 	def wreak_havoc(self, building):
 		super(FireDisaster, self).wreak_havoc(building)
 		self._affected_buildings.remove(building)
-		Tear(building).execute(self._settlement.session)
+		building.make_ruin()

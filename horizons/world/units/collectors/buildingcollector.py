@@ -32,13 +32,12 @@ from horizons.component.storagecomponent import StorageComponent
 from horizons.component.collectingcomponent import CollectingComponent
 
 
-
 class BuildingCollector(Collector):
 	"""Collector, that works for a building and gets its needed resources.
 	Essentially extends the Collector by a home building.
 
-	Nearly all of the time, the collector has to has a home_building.
-	Only fisher ships violate this rule in case their home building get's demolished.
+	Nearly all of the time, the collector has to have a home_building.
+	Only fisher ships violate this rule in case their home building gets demolished.
 	Therefore, this class is not functional with home_building == None,
 	but basic facilities (esp. save/load) have to work.
 	"""
@@ -167,8 +166,8 @@ class BuildingCollector(Collector):
 				if reslist: # we can do something here
 					jobs.append( Job(building, reslist) )
 
-		# TODO: find out why order of  self.get_buildings_in_range(..) and therefor order of jobs differs from client to client
-		# TODO: find out why WindAnimal.get_job(..) doesn't have this problem
+		# TODO: find out why order of  self.get_buildings_in_range(..) and therefore order of jobs differs from client to client
+		# TODO: find out why WildAnimal.get_job(..) doesn't have this problem
 		# for MP-Games the jobs must have the same ordering to ensure get_best_possible_job(..) returns the same result
 		jobs.sort(key=lambda job: job.object.worldid)
 
@@ -178,11 +177,6 @@ class BuildingCollector(Collector):
 		self._clean_job_history_log()
 		super(BuildingCollector, self).search_job()
 
-	def _clean_job_history_log(self):
-		""" remove too old entries """
-		first_relevant_tick = Scheduler().cur_tick - self.get_utilisation_history_length()
-		while len(self._job_history) > 1 and self._job_history[1][0] < first_relevant_tick:
-			self._job_history.popleft()
 
 	def handle_no_possible_job(self):
 		super(BuildingCollector, self).handle_no_possible_job()
@@ -192,16 +186,19 @@ class BuildingCollector(Collector):
 
 	def begin_current_job(self, job_location=None):
 		super(BuildingCollector, self).begin_current_job(job_location)
-
-		"""
-		TODO: port to multiple resources and document this
-		max_amount = min(self.get_component(StorageComponent).inventory.get_limit(self.job.res), self.job.object.get_component(StorageComponent).inventory.get_limit(self.job.res))
-		utilisation = self.job.amount / float(max_amount)
-		# only append a new element if it is different from the last one
+		# Sum up the utilisation for all res
+		utilisation = 0.0		
+		for entry in self.job.reslist:
+			max_amount = min(self.get_component(StorageComponent).inventory.get_limit(entry.res), self.job.object.get_component(StorageComponent).inventory.get_limit(entry.res))
+			utilisation += entry.amount / float(max_amount)
+			
+		# Devide by number of resources being transfered
+		utilisation = utilisation / len(self.job.reslist)
+			
+		# Set job history
 		if not self._job_history or abs(self._job_history[-1][1] - utilisation) > 1e-9:
 			self._job_history.append((Scheduler().cur_tick, utilisation))
-		"""
-
+			
 	def finish_working(self, collector_already_home=False):
 		"""Called when collector has stayed at the target for a while.
 		Picks up the resources and sends collector home.
@@ -301,7 +298,15 @@ class BuildingCollector(Collector):
 			total_utilisation += relevant_ticks * self._job_history[i][1]
 
 		#assert -1e-7 < total_utilisation / float(history_length) < 1 + 1e-7
+		
 		return total_utilisation / float(history_length)
+	
+	def _clean_job_history_log(self):
+		""" remove too old entries """
+		first_relevant_tick = Scheduler().cur_tick - self.get_utilisation_history_length()
+		while len(self._job_history) > 1 and self._job_history[1][0] < first_relevant_tick:
+			self._job_history.popleft()
+
 
 class StorageCollector(BuildingCollector):
 	""" Same as BuildingCollector, except that it moves on roads.
@@ -311,15 +316,18 @@ class StorageCollector(BuildingCollector):
 	destination_always_in_building = True
 	job_ordering = JobList.order_by.for_storage_collector
 
+
 class FieldCollector(BuildingCollector):
 	""" Similar to the BuildingCollector but used on farms for example.
 	The main difference is that it uses a different way to sort it's jobs, to make for a nicer
 	look of farm using."""
 	job_ordering = JobList.order_by.random
 
+
 class SettlerCollector(StorageCollector):
 	"""Collector for settlers."""
 	pass
+
 
 class FisherShipCollector(BuildingCollector):
 
@@ -350,6 +358,7 @@ class FisherShipCollector(BuildingCollector):
 		@param res: optional, only search for buildings that provide res"""
 		reach = RadiusRect(self.home_building.position, self.home_building.radius)
 		return self.session.world.get_providers_in_range(reach, reslist=reslist)
+
 
 class DisasterRecoveryCollector(StorageCollector):
 	"""Collects disasters such as fire or pestilence."""

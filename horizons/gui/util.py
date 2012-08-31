@@ -43,7 +43,6 @@ def get_gui_files_map():
 					print u'Another file by the name {name} already exists. Please use unique names!'.format(name=i)
 	return xml_files
 
-
 def load_uh_widget(filename, style=None, center_widget=False):
 	"""Loads a pychan widget from an xml file and applies uh-specific modifications
 	"""
@@ -70,7 +69,7 @@ def load_uh_widget(filename, style=None, center_widget=False):
 
 	return widget
 
-def get_res_icon_path(res, size, greyscale=False):
+def get_res_icon_path(res, size=32, greyscale=False):
 	"""Returns path of a resource icon or placeholder path, if icon does not exist.
 	@param res: resource id. Pass 'placeholder' to get placeholder path.
 	"""
@@ -91,16 +90,12 @@ def get_res_icon_path(res, size, greyscale=False):
 			icon_path = get_res_icon_path('placeholder', size)
 	return icon_path
 
-def create_resource_icon(res_id, db, size=50):
+def create_resource_icon(res_id, db):
 	"""Creates a pychan Icon for a resource. Helptext is set to name of *res_id*.
-	Returns None if *size* parameter is invalid (not one of 16, 24, 32, 50).
 	@param res_id: resource id
-	@param db: dbreader for main db
-	@param size: Size of icon in px. Valid: 16, 24, 32, 50."""
-	widget = None
-	if size in (16, 24, 32, 50):
-		widget = Icon(image=get_res_icon_path(res_id, size))
-		widget.helptext = db.get_res_name(res_id)
+	@param db: dbreader for main db"""
+	widget = Icon(image=get_res_icon_path(res_id))
+	widget.helptext = db.get_res_name(res_id)
 	return widget
 
 class LazyWidgetsDict(dict):
@@ -137,14 +132,16 @@ class LazyWidgetsDict(dict):
 		# loading happens automatically on next access
 
 
-def create_resource_selection_dialog(on_click, inventory, db, widget='select_trade_resource.xml', res_filter=None):
-	"""Returns a container containing resource icons
+def create_resource_selection_dialog(on_click, inventory, db,
+		widget='select_trade_resource.xml', res_filter=None, amount_per_line=None):
+	"""Returns a container containing resource icons.
 	@param on_click: called with resource id as parameter on clicks
 	@param inventory: to determine fill status of resource slots
 	@param db: main db instance
 	@param widget: which xml file to use as a template. Default: tabwidget. Required
 	               since the resource bar also uses this code (no tabs there though).
 	@param res_filter: callback to decide which icons to use. Default: show all
+	@param amount_per_line: how many resource icons per line. Default: try to fit layout
 	"""
 	from horizons.gui.widgets.imagefillstatusbutton import ImageFillStatusButton
 	from fife.extensions.pychan.widgets import ImageButton
@@ -154,19 +151,18 @@ def create_resource_selection_dialog(on_click, inventory, db, widget='select_tra
 
 	button_width = ImageFillStatusButton.CELL_SIZE[0] # used for dummy button
 	vbox = dlg.findChild(name="resources")
-	amount_per_line = vbox.width / button_width
+	amount_per_line = amount_per_line or vbox.width // button_width
+	# Add the zero element to the beginning that allows to remove the currently
+	# sold/bought resource:
+	resources = [0] + db.get_res(only_tradeable=True)
 	current_hbox = pychan.widgets.HBox(name="hbox_0", padding=0)
 	index = 1
-	resources = db.get_res(True)
-
-	# Add the zero element to the beginning that allows to remove the currently
-	# sold/bought resource
-	for res_id in [0] + list(resources):
+	for res_id in resources:
 		# don't show resources that are already in the list
 		if res_filter is not None and not res_filter(res_id):
 			continue
 		# create button (dummy one or real one)
-		if res_id == 0:
+		if res_id == 0 or inventory is None:
 			button = ImageButton( size=(button_width, button_width), name="resource_icon_00")
 			button.up_image, button.down_image, button.hover_image = (dummy_icon_path,)*3
 		else:
@@ -175,7 +171,6 @@ def create_resource_selection_dialog(on_click, inventory, db, widget='select_tra
 			button = ImageFillStatusButton.init_for_res(db, res_id,
 			                                            amount=amount, filled=filled, uncached=True,
 			                                            use_inactive_icon=False)
-
 		# on click: add this res
 		cb = Callback(on_click, res_id)
 		if hasattr(button, "button"): # for imagefillstatusbuttons
@@ -184,12 +179,11 @@ def create_resource_selection_dialog(on_click, inventory, db, widget='select_tra
 			button.capture( cb )
 
 		current_hbox.addChild(button)
-		if index % amount_per_line == 0 and index is not 0:
+		if index % amount_per_line == 0:
 			vbox.addChild(current_hbox)
-			current_hbox = pychan.widgets.HBox(name="hbox_%s" % (index / amount_per_line),
-			                                   padding=0)
+			box_id = index // amount_per_line
+			current_hbox = pychan.widgets.HBox(name="hbox_%s" % box_id, padding=0)
 		index += 1
-	#	current_hbox.addSpacer(pychan.widgets.layout.Spacer) #TODO: proper alignment
 	vbox.addChild(current_hbox)
 	vbox.adaptLayout()
 

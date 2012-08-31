@@ -253,11 +253,11 @@ class Settler(BuildableRect, BuildingResourceHandler, BasicBuilding):
 	def inhabitant_check(self):
 		"""Checks whether or not the population of this settler should increase or decrease"""
 		change = 0
-		if self.happiness > self.__get_data("happiness_inhabitants_increase_requirement") and \
+		if self.happiness > self.session.db.get_settler_happiness_increase_requirement() and \
 			 self.inhabitants < self.inhabitants_max:
 			change = 1
 			self.log.debug("%s: inhabitants increase to %s", self, self.inhabitants)
-		elif self.happiness < self.__get_data("happiness_inhabitants_decrease_limit") and \
+		elif self.happiness < self.session.db.get_settler_happiness_decrease_limit() and \
 		     self.inhabitants > 1:
 			change = -1
 			self.log.debug("%s: inhabitants decrease to %s", self, self.inhabitants)
@@ -279,7 +279,7 @@ class Settler(BuildableRect, BuildingResourceHandler, BasicBuilding):
 					if not self.__class__._max_increment_reached_notification_displayed:
 						self.__class__._max_increment_reached_notification_displayed = True
 						self.session.ingame_gui.message_widget.add(
-							x=self.position.center().x, y=self.position.center().y, string_id='MAX_INCR_REACHED')
+							point=self.position.center(), string_id='MAX_INCR_REACHED')
 				return
 			if self._upgrade_production:
 				return # already waiting for res
@@ -317,18 +317,11 @@ class Settler(BuildableRect, BuildingResourceHandler, BasicBuilding):
 
 	def level_down(self):
 		if self.level == 0: # can't level down any more
-			# replace this building with a ruin
-			command = Build(BUILDINGS.SETTLER_RUIN, self.position.origin.x,
-			                self.position.origin.y, island=self.island, settlement=self.settlement)
-
-			Scheduler().add_new_object(
-			  Callback.ChainedCallbacks(self.remove, Callback(command, self.owner)), # remove, then build new
-			  self, run_in=0)
-
+			self.make_ruin()
 			self.log.debug("%s: Destroyed by lack of happiness", self)
 			if self.owner.is_local_player:
 				# check_duplicate: only trigger once for different settlers of a neighborhood
-				self.session.ingame_gui.message_widget.add(x=self.position.center().x, y=self.position.center().y,
+				self.session.ingame_gui.message_widget.add(point=self.position.center(),
 			                                           string_id='SETTLERS_MOVED_OUT', check_duplicate=True)
 		else:
 			self.level -= 1
@@ -341,6 +334,16 @@ class Settler(BuildableRect, BuildingResourceHandler, BasicBuilding):
 			# Notify the world about the level down
 			SettlerUpdate.broadcast(self, self.level, -1)
 
+	def make_ruin(self):
+		""" Replaces itself with a ruin.
+		"""
+		command = Build(BUILDINGS.SETTLER_RUIN, self.position.origin.x,
+		                self.position.origin.y, island=self.island, settlement=self.settlement)
+
+		# Remove the building and then place the Ruin
+		Scheduler().add_new_object(Callback.ChainedCallbacks(
+			self.remove, Callback(command, self.owner)), self, run_in=0)
+
 	def _check_main_square_in_range(self):
 		"""Notifies the user via a message in case there is no main square in range"""
 		if not self.owner.is_local_player:
@@ -352,7 +355,7 @@ class Settler(BuildableRect, BuildingResourceHandler, BasicBuilding):
 					return
 		# no main square found
 		# check_duplicate: only trigger once for different settlers of a neighborhood
-		self.session.ingame_gui.message_widget.add(x=self.position.origin.x, y=self.position.origin.y,
+		self.session.ingame_gui.message_widget.add(point=self.position.origin,
 		                                           string_id='NO_MAIN_SQUARE_IN_RANGE', check_duplicate=True)
 
 	def level_upgrade(self, lvl):

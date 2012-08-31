@@ -84,7 +84,7 @@ class Entities(object):
 		from world.building import BuildingClass
 		for root, dirnames, filenames in os.walk('content/objects/buildings'):
 			for filename in fnmatch.filter(filenames, '*.yaml'):
-				cls.log.debug("Loading: " +  filename)
+				cls.log.debug("Loading: " + filename)
 				# This is needed for dict lookups! Do not convert to os.join!
 				full_file = root + "/" + filename
 				result = YamlCache.get_file(full_file, game_data=True)

@@ -27,7 +27,7 @@
 				<VBox>
 					<Label name="color_depth_label" text="Color depth:" max_size="140,20"
 						wrap_text="1" helptext="If set to 0, use the driver default" />
-					<ScrollArea min_size="80,50" >
+					<ScrollArea min_size="80,55" >
 						<ListBox name="screen_bpp" is_focusable="0" />
 					</ScrollArea>
 
@@ -42,7 +42,7 @@
 		<VBox>
 			<Label name="use_renderer_label" text="Used renderer:"
 				wrap_text="1" helptext="SDL is only meant as unsupported fallback and might cause problems!" />
-			<ScrollArea min_size="80,30" >
+			<ScrollArea min_size="82,36" >
 				<ListBox name="render_backend" is_focusable="0" />
 			</ScrollArea>
 		</VBox>
@@ -161,7 +161,7 @@
 
 				<HBox>
 					<Label name="cursor_centered_zoom_label" text="Cursor centered zoom:" min_size="170,0"
-						helptext="When enabled, mouse's wheel zooms to the cursor" />
+						helptext="When enabled, mouse wheel zoom will use the cursor position as new viewport center" />
 					<CheckBox min_size="24,24" name="cursor_centered_zoom" />
 				</HBox>
 
@@ -172,9 +172,25 @@
 				</HBox>
 
 				<HBox>
-					<Label name="debug_log_lbl" text="Enable logging" min_size="170,0"
+					<Label name="debug_log_lbl" text="Enable logging:" min_size="170,0"
 						helptext="Don't use in normal game session. Decides whether to write debug information in the logging directory of your user directory. Slows the game down." />
 					<CheckBox min_size="24,24" name="debug_log" />
+				</HBox>
+
+				<HBox>
+					<Label name="show_resource_icons_lbl" text="Production indicators:" min_size="170,0"
+						helptext="Whether to show resource icons over buildings whenever they finish production" />
+					<CheckBox min_size="24,24" name="show_resource_icons" />
+				</HBox>
+			</VBox>
+
+			<VBox name="quote_settings" padding="2" max_size="280,55" min_size="280,55">
+				<HBox>
+					<Label name="quote_type_label" text="Choose a quote type:" min_size="170,0"
+						   helptext="What kind of quote to display while loading a game" />
+					<ScrollArea min_size="110,55" >
+						<ListBox name="quotestype" is_focusable="0" min_size="100,55" />
+					</ScrollArea>
 				</HBox>
 			</VBox>
 		</VBox>
@@ -214,6 +230,6 @@
 	<DropDown name="lighting_model" min_size="20,0" position="10000,0" />
 
 <!-- Pickbelts to the right -->
-    <Container name="right_pickbelts" position="835,0" size="170,580" />
+	<Container name="right_pickbelts" position="835,0" size="170,580" />
 
 </Container>

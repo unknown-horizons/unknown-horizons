@@ -1,5 +1,9 @@
 id: 15
-name: _ Trail
+name:
+  TIER.SAILORS: _ Trail
+  TIER.PIONEERS: _ Gravel Path
+  TIER.CITIZENS: _ Cobblestone Street
+# TIER.ARISTOCRATS: _ Avenue
 baseclass: path.Road
 radius: 0
 cost: 0
@@ -18,3 +22,5 @@ actionsets:
     as_trail: as_preview_trail
   TIER.PIONEERS:
     as_gravel_path: as_preview_gravel_path
+  TIER.CITIZENS:
+    as_stone_path: as_preview_stone_path

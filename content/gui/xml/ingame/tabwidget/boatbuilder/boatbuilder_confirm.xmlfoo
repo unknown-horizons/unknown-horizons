@@ -16,15 +16,15 @@
 
 	<Container position="130,110" size="260,100" >
 		<!--Resources and amount-->
-		<Icon image="content/gui/icons/resources/16/004.png" position="0,0" helptext="$res" />
+		<Icon image="content/gui/icons/resources/32/004.png" min_size="16,16" max_size="16,16" size="16,16" position="0,0" helptext="$res" />
 		<Label position="22,0" name="BB_needed_boards" text="24t" />
-		<Icon image="content/gui/icons/resources/16/003.png" position="0,20" helptext="$res" />
+		<Icon image="content/gui/icons/resources/32/003.png" min_size="16,16" max_size="16,16" size="16,16" position="0,20" helptext="$res" />
 		<Label position="22,20" name="BB_needed_cloth" text="14t" />
-		<Icon image="content/gui/icons/resources/16/006.png" position="0,40" helptext="$res" />
+		<Icon image="content/gui/icons/resources/32/006.png" min_size="16,16" max_size="16,16" size="16,16" position="0,40" helptext="$res" />
 		<Label position="22,40" name="BB_needed_ropes" text="06t" />
-		<Icon image="content/gui/icons/resources/16/005.png" position="0,60" helptext="$res" />
+		<Icon image="content/gui/icons/resources/32/005.png" min_size="16,16" max_size="16,16" size="16,16" position="0,60" helptext="$res" />
 		<Label position="22,60" name="BB_needed_cannons" text="06t" />
-		<Icon image="content/gui/icons/resources/16/001.png" position="0,80" helptext="$res" />
+		<Icon image="content/gui/icons/resources/32/001.png" min_size="16,16" max_size="16,16" size="16,16" position="0,80" helptext="$res" />
 		<Label position="22,80" name="BB_needed_money" text="2500" />
 
 	</Container>

@@ -18,8 +18,8 @@
 
 			<!-- happiness and residents -->
 			<Label name='name' position="0,140" text="" />
-			<Icon name="happiness_label" position="0,166"
-				image="content/gui/icons/resources/running_costs.png"
+			<Icon name="happiness_label" position="0,167"
+				image="content/gui/icons/templates/happiness/average.png"
 				helptext="Happiness" />
 			<Icon position="20,165" image="content/gui/images/background/bar_bg.png" size="80,20" />
 			<ProgressBar name='happiness' position="21,166" size="78,18" helptext="Happiness" />
@@ -44,10 +44,10 @@
 				helptext="Tax rate" />
 			<StepSlider position="2,230" size="200,20" name="tax_slider" orientation="0" is_focusable="0" />
 
-			<!-- Ressources -->
+			<!-- Resources -->
 			<Icon image="content/gui/images/background/hr.png" position="0,255" />
 			<Label position="0,265" name="needed_res_label" text="Needed resources:" />
-			<HBox name='needed_res' position="0,280" />
+			<HBox name='needed_res' position="0,285" padding="8" />
 
 		</Container>
 	</Container>
