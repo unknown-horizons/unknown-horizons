@@ -531,7 +531,7 @@ class JobList(list):
 		self.sort(key=lambda job: min(inventory[res] for res in job.resources) , reverse=False)
 
 	def _sort_jobs_fewest_available_and_distance(self):
-		"""Sort jobs by distance, but secondaryly also consider fewest available resources"""
+		"""Sort jobs by distance, but secondarily also consider fewest available resources"""
 		# python sort is stable, so two sequenced sorts work.
 		self._sort_jobs_fewest_available(shuffle_first=False)
 		self._sort_jobs_distance()
@@ -553,14 +553,13 @@ class JobList(list):
 
 	def _sort_no_specialized_producer_in_range(self):
 		"""Prefer targets with no specialized producer in range"""
-		self.sort(key=self.sort_by_specialized_producer)
+		sort_function = lambda job: int(len(
+			list(job.object.island.get_specialized_producers_in_range(job.object))) > 0)
 
-	def sort_by_specialized_producer(self, job):
-		producers = list(job.object.island.get_specialized_producers_in_range(job.object))
-		return int(len(producers) > 0)
+		self.sort(key=sort_function)
 
 	def __str__(self):
-		return str([ unicode(i) for i in self ])
+		return unicode([ unicode(i) for i in self ])
 
 
 decorators.bind_all(Collector)
