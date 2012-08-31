@@ -65,7 +65,6 @@ class BoatbuilderTab(_BoatbuilderOverviewTab):
 
 		if production_lines:
 			cancel_container.parent.showChild(cancel_container)
-			needed_res_container.parent.showChild(needed_res_container)
 
 			# Set progress
 			progress_container.parent.showChild(progress_container)
@@ -146,7 +145,7 @@ class BoatbuilderTab(_BoatbuilderOverviewTab):
 
 		else: # display sth when nothing is produced
 			container_inactive.parent.showChild(container_inactive)
-			for w in (container_active, progress_container, needed_res_container, cancel_container):
+			for w in (container_active, progress_container, cancel_container):
 				if not w in w.parent.hidden_children:
 					w.parent.hideChild(w)
 
