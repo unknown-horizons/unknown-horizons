@@ -23,7 +23,7 @@
 import logging
 
 from horizons.world.settlement import Settlement
-from horizons.util import WorldObject
+from horizons.util.worldobject import WorldObject
 from horizons.scheduler import Scheduler
 from horizons.constants import GAME_SPEED
 from horizons.component.storagecomponent import StorageComponent

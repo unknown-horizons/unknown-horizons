@@ -23,7 +23,7 @@ from fife import fife
 
 import horizons.main
 from horizons.command.unit import Act
-from horizons.util import WorldObject
+from horizons.util.worldobject import WorldObject
 from horizons.util.worldobject import WorldObjectNotFound
 from horizons.gui.mousetools.navigationtool import NavigationTool
 from horizons.component.selectablecomponent import SelectableComponent

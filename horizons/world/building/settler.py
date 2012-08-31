@@ -31,7 +31,7 @@ from horizons.constants import RES, BUILDINGS, GAME, TIER
 from horizons.world.building.buildingresourcehandler import BuildingResourceHandler
 from horizons.world.production.production import SettlerProduction
 from horizons.command.building import Build
-from horizons.util import Callback
+from horizons.util.python.callback import Callback
 from horizons.util.pathfinding.pather import StaticPather
 from horizons.command.production import ToggleActive
 from horizons.component.storagecomponent import StorageComponent

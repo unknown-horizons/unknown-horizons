@@ -26,7 +26,7 @@ from fife.extensions.pychan.widgets import Container, Icon, ImageButton
 
 import horizons.main
 from horizons.gui.util import load_uh_widget
-from horizons.util import Callback
+from horizons.util.python.callback import Callback
 from horizons.util.changelistener import metaChangeListenerDecorator
 
 @metaChangeListenerDecorator('remove')

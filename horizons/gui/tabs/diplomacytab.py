@@ -21,7 +21,7 @@
 # ###################################################
 
 from horizons.gui.tabs.tabinterface import TabInterface
-from horizons.util import Callback
+from horizons.util.python.callback import Callback
 from horizons.command.diplomacy import AddAllyPair, AddNeutralPair, AddEnemyPair
 
 class DiplomacyTab(TabInterface):

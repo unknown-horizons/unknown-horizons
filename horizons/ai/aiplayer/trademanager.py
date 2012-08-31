@@ -27,7 +27,7 @@ from collections import defaultdict
 from mission.domestictrade import DomesticTrade
 
 from building import AbstractBuilding
-from horizons.util import WorldObject
+from horizons.util.worldobject import WorldObject
 from horizons.util.worldobject import WorldObjectNotFound
 from horizons.util.python import decorators
 from horizons.constants import RES

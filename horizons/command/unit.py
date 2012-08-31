@@ -20,7 +20,7 @@
 # ###################################################
 
 from horizons.entities import Entities
-from horizons.util import WorldObject
+from horizons.util.worldobject import WorldObject
 from horizons.command import GenericCommand, Command
 from horizons.util.worldobject import WorldObjectNotFound
 

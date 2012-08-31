@@ -154,7 +154,7 @@ class ResourceOverviewBar(object):
 				   obj.worldid, position, res)
 
 	def load(self, db):
-		from horizons.util import WorldObject
+		from horizons.util.worldobject import WorldObject
 		for obj in db("SELECT DISTINCT object FROM resource_overview_bar"):
 			obj = obj[0]
 			l = []

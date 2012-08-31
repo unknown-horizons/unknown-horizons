@@ -23,7 +23,7 @@ from horizons.gui.widgets.productionoverview import ProductionOverview
 from horizons.gui.tabs import OverviewTab
 from horizons.gui.tabs.residentialtabs import setup_tax_slider
 
-from horizons.util import Callback
+from horizons.util.python.callback import Callback
 from horizons.messaging import UpgradePermissionsChanged
 from horizons.command.uioptions import SetSettlementUpgradePermissions
 from horizons.constants import BUILDINGS, TIER

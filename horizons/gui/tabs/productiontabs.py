@@ -31,7 +31,7 @@ from horizons.gui.tabs import OverviewTab
 from horizons.gui.util import load_uh_widget
 from horizons.gui.widgets.imagefillstatusbutton import ImageFillStatusButton
 from horizons.scheduler import Scheduler
-from horizons.util import Callback
+from horizons.util.python.callback import Callback
 from horizons.util.pychananimation import PychanAnimation
 from horizons.component.storagecomponent import StorageComponent
 from horizons.world.production.producer import Producer

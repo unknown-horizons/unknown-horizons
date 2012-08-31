@@ -27,7 +27,7 @@ from horizons.command.uioptions import EquipWeaponFromInventory, UnequipWeaponTo
 from horizons.entities import Entities
 from horizons.gui.tabs import OverviewTab, TradeTab
 from horizons.gui.widgets.routeconfig import RouteConfig
-from horizons.util import Callback
+from horizons.util.python.callback import Callback
 from horizons.component.storagecomponent import StorageComponent
 from horizons.component.selectablecomponent import SelectableComponent
 

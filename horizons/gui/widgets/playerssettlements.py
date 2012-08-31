@@ -24,7 +24,7 @@ from fife.extensions.pychan import widgets
 from fife.extensions.pychan.widgets import ImageButton
 from horizons.gui.widgets.statswidget import StatsWidget
 from horizons.util.python import decorators
-from horizons.util import Callback
+from horizons.util.python.callback import Callback
 from horizons.component.namedcomponent import NamedComponent
 
 class PlayersSettlements(StatsWidget):

@@ -23,7 +23,7 @@ import math
 
 from collections import defaultdict
 
-from horizons.util import WorldObject
+from horizons.util.worldobject import WorldObject
 from horizons.entities import Entities
 from horizons.constants import TIER, BUILDINGS, PRODUCTION, RES, UNITS
 from horizons.util.python import decorators
