@@ -240,9 +240,10 @@ def add_nature_objects(world, natural_resource_multiplier):
 			# add tree to every nth tile and an animal to one in every M trees
 			if world.session.random.randint(0, 2) == 0 and \
 			   Tree.check_build(world.session, tile, check_settlement=False):
-				building = Build(Tree, x, y, island, 45 + world.session.random.randint(0, 3) * 90, ownerless = True)(issuer = None)
+				building = Build(Tree, x, y, island, 45 + world.session.random.randint(0, 3) * 90,
+				                 ownerless=True)(issuer=None)
 				if world.session.random.randint(0, WILD_ANIMAL.POPUlATION_INIT_RATIO) == 0: # add animal to every nth tree
-					CreateUnit(island.worldid, UNITS.WILD_ANIMAL, x, y)(issuer = None)
+					CreateUnit(island.worldid, UNITS.WILD_ANIMAL, x, y)(issuer=None)
 				if world.session.random.random() > WILD_ANIMAL.FOOD_AVAILABLE_ON_START:
 					building.get_component(StorageComponent).inventory.alter(RES.WILDANIMALFOOD, -1)
 
@@ -254,7 +255,7 @@ def add_nature_objects(world, natural_resource_multiplier):
 					fish_y = y + y_dir * world.session.random.randint(3, 9)
 					# now we have the location, check if we can build here
 					if (fish_x, fish_y) in world.ground_map:
-						Build(FishDeposit, fish_x, fish_y, world, 45 + world.session.random.randint(0, 3) * 90, ownerless = True)(issuer = None)
+						Build(FishDeposit, fish_x, fish_y, world, 45 + world.session.random.randint(0, 3) * 90, ownerless = True)(issuer=None)
 
 	# TODO HACK BAD THING revert hack so trees don't start finished
 	Tree.component_templates[1]['ProducerComponent']['start_finished'] = False

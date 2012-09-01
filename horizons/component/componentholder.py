@@ -77,7 +77,6 @@ class ComponentHolder(object):
 	    'RestrictedPickup': RestrictedPickup,
 	}
 
-
 	def __init__(self, *args, **kwargs):
 		super(ComponentHolder, self).__init__(*args, **kwargs)
 		self.components = {}
@@ -154,16 +153,10 @@ class ComponentHolder(object):
 		return component_class.NAME in self.components
 
 	def get_component(self, component):
-		if self.has_component(component):
-			return self.components[component.NAME]
-		else:
-			return None
+		return self.components.get(component.NAME)
 
 	def get_component_by_name(self, name):
-		if name in self.components:
-			return self.components[name]
-		else:
-			return None
+		return self.components.get(name)
 
 	@classmethod
 	def get_component_template(cls, component):
