@@ -171,7 +171,6 @@ class ComponentHolder(object):
 		for entry in cls.component_templates:
 			if isinstance(entry, dict):
 				for key, value in entry.iteritems():
-					if cls.class_mapping[key] == component:
+					if cls.class_mapping[key] == component or key == component:
 						return value
 		raise KeyError("This class does not contain a component with name: " + component.NAME)
-	
