@@ -88,7 +88,7 @@ class NetworkInterface(object):
 		color = self.__get_player_color()
 		serveraddress = [NETWORK.SERVER_ADDRESS, NETWORK.SERVER_PORT]
 		clientaddress = None
-		client_port = parse_port(horizons.main.fife.get_uh_setting("NetworkPort"), allow_zero=True)
+		client_port = parse_port(horizons.main.fife.get_uh_setting("NetworkPort"))
 		if NETWORK.CLIENT_ADDRESS is not None or client_port > 0:
 			clientaddress = [NETWORK.CLIENT_ADDRESS, client_port]
 		try:

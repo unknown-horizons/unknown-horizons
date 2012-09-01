@@ -89,7 +89,7 @@ def start(_command_line_arguments):
 			NETWORK.SERVER_ADDRESS = mpieces[0]
 			# only change port if port is specified
 			if mpieces[2]:
-				NETWORK.SERVER_PORT = parse_port(mpieces[2], allow_zero=True)
+				NETWORK.SERVER_PORT = parse_port(mpieces[2])
 		except ValueError:
 			print "Error: Invalid syntax in --mp-master commandline option. Port must be a number between 1 and 65535."
 			return False
@@ -115,7 +115,7 @@ def start(_command_line_arguments):
 		try:
 			mpieces = command_line_arguments.mp_bind.partition(':')
 			NETWORK.CLIENT_ADDRESS = mpieces[0]
-			fife.set_uh_setting("NetworkPort", parse_port(mpieces[2], allow_zero=True))
+			fife.set_uh_setting("NetworkPort", parse_port(mpieces[2]))
 		except ValueError:
 			print "Error: Invalid syntax in --mp-bind commandline option. Port must be a number between 1 and 65535."
 			return False

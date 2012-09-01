@@ -36,7 +36,7 @@ class Const(object):
 		super(Const, self).__setattr__(name, value)
 
 
-def parse_port(port, allow_zero=False):
+def parse_port(port, allow_zero=True):
 	"""str2int for network ports. Throws ValueError in case of error."""
 	port_int = int(port)
 	if allow_zero and port_int == 0:
