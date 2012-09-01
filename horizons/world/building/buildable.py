@@ -223,7 +223,7 @@ class Buildable(object):
 			if position.__class__ is Rect: # performance optimisation
 				at = position.left, position.top
 			else:
-				at = position.center().to_tuple()
+				at = position.center.to_tuple()
 			island = session.world.get_island_tuple( at )
 			if island is None:
 				raise _NotBuildableError(BuildableErrorTypes.NO_ISLAND)
@@ -247,7 +247,7 @@ class Buildable(object):
 	@classmethod
 	def _check_settlement(cls, session, position, ship=None, issuer=None):
 		"""Check if there is a settlement and if it belongs to the human player"""
-		settlement = session.world.get_settlement(position.center())
+		settlement = session.world.get_settlement(position.center)
 		player = issuer if issuer is not None else session.world.player
 		if settlement is None:
 			raise _NotBuildableError(BuildableErrorTypes.NO_SETTLEMENT)
@@ -259,7 +259,7 @@ class Buildable(object):
 		"""Check if there are buildings blocking the build.
 		@return Iterable of worldids of buildings that need to be teared in order to build here"""
 		if island is None:
-			island = session.world.get_island(position.center())
+			island = session.world.get_island(position.center)
 			# _check_island already confirmed that there must be an island here, so no check for None again
 		tearset = set()
 		for tile in island.get_tiles_tuple( position.tuple_iter() ):
@@ -383,7 +383,7 @@ class BuildableSingleOnCoast(BuildableSingle):
 		# can't use super, since it checks all tiles for constructible
 
 		if island is None:
-			island = session.world.get_island(position.center())
+			island = session.world.get_island(position.center)
 			if island is None:
 				raise _NotBuildableError(BuildableErrorTypes.NO_ISLAND)
 
@@ -449,7 +449,7 @@ class BuildableSingleOnOcean(BuildableSingleOnCoast):
 		# this might raise, just let it through
 		super(BuildableSingleOnOcean, cls)._check_island(session, position, island)
 		if island is None:
-			island = session.world.get_island(position.center())
+			island = session.world.get_island(position.center)
 			if island is None:
 				raise _NotBuildableError(BuildableErrorTypes.NO_ISLAND)
 		posis = position.get_coordinates()
@@ -478,7 +478,7 @@ class BuildableSingleFromShip(BuildableSingleOnOcean):
 				raise _NotBuildableError(BuildableErrorTypes.OTHER_PLAYERS_SETTLEMENT)
 
 		# and player mustn't have a settlement here already
-		island = session.world.get_island(position.center())
+		island = session.world.get_island(position.center)
 		for s in island.settlements:
 			if s.owner == ship.owner:
 				raise _NotBuildableError(BuildableErrorTypes.ISLAND_ALREADY_SETTLED)
@@ -495,7 +495,7 @@ class BuildableSingleOnDeposit(BuildableSingle):
 	def _check_buildings(cls, session, position, island=None):
 		"""Check if there are buildings blocking the build"""
 		if island is None:
-			island = session.world.get_island(position.center())
+			island = session.world.get_island(position.center)
 		deposit = None
 		for tile in island.get_tiles_tuple( position.tuple_iter() ):
 			if tile.object is None or \

@@ -158,7 +158,7 @@ class Player(ComponentHolder, WorldObject):
 	def notify_new_disaster(self, message):
 		"""The message bus calls this when a building is 'infected' with a disaster."""
 		if self.is_local_player:
-			pos = message.building.position.center()
+			pos = message.building.position.center
 			self.session.ingame_gui.message_widget.add(point=pos, string_id=message.disaster_class.NOTIFICATION_TYPE)
 
 	def end(self):
@@ -195,10 +195,10 @@ class HumanPlayer(Player):
 		level_up = super(HumanPlayer, self).notify_settler_reached_level(message)
 		if level_up:
 			# add message and update ingame gui
-			self.session.ingame_gui.message_widget.add(point=message.sender.position.center(),
+			self.session.ingame_gui.message_widget.add(point=message.sender.position.center,
 			                                           string_id='SETTLER_LEVEL_UP',
 			                                           message_dict={'level': message.level+1})
 		return level_up
 
 	def notify_mine_empty(self, mine):
-		self.session.ingame_gui.message_widget.add(point=mine.position.center(), string_id='MINE_EMPTY')
+		self.session.ingame_gui.message_widget.add(point=mine.position.center, string_id='MINE_EMPTY')

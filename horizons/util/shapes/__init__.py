@@ -23,6 +23,18 @@ from horizons.util.shapes import distances
 
 class Shape(object):
 
+	def get_coordinates(self):
+		"""Return all coordinates in the shape."""
+		return list(self.tuple_iter())
+
+	def __iter__(self):
+		"""Return all coordinates in the shape as points."""
+		for x, y in self.tuple_iter():
+			yield Point(x, y)
+
+	def tuple_iter(self):
+		raise NotImplementedError
+
 	def distance(self, other):
 		# TODO pre-build a dictionary for fast function lookup
 		co1 = self.__class__.__name__.lower()

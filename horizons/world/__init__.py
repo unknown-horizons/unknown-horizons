@@ -595,7 +595,7 @@ class World(BuildingOwner, WorldObject):
 			circle = Circle(position, radius)
 			for island in self.islands:
 				for building in island.buildings:
-					if circle.contains(building.position.center()):
+					if circle.contains(building.position.center):
 						buildings.append(building)
 			return buildings
 		else:

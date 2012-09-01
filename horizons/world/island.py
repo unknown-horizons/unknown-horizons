@@ -215,7 +215,7 @@ class Island(BuildingOwner, WorldObject):
 		self.add_existing_settlement(position, radius, settlement, load)
 		# TODO: Move this to command, this message should not appear while loading
 		self.session.ingame_gui.message_widget.add(string_id='NEW_SETTLEMENT',
-		                                           point=position.center(),
+		                                           point=position.center,
 		                                           message_dict={'player':player.name},
 		                                           play_sound=player.is_local_player)
 

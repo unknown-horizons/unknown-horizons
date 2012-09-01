@@ -113,7 +113,7 @@ class Weapon(object):
 		if not self.attack_ready:
 			return
 
-		distance = round(position.distance(destination.center()))
+		distance = round(position.distance(destination.center))
 		if not self.check_target_in_range(distance):
 			self.log.debug("%s target not in range", self)
 			return

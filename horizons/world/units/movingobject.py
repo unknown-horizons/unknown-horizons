@@ -250,7 +250,7 @@ class MovingObject(ComponentHolder, ConcreteObject):
 	def teleport(self, destination, callback=None, destination_in_building=False):
 		"""Like move, but nearly instantaneous"""
 		if hasattr(destination, "position"):
-			destination_coord = destination.position.center().to_tuple()
+			destination_coord = destination.position.center.to_tuple()
 		else:
 			destination_coord = destination
 		self.move(destination, callback=callback, destination_in_building=destination_in_building, path=[destination_coord])

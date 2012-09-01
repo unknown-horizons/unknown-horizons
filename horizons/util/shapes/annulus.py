@@ -36,16 +36,9 @@ class Annulus(Shape):
 		self.min_radius = min_radius
 		self.max_radius = max_radius
 
-	def get_coordinates(self):
-		"""Returns all coordinates, that are in the annulus"""
-		return [coord for coord in self.tuple_iter()]
-
 	def contains(self, point):
 		assert isinstance(point, Point)
 		return self.min_radius <= point.distance(self.center) <= self.max_radius
-
-	def center(self):
-		return self.center
 
 	def __str__(self):
 		return "Annulus(center=%s,min_radius=%s,max_radius=%s)" % (self.center, self.min_radius, self.max_radius)
@@ -60,10 +53,6 @@ class Annulus(Shape):
 
 	def __ne__(self, other):
 		return not self.__eq__(other)
-
-	def __iter__(self):
-		for x, y in self.tuple_iter():
-			yield Point(x, y)
 
 	def tuple_iter(self):
 		for x in xrange(self.center.x-self.max_radius, self.center.x+self.max_radius+1):

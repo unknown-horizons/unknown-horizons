@@ -112,7 +112,7 @@ class Mine(BuildingResourceHandler, BuildableSingleOnDeposit, BasicBuilding):
 	@classmethod
 	def get_prebuild_data(cls, session, position):
 		"""Returns dict containing inventory of deposit, which is needed for the mine build"""
-		deposit = session.world.get_building(position.center())
+		deposit = session.world.get_building(position.center)
 		data = {}
 		data["inventory"] = deposit.get_component(StorageComponent).inventory.get_dump()
 		data["deposit_class"] = deposit.id

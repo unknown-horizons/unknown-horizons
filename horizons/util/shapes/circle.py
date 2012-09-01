@@ -20,7 +20,7 @@
 # ###################################################
 
 from horizons.util.python.decorators import bind_all
-from horizons.util.shapes import ConstPoint, Point, Shape
+from horizons.util.shapes import Point, Shape
 
 class Circle(Shape):
 	"""Class for the shape of a circle
@@ -34,16 +34,9 @@ class Circle(Shape):
 		self.center = center
 		self.radius = radius
 
-	def get_coordinates(self):
-		"""Returns all coordinates, that are in the circle"""
-		return [coord for coord in self.tuple_iter()]
-
 	def contains(self, point):
 		assert isinstance(point, Point)
 		return point.distance(self.center) <= self.radius
-
-	def center(self):
-		return self.center
 
 	def intersects_rect(self, rect):
 		return rect.distance(self.center) > self.radius
@@ -59,11 +52,6 @@ class Circle(Shape):
 
 	def __ne__(self, other):
 		return not self.__eq__(other)
-
-	def __iter__(self):
-		"""Iterates through all coords in circle as Point"""
-		for x, y in self.tuple_iter():
-			yield Point(x, y)
 
 	def tuple_iter(self):
 		"""Iterates through all coords in circle as tuple"""

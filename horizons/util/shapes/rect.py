@@ -104,10 +104,6 @@ class Rect(Shape):
 	def copy(self):
 		return Rect.init_from_borders(self.left, self.top, self.right, self.bottom)
 
-	def get_coordinates(self):
-		"""Returns list of all coordinates, that are in the Rect """
-		return [ (x, y) for x in xrange(self.left, self.right+1) for y in xrange(self.top, self.bottom+1) ]
-
 	def get_radius_coordinates(self, radius, include_self=False):
 		"""Returns list of all coordinates (as tuples), that are in the radius
 		This is a generator.
@@ -169,6 +165,7 @@ class Rect(Shape):
 					yield (x, y)
 
 
+	@property
 	def center(self):
 		""" Returns the center point of the rect. Implemented with integer division, which means the upper left is preferred """
 		return Point((self.right + self.left) // 2, (self.bottom + self.top) // 2)
@@ -257,11 +254,6 @@ class Rect(Shape):
 		if self.right != other.right:
 			return self.right < other.right
 		return self.bottom < other.bottom
-
-	def __iter__(self):
-		"""Generates an iterator, that returns Points"""
-		for x, y in self.tuple_iter():
-			yield Point(x, y)
 
 	def tuple_iter(self):
 		"""Generates an iterator, that returns tuples"""

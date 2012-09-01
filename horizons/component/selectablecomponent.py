@@ -95,7 +95,7 @@ class SelectableComponent(Component):
 	def select(self, reset_cam=False):
 		self._selected = True
 		if reset_cam:
-			self.session.view.center(*self.instance.position.center().to_tuple())
+			self.session.view.center(*self.instance.position.center.to_tuple())
 
 	def deselect(self):
 		self._selected = False

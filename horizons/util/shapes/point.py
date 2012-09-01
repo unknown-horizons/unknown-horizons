@@ -33,12 +33,6 @@ class Point(Shape):
 	def copy(self):
 		return Point(self.x, self.y)
 
-	def get_coordinates(self):
-		""" Returns point as coordinate
-		This is useful, because Rect supports this too.
-		"""
-		return [self.to_tuple()]
-
 	def to_tuple(self):
 		"""Returns point as a tuple"""
 		return (self.x, self.y)
@@ -47,6 +41,7 @@ class Point(Shape):
 		"""Returns point as fife.Point"""
 		return fife.Point(self.x, self.y)
 
+	@property
 	def center(self):
 		"""Returns the center of the point (this makes Point interface more coherent with Rect).
 		"""
@@ -89,10 +84,6 @@ class Point(Shape):
 
 	def __hash__(self):
 		return hash((self.x, self.y))
-
-	def __iter__(self):
-		"""For interface-sharing with Rect"""
-		yield self
 
 	def tuple_iter(self):
 		yield self.to_tuple()
