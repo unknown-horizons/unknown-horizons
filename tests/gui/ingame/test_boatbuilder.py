@@ -51,10 +51,10 @@ def test_ticket_1224(gui):
 	assert running_costs() == '10', "Expected 10, got %s" % running_costs()
 
 	# Select trade ships tab
-	gui.trigger('tab_base', '1/action/default')
+	gui.trigger('tab_base', '1/action')
 
 	# Build huker
-	gui.trigger('boatbuilder_showcase', 'ok_0/action/default')
+	gui.trigger('boatbuilder_showcase', 'ok_0/action')
 
 	# Wait until production starts
 	producer = boatbuilder.get_component(Producer)
@@ -81,19 +81,19 @@ def test_ticket_1294(gui):
 	gui.cursor_click(64, 10, 'left')
 
 	# Select trade ships tab
-	gui.trigger('tab_base', '1/action/default')
+	gui.trigger('tab_base', '1/action')
 
 	# Build huker
-	gui.trigger('boatbuilder_showcase', 'ok_0/action/default')
+	gui.trigger('boatbuilder_showcase', 'ok_0/action')
 
 	# Pause huker construction
-	gui.trigger('BB_main_tab', 'toggle_active_active/mouseClicked/default')
+	gui.trigger('BB_main_tab', 'toggle_active_active/mouseClicked')
 
 	# Select war ships tab
-	gui.trigger('tab_base', '2/action/default')
+	gui.trigger('tab_base', '2/action')
 
 	# Build frigate
-	gui.trigger('boatbuilder_showcase', 'ok_0/action/default')
+	gui.trigger('boatbuilder_showcase', 'ok_0/action')
 
 	# Wait until production ends
 	producer = boatbuilder.get_component(Producer)
@@ -101,7 +101,7 @@ def test_ticket_1294(gui):
 		yield
 
 	# Unpause huker construction
-	gui.trigger('BB_main_tab', 'toggle_active_inactive/mouseClicked/default')
+	gui.trigger('BB_main_tab', 'toggle_active_inactive/mouseClicked')
 
 	while producer.get_productions():
 		yield
@@ -120,19 +120,19 @@ def test_remove_from_queue(gui):
 	gui.cursor_click(64, 10, 'left')
 
 	# Select trade ships tab
-	gui.trigger('tab_base', '1/action/default')
+	gui.trigger('tab_base', '1/action')
 
 	# Build huker
-	gui.trigger('boatbuilder_showcase', 'ok_0/action/default')
+	gui.trigger('boatbuilder_showcase', 'ok_0/action')
 
 	# Select war ships tab
-	gui.trigger('tab_base', '2/action/default')
+	gui.trigger('tab_base', '2/action')
 
 	# Build frigate
-	gui.trigger('boatbuilder_showcase', 'ok_0/action/default')
+	gui.trigger('boatbuilder_showcase', 'ok_0/action')
 
 	# Cancel queue -> crash
-	gui.trigger('BB_main_tab', 'queue_elem_0/mouseClicked/default')
+	gui.trigger('BB_main_tab', 'queue_elem_0/mouseClicked')
 
 	yield TestFinished
 
@@ -147,19 +147,19 @@ def test_cancel_ticket_1424(gui):
 	gui.cursor_click(64, 10, 'left')
 
 	# Select trade ships tab
-	gui.trigger('tab_base', '1/action/default')
+	gui.trigger('tab_base', '1/action')
 
 	# Build huker
-	gui.trigger('boatbuilder_showcase', 'ok_0/action/default')
+	gui.trigger('boatbuilder_showcase', 'ok_0/action')
 
 	# Select war ships tab
-	gui.trigger('tab_base', '2/action/default')
+	gui.trigger('tab_base', '2/action')
 
 	# Build frigate
-	gui.trigger('boatbuilder_showcase', 'ok_0/action/default')
+	gui.trigger('boatbuilder_showcase', 'ok_0/action')
 
 	# Cancel build completely -> crash
-	gui.trigger('BB_main_tab', 'BB_cancel_button/mouseClicked/default')
+	gui.trigger('BB_main_tab', 'BB_cancel_button/mouseClicked')
 
 
 	yield TestFinished
@@ -175,16 +175,16 @@ def test_save_load_ticket_1421(gui):
 	gui.cursor_click(64, 10, 'left')
 
 	# Select trade ships tab
-	gui.trigger('tab_base', '1/action/default')
+	gui.trigger('tab_base', '1/action')
 
 	# Build huker
-	gui.trigger('boatbuilder_showcase', 'ok_0/action/default')
+	gui.trigger('boatbuilder_showcase', 'ok_0/action')
 
 	# Select war ships tab
-	gui.trigger('tab_base', '2/action/default')
+	gui.trigger('tab_base', '2/action')
 
 	# Build frigate
-	gui.trigger('boatbuilder_showcase', 'ok_0/action/default')
+	gui.trigger('boatbuilder_showcase', 'ok_0/action')
 
 	fd, filename = tempfile.mkstemp()
 	os.close(fd)
@@ -217,10 +217,10 @@ def test_ticket_1513(gui):
 	assert running_costs() == '10', "Expected 10, got %s" % running_costs()
 
 	# Select trade ships tab
-	gui.trigger('tab_base', '1/action/default')
+	gui.trigger('tab_base', '1/action')
 
 	# Build huker
-	gui.trigger('boatbuilder_showcase', 'ok_0/action/default')
+	gui.trigger('boatbuilder_showcase', 'ok_0/action')
 
 	# Wait until production starts
 	producer = boatbuilder.get_component(Producer)
@@ -233,7 +233,7 @@ def test_ticket_1513(gui):
 	yield
 
 	# Cancel build
-	gui.trigger('BB_main_tab', 'BB_cancel_button/mouseClicked/default')
+	gui.trigger('BB_main_tab', 'BB_cancel_button/mouseClicked')
 
 	# Check (inactive) running costs
 	assert running_costs() == '10', "Expected 10, got %s" % running_costs()
@@ -258,10 +258,10 @@ def test_ticket_1514(gui):
 	assert not gui.find('BB_cancel_button')
 
 	# Select trade ships tab
-	gui.trigger('tab_base', '1/action/default')
+	gui.trigger('tab_base', '1/action')
 
 	# Build huker
-	gui.trigger('boatbuilder_showcase', 'ok_0/action/default')
+	gui.trigger('boatbuilder_showcase', 'ok_0/action')
 
 	assert gui.find('BB_cancel_button')
 
@@ -273,7 +273,7 @@ def test_ticket_1514(gui):
 	yield
 
 	# Cancel build
-	gui.trigger('BB_main_tab', 'BB_cancel_button/mouseClicked/default')
+	gui.trigger('BB_main_tab', 'BB_cancel_button/mouseClicked')
 
 	# The tab should have changed, no cancel button visible
 	assert not gui.find('BB_cancel_button')

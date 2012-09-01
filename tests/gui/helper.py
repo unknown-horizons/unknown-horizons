@@ -149,6 +149,7 @@ class GuiHelper(object):
 
 		root  - container (object or name) that holds the widget
 		event - string describing the event (widget/event/group)
+		        group is optional
 
 		Example:
 			c = gui.find('mainmenu')
@@ -157,7 +158,12 @@ class GuiHelper(object):
 		Equivalent to:
 			gui.trigger('mainmenu', 'okButton/action/default')
 		"""
-		widget_name, event_name, group_name = event.split('/')
+		parts = event.split('/')
+		if len(parts) == 3:
+			widget_name, event_name, group_name = parts
+		else:
+			widget_name, event_name = parts
+			group_name = 'default'
 
 		# if container is given by name, look it up first
 		if isinstance(root, basestring):

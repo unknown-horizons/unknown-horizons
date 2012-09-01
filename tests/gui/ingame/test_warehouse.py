@@ -30,12 +30,12 @@ def test_production_overview(gui):
 	gui.cursor_click(52, 12, 'left')
 
 	# open production overview
-	gui.trigger('tab_account', 'show_production_overview/mouseClicked/default')
+	gui.trigger('tab_account', 'show_production_overview/mouseClicked')
 
 	# leave it open for a while to let a refresh happen
 	for _ in gui.run(seconds=2):
 		yield
 
-	gui.trigger('production_overview', 'okButton/action/default')
+	gui.trigger('production_overview', 'okButton/action')
 
 	yield TestFinished

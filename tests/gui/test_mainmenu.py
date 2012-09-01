@@ -33,7 +33,7 @@ def test_support(gui):
 		gui.trigger('support_window', 'okButton/action/__execute__')
 	
 	with gui.handler(func):
-		gui.trigger('menu', 'dead_link/action/default')
+		gui.trigger('menu', 'dead_link/action')
 
 	yield TestFinished
 
@@ -45,7 +45,7 @@ def test_credits(gui):
 		gui.trigger('credits_window', 'okButton/action/__execute__')
 	
 	with gui.handler(func):
-		gui.trigger('menu', 'creditsLink/action/default')
+		gui.trigger('menu', 'creditsLink/action')
 
 	yield TestFinished
 
@@ -57,7 +57,7 @@ def test_help(gui):
 		gui.trigger('help_window', 'okButton/action/__execute__')
 		
 	with gui.handler(func):
-		gui.trigger('menu', 'helpLink/action/default')
+		gui.trigger('menu', 'helpLink/action')
 
 	yield TestFinished
 
@@ -66,8 +66,8 @@ def test_help(gui):
 """
 @gui_test(timeout=60)
 def test_settings(gui):
-	gui.trigger('menu', 'settingsLink/action/default')
-	gui.trigger('settings_window', 'cancelButton/action/default')
+	gui.trigger('menu', 'settingsLink/action')
+	gui.trigger('settings_window', 'cancelButton/action')
 
 	yield TestFinished
 """
@@ -75,17 +75,17 @@ def test_settings(gui):
 
 @gui_test(timeout=60)
 def test_multiplayer(gui):
-	gui.trigger('menu', 'startMulti/action/default')
+	gui.trigger('menu', 'startMulti/action')
 	yield # TODO find out why it fails without yield
-	gui.trigger('menu', 'cancel/action/default')
+	gui.trigger('menu', 'cancel/action')
 
 	yield TestFinished
 
 
 @gui_test(timeout=60)
 def test_singleplayer(gui):
-	gui.trigger('menu', 'startSingle/action/default')
-	gui.trigger('menu', 'cancel/action/default')
+	gui.trigger('menu', 'startSingle/action')
+	gui.trigger('menu', 'cancel/action')
 	
 	yield TestFinished
 
@@ -102,6 +102,6 @@ def test_load_game(gui):
 		gui.trigger('load_game_window', 'cancelButton/action/__execute__')
 		
 	with gui.handler(func):
-		gui.trigger('menu', 'loadgameButton/action/default')
+		gui.trigger('menu', 'loadgameButton/action')
 	
 	yield TestFinished
