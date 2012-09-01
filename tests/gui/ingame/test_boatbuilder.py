@@ -87,7 +87,7 @@ def test_ticket_1294(gui):
 	gui.trigger('boatbuilder_showcase', 'ok_0/action/default')
 
 	# Pause huker construction
-	gui.trigger('BB_main_tab', 'toggle_active_active/action/default')
+	gui.trigger('BB_main_tab', 'toggle_active_active/mouseClicked/default')
 
 	# Select war ships tab
 	gui.trigger('tab_base', '2/action/default')
