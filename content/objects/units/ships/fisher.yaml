@@ -6,7 +6,7 @@ velocity: 12.0
 components:
 - AmbientSoundComponent
 - StorageComponent:
-      PositiveTotalNumSlotStorage:
+      PositiveTotalNumSlotsStorage:
          limit: 120
          slotnum: 4
 - ShipNameComponent
