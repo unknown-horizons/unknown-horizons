@@ -97,10 +97,12 @@ class BoatbuilderTab(_BoatbuilderOverviewTab):
 			# Set built ship info
 			production_line = self.producer._get_production(production_lines[0])
 			produced_unit_id = production_line.get_produced_units().keys()[0]
+
 			name = self.instance.session.db.get_unit_type_name(produced_unit_id)
+
 			container_active.findChild(name="headline_BB_builtship_label").text = _(name)
 			ship_icon = container_active.findChild(name="BB_cur_ship_icon")
-			ship_icon.helptext = "Storage: 4 slots, 120t \nHealth: 100"
+			ship_icon.helptext = self.instance.session.db.get_ship_tooltip(produced_unit_id)
 			ship_icon.image = self.__class__.SHIP_PREVIEW_IMG.format(type_id=produced_unit_id)
 
 			button_active = container_active.findChild(name="toggle_active_active")
@@ -185,8 +187,9 @@ class BoatbuilderSelectTab(_BoatbuilderOverviewTab):
 		widget.addChild(bg_icon)
 
 		icon_path = 'content/gui/images/objects/ships/76/{unit_id}.png'.format(unit_id=ship)
+		helptext = self.instance.session.db.get_ship_tooltip(ship)
 		unit_icon = Icon(image=icon_path, name='icon_%s'%index, position=(2, 2),
-		                 helptext=_('important data'))
+		                 helptext=helptext)
 		widget.addChild(unit_icon)
 
 		# if not buildable, this returns string with reason why to be displayed as helptext
