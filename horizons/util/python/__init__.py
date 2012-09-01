@@ -41,7 +41,7 @@ def parse_port(port, allow_zero=True):
 	port_int = int(port)
 	if allow_zero and port_int == 0:
 		return port_int
-	if not (1 < port_int < 65535):
+	if not (1 <= port_int <= 65535):
 		raise ValueError('Requires a port between 1 and 65535.')
 	return port_int
 
