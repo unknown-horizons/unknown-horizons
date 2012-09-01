@@ -204,137 +204,17 @@ def set_translations():
 		("headline"                    , "text"    ): _("Settlement inventory"),
 		},
 
-	"mainsquare_citizens.xml" : {
-		# (text of widget: headline)
-		("headline"                    , "text"    ): _("Citizens"),
-		# (text of widget: headline_residents_per_house)
-		("headline_residents_per_house", "text"    ): _("Residents per house"),
-		# (text of widget: headline_residents_total)
-		("headline_residents_total"    , "text"    ): _("Summary"),
-		# (text of widget: houses)
-		("houses"                      , "text"    ): _("houses"),
-		# (text of widget: resident_1)
-		("resident_1"                  , "text"    ): _("1 resident"),
-		# (text of widget: resident_2)
-		("resident_2"                  , "text"    ): _("2 residents"),
-		# (text of widget: resident_3)
-		("resident_3"                  , "text"    ): _("3 residents"),
-		# (text of widget: resident_4)
-		("resident_4"                  , "text"    ): _("4 residents"),
-		# (text of widget: resident_5)
-		("resident_5"                  , "text"    ): _("5 residents"),
-		# (text of widget: resident_6)
-		("resident_6"                  , "text"    ): _("6 residents"),
-		# (text of widget: resident_7)
-		("resident_7"                  , "text"    ): _("7 residents"),
-		# (text of widget: resident_8)
-		("resident_8"                  , "text"    ): _("8 residents"),
-		# (text of widget: residents)
-		("residents"                   , "text"    ): _("residents"),
-		# (text of widget: tax_label)
-		("tax_label"                   , "text"    ): _("Taxes:"),
-		# (text of widget: upgrades_lbl)
-		("upgrades_lbl"                , "text"    ): _("Upgrade not possible:"),
-		# (helptext of widget: allow_upgrades)
-		("allow_upgrades"              , "helptext"): _("This is the current maximum increment!"),
-		# (helptext of widget: paid_taxes_icon)
-		("paid_taxes_icon"             , "helptext"): _("Paid taxes"),
-		# (helptext of widget: tax_rate_icon)
-		("tax_rate_icon"               , "helptext"): _("Tax rate"),
-		# (helptext of widget: tax_val_label)
-		("tax_val_label"               , "helptext"): _("Tax rate"),
-		# (helptext of widget: taxes)
-		("taxes"                       , "helptext"): _("Paid taxes"),
-		},
-
 	"mainsquare_inhabitants.xml" : {
-		# (text of widget: avg_happiness_lbl)
-		("avg_happiness_lbl"           , "text"    ): _("Average happiness:"),
 		# (text of widget: headline)
 		("headline"                    , "text"    ): _("Settler overview"),
 		# (text of widget: most_needed_res_lbl)
 		("most_needed_res_lbl"         , "text"    ): _("Most needed resource:"),
-		},
-
-	"mainsquare_pioneers.xml" : {
-		# (text of widget: headline)
-		("headline"                    , "text"    ): _("Pioneers"),
 		# (text of widget: headline_residents_per_house)
 		("headline_residents_per_house", "text"    ): _("Residents per house"),
 		# (text of widget: headline_residents_total)
 		("headline_residents_total"    , "text"    ): _("Summary"),
 		# (text of widget: houses)
 		("houses"                      , "text"    ): _("houses"),
-		# (text of widget: resident_1)
-		("resident_1"                  , "text"    ): _("1 resident"),
-		# (text of widget: resident_2)
-		("resident_2"                  , "text"    ): _("2 residents"),
-		# (text of widget: resident_3)
-		("resident_3"                  , "text"    ): _("3 residents"),
-		# (text of widget: residents)
-		("residents"                   , "text"    ): _("residents"),
-		# (text of widget: tax_label)
-		("tax_label"                   , "text"    ): _("Taxes:"),
-		# (text of widget: upgrades_lbl)
-		("upgrades_lbl"                , "text"    ): _("Upgrade permissions:"),
-		# (helptext of widget: paid_taxes_icon)
-		("paid_taxes_icon"             , "helptext"): _("Paid taxes"),
-		# (helptext of widget: tax_rate_icon)
-		("tax_rate_icon"               , "helptext"): _("Tax rate"),
-		# (helptext of widget: tax_val_label)
-		("tax_val_label"               , "helptext"): _("Tax rate"),
-		# (helptext of widget: taxes)
-		("taxes"                       , "helptext"): _("Paid taxes"),
-		},
-
-	"mainsquare_sailors.xml" : {
-		# (text of widget: headline)
-		("headline"                    , "text"    ): _("Sailors"),
-		# (text of widget: headline_residents_per_house)
-		("headline_residents_per_house", "text"    ): _("Residents per house"),
-		# (text of widget: headline_residents_total)
-		("headline_residents_total"    , "text"    ): _("Summary"),
-		# (text of widget: houses)
-		("houses"                      , "text"    ): _("houses"),
-		# (text of widget: resident_1)
-		("resident_1"                  , "text"    ): _("1 resident"),
-		# (text of widget: resident_2)
-		("resident_2"                  , "text"    ): _("2 residents"),
-		# (text of widget: residents)
-		("residents"                   , "text"    ): _("residents"),
-		# (text of widget: tax_label)
-		("tax_label"                   , "text"    ): _("Taxes:"),
-		# (text of widget: upgrades_lbl)
-		("upgrades_lbl"                , "text"    ): _("Upgrade permissions:"),
-		# (helptext of widget: paid_taxes_icon)
-		("paid_taxes_icon"             , "helptext"): _("Paid taxes"),
-		# (helptext of widget: tax_rate_icon)
-		("tax_rate_icon"               , "helptext"): _("Tax rate"),
-		# (helptext of widget: tax_val_label)
-		("tax_val_label"               , "helptext"): _("Tax rate"),
-		# (helptext of widget: taxes)
-		("taxes"                       , "helptext"): _("Paid taxes"),
-		},
-
-	"mainsquare_settlers.xml" : {
-		# (text of widget: headline)
-		("headline"                    , "text"    ): _("Settlers"),
-		# (text of widget: headline_residents_per_house)
-		("headline_residents_per_house", "text"    ): _("Residents per house"),
-		# (text of widget: headline_residents_total)
-		("headline_residents_total"    , "text"    ): _("Summary"),
-		# (text of widget: houses)
-		("houses"                      , "text"    ): _("houses"),
-		# (text of widget: resident_1)
-		("resident_1"                  , "text"    ): _("1 resident"),
-		# (text of widget: resident_2)
-		("resident_2"                  , "text"    ): _("2 residents"),
-		# (text of widget: resident_3)
-		("resident_3"                  , "text"    ): _("3 residents"),
-		# (text of widget: resident_4)
-		("resident_4"                  , "text"    ): _("4 residents"),
-		# (text of widget: resident_5)
-		("resident_5"                  , "text"    ): _("5 residents"),
 		# (text of widget: residents)
 		("residents"                   , "text"    ): _("residents"),
 		# (text of widget: tax_label)

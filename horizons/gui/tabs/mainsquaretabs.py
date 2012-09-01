@@ -18,6 +18,8 @@
 # Free Software Foundation, Inc.,
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
+from fife.extensions.pychan.widgets.label import Label
+from horizons.gui.util import get_happiness_icon_and_helptext
 
 from horizons.gui.widgets.productionoverview import ProductionOverview
 from horizons.gui.tabs import OverviewTab
@@ -99,7 +101,8 @@ class MainSquareOverviewTab(AccountTab):
 
 class MainSquareSettlerLevelTab(MainSquareTab):
 	LEVEL = None # overwrite in subclass
-	def __init__(self, instance, widget):
+	def __init__(self, instance):
+		widget = "mainsquare_inhabitants.xml"
 		icon_path = 'content/gui/icons/tabwidget/mainsquare/inhabitants{incr}_%s.png'.format(incr=self.__class__.LEVEL)
 		super(MainSquareSettlerLevelTab, self).__init__(widget=widget, instance=instance, icon_path=icon_path)
 		self.max_inhabitants = instance.session.db.get_settler_inhabitants_max(self.__class__.LEVEL)
@@ -162,11 +165,30 @@ class MainSquareSettlerLevelTab(MainSquareTab):
 		resident_counts = self._get_resident_counts()
 		houses = 0
 		residents = 0
+		container = self.widget.child_finder('residents_per_house_table')
+		width = container.size[0]
+		space_per_label = width / 7
 		for number in xrange(1, self.max_inhabitants + 1):
 			house_count = resident_counts.get(number, 0)
-			self.widget.child_finder('resident_count_%d' % number).text = unicode(house_count)
 			houses += house_count
 			residents += house_count * number
+			position_x = (space_per_label * (number - 1)) + 10
+			if not container.findChild(name="resident_"+str(number)):
+				label = Label(name="resident_"+str(number), position=(position_x, 0), text=unicode(number))
+				container.addChild(label)
+				count_label = Label(name="resident_count_"+str(number), position=(position_x - 1,20), text=unicode(house_count))
+				container.addChild(count_label)
+			else:
+				container.findChild(name="resident_"+str(number)).text = unicode(number)
+				container.findChild(name="resident_count_"+str(number)).text = unicode(house_count)
+
+		average_happiness = self.settlement.average_happiness(self.__class__.LEVEL)
+		if average_happiness > 0:
+			icon_info = get_happiness_icon_and_helptext(average_happiness,
+			                                            self.instance.session)
+			self.widget.child_finder('avg_happiness_icon').image = icon_info[0]
+			self.widget.child_finder('avg_happiness_icon').helptext = icon_info[1]
+			self.widget.child_finder('avg_happiness').progress = average_happiness
 
 		# refresh the summary
 		self.widget.child_finder('house_count').text = unicode(houses)
@@ -181,19 +203,19 @@ class MainSquareSettlerLevelTab(MainSquareTab):
 class MainSquareSailorsTab(MainSquareSettlerLevelTab):
 	LEVEL = TIER.SAILORS
 	def __init__(self, instance):
-		super(MainSquareSailorsTab, self).__init__(instance, 'mainsquare_sailors.xml')
+		super(MainSquareSailorsTab, self).__init__(instance)
 
 class MainSquarePioneersTab(MainSquareSettlerLevelTab):
 	LEVEL = TIER.PIONEERS
 	def __init__(self, instance):
-		super(MainSquarePioneersTab, self).__init__(instance, 'mainsquare_pioneers.xml')
+		super(MainSquarePioneersTab, self).__init__(instance)
 
 class MainSquareSettlersTab(MainSquareSettlerLevelTab):
 	LEVEL = TIER.SETTLERS
 	def __init__(self, instance):
-		super(MainSquareSettlersTab, self).__init__(instance, 'mainsquare_settlers.xml')
+		super(MainSquareSettlersTab, self).__init__(instance)
 
 class MainSquareCitizensTab(MainSquareSettlerLevelTab):
 	LEVEL = TIER.CITIZENS
 	def __init__(self, instance):
-		super(MainSquareCitizensTab, self).__init__(instance, 'mainsquare_citizens.xml')
+		super(MainSquareCitizensTab, self).__init__(instance)
