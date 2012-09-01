@@ -101,7 +101,7 @@ def test_ticket_1294(gui):
 		yield
 
 	# Unpause huker construction
-	gui.trigger('BB_main_tab', 'toggle_active_inactive/action/default')
+	gui.trigger('BB_main_tab', 'toggle_active_inactive/mouseClicked/default')
 
 	while producer.get_productions():
 		yield
