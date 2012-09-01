@@ -23,11 +23,10 @@
 import logging
 
 from fife import fife
-
 import horizons.main
 
 from horizons.constants import LAYERS, GROUND
-from horizons.util.loaders import TileSetLoader
+from horizons.util.loaders.tilesetloader import TileSetLoader
 
 class SurfaceTile(object):
 	is_water = False

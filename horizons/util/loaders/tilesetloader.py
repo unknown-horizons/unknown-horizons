@@ -25,8 +25,8 @@ import logging
 import horizons.main
 
 from horizons.constants import PATHS
-from loader import GeneralLoader
-from jsondecoder import JsonDecoder
+from horizons.util.loaders.loader import GeneralLoader
+from horizons.util.loaders.jsondecoder import JsonDecoder
 
 class TileSetLoader(object):
 	"""The TileSetLoader loads tile sets from a directory tree. The directories loaded

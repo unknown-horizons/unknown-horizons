@@ -27,7 +27,7 @@ import horizons.main
 from horizons.util.pathfinding.pather import ShipPather, FisherShipPather
 from horizons.util.pathfinding import PathBlockedError
 from horizons.world.units.collectors import FisherShipCollector
-from unit import Unit
+from horizons.world.units.unit import Unit
 from horizons.constants import LAYERS
 from horizons.scheduler import Scheduler
 from horizons.component.namedcomponent import ShipNameComponent, NamedComponent

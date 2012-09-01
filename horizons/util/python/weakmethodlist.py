@@ -19,7 +19,7 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-from weakmethod import WeakMethod
+from horizons.util.python.weakmethod import WeakMethod
 
 class WeakMethodList(list):
 	"""A class that handles zero to n callbacks."""
