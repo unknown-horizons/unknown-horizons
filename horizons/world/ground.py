@@ -45,13 +45,15 @@ class SurfaceTile(object):
 		self.object = None
 		self.session = session
 
-		self._instance = session.view.layers[self.layer].createInstance(self._object,
-				                                                        fife.ModelCoordinate(int(x), int(y), 0), "")
+		layer = session.view.layers[self.layer]
+		self._instance = layer.createInstance(self._object,
+		                                      fife.ModelCoordinate(int(x), int(y), 0),
+		                                      "")
 		fife.InstanceVisual.create(self._instance)
 
 	def __str__(self):
 		return "SurfaceTile(id=%s, x=%s, y=%s, water=%s, obj=%s)" % \
-			   (self.id, self.x, self.y, self.is_water, self.object)
+		       (self.id, self.x, self.y, self.is_water, self.object)
 
 	def act(self, action, rotation):
 		self._instance.setRotation(rotation)
