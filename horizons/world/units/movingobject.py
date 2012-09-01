@@ -283,22 +283,6 @@ class MovingObject(ComponentHolder, ConcreteObject):
 		else:
 			return (12, 17) # standard values
 
-	def get_estimated_travel_time(self, destination):
-		path = self.path.calc_path(destination, check_only = True)
-		if not path and path != []:
-			return None
-
-		path_length = 0 # length in ticks to travel the distance
-		speed = self.get_unit_velocity()
-		for i in xrange(1, len(path)):
-			dx = abs(path[i - 1][0] - path[i][0])
-			dy = abs(path[i - 1][1] - path[i][1])
-			if dx and dy:
-				path_length += speed[1]
-			else:
-				path_length += speed[0]
-		return path_length
-
 	def get_move_target(self):
 		return self.path.get_move_target()
 
