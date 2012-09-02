@@ -54,7 +54,29 @@
 		<Setting name="QuotesType" type="int">0</Setting>
 		<Setting name="ShowResourceIcons" type="bool">True</Setting>
 	</Module>
+	<Module name="keys">
+		<Setting name="GRID" type="str"> g </Setting>
+		<Setting name="COORD_TOOLTIP" type="str"> h </Setting>
+		<Setting name="DESTROY_TOOL" type="str"> x </Setting>
+		<Setting name="ROAD_TOOL" type="str"> r </Setting>
+		<Setting name="SPEED_UP" type="str"> + </Setting>
+		<Setting name="SPEED_UP" type="str"> = </Setting>
+		<Setting name="SPEED_DOWN" type="str"> - </Setting>
+		<Setting name="PAUSE" type="str"> p </Setting>
+		<Setting name="LOGBOOK" type="str"> l </Setting>
+		<Setting name="BUILD_TOOL" type="str"> b </Setting>
+		<Setting name="ROTATE_RIGHT" type="str"> . </Setting>
+		<Setting name="ROTATE_LEFT" type="str"> , </Setting>
+		<Setting name="CHAT" type="str"> c </Setting>
+		<Setting name="TRANSLUCENCY" type="str"> t </Setting>
+		<Setting name="TILE_OWNER_HIGHLIGHT" type="str"> a </Setting>
+		<Setting name="PIPETTE" type="str"> o </Setting>
+		<Setting name="HEALTH_BAR" type="str"> k </Setting>
+		<Setting name="DEBUG" type="str"> d </Setting>
+		<Setting name="SCREENSHOT" type="str"> s </Setting>
+		<Setting name="SHOW_SELECTED" type="str"> j </Setting>
+	</Module>
 	<Module name="meta">
-		<Setting name="SettingsVersion" type="int"> 23 </Setting>
+		<Setting name="SettingsVersion" type="int"> 24 </Setting>
 	</Module>
 </Settings>
