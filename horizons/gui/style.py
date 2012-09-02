@@ -199,23 +199,11 @@ STYLES = {
 },
 
 'tooltip': { # style for tooltips
-		'default' : {
-			'border_size': 0,
-			'margins': (0,0),
-			'opaque': 0,
-			'base_color' : fife.Color(0,0,0,0),
-			'foreground_color' : fife.Color(255,255,255),
-			'background_color' : fife.Color(0, 0, 0, 0),
-			'selection_color' : fife.Color(0,0,0,0),
-			'font' : 'headline'
+		'default': {
+			'font': 'tooltip',
 		},
-		'Button' : {
-			'border_size': 0,
-			'margins' : (0,0)
+		'Label': {
 		},
-		'Label' : {
-			'font' : 'tooltip'
-		}
 	},
 
 }
