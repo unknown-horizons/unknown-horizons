@@ -20,7 +20,6 @@
 # ###################################################
 from fife.extensions.pychan.widgets.label import Label
 
-from horizons.gui.util import get_happiness_icon_and_helptext, get_name_for_level
 from horizons.gui.widgets.productionoverview import ProductionOverview
 from horizons.gui.tabs import OverviewTab
 from horizons.gui.tabs.residentialtabs import setup_tax_slider
@@ -105,13 +104,14 @@ class MainSquareSettlerLevelTab(MainSquareTab):
 		icon_path = 'content/gui/icons/tabwidget/mainsquare/inhabitants{incr}_%s.png'.format(incr=self.__class__.LEVEL)
 		super(MainSquareSettlerLevelTab, self).__init__(widget=widget, instance=instance, icon_path=icon_path)
 		self.max_inhabitants = instance.session.db.get_settler_inhabitants_max(self.__class__.LEVEL)
+		self.min_inhabitants = instance.session.db.get_settler_inhabitants_min(self.__class__.LEVEL)
 		self.helptext = instance.session.db.get_settler_name(self.__class__.LEVEL)
 
 		slider = self.widget.child_finder('tax_slider')
 		val_label = self.widget.child_finder('tax_val_label')
 		setup_tax_slider(slider, val_label, self.settlement, self.__class__.LEVEL)
 		self.widget.child_finder('tax_val_label').text = unicode(self.settlement.tax_settings[self.__class__.LEVEL])
-		self.widget.child_finder('headline').text = unicode(get_name_for_level(self.__class__.LEVEL))
+		self.widget.child_finder('headline').text = _(unicode(self.instance.session.db.get_settler_name(self.__class__.LEVEL)))
 
 	@classmethod
 	def shown_for(cls, instance):
@@ -166,29 +166,30 @@ class MainSquareSettlerLevelTab(MainSquareTab):
 		houses = 0
 		residents = 0
 		container = self.widget.child_finder('residents_per_house_table')
-		width = container.size[0]
-		space_per_label = width / 7
-		for number in xrange(1, self.max_inhabitants + 1):
+		space_per_label = container.size[0] / 6
+		for number in xrange(self.min_inhabitants, self.max_inhabitants + 1):
+			column = number - (self.min_inhabitants - 1 if self.min_inhabitants > 0 else 0)
 			house_count = resident_counts.get(number, 0)
 			houses += house_count
 			residents += house_count * number
-			position_x = (space_per_label * (number - 1)) + 10
-			if not container.findChild(name="resident_"+str(number)):
-				label = Label(name="resident_"+str(number), position=(position_x, 0), text=unicode(number))
+			position_x = (space_per_label * (column - 1)) + 10
+			if not container.findChild(name="resident_"+str(column)):
+				label = Label(name="resident_"+str(column), position=(position_x, 0), text=unicode(number))
 				container.addChild(label)
-				count_label = Label(name="resident_count_"+str(number), position=(position_x - 1,20), text=unicode(house_count))
+				count_label = Label(name="resident_count_"+str(column), position=(position_x - 1,20), text=unicode(house_count))
 				container.addChild(count_label)
 			else:
-				container.findChild(name="resident_"+str(number)).text = unicode(number)
-				container.findChild(name="resident_count_"+str(number)).text = unicode(house_count)
+				container.findChild(name="resident_"+str(column)).text = unicode(number)
+				container.findChild(name="resident_count_"+str(column)).text = unicode(house_count)
 
-		average_happiness = self.settlement.average_happiness(self.__class__.LEVEL)
-		if average_happiness > 0:
-			image, helptext = get_happiness_icon_and_helptext(average_happiness,
-			                                            self.instance.session)
-			self.widget.child_finder('avg_happiness_icon').image = image
-			self.widget.child_finder('avg_happiness_icon').helptext = helptext
-			self.widget.child_finder('avg_happiness').progress = average_happiness
+		sad = self.instance.session.db.get_settler_happiness_decrease_limit()
+		happy = self.instance.session.db.get_settler_happiness_increase_requirement()
+		self.widget.child_finder('sad_amount').text = unicode(
+			self.instance.settlement.get_residentials_of_lvl_for_happiness(self.__class__.LEVEL, max_happiness=sad))
+		self.widget.child_finder('avg_amount').text = unicode(
+			self.instance.settlement.get_residentials_of_lvl_for_happiness(self.__class__.LEVEL, sad, happy))
+		self.widget.child_finder('happy_amount').text = unicode(
+			self.instance.settlement.get_residentials_of_lvl_for_happiness(self.__class__.LEVEL, happy))
 
 		# refresh the summary
 		self.widget.child_finder('house_count').text = unicode(houses)
@@ -202,20 +203,12 @@ class MainSquareSettlerLevelTab(MainSquareTab):
 
 class MainSquareSailorsTab(MainSquareSettlerLevelTab):
 	LEVEL = TIER.SAILORS
-	def __init__(self, instance):
-		super(MainSquareSailorsTab, self).__init__(instance)
 
 class MainSquarePioneersTab(MainSquareSettlerLevelTab):
 	LEVEL = TIER.PIONEERS
-	def __init__(self, instance):
-		super(MainSquarePioneersTab, self).__init__(instance)
 
 class MainSquareSettlersTab(MainSquareSettlerLevelTab):
 	LEVEL = TIER.SETTLERS
-	def __init__(self, instance):
-		super(MainSquareSettlersTab, self).__init__(instance)
 
 class MainSquareCitizensTab(MainSquareSettlerLevelTab):
 	LEVEL = TIER.CITIZENS
-	def __init__(self, instance):
-		super(MainSquareCitizensTab, self).__init__(instance)

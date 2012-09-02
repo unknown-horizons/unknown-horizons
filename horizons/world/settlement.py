@@ -109,14 +109,11 @@ class Settlement(ComponentHolder, WorldObject, ChangeListener, ResourceHandler):
 		return sum([building.last_tax_payed for building in self.buildings if
 								hasattr(building, 'last_tax_payed')])
 
-	def average_happiness(self, level):
-		is_residential_of_level = lambda building: hasattr(building, 'happiness') and hasattr(building, 'level') and \
-		                                          building.level == level
-		buildings_of_lvl = len(filter(is_residential_of_level, self.buildings))
-		if not buildings_of_lvl: # e.g. if all buildings are upgraded to the next level
-			return 0
-
-		return sum([building.happiness for building in self.buildings if is_residential_of_level(building)]) / buildings_of_lvl
+	def get_residentials_of_lvl_for_happiness(self, level, min_happiness=0, max_happiness=101):
+		is_valid_residential = lambda building: (hasattr(building, 'happiness') and
+		                                         min_happiness <= building.happiness < max_happiness) and \
+		                                        (hasattr(building, 'level') and building.level == level)
+		return len(filter(is_valid_residential, self.buildings))
 
 	@property
 	def balance(self):
