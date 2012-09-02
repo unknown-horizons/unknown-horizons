@@ -24,6 +24,7 @@ import os
 from fife.extensions import pychan
 from fife.extensions.pychan.widgets import Icon
 
+from horizons.constants import TIER
 from horizons.i18n import translate_widget
 from horizons.util.python import decorators, Callback
 
@@ -58,6 +59,21 @@ def get_happiness_icon_and_helptext(value, session):
 		happiness_helptext = _("happy")
 
 	return happiness_icon_path, happiness_helptext
+
+def get_name_for_level(level):
+	if level == TIER.SAILORS:
+		return _("Sailors")
+	if level == TIER.PIONEERS:
+		return _("Pioneers")
+	if level == TIER.SETTLERS:
+		return _("Settlers")
+	if level == TIER.CITIZENS:
+		return _("Citizens")
+	if level == TIER.MERCHANTS:
+		return _("Merchants")
+	if level == TIER.ARISTOCRATS:
+		return _("Aristocrats")
+	return ""
 
 def load_uh_widget(filename, style=None, center_widget=False):
 	"""Loads a pychan widget from an xml file and applies uh-specific modifications

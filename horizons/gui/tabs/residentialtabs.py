@@ -70,9 +70,9 @@ class SettlerOverviewTab(OverviewTab):
 		super(SettlerOverviewTab, self).hide()
 
 	def refresh(self):
-		icon_info = get_happiness_icon_and_helptext(self.instance.happiness, self.instance.session)
-		self.widget.child_finder('happiness_label').image = icon_info[0]
-		self.widget.child_finder('happiness_label').helptext = icon_info[1]
+		image, helptext = get_happiness_icon_and_helptext(self.instance.happiness, self.instance.session)
+		self.widget.child_finder('happiness_label').image = image
+		self.widget.child_finder('happiness_label').helptext = helptext
 		self.widget.child_finder('happiness').progress = self.instance.happiness
 		self.widget.child_finder('inhabitants').text = u"%s/%s" % (
 		                                               self.instance.inhabitants,

@@ -52,8 +52,6 @@ def set_translations():
 		},
 
 	"buildtab.xml" : {
-		# (helptext of widget: switch_build_menu_config_button)
-		("switch_build_menu_config_button", "helptext"    ): _("switch layout"),
 		},
 
 	"buildtab_no_settlement.xml" : {
@@ -207,8 +205,6 @@ def set_translations():
 	"mainsquare_inhabitants.xml" : {
 		# (text of widget: headline)
 		("headline"                    , "text"    ): _("Settler overview"),
-		# (text of widget: most_needed_res_lbl)
-		("most_needed_res_lbl"         , "text"    ): _("Most needed resource:"),
 		# (text of widget: headline_residents_per_house)
 		("headline_residents_per_house", "text"    ): _("Residents per house"),
 		# (text of widget: headline_residents_total)
@@ -221,6 +217,12 @@ def set_translations():
 		("tax_label"                   , "text"    ): _("Taxes:"),
 		# (text of widget: upgrades_lbl)
 		("upgrades_lbl"                , "text"    ): _("Upgrade permissions:"),
+		# (helptext of widget: avg_happiness_icon)
+		("avg_happiness_icon"          , "helptext"): _("happiness"),
+		# (helptext of widget: houses_icon)
+		("houses_icon"                 , "helptext"): _("Houses with this amount of inhabitants"),
+		# (helptext of widget: inhabitants_icon)
+		("inhabitants_icon"            , "helptext"): _("Number of inhabitants per house"),
 		# (helptext of widget: paid_taxes_icon)
 		("paid_taxes_icon"             , "helptext"): _("Paid taxes"),
 		# (helptext of widget: tax_rate_icon)
@@ -229,6 +231,8 @@ def set_translations():
 		("tax_val_label"               , "helptext"): _("Tax rate"),
 		# (helptext of widget: taxes)
 		("taxes"                       , "helptext"): _("Paid taxes"),
+		# (helptext of widget: avg_happiness)
+		("avg_happiness"               , "helptext"): _("Average Happiness"),
 		},
 
 	"overview_enemybuilding.xml" : {

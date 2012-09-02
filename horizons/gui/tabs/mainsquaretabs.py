@@ -19,12 +19,11 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 from fife.extensions.pychan.widgets.label import Label
-from horizons.gui.util import get_happiness_icon_and_helptext
 
+from horizons.gui.util import get_happiness_icon_and_helptext, get_name_for_level
 from horizons.gui.widgets.productionoverview import ProductionOverview
 from horizons.gui.tabs import OverviewTab
 from horizons.gui.tabs.residentialtabs import setup_tax_slider
-
 from horizons.util import Callback
 from horizons.messaging import UpgradePermissionsChanged
 from horizons.command.uioptions import SetSettlementUpgradePermissions
@@ -112,6 +111,7 @@ class MainSquareSettlerLevelTab(MainSquareTab):
 		val_label = self.widget.child_finder('tax_val_label')
 		setup_tax_slider(slider, val_label, self.settlement, self.__class__.LEVEL)
 		self.widget.child_finder('tax_val_label').text = unicode(self.settlement.tax_settings[self.__class__.LEVEL])
+		self.widget.child_finder('headline').text = unicode(get_name_for_level(self.__class__.LEVEL))
 
 	@classmethod
 	def shown_for(cls, instance):
@@ -184,10 +184,10 @@ class MainSquareSettlerLevelTab(MainSquareTab):
 
 		average_happiness = self.settlement.average_happiness(self.__class__.LEVEL)
 		if average_happiness > 0:
-			icon_info = get_happiness_icon_and_helptext(average_happiness,
+			image, helptext = get_happiness_icon_and_helptext(average_happiness,
 			                                            self.instance.session)
-			self.widget.child_finder('avg_happiness_icon').image = icon_info[0]
-			self.widget.child_finder('avg_happiness_icon').helptext = icon_info[1]
+			self.widget.child_finder('avg_happiness_icon').image = image
+			self.widget.child_finder('avg_happiness_icon').helptext = helptext
 			self.widget.child_finder('avg_happiness').progress = average_happiness
 
 		# refresh the summary

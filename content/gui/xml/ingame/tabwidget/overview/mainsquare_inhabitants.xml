@@ -36,7 +36,7 @@ resources.
 
 		<Container size="260,20" position="25,90">
             <Icon name="avg_happiness_icon" position="2,2" image="content/gui/icons/templates/happiness/average.png"
-                  helptext="Happiness" />
+                  helptext="happiness" />
             <Icon position="22,0" image="content/gui/images/background/bar_bg.png" size="80,20" />
             <ProgressBar name='avg_happiness' position="23,1" size="78,18" helptext="Average Happiness" />
 		</Container>
@@ -54,10 +54,10 @@ resources.
 
 		<Container name="residents_per_house_container" size="260,60" position="25,205">
 			<Label name="headline_residents_per_house" position="0,0" text="Residents per house" />
-            <Icon position="0,21" image="content/gui/icons/widgets/cityinfo/house_small.png"
-                  helptext="Happiness" />
-            <Icon position="0,41" image="content/gui/icons/widgets/cityinfo/inhabitants_small.png"
-                  helptext="Happiness" />
+            <Icon name="inhabitants_icon" position="0,21" image="content/gui/icons/widgets/cityinfo/inhabitants_small.png"
+                  helptext="Number of inhabitants per house" />
+            <Icon name="houses_icon" position="0,41" image="content/gui/icons/widgets/cityinfo/house_small.png"
+                  helptext="Houses with this amount of inhabitants" />
             <Container name="residents_per_house_table" position="10,20" size="240,40" />
 		</Container>
 
