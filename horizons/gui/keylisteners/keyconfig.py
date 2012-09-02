@@ -21,6 +21,7 @@
 
 from fife import fife
 
+import horizons.main
 from horizons.util.python.singleton import Singleton
 
 class KeyConfig(object):
@@ -38,30 +39,18 @@ class KeyConfig(object):
 		SHOW_SELECTED, REMOVE_SELECTED = \
 		range(33)
 
+
 	def __init__(self):
 		_Actions = self._Actions
-		self.keystring_mappings = {
-		  "g" : _Actions.GRID,
-		  "h" : _Actions.COORD_TOOLTIP,
-		  "x" : _Actions.DESTROY_TOOL,
-		  "r" : _Actions.ROAD_TOOL,
-		  "+" : _Actions.SPEED_UP,
-		  "=" : _Actions.SPEED_UP,
-		  "-" : _Actions.SPEED_DOWN,
-		  "p" : _Actions.PAUSE,
-		  "l" : _Actions.LOGBOOK,
-		  "b" : _Actions.BUILD_TOOL,
-		  "." : _Actions.ROTATE_RIGHT,
-		  "," : _Actions.ROTATE_LEFT,
-		  "c" : _Actions.CHAT,
-		  "t" : _Actions.TRANSLUCENCY,
-		  "a" : _Actions.TILE_OWNER_HIGHLIGHT,
-		  "o" : _Actions.PIPETTE,
-		  "k" : _Actions.HEALTH_BAR,
-		  "d" : _Actions.DEBUG,
-		  "s" : _Actions.SCREENSHOT,
-		  "j" : _Actions.SHOW_SELECTED,
-		}
+		#TODO temporary settings keys, get rid of this and just use all settings!
+		# for some reason this does not yet load all 'keys' settings at once
+		custom_key_actions = ["GRID", "COORD_TOOLTIP", "DESTROY_TOOL", "ROAD_TOOL", "SPEED_UP", "SPEED_UP", "SPEED_DOWN", "PAUSE", "LOGBOOK", "BUILD_TOOL", "ROTATE_RIGHT", "ROTATE_LEFT", "CHAT", "TRANSLUCENCY", "TILE_OWNER_HIGHLIGHT", "PIPETTE", "HEALTH_BAR", "DEBUG", "SCREENSHOT", "SHOW_SELECTED"]
+		self.keystring_mappings = dict()
+		for action in custom_key_actions:
+			action_id = _Actions.__dict__.get(action)
+			key = horizons.main.fife.get_key_for_action(action)
+			self.keystring_mappings[key.lower()] = action_id
+
 		self.keyval_mappings = {
 			fife.Key.DELETE: _Actions.REMOVE_SELECTED,
 			fife.Key.ESCAPE: _Actions.ESCAPE,
