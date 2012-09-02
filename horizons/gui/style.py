@@ -123,9 +123,9 @@ STYLES = {
 },
 
 'city_info': { # style for city info
-		'default' : {
-			'background_color' : fife.Color(0, 0, 0, 0),
-			'font' : '18'
+		'default': {
+			'background_color': fife.Color(0, 0, 0, 0),
+			'font': '18',
 		},
 		'Label': {
 			#HACK apply defaults to xml widgets without adaptLayout code
@@ -133,25 +133,12 @@ STYLES = {
 },
 
 'headline': { # style for headlines
-		'default' : {
-			'border_size': 0,
-			'margins': (0,0),
-			'opaque': 0,
-			'base_color' : fife.Color(0,0,0,0),
-			'foreground_color' : fife.Color(255,255,255),
-			'background_color' : fife.Color(0, 0, 0, 0),
-			'selection_color' : fife.Color(0,0,0,0),
-			'font' : 'headline'
-		},
-		'Button' : {
-			'border_size': 0,
-			'margins' : (0,0)
-		},
-		'Label' : {
-			'font' : 'headline'
+		'default': {
+			'background_color': fife.Color(0, 0, 0, 0),
+			'font': 'headline',
 		},
 		# NOTE: This is a hack to add padding attributs to boxes of this style
-		('Container','HBox','VBox') : {
+		('Container', 'HBox', 'VBox'): {
 		},
 },
 
