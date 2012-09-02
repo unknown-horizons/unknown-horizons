@@ -104,30 +104,15 @@ STYLES = {
 },
 
 'menu_black': { # style for build menu etc.
-		'default' : {
-			'border_size': 0,
-			'margins': (0,0),
-			'opaque': 0,
-			'base_color' : fife.Color(0,0,0,0),
-			'foreground_color' : fife.Color(255,255,255),
-			'background_color' : fife.Color(0, 0, 0, 0),
-			'selection_color' : fife.Color(0,0,0,0),
-			'font' : 'small_black'
-		},
-		'Button' : {
-			'border_size': 0,
-			'margins' : (0,0)
-		},
-		'Label' : {
-			'margins': (0,0),
-			'font' : '14_black'
+		'default': {
+			'font': '14_black',
 		},
 		# NOTE: This is a hack to add padding attributs to boxes of this style
-		('Container','HBox','VBox') : {
+		('Container', 'HBox', 'VBox'): {
 		},
 		# once more, better not ask why this is necessary (#1607)
 		# also seems it won't work if just added to the above.
-		'CheckBox' : {
+		'CheckBox': {
 		},
 },
 
