@@ -22,7 +22,7 @@
 import weakref
 import logging
 
-from horizons.util import ChangeListener
+from horizons.util.changelistener import ChangeListener
 from horizons.messaging import WorldObjectDeleted
 
 class WorldObjectNotFound(KeyError):

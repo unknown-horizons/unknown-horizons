@@ -24,7 +24,9 @@ import yaml
 import copy
 
 from horizons.scheduler import Scheduler
-from horizons.util import Callback, LivingObject, YamlCache
+from horizons.util.living import LivingObject
+from horizons.util.python.callback import Callback
+from horizons.util.yamlcache import YamlCache
 
 from horizons.scenario import ACTIONS, CONDITIONS
 

@@ -29,7 +29,8 @@ import tempfile
 from horizons.command.building import Build
 from horizons.command.unit import CreateUnit
 from horizons.constants import GROUND, BUILDINGS, UNITS, RES
-from horizons.util import Rect, DbReader, Point
+from horizons.util.dbreader import DbReader
+from horizons.util.shapes import Point, Rect
 from horizons.util.uhdbaccessor import read_savegame_template
 from horizons.component.storagecomponent import StorageComponent
 

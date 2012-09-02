@@ -25,9 +25,8 @@ from horizons.world.production.productionline import ProductionLine
 from horizons.world.production.production import Production, SingleUseProduction
 from horizons.constants import PRODUCTION
 from horizons.scheduler import Scheduler
-from horizons.util import decorators
-from horizons.util.shapes.circle import Circle
-from horizons.util.shapes.point import Point
+from horizons.util.python import decorators
+from horizons.util.shapes import Circle, Point
 from horizons.component.storagecomponent import StorageComponent
 from horizons.component.ambientsoundcomponent import AmbientSoundComponent
 from horizons.component import Component
@@ -572,7 +571,7 @@ class UnitProducer(QueueProducer):
 					found_tile = False
 					# search for free water tile, and increase search radius if none is found
 					while not found_tile:
-						for coord in Circle(self.instance.position.center(), radius).tuple_iter():
+						for coord in Circle(self.instance.position.center, radius).tuple_iter():
 							point = Point(coord[0], coord[1])
 							if self.instance.island.get_tile(point) is None:
 								tile = self.session.world.get_tile(point)

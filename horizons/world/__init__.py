@@ -31,14 +31,16 @@ from collections import deque
 import horizons.main
 from horizons.world.island import Island
 from horizons.world.player import HumanPlayer
-from horizons.util import Point, Rect, Circle, WorldObject
+from horizons.util.buildingindexer import BuildingIndexer
 from horizons.util.color import Color
+from horizons.util.python import decorators
+from horizons.util.shapes import Circle, Point, Rect
+from horizons.util.worldobject import WorldObject
 from horizons.constants import UNITS, BUILDINGS, RES, GROUND, GAME
 from horizons.ai.trader import Trader
 from horizons.ai.pirate import Pirate
 from horizons.ai.aiplayer import AIPlayer
 from horizons.entities import Entities
-from horizons.util import decorators, BuildingIndexer
 from horizons.world.buildingowner import BuildingOwner
 from horizons.world.diplomacy import Diplomacy
 from horizons.world.units.bullet import Bullet
@@ -593,7 +595,7 @@ class World(BuildingOwner, WorldObject):
 			circle = Circle(position, radius)
 			for island in self.islands:
 				for building in island.buildings:
-					if circle.contains(building.position.center()):
+					if circle.contains(building.position.center):
 						buildings.append(building)
 			return buildings
 		else:

@@ -20,12 +20,12 @@
 # ###################################################
 
 import logging
-
 from collections import deque
 
 import horizons.main
 
-from horizons.util import LivingObject, ManualConstructionSingleton
+from horizons.util.living import LivingObject
+from horizons.util.python.singleton import ManualConstructionSingleton
 from horizons.constants import GAME
 
 class Scheduler(LivingObject):

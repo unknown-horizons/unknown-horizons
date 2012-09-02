@@ -28,7 +28,7 @@ from horizons.command.production import AddProduction, RemoveFromQueue, CancelCu
 from horizons.gui.tabs import OverviewTab
 from horizons.gui.util import create_resource_icon
 from horizons.gui.widgets import OkButton, CancelButton
-from horizons.util import Callback
+from horizons.util.python.callback import Callback
 from horizons.constants import PRODUCTIONLINES, RES, UNITS
 from horizons.world.production.producer import Producer
 

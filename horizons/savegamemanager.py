@@ -31,7 +31,8 @@ import yaml
 import itertools
 
 from horizons.constants import PATHS, VERSION
-from horizons.util import DbReader, YamlCache
+from horizons.util.dbreader import DbReader
+from horizons.util.yamlcache import YamlCache
 from horizons.i18n import find_available_languages
 
 import horizons.main

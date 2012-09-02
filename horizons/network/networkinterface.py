@@ -21,8 +21,10 @@
 
 import horizons.main
 
+from horizons.util.color import Color
+from horizons.util.difficultysettings import DifficultySettings
+from horizons.util.python import parse_port
 from horizons.util.python.singleton import ManualConstructionSingleton
-from horizons.util import Color, DifficultySettings, parse_port
 from horizons.extscheduler import ExtScheduler
 from horizons.constants import NETWORK, VERSION
 from horizons.network.client import Client
@@ -86,11 +88,12 @@ class NetworkInterface(object):
 		color = self.__get_player_color()
 		serveraddress = [NETWORK.SERVER_ADDRESS, NETWORK.SERVER_PORT]
 		clientaddress = None
-		client_port = parse_port(horizons.main.fife.get_uh_setting("NetworkPort"), allow_zero=True)
+		client_port = parse_port(horizons.main.fife.get_uh_setting("NetworkPort"))
 		if NETWORK.CLIENT_ADDRESS is not None or client_port > 0:
 			clientaddress = [NETWORK.CLIENT_ADDRESS, client_port]
 		try:
-			self._client = Client(name, VERSION.RELEASE_VERSION, serveraddress, clientaddress, color, self.__get_client_id())
+			self._client = Client(name, VERSION.RELEASE_VERSION, serveraddress,
+			                      clientaddress, color, self.__get_client_id())
 		except NetworkException as e:
 			raise RuntimeError(e)
 

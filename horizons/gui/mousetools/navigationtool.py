@@ -24,7 +24,8 @@ from fife import fife
 import horizons.main
 
 from horizons.gui.mousetools.cursortool import CursorTool
-from horizons.util import WorldObject, WeakList
+from horizons.util.python.weaklist import WeakList
+from horizons.util.worldobject import WorldObject
 from horizons.util.lastactiveplayersettlementmanager import LastActivePlayerSettlementManager
 from horizons.constants import LAYERS
 from horizons.messaging import HoverInstancesChanged

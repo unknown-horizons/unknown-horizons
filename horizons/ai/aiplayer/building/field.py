@@ -25,7 +25,7 @@ from horizons.ai.aiplayer.builder import Builder
 from horizons.ai.aiplayer.building import AbstractBuilding
 from horizons.ai.aiplayer.constants import BUILD_RESULT, BUILDING_PURPOSE
 from horizons.constants import RES, BUILDINGS
-from horizons.util import Point
+from horizons.util.shapes import Point
 from horizons.util.python import decorators
 
 class AbstractField(AbstractBuilding):

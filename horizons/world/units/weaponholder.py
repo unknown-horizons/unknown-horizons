@@ -23,18 +23,19 @@ import weakref
 import logging
 import math
 
-from horizons.util import Annulus, Point, Callback
+from horizons.util.changelistener import metaChangeListenerDecorator
+from horizons.util.python.callback import Callback
+from horizons.util.shapes import Annulus, Point
+from horizons.util.worldobject import WorldObject
 from horizons.world.units.movingobject import MoveNotPossible
 from horizons.scheduler import Scheduler
-from horizons.util.changelistener import metaChangeListenerDecorator
-from weapon import Weapon, StackableWeapon, SetStackableWeaponNumberError
 from horizons.constants import GAME_SPEED
 from horizons.component.stancecomponent import HoldGroundStance, AggressiveStance, \
 	NoneStance, FleeStance
 from horizons.world.storage import PositiveTotalNumSlotsStorage
 from horizons.world.units.ship import Ship
+from horizons.world.units.weapon import Weapon, StackableWeapon, SetStackableWeaponNumberError
 from horizons.component.storagecomponent import StorageComponent
-from horizons.util.worldobject import WorldObject
 
 @metaChangeListenerDecorator("storage_modified")
 @metaChangeListenerDecorator("user_attack_issued")
@@ -224,7 +225,7 @@ class WeaponHolder(object):
 		"""
 		if not self._target:
 			return False
-		distance = self.position.distance(self._target.position.center())
+		distance = self.position.distance(self._target.position.center)
 		return self._min_range <= distance <= self._max_range
 
 	def can_attack_position(self, position):
@@ -236,7 +237,7 @@ class WeaponHolder(object):
 		if not self._fireable:
 			return False
 		# if position not in range return false
-		return self._min_range <= self.position.distance(position.center()) <= self._max_range
+		return self._min_range <= self.position.distance(position.center) <= self._max_range
 
 	def try_attack_target(self):
 		"""
@@ -247,7 +248,7 @@ class WeaponHolder(object):
 			return
 
 		if self.attack_in_range():
-			dest = self._target.position.center()
+			dest = self._target.position.center
 			if self._target.movable and self._target.is_moving():
 				dest = self._target._next_target
 
@@ -262,7 +263,7 @@ class WeaponHolder(object):
 		Executes every few seconds, doing movement depending on the stance.
 		Static WeaponHolders are aggressive, attacking all enemies that are in range
 		"""
-		enemies = [u for u in self.session.world.get_health_instances(self.position.center(), self._max_range)
+		enemies = [u for u in self.session.world.get_health_instances(self.position.center, self._max_range)
 			if self.session.world.diplomacy.are_enemies(u.owner, self.owner)]
 
 		self.log.debug("%s stance tick, found enemies: %s", self, [str(i) for i in enemies])
@@ -357,14 +358,14 @@ class WeaponHolder(object):
 
 		if not rotated:
 			for weapon in self._fireable:
-				weapon.fire(dest, self.position.center(), bullet_delay)
+				weapon.fire(dest, self.position.center, bullet_delay)
 		else:
 			angle = (math.pi / 60) * (-len(self._fireable) / 2)
 			cos = math.cos(angle)
 			sin = math.sin(angle)
 
-			x = self.position.center().x
-			y = self.position.center().y
+			x = self.position.center.x
+			y = self.position.center.y
 
 			dest_x = dest.x
 			dest_y = dest.y
@@ -378,7 +379,7 @@ class WeaponHolder(object):
 
 			for weapon in self._fireable:
 				destination = Point(dest_x, dest_y)
-				weapon.fire(destination, self.position.center(), bullet_delay)
+				weapon.fire(destination, self.position.center, bullet_delay)
 				dest_x = (dest_x - x) * cos - (dest_y - y) * sin + x
 				dest_y = (dest_x - x) * sin + (dest_y - y) * cos + y
 
@@ -516,7 +517,7 @@ class MovingWeaponHolder(WeaponHolder):
 			return
 
 		if not self.attack_in_range():
-			destination = Annulus(self._target.position.center(), self._min_range, self._max_range)
+			destination = Annulus(self._target.position.center, self._min_range, self._max_range)
 			not_possible_action = self.stop_attack
 			# if target passes near self, attack!
 			in_range_callback = self.try_attack_target
@@ -531,8 +532,8 @@ class MovingWeaponHolder(WeaponHolder):
 				# do not execute the next move tick
 				Scheduler().rem_call(self, self._move_tick)
 
-			distance = self.position.distance(self._target.position.center())
-			dest = self._target.position.center()
+			distance = self.position.distance(self._target.position.center)
+			dest = self._target.position.center
 			if self._target.movable and self._target.is_moving():
 				dest = self._target._next_target
 
@@ -544,14 +545,14 @@ class MovingWeaponHolder(WeaponHolder):
 				# no weapon was fired but i could have fired weapons
 				# check if i have weapons that could be shot from this position
 				move_closer = True
-				distance = self.position.center().distance(self._target.position.center())
+				distance = self.position.center.distance(self._target.position.center)
 				for weapon in self._weapon_storage:
 					if weapon.check_target_in_range(distance):
 						move_closer = False
 						break
 
 			if move_closer:
-				destination = Annulus(self._target.position.center(), self._min_range, self._min_range)
+				destination = Annulus(self._target.position.center, self._min_range, self._min_range)
 				self._move_and_attack(destination)
 			else:
 				Scheduler().add_new_object(self.try_attack_target, self, GAME_SPEED.TICKS_PER_SECOND)

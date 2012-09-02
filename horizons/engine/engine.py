@@ -28,10 +28,10 @@ from fife import fife
 from fife.extensions.basicapplication import ApplicationBase
 from fife.extensions import pychan
 from fife.extensions.serializers.simplexml import SimpleXMLSerializer
-
 from fife.extensions.fife_settings import FIFE_MODULE
 
-from horizons.util import SQLiteAnimationLoader, SQLiteAtlasLoader
+from horizons.util.loaders.sqliteanimationloader import SQLiteAnimationLoader
+from horizons.util.loaders.sqliteatlasloader import SQLiteAtlasLoader
 from horizons.constants import LANGUAGENAMES, PATHS, GFX
 from horizons.engine.settingshandler import SettingsHandler, get_screen_resolutions
 from horizons.engine.sound import Sound

@@ -28,7 +28,7 @@ from horizons.gui.widgets.statswidget import StatsWidget
 from horizons.scheduler import Scheduler
 from horizons.util.python import decorators
 from horizons.gui.util import create_resource_icon
-from horizons.util import Callback
+from horizons.util.python.callback import Callback
 from horizons.component.namedcomponent import NamedComponent
 from horizons.gui.widgets import OkButton
 

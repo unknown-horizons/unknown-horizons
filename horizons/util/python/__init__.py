@@ -25,32 +25,25 @@ but rather a generic enhancement of the programming language.
 """
 
 import decorators
-from callback import Callback
-from weaklist import WeakList
-from weakmethod import WeakMethod
-from weakmethodlist import WeakMethodList
-from singleton import Singleton, ManualConstructionSingleton
-from registry import Registry
-
 
 class Const(object):
 	"""An immutable type. Think C++-like const"""
 	def __setattr__(self, name, value):
-		"""Disallow changing an already set attribute, as an asymptote to const behaviour,
-		which is not supported by python"""
+		"""Disallow changing an already set attribute.
+		An asymptote to const behavior, which is not supported by python"""
 		if name in self.__dict__:
-			raise Exception("Can't change a ConstRect")
+			raise Exception("Can't change a Const object")
 		super(Const, self).__setattr__(name, value)
 
-def parse_port(port, allow_zero=False):
-	"""str2int for network ports. Throws ValueError in case of error."""
-	portInt = int(port)
-	if allow_zero and portInt == 0:
-		return portInt
-	if portInt < 1 or portInt > 65535:
-		raise ValueError()
-	return portInt
 
+def parse_port(port, allow_zero=True):
+	"""str2int for network ports. Throws ValueError in case of error."""
+	port_int = int(port)
+	if allow_zero and port_int == 0:
+		return port_int
+	if not (1 <= port_int <= 65535):
+		raise ValueError('Requires a port between 1 and 65535.')
+	return port_int
 
 def get_all_subclasses(cls):
 	"""Recursivly find all subclasses of a given class."""
@@ -60,7 +53,6 @@ def get_all_subclasses(cls):
 			result.add(subclass)
 			result.update(get_all_subclasses(subclass))
 	return result
-
 
 def map_balance(value, n, m):
 	"""
@@ -76,15 +68,12 @@ def map_balance(value, n, m):
 	@return: value mapped into new balance type
 	@rtype: float
 	"""
-
 	# normally we'd need to have special cases for value < 1.0 and value > 1.0
 	# but we turn cases of 1/n into n instead
 	if value < 1.0:
 		value = 1./value
 		m *= -1
-
 	return ((value - 1.0) / (n - 1.0)) * m
-
 
 def trim_value(value, min, max):
 	if value < min:

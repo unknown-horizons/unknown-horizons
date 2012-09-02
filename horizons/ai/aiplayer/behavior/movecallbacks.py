@@ -20,13 +20,11 @@
 # ###################################################
 
 import logging
+
 from horizons.component.namedcomponent import NamedComponent
 from horizons.util.python.callback import Callback
-from horizons.util.shapes.annulus import Annulus
-from horizons.util.shapes.circle import Circle
+from horizons.util.shapes import Annulus
 from horizons.world.units.movingobject import MoveNotPossible
-from horizons.world.units.weaponholder import MovingWeaponHolder
-
 
 class BehaviorMoveCallback:
 	"""

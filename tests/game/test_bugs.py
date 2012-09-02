@@ -28,7 +28,7 @@ from horizons.component.collectingcomponent import CollectingComponent
 from horizons.world.production.producer import Producer, QueueProducer
 from horizons.constants import BUILDINGS, RES, PRODUCTIONLINES, GAME
 from horizons.util.worldobject import WorldObject
-from horizons.util.shapes.point import Point
+from horizons.util.shapes import Point
 from horizons.world.production.utilisation import FieldUtilisation
 from horizons.world.building.settler import SettlerRuin
 

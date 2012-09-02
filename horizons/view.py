@@ -25,7 +25,8 @@ from fife import fife
 
 import horizons.main
 
-from horizons.util import ChangeListener, Rect
+from horizons.util.changelistener import ChangeListener
+from horizons.util.shapes import Rect
 from horizons.constants import LAYERS, VIEW, GAME_SPEED
 
 class View(ChangeListener):

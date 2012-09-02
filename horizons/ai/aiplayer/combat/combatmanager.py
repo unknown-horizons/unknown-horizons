@@ -32,7 +32,7 @@ from horizons.constants import LAYERS, AI
 from horizons.ext.enum import Enum
 from horizons.util.python.callback import Callback
 from horizons.util.python.defaultweakkeydictionary import DefaultWeakKeyDictionary
-from horizons.util.shapes.point import Point
+from horizons.util.shapes import Point
 from horizons.util.worldobject import WorldObject
 
 

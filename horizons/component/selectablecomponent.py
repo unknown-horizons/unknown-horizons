@@ -27,8 +27,8 @@ import operator
 import horizons.main
 
 from horizons.component import Component
-from horizons.util import decorators
-from horizons.util.shapes.radiusshape import RadiusRect
+from horizons.util.python import decorators
+from horizons.util.shapes import RadiusRect
 from horizons.constants import GFX, LAYERS, RES
 
 class SelectableComponent(Component):
@@ -95,7 +95,7 @@ class SelectableComponent(Component):
 	def select(self, reset_cam=False):
 		self._selected = True
 		if reset_cam:
-			self.session.view.center(*self.instance.position.center().to_tuple())
+			self.session.view.center(*self.instance.position.center.to_tuple())
 
 	def deselect(self):
 		self._selected = False

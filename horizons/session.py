@@ -42,7 +42,9 @@ from horizons.extscheduler import ExtScheduler
 from horizons.view import View
 from horizons.world import World
 from horizons.entities import Entities
-from horizons.util import WorldObject, LivingObject, livingProperty, SavegameAccessor
+from horizons.util.living import LivingObject, livingProperty
+from horizons.util.savegameaccessor import SavegameAccessor
+from horizons.util.worldobject import WorldObject
 from horizons.util.uhdbaccessor import read_savegame_template
 from horizons.util.lastactiveplayersettlementmanager import LastActivePlayerSettlementManager
 from horizons.component.namedcomponent import NamedComponent
