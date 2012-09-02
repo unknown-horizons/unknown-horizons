@@ -93,26 +93,14 @@ STYLES = {
 			'border_size': 0
 		},
 },
-'menu': { #Used in the main menu and game menu
-		'default' : {
-			'border_size': 0,
-			'margins': (0, 0),
-			'opaque': 0,
-			'base_color' : fife.Color(0, 0, 0, 0),
-			'foreground_color' : fife.Color(255, 255, 255),
-			'background_color' : fife.Color(0, 0, 0, 0),
-			'selection_color' : fife.Color(0, 0, 0, 0),
-			'font' : 'headline_light'
+'menu': { #Used in the main menu
+		'default': {
+			'font': 'headline_light',
 		},
-		'Button' : {
-			'border_size': 0,
-			'margins' : (10, 5)
+		'Label': {
+			'background_color': fife.Color(0, 0, 0, 102),
+			'font': 'mainmenu',
 		},
-		'Label' : {
-			'border_size': 0,
-			'font' : 'mainmenu',
-			'background_color' : fife.Color(0, 0, 0, 102)
-		}
 },
 
 'menu_black': { # style for build menu etc.
