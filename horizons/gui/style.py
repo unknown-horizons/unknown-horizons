@@ -28,7 +28,7 @@ STYLES = {
 			'margins': (0, 0),
 			'base_color' : fife.Color(40, 40, 40,   0),
 			'foreground_color' : fife.Color( 80, 80, 40,   0),
-			'background_color' : fife.Color(255,255,255, 128),
+			'background_color': fife.Color(0, 0, 0, 0),
 			'selection_color' : fife.Color(80,80,40, 192),
 			'font' : '14_black',
 		},
@@ -61,7 +61,6 @@ STYLES = {
 			'font' : '14_black',
 		},
 		'ListBox' : {
-			'background_color' : fife.Color(0,0,0,0),
 			'foreground_color' : fife.Color(80,80,40),
 			'selection_color' : fife.Color(255,255,255,128),
 			'font' : '14_black',
@@ -124,7 +123,6 @@ STYLES = {
 
 'city_info': { # style for city info
 		'default': {
-			'background_color': fife.Color(0, 0, 0, 0),
 			'font': '18',
 		},
 		'Label': {
@@ -134,7 +132,6 @@ STYLES = {
 
 'headline': { # style for headlines
 		'default': {
-			'background_color': fife.Color(0, 0, 0, 0),
 			'font': 'headline',
 		},
 		# NOTE: This is a hack to add padding attributs to boxes of this style
