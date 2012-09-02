@@ -37,7 +37,7 @@ from horizons.engine.settingshandler import SettingsHandler, get_screen_resoluti
 from horizons.engine.sound import Sound
 from horizons.engine.settingsdialog import SettingsDialog
 from horizons.engine.pychan_util import init_pychan
-from horizons.engine import UH_MODULE
+from horizons.engine import UH_MODULE, KEY_MODULE
 
 
 class Fife(ApplicationBase):
@@ -203,6 +203,9 @@ class Fife(ApplicationBase):
 	def set_uh_setting(self, settingname, value):
 		"""Probably saves setting in memory. Call save_settings() later"""
 		self._setting.set(UH_MODULE, settingname, value)
+
+	def get_key_for_action(self, action):
+		return self._setting.get(KEY_MODULE, action)
 
 	def save_settings(self):
 		self._setting.saveSettings()
