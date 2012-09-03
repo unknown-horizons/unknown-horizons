@@ -24,6 +24,7 @@ import os
 from fife.extensions import pychan
 from fife.extensions.pychan.widgets import Icon
 
+from horizons.constants import TIER
 from horizons.i18n import translate_widget
 from horizons.util.python import decorators, Callback
 
@@ -42,6 +43,22 @@ def get_gui_files_map():
 				else:
 					print u'Another file by the name {name} already exists. Please use unique names!'.format(name=i)
 	return xml_files
+
+def get_happiness_icon_and_helptext(value, session):
+	happiness_icon_path = "content/gui/icons/templates/happiness/"
+	happiness_helptext = _("satisfied")
+	sad = session.db.get_settler_happiness_decrease_limit()
+	happy = session.db.get_settler_happiness_increase_requirement()
+	if value <= sad:
+		happiness_icon_path += "sad.png"
+		happiness_helptext = _("sad")
+	elif sad < value < happy:
+		happiness_icon_path += "average.png"
+	elif value >= happy:
+		happiness_icon_path += "happy.png"
+		happiness_helptext = _("happy")
+
+	return happiness_icon_path, happiness_helptext
 
 def load_uh_widget(filename, style=None, center_widget=False):
 	"""Loads a pychan widget from an xml file and applies uh-specific modifications
