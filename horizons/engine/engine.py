@@ -129,10 +129,10 @@ class Fife(ApplicationBase):
 				user_config_parser.save()
 
 		self._setting = SettingsDialog(app_name=UH_MODULE,
-				                         settings_file=PATHS.USER_CONFIG_FILE,
-				                         settings_gui_xml="settings.xml",
-				                         changes_gui_xml="requirerestart.xml",
-				                         default_settings_file=PATHS.CONFIG_TEMPLATE_FILE)
+		                               settings_file=PATHS.USER_CONFIG_FILE,
+		                               settings_gui_xml="settings.xml",
+		                               changes_gui_xml="requirerestart.xml",
+		                               default_settings_file=PATHS.CONFIG_TEMPLATE_FILE)
 
 		self._setting_handler.add_settings()
 
@@ -180,7 +180,7 @@ class Fife(ApplicationBase):
 
 	def show_settings(self):
 		"""Show fife settings gui"""
-		if not hasattr(self, "_settings_extra_inited "):
+		if not hasattr(self, "_settings_extra_inited"):
 			self._setting_handler.setup_setting_extras()
 			self._settings_extra_inited = True
 		self._setting.onOptionsPress()
