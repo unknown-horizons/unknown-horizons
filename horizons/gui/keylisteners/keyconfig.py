@@ -89,7 +89,7 @@ class KeyConfig(object):
 			                'LEFT_', 'RIGHT_', 'POWER', 'INVALID_KEY')
 			return (key.startswith(tuple(ascii_uppercase)) and
 			        not key.startswith(special_keys) and
-				   not (only_free_keys and value in self.keyval_action_mappings))
+			        not (only_free_keys and value in self.keyval_action_mappings))
 		return dict( (k, v) for k, v in fife.Key.__dict__.iteritems()
 		                    if is_available(k, v))
 
