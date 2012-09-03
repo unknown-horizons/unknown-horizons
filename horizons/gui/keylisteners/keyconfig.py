@@ -47,9 +47,8 @@ class KeyConfig(object):
 
 		self.keyval_action_mappings = dict() # map key ID (int) to action (int)
 		self.action_keyname_mappings = dict() # map action name (str) to key name (str)
-		#TODO temporary settings keys, get rid of this and just use all settings!
-		# for some reason getAllSettings decided to not work for module 'keys' :(
-		custom_key_actions = ["GRID", "COORD_TOOLTIP", "DESTROY_TOOL", "ROAD_TOOL", "SPEED_UP", "SPEED_UP", "SPEED_DOWN", "PAUSE", "LOGBOOK", "BUILD_TOOL", "ROTATE_RIGHT", "ROTATE_LEFT", "CHAT", "TRANSLUCENCY", "TILE_OWNER_HIGHLIGHT", "PIPETTE", "HEALTH_BAR", "DEBUG", "SCREENSHOT", "SHOW_SELECTED", "REMOVE_SELECTED", "ESCAPE", "LEFT", "RIGHT", "UP", "DOWN", "HELP", "PLAYERS_OVERVIEW", "SHIPS_OVERVIEW", "SETTLEMENTS_OVERVIEW", "QUICKSAVE", "QUICKLOAD", "CONSOLE", "SAVE_MAP"]
+
+		custom_key_actions = horizons.main.fife.get_hotkey_settings()
 		for action in custom_key_actions:
 			action_id = getattr(_Actions, action)
 			key = horizons.main.fife.get_key_for_action(action).upper()

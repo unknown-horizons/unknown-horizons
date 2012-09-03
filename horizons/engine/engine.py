@@ -129,10 +129,10 @@ class Fife(ApplicationBase):
 				user_config_parser.save()
 
 		self._setting = SettingsDialog(app_name=UH_MODULE,
-				                         settings_file=PATHS.USER_CONFIG_FILE,
-				                         settings_gui_xml="settings.xml",
-				                         changes_gui_xml="requirerestart.xml",
-				                         default_settings_file=PATHS.CONFIG_TEMPLATE_FILE)
+		                               settings_file=PATHS.USER_CONFIG_FILE,
+		                               settings_gui_xml="settings.xml",
+		                               changes_gui_xml="requirerestart.xml",
+		                               default_settings_file=PATHS.CONFIG_TEMPLATE_FILE)
 
 		self._setting_handler.add_settings()
 
@@ -203,6 +203,9 @@ class Fife(ApplicationBase):
 	def set_uh_setting(self, settingname, value):
 		"""Probably saves setting in memory. Call save_settings() later"""
 		self._setting.set(UH_MODULE, settingname, value)
+
+	def get_hotkey_settings(self):
+		return self._setting.getSettingsFromFile(KEY_MODULE)
 
 	def get_key_for_action(self, action):
 		return self._setting.get(KEY_MODULE, action)
