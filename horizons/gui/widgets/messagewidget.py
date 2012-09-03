@@ -20,7 +20,6 @@
 # ###################################################
 
 import logging
-
 import textwrap
 import itertools
 
@@ -37,7 +36,7 @@ from horizons.i18n.voice import get_speech_file
 
 class MessageWidget(LivingObject):
 	"""Class that organizes the messages. Displayed on left screen edge.
-	It uses Message instances to store messages and manages the archive.
+	It uses _IngameMessage instances to store messages and manages the archive.
 	"""
 
 	BG_IMAGE_MIDDLE = 'content/gui/images/background/widgets/message_bg_middle.png'
@@ -99,7 +98,9 @@ class MessageWidget(LivingObject):
 			self._last_message[string_id] = (Scheduler().cur_tick, point)
 
 		sound = get_speech_file(string_id) if play_sound else None
-		return self._add_message(Message(point, string_id, msg_type=msg_type, created=self.msgcount.next(), message_dict=message_dict), sound)
+		return self._add_message(_IngameMessage(point=point, id=string_id, msg_type=msg_type,
+		                                        created=self.msgcount.next(), message_dict=message_dict),
+		                         sound=sound)
 
 	def add_custom(self, messagetext, point=None, msg_type=None, visible_for=40, icon_id=1):
 		""" See docstring for add().
@@ -107,7 +108,9 @@ class MessageWidget(LivingObject):
 		Instead, directly provides text and icon to be shown (messagetext, icon_id)
 		@param visible_for: how many seconds the message will stay visible in the widget
 		"""
-		return self._add_message(Message(point=point, id=None, msg_type=msg_type, display=visible_for, created=self.msgcount.next(), message=messagetext, icon_id=icon_id))
+		return self._add_message(_IngameMessage(point=point, id=None, msg_type=msg_type,
+		                                        display=visible_for, created=self.msgcount.next(),
+		                                        message=messagetext, icon_id=icon_id))
 
 	def add_chat(self, player, messagetext, icon_id=1):
 		""" See docstring for add().
@@ -118,7 +121,7 @@ class MessageWidget(LivingObject):
 
 	def _add_message(self, message, sound=None):
 		"""Internal function for adding messages. Do not call directly.
-		@param message: Message instance
+		@param message: _IngameMessage instance
 		@param sound: path to soundfile"""
 		self.active_messages.insert(0, message)
 		if len(self.active_messages) > self.MAX_MESSAGES:
@@ -240,22 +243,34 @@ class MessageWidget(LivingObject):
 	def save(self, db):
 		for message in self.active_messages:
 			if message.id is not None and message.id != 'CHAT': # only save default messages (for now)
-				db("INSERT INTO message_widget_active (id, x, y, read, created, display, message) VALUES (?, ?, ?, ?, ?, ?, ?)", message.id, message.x, message.y, int(message.read), message.created, message.display, message.message)
+				db("INSERT INTO message_widget_active (id, x, y, read, created, display, message) "
+				   "VALUES (?, ?, ?, ?, ?, ?, ?)",
+				   message.id, message.x, message.y, int(message.read),
+				   message.created, message.display, message.message)
 		for message in self.archive:
 			if message.id is not None and message.id != 'CHAT':
-				db("INSERT INTO message_widget_archive (id, x, y, read, created, display, message) VALUES (?, ?, ?, ?, ?, ?, ?)", message.id, message.x, message.y, int(message.read), message.created, message.display, message.message)
+				db("INSERT INTO message_widget_archive (id, x, y, read, created, display, message) "
+				   "VALUES (?, ?, ?, ?, ?, ?, ?)",
+				   message.id, message.x, message.y, int(message.read),
+				   message.created, message.display, message.message)
 		for message in self.chat:
 			# handle 'CHAT' special case: display is 0 (do not show old chat on load)
-			db("INSERT INTO message_widget_archive (id, x, y, read, created, display, message) VALUES (?, ?, ?, ?, ?, ?, ?)", message.id, message.x, message.y, int(message.read), message.created, 0, message.message)
+			db("INSERT INTO message_widget_archive (id, x, y, read, created, display, message) "
+			   "VALUES (?, ?, ?, ?, ?, ?, ?)",
+			   message.id, message.x, message.y, int(message.read), message.created, 0, message.message)
 
 	def load(self, db):
-		messages = db("SELECT id, x, y, read, created, display, message FROM message_widget_active ORDER BY created ASC")
+		messages = db("SELECT id, x, y, read, created, display, message "
+		              "FROM message_widget_active ORDER BY created ASC")
 		for (msg_id, x, y, read, created, display, message) in messages:
-			msg = Message(point=Point(x, y), id=msg_id, created=created, read=bool(read), display=bool(display), message=message)
+			msg = _IngameMessage(point=Point(x, y), id=msg_id, created=created,
+			                     read=bool(read), display=bool(display), message=message)
 			self.active_messages.append(msg)
-		messages = db("SELECT id, x, y, read, created, display, message FROM message_widget_archive ORDER BY created ASC")
+		messages = db("SELECT id, x, y, read, created, display, message "
+		              "FROM message_widget_archive ORDER BY created ASC")
 		for (msg_id, x, y, read, created, display, message) in messages:
-			msg = Message(point=Point(x, y), id=msg_id, created=created, read=bool(read), display=bool(display), message=message)
+			msg = _IngameMessage(point=Point(x, y), id=msg_id, created=created,
+			                     read=bool(read), display=bool(display), message=message)
 			if msg_id == 'CHAT':
 				self.chat.append(msg)
 			else:
@@ -265,11 +280,11 @@ class MessageWidget(LivingObject):
 		self.draw_widget()
 
 
-class Message(object):
+class _IngameMessage(object):
 	"""Represents a message that is to be displayed in the MessageWidget.
 	The message is used as a string template, meaning it can contain placeholders
-	like the following: {player}, {gold}. The dict needed to fill in these place-
-	holders needs to be provided when creating Messages. (parameter message_dict)
+	like the following: {player}, {gold}. The *message_dict* needed to fill in
+	these placeholders needs to be provided when creating _IngameMessages.
 
 	@param x, y: int position on the map where the action took place.
 	@param id: message id string, needed to retrieve the message from the database.
@@ -277,7 +292,8 @@ class Message(object):
 	@param count: a unique message id number
 	@param message_dict: dict with strings to replace in the message, e.g. {'player': 'Arthus'}
 	"""
-	def __init__(self, point, id, created, msg_type=None, read=False, display=None, message=None, message_dict=None, icon_id=None):
+	def __init__(self, point, id, created,
+	             msg_type=None, read=False, display=None, message=None, message_dict=None, icon_id=None):
 		self.x, self.y = None, None
 		if point is not None:
 			self.x, self.y = point.x, point.y
@@ -301,4 +317,7 @@ class Message(object):
 				       err=err, msg=msg, id=id, dic=message_dict)
 
 	def __repr__(self):
-		return "% 4d: %s  '%s'  %s %s%s" % (self.created, self.id, self.message, '(%s,%s) ' % (self.x, self.y) if self.x and self.y else '', 'R' if self.read else ' ', 'D' if self.display else ' ')
+		return "% 4d: %s  '%s'  %s %s%s" % (self.created, self.id, self.message,
+			'(%s,%s) ' % (self.x, self.y) if self.x and self.y else '',
+			'R' if self.read else ' ',
+			'D' if self.display else ' ')
