@@ -45,16 +45,6 @@ class KeyConfig(object):
 	def __init__(self):
 		_Actions = self._Actions
 
-		def get_fife_key_name(key):
-			"""For keys that will yield keystr values, allow their input in xml settings."""
-			fife_keyname_map = {
-				'+': 'PLUS',
-				'-': 'MINUS',
-				'.': 'PERIOD',
-				',': 'COMMA',
-			}
-			return fife_keyname_map.get(key, key)
-
 		self.keyval_action_mappings = dict() # map key ID (int) to action (int)
 		self.action_keyname_mappings = dict() # map action name (str) to key name (str)
 		#TODO temporary settings keys, get rid of this and just use all settings!
@@ -63,7 +53,7 @@ class KeyConfig(object):
 		for action in custom_key_actions:
 			action_id = getattr(_Actions, action)
 			key = horizons.main.fife.get_key_for_action(action).upper()
-			key_id = self.keys_by_name.get(key, get_fife_key_name(key))
+			key_id = self.get_keys_by_name().get(key, self.get_fife_key_name(key))
 			self.keyval_action_mappings[key_id] = action_id
 			self.action_keyname_mappings[action] = key
 
@@ -88,16 +78,30 @@ class KeyConfig(object):
 		else:
 			return action # all checks passed
 
-	@property
-	def keys_by_name(self, only_free_keys=False):
+	def get_keys_by_name(self, only_free_keys=False, force_include=None):
 		def is_available(key, value):
-			if not only_free_keys:
-				return key.startswith(tuple(ascii_uppercase)) and value > 0
+			if force_include and key in force_include:
+				return True
+			special_keys = ('WORLD_', 'ENTER', 'ALT', 'COMPOSE',
+			                'LEFT_', 'RIGHT_', 'POWER', 'INVALID_KEY')
+			return (key.startswith(tuple(ascii_uppercase)) and
+			        not key.startswith(special_keys) and
+				   not (only_free_keys and value in self.keyval_action_mappings))
 		return dict( (k, v) for k, v in fife.Key.__dict__.iteritems()
-		                    if is_available(k, v) )
+		                    if is_available(k, v))
 
 	def get_keyval_to_actionid_map(self):
 		return self.keyval_action_mappings
 
 	def get_actionname_to_keyname_map(self):
 		return self.action_keyname_mappings
+
+	def get_fife_key_name(self, key):
+		"""For keys that will yield keystr values, allow their input in xml settings."""
+		fife_keyname_map = {
+			'+': 'PLUS',
+			'-': 'MINUS',
+			'.': 'PERIOD',
+			',': 'COMMA',
+		}
+		return fife_keyname_map.get(key, key)

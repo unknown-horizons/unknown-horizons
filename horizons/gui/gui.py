@@ -77,6 +77,7 @@ class Gui(SingleplayerMenu, MultiplayerMenu):
 		self.mainlistener = MainListener(self)
 		self.current = None # currently active window
 		self.widgets = LazyWidgetsDict(self.styles) # access widgets with their filenames without '.xml'
+		self.keyconf = KeyConfig() # before build_help_strings
 		self.build_help_strings()
 		self.session = None
 		self.current_dialog = None
@@ -768,17 +769,36 @@ class Gui(SingleplayerMenu, MultiplayerMenu):
 								    if name.startswith('lbl_') )
 
 		# now prepend the actual keys to the function strings defined in xml
-		actionmap = KeyConfig().get_actionname_to_keyname_map()
+		actionmap = self.keyconf.get_actionname_to_keyname_map()
 		for (name, lbl) in labels.items():
 			try:
 				keyname = '{key}'.format(key=actionmap[name])
 			except KeyError:
 				keyname = ' '
-			lbl.text = HELPSTRING_LAYOUT.format(text=_(lbl.text), key=keyname)
-			lbl.capture(Callback(self.change_hotkey, name))
+			explanation = _(lbl.text)
+			lbl.text = HELPSTRING_LAYOUT.format(text=explanation, key=keyname)
+			lbl.capture(Callback(self.change_hotkey, name, explanation, keyname))
 
 		author_label = widgets.findChild(name='fife_and_uh_team')
 		author_label.helptext = u"www.unknown-[br]horizons.org[br]www.fifengine.net"
 
-	def change_hotkey(self, action):
-		print action
+	def change_hotkey(self, action, explanation, keyname):
+		print 'Changing key for', action
+		message = explanation + u'\n' + 'Current key: [{key}]'.format(key=keyname)
+		popup = self.build_popup('Change hotkey for {action}'.format(action=action),
+		                         message=message, size=2, show_cancel_button=True)
+		keybox = pychan.widgets.ScrollArea()
+		listbox = pychan.widgets.ListBox()
+		keybox.max_size = listbox.max_size = \
+		keybox.min_size = listbox.min_size = \
+		keybox.size = listbox.size = (200, 200)
+		keybox.position = listbox.position = (90, 110)
+		prefer_short = lambda k: (len(k) > 1, len(k) > 3, k)
+		free_keys = self.keyconf.get_keys_by_name(only_free_keys=True,
+		                                          force_include=[keyname])
+		listbox.items = sorted(free_keys, key=prefer_short)
+		listbox.selected = listbox.items.index(self.keyconf.get_fife_key_name(keyname))
+		keybox.addChild(listbox)
+		popup.addChild(keybox)
+		button_cbs = {OkButton.DEFAULT_NAME: True, CancelButton.DEFAULT_NAME: False}
+		self.show_dialog(popup, button_cbs, modal=True)
