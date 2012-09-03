@@ -205,6 +205,8 @@ def set_translations():
 	"mainsquare_inhabitants.xml" : {
 		# (text of widget: headline)
 		("headline"                    , "text"    ): _("Settler overview"),
+		# (text of widget: headline_happiness_per_house)
+		("headline_happiness_per_house", "text"    ): _("Happiness per house"),
 		# (text of widget: headline_residents_per_house)
 		("headline_residents_per_house", "text"    ): _("Residents per house"),
 		# (text of widget: headline_residents_total)
@@ -217,22 +219,26 @@ def set_translations():
 		("tax_label"                   , "text"    ): _("Taxes:"),
 		# (text of widget: upgrades_lbl)
 		("upgrades_lbl"                , "text"    ): _("Upgrade permissions:"),
-		# (helptext of widget: avg_happiness_icon)
-		("avg_happiness_icon"          , "helptext"): _("happiness"),
+		# (helptext of widget: avg_icon)
+		("avg_icon"                    , "helptext"): _("satisfied"),
+		# (helptext of widget: happiness_house_icon)
+		("happiness_house_icon"        , "helptext"): _("Amount of houses with this happiness"),
+		# (helptext of widget: happy_icon)
+		("happy_icon"                  , "helptext"): _("happy"),
 		# (helptext of widget: houses_icon)
 		("houses_icon"                 , "helptext"): _("Houses with this amount of inhabitants"),
 		# (helptext of widget: inhabitants_icon)
 		("inhabitants_icon"            , "helptext"): _("Number of inhabitants per house"),
 		# (helptext of widget: paid_taxes_icon)
 		("paid_taxes_icon"             , "helptext"): _("Paid taxes"),
+		# (helptext of widget: sad_icon)
+		("sad_icon"                    , "helptext"): _("sad"),
 		# (helptext of widget: tax_rate_icon)
 		("tax_rate_icon"               , "helptext"): _("Tax rate"),
 		# (helptext of widget: tax_val_label)
 		("tax_val_label"               , "helptext"): _("Tax rate"),
 		# (helptext of widget: taxes)
 		("taxes"                       , "helptext"): _("Paid taxes"),
-		# (helptext of widget: avg_happiness)
-		("avg_happiness"               , "helptext"): _("Average Happiness"),
 		},
 
 	"overview_enemybuilding.xml" : {
