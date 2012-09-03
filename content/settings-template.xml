@@ -55,25 +55,25 @@
 		<Setting name="ShowResourceIcons" type="bool">True</Setting>
 	</Module>
 	<Module name="keys">
-		<Setting name="GRID" type="str"> g </Setting>
-		<Setting name="COORD_TOOLTIP" type="str"> h </Setting>
-		<Setting name="DESTROY_TOOL" type="str"> x </Setting>
-		<Setting name="ROAD_TOOL" type="str"> r </Setting>
+		<Setting name="GRID" type="str"> G </Setting>
+		<Setting name="COORD_TOOLTIP" type="str"> H </Setting>
+		<Setting name="DESTROY_TOOL" type="str"> X </Setting>
+		<Setting name="ROAD_TOOL" type="str"> R </Setting>
 		<Setting name="SPEED_UP" type="str"> + </Setting>
 		<Setting name="SPEED_DOWN" type="str"> - </Setting>
-		<Setting name="PAUSE" type="str"> p </Setting>
-		<Setting name="LOGBOOK" type="str"> l </Setting>
-		<Setting name="BUILD_TOOL" type="str"> b </Setting>
+		<Setting name="PAUSE" type="str"> P </Setting>
+		<Setting name="LOGBOOK" type="str"> L </Setting>
+		<Setting name="BUILD_TOOL" type="str"> B </Setting>
 		<Setting name="ROTATE_RIGHT" type="str"> . </Setting>
 		<Setting name="ROTATE_LEFT" type="str"> , </Setting>
-		<Setting name="CHAT" type="str"> c </Setting>
-		<Setting name="TRANSLUCENCY" type="str"> t </Setting>
-		<Setting name="TILE_OWNER_HIGHLIGHT" type="str"> a </Setting>
-		<Setting name="PIPETTE" type="str"> o </Setting>
-		<Setting name="HEALTH_BAR" type="str"> k </Setting>
-		<Setting name="DEBUG" type="str"> d </Setting>
-		<Setting name="SCREENSHOT" type="str"> s </Setting>
-		<Setting name="SHOW_SELECTED" type="str"> j </Setting>
+		<Setting name="CHAT" type="str"> C </Setting>
+		<Setting name="TRANSLUCENCY" type="str"> T </Setting>
+		<Setting name="TILE_OWNER_HIGHLIGHT" type="str"> A </Setting>
+		<Setting name="PIPETTE" type="str"> O </Setting>
+		<Setting name="HEALTH_BAR" type="str"> K </Setting>
+		<Setting name="DEBUG" type="str"> D </Setting>
+		<Setting name="SCREENSHOT" type="str"> S </Setting>
+		<Setting name="SHOW_SELECTED" type="str"> J </Setting>
 		<Setting name="REMOVE_SELECTED" type="str"> DELETE </Setting>
 		<Setting name="ESCAPE" type="str"> ESCAPE </Setting>
 		<Setting name="LEFT" type="str"> LEFT </Setting>
