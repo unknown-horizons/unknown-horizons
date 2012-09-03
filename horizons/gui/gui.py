@@ -771,10 +771,7 @@ class Gui(SingleplayerMenu, MultiplayerMenu):
 		# now prepend the actual keys to the function strings defined in xml
 		actionmap = self.keyconf.get_actionname_to_keyname_map()
 		for (name, lbl) in labels.items():
-			try:
-				keyname = '{key}'.format(key=actionmap[name])
-			except KeyError:
-				keyname = ' '
+			keyname = actionmap.get(name, 'SHIFT') #TODO #HACK
 			explanation = _(lbl.text)
 			lbl.text = HELPSTRING_LAYOUT.format(text=explanation, key=keyname)
 			lbl.capture(Callback(self.change_hotkey, name, explanation, keyname))
@@ -783,10 +780,16 @@ class Gui(SingleplayerMenu, MultiplayerMenu):
 		author_label.helptext = u"www.unknown-[br]horizons.org[br]www.fifengine.net"
 
 	def change_hotkey(self, action, explanation, keyname):
-		print 'Changing key for', action
-		message = explanation + u'\n' + 'Current key: [{key}]'.format(key=keyname)
-		popup = self.build_popup('Change hotkey for {action}'.format(action=action),
-		                         message=message, size=2, show_cancel_button=True)
+		headline = _('Change hotkey for {action}').format(action=action)
+		message = explanation + u'\n' + _('Current key: [{key}]').format(key=keyname)
+
+		if keyname in ('SHIFT', ):
+			message = _('This key can not be reassigned at the moment.')
+			popup = self.build_popup(headline, message, size=0)
+			self.show_dialog(popup, {OkButton.DEFAULT_NAME: True}, modal=True)
+			return
+
+		popup = self.build_popup(headline, message, size=2, show_cancel_button=True)
 		keybox = pychan.widgets.ScrollArea()
 		listbox = pychan.widgets.ListBox()
 		keybox.max_size = listbox.max_size = \
@@ -800,5 +803,8 @@ class Gui(SingleplayerMenu, MultiplayerMenu):
 		listbox.selected = listbox.items.index(self.keyconf.get_fife_key_name(keyname))
 		keybox.addChild(listbox)
 		popup.addChild(keybox)
-		button_cbs = {OkButton.DEFAULT_NAME: True, CancelButton.DEFAULT_NAME: False}
+		button_cbs = {
+			OkButton.DEFAULT_NAME: True,
+			CancelButton.DEFAULT_NAME: False,
+		}
 		self.show_dialog(popup, button_cbs, modal=True)
