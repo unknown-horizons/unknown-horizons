@@ -60,7 +60,6 @@
 		<Setting name="DESTROY_TOOL" type="str"> x </Setting>
 		<Setting name="ROAD_TOOL" type="str"> r </Setting>
 		<Setting name="SPEED_UP" type="str"> + </Setting>
-		<Setting name="SPEED_UP" type="str"> = </Setting>
 		<Setting name="SPEED_DOWN" type="str"> - </Setting>
 		<Setting name="PAUSE" type="str"> p </Setting>
 		<Setting name="LOGBOOK" type="str"> l </Setting>
