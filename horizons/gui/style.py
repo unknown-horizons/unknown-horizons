@@ -36,59 +36,24 @@ STYLES = {
 			'background_color': Color(255, 255, 255, 32),
 			'foreground_color': Color(80, 80, 40, 192),
 			'base_color': Color(80, 80, 40, 64),
-			'border_size': 1,
 			'margins': (10, 5),
-		},
-		('Icon', 'ImageButton'): {
-			'border_size': 0,
-		},
-		'CheckBox': {
-			'background_color': Color(255, 255, 255, 64),
-			'foreground_color': Color(80, 80, 40),
-			'base_color': Color(0, 0, 0, 0),
-			'font': '14_black',
-			'border_size': 0,
 		},
 		('Slider', 'StepSlider'): {
 			'base_color': Color(80, 80, 40, 128),
 		},
-		'TextField': {
+		'CheckBox': {
 			'selection_color': Color(255, 255, 255),
-			'background_color': Color(255, 255, 255, 64),
-			'base_color': Color(0, 0, 0, 0),
+			'background_color': Color(255, 255, 255, 96),
 			'foreground_color': Color(80, 80, 40),
-			'font': '14_black',
 		},
 		'ListBox': {
 			'foreground_color': Color(80, 80, 40),
 			'selection_color': Color(255, 255, 255, 128),
-			'font': '14_black',
-		},
-		'ScrollArea': {
-			'background_color': Color(255, 255, 255, 64),
-			'foreground_color': Color(80, 80, 40),
-			'base_color': Color(0, 0, 0, 0),
-			'font': '14_black',
-			'horizontal_scrollbar': 0,
-		},
-		'RadioButton': {
-			'border_size': 0,
 		},
 		'Label': {
-			'border_size': 0,
-			'background_color': Color(40, 40, 40, 0),
-			'font': '14_black',
-		},
-		'Window': {
-			'border_size': 1,
-			'margins': (10, 10),
-			'titlebar_height': 30,
-			'font': 'large',
-			'base_color': Color(60, 60, 60),
 		},
 		('Container', 'HBox', 'VBox'): {
 			'opaque': 0,
-			'border_size': 0,
 		},
 },
 
@@ -110,7 +75,6 @@ STYLES = {
 		('Container', 'HBox', 'VBox'): {
 		},
 		# once more, better not ask why this is necessary (#1607)
-		# also seems it won't work if just added to the above.
 		'CheckBox': {
 		},
 },
@@ -143,49 +107,30 @@ STYLES = {
 		'default': {
 			'border_size': 0,
 			'margins': (0, 0),
-			'font': '14_black',
 			'foreground_color': Color(80, 80, 40),
+			'font': '14_black',
 		},
 		'Label': {
-			'font': '14_black',
-		},
-		'DropDown': {
-			'selection_color': Color(255, 255, 255, 200),
-			'background_color': Color(255, 255, 255, 128),
-			'base_color': Color(0, 0, 0, 0),
-			'foreground_color': Color(80, 80, 40),
-			'font': '14_black',
 		},
 		('Slider', 'StepSlider'): {
-			'base_color': Color(80, 80, 40, 128),
+			'base_color': Color(90, 90, 40, 96),
+		},
+		'RadioButton': {
+			'foreground_color': Color(80, 80, 40),
+			'background_color': Color(255, 255, 255, 96),
 		},
 		'ListBox': {
 			'background_color': Color(0, 0, 0, 0),
-			'foreground_color': Color(80, 80, 40),
 			'selection_color': Color(255, 255, 255, 128),
-			'font': '14_black',
 		},
-		'ScrollArea': {
-			'background_color': Color(255, 255, 255, 64),
-			'foreground_color': Color(80, 80, 40),
-			'base_color': Color(0, 0, 0, 0),
-			'font': '14_black',
-			'horizontal_scrollbar': 0,
-		},
-		'HBox': {
-			'font': '14_black',
-			'foreground_color': Color(80, 80, 40),
-			'opaque': 0,
-		},
-		'TextField': {
+		('TextField', 'ScrollArea'): {
 			'selection_color': Color(255, 255, 255),
 			'background_color': Color(255, 255, 255, 64),
 			'base_color': Color(0, 0, 0, 0),
-			'foreground_color': Color(80, 80, 40),
-			'font': '14_black',
+			'horizontal_scrollbar': 0,
 		},
 		('Container', 'HBox', 'VBox'): {
-#			'background_image': ****,
+			'opaque': 0,
 		},
 },
 
