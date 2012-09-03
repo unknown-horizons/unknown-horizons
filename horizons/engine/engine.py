@@ -207,6 +207,10 @@ class Fife(ApplicationBase):
 	def get_key_for_action(self, action):
 		return self._setting.get(KEY_MODULE, action)
 
+	def set_key_for_action(self, action, key):
+		"""Sets hotkey *key* for action *action*."""
+		self._setting.set(KEY_MODULE, action, key)
+
 	def save_settings(self):
 		self._setting.saveSettings()
 

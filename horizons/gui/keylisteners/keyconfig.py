@@ -53,7 +53,7 @@ class KeyConfig(object):
 		for action in custom_key_actions:
 			action_id = getattr(_Actions, action)
 			key = horizons.main.fife.get_key_for_action(action).upper()
-			key_id = self.get_keys_by_name().get(key, self.get_fife_key_name(key))
+			key_id = self.get_key_by_name(key)
 			self.keyval_action_mappings[key_id] = action_id
 			self.action_keyname_mappings[action] = key
 
@@ -77,6 +77,9 @@ class KeyConfig(object):
 			return None
 		else:
 			return action # all checks passed
+
+	def get_key_by_name(self, keyname):
+		return self.get_keys_by_name().get(keyname, self.get_fife_key_name(keyname))
 
 	def get_keys_by_name(self, only_free_keys=False, force_include=None):
 		def is_available(key, value):
@@ -105,3 +108,16 @@ class KeyConfig(object):
 			',': 'COMMA',
 		}
 		return fife_keyname_map.get(key, key)
+
+	def save_new_key(self, action, newkey):
+		oldkey = horizons.main.fife.get_key_for_action(action)
+		horizons.main.fife.set_key_for_action(action, newkey)
+		horizons.main.fife.save_settings() #TODO remove this, save only when hitting OK
+
+		# Now keep track of which keys are still in use and which are available again
+		self.action_keyname_mappings[action] = newkey
+		old_key_id = self.get_key_by_name(oldkey)
+		new_key_id = self.get_key_by_name(newkey)
+		action_id = getattr(self._Actions, action)
+		del self.keyval_action_mappings[old_key_id]
+		self.keyval_action_mappings[new_key_id] = action_id

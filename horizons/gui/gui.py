@@ -74,6 +74,9 @@ class Gui(SingleplayerMenu, MultiplayerMenu):
 	  }
 
 	def __init__(self):
+		#i18n this defines how each line in our help looks like. Default: '[C] = Chat'
+		self.HELPSTRING_LAYOUT = _('[{key}] = {text}') #xgettext:python-format
+
 		self.mainlistener = MainListener(self)
 		self.current = None # currently active window
 		self.widgets = LazyWidgetsDict(self.styles) # access widgets with their filenames without '.xml'
@@ -757,10 +760,6 @@ class Gui(SingleplayerMenu, MultiplayerMenu):
 		and adds the keys defined in the keyconfig configuration object in front of them.
 		The layout is defined through HELPSTRING_LAYOUT and translated.
 		"""
-		#i18n this defines how each line in our help looks like. Default: '[C] = Chat'
-		#xgettext:python-format
-		HELPSTRING_LAYOUT = _('[{key}] = {text}')
-
 		widgets = self.widgets['help']
 		labels = widgets.getNamedChildren()
 		# filter misc labels that do not describe key functions
@@ -770,18 +769,27 @@ class Gui(SingleplayerMenu, MultiplayerMenu):
 		# now prepend the actual keys to the function strings defined in xml
 		actionmap = self.keyconf.get_actionname_to_keyname_map()
 		for (name, lbl) in labels.items():
-			keyname = actionmap.get(name, 'SHIFT') #TODO #HACK
-			explanation = _(lbl.text)
-			lbl.text = HELPSTRING_LAYOUT.format(text=explanation, key=keyname)
-			lbl.capture(Callback(self.change_hotkey, name, explanation, keyname))
+			keyname = actionmap.get(name, 'SHIFT') #TODO #HACK hardcoded shift key
+			lbl.explanation = _(lbl.text)
+			lbl.text = self.HELPSTRING_LAYOUT.format(text=lbl.explanation, key=keyname)
+			lbl.capture(Callback(self.show_hotkey_change_popup, name, lbl, keyname))
 
 		author_label = widgets.findChild(name='fife_and_uh_team')
 		author_label.helptext = u"www.unknown-[br]horizons.org[br]www.fifengine.net"
 
-	def change_hotkey(self, action, explanation, keyname):
-		headline = _('Change hotkey for {action}').format(action=action)
-		message = explanation + u'\n' + _('Current key: [{key}]').format(key=keyname)
+	def show_hotkey_change_popup(self, action, lbl, keyname):
+		def apply_new_key():
+			newkey = free_keys[listbox.selected]
+			self.keyconf.save_new_key(action, newkey=newkey)
+			update_hotkey_info(newkey)
+			lbl.text = self.HELPSTRING_LAYOUT.format(text=lbl.explanation, key=newkey)
+			lbl.capture(Callback(self.show_hotkey_change_popup, action, lbl, newkey))
 
+		def update_hotkey_info(keyname):
+			popup.message.text = lbl.explanation + u'\n' + _('Current key: [{key}]').format(key=keyname)
+
+		headline = _('Change hotkey for {action}').format(action=action)
+		message = ''
 		if keyname in ('SHIFT', ):
 			message = _('This key can not be reassigned at the moment.')
 			popup = self.build_popup(headline, message, size=0)
@@ -789,6 +797,7 @@ class Gui(SingleplayerMenu, MultiplayerMenu):
 			return
 
 		popup = self.build_popup(headline, message, size=2, show_cancel_button=True)
+		update_hotkey_info(keyname)
 		keybox = pychan.widgets.ScrollArea()
 		listbox = pychan.widgets.ListBox()
 		keybox.max_size = listbox.max_size = \
@@ -796,14 +805,15 @@ class Gui(SingleplayerMenu, MultiplayerMenu):
 		keybox.size = listbox.size = (200, 200)
 		keybox.position = listbox.position = (90, 110)
 		prefer_short = lambda k: (len(k) > 1, len(k) > 3, k)
-		free_keys = self.keyconf.get_keys_by_name(only_free_keys=True,
-		                                          force_include=[keyname])
-		listbox.items = sorted(free_keys, key=prefer_short)
+		free_key_dict = self.keyconf.get_keys_by_name(only_free_keys=True,
+		                                              force_include=[keyname])
+		free_keys = sorted(free_key_dict.keys(), key=prefer_short)
+		listbox.items = free_keys
 		listbox.selected = listbox.items.index(self.keyconf.get_fife_key_name(keyname))
+		#TODO backwards replace key names in keyconfig.get_fife_key_names in the list
+		# (currently this stores PLUS and PERIOD instead of + and . in the settings)
 		keybox.addChild(listbox)
 		popup.addChild(keybox)
-		button_cbs = {
-			OkButton.DEFAULT_NAME: True,
-			CancelButton.DEFAULT_NAME: False,
-		}
+		listbox.capture(apply_new_key)
+		button_cbs = {OkButton.DEFAULT_NAME: True, CancelButton.DEFAULT_NAME: False}
 		self.show_dialog(popup, button_cbs, modal=True)
