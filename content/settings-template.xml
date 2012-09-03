@@ -75,6 +75,20 @@
 		<Setting name="DEBUG" type="str"> d </Setting>
 		<Setting name="SCREENSHOT" type="str"> s </Setting>
 		<Setting name="SHOW_SELECTED" type="str"> j </Setting>
+		<Setting name="REMOVE_SELECTED" type="str"> DELETE </Setting>
+		<Setting name="ESCAPE" type="str"> ESCAPE </Setting>
+		<Setting name="LEFT" type="str"> LEFT </Setting>
+		<Setting name="RIGHT" type="str"> RIGHT </Setting>
+		<Setting name="UP" type="str"> UP </Setting>
+		<Setting name="DOWN" type="str"> DOWN </Setting>
+		<Setting name="HELP" type="str"> F1 </Setting>
+		<Setting name="PLAYERS_OVERVIEW" type="str"> F2 </Setting>
+		<Setting name="SHIPS_OVERVIEW" type="str"> F3 </Setting>
+		<Setting name="SETTLEMENTS_OVERVIEW" type="str"> F4 </Setting>
+		<Setting name="QUICKSAVE" type="str"> F5 </Setting>
+		<Setting name="QUICKLOAD" type="str"> F9 </Setting>
+		<Setting name="CONSOLE" type="str"> F10 </Setting>
+		<Setting name="SAVE_MAP" type="str"> F12 </Setting>
 	</Module>
 	<Module name="meta">
 		<Setting name="SettingsVersion" type="int"> 24 </Setting>

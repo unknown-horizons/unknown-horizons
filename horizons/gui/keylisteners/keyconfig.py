@@ -42,31 +42,23 @@ class KeyConfig(object):
 
 	def __init__(self):
 		_Actions = self._Actions
+
+		self.keyval_mappings = dict() # map key ID (int) to action
+		self.keystring_mappings = dict() # map key name (str) to action
 		#TODO temporary settings keys, get rid of this and just use all settings!
-		# for some reason this does not yet load all 'keys' settings at once
-		custom_key_actions = ["GRID", "COORD_TOOLTIP", "DESTROY_TOOL", "ROAD_TOOL", "SPEED_UP", "SPEED_UP", "SPEED_DOWN", "PAUSE", "LOGBOOK", "BUILD_TOOL", "ROTATE_RIGHT", "ROTATE_LEFT", "CHAT", "TRANSLUCENCY", "TILE_OWNER_HIGHLIGHT", "PIPETTE", "HEALTH_BAR", "DEBUG", "SCREENSHOT", "SHOW_SELECTED"]
-		self.keystring_mappings = dict()
+		# for some reason getAllSettings decided to not work for module 'keys' :(
+		custom_key_actions = ["GRID", "COORD_TOOLTIP", "DESTROY_TOOL", "ROAD_TOOL", "SPEED_UP", "SPEED_UP", "SPEED_DOWN", "PAUSE", "LOGBOOK", "BUILD_TOOL", "ROTATE_RIGHT", "ROTATE_LEFT", "CHAT", "TRANSLUCENCY", "TILE_OWNER_HIGHLIGHT", "PIPETTE", "HEALTH_BAR", "DEBUG", "SCREENSHOT", "SHOW_SELECTED", "REMOVE_SELECTED", "ESCAPE", "LEFT", "RIGHT", "UP", "DOWN", "HELP", "PLAYERS_OVERVIEW", "SHIPS_OVERVIEW", "SETTLEMENTS_OVERVIEW", "QUICKSAVE", "QUICKLOAD", "CONSOLE", "SAVE_MAP"]
 		for action in custom_key_actions:
 			action_id = _Actions.__dict__.get(action)
 			key = horizons.main.fife.get_key_for_action(action)
-			self.keystring_mappings[key.lower()] = action_id
+			try:
+				key_id = fife.Key.__dict__[key.upper()]
+				self.keyval_mappings[key_id] = action_id
+			except KeyError:
+				# Happens for glyphs with paraphrased member names (like . or ,)
+				# Map the actual glyph instead to be matched against event key as string
+				self.keystring_mappings[key.lower()] = action_id
 
-		self.keyval_mappings = {
-			fife.Key.DELETE: _Actions.REMOVE_SELECTED,
-			fife.Key.ESCAPE: _Actions.ESCAPE,
-			fife.Key.LEFT: _Actions.LEFT,
-			fife.Key.RIGHT: _Actions.RIGHT,
-			fife.Key.UP: _Actions.UP,
-			fife.Key.DOWN: _Actions.DOWN,
-			fife.Key.F1 : _Actions.HELP,
-			fife.Key.F2 : _Actions.PLAYERS_OVERVIEW,
-			fife.Key.F3 : _Actions.SHIPS_OVERVIEW,
-			fife.Key.F4 : _Actions.SETTLEMENTS_OVERVIEW,
-			fife.Key.F5 : _Actions.QUICKSAVE,
-			fife.Key.F9 : _Actions.QUICKLOAD,
-			fife.Key.F10 : _Actions.CONSOLE,
-			fife.Key.F12 : _Actions.SAVE_MAP,
-		}
 		self.requires_shift = set( (
 		  _Actions.SAVE_MAP,
 		) )
