@@ -56,10 +56,8 @@ class DiplomacyTab(TabInterface):
 		self.button_hover_image = icon_path % color
 		self.helptext = player.name
 
-		self.widget.stylize("default")
-		self.widget.findChild(name="ally_check_box").base_color = 80, 80, 80
-		self.widget.findChild(name="enemy_check_box").base_color = 80, 80, 80
-		self.widget.findChild(name="neutral_check_box").base_color = 80, 80, 80
+		self.widget.stylize("menu_black")
+		self.widget.findChild(name='headline').stylize('headline')
 
 	def show(self):
 		super(DiplomacyTab, self).show()
