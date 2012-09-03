@@ -19,6 +19,8 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
+from string import ascii_uppercase
+
 from fife import fife
 
 import horizons.main
@@ -43,21 +45,27 @@ class KeyConfig(object):
 	def __init__(self):
 		_Actions = self._Actions
 
-		self.keyval_mappings = dict() # map key ID (int) to action
-		self.keystring_mappings = dict() # map key name (str) to action
+		def get_fife_key_name(key):
+			"""For keys that will yield keystr values, allow their input in xml settings."""
+			fife_keyname_map = {
+				'+': 'PLUS',
+				'-': 'MINUS',
+				'.': 'PERIOD',
+				',': 'COMMA',
+			}
+			return fife_keyname_map.get(key, key)
+
+		self.keyval_action_mappings = dict() # map key ID (int) to action (int)
+		self.action_keyname_mappings = dict() # map action name (str) to key name (str)
 		#TODO temporary settings keys, get rid of this and just use all settings!
 		# for some reason getAllSettings decided to not work for module 'keys' :(
 		custom_key_actions = ["GRID", "COORD_TOOLTIP", "DESTROY_TOOL", "ROAD_TOOL", "SPEED_UP", "SPEED_UP", "SPEED_DOWN", "PAUSE", "LOGBOOK", "BUILD_TOOL", "ROTATE_RIGHT", "ROTATE_LEFT", "CHAT", "TRANSLUCENCY", "TILE_OWNER_HIGHLIGHT", "PIPETTE", "HEALTH_BAR", "DEBUG", "SCREENSHOT", "SHOW_SELECTED", "REMOVE_SELECTED", "ESCAPE", "LEFT", "RIGHT", "UP", "DOWN", "HELP", "PLAYERS_OVERVIEW", "SHIPS_OVERVIEW", "SETTLEMENTS_OVERVIEW", "QUICKSAVE", "QUICKLOAD", "CONSOLE", "SAVE_MAP"]
 		for action in custom_key_actions:
-			action_id = _Actions.__dict__.get(action)
-			key = horizons.main.fife.get_key_for_action(action)
-			try:
-				key_id = fife.Key.__dict__[key.upper()]
-				self.keyval_mappings[key_id] = action_id
-			except KeyError:
-				# Happens for glyphs with paraphrased member names (like . or ,)
-				# Map the actual glyph instead to be matched against event key as string
-				self.keystring_mappings[key.lower()] = action_id
+			action_id = getattr(_Actions, action)
+			key = horizons.main.fife.get_key_for_action(action).upper()
+			key_id = self.keys_by_name.get(key, get_fife_key_name(key))
+			self.keyval_action_mappings[key_id] = action_id
+			self.action_keyname_mappings[action] = key
 
 		self.requires_shift = set( (
 		  _Actions.SAVE_MAP,
@@ -69,18 +77,27 @@ class KeyConfig(object):
 		@return pseudo-enum _Action
 		"""
 		keyval = evt.getKey().getValue()
-		keystr = evt.getKey().getAsString().lower()
 
-		action = None
-		if keystr in self.keystring_mappings:
-			action = self.keystring_mappings[keystr]
-		elif keyval in self.keyval_mappings:
-			action = self.keyval_mappings[keyval]
-
-		if action is None:
+		if keyval in self.keyval_action_mappings:
+			action = self.keyval_action_mappings[keyval]
+		else:
 			return None
-		elif action in self.requires_shift and not evt.isShiftPressed():
+
+		if action in self.requires_shift and not evt.isShiftPressed():
 			return None
 		else:
 			return action # all checks passed
 
+	@property
+	def keys_by_name(self, only_free_keys=False):
+		def is_available(key, value):
+			if not only_free_keys:
+				return key.startswith(tuple(ascii_uppercase)) and value > 0
+		return dict( (k, v) for k, v in fife.Key.__dict__.iteritems()
+		                    if is_available(k, v) )
+
+	def get_keyval_to_actionid_map(self):
+		return self.keyval_action_mappings
+
+	def get_actionname_to_keyname_map(self):
+		return self.action_keyname_mappings

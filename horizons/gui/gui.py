@@ -77,7 +77,7 @@ class Gui(SingleplayerMenu, MultiplayerMenu):
 		self.mainlistener = MainListener(self)
 		self.current = None # currently active window
 		self.widgets = LazyWidgetsDict(self.styles) # access widgets with their filenames without '.xml'
-		build_help_strings(self.widgets['help'])
+		self.build_help_strings()
 		self.session = None
 		self.current_dialog = None
 
@@ -751,35 +751,34 @@ class Gui(SingleplayerMenu, MultiplayerMenu):
 	def _on_gui_action(self, msg):
 		AmbientSoundComponent.play_special('click')
 
-def build_help_strings(widgets):
-	"""
-	Loads the help strings from pychan object widgets (containing no key definitions)
-	and adds 	the keys defined in the keyconfig configuration object in front of them.
-	The layout is defined through HELPSTRING_LAYOUT and translated.
-	"""
-	#i18n this defines how each line in our help looks like. Default: '[C] = Chat'
-	#xgettext:python-format
-	HELPSTRING_LAYOUT = _('[{key}] = {text}')
+	def build_help_strings(self):
+		"""
+		Loads the help strings from pychan object widgets (containing no key definitions)
+		and adds the keys defined in the keyconfig configuration object in front of them.
+		The layout is defined through HELPSTRING_LAYOUT and translated.
+		"""
+		#i18n this defines how each line in our help looks like. Default: '[C] = Chat'
+		#xgettext:python-format
+		HELPSTRING_LAYOUT = _('[{key}] = {text}')
 
-	#HACK Ugliness starts; load actions defined through keys and map them to FIFE key strings
-	actions = KeyConfig._Actions.__dict__
-	reversed_keys = dict([[str(v),k] for k,v in fife.Key.__dict__.iteritems()])
-	reversed_stringmap = dict([[str(v),k] for k,v in KeyConfig().keystring_mappings.iteritems()])
-	reversed_keyvalmap = dict([[str(v), reversed_keys[str(k)]] for k,v in KeyConfig().keyval_mappings.iteritems()])
-	actionmap = dict(reversed_stringmap, **reversed_keyvalmap)
-	#HACK Ugliness ends here; These hacks can be removed once a config file exists which is nice to parse.
+		widgets = self.widgets['help']
+		labels = widgets.getNamedChildren()
+		# filter misc labels that do not describe key functions
+		labels = dict( (name[4:], lbl[0]) for (name, lbl) in labels.iteritems()
+								    if name.startswith('lbl_') )
 
-	labels = widgets.getNamedChildren()
-	# filter misc labels that do not describe key functions
-	labels = dict( (name, lbl) for (name, lbl) in labels.iteritems() if name.startswith('lbl_') )
+		# now prepend the actual keys to the function strings defined in xml
+		actionmap = KeyConfig().get_actionname_to_keyname_map()
+		for (name, lbl) in labels.items():
+			try:
+				keyname = '{key}'.format(key=actionmap[name])
+			except KeyError:
+				keyname = ' '
+			lbl.text = HELPSTRING_LAYOUT.format(text=_(lbl.text), key=keyname)
+			lbl.capture(Callback(self.change_hotkey, name))
 
-	# now prepend the actual keys to the function strings defined in xml
-	for (name, lbl) in labels.items():
-		try:
-			keyname = '{key}'.format(key=actionmap[str(actions[name[4:]])])
-		except KeyError:
-			keyname = ' '
-		lbl[0].text = HELPSTRING_LAYOUT.format(text=_(lbl[0].text), key=keyname.upper())
+		author_label = widgets.findChild(name='fife_and_uh_team')
+		author_label.helptext = u"www.unknown-[br]horizons.org[br]www.fifengine.net"
 
-	author_label = widgets.findChild(name='fife_and_uh_team')
-	author_label.helptext = u"www.unknown-[br]horizons.org[br]www.fifengine.net"
+	def change_hotkey(self, action):
+		print action
