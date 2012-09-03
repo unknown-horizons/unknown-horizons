@@ -19,8 +19,6 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-from fife import fife
-
 from horizons.util.python.decorators import bind_all
 from horizons.util.python import Const
 from horizons.util.shapes import Shape
@@ -36,10 +34,6 @@ class Point(Shape):
 	def to_tuple(self):
 		"""Returns point as a tuple"""
 		return (self.x, self.y)
-
-	def to_fife_point(self):
-		"""Returns point as fife.Point"""
-		return fife.Point(self.x, self.y)
 
 	@property
 	def center(self):
