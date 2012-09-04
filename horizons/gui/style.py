@@ -123,10 +123,16 @@ STYLES = {
 			'background_color': Color(0, 0, 0, 0),
 			'selection_color': Color(255, 255, 255, 128),
 		},
-		('TextField', 'ScrollArea'): {
+		'TextField': {
 			'selection_color': Color(255, 255, 255),
 			'background_color': Color(255, 255, 255, 64),
 			'base_color': Color(0, 0, 0, 0),
+			'horizontal_scrollbar': 0,
+		},
+		'ScrollArea': {
+			'selection_color': Color(255, 255, 255),
+			'background_color': Color(255, 255, 255, 64),
+			'base_color': Color(90, 90, 40, 96),
 			'horizontal_scrollbar': 0,
 		},
 		('Container', 'HBox', 'VBox'): {
