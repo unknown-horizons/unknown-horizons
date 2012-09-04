@@ -20,10 +20,11 @@
 # ###################################################
 
 import logging
+import math
+
 from fife import fife
 
 from horizons.scheduler import Scheduler
-
 from horizons.util.pathfinding import PathBlockedError
 from horizons.util import Point, WeakMethodList, decorators
 from horizons.world.concreteobject import ConcreteObject
@@ -276,10 +277,16 @@ class MovingObject(ComponentHolder, ConcreteObject):
 		@return: (int, int)
 		"""
 		tile = self.session.world.get_tile(self.position)
-		if self.id in tile.velocity:
-			return tile.velocity[self.id]
-		else:
-			return (12, 17) # standard values
+		straight = 12 # default
+		diagonal = 17 # default
+
+		if tile.object is not None and hasattr(tile.object, "VELOCITY_MODIFIER"):
+			assert tile.object.VELOCITY_MODIFIER < straight
+			modifier = tile.object.VELOCITY_MODIFIER
+			straight -= modifier
+			diagonal -= int(math.sqrt(2) * modifier)
+		
+		return straight, diagonal
 
 	def get_estimated_travel_time(self, destination):
 		path = self.path.calc_path(destination, check_only = True)
