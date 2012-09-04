@@ -20,7 +20,6 @@
 # ###################################################
 
 from fife.extensions import pychan
-
 from fife.extensions.pychan.widgets import ImageButton
 
 from horizons.util import Callback
@@ -31,7 +30,7 @@ class ImageFillStatusButton(pychan.widgets.Container):
 	CELL_SIZE = (54, 50) # 32x32 icon, fillbar to the right, label below, padding
 
 	def __init__(self, up_image, down_image, hover_image, text, res_id, helptext="",
-	             filled=0, uncached=False, **kwargs):
+	             filled=0, marker=0, uncached=False, **kwargs):
 		"""Represents the image in the ingame gui, with a bar to show how full the inventory is for that resource
 		Derives from pychan.widgets.Container, but also takes the args of the pychan.widgets.Imagebutton,
 		in order to display the image. The container is only used, because ImageButtons can't have children.
@@ -43,10 +42,11 @@ class ImageFillStatusButton(pychan.widgets.Container):
 		self.res_id = res_id
 		self.text_position = (9, 30)
 		self.uncached = uncached # force no cache. needed when the same icon has to appear several times at the same time
+		self.marker = marker
 		self.filled = filled # <- black magic at work! this calls _draw()
 
 	@classmethod
-	def init_for_res(cls, db, res, amount=0, filled=0, use_inactive_icon=True, uncached=False):
+	def init_for_res(cls, db, res, amount=0, filled=0, marker=0, use_inactive_icon=True, uncached=False):
 		"""Inites the button to display the icons for res
 		@param db: dbreader to get info about res icon.
 		@param res: resource id
@@ -64,6 +64,7 @@ class ImageFillStatusButton(pychan.widgets.Container):
 		           size=cls.CELL_SIZE,
 		           res_id=res,
 		           filled=filled,
+		           marker=marker,
 		           uncached=uncached)
 
 	def _set_filled(self, percent):
@@ -106,3 +107,9 @@ class ImageFillStatusButton(pychan.widgets.Container):
 		# move fillbar down after resizing, since its origin is top aligned
 		self.fill_bar.position = (self.button.width, self.button.height - fill_level)
 		self.addChildren(self.button, self.fill_bar, self.label)
+		if self.marker > 0:
+			marker_icon = pychan.widgets.Icon(image="content/gui/icons/templates/production/marker.png")
+			marker_level = (self.button.height * self.marker) // 100
+			marker_icon.position = (self.button.width - 1, self.button.height - marker_level)
+			marker_icon.max_size=(5,1)
+			self.addChild(marker_icon)
