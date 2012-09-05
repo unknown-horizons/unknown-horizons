@@ -302,3 +302,17 @@ def test_ticket_1693(s, p):
 	# Build another one on top of the ruin
 	residence2 = Build(BUILDINGS.RESIDENTIAL, 30, 30, island, settlement=settlement)(p)
 	assert residence2
+
+
+@game_test
+def test_ticket_1847(s, p):
+	"""Tearing down MineProducer (clay pit, mine) crashes game"""
+	settlement, island = settle(s)
+
+	assert Build(BUILDINGS.CLAY_DEPOSIT, 30, 30, island, ownerless=True)(None)
+	claypit = Build(BUILDINGS.CLAY_PIT, 30, 30, island, settlement=settlement)(p)
+	assert claypit
+
+	Tear(claypit)(p)
+
+	s.run(seconds=5)

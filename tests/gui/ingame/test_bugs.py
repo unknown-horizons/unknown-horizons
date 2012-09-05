@@ -395,3 +395,5 @@ def test_ticket_1848(gui):
 
 	gui.cursor_click(51, 13, 'left')
 	gui.trigger('tab_account', 'show_production_overview/mouseClicked/default')
+
+	yield TestFinished
