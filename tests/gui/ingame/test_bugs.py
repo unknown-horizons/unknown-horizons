@@ -394,6 +394,4 @@ def test_ticket_1848(gui):
 		yield
 
 	gui.cursor_click(51, 13, 'left')
-	# TODO the gui logger recorded this event as well, figure out what it does
-	#gui.trigger('tab_account', 'show_production_overview/action/action_listener')
 	gui.trigger('tab_account', 'show_production_overview/mouseClicked/default')

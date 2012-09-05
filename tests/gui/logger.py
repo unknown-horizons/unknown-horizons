@@ -217,6 +217,10 @@ class TestCodeGenerator(object):
 		if container.name == '__unnamed__':
 			print '# FIXME this container needs a name to identify it!'
 			print '# Path: %s' % path
+		elif event_name == 'action' and group_name == 'action_listener':
+			# this is a custom event defined in engine.pychan_util to play click sounds
+			# for widgets
+			pass
 		else:
 			log.debug('# %s' % path)
 
