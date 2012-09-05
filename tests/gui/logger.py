@@ -220,10 +220,12 @@ class TestCodeGenerator(object):
 		else:
 			log.debug('# %s' % path)
 
-			self._add([
-				"gui.trigger('%s', '%s/%s/%s')" % (container.name, widget.name, event_name, group_name),
-				''
-			])
+			if group_name == 'default':
+				code = "gui.trigger('%s', '%s/%s')" % (container.name, widget.name, event_name)
+			else:
+				code = "gui.trigger('%s', '%s/%s/%s')" % (container.name, widget.name, event_name, group_name)
+
+			self._add([code, ''])
 
 	def new_key_event(self, keycode):
 		"""
