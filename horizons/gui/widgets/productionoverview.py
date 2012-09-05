@@ -68,7 +68,7 @@ class ProductionOverview(StatsWidget):
 			self._add_line_to_gui(resource_id, amount)
 		self._content_vbox.adaptLayout()
 
-	def _add_line_to_gui(self, resource_id, amount, show_all=False):
+	def _add_line_to_gui(self, resource_id, amount):
 		displayed = self.db.get_res_inventory_display(resource_id)
 		if not displayed:
 			return
