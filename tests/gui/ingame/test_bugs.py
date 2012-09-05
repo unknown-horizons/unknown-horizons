@@ -21,7 +21,8 @@
 
 from horizons.command.unit import CreateUnit
 from horizons.command.building import Tear
-from horizons.constants import UNITS, BUILDINGS
+from horizons.constants import UNITS, BUILDINGS, PRODUCTION
+from horizons.world.production.producer import Producer
 from tests.gui import TestFinished, gui_test
 from tests.gui.helper import get_player_ship
 
@@ -198,6 +199,7 @@ def test_ticket_1371(gui):
 
 	yield TestFinished
 
+
 @gui_test(use_fixture='fife_exception_not_found', timeout=60)
 def test_ticket_1447(gui):
 	"""
@@ -371,3 +373,27 @@ def test_pavilion_build_crash_built_via_settler_related_tab(gui):
 
 	# if we survive until here, the bug hasn't happened
 	yield TestFinished
+
+
+@gui_test(use_fixture='boatbuilder', timeout=120)
+def test_ticket_1848(gui):
+	"""Settlement production overview crashes if ships were produced"""
+	yield
+
+	settlement = gui.session.world.player.settlements[0]
+	boatbuilder = settlement.buildings_by_id[BUILDINGS.BOAT_BUILDER][0]
+
+	# Build huker
+	gui.cursor_click(64, 10, 'left')
+	gui.trigger('tab_base', '1/action')
+	gui.trigger('boatbuilder_showcase', 'ok_0/action')
+
+	# Wait until production ends
+	producer = boatbuilder.get_component(Producer)
+	while producer.get_productions():
+		yield
+
+	gui.cursor_click(51, 13, 'left')
+	# TODO the gui logger recorded this event as well, figure out what it does
+	#gui.trigger('tab_account', 'show_production_overview/action/action_listener')
+	gui.trigger('tab_account', 'show_production_overview/mouseClicked/default')
