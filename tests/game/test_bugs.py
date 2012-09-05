@@ -169,7 +169,7 @@ def test_ticket_1427():
 	bb_storage = boat_builder.get_component(StorageComponent)
 
 	# Add production to use resources
-	bb_producer =  boat_builder.get_component(Producer)
+	bb_producer = boat_builder.get_component(Producer)
 	bb_producer.add_production_by_id(PRODUCTIONLINES.HUKER)
 	production = bb_producer._productions[PRODUCTIONLINES.HUKER]
 

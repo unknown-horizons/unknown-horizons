@@ -259,7 +259,8 @@ class BuildingTool(NavigationTool):
 		building_icon = self.gui.findChild(name='building')
 		building_icon.image = image
 		# TODO: Remove hardcoded 70
-		building_icon.position = (self.__class__.gui.size[0]/2 - building_icon.size[0]/2, self.__class__.gui.size[1]/2 - building_icon.size[1]/2 - 70)
+		building_icon.position = (self.__class__.gui.size[0]/2 - building_icon.size[0]/2,
+		                          self.__class__.gui.size[1]/2 - building_icon.size[1]/2 - 70)
 		self.__class__.gui.adaptLayout()
 
 	def preview_build(self, point1, point2, force=False):
@@ -371,9 +372,10 @@ class BuildingTool(NavigationTool):
 		"""Color the range as if the building was selected"""
 		radius_only_on_island = True
 		if hasattr(self.selectable_comp, 'range_applies_only_on_island'):
-			radius_only_on_island =  self.selectable_comp.range_applies_only_on_island
+			radius_only_on_island = self.selectable_comp.range_applies_only_on_island
 
-		self.selectable_comp.select_building(self.session, building.position, settlement, self._class.radius, radius_only_on_island)
+		self.selectable_comp.select_building(self.session, building.position, settlement,
+		                                     self._class.radius, radius_only_on_island)
 
 	def _highlight_related_buildings_in_range(self, building, settlement):
 		"""Highlight directly related buildings (tree for lumberjacks) that are in range of the build preview"""

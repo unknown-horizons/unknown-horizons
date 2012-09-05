@@ -209,7 +209,7 @@ class MultiplayerMenu(object):
 		self.current.findChild(name="game_map").text = _("Map: {map_name}").format(map_name=game.get_map_name())
 		self.current.findChild(name="game_name").text = _("Name: {game_name}").format(game_name=game.get_name())
 		#xgettext:python-format
-		self.current.findChild(name="game_playersnum").text =  _("Players: {player_amount}/{player_limit}").format(
+		self.current.findChild(name="game_playersnum").text = _("Players: {player_amount}/{player_limit}").format(
 		                           player_amount=game.get_player_count(),
 		                           player_limit=game.get_player_limit())
 		vbox_inner = self.current.findChild(name="game_info")

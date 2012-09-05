@@ -41,8 +41,8 @@ class BuySellTab(TabInterface):
 	"""
 	log = logging.getLogger("gui")
 
-	buy_button_path =  "content/gui/images/tabwidget/ship_to_warehouse.png"
-	buy_hover_button_path =  "content/gui/images/tabwidget/buysell_toggle.png"
+	buy_button_path = "content/gui/images/tabwidget/ship_to_warehouse.png"
+	buy_hover_button_path = "content/gui/images/tabwidget/buysell_toggle.png"
 	sell_button_path = "content/gui/images/tabwidget/warehouse_to_ship.png"
 	sell_hover_button_path = "content/gui/images/tabwidget/buysell_toggle.png"
 

@@ -386,7 +386,7 @@ class Session(LivingObject):
 			if self.timer.tick_next_time is not None:
 				self.paused_time_missing = (self.timer.tick_next_time - time.time()) * old
 			else:
-				self.paused_time_missing =  None
+				self.paused_time_missing = None
 			self.timer.tick_next_time = None
 		else:
 			"""

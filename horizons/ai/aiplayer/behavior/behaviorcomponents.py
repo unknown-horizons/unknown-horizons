@@ -495,7 +495,7 @@ class BehaviorDiplomatic(BehaviorComponent):
 		Main function responsible for handling diplomacy.
 		"""
 		player = environment['player']
-		balance =  self.owner.strategy_manager.calculate_player_balance(player)
+		balance = self.owner.strategy_manager.calculate_player_balance(player)
 		relationship_score = self.calculate_relationship_score(balance, self.weights)
 		action = self._get_action(relationship_score, **parameters)
 		self.log.debug("%s vs %s | Dipomacy: balance:%s, relationship_score:%s, action:%s", self.owner.name, player.name, balance, relationship_score, action)
