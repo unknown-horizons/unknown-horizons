@@ -52,7 +52,7 @@ def test_found_settlement(gui):
 		yield
 
 	gui.select([ship])
-	gui.trigger('overview_trade_ship', 'found_settlement/action')
+	gui.trigger('overview_trade_ship', 'found_settlement')
 
 	assert isinstance(gui.cursor, BuildingTool)
 	gui.cursor_move(64, 12)
@@ -63,21 +63,21 @@ def test_found_settlement(gui):
 
 	# activate the build menu
 	ground_map = gui.session.world.islands[0].ground_map
-	gui.trigger('mainhud', 'build/action')
+	gui.trigger('mainhud', 'build')
 
 	# build a lumberjack
-	gui.trigger('tab', 'button_03/action')
+	gui.trigger('tab', 'button_03')
 	gui.cursor_click(55, 5, 'left')
 	assert(ground_map[(55, 5)].object.id == BUILDINGS.LUMBERJACK)
 
 	# build a storage
-	gui.trigger('tab', 'button_11/action')
+	gui.trigger('tab', 'button_11')
 	gui.cursor_click(55, 15, 'left')
 	storage = ground_map[(55, 15)].object
 	assert(storage.id == BUILDINGS.STORAGE)
 
 	# connect the lumberjack and storage using a road
-	gui.trigger('tab', 'button_21/action')
+	gui.trigger('tab', 'button_21')
 	for y in xrange(7, 15):
 		gui.cursor_click(55, y, 'left')
 		assert(ground_map[(55, y)].object.id == BUILDINGS.TRAIL)
@@ -102,16 +102,16 @@ def test_found_settlement(gui):
 	assert ground_map[(55, 15)].object is None
 
 	# open build menu again
-	gui.trigger('mainhud', 'build/action')
+	gui.trigger('mainhud', 'build')
 
 	# build a fisher
-	gui.trigger('tab', 'button_33/action')
+	gui.trigger('tab', 'button_33')
 	gui.cursor_click(60, 4, 'left')
 	fisher = ground_map[(60, 4)].object
 	assert(fisher.id == BUILDINGS.FISHER)
 
 	# connect the lumberjack and fisher using a road
-	gui.trigger('tab', 'button_21/action')
+	gui.trigger('tab', 'button_21')
 	for x in xrange(57, 60):
 		gui.cursor_click(x, 5, 'left')
 		assert(ground_map[(x, 5)].object.id == BUILDINGS.TRAIL)
@@ -119,7 +119,7 @@ def test_found_settlement(gui):
 
 	# trigger ticket 1767
 	# build a signal fire
-	gui.trigger('tab', 'button_22/action')
+	gui.trigger('tab', 'button_22')
 	gui.cursor_click(58, 5, 'left')
 	gui.cursor_click(58, 4, 'left')
 

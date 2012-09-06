@@ -29,15 +29,15 @@ def test_hud(gui):
 	"""
 	yield # test needs to be a generator for now
 
-	gui.trigger('mainhud', 'zoomOut/action')
-	gui.trigger('mainhud', 'zoomIn/action')
-	gui.trigger('mainhud', 'rotateRight/action')
-	gui.trigger('mainhud', 'rotateLeft/action')
+	gui.trigger('mainhud', 'zoomOut')
+	gui.trigger('mainhud', 'zoomIn')
+	gui.trigger('mainhud', 'rotateRight')
+	gui.trigger('mainhud', 'rotateLeft')
 
-	gui.trigger('mainhud', 'logbook/action')
-	gui.trigger('captains_log', 'okButton/action')
+	gui.trigger('mainhud', 'logbook')
+	gui.trigger('captains_log', 'okButton')
 
-	gui.trigger('mainhud', 'build/action')
-	gui.trigger('mainhud', 'diplomacyButton/action')
+	gui.trigger('mainhud', 'build')
+	gui.trigger('mainhud', 'diplomacyButton')
 
 	yield TestFinished

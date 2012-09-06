@@ -29,13 +29,13 @@ def test_logbook(gui):
 	"""
 	yield # test needs to be a generator for now
 
-	gui.trigger('mainhud', 'logbook/action')
+	gui.trigger('mainhud', 'logbook')
 
 	logbook = gui.find(name='captains_log')
 	assert logbook
 
 	# Close it and confirm it's gone
-	gui.trigger(logbook, 'okButton/action')
+	gui.trigger(logbook, 'okButton')
 	assert gui.find(name='captains_log') is None
 
 	yield TestFinished
@@ -47,12 +47,12 @@ def test_logbook_statistics(gui):
 	yield
 
 	# Open statistics page in logbook
-	gui.trigger('mainhud', 'logbook/action')
+	gui.trigger('mainhud', 'logbook')
 	gui.trigger('captains_log', 'statistics_rt/mouseClicked')
 
 	# Open players/ships/settlements tabs
-	gui.trigger('captains_log', 'stats_players/action')
-	gui.trigger('captains_log', 'stats_ships/action')
-	gui.trigger('captains_log', 'stats_settlements/action')
+	gui.trigger('captains_log', 'stats_players')
+	gui.trigger('captains_log', 'stats_ships')
+	gui.trigger('captains_log', 'stats_settlements')
 
 	yield TestFinished

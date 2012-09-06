@@ -149,7 +149,7 @@ class GuiHelper(object):
 
 		root  - container (object or name) that holds the widget
 		event - string describing the event (widget/event/group)
-		        group is optional
+		        event and group are optional
 
 		Example:
 			c = gui.find('mainmenu')
@@ -158,12 +158,16 @@ class GuiHelper(object):
 		Equivalent to:
 			gui.trigger('mainmenu', 'okButton/action/default')
 		"""
+		group_name = 'default'
+		event_name = 'action'
+
 		parts = event.split('/')
 		if len(parts) == 3:
 			widget_name, event_name, group_name = parts
-		else:
+		elif len(parts) == 2:
 			widget_name, event_name = parts
-			group_name = 'default'
+		else:
+			widget_name, = parts
 
 		# if container is given by name, look it up first
 		if isinstance(root, basestring):
@@ -176,11 +180,31 @@ class GuiHelper(object):
 		if not widget:
 			raise Exception("'%s' contains no widget with the name '%s'" % (
 								root.name, widget_name))
+
+		# Check if this widget has any event callbacks at all
 		try:
-			callback = widget.event_mapper.callbacks[group_name][event_name]
+			callbacks = widget.event_mapper.callbacks[group_name]
 		except KeyError:
-			raise Exception("No callback for event '%s/%s' registered for widget '%s'" % (
+			raise Exception("No callbacks for event group '%s' for event '%'" % (
+							group_name, widget.name))
+
+		# Unusual events are handled normally
+		if event_name not in ('action', 'mouseClicked'):
+			try:
+				callback = callbacks[event_name]
+			except KeyError:
+				raise Exception("No callback for event '%s/%s' registered for widget '%s'" % (
 								event_name, group_name, widget.name))
+		# Treat action and mouseClicked as the same event. If a callback is not registered
+		# for one, try the other
+		else:
+			callback = callbacks.get(event_name)
+			if not callback:
+				callback = callbacks.get(event_name == 'action' and 'mouseClicked' or 'action')
+
+			if not callback:
+				raise Exception("No callback for event 'action' or 'mouseClicked' registered for widget '%s'" % (
+								group_name, widget.name))
 
 		callback()
 

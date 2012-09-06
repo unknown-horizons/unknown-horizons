@@ -90,11 +90,11 @@ def test_selection_groups(gui):
 		yield
 
 	# Found settlement
-	gui.trigger('overview_trade_ship', 'found_settlement/action')
+	gui.trigger('overview_trade_ship', 'found_settlement')
 
 	gui.cursor_click(56, 3, 'left')
 
-	gui.trigger('mainhud', 'build/action')
+	gui.trigger('mainhud', 'build')
 
 	wh = gui.session.world.player.settlements[0].warehouse
 

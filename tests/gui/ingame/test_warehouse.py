@@ -36,6 +36,6 @@ def test_production_overview(gui):
 	for _ in gui.run(seconds=2):
 		yield
 
-	gui.trigger('production_overview', 'okButton/action')
+	gui.trigger('production_overview', 'okButton')
 
 	yield TestFinished

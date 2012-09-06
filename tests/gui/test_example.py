@@ -49,14 +49,14 @@ def test_example(gui):
 
 	# Main menu
 	main_menu = gui.find(name='menu')
-	gui.trigger(main_menu, 'startSingle/action')
+	gui.trigger(main_menu, 'startSingle')
 
 	filter_non_tooltip = lambda l : [i for i in l if i.name != "tooltip_container"]
 
 	# Single-player menu
 	assert len( filter_non_tooltip( gui.active_widgets ) ) == 1
 	singleplayer_menu = gui.active_widgets[0]
-	gui.trigger(singleplayer_menu, 'okay/action') # start a game
+	gui.trigger(singleplayer_menu, 'okay') # start a game
 
 	# Hopefully we're ingame now
 	assert gui.active_widgets
@@ -84,7 +84,7 @@ def test_example(gui):
 	# interactions.
 
 	# Open game menu
-	gui.trigger('mainhud', 'gameMenuButton/action')
+	gui.trigger('mainhud', 'gameMenuButton')
 
 	# gui.trigger accepts both a string (container name), or a object returned by gui.find
 
@@ -95,7 +95,7 @@ def test_example(gui):
 
 	# Dialog handling has to be done by a separate generator.
 	with gui.handler(dialog):
-		gui.trigger('menu', 'quit/action')
+		gui.trigger('menu', 'quit')
 
 	# Code execution will continue here once `dialog` has ended.
 

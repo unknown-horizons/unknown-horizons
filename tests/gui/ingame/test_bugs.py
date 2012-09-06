@@ -96,7 +96,7 @@ def test_ticket_1369(gui):
 		yield
 
 	# click trade button
-	gui.trigger('overview_trade_ship', 'trade/action')
+	gui.trigger('overview_trade_ship', 'trade')
 
 	# trade widget visible
 	assert gui.find(name='buy_sell_goods')
@@ -167,31 +167,31 @@ def test_ticket_1371(gui):
 		yield
 
 	# Found settlement
-	gui.trigger('overview_trade_ship', 'found_settlement/action')
+	gui.trigger('overview_trade_ship', 'found_settlement')
 
 	gui.cursor_click(56, 3, 'left')
 
-	gui.trigger('mainhud', 'build/action')
+	gui.trigger('mainhud', 'build')
 
 	# Build lumberjack
-	gui.trigger('tab', 'button_03/action')
+	gui.trigger('tab', 'button_03')
 	gui.cursor_click(52, 7, 'left')
 
 	# Select lumberjack
 	gui.cursor_click(52, 7, 'left')
 
 	# Open build related tab
-	gui.trigger('tab_base', '1/action')
+	gui.trigger('tab_base', '1')
 
 	# Select tree
-	gui.trigger('overview_buildrelated', 'build17/action')
+	gui.trigger('overview_buildrelated', 'build17')
 
 	# Plant a tree (without uninterrupted building)
 	gui.cursor_click(49, 6, 'left')
 	assert gui.find(name='overview_buildrelated')
 
 	# Select tree again and plant it with uninterrupted building
-	gui.trigger('overview_buildrelated', 'build17/action')
+	gui.trigger('overview_buildrelated', 'build17')
 	gui.cursor_click(49, 7, 'left', shift=True)
 
 	# Tab should still be there
@@ -255,20 +255,20 @@ def test_ticket_1520(gui):
 		yield
 
 	# Found a settlement
-	gui.trigger('overview_trade_ship', 'found_settlement/action')
+	gui.trigger('overview_trade_ship', 'found_settlement')
 	gui.cursor_click(10, 6, 'left')
 
 	ground_map = gui.session.world.islands[0].ground_map
 
 	# Build a tent
-	gui.trigger('mainhud', 'build/action')
-	gui.trigger('tab', 'button_01/action')
+	gui.trigger('mainhud', 'build')
+	gui.trigger('tab', 'button_01')
 	gui.cursor_click(7, 9, 'left')
 
 	assert ground_map[(7, 9)].object.id == BUILDINGS.RESIDENTIAL
 
 	# Start building a mainsquare (not releasing left mouse button)
-	gui.trigger('tab', 'button_02/action')
+	gui.trigger('tab', 'button_02')
 	gui.cursor_move(13, 11)
 	gui.cursor_press_button(13, 11, 'left')
 
@@ -296,23 +296,23 @@ def test_ticket_1509(gui):
 		yield
 
 	# Found a settlement
-	gui.trigger('overview_trade_ship', 'found_settlement/action')
+	gui.trigger('overview_trade_ship', 'found_settlement')
 	gui.cursor_click(10, 6, 'left')
 
 	# Build a tent
-	gui.trigger('mainhud', 'build/action')
-	gui.trigger('tab', 'button_01/action')
+	gui.trigger('mainhud', 'build')
+	gui.trigger('tab', 'button_01')
 	gui.cursor_click(7, 10, 'left')
 
 	# Select tent
 	gui.cursor_click(7, 10, 'left')
 
 	# quickly switch between tabs
-	gui.trigger('tab_base', '1/action')
+	gui.trigger('tab_base', '1')
 	yield
-	gui.trigger('tab_base', '0/action')
+	gui.trigger('tab_base', '0')
 	yield
-	gui.trigger('tab_base', '1/action')
+	gui.trigger('tab_base', '1')
 
 	yield TestFinished
 
@@ -349,24 +349,24 @@ def test_pavilion_build_crash_built_via_settler_related_tab(gui):
 		yield
 
 	# Found settlement
-	gui.trigger('overview_trade_ship', 'found_settlement/action')
+	gui.trigger('overview_trade_ship', 'found_settlement')
 
 	gui.cursor_click(56, 3, 'left')
 
-	gui.trigger('mainhud', 'build/action')
+	gui.trigger('mainhud', 'build')
 
 	# Build settler
-	gui.trigger('tab', 'button_01/action')
+	gui.trigger('tab', 'button_01')
 	gui.cursor_click(52, 7, 'left')
 
 	# Select settler
 	gui.cursor_click(52, 7, 'left')
 
 	# Open build related tab
-	gui.trigger('tab_base', '1/action')
+	gui.trigger('tab_base', '1')
 
 	# Select pavilion
-	gui.trigger('overview_buildrelated', 'build5/action')
+	gui.trigger('overview_buildrelated', 'build5')
 
 	# Plant it
 	gui.cursor_click(49, 6, 'left')
@@ -385,8 +385,8 @@ def test_ticket_1848(gui):
 
 	# Build huker
 	gui.cursor_click(64, 10, 'left')
-	gui.trigger('tab_base', '1/action')
-	gui.trigger('boatbuilder_showcase', 'ok_0/action')
+	gui.trigger('tab_base', '1')
+	gui.trigger('boatbuilder_showcase', 'ok_0')
 
 	# Wait until production ends
 	producer = boatbuilder.get_component(Producer)
