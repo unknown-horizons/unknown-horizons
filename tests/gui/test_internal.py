@@ -71,3 +71,23 @@ def test_trigger(gui):
 	assert not gui.find('production_overview')
 
 	yield TestFinished
+
+
+@gui_test(timeout=60)
+def test_dialog(gui):
+	"""Test handling of a dialog."""
+	yield
+
+	assert not gui.find('help_window')
+
+	def func():
+		yield
+		assert gui.find('help_window')
+		gui.trigger('help_window', 'okButton/action/__execute__')
+
+	with gui.handler(func):
+		gui.trigger('menu', 'helpLink')
+
+	assert not gui.find('help_window')
+
+	yield TestFinished
