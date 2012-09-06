@@ -228,7 +228,7 @@ class Production(ChangeListener):
 						Scheduler().get_remaining_ticks(self, self._get_producing_callback())
 				Scheduler().rem_call(self, self._get_producing_callback())
 			else:
-				assert False, 'Unhandled production state: %s' % self._state
+				assert False, 'Unhandled production state: %s' % self._pause_old_state
 
 		self._changed()
 
