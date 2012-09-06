@@ -57,7 +57,7 @@ class BasicBuilding(ComponentHolder, ConcreteObject):
 	def __init__(self, x, y, rotation, owner, island, level=None, **kwargs):
 		self.__pre_init(owner, rotation, Point(x, y), level=level)
 		super(BasicBuilding, self).__init__(x=x, y=y, rotation=rotation, owner=owner,
-								                        island=island, **kwargs)
+		                                    island=island, **kwargs)
 		self.__init()
 		self.island = island
 
@@ -72,7 +72,7 @@ class BasicBuilding(ComponentHolder, ConcreteObject):
 		assert self.settlement is None or isinstance(self.settlement, Settlement)
 
 	def __pre_init(self, owner, rotation, origin, level=None):
-		"""Here we face the awkward situation of requiring a forth init function.
+		"""Here we face the awkward situation of requiring a fourth init function.
 		It is called like __init, but before other parts are inited via super().
 		This is necessary since some attributes are used by these other parts."""
 		self.owner = owner
@@ -269,8 +269,9 @@ class BasicBuilding(ComponentHolder, ConcreteObject):
 
 		else:
 			return None
-		instance = session.view.layers[cls.layer].createInstance(cls._object,
-											                                       fife.ModelCoordinate(*instance_coords))
+		instance = session.view.layers[cls.layer].createInstance(
+			cls._object,
+			fife.ModelCoordinate(*instance_coords))
 		facing_loc.setLayerCoordinates(fife.ModelCoordinate(*layer_coords))
 
 		if action_set_id is None:
@@ -280,9 +281,9 @@ class BasicBuilding(ComponentHolder, ConcreteObject):
 		action_sets = ActionSetLoader.get_sets()
 		if not action in action_sets[action_set_id]:
 			if 'idle' in action_sets[action_set_id]:
-				action='idle'
+				action = 'idle'
 			elif 'idle_full' in action_sets[action_set_id]:
-				action='idle_full'
+				action = 'idle_full'
 			else:
 				# set first action
 				action = action_sets[action_set_id].keys()[0]
@@ -295,15 +296,16 @@ class BasicBuilding(ComponentHolder, ConcreteObject):
 		return Build.check_resources({}, cls.costs, owner, inventory_holders)[0]
 
 	def init(self):
-		"""init the building, called after the constructor is run and the building is positioned (the settlement variable is assigned etc)
+		"""init the building, called after the constructor is run and the
+		building is positioned (the settlement variable is assigned etc)
 		"""
 		pass
 
 	def start(self):
-		"""This function is called when the building is built, to start production for example."""
+		"""This function is called when the building is built,
+		to start production for example."""
 		pass
 
-	#@decorators.relese_mode(ret="Building")
 	def __str__(self): # debug
 		return '%s(id=%s;worldid=%s)' % (self.name, self.id, self.worldid if hasattr(self, 'worldid') else 'none')
 
