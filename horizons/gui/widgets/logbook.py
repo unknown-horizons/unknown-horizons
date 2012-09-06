@@ -49,11 +49,11 @@ class LogBook(PickBeltWidget):
 	style = 'book'
 	page_pos = (170,38)
 	sections = (('logbook', _(u'Logbook')),
-				('statistics', _(u'Statistics')),
-				('chat_overview', _(u'Chat')))
+	            ('statistics', _(u'Statistics')),
+	            ('chat_overview', _(u'Chat')))
 
 	def __init__(self, session):
-		self.statistics_index = [i for i,sec in enumerate(self.sections) if sec[0] == 'statistics'][0]
+		self.statistics_index = [i for i, sec in self.sections].index('statistics')
 		self._page_ids = {} # dict mapping self._cur_entry to message.msgcount
 		super(LogBook, self).__init__()
 		self.session = session
