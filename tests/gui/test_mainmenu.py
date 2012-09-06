@@ -28,6 +28,9 @@ from tests.gui import TestFinished, gui_test, TEST_FIXTURES_DIR
 
 @gui_test(timeout=60)
 def test_support(gui):
+	"""Test that the support page shows up."""
+	yield
+
 	def func():
 		yield
 		gui.trigger('support_window', 'okButton/action/__execute__')
@@ -40,6 +43,9 @@ def test_support(gui):
 
 @gui_test(timeout=60)
 def test_credits(gui):
+	"""Test that the credits page shows up."""
+	yield
+
 	def func():
 		yield
 		gui.trigger('credits_window', 'okButton/action/__execute__')
@@ -52,6 +58,9 @@ def test_credits(gui):
 
 @gui_test(timeout=60)
 def test_help(gui):
+	"""Test that the help page shows up."""
+	yield
+
 	def func():
 		yield
 		gui.trigger('help_window', 'okButton/action/__execute__')
@@ -66,6 +75,7 @@ def test_help(gui):
 """
 @gui_test(timeout=60)
 def test_settings(gui):
+	yield
 	gui.trigger('menu', 'settingsLink')
 	gui.trigger('settings_window', 'cancelButton')
 
@@ -75,6 +85,9 @@ def test_settings(gui):
 
 @gui_test(timeout=60)
 def test_multiplayer(gui):
+	"""Test that the multiplayer page shows up."""
+	yield
+
 	gui.trigger('menu', 'startMulti')
 	yield # TODO find out why it fails without yield
 	gui.trigger('menu', 'cancel')
@@ -84,6 +97,9 @@ def test_multiplayer(gui):
 
 @gui_test(timeout=60)
 def test_singleplayer(gui):
+	"""Test that the singleplayer page shows up."""
+	yield
+
 	gui.trigger('menu', 'startSingle')
 	gui.trigger('menu', 'cancel')
 	
@@ -92,6 +108,9 @@ def test_singleplayer(gui):
 
 @gui_test(timeout=60, cleanup_userdir=True)
 def test_load_game(gui):
+	"""Test loading a game from the mainmenu."""
+	yield
+
 	# copy fixture savegame into user dir, otherwise we'll just get a 'no savegames' popup
 	source = os.path.join(TEST_FIXTURES_DIR, 'boatbuilder.sqlite')
 	target_dir = os.path.join(PATHS.USER_DIR, 'save')
