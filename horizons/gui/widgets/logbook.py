@@ -46,7 +46,7 @@ class LogBook(PickBeltWidget):
 	log = logging.getLogger('gui.widgets.logbook')
 
 	widget_xml = 'captains_log.xml'
-	style = None
+	style = 'book'
 	page_pos = (170,38)
 	sections = (('logbook', _(u'Logbook')),
 				('statistics', _(u'Statistics')),

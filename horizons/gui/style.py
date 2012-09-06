@@ -47,8 +47,8 @@ STYLES = {
 			'foreground_color': Color(80, 80, 40),
 		},
 		'ListBox': {
-			'foreground_color': Color(80, 80, 40),
-			'selection_color': Color(255, 255, 255, 128),
+			'background_color': Color(255, 255, 255, 64),
+			'selection_color': Color(255, 255, 255, 160),
 		},
 		'Label': {
 		},
@@ -121,7 +121,7 @@ STYLES = {
 		},
 		'ListBox': {
 			'background_color': Color(0, 0, 0, 0),
-			'selection_color': Color(255, 255, 255, 128),
+			'selection_color': Color(255, 255, 255, 160),
 		},
 		'TextField': {
 			'selection_color': Color(255, 255, 255),
