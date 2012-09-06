@@ -339,7 +339,9 @@ class Gui(SingleplayerMenu, MultiplayerMenu):
 				self.current.distributeData({'savegamefile': savegamefile})
 
 		self.current.distributeInitialData({'savegamelist': map_file_display})
-		self.current.distributeData({'savegamelist': -1}) # Don't select anything by default
+		# Select first item when loading, nothing when saving
+		selected_item = -1 if mode == 'save' else 0
+		self.current.distributeData({'savegamelist': selected_item})
 		cb_details = Gui._create_show_savegame_details(self.current, map_files, 'savegamelist')
 		cb = Callback.ChainedCallbacks(cb_details, tmp_selected_changed)
 		cb() # Refresh data on start
