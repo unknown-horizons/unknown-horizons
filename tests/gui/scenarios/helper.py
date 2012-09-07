@@ -33,3 +33,13 @@ def assert_defeat(gui):
 		if getattr(gui.session, '_scenariotest_lose', False):
 			break
 		yield
+
+
+def assert_goal_reached(gui, goal):
+	"""Returns once a certain goal was reached."""
+	while True:
+		if (hasattr(gui.session, '_scenariotest_goals') and
+			gui.session._scenariotest_goals and 
+			gui.session._scenariotest_goals[-1] == goal):
+			break
+		yield
