@@ -19,37 +19,17 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-from horizons.scenario import ACTIONS
-
-from tests.gui import gui_test, TestFinished
-from tests.gui.scenarios.helper import assert_win, assert_defeat
-
-
-# Patch scenario actions for easier detection
-
-def do_win(session):
-	session._scenariotest_won = True
-
-def do_lose(session):
-	session._scenariotest_lose = True
-
-ACTIONS.get('win').func_code = do_win.func_code
-ACTIONS.get('lose').func_code = do_lose.func_code
+def assert_win(gui):
+	"""Returns once the scenario was won."""
+	while True:
+		if getattr(gui.session, '_scenariotest_won', False):
+			break
+		yield
 
 
-# Example tests
-
-@gui_test(use_scenario='tests/gui/scenarios/win', timeout=10)
-def test_win(gui):
-	"""Simple test that detects a win in a game."""
-
-	for _ in assert_win(gui): yield
-	yield TestFinished
-
-
-@gui_test(use_scenario='tests/gui/scenarios/defeat', timeout=10)
-def test_defeat(gui):
-	"""Simple test that detects a defeat in a game."""
-
-	for _ in assert_defeat(gui): yield
-	yield TestFinished
+def assert_defeat(gui):
+	"""Returns once the scenario was lost."""
+	while True:
+		if getattr(gui.session, '_scenariotest_lose', False):
+			break
+		yield
