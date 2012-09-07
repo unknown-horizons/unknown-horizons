@@ -231,11 +231,12 @@ class TestRunner(object):
 
 
 def gui_test(use_dev_map=False, use_fixture=None, ai_players=0, timeout=15 * 60, cleanup_userdir=False,
-			 _user_dir=None):
+			 _user_dir=None, use_scenario=None):
 	"""Magic nose integration.
 
 	use_dev_map		-	starts the game with --start-dev-map
 	use_fixture		-	starts the game with --load-map=fixture_name
+	use_scenario    -   starts the game with --start-scenario=scenario_name
 	ai_players		-	starts the game with --ai_players=<number>
 	timeout			-	test will be stopped after X seconds passed (0 = disabled)
 	cleanup_userdir	-	whether the userdir should be cleaned after the test
@@ -262,6 +263,8 @@ def gui_test(use_dev_map=False, use_fixture=None, ai_players=0, timeout=15 * 60,
 				args.extend(['--load-map', path])
 			elif use_dev_map:
 				args.append('--start-dev-map')
+			elif use_scenario:
+				args.extend(['--start-scenario', use_scenario + '.yaml'])
 
 			if ai_players:
 				args.extend(['--ai-players', str(ai_players)])
