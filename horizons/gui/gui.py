@@ -394,12 +394,8 @@ class Gui(SingleplayerMenu, MultiplayerMenu):
 					return self.show_select_savegame(*args) # reshow dialog
 		else: # return selected item from list
 			selected_savegame = self.current.collectData('savegamelist')
-			selected_savegame = None if selected_savegame == -1 else map_files[selected_savegame]
-			if selected_savegame is None:
-				# ok button has been pressed, but no savegame was selected
-				self.show_popup(_("Select a savegame"), _("Please select a savegame or click on cancel."))
-				self.current = old_current
-				return self.show_select_savegame(*args) # reshow dialog
+			assert selected_savegame != -1, "No savegame selected in savegamelist"
+			selected_savegame = map_files[selected_savegame]
 
 		if mp and mode == 'load': # also name
 			gamename_textfield = self.current.findChild(name="gamename")
