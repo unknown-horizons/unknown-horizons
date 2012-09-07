@@ -225,7 +225,10 @@ class TestCodeGenerator(object):
 			log.debug('# %s' % path)
 
 			if group_name == 'default':
-				code = "gui.trigger('%s', '%s/%s')" % (container.name, widget.name, event_name)
+				if event_name in ('action', 'mouseClicked'):
+					code = "gui.trigger('%s', '%s')" % (container.name, widget.name)
+				else:
+					code = "gui.trigger('%s', '%s/%s')" % (container.name, widget.name, event_name)
 			else:
 				code = "gui.trigger('%s', '%s/%s/%s')" % (container.name, widget.name, event_name, group_name)
 
