@@ -21,10 +21,9 @@
 
 import os
 
-from fife.extensions import pychan
-from fife.extensions.pychan.widgets import Icon
+from fife.extensions.pychan import loadXML
+from fife.extensions.pychan.widgets import Icon, ImageButton, HBox
 
-from horizons.constants import TIER
 from horizons.i18n import translate_widget
 from horizons.util.python import decorators
 from horizons.util.python.callback import Callback
@@ -66,7 +65,7 @@ def load_uh_widget(filename, style=None, center_widget=False):
 	"""
 	# load widget
 	try:
-		widget = pychan.loadXML(get_gui_files_map()[filename])
+		widget = loadXML(get_gui_files_map()[filename])
 	except (IOError, ValueError) as error:
 		print u'PLEASE REPORT: invalid path {path} in translation! {error}'.format(path=filename, error=error)
 		raise
@@ -162,7 +161,6 @@ def create_resource_selection_dialog(on_click, inventory, db,
 	@param amount_per_line: how many resource icons per line. Default: try to fit layout
 	"""
 	from horizons.gui.widgets.imagefillstatusbutton import ImageFillStatusButton
-	from fife.extensions.pychan.widgets import ImageButton
 	dummy_icon_path = "content/gui/icons/resources/none_gray.png"
 
 	dlg = load_uh_widget(widget)
@@ -173,7 +171,7 @@ def create_resource_selection_dialog(on_click, inventory, db,
 	# Add the zero element to the beginning that allows to remove the currently
 	# sold/bought resource:
 	resources = [0] + db.get_res(only_tradeable=True)
-	current_hbox = pychan.widgets.HBox(name="hbox_0", padding=0)
+	current_hbox = HBox(name="hbox_0", padding=0)
 	index = 1
 	for res_id in resources:
 		# don't show resources that are already in the list
@@ -200,7 +198,7 @@ def create_resource_selection_dialog(on_click, inventory, db,
 		if index % amount_per_line == 0:
 			vbox.addChild(current_hbox)
 			box_id = index // amount_per_line
-			current_hbox = pychan.widgets.HBox(name="hbox_%s" % box_id, padding=0)
+			current_hbox = HBox(name="hbox_%s" % box_id, padding=0)
 		index += 1
 	vbox.addChild(current_hbox)
 	vbox.adaptLayout()
