@@ -49,7 +49,7 @@ class OptionsManager(object):
 
 	def opening_menu(self):
 		for option in self.__startup_options:
-			if getattr(self._options, option) is not None:
+			if getattr(self._options, option):
 				return False
 		return True
 
