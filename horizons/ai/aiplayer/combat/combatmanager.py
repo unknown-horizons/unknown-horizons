@@ -18,12 +18,12 @@
 # Free Software Foundation, Inc.,
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
-from collections import defaultdict
 
 import logging
+
 from fife import fife
-from weakref import WeakKeyDictionary
-import horizons
+import horizons.main
+
 from horizons.ai.aiplayer.behavior import BehaviorManager
 from horizons.ai.aiplayer.behavior.movecallbacks import BehaviorMoveCallback
 from horizons.ai.aiplayer.combat.unitmanager import UnitManager
@@ -32,7 +32,6 @@ from horizons.constants import LAYERS, AI
 from horizons.ext.enum import Enum
 from horizons.util.python.callback import Callback
 from horizons.util.python.defaultweakkeydictionary import DefaultWeakKeyDictionary
-from horizons.util.shapes import Point
 from horizons.util.worldobject import WorldObject
 
 
