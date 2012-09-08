@@ -21,7 +21,7 @@
 
 from fife import fife
 
-import horizons.main
+import horizons.globals
 
 from horizons.util import ActionSetLoader, TileSetLoader
 
@@ -61,7 +61,7 @@ class SQLiteAnimationLoader(object):
 		frame_start, frame_end = 0.0, 0.0
 		for file in sorted(loader.get_sets()[actionset][action][int(rotation)].iterkeys()):
 			frame_end = loader.get_sets()[actionset][action][int(rotation)][file]
-			img = horizons.main.fife.imagemanager.load(file)
+			img = horizons.globals.fife.imagemanager.load(file)
 			for command, arg in commands:
 				if command == 'shift':
 					x, y = arg.split(',')

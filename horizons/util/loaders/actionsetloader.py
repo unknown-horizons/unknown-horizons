@@ -22,7 +22,7 @@
 import os
 import logging
 
-import horizons.main
+import horizons.globals
 
 from horizons.constants import PATHS
 from loader import GeneralLoader
@@ -58,7 +58,7 @@ class ActionSetLoader(object):
 	def load(cls):
 		if not cls._loaded:
 			cls.log.debug("Loading action_sets...")
-			if not horizons.main.fife.use_atlases:
+			if not horizons.globals.fife.use_atlases:
 				cls._find_action_sets(PATHS.ACTION_SETS_DIRECTORY)
 			else:
 				cls.action_sets = JsonDecoder.load(PATHS.ACTION_SETS_JSON_FILE)

@@ -28,7 +28,7 @@ import copy
 
 from collections import deque
 
-import horizons.main
+import horizons.globals
 from horizons.world.island import Island
 from horizons.world.player import HumanPlayer
 from horizons.util import Point, Rect, Circle, WorldObject
@@ -321,7 +321,7 @@ class World(BuildingOwner, WorldObject):
 				player = HumanPlayer.load(self.session, savegame_db, player_worldid)
 			self.players.append(player)
 
-			if client_id == horizons.main.fife.get_uh_setting("ClientID"):
+			if client_id == horizons.globals.fife.get_uh_setting("ClientID"):
 				self.player = player
 			elif client_id is not None and not ai_data:
 				# possible human player candidate with different client id

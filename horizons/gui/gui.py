@@ -29,9 +29,9 @@ import tempfile
 import logging
 from fife import fife
 from fife.extensions import pychan
-from horizons.gui.quotes import GAMEPLAY_TIPS, FUN_QUOTES
 
 import horizons.main
+import horizons.globals
 
 from horizons.savegamemanager import SavegameManager
 from horizons.gui.keylisteners import MainListener
@@ -45,6 +45,8 @@ from horizons.gui.util import LazyWidgetsDict
 
 from horizons.gui.modules import SingleplayerMenu, MultiplayerMenu
 from horizons.command.game import PauseCommand, UnPauseCommand
+
+from launcher.events import QuitSessionEvent
 
 class Gui(SingleplayerMenu, MultiplayerMenu):
 	"""This class handles all the out of game menu, like the main and pause menu, etc.
@@ -187,7 +189,7 @@ class Gui(SingleplayerMenu, MultiplayerMenu):
 
 	def show_settings(self):
 		"""Displays settings gui derived from the FIFE settings module."""
-		horizons.main.fife.show_settings()
+		horizons.globals.fife.show_settings()
 
 	_help_is_displayed = False
 	def on_help(self):
@@ -231,7 +233,7 @@ class Gui(SingleplayerMenu, MultiplayerMenu):
 				self.session.end()
 				self.session = None
 
-			self.show_main()
+			horizons.globals.events.put_nowait(QuitSessionEvent())
 			return True
 		else:
 			return False
@@ -447,7 +449,7 @@ class Gui(SingleplayerMenu, MultiplayerMenu):
 					pychan.tools.applyOnlySuitable(callback, event=event, widget=btn)
 				else:
 					# escape should hide the dialog default
-					horizons.main.fife.pychanmanager.breakFromMainLoop(returnValue=False)
+					horizons.globals.fife.pychanmanager.breakFromMainLoop(returnValue=False)
 					dlg.hide()
 			elif event.getKey().getValue() == fife.Key.ENTER: # convention says use ok action
 				btn = dlg.findChild(name=OkButton.DEFAULT_NAME)
@@ -560,9 +562,9 @@ class Gui(SingleplayerMenu, MultiplayerMenu):
 		access to other gui elements by eating all input events.
 		Used for modal popups and our in-game menu.
 		"""
-		height = horizons.main.fife.engine_settings.getScreenHeight()
-		width = horizons.main.fife.engine_settings.getScreenWidth()
-		image = horizons.main.fife.imagemanager.loadBlank(width, height)
+		height = horizons.globals.fife.engine_settings.getScreenHeight()
+		width = horizons.globals.fife.engine_settings.getScreenWidth()
+		image = horizons.globals.fife.imagemanager.loadBlank(width, height)
 		image = fife.GuiImage(image)
 		self.current.additional_widget = pychan.Icon(image=image)
 		self.current.additional_widget.position = (0, 0)
@@ -580,10 +582,11 @@ class Gui(SingleplayerMenu, MultiplayerMenu):
 		# Add 'Quote of the Load' to loading screen:
 		qotl_type_label = self.current.findChild(name='qotl_type_label')
 		qotl_label = self.current.findChild(name='qotl_label')
-		quote_type = int(horizons.main.fife.get_uh_setting("QuotesType"))
+		quote_type = int(horizons.globals.fife.get_uh_setting("QuotesType"))
 		if quote_type == 2:
 			quote_type = random.randint(0, 1) # choose a random type
 
+		from horizons.gui.quotes import GAMEPLAY_TIPS, FUN_QUOTES
 		if quote_type == 0:
 			name = GAMEPLAY_TIPS["name"]
 			items = GAMEPLAY_TIPS["items"]
@@ -736,14 +739,14 @@ class Gui(SingleplayerMenu, MultiplayerMenu):
 		"""Randomly select a background image to use through out the game menu."""
 		available_images = glob.glob('content/gui/images/background/mainmenu/bg_*.png')
 		#get latest background
-		latest_background = horizons.main.fife.get_uh_setting("LatestBackground")
+		latest_background = horizons.globals.fife.get_uh_setting("LatestBackground")
 		#if there is a latest background then remove it from available list
 		if latest_background is not None:
 			available_images.remove(latest_background)
 		background_choice = random.choice(available_images)
 		#save current background choice
-		horizons.main.fife.set_uh_setting("LatestBackground", background_choice)
-		horizons.main.fife.save_settings()
+		horizons.globals.fife.set_uh_setting("LatestBackground", background_choice)
+		horizons.globals.fife.save_settings()
 		return background_choice
 
 	def _on_gui_action(self, msg):

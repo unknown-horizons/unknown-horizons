@@ -40,10 +40,12 @@ import shutil
 
 from fife import fife as fife_module
 
+import horizons.globals
+
 from horizons.savegamemanager import SavegameManager
 from horizons.gui import Gui
 from horizons.extscheduler import ExtScheduler
-from horizons.constants import AI, COLORS, GAME, PATHS, NETWORK, SINGLEPLAYER, GAME_SPEED
+from horizons.constants import AI, COLORS, PATHS, NETWORK, GAME_SPEED
 from horizons.network.networkinterface import NetworkInterface
 from horizons.util import ActionSetLoader, DifficultySettings, TileSetLoader, Color, parse_port, Callback
 from horizons.util.uhdbaccessor import UhDbAccessor
@@ -58,29 +60,22 @@ _modules = Modules()
 # garbage collection
 __string_previewer = None
 
-command_line_arguments = None
+def init(options, events):
+	horizons.globals.events = events
+	options.set_runtime_constants()
 
-def start(_command_line_arguments):
-	"""Starts the horizons. Will drop you to the main menu.
-	@param _command_line_arguments: options object from optparse.OptionParser. see run_uh.py.
-	"""
-	global fife, db, debug, preloading, command_line_arguments
-	command_line_arguments = _command_line_arguments
 	# NOTE: globals are designwise the same thing as singletons. they don't look pretty.
 	#       here, we only have globals that are either trivial, or only one instance may ever exist.
 
 	from engine import Fife
 
-	# handle commandline globals
-	debug = command_line_arguments.debug
-
-	if command_line_arguments.restore_settings:
+	if options.restore_settings:
 		# just delete the file, Settings ctor will create a new one
 		os.remove( PATHS.USER_CONFIG_FILE )
 
-	if command_line_arguments.mp_master:
+	if options.mp_master:
 		try:
-			mpieces = command_line_arguments.mp_master.partition(':')
+			mpieces = options.mp_master.partition(':')
 			NETWORK.SERVER_ADDRESS = mpieces[0]
 			# only change port if port is specified
 			if mpieces[2]:
@@ -89,63 +84,47 @@ def start(_command_line_arguments):
 			print "Error: Invalid syntax in --mp-master commandline option. Port must be a number between 1 and 65535."
 			return False
 
-	if command_line_arguments.generate_minimap: # we've been called as subprocess to generate a map preview
+	if options.generate_minimap: # we've been called as subprocess to generate a map preview
 		from horizons.gui.modules.singleplayermenu import MapPreview
 		MapPreview.generate_minimap( * json.loads(
-		  command_line_arguments.generate_minimap
+		  options.generate_minimap
 		  ) )
 		sys.exit(0)
 
 	# init fife before mp_bind is parsed, since it's needed there
-	fife = Fife()
+	horizons.globals.fife = Fife(options)
 
-	if debug: # also True if a specific module is logged (but not 'fife')
-		if not (command_line_arguments.debug_module
-		        and 'fife' not in command_line_arguments.debug_module):
-			fife._log.lm.setLogToPrompt(True)
+	if options.debug: # also True if a specific module is logged (but not 'fife')
+		if not (options.debug_module
+		        and 'fife' not in options.debug_module):
+			horizons.globals.fife._log.lm.setLogToPrompt(True)
 		# After the next FIFE release, we should use this instead which is possible as of r3960:
 		# fife._log.logToPrompt = True
 
-	if command_line_arguments.mp_bind:
+	if options.mp_bind:
 		try:
-			mpieces = command_line_arguments.mp_bind.partition(':')
+			mpieces = options.mp_bind.partition(':')
 			NETWORK.CLIENT_ADDRESS = mpieces[0]
-			fife.set_uh_setting("NetworkPort", parse_port(mpieces[2], allow_zero=True))
+			horizons.globals.fife.set_uh_setting("NetworkPort", parse_port(mpieces[2], allow_zero=True))
 		except ValueError:
 			print "Error: Invalid syntax in --mp-bind commandline option. Port must be a number between 1 and 65535."
 			return False
 
-	if command_line_arguments.ai_highlights:
-		AI.HIGHLIGHT_PLANS = True
-	if command_line_arguments.ai_combat_highlights:
-		AI.HIGHLIGHT_COMBAT = True
-	if command_line_arguments.human_ai:
-		AI.HUMAN_AI = True
-
-	# set singleplayer natural resource seed
-	if command_line_arguments.nature_seed:
-		SINGLEPLAYER.SEED = command_line_arguments.nature_seed
-
-	# set MAX_TICKS
-	if command_line_arguments.max_ticks:
-		GAME.MAX_TICKS = command_line_arguments.max_ticks
-
-	db = _create_main_db()
+	horizons.globals.db = _create_main_db()
 
 	# init game parts
-
-	client_id = fife.get_uh_setting("ClientID")
+	client_id = horizons.globals.fife.get_uh_setting("ClientID")
 	if not client_id:
 		# We need a new client id
 		client_id = "".join("-" if c in (8, 13, 18, 23) else
 		                    random.choice("0123456789abcdef") for c in xrange(0, 36))
-		fife.set_uh_setting("ClientID", client_id)
-		fife.save_settings()
+		horizons.globals.fife.set_uh_setting("ClientID", client_id)
+		horizons.globals.fife.save_settings()
 
 	# Install gui logger, needs to be done before instantiating Gui, otherwise we miss
 	# the events of the main menu buttons
-	if command_line_arguments.log_gui:
-		if command_line_arguments.gui_test:
+	if options.log_gui:
+		if options.gui_test:
 			raise Exception("Logging gui interactions doesn't work when running tests.")
 		try:
 			from tests.gui.logger import setup_gui_logger
@@ -158,69 +137,61 @@ def start(_command_line_arguments):
 
 	# GUI tests always run with sound disabled and SDL (so they can run under xvfb).
 	# Needs to be done before engine is initialized.
-	if command_line_arguments.gui_test:
-		fife.engine.getSettings().setRenderBackend('SDL')
-		fife.set_fife_setting('PlaySounds', False)
+	if options.gui_test:
+		horizons.globals.fife.engine.getSettings().setRenderBackend('SDL')
+		horizons.globals.fife.set_fife_setting('PlaySounds', False)
 
-	ExtScheduler.create_instance(fife.pump)
-	fife.init()
+	ExtScheduler.create_instance(horizons.globals.fife.pump)
+	horizons.globals.fife.init()
 	_modules.gui = Gui()
 	SavegameManager.init()
 
 	from horizons.entities import Entities
-	Entities.load(db, load_now=False) # create all references
+	Entities.load(horizons.globals.db, load_now=False) # create all references
 
-	# for preloading game data while in main screen
-	preload_lock = threading.Lock()
-	preload_thread = threading.Thread(target=preload_game_data, args=(preload_lock,))
-	preloading = (preload_thread, preload_lock)
-
-	# Singleplayer seed needs to be changed before startup.
-	if command_line_arguments.sp_seed:
-		SINGLEPLAYER.SEED = command_line_arguments.sp_seed
-
+def start_game(options):
 	# start something according to commandline parameters
 	startup_worked = True
-	if command_line_arguments.start_dev_map:
-		startup_worked = _start_dev_map(command_line_arguments.ai_players, command_line_arguments.human_ai, command_line_arguments.force_player_id)
-	elif command_line_arguments.start_random_map:
-		startup_worked = _start_random_map(command_line_arguments.ai_players, command_line_arguments.human_ai, force_player_id=command_line_arguments.force_player_id)
-	elif command_line_arguments.start_specific_random_map is not None:
-		startup_worked = _start_random_map(command_line_arguments.ai_players, command_line_arguments.human_ai,
-			seed=command_line_arguments.start_specific_random_map, force_player_id=command_line_arguments.force_player_id)
-	elif command_line_arguments.start_map is not None:
-		startup_worked = _start_map(command_line_arguments.start_map, command_line_arguments.ai_players,
-			command_line_arguments.human_ai, force_player_id=command_line_arguments.force_player_id)
-	elif command_line_arguments.start_scenario is not None:
-		startup_worked = _start_map(command_line_arguments.start_scenario, 0, False, True, force_player_id=command_line_arguments.force_player_id)
-	elif command_line_arguments.start_campaign is not None:
-		startup_worked = _start_campaign(command_line_arguments.start_campaign, force_player_id=command_line_arguments.force_player_id)
-	elif command_line_arguments.load_map is not None:
-		startup_worked = _load_map(command_line_arguments.load_map, command_line_arguments.ai_players,
-			command_line_arguments.human_ai, command_line_arguments.force_player_id)
-	elif command_line_arguments.load_quicksave is not None:
+	if options.start_dev_map:
+		startup_worked = _start_dev_map(options.ai_players, options.human_ai, options.force_player_id)
+	elif options.start_random_map:
+		startup_worked = _start_random_map(options.ai_players, options.human_ai, force_player_id=options.force_player_id)
+	elif options.start_specific_random_map is not None:
+		startup_worked = _start_random_map(options.ai_players, options.human_ai,
+			seed=options.start_specific_random_map, force_player_id=options.force_player_id)
+	elif options.start_map is not None:
+		startup_worked = _start_map(options.start_map, options.ai_players,
+			options.human_ai, force_player_id=options.force_player_id)
+	elif options.start_scenario is not None:
+		startup_worked = _start_map(options.start_scenario, 0, False, True, force_player_id=options.force_player_id)
+	elif options.start_campaign is not None:
+		startup_worked = _start_campaign(options.start_campaign, force_player_id=options.force_player_id)
+	elif options.load_map is not None:
+		startup_worked = _load_map(options.load_map, options.ai_players,
+			options.human_ai, options.force_player_id)
+	elif options.load_quicksave:
 		startup_worked = _load_last_quicksave()
-	elif command_line_arguments.stringpreview:
+	elif options.stringpreview:
 		tiny = [ i for i in SavegameManager.get_maps()[0] if 'tiny' in i ]
 		if not tiny:
 			tiny = SavegameManager.get_map()[0]
 		startup_worked = _start_map(tiny[0], ai_players=0, human_ai=False, trader_enabled=False, pirate_enabled=False,
-			force_player_id=command_line_arguments.force_player_id)
+			force_player_id=options.force_player_id)
 		from development.stringpreviewwidget import StringPreviewWidget
 		__string_previewer = StringPreviewWidget(_modules.session)
 		__string_previewer.show()
-	elif command_line_arguments.create_mp_game:
+	elif options.create_mp_game:
 		_modules.gui.show_main()
 		_modules.gui.show_multi()
 		_modules.gui.create_default_mp_game()
-	elif command_line_arguments.join_mp_game:
+	elif options.join_mp_game:
 		_modules.gui.show_main()
 		_modules.gui.show_multi()
 		_modules.gui.join_mp_game()
 	else: # no commandline parameter, show main screen
 
 		# initalize update checker
-		if not command_line_arguments.gui_test:
+		if not options.gui_test:
 			from horizons.util.checkupdates import UpdateInfo, check_for_updates, show_new_version_hint
 			update_info = UpdateInfo()
 			update_check_thread = threading.Thread(target=check_for_updates, args=(update_info,))
@@ -236,33 +207,30 @@ def start(_command_line_arguments):
 			update_info_handler(update_info) # schedules checks by itself
 
 		_modules.gui.show_main()
-		if not command_line_arguments.nopreload:
-			preloading[0].start()
 
 	if not startup_worked:
-		# don't start main loop if startup failed
 		return False
 
-	if command_line_arguments.gamespeed is not None:
+	if options.gamespeed is not None:
 		if _modules.session is None:
 			print "You can only set the speed via command line in combination with a game start parameter such as --start-map, etc."
 			return False
-		_modules.session.speed_set(GAME_SPEED.TICKS_PER_SECOND*command_line_arguments.gamespeed)
+		_modules.session.speed_set(GAME_SPEED.TICKS_PER_SECOND*options.gamespeed)
 
-	if command_line_arguments.gui_test:
+	if options.gui_test:
 		from tests.gui import TestRunner
-		TestRunner(fife, command_line_arguments.gui_test)
+		TestRunner(horizons.globals.fife, options.gui_test)
 
-	if command_line_arguments.interactive_shell:
+	if options.interactive_shell:
 		from horizons.util import interactive_shell
-		interactive_shell.start(fife)
-
-	fife.run()
+		interactive_shell.start(horizons.globals.fife)
 
 def quit():
 	"""Quits the game"""
-	global fife
-	fife.quit()
+	horizons.globals.fife.quit()
+
+	from launcher.events import QuitGameEvent
+	horizons.globals.events.put_nowait(QuitGameEvent())
 
 def start_singleplayer(map_file, playername="Player", playercolor=None, is_scenario=False,
 		campaign=None, ai_players=0, human_ai=False, trader_enabled=True, pirate_enabled=True,
@@ -273,16 +241,14 @@ def start_singleplayer(map_file, playername="Player", playercolor=None, is_scena
 	@param human_ai: whether to start the human player as an AI
 	@param force_player_id: the worldid of the selected human player or default if None (debug option)
 	"""
-	global fife, preloading, db
-	preload_game_join(preloading)
 
 	if playercolor is None: # this can't be a default parameter because of circular imports
 		playercolor = Color[1]
 
 	# remove cursor while loading
-	fife.cursor.set(fife_module.CURSOR_NONE)
-	fife.engine.pump()
-	fife.set_cursor_image('default')
+	horizons.globals.fife.cursor.set(fife_module.CURSOR_NONE)
+	horizons.globals.fife.engine.pump()
+	horizons.globals.fife.set_cursor_image('default')
 
 	# hide whatever is displayed before the game starts
 	_modules.gui.hide()
@@ -292,7 +258,7 @@ def start_singleplayer(map_file, playername="Player", playercolor=None, is_scena
 		_modules.session.end()
 	# start new session
 	from spsession import SPSession
-	_modules.session = SPSession(_modules.gui, db)
+	_modules.session = SPSession(_modules.gui, horizons.globals.db)
 
 	# for now just make it a bit easier for the AI
 	difficulty_level = {False: DifficultySettings.DEFAULT_LEVEL, True: DifficultySettings.EASY_LEVEL}
@@ -356,14 +322,11 @@ def prepare_multiplayer(game, trader_enabled=True, pirate_enabled=True, natural_
 	"""Starts a multiplayer game server
 	TODO: actual game data parameter passing
 	"""
-	global fife, preloading, db
-
-	preload_game_join(preloading)
 
 	# remove cursor while loading
-	fife.cursor.set(fife_module.CURSOR_NONE)
-	fife.engine.pump()
-	fife.set_cursor_image('default')
+	horizons.globals.fife.cursor.set(fife_module.CURSOR_NONE)
+	horizons.globals.fife.engine.pump()
+	horizons.globals.fife.set_cursor_image('default')
 
 	# hide whatever is displayed before the game starts
 	_modules.gui.hide()
@@ -376,7 +339,7 @@ def prepare_multiplayer(game, trader_enabled=True, pirate_enabled=True, natural_
 	# get random seed for game
 	uuid = game.get_uuid()
 	random = sum([ int(uuid[i : i + 2], 16) for i in range(0, len(uuid), 2) ])
-	_modules.session = MPSession(_modules.gui, db, NetworkInterface(), rng_seed=random)
+	_modules.session = MPSession(_modules.gui, horizons.globals.db, NetworkInterface(), rng_seed=random)
 	# NOTE: this data passing is only temporary, maybe use a player class/struct
 	if game.load:
 		map_file = SavegameManager.get_multiplayersave_map( game.get_map_name() )
@@ -396,11 +359,14 @@ def load_game(ai_players=0, human_ai=False, savegame=None, is_scenario=False, ca
 		savegame = _modules.gui.show_select_savegame(mode='load')
 		if savegame is None:
 			return False # user aborted dialog
+
 	_modules.gui.show_loading_screen()
-#TODO
-	start_singleplayer(savegame, is_scenario=is_scenario, campaign=campaign,
-		ai_players=ai_players, human_ai=human_ai, pirate_enabled=pirate_enabled,
-		trader_enabled=trader_enabled, force_player_id=force_player_id)
+	from launcher.gameconfiguration import GameConfiguration
+	from launcher.gamemanager import StartSinglePlayerGameEvent
+	config = GameConfiguration.create_loader(savegame, is_scenario, campaign, ai_players,
+											 human_ai, pirate_enabled, trader_enabled,
+											 force_player_id)
+	horizons.globals.events.put_nowait(StartSinglePlayerGameEvent(config))
 	return True
 
 
@@ -489,7 +455,7 @@ def _load_map(savegame, ai_players, human_ai, force_player_id=None):
 
 def _find_matching_map(name_or_path, savegames):
 	"""*name_or_path* is either a map/savegame name or path to a map/savegame file."""
-	game_language = fife.get_locale()
+	game_language = horizons.globals.fife.get_locale()
 	# now we have "_en.yaml" which is set to language_extension variable
 	language_extension = '_' + game_language + '.' + SavegameManager.scenario_extension
 	map_file = None
@@ -541,51 +507,9 @@ def _load_last_quicksave(session=None, force_player_id=None):
 def _create_main_db():
 	"""Returns a dbreader instance, that is connected to the main game data dbfiles.
 	NOTE: This data is read_only, so there are no concurrency issues"""
-	_db = UhDbAccessor(':memory:')
+	db = UhDbAccessor(':memory:')
 	for i in PATHS.DB_FILES:
 		f = open(i, "r")
 		sql = "BEGIN TRANSACTION;" + f.read() + "COMMIT;"
-		_db.execute_script(sql)
-	return _db
-
-def preload_game_data(lock):
-	"""Preloads game data.
-	Keeps releasing and acquiring lock, runs until lock can't be acquired."""
-	try:
-		import logging
-		from horizons.entities import Entities
-		log = logging.getLogger("preload")
-		mydb = _create_main_db() # create own db reader instance, since it's not thread-safe
-		preload_functions = [ ActionSetLoader.load,
-		                      TileSetLoader.load,
-		                      Callback(Entities.load_grounds, mydb, load_now=True),
-		                      Callback(Entities.load_buildings, mydb, load_now=True),
-		                      Callback(Entities.load_units, load_now=True) ]
-		for f in preload_functions:
-			if not lock.acquire(False):
-				break
-			log.debug("Preload: %s", f)
-			f()
-			log.debug("Preload: %s is done", f)
-			lock.release()
-		log.debug("Preloading done.")
-	except Exception as e:
-		log.warning("Exception occured in preloading thread: %s", e)
-	finally:
-		if lock.locked():
-			lock.release()
-
-def preload_game_join(preloading):
-	"""Wait for preloading to finish.
-	@param preloading: tuple: (Thread, Lock)"""
-	# lock preloading
-	preloading[1].acquire()
-	# wait until it finished its current action
-	if preloading[0].isAlive():
-		preloading[0].join()
-		assert not preloading[0].isAlive()
-	else:
-		try:
-			preloading[1].release()
-		except thread.error:
-			pass # due to timing issues, the lock might be released already
+		db.execute_script(sql)
+	return db

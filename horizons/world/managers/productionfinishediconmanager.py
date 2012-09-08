@@ -22,7 +22,7 @@
 from fife import fife
 from horizons.constants import GAME_SPEED
 
-import horizons.main
+import horizons.globals
 from horizons.gui.util import get_res_icon_path
 from horizons.messaging import ResourceProduced
 from horizons.scheduler import Scheduler
@@ -105,9 +105,9 @@ class ProductionFinishedIconManager(object):
 		bg_node = fife.RendererNode(loc, bg_rel)
 		node = fife.RendererNode(loc, rel)
 
-		bg_image = horizons.main.fife.imagemanager.load(self.background)
-		res_icon = horizons.main.fife.imagemanager.load(get_res_icon_path(res))
-		font = horizons.main.fife.pychanmanager.getFont('mainmenu')
+		bg_image = horizons.globals.fife.imagemanager.load(self.background)
+		res_icon = horizons.globals.fife.imagemanager.load(get_res_icon_path(res))
+		font = horizons.globals.fife.pychanmanager.getFont('mainmenu')
 
 		self.renderer.addImage(group, bg_node, bg_image)
 		self.renderer.resizeImage(group, node, res_icon, 24, 24)

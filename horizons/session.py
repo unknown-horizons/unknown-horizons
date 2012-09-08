@@ -29,6 +29,7 @@ import time
 from random import Random
 
 import horizons.main
+import horizons.globals
 
 from horizons.ai.aiplayer import AIPlayer
 from horizons.gui.ingamegui import IngameGui
@@ -143,7 +144,7 @@ class Session(LivingObject):
 		If True: Create the ProductionFinishedIconManager
 		If False and a manager is currently running: End it
 		"""
-		show_resource_icons = bool(horizons.main.fife.get_uh_setting("ShowResourceIcons"))
+		show_resource_icons = bool(horizons.globals.fife.get_uh_setting("ShowResourceIcons"))
 		if show_resource_icons:
 			self.production_finished_icon_manager = ProductionFinishedIconManager(
 				renderer=self.view.renderer['GenericRenderer'],
@@ -160,7 +161,7 @@ class Session(LivingObject):
 	def reset_autosave(self):
 		"""(Re-)Set up autosave. Called if autosave interval has been changed."""
 		# get_uh_setting returns floats like 4.0 and 42.0 since slider stepping is 1.0.
-		interval = int(horizons.main.fife.get_uh_setting("AutosaveInterval"))
+		interval = int(horizons.globals.fife.get_uh_setting("AutosaveInterval"))
 		if interval != self._old_autosave_interval:
 			self._old_autosave_interval = interval
 			ExtScheduler().rem_call(self, self.autosave)
@@ -203,12 +204,12 @@ class Session(LivingObject):
 		Scheduler().rem_all_classinst_calls(self)
 		ExtScheduler().rem_all_classinst_calls(self)
 
-		if horizons.main.fife.get_fife_setting("PlaySounds"):
-			for emitter in horizons.main.fife.sound.emitter['ambient'][:]:
+		if horizons.globals.fife.get_fife_setting("PlaySounds"):
+			for emitter in horizons.globals.fife.sound.emitter['ambient'][:]:
 				emitter.stop()
-				horizons.main.fife.sound.emitter['ambient'].remove(emitter)
-			horizons.main.fife.sound.emitter['effects'].stop()
-			horizons.main.fife.sound.emitter['speech'].stop()
+				horizons.globals.fife.sound.emitter['ambient'].remove(emitter)
+			horizons.globals.fife.sound.emitter['effects'].stop()
+			horizons.globals.fife.sound.emitter['speech'].stop()
 		if hasattr(self, "cursor"): # the line below would crash uglily on ^C
 			self.cursor.remove()
 

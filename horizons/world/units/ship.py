@@ -22,7 +22,7 @@
 import weakref
 from fife import fife
 
-import horizons.main
+import horizons.globals
 
 from horizons.util.pathfinding.pather import ShipPather, FisherShipPather
 from horizons.util.pathfinding import PathBlockedError
@@ -166,7 +166,7 @@ class Ship(Unit):
 			loc.setLayerCoordinates(coords)
 			self.session.view.renderer['GenericRenderer'].addAnimation(
 				"buoy_" + str(self.worldid), fife.RendererNode(loc),
-				horizons.main.fife.animationloader.loadResource("as_buoy0+idle+45")
+				horizons.globals.fife.animationloader.loadResource("as_buoy0+idle+45")
 			)
 
 	def find_nearby_ships(self, radius=15):

@@ -19,7 +19,7 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-import horizons.main
+import horizons.globals
 
 from horizons.constants import MULTIPLAYER
 
@@ -38,7 +38,7 @@ class AIDataSelection(object):
 
 		self.gui.distributeInitialData({'ai_players': [unicode(n) for n in xrange(MULTIPLAYER.MAX_PLAYER_COUNT)]})
 		self.gui.distributeData({
-			'ai_players': int(horizons.main.fife.get_uh_setting("AIPlayers"))
+			'ai_players': int(horizons.globals.fife.get_uh_setting("AIPlayers"))
 		})
 		parent_gui.findChild(name="aidataselectioncontainer").addChild(self.gui)
 

@@ -24,7 +24,7 @@ import logging
 import random
 import weakref
 
-import horizons.main
+import horizons.globals
 
 from horizons.entities import Entities
 from horizons.util import ActionSetLoader, Point, decorators, WorldObject
@@ -255,7 +255,7 @@ class BuildingTool(NavigationTool):
 		image = sorted(action_sets[action_set][action][rotation].keys())[0]
 		if GFX.USE_ATLASES:
 			# Make sure the preview is loaded
-			horizons.main.fife.animationloader.load_image(image, action_set, action, rotation)
+			horizons.globals.fife.animationloader.load_image(image, action_set, action, rotation)
 		building_icon = self.gui.findChild(name='building')
 		building_icon.image = image
 		# TODO: Remove hardcoded 70
@@ -526,7 +526,7 @@ class BuildingTool(NavigationTool):
 					BuildingTool._last_road_built = BuildingTool._last_road_built[-3:]
 
 			# check how to continue: either build again or escape
-			if ((evt.isShiftPressed() or horizons.main.fife.get_uh_setting('UninterruptedBuilding')) \
+			if ((evt.isShiftPressed() or horizons.globals.fife.get_uh_setting('UninterruptedBuilding')) \
 			    and not self._class.id == BUILDINGS.WAREHOUSE) \
 			    or not found_buildable \
 			    or self._class.class_package == 'path':

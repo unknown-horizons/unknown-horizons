@@ -19,12 +19,14 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-
-import horizons.main
 import os.path
 import glob
-from horizons.constants import PATHS
+
 from random import randrange
+
+import horizons.globals
+
+from horizons.constants import PATHS
 
 """
 Internationalization for speech|voice files
@@ -75,7 +77,7 @@ def get_speech_file(category, variation_id=None, speaker_id=DEFAULT_SPEAKER):
 	category_name = eval_category_name(category)
 	if category_name == None:
 		return None
-	lang = horizons.main.fife.get_locale()
+	lang = horizons.globals.fife.get_locale()
 	path = prepare_path(lang, category_name, variation_id, speaker_id)
 	if path == None:
 		path = prepare_path(DEFAULT_LANG, category_name, DEFAULT_VARIATION, DEFAULT_SPEAKER)

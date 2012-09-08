@@ -23,7 +23,7 @@ import textwrap
 from fife import fife
 from fife.extensions import pychan
 
-import horizons.main
+import horizons.globals
 
 from horizons.extscheduler import ExtScheduler
 from horizons.gui.util import load_uh_widget
@@ -77,7 +77,7 @@ class _Tooltip(object):
 		if top_pos == (0, 0):
 			return
 
-		screen_width = horizons.main.fife.engine_settings.getScreenWidth()
+		screen_width = horizons.globals.fife.engine_settings.getScreenWidth()
 		self.gui.y = widget_position[1] + y + 5
 		if (widget_position[0] + x + self.gui.size[0] + 10) <= screen_width:
 			self.gui.x = widget_position[0] + x + 10

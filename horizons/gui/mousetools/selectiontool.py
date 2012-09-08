@@ -21,7 +21,7 @@
 
 from fife import fife
 
-import horizons.main
+import horizons.globals
 from horizons.command.unit import Act
 from horizons.util import WorldObject
 from horizons.util.worldobject import WorldObjectNotFound
@@ -164,7 +164,7 @@ class SelectionTool(NavigationTool):
 			self.session.set_cursor('attacking')
 		if not attacking_unit_found and isinstance(self.session.cursor, AttackingTool):
 			self.session.set_cursor()
-			horizons.main.fife.set_cursor_image('default')
+			horizons.globals.fife.set_cursor_image('default')
 
 	def mousePressed(self, evt):
 		if evt.isConsumedByWidgets():

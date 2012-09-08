@@ -35,7 +35,7 @@ from horizons.util import DbReader, YamlCache
 from horizons.i18n import find_available_languages
 
 import horizons.main
-
+import horizons.globals
 
 class SavegameManager(object):
 	"""Controls savegamefiles.
@@ -191,10 +191,10 @@ class SavegameManager(object):
 
 		if autosaves:
 			tmp_del("%s/*.%s" % (cls.autosave_dir, cls.savegame_extension),
-			        horizons.main.fife.get_uh_setting("AutosaveMaxCount"))
+			        horizons.globals.fife.get_uh_setting("AutosaveMaxCount"))
 		if quicksaves:
 			tmp_del("%s/*.%s" % (cls.quicksave_dir, cls.savegame_extension),
-			        horizons.main.fife.get_uh_setting("QuicksaveMaxCount"))
+			        horizons.globals.fife.get_uh_setting("QuicksaveMaxCount"))
 
 	@classmethod
 	def get_recommended_number_of_players(cls, savegamefile):
@@ -248,8 +248,8 @@ class SavegameManager(object):
 		# special handling for screenshot (as blob)
 		screenshot_fd, screenshot_filename = tempfile.mkstemp()
 
-		width = horizons.main.fife.engine_settings.getScreenWidth()
-		height = horizons.main.fife.engine_settings.getScreenHeight()
+		width = horizons.globals.fife.engine_settings.getScreenWidth()
+		height = horizons.globals.fife.engine_settings.getScreenHeight()
 
 
 		# hide whatever dialog we have
@@ -257,17 +257,17 @@ class SavegameManager(object):
 		if horizons.main._modules.gui.is_visible():
 			dialog_hidden = True
 			horizons.main._modules.gui.hide()
-			horizons.main.fife.engine.pump()
+			horizons.globals.fife.engine.pump()
 
 		# scale to the correct with and adapt height with same factor
 		factor = float( cls.savegame_screenshot_width ) / width
-		horizons.main.fife.engine.getRenderBackend().captureScreen(screenshot_filename,
+		horizons.globals.fife.engine.getRenderBackend().captureScreen(screenshot_filename,
 		                                                           int(float(width) * factor),
 		                                                           int(float(height) * factor))
 
 		if dialog_hidden:
 			horizons.main._modules.gui.show()
-			horizons.main.fife.engine.pump()
+			horizons.globals.fife.engine.pump()
 
 		screenshot_data = os.fdopen(screenshot_fd, "r").read()
 		db("INSERT INTO metadata_blob values(?, ?)", "screen", sqlite3.Binary(screenshot_data))

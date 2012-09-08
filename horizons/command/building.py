@@ -21,7 +21,7 @@
 
 from collections import defaultdict
 
-import horizons.main
+import horizons.globals
 
 from horizons.entities import Entities
 from horizons.command import Command
@@ -149,7 +149,7 @@ class Build(Command):
 		from horizons.world.player import HumanPlayer
 		if building.id == BUILDINGS.WAREHOUSE \
 		and isinstance(building.owner, HumanPlayer) \
-		and horizons.main.fife.get_uh_setting("AutoUnload"):
+		and horizons.globals.fife.get_uh_setting("AutoUnload"):
 			ship = WorldObject.get_object_by_id(self.ship)
 			ship_inv = ship.get_component(StorageComponent).inventory
 			settlement_inv = building.settlement.get_component(StorageComponent).inventory

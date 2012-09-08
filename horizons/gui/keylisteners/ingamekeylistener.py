@@ -20,7 +20,7 @@
 # ###################################################
 
 from fife import fife
-import horizons.main
+import horizons.globals
 
 from horizons.util.living import LivingObject
 from horizons.gui.keylisteners import KeyConfig
@@ -35,13 +35,13 @@ class IngameKeyListener(fife.IKeyListener, LivingObject):
 		from horizons.session import Session
 		assert isinstance(session, Session)
 		self.session = session
-		horizons.main.fife.eventmanager.addKeyListenerFront(self)
+		horizons.globals.fife.eventmanager.addKeyListenerFront(self)
 		self.keysPressed = []
 		# Used to sum up the keyboard autoscrolling
 		self.key_scroll = [0, 0]
 
 	def end(self):
-		horizons.main.fife.eventmanager.removeKeyListener(self)
+		horizons.globals.fife.eventmanager.removeKeyListener(self)
 		self.session = None
 		super(IngameKeyListener, self).end()
 

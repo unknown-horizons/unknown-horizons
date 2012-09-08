@@ -27,6 +27,7 @@ import string
 import os.path
 
 import horizons.main
+import horizons.globals
 
 from horizons.gui.keylisteners import KeyConfig
 from horizons.util.living import LivingObject
@@ -41,13 +42,13 @@ class MainListener(fife.IKeyListener, fife.ConsoleExecuter, LivingObject):
 		self.gui = gui
 		fife.IKeyListener.__init__(self)
 		fife.ConsoleExecuter.__init__(self)
-		horizons.main.fife.eventmanager.addKeyListener(self)
-		horizons.main.fife.console.setConsoleExecuter(self)
+		horizons.globals.fife.eventmanager.addKeyListener(self)
+		horizons.globals.fife.console.setConsoleExecuter(self)
 
 		#ugly but works o_O
 		class CmdListener(fife.ICommandListener): pass
 		self.cmdlist = CmdListener()
-		horizons.main.fife.eventmanager.addCommandListener(self.cmdlist)
+		horizons.globals.fife.eventmanager.addCommandListener(self.cmdlist)
 		self.cmdlist.onCommand = self.onCommand
 
 		self.commandbuffer = ''
@@ -66,7 +67,7 @@ class MainListener(fife.IKeyListener, fife.ConsoleExecuter, LivingObject):
 		print "calling %s" % cmd
 
 	def end(self):
-		horizons.main.fife.eventmanager.removeKeyListener(self)
+		horizons.globals.fife.eventmanager.removeKeyListener(self)
 		super(MainListener, self).end()
 
 	def keyPressed(self, evt):
@@ -81,7 +82,7 @@ class MainListener(fife.IKeyListener, fife.ConsoleExecuter, LivingObject):
 		if action == _Actions.ESCAPE:
 			self.gui.on_escape()
 		elif action == _Actions.CONSOLE:
-			horizons.main.fife.console.toggleShowHide()
+			horizons.globals.fife.console.toggleShowHide()
 		elif action == _Actions.HELP:
 			self.gui.on_help()
 		elif action == _Actions.SCREENSHOT:
@@ -93,7 +94,7 @@ class MainListener(fife.IKeyListener, fife.ConsoleExecuter, LivingObject):
 			this should be changed later to unicode(string.replace(datetime... '''
 
 			screenshotfilename = str(screenshotfilename)
-			horizons.main.fife.engine.getRenderBackend().captureScreen(screenshotfilename)
+			horizons.globals.fife.engine.getRenderBackend().captureScreen(screenshotfilename)
 			if self.gui.session is not None:
 				# ingame message if there is a session
 				self.gui.session.ingame_gui.message_widget.add(point=None, string_id='SCREENSHOT',
@@ -138,7 +139,7 @@ class MainListener(fife.IKeyListener, fife.ConsoleExecuter, LivingObject):
 				parts = (self.buffer + string).split("\n")
 				self.buffer = parts.pop()
 				for p in parts:
-					horizons.main.fife.console.println(p)
+					horizons.globals.fife.console.println(p)
 				self.copy.write(string)
 			def __del__(self):
 				if self.buffer:

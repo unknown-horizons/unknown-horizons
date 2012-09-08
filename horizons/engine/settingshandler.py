@@ -38,8 +38,9 @@ from horizons.engine import UH_MODULE
 class SettingsHandler(object):
 	"""Handles settings-related boilerplate code as well as gui."""
 
-	def __init__(self, engine):
+	def __init__(self, engine, options):
 		self.engine = engine
+		self._options = options
 
 	@property
 	def _setting(self):
@@ -267,10 +268,9 @@ class SettingsHandler(object):
 		@param data: boolean
 		@param startup: True if on startup to apply settings. Won't show popup
 		"""
-		options = horizons.main.command_line_arguments
 
 		if data: # enable logging
-			if options.debug:
+			if self._options.debug:
 				# log file is already set up, just make sure everything is logged
 				logging.getLogger().setLevel( logging.DEBUG )
 			else: # set up all anew
@@ -280,8 +280,9 @@ class SettingsHandler(object):
 					logfile = None
 					debug_module = []
 				# use setup call reference, see run_uh.py
-				options.setup_debugging(Data)
-				options.debug = True
+
+				self._options.setup_debugging_func(Data)
+				self._options.debug = True
 
 			if not startup:
 				headline = _("Logging enabled")

@@ -25,7 +25,7 @@ import itertools
 
 from fife.extensions import pychan
 
-import horizons.main
+import horizons.globals
 
 from horizons.extscheduler import ExtScheduler
 from horizons.util import LivingObject, Callback, Point
@@ -66,7 +66,7 @@ class MessageWidget(LivingObject):
 		self.widget = load_uh_widget(self.ICON_TEMPLATE)
 		self.widget.position = (
 			 5,
-			 horizons.main.fife.engine_settings.getScreenHeight()/2 - self.widget.size[1]/2)
+			 horizons.globals.fife.engine_settings.getScreenHeight()/2 - self.widget.size[1]/2)
 
 		self.text_widget = load_uh_widget(self.MSG_TEMPLATE)
 		self.text_widget.position = (self.widget.x + self.widget.width, self.widget.y)
@@ -128,7 +128,7 @@ class MessageWidget(LivingObject):
 			self.active_messages.remove(self.active_messages[self.MAX_MESSAGES])
 
 		if sound:
-			horizons.main.fife.play_sound('speech', sound)
+			horizons.globals.fife.play_sound('speech', sound)
 		else:
 			# play default msg sound
 			AmbientSoundComponent.play_special('message')
@@ -301,14 +301,14 @@ class _IngameMessage(object):
 		self.type = msg_type
 		self.read = read
 		self.created = created
-		self.display = display if display is not None else horizons.main.db.get_msg_visibility(id)
-		icon = icon_id if icon_id else horizons.main.db.get_msg_icon_id(id)
-		self.up_image, self.down_image, self.hover_image = horizons.main.db.get_msg_icons(icon)
+		self.display = display if display is not None else horizons.globals.db.get_msg_visibility(id)
+		icon = icon_id if icon_id else horizons.globals.db.get_msg_icon_id(id)
+		self.up_image, self.down_image, self.hover_image = horizons.globals.db.get_msg_icons(icon)
 		if message is not None:
 			assert isinstance(message, unicode), "Message is not unicode: %s" % message
 			self.message = message
 		else:
-			msg = _(horizons.main.db.get_msg_text(id))
+			msg = _(horizons.globals.db.get_msg_text(id))
 			try:
 				self.message = msg.format(**message_dict if message_dict is not None else {})
 			except KeyError as err:

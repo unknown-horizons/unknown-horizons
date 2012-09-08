@@ -21,7 +21,7 @@
 import itertools
 import json
 
-import horizons.main
+import horizons.globals
 from fife import fife
 
 from horizons.util import Point, Rect, Circle
@@ -671,7 +671,7 @@ class Minimap(object):
 	def _get_rotation_setting(self):
 		if not self.use_rotation:
 			return False
-		return horizons.main.fife.get_uh_setting("MinimapRotation")
+		return horizons.globals.fife.get_uh_setting("MinimapRotation")
 
 	_rotations = { 0 : 0,
 				         1 : 3 * math.pi / 2,

@@ -44,10 +44,10 @@ class Fife(ApplicationBase):
 	"""
 	Basic initiation of engine. Followed later by init().
 	"""
-	def __init__(self):
+	def __init__(self, options):
 		self.pump = []
 
-		self._setting_handler = SettingsHandler(self)
+		self._setting_handler = SettingsHandler(self, options)
 		self._setup_settings()
 
 		self.engine = fife.Engine()
@@ -209,7 +209,7 @@ class Fife(ApplicationBase):
 
 	def play_sound(self, emitter, soundfile):
 		"""Plays a soundfile on the given emitter.
-		@param emitter: string with the emitters name in horizons.main.fife.sound.emitter that is to play the  sound
+		@param emitter: string with the emitters name in horizons.globals.fife.sound.emitter that is to play the sound
 		@param soundfile: string containing the path to the soundfile"""
 		self.sound.play_sound(emitter, soundfile)
 

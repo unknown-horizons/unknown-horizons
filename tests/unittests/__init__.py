@@ -22,7 +22,7 @@
 import unittest
 
 import horizons.main
-
+import horizons.globals
 
 db = None
 
@@ -56,7 +56,7 @@ class TestCase(unittest.TestCase):
 	"""
 	def setUp(self):
 		# Some code is still accessing the global database reference.
-		horizons.main.db = db
+		horizons.globals.db = db
 
 		self.db = db
 		self.db('BEGIN TRANSACTION')

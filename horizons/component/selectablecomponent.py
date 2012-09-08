@@ -24,7 +24,7 @@ import copy
 import itertools
 import operator
 
-import horizons.main
+import horizons.globals
 
 from horizons.component import Component
 from horizons.util import decorators
@@ -286,11 +286,11 @@ class SelectableBuildingComponent(SelectableComponent):
 		# use fixed SelectableBuildingComponent here, to make sure subclasses also read the same variable
 		if not hasattr(SelectableBuildingComponent, "_fake_tile_obj"):
 			# create object to create instances from
-			SelectableBuildingComponent._fake_tile_obj = horizons.main.fife.engine.getModel().createObject('fake_tile_obj', 'ground')
+			SelectableBuildingComponent._fake_tile_obj = horizons.globals.fife.engine.getModel().createObject('fake_tile_obj', 'ground')
 			fife.ObjectVisual.create(SelectableBuildingComponent._fake_tile_obj)
 
 			img_path = 'content/gfx/fake_water.png'
-			img = horizons.main.fife.imagemanager.load(img_path)
+			img = horizons.globals.fife.imagemanager.load(img_path)
 			for rotation in [45, 135, 225, 315]:
 				SelectableBuildingComponent._fake_tile_obj.get2dGfxVisual().addStaticImage(rotation, img.getHandle())
 
