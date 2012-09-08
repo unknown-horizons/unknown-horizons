@@ -337,7 +337,7 @@ class PRODUCTIONLINES:
 ## GAME-RELATED, BALANCING VALUES
 class GAME:
 	INGAME_TICK_INTERVAL = 30 # seconds. duration of a "month" (running costs and taxes are
-	# payed in this interval).
+	# paid in this interval).
 
 	WORLD_WORLDID = 0 # worldid of World object
 	MAX_TICKS = None # exit after on tick MAX_TICKS (disabled by setting to None)
