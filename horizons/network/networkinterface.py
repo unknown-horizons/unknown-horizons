@@ -274,7 +274,7 @@ class NetworkInterface(object):
 		"""Returns a list of active games or None on fatal error"""
 		ret_mp_games = []
 		try:
-			games = self._client.listgames(onlyThisVersion=only_this_version_allowed)
+			games = self._client.listgames(only_this_version=only_this_version_allowed)
 		except NetworkException as e:
 			fatal = self._handle_exception(e)
 			return [] if not fatal else None
