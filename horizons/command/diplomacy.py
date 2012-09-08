@@ -19,7 +19,7 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-from horizons.util import WorldObject
+from horizons.util.worldobject import WorldObject
 from horizons.command import Command
 
 class GenericDiplomacyCommand(Command):

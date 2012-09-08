@@ -20,7 +20,8 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-from horizons.util import Callback, ActionSetLoader
+from horizons.util.python.callback import Callback
+from horizons.util.loaders.actionsetloader import ActionSetLoader
 from horizons.constants import SETTLER
 from horizons.command.uioptions import SetTaxSetting
 from horizons.gui.tabs import OverviewTab

@@ -25,7 +25,7 @@ import logging
 from horizons.world.disaster.firedisaster import FireDisaster
 from horizons.scheduler import Scheduler
 from horizons.constants import GAME_SPEED
-from horizons.util import WorldObject
+from horizons.util.worldobject import WorldObject
 
 class DisasterManager(object):
 	"""The disaster manager manages disasters. It seeds them into the

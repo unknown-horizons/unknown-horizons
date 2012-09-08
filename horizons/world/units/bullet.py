@@ -24,7 +24,7 @@ import horizons.main
 from fife import fife
 from horizons.constants import LAYERS
 from horizons.scheduler import Scheduler
-from horizons.util import WorldObject
+from horizons.util.worldobject import WorldObject
 from horizons.component.componentholder import ComponentHolder
 
 class Bullet(ComponentHolder, WorldObject):

@@ -27,7 +27,8 @@ import re
 import string
 import copy
 
-from horizons.util import Circle, Rect, Point, DbReader
+from horizons.util.shapes import Circle, Point, Rect
+from horizons.util.dbreader import DbReader
 from horizons.util.uhdbaccessor import read_savegame_template
 from horizons.constants import GROUND
 
@@ -392,7 +393,8 @@ def _simplify_seed(seed):
 	"""Return the simplified seed value. The goal of this is to make it easier for users to convey the seeds orally."""
 	return str(seed).lower().strip()
 
-def generate_map(seed, map_size, water_percent, max_island_size, preferred_island_size, island_size_deviation):
+def generate_random_map(seed, map_size, water_percent, max_island_size,
+                        preferred_island_size, island_size_deviation):
 	"""
 	Generates a random map.
 
@@ -432,7 +434,7 @@ def generate_map(seed, map_size, water_percent, max_island_size, preferred_islan
 			rect = Rect.init_from_topleft_and_size(x, y, width, height)
 			blocked = False
 			for existing_island in islands:
-				if existing_island.distance_to_rect(rect) < min_island_separation:
+				if existing_island.distance(rect) < min_island_separation:
 					blocked = True
 					break
 			if not blocked:
@@ -507,8 +509,8 @@ def generate_map_from_seed(seed):
 	@return: filename of the SQLite database containing the map
 	"""
 
-	return generate_map(seed, 150, 50, 70, 70, 30)
+	return generate_random_map(seed, 150, 50, 70, 70, 30)
 
 def generate_huge_map_from_seed(seed):
 	"""Same as generate_map_from_seed, but making it as big as it is still reasonable"""
-	return generate_map(seed, 250, 20, 70, 70, 5)
+	return generate_random_map(seed, 250, 20, 70, 70, 5)

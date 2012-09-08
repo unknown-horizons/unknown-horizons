@@ -19,26 +19,23 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 from collections import defaultdict
+import logging
+
 from horizons.ai.aiplayer.behavior.diplomacysettings import DiplomacySettings
 from horizons.ai.aiplayer.behavior.movecallbacks import BehaviorMoveCallback
 from horizons.ai.aiplayer.combat.combatmanager import CombatManager
 from horizons.ai.aiplayer.strategy.mission.chaseshipsandattack import ChaseShipsAndAttack
 from horizons.ai.aiplayer.strategy.mission.pirateroutine import PirateRoutine
-from horizons.ai.aiplayer.strategy.mission.scouting import ScoutingMission
 from horizons.ai.aiplayer.strategy.mission.surpriseattack import SurpriseAttack
 from horizons.ai.aiplayer.combat.unitmanager import UnitManager
-from horizons.command.diplomacy import AddEnemyPair
 
-import logging
+from horizons.command.diplomacy import AddEnemyPair
 from horizons.component.namedcomponent import NamedComponent
 from horizons.constants import BUILDINGS
 from horizons.ext.enum import Enum
-from horizons.util.python import trim_value, map_balance
 from horizons.util.python.callback import Callback
-from horizons.util.shapes.circle import Circle
-from horizons.util.shapes.point import Point
+from horizons.util.shapes import Circle
 from horizons.world.units.movingobject import MoveNotPossible
-
 
 class BehaviorComponent(object):
 	"""

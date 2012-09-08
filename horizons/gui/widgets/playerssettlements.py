@@ -24,7 +24,7 @@ from fife.extensions.pychan import widgets
 from fife.extensions.pychan.widgets import ImageButton
 from horizons.gui.widgets.statswidget import StatsWidget
 from horizons.util.python import decorators
-from horizons.util import Callback
+from horizons.util.python.callback import Callback
 from horizons.component.namedcomponent import NamedComponent
 
 class PlayersSettlements(StatsWidget):
@@ -54,7 +54,7 @@ class PlayersSettlements(StatsWidget):
 		self._content_vbox.adaptLayout()
 
 	def _go_to_settlement(self, settlement):
-		position = settlement.warehouse.position.center()
+		position = settlement.warehouse.position.center
 		self.session.view.center(position.x, position.y)
 
 	def _add_generic_line_to_gui(self, id, line_prefix, people, tax, costs):

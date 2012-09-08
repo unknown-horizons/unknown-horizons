@@ -28,7 +28,6 @@ import locale
 
 import horizons.main
 
-from horizons.util import Callback, random_map, yamlcache
 from horizons.extscheduler import ExtScheduler
 from horizons.savegamemanager import SavegameManager
 from horizons.gui.modules import AIDataSelection, PlayerDataSelection
@@ -36,7 +35,12 @@ from horizons.constants import AI, LANGUAGENAMES
 from horizons.gui.widgets import OkButton
 from horizons.gui.widgets.minimap import Minimap
 from horizons.world import World
-from horizons.util import SavegameAccessor, WorldObject, Rect
+from horizons.util.python.callback import Callback
+from horizons.util.random_map import generate_random_map, generate_random_seed
+from horizons.util.savegameaccessor import SavegameAccessor
+from horizons.util.shapes import Rect
+from horizons.util.worldobject import WorldObject
+from horizons.util.yamlcache import YamlCache
 from horizons.i18n import find_available_languages
 from horizons.scenario import ScenarioEventHandler, InvalidScenarioFileFormat
 
@@ -219,7 +223,7 @@ class SingleplayerMenu(object):
 	def _setup_random_map_selection(self, widget):
 		seed_string_field = widget.findChild(name='seed_string_field')
 		seed_string_field.capture(self._on_random_map_parameter_changed)
-		seed_string_field.text = random_map.generate_random_seed(seed_string_field.text)
+		seed_string_field.text = generate_random_seed(seed_string_field.text)
 
 		map_size_slider = widget.findChild(name='map_size_slider')
 		def on_map_size_slider_change():
@@ -406,7 +410,7 @@ class SingleplayerMenu(object):
 		This function also sets scenario map name using locale.
 		(e.g. tutorial -> tutorial_en.yaml)"""
 		translation_status_label = self.current.findChild(name="translation_status")
-		yamldata = yamlcache.YamlCache.get_file(new_map_name, game_data=True)
+		yamldata = YamlCache.get_file(new_map_name, game_data=True)
 		translation_status = yamldata.get('translation_status')
 		if translation_status:
 			translation_status_label.text = translation_status
@@ -419,7 +423,7 @@ class SingleplayerMenu(object):
 		"""Finds the given map's filename with its locale."""
 		mapfile = mapfile or self._get_selected_map()
 		if mapfile.endswith('.yaml'):
-			yamldata = yamlcache.YamlCache.get_file(mapfile, game_data=True)
+			yamldata = YamlCache.get_file(mapfile, game_data=True)
 			split_locale = yamldata['locale']
 			mapfile = mapfile.split('_' + split_locale)[0]
 		return mapfile + '_' + cur_locale + '.' + SavegameManager.scenario_extension
@@ -438,7 +442,7 @@ class SingleplayerMenu(object):
 		"""Called to update the map preview"""
 		def on_click(event, drag):
 			seed_string_field = self.current.findChild(name='seed_string_field')
-			seed_string_field.text = random_map.generate_random_seed(seed_string_field.text)
+			seed_string_field.text = generate_random_seed(seed_string_field.text)
 			self._on_random_map_parameter_changed()
 		# the user might have changed the menu since the update and we would
 		# crash if we don't find the fields with the parameters
@@ -451,7 +455,7 @@ class SingleplayerMenu(object):
 
 	@classmethod
 	def _generate_random_map(cls, parameters):
-		return random_map.generate_map( *parameters )
+		return generate_random_map( *parameters )
 
 
 class MapPreview(object):

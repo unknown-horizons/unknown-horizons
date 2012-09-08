@@ -21,7 +21,8 @@
 
 import logging
 
-from horizons.util import Point, Callback
+from horizons.util.python.callback import Callback
+from horizons.util.shapes import Point
 from horizons.scheduler import Scheduler
 from horizons.constants import GAME_SPEED
 from horizons.util.changelistener import metaChangeListenerDecorator
@@ -112,7 +113,7 @@ class Weapon(object):
 		if not self.attack_ready:
 			return
 
-		distance = round(position.distance(destination.center()))
+		distance = round(position.distance(destination.center))
 		if not self.check_target_in_range(distance):
 			self.log.debug("%s target not in range", self)
 			return

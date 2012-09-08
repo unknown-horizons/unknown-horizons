@@ -19,7 +19,8 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-from horizons.util import WorldObject, ChangeListener
+from horizons.util.changelistener import ChangeListener
+from horizons.util.worldobject import WorldObject
 from horizons.constants import RES, TRADER
 from horizons.scheduler import Scheduler
 from horizons.component.storagecomponent import StorageComponent

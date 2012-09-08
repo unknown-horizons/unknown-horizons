@@ -26,7 +26,8 @@ from fife.extensions.pychan.widgets import Icon
 
 from horizons.constants import TIER
 from horizons.i18n import translate_widget
-from horizons.util.python import decorators, Callback
+from horizons.util.python import decorators
+from horizons.util.python.callback import Callback
 
 @decorators.cachedfunction
 def get_gui_files_map():

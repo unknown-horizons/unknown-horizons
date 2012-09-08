@@ -21,15 +21,15 @@
 
 import copy
 import logging
-
 from collections import deque
 
 from horizons.ai.aiplayer.builder import Builder
 from horizons.ai.aiplayer.roadplanner import RoadPlanner
 from horizons.ai.aiplayer.constants import BUILDING_PURPOSE, BUILD_RESULT
 from horizons.constants import BUILDINGS
-from horizons.util import Point, Rect, WorldObject
 from horizons.util.python import decorators
+from horizons.util.shapes import Point, Rect
+from horizons.util.worldobject import WorldObject
 from horizons.entities import Entities
 
 class AreaBuilder(WorldObject):

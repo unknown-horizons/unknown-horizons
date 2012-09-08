@@ -60,7 +60,7 @@ class AmbientSoundComponent(Component):
 			for soundfile in self.soundfiles:
 				#TODO remove str() -- http://fife.trac.cvsdude.com/engine/ticket/701
 				self.play_ambient(str(soundfile), loop_interval=play_every,
-				                  position=self.instance.position.center())
+				                  position=self.instance.position.center)
 
 	def load(self, db, worldid):
 		super(AmbientSoundComponent, self).load(db, worldid)

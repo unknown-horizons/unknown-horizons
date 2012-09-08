@@ -27,7 +27,7 @@ from collections import defaultdict
 from horizons.constants import BUILDINGS, TIER
 from horizons.entities import Entities
 from horizons.util.worldobject import WorldObject
-from horizons.util.shapes.rect import Rect
+from horizons.util.shapes import Rect
 from horizons.messaging import UpgradePermissionsChanged
 from horizons.util.changelistener import ChangeListener
 from horizons.component.componentholder import ComponentHolder

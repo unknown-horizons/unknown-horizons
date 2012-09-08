@@ -45,7 +45,12 @@ from horizons.gui import Gui
 from horizons.extscheduler import ExtScheduler
 from horizons.constants import AI, COLORS, GAME, PATHS, NETWORK, SINGLEPLAYER, GAME_SPEED
 from horizons.network.networkinterface import NetworkInterface
-from horizons.util import ActionSetLoader, DifficultySettings, TileSetLoader, Color, parse_port, Callback
+from horizons.util.color import Color
+from horizons.util.difficultysettings import DifficultySettings
+from horizons.util.loaders.actionsetloader import ActionSetLoader
+from horizons.util.loaders.tilesetloader import TileSetLoader
+from horizons.util.python import parse_port
+from horizons.util.python.callback import Callback
 from horizons.util.uhdbaccessor import UhDbAccessor
 
 # private module pointers of this module
@@ -84,7 +89,7 @@ def start(_command_line_arguments):
 			NETWORK.SERVER_ADDRESS = mpieces[0]
 			# only change port if port is specified
 			if mpieces[2]:
-				NETWORK.SERVER_PORT = parse_port(mpieces[2], allow_zero=True)
+				NETWORK.SERVER_PORT = parse_port(mpieces[2])
 		except ValueError:
 			print "Error: Invalid syntax in --mp-master commandline option. Port must be a number between 1 and 65535."
 			return False
@@ -110,7 +115,7 @@ def start(_command_line_arguments):
 		try:
 			mpieces = command_line_arguments.mp_bind.partition(':')
 			NETWORK.CLIENT_ADDRESS = mpieces[0]
-			fife.set_uh_setting("NetworkPort", parse_port(mpieces[2], allow_zero=True))
+			fife.set_uh_setting("NetworkPort", parse_port(mpieces[2]))
 		except ValueError:
 			print "Error: Invalid syntax in --mp-bind commandline option. Port must be a number between 1 and 65535."
 			return False
@@ -431,8 +436,10 @@ def _start_map(map_name, ai_players=0, human_ai=False, is_scenario=False, campai
 	return True
 
 def _start_random_map(ai_players, human_ai, seed=None, force_player_id=None):
-	from horizons.util import random_map
-	start_singleplayer(random_map.generate_map_from_seed(seed), ai_players=ai_players, human_ai=human_ai, force_player_id=force_player_id)
+	from horizons.util.random_map import generate_map_from_seed
+	start_singleplayer(generate_map_from_seed(seed),
+	                   ai_players=ai_players, human_ai=human_ai,
+	                   force_player_id=force_player_id)
 	return True
 
 def _start_campaign(campaign_name, force_player_id=None):

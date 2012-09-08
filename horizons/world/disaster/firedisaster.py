@@ -26,7 +26,7 @@ from horizons.world.status import FireStatusIcon
 from horizons.constants import GAME_SPEED, BUILDINGS, RES, TIER
 from horizons.scheduler import Scheduler
 from horizons.util.python.callback import Callback
-from horizons.util import WorldObject
+from horizons.util.worldobject import WorldObject
 
 class FireDisaster(Disaster):
 	"""Simulates a fire.

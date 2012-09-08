@@ -26,7 +26,7 @@ from fife.extensions import pychan
 
 from horizons.gui.style import STYLES
 from horizons.messaging import GuiAction
-from horizons.util import Callback
+from horizons.util.python.callback import Callback
 
 import horizons.main
 

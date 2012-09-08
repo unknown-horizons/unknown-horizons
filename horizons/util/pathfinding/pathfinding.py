@@ -21,7 +21,8 @@
 
 import logging
 
-from horizons.util import Point, decorators
+from horizons.util.python import decorators
+from horizons.util.shapes import Point
 
 """
 This file contains only the pathfinding algorithm. It is implemented in a callable class
@@ -212,7 +213,7 @@ class FindPath(object):
 					# and estimate from neighbor_node to destination
 					dist_to_here = cur_node_data[1] + path_nodes.get(cur_node_coords, 0)
 
-					total_dist_estimation = destination.distance_to_tuple(neighbor_node) + dist_to_here
+					total_dist_estimation = destination.distance(neighbor_node) + dist_to_here
 					to_check[neighbor_node] = (cur_node_coords,
 					                           dist_to_here,
 					                           total_dist_estimation)

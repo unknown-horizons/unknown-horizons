@@ -22,7 +22,7 @@
 from fife.extensions import pychan
 
 from horizons.gui.util import load_uh_widget, get_res_icon_path
-from horizons.util import Callback
+from horizons.util.python.callback import Callback
 from fife.extensions.pychan.widgets import Icon
 from horizons.command.unit import SetStance
 from horizons.extscheduler import ExtScheduler

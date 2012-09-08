@@ -18,12 +18,14 @@
 # Free Software Foundation, Inc.,
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
-from fife.extensions.pychan.widgets.label import Label
+
+from fife.extensions.pychan.widgets import Label
 
 from horizons.gui.widgets.productionoverview import ProductionOverview
 from horizons.gui.tabs import OverviewTab
 from horizons.gui.tabs.residentialtabs import setup_tax_slider
-from horizons.util import Callback
+
+from horizons.util.python.callback import Callback
 from horizons.messaging import UpgradePermissionsChanged
 from horizons.command.uioptions import SetSettlementUpgradePermissions
 from horizons.constants import BUILDINGS, TIER

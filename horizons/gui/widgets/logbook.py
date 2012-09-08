@@ -25,7 +25,7 @@ import json
 from itertools import groupby
 from fife.extensions.pychan.widgets import HBox, Icon, Label
 
-from horizons.util import Callback
+from horizons.util.python.callback import Callback
 from horizons.util.changelistener import metaChangeListenerDecorator
 from horizons.component.ambientsoundcomponent import AmbientSoundComponent
 from horizons.command.game import UnPauseCommand

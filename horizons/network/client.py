@@ -80,7 +80,7 @@ class Client(object):
 			'lobbygame_starts':      [],
 			'game_starts':    [],
 			'game_data':      [],
-		  'savegame_data':  [],
+			'savegame_data':  [],
 		}
 		self.register_callback('lobbygame_changename', self.onchangename, True)
 		self.register_callback('lobbygame_changecolor', self.onchangecolor, True)
@@ -110,7 +110,9 @@ class Client(object):
 			raise network.AlreadyConnected("We are already connected to a server")
 		self.log.debug("[CONNECT] to server %s" % (self.serveraddress))
 		try:
-			self.serverpeer = self.host.connect(enet.Address(self.serveraddress.host, self.serveraddress.port), 1, SERVER_PROTOCOL)
+			self.serverpeer = self.host.connect(enet.Address(self.serveraddress.host,
+			                                                 self.serveraddress.port),
+			                                    1, SERVER_PROTOCOL)
 		except (IOError, MemoryError):
 			raise network.NetworkException("Unable to connect to server. Maybe invalid or irresolvable server address.")
 		self.mode = ClientMode.Server
@@ -359,20 +361,22 @@ class Client(object):
 			compressed_data = bz2.compress(open(path).read())
 			self.send(packets.client.savegame_data(compressed_data, packet[1].psid))
 		elif isinstance(packet[1], packets.server.savegame_data):
-			open(SavegameManager.get_multiplayersave_map(packet[1].mapname), "w").write(bz2.decompress(packet[1].data))
+			with open(SavegameManager.get_multiplayersave_map(packet[1].mapname), "w") as f:
+				f.write(bz2.decompress(packet[1].data))
 			self.call_callbacks("savegame_data", self.game)
 
 		return False
 
 	#-----------------------------------------------------------------------------
 
-	def listgames(self, mapname=None, maxplayers=None, onlyThisVersion=False):
+	def listgames(self, mapname=None, maxplayers=None, only_this_version=False):
 		if self.mode is None:
 			raise network.NotConnected()
 		if self.mode is not ClientMode.Server:
 			raise network.NotInServerMode("We are not in server mode")
 		self.log.debug("[LIST]")
-		self.send(packets.client.cmd_listgames(self.version if onlyThisVersion else -1, mapname, maxplayers))
+		version = self.version if only_this_version else -1
+		self.send(packets.client.cmd_listgames(version, mapname, maxplayers))
 		packet = self.recv_packet([packets.cmd_error, packets.server.data_gameslist])
 		if packet is None:
 			raise network.FatalError("No reply from server")
@@ -390,7 +394,8 @@ class Client(object):
 		if self.mode is not ClientMode.Server:
 			raise network.NotInServerMode("We are not in server mode")
 		self.log.debug("[CREATE] mapname=%s maxplayers=%d" % (mapname, maxplayers))
-		self.send(packets.client.cmd_creategame(self.version, mapname, maxplayers, self.name, name, load, password, self.color, self.clientid))
+		self.send(packets.client.cmd_creategame(self.version, mapname, maxplayers, self.name,
+		                                        name, load, password, self.color, self.clientid))
 		packet = self.recv_packet([packets.cmd_error, packets.server.data_gamestate])
 		if packet is None:
 			raise network.FatalError("No reply from server")

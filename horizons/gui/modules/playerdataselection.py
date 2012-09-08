@@ -19,12 +19,11 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-
 import horizons.main
 from fife.extensions.pychan.widgets import HBox, Label
 
-from horizons.util import Callback, Color
-
+from horizons.util.color import Color
+from horizons.util.python.callback import Callback
 
 class PlayerDataSelection(object):
 	"""Subwidget for selecting player name and color.

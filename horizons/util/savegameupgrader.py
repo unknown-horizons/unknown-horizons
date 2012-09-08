@@ -25,9 +25,9 @@ import json
 import shutil
 import tempfile
 
-from horizons.util.python import decorators
 from horizons.constants import VERSION, UNITS
-from horizons.util import DbReader
+from horizons.util.dbreader import DbReader
+from horizons.util.python import decorators
 
 class SavegameUpgrader(object):
 	"""The class that prepares saved games to be loaded by the current version."""
