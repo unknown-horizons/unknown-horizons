@@ -30,15 +30,13 @@ class CommandLineGameManager(multiprocessing.Process):
 		self.events = events
 
 	def run(self):
-		print 'start the game'
+		print 'get the right game options'
 		import run_uh
 		run_uh.main(self.options)
 
 		import horizons.main
 		horizons.main.init(self.options, self.events)
 		horizons.main.start_game(self.options)
-		import horizons.globals
-		horizons.globals.fife.run()
 
 		# We get here once the game has been somehow closed
 		print 'end the game'
