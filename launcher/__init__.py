@@ -20,7 +20,6 @@
 # ###################################################
 
 import functools
-import gettext
 import multiprocessing
 import signal
 import sys
@@ -76,9 +75,6 @@ class Launcher(object):
 
 	def run(self):
 		self._setup_signal_handling()
-
-		# install dummy translation
-		gettext.install('', unicode=True)
 
 		if self.options.opening_menu():
 			self.events.put_nowait(OpenMainMenuEvent())
