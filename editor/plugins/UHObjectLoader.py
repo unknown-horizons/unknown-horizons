@@ -23,7 +23,9 @@ import horizons.globals
 import horizons.main
 
 from horizons.util.yamlcache import YamlCache
-from horizons.util import SQLiteAnimationLoader, ActionSetLoader, TileSetLoader
+from horizons.util.loaders.sqliteanimationloader import SQLiteAnimationLoader
+from horizons.util.loaders.actionsetloader import ActionSetLoader
+from horizons.util.loaders.tilesetloader import TileSetLoader
 from horizons.constants import PATHS, VIEW
 
 import os
