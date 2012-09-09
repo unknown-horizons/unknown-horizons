@@ -20,31 +20,10 @@
 # ###################################################
 
 from horizons.command.unit import Act
-from horizons.scenario import ACTIONS
 
 from tests.gui import gui_test, TestFinished
 from tests.gui.helper import get_player_ship
 from tests.gui.scenarios.helper import assert_win, assert_defeat, assert_goal_reached
-
-
-# Patch scenario actions for easier detection
-
-def do_win(session):
-	session._scenariotest_won = True
-
-def do_lose(session):
-	session._scenariotest_lose = True
-
-def goal_reached(session, goal):
-	if hasattr(session, '_scenariotest_goals'):
-		session._scenariotest_goals.append(goal)
-	else:
-		session._scenariotest_goals = [goal]
-
-ACTIONS.get('win').func_code = do_win.func_code
-ACTIONS.get('lose').func_code = do_lose.func_code
-ACTIONS.get('goal_reached').func_code = goal_reached.func_code
-
 
 # Example tests
 
