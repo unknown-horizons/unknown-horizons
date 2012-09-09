@@ -127,10 +127,6 @@ def start(_command_line_arguments):
 	if command_line_arguments.human_ai:
 		AI.HUMAN_AI = True
 
-	# set singleplayer natural resource seed
-	if command_line_arguments.nature_seed:
-		SINGLEPLAYER.SEED = command_line_arguments.nature_seed
-
 	# set MAX_TICKS
 	if command_line_arguments.max_ticks:
 		GAME.MAX_TICKS = command_line_arguments.max_ticks
