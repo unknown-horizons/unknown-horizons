@@ -20,7 +20,7 @@
 # ###################################################
 
 import re
-import horizons.main
+import horizons.globals
 from fife import fife
 
 from horizons.entities import Entities
@@ -99,8 +99,8 @@ class IngameGui(LivingObject):
 
 		icon = minimap.findChild(name="minimap")
 		self.minimap = Minimap(icon,
-		                       targetrenderer=horizons.main.fife.targetrenderer,
-		                       imagemanager=horizons.main.fife.imagemanager,
+		                       targetrenderer=horizons.globals.fife.targetrenderer,
+		                       imagemanager=horizons.globals.fife.imagemanager,
 		                       session=self.session,
 		                       view=self.session.view)
 
@@ -253,7 +253,7 @@ class IngameGui(LivingObject):
 		move cityinfo centered to very upper screen edge. Looks bad, works usually.
 		In this case, the resbar is redrawn to put the cityinfo "behind" it visually.
 		"""
-		width = horizons.main.fife.engine_settings.getScreenWidth()
+		width = horizons.globals.fife.engine_settings.getScreenWidth()
 		resbar = self.resource_overview.get_size()
 		is_foreign = (self.settlement.owner != self.session.world.player)
 		blocked = self.cityinfo.size[0] + int(1.6*self.minimap.get_size()[1])

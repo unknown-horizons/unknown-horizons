@@ -21,7 +21,7 @@
 # ###################################################
 
 from fife import fife
-import horizons.main
+import horizons.globals
 
 from horizons.gui.mousetools.cursortool import CursorTool
 from horizons.util.python.weaklist import WeakList
@@ -54,7 +54,7 @@ class NavigationTool(CursorTool):
 		class CmdListener(fife.ICommandListener):
 			pass
 		self.cmdlist = CmdListener()
-		horizons.main.fife.eventmanager.addCommandListener(self.cmdlist)
+		horizons.globals.fife.eventmanager.addCommandListener(self.cmdlist)
 		self.cmdlist.onCommand = self.onCommand
 
 		if not self.__class__.send_hover_instances_update:
@@ -101,7 +101,7 @@ class NavigationTool(CursorTool):
 	def remove(self):
 		if self.__class__.send_hover_instances_update:
 			self.session.view.remove_change_listener(self._schedule_hover_instance_update)
-		horizons.main.fife.eventmanager.removeCommandListener(self.cmdlist)
+		horizons.globals.fife.eventmanager.removeCommandListener(self.cmdlist)
 		super(NavigationTool, self).remove()
 
 	def mousePressed(self, evt):
@@ -167,7 +167,7 @@ class NavigationTool(CursorTool):
 
 	# move up mouse wheel = zoom in
 	def mouseWheelMovedUp(self, evt):
-		if horizons.main.fife.get_uh_setting("CursorCenteredZoom"):
+		if horizons.globals.fife.get_uh_setting("CursorCenteredZoom"):
 			self.session.view.zoom_in(True)
 		else:
 			self.session.view.zoom_in(False)
@@ -175,7 +175,7 @@ class NavigationTool(CursorTool):
 
 	# move down mouse wheel = zoom out
 	def mouseWheelMovedDown(self, evt):
-		if horizons.main.fife.get_uh_setting("CursorCenteredZoom"):
+		if horizons.globals.fife.get_uh_setting("CursorCenteredZoom"):
 			self.session.view.zoom_out(True)
 		else:
 			self.session.view.zoom_out(False)

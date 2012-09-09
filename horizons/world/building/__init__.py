@@ -24,7 +24,7 @@ __all__ = ['building', 'housing', 'nature', 'path', 'production', 'storages', 's
 
 import logging
 
-import horizons.main
+import horizons.globals
 from fife import fife
 
 from horizons.util.loaders.actionsetloader import ActionSetLoader
@@ -84,10 +84,10 @@ class BuildingClass(IngameType):
 		"""
 		cls.log.debug("Loading building %s", cls.id)
 		try:
-			cls._real_object = horizons.main.fife.engine.getModel().createObject(str(cls.id), 'building')
+			cls._real_object = horizons.globals.fife.engine.getModel().createObject(str(cls.id), 'building')
 		except RuntimeError:
 			cls.log.debug("Already loaded building %s", cls.id)
-			cls._real_object = horizons.main.fife.engine.getModel().getObject(str(cls.id), 'building')
+			cls._real_object = horizons.globals.fife.engine.getModel().getObject(str(cls.id), 'building')
 			return
 		all_action_sets = ActionSetLoader.get_sets()
 
@@ -119,6 +119,6 @@ class BuildingClass(IngameType):
 			else:
 				assert False, "Bad rotation for action_set {id}: {rot} for action: {action}".format(**params)
 			path = '{id}+{action}+{rot}:shift:left-{left},bottom+{botm}'.format(**params)
-			anim = horizons.main.fife.animationloader.loadResource(path)
+			anim = horizons.globals.fife.animationloader.loadResource(path)
 			action.get2dGfxVisual().addAnimation(int(rotation), anim)
 			action.setDuration(anim.getDuration())

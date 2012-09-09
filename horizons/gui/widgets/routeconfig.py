@@ -36,7 +36,7 @@ from horizons.component.ambientsoundcomponent import AmbientSoundComponent
 from horizons.gui.util import create_resource_selection_dialog
 from horizons.gui.widgets import OkButton
 
-import horizons.main
+import horizons.globals
 
 class RouteConfig(object):
 	"""
@@ -411,8 +411,8 @@ class RouteConfig(object):
 		self.minimap = Minimap(icon, session=self.session,
 		                       world=self.session.world,
 		                       view=self.session.view,
-		                       targetrenderer=horizons.main.fife.targetrenderer,
-		                       imagemanager=horizons.main.fife.imagemanager,
+		                       targetrenderer=horizons.globals.fife.targetrenderer,
+		                       imagemanager=horizons.globals.fife.imagemanager,
 		                       cam_border=False,
 		                       use_rotation=False,
 		                       on_click=on_click)

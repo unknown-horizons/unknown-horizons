@@ -27,7 +27,7 @@ import weakref
 import itertools
 import functools
 
-import horizons.main
+import horizons.globals
 
 from horizons.constants import TIER, RES
 from horizons.component.storagecomponent import StorageComponent
@@ -147,7 +147,7 @@ class ResourceOverviewBar(object):
 	def _update_default_configuration(self):
 		# user defined variante of DEFAULT_RESOURCES (will be preferred)
 		self._custom_default_resources = None
-		setting = horizons.main.fife.get_uh_setting("ResourceOverviewBarConfiguration")
+		setting = horizons.globals.fife.get_uh_setting("ResourceOverviewBarConfiguration")
 		if setting: # parse it if there is something
 			config = json.loads(setting)
 			if config: # actually use it if it was parseable
@@ -485,8 +485,8 @@ class ResourceOverviewBar(object):
 			config = [] # meaning invalid
 		else:
 			config = json.dumps(self._get_current_resources())
-		horizons.main.fife.set_uh_setting("ResourceOverviewBarConfiguration", config)
-		horizons.main.fife.save_settings()
+		horizons.globals.fife.set_uh_setting("ResourceOverviewBarConfiguration", config)
+		horizons.globals.fife.save_settings()
 		self._update_default_configuration()
 		AmbientSoundComponent.play_special("success")
 		if reset: # in the other case, it's already set

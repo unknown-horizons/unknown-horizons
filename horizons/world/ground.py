@@ -23,7 +23,7 @@
 import logging
 
 from fife import fife
-import horizons.main
+import horizons.globals
 
 from horizons.constants import LAYERS, GROUND
 from horizons.util.loaders.tilesetloader import TileSetLoader
@@ -133,10 +133,10 @@ class GroundClass(type):
 		"""
 		cls.log.debug('Loading ground %s', cls.id)
 		try:
-			cls._object = horizons.main.fife.engine.getModel().createObject(str(cls.id), 'ground')
+			cls._object = horizons.globals.fife.engine.getModel().createObject(str(cls.id), 'ground')
 		except RuntimeError:
 			cls.log.debug('Already loaded ground %s', cls.id)
-			cls._object = horizons.main.fife.engine.getModel().getObject(str(cls.id), 'ground')
+			cls._object = horizons.globals.fife.engine.getModel().getObject(str(cls.id), 'ground')
 			return
 
 		fife.ObjectVisual.create(cls._object)
@@ -147,7 +147,7 @@ class GroundClass(type):
 				action = cls._object.createAction(action_id+"_"+str(tile_set_id))
 				fife.ActionVisual.create(action)
 				for rotation in tile_sets[tile_set_id][action_id].iterkeys():
-					anim = horizons.main.fife.animationloader.loadResource(
+					anim = horizons.globals.fife.animationloader.loadResource(
 						str(tile_set_id)+"+"+str(action_id)+"+"+
 						str(rotation) + ':shift:center+0,bottom+8')
 					action.get2dGfxVisual().addAnimation(int(rotation), anim)

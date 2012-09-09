@@ -21,7 +21,7 @@
 
 from fife import fife
 
-import horizons.main
+import horizons.globals
 
 from horizons.gui.mousetools.navigationtool import NavigationTool
 from horizons.command.building import Tear
@@ -44,14 +44,14 @@ class TearingTool(NavigationTool):
 		self.tear_tool_active = True
 		self.session.gui.on_escape = self.on_escape
 		self.session.ingame_gui.hide_menu()
-		horizons.main.fife.set_cursor_image("tearing")
+		horizons.globals.fife.set_cursor_image("tearing")
 		self._hovering_over = WeakList()
 		WorldObjectDeleted.subscribe(self._on_object_deleted)
 
 	def remove(self):
 		self._mark()
 		self.tear_tool_active = False
-		horizons.main.fife.set_cursor_image("default")
+		horizons.globals.fife.set_cursor_image("default")
 		WorldObjectDeleted.subscribe(self._on_object_deleted)
 		super(TearingTool, self).remove()
 
@@ -95,7 +95,7 @@ class TearingTool(NavigationTool):
 			self.selected = WeakList()
 			self._hovering_over = WeakList()
 
-			if not evt.isShiftPressed() and not horizons.main.fife.get_uh_setting('UninterruptedBuilding'):
+			if not evt.isShiftPressed() and not horizons.globals.fife.get_uh_setting('UninterruptedBuilding'):
 				self.tear_tool_active = False
 				self.on_escape()
 			evt.consume()

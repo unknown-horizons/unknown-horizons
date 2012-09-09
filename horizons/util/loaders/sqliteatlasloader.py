@@ -21,6 +21,7 @@
 
 from fife import fife
 
+import horizons.globals
 import horizons.main
 
 from horizons.util.loaders.actionsetloader import ActionSetLoader
@@ -44,7 +45,7 @@ class SQLiteAtlasLoader(object):
 		for (atlas,) in self.atlases:
 			# print 'creating', atlas
 			# cast explicit to str because the imagemanager is not able to handle unicode strings
-			img = horizons.main.fife.imagemanager.create(str(atlas))
+			img = horizons.globals.fife.imagemanager.create(str(atlas))
 			self.atlaslib.append(img)
 
 
@@ -78,10 +79,10 @@ class SQLiteAtlasLoader(object):
 			# such as width and height because we can get those from json file
 			xpos, ypos, width, height = entry[2:]
 
-			if horizons.main.fife.imagemanager.exists(file):
-				img = horizons.main.fife.imagemanager.get(file)
+			if horizons.globals.fife.imagemanager.exists(file):
+				img = horizons.globals.fife.imagemanager.get(file)
 			else:
-				img = horizons.main.fife.imagemanager.create(file)
+				img = horizons.globals.fife.imagemanager.create(file)
 				region = fife.Rect(xpos, ypos, width, height)
 				img.useSharedImage(self.atlaslib[entry[1]], region)
 
@@ -131,10 +132,10 @@ class SQLiteAtlasLoader(object):
 		# such as width and height because we can get those from json file
 		xpos, ypos, width, height = entry[2:]
 
-		if horizons.main.fife.imagemanager.exists(file):
-			img = horizons.main.fife.imagemanager.get(file)
+		if horizons.globals.fife.imagemanager.exists(file):
+			img = horizons.globals.fife.imagemanager.get(file)
 		else:
-			img = horizons.main.fife.imagemanager.create(file)
+			img = horizons.globals.fife.imagemanager.create(file)
 			region = fife.Rect(xpos, ypos, width, height)
 			img.useSharedImage(self.atlaslib[entry[1]], region)
 

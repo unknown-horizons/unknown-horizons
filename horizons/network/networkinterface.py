@@ -19,7 +19,7 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-import horizons.main
+import horizons.globals
 
 from horizons.util.color import Color
 from horizons.util.difficultysettings import DifficultySettings
@@ -88,7 +88,7 @@ class NetworkInterface(object):
 		color = self.__get_player_color()
 		serveraddress = [NETWORK.SERVER_ADDRESS, NETWORK.SERVER_PORT]
 		clientaddress = None
-		client_port = parse_port(horizons.main.fife.get_uh_setting("NetworkPort"))
+		client_port = parse_port(horizons.globals.fife.get_uh_setting("NetworkPort"))
 		if NETWORK.CLIENT_ADDRESS is not None or client_port > 0:
 			clientaddress = [NETWORK.CLIENT_ADDRESS, client_port]
 		try:
@@ -98,13 +98,13 @@ class NetworkInterface(object):
 			raise RuntimeError(e)
 
 	def __get_player_name(self):
-		return horizons.main.fife.get_uh_setting("Nickname")
+		return horizons.globals.fife.get_uh_setting("Nickname")
 
 	def __get_player_color(self):
-		return horizons.main.fife.get_uh_setting("ColorID")
+		return horizons.globals.fife.get_uh_setting("ColorID")
 
 	def __get_client_id(self):
-		return horizons.main.fife.get_uh_setting("ClientID")
+		return horizons.globals.fife.get_uh_setting("ClientID")
 
 	def get_client_id(self):
 		return self._client.clientid
@@ -186,8 +186,8 @@ class NetworkInterface(object):
 	def change_name(self, new_nick, save=True):
 		""" see network/client.py -> changename() for _important_ return values"""
 		if save:
-			horizons.main.fife.set_uh_setting("Nickname", new_nick)
-			horizons.main.fife.save_settings()
+			horizons.globals.fife.set_uh_setting("Nickname", new_nick)
+			horizons.globals.fife.save_settings()
 		try:
 			return self._client.changename(new_nick)
 		except NetworkException as e:
@@ -199,8 +199,8 @@ class NetworkInterface(object):
 		if new_color > len(set(Color)):
 			new_color %= len(set(Color))
 		if save:
-			horizons.main.fife.set_uh_setting("ColorID", new_color)
-			horizons.main.fife.save_settings()
+			horizons.globals.fife.set_uh_setting("ColorID", new_color)
+			horizons.globals.fife.save_settings()
 		try:
 			return self._client.changecolor(new_color)
 		except NetworkException as e:

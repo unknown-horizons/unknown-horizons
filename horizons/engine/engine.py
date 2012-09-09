@@ -209,7 +209,7 @@ class Fife(ApplicationBase):
 
 	def play_sound(self, emitter, soundfile):
 		"""Plays a soundfile on the given emitter.
-		@param emitter: string with the emitters name in horizons.main.fife.sound.emitter that is to play the  sound
+		@param emitter: string with the emitters name in horizons.globals.fife.sound.emitter that is to play the  sound
 		@param soundfile: string containing the path to the soundfile"""
 		self.sound.play_sound(emitter, soundfile)
 

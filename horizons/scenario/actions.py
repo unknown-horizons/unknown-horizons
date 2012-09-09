@@ -21,7 +21,7 @@
 
 import math
 
-import horizons.main
+import horizons.globals
 
 from horizons.scheduler import Scheduler
 from horizons.util.python.callback import Callback
@@ -91,7 +91,7 @@ def do_win(session):
 	"""The player wins the current scenario. If part of a campaign, offers to start the next scenario."""
 	PauseCommand().execute(session)
 	show_db_message(session, 'YOU_HAVE_WON')
-	horizons.main.fife.play_sound('effects', "content/audio/sounds/events/scenario/win.ogg")
+	horizons.globals.fife.play_sound('effects', "content/audio/sounds/events/scenario/win.ogg")
 
 	continue_playing = False
 	if not session.campaign or not AUTO_CONTINUE_CAMPAIGN:
@@ -121,7 +121,7 @@ def goal_reached(session, goal_number):
 def do_lose(session):
 	"""The player fails the current scenario."""
 	show_db_message(session, 'YOU_LOST')
-	horizons.main.fife.play_sound('effects', 'content/audio/sounds/events/scenario/lose.ogg')
+	horizons.globals.fife.play_sound('effects', 'content/audio/sounds/events/scenario/lose.ogg')
 	# drop events after this event
 	Scheduler().add_new_object(session.scenario_eventhandler.drop_events, session.scenario_eventhandler)
 
@@ -156,7 +156,7 @@ def highlight_position(session, x, y, play_sound=False, color=(0,0,0)):
 	color is a optional parameter that defines the color of the highlight. """
 	session.ingame_gui.minimap.highlight((x,y), color=color)
 	if play_sound:
-		horizons.main.fife.play_sound('effects', 'content/audio/sounds/ships_bell.ogg')
+		horizons.globals.fife.play_sound('effects', 'content/audio/sounds/ships_bell.ogg')
 
 @register()
 def change_increment(session, increment):

@@ -22,7 +22,7 @@
 import logging
 
 from fife import fife
-import horizons.main
+import horizons.globals
 
 from horizons.ai.aiplayer.behavior import BehaviorManager
 from horizons.ai.aiplayer.behavior.movecallbacks import BehaviorMoveCallback
@@ -123,11 +123,11 @@ class CombatManager(object):
 		# use fixed SelectableBuildingComponent here, to make sure subclasses also read the same variable
 		if not hasattr(CombatManager, "_fake_range_tile_obj"):
 			# create object to create instances from
-			CombatManager._fake_range_tile_obj = horizons.main.fife.engine.getModel().createObject('_fake_range_tile_obj', 'ground')
+			CombatManager._fake_range_tile_obj = horizons.globals.fife.engine.getModel().createObject('_fake_range_tile_obj', 'ground')
 			fife.ObjectVisual.create(CombatManager._fake_range_tile_obj)
 
 			img_path = 'content/gfx/fake_water.png'
-			img = horizons.main.fife.imagemanager.load(img_path)
+			img = horizons.globals.fife.imagemanager.load(img_path)
 			for rotation in [45, 135, 225, 315]:
 				CombatManager._fake_range_tile_obj.get2dGfxVisual().addStaticImage(rotation, img.getHandle())
 		if not hasattr(self, '_selected_fake_tiles'):

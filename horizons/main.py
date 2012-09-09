@@ -40,6 +40,8 @@ import shutil
 
 from fife import fife as fife_module
 
+import horizons.globals
+
 from horizons.savegamemanager import SavegameManager
 from horizons.gui import Gui
 from horizons.extscheduler import ExtScheduler
@@ -69,7 +71,7 @@ def start(_command_line_arguments):
 	"""Starts the horizons. Will drop you to the main menu.
 	@param _command_line_arguments: options object from optparse.OptionParser. see run_uh.py.
 	"""
-	global fife, db, debug, preloading, command_line_arguments
+	global db, debug, preloading, command_line_arguments
 	command_line_arguments = _command_line_arguments
 	# NOTE: globals are designwise the same thing as singletons. they don't look pretty.
 	#       here, we only have globals that are either trivial, or only one instance may ever exist.
@@ -102,20 +104,20 @@ def start(_command_line_arguments):
 		sys.exit(0)
 
 	# init fife before mp_bind is parsed, since it's needed there
-	fife = Fife()
+	horizons.globals.fife = Fife()
 
 	if debug: # also True if a specific module is logged (but not 'fife')
 		if not (command_line_arguments.debug_module
 		        and 'fife' not in command_line_arguments.debug_module):
-			fife._log.lm.setLogToPrompt(True)
+			horizons.globals.fife._log.lm.setLogToPrompt(True)
 		# After the next FIFE release, we should use this instead which is possible as of r3960:
-		# fife._log.logToPrompt = True
+		# horizons.globals.fife._log.logToPrompt = True
 
 	if command_line_arguments.mp_bind:
 		try:
 			mpieces = command_line_arguments.mp_bind.partition(':')
 			NETWORK.CLIENT_ADDRESS = mpieces[0]
-			fife.set_uh_setting("NetworkPort", parse_port(mpieces[2]))
+			horizons.globals.fife.set_uh_setting("NetworkPort", parse_port(mpieces[2]))
 		except ValueError:
 			print "Error: Invalid syntax in --mp-bind commandline option. Port must be a number between 1 and 65535."
 			return False
@@ -135,13 +137,13 @@ def start(_command_line_arguments):
 
 	# init game parts
 
-	client_id = fife.get_uh_setting("ClientID")
+	client_id = horizons.globals.fife.get_uh_setting("ClientID")
 	if not client_id:
 		# We need a new client id
 		client_id = "".join("-" if c in (8, 13, 18, 23) else
 		                    random.choice("0123456789abcdef") for c in xrange(0, 36))
-		fife.set_uh_setting("ClientID", client_id)
-		fife.save_settings()
+		horizons.globals.fife.set_uh_setting("ClientID", client_id)
+		horizons.globals.fife.save_settings()
 
 	# Install gui logger, needs to be done before instantiating Gui, otherwise we miss
 	# the events of the main menu buttons
@@ -160,11 +162,11 @@ def start(_command_line_arguments):
 	# GUI tests always run with sound disabled and SDL (so they can run under xvfb).
 	# Needs to be done before engine is initialized.
 	if command_line_arguments.gui_test:
-		fife.engine.getSettings().setRenderBackend('SDL')
-		fife.set_fife_setting('PlaySounds', False)
+		horizons.globals.fife.engine.getSettings().setRenderBackend('SDL')
+		horizons.globals.fife.set_fife_setting('PlaySounds', False)
 
-	ExtScheduler.create_instance(fife.pump)
-	fife.init()
+	ExtScheduler.create_instance(horizons.globals.fife.pump)
+	horizons.globals.fife.init()
 	_modules.gui = Gui()
 	SavegameManager.init()
 
@@ -252,18 +254,17 @@ def start(_command_line_arguments):
 
 	if command_line_arguments.gui_test:
 		from tests.gui import TestRunner
-		TestRunner(fife, command_line_arguments.gui_test)
+		TestRunner(horizons.globals.fife, command_line_arguments.gui_test)
 
 	if command_line_arguments.interactive_shell:
 		from horizons.util import interactive_shell
-		interactive_shell.start(fife)
+		interactive_shell.start(horizons.globals.fife)
 
-	fife.run()
+	horizons.globals.fife.run()
 
 def quit():
 	"""Quits the game"""
-	global fife
-	fife.quit()
+	horizons.globals.fife.quit()
 
 def start_singleplayer(map_file, playername="Player", playercolor=None, is_scenario=False,
 		campaign=None, ai_players=0, human_ai=False, trader_enabled=True, pirate_enabled=True,
@@ -274,16 +275,16 @@ def start_singleplayer(map_file, playername="Player", playercolor=None, is_scena
 	@param human_ai: whether to start the human player as an AI
 	@param force_player_id: the worldid of the selected human player or default if None (debug option)
 	"""
-	global fife, preloading, db
+	global preloading, db
 	preload_game_join(preloading)
 
 	if playercolor is None: # this can't be a default parameter because of circular imports
 		playercolor = Color[1]
 
 	# remove cursor while loading
-	fife.cursor.set(fife_module.CURSOR_NONE)
-	fife.engine.pump()
-	fife.set_cursor_image('default')
+	horizons.globals.fife.cursor.set(fife_module.CURSOR_NONE)
+	horizons.globals.fife.engine.pump()
+	horizons.globals.fife.set_cursor_image('default')
 
 	# hide whatever is displayed before the game starts
 	_modules.gui.hide()
@@ -357,14 +358,14 @@ def prepare_multiplayer(game, trader_enabled=True, pirate_enabled=True, natural_
 	"""Starts a multiplayer game server
 	TODO: actual game data parameter passing
 	"""
-	global fife, preloading, db
+	global preloading, db
 
 	preload_game_join(preloading)
 
 	# remove cursor while loading
-	fife.cursor.set(fife_module.CURSOR_NONE)
-	fife.engine.pump()
-	fife.set_cursor_image('default')
+	horizons.globals.fife.cursor.set(fife_module.CURSOR_NONE)
+	horizons.globals.fife.engine.pump()
+	horizons.globals.fife.set_cursor_image('default')
 
 	# hide whatever is displayed before the game starts
 	_modules.gui.hide()
@@ -492,7 +493,7 @@ def _load_map(savegame, ai_players, human_ai, force_player_id=None):
 
 def _find_matching_map(name_or_path, savegames):
 	"""*name_or_path* is either a map/savegame name or path to a map/savegame file."""
-	game_language = fife.get_locale()
+	game_language = horizons.globals.fife.get_locale()
 	# now we have "_en.yaml" which is set to language_extension variable
 	language_extension = '_' + game_language + '.' + SavegameManager.scenario_extension
 	map_file = None

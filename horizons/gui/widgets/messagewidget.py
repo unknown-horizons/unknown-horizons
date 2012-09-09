@@ -24,6 +24,7 @@ import textwrap
 import itertools
 
 from fife.extensions import pychan
+import horizons.globals
 import horizons.main
 
 from horizons.extscheduler import ExtScheduler
@@ -67,7 +68,7 @@ class MessageWidget(LivingObject):
 		self.widget = load_uh_widget(self.ICON_TEMPLATE)
 		self.widget.position = (
 			 5,
-			 horizons.main.fife.engine_settings.getScreenHeight()/2 - self.widget.size[1]/2)
+			 horizons.globals.fife.engine_settings.getScreenHeight()/2 - self.widget.size[1]/2)
 
 		self.text_widget = load_uh_widget(self.MSG_TEMPLATE)
 		self.text_widget.position = (self.widget.x + self.widget.width, self.widget.y)
@@ -129,7 +130,7 @@ class MessageWidget(LivingObject):
 			self.active_messages.remove(self.active_messages[self.MAX_MESSAGES])
 
 		if sound:
-			horizons.main.fife.play_sound('speech', sound)
+			horizons.globals.fife.play_sound('speech', sound)
 		else:
 			# play default msg sound
 			AmbientSoundComponent.play_special('message')

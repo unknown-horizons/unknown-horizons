@@ -22,7 +22,7 @@ import math
 import logging
 
 from fife import fife
-import horizons.main
+import horizons.globals
 
 from horizons.util.shapes import Point
 
@@ -44,11 +44,11 @@ class CursorTool(fife.IMouseListener):
 
 	def enable(self):
 		"""Call this to get events."""
-		horizons.main.fife.eventmanager.addMouseListener(self)
+		horizons.globals.fife.eventmanager.addMouseListener(self)
 
 	def disable(self):
 		"""Call this to not get events."""
-		horizons.main.fife.eventmanager.removeMouseListener(self)
+		horizons.globals.fife.eventmanager.removeMouseListener(self)
 
 	def remove(self):
 		self.disable()
