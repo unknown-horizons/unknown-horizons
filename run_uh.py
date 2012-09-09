@@ -55,11 +55,11 @@ def show_error_message(title, message):
 	print(message)
 
 	try:
-		import tkinter
-		import tkinter.messagebox
-		window = tkinter.Tk()
+		import Tkinter
+		import tkMessageBox
+		window = Tkinter.Tk()
 		window.wm_withdraw()
-		tkinter.messagebox.showerror(title, message)
+		tkMessageBox.showerror(title, message)
 	except:
 		# tkinter may be missing
 		pass
@@ -255,10 +255,10 @@ def main():
 		import yaml
 	except ImportError:
 		headline = _('Error: Unable to find required library "PyYAML".')
-		msg = _("We are sorry to inform you that a library that is required by Unknown Horizons, is missing and needs to be installed.") + "\n" + \
-		    _('Installers for Windows users are available at "http://pyyaml.org/wiki/PyYAML", Linux users should find it in their packagement management system under the name "pyyaml" or "python-yaml".')
-		standalone_error_popup(headline, msg)
-		exit(1)
+		msg = _("PyYAML (a required library) is missing and needs to be installed.") + "\n" + \
+		    _('The Windows installer is available at http://pyyaml.org/wiki/PyYAML.') + " " + \
+		    _('Linux users should find it using their package manager under the name "pyyaml" or "python-yaml".')
+		show_error_message(headline, msg)
 
 	#start UH
 	import horizons.main
@@ -510,42 +510,6 @@ def log_sys_info():
 	"""Prints debug info about the current system to log"""
 	log().debug("Python version: %s", sys.version_info)
 	log().debug("Plattform: %s", platform.platform())
-
-
-def standalone_error_popup(headline, msg):
-	"""Display an error via gui.
-	Use only for errors that make 'import horizons.main' fail."""
-	from fife.extensions import pychan
-	from fife import fife
-
-	e = fife.Engine()
-	e.getSettings().setDefaultFontPath("content/fonts/LinLibertine.ttf")
-	e.init()
-
-	pychan.init(e)
-	pychan.loadFonts("content/fonts/libertine.fontdef")
-
-	# hack for accessing this in do_quit (global does't work as the variables here are local)
-	class Quit(object):
-		do = False
-
-	def do_quit():
-		Quit.do=True
-
-	dlg = pychan.loadXML("content/gui/xml/startup_error_popup.xml")
-	# can't translate as translations are only set up later
-	dlg.findChild(name="headline").text = headline
-	dlg.findChild(name="msg").text = msg
-	dlg.mapEvents({'quit_button': do_quit})
-	dlg.show()
-
-
-	e.initializePumping()
-	while not Quit.do:
-		e.pump()
-	e.finalizePumping()
-
-
 
 if __name__ == '__main__':
 	main()
