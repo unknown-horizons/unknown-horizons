@@ -19,10 +19,9 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-from horizons.command.unit import Act
 
 from tests.gui import gui_test, TestFinished
-from tests.gui.helper import get_player_ship
+from tests.gui.helper import get_player_ship, move_ship
 from tests.gui.scenarios.helper import assert_win, assert_defeat, assert_goal_reached
 
 # Example tests
@@ -51,13 +50,8 @@ def test_mission1(gui):
 	yield
 
 	# Move ship to coast
-	target = (7, 3)
-	player = gui.session.world.player
 	ship = get_player_ship(gui.session)
-	Act(ship, *target)(player)
-
-	while (ship.position.x, ship.position.y) != target:
-		yield
+	for _ in move_ship(ship, (7, 3)): yield
 
 	# Build warehouse
 	gui.select([ship])

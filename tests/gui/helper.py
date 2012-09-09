@@ -30,6 +30,7 @@ import mock
 
 import horizons.main
 from fife import fife
+from horizons.command.unit import Act
 from horizons.constants import GAME_SPEED
 from horizons.gui.mousetools import NavigationTool
 from horizons.scheduler import Scheduler
@@ -37,10 +38,19 @@ from horizons.util import Point
 
 
 def get_player_ship(session):
+	"""Returns the first ship of a player."""
 	for ship in session.world.ships:
 		if ship.owner == session.world.player:
 			return ship
 	raise Exception('Player ship not found')
+
+
+def move_ship(ship, (x, y)):
+	"""Move ship to coordinates and wait until it arrives."""
+	Act(ship, x, y)(ship.owner)
+
+	while (ship.position.x, ship.position.y) != (x, y):
+		yield
 
 
 class CursorToolsPatch(object):
