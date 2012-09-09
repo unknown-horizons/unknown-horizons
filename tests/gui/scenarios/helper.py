@@ -19,6 +19,13 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
+from horizons.scenario import CONDITIONS
+
+
+var_eq = CONDITIONS.get('var_eq')
+settlement_res_stored_greater = CONDITIONS.get('settlement_res_stored_greater')
+
+
 def assert_win(gui):
 	"""Returns once the scenario was won."""
 	while True:
@@ -43,3 +50,11 @@ def assert_goal_reached(gui, goal):
 			gui.session._scenariotest_goals[-1] == goal):
 			break
 		yield
+
+
+def wait_and_close_logbook(gui):
+	"""Wait for the logbook to show and close it immediately."""
+	while not gui.find('captains_log'):
+		yield
+
+	gui.trigger('captains_log', 'okButton')
