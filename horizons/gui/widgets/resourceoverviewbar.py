@@ -132,8 +132,14 @@ class ResourceOverviewBar(object):
 		self.current_instance = weakref.ref(self)
 		ExtScheduler().rem_all_classinst_calls(self)
 		self.resource_configurations.clear()
+		self.gold_gui.hide()
+		for slot in self.gui:
+			slot.hide()
+		if self.stats_gui:
+			self.stats_gui.hide()
 		self.gold_gui = None
 		self.gui = None
+		self.stats_gui = None
 		self._custom_default_resources = None
 		NewPlayerSettlementHovered.unsubscribe(self._on_different_settlement)
 		TabWidgetChanged.unsubscribe(self._on_tab_widget_changed)
