@@ -246,21 +246,22 @@ class Gui(SingleplayerMenu, MultiplayerMenu):
 
 	def show_credits(self, number=0):
 		"""Shows the credits dialog. """
-		for box in self.widgets['credits'+str(number)].findChildren(name='box'):
-			box.margins = (30, 0) # to get some indentation
-			if number in [2, 0]: # #TODO fix these hardcoded page references
-				box.padding = 1
-				box.parent.padding = 3 # further decrease if more entries
-		label = [self.widgets['credits'+str(number)].findChild(name=section+"_lbl")
-		              for section in ('team','patchers','translators','packagers','special_thanks')]
-		for i in xrange(5):
-			if label[i]: # add callbacks to each pickbelt that is displayed
-				label[i].capture(Callback(self.show_credits, i),
-				                 event_name="mouseClicked")
-
 		if self.current_dialog is not None:
 			self.current_dialog.hide()
-		self.show_dialog(self.widgets['credits'+str(number)], {OkButton.DEFAULT_NAME : True})
+
+		credits_page = self.widgets['credits{number}'.format(number=number)]
+		for box in credits_page.findChildren(name='box'):
+			box.margins = (30, 0) # to get some indentation
+			if number in [0, 2]: # #TODO fix these hardcoded page references
+				box.padding = 1
+				box.parent.padding = 3 # further decrease if more entries
+		labels = [credits_page.findChild(name=section+"_lbl")
+		          for section in ('team', 'patchers', 'translators',
+		                          'packagers', 'special_thanks')]
+		for i in xrange(5): # add callbacks to each pickbelt
+			labels[i].capture(Callback(self.show_credits, i), event_name="mouseClicked")
+
+		self.show_dialog(credits_page, {OkButton.DEFAULT_NAME : True})
 
 	def show_select_savegame(self, mode, sanity_checker=None, sanity_criteria=None):
 		"""Shows menu to select a savegame.

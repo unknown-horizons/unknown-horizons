@@ -5,6 +5,14 @@
 <!-- this is the first container ( uh-team ) and visible by default.          !!!
 -->
 
+<Container size="170,580">
+	<ImageButton position="35,150"  up_image="content/gui/images/background/pickbelt_l.png" />
+</Container>
+
+<Container position="1, 4"  size="170,580">
+	<Label position="50,160"  name="team_lbl"  text="UH-Team"  font="small_tooltip" />
+</Container>
+
 <VBox position="185,45"  name="credits">
 	<Label text="UH-Team"  name="headline" />
 	<Icon image="content/gui/images/background/hr.png" />
@@ -84,7 +92,7 @@
 	<Label name="patchers_lbl"  position="55,210"  text="Patchers"  font="small_tooltip" />
 	<Label name="translators_lbl"  position="60,260"  text="Translators"  font="small_tooltip" />
 	<Label name="packagers_lbl"  position="65,310"  text="Packagers" font="small_tooltip" />
-	<Label name="special_thanks_lbl"  position="70,360"  text="Special Thanks" font="small_tooltip" />
+	<Label name="special_thanks_lbl"  position="70,360"  text="Thanks" font="small_tooltip" />
 </Container>
 
 </Container>
