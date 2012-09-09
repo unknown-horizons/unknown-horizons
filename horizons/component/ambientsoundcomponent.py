@@ -122,6 +122,6 @@ class AmbientSoundComponent(Component):
 		if horizons.globals.fife.get_fife_setting("PlaySounds"):
 			a = AmbientSoundComponent()
 			#TODO remove str() -- http://fife.trac.cvsdude.com/engine/ticket/701
-			soundfile = horizons.main.db.get_sound_file(str(sound))
+			soundfile = horizons.globals.db.get_sound_file(str(sound))
 			a.play_ambient(soundfile, position=position)
 			horizons.globals.fife.sound.emitter['ambient'].remove(a.__emitter)

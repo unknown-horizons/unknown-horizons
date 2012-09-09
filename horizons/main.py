@@ -71,7 +71,7 @@ def start(_command_line_arguments):
 	"""Starts the horizons. Will drop you to the main menu.
 	@param _command_line_arguments: options object from optparse.OptionParser. see run_uh.py.
 	"""
-	global db, debug, preloading, command_line_arguments
+	global debug, preloading, command_line_arguments
 	command_line_arguments = _command_line_arguments
 	# NOTE: globals are designwise the same thing as singletons. they don't look pretty.
 	#       here, we only have globals that are either trivial, or only one instance may ever exist.
@@ -133,7 +133,7 @@ def start(_command_line_arguments):
 	if command_line_arguments.max_ticks:
 		GAME.MAX_TICKS = command_line_arguments.max_ticks
 
-	db = _create_main_db()
+	horizons.globals.db = _create_main_db()
 
 	# init game parts
 
@@ -171,7 +171,7 @@ def start(_command_line_arguments):
 	SavegameManager.init()
 
 	from horizons.entities import Entities
-	Entities.load(db, load_now=False) # create all references
+	Entities.load(horizons.globals.db, load_now=False) # create all references
 
 	# for preloading game data while in main screen
 	preload_lock = threading.Lock()
@@ -275,7 +275,7 @@ def start_singleplayer(map_file, playername="Player", playercolor=None, is_scena
 	@param human_ai: whether to start the human player as an AI
 	@param force_player_id: the worldid of the selected human player or default if None (debug option)
 	"""
-	global preloading, db
+	global preloading
 	preload_game_join(preloading)
 
 	if playercolor is None: # this can't be a default parameter because of circular imports
@@ -294,7 +294,7 @@ def start_singleplayer(map_file, playername="Player", playercolor=None, is_scena
 		_modules.session.end()
 	# start new session
 	from spsession import SPSession
-	_modules.session = SPSession(_modules.gui, db)
+	_modules.session = SPSession(_modules.gui, horizons.globals.db)
 
 	# for now just make it a bit easier for the AI
 	difficulty_level = {False: DifficultySettings.DEFAULT_LEVEL, True: DifficultySettings.EASY_LEVEL}
@@ -358,7 +358,7 @@ def prepare_multiplayer(game, trader_enabled=True, pirate_enabled=True, natural_
 	"""Starts a multiplayer game server
 	TODO: actual game data parameter passing
 	"""
-	global preloading, db
+	global preloading
 
 	preload_game_join(preloading)
 
@@ -378,7 +378,7 @@ def prepare_multiplayer(game, trader_enabled=True, pirate_enabled=True, natural_
 	# get random seed for game
 	uuid = game.get_uuid()
 	random = sum([ int(uuid[i : i + 2], 16) for i in range(0, len(uuid), 2) ])
-	_modules.session = MPSession(_modules.gui, db, NetworkInterface(), rng_seed=random)
+	_modules.session = MPSession(_modules.gui, horizons.globals.db, NetworkInterface(), rng_seed=random)
 	# NOTE: this data passing is only temporary, maybe use a player class/struct
 	if game.load:
 		map_file = SavegameManager.get_multiplayersave_map( game.get_map_name() )

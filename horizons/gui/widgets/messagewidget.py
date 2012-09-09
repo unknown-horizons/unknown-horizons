@@ -24,8 +24,8 @@ import textwrap
 import itertools
 
 from fife.extensions import pychan
+
 import horizons.globals
-import horizons.main
 
 from horizons.extscheduler import ExtScheduler
 from horizons.util.living import LivingObject
@@ -303,14 +303,14 @@ class _IngameMessage(object):
 		self.type = msg_type
 		self.read = read
 		self.created = created
-		self.display = display if display is not None else horizons.main.db.get_msg_visibility(id)
-		icon = icon_id if icon_id else horizons.main.db.get_msg_icon_id(id)
-		self.up_image, self.down_image, self.hover_image = horizons.main.db.get_msg_icons(icon)
+		self.display = display if display is not None else horizons.globals.db.get_msg_visibility(id)
+		icon = icon_id if icon_id else horizons.globals.db.get_msg_icon_id(id)
+		self.up_image, self.down_image, self.hover_image = horizons.globals.db.get_msg_icons(icon)
 		if message is not None:
 			assert isinstance(message, unicode), "Message is not unicode: %s" % message
 			self.message = message
 		else:
-			msg = _(horizons.main.db.get_msg_text(id))
+			msg = _(horizons.globals.db.get_msg_text(id))
 			try:
 				self.message = msg.format(**message_dict if message_dict is not None else {})
 			except KeyError as err:

@@ -22,7 +22,6 @@
 from fife import fife
 
 import horizons.globals
-import horizons.main
 
 from horizons.util.loaders.actionsetloader import ActionSetLoader
 from horizons.util.loaders.tilesetloader import TileSetLoader
@@ -38,9 +37,9 @@ class SQLiteAtlasLoader(object):
 
 		#f = open('content/atlas.sql', "r")
 		#sql = "BEGIN TRANSACTION;" + f.read() + "COMMIT;"
-		#horizons.main.db.execute_script(sql)
+		#horizons.globals.db.execute_script(sql)
 
-		self.atlases = horizons.main.db("SELECT atlas_path FROM atlas ORDER BY atlas_id ASC")
+		self.atlases = horizons.globals.db("SELECT atlas_path FROM atlas ORDER BY atlas_id ASC")
 
 		for (atlas,) in self.atlases:
 			# print 'creating', atlas

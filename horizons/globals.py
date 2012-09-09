@@ -21,3 +21,6 @@
 
 # The global Fife instance. This is used both inside a game session and in the menus.
 fife = None
+
+# The global read-only data database (includes most content/*.sql)
+db = None

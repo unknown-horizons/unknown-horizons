@@ -26,6 +26,7 @@ from functools import wraps
 
 import mock
 
+import horizons.globals
 import horizons.main
 import horizons.world	# needs to be imported before session
 from horizons.ai.aiplayer import AIPlayer
@@ -93,7 +94,7 @@ class SPTestSession(SPSession):
 	@mock.patch('horizons.session.View', Dummy)
 	def __init__(self, rng_seed=None):
 		ExtScheduler.create_instance(Dummy)
-		super(SPTestSession, self).__init__(Dummy, horizons.main.db, rng_seed)
+		super(SPTestSession, self).__init__(Dummy, horizons.globals.db, rng_seed)
 		self.reset_autosave = mock.Mock()
 
 	def save(self, *args, **kwargs):
@@ -238,7 +239,7 @@ def game_test(*args, **kwargs):
 	def deco(func):
 		@wraps(func)
 		def wrapped(*args):
-			horizons.main.db = db
+			horizons.globals.db = db
 			if not manual_session and not use_fixture:
 				s, p = new_session(mapgen = mapgen, human_player = human_player, ai_players = ai_players)
 			elif use_fixture:
