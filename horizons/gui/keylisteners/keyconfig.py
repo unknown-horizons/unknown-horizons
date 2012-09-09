@@ -47,6 +47,7 @@ class KeyConfig(object):
 
 		self.keyval_action_mappings = dict() # map key ID (int) to action (int)
 		self.action_keyname_mappings = dict() # map action name (str) to key name (str)
+		self.all_keys = self.get_keys_by_name()
 
 		custom_key_actions = horizons.main.fife.get_hotkey_settings()
 		for action in custom_key_actions:
@@ -78,7 +79,7 @@ class KeyConfig(object):
 			return action # all checks passed
 
 	def get_key_by_name(self, keyname):
-		return self.get_keys_by_name().get(keyname, self.get_fife_key_name(keyname))
+		return self.all_keys.get(keyname)
 
 	def get_keys_by_name(self, only_free_keys=False, force_include=None):
 		def is_available(key, value):
@@ -98,15 +99,11 @@ class KeyConfig(object):
 	def get_actionname_to_keyname_map(self):
 		return self.action_keyname_mappings
 
-	def get_fife_key_name(self, key):
-		"""For keys that will yield keystr values, allow their input in xml settings."""
-		fife_keyname_map = {
-			'+': 'PLUS',
-			'-': 'MINUS',
-			'.': 'PERIOD',
-			',': 'COMMA',
-		}
-		return fife_keyname_map.get(key, key)
+	def is_valid_and_get_default_key(self, key, action):
+		return (key in self.all_keys, self.get_default_key_for_action(action))
+
+	def get_default_key_for_action(self, action):
+		return horizons.main.fife.get_default_key_for_action(action)
 
 	def save_new_key(self, action, newkey):
 		oldkey = horizons.main.fife.get_key_for_action(action)

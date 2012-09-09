@@ -778,26 +778,33 @@ class Gui(SingleplayerMenu, MultiplayerMenu):
 		author_label.helptext = u"www.unknown-[br]horizons.org[br]www.fifengine.net"
 
 	def show_hotkey_change_popup(self, action, lbl, keyname):
-		def apply_new_key():
-			newkey = free_keys[listbox.selected]
+		def apply_new_key(newkey=None):
+			if not newkey:
+				newkey = free_keys[listbox.selected]
+			else:
+				listbox.selected = listbox.items.index(newkey)
 			self.keyconf.save_new_key(action, newkey=newkey)
-			update_hotkey_info(newkey)
+			update_hotkey_info(action, newkey)
 			lbl.text = self.HELPSTRING_LAYOUT.format(text=lbl.explanation, key=newkey)
 			lbl.capture(Callback(self.show_hotkey_change_popup, action, lbl, newkey))
 
-		def update_hotkey_info(keyname):
-			popup.message.text = lbl.explanation + u'\n' + _('Current key: [{key}]').format(key=keyname)
+		def update_hotkey_info(action, keyname):
+			default = self.keyconf.get_default_key_for_action(action)
+			popup.message.text = (lbl.explanation +
+			                      u'\n' + _('Current key: [{key}]').format(key=keyname) +
+			                      u'\t' + _('Default key: [{key}]').format(key=default))
+			reset_to_default = Callback(apply_new_key, default)
+			popup.message.capture(reset_to_default)
 
 		headline = _('Change hotkey for {action}').format(action=action)
 		message = ''
 		if keyname in ('SHIFT', ):
 			message = _('This key can not be reassigned at the moment.')
-			popup = self.build_popup(headline, message, size=0)
-			self.show_dialog(popup, {OkButton.DEFAULT_NAME: True}, modal=True)
+			self.show_popup(headline, message, {OkButton.DEFAULT_NAME: True})
 			return
 
 		popup = self.build_popup(headline, message, size=2, show_cancel_button=True)
-		update_hotkey_info(keyname)
+		update_hotkey_info(action, keyname)
 		keybox = pychan.widgets.ScrollArea()
 		listbox = pychan.widgets.ListBox()
 		keybox.max_size = listbox.max_size = \
@@ -805,15 +812,23 @@ class Gui(SingleplayerMenu, MultiplayerMenu):
 		keybox.size = listbox.size = (200, 200)
 		keybox.position = listbox.position = (90, 110)
 		prefer_short = lambda k: (len(k) > 1, len(k) > 3, k)
+		is_valid, default_key = self.keyconf.is_valid_and_get_default_key(keyname, action)
+		if not is_valid:
+			headline = _('Invalid key')
+			message = _('The default key for this action has been selected.')
+			self.show_popup(headline, message, {OkButton.DEFAULT_NAME: True})
+		valid_key = keyname if is_valid else default_key
 		free_key_dict = self.keyconf.get_keys_by_name(only_free_keys=True,
-		                                              force_include=[keyname])
+		                                              force_include=[valid_key])
 		free_keys = sorted(free_key_dict.keys(), key=prefer_short)
 		listbox.items = free_keys
-		listbox.selected = listbox.items.index(self.keyconf.get_fife_key_name(keyname))
+		listbox.selected = listbox.items.index(valid_key)
 		#TODO backwards replace key names in keyconfig.get_fife_key_names in the list
 		# (currently this stores PLUS and PERIOD instead of + and . in the settings)
 		keybox.addChild(listbox)
 		popup.addChild(keybox)
+		if not is_valid:
+			apply_new_key()
 		listbox.capture(apply_new_key)
 		button_cbs = {OkButton.DEFAULT_NAME: True, CancelButton.DEFAULT_NAME: False}
 		self.show_dialog(popup, button_cbs, modal=True)

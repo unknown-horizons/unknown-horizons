@@ -59,13 +59,13 @@
 		<Setting name="COORD_TOOLTIP" type="str"> H </Setting>
 		<Setting name="DESTROY_TOOL" type="str"> X </Setting>
 		<Setting name="ROAD_TOOL" type="str"> R </Setting>
-		<Setting name="SPEED_UP" type="str"> + </Setting>
-		<Setting name="SPEED_DOWN" type="str"> - </Setting>
+		<Setting name="SPEED_UP" type="str"> PLUS </Setting>
+		<Setting name="SPEED_DOWN" type="str"> MINUS </Setting>
 		<Setting name="PAUSE" type="str"> P </Setting>
 		<Setting name="LOGBOOK" type="str"> L </Setting>
 		<Setting name="BUILD_TOOL" type="str"> B </Setting>
-		<Setting name="ROTATE_RIGHT" type="str"> . </Setting>
-		<Setting name="ROTATE_LEFT" type="str"> , </Setting>
+		<Setting name="ROTATE_RIGHT" type="str"> PERIOD </Setting>
+		<Setting name="ROTATE_LEFT" type="str"> COMMA </Setting>
 		<Setting name="CHAT" type="str"> C </Setting>
 		<Setting name="TRANSLUCENCY" type="str"> T </Setting>
 		<Setting name="TILE_OWNER_HIGHLIGHT" type="str"> A </Setting>
@@ -90,6 +90,6 @@
 		<Setting name="SAVE_MAP" type="str"> F12 </Setting>
 	</Module>
 	<Module name="meta">
-		<Setting name="SettingsVersion" type="int"> 24 </Setting>
+		<Setting name="SettingsVersion" type="int"> 25 </Setting>
 	</Module>
 </Settings>
