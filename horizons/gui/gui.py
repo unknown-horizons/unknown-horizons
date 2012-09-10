@@ -566,14 +566,14 @@ class Gui(SingleplayerMenu, MultiplayerMenu):
 		width = horizons.globals.fife.engine_settings.getScreenWidth()
 		image = horizons.globals.fife.imagemanager.loadBlank(width, height)
 		image = fife.GuiImage(image)
-		self.current.additional_widget = pychan.Icon(image=image)
-		self.current.additional_widget.position = (0, 0)
-		self.current.additional_widget.show()
+		self.additional_widget = pychan.Icon(image=image)
+		self.additional_widget.position = (0, 0)
+		self.additional_widget.show()
 
 	def hide_modal_background(self):
 		try:
-			self.current.additional_widget.hide()
-			del self.current.additional_widget
+			self.additional_widget.hide()
+			del self.additional_widget
 		except AttributeError:
 			pass # only used for some widgets, e.g. pause
 
