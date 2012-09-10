@@ -118,14 +118,12 @@ class ProductionOverviewTab(OverviewTab):
 		super(ProductionOverviewTab, self).refresh()
 
 	def _set_resource_amounts(self, container, production):
-		for res in production.get_consumed_resources():
+		for res, amount in production.get_consumed_resources().iteritems():
 			# consumed resources are negative!
-			amount = -production.get_consumed_resources()[res]
-			label = pychan.widgets.Label(text=unicode(amount), margins=(0, 15))
+			label = pychan.widgets.Label(text=unicode(-amount), margins=(0, 15))
 			container.findChild(name='input_box').addChild(label)
 
-		for res in production.get_produced_resources():
-			amount = production.get_produced_resources()[res]
+		for res, amount in production.get_produced_resources().iteritems():
 			label = pychan.widgets.Label(text=unicode(amount).rjust(2), margins=(0, 15))
 			container.findChild(name='output_box').addChild(label)
 
