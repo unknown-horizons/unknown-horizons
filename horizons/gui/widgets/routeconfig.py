@@ -72,6 +72,7 @@ class RouteConfig(object):
 		self.session.ingame_gui.on_switch_main_widget(self)
 
 	def hide(self):
+		self.session.ingame_gui.on_switch_main_widget(None)
 		self.minimap.disable()
 		self._gui.hide()
 
