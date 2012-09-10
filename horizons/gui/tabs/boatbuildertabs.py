@@ -28,8 +28,9 @@ from horizons.command.production import AddProduction, RemoveFromQueue, CancelCu
 from horizons.gui.tabs import OverviewTab
 from horizons.gui.util import create_resource_icon
 from horizons.gui.widgets import OkButton, CancelButton
+from horizons.scheduler import Scheduler
 from horizons.util.python.callback import Callback
-from horizons.constants import PRODUCTIONLINES, RES, UNITS
+from horizons.constants import PRODUCTIONLINES, RES, UNITS, GAME_SPEED
 from horizons.world.production.producer import Producer
 
 class _BoatbuilderOverviewTab(OverviewTab):
@@ -48,6 +49,14 @@ class BoatbuilderTab(_BoatbuilderOverviewTab):
 	def __init__(self, instance):
 		super(BoatbuilderTab, self).__init__(widget='boatbuilder.xml', instance=instance)
 		self.helptext = _("Boat builder overview")
+
+	def show(self):
+		super(BoatbuilderTab, self).show()
+		Scheduler().add_new_object(Callback(self.refresh), self, run_in = GAME_SPEED.TICKS_PER_SECOND, loops = -1)
+
+	def hide(self):
+		super(BoatbuilderTab, self).hide()
+		Scheduler().rem_all_classinst_calls(self)
 
 	def refresh(self):
 		"""This function is called by the TabWidget to redraw the widget."""
