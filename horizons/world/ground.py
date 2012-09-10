@@ -72,6 +72,7 @@ class SurfaceTile(object):
 		elif rotation == 315:
 			layer_coords[1] = y+3
 		facing_loc.setLayerCoordinates(fife.ModelCoordinate(*layer_coords))
+		self._action = action
 
 		self._instance.act(str('%s_%s' % (action, self._tile_set_id)), facing_loc, True)
 

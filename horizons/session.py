@@ -33,7 +33,7 @@ import horizons.main
 
 from horizons.ai.aiplayer import AIPlayer
 from horizons.gui.ingamegui import IngameGui
-from horizons.gui.mousetools import SelectionTool, PipetteTool, TearingTool, BuildingTool, AttackingTool
+from horizons.gui.mousetools import SelectionTool, PipetteTool, TearingTool, BuildingTool, AttackingTool, GroundPipetteTool, TileLayingTool
 from horizons.command.building import Tear
 from horizons.util.dbreader import DbReader
 from horizons.command.unit import RemoveUnit
@@ -262,12 +262,15 @@ class Session(LivingObject):
 		self.cursor.remove()
 		self.current_cursor = which
 		klass = {
-			'default'   : SelectionTool,
-		  'selection' : SelectionTool,
-		  'tearing'   : TearingTool,
-		  'pipette'   : PipetteTool,
-		  'attacking' : AttackingTool,
-		  'building'  : BuildingTool
+			'default'        : SelectionTool,
+			'selection'      : SelectionTool,
+			'tearing'        : TearingTool,
+			'pipette'        : PipetteTool,
+			'ground_pipette' : GroundPipetteTool,
+			'attacking'      : AttackingTool,
+			'building'       : BuildingTool,
+			'tile_layer'     : TileLayingTool
+			
 		}[which]
 		self.cursor = klass(self, *args, **kwargs)
 

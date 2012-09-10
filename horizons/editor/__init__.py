@@ -18,15 +18,3 @@
 # Free Software Foundation, Inc.,
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
-
-from buildingtool import BuildingTool
-from cursortool import CursorTool
-from navigationtool import NavigationTool
-from selectiontool import SelectionTool
-from tearingtool import TearingTool
-from attackingtool import AttackingTool
-from pipettetool import PipetteTool
-
-# Editor tools
-from groundpipettetool import GroundPipetteTool
-from tilelayingtool import TileLayingTool

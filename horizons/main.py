@@ -203,6 +203,8 @@ def start(_command_line_arguments):
 			command_line_arguments.human_ai, command_line_arguments.force_player_id)
 	elif command_line_arguments.load_quicksave is not None:
 		startup_worked = _load_last_quicksave()
+	elif command_line_arguments.edit_map is not None:
+		startup_worked = _edit_map(command_line_arguments.edit_map)
 	elif command_line_arguments.stringpreview:
 		tiny = [ i for i in SavegameManager.get_maps()[0] if 'tiny' in i ]
 		if not tiny:
@@ -540,6 +542,24 @@ def _load_last_quicksave(session=None, force_player_id=None):
 			return False
 	save = max(save_files)
 	load_game(savegame=save, force_player_id=force_player_id)
+	return True
+
+def _edit_map(map_name):
+	"""
+	Start editing the specified map.
+	
+	@param map_name: name of map or path to map
+	@return: bool, whether loading succeeded
+	"""
+
+	map_file = _find_matching_map(map_name, SavegameManager.get_maps())
+	if not map_file:
+		return False
+	start_singleplayer(map_file, playername="Editor", trader_enabled=False,
+		pirate_enabled=False, natural_resource_multiplier=0, disasters_enabled=False)
+
+	from horizons.editor.worldeditor import WorldEditor
+	_modules.session.world_editor = WorldEditor(_modules.session.world)
 	return True
 
 def _create_main_db():

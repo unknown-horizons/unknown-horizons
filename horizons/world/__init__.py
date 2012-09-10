@@ -643,7 +643,12 @@ class World(BuildingOwner, WorldObject):
 
 	def save_map(self, path, prefix):
 		"""Save the current map as map file + island files"""
-		worldutils.save_map(self, path, prefix)
+		if hasattr(self.session, 'world_editor'):
+			# save a map created in the editor
+			self.session.world_editor.save_map(path, prefix)
+		else:
+			# save a loaded map (preserves non-connected islands)
+			worldutils.save_map(self, path, prefix)
 
 	def get_checkup_hash(self):
 		"""Returns a collection of important game state values. Used to check if two mp games have diverged.
