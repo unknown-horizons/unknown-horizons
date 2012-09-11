@@ -26,7 +26,7 @@ import urllib2
 from fife.extensions import pychan
 
 from horizons.constants import NETWORK, VERSION
-from horizons.gui.widgets import OkButton
+from horizons.gui.widgets.imagebutton import OkButton
 
 class UpdateInfo(object):
 	INVALID, READY, UNINITIALISED = range(3)

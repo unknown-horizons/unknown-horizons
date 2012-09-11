@@ -31,7 +31,7 @@ from horizons.component.ambientsoundcomponent import AmbientSoundComponent
 from horizons.command.game import UnPauseCommand
 from horizons.command.misc import Chat
 from horizons.gui.widgets.pickbeltwidget import PickBeltWidget
-from horizons.gui.widgets import OkButton
+from horizons.gui.widgets.imagebutton import OkButton
 from horizons.scenario.actions import show_message
 
 @metaChangeListenerDecorator("pause_request")

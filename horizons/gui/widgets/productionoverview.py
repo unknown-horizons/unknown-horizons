@@ -30,7 +30,7 @@ from horizons.util.python import decorators
 from horizons.gui.util import create_resource_icon
 from horizons.util.python.callback import Callback
 from horizons.component.namedcomponent import NamedComponent
-from horizons.gui.widgets import OkButton
+from horizons.gui.widgets.imagebutton import OkButton
 
 class ProductionOverview(StatsWidget):
 	"""

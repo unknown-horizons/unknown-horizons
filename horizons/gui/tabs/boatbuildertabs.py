@@ -27,7 +27,7 @@ from fife.extensions.pychan.widgets import Icon, HBox, Label, Container
 from horizons.command.production import AddProduction, RemoveFromQueue, CancelCurrentProduction
 from horizons.gui.tabs import OverviewTab
 from horizons.gui.util import create_resource_icon
-from horizons.gui.widgets import OkButton, CancelButton
+from horizons.gui.widgets.imagebutton import OkButton, CancelButton
 from horizons.scheduler import Scheduler
 from horizons.util.python.callback import Callback
 from horizons.constants import PRODUCTIONLINES, RES, UNITS, GAME_SPEED

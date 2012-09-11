@@ -37,7 +37,7 @@ import horizons.main
 from horizons.savegamemanager import SavegameManager
 from horizons.gui.keylisteners import MainListener
 from horizons.gui.keylisteners.ingamekeylistener import KeyConfig
-from horizons.gui.widgets import OkButton, CancelButton, DeleteButton
+from horizons.gui.widgets.imagebutton import OkButton, CancelButton, DeleteButton
 from horizons.util.python.callback import Callback
 from horizons.extscheduler import ExtScheduler
 from horizons.messaging import GuiAction
