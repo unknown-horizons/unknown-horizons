@@ -21,8 +21,8 @@
 
 from horizons.world.resourcehandler import StorageResourceHandler
 from horizons.world.building.buildingresourcehandler import BuildingResourceHandler
-from building import BasicBuilding
-from buildable import BuildableSingle, BuildableSingleFromShip
+from horizons.world.building.building import BasicBuilding
+from horizons.world.building.buildable import BuildableSingle, BuildableSingleFromShip
 from horizons.component.storagecomponent import StorageComponent
 from horizons.world.building.production import ProductionBuilding
 from horizons.world.building.path import Path
