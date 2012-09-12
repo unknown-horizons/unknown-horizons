@@ -19,12 +19,53 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
+from horizons.scheduler import Scheduler
+
 from tests.gui import gui_test, TestFinished
 
 
 @gui_test(use_dev_map=True)
 def test_trivial(gui):
 	"""Does nothing to see if test setup works."""
+	yield TestFinished
+
+
+@gui_test(use_dev_map=True)
+def test_run_for_x_seconds(gui):
+	"""Test that running the game X seconds works."""
+	yield
+
+	start_tick = Scheduler().cur_tick
+	gui.run(seconds=20)
+	difference = Scheduler().cur_tick - start_tick
+
+	expected = Scheduler().get_ticks(20)
+
+	assert (difference - expected) / difference < 0.05
+
+	yield TestFinished
+
+
+def expected_failure(func):
+	def wrapper(*args, **kwargs):
+		try:
+			func(*args, **kwargs)
+		except Exception:
+			pass
+		else:
+			raise AssertionError('Expected failure')
+	wrapper.__original__ = func.__original__
+	return wrapper
+
+
+@expected_failure
+@gui_test(use_dev_map=True)
+def test_expected_failure(gui):
+	"""Test that failures in tests are detected."""
+	yield
+
+	1 / 0
+
 	yield TestFinished
 
 
