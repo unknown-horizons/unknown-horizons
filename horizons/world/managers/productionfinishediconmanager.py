@@ -77,7 +77,7 @@ class ProductionFinishedIconManager(object):
 
 			# abort if amount is zero
 			if not amount:
-				return
+				continue
 
 			group = self.get_resource_string(message.sender, res)
 			self.run[group] = self.animation_steps
