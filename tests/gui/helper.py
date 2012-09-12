@@ -26,8 +26,6 @@ Cleaner interface to various game/gui functions to make tests easier.
 import contextlib
 from collections import deque
 
-import gevent
-import gevent.event
 import mock
 from fife import fife
 
@@ -38,9 +36,7 @@ from horizons.gui.mousetools import NavigationTool
 from horizons.scheduler import Scheduler
 from horizons.util.shapes import Point
 
-
-def run():
-	gevent.sleep(0)
+from tests.gui import cooperative
 
 
 def get_player_ship(session):
@@ -56,7 +52,7 @@ def move_ship(ship, (x, y)):
 	Act(ship, x, y)(ship.owner)
 
 	while (ship.position.x, ship.position.y) != (x, y):
-		run()
+		cooperative.schedule()
 
 
 class CursorToolsPatch(object):
@@ -227,7 +223,7 @@ class GuiHelper(object):
 	@contextlib.contextmanager
 	def handler(self, func):
 		"""Temporarily install another gui handler, e.g. to handle a dialog."""
-		g = gevent.spawn(func)
+		g = cooperative.spawn(func)
 		yield
 		g.join()
 
@@ -295,14 +291,20 @@ class GuiHelper(object):
 		"""
 
 		if not seconds:
-			run()
+			cooperative.schedule()
 		else:
-			event = gevent.event.Event()
+			# little hack because we don't have Python3's nonlocal
+			class Flag(object):
+				running = True
+
+			def stop():
+				Flag.running = False
 
 			ticks = Scheduler().get_ticks(seconds)
-			Scheduler().add_new_object(event.set, None, run_in=ticks)
+			Scheduler().add_new_object(stop, None, run_in=ticks)
 
-			event.wait()
+			while Flag.running:
+				cooperative.schedule()
 
 	def disable_autoscroll(self):
 		"""

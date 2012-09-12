@@ -19,6 +19,8 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
+import functools
+
 from horizons.scheduler import Scheduler
 
 from tests.gui import gui_test
@@ -44,6 +46,7 @@ def test_run_for_x_seconds(gui):
 
 
 def expected_failure(func):
+	@functools.wraps(func)
 	def wrapper(*args, **kwargs):
 		try:
 			func(*args, **kwargs)
