@@ -144,7 +144,7 @@ class SavegameUpgrader(object):
 
 	def _upgrade_to_rev62(self, db):
 		# added a message parameter to the logbook which needs to be saved
-		db("CREATE TABLE logbook_messages ( message STRING )")
+		db("CREATE TABLE IF NOT EXISTS logbook_messages ( message STRING )")
 
 	def _upgrade_to_rev63(self, db):
 		# adds a table for pirate's 'tick' callback
