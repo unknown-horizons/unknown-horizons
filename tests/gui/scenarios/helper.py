@@ -32,7 +32,7 @@ def assert_win(gui):
 	while True:
 		if getattr(gui.session, '_scenariotest_won', False):
 			break
-		yield
+		gui.run()
 
 
 def assert_defeat(gui):
@@ -40,7 +40,7 @@ def assert_defeat(gui):
 	while True:
 		if getattr(gui.session, '_scenariotest_lose', False):
 			break
-		yield
+		gui.run()
 
 
 def assert_goal_reached(gui, goal):
@@ -50,12 +50,12 @@ def assert_goal_reached(gui, goal):
 			gui.session._scenariotest_goals and 
 			gui.session._scenariotest_goals[-1] == goal):
 			break
-		yield
+		gui.run()
 
 
 def wait_and_close_logbook(gui):
 	"""Wait for the logbook to show and close it immediately."""
 	while not gui.find('captains_log'):
-		yield
+		gui.run()
 
 	gui.trigger('captains_log', 'okButton')

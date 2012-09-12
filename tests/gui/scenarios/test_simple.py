@@ -20,7 +20,7 @@
 # ###################################################
 
 
-from tests.gui import gui_test, TestFinished
+from tests.gui import gui_test
 from tests.gui.helper import get_player_ship, move_ship
 from tests.gui.scenarios.helper import assert_win, assert_defeat, assert_goal_reached
 
@@ -29,46 +29,39 @@ from tests.gui.scenarios.helper import assert_win, assert_defeat, assert_goal_re
 @gui_test(use_scenario='tests/gui/scenarios/win', timeout=10)
 def test_win(gui):
 	"""Simple test that detects a win in a game."""
-	yield
 
-	for _ in assert_win(gui): yield
-	yield TestFinished
+	assert_win(gui)
 
 
 @gui_test(use_scenario='tests/gui/scenarios/defeat', timeout=10)
 def test_defeat(gui):
 	"""Simple test that detects a defeat in a game."""
-	yield
 
-	for _ in assert_defeat(gui): yield
-	yield TestFinished
+	assert_defeat(gui)
 
 
 @gui_test(use_scenario='tests/gui/scenarios/mission1', timeout=30)
 def test_mission1(gui):
 	"""Sample mission which requires multiple buildings to win."""
-	yield
 
 	# Move ship to coast
 	ship = get_player_ship(gui.session)
-	for _ in move_ship(ship, (7, 3)): yield
+	move_ship(ship, (7, 3))
 
 	# Build warehouse
 	gui.select([ship])
 	gui.trigger('overview_trade_ship', 'found_settlement')
 	gui.cursor_click(10, 5, 'left')
-	for _ in assert_goal_reached(gui, 'warehouse'): yield
+	assert_goal_reached(gui, 'warehouse')
 
 	# Build main square
 	gui.trigger('mainhud', 'build')
 	gui.trigger('tab', 'button_02')
 	gui.cursor_click(9, 11, 'left')
-	for _ in assert_goal_reached(gui, 'mainsquare'): yield
+	assert_goal_reached(gui, 'mainsquare')
 
 	# Build fisher
 	gui.trigger('tab', 'button_33')
 	gui.cursor_click(7, 7, 'left')
 
-	for _ in assert_win(gui): yield
-
-	yield TestFinished
+	assert_win(gui)
