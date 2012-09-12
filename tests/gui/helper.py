@@ -39,6 +39,10 @@ from horizons.scheduler import Scheduler
 from horizons.util.shapes import Point
 
 
+def run():
+	gevent.sleep(0)
+
+
 def get_player_ship(session):
 	"""Returns the first ship of a player."""
 	for ship in session.world.ships:
@@ -52,7 +56,7 @@ def move_ship(ship, (x, y)):
 	Act(ship, x, y)(ship.owner)
 
 	while (ship.position.x, ship.position.y) != (x, y):
-		yield
+		run()
 
 
 class CursorToolsPatch(object):
@@ -284,22 +288,21 @@ class GuiHelper(object):
 		return evt
 
 	def run(self, seconds=0):
-		"""Provide a nicer (yet not perfect) way to run the game for some time.
+		"""Provide a nice way to run the game for some time.
 
 		Despite its name, this method will run the *game simulation* for X seconds.
 		When the game is paused, the timer continues once the game unpauses.
-
-		Example:
-			for i in gui.run(seconds=13):
-				yield
 		"""
 
-		event = gevent.event.Event()
+		if not seconds:
+			run()
+		else:
+			event = gevent.event.Event()
 
-		ticks = Scheduler().get_ticks(seconds)
-		Scheduler().add_new_object(event.set, None, run_in=ticks)
+			ticks = Scheduler().get_ticks(seconds)
+			Scheduler().add_new_object(event.set, None, run_in=ticks)
 
-		event.wait()
+			event.wait()
 
 	def disable_autoscroll(self):
 		"""
