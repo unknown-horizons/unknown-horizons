@@ -26,6 +26,8 @@ Cleaner interface to various game/gui functions to make tests easier.
 import contextlib
 from collections import deque
 
+import gevent
+import gevent.event
 import mock
 from fife import fife
 
@@ -221,9 +223,9 @@ class GuiHelper(object):
 	@contextlib.contextmanager
 	def handler(self, func):
 		"""Temporarily install another gui handler, e.g. to handle a dialog."""
-		self._runner._gui_handlers.append(func())
+		g = gevent.spawn(func)
 		yield
-		self._runner._gui_handlers.pop()
+		g.join()
 
 	def select(self, objects):
 		"""Select all objects in the given list.
@@ -292,18 +294,12 @@ class GuiHelper(object):
 				yield
 		"""
 
-		# little hack because we don't have Python3's nonlocal
-		class Flag(object):
-			running = True
-
-		def stop():
-			Flag.running = False
+		event = gevent.event.Event()
 
 		ticks = Scheduler().get_ticks(seconds)
-		Scheduler().add_new_object(stop, None, run_in=ticks)
+		Scheduler().add_new_object(event.set, None, run_in=ticks)
 
-		while Flag.running:
-			yield
+		event.wait()
 
 	def disable_autoscroll(self):
 		"""

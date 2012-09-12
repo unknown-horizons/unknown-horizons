@@ -54,6 +54,7 @@ import sys
 import tempfile
 from functools import wraps
 
+import gevent
 from nose.plugins import Plugin
 
 from tests import RANDOM_SEED
@@ -161,12 +162,20 @@ class TestRunner(object):
 		self._engine = engine
 		self._gui_handlers = []
 
+		# Break on every exception. Default behaviour is to print the traceback and
+		# continue.
+		gevent.hub.Hub.SYSTEM_ERROR += (BaseException, )
+
 		self._custom_setup()
 		self._filter_traceback()
 		test = self._load_test(test_path)
-		test_gen = test(GuiHelper(self._engine.pychan, self))
-		self._gui_handlers.append(test_gen)
+		testlet = gevent.spawn(test, GuiHelper(self._engine.pychan, self))
+		testlet.link(self._stop_test)
 		self._start()
+
+	def _stop_test(self, green, *args, **kwargs):
+		if green.value is None:
+			self._stop()
 
 	def _custom_setup(self):
 		"""Change build menu to 'per increment' for tests."""
@@ -216,18 +225,7 @@ class TestRunner(object):
 
 		This function will be called by the engine's mainloop each frame.
 		"""
-		try:
-			# continue execution of current gui handler
-			value = self._gui_handlers[-1].next()
-			if value == TestFinished:
-				self._stop()
-		except StopIteration:
-			# if we end up here, it means that either
-			#   - a dialog handler has finished its execution (all fine) or
-			#   - the test has finished without signaling it (this might be on purpose)
-			#
-			# TODO issue a warning if this was the test itself
-			pass
+		gevent.sleep(0)
 
 
 def gui_test(use_dev_map=False, use_fixture=None, ai_players=0, timeout=15 * 60, cleanup_userdir=False,

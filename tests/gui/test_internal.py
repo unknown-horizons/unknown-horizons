@@ -21,19 +21,18 @@
 
 from horizons.scheduler import Scheduler
 
-from tests.gui import gui_test, TestFinished
+from tests.gui import gui_test
 
 
 @gui_test(use_dev_map=True)
 def test_trivial(gui):
 	"""Does nothing to see if test setup works."""
-	yield TestFinished
+	pass
 
 
 @gui_test(use_dev_map=True)
 def test_run_for_x_seconds(gui):
 	"""Test that running the game X seconds works."""
-	yield
 
 	start_tick = Scheduler().cur_tick
 	gui.run(seconds=20)
@@ -42,8 +41,6 @@ def test_run_for_x_seconds(gui):
 	expected = Scheduler().get_ticks(20)
 
 	assert (difference - expected) / difference < 0.05
-
-	yield TestFinished
 
 
 def expected_failure(func):
@@ -62,17 +59,13 @@ def expected_failure(func):
 @gui_test(use_dev_map=True)
 def test_expected_failure(gui):
 	"""Test that failures in tests are detected."""
-	yield
 
 	1 / 0
-
-	yield TestFinished
 
 
 @gui_test(use_fixture='boatbuilder')
 def test_trigger(gui):
 	"""Test the different ways to trigger an action in a gui."""
-	yield
 
 	assert not gui.find('captains_log')
 
@@ -111,18 +104,14 @@ def test_trigger(gui):
 	gui.trigger('production_overview', 'okButton')
 	assert not gui.find('production_overview')
 
-	yield TestFinished
-
 
 @gui_test(timeout=60)
 def test_dialog(gui):
 	"""Test handling of a dialog."""
-	yield
 
 	assert not gui.find('help_window')
 
 	def func():
-		yield
 		assert gui.find('help_window')
 		gui.trigger('help_window', 'okButton/action/__execute__')
 
@@ -130,5 +119,3 @@ def test_dialog(gui):
 		gui.trigger('menu', 'helpLink')
 
 	assert not gui.find('help_window')
-
-	yield TestFinished
