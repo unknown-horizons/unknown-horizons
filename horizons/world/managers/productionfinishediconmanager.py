@@ -20,6 +20,7 @@
 # ###################################################
 
 from fife import fife
+from horizons.component.storagecomponent import StorageComponent
 from horizons.constants import GAME_SPEED
 
 import horizons.globals
@@ -69,7 +70,13 @@ class ProductionFinishedIconManager(object):
 		if cur_ticks_per_second > GAME_SPEED.TICKS_PER_SECOND:
 			interval = (cur_ticks_per_second // GAME_SPEED.TICKS_PER_SECOND) - 1
 
-		res, amount = message.produced_resources.items()[0] # TODO multiple resources
+		res = message.produced_resources.items()[0][0] # TODO multiple resources
+		amount = message.sender.get_component(StorageComponent).inventory[res]
+
+		# abort if amount is zero
+		if not amount:
+			return
+
 		group = self.get_resource_string(message.sender, res)
 		self.run[group] = self.animation_steps
 
