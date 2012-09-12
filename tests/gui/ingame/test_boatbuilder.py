@@ -147,6 +147,9 @@ def test_cancel_ticket_1424(gui):
 
 	# Build frigate
 	gui.trigger('boatbuilder_showcase', 'ok_0')
+	# TODO Figure out why we need this (crashes otherwise).
+	# Maybe we should give up control for one frame on each gui action.
+	gui.run()
 
 	# Cancel build completely -> crash
 	gui.trigger('BB_main_tab', 'BB_cancel_button/mouseClicked')
