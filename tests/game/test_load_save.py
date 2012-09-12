@@ -61,7 +61,7 @@ def test_load_inactive_production():
 
 	lj = Build(BUILDINGS.LUMBERJACK, 30, 30, island, settlement=settlement)(player)
 	# Set lumberjack to inactive
-	lj.get_component(Producer).set_active(active = False)
+	lj.get_component(Producer).set_active(active=False)
 	worldid = lj.worldid
 
 	session.run(seconds=1)

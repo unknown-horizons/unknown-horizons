@@ -459,8 +459,8 @@ class ProductionBuilder(AreaBuilder):
 		"""Called when a building is removed from the area (the building still exists during the call)."""
 		if building.id in self.field_building_classes:
 			# this can't be handled right now because the building still exists
-			Scheduler().add_new_object(Callback(self._refresh_unused_fields), self, run_in = 0)
-			Scheduler().add_new_object(Callback(partial(super(ProductionBuilder, self).remove_building, building)), self, run_in = 0)
+			Scheduler().add_new_object(Callback(self._refresh_unused_fields), self, run_in=0)
+			Scheduler().add_new_object(Callback(partial(super(ProductionBuilder, self).remove_building, building)), self, run_in=0)
 		elif building.buildable_upon or building.id == BUILDINGS.TRAIL:
 			pass # don't react to road, trees and ruined tents being destroyed
 		else:

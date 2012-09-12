@@ -65,7 +65,7 @@ class DisasterManager(object):
 			Scheduler().rem_all_classinst_calls(self)
 			ticks = db_data[0][0] # only one row in table
 			Scheduler().add_new_object(self.run, self, run_in=ticks,
-			                           loop_interval=self.CALL_EVERY, loops = -1)
+			                           loop_interval=self.CALL_EVERY, loops=-1)
 
 		for disaster_id, disaster_type, settlement_id in db("SELECT rowid, type, settlement FROM disaster"):
 			settlement = WorldObject.get_object_by_id(settlement_id)

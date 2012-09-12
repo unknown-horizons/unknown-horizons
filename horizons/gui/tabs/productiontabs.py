@@ -136,7 +136,8 @@ class ProductionOverviewTab(OverviewTab):
 
 	def show(self):
 		super(ProductionOverviewTab, self).show()
-		Scheduler().add_new_object(Callback(self._refresh_utilisation), self, run_in = GAME_SPEED.TICKS_PER_SECOND, loops = -1)
+		Scheduler().add_new_object(Callback(self._refresh_utilisation),
+		                           self, run_in=GAME_SPEED.TICKS_PER_SECOND, loops=-1)
 
 	def hide(self):
 		super(ProductionOverviewTab, self).hide()

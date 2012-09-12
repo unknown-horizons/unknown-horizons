@@ -138,7 +138,7 @@ class Production(ChangeListener):
 		elif self._state == PRODUCTION.STATES.producing:
 			Scheduler().add_new_object(self._get_producing_callback(), self, db_data[3])
 		elif self._state == PRODUCTION.STATES.waiting_for_res or \
-				 self._state == PRODUCTION.STATES.inventory_full:
+		     self._state == PRODUCTION.STATES.inventory_full:
 			# no need to call now, this just restores the state before
 			# saving , where it hasn't triggered yet, therefore it won't now
 			self._add_listeners()
@@ -204,14 +204,14 @@ class Production(ChangeListener):
 
 			# apply state
 			if self._state in (PRODUCTION.STATES.waiting_for_res,
-												 PRODUCTION.STATES.inventory_full):
+			                   PRODUCTION.STATES.inventory_full):
 				# just restore watching
 				self._add_listeners(check_now=True)
 
 			elif self._state == PRODUCTION.STATES.producing:
 				# restore scheduler call
 				Scheduler().add_new_object(self._get_producing_callback(), self,
-																   self._pause_remaining_ticks)
+				                           self._pause_remaining_ticks)
 			else:
 				assert False, 'Unhandled production state: %s' % self._pause_old_state
 		else: # do pause
@@ -220,7 +220,7 @@ class Production(ChangeListener):
 			self._state = PRODUCTION.STATES.paused
 
 			if self._pause_old_state in (PRODUCTION.STATES.waiting_for_res,
-												           PRODUCTION.STATES.inventory_full):
+			                             PRODUCTION.STATES.inventory_full):
 				self._remove_listeners()
 			elif self._pause_old_state == PRODUCTION.STATES.producing:
 				# save when production finishes and remove that call
@@ -470,7 +470,8 @@ class SingleUseProduction(Production):
 	# TODO: it seems that these kinds of productions are never removed (for settlers and unit productions)
 
 	def __init__(self, inventory, owner_inventory, prod_id, prod_data, **kwargs):
-		super(SingleUseProduction, self).__init__(inventory=inventory, owner_inventory=owner_inventory, prod_id=prod_id, prod_data = prod_data, **kwargs)
+		super(SingleUseProduction, self).__init__(inventory=inventory, owner_inventory=owner_inventory,
+		                                          prod_id=prod_id, prod_data=prod_data, **kwargs)
 
 	def _finished_producing(self, **kwargs):
 		super(SingleUseProduction, self)._finished_producing(continue_producing=False, **kwargs)

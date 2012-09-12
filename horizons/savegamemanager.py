@@ -431,7 +431,7 @@ class SavegameManager(object):
 	def get_campaign_info(cls, name="", filename=""):
 		"""Return this campaign's data"""
 		assert (name or filename)
-		cfiles, cnames, cscenarios, cdatas = cls.get_campaigns(include_displaynames = True, include_scenario_list = True, campaign_data = True)
+		cfiles, cnames, cscenarios, cdatas = cls.get_campaigns(include_displaynames=True, include_scenario_list=True, campaign_data=True)
 		sfiles, snames = cls.get_scenarios(include_displaynames = True)
 		if name:
 			if not name in cnames:

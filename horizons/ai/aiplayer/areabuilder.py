@@ -171,10 +171,11 @@ class AreaBuilder(WorldObject):
 
 		blocked_coords = set([coords for coords in builder.position.tuple_iter()])
 		destination_coords = set(self.iter_possible_road_coords(loading_area, builder.position))
-		beacon = Rect.init_from_borders(loading_area.left - 1, loading_area.top - 1, loading_area.right + 1, loading_area.bottom + 1)
+		beacon = Rect.init_from_borders(loading_area.left - 1, loading_area.top - 1,
+		                                loading_area.right + 1, loading_area.bottom + 1)
 
 		return RoadPlanner()(self.owner.personality_manager.get('RoadPlanner'), collector_coords,
-			destination_coords, beacon, self.get_path_nodes(), blocked_coords = blocked_coords)
+			destination_coords, beacon, self.get_path_nodes(), blocked_coords=blocked_coords)
 
 	def build_road(self, path):
 		"""Build the road given a valid path or None. Return True if it worked, False if the path was None."""

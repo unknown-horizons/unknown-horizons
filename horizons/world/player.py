@@ -92,7 +92,7 @@ class Player(ComponentHolder, WorldObject):
 
 	def update_stats(self):
 		# will only be enabled on demand since it takes a while to calculate
-		Scheduler().add_new_object(Callback(self.update_stats), self, run_in = PLAYER.STATS_UPDATE_FREQUENCY)
+		Scheduler().add_new_object(Callback(self.update_stats), self, run_in=PLAYER.STATS_UPDATE_FREQUENCY)
 		self.stats = PlayerStats(self)
 
 	def get_latest_stats(self):

@@ -159,7 +159,7 @@ class SPTestSession(SPSession):
 from tests.game.utils import create_map, new_settlement, settle
 
 
-def new_session(mapgen=create_map, rng_seed=RANDOM_SEED, human_player = True, ai_players = 0):
+def new_session(mapgen=create_map, rng_seed=RANDOM_SEED, human_player=True, ai_players=0):
 	"""
 	Create a new session with a map, add one human player and a trader (it will crash
 	otherwise). It returns both session and player to avoid making the function-baed
@@ -241,7 +241,7 @@ def game_test(*args, **kwargs):
 		def wrapped(*args):
 			horizons.globals.db = db
 			if not manual_session and not use_fixture:
-				s, p = new_session(mapgen = mapgen, human_player = human_player, ai_players = ai_players)
+				s, p = new_session(mapgen=mapgen, human_player=human_player, ai_players=ai_players)
 			elif use_fixture:
 				path = os.path.join(TEST_FIXTURES_DIR, use_fixture + '.sqlite')
 				if not os.path.exists(path):

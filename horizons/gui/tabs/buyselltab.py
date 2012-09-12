@@ -106,7 +106,7 @@ class BuySellTab(TabInterface):
 		self.widget.show()
 		self.session.ingame_gui.minimap_to_front()
 		self.refresh()
-		ExtScheduler().add_new_object(self.refresh, self, run_in=0.4, loops = -1)
+		ExtScheduler().add_new_object(self.refresh, self, run_in=0.4, loops=-1)
 
 	def is_visible(self):
 		# this tab sometimes is made up an extra widget, so it must also be considered
@@ -154,7 +154,7 @@ class BuySellTab(TabInterface):
 			slot.id = num
 			slot.action = 'buy'
 			slot.res = None
-			slot.findChild(name='button').capture(self.handle_click, event_name = 'mouseClicked')
+			slot.findChild(name='button').capture(self.handle_click, event_name='mouseClicked')
 			slot.findChild(name='button').up_image = self.dummy_icon_path
 			slot.findChild(name='button').down_image = self.dummy_icon_path
 			slot.findChild(name='button').hover_image = self.dummy_icon_path

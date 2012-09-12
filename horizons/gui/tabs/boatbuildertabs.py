@@ -52,7 +52,7 @@ class BoatbuilderTab(_BoatbuilderOverviewTab):
 
 	def show(self):
 		super(BoatbuilderTab, self).show()
-		Scheduler().add_new_object(Callback(self.refresh), self, run_in = GAME_SPEED.TICKS_PER_SECOND, loops = -1)
+		Scheduler().add_new_object(Callback(self.refresh), self, run_in=GAME_SPEED.TICKS_PER_SECOND, loops=-1)
 
 	def hide(self):
 		super(BoatbuilderTab, self).hide()
