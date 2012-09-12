@@ -23,7 +23,11 @@ import sys
 import traceback
 from collections import deque
 
-import greenlet
+try:
+	import greenlet
+except ImportError:
+	print 'The greenlet package is needed to run the UH gui tests.'
+	sys.exit(1)
 
 
 _scheduled = deque()
