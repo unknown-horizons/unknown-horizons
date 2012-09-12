@@ -33,18 +33,7 @@ dotted path to the test (along with other options), similar to this code:
 			assert False
 
 	def minimap(gui):
-		yield
 		menu = gui.find(name='mainmenu')
-		yield TestFinished
-
-When the game is run with --gui-test, an instance of `TestRunner` will load
-the test and install a callback function in the engine's mainloop. Each call
-the test will be further exhausted:
-
-	def callback():
-		value = minimap.next()
-		if value == TestFinished:
-			# Test ends
 """
 
 import os
@@ -63,11 +52,6 @@ from tests.utils import Timer
 
 # path where test savegames are stored (tests/gui/ingame/fixtures/)
 TEST_FIXTURES_DIR = os.path.join(os.path.abspath(os.path.dirname(__file__)), 'ingame', 'fixtures')
-
-# Used by the test to signal that's it's finished.
-# Needed to distinguish between the original test and other generators used
-# for dialogs.
-TestFinished = 'finished'
 
 class TestFailed(Exception): pass
 

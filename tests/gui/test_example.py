@@ -98,4 +98,5 @@ def test_example(gui):
 	# something else and it will continue to run. Useful if you want to check your test's
 	# action.
 
+    # TODO not yet supported, use gui.run(2**10)
 	#return 1
