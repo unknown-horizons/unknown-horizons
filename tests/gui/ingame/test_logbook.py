@@ -19,7 +19,7 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-from tests.gui import TestFinished, gui_test
+from tests.gui import gui_test
 
 
 @gui_test(use_dev_map=True, timeout=60)
@@ -27,7 +27,6 @@ def test_logbook(gui):
 	"""
 	Open the (empty) logbook.
 	"""
-	yield # test needs to be a generator for now
 
 	gui.trigger('mainhud', 'logbook')
 
@@ -38,13 +37,10 @@ def test_logbook(gui):
 	gui.trigger(logbook, 'okButton')
 	assert gui.find(name='captains_log') is None
 
-	yield TestFinished
-
 
 @gui_test(use_fixture='boatbuilder', timeout=60)
 def test_logbook_statistics(gui):
 	"""Open the 3 three different statistic tabs in the logbook."""
-	yield
 
 	# Open statistics page in logbook
 	gui.trigger('mainhud', 'logbook')
@@ -54,5 +50,3 @@ def test_logbook_statistics(gui):
 	gui.trigger('captains_log', 'stats_players')
 	gui.trigger('captains_log', 'stats_ships')
 	gui.trigger('captains_log', 'stats_settlements')
-
-	yield TestFinished

@@ -21,9 +21,10 @@
 
 from horizons.command.unit import CreateUnit
 from horizons.command.building import Tear
-from horizons.constants import UNITS, BUILDINGS, PRODUCTION
+from horizons.constants import UNITS, BUILDINGS
 from horizons.world.production.producer import Producer
-from tests.gui import TestFinished, gui_test
+
+from tests.gui import gui_test
 from tests.gui.helper import get_player_ship
 
 
@@ -32,7 +33,6 @@ def test_ticket_1352(gui):
 	"""
 	Clicking on a frigate crashes the game.
 	"""
-	yield # test needs to be a generator for now
 
 	player = gui.session.world.player
 	ship = CreateUnit(player.worldid, UNITS.FRIGATE, 68, 10)(player)
@@ -49,8 +49,6 @@ def test_ticket_1352(gui):
 
 	gui.select([ship])
 
-	yield TestFinished
-
 
 @gui_test(use_dev_map=True, ai_players=3, timeout=120)
 def test_ticket_1368(gui):
@@ -61,17 +59,14 @@ def test_ticket_1368(gui):
 	founded earlier. It is still pretty slow, but let's care about
 	speed later.
 	"""
-	yield # test needs to be a generator for now
 
 	# Wait until ai has settled down
 	world = gui.session.world
 	while not world.settlements:
-		yield
+		gui.run()
 
 	ai_warehouse = world.settlements[0].warehouse
 	gui.select([ai_warehouse])
-
-	yield TestFinished
 
 
 @gui_test(use_fixture='ai_settlement', timeout=60)
@@ -79,7 +74,6 @@ def test_ticket_1369(gui):
 	"""
 	Ship tab closed when moving away from another player's warehouse after trading.
 	"""
-	yield
 
 	ship = get_player_ship(gui.session)
 	gui.select([ship])
@@ -93,7 +87,7 @@ def test_ticket_1369(gui):
 	# move ship near foreign warehouse and wait for it to arrive
 	gui.cursor_click(68, 23, 'right')
 	while (ship.position.x, ship.position.y) != (68, 23):
-		yield
+		gui.run()
 
 	# click trade button
 	gui.trigger('overview_trade_ship', 'trade')
@@ -104,7 +98,7 @@ def test_ticket_1369(gui):
 	# move ship away from warehouse
 	gui.cursor_click(77, 17, 'right')
 	while (ship.position.x, ship.position.y) != (77, 17):
-		yield
+		gui.run()
 
 	# trade widget should not be visible anymore
 # For now, the trade widget will stay visible.
@@ -114,34 +108,27 @@ def test_ticket_1369(gui):
 	assert gui.find(name='buy_sell_goods')
 #	assert gui.find(name='overview_trade_ship')
 
-	yield TestFinished
-
 
 @gui_test(use_dev_map=True, timeout=120)
 def test_ticket_1362(gui):
 	"""
 	Saving a game, loading it again and attempting to save it again will crash.
 	"""
-	yield
 
 	gui.press_key(gui.Key.F5)	# quicksave
-	for i in gui.run(seconds=2):
-		yield
+	gui.run(seconds=2)
 
 	gui.press_key(gui.Key.F9)	# quickload
 	while gui.find(name='loadingscreen'):
-		yield
+		gui.run()
 
 	def func():
-		yield
 		# test for error popup
 		assert gui.find(name='popup_window') is None
 
 	# quicksave
 	with gui.handler(func):
 		gui.press_key(gui.Key.F5)
-
-	yield TestFinished
 
 
 @gui_test(use_dev_map=True, timeout=120)
@@ -157,14 +144,13 @@ def test_ticket_1371(gui):
 
      => tab itself is invisible, but buttons for choosing it aren't
 	"""
-	yield
 
 	ship = get_player_ship(gui.session)
 	gui.select([ship])
 
 	gui.cursor_click(59, 1, 'right')
 	while (ship.position.x, ship.position.y) != (59, 1):
-		yield
+		gui.run()
 
 	# Found settlement
 	gui.trigger('overview_trade_ship', 'found_settlement')
@@ -197,15 +183,12 @@ def test_ticket_1371(gui):
 	# Tab should still be there
 	assert gui.find(name='overview_buildrelated')
 
-	yield TestFinished
-
 
 @gui_test(use_fixture='fife_exception_not_found', timeout=60)
 def test_ticket_1447(gui):
 	"""
 	Clicking on a sequence of buildings may make fife throw an exception.
 	"""
-	yield
 
 	lumberjack = gui.session.world.islands[0].ground_map[(23, 63)].object
 	assert(lumberjack.id == BUILDINGS.LUMBERJACK)
@@ -217,15 +200,13 @@ def test_ticket_1447(gui):
 	assert(warehouse.id == BUILDINGS.WAREHOUSE)
 
 	gui.cursor_click(20, 67, 'left')
-	yield
+	gui.run()
 
 	gui.cursor_click(23, 63, 'left')
-	yield
+	gui.run()
 
 	gui.cursor_click(18, 63, 'left')
-	yield # this could crash the game
-
-	yield TestFinished
+	gui.run()
 
 
 @gui_test(use_dev_map=True, timeout=120)
@@ -233,11 +214,8 @@ def test_ticket_1515(gui):
 	"""
 	Unable to select an unowned resource deposit.
 	"""
-	yield # test needs to be a generator for now
 
 	gui.cursor_click(6, 17, 'left')
-
-	yield TestFinished
 
 
 @gui_test(use_dev_map=True, timeout=120)
@@ -245,14 +223,13 @@ def test_ticket_1520(gui):
 	"""
 	Crash when completing build after outlined/related buildings were removed.
 	"""
-	yield
 
 	ship = get_player_ship(gui.session)
 	gui.select([ship])
 
 	gui.cursor_click(8, 2, 'right')
 	while (ship.position.x, ship.position.y) != (8, 2):
-		yield
+		gui.run()
 
 	# Found a settlement
 	gui.trigger('overview_trade_ship', 'found_settlement')
@@ -278,22 +255,19 @@ def test_ticket_1520(gui):
 	# release mouse button, finish build
 	gui.cursor_release_button(13, 11, 'left')
 
-	yield TestFinished
-
 
 @gui_test(use_dev_map=True, timeout=120)
 def test_ticket_1509(gui):
 	"""
 	Crash when quickly switching between tent tabs.
 	"""
-	yield
 
 	ship = get_player_ship(gui.session)
 	gui.select([ship])
 
 	gui.cursor_click(8, 2, 'right')
 	while (ship.position.x, ship.position.y) != (8, 2):
-		yield
+		gui.run()
 
 	# Found a settlement
 	gui.trigger('overview_trade_ship', 'found_settlement')
@@ -309,12 +283,10 @@ def test_ticket_1509(gui):
 
 	# quickly switch between tabs
 	gui.trigger('tab_base', '1')
-	yield
+	gui.run()
 	gui.trigger('tab_base', '0')
-	yield
+	gui.run()
 	gui.trigger('tab_base', '1')
-
-	yield TestFinished
 
 
 @gui_test(use_fixture='boatbuilder', timeout=120)
@@ -322,7 +294,6 @@ def test_ticket_1526(gui):
 	"""
 	Multiselection with Ctrl crashes on many combinations.
 	"""
-	yield
 
 	# Select main square and then boat builder
 	gui.cursor_click(52, 12, 'left')
@@ -332,21 +303,18 @@ def test_ticket_1526(gui):
 	gui.cursor_click(52, 12, 'left')
 	gui.cursor_click(52, 12, 'left', ctrl=True)
 
-	yield TestFinished
-
 
 @gui_test(use_dev_map=True, timeout=120)
 def test_pavilion_build_crash_built_via_settler_related_tab(gui):
 	"""
 	"""
-	yield
 
 	ship = get_player_ship(gui.session)
 	gui.select([ship])
 
 	gui.cursor_click(59, 1, 'right')
 	while (ship.position.x, ship.position.y) != (59, 1):
-		yield
+		gui.run()
 
 	# Found settlement
 	gui.trigger('overview_trade_ship', 'found_settlement')
@@ -372,13 +340,11 @@ def test_pavilion_build_crash_built_via_settler_related_tab(gui):
 	gui.cursor_click(49, 6, 'left')
 
 	# if we survive until here, the bug hasn't happened
-	yield TestFinished
 
 
 @gui_test(use_fixture='boatbuilder', timeout=120)
 def test_ticket_1848(gui):
 	"""Settlement production overview crashes if ships were produced"""
-	yield
 
 	settlement = gui.session.world.player.settlements[0]
 	boatbuilder = settlement.buildings_by_id[BUILDINGS.BOAT_BUILDER][0]
@@ -391,9 +357,7 @@ def test_ticket_1848(gui):
 	# Wait until production ends
 	producer = boatbuilder.get_component(Producer)
 	while producer.get_productions():
-		yield
+		gui.run()
 
 	gui.cursor_click(51, 13, 'left')
 	gui.trigger('tab_account', 'show_production_overview/mouseClicked/default')
-
-	yield TestFinished

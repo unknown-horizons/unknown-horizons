@@ -25,7 +25,7 @@ import shutil
 import sys
 import tempfile
 
-from tests.gui import TestFinished, gui_test
+from tests.gui import gui_test
 
 
 USER_DIR = None
@@ -43,8 +43,7 @@ def teardown():
 
 def dummy(gui):
 	"""This test will end the game immediately."""
-	yield
-	yield TestFinished
+	pass
 dummy.__original__ = dummy
 
 

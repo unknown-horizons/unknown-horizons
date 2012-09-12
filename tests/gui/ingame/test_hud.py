@@ -19,7 +19,7 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-from tests.gui import gui_test, TestFinished
+from tests.gui import gui_test
 
 
 @gui_test(use_dev_map=True, timeout=60)
@@ -27,7 +27,6 @@ def test_hud(gui):
 	"""
 	Click on some buttons at the ingame menu.
 	"""
-	yield # test needs to be a generator for now
 
 	gui.trigger('mainhud', 'zoomOut')
 	gui.trigger('mainhud', 'zoomIn')
@@ -39,5 +38,3 @@ def test_hud(gui):
 
 	gui.trigger('mainhud', 'build')
 	gui.trigger('mainhud', 'diplomacyButton')
-
-	yield TestFinished

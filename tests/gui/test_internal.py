@@ -19,19 +19,56 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-from tests.gui import gui_test, TestFinished
+import functools
+
+from horizons.scheduler import Scheduler
+
+from tests.gui import gui_test
 
 
 @gui_test(use_dev_map=True)
 def test_trivial(gui):
 	"""Does nothing to see if test setup works."""
-	yield TestFinished
+	pass
+
+
+@gui_test(use_dev_map=True)
+def test_run_for_x_seconds(gui):
+	"""Test that running the game X seconds works."""
+
+	start_tick = Scheduler().cur_tick
+	gui.run(seconds=20)
+	difference = Scheduler().cur_tick - start_tick
+
+	expected = Scheduler().get_ticks(20)
+
+	assert (difference - expected) / difference < 0.05
+
+
+def expected_failure(func):
+	@functools.wraps(func)
+	def wrapper(*args, **kwargs):
+		try:
+			func(*args, **kwargs)
+		except Exception:
+			pass
+		else:
+			raise AssertionError('Expected failure')
+	wrapper.__original__ = func.__original__
+	return wrapper
+
+
+@expected_failure
+@gui_test(use_dev_map=True)
+def test_expected_failure(gui):
+	"""Test that failures in tests are detected."""
+
+	1 / 0
 
 
 @gui_test(use_fixture='boatbuilder')
 def test_trigger(gui):
 	"""Test the different ways to trigger an action in a gui."""
-	yield
 
 	assert not gui.find('captains_log')
 
@@ -70,18 +107,14 @@ def test_trigger(gui):
 	gui.trigger('production_overview', 'okButton')
 	assert not gui.find('production_overview')
 
-	yield TestFinished
-
 
 @gui_test(timeout=60)
 def test_dialog(gui):
 	"""Test handling of a dialog."""
-	yield
 
 	assert not gui.find('help_window')
 
 	def func():
-		yield
 		assert gui.find('help_window')
 		gui.trigger('help_window', 'okButton/action/__execute__')
 
@@ -89,5 +122,3 @@ def test_dialog(gui):
 		gui.trigger('menu', 'helpLink')
 
 	assert not gui.find('help_window')
-
-	yield TestFinished

@@ -36,6 +36,8 @@ from horizons.gui.mousetools import NavigationTool
 from horizons.scheduler import Scheduler
 from horizons.util.shapes import Point
 
+from tests.gui import cooperative
+
 
 def get_player_ship(session):
 	"""Returns the first ship of a player."""
@@ -50,7 +52,7 @@ def move_ship(ship, (x, y)):
 	Act(ship, x, y)(ship.owner)
 
 	while (ship.position.x, ship.position.y) != (x, y):
-		yield
+		cooperative.schedule()
 
 
 class CursorToolsPatch(object):
@@ -221,9 +223,9 @@ class GuiHelper(object):
 	@contextlib.contextmanager
 	def handler(self, func):
 		"""Temporarily install another gui handler, e.g. to handle a dialog."""
-		self._runner._gui_handlers.append(func())
+		g = cooperative.spawn(func)
 		yield
-		self._runner._gui_handlers.pop()
+		g.join()
 
 	def select(self, objects):
 		"""Select all objects in the given list.
@@ -282,28 +284,27 @@ class GuiHelper(object):
 		return evt
 
 	def run(self, seconds=0):
-		"""Provide a nicer (yet not perfect) way to run the game for some time.
+		"""Provide a nice way to run the game for some time.
 
 		Despite its name, this method will run the *game simulation* for X seconds.
 		When the game is paused, the timer continues once the game unpauses.
-
-		Example:
-			for i in gui.run(seconds=13):
-				yield
 		"""
 
-		# little hack because we don't have Python3's nonlocal
-		class Flag(object):
-			running = True
+		if not seconds:
+			cooperative.schedule()
+		else:
+			# little hack because we don't have Python3's nonlocal
+			class Flag(object):
+				running = True
 
-		def stop():
-			Flag.running = False
+			def stop():
+				Flag.running = False
 
-		ticks = Scheduler().get_ticks(seconds)
-		Scheduler().add_new_object(stop, None, run_in=ticks)
+			ticks = Scheduler().get_ticks(seconds)
+			Scheduler().add_new_object(stop, None, run_in=ticks)
 
-		while Flag.running:
-			yield
+			while Flag.running:
+				cooperative.schedule()
 
 	def disable_autoscroll(self):
 		"""

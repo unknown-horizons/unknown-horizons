@@ -19,7 +19,7 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-from tests.gui import TestFinished, gui_test
+from tests.gui import gui_test
 
 
 # The `gui_test` decorator is needed to identify gui tests. You can use it
@@ -39,11 +39,6 @@ def test_example(gui):
 
 	Every gui test has to accept one argument, an instance of `tests.gui.GuiHelper`.
 	"""
-
-	# Tests need to be generators, better start the test with a `yield` to avoid
-	# forgetting it.
-	# `yield` will give control back to the engine mainloop for one iteration.
-	yield
 
 	gui.disable_autoscroll()
 
@@ -65,19 +60,17 @@ def test_example(gui):
 
 	# All commands above run sequentially, neither the engine nor the timer
 	# will be run. If you need the game to run for some time (or have to wait for
-	# something to happen), make multiple `yield` calls.
-	# Despite the wording, the 2 seconds will elapse once the game simulation ran 2
-	# seconds. If the game is paused, this will run longer.
-	for i in gui.run(seconds=2):
-		# Game will run for 2 seconds
-		yield
+	# something to happen), make multiple gui.run() calls.
+
+	# Game will run for 2 seconds
+	gui.run(seconds=2)
 
 	"""
 	while not condition:
-		yield
+		gui.run()
 	"""
 
-	# When you call `yield` the engine is allowed to run, therefore updating the display.
+	# When you call `gui.run()` the engine is allowed to run, therefore updating the display.
 	# You can also interact with the game as normal, but please don't mess with the test. :)
 	#
 	# TIP: You can watch the test in slow-motion if you insert these waits between
@@ -90,7 +83,6 @@ def test_example(gui):
 
 	# Cancel current game
 	def dialog():
-		yield
 		gui.trigger('popup_window', 'okButton/action/__execute__')
 
 	# Dialog handling has to be done by a separate generator.
@@ -102,8 +94,9 @@ def test_example(gui):
 	# Back at the main menu
 	assert gui.find(name='menu')
 
-	# Necessary to signal the game that our test has finished.
-	#
-	# TIP: If you leave it out, your game will continue to run. Useful if you want
-	# to check your test's actions.
-	yield TestFinished
+	# If a test returns None (either implicitly or explicitly) the game will exit, return
+	# something else and it will continue to run. Useful if you want to check your test's
+	# action.
+
+    # TODO not yet supported, use gui.run(2**10)
+	#return 1
