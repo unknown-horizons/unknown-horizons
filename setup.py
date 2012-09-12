@@ -1,6 +1,5 @@
 #!/usr/bin/env python
 
-from __future__ import with_statement
 from distutils.core import setup
 from distutils.command.build import build
 from distutils.spawn import spawn, find_executable
