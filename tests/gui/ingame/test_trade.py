@@ -21,7 +21,7 @@
 
 
 from tests.gui import gui_test
-from tests.gui.helper import get_player_ship
+from tests.gui.helper import get_player_ship, move_ship
 
 from horizons.component.storagecomponent import StorageComponent
 from horizons.component.tradepostcomponent import TradePostComponent
@@ -44,9 +44,7 @@ def test_trade(gui):
 			world.diplomacy.add_ally_pair( ship.owner, player )
 
 	# move ship near foreign warehouse and wait for it to arrive
-	gui.cursor_click(68, 23, 'right')
-	while (ship.position.x, ship.position.y) != (68, 23):
-		gui.run()
+	move_ship(ship, (68, 23))
 
 	# click trade button
 	gui.trigger('overview_trade_ship', 'trade')

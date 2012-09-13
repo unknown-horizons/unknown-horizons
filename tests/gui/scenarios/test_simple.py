@@ -26,21 +26,21 @@ from tests.gui.scenarios.helper import assert_win, assert_defeat, assert_goal_re
 
 # Example tests
 
-@gui_test(use_scenario='tests/gui/scenarios/win', timeout=10)
+@gui_test(use_scenario='tests/gui/scenarios/win', timeout=20)
 def test_win(gui):
 	"""Simple test that detects a win in a game."""
 
 	assert_win(gui)
 
 
-@gui_test(use_scenario='tests/gui/scenarios/defeat', timeout=10)
+@gui_test(use_scenario='tests/gui/scenarios/defeat', timeout=20)
 def test_defeat(gui):
 	"""Simple test that detects a defeat in a game."""
 
 	assert_defeat(gui)
 
 
-@gui_test(use_scenario='tests/gui/scenarios/mission1', timeout=30)
+@gui_test(use_scenario='tests/gui/scenarios/mission1', timeout=40)
 def test_mission1(gui):
 	"""Sample mission which requires multiple buildings to win."""
 

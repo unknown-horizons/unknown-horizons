@@ -25,7 +25,7 @@ from horizons.constants import UNITS, BUILDINGS
 from horizons.world.production.producer import Producer
 
 from tests.gui import gui_test
-from tests.gui.helper import get_player_ship
+from tests.gui.helper import get_player_ship, move_ship, found_settlement
 
 
 @gui_test(use_dev_map=True, timeout=120)
@@ -85,9 +85,7 @@ def test_ticket_1369(gui):
 			world.diplomacy.add_ally_pair( ship.owner, player )
 
 	# move ship near foreign warehouse and wait for it to arrive
-	gui.cursor_click(68, 23, 'right')
-	while (ship.position.x, ship.position.y) != (68, 23):
-		gui.run()
+	move_ship(ship, (68, 23))
 
 	# click trade button
 	gui.trigger('overview_trade_ship', 'trade')
@@ -96,9 +94,7 @@ def test_ticket_1369(gui):
 	assert gui.find(name='buy_sell_goods')
 
 	# move ship away from warehouse
-	gui.cursor_click(77, 17, 'right')
-	while (ship.position.x, ship.position.y) != (77, 17):
-		gui.run()
+	move_ship(ship, (77, 17))
 
 	# trade widget should not be visible anymore
 # For now, the trade widget will stay visible.
@@ -145,21 +141,10 @@ def test_ticket_1371(gui):
      => tab itself is invisible, but buttons for choosing it aren't
 	"""
 
-	ship = get_player_ship(gui.session)
-	gui.select([ship])
-
-	gui.cursor_click(59, 1, 'right')
-	while (ship.position.x, ship.position.y) != (59, 1):
-		gui.run()
-
-	# Found settlement
-	gui.trigger('overview_trade_ship', 'found_settlement')
-
-	gui.cursor_click(56, 3, 'left')
-
-	gui.trigger('mainhud', 'build')
+	found_settlement(gui, (59, 1), (56, 3))
 
 	# Build lumberjack
+	gui.trigger('mainhud', 'build')
 	gui.trigger('tab', 'button_03')
 	gui.cursor_click(52, 7, 'left')
 
@@ -191,13 +176,13 @@ def test_ticket_1447(gui):
 	"""
 
 	lumberjack = gui.session.world.islands[0].ground_map[(23, 63)].object
-	assert(lumberjack.id == BUILDINGS.LUMBERJACK)
+	assert lumberjack.id == BUILDINGS.LUMBERJACK
 
 	fisher = gui.session.world.islands[0].ground_map[(20, 67)].object
-	assert(fisher.id == BUILDINGS.FISHER)
+	assert fisher.id == BUILDINGS.FISHER
 
 	warehouse = gui.session.world.islands[0].ground_map[(18, 63)].object
-	assert(warehouse.id == BUILDINGS.WAREHOUSE)
+	assert warehouse.id == BUILDINGS.WAREHOUSE
 
 	gui.cursor_click(20, 67, 'left')
 	gui.run()
@@ -224,16 +209,7 @@ def test_ticket_1520(gui):
 	Crash when completing build after outlined/related buildings were removed.
 	"""
 
-	ship = get_player_ship(gui.session)
-	gui.select([ship])
-
-	gui.cursor_click(8, 2, 'right')
-	while (ship.position.x, ship.position.y) != (8, 2):
-		gui.run()
-
-	# Found a settlement
-	gui.trigger('overview_trade_ship', 'found_settlement')
-	gui.cursor_click(10, 6, 'left')
+	found_settlement(gui, (8, 2), (10, 6))
 
 	ground_map = gui.session.world.islands[0].ground_map
 
@@ -262,16 +238,7 @@ def test_ticket_1509(gui):
 	Crash when quickly switching between tent tabs.
 	"""
 
-	ship = get_player_ship(gui.session)
-	gui.select([ship])
-
-	gui.cursor_click(8, 2, 'right')
-	while (ship.position.x, ship.position.y) != (8, 2):
-		gui.run()
-
-	# Found a settlement
-	gui.trigger('overview_trade_ship', 'found_settlement')
-	gui.cursor_click(10, 6, 'left')
+	found_settlement(gui, (8, 2), (10, 6))
 
 	# Build a tent
 	gui.trigger('mainhud', 'build')
@@ -309,21 +276,10 @@ def test_pavilion_build_crash_built_via_settler_related_tab(gui):
 	"""
 	"""
 
-	ship = get_player_ship(gui.session)
-	gui.select([ship])
-
-	gui.cursor_click(59, 1, 'right')
-	while (ship.position.x, ship.position.y) != (59, 1):
-		gui.run()
-
-	# Found settlement
-	gui.trigger('overview_trade_ship', 'found_settlement')
-
-	gui.cursor_click(56, 3, 'left')
-
-	gui.trigger('mainhud', 'build')
+	found_settlement(gui, (59, 1), (56, 3))
 
 	# Build settler
+	gui.trigger('mainhud', 'build')
 	gui.trigger('tab', 'button_01')
 	gui.cursor_click(52, 7, 'left')
 
@@ -360,4 +316,4 @@ def test_ticket_1848(gui):
 		gui.run()
 
 	gui.cursor_click(51, 13, 'left')
-	gui.trigger('tab_account', 'show_production_overview/mouseClicked/default')
+	gui.trigger('tab_account', 'show_production_overview')

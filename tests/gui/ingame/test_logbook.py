@@ -44,7 +44,7 @@ def test_logbook_statistics(gui):
 
 	# Open statistics page in logbook
 	gui.trigger('mainhud', 'logbook')
-	gui.trigger('captains_log', 'statistics_rt/mouseClicked')
+	gui.trigger('captains_log', 'statistics_rt')
 
 	# Open players/ships/settlements tabs
 	gui.trigger('captains_log', 'stats_players')

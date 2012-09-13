@@ -22,14 +22,11 @@
 import time
 
 from horizons.constants import BUILDINGS
-from horizons.command.unit import Act
 from horizons.world.units.collectors.collector import Collector
-from horizons.gui.mousetools.buildingtool import BuildingTool
-from horizons.gui.mousetools.cursortool import CursorTool
 from horizons.component.collectingcomponent import CollectingComponent
 
 from tests.gui import gui_test
-from tests.gui.helper import get_player_ship
+from tests.gui.helper import found_settlement
 
 
 @gui_test(use_dev_map=True, timeout=60)
@@ -39,26 +36,10 @@ def test_found_settlement(gui):
 	"""
 
 	player = gui.session.world.player
-	target = (68, 10)
-	gui.session.view.center(*target)
-
 	assert not player.settlements
 
-	ship = get_player_ship(gui.session)
-	Act(ship, *target)(player)
+	found_settlement(gui, (68, 10), (64, 12))
 
-	# wait until ship arrives
-	while (ship.position.x, ship.position.y) != target:
-		gui.run()
-
-	gui.select([ship])
-	gui.trigger('overview_trade_ship', 'found_settlement')
-
-	assert isinstance(gui.cursor, BuildingTool)
-	gui.cursor_move(64, 12)
-	gui.cursor_click(64, 12, 'left')
-
-	assert isinstance(gui.cursor, CursorTool)
 	assert len(player.settlements) == 1
 
 	# activate the build menu

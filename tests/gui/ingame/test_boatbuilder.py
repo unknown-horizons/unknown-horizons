@@ -82,7 +82,7 @@ def test_ticket_1294(gui):
 	gui.trigger('boatbuilder_showcase', 'ok_0')
 
 	# Pause huker construction
-	gui.trigger('BB_main_tab', 'toggle_active_active/mouseClicked')
+	gui.trigger('BB_main_tab', 'toggle_active_active')
 
 	# Select war ships tab
 	gui.trigger('tab_base', '2')
@@ -96,7 +96,7 @@ def test_ticket_1294(gui):
 		gui.run()
 
 	# Unpause huker construction
-	gui.trigger('BB_main_tab', 'toggle_active_inactive/mouseClicked')
+	gui.trigger('BB_main_tab', 'toggle_active_inactive')
 
 	while producer.get_productions():
 		gui.run()
@@ -124,7 +124,7 @@ def test_remove_from_queue(gui):
 	gui.trigger('boatbuilder_showcase', 'ok_0')
 
 	# Cancel queue -> crash
-	gui.trigger('BB_main_tab', 'queue_elem_0/mouseClicked')
+	gui.trigger('BB_main_tab', 'queue_elem_0')
 
 
 @gui_test(use_fixture='boatbuilder', timeout=60)
@@ -147,12 +147,11 @@ def test_cancel_ticket_1424(gui):
 
 	# Build frigate
 	gui.trigger('boatbuilder_showcase', 'ok_0')
-	# TODO Figure out why we need this (crashes otherwise).
-	# Maybe we should give up control for one frame on each gui action.
+
 	gui.run()
 
 	# Cancel build completely -> crash
-	gui.trigger('BB_main_tab', 'BB_cancel_button/mouseClicked')
+	gui.trigger('BB_main_tab', 'BB_cancel_button')
 
 
 @gui_test(use_fixture='boatbuilder', timeout=60)
@@ -220,7 +219,7 @@ def test_ticket_1513(gui):
 	gui.run()
 
 	# Cancel build
-	gui.trigger('BB_main_tab', 'BB_cancel_button/mouseClicked')
+	gui.trigger('BB_main_tab', 'BB_cancel_button')
 
 	# Check (inactive) running costs
 	assert running_costs() == '10', "Expected 10, got %s" % running_costs()
@@ -257,7 +256,7 @@ def test_ticket_1514(gui):
 	gui.run()
 
 	# Cancel build
-	gui.trigger('BB_main_tab', 'BB_cancel_button/mouseClicked')
+	gui.trigger('BB_main_tab', 'BB_cancel_button')
 
 	# The tab should have changed, no cancel button visible
 	assert not gui.find('BB_cancel_button')

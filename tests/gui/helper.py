@@ -32,7 +32,9 @@ from fife import fife
 import horizons.main
 from horizons.command.unit import Act
 from horizons.constants import GAME_SPEED
-from horizons.gui.mousetools import NavigationTool
+from horizons.gui.mousetools.navigationtool import NavigationTool
+from horizons.gui.mousetools.buildingtool import BuildingTool
+from horizons.gui.mousetools.cursortool import CursorTool
 from horizons.scheduler import Scheduler
 from horizons.util.shapes import Point
 
@@ -53,6 +55,20 @@ def move_ship(ship, (x, y)):
 
 	while (ship.position.x, ship.position.y) != (x, y):
 		cooperative.schedule()
+
+
+def found_settlement(gui, ship_pos, (x, y)):
+	"""Move ship to coordinates and build a warehouse."""
+	ship = get_player_ship(gui.session)
+	gui.select([ship])
+
+	move_ship(ship, ship_pos)
+
+	# Found a settlement
+	gui.trigger('overview_trade_ship', 'found_settlement')
+	assert isinstance(gui.cursor, BuildingTool)
+	gui.cursor_click(x, y, 'left')
+	assert isinstance(gui.cursor, CursorTool)
 
 
 class CursorToolsPatch(object):
@@ -267,6 +283,19 @@ class GuiHelper(object):
 		self.cursor_move(x, y)
 		self.cursor_press_button(x, y, button, shift, ctrl)
 		self.cursor_release_button(x, y, button, shift, ctrl)
+
+	def cursor_multi_click(self, *coords):
+		"""Do multiple clicks in succession.
+
+		Shift is hold to enable non-stop build and after the last coord it will be
+		cancelled with a right click.
+		"""
+		for (x, y) in coords:
+			self.cursor_click(x, y, 'left', shift=True)
+
+		# Cancel
+		x, y = coords[-1]
+		self.cursor_click(x, y, 'right')
 
 	def _make_mouse_event(self, x, y, button=None, shift=False, ctrl=False):
 		if button:
