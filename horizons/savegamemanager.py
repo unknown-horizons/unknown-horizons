@@ -234,19 +234,7 @@ class SavegameManager(object):
 		return metadata
 
 	@classmethod
-	def write_metadata(cls, db, savecounter, rng_state):
-		"""Writes metadata to db.
-		@param db: DbReader
-		@param savecounter: int"""
-		metadata = cls.savegame_metadata.copy()
-		metadata['timestamp'] = time.time()
-		metadata['savecounter'] = savecounter
-		metadata['savegamerev'] = VERSION.SAVEGAMEREVISION
-		metadata['rng_state'] = rng_state
-
-		for key, value in metadata.iteritems():
-			db("INSERT INTO metadata(name, value) VALUES(?, ?)", key, value)
-
+	def _write_screenshot(cls, db):
 		# special handling for screenshot (as blob)
 		screenshot_fd, screenshot_filename = tempfile.mkstemp()
 
@@ -274,6 +262,22 @@ class SavegameManager(object):
 		screenshot_data = os.fdopen(screenshot_fd, "r").read()
 		db("INSERT INTO metadata_blob values(?, ?)", "screen", sqlite3.Binary(screenshot_data))
 		os.unlink(screenshot_filename)
+
+	@classmethod
+	def write_metadata(cls, db, savecounter, rng_state):
+		"""Writes metadata to db.
+		@param db: DbReader
+		@param savecounter: int"""
+		metadata = cls.savegame_metadata.copy()
+		metadata['timestamp'] = time.time()
+		metadata['savecounter'] = savecounter
+		metadata['savegamerev'] = VERSION.SAVEGAMEREVISION
+		metadata['rng_state'] = rng_state
+
+		for key, value in metadata.iteritems():
+			db("INSERT INTO metadata(name, value) VALUES(?, ?)", key, value)
+
+		cls._write_screenshot(db)
 
 	@classmethod
 	def get_regular_saves(cls, include_displaynames=True):
