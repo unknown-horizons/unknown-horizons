@@ -68,6 +68,10 @@ def show_db_message(session, database_message_id):
 	"""Shows a message with predefined text in the messagewidget."""
 	session.ingame_gui.message_widget.add(point=None, string_id=database_message_id)
 
+@register(name='short')
+def short(session, *parameters):
+	pass
+
 @register(name='logbook')
 def show_logbook_entry_delayed(session, *parameters):
 	"""Shows a logbook entry and opens the logbook after 'delay' seconds.

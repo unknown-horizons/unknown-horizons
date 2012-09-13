@@ -78,6 +78,7 @@ class ScenarioEventHandler(LivingObject):
 			self._apply_data( self._parse_yaml_file( scenariofile ) )
 
 		self.sleep_ticks_remaining = 0
+		self.current_action = None
 
 		self.start()
 
@@ -107,6 +108,7 @@ class ScenarioEventHandler(LivingObject):
 		self.session = None
 		self._events = None
 		self._data = None
+		self.current_action = None
 
 	def save(self, db):
 		if self.inited: # only save in case we have data applied
@@ -133,6 +135,8 @@ class ScenarioEventHandler(LivingObject):
 		if self.sleep_ticks_remaining > 0:
 			Scheduler().add_new_object(Callback(action, self.session), self, run_in=self.sleep_ticks_remaining)
 		else:
+			if action.action_type == "short":
+				self.current_action = action
 			action(self.session)
 
 	def check_events(self, condition):

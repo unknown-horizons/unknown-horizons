@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<Container name="messagepanel" size="249,150" position="-10,0">
+	<Icon image="content/gui/images/background/mainmenu/ingame.png" position="-7,17" size="258,150" />
+	<Icon image="content/gui/images/background/widgets/message_bg_top.png" position="0,0" />
+
+	<Label name="title" text="Your Tasks" position="25,-1" font="headline_light" />
+	<ImageButton name="min_max" position="220,5" is_focusable="0"
+	             up_image="content/gui/images/buttons/down_10_h.png"
+	             down_image="content/gui/images/buttons/down_10.png"
+	             hover_image="content/gui/images/buttons/down_10_h.png"/>
+
+	<ScrollArea name="tasks_bar" position="20,29" min_size="240,120" size="240,120" max_size="240,120"
+			horizontal_scrollbar="0" vertical_scrollbar="1" is_focusable="0">
+		<VBox name="tasks" position="0,0" min_size="240,120" size="240,120" />
+	</ScrollArea>
+
+</Container>
