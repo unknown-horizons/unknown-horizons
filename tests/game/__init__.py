@@ -40,7 +40,6 @@ from horizons.util.dbreader import DbReader
 from horizons.util.difficultysettings import DifficultySettings
 from horizons.util.savegameaccessor import SavegameAccessor
 from horizons.util.color import Color
-from horizons.util.worldobject import WorldObject
 from horizons.component.storagecomponent import StorageComponent
 
 from tests import RANDOM_SEED
@@ -141,7 +140,7 @@ class SPTestSession(SPSession):
 		"""
 		Scheduler.destroy_instance()
 		ExtScheduler.destroy_instance()
-		WorldObject.reset()
+		SPSession._clear_caches()
 
 	def run(self, ticks=1, seconds=None):
 		"""
