@@ -24,7 +24,7 @@ from horizons.util.random_map import generate_map_from_seed
 from tests.game import game_test
 
 def test_ai_long():
-	for seed in [1, 2, 3, 4]:
+	for seed in [1, 2, 3]:
 		yield run_ai_long, seed
 
 def run_ai_long(seed):
