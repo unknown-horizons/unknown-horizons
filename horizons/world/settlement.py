@@ -32,7 +32,7 @@ from horizons.messaging import UpgradePermissionsChanged
 from horizons.util.changelistener import ChangeListener
 from horizons.component.componentholder import ComponentHolder
 from horizons.component.tradepostcomponent import TradePostComponent
-from horizons.world.production.producer import Producer
+from horizons.world.production.producer import Producer, UnitProducer
 from horizons.world.resourcehandler import ResourceHandler
 
 class Settlement(ComponentHolder, WorldObject, ChangeListener, ResourceHandler):
@@ -224,7 +224,7 @@ class Settlement(ComponentHolder, WorldObject, ChangeListener, ResourceHandler):
 			self.buildings_by_id[building.id].append(building)
 		else:
 			self.buildings_by_id[building.id] = [building]
-		if building.has_component(Producer):
+		if building.has_component(Producer) and not building.has_component(UnitProducer):
 			building.get_component(Producer).add_production_finished_listener(self.settlement_building_production_finished)
 		if hasattr(self.owner, 'add_building'):
 			# notify interested players of added building
@@ -234,7 +234,7 @@ class Settlement(ComponentHolder, WorldObject, ChangeListener, ResourceHandler):
 		"""Properly removes a building from the settlement"""
 		self.buildings.remove(building)
 		self.buildings_by_id[building.id].remove(building)
-		if building.has_component(Producer):
+		if building.has_component(Producer) and not building.has_component(UnitProducer):
 			building.get_component(Producer).remove_production_finished_listener(self.settlement_building_production_finished)
 		if hasattr(self.owner, 'remove_building'):
 			# notify interested players of removed building
