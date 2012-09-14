@@ -1,0 +1,3282 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2009-02-27 16:15+0200\n"
+"PO-Revision-Date: 2010-07-30 09:06+0200\n"
+"Last-Translator: admin <>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: nso\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"X-Generator: Pootle 2.1.0-beta2\n"
+
+# Essential terminology list for general software localisation
+# License: GPL
+# Copyright Youssef Chahibi, Friedel Wolff 2006
+msgid "abort"
+msgstr "folotšiša"
+
+msgid "absolute"
+msgstr "kgonthe"
+
+msgid "abstract"
+msgstr "ntšha"
+
+msgid "accelerator"
+msgstr "seakgofiši"
+
+msgid "accent"
+msgstr "gatelela"
+
+msgid "accept"
+msgstr "amogela"
+
+msgid "access"
+msgstr "tsena"
+
+msgid "accessibility"
+msgstr "tsenego"
+
+msgid "accessory"
+msgstr "sethuši"
+
+msgid "account"
+msgstr "akhaonto"
+
+msgid "accuracy"
+msgstr "nepo"
+
+msgid "acquire"
+msgstr "hwetša"
+
+msgid "acronym"
+msgstr "kopafatšo"
+
+msgid "action"
+msgstr "tiro"
+
+msgid "activate"
+msgstr "diragatša"
+
+msgid "active"
+msgstr "dira"
+
+msgid "activity"
+msgstr "tiragalo"
+
+msgid "adapter"
+msgstr "sekopanyi"
+
+msgid "add"
+msgstr "oketša;tsenya"
+
+msgid "address"
+msgstr "aterese"
+
+msgid "adjust"
+msgstr "lokiša"
+
+msgid "administration"
+msgstr "taolo"
+
+msgid "administrator"
+msgstr "molaodi"
+
+msgid "advanced"
+msgstr "gatetšego pele"
+
+msgid "agent"
+msgstr "moemedi"
+
+msgid "agree"
+msgstr "dumela"
+
+msgid "agreement"
+msgstr "tumelelano"
+
+msgid "alarm"
+msgstr "alamo"
+
+msgid "alert"
+msgstr "lemoša"
+
+msgid "algorithm"
+msgstr "alkorithimi"
+
+msgid "alias"
+msgstr "leina-lengwe"
+
+# تسنن" مع الرسوميات (الخطوط وخلافه)
+msgid "aliasing"
+msgstr "tiro-leina-lengwe"
+
+msgid "align"
+msgstr "tsepanya"
+
+msgid "alignment"
+msgstr "tsepanyo"
+
+msgid "allow"
+msgstr "dumelela"
+
+msgid "alphanumeric"
+msgstr "alfanomoro"
+
+msgid "alternative"
+msgstr "e nngwe"
+
+msgid "amount"
+msgstr "palo"
+
+msgid "analysis"
+msgstr "tlhahlobo"
+
+msgid "anchor"
+msgstr "ankora"
+
+msgid "angle"
+msgstr "khutlo"
+
+msgid "animate"
+msgstr "hlohleletša"
+
+msgid "animation"
+msgstr "tlhohleletšo"
+
+msgid "announce"
+msgstr "bega"
+
+msgid "announcement"
+msgstr "pego"
+
+msgid "anonymous"
+msgstr "sa tsebjwego"
+
+msgid "anti-aliasing"
+msgstr "selwantšha-tiro-leina-lengwe"
+
+msgid "anti virus"
+msgstr "selwantšha-twatši"
+
+msgid "appear"
+msgstr "tšwelela"
+
+msgid "append"
+msgstr "mametletša"
+
+msgid "applet"
+msgstr "apolete"
+
+msgid "application"
+msgstr "tirišo"
+
+msgid "apply"
+msgstr "diriša"
+
+msgid "approval"
+msgstr "kamogelo"
+
+msgid "approve"
+msgstr "dumelela"
+
+msgid "approximate"
+msgstr "lekanyetša"
+
+msgid "arbitrary"
+msgstr "ka boithatelo"
+
+msgid "archive"
+msgstr "bolotadigaswa"
+
+msgid "area"
+msgstr "lefelo"
+
+msgid "argument"
+msgstr "ngangišano"
+
+msgid "arrangement"
+msgstr "thulaganyo"
+
+msgid "arrow"
+msgstr "mosebe"
+
+msgid "article"
+msgstr "sehlogo"
+
+msgid "ascending"
+msgstr "namelela"
+
+msgid "aspect"
+msgstr "popego"
+
+msgid "assign"
+msgstr "abela"
+
+msgid "assignment"
+msgstr "kabelo"
+
+msgid "asynchronous"
+msgstr "e sa sepelelanego"
+
+msgid "attach"
+msgstr "hlomela"
+
+msgid "attachment"
+msgstr "sehlomesetšo"
+
+msgid "attempt"
+msgstr "leka"
+
+msgid "attribute"
+msgstr "seka"
+
+msgid "audio"
+msgstr "sekwewa"
+
+msgid "authenticate"
+msgstr "tiišetša"
+
+msgid "authentication"
+msgstr "tiišetšo"
+
+msgid "authorization"
+msgstr "tokollelo"
+
+msgid "authorize"
+msgstr "lokollela"
+
+msgid "auto"
+msgstr "itiriša"
+
+msgid "automatic"
+msgstr "itirišago"
+
+msgid "availability"
+msgstr "khwetšagalo"
+
+msgid "available"
+msgstr "hwetšagala"
+
+msgid "average"
+msgstr "palogare"
+
+msgid "axis"
+msgstr "mothalo-tšhupetšo"
+
+msgid "backbone"
+msgstr "mokokotlo"
+
+msgid "back-end"
+msgstr "thušo-tirišo"
+
+msgid "background"
+msgstr "bokamorago"
+
+msgid "backup"
+msgstr "dikopišwa;pekapo"
+
+msgid "bandwidth"
+msgstr "maatla-phetišo"
+
+msgid "banner"
+msgstr "sebapatši"
+
+msgid "bar"
+msgstr "para"
+
+msgid "base"
+msgstr "motheo"
+
+msgid "beep"
+msgstr "modumo"
+
+msgid "begin"
+msgstr "thoma"
+
+msgid "behavior"
+msgstr "boitshwaro"
+
+msgid "binary"
+msgstr "ka bobedi"
+
+msgid "bind"
+msgstr "tlema"
+
+msgid "bit"
+msgstr "paetana"
+
+msgid "bitmap"
+msgstr "swantšho-khutlwana"
+
+msgid "blank"
+msgstr "sekgala"
+
+msgid "blink"
+msgstr "ponya"
+
+msgid "block (unit)"
+msgstr "ploko (yuniti)"
+
+msgid "block (verb)"
+msgstr "thibela (lediri)"
+
+msgid "blog"
+msgstr ""
+
+msgid "blur"
+msgstr "fifetše"
+
+msgid "board"
+msgstr "boto"
+
+msgid "body"
+msgstr "mmele"
+
+msgid "bold"
+msgstr "mokoto"
+
+msgid "bookmarks"
+msgstr "dipukutshwayo"
+
+msgid "boot"
+msgstr "thomološa"
+
+msgid "border"
+msgstr "morumo"
+
+msgid "box"
+msgstr "lepokisi"
+
+msgid "bracket"
+msgstr "lešakana"
+
+msgid "branch"
+msgstr "lekala"
+
+msgid "break"
+msgstr "kgaola"
+
+msgid "break (program)"
+msgstr "kgaola (lenaneo)"
+
+msgid "break point"
+msgstr "ntlha-kgaolo"
+
+msgid "bridge (verb)"
+msgstr "lomaganya (lediri)"
+
+msgid "bridge (noun)"
+msgstr "leporogo (leina)"
+
+msgid "broken"
+msgstr "robegile"
+
+msgid "browse"
+msgstr "praosa"
+
+msgid "browser"
+msgstr "praosara"
+
+msgid "buffer"
+msgstr "polokelo-nakwana"
+
+msgid "bug"
+msgstr "phošo"
+
+msgid "build"
+msgstr "aga"
+
+msgid "built-in"
+msgstr "ageletšwego ka gare"
+
+msgid "bullet"
+msgstr "ntlha-tshwayo"
+
+msgid "bus"
+msgstr "pese"
+
+msgid "button"
+msgstr "konope"
+
+msgid "byte"
+msgstr "paete"
+
+msgid "cable"
+msgstr "kheibole"
+
+msgid "cache"
+msgstr "polokelo-tsebišo"
+
+msgid "calculate"
+msgstr "balela"
+
+msgid "calculator"
+msgstr "sebaledi"
+
+msgid "calendar"
+msgstr "khalentara"
+
+msgid "call"
+msgstr "letša;mogala"
+
+msgid "camera"
+msgstr "khamera"
+
+msgid "cancel"
+msgstr "khansela"
+
+msgid "capability"
+msgstr "bokgoni"
+
+msgid "capacity"
+msgstr "bogolo"
+
+msgid "caption"
+msgstr "swantšho-tlhaloso"
+
+msgid "capture"
+msgstr "thopa"
+
+msgid "card"
+msgstr "karata"
+
+msgid "case"
+msgstr "kheisi"
+
+msgid "case (font)"
+msgstr "kheisi (fonte)"
+
+msgid "catalog"
+msgstr "khathaloko"
+
+msgid "category"
+msgstr "legoro"
+
+msgid "cell"
+msgstr "sele"
+
+msgid "certificate"
+msgstr "setifikeiti"
+
+msgid "certify"
+msgstr "hlatsela"
+
+msgid "change"
+msgstr "fetoša;phetogo"
+
+msgid "channel"
+msgstr "kanale"
+
+msgid "character"
+msgstr "tlhaka"
+
+msgid "charset"
+msgstr "hlopha-tlhaka"
+
+msgid "chart"
+msgstr "tšhate"
+
+msgid "chat"
+msgstr "hlamola"
+
+msgid "check"
+msgstr "lekola"
+
+msgid "check box"
+msgstr "lepokisi-tekolo"
+
+msgid "child"
+msgstr "ngwana"
+
+msgid "choice"
+msgstr "kgetho"
+
+msgid "choose"
+msgstr "kgetha"
+
+msgid "class"
+msgstr "mphato"
+
+msgid "classic"
+msgstr "klasiki"
+
+msgid "classify"
+msgstr "hlaola"
+
+msgid "clean"
+msgstr "hlwekiša"
+
+msgid "clear"
+msgstr "tloša"
+
+msgid "click (noun)"
+msgstr "kgotla (leina)"
+
+msgid "click (verb)"
+msgstr "kgotla (lediri)"
+
+msgid "client"
+msgstr "moreki"
+
+msgid "clip art"
+msgstr "swantšho-bokgabo"
+
+msgid "clip board"
+msgstr "lenaneo-polokelo"
+
+msgid "clock"
+msgstr "tšhupanako"
+
+# What about tswala
+msgid "close"
+msgstr "tswalela"
+
+msgid "code (program)"
+msgstr "khoutu (lenaneo)"
+
+msgid "code (symbol)"
+msgstr "khoutu (leswao)"
+
+# A device or program that compresses information so that it can be transmitted across a network, and decompresses information that has been received.
+msgid "codec"
+msgstr "khoteke"
+
+# Hide a section from view, leaving only a heading that can be clicked to reveal the hidden content.
+msgid "collapse"
+msgstr "phuhlama"
+
+# 	Gather together.<span class="translation-space"> </span>
+# 
+msgid "collect"
+msgstr "kgoboketša"
+
+# A vertical block of text or a vertical line of entries in a table, with data presented from top to bottom.
+msgid "column"
+msgstr "kholomo"
+
+msgid "combination"
+msgstr "tlhakanyo"
+
+# The punctuation mark "," indicating a pause between parts of a sentence or between elements in a list.
+msgid "comma"
+msgstr "fegelwana"
+
+# An instruction given to a computer.
+msgid "command"
+msgstr "taelo"
+
+# A written statement or explanation.
+msgid "comment"
+msgstr "tshwaotshwao"
+
+# Occurring or happening regularly or frequently.
+msgid "common"
+msgstr "tlwaelegile"
+
+# 	The exchange of information between people or devices.
+msgid "communication"
+msgstr "poledišano"
+
+# Smaller than a full-sized version.
+msgid "compact"
+msgstr "teteane"
+
+# Assess the similarities and differences between two or more things.
+msgid "compare"
+msgstr "bapiša"
+
+# The ability of data, programs (software), and equipment (hardware) to run and/or work together
+msgid "compatibility"
+msgstr "tshepelelano"
+
+# capable of being used with or connected to other devices or components without modification
+msgid "compatible"
+msgstr "kwanago"
+
+# <span class="translation-space"> </span>
+# the act of compiling (as into a single book or file or list)حويل الشفرة المصرية إلى ملفات ثنائية (برمجة
+msgid "compilation"
+msgstr "kgoboketšo"
+
+# Use a computer program to translate source code written in a particular programming language into computer-readable machine code that can be executed.
+msgid "compile"
+msgstr "beakanya"
+
+msgid "compiler"
+msgstr "mmeakanyi"
+
+# 	Write all the required information in a form.
+msgid "complete"
+msgstr "phethilwe; tlatša"
+
+# An individual part that improves or is required by a larger program or device.
+msgid "component"
+msgstr "karolwana"
+
+# 	Create, put together, or arrange the elements of a program or image.
+msgid "compose"
+msgstr "hlama"
+
+msgid "composition"
+msgstr "tlhamo"
+
+# 	Store data in such a way that the file size is reduced.
+msgid "compress"
+msgstr "patagantšha"
+
+# 	The reduction of data for storage or transmission
+msgid "compression"
+msgstr "pataganyo"
+
+msgid "computer"
+msgstr "khomphutha"
+
+# 	Make a mathematical calculation.
+msgid "computing"
+msgstr "hlakanya"
+
+# (add by linking or joining so as to form a chain or series example: concatenate terms"; "concatenate characters
+msgid "concatenate"
+msgstr "momaganya"
+
+# occurring or operating at the same time
+msgid "concurrent"
+msgstr "sepedišanago"
+
+# 	Make smaller.
+msgid "condense"
+msgstr "patiša"
+
+# A logical clause or phrase that can either be true or false.
+msgid "condition"
+msgstr "maemo"
+
+# The way things are arranged or set up.
+msgid "configuration"
+msgstr "tatellano, peakanyo"
+
+msgid "configure"
+msgstr "beakanya"
+
+# Verify or approve.
+msgid "confirm"
+msgstr "netefatša"
+
+msgid "confirmation"
+msgstr "netefatšo,tiišetšo"
+
+# An inability of one program or device to work because another program or device is using a necessary resource.
+msgid "conflict"
+msgstr "thulano"
+
+# 	Establish a communication link.
+msgid "connect"
+msgstr "gokaganya"
+
+# A communications link.
+msgid "connection"
+msgstr "kgokaganyo"
+
+# 	The screen and keyboard used in a computer work station.
+msgid "console"
+msgstr "konsole"
+
+# Communicate with.
+msgid "contact (noun)"
+msgstr "teanya (leina)"
+
+msgid "contact (verb)"
+msgstr "iteanye (lediri)"
+
+# The information on a web page, including graphics, video, audio and text.
+msgid "content"
+msgstr "dikagare"
+
+msgid "context"
+msgstr "ngwalwateng (teng + sengwalwa)"
+
+# Keep going or resume.
+msgid "continue"
+msgstr "tšwela pele"
+
+# The difference in color and light between parts of an image.
+msgid "contrast"
+msgstr "pharologanya"
+
+# Someone who submits work to a larger project, such as software or a web site.
+msgid "contributor"
+msgstr "motsenya-letsogo"
+
+# Operate or command a program or device.
+msgid "control"
+msgstr "laola"
+
+# The transformation of something into a different format or type.
+# The coined word should be different from fetola = change
+msgid "conversion"
+msgstr "fetokolla (fetola + tokollo)"
+
+# Change (something) into another form.
+msgid "convert"
+msgstr "fetošetša"
+
+# A small text file stored on a visitors computer usually used to identify that user to a particular website.
+msgid "cookie"
+msgstr "khukie, fetobišo(fetola + tsebišo)faele e nyenyane e bolokago tsebišo"
+
+msgid "cooperative"
+msgstr "tshwarišanago"
+
+# bring order and organization to
+msgid "coordinate"
+msgstr "thathamološa?"
+
+# An identical duplication.
+msgid "copy (noun)"
+msgstr "kopi"
+
+# Produce an identical duplicate.
+msgid "copy (verb)"
+msgstr "kopiša"
+
+msgid "copy left"
+msgstr "kopiša ngele"
+
+msgid "copy right"
+msgstr ""
+
+# make right or correct
+msgid "correct"
+msgstr "nepagetšego"
+
+# Communication by the exchange of letters or written messages.
+msgid "correspondence"
+msgstr "poledišano"
+
+msgid "correspondent"
+msgstr "seboledišani"
+
+# Damage data in some way.
+msgid "corrupt"
+msgstr "senyegile"
+
+# Determine the number or amount.
+msgid "count"
+msgstr "bala,khaonta, kopanya, mothopo"
+
+msgid "countable"
+msgstr "balegago"
+
+# Stop operating correctly.
+msgid "crash"
+msgstr "pšhatla"
+
+# Make or bring into existence.
+msgid "create"
+msgstr "hlama,tlhola"
+
+msgid "creation"
+msgstr "hlolego"
+
+# Conditions that must be satisfied
+msgid "criteria"
+msgstr "selekanyo"
+
+# Cut off unwanted portions of an image. meaning ke wa go sega dikarolo tse sa nyakegego tša seswatšho.
+msgid "crop"
+msgstr "sega"
+
+msgid "cross-platform"
+msgstr "fapanya-polatefomo"
+
+# decrypt - convert coded data into readable information
+msgid "crypt"
+msgstr "uta"
+
+# the science of analyzing and deciphering codes and ciphers and cryptograms) 
+msgid "cryptology"
+msgstr "utiša"
+
+# Existing or occurring at the moment.
+msgid "current"
+msgstr "gonabjale"
+
+# An indicator on a display used to show the position that will respond to user input from a keyboard or pointing device.
+msgid "cursor"
+msgstr "swao-tšupo"
+
+# 	A bend.
+msgid "curve"
+msgstr "legopo"
+
+# Modified according to individual preferences.
+msgid "custom"
+msgstr "tlwaelo,tlwaetšo"
+
+msgid "customization"
+msgstr ""
+
+msgid "customize"
+msgstr "tlwaelanya"
+
+msgid "cut"
+msgstr "ripa"
+
+msgid "cycle"
+msgstr ""
+
+msgid "daemon"
+msgstr "daemon"
+
+msgid "damage"
+msgstr ""
+
+msgid "data"
+msgstr "tsebišo"
+
+msgid "database"
+msgstr "dathapeisi"
+
+msgid "debug"
+msgstr "ntšha phošo"
+
+msgid "debugger"
+msgstr ""
+
+msgid "decimal"
+msgstr ""
+
+msgid "decode"
+msgstr "go tloša khoutu"
+
+msgid "decompress"
+msgstr ""
+
+#, fuzzy
+msgid "decrease"
+msgstr "&Fokotša"
+
+msgid "decrypt"
+msgstr ""
+
+#, fuzzy
+msgid "decryption"
+msgstr "tlhalošo"
+
+msgid "default"
+msgstr "tirelwa"
+
+#, fuzzy
+msgid "defect"
+msgstr "kutollo"
+
+msgid "define"
+msgstr ""
+
+#, fuzzy
+msgid "definition"
+msgstr "Tlhaloso"
+
+msgid "degree"
+msgstr ""
+
+msgid "delay"
+msgstr ""
+
+msgid "delete"
+msgstr "phumola"
+
+msgid "deletion"
+msgstr "go phumola"
+
+msgid "delimiter"
+msgstr "selo se se swayago mathomo goba mafelelo"
+
+msgid "demo"
+msgstr ""
+
+#, fuzzy
+msgid "deny"
+msgstr "Gana"
+
+msgid "dependence"
+msgstr ""
+
+msgid "dependency"
+msgstr ""
+
+msgid "depth"
+msgstr ""
+
+msgid "derived"
+msgstr ""
+
+#, fuzzy
+msgid "descending"
+msgstr "&Fologela"
+
+msgid "description"
+msgstr "tlhaloso"
+
+#, fuzzy
+msgid "deselect"
+msgstr "kgetha"
+
+msgid "design"
+msgstr ""
+
+msgid "desktop"
+msgstr "tesekethopo"
+
+msgid "destination"
+msgstr "boyo"
+
+msgid "destroy"
+msgstr ""
+
+msgid "detach"
+msgstr ""
+
+msgid "detect"
+msgstr "kutollo"
+
+msgid "develop"
+msgstr ""
+
+msgid "development"
+msgstr ""
+
+msgid "developer"
+msgstr ""
+
+msgid "device"
+msgstr ""
+
+msgid "diagram"
+msgstr ""
+
+msgid "dial"
+msgstr "taela"
+
+msgid "dialog"
+msgstr ""
+
+msgid "dialup"
+msgstr ""
+
+msgid "difference"
+msgstr ""
+
+msgid "digit"
+msgstr "nomoro"
+
+msgid "digital"
+msgstr ""
+
+msgid "dimension"
+msgstr "tekanyo"
+
+msgid "directory"
+msgstr "tšhupetšo"
+
+msgid "disable"
+msgstr "šitiša"
+
+#, fuzzy
+msgid "disc"
+msgstr "tisiki (hard/flopp/stiffy)"
+
+msgid "discard"
+msgstr ""
+
+msgid "disconnect"
+msgstr "aroganya"
+
+msgid "discussion"
+msgstr ""
+
+msgid "disk"
+msgstr "tisiki (hard/flopp/stiffy)"
+
+msgid "dispatch"
+msgstr ""
+
+msgid "display"
+msgstr "bontšha"
+
+msgid "distort"
+msgstr ""
+
+#, fuzzy
+msgid "distribute"
+msgstr "Phatlalatšo"
+
+#, fuzzy
+msgid "distribution"
+msgstr "Phatlalatšo"
+
+#, fuzzy
+msgid "distributor"
+msgstr "Phatlalatšo"
+
+msgid "dock"
+msgstr ""
+
+msgid "document"
+msgstr "tokumente"
+
+msgid "documentation"
+msgstr "ditokumente"
+
+msgid "domain"
+msgstr "tomeine (maina a mabedi a phethago morero o swanago)"
+
+#, fuzzy
+msgid "double click"
+msgstr "kgotla gabedi"
+
+msgid "download"
+msgstr "laolla"
+
+#, fuzzy
+msgid "drag"
+msgstr "Goga"
+
+#, fuzzy
+msgid "draw"
+msgstr "Goga"
+
+msgid "driver"
+msgstr "mootledi"
+
+#, fuzzy
+msgid "dual"
+msgstr "taela"
+
+msgid "dump"
+msgstr "sedirišwa sa go kopiša"
+
+msgid "duplicate"
+msgstr "kopiša"
+
+msgid "dynamic"
+msgstr ""
+
+msgid "echo"
+msgstr ""
+
+#, fuzzy
+msgid "edit"
+msgstr "etšwa"
+
+msgid "edition"
+msgstr ""
+
+msgid "editor"
+msgstr ""
+
+msgid "effect"
+msgstr ""
+
+#, fuzzy
+msgid "eject"
+msgstr "Gana"
+
+msgid "electronic"
+msgstr ""
+
+msgid "element"
+msgstr ""
+
+#, fuzzy
+msgid "email"
+msgstr "poso ya elektronike"
+
+msgid "embed"
+msgstr "khutiša"
+
+msgid "emoticon"
+msgstr "sehlopha sa ditlhaka"
+
+msgid "empty"
+msgstr ""
+
+#, fuzzy
+msgid "emulate"
+msgstr "moekiši"
+
+msgid "emulation"
+msgstr "go ekiša"
+
+msgid "emulator"
+msgstr "moekiši"
+
+msgid "enable"
+msgstr "kgontšha"
+
+#, fuzzy
+msgid "enabled"
+msgstr "kgontšha"
+
+msgid "encode"
+msgstr "go tsenya khoutu"
+
+#, fuzzy
+msgid "encoding"
+msgstr "Khuta"
+
+msgid "encrypt"
+msgstr "uta"
+
+msgid "encrypted"
+msgstr "utilwe"
+
+msgid "encryption"
+msgstr "go uta"
+
+msgid "engine"
+msgstr ""
+
+msgid "enhancement"
+msgstr ""
+
+msgid "enlarge"
+msgstr ""
+
+msgid "enlargement"
+msgstr ""
+
+msgid "enter"
+msgstr "tsena"
+
+msgid "entertainment"
+msgstr ""
+
+msgid "entry"
+msgstr ""
+
+msgid "environment"
+msgstr ""
+
+msgid "equalizer"
+msgstr ""
+
+msgid "erase"
+msgstr ""
+
+msgid "error"
+msgstr "phošo"
+
+msgid "escape"
+msgstr "tšwa"
+
+msgid "evaluation"
+msgstr ""
+
+#, fuzzy
+msgid "event"
+msgstr "ditiragalo"
+
+msgid "exception"
+msgstr "Ditlhaolwa"
+
+msgid "executable"
+msgstr ""
+
+msgid "execute"
+msgstr "seo se šomago ka mo go feletšego"
+
+msgid "existing"
+msgstr ""
+
+msgid "exit"
+msgstr "etšwa"
+
+msgid "expand"
+msgstr "katološa"
+
+#, fuzzy
+msgid "expansion"
+msgstr "koketšo"
+
+msgid "explore"
+msgstr ""
+
+msgid "export"
+msgstr "thomelo ntle"
+
+msgid "expression"
+msgstr ""
+
+msgid "extend"
+msgstr ""
+
+msgid "extensible"
+msgstr ""
+
+msgid "extension"
+msgstr "koketšo"
+
+#, fuzzy
+msgid "external"
+msgstr "sebaka magareng ga dilo tše pedi"
+
+msgid "extra"
+msgstr ""
+
+msgid "extract"
+msgstr ""
+
+msgid "fail"
+msgstr "palelwa"
+
+# فادح: مثل خطأ فادح
+msgid "fatal"
+msgstr ""
+
+msgid "fault"
+msgstr ""
+
+#, fuzzy
+msgid "favorite"
+msgstr "tšeo di ratwago kudu"
+
+#, fuzzy
+msgid "feature"
+msgstr "Dibopego"
+
+msgid "feed"
+msgstr ""
+
+msgid "feedback"
+msgstr ""
+
+msgid "fetch"
+msgstr ""
+
+msgid "field"
+msgstr "lepatlelo"
+
+msgid "figure"
+msgstr ""
+
+msgid "file"
+msgstr "faele"
+
+#, fuzzy
+msgid "fill"
+msgstr "faele"
+
+msgid "filter"
+msgstr ""
+
+msgid "find"
+msgstr "hwetša"
+
+msgid "firewall"
+msgstr "sedirišwa sa khomphutha seo se šireletšago boitsebišo"
+
+msgid "firmware"
+msgstr ""
+
+msgid "fit"
+msgstr ""
+
+msgid "fix"
+msgstr ""
+
+#, fuzzy
+msgid "flag"
+msgstr "difolaga"
+
+#, fuzzy
+msgid "flash"
+msgstr "thulana"
+
+#, fuzzy
+msgid "flat"
+msgstr "difolaga"
+
+msgid "flip"
+msgstr "go šutha ka lebelo"
+
+#, fuzzy
+msgid "float (verb)"
+msgstr "sebopego"
+
+msgid "flood"
+msgstr ""
+
+msgid "floppy"
+msgstr ""
+
+msgid "folder"
+msgstr "foltara"
+
+msgid "font"
+msgstr "fonte"
+
+msgid "footer"
+msgstr "mongwalo o tšwelelago botlaseng bja letlakala"
+
+#, fuzzy
+msgid "form"
+msgstr "foramo"
+
+#, fuzzy
+msgid "format (noun)"
+msgstr "sebopego"
+
+#, fuzzy
+msgid "format (verb)"
+msgstr "sebopego"
+
+msgid "formatted"
+msgstr ""
+
+msgid "formula"
+msgstr ""
+
+msgid "forum"
+msgstr "foramo"
+
+msgid "fragment"
+msgstr ""
+
+msgid "frame"
+msgstr "foreimi"
+
+msgid "frame set"
+msgstr ""
+
+msgid "framework"
+msgstr ""
+
+msgid "free software"
+msgstr "lenaneo-tirišo la khomphutha la bolokologi"
+
+msgid "freeze"
+msgstr ""
+
+msgid "frequency"
+msgstr "leboelela"
+
+msgid "front end"
+msgstr "selaodi se kopanyago tsebišo"
+
+msgid "function"
+msgstr ""
+
+msgid "gallery"
+msgstr ""
+
+#, fuzzy
+msgid "game"
+msgstr "Leina"
+
+msgid "gateway"
+msgstr "tsela ya go tšwa"
+
+msgid "generate"
+msgstr "hlagiša"
+
+msgid "generation"
+msgstr ""
+
+msgid "generator"
+msgstr ""
+
+msgid "generic"
+msgstr ""
+
+#, fuzzy
+msgid "geometric"
+msgstr "Tšeometri"
+
+msgid "geometry"
+msgstr "Tšeometri"
+
+msgid "grab"
+msgstr ""
+
+msgid "gradient"
+msgstr ""
+
+msgid "grain"
+msgstr ""
+
+msgid "graph"
+msgstr ""
+
+#, fuzzy
+msgid "graphic"
+msgstr "diswantšho"
+
+#, fuzzy
+msgid "graphical"
+msgstr "diswantšho"
+
+msgid "graphics"
+msgstr "diswantšho"
+
+msgid "gray-scale"
+msgstr ""
+
+msgid "grid"
+msgstr ""
+
+msgid "group"
+msgstr ""
+
+#, fuzzy
+msgid "guess"
+msgstr "moeng"
+
+msgid "guest"
+msgstr "moeng"
+
+msgid "handle (noun)"
+msgstr ""
+
+msgid "handle (verb)"
+msgstr ""
+
+msgid "handler"
+msgstr "moswari"
+
+msgid "hardware"
+msgstr "hardware"
+
+msgid "hash"
+msgstr "pušeletšo"
+
+#, fuzzy
+msgid "head"
+msgstr "bala"
+
+msgid "header"
+msgstr "hlogwana ya godimo"
+
+msgid "height"
+msgstr "bophagamo"
+
+msgid "help"
+msgstr "thušo"
+
+msgid "hide"
+msgstr "fihla"
+
+msgid "hierarchy"
+msgstr ""
+
+msgid "high light"
+msgstr ""
+
+msgid "history"
+msgstr "histori"
+
+msgid "host"
+msgstr "moamogedi"
+
+msgid "hostname"
+msgstr "Leina la moamogedi"
+
+msgid "hyperlink"
+msgstr "haephalinki"
+
+msgid "hypertext"
+msgstr "hypertext"
+
+msgid "icon"
+msgstr "aekhone"
+
+#, fuzzy
+msgid "identify"
+msgstr "Boitsebišo"
+
+msgid "idle"
+msgstr ""
+
+#, fuzzy
+msgid "ignore"
+msgstr "Hlokomologa"
+
+msgid "image"
+msgstr "seswantšho"
+
+msgid "implement"
+msgstr ""
+
+msgid "import"
+msgstr "kamogelo ya tša ntle"
+
+#, fuzzy
+msgid "inactive"
+msgstr "diragatša"
+
+msgid "inbox"
+msgstr "Tša ka lepokising"
+
+msgid "inch"
+msgstr ""
+
+msgid "include"
+msgstr ""
+
+#, fuzzy
+msgid "incoming"
+msgstr "Khuta"
+
+#, fuzzy
+msgid "incompatible"
+msgstr "kwanago"
+
+#, fuzzy
+msgid "increase"
+msgstr "&Oketša"
+
+msgid "increment"
+msgstr ""
+
+#, fuzzy
+msgid "indent"
+msgstr "Tsenya ka gare"
+
+msgid "index"
+msgstr "intekese"
+
+msgid "indice"
+msgstr ""
+
+msgid "infect"
+msgstr ""
+
+msgid "infinite"
+msgstr ""
+
+msgid "information"
+msgstr "tshedimošo"
+
+msgid "infrared"
+msgstr ""
+
+msgid "initial"
+msgstr ""
+
+#, fuzzy
+msgid "initialize"
+msgstr "go se tšee mogato pele"
+
+msgid "input"
+msgstr "tshwayo"
+
+msgid "insert"
+msgstr "tsenya"
+
+msgid "install"
+msgstr "lokela"
+
+msgid "installer"
+msgstr "molokedi"
+
+msgid "instance"
+msgstr ""
+
+msgid "instruction"
+msgstr ""
+
+msgid "integer"
+msgstr "selo se feleletšego"
+
+#, fuzzy
+msgid "integral"
+msgstr "sebaka magareng ga dilo tše pedi"
+
+#, fuzzy
+msgid "integrate"
+msgstr "kopantšwego"
+
+msgid "integration"
+msgstr ""
+
+#, fuzzy
+msgid "integrity"
+msgstr "kopantšwego"
+
+msgid "intensity"
+msgstr ""
+
+#, fuzzy
+msgid "interactivity"
+msgstr "go abelana tsebišo"
+
+msgid "interface"
+msgstr "poledišano"
+
+#, fuzzy
+msgid "internal"
+msgstr "sebaka magareng ga dilo tše pedi"
+
+#, fuzzy
+msgid "internet"
+msgstr "Inthanete"
+
+msgid "interrupt"
+msgstr ""
+
+msgid "invalid"
+msgstr "e sa šomego"
+
+msgid "inverse"
+msgstr ""
+
+#, fuzzy
+msgid "invert"
+msgstr "tsenya"
+
+msgid "invoke"
+msgstr ""
+
+msgid "italic"
+msgstr "mongwalo o sekamego"
+
+#, fuzzy
+msgid "item"
+msgstr "Selo"
+
+#, fuzzy
+msgid "iteration"
+msgstr "modiriši"
+
+msgid "jag"
+msgstr ""
+
+msgid "jam"
+msgstr ""
+
+msgid "job"
+msgstr ""
+
+msgid "join"
+msgstr "kopanya"
+
+msgid "joy stick"
+msgstr ""
+
+#, fuzzy
+msgid "jump"
+msgstr "sedirišwa sa go kopiša"
+
+#, fuzzy
+msgid "junk"
+msgstr "Melaetša ye e sego mohola"
+
+#, fuzzy
+msgid "justify"
+msgstr "Lekanyetša"
+
+msgid "keep"
+msgstr ""
+
+msgid "kernel"
+msgstr ""
+
+msgid "key"
+msgstr "khii"
+
+msgid "keyboard"
+msgstr "khiipoto"
+
+msgid "key stroke"
+msgstr ""
+
+msgid "key word"
+msgstr "lentšu la bohlokwa"
+
+msgid "label"
+msgstr "leswao"
+
+#, fuzzy
+msgid "landscape"
+msgstr "Ponagalo ya naga"
+
+msgid "language"
+msgstr "leleme"
+
+msgid "laptop"
+msgstr ""
+
+msgid "launch"
+msgstr "thomiša"
+
+#, fuzzy
+msgid "layer"
+msgstr "Leyara"
+
+msgid "layout"
+msgstr "tlhamego"
+
+msgid "length"
+msgstr ""
+
+msgid "license"
+msgstr ""
+
+#, fuzzy
+msgid "line"
+msgstr "kgokaganya"
+
+msgid "link"
+msgstr "lomaganyo"
+
+msgid "list"
+msgstr "lelokelelo"
+
+msgid "load"
+msgstr "hlahlela"
+
+#, fuzzy
+msgid "local"
+msgstr "mo gae"
+
+msgid "localization"
+msgstr ""
+
+msgid "location"
+msgstr "lefelo"
+
+msgid "log"
+msgstr ""
+
+#, fuzzy
+msgid "lookup"
+msgstr "Lebelelagodimo"
+
+#, fuzzy
+msgid "lower-case"
+msgstr "tlhaka e nyenyane"
+
+msgid "machine"
+msgstr ""
+
+msgid "main board"
+msgstr ""
+
+msgid "maintainer"
+msgstr ""
+
+msgid "maintenance"
+msgstr ""
+
+#, fuzzy
+msgid "manage"
+msgstr "molaodi"
+
+msgid "management"
+msgstr ""
+
+msgid "manager"
+msgstr "molaodi"
+
+msgid "manual"
+msgstr "maitirelo"
+
+msgid "margin"
+msgstr "morumo"
+
+msgid "mark"
+msgstr "swaya"
+
+msgid "master"
+msgstr "kgolo"
+
+msgid "match"
+msgstr "swantšha"
+
+#, fuzzy
+msgid "maximize"
+msgstr "godiša"
+
+msgid "memory"
+msgstr "polokelo"
+
+msgid "menu"
+msgstr "lelokelelo"
+
+msgid "merge"
+msgstr ""
+
+msgid "message"
+msgstr "molaetša"
+
+#, fuzzy
+msgid "method"
+msgstr "Mokgwa"
+
+#, fuzzy
+msgid "minimize"
+msgstr "fokotša"
+
+msgid "mode"
+msgstr "mokgwa"
+
+#, fuzzy
+msgid "modem"
+msgstr "mokgwa"
+
+#, fuzzy
+msgid "moderator"
+msgstr "modiriši"
+
+msgid "modify"
+msgstr "fetoša"
+
+msgid "module"
+msgstr "motšule"
+
+msgid "monitor"
+msgstr ""
+
+msgid "mosaic"
+msgstr ""
+
+#, fuzzy
+msgid "motion"
+msgstr "sehlopha sa ditlhaka"
+
+msgid "mouse"
+msgstr "legotlwana; mause"
+
+msgid "move"
+msgstr "šutha"
+
+msgid "multimedia"
+msgstr "kgašoditaba-ntši"
+
+msgid "multitasking"
+msgstr ""
+
+msgid "name"
+msgstr "Leina"
+
+#, fuzzy
+msgid "navigation"
+msgstr "Navigator"
+
+#, fuzzy
+msgid "navigator"
+msgstr "Navigator"
+
+#, fuzzy
+msgid "network"
+msgstr "Neteweke"
+
+#, fuzzy
+msgid "news group"
+msgstr "sehlopha sa ditaba"
+
+#, fuzzy
+msgid "next"
+msgstr "nete"
+
+#, fuzzy
+msgid "nick name"
+msgstr "leina la dikwero"
+
+msgid "no"
+msgstr ""
+
+#, fuzzy
+msgid "node"
+msgstr "mokgwa"
+
+#, fuzzy
+msgid "notation"
+msgstr "lefelo"
+
+#, fuzzy
+msgid "note"
+msgstr "ga go na selo"
+
+msgid "notebook"
+msgstr ""
+
+msgid "notification"
+msgstr "tsebišo"
+
+msgid "notify"
+msgstr "tsebiša"
+
+# في الرياضيات "صفر"
+# الصفة "منعدم"
+msgid "null"
+msgstr ""
+
+msgid "number"
+msgstr ""
+
+msgid "numbering"
+msgstr "go dirwa ga dinomoro"
+
+msgid "object"
+msgstr "sedirišwa"
+
+msgid "occurrence"
+msgstr ""
+
+msgid "octet"
+msgstr ""
+
+msgid "offline"
+msgstr "go se be mogaleng"
+
+msgid "OK"
+msgstr "GO LOKILE"
+
+msgid "online"
+msgstr "mogaleng"
+
+msgid "ongoing"
+msgstr ""
+
+msgid "opacity"
+msgstr "sebopego se se bonatšago seetša"
+
+msgid "opaque"
+msgstr ""
+
+msgid "open"
+msgstr "bula"
+
+msgid "operation"
+msgstr "tirišo"
+
+msgid "option"
+msgstr "kgetho"
+
+msgid "optional"
+msgstr "ya boikgethelo"
+
+msgid "order"
+msgstr ""
+
+#, fuzzy
+msgid "organize"
+msgstr "rulaganya"
+
+#, fuzzy
+msgid "orientation"
+msgstr "Tšhupetšo:"
+
+msgid "original"
+msgstr ""
+
+msgid "outgoing"
+msgstr ""
+
+msgid "output"
+msgstr "tshedimošo e tšweleditšwego ke khomphuthara"
+
+msgid "overflow"
+msgstr ""
+
+msgid "override"
+msgstr "beela ka thoko"
+
+#, fuzzy
+msgid "overwrite"
+msgstr "beela ka thoko"
+
+msgid "owner"
+msgstr ""
+
+#, fuzzy
+msgid "pack"
+msgstr "go se fihle tekanetšong"
+
+msgid "package"
+msgstr "sephuthelwana"
+
+msgid "packet"
+msgstr "tsebišo e kopana e lego poledišanong ya neteweke"
+
+#, fuzzy
+msgid "padding"
+msgstr "Go šireletša:"
+
+msgid "page"
+msgstr "letlakala"
+
+#, fuzzy
+msgid "paint"
+msgstr "ntlha"
+
+msgid "pair"
+msgstr ""
+
+#, fuzzy
+msgid "palette"
+msgstr "Phalete:"
+
+msgid "panel"
+msgstr ""
+
+msgid "parallel"
+msgstr ""
+
+msgid "parameter"
+msgstr ""
+
+#, fuzzy
+msgid "parcel"
+msgstr "Phasela"
+
+msgid "parent"
+msgstr ""
+
+msgid "parity"
+msgstr "tekano"
+
+msgid "parse"
+msgstr "go arola mantšu;fetleka"
+
+msgid "partition"
+msgstr ""
+
+msgid "pass"
+msgstr ""
+
+msgid "password"
+msgstr "lentšuphetišo"
+
+msgid "paste"
+msgstr "kgomaretša"
+
+msgid "patch (noun)"
+msgstr ""
+
+msgid "patch (verb)"
+msgstr ""
+
+msgid "path"
+msgstr "tsejana"
+
+msgid "pattern"
+msgstr ""
+
+msgid "pause"
+msgstr "khutša"
+
+#, fuzzy
+msgid "peripheral"
+msgstr ""
+"didirišwa tše di kgokagantšwego khomphuthareng bakeng sa go boloka tsebišo"
+
+msgid "permanent"
+msgstr ""
+
+msgid "permission"
+msgstr "tumelelo"
+
+msgid "permutation"
+msgstr ""
+
+#, fuzzy
+msgid "physical"
+msgstr "Sebopego"
+
+msgid "picture"
+msgstr "senepe"
+
+msgid "pipe"
+msgstr "phaephe"
+
+#, fuzzy
+msgid "pixel"
+msgstr "dikarolwana tše bopago seswantšho"
+
+msgid "placement"
+msgstr ""
+
+msgid "plain"
+msgstr ""
+
+msgid "plot (verb)"
+msgstr ""
+
+msgid "plotter"
+msgstr "plotter"
+
+msgid "plugin"
+msgstr "tsebišo-koketšo"
+
+#, fuzzy
+msgid "pop up"
+msgstr "seo se tšwelelago se sa letelwa"
+
+msgid "port"
+msgstr "didirišwa tše kopantšwego le khomphuthara"
+
+#, fuzzy
+msgid "position"
+msgstr "Maemo:"
+
+#, fuzzy
+msgid "post"
+msgstr "tirišo yeo e laolago poledišano ya network"
+
+msgid "preferences"
+msgstr "dikganyogo"
+
+msgid "prepare"
+msgstr ""
+
+#, fuzzy
+msgid "presentation"
+msgstr "Tšhupetšo:"
+
+msgid "press"
+msgstr "gatelela"
+
+msgid "prevent"
+msgstr ""
+
+#, fuzzy
+msgid "preview"
+msgstr "Tebelelo pele"
+
+msgid "primary"
+msgstr ""
+
+msgid "principal"
+msgstr ""
+
+msgid "print"
+msgstr "gatiša"
+
+msgid "printer"
+msgstr "segatiši"
+
+msgid "priority"
+msgstr "šedi ya pele"
+
+msgid "privacy"
+msgstr "sephiri"
+
+msgid "private"
+msgstr ""
+
+msgid "privilege"
+msgstr ""
+
+msgid "procedure"
+msgstr ""
+
+#, fuzzy
+msgid "process"
+msgstr "mohlami"
+
+msgid "processor"
+msgstr "mohlami"
+
+#, fuzzy
+msgid "product"
+msgstr "Setšweletšwa"
+
+msgid "profile"
+msgstr ""
+
+msgid "program"
+msgstr "lenaneo"
+
+msgid "programmer"
+msgstr ""
+
+#, fuzzy
+msgid "project"
+msgstr "šireletša"
+
+#, fuzzy
+msgid "prompt"
+msgstr "Akgofa"
+
+#, fuzzy
+msgid "property"
+msgstr "Pharologantšho"
+
+msgid "proprietary"
+msgstr ""
+
+msgid "protect"
+msgstr "šireletša"
+
+msgid "protection"
+msgstr ""
+
+#, !!!
+msgid "protocol"
+msgstr "porotokole"
+
+msgid "provide"
+msgstr ""
+
+msgid "provider"
+msgstr ""
+
+msgid "proxy"
+msgstr "moemedi"
+
+msgid "public"
+msgstr ""
+
+#, fuzzy
+msgid "publish"
+msgstr "Gatiša"
+
+msgid "pull"
+msgstr ""
+
+msgid "push"
+msgstr ""
+
+msgid "quality"
+msgstr ""
+
+msgid "quantity"
+msgstr ""
+
+msgid "quarantine"
+msgstr ""
+
+msgid "query"
+msgstr "pelaelo"
+
+msgid "queue"
+msgstr ""
+
+msgid "quit"
+msgstr "tswalela"
+
+#, fuzzy
+msgid "quota"
+msgstr "Lekanego"
+
+#, fuzzy
+msgid "quotation"
+msgstr "lefelo"
+
+#, fuzzy
+msgid "quote"
+msgstr "Tsopola"
+
+msgid "raise"
+msgstr ""
+
+msgid "random"
+msgstr ""
+
+msgid "range"
+msgstr "mehuta"
+
+msgid "rate"
+msgstr "lekanyetša"
+
+msgid "ratio"
+msgstr ""
+
+msgid "raw"
+msgstr ""
+
+msgid "ray"
+msgstr ""
+
+msgid "read"
+msgstr "bala"
+
+#, fuzzy
+msgid "read only"
+msgstr "Bala fela"
+
+#, fuzzy
+msgid "ready"
+msgstr "bala"
+
+#, fuzzy
+msgid "real"
+msgstr "bala"
+
+msgid "reboot"
+msgstr "thomološa"
+
+msgid "receipt"
+msgstr ""
+
+msgid "receive"
+msgstr "amogela"
+
+msgid "recognition"
+msgstr ""
+
+#, fuzzy
+msgid "reconnect"
+msgstr "kgokaganya"
+
+msgid "record"
+msgstr ""
+
+msgid "record (verb)"
+msgstr ""
+
+msgid "recover"
+msgstr "hwetša gape"
+
+#, fuzzy
+msgid "recovery"
+msgstr "hwetša gape"
+
+#
+msgid "recursion"
+msgstr ""
+
+msgid "recursive"
+msgstr ""
+
+msgid "redirect"
+msgstr ""
+
+msgid "redo"
+msgstr "dira gape"
+
+msgid "reduce"
+msgstr ""
+
+msgid "reduction"
+msgstr ""
+
+msgid "redundant"
+msgstr ""
+
+msgid "reference"
+msgstr "tšhupetšo"
+
+#, fuzzy
+msgid "referer"
+msgstr "sešupetši"
+
+#, fuzzy
+msgid "referral"
+msgstr "sešupetši"
+
+msgid "reflexive"
+msgstr ""
+
+#, fuzzy
+msgid "refresh"
+msgstr "&Thoma leswa"
+
+msgid "refuse"
+msgstr ""
+
+msgid "regenerate"
+msgstr "hlagiša leswa"
+
+msgid "register"
+msgstr ""
+
+msgid "registration"
+msgstr ""
+
+msgid "registry"
+msgstr ""
+
+#, fuzzy
+msgid "regular"
+msgstr "Tlwaelo"
+
+#, fuzzy
+msgid "regulate"
+msgstr "moekiši"
+
+msgid "relay"
+msgstr ""
+
+msgid "release"
+msgstr ""
+
+#, fuzzy
+msgid "remaining"
+msgstr "Šetšego:"
+
+msgid "remind"
+msgstr ""
+
+msgid "remote"
+msgstr "kgole"
+
+msgid "removable"
+msgstr ""
+
+msgid "remove"
+msgstr "tloša"
+
+msgid "rename"
+msgstr "rea gape"
+
+msgid "render"
+msgstr "gafela"
+
+msgid "renew"
+msgstr ""
+
+msgid "repair"
+msgstr ""
+
+#, fuzzy
+msgid "repeat"
+msgstr "e bueleditwe"
+
+msgid "replace"
+msgstr "tšeela legato"
+
+#, fuzzy
+msgid "replicate"
+msgstr "Kopiša"
+
+#, fuzzy
+msgid "replication"
+msgstr "Tirišo"
+
+msgid "reply"
+msgstr "araba"
+
+msgid "report"
+msgstr ""
+
+msgid "repository"
+msgstr ""
+
+msgid "request"
+msgstr ""
+
+msgid "require"
+msgstr ""
+
+msgid "requirement"
+msgstr "senyakwa"
+
+msgid "reset"
+msgstr "peakanyoleswa"
+
+msgid "resize"
+msgstr ""
+
+msgid "resolution"
+msgstr ""
+
+#, fuzzy
+msgid "resolver"
+msgstr "hwetša gape"
+
+msgid "resource"
+msgstr "dthušo"
+
+msgid "response"
+msgstr "karabelo"
+
+msgid "restart"
+msgstr "thoma ka leswa"
+
+#, fuzzy
+msgid "restore"
+msgstr "Boloka"
+
+#, fuzzy
+msgid "restrict"
+msgstr "struct"
+
+msgid "restriction"
+msgstr ""
+
+#, fuzzy
+msgid "result"
+msgstr "dipoelo"
+
+msgid "resume"
+msgstr "tšwela pele"
+
+msgid "retrieve"
+msgstr ""
+
+msgid "retry"
+msgstr "leka gape"
+
+msgid "return"
+msgstr "boela"
+
+msgid "reverse"
+msgstr ""
+
+msgid "revert"
+msgstr "boela morago"
+
+msgid "revocation"
+msgstr ""
+
+msgid "revoke"
+msgstr ""
+
+msgid "root"
+msgstr ""
+
+msgid "rotate"
+msgstr ""
+
+msgid "route"
+msgstr ""
+
+msgid "router"
+msgstr ""
+
+msgid "routine"
+msgstr ""
+
+msgid "row"
+msgstr ""
+
+#, fuzzy
+msgid "rule"
+msgstr "melao"
+
+msgid "run"
+msgstr "dira"
+
+msgid "runtime"
+msgstr ""
+
+#, fuzzy
+msgid "safe"
+msgstr "boloka"
+
+msgid "sample"
+msgstr ""
+
+#, fuzzy
+msgid "sans"
+msgstr "Sans"
+
+msgid "save"
+msgstr "boloka"
+
+msgid "scalable"
+msgstr ""
+
+#, fuzzy
+msgid "scale"
+msgstr "kadilwego"
+
+msgid "scan"
+msgstr ""
+
+msgid "scanner"
+msgstr "sekena"
+
+msgid "schedule"
+msgstr "kemišo"
+
+msgid "scheme"
+msgstr ""
+
+msgid "scratch"
+msgstr ""
+
+msgid "screen"
+msgstr "sekirini"
+
+msgid "screw"
+msgstr ""
+
+msgid "script"
+msgstr "sekripte"
+
+# من لف الشئ يلفه
+# فتقول:
+# لف ﻷعلى=scroll up ، وهكذا
+msgid "scroll"
+msgstr ""
+
+msgid "search"
+msgstr "nyakišiša"
+
+#, fuzzy
+msgid "section"
+msgstr "kgetho"
+
+#, fuzzy
+msgid "sector"
+msgstr "dikarolo"
+
+msgid "secure"
+msgstr ""
+
+msgid "security"
+msgstr "tšhireletšego"
+
+msgid "seek"
+msgstr ""
+
+msgid "segment"
+msgstr ""
+
+msgid "segmentation"
+msgstr ""
+
+msgid "select"
+msgstr "kgetha"
+
+msgid "selection"
+msgstr "kgetho"
+
+msgid "semantic"
+msgstr ""
+
+msgid "send"
+msgstr "romela"
+
+msgid "sender"
+msgstr "moromedi"
+
+msgid "sensitive"
+msgstr ""
+
+msgid "sensor"
+msgstr ""
+
+msgid "serif"
+msgstr "serifi"
+
+msgid "server"
+msgstr "seabi"
+
+msgid "session"
+msgstr "lenaneo;nako;sešene"
+
+msgid "set"
+msgstr ""
+
+msgid "settings"
+msgstr "dipeakanyo"
+
+msgid "setup"
+msgstr "peakanyo; beakanya"
+
+msgid "shading"
+msgstr "go fifatša"
+
+msgid "shadow"
+msgstr ""
+
+#, fuzzy
+msgid "shape"
+msgstr "abela"
+
+msgid "share"
+msgstr "abela"
+
+#, fuzzy
+msgid "sharp"
+msgstr "abela"
+
+msgid "sheet"
+msgstr "letlakala"
+
+msgid "shell"
+msgstr ""
+
+#, fuzzy
+msgid "shift"
+msgstr "Shift"
+
+msgid "shortcut"
+msgstr "kgaoletšo"
+
+msgid "show"
+msgstr "laetša"
+
+msgid "shrink"
+msgstr ""
+
+msgid "shut down"
+msgstr "tima"
+
+#, fuzzy
+msgid "side bar"
+msgstr "bara ya ka thoko"
+
+#, fuzzy
+msgid "sign"
+msgstr "Saena"
+
+msgid "signal"
+msgstr "leswao"
+
+msgid "signature"
+msgstr "mosaeno"
+
+msgid "site"
+msgstr "saete"
+
+msgid "size"
+msgstr "tekanyo"
+
+msgid "skew"
+msgstr ""
+
+msgid "skip"
+msgstr "taboga"
+
+#, fuzzy
+msgid "slave"
+msgstr "boloka"
+
+msgid "sleep"
+msgstr ""
+
+msgid "slide"
+msgstr "široga"
+
+msgid "slot"
+msgstr ""
+
+msgid "smart"
+msgstr ""
+
+msgid "smiley"
+msgstr "diswantšho tša melaetša"
+
+msgid "smooth"
+msgstr ""
+
+msgid "socket"
+msgstr "sokhete"
+
+msgid "software"
+msgstr "lenaneo-tirišo la khomphutha"
+
+msgid "solid"
+msgstr ""
+
+msgid "sort"
+msgstr "bea ka tatelano"
+
+msgid "source"
+msgstr "mothopo"
+
+#, fuzzy
+msgid "space"
+msgstr "Sekgoba"
+
+#, fuzzy
+msgid "spacing"
+msgstr "Dira sekgoba"
+
+msgid "spam"
+msgstr ""
+
+msgid "span"
+msgstr ""
+
+msgid "spawn"
+msgstr ""
+
+msgid "specify"
+msgstr ""
+
+#, fuzzy
+msgid "speed"
+msgstr "Lebelo"
+
+#, fuzzy
+msgid "spelling"
+msgstr "Mopeleto"
+
+msgid "splash"
+msgstr ""
+
+msgid "split"
+msgstr "aroganya"
+
+msgid "spool"
+msgstr ""
+
+#, fuzzy
+msgid "spread sheet"
+msgstr "lelokelelo la ditokumente"
+
+msgid "stack"
+msgstr "mokgobo"
+
+msgid "stand alone"
+msgstr ""
+
+#, fuzzy
+msgid "standard"
+msgstr "Lekanela"
+
+msgid "start"
+msgstr ""
+
+#, fuzzy
+msgid "state"
+msgstr "Naga"
+
+msgid "static"
+msgstr ""
+
+msgid "statistics"
+msgstr ""
+
+#, fuzzy
+msgid "step"
+msgstr "Emiša"
+
+#, fuzzy
+msgid "stop"
+msgstr "Emiša"
+
+msgid "storage"
+msgstr ""
+
+msgid "store"
+msgstr "boloka"
+
+msgid "stream"
+msgstr ""
+
+#, fuzzy
+msgid "stretch"
+msgstr "Otlolla"
+
+#, fuzzy
+msgid "strict"
+msgstr "struct"
+
+msgid "string"
+msgstr "thapo"
+
+msgid "strip"
+msgstr ""
+
+msgid "stroke"
+msgstr "phumotše"
+
+msgid "structure"
+msgstr ""
+
+msgid "stub"
+msgstr ""
+
+msgid "style"
+msgstr ""
+
+msgid "sub directory"
+msgstr ""
+
+msgid "sub folder"
+msgstr "foltara e nyenyane"
+
+msgid "submission"
+msgstr ""
+
+msgid "submit"
+msgstr "tliša"
+
+msgid "subscribe"
+msgstr "ingwadiše"
+
+#, fuzzy
+msgid "subscription"
+msgstr "sengwalwa se senyenyane"
+
+msgid "subtract"
+msgstr ""
+
+msgid "succeed"
+msgstr ""
+
+msgid "suggest"
+msgstr ""
+
+#, fuzzy
+msgid "suggestion"
+msgstr "Ditšhišinyo:"
+
+msgid "sum (noun)"
+msgstr ""
+
+msgid "sum (verb)"
+msgstr ""
+
+#, fuzzy
+msgid "summary"
+msgstr "Kakaretso"
+
+msgid "support"
+msgstr ""
+
+msgid "surface"
+msgstr ""
+
+msgid "suspend"
+msgstr "fega"
+
+msgid "suspicious"
+msgstr ""
+
+msgid "swap"
+msgstr ""
+
+#, fuzzy
+msgid "switch"
+msgstr "Switšha"
+
+msgid "symbol"
+msgstr ""
+
+msgid "synchronize"
+msgstr ""
+
+msgid "syntax"
+msgstr "popafoko"
+
+msgid "system"
+msgstr "tshepedišo"
+
+msgid "tab"
+msgstr "tab"
+
+#, fuzzy
+msgid "table"
+msgstr "Tafola"
+
+msgid "tag"
+msgstr "tshwayo"
+
+msgid "target"
+msgstr "pakane"
+
+msgid "template"
+msgstr "thempoleiti"
+
+msgid "temporary"
+msgstr ""
+
+#, fuzzy
+msgid "terminal"
+msgstr "Kgokagano ya dithapo"
+
+#, fuzzy
+msgid "test"
+msgstr "logaganya"
+
+msgid "text"
+msgstr "sengwalwa"
+
+msgid "texture"
+msgstr ""
+
+msgid "theme"
+msgstr "sehlogo"
+
+msgid "thread"
+msgstr "go tšwa ka temogo selong se kotsi"
+
+msgid "thumbnail"
+msgstr "khutsufatšo"
+
+#, fuzzy
+msgid "tick"
+msgstr "monya"
+
+#, fuzzy
+msgid "tile"
+msgstr "leswao le bontšhago mohola"
+
+#, fuzzy
+msgid "time"
+msgstr "sebala nako"
+
+#, fuzzy
+msgid "time out"
+msgstr "nako e feditšwe"
+
+#, fuzzy
+msgid "tip"
+msgstr "maele"
+
+msgid "title"
+msgstr "sehlogo; thaetlele"
+
+msgid "toggle"
+msgstr "konopo ya go thumaša le go tima"
+
+msgid "token"
+msgstr "sešupo;seka"
+
+#, fuzzy
+msgid "tool"
+msgstr "didirišwa"
+
+#, fuzzy
+msgid "tool bar"
+msgstr "bara ya sedirišwa"
+
+#, fuzzy
+msgid "tool box"
+msgstr "bara ya sedirišwa"
+
+msgid "topic"
+msgstr "taba"
+
+#, fuzzy
+msgid "trace"
+msgstr "dinyakišišo"
+
+#, fuzzy
+msgid "track"
+msgstr "dinyakišišo"
+
+msgid "traffic"
+msgstr ""
+
+msgid "transfer"
+msgstr ""
+
+msgid "transform"
+msgstr ""
+
+msgid "transformation"
+msgstr ""
+
+#, fuzzy
+msgid "trap"
+msgstr "phuthela"
+
+msgid "trash"
+msgstr "swaya diphošo"
+
+msgid "trigger"
+msgstr ""
+
+msgid "trouble shoot"
+msgstr ""
+
+msgid "tune"
+msgstr ""
+
+msgid "tweak"
+msgstr ""
+
+msgid "type (noun)"
+msgstr ""
+
+msgid "type (verb)"
+msgstr ""
+
+#, fuzzy
+msgid "type face"
+msgstr "Thaepefeisi"
+
+msgid "unavailable"
+msgstr ""
+
+msgid "undelete"
+msgstr "o seke wa phumola"
+
+#, fuzzy
+msgid "under line"
+msgstr "thalela"
+
+msgid "undo"
+msgstr "dirolla"
+
+msgid "uninstall"
+msgstr "ntšha"
+
+msgid "unit"
+msgstr ""
+
+#, fuzzy
+msgid "unknown"
+msgstr "Sa tsebegego"
+
+msgid "unload"
+msgstr "se hlahlele"
+
+#, fuzzy
+msgid "named"
+msgstr "Leina"
+
+#, fuzzy
+msgid "reachable"
+msgstr "nyakegago"
+
+#, fuzzy
+msgid "readable"
+msgstr "botegago"
+
+msgid "unspecified"
+msgstr ""
+
+#, fuzzy
+msgid "unsubscribe"
+msgstr "Ing&wadišolle"
+
+msgid "unsupported"
+msgstr ""
+
+msgid "update"
+msgstr "mpshafatšo"
+
+msgid "upgrade"
+msgstr "kaonafatšo"
+
+msgid "upload"
+msgstr "hlahlela"
+
+#, fuzzy
+msgid "upper case"
+msgstr "Tlhakakgolo"
+
+#, fuzzy
+msgid "usage"
+msgstr "Tšhomišo"
+
+msgid "user"
+msgstr "modiriši"
+
+msgid "user name"
+msgstr "leina la modiriši"
+
+msgid "utility"
+msgstr ""
+
+msgid "valid"
+msgstr "yeo e sa lego nakong"
+
+msgid "validation"
+msgstr "go ela tekanyo ya bokgoni bja sedirišwa"
+
+#, fuzzy
+msgid "validity"
+msgstr "Kgonthišo"
+
+#, fuzzy
+msgid "value"
+msgstr "Boleng"
+
+#, fuzzy
+msgid "variable"
+msgstr "&Mohuta"
+
+#, fuzzy
+msgid "vector"
+msgstr "dikarolo"
+
+msgid "verbose"
+msgstr ""
+
+msgid "verify"
+msgstr "kgonthišetša"
+
+msgid "version"
+msgstr "tokollo"
+
+#, fuzzy
+msgid "video"
+msgstr "Bidio"
+
+msgid "view"
+msgstr "lebelela"
+
+msgid "viewer"
+msgstr ""
+
+msgid "virtual"
+msgstr "tšweletšwa ka tsela ya go itiragalela"
+
+msgid "virus"
+msgstr "twatši ya dikhomphuthara"
+
+#, fuzzy
+msgid "visual"
+msgstr "E a bonagala"
+
+msgid "volume"
+msgstr "bolumo"
+
+msgid "wallpaper"
+msgstr "pampiri ya leboteng"
+
+msgid "warn"
+msgstr ""
+
+msgid "web"
+msgstr "wepe"
+
+msgid "web cam"
+msgstr ""
+
+#, fuzzy
+msgid "web master"
+msgstr "rawepesaete"
+
+msgid "web page"
+msgstr "letlakala la wepe"
+
+msgid "widget"
+msgstr "sehlogo seo se se nago leina"
+
+msgid "width"
+msgstr "bophara"
+
+msgid "wi fi"
+msgstr ""
+
+#, fuzzy
+msgid "wild card"
+msgstr "maswao ao a dirišetšwago go emela ditlhaka"
+
+msgid "window"
+msgstr "lefasetere"
+
+msgid "wizard"
+msgstr "ramahlale;wisate"
+
+msgid "word processor"
+msgstr "sebopi sa mantšu"
+
+msgid "work around"
+msgstr ""
+
+msgid "work group"
+msgstr ""
+
+msgid "work station"
+msgstr ""
+
+msgid "wrap"
+msgstr "phuthela"
+
+msgid "yes"
+msgstr ""
+
+#, fuzzy
+msgid "zone"
+msgstr "dirilwe"
+
+#, fuzzy
+msgid "zoom"
+msgstr "Sebatametši"

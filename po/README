@@ -1,35 +1,25 @@
-README
-======
+Official Unknown Horizons translations repository
+#####################################################
+Hourly exported from our pootle installation at
+http://pootle.unknown-horizons.org/
+#####################################################
 
-IMPORTANT: Don't use these .po files for translations, only use the .po files
-           in pootle!
+PLEASE NOTE that all interaction with our translation
+files happens through pootle EXCLUSIVELY!  This means
+that any kind of pull request or commit to the  repo-
+sitory this file is located in will  NOT be accepted!
 
-All translations are handled through pootle [1] and the .po files in this
-directory should only be touched when syncing with pootle (which should happen
-regularly so users of the Git repository can test the translations).
+If you would like to improve existing translations of
+Unknown Horizons, please do sign up there.
+Should a language project you plan to work on not yet
+exist, join us on IRC and leave a short message there
+-- or use the contact form our pootle server provides.
+We will get back to you as soon as possible if we can
+match your request with a related pootle account name.
 
-[1]: http://pootle.unknown-horizons.org/
+#####################################################
 
-To update unknown-horizons.pot run
+Thanks for your interest in improving UH translations!
 
-    ./development/create_pot.sh
-
-If the .po files should also be updated run (which calls msgmerge)
-
-    ./development/create_pot.sh -u
-
-If necessary guitranslations.py, which contains translatable strings from XML
-files, must be updated first, this can be done with
-
-    python development/extract_strings_from_xml.py horizons/i18n/guitranslations.py
-
-To generate the .mo files in build/ which are necessary to use the
-translations run
-
-    ./setup.py build_i18n
-
-setup.py only builds the .mo files (and generates unknown-horizons.desktop),
-no other translation related work is handled by it.
-
-At the moment ./setup.py build_i18n removes po/unknown-horizons.pot but it can
-easily be recreated with commands given above.
+Regards, the Unknown Horizons Team
+www.unknown-horizons.org

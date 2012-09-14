@@ -1,0 +1,794 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2012-03-31 21:42+0100\n"
+"PO-Revision-Date: 2011-11-21 12:01+0200\n"
+"Last-Translator: Jacob <jacob.kage@hotmail.com>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: da\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Pootle 2.1.5\n"
+
+msgid "build"
+msgstr "opbygge"
+
+msgid "game"
+msgstr "spil"
+
+msgid "building"
+msgstr "bygning"
+
+msgid "settlement"
+msgstr "afregning"
+
+msgid "farm"
+msgstr "gård"
+
+msgid "ship"
+msgstr "skib"
+
+msgid "tent"
+msgstr "telt"
+
+msgid "warehouse"
+msgstr ""
+
+msgid "resource"
+msgstr "ressource"
+
+msgid "produce"
+msgstr "producere"
+
+#, fuzzy
+msgid "field"
+msgstr "felt"
+
+#
+msgid "map"
+msgstr "kort"
+
+msgid "trade"
+msgstr "handel"
+
+msgid "inhabitants"
+msgstr "indbyggere"
+
+msgid "buy"
+msgstr "køb"
+
+msgid "overview"
+msgstr "oversigt"
+
+msgid "click"
+msgstr "klik"
+
+msgid "lumberjack"
+msgstr "skovhugger"
+
+# 88%
+#, fuzzy
+msgid "resident"
+msgstr "beboere"
+
+msgid "main square"
+msgstr "største torv"
+
+# 85%
+#, fuzzy
+msgid "sailors"
+msgstr "sømand"
+
+msgid "food"
+msgstr "mad"
+
+msgid "increment"
+msgstr "tilvækst"
+
+msgid "production"
+msgstr "produktion"
+
+msgid "select"
+msgstr "vælg"
+
+msgid "sell"
+msgstr "sælg"
+
+msgid "setting"
+msgstr "indstilling"
+
+msgid "storage"
+msgstr "opbevaring"
+
+msgid "tab"
+msgstr "fane"
+
+msgid "upgrade"
+msgstr ""
+
+msgid "your inhabitants"
+msgstr ""
+
+msgid "close"
+msgstr ""
+
+msgid "companies"
+msgstr "selskaber"
+
+msgid "island"
+msgstr ""
+
+msgid "time"
+msgstr "tid"
+
+msgid "unit"
+msgstr ""
+
+msgid "balance"
+msgstr "balance"
+
+msgid "coast"
+msgstr "kyst"
+
+msgid "menu"
+msgstr "menu"
+
+#, fuzzy
+msgid "slot"
+msgstr "slot"
+
+msgid "start"
+msgstr "start"
+
+msgid "stock"
+msgstr "lager"
+
+#, fuzzy
+msgid "trail"
+msgstr "spor"
+
+msgid "Unknown Horizons"
+msgstr ""
+
+msgid "wool"
+msgstr "uld"
+
+msgid "boards"
+msgstr "bestyrelser"
+
+msgid "collector"
+msgstr "opsamler"
+
+msgid "connection"
+msgstr "forbindelse"
+
+msgid "fire"
+msgstr "brand"
+
+msgid "change"
+msgstr "ændring"
+
+msgid "connect"
+msgstr "forbindelse"
+
+msgid "cost"
+msgstr "omkostninger"
+
+msgid "house"
+msgstr "hus"
+
+msgid "log"
+msgstr "logbog"
+
+msgid "road"
+msgstr ""
+
+#
+msgid "save"
+msgstr "spare"
+
+msgid "built"
+msgstr "bygget"
+
+msgid "pasture"
+msgstr "græsarealer"
+
+msgid "reach"
+msgstr "rækkevidde"
+
+msgid "tree"
+msgstr "træ"
+
+msgid "your"
+msgstr "din"
+
+msgid "your settlement"
+msgstr ""
+
+msgid "add"
+msgstr "tilføj"
+
+msgid "check"
+msgstr ""
+
+msgid "choose"
+msgstr "vælge"
+
+msgid "confectionery"
+msgstr ""
+
+msgid "fisher"
+msgstr "fisker"
+
+msgid "free trader"
+msgstr ""
+
+msgid "happiness"
+msgstr "lykke"
+
+msgid "in stock"
+msgstr ""
+
+msgid "money"
+msgstr ""
+
+msgid "pavilion"
+msgstr "pavilion"
+
+msgid "running costs"
+msgstr "driftsomkostninger"
+
+msgid "sugar"
+msgstr "sukker"
+
+#, fuzzy
+msgid "taxes"
+msgstr "skatter"
+
+msgid "tax"
+msgstr "skatter/afgifter"
+
+msgid "tools"
+msgstr "værktøjer"
+
+msgid "button"
+msgstr ""
+
+#
+msgid "continue"
+msgstr "fortsætte"
+
+msgid "faith"
+msgstr "tro"
+
+msgid "help"
+msgstr "hjælp"
+
+msgid "left"
+msgstr "venstre"
+
+msgid "level"
+msgstr "niveau"
+
+msgid "mode"
+msgstr "mode"
+
+#
+msgid "move"
+msgstr "flytte"
+
+# 87%
+#, fuzzy
+msgid "pioneers"
+msgstr "pioner"
+
+# 87%
+#, fuzzy
+msgid "citizens"
+msgstr "borger"
+
+# 88%
+#, fuzzy
+msgid "merchants"
+msgstr "handelsmand"
+
+# 90%
+#, fuzzy
+msgid "aristocrats"
+msgstr "aristokrat"
+
+msgid "potato"
+msgstr "kartoffel"
+
+msgid "settler"
+msgstr "bosætter"
+
+# 80%
+#, fuzzy
+msgid "speed"
+msgstr "frø"
+
+msgid "stop"
+msgstr "stop"
+
+msgid "storage tent"
+msgstr "opbevaringstelt"
+
+msgid "wait"
+msgstr ""
+
+msgid "access"
+msgstr ""
+
+msgid "account"
+msgstr "konto"
+
+msgid "amount"
+msgstr ""
+
+msgid "build menu"
+msgstr "opbygge menuen"
+
+msgid "cloth"
+msgstr "klud"
+
+msgid "construction"
+msgstr "byggeri"
+
+msgid "decrease"
+msgstr "faldet"
+
+#
+msgid "description"
+msgstr "beskrivelse"
+
+msgid "fish"
+msgstr "fisk"
+
+#
+msgid "increase"
+msgstr "stigning"
+
+msgid "lamb"
+msgstr ""
+
+#
+msgid "leave"
+msgstr "orlov"
+
+#
+msgid "liquor"
+msgstr "spiritus"
+
+msgid "location"
+msgstr ""
+
+msgid "offer"
+msgstr ""
+
+# 75%
+#, fuzzy
+msgid "potatoes"
+msgstr "kartoffel"
+
+msgid "range"
+msgstr "rækkevidde"
+
+msgid "reached"
+msgstr "nået"
+
+#
+msgid "run"
+msgstr "køre"
+
+msgid "slider"
+msgstr "skyderen"
+
+msgid "solution"
+msgstr "løsning"
+
+msgid "space"
+msgstr ""
+
+msgid "target"
+msgstr ""
+
+msgid "team"
+msgstr "hold"
+
+msgid "total"
+msgstr ""
+
+msgid "unable"
+msgstr ""
+
+msgid "active"
+msgstr "aktive"
+
+msgid "afford"
+msgstr ""
+
+# 85%
+#, fuzzy
+msgid "animals"
+msgstr "dyr"
+
+msgid "Captain's log"
+msgstr "Kaptajnens logbog"
+
+# 75%
+#, fuzzy
+msgid "construct"
+msgstr "byggeri"
+
+msgid "consume"
+msgstr "forbrug"
+
+msgid "enabled"
+msgstr ""
+
+msgid "entries"
+msgstr ""
+
+msgid "feature"
+msgstr "funktion"
+
+msgid "forest"
+msgstr "skov"
+
+# 80%
+#, fuzzy
+msgid "grows"
+msgstr "vokse"
+
+msgid "hold"
+msgstr ""
+
+msgid "idle"
+msgstr ""
+
+msgid "income"
+msgstr "indkomst"
+
+#
+msgid "information"
+msgstr "oplysninger"
+
+# (keyboard)
+#
+msgid "key"
+msgstr "nøgle"
+
+msgid "lamb wool"
+msgstr "lammeuld"
+
+msgid "overview tab"
+msgstr ""
+
+msgid "minimap"
+msgstr "minimap"
+
+msgid "issues"
+msgstr "problemer"
+
+msgid "plant"
+msgstr ""
+
+#
+msgid "play"
+msgstr "spiller"
+
+#, fuzzy
+msgid "playing"
+msgstr "spille"
+
+msgid "price"
+msgstr ""
+
+# 75%
+#, fuzzy
+msgid "read"
+msgstr "rød"
+
+#
+msgid "return"
+msgstr "tilbage"
+
+msgid "sale"
+msgstr "salg"
+
+#
+msgid "screen"
+msgstr "skærm"
+
+#
+msgid "sound"
+msgstr "lyd"
+
+msgid "special"
+msgstr ""
+
+msgid "store"
+msgstr ""
+
+# 75%
+#, fuzzy
+msgid "tear"
+msgstr "hold"
+
+msgid "from time to time"
+msgstr "fra tid til anden"
+
+msgid "trading"
+msgstr "handel"
+
+msgid "village"
+msgstr "landsby"
+
+msgid "visit"
+msgstr "besøg"
+
+msgid "world"
+msgstr ""
+
+# 83%
+#, fuzzy
+msgid "yield"
+msgstr "udbytter"
+
+msgid "your ship"
+msgstr ""
+
+msgid "back"
+msgstr "tilbage"
+
+#
+msgid "build settlement"
+msgstr "opbygge afregning"
+
+msgid "load"
+msgstr ""
+
+msgid "unload"
+msgstr ""
+
+msgid "command"
+msgstr ""
+
+msgid "completed"
+msgstr ""
+
+msgid "condition"
+msgstr "tilstand"
+
+msgid "contact"
+msgstr "kontakt"
+
+msgid "empty"
+msgstr ""
+
+msgid "ensure"
+msgstr ""
+
+#
+msgid "fulfill"
+msgstr "opfylde"
+
+#
+msgid "graphics"
+msgstr "grafik"
+
+msgid "harvest"
+msgstr ""
+
+# 80%
+#, fuzzy
+msgid "hunts"
+msgstr "jagt"
+
+#
+msgid "multiple"
+msgstr "flere"
+
+#
+msgid "potato field"
+msgstr "kartoffelmark"
+
+#
+msgid "school"
+msgstr "skole"
+
+msgid "seed"
+msgstr "frø"
+
+msgid "service"
+msgstr "service"
+
+#
+msgid "sheep"
+msgstr "får"
+
+msgid "signal fire"
+msgstr "signal brand"
+
+msgid "statistics"
+msgstr ""
+
+# 75%
+msgid "clay"
+msgstr "ler"
+
+msgid "iron"
+msgstr "jern"
+
+msgid "ore"
+msgstr "malm"
+
+msgid "tobacco"
+msgstr "tobak"
+
+msgid "charcoal"
+msgstr "trækul"
+
+#
+msgid "sugar field"
+msgstr "sukker felt"
+
+msgid "temporarily"
+msgstr "midlertidig"
+
+msgid "values"
+msgstr ""
+
+#~ msgid "branch office"
+#~ msgstr "afdelingskontor"
+
+#~ msgid "main"
+#~ msgstr "væsentligste"
+
+#~ msgid "unknown"
+#~ msgstr "ukendt"
+
+#~ msgid "free"
+#~ msgstr "gratis"
+
+#~ msgid "trader"
+#~ msgstr "erhvervsdrivende"
+
+#~ msgid "version"
+#~ msgstr "version"
+
+#~ msgid "signal"
+#~ msgstr "signal"
+
+#~ msgid "found"
+#~ msgstr "fundet"
+
+#
+#~ msgid "raw"
+#~ msgstr "rå"
+
+#~ msgid "running"
+#~ msgstr "kører"
+
+#~ msgid "inventory"
+#~ msgstr "opgørelse"
+
+# 80%
+#~ msgid "moved"
+#~ msgstr "flyttet"
+
+# 87%
+#~ msgid "produced"
+#~ msgstr "produceret"
+
+#~ msgid "hunter"
+#~ msgstr "jæger"
+
+#
+#~ msgid "market"
+#~ msgstr "marked"
+
+#~ msgid "sailor"
+#~ msgstr "sømand"
+
+#~ msgid "pioneer"
+#~ msgstr "pioner"
+
+#~ msgid "citizen"
+#~ msgstr "borger"
+
+#~ msgid "merchant"
+#~ msgstr "handelsmand"
+
+#~ msgid "aristocrat"
+#~ msgstr "aristokrat"
+
+#
+#~ msgid "refresh"
+#~ msgstr "genopfriske"
+
+#~ msgid "residents"
+#~ msgstr "beboere"
+
+#~ msgid "output"
+#~ msgstr "produktion"
+
+#~ msgid "weaver"
+#~ msgstr "væver"
+
+#~ msgid "animal"
+#~ msgstr "dyr"
+
+#
+#~ msgid "fisherman"
+#~ msgstr "fisker"
+
+#
+#~ msgid "forum"
+#~ msgstr "forum"
+
+#~ msgid "grow"
+#~ msgstr "vokse"
+
+#~ msgid "hunt"
+#~ msgstr "jagt"
+
+#
+#~ msgid "load/unload"
+#~ msgstr "last / losse"
+
+#
+#~ msgid "ship inventory"
+#~ msgstr "skib opgørelse"
+
+#
+#~ msgid "trade partner"
+#~ msgstr "handelspartner"
+
+#
+#~ msgid "yields"
+#~ msgstr "udbytter"
+
+#
+#~ msgid "green"
+#~ msgstr "grøn"
+
+#
+#~ msgid "red"
+#~ msgstr "rød"
+
+#~ msgid "no"
+#~ msgstr "nej"
+
+#~ msgid "dialogue"
+#~ msgstr "dialog"
+
+# 75%
+#~ msgid "ruin"
+#~ msgstr "ødelægge"
+
+#~ msgid "cattle"
+#~ msgstr "kvæg"
+
+#~ msgid "pig"
+#~ msgstr "gris"
+
+#~ msgid "herbs"
+#~ msgstr "urter"
+
+#~ msgid "butchery"
+#~ msgstr "slagteri"
+
+#~ msgid "doctor"
+#~ msgstr "læge"
+
+#~ msgid "education"
+#~ msgstr "uddannelse"
+
+# 
+#~ msgid "market place"
+#~ msgstr "markedsplads"

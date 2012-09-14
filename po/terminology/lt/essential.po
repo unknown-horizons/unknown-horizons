@@ -1,0 +1,3039 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2007-07-25 09:34+0200\n"
+"PO-Revision-Date: 2010-08-03 01:09+0200\n"
+"Last-Translator: Anonymous Pootle User\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: lt\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && (n%"
+"100<10 || n%100>=20) ? 1 : 2);\n"
+"X-Generator: Pootle 2.1.0-beta2\n"
+
+# Essential terminology list for general software localisation
+# License: GPL
+# Copyright Youssef Chahibi, Friedel Wolff 2006
+msgid "abort"
+msgstr "nutraukti"
+
+msgid "absolute"
+msgstr "absoliutus"
+
+msgid "abstract"
+msgstr "abstraktus"
+
+msgid "accelerator"
+msgstr "spartintuvas"
+
+msgid "accent"
+msgstr "kirtis"
+
+msgid "accept"
+msgstr "sutikti"
+
+msgid "access"
+msgstr "prieiga"
+
+msgid "accessibility"
+msgstr "pritaikymas neįgaliesiems"
+
+msgid "accessory"
+msgstr "reikmuo"
+
+msgid "account"
+msgstr "paskyra"
+
+msgid "accuracy"
+msgstr "tikslumas"
+
+msgid "acquire"
+msgstr "pasiekti"
+
+msgid "acronym"
+msgstr "santrumpa"
+
+msgid "action"
+msgstr "veiksmas"
+
+msgid "activate"
+msgstr "aktyvinti"
+
+msgid "active"
+msgstr "aktyvus"
+
+msgid "activity"
+msgstr "veikla"
+
+msgid "adapter"
+msgstr "adapteris"
+
+msgid "add"
+msgstr "papildyti"
+
+msgid "address"
+msgstr "adresas"
+
+msgid "adjust"
+msgstr "priderinti"
+
+msgid "administration"
+msgstr "administracija"
+
+msgid "administrator"
+msgstr "administratorius"
+
+msgid "advanced"
+msgstr "sudėtingesnis"
+
+msgid "agent"
+msgstr "agentė"
+
+msgid "agree"
+msgstr "sutikti"
+
+msgid "agreement"
+msgstr "sutikimas"
+
+msgid "alarm"
+msgstr "pavojaus signalas"
+
+msgid "alert"
+msgstr "įspėjimas"
+
+msgid "algorithm"
+msgstr "algoritmas"
+
+msgid "alias"
+msgstr "alternatyvusis vardas"
+
+# تسنن" مع الرسوميات (الخطوط وخلافه)
+msgid "aliasing"
+msgstr "dantavimas"
+
+msgid "align"
+msgstr "lygiuotė"
+
+msgid "alignment"
+msgstr "lygavimas"
+
+msgid "allow"
+msgstr "leisti"
+
+msgid "alphanumeric"
+msgstr "tekstinis"
+
+msgid "alternative"
+msgstr "alternatyvus"
+
+msgid "amount"
+msgstr "kiekis"
+
+msgid "analysis"
+msgstr "analizė"
+
+msgid "anchor"
+msgstr "prieraišas"
+
+msgid "angle"
+msgstr "kampas"
+
+msgid "animate"
+msgstr "animuoti"
+
+msgid "animation"
+msgstr "animacija"
+
+msgid "announce"
+msgstr "paskelbti"
+
+msgid "announcement"
+msgstr "skelbimas"
+
+msgid "anonymous"
+msgstr "anoniminis"
+
+msgid "anti-aliasing"
+msgstr "glodinimas"
+
+msgid "anti virus"
+msgstr "antivirusas"
+
+msgid "appear"
+msgstr "rodytis"
+
+msgid "append"
+msgstr "papildyti"
+
+msgid "applet"
+msgstr "programėlė"
+
+msgid "application"
+msgstr "programa"
+
+msgid "apply"
+msgstr "vykdyti"
+
+msgid "approval"
+msgstr "pritarimas"
+
+msgid "approve"
+msgstr "patvirtinti"
+
+msgid "approximate"
+msgstr "apvalinti"
+
+msgid "arbitrary"
+msgstr "sutartinis"
+
+msgid "archive"
+msgstr "archyvas"
+
+msgid "area"
+msgstr "sritis"
+
+msgid "argument"
+msgstr "argumentas"
+
+msgid "arrangement"
+msgstr "išdėstymas"
+
+msgid "arrow"
+msgstr "rodyklė"
+
+msgid "article"
+msgstr "straipsnis"
+
+msgid "ascending"
+msgstr "mažėjantis"
+
+msgid "aspect"
+msgstr "aspektas"
+
+msgid "assign"
+msgstr "paskirti"
+
+msgid "assignment"
+msgstr "priskyrimas"
+
+msgid "asynchronous"
+msgstr "asinchroninis"
+
+msgid "attach"
+msgstr "pridėti"
+
+msgid "attachment"
+msgstr "priedas"
+
+msgid "attempt"
+msgstr "mėginimas"
+
+msgid "attribute"
+msgstr "požymis"
+
+msgid "audio"
+msgstr "garsinis"
+
+msgid "authenticate"
+msgstr "autentifikuoti"
+
+msgid "authentication"
+msgstr "autentifikacija"
+
+msgid "authorization"
+msgstr "autorizacija"
+
+msgid "authorize"
+msgstr "autorizuoti"
+
+msgid "auto"
+msgstr "automatinis"
+
+msgid "automatic"
+msgstr "automatinis"
+
+msgid "availability"
+msgstr "prieinamumas"
+
+msgid "available"
+msgstr "pasiekiamas"
+
+msgid "average"
+msgstr "vidurkis"
+
+msgid "axis"
+msgstr "koordinačių ašis"
+
+msgid "backbone"
+msgstr "pagrindinis tinklas"
+
+msgid "back-end"
+msgstr "vidinė pusė"
+
+msgid "background"
+msgstr "fonas"
+
+msgid "backup"
+msgstr "atsarginė kopija"
+
+msgid "bandwidth"
+msgstr "pralaidumas"
+
+msgid "banner"
+msgstr "reklaminis skydelis"
+
+msgid "bar"
+msgstr "juosta"
+
+msgid "base"
+msgstr "bazė"
+
+msgid "beep"
+msgstr "pypsėjimas"
+
+msgid "begin"
+msgstr "prasidėti"
+
+msgid "behavior"
+msgstr "elgsena"
+
+msgid "binary"
+msgstr "dvejetainis"
+
+msgid "bind"
+msgstr "surišti"
+
+msgid "bit"
+msgstr "bitas"
+
+msgid "bitmap"
+msgstr "taškinė grafika"
+
+msgid "blank"
+msgstr "tuščias"
+
+msgid "blink"
+msgstr "mirksėti"
+
+msgid "block (unit)"
+msgstr "blokas (vienetas)"
+
+msgid "block (verb)"
+msgstr "užblokuoti (veiksmažodis)"
+
+msgid "blog"
+msgstr "tinklaraštis"
+
+msgid "blur"
+msgstr "blankinti"
+
+msgid "board"
+msgstr "pultas"
+
+msgid "body"
+msgstr "kūnas"
+
+msgid "bold"
+msgstr "pusjuodis"
+
+msgid "bookmarks"
+msgstr "adresynas"
+
+msgid "boot"
+msgstr "paleisti"
+
+msgid "border"
+msgstr "rėmelis"
+
+msgid "box"
+msgstr "langelis"
+
+msgid "bracket"
+msgstr "skliaustas"
+
+msgid "branch"
+msgstr "perėjimas"
+
+msgid "break"
+msgstr "lūžis"
+
+msgid "break (program)"
+msgstr "nutraukti (programą)"
+
+msgid "break point"
+msgstr "stabdos taškas"
+
+msgid "bridge (verb)"
+msgstr "jungti (veiksmažodis)"
+
+msgid "bridge (noun)"
+msgstr "tinklų tiltas (daiktavardis)"
+
+msgid "broken"
+msgstr "neveikiantis"
+
+msgid "browse"
+msgstr "parinkti"
+
+msgid "browser"
+msgstr "naršyklė"
+
+msgid "buffer"
+msgstr "buferis"
+
+msgid "bug"
+msgstr "klaida"
+
+msgid "build"
+msgstr "sukurti"
+
+msgid "built-in"
+msgstr "įtaisytas"
+
+msgid "bullet"
+msgstr "ženklelis"
+
+msgid "bus"
+msgstr "magistralė"
+
+msgid "button"
+msgstr "mygtukas"
+
+msgid "byte"
+msgstr "baitas"
+
+msgid "cable"
+msgstr "kabelis"
+
+msgid "cache"
+msgstr "spartinančioji atmintinė"
+
+msgid "calculate"
+msgstr "apskaičiuoti"
+
+msgid "calculator"
+msgstr "skaičiuoklis"
+
+msgid "calendar"
+msgstr "kalendorius"
+
+msgid "call"
+msgstr "kreipinys"
+
+msgid "camera"
+msgstr "fotoaparatas"
+
+msgid "cancel"
+msgstr "atsisakyti"
+
+msgid "capability"
+msgstr "galimybės"
+
+msgid "capacity"
+msgstr "talpa"
+
+msgid "caption"
+msgstr "pavadinimas"
+
+msgid "capture"
+msgstr "sugauti"
+
+msgid "card"
+msgstr "plokštė"
+
+msgid "case"
+msgstr "lygis"
+
+msgid "case (font)"
+msgstr "registras (šrifto)"
+
+msgid "catalog"
+msgstr "katalogas"
+
+msgid "category"
+msgstr "grupė"
+
+msgid "cell"
+msgstr "langelis"
+
+msgid "certificate"
+msgstr "sertifikatas"
+
+msgid "certify"
+msgstr "liudyti"
+
+msgid "change"
+msgstr "keisti"
+
+msgid "channel"
+msgstr "kanalas"
+
+msgid "character"
+msgstr "simbolis"
+
+msgid "charset"
+msgstr "simbolių lentelė"
+
+msgid "chart"
+msgstr "diagrama"
+
+msgid "chat"
+msgstr "pokalbis internetu"
+
+msgid "check"
+msgstr "pažymėti"
+
+msgid "check box"
+msgstr "žymimasis langelis"
+
+msgid "child"
+msgstr "paliuonis"
+
+msgid "choice"
+msgstr "pasirinkimas"
+
+msgid "choose"
+msgstr "pasirinkti"
+
+msgid "class"
+msgstr "klasė"
+
+msgid "classic"
+msgstr "klasikinis"
+
+msgid "classify"
+msgstr "klasifikuoti"
+
+msgid "clean"
+msgstr "švarus"
+
+msgid "clear"
+msgstr "išvalyti"
+
+msgid "click (noun)"
+msgstr "spragtelėjimas (daiktavardis)"
+
+msgid "click (verb)"
+msgstr "spragtelėti (veiksmažodis)"
+
+msgid "client"
+msgstr "klientas"
+
+msgid "clip art"
+msgstr "paveiksliukų galerija"
+
+msgid "clip board"
+msgstr "iškarpinė"
+
+msgid "clock"
+msgstr "laikrodis"
+
+msgid "close"
+msgstr "uždaryti"
+
+msgid "code (program)"
+msgstr "išeities tekstas (programos)"
+
+msgid "code (symbol)"
+msgstr "kodas (simbolis)"
+
+msgid "codec"
+msgstr "kodekas"
+
+msgid "collapse"
+msgstr "suskleisti"
+
+msgid "collect"
+msgstr "surinkti"
+
+msgid "column"
+msgstr "stulpelis"
+
+msgid "combination"
+msgstr "sujungimas"
+
+msgid "comma"
+msgstr "kablelis"
+
+msgid "command"
+msgstr "komanda"
+
+msgid "comment"
+msgstr "komentaras"
+
+msgid "common"
+msgstr "bendras"
+
+msgid "communication"
+msgstr "komunikacija"
+
+msgid "compact"
+msgstr "suspausti"
+
+msgid "compare"
+msgstr "palyginti"
+
+msgid "compatibility"
+msgstr "suderinamumas"
+
+msgid "compatible"
+msgstr "suderintas"
+
+# حويل الشفرة المصرية إلى ملفات ثنائية (برمجة
+msgid "compilation"
+msgstr "interpretavimas"
+
+msgid "compile"
+msgstr "kompiliuoti"
+
+msgid "compiler"
+msgstr "kompiliatorius"
+
+msgid "complete"
+msgstr "užbaigti"
+
+msgid "component"
+msgstr "komponentas"
+
+msgid "compose"
+msgstr "sukurti"
+
+msgid "composition"
+msgstr "kompozicija"
+
+msgid "compress"
+msgstr "glaudinti"
+
+msgid "compression"
+msgstr "glaudinimas"
+
+msgid "computer"
+msgstr "kompiuteris"
+
+msgid "computing"
+msgstr "skaičiavimas"
+
+msgid "concatenate"
+msgstr "sujungti"
+
+msgid "concurrent"
+msgstr "lygiagretus"
+
+msgid "condense"
+msgstr "siaurinti"
+
+msgid "condition"
+msgstr "sąlyga"
+
+msgid "configuration"
+msgstr "sąranka"
+
+msgid "configure"
+msgstr "derinti"
+
+msgid "confirm"
+msgstr "patvirtinti"
+
+msgid "confirmation"
+msgstr "patvirtinimas"
+
+msgid "conflict"
+msgstr "konfliktas"
+
+msgid "connect"
+msgstr "užmegzti ryšį"
+
+msgid "connection"
+msgstr "ryšys"
+
+msgid "console"
+msgstr "pultas"
+
+msgid "contact (noun)"
+msgstr "adresatas (daiktavardis)"
+
+msgid "contact (verb)"
+msgstr "užmegzti ryšį (veiksmažodis)"
+
+msgid "content"
+msgstr "turinys"
+
+msgid "context"
+msgstr "kontekstas"
+
+msgid "continue"
+msgstr "tęsti"
+
+msgid "contrast"
+msgstr "kontrastas"
+
+msgid "contributor"
+msgstr "talkininkas"
+
+msgid "control"
+msgstr "valdiklis"
+
+msgid "conversion"
+msgstr "konvertavimas"
+
+msgid "convert"
+msgstr "keisti"
+
+msgid "cookie"
+msgstr "slapukas"
+
+msgid "cooperative"
+msgstr "bendradarbiavimas"
+
+msgid "coordinate"
+msgstr "koordinatė"
+
+msgid "copy (noun)"
+msgstr "kopijuoti (daiktavardis)"
+
+msgid "copy (verb)"
+msgstr "kopija (veiksmažodis)"
+
+msgid "copy left"
+msgstr "copyleft"
+
+msgid "copy right"
+msgstr "autorinė teisė"
+
+msgid "correct"
+msgstr "ištaisyti"
+
+msgid "correspondence"
+msgstr "atitikimas"
+
+msgid "correspondent"
+msgstr "atitinkąs"
+
+msgid "corrupt"
+msgstr "sugadintas"
+
+msgid "count"
+msgstr "skaičiuoti"
+
+msgid "countable"
+msgstr "skaičiuojamasis"
+
+msgid "crash"
+msgstr "strigtis"
+
+msgid "create"
+msgstr "sukurti"
+
+msgid "creation"
+msgstr "kūryba"
+
+msgid "criteria"
+msgstr "kriterijus"
+
+msgid "crop"
+msgstr "apkirpti"
+
+msgid "cross-platform"
+msgstr "daugiaplatformis"
+
+msgid "crypt"
+msgstr "šifruoti"
+
+msgid "cryptology"
+msgstr "kriptografija"
+
+msgid "current"
+msgstr "veikiamasis"
+
+msgid "cursor"
+msgstr "žymeklis"
+
+msgid "curve"
+msgstr "kreivė"
+
+msgid "custom"
+msgstr "pritaikytas"
+
+msgid "customization"
+msgstr "adaptavimas"
+
+msgid "customize"
+msgstr "adaptuoti"
+
+msgid "cut"
+msgstr "iškirpti"
+
+msgid "cycle"
+msgstr "apsukti"
+
+msgid "daemon"
+msgstr "tarnyba"
+
+msgid "damage"
+msgstr "žala"
+
+msgid "data"
+msgstr "duomenys"
+
+msgid "database"
+msgstr "duomenų bazė"
+
+msgid "debug"
+msgstr "derinti"
+
+msgid "debugger"
+msgstr "derinimo programa"
+
+msgid "decimal"
+msgstr "dešimtainis"
+
+msgid "decode"
+msgstr "dekoduoti"
+
+msgid "decompress"
+msgstr "išskleisti"
+
+msgid "decrease"
+msgstr "sumažinti"
+
+msgid "decrypt"
+msgstr "iššifruoti"
+
+msgid "decryption"
+msgstr "iššifravimas"
+
+msgid "default"
+msgstr "numatytas"
+
+msgid "defect"
+msgstr "trūkumas"
+
+msgid "define"
+msgstr "apibrėžti"
+
+msgid "definition"
+msgstr "apiprėžimas"
+
+msgid "degree"
+msgstr "laipsnis"
+
+msgid "delay"
+msgstr "delsa"
+
+msgid "delete"
+msgstr "šalinti"
+
+msgid "deletion"
+msgstr "šalinimas"
+
+msgid "delimiter"
+msgstr "skirtukas"
+
+msgid "demo"
+msgstr "demonstracinis"
+
+msgid "deny"
+msgstr "uždrausti"
+
+msgid "dependence"
+msgstr "priklausomybė"
+
+msgid "dependency"
+msgstr "priklausomumas"
+
+msgid "depth"
+msgstr "gylis"
+
+msgid "derived"
+msgstr "kilęs"
+
+msgid "descending"
+msgstr "mažėjančiai"
+
+msgid "description"
+msgstr "aprašymas"
+
+msgid "deselect"
+msgstr "panaikinti žymėjimą"
+
+msgid "design"
+msgstr "kompozicija"
+
+msgid "desktop"
+msgstr "darbalaukis"
+
+msgid "destination"
+msgstr "paskirtis"
+
+msgid "destroy"
+msgstr "naikinti"
+
+msgid "detach"
+msgstr "atskirti"
+
+msgid "detect"
+msgstr "nustatyti"
+
+msgid "develop"
+msgstr "sukurti"
+
+msgid "development"
+msgstr "kūrimo procesas"
+
+msgid "developer"
+msgstr "kūrėjas"
+
+msgid "device"
+msgstr "įtaisas"
+
+msgid "diagram"
+msgstr "diagrama"
+
+msgid "dial"
+msgstr "skambinti"
+
+msgid "dialog"
+msgstr "dialogas"
+
+msgid "dialup"
+msgstr "telefoninis"
+
+msgid "difference"
+msgstr "skirtumas"
+
+msgid "digit"
+msgstr "skaitmuo"
+
+msgid "digital"
+msgstr "skaitmeninis"
+
+msgid "dimension"
+msgstr "dydis"
+
+msgid "directory"
+msgstr "katalogas"
+
+msgid "disable"
+msgstr "išjungti"
+
+msgid "disc"
+msgstr "diskas"
+
+msgid "discard"
+msgstr "naikinti"
+
+msgid "disconnect"
+msgstr "nutraukti ryšį"
+
+msgid "discussion"
+msgstr "diskusija"
+
+msgid "disk"
+msgstr "diskas"
+
+msgid "dispatch"
+msgstr "siųsti"
+
+msgid "display"
+msgstr "vaizduoklis"
+
+msgid "distort"
+msgstr "iškraipyti"
+
+msgid "distribute"
+msgstr "suvienodinti"
+
+msgid "distribution"
+msgstr "platinimas"
+
+msgid "distributor"
+msgstr "platintojas"
+
+msgid "dock"
+msgstr "prišlieti"
+
+msgid "document"
+msgstr "dokumentas"
+
+msgid "documentation"
+msgstr "dokumentacija"
+
+msgid "domain"
+msgstr "sritis"
+
+msgid "double click"
+msgstr "dvikartis spustelėjimas"
+
+msgid "download"
+msgstr "atsiųsti"
+
+msgid "drag"
+msgstr "vilkti"
+
+msgid "draw"
+msgstr "nubraižyti"
+
+msgid "driver"
+msgstr "tvarkyklė"
+
+msgid "dual"
+msgstr "dvejopas"
+
+msgid "dump"
+msgstr "atminties išklotinė"
+
+msgid "duplicate"
+msgstr "padvigubinti"
+
+msgid "dynamic"
+msgstr "dinaminis"
+
+msgid "echo"
+msgstr "atkartoti"
+
+msgid "edit"
+msgstr "redaguoti"
+
+msgid "edition"
+msgstr "laida"
+
+msgid "editor"
+msgstr "redaktorius"
+
+msgid "effect"
+msgstr "efektas"
+
+msgid "eject"
+msgstr "išmesti"
+
+msgid "electronic"
+msgstr "elektroninis"
+
+msgid "element"
+msgstr "elementas"
+
+msgid "email"
+msgstr "el. paštas"
+
+msgid "embed"
+msgstr "įrengti"
+
+msgid "emoticon"
+msgstr "jaustukas"
+
+msgid "empty"
+msgstr "išvalyti"
+
+msgid "emulate"
+msgstr "emuliuoti"
+
+msgid "emulation"
+msgstr "emuliacija"
+
+msgid "emulator"
+msgstr "emuliatorius"
+
+msgid "enable"
+msgstr "įgalioti"
+
+msgid "enabled"
+msgstr "veiksnus"
+
+msgid "encode"
+msgstr "koduoti"
+
+msgid "encoding"
+msgstr "kodavimas"
+
+msgid "encrypt"
+msgstr "užšifruoti"
+
+msgid "encrypted"
+msgstr "užšifruotas"
+
+msgid "encryption"
+msgstr "užšifravimas"
+
+msgid "engine"
+msgstr "variklis"
+
+msgid "enhancement"
+msgstr "pagerinimas"
+
+msgid "enlarge"
+msgstr "padidininti"
+
+msgid "enlargement"
+msgstr "padidinimas"
+
+msgid "enter"
+msgstr "įvesti"
+
+msgid "entertainment"
+msgstr "pasilinksminimas"
+
+msgid "entry"
+msgstr "įrašas"
+
+msgid "environment"
+msgstr "aplinka"
+
+msgid "equalizer"
+msgstr "glodintuvas"
+
+msgid "erase"
+msgstr "išvalyti"
+
+msgid "error"
+msgstr "klaida"
+
+msgid "escape"
+msgstr "atšaukti"
+
+msgid "evaluation"
+msgstr "laikinasis"
+
+msgid "event"
+msgstr "įvykis"
+
+msgid "exception"
+msgstr "išimtinė situacija"
+
+msgid "executable"
+msgstr "vykdomasis"
+
+msgid "execute"
+msgstr "vykdyti"
+
+msgid "existing"
+msgstr "egzistuojantis"
+
+msgid "exit"
+msgstr "baigti darbą"
+
+msgid "expand"
+msgstr "išskleisti"
+
+msgid "expansion"
+msgstr "plėtotė"
+
+msgid "explore"
+msgstr "naršyti"
+
+msgid "export"
+msgstr "eksportuoti"
+
+msgid "expression"
+msgstr "reiškinys"
+
+msgid "extend"
+msgstr "išplėsti"
+
+msgid "extensible"
+msgstr "išplečiamas"
+
+msgid "extension"
+msgstr "plėtinys"
+
+msgid "external"
+msgstr "išorinis"
+
+msgid "extra"
+msgstr "ypatingas"
+
+msgid "extract"
+msgstr "išskleisti"
+
+msgid "fail"
+msgstr "nesėkmingas"
+
+# فادح: مثل خطأ فادح
+msgid "fatal"
+msgstr "lemtingas"
+
+msgid "fault"
+msgstr "gedimas"
+
+msgid "favorite"
+msgstr "mėgstamas"
+
+msgid "feature"
+msgstr "galimybė"
+
+msgid "feed"
+msgstr "naujienų kanalas"
+
+msgid "feedback"
+msgstr "grįžtamasis ryšys"
+
+msgid "fetch"
+msgstr "atsiųsti"
+
+msgid "field"
+msgstr "laukas"
+
+msgid "figure"
+msgstr "iliustracija"
+
+msgid "file"
+msgstr "rinkmena"
+
+msgid "fill"
+msgstr "užpildyti"
+
+msgid "filter"
+msgstr "filtras"
+
+msgid "find"
+msgstr "ieškoti"
+
+msgid "firewall"
+msgstr "užkarda"
+
+msgid "firmware"
+msgstr "programinė aparatinė įranga"
+
+msgid "fit"
+msgstr "priderinti"
+
+msgid "fix"
+msgstr "taisyti"
+
+msgid "flag"
+msgstr "pažymėti"
+
+msgid "flash"
+msgstr "mirginti"
+
+msgid "flat"
+msgstr "plokščias"
+
+msgid "flip"
+msgstr "apversti"
+
+msgid "float (verb)"
+msgstr "kaboti (veiksmažodis)"
+
+msgid "flood"
+msgstr "tvindyti"
+
+msgid "floppy"
+msgstr "diskelis"
+
+msgid "folder"
+msgstr "aplankas"
+
+msgid "font"
+msgstr "šriftas"
+
+msgid "footer"
+msgstr "puslapinė poraštė"
+
+msgid "form"
+msgstr "forma"
+
+msgid "format (noun)"
+msgstr "formatas (daiktavardis)"
+
+msgid "format (verb)"
+msgstr "formatuoti (veiksmažodis)"
+
+msgid "formatted"
+msgstr "formatuotas"
+
+msgid "formula"
+msgstr "formulė"
+
+msgid "forum"
+msgstr "forumas"
+
+msgid "fragment"
+msgstr "fragmentas"
+
+msgid "frame"
+msgstr "rėmelis"
+
+msgid "frame set"
+msgstr "rėmelių rinkinys"
+
+msgid "framework"
+msgstr "bibliotekų rinkinys"
+
+msgid "free software"
+msgstr "laisvoji programinė įranga"
+
+msgid "freeze"
+msgstr "fiksuoti"
+
+msgid "frequency"
+msgstr "dažnis"
+
+msgid "front end"
+msgstr "sąsaja"
+
+msgid "function"
+msgstr "funkcija"
+
+msgid "gallery"
+msgstr "galerija"
+
+msgid "game"
+msgstr "žadimas"
+
+msgid "gateway"
+msgstr "vartai"
+
+msgid "generate"
+msgstr "generuoti"
+
+msgid "generation"
+msgstr "karta"
+
+msgid "generator"
+msgstr "generatorius"
+
+msgid "generic"
+msgstr "daugybinis"
+
+msgid "geometric"
+msgstr "geometrinis"
+
+msgid "geometry"
+msgstr "geometrija"
+
+msgid "grab"
+msgstr "griebti"
+
+msgid "gradient"
+msgstr "gradientas"
+
+msgid "grain"
+msgstr "dalelė"
+
+msgid "graph"
+msgstr "grafikas"
+
+msgid "graphic"
+msgstr "grafikas"
+
+msgid "graphical"
+msgstr "grafinis"
+
+msgid "graphics"
+msgstr "grafika"
+
+msgid "gray-scale"
+msgstr "pilkumo tonas"
+
+msgid "grid"
+msgstr "tinklelis"
+
+msgid "group"
+msgstr "grupė"
+
+msgid "guess"
+msgstr "atspėti"
+
+msgid "guest"
+msgstr "svečias"
+
+msgid "handle (noun)"
+msgstr "valdiklis (daiktavardis)"
+
+msgid "handle (verb)"
+msgstr "valdyti (veiksmažodis)"
+
+msgid "handler"
+msgstr "valdiklis"
+
+msgid "hardware"
+msgstr "aparatinė įranga"
+
+msgid "hash"
+msgstr "maiša"
+
+msgid "head"
+msgstr "antraštė"
+
+msgid "header"
+msgstr "antraštė"
+
+msgid "height"
+msgstr "aukštis"
+
+msgid "help"
+msgstr "pagalba"
+
+msgid "hide"
+msgstr "slėpti"
+
+msgid "hierarchy"
+msgstr "hierarchija"
+
+msgid "high light"
+msgstr "išskirti"
+
+msgid "history"
+msgstr "istorija"
+
+msgid "host"
+msgstr "mazgas"
+
+msgid "hostname"
+msgstr "mazgo vardas"
+
+msgid "hyperlink"
+msgstr "nuoroda"
+
+msgid "hypertext"
+msgstr "hipertekstas"
+
+msgid "icon"
+msgstr "piktograma"
+
+msgid "identify"
+msgstr "nustatyti tapatybę"
+
+msgid "idle"
+msgstr "prastovėjimas"
+
+msgid "ignore"
+msgstr "ignoruoti"
+
+msgid "image"
+msgstr "atvaizdas"
+
+msgid "implement"
+msgstr "realizuoti"
+
+msgid "import"
+msgstr "importuoti"
+
+msgid "inactive"
+msgstr "neaktyvus"
+
+msgid "inbox"
+msgstr "gauti laiškai"
+
+msgid "inch"
+msgstr "colis"
+
+msgid "include"
+msgstr "įtraukti"
+
+msgid "incoming"
+msgstr "gaunamas"
+
+msgid "incompatible"
+msgstr "nesuderinamas"
+
+msgid "increase"
+msgstr "padidinti"
+
+msgid "increment"
+msgstr "padidėjimas"
+
+msgid "indent"
+msgstr "įtrauka"
+
+msgid "index"
+msgstr "dalykinė rodyklė"
+
+msgid "indice"
+msgstr "rodyklė"
+
+msgid "infect"
+msgstr "užkrėsti"
+
+msgid "infinite"
+msgstr "begalinis"
+
+msgid "information"
+msgstr "informacija"
+
+msgid "infrared"
+msgstr "infraraudonas"
+
+msgid "initial"
+msgstr "pradinis"
+
+msgid "initialize"
+msgstr "inicijuoti"
+
+msgid "input"
+msgstr "įvesti"
+
+msgid "insert"
+msgstr "įterpti"
+
+msgid "install"
+msgstr "įdiegti"
+
+msgid "installer"
+msgstr "diegimo programa"
+
+msgid "instance"
+msgstr "objektas"
+
+msgid "instruction"
+msgstr "instrukcija"
+
+msgid "integer"
+msgstr "sveikasis skaičius"
+
+msgid "integral"
+msgstr "ištisas"
+
+msgid "integrate"
+msgstr "sujungti"
+
+msgid "integration"
+msgstr "sujungimas"
+
+msgid "integrity"
+msgstr "vientisumas"
+
+msgid "intensity"
+msgstr "intensyvumas"
+
+msgid "interactivity"
+msgstr "interaktyvumas"
+
+msgid "interface"
+msgstr "sąsaja"
+
+msgid "internal"
+msgstr "vidinis"
+
+msgid "internet"
+msgstr "internetas"
+
+msgid "interrupt"
+msgstr "pertrauktis"
+
+msgid "invalid"
+msgstr "klaidingas"
+
+msgid "inverse"
+msgstr "atvirkštinis"
+
+msgid "invert"
+msgstr "apversti"
+
+msgid "invoke"
+msgstr "pasiremti"
+
+msgid "italic"
+msgstr "kursyvas"
+
+msgid "item"
+msgstr "elementas"
+
+msgid "iteration"
+msgstr "pakartojimas"
+
+msgid "jag"
+msgstr "viršūnė"
+
+msgid "jam"
+msgstr "spūstis"
+
+msgid "job"
+msgstr "užduotis"
+
+msgid "join"
+msgstr "sujungti"
+
+msgid "joy stick"
+msgstr "vairasvirtė"
+
+msgid "jump"
+msgstr "peršokti"
+
+msgid "junk"
+msgstr "perėjimas"
+
+msgid "justify"
+msgstr "lygiuoti"
+
+msgid "keep"
+msgstr "išlaikyti"
+
+msgid "kernel"
+msgstr "branduolys"
+
+msgid "key"
+msgstr "klavišas"
+
+msgid "keyboard"
+msgstr "branduolys"
+
+msgid "key stroke"
+msgstr "klavišo paspaudimas"
+
+msgid "key word"
+msgstr "reikšminis žodis"
+
+msgid "label"
+msgstr "žymė"
+
+msgid "landscape"
+msgstr "gulsčias"
+
+msgid "language"
+msgstr "kalba"
+
+msgid "laptop"
+msgstr "nešiojamas kompiuteris"
+
+msgid "launch"
+msgstr "vykdyti"
+
+msgid "layer"
+msgstr "lygmuo"
+
+msgid "layout"
+msgstr "išdėstymas"
+
+msgid "length"
+msgstr "ilgis"
+
+msgid "license"
+msgstr "licencija"
+
+msgid "line"
+msgstr "eilutė"
+
+msgid "link"
+msgstr "nuoroda"
+
+msgid "list"
+msgstr "sąrašas"
+
+msgid "load"
+msgstr "įkelti"
+
+msgid "local"
+msgstr "vietinis"
+
+msgid "localization"
+msgstr "lokalizacija"
+
+msgid "location"
+msgstr "padėtis"
+
+msgid "log"
+msgstr "žurnalas"
+
+msgid "lookup"
+msgstr "paieška"
+
+msgid "lower-case"
+msgstr "mažosios raidės"
+
+msgid "machine"
+msgstr "kompiuteris"
+
+msgid "main board"
+msgstr "pagrindinė plokštė"
+
+msgid "maintainer"
+msgstr "globėjas"
+
+msgid "maintenance"
+msgstr "globa"
+
+msgid "manage"
+msgstr "valdyti"
+
+msgid "management"
+msgstr "valdymas"
+
+msgid "manager"
+msgstr "valdytojas"
+
+msgid "manual"
+msgstr "rankinis"
+
+msgid "margin"
+msgstr "paraštė"
+
+msgid "mark"
+msgstr "pažymėti"
+
+msgid "master"
+msgstr "pagrindinis"
+
+msgid "match"
+msgstr "sutapti"
+
+msgid "maximize"
+msgstr "padidinti"
+
+msgid "memory"
+msgstr "atmintis"
+
+msgid "menu"
+msgstr "meniu"
+
+msgid "merge"
+msgstr "sujungti"
+
+msgid "message"
+msgstr "pranešimas"
+
+msgid "method"
+msgstr "metodas"
+
+msgid "minimize"
+msgstr "sumažinti"
+
+msgid "mode"
+msgstr "būsena"
+
+msgid "modem"
+msgstr "modemas"
+
+msgid "moderator"
+msgstr "prižiūrėtojas"
+
+msgid "modify"
+msgstr "pakeisti"
+
+msgid "module"
+msgstr "modulis"
+
+msgid "monitor"
+msgstr "vaizduoklis"
+
+msgid "mosaic"
+msgstr "mozaika"
+
+msgid "motion"
+msgstr "judesys"
+
+msgid "mouse"
+msgstr "pelė"
+
+msgid "move"
+msgstr "perkelti"
+
+msgid "multimedia"
+msgstr "įvairialypė terpė"
+
+msgid "multitasking"
+msgstr "daugiaprogramis apdorojimas"
+
+msgid "name"
+msgstr "pavadinimas"
+
+msgid "navigation"
+msgstr "navigacija"
+
+msgid "navigator"
+msgstr "žvalgiklis"
+
+msgid "network"
+msgstr "tinklas"
+
+msgid "news group"
+msgstr "naujienų grupė"
+
+msgid "next"
+msgstr "sekantis"
+
+msgid "nick name"
+msgstr "slapyvardis"
+
+msgid "no"
+msgstr "ne"
+
+msgid "node"
+msgstr "mazgas"
+
+msgid "notation"
+msgstr "žymėjimas"
+
+msgid "note"
+msgstr "pastaba"
+
+msgid "notebook"
+msgstr "nešiojamas kompiuteris"
+
+msgid "notification"
+msgstr "perspėjimas"
+
+msgid "notify"
+msgstr "pranešti"
+
+# في الرياضيات "صفر"
+# الصفة "منعدم"
+msgid "null"
+msgstr "nulis"
+
+msgid "number"
+msgstr "skaičius"
+
+msgid "numbering"
+msgstr "numeravimas"
+
+msgid "object"
+msgstr "objektas"
+
+msgid "occurence"
+msgstr "paplitimas"
+
+msgid "octet"
+msgstr "oktetas"
+
+msgid "offline"
+msgstr "atsijungęs"
+
+msgid "OK"
+msgstr "Gerai"
+
+msgid "online"
+msgstr "prisijungęs"
+
+msgid "ongoing"
+msgstr "tebevykstantis"
+
+msgid "opacity"
+msgstr "nepermatomumas"
+
+msgid "opaque"
+msgstr "neskaidrus"
+
+msgid "open"
+msgstr "atverti"
+
+msgid "operation"
+msgstr "operacija"
+
+msgid "option"
+msgstr "parinktis"
+
+msgid "optional"
+msgstr "nebūtinasis"
+
+msgid "order"
+msgstr "tvarka"
+
+msgid "organize"
+msgstr "tvarkyti"
+
+msgid "orientation"
+msgstr "orientacija"
+
+msgid "original"
+msgstr "pradinis"
+
+msgid "outgoing"
+msgstr "išsiunčiamas"
+
+msgid "output"
+msgstr "išvesti"
+
+msgid "overflow"
+msgstr "perpildymas"
+
+msgid "override"
+msgstr "nepaisyti"
+
+msgid "overwrite"
+msgstr "pakeisti"
+
+msgid "owner"
+msgstr "valdytojas"
+
+msgid "pack"
+msgstr "pakuoti"
+
+msgid "package"
+msgstr "paketas"
+
+msgid "packet"
+msgstr "paketas"
+
+msgid "padding"
+msgstr "papildymas"
+
+msgid "page"
+msgstr "puslapis"
+
+msgid "paint"
+msgstr "piešti"
+
+msgid "pair"
+msgstr "pora"
+
+msgid "palette"
+msgstr "paletė"
+
+msgid "panel"
+msgstr "pultas"
+
+msgid "parallel"
+msgstr "lygiagretus"
+
+msgid "parameter"
+msgstr "parametras"
+
+msgid "parcel"
+msgstr "paketas"
+
+msgid "parent"
+msgstr "pradinis"
+
+msgid "parity"
+msgstr "lyginumas"
+
+msgid "parse"
+msgstr "analizuoti"
+
+msgid "partition"
+msgstr "disko skaidinys"
+
+msgid "pass"
+msgstr "praleisti"
+
+msgid "password"
+msgstr "slaptažodis"
+
+msgid "paste"
+msgstr "įdėti"
+
+msgid "patch (noun)"
+msgstr "pataisa (daiktavardis)"
+
+msgid "patch (verb)"
+msgstr "pataisyti (veiksmažodis)"
+
+msgid "path"
+msgstr "kelias"
+
+msgid "pattern"
+msgstr "raštas"
+
+msgid "pause"
+msgstr "pauzė"
+
+msgid "peripheral"
+msgstr "išorinis įtaisas"
+
+msgid "permanent"
+msgstr "pastovus"
+
+msgid "permission"
+msgstr "leidimas"
+
+msgid "permutation"
+msgstr "pertvarkymas"
+
+msgid "physical"
+msgstr "fizinis"
+
+msgid "picture"
+msgstr "paveikslas"
+
+msgid "pipe"
+msgstr "kanalas"
+
+msgid "pixel"
+msgstr "taškas"
+
+msgid "placement"
+msgstr "padėtis"
+
+msgid "plain"
+msgstr "grynas"
+
+msgid "plot (verb)"
+msgstr "brėžti (veiksmažodis)"
+
+msgid "plotter"
+msgstr "braižytuvas"
+
+msgid "plugin"
+msgstr "papildinys"
+
+msgid "pop up"
+msgstr "iškylantysis langas"
+
+msgid "port"
+msgstr "jungtis"
+
+msgid "position"
+msgstr "padėtis"
+
+msgid "post"
+msgstr "žinutė"
+
+msgid "preferences"
+msgstr "parinktys"
+
+msgid "prepare"
+msgstr "paruošti"
+
+msgid "presentation"
+msgstr "pristatymas"
+
+msgid "press"
+msgstr "paspausti"
+
+msgid "prevent"
+msgstr "sutrukdyti"
+
+msgid "preview"
+msgstr "peržiūra"
+
+msgid "primary"
+msgstr "pradinis"
+
+msgid "principal"
+msgstr "pagrindinis"
+
+msgid "print"
+msgstr "spausdinti"
+
+msgid "printer"
+msgstr "spausdintuvas"
+
+msgid "priority"
+msgstr "prioritetas"
+
+msgid "privacy"
+msgstr "privatumas"
+
+msgid "private"
+msgstr "privatus"
+
+msgid "privilege"
+msgstr "privilegija"
+
+msgid "procedure"
+msgstr "procedūra"
+
+msgid "process"
+msgstr "apdoroti"
+
+msgid "processor"
+msgstr "procesorius"
+
+msgid "product"
+msgstr "produktas"
+
+msgid "profile"
+msgstr "profilis"
+
+msgid "program"
+msgstr "programa"
+
+msgid "programmer"
+msgstr "programuotojas"
+
+msgid "project"
+msgstr "projektas"
+
+msgid "prompt"
+msgstr "prašyti"
+
+msgid "property"
+msgstr "savybė"
+
+msgid "proprietary"
+msgstr "nuosavybinis"
+
+msgid "protect"
+msgstr "apsaugoti"
+
+msgid "protection"
+msgstr "apsauga"
+
+#, !!!
+msgid "protocol"
+msgstr "protokolas"
+
+msgid "provide"
+msgstr "pateikti"
+
+msgid "provider"
+msgstr "tiekėjas"
+
+msgid "proxy"
+msgstr "įgaliotasis serveris"
+
+msgid "public"
+msgstr "viešas"
+
+msgid "publish"
+msgstr "skelbti"
+
+msgid "pull"
+msgstr "išsleisti"
+
+msgid "push"
+msgstr "paspausti"
+
+msgid "quality"
+msgstr "kokybė"
+
+msgid "quantity"
+msgstr "kiekybė"
+
+msgid "quarantine"
+msgstr "karantinas"
+
+msgid "query"
+msgstr "užklausa"
+
+msgid "queue"
+msgstr "eilė"
+
+msgid "quit"
+msgstr "baigti"
+
+msgid "quota"
+msgstr "kvota"
+
+msgid "quotation"
+msgstr "citavimas"
+
+msgid "quote"
+msgstr "citata"
+
+msgid "raise"
+msgstr "pakelti"
+
+msgid "random"
+msgstr "atsitiktinis"
+
+msgid "range"
+msgstr "rėžis"
+
+msgid "rate"
+msgstr "dažnis"
+
+msgid "ratio"
+msgstr "koeficientas"
+
+msgid "raw"
+msgstr "neapdorotas"
+
+msgid "ray"
+msgstr "spindulys"
+
+msgid "read"
+msgstr "skaityti"
+
+msgid "read only"
+msgstr "tik skaitomas"
+
+msgid "ready"
+msgstr "paruoštas"
+
+msgid "real"
+msgstr "tikras"
+
+msgid "reboot"
+msgstr "perkrauti"
+
+msgid "receipt"
+msgstr "gavimas"
+
+msgid "receive"
+msgstr "gauti"
+
+msgid "recognition"
+msgstr "atpažinimas"
+
+msgid "reconnect"
+msgstr "persijungimas"
+
+msgid "record"
+msgstr "įrašas"
+
+msgid "record (verb)"
+msgstr "įrašyti (veiksmažodis)"
+
+msgid "recover"
+msgstr "atstatyti"
+
+msgid "recovery"
+msgstr "atstatymas"
+
+#
+msgid "recursion"
+msgstr "rekursija"
+
+msgid "recursive"
+msgstr "rekursinis"
+
+msgid "redirect"
+msgstr "nukreipti"
+
+msgid "redo"
+msgstr "atšaukti"
+
+msgid "reduce"
+msgstr "sumažinti"
+
+msgid "reduction"
+msgstr "sumažinimas"
+
+msgid "redundant"
+msgstr "perteklingas"
+
+msgid "reference"
+msgstr "nurodymas"
+
+msgid "referer"
+msgstr "šaltinis"
+
+msgid "referral"
+msgstr "perdavimas"
+
+msgid "reflexive"
+msgstr "atsispindintis"
+
+msgid "refresh"
+msgstr "atnaujinti"
+
+msgid "refuse"
+msgstr "atsisakyti"
+
+msgid "regenerate"
+msgstr "pergeneruoti"
+
+msgid "register"
+msgstr "registruoti"
+
+msgid "registration"
+msgstr "registracija"
+
+msgid "registry"
+msgstr "registras"
+
+msgid "regular"
+msgstr "normalus"
+
+msgid "regulate"
+msgstr "reguliuoti"
+
+msgid "relay"
+msgstr "perdavimas"
+
+msgid "release"
+msgstr "laida"
+
+msgid "remaining"
+msgstr "likęs"
+
+msgid "remind"
+msgstr "priminti"
+
+msgid "remote"
+msgstr "nuotolinis"
+
+msgid "removable"
+msgstr "keičiamasis"
+
+msgid "remove"
+msgstr "naikinti"
+
+msgid "rename"
+msgstr "pervadinti"
+
+msgid "render"
+msgstr "pateikti"
+
+msgid "renew"
+msgstr "atnaujinti"
+
+msgid "repair"
+msgstr "pataisyti"
+
+msgid "repeat"
+msgstr "kartoti"
+
+msgid "replace"
+msgstr "pakeisti"
+
+msgid "replicate"
+msgstr "replikuoti"
+
+msgid "replication"
+msgstr "replikacija"
+
+msgid "reply"
+msgstr "atsakyti"
+
+msgid "report"
+msgstr "pranešti"
+
+msgid "repository"
+msgstr "saugykla"
+
+msgid "request"
+msgstr "užklausa"
+
+msgid "require"
+msgstr "reikalingas"
+
+msgid "requirement"
+msgstr "reikalavimas"
+
+msgid "reset"
+msgstr "atstyti"
+
+msgid "resize"
+msgstr "pakeisti dydį"
+
+msgid "resolution"
+msgstr "skiriamoji geba"
+
+msgid "resolver"
+msgstr "sprendžiantysis įrenginys"
+
+msgid "resource"
+msgstr "išteklius"
+
+msgid "response"
+msgstr "atsakas"
+
+msgid "restart"
+msgstr "perkrauti"
+
+msgid "restore"
+msgstr "atstatyti"
+
+msgid "restrict"
+msgstr "apriboti"
+
+msgid "restriction"
+msgstr "apribojimas"
+
+msgid "result"
+msgstr "rezultatas"
+
+msgid "resume"
+msgstr "tęsti"
+
+msgid "retrieve"
+msgstr "atsiųsti"
+
+msgid "retry"
+msgstr "bandyti vėl"
+
+msgid "return"
+msgstr "grąžinti"
+
+msgid "reverse"
+msgstr "apversti"
+
+msgid "revert"
+msgstr "grįžti"
+
+msgid "revocation"
+msgstr "atšaukimas"
+
+msgid "revoke"
+msgstr "atšaukti"
+
+msgid "root"
+msgstr "šaknis"
+
+msgid "rotate"
+msgstr "pasukti"
+
+msgid "route"
+msgstr "maršrutas"
+
+msgid "router"
+msgstr "maršruto parinktuvas"
+
+msgid "routine"
+msgstr "procedūra"
+
+msgid "row"
+msgstr "eilutė"
+
+msgid "rule"
+msgstr "taisyklė"
+
+msgid "run"
+msgstr "paleisti"
+
+msgid "runtime"
+msgstr "vykdymo laikas"
+
+msgid "safe"
+msgstr "saugus"
+
+msgid "sample"
+msgstr "pavyzdys"
+
+# this is font name
+msgid "sans"
+msgstr "sans"
+
+msgid "save"
+msgstr "įrašyti"
+
+msgid "scalable"
+msgstr "keičiamas"
+
+msgid "scale"
+msgstr "skalė"
+
+msgid "scan"
+msgstr "skanuoti"
+
+msgid "scanner"
+msgstr "skeneris"
+
+msgid "schedule"
+msgstr "planuoti"
+
+msgid "scheme"
+msgstr "schema"
+
+msgid "scratch"
+msgstr "surinktinis"
+
+msgid "screen"
+msgstr "ekranas"
+
+msgid "screw"
+msgstr "pasukti"
+
+msgid "script"
+msgstr "scenarijus"
+
+# من لف الشئ يلفه
+# فتقول:
+# لف ﻷعلى=scroll up ، وهكذا
+msgid "scroll"
+msgstr "paslinkti"
+
+msgid "search"
+msgstr "ieškoti"
+
+msgid "section"
+msgstr "poskyris"
+
+msgid "sector"
+msgstr "sektorius"
+
+msgid "secure"
+msgstr "apsaugoti"
+
+msgid "security"
+msgstr "saugumas"
+
+msgid "seek"
+msgstr "ieškoti"
+
+msgid "segment"
+msgstr "segmentas"
+
+msgid "segmentation"
+msgstr "segmentavimas"
+
+msgid "select"
+msgstr "pažymėti"
+
+msgid "selection"
+msgstr "pažymėjimas"
+
+msgid "semantic"
+msgstr "semantinis"
+
+msgid "send"
+msgstr "išsiųsti"
+
+msgid "sender"
+msgstr "siuntėjas"
+
+msgid "sensitive"
+msgstr "neskelbtinas"
+
+msgid "sensor"
+msgstr "jutiklis"
+
+# this is font name
+msgid "serif"
+msgstr "serif"
+
+msgid "server"
+msgstr "serveris"
+
+msgid "session"
+msgstr "seansas"
+
+msgid "set"
+msgstr "nustatyti"
+
+msgid "settings"
+msgstr "nuostatos"
+
+msgid "setup"
+msgstr "įdiegti"
+
+msgid "shading"
+msgstr "užtamsinimas"
+
+msgid "shadow"
+msgstr "šėšėlis"
+
+msgid "shape"
+msgstr "figūra"
+
+msgid "share"
+msgstr "bendrinti"
+
+msgid "sharp"
+msgstr "ryškinti"
+
+msgid "sheet"
+msgstr "lapas"
+
+msgid "shell"
+msgstr "apvalkalas"
+
+msgid "shift"
+msgstr "pastumti"
+
+msgid "shortcut"
+msgstr "šaukinys"
+
+msgid "show"
+msgstr "rodyti"
+
+msgid "shrink"
+msgstr "sutraukti"
+
+msgid "shut down"
+msgstr "išjungti"
+
+msgid "side bar"
+msgstr "parankinė"
+
+msgid "sign"
+msgstr "pasirašyti"
+
+msgid "signal"
+msgstr "signalas"
+
+msgid "signature"
+msgstr "parašas"
+
+msgid "site"
+msgstr "svetainė"
+
+msgid "size"
+msgstr "dydis"
+
+msgid "skew"
+msgstr "pakreipti"
+
+msgid "skip"
+msgstr "praleisti"
+
+msgid "slave"
+msgstr "valdomasis"
+
+msgid "sleep"
+msgstr "užmigti"
+
+msgid "slide"
+msgstr "skaidrė"
+
+msgid "slot"
+msgstr "lizdas"
+
+msgid "smart"
+msgstr "greitas"
+
+msgid "smiley"
+msgstr "šypsenėlė"
+
+msgid "smooth"
+msgstr "lygus"
+
+msgid "socket"
+msgstr "prievadas"
+
+msgid "software"
+msgstr "programinė įranga"
+
+msgid "solid"
+msgstr "grynas"
+
+msgid "sort"
+msgstr "rūšiuoti"
+
+msgid "source"
+msgstr "pirminis"
+
+msgid "space"
+msgstr "tarpas"
+
+msgid "spacing"
+msgstr "intervalas"
+
+msgid "spam"
+msgstr "brukalas"
+
+msgid "span"
+msgstr "sujungti"
+
+msgid "spawn"
+msgstr "paleisti"
+
+msgid "specify"
+msgstr "apibrėžti"
+
+msgid "speed"
+msgstr "greitis"
+
+msgid "spelling"
+msgstr "rašybos tikrinimas"
+
+msgid "splash"
+msgstr "pristatymas"
+
+msgid "split"
+msgstr "skaidyti"
+
+msgid "spool"
+msgstr "kaupas"
+
+msgid "spread sheet"
+msgstr "skaičiuoklė"
+
+msgid "stack"
+msgstr "dėklas"
+
+msgid "stand alone"
+msgstr "savarankiškas"
+
+msgid "standard"
+msgstr "standartas"
+
+msgid "start"
+msgstr "paleisti"
+
+msgid "state"
+msgstr "būsena"
+
+msgid "static"
+msgstr "statinis"
+
+msgid "statistics"
+msgstr "statistika"
+
+msgid "step"
+msgstr "žingsnis"
+
+msgid "stop"
+msgstr "stabdyti"
+
+msgid "storage"
+msgstr "atmintinė"
+
+msgid "store"
+msgstr "išsaugoti"
+
+msgid "stream"
+msgstr "srautas"
+
+msgid "stretch"
+msgstr "ištempti"
+
+msgid "strict"
+msgstr "griežtas"
+
+msgid "string"
+msgstr "eilutė"
+
+msgid "strip"
+msgstr "susiaurinti"
+
+msgid "stroke"
+msgstr "brūkštelti"
+
+msgid "structure"
+msgstr "struktūra"
+
+msgid "stub"
+msgstr "nuolauža"
+
+msgid "style"
+msgstr "stilius"
+
+msgid "sub directory"
+msgstr "pakatalogis"
+
+msgid "sub folder"
+msgstr "poaplankis"
+
+msgid "submission"
+msgstr "pateikimas"
+
+msgid "submit"
+msgstr "išsiųsti"
+
+msgid "subscribe"
+msgstr "prenumeruoti"
+
+msgid "subscription"
+msgstr "prenumerata"
+
+msgid "subtract"
+msgstr "atimti"
+
+msgid "succeed"
+msgstr "sekti"
+
+msgid "suggest"
+msgstr "patarti"
+
+msgid "suggestion"
+msgstr "patarimas"
+
+msgid "sum (noun)"
+msgstr "sudėtis (daiktavardis)"
+
+msgid "sum (verb)"
+msgstr "sudėti (veiksmažodis)"
+
+msgid "summary"
+msgstr "santrauka"
+
+msgid "support"
+msgstr "priežiūra"
+
+msgid "surface"
+msgstr "paviršius"
+
+msgid "suspend"
+msgstr "atidėti"
+
+msgid "suspicious"
+msgstr "įtartinas"
+
+msgid "swap"
+msgstr "sukeisti"
+
+msgid "switch"
+msgstr "perjungiklis"
+
+msgid "symbol"
+msgstr "simbolis"
+
+msgid "synchronize"
+msgstr "suderinti"
+
+msgid "syntax"
+msgstr "sintaksė"
+
+msgid "system"
+msgstr "sistema"
+
+msgid "tab"
+msgstr "tabuliavimo žymė"
+
+msgid "table"
+msgstr "lentelė"
+
+msgid "tag"
+msgstr "gairė"
+
+msgid "target"
+msgstr "paskirtis"
+
+msgid "template"
+msgstr "šablonas"
+
+msgid "temporary"
+msgstr "laikinas"
+
+msgid "terminal"
+msgstr "terminalas"
+
+msgid "test"
+msgstr "testas"
+
+msgid "text"
+msgstr "tekstas"
+
+msgid "texture"
+msgstr "tekstūra"
+
+msgid "theme"
+msgstr "apipavidalinimas"
+
+msgid "thread"
+msgstr "gija"
+
+msgid "thumbnail"
+msgstr "miniatiūra"
+
+msgid "tick"
+msgstr "žymelė"
+
+msgid "tile"
+msgstr "iškloti"
+
+msgid "time"
+msgstr "laikas"
+
+msgid "time out"
+msgstr "laikas baigėsi"
+
+msgid "tip"
+msgstr "patarimas"
+
+msgid "title"
+msgstr "antraštė"
+
+msgid "toggle"
+msgstr "perjungti"
+
+msgid "token"
+msgstr "leksema"
+
+msgid "tool"
+msgstr "priemonė"
+
+msgid "tool bar"
+msgstr "priemonių juosta"
+
+msgid "tool box"
+msgstr "priemonių komplektas"
+
+msgid "topic"
+msgstr "tema"
+
+msgid "trace"
+msgstr "sekti"
+
+msgid "track"
+msgstr "žymė"
+
+msgid "traffic"
+msgstr "duomenų srautas"
+
+msgid "transfer"
+msgstr "perduoti"
+
+msgid "transform"
+msgstr "pertvarkyti"
+
+msgid "transformation"
+msgstr "pakeitimas"
+
+msgid "trap"
+msgstr "spąstai"
+
+msgid "trash"
+msgstr "šiukšlės"
+
+msgid "trigger"
+msgstr "trigeris"
+
+msgid "trouble shoot"
+msgstr "išspręsti"
+
+msgid "tune"
+msgstr "derinti"
+
+msgid "tweak"
+msgstr "derinti"
+
+msgid "type (noun)"
+msgstr "tipas (daiktavardis)"
+
+msgid "type (verb)"
+msgstr "rašyti (veiksmažodis)"
+
+msgid "type face"
+msgstr "išvaizda"
+
+msgid "unavailable"
+msgstr "nepasiekiamas"
+
+msgid "undelete"
+msgstr "grąžinti pašalintą"
+
+msgid "under line"
+msgstr "pabraukimas"
+
+msgid "undo"
+msgstr "atšaukti"
+
+msgid "uninstall"
+msgstr "pašalinti"
+
+msgid "unit"
+msgstr "vienetas"
+
+msgid "unknown"
+msgstr "nežinomas"
+
+msgid "unload"
+msgstr "iškelti"
+
+msgid "named"
+msgstr "pavadintas"
+
+msgid "reachable"
+msgstr "pasiekiamas"
+
+msgid "readable"
+msgstr "įskaitomas"
+
+msgid "unspecified"
+msgstr "neapibrėžtas"
+
+msgid "unsubscribe"
+msgstr "atsisakyti prenumeratos"
+
+msgid "unsupported"
+msgstr "nepalaikomas"
+
+msgid "update"
+msgstr "atnaujinti"
+
+msgid "upgrade"
+msgstr "atnaujinti"
+
+msgid "upload"
+msgstr "įkelti"
+
+msgid "upper case"
+msgstr "didžiosios raidės"
+
+msgid "usage"
+msgstr "naudojimas"
+
+msgid "user"
+msgstr "vartotojas"
+
+msgid "user name"
+msgstr "vartotojo vardas"
+
+msgid "utility"
+msgstr "paslaugų programa"
+
+msgid "valid"
+msgstr "teisingas"
+
+msgid "validation"
+msgstr "patikra"
+
+msgid "validity"
+msgstr "galiojimas"
+
+msgid "value"
+msgstr "reikšmė"
+
+msgid "variable"
+msgstr "kintamasis"
+
+msgid "vector"
+msgstr "vektorius"
+
+msgid "verbose"
+msgstr "išsamus"
+
+msgid "verify"
+msgstr "patikrinti"
+
+msgid "version"
+msgstr "versija"
+
+msgid "video"
+msgstr "vaizdas"
+
+msgid "view"
+msgstr "peržiūrėti"
+
+msgid "viewer"
+msgstr "žiūryklė"
+
+msgid "virtual"
+msgstr "virtualus"
+
+msgid "virus"
+msgstr "virusas"
+
+msgid "visual"
+msgstr "vizualus"
+
+msgid "volume"
+msgstr "garsas"
+
+msgid "wallpaper"
+msgstr "fono paveiksliukas"
+
+msgid "warn"
+msgstr "įspėti"
+
+msgid "web"
+msgstr "žiniatinklis"
+
+msgid "web cam"
+msgstr "žiniatinklio vaizdo kamera"
+
+msgid "web master"
+msgstr "svetainės administratorius"
+
+msgid "web page"
+msgstr "tinklalapis"
+
+msgid "widget"
+msgstr "valdiklis"
+
+msgid "width"
+msgstr "plotis"
+
+msgid "wi fi"
+msgstr "belaidis tinklas"
+
+msgid "wild card"
+msgstr "pakaitos simbolis"
+
+msgid "window"
+msgstr "langas"
+
+msgid "wizard"
+msgstr "vedlys"
+
+msgid "word processor"
+msgstr "rašyklė"
+
+msgid "work around"
+msgstr "greitas sprendimas"
+
+msgid "work group"
+msgstr "darbo grupė"
+
+msgid "work station"
+msgstr "kompiuterizuota darbo vieta"
+
+msgid "wrap"
+msgstr "skaidyti"
+
+msgid "yes"
+msgstr "taip"
+
+msgid "zone"
+msgstr "juosta"
+
+msgid "zoom"
+msgstr "pakeisti vaizdo dydį"

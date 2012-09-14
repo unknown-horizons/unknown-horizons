@@ -1,0 +1,3494 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2010-05-28 00:55+0200\n"
+"PO-Revision-Date: 2010-05-28 21:03+0200\n"
+"Last-Translator: admin <>\n"
+"Language-Team: translate-discuss-af@lists.sourceforge.net\n"
+"Language: af\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Pootle 2.1.0-beta2\n"
+
+msgid "Do you really want to"
+msgstr "Wil u definitief"
+
+msgid "does not exist"
+msgstr "bestaan nie"
+
+msgid "Do you want to"
+msgstr "Wil u"
+
+msgid "number of"
+msgstr "aantal"
+
+msgctxt "noun"
+msgid "format"
+msgstr "formaat"
+
+msgctxt "verb"
+msgid "format"
+msgstr "formateer"
+
+msgctxt "verb"
+msgid "complete"
+msgstr "voltooi"
+
+msgctxt "adjective"
+msgid "complete"
+msgstr "volledig"
+
+msgctxt "present"
+msgid "read"
+msgstr "lees"
+
+msgctxt "past"
+msgid "read"
+msgstr "gelees"
+
+msgctxt "1"
+msgid "last"
+msgstr "laaste"
+
+msgctxt "2"
+msgid "last"
+msgstr "afgelope"
+
+msgid "file"
+msgstr "lêer"
+
+msgid "error"
+msgstr "fout"
+
+msgid "window"
+msgstr "venster"
+
+msgid "key"
+msgstr "sleutel"
+
+msgid "list"
+msgstr "lys"
+
+msgid "option"
+msgstr "keuse"
+
+msgid "default"
+msgstr "verstek"
+
+msgid "folder"
+msgstr "gids"
+
+msgid "message"
+msgstr "boodskap"
+
+msgid "user"
+msgstr "gebruiker"
+
+msgid "time"
+msgstr "tyd"
+
+msgid "server"
+msgstr "bediener"
+
+msgid "text"
+msgstr "teks"
+
+msgid "size"
+msgstr "grootte"
+
+msgid "information"
+msgstr "inligting"
+
+msgid "enable"
+msgstr "aktiveer"
+
+msgid "command"
+msgstr "opdrag"
+
+msgid "help"
+msgstr "hulp"
+
+msgid "mode"
+msgstr "modus"
+
+msgid "system"
+msgstr "stelsel"
+
+msgid "item"
+msgstr "item"
+
+msgid "unknown"
+msgstr "onbekend"
+
+msgid "save"
+msgstr "stoor"
+
+msgid "data"
+msgstr "data"
+
+msgid "start"
+msgstr "begin"
+
+msgid "view"
+msgstr "bekyk"
+
+msgid "invalid"
+msgstr "ongeldig"
+
+msgid "found"
+msgstr "gevind"
+
+msgid "icon"
+msgstr "ikoon"
+
+msgid "color"
+msgstr "kleur"
+
+msgid "search"
+msgstr "soek"
+
+msgid "password"
+msgstr "wagwoord"
+
+msgid "directory"
+msgstr "gids"
+
+msgid "valid"
+msgstr "geldig"
+
+msgid "program"
+msgstr "program"
+
+msgid "version"
+msgstr "weergawe"
+
+msgid "move"
+msgstr "skuif"
+
+msgid "location"
+msgstr "ligging"
+
+msgid "content"
+msgstr "inhoud"
+
+msgid "button"
+msgstr "knoppie"
+
+msgid "GNOME"
+msgstr "GNOME"
+
+msgid "screen"
+msgstr "skerm"
+
+msgid "copy"
+msgstr "kopieer"
+
+msgid "edit"
+msgstr "redigeer"
+
+msgid "preference"
+msgstr "voorkeur"
+
+msgid "device"
+msgstr "toestel"
+
+msgid "exist"
+msgstr "bestaan"
+
+msgid "document"
+msgstr "dokument"
+
+msgid "delete"
+msgstr "skrap"
+
+msgid "address"
+msgstr "adres"
+
+msgid "dialog"
+msgstr "dialoog"
+
+msgid "action"
+msgstr "aksie"
+
+msgid "contact"
+msgstr "kontak"
+
+msgid "click"
+msgstr "klik"
+
+msgid "enabled"
+msgstr "geaktiveer"
+
+msgid "configuration"
+msgstr "opstelling"
+
+msgid "empty"
+msgstr "leeg"
+
+msgid "note"
+msgstr "nota"
+
+msgid "run"
+msgstr "voer uit"
+
+msgid "width"
+msgstr "wydte"
+
+msgid "remove"
+msgstr "verwyder"
+
+msgid "next"
+msgstr "volgende"
+
+msgid "left"
+msgstr "links"
+
+msgid "character"
+msgstr "karakter"
+
+msgid "write"
+msgstr "skryf"
+
+msgid "page"
+msgstr "bladsy"
+
+msgid "menu"
+msgstr "kieslys"
+
+msgid "keyboard"
+msgstr "sleutelbord"
+
+msgid "description"
+msgstr "beskrywing"
+
+msgid "software"
+msgstr "sagteware"
+
+msgid "values"
+msgstr "waardes"
+
+msgid "link"
+msgstr "skakel"
+
+msgid "position"
+msgstr "posisie"
+
+msgid "choose"
+msgstr "kies"
+
+msgid "network"
+msgstr "netwerk"
+
+msgid "manager"
+msgstr "bestuurder"
+
+msgid "computer"
+msgstr "rekenaar"
+
+msgid "output"
+msgstr "afvoer"
+
+msgid "disable"
+msgstr "deaktiveer"
+
+msgid "panel"
+msgstr "paneel"
+
+msgid "status"
+msgstr "status"
+
+msgid "source"
+msgstr "bron"
+
+msgid "print"
+msgstr "druk"
+
+msgid "send"
+msgstr "stuur"
+
+msgid "string"
+msgstr "string"
+
+msgid "free"
+msgstr "beskikbaar"
+
+msgid "session"
+msgstr "sessie"
+
+msgid "object"
+msgstr "objek"
+
+msgid "URI"
+msgstr "URI"
+
+msgid "column"
+msgstr "kolom"
+
+msgid "volume"
+msgstr "volume"
+
+msgid "disabled"
+msgstr "gedeaktiveer"
+
+msgid "public"
+msgstr "publiek"
+
+msgid "installed"
+msgstr "geïnstalleer"
+
+msgid "connect"
+msgstr "koppel"
+
+msgid "received"
+msgstr "ontvang"
+
+msgid "URL"
+msgstr "URL"
+
+msgid "sound"
+msgstr "klank"
+
+msgid "background"
+msgstr "agtergrond"
+
+msgid "quit"
+msgstr "sluit af"
+
+msgid "title"
+msgstr "titel"
+
+msgid "automatically"
+msgstr "outomaties"
+
+msgid "disk"
+msgstr "skyf"
+
+msgid "command line"
+msgstr "opdraglyn"
+
+msgid "level"
+msgstr "vlak"
+
+msgid "properties"
+msgstr "eienskappe"
+
+msgid "account"
+msgstr "rekening"
+
+msgid "active"
+msgstr "aktief"
+
+msgid "path"
+msgstr "pad"
+
+msgid "license"
+msgstr "lisensie"
+
+msgid "disc"
+msgstr "skyf"
+
+msgid "terminal"
+msgstr "terminaal"
+
+msgid "video"
+msgstr "video"
+
+msgid "height"
+msgstr "hoogte"
+
+msgid "plugin"
+msgstr "inprop"
+
+msgid "date"
+msgstr "datum"
+
+msgid "tab"
+msgstr "oortjie"
+
+msgid "not found"
+msgstr "nie gevind nie"
+
+msgid "previous"
+msgstr "vorige"
+
+msgid "and/or"
+msgstr "en/of"
+
+msgid "audio"
+msgstr "oudio"
+
+msgid "package"
+msgstr "pakket"
+
+msgid "process"
+msgstr "proses"
+
+msgid "back"
+msgstr "terug"
+
+msgid "mail"
+msgstr "pos"
+
+msgid "first"
+msgstr "eerste"
+
+msgid "argument"
+msgstr "argument"
+
+msgid "saved"
+msgstr "gestoor"
+
+msgid "warning"
+msgstr "waarskuwing"
+
+msgid "service"
+msgstr "diens"
+
+msgid "host"
+msgstr "gasheer"
+
+msgid "style"
+msgstr "styl"
+
+msgid "task"
+msgstr "taak"
+
+msgid "occurred"
+msgstr "het voorgekom"
+
+msgid "control"
+msgstr "beheer"
+
+msgid "extension"
+msgstr "uitbreiding"
+
+msgid "stop"
+msgstr "stop"
+
+msgid "applet"
+msgstr "miniprogram"
+
+msgid "filename"
+msgstr "lêernaam"
+
+msgid "calendar"
+msgstr "kalender"
+
+msgid "theme"
+msgstr "tema"
+
+msgid "GNU"
+msgstr "GNU"
+
+msgid "header"
+msgstr "kop"
+
+msgid "already exists"
+msgstr "bestaan reeds"
+
+msgid "home"
+msgstr "tuis"
+
+msgid "field"
+msgstr "veld"
+
+msgid "label"
+msgstr "etiket"
+
+msgid "activate"
+msgstr "aktiveer"
+
+msgid "browser"
+msgstr "blaaier"
+
+msgid "names"
+msgstr "name"
+
+msgid "hide"
+msgstr "versteek"
+
+msgid "memory"
+msgstr "geheue"
+
+msgid "notification"
+msgstr "kennisgewing"
+
+msgid "request"
+msgstr "versoek"
+
+msgid "accept"
+msgstr "aanvaar"
+
+msgid "web"
+msgstr "web"
+
+msgid "input"
+msgstr "toevoer"
+
+msgid "layout"
+msgstr "uitleg"
+
+msgid "normal"
+msgstr "normaal"
+
+msgid "continue"
+msgstr "gaan voort"
+
+msgid "word"
+msgstr "woord"
+
+msgid "bar"
+msgstr "balk"
+
+msgid "interface"
+msgstr "koppelvlak"
+
+msgid "method"
+msgstr "metode"
+
+msgid "child"
+msgstr "kind"
+
+msgid "existing"
+msgstr "bestaande"
+
+msgid "element"
+msgstr "element"
+
+msgid "single"
+msgstr "enkel"
+
+msgid "free software"
+msgstr "Vry Sagteware"
+
+msgid "filter"
+msgstr "filter"
+
+msgid "deleted"
+msgstr "geskrap"
+
+msgid "drive"
+msgstr "aandrywer"
+
+msgid "bookmark"
+msgstr "boekmerk"
+
+msgid "usage"
+msgstr "gebruik"
+
+msgid "editor"
+msgstr "redigeerder"
+
+msgid "email"
+msgstr "e-pos"
+
+msgid "internal"
+msgstr "interne"
+
+msgid "replace"
+msgstr "vervang"
+
+msgid "test"
+msgstr "toets"
+
+msgid "port"
+msgstr "poort"
+
+msgid "row"
+msgstr "ry"
+
+msgid "visible"
+msgstr "sigbaar"
+
+msgid "preview"
+msgstr "voorskou"
+
+msgid "unknown error"
+msgstr "onbekende fout"
+
+msgid "effect"
+msgstr "effek"
+
+msgid "toolbar"
+msgstr "nutsbalk"
+
+msgid "rename"
+msgstr "hernoem"
+
+msgid "attribute"
+msgstr "attribuut"
+
+msgid "management"
+msgstr "bestuur"
+
+msgid "cancel"
+msgstr "kanselleer"
+
+msgid "shortcut"
+msgstr "kortpad"
+
+msgid "automatic"
+msgstr "outomaties"
+
+msgid "mouse"
+msgstr "muis"
+
+msgid "unsupported"
+msgstr "Nie ondersteun nie"
+
+msgid "manage"
+msgstr "bestuur"
+
+msgid "play"
+msgstr "speel"
+
+msgid "try again"
+msgstr "probeer weer"
+
+msgid "minute"
+msgstr "minuut"
+
+msgid "vertical"
+msgstr "vertikaal"
+
+msgid "off"
+msgstr "af"
+
+msgid "wait"
+msgstr "wag"
+
+msgid "profile"
+msgstr "profiel"
+
+msgid "standard"
+msgstr "standaard"
+
+msgid "client"
+msgstr "kliënt"
+
+msgid "progress"
+msgstr "vordering"
+
+msgid "successfully"
+msgstr "suksesvol"
+
+msgid "range"
+msgstr "omvang"
+
+msgid "resource"
+msgstr "hulpbron"
+
+msgid "media"
+msgstr "media"
+
+msgid "modified"
+msgstr "verander"
+
+msgid "trash"
+msgstr "asblik"
+
+msgid "day"
+msgstr "dag"
+
+msgid "length"
+msgstr "lengte"
+
+msgid "install"
+msgstr "installeer"
+
+msgid "module"
+msgstr "module"
+
+msgid "clipboard"
+msgstr "knipbord"
+
+msgid "evolution"
+msgstr "evolution"
+
+msgid "protocol"
+msgstr "protokol"
+
+msgid "speed"
+msgstr "spoed"
+
+msgid "temporary"
+msgstr "tydelik"
+
+msgid "completed"
+msgstr "voltooid"
+
+msgid "e.g"
+msgstr "bv."
+
+msgid "feature"
+msgstr "funksie; eienskap"
+
+msgid "history"
+msgstr "geskiedenis"
+
+msgid "horizontal"
+msgstr "horisontaal"
+
+msgid "tag"
+msgstr "etiket"
+
+msgid "personal"
+msgstr "persoonlik"
+
+msgid "map"
+msgstr "kaart"
+
+msgid "track"
+msgstr "snit"
+
+msgid "username"
+msgstr "gebruikernaam"
+
+msgid "internet"
+msgstr "internet"
+
+msgid "copyright"
+msgstr "kopiereg"
+
+msgid "table"
+msgstr "tabel"
+
+msgid "administrator"
+msgstr "administrateur"
+
+msgid "fit"
+msgstr "pas"
+
+msgid "ignore"
+msgstr "ignoreer"
+
+msgid "simple"
+msgstr "eenvoudig"
+
+msgid "language"
+msgstr "taal"
+
+msgid "log out"
+msgstr "Meld af"
+
+msgid "browse"
+msgstr "blaai"
+
+msgid "zoom"
+msgstr "zoem"
+
+msgid "accessibility"
+msgstr "toeganklikheid"
+
+msgid "second"
+msgstr "tweede"
+
+msgid "restart"
+msgstr "herbegin"
+
+msgid "amount"
+msgstr "bedrag"
+
+#, fuzzy
+msgid "FILE"
+msgstr "LÊER"
+
+msgid "database"
+msgstr "databasis"
+
+msgid "pointer"
+msgstr "wyser"
+
+msgid "destination"
+msgstr "bestemming"
+
+msgid "private"
+msgstr "privaat"
+
+msgid "lower"
+msgstr "onderste"
+
+msgid "archive"
+msgstr "argief"
+
+msgid "refresh"
+msgstr "verfris"
+
+msgid "street"
+msgstr "straat"
+
+msgid "background color"
+msgstr "agtergrondkleur"
+
+msgid "stored"
+msgstr "gestoor"
+
+msgid "encoding"
+msgstr "enkodering"
+
+msgid "scheme"
+msgstr "skema"
+
+msgid "context"
+msgstr "konteks"
+
+msgid "installation"
+msgstr "installasie"
+
+msgid "coordinate"
+msgstr "koördinaat"
+
+msgid "proxy"
+msgstr "instaanbediener"
+
+msgid "signature"
+msgstr "handtekening"
+
+msgid "integer"
+msgstr "heelgetal"
+
+msgid "player"
+msgstr "speler"
+
+msgid "border"
+msgstr "rand"
+
+msgid "DVD"
+msgstr "DVD"
+
+msgid "website"
+msgstr "webwerf"
+
+msgid "rate"
+msgstr "koers"
+
+msgid "behavior"
+msgstr "gedrag"
+
+msgid "fill"
+msgstr "vul"
+
+msgid "property"
+msgstr "eienskap"
+
+msgid "appearance"
+msgstr "voorkoms"
+
+msgid "list of available"
+msgstr "lys van beskikbare"
+
+msgid "all files"
+msgstr "Alle lêers"
+
+msgid "query"
+msgstr "navraag"
+
+msgid "busy"
+msgstr "besig"
+
+msgid "connected"
+msgstr "gekoppel"
+
+msgid "security"
+msgstr "sekuriteit"
+
+msgid "certificate"
+msgstr "sertifikaat"
+
+msgid "receive"
+msgstr "ontvang"
+
+msgid "expression"
+msgstr "uitdrukking"
+
+msgid "filesystem"
+msgstr "lêerstelsel"
+
+msgid "hostname"
+msgstr "gasheernaam"
+
+msgid "index"
+msgstr "indeks"
+
+msgid "tree"
+msgstr "boom"
+
+msgid "cancelled"
+msgstr "gekanselleer"
+
+msgid "pattern"
+msgstr "patroon"
+
+msgid "script"
+msgstr "skrif"
+
+msgid "white"
+msgstr "wit"
+
+msgid "paste"
+msgstr "plak"
+
+msgid "common"
+msgstr "algemeen"
+
+msgid "encrypted"
+msgstr "geënkripteer"
+
+msgid "hardware"
+msgstr "hardeware"
+
+msgid "overwrite"
+msgstr "oorskryf"
+
+msgid "project"
+msgstr "projek"
+
+msgid "session management"
+msgstr "sessiebestuur"
+
+msgid "percentage"
+msgstr "persentasie"
+
+msgid "definition"
+msgstr "definisie"
+
+msgid "GTK+"
+msgstr "GTK+"
+
+msgid "animation"
+msgstr "animasie"
+
+msgid "category"
+msgstr "kategorie"
+
+msgid "dictionary"
+msgstr "woordeboek"
+
+msgid "duration"
+msgstr "duur"
+
+msgid "select all"
+msgstr "Kies almal"
+
+msgid "expand"
+msgstr "uitvou"
+
+msgid "focus"
+msgstr "fokus"
+
+msgid "implemented"
+msgstr "geïmplementeer"
+
+msgid "online"
+msgstr "aanlyn"
+
+msgid "unit"
+msgstr "eenheid"
+
+msgid "address book"
+msgstr "adresboek"
+
+msgid "black"
+msgstr "swart"
+
+msgid "people"
+msgstr "mense"
+
+msgid "user name"
+msgstr "gebruikernaam"
+
+msgid "untitled"
+msgstr "naamloos"
+
+msgid "sort"
+msgstr "sorteer"
+
+msgid "blue"
+msgstr "blou"
+
+msgid "undo"
+msgstr "ontdoen"
+
+msgid "window manager"
+msgstr "vensterbestuurder"
+
+msgid "priority"
+msgstr "prioriteit"
+
+msgid "nautilus"
+msgstr "Nautilus"
+
+msgid "draw"
+msgstr "teken"
+
+msgid "file system"
+msgstr "lêerstelsel"
+
+msgid "traditional"
+msgstr "tradisioneel"
+
+msgid "buffer"
+msgstr "buffer"
+
+msgid "internal error"
+msgstr "Interne fout"
+
+msgid "visibility"
+msgstr "sigbaarheid"
+
+msgid "web browser"
+msgstr "webblaaier"
+
+msgid "direction"
+msgstr "rigting"
+
+msgid "japanese"
+msgstr "Japannees"
+
+msgid "incoming"
+msgstr "inkomend"
+
+msgid "log in"
+msgstr "Meld aan"
+
+msgid "red"
+msgstr "rooi"
+
+msgid "advanced"
+msgstr "gevorderd"
+
+msgid "logout"
+msgstr "Meld af"
+
+msgid "eject"
+msgstr "uitskiet"
+
+msgid "ejected"
+msgstr "uitgeskiet"
+
+msgid "statusbar"
+msgstr "statusbalk"
+
+msgid "manually"
+msgstr "handmatig"
+
+msgid "please wait"
+msgstr "Wag asb."
+
+msgid "save as"
+msgstr "Stoor as"
+
+msgid "signal"
+msgstr "sein"
+
+msgid "arrow"
+msgstr "pyltjie"
+
+msgid "documentation"
+msgstr "dokumentasie"
+
+msgid "edge"
+msgstr "rand"
+
+msgid "appointment"
+msgstr "afspraak"
+
+msgid "screenshot"
+msgstr "skermskoot"
+
+msgid "encryption"
+msgstr "enkripsie"
+
+msgid "sign"
+msgstr "onderteken"
+
+msgid "idle"
+msgstr "ledig"
+
+msgid "month"
+msgstr "maand"
+
+msgid "camera"
+msgstr "kamera"
+
+msgid "canceled"
+msgstr "gekanselleer"
+
+msgid "define"
+msgstr "definieer"
+
+msgid "directories"
+msgstr "gidse"
+
+msgid "south"
+msgstr "Suid"
+
+msgid "no description"
+msgstr "Geen beskrywing"
+
+msgid "alert"
+msgstr "alarm"
+
+msgid "entries"
+msgstr "inskrywings"
+
+msgid "comment"
+msgstr "kommentaar"
+
+msgid "reload"
+msgstr "herlaai"
+
+msgid "underline"
+msgstr "onderstreep"
+
+msgid "summary"
+msgstr "opsomming"
+
+msgid "welcome"
+msgstr "welkom"
+
+msgid "printer"
+msgstr "drukker"
+
+msgid "scan"
+msgstr "skandeer"
+
+msgid "green"
+msgstr "groen"
+
+msgid "memo"
+msgstr "memo"
+
+msgid "role"
+msgstr "rol"
+
+msgid "deactivate"
+msgstr "deaktiveer"
+
+msgid "byte"
+msgstr "greep"
+
+msgid "chat"
+msgstr "gesels"
+
+msgid "upper"
+msgstr "boonste"
+
+msgid "visual"
+msgstr "visueel"
+
+msgid "tooltip"
+msgstr "nutswenk"
+
+msgid "foreground"
+msgstr "voorgrond"
+
+msgid "milliseconds"
+msgstr "millisekondes"
+
+msgid "ready"
+msgstr "gereed"
+
+msgid "sensitive"
+msgstr "sensitief"
+
+msgid "today"
+msgstr "vandag"
+
+msgid "zone"
+msgstr "sone"
+
+msgid "attachment"
+msgstr "aanhegsel"
+
+msgid "command line options"
+msgstr "opdraglynkeuse"
+
+msgid "contrast"
+msgstr "kontras"
+
+msgid "medium"
+msgstr "medium"
+
+msgid "encrypt"
+msgstr "enkripteer"
+
+msgid "zoom in"
+msgstr "Zoem in"
+
+msgid "cyrillic"
+msgstr "Cyrillies"
+
+msgid "unique"
+msgstr "uniek"
+
+msgid "yesterday"
+msgstr "gister"
+
+msgid "brightness"
+msgstr "helderheid"
+
+msgid "lock screen"
+msgstr "Sluit skerm"
+
+msgid "radio"
+msgstr "radio"
+
+msgid "symbol"
+msgstr "simbool"
+
+msgid "connect to server"
+msgstr "Koppel aan bediener"
+
+msgid "categories"
+msgstr "kategorie"
+
+msgid "hebrew"
+msgstr "Hebreeus"
+
+msgid "miscellaneous"
+msgstr "allerlei"
+
+msgid "classic"
+msgstr "klassiek"
+
+msgid "graphic"
+msgstr "grafika"
+
+msgid "owner"
+msgstr "eienaar"
+
+msgid "receiving"
+msgstr "Ontvang tans"
+
+msgid "CPU"
+msgstr "SVG"
+
+msgid "korean"
+msgstr "Koreaans"
+
+msgid "middle"
+msgstr "middel"
+
+msgid "clock"
+msgstr "horlosie"
+
+msgid "host name"
+msgstr "gasheernaam"
+
+msgid "template"
+msgstr "sjabloon"
+
+msgid "chinese"
+msgstr "Sjinees"
+
+msgid "SSH"
+msgstr "SSH"
+
+msgid "junk"
+msgstr "gemors"
+
+msgid "week"
+msgstr "week"
+
+msgid "zoom out"
+msgstr "Zoem uit"
+
+msgid "resolution"
+msgstr "resolusie"
+
+msgid "secret"
+msgstr "geheim"
+
+msgid "build"
+msgstr "bou"
+
+msgid "navigation"
+msgstr "navigasie"
+
+msgid "not a regular file"
+msgstr "Nie 'n gewone lêer nie"
+
+msgid "paragraph"
+msgstr "paragraaf"
+
+msgid "ratio"
+msgstr "ratio"
+
+msgid "statistics"
+msgstr "statistiek"
+
+msgid "english"
+msgstr "Engels"
+
+msgid "lookup"
+msgstr "opsoek"
+
+msgid "new folder"
+msgstr "Nuwe gids"
+
+msgid "spacing"
+msgstr "spasiëring"
+
+msgid "metadata"
+msgstr "metadata"
+
+msgid "recently used"
+msgstr "Onlangs gebruik"
+
+msgid "search results"
+msgstr "soekresultate"
+
+msgid "basic"
+msgstr "basies"
+
+msgid "bluetooth"
+msgstr "Bluetooth"
+
+msgid "scope"
+msgstr "strekking"
+
+msgid "job"
+msgstr "taak"
+
+msgid "yes"
+msgstr "ja"
+
+msgid "disconnect"
+msgstr "ontkoppel"
+
+msgid "email address"
+msgstr "e-posadres"
+
+msgid "embedded"
+msgstr "ingebed"
+
+msgid "assistant"
+msgstr "assistent"
+
+msgid "individual"
+msgstr "individu"
+
+msgid "leave fullscreen"
+msgstr "Verlaat volskerm"
+
+msgid "notification area"
+msgstr "meldingsarea"
+
+msgid "office"
+msgstr "kantoor"
+
+msgid "repeat"
+msgstr "herhaal"
+
+msgid "expanded"
+msgstr "uitgevou"
+
+msgid "listen"
+msgstr "listen"
+
+msgid "cut"
+msgstr "knip"
+
+msgid "in progress"
+msgstr "onderweg"
+
+msgid "network connection"
+msgstr "netwerkkonneksie"
+
+msgid "open with"
+msgstr "Open met"
+
+msgid "reply"
+msgstr "antwoord"
+
+msgid "subject"
+msgstr "onderwerp"
+
+msgid "beep"
+msgstr "biep"
+
+msgid "customize"
+msgstr "eie"
+
+msgid "layer"
+msgstr "laag"
+
+msgid "weather"
+msgstr "weer"
+
+msgid "file type"
+msgstr "lêertipe"
+
+msgid "news"
+msgstr "nuus"
+
+msgid "open folder"
+msgstr "Open gids"
+
+msgid "protected"
+msgstr "beskermd"
+
+msgid "simplified"
+msgstr "vereenvoudig"
+
+msgid "collection"
+msgstr "versameling"
+
+msgid "modem"
+msgstr "modem"
+
+msgid "shut down"
+msgstr "Skakel af"
+
+msgid "shadow"
+msgstr "skadu"
+
+msgid "secondary"
+msgstr "sekondêre"
+
+msgid "select a file"
+msgstr "Kies 'n lêer"
+
+msgid "vietnamese"
+msgstr "viëtnamees"
+
+msgid "PATH"
+msgstr "PAD"
+
+msgid "save file"
+msgstr "Stoor lêer"
+
+msgid "success"
+msgstr "sukses"
+
+msgid "wireless"
+msgstr "draadloos"
+
+msgid "attach"
+msgstr "Heg aan"
+
+msgid "dot"
+msgstr "punt"
+
+msgid "indent"
+msgstr "keep"
+
+msgid "laptop"
+msgstr "skootrekenaar"
+
+msgid "NAME"
+msgstr "NAAM"
+
+msgid "addresses"
+msgstr "adresse"
+
+msgid "inline"
+msgstr "inlyn"
+
+msgid "open a file"
+msgstr "Open 'n lêer"
+
+msgid "presentation"
+msgstr "voorlegging"
+
+msgid "alternative"
+msgstr "alternatief"
+
+msgid "multimedia"
+msgstr "multimedia"
+
+msgid "no error"
+msgstr "Geen fout nie"
+
+msgid "development"
+msgstr "ontwikkeling"
+
+msgid "full screen"
+msgstr "volskerm"
+
+msgid "invisible"
+msgstr "onsigbaar"
+
+msgid "show hidden"
+msgstr "Vertoon verskuil"
+
+msgid "trusted"
+msgstr "vertroud"
+
+msgid "anchor"
+msgstr "anker"
+
+msgid "CD-ROM"
+msgstr "CD-ROM"
+
+msgid "critical"
+msgstr "kritiek"
+
+msgid "password required"
+msgstr "Wagwoord vereis"
+
+msgid "image file"
+msgstr "beeldlêer"
+
+msgid "paused"
+msgstr "wagtend"
+
+msgid "credits"
+msgstr "bedankings"
+
+msgid "hibernate"
+msgstr "hiberneer"
+
+msgid "home folder"
+msgstr "tuisgids"
+
+msgid "open location"
+msgstr "Open ligging"
+
+msgid "central european"
+msgstr "sentraal europees"
+
+msgid "foreground color"
+msgstr "voorgrondkleur"
+
+msgid "in the future"
+msgstr "in die toekoms"
+
+msgid "open file"
+msgstr "Open lêer"
+
+msgid "padding"
+msgstr "opvulling"
+
+msgid "create folder"
+msgstr "Skep gids"
+
+msgid "cursor position"
+msgstr "wyserposisie"
+
+msgid "outgoing"
+msgstr "uitgaande"
+
+msgid "resizable"
+msgstr "skaleerbaar"
+
+msgid "input methods"
+msgstr "toevoermetodes"
+
+msgid "play sound"
+msgstr "Speel klank"
+
+msgid "group name"
+msgstr "groepnaam"
+
+msgid "pick a color"
+msgstr "Kies 'n kleur"
+
+msgid "right margin"
+msgstr "regtergrens"
+
+msgid "artist"
+msgstr "kunstenaar"
+
+msgid "percent"
+msgstr "persent"
+
+msgid "pixbuf"
+msgstr "pixbuf"
+
+msgid "shrink"
+msgstr "verklein"
+
+msgid "numeric"
+msgstr "numeries"
+
+msgid "open files"
+msgstr "Open lêers"
+
+msgid "current selection"
+msgstr "Huidige seleksie"
+
+msgid "destination folder"
+msgstr "teikengids"
+
+msgid "empty trash"
+msgstr "Maak asblik leeg"
+
+msgid "footer"
+msgstr "voet"
+
+msgid "inbox"
+msgstr "inkassie"
+
+msgid "neighbor"
+msgstr "buurman"
+
+msgid "adjustment"
+msgstr "verstelling"
+
+msgid "finger"
+msgstr "finger"
+
+msgid "fixed width"
+msgstr "Vaste wydte"
+
+msgid "flat"
+msgstr "plat"
+
+msgid "floppy"
+msgstr "sagteskyf"
+
+msgid "hue"
+msgstr "tint"
+
+msgid "maximize"
+msgstr "maksimeer"
+
+msgid "PID"
+msgstr "PID"
+
+msgid "align"
+msgstr "belyn"
+
+msgid "keyboard shortcuts"
+msgstr "sleutelbordkortpaaie"
+
+msgid "paper"
+msgstr "papier"
+
+msgid "score"
+msgstr "telling"
+
+msgid "calculator"
+msgstr "sakrekenaar"
+
+msgid "centered"
+msgstr "gesentreer"
+
+msgid "descending"
+msgstr "dalend"
+
+msgid "file manager"
+msgstr "lêerbestuurder"
+
+msgid "menu bar"
+msgstr "kieslysbalk"
+
+msgid "MIME type"
+msgstr "MIME-tipe"
+
+msgid "power management"
+msgstr "kragbestuur"
+
+msgid "save image"
+msgstr "Stoor beeld"
+
+msgid "signing"
+msgstr "ondertekening"
+
+msgid "time zone"
+msgstr "tydsone"
+
+msgid "toggle button"
+msgstr "skakelknop"
+
+msgid "braille"
+msgstr "braille"
+
+msgid "file chooser"
+msgstr "bestands-kieser"
+
+msgid "height of the window"
+msgstr "Hoogte van die venster"
+
+msgid "hexadecimal"
+msgstr "heksadesimaal"
+
+msgid "identity"
+msgstr "identiteit"
+
+msgid "north"
+msgstr "noord"
+
+msgid "plain text"
+msgstr "Gewone teks"
+
+msgid "synchronize"
+msgstr "sinchroniseer"
+
+msgid "width of the window"
+msgstr "Wydte van die venster"
+
+msgid "autocomplete"
+msgstr "outvoltooi"
+
+msgid "canvas"
+msgstr "kanvas"
+
+msgid "file as"
+msgstr "Liasseer as"
+
+msgid "folder does not exist"
+msgstr "gids bestaan nie"
+
+msgid "forever"
+msgstr "vir altyd"
+
+msgid "migration"
+msgstr "migrasie"
+
+msgid "progress bar"
+msgstr "voorgangsbalk"
+
+msgid "strikethrough"
+msgstr "deurhaal"
+
+msgid "text editor"
+msgstr "teksredigeerder"
+
+msgid "close tab"
+msgstr "Sluit oortjie"
+
+msgid "close window"
+msgstr "Sluit venster"
+
+msgid "file not found"
+msgstr "Lêer nie gevind nie"
+
+msgid "google"
+msgstr "Google"
+
+msgid "icon name"
+msgstr "ikoonnaam"
+
+msgid "LDAP server"
+msgstr "LDAP-bediener"
+
+msgid "personal information"
+msgstr "Persoonlike inligting"
+
+msgid "programming"
+msgstr "programmering"
+
+msgid "serial number"
+msgstr "reeksnommer"
+
+msgid "C_onfigure"
+msgstr "_opstelling"
+
+msgid "copying files"
+msgstr "Kopieer tans lêers"
+
+msgid "no name"
+msgstr "Geen naam"
+
+msgid "searches"
+msgstr "soektogte"
+
+msgid "select a folder"
+msgstr "Kies 'n gids"
+
+msgid "undefined"
+msgstr "ongedefinieerd"
+
+msgid "character encoding"
+msgstr "karakterenkodering"
+
+msgid "column header"
+msgstr "kolomtitel"
+
+msgid "copy the selection"
+msgstr "Kopieer die seleksie"
+
+msgid "enable debugging code"
+msgstr "Aktiveer ontfoutkode"
+
+msgid "find Ne_xt"
+msgstr "Vind vo_lgende"
+
+msgid "find Pre_vious"
+msgstr "Vind vor_ige"
+
+msgid "justification"
+msgstr "alkantbelyning"
+
+msgid "playback"
+msgstr "terugspeel"
+
+msgid "run application"
+msgstr "Laat loop toepassing"
+
+msgid "silence"
+msgstr "stilte"
+
+msgid "callback"
+msgstr "Terug-bel"
+
+msgid "copies"
+msgstr "kopieë"
+
+msgid "date/time"
+msgstr "Datum/tyd"
+
+msgid "erase"
+msgstr "Vee uit"
+
+msgid "birthday"
+msgstr "verjaardag"
+
+msgid "date and time"
+msgstr "Datum en tyd"
+
+msgid "default height"
+msgstr "verstekhoogte"
+
+msgid "default width"
+msgstr "verstekwydte"
+
+msgid "extract"
+msgstr "pak uit"
+
+msgid "fraction"
+msgstr "fraksie"
+
+msgid "MD5"
+msgstr "MD5"
+
+msgid "minimize"
+msgstr "minimeer"
+
+msgid "saturation"
+msgstr "versadiging"
+
+msgid "text color"
+msgstr "tekskleur"
+
+msgid "zoom level"
+msgstr "zoemvlak"
+
+msgid "active plugins"
+msgstr "Aktiewe inproppe"
+
+msgid "administration"
+msgstr "administrasie"
+
+msgid "home page"
+msgstr "tuisblad"
+
+msgid "inverted"
+msgstr "omgekeer"
+
+msgid "processor"
+msgstr "verwerker"
+
+msgid "purple"
+msgstr "pers"
+
+msgid "show text"
+msgstr "Vertoon teks"
+
+msgid "audio disc"
+msgstr "Oudio-CD"
+
+msgid "file transfer"
+msgstr "lêeroordrag"
+
+msgid "force quit"
+msgstr "Forseer afluiting"
+
+msgid "page setup"
+msgstr "bladsyopstelling"
+
+msgid "rise"
+msgstr "styging"
+
+msgid "sender"
+msgstr "afsender"
+
+msgid "spanish"
+msgstr "spaans"
+
+msgid "spell checking"
+msgstr "speltoetsing"
+
+msgid "start time"
+msgstr "begintyd"
+
+msgid "subscribed"
+msgstr "ingeskryf"
+
+msgid "swedish"
+msgstr "sweeds"
+
+msgid "text file"
+msgstr "tekslêer"
+
+msgid "wrap mode"
+msgstr "Omvou-modus"
+
+msgid "ascending"
+msgstr "stygend"
+
+msgid "autocompletion"
+msgstr "outovoltooiing"
+
+msgid "DVD+R"
+msgstr "DVD+R"
+
+msgid "DVD+RW"
+msgstr "DVD+RW"
+
+msgid "DVD-R"
+msgstr "DVD-R"
+
+msgid "east"
+msgstr "oos"
+
+msgid "fax"
+msgstr "faks"
+
+msgid "file exists"
+msgstr "Lêer bestaan"
+
+msgid "maximum value"
+msgstr "maksimum waarde"
+
+msgid "pixmap"
+msgstr "pixmap"
+
+msgid "select an image"
+msgstr "Kies 'n prent"
+
+msgid "sky"
+msgstr "lug"
+
+msgid "utilities"
+msgstr "nutsgoed"
+
+msgid "at the end"
+msgstr "in by die einde"
+
+msgid "audio files"
+msgstr "oudiolêers"
+
+msgid "CD-RW"
+msgstr "CD-RW"
+
+msgid "check spelling"
+msgstr "Gaan spelling na"
+
+msgid "color selection"
+msgstr "kleurkeuse"
+
+msgid "czech"
+msgstr "tsjeggies"
+
+msgid "delete files"
+msgstr "Skrap lêers"
+
+msgid "dial"
+msgstr "bel"
+
+msgid "DVD-RW"
+msgstr "DVD-RW"
+
+msgid "E_xpand"
+msgstr "Uit_vou"
+
+msgid "emptying the trash"
+msgstr "Besig om die asblik leeg te maak"
+
+msgid "netmask"
+msgstr "netmasker"
+
+msgid "not a directory"
+msgstr "Nie 'n gids nie"
+
+msgid "orange"
+msgstr "oranje"
+
+msgid "polish"
+msgstr "pools"
+
+msgid "print preview"
+msgstr "drukvoorskou"
+
+msgid "queen"
+msgstr "dame"
+
+msgid "sending message"
+msgstr "Stuur tans boodskap"
+
+msgid "sort order"
+msgstr "sorteervolgorde"
+
+msgid "spin button"
+msgstr "omhoog/omlaag-knop"
+
+msgid "unknown command"
+msgstr "Onbekende bevel"
+
+msgid "west"
+msgstr "Wes"
+
+msgid "window title"
+msgstr "venstertitel"
+
+msgid "yellow"
+msgstr "geel"
+
+msgid "autodetect"
+msgstr "outospeur"
+
+msgid "De_fault"
+msgstr "Ve_rstek"
+
+msgid "e-mail address"
+msgstr "e-posadres"
+
+msgid "enable search"
+msgstr "Stel soektog in werking"
+
+msgid "flow"
+msgstr "stroming"
+
+msgid "inch"
+msgstr "duim"
+
+msgid "latvian"
+msgstr "letties"
+
+msgid "lock the screen"
+msgstr "Sluit die skerm"
+
+msgid "mouse preferences"
+msgstr "muisvoorkeure"
+
+msgid "muted"
+msgstr "uitgedoof"
+
+msgid "switch user"
+msgstr "Wissel gebruiker"
+
+msgid "system settings"
+msgstr "stelselinstellings"
+
+msgid "web site"
+msgstr "webwerf"
+
+msgid "window type"
+msgstr "venstersoort"
+
+msgid "C_lear"
+msgstr "_Maak skoon"
+
+msgid "CD-R"
+msgstr "CD-R"
+
+msgid "copying file"
+msgstr "Kopieer tans lêer"
+
+msgid "DEVICE"
+msgstr "TOESTEL"
+
+msgid "DVD-RAM"
+msgstr "DVD-RAM"
+
+msgid "DVD-ROM"
+msgstr "DVD-ROM"
+
+msgid "file already exists"
+msgstr "Lêer bestaan reeds"
+
+msgid "glass"
+msgstr "glas"
+
+msgid "home phone"
+msgstr "huisfoon"
+
+msgid "invalid signature"
+msgstr "Ongeldige handtekening"
+
+msgid "invalid URI"
+msgstr "Ongeldige URI"
+
+msgid "jabber"
+msgstr "Jabber"
+
+msgid "main menu"
+msgstr "hoofkieslys"
+
+msgid "markup"
+msgstr "markering"
+
+msgid "new contact"
+msgstr "Nuwe kontak"
+
+msgid "out of memory"
+msgstr "Geheue is op"
+
+msgid "A_ddress"
+msgstr "A_dres"
+
+msgid "checking for new mail"
+msgstr "Kontroleer vir nuwe pos"
+
+msgid "list view"
+msgstr "lysaangesig"
+
+msgid "telephone"
+msgstr "telefoon"
+
+msgid "A_ctivate"
+msgstr "A_ktiveer"
+
+msgid "AIM"
+msgstr "AIM"
+
+msgid "cut the selection"
+msgstr "Knip die seleksie"
+
+msgid "cyrillic/russian"
+msgstr "cyrillies/russies"
+
+msgid "free/busy"
+msgstr "Beskikbaar/besig"
+
+msgid "GEOMETRY"
+msgstr "VORM"
+
+msgid "hebrew visual"
+msgstr "Hebreeus visueel"
+
+msgid "hungarian"
+msgstr "hongaars"
+
+msgid "icon view"
+msgstr "ikoonaangesig"
+
+msgid "ICQ"
+msgstr "ICQ"
+
+msgid "mask"
+msgstr "masker"
+
+msgid "message body"
+msgstr "boodskaplyf"
+
+msgid "metacity"
+msgstr "metacity"
+
+msgid "n/a"
+msgstr "NVT"
+
+msgid "paste the clipboard"
+msgstr "Plak die knipbord"
+
+msgid "strategy"
+msgstr "strategie"
+
+msgid "abbreviation"
+msgstr "afkorting"
+
+msgid "play a sound"
+msgstr "Speel 'n klank"
+
+msgid "task list"
+msgstr "taaklys"
+
+msgid "cover"
+msgstr "toemaak"
+
+msgid "date modified"
+msgstr "Datum gewysig"
+
+msgid "dictionaries"
+msgstr "woordeboeke"
+
+msgid "encrypted data"
+msgstr "geënkripteerde data"
+
+msgid "issuer"
+msgstr "uitreiker"
+
+msgid "PDF"
+msgstr "PDF"
+
+msgid "proxy configuration"
+msgstr "instaanbedieneropstelling"
+
+msgid "search for files"
+msgstr "Soek vir lêers"
+
+msgid "accelerator key"
+msgstr "snelsleutel"
+
+msgid "bug buddy"
+msgstr "Bug Buddy"
+
+msgid "change password"
+msgstr "Verander wagwoord"
+
+msgid "custom format"
+msgstr "Pasgemaakte formaat"
+
+msgid "license agreement"
+msgstr "Lisensie-ooreenkoms"
+
+msgid "memo list"
+msgstr "memolys"
+
+msgid "page size"
+msgstr "bladsygrootte"
+
+msgid "recent documents"
+msgstr "Onlangse dokumente"
+
+msgid "sound theme"
+msgstr "klanktema"
+
+msgid "ten"
+msgstr "tien"
+
+msgid "trace"
+msgstr "Speur na"
+
+msgid "window list"
+msgstr "vensterlys"
+
+msgid "assistive technologies"
+msgstr "helpende tegnologieë"
+
+msgid "current folder"
+msgstr "Huidige gids"
+
+msgid "image data"
+msgstr "beelddata"
+
+msgid "king"
+msgstr "heer"
+
+msgid "left margin"
+msgstr "linkergrens"
+
+msgid "network interface"
+msgstr "netwerkkoppelvlak"
+
+msgid "number of rows"
+msgstr "aantal rye"
+
+msgid "prediction"
+msgstr "voorspelling"
+
+msgid "system monitor"
+msgstr "stelselmonitor"
+
+msgid "take screenshot"
+msgstr "Neem skermskoot"
+
+msgid "add user"
+msgstr "Voeg gebruiker by"
+
+msgid "alphabet"
+msgstr "alfabet"
+
+msgid "background set"
+msgstr "agtergrondstel"
+
+msgid "contact information"
+msgstr "kontakinligting"
+
+msgid "drawer"
+msgstr "laai"
+
+msgid "dutch"
+msgstr "Nederlands"
+
+msgid "edit bookmarks"
+msgstr "Redigeer boekmerke"
+
+msgid "new profile"
+msgstr "Nuwe profiel"
+
+msgid "nickname"
+msgstr "bynaam"
+
+msgid "OpenGL"
+msgstr "OpenGL"
+
+msgid "palette entry"
+msgstr "paletinskrywing"
+
+msgid "pixels above lines"
+msgstr "Pixels bo reëls"
+
+msgid "S_end"
+msgstr "_stuur"
+
+msgid "save a copy"
+msgstr "Stoor 'n kopie"
+
+msgid "save search"
+msgstr "Stoor soektog"
+
+msgid "select folder"
+msgstr "Kies gids"
+
+msgid "selectable"
+msgstr "kiesbaar"
+
+msgid "show week numbers"
+msgstr "Vertoon weeknommers"
+
+msgid "address entry"
+msgstr "adresinskrywing"
+
+msgid "Built-in"
+msgstr "ingebou"
+
+msgid "check box"
+msgstr "aankruisvakkie"
+
+msgid "custom size"
+msgstr "Pasgemaakte grootte"
+
+msgid "decline"
+msgstr "Wys van die hand"
+
+msgid "DVD-R disc"
+msgstr "DVD-R-skyf"
+
+msgid "DVD-RW disc"
+msgstr "DVD-RW-skyf"
+
+msgid "editable"
+msgstr "redigeerbaar"
+
+msgid "estonian"
+msgstr "Estnies"
+
+msgid "ethernet"
+msgstr "Ethernet"
+
+msgid "F_older"
+msgstr "_gids"
+
+msgid "finishing"
+msgstr "afwerking"
+
+msgid "genre"
+msgstr "genre"
+
+msgid "gray"
+msgstr "grys"
+
+msgid "keyboard preferences"
+msgstr "sleutelbordvoorkeure"
+
+msgid "list item"
+msgstr "lys-item"
+
+msgid "lithuanian"
+msgstr "Litaus"
+
+msgid "modal"
+msgstr "modaal"
+
+msgid "no effect"
+msgstr "Geen effek"
+
+msgid "no results"
+msgstr "Geen resultate nie"
+
+msgid "not connected"
+msgstr "Nie gekoppel nie"
+
+msgid "paragraph style"
+msgstr "paragraafstyl"
+
+msgid "pixels below lines"
+msgstr "Pixels onder reëls"
+
+msgid "pixels inside wrap"
+msgstr "Pixels binne omvou"
+
+msgid "protocol error"
+msgstr "Probleem met protokol"
+
+msgid "radio button"
+msgstr "radioknop"
+
+msgid "Re_fresh"
+msgstr "Ver_fris"
+
+msgid "removable media"
+msgstr "Verwyderbare media"
+
+msgid "show toolbar"
+msgstr "Vertoon nutsbalk"
+
+msgid "stock icon"
+msgstr "stapelikoon"
+
+msgid "unreadable"
+msgstr "onleesbaar"
+
+msgid "volume control"
+msgstr "volumebeheer"
+
+msgid "volume down"
+msgstr "Volume sagter"
+
+msgid "access denied"
+msgstr "Toegang geweier"
+
+msgid "best fit"
+msgstr "Beste passing"
+
+msgid "border color"
+msgstr "randkleur"
+
+msgid "clear history"
+msgstr "Vee geskiedenis uit"
+
+msgid "COMMAND"
+msgstr "OPDRAG"
+
+msgid "common name"
+msgstr "Algemene naam"
+
+msgid "configuration files"
+msgstr "opstellingslêers"
+
+msgid "current color"
+msgstr "Huidige kleur"
+
+msgid "date format"
+msgstr "datumformaat"
+
+msgid "enable animations"
+msgstr "Aktiveer animasies"
+
+msgid "error printing"
+msgstr "Fout tydens druk"
+
+msgid "file does not exist"
+msgstr "lêer bestaan nie"
+
+msgid "firefox"
+msgstr "Firefox"
+
+msgid "firewall"
+msgstr "brandmuur"
+
+msgid "insufficient permissions"
+msgstr "Onvoldoende regte"
+
+msgid "invalid filename"
+msgstr "Ongeldige lêernaam"
+
+msgid "label text"
+msgstr "Teks vir etiket"
+
+msgid "mouse keys"
+msgstr "muissleutels"
+
+msgid "network server"
+msgstr "netwerkbediener"
+
+msgid "number of channels"
+msgstr "aantal kanale"
+
+msgid "open a new window"
+msgstr "Open 'n nuwe venster"
+
+msgid "outbox"
+msgstr "uitkassie"
+
+msgid "rectangle"
+msgstr "reghoek"
+
+msgid "show information"
+msgstr "Wys inligting"
+
+msgid "subscript"
+msgstr "onderskrif"
+
+msgid "table cell"
+msgstr "tabel-sel"
+
+msgid "tablet"
+msgstr "tablet"
+
+msgid "tool bar"
+msgstr "werkbalk"
+
+msgid "toolbar style"
+msgstr "nutsbalkstyl"
+
+msgid "unspecified"
+msgstr "Nie gespesifiseer nie"
+
+msgid "VALUE"
+msgstr "WAARDE"
+
+msgid "volume up"
+msgstr "Volume harder"
+
+msgid "window position"
+msgstr "vensterposisie"
+
+msgid "accessories"
+msgstr "toebehore"
+
+msgid "add files"
+msgstr "Voeg lêers by"
+
+msgid "C_opy"
+msgstr "K_opieer"
+
+msgid "CD-R disc"
+msgstr "CD-R-skyf"
+
+msgid "CD-ROM disc"
+msgstr "CD-ROM-skyf"
+
+msgid "CD-RW disc"
+msgstr "CD-RW-skyf"
+
+msgid "CD/DVD creator"
+msgstr "CD/DVD-bouer"
+
+msgid "close the current window"
+msgstr "Sluit die huidige venster"
+
+msgid "desktop icon"
+msgstr "burobladikoon"
+
+msgid "DISPLAY"
+msgstr "VERTOON"
+
+msgid "DVD+R disc"
+msgstr "DVD+R-skyf"
+
+msgid "DVD+RW disc"
+msgstr "DVD+RW-skyf"
+
+msgid "DVD-RAM disc"
+msgstr "DVD-RAM-skyf"
+
+msgid "DVD-ROM disc"
+msgstr "DVD-ROM-skyf"
+
+msgid "family name"
+msgstr "van"
+
+msgid "MD5 fingerprint"
+msgstr "MD5-vingerafdruk"
+
+msgid "name contains"
+msgstr "Naam bevat"
+
+msgid "organizer"
+msgstr "organiseerder"
+
+msgid "recurrence"
+msgstr "herhaling"
+
+msgid "replace all"
+msgstr "Vervang almal"
+
+msgid "save screenshot"
+msgstr "Stoor skermskoot"
+
+msgid "save the current file"
+msgstr "Stoor die huidige lêer"
+
+msgid "select sound file"
+msgstr "Kies klanklêer"
+
+msgid "SHA1 fingerprint"
+msgstr "SHA1-vingerafdruk"
+
+msgid "solid color"
+msgstr "Soliede kleur"
+
+msgid "speed unit"
+msgstr "spoedeenheid"
+
+msgid "spell checker"
+msgstr "speltoetser"
+
+msgid "temperature unit"
+msgstr "Temperatuur-eenheid"
+
+msgid "unknown volume"
+msgstr "Onbekende volume"
+
+msgid "urgent"
+msgstr "dringend"
+
+msgid "USER"
+msgstr "GEBRUIKER"
+
+msgid "blank CD-R disc"
+msgstr "skoon CD-R-skyf"
+
+msgid "blank CD-RW disc"
+msgstr "skoon CD-RW-skyf"
+
+msgid "blank DVD+R disc"
+msgstr "skoon DVD+R-skyf"
+
+msgid "blank DVD+RW disc"
+msgstr "skoon DVD+RW-skyf"
+
+msgid "blank DVD-RAM disc"
+msgstr "skoon DVD-RAM-skyf"
+
+msgid "blank DVD-RW disc"
+msgstr "skoon DVD-RW-skyf"
+
+msgid "cancel login"
+msgstr "Kanselleer aanmelding"
+
+msgid "CLASS"
+msgstr "KLAS"
+
+msgid "close the current file"
+msgstr "Sluit die huidige lêer"
+
+msgid "configure the application"
+msgstr "Stel die toepassing op"
+
+msgid "custom location"
+msgstr "Pasgemaakte ligging"
+
+msgid "education"
+msgstr "opvoeding"
+
+msgid "epiphany web browser"
+msgstr "Epiphany-webblaaier"
+
+msgid "fish"
+msgstr "vis"
+
+msgid "given name"
+msgstr "doopnaam"
+
+msgid "Image/label border"
+msgstr "Beeld/etiket-grens"
+
+msgid "leave fullscreen mode"
+msgstr "Verlaat volskermmodus"
+
+msgid "log in anyway"
+msgstr "Meld in elk geval aan"
+
+msgid "no error message"
+msgstr "Geen foutboodskap nie"
+
+msgid "public FTP"
+msgstr "Publieke FTP"
+
+msgid "S_kip all"
+msgstr "S_laan almal oor"
+
+msgid "strikethrough set"
+msgstr "deurhaalstel"
+
+msgid "STRING"
+msgstr "STRING"
+
+msgid "toolbar editor"
+msgstr "nutsbalkredigeerder"
+
+msgid "underline set"
+msgstr "onderstreepstel"
+
+msgid "current document"
+msgstr "Huidige dokument"
+
+msgid "dasher"
+msgstr "dasher"
+
+msgid "file browser"
+msgstr "lêerblaaier"
+
+msgid "recurring"
+msgstr "herhalend"
+
+msgid "all messages"
+msgstr "Alle boodskappe"
+
+msgid "dictionary server"
+msgstr "woordeboekbediener"
+
+msgid "all day"
+msgstr "Hele dag"
+
+msgid "gadu-gadu"
+msgstr "gadu-gadu"
+
+msgid "MSN"
+msgstr "MSN"
+
+msgid "multimedia systems selector"
+msgstr "Kies multimediastelsels"
+
+msgid "power manager"
+msgstr "kragbestuurder"
+
+msgid "search folders"
+msgstr "soekgidse"
+
+msgid "skype"
+msgstr "skype"
+
+msgid "style scheme"
+msgstr "stylskema"
+
+msgid "syntax highlighting"
+msgstr "sinsverligting"
+
+msgid "workspace switcher"
+msgstr "werkruimtewisselaar"
+
+msgid "high contrast"
+msgstr "Hoë kontras"
+
+msgid "radar map"
+msgstr "radarkaart"
+
+msgid "send options"
+msgstr "versendingskeuses"
+
+msgid "audio device"
+msgstr "oudiotoestel"
+
+msgid "bottom to top"
+msgstr "Onder na bo"
+
+msgid "compact view"
+msgstr "Kompakte aangesig"
+
+msgid "current line"
+msgstr "Huidige reël"
+
+msgid "deleting files"
+msgstr "Skrap tans lêers"
+
+msgid "GNOME terminal"
+msgstr "GNOME-terminaal"
+
+msgid "horizontal alignment"
+msgstr "Horisontale gerigtheid"
+
+msgid "hour format"
+msgstr "uurformaat"
+
+msgid "image map"
+msgstr "prentkaart"
+
+msgid "keyboard indicator"
+msgstr "sleutelbordaanwyser"
+
+msgid "left to right"
+msgstr "Links na regs"
+
+msgid "right to left"
+msgstr "Regs na links"
+
+msgid "row header"
+msgstr "rytitel"
+
+msgid "scientific"
+msgstr "wetenskaplik"
+
+msgid "search for text"
+msgstr "Soek vir teks"
+
+msgid "slideshow"
+msgstr "skyfievertoning"
+
+msgid "temporary files"
+msgstr "Tydelike lêers"
+
+msgid "tomorrow"
+msgstr "môre"
+
+msgid "top to bottom"
+msgstr "Bo na onder"
+
+msgid "XRandR"
+msgstr "XRandR"
+
+msgid "accessibility keyboard"
+msgstr "toeganklikheidsleutelbord"
+
+msgid "editor font"
+msgstr "redigeerfont"
+
+msgid "forecast"
+msgstr "voorspelling"
+
+msgid "icon size"
+msgstr "ikongrootte"
+
+msgid "inconsistent"
+msgstr "teenstrydig"
+
+msgid "internet time"
+msgstr "internettyd"
+
+msgid "mailing list"
+msgstr "poslys"
+
+msgid "quoted"
+msgstr "aangehaal"
+
+msgid "strategies"
+msgstr "strategieë"
+
+msgid "vertical alignment"
+msgstr "Vertikale gerigtheid"
+
+msgid "web page"
+msgstr "webbladsy"
+
+msgid "webcam"
+msgstr "webkamera"
+
+msgid "classification"
+msgstr "klassifikasie"
+
+msgid "company"
+msgstr "maatskappy"
+
+msgid "CPU load"
+msgstr "SVE-las"
+
+msgid "display line numbers"
+msgstr "Vertoon reëlnommers"
+
+msgid "DNS"
+msgstr "DNS"
+
+msgid "editing mode"
+msgstr "redigeermodus"
+
+msgid "floppy drive"
+msgstr "sagteskyfaandrywer"
+
+msgid "font stretch"
+msgstr "fontrek"
+
+msgid "font variant"
+msgstr "fontvariant"
+
+msgid "font weight"
+msgstr "fontgewig"
+
+msgid "insert spaces"
+msgstr "Voeg spasies in"
+
+msgid "keyboard plugin"
+msgstr "Inprop vir die sleutelbord"
+
+msgid "layout style"
+msgstr "uitlegstyl"
+
+msgid "maximum width"
+msgstr "maksimum wydte"
+
+msgid "netstat"
+msgstr "netstat"
+
+msgid "restart evolution"
+msgstr "herbegin evolution"
+
+msgid "SELinux context"
+msgstr "SELinux-konteks"
+
+msgid "sound preferences"
+msgstr "klankvoorkeure"
+
+msgid "tomboy notes"
+msgstr "Tomboy-notas"
+
+msgid "workspace names"
+msgstr "werkruimtename"
+
+msgid "add to panel"
+msgstr "Voeg by Paneel"
+
+msgid "anniversary"
+msgstr "herdenking"
+
+msgid "cedilla"
+msgstr "cedilla"
+
+msgid "Couldn't save"
+msgstr "Kon nie stoor nie"
+
+msgid "devanagari"
+msgstr "devanagari"
+
+msgid "E_xecute"
+msgstr "_Laat loop"
+
+msgid "enter password for user"
+msgstr "Gee wagwoord vir gebruiker"
+
+msgid "finnish"
+msgstr "fins"
+
+msgid "flagged"
+msgstr "gemerk"
+
+msgid "follow symbolic links"
+msgstr "Volg simboliese skakels"
+
+msgid "highlight current line"
+msgstr "Verlig huidige reël"
+
+msgid "image viewer"
+msgstr "beeldbekyker"
+
+msgid "indicator size"
+msgstr "aanduiergrootte"
+
+msgid "katakana"
+msgstr "katakana"
+
+msgid "line wrap"
+msgstr "reëlvou"
+
+msgid "mailer"
+msgstr "posprogram"
+
+msgid "mono"
+msgstr "mono"
+
+msgid "network places"
+msgstr "Plekke op die netwerk"
+
+msgid "orca screen reader"
+msgstr "Orca-skermleser"
+
+msgid "paper size"
+msgstr "papiergrootte"
+
+msgid "print document"
+msgstr "Druk dokument"
+
+msgid "roll up"
+msgstr "Rol op"
+
+msgid "select an application"
+msgstr "Kies 'n toepassing"
+
+msgid "send an email"
+msgstr "Stuur 'n e-pos"
+
+msgid "show tabs"
+msgstr "Vertoon oortjies"
+
+msgid "slovak"
+msgstr "slowaaks"
+
+msgid "slovenian"
+msgstr "sloweens"
+
+msgid "time and date"
+msgstr "Tyd en datum"
+
+msgid "universal access"
+msgstr "Universele toegang"
+
+msgid "accessibility keyboard plugin"
+msgstr "Inprop vir toeganklikheidsleutelbord"
+
+msgid "atm"
+msgstr "atm"
+
+msgid "browse the file system"
+msgstr "Blaai deur die lêerstelsel"
+
+msgid "copy CDs and DVDs"
+msgstr "Kopieer CD's en DVD's"
+
+msgid "debugging output"
+msgstr "Afvoer vir ontfouting"
+
+msgid "department"
+msgstr "afdeling"
+
+msgid "edit menus"
+msgstr "Redigeer kieslyste"
+
+msgid "hiragana"
+msgstr "hiragana"
+
+msgid "hPa"
+msgstr "hPa"
+
+msgid "indonesian"
+msgstr "indonesies"
+
+msgid "inHg"
+msgstr "inHg"
+
+msgid "km/h"
+msgstr "km/h"
+
+msgid "knots"
+msgstr "knope"
+
+msgid "kPa"
+msgstr "kPa"
+
+msgid "lao"
+msgstr "lao"
+
+msgid "m/s"
+msgstr "m/s"
+
+msgid "maximum length"
+msgstr "maksimum lengte"
+
+msgid "mmHg"
+msgstr "mmHg"
+
+msgid "mph"
+msgstr "m.p.u."
+
+msgid "network settings"
+msgstr "netwerkinstellings"
+
+msgid "not started"
+msgstr "Nog nie begin nie"
+
+msgid "Pr_eferences"
+msgstr "Vo_orkeure"
+
+msgid "preferred height"
+msgstr "Voorkeur-hoogte"
+
+msgid "preferred width"
+msgstr "Voorkeur-wydte"
+
+msgid "profession"
+msgstr "prefessie"
+
+msgid "SD/MMC"
+msgstr "SD/MMC"
+
+msgid "select date"
+msgstr "Kies datum"
+
+msgid "select file"
+msgstr "Kies lêer"
+
+msgid "shuffle mode"
+msgstr "skommelmodus"
+
+msgid "swap space"
+msgstr "uitruilspasie"
+
+msgid "tamil"
+msgstr "tamil"
+
+msgid "top secret"
+msgstr "Hoogs geheim"
+
+msgid "unknown value"
+msgstr "Onbekende waarde"
+
+msgid "wednesday"
+msgstr "woensdag"
+
+msgid "windows network"
+msgstr "Windows-netwerk"
+
+msgid "wood"
+msgstr "grein"
+
+msgid "any category"
+msgstr "Enige kategorie"
+
+msgid "Can't open directory"
+msgstr "Kan nie gids open nie"
+
+msgid "create a new launcher"
+msgstr "Skep 'n nuwe laaier"
+
+msgid "day view"
+msgstr "dagaansig"
+
+msgid "directory not empty"
+msgstr "Gids nie leeg nie"
+
+msgid "font family set"
+msgstr "fontfamiliestel"
+
+msgid "font points"
+msgstr "fontpunte"
+
+msgid "font size set"
+msgstr "fontgroottestel"
+
+msgid "font stretch set"
+msgstr "fontrekstel"
+
+msgid "font style set"
+msgstr "fontstylstel"
+
+msgid "font variant set"
+msgstr "fontvariantstel"
+
+msgid "font weight set"
+msgstr "fontgewigstel"
+
+msgid "foreground set"
+msgstr "voorgrondstel"
+
+msgid "generic error"
+msgstr "Generiese fout"
+
+msgid "jack"
+msgstr "boer"
+
+msgid "mist"
+msgstr "mis"
+
+msgid "Mo_ve to trash"
+msgstr "Skui_f na asblik"
+
+msgid "mobile phone"
+msgstr "selfoon"
+
+msgid "month view"
+msgstr "maandaansig"
+
+msgid "operation cancelled"
+msgstr "Bewerking gekanselleer"
+
+msgid "rise set"
+msgstr "stygingstel"
+
+msgid "save file as"
+msgstr "Stoor lêer as"
+
+msgid "Screenshot.png"
+msgstr "Skermskoot.png"
+
+msgid "selection bound"
+msgstr "seleksiegrens"
+
+msgid "SHA256"
+msgstr "SHA256"
+
+msgid "SSL client certificate"
+msgstr "SSL-kliëntsertifikaat"
+
+msgid "SSL server certificate"
+msgstr "SSL-bedienersertifikaat"
+
+msgid "target file exists"
+msgstr "Teiken lêer bestaan"
+
+msgid "totem movie player"
+msgstr "Totem-filmspeler"
+
+msgid "untitled document"
+msgstr "Naamlose dokument"
+
+msgid "zip drive"
+msgstr "Zip-aandrywer"
+
+msgid "bcc"
+msgstr "BCC"
+
+msgid "evince"
+msgstr "evince"
+
+msgid "meeting information"
+msgstr "vergaderinginligting"
+
+msgid "activatable"
+msgstr "aktiveerbaar"
+
+msgid "cheese"
+msgstr "cheese"
+
+msgid "eye of GNOME"
+msgstr "GNOME se Oog"
+
+msgid "free/busy information"
+msgstr "Besig/beskikbaar-inligting"
+
+msgid "login window"
+msgstr "aanmeldvenster"
+
+msgid "task information"
+msgstr "taakinligting"
+
+msgid "work week"
+msgstr "werkweek"
+
+msgid "blanking"
+msgstr "Maak tans skoon"
+
+msgid "empty foundation"
+msgstr "leë fondasie"
+
+msgid "external tools"
+msgstr "Eksterne gereedskap"
+
+msgid "new game"
+msgstr "Nuwe speletjie"
+
+msgid "week view"
+msgstr "weekaansig"
+
+msgid "whois"
+msgstr "whois"
+
+msgid "BCC"
+msgstr "BCC"
+
+msgid "completed tasks"
+msgstr "Voltooide take"
+
+msgid "no summary"
+msgstr "Geen opsomming nie"
+
+msgid "ping"
+msgstr "pieng"
+
+msgid "replies"
+msgstr "antwoorde"
+
+msgid "select a disc"
+msgstr "Kies 'n skyf"
+
+msgid "start date"
+msgstr "begindatum"
+
+msgid "write to disc"
+msgstr "Skryf na skyf"
+
+msgid "AisleRiot"
+msgstr "AisleRiot"
+
+msgid "burst mode"
+msgstr "sarsiemodus"
+
+msgid "create a new contact"
+msgstr "Skep 'n nuwe kontak"
+
+msgid "dictionary sources"
+msgstr "woordeboekbronne"
+
+msgid "game over"
+msgstr "Speletjie verby"
+
+msgid "invest"
+msgstr "belê"
+
+msgid "large print"
+msgstr "Groot druk"
+
+msgid "local address books"
+msgstr "Plaaslike adresboeke"
+
+msgid "network monitor"
+msgstr "netwerkmonitor"
+
+msgid "network proxy"
+msgstr "Netwerk instaner"
+
+msgid "new calendar"
+msgstr "Nuwe kalender"
+
+msgid "new meeting"
+msgstr "Nuwe vergadering"
+
+msgid "reorderable"
+msgstr "hersorteerbaar"
+
+msgid "reply-to"
+msgstr "Antwoord-aan"
+
+msgid "select address book"
+msgstr "Kies adresboek"
+
+msgid "strategy to use"
+msgstr "Strategie om te gebruik"
+
+msgid "time servers"
+msgstr "tydbedieners"
+
+msgid "work week view"
+msgstr "werkweekaansig"
+
+msgid "advanced search"
+msgstr "Gevorderde soektog"
+
+msgid "available palettes"
+msgstr "Beskikbare palette"
+
+msgid "background color name"
+msgstr "Agtergrondkleur-naam"
+
+msgid "create a new memo"
+msgstr "Skep 'n nuwe memo"
+
+msgid "create a new task"
+msgstr "Skep 'n nuwe taak"
+
+msgid "creating image"
+msgstr "Skep tans beeldlêer"
+
+msgid "database to use"
+msgstr "Databasis om te gebruik"
+
+msgid "deal a card"
+msgstr "Deel 'n kaart uit"
+
+msgid "document viewer"
+msgstr "dokumentbekyker"
+
+msgid "edit search folder"
+msgstr "Redigeer soekgids"
+
+msgid "factorial"
+msgstr "faktoriaal"
+
+msgid "forwarded message"
+msgstr "Aangestuurde boodskap"
+
+msgid "GNOME display manager"
+msgstr "GNOME-vertoonbestuurder"
+
+msgid "headset"
+msgstr "kopstuk"
+
+msgid "horizontal adjustment"
+msgstr "Horisontale verstelling"
+
+msgid "network tools"
+msgstr "netwerkgereedskap"
+
+msgid "new address book"
+msgstr "Nuwe adresboek"
+
+msgid "new contact list"
+msgstr "Nuwe kontaklys"
+
+msgid "new memo list"
+msgstr "Nuwe memolys"
+
+msgid "new task list"
+msgstr "Nuwe taaklys"
+
+msgid "no hint available"
+msgstr "Geen wenk beskikbaar nie"
+
+msgid "pages per sheet"
+msgstr "Bladsye per vel"
+
+msgid "poker"
+msgstr "poker"
+
+msgid "preferred applications"
+msgstr "voorkeurtoepassings"
+
+msgid "saturday"
+msgstr "Saterdag"
+
+msgid "storage type"
+msgstr "bergsoort"
+
+msgid "sunday"
+msgstr "sondag"
+
+msgid "use markup"
+msgstr "Gebruik markering"
+
+msgid "vertical adjustment"
+msgstr "Vertikale verstelling"
+
+msgid "advanced send options"
+msgstr "Gevorderde versendingskeuses"
+
+msgid "any field"
+msgstr "Enige veld"
+
+msgid "archive manager"
+msgstr "argiefbestuurder"
+
+msgid "attach a file"
+msgstr "Heg 'n lêer aan"
+
+msgid "Atte_ndees"
+msgstr "Bywo_nendes"
+
+msgid "battery charge monitor"
+msgstr "batterylaaimonitor"
+
+msgid "character map"
+msgstr "karakterkaart"
+
+msgid "character palette"
+msgstr "karakterpalet"
+
+msgid "deal a new card"
+msgstr "Deel 'n nuwe kaart uit"
+
+msgid "description contains"
+msgstr "Beskrywing bevat"
+
+msgid "disk usage analyzer"
+msgstr "Analiseerder vir skyfgebruik"
+
+msgid "document statistics"
+msgstr "dokumentstatistiek"
+
+msgid "fit page width"
+msgstr "Pas na bladsywydte"
+
+msgid "homogeneous"
+msgstr "homogeen"
+
+msgid "label widget"
+msgstr "etiketdingesie"
+
+msgid "manage custom sizes"
+msgstr "bestuur pasgemaakte groottes"
+
+msgid "message contains"
+msgstr "boodskap bevat"
+
+msgid "recursive symbolic link"
+msgstr "rekursiewe simboliese skakel"
+
+msgid "reply to all"
+msgstr "Antwoord aan almal"
+
+msgid "select all text"
+msgstr "Merk alle teks"
+
+msgid "spouse"
+msgstr "gade"
+
+msgid "startup time"
+msgstr "begintyd"
+
+msgid "text column"
+msgstr "tekskolom"

@@ -1,0 +1,900 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2008-08-07 11:42+0200\n"
+"PO-Revision-Date: 2010-04-05 04:26+0200\n"
+"Last-Translator: OLWENY San James <sjolweny85@yahoo.co.uk>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: lg\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Pootle 2.1.0-beta2\n"
+
+msgid "file"
+msgstr "failo"
+
+msgid "page"
+msgstr "omuko"
+
+msgid "site"
+msgstr "ekibanja"
+
+msgid "web"
+msgstr "omutimba"
+
+msgid "security"
+msgstr "ebyokwerinda"
+
+msgid "error"
+msgstr "ensobi"
+
+msgid "no"
+msgstr "nedda"
+
+msgid "certificate"
+msgstr "mmatizo"
+
+msgid "information"
+msgstr "bubaka"
+
+msgid "close"
+msgstr "ggalawo"
+
+msgid "select"
+msgstr "londako"
+
+msgid "install"
+msgstr "tteekamu"
+
+msgid "brandshortname"
+msgstr "brandshortname"
+
+# Kirabise,
+msgid "found"
+msgstr "kizuuse"
+
+msgid "data"
+msgstr "biwandiiko"
+
+msgid "setting"
+msgstr "entegeka"
+
+msgid "window"
+msgstr "eddirisa"
+
+msgid "search"
+msgstr "nonya"
+
+msgid "preferences"
+msgstr "ebyokwerobozaamu"
+
+msgid "password"
+msgstr "akasumuluzo"
+
+msgid "choose"
+msgstr "londako"
+
+msgid "enter"
+msgstr "yingiza"
+
+msgid "update"
+msgstr "tuukaganya"
+
+msgid "server"
+msgstr "ngabirizi"
+
+msgid "failed"
+msgstr "kigaanye"
+
+msgid "check"
+msgstr "kebera"
+
+msgid "application"
+msgstr "pulogulaamu"
+
+msgid "invalid"
+msgstr "tekikkirizibwa"
+
+#: konera ku kkono (koona
+msgid "click"
+msgstr "koona"
+
+msgid "download"
+msgstr "wannula;tikkula"
+
+msgid "location"
+msgstr "ekifo"
+
+msgid "bookmark"
+msgstr "akalambe"
+
+msgid "cancel"
+msgstr "sazaamu"
+
+msgid "you want"
+msgstr "oyagala"
+
+msgid "remove"
+msgstr "ggyako"
+
+msgid "unknown"
+msgstr "tekimanyiddwa"
+
+msgid "continue"
+msgstr "genda mu maaso; weyongereyo"
+
+msgid "installed"
+msgstr "kitekeddwamu"
+
+msgid "save"
+msgstr "tereka"
+
+msgid "folder"
+msgstr "baasa; eterekero lya failo"
+
+msgid "user"
+msgstr "mukozesa"
+
+msgid "unable"
+msgstr "tekkisobose"
+
+msgid "view"
+msgstr "labako"
+
+msgid "option"
+msgstr "ekkilala"
+
+msgid "tab"
+msgstr "obbutimbe"
+
+msgid "connection"
+msgstr "okuyungakko"
+
+msgid "content"
+msgstr "ebirimu"
+
+msgid "detail"
+msgstr "mubujjuvu; muburamburukuffu"
+
+msgid "add"
+msgstr "okugatta"
+
+msgid "computer"
+msgstr "kompyuuta"
+
+msgid "load"
+msgstr "okuttika"
+
+msgid "complete"
+msgstr "kiwedde"
+
+msgid "create"
+msgstr "tondwo"
+
+msgid "default"
+msgstr "default; eky'enkalakalira"
+
+msgid "text"
+msgstr "ebigambo"
+
+msgid "copy"
+msgstr "koppa"
+
+msgid "add-on"
+msgstr "gata-ko"
+
+msgid "read"
+msgstr "ssoma"
+
+msgid "delete"
+msgstr "kusangula"
+
+msgid "change"
+msgstr "kyuusa"
+
+msgid "link"
+msgstr "akagatta"
+
+msgid "sure you"
+msgstr "wekkakasa"
+
+msgid "system"
+msgstr "sisitimu"
+
+msgid "try again"
+msgstr "gezzako omulundi omulala"
+
+msgid "restart"
+msgstr "tandikka bupya"
+
+msgid "successfully"
+msgstr "omaliriza bulungi"
+
+msgid "image"
+msgstr "ekifananyi"
+
+msgid "mode"
+msgstr "embera"
+
+# kyama
+msgid "private"
+msgstr "kyanannyini"
+
+# entekateeka za kompyuta ; pulogulamu za kompyuta
+msgid "software"
+msgstr "ekidukanya kompyuta"
+
+msgid "next"
+msgstr "awadako"
+
+msgid "warning"
+msgstr "okulabula"
+
+msgid "version"
+msgstr "ekika"
+
+msgid "time"
+msgstr "obudde; akaseera; e banga; ekiseera"
+
+msgid "item"
+msgstr "ekintu"
+
+msgid "start"
+msgstr "tandikka"
+
+msgid "access"
+msgstr "olina obuyinza"
+
+msgid "installing"
+msgstr "okutekako"
+
+msgid "list"
+msgstr "olukalala"
+
+msgid "status"
+msgstr "embeera"
+
+msgid "web site"
+msgstr "kyapa; olutimbe ku mukutu gwensiyonna"
+
+msgid "form"
+msgstr "fomu"
+
+msgid "address"
+msgstr "endagiriro"
+
+msgid "offline"
+msgstr "nga toli kukatimbe"
+
+msgid "import"
+msgstr "leeta okuva awalala"
+
+msgid "email"
+msgstr "emeyilo; email"
+
+msgid "installation"
+msgstr "okuteekako"
+
+msgid "print"
+msgstr "fulumya"
+
+msgid "source"
+msgstr "ensibukko"
+
+msgid "personal"
+msgstr "bwanannyini"
+
+msgid "exist"
+msgstr "wekiri"
+
+msgid "size"
+msgstr "obunene; obunene"
+
+msgid "trust"
+msgstr "obwesige"
+
+msgid "key"
+msgstr "ekisumuluzo"
+
+msgid "loading"
+msgstr "okutikka"
+
+msgid "requested"
+msgstr "esabidwa"
+
+msgid "restore"
+msgstr "okkuza obujja"
+
+msgid "cookie"
+msgstr "kuki"
+
+msgid "send"
+msgstr "sindikka"
+
+msgid "message"
+msgstr "obubaka"
+
+msgid "downloading"
+msgstr "okuttikula"
+
+msgid "not found"
+msgstr "telabidwa"
+
+msgid "report"
+msgstr "lipota"
+
+msgid "history"
+msgstr "abyaffayo"
+
+msgid "description"
+msgstr "okunyonyola; enyinyonyola"
+
+msgid "exception"
+msgstr "ekyawufu"
+
+msgid "plugin"
+msgstr "okwongelezako"
+
+msgid "last"
+msgstr "ekisembayo"
+
+msgid "encrypted"
+msgstr "kilambe"
+
+msgid "confirm"
+msgstr "wekakase; kakasa"
+
+msgid "administrator"
+msgstr "omuffuzi"
+
+msgid "saved"
+msgstr "kiterekedwa"
+
+msgid "unexpected"
+msgstr "ekitasubirwa"
+
+msgid "accept"
+msgstr "kkiriza"
+
+msgid "blocked"
+msgstr "kigaddwa"
+
+msgid "internet"
+msgstr "kitimba; omukutu gwensiyonna"
+
+msgid "valid"
+msgstr "kituffu; gyekiri; kituukana"
+
+msgid "contact"
+msgstr "endagiriro"
+
+msgid "feed"
+msgstr "okutekamu"
+
+msgid "verified"
+msgstr "kikakasiddwa"
+
+msgid "master"
+msgstr "ekikulu"
+
+msgid "finished"
+msgstr "kiwedde"
+
+msgid "program"
+msgstr "entekateka; pulogulamu"
+
+msgid "home"
+msgstr "awaka; eka"
+
+msgid "protocol"
+msgstr "ebigobererwa"
+
+msgid "stored"
+msgstr "kiterekeddwa"
+
+msgid "bar"
+msgstr "akabawo; bloka"
+
+msgid "disabled"
+msgstr "akitakozesebwa"
+
+msgid "encryption"
+msgstr "obulambe"
+
+msgid "session"
+msgstr "ekisera"
+
+msgid "preview"
+msgstr "okunnoza; okugezzamu"
+
+msgid "edit"
+msgstr "longosa"
+
+msgid "extension"
+msgstr "ekyongerebwako"
+
+msgid "selected"
+msgstr "ekirondeddwamu"
+
+msgid "title"
+msgstr "omutwe; mutwe"
+
+msgid "permission"
+msgstr "olukkusa"
+
+msgid "identity"
+msgstr "ekilagga"
+
+msgid "master password"
+msgstr "akasumuluzo akakulu"
+
+msgid "proxy"
+msgstr "enkola"
+
+msgid "reset"
+msgstr "ddamu otegeke; tegeka buto"
+
+msgid "block"
+msgstr "zibikira"
+
+msgid "directory"
+msgstr "eterekero lya mabasa ne failo zzamu"
+
+msgid "request"
+msgstr "okusaba"
+
+msgid "help"
+msgstr "obuyambi; yamba"
+
+msgid "network"
+msgstr "empulisiganya; okugatta"
+
+msgid "language"
+msgstr "olulimi"
+
+msgid "hide"
+msgstr "kweeka"
+
+msgid "ok"
+msgstr "yee; ok"
+
+msgid "setup"
+msgstr "tegeka"
+
+# kituse
+msgid "received"
+msgstr "kifunidwa"
+
+msgid "host"
+msgstr "nyinimu"
+
+msgid "missing"
+msgstr "tekiriiwo"
+
+msgid "properties"
+msgstr "ebikikwataako"
+
+msgid "document"
+msgstr "ekiwandiko"
+
+msgid "service"
+msgstr "enkola"
+
+msgid "already exists"
+msgstr "wekili"
+
+msgid "downloaded"
+msgstr "ebyattikuddwa"
+
+msgid "keyword"
+msgstr "ekigambo ekikulu"
+
+msgid "attribute"
+msgstr "ebisanyizzo"
+
+msgid "path"
+msgstr "ekubo"
+
+msgid "remember"
+msgstr "okujjukirra"
+
+msgid "safe"
+msgstr "walungi"
+
+msgid "website"
+msgstr "olutimbe"
+
+msgid "live"
+msgstr "mubuliwo"
+
+msgid "manager"
+msgstr "atwala"
+
+msgid "online"
+msgstr "kulutimbe"
+
+msgid "reason"
+msgstr "ensonga"
+
+msgid "domain"
+msgstr "kitundu; kifo"
+
+msgid "checking"
+msgstr "okukebera"
+
+msgid "code"
+msgstr "ebigambo ebibera muntekateeka"
+
+msgid "device"
+msgstr "ekikozesebwa"
+
+msgid "element"
+msgstr "akantu"
+
+msgid "color"
+msgstr "langi"
+
+msgid "license"
+msgstr "lisensi; ekisanyizzo"
+
+msgid "manage"
+msgstr "okukulira; okuffuga"
+
+msgid "enable"
+msgstr "okusobozesa"
+
+msgid "page you"
+msgstr "kukonako"
+
+msgid "quit"
+msgstr "ggalawo"
+
+msgid "completed"
+msgstr "kiwedde"
+
+msgid "date"
+msgstr "ennaku z'omwezi"
+
+msgid "protected"
+msgstr "kikkumidwa"
+
+msgid "reported"
+msgstr "kiwabiddwa"
+
+msgid "background"
+msgstr "obwaliriro"
+
+msgid "browser"
+msgstr "akanonyesa; ekkinonya"
+
+msgid "browsing"
+msgstr "okkunonya"
+
+msgid "new window"
+msgstr "edirisa epya"
+
+msgid "please try again"
+msgstr "damu ogeze ko"
+
+msgid "display"
+msgstr "okulaga"
+
+msgid "forgery"
+msgstr "okucupula"
+
+msgid "information about"
+msgstr "ebikwata ko"
+
+msgid "new tab"
+msgstr "akatimbe akapya"
+
+msgid "protection"
+msgstr "obukumi"
+
+msgid "theme"
+msgstr "omulamwa"
+
+msgid "width"
+msgstr "obugazi"
+
+msgid "back"
+msgstr "emabega"
+
+msgid "firefox"
+msgstr "firefox"
+
+msgid "pop-up"
+msgstr "bwereta bwokka"
+
+msgid "selection"
+msgstr "okulonda"
+
+msgid "profile"
+msgstr "ebikikwatako"
+
+msgid "agreement"
+msgstr "endagano"
+
+msgid "supported"
+msgstr "kiwagiddwa"
+
+msgid "tag"
+msgstr "taaga"
+
+msgid "term"
+msgstr "ekigambo; akakwakulizzo"
+
+msgid "proxy server"
+msgstr "kompyuta effuga zinayo"
+
+msgid "entered"
+msgstr "kiyingisidwa"
+
+msgid "toolbar"
+msgstr "akabawo kebikola"
+
+msgid "component"
+msgstr "akatundutundu"
+
+msgid "disk"
+msgstr "diski; ejinja"
+
+msgid "space"
+msgstr "ebbanga"
+
+msgid "xml"
+msgstr "xml"
+
+msgid "attack"
+msgstr "lumba"
+
+msgid "string"
+msgstr "akaguwa; ekigambo"
+
+msgid "unsupported"
+msgstr "tekiwagiddwa"
+
+msgid "backup"
+msgstr "tereka"
+
+msgid "home page"
+msgstr "omuko gwe eka"
+
+msgid "privacy"
+msgstr "ebyekyama"
+
+msgid "visit"
+msgstr "okukyala; kyala"
+
+msgid "automatically"
+msgstr "byekola byokaa"
+
+msgid "creating"
+msgstr "okutondawo"
+
+msgid "encoding"
+msgstr "okulongosa"
+
+msgid "frame"
+msgstr "fulemu; enkula"
+
+msgid "info"
+msgstr "obubaka"
+
+msgid "reload"
+msgstr "ddamu otike"
+
+msgid "web sites"
+msgstr "entimbe z’omukuttu gwensiyona"
+
+msgid "match"
+msgstr "goberera"
+
+msgid "you do not"
+msgstr "nedda"
+
+msgid "advanced"
+msgstr "wagulu; edala elya wagulu"
+
+msgid "file name"
+msgstr "linya lya failo"
+
+msgid "subscribe"
+msgstr "we wandiise"
+
+msgid "press"
+msgstr "nyiga"
+
+msgid "allowed"
+msgstr "kikirizidwa"
+
+msgid "failure"
+msgstr "kiganye"
+
+msgid "object"
+msgstr "ekintu"
+
+msgid "yes"
+msgstr "yee; yes; ye"
+
+msgid "response"
+msgstr "okudamu"
+
+msgid "undo"
+msgstr "jawo; ddayo emabega"
+
+msgid "authentication"
+msgstr "okukakasibwa"
+
+msgid "canceled"
+msgstr "kisaziddwaamu"
+
+msgid "configuration"
+msgstr "okutegeka"
+
+msgid "disable"
+msgstr "kalemazibwa; kigaaniddwa"
+
+msgid "policy"
+msgstr "enkola egobererwa"
+
+msgid "exit"
+msgstr "okufuluma"
+
+msgid "configured"
+msgstr "kitegekedwa"
+
+msgid "previous"
+msgstr "ekiyise"
+
+msgid "running"
+msgstr "okuduka"
+
+msgid "upgrade"
+msgstr "okulinyisa eddala"
+
+msgid "uninstall"
+msgstr "okujjamu"
+
+msgid "recommended"
+msgstr "ekisemberwa"
+
+msgid "dialog"
+msgstr "akaboozi"
+
+msgid "left"
+msgstr "kkono"
+
+msgid "desktop"
+msgstr "ku mezza"
+
+msgid "operation"
+msgstr "ekikolebwako"
+
+msgid "port"
+msgstr "ekituli"
+
+msgid "issued"
+msgstr "ekiyisidwa"
+
+msgid "revocation"
+msgstr "okuzayo"
+
+msgid "web pages"
+msgstr "emiko ku kyapa; emiko ku mukuttu gwensiyona"
+
+msgid "uncheck"
+msgstr "tekirondeddwa"
+
+msgid "saving"
+msgstr "kuuma; okutereka"
+
+msgid "script"
+msgstr "ebiwandikidwa"
+
+msgid "incompatible"
+msgstr "obutakwatagana"
+
+msgid "line"
+msgstr "omusitale"
+
+msgid "not supported"
+msgstr "tikiwagibwa"
+
+msgid "alert"
+msgstr "okulabula"
+
+msgid "argument"
+msgstr "enkayana"
+
+msgid "format"
+msgstr "saako wotandikira"
+
+msgid "viewing"
+msgstr "okulaba"
+
+msgid "engine"
+msgstr "mutima; yingini"
+
+msgid "make sure"
+msgstr "kakasa"
+
+msgid "stop"
+msgstr "lekerawo; yimirira; komekereza"
+
+msgid "rename"
+msgstr "kyuusa erinnya"
+
+msgid "cache"
+msgstr "tterekero ery'ekiseera"
+
+msgid "custom"
+msgstr "akalombolombo"
+
+msgid "e-mail"
+msgstr "emeyilo"
+
+msgid "agree"
+msgstr "okukiriza"
+
+msgid "finish"
+msgstr "okumala; okumaliriza"
+
+msgid "visited"
+msgstr "okukyalirwa"
+
+msgid "action"
+msgstr "ekikolwa"
+
+msgid "forward"
+msgstr "mumaaso; mu maaso"
+
+msgid "ready"
+msgstr "kituse; kitukiridde"
+
+msgid "days"
+msgstr "enakku"
+
+msgid "go back"
+msgstr "dayo gyova"
+
+msgid "show all"
+msgstr "lagga byona"
+
+msgid "sidebar"
+msgstr "akabawa ke bali"
+
+msgid "switch"
+msgstr "okukyusamu"
+
+msgid "bytes"
+msgstr "eminwe"
+
+msgid "contributors"
+msgstr "abayambi"
+
+msgid "resume"
+msgstr "ate tandika"
+
+msgid "validation"
+msgstr "okukakasa"
+
+msgid "pause"
+msgstr "yimirira mu; wummuzaamu"
+
+msgid "caret"
+msgstr "akatemya"
+
+msgid "collapse"
+msgstr "zirisa"
+
+msgid "phishing"
+msgstr "okuyaaya"
+
+msgid "compromise"
+msgstr "ezikanya"
+
+msgid "frequency"
+msgstr "ebweddiŋŋanyi"

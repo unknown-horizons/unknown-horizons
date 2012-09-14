@@ -1,0 +1,3035 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2009-09-17 16:19+0200\n"
+"PO-Revision-Date: 2010-05-15 19:34+0200\n"
+"Last-Translator: Mohomodou  <mh@bollag-areal.ch>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: son\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"X-Generator: Pootle 2.1.0-beta2\n"
+
+# Essential terminology list for general software localisation
+# License: GPL
+# Copyright Youssef Chahibi, Friedel Wolff 2006
+msgid "abort"
+msgstr "mun"
+
+msgid "absolute"
+msgstr "gaabunte"
+
+msgid "abstract"
+msgstr "miilante"
+
+msgid "accelerator"
+msgstr "cahãndikaw"
+
+msgid "accent"
+msgstr "maasa"
+
+msgid "accept"
+msgstr "yadda"
+
+msgid "access"
+msgstr "huru"
+
+msgid "accessibility"
+msgstr "duwandiyan"
+
+msgid "accessory"
+msgstr "yaarihaya"
+
+msgid "account"
+msgstr "kontu"
+
+msgid "accuracy"
+msgstr "alhakiikataray"
+
+msgid "acquire"
+msgstr "duu"
+
+msgid "acronym"
+msgstr "harfu šilbay"
+
+msgid "action"
+msgstr "teeri"
+
+msgid "activate"
+msgstr "dirandi"
+
+msgid "active"
+msgstr "goyante"
+
+msgid "activity"
+msgstr "goyyan"
+
+msgid "adapter"
+msgstr "tenjandikaw"
+
+msgid "add"
+msgstr "tonton"
+
+msgid "address"
+msgstr "aderesu"
+
+msgid "adjust"
+msgstr "sawandi"
+
+msgid "administration"
+msgstr "juwalyan, hini"
+
+msgid "administrator"
+msgstr "juwalkaw"
+
+msgid "advanced"
+msgstr "jinehere"
+
+msgid "agent"
+msgstr "goyteeri"
+
+msgid "agree"
+msgstr "yadda"
+
+msgid "agreement"
+msgstr "waafakay"
+
+msgid "alarm"
+msgstr "ɲooje"
+
+msgid "alert"
+msgstr "yaamar"
+
+msgid "algorithm"
+msgstr "kabu laasaabu"
+
+msgid "alias"
+msgstr "maatokore"
+
+# تسنن" مع الرسوميات (الخطوط وخلافه)
+msgid "aliasing"
+msgstr "tokorandiyan"
+
+msgid "align"
+msgstr "tenjandi"
+
+msgid "alignment"
+msgstr "tenjandiyan"
+
+msgid "allow"
+msgstr "noo fondo"
+
+msgid "alphanumeric"
+msgstr "harfu nda hinna"
+
+msgid "alternative"
+msgstr "waani-waani"
+
+msgid "amount"
+msgstr "hinna"
+
+msgid "analysis"
+msgstr "fesu-fesuyan"
+
+msgid "anchor"
+msgstr "kangari"
+
+msgid "angle"
+msgstr "kanje"
+
+msgid "animate"
+msgstr "hunandi"
+
+msgid "animation"
+msgstr "hunandiyan"
+
+msgid "announce"
+msgstr "bangandi"
+
+msgid "announcement"
+msgstr "bangandiyan"
+
+msgid "anonymous"
+msgstr "ši nda maa"
+
+msgid "anti-aliasing"
+msgstr "tokorandi-ganjiyan"
+
+msgid "anti virus"
+msgstr "wiirisi safari"
+
+msgid "appear"
+msgstr "bangay"
+
+msgid "append"
+msgstr "deeji"
+
+msgid "applet"
+msgstr "goyjinayze"
+
+msgid "application"
+msgstr "porogaram"
+
+msgid "apply"
+msgstr "kanandi (kayandi)"
+
+msgid "approval"
+msgstr "yaddari"
+
+msgid "approve"
+msgstr "yadda"
+
+msgid "approximate"
+msgstr "manante"
+
+msgid "arbitrary"
+msgstr "baayi"
+
+msgid "archive"
+msgstr "kaddasu jisante"
+
+msgid "area"
+msgstr "ganda"
+
+msgid "argument"
+msgstr "šennigoy"
+
+msgid "arrangement"
+msgstr "hanseyan"
+
+msgid "arrow"
+msgstr "haŋaw"
+
+msgid "article"
+msgstr "alhabar hantum"
+
+msgid "ascending"
+msgstr "tontoni (zijandi)"
+
+msgid "aspect"
+msgstr "teera alhal"
+
+msgid "assign"
+msgstr "dam se"
+
+msgid "assignment"
+msgstr "damyan"
+
+msgid "asynchronous"
+msgstr "waati-waani"
+
+msgid "attach"
+msgstr "hangandi"
+
+msgid "attachment"
+msgstr "hanganditiiraa"
+
+msgid "attempt"
+msgstr "ceeci"
+
+msgid "attribute"
+msgstr "alhal"
+
+msgid "audio"
+msgstr "sawtu (jinde)"
+
+msgid "authenticate"
+msgstr "lasal-tabatandi"
+
+msgid "authentication"
+msgstr "lasal-tabatandiyan"
+
+msgid "authorization"
+msgstr "duɲeyan"
+
+msgid "authorize"
+msgstr "duɲe"
+
+msgid "auto"
+msgstr "boŋ (boŋše)"
+
+msgid "automatic"
+msgstr "boŋdirandi"
+
+msgid "availability"
+msgstr "barayan"
+
+msgid "available"
+msgstr "barante (ga bara)"
+
+msgid "average"
+msgstr "sasawandi"
+
+msgid "axis"
+msgstr "gaaru (bundu)"
+
+msgid "backbone"
+msgstr "biri-gaaru"
+
+msgid "back-end"
+msgstr "banda benari"
+
+msgid "background"
+msgstr "bandafaari"
+
+msgid "backup"
+msgstr "banda-gaabu"
+
+msgid "bandwidth"
+msgstr "bisandihayri"
+
+msgid "banner"
+msgstr "deeji-zaara"
+
+msgid "bar"
+msgstr "zuu-žeeri"
+
+msgid "base"
+msgstr "cire"
+
+msgid "beep"
+msgstr "kuutu"
+
+msgid "begin"
+msgstr "šintin"
+
+msgid "behavior"
+msgstr "ladabu"
+
+msgid "binary"
+msgstr "cere-hinka"
+
+msgid "bind"
+msgstr "haw"
+
+msgid "bit"
+msgstr "hanti"
+
+msgid "bitmap"
+msgstr "bitmap"
+
+msgid "blank"
+msgstr "koonu"
+
+msgid "blink"
+msgstr "momiti"
+
+msgid "block (unit)"
+msgstr "gurunbu (ize)"
+
+msgid "block (verb)"
+msgstr "gagay (teera)"
+
+msgid "blog"
+msgstr "alhabar tiira"
+
+msgid "blur"
+msgstr "kokoorandi"
+
+msgid "board"
+msgstr "dew"
+
+msgid "body"
+msgstr "gaaham"
+
+msgid "bold"
+msgstr "warga"
+
+msgid "bookmarks"
+msgstr "doo-šilbawey"
+
+msgid "boot"
+msgstr "tunandi"
+
+msgid "border"
+msgstr "hirri"
+
+msgid "box"
+msgstr "bata"
+
+msgid "bracket"
+msgstr "holgu"
+
+msgid "branch"
+msgstr "tuuri kanbe"
+
+msgid "break"
+msgstr "kayri"
+
+msgid "break (program)"
+msgstr "kayri (porogaram kayandi)"
+
+msgid "break point"
+msgstr "kayri doo"
+
+msgid "bridge (verb)"
+msgstr "lalaba, daaru (teera)"
+
+msgid "bridge (noun)"
+msgstr "lalaba, daari (maa)"
+
+msgid "broken"
+msgstr "hasarante"
+
+msgid "browse"
+msgstr "naaru, ceeci ga guna"
+
+msgid "browser"
+msgstr "tataaruhugu-ceecikaw"
+
+msgid "buffer"
+msgstr "furgame"
+
+msgid "bug"
+msgstr "goy laybu"
+
+msgid "build"
+msgstr "cina"
+
+msgid "built-in"
+msgstr "kunahere"
+
+msgid "bullet"
+msgstr "tonbi warga"
+
+msgid "bus"
+msgstr "bisandi-moo"
+
+msgid "button"
+msgstr "butoŋ"
+
+msgid "byte"
+msgstr "cebsu-ize"
+
+msgid "cable"
+msgstr "karfu"
+
+msgid "cache"
+msgstr "tugudoo"
+
+msgid "calculate"
+msgstr "kabu"
+
+msgid "calculator"
+msgstr "kabuji"
+
+msgid "calendar"
+msgstr "hantiira, kalandiriye"
+
+msgid "call"
+msgstr "ciyari"
+
+msgid "camera"
+msgstr "biizaahaya"
+
+msgid "cancel"
+msgstr "naŋ"
+
+msgid "capability"
+msgstr "hinyan"
+
+msgid "capacity"
+msgstr "hinay"
+
+msgid "caption"
+msgstr "filla-ize"
+
+msgid "capture"
+msgstr "zaa"
+
+msgid "card"
+msgstr "katta"
+
+msgid "case"
+msgstr "ceeši, kawta"
+
+msgid "case (font)"
+msgstr "harfu-kayyan (šigira)"
+
+msgid "catalog"
+msgstr "bayrandi tiira"
+
+msgid "category"
+msgstr "kuray margaw"
+
+msgid "cell"
+msgstr "hamšilli"
+
+msgid "certificate"
+msgstr "tabatiyan-tiira"
+
+msgid "certify"
+msgstr "tabatandi"
+
+msgid "change"
+msgstr "barmay (bere)"
+
+msgid "channel"
+msgstr "fanši, zuu"
+
+msgid "character"
+msgstr "harfu (šilbay)"
+
+msgid "charset"
+msgstr "harfu kuru"
+
+msgid "chart"
+msgstr "bii ceberi"
+
+msgid "chat"
+msgstr "faakaaray"
+
+msgid "check"
+msgstr "guna"
+
+msgid "check box"
+msgstr "guna bata"
+
+msgid "child"
+msgstr "ize"
+
+msgid "choice"
+msgstr "suubari"
+
+msgid "choose"
+msgstr "suuba"
+
+msgid "class"
+msgstr "kuray"
+
+msgid "classic"
+msgstr "lasaltaka"
+
+msgid "classify"
+msgstr "tenjandi"
+
+msgid "clean"
+msgstr "henan"
+
+msgid "clear"
+msgstr "koonandi"
+
+msgid "click (noun)"
+msgstr "naaguyan"
+
+msgid "click (verb)"
+msgstr "naagu"
+
+msgid "client"
+msgstr "daykaw"
+
+msgid "clip art"
+msgstr "cebebii"
+
+msgid "clip board"
+msgstr "cebe-walha"
+
+msgid "clock"
+msgstr "waati cebekaw"
+
+msgid "close"
+msgstr "daabu"
+
+msgid "code (program)"
+msgstr "ašariya (porogaram daabirji)"
+
+msgid "code (symbol)"
+msgstr "ašariya (tammaasa)"
+
+msgid "codec"
+msgstr "šisijikaw"
+
+msgid "collapse"
+msgstr "nakaši, lanba"
+
+msgid "collect"
+msgstr "kuuna"
+
+msgid "column"
+msgstr "soofu, sorro"
+
+msgid "combination"
+msgstr "margari"
+
+msgid "comma"
+msgstr "surkum"
+
+msgid "command"
+msgstr "juwal"
+
+msgid "comment"
+msgstr "daara"
+
+msgid "common"
+msgstr "hankul"
+
+msgid "communication"
+msgstr "toonandiyan"
+
+msgid "compact"
+msgstr "somante, koma"
+
+msgid "compare"
+msgstr "deedandi"
+
+msgid "compatibility"
+msgstr "cerekanbeyan"
+
+msgid "compatible"
+msgstr "cerekanbante"
+
+# حويل الشفرة المصرية إلى ملفات ثنائية (برمجة
+msgid "compilation"
+msgstr "dekeri"
+
+msgid "compile"
+msgstr "deke"
+
+msgid "compiler"
+msgstr "dekekaw"
+
+msgid "complete"
+msgstr "timmandi"
+
+msgid "component"
+msgstr "jere (ize)"
+
+msgid "compose"
+msgstr "hantum (fasal ka tee)"
+
+msgid "composition"
+msgstr "hantumyan (fasal-ka-teeyan)"
+
+msgid "compress"
+msgstr "kankamandi"
+
+msgid "compression"
+msgstr "kankamandiyan"
+
+msgid "computer"
+msgstr "kabuji (ordinater)"
+
+msgid "computing"
+msgstr "kabuyan"
+
+msgid "concatenate"
+msgstr "tenji, dobu cere ga"
+
+msgid "concurrent"
+msgstr "cerebande (tee cere bande)"
+
+msgid "condense"
+msgstr "suugandi, som"
+
+msgid "condition"
+msgstr "sarti"
+
+msgid "configuration"
+msgstr "hanseyan (fasal)"
+
+msgid "configure"
+msgstr "hanse (porogaram)"
+
+msgid "confirm"
+msgstr "cimandi"
+
+msgid "confirmation"
+msgstr "cimandiyan"
+
+msgid "conflict"
+msgstr "cerehooyan, yenje, alfitina"
+
+msgid "connect"
+msgstr "ciya, ciyari dam"
+
+msgid "connection"
+msgstr "ciyari"
+
+msgid "console"
+msgstr "diji-walha"
+
+msgid "contact (noun)"
+msgstr "tukandiyan"
+
+msgid "contact (verb)"
+msgstr "tukandi, šelaŋ nda"
+
+msgid "content"
+msgstr "gundekuna"
+
+msgid "context"
+msgstr "šilbayboŋ"
+
+msgid "continue"
+msgstr "koy jine"
+
+msgid "contrast"
+msgstr "nkuway"
+
+msgid "contributor"
+msgstr "kanbuzaakaw"
+
+msgid "control"
+msgstr "dabari (jinay)"
+
+msgid "conversion"
+msgstr "barmayan (takari, dumi)"
+
+msgid "convert"
+msgstr "barmay (takari, dumi)"
+
+msgid "cookie"
+msgstr "aleewa"
+
+msgid "cooperative"
+msgstr "cettekaw"
+
+msgid "coordinate"
+msgstr "dobu"
+
+msgid "copy (noun)"
+msgstr "berandi (celle)"
+
+msgid "copy (verb)"
+msgstr "berandi (filla)"
+
+msgid "copy left"
+msgstr "(kanbe) wowa berandi"
+
+msgid "copy right"
+msgstr "(kanbe) guma berandi"
+
+msgid "correct"
+msgstr "alhakiika, boryandi (hennandi)"
+
+msgid "correspondence"
+msgstr "toonandiyan (alhabar)"
+
+msgid "correspondent"
+msgstr "cere, tenjante"
+
+msgid "corrupt"
+msgstr "laybu"
+
+msgid "count"
+msgstr "kabu, konta"
+
+msgid "countable"
+msgstr "kabu"
+
+msgid "crash"
+msgstr "kaŋ"
+
+msgid "create"
+msgstr "tee (haya)"
+
+msgid "creation"
+msgstr "teeyan"
+
+msgid "criteria"
+msgstr "daliley (sabbey)"
+
+msgid "crop"
+msgstr "cecebu, kokosu"
+
+msgid "cross-platform"
+msgstr "goydaari"
+
+msgid "crypt"
+msgstr "hay (gundu, sundu, guusu)"
+
+msgid "cryptology"
+msgstr "gunduhantum caw"
+
+msgid "current"
+msgstr "sohõ (sohõda)"
+
+msgid "cursor"
+msgstr "moo dirandikaw"
+
+msgid "curve"
+msgstr "kuubi"
+
+msgid "custom"
+msgstr "alaada (hansari)"
+
+msgid "customization"
+msgstr "boŋše hanseyan"
+
+msgid "customize"
+msgstr "hanse boŋše"
+
+msgid "cut"
+msgstr "dunbu"
+
+msgid "cycle"
+msgstr "kanandi (windira)"
+
+msgid "daemon"
+msgstr "žin"
+
+msgid "damage"
+msgstr "hasara"
+
+msgid "data"
+msgstr "bayhayey"
+
+msgid "database"
+msgstr "bayrayhay hugu"
+
+msgid "debug"
+msgstr "hasaraw kaa"
+
+msgid "debugger"
+msgstr "hasaraw kaakaw"
+
+msgid "decimal"
+msgstr "iwoy-kur"
+
+msgid "decode"
+msgstr "feerandi"
+
+msgid "decompress"
+msgstr "guli-feeri"
+
+msgid "decrease"
+msgstr "žabu"
+
+msgid "decrypt"
+msgstr "kufal-kaa"
+
+msgid "decryption"
+msgstr "kufal-kaayan"
+
+msgid "default"
+msgstr "tilasu"
+
+msgid "defect"
+msgstr "laybu, hasaraw"
+
+msgid "define"
+msgstr "bayrandi"
+
+msgid "definition"
+msgstr "bayrandiyan"
+
+msgid "degree"
+msgstr "adadu (degere)"
+
+msgid "delay"
+msgstr "batuyan-waati (bunnuyan, letiyan)"
+
+msgid "delete"
+msgstr "tuusu"
+
+msgid "deletion"
+msgstr "tuusuyan"
+
+msgid "delimiter"
+msgstr "hirri damkaw"
+
+msgid "demo"
+msgstr "cebe-haya"
+
+msgid "deny"
+msgstr "wanji"
+
+msgid "dependence"
+msgstr "hangayyan"
+
+msgid "dependency"
+msgstr "hangakaw-taray"
+
+msgid "depth"
+msgstr "guusuyan"
+
+msgid "derived"
+msgstr "dobu-fattante"
+
+msgid "descending"
+msgstr "kaŋandi (zunbu kur)"
+
+msgid "description"
+msgstr "šilbayyan"
+
+msgid "deselect"
+msgstr "suubari taŋ"
+
+msgid "design"
+msgstr "fasalri"
+
+msgid "desktop"
+msgstr "goytaabal"
+
+msgid "destination"
+msgstr "koydoo"
+
+msgid "destroy"
+msgstr "halaci"
+
+msgid "detach"
+msgstr "fay (feferi)"
+
+msgid "detect"
+msgstr "maate (honnay)"
+
+msgid "develop"
+msgstr "cina, koyjine"
+
+msgid "development"
+msgstr "cineyan, koyjineyan"
+
+msgid "developer"
+msgstr "cinekaw, koyjinekaw"
+
+msgid "device"
+msgstr "jinay (maršin jere)"
+
+msgid "diagram"
+msgstr "bii (šilbay)"
+
+msgid "dial"
+msgstr "cee"
+
+msgid "dialog"
+msgstr "willandi"
+
+msgid "dialup"
+msgstr "ceeyan"
+
+msgid "difference"
+msgstr "waaniyan"
+
+msgid "digit"
+msgstr "hinna-ize"
+
+msgid "digital"
+msgstr "hinna bande"
+
+msgid "dimension"
+msgstr "alkadar"
+
+msgid "directory"
+msgstr "foolaaɲaa"
+
+msgid "disable"
+msgstr "kayandi"
+
+msgid "disc"
+msgstr "lefe, fendu"
+
+msgid "discard"
+msgstr "fur"
+
+msgid "disconnect"
+msgstr "ciyari-dunbu"
+
+msgid "discussion"
+msgstr "kakaw"
+
+msgid "disk"
+msgstr "lefe"
+
+msgid "dispatch"
+msgstr "cahãndi"
+
+msgid "display"
+msgstr "cebe (kaataray)"
+
+msgid "distort"
+msgstr "golbandi"
+
+msgid "distribute"
+msgstr "ferši (žemni)"
+
+msgid "distribution"
+msgstr "fersari, žemnari"
+
+msgid "distributor"
+msgstr "feršikaw, žemnakaw"
+
+msgid "dock"
+msgstr "tenji"
+
+msgid "document"
+msgstr "takadda"
+
+msgid "documentation"
+msgstr "takadda margari"
+
+msgid "domain"
+msgstr "laama (doo, tabatandi nongu)"
+
+msgid "double click"
+msgstr "naagu cee hinka"
+
+msgid "download"
+msgstr "zumandi"
+
+msgid "drag"
+msgstr "cendi"
+
+msgid "draw"
+msgstr "cendi, kukusu"
+
+msgid "driver"
+msgstr "jinay dirandikaw"
+
+msgid "dual"
+msgstr "hinka"
+
+msgid "dump"
+msgstr "fur"
+
+msgid "duplicate"
+msgstr "filla, tagal"
+
+msgid "dynamic"
+msgstr "barmayante"
+
+msgid "echo"
+msgstr "hẽeni-kore"
+
+msgid "edit"
+msgstr "fasal"
+
+msgid "edition"
+msgstr "fasalari"
+
+msgid "editor"
+msgstr "fasalkaw"
+
+msgid "effect"
+msgstr "kabe (teera)"
+
+msgid "eject"
+msgstr "jindaw, fur"
+
+msgid "electronic"
+msgstr "elektronik"
+
+msgid "element"
+msgstr "ize (ferši)"
+
+msgid "email"
+msgstr "bataga"
+
+msgid "embed"
+msgstr "dam gam (dam kuna)"
+
+msgid "emoticon"
+msgstr "ndum tammaasa"
+
+msgid "empty"
+msgstr "koonu"
+
+msgid "emulate"
+msgstr "denden, canse"
+
+msgid "emulation"
+msgstr "dendenyan, canseyan"
+
+msgid "emulator"
+msgstr "dendenkaw, cansekaw"
+
+msgid "enable"
+msgstr "tunandi (šintin)"
+
+msgid "enabled"
+msgstr "tunante (šintinante)"
+
+msgid "encode"
+msgstr "harfu-haw"
+
+msgid "encoding"
+msgstr "harfu-hawyan"
+
+msgid "encrypt"
+msgstr "tugandi"
+
+msgid "encrypted"
+msgstr "tugante (lanbante)"
+
+msgid "encryption"
+msgstr "tuguyan"
+
+msgid "engine"
+msgstr "maršin (mooter)"
+
+msgid "enhancement"
+msgstr "tontonyan"
+
+msgid "enlarge"
+msgstr "hayandi (beerandi)"
+
+msgid "enlargement"
+msgstr "hayandiyan (beerandiyan)"
+
+msgid "enter"
+msgstr "dam"
+
+msgid "entertainment"
+msgstr "hooray (kaani)"
+
+msgid "entry"
+msgstr "hantumi, hantum-ize"
+
+msgid "environment"
+msgstr "windila"
+
+msgid "equalizer"
+msgstr "sasawandikaw (sawtu)"
+
+msgid "erase"
+msgstr "tuusu (kaa)"
+
+msgid "error"
+msgstr "firka (laybu)"
+
+msgid "escape"
+msgstr "fatta (sar, dunbu)"
+
+msgid "evaluation"
+msgstr "zimanyan, laasaabu"
+
+msgid "event"
+msgstr "teera (goy)"
+
+msgid "exception"
+msgstr "hasaraw"
+
+msgid "executable"
+msgstr "goy-se"
+
+msgid "execute"
+msgstr "goyandi (dirandi)"
+
+msgid "existing"
+msgstr "barante"
+
+msgid "exit"
+msgstr "fatta (doo naŋ)"
+
+msgid "expand"
+msgstr "mun, daaru (gande feeri)"
+
+msgid "expansion"
+msgstr "munyan, daaruyan (gande-feeriyan)"
+
+msgid "explore"
+msgstr "guna-guna"
+
+msgid "export"
+msgstr "fattandi (berandi)"
+
+msgid "expression"
+msgstr "kalima (ordinater šenni)"
+
+msgid "extend"
+msgstr "cendi (tonton)"
+
+msgid "extensible"
+msgstr "cendari-se"
+
+msgid "extension"
+msgstr "cendari, dobuyan"
+
+msgid "external"
+msgstr "taray (tarayhere)"
+
+msgid "extra"
+msgstr "tontoni"
+
+msgid "extract"
+msgstr "dogu, fanši, soolom"
+
+msgid "fail"
+msgstr "kay (goy hasaraw)"
+
+# فادح: مثل خطأ فادح
+msgid "fatal"
+msgstr "buuyan (hasaraw)"
+
+msgid "fault"
+msgstr "laybu"
+
+msgid "favorite"
+msgstr "kaasu"
+
+msgid "feature"
+msgstr "alhaali"
+
+msgid "feed"
+msgstr "alhabar dam"
+
+msgid "feedback"
+msgstr "tuuruyan (furari)"
+
+msgid "fetch"
+msgstr "ceeci (sanbu, gur)"
+
+msgid "field"
+msgstr "faari"
+
+msgid "figure"
+msgstr "ndum, žeeribii"
+
+msgid "file"
+msgstr "tuku"
+
+msgid "fill"
+msgstr "too"
+
+msgid "filter"
+msgstr "šeere (gaŋa, sosoguji)"
+
+msgid "find"
+msgstr "ceeci (guna, šiggel)"
+
+msgid "firewall"
+msgstr "jejebu"
+
+msgid "firmware"
+msgstr "kunehere-jejebu"
+
+msgid "fit"
+msgstr "tenjandi (takari)"
+
+msgid "fix"
+msgstr "hanse (laybu)"
+
+msgid "flag"
+msgstr "liilawa (šilbay)"
+
+msgid "flash"
+msgstr "flash"
+
+msgid "flat"
+msgstr "kanante"
+
+msgid "flip"
+msgstr "bere-bere"
+
+msgid "float (verb)"
+msgstr "doy (teera)"
+
+msgid "flood"
+msgstr "harikayri"
+
+msgid "floppy"
+msgstr "leffyu"
+
+msgid "folder"
+msgstr "foolo"
+
+msgid "font"
+msgstr "šigira"
+
+msgid "footer"
+msgstr "ceedeke"
+
+msgid "form"
+msgstr "takari"
+
+msgid "format (noun)"
+msgstr "fasal (takari)"
+
+msgid "format (verb)"
+msgstr "fasal (takari)"
+
+msgid "formatted"
+msgstr "fasalante"
+
+msgid "formula"
+msgstr "maanakum"
+
+msgid "forum"
+msgstr "batu"
+
+msgid "fragment"
+msgstr "cebsu"
+
+msgid "frame"
+msgstr "kunga"
+
+msgid "frame set"
+msgstr "kungari"
+
+msgid "framework"
+msgstr "kunga farru"
+
+msgid "free software"
+msgstr "baytal goyjinay (forba porogaram)"
+
+msgid "freeze"
+msgstr "kayandi"
+
+msgid "frequency"
+msgstr "fillari (jinde dimma)"
+
+msgid "front end"
+msgstr "goykaw jine"
+
+msgid "function"
+msgstr "goyyan (nafaw)"
+
+msgid "gallery"
+msgstr "galankaaru, gangani"
+
+msgid "game"
+msgstr "hooray"
+
+msgid "gateway"
+msgstr "ganbu"
+
+msgid "generate"
+msgstr "kaataray, tee"
+
+msgid "generation"
+msgstr "alwaddi, kuray, kay"
+
+msgid "generator"
+msgstr "kaataraykaw, sahãkoy"
+
+msgid "generic"
+msgstr "dumikul (yamma)"
+
+msgid "geometric"
+msgstr "meetar bande"
+
+msgid "geometry"
+msgstr "biineesari, biibayray"
+
+msgid "grab"
+msgstr "haamay"
+
+msgid "gradient"
+msgstr "kaŋandi"
+
+msgid "grain"
+msgstr "ŋaari, taasu-ize"
+
+msgid "graph"
+msgstr "bii (kabu)"
+
+msgid "graphic"
+msgstr "bii taka"
+
+msgid "graphical"
+msgstr "bii taka"
+
+msgid "graphics"
+msgstr "bii takari"
+
+msgid "gray-scale"
+msgstr "boosu-zimamari"
+
+msgid "grid"
+msgstr "tema"
+
+msgid "group"
+msgstr "marga"
+
+msgid "guess"
+msgstr "laasaabu"
+
+msgid "guest"
+msgstr "yaw"
+
+msgid "handle (noun)"
+msgstr "kanbe (maa)"
+
+msgid "handle (verb)"
+msgstr "kanbe (teera)"
+
+msgid "handler"
+msgstr "kanbekaw, tellekaw"
+
+msgid "hardware"
+msgstr "jinay šenda"
+
+msgid "hash"
+msgstr "dunbu"
+
+msgid "head"
+msgstr "boŋ"
+
+msgid "header"
+msgstr "boŋdeke"
+
+msgid "height"
+msgstr "kayyan"
+
+msgid "help"
+msgstr "faaba"
+
+msgid "hide"
+msgstr "tugu"
+
+msgid "hierarchy"
+msgstr "kanandi (sorro)"
+
+msgid "high light"
+msgstr "cerecere ka cebe"
+
+msgid "history"
+msgstr "taariki"
+
+msgid "host"
+msgstr "zunbudoo"
+
+msgid "hostname"
+msgstr "zunbudoo maa"
+
+msgid "hyperlink"
+msgstr "tiiradobu"
+
+msgid "hypertext"
+msgstr "dobu kalimaɲaa-kuru"
+
+msgid "icon"
+msgstr "bii (tokore)"
+
+msgid "identify"
+msgstr "boŋtammaasa"
+
+msgid "idle"
+msgstr "šii goy (hunanzam)"
+
+msgid "ignore"
+msgstr "muray (yala, yankar)"
+
+msgid "image"
+msgstr "bii (moodiira)"
+
+msgid "implement"
+msgstr "tee"
+
+msgid "import"
+msgstr "cendi ka dam"
+
+msgid "inactive"
+msgstr "kayante (ši dira)"
+
+msgid "inbox"
+msgstr "duuyan bata"
+
+msgid "inch"
+msgstr "kabaaru"
+
+msgid "include"
+msgstr "goo nda"
+
+msgid "incoming"
+msgstr "hurante (duwandiyan)"
+
+msgid "incompatible"
+msgstr "ši cere kanbe"
+
+msgid "increase"
+msgstr "tonton"
+
+msgid "increment"
+msgstr "tontoni"
+
+msgid "indent"
+msgstr "hirri nor"
+
+msgid "index"
+msgstr "maaboŋ"
+
+msgid "indice"
+msgstr "šilbay"
+
+msgid "infect"
+msgstr "bere (wirci)"
+
+msgid "infinite"
+msgstr "šiben"
+
+msgid "information"
+msgstr "alhabar"
+
+msgid "infrared"
+msgstr "denjicirya"
+
+msgid "initial"
+msgstr "šintin (sintin)"
+
+msgid "initialize"
+msgstr "haŋakaari"
+
+msgid "input"
+msgstr "damhaya"
+
+msgid "insert"
+msgstr "dam game"
+
+msgid "install"
+msgstr "sinji"
+
+msgid "installer"
+msgstr "sinjikaw"
+
+msgid "instance"
+msgstr "teera (himakašine)"
+
+msgid "instruction"
+msgstr "yaamar (šilbay)"
+
+msgid "integer"
+msgstr "hinna timmante"
+
+msgid "integral"
+msgstr "timmante"
+
+msgid "integrate"
+msgstr "kosay"
+
+msgid "integration"
+msgstr "kosayyan"
+
+msgid "integrity"
+msgstr "timmeyan"
+
+msgid "intensity"
+msgstr "gaabi, sahã"
+
+msgid "interactivity"
+msgstr "tuuru-cere-seyan"
+
+msgid "interface"
+msgstr "dii-feddi"
+
+msgid "internal"
+msgstr "kunahere"
+
+msgid "internet"
+msgstr "Interneti (interneti)"
+
+msgid "interrupt"
+msgstr "kayandi (wii)"
+
+msgid "invalid"
+msgstr "ši tee, ši boori"
+
+msgid "inverse"
+msgstr "moofutay, mooberaw"
+
+msgid "invert"
+msgstr "moobere (foobanda)"
+
+msgid "invoke"
+msgstr "cee"
+
+msgid "italic"
+msgstr "harfu šiira"
+
+msgid "item"
+msgstr "hayiize"
+
+msgid "iteration"
+msgstr "himayan (hinna)"
+
+msgid "jag"
+msgstr "kaabe"
+
+msgid "jam"
+msgstr "foku"
+
+msgid "job"
+msgstr "goy (tee mise)"
+
+msgid "join"
+msgstr "huru batu ra"
+
+msgid "joy stick"
+msgstr "gunba"
+
+msgid "jump"
+msgstr "sar"
+
+msgid "junk"
+msgstr "žiibi (bataga)"
+
+msgid "justify"
+msgstr "tenjandi"
+
+msgid "keep"
+msgstr "gaabu (dii)"
+
+msgid "kernel"
+msgstr "guli"
+
+msgid "key"
+msgstr "kufal"
+
+msgid "keyboard"
+msgstr "kufal-ize walha"
+
+msgid "key stroke"
+msgstr "kufal karari"
+
+msgid "key word"
+msgstr "kufal kalima"
+
+msgid "label"
+msgstr "šilbay"
+
+msgid "landscape"
+msgstr "ganda alhaali"
+
+msgid "language"
+msgstr "šenni"
+
+msgid "laptop"
+msgstr "kanbe ordinater"
+
+msgid "launch"
+msgstr "tunandi"
+
+msgid "layer"
+msgstr "bii-kawta"
+
+msgid "layout"
+msgstr "hangandiyan (kanandi)"
+
+msgid "length"
+msgstr "kuuyan"
+
+msgid "license"
+msgstr "duɲe kaddasu"
+
+msgid "line"
+msgstr "žeeri"
+
+msgid "link"
+msgstr "dobu"
+
+msgid "list"
+msgstr "maašeede"
+
+msgid "load"
+msgstr "zumandi"
+
+msgid "local"
+msgstr "nungu bande"
+
+msgid "localization"
+msgstr "šenni nungu kayandiyan"
+
+msgid "location"
+msgstr "gorodoo"
+
+msgid "log"
+msgstr "zaaritiira"
+
+msgid "lookup"
+msgstr "gunandi"
+
+msgid "lower-case"
+msgstr "harfu kayna, harfu kaccu"
+
+msgid "machine"
+msgstr "maršin"
+
+msgid "main board"
+msgstr "dew beeri"
+
+msgid "maintainer"
+msgstr "hawgaykaw"
+
+msgid "maintenance"
+msgstr "hawgayyan"
+
+msgid "manage"
+msgstr "juwal"
+
+msgid "management"
+msgstr "juwalyan"
+
+msgid "manager"
+msgstr "juwalkaw"
+
+msgid "manual"
+msgstr "goytiira (fondo citaabu)"
+
+msgid "margin"
+msgstr "moo-ceraw"
+
+msgid "mark"
+msgstr "šilbay"
+
+msgid "master"
+msgstr "takaddaɲaa"
+
+msgid "match"
+msgstr "sawandi, tenjandi"
+
+msgid "maximize"
+msgstr "bebbeerandi"
+
+msgid "memory"
+msgstr "lakkal"
+
+msgid "menu"
+msgstr "šilbayboŋ"
+
+msgid "merge"
+msgstr "margandi"
+
+msgid "message"
+msgstr "alhabaryu"
+
+msgid "method"
+msgstr "dabari (fondo)"
+
+msgid "minimize"
+msgstr "kaccandi, lanba"
+
+msgid "mode"
+msgstr "yaayi"
+
+msgid "modem"
+msgstr "moodem"
+
+msgid "moderator"
+msgstr "hawgaykaw"
+
+msgid "modify"
+msgstr "barmay"
+
+msgid "module"
+msgstr "dunbu (goyjinay)"
+
+msgid "monitor"
+msgstr "diji (moofur diji)"
+
+msgid "mosaic"
+msgstr "tarma"
+
+msgid "motion"
+msgstr "diray"
+
+msgid "mouse"
+msgstr "ncaŋ"
+
+msgid "move"
+msgstr "ganandi"
+
+msgid "multimedia"
+msgstr "heenandikaw boobo"
+
+msgid "multitasking"
+msgstr "goy-boobo-teeyan"
+
+msgid "name"
+msgstr "maa"
+
+msgid "navigation"
+msgstr "naaruyan"
+
+msgid "navigator"
+msgstr "naarukaw"
+
+msgid "network"
+msgstr "sankay"
+
+msgid "news group"
+msgstr "alhabar batu"
+
+msgid "next"
+msgstr "jine"
+
+msgid "nick name"
+msgstr "maakanbari"
+
+msgid "no"
+msgstr "kalaa, ši"
+
+msgid "node"
+msgstr "gam (dobu gam)"
+
+msgid "notation"
+msgstr "tammaasa-kuru"
+
+msgid "note"
+msgstr "hantumi"
+
+msgid "notebook"
+msgstr "zaa ordinater"
+
+msgid "notification"
+msgstr "bangandiyan"
+
+msgid "notify"
+msgstr "bangandi"
+
+# في الرياضيات "صفر"
+# الصفة "منعدم"
+msgid "null"
+msgstr "yaada (kul ši)"
+
+msgid "number"
+msgstr "hinna (kabu-ize)"
+
+msgid "numbering"
+msgstr "hinnandiyan"
+
+msgid "object"
+msgstr "haya (jinay)"
+
+msgid "occurrence"
+msgstr "teera"
+
+msgid "octet"
+msgstr "jinde-yaaha (yaaha)"
+
+msgid "offline"
+msgstr "bila nda ciyari"
+
+msgid "OK"
+msgstr "ayyo"
+
+msgid "online"
+msgstr "goo ciyari ra"
+
+msgid "ongoing"
+msgstr "dirante"
+
+msgid "opacity"
+msgstr "kubaytaray"
+
+msgid "opaque"
+msgstr "kubay-dik"
+
+msgid "open"
+msgstr "feeri (tunandi)"
+
+msgid "operation"
+msgstr "goyyan"
+
+msgid "option"
+msgstr "suubari"
+
+msgid "optional"
+msgstr "suuba mise"
+
+msgid "order"
+msgstr "hangayan"
+
+msgid "organize"
+msgstr "hanse (hangandi)"
+
+msgid "orientation"
+msgstr "honnandiyan jine"
+
+msgid "original"
+msgstr "aššil (cine-ši)"
+
+msgid "outgoing"
+msgstr "ga sanbandi"
+
+msgid "output"
+msgstr "fattari"
+
+msgid "overflow"
+msgstr "boosu ka mun"
+
+msgid "override"
+msgstr "daaru"
+
+msgid "overwrite"
+msgstr "hantum ... boŋ"
+
+msgid "owner"
+msgstr "koy"
+
+msgid "pack"
+msgstr "kanandi, pake"
+
+msgid "package"
+msgstr "soolo (jinay margari)"
+
+msgid "packet"
+msgstr "ferši sanbante"
+
+msgid "padding"
+msgstr "gamhaya"
+
+msgid "page"
+msgstr "moo"
+
+msgid "paint"
+msgstr "caaray"
+
+msgid "pair"
+msgstr "ihinka"
+
+msgid "palette"
+msgstr "noone kur"
+
+msgid "panel"
+msgstr "fasaldoo"
+
+msgid "parallel"
+msgstr "ceesante"
+
+msgid "parameter"
+msgstr "adadu hansari"
+
+msgid "parcel"
+msgstr "sanbari, dontay (pake)"
+
+msgid "parent"
+msgstr "ihayra (aššil)"
+
+msgid "parity"
+msgstr "sawayan"
+
+msgid "parse"
+msgstr "fesu-ferši"
+
+msgid "partition"
+msgstr "žemna"
+
+msgid "pass"
+msgstr "bisa"
+
+msgid "password"
+msgstr "šennikufal"
+
+msgid "paste"
+msgstr "dobu (bere)"
+
+msgid "patch (noun)"
+msgstr "dengari"
+
+msgid "patch (verb)"
+msgstr "denji (teera)"
+
+msgid "path"
+msgstr "fondo (bisari)"
+
+msgid "pattern"
+msgstr "kaymi (noonay-bandu, šilbayfaari)"
+
+msgid "pause"
+msgstr "hunanzamay"
+
+msgid "peripheral"
+msgstr "dobuji"
+
+msgid "permanent"
+msgstr "duumante"
+
+msgid "permission"
+msgstr "duɲeyan"
+
+msgid "permutation"
+msgstr "barmay"
+
+msgid "physical"
+msgstr "šenda"
+
+msgid "picture"
+msgstr "bii"
+
+msgid "pipe"
+msgstr "hoobu, tabakusu"
+
+msgid "pixel"
+msgstr "biitonbi"
+
+msgid "placement"
+msgstr "jišidoo"
+
+msgid "plain"
+msgstr "mulla (alhaali)"
+
+msgid "plot (verb)"
+msgstr "tonbi-šilbay (teera)"
+
+msgid "plotter"
+msgstr "tonbi-šilbaykaw"
+
+msgid "plugin"
+msgstr "sukari"
+
+msgid "pop up"
+msgstr "biiboŋ bata feeri"
+
+msgid "port"
+msgstr "kotay-mee"
+
+msgid "position"
+msgstr "doo"
+
+msgid "post"
+msgstr "alhabar fattante, alhabarandi"
+
+msgid "preferences"
+msgstr "ibaayey"
+
+msgid "prepare"
+msgstr "soolu"
+
+msgid "presentation"
+msgstr "cebeyan"
+
+msgid "press"
+msgstr "naagu"
+
+msgid "prevent"
+msgstr "ganji"
+
+msgid "preview"
+msgstr "moo-fur, moo-daaru"
+
+msgid "primary"
+msgstr "jina (kul jine)"
+
+msgid "principal"
+msgstr "jina, boŋ"
+
+msgid "print"
+msgstr "kar"
+
+msgid "printer"
+msgstr "kar maršin"
+
+msgid "priority"
+msgstr "cahãri (haya, goy)"
+
+msgid "privacy"
+msgstr "sutura jejebu"
+
+msgid "private"
+msgstr "sutura"
+
+msgid "privilege"
+msgstr "fondo suubari"
+
+msgid "procedure"
+msgstr "cebandi"
+
+msgid "process"
+msgstr "koyjineyan"
+
+msgid "processor"
+msgstr "goy-lakkal"
+
+msgid "product"
+msgstr "jinay"
+
+msgid "profile"
+msgstr "alhal"
+
+msgid "program"
+msgstr "porogaram (goyjinay)"
+
+msgid "programmer"
+msgstr "porogaram hantumkaw"
+
+msgid "project"
+msgstr "porože (almuraadu, sooluyan)"
+
+msgid "prompt"
+msgstr "hãayan zuu"
+
+msgid "property"
+msgstr "mayray"
+
+msgid "proprietary"
+msgstr "mayray-koyni"
+
+msgid "protect"
+msgstr "jejebu"
+
+msgid "protection"
+msgstr "jejebuyan"
+
+#, !!!
+msgid "protocol"
+msgstr "sanbari fondo"
+
+msgid "provide"
+msgstr "noo, širfanday"
+
+msgid "provider"
+msgstr "nookaw"
+
+msgid "proxy"
+msgstr "tokore"
+
+msgid "public"
+msgstr "baytal"
+
+msgid "publish"
+msgstr "wallafi, kaataray"
+
+msgid "pull"
+msgstr "cendi"
+
+msgid "push"
+msgstr "tuti"
+
+msgid "quality"
+msgstr "hennari"
+
+msgid "quantity"
+msgstr "hinna (margari)"
+
+msgid "quarantine"
+msgstr "moorandi"
+
+msgid "query"
+msgstr "hãayan"
+
+msgid "queue"
+msgstr "šette, šettandi"
+
+msgid "quit"
+msgstr "fatta"
+
+msgid "quota"
+msgstr "baa"
+
+msgid "quotation"
+msgstr "fillari"
+
+msgid "quote"
+msgstr "filla"
+
+msgid "raise"
+msgstr "jer"
+
+msgid "random"
+msgstr "birjante"
+
+msgid "range"
+msgstr "gande"
+
+msgid "rate"
+msgstr "hĩise, hĩise"
+
+msgid "ratio"
+msgstr "himayan (hinna)"
+
+msgid "raw"
+msgstr "gani"
+
+msgid "ray"
+msgstr "waynaw cindi, humekarfu"
+
+msgid "read"
+msgstr "caw"
+
+msgid "read only"
+msgstr "caw-hinne"
+
+msgid "ready"
+msgstr "soolu (soolante)"
+
+msgid "real"
+msgstr "cimi"
+
+msgid "reboot"
+msgstr "tunandi taaga"
+
+msgid "receipt"
+msgstr "duuyan"
+
+msgid "receive"
+msgstr "duu"
+
+msgid "recognition"
+msgstr "bayyan, bayray"
+
+msgid "reconnect"
+msgstr "ciya taaga"
+
+msgid "record"
+msgstr "jiširi"
+
+msgid "record (verb)"
+msgstr "jiši"
+
+msgid "recover"
+msgstr "willi goymee ra"
+
+msgid "recovery"
+msgstr "soolomyan"
+
+msgid "recursion"
+msgstr "williyan"
+
+msgid "recursive"
+msgstr "willante"
+
+msgid "redirect"
+msgstr "bisandi taaga"
+
+msgid "redo"
+msgstr "tee taaga"
+
+msgid "reduce"
+msgstr "žebu, žabu (kaa)"
+
+msgid "reduction"
+msgstr "žebuyan, žabuyan (kaayan)"
+
+msgid "redundant"
+msgstr "fillante (kalima, deede)"
+
+msgid "reference"
+msgstr "fellaa"
+
+msgid "referer"
+msgstr "fellakaw"
+
+msgid "referral"
+msgstr "fellaayan, sanbayan"
+
+msgid "reflexive"
+msgstr "laasaabante, boŋgunante"
+
+msgid "refresh"
+msgstr "taagandi"
+
+msgid "refuse"
+msgstr "wanji, mongu"
+
+msgid "regenerate"
+msgstr "kaataray, tee (taaga)"
+
+msgid "register"
+msgstr "maa-hantum"
+
+msgid "registration"
+msgstr "maa-hantumyan"
+
+msgid "registry"
+msgstr "juwal citaabu"
+
+msgid "regular"
+msgstr "hankul"
+
+msgid "regulate"
+msgstr "juwal"
+
+msgid "relay"
+msgstr "bisandi"
+
+msgid "release"
+msgstr "kaataray"
+
+msgid "remaining"
+msgstr "ga cindi"
+
+msgid "remind"
+msgstr "hongandi"
+
+msgid "remote"
+msgstr "moora"
+
+msgid "removable"
+msgstr "ga hin ka hun"
+
+msgid "remove"
+msgstr "kaa (zaa)"
+
+msgid "rename"
+msgstr "maa barmay"
+
+msgid "render"
+msgstr "willi"
+
+msgid "renew"
+msgstr "taagandi"
+
+msgid "repair"
+msgstr "hanse"
+
+msgid "repeat"
+msgstr "filla"
+
+msgid "replace"
+msgstr "barmay"
+
+msgid "replicate"
+msgstr "ženti, filla"
+
+msgid "replication"
+msgstr "žentiyan, fillayan"
+
+msgid "reply"
+msgstr "zaabi"
+
+msgid "report"
+msgstr "bayrandi"
+
+msgid "repository"
+msgstr "jišidoo (gaabudoo)"
+
+msgid "request"
+msgstr "wiryan (ŋaaray)"
+
+msgid "require"
+msgstr "waažibandi"
+
+msgid "requirement"
+msgstr "waažibandiyan"
+
+msgid "reset"
+msgstr "willi lasaloo ga"
+
+msgid "resize"
+msgstr "alkadar barmay"
+
+msgid "resolution"
+msgstr "bii-sahã"
+
+msgid "resolver"
+msgstr "fondo ceecikaw"
+
+msgid "resource"
+msgstr "dalil (dabari)"
+
+msgid "response"
+msgstr "tuuruyan"
+
+msgid "restart"
+msgstr "tunandi taaga"
+
+msgid "restore"
+msgstr "bere taka jinaa ga"
+
+msgid "restrict"
+msgstr "lalaba"
+
+msgid "restriction"
+msgstr "lalabayan"
+
+msgid "result"
+msgstr "hunyan"
+
+msgid "resume"
+msgstr "šintin taaga (koy jine koyne)"
+
+msgid "retrieve"
+msgstr "soolom"
+
+msgid "retry"
+msgstr "šii taaga"
+
+msgid "return"
+msgstr "willi"
+
+msgid "reverse"
+msgstr "jine bere (berebere)"
+
+msgid "revert"
+msgstr "bere taka žeena ga"
+
+msgid "revocation"
+msgstr "waafakay tunandiyan"
+
+msgid "revoke"
+msgstr "tunandi, kakaw"
+
+msgid "root"
+msgstr "linji"
+
+msgid "rotate"
+msgstr "kuubi-kuubi, windi"
+
+msgid "route"
+msgstr "fondo (ceebandu)"
+
+msgid "router"
+msgstr "bisandikaw"
+
+msgid "routine"
+msgstr "doonay"
+
+msgid "row"
+msgstr "sorro"
+
+msgid "rule"
+msgstr "fondo (aššariya)"
+
+msgid "run"
+msgstr "zurandi. dirandi"
+
+msgid "runtime"
+msgstr "dirandi waati"
+
+msgid "safe"
+msgstr "saajante (borya)"
+
+msgid "sample"
+msgstr "cebeyan-se (šiiyan ize)"
+
+msgid "sans"
+msgstr "bila nda"
+
+msgid "save"
+msgstr "gaabu"
+
+msgid "scalable"
+msgstr "cendayan-se"
+
+msgid "scale"
+msgstr "zimamari"
+
+msgid "scan"
+msgstr "bii-zaa"
+
+msgid "scanner"
+msgstr "bii-zaakaw"
+
+msgid "schedule"
+msgstr "teeri-waati dam"
+
+msgid "scheme"
+msgstr "dabari"
+
+msgid "scratch"
+msgstr "gaasu"
+
+msgid "screen"
+msgstr "diji"
+
+msgid "screw"
+msgstr "wiisi"
+
+msgid "script"
+msgstr "šigira dumi"
+
+# من لف الشئ يلفه
+# فتقول:
+# لف ﻷعلى=scroll up ، وهكذا
+msgid "scroll"
+msgstr "cendi (ka cebe)"
+
+msgid "search"
+msgstr "ceeci"
+
+msgid "section"
+msgstr "dunbu"
+
+msgid "sector"
+msgstr "ferši, farru"
+
+msgid "secure"
+msgstr "saajante"
+
+msgid "security"
+msgstr "saajaw (jejebu)"
+
+msgid "seek"
+msgstr "wiri"
+
+msgid "segment"
+msgstr "ferši-ize"
+
+msgid "segmentation"
+msgstr "feršiyan"
+
+msgid "select"
+msgstr "suuba"
+
+msgid "selection"
+msgstr "suubari"
+
+msgid "semantic"
+msgstr "maana"
+
+msgid "send"
+msgstr "sanba"
+
+msgid "sender"
+msgstr "sanbakaw"
+
+msgid "sensitive"
+msgstr "maatante"
+
+msgid "sensor"
+msgstr "maateji"
+
+msgid "serif"
+msgstr "delbu šigira"
+
+msgid "server"
+msgstr "feršikaw"
+
+msgid "session"
+msgstr "goywaati"
+
+msgid "set"
+msgstr "kayandi (hanseyan suubari)"
+
+msgid "settings"
+msgstr "kayandiyan (suubari fasal)"
+
+msgid "setup"
+msgstr "kayandi goy se"
+
+msgid "shading"
+msgstr "biyya-biyya"
+
+msgid "shadow"
+msgstr "bii (kubay)"
+
+msgid "shape"
+msgstr "takari"
+
+msgid "share"
+msgstr "žemna"
+
+msgid "sharp"
+msgstr "šenba, mee-kaana"
+
+msgid "sheet"
+msgstr "kaddasu"
+
+msgid "shell"
+msgstr "jingam"
+
+msgid "shift"
+msgstr "bere"
+
+msgid "shortcut"
+msgstr "dunbandiyan"
+
+msgid "show"
+msgstr "cebe"
+
+msgid "shrink"
+msgstr "kaccandi, suuku"
+
+msgid "shut down"
+msgstr "wii, kayandi"
+
+msgid "side bar"
+msgstr "ceraw zuu-žeeri"
+
+msgid "sign"
+msgstr "maa žeeri"
+
+msgid "signal"
+msgstr "tammaasa (maatehaya)"
+
+msgid "signature"
+msgstr "mayray šilbay"
+
+msgid "site"
+msgstr "nungu, doo"
+
+msgid "size"
+msgstr "adadu"
+
+msgid "skew"
+msgstr "šiirandi"
+
+msgid "skip"
+msgstr "sar"
+
+msgid "slave"
+msgstr "tam"
+
+msgid "sleep"
+msgstr "kani"
+
+msgid "slide"
+msgstr "moɲiize (cebemoɲiize)"
+
+msgid "slot"
+msgstr "loku (nuusu moo)"
+
+msgid "smart"
+msgstr "caram"
+
+msgid "smiley"
+msgstr "mumusu"
+
+msgid "smooth"
+msgstr "yuttu"
+
+msgid "socket"
+msgstr "fun (moo)"
+
+msgid "software"
+msgstr "goyjinay (porogaram)"
+
+msgid "solid"
+msgstr "šenda (timmante)"
+
+msgid "sort"
+msgstr "fay (suuba)"
+
+msgid "source"
+msgstr "aššil"
+
+msgid "space"
+msgstr "farru (dookoonu, farrukoonu)"
+
+msgid "spacing"
+msgstr "hibiyan"
+
+msgid "spam"
+msgstr "bataga žiiba"
+
+msgid "span"
+msgstr "sorro gande"
+
+msgid "spawn"
+msgstr "hay, boobandi"
+
+msgid "specify"
+msgstr "tabatandi"
+
+msgid "speed"
+msgstr "cahãri"
+
+msgid "spelling"
+msgstr "boŋhantum (tenjandiyan)"
+
+msgid "splash"
+msgstr "hari say"
+
+msgid "split"
+msgstr "fece (šeŋ)"
+
+msgid "spool"
+msgstr "tuku sanbari"
+
+msgid "spread sheet"
+msgstr "kabu kaddasu"
+
+msgid "stack"
+msgstr "dekeri"
+
+msgid "stand alone"
+msgstr "hinne ga goy"
+
+msgid "standard"
+msgstr "dumi tabatante"
+
+msgid "start"
+msgstr "šintin"
+
+msgid "state"
+msgstr "alhaali"
+
+msgid "static"
+msgstr "tuujante"
+
+msgid "statistics"
+msgstr "kabu-izey"
+
+msgid "step"
+msgstr "ceebandu (ceefur)"
+
+msgid "stop"
+msgstr "kayandi (maršin)"
+
+msgid "storage"
+msgstr "jišidoo, jišĩri"
+
+msgid "store"
+msgstr "jiši"
+
+msgid "stream"
+msgstr "mennandi (dandandi)"
+
+msgid "stretch"
+msgstr "cendi"
+
+msgid "strict"
+msgstr "waažibi (ašariya bande)"
+
+msgid "string"
+msgstr "tenjiri"
+
+msgid "strip"
+msgstr "hoobu"
+
+msgid "stroke"
+msgstr "hantum žeeri"
+
+msgid "structure"
+msgstr "cinari"
+
+msgid "stub"
+msgstr "dunbu, kunturu"
+
+msgid "style"
+msgstr "fasal"
+
+msgid "sub directory"
+msgstr "cire-foolaaɲaa"
+
+msgid "sub folder"
+msgstr "cire-foolo"
+
+msgid "submission"
+msgstr "sanbari"
+
+msgid "submit"
+msgstr "sanba"
+
+msgid "subscribe"
+msgstr "boŋ-maa hantum"
+
+msgid "subscription"
+msgstr "duuyan waafakay"
+
+msgid "subtract"
+msgstr "kaa"
+
+msgid "succeed"
+msgstr "zaame, duu"
+
+msgid "suggest"
+msgstr "honnandi"
+
+msgid "suggestion"
+msgstr "honnandiyan"
+
+msgid "sum (noun)"
+msgstr "hinna (dimma, tonton)"
+
+msgid "sum (verb)"
+msgstr "hinna dam cere ga"
+
+msgid "summary"
+msgstr "surkumandiyan"
+
+msgid "support"
+msgstr "gaakašinay (hin ka)"
+
+msgid "surface"
+msgstr "boŋ (gangani, beenehere)"
+
+msgid "suspend"
+msgstr "kayandi (gagay)"
+
+msgid "suspicious"
+msgstr "šikkante"
+
+msgid "swap"
+msgstr "barmay nda"
+
+msgid "switch"
+msgstr "tunandiji, goy bere"
+
+msgid "symbol"
+msgstr "jinay tammaasa"
+
+msgid "synchronize"
+msgstr "waati hangandi cere"
+
+msgid "syntax"
+msgstr "nahaw"
+
+msgid "system"
+msgstr "dabariɲaa"
+
+msgid "tab"
+msgstr "nor loku"
+
+msgid "table"
+msgstr "daari, taabal"
+
+msgid "tag"
+msgstr "kanji"
+
+msgid "target"
+msgstr "toodoo"
+
+msgid "template"
+msgstr "leeti"
+
+msgid "temporary"
+msgstr "waati kayna"
+
+msgid "terminal"
+msgstr "mooru-ceekaw"
+
+msgid "test"
+msgstr "šii"
+
+msgid "text"
+msgstr "kalimaɲaa kuru"
+
+msgid "texture"
+msgstr "bii-tefayyan"
+
+msgid "theme"
+msgstr "furari"
+
+msgid "thread"
+msgstr "šilli (borro)"
+
+msgid "thumbnail"
+msgstr "kobaaruboy (kabeboy bii)"
+
+msgid "tick"
+msgstr "gunba"
+
+msgid "tile"
+msgstr "kanandi (feraw)"
+
+msgid "time"
+msgstr "waati"
+
+msgid "time out"
+msgstr "waati ben"
+
+msgid "tip"
+msgstr "yaamar"
+
+msgid "title"
+msgstr "tiira-boŋ maa"
+
+msgid "toggle"
+msgstr "kanjari"
+
+msgid "token"
+msgstr "tammaasa"
+
+msgid "tool"
+msgstr "goyjinay"
+
+msgid "tool bar"
+msgstr "goyjinay zuu-žeeri"
+
+msgid "tool box"
+msgstr "goyjinay bata"
+
+msgid "topic"
+msgstr "fakaaray dalil"
+
+msgid "trace"
+msgstr "hanga ceebandu bande"
+
+msgid "track"
+msgstr "fondo-ize"
+
+msgid "traffic"
+msgstr "sanbari (bisandiyan)"
+
+msgid "transfer"
+msgstr "berandiri"
+
+msgid "transform"
+msgstr "barmay"
+
+msgid "transformation"
+msgstr "barmayyan"
+
+msgid "trap"
+msgstr "kunsay, lamtay"
+
+msgid "trash"
+msgstr "žiibi"
+
+msgid "trigger"
+msgstr "šintin (tunandi)"
+
+msgid "trouble shoot"
+msgstr "hanseyan laasaabu"
+
+msgid "tune"
+msgstr "dooni-ize"
+
+msgid "tweak"
+msgstr "ɲamti"
+
+msgid "type (noun)"
+msgstr "dumi"
+
+msgid "type (verb)"
+msgstr "maršin hantum (teera)"
+
+msgid "type face"
+msgstr "hantum dumi"
+
+msgid "unavailable"
+msgstr "ši duwandi, ši bara"
+
+msgid "undelete"
+msgstr "tuusuri naŋ"
+
+msgid "under line"
+msgstr "žeeri cire"
+
+msgid "undo"
+msgstr "taafeeri"
+
+msgid "uninstall"
+msgstr "dogu"
+
+msgid "unit"
+msgstr "izefoo, affayze"
+
+msgid "unknown"
+msgstr "šibayante"
+
+msgid "unload"
+msgstr "jeeje zumandi, zumandi"
+
+msgid "named"
+msgstr "maakoy"
+
+msgid "reachable"
+msgstr "kaŋ ga toondi"
+
+msgid "readable"
+msgstr "hantum-se"
+
+msgid "unspecified"
+msgstr "mana tabatandi"
+
+msgid "unsubscribe"
+msgstr "boŋ kaa"
+
+msgid "unsupported"
+msgstr "ši-nda-faaba"
+
+msgid "update"
+msgstr "taagandiri"
+
+msgid "upgrade"
+msgstr "taagandi"
+
+msgid "upload"
+msgstr "zijandi"
+
+msgid "upper case"
+msgstr "harfu beeri"
+
+msgid "usage"
+msgstr "ŋandi (goy fondo)"
+
+msgid "user"
+msgstr "goykaw"
+
+msgid "user name"
+msgstr "goykaw maa"
+
+msgid "utility"
+msgstr "nafaw (nafaw jinay, faaba jinay)"
+
+msgid "valid"
+msgstr "boori"
+
+msgid "validation"
+msgstr "alkakiikandiyan"
+
+msgid "validity"
+msgstr "booriyan"
+
+msgid "value"
+msgstr "hinna, felle"
+
+msgid "variable"
+msgstr "barmayante"
+
+msgid "vector"
+msgstr "kuubi-žeeri"
+
+msgid "verbose"
+msgstr "šenni boobo, deedekaw"
+
+msgid "verify"
+msgstr "koroši"
+
+msgid "version"
+msgstr "dumi"
+
+msgid "video"
+msgstr "wiidiyo"
+
+msgid "view"
+msgstr "gunari"
+
+msgid "viewer"
+msgstr "gunakaw (guna jinay)"
+
+msgid "virtual"
+msgstr "hima"
+
+msgid "virus"
+msgstr "wiirisi"
+
+msgid "visual"
+msgstr "diira"
+
+msgid "volume"
+msgstr "jinde toonay"
+
+msgid "wallpaper"
+msgstr "cetakaddasu"
+
+msgid "warn"
+msgstr "yaamar"
+
+msgid "web"
+msgstr "tataaru"
+
+msgid "web cam"
+msgstr "tataaru biizaakaw"
+
+msgid "web master"
+msgstr "tataaru juwalkaw"
+
+msgid "web page"
+msgstr "tataaru moo"
+
+msgid "widget"
+msgstr "goyjinaybii"
+
+msgid "width"
+msgstr "hayri"
+
+msgid "wi fi"
+msgstr "bila nda šešeri, hewbande"
+
+msgid "wild card"
+msgstr "sahã katta"
+
+msgid "window"
+msgstr "zanfun"
+
+msgid "wizard"
+msgstr "bida"
+
+msgid "word processor"
+msgstr "hantum jinay"
+
+msgid "work around"
+msgstr "kuubiri"
+
+msgid "work group"
+msgstr "marga"
+
+msgid "work station"
+msgstr "goydoo"
+
+msgid "wrap"
+msgstr "kunkuni"
+
+msgid "yes"
+msgstr "ayyo"
+
+msgid "zone"
+msgstr "ganda"
+
+msgid "zoom"
+msgstr "azzaati barmay (zanfun bere)"

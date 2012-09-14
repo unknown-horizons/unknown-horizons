@@ -1,0 +1,3036 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2008-07-28 14:39+0000\n"
+"PO-Revision-Date: 2010-02-23 20:38+0200\n"
+"Last-Translator: Kristján Bjarni <kristjanbjarni@gmail.com>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: is\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n%10!=1 || n%100==11);\n"
+"X-Generator: Pootle 2.1.0-beta2\n"
+
+# Essential terminology list for general software localisation
+# License: GPL
+# Copyright Youssef Chahibi, Friedel Wolff 2006
+msgid "abort"
+msgstr "hætta við"
+
+msgid "absolute"
+msgstr "nákvæmt"
+
+msgid "abstract"
+msgstr "hugrænn"
+
+msgid "accelerator"
+msgstr "hraðall"
+
+msgid "accent"
+msgstr "áhersla"
+
+msgid "accept"
+msgstr "samþykkja"
+
+msgid "access"
+msgstr "aðgangur"
+
+msgid "accessibility"
+msgstr "aðgengi"
+
+msgid "accessory"
+msgstr "aðgangur"
+
+msgid "account"
+msgstr "reikningur"
+
+msgid "accuracy"
+msgstr "nákvæmni"
+
+msgid "acquire"
+msgstr "fá"
+
+msgid "acronym"
+msgstr "skammstöfun"
+
+msgid "action"
+msgstr "aðgerð"
+
+msgid "activate"
+msgstr "virkja"
+
+msgid "active"
+msgstr "virkur"
+
+msgid "activity"
+msgstr "verknaður"
+
+msgid "adapter"
+msgstr "tengildi"
+
+msgid "add"
+msgstr "bæta við"
+
+msgid "address"
+msgstr "vistfang"
+
+msgid "adjust"
+msgstr "aðlaga"
+
+msgid "administration"
+msgstr "kerfisstjórnun"
+
+msgid "administrator"
+msgstr "kerfisstjóri"
+
+msgid "advanced"
+msgstr "ítaraðgerð"
+
+msgid "agent"
+msgstr "gerandi"
+
+msgid "agree"
+msgstr "samþykkja"
+
+msgid "agreement"
+msgstr "samkomulag"
+
+msgid "alarm"
+msgstr "aðvörun"
+
+msgid "alert"
+msgstr "viðvörun"
+
+msgid "algorithm"
+msgstr "algrím"
+
+msgid "alias"
+msgstr "samnefni"
+
+# تسنن" مع الرسوميات (الخطوط وخلافه)
+msgid "aliasing"
+msgstr "stöllun"
+
+msgid "align"
+msgstr "jafna"
+
+msgid "alignment"
+msgstr "textastilling"
+
+msgid "allow"
+msgstr "leyfa"
+
+msgid "alphanumeric"
+msgstr "ritstafa"
+
+msgid "alternative"
+msgstr "vara"
+
+msgid "amount"
+msgstr "upphæð"
+
+msgid "analysis"
+msgstr "greining"
+
+msgid "anchor"
+msgstr "markstikla"
+
+msgid "angle"
+msgstr "sjónarhorn"
+
+msgid "animate"
+msgstr "myndlífga"
+
+msgid "animation"
+msgstr "myndlífgun"
+
+msgid "announce"
+msgstr "tilkynna"
+
+msgid "announcement"
+msgstr "tilkynning"
+
+msgid "anonymous"
+msgstr "ótilgreindur"
+
+msgid "anti-aliasing"
+msgstr "afstöllun"
+
+msgid "anti virus"
+msgstr "vírusvörn"
+
+msgid "appear"
+msgstr "birtast"
+
+msgid "append"
+msgstr "viðskeyting"
+
+msgid "applet"
+msgstr "biðlarastefja"
+
+msgid "application"
+msgstr "forrit"
+
+msgid "apply"
+msgstr "virkja"
+
+msgid "approval"
+msgstr "samþykki"
+
+msgid "approve"
+msgstr "samþykkja"
+
+msgid "approximate"
+msgstr "nálgað"
+
+msgid "arbitrary"
+msgstr "algildi"
+
+msgid "archive"
+msgstr "safnvista"
+
+msgid "area"
+msgstr "svæði"
+
+msgid "argument"
+msgstr "frumbreyta"
+
+msgid "arrangement"
+msgstr "fyrirkomulag"
+
+msgid "arrow"
+msgstr "ör"
+
+msgid "article"
+msgstr "grein"
+
+msgid "ascending"
+msgstr "hækkandi"
+
+msgid "aspect"
+msgstr "horf"
+
+msgid "assign"
+msgstr "úthluta"
+
+msgid "assignment"
+msgstr "úthlutun"
+
+msgid "asynchronous"
+msgstr "ósamstilltur"
+
+msgid "attach"
+msgstr "láta fylgja"
+
+msgid "attachment"
+msgstr "fylgiskjal"
+
+msgid "attempt"
+msgstr "tilraun"
+
+msgid "attribute"
+msgstr "eigind"
+
+msgid "audio"
+msgstr "hljóð"
+
+msgid "authenticate"
+msgstr "sannvotta"
+
+msgid "authentication"
+msgstr "sannvottun"
+
+msgid "authorization"
+msgstr "heimild"
+
+msgid "authorize"
+msgstr "heimila"
+
+msgid "auto"
+msgstr "sjálfvirkt"
+
+msgid "automatic"
+msgstr "sjálfvirkur"
+
+msgid "availability"
+msgstr "tiltækileiki"
+
+msgid "available"
+msgstr "tiltækur"
+
+msgid "average"
+msgstr "meðal"
+
+msgid "axis"
+msgstr "ás"
+
+msgid "backbone"
+msgstr "bakendi"
+
+msgid "back-end"
+msgstr "bakendi"
+
+msgid "background"
+msgstr "bakgrunnur"
+
+msgid "backup"
+msgstr "afrit"
+
+msgid "bandwidth"
+msgstr "bandvídd"
+
+msgid "banner"
+msgstr "borði"
+
+msgid "bar"
+msgstr "slá"
+
+msgid "base"
+msgstr "grunnur"
+
+msgid "beep"
+msgstr "píp"
+
+msgid "begin"
+msgstr "byrja"
+
+msgid "behavior"
+msgstr "hegðun"
+
+msgid "binary"
+msgstr "tvíundakerfi"
+
+msgid "bind"
+msgstr "binda"
+
+msgid "bit"
+msgstr "biti"
+
+msgid "bitmap"
+msgstr "bitamynd"
+
+msgid "blank"
+msgstr "tómur"
+
+msgid "blink"
+msgstr "blikka"
+
+msgid "block (unit)"
+msgstr "blokk"
+
+msgid "block (verb)"
+msgstr "loka"
+
+msgid "blog"
+msgstr "blogg"
+
+msgid "blur"
+msgstr "móða"
+
+msgid "board"
+msgstr "borð"
+
+msgid "body"
+msgstr "meginmál"
+
+msgid "bold"
+msgstr "feitletrað"
+
+msgid "bookmarks"
+msgstr "bókamerki"
+
+msgid "boot"
+msgstr "ræsa"
+
+msgid "border"
+msgstr "rammi"
+
+msgid "box"
+msgstr "kassi"
+
+msgid "bracket"
+msgstr "hornklofi"
+
+msgid "branch"
+msgstr "grein"
+
+msgid "break"
+msgstr "rofstaður"
+
+msgid "break (program)"
+msgstr "rofstaður"
+
+msgid "break point"
+msgstr "rofstaður"
+
+msgid "bridge (verb)"
+msgstr "brúa"
+
+msgid "bridge (noun)"
+msgstr "brú"
+
+msgid "broken"
+msgstr "brotið"
+
+msgid "browse"
+msgstr "vafra"
+
+msgid "browser"
+msgstr "vafri"
+
+msgid "buffer"
+msgstr "biðminni"
+
+msgid "bug"
+msgstr "villa"
+
+msgid "build"
+msgstr "byggja"
+
+msgid "built-in"
+msgstr "innbyggt"
+
+msgid "bullet"
+msgstr "áherslumerki"
+
+msgid "bus"
+msgstr "rás"
+
+msgid "button"
+msgstr "hnappur"
+
+msgid "byte"
+msgstr "bæti"
+
+msgid "cable"
+msgstr "snúra"
+
+msgid "cache"
+msgstr "skyndiminni"
+
+msgid "calculate"
+msgstr "útreikningar"
+
+msgid "calculator"
+msgstr "reiknivél"
+
+msgid "calendar"
+msgstr "dagatal"
+
+msgid "call"
+msgstr "kall"
+
+msgid "camera"
+msgstr "myndavél"
+
+msgid "cancel"
+msgstr "hætta við"
+
+msgid "capability"
+msgstr "geta"
+
+msgid "capacity"
+msgstr "afkastageta"
+
+msgid "caption"
+msgstr "titill"
+
+msgid "capture"
+msgstr "grípa"
+
+msgid "card"
+msgstr "spjald"
+
+msgid "case"
+msgstr "tilfelli"
+
+msgid "case (font)"
+msgstr "stafstaða"
+
+msgid "catalog"
+msgstr "listi"
+
+msgid "category"
+msgstr "flokkur"
+
+msgid "cell"
+msgstr "eining"
+
+msgid "certificate"
+msgstr "skírteini"
+
+msgid "certify"
+msgstr "staðfesta"
+
+msgid "change"
+msgstr "breyta"
+
+msgid "channel"
+msgstr "rás"
+
+msgid "character"
+msgstr "stafur"
+
+msgid "charset"
+msgstr "stafatafla"
+
+msgid "chart"
+msgstr "línurit"
+
+msgid "chat"
+msgstr "spjall"
+
+msgid "check"
+msgstr "haka"
+
+msgid "check box"
+msgstr "gátreitur"
+
+msgid "child"
+msgstr "barn"
+
+msgid "choice"
+msgstr "valkostir"
+
+msgid "choose"
+msgstr "velja"
+
+msgid "class"
+msgstr "klasi"
+
+msgid "classic"
+msgstr "hefðbundið"
+
+msgid "classify"
+msgstr "flokka"
+
+msgid "clean"
+msgstr "hreinsa"
+
+msgid "clear"
+msgstr "hreinsa"
+
+msgid "click (noun)"
+msgstr "smellur"
+
+msgid "click (verb)"
+msgstr "smella"
+
+msgid "client"
+msgstr "biðlari"
+
+msgid "clip art"
+msgstr "klippimyndir"
+
+msgid "clip board"
+msgstr "klemmuspjald"
+
+msgid "clock"
+msgstr "klukka"
+
+msgid "close"
+msgstr "loka"
+
+msgid "code (program)"
+msgstr "kóði"
+
+msgid "code (symbol)"
+msgstr "tákn"
+
+msgid "codec"
+msgstr "kóði"
+
+msgid "collapse"
+msgstr "fella saman"
+
+msgid "collect"
+msgstr "safna"
+
+msgid "column"
+msgstr "dálkur"
+
+msgid "combination"
+msgstr "tenging"
+
+msgid "comma"
+msgstr "komma"
+
+msgid "command"
+msgstr "skipun"
+
+msgid "comment"
+msgstr "athugasemd"
+
+msgid "common"
+msgstr "algengt"
+
+msgid "communication"
+msgstr "samskipti"
+
+msgid "compact"
+msgstr "þjappa"
+
+msgid "compare"
+msgstr "bera saman"
+
+msgid "compatibility"
+msgstr "samhæfni"
+
+msgid "compatible"
+msgstr "samhæft"
+
+# حويل الشفرة المصرية إلى ملفات ثنائية (برمجة
+msgid "compilation"
+msgstr "safnplötur"
+
+msgid "compile"
+msgstr "vistþýða"
+
+msgid "compiler"
+msgstr "þýðandi"
+
+msgid "complete"
+msgstr "lokið"
+
+msgid "component"
+msgstr "hluti"
+
+msgid "compose"
+msgstr "semja"
+
+msgid "composition"
+msgstr "samsetning"
+
+msgid "compress"
+msgstr "þjappa"
+
+msgid "compression"
+msgstr "þjöppun"
+
+msgid "computer"
+msgstr "tölva"
+
+msgid "computing"
+msgstr "reikna út"
+
+msgid "concatenate"
+msgstr "setja saman"
+
+msgid "concurrent"
+msgstr "samtímis"
+
+msgid "condense"
+msgstr "þjappa"
+
+msgid "condition"
+msgstr "skilyrði"
+
+msgid "configuration"
+msgstr "stillingar"
+
+msgid "configure"
+msgstr "stilla"
+
+msgid "confirm"
+msgstr "staðfesta"
+
+msgid "confirmation"
+msgstr "staðfesta"
+
+msgid "conflict"
+msgstr "árekstrar"
+
+msgid "connect"
+msgstr "tengjast"
+
+msgid "connection"
+msgstr "tenging"
+
+msgid "console"
+msgstr "gluggi"
+
+msgid "contact (noun)"
+msgstr "tengiliður"
+
+msgid "contact (verb)"
+msgstr "tengjast"
+
+msgid "content"
+msgstr "innihald"
+
+msgid "context"
+msgstr "samhengi"
+
+msgid "continue"
+msgstr "áfram"
+
+msgid "contrast"
+msgstr "birtuskil"
+
+msgid "contributor"
+msgstr "þátttakandi"
+
+msgid "control"
+msgstr "stýring"
+
+msgid "conversion"
+msgstr "umbreyting"
+
+msgid "convert"
+msgstr "umbreyta"
+
+msgid "cookie"
+msgstr "smákökur"
+
+msgid "cooperative"
+msgstr "samvinnuþýður"
+
+msgid "coordinate"
+msgstr "hnit"
+
+msgid "copy (noun)"
+msgstr "afrit"
+
+msgid "copy (verb)"
+msgstr "afrita"
+
+msgid "copy left"
+msgstr "afrita vinstri"
+
+msgid "copy right"
+msgstr "afrita hægri"
+
+msgid "correct"
+msgstr "rétt"
+
+msgid "correspondence"
+msgstr "samskipti"
+
+msgid "correspondent"
+msgstr "bréfritari"
+
+msgid "corrupt"
+msgstr "brenglað"
+
+msgid "count"
+msgstr "fjöldi"
+
+msgid "countable"
+msgstr "teljanlegt"
+
+msgid "crash"
+msgstr "hrun"
+
+msgid "create"
+msgstr "bý til"
+
+msgid "creation"
+msgstr "búin til"
+
+msgid "criteria"
+msgstr "forsenda"
+
+msgid "crop"
+msgstr "sníða utan af"
+
+msgid "cross-platform"
+msgstr "þverkerfa"
+
+msgid "crypt"
+msgstr "dulkóða"
+
+msgid "cryptology"
+msgstr "dulkóðun"
+
+msgid "current"
+msgstr "núverandi"
+
+msgid "cursor"
+msgstr "sérsniðið"
+
+msgid "curve"
+msgstr "boglína"
+
+msgid "custom"
+msgstr "sérsniðið"
+
+msgid "customization"
+msgstr "sérsniðing"
+
+msgid "customize"
+msgstr "sérsníða"
+
+msgid "cut"
+msgstr "klippa"
+
+msgid "cycle"
+msgstr "umferð"
+
+msgid "daemon"
+msgstr "púki"
+
+msgid "damage"
+msgstr "skaði"
+
+msgid "data"
+msgstr "gögn"
+
+msgid "database"
+msgstr "gagnagrunnur"
+
+msgid "debug"
+msgstr "kemba"
+
+msgid "debugger"
+msgstr "aflúsari"
+
+msgid "decimal"
+msgstr "brot"
+
+msgid "decode"
+msgstr "afkóta"
+
+msgid "decompress"
+msgstr "afþjappa"
+
+msgid "decrease"
+msgstr "minnka"
+
+msgid "decrypt"
+msgstr "afkóða"
+
+msgid "decryption"
+msgstr "afkóðun"
+
+msgid "default"
+msgstr "sjálfgefið"
+
+msgid "defect"
+msgstr "skynja"
+
+msgid "define"
+msgstr "skilgreina"
+
+msgid "definition"
+msgstr "skilgreining"
+
+msgid "degree"
+msgstr "gráður"
+
+msgid "delay"
+msgstr "töf"
+
+msgid "delete"
+msgstr "eyða"
+
+msgid "deletion"
+msgstr "eytt"
+
+msgid "delimiter"
+msgstr "afmarkari"
+
+msgid "demo"
+msgstr "sýnishorn"
+
+msgid "deny"
+msgstr "hafna"
+
+msgid "dependence"
+msgstr "tengsl"
+
+msgid "dependency"
+msgstr "tengsl"
+
+msgid "depth"
+msgstr "dýpi"
+
+msgid "derived"
+msgstr "leiddur af"
+
+msgid "descending"
+msgstr "lækkandi"
+
+msgid "description"
+msgstr "lýsing"
+
+msgid "deselect"
+msgstr "afvelja"
+
+msgid "design"
+msgstr "hanna"
+
+msgid "desktop"
+msgstr "skjáborð"
+
+msgid "destination"
+msgstr "áfangastaður"
+
+msgid "destroy"
+msgstr "eyðileggja"
+
+msgid "detach"
+msgstr "aftengja"
+
+msgid "detect"
+msgstr "skynja"
+
+msgid "develop"
+msgstr "þróa"
+
+msgid "development"
+msgstr "þróun"
+
+msgid "developer"
+msgstr "forritari"
+
+msgid "device"
+msgstr "tæki"
+
+msgid "diagram"
+msgstr "skýringarmynd"
+
+msgid "dial"
+msgstr "hringja"
+
+msgid "dialog"
+msgstr "svargluggi"
+
+msgid "dialup"
+msgstr "innhringiaðgangur"
+
+msgid "difference"
+msgstr "mismunur"
+
+msgid "digit"
+msgstr "tala"
+
+msgid "digital"
+msgstr "stafræn"
+
+msgid "dimension"
+msgstr "stærð"
+
+msgid "directory"
+msgstr "skráasafn"
+
+msgid "disable"
+msgstr "slökkva"
+
+msgid "disc"
+msgstr "diskur"
+
+msgid "discard"
+msgstr "henda"
+
+msgid "disconnect"
+msgstr "aftengja"
+
+msgid "discussion"
+msgstr "umræða"
+
+msgid "disk"
+msgstr "diskur"
+
+msgid "dispatch"
+msgstr "senda"
+
+msgid "display"
+msgstr "birta"
+
+msgid "distort"
+msgstr "aflaga"
+
+msgid "distribute"
+msgstr "dreifa"
+
+msgid "distribution"
+msgstr "dreifing"
+
+msgid "distributor"
+msgstr "dreifingaraðili"
+
+msgid "dock"
+msgstr "á spjald"
+
+msgid "document"
+msgstr "skjal"
+
+msgid "documentation"
+msgstr "skjölun"
+
+msgid "domain"
+msgstr "lén"
+
+msgid "double click"
+msgstr "tvísmellt"
+
+msgid "download"
+msgstr "hlaða niður"
+
+msgid "drag"
+msgstr "draga"
+
+msgid "draw"
+msgstr "jafntefli"
+
+msgid "driver"
+msgstr "rekill"
+
+msgid "dual"
+msgstr "tvöfalt"
+
+msgid "dump"
+msgstr "sturta"
+
+msgid "duplicate"
+msgstr "afrita"
+
+msgid "dynamic"
+msgstr "virkur"
+
+msgid "echo"
+msgstr "bergmál"
+
+msgid "edit"
+msgstr "breyta"
+
+msgid "edition"
+msgstr "útgáfa"
+
+msgid "editor"
+msgstr "ritill"
+
+msgid "effect"
+msgstr "áhrif"
+
+msgid "eject"
+msgstr "ýta út"
+
+msgid "electronic"
+msgstr "raftæknilegur"
+
+msgid "element"
+msgstr "einindi"
+
+msgid "email"
+msgstr "tölvupóstfang"
+
+msgid "embed"
+msgstr "ívefja"
+
+msgid "emoticon"
+msgstr "broskarlar"
+
+msgid "empty"
+msgstr "tómt"
+
+msgid "emulate"
+msgstr "herma"
+
+msgid "emulation"
+msgstr "hermun"
+
+msgid "emulator"
+msgstr "hermir"
+
+msgid "enable"
+msgstr "virkja"
+
+msgid "enabled"
+msgstr "virkur"
+
+msgid "encode"
+msgstr "dulkóða"
+
+msgid "encoding"
+msgstr "dulkóðun"
+
+msgid "encrypt"
+msgstr "dulrita"
+
+msgid "encrypted"
+msgstr "dulritað"
+
+msgid "encryption"
+msgstr "dulritun"
+
+msgid "engine"
+msgstr "vél"
+
+msgid "enhancement"
+msgstr "endurbót"
+
+msgid "enlarge"
+msgstr "eða stækka"
+
+msgid "enlargement"
+msgstr "stækkun"
+
+msgid "enter"
+msgstr "færa inn"
+
+msgid "entertainment"
+msgstr "skemmtun"
+
+msgid "entry"
+msgstr "færsla"
+
+msgid "environment"
+msgstr "umhverfi"
+
+msgid "equalizer"
+msgstr "hljóðblandari"
+
+msgid "erase"
+msgstr "eyða"
+
+msgid "error"
+msgstr "villa"
+
+msgid "escape"
+msgstr "sleppa"
+
+msgid "evaluation"
+msgstr "reynslutími"
+
+msgid "event"
+msgstr "atburður"
+
+msgid "exception"
+msgstr "frávik"
+
+msgid "executable"
+msgstr "keyrsluskrá"
+
+msgid "execute"
+msgstr "keyra"
+
+msgid "existing"
+msgstr "til fyrir"
+
+msgid "exit"
+msgstr "hætta"
+
+msgid "expand"
+msgstr "þenja út"
+
+msgid "expansion"
+msgstr "útþensla"
+
+msgid "explore"
+msgstr "kanna"
+
+msgid "export"
+msgstr "valmöguleikar"
+
+msgid "expression"
+msgstr "segð"
+
+msgid "extend"
+msgstr "teygt"
+
+msgid "extensible"
+msgstr "víkkanlegur"
+
+msgid "extension"
+msgstr "nafnauki"
+
+msgid "external"
+msgstr "ytri"
+
+msgid "extra"
+msgstr "auka"
+
+msgid "extract"
+msgstr "afþjappa"
+
+msgid "fail"
+msgstr "mistókst"
+
+# فادح: مثل خطأ فادح
+msgid "fatal"
+msgstr "banvænt"
+
+msgid "fault"
+msgstr "villa"
+
+msgid "favorite"
+msgstr "eftirlætissmappa"
+
+msgid "feature"
+msgstr "smíða nýtt"
+
+msgid "feed"
+msgstr "straumur"
+
+msgid "feedback"
+msgstr "viðbrögð"
+
+msgid "fetch"
+msgstr "sækja"
+
+msgid "field"
+msgstr "svæði"
+
+msgid "figure"
+msgstr "mynd"
+
+msgid "file"
+msgstr "skrá"
+
+msgid "fill"
+msgstr "fylling"
+
+msgid "filter"
+msgstr "sía"
+
+msgid "find"
+msgstr "fara inn"
+
+msgid "firewall"
+msgstr "eldveggur"
+
+msgid "firmware"
+msgstr "fastbúnaður"
+
+msgid "fit"
+msgstr "laga að"
+
+msgid "fix"
+msgstr "póstfax"
+
+msgid "flag"
+msgstr "stöðuvísir"
+
+msgid "flash"
+msgstr "flass"
+
+msgid "flat"
+msgstr "flatt"
+
+msgid "flip"
+msgstr "spegla"
+
+msgid "float (verb)"
+msgstr "fljóta"
+
+msgid "flood"
+msgstr "flæða"
+
+msgid "floppy"
+msgstr "disklingur"
+
+msgid "folder"
+msgstr "möppu"
+
+msgid "font"
+msgstr "leturgerð"
+
+msgid "footer"
+msgstr "fótur"
+
+msgid "form"
+msgstr "eyðublað"
+
+msgid "format (noun)"
+msgstr "sniðmát"
+
+msgid "format (verb)"
+msgstr "sníða"
+
+msgid "formatted"
+msgstr "forsniðið"
+
+msgid "formula"
+msgstr "formúla"
+
+msgid "forum"
+msgstr "umræðusvæði"
+
+msgid "fragment"
+msgstr "brot"
+
+msgid "frame"
+msgstr "rammi"
+
+msgid "frame set"
+msgstr "rammar"
+
+msgid "framework"
+msgstr "uppbygging"
+
+msgid "free software"
+msgstr "frjáls hugbúnaður"
+
+msgid "freeze"
+msgstr "frysta"
+
+msgid "frequency"
+msgstr "tíðni"
+
+msgid "front end"
+msgstr "framendi"
+
+msgid "function"
+msgstr "fall"
+
+msgid "gallery"
+msgstr "myndasafn"
+
+msgid "game"
+msgstr "leikur"
+
+msgid "gateway"
+msgstr "hlið"
+
+msgid "generate"
+msgstr "búa til lyklapar"
+
+msgid "generation"
+msgstr "gerð"
+
+msgid "generator"
+msgstr "rafall"
+
+msgid "generic"
+msgstr "almennt"
+
+msgid "geometric"
+msgstr "rúmfræðilegur"
+
+msgid "geometry"
+msgstr "stærð"
+
+msgid "grab"
+msgstr "grípa"
+
+msgid "gradient"
+msgstr "litblöndun"
+
+msgid "grain"
+msgstr "ögn"
+
+msgid "graph"
+msgstr "línurit"
+
+msgid "graphic"
+msgstr "mynd"
+
+msgid "graphical"
+msgstr "sýndur á grafi"
+
+msgid "graphics"
+msgstr "myndefni"
+
+msgid "gray-scale"
+msgstr "gráskali"
+
+msgid "grid"
+msgstr "hnitanet"
+
+msgid "group"
+msgstr "hópur"
+
+msgid "guess"
+msgstr "giska"
+
+msgid "guest"
+msgstr "gestur"
+
+msgid "handle (noun)"
+msgstr "handfang"
+
+msgid "handle (verb)"
+msgstr "meðhöndla"
+
+msgid "handler"
+msgstr "meðhöndlari"
+
+msgid "hardware"
+msgstr "vélbúnaður"
+
+msgid "hash"
+msgstr "strikuð"
+
+msgid "head"
+msgstr "haus"
+
+msgid "header"
+msgstr "haus"
+
+msgid "height"
+msgstr "hæð"
+
+msgid "help"
+msgstr "hjálp"
+
+msgid "hide"
+msgstr "fela"
+
+msgid "hierarchy"
+msgstr "stigskipun"
+
+msgid "high light"
+msgstr "litun"
+
+msgid "history"
+msgstr "skipanasaga"
+
+msgid "host"
+msgstr "netþjón"
+
+msgid "hostname"
+msgstr "netfang"
+
+msgid "hyperlink"
+msgstr "tengill"
+
+msgid "hypertext"
+msgstr "stiklutexti"
+
+msgid "icon"
+msgstr "táknmynd"
+
+msgid "identify"
+msgstr "bera kennsl á"
+
+msgid "idle"
+msgstr "aðgerðalaus"
+
+msgid "ignore"
+msgstr "hunsa"
+
+msgid "image"
+msgstr "mynd"
+
+msgid "implement"
+msgstr "útfæra"
+
+msgid "import"
+msgstr "flytja inn"
+
+msgid "inactive"
+msgstr "óvirkt"
+
+msgid "inbox"
+msgstr "innhólf"
+
+msgid "inch"
+msgstr "tomma"
+
+msgid "include"
+msgstr "taka með"
+
+msgid "incoming"
+msgstr "viðtaka"
+
+msgid "incompatible"
+msgstr "ósamhæfður"
+
+msgid "increase"
+msgstr "auka"
+
+msgid "increment"
+msgstr "hækka"
+
+msgid "indent"
+msgstr "draga inn"
+
+msgid "index"
+msgstr "atriðaskrá"
+
+msgid "indice"
+msgstr "atriðaskrá"
+
+msgid "infect"
+msgstr "sýkja"
+
+msgid "infinite"
+msgstr "takmarkalaust"
+
+msgid "information"
+msgstr "upplýsingar"
+
+msgid "infrared"
+msgstr "innrauður"
+
+msgid "initial"
+msgstr "upphaf"
+
+msgid "initialize"
+msgstr "frumstilla"
+
+msgid "input"
+msgstr "inntak"
+
+msgid "insert"
+msgstr "setja inn"
+
+msgid "install"
+msgstr "setja inn"
+
+msgid "installer"
+msgstr "innsetning"
+
+msgid "instance"
+msgstr "tilvik"
+
+msgid "instruction"
+msgstr "leiðbeiningar"
+
+msgid "integer"
+msgstr "heiltala"
+
+msgid "integral"
+msgstr "heill"
+
+msgid "integrate"
+msgstr "samþætta"
+
+msgid "integration"
+msgstr "samþætting"
+
+msgid "integrity"
+msgstr "heiðarleiki"
+
+msgid "intensity"
+msgstr "styrkur"
+
+msgid "interactivity"
+msgstr "gagnvirkni"
+
+msgid "interface"
+msgstr "viðmót"
+
+msgid "internal"
+msgstr "innri"
+
+msgid "internet"
+msgstr "internetið"
+
+msgid "interrupt"
+msgstr "grípa inn í"
+
+msgid "invalid"
+msgstr "ógildur"
+
+msgid "inverse"
+msgstr "andhverfa"
+
+msgid "invert"
+msgstr "öfugt"
+
+msgid "invoke"
+msgstr "kalla"
+
+msgid "italic"
+msgstr "skáletrað"
+
+msgid "item"
+msgstr "hlutur"
+
+msgid "iteration"
+msgstr "ítranir"
+
+msgid "jag"
+msgstr "oddur"
+
+msgid "jam"
+msgstr "festa"
+
+msgid "job"
+msgstr "verk"
+
+msgid "join"
+msgstr "fara inn"
+
+msgid "joy stick"
+msgstr "stýripinni"
+
+msgid "jump"
+msgstr "stökkva"
+
+msgid "junk"
+msgstr "ruslpóstur"
+
+msgid "justify"
+msgstr "jafna"
+
+msgid "keep"
+msgstr "halda"
+
+msgid "kernel"
+msgstr "kjarni"
+
+msgid "key"
+msgstr "lykill"
+
+msgid "keyboard"
+msgstr "lyklaborð"
+
+msgid "key stroke"
+msgstr "ásláttur"
+
+msgid "key word"
+msgstr "stikkorð"
+
+msgid "label"
+msgstr "merking"
+
+msgid "landscape"
+msgstr "lárétt"
+
+msgid "language"
+msgstr "tungumál"
+
+msgid "laptop"
+msgstr "fartölva"
+
+msgid "launch"
+msgstr "keyra"
+
+msgid "layer"
+msgstr "lag"
+
+msgid "layout"
+msgstr "útlit"
+
+msgid "length"
+msgstr "lengd"
+
+msgid "license"
+msgstr "notkunarskilmálar"
+
+msgid "line"
+msgstr "notkunarskilmálar"
+
+msgid "link"
+msgstr "vísun"
+
+msgid "list"
+msgstr "listi"
+
+msgid "load"
+msgstr "hlaða inn"
+
+msgid "local"
+msgstr "staðbundið"
+
+msgid "localization"
+msgstr "staðfærsla"
+
+msgid "location"
+msgstr "staðsetning"
+
+msgid "log"
+msgstr "annáll"
+
+msgid "lookup"
+msgstr "finna"
+
+msgid "lower-case"
+msgstr "lágstafir"
+
+msgid "machine"
+msgstr "örgjörvi"
+
+msgid "main board"
+msgstr "aðalborð"
+
+msgid "maintainer"
+msgstr "haldið við af"
+
+msgid "maintenance"
+msgstr "viðhald"
+
+msgid "manage"
+msgstr "sýsla með"
+
+msgid "management"
+msgstr "umsýsla"
+
+msgid "manager"
+msgstr "yfirmaður"
+
+msgid "manual"
+msgstr "man"
+
+msgid "margin"
+msgstr "spássía"
+
+msgid "mark"
+msgstr "merkja"
+
+msgid "master"
+msgstr "yfirsíða"
+
+msgid "match"
+msgstr "passar við"
+
+msgid "maximize"
+msgstr "hámarka"
+
+msgid "memory"
+msgstr "minni"
+
+msgid "menu"
+msgstr "valmynd"
+
+msgid "merge"
+msgstr "bræða saman"
+
+msgid "message"
+msgstr "skilaboð"
+
+msgid "method"
+msgstr "aðferð"
+
+msgid "minimize"
+msgstr "minnka"
+
+msgid "mode"
+msgstr "hamur"
+
+msgid "modem"
+msgstr "mótald"
+
+msgid "moderator"
+msgstr "ritstjóri"
+
+msgid "modify"
+msgstr "breyta"
+
+msgid "module"
+msgstr "eining"
+
+msgid "monitor"
+msgstr "skjár"
+
+msgid "mosaic"
+msgstr "mósaík"
+
+msgid "motion"
+msgstr "hreyfing"
+
+msgid "mouse"
+msgstr "mús"
+
+msgid "move"
+msgstr "færa"
+
+msgid "multimedia"
+msgstr "margmiðlun"
+
+msgid "multitasking"
+msgstr "fjölverkavinnsla"
+
+msgid "name"
+msgstr "heiti"
+
+msgid "navigation"
+msgstr "stjórn"
+
+msgid "navigator"
+msgstr "leiðarstýring"
+
+msgid "network"
+msgstr "net"
+
+msgid "news group"
+msgstr "umræðuhópur"
+
+msgid "next"
+msgstr "næsti"
+
+msgid "nick name"
+msgstr "gælunafn"
+
+msgid "no"
+msgstr "nei"
+
+msgid "node"
+msgstr "tengipunktur"
+
+msgid "notation"
+msgstr "ritun"
+
+msgid "note"
+msgstr "athugasemd"
+
+msgid "notebook"
+msgstr "fartölva"
+
+msgid "notification"
+msgstr "tilkynning"
+
+msgid "notify"
+msgstr "aðvara"
+
+# في الرياضيات "صفر"
+# الصفة "منعدم"
+msgid "null"
+msgstr "tregur"
+
+msgid "number"
+msgstr "tala"
+
+msgid "numbering"
+msgstr "tölusetning"
+
+msgid "object"
+msgstr "hlutur"
+
+msgid "occurence"
+msgstr "tilvik"
+
+msgid "octet"
+msgstr "oktett"
+
+msgid "offline"
+msgstr "aftengdur"
+
+msgid "OK"
+msgstr "Í lagi"
+
+msgid "online"
+msgstr "tengdur"
+
+msgid "ongoing"
+msgstr "áframhaldandi"
+
+msgid "opacity"
+msgstr "gegnsæi"
+
+msgid "opaque"
+msgstr "ógegnsær"
+
+msgid "open"
+msgstr "opna"
+
+msgid "operation"
+msgstr "aðgerð"
+
+msgid "option"
+msgstr "valkostur"
+
+msgid "optional"
+msgstr "stilling"
+
+msgid "order"
+msgstr "röð"
+
+msgid "organize"
+msgstr "raða"
+
+msgid "orientation"
+msgstr "stefna"
+
+msgid "original"
+msgstr "upprunaleg"
+
+msgid "outgoing"
+msgstr "útsent"
+
+msgid "output"
+msgstr "útkoma"
+
+msgid "overflow"
+msgstr "yfirflæði"
+
+msgid "override"
+msgstr "hunsa"
+
+msgid "overwrite"
+msgstr "skrifa yfir"
+
+msgid "owner"
+msgstr "eigandi"
+
+msgid "pack"
+msgstr "pakka"
+
+msgid "package"
+msgstr "pakki"
+
+msgid "packet"
+msgstr "pakki"
+
+msgid "padding"
+msgstr "fylla"
+
+msgid "page"
+msgstr "síða"
+
+msgid "paint"
+msgstr "mála"
+
+msgid "pair"
+msgstr "par"
+
+msgid "palette"
+msgstr "litaspjald"
+
+msgid "panel"
+msgstr "spjaldið"
+
+msgid "parallel"
+msgstr "samhliða"
+
+msgid "parameter"
+msgstr "viðfang"
+
+msgid "parcel"
+msgstr "böggull"
+
+msgid "parent"
+msgstr "foreldri"
+
+msgid "parity"
+msgstr "tvístæða"
+
+msgid "parse"
+msgstr "þátta"
+
+msgid "partition"
+msgstr "disksvæði"
+
+msgid "pass"
+msgstr "látún"
+
+msgid "password"
+msgstr "lykilorð"
+
+msgid "paste"
+msgstr "líma"
+
+msgid "patch (noun)"
+msgstr "bót"
+
+msgid "patch (verb)"
+msgstr "bæta"
+
+msgid "path"
+msgstr "slóð"
+
+msgid "pattern"
+msgstr "mynstur"
+
+msgid "pause"
+msgstr "bíða"
+
+msgid "peripheral"
+msgstr "jaðartæki"
+
+msgid "permanent"
+msgstr "fast"
+
+msgid "permission"
+msgstr "leyfi"
+
+msgid "permutation"
+msgstr "umröðun"
+
+msgid "physical"
+msgstr "raunverulegur"
+
+msgid "picture"
+msgstr "mynd"
+
+msgid "pipe"
+msgstr "pípa"
+
+msgid "pixel"
+msgstr "punktur"
+
+msgid "placement"
+msgstr "staðsetning"
+
+msgid "plain"
+msgstr "einfalt"
+
+msgid "plot (verb)"
+msgstr "teikna"
+
+msgid "plotter"
+msgstr "teiknari"
+
+msgid "plugin"
+msgstr "tengiforrit"
+
+msgid "pop up"
+msgstr "sprettgluggi"
+
+msgid "port"
+msgstr "gátt"
+
+msgid "position"
+msgstr "staðsetning"
+
+msgid "post"
+msgstr "færsla"
+
+msgid "preferences"
+msgstr "valkostir"
+
+msgid "prepare"
+msgstr "undirbúa"
+
+msgid "presentation"
+msgstr "kynning"
+
+msgid "press"
+msgstr "ýta"
+
+msgid "prevent"
+msgstr "koma í veg fyrir"
+
+msgid "preview"
+msgstr "forsýna"
+
+msgid "primary"
+msgstr "fyrra"
+
+msgid "principal"
+msgstr "umbjóðandi"
+
+msgid "print"
+msgstr "prenta"
+
+msgid "printer"
+msgstr "prentari"
+
+msgid "priority"
+msgstr "forgangur"
+
+msgid "privacy"
+msgstr "friðhelgi"
+
+msgid "private"
+msgstr "einkamál"
+
+msgid "priviledge"
+msgstr "forréttindi"
+
+msgid "procedure"
+msgstr "framvinda"
+
+msgid "process"
+msgstr "framvinda"
+
+msgid "processor"
+msgstr "gjörvi"
+
+msgid "product"
+msgstr "vara"
+
+msgid "profile"
+msgstr "notandi"
+
+msgid "program"
+msgstr "forrit"
+
+msgid "programmer"
+msgstr "forritari"
+
+msgid "project"
+msgstr "verkefni"
+
+msgid "prompt"
+msgstr "spyrja"
+
+msgid "property"
+msgstr "eiginleiki"
+
+msgid "proprietary"
+msgstr "sér"
+
+msgid "protect"
+msgstr "vernda"
+
+msgid "protection"
+msgstr "vörn"
+
+#, !!!
+msgid "protocol"
+msgstr "samskiptareglur"
+
+msgid "provide"
+msgstr "skaffar"
+
+msgid "provider"
+msgstr "þjónustuaðili"
+
+msgid "proxy"
+msgstr "milliþjónn"
+
+msgid "public"
+msgstr "almennt"
+
+msgid "publish"
+msgstr "gefa út"
+
+msgid "pull"
+msgstr "tregur"
+
+msgid "push"
+msgstr "ýta"
+
+msgid "quality"
+msgstr "gæði"
+
+msgid "quantity"
+msgstr "fjöldi"
+
+msgid "quarantine"
+msgstr "einangra"
+
+msgid "query"
+msgstr "fyrirspurn"
+
+msgid "queue"
+msgstr "röð"
+
+msgid "quit"
+msgstr "hætta"
+
+msgid "quota"
+msgstr "kvóti"
+
+msgid "quotation"
+msgstr "tilvitnun"
+
+msgid "quote"
+msgstr "tilvitnun"
+
+msgid "raise"
+msgstr "hækka"
+
+msgid "random"
+msgstr "handahófskenndur"
+
+msgid "range"
+msgstr "svið"
+
+msgid "rate"
+msgstr "hlutfall"
+
+msgid "ratio"
+msgstr "hlutfall"
+
+msgid "raw"
+msgstr "hrá"
+
+msgid "ray"
+msgstr "geisli"
+
+msgid "read"
+msgstr "lesa"
+
+msgid "read only"
+msgstr "einungis til lestrar"
+
+msgid "ready"
+msgstr "tilbúin"
+
+msgid "real"
+msgstr "gefa"
+
+msgid "reboot"
+msgstr "endurræsa"
+
+msgid "receipt"
+msgstr "kvittun"
+
+msgid "receive"
+msgstr "móttaka"
+
+msgid "recognition"
+msgstr "kennsl"
+
+msgid "reconnect"
+msgstr "endurtengja"
+
+msgid "record"
+msgstr "færsla"
+
+msgid "record (verb)"
+msgstr "taka upp"
+
+msgid "recover"
+msgstr "endurheimta"
+
+msgid "recovery"
+msgstr "endurheimta"
+
+#
+msgid "recursion"
+msgstr "rakning"
+
+msgid "recursive"
+msgstr "endurkvæmt"
+
+msgid "redirect"
+msgstr "beina til"
+
+msgid "redo"
+msgstr "endurtaka"
+
+msgid "reduce"
+msgstr "minnka"
+
+msgid "reduction"
+msgstr "minnkun"
+
+msgid "redundant"
+msgstr "óþarfur"
+
+msgid "reference"
+msgstr "tilvísun"
+
+msgid "referer"
+msgstr "tilvitnandi"
+
+msgid "referral"
+msgstr "tilvísun"
+
+msgid "reflexive"
+msgstr "miðmynd"
+
+msgid "refresh"
+msgstr "uppfæra"
+
+msgid "refuse"
+msgstr "hafna"
+
+msgid "regenerate"
+msgstr "skjölun"
+
+msgid "register"
+msgstr "innskráning"
+
+msgid "registration"
+msgstr "skráning"
+
+msgid "registry"
+msgstr "stýriskrá"
+
+msgid "regular"
+msgstr "venjulegt"
+
+msgid "regulate"
+msgstr "stjórna"
+
+msgid "relay"
+msgstr "endurvarpa"
+
+msgid "release"
+msgstr "sleppa"
+
+msgid "remaining"
+msgstr "eftir"
+
+msgid "remind"
+msgstr "minna á"
+
+msgid "remote"
+msgstr "fjartenging"
+
+msgid "removable"
+msgstr "færanlegur"
+
+msgid "remove"
+msgstr "taka burt"
+
+msgid "rename"
+msgstr "endurnefna"
+
+msgid "render"
+msgstr "myndgera"
+
+msgid "renew"
+msgstr "endurnýja"
+
+msgid "repair"
+msgstr "laga"
+
+msgid "repeat"
+msgstr "endurtaka"
+
+msgid "replace"
+msgstr "breyta"
+
+msgid "replicate"
+msgstr "afrita"
+
+msgid "replication"
+msgstr "afrit"
+
+msgid "reply"
+msgstr "svara"
+
+msgid "report"
+msgstr "skýrsla"
+
+msgid "repository"
+msgstr "geymsla"
+
+msgid "request"
+msgstr "beiðni"
+
+msgid "require"
+msgstr "nauðsynlegt"
+
+msgid "requirement"
+msgstr "kröfur"
+
+msgid "reset"
+msgstr "endursetja"
+
+msgid "resize"
+msgstr "breyta stærð"
+
+msgid "resolution"
+msgstr "upplausn"
+
+msgid "resolver"
+msgstr "leyst"
+
+msgid "resource"
+msgstr "tilfang"
+
+msgid "response"
+msgstr "svar"
+
+msgid "restart"
+msgstr "endurræsa"
+
+msgid "restore"
+msgstr "bjarga"
+
+msgid "restrict"
+msgstr "takmarka"
+
+msgid "restriction"
+msgstr "takmörkun"
+
+msgid "result"
+msgstr "niðurstaða"
+
+msgid "resume"
+msgstr "halda áfram"
+
+msgid "retrieve"
+msgstr "sækja"
+
+msgid "retry"
+msgstr "reyna aftur"
+
+msgid "return"
+msgstr "til baka"
+
+msgid "reverse"
+msgstr "snúa við"
+
+msgid "revert"
+msgstr "afmá"
+
+msgid "revocation"
+msgstr "afturköllun"
+
+msgid "revoke"
+msgstr "afturkalla"
+
+msgid "root"
+msgstr "rót"
+
+msgid "rotate"
+msgstr "snúa"
+
+msgid "route"
+msgstr "leið"
+
+msgid "router"
+msgstr "beinir"
+
+msgid "routine"
+msgstr "beining"
+
+msgid "row"
+msgstr "röð"
+
+msgid "rule"
+msgstr "regla"
+
+msgid "run"
+msgstr "keyra"
+
+msgid "runtime"
+msgstr "keyrsluumhverfi"
+
+msgid "safe"
+msgstr "vista"
+
+msgid "sample"
+msgstr "dæmi"
+
+msgid "sans"
+msgstr "krókalaust letur"
+
+msgid "save"
+msgstr "vista"
+
+msgid "scalable"
+msgstr "stækkanlegt"
+
+msgid "scale"
+msgstr "skali"
+
+msgid "scan"
+msgstr "leita"
+
+msgid "scanner"
+msgstr "skanni"
+
+msgid "schedule"
+msgstr "áætlun"
+
+msgid "scheme"
+msgstr "skema"
+
+msgid "scratch"
+msgstr "klóra"
+
+msgid "screen"
+msgstr "skjár"
+
+msgid "screw"
+msgstr "skrúfa"
+
+msgid "script"
+msgstr "skrifta"
+
+# من لف الشئ يلفه
+# فتقول:
+# لف ﻷعلى=scroll up ، وهكذا
+msgid "scroll"
+msgstr "skruna"
+
+msgid "search"
+msgstr "leita"
+
+msgid "section"
+msgstr "val"
+
+msgid "sector"
+msgstr "svæði"
+
+msgid "secure"
+msgstr "öruggt"
+
+msgid "security"
+msgstr "öryggi"
+
+msgid "seek"
+msgstr "leita"
+
+msgid "segment"
+msgstr "hluti"
+
+msgid "segmentation"
+msgstr "skipting"
+
+msgid "select"
+msgstr "velja"
+
+msgid "selection"
+msgstr "val"
+
+msgid "semantic"
+msgstr "merkingarfræðilegur"
+
+msgid "send"
+msgstr "senda"
+
+msgid "sender"
+msgstr "sendandi"
+
+msgid "sensitive"
+msgstr "næmt"
+
+msgid "sensor"
+msgstr "skynjari"
+
+msgid "serif"
+msgstr "krókur"
+
+msgid "server"
+msgstr "netþjónn"
+
+msgid "session"
+msgstr "lota"
+
+msgid "set"
+msgstr "mengi"
+
+msgid "settings"
+msgstr "stillingar"
+
+msgid "setup"
+msgstr "uppsetning"
+
+msgid "shading"
+msgstr "skygging"
+
+msgid "shadow"
+msgstr "skuggi"
+
+msgid "shape"
+msgstr "lögun"
+
+msgid "share"
+msgstr "deila"
+
+msgid "sharp"
+msgstr "beittur"
+
+msgid "sheet"
+msgstr "blað"
+
+msgid "shell"
+msgstr "skel"
+
+msgid "shift"
+msgstr "skipti"
+
+msgid "shortcut"
+msgstr "flýtilykill"
+
+msgid "show"
+msgstr "sýna"
+
+msgid "shrink"
+msgstr "minnka"
+
+msgid "shut down"
+msgstr "ganga frá"
+
+msgid "side bar"
+msgstr "hliðslá"
+
+msgid "sign"
+msgstr "undirskrift"
+
+msgid "signal"
+msgstr "merki"
+
+msgid "signature"
+msgstr "undirskrift"
+
+msgid "site"
+msgstr "svæði"
+
+msgid "size"
+msgstr "stærð"
+
+msgid "skew"
+msgstr "skekkja"
+
+msgid "skip"
+msgstr "sleppa"
+
+msgid "slave"
+msgstr "vista"
+
+msgid "sleep"
+msgstr "svæfa"
+
+msgid "slide"
+msgstr "skyggna"
+
+msgid "slot"
+msgstr "hólf"
+
+msgid "smart"
+msgstr "snjöll"
+
+msgid "smiley"
+msgstr "broskall"
+
+msgid "smooth"
+msgstr "slétta"
+
+msgid "socket"
+msgstr "sökkull"
+
+msgid "software"
+msgstr "hugbúnaður"
+
+msgid "solid"
+msgstr "gegnheilt"
+
+msgid "sort"
+msgstr "raða"
+
+msgid "source"
+msgstr "kóði"
+
+msgid "space"
+msgstr "bil"
+
+msgid "spacing"
+msgstr "bil"
+
+msgid "spam"
+msgstr "ruslpóstur"
+
+msgid "span"
+msgstr "spanna"
+
+msgid "spawn"
+msgstr "búa til"
+
+msgid "specify"
+msgstr "tilgreina"
+
+msgid "speed"
+msgstr "hraði"
+
+msgid "spelling"
+msgstr "stafsetning"
+
+msgid "splash"
+msgstr "skvetta"
+
+msgid "split"
+msgstr "kljúfa"
+
+msgid "spool"
+msgstr "spóla"
+
+msgid "spread sheet"
+msgstr "töflureiknir"
+
+msgid "stack"
+msgstr "stafla"
+
+msgid "stand alone"
+msgstr "standa einn"
+
+msgid "standard"
+msgstr "venjuleg"
+
+msgid "start"
+msgstr "byrjar"
+
+msgid "state"
+msgstr "fylki"
+
+msgid "static"
+msgstr "föst"
+
+msgid "statistics"
+msgstr "tölfræði"
+
+msgid "step"
+msgstr "skref"
+
+msgid "stop"
+msgstr "hætta"
+
+msgid "storage"
+msgstr "geymsla"
+
+msgid "store"
+msgstr "geymsla"
+
+msgid "stream"
+msgstr "straumur"
+
+msgid "stretch"
+msgstr "teygt"
+
+msgid "strict"
+msgstr "fast"
+
+msgid "string"
+msgstr "strengur"
+
+msgid "strip"
+msgstr "hreinsa"
+
+msgid "stroke"
+msgstr "strik"
+
+msgid "structure"
+msgstr "samsetning"
+
+msgid "stub"
+msgstr "stubbur"
+
+msgid "style"
+msgstr "stíll"
+
+msgid "sub directory"
+msgstr "undirmappa"
+
+msgid "sub folder"
+msgstr "undirmappa"
+
+msgid "submission"
+msgstr "senda"
+
+msgid "submit"
+msgstr "staðfesta"
+
+msgid "subscribe"
+msgstr "panta áskrift"
+
+msgid "subscription"
+msgstr "áskrift"
+
+msgid "subtract"
+msgstr "draga frá"
+
+msgid "succeed"
+msgstr "tókst"
+
+msgid "suggest"
+msgstr "leggja til"
+
+msgid "suggestion"
+msgstr "uppástunga"
+
+msgid "sum (noun)"
+msgstr "summa"
+
+msgid "sum (verb)"
+msgstr "summa"
+
+msgid "summary"
+msgstr "lýsing"
+
+msgid "support"
+msgstr "stuðningur"
+
+msgid "surface"
+msgstr "yfirborð"
+
+msgid "suspend"
+msgstr "svæfa"
+
+msgid "suspicious"
+msgstr "grunsamlegur"
+
+msgid "swap"
+msgstr "skipta"
+
+msgid "switch"
+msgstr "skipta"
+
+msgid "symbol"
+msgstr "tákn"
+
+msgid "synchronize"
+msgstr "samstilla"
+
+msgid "syntax"
+msgstr "notkun"
+
+msgid "system"
+msgstr "kerfi"
+
+msgid "tab"
+msgstr "dálkur"
+
+msgid "table"
+msgstr "tafla"
+
+msgid "tag"
+msgstr "flokkur"
+
+msgid "target"
+msgstr "mark"
+
+msgid "template"
+msgstr "sniðmát"
+
+msgid "temporary"
+msgstr "tímabundin"
+
+msgid "terminal"
+msgstr "þýðingar"
+
+msgid "test"
+msgstr "afgangur"
+
+msgid "text"
+msgstr "texti"
+
+msgid "texture"
+msgstr "áferð"
+
+msgid "theme"
+msgstr "þema"
+
+msgid "thread"
+msgstr "þráður"
+
+msgid "thumbnail"
+msgstr "smámynd"
+
+msgid "tick"
+msgstr "smella"
+
+msgid "tile"
+msgstr "tígla"
+
+msgid "time"
+msgstr "tími"
+
+msgid "time out"
+msgstr "tímamörk"
+
+msgid "tip"
+msgstr "ábending"
+
+msgid "title"
+msgstr "titli"
+
+msgid "toggle"
+msgstr "víxla"
+
+msgid "token"
+msgstr "tákn"
+
+msgid "tool"
+msgstr "verkfæri"
+
+msgid "tool bar"
+msgstr "tækjaslá"
+
+msgid "tool box"
+msgstr "verkfærakassi"
+
+msgid "topic"
+msgstr "efni"
+
+msgid "trace"
+msgstr "eiginleiki"
+
+msgid "track"
+msgstr "lag"
+
+msgid "traffic"
+msgstr "umferð"
+
+msgid "transfer"
+msgstr "flutningur"
+
+msgid "transform"
+msgstr "ummynda"
+
+msgid "transformation"
+msgstr "umbreyting"
+
+msgid "trap"
+msgstr "hleri"
+
+msgid "trash"
+msgstr "ruslakarfa"
+
+msgid "trigger"
+msgstr "vekjari"
+
+msgid "trouble shoot"
+msgstr "úrræðaleit"
+
+msgid "tune"
+msgstr "tón"
+
+msgid "tweak"
+msgstr "ótraust"
+
+msgid "type (noun)"
+msgstr "tegund"
+
+msgid "type (verb)"
+msgstr "tegund"
+
+msgid "type face"
+msgstr "leturgerð"
+
+msgid "unavailable"
+msgstr "ekki tiltækt"
+
+msgid "undelete"
+msgstr "afturkalla eyðingu"
+
+msgid "under line"
+msgstr "undirstrikað"
+
+msgid "undo"
+msgstr "hætta við"
+
+msgid "uninstall"
+msgstr "taka út"
+
+msgid "unit"
+msgstr "eining"
+
+msgid "unknown"
+msgstr "óþekkt"
+
+msgid "unload"
+msgstr "afhlaða"
+
+msgid "named"
+msgstr "nefnd"
+
+msgid "reachable"
+msgstr "ná til"
+
+msgid "readable"
+msgstr "lesanlegt"
+
+msgid "unspecified"
+msgstr "ótilgreint"
+
+msgid "unsubscribe"
+msgstr "afpanta áskrift að"
+
+msgid "unsupported"
+msgstr "óstudd"
+
+msgid "update"
+msgstr "uppfæra"
+
+msgid "upgrade"
+msgstr "uppfæra"
+
+msgid "upload"
+msgstr "senda"
+
+msgid "upper case"
+msgstr "hástafir"
+
+msgid "usage"
+msgstr "notkun"
+
+msgid "user"
+msgstr "notandi"
+
+msgid "user name"
+msgstr "notandanafn"
+
+msgid "utility"
+msgstr "hjálparforrit"
+
+msgid "valid"
+msgstr "gilt"
+
+msgid "validation"
+msgstr "prófun"
+
+msgid "validity"
+msgstr "sannreyna"
+
+msgid "value"
+msgstr "gildi"
+
+msgid "variable"
+msgstr "breyta"
+
+msgid "vector"
+msgstr "vigur"
+
+msgid "verbose"
+msgstr "langorður"
+
+msgid "verify"
+msgstr "staðfesti"
+
+msgid "version"
+msgstr "útgáfa"
+
+msgid "video"
+msgstr "myndefni"
+
+msgid "view"
+msgstr "skoða"
+
+msgid "viewer"
+msgstr "skoðari"
+
+msgid "virtual"
+msgstr "sýndar"
+
+msgid "virus"
+msgstr "vírus"
+
+msgid "visual"
+msgstr "myndrænt"
+
+msgid "volume"
+msgstr "hljóðstyrkur"
+
+msgid "wallpaper"
+msgstr "veggfóður"
+
+msgid "warn"
+msgstr "aðvörun"
+
+msgid "web"
+msgstr "vefur"
+
+msgid "web cam"
+msgstr "vefmyndavél"
+
+msgid "web master"
+msgstr "vefstjórnandi"
+
+msgid "web page"
+msgstr "vefsíða"
+
+msgid "widget"
+msgstr "nýtt"
+
+msgid "width"
+msgstr "breidd"
+
+msgid "wi fi"
+msgstr "hljómtæki"
+
+msgid "wild card"
+msgstr "algildisstafur"
+
+msgid "window"
+msgstr "gluggi"
+
+msgid "wizard"
+msgstr "leiðarvísir"
+
+msgid "word processor"
+msgstr "ritvinnsluforrit"
+
+msgid "work around"
+msgstr "í kringum"
+
+msgid "work group"
+msgstr "vinnuhópur"
+
+msgid "work station"
+msgstr "vinnustöð"
+
+msgid "wrap"
+msgstr "textaskrið"
+
+msgid "yes"
+msgstr "já"
+
+msgid "zone"
+msgstr "svæði"
+
+msgid "zoom"
+msgstr "stækka"
