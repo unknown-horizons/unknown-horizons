@@ -10,7 +10,7 @@ name:
   TIER.SAILORS: _ Lumberjack Tent
   TIER.PIONEERS: _ Lumberjack Hut
 baseclass: production.ProductionBuilding
-radius: 2
+radius: 3
 cost: 5
 cost_inactive: 0
 size_x: 2
