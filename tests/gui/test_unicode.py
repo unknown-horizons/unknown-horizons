@@ -37,7 +37,10 @@ def setup():
 
 def teardown():
 	global USER_DIR
-	shutil.rmtree(USER_DIR)
+	try:
+		shutil.rmtree(USER_DIR)
+	except:
+		pass
 	USER_DIR = None
 
 
