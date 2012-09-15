@@ -23,8 +23,11 @@ from fife import fife
 import code
 import sys
 import datetime
+import shutil
 import string
+import os
 import os.path
+import tempfile
 
 import horizons.globals
 import horizons.main
@@ -86,19 +89,18 @@ class MainListener(fife.IKeyListener, fife.ConsoleExecuter, LivingObject):
 		elif action == _Actions.HELP:
 			self.gui.on_help()
 		elif action == _Actions.SCREENSHOT:
-			screenshotfilename = os.path.join(PATHS.SCREENSHOT_DIR,
-			            string.replace(datetime.datetime.now().isoformat('.') + ".png", ":", "-"))
+			# save the screenshot into a temporary file because fife doesn't support unicode paths
+			temp_handle, temp_path = tempfile.mkstemp()
+			os.close(temp_handle)
+			horizons.globals.fife.engine.getRenderBackend().captureScreen(temp_path)
 
-			''' the filename is changed into a string, cause it looks like FIFE can't handle unicode strings yet
-			it's only a workaround to prevent a crash ...
-			this should be changed later to unicode(string.replace(datetime... '''
+			# move the screenshot into the final location
+			final_path = os.path.join(PATHS.SCREENSHOT_DIR, string.replace(datetime.datetime.now().isoformat('.') + ".png", ":", "-"))
+			shutil.move(temp_path, final_path)
 
-			screenshotfilename = str(screenshotfilename)
-			horizons.globals.fife.engine.getRenderBackend().captureScreen(screenshotfilename)
+			# ingame message if there is a session
 			if self.gui.session is not None:
-				# ingame message if there is a session
-				self.gui.session.ingame_gui.message_widget.add(point=None, string_id='SCREENSHOT',
-																													message_dict={'file': screenshotfilename})
+				self.gui.session.ingame_gui.message_widget.add(point=None, string_id='SCREENSHOT', message_dict={'file': final_path})
 		elif action == _Actions.QUICKLOAD:
 			from horizons.main import _load_last_quicksave
 			_load_last_quicksave(self.gui.session)
