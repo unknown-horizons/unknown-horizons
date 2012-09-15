@@ -32,7 +32,7 @@ USER_DIR = None
 
 def setup():
 	global USER_DIR
-	USER_DIR = tempfile.mkdtemp(suffix=u'H߀ｒìｚｏԉｓ').encode(sys.getfilesystemencoding())
+	USER_DIR = tempfile.mkdtemp(suffix=u'H߀ｒìｚｏԉｓ')
 
 
 def teardown():

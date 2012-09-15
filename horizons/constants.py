@@ -419,26 +419,21 @@ class LAYERS:
 
 ## PATHS
 # workaround, so it can be used to create paths within PATHS
-
 if 'UH_USER_DIR' in os.environ:
 	# Prefer the value from the environment. Used to override user dir when
 	# running GUI tests.
-	_user_dir = os.environ['UH_USER_DIR']
+	_user_dir = unicode(os.environ['UH_USER_DIR'], encoding='utf-8')
 elif platform.system() != "Windows":
 	_user_dir = os.path.join(os.path.expanduser('~'), '.unknown-horizons')
 else:
-	dll = ctypes.windll.shell32
-	buf = ctypes.create_string_buffer(300)
-	dll.SHGetSpecialFolderPathA(None, buf, 0x0005, False) # get the My Documents folder
+	import ctypes.wintypes
+	buf = ctypes.create_unicode_buffer(ctypes.wintypes.MAX_PATH)
+	# get the My Documents folder into buf.value
+	ctypes.windll.shell32.SHGetFolderPathW(0, 5, 0, 0, buf)
 	my_games = os.path.join(buf.value, 'My Games')
 	if not os.path.exists(my_games):
 		os.makedirs(my_games)
 	_user_dir = os.path.join(my_games, 'unknown-horizons')
-try:
-	_user_dir = unicode(_user_dir, locale.getpreferredencoding()) # this makes umlaut-paths work on win
-except Exception as inst:
-	_user_dir = unicode(_user_dir, sys.getfilesystemencoding()) # locale.getpreferredencoding() does not work @ mac
-
 
 
 class GFX:
