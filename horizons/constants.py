@@ -473,6 +473,14 @@ class PATHS:
 	DB_FILES = tuple(os.path.join("content", i) for i in
 	                 ("game.sql", "balance.sql", "names.sql"))
 
+	ATLAS_SOURCE_DIRECTORIES = tuple(os.path.join("content/gfx", i) for i in
+									("/base",
+	 								"/buildings",
+	 								"/buildings_preview",
+	 								"/misc",
+	 								"/terrain",
+	 								"/units"))
+
 	if GFX.USE_ATLASES:
 		DB_FILES = DB_FILES + (os.path.join("content", "atlas.sql"), )
 

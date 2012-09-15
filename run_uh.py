@@ -187,6 +187,8 @@ def get_option_parser():
 	             help="Join first multiplayer game.")
 	dev_group.add_option("--interactive-shell", action="store_true", dest="interactive_shell",
 	             help="Starts an IPython kernel. Connect to the shell with: ipython console --existing")
+	dev_group.add_option("--make-sure-atlases-work", action="store_true", dest="enable_atlases",
+		help="Use atlas files and regenerate/enable them if necessary.")
 	p.add_option_group(dev_group)
 
 	return p

@@ -55,6 +55,8 @@ from horizons.util.python import parse_port
 from horizons.util.python.callback import Callback
 from horizons.util.uhdbaccessor import UhDbAccessor
 
+import foob
+
 # private module pointers of this module
 class Modules(object):
 	gui = None
@@ -80,6 +82,11 @@ def start(_command_line_arguments):
 
 	# handle commandline globals
 	debug = command_line_arguments.debug
+
+	if command_line_arguments.enable_atlases:
+		# check if atlas files are outdated
+		if foob.atlases_need_rebuild():
+			print "Atlases have to be rebuild."
 
 	if command_line_arguments.restore_settings:
 		# just delete the file, Settings ctor will create a new one
