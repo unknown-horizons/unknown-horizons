@@ -20,7 +20,7 @@ components:
       1:
         produces:
         - [RES.TREES, 1]
-        time: 90
+        time: 120
       17:
         changes_animation: false
         produces:
