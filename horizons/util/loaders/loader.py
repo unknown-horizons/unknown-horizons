@@ -102,4 +102,4 @@ class GeneralLoader(object):
 		"""
 		junk = set(['.DS_Store', '.svn'])
 		return [d for d in os.listdir(directory)
-		          if not d in junk]
+		          if d not in junk]

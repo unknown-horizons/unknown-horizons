@@ -180,10 +180,16 @@ class BUILDINGS:
 		# think: animation contains key, if there is a path at offset value
 		# you need to sort this before iterating via sorted, since order is important here
 		action_offset_dict = {
-		  'a' : (0, -1),
-		  'b' : (1, 0),
-		  'c' : (0, 1),
-		  'd' : (-1, 0)
+		# Direct connections
+		  'a' : ( 0, -1),
+		  'b' : (+1,  0),
+		  'c' : ( 0, +1),
+		  'd' : (-1,  0),
+		# Remote connections
+		  'e' : (+1, -1),
+		  'f' : (+1, +1),
+		  'g' : (-1, +1),
+		  'h' : (-1, -1),
 		}
 
 	class BUILD:
