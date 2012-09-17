@@ -31,6 +31,7 @@ import horizons.globals
 
 from horizons.constants import TIER, RES
 from horizons.component.storagecomponent import StorageComponent
+from horizons.gui.mousetools.buildingtool import BuildingTool
 from horizons.gui.util import load_uh_widget, get_res_icon_path, create_resource_selection_dialog
 from horizons.util.pychanchildfinder import PychanChildFinder
 from horizons.util.python.callback import Callback
@@ -423,6 +424,9 @@ class ResourceOverviewBar(object):
 
 	def _show_resource_selection_dialog(self, slot_num):
 		"""Shows gui for selecting a resource for slot slot_num"""
+		if isinstance(self.session.cursor, BuildingTool):
+			return
+
 		self._hide_resource_selection_dialog()
 		inv = self._get_current_inventory()
 		if inv is None:
