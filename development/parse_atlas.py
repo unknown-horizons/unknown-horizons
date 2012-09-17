@@ -39,7 +39,8 @@ from run_uh import init_environment
 init_environment()
 
 import horizons.globals
-from horizons.util import ActionSetLoader, TileSetLoader
+from horizons.util.loaders.actionsetloader import ActionSetLoader
+from horizons.util.loaders.tilesetloader import TileSetLoader
 
 # Dummy fife object for
 class DummyFife:
