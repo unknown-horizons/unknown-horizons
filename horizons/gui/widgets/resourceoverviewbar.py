@@ -458,17 +458,14 @@ class ResourceOverviewBar(object):
 		# the button should be disabled, but the first case below is shown because
 		# we can't disable it
 		if self._custom_default_resources is None:
-			reset_default_btn.text = _("Reset to default")
 			reset_default_btn.helptext = _("Reset this configuration to the factory default.")
 			reset_default_btn.capture(Callback(self._drop_settlement_resource_configuration))
 
 		elif self._custom_default_resources != self._get_current_resources():
-			reset_default_btn.text = _("Reset to default")
 			reset_default_btn.helptext = _("Reset this settlement's displayed resources to the default configuration you have saved.")
 			reset_default_btn.capture(Callback(self._drop_settlement_resource_configuration))
 
 		else:
-			reset_default_btn.text = _("Reset to factory")
 			reset_default_btn.helptext = _("Reset the default configuration (which you see here) to the factory default for all settlements.")
 			cb = Callback.ChainedCallbacks(
 			  self._drop_settlement_resource_configuration, # remove specific config

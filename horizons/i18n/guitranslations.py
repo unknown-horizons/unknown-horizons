@@ -442,10 +442,6 @@ def set_translations():
 		},
 
 	"resbar_resource_selection.xml" : {
-		# (text of widget: make_default_btn)
-		("make_default_btn"            , "text"    ): _("Save as default"),
-		# (text of widget: reset_default_btn)
-		("reset_default_btn"           , "text"    ): _("Restore default"),
 		# (text of widget: headline) Please keep the translation similarly short and concise, else the tooltip is not well understood by players.
 		("headline"                    , "text"    ): _("Select resource:"),
 		# (helptext of widget: make_default_btn)
