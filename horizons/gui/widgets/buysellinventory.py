@@ -46,12 +46,17 @@ class BuySellInventory(Inventory):
 		return super(BuySellInventory, self).init_needed(inventory) or \
 		       self._limits != limits or self._selling != selling
 
-	def draw(self, vbox, current_hbox, index=0):
+	def _draw(self, vbox, current_hbox, index=0):
 		"""Draws the inventory. """
 		for resid, limit in sorted(self._limits.iteritems()):
-			amount = max(0, self._inventory[resid] - limit) if self._selling else max(0, limit - self._inventory[resid])
+			if self._selling:
+				amount = max(0, self._inventory[resid] - limit)
+			else:
+				amount = max(0, limit - self._inventory[resid])
+				
 			# check if this res should be displayed
-			button = ImageFillStatusButton.init_for_res(self.db, resid, amount, filled=0, uncached=self.uncached)
+			button = ImageFillStatusButton.init_for_res(self.db, resid, amount,
+			                                            filled=0, uncached=self.uncached)
 			button.button.name = "buy_sell_inventory_%s_entry_%s" % (self._selling, index) # for tests
 			current_hbox.addChild(button)
 
@@ -61,7 +66,7 @@ class BuySellInventory(Inventory):
 			index += 1
 		vbox.addChild(current_hbox)
 		self.addChild(vbox)
-		
+
 		label = pychan.widgets.Label()
 		#xgettext:python-format
 		label.text = _('Limit: {amount}t per slot').format(amount=self._inventory.get_limit(None))

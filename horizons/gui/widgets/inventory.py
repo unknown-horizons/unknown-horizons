@@ -68,22 +68,19 @@ class Inventory(pychan.widgets.Container):
 		self.update()
 
 	def update(self):
-		assert self._inited
-		self._draw()
-
-	def _draw(self):
-		"""Draws the inventory."""
 		self.removeAllChildren()
 		vbox = pychan.widgets.VBox(padding=0)
 		vbox.width = self.width
 		current_hbox = pychan.widgets.HBox(padding=0)
 
-		self.draw(vbox, current_hbox)
+		# draw the content
+		self._draw(vbox, current_hbox)
 
 		self.adaptLayout()
 		self.stylize('menu_black')
 
-	def draw(self, vbox, current_hbox, index=0):
+	def _draw(self, vbox, current_hbox, index=0):
+		"""Draws the inventory."""
 		# add res to res order in case there are new ones
 		# (never remove old ones for consistent positioning)
 		new_res = sorted( resid for resid in self._inventory.iterslots() if resid not in self._res_order )
