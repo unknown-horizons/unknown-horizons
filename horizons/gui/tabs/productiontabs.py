@@ -19,9 +19,11 @@
 # Free Software Foundation, Inc.,
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
+
 import operator
 import weakref
-from fife.extensions import pychan
+
+from fife.extensions.pychan.widgets import Icon, Label
 
 from horizons.command.production import ToggleActive
 from horizons.command.building import Tear
@@ -73,7 +75,8 @@ class ProductionOverviewTab(OverviewTab):
 		# create a container for each production
 		# sort by production line id to have a consistent (basically arbitrary) order
 		for production in self.get_displayed_productions():
-			# we need to be notified of small production changes, that aren't passed through the instance
+			# we need to be notified of small production changes
+			# that aren't passed through the instance
 			production.add_change_listener(self._schedule_refresh, no_duplicates=True)
 
 			gui = load_uh_widget(self.production_line_gui_xml)
@@ -91,7 +94,7 @@ class ProductionOverviewTab(OverviewTab):
 				toggle_icon.name = "toggle_active"
 
 				if production.get_state() == PRODUCTION.STATES.producing:
-					bg = pychan.widgets.Icon(image=self.__class__.BUTTON_BACKGROUND)
+					bg = Icon(image=self.__class__.BUTTON_BACKGROUND)
 					bg.position = toggle_icon.position
 					container.addChild(bg)
 					container.removeChild(toggle_icon) # fix z-ordering
@@ -120,11 +123,11 @@ class ProductionOverviewTab(OverviewTab):
 	def _set_resource_amounts(self, container, production):
 		for res, amount in production.get_consumed_resources().iteritems():
 			# consumed resources are negative!
-			label = pychan.widgets.Label(text=unicode(-amount), margins=(0, 15))
+			label = Label(text=unicode(-amount), margins=(0, 15))
 			container.findChild(name='input_box').addChild(label)
 
 		for res, amount in production.get_produced_resources().iteritems():
-			label = pychan.widgets.Label(text=unicode(amount).rjust(2), margins=(0, 15))
+			label = Label(text=unicode(amount).rjust(2), margins=(0, 15))
 			container.findChild(name='output_box').addChild(label)
 
 	def destruct_building(self):
@@ -142,7 +145,7 @@ class ProductionOverviewTab(OverviewTab):
 		for res in resources:
 			inventory = self.instance.get_component(StorageComponent).inventory
 			filled = calculate_position(inventory[res])
-			marker_level = (calculate_position(-resources[res]) if marker else 0)
+			marker_level = calculate_position(-resources[res]) if marker else 0
 			image_button = ImageFillStatusButton.init_for_res(self.instance.session.db, res,
 					inventory[res], filled, marker=marker_level, use_inactive_icon=False, uncached=True)
 			container.addChild(image_button)
