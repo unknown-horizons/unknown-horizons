@@ -44,19 +44,22 @@ class Inventory(pychan.widgets.Container):
 		# this inits the gui part of the inventory. @see init().
 		super(Inventory, self).__init__(**kwargs)
 		self._inventory = None
-		self.__inited = False
+		self._inited = False
 		self.uncached = uncached
 		self.display_legend = display_legend
 		self.items_per_line = items_per_line or 1 # negative values are fine, 0 is not
+
+	def init_needed(self, inventory):
+		return not self._inited or self._inventory is not inventory
 
 	def init(self, db, inventory, ordinal=None):
 		"""
 		@param ordinal: {res: (min, max)} Display ordinal scale with these boundaries instead of numbers for a particular resource. Currently implemented via ImageFillStatusButton.
 		"""
 		# check if we must init everything anew
-		if not self.__inited or self._inventory is not inventory:
+		if self.init_needed(inventory):
 			# this inits the logic of the inventory. @see __init__().
-			self.__inited = True
+			self._inited = True
 			self.ordinal = ordinal
 			self.db = db
 			self._inventory = inventory
@@ -65,17 +68,19 @@ class Inventory(pychan.widgets.Container):
 		self.update()
 
 	def update(self):
-		assert self.__inited
-		self._draw()
-
-	def _draw(self):
-		"""Draws the inventory."""
 		self.removeAllChildren()
 		vbox = pychan.widgets.VBox(padding=0)
 		vbox.width = self.width
 		current_hbox = pychan.widgets.HBox(padding=0)
-		index = 0
 
+		# draw the content
+		self._draw(vbox, current_hbox)
+
+		self.adaptLayout()
+		self.stylize('menu_black')
+
+	def _draw(self, vbox, current_hbox, index=0):
+		"""Draws the inventory."""
 		# add res to res order in case there are new ones
 		# (never remove old ones for consistent positioning)
 		new_res = sorted( resid for resid in self._inventory.iterslots() if resid not in self._res_order )
@@ -86,7 +91,7 @@ class Inventory(pychan.widgets.Container):
 			while len(self._res_order) + len(new_res) > self._inventory.slotnum:
 				for i in xrange( self._inventory.slotnum ):
 					# search empty slot
-					if self._inventory[ self._res_order[i] ] == 0:
+					if not self._inventory[self._res_order[i]]:
 						# insert new res here
 						self._res_order[i] = new_res.pop(0)
 						if not new_res:
@@ -133,7 +138,7 @@ class Inventory(pychan.widgets.Container):
 		if isinstance(self._inventory, TotalStorage):
 			# if it's full, the additional slots have to be marked as unusable (#1686)
 			# check for any res, the res type doesn't matter here
-			if self._inventory.get_free_space_for(0) == 0:
+			if not self._inventory.get_free_space_for(0):
 				for i in xrange(index, self.items_per_line):
 					button = pychan.widgets.Icon(image=self.__class__.UNUSABLE_SLOT_IMAGE)
 					current_hbox.addChild(button)
@@ -155,8 +160,6 @@ class Inventory(pychan.widgets.Container):
 				label.position = (20, 203)
 				self.__icon.position = (0, 203)
 				self.addChildren(label, self.__icon)
-		self.adaptLayout()
-		self.stylize('menu_black')
 
 	def apply_to_buttons(self, action, filt=None):
 		"""Applies action to all buttons shown in inventory
