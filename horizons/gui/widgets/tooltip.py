@@ -114,7 +114,7 @@ class _Tooltip(object):
 		top_x, top_y = top_image.position
 		top_y += self.SIZE_BG_TOP
 		for i in xrange(0, line_count):
-			middle_image = Icon(IMAGE=self.MIDDLE_IMAGE)
+			middle_image = Icon(image=self.MIDDLE_IMAGE)
 			middle_image.position = (top_x, top_y + self.LINE_HEIGHT * i)
 			self.gui.addChild(middle_image)
 		bottom_image = Icon(image=self.BOTTOM_IMAGE)
