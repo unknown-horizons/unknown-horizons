@@ -166,6 +166,17 @@ class MultiplayerMenu(object):
 		self.__leave_lobby()
 		self.show_popup(_("Kicked"), _("You have been kicked from the game by creator"))
 
+	def _display_game_name(self, game):
+		same_version = game.get_version() == NetworkInterface().get_clientversion()
+		template = u"{password}{gamename}: {name} ({players}, {limit}){version}"
+		return template.format(
+			password="(Password!)" if game.get_password() else "",
+			name=game.get_map_name(),
+			gamename=game.get_name(),
+			players=game.get_player_count(),
+			limit=game.get_player_limit(),
+			version=u" " + _("Version differs!") if not same_version else u"")
+
 	def __refresh(self, play_sound=False):
 		"""Refresh list of games.
 		Only possible in multiplayer main menu state.
@@ -173,20 +184,14 @@ class MultiplayerMenu(object):
 		@return bool, whether refresh worked"""
 		if play_sound:
 			AmbientSoundComponent.play_special('refresh')
-		self.games = NetworkInterface().get_active_games(self.current.findChild(name='showonlyownversion').marked)
+		only_this_version_allowed = self.current.findChild(name='showonlyownversion').marked
+		self.games = NetworkInterface().get_active_games(only_this_version_allowed)
 		if self.games is None:
 			return False
 
-		self.current.distributeInitialData(
-		  {'gamelist' : map(lambda x: u"{password}{gamename}: {name} ({players}, {limit}){version}".format(
-														password = "(Password!)" if x.get_password() else "",
-		                        name=x.get_map_name(),
-		                        gamename=x.get_name(),
-		                        players=x.get_player_count(),
-		                        limit=x.get_player_limit(),
-		                        version=u" " + _("Version differs!") if x.get_version() != NetworkInterface().get_clientversion() else u""),
-		                    self.games)})
-		self.current.distributeData({'gamelist' : 0}) # select first map
+		gamelist = [self._display_game_name(g) for g in self.games]
+		self.current.distributeInitialData({'gamelist': gamelist})
+		self.current.distributeData({'gamelist': 0}) # select first map
 		self.__update_game_details()
 		return True
 
