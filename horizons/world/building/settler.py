@@ -102,7 +102,7 @@ class Settler(BuildableRect, BuildingResourceHandler, BasicBuilding):
 		    db("SELECT inhabitants, last_tax_payed FROM settler WHERE rowid=?", worldid)[0]
 		remaining_ticks = \
 		    db("SELECT ticks FROM remaining_ticks_of_month WHERE rowid=?", worldid)[0][0]
-		self.__init(loading = True, last_tax_payed = last_tax_payed)
+		self.__init(loading=True, last_tax_payed=last_tax_payed)
 		self._load_upgrade_data(db)
 		SettlerUpdate.broadcast(self, self.level, self.level)
 		self.run(remaining_ticks)
