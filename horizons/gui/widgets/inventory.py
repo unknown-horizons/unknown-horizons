@@ -19,14 +19,13 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-from fife.extensions import pychan
-
+from fife.extensions.pychan.widgets import Container, HBox, Icon, Label, VBox
 from fife.extensions.pychan.widgets.common import BoolAttr, IntAttr
 
 from horizons.gui.widgets.imagefillstatusbutton import ImageFillStatusButton
 from horizons.world.storage import TotalStorage, PositiveSizedSlotStorage, PositiveTotalNumSlotsStorage
 
-class Inventory(pychan.widgets.Container):
+class Inventory(Container):
 	"""The inventory widget displays information about the goods in
 	a Storage. It uses ImageFillStatusButtons to display icons and
 	a fill bar for these resources.
@@ -36,7 +35,9 @@ class Inventory(pychan.widgets.Container):
 
 	XML use: <Inventory />, can take all parameters of a Container.
 	"""
-	ATTRIBUTES = pychan.widgets.Container.ATTRIBUTES + [BoolAttr('uncached'), BoolAttr('display_legend'), IntAttr("items_per_line")]
+	ATTRIBUTES = Container.ATTRIBUTES + [BoolAttr('uncached'),
+	                                     BoolAttr('display_legend'),
+	                                     IntAttr("items_per_line")]
 	# uncached: required when resource icons should appear multiple times at any given moment
 	# on the screen. this is usually not the case with single inventories, but e.g. for trading.
 	# display_legend: whether to display a string explanation about slot limits
@@ -67,14 +68,14 @@ class Inventory(pychan.widgets.Container):
 			self.db = db
 			self._inventory = inventory
 			self._res_order = sorted(self._inventory.iterslots())
-			self.__icon = pychan.widgets.Icon(image="content/gui/icons/ship/civil_16.png")
+			self.__icon = Icon(image="content/gui/icons/ship/civil_16.png")
 		self.update()
 
 	def update(self):
 		self.removeAllChildren()
-		vbox = pychan.widgets.VBox(padding=0)
+		vbox = VBox(padding=0)
 		vbox.width = self.width
-		current_hbox = pychan.widgets.HBox(padding=0)
+		current_hbox = HBox(padding=0)
 
 		# draw the content
 		self._draw(vbox, current_hbox)
@@ -126,7 +127,7 @@ class Inventory(pychan.widgets.Container):
 
 			if index % self.items_per_line == self.items_per_line - 1:
 				vbox.addChild(current_hbox)
-				current_hbox = pychan.widgets.HBox(padding=0)
+				current_hbox = HBox(padding=0)
 			index += 1
 		if index <= self.items_per_line: # Hide/Remove second line
 			icons = self.parent.findChildren(name='slot')
@@ -143,7 +144,7 @@ class Inventory(pychan.widgets.Container):
 			# check for any res, the res type doesn't matter here
 			if not self._inventory.get_free_space_for(0):
 				for i in xrange(index, self.items_per_line):
-					button = pychan.widgets.Icon(image=self.__class__.UNUSABLE_SLOT_IMAGE)
+					button = Icon(image=self.__class__.UNUSABLE_SLOT_IMAGE)
 					current_hbox.addChild(button)
 
 
@@ -151,13 +152,13 @@ class Inventory(pychan.widgets.Container):
 			if isinstance(self._inventory, TotalStorage):
 				# Add total storage indicator
 				sum_stored_res = self._inventory.get_sum_of_stored_resources()
-				label = pychan.widgets.Label()
+				label = Label()
 				label.text = unicode(sum_stored_res) + u"/" + unicode(self._inventory.get_limit(None))
 				label.position = (150, 53)
 				self.__icon.position = (130, 53)
 				self.addChildren(label, self.__icon)
 			elif isinstance(self._inventory, PositiveSizedSlotStorage):
-				label = pychan.widgets.Label()
+				label = Label()
 				#xgettext:python-format
 				label.text = _('Limit: {amount}t per slot').format(amount=self._inventory.get_limit(None))
 				label.position = (20, 203)
