@@ -46,9 +46,9 @@ class MultiplayerMenu(object):
 		"""Shows main multiplayer menu"""
 		if enet == None:
 			headline = _(u"Unable to find pyenet")
-			descr = _(u"The multiplayer feature requires the library \"pyenet\", which couldn't be found on your system.")
-			advice = _(u"Linux users: Try to install pyenet through your package manager.") + "\n" + \
-						 _(u"Windows users: There is currently no reasonable support for Windows.")
+			descr = _(u'The multiplayer feature requires the library "pyenet", '
+			          u"which could not be found on your system.")
+			advice = _(u"Linux users: Try to install pyenet through your package manager.")
 			self.show_error_popup(headline, descr, advice)
 			return
 
@@ -125,7 +125,8 @@ class MultiplayerMenu(object):
 		except Exception as err:
 			headline = _(u"Fatal Network Error")
 			descr = _(u"Could not connect to master server.")
-			advice = _(u"Please check your Internet connection. If it is fine, it means our master server is temporarily down.")
+			advice = _(u"Please check your Internet connection. If it is fine, "
+			           u"it means our master server is temporarily down.")
 			self.show_error_popup(headline, descr, advice, unicode(err))
 			return False
 		return True

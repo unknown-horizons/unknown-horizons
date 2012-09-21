@@ -77,7 +77,8 @@ def show_new_version_hint(gui, info):
 	"""
 	title = _(u"New version of Unknown Horizons")
 	#xgettext:python-format
-	text = _(u"There is a more recent release of Unknown Horizons ({new_version}) than the one you are currently using ({old_version}).").format(
+	text = _(u"There is a more recent release of Unknown Horizons ({new_version}) "
+	         u"than the one you are currently using ({old_version}).").format(
 	        new_version=info.version,
 	        old_version=VERSION.RELEASE_VERSION)
 
