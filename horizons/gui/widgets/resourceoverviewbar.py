@@ -554,6 +554,7 @@ class ResourceOverviewBar(object):
 
 	def _on_res_slot_click(self, widget, event):
 		"""Called when you click on a resource slot in the bar (not the selection dialog)"""
+		#TODO let KeyConfig handle this instead of hardcoding rmb
 		if event.getButton() == fife.MouseEvent.RIGHT:
 			self._set_resource_slot(widget.num, 0)
 

@@ -20,18 +20,20 @@
 # ###################################################
 
 from fife.extensions import pychan
-from fife.extensions.pychan.widgets.common import BoolAttr, IntAttr
 
 from horizons.gui.widgets.imagefillstatusbutton import ImageFillStatusButton
 from horizons.gui.widgets.inventory import Inventory
 
 class BuySellInventory(Inventory):
-	"""The buy/sell inventory widget is used to display a stock of items where the available resources are restricted.
-	It makes use of the ImageFillStatusButton to display the icons for resources and the fill bar.
-	It can be used like any other widget inside of xmls, but for full functionality the inventory
-	has to be manually set, or use the TabWidget, which will autoset it (was made to be done this way).
+	"""The buy/sell inventory widget displays an inventory of goods
+	where the available resources are restricted. It makes use of the
+	ImageFillStatusButton to display resource icons and the fill bar.
+	It can be used like any other widget in xml files, but for full
+	functionality the inventory has to be manually set, or use the
+	TabWidget, which will autoset it (was made to be done this way).
 
-	XML use: <BuysellInventory />, can take all the parameters that pychan.widgets.Container can."""
+	XML use: <BuySellInventory />, can take all parameters of an Inventory.
+	"""
 	def init(self, db, inventory, limits, selling):
 		if self.init_needed(inventory, limits, selling):
 			self._inited = True
@@ -53,7 +55,7 @@ class BuySellInventory(Inventory):
 				amount = max(0, self._inventory[resid] - limit)
 			else:
 				amount = max(0, limit - self._inventory[resid])
-				
+
 			# check if this res should be displayed
 			button = ImageFillStatusButton.init_for_res(self.db, resid, amount,
 			                                            filled=0, uncached=self.uncached)

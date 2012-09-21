@@ -27,12 +27,15 @@ from horizons.gui.widgets.imagefillstatusbutton import ImageFillStatusButton
 from horizons.world.storage import TotalStorage, PositiveSizedSlotStorage, PositiveTotalNumSlotsStorage
 
 class Inventory(pychan.widgets.Container):
-	"""The inventory widget is used to display a stock of items, namely a Storage class instance.
-	It makes use of the ImageFillStatusButton to display the icons for resources and the fill bar.
-	It can be used like any other widget inside of xmls, but for full functionality the inventory
-	has to be manually set, or use the TabWidget, which will autoset it (was made to be done this way).
+	"""The inventory widget displays information about the goods in
+	a Storage. It uses ImageFillStatusButtons to display icons and
+	a fill bar for these resources.
+	It can be used like any other widget in xml files, but for full
+	functionality the inventory has to be manually set, or use the
+	TabWidget, which will autoset it (was made to be done this way).
 
-	XML use: <Inventory />, can take all the parameters that pychan.widgets.Container can."""
+	XML use: <Inventory />, can take all parameters of a Container.
+	"""
 	ATTRIBUTES = pychan.widgets.Container.ATTRIBUTES + [BoolAttr('uncached'), BoolAttr('display_legend'), IntAttr("items_per_line")]
 	# uncached: required when resource icons should appear multiple times at any given moment
 	# on the screen. this is usually not the case with single inventories, but e.g. for trading.
