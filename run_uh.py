@@ -320,7 +320,9 @@ def setup_debugging(options):
 		else:
 			logfilename = os.path.join(PATHS.LOG_DIR, "unknown-horizons-%s.log" %
 			                           time.strftime("%Y-%m-%d_%H-%M-%S"))
-		print('Logging to %s' % logfilename.encode('utf-8', 'replace'))
+		print('Logging to {uh} and {fife}'.format(
+			uh=logfilename.encode('utf-8', 'replace'),
+			fife=os.path.join(os.getcwd(), 'fife.log')) )
 		# create logfile
 		logfile = open(logfilename, 'w')
 		# log there
