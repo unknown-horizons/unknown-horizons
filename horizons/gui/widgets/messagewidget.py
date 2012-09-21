@@ -23,7 +23,7 @@ import logging
 import textwrap
 import itertools
 
-from fife.extensions import pychan
+from fife.extensions.pychan.widgets import Icon, ImageButton
 
 import horizons.globals
 
@@ -155,7 +155,7 @@ class MessageWidget(LivingObject):
 		button_space.removeAllChildren() # Remove old buttons
 		for index, message in enumerate(self.active_messages):
 			if (self.item + index) < len(self.active_messages):
-				button = pychan.widgets.ImageButton()
+				button = ImageButton()
 				button.name = str(index)
 				button.up_image = message.up_image
 				button.hover_image = message.hover_image
@@ -205,7 +205,7 @@ class MessageWidget(LivingObject):
 
 		line_count = len(text.splitlines()) - 1
 		for i in xrange(line_count * self.LINE_HEIGHT // self.IMG_HEIGHT):
-			middle_icon = pychan.Icon(image=self.BG_IMAGE_MIDDLE)
+			middle_icon = Icon(image=self.BG_IMAGE_MIDDLE)
 			self.bg_middle.addChild(middle_icon)
 
 		message_container = self.text_widget.findChild(name='message')

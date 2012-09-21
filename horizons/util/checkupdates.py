@@ -23,7 +23,7 @@ import webbrowser
 import urllib
 import urllib2
 
-from fife.extensions import pychan
+from fife.extensions.pychan.widgets import Button
 
 from horizons.constants import NETWORK, VERSION
 from horizons.gui.widgets.imagebutton import OkButton
@@ -81,7 +81,7 @@ def show_new_version_hint(gui, info):
 	        new_version=info.version,
 	        old_version=VERSION.RELEASE_VERSION)
 
-	dl_btn = pychan.widgets.Button(name="dl", text=_("Click to download"))
+	dl_btn = Button(name="dl", text=_("Click to download"))
 	dl_btn.position = (48, 138) # i've tried, this button cannot be placed in a sane way
 	def do_dl():
 		webbrowser.open(info.link)

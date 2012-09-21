@@ -23,7 +23,7 @@ import hashlib
 import logging
 import textwrap
 
-from fife.extensions import pychan
+from fife.extensions.pychan.widgets import HBox, Icon, Label
 
 from horizons.gui.modules import PlayerDataSelection
 from horizons.gui.widgets.imagebutton import OkButton, CancelButton
@@ -221,8 +221,8 @@ class MultiplayerMenu(object):
 			if SavegameAccessor.get_hash(path) != game.load:
 				text = ""
 				if btn is None:
-					btn = pychan.widgets.Button(name=btn_name,
-					                            text=_("This savegame is missing (click here)"))
+					btn = Button(name=btn_name)
+					btn.text = _("This savegame is missing (click here)")
 					last_elem = vbox_inner.findChild(name="game_info_last")
 					if last_elem is None: # no last elem -> we are last
 						vbox_inner.addChild( btn )
@@ -542,34 +542,35 @@ class MultiplayerMenu(object):
 
 		players_vbox.removeAllChildren()
 
-		gicon = pychan.widgets.Icon(name="gslider", image="content/gui/images/background/hr.png")
+		gicon = Icon(name="gslider", image="content/gui/images/background/hr.png")
 		players_vbox.addChild(gicon)
 
 		def _add_player_line(player):
-			pname = pychan.widgets.Label(name="pname_%s" % player['name'],
-							helptext=_("Click here to change your name and/or color"))
+			pname = Label(name="pname_%s" % player['name'])
+			pname.helptext = _("Click here to change your name and/or color")
 			pname.text = player['name']
 			if player['name'] == NetworkInterface().get_client_name():
 				pname.capture(Callback(self.__show_change_player_details_popup))
 			pname.min_size = (130, 15)
 			pname.max_size = (130, 15)
 
-			pcolor = pychan.widgets.Label(name="pcolor_%s" % player['name'], text=u"   ",
-							 helptext=_("Click here to change your name and/or color"))
+			pcolor = Label(name="pcolor_%s" % player['name'], text=u"   ")
+			pcolor.helptext = _("Click here to change your name and/or color")
 			pcolor.background_color = player['color']
 			if player['name'] == NetworkInterface().get_client_name():
 				pcolor.capture(Callback(self.__show_change_player_details_popup))
 			pcolor.min_size = (15, 15)
 			pcolor.max_size = (15, 15)
 
-			pstatus = pychan.widgets.Label(name="pstatus_%s" % player['name'])
+			pstatus = Label(name="pstatus_%s" % player['name'])
 			pstatus.text = "\t\t\t" + player['status']
 			pstatus.min_size = (120, 15)
 			pstatus.max_size = (120, 15)
 
-			picon = pychan.widgets.Icon(name="picon_%s" % player['name'], image="content/gui/images/background/hr.png")
+			picon = Icon(name="picon_%s" % player['name'])
+			picon.image = "content/gui/images/background/hr.png"
 
-			hbox = pychan.widgets.HBox()
+			hbox = HBox()
 			hbox.addChild(pname)
 			hbox.addChild(pcolor)
 			hbox.addChild(pstatus)
