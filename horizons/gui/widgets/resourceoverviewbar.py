@@ -21,7 +21,7 @@
 
 
 from fife import fife
-from fife.extensions import pychan
+from fife.extensions.pychan.widgets import HBox, Icon, Label, Spacer
 import json
 import weakref
 import itertools
@@ -280,7 +280,7 @@ class ResourceOverviewBar(object):
 		for res, amount in build_costs.iteritems():
 			assert res in res_list or res == RES.GOLD
 
-			cost_label = pychan.widgets.Label(text=u"-"+unicode(amount))
+			cost_label = Label(text=u"-"+unicode(amount))
 			cost_label.stylize( self.__class__.STYLE )
 			# add icon below end of background icon
 			if res in res_list:
@@ -288,8 +288,7 @@ class ResourceOverviewBar(object):
 				cur_gui = self.gui[ entry ]
 				reference_icon = cur_gui.findChild(name="background_icon")
 				below = reference_icon.size[1]
-				cost_icon = pychan.widgets.Icon(image=cost_icon_res,
-				                                position=(0, below))
+				cost_icon = Icon(image=cost_icon_res, position=(0, below))
 				cost_label.position = (15, below) # TODO: centering
 
 				cur_gui.addChild(cost_icon)
@@ -300,8 +299,7 @@ class ResourceOverviewBar(object):
 			else: # must be gold
 				# there is an icon with scales there, use its positioning
 				reference_icon = self.gold_gui.child_finder("balance_background")
-				cost_icon = pychan.widgets.Icon(image=cost_icon_gold,
-				                              position=(reference_icon.x, reference_icon.y))
+				cost_icon = Icon(image=cost_icon_gold, position=(reference_icon.x, reference_icon.y))
 				cost_label.position = (23, 74) # TODO: centering
 
 				self.gold_gui.addChild(cost_icon)
@@ -588,12 +586,12 @@ class ResourceOverviewBar(object):
 			for num, image in enumerate(images):
 				# keep in sync with comment there until we can use that data:
 				# ./content/gui/xml/ingame/hud/resource_overview_bar_stats.xml
-				box = pychan.widgets.HBox(padding=0, min_size=(70,0), name="resbar_stats_line_%s"%num)
-				box.addChild( pychan.widgets.Icon(image=image) )
-				box.addSpacer( pychan.widgets.Spacer() )
-				box.addChild( pychan.widgets.Label(name="resbar_stats_entry_%s"%num) )
+				box = HBox(padding=0, min_size=(70,0), name="resbar_stats_line_%s"%num)
+				box.addChild(Icon(image=image))
+				box.addSpacer(Spacer())
+				box.addChild(Label(name="resbar_stats_entry_%s"%num))
 				# workaround for fife font bug, probably http://fife.trac.cvsdude.com/engine/ticket/666
-				box.addChild( pychan.widgets.Label(text=u" ") )
+				box.addChild(Label(text=u" "))
 
 				if num < len(images)-1: # regular one
 					self.stats_gui.child_finder("entries_box").addChild(box)
