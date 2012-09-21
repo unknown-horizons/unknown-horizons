@@ -557,21 +557,18 @@ class MultiplayerMenu(object):
 			pname.text = player['name']
 			if player['name'] == NetworkInterface().get_client_name():
 				pname.capture(Callback(self.__show_change_player_details_popup))
-			pname.min_size = (130, 15)
-			pname.max_size = (130, 15)
+			pname.min_size = pname.max_size = (130, 15)
 
 			pcolor = Label(name="pcolor_%s" % player['name'], text=u"   ")
 			pcolor.helptext = _("Click here to change your name and/or color")
 			pcolor.background_color = player['color']
 			if player['name'] == NetworkInterface().get_client_name():
 				pcolor.capture(Callback(self.__show_change_player_details_popup))
-			pcolor.min_size = (15, 15)
-			pcolor.max_size = (15, 15)
+			pcolor.min_size = pcolor.max_size = (15, 15)
 
 			pstatus = Label(name="pstatus_%s" % player['name'])
 			pstatus.text = "\t\t\t" + player['status']
-			pstatus.min_size = (120, 15)
-			pstatus.max_size = (120, 15)
+			pstatus.min_size = pstatus.max_size = (120, 15)
 
 			picon = Icon(name="picon_%s" % player['name'])
 			picon.image = "content/gui/images/background/hr.png"
@@ -587,8 +584,7 @@ class MultiplayerMenu(object):
 				pkick.up_image = "content/gui/images/buttons/delete_small.png"
 				pkick.down_image = "content/gui/images/buttons/delete_small.png"
 				pkick.hover_image = "content/gui/images/buttons/delete_small_h.png"
-				pkick.min_size = (20, 15)
-				pkick.max_size = (20, 15)
+				pkick.min_size = pkick.max_size = (20, 15)
 				hbox.addChild(pkick)
 
 			players_vbox.addChild(hbox)
