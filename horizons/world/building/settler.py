@@ -59,8 +59,7 @@ class Settler(BuildableRect, BuildingResourceHandler, BasicBuilding):
 	tabs = (SettlerOverviewTab, )
 
 	default_level_on_build = 0
-
-	_max_increment_reached_notification_displayed = False # this could be saved
+	max_tier_notification = False # overwritten on load if displayed already
 
 	def __init__(self, x, y, owner, instance=None, **kwargs):
 		kwargs['level'] = self.__class__.default_level_on_build # settlers always start in first level
@@ -94,6 +93,8 @@ class Settler(BuildableRect, BuildingResourceHandler, BasicBuilding):
 		remaining_ticks = Scheduler().get_remaining_ticks(self, self._tick)
 		db("INSERT INTO remaining_ticks_of_month(rowid, ticks) VALUES (?, ?)",
 		   self.worldid, remaining_ticks)
+		db("INSERT INTO metadata VALUES (?, ?)",
+		   "max_tier_notification", self.__class__.max_tier_notification)
 
 	def load(self, db, worldid):
 		super(Settler, self).load(db, worldid)
@@ -108,6 +109,9 @@ class Settler(BuildableRect, BuildingResourceHandler, BasicBuilding):
 
 	def _load_upgrade_data(self, db):
 		"""Load the upgrade production and relevant stored resources"""
+		max_tier_notification = db("SELECT value FROM metadata WHERE name = ?",
+		                           "max_tier_notification")[0][0]
+		self.__class__.max_tier_notification = bool(int(max_tier_notification))
 		upgrade_material_prodline = SettlerUpgradeData.get_production_line_id(self.level+1)
 		if not self.get_component(Producer).has_production_line(upgrade_material_prodline):
 			return
@@ -276,8 +280,8 @@ class Settler(BuildableRect, BuildingResourceHandler, BasicBuilding):
 			if self.level >= self.level_max:
 				# max level reached already, can't allow an update
 				if self.owner.is_local_player:
-					if not self.__class__._max_increment_reached_notification_displayed:
-						self.__class__._max_increment_reached_notification_displayed = True
+					if not self.__class__.max_tier_notification:
+						self.__class__.max_tier_notification = True
 						self.session.ingame_gui.message_widget.add(
 							point=self.position.center, string_id='MAX_INCR_REACHED')
 				return
