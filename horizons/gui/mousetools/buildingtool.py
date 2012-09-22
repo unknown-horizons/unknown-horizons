@@ -502,7 +502,7 @@ class BuildingTool(NavigationTool):
 		self.log.debug("BuildingTool mouseReleased")
 		if evt.isConsumedByWidgets():
 			super(BuildingTool, self).mouseReleased(evt)
-		elif fife.MouseEvent.LEFT == evt.getButton():
+		elif evt.getButton() == fife.MouseEvent.LEFT:
 			point = self.get_world_location(evt)
 
 			# check if position has changed with this event and update everything
@@ -542,7 +542,7 @@ class BuildingTool(NavigationTool):
 			else:
 				self.on_escape()
 			evt.consume()
-		elif fife.MouseEvent.RIGHT != evt.getButton():
+		elif evt.getButton() != fife.MouseEvent.RIGHT:
 			# TODO: figure out why there is a != in the comparison above. why not just use else?
 			super(BuildingTool, self).mouseReleased(evt)
 
