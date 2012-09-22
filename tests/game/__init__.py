@@ -155,8 +155,9 @@ class SPTestSession(SPSession):
 		if seconds:
 			ticks = self.timer.get_ticks(seconds)
 
-		for i in range(ticks):
-			Scheduler().tick( Scheduler().cur_tick + 1 )
+		while ticks > 0:
+			Scheduler().tick(Scheduler().cur_tick + 1)
+			ticks -= 1
 
 
 # import helper functions here, so tests can import from tests.game directly
