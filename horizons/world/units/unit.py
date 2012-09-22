@@ -109,7 +109,8 @@ class Unit(MovingObject, ResourceTransferHandler):
 		# remember that it has been drawn automatically
 		self._last_draw_health_call_on_damage = True
 		# remove later (but only in case there's no manual interference)
-		ExtScheduler().add_new_object(Callback(self.draw_health, auto_remove=True), self, self.__class__.AUTOMATIC_HEALTH_DISPLAY_TIMEOUT)
+		ExtScheduler().add_new_object(Callback(self.draw_health, auto_remove=True),
+		                              self, self.__class__.AUTOMATIC_HEALTH_DISPLAY_TIMEOUT)
 
 	def draw_health(self, remove_only=False, auto_remove=False):
 		"""Draws the units current health as a healthbar over the unit."""

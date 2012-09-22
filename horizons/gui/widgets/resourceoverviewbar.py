@@ -357,7 +357,7 @@ class ResourceOverviewBar(object):
 		"""Updates balance info below gold icon"""
 		balance = self.session.world.player.get_balance_estimation()
 		balance_lbl = self.gold_gui.child_finder("balance")
-		balance_lbl.text = u"{sign}{balance}".format(balance=balance, sign=u'+' if balance >= 0 else u'')
+		balance_lbl.text = u"{balance:+}".format(balance=balance)
 		balance_lbl.resizeToContent()
 		# 38
 		balance_lbl.position = (70 - balance_lbl.size[0],  74) # see _update_gold

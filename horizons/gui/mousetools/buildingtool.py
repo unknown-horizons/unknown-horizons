@@ -271,7 +271,7 @@ class BuildingTool(NavigationTool):
 		#self.session.view.renderer['InstanceRenderer'].removeAllColored()
 		self.log.debug("BuildingTool: preview build at %s, %s", point1, point2)
 		new_buildings = self._class.check_build_line(self.session, point1, point2,
-				                                     rotation = self.rotation, ship=self.ship)
+		                                             rotation=self.rotation, ship=self.ship)
 		# optimisation: If only one building is in the preview and the position hasn't changed
 		# => don't preview. Otherwise the preview is redrawn on every mouse move
 		if not force and len(new_buildings) == len(self.buildings) == 1 and \
@@ -552,9 +552,7 @@ class BuildingTool(NavigationTool):
 		changed_tiles = set()
 
 		# actually do the build and build preparations
-		i = -1
-		for building in self.buildings:
-			i += 1
+		for i, building in enumerate(self.buildings):
 			# remove fife instance, the building will create a new one.
 			# Check if there is a matching fife instance, could be missing
 			# in case of trees, which are hidden if not buildable

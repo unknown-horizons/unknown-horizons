@@ -24,7 +24,6 @@ import code
 import sys
 import datetime
 import shutil
-import string
 import os
 import os.path
 import tempfile
@@ -73,6 +72,7 @@ class MainListener(fife.IKeyListener, fife.ConsoleExecuter, LivingObject):
 		horizons.globals.fife.eventmanager.removeKeyListener(self)
 		super(MainListener, self).end()
 
+
 	def keyPressed(self, evt):
 		if evt.isConsumed():
 			return
@@ -95,12 +95,14 @@ class MainListener(fife.IKeyListener, fife.ConsoleExecuter, LivingObject):
 			horizons.globals.fife.engine.getRenderBackend().captureScreen(temp_path)
 
 			# move the screenshot into the final location
-			final_path = os.path.join(PATHS.SCREENSHOT_DIR, string.replace(datetime.datetime.now().isoformat('.') + ".png", ":", "-"))
+			filename = datetime.datetime.now().isoformat('.').replace(":", "-") + ".png"
+			final_path = os.path.join(PATHS.SCREENSHOT_DIR, filename)
 			shutil.move(temp_path, final_path)
 
 			# ingame message if there is a session
 			if self.gui.session is not None:
-				self.gui.session.ingame_gui.message_widget.add(point=None, string_id='SCREENSHOT', message_dict={'file': final_path})
+				self.gui.session.ingame_gui.message_widget.add(point=None, string_id='SCREENSHOT',
+				                                               message_dict={'file': final_path})
 		elif action == _Actions.QUICKLOAD:
 			from horizons.main import _load_last_quicksave
 			_load_last_quicksave(self.gui.session)
@@ -109,7 +111,6 @@ class MainListener(fife.IKeyListener, fife.ConsoleExecuter, LivingObject):
 
 		if key_event_handled:
 			evt.consume() # prevent other listeners from being called
-
 
 
 	def keyReleased(self, evt):
