@@ -349,7 +349,7 @@ class ResourceOverviewBar(object):
 		gold_available_lbl.text = unicode(gold)
 		# reposition according to magic forumula passed down from the elders in order to support centering
 		gold_available_lbl.resizeToContent() # this sets new size values
-		gold_available_lbl.position = (42 - gold_available_lbl.size[0]/2,  51)
+		gold_available_lbl.position = (42 - (gold_available_lbl.size[0] // 2), 51)
 
 		self.gold_gui.resizeToContent() # update label size
 
@@ -380,7 +380,7 @@ class ResourceOverviewBar(object):
 			# reposition according to magic forumula passed down from the elders in order to support centering
 			cur_gui.adaptLayout() # update size values (e.g. if amount of digits changed)
 			cur_gui.show()
-			label.position = (24 - label.size[0]/2, 44)
+			label.position = (24 - (label.size[0] // 2), 44)
 
 	def _get_current_resources(self):
 		"""Return list of resources to display now"""

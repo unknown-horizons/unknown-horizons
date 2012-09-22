@@ -66,9 +66,8 @@ class MessageWidget(LivingObject):
 		self.msgcount = itertools.count() # sort to preserve order after loading
 
 		self.widget = load_uh_widget(self.ICON_TEMPLATE)
-		self.widget.position = (
-			 5,
-			 horizons.globals.fife.engine_settings.getScreenHeight()/2 - self.widget.size[1]/2)
+		screenheight = horizons.globals.fife.engine_settings.getScreenHeight()
+		self.widget.position = (5, (screenheight // 2) - (self.widget.size[1] // 2))
 
 		self.text_widget = load_uh_widget(self.MSG_TEMPLATE)
 		self.text_widget.position = (self.widget.x + self.widget.width, self.widget.y)

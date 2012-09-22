@@ -221,19 +221,18 @@ class BuildingTool(NavigationTool):
 		if self.__class__.gui is None:
 			self.__class__.gui = load_uh_widget("place_building.xml")
 			top_bar = self.__class__.gui.findChild(name='top_bar')
-			top_bar.position = (self.__class__.gui.size[0]/2 - top_bar.size[0]/2 -16, 50)
+			top_bar.position = ((self.__class__.gui.size[0] // 2) - (top_bar.size[0] // 2) - 16, 50)
 			self.__class__.gui.position_technique = "right-1:top+157"
 		self.__class__.gui.mapEvents( { "rotate_left" : self.rotate_left,
-				              "rotate_right": self.rotate_right } )
+		                                "rotate_right": self.rotate_right } )
 		# set translated building name in gui
 		self.__class__.gui.findChild(name='headline').text = _('Build {building}').format(building=_(self._class.name))
 		self.__class__.gui.findChild(name='running_costs').text = unicode(self._class.running_costs)
 		head_box = self.__class__.gui.findChild(name='head_box')
 		head_box.adaptLayout() # recalculates size of new content
-		head_box.position = ( # calculate and set new center (we cause pychan to not support it)
-				              max( self.__class__.gui.size[0]/2 - head_box.size[0]/2, 25),
-				              head_box.position[1]
-				              )
+		# calculate and set new center
+		new_x = max(25, (self.__class__.gui.size[0] // 2) - (head_box.size[0] // 2))
+		head_box.position = (new_x, head_box.position[1])
 		head_box.adaptLayout()
 		self.draw_gui()
 		self.session.view.add_change_listener(self.draw_gui)
@@ -254,7 +253,7 @@ class BuildingTool(NavigationTool):
 			action = 'idle_full'
 		else: # If no idle animation found, use the first you find
 			action = action_sets[action_set].keys()[0]
-		rotation = (self.rotation+int(self.session.view.cam.getRotation())-45)%360
+		rotation = (self.rotation + int(self.session.view.cam.getRotation()) - 45) % 360
 		image = sorted(action_sets[action_set][action][rotation].keys())[0]
 		if GFX.USE_ATLASES:
 			# Make sure the preview is loaded
@@ -262,8 +261,10 @@ class BuildingTool(NavigationTool):
 		building_icon = self.gui.findChild(name='building')
 		building_icon.image = image
 		# TODO: Remove hardcoded 70
-		building_icon.position = (self.__class__.gui.size[0]/2 - building_icon.size[0]/2,
-		                          self.__class__.gui.size[1]/2 - building_icon.size[1]/2 - 70)
+		gui_x, gui_y = self.__class__.gui.size
+		icon_x, icon_y = building_icon.size
+		building_icon.position = (gui_x // 2 - icon_x // 2,
+		                          gui_y // 2 - icon_y // 2 - 70)
 		self.__class__.gui.adaptLayout()
 
 	def preview_build(self, point1, point2, force=False):
