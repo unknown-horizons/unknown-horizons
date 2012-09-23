@@ -610,6 +610,7 @@ class Server(object):
 			fd.write("Players.Total: %d\n" % (len(self.players)))
 			players_inlobby = 0
 			players_playing = 0
+			players_oldprotocol = 0
 			for player in self.players.values():
 				if player.game is None:
 					continue
@@ -617,8 +618,11 @@ class Server(object):
 					players_playing += 1
 				else:
 					players_inlobby += 1
+				if player.protocol < PROTOCOLS[-1]:
+					players_oldprotocol += 1
 			fd.write("Players.Lobby: %d\n" % (players_inlobby))
 			fd.write("Players.Playing: %d\n" % (players_playing))
+			fd.write("Players.OldProtocol: %d\n" % (players_oldprotocol))
 
 			fd.close()
 		except IOError as e:
