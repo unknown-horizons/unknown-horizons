@@ -33,7 +33,7 @@ class Utilisation(object):
 		for production in productions:
 			state_history = production.get_state_history_times(False)
 			total += state_history[PRODUCTION.STATES.producing.index]
-		return total / len(productions)
+		return total // len(productions)
 
 	def capacity_utilisation_below(self, limit, instance):
 		"""Returns whether the capacity utilisation is below a value.

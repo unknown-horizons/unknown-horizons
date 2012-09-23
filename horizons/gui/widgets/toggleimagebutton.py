@@ -19,11 +19,11 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-from fife.extensions import pychan
+from fife.extensions.pychan.widgets import ImageButton
 from fife.extensions.pychan.widgets.common import Attr
 
 
-class ToggleImageButton(pychan.widgets.ImageButton):
+class ToggleImageButton(ImageButton):
 	"""The ToggleImageButton is an extended ImageButton (Think decorator pattern).
 	It adds one extra attribute inactive_image. You can then set the button active
 	or inactive (only in code for now). Setting the ToggleImageButton to inactive
@@ -33,7 +33,7 @@ class ToggleImageButton(pychan.widgets.ImageButton):
 	@param inactive_image The image that is to be used as inactive image.
 	"""
 
-	ATTRIBUTES = pychan.widgets.ImageButton.ATTRIBUTES + [Attr('inactive_image')]
+	ATTRIBUTES = ImageButton.ATTRIBUTES + [Attr('inactive_image')]
 
 	# These two constants are used to describe the state of the widget.
 	ACTIVE = 0

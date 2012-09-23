@@ -24,6 +24,7 @@ import os.path
 import json
 import shutil
 import tempfile
+from sqlite3 import OperationalError
 
 from horizons.constants import VERSION, UNITS
 from horizons.util.dbreader import DbReader
@@ -147,8 +148,19 @@ class SavegameUpgrader(object):
 		db("CREATE TABLE IF NOT EXISTS logbook_messages ( message STRING )")
 
 	def _upgrade_to_rev63(self, db):
+		""" Due to miscommunication, the savegame revision 62 was not changed in
+		savegames after updates to 63. To keep savegames functional that have a
+		revision of 62 stored but where the upgrade to 63 was executed, we assume
+		that this has to happen for savegames of revision <62 unless CREATEing tables
+		raises an OperationalError, which indicates that they already exist and thus
+		this upgrade routine should also work for savegames with odd upgrade paths:
+		There may have been branches storing revision 63 in savegames after all.
+		"""
 		# adds a table for pirate's 'tick' callback
-		db("CREATE TABLE ai_pirate (remaining_ticks INTEGER NOT NULL DEFAULT 1)")
+		try:
+			db("CREATE TABLE ai_pirate (remaining_ticks INTEGER NOT NULL DEFAULT 1)")
+		except OperationalError:
+			return
 		db("INSERT INTO ai_pirate (rowid, remaining_ticks) SELECT p.rowid, 1 FROM player p WHERE p.is_pirate")
 		# added flag to aiplayer for fighting ships request
 		db("ALTER TABLE ai_player ADD COLUMN need_more_combat_ships INTEGER NOT NULL DEFAULT 1")
@@ -202,6 +214,8 @@ class SavegameUpgrader(object):
 		# save pirate routine mission
 		db('CREATE TABLE "ai_mission_pirate_routine" ("target_point_x" INTEGER NOT NULL, "target_point_y" INTEGER NOT NULL )')
 
+	def _upgrade_to_rev64(self, db):
+		db("INSERT INTO metadata VALUES (?, ?)", "max_tier_notification", False)
 
 	def _upgrade(self):
 		# fix import loop
@@ -250,6 +264,8 @@ class SavegameUpgrader(object):
 				self._upgrade_to_rev62(db)
 			if rev < 63:
 				self._upgrade_to_rev63(db)
+			if rev < 64:
+				self._upgrade_to_rev64(db)
 
 			db('COMMIT')
 			db.close()

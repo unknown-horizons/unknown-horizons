@@ -226,13 +226,12 @@ class View(ChangeListener):
 		"""Returns the coords of what is displayed on the screen as Rect"""
 		coords = self.cam.getLocationRef().getLayerCoordinates()
 		cell_dim = self.cam.getCellImageDimensions()
-		screen_width_as_coords = (horizons.globals.fife.engine_settings.getScreenWidth()/cell_dim.x + 1,
-		                          horizons.globals.fife.engine_settings.getScreenHeight()/cell_dim.y + 1)
+		width_x = horizons.globals.fife.engine_settings.getScreenWidth() // cell_dim.x + 1
+		width_y = horizons.globals.fife.engine_settings.getScreenHeight() // cell_dim.y + 1
 		zoom = self.get_zoom()
-		screen_width_as_coords = (int(screen_width_as_coords[0] / zoom) ,
-		                          int(screen_width_as_coords[1] / zoom))
-		return Rect.init_from_topleft_and_size(coords.x - (screen_width_as_coords[0]/2),
-		                                       coords.y - (screen_width_as_coords[1]/2),
+		screen_width_as_coords = (width_x // zoom, width_y // zoom)
+		return Rect.init_from_topleft_and_size(coords.x - (width_x // 2),
+		                                       coords.y - (width_y // 2),
 		                                       *screen_width_as_coords)
 
 	def save(self, db):
