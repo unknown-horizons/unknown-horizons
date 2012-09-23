@@ -122,11 +122,9 @@ class Client(object):
 			self.reset()
 			raise network.UnableToConnect("Unable to connect to server")
 		# wait for session id
-		packet = self.recv_packet([packets.cmd_error, packets.server.cmd_session])
+		packet = self.recv_packet([packets.server.cmd_session])
 		if packet is None:
 			raise network.FatalError("No reply from server")
-		elif isinstance(packet[1], packets.cmd_error):
-			raise network.CommandError(packet[1].errorstr)
 		elif not isinstance(packet[1], packets.server.cmd_session):
 			raise network.CommandError("Unexpected packet")
 		self.sid = packet[1].sid
@@ -361,16 +359,16 @@ class Client(object):
 				# this will destroy self.game
 				self.leavegame(True)
 			self.call_callbacks("lobbygame_kick", game, player, myself)
-		elif isinstance(packet[1], packets.server.cmd_fetch_game):
-			if self.game is None:
-				return True
-			path = SavegameManager.get_multiplayersave_map(self.game.mapname)
-			compressed_data = bz2.compress(open(path).read())
-			self.send(packets.client.savegame_data(compressed_data, packet[1].psid))
-		elif isinstance(packet[1], packets.server.savegame_data):
-			with open(SavegameManager.get_multiplayersave_map(packet[1].mapname), "w") as f:
-				f.write(bz2.decompress(packet[1].data))
-			self.call_callbacks("savegame_data", self.game)
+		#TODO elif isinstance(packet[1], packets.server.cmd_fetch_game):
+		#	if self.game is None:
+		#		return True
+		#	path = SavegameManager.get_multiplayersave_map(self.game.mapname)
+		#	compressed_data = bz2.compress(open(path).read())
+		#	self.send(packets.client.savegame_data(compressed_data, packet[1].psid))
+		#elif isinstance(packet[1], packets.server.savegame_data):
+		#	with open(SavegameManager.get_multiplayersave_map(packet[1].mapname), "w") as f:
+		#		f.write(bz2.decompress(packet[1].data))
+		#	self.call_callbacks("savegame_data", self.game)
 
 		return False
 
@@ -384,11 +382,9 @@ class Client(object):
 		self.log.debug("[LIST]")
 		version = self.version if only_this_version else -1
 		self.send(packets.client.cmd_listgames(version, mapname, maxplayers))
-		packet = self.recv_packet([packets.cmd_error, packets.server.data_gameslist])
+		packet = self.recv_packet([packets.server.data_gameslist])
 		if packet is None:
 			raise network.FatalError("No reply from server")
-		elif isinstance(packet[1], packets.cmd_error):
-			raise network.CommandError(packet[1].errorstr)
 		elif not isinstance(packet[1], packets.server.data_gameslist):
 			raise network.CommandError("Unexpected packet")
 		return packet[1].games
@@ -411,11 +407,9 @@ class Client(object):
 			maxplayers  = maxplayers,
 			maphash     = maphash,
 			password    = password))
-		packet = self.recv_packet([packets.cmd_error, packets.server.data_gamestate])
+		packet = self.recv_packet([packets.server.data_gamestate])
 		if packet is None:
 			raise network.FatalError("No reply from server")
-		elif isinstance(packet[1], packets.cmd_error):
-			raise network.CommandError(packet[1].errorstr)
 		elif not isinstance(packet[1], packets.server.data_gamestate):
 			raise network.CommandError("Unexpected packet")
 		self.game = packet[1].game
@@ -437,11 +431,9 @@ class Client(object):
 			playercolor = self.color,
 			password    = password,
 			fetch       = fetch))
-		packet = self.recv_packet([packets.cmd_error, packets.server.data_gamestate])
+		packet = self.recv_packet([packets.server.data_gamestate])
 		if packet is None:
 			raise network.FatalError("No reply from server")
-		elif isinstance(packet[1], packets.cmd_error):
-			raise network.CommandError(packet[1].errorstr)
 		elif not isinstance(packet[1], packets.server.data_gamestate):
 			raise network.CommandError("Unexpected packet")
 		self.game = packet[1].game
@@ -461,11 +453,9 @@ class Client(object):
 			self.game = None
 			return
 		self.send(packets.client.cmd_leavegame())
-		packet = self.recv_packet([packets.cmd_error, packets.cmd_ok])
+		packet = self.recv_packet([packets.cmd_ok])
 		if packet is None:
 			raise network.FatalError("No reply from server")
-		elif isinstance(packet[1], packets.cmd_error):
-			raise network.CommandError(packet[1].errorstr)
 		elif not isinstance(packet[1], packets.cmd_ok):
 			raise network.CommandError("Unexpected packet")
 		self.game = None
