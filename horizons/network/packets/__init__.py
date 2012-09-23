@@ -137,8 +137,15 @@ SafeUnpickler.add('common', cmd_ok)
 #-------------------------------------------------------------------------------
 
 class cmd_error(packet):
-	def __init__(self, errorstr):
+	def __init__(self, errorstr, _type = 0):
 		self.errorstr = errorstr
+		self.type = _type
+
+	def validate(self, protocol):
+		if not isinstance(self.errorstr, str):
+			raise NetworkException("Invalid datatype: errorstr")
+		if not isinstance(self.type, int):
+			raise NetworkException("Invalid datatype: type")
 
 SafeUnpickler.add('common', cmd_error)
 
@@ -147,6 +154,10 @@ SafeUnpickler.add('common', cmd_error)
 class cmd_fatalerror(packet):
 	def __init__(self, errorstr):
 		self.errorstr = errorstr
+
+	def validate(self, protocol):
+		if not isinstance(self.errorstr, str):
+			raise NetworkException("Invalid datatype: errorstr")
 
 SafeUnpickler.add('common', cmd_fatalerror)
 

@@ -168,8 +168,8 @@ class MultiplayerMenu(object):
 		else:
 			self.__print_event_message(_("{player} got kicked by creator").format(player=player.name))
 
-	def __game_terminated(self, game):
-		self.show_popup(_("Terminated"), _("The game has been terminated. The creator has left the game."))
+	def __game_terminated(self, game, errorstr):
+		self.show_popup(_("Terminated"), errorstr)
 		self.show_multi()
 
 	def _display_game_name(self, game):

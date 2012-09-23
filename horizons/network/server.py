@@ -63,8 +63,8 @@ class Server(object):
 			packets.client.cmd_preparedgame:   [ self.onpreparedgame ],
 			packets.client.cmd_toggleready:    [ self.ontoggleready ],
 			packets.client.cmd_kickplayer:     [ self.onkick ],
-			packets.client.cmd_fetch_game:     [ self.onfetchgame ],
-			packets.client.savegame_data:      [ self.onsavegamedata ],
+			#TODO packets.client.cmd_fetch_game:     [ self.onfetchgame ],
+			#TODO packets.client.savegame_data:      [ self.onsavegamedata ],
 			'preparegame':   [ self.preparegame ],
 			'startgame':     [ self.startgame ],
 			'leavegame':     [ self.leavegame ],
@@ -106,8 +106,13 @@ class Server(object):
 	def call_callbacks(self, type, *args):
 		if type not in self.callbacks:
 			return
+		ret = True
 		for callback in self.callbacks[type]:
-			callback(*args)
+			tmp = callback(*args)
+			if tmp == None:
+				tmp = True
+			ret &= tmp
+		return ret
 
 
 	def run(self):
@@ -164,9 +169,8 @@ class Server(object):
 			peer.reset()
 
 
-	def error(self, peer, message):
-		self.send(peer, packets.cmd_error(message))
-
+	def error(self, peer, message, _type = ErrorType.NotSet):
+		self.send(peer, packets.cmd_error(message, _type))
 
 	def fatalerror(self, peer, message, later=True):
 		self.send(peer, packets.cmd_fatalerror(message))
@@ -387,12 +391,10 @@ class Server(object):
 
 	def terminategame(self, game, player=None):
 		logging.debug("[TERMINATE] [%s] (by %s)" % (game.uuid, player if player is not None else None))
-		if game.is_open():
-			# notify the clients by changing the game state
+		if game.creator.protocol >= 1 and game.is_open():
 			# NOTE: works with protocol >= 1
-			game.state = Game.State.Terminate
 			for _player in game.players:
-				self.send(_player.peer, packets.server.data_gamestate(game))
+				self.error(_player.peer, "The game has been terminated. The creator has left the game.", ErrorType.TerminateGame)
 		else:
 			for _player in game.players:
 				if _player.peer.state == enet.PEER_STATE_CONNECTED:
@@ -508,7 +510,6 @@ class Server(object):
 		for _player in game.players:
 			if _player.prepared:
 				count += 1
-		mapdata = packet.mapdata
 		if count != game.playercnt:
 			return
 		self.call_callbacks('startgame', game)

@@ -254,6 +254,17 @@ class Client(object):
 				raise network.FatalError(errstr)
 
 			if isinstance(packet, packets.cmd_error):
+				# handle special errors here
+				# FIXME: it's better to pass that to the interface,
+				# but our ui error handler currently can't handle that
+
+				# the game got terminated by the client
+				if packet.type == ErrorType.TerminateGame:
+					game = self.game
+					# this will destroy self.game
+					self.leavegame(True)
+					self.call_callbacks("lobbygame_terminate", game, packet.errorstr)
+					return None
 				raise network.CommandError(packet.errorstr)
 			elif isinstance(packet, packets.cmd_fatalerror):
 				self.log.error("[FATAL] Network message: %s" % (packet.errorstr))
@@ -307,15 +318,6 @@ class Client(object):
 
 			oldplayers = list(self.game.players)
 			self.game = packet[1].game
-
-			# the game got terminated by the client
-			if self.game.state == Game.State.Terminate:
-				game = self.game
-				# this will destroy self.game
-				self.leavegame(True)
-				self.call_callbacks("lobbygame_terminate", game)
-				return True
-
 
 			# calculate changeset
 			for pnew in self.game.players:

@@ -27,6 +27,7 @@ __all__ = [
   'Address',
   'Player',
   'Game',
+  'ErrorType',
 ]
 
 class Address(object):
@@ -147,7 +148,7 @@ class Game(object):
 			self.state = state
 
 		def __str__(self):
-			strvals = [ "Open", "Prepare", "Running", "Terminate" ]
+			strvals = [ "Open", "Prepare", "Running" ]
 			return "%s" % (strvals[self.state])
 
 	def __init__(self, packet, creator):
@@ -238,3 +239,20 @@ class Game(object):
 		return "Game(uuid=%s;maxpl=%d;plcnt=%d;pw=%d;state=%s)" % (self.uuid, self.maxplayers, self.playercnt, self.has_password(), Game.State(self.state))
 
 packets.SafeUnpickler.add('server', Game)
+
+#-----------------------------------------------------------------------------
+
+# types of soft errors used by cmd_error
+# this way we don't have to create a new packet for every type of error
+class ErrorType(object):
+	NotSet = 0
+	TerminateGame = 1
+
+	def __init__(self, state=NotSet):
+		self.state = state
+
+	def __str__(self):
+		strvals = [ "NotSet", "TerminateGame" ]
+		return "%s" % (strvals[self.state])
+
+packets.SafeUnpickler.add('common', ErrorType)
