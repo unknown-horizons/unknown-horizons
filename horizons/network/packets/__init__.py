@@ -137,7 +137,7 @@ SafeUnpickler.add('common', cmd_ok)
 #-------------------------------------------------------------------------------
 
 class cmd_error(packet):
-	def __init__(self, errorstr, _type = 0):
+	def __init__(self, errorstr, _type=0):
 		self.errorstr = errorstr
 		self.type = _type
 

@@ -375,7 +375,7 @@ class MPGame(object):
 		return self.maphash
 
 	def is_savegame(self):
-		return (len(self.maphash) > 0)
+		return bool(self.maphash)
 
 	def get_name(self):
 		return self.name

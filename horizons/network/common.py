@@ -176,7 +176,7 @@ class Game(object):
 		state = self.__dict__.copy()
 
 		# overwrite private data
-		state['password'] = False if not len(self.password) else True
+		state['password'] = bool(self.password)
 
 		# make data backwards compatible
 		state['creator'] = self.creator.name
@@ -224,9 +224,7 @@ class Game(object):
 		return (self.state == Game.State.Open)
 
 	def has_password(self):
-		if isinstance(self.password, bool):
-			return self.password
-		return True if len(self.password) else False
+		return bool(self.password)
 
 	def clear(self):
 		for player in self.players:

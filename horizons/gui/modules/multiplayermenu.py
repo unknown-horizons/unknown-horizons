@@ -216,10 +216,10 @@ class MultiplayerMenu(object):
 
 	def __update_game_details(self, game=None):
 		"""Set map name and other misc data in a widget. Only possible in certain states"""
-		if game == None:
-			game = self.__get_selected_game()
 		if game is None:
-			return
+			game = self.__get_selected_game()
+			if game is None:
+				return
 		#xgettext:python-format
 		self.current.findChild(name="game_map").text = _("Map: {map_name}").format(map_name=game.get_map_name())
 		self.current.findChild(name="game_name").text = _("Name: {game_name}").format(game_name=game.get_name())
@@ -269,7 +269,7 @@ class MultiplayerMenu(object):
 		"""Does the actual joining to the game.
 
 		 This method is called after everything is OK for joining."""
-		if game == None:
+		if game is None:
 			return False
 
 		self.__apply_new_nickname()

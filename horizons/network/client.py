@@ -260,7 +260,7 @@ class Client(object):
 				if packet.type == ErrorType.TerminateGame:
 					game = self.game
 					# this will destroy self.game
-					self.leavegame(True)
+					self.leavegame(stealth=True)
 					self.call_callbacks("lobbygame_terminate", game, packet.errorstr)
 					return None
 				raise network.CommandError(packet.errorstr)
@@ -357,7 +357,7 @@ class Client(object):
 			myself = (player.sid == self.sid)
 			if myself:
 				# this will destroy self.game
-				self.leavegame(True)
+				self.leavegame(stealth=True)
 			self.call_callbacks("lobbygame_kick", game, player, myself)
 		#TODO elif isinstance(packet[1], packets.server.cmd_fetch_game):
 		#	if self.game is None:
