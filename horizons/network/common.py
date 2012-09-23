@@ -142,7 +142,6 @@ class Game(object):
 		Open      = 0
 		Prepare   = 1
 		Running   = 2
-		Terminate = 3
 
 		def __init__(self, state=Open):
 			self.state = state
