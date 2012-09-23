@@ -9,7 +9,7 @@ size_y: 1
 inhabitants: 0
 tooltip_text: _ Provides lumber. Chopped down by lumberjacks.
 settler_level: TIER.NATURE
-buildingcosts: {RES.GOLD: 150}
+buildingcosts: {RES.GOLD: 50}
 show_status_icons: false
 translucent: true
 components:
