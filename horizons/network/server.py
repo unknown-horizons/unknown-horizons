@@ -47,6 +47,11 @@ class Server(object):
 			'timestamp': 0,
 			'interval':  1 * 60 * 1000,
 		}
+		self.capabilities = {
+			'minplayers' : 2,
+			'maxplayers' : 8,
+			'maxmapsize' : 1 * 1024 * 1024,
+		}
 		self.callbacks = {
 			'onconnect':     [ self.onconnect ],
 			'ondisconnect':  [ self.ondisconnect ],
@@ -198,7 +203,7 @@ class Server(object):
 
 		# NOTE: copying bytes or int doesn't work here
 		self.players[player.sid] = player
-		self.send(event.peer, packets.server.cmd_session(player.sid))
+		self.send(event.peer, packets.server.cmd_session(player.sid, self.capabilities))
 
 
 	def ondisconnect(self, event):
@@ -267,6 +272,10 @@ class Server(object):
 
 	def oncreategame(self, peer, packet):
 		player = self.players[peer.data]
+		if packet.maxplayers < self.capabilities['minplayers']:
+			raise SoftNetworkException("You can't run a game with less than %d players" % (self.capabilities['minplayers']))
+		if packet.maxplayers > self.capabilities['maxplayers']:
+			raise SoftNetworkException("You can't run a game with more than %d players" % (self.capabilities['maxplayers']))
 		game = Game(packet, player)
 		logging.debug("[CREATE] [%s] %s created %s" % (game.uuid, player, game))
 		self.games.append(game)

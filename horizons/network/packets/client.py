@@ -23,8 +23,6 @@ from horizons.network.packets import *
 from horizons.network import NetworkException, SoftNetworkException
 import uuid
 
-MINIMUM_PLAYERS = 2
-
 class cmd_creategame(packet):
 	clientversion = None
 	clientid      = None
@@ -86,8 +84,6 @@ class cmd_creategame(packet):
 
 		if not isinstance(self.maxplayers, int):
 			raise NetworkException("Invalid datatype: maxplayers")
-		if self.maxplayers < MINIMUM_PLAYERS:
-			raise SoftNetworkException("You can't run a game with less than two players")
 
 		if not isinstance(self.maphash, str):
 			raise NetworkException("Invalid datatype: maphash")

@@ -64,6 +64,7 @@ class Client(object):
 		self.serverpeer    = None
 		self.mode          = None
 		self.sid           = None
+		self.capabilities  = None
 		self.game          = None
 		self.clientid      = clientid
 		self.color         = color
@@ -128,6 +129,7 @@ class Client(object):
 		elif not isinstance(packet[1], packets.server.cmd_session):
 			raise network.CommandError("Unexpected packet")
 		self.sid = packet[1].sid
+		self.capabilities = packet[1].capabilities
 		self.log.debug("[CONNECT] done (session=%s)" % (self.sid))
 
 	#-----------------------------------------------------------------------------

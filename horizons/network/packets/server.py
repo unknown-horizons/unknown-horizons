@@ -22,8 +22,9 @@
 from horizons.network.packets import *
 
 class cmd_session(packet):
-	def __init__(self, sid):
+	def __init__(self, sid, capabilities):
 		self.sid = sid
+		self.capabilities = capabilities
 
 SafeUnpickler.add('server', cmd_session)
 
