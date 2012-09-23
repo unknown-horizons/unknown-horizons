@@ -41,7 +41,7 @@ MAX_PEERS = 1
 SERVER_TIMEOUT = 5000
 # current server/client protocol the client understands
 # increment that after incompatible protocol changes
-SERVER_PROTOCOL = 0
+SERVER_PROTOCOL = 1
 
 class ClientMode(object):
 	Server = 0
@@ -72,17 +72,18 @@ class Client(object):
 			'lobbygame_chat':        [],
 			'lobbygame_join':        [],
 			'lobbygame_leave':       [],
+			'lobbygame_terminate':   [],
 			'lobbygame_toggleready': [],
 			'lobbygame_changename':  [],
-			'lobbygame_kickplayer':  [],
+			'lobbygame_kick':        [],
 			'lobbygame_changecolor': [],
 			'lobbygame_state':       [],
 			'lobbygame_starts':      [],
 			'game_starts':    [],
 			'game_data':      [],
-			'savegame_data':  [],
+			'savegame_data':  [], #TODO
 		}
-		self.register_callback('lobbygame_changename', self.onchangename, True)
+		self.register_callback('lobbygame_changename',  self.onchangename, True)
 		self.register_callback('lobbygame_changecolor', self.onchangecolor, True)
 		pass
 
@@ -304,21 +305,17 @@ class Client(object):
 				return True
 			self.call_callbacks("lobbygame_state", self.game, packet[1].game)
 
-			#if there is more ready player then show it as chat message
-			if len(self.game.ready_players) < len(packet[1].game.ready_players):
-				self.game = packet[1].game
-				self.call_callbacks("lobbygame_toggleready", self.game, packet[1].game.ready_players[-1])
-				return True
-			#if there is less ready player then show it as chat message
-			elif len(self.game.ready_players) > len(packet[1].game.ready_players):
-				for nonready in self.game.ready_players:
-					if nonready not in packet[1].game.ready_players:
-						self.game = packet[1].game
-						self.call_callbacks("lobbygame_toggleready", self.game, nonready)
-						return True
-
 			oldplayers = list(self.game.players)
 			self.game = packet[1].game
+
+			# the game got terminated by the client
+			if self.game.state == Game.State.Terminate:
+				game = self.game
+				# this will destroy self.game
+				self.leavegame(True)
+				self.call_callbacks("lobbygame_terminate", game)
+				return True
+
 
 			# calculate changeset
 			for pnew in self.game.players:
@@ -326,11 +323,13 @@ class Client(object):
 				for pold in oldplayers:
 					if pnew.sid == pold.sid:
 						found = pold
-						myself = pnew.sid == self.sid
+						myself = (pnew.sid == self.sid)
 						if pnew.name != pold.name:
 							self.call_callbacks("lobbygame_changename", self.game, pold, pnew, myself)
 						if pnew.color != pold.color:
 							self.call_callbacks("lobbygame_changecolor", self.game, pold, pnew, myself)
+						if pnew.ready != pold.ready:
+							self.call_callbacks("lobbygame_toggleready", self.game, pold, pnew, myself)
 						break
 				if found is None:
 					self.call_callbacks("lobbygame_join", self.game, pnew)
@@ -352,8 +351,14 @@ class Client(object):
 		elif isinstance(packet[1], packets.client.game_data):
 			self.log.debug("[GAMEDATA] from %s" % (packet[0].address))
 			self.call_callbacks("game_data", packet[1].data)
-		elif isinstance(packet[1], packets.server.cmd_kick_player):
-			self.call_callbacks("lobbygame_kickplayer", self.game, packet[1].player)
+		elif isinstance(packet[1], packets.server.cmd_kickplayer):
+			player = packet[1].player
+			game = self.game
+			myself = (player.sid == self.sid)
+			if myself:
+				# this will destroy self.game
+				self.leavegame(True)
+			self.call_callbacks("lobbygame_kick", game, player, myself)
 		elif isinstance(packet[1], packets.server.cmd_fetch_game):
 			if self.game is None:
 				return True
@@ -388,14 +393,22 @@ class Client(object):
 
 	#-----------------------------------------------------------------------------
 
-	def creategame(self, mapname, maxplayers, name, load=None, password=None):
+	def creategame(self, mapname, maxplayers, gamename, maphash="", password=""):
 		if self.mode is None:
 			raise network.NotConnected()
 		if self.mode is not ClientMode.Server:
 			raise network.NotInServerMode("We are not in server mode")
 		self.log.debug("[CREATE] mapname=%s maxplayers=%d" % (mapname, maxplayers))
-		self.send(packets.client.cmd_creategame(self.version, mapname, maxplayers, self.name,
-		                                        name, load, password, self.color, self.clientid))
+		self.send(packets.client.cmd_creategame(
+			clientver   = self.version,
+			clientid    = self.clientid,
+			playername  = self.name,
+			playercolor = self.color,
+			gamename    = gamename,
+			mapname     = mapname,
+			maxplayers  = maxplayers,
+			maphash     = maphash,
+			password    = password))
 		packet = self.recv_packet([packets.cmd_error, packets.server.data_gamestate])
 		if packet is None:
 			raise network.FatalError("No reply from server")
@@ -408,13 +421,20 @@ class Client(object):
 
 	#-----------------------------------------------------------------------------
 
-	def joingame(self, uuid):
+	def joingame(self, uuid, password="", fetch=False):
 		if self.mode is None:
 			raise network.NotConnected()
 		if self.mode is not ClientMode.Server:
 			raise network.NotInServerMode("We are not in server mode")
 		self.log.debug("[JOIN] %s" % (uuid))
-		self.send(packets.client.cmd_joingame(uuid, self.version, self.name, self.color, self.clientid))
+		self.send(packets.client.cmd_joingame(
+			uuid        = uuid,
+			clientver   = self.version,
+			clientid    = self.clientid,
+			playername  = self.name,
+			playercolor = self.color,
+			password    = password,
+			fetch       = fetch))
 		packet = self.recv_packet([packets.cmd_error, packets.server.data_gamestate])
 		if packet is None:
 			raise network.FatalError("No reply from server")
@@ -427,7 +447,7 @@ class Client(object):
 
 	#-----------------------------------------------------------------------------
 
-	def leavegame(self):
+	def leavegame(self, stealth=False):
 		if self.mode is None:
 			raise network.NotConnected()
 		if self.mode is not ClientMode.Server:
@@ -435,6 +455,9 @@ class Client(object):
 		if self.game is None:
 			raise network.NotInGameLobby("We are not in a game lobby")
 		self.log.debug("[LEAVE]")
+		if stealth:
+			self.game = None
+			return
 		self.send(packets.client.cmd_leavegame())
 		packet = self.recv_packet([packets.cmd_error, packets.cmd_ok])
 		if packet is None:
@@ -478,6 +501,14 @@ class Client(object):
 
 	#-----------------------------------------------------------------------------
 
+	def onchangename(self, game, plold, plnew, myself):
+		self.log.debug("[ONCHANGENAME] %s -> %s" % (plold.name, plnew.name))
+		if myself:
+			self.name = plnew.name
+		return True
+
+	#-----------------------------------------------------------------------------
+
 	def changecolor(self, color):
 		""" NOTE: this returns False if the name must be validated by
 		 the server. In that case this will trigger a lobbygame_changecolor-
@@ -492,14 +523,6 @@ class Client(object):
 			return True
 		self.send(packets.client.cmd_changecolor(color))
 		return False
-
-	#-----------------------------------------------------------------------------
-
-	def onchangename(self, game, plold, plnew, myself):
-		self.log.debug("[ONCHANGENAME] %s -> %s" % (plold.name, plnew.name))
-		if myself:
-			self.name = plnew.name
-		return True
 
 	#-----------------------------------------------------------------------------
 
@@ -527,14 +550,23 @@ class Client(object):
 		self.call_callbacks("game_starts", self.game)
 		return True
 
-	def send_toggle_ready(self, player):
-		self.send(packets.client.cmd_toggle_ready(player))
+	#-----------------------------------------------------------------------------
+
+	def toggleready(self):
+		self.log.debug("[TOGGLEREADY]")
+		self.send(packets.client.cmd_toggleready())
 		return True
 
-	def send_kick_player(self, player):
-		self.send(packets.client.cmd_kick_player(player))
+	#-----------------------------------------------------------------------------
+
+	def kick(self, player_sid):
+		self.log.debug("[KICK]")
+		self.send(packets.client.cmd_kickplayer(player_sid))
 		return True
 
+	#-----------------------------------------------------------------------------
+
+	#TODO
 	def send_fetch_game(self, clientversion, uuid):
 		self.send(packets.client.cmd_fetch_game(clientversion, uuid))
 		return True

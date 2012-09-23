@@ -766,7 +766,7 @@ def set_translations():
 		# (text of widget: game_player_status)
 		("game_player_status"          , "text"    ): _("Status"),
 		# (text of widget: game_start_notice)
-		("game_start_notice"           , "text"    ): _("The game will start as soon as players are ready and creator starts the game."),
+		("game_start_notice"           , "text"    ): _("The game will start as soon as players are ready."),
 		# (text of widget: headline)
 		("headline"                    , "text"    ): _("Chat:"),
 		# (text of widget: headline)

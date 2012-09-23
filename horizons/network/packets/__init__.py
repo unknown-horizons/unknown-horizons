@@ -107,9 +107,9 @@ class SafeUnpickler(object):
 
 class packet(object):
 	def __init__(self):
-		self.sid = None
+		"""ctor"""
 
-	def validate(self):
+	def validate(self, protocol):
 		return True
 
 	def serialize(self):
@@ -117,6 +117,8 @@ class packet(object):
 
 	def send(self, peer, sid=None, channelid=0):
 		if sid is not None:
+			# Make sure we don't overwrite sid via packet property
+			assert(not hasattr(self, 'sid'))
 			self.sid = sid
 		self._send(peer, self.serialize(), channelid)
 
@@ -150,10 +152,10 @@ SafeUnpickler.add('common', cmd_fatalerror)
 
 #-------------------------------------------------------------------------------
 
-def unserialize(data, validate=False):
+def unserialize(data, validate=False, protocol=0):
 	mypacket = SafeUnpickler.loads(data)
 	if validate and not (hasattr(mypacket.validate, '__func__') and mypacket.validate.__func__ is packet.validate.__func__):
-		mypacket.validate()
+		mypacket.validate(protocol)
 	return mypacket
 
 #-------------------------------------------------------------------------------

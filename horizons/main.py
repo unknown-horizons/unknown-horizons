@@ -144,14 +144,6 @@ def start(_command_line_arguments):
 
 	# init game parts
 
-	client_id = horizons.globals.fife.get_uh_setting("ClientID")
-	if not client_id:
-		# We need a new client id
-		client_id = "".join("-" if c in (8, 13, 18, 23) else
-		                    random.choice("0123456789abcdef") for c in xrange(0, 36))
-		horizons.globals.fife.set_uh_setting("ClientID", client_id)
-		horizons.globals.fife.save_settings()
-
 	# Install gui logger, needs to be done before instantiating Gui, otherwise we miss
 	# the events of the main menu buttons
 	if command_line_arguments.log_gui:
@@ -387,7 +379,7 @@ def prepare_multiplayer(game, trader_enabled=True, pirate_enabled=True, natural_
 	random = sum([ int(uuid[i : i + 2], 16) for i in range(0, len(uuid), 2) ])
 	_modules.session = MPSession(_modules.gui, horizons.globals.db, NetworkInterface(), rng_seed=random)
 	# NOTE: this data passing is only temporary, maybe use a player class/struct
-	if game.load:
+	if game.is_savegame():
 		map_file = SavegameManager.get_multiplayersave_map( game.get_map_name() )
 	else:
 		map_file = SavegameManager.get_map( game.get_map_name() )
