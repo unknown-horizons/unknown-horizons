@@ -273,6 +273,22 @@ SafeUnpickler.add('client', cmd_kickplayer)
 
 #-------------------------------------------------------------------------------
 
+class cmd_sessionprops(packet):
+	def __init__(self, props):
+		if 'lang' in props:
+			self.lang = props['lang']
+
+	def validate(self, protocol):
+		if hasattr(self, 'lang'):
+			if not isinstance(self.lang, str):
+				raise NetworkException("Invalid datatype: lang")
+			if not len(self.lang):
+				raise SoftNetworkException("Invalid language property")
+
+SafeUnpickler.add('client', cmd_sessionprops)
+
+#-------------------------------------------------------------------------------
+
 #TODO
 class cmd_mapdata(packet):
 	def __init__(self, data):

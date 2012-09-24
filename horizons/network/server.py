@@ -60,6 +60,7 @@ class Server(object):
 			'onreceive':     [ self.onreceive ],
 			packets.cmd_error:                 [ self.onerror ],
 			packets.cmd_fatalerror:            [ self.onfatalerror ],
+			packets.client.cmd_sessionprops:   [ self.onsessionprops ],
 			packets.client.cmd_creategame:     [ self.oncreategame ],
 			packets.client.cmd_listgames:      [ self.onlistgames ],
 			packets.client.cmd_joingame:       [ self.onjoingame ],
@@ -296,6 +297,13 @@ class Server(object):
 		logging.debug("[FATAL] Client Message: %s" % (packet.errorstr))
 		self.disconnect(player.peer)
 
+
+	def onsessionprops(self, player, packet):
+		logging.debug("[PROPS] %s" % (player))
+		if hasattr(packet, 'lang'):
+			if packet.lang in self.i18n:
+				player.gettext = self.i18n[packet.lang]
+		self.send(player.peer, packets.cmd_ok())
 
 	def oncreategame(self, player, packet):
 		if packet.maxplayers < self.capabilities['minplayers']:

@@ -376,6 +376,22 @@ class Client(object):
 
 	#-----------------------------------------------------------------------------
 
+	def setprops(self, lang):
+		if self.mode is None:
+			raise network.NotConnected()
+		if self.mode is not ClientMode.Server:
+			raise network.NotInServerMode("We are not in server mode")
+		self.log.debug("[SETPROPS]")
+		self.send(packets.client.cmd_sessionprops(lang))
+		packet = self.recv_packet([packets.cmd_ok])
+		if packet is None:
+			raise network.FatalError("No reply from server")
+		elif not isinstance(packet[1], packets.cmd_ok):
+			raise network.CommandError("Unexpected packet")
+		return True
+
+	#-----------------------------------------------------------------------------
+
 	def listgames(self, mapname=None, maxplayers=None, only_this_version=False):
 		if self.mode is None:
 			raise network.NotConnected()

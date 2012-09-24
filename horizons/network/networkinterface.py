@@ -26,7 +26,7 @@ from horizons.util.difficultysettings import DifficultySettings
 from horizons.util.python import parse_port
 from horizons.util.python.singleton import ManualConstructionSingleton
 from horizons.extscheduler import ExtScheduler
-from horizons.constants import NETWORK, VERSION
+from horizons.constants import NETWORK, VERSION, LANGUAGENAMES
 from horizons.network.client import Client
 from horizons.network import CommandError, NetworkException, FatalError
 
@@ -132,6 +132,7 @@ class NetworkInterface(object):
 		"""
 		try:
 			self._client.connect()
+			self.set_client_language()
 		except NetworkException as e:
 			self.disconnect()
 			raise e
@@ -147,6 +148,20 @@ class NetworkInterface(object):
 					pass
 			except NetworkException as e:
 				self._handle_exception(e)
+
+	def set_props(self, props):
+		try:
+			self._client.setprops(props)
+		except NetworkException as e:
+			self._handle_exception(e)
+			return False
+		return True
+
+	def set_client_language(self):
+		lang = LANGUAGENAMES.get_by_value(horizons.globals.fife.get_uh_setting("Language"))
+		if len(lang):
+			return self.set_props({'lang': lang})
+		return True
 
 	def creategame(self, mapname, maxplayers, name, maphash="", password=""):
 		self.log.debug("[CREATEGAME] %s(h=%s), %s, %s, %s", mapname, maphash, maxplayers, name)
