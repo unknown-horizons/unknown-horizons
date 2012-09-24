@@ -208,7 +208,7 @@ class TestRunner(object):
 
 
 def gui_test(use_dev_map=False, use_fixture=None, ai_players=0, timeout=15 * 60, cleanup_userdir=False,
-			 _user_dir=None, use_scenario=None):
+			 _user_dir=None, use_scenario=None, additional_cmdline=None):
 	"""Magic nose integration.
 
 	use_dev_map		-	starts the game with --start-dev-map
@@ -245,6 +245,9 @@ def gui_test(use_dev_map=False, use_fixture=None, ai_players=0, timeout=15 * 60,
 
 			if ai_players:
 				args.extend(['--ai-players', str(ai_players)])
+
+			if additional_cmdline:
+				args.extend(additional_cmdline)
 
 			try:
 				# if nose does not capture stdout, then most likely someone wants to
