@@ -78,7 +78,7 @@ _master_server = None
 
 def start_server():
 	global _master_server
-	_master_server = subprocess.Popen([sys.executable, "server.py", "-h", "127.0.0.1", "-p", "2002"])
+	_master_server = subprocess.Popen([sys.executable, "server.py", "-h", "localhost", "-p", "2002"])
 
 
 def stop_server():
@@ -87,7 +87,7 @@ def stop_server():
 
 
 @with_setup(start_server, stop_server)
-@gui_test(timeout=60, additional_cmdline=["--mp-master", "127.0.0.1:2002"])
+@gui_test(timeout=60, additional_cmdline=["--mp-master", "localhost:2002"])
 def test_multiplayer(gui):
 	"""Test that the multiplayer page shows up."""
 
