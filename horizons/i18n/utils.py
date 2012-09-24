@@ -21,7 +21,7 @@
 
 from horizons.constants import FONTDEFS, LANGUAGENAMES
 
-def find_available_languages():
+def find_available_languages(domain='unknown-horizons'):
 	"""Returns a dict( lang_key -> locale_dir )"""
 	alternatives = ('content/lang',
 	                'build/mo',
@@ -36,7 +36,7 @@ def find_available_languages():
 	languages = {}
 
 	for i in alternatives:
-		for j in glob('%s/*/*/unknown-horizons.mo' % i):
+		for j in glob('%s/*/*/%s.mo' % (i, domain)):
 			splited = j.split(os.sep)
 			key = splited[-3]
 			if not key in languages:

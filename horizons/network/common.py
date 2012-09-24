@@ -20,6 +20,7 @@
 # ###################################################
 
 import uuid
+from gettext import NullTranslations
 from horizons.network import packets, find_enet_module
 enet = find_enet_module()
 
@@ -59,6 +60,7 @@ class Address(object):
 
 #-----------------------------------------------------------------------------
 
+nulltranslation = NullTranslations()
 class Player(object):
 	def __init__(self, peer, sid, protocol=0):
 		# pickle doesn't use all of these attributes
@@ -81,6 +83,7 @@ class Player(object):
 		self.ready    = False
 		self.prepared = False
 		self.fetch    = False
+		self.gettext  = nulltranslation
 
 	# for pickle: return only relevant data to the player
 	def __getstate__(self):

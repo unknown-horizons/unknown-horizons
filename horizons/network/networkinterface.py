@@ -161,7 +161,7 @@ class NetworkInterface(object):
 		"""Join a game with a certain uuid"""
 		i = 2
 		try:
-			while i < 10: # try 10 different names and colors
+			while i < 10: # FIXME: try 10 different names and colors
 				try:
 					self._client.joingame(uuid, password, fetch)
 					return True
@@ -171,6 +171,8 @@ class NetworkInterface(object):
 						self.change_name( self.__get_player_name() + unicode(i), save=False )
 					elif 'color' in e.message:
 						self.change_color(self.__get_player_color() + i, save=False)
+					else:
+						raise
 				i += 1
 			self._client.joingame(uuid, password, fetch)
 		except NetworkException as e:

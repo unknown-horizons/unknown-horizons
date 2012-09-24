@@ -120,10 +120,10 @@ class packet(object):
 			# Make sure we don't overwrite sid via packet property
 			assert(not hasattr(self, 'sid'))
 			self.sid = sid
-		self._send(peer, self.serialize(), channelid)
+		self.sendraw(peer, self.serialize(), channelid)
 
 	@staticmethod
-	def _send(peer, data, channelid=0):
+	def sendraw(peer, data, channelid=0):
 		packet = enet.Packet(data, enet.PACKET_FLAG_RELIABLE)
 		peer.send(channelid, packet)
 
