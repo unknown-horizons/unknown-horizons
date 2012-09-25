@@ -61,6 +61,13 @@ class TileLayingTool(NavigationTool):
 		else:
 			super(PipetteTool, self).mouseClicked(evt)
 
+	def mouseDragged(self, evt):
+		"""Allow placing tiles continusly while moving the mouse."""
+		if evt.getButton() == fife.MouseEvent.LEFT:
+			coords = self.get_world_location(evt).to_tuple()
+			self.session.world_editor.set_tile(coords, self._tile_details)
+			evt.consume()
+
 	def update_coloring(self, evt):
 		self._remove_coloring()
 		self._add_coloring(self.get_world_location(evt).to_tuple())
