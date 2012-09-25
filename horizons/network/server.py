@@ -98,6 +98,18 @@ class Server(object):
 			logging.warning("[INIT] Your system doesn't support /dev/urandom")
 
 
+	# we use the following custom prefixes/functions to distinguish
+	# between server side messages (domain=unknown-horizons-server) and
+	# client side messages (domain=unknown-horizons):
+	#
+	# S_(player,  ...)    ... same as _(...)
+	# SN_(player, ...)    ... same as N_(...)
+	# __(...)             ... noop for extracting the strings
+	def gettext(self, player, message):
+		return player.gettext.ugettext(message)
+	def ngettext(self, player, msgid1, msgid2, n):
+		return player.gettext.ungettext(msgid1, msgid2, n)
+
 	def setup_i18n(self):
 		domain = 'unknown-horizons-server'
 		for lang, dir in find_available_languages(domain).items():
@@ -108,11 +120,9 @@ class Server(object):
 			except IOError:
 				pass
 		import __builtin__
-		__builtin__.__dict__['_'] = self.gettext
-
-
-	def gettext(self, player, message):
-		return player.gettext.ugettext(message)
+		__builtin__.__dict__['S_']   = self.gettext
+		__builtin__.__dict__['SN_']  = self.ngettext
+		__builtin__.__dict__['__']   = lambda x : x
 
 
 	# uuid4() uses /dev/urandom when possible
@@ -146,9 +156,9 @@ class Server(object):
 		logging.info("Starting up server on %s:%d" % (self.hostname, self.port))
 		try:
 			self.host = enet.Host(enet.Address(self.hostname, self.port), MAX_PEERS, 0, 0, 0)
-		except (IOError, MemoryError):
+		except (IOError, MemoryError) as e:
 			# these exceptions do not provide any information.
-			raise network.NetworkException("Unable to create network structure. Maybe invalid or irresolvable server address:")
+			raise network.NetworkException("Unable to create network structure: %s" % (e))
 
 		logging.debug("Entering the main loop...")
 		while True:
@@ -197,13 +207,13 @@ class Server(object):
 
 
 	def error(self, player, message, _type = ErrorType.NotSet):
-		self._error(player.peer, _(player, message), _type)
+		self._error(player.peer, S_(player, message), _type)
 
 	def _error(self, peer, message, _type = ErrorType.NotSet):
 		self.send(peer, packets.cmd_error(message, _type))
 
 	def fatalerror(self, player, message, later=True):
-		self._fatalerror(player.peer, _(player, message), later)
+		self._fatalerror(player.peer, S_(player, message), later)
 
 	def _fatalerror(self, peer, message, later=True):
 		self.send(peer, packets.cmd_fatalerror(message))
@@ -226,7 +236,7 @@ class Server(object):
 
 		if not player.protocol in PROTOCOLS:
 			logging.warning("[CONNECT] %s runs old or unsupported protocol" % (player))
-			self.fatalerror(player, "Old or unsupported multiplayer protocol. Please check your game version")
+			self.fatalerror(player, __("Old or unsupported multiplayer protocol. Please check your game version"))
 			return
 
 		# NOTE: copying bytes or int doesn't work here
@@ -270,13 +280,13 @@ class Server(object):
 			return
 		except Exception as e:
 			logging.warning("[RECEIVE] Unknown or malformed packet from %s: %s!" % (peer.address, e))
-			self.fatalerror(player, "Unknown or malformed packet. Please check your game version")
+			self.fatalerror(player, __("Unknown or malformed packet. Please check your game version"))
 			return
 
 		# session id check
 		if packet.sid != player.sid:
 			logging.warning("[RECEIVE] Invalid session id for player %s (%s vs %s)!" % (peer.address, packet.sid, player.sid))
-			self.fatalerror(player, "Invalid/Unknown session") # this will trigger ondisconnect() for cleanup
+			self.fatalerror(player, __("Invalid/Unknown session")) # this will trigger ondisconnect() for cleanup
 			return
 
 		if packet.__class__ not in self.callbacks:
@@ -352,21 +362,21 @@ class Server(object):
 
 	def onjoingame(self, player, packet):
 		if player.game is not None:
-			self.error(player, "You can't join a game while in another game")
+			self.error(player, __("You can't join a game while in another game"))
 			return
 
 		game = self.__find_game_from_uuid(packet)
 		if game is None:
-			self.error(player, "Unknown game or game is running a different version")
+			self.error(player, __("Unknown game or game is running a different version"))
 			return
 		if not game.is_open():
-			self.error(player, "Game has already started. No more joining")
+			self.error(player, __("Game has already started. No more joining"))
 			return
 		if game.is_full():
-			self.error(player, "Game is full")
+			self.error(player, __("Game is full"))
 			return
 		if game.has_password() and packet.password != game.password:
-			self.error(player, "Wrong password")
+			self.error(player, __("Wrong password"))
 			return
 
 		# protocol=0
@@ -383,13 +393,13 @@ class Server(object):
 		# make sure player names, colors and clientids are unique
 		for _player in game.players:
 			if _player.name == packet.playername:
-				self.error(player, "There's already a player with your name inside this game. Change your name")
+				self.error(player, __("There's already a player with your name inside this game. Change your name"))
 				return
 			if _player.color == packet.playercolor:
-				self.error(player, "There's already a player with your color inside this game. Change your color")
+				self.error(player, __("There's already a player with your color inside this game. Change your color"))
 				return
 			if _player.clientid == packet.clientid:
-				self.error(player, "There's already a player with your unique player ID inside this game. This should never occur.")
+				self.error(player, __("There's already a player with your unique player ID inside this game. This should never occur."))
 				return
 
 		logging.debug("[JOIN] [%s] %s joined %s" % (game.uuid, player, game))
@@ -404,7 +414,7 @@ class Server(object):
 
 	def onleavegame(self, player, packet):
 		if player.game is None:
-			self.error(player, "You are not inside a game")
+			self.error(player, __("You are not inside a game"))
 			return
 		self.call_callbacks("leavegame", player)
 		self.send(player.peer, packets.cmd_ok())
@@ -434,11 +444,12 @@ class Server(object):
 		if game.creator.protocol >= 1 and game.is_open():
 			# NOTE: works with protocol >= 1
 			for _player in game.players:
-				self.error(_player, "The game has been terminated. The creator has left the game.", ErrorType.TerminateGame)
+				self.error(_player, __("The game has been terminated. The creator has left the game."), ErrorType.TerminateGame)
 		else:
 			for _player in game.players:
 				if _player.peer.state == enet.PEER_STATE_CONNECTED:
-					self.fatalerror(_player, "I feel like a bad bunny but one player has terminated the game which currently for technical reasons means that the game cannot continue. Sorry :*(")
+					self.fatalerror(_player, __("I feel like a bad bunny but one player has terminated the game"
+						" which currently for technical reasons means that the game cannot continue. Sorry :*("))
 		self.call_callbacks('deletegame', game)
 
 
@@ -487,7 +498,7 @@ class Server(object):
 		# make sure player names are unique
 		for _player in game.players:
 			if _player.name == packet.playername:
-				self.error(player, "There's already a player with your name inside this game. Unable to change your name")
+				self.error(player, __("There's already a player with your name inside this game. Unable to change your name"))
 				return
 
 		# ACK the change
@@ -514,7 +525,7 @@ class Server(object):
 		# make sure player colors are unique
 		for _player in game.players:
 			if _player.color == packet.playercolor:
-				self.error(player, "There's already a player with your color inside this game. Unable to change your color")
+				self.error(player, __("There's already a player with your color inside this game. Unable to change your color"))
 				return
 
 		# ACK the change
@@ -601,7 +612,7 @@ class Server(object):
 		game = player.game
 
 		if game is not None:
-			self.error(player, "You can't fetch a game while in another game")
+			self.error(player, __("You can't fetch a game while in another game"))
 
 		fetch_game = self.__find_game_from_uuid(packet)
 		for _player in fetch_game.players:
