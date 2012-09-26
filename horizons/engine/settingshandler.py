@@ -325,6 +325,6 @@ def get_screen_resolutions():
 		if res not in possible_resolutions:
 			possible_resolutions.append(res)
 
-	possible_resolutions.sort()
+	possible_resolutions.sort(key=lambda res: int(res.split('x')[0]))
 
 	return possible_resolutions
