@@ -29,6 +29,7 @@ from horizons.util.shapes import Circle, Point
 
 class TileLayingTool(NavigationTool):
 	"""Tool to lay ground tiles."""
+	HIGHLIGHT_COLOR = (0, 200, 90)
 
 	def __init__(self, session, tile_details):
 		super(TileLayingTool, self).__init__(session)
@@ -77,7 +78,14 @@ class TileLayingTool(NavigationTool):
 		self._add_coloring(self.get_world_location(evt).to_tuple())
 
 	def _add_coloring(self, pos):
-		pass
+		brush = Circle(Point(*pos), self.session.world_editor.brush_size - 1)
+		for p in brush.tuple_iter():
+			if p not in self.session.world.full_map:
+				continue
+
+			tile = self.session.world.full_map[p]
+			if hasattr(tile, '_instance'):
+				self.renderer.addColored(tile._instance, *self.HIGHLIGHT_COLOR)
 
 	def _remove_coloring(self):
 		self.renderer.removeAllColored()
