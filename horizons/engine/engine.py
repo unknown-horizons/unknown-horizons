@@ -49,6 +49,7 @@ class Fife(ApplicationBase):
 
 		self._setting_handler = SettingsHandler(self)
 		self._setup_settings()
+		self._set_properly_window_icon()
 
 		self.engine = fife.Engine()
 		self.engine_settings = self.engine.getSettings()
@@ -68,6 +69,12 @@ class Fife(ApplicationBase):
 	# existing settings not part of this gui or the fife defaults
 	# (required for preserving values when upgrading settings file)
 	UNREFERENCED_SETTINGS = {UH_MODULE: ["Nickname", "AIPlayers", "ClientID"] }
+
+	def _set_properly_window_icon(self):
+		# Use other Window-Icon for Mac
+		if os.uname()[0] == 'Darwin' and \
+		   self.get_fife_setting('WindowIcon') == PATHS.DEFAULT_WINDOW_ICON_PATH:
+			self.set_fife_setting('WindowIcon', PATHS.MAC_WINDOW_ICON_PATH)
 
 	def _setup_settings(self, check_file_version=True):
 		_user_config_file = os.path.join( os.getcwd(), PATHS.USER_CONFIG_FILE )

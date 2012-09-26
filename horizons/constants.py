@@ -454,6 +454,8 @@ class PATHS:
 	LOG_DIR = os.path.join(_user_dir, "log")
 	USER_CONFIG_FILE = os.path.join(_user_dir, "settings.xml")
 	SCREENSHOT_DIR = os.path.join(_user_dir, "screenshots")
+	DEFAULT_WINDOW_ICON_PATH = os.path.join("content/gui/images/logos", "uh_32.png")
+	MAC_WINDOW_ICON_PATH = os.path.join("content/gui/icons", "Icon.icns")
 
 	# paths relative to uh dir
 	ACTION_SETS_DIRECTORY = os.path.join("content", "gfx")
