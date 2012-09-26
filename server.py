@@ -46,6 +46,7 @@ def fork():
 	except OSError, e:
 		sys.stderr.write("Unable to fork: (%d) %s\n" % (e.errno, e.strerror))
 		sys.exit(1)
+	return pid
 
 def redirect(stdin='/dev/null', stdout='/dev/null', stderr='/dev/null'):
 	for f in sys.stdout, sys.stderr:
@@ -63,7 +64,7 @@ def usage(fd = sys.stdout):
 		fd.write("[-d] ")
 	fd.write("-h host [-p port] [-s statistic_file]")
 	if os.name == "posix":
-		fd.write("[-l logfile] ")
+		fd.write("[-l logfile] [-P pidfile]")
 	fd.write("\n")
 
 host = None
@@ -71,11 +72,12 @@ port = 2002
 statfile = None
 daemonize = False
 logfile = None
+pidfile = None
 
 try:
 	options = 'h:p:s:'
 	if os.name == "posix":
-		options += 'dl:'
+		options += 'dl:P:'
 	opts, args = getopt.getopt(sys.argv[1:], options)
 except getopt.GetoptError as err:
 	sys.stderr.write(str(err))
@@ -95,6 +97,8 @@ try:
 				daemonize = True
 			if key == '-l':
 				logfile = value
+			if key == '-P':
+				pidfile = value
 except (ValueError, IndexError):
 	port = 0
 
@@ -102,8 +106,14 @@ if host == None or port == None or port <= 0:
 	usage()
 	sys.exit(1)
 
+if pidfile and os.path.isfile(pidfile):
+	sys.stderr.write("Error: Pidfile '%s' already exists.\n" % (pidfile))
+	sys.stderr.write("Please make sure no other server is running and remove this file\n")
+	sys.exit(1)
+
+pid = os.getpid()
 if daemonize:
-	fork()
+	pid = fork()
 	# daemon must redirect!
 	if logfile is None:
 		logfile = '/dev/null'
@@ -111,9 +121,15 @@ if daemonize:
 if logfile is not None:
 	redirect('/dev/null', logfile, logfile)
 
+if pidfile:
+	file(pidfile, 'w').write(str(pid))
+
 try:
 	server = Server(host, port, statfile)
 	server.run()
 except network.NetworkException as e:
 	sys.stderr.write("Error: %s\n" % e)
 	sys.exit(2)
+
+if pidfile:
+	os.unlink(pidfile)
