@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<Container size="264,550" name="editor_settings" position="5, 600">
+	<!-- FIXME if I remove the TabBG, the widget doesn't show at all -->
+	<TabBG amount="1"/>
+
+	<ImageButton name="size_1" text="" size="32,32" position="25, 55"
+		up_image="content/gui/icons/ship/smallbutton.png"
+		down_image="content/gui/icons/ship/smallbutton_d.png"
+		hover_image="content/gui/icons/ship/smallbutton_h.png" />
+	<Label position="33, 88" text="1" name="lbl_1" comment="noi18n" />
+
+	<ImageButton name="size_2" text="" size="32,32" position="67, 55"
+		up_image="content/gui/icons/ship/smallbutton.png"
+		down_image="content/gui/icons/ship/smallbutton_d.png"
+		hover_image="content/gui/icons/ship/smallbutton_h.png" />
+	<Label position="75, 88" text="2" name="lbl_2" comment="noi18n" />
+
+	<ImageButton name="size_3" text="" size="32,32" position="110, 55"
+		up_image="content/gui/icons/ship/smallbutton.png"
+		down_image="content/gui/icons/ship/smallbutton_d.png"
+		hover_image="content/gui/icons/ship/smallbutton_h.png" />
+	<Label position="115, 88" text="3" name="lbl_3" comment="noi18n" />
+</Container>

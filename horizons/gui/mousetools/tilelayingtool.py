@@ -27,6 +27,8 @@ from horizons.entities import Entities
 from horizons.constants import LAYERS
 from horizons.gui.mousetools import NavigationTool
 from horizons.gui.tabs.buildtabs import BuildTab
+from horizons.util.shapes import Circle, Point
+
 
 class TileLayingTool(NavigationTool):
 	"""Tool to lay ground tiles."""
@@ -50,10 +52,15 @@ class TileLayingTool(NavigationTool):
 	def mouseMoved(self, evt):
 		self.update_coloring(evt)
 
+	def _place_tile(self, coords):
+		brush = Circle(Point(*coords), self.session.world_editor.brush_size - 1)
+		for p in brush.tuple_iter():
+			self.session.world_editor.set_tile(p, self._tile_details)
+
 	def mousePressed(self, evt):
 		if evt.getButton() == fife.MouseEvent.LEFT:
 			coords = self.get_world_location(evt).to_tuple()
-			self.session.world_editor.set_tile(coords, self._tile_details)
+			self._place_tile(coords)
 			evt.consume()
 		elif evt.getButton() == fife.MouseEvent.RIGHT:
 			self.on_escape()
@@ -65,7 +72,7 @@ class TileLayingTool(NavigationTool):
 		"""Allow placing tiles continusly while moving the mouse."""
 		if evt.getButton() == fife.MouseEvent.LEFT:
 			coords = self.get_world_location(evt).to_tuple()
-			self.session.world_editor.set_tile(coords, self._tile_details)
+			self._place_tile(coords)
 			evt.consume()
 
 	def update_coloring(self, evt):
