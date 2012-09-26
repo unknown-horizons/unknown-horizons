@@ -142,6 +142,7 @@ class SettingsHandler(object):
 		slider_event_map['volume_music'] = self.set_volume_music
 		slider_event_map['volume_effects'] = self.set_volume_effects
 		slider_event_map['mousesensitivity'] = self.set_mouse_sensitivity
+		slider_event_map['reset_mouse_sensitivity'] = self.reset_mouse_sensitivity
 
 		self.settings_dialog.mapEvents(slider_event_map)
 
@@ -175,6 +176,10 @@ class SettingsHandler(object):
 
 
 	# Handlers for setting interaction
+
+	def reset_mouse_sensitivity(self):
+		self.settings_dialog.findChild(name="mousesensitivity").value = 0.0
+		self.set_mouse_sensitivity()
 
 	def set_mouse_sensitivity(self, value=None):
 		"""
