@@ -766,15 +766,19 @@ def set_translations():
 		# (text of widget: game_player_status)
 		("game_player_status"          , "text"    ): _("Status"),
 		# (text of widget: game_start_notice)
-		("game_start_notice"           , "text"    ): _("The game will start as soon as players are ready."),
+		("game_start_notice"           , "text"    ): _("The game will start as soon as all players are ready."),
 		# (text of widget: headline)
 		("headline"                    , "text"    ): _("Chat:"),
 		# (text of widget: headline)
 		("headline"                    , "text"    ): _("Gamelobby"),
+		# (text of widget: ready_lbl)
+		("ready_lbl"                   , "text"    ): _("Ready:"),
 		# (text of widget: startmessage)
 		("startmessage"                , "text"    ): _("Game details:"),
 		# (helptext of widget: cancel)
 		("cancel"                      , "helptext"): _("Exit gamelobby"),
+		# (helptext of widget: ready_btn)
+		("ready_btn"                   , "helptext"): _("Sets your state to ready (necessary for the game to start)"),
 		},
 
 	"multiplayermenu.xml" : {
