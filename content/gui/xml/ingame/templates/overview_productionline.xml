@@ -11,21 +11,24 @@
 <AutoResizeContainer size="240,55" position="25,110" name="production_line_container">
 	<VBox name="input_res" position="2,0"/>
 
-	<Icon image="content/gui/icons/templates/production/production_arrow.png" position="60,16"/>
+	<Container name="centered_production_icons" size="200,55" position="0,0">
+		<Icon image="content/gui/icons/templates/production/production_arrow.png" position="60,16"/>
+		<VBox name="output_box" position="134,16" />
+
+		<!-- one of those button gets removed at runtime -->
+		<ImageButton up_image="content/gui/icons/templates/production/toggle_active_n.png"
+			down_image="content/gui/icons/templates/production/toggle_active_d.png"
+			hover_image="content/gui/icons/templates/production/toggle_active_h.png"
+			border_size="0" position="80,0" name="toggle_active_active" helptext="Pause production" />
+
+		<ImageButton up_image="content/gui/icons/templates/production/toggle_inactive_n.png"
+			down_image="content/gui/icons/templates/production/toggle_inactive_d.png"
+			hover_image="content/gui/icons/templates/production/toggle_inactive_h.png"
+			border_size="0" position="80,0" name="toggle_active_inactive" helptext="Start production" />
+
+		<VBox name="output_res" position="157,0"/>
+	</Container>
+
 	<VBox name="input_box" position="61,16" />
-	<VBox name="output_box" position="134,16" />
-
-	<!-- one of those button gets removed at runtime -->
-	<ImageButton up_image="content/gui/icons/templates/production/toggle_active_n.png"
-		down_image="content/gui/icons/templates/production/toggle_active_d.png"
-		hover_image="content/gui/icons/templates/production/toggle_active_h.png"
-		border_size="0" position="80,0" name="toggle_active_active" helptext="Pause production" />
-
-	<ImageButton up_image="content/gui/icons/templates/production/toggle_inactive_n.png"
-		down_image="content/gui/icons/templates/production/toggle_inactive_d.png"
-		hover_image="content/gui/icons/templates/production/toggle_inactive_h.png"
-		border_size="0" position="80,0" name="toggle_active_inactive" helptext="Start production" />
-
-	<VBox name="output_res" position="157,0"/>
 
 </AutoResizeContainer>

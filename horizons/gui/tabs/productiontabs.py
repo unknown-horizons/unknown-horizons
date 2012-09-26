@@ -84,35 +84,41 @@ class ProductionOverviewTab(OverviewTab):
 			container = gui.findChild(name="production_line_container")
 			self._set_resource_amounts(container, production)
 
+			centered_container = container.findChild(name='centered_production_icons')
+			consumed_resources = len(production.get_consumed_resources()) - 1
+			if consumed_resources > 0:
+				y = (27 * consumed_resources)
+				centered_container.position = (0, y)
+
 			if production.is_paused():
-				container.removeChild( container.findChild(name="toggle_active_active") )
-				toggle_icon = container.findChild(name="toggle_active_inactive")
+				centered_container.removeChild( centered_container.findChild(name="toggle_active_active") )
+				toggle_icon = centered_container.findChild(name="toggle_active_inactive")
 				toggle_icon.name = "toggle_active"
 			else:
-				container.removeChild( container.findChild(name="toggle_active_inactive") )
-				toggle_icon = container.findChild(name="toggle_active_active")
+				centered_container.removeChild( centered_container.findChild(name="toggle_active_inactive") )
+				toggle_icon = centered_container.findChild(name="toggle_active_active")
 				toggle_icon.name = "toggle_active"
 
 				if production.get_state() == PRODUCTION.STATES.producing:
 					bg = Icon(image=self.__class__.BUTTON_BACKGROUND)
 					bg.position = toggle_icon.position
-					container.addChild(bg)
-					container.removeChild(toggle_icon) # fix z-ordering
-					container.addChild(toggle_icon)
+					centered_container.addChild(bg)
+					centered_container.removeChild(toggle_icon) # fix z-ordering
+					centered_container.addChild(toggle_icon)
 					anim = PychanAnimation(toggle_icon, self.__class__.ACTIVE_PRODUCTION_ANIM_DIR)
-					container.anim = anim
+					centered_container.anim = anim
 					anim.start(1.0/12, -1) # always start anew, people won't notice
 					self._animations.append( weakref.ref( anim ) )
 
 			# fill it with input and output resources
 			in_res_container = container.findChild(name="input_res")
 			self._add_resource_icons(in_res_container, production.get_consumed_resources(), marker=True)
-			out_res_container = container.findChild(name="output_res")
+			out_res_container = centered_container.findChild(name="output_res")
 			self._add_resource_icons(out_res_container, production.get_produced_resources())
 
 			# active toggle_active button
 			toggle_active = ToggleActive(self.instance.get_component(Producer), production)
-			container.mapEvents({
+			centered_container.mapEvents({
 				'toggle_active': Callback(toggle_active.execute, self.instance.session)
 			})
 			# NOTE: this command causes a refresh, so we needn't change the toggle_active-button-image
