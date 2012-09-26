@@ -13,8 +13,8 @@ cd "$(dirname "$0")"/..
 VERSION=$(python2 -c 'from horizons.constants import VERSION
 print "%s" % VERSION.RELEASE_VERSION')
 
-RESULT_FILE=po/unknown-horizons.pot
-RESULT_FILE_SERVER=po/unknown-horizons-server.pot
+RESULT_FILE=po/uh/unknown-horizons.pot
+RESULT_FILE_SERVER=po/uh-server/unknown-horizons-server.pot
 XML_PY_FILE=horizons/i18n/guitranslations.py
 YAML_PY_FILE=horizons/i18n/objecttranslations.py
 SQL_POT_FILE=po/sqlite_strings.pot
