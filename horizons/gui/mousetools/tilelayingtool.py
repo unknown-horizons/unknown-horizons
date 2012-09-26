@@ -23,10 +23,7 @@ from fife import fife
 
 import horizons.globals
 
-from horizons.entities import Entities
-from horizons.constants import LAYERS
 from horizons.gui.mousetools import NavigationTool
-from horizons.gui.tabs.buildtabs import BuildTab
 from horizons.util.shapes import Circle, Point
 
 
@@ -66,7 +63,7 @@ class TileLayingTool(NavigationTool):
 			self.on_escape()
 			evt.consume()
 		else:
-			super(PipetteTool, self).mouseClicked(evt)
+			super(TileLayingTool, self).mouseClicked(evt)
 
 	def mouseDragged(self, evt):
 		"""Allow placing tiles continusly while moving the mouse."""

@@ -55,7 +55,7 @@ class GroundPipetteTool(NavigationTool):
 			self.on_escape()
 			evt.consume()
 		else:
-			super(PipetteTool, self).mouseClicked(evt)
+			super(GroundPipetteTool, self).mouseClicked(evt)
 
 	def update_coloring(self, evt):
 		self._remove_coloring()
