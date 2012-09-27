@@ -20,96 +20,92 @@
 # ###################################################
 
 import os
+import subprocess
 import shutil
+import sys
+
+from nose.tools import with_setup
 
 from horizons.constants import PATHS
-from tests.gui import TestFinished, gui_test, TEST_FIXTURES_DIR
+from tests.gui import gui_test, TEST_FIXTURES_DIR
 
 
 @gui_test(timeout=60)
 def test_support(gui):
 	"""Test that the support page shows up."""
-	yield
 
 	def func():
-		yield
 		gui.trigger('support_window', 'okButton/action/__execute__')
 	
 	with gui.handler(func):
 		gui.trigger('menu', 'dead_link')
 
-	yield TestFinished
-
 
 @gui_test(timeout=60)
 def test_credits(gui):
 	"""Test that the credits page shows up."""
-	yield
 
 	def func():
-		yield
 		gui.trigger('credits_window', 'okButton/action/__execute__')
 	
 	with gui.handler(func):
 		gui.trigger('menu', 'creditsLink')
 
-	yield TestFinished
-
 
 @gui_test(timeout=60)
 def test_help(gui):
 	"""Test that the help page shows up."""
-	yield
 
 	def func():
-		yield
 		gui.trigger('help_window', 'okButton/action/__execute__')
 		
 	with gui.handler(func):
 		gui.trigger('menu', 'helpLink')
-
-	yield TestFinished
 
 
 # NOTE doesn't work when running under xvfb (no screen resolutions detected)
 """
 @gui_test(timeout=60)
 def test_settings(gui):
-	yield
 	gui.trigger('menu', 'settingsLink')
 	gui.trigger('settings_window', 'cancelButton')
-
-	yield TestFinished
 """
 
+# Start our own master server for the multiplayer test because the official one
+# is probably too old.
 
-@gui_test(timeout=60)
+_master_server = None
+
+def start_server():
+	global _master_server
+	_master_server = subprocess.Popen([sys.executable, "server.py", "-h", "localhost", "-p", "2002"])
+
+
+def stop_server():
+	global _master_server
+	_master_server.terminate()
+
+
+@with_setup(start_server, stop_server)
+@gui_test(timeout=60, additional_cmdline=["--mp-master", "localhost:2002"])
 def test_multiplayer(gui):
 	"""Test that the multiplayer page shows up."""
-	yield
 
 	gui.trigger('menu', 'startMulti')
-	yield # TODO find out why it fails without yield
 	gui.trigger('menu', 'cancel')
-
-	yield TestFinished
 
 
 @gui_test(timeout=60)
 def test_singleplayer(gui):
 	"""Test that the singleplayer page shows up."""
-	yield
 
 	gui.trigger('menu', 'startSingle')
 	gui.trigger('menu', 'cancel')
-	
-	yield TestFinished
 
 
 @gui_test(timeout=60, cleanup_userdir=True)
 def test_load_game(gui):
 	"""Test loading a game from the mainmenu."""
-	yield
 
 	# copy fixture savegame into user dir, otherwise we'll just get a 'no savegames' popup
 	source = os.path.join(TEST_FIXTURES_DIR, 'boatbuilder.sqlite')
@@ -117,10 +113,7 @@ def test_load_game(gui):
 	shutil.copy(source, target_dir)
 
 	def func():
-		yield
 		gui.trigger('load_game_window', 'cancelButton/action/__execute__')
 		
 	with gui.handler(func):
 		gui.trigger('menu', 'loadgameButton')
-	
-	yield TestFinished

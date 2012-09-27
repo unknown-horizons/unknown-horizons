@@ -56,7 +56,8 @@ class WarehouseOverviewTab(OverviewTab):
 
 	def show(self):
 		super(WarehouseOverviewTab, self).show()
-		Scheduler().add_new_object(Callback(self._refresh_collector_utilisation), self, run_in = GAME_SPEED.TICKS_PER_SECOND, loops = -1)
+		Scheduler().add_new_object(Callback(self._refresh_collector_utilisation),
+		                           self, run_in=GAME_SPEED.TICKS_PER_SECOND, loops=-1)
 
 	def hide(self):
 		super(WarehouseOverviewTab, self).hide()

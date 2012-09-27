@@ -87,7 +87,7 @@ class PlayersShips(StatsWidget):
 		weapons = Label(name='weapons_%d' % ship.worldid)
 		if isinstance(ship, FightingShip):
 			weapon_list = []
-			for weapon_id, amount in sorted(ship.get_weapon_storage()):
+			for weapon_id, amount in sorted(ship.get_weapon_storage().itercontents()):
 				weapon_list.append('%d %s' % (amount, self.session.db.get_res_name(weapon_id)))
 			if weapon_list:
 				weapons.text = u', '.join(weapon_list)

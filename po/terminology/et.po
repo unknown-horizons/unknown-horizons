@@ -1,0 +1,763 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2012-03-31 21:42+0100\n"
+"PO-Revision-Date: 2012-01-08 15:02+0200\n"
+"Last-Translator: Üllar <ussikene@gmail.com>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: et\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Pootle 2.1.5\n"
+
+msgid "build"
+msgstr "ehita"
+
+msgid "game"
+msgstr "mäng"
+
+msgid "building"
+msgstr "ehitis"
+
+msgid "settlement"
+msgstr "koloonia"
+
+msgid "farm"
+msgstr "farm"
+
+msgid "ship"
+msgstr "laev"
+
+msgid "tent"
+msgstr "telk"
+
+msgid "warehouse"
+msgstr ""
+
+msgid "resource"
+msgstr "ressurss"
+
+msgid "produce"
+msgstr "tooda"
+
+msgid "field"
+msgstr "põld"
+
+msgid "map"
+msgstr "kaart"
+
+msgid "trade"
+msgstr "kauple"
+
+msgid "inhabitants"
+msgstr "elanikud"
+
+msgid "buy"
+msgstr "osta"
+
+msgid "overview"
+msgstr "ülevaade"
+
+msgid "click"
+msgstr "vajuta"
+
+msgid "lumberjack"
+msgstr "puuraidur"
+
+# 88%
+#, fuzzy
+msgid "resident"
+msgstr "elanikud"
+
+msgid "main square"
+msgstr "peaväljak"
+
+# 85%
+#, fuzzy
+msgid "sailors"
+msgstr "meremees"
+
+msgid "food"
+msgstr "toit"
+
+msgid "increment"
+msgstr ""
+
+msgid "production"
+msgstr "tootmine"
+
+msgid "select"
+msgstr "vali"
+
+msgid "sell"
+msgstr "müü"
+
+msgid "setting"
+msgstr "seade"
+
+msgid "storage"
+msgstr "ladu"
+
+# vaheleht?
+msgid "tab"
+msgstr "vaheleht"
+
+msgid "upgrade"
+msgstr ""
+
+msgid "your inhabitants"
+msgstr ""
+
+msgid "close"
+msgstr ""
+
+msgid "companies"
+msgstr "kompaniid"
+
+msgid "island"
+msgstr ""
+
+msgid "time"
+msgstr "aeg"
+
+msgid "unit"
+msgstr ""
+
+msgid "balance"
+msgstr "bilanss"
+
+msgid "coast"
+msgstr "rannik"
+
+msgid "menu"
+msgstr "menüü"
+
+msgid "slot"
+msgstr "ava"
+
+msgid "start"
+msgstr "alusta"
+
+msgid "stock"
+msgstr "kaup"
+
+msgid "trail"
+msgstr "teerada"
+
+msgid "Unknown Horizons"
+msgstr ""
+
+msgid "wool"
+msgstr "vill"
+
+msgid "boards"
+msgstr "lauad"
+
+msgid "collector"
+msgstr "koguja"
+
+msgid "connection"
+msgstr "ühendus"
+
+msgid "fire"
+msgstr "tuli"
+
+msgid "change"
+msgstr "muuda"
+
+msgid "connect"
+msgstr "ühenda"
+
+msgid "cost"
+msgstr "hind"
+
+msgid "house"
+msgstr "maja"
+
+msgid "log"
+msgstr "palk"
+
+msgid "road"
+msgstr ""
+
+msgid "save"
+msgstr "salvesta"
+
+# 80%
+msgid "built"
+msgstr "ehitatud"
+
+msgid "pasture"
+msgstr "karjamaa"
+
+msgid "reach"
+msgstr "ulatus"
+
+msgid "tree"
+msgstr "puu"
+
+msgid "your"
+msgstr "sinu"
+
+msgid "your settlement"
+msgstr ""
+
+msgid "add"
+msgstr "lisa"
+
+msgid "check"
+msgstr "kontrolli"
+
+msgid "choose"
+msgstr "vali"
+
+msgid "confectionery"
+msgstr ""
+
+msgid "fisher"
+msgstr "kalur"
+
+msgid "free trader"
+msgstr "vaba kaupleja"
+
+msgid "happiness"
+msgstr "heaolu"
+
+msgid "in stock"
+msgstr ""
+
+msgid "money"
+msgstr ""
+
+msgid "pavilion"
+msgstr "paviljon"
+
+msgid "running costs"
+msgstr "jooksvad kulud"
+
+msgid "sugar"
+msgstr "suhkur"
+
+msgid "taxes"
+msgstr "maksud"
+
+msgid "tax"
+msgstr "maks"
+
+msgid "tools"
+msgstr "tööriistad"
+
+msgid "button"
+msgstr ""
+
+msgid "continue"
+msgstr "jätka"
+
+msgid "faith"
+msgstr "usk"
+
+msgid "help"
+msgstr "abi"
+
+msgid "left"
+msgstr "vasak"
+
+msgid "level"
+msgstr "tase"
+
+msgid "mode"
+msgstr "moodus"
+
+msgid "move"
+msgstr "liiguta"
+
+# 87%
+#, fuzzy
+msgid "pioneers"
+msgstr "teerajaja"
+
+# 87%
+#, fuzzy
+msgid "citizens"
+msgstr "kodanik"
+
+# 88%
+#, fuzzy
+msgid "merchants"
+msgstr "kaupmees"
+
+# 90%
+#, fuzzy
+msgid "aristocrats"
+msgstr "aristokraat"
+
+msgid "potato"
+msgstr "kartul"
+
+msgid "settler"
+msgstr "asunik"
+
+# 80%
+#, fuzzy
+msgid "speed"
+msgstr "seeme"
+
+msgid "stop"
+msgstr "stopp"
+
+msgid "storage tent"
+msgstr "laotelk"
+
+msgid "wait"
+msgstr ""
+
+msgid "access"
+msgstr ""
+
+msgid "account"
+msgstr "konto"
+
+msgid "amount"
+msgstr ""
+
+msgid "build menu"
+msgstr "ehitiste menüü"
+
+msgid "cloth"
+msgstr "riie"
+
+msgid "construction"
+msgstr "ehitus"
+
+msgid "decrease"
+msgstr "vähenda"
+
+msgid "description"
+msgstr "kirjeldus"
+
+msgid "fish"
+msgstr "kala"
+
+msgid "increase"
+msgstr "suurenda"
+
+msgid "lamb"
+msgstr ""
+
+msgid "leave"
+msgstr "lahku"
+
+msgid "liquor"
+msgstr "alkohol"
+
+msgid "location"
+msgstr ""
+
+msgid "offer"
+msgstr ""
+
+# 75%
+#, fuzzy
+msgid "potatoes"
+msgstr "kartul"
+
+msgid "range"
+msgstr "ulatus"
+
+msgid "reached"
+msgstr "jõudnud"
+
+msgid "run"
+msgstr "käivita"
+
+msgid "slider"
+msgstr "liugur"
+
+msgid "solution"
+msgstr "lahendus"
+
+msgid "space"
+msgstr ""
+
+msgid "target"
+msgstr ""
+
+# släng! meeskond(mitte just parim variant)/võistkond(imelik)???
+# Rühm oleks ka veidi imelik.
+#, fuzzy
+msgid "team"
+msgstr "tiim"
+
+msgid "total"
+msgstr ""
+
+msgid "unable"
+msgstr ""
+
+msgid "active"
+msgstr "aktiivne"
+
+msgid "afford"
+msgstr ""
+
+# 85%
+#, fuzzy
+msgid "animals"
+msgstr "loom"
+
+msgid "Captain's log"
+msgstr "Kapteni päevik"
+
+# 75%
+#, fuzzy
+msgid "construct"
+msgstr "ehitus"
+
+msgid "consume"
+msgstr "tarbima"
+
+msgid "enabled"
+msgstr ""
+
+msgid "entries"
+msgstr ""
+
+msgid "feature"
+msgstr "iseärasus"
+
+msgid "forest"
+msgstr "mets"
+
+# 80%
+#, fuzzy
+msgid "grows"
+msgstr "kasvata"
+
+msgid "hold"
+msgstr "ootel"
+
+msgid "idle"
+msgstr ""
+
+msgid "income"
+msgstr "sissetulek"
+
+msgid "information"
+msgstr "informatsioon"
+
+msgid "key"
+msgstr "võti"
+
+msgid "lamb wool"
+msgstr "lambavill"
+
+msgid "overview tab"
+msgstr ""
+
+msgid "minimap"
+msgstr "mini kaart"
+
+msgid "issues"
+msgstr "küsimustes"
+
+msgid "plant"
+msgstr ""
+
+msgid "play"
+msgstr "mängi"
+
+msgid "playing"
+msgstr "mängib"
+
+msgid "price"
+msgstr ""
+
+# 75%
+#, fuzzy
+msgid "read"
+msgstr "punane"
+
+msgid "return"
+msgstr "tagasi"
+
+msgid "sale"
+msgstr "müük"
+
+msgid "screen"
+msgstr "ekraan"
+
+msgid "sound"
+msgstr "heli"
+
+msgid "special"
+msgstr ""
+
+msgid "store"
+msgstr ""
+
+# släng! meeskond(mitte just parim variant)/võistkond(imelik)???
+# Rühm oleks ka veidi imelik.
+# 75%
+#, fuzzy
+msgid "tear"
+msgstr "tiim"
+
+msgid "from time to time"
+msgstr "aegajalt"
+
+msgid "trading"
+msgstr "kauplemine"
+
+msgid "village"
+msgstr "küla"
+
+msgid "visit"
+msgstr "külasta"
+
+msgid "world"
+msgstr ""
+
+# üle kontrollida mängus!
+# 83%
+#, fuzzy
+msgid "yield"
+msgstr "saagikus"
+
+msgid "your ship"
+msgstr ""
+
+msgid "back"
+msgstr "tagasi"
+
+msgid "build settlement"
+msgstr "ehita koloonia"
+
+msgid "load"
+msgstr ""
+
+msgid "unload"
+msgstr ""
+
+msgid "command"
+msgstr ""
+
+msgid "completed"
+msgstr ""
+
+msgid "condition"
+msgstr "seisund"
+
+msgid "contact"
+msgstr "kontakt"
+
+msgid "empty"
+msgstr ""
+
+msgid "ensure"
+msgstr ""
+
+msgid "fulfill"
+msgstr "vii täide"
+
+msgid "graphics"
+msgstr "graafika"
+
+msgid "harvest"
+msgstr ""
+
+# 80%
+#, fuzzy
+msgid "hunts"
+msgstr "jahi"
+
+msgid "multiple"
+msgstr "mitu"
+
+msgid "potato field"
+msgstr ""
+
+msgid "school"
+msgstr "kool"
+
+msgid "seed"
+msgstr "seeme"
+
+msgid "service"
+msgstr "teenindus"
+
+msgid "sheep"
+msgstr "lammas"
+
+msgid "signal fire"
+msgstr "signaaltuli"
+
+msgid "statistics"
+msgstr ""
+
+msgid "clay"
+msgstr "savi"
+
+msgid "iron"
+msgstr "raud"
+
+msgid "ore"
+msgstr "maak"
+
+msgid "tobacco"
+msgstr "tubakas"
+
+msgid "charcoal"
+msgstr "süsi"
+
+msgid "sugar field"
+msgstr ""
+
+msgid "temporarily"
+msgstr "ajutiselt"
+
+msgid "values"
+msgstr ""
+
+#~ msgid "branch office"
+#~ msgstr "harukontor"
+
+#~ msgid "main"
+#~ msgstr "põhiline"
+
+#~ msgid "unknown"
+#~ msgstr "tundmatu"
+
+#~ msgid "free"
+#~ msgstr "tasuta"
+
+#~ msgid "trader"
+#~ msgstr "kaupleja"
+
+#~ msgid "version"
+#~ msgstr "versioon"
+
+#~ msgid "signal"
+#~ msgstr "signaal"
+
+#~ msgid "found"
+#~ msgstr "leitud"
+
+#~ msgid "raw"
+#~ msgstr "toores"
+
+#~ msgid "running"
+#~ msgstr "jooksvad"
+
+#~ msgid "inventory"
+#~ msgstr "inventar"
+
+#~ msgid "moved"
+#~ msgstr "liigutatud"
+
+#~ msgid "produced"
+#~ msgstr "toodetud"
+
+#~ msgid "hunter"
+#~ msgstr "jahimees"
+
+#~ msgid "market"
+#~ msgstr "turg"
+
+#~ msgid "partner"
+#~ msgstr "partner"
+
+#~ msgid "sailor"
+#~ msgstr "meremees"
+
+#~ msgid "pioneer"
+#~ msgstr "teerajaja"
+
+#~ msgid "citizen"
+#~ msgstr "kodanik"
+
+#~ msgid "merchant"
+#~ msgstr "kaupmees"
+
+#~ msgid "aristocrat"
+#~ msgstr "aristokraat"
+
+#~ msgid "refresh"
+#~ msgstr "uuenda"
+
+#~ msgid "residents"
+#~ msgstr "elanikud"
+
+#~ msgid "output"
+#~ msgstr "väljund"
+
+#~ msgid "weaver"
+#~ msgstr "kuduja"
+
+#~ msgid "animal"
+#~ msgstr "loom"
+
+#~ msgid "fisherman"
+#~ msgstr "kalur"
+
+#~ msgid "forum"
+#~ msgstr "foorum"
+
+#~ msgid "grow"
+#~ msgstr "kasvata"
+
+#~ msgid "hunt"
+#~ msgstr "jahi"
+
+#~ msgid "load/unload"
+#~ msgstr "lae/ära lae"
+
+#~ msgid "ship inventory"
+#~ msgstr "laeva inventar"
+
+#~ msgid "starting"
+#~ msgstr "alustab"
+
+#~ msgid "trade partner"
+#~ msgstr "kaubanduspartner"
+
+#~ msgid "green"
+#~ msgstr "roheline"
+
+#~ msgid "red"
+#~ msgstr "punane"
+
+#~ msgid "no"
+#~ msgstr "ei"
+
+#~ msgid "dialogue"
+#~ msgstr "dialoog"
+
+#~ msgid "ruin"
+#~ msgstr "varemed"
+
+#~ msgid "salt ponds"
+#~ msgstr "soolatiigid"
+
+#~ msgid "cattle"
+#~ msgstr "eluskari"
+
+#~ msgid "pig"
+#~ msgstr "siga"
+
+#~ msgid "herbs"
+#~ msgstr "ravimtaimed"
+
+#~ msgid "herbary"
+#~ msgstr "apteek"
+
+#~ msgid "butchery"
+#~ msgstr "lihunik"
+
+#~ msgid "doctor"
+#~ msgstr "arst"
+
+#~ msgid "education"
+#~ msgstr "haridus"

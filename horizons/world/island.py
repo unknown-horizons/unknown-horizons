@@ -31,7 +31,7 @@ from horizons.util.random_map import is_random_island_id_string, create_random_i
 from horizons.util.shapes import Circle, Point, Rect
 from horizons.util.worldobject import WorldObject
 from horizons.messaging import SettlementRangeChanged, NewSettlement
-from settlement import Settlement
+from horizons.world.settlement import Settlement
 from horizons.constants import BUILDINGS, RES, UNITS
 from horizons.scenario import CONDITIONS
 from horizons.world.buildingowner import BuildingOwner

@@ -132,8 +132,9 @@ class NavigationTool(CursorTool):
 			return
 
 		self.tooltip.show_evt(evt)
-		# don't overwrite this last_event_post instance, due to class hierarchy, it would write to the lowest class
-		# (e.g. selectiontool, and the attribute in NavigationTool would be left unchanged)
+		# don't overwrite this last_event_pos instance. Due to class
+		# hierarchy, it would write to the lowest class (e.g. SelectionTool)
+		# and the attribute in NavigationTool would be left unchanged.
 		self.__class__.last_event_pos.set(evt.getX(), evt.getY(), 0)
 		mousepoint = self.__class__.last_event_pos
 

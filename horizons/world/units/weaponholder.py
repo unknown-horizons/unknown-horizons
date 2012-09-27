@@ -51,7 +51,8 @@ class WeaponHolder(object):
 		self._target = None
 		self.add_storage_modified_listener(self.update_range)
 		self.equipped_weapon_number = 0
-		Scheduler().add_new_object(self._stance_tick, self, run_in = 2, loops = -1, loop_interval = GAME_SPEED.TICKS_PER_SECOND)
+		Scheduler().add_new_object(self._stance_tick, self, run_in=2, loops=-1,
+		                           loop_interval=GAME_SPEED.TICKS_PER_SECOND)
 
 	def remove(self):
 		self.remove_storage_modified_listener(self.update_range)
@@ -87,7 +88,7 @@ class WeaponHolder(object):
 		Callback executed when weapon is fired
 		"""
 		# remove in the next tick
-		Scheduler().add_new_object(Callback(self._fireable.remove, weapon), self, run_in = 0)
+		Scheduler().add_new_object(Callback(self._fireable.remove, weapon), self, run_in=0)
 
 	def _increase_fired_weapons_number(self, caller=None):
 		"""
@@ -442,7 +443,7 @@ class WeaponHolder(object):
 			weapon.add_weapon_fired_listener(self._increase_fired_weapons_number)
 		self.on_storage_modified()
 		# load target after all objects have been loaded
-		Scheduler().add_new_object(Callback(self.load_target, db), self, run_in = 0)
+		Scheduler().add_new_object(Callback(self.load_target, db), self, run_in=0)
 		self.log.debug("%s weapon storage after load: %s", self, self._weapon_storage)
 
 	def get_status(self):

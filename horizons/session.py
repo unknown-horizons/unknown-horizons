@@ -183,7 +183,8 @@ class Session(LivingObject):
 		"""Returns a Timer instance."""
 		raise NotImplementedError
 
-	def _clear_caches(self):
+	@classmethod
+	def _clear_caches(cls):
 		"""Clear all data caches in global namespace related to a session"""
 		WorldObject.reset()
 		NamedComponent.reset()

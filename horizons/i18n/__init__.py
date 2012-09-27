@@ -46,10 +46,6 @@ from horizons.i18n.utils import get_fontdef_for_locale, find_available_languages
 
 log = logging.getLogger("i18n")
 
-# init translations
-guitranslations.set_translations()
-objecttranslations.set_translations()
-
 # save translated widgets
 translated_widgets = {}
 

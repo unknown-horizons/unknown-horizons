@@ -30,7 +30,7 @@ from horizons.util.python import decorators
 from horizons.gui.util import create_resource_icon
 from horizons.util.python.callback import Callback
 from horizons.component.namedcomponent import NamedComponent
-from horizons.gui.widgets import OkButton
+from horizons.gui.widgets.imagebutton import OkButton
 
 class ProductionOverview(StatsWidget):
 	"""
@@ -58,8 +58,8 @@ class ProductionOverview(StatsWidget):
 
 	def refresh(self):
 		super(ProductionOverview, self).refresh()
-		#xgettext:python-format
 		name = self.settlement.get_component(NamedComponent).name
+		#xgettext:python-format
 		text = _('Production overview of {settlement}').format(settlement=name)
 		self._gui.findChild(name='headline').text = text
 

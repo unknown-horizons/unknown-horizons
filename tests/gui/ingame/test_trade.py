@@ -20,8 +20,8 @@
 # ###################################################
 
 
-from tests.gui import TestFinished, gui_test
-from tests.gui.helper import get_player_ship
+from tests.gui import gui_test
+from tests.gui.helper import get_player_ship, move_ship
 
 from horizons.component.storagecomponent import StorageComponent
 from horizons.component.tradepostcomponent import TradePostComponent
@@ -33,7 +33,6 @@ from horizons.constants import RES
 def test_trade(gui):
 	"""
 	"""
-	yield
 
 	ship = get_player_ship(gui.session)
 	gui.select([ship])
@@ -45,9 +44,7 @@ def test_trade(gui):
 			world.diplomacy.add_ally_pair( ship.owner, player )
 
 	# move ship near foreign warehouse and wait for it to arrive
-	gui.cursor_click(68, 23, 'right')
-	while (ship.position.x, ship.position.y) != (68, 23):
-		yield
+	move_ship(ship, (68, 23))
 
 	# click trade button
 	gui.trigger('overview_trade_ship', 'trade')
@@ -125,9 +122,3 @@ def test_trade(gui):
 	gui.trigger('buy_sell_goods', 'buy_sell_inventory_True_entry_1')
 	assert ship_inv[RES.ALVEARIES] == 5
 	assert settlement_inv[RES.ALVEARIES] == 5
-
-	yield TestFinished
-
-
-
-

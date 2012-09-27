@@ -61,7 +61,7 @@ def test_load_inactive_production():
 
 	lj = Build(BUILDINGS.LUMBERJACK, 30, 30, island, settlement=settlement)(player)
 	# Set lumberjack to inactive
-	lj.get_component(Producer).set_active(active = False)
+	lj.get_component(Producer).set_active(active=False)
 	worldid = lj.worldid
 
 	session.run(seconds=1)
@@ -187,6 +187,7 @@ def test_hunter_save_load():
 		session = saveload(session)
 
 	# last state reached successfully 2 times -> finished
+	session.end()
 
 
 @game_test(manual_session=True)
@@ -216,6 +217,7 @@ def test_settler_save_load():
 
 	# tile will contain ruin in case of failure
 	assert tile.object.id == BUILDINGS.RESIDENTIAL
+	session.end()
 
 
 @game_test(manual_session=True)
@@ -234,6 +236,7 @@ def test_savegame_upgrade():
 	# check if loading and running fails
 	session = load_session(filename)
 	session.run(seconds=30)
+	session.end(keep_map=True)
 
 
 @game_test

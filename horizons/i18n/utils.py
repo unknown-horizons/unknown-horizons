@@ -21,8 +21,12 @@
 
 from horizons.constants import FONTDEFS, LANGUAGENAMES
 
-def find_available_languages():
+LANGCACHE = {}
+def find_available_languages(domain='unknown-horizons', update=False):
 	"""Returns a dict( lang_key -> locale_dir )"""
+	global LANGCACHE
+	if len(LANGCACHE) and not update:
+		return LANGCACHE
 	alternatives = ('content/lang',
 	                'build/mo',
 	                '/usr/share/locale',
@@ -36,7 +40,7 @@ def find_available_languages():
 	languages = {}
 
 	for i in alternatives:
-		for j in glob('%s/*/*/unknown-horizons.mo' % i):
+		for j in glob('%s/*/*/%s.mo' % (i, domain)):
 			splited = j.split(os.sep)
 			key = splited[-3]
 			if not key in languages:
@@ -45,6 +49,7 @@ def find_available_languages():
 	# there's always a default, which is english
 	languages[LANGUAGENAMES['']] = ''
 	languages['en'] = ''
+	LANGCACHE = languages
 
 	return languages
 

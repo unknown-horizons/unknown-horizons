@@ -271,12 +271,11 @@ class TestCodeGenerator(object):
 		Start the dialog handler:
 
 			def func1():
-				yield
 				# code for new events will follow
 		"""
 		self._dialog_opener = self._last_command
 		self._last_command = []
-		self._emit(['def func%d():\n\tyield' % self._handler_count])
+		self._emit(['def func%d():' % self._handler_count])
 		self._dialog_active = True
 
 	def dialog_closed(self):

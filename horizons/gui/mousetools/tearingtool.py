@@ -44,6 +44,7 @@ class TearingTool(NavigationTool):
 		self.tear_tool_active = True
 		self.session.gui.on_escape = self.on_escape
 		self.session.ingame_gui.hide_menu()
+		self.session.selected_instances.clear()
 		horizons.globals.fife.set_cursor_image("tearing")
 		self._hovering_over = WeakList()
 		WorldObjectDeleted.subscribe(self._on_object_deleted)

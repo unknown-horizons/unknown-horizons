@@ -29,7 +29,7 @@ from horizons.util.pychanchildfinder import PychanChildFinder
 from horizons.util.python.callback import Callback
 from horizons.gui.mousetools import BuildingTool
 from horizons.gui.tabs import TabWidget, BuildTab, DiplomacyTab, SelectMultiTab
-from horizons.gui.widgets import OkButton, CancelButton
+from horizons.gui.widgets.imagebutton import OkButton, CancelButton
 from horizons.gui.widgets.messagewidget import MessageWidget
 from horizons.gui.widgets.minimap import Minimap
 from horizons.gui.widgets.logbook import LogBook
@@ -286,22 +286,16 @@ class IngameGui(LivingObject):
 
 	def show_diplomacy_menu(self):
 		# check if the menu is already shown
-		if hasattr(self.get_cur_menu(), 'name') and self.get_cur_menu().name == "diplomacy_widget":
+		if getattr(self.get_cur_menu(), 'name', None) == "diplomacy_widget":
 			self.hide_menu()
 			return
-		players = set(self.session.world.players)
-		players.add(self.session.world.pirate)
-		players.discard(self.session.world.player)
-		players.discard(None) # e.g. when the pirate is disabled
-		if not players: # this dialog is pretty useless in this case
+
+		if not DiplomacyTab.is_useable(self.session.world):
 			self.main_gui.show_popup(_("No diplomacy possible"),
 			                         _("Cannot do diplomacy as there are no other players."))
 			return
 
-		dtabs = []
-		for player in players:
-			dtabs.append(DiplomacyTab(player))
-		tab = TabWidget(self, tabs=dtabs, name="diplomacy_widget")
+		tab = DiplomacyTab(self, self.session.world)
 		self.show_menu(tab)
 
 	def show_multi_select_tab(self):

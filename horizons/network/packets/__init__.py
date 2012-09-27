@@ -107,9 +107,9 @@ class SafeUnpickler(object):
 
 class packet(object):
 	def __init__(self):
-		self.sid = None
+		"""ctor"""
 
-	def validate(self):
+	def validate(self, protocol):
 		return True
 
 	def serialize(self):
@@ -117,11 +117,13 @@ class packet(object):
 
 	def send(self, peer, sid=None, channelid=0):
 		if sid is not None:
+			# Make sure we don't overwrite sid via packet property
+			assert(not hasattr(self, 'sid'))
 			self.sid = sid
-		self._send(peer, self.serialize(), channelid)
+		self.sendraw(peer, self.serialize(), channelid)
 
 	@staticmethod
-	def _send(peer, data, channelid=0):
+	def sendraw(peer, data, channelid=0):
 		packet = enet.Packet(data, enet.PACKET_FLAG_RELIABLE)
 		peer.send(channelid, packet)
 
@@ -135,8 +137,15 @@ SafeUnpickler.add('common', cmd_ok)
 #-------------------------------------------------------------------------------
 
 class cmd_error(packet):
-	def __init__(self, errorstr):
+	def __init__(self, errorstr, _type=0):
 		self.errorstr = errorstr
+		self.type = _type
+
+	def validate(self, protocol):
+		if not isinstance(self.errorstr, str):
+			raise NetworkException("Invalid datatype: errorstr")
+		if not isinstance(self.type, int):
+			raise NetworkException("Invalid datatype: type")
 
 SafeUnpickler.add('common', cmd_error)
 
@@ -146,14 +155,18 @@ class cmd_fatalerror(packet):
 	def __init__(self, errorstr):
 		self.errorstr = errorstr
 
+	def validate(self, protocol):
+		if not isinstance(self.errorstr, str):
+			raise NetworkException("Invalid datatype: errorstr")
+
 SafeUnpickler.add('common', cmd_fatalerror)
 
 #-------------------------------------------------------------------------------
 
-def unserialize(data, validate=False):
+def unserialize(data, validate=False, protocol=0):
 	mypacket = SafeUnpickler.loads(data)
 	if validate and not (hasattr(mypacket.validate, '__func__') and mypacket.validate.__func__ is packet.validate.__func__):
-		mypacket.validate()
+		mypacket.validate(protocol)
 	return mypacket
 
 #-------------------------------------------------------------------------------

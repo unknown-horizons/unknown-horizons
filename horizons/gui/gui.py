@@ -37,7 +37,7 @@ import horizons.main
 from horizons.savegamemanager import SavegameManager
 from horizons.gui.keylisteners import MainListener
 from horizons.gui.keylisteners.ingamekeylistener import KeyConfig
-from horizons.gui.widgets import OkButton, CancelButton, DeleteButton
+from horizons.gui.widgets.imagebutton import OkButton, CancelButton, DeleteButton
 from horizons.util.python.callback import Callback
 from horizons.extscheduler import ExtScheduler
 from horizons.messaging import GuiAction
@@ -385,7 +385,8 @@ class Gui(SingleplayerMenu, MultiplayerMenu):
 				#xgettext:python-format
 				message = _("A savegame with the name '{name}' already exists.").format(
 				             name=selected_savegame) + u"\n" + _('Overwrite it?')
-				if not self.show_popup(_("Confirmation for overwriting"), message, show_cancel_button=True):
+				# keep the pop-up non-modal because otherwise it is double-modal (#1876)
+				if not self.show_popup(_("Confirmation for overwriting"), message, show_cancel_button=True, modal=False):
 					self.current = old_current
 					return self.show_select_savegame(*args) # reshow dialog
 			elif sanity_checker and sanity_criteria:
@@ -566,14 +567,14 @@ class Gui(SingleplayerMenu, MultiplayerMenu):
 		width = horizons.globals.fife.engine_settings.getScreenWidth()
 		image = horizons.globals.fife.imagemanager.loadBlank(width, height)
 		image = fife.GuiImage(image)
-		self.current.additional_widget = pychan.Icon(image=image)
-		self.current.additional_widget.position = (0, 0)
-		self.current.additional_widget.show()
+		self.additional_widget = pychan.Icon(image=image)
+		self.additional_widget.position = (0, 0)
+		self.additional_widget.show()
 
 	def hide_modal_background(self):
 		try:
-			self.current.additional_widget.hide()
-			del self.current.additional_widget
+			self.additional_widget.hide()
+			del self.additional_widget
 		except AttributeError:
 			pass # only used for some widgets, e.g. pause
 

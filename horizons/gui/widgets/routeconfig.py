@@ -34,7 +34,7 @@ from horizons.command.uioptions import RouteConfigCommand
 from horizons.component.namedcomponent import NamedComponent
 from horizons.component.ambientsoundcomponent import AmbientSoundComponent
 from horizons.gui.util import create_resource_selection_dialog
-from horizons.gui.widgets import OkButton
+from horizons.gui.widgets.imagebutton import OkButton
 
 import horizons.globals
 
@@ -72,6 +72,7 @@ class RouteConfig(object):
 		self.session.ingame_gui.on_switch_main_widget(self)
 
 	def hide(self):
+		self.session.ingame_gui.on_switch_main_widget(None)
 		self.minimap.disable()
 		self._gui.hide()
 

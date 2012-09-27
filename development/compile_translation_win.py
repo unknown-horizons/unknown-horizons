@@ -27,12 +27,12 @@ if os.getcwd().rpartition('\\')[2] != 'development':
 	print 'Please run the script from the "development" directory!'
 	quit()
 
-if not os.path.isdir('../po/'):
+if not os.path.isdir('../po/uh/'):
 	print 'The translations directory does not exist! Quiting..'
 	quit()
 
 os.chdir('..')
-files = glob.glob('po/*.po')
+files = glob.glob('po/uh/*.po')
 for x in files:
 	file = x.rpartition("\\")[2]
 	dir = file[:-len('.po')]

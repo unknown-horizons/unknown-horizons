@@ -18,9 +18,3 @@
 # Free Software Foundation, Inc.,
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
-
-
-# Provide shortcuts to all generic widgets here
-
-from progressbar import ProgressBar
-from imagebutton import OkButton, CancelButton, DeleteButton

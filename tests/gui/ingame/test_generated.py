@@ -21,7 +21,7 @@
 
 import itertools
 
-from tests.gui import gui_test, TestFinished
+from tests.gui import gui_test
 from tests.gui.helper import get_player_ship
 
 
@@ -30,7 +30,6 @@ def test_build_a_settlement(gui):
 	"""
 	Build a settlement. Generated with gui logger.
 	"""
-	yield # test needs to be a generator for now
 
 	ship = get_player_ship(gui.session)
 
@@ -41,7 +40,7 @@ def test_build_a_settlement(gui):
 
 	# Wait for ship to arrive
 	while (ship.position.x, ship.position.y) != (57, 0):
-		yield
+		gui.run()
 
 	gui.trigger('overview_trade_ship', 'found_settlement')
 
@@ -104,15 +103,12 @@ def test_build_a_settlement(gui):
 	gui.trigger('tab', 'button_01')
 	gui.cursor_click(58, 5, 'left')
 
-	yield TestFinished
-
 
 @gui_test(use_dev_map=True, timeout=120)
 def test_buildingtool(gui):
 	"""
 	Trigger different buildingtool highlights
 	"""
-	yield # test needs to be a generator for now
 
 	ship = get_player_ship(gui.session)
 
@@ -123,7 +119,7 @@ def test_buildingtool(gui):
 
 	# Wait for ship to arrive
 	while (ship.position.x, ship.position.y) != (57, 0):
-		yield
+		gui.run()
 
 	gui.trigger('overview_trade_ship', 'found_settlement')
 
@@ -176,5 +172,3 @@ def test_buildingtool(gui):
 	# Build a tent (pavilion highlights)
 	gui.trigger('tab', 'button_01')
 	build_at( (58, 9) )
-
-	yield TestFinished

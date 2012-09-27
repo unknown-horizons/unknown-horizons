@@ -65,6 +65,9 @@ def find_enet_module(client=True):
 class NetworkException(Exception):
 	pass
 
+class SoftNetworkException(NetworkException):
+	pass
+
 class NotConnected(NetworkException):
 	def __str__(self):
 		return "Client is not connected"

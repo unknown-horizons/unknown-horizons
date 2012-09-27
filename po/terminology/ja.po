@@ -1,0 +1,759 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2012-03-31 21:42+0100\n"
+"PO-Revision-Date: 2011-12-19 15:25+0200\n"
+"Last-Translator: naraba <narabanow@gmail.com>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: ja\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"X-Generator: Pootle 2.1.5\n"
+
+msgid "build"
+msgstr "ビルド"
+
+msgid "game"
+msgstr "ゲーム"
+
+msgid "building"
+msgstr "ビルド中/ビル"
+
+msgid "settlement"
+msgstr "決済"
+
+msgid "farm"
+msgstr "農場"
+
+msgid "ship"
+msgstr "船"
+
+msgid "tent"
+msgstr "テント"
+
+msgid "warehouse"
+msgstr ""
+
+msgid "resource"
+msgstr "資源"
+
+msgid "produce"
+msgstr "生産する"
+
+# 農地？
+msgid "field"
+msgstr "フィールド"
+
+msgid "map"
+msgstr "地図"
+
+msgid "trade"
+msgstr "交易"
+
+msgid "inhabitants"
+msgstr "住民"
+
+msgid "buy"
+msgstr "購入"
+
+msgid "overview"
+msgstr "概要"
+
+msgid "click"
+msgstr "クリック"
+
+msgid "lumberjack"
+msgstr "木こり"
+
+# 88%
+#, fuzzy
+msgid "resident"
+msgstr "住民"
+
+msgid "main square"
+msgstr "メイン広場"
+
+# 85%
+#, fuzzy
+msgid "sailors"
+msgstr "船乗り"
+
+msgid "food"
+msgstr "食料"
+
+msgid "increment"
+msgstr "増分"
+
+msgid "production"
+msgstr "生産"
+
+msgid "select"
+msgstr "選択"
+
+msgid "sell"
+msgstr "販売"
+
+msgid "setting"
+msgstr "設定"
+
+msgid "storage"
+msgstr "ストレージ"
+
+msgid "tab"
+msgstr "タブ"
+
+msgid "upgrade"
+msgstr ""
+
+msgid "your inhabitants"
+msgstr ""
+
+msgid "close"
+msgstr ""
+
+msgid "companies"
+msgstr "企業"
+
+msgid "island"
+msgstr ""
+
+msgid "time"
+msgstr "時刻"
+
+msgid "unit"
+msgstr ""
+
+msgid "balance"
+msgstr "バランス"
+
+msgid "coast"
+msgstr "海岸"
+
+msgid "menu"
+msgstr "メニュー"
+
+msgid "slot"
+msgstr "枠"
+
+msgid "start"
+msgstr "開始"
+
+msgid "stock"
+msgstr "貯蔵"
+
+msgid "trail"
+msgstr "歩道"
+
+msgid "Unknown Horizons"
+msgstr ""
+
+msgid "wool"
+msgstr "羊毛"
+
+msgid "boards"
+msgstr "ボード"
+
+msgid "collector"
+msgstr "収集する人"
+
+msgid "connection"
+msgstr "接続"
+
+msgid "fire"
+msgstr "火"
+
+msgid "change"
+msgstr "変更"
+
+msgid "connect"
+msgstr "接続"
+
+msgid "cost"
+msgstr "費用"
+
+msgid "house"
+msgstr "住宅"
+
+msgid "log"
+msgstr "ログ"
+
+msgid "road"
+msgstr ""
+
+msgid "save"
+msgstr "節約する"
+
+msgid "built"
+msgstr "建造する"
+
+msgid "pasture"
+msgstr "牧場"
+
+msgid "reach"
+msgstr "届く"
+
+msgid "tree"
+msgstr "木"
+
+msgid "your"
+msgstr "あなたの"
+
+msgid "your settlement"
+msgstr ""
+
+msgid "add"
+msgstr "追加する"
+
+msgid "check"
+msgstr "確認する"
+
+msgid "choose"
+msgstr "選ぶ"
+
+msgid "confectionery"
+msgstr ""
+
+msgid "fisher"
+msgstr "漁師"
+
+msgid "free trader"
+msgstr "自由交易船"
+
+msgid "happiness"
+msgstr "幸福度"
+
+msgid "in stock"
+msgstr ""
+
+msgid "money"
+msgstr ""
+
+msgid "pavilion"
+msgstr "パビリオン"
+
+msgid "running costs"
+msgstr "運営費"
+
+msgid "sugar"
+msgstr "砂糖"
+
+msgid "taxes"
+msgstr "税金"
+
+msgid "tax"
+msgstr "税"
+
+msgid "tools"
+msgstr "工具"
+
+msgid "button"
+msgstr ""
+
+msgid "continue"
+msgstr "続ける"
+
+msgid "faith"
+msgstr "信仰"
+
+msgid "help"
+msgstr "援助"
+
+msgid "left"
+msgstr "残っている"
+
+msgid "level"
+msgstr "レベル"
+
+msgid "mode"
+msgstr "モード"
+
+msgid "move"
+msgstr "移動する"
+
+# 87%
+#, fuzzy
+msgid "pioneers"
+msgstr "開拓者"
+
+# 87%
+#, fuzzy
+msgid "citizens"
+msgstr "市民"
+
+# 88%
+#, fuzzy
+msgid "merchants"
+msgstr "商人"
+
+# 90%
+#, fuzzy
+msgid "aristocrats"
+msgstr "貴族"
+
+msgid "potato"
+msgstr "ジャガイモ"
+
+msgid "settler"
+msgstr "入植者"
+
+# 80%
+#, fuzzy
+msgid "speed"
+msgstr "種をまく"
+
+msgid "stop"
+msgstr "止める"
+
+msgid "storage tent"
+msgstr "貯蔵庫"
+
+msgid "wait"
+msgstr ""
+
+msgid "access"
+msgstr ""
+
+msgid "account"
+msgstr "会計"
+
+msgid "amount"
+msgstr ""
+
+msgid "build menu"
+msgstr "建築メニュー"
+
+msgid "cloth"
+msgstr "布"
+
+msgid "construction"
+msgstr "建設"
+
+msgid "decrease"
+msgstr "減る"
+
+msgid "description"
+msgstr "説明"
+
+msgid "fish"
+msgstr "魚"
+
+msgid "increase"
+msgstr "増える"
+
+msgid "lamb"
+msgstr ""
+
+msgid "leave"
+msgstr "離れる"
+
+msgid "liquor"
+msgstr "酒"
+
+msgid "location"
+msgstr ""
+
+msgid "offer"
+msgstr ""
+
+# 75%
+#, fuzzy
+msgid "potatoes"
+msgstr "ジャガイモ"
+
+msgid "range"
+msgstr "範囲"
+
+msgid "reached"
+msgstr "届いた"
+
+msgid "run"
+msgstr "運営する"
+
+msgid "slider"
+msgstr "スライダー"
+
+msgid "solution"
+msgstr "解決策"
+
+msgid "space"
+msgstr ""
+
+msgid "target"
+msgstr ""
+
+msgid "team"
+msgstr "チーム"
+
+msgid "total"
+msgstr ""
+
+msgid "unable"
+msgstr ""
+
+msgid "active"
+msgstr "機能している"
+
+msgid "afford"
+msgstr ""
+
+# 85%
+#, fuzzy
+msgid "animals"
+msgstr "動物"
+
+msgid "Captain's log"
+msgstr "船長の航海日誌"
+
+# 75%
+#, fuzzy
+msgid "construct"
+msgstr "建設"
+
+msgid "consume"
+msgstr "消費する"
+
+msgid "enabled"
+msgstr ""
+
+msgid "entries"
+msgstr ""
+
+msgid "feature"
+msgstr "機能"
+
+msgid "forest"
+msgstr "森"
+
+# 80%
+#, fuzzy
+msgid "grows"
+msgstr "育てる"
+
+msgid "hold"
+msgstr "保持する"
+
+msgid "idle"
+msgstr ""
+
+msgid "income"
+msgstr "収入"
+
+msgid "information"
+msgstr "情報"
+
+msgid "key"
+msgstr "キー"
+
+msgid "lamb wool"
+msgstr "羊毛"
+
+msgid "overview tab"
+msgstr ""
+
+msgid "minimap"
+msgstr "ミニマップ"
+
+msgid "issues"
+msgstr "論点"
+
+msgid "plant"
+msgstr ""
+
+msgid "play"
+msgstr "遊ぶ"
+
+msgid "playing"
+msgstr "遊び"
+
+msgid "price"
+msgstr ""
+
+# 75%
+#, fuzzy
+msgid "read"
+msgstr "赤い"
+
+msgid "return"
+msgstr "戻る"
+
+msgid "sale"
+msgstr "販売"
+
+msgid "screen"
+msgstr "画面"
+
+msgid "sound"
+msgstr "と思われる"
+
+msgid "special"
+msgstr ""
+
+msgid "store"
+msgstr ""
+
+# 75%
+#, fuzzy
+msgid "tear"
+msgstr "チーム"
+
+msgid "from time to time"
+msgstr "時々"
+
+msgid "trading"
+msgstr "交易"
+
+msgid "village"
+msgstr "村"
+
+msgid "visit"
+msgstr "訪れる"
+
+msgid "world"
+msgstr ""
+
+# 83%
+#, fuzzy
+msgid "yield"
+msgstr "譲る"
+
+msgid "your ship"
+msgstr ""
+
+msgid "back"
+msgstr "後ろにある"
+
+msgid "build settlement"
+msgstr "集落を作る"
+
+msgid "load"
+msgstr ""
+
+msgid "unload"
+msgstr ""
+
+msgid "command"
+msgstr ""
+
+msgid "completed"
+msgstr ""
+
+msgid "condition"
+msgstr "条件"
+
+msgid "contact"
+msgstr "連絡する"
+
+msgid "empty"
+msgstr ""
+
+msgid "ensure"
+msgstr ""
+
+msgid "fulfill"
+msgstr "満たす"
+
+msgid "graphics"
+msgstr "グラフィック"
+
+msgid "harvest"
+msgstr ""
+
+# 80%
+#, fuzzy
+msgid "hunts"
+msgstr "狩り"
+
+msgid "multiple"
+msgstr "複数の"
+
+msgid "potato field"
+msgstr ""
+
+msgid "school"
+msgstr "学校"
+
+msgid "seed"
+msgstr "種をまく"
+
+msgid "service"
+msgstr "施設"
+
+msgid "sheep"
+msgstr "羊"
+
+msgid "signal fire"
+msgstr "のろし"
+
+msgid "statistics"
+msgstr ""
+
+msgid "clay"
+msgstr "粘土"
+
+msgid "iron"
+msgstr "鉄"
+
+msgid "ore"
+msgstr "鉱石"
+
+msgid "tobacco"
+msgstr "タバコ"
+
+msgid "charcoal"
+msgstr "木炭"
+
+msgid "sugar field"
+msgstr ""
+
+msgid "temporarily"
+msgstr "一時的に"
+
+msgid "values"
+msgstr ""
+
+#~ msgid "branch office"
+#~ msgstr "支店"
+
+#~ msgid "main"
+#~ msgstr "メイン"
+
+#~ msgid "unknown"
+#~ msgstr "不明"
+
+#~ msgid "free"
+#~ msgstr "無料"
+
+#~ msgid "trader"
+#~ msgstr "交易者"
+
+#~ msgid "version"
+#~ msgstr "バージョン"
+
+#~ msgid "signal"
+#~ msgstr "信号"
+
+#~ msgid "found"
+#~ msgstr "設立する"
+
+#~ msgid "raw"
+#~ msgstr "原料"
+
+#~ msgid "running"
+#~ msgstr "運営"
+
+#~ msgid "inventory"
+#~ msgstr "物品一覧"
+
+#~ msgid "moved"
+#~ msgstr "立ち去った"
+
+#~ msgid "produced"
+#~ msgstr "生産された"
+
+#~ msgid "hunter"
+#~ msgstr "猟師"
+
+#~ msgid "market"
+#~ msgstr "市場"
+
+#~ msgid "partner"
+#~ msgstr "相手"
+
+#~ msgid "sailor"
+#~ msgstr "船乗り"
+
+#~ msgid "pioneer"
+#~ msgstr "開拓者"
+
+#~ msgid "citizen"
+#~ msgstr "市民"
+
+#~ msgid "merchant"
+#~ msgstr "商人"
+
+#~ msgid "aristocrat"
+#~ msgstr "貴族"
+
+#~ msgid "refresh"
+#~ msgstr "回復する"
+
+#~ msgid "residents"
+#~ msgstr "住民"
+
+#~ msgid "output"
+#~ msgstr "生産物"
+
+#~ msgid "weaver"
+#~ msgstr "機織り"
+
+#~ msgid "animal"
+#~ msgstr "動物"
+
+#~ msgid "fisherman"
+#~ msgstr "漁師"
+
+#~ msgid "forum"
+#~ msgstr "公共広場"
+
+#~ msgid "grow"
+#~ msgstr "育てる"
+
+#~ msgid "hunt"
+#~ msgstr "狩り"
+
+#~ msgid "load/unload"
+#~ msgstr "荷上げ／荷下ろし"
+
+#~ msgid "ship inventory"
+#~ msgstr "船の荷物"
+
+#~ msgid "starting"
+#~ msgstr "開始"
+
+#~ msgid "trade partner"
+#~ msgstr "交易相手"
+
+#~ msgid "yields"
+#~ msgstr "譲る"
+
+#~ msgid "green"
+#~ msgstr "緑色の"
+
+#~ msgid "red"
+#~ msgstr "赤い"
+
+#~ msgid "no"
+#~ msgstr "ない"
+
+#~ msgid "dialogue"
+#~ msgstr "話し合い"
+
+#~ msgid "ruin"
+#~ msgstr "廃墟"
+
+#~ msgid "salt ponds"
+#~ msgstr "塩田"
+
+#~ msgid "cattle"
+#~ msgstr "牛"
+
+#~ msgid "pig"
+#~ msgstr "豚"
+
+#~ msgid "herbs"
+#~ msgstr "薬草"
+
+#~ msgid "herbary"
+#~ msgstr "薬草園"
+
+#~ msgid "butchery"
+#~ msgstr "肉屋"
+
+#~ msgid "doctor"
+#~ msgstr "医者"
+
+#~ msgid "education"
+#~ msgstr "教育"

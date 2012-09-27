@@ -25,21 +25,50 @@ Cleaner interface to various game/gui functions to make tests easier.
 
 import contextlib
 from collections import deque
-import mock
 
+import mock
 from fife import fife
 
 import horizons.main
+from horizons.command.unit import Act
 from horizons.constants import GAME_SPEED
-from horizons.gui.mousetools import NavigationTool
+from horizons.gui.mousetools.navigationtool import NavigationTool
+from horizons.gui.mousetools.buildingtool import BuildingTool
+from horizons.gui.mousetools.cursortool import CursorTool
 from horizons.scheduler import Scheduler
 from horizons.util.shapes import Point
 
+from tests.gui import cooperative
+
+
 def get_player_ship(session):
+	"""Returns the first ship of a player."""
 	for ship in session.world.ships:
 		if ship.owner == session.world.player:
 			return ship
 	raise Exception('Player ship not found')
+
+
+def move_ship(ship, (x, y)):
+	"""Move ship to coordinates and wait until it arrives."""
+	Act(ship, x, y)(ship.owner)
+
+	while (ship.position.x, ship.position.y) != (x, y):
+		cooperative.schedule()
+
+
+def found_settlement(gui, ship_pos, (x, y)):
+	"""Move ship to coordinates and build a warehouse."""
+	ship = get_player_ship(gui.session)
+	gui.select([ship])
+
+	move_ship(ship, ship_pos)
+
+	# Found a settlement
+	gui.trigger('overview_trade_ship', 'found_settlement')
+	assert isinstance(gui.cursor, BuildingTool)
+	gui.cursor_click(x, y, 'left')
+	assert isinstance(gui.cursor, CursorTool)
 
 
 class CursorToolsPatch(object):
@@ -210,9 +239,9 @@ class GuiHelper(object):
 	@contextlib.contextmanager
 	def handler(self, func):
 		"""Temporarily install another gui handler, e.g. to handle a dialog."""
-		self._runner._gui_handlers.append(func())
+		g = cooperative.spawn(func)
 		yield
-		self._runner._gui_handlers.pop()
+		g.join()
 
 	def select(self, objects):
 		"""Select all objects in the given list.
@@ -251,9 +280,29 @@ class GuiHelper(object):
 		self.cursor.mouseReleased(self._make_mouse_event(x, y, button, shift, ctrl))
 
 	def cursor_click(self, x, y, button, shift=False, ctrl=False):
+		# NOTE `self.run()` is a fix for gui tests with fife rev 4060+
+		# it is not known why this helps, but perhaps it's not that unreasonable
+		# to give the engine some time in between events (even if we trigger the
+		# mousetools directly)
+
 		self.cursor_move(x, y)
+		self.run()
 		self.cursor_press_button(x, y, button, shift, ctrl)
+		self.run()
 		self.cursor_release_button(x, y, button, shift, ctrl)
+
+	def cursor_multi_click(self, *coords):
+		"""Do multiple clicks in succession.
+
+		Shift is hold to enable non-stop build and after the last coord it will be
+		cancelled with a right click.
+		"""
+		for (x, y) in coords:
+			self.cursor_click(x, y, 'left', shift=True)
+
+		# Cancel
+		x, y = coords[-1]
+		self.cursor_click(x, y, 'right')
 
 	def _make_mouse_event(self, x, y, button=None, shift=False, ctrl=False):
 		if button:
@@ -271,28 +320,27 @@ class GuiHelper(object):
 		return evt
 
 	def run(self, seconds=0):
-		"""Provide a nicer (yet not perfect) way to run the game for some time.
+		"""Provide a nice way to run the game for some time.
 
 		Despite its name, this method will run the *game simulation* for X seconds.
 		When the game is paused, the timer continues once the game unpauses.
-
-		Example:
-			for i in gui.run(seconds=13):
-				yield
 		"""
 
-		# little hack because we don't have Python3's nonlocal
-		class Flag(object):
-			running = True
+		if not seconds:
+			cooperative.schedule()
+		else:
+			# little hack because we don't have Python3's nonlocal
+			class Flag(object):
+				running = True
 
-		def stop():
-			Flag.running = False
+			def stop():
+				Flag.running = False
 
-		ticks = Scheduler().get_ticks(seconds)
-		Scheduler().add_new_object(stop, None, run_in=ticks)
+			ticks = Scheduler().get_ticks(seconds)
+			Scheduler().add_new_object(stop, None, run_in=ticks)
 
-		while Flag.running:
-			yield
+			while Flag.running:
+				cooperative.schedule()
 
 	def disable_autoscroll(self):
 		"""

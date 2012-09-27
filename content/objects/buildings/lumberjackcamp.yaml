@@ -31,8 +31,8 @@ components:
         produces:
         - [RES.BOARDS, 1]
         consumes:
-        - [RES.TREES, -1]
-        time: 7
+        - [RES.TREES, -2]
+        time: 15
 - StorageComponent:
       SlotsStorage:
         slot_sizes: {RES.TREES: 10, RES.BOARDS: 10}

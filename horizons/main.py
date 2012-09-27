@@ -33,6 +33,7 @@ import sys
 import os.path
 import random
 import json
+import time
 import traceback
 import threading
 import thread # for thread.error raised by threading.Lock.release
@@ -54,6 +55,7 @@ from horizons.util.loaders.tilesetloader import TileSetLoader
 from horizons.util.python import parse_port
 from horizons.util.python.callback import Callback
 from horizons.util.uhdbaccessor import UhDbAccessor
+
 
 # private module pointers of this module
 class Modules(object):
@@ -80,6 +82,11 @@ def start(_command_line_arguments):
 
 	# handle commandline globals
 	debug = command_line_arguments.debug
+
+	if command_line_arguments.enable_atlases:
+		# check if atlas files are outdated
+		if atlases_need_rebuild():
+			print "Atlases have to be rebuild."
 
 	if command_line_arguments.restore_settings:
 		# just delete the file, Settings ctor will create a new one
@@ -113,6 +120,15 @@ def start(_command_line_arguments):
 		# After the next FIFE release, we should use this instead which is possible as of r3960:
 		# horizons.globals.fife._log.logToPrompt = True
 
+		if command_line_arguments.debug_log_only:
+			# This is a workaround to not show fife logs in the shell even if
+			# (due to the way the fife logger works) these logs will not be
+			# redirected to the UH logfile and instead written to a file fife.log
+			# in the current directory. See #1782 for background information.
+			horizons.globals.fife._log.lm.setLogToPrompt(False)
+			horizons.globals.fife._log.lm.setLogToFile(True)
+			# same as above applies here, use property after next FIFE release
+
 	if command_line_arguments.mp_bind:
 		try:
 			mpieces = command_line_arguments.mp_bind.partition(':')
@@ -136,14 +152,6 @@ def start(_command_line_arguments):
 	horizons.globals.db = _create_main_db()
 
 	# init game parts
-
-	client_id = horizons.globals.fife.get_uh_setting("ClientID")
-	if not client_id:
-		# We need a new client id
-		client_id = "".join("-" if c in (8, 13, 18, 23) else
-		                    random.choice("0123456789abcdef") for c in xrange(0, 36))
-		horizons.globals.fife.set_uh_setting("ClientID", client_id)
-		horizons.globals.fife.save_settings()
 
 	# Install gui logger, needs to be done before instantiating Gui, otherwise we miss
 	# the events of the main menu buttons
@@ -382,7 +390,7 @@ def prepare_multiplayer(game, trader_enabled=True, pirate_enabled=True, natural_
 	random = sum([ int(uuid[i : i + 2], 16) for i in range(0, len(uuid), 2) ])
 	_modules.session = MPSession(_modules.gui, horizons.globals.db, NetworkInterface(), rng_seed=random)
 	# NOTE: this data passing is only temporary, maybe use a player class/struct
-	if game.load:
+	if game.is_savegame():
 		map_file = SavegameManager.get_multiplayersave_map( game.get_map_name() )
 	else:
 		map_file = SavegameManager.get_map( game.get_map_name() )
@@ -613,3 +621,15 @@ def preload_game_join(preloading):
 			preloading[1].release()
 		except thread.error:
 			pass # due to timing issues, the lock might be released already
+
+def atlases_need_rebuild():
+	# date of atlases
+	atlas_date = time.ctime(os.path.getmtime(PATHS.ACTION_SETS_DIRECTORY + "/atlas/animals.png"))
+
+	for folder in PATHS.ATLAS_SOURCE_DIRECTORIES:
+		for path, subdirs, files in os.walk(PATHS.ACTION_SETS_DIRECTORY + folder):
+			for name in files:
+				file_path = os.path.join(path, name)
+				if time.ctime(os.path.getmtime(file_path)) > atlas_date:
+					return True
+	return False

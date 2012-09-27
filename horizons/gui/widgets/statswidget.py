@@ -44,7 +44,9 @@ class StatsWidget(object):
 			self.refresh()
 
 	def show(self):
-		ExtScheduler().add_new_object(Callback(self._refresh_tick), self, run_in = PLAYER.STATS_UPDATE_FREQUENCY / GAME_SPEED.TICKS_PER_SECOND, loops = -1)
+		run_in = PLAYER.STATS_UPDATE_FREQUENCY / GAME_SPEED.TICKS_PER_SECOND
+		ExtScheduler().add_new_object(Callback(self._refresh_tick),
+		                              self, run_in=run_in, loops=-1)
 		if not self._initialised:
 			self._initialised = True
 			self._init_gui()
