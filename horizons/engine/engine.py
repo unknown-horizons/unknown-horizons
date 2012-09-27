@@ -22,6 +22,7 @@
 
 import os
 import shutil
+import sys
 import locale
 
 from fife import fife
@@ -72,7 +73,7 @@ class Fife(ApplicationBase):
 
 	def _set_properly_window_icon(self):
 		# Use other Window-Icon for Mac
-		if os.uname()[0] == 'Darwin' and \
+		if sys.platform == 'darwin' and \
 		   self.get_fife_setting('WindowIcon') == PATHS.DEFAULT_WINDOW_ICON_PATH:
 			self.set_fife_setting('WindowIcon', PATHS.MAC_WINDOW_ICON_PATH)
 
