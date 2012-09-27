@@ -8,24 +8,27 @@
 	are added. This happens in UH code. The height attribute specified here is used as base value.
 	If there are n res in one column, the container will have the size n * height.
 -->
-<AutoResizeContainer size="240,44" position="25,110" name="production_line_container">
-	<VBox name="input_res" position="2,-06" />
+<AutoResizeContainer size="240,52" position="25,110" name="production_line_container">
+	<VBox name="input_res" position="2,0" />
 
-	<Icon image="content/gui/icons/templates/production/production_arrow.png" position="60,12"/>
-	<VBox name="input_box" position="61,12" />
-	<VBox name="output_box" position="134,12" />
+	<Container name="centered_production_icons" size="200,52" position="0,0">
+		<Icon image="content/gui/icons/templates/production/production_arrow.png" position="61,15"/>
+		<VBox name="output_box" position="134,15" />
 
-	<!-- one of those button gets removed at runtime -->
-	<ImageButton up_image="content/gui/icons/templates/production/toggle_small_active_n.png"
-		down_image="content/gui/icons/templates/production/toggle_small_active_d.png"
-		hover_image="content/gui/icons/templates/production/toggle_small_active_h.png"
-		border_size="0" position="82,0" name="toggle_active_active" helptext="Pause production" />
+		<!-- one of those button gets removed at runtime -->
+		<ImageButton up_image="content/gui/icons/templates/production/toggle_active_n.png"
+		             down_image="content/gui/icons/templates/production/toggle_active_d.png"
+		             hover_image="content/gui/icons/templates/production/toggle_active_h.png"
+		             border_size="0" position="82,-02" name="toggle_active_active" helptext="Pause production" />
 
-	<ImageButton up_image="content/gui/icons/templates/production/toggle_small_inactive_n.png"
-		down_image="content/gui/icons/templates/production/toggle_small_inactive_d.png"
-		hover_image="content/gui/icons/templates/production/toggle_small_inactive_h.png"
-		border_size="0" position="82,0" name="toggle_active_inactive" helptext="Start production" />
+		<ImageButton up_image="content/gui/icons/templates/production/toggle_inactive_n.png"
+		             down_image="content/gui/icons/templates/production/toggle_inactive_d.png"
+		             hover_image="content/gui/icons/templates/production/toggle_inactive_h.png"
+		             border_size="0" position="82,-02" name="toggle_active_inactive" helptext="Start production" />
 
-	<VBox name="output_res" position="157,-06" />
+		<VBox name="output_res" position="157,0"/>
+	</Container>
+
+	<VBox name="input_box" position="61,15" />
 
 </AutoResizeContainer>
