@@ -25,19 +25,46 @@ import horizons.globals
 
 from horizons.gui.mousetools import NavigationTool
 from horizons.util.shapes import Circle, Point
+from horizons.util.loaders.tilesetloader import TileSetLoader
 
 
 class TileLayingTool(NavigationTool):
 	"""Tool to lay ground tiles."""
 	HIGHLIGHT_COLOR = (0, 200, 90)
 
+	tile_images = {}
+
 	def __init__(self, session, tile_details):
 		super(TileLayingTool, self).__init__(session)
 		self.session.gui.on_escape = self.on_escape
 		self.renderer = session.view.renderer['InstanceRenderer']
 		self._tile_details = tile_details
-		# TODO: use the right tile's image
-		horizons.globals.fife.set_cursor_image('default')
+		self._set_cursor_image()
+
+	def _set_cursor_image(self):
+		"""Replace the cursor with an image of the selected tile."""
+		# FIXME the water tile is too big to use as cursor
+		if self._tile_details[0] == 0:
+			return
+
+		# FIXME tile rotations are broken
+		fix_rotation = {45: 45, 316: 315, 226: 225, 134: 135}
+		tile = list(self._tile_details)
+		tile[2] = fix_rotation[tile[2]]
+		tile = tuple(tile)
+
+		image = TileLayingTool.tile_images.get(tile)
+		if not image:
+			tile_sets = TileSetLoader.get_sets()
+
+			ground_id, action_id, rotation = tile
+			set_id = horizons.globals.db.get_random_tile_set(ground_id)
+			filename = tile_sets[set_id][action_id][rotation].keys()[0]
+
+			image = horizons.globals.fife.imagemanager.load(filename)
+			TileLayingTool.tile_images[tile] = image
+
+		horizons.globals.fife.cursor.set(image)
 
 	def remove(self):
 		self._remove_coloring()
