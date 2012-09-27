@@ -229,10 +229,10 @@ class Rect(Shape):
 			yield (surrounding_right, y)
 
 		if include_corners:
-			yield (self.top-1, self.left-1)
-			yield (self.top-1, self.right+1)
-			yield (self.bottom+1, self.left-1)
-			yield (self.bottom+1, self.right+1)
+			yield (self.left - 1, self.top - 1)
+			yield (self.right + 1, self.top - 1)
+			yield (self.left - 1, self.bottom + 1)
+			yield (self.right + 1, self.bottom + 1)
 
 	def __str__(self):
 		return "Rect(o:(%s,%s),w:%s,h:%s)" % (self.left, self.top, self.width, self.height)
