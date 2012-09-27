@@ -47,12 +47,7 @@ class TileLayingTool(NavigationTool):
 		if self._tile_details[0] == 0:
 			return
 
-		# FIXME tile rotations are broken
-		fix_rotation = {45: 45, 316: 315, 226: 225, 134: 135}
-		tile = list(self._tile_details)
-		tile[2] = fix_rotation[tile[2]]
-		tile = tuple(tile)
-
+		tile = tuple(self._tile_details)
 		image = TileLayingTool.tile_images.get(tile)
 		if not image:
 			tile_sets = TileSetLoader.get_sets()
