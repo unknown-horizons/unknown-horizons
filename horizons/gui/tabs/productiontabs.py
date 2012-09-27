@@ -87,8 +87,17 @@ class ProductionOverviewTab(OverviewTab):
 			centered_container = container.findChild(name='centered_production_icons')
 			consumed_resources = len(production.get_consumed_resources()) - 1
 			if consumed_resources > 0:
+				# center the production line
 				y = (27 * consumed_resources)
 				centered_container.position = (0, y)
+
+				# add vertical line to connect the multiple input res
+				# TODO: Find a better image here
+				size = (14, (55 * consumed_resources) + 17)
+				image = Icon(image="content/gui/icons/templates/production/production_line.png")
+				image.position=(59, 15)
+				image.min_size = image.size = image.max_size = size
+				container.insertChild(image, 0)
 
 			if production.is_paused():
 				centered_container.removeChild( centered_container.findChild(name="toggle_active_active") )
