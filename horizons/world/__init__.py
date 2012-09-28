@@ -100,6 +100,7 @@ class World(BuildingOwner, WorldObject):
 		self.players = None
 		self.player = None
 		self.ground_map = None
+		self.fake_tile_map = None
 		self.full_map = None
 		self.island_map = None
 		self.water = None
@@ -295,6 +296,7 @@ class World(BuildingOwner, WorldObject):
 						for y_offset in xrange(0, 10):
 							if y+y_offset < self.max_y and y+y_offset >= self.min_y:
 								self.ground_map[(x+x_offset, y+y_offset)] = fake_tile_class(self.session, x, y)
+		self.fake_tile_map = copy.copy(self.ground_map)
 
 		# remove parts that are occupied by islands, create the island map and the full map
 		self.island_map = {}

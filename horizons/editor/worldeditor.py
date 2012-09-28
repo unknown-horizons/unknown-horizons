@@ -161,7 +161,7 @@ class WorldEditor(object):
 			return
 
 		old_tile = self.world.full_map[coords]
-		if old_tile.id != -1 and old_tile._instance and old_tile not in self._tile_delete_set:
+		if old_tile and old_tile.id != -1 and old_tile._instance and old_tile not in self._tile_delete_set:
 			if (old_tile.id, old_tile._action, old_tile._instance.getRotation() + 45) == tile_details:
 				return
 			self._tile_delete_set.add(old_tile)
@@ -173,3 +173,5 @@ class WorldEditor(object):
 			ground.act(action_id, rotation)
 			self.world.full_map[coords] = ground
 			# TODO: update the minimap
+		else:
+			self.world.full_map[coords] = self.world.fake_tile_map[coords]
