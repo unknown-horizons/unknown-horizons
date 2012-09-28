@@ -94,21 +94,25 @@ class IntermediateMap(object):
 				higher_corner = top_left if diff == 1 else top_right
 				mi = self._map[lower_corner]
 				if new_type <= mi:
-					self._set_tiles(Point(*higher_corner), mi)
+					self._set_tiles([higher_corner], mi)
 				else:
-					self._set_tiles(Point(*lower_corner), mi + 1)
+					self._set_tiles([lower_corner], mi + 1)
 				changes = True
 
-	def set_south_east_corner(self, coords, tile_details):
-		x, y = coords
-		if not (self.world.min_x <= x < self.world.max_x and self.world.min_y <= y < self.world.max_y):
-			return
-
-		dx, dy = self._get_intermediate_coords(coords)
+	def set_south_east_corner(self, raw_coords_list, tile_details):
 		new_type = tile_details[0] if tile_details[0] != 6 else 2
-		if self._map[(dx, dy)] == new_type:
-			return
-		self._set_tiles(Point(dx, dy), new_type)
+		coords_list = []
+		for coords in raw_coords_list:
+			if coords not in self.world.fake_tile_map:
+				continue
+
+			coords2 = self._get_intermediate_coords(coords)
+			assert coords2 in self._map
+			if self._map[coords2] != new_type:
+				coords_list.append(coords2)
+
+		if coords_list:
+			self._set_tiles(coords_list, new_type)
 
 	def _get_surrounding_coords(self, current_coords_list):
 		all_neighbours = [(-1, -1), (-1, 0), (-1, 1), (0, -1), (0, 1), (1, -1), (1, 0), (1, 1)]
@@ -121,12 +125,11 @@ class IntermediateMap(object):
 					result.add(coords2)
 		return sorted(result)
 
-	def _set_tiles(self, inter_shape, new_type):
+	def _set_tiles(self, initial_coords_list, new_type):
 		last_coords_list = []
-		for coords in inter_shape.tuple_iter():
-			if coords in self._map:
-				last_coords_list.append(coords)
-				self._update_intermediate_coords(coords, new_type)
+		for coords in initial_coords_list:
+			last_coords_list.append(coords)
+			self._update_intermediate_coords(coords, new_type)
 
 		for dist in xrange(3):
 			surrounding_coords_list = self._get_surrounding_coords(last_coords_list)
