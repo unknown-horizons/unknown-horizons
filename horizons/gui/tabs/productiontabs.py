@@ -41,6 +41,7 @@ from horizons.world.production.producer import Producer
 class ProductionOverviewTab(OverviewTab):
 	ACTIVE_PRODUCTION_ANIM_DIR = "content/gui/images/animations/cogs/large"
 	BUTTON_BACKGROUND = "content/gui/images/buttons/msg_button.png"
+	PRODUCTION_LINE_IMAGE = "content/gui/icons/templates/production/production_line.png"
 
 	def  __init__(self, instance, widget='overview_productionbuilding.xml',
 		         production_line_gui_xml='overview_productionline.xml'):
@@ -85,19 +86,7 @@ class ProductionOverviewTab(OverviewTab):
 			self._set_resource_amounts(container, production)
 
 			centered_container = container.findChild(name='centered_production_icons')
-			consumed_resources = len(production.get_consumed_resources()) - 1
-			if consumed_resources > 0:
-				# center the production line
-				y = (27 * consumed_resources)
-				centered_container.position = (0, y)
-
-				# add vertical line to connect the multiple input res
-				# TODO: Find a better image here
-				size = (14, (55 * consumed_resources) + 17)
-				image = Icon(image="content/gui/icons/templates/production/production_line.png")
-				image.position=(59, 15)
-				image.min_size = image.size = image.max_size = size
-				container.insertChild(image, 0)
+			self._connect_multiple_input_res_for_production(centered_container, container, production)
 
 			if production.is_paused():
 				centered_container.removeChild( centered_container.findChild(name="toggle_active_active") )
@@ -134,6 +123,23 @@ class ProductionOverviewTab(OverviewTab):
 			container.stylize('menu_black')
 			parent_container.addChild(container)
 		super(ProductionOverviewTab, self).refresh()
+
+	def _connect_multiple_input_res_for_production(self, centered_container, container, production):
+		consumed_resources_count = len(production.get_consumed_resources()) - 1
+		if consumed_resources_count > 0:
+			# center the production line
+			y = (27 * consumed_resources_count)
+			centered_container.position = (0, y)
+
+			# add vertical line to connect the multiple input res
+			# TODO: Find a better image here
+			res_icon_height = (ImageFillStatusButton.CELL_SIZE[1] + ImageFillStatusButton.PADDING)
+			size = (14, (res_icon_height * consumed_resources_count) + 17)
+
+			image = Icon(image=self.PRODUCTION_LINE_IMAGE)
+			image.position=(59, 15)
+			image.min_size = image.size = image.max_size = size
+			container.insertChild(image, 0)
 
 	def _set_resource_amounts(self, container, production):
 		for res, amount in production.get_consumed_resources().iteritems():
