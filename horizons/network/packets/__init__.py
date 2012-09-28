@@ -26,6 +26,7 @@ try:
 except ImportError:
 	from StringIO import StringIO
 
+from horizons.network import NetworkException, SoftNetworkException
 from horizons.network import find_enet_module
 enet = find_enet_module()
 
@@ -165,7 +166,9 @@ SafeUnpickler.add('common', cmd_fatalerror)
 
 def unserialize(data, validate=False, protocol=0):
 	mypacket = SafeUnpickler.loads(data)
-	if validate and not (hasattr(mypacket.validate, '__func__') and mypacket.validate.__func__ is packet.validate.__func__):
+	if validate:
+		if not hasattr(mypacket.validate, '__func__'):
+			raise NetworkException("Attempt to override packet.validate()")
 		mypacket.validate(protocol)
 	return mypacket
 
