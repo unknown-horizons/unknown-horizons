@@ -82,76 +82,37 @@ class WorldEditor(object):
 		self.session.view.center((min_x + max_x) // 2, (min_y + max_y) // 2)
 
 	def _get_double_repr(self, coords):
-		if coords in self.world.full_map:
-			tile = self.world.full_map[coords]
-			if tile.id <= 0:
-				# deep water
-				return (0, 0, 0, 0)
-			elif tile.id == 1:
-				# shallow water
-				return (1, 1, 1, 1)
-			elif tile.id == 6:
-				# sand
-				return (2, 2, 2, 2)
-			elif tile.id == 3:
-				# grass
-				return (3, 3, 3, 3)
-			else:
-				offset = 0 if tile.id == 2 else (1 if tile.id == 5 else 2)
-				rot = tile._instance.getRotation() // 90
-				if tile._action == 'straight':
-					# 2 low, 2 high
-					if rot == 0:
-						return (offset, offset + 1, offset, offset + 1)
-					elif rot == 1:
-						return (offset + 1, offset + 1, offset, offset)
-					elif rot == 2:
-						return (offset + 1, offset, offset + 1, offset)
-					else:
-						return (offset, offset, offset + 1, offset + 1)
-				elif tile._action == 'curve_in':
-					# 1 low, 3 high
-					if rot == 0:
-						return (offset, offset + 1, offset + 1, offset + 1)
-					elif rot == 1:
-						return (offset + 1, offset + 1, offset, offset + 1)
-					elif rot == 2:
-						return (offset + 1, offset + 1, offset + 1, offset)
-					else:
-						return (offset + 1, offset, offset + 1, offset + 1)
-				else:
-					# 3 low, 1 high
-					if rot == 0:
-						return (offset, offset, offset, offset + 1)
-					elif rot == 1:
-						return (offset, offset + 1, offset, offset)
-					elif rot == 2:
-						return (offset + 1, offset, offset, offset)
-					else:
-						return (offset, offset, offset + 1, offset)
+		if coords not in self.world.full_map:
+			return 0
+
+		tile = self.world.full_map[coords]
+		if tile.id <= 0:
+			return 0 # deep water
+		elif tile.id == 1:
+			return 1 # shallow water
+		elif tile.id == 6:
+			return 2 # sand
+		elif tile.id == 3:
+			return 3 # grass
 		else:
-			return (0, 0, 0, 0)
+			offset = 0 if tile.id == 2 else (1 if tile.id == 5 else 2)
+			rot = tile._instance.getRotation() // 90
+			if tile._action == 'straight':
+				return offset + (1, 0, 0, 1)[rot] # 2 low, 2 high
+			elif tile._action == 'curve_in':
+				return offset + (1, 1, 0, 1)[rot] # 1 low, 3 high
+			else:
+				return offset + (1, 0, 0, 0)[rot] # 3 low, 1 high
 
 	def _create_intermediate_map(self):
-		double_map = {}
+		self._intermediate_map = {}
 		width = self.world.max_x - self.world.min_x + 1
 		height = self.world.max_y - self.world.min_y + 1
 		for dy in xrange(height + 2):
 			orig_y = dy + self.world.min_y - 1
 			for dx in xrange(width + 2):
 				orig_x = dx + self.world.min_x - 1
-				double_repr = self._get_double_repr((orig_x, orig_y))
-				double_map[(2 * dx, 2 * dy)] = None #double_repr[0]
-				double_map[(2 * dx + 1, 2 * dy)] = None #double_repr[1]
-				double_map[(2 * dx, 2 * dy + 1)] = None #double_repr[2]
-				double_map[(2 * dx + 1, 2 * dy + 1)] = double_repr[3]
-
-		self._intermediate_map = {}
-		for dy in xrange(1, 2 * height + 4, 2):
-			s = ''
-			for dx in xrange(1, 2 * width + 4, 2):
-				self._intermediate_map[(dx // 2, dy // 2)] = double_map[(dx, dy)]
-				s += str(double_map[(dx, dy)])
+				self._intermediate_map[(dx, dy)] = self._get_double_repr((orig_x, orig_y))
 		#self._print_intermediate_map()
 
 	def _print_intermediate_map(self):
