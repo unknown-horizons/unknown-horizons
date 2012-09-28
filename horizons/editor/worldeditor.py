@@ -24,13 +24,12 @@ import os.path
 
 from collections import deque
 
-from horizons.constants import GROUND
 from horizons.command.unit import RemoveUnit
+from horizons.editor.intermediatemap import IntermediateMap
 from horizons.entities import Entities
 from horizons.gui.util import load_uh_widget
 from horizons.util.dbreader import DbReader
 from horizons.util.python.callback import Callback
-from horizons.util.shapes import Point, Rect
 from horizons.util.uhdbaccessor import read_savegame_template
 
 class WorldEditor(object):
@@ -38,14 +37,13 @@ class WorldEditor(object):
 		super(WorldEditor, self).__init__()
 		self.world = world
 		self.session = world.session
+		self.intermediate_map = IntermediateMap(world)
 		self._remove_unnecessary_objects()
 		self._center_view()
 
 		self.brush_size = 1
 		self._show_settings()
 		self._change_brush_size(1)
-
-		self._create_intermediate_map()
 
 	def _show_settings(self):
 		"""Display settings widget to change brush size."""
@@ -80,60 +78,6 @@ class WorldEditor(object):
 		min_y = min(zip(*self.world.full_map.keys())[1])
 		max_y = max(zip(*self.world.full_map.keys())[1])
 		self.session.view.center((min_x + max_x) // 2, (min_y + max_y) // 2)
-
-	def _get_double_repr(self, coords):
-		if coords not in self.world.full_map:
-			return 0
-
-		tile = self.world.full_map[coords]
-		if tile.id <= 0:
-			return 0 # deep water
-		elif tile.id == 1:
-			return 1 # shallow water
-		elif tile.id == 6:
-			return 2 # sand
-		elif tile.id == 3:
-			return 3 # grass
-		else:
-			offset = 0 if tile.id == 2 else (1 if tile.id == 5 else 2)
-			rot = tile._instance.getRotation() // 90
-			if tile._action == 'straight':
-				return offset + (1, 0, 0, 1)[rot] # 2 low, 2 high
-			elif tile._action == 'curve_in':
-				return offset + (1, 1, 0, 1)[rot] # 1 low, 3 high
-			else:
-				return offset + (1, 0, 0, 0)[rot] # 3 low, 1 high
-
-	def _create_intermediate_map(self):
-		self._intermediate_map = {}
-		width = self.world.max_x - self.world.min_x + 1
-		height = self.world.max_y - self.world.min_y + 1
-		for dy in xrange(height + 2):
-			orig_y = dy + self.world.min_y - 1
-			for dx in xrange(width + 2):
-				orig_x = dx + self.world.min_x - 1
-				self._intermediate_map[(dx, dy)] = self._get_double_repr((orig_x, orig_y))
-		#self._print_intermediate_map()
-
-	def _print_intermediate_map(self):
-		width = self.world.max_x - self.world.min_x + 1
-		height = self.world.max_y - self.world.min_y + 1
-		for dy in xrange(1, 2 * height + 4, 2):
-			s = ''
-			for dx in xrange(1, 2 * width + 4, 2):
-				s += str(self._intermediate_map[(dx // 2, dy // 2)])
-			print s
-		print
-
-	def get_tile_details(self, coords):
-		if coords in self.world.full_map:
-			tile = self.world.full_map[coords]
-			if tile.id == -1:
-				return GROUND.WATER
-			else:
-				return (tile.id, tile._action, tile._instance.getRotation() + 45)
-		else:
-			return GROUND.WATER
 
 	def _iter_islands(self):
 		ground = {}
@@ -199,160 +143,6 @@ class WorldEditor(object):
 		self._save_islands(db, path, prefix)
 		db('COMMIT')
 		db.close()
-
-	def _get_intermediate_coords(self, coords):
-		return (coords[0] - self.world.min_x, coords[1] - self.world.min_y)
-
-	def _update_intermediate_coords(self, coords, new_type):
-		if self._intermediate_map[coords] == new_type:
-			return
-		self._intermediate_map[coords] = new_type
-
-	def set_tile_from_intermediate(self, x, y):
-		if (x, y) not in self._intermediate_map:
-			return
-		if (x + 1, y + 1) not in self._intermediate_map:
-			return
-
-		data = []
-		for dy in xrange(2):
-			for dx in xrange(2):
-				data.append(self._intermediate_map[(x + dx, y + dy)])
-		coords = (x + self.world.min_x, y + self.world.min_y)
-
-		mi = min(data)
-		for i in xrange(4):
-			data[i] -= mi
-		if max(data) == 0:
-			# the same tile
-			if mi == 0:
-				self.set_tile(coords, GROUND.WATER)
-			elif mi == 1:
-				self.set_tile(coords, GROUND.SHALLOW_WATER)
-			elif mi == 2:
-				self.set_tile(coords, GROUND.SAND)
-			elif mi == 3:
-				self.set_tile(coords, GROUND.DEFAULT_LAND)
-		else:
-			assert max(data) == 1, 'This should never happen'
-			type = 2 if mi == 0 else (5 if mi == 1 else 4)
-			if data == [0, 1, 0, 1]:
-				self.set_tile(coords, (type, 'straight', 45))
-			elif data == [1, 1, 0, 0]:
-				self.set_tile(coords, (type, 'straight', 135))
-			elif data == [1, 0, 1, 0]:
-				self.set_tile(coords, (type, 'straight', 225))
-			elif data == [0, 0, 1, 1]:
-				self.set_tile(coords, (type, 'straight', 315))
-			elif data == [0, 1, 1, 1]:
-				self.set_tile(coords, (type, 'curve_in', 45))
-			elif data == [1, 1, 0, 1]:
-				self.set_tile(coords, (type, 'curve_in', 135))
-			elif data == [1, 1, 1, 0]:
-				self.set_tile(coords, (type, 'curve_in', 225))
-			elif data == [1, 0, 1, 1]:
-				self.set_tile(coords, (type, 'curve_in', 315))
-			elif data == [0, 0, 0, 1]:
-				self.set_tile(coords, (type, 'curve_out', 45))
-			elif data == [0, 1, 0, 0]:
-				self.set_tile(coords, (type, 'curve_out', 135))
-			elif data == [1, 0, 0, 0]:
-				self.set_tile(coords, (type, 'curve_out', 225))
-			elif data == [0, 0, 1, 0]:
-				self.set_tile(coords, (type, 'curve_out', 315))
-			else:
-				assert False, 'This should never happen'
-
-	def _fix_intermediate(self, coords_list, new_type):
-		changes = True
-		while changes:
-			changes = False
-			for x, y in coords_list:
-				top_left = (x, y)
-				if top_left not in self._intermediate_map:
-					continue
-				bottom_right = (x + 1, y + 1)
-				if bottom_right not in self._intermediate_map:
-					continue
-				if self._intermediate_map[top_left] != self._intermediate_map[bottom_right]:
-					continue
-				bottom_left = (x, y + 1)
-				top_right = (x + 1, y)
-				if self._intermediate_map[bottom_left] != self._intermediate_map[top_right]:
-					continue
-				diff = self._intermediate_map[top_left] - self._intermediate_map[top_right]
-				if diff == 0:
-					continue
-
-				lower_corner = top_right if diff == 1 else top_left
-				higher_corner = top_left if diff == 1 else top_right
-				mi = self._intermediate_map[lower_corner]
-				if new_type <= mi:
-					self._set_intermediate_coords(Point(*higher_corner), mi)
-				else:
-					self._set_intermediate_coords(Point(*lower_corner), mi + 1)
-				changes = True
-
-	def set_south_east_corner(self, coords, tile_details):
-		x, y = coords
-		if not (self.world.min_x <= x < self.world.max_x and self.world.min_y <= y < self.world.max_y):
-			return
-
-		dx, dy = self._get_intermediate_coords(coords)
-		new_type = tile_details[0] if tile_details[0] != 6 else 2
-		if self._intermediate_map[(dx, dy)] == new_type:
-			return
-		self._set_intermediate_coords(Point(dx, dy), new_type)
-
-	def _get_surrounding_coords(self, current_coords_list):
-		all_neighbours = [(-1, -1), (-1, 0), (-1, 1), (0, -1), (0, 1), (1, -1), (1, 0), (1, 1)]
-		current_coords_set = set(current_coords_list)
-		result = set()
-		for x, y in current_coords_list:
-			for dx, dy in all_neighbours:
-				coords2 = (x + dx, y + dy)
-				if coords2 in self._intermediate_map and coords2 not in current_coords_set:
-					result.add(coords2)
-		return sorted(result)
-
-	def _set_intermediate_coords(self, inter_shape, new_type):
-		last_coords_list = []
-		for coords in inter_shape.tuple_iter():
-			if coords not in self._intermediate_map:
-				continue
-			last_coords_list.append(coords)
-			self._update_intermediate_coords(coords, new_type)
-
-		for dist in xrange(3):
-			surrounding_coords_list = self._get_surrounding_coords(last_coords_list)
-			for coords2 in surrounding_coords_list:
-				if coords2 not in self._intermediate_map:
-					continue
-				cur_type = self._intermediate_map[coords2]
-				best_new_type = cur_type
-				best_dist = 10
-				for new_type2 in xrange(4):
-					if best_dist <= abs(new_type2 - cur_type):
-						continue
-					suitable = True
-					for updated_coords in last_coords_list:
-						if abs(updated_coords[0] - coords2[0]) > 1 or abs(updated_coords[1] - coords2[1]) > 1:
-							continue
-						if abs(self._intermediate_map[updated_coords] - new_type2) > 1:
-							suitable = False
-							break
-					if not suitable:
-						continue
-					best_new_type = new_type2
-					best_dist = abs(new_type2 - cur_type)
-				self._update_intermediate_coords(coords2, best_new_type)
-			last_coords_list.extend(surrounding_coords_list)
-
-		self._fix_intermediate(last_coords_list, new_type)
-		#self._print_intermediate_map()
-
-		for coords in last_coords_list:
-			self.set_tile_from_intermediate(*coords)
 
 	def set_tile(self, coords, tile_details):
 		if coords in self.world.full_map:

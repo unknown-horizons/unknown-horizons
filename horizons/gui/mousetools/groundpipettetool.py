@@ -23,6 +23,7 @@ from fife import fife
 
 import horizons.globals
 
+from horizons.constants import GROUND
 from horizons.gui.mousetools import NavigationTool
 
 class GroundPipetteTool(NavigationTool):
@@ -46,9 +47,19 @@ class GroundPipetteTool(NavigationTool):
 	def mouseMoved(self, evt):
 		self.update_coloring(evt)
 
+	def _get_tile_details(self, coords):
+		if coords in self.session.world.full_map:
+			tile = self.session.world.full_map[coords]
+			if tile.id == -1:
+				return GROUND.WATER
+			else:
+				return (tile.id, tile._action, tile._instance.getRotation() + 45)
+		else:
+			return GROUND.WATER
+
 	def mousePressed(self, evt):
 		if evt.getButton() == fife.MouseEvent.LEFT:
-			tile_details = self.session.world_editor.get_tile_details(self.get_world_location(evt).to_tuple())
+			tile_details = self._get_tile_details(self.get_world_location(evt).to_tuple())
 			self.session.set_cursor('tile_layer', tile_details)
 			evt.consume()
 		elif evt.getButton() == fife.MouseEvent.RIGHT:
