@@ -86,6 +86,11 @@ class TileLayingTool(NavigationTool):
 		for p in brush.tuple_iter():
 			self.session.world_editor.set_south_east_corner(p, self._tile_details)
 
+	def get_world_location(self, evt):
+		screenpoint = self._get_screenpoint(evt)
+		mapcoords = self.session.view.cam.toMapCoordinates(screenpoint, False)
+		return self._round_map_coords(mapcoords.x + 0.5, mapcoords.y + 0.5)
+
 	def mousePressed(self, evt):
 		if evt.getButton() == fife.MouseEvent.LEFT:
 			coords = self.get_world_location(evt).to_tuple()
