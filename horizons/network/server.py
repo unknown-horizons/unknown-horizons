@@ -26,7 +26,7 @@ import gettext
 from horizons.network.common import *
 from horizons import network
 from horizons.network import packets, find_enet_module
-from horizons.network import NetworkException, SoftNetworkException
+from horizons.network import NetworkException, SoftNetworkException, PacketTooLarge
 from horizons.i18n.utils import find_available_languages
 
 enet = find_enet_module(client = False)
@@ -50,9 +50,12 @@ class Server(object):
 			'interval':  1 * 60 * 1000,
 		}
 		self.capabilities = {
-			'minplayers' : 2,
-			'maxplayers' : 8,
-			'maxmapsize' : 1 * 1024 * 1024,
+			'minplayers'    : 2,
+			'maxplayers'    : 8,
+			# NOTE: this defines the global packet size maximum.
+			# there's still a per packet maximum defined in the
+			# individual packet classes
+			'maxpacketsize' : 2 * 1024 * 1024,
 		}
 		self.callbacks = {
 			'onconnect':     [ self.onconnect ],
@@ -267,6 +270,13 @@ class Server(object):
 
 		player = self.players[peer.data]
 
+		# check packet size
+		if len(event.packet.data) > self.capabilities['maxpacketsize']:
+			logging.warning("[RECEIVE] Global packet size exceeded from %s: size=%d" % (peer.address, len(event.packet.data)))
+			self.fatalerror(player, __("You've exceeded the global packet size. This should never happen."
+				" Please contact us and/or file a bug report"))
+			return
+
 		# shortpath if game is running
 		if player.game is not None and player.game.state is Game.State.Running:
 			self.call_callbacks('gamedata', player, event.packet.data)
@@ -278,8 +288,13 @@ class Server(object):
 		except SoftNetworkException as e:
 			self.error(player, e.message)
 			return
+		except PacketTooLarge as e:
+			logging.warning("[RECEIVE] Per packet size exceeded from %s: %s" % (player, e))
+			self.fatalerror(player, __("You've exceeded the per packet size. This should never happen."
+				" Please contact us and/or file a bug report: %s" % (e)))
+			return
 		except Exception as e:
-			logging.warning("[RECEIVE] Unknown or malformed packet from %s: %s!" % (peer.address, e))
+			logging.warning("[RECEIVE] Unknown or malformed packet from %s: %s!" % (player, e))
 			self.fatalerror(player, __("Unknown or malformed packet. Please check your game version"))
 			return
 

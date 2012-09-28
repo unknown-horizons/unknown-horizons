@@ -26,7 +26,7 @@ try:
 except ImportError:
 	from StringIO import StringIO
 
-from horizons.network import NetworkException, SoftNetworkException
+from horizons.network import NetworkException, SoftNetworkException, PacketTooLarge
 from horizons.network import find_enet_module
 enet = find_enet_module()
 
@@ -107,6 +107,8 @@ class SafeUnpickler(object):
 #-------------------------------------------------------------------------------
 
 class packet(object):
+	maxpacketsize = 0
+
 	def __init__(self):
 		"""ctor"""
 
@@ -169,6 +171,8 @@ def unserialize(data, validate=False, protocol=0):
 	if validate:
 		if not hasattr(mypacket.validate, '__func__'):
 			raise NetworkException("Attempt to override packet.validate()")
+		if mypacket.__class__.mapacketxsize > 0 and len(data) > mypacket.__class__.maxpacketsize:
+			raise PacketTooLarge("packet=%s, length=%d)" % (mypacket.__class__.__name__, len(data)))
 		mypacket.validate(protocol)
 	return mypacket
 

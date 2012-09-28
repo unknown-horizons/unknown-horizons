@@ -68,6 +68,9 @@ class NetworkException(Exception):
 class SoftNetworkException(NetworkException):
 	pass
 
+class PacketTooLarge(NetworkException):
+	pass
+
 class NotConnected(NetworkException):
 	def __str__(self):
 		return "Client is not connected"
