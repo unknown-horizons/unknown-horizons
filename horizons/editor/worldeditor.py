@@ -24,10 +24,13 @@ import os.path
 
 from collections import deque
 
+import horizons.globals
+
 from horizons.command.unit import RemoveUnit
 from horizons.editor.intermediatemap import IntermediateMap
 from horizons.entities import Entities
 from horizons.gui.util import load_uh_widget
+from horizons.scheduler import Scheduler
 from horizons.util.dbreader import DbReader
 from horizons.util.python.callback import Callback
 from horizons.util.uhdbaccessor import read_savegame_template
@@ -44,6 +47,8 @@ class WorldEditor(object):
 		self.brush_size = 1
 		self._show_settings()
 		self._change_brush_size(1)
+
+		self._tile_delete_set = set()
 
 	def _show_settings(self):
 		"""Display settings widget to change brush size."""
@@ -144,16 +149,26 @@ class WorldEditor(object):
 		db('COMMIT')
 		db.close()
 
-	def set_tile(self, coords, tile_details):
-		if coords in self.world.full_map:
-			if coords in self.world.full_map:
-				old_tile = self.world.full_map[coords]
-				if old_tile.id != -1:
-					instance = old_tile._instance
-					layer = instance.getLocation().getLayer()
-					layer.deleteInstance(instance)
+	def _delete_tile_instance(self, old_tile):
+		self._tile_delete_set.remove(old_tile)
+		instance = old_tile._instance
+		layer = instance.getLocation().getLayer()
+		layer.deleteInstance(instance)
+		old_tile._instance = None
 
-			(ground_id, action_id, rotation) = tile_details
+	def set_tile(self, coords, tile_details):
+		if coords not in self.world.full_map:
+			return
+
+		old_tile = self.world.full_map[coords]
+		if old_tile.id != -1 and old_tile._instance and old_tile not in self._tile_delete_set:
+			if (old_tile.id, old_tile._action, old_tile._instance.getRotation() + 45) == tile_details:
+				return
+			self._tile_delete_set.add(old_tile)
+			Scheduler().add_new_object(Callback(self._delete_tile_instance, old_tile), self, run_in=0)
+
+		(ground_id, action_id, rotation) = tile_details
+		if ground_id != 0:
 			ground = Entities.grounds[ground_id](self.session, *coords)
 			ground.act(action_id, rotation)
 			self.world.full_map[coords] = ground
