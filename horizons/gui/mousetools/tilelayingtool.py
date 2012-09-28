@@ -23,6 +23,7 @@ from fife import fife
 
 import horizons.globals
 
+from horizons.constants import GROUND
 from horizons.gui.mousetools import NavigationTool
 from horizons.util.shapes import Circle, Point
 from horizons.util.loaders.tilesetloader import TileSetLoader
@@ -38,7 +39,15 @@ class TileLayingTool(NavigationTool):
 		super(TileLayingTool, self).__init__(session)
 		self.session.gui.on_escape = self.on_escape
 		self.renderer = session.view.renderer['InstanceRenderer']
-		self._tile_details = tile_details
+		self._tile_details = (None, None, None)
+		if tile_details[0] in [0, 2]:
+			self._tile_details = GROUND.WATER
+		elif tile_details[0] in [1, 5]:
+			self._tile_details = GROUND.SHALLOW_WATER
+		elif tile_details[0] in [6, 4]:
+			self._tile_details = GROUND.SAND
+		else:
+			self._tile_details = GROUND.DEFAULT_LAND
 		self._set_cursor_image()
 
 	def _set_cursor_image(self):
@@ -75,7 +84,7 @@ class TileLayingTool(NavigationTool):
 	def _place_tile(self, coords):
 		brush = Circle(Point(*coords), self.session.world_editor.brush_size - 1)
 		for p in brush.tuple_iter():
-			self.session.world_editor.set_tile(p, self._tile_details)
+			self.session.world_editor.set_south_east_corner(p, self._tile_details)
 
 	def mousePressed(self, evt):
 		if evt.getButton() == fife.MouseEvent.LEFT:
