@@ -134,12 +134,20 @@ class ProductionOverviewTab(OverviewTab):
 			# add vertical line to connect the multiple input res
 			# TODO: Find a better image here
 			res_icon_height = (ImageFillStatusButton.CELL_SIZE[1] + ImageFillStatusButton.PADDING)
-			size = (14, (res_icon_height * consumed_resources_count) + 17)
+			size = (16, (res_icon_height * consumed_resources_count) + 18)
 
 			image = Icon(image=self.PRODUCTION_LINE_IMAGE)
-			image.position=(59, 15)
+			image.position=(97, 17)
 			image.min_size = image.size = image.max_size = size
 			container.insertChild(image, 0)
+
+			for res in xrange(0, consumed_resources_count + 1):
+				arrow_y = (res_icon_height * res) + 17
+				if arrow_y != y:
+					image = Icon(image=self.PRODUCTION_LINE_IMAGE)
+					image.position=(59, arrow_y)
+					image.min_size = image.size = image.max_size = (38, 18)
+					container.insertChild(image, 0)
 
 	def _set_resource_amounts(self, container, production):
 		for res, amount in production.get_consumed_resources().iteritems():
