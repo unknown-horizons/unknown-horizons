@@ -42,7 +42,7 @@
 		<VBox>
 			<Label name="use_renderer_label" text="Used renderer:"
 				wrap_text="1" helptext="SDL is only meant as unsupported fallback and might cause problems!" />
-			<ScrollArea min_size="82,36" >
+			<ScrollArea min_size="82,55" >
 				<ListBox name="render_backend" is_focusable="0" />
 			</ScrollArea>
 		</VBox>
@@ -50,7 +50,7 @@
 		<VBox>
 			<Label name="fps_label" text="Frame rate limit:"
 				wrap_text="1" helptext="Set the maximum frame rate used. Default: 60 fps." />
-			<ScrollArea min_size="80,60" >
+			<ScrollArea min_size="80,90" >
 				<ListBox name="fps_rate" is_focusable="0" />
 			</ScrollArea>
 		</VBox>
@@ -146,7 +146,7 @@
 
 				<HBox>
 					<Label text="Select language:" name="language_label" />
-					<ScrollArea min_size="165,180" >
+					<ScrollArea min_size="165,206" >
 						<ListBox name="uni_language" is_focusable="0" />
 					</ScrollArea>
 				</HBox>
