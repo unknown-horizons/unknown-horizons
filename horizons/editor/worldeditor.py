@@ -109,7 +109,7 @@ class WorldEditor(object):
 			island_db('BEGIN')
 			for x, y in coords_list:
 				tile = self.world.full_map[(x, y)]
-				island_db('INSERT INTO ground VALUES(?, ?, ?, ?, ?)', x - min_x, y - min_y, tile.id, tile._action, tile._instance.getRotation() + 45)
+				island_db('INSERT INTO ground VALUES(?, ?, ?, ?, ?)', x - min_x, y - min_y, tile.id, tile._action, tile.rotation + 45)
 			island_db('COMMIT')
 			island_db.close()
 
@@ -137,7 +137,7 @@ class WorldEditor(object):
 
 		old_tile = self.world.full_map[coords]
 		if old_tile and old_tile.id != -1 and old_tile._instance and old_tile not in self._tile_delete_set:
-			if (old_tile.id, old_tile._action, old_tile._instance.getRotation() + 45) == tile_details:
+			if (old_tile.id, old_tile._action, old_tile.rotation + 45) == tile_details:
 				return
 			self._tile_delete_set.add(old_tile)
 			Scheduler().add_new_object(Callback(self._delete_tile_instance, old_tile), self, run_in=0)

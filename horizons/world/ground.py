@@ -76,6 +76,10 @@ class SurfaceTile(object):
 
 		self._instance.act(str('%s_%s' % (action, self._tile_set_id)), facing_loc, True)
 
+	@property
+	def rotation(self):
+		# workaround for FIFE's inconsistent rotation rounding
+		return int(round(self._instance.getRotation() / 45.0)) * 45
 
 class Ground(SurfaceTile):
 	"""Default land surface"""

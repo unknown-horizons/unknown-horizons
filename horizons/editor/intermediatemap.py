@@ -43,7 +43,7 @@ class IntermediateMap(object):
 			return 3 # grass
 		else:
 			offset = 0 if tile.id == 2 else (1 if tile.id == 5 else 2)
-			rot = tile._instance.getRotation() // 90
+			rot = tile.rotation // 90
 			if tile._action == 'straight':
 				return offset + (1, 0, 0, 1)[rot] # 2 low, 2 high
 			elif tile._action == 'curve_in':

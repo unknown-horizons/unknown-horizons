@@ -53,7 +53,7 @@ class GroundPipetteTool(NavigationTool):
 			if tile.id == -1:
 				return GROUND.WATER
 			else:
-				return (tile.id, tile._action, tile._instance.getRotation() + 45)
+				return (tile.id, tile._action, tile.rotation + 45)
 		else:
 			return GROUND.WATER
 
