@@ -21,7 +21,7 @@
 
 from fife import fife
 
-import horizons.main
+import horizons.globals
 from horizons.command.unit import Act, Attack
 from horizons.command.diplomacy import AddEnemyPair
 from horizons.component.healthcomponent import HealthComponent
@@ -64,9 +64,9 @@ class AttackingTool(SelectionTool):
 		super(AttackingTool, self).mouseMoved(evt)
 		target = self._get_attackable_instance(evt)
 		if target:
-			horizons.main.fife.set_cursor_image("attacking")
+			horizons.globals.fife.set_cursor_image("attacking")
 		else:
-			horizons.main.fife.set_cursor_image("default")
+			horizons.globals.fife.set_cursor_image("default")
 
 	def _get_attackable_instance(self, evt):
 		"""

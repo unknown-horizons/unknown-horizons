@@ -27,12 +27,12 @@ from collections import defaultdict
 from horizons.constants import BUILDINGS, TIER
 from horizons.entities import Entities
 from horizons.util.worldobject import WorldObject
-from horizons.util.shapes.rect import Rect
+from horizons.util.shapes import Rect
 from horizons.messaging import UpgradePermissionsChanged
 from horizons.util.changelistener import ChangeListener
 from horizons.component.componentholder import ComponentHolder
 from horizons.component.tradepostcomponent import TradePostComponent
-from horizons.world.production.producer import Producer
+from horizons.world.production.producer import Producer, UnitProducer
 from horizons.world.resourcehandler import ResourceHandler
 
 class Settlement(ComponentHolder, WorldObject, ChangeListener, ResourceHandler):
@@ -108,6 +108,12 @@ class Settlement(ComponentHolder, WorldObject, ChangeListener, ResourceHandler):
 		"""Return sum of all taxes payed in this settlement in 1 tax round"""
 		return sum([building.last_tax_payed for building in self.buildings if
 								hasattr(building, 'last_tax_payed')])
+
+	def get_residentials_of_lvl_for_happiness(self, level, min_happiness=0, max_happiness=101):
+		is_valid_residential = lambda building: (hasattr(building, 'happiness') and
+		                                         min_happiness <= building.happiness < max_happiness) and \
+		                                        (hasattr(building, 'level') and building.level == level)
+		return len(filter(is_valid_residential, self.buildings))
 
 	@property
 	def balance(self):
@@ -218,7 +224,7 @@ class Settlement(ComponentHolder, WorldObject, ChangeListener, ResourceHandler):
 			self.buildings_by_id[building.id].append(building)
 		else:
 			self.buildings_by_id[building.id] = [building]
-		if building.has_component(Producer):
+		if building.has_component(Producer) and not building.has_component(UnitProducer):
 			building.get_component(Producer).add_production_finished_listener(self.settlement_building_production_finished)
 		if hasattr(self.owner, 'add_building'):
 			# notify interested players of added building
@@ -228,7 +234,7 @@ class Settlement(ComponentHolder, WorldObject, ChangeListener, ResourceHandler):
 		"""Properly removes a building from the settlement"""
 		self.buildings.remove(building)
 		self.buildings_by_id[building.id].remove(building)
-		if building.has_component(Producer):
+		if building.has_component(Producer) and not building.has_component(UnitProducer):
 			building.get_component(Producer).remove_production_finished_listener(self.settlement_building_production_finished)
 		if hasattr(self.owner, 'remove_building'):
 			# notify interested players of removed building

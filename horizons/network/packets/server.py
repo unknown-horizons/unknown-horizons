@@ -21,11 +21,10 @@
 
 from horizons.network.packets import *
 
-import copy
-
 class cmd_session(packet):
-	def __init__(self, sid):
+	def __init__(self, sid, capabilities):
 		self.sid = sid
+		self.capabilities = capabilities
 
 SafeUnpickler.add('server', cmd_session)
 
@@ -36,8 +35,7 @@ class data_gameslist(packet):
 		self.games = []
 
 	def addgame(self, game):
-		newgame = copy.copy(game)
-		newgame.players = []
+		newgame = game.make_public_copy()
 		self.games.append(newgame)
 
 SafeUnpickler.add('server', data_gameslist)
@@ -77,27 +75,8 @@ SafeUnpickler.add('server', cmd_startgame)
 
 #-------------------------------------------------------------------------------
 
-class cmd_kick_player(packet):
+class cmd_kickplayer(packet):
 	def __init__(self, player):
 		self.player = player
 
-SafeUnpickler.add('server', cmd_kick_player)
-
-#-------------------------------------------------------------------------------
-
-class cmd_fetch_game(packet):
-	def __init__(self, psid):
-		"""fetch game packet"""
-		self.psid = psid
-
-SafeUnpickler.add('server', cmd_fetch_game)
-
-#-------------------------------------------------------------------------------
-
-class savegame_data(packet):
-	def __init__(self, data, psid, mapname):
-		self.data = data
-		self.psid = psid
-		self.mapname = mapname
-
-SafeUnpickler.add('server', savegame_data)
+SafeUnpickler.add('server', cmd_kickplayer)

@@ -21,12 +21,12 @@
 import itertools
 import json
 
-import horizons.main
+import horizons.globals
 from fife import fife
 
-from horizons.util import Point, Rect, Circle
 from horizons.extscheduler import ExtScheduler
 from horizons.util.python.decorators import bind_all
+from horizons.util.shapes import Circle, Point, Rect
 from horizons.command.unit import Act
 from horizons.component.namedcomponent import NamedComponent
 
@@ -114,7 +114,7 @@ class Minimap(object):
 		self.use_rotation = use_rotation
 		self.preview = preview
 
-		self.location_center = self.location.center()
+		self.location_center = self.location.center
 
 		self._id = str(self.__class__.__minimap_id_counter.next()) # internal identifier, used for allocating resources
 
@@ -166,7 +166,7 @@ class Minimap(object):
 			self.renderer.removeAll("minimap_image"+self._id)
 			self.minimap_image.reset()
 			# NOTE: this is for the generic renderer interface, the offrenderer has slightly different methods
-			node = fife.RendererNode( fife.Point(self.location.center().x, self.location.center().y) )
+			node = fife.RendererNode( fife.Point(self.location.center.x, self.location.center.y) )
 			self.renderer.addImage("minimap_image"+self._id, node, self.minimap_image.image, False)
 
 		else:
@@ -387,10 +387,10 @@ class Minimap(object):
 					finish_callback()
 				return
 			part = i # grow bigger
-			if i > STEPS/2: # after the first half
+			if i > STEPS // 2: # after the first half
 				part = STEPS-i  # become smaller
 
-			radius = MIN_RAD + int(( float(part) / (STEPS/2) ) * (MAX_RAD - MIN_RAD) )
+			radius = MIN_RAD + int(( float(part) / (STEPS // 2) ) * (MAX_RAD - MIN_RAD) )
 
 			for x, y in Circle( Point(*tup), radius=radius ).get_border_coordinates():
 				self.minimap_image.rendertarget.addPoint(render_name, fife.Point(x, y), *color)
@@ -503,7 +503,7 @@ class Minimap(object):
 				  int(x * pixel_per_coord_x)+world_min_x, \
 				  int(y * pixel_per_coord_y)+world_min_y), \
 				  int(pixel_per_coord_x), int(pixel_per_coord_y))
-				real_map_point = covered_area.center()
+				real_map_point = covered_area.center
 				"""
 				# use center of the rect that the pixel covers
 				real_map_point.x = int(x*pixel_per_coord_x)+world_min_x + \
@@ -613,7 +613,7 @@ class Minimap(object):
 			warehouse_render_name = self._get_render_name("warehouse")
 			self.minimap_image.rendertarget.removeAll( warehouse_render_name )
 			for settlement in settlements:
-				coord = settlement.warehouse.position.center().to_tuple()
+				coord = settlement.warehouse.position.center.to_tuple()
 				coord = self._world_to_minimap(coord, use_rotation)
 				self._update_image( self.__class__.WAREHOUSE_IMAGE,
 				                    warehouse_render_name,
@@ -671,7 +671,7 @@ class Minimap(object):
 	def _get_rotation_setting(self):
 		if not self.use_rotation:
 			return False
-		return horizons.main.fife.get_uh_setting("MinimapRotation")
+		return horizons.globals.fife.get_uh_setting("MinimapRotation")
 
 	_rotations = { 0 : 0,
 				         1 : 3 * math.pi / 2,

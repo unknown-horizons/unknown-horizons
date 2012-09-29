@@ -18,7 +18,7 @@ components:
     enemy_tabs: [EnemyBuildingOverviewTab,]
 - HealthComponent: {maxhealth: 1000}
 - ProducerComponent:
-    is_mine: True
+    is_mine_for: BUILDINGS.MOUNTAIN
     productionlines:
       IRON_ORE:
         produces:

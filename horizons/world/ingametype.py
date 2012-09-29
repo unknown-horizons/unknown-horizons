@@ -147,7 +147,7 @@ class IngameType(type):
 					new_key = int(hashlib.sha1(old_key).hexdigest(), 16)
 					# crop to integer. this might not be necessary, however the legacy code operated
 					# on this data type, so problems might occur, also with respect to performance.
-					# in princpile, strings and longs should also be supported, but for the sake of
+					# in principle, strings and longs should also be supported, but for the sake of
 					# safety, we use ints.
 					new_key = int( new_key % 2**31 ) # this ensures it's an integer on all reasonable platforms
 				if new_key in new_data:
@@ -165,7 +165,7 @@ class IngameType(type):
 
 	def _loadObject(self):
 		"""Inits self._real_object"""
-		raise NotImplementedError()
+		raise NotImplementedError
 
 	@property
 	def name(self):

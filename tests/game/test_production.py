@@ -57,7 +57,7 @@ def test_basic_wood_production(session, player):
 	assert producer._get_current_state() == PRODUCTION.STATES.waiting_for_res
 
 	# Got res, producing
-	storage.inventory.alter(RES.TREES, 1)
+	storage.inventory.alter(RES.TREES, 2)
 	assert producer._get_current_state() == PRODUCTION.STATES.producing
 
 	# Work half-way

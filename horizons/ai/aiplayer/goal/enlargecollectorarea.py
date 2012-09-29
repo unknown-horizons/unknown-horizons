@@ -25,7 +25,7 @@ from horizons.ai.aiplayer.constants import BUILD_RESULT, BUILDING_PURPOSE
 from horizons.ai.aiplayer.goal.settlementgoal import SettlementGoal
 from horizons.util.python import decorators
 from horizons.constants import BUILDINGS
-from horizons.util import Rect
+from horizons.util.shapes import Rect
 from horizons.entities import Entities
 
 class EnlargeCollectorAreaGoal(SettlementGoal):

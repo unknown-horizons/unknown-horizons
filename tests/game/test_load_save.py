@@ -27,7 +27,8 @@ from horizons.command.building import Build
 from horizons.command.production import ToggleActive
 from horizons.command.unit import CreateUnit
 from horizons.constants import BUILDINGS, PRODUCTION, UNITS, RES, GAME
-from horizons.util import WorldObject, Point
+from horizons.util.shapes import Point
+from horizons.util.worldobject import WorldObject
 from horizons.world.production.producer import Producer
 from horizons.component.collectingcomponent import CollectingComponent
 from horizons.component.storagecomponent import StorageComponent
@@ -60,7 +61,7 @@ def test_load_inactive_production():
 
 	lj = Build(BUILDINGS.LUMBERJACK, 30, 30, island, settlement=settlement)(player)
 	# Set lumberjack to inactive
-	lj.get_component(Producer).set_active(active = False)
+	lj.get_component(Producer).set_active(active=False)
 	worldid = lj.worldid
 
 	session.run(seconds=1)
@@ -186,6 +187,7 @@ def test_hunter_save_load():
 		session = saveload(session)
 
 	# last state reached successfully 2 times -> finished
+	session.end()
 
 
 @game_test(manual_session=True)
@@ -215,6 +217,7 @@ def test_settler_save_load():
 
 	# tile will contain ruin in case of failure
 	assert tile.object.id == BUILDINGS.RESIDENTIAL
+	session.end()
 
 
 @game_test(manual_session=True)
@@ -224,15 +227,16 @@ def test_savegame_upgrade():
 	os.close(fd)
 
 	path = os.path.join(TEST_FIXTURES_DIR, 'large.sqlite.bz2')
-	compressed_data = open(path, "r").read()
+	compressed_data = open(path, "rb").read()
 	data = bz2.decompress( compressed_data )
-	f = open(filename, "w")
+	f = open(filename, "wb")
 	f.write(data)
 	f.close()
 
 	# check if loading and running fails
 	session = load_session(filename)
 	session.run(seconds=30)
+	session.end(keep_map=True)
 
 
 @game_test

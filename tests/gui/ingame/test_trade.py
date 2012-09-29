@@ -20,8 +20,8 @@
 # ###################################################
 
 
-from tests.gui import TestFinished, gui_test
-from tests.gui.helper import get_player_ship
+from tests.gui import gui_test
+from tests.gui.helper import get_player_ship, move_ship
 
 from horizons.component.storagecomponent import StorageComponent
 from horizons.component.tradepostcomponent import TradePostComponent
@@ -33,7 +33,6 @@ from horizons.constants import RES
 def test_trade(gui):
 	"""
 	"""
-	yield
 
 	ship = get_player_ship(gui.session)
 	gui.select([ship])
@@ -45,12 +44,10 @@ def test_trade(gui):
 			world.diplomacy.add_ally_pair( ship.owner, player )
 
 	# move ship near foreign warehouse and wait for it to arrive
-	gui.cursor_click(68, 23, 'right')
-	while (ship.position.x, ship.position.y) != (68, 23):
-		yield
+	move_ship(ship, (68, 23))
 
 	# click trade button
-	gui.trigger('overview_trade_ship', 'trade/action/default')
+	gui.trigger('overview_trade_ship', 'trade')
 
 	# trade widget visible
 	assert gui.find(name='buy_sell_goods')
@@ -60,13 +57,13 @@ def test_trade(gui):
 	settlement_inv = settlement.get_component(StorageComponent).inventory
 
 	# transfer 1 t
-	gui.trigger('buy_sell_goods', 'size_1/action/default')
+	gui.trigger('buy_sell_goods', 'size_1')
 
 	old_ship_value = ship_inv[RES.BOARDS]
 	old_settlement_value = settlement_inv[RES.BOARDS]
 
 	# of boards (will be bought)
-	gui.trigger('buy_sell_goods', 'inventory_entry_0/action/default')
+	gui.trigger('buy_sell_goods', 'inventory_entry_0')
 
 	assert old_settlement_value + 1 == settlement_inv[RES.BOARDS]
 	assert old_ship_value - 1 == ship_inv[RES.BOARDS]
@@ -75,7 +72,7 @@ def test_trade(gui):
 	old_settlement_value = settlement_inv[RES.CANNON]
 
 	# now cannons (won't be bought)
-	gui.trigger('buy_sell_goods', 'inventory_entry_3/action/default')
+	gui.trigger('buy_sell_goods', 'inventory_entry_3')
 
 	assert old_settlement_value == settlement_inv[RES.CANNON]
 	assert old_ship_value == ship_inv[RES.CANNON]
@@ -84,8 +81,8 @@ def test_trade(gui):
 	assert settlement_inv[RES.BOARDS] < settlement.get_component(TradePostComponent).buy_list[RES.BOARDS]
 
 	# transfer 50 t of boards
-	gui.trigger('buy_sell_goods', 'size_5/action/default')
-	gui.trigger('buy_sell_goods', 'inventory_entry_0/action/default')
+	gui.trigger('buy_sell_goods', 'size_5')
+	gui.trigger('buy_sell_goods', 'inventory_entry_0')
 
 	# now it has enough
 	assert settlement_inv[RES.BOARDS] == settlement.get_component(TradePostComponent).buy_list[RES.BOARDS]
@@ -93,13 +90,13 @@ def test_trade(gui):
 	old_ship_value = ship_inv[RES.BOARDS]
 
 	# so another click won't do anything
-	gui.trigger('buy_sell_goods', 'inventory_entry_0/action/default')
+	gui.trigger('buy_sell_goods', 'inventory_entry_0')
 
 	assert old_ship_value == ship_inv[RES.BOARDS]
 
 	# no matter how small the amount
-	gui.trigger('buy_sell_goods', 'size_1/action/default')
-	gui.trigger('buy_sell_goods', 'inventory_entry_0/action/default')
+	gui.trigger('buy_sell_goods', 'size_1')
+	gui.trigger('buy_sell_goods', 'inventory_entry_0')
 
 	assert old_ship_value == ship_inv[RES.BOARDS]
 
@@ -113,21 +110,15 @@ def test_trade(gui):
 	# this gives us 5 alevaries
 	assert ship_inv[RES.ALVEARIES] == 0
 	# first transfer one
-	gui.trigger('buy_sell_goods', 'size_1/action/default')
-	gui.trigger('buy_sell_goods', 'buy_sell_inventory_True_entry_1/action/default')
+	gui.trigger('buy_sell_goods', 'size_1')
+	gui.trigger('buy_sell_goods', 'buy_sell_inventory_True_entry_1')
 
 	print ship_inv[RES.ALVEARIES]
 	assert ship_inv[RES.ALVEARIES] == 1
 	assert settlement_inv[RES.ALVEARIES] == 9
 
 	# now transfer 5, should actually transfer 4
-	gui.trigger('buy_sell_goods', 'size_2/action/default')
-	gui.trigger('buy_sell_goods', 'buy_sell_inventory_True_entry_1/action/default')
+	gui.trigger('buy_sell_goods', 'size_2')
+	gui.trigger('buy_sell_goods', 'buy_sell_inventory_True_entry_1')
 	assert ship_inv[RES.ALVEARIES] == 5
 	assert settlement_inv[RES.ALVEARIES] == 5
-
-	yield TestFinished
-
-
-
-

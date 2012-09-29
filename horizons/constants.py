@@ -68,7 +68,7 @@ class VERSION:
 	#RELEASE_VERSION = u'2012.1'
 
 	## +=1 this if you changed the savegame "api"
-	SAVEGAMEREVISION = 62
+	SAVEGAMEREVISION = 64
 
 	@staticmethod
 	def string():
@@ -419,26 +419,21 @@ class LAYERS:
 
 ## PATHS
 # workaround, so it can be used to create paths within PATHS
-
 if 'UH_USER_DIR' in os.environ:
 	# Prefer the value from the environment. Used to override user dir when
 	# running GUI tests.
-	_user_dir = os.environ['UH_USER_DIR']
+	_user_dir = unicode(os.environ['UH_USER_DIR'], encoding='utf-8')
 elif platform.system() != "Windows":
 	_user_dir = os.path.join(os.path.expanduser('~'), '.unknown-horizons')
 else:
-	dll = ctypes.windll.shell32
-	buf = ctypes.create_string_buffer(300)
-	dll.SHGetSpecialFolderPathA(None, buf, 0x0005, False) # get the My Documents folder
+	import ctypes.wintypes
+	buf = ctypes.create_unicode_buffer(ctypes.wintypes.MAX_PATH)
+	# get the My Documents folder into buf.value
+	ctypes.windll.shell32.SHGetFolderPathW(0, 5, 0, 0, buf)
 	my_games = os.path.join(buf.value, 'My Games')
 	if not os.path.exists(my_games):
 		os.makedirs(my_games)
 	_user_dir = os.path.join(my_games, 'unknown-horizons')
-try:
-	_user_dir = unicode(_user_dir, locale.getpreferredencoding()) # this makes umlaut-paths work on win
-except Exception as inst:
-	_user_dir = unicode(_user_dir, sys.getfilesystemencoding()) # locale.getpreferredencoding() does not work @ mac
-
 
 
 class GFX:
@@ -459,6 +454,8 @@ class PATHS:
 	LOG_DIR = os.path.join(_user_dir, "log")
 	USER_CONFIG_FILE = os.path.join(_user_dir, "settings.xml")
 	SCREENSHOT_DIR = os.path.join(_user_dir, "screenshots")
+	DEFAULT_WINDOW_ICON_PATH = os.path.join("content/gui/images/logos", "uh_32.png")
+	MAC_WINDOW_ICON_PATH = os.path.join("content/gui/icons", "Icon.icns")
 
 	# paths relative to uh dir
 	ACTION_SETS_DIRECTORY = os.path.join("content", "gfx")
@@ -472,6 +469,14 @@ class PATHS:
 
 	DB_FILES = tuple(os.path.join("content", i) for i in
 	                 ("game.sql", "balance.sql", "names.sql"))
+
+	ATLAS_SOURCE_DIRECTORIES = tuple(os.path.join("content/gfx", i) for i in
+									("/base",
+	 								"/buildings",
+	 								"/buildings_preview",
+	 								"/misc",
+	 								"/terrain",
+	 								"/units"))
 
 	if GFX.USE_ATLASES:
 		DB_FILES = DB_FILES + (os.path.join("content", "atlas.sql"), )

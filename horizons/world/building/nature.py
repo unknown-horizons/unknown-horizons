@@ -32,9 +32,6 @@ class NatureBuilding(BuildableRect, BasicBuilding):
 	walkable = True
 	layer = LAYERS.OBJECTS
 
-	def __init__(self, **kwargs):
-		super(NatureBuilding, self).__init__(**kwargs)
-
 class NatureBuildingResourceHandler(BuildingResourceHandler, NatureBuilding):
 	# sorry, but this class is to be removed soon anyway
 	pass
@@ -101,9 +98,6 @@ class ResourceDeposit(NatureBuilding):
 	tearable = False
 	layer = LAYERS.OBJECTS
 	walkable = False
-
-	def __init__(self, *args, **kwargs):
-		super(ResourceDeposit, self).__init__(*args, **kwargs)
 
 class Fish(BuildableSingleEverywhere, BuildingResourceHandler, BasicBuilding):
 

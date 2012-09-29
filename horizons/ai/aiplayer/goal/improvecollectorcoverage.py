@@ -27,7 +27,7 @@ from horizons.ai.aiplayer.goal.settlementgoal import SettlementGoal
 from horizons.util.python import decorators
 from horizons.constants import BUILDINGS, RES, PRODUCTION
 from horizons.scheduler import Scheduler
-from horizons.util import Rect
+from horizons.util.shapes import Rect
 from horizons.entities import Entities
 from horizons.component.storagecomponent import StorageComponent
 from horizons.world.production.producer import Producer

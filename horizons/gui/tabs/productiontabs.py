@@ -22,7 +22,8 @@
 
 import operator
 import weakref
-from fife.extensions import pychan
+
+from fife.extensions.pychan.widgets import Icon, Label
 
 from horizons.command.production import ToggleActive
 from horizons.command.building import Tear
@@ -31,7 +32,7 @@ from horizons.gui.tabs import OverviewTab
 from horizons.gui.util import load_uh_widget
 from horizons.gui.widgets.imagefillstatusbutton import ImageFillStatusButton
 from horizons.scheduler import Scheduler
-from horizons.util import Callback
+from horizons.util.python.callback import Callback
 from horizons.util.pychananimation import PychanAnimation
 from horizons.component.storagecomponent import StorageComponent
 from horizons.world.production.producer import Producer
@@ -74,12 +75,15 @@ class ProductionOverviewTab(OverviewTab):
 		# create a container for each production
 		# sort by production line id to have a consistent (basically arbitrary) order
 		for production in self.get_displayed_productions():
-			# we need to be notified of small production changes, that aren't passed through the instance
+			# we need to be notified of small production changes
+			# that aren't passed through the instance
 			production.add_change_listener(self._schedule_refresh, no_duplicates=True)
 
 			gui = load_uh_widget(self.production_line_gui_xml)
 			# fill in values to gui reflecting the current game state
 			container = gui.findChild(name="production_line_container")
+			self._set_resource_amounts(container, production)
+
 			if production.is_paused():
 				container.removeChild( container.findChild(name="toggle_active_active") )
 				toggle_icon = container.findChild(name="toggle_active_inactive")
@@ -90,7 +94,7 @@ class ProductionOverviewTab(OverviewTab):
 				toggle_icon.name = "toggle_active"
 
 				if production.get_state() == PRODUCTION.STATES.producing:
-					bg = pychan.widgets.Icon(image=self.__class__.BUTTON_BACKGROUND)
+					bg = Icon(image=self.__class__.BUTTON_BACKGROUND)
 					bg.position = toggle_icon.position
 					container.addChild(bg)
 					container.removeChild(toggle_icon) # fix z-ordering
@@ -102,7 +106,7 @@ class ProductionOverviewTab(OverviewTab):
 
 			# fill it with input and output resources
 			in_res_container = container.findChild(name="input_res")
-			self._add_resource_icons(in_res_container, production.get_consumed_resources())
+			self._add_resource_icons(in_res_container, production.get_consumed_resources(), marker=True)
 			out_res_container = container.findChild(name="output_res")
 			self._add_resource_icons(out_res_container, production.get_produced_resources())
 
@@ -116,6 +120,16 @@ class ProductionOverviewTab(OverviewTab):
 			parent_container.addChild(container)
 		super(ProductionOverviewTab, self).refresh()
 
+	def _set_resource_amounts(self, container, production):
+		for res, amount in production.get_consumed_resources().iteritems():
+			# consumed resources are negative!
+			label = Label(text=unicode(-amount), margins=(0, 15))
+			container.findChild(name='input_box').addChild(label)
+
+		for res, amount in production.get_produced_resources().iteritems():
+			label = Label(text=unicode(amount).rjust(2), margins=(0, 15))
+			container.findChild(name='output_box').addChild(label)
+
 	def destruct_building(self):
 		self.instance.session.ingame_gui.hide_menu()
 		Tear(self.instance).execute(self.instance.session)
@@ -126,17 +140,20 @@ class ProductionOverviewTab(OverviewTab):
 			utilisation = int(round(self.instance.get_component(Producer).capacity_utilisation * 100))
 		self.widget.child_finder('capacity_utilisation').text = unicode(utilisation) + u'%'
 
-	def _add_resource_icons(self, container, resources):
+	def _add_resource_icons(self, container, resources, marker=False):
+		calculate_position = lambda amount: (amount * 100) // inventory.get_limit(res)
 		for res in resources:
 			inventory = self.instance.get_component(StorageComponent).inventory
-			filled = (inventory[res] * 100) // inventory.get_limit(res)
-			container.addChild(
-				ImageFillStatusButton.init_for_res(self.instance.session.db, res,
-					inventory[res], filled, use_inactive_icon=False, uncached=True))
+			filled = calculate_position(inventory[res])
+			marker_level = calculate_position(-resources[res]) if marker else 0
+			image_button = ImageFillStatusButton.init_for_res(self.instance.session.db, res,
+					inventory[res], filled, marker=marker_level, use_inactive_icon=False, uncached=True)
+			container.addChild(image_button)
 
 	def show(self):
 		super(ProductionOverviewTab, self).show()
-		Scheduler().add_new_object(Callback(self._refresh_utilisation), self, run_in = GAME_SPEED.TICKS_PER_SECOND, loops = -1)
+		Scheduler().add_new_object(Callback(self._refresh_utilisation),
+		                           self, run_in=GAME_SPEED.TICKS_PER_SECOND, loops=-1)
 
 	def hide(self):
 		super(ProductionOverviewTab, self).hide()

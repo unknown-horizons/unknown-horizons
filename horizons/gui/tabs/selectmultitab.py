@@ -20,7 +20,7 @@
 # ###################################################
 
 from tabinterface import TabInterface
-from horizons.util import Callback
+from horizons.util.python.callback import Callback
 from horizons.gui.util import load_uh_widget
 from horizons.scheduler import Scheduler
 from horizons.command.unit import SetStance

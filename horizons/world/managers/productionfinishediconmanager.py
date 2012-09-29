@@ -20,9 +20,10 @@
 # ###################################################
 
 from fife import fife
+from horizons.component.storagecomponent import StorageComponent
 from horizons.constants import GAME_SPEED
 
-import horizons.main
+import horizons.globals
 from horizons.gui.util import get_res_icon_path
 from horizons.messaging import ResourceProduced
 from horizons.scheduler import Scheduler
@@ -69,16 +70,25 @@ class ProductionFinishedIconManager(object):
 		if cur_ticks_per_second > GAME_SPEED.TICKS_PER_SECOND:
 			interval = (cur_ticks_per_second // GAME_SPEED.TICKS_PER_SECOND) - 1
 
-		res, amount = message.produced_resources.items()[0] # TODO multiple resources
-		group = self.get_resource_string(message.sender, res)
-		self.run[group] = self.animation_steps
+		display_latency = 1
+		for resource_item in message.produced_resources.items():
+			res = resource_item[0] # TODO multiple resources
+			amount = message.sender.get_component(StorageComponent).inventory[res]
 
-		tick_callback = Callback(self.__render_icon, message.sender, group, res, amount)
-		finish_callback = Callback(self.remove_icon, group)
+			# abort if amount is zero
+			if not amount:
+				continue
 
-		Scheduler().add_new_object(tick_callback, self, finish_callback=finish_callback,
-		                           run_in=1, loops=self.animation_duration,
+			group = self.get_resource_string(message.sender, res)
+			self.run[group] = self.animation_steps
+
+			tick_callback = Callback(self.__render_icon, message.sender, group, res, amount)
+			finish_callback = Callback(self.remove_icon, group)
+
+			Scheduler().add_new_object(tick_callback, self, finish_callback=finish_callback,
+		                           run_in=display_latency, loops=self.animation_duration,
 		                           loop_interval=interval)
+			display_latency += (self.animation_duration * display_latency) * (interval if interval else 1)
 
 	def __render_icon(self, instance, group, res, amount):
 		""" This renders the icon. It calculates the position of the icon.
@@ -105,9 +115,9 @@ class ProductionFinishedIconManager(object):
 		bg_node = fife.RendererNode(loc, bg_rel)
 		node = fife.RendererNode(loc, rel)
 
-		bg_image = horizons.main.fife.imagemanager.load(self.background)
-		res_icon = horizons.main.fife.imagemanager.load(get_res_icon_path(res))
-		font = horizons.main.fife.pychanmanager.getFont('mainmenu')
+		bg_image = horizons.globals.fife.imagemanager.load(self.background)
+		res_icon = horizons.globals.fife.imagemanager.load(get_res_icon_path(res))
+		font = horizons.globals.fife.pychanmanager.getFont('mainmenu')
 
 		self.renderer.addImage(group, bg_node, bg_image)
 		self.renderer.resizeImage(group, node, res_icon, 24, 24)

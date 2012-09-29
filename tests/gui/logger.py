@@ -217,13 +217,22 @@ class TestCodeGenerator(object):
 		if container.name == '__unnamed__':
 			print '# FIXME this container needs a name to identify it!'
 			print '# Path: %s' % path
+		elif event_name == 'action' and group_name == 'action_listener':
+			# this is a custom event defined in engine.pychan_util to play click sounds
+			# for widgets
+			pass
 		else:
 			log.debug('# %s' % path)
 
-			self._add([
-				"gui.trigger('%s', '%s/%s/%s')" % (container.name, widget.name, event_name, group_name),
-				''
-			])
+			if group_name == 'default':
+				if event_name in ('action', 'mouseClicked'):
+					code = "gui.trigger('%s', '%s')" % (container.name, widget.name)
+				else:
+					code = "gui.trigger('%s', '%s/%s')" % (container.name, widget.name, event_name)
+			else:
+				code = "gui.trigger('%s', '%s/%s/%s')" % (container.name, widget.name, event_name, group_name)
+
+			self._add([code, ''])
 
 	def new_key_event(self, keycode):
 		"""
@@ -262,12 +271,11 @@ class TestCodeGenerator(object):
 		Start the dialog handler:
 
 			def func1():
-				yield
 				# code for new events will follow
 		"""
 		self._dialog_opener = self._last_command
 		self._last_command = []
-		self._emit(['def func%d():\n\tyield' % self._handler_count])
+		self._emit(['def func%d():' % self._handler_count])
 		self._dialog_active = True
 
 	def dialog_closed(self):

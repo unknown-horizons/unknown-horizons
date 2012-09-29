@@ -22,7 +22,7 @@
 import random
 
 from horizons.constants import PATHS
-from horizons.util import decorators
+from horizons.util.python import decorators
 from horizons.util.dbreader import DbReader
 from horizons.gui.util import get_res_icon_path
 from horizons.entities import Entities
@@ -276,6 +276,29 @@ class UhDbAccessor(DbReader):
 		"""Returns the name of a unit type identified by its type"""
 		return Entities.units[type_id].name
 
+	def get_ship_tooltip(self, ship_id):
+		"""Tries to identify ship properties to display as tooltip.
+		#TODO Should be extended later to also include movement speed, etc."""
+		helptexts = [] # collects all information we will find
+		ship = Entities.units[ship_id]
+		try:
+			comp = ship.get_component_template('StorageComponent')
+			storage = comp['PositiveTotalNumSlotsStorage']
+			#i18n Ship storage properties
+			helptext = _('{slotnum} slots, {limit}t') #xgettext:python-format
+			helptext = helptext.format(slotnum=storage['slotnum'],
+			                           limit=storage['limit'])
+			helptexts.append(helptext)
+		except KeyError: # Component not found, ignore this part
+			pass
+		try:
+			comp = ship.get_component_template('HealthComponent')
+			helptext = _('Health: {health}') #xgettext:python-format
+			helptext = helptext.format(health=comp['maxhealth'])
+			helptexts.append(helptext)
+		except KeyError: # Component not found, ignore this part
+			pass
+		return u'\\n'.join(helptexts)
 
 def read_savegame_template(db):
 	savegame_template = open(PATHS.SAVEGAME_TEMPLATE, "r")

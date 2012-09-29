@@ -77,12 +77,11 @@ class ComponentHolder(object):
 	    'RestrictedPickup': RestrictedPickup,
 	}
 
-
 	def __init__(self, *args, **kwargs):
 		super(ComponentHolder, self).__init__(*args, **kwargs)
 		self.components = {}
 
-	def initialize(self):
+	def initialize(self, **kwargs):
 		"""Has to be called every time a componentholder is created. This is not
 		in __init__() because we need to make sure that all other sub/parent classes
 		have been inited, for example the ConcreteObject class. This is to ensure
@@ -154,24 +153,17 @@ class ComponentHolder(object):
 		return component_class.NAME in self.components
 
 	def get_component(self, component):
-		if self.has_component(component):
-			return self.components[component.NAME]
-		else:
-			return None
+		return self.components.get(component.NAME)
 
 	def get_component_by_name(self, name):
-		if name in self.components:
-			return self.components[name]
-		else:
-			return None
+		return self.components.get(name)
 
 	@classmethod
-	def get_component_template(cls, component_name):
+	def get_component_template(cls, component):
 		"""Returns the component template data given a component NAME"""
 		for entry in cls.component_templates:
 			if isinstance(entry, dict):
 				for key, value in entry.iteritems():
-					if cls.class_mapping[key].NAME == component_name:
+					if cls.class_mapping[key] == component or key == component:
 						return value
-		raise KeyError("This class does not contain a component with name: " + component_name)
-
+		raise KeyError("This class does not contain a component with name: " + component.NAME)

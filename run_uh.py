@@ -55,11 +55,11 @@ def show_error_message(title, message):
 	print(message)
 
 	try:
-		import tkinter
-		import tkinter.messagebox
-		window = tkinter.Tk()
+		import Tkinter
+		import tkMessageBox
+		window = Tkinter.Tk()
 		window.wm_withdraw()
-		tkinter.messagebox.showerror(title, message)
+		tkMessageBox.showerror(title, message)
 	except:
 		# tkinter may be missing
 		pass
@@ -136,8 +136,6 @@ def get_option_parser():
 	             help="Loads a saved game. <save> is the savegamename.")
 	start_uh.add_option("--load-last-quicksave", dest="load_quicksave", action="store_true",
 	             help="Loads the last quicksave.")
-	start_uh.add_option("--nature-seed", dest="nature_seed", type="int",
-	             help="Sets the seed used to generate trees, fish, and other natural resources.")
 	p.add_option_group(start_uh)
 
 	ai_group = optparse.OptionGroup(p, "AI options")
@@ -173,7 +171,7 @@ def get_option_parser():
 	             default=False, help="Enable the string previewer tool for scenario writers")
 	dev_group.add_option("--no-preload", dest="nopreload", action="store_true",
 	             default=False, help="Disable preloading while in main menu")
-	dev_group.add_option("--game-speed", dest="gamespeed", metavar="<game_speed>", type="int",
+	dev_group.add_option("--game-speed", dest="gamespeed", metavar="<game_speed>", type="float",
 	             help="Run the game in the given speed (Values: 0.5, 1, 2, 3, 4, 6, 8, 11, 20)")
 	dev_group.add_option("--gui-test", dest="gui_test", metavar="<test>",
 	             default=False, help="INTERNAL. Use run_tests.py instead.")
@@ -189,6 +187,8 @@ def get_option_parser():
 	             help="Join first multiplayer game.")
 	dev_group.add_option("--interactive-shell", action="store_true", dest="interactive_shell",
 	             help="Starts an IPython kernel. Connect to the shell with: ipython console --existing")
+	dev_group.add_option("--make-sure-atlases-work", action="store_true", dest="enable_atlases",
+		help="Use atlas files and regenerate/enable them if necessary.")
 	p.add_option_group(dev_group)
 
 	return p
@@ -257,10 +257,10 @@ def main():
 		import yaml
 	except ImportError:
 		headline = _('Error: Unable to find required library "PyYAML".')
-		msg = _("We are sorry to inform you that a library that is required by Unknown Horizons, is missing and needs to be installed.") + "\n" + \
-		    _('Installers for Windows users are available at "http://pyyaml.org/wiki/PyYAML", Linux users should find it in their packagement management system under the name "pyyaml" or "python-yaml".')
-		standalone_error_popup(headline, msg)
-		exit(1)
+		msg = _("PyYAML (a required library) is missing and needs to be installed.") + "\n" + \
+		    _('The Windows installer is available at http://pyyaml.org/wiki/PyYAML.') + " " + \
+		    _('Linux users should find it using their package manager under the name "pyyaml" or "python-yaml".')
+		show_error_message(headline, msg)
 
 	#start UH
 	import horizons.main
@@ -320,7 +320,9 @@ def setup_debugging(options):
 		else:
 			logfilename = os.path.join(PATHS.LOG_DIR, "unknown-horizons-%s.log" %
 			                           time.strftime("%Y-%m-%d_%H-%M-%S"))
-		print('Logging to %s' % logfilename.encode('utf-8', 'replace'))
+		print('Logging to {uh} and {fife}'.format(
+			uh=logfilename.encode('utf-8', 'replace'),
+			fife=os.path.join(os.getcwd(), 'fife.log')) )
 		# create logfile
 		logfile = open(logfilename, 'w')
 		# log there
@@ -512,42 +514,6 @@ def log_sys_info():
 	"""Prints debug info about the current system to log"""
 	log().debug("Python version: %s", sys.version_info)
 	log().debug("Plattform: %s", platform.platform())
-
-
-def standalone_error_popup(headline, msg):
-	"""Display an error via gui.
-	Use only for errors that make 'import horizons.main' fail."""
-	from fife.extensions import pychan
-	from fife import fife
-
-	e = fife.Engine()
-	e.getSettings().setDefaultFontPath("content/fonts/LinLibertine.ttf")
-	e.init()
-
-	pychan.init(e)
-	pychan.loadFonts("content/fonts/libertine.fontdef")
-
-	# hack for accessing this in do_quit (global does't work as the variables here are local)
-	class Quit(object):
-		do = False
-
-	def do_quit():
-		Quit.do=True
-
-	dlg = pychan.loadXML("content/gui/xml/startup_error_popup.xml")
-	# can't translate as translations are only set up later
-	dlg.findChild(name="headline").text = headline
-	dlg.findChild(name="msg").text = msg
-	dlg.mapEvents({'quit_button': do_quit})
-	dlg.show()
-
-
-	e.initializePumping()
-	while not Quit.do:
-		e.pump()
-	e.finalizePumping()
-
-
 
 if __name__ == '__main__':
 	main()

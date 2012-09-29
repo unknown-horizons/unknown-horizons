@@ -26,17 +26,22 @@ import tempfile
 import os
 import locale
 
+import horizons.globals
 import horizons.main
 
-from horizons.util import Callback, random_map, yamlcache
 from horizons.extscheduler import ExtScheduler
 from horizons.savegamemanager import SavegameManager
 from horizons.gui.modules import AIDataSelection, PlayerDataSelection
 from horizons.constants import AI, LANGUAGENAMES
-from horizons.gui.widgets import OkButton
+from horizons.gui.widgets.imagebutton import OkButton
 from horizons.gui.widgets.minimap import Minimap
 from horizons.world import World
-from horizons.util import SavegameAccessor, WorldObject, Rect
+from horizons.util.python.callback import Callback
+from horizons.util.random_map import generate_random_map, generate_random_seed
+from horizons.util.savegameaccessor import SavegameAccessor
+from horizons.util.shapes import Rect
+from horizons.util.worldobject import WorldObject
+from horizons.util.yamlcache import YamlCache
 from horizons.i18n import find_available_languages
 from horizons.scenario import ScenarioEventHandler, InvalidScenarioFileFormat
 
@@ -145,7 +150,7 @@ class SingleplayerMenu(object):
 			if maps_display: # select first entry
 				self.active_right_side.distributeData({'maplist': 0})
 			lang_list.items = self._get_available_languages()
-			cur_locale = horizons.main.fife.get_locale()
+			cur_locale = horizons.globals.fife.get_locale()
 			if LANGUAGENAMES[cur_locale] in lang_list.items:
 				lang_list.selected = lang_list.items.index(LANGUAGENAMES[cur_locale])
 			else:
@@ -179,8 +184,8 @@ class SingleplayerMenu(object):
 		is_campaign = bool(self.current.collectData('campaign'))
 		if not is_scenario and not is_campaign:
 			ai_players = int(self.current.aidata.get_ai_players())
-			horizons.main.fife.set_uh_setting("AIPlayers", ai_players)
-		horizons.main.fife.save_settings()
+			horizons.globals.fife.set_uh_setting("AIPlayers", ai_players)
+		horizons.globals.fife.save_settings()
 
 		self.show_loading_screen()
 		if is_scenario:
@@ -219,57 +224,57 @@ class SingleplayerMenu(object):
 	def _setup_random_map_selection(self, widget):
 		seed_string_field = widget.findChild(name='seed_string_field')
 		seed_string_field.capture(self._on_random_map_parameter_changed)
-		seed_string_field.text = random_map.generate_random_seed(seed_string_field.text)
+		seed_string_field.text = generate_random_seed(seed_string_field.text)
 
 		map_size_slider = widget.findChild(name='map_size_slider')
 		def on_map_size_slider_change():
 			widget.findChild(name='map_size_lbl').text = _('Map size:') + u' ' + \
 				unicode(self.map_sizes[int(map_size_slider.value)])
-			horizons.main.fife.set_uh_setting("RandomMapSize", map_size_slider.value)
-			horizons.main.fife.save_settings()
+			horizons.globals.fife.set_uh_setting("RandomMapSize", map_size_slider.value)
+			horizons.globals.fife.save_settings()
 			self._on_random_map_parameter_changed()
 		map_size_slider.capture(on_map_size_slider_change)
-		map_size_slider.value = horizons.main.fife.get_uh_setting("RandomMapSize")
+		map_size_slider.value = horizons.globals.fife.get_uh_setting("RandomMapSize")
 
 		water_percent_slider = widget.findChild(name='water_percent_slider')
 		def on_water_percent_slider_change():
 			widget.findChild(name='water_percent_lbl').text = _('Water:') + u' ' + \
 				unicode(self.water_percents[int(water_percent_slider.value)]) + u'%'
-			horizons.main.fife.set_uh_setting("RandomMapWaterPercent", water_percent_slider.value)
-			horizons.main.fife.save_settings()
+			horizons.globals.fife.set_uh_setting("RandomMapWaterPercent", water_percent_slider.value)
+			horizons.globals.fife.save_settings()
 			self._on_random_map_parameter_changed()
 		water_percent_slider.capture(on_water_percent_slider_change)
-		water_percent_slider.value = horizons.main.fife.get_uh_setting("RandomMapWaterPercent")
+		water_percent_slider.value = horizons.globals.fife.get_uh_setting("RandomMapWaterPercent")
 
 		max_island_size_slider = widget.findChild(name='max_island_size_slider')
 		def on_max_island_size_slider_change():
 			widget.findChild(name='max_island_size_lbl').text = _('Max island size:') + u' ' + \
 				unicode(self.island_sizes[int(max_island_size_slider.value)])
-			horizons.main.fife.set_uh_setting("RandomMapMaxIslandSize", max_island_size_slider.value)
-			horizons.main.fife.save_settings()
+			horizons.globals.fife.set_uh_setting("RandomMapMaxIslandSize", max_island_size_slider.value)
+			horizons.globals.fife.save_settings()
 			self._on_random_map_parameter_changed()
 		max_island_size_slider.capture(on_max_island_size_slider_change)
-		max_island_size_slider.value = horizons.main.fife.get_uh_setting("RandomMapMaxIslandSize")
+		max_island_size_slider.value = horizons.globals.fife.get_uh_setting("RandomMapMaxIslandSize")
 
 		preferred_island_size_slider = widget.findChild(name='preferred_island_size_slider')
 		def on_preferred_island_size_slider_change():
 			widget.findChild(name='preferred_island_size_lbl').text = _('Preferred island size:') + u' ' + \
 				unicode(self.island_sizes[int(preferred_island_size_slider.value)])
-			horizons.main.fife.set_uh_setting("RandomMapPreferredIslandSize", preferred_island_size_slider.value)
-			horizons.main.fife.save_settings()
+			horizons.globals.fife.set_uh_setting("RandomMapPreferredIslandSize", preferred_island_size_slider.value)
+			horizons.globals.fife.save_settings()
 			self._on_random_map_parameter_changed()
 		preferred_island_size_slider.capture(on_preferred_island_size_slider_change)
-		preferred_island_size_slider.value = horizons.main.fife.get_uh_setting("RandomMapPreferredIslandSize")
+		preferred_island_size_slider.value = horizons.globals.fife.get_uh_setting("RandomMapPreferredIslandSize")
 
 		island_size_deviation_slider = widget.findChild(name='island_size_deviation_slider')
 		def on_island_size_deviation_slider_change():
 			widget.findChild(name='island_size_deviation_lbl').text = _('Island size deviation:') + u' ' + \
 				unicode(self.island_size_deviations[int(island_size_deviation_slider.value)])
-			horizons.main.fife.set_uh_setting("RandomMapIslandSizeDeviation", island_size_deviation_slider.value)
-			horizons.main.fife.save_settings()
+			horizons.globals.fife.set_uh_setting("RandomMapIslandSizeDeviation", island_size_deviation_slider.value)
+			horizons.globals.fife.save_settings()
 			self._on_random_map_parameter_changed()
 		island_size_deviation_slider.capture(on_island_size_deviation_slider_change)
-		island_size_deviation_slider.value = horizons.main.fife.get_uh_setting("RandomMapIslandSizeDeviation")
+		island_size_deviation_slider.value = horizons.globals.fife.get_uh_setting("RandomMapIslandSizeDeviation")
 
 		on_map_size_slider_change()
 		on_water_percent_slider_change()
@@ -304,10 +309,10 @@ class SingleplayerMenu(object):
 		def on_resource_density_slider_change():
 			widget.findChild(name='resource_density_lbl').text = _('Resource density:') + u' ' + \
 				unicode(self.resource_densities[int(resource_density_slider.value)]) + u'x'
-			horizons.main.fife.set_uh_setting("MapResourceDensity", resource_density_slider.value)
-			horizons.main.fife.save_settings()
+			horizons.globals.fife.set_uh_setting("MapResourceDensity", resource_density_slider.value)
+			horizons.globals.fife.save_settings()
 		resource_density_slider.capture(on_resource_density_slider_change)
-		resource_density_slider.value = horizons.main.fife.get_uh_setting("MapResourceDensity")
+		resource_density_slider.value = horizons.globals.fife.get_uh_setting("MapResourceDensity")
 
 		on_resource_density_slider_change()
 
@@ -406,7 +411,7 @@ class SingleplayerMenu(object):
 		This function also sets scenario map name using locale.
 		(e.g. tutorial -> tutorial_en.yaml)"""
 		translation_status_label = self.current.findChild(name="translation_status")
-		yamldata = yamlcache.YamlCache.get_file(new_map_name, game_data=True)
+		yamldata = YamlCache.get_file(new_map_name, game_data=True)
 		translation_status = yamldata.get('translation_status')
 		if translation_status:
 			translation_status_label.text = translation_status
@@ -419,7 +424,7 @@ class SingleplayerMenu(object):
 		"""Finds the given map's filename with its locale."""
 		mapfile = mapfile or self._get_selected_map()
 		if mapfile.endswith('.yaml'):
-			yamldata = yamlcache.YamlCache.get_file(mapfile, game_data=True)
+			yamldata = YamlCache.get_file(mapfile, game_data=True)
 			split_locale = yamldata['locale']
 			mapfile = mapfile.split('_' + split_locale)[0]
 		return mapfile + '_' + cur_locale + '.' + SavegameManager.scenario_extension
@@ -432,13 +437,13 @@ class SingleplayerMenu(object):
 	def _save_player_name(self):
 		if hasattr(self.current, 'playerdata'):
 			playername = self.current.playerdata.get_player_name()
-			horizons.main.fife.set_uh_setting("Nickname", playername)
+			horizons.globals.fife.set_uh_setting("Nickname", playername)
 
 	def _on_random_map_parameter_changed(self):
 		"""Called to update the map preview"""
 		def on_click(event, drag):
 			seed_string_field = self.current.findChild(name='seed_string_field')
-			seed_string_field.text = random_map.generate_random_seed(seed_string_field.text)
+			seed_string_field.text = generate_random_seed(seed_string_field.text)
 			self._on_random_map_parameter_changed()
 		# the user might have changed the menu since the update and we would
 		# crash if we don't find the fields with the parameters
@@ -451,7 +456,7 @@ class SingleplayerMenu(object):
 
 	@classmethod
 	def _generate_random_map(cls, parameters):
-		return random_map.generate_map( *parameters )
+		return generate_random_map( *parameters )
 
 
 class MapPreview(object):
@@ -475,8 +480,8 @@ class MapPreview(object):
 		                       session=None,
 		                       view=None,
 		                       world=world,
-		                       targetrenderer=horizons.main.fife.targetrenderer,
-		                       imagemanager=horizons.main.fife.imagemanager,
+		                       targetrenderer=horizons.globals.fife.targetrenderer,
+		                       imagemanager=horizons.globals.fife.imagemanager,
 		                       cam_border=False,
 		                       use_rotation=False,
 		                       tooltip=None,
@@ -518,8 +523,8 @@ class MapPreview(object):
 					                       session=None,
 					                       view=None,
 					                       world=None,
-					                       targetrenderer=horizons.main.fife.targetrenderer,
-					                       imagemanager=horizons.main.fife.imagemanager,
+					                       targetrenderer=horizons.globals.fife.targetrenderer,
+					                       imagemanager=horizons.globals.fife.imagemanager,
 					                       cam_border=False,
 					                       use_rotation=False,
 					                       tooltip=tooltip,

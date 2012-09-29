@@ -21,16 +21,16 @@
 
 from horizons.command.unit import CreateUnit
 from horizons.constants import UNITS
+
+from tests.gui import gui_test
 from tests.gui.helper import get_player_ship
 
-from tests.gui import gui_test, TestFinished
 
 @gui_test(use_dev_map=True, timeout=60)
 def test_select_ship(gui):
 	"""
 	Select a ship.
 	"""
-	yield # test needs to be a generator for now
 
 	assert gui.find('tab_base') is None
 
@@ -40,14 +40,12 @@ def test_select_ship(gui):
 	gui.select([player_ship])
 	assert gui.find('overview_trade_ship')
 
-	yield TestFinished
 
 @gui_test(use_dev_map=True, timeout=60)
 def test_selectmultitab(gui):
 	"""
 	Select two frigates and delete them.
 	"""
-	yield # test needs to be a generator for now
 
 	assert gui.find('tab_base') is None
 
@@ -58,15 +56,11 @@ def test_selectmultitab(gui):
 	ships = [create_ship(UNITS.FRIGATE), create_ship(UNITS.FRIGATE)]
 	gui.select(ships)
 	assert gui.find('overview_select_multi')
-	for _ in gui.run(seconds=0.1):
-		yield
+	gui.run(seconds=0.1)
 
 	gui.press_key(gui.Key.DELETE)
 	assert gui.find('tab_base') is None
-	for _ in gui.run(seconds=0.1):
-		yield
-
-	yield TestFinished
+	gui.run(seconds=0.1)
 
 
 @gui_test(use_dev_map=True, timeout=120)
@@ -87,14 +81,14 @@ def test_selection_groups(gui):
 
 	gui.cursor_click(59, 1, 'right')
 	while (ship.position.x, ship.position.y) != (59, 1):
-		yield
+		gui.run()
 
 	# Found settlement
-	gui.trigger('overview_trade_ship', 'found_settlement/action/default')
+	gui.trigger('overview_trade_ship', 'found_settlement')
 
 	gui.cursor_click(56, 3, 'left')
 
-	gui.trigger('mainhud', 'build/action/default')
+	gui.trigger('mainhud', 'build')
 
 	wh = gui.session.world.player.settlements[0].warehouse
 
@@ -119,5 +113,3 @@ def test_selection_groups(gui):
 	# no group
 	gui.press_key(gui.Key.NUM_3)
 	assert not gui.session.selected_instances
-
-	yield TestFinished

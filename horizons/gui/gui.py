@@ -31,13 +31,14 @@ from fife import fife
 from fife.extensions import pychan
 from horizons.gui.quotes import GAMEPLAY_TIPS, FUN_QUOTES
 
+import horizons.globals
 import horizons.main
 
 from horizons.savegamemanager import SavegameManager
 from horizons.gui.keylisteners import MainListener
 from horizons.gui.keylisteners.ingamekeylistener import KeyConfig
-from horizons.gui.widgets import OkButton, CancelButton, DeleteButton
-from horizons.util import Callback
+from horizons.gui.widgets.imagebutton import OkButton, CancelButton, DeleteButton
+from horizons.util.python.callback import Callback
 from horizons.extscheduler import ExtScheduler
 from horizons.messaging import GuiAction
 from horizons.component.ambientsoundcomponent import AmbientSoundComponent
@@ -187,7 +188,7 @@ class Gui(SingleplayerMenu, MultiplayerMenu):
 
 	def show_settings(self):
 		"""Displays settings gui derived from the FIFE settings module."""
-		horizons.main.fife.show_settings()
+		horizons.globals.fife.show_settings()
 
 	_help_is_displayed = False
 	def on_help(self):
@@ -246,21 +247,22 @@ class Gui(SingleplayerMenu, MultiplayerMenu):
 
 	def show_credits(self, number=0):
 		"""Shows the credits dialog. """
-		for box in self.widgets['credits'+str(number)].findChildren(name='box'):
-			box.margins = (30, 0) # to get some indentation
-			if number in [2, 0]: # #TODO fix these hardcoded page references
-				box.padding = 1
-				box.parent.padding = 3 # further decrease if more entries
-		label = [self.widgets['credits'+str(number)].findChild(name=section+"_lbl")
-		              for section in ('team','patchers','translators','packagers','special_thanks')]
-		for i in xrange(5):
-			if label[i]: # add callbacks to each pickbelt that is displayed
-				label[i].capture(Callback(self.show_credits, i),
-				                 event_name="mouseClicked")
-
 		if self.current_dialog is not None:
 			self.current_dialog.hide()
-		self.show_dialog(self.widgets['credits'+str(number)], {OkButton.DEFAULT_NAME : True})
+
+		credits_page = self.widgets['credits{number}'.format(number=number)]
+		for box in credits_page.findChildren(name='box'):
+			box.margins = (30, 0) # to get some indentation
+			if number in [0, 2]: # #TODO fix these hardcoded page references
+				box.padding = 1
+				box.parent.padding = 3 # further decrease if more entries
+		labels = [credits_page.findChild(name=section+"_lbl")
+		          for section in ('team', 'patchers', 'translators',
+		                          'packagers', 'special_thanks')]
+		for i in xrange(5): # add callbacks to each pickbelt
+			labels[i].capture(Callback(self.show_credits, i), event_name="mouseClicked")
+
+		self.show_dialog(credits_page, {OkButton.DEFAULT_NAME : True})
 
 	def show_select_savegame(self, mode, sanity_checker=None, sanity_criteria=None):
 		"""Shows menu to select a savegame.
@@ -339,7 +341,9 @@ class Gui(SingleplayerMenu, MultiplayerMenu):
 				self.current.distributeData({'savegamefile': savegamefile})
 
 		self.current.distributeInitialData({'savegamelist': map_file_display})
-		self.current.distributeData({'savegamelist': -1}) # Don't select anything by default
+		# Select first item when loading, nothing when saving
+		selected_item = -1 if mode == 'save' else 0
+		self.current.distributeData({'savegamelist': selected_item})
 		cb_details = Gui._create_show_savegame_details(self.current, map_files, 'savegamelist')
 		cb = Callback.ChainedCallbacks(cb_details, tmp_selected_changed)
 		cb() # Refresh data on start
@@ -381,7 +385,8 @@ class Gui(SingleplayerMenu, MultiplayerMenu):
 				#xgettext:python-format
 				message = _("A savegame with the name '{name}' already exists.").format(
 				             name=selected_savegame) + u"\n" + _('Overwrite it?')
-				if not self.show_popup(_("Confirmation for overwriting"), message, show_cancel_button=True):
+				# keep the pop-up non-modal because otherwise it is double-modal (#1876)
+				if not self.show_popup(_("Confirmation for overwriting"), message, show_cancel_button=True, modal=False):
 					self.current = old_current
 					return self.show_select_savegame(*args) # reshow dialog
 			elif sanity_checker and sanity_criteria:
@@ -392,12 +397,8 @@ class Gui(SingleplayerMenu, MultiplayerMenu):
 					return self.show_select_savegame(*args) # reshow dialog
 		else: # return selected item from list
 			selected_savegame = self.current.collectData('savegamelist')
-			selected_savegame = None if selected_savegame == -1 else map_files[selected_savegame]
-			if selected_savegame is None:
-				# ok button has been pressed, but no savegame was selected
-				self.show_popup(_("Select a savegame"), _("Please select a savegame or click on cancel."))
-				self.current = old_current
-				return self.show_select_savegame(*args) # reshow dialog
+			assert selected_savegame != -1, "No savegame selected in savegamelist"
+			selected_savegame = map_files[selected_savegame]
 
 		if mp and mode == 'load': # also name
 			gamename_textfield = self.current.findChild(name="gamename")
@@ -449,7 +450,7 @@ class Gui(SingleplayerMenu, MultiplayerMenu):
 					pychan.tools.applyOnlySuitable(callback, event=event, widget=btn)
 				else:
 					# escape should hide the dialog default
-					horizons.main.fife.pychanmanager.breakFromMainLoop(returnValue=False)
+					horizons.globals.fife.pychanmanager.breakFromMainLoop(returnValue=False)
 					dlg.hide()
 			elif event.getKey().getValue() == fife.Key.ENTER: # convention says use ok action
 				btn = dlg.findChild(name=OkButton.DEFAULT_NAME)
@@ -562,18 +563,18 @@ class Gui(SingleplayerMenu, MultiplayerMenu):
 		access to other gui elements by eating all input events.
 		Used for modal popups and our in-game menu.
 		"""
-		height = horizons.main.fife.engine_settings.getScreenHeight()
-		width = horizons.main.fife.engine_settings.getScreenWidth()
-		image = horizons.main.fife.imagemanager.loadBlank(width, height)
+		height = horizons.globals.fife.engine_settings.getScreenHeight()
+		width = horizons.globals.fife.engine_settings.getScreenWidth()
+		image = horizons.globals.fife.imagemanager.loadBlank(width, height)
 		image = fife.GuiImage(image)
-		self.current.additional_widget = pychan.Icon(image=image)
-		self.current.additional_widget.position = (0, 0)
-		self.current.additional_widget.show()
+		self.additional_widget = pychan.Icon(image=image)
+		self.additional_widget.position = (0, 0)
+		self.additional_widget.show()
 
 	def hide_modal_background(self):
 		try:
-			self.current.additional_widget.hide()
-			del self.current.additional_widget
+			self.additional_widget.hide()
+			del self.additional_widget
 		except AttributeError:
 			pass # only used for some widgets, e.g. pause
 
@@ -582,7 +583,7 @@ class Gui(SingleplayerMenu, MultiplayerMenu):
 		# Add 'Quote of the Load' to loading screen:
 		qotl_type_label = self.current.findChild(name='qotl_type_label')
 		qotl_label = self.current.findChild(name='qotl_label')
-		quote_type = int(horizons.main.fife.get_uh_setting("QuotesType"))
+		quote_type = int(horizons.globals.fife.get_uh_setting("QuotesType"))
 		if quote_type == 2:
 			quote_type = random.randint(0, 1) # choose a random type
 
@@ -738,14 +739,14 @@ class Gui(SingleplayerMenu, MultiplayerMenu):
 		"""Randomly select a background image to use through out the game menu."""
 		available_images = glob.glob('content/gui/images/background/mainmenu/bg_*.png')
 		#get latest background
-		latest_background = horizons.main.fife.get_uh_setting("LatestBackground")
+		latest_background = horizons.globals.fife.get_uh_setting("LatestBackground")
 		#if there is a latest background then remove it from available list
 		if latest_background is not None:
 			available_images.remove(latest_background)
 		background_choice = random.choice(available_images)
 		#save current background choice
-		horizons.main.fife.set_uh_setting("LatestBackground", background_choice)
-		horizons.main.fife.save_settings()
+		horizons.globals.fife.set_uh_setting("LatestBackground", background_choice)
+		horizons.globals.fife.save_settings()
 		return background_choice
 
 	def _on_gui_action(self, msg):

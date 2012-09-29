@@ -33,18 +33,7 @@ dotted path to the test (along with other options), similar to this code:
 			assert False
 
 	def minimap(gui):
-		yield
 		menu = gui.find(name='mainmenu')
-		yield TestFinished
-
-When the game is run with --gui-test, an instance of `TestRunner` will load
-the test and install a callback function in the engine's mainloop. Each call
-the test will be further exhausted:
-
-	def callback():
-		value = minimap.next()
-		if value == TestFinished:
-			# Test ends
 """
 
 import os
@@ -57,16 +46,12 @@ from functools import wraps
 from nose.plugins import Plugin
 
 from tests import RANDOM_SEED
+from tests.gui import cooperative
 from tests.gui.helper import GuiHelper
 from tests.utils import Timer
 
 # path where test savegames are stored (tests/gui/ingame/fixtures/)
 TEST_FIXTURES_DIR = os.path.join(os.path.abspath(os.path.dirname(__file__)), 'ingame', 'fixtures')
-
-# Used by the test to signal that's it's finished.
-# Needed to distinguish between the original test and other generators used
-# for dialogs.
-TestFinished = 'finished'
 
 class TestFailed(Exception): pass
 
@@ -164,9 +149,12 @@ class TestRunner(object):
 		self._custom_setup()
 		self._filter_traceback()
 		test = self._load_test(test_path)
-		test_gen = test(GuiHelper(self._engine.pychan, self))
-		self._gui_handlers.append(test_gen)
+		testlet = cooperative.spawn(test, GuiHelper(self._engine.pychan, self))
+		testlet.link(self._stop_test)
 		self._start()
+
+	def _stop_test(self, green):
+		self._stop()
 
 	def _custom_setup(self):
 		"""Change build menu to 'per increment' for tests."""
@@ -216,26 +204,16 @@ class TestRunner(object):
 
 		This function will be called by the engine's mainloop each frame.
 		"""
-		try:
-			# continue execution of current gui handler
-			value = self._gui_handlers[-1].next()
-			if value == TestFinished:
-				self._stop()
-		except StopIteration:
-			# if we end up here, it means that either
-			#   - a dialog handler has finished its execution (all fine) or
-			#   - the test has finished without signaling it (this might be on purpose)
-			#
-			# TODO issue a warning if this was the test itself
-			pass
+		cooperative.schedule()
 
 
 def gui_test(use_dev_map=False, use_fixture=None, ai_players=0, timeout=15 * 60, cleanup_userdir=False,
-			 _user_dir=None):
+			 _user_dir=None, use_scenario=None, additional_cmdline=None):
 	"""Magic nose integration.
 
 	use_dev_map		-	starts the game with --start-dev-map
 	use_fixture		-	starts the game with --load-map=fixture_name
+	use_scenario    -   starts the game with --start-scenario=scenario_name
 	ai_players		-	starts the game with --ai_players=<number>
 	timeout			-	test will be stopped after X seconds passed (0 = disabled)
 	cleanup_userdir	-	whether the userdir should be cleaned after the test
@@ -262,9 +240,14 @@ def gui_test(use_dev_map=False, use_fixture=None, ai_players=0, timeout=15 * 60,
 				args.extend(['--load-map', path])
 			elif use_dev_map:
 				args.append('--start-dev-map')
+			elif use_scenario:
+				args.extend(['--start-scenario', use_scenario + '.yaml'])
 
 			if ai_players:
 				args.extend(['--ai-players', str(ai_players)])
+
+			if additional_cmdline:
+				args.extend(additional_cmdline)
 
 			try:
 				# if nose does not capture stdout, then most likely someone wants to
@@ -288,6 +271,8 @@ def gui_test(use_dev_map=False, use_fixture=None, ai_players=0, timeout=15 * 60,
 			env = os.environ.copy()
 			env['FAIL_FAST'] = '1'
 			env['UH_USER_DIR'] = _user_dir or TEST_USER_DIR
+			if isinstance(env['UH_USER_DIR'], unicode):
+				env['UH_USER_DIR'] = env['UH_USER_DIR'].encode('utf-8')
 
 			# Start game
 			proc = subprocess.Popen(args, stdout=stdout, stderr=stderr, env=env)

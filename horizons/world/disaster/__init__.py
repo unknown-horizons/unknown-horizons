@@ -23,7 +23,7 @@
 import logging
 
 from horizons.world.settlement import Settlement
-from horizons.util import WorldObject
+from horizons.util.worldobject import WorldObject
 from horizons.scheduler import Scheduler
 from horizons.constants import GAME_SPEED
 from horizons.component.storagecomponent import StorageComponent
@@ -67,11 +67,11 @@ class Disaster(WorldObject):
 
 	def evaluate(self):
 		"""Called to evaluate if this disaster is still active"""
-		raise NotImplementedError()
+		raise NotImplementedError
 
 	def expand(self):
 		"""Called to make the disaster expand further"""
-		raise NotImplementedError()
+		raise NotImplementedError
 
 	def infect(self, building, load):
 		"""Used to expand disaster to this building. Usually called by expand and breakout
@@ -107,7 +107,7 @@ class Disaster(WorldObject):
 	def can_breakout(cls, settlement):
 		"""Returns whether or not a disaster can break out in the
 		settlement"""
-		raise NotImplementedError()
+		raise NotImplementedError
 
 	def end(self):
 		"""End this class, used for cleanup. Called by the DisasterManager

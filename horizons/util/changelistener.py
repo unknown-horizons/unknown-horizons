@@ -19,8 +19,8 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-from horizons.util.python import WeakMethodList
 from horizons.util.python.callback import Callback
+from horizons.util.python.weakmethodlist import WeakMethodList
 
 class ChangeListener(object):
 	"""Trivial ChangeListener.
@@ -204,7 +204,7 @@ def metaChangeListenerDecorator(event_name):
 			# which results in endless recursion, if you construct an instance of a class,
 			# that inherits from a base class on which the decorator has been applied.
 			# therefore, this workaround is used:
-			obj = old_new(cls, *args, **kwargs)
+			obj = old_new(cls)
 			setattr(obj, list_name, [])
 			setattr(obj, event_call_number, 0)
 			setattr(obj, hard_remove_event, True)

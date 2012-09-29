@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<Container size="245,47">
+<Container size="249,47">
 <!-- City Info widget: Includes city name and number of inhabitants.
 	Displayed when hovering player settlement. -->
 	<Icon image="content/gui/images/background/widgets/city_name_bg.png"  position="0,17" />

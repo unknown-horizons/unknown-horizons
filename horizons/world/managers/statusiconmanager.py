@@ -19,7 +19,7 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-import horizons.main
+import horizons.globals
 
 from fife import fife
 from fife.extensions.pychan.widgets import Icon
@@ -135,10 +135,10 @@ class StatusIconManager(object):
 		node = fife.RendererNode(loc, rel)
 
 		try: # to load an animation
-			anim = horizons.main.fife.animationloader.loadResource(status.icon)
+			anim = horizons.globals.fife.animationloader.loadResource(status.icon)
 			self.renderer.addAnimation(status_string, node, anim)
 		except ValueError:
-			img = horizons.main.fife.imagemanager.load(status.icon)
+			img = horizons.globals.fife.imagemanager.load(status.icon)
 			self.renderer.addImage(status_string, node, img)
 
 	def get_status_string(self, instance):

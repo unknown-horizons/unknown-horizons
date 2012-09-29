@@ -1,0 +1,235 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR The Unknown Horizons Team
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: translate-uh@lists.unknown-horizons.org\n"
+"POT-Creation-Date: 2012-04-06 21:55+0100\n"
+"PO-Revision-Date: 2012-04-08 21:56+0200\n"
+"Last-Translator: Sergio <juarrox@gmail.com>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: es\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Pootle 2.1.5\n"
+
+#. scenario difficulty
+#: po/The_Unknown.py:2
+msgid "easy"
+msgstr "fácil"
+
+#. scenario author
+#: po/The_Unknown.py:4
+msgid "Kikody, UH-Team"
+msgstr "Kikody, UH-Team"
+
+#. scenario description
+#: po/The_Unknown.py:6
+msgid ""
+"You are the captain of a ship under the flag of England in 1740. You and your "
+"crew were on the way to a colony of England in the pacific ocean.\n"
+"Everything went fine until you came into a storm....\n"
+msgstr ""
+"Eres el capitán de un navío bajo bandera de Inglaterra en 1740. Tú y tu "
+"tripulación navegáis hacia una colonia inglesa en el Pacífico.\n"
+"Todo iba bien hasta que se avecinó una tormenta...\n"
+
+#. This is a logbook page heading. Space is VERY short, please only translate to strings that fit (roughly 30 characters max).
+#: po/The_Unknown.py:8
+msgid "20th November 1740"
+msgstr "20 de Noviembre de 1740"
+
+#. This is the text body of a logbook page.
+#: po/The_Unknown.py:10
+msgid ""
+"After four days the storm finally fades and we can take a rest. But we only "
+"have little food left and our ship is in a bad shape. The navigational "
+"instruments and sea charts are lost."
+msgstr ""
+"Tras cuatro días la tormenta amainó y pudimos tomar un descanso. Pero nos "
+"queda poca comida y nuestro navío se encuentra en mal estado. Hemos perdido "
+"los instrumentos de navegación y las cartas de navegación."
+
+#. This is the text body of a logbook page.
+#: po/The_Unknown.py:12
+msgid ""
+"We have to come ashore soon. One of my jacks saw some birds hunting for fish, "
+"so land can't be far. Fortunately we always have some tools and boards "
+"onboard, so we can build some basic shelter."
+msgstr ""
+"Tenemos que llegar a tierra pronto. Uno de mis hombres vió aves pescando "
+"peces así que la tierra no puede estar lejos. Afortunadamente, siempre "
+"llevamos algunas herramientas y tablas de madera a bordo para construir un "
+"refugio."
+
+#. This is the text body of a logbook page.
+#: po/The_Unknown.py:14
+msgid ""
+"Task:\n"
+"Find land and build a port."
+msgstr ""
+"Tarea:\n"
+"Encuentra la costa y construye un puerto."
+
+#. This is a logbook page heading. Space is VERY short, please only translate to strings that fit (roughly 30 characters max).
+#: po/The_Unknown.py:16
+msgid "22nd November 1740"
+msgstr "22 de Noviembre de 1740"
+
+#. This is the text body of a logbook page.
+#: po/The_Unknown.py:18
+msgid ""
+"The port is built and a new hope arises. I am still worried about the next "
+"days... we are running out of food and lack basic building material."
+msgstr ""
+"Ya está construido el puerto y amanece una nueva esperanza. Aún me preocupan "
+"los próximos días... nos estamos quedando sin alimentos ni materiales "
+"básicos de construcción."
+
+#. This is the text body of a logbook page.
+#: po/The_Unknown.py:20
+msgid ""
+"We need to secure our basic needs to keep us alive. It is time to send people "
+"gathering food and lumber so that we can survive and build some shelter."
+msgstr ""
+"Tenemos que asegurar nuestras necesidades básicas para sobrevivir. Es hora "
+"de enviar a algunos hombres a recoger algo de comida y madera con la que "
+"sobrevivir y construir un refugio."
+
+#. This is the text body of a logbook page.
+#: po/The_Unknown.py:22
+msgid ""
+"Task:\n"
+"Build at least one of each:\n"
+"* Lumberjack\n"
+"* Fisher\n"
+"* Hunter\n"
+"Collect 5 food and 5 boards."
+msgstr ""
+"Tarea:\n"
+"Construye al menos uno de cada:\n"
+"* Casa de leñador\n"
+"* Pescador\n"
+"* Cazador\n"
+"Almacena 5 unidades de comida y tableros de madera."
+
+#. This is a logbook page heading. Space is VERY short, please only translate to strings that fit (roughly 30 characters max).
+#: po/The_Unknown.py:24
+msgid "25th November 1740"
+msgstr "25 de Noviembre de 1740"
+
+#. This is the text body of a logbook page.
+#: po/The_Unknown.py:26
+msgid ""
+"We have secured our basic needs of food and gathered some wood to continue "
+"the growth of our new settlement. Our people demand a place to live and "
+"exchange goods for their everyday needs."
+msgstr ""
+"Hemos asegurado nuestras necesidades básicas de comida y almacenado un poco "
+"de madera para continuar creciendo en nuestro asentamiento. Nuestra gente "
+"demanda un lugar donde vivir e intercambiar bienes para sus necesidades "
+"diarias."
+
+#. This is the text body of a logbook page.
+#: po/The_Unknown.py:28
+msgid ""
+"It is time to build some tents to live in and a small main square to supply "
+"our citizens with goods."
+msgstr ""
+"Es hora de construir algunas tiendas de campaña donde vivir y una plaza "
+"principal para proporcionar bienes a nuestros ciudadanos."
+
+#. This is the text body of a logbook page.
+#: po/The_Unknown.py:30
+msgid ""
+"Task:\n"
+"Build a main square and at least 10 tents."
+msgstr ""
+"Tarea:\n"
+"Construye una plaza principal y al menos 10 tiendas de campaña."
+
+#. This is a logbook page heading. Space is VERY short, please only translate to strings that fit (roughly 30 characters max).
+#: po/The_Unknown.py:32
+msgid "1st December 1740"
+msgstr "1 de Diciembre de 1740"
+
+#. This is the text body of a logbook page.
+#: po/The_Unknown.py:34
+msgid ""
+"Finally we have enough to eat and a place to live again. My tent is not very "
+"comfortable but it keeps me dry and I have the feeling of having a roof over "
+"my head at night."
+msgstr ""
+"Finalmente tenemos suficiente comida y un lugar donde vivir de nuevo. Mi "
+"tienda no es muy cómoda pero me mantiene seco y tengo la sensación de tener "
+"un techo sobre mi cabeza durante la noche."
+
+#. This is the text body of a logbook page.
+#: po/The_Unknown.py:36
+msgid ""
+"I have been researching the stars at night, but without my sea charts and "
+"instruments their meaning remains unknown. I have the feeling we will be "
+"stuck here for a while, so we'll have to make the best of situation.\n"
+"We can only try to to build up a civilisation and find a way home..."
+msgstr ""
+"He estado buscando las estrellas por la noche, pero sin mis cartas de "
+"navegación e instrumental su significado me resulta desconocido. Tengo la "
+"sensación de que permaneceremos aquí por mucho tiempo, así que tendremos que "
+"preocuparnos por mejorar nuestra situación.\n"
+"Ahora solo podemos levantar una civilización y encontrar un camino a casa..."
+
+#. This is the text body of a logbook page.
+#: po/The_Unknown.py:38
+msgid ""
+"Task:\n"
+"Grow the village util you have at least 250 inhabitants and a positive "
+"balance."
+msgstr ""
+"Tarea:\n"
+"Haz crecer tu ciudad hasta alcanzar 250 habitantes y un saldo positivo."
+
+#. This is a logbook page heading. Space is VERY short, please only translate to strings that fit (roughly 30 characters max).
+#: po/The_Unknown.py:40
+msgid "27th August 1745"
+msgstr "27 de Agosto de 1745"
+
+#. This is the text body of a logbook page.
+#: po/The_Unknown.py:42
+msgid ""
+"Our village is doing well, the city has grown to over 250 inhabitants. I have "
+"started getting used to my new home, but this island is too small to stay "
+"here forever."
+msgstr ""
+"Nuestro pueblo va muy bien, la ciudad ha alcanzado los 250 habitantes. He "
+"empezado a hacer uso de mi nueva casa, pero esta isla es demasiado pequeña "
+"para permanecer aquí siempre."
+
+#. This is the text body of a logbook page.
+#: po/The_Unknown.py:44
+msgid ""
+"We should load our ship and move out to find a bigger island offering room "
+"and resources for my people. I have created a basic navigational map again, "
+"using the stars I see at night. It is not perfect,  but I hope it will "
+"suffice to return here."
+msgstr ""
+"Deberíamos cargar nuestro navío y encontrar una isla más grande donde "
+"encontrar más espacio y recursos para mi gente. He creado un rudimentario "
+"mapa de navegación a partir de las estrellas que veo por la noche. No es "
+"perfecto, pero espero que sea suficiente para volver aquí."
+
+#. This is the text body of a logbook page.
+#: po/The_Unknown.py:46
+msgid ""
+"Task:\n"
+"Contact the Unknown Horizons Team (www.unknown-horizons.org) and find out how "
+"you can contribute to making this scenario longer and better!"
+msgstr ""
+"Tarea:\n"
+"¡Ponte en contacto con el equipo de Unknown Horizons (www.unknown-"
+"horizons.org) y averigua cómo puedes contribuir a hacer este escenario más "
+"largo y mejor!"

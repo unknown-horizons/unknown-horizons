@@ -24,10 +24,14 @@ import logging
 from horizons.entities import Entities
 from horizons.scheduler import Scheduler
 
-from horizons.util import WorldObject, Point, Rect, Circle, DbReader, random_map, BuildingIndexer
-from horizons.messaging import SettlementRangeChanged, NewSettlement
-from settlement import Settlement
+from horizons.util.buildingindexer import BuildingIndexer
+from horizons.util.dbreader import DbReader
 from horizons.util.pathfinding.pathnodes import IslandPathNodes
+from horizons.util.random_map import is_random_island_id_string, create_random_island
+from horizons.util.shapes import Circle, Point, Rect
+from horizons.util.worldobject import WorldObject
+from horizons.messaging import SettlementRangeChanged, NewSettlement
+from horizons.world.settlement import Settlement
 from horizons.constants import BUILDINGS, RES, UNITS
 from horizons.scenario import CONDITIONS
 from horizons.world.buildingowner import BuildingOwner
@@ -101,9 +105,9 @@ class Island(BuildingOwner, WorldObject):
 
 	def _get_island_db(self):
 		# check if filename is a random map
-		if random_map.is_random_island_id_string(self.file):
+		if is_random_island_id_string(self.file):
 			# it's a random map id, create this map and load it
-			return random_map.create_random_island(self.file)
+			return create_random_island(self.file)
 		return DbReader(self.file) # Create a new DbReader instance to load the maps file.
 
 	def __init(self, origin, filename, preview=False):
@@ -211,7 +215,7 @@ class Island(BuildingOwner, WorldObject):
 		self.add_existing_settlement(position, radius, settlement, load)
 		# TODO: Move this to command, this message should not appear while loading
 		self.session.ingame_gui.message_widget.add(string_id='NEW_SETTLEMENT',
-		                                           point=position.center(),
+		                                           point=position.center,
 		                                           message_dict={'player':player.name},
 		                                           play_sound=player.is_local_player)
 

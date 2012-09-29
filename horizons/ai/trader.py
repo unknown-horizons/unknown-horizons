@@ -22,7 +22,9 @@
 import logging
 
 from horizons.scheduler import Scheduler
-from horizons.util import Callback, WorldObject, Circle
+from horizons.util.python.callback import Callback
+from horizons.util.shapes import Circle
+from horizons.util.worldobject import WorldObject
 from horizons.constants import UNITS, BUILDINGS, TRADER
 from horizons.ai.generic import GenericAI
 from horizons.ext.enum import Enum
@@ -180,7 +182,7 @@ class Trader(GenericAI):
 			else:
 				self.office[ship.worldid] = warehouse
 			try: # try to find a possible position near the warehouse
-				ship.move(Circle(self.office[ship.worldid].position.center(), ship.radius), Callback(self.reached_warehouse, ship))
+				ship.move(Circle(self.office[ship.worldid].position.center, ship.radius), Callback(self.reached_warehouse, ship))
 				self.ships[ship] = self.shipStates.moving_to_warehouse
 			except MoveNotPossible:
 				self.send_ship_random(ship)

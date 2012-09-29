@@ -19,12 +19,10 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-from fife.extensions import pychan
+from fife.extensions.pychan.widgets import Icon, VBox
 from fife.extensions.pychan.widgets.common import IntAttr
 
-from fife.extensions.pychan.widgets import Icon
-
-class TabBG(pychan.widgets.VBox):
+class TabBG(VBox):
 	"""The TabBG is a shortcut for several Icons combined to one group.
 	Intended to be used for any tab we display.
 	Uses content/gui/images/tabwidget/main_bg_*.png. Default attributes are:
@@ -35,7 +33,7 @@ class TabBG(pychan.widgets.VBox):
 
 	@param amount: amount of 50px tiles in between top and bottom icon
 	"""
-	ATTRIBUTES = pychan.widgets.VBox.ATTRIBUTES + [IntAttr('amount')]
+	ATTRIBUTES = VBox.ATTRIBUTES + [IntAttr('amount')]
 	def __init__(self, amount=0, **kwargs):
 		super(TabBG, self).__init__(
 			name='background_icons',

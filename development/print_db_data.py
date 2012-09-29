@@ -149,7 +149,7 @@ def print_unit():
 def print_storage():
 	for b in Entities.buildings.itervalues():
 		try:
-			stor = b.get_component_template( StorageComponent.NAME )
+			stor = b.get_component_template( StorageComponent )
 		except KeyError:
 			continue
 		if not stor:

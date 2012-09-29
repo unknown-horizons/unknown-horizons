@@ -21,8 +21,8 @@
 
 from horizons.world.resourcehandler import StorageResourceHandler
 from horizons.world.building.buildingresourcehandler import BuildingResourceHandler
-from building import BasicBuilding
-from buildable import BuildableSingle, BuildableSingleFromShip
+from horizons.world.building.building import BasicBuilding
+from horizons.world.building.buildable import BuildableSingle, BuildableSingleFromShip
 from horizons.component.storagecomponent import StorageComponent
 from horizons.world.building.production import ProductionBuilding
 from horizons.world.building.path import Path
@@ -36,7 +36,7 @@ class StorageBuilding(StorageResourceHandler,
 	These objects don't have a storage themselves, but use the settlement storage.
 	"""
 	def __init__(self, x, y, owner, instance=None, **kwargs):
-		super(StorageBuilding, self).__init__(x = x, y = y, owner = owner, instance = instance, **kwargs)
+		super(StorageBuilding, self).__init__(x=x, y=y, owner=owner, instance=instance, **kwargs)
 
 	def initialize(self):
 		super(StorageBuilding, self).initialize()

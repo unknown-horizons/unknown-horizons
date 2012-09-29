@@ -76,10 +76,11 @@ from goal.settlementgoal import SettlementGoal
 from goal.donothing import DoNothingGoal
 
 from horizons.scheduler import Scheduler
-from horizons.util import Callback, WorldObject
+from horizons.util.python import decorators
+from horizons.util.python.callback import Callback
+from horizons.util.worldobject import WorldObject
 from horizons.ext.enum import Enum
 from horizons.ai.generic import GenericAI
-from horizons.util.python import decorators
 from horizons.component.selectablecomponent import SelectableComponent
 
 

@@ -1,0 +1,584 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2012-03-31 21:42+0100\n"
+"PO-Revision-Date: 2012-05-05 21:08+0200\n"
+"Last-Translator: dimitrak <dkaramperi@yahoo.gr>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: el\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Pootle 2.1.5\n"
+
+msgid "build"
+msgstr "χτίσιμο"
+
+msgid "game"
+msgstr "παιχνίδι"
+
+msgid "building"
+msgstr "κτίριο"
+
+msgid "settlement"
+msgstr "αποικία"
+
+msgid "farm"
+msgstr "φάρμα"
+
+msgid "ship"
+msgstr "πλοίο"
+
+msgid "tent"
+msgstr "σκηνή"
+
+msgid "warehouse"
+msgstr "αποθήκη"
+
+msgid "resource"
+msgstr "πόρος"
+
+msgid "produce"
+msgstr "παραγωγή"
+
+msgid "field"
+msgstr "χωράφι"
+
+msgid "map"
+msgstr "χάρτης"
+
+msgid "trade"
+msgstr "εμπόριο"
+
+msgid "inhabitants"
+msgstr "κάτοικοι"
+
+msgid "buy"
+msgstr "αγορά"
+
+msgid "overview"
+msgstr "επισκόπηση"
+
+msgid "click"
+msgstr "κλικ"
+
+msgid "lumberjack"
+msgstr "ξυλοκόπος"
+
+msgid "resident"
+msgstr "κάτοικος"
+
+msgid "main square"
+msgstr "κεντρική πλατεία"
+
+msgid "sailors"
+msgstr "ναυτικοί"
+
+msgid "food"
+msgstr "τροφή"
+
+msgid "increment"
+msgstr "βήμα"
+
+msgid "production"
+msgstr "παραγωγή"
+
+msgid "select"
+msgstr "επιλογή"
+
+msgid "sell"
+msgstr "πώληση"
+
+msgid "setting"
+msgstr "ρύθμιση"
+
+msgid "storage"
+msgstr "αποθήκευση"
+
+msgid "tab"
+msgstr "καρτέλα"
+
+msgid "upgrade"
+msgstr "αναβάθμιση"
+
+msgid "your inhabitants"
+msgstr "οι κάτοικοί σας"
+
+msgid "close"
+msgstr "κλείσιμο"
+
+msgid "companies"
+msgstr "εταιρείες"
+
+msgid "island"
+msgstr "νησί"
+
+msgid "time"
+msgstr "χρόνος"
+
+msgid "unit"
+msgstr "μονάδα"
+
+msgid "balance"
+msgstr "ισορροπία"
+
+msgid "coast"
+msgstr "ακτή"
+
+msgid "menu"
+msgstr "μενού"
+
+msgid "slot"
+msgstr "υποδοχή"
+
+msgid "start"
+msgstr "εκκίνηση"
+
+msgid "stock"
+msgstr "απόθεμα"
+
+msgid "trail"
+msgstr "μονοπάτι"
+
+msgid "Unknown Horizons"
+msgstr "Άγνωστοι ορίζοντες"
+
+msgid "wool"
+msgstr "μαλλί"
+
+msgid "boards"
+msgstr "σανίδες"
+
+msgid "collector"
+msgstr "συλλέκτης"
+
+msgid "connection"
+msgstr "σύνδεση"
+
+msgid "fire"
+msgstr "φωτιά"
+
+msgid "change"
+msgstr "αλλαγή"
+
+msgid "connect"
+msgstr "σύνδεση"
+
+msgid "cost"
+msgstr "κόστος"
+
+msgid "house"
+msgstr "σπίτι"
+
+msgid "log"
+msgstr "κορμός δέντρου"
+
+msgid "road"
+msgstr "δρόμος"
+
+msgid "save"
+msgstr "αποθήκευση"
+
+msgid "built"
+msgstr "χτισμένος(-η/ο)"
+
+msgid "pasture"
+msgstr "βοσκότοπος"
+
+msgid "reach"
+msgstr "προσέγγιση"
+
+msgid "tree"
+msgstr "δέντρο"
+
+msgid "your"
+msgstr ""
+
+msgid "your settlement"
+msgstr "η αποικία σου"
+
+msgid "add"
+msgstr "προσθήκη"
+
+msgid "check"
+msgstr "έλεγχος"
+
+msgid "choose"
+msgstr "επιλογή"
+
+msgid "confectionery"
+msgstr "γλυκίσματα"
+
+msgid "fisher"
+msgstr "ψαράς"
+
+msgid "free trader"
+msgstr "ελεύθερος έμπορος"
+
+msgid "happiness"
+msgstr "ευτυχία"
+
+msgid "in stock"
+msgstr "σε απόθεμα"
+
+msgid "money"
+msgstr "χρήματα"
+
+msgid "pavilion"
+msgstr "περίπτερο"
+
+msgid "running costs"
+msgstr "κόστος λειτουργίας"
+
+msgid "sugar"
+msgstr "ζάχαρη"
+
+msgid "taxes"
+msgstr "φόροι"
+
+msgid "tax"
+msgstr "φόρος"
+
+msgid "tools"
+msgstr "εργαλεία"
+
+msgid "button"
+msgstr "κουμπί"
+
+msgid "continue"
+msgstr "συνέχεια"
+
+msgid "faith"
+msgstr "πίστη"
+
+msgid "help"
+msgstr "βοήθεια"
+
+msgid "left"
+msgstr "αριστερά"
+
+msgid "level"
+msgstr "επίπεδο"
+
+msgid "mode"
+msgstr "λειτουργία"
+
+msgid "move"
+msgstr "μετακίνηση"
+
+msgid "pioneers"
+msgstr "πιονέροι"
+
+msgid "citizens"
+msgstr "πολίτες"
+
+msgid "merchants"
+msgstr "έμποροι"
+
+msgid "aristocrats"
+msgstr "αριστοκράτες"
+
+msgid "potato"
+msgstr "πατάτα"
+
+msgid "settler"
+msgstr "άποικος"
+
+msgid "speed"
+msgstr "ταχύτητα"
+
+msgid "stop"
+msgstr "διακοπή"
+
+msgid "storage tent"
+msgstr "σκηνή αποθήκευσης"
+
+msgid "wait"
+msgstr "αναμονή"
+
+msgid "access"
+msgstr "πρόσβαση"
+
+msgid "account"
+msgstr "λογαριασμός"
+
+msgid "amount"
+msgstr "ποσότητα"
+
+msgid "build menu"
+msgstr "μενού χτισίματος"
+
+msgid "cloth"
+msgstr "ύφασμα"
+
+msgid "construction"
+msgstr "κατασκευή"
+
+msgid "decrease"
+msgstr "μείωση"
+
+msgid "description"
+msgstr "περιγραφή"
+
+msgid "fish"
+msgstr "ψάρι"
+
+msgid "increase"
+msgstr "αύξηση"
+
+msgid "lamb"
+msgstr "αρνί"
+
+msgid "leave"
+msgstr "έξοδος"
+
+msgid "liquor"
+msgstr "λικέρ"
+
+msgid "location"
+msgstr "τοποθεσία"
+
+msgid "offer"
+msgstr "προσφορά"
+
+msgid "potatoes"
+msgstr "πατάτες"
+
+msgid "range"
+msgstr "εύρος"
+
+msgid "reached"
+msgstr "προσεγγίστηκε"
+
+msgid "run"
+msgstr ""
+
+msgid "slider"
+msgstr "ρυθμιστικό"
+
+msgid "solution"
+msgstr "λύση"
+
+msgid "space"
+msgstr "χώρος"
+
+msgid "target"
+msgstr "στόχος"
+
+msgid "team"
+msgstr "ομάδα"
+
+msgid "total"
+msgstr "σύνολο"
+
+msgid "unable"
+msgstr "αδυναμία εκτέλεσης"
+
+msgid "active"
+msgstr "ενεργός(-ή/ό)"
+
+msgid "afford"
+msgstr "διαθέτω τα μέσα"
+
+msgid "animals"
+msgstr "ζώα"
+
+msgid "Captain's log"
+msgstr "Ημερολόγιο καπετάνιου"
+
+msgid "construct"
+msgstr "κατασκευή"
+
+msgid "consume"
+msgstr "κατανάλωση"
+
+msgid "enabled"
+msgstr "ενεργοποιημένο"
+
+msgid "entries"
+msgstr "καταχωρίσεις"
+
+msgid "feature"
+msgstr "λειτουργία"
+
+msgid "forest"
+msgstr "δάσος"
+
+msgid "grows"
+msgstr ""
+
+msgid "hold"
+msgstr ""
+
+msgid "idle"
+msgstr "σε αδράνεια"
+
+msgid "income"
+msgstr "εισόδημα"
+
+msgid "information"
+msgstr "πληροφορίες"
+
+msgid "key"
+msgstr "κλειδί"
+
+msgid "lamb wool"
+msgstr "αρνίσιο μαλλί"
+
+msgid "overview tab"
+msgstr "καρτέλα επισκόπησης"
+
+msgid "minimap"
+msgstr "μίνι χάρτης"
+
+msgid "issues"
+msgstr "προβλήματα"
+
+msgid "plant"
+msgstr "φυτό"
+
+msgid "play"
+msgstr "παιχνίδι"
+
+msgid "playing"
+msgstr ""
+
+msgid "price"
+msgstr "τιμή"
+
+msgid "read"
+msgstr "ανάγνωση"
+
+msgid "return"
+msgstr "επιστροφή"
+
+msgid "sale"
+msgstr "πώληση"
+
+msgid "screen"
+msgstr "οθόνη"
+
+msgid "sound"
+msgstr "ήχος"
+
+msgid "special"
+msgstr "ειδικός(-ή/ό)"
+
+msgid "store"
+msgstr "κατάστημα"
+
+msgid "tear"
+msgstr "καταστροφή"
+
+msgid "from time to time"
+msgstr "κατά διαστήματα"
+
+msgid "trading"
+msgstr ""
+
+msgid "village"
+msgstr "χωριό"
+
+msgid "visit"
+msgstr "επίσκεψη"
+
+msgid "world"
+msgstr "κόσμος"
+
+msgid "yield"
+msgstr "απόδοση"
+
+msgid "your ship"
+msgstr "το πλοίο σου"
+
+msgid "back"
+msgstr "πίσω"
+
+msgid "build settlement"
+msgstr "χτίσιμο αποικίας"
+
+msgid "load"
+msgstr "φόρτωση"
+
+msgid "unload"
+msgstr "εκφόρτωση"
+
+msgid "command"
+msgstr "εντολή"
+
+msgid "completed"
+msgstr "ολοκληρώθηκε"
+
+msgid "condition"
+msgstr "κατάσταση"
+
+msgid "contact"
+msgstr "επικοινωνία"
+
+msgid "empty"
+msgstr "κενός(-ή/ό)"
+
+msgid "ensure"
+msgstr "διασφάλιση"
+
+msgid "fulfill"
+msgstr "εκπλήρωση"
+
+msgid "graphics"
+msgstr "γραφικά"
+
+msgid "harvest"
+msgstr "συγκομιδή"
+
+msgid "hunts"
+msgstr "κυνήγι"
+
+msgid "multiple"
+msgstr "πολλαπλός(-ή/ό)"
+
+msgid "potato field"
+msgstr "χωράφι πατάτας"
+
+msgid "school"
+msgstr "σχολείο"
+
+msgid "seed"
+msgstr "σπόρος"
+
+msgid "service"
+msgstr "εξυπηρέτηση"
+
+msgid "sheep"
+msgstr "πρόβατο"
+
+msgid "signal fire"
+msgstr "σήμα φωτιάς"
+
+msgid "statistics"
+msgstr "στατιστικά στοιχεία"
+
+msgid "clay"
+msgstr "άργιλος"
+
+msgid "iron"
+msgstr "σίδηρος"
+
+msgid "ore"
+msgstr "μετάλλευμα"
+
+msgid "tobacco"
+msgstr "καπνός"
+
+msgid "charcoal"
+msgstr "κάρβουνο"
+
+msgid "sugar field"
+msgstr "χωράφι ζάχαρης"
+
+msgid "temporarily"
+msgstr "προσωρινά"
+
+msgid "values"
+msgstr "τιμές"

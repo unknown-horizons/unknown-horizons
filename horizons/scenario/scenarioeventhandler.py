@@ -24,7 +24,9 @@ import yaml
 import copy
 
 from horizons.scheduler import Scheduler
-from horizons.util import Callback, LivingObject, YamlCache
+from horizons.util.living import LivingObject
+from horizons.util.python.callback import Callback
+from horizons.util.yamlcache import YamlCache
 
 from horizons.scenario import ACTIONS, CONDITIONS
 
@@ -83,7 +85,8 @@ class ScenarioEventHandler(LivingObject):
 	def start(self):
 		# Add the check_events method to the scheduler to be checked every few seconds
 		Scheduler().add_new_object(self._scheduled_check, self,
-				                   run_in = Scheduler().get_ticks(self.CHECK_CONDITIONS_INTERVAL), loops = -1)
+		                           run_in=Scheduler().get_ticks(self.CHECK_CONDITIONS_INTERVAL),
+		                           loops=-1)
 
 	def sleep(self, ticks):
 		"""Sleep the ScenarioEventHandler for number of ticks. This delays all
@@ -94,7 +97,7 @@ class ScenarioEventHandler(LivingObject):
 			callback.run_in = callback.run_in + ticks
 			Scheduler().add_object(callback)
 		self.sleep_ticks_remaining = ticks
-		Scheduler().add_new_object(self._reduce_sleep, self, loops = ticks)
+		Scheduler().add_new_object(self._reduce_sleep, self, loops=ticks)
 
 	def _reduce_sleep(self):
 		self.sleep_ticks_remaining -= 1
@@ -128,7 +131,7 @@ class ScenarioEventHandler(LivingObject):
 
 	def schedule_action(self, action):
 		if self.sleep_ticks_remaining > 0:
-			Scheduler().add_new_object(Callback(action, self.session), self, run_in = self.sleep_ticks_remaining)
+			Scheduler().add_new_object(Callback(action, self.session), self, run_in=self.sleep_ticks_remaining)
 		else:
 			action(self.session)
 

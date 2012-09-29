@@ -31,9 +31,11 @@ import yaml
 import itertools
 
 from horizons.constants import PATHS, VERSION
-from horizons.util import DbReader, YamlCache
+from horizons.util.dbreader import DbReader
+from horizons.util.yamlcache import YamlCache
 from horizons.i18n import find_available_languages
 
+import horizons.globals
 import horizons.main
 
 
@@ -191,10 +193,10 @@ class SavegameManager(object):
 
 		if autosaves:
 			tmp_del("%s/*.%s" % (cls.autosave_dir, cls.savegame_extension),
-			        horizons.main.fife.get_uh_setting("AutosaveMaxCount"))
+			        horizons.globals.fife.get_uh_setting("AutosaveMaxCount"))
 		if quicksaves:
 			tmp_del("%s/*.%s" % (cls.quicksave_dir, cls.savegame_extension),
-			        horizons.main.fife.get_uh_setting("QuicksaveMaxCount"))
+			        horizons.globals.fife.get_uh_setting("QuicksaveMaxCount"))
 
 	@classmethod
 	def get_recommended_number_of_players(cls, savegamefile):
@@ -232,6 +234,36 @@ class SavegameManager(object):
 		return metadata
 
 	@classmethod
+	def _write_screenshot(cls, db):
+		# special handling for screenshot (as blob)
+		screenshot_fd, screenshot_filename = tempfile.mkstemp()
+
+		width = horizons.globals.fife.engine_settings.getScreenWidth()
+		height = horizons.globals.fife.engine_settings.getScreenHeight()
+
+
+		# hide whatever dialog we have
+		dialog_hidden = False
+		if horizons.main._modules.gui.is_visible():
+			dialog_hidden = True
+			horizons.main._modules.gui.hide()
+			horizons.globals.fife.engine.pump()
+
+		# scale to the correct with and adapt height with same factor
+		factor = float( cls.savegame_screenshot_width ) / width
+		horizons.globals.fife.engine.getRenderBackend().captureScreen(screenshot_filename,
+		                                                           int(float(width) * factor),
+		                                                           int(float(height) * factor))
+
+		if dialog_hidden:
+			horizons.main._modules.gui.show()
+			horizons.globals.fife.engine.pump()
+
+		screenshot_data = os.fdopen(screenshot_fd, "r").read()
+		db("INSERT INTO metadata_blob values(?, ?)", "screen", sqlite3.Binary(screenshot_data))
+		os.unlink(screenshot_filename)
+
+	@classmethod
 	def write_metadata(cls, db, savecounter, rng_state):
 		"""Writes metadata to db.
 		@param db: DbReader
@@ -245,33 +277,7 @@ class SavegameManager(object):
 		for key, value in metadata.iteritems():
 			db("INSERT INTO metadata(name, value) VALUES(?, ?)", key, value)
 
-		# special handling for screenshot (as blob)
-		screenshot_fd, screenshot_filename = tempfile.mkstemp()
-
-		width = horizons.main.fife.engine_settings.getScreenWidth()
-		height = horizons.main.fife.engine_settings.getScreenHeight()
-
-
-		# hide whatever dialog we have
-		dialog_hidden = False
-		if horizons.main._modules.gui.is_visible():
-			dialog_hidden = True
-			horizons.main._modules.gui.hide()
-			horizons.main.fife.engine.pump()
-
-		# scale to the correct with and adapt height with same factor
-		factor = float( cls.savegame_screenshot_width ) / width
-		horizons.main.fife.engine.getRenderBackend().captureScreen(screenshot_filename,
-		                                                           int(float(width) * factor),
-		                                                           int(float(height) * factor))
-
-		if dialog_hidden:
-			horizons.main._modules.gui.show()
-			horizons.main.fife.engine.pump()
-
-		screenshot_data = os.fdopen(screenshot_fd, "r").read()
-		db("INSERT INTO metadata_blob values(?, ?)", "screen", sqlite3.Binary(screenshot_data))
-		os.unlink(screenshot_filename)
+		cls._write_screenshot(db)
 
 	@classmethod
 	def get_regular_saves(cls, include_displaynames=True):
@@ -429,7 +435,7 @@ class SavegameManager(object):
 	def get_campaign_info(cls, name="", filename=""):
 		"""Return this campaign's data"""
 		assert (name or filename)
-		cfiles, cnames, cscenarios, cdatas = cls.get_campaigns(include_displaynames = True, include_scenario_list = True, campaign_data = True)
+		cfiles, cnames, cscenarios, cdatas = cls.get_campaigns(include_displaynames=True, include_scenario_list=True, campaign_data=True)
 		sfiles, snames = cls.get_scenarios(include_displaynames = True)
 		if name:
 			if not name in cnames:

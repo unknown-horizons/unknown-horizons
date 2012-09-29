@@ -124,11 +124,11 @@ for id, name, c_type, c_package, x, y, radius, cost, cost_inactive, inhabitants_
 	result['tooltip_text'] = tooltip_text
 	result['settler_level'] = settler_level
 
-	costs =  {}
+	costs = {}
 	for (name, value) in db("SELECT resource, amount FROM building_costs WHERE building = ?", id):
 		costs[name]=value
 
-	result['buildingcosts'] =  costs
+	result['buildingcosts'] = costs
 
 	result['components'] = []
 
@@ -137,7 +137,7 @@ for id, name, c_type, c_package, x, y, radius, cost, cost_inactive, inhabitants_
 	production_lines = {}
 	for num, (prodlineid, changes_anim, object, time, default) in enumerate(db("SELECT id, changes_animation, object_id, time, enabled_by_default FROM production_line WHERE object_id=?", id)):
 		(consumption,production) = get_prod_line(prodlineid)
-		prod_line =  { 'time': int(time) }
+		prod_line = { 'time': int(time) }
 		if changes_anim == 0:
 			prod_line['changes_animation'] = False
 		if default == 0:
@@ -165,10 +165,10 @@ for id, name, c_type, c_package, x, y, radius, cost, cost_inactive, inhabitants_
 			slot_sizes[resource] = size
 		result['components'].append({'StorageComponent': {'inventory': {'SlotsStorage': {'slot_sizes': slot_sizes}}}})
 
-	result['actionsets'] =  {}
+	result['actionsets'] = {}
 
-	for action_set, preview_set, level in  db("SELECT action_set_id, preview_action_set_id, level FROM action_set WHERE object_id=?", id):
-		result['actionsets'][action_set] =  {'level': level}
+	for action_set, preview_set, level in db("SELECT action_set_id, preview_action_set_id, level FROM action_set WHERE object_id=?", id):
+		result['actionsets'][action_set] = {'level': level}
 		if preview_set is not None:
 			result['actionsets'][action_set]['preview'] = preview_set
 
