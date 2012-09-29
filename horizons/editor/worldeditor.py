@@ -43,7 +43,7 @@ class WorldEditor(object):
 		self._center_view()
 
 		self.brush_size = 1
-		self._gui = EditorGui(self)
+		self._gui = EditorGui(self, self.session.ingame_gui)
 
 		self._tile_delete_set = set()
 
