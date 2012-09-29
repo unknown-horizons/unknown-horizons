@@ -22,7 +22,8 @@
 import weakref
 import logging
 
-from horizons.util import Point, decorators
+from horizons.util.python import decorators
+from horizons.util.shapes import Point
 
 from horizons.util.pathfinding import PathBlockedError
 from horizons.util.pathfinding.pathfinding import FindPath
@@ -105,8 +106,8 @@ class AbstractPather(object):
 		# call algorithm
 		# to use a different pathfinding code, just change the following line
 		path = FindPath()(source, destination, self._get_path_nodes(),
-											self._get_blocked_coords(), self.move_diagonal,
-											self.make_target_walkable)
+		                  self._get_blocked_coords(), self.move_diagonal,
+		                  self.make_target_walkable)
 
 		if path is None:
 			return False
@@ -153,7 +154,7 @@ class AbstractPather(object):
 			# try to calculate another path
 			if not self.calc_path(Point(*self.path[-1]), self.destination_in_building):
 				self.log.info("tile suddenly %s %s blocked for %s %s",
-											self.path[self.cur][0], self.path[self.cur][1], self.unit, self.unit.worldid)
+				               self.path[self.cur][0], self.path[self.cur][1], self.unit, self.unit.worldid)
 				# no other path can be found. since the problem cannot be fixed here,
 				# we raise an exception
 				raise PathBlockedError
@@ -188,7 +189,7 @@ class AbstractPather(object):
 		if self.path:
 			for step in xrange(len(self.path)):
 				db("INSERT INTO unit_path(`unit`, `index`, `x`, `y`) VALUES(?, ?, ?, ?)",
-					 unitid, step, self.path[step][0], self.path[step][1])
+				    unitid, step, self.path[step][0], self.path[step][1])
 
 	def load(self, db, worldid):
 		"""
@@ -210,7 +211,7 @@ class AbstractPather(object):
 class ShipPather(AbstractPather):
 	"""Pather for ships (units that move on water tiles)"""
 	def __init__(self, unit, *args, **kwargs):
-		super(ShipPather, self).__init__(unit, move_diagonal=True,make_target_walkable = False,
+		super(ShipPather, self).__init__(unit, move_diagonal=True, make_target_walkable=False,
 		                                 *args, **kwargs)
 
 	def _get_path_nodes(self):
@@ -256,7 +257,7 @@ class SoldierPather(AbstractPather):
 	Their path list is maintained by IslandPathNodes"""
 	def __init__(self, unit, *args, **kwargs):
 		super(SoldierPather, self).__init__(unit, move_diagonal=True,
-																				make_target_walkable=False, *args, **kwargs)
+		                                    make_target_walkable=False, *args, **kwargs)
 
 	def _get_path_nodes(self):
 		# island might change (e.g. when transported via ship), so reload every time
@@ -274,7 +275,7 @@ class SoldierPather(AbstractPather):
 			# update list in island, so that new path calculations consider this obstacle
 			island.path_nodes.reset_tile_walkability(point)
 			self.log.debug("tile %s %s blocked for %s %s on island", point[0], point[1],
-										 self.unit, self.unit.worldid)
+			                self.unit, self.unit.worldid)
 			return path_blocked
 		else:
 			# also check in super class

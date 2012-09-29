@@ -22,8 +22,10 @@
 import tempfile
 import os
 
-from horizons.util import Color, WorldObject
-from horizons.util.worldobject import WorldObjectNotFound
+from nose.plugins.skip import SkipTest
+
+from horizons.util.color import Color
+from horizons.util.worldobject import WorldObject, WorldObjectNotFound
 from horizons.command.unit import CreateUnit, Attack
 from horizons.command.diplomacy import AddEnemyPair, AddNeutralPair, AddAllyPair
 from horizons.command.uioptions import EquipWeaponFromInventory, UnequipWeaponToInventory
@@ -33,6 +35,7 @@ from horizons.constants import UNITS, WEAPONS
 from horizons.component.healthcomponent import HealthComponent
 
 from tests.game import game_test, new_session, load_session
+
 
 def setup_combat(s, ship):
 	worldid = 10000000
@@ -49,10 +52,15 @@ def setup_combat(s, ship):
 
 	return ((p0, s0), (p1, s1))
 
+
 def health(thing):
 	return thing.get_component(HealthComponent).health
+
+
 def max_health(thing):
 	return thing.get_component(HealthComponent).max_health
+
+
 def one_dead(wid1, wid2):
 	for wid in (wid1, wid2):
 		at_least_one_dead = False
@@ -63,11 +71,9 @@ def one_dead(wid1, wid2):
 	return at_least_one_dead
 
 
-
-
 @game_test
 def test_noncombat_units(s, p):
-	return
+	raise SkipTest()
 
 	(p0, s0), (p1, s1) = setup_combat(s, UNITS.HUKER_SHIP)
 
@@ -84,9 +90,10 @@ def test_noncombat_units(s, p):
 	assert health(s0) == max_health(s0)
 	assert health(s1) == max_health(s1)
 
+
 @game_test
 def test_equip(s, p):
-	return
+	raise SkipTest()
 
 	assert WEAPONS.DEFAULT_FIGHTING_SHIP_WEAPONS_NUM > 0, "This test only makes sense with default cannons. Adapt this if you don't want default cannons."
 

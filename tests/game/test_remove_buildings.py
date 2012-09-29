@@ -26,7 +26,7 @@ from itertools import product
 from horizons.command.building import Build, Tear
 from horizons.command.unit import CreateUnit
 from horizons.constants import BUILDINGS, UNITS
-from horizons.util import Point
+from horizons.util.shapes import Point
 from horizons.world.production.producer import Producer
 from horizons.component.storagecomponent import StorageComponent
 from horizons.util.pathfinding.roadpathfinder import RoadPathFinder

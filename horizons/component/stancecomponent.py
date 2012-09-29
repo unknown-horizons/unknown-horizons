@@ -20,7 +20,8 @@
 # ###################################################
 
 from horizons.component import Component
-from horizons.util import Callback, Circle, Annulus
+from horizons.util.shapes import Annulus, Circle
+from horizons.util.python.callback import Callback
 from horizons.scheduler import Scheduler
 
 class StanceComponent(Component):
@@ -143,7 +144,7 @@ class LimitedMoveStance(StanceComponent):
 
 	def get_instance_data(self):
 		# get a copy of the center Point object
-		self.return_position = self.instance.position.center().copy()
+		self.return_position = self.instance.position.center.copy()
 
 	def act_idle(self):
 		"""
@@ -160,7 +161,7 @@ class LimitedMoveStance(StanceComponent):
 		"""
 		if not self.instance.is_moving():
 			self.state = 'idle'
-			self.return_position = self.instance.position.center().copy()
+			self.return_position = self.instance.position.center.copy()
 
 	def act_user_attack(self):
 		"""
@@ -168,7 +169,7 @@ class LimitedMoveStance(StanceComponent):
 		"""
 		if not self.instance.is_attacking():
 			self.state = 'idle'
-			self.return_position = self.instance.position.center().copy()
+			self.return_position = self.instance.position.center.copy()
 
 	def act_move_back(self):
 		"""
@@ -178,14 +179,14 @@ class LimitedMoveStance(StanceComponent):
 		if target:
 			self.instance.attack(target)
 			self.state = 'auto_attack'
-		elif self.instance.position.center() == self.return_position:
+		elif self.instance.position.center == self.return_position:
 			self.state = 'idle'
 
 	def act_auto_attack(self):
 		"""
 		Check if target still exists or if unit exited the hold ground area
 		"""
-		if not Circle(self.return_position, self.move_range).contains(self.instance.position.center()) or \
+		if not Circle(self.return_position, self.move_range).contains(self.instance.position.center) or \
 			not self.instance.is_attacking():
 			from horizons.world.units.movingobject import MoveNotPossible
 			try:
@@ -198,7 +199,7 @@ class LimitedMoveStance(StanceComponent):
 		"""
 		Returns closest attackable unit in radius
 		"""
-		enemies = [u for u in self.session.world.get_health_instances(self.instance.position.center(), radius)
+		enemies = [u for u in self.session.world.get_health_instances(self.instance.position.center, radius)
 		           if self.session.world.diplomacy.are_enemies(u.owner, self.instance.owner)]
 
 		if not enemies:
@@ -226,7 +227,7 @@ class AggressiveStance(LimitedMoveStance):
 		super(AggressiveStance, self).act_user_move()
 		target = self.get_target(self.instance._max_range)
 		if target:
-			self.instance.fire_all_weapons(target.position.center())
+			self.instance.fire_all_weapons(target.position.center)
 
 	def act_user_attack(self):
 		"""
@@ -235,7 +236,7 @@ class AggressiveStance(LimitedMoveStance):
 		super(AggressiveStance, self).act_user_attack()
 		target = self.get_target(self.instance._max_range)
 		if target:
-			self.instance.fire_all_weapons(target.position.center())
+			self.instance.fire_all_weapons(target.position.center)
 
 class HoldGroundStance(LimitedMoveStance):
 
@@ -272,7 +273,7 @@ class FleeStance(StanceComponent):
 			from horizons.world.units.movingobject import MoveNotPossible
 			try:
 				distance = unit._max_range + self.lookout_distance
-				self.instance.move(Annulus(unit.position.center(), distance, distance + 2))
+				self.instance.move(Annulus(unit.position.center, distance, distance + 2))
 				self.state = 'flee'
 			except MoveNotPossible:
 				pass
@@ -290,7 +291,7 @@ class FleeStance(StanceComponent):
 		"""
 		Gets the closest unit that can fire to instance
 		"""
-		enemies = [u for u in self.session.world.get_health_instances(self.instance.position.center(), self.lookout_distance)
+		enemies = [u for u in self.session.world.get_health_instances(self.instance.position.center, self.lookout_distance)
 		           if self.session.world.diplomacy.are_enemies(u.owner, self.instance.owner) and hasattr(u, '_max_range')]
 
 		if not enemies:

@@ -38,15 +38,13 @@ import logging
 import locale
 import weakref
 
+import horizons.globals
+
 from horizons.constants import LANGUAGENAMES
 from horizons.i18n import objecttranslations, guitranslations
 from horizons.i18n.utils import get_fontdef_for_locale, find_available_languages
 
 log = logging.getLogger("i18n")
-
-# init translations
-guitranslations.set_translations()
-objecttranslations.set_translations()
 
 # save translated widgets
 translated_widgets = {}
@@ -84,7 +82,8 @@ def update_all_translations():
 		widget = widget() # resolve weakref
 		if not widget:
 			continue
-		for (element_name, attribute), translation in guitranslations.text_translations.get(filename,{}).iteritems():
+		all_widgets = guitranslations.text_translations.get(filename, {})
+		for (element_name, attribute), translation in all_widgets.iteritems():
 			element = widget.findChild(name=element_name)
 			replace_attribute(element, attribute, translation)
 		if filename == 'help.xml':
@@ -104,7 +103,6 @@ def change_language(language=None):
 
 	Called on startup and when changing the language in the settings menu.
 	"""
-	import horizons.main
 
 	if language: # non-default
 		try:
@@ -118,7 +116,7 @@ def change_language(language=None):
 		except IOError:
 			#xgettext:python-format
 			print "Configured language {lang} could not be loaded.".format(lang=language)
-			horizons.main.fife.set_uh_setting('Language', LANGUAGENAMES[''])
+			horizons.globals.fife.set_uh_setting('Language', LANGUAGENAMES[''])
 			return change_language() # recurse
 	else:
 		# default locale
@@ -131,8 +129,8 @@ def change_language(language=None):
 	__builtin__.__dict__['N_'] = __builtin__.__dict__['ngettext']
 
 	# update fonts
-	fontdef = get_fontdef_for_locale(language or horizons.main.fife.get_locale())
-	horizons.main.fife.pychan.loadFonts(fontdef)
+	fontdef = get_fontdef_for_locale(language or horizons.globals.fife.get_locale())
+	horizons.globals.fife.pychan.loadFonts(fontdef)
 
 	# dynamically reset all translations of active widgets
 	update_all_translations()

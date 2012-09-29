@@ -29,7 +29,7 @@ from horizons.ai.aiplayer.areabuilder import AreaBuilder
 from horizons.ai.aiplayer.builder import Builder
 from horizons.ai.aiplayer.constants import BUILD_RESULT, BUILDING_PURPOSE
 from horizons.constants import AI, BUILDINGS
-from horizons.util import Point, Rect
+from horizons.util.shapes import Point, Rect
 from horizons.util.python import decorators
 from horizons.entities import Entities
 

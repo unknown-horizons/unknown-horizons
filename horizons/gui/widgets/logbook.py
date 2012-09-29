@@ -25,13 +25,13 @@ import json
 from itertools import groupby
 from fife.extensions.pychan.widgets import HBox, Icon, Label
 
-from horizons.util import Callback
+from horizons.util.python.callback import Callback
 from horizons.util.changelistener import metaChangeListenerDecorator
 from horizons.component.ambientsoundcomponent import AmbientSoundComponent
 from horizons.command.game import UnPauseCommand
 from horizons.command.misc import Chat
 from horizons.gui.widgets.pickbeltwidget import PickBeltWidget
-from horizons.gui.widgets import OkButton
+from horizons.gui.widgets.imagebutton import OkButton
 from horizons.scenario.actions import show_message
 
 @metaChangeListenerDecorator("pause_request")
@@ -46,14 +46,14 @@ class LogBook(PickBeltWidget):
 	log = logging.getLogger('gui.widgets.logbook')
 
 	widget_xml = 'captains_log.xml'
-	style = None
+	style = 'book'
 	page_pos = (170,38)
 	sections = (('logbook', _(u'Logbook')),
-				('statistics', _(u'Statistics')),
-				('chat_overview', _(u'Chat')))
+	            ('statistics', _(u'Statistics')),
+	            ('chat_overview', _(u'Chat')))
 
 	def __init__(self, session):
-		self.statistics_index = [i for i,sec in enumerate(self.sections) if sec[0] == 'statistics'][0]
+		self.statistics_index = [i for i, sec in self.sections].index('statistics')
 		self._page_ids = {} # dict mapping self._cur_entry to message.msgcount
 		super(LogBook, self).__init__()
 		self.session = session

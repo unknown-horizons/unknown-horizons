@@ -55,10 +55,7 @@ class StringPreviewWidget(object):
 		"""
 		scenario_file_path = self.scenarios[0][self.listbox.selected]
 		data = YamlCache.load_yaml_data(open(scenario_file_path, 'r'))
-		try:
-			stats = data['translation_status']
-		except KeyError as err:
-			stats = '' # no translation stats available, display empty label
+		stats = data.get('translation_status', '') # no stats available => empty label
 		self.statslabel.text = unicode(stats)
 
 	def load(self):
@@ -88,10 +85,3 @@ class StringPreviewWidget(object):
 				pass # no entries
 			self.logbook._redraw_captainslog()
 			self.logbook.show()
-
-
-
-
-
-
-

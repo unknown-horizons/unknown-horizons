@@ -24,9 +24,9 @@ import weakref
 
 from fife.extensions.pychan.widgets import Container, Icon, ImageButton
 
-import horizons.main
+import horizons.globals
 from horizons.gui.util import load_uh_widget
-from horizons.util import Callback
+from horizons.util.python.callback import Callback
 from horizons.util.changelistener import metaChangeListenerDecorator
 
 @metaChangeListenerDecorator('remove')
@@ -53,7 +53,7 @@ class TabWidget(object):
 		if position is None:
 			# add positioning here
 			self.widget.position = (
-				horizons.main.fife.engine_settings.getScreenWidth() - 290,
+				horizons.globals.fife.engine_settings.getScreenWidth() - 290,
 				209
 			)
 		else:

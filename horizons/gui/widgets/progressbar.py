@@ -19,9 +19,9 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-from fife.extensions import pychan
+from fife.extensions.pychan.widgets import Container, Icon
 
-class ProgressBar(pychan.widgets.Container):
+class ProgressBar(Container):
 	"""The ProgressBar is a pychan widget. It can be used in xml files like this:
 	<ProgressBar />
 	It is used to display a ProgressBar with a certain progress ;). Set the
@@ -37,7 +37,7 @@ class ProgressBar(pychan.widgets.Container):
 		self._init_gui()
 
 	def _init_gui(self):
-		self.icon = pychan.widgets.Icon(image = "content/gui/images/background/widgets/progressbar_bg.png")
+		self.icon = Icon(image="content/gui/images/background/widgets/progressbar_bg.png")
 		self.icon.min_size = (0, 0)
 		self.addChild(self.icon)
 		self._draw()

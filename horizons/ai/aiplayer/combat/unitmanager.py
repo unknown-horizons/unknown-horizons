@@ -26,9 +26,7 @@ from operator import itemgetter
 from horizons.ai.aiplayer.combat.fleet import Fleet
 from horizons.component.healthcomponent import HealthComponent
 from horizons.component.selectablecomponent import SelectableComponent
-from horizons.util.shapes.circle import Circle
-from horizons.util.shapes.point import Point
-from horizons.util.worldobject import WorldObject
+from horizons.util.shapes import Circle, Point
 from horizons.world.units.fightingship import FightingShip
 from horizons.world.units.pirateship import PirateShip
 
@@ -245,7 +243,7 @@ class UnitManager(object):
 		positions = [ship.position for ship in ship_group]
 		bottom_left = Point(min(positions, key=lambda position: position.x).x, min(positions, key=lambda position: position.y).y)
 		top_right = Point(max(positions, key=lambda position: position.x).x, max(positions, key=lambda position: position.y).y)
-		diagonal = bottom_left.distance_to_point(top_right)
+		diagonal = bottom_left.distance(top_right)
 		return diagonal
 
 	def find_ships_near_group(self, ship_group, radius):

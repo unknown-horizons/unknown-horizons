@@ -33,8 +33,9 @@ from horizons.command.building import Tear
 from horizons.command.production import ToggleActive
 from horizons.constants import AI, BUILDINGS
 from horizons.scheduler import Scheduler
-from horizons.util import Callback, Point, Rect
 from horizons.util.python import decorators
+from horizons.util.python.callback import Callback
+from horizons.util.shapes import Point, Rect
 from horizons.entities import Entities
 from horizons.world.production.producer import Producer
 from horizons.component.namedcomponent import NamedComponent
@@ -458,8 +459,8 @@ class ProductionBuilder(AreaBuilder):
 		"""Called when a building is removed from the area (the building still exists during the call)."""
 		if building.id in self.field_building_classes:
 			# this can't be handled right now because the building still exists
-			Scheduler().add_new_object(Callback(self._refresh_unused_fields), self, run_in = 0)
-			Scheduler().add_new_object(Callback(partial(super(ProductionBuilder, self).remove_building, building)), self, run_in = 0)
+			Scheduler().add_new_object(Callback(self._refresh_unused_fields), self, run_in=0)
+			Scheduler().add_new_object(Callback(partial(super(ProductionBuilder, self).remove_building, building)), self, run_in=0)
 		elif building.buildable_upon or building.id == BUILDINGS.TRAIL:
 			pass # don't react to road, trees and ruined tents being destroyed
 		else:

@@ -24,8 +24,10 @@ from fife import fife
 
 from horizons.scheduler import Scheduler
 
+from horizons.util.shapes import Point
 from horizons.util.pathfinding import PathBlockedError
-from horizons.util import Point, WeakMethodList, decorators
+from horizons.util.python import decorators
+from horizons.util.python.weakmethodlist import WeakMethodList
 from horizons.world.concreteobject import ConcreteObject
 from horizons.constants import GAME_SPEED
 from horizons.component.componentholder import ComponentHolder
@@ -248,7 +250,7 @@ class MovingObject(ComponentHolder, ConcreteObject):
 	def teleport(self, destination, callback=None, destination_in_building=False):
 		"""Like move, but nearly instantaneous"""
 		if hasattr(destination, "position"):
-			destination_coord = destination.position.center().to_tuple()
+			destination_coord = destination.position.center.to_tuple()
 		else:
 			destination_coord = destination
 		self.move(destination, callback=callback, destination_in_building=destination_in_building, path=[destination_coord])
@@ -280,22 +282,6 @@ class MovingObject(ComponentHolder, ConcreteObject):
 			return tile.velocity[self.id]
 		else:
 			return (12, 17) # standard values
-
-	def get_estimated_travel_time(self, destination):
-		path = self.path.calc_path(destination, check_only = True)
-		if not path and path != []:
-			return None
-
-		path_length = 0 # length in ticks to travel the distance
-		speed = self.get_unit_velocity()
-		for i in xrange(1, len(path)):
-			dx = abs(path[i - 1][0] - path[i][0])
-			dy = abs(path[i - 1][1] - path[i][1])
-			if dx and dy:
-				path_length += speed[1]
-			else:
-				path_length += speed[0]
-		return path_length
 
 	def get_move_target(self):
 		return self.path.get_move_target()

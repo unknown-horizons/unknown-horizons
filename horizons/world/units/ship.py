@@ -22,12 +22,12 @@
 import weakref
 from fife import fife
 
-import horizons.main
+import horizons.globals
 
 from horizons.util.pathfinding.pather import ShipPather, FisherShipPather
 from horizons.util.pathfinding import PathBlockedError
 from horizons.world.units.collectors import FisherShipCollector
-from unit import Unit
+from horizons.world.units.unit import Unit
 from horizons.constants import LAYERS
 from horizons.scheduler import Scheduler
 from horizons.component.namedcomponent import ShipNameComponent, NamedComponent
@@ -81,7 +81,9 @@ class Ship(Unit):
 			if self.position.to_tuple() in self.session.world.ship_map:
 				del self.session.world.ship_map[self.position.to_tuple()]
 			else:
-				self.log.error("Ship %s had in_ship_map flag set as True but tuple %s was not found in world.ship_map", self, self.position.to_tuple())
+				self.log.error("Ship %s had in_ship_map flag set as True "
+				               "but tuple %s was not found in world.ship_map",
+				               self, self.position.to_tuple())
 			if self._next_target.to_tuple() in self.session.world.ship_map:
 				del self.session.world.ship_map[self._next_target.to_tuple()]
 			self.in_ship_map = False
@@ -93,16 +95,19 @@ class Ship(Unit):
 	def _move_tick(self, resume=False):
 		"""Keeps track of the ship's position in the global ship_map"""
 
-		# TODO: Originally, only self.in_ship_map should suffice here, but KeyError is raised during combat.
+		# TODO: Originally, only self.in_ship_map should suffice here,
+		# but KeyError is raised during combat.
 		if self.in_ship_map and self.position.to_tuple() in self.session.world.ship_map:
 			del self.session.world.ship_map[self.position.to_tuple()]
 		elif self.in_ship_map:  # logging purposes only
-			self.log.error("Ship %s had in_ship_map flag set as True but tuple %s was not found in world.ship_map", self, self.position.to_tuple())
+			self.log.error("Ship %s had in_ship_map flag set as True but tuple %s was "
+			               "not found in world.ship_map", self, self.position.to_tuple())
 
 		try:
 			super(Ship, self)._move_tick(resume)
 		except PathBlockedError:
-			# if we fail to resume movement then the ship should still be on the map but the exception has to be raised again.
+			# if we fail to resume movement then the ship should still be on the map
+			# but the exception has to be raised again.
 			if resume:
 				if self.in_ship_map:
 					self.session.world.ship_map[self.position.to_tuple()] = weakref.ref(self)
@@ -166,7 +171,7 @@ class Ship(Unit):
 			loc.setLayerCoordinates(coords)
 			self.session.view.renderer['GenericRenderer'].addAnimation(
 				"buoy_" + str(self.worldid), fife.RendererNode(loc),
-				horizons.main.fife.animationloader.loadResource("as_buoy0+idle+45")
+				horizons.globals.fife.animationloader.loadResource("as_buoy0+idle+45")
 			)
 
 	def find_nearby_ships(self, radius=15):

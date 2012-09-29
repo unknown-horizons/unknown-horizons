@@ -24,7 +24,11 @@ import logging
 from fife import fife
 
 from horizons.world.units.movingobject import MovingObject
-from horizons.util import Point, WorldObject, WeakMethod, decorators, Callback
+from horizons.util.python import decorators
+from horizons.util.python.callback import Callback
+from horizons.util.python.weakmethod import WeakMethod
+from horizons.util.shapes import Point
+from horizons.util.worldobject import WorldObject
 from horizons.constants import LAYERS
 from horizons.component.healthcomponent import HealthComponent
 from horizons.extscheduler import ExtScheduler
@@ -105,7 +109,8 @@ class Unit(MovingObject, ResourceTransferHandler):
 		# remember that it has been drawn automatically
 		self._last_draw_health_call_on_damage = True
 		# remove later (but only in case there's no manual interference)
-		ExtScheduler().add_new_object(Callback(self.draw_health, auto_remove=True), self, self.__class__.AUTOMATIC_HEALTH_DISPLAY_TIMEOUT)
+		ExtScheduler().add_new_object(Callback(self.draw_health, auto_remove=True),
+		                              self, self.__class__.AUTOMATIC_HEALTH_DISPLAY_TIMEOUT)
 
 	def draw_health(self, remove_only=False, auto_remove=False):
 		"""Draws the units current health as a healthbar over the unit."""
@@ -128,25 +133,29 @@ class Unit(MovingObject, ResourceTransferHandler):
 		height = int(5 * zoom)
 		width = int(50 * zoom)
 		y_pos = int(self.health_bar_y * zoom)
-		# coord separating health (green) from damaged (red)
-		relative_up = fife.Point(int(width * health // max_health - width/2), y_pos - height)
-		relative_dn = fife.Point(int(width * health // max_health - width/2), y_pos)
-		mid_node_up = fife.RendererNode(self._instance, relative_up)
-		mid_node_down = fife.RendererNode(self._instance, relative_dn)
+		relative_x = int((width * health) // max_health - (width // 2))
+		# mid_node is the coord separating healthy (green) and damaged (red) quads
+		mid_node_top = fife.RendererNode(self._instance, fife.Point(relative_x, y_pos - height))
+		mid_node_btm = fife.RendererNode(self._instance, fife.Point(relative_x, y_pos))
+
+		left_upper = fife.RendererNode(self._instance, fife.Point(-width // 2, y_pos - height))
+		right_upper = fife.RendererNode(self._instance, fife.Point(width // 2, y_pos - height))
+		left_lower = fife.RendererNode(self._instance, fife.Point(-width // 2, y_pos))
+		right_lower = fife.RendererNode(self._instance, fife.Point(width // 2, y_pos))
 
 		if health > 0: # draw healthy part of health bar
 			renderer.addQuad(render_name,
-			                fife.RendererNode(self._instance, fife.Point(-width/2, y_pos - height)),
-			                fife.RendererNode(self._instance, fife.Point(-width/2, y_pos)),
-			                mid_node_down,
-			                mid_node_up,
-			                0, 255, 0)
+			                 left_upper,
+			                 left_lower,
+			                 mid_node_btm,
+			                 mid_node_top,
+			                 0, 255, 0)
 		if health < max_health: # draw damaged part
 			renderer.addQuad(render_name,
-			                 mid_node_up,
-			                 mid_node_down,
-			                 fife.RendererNode(self._instance, fife.Point(width/2, y_pos)),
-			                 fife.RendererNode(self._instance, fife.Point(width/2, y_pos - height)),
+			                 mid_node_top,
+			                 mid_node_btm,
+			                 right_lower,
+			                 right_upper,
 			                 255, 0, 0)
 
 	def hide(self):
@@ -185,7 +194,7 @@ class Unit(MovingObject, ResourceTransferHandler):
 		range_squared = in_range * in_range
 		randint = self.session.random.randint
 		# pick a sample, try tries times
-		tries = int(range_squared / 2)
+		tries = range_squared // 2
 		for i in xrange(tries):
 			# choose x-difference, then y-difference so that the distance is in the range.
 			x_diff = randint(1, in_range) # always go at least 1 field

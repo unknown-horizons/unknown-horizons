@@ -25,9 +25,8 @@ from horizons.world.production.productionline import ProductionLine
 from horizons.world.production.production import Production, SingleUseProduction
 from horizons.constants import PRODUCTION
 from horizons.scheduler import Scheduler
-from horizons.util import decorators
-from horizons.util.shapes.circle import Circle
-from horizons.util.shapes.point import Point
+from horizons.util.python import decorators
+from horizons.util.shapes import Circle, Point
 from horizons.component.storagecomponent import StorageComponent
 from horizons.component.ambientsoundcomponent import AmbientSoundComponent
 from horizons.component import Component
@@ -101,11 +100,13 @@ class Producer(Component):
 
 		# BIG FAT NOTE: this has to be executed for all players for mp
 		# even if this building has no status icons
-		# TODO: think about whether this is enough gui-related so it belongs to the ExtScheduler, also check its performance when moving
+		# TODO: think about whether this is enough gui-related so it belongs to the ExtScheduler
+		# also check its performance when moving
 		interval = Scheduler().get_ticks(3)
 		run_in = self.session.random.randint(1, interval) # don't update all at once
 		if self.instance.has_status_icon:
-			Scheduler().add_new_object(self.update_capacity_utilisation, self, run_in=run_in, loops=-1, loop_interval = interval)
+			Scheduler().add_new_object(self.update_capacity_utilisation, self, run_in=run_in,
+			                           loops=-1, loop_interval=interval)
 
 	def initialize(self):
 		self.__init()
@@ -176,7 +177,7 @@ class Producer(Component):
 	def load(self, db, worldid):
 		# Call this before super, because we have to make sure this is called before the
 		# ConcreteObject's callback which is added during loading
-		Scheduler().add_new_object(self._on_production_change, self, run_in = 0)
+		Scheduler().add_new_object(self._on_production_change, self, run_in=0)
 		super(Producer, self).load(db, worldid)
 		# load all productions
 		self.__init()
@@ -572,7 +573,7 @@ class UnitProducer(QueueProducer):
 					found_tile = False
 					# search for free water tile, and increase search radius if none is found
 					while not found_tile:
-						for coord in Circle(self.instance.position.center(), radius).tuple_iter():
+						for coord in Circle(self.instance.position.center, radius).tuple_iter():
 							point = Point(coord[0], coord[1])
 							if self.instance.island.get_tile(point) is None:
 								tile = self.session.world.get_tile(point)

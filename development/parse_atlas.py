@@ -38,13 +38,14 @@ except ImportError as e:
 from run_uh import init_environment
 init_environment()
 
-import horizons.main
-from horizons.util import ActionSetLoader, TileSetLoader
+import horizons.globals
+from horizons.util.loaders.actionsetloader import ActionSetLoader
+from horizons.util.loaders.tilesetloader import TileSetLoader
 
 # Dummy fife object for
 class DummyFife:
 	use_atlases = False
-horizons.main.fife = DummyFife()
+horizons.globals.fife = DummyFife()
 
 class AtlasEntry(object):
 	def __init__(self, source, xpos, ypos, width, height):

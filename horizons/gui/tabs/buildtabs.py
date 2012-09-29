@@ -22,7 +22,9 @@
 from horizons.entities import Entities
 from horizons.gui.tabs.tabinterface import TabInterface
 from horizons.command.building import Build
-from horizons.util import Callback, YamlCache, decorators
+from horizons.util.python import decorators
+from horizons.util.python.callback import Callback
+from horizons.util.yamlcache import YamlCache
 from horizons.util.lastactiveplayersettlementmanager import LastActivePlayerSettlementManager
 from horizons.component.storagecomponent import StorageComponent
 from horizons.messaging import NewPlayerSettlementHovered

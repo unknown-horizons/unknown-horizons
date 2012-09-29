@@ -19,9 +19,13 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-import horizons.main # this must be the first import, so the correct load order of all modules is guaranteed
+import horizons.globals
+import horizons.main
+
 from horizons.util.yamlcache import YamlCache
-from horizons.util import SQLiteAnimationLoader, ActionSetLoader, TileSetLoader
+from horizons.util.loaders.sqliteanimationloader import SQLiteAnimationLoader
+from horizons.util.loaders.actionsetloader import ActionSetLoader
+from horizons.util.loaders.tilesetloader import TileSetLoader
 from horizons.constants import PATHS, VIEW
 
 import os
@@ -85,7 +89,7 @@ class UHObjectLoader(scripts.plugin.Plugin):
 			imagemanager = self._engine.getImageManager()
 			use_atlases = False
 			pass
-		horizons.main.fife = PatchedFife()
+		horizons.globals.fife = PatchedFife()
 		uh_path = util.getUHPath()
 		horizons.main.PATHS.TILE_SETS_DIRECTORY = os.path.join(uh_path, horizons.main.PATHS.TILE_SETS_DIRECTORY)
 		horizons.main.PATHS.ACTION_SETS_DIRECTORY = os.path.join(uh_path, horizons.main.PATHS.ACTION_SETS_DIRECTORY)

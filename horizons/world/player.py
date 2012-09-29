@@ -25,7 +25,11 @@ import horizons.main
 
 from horizons.constants import PLAYER
 from horizons.world.playerstats import PlayerStats
-from horizons.util import WorldObject, Callback, Color, DifficultySettings, decorators
+from horizons.util.color import Color
+from horizons.util.difficultysettings import DifficultySettings
+from horizons.util.python import decorators
+from horizons.util.python.callback import Callback
+from horizons.util.worldobject import WorldObject
 from horizons.scenario import CONDITIONS
 from horizons.scheduler import Scheduler
 from horizons.component.componentholder import ComponentHolder
@@ -88,7 +92,7 @@ class Player(ComponentHolder, WorldObject):
 
 	def update_stats(self):
 		# will only be enabled on demand since it takes a while to calculate
-		Scheduler().add_new_object(Callback(self.update_stats), self, run_in = PLAYER.STATS_UPDATE_FREQUENCY)
+		Scheduler().add_new_object(Callback(self.update_stats), self, run_in=PLAYER.STATS_UPDATE_FREQUENCY)
 		self.stats = PlayerStats(self)
 
 	def get_latest_stats(self):
@@ -154,7 +158,7 @@ class Player(ComponentHolder, WorldObject):
 	def notify_new_disaster(self, message):
 		"""The message bus calls this when a building is 'infected' with a disaster."""
 		if self.is_local_player:
-			pos = message.building.position.center()
+			pos = message.building.position.center
 			self.session.ingame_gui.message_widget.add(point=pos, string_id=message.disaster_class.NOTIFICATION_TYPE)
 
 	def end(self):
@@ -191,10 +195,10 @@ class HumanPlayer(Player):
 		level_up = super(HumanPlayer, self).notify_settler_reached_level(message)
 		if level_up:
 			# add message and update ingame gui
-			self.session.ingame_gui.message_widget.add(point=message.sender.position.center(),
+			self.session.ingame_gui.message_widget.add(point=message.sender.position.center,
 			                                           string_id='SETTLER_LEVEL_UP',
 			                                           message_dict={'level': message.level+1})
 		return level_up
 
 	def notify_mine_empty(self, mine):
-		self.session.ingame_gui.message_widget.add(point=mine.position.center(), string_id='MINE_EMPTY')
+		self.session.ingame_gui.message_widget.add(point=mine.position.center, string_id='MINE_EMPTY')

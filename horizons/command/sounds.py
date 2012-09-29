@@ -20,7 +20,7 @@
 # ###################################################
 
 from horizons.component.ambientsoundcomponent import AmbientSoundComponent
-from horizons.util import Point
+from horizons.util.shapes import Point
 from horizons.command import Command
 
 class PlaySound(Command):

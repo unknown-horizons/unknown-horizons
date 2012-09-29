@@ -25,8 +25,9 @@ import logging
 
 from fife import fife
 
-import horizons.main
-from horizons.util import ActionSetLoader, Callback
+import horizons.globals
+from horizons.util.loaders.actionsetloader import ActionSetLoader
+from horizons.util.python.callback import Callback
 from horizons.world.ingametype import IngameType
 
 class UnitClass(IngameType):
@@ -59,12 +60,12 @@ class UnitClass(IngameType):
 		"""
 		cls.log.debug('Loading unit %s', cls.id)
 		try:
-			cls._real_object = horizons.main.fife.engine.getModel().createObject(str(cls.id), 'unit')
+			cls._real_object = horizons.globals.fife.engine.getModel().createObject(str(cls.id), 'unit')
 		except RuntimeError:
 			cls.log.debug('Already loaded unit %s', cls.id)
-			cls._real_object = horizons.main.fife.engine.getModel().getObject(str(cls.id), 'unit')
+			cls._real_object = horizons.globals.fife.engine.getModel().getObject(str(cls.id), 'unit')
 			return
-		cls._real_object.setPather(horizons.main.fife.engine.getModel().getPather('RoutePather'))
+		cls._real_object.setPather(horizons.globals.fife.engine.getModel().getPather('RoutePather'))
 		cls._real_object.setBlocking(False)
 		cls._real_object.setStatic(False)
 		all_action_sets = ActionSetLoader.get_sets()
@@ -89,6 +90,6 @@ class UnitClass(IngameType):
 		for rotation in all_action_sets[action_set][action_id]:
 			params['rot'] = rotation
 			path = '{id}+{action}+{rot}:shift:center+0,bottom+8'.format(**params)
-			anim = horizons.main.fife.animationloader.loadResource(path)
+			anim = horizons.globals.fife.animationloader.loadResource(path)
 			action.get2dGfxVisual().addAnimation(int(rotation), anim)
 			action.setDuration(anim.getDuration())

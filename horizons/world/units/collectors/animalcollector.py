@@ -21,7 +21,8 @@
 
 from horizons.scheduler import Scheduler
 
-from horizons.util import RadiusRect, decorators
+from horizons.util.python import decorators
+from horizons.util.shapes import RadiusRect
 from horizons.world.units.movingobject import MoveNotPossible
 from horizons.constants import GAME_SPEED
 from horizons.world.units.collectors.buildingcollector import BuildingCollector
@@ -161,7 +162,7 @@ class HunterCollector(AnimalCollector):
 	kill_animal = True
 
 	def get_animals_in_range(self, res=None):
-		dist = self.home_building.position.distance_to_point
+		dist = self.home_building.position.distance
 		radius = self.home_building.radius
 		return [ animal for animal in self.home_building.island.wild_animals if
 		         dist(animal.position) <= radius ]

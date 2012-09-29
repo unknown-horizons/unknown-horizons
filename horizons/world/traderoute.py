@@ -22,7 +22,9 @@
 import copy
 
 from horizons.world.units.movingobject import MoveNotPossible
-from horizons.util import Circle, WorldObject, ChangeListener
+from horizons.util.changelistener import ChangeListener
+from horizons.util.shapes import Circle
+from horizons.util.worldobject import WorldObject
 from horizons.constants import GAME_SPEED
 from horizons.scheduler import Scheduler
 from horizons.component.storagecomponent import StorageComponent
@@ -210,12 +212,12 @@ class TradeRoute(ChangeListener):
 			return
 
 		warehouse = next_destination['warehouse']
-		if self.ship.position.distance_to_point(warehouse.position.center()) <= self.ship.radius:
+		if self.ship.position.distance(warehouse.position.center) <= self.ship.radius:
 			self.on_route_warehouse_reached()
 			return
 
 		try:
-			self.ship.move(Circle(warehouse.position.center(), self.ship.radius), self.on_route_warehouse_reached,
+			self.ship.move(Circle(warehouse.position.center, self.ship.radius), self.on_route_warehouse_reached,
 			               blocked_callback = self.on_ship_blocked)
 		except MoveNotPossible:
 			# retry in 5 seconds

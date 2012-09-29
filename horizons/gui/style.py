@@ -19,167 +19,75 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-from fife import fife
+from fife.fife import Color
 
 STYLES = {
 'default': {
-		'default' : {
+		'default': {
 			'border_size': 0,
 			'margins': (0, 0),
-			'base_color' : fife.Color(40, 40, 40,   0),
-			'foreground_color' : fife.Color( 80, 80, 40,   0),
-			'background_color' : fife.Color(255,255,255, 128),
-			'selection_color' : fife.Color(80,80,40, 192),
-			'font' : '14_black',
+			'base_color': Color(40, 40, 40, 0),
+			'foreground_color': Color( 80, 80, 40, 0),
+			'background_color': Color(0, 0, 0, 0),
+			'selection_color': Color(80, 80, 40, 192),
+			'font': '14_black',
 		},
-		'Button' : {
-			'background_color' : fife.Color(255,255,255,32),
-			'foreground_color' : fife.Color(80,80,40, 192),
-			'base_color' : fife.Color(80,80,40, 64),
-			'border_size': 1,
-			'margins' : (10, 5),
+		'Button': {
+			'background_color': Color(255, 255, 255, 32),
+			'foreground_color': Color(80, 80, 40, 192),
+			'base_color': Color(80, 80, 40, 64),
+			'margins': (10, 5),
 		},
-		('Icon', 'ImageButton') : {
-			'border_size': 0
+		('Slider', 'StepSlider'): {
+			'base_color': Color(80, 80, 40, 128),
 		},
-		('CheckBox','DropDown') : {
-			'selection_color' : fife.Color(255,255,255,200),
-			'background_color' : fife.Color(255,255,255,64),
-			'foreground_color' : fife.Color(80,80,40),
-			'base_color' : fife.Color(0,0,0,0),
-			'font' : '14_black',
-			'border_size': 0,
+		'CheckBox': {
+			'selection_color': Color(255, 255, 255),
+			'background_color': Color(255, 255, 255, 96),
+			'foreground_color': Color(80, 80, 40),
 		},
-		('Slider','StepSlider') : {
-			'base_color' : fife.Color(80,80,40,128),
+		'ListBox': {
+			'background_color': Color(255, 255, 255, 64),
+			'selection_color': Color(255, 255, 255, 160),
 		},
-		'TextField' : {
-			'selection_color' : fife.Color(255,255,255),
-			'background_color' : fife.Color(255,255,255,64),
-			'base_color' : fife.Color(0,0,0,0),
-			'foreground_color' : fife.Color(80,80,40),
-			'font' : '14_black',
+		'Label': {
 		},
-		'ListBox' : {
-			'background_color' : fife.Color(0,0,0,0),
-			'foreground_color' : fife.Color(80,80,40),
-			'selection_color' : fife.Color(255,255,255,128),
-			'font' : '14_black',
-		},
-		'ScrollArea' : {
-			'background_color' : fife.Color(255,255,255,64),
-			'foreground_color' : fife.Color(80,80,40),
-			'base_color' : fife.Color(0,0,0,0),
-			'font' : '14_black',
-			'horizontal_scrollbar' : 0,
-		},
-		'RadioButton' : {
-			'border_size': 0,
-		},
-		'Label' : {
-			'border_size': 0,
-			'background_color' : fife.Color(40, 40, 40, 0),
-			'font' : '14_black',
-		},
-		'Window' : {
-			'border_size': 1,
-			'margins': (10, 10),
-			'titlebar_height' : 30,
-			'font' : 'large',
-			'base_color' : fife.Color(60, 60, 60)
-		},
-		('Container','HBox','VBox') : {
-			'opaque' : 0,
-			'border_size': 0
+		('Container', 'HBox', 'VBox'): {
+			'opaque': 0,
 		},
 },
-'menu': { #Used in the main menu and game menu
-		'default' : {
-			'border_size': 0,
-			'margins': (0, 0),
-			'opaque': 0,
-			'base_color' : fife.Color(0, 0, 0, 0),
-			'foreground_color' : fife.Color(255, 255, 255),
-			'background_color' : fife.Color(0, 0, 0, 0),
-			'selection_color' : fife.Color(0, 0, 0, 0),
-			'font' : 'headline_light'
+
+'menu': { #Used in the main menu
+		'default': {
+			'font': 'headline_light',
 		},
-		'Button' : {
-			'border_size': 0,
-			'margins' : (10, 5)
+		'Label': {
+			'background_color': Color(0, 0, 0, 102),
+			'font': 'mainmenu',
 		},
-		'Label' : {
-			'border_size': 0,
-			'font' : 'mainmenu',
-			'background_color' : fife.Color(0, 0, 0, 102)
-		}
 },
 
 'menu_black': { # style for build menu etc.
-		'default' : {
-			'border_size': 0,
-			'margins': (0,0),
-			'opaque': 0,
-			'base_color' : fife.Color(0,0,0,0),
-			'foreground_color' : fife.Color(255,255,255),
-			'background_color' : fife.Color(0, 0, 0, 0),
-			'selection_color' : fife.Color(0,0,0,0),
-			'font' : 'small_black'
-		},
-		'Button' : {
-			'border_size': 0,
-			'margins' : (0,0)
-		},
-		'Label' : {
-			'margins': (0,0),
-			'font' : '14_black'
+		'default': {
+			'font': '14_black',
 		},
 		# NOTE: This is a hack to add padding attributs to boxes of this style
-		('Container','HBox','VBox') : {
+		('Container', 'HBox', 'VBox'): {
 		},
 		# once more, better not ask why this is necessary (#1607)
-		# also seems it won't work if just added to the above.
-		'CheckBox' : {
+		'CheckBox': {
 		},
 },
 
 'resource_bar': {
-		'default' : {
+		'default': {
 			'font': 'small_black',
-		}
-},
-
-'message_text': {
-		'default' : {
-			'border_size': 0,
-			'margins': (0,0),
-			'opaque': 0,
-			'base_color' : fife.Color(0,0,0,0),
-			'foreground_color' : fife.Color(255,255,255),
-			'background_color' : fife.Color(0, 0, 0, 0),
-			'selection_color' : fife.Color(0,0,0,0),
-			'font' : 'small'
 		},
-		'Button' : {
-			'border_size': 0,
-			'margins' : (0,0)
-		},
-		'Label' : {
-			'margins': (0,0),
-			'font' : 'small'
-		}
 },
 
 'city_info': { # style for city info
-		'default' : {
-			'border_size': 0,
-			'margins': (0,0),
-			'opaque': 0,
-			'base_color' : fife.Color(0,0,0,0),
-			'foreground_color' : fife.Color(255,255,255),
-			'background_color' : fife.Color(0, 0, 0, 0),
-			'selection_color' : fife.Color(0,0,0,0),
-			'font' : '18'
+		'default': {
+			'font': '18',
 		},
 		'Label': {
 			#HACK apply defaults to xml widgets without adaptLayout code
@@ -187,102 +95,57 @@ STYLES = {
 },
 
 'headline': { # style for headlines
-		'default' : {
-			'border_size': 0,
-			'margins': (0,0),
-			'opaque': 0,
-			'base_color' : fife.Color(0,0,0,0),
-			'foreground_color' : fife.Color(255,255,255),
-			'background_color' : fife.Color(0, 0, 0, 0),
-			'selection_color' : fife.Color(0,0,0,0),
-			'font' : 'headline'
-		},
-		'Button' : {
-			'border_size': 0,
-			'margins' : (0,0)
-		},
-		'Label' : {
-			'font' : 'headline'
+		'default': {
+			'font': 'headline',
 		},
 		# NOTE: This is a hack to add padding attributs to boxes of this style
-		('Container','HBox','VBox') : {
+		('Container', 'HBox', 'VBox'): {
 		},
 },
 
 'book': { # style for book widgets
-	    'default' : {
+		'default': {
 			'border_size': 0,
-			'margins': (0,0),
-			'font' : '14_black',
-			'foreground_color' : fife.Color(80,80,40),
+			'margins': (0, 0),
+			'foreground_color': Color(80, 80, 40),
+			'font': '14_black',
 		},
-		'Label' : {
-			'font' : '14_black',
+		'Label': {
 		},
-		('CheckBox', 'RadioButton') : {
-			'selection_color' : fife.Color(255,255,255,200),
-			'background_color' : fife.Color(255,255,255,64),
-			'base_color' : fife.Color(0,0,0,0),
-			'foreground_color' : fife.Color(80,80,40),
+		('Slider', 'StepSlider'): {
+			'base_color': Color(90, 90, 40, 96),
 		},
-		'DropDown' : {
-			'selection_color' : fife.Color(255,255,255,200),
-			'background_color' : fife.Color(255,255,255,128),
-			'base_color' : fife.Color(0,0,0,0),
-			'foreground_color' : fife.Color(80,80,40),
-			'font' : '14_black',
+		'RadioButton': {
+			'foreground_color': Color(80, 80, 40),
+			'background_color': Color(255, 255, 255, 96),
 		},
-		('Slider','StepSlider') : {
-			'base_color' : fife.Color(80,80,40,128),
+		'ListBox': {
+			'background_color': Color(0, 0, 0, 0),
+			'selection_color': Color(255, 255, 255, 160),
 		},
-		'ListBox' : {
-			'background_color' : fife.Color(0,0,0,0),
-			'foreground_color' : fife.Color(80,80,40),
-			'selection_color' : fife.Color(255,255,255,128),
-			'font' : '14_black',
+		'TextField': {
+			'selection_color': Color(255, 255, 255),
+			'background_color': Color(255, 255, 255, 64),
+			'base_color': Color(0, 0, 0, 0),
+			'horizontal_scrollbar': 0,
 		},
-		'ScrollArea' : {
-			'background_color' : fife.Color(255,255,255,64),
-			'foreground_color' : fife.Color(80,80,40),
-			'base_color' : fife.Color(0,0,0,0),
-			'font' : '14_black',
-			'horizontal_scrollbar' : 0,
+		'ScrollArea': {
+			'selection_color': Color(255, 255, 255),
+			'background_color': Color(255, 255, 255, 64),
+			'base_color': Color(90, 90, 40, 96),
+			'horizontal_scrollbar': 0,
 		},
-		'HBox' : {
-			'font' : '14_black',
-			'foreground_color' : fife.Color(80,80,40),
-			'opaque': 0
-		},
-		'TextField' : {
-			'selection_color' : fife.Color(255,255,255),
-			'background_color' : fife.Color(255,255,255,64),
-			'base_color' : fife.Color(0,0,0,0),
-			'foreground_color' : fife.Color(80,80,40),
-			'font' : '14_black',
-		},
-		('Container','HBox','VBox') : {
-#			'background_image' : ****,
+		('Container', 'HBox', 'VBox'): {
+			'opaque': 0,
 		},
 },
 
 'tooltip': { # style for tooltips
-		'default' : {
-			'border_size': 0,
-			'margins': (0,0),
-			'opaque': 0,
-			'base_color' : fife.Color(0,0,0,0),
-			'foreground_color' : fife.Color(255,255,255),
-			'background_color' : fife.Color(0, 0, 0, 0),
-			'selection_color' : fife.Color(0,0,0,0),
-			'font' : 'headline'
+		'default': {
+			'font': 'tooltip',
 		},
-		'Button' : {
-			'border_size': 0,
-			'margins' : (0,0)
+		'Label': {
 		},
-		'Label' : {
-			'font' : 'tooltip'
-		}
 	},
 
 }

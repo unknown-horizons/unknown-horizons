@@ -19,12 +19,11 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-
-import horizons.main
+import horizons.globals
 from fife.extensions.pychan.widgets import HBox, Label
 
-from horizons.util import Callback, Color
-
+from horizons.util.color import Color
+from horizons.util.python.callback import Callback
 
 class PlayerDataSelection(object):
 	"""Subwidget for selecting player name and color.
@@ -40,7 +39,7 @@ class PlayerDataSelection(object):
 		self.gui = widgets[ 'playerdataselection' ]
 
 		self.colors = self.gui.findChild(name='playercolor')
-		self.selected_color = horizons.main.fife.get_uh_setting("ColorID") # starts at 1!
+		self.selected_color = horizons.globals.fife.get_uh_setting("ColorID") # starts at 1!
 		self.set_color(self.selected_color)
 
 		colorlabels = []
@@ -65,7 +64,7 @@ class PlayerDataSelection(object):
 			self.colors.addChild(hbox)
 
 		self.gui.distributeData({
-			'playername': unicode(horizons.main.fife.get_uh_setting("Nickname")),
+			'playername': unicode(horizons.globals.fife.get_uh_setting("Nickname")),
 		})
 		parent_gui.findChild(name="playerdataselectioncontainer").addChild( self.gui )
 		parent_gui.mapEvents(events)
@@ -76,7 +75,7 @@ class PlayerDataSelection(object):
 		@param color_id: int. Gets converted to FIFE Color object.
 		"""
 		self.selected_color = Color[color_id]
-		horizons.main.fife.set_uh_setting("ColorID", color_id)
+		horizons.globals.fife.set_uh_setting("ColorID", color_id)
 		self.gui.findChild(name='selectedcolor').background_color = Color[color_id]
 
 	def set_player_name(self, playername):

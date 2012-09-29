@@ -22,7 +22,8 @@
 
 from horizons.constants import GAME_SPEED
 from horizons.gui.tabs import OverviewTab
-from horizons.util import ActionSetLoader, Callback
+from horizons.util.loaders.actionsetloader import ActionSetLoader
+from horizons.util.python.callback import Callback
 from horizons.scheduler import Scheduler
 from horizons.component.namedcomponent import NamedComponent
 from horizons.component.storagecomponent import StorageComponent
@@ -55,7 +56,8 @@ class WarehouseOverviewTab(OverviewTab):
 
 	def show(self):
 		super(WarehouseOverviewTab, self).show()
-		Scheduler().add_new_object(Callback(self._refresh_collector_utilisation), self, run_in = GAME_SPEED.TICKS_PER_SECOND, loops = -1)
+		Scheduler().add_new_object(Callback(self._refresh_collector_utilisation),
+		                           self, run_in=GAME_SPEED.TICKS_PER_SECOND, loops=-1)
 
 	def hide(self):
 		super(WarehouseOverviewTab, self).hide()

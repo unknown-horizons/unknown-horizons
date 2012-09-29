@@ -19,17 +19,16 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-from fife.extensions import pychan
+from fife.extensions.pychan.widgets import Container, HBox, Icon
 
 from horizons.gui.util import load_uh_widget, get_res_icon_path
-from horizons.util import Callback
-from fife.extensions.pychan.widgets import Icon
+from horizons.util.python.callback import Callback
 from horizons.command.unit import SetStance
 from horizons.extscheduler import ExtScheduler
 from horizons.component.healthcomponent import HealthComponent
 from horizons.component.stancecomponent import DEFAULT_STANCES
 
-class StanceWidget(pychan.widgets.Container):
+class StanceWidget(Container):
 	"""Widget used for setting up the stance for one instance"""
 	def __init__(self, **kwargs):
 		super(StanceWidget, self).__init__(size=(245,50), **kwargs)
@@ -70,7 +69,7 @@ class StanceWidget(pychan.widgets.Container):
 			self.findChild(name=stance.NAME).set_inactive()
 		self.findChild(name=self.instance.stance.NAME).set_active()
 
-class HealthWidget(pychan.widgets.Container):
+class HealthWidget(Container):
 	"""Widget that shows a health bar for an unit"""
 	def __init__(self, **kwargs):
 		super(HealthWidget, self).__init__(size=(50,25), **kwargs)
@@ -97,7 +96,7 @@ class HealthWidget(pychan.widgets.Container):
 			health_component.remove_damage_dealt_listener(self.draw_health)
 		self.instance = None
 
-class WeaponStorageWidget(pychan.widgets.HBox):
+class WeaponStorageWidget(HBox):
 	"""Widget that shows a small overview for one instance weapons"""
 	def init(self, instance):
 		self.instance = instance

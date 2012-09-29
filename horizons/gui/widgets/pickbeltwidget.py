@@ -21,7 +21,7 @@
 
 from fife.extensions.pychan.widgets import ImageButton
 
-from horizons.util import Callback
+from horizons.util.python.callback import Callback
 from horizons.gui.util import load_uh_widget
 
 class PickBeltWidget(object):

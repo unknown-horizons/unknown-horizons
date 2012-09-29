@@ -81,7 +81,7 @@ class ComponentHolder(object):
 		super(ComponentHolder, self).__init__(*args, **kwargs)
 		self.components = {}
 
-	def initialize(self):
+	def initialize(self, **kwargs):
 		"""Has to be called every time a componentholder is created. This is not
 		in __init__() because we need to make sure that all other sub/parent classes
 		have been inited, for example the ConcreteObject class. This is to ensure

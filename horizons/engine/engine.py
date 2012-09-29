@@ -22,16 +22,17 @@
 
 import os
 import shutil
+import sys
 import locale
 
 from fife import fife
 from fife.extensions.basicapplication import ApplicationBase
 from fife.extensions import pychan
 from fife.extensions.serializers.simplexml import SimpleXMLSerializer
-
 from fife.extensions.fife_settings import FIFE_MODULE
 
-from horizons.util import SQLiteAnimationLoader, SQLiteAtlasLoader
+from horizons.util.loaders.sqliteanimationloader import SQLiteAnimationLoader
+from horizons.util.loaders.sqliteatlasloader import SQLiteAtlasLoader
 from horizons.constants import LANGUAGENAMES, PATHS, GFX
 from horizons.engine.settingshandler import SettingsHandler, get_screen_resolutions
 from horizons.engine.sound import Sound
@@ -49,6 +50,7 @@ class Fife(ApplicationBase):
 
 		self._setting_handler = SettingsHandler(self)
 		self._setup_settings()
+		self._set_properly_window_icon()
 
 		self.engine = fife.Engine()
 		self.engine_settings = self.engine.getSettings()
@@ -68,6 +70,12 @@ class Fife(ApplicationBase):
 	# existing settings not part of this gui or the fife defaults
 	# (required for preserving values when upgrading settings file)
 	UNREFERENCED_SETTINGS = {UH_MODULE: ["Nickname", "AIPlayers", "ClientID"] }
+
+	def _set_properly_window_icon(self):
+		# Use other Window-Icon for Mac
+		if sys.platform == 'darwin' and \
+		   self.get_fife_setting('WindowIcon') == PATHS.DEFAULT_WINDOW_ICON_PATH:
+			self.set_fife_setting('WindowIcon', PATHS.MAC_WINDOW_ICON_PATH)
 
 	def _setup_settings(self, check_file_version=True):
 		# NOTE: SimpleXMLSerializer can't handle relative paths, it fails silently
@@ -181,7 +189,7 @@ class Fife(ApplicationBase):
 
 	def show_settings(self):
 		"""Show fife settings gui"""
-		if not hasattr(self, "_settings_extra_inited "):
+		if not hasattr(self, "_settings_extra_inited"):
 			self._setting_handler.setup_setting_extras()
 			self._settings_extra_inited = True
 		self._setting.onOptionsPress()
@@ -223,7 +231,7 @@ class Fife(ApplicationBase):
 
 	def play_sound(self, emitter, soundfile):
 		"""Plays a soundfile on the given emitter.
-		@param emitter: string with the emitters name in horizons.main.fife.sound.emitter that is to play the  sound
+		@param emitter: string with the emitters name in horizons.globals.fife.sound.emitter that is to play the  sound
 		@param soundfile: string containing the path to the soundfile"""
 		self.sound.play_sound(emitter, soundfile)
 
@@ -246,7 +254,8 @@ class Fife(ApplicationBase):
 		"""
 		assert self._gotInited
 
-		self._setting.setAvailableScreenResolutions(get_screen_resolutions())
+		# there probably is a reason why this is here
+		self._setting.entries[FIFE_MODULE]['ScreenResolution'].initialdata = get_screen_resolutions()
 
 		self.engine.initializePumping()
 		self.loop()

@@ -19,7 +19,7 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-import horizons.main
+import horizons.globals
 
 class ColorIter(object):
 	"""Makes iterating through standard colors possible"""
@@ -29,9 +29,9 @@ class ColorIter(object):
 	def next(self):
 		try:
 			if hasattr(self, 'last'):
-				id = horizons.main.db('SELECT id FROM colors WHERE id > ? ORDER BY id LIMIT 1', self.last)[0][0]
+				id = horizons.globals.db('SELECT id FROM colors WHERE id > ? ORDER BY id LIMIT 1', self.last)[0][0]
 			else:
-				id = horizons.main.db('SELECT id FROM colors ORDER BY id LIMIT 1')[0][0]
+				id = horizons.globals.db('SELECT id FROM colors ORDER BY id LIMIT 1')[0][0]
 		except:
 			raise StopIteration
 		self.last = id
@@ -42,7 +42,7 @@ class ColorMeta(type):
 		"""Gets a color by name or id in the db"""
 		if key == 0:
 			return None
-		r, g, b = horizons.main.db('SELECT red, green, blue FROM colors WHERE name = ? OR id = ?',
+		r, g, b = horizons.globals.db('SELECT red, green, blue FROM colors WHERE name = ? OR id = ?',
 		                           key, key)[0]
 		c = Color(r, g, b)
 		return c
@@ -78,7 +78,7 @@ class Color(object):
 		self.name = None
 		try:
 			# load name for the color, if it's a standard color
-			self.name, self.id = horizons.main.db('SELECT name, rowid FROM colors WHERE red = ? AND green = ? AND blue = ?', self.r, self.g, self.b)[0]
+			self.name, self.id = horizons.globals.db('SELECT name, rowid FROM colors WHERE red = ? AND green = ? AND blue = ?', self.r, self.g, self.b)[0]
 		except:
 			pass
 

@@ -90,7 +90,7 @@ class MapLoader:
 		cam.setCellImageDimensions(*VIEW.CELL_IMAGE_DIMENSIONS)
 		cam.setRotation(VIEW.ROTATION)
 		cam.setTilt(VIEW.TILT)
-		cam.setZoom(VIEW.ZOOM)
+		cam.setZoom(VIEW.ZOOM_DEFAULT)
 
 		# make layer the active layer
 		fife.InstanceRenderer.getInstance(cam).activateAllLayers(map)

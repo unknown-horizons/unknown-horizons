@@ -31,7 +31,7 @@ from horizons.constants import RES, BUILDINGS, GAME, TIER
 from horizons.world.building.buildingresourcehandler import BuildingResourceHandler
 from horizons.world.production.production import SettlerProduction
 from horizons.command.building import Build
-from horizons.util import Callback
+from horizons.util.python.callback import Callback
 from horizons.util.pathfinding.pather import StaticPather
 from horizons.command.production import ToggleActive
 from horizons.component.storagecomponent import StorageComponent
@@ -59,8 +59,7 @@ class Settler(BuildableRect, BuildingResourceHandler, BasicBuilding):
 	tabs = (SettlerOverviewTab, )
 
 	default_level_on_build = 0
-
-	_max_increment_reached_notification_displayed = False # this could be saved
+	max_tier_notification = False # overwritten on load if displayed already
 
 	def __init__(self, x, y, owner, instance=None, **kwargs):
 		kwargs['level'] = self.__class__.default_level_on_build # settlers always start in first level
@@ -94,6 +93,8 @@ class Settler(BuildableRect, BuildingResourceHandler, BasicBuilding):
 		remaining_ticks = Scheduler().get_remaining_ticks(self, self._tick)
 		db("INSERT INTO remaining_ticks_of_month(rowid, ticks) VALUES (?, ?)",
 		   self.worldid, remaining_ticks)
+		db("INSERT INTO metadata VALUES (?, ?)",
+		   "max_tier_notification", self.__class__.max_tier_notification)
 
 	def load(self, db, worldid):
 		super(Settler, self).load(db, worldid)
@@ -101,13 +102,16 @@ class Settler(BuildableRect, BuildingResourceHandler, BasicBuilding):
 		    db("SELECT inhabitants, last_tax_payed FROM settler WHERE rowid=?", worldid)[0]
 		remaining_ticks = \
 		    db("SELECT ticks FROM remaining_ticks_of_month WHERE rowid=?", worldid)[0][0]
-		self.__init(loading = True, last_tax_payed = last_tax_payed)
+		self.__init(loading=True, last_tax_payed=last_tax_payed)
 		self._load_upgrade_data(db)
 		SettlerUpdate.broadcast(self, self.level, self.level)
 		self.run(remaining_ticks)
 
 	def _load_upgrade_data(self, db):
 		"""Load the upgrade production and relevant stored resources"""
+		max_tier_notification = db("SELECT value FROM metadata WHERE name = ?",
+		                           "max_tier_notification")[0][0]
+		self.__class__.max_tier_notification = bool(int(max_tier_notification))
 		upgrade_material_prodline = SettlerUpgradeData.get_production_line_id(self.level+1)
 		if not self.get_component(Producer).has_production_line(upgrade_material_prodline):
 			return
@@ -276,10 +280,10 @@ class Settler(BuildableRect, BuildingResourceHandler, BasicBuilding):
 			if self.level >= self.level_max:
 				# max level reached already, can't allow an update
 				if self.owner.is_local_player:
-					if not self.__class__._max_increment_reached_notification_displayed:
-						self.__class__._max_increment_reached_notification_displayed = True
+					if not self.__class__.max_tier_notification:
+						self.__class__.max_tier_notification = True
 						self.session.ingame_gui.message_widget.add(
-							point=self.position.center(), string_id='MAX_INCR_REACHED')
+							point=self.position.center, string_id='MAX_INCR_REACHED')
 				return
 			if self._upgrade_production:
 				return # already waiting for res
@@ -321,7 +325,7 @@ class Settler(BuildableRect, BuildingResourceHandler, BasicBuilding):
 			self.log.debug("%s: Destroyed by lack of happiness", self)
 			if self.owner.is_local_player:
 				# check_duplicate: only trigger once for different settlers of a neighborhood
-				self.session.ingame_gui.message_widget.add(point=self.position.center(),
+				self.session.ingame_gui.message_widget.add(point=self.position.center,
 			                                           string_id='SETTLERS_MOVED_OUT', check_duplicate=True)
 		else:
 			self.level -= 1

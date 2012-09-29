@@ -73,9 +73,9 @@ def setup_horizons():
 	mock_fife_and_gui()
 
 	# set global reference to fife
-	import horizons.main
+	import horizons.globals
 	import fife
-	horizons.main.fife = fife.fife
+	horizons.globals.fife = fife.fife
 
 	from run_uh import create_user_dirs
 	create_user_dirs()

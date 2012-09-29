@@ -21,10 +21,11 @@
 # ###################################################
 
 from fife import fife
-import horizons.main
+import horizons.globals
 
 from horizons.gui.mousetools.cursortool import CursorTool
-from horizons.util import WorldObject, WeakList
+from horizons.util.python.weaklist import WeakList
+from horizons.util.worldobject import WorldObject
 from horizons.util.lastactiveplayersettlementmanager import LastActivePlayerSettlementManager
 from horizons.constants import LAYERS
 from horizons.messaging import HoverInstancesChanged
@@ -53,7 +54,7 @@ class NavigationTool(CursorTool):
 		class CmdListener(fife.ICommandListener):
 			pass
 		self.cmdlist = CmdListener()
-		horizons.main.fife.eventmanager.addCommandListener(self.cmdlist)
+		horizons.globals.fife.eventmanager.addCommandListener(self.cmdlist)
 		self.cmdlist.onCommand = self.onCommand
 
 		if not self.__class__.send_hover_instances_update:
@@ -100,7 +101,7 @@ class NavigationTool(CursorTool):
 	def remove(self):
 		if self.__class__.send_hover_instances_update:
 			self.session.view.remove_change_listener(self._schedule_hover_instance_update)
-		horizons.main.fife.eventmanager.removeCommandListener(self.cmdlist)
+		horizons.globals.fife.eventmanager.removeCommandListener(self.cmdlist)
 		super(NavigationTool, self).remove()
 
 	def mousePressed(self, evt):
@@ -131,8 +132,9 @@ class NavigationTool(CursorTool):
 			return
 
 		self.tooltip.show_evt(evt)
-		# don't overwrite this last_event_post instance, due to class hierarchy, it would write to the lowest class
-		# (e.g. selectiontool, and the attribute in NavigationTool would be left unchanged)
+		# don't overwrite this last_event_pos instance. Due to class
+		# hierarchy, it would write to the lowest class (e.g. SelectionTool)
+		# and the attribute in NavigationTool would be left unchanged.
 		self.__class__.last_event_pos.set(evt.getX(), evt.getY(), 0)
 		mousepoint = self.__class__.last_event_pos
 
@@ -166,7 +168,7 @@ class NavigationTool(CursorTool):
 
 	# move up mouse wheel = zoom in
 	def mouseWheelMovedUp(self, evt):
-		if horizons.main.fife.get_uh_setting("CursorCenteredZoom"):
+		if horizons.globals.fife.get_uh_setting("CursorCenteredZoom"):
 			self.session.view.zoom_in(True)
 		else:
 			self.session.view.zoom_in(False)
@@ -174,7 +176,7 @@ class NavigationTool(CursorTool):
 
 	# move down mouse wheel = zoom out
 	def mouseWheelMovedDown(self, evt):
-		if horizons.main.fife.get_uh_setting("CursorCenteredZoom"):
+		if horizons.globals.fife.get_uh_setting("CursorCenteredZoom"):
 			self.session.view.zoom_out(True)
 		else:
 			self.session.view.zoom_out(False)

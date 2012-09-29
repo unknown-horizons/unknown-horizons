@@ -26,6 +26,7 @@ from functools import wraps
 
 import mock
 
+import horizons.globals
 import horizons.main
 import horizons.world	# needs to be imported before session
 from horizons.ai.aiplayer import AIPlayer
@@ -35,7 +36,10 @@ from horizons.ext.dummy import Dummy
 from horizons.extscheduler import ExtScheduler
 from horizons.scheduler import Scheduler
 from horizons.spsession import SPSession
-from horizons.util import Color, DbReader, SavegameAccessor, DifficultySettings, WorldObject
+from horizons.util.dbreader import DbReader
+from horizons.util.difficultysettings import DifficultySettings
+from horizons.util.savegameaccessor import SavegameAccessor
+from horizons.util.color import Color
 from horizons.component.storagecomponent import StorageComponent
 
 from tests import RANDOM_SEED
@@ -89,25 +93,30 @@ class SPTestSession(SPSession):
 	@mock.patch('horizons.session.View', Dummy)
 	def __init__(self, rng_seed=None):
 		ExtScheduler.create_instance(Dummy)
-		super(SPTestSession, self).__init__(Dummy, horizons.main.db, rng_seed)
+		super(SPTestSession, self).__init__(Dummy, horizons.globals.db, rng_seed)
 		self.reset_autosave = mock.Mock()
 
 	def save(self, *args, **kwargs):
 		"""
 		Wrapper around original save function to fix some things.
 		"""
-		# SavegameManager.write_metadata tries to create a screenshot and breaks when
+		# SavegameManager._write_screenshot tries to create a screenshot and breaks when
 		# accessing fife properties
-		with mock.patch('horizons.session.SavegameManager'):
+		with mock.patch('horizons.session.SavegameManager._write_screenshot'):
 			# We need to covert Dummy() objects to a sensible value that can be stored
 			# in the database
 			with _dbreader_convert_dummy_objects():
 				return super(SPTestSession, self).save(*args, **kwargs)
 
-	def load(self, savegame, players):
+	def load(self, savegame, players, is_ai_test):
 		# keep a reference on the savegame, so we can cleanup in `end`
 		self.savegame = savegame
-		super(SPTestSession, self).load(savegame, players, False, False, 0)
+		if is_ai_test:
+			# enable trader, pirate and natural resources in AI tests.
+			super(SPTestSession, self).load(savegame, players, True, True, 1)
+		else:
+			# disable the above in usual game tests for simplicity.
+			super(SPTestSession, self).load(savegame, players, False, False, 0)
 
 	def end(self, keep_map=False, remove_savegame=True):
 		"""
@@ -136,7 +145,7 @@ class SPTestSession(SPSession):
 		"""
 		Scheduler.destroy_instance()
 		ExtScheduler.destroy_instance()
-		WorldObject.reset()
+		SPSession._clear_caches()
 
 	def run(self, ticks=1, seconds=None):
 		"""
@@ -146,18 +155,19 @@ class SPTestSession(SPSession):
 		if seconds:
 			ticks = self.timer.get_ticks(seconds)
 
-		for i in range(ticks):
-			Scheduler().tick( Scheduler().cur_tick + 1 )
+		while ticks > 0:
+			Scheduler().tick(Scheduler().cur_tick + 1)
+			ticks -= 1
 
 
 # import helper functions here, so tests can import from tests.game directly
 from tests.game.utils import create_map, new_settlement, settle
 
 
-def new_session(mapgen=create_map, rng_seed=RANDOM_SEED, human_player = True, ai_players = 0):
+def new_session(mapgen=create_map, rng_seed=RANDOM_SEED, human_player=True, ai_players=0):
 	"""
 	Create a new session with a map, add one human player and a trader (it will crash
-	otherwise). It returns both session and player to avoid making the function-baed
+	otherwise). It returns both session and player to avoid making the function-based
 	tests too verbose.
 	"""
 	session = SPTestSession(rng_seed=rng_seed)
@@ -171,17 +181,7 @@ def new_session(mapgen=create_map, rng_seed=RANDOM_SEED, human_player = True, ai
 		id = i + human_player + 1
 		players.append({'id': id, 'name': ('AI' + str(i)), 'color': Color[id], 'local': id == 1, 'ai': True, 'difficulty': ai_difficulty})
 
-	session.load(mapgen(), players)
-
-	if ai_players > 0: # currently only ai tests use the ships
-		for player in session.world.players:
-			point = session.world.get_random_possible_ship_position()
-			ship = CreateUnit(player.worldid, UNITS.PLAYER_SHIP, point.x, point.y)(issuer=player)
-			# give ship basic resources
-			for res, amount in session.db("SELECT resource, amount FROM start_resources"):
-				ship.get_component(StorageComponent).inventory.alter(res, amount)
-		AIPlayer.load_abstract_buildings(session.db)
-
+	session.load(mapgen(), players, ai_players > 0)
 	return session, session.world.player
 
 
@@ -191,7 +191,7 @@ def load_session(savegame, rng_seed=RANDOM_SEED):
 	"""
 	session = SPTestSession(rng_seed=rng_seed)
 
-	session.load(savegame, [])
+	session.load(savegame, [], False)
 
 	return session
 
@@ -234,9 +234,9 @@ def game_test(*args, **kwargs):
 	def deco(func):
 		@wraps(func)
 		def wrapped(*args):
-			horizons.main.db = db
+			horizons.globals.db = db
 			if not manual_session and not use_fixture:
-				s, p = new_session(mapgen = mapgen, human_player = human_player, ai_players = ai_players)
+				s, p = new_session(mapgen=mapgen, human_player=human_player, ai_players=ai_players)
 			elif use_fixture:
 				path = os.path.join(TEST_FIXTURES_DIR, use_fixture + '.sqlite')
 				if not os.path.exists(path):

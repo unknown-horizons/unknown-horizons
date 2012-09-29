@@ -22,7 +22,7 @@
 import time
 import heapq
 
-from horizons.util import ManualConstructionSingleton
+from horizons.util.python.singleton import ManualConstructionSingleton
 
 
 class _ExtCallbackObject(object):
@@ -39,7 +39,6 @@ class _ExtCallbackObject(object):
 		self.class_instance = class_instance
 		self.run_in = run_in
 		self.loops = loops
-
 
 	def __str__(self):
 		return "ExtSchedCb(%s on %s)" % (self.callback, self.class_instance)

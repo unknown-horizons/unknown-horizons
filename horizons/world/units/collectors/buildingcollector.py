@@ -22,7 +22,10 @@
 import weakref
 from collections import deque
 
-from horizons.util import WorldObject, RadiusRect, Callback, decorators
+from horizons.util.python import decorators
+from horizons.util.python.callback import Callback
+from horizons.util.shapes import RadiusRect
+from horizons.util.worldobject import WorldObject
 from horizons.util.pathfinding.pather import RoadPather, BuildingCollectorPather
 from horizons.constants import COLLECTORS, BUILDINGS
 from horizons.scheduler import Scheduler

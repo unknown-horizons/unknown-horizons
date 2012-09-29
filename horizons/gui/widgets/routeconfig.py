@@ -25,7 +25,8 @@ import functools
 from fife import fife
 
 from horizons.gui.util import load_uh_widget
-from horizons.util import Callback, Point
+from horizons.util.python.callback import Callback
+from horizons.util.shapes import Point
 from fife.extensions.pychan import widgets
 from horizons.component.storagecomponent import StorageComponent
 from horizons.gui.widgets.minimap import Minimap
@@ -33,9 +34,9 @@ from horizons.command.uioptions import RouteConfigCommand
 from horizons.component.namedcomponent import NamedComponent
 from horizons.component.ambientsoundcomponent import AmbientSoundComponent
 from horizons.gui.util import create_resource_selection_dialog
-from horizons.gui.widgets import OkButton
+from horizons.gui.widgets.imagebutton import OkButton
 
-import horizons.main
+import horizons.globals
 
 class RouteConfig(object):
 	"""
@@ -44,7 +45,7 @@ class RouteConfig(object):
 	dummy_icon_path = "content/gui/icons/resources/none_gray.png"
 	buy_button_path = "content/gui/images/tabwidget/warehouse_to_ship.png"
 	sell_button_path = "content/gui/images/tabwidget/ship_to_warehouse.png"
-	hover_button_path =  "content/gui/images/tabwidget/buysell_toggle.png"
+	hover_button_path = "content/gui/images/tabwidget/buysell_toggle.png"
 	MAX_ENTRIES = 7
 	MIN_ENTRIES = 2
 	def __init__(self, instance):
@@ -71,6 +72,7 @@ class RouteConfig(object):
 		self.session.ingame_gui.on_switch_main_widget(self)
 
 	def hide(self):
+		self.session.ingame_gui.on_switch_main_widget(None)
 		self.minimap.disable()
 		self._gui.hide()
 
@@ -410,8 +412,8 @@ class RouteConfig(object):
 		self.minimap = Minimap(icon, session=self.session,
 		                       world=self.session.world,
 		                       view=self.session.view,
-		                       targetrenderer=horizons.main.fife.targetrenderer,
-		                       imagemanager=horizons.main.fife.imagemanager,
+		                       targetrenderer=horizons.globals.fife.targetrenderer,
+		                       imagemanager=horizons.globals.fife.imagemanager,
 		                       cam_border=False,
 		                       use_rotation=False,
 		                       on_click=on_click)
