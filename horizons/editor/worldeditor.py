@@ -24,12 +24,10 @@ import os.path
 
 from collections import deque
 
-import horizons.globals
-
 from horizons.command.unit import RemoveUnit
+from horizons.editor.gui import EditorGui
 from horizons.editor.intermediatemap import IntermediateMap
 from horizons.entities import Entities
-from horizons.gui.util import load_uh_widget
 from horizons.scheduler import Scheduler
 from horizons.util.dbreader import DbReader
 from horizons.util.python.callback import Callback
@@ -45,32 +43,9 @@ class WorldEditor(object):
 		self._center_view()
 
 		self.brush_size = 1
-		self._show_settings()
-		self._change_brush_size(1)
+		self._gui = EditorGui(self)
 
 		self._tile_delete_set = set()
-
-	def _show_settings(self):
-		"""Display settings widget to change brush size."""
-		self.widget = load_uh_widget('editor_settings.xml')
-		for i in range(1, 4):
-			b = self.widget.findChild(name='size_%d' % i)
-			b.capture(Callback(self._change_brush_size, i))
-		self.widget.show()
-
-	def _change_brush_size(self, size):
-		"""Change the brush size and update the gui."""
-		images = {
-		  'box_highlighted': 'content/gui/icons/ship/smallbutton_a.png',
-		  'box': 'content/gui/icons/ship/smallbutton.png',
-		}
-
-		b = self.widget.findChild(name='size_%d' % self.brush_size)
-		b.up_image = images['box']
-
-		self.brush_size = size
-		b = self.widget.findChild(name='size_%d' % self.brush_size)
-		b.up_image = images['box_highlighted']
 
 	def _remove_unnecessary_objects(self):
 		# Delete all ships.
