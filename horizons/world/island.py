@@ -177,7 +177,6 @@ class Island(BuildingOwner, WorldObject):
 	def save_map(self, db):
 		"""Saves the ground into the given database (used for saving maps, not saved games)."""
 		db('CREATE TABLE ground(x INTEGER NOT NULL, y INTEGER NOT NULL, ground_id INTEGER NOT NULL, action_id TEXT NOT NULL, rotation INTEGER NOT NULL)')
-		db('CREATE TABLE island_properties(name TEXT PRIMARY KEY NOT NULL, value TEXT NOT NULL)')
 		source_db = self._get_island_db()
 		db('BEGIN')
 		db.execute_many('INSERT INTO ground VALUES(?, ?, ?, ?, ?)', source_db('SELECT x, y, ground_id, action_id, rotation FROM ground'))

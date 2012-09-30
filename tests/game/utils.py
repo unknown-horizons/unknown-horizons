@@ -47,7 +47,6 @@ def create_map():
 
 	db = DbReader(islandfile)
 	db("CREATE TABLE ground(x INTEGER NOT NULL, y INTEGER NOT NULL, ground_id INTEGER NOT NULL, action_id TEXT NOT NULL, rotation INTEGER NOT NULL)")
-	db("CREATE TABLE island_properties(name TEXT PRIMARY KEY NOT NULL, value TEXT NOT NULL)")
 
 	db("BEGIN TRANSACTION")
 	tiles = []

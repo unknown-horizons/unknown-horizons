@@ -105,7 +105,6 @@ class WorldEditor(object):
 
 			island_db = DbReader(island_db_path)
 			island_db('CREATE TABLE ground(x INTEGER NOT NULL, y INTEGER NOT NULL, ground_id INTEGER NOT NULL, action_id TEXT NOT NULL, rotation INTEGER NOT NULL)')
-			island_db('CREATE TABLE island_properties(name TEXT PRIMARY KEY NOT NULL, value TEXT NOT NULL)')
 			island_db('BEGIN')
 			for x, y in coords_list:
 				tile = self.world.full_map[(x, y)]

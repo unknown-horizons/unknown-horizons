@@ -100,7 +100,6 @@ def create_random_island(id_string):
 	# write values to db
 	map_db = DbReader(":memory:")
 	map_db("CREATE TABLE ground(x INTEGER NOT NULL, y INTEGER NOT NULL, ground_id INTEGER NOT NULL, action_id TEXT NOT NULL, rotation INTEGER NOT NULL)")
-	map_db("CREATE TABLE island_properties(name TEXT PRIMARY KEY NOT NULL, value TEXT NOT NULL)")
 	map_db("BEGIN TRANSACTION")
 
 	# add grass tiles
