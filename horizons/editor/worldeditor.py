@@ -85,41 +85,23 @@ class WorldEditor(object):
 						ground[coords2] = n
 						queue.append(coords2)
 						coords_list.append(coords2)
+			yield (n, coords_list)
 			n += 1
-			yield coords_list
-
-	def _save_islands(self, db, path, prefix):
-		for coords_list in self._iter_islands():
-			min_x, min_y = 1000000000, 1000000000
-			for x, y in coords_list:
-				if x < min_x:
-					min_x = x
-				if y < min_y:
-					min_y = y
-	
-			island_name = '%s_island_%d_%d.sqlite' % (prefix, min_x, min_y)
-			island_db_path = os.path.join(path, island_name)
-			if os.path.exists(island_db_path):
-				os.unlink(island_db_path) # the process relies on having an empty file
-			db('INSERT INTO island (x, y, file) VALUES(?, ?, ?)', min_x, min_y, 'content/islands/' + island_name)
-
-			island_db = DbReader(island_db_path)
-			island_db('CREATE TABLE ground(x INTEGER NOT NULL, y INTEGER NOT NULL, ground_id INTEGER NOT NULL, action_id TEXT NOT NULL, rotation INTEGER NOT NULL)')
-			island_db('BEGIN')
-			for x, y in coords_list:
-				tile = self.world.full_map[(x, y)]
-				island_db('INSERT INTO ground VALUES(?, ?, ?, ?, ?)', x - min_x, y - min_y, tile.id, tile._action, tile.rotation + 45)
-			island_db('COMMIT')
-			island_db.close()
 
 	def save_map(self, path, prefix):
 		map_file = os.path.join(path, prefix + '.sqlite')
 		if os.path.exists(map_file):
 			os.unlink(map_file) # the process relies on having an empty file
+
 		db = DbReader(map_file)
-		read_savegame_template(db)
+		with open('content/map-template.sql') as map_template:
+			db.execute_script(map_template.read())
+
 		db('BEGIN')
-		self._save_islands(db, path, prefix)
+		for island_id, coords_list in self._iter_islands():
+			for x, y in coords_list:
+				tile = self.world.full_map[(x, y)]
+				db('INSERT INTO ground VALUES(?, ?, ?, ?, ?, ?)', island_id, x, y, tile.id, tile._action, tile.rotation + 45)
 		db('COMMIT')
 		db.close()
 
