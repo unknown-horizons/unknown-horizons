@@ -68,22 +68,21 @@ class Island(BuildingOwner, WorldObject):
 	"""
 	log = logging.getLogger("world.island")
 
-	def __init__(self, db, islandid, session, preview=False):
+	def __init__(self, db, island_id, session, preview=False):
 		"""
 		@param db: db instance with island table
-		@param islandid: id of island in that table
+		@param island_id: id of island in that table
 		@param session: reference to Session instance
 		@param preview: flag, map preview mode
 		"""
-		super(Island, self).__init__(worldid=islandid)
+		super(Island, self).__init__(worldid=island_id)
 
 		if False:
 			from horizons.session import Session
 			assert isinstance(session, Session)
 		self.session = session
 
-		x, y, filename = db("SELECT x, y, file FROM island WHERE rowid = ? - 1000", islandid)[0]
-		self.__init(Point(x, y), filename, preview=preview)
+		self.__init(db, island_id, preview)
 
 		if not preview:
 			# create building indexers
@@ -92,7 +91,7 @@ class Island(BuildingOwner, WorldObject):
 			self.building_indexers[BUILDINGS.TREE] = BuildingIndexer(WildAnimal.walking_range, self, self.session.random)
 
 		# load settlements
-		for (settlement_id,) in db("SELECT rowid FROM settlement WHERE island = ?", islandid):
+		for (settlement_id,) in db("SELECT rowid FROM settlement WHERE island = ?", island_id):
 			settlement = Settlement.load(db, settlement_id, self.session, self)
 			self.settlements.append(settlement)
 
@@ -100,7 +99,7 @@ class Island(BuildingOwner, WorldObject):
 			# load buildings
 			from horizons.world import load_building
 			for (building_worldid, building_typeid) in \
-				  db("SELECT rowid, type FROM building WHERE location = ?", islandid):
+				  db("SELECT rowid, type FROM building WHERE location = ?", island_id):
 				load_building(self.session, db, building_typeid, building_worldid)
 
 	def _get_island_db(self):
@@ -110,30 +109,24 @@ class Island(BuildingOwner, WorldObject):
 			return create_random_island(self.file)
 		return DbReader(self.file) # Create a new DbReader instance to load the maps file.
 
-	def __init(self, origin, filename, preview=False):
+	def __init(self, db, island_id, preview):
 		"""
 		Load the actual island from a file
-		@param origin: Point
-		@param filename: String, filename of island db or random map id
 		@param preview: flag, map preview mode
 		"""
-		self.file = filename
-		self.origin = origin
-		db = self._get_island_db()
-
-		p_x, p_y, width, height = db("SELECT (MIN(x) + ?), (MIN(y) + ?), (1 + MAX(x) - MIN(x)), (1 + MAX(y) - MIN(y)) FROM ground", self.origin.x, self.origin.y)[0]
+		p_x, p_y, width, height = db("SELECT MIN(x), MIN(y), (1 + MAX(x) - MIN(x)), (1 + MAX(y) - MIN(y)) FROM ground WHERE island_id = ?", island_id - 1001)[0]
 
 		# rect for quick checking if a tile isn't on this island
 		# NOTE: it contains tiles, that are not on the island!
 		self.rect = Rect(Point(p_x, p_y), width, height)
 
 		self.ground_map = {}
-		for (rel_x, rel_y, ground_id, action_id, rotation) in db("SELECT x, y, ground_id, action_id, rotation FROM ground"): # Load grounds
+		for (rel_x, rel_y, ground_id, action_id, rotation) in db("SELECT x, y, ground_id, action_id, rotation FROM ground WHERE island_id = ?", island_id - 1001): # Load grounds
 			if not preview: # actual game, need actual tiles
-				ground = Entities.grounds[ground_id](self.session, self.origin.x + rel_x, self.origin.y + rel_y)
+				ground = Entities.grounds[ground_id](self.session, rel_x, rel_y)
 				ground.act(action_id, rotation)
 			else:
-				ground = Point(self.origin.x + rel_x, self.origin.y + rel_y)
+				ground = Point(rel_x, rel_y)
 				ground.classes = tuple()
 				ground.settlement = None
 			# These are important for pathfinding and building to check if the ground tile
@@ -167,8 +160,6 @@ class Island(BuildingOwner, WorldObject):
 
 	def save(self, db):
 		super(Island, self).save(db)
-		db("INSERT INTO island (rowid, x, y, file) VALUES (? - 1000, ?, ?, ?)",
-			self.worldid, self.origin.x, self.origin.y, self.file)
 		for settlement in self.settlements:
 			settlement.save(db, self.worldid)
 		for animal in self.wild_animals:
@@ -359,8 +350,7 @@ class Island(BuildingOwner, WorldObject):
 			# find a tree where we can place it
 			for building in self.buildings:
 				if building.id == BUILDINGS.TREE:
-					point = building.position.origin
-					animal = Entities.units[UNITS.WILD_ANIMAL](self, x=point.x, y=point.y, session=self.session)
+					animal = Entities.units[UNITS.WILD_ANIMAL](self, x=0, y=0, session=self.session)
 					animal.initialize()
 					return
 		# we might not find a tree, but if that's the case, wild animals would die out anyway again,

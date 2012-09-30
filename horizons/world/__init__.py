@@ -255,9 +255,11 @@ class World(BuildingOwner, WorldObject):
 			self.disaster_manager.load(savegame_db)
 
 	def load_raw_map(self, savegame_db, preview=False):
+		self.map_name = savegame_db.map_name
+
 		# load islands
 		self.islands = []
-		for (islandid,) in savegame_db("SELECT rowid + 1000 FROM island"):
+		for (islandid,) in savegame_db("SELECT DISTINCT island_id + 1001 FROM ground"):
 			island = Island(savegame_db, islandid, self.session, preview=preview)
 			self.islands.append(island)
 
@@ -625,8 +627,7 @@ class World(BuildingOwner, WorldObject):
 		"""Saves the current game to the specified db.
 		@param db: DbReader object of the db the game is saved to."""
 		super(World, self).save(db)
-		for name, value in self.properties.iteritems():
-			db("INSERT INTO map_properties (name, value) VALUES (?, ?)", name, json.dumps(value))
+		db("INSERT INTO metadata VALUES(?, ?)", 'map_name', self.map_name)
 		for island in self.islands:
 			island.save(db)
 		for player in self.players:

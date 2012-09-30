@@ -201,7 +201,7 @@ def start(_command_line_arguments):
 			seed=command_line_arguments.start_specific_random_map, force_player_id=command_line_arguments.force_player_id)
 	elif command_line_arguments.start_map is not None:
 		startup_worked = _start_map(command_line_arguments.start_map, command_line_arguments.ai_players,
-			command_line_arguments.human_ai, force_player_id=command_line_arguments.force_player_id)
+			command_line_arguments.human_ai, force_player_id=command_line_arguments.force_player_id, is_map=True)
 	elif command_line_arguments.start_scenario is not None:
 		startup_worked = _start_map(command_line_arguments.start_scenario, 0, False, True, force_player_id=command_line_arguments.force_player_id)
 	elif command_line_arguments.start_campaign is not None:
@@ -218,7 +218,7 @@ def start(_command_line_arguments):
 		if not tiny:
 			tiny = SavegameManager.get_map()[0]
 		startup_worked = _start_map(tiny[0], ai_players=0, human_ai=False, trader_enabled=False, pirate_enabled=False,
-			force_player_id=command_line_arguments.force_player_id)
+			force_player_id=command_line_arguments.force_player_id, is_map=True)
 		from development.stringpreviewwidget import StringPreviewWidget
 		__string_previewer = StringPreviewWidget(_modules.session)
 		__string_previewer.show()
@@ -278,7 +278,7 @@ def quit():
 
 def start_singleplayer(map_file, playername="Player", playercolor=None, is_scenario=False,
 		campaign=None, ai_players=0, human_ai=False, trader_enabled=True, pirate_enabled=True,
-		natural_resource_multiplier=1, force_player_id=None, disasters_enabled=True):
+		natural_resource_multiplier=1, force_player_id=None, disasters_enabled=True, is_map=False):
 	"""Starts a singleplayer game
 	@param map_file: path to map file
 	@param ai_players: number of AI players to start (excludes possible human AI)
@@ -340,7 +340,7 @@ def start_singleplayer(map_file, playername="Player", playercolor=None, is_scena
 	try:
 		_modules.session.load(map_file, players, trader_enabled, pirate_enabled,
 			natural_resource_multiplier, is_scenario=is_scenario, campaign=campaign,
-			force_player_id=force_player_id, disasters_enabled=disasters_enabled)
+			force_player_id=force_player_id, disasters_enabled=disasters_enabled, is_map=is_map)
 	except InvalidScenarioFileFormat:
 		raise
 	except Exception:
@@ -402,7 +402,7 @@ def start_multiplayer(game):
 	_modules.session.start()
 
 def load_game(ai_players=0, human_ai=False, savegame=None, is_scenario=False, campaign=None,
-              pirate_enabled=True, trader_enabled=True, force_player_id=None):
+              pirate_enabled=True, trader_enabled=True, force_player_id=None, is_map=False):
 	"""Shows select savegame menu if savegame is none, then loads the game"""
 	if savegame is None:
 		savegame = _modules.gui.show_select_savegame(mode='load')
@@ -412,7 +412,7 @@ def load_game(ai_players=0, human_ai=False, savegame=None, is_scenario=False, ca
 #TODO
 	start_singleplayer(savegame, is_scenario=is_scenario, campaign=campaign,
 		ai_players=ai_players, human_ai=human_ai, pirate_enabled=pirate_enabled,
-		trader_enabled=trader_enabled, force_player_id=force_player_id)
+		trader_enabled=trader_enabled, force_player_id=force_player_id, is_map=is_map)
 	return True
 
 
@@ -423,11 +423,11 @@ def _start_dev_map(ai_players, human_ai, force_player_id):
 	for m in SavegameManager.get_maps()[0]:
 		if 'development' in m:
 			break
-	load_game(ai_players, human_ai, m, force_player_id=force_player_id)
+	load_game(ai_players, human_ai, m, force_player_id=force_player_id, is_map=True)
 	return True
 
 def _start_map(map_name, ai_players=0, human_ai=False, is_scenario=False, campaign=None,
-               pirate_enabled=True, trader_enabled=True, force_player_id=None):
+               pirate_enabled=True, trader_enabled=True, force_player_id=None, is_map=False):
 	"""Start a map specified by user
 	@param map_name: name of map or path to map
 	@return: bool, whether loading succeded"""
@@ -439,14 +439,15 @@ def _start_map(map_name, ai_players=0, human_ai=False, is_scenario=False, campai
 	if not map_file:
 		return False
 	load_game(ai_players, human_ai, map_file, is_scenario, campaign=campaign,
-	          trader_enabled=trader_enabled, pirate_enabled=pirate_enabled, force_player_id=force_player_id)
+	          trader_enabled=trader_enabled, pirate_enabled=pirate_enabled,
+	          force_player_id=force_player_id, is_map=is_map)
 	return True
 
 def _start_random_map(ai_players, human_ai, seed=None, force_player_id=None):
 	from horizons.util.random_map import generate_map_from_seed
 	start_singleplayer(generate_map_from_seed(seed),
 	                   ai_players=ai_players, human_ai=human_ai,
-	                   force_player_id=force_player_id)
+	                   force_player_id=force_player_id, is_map=True)
 	return True
 
 def _start_campaign(campaign_name, force_player_id=None):
@@ -564,7 +565,8 @@ def _edit_map(map_name):
 	if not map_file:
 		return False
 	start_singleplayer(map_file, playername="Editor", trader_enabled=False,
-		pirate_enabled=False, natural_resource_multiplier=0, disasters_enabled=False)
+		pirate_enabled=False, natural_resource_multiplier=0, disasters_enabled=False,
+		is_map=True)
 
 	from horizons.editor.worldeditor import WorldEditor
 	_modules.session.world_editor = WorldEditor(_modules.session.world)

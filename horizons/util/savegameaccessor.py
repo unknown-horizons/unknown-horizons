@@ -20,9 +20,13 @@
 # ###################################################
 
 import hashlib
+import os
 import os.path
+import tempfile
+
 from collections import defaultdict, deque
 
+from horizons.savegamemanager import SavegameManager
 from horizons.util.dbreader import DbReader
 from horizons.util.python import decorators
 from horizons.util.savegameupgrader import SavegameUpgrader
@@ -34,10 +38,27 @@ class SavegameAccessor(DbReader):
 	Frequent select queries are preloaded for faster access.
 	"""
 
-	def __init__(self, dbfile):
-		self.upgrader = SavegameUpgrader(dbfile)
-		dbfile = self.upgrader.get_path()
-		super(SavegameAccessor, self).__init__(dbfile=dbfile)
+	def __init__(self, dbfile, is_map):
+		if is_map:
+			self.upgrader = None
+			handle, self._temp_path = tempfile.mkstemp()
+			os.close(handle)
+			super(SavegameAccessor, self).__init__(dbfile=self._temp_path)
+			with open('content/savegame_template.sql') as savegame_template:
+				self.execute_script(savegame_template.read())
+			self._map_path = dbfile
+		else:
+			self.upgrader = SavegameUpgrader(dbfile)
+			self._temp_path = None
+			dbfile = self.upgrader.get_path()
+			super(SavegameAccessor, self).__init__(dbfile=dbfile)
+
+			map_name = self('SELECT value FROM metadata WHERE name = ?', 'map_name')[0][0]
+			self._map_path = SavegameManager.get_filename_from_map_name(map_name)
+
+		self('ATTACH ? AS map_file', self._map_path)
+		self.map_name = SavegameManager.get_savegamename_from_filename(self._map_path)
+
 		self._load_building()
 		self._load_settlement()
 		self._load_concrete_object()
@@ -54,8 +75,10 @@ class SavegameAccessor(DbReader):
 
 	def close(self):
 		super(SavegameAccessor, self).close()
-		self.upgrader.close()
-
+		if self.upgrader is not None:
+			self.upgrader.close()
+		if self._temp_path is not None:
+			os.unlink(self._temp_path)
 
 	def _load_building(self):
 		self._building = {}

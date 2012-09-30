@@ -210,7 +210,8 @@ class SingleplayerMenu(object):
 			  trader_enabled = self.widgets['game_settings'].findChild(name='free_trader').marked,
 			  pirate_enabled = self.widgets['game_settings'].findChild(name='pirates').marked,
 			  disasters_enabled = self.widgets['game_settings'].findChild(name='disasters').marked,
-			  natural_resource_multiplier = self._get_natural_resource_multiplier()
+			  natural_resource_multiplier = self._get_natural_resource_multiplier(),
+			  is_map=True
 			)
 
 		ExtScheduler().rem_all_classinst_calls(self)
@@ -475,6 +476,8 @@ class MapPreview(object):
 		Only use for existing maps, it's too slow for random maps"""
 		if self.minimap is not None:
 			self.minimap.end()
+		# TODO: fix this
+		return
 		world = self._load_raw_world(map_file)
 		self.minimap = Minimap(self._get_map_preview_icon(),
 		                       session=None,

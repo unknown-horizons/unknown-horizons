@@ -201,7 +201,7 @@ class SavegameManager(object):
 	@classmethod
 	def get_recommended_number_of_players(cls, savegamefile):
 		dbdata = DbReader(savegamefile)\
-		        ("SELECT `value` FROM `metadata` WHERE `name` = ?", "recommended_number_of_players")
+		        ("SELECT value FROM properties WHERE name = ?", "players_recommended")
 		if dbdata:
 			return dbdata[0][0]
 		else:
@@ -209,8 +209,7 @@ class SavegameManager(object):
 
 	@classmethod
 	def get_metadata(cls, savegamefile):
-		"""Returns metainfo of a savegame as dict.
-		"""
+		"""Returns metainfo of a savegame as dict."""
 		db = DbReader(savegamefile)
 		metadata = cls.savegame_metadata.copy()
 
@@ -523,3 +522,11 @@ class SavegameManager(object):
 		name = name.rsplit(".%s"%cls.savegame_extension, 1)[0]
 		cls.log.debug("Savegamemanager: savegamename: %s", name)
 		return name
+
+	@classmethod
+	def get_filename_from_map_name(cls, map_name):
+		for prefix in [cls.scenario_maps_dir, cls.maps_dir]:
+			path = prefix + os.sep + map_name + '.sqlite'
+			if os.path.exists(path):
+				return path
+		return None

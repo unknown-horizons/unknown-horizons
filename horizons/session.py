@@ -290,7 +290,7 @@ class Session(LivingObject):
 
 	def load(self, savegame, players, trader_enabled, pirate_enabled,
 	         natural_resource_multiplier, is_scenario=False, campaign=None,
-	         force_player_id=None, disasters_enabled=True, is_multiplayer=False):
+	         force_player_id=None, disasters_enabled=True, is_multiplayer=False, is_map=False):
 		"""Loads a map. Key method for starting a game.
 		@param savegame: path to the savegame database.
 		@param players: iterable of dictionaries containing id, name, color, local, ai, and difficulty
@@ -309,10 +309,11 @@ class Session(LivingObject):
 			savegame = os.path.join(SavegameManager.scenario_maps_dir, map_filename)
 			if not os.path.exists(savegame):
 				savegame = os.path.join(SavegameManager.maps_dir, map_filename)
+			is_map = True
 		self.campaign = {} if not campaign else campaign
-
+		
 		self.log.debug("Session: Loading from %s", savegame)
-		savegame_db = SavegameAccessor(savegame) # Initialize new dbreader
+		savegame_db = SavegameAccessor(savegame, is_map) # Initialize new dbreader
 		savegame_data = SavegameManager.get_metadata(savegame)
 
 		# load how often the game has been saved (used to know the difference between

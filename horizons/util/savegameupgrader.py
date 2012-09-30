@@ -217,6 +217,23 @@ class SavegameUpgrader(object):
 	def _upgrade_to_rev64(self, db):
 		db("INSERT INTO metadata VALUES (?, ?)", "max_tier_notification", False)
 
+	def _upgrade_to_rev65(self, db):
+		island_path = db("SELECT file FROM island ORDER BY file LIMIT 1")[0][0]
+		map_names = {
+			'content/islands/bay_and_lake.sqlite': 'development',
+			'content/islands/fightForRes_island_0_169.sqlite': 'fight-for-res',
+			'content/islands/full_house_island_0_25.sqlite': 'full-house',
+			'content/islands/mp-dev_island_0_0.sqlite': 'mp-dev',
+			'content/islands/quattro_island_0_19.sqlite': 'quattro',
+			'content/islands/rouver_island_0_0.sqlite': 'rouver',
+			'content/islands/singularity40_island_0_0.sqlite': 'singularity40',
+			'content/islands/tiny.sqlite': 'test-map-tiny',
+			'content/islands/triple_island_0_74.sqlite': 'triple'
+		}
+		# this will fail for random maps for now
+		assert island_path in map_names
+		db('INSERT INTO metadata VALUES (?, ?)', 'map_name', map_names[island_path])
+
 	def _upgrade(self):
 		# fix import loop
 		from horizons.savegamemanager import SavegameManager
@@ -266,6 +283,8 @@ class SavegameUpgrader(object):
 				self._upgrade_to_rev63(db)
 			if rev < 64:
 				self._upgrade_to_rev64(db)
+			if rev < 65:
+				self._upgrade_to_rev65(db)
 
 			db('COMMIT')
 			db.close()
