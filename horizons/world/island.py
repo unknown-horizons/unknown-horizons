@@ -350,7 +350,8 @@ class Island(BuildingOwner, WorldObject):
 			# find a tree where we can place it
 			for building in self.buildings:
 				if building.id == BUILDINGS.TREE:
-					animal = Entities.units[UNITS.WILD_ANIMAL](self, x=0, y=0, session=self.session)
+					point = building.position.origin
+					animal = Entities.units[UNITS.WILD_ANIMAL](self, x=point.x, y=point.y, session=self.session)
 					animal.initialize()
 					return
 		# we might not find a tree, but if that's the case, wild animals would die out anyway again,
