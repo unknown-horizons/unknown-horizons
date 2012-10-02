@@ -210,8 +210,10 @@ class SavegameManager(object):
 	@classmethod
 	def get_metadata(cls, savegamefile):
 		"""Returns metainfo of a savegame as dict."""
-		db = DbReader(savegamefile)
 		metadata = cls.savegame_metadata.copy()
+		if isinstance(savegamefile, list):
+			return metadata
+		db = DbReader(savegamefile)
 
 		try:
 			for key in metadata.iterkeys():

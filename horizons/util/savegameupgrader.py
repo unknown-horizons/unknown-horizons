@@ -230,9 +230,15 @@ class SavegameUpgrader(object):
 			'content/islands/tiny.sqlite': 'test-map-tiny',
 			'content/islands/triple_island_0_74.sqlite': 'triple'
 		}
-		# this will fail for random maps for now
-		assert island_path in map_names
-		db('INSERT INTO metadata VALUES (?, ?)', 'map_name', map_names[island_path])
+		if island_path in map_names:
+			db('INSERT INTO metadata VALUES (?, ?)', 'map_name', map_names[island_path])
+			return
+
+		# random map
+		island_strings = []
+		for island_x, island_y, island_string in db('SELECT x, y, file FROM island ORDER BY rowid'):
+			island_strings.append(island_string + ':%d:%d' % (island_x, island_y))
+		db('INSERT INTO metadata VALUES (?, ?)', 'random_island_sequence', ' '.join(island_strings))
 
 	def _upgrade(self):
 		# fix import loop

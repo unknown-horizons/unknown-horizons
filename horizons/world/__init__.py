@@ -48,6 +48,7 @@ from horizons.world.units.weapon import Weapon
 from horizons.command.unit import CreateUnit
 from horizons.component.healthcomponent import HealthComponent
 from horizons.component.storagecomponent import StorageComponent
+from horizons.util.dbreader import DbReader
 from horizons.world.disaster.disastermanager import DisasterManager
 from horizons.world import worldutils
 
@@ -627,7 +628,11 @@ class World(BuildingOwner, WorldObject):
 		"""Saves the current game to the specified db.
 		@param db: DbReader object of the db the game is saved to."""
 		super(World, self).save(db)
-		db("INSERT INTO metadata VALUES(?, ?)", 'map_name', self.map_name)
+		if isinstance(self.map_name, list):
+			db("INSERT INTO metadata VALUES(?, ?)", 'random_island_sequence', ' '.join(self.map_name))
+		else:
+			db("INSERT INTO metadata VALUES(?, ?)", 'map_name', self.map_name)
+
 		for island in self.islands:
 			island.save(db)
 		for player in self.players:
