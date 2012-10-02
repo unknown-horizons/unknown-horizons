@@ -144,12 +144,9 @@
 				<Label text="Language" position_technique="automatic" name="headline_language" font="headline" />
 				<Icon image="content/gui/images/background/hr.png" />
 
-				<HBox>
-					<Label text="Select language:" name="language_label" />
-					<ScrollArea min_size="165,206" >
-						<ListBox name="uni_language" is_focusable="0" />
-					</ScrollArea>
-				</HBox>
+				<ScrollArea min_size="165,206" >
+					<ListBox name="uni_language" is_focusable="0" />
+				</ScrollArea>
 			</VBox>
 		</VBox>
 
