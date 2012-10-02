@@ -256,7 +256,15 @@ class BuildingTool(NavigationTool):
 			# Make sure the preview is loaded
 			horizons.globals.fife.animationloader.load_image(image, action_set, action, rotation)
 		building_icon = self.gui.findChild(name='building')
-		building_icon.image = image
+		loaded_image = horizons.globals.fife.imagemanager.load(image)
+		building_icon.image = fife.GuiImage(loaded_image)
+		width = loaded_image.getWidth()
+		# TODO: Remove hardcoded 220
+		max_width = 220
+		if width > max_width:
+			height = loaded_image.getHeight()
+			size = (max_width, (height * max_width) // width)
+			building_icon.max_size = building_icon.min_size = building_icon.size = size
 		# TODO: Remove hardcoded 70
 		gui_x, gui_y = self.__class__.gui.size
 		icon_x, icon_y = building_icon.size
