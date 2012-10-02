@@ -212,7 +212,7 @@ def start(_command_line_arguments):
 	elif command_line_arguments.load_quicksave is not None:
 		startup_worked = _load_last_quicksave()
 	elif command_line_arguments.edit_map is not None:
-		startup_worked = _edit_map(command_line_arguments.edit_map)
+		startup_worked = edit_map(command_line_arguments.edit_map)
 	elif command_line_arguments.stringpreview:
 		tiny = [ i for i in SavegameManager.get_maps()[0] if 'tiny' in i ]
 		if not tiny:
@@ -553,7 +553,7 @@ def _load_last_quicksave(session=None, force_player_id=None):
 	load_game(savegame=save, force_player_id=force_player_id)
 	return True
 
-def _edit_map(map_name):
+def edit_map(map_name):
 	"""
 	Start editing the specified map.
 	

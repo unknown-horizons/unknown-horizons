@@ -72,6 +72,7 @@ class Gui(SingleplayerMenu, MultiplayerMenu):
 	  'ingame_pause': 'book',
 	  'game_settings' : 'book',
 #	  'credits': 'book',
+	  'editor_select_map': 'book',
 	  }
 
 	def __init__(self):
@@ -110,7 +111,8 @@ class Gui(SingleplayerMenu, MultiplayerMenu):
 			'credits'          : self.show_credits,
 			'loadgameButton'   : horizons.main.load_game,
 			'loadgame'         : horizons.main.load_game,
-			'changeBackground' : self.get_random_background_by_button
+			'changeBackground' : self.get_random_background_by_button,
+			'editor'           : self.editor_load_map,
 		})
 
 		self.on_escape = self.show_quit
@@ -751,6 +753,32 @@ class Gui(SingleplayerMenu, MultiplayerMenu):
 
 	def _on_gui_action(self, msg):
 		AmbientSoundComponent.play_special('click')
+
+	def editor_load_map(self):
+		"""Show a dialog for the user to select a map to edit."""
+		old_current = self._switch_current_widget('editor_select_map')
+		self.current.show()
+
+		map_files, map_file_display = SavegameManager.get_maps()
+		self.current.distributeInitialData({'maplist': map_file_display})
+
+		bind = {
+			OkButton.DEFAULT_NAME     : True,
+			CancelButton.DEFAULT_NAME : False,
+		}
+		retval = self.show_dialog(self.current, bind)
+		if not retval:
+			# Dialog cancelled
+			self.current = old_current
+			return
+
+		selected_map_index = self.current.collectData('maplist')
+		assert selected_map_index != -1, "No map selected"
+
+		self.current = old_current
+		self.show_loading_screen()
+		horizons.main.edit_map(map_file_display[selected_map_index])
+
 
 def build_help_strings(widgets):
 	"""
