@@ -549,7 +549,8 @@ class World(BuildingOwner, WorldObject):
 		@return set of islands in radius"""
 		islands = set()
 		for island in self.islands:
-			for tile in island.get_surrounding_tiles(point, radius):
+			for tile in island.get_surrounding_tiles(point, radius=radius,
+			                                         include_corners=False):
 				islands.add(island)
 				break
 		return islands
