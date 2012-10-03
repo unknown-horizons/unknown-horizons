@@ -20,7 +20,6 @@ Gameplay and Balancing
 
 Media Content
 * New files and features
-  + building: barracks, lookout
   + font: GNU Unifont as general font fallback
   + sound: error sound, refresh sound, click sound (Kinshuk)
 * Brush-ups and modifications
@@ -38,11 +37,10 @@ User Interface
   + click sound for all gui actions
 * Repositioning and modifications
   # BuildRelated tabs now use one line per tier
-  # cleaned up production overview layout and settlement inventories
-  # boat builder layout improvements and proper queue icons
+  # cleaned up and polished production overview, inventory tabs, boat
+      builder, main square, inhabitant overviews, trade route config
   # mouse wheel no longer changes ListBox selection, only scrolls view
   # highlight fish deposits in range of fishers, improve fish highlight
-  # only display farm production lines that have fields in range
 * Fixed bugs and usability problems
   ~ only display status icons when and where they make sense
   ~ multiplayer: check required building costs early - #1486
@@ -54,11 +52,9 @@ Codebase
   + icon_path and delayed updates are now available in TabInterface
   + setup: creates content/gitversion.txt containing detected git HEAD
   + build menu layouts can be defined via yaml
-  + kwargs support for cachedfunction and cachedmethod
   + 'fife' logger, activate by --debug-module='fife' or -d
 * Modified structures
   # less verbose api for horizons.messaging
-  # unify InternationalTradeWidget and TradeWidget as TradeTab
   # soft constants instead of hardcoded numerical ids in yaml files
 * Fixed crashes and inconsistencies
   ~ use unicode everywhere, only convert it when talking to fife
