@@ -19,6 +19,7 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
+from collections import defaultdict
 import os
 import re
 import glob
@@ -80,7 +81,6 @@ class GeneralLoader(object):
 							 (os.path.join(directory, dirname), time, e))
 		return rotations
 
-
 	@classmethod
 	def _load_action(cls, directory):
 		"""Loads the actions + rotations + files for a specific action
@@ -91,9 +91,43 @@ class GeneralLoader(object):
 		dirs = cls._action_set_directories(directory)
 		actions = {}
 		for dirname in dirs:
-			if os.path.isdir(os.path.join(directory, dirname)):
-				actions[dirname] = cls._load_rotation(os.path.join(directory, dirname))
+			basedir = os.path.join(directory, dirname)
+			if os.path.isdir(basedir):
+				actions[dirname] = cls._load_rotation(basedir)
+				if 'streets' in directory:
+					actions.update(cls._load_mirrored_roads(dirname, actions[dirname]))
 		return actions
+
+	@classmethod
+	def _load_mirrored_roads(cls, base_action, existing_files):
+		actions = defaultdict(dict)
+		for base_rotation, path in existing_files.iteritems():
+			action = base_action
+			for iteration in range(1, 4):
+				rotation = (base_rotation + iteration * 90) % 360
+				action = cls._rotate_roads(action)
+				actions[action][rotation] = path
+		return actions
+
+	@classmethod
+	def _rotate_roads(cls, action):
+		"""Rotate around 'abcd' and 'efgh' like this (for 2 iterations):
+		'a' => 'b' => c, 'c' => 'd' => 'a', 'g' => 'h' => 'e',
+		'abd' => ('bca') 'abc' => 'bcd'
+		'acde' => ('bdaf') 'abdf' => ('bcag') 'abcg' """
+		base_actions = ['abcd', 'efgh']
+		if action == 'single':
+			return 'single'
+		for base in base_actions:
+			new_parts = []
+			for part in action:
+				if not part in base:
+					new_parts += part
+				else:
+					wrap_last = len(base) * (part == base[-1])
+					new_parts += chr(ord(part) + 1 - wrap_last)
+			action = ''.join(sorted(new_parts))
+		return action
 
 	@classmethod
 	def _action_set_directories(cls, directory):
