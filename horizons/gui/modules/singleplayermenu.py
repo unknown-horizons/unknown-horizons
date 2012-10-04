@@ -476,8 +476,6 @@ class MapPreview(object):
 		Only use for existing maps, it's too slow for random maps"""
 		if self.minimap is not None:
 			self.minimap.end()
-		# TODO: fix this
-		return
 		world = self._load_raw_world(map_file)
 		self.minimap = Minimap(self._get_map_preview_icon(),
 		                       session=None,
@@ -585,7 +583,7 @@ class MapPreview(object):
 		WorldObject.reset()
 		world = World(session=None)
 		world.inited = True
-		world.load_raw_map( SavegameAccessor( map_file ), preview=True )
+		world.load_raw_map(SavegameAccessor(map_file, True), preview=True)
 		return world
 
 	def _get_map_preview_icon(self):
