@@ -30,13 +30,18 @@ class Dialog(object):
 	modal = True
 	widget_name = None
 
-	def __init__(self, widget_loader):
+	def __init__(self, widget_loader, gui=None):
 		self._widget_loader = widget_loader
 		self._widget = None
+		# TODO this needs to go probably
+		self._gui = gui
 
 	def pre(self, *args, **kwargs):
 		# pre needs to accept args and kwargs due to the way Callback works
 		pass
+
+	def post(self, return_value):
+		return return_value
 
 	def show(self, *args, **kwargs):
 		if self.widget_name:
@@ -73,13 +78,12 @@ class Dialog(object):
 		if self.modal:
 			self._hide_modal_background()
 
-		return ret
+		return self.post(ret)
 
 	def _show_modal_background(self):
 		"""Loads transparent background that de facto prohibits
 		access to other gui elements by eating all input events.
 		"""
-
 		# FIXME this is called multiple times without hide in between when
 		# showing the credits
 		if getattr(self, '_modal_widget', None):
