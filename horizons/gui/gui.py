@@ -87,6 +87,9 @@ class Gui(SingleplayerMenu, MultiplayerMenu):
 		self.__pause_displayed = False
 		self._background_image = self._get_random_background()
 
+		from horizons.gui.mainmenu import CallForSupport
+		self._call_for_support = CallForSupport(self.widgets['call_for_support'])
+
 		GuiAction.subscribe( self._on_gui_action )
 
 # basic menu widgets
@@ -104,8 +107,8 @@ class Gui(SingleplayerMenu, MultiplayerMenu):
 			'help'             : self.on_help,
 			'closeButton'      : self.show_quit,
 			'quit'             : self.show_quit,
-			'dead_link'        : self.on_chime, # call for help; SoC information
-			'chimebell'        : self.on_chime,
+			'dead_link'        : self._call_for_support.show, # call for help; SoC information
+			'chimebell'        : self._call_for_support.show,
 			'creditsLink'      : self.show_credits,
 			'credits'          : self.show_credits,
 			'loadgameButton'   : horizons.main.load_game,
@@ -236,14 +239,6 @@ class Gui(SingleplayerMenu, MultiplayerMenu):
 			return True
 		else:
 			return False
-
-	def on_chime(self):
-		"""
-		Called chime action. Displaying call for help on artists and game design,
-		introduces information for SoC applicants (if valid).
-		"""
-		AmbientSoundComponent.play_special("message")
-		self.show_dialog(self.widgets['call_for_support'], {OkButton.DEFAULT_NAME : True})
 
 	def show_credits(self, number=0):
 		"""Shows the credits dialog. """
