@@ -385,7 +385,8 @@ class Gui(SingleplayerMenu, MultiplayerMenu):
 				#xgettext:python-format
 				message = _("A savegame with the name '{name}' already exists.").format(
 				             name=selected_savegame) + u"\n" + _('Overwrite it?')
-				if not self.show_popup(_("Confirmation for overwriting"), message, show_cancel_button=True):
+				# keep the pop-up non-modal because otherwise it is double-modal (#1876)
+				if not self.show_popup(_("Confirmation for overwriting"), message, show_cancel_button=True, modal=False):
 					self.current = old_current
 					return self.show_select_savegame(*args) # reshow dialog
 			elif sanity_checker and sanity_criteria:

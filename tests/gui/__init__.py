@@ -208,7 +208,7 @@ class TestRunner(object):
 
 
 def gui_test(use_dev_map=False, use_fixture=None, ai_players=0, timeout=15 * 60, cleanup_userdir=False,
-			 _user_dir=None, use_scenario=None):
+			 _user_dir=None, use_scenario=None, additional_cmdline=None):
 	"""Magic nose integration.
 
 	use_dev_map		-	starts the game with --start-dev-map
@@ -246,6 +246,9 @@ def gui_test(use_dev_map=False, use_fixture=None, ai_players=0, timeout=15 * 60,
 			if ai_players:
 				args.extend(['--ai-players', str(ai_players)])
 
+			if additional_cmdline:
+				args.extend(additional_cmdline)
+
 			try:
 				# if nose does not capture stdout, then most likely someone wants to
 				# use a debugger (he passed -s at the cmdline). In that case, we will
@@ -268,6 +271,8 @@ def gui_test(use_dev_map=False, use_fixture=None, ai_players=0, timeout=15 * 60,
 			env = os.environ.copy()
 			env['FAIL_FAST'] = '1'
 			env['UH_USER_DIR'] = _user_dir or TEST_USER_DIR
+			if isinstance(env['UH_USER_DIR'], unicode):
+				env['UH_USER_DIR'] = env['UH_USER_DIR'].encode('utf-8')
 
 			# Start game
 			proc = subprocess.Popen(args, stdout=stdout, stderr=stderr, env=env)

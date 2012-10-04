@@ -108,10 +108,15 @@ class SPTestSession(SPSession):
 			with _dbreader_convert_dummy_objects():
 				return super(SPTestSession, self).save(*args, **kwargs)
 
-	def load(self, savegame, players):
+	def load(self, savegame, players, is_ai_test):
 		# keep a reference on the savegame, so we can cleanup in `end`
 		self.savegame = savegame
-		super(SPTestSession, self).load(savegame, players, False, False, 0)
+		if is_ai_test:
+			# enable trader, pirate and natural resources in AI tests.
+			super(SPTestSession, self).load(savegame, players, True, True, 1)
+		else:
+			# disable the above in usual game tests for simplicity.
+			super(SPTestSession, self).load(savegame, players, False, False, 0)
 
 	def end(self, keep_map=False, remove_savegame=True):
 		"""
@@ -150,8 +155,9 @@ class SPTestSession(SPSession):
 		if seconds:
 			ticks = self.timer.get_ticks(seconds)
 
-		for i in range(ticks):
-			Scheduler().tick( Scheduler().cur_tick + 1 )
+		while ticks > 0:
+			Scheduler().tick(Scheduler().cur_tick + 1)
+			ticks -= 1
 
 
 # import helper functions here, so tests can import from tests.game directly
@@ -161,7 +167,7 @@ from tests.game.utils import create_map, new_settlement, settle
 def new_session(mapgen=create_map, rng_seed=RANDOM_SEED, human_player=True, ai_players=0):
 	"""
 	Create a new session with a map, add one human player and a trader (it will crash
-	otherwise). It returns both session and player to avoid making the function-baed
+	otherwise). It returns both session and player to avoid making the function-based
 	tests too verbose.
 	"""
 	session = SPTestSession(rng_seed=rng_seed)
@@ -175,17 +181,7 @@ def new_session(mapgen=create_map, rng_seed=RANDOM_SEED, human_player=True, ai_p
 		id = i + human_player + 1
 		players.append({'id': id, 'name': ('AI' + str(i)), 'color': Color[id], 'local': id == 1, 'ai': True, 'difficulty': ai_difficulty})
 
-	session.load(mapgen(), players)
-
-	if ai_players > 0: # currently only ai tests use the ships
-		for player in session.world.players:
-			point = session.world.get_random_possible_ship_position()
-			ship = CreateUnit(player.worldid, UNITS.PLAYER_SHIP, point.x, point.y)(issuer=player)
-			# give ship basic resources
-			for res, amount in session.db("SELECT resource, amount FROM start_resources"):
-				ship.get_component(StorageComponent).inventory.alter(res, amount)
-		AIPlayer.load_abstract_buildings(session.db)
-
+	session.load(mapgen(), players, ai_players > 0)
 	return session, session.world.player
 
 
@@ -195,7 +191,7 @@ def load_session(savegame, rng_seed=RANDOM_SEED):
 	"""
 	session = SPTestSession(rng_seed=rng_seed)
 
-	session.load(savegame, [])
+	session.load(savegame, [], False)
 
 	return session
 

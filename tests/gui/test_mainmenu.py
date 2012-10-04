@@ -20,7 +20,11 @@
 # ###################################################
 
 import os
+import subprocess
 import shutil
+import sys
+
+from nose.tools import with_setup
 
 from horizons.constants import PATHS
 from tests.gui import gui_test, TEST_FIXTURES_DIR
@@ -67,8 +71,23 @@ def test_settings(gui):
 	gui.trigger('settings_window', 'cancelButton')
 """
 
+# Start our own master server for the multiplayer test because the official one
+# is probably too old.
 
-@gui_test(timeout=60)
+_master_server = None
+
+def start_server():
+	global _master_server
+	_master_server = subprocess.Popen([sys.executable, "server.py", "-h", "localhost", "-p", "2002"])
+
+
+def stop_server():
+	global _master_server
+	_master_server.terminate()
+
+
+@with_setup(start_server, stop_server)
+@gui_test(timeout=60, additional_cmdline=["--mp-master", "localhost:2002"])
 def test_multiplayer(gui):
 	"""Test that the multiplayer page shows up."""
 

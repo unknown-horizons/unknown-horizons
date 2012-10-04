@@ -20,10 +20,10 @@
 # ###################################################
 
 
-from fife.extensions import pychan
+from fife.extensions.pychan.widgets import Slider
 
 
-class StepSlider(pychan.widgets.Slider):
+class StepSlider(Slider):
 
 	def __init__(self, *args, **kwargs):
 		"""The StepSlider automatically snaps the steps suggested by stepsize."""

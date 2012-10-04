@@ -49,7 +49,7 @@ class FireDisaster(Disaster):
 	MIN_SETTLERS_FOR_BREAKOUT = 5
 
 	TIME_BEFORE_HAVOC = GAME_SPEED.TICKS_PER_SECOND * 30
-	EXPANSION_TIME = (TIME_BEFORE_HAVOC / 2) - 1 # try twice before dying
+	EXPANSION_TIME = (TIME_BEFORE_HAVOC // 2) - 1 # try twice before dying
 
 	DISASTER_RES = RES.FIRE
 

@@ -387,10 +387,10 @@ class Minimap(object):
 					finish_callback()
 				return
 			part = i # grow bigger
-			if i > STEPS/2: # after the first half
+			if i > STEPS // 2: # after the first half
 				part = STEPS-i  # become smaller
 
-			radius = MIN_RAD + int(( float(part) / (STEPS/2) ) * (MAX_RAD - MIN_RAD) )
+			radius = MIN_RAD + int(( float(part) / (STEPS // 2) ) * (MAX_RAD - MIN_RAD) )
 
 			for x, y in Circle( Point(*tup), radius=radius ).get_border_coordinates():
 				self.minimap_image.rendertarget.addPoint(render_name, fife.Point(x, y), *color)

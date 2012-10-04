@@ -442,10 +442,6 @@ def set_translations():
 		},
 
 	"resbar_resource_selection.xml" : {
-		# (text of widget: make_default_btn)
-		("make_default_btn"            , "text"    ): _("Save as default"),
-		# (text of widget: reset_default_btn)
-		("reset_default_btn"           , "text"    ): _("Restore default"),
 		# (text of widget: headline) Please keep the translation similarly short and concise, else the tooltip is not well understood by players.
 		("headline"                    , "text"    ): _("Select resource:"),
 		# (helptext of widget: make_default_btn)
@@ -770,15 +766,19 @@ def set_translations():
 		# (text of widget: game_player_status)
 		("game_player_status"          , "text"    ): _("Status"),
 		# (text of widget: game_start_notice)
-		("game_start_notice"           , "text"    ): _("The game will start as soon as players are ready and creator starts the game."),
+		("game_start_notice"           , "text"    ): _("The game will start as soon as all players are ready."),
 		# (text of widget: headline)
 		("headline"                    , "text"    ): _("Chat:"),
 		# (text of widget: headline)
 		("headline"                    , "text"    ): _("Gamelobby"),
+		# (text of widget: ready_lbl)
+		("ready_lbl"                   , "text"    ): _("Ready:"),
 		# (text of widget: startmessage)
 		("startmessage"                , "text"    ): _("Game details:"),
 		# (helptext of widget: cancel)
 		("cancel"                      , "helptext"): _("Exit gamelobby"),
+		# (helptext of widget: ready_btn)
+		("ready_btn"                   , "helptext"): _("Sets your state to ready (necessary for the game to start)"),
 		},
 
 	"multiplayermenu.xml" : {

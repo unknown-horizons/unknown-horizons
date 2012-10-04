@@ -19,21 +19,25 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-from fife.extensions import pychan
-
+from fife.extensions.pychan.widgets import Container, HBox, Icon, Label, VBox
 from fife.extensions.pychan.widgets.common import BoolAttr, IntAttr
 
 from horizons.gui.widgets.imagefillstatusbutton import ImageFillStatusButton
 from horizons.world.storage import TotalStorage, PositiveSizedSlotStorage, PositiveTotalNumSlotsStorage
 
-class Inventory(pychan.widgets.Container):
-	"""The inventory widget is used to display a stock of items, namely a Storage class instance.
-	It makes use of the ImageFillStatusButton to display the icons for resources and the fill bar.
-	It can be used like any other widget inside of xmls, but for full functionality the inventory
-	has to be manually set, or use the TabWidget, which will autoset it (was made to be done this way).
+class Inventory(Container):
+	"""The inventory widget displays information about the goods in
+	a Storage. It uses ImageFillStatusButtons to display icons and
+	a fill bar for these resources.
+	It can be used like any other widget in xml files, but for full
+	functionality the inventory has to be manually set, or use the
+	TabWidget, which will autoset it (was made to be done this way).
 
-	XML use: <Inventory />, can take all the parameters that pychan.widgets.Container can."""
-	ATTRIBUTES = pychan.widgets.Container.ATTRIBUTES + [BoolAttr('uncached'), BoolAttr('display_legend'), IntAttr("items_per_line")]
+	XML use: <Inventory />, can take all parameters of a Container.
+	"""
+	ATTRIBUTES = Container.ATTRIBUTES + [BoolAttr('uncached'),
+	                                     BoolAttr('display_legend'),
+	                                     IntAttr("items_per_line")]
 	# uncached: required when resource icons should appear multiple times at any given moment
 	# on the screen. this is usually not the case with single inventories, but e.g. for trading.
 	# display_legend: whether to display a string explanation about slot limits
@@ -44,38 +48,43 @@ class Inventory(pychan.widgets.Container):
 		# this inits the gui part of the inventory. @see init().
 		super(Inventory, self).__init__(**kwargs)
 		self._inventory = None
-		self.__inited = False
+		self._inited = False
 		self.uncached = uncached
 		self.display_legend = display_legend
 		self.items_per_line = items_per_line or 1 # negative values are fine, 0 is not
+
+	def init_needed(self, inventory):
+		return not self._inited or self._inventory is not inventory
 
 	def init(self, db, inventory, ordinal=None):
 		"""
 		@param ordinal: {res: (min, max)} Display ordinal scale with these boundaries instead of numbers for a particular resource. Currently implemented via ImageFillStatusButton.
 		"""
 		# check if we must init everything anew
-		if not self.__inited or self._inventory is not inventory:
+		if self.init_needed(inventory):
 			# this inits the logic of the inventory. @see __init__().
-			self.__inited = True
+			self._inited = True
 			self.ordinal = ordinal
 			self.db = db
 			self._inventory = inventory
 			self._res_order = sorted(self._inventory.iterslots())
-			self.__icon = pychan.widgets.Icon(image="content/gui/icons/ship/civil_16.png")
+			self.__icon = Icon(image="content/gui/icons/ship/civil_16.png")
 		self.update()
 
 	def update(self):
-		assert self.__inited
-		self._draw()
-
-	def _draw(self):
-		"""Draws the inventory."""
 		self.removeAllChildren()
-		vbox = pychan.widgets.VBox(padding=0)
+		vbox = VBox(padding=0)
 		vbox.width = self.width
-		current_hbox = pychan.widgets.HBox(padding=0)
-		index = 0
+		current_hbox = HBox(padding=0)
 
+		# draw the content
+		self._draw(vbox, current_hbox)
+
+		self.adaptLayout()
+		self.stylize('menu_black')
+
+	def _draw(self, vbox, current_hbox, index=0):
+		"""Draws the inventory."""
 		# add res to res order in case there are new ones
 		# (never remove old ones for consistent positioning)
 		new_res = sorted( resid for resid in self._inventory.iterslots() if resid not in self._res_order )
@@ -86,7 +95,7 @@ class Inventory(pychan.widgets.Container):
 			while len(self._res_order) + len(new_res) > self._inventory.slotnum:
 				for i in xrange( self._inventory.slotnum ):
 					# search empty slot
-					if self._inventory[ self._res_order[i] ] == 0:
+					if not self._inventory[self._res_order[i]]:
 						# insert new res here
 						self._res_order[i] = new_res.pop(0)
 						if not new_res:
@@ -118,7 +127,7 @@ class Inventory(pychan.widgets.Container):
 
 			if index % self.items_per_line == self.items_per_line - 1:
 				vbox.addChild(current_hbox)
-				current_hbox = pychan.widgets.HBox(padding=0)
+				current_hbox = HBox(padding=0)
 			index += 1
 		if index <= self.items_per_line: # Hide/Remove second line
 			icons = self.parent.findChildren(name='slot')
@@ -133,9 +142,9 @@ class Inventory(pychan.widgets.Container):
 		if isinstance(self._inventory, TotalStorage):
 			# if it's full, the additional slots have to be marked as unusable (#1686)
 			# check for any res, the res type doesn't matter here
-			if self._inventory.get_free_space_for(0) == 0:
+			if not self._inventory.get_free_space_for(0):
 				for i in xrange(index, self.items_per_line):
-					button = pychan.widgets.Icon(image=self.__class__.UNUSABLE_SLOT_IMAGE)
+					button = Icon(image=self.__class__.UNUSABLE_SLOT_IMAGE)
 					current_hbox.addChild(button)
 
 
@@ -143,20 +152,18 @@ class Inventory(pychan.widgets.Container):
 			if isinstance(self._inventory, TotalStorage):
 				# Add total storage indicator
 				sum_stored_res = self._inventory.get_sum_of_stored_resources()
-				label = pychan.widgets.Label()
+				label = Label()
 				label.text = unicode(sum_stored_res) + u"/" + unicode(self._inventory.get_limit(None))
 				label.position = (150, 53)
 				self.__icon.position = (130, 53)
 				self.addChildren(label, self.__icon)
 			elif isinstance(self._inventory, PositiveSizedSlotStorage):
-				label = pychan.widgets.Label()
+				label = Label()
 				#xgettext:python-format
 				label.text = _('Limit: {amount}t per slot').format(amount=self._inventory.get_limit(None))
 				label.position = (20, 203)
 				self.__icon.position = (0, 203)
 				self.addChildren(label, self.__icon)
-		self.adaptLayout()
-		self.stylize('menu_black')
 
 	def apply_to_buttons(self, action, filt=None):
 		"""Applies action to all buttons shown in inventory

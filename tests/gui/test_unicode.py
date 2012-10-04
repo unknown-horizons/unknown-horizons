@@ -32,12 +32,15 @@ USER_DIR = None
 
 def setup():
 	global USER_DIR
-	USER_DIR = tempfile.mkdtemp(suffix=u'H߀ｒìｚｏԉｓ').encode(sys.getfilesystemencoding())
+	USER_DIR = tempfile.mkdtemp(suffix=u'H߀ｒìｚｏԉｓ')
 
 
 def teardown():
 	global USER_DIR
-	shutil.rmtree(USER_DIR)
+	try:
+		shutil.rmtree(USER_DIR)
+	except:
+		pass
 	USER_DIR = None
 
 

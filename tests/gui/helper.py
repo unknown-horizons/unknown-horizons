@@ -280,8 +280,15 @@ class GuiHelper(object):
 		self.cursor.mouseReleased(self._make_mouse_event(x, y, button, shift, ctrl))
 
 	def cursor_click(self, x, y, button, shift=False, ctrl=False):
+		# NOTE `self.run()` is a fix for gui tests with fife rev 4060+
+		# it is not known why this helps, but perhaps it's not that unreasonable
+		# to give the engine some time in between events (even if we trigger the
+		# mousetools directly)
+
 		self.cursor_move(x, y)
+		self.run()
 		self.cursor_press_button(x, y, button, shift, ctrl)
+		self.run()
 		self.cursor_release_button(x, y, button, shift, ctrl)
 
 	def cursor_multi_click(self, *coords):

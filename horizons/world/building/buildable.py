@@ -32,7 +32,8 @@ class BuildableErrorTypes(object):
 	"""Killjoy class. Collection of reasons why you can't build."""
 	NO_ISLAND, UNFIT_TILE, NO_SETTLEMENT, OTHER_PLAYERS_SETTLEMENT, \
 	OTHER_PLAYERS_SETTLEMENT_ON_ISLAND, OTHER_BUILDING_THERE, UNIT_THERE, NO_COAST, \
-	NO_OCEAN_NEARBY, ONLY_NEAR_SHIP, NEED_RES_SOURCE, ISLAND_ALREADY_SETTLED = range(12)
+	NO_OCEAN_NEARBY, ONLY_NEAR_SHIP, NEED_RES_SOURCE, ISLAND_ALREADY_SETTLED, \
+	NO_FLAT_LAND = range(13)
 
 	text = {
 	  NO_ISLAND : _("This building must be built on an island."),
@@ -45,7 +46,8 @@ class BuildableErrorTypes(object):
 	  NO_OCEAN_NEARBY : _("This building has to be placed at the ocean."),
 	  ONLY_NEAR_SHIP : _("This spot is too far away from your ship."),
 	  NEED_RES_SOURCE : _("This building can only be built on a resource source."),
-	  ISLAND_ALREADY_SETTLED : _("You have already settled this island.")
+	  ISLAND_ALREADY_SETTLED : _("You have already settled this island."),
+	  NO_FLAT_LAND : _("This building must be partly on flat land.")
 	}
 	# TODO: say res source which one we need, maybe even highlight those
 
@@ -330,8 +332,20 @@ class BuildableRect(Buildable):
 		area.top -= (cls.size[1] - 1) / 2
 		area.bottom -= (cls.size[1] - 1) / 2
 
-		for x in xrange(area.left, area.right+1, cls.size[0]):
-			for y in xrange(area.top, area.bottom+1, cls.size[1]):
+		xstart, xend = area.left, area.right+1
+		xstep = cls.size[0]
+		if point1.x > point2.x:
+			xstart, xend = area.right, area.left-1
+			xstep *= -1
+
+		ystart, yend = area.top, area.bottom+1
+		ystep = cls.size[1]
+		if point1.y > point2.y:
+			ystart, yend = area.bottom, area.top-1
+			ystep *= -1
+
+		for x in xrange(xstart, xend, xstep):
+			for y in xrange(ystart, yend, ystep):
 				possible_builds.append(
 				  cls.check_build(session, Point(x, y), rotation=rotation, ship=ship)
 				)
@@ -387,18 +401,26 @@ class BuildableSingleOnCoast(BuildableSingle):
 			if island is None:
 				raise _NotBuildableError(BuildableErrorTypes.NO_ISLAND)
 
+		flat_land_found = False
 		coastline_found = False
-		for tup in position.tuple_iter():
+		for coords in position.tuple_iter():
 			# can't use get_tile_tuples since it discards None's
-			tile = island.get_tile_tuple(tup)
+			tile = island.get_tile_tuple(coords)
 			if tile is None:
 				raise _NotBuildableError(BuildableErrorTypes.NO_ISLAND)
 			if 'coastline' in tile.classes:
 				coastline_found = True
+			elif 'constructible' in tile.classes:
+				flat_land_found = True
 			elif 'constructible' not in tile.classes: # neither coastline, nor constructible
 				raise _NotBuildableError(BuildableErrorTypes.UNFIT_TILE)
 		if not coastline_found:
 			raise _NotBuildableError(BuildableErrorTypes.NO_COAST)
+		elif isinstance(position, Rect) and not flat_land_found:
+			# Flat land is required but this function can be called with just a point that
+			# is used to show the buildability highlight. In that case the flat land
+			# requirement should be ignored.
+			raise _NotBuildableError(BuildableErrorTypes.NO_FLAT_LAND)
 		return island
 
 	@classmethod

@@ -20,48 +20,77 @@
 # ###################################################
 
 from horizons.network.packets import *
-from horizons.network import NetworkException
+from horizons.network import NetworkException, SoftNetworkException
+import uuid
 
 class cmd_creategame(packet):
 	clientversion = None
-	mapname       = None
-	maxplayers    = None
+	clientid      = None
 	playername    = None
 	playercolor   = None
-	clientid      = None
-	name          = u"Unnamed Game"
-	load          = None
-	password      = None
+	gamename      = u"Unnamed Game"
+	mapname       = None
+	maxplayers    = None
+	maphash       = ""
+	password      = ""
 
-	def __init__(self, clientver, mapname, maxplayers, playername, name, load=None, password=None, playercolor=None, clientid=None):
-		"""
-		@param load: whether it's a loaded game
-		"""
+	def __init__(self, clientver, clientid, playername, playercolor,
+			gamename, mapname, maxplayers, maphash="", password=""):
 		self.clientversion = clientver
+		self.clientid      = clientid
+		self.playername    = playername
+		self.playercolor   = playercolor
+		self.name          = gamename
 		self.mapname       = mapname
 		self.maxplayers    = maxplayers
-		self.playername    = playername
-		self.name          = name
-		self.load          = load
-		self.password      = None if password == "" else password
-		self.playercolor   = playercolor
-		self.clientid      = clientid
+		self.maphash       = maphash
+		self.password      = password
 
-	def validate(self):
-		if not isinstance(self.clientversion, unicode):
+	@staticmethod
+	def validate(pkt, protocol):
+		if not isinstance(pkt.clientversion, unicode):
 			raise NetworkException("Invalid datatype: clientversion")
-		if not isinstance(self.mapname, unicode):
-			raise NetworkException("Invalid datatype: mapname")
-		if not isinstance(self.maxplayers, int):
-			raise NetworkException("Invalid datatype: maxplayers")
-		if not isinstance(self.playername, unicode):
+		if not len(pkt.clientversion):
+			raise SoftNetworkException("Invalid client version")
+
+		if protocol == 0:
+			pkt.clientid = uuid.uuid4().hex
+		if not isinstance(pkt.clientid, str):
+			raise NetworkException("Invalid datatype: clientid")
+		if len(pkt.clientid) != 32:
+			raise SoftNetworkException("Invalid unique player ID")
+
+		if not isinstance(pkt.playername, unicode):
 			raise NetworkException("Invalid datatype: playername")
-		if not isinstance(self.name, unicode):
+		if not len(pkt.playername):
+			raise SoftNetworkException("Your player name cannot be empty")
+
+		if protocol == 0:
+			pkt.playercolor = 1
+		else:
+			if not isinstance(pkt.playercolor, int):
+				raise NetworkException("Invalid datatype: playercolor")
+			if pkt.playercolor < 1:
+				raise SoftNetworkException("Your color is invalid")
+
+		if not isinstance(pkt.name, unicode):
 			raise NetworkException("Invalid datatype: name")
-		if self.load is not None and not isinstance(self.load, str):
-			raise NetworkException("Invalid datatype: load")
-		if not isinstance(self.playercolor, int):
-			raise NetworkException("Invalid datatype: playercolor")
+		if not len(pkt.name):
+			pkt.name = u"Unnamed Game"
+
+		if not isinstance(pkt.mapname, unicode):
+			raise NetworkException("Invalid datatype: mapname")
+		if not len(pkt.mapname):
+			raise SoftNetworkException("You can't run a game with an empty mapname")
+
+		if not isinstance(pkt.maxplayers, int):
+			raise NetworkException("Invalid datatype: maxplayers")
+
+		if not isinstance(pkt.maphash, str):
+			raise NetworkException("Invalid datatype: maphash")
+
+		if not isinstance(pkt.password, str):
+			raise NetworkException("Invalid datatype: password")
 
 SafeUnpickler.add('client', cmd_creategame)
 
@@ -77,12 +106,13 @@ class cmd_listgames(packet):
 		self.mapname       = mapname
 		self.maxplayers    = maxplayers
 
-	def validate(self):
-		if not isinstance(self.clientversion, (int, unicode)):
+	@staticmethod
+	def validate(pkt, protocol):
+		if not isinstance(pkt.clientversion, (int, unicode)):
 			raise NetworkException("Invalid datatype: clientversion")
-		if self.mapname is not None and not isinstance(self.mapname, unicode):
+		if pkt.mapname is not None and not isinstance(pkt.mapname, unicode):
 			raise NetworkException("Invalid datatype: mapname")
-		if self.maxplayers is not None and not isinstance(self.maxplayers, int):
+		if pkt.maxplayers is not None and not isinstance(pkt.maxplayers, int):
 			raise NetworkException("Invalid datatype: maxplayers")
 
 SafeUnpickler.add('client', cmd_listgames)
@@ -91,27 +121,60 @@ SafeUnpickler.add('client', cmd_listgames)
 
 class cmd_joingame(packet):
 	uuid          = None
+	clientid      = None
 	clientversion = None
 	playername    = None
 	playercolor   = None
-	clientid      = None
+	password      = ""
+	fetch         = False
 
-	def __init__(self, uuid, clientver, playername, playercolor, clientid):
+	def __init__(self, uuid, clientver, clientid, playername, playercolor, password="", fetch=False):
 		self.uuid          = uuid
 		self.clientversion = clientver
+		self.clientid      = clientid
 		self.playername    = playername
 		self.playercolor   = playercolor
-		self.clientid      = clientid
+		self.password      = password
+		self.fetch         = fetch
 
-	def validate(self):
-		if not isinstance(self.uuid, str):
+	@staticmethod
+	def validate(pkt, protocol):
+		if not isinstance(pkt.uuid, str):
 			raise NetworkException("Invalid datatype: uuid")
-		if not isinstance(self.clientversion, unicode):
+		if len(pkt.uuid) != 32:
+			raise SoftNetworkException("Invalid game UUID")
+
+		if not isinstance(pkt.clientversion, unicode):
 			raise NetworkException("Invalid datatype: clientversion")
-		if not isinstance(self.playername, unicode):
+		if not len(pkt.clientversion):
+			raise SoftNetworkException("Invalid client version")
+
+		if protocol == 0:
+			pkt.clientid = uuid.uuid4().hex
+		if not isinstance(pkt.clientid, str):
+			raise NetworkException("Invalid datatype: clientid")
+		if len(pkt.clientid) != 32:
+			raise SoftNetworkException("Invalid unique player ID")
+
+		if not isinstance(pkt.playername, unicode):
 			raise NetworkException("Invalid datatype: playername")
-		if not isinstance(self.playercolor, int):
-			raise NetworkException("Invalid datatype: playercolor")
+		if not len(pkt.playername):
+			raise SoftNetworkException("Your player name cannot be empty")
+
+		if protocol == 0:
+			# assign playercolor in packet handler
+			pkt.playercolor = None
+		else:
+			if not isinstance(pkt.playercolor, int):
+				raise NetworkException("Invalid datatype: playercolor")
+			if pkt.playercolor < 1:
+				raise SoftNetworkException("Your color is invalid")
+
+		if not isinstance(pkt.password, str):
+			raise NetworkException("Invalid datatype: password")
+
+		if not isinstance(pkt.fetch, bool):
+			raise NetworkException("Invalid datatype: fetch")
 
 SafeUnpickler.add('client', cmd_joingame)
 
@@ -131,9 +194,12 @@ class cmd_chatmsg(packet):
 	def __init__(self, msg):
 		self.chatmsg = msg
 
-	def validate(self):
-		if not isinstance(self.chatmsg, unicode):
+	@staticmethod
+	def validate(pkt, protocol):
+		if not isinstance(pkt.chatmsg, unicode):
 			raise NetworkException("Invalid datatype: chatmsg")
+		if not len(pkt.chatmsg):
+			raise SoftNetworkException("Chat message cannot be empty")
 
 SafeUnpickler.add('client', cmd_chatmsg)
 
@@ -145,9 +211,12 @@ class cmd_changename(packet):
 	def __init__(self, playername):
 		self.playername = playername
 
-	def validate(self):
-		if not isinstance(self.playername, unicode):
+	@staticmethod
+	def validate(pkt, protocol):
+		if not isinstance(pkt.playername, unicode):
 			raise NetworkException("Invalid datatype: playername")
+		if not len(pkt.playername):
+			raise SoftNetworkException("You must have a non empty name")
 
 SafeUnpickler.add('client', cmd_changename)
 
@@ -159,9 +228,12 @@ class cmd_changecolor(packet):
 	def __init__(self, playercolor):
 		self.playercolor = playercolor
 
-	def validate(self):
-		if not isinstance(self.playercolor, int):
+	@staticmethod
+	def validate(pkt, protocol):
+		if not isinstance(pkt.playercolor, int):
 			raise NetworkException("Invalid datatype: playercolor")
+		if pkt.playercolor < 1:
+			raise SoftNetworkException("Your color is invalid")
 
 SafeUnpickler.add('client', cmd_changecolor)
 
@@ -184,48 +256,55 @@ SafeUnpickler.add('server', game_data)
 
 #-------------------------------------------------------------------------------
 
-class cmd_toggle_ready(packet):
-	def __init__(self, player):
-		self.player = player
+class cmd_toggleready(packet):
+	def __init__(self):
+		"""ctor"""
 
-	def validate(self):
-		if not isinstance(self.player, unicode):
-			raise NetworkException("Invalid datatype: player")
-
-SafeUnpickler.add('client', cmd_toggle_ready)
+SafeUnpickler.add('client', cmd_toggleready)
 
 #-------------------------------------------------------------------------------
 
-class cmd_kick_player(packet):
-	def __init__(self, player):
-		self.player = player
+class cmd_kickplayer(packet):
+	def __init__(self, kicksid):
+		# NOTE: self.sid is used for session mgmt
+		self.kicksid = kicksid
 
-	def validate(self):
-		if not isinstance(self.player, unicode):
-			raise NetworkException("Invalid datatype: player")
+	@staticmethod
+	def validate(pkt, protocol):
+		if not isinstance(pkt.kicksid, str):
+			raise NetworkException("Invalid datatype: player sid")
+		if len(pkt.kicksid) != 32:
+			raise SoftNetworkException("Invalid player sid")
 
-SafeUnpickler.add('client', cmd_kick_player)
-
-#-------------------------------------------------------------------------------
-
-class cmd_fetch_game(packet):
-	def __init__(self, clientversion, uuid):
-		self.clientversion = clientversion
-		self.uuid = uuid
-
-	def validate(self):
-		if not isinstance(self.uuid, str):
-			raise NetworkException("Invalid datatype: uuid")
-		if not isinstance(self.clientversion, unicode):
-			raise NetworkException("Invalid datatype: clientversion")
-
-SafeUnpickler.add('client', cmd_fetch_game)
+SafeUnpickler.add('client', cmd_kickplayer)
 
 #-------------------------------------------------------------------------------
 
-class savegame_data(packet):
-	def __init__(self, data, psid):
+class cmd_sessionprops(packet):
+	def __init__(self, props):
+		if 'lang' in props:
+			self.lang = props['lang']
+
+	@staticmethod
+	def validate(pkt, protocol):
+		if hasattr(pkt, 'lang'):
+			if not isinstance(pkt.lang, str):
+				raise NetworkException("Invalid datatype: lang")
+			if not len(pkt.lang):
+				raise SoftNetworkException("Invalid language property")
+
+SafeUnpickler.add('client', cmd_sessionprops)
+
+#-------------------------------------------------------------------------------
+
+#TODO
+class cmd_mapdata(packet):
+	def __init__(self, data):
 		self.data = data
-		self.psid = psid
 
-SafeUnpickler.add('client', savegame_data)
+	@staticmethod
+	def validate(pkt, protocol):
+		if not isinstance(pkt.data, str):
+			raise NetworkException("Invalid datatype: data")
+
+SafeUnpickler.add('client', cmd_mapdata)
