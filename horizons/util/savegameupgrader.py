@@ -120,9 +120,13 @@ class SavegameUpgrader(object):
 
 	def _upgrade_to_rev59(self, db):
 		# action set id save/load
-		db("ALTER TABLE concrete_object ADD COLUMN action_set_id STRING DEFAULT NULL")
-		# None is not a valid value, but it's hard to determine valid ones here,
-		# so as an exception, we let the loading code handle it (in ConcreteObject.load)
+		try:
+			db("ALTER TABLE concrete_object ADD COLUMN action_set_id STRING DEFAULT NULL")
+			# None is not a valid value, but it's hard to determine valid ones here,
+			# so as an exception, we let the loading code handle it (in ConcreteObject.load)
+		except OperationalError:
+			# Some scenario maps had concrete_object updated with 8b3cb4bae1067e
+			pass
 
 	def _upgrade_to_rev60(self, db):
 		# some production line id changes
