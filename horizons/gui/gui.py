@@ -88,7 +88,7 @@ class Gui(SingleplayerMenu, MultiplayerMenu):
 		self._background_image = self._get_random_background()
 
 		from horizons.gui.mainmenu import CallForSupport
-		self._call_for_support = CallForSupport(self.widgets['call_for_support'])
+		self._call_for_support = CallForSupport(self.widgets)
 
 		GuiAction.subscribe( self._on_gui_action )
 

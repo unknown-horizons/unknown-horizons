@@ -19,4 +19,5 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
+from .dialog import Dialog
 from .call_for_support import CallForSupport
