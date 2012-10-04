@@ -87,8 +87,9 @@ class Gui(SingleplayerMenu, MultiplayerMenu):
 		self.__pause_displayed = False
 		self._background_image = self._get_random_background()
 
-		from horizons.gui.mainmenu import CallForSupport
+		from horizons.gui.mainmenu import CallForSupport, Credits
 		self._call_for_support = CallForSupport(self.widgets)
+		self._credits = Credits(self.widgets)
 
 		GuiAction.subscribe( self._on_gui_action )
 
@@ -109,8 +110,8 @@ class Gui(SingleplayerMenu, MultiplayerMenu):
 			'quit'             : self.show_quit,
 			'dead_link'        : self._call_for_support.show, # call for help; SoC information
 			'chimebell'        : self._call_for_support.show,
-			'creditsLink'      : self.show_credits,
-			'credits'          : self.show_credits,
+			'creditsLink'      : self._credits.show,
+			'credits'          : self._credits.show,
 			'loadgameButton'   : horizons.main.load_game,
 			'loadgame'         : horizons.main.load_game,
 			'changeBackground' : self.get_random_background_by_button
@@ -239,25 +240,6 @@ class Gui(SingleplayerMenu, MultiplayerMenu):
 			return True
 		else:
 			return False
-
-	def show_credits(self, number=0):
-		"""Shows the credits dialog. """
-		if self.current_dialog is not None:
-			self.current_dialog.hide()
-
-		credits_page = self.widgets['credits{number}'.format(number=number)]
-		for box in credits_page.findChildren(name='box'):
-			box.margins = (30, 0) # to get some indentation
-			if number in [0, 2]: # #TODO fix these hardcoded page references
-				box.padding = 1
-				box.parent.padding = 3 # further decrease if more entries
-		labels = [credits_page.findChild(name=section+"_lbl")
-		          for section in ('team', 'patchers', 'translators',
-		                          'packagers', 'special_thanks')]
-		for i in xrange(5): # add callbacks to each pickbelt
-			labels[i].capture(Callback(self.show_credits, i), event_name="mouseClicked")
-
-		self.show_dialog(credits_page, {OkButton.DEFAULT_NAME : True})
 
 	def show_select_savegame(self, mode, sanity_checker=None, sanity_criteria=None):
 		"""Shows menu to select a savegame.

@@ -19,14 +19,28 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-from horizons.component.ambientsoundcomponent import AmbientSoundComponent
 from horizons.gui.mainmenu import Dialog
 from horizons.gui.widgets.imagebutton import OkButton
+from horizons.util.python.callback import Callback
 
 
-class CallForSupport(Dialog):
-	widget_name = 'call_for_support'
+class Credits(Dialog):
 	return_events = {OkButton.DEFAULT_NAME: True}
 
-	def pre(self, *args, **kwargs):
-		AmbientSoundComponent.play_special("message")
+	def pre(self, number=0, **kwargs):
+		if self._widget:
+			self._widget.hide()
+
+		self._widget = self._widget_loader['credits{number}'.format(number=number)]
+		for box in self._widget.findChildren(name='box'):
+			box.margins = (30, 0) # to get some indentation
+			if number in [0, 2]: # #TODO fix these hardcoded page references
+				box.padding = 1
+				box.parent.padding = 3 # further decrease if more entries
+
+		labels = [self._widget.findChild(name=section+"_lbl")
+		          for section in ('team', 'patchers', 'translators',
+		                          'packagers', 'special_thanks')]
+
+		for i in xrange(5): # add callbacks to each pickbelt
+			labels[i].capture(Callback(self.show, number=i), event_name="mouseClicked")

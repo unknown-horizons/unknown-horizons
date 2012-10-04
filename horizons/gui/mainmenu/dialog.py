@@ -28,16 +28,23 @@ from horizons.gui.widgets.imagebutton import OkButton, CancelButton
 
 class Dialog(object):
 	modal = True
+	widget_name = None
 
 	def __init__(self, widget_loader):
 		self._widget_loader = widget_loader
+		self._widget = None
 
-	def pre(self):
+	def pre(self, *args, **kwargs):
+		# pre needs to accept args and kwargs due to the way Callback works
 		pass
 
-	def show(self):
-		self._widget = self._widget_loader[self.widget_name]
-		self.pre()
+	def show(self, *args, **kwargs):
+		if self.widget_name:
+			self._widget = self._widget_loader[self.widget_name]
+
+		self.pre(**kwargs)
+
+		assert self._widget, 'Pre did not load a widget'
 
 		if self.modal:
 			self._show_modal_background()
@@ -72,6 +79,12 @@ class Dialog(object):
 		"""Loads transparent background that de facto prohibits
 		access to other gui elements by eating all input events.
 		"""
+
+		# FIXME this is called multiple times without hide in between when
+		# showing the credits
+		if getattr(self, '_modal_widget', None):
+			return
+
 		height = horizons.globals.fife.engine_settings.getScreenHeight()
 		width = horizons.globals.fife.engine_settings.getScreenWidth()
 		image = horizons.globals.fife.imagemanager.loadBlank(width, height)
