@@ -63,7 +63,7 @@ class SaveLoad(Dialog):
 			else:
 				map_files, map_file_display = SavegameManager.get_multiplayersaves()
 			if not map_files:
-				self.show_popup(_("No saved games"), _("There are no saved games to load."))
+				self._gui.show_popup(_("No saved games"), _("There are no saved games to load."))
 				return
 		else: # don't show autosave and quicksave on save
 			if not mp:
