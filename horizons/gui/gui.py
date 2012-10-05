@@ -193,10 +193,7 @@ class Gui(SingleplayerMenu, MultiplayerMenu):
 		Toggles help screen via static variable *help_is_displayed*.
 		Can be called both from main menu and in-game interface.
 		"""
-		if not self._help.active:
-			self._help.show()
-		else:
-			self._help.close()
+		self._help.toggle()
 
 	def show_quit(self):
 		"""Shows the quit dialog. Closes the game unless the dialog is cancelled."""

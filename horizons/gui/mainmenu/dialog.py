@@ -95,6 +95,12 @@ class Dialog(object):
 		if self.active:
 			pychan.manager.breakFromMainLoop(CLOSE_DIALOG)
 
+	def toggle(self, **kwargs):
+		if self.active:
+			self.close()
+		else:
+			self.show(**kwargs)
+
 	def _show_modal_background(self):
 		"""Loads transparent background that de facto prohibits
 		access to other gui elements by eating all input events.
