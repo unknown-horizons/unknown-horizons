@@ -37,10 +37,9 @@ from horizons.messaging import GuiAction
 from horizons.component.ambientsoundcomponent import AmbientSoundComponent
 from horizons.gui.util import LazyWidgetsDict
 
-from horizons.gui.modules import MultiplayerMenu
 from horizons.command.game import PauseCommand, UnPauseCommand
 
-class Gui(MultiplayerMenu):
+class Gui(object):
 	"""This class handles all the out of game menu, like the main and pause menu, etc.
 	"""
 	log = logging.getLogger("gui")
@@ -79,12 +78,13 @@ class Gui(MultiplayerMenu):
 		self.__pause_displayed = False
 		self._background_image = self._get_random_background()
 
-		from horizons.gui.mainmenu import CallForSupport, Credits, SaveLoad, Help, SingleplayerMenu
+		from horizons.gui.mainmenu import CallForSupport, Credits, SaveLoad, Help, SingleplayerMenu, MultiplayerMenu
 		self._call_for_support = CallForSupport(self.widgets)
 		self._credits = Credits(self.widgets)
 		self._saveload = SaveLoad(self.widgets, gui=self)
 		self._help = Help(self.widgets, gui=self)
 		self._singleplayer = SingleplayerMenu(self.widgets, gui=self)
+		self._multiplayer = MultiplayerMenu(self.widgets, gui=self)
 
 		GuiAction.subscribe( self._on_gui_action )
 
@@ -95,8 +95,8 @@ class Gui(MultiplayerMenu):
 		self._switch_current_widget('mainmenu', center=True, show=True, event_map={
 			'startSingle'      : self._singleplayer.show, # first is the icon in menu
 			'start'            : self._singleplayer.show, # second is the lable in menu
-			'startMulti'       : self.show_multi,
-			'start_multi'      : self.show_multi,
+			'startMulti'       : self._multiplayer.show,
+			'start_multi'      : self._multiplayer.show,
 			'settingsLink'     : self.show_settings,
 			'settings'         : self.show_settings,
 			'helpLink'         : self.on_help,

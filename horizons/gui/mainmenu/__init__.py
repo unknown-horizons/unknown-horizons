@@ -25,3 +25,4 @@ from .credits import Credits
 from .saveload import SaveLoad
 from .help import Help
 from .singleplayer import SingleplayerMenu
+from .multiplayer import MultiplayerMenu
