@@ -27,7 +27,7 @@ from horizons.util.python.callback import Callback
 class Credits(Dialog):
 	return_events = {OkButton.DEFAULT_NAME: True}
 
-	def pre(self, number=0, **kwargs):
+	def prepare(self, number=0, **kwargs):
 		if self._widget:
 			self._widget.hide()
 

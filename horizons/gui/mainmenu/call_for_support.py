@@ -28,5 +28,5 @@ class CallForSupport(Dialog):
 	widget_name = 'call_for_support'
 	return_events = {OkButton.DEFAULT_NAME: True}
 
-	def pre(self, *args, **kwargs):
+	def prepare(self, *args, **kwargs):
 		AmbientSoundComponent.play_special("message")

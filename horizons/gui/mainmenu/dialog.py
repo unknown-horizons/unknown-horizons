@@ -40,7 +40,7 @@ class Dialog(object):
 		self._gui = gui
 		self.active = False
 
-	def pre(self, *args, **kwargs):
+	def prepare(self, *args, **kwargs):
 		# pre needs to accept args and kwargs due to the way Callback works
 		pass
 
@@ -54,7 +54,7 @@ class Dialog(object):
 		if self.widget_name:
 			self._widget = self._widget_loader[self.widget_name]
 
-		self.pre(**kwargs)
+		self.prepare(**kwargs)
 
 		assert self._widget, 'Pre did not load a widget'
 

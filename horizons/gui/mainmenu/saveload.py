@@ -37,7 +37,7 @@ class SaveLoad(Dialog):
 	}
 	widget_name = 'select_savegame'
 
-	def pre(self, mode=None, sanity_checker=None, sanity_criteria=None, **kwargs):
+	def prepare(self, mode=None, sanity_checker=None, sanity_criteria=None, **kwargs):
 		"""Shows menu to select a savegame.
 
 		@param mode: Valid options are 'save', 'load', 'mp_load', 'mp_save'

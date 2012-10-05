@@ -28,7 +28,7 @@ class Help(Dialog):
 	widget_name = 'help'
 	return_events = {OkButton.DEFAULT_NAME: True}
 
-	def pre(self, *args, **kwargs):
+	def prepare(self, *args, **kwargs):
 		# make game pause if there is a game and we're not in the main menu
 		# TODO check missing if we're in the main menu
 		if self._gui.session:
