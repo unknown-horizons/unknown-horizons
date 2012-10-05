@@ -104,7 +104,7 @@ def start(_command_line_arguments):
 			return False
 
 	if command_line_arguments.generate_minimap: # we've been called as subprocess to generate a map preview
-		from horizons.gui.modules.singleplayermenu import MapPreview
+		from horizons.gui.mainmenu.singleplayer import MapPreview
 		MapPreview.generate_minimap( * json.loads(
 		  command_line_arguments.generate_minimap
 		  ) )
@@ -403,7 +403,8 @@ def load_game(ai_players=0, human_ai=False, savegame=None, is_scenario=False, ca
               pirate_enabled=True, trader_enabled=True, force_player_id=None):
 	"""Shows select savegame menu if savegame is none, then loads the game"""
 	if savegame is None:
-		savegame = _modules.gui.show_select_savegame(mode='load')
+		# TODO is this code ever reached? the argparser requires an argument
+		savegame = _modules.gui._saveload.show(mode='load')
 		if savegame is None:
 			return False # user aborted dialog
 	_modules.gui.show_loading_screen()
