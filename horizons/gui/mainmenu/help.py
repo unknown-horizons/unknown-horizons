@@ -19,8 +19,22 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-from .dialog import Dialog
-from .call_for_support import CallForSupport
-from .credits import Credits
-from .saveload import SaveLoad
-from .help import Help
+from horizons.command.game import PauseCommand, UnPauseCommand
+from horizons.gui.mainmenu import Dialog
+from horizons.gui.widgets.imagebutton import OkButton
+
+
+class Help(Dialog):
+	widget_name = 'help'
+	return_events = {OkButton.DEFAULT_NAME: True}
+
+	def pre(self, *args, **kwargs):
+		# make game pause if there is a game and we're not in the main menu
+		# TODO check missing if we're in the main menu
+		if self._gui.session:
+			PauseCommand().execute(self._gui.session)
+			self._gui.session.ingame_gui.on_escape() # close dialogs that might be open
+
+	def post(self, retval):
+		if self._gui.session:
+			UnPauseCommand().execute(self._gui.session)

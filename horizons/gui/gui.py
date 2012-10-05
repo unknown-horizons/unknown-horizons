@@ -81,10 +81,11 @@ class Gui(SingleplayerMenu, MultiplayerMenu):
 		self.__pause_displayed = False
 		self._background_image = self._get_random_background()
 
-		from horizons.gui.mainmenu import CallForSupport, Credits, SaveLoad
+		from horizons.gui.mainmenu import CallForSupport, Credits, SaveLoad, Help
 		self._call_for_support = CallForSupport(self.widgets)
 		self._credits = Credits(self.widgets)
 		self._saveload = SaveLoad(self.widgets, gui=self)
+		self._help = Help(self.widgets, gui=self)
 
 		GuiAction.subscribe( self._on_gui_action )
 
@@ -189,27 +190,15 @@ class Gui(SingleplayerMenu, MultiplayerMenu):
 		"""Displays settings gui derived from the FIFE settings module."""
 		horizons.globals.fife.show_settings()
 
-	_help_is_displayed = False
 	def on_help(self):
 		"""Called on help action.
 		Toggles help screen via static variable *help_is_displayed*.
 		Can be called both from main menu and in-game interface.
 		"""
-		help_dlg = self.widgets['help']
-		if not self._help_is_displayed:
-			self._help_is_displayed = True
-			# make game pause if there is a game and we're not in the main menu
-			if self.session is not None and self.current != self.widgets['ingamemenu']:
-				PauseCommand().execute(self.session)
-			if self.session is not None:
-				self.session.ingame_gui.on_escape() # close dialogs that might be open
-			self.show_dialog(help_dlg, {OkButton.DEFAULT_NAME : True})
-			self.on_help() # toggle state
+		if not self._help.active:
+			self._help.show()
 		else:
-			self._help_is_displayed = False
-			if self.session is not None and self.current != self.widgets['ingamemenu']:
-				UnPauseCommand().execute(self.session)
-			help_dlg.hide()
+			self._help.close()
 
 	def show_quit(self):
 		"""Shows the quit dialog. Closes the game unless the dialog is cancelled."""

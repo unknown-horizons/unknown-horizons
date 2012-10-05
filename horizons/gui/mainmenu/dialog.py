@@ -26,6 +26,9 @@ import horizons.globals
 from horizons.gui.widgets.imagebutton import OkButton, CancelButton
 
 
+CLOSE_DIALOG = object()
+
+
 class Dialog(object):
 	modal = True
 	widget_name = None
@@ -35,6 +38,7 @@ class Dialog(object):
 		self._widget = None
 		# TODO this needs to go probably
 		self._gui = gui
+		self.active = False
 
 	def pre(self, *args, **kwargs):
 		# pre needs to accept args and kwargs due to the way Callback works
@@ -44,6 +48,9 @@ class Dialog(object):
 		return return_value
 
 	def show(self, *args, **kwargs):
+		self.close()
+
+		self.active = True
 		if self.widget_name:
 			self._widget = self._widget_loader[self.widget_name]
 
@@ -78,7 +85,15 @@ class Dialog(object):
 		if self.modal:
 			self._hide_modal_background()
 
+		self.active = False
+		if self._widget:
+			self._widget.hide()
+
 		return self.post(ret)
+
+	def close(self):
+		if self.active:
+			pychan.manager.breakFromMainLoop(CLOSE_DIALOG)
 
 	def _show_modal_background(self):
 		"""Loads transparent background that de facto prohibits
