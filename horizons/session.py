@@ -21,7 +21,6 @@
 
 import errno
 import os
-import os.path
 import logging
 import json
 import traceback
@@ -29,12 +28,12 @@ import time
 from random import Random
 
 import horizons.globals
-from horizons.gui.widgets.messagepanel import MessagePanel
 import horizons.main
 
 from horizons.ai.aiplayer import AIPlayer
 from horizons.gui.ingamegui import IngameGui
 from horizons.gui.mousetools import SelectionTool, PipetteTool, TearingTool, BuildingTool, AttackingTool
+from horizons.gui.widgets.messagepanel import MessagePanel
 from horizons.command.building import Tear
 from horizons.util.dbreader import DbReader
 from horizons.command.unit import RemoveUnit

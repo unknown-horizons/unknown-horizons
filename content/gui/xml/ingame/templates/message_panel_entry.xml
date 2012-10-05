@@ -1,0 +1,8 @@
+<?xml version="1.0"?>
+<Container size="219,16">
+	<Icon name="arrow" image="content/gui/images/buttons/right_10_h.png" />
+	<Label name="title" position="11,0" text=""/>
+
+	<Button name="button" position="0,0" helptext="Open logbook" min_size="219,16" size="219,16"
+	        border_size="0" is_focusable="0" />
+</Container>

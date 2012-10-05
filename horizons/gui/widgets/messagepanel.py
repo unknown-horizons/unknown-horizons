@@ -18,6 +18,7 @@
 # Free Software Foundation, Inc.,
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
+
 import logging
 
 from fife.extensions import pychan
@@ -53,20 +54,30 @@ class MessagePanel(LivingObject):
 			action = self.session.scenario_eventhandler.current_action
 			title = unicode(action.arguments[1])
 			self.actions[action.arguments[0]] = title
-			hbox = pychan.HBox()
-			hbox.addChild(pychan.Icon(image="content/gui/images/buttons/right_10_h.png"))
-			hbox.addChild(pychan.Label(text=title))
-			container.addChild(hbox)
+
+			container.addChild(self.create_entry(title))
 
 			for old_title in reversed(self.actions.values()):
 				if old_title == action.arguments[1]:
 					continue
-				hbox = pychan.HBox()
-				hbox.addChild(pychan.Icon(image="content/gui/images/buttons/right_10.png"))
-				hbox.addChild(pychan.Label(text=old_title))
-				container.addChild(hbox)
+				container.addChild(self.create_entry(old_title, arrow="content/gui/images/buttons/right_10.png",
+					                  show_open_logbook=False))
 
 		self.widget.adaptLayout()
+
+	def create_entry(self, title, arrow="content/gui/images/buttons/right_10_h.png", show_open_logbook=True):
+		entry = load_uh_widget("message_panel_entry.xml")
+		entry.findChild(name="title").text = _(title)
+		entry.findChild(name="arrow").image = arrow
+
+		if show_open_logbook:
+			entry.mapEvents({ 'button' : self.open_logbook })
+		else:
+			entry.removeChild(entry.findChild(name="button"))
+		return entry
+
+	def open_logbook(self):
+		self.session.ingame_gui.logbook.toggle_visibility()
 
 	def minimize_maximize(self):
 		button = self.widget.findChild(name='min_max')

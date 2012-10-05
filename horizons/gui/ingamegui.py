@@ -87,6 +87,7 @@ class IngameGui(LivingObject):
 
 		self.logbook = LogBook(self.session)
 		self.message_widget = MessageWidget(self.session)
+		self.message_panel = None
 		self.players_overview = PlayersOverview(self.session)
 		self.players_settlements = PlayersSettlements(self.session)
 		self.players_ships = PlayersShips(self.session)
@@ -156,8 +157,9 @@ class IngameGui(LivingObject):
 			if w.parent is None:
 				w.hide()
 		self.message_widget = None
-		self.message_panel.end()
-		self.message_panel = None
+		if self.message_panel:
+			self.message_panel.end()
+			self.message_panel = None
 		self.tabwidgets = None
 		self.minimap = None
 		self.resource_overview.end()
