@@ -74,7 +74,7 @@ def translate_widget(untranslated, filename):
 
 def update_all_translations():
 	"""Update the translations in every active widget"""
-	from horizons.gui.gui import build_help_strings
+	from horizons.gui.mainmenu.help import build_help_strings
 	global translated_widgets
 	guitranslations.set_translations()
 	objecttranslations.set_translations()
