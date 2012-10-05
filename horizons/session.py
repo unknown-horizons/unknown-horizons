@@ -29,6 +29,7 @@ import time
 from random import Random
 
 import horizons.globals
+from horizons.gui.widgets.messagepanel import MessagePanel
 import horizons.main
 
 from horizons.ai.aiplayer import AIPlayer
@@ -306,6 +307,8 @@ class Session(LivingObject):
 			savegame = os.path.join(SavegameManager.scenario_maps_dir, map_filename)
 			if not os.path.exists(savegame):
 				savegame = os.path.join(SavegameManager.maps_dir, map_filename)
+
+			self.ingame_gui.message_panel = MessagePanel(self)
 		self.campaign = {} if not campaign else campaign
 
 		self.log.debug("Session: Loading from %s", savegame)

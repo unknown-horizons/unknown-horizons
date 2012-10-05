@@ -24,7 +24,6 @@ import horizons.globals
 from fife import fife
 
 from horizons.entities import Entities
-from horizons.gui.widgets.messagepanel import MessagePanel
 from horizons.util.living import livingProperty, LivingObject
 from horizons.util.pychanchildfinder import PychanChildFinder
 from horizons.util.python.callback import Callback
@@ -88,7 +87,6 @@ class IngameGui(LivingObject):
 
 		self.logbook = LogBook(self.session)
 		self.message_widget = MessageWidget(self.session)
-		self.message_panel = MessagePanel(self.session)
 		self.players_overview = PlayersOverview(self.session)
 		self.players_settlements = PlayersSettlements(self.session)
 		self.players_ships = PlayersShips(self.session)
@@ -158,6 +156,7 @@ class IngameGui(LivingObject):
 			if w.parent is None:
 				w.hide()
 		self.message_widget = None
+		self.message_panel.end()
 		self.message_panel = None
 		self.tabwidgets = None
 		self.minimap = None
