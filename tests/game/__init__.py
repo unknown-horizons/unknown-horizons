@@ -39,6 +39,7 @@ from horizons.spsession import SPSession
 from horizons.util.dbreader import DbReader
 from horizons.util.difficultysettings import DifficultySettings
 from horizons.util.savegameaccessor import SavegameAccessor
+from horizons.util.startgameoptions import StartGameOptions
 from horizons.util.color import Color
 from horizons.component.storagecomponent import StorageComponent
 
@@ -113,10 +114,11 @@ class SPTestSession(SPSession):
 		self.savegame = savegame
 		if is_ai_test:
 			# enable trader, pirate and natural resources in AI tests.
-			super(SPTestSession, self).load(savegame, players, True, True, 1)
+			options = StartGameOptions.create_ai_test(savegame, players)
 		else:
 			# disable the above in usual game tests for simplicity.
-			super(SPTestSession, self).load(savegame, players, False, False, 0)
+			options = StartGameOptions.create_game_test(savegame, players)
+		super(SPTestSession, self).load(options)
 
 	def end(self, keep_map=False, remove_savegame=True):
 		"""

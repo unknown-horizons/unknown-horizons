@@ -168,3 +168,19 @@ class StartGameOptions(object):
 		options = StartGameOptions(saved_game)
 		options.force_player_id = force_player_id
 		return options
+
+	@classmethod
+	def create_game_test(cls, game_identifier, player_list):
+		options = StartGameOptions(game_identifier)
+		options.player_list = player_list
+		options.trader_enabled = False
+		options.pirate_enabled = False
+		options.natural_resource_multiplier = 0
+		return options
+
+	@classmethod
+	def create_ai_test(cls, game_identifier, player_list):
+		options = StartGameOptions(game_identifier)
+		options.player_list = player_list
+		options.is_map = True
+		return options
