@@ -21,78 +21,194 @@
 
 import traceback
 
+from fife import fife
+from fife.extensions import pychan
+
+import horizons.globals
 from horizons.extscheduler import ExtScheduler
 from horizons.gui.widgets.imagebutton import OkButton, CancelButton
 
 
-class DialogManager(object):
+class Window(object):
+	pass
 
-	def __init__(self, widgets):
-		self._dialogs = []
-		self._widgets = widgets
+
+class Dialog(Window):
+	modal = True
+	widget_name = None
+	stackable = True
+
+	def __init__(self, widget_loader, gui=None, manager=None):
+		self._widget_loader = widget_loader
+		self._widget = None
+		self.windows = manager
+		# TODO this needs to go probably
+		self._gui = gui
+		self.active = False
+		self._hidden = False
+
+	def prepare(self, *args, **kwargs):
+		"""Preparation of the widget before the dialog is shown.
+
+		Return False here if you don't want to abort showing the dialog.
+		"""
+		# pre needs to accept args and kwargs due to the way Callback works
+		pass
+
+	def post(self, return_value):
+		return return_value
+
+	def show(self, *args, **kwargs):
+		assert not self.active
+		self.active = True
+
+		if self._hidden:
+			self._widget.show()
+			self._widget.requestFocus()
+			self._hidden = False
+			return
+
+		if self.widget_name:
+			self._widget = self._widget_loader[self.widget_name]
+
+		# need to check explicitly for False, because None might just be a normal
+		# return in prepare
+		if self.prepare(**kwargs) == False:
+			return
+
+		assert self._widget, 'Pre did not load a widget'
+
+		if self.modal:
+			self._show_modal_background()
+
+		self._widget.capture(self._on_keypress, event_name="keyPressed")
+		self._widget.show()
+		ret = self._widget.execute(self.return_events)
+		if self.modal:
+			self._hide_modal_background()
+
+		self.windows.close()
+		return self.post(ret)
+
+	def abort(self):
+		horizons.globals.fife.pychanmanager.breakFromMainLoop(return_value=False)
+
+	def close(self):
+		print 'Dialog close', self
+		if self.active:
+			self.active = False
+			self.hide()
+
+	def hide(self):
+		print 'Dialog hide', self
+		if self.active:
+			self.active = False
+			self._hidden = True
+
+		if self._widget:
+			self._widget.hide()
+
+	def _show_modal_background(self):
+		"""Loads transparent background that de facto prohibits
+		access to other gui elements by eating all input events.
+		"""
+		# FIXME this is called multiple times without hide in between when
+		# showing the credits
+		if getattr(self, '_modal_widget', None):
+			return
+
+		height = horizons.globals.fife.engine_settings.getScreenHeight()
+		width = horizons.globals.fife.engine_settings.getScreenWidth()
+		image = horizons.globals.fife.imagemanager.loadBlank(width, height)
+		image = fife.GuiImage(image)
+		self._modal_widget = pychan.Icon(image=image)
+		self._modal_widget.position = (0, 0)
+		self._modal_widget.show()
+
+	def _hide_modal_background(self):
+		try:
+			self._modal_widget.hide()
+			del self._modal_widget
+		except AttributeError:
+			pass
+
+	def _on_keypress(self, event):
+		from horizons.engine import pychan_util
+		if event.getKey().getValue() == fife.Key.ESCAPE: # convention says use cancel action
+			btn = self._widget.findChild(name=CancelButton.DEFAULT_NAME)
+			callback = pychan_util.get_button_event(btn) if btn else None
+			if callback:
+				pychan.tools.applyOnlySuitable(callback, event=event, widget=btn)
+			else:
+				# escape should hide the dialog default
+				horizons.globals.fife.pychanmanager.breakFromMainLoop(return_value=False)
+		elif event.getKey().getValue() == fife.Key.ENTER: # convention says use ok action
+			btn = self._widget.findChild(name=OkButton.DEFAULT_NAME)
+			callback = pychan_util.get_button_event(btn) if btn else None
+			if callback:
+				pychan.tools.applyOnlySuitable(callback, event=event, widget=btn)
+			# can't guess a default action here
+
+
+class WindowManager(object):
+
+	def __init__(self, widget_loader):
+		self._windows = []
+		self._widgets = widget_loader
 
 	def show(self, widget, **kwargs):
-		"""Show a new dialog on top.
+		"""Show a new window on top.
 		
 		Hide the current one and show the new one.
 		"""
 		# TODO for popups, we sometimes want the old widget to stay visible
-		print 'DialogManager show', widget
 
 		self.hide()
-		self._dialogs.append(widget)
+		self._windows.append(widget)
 		return widget.show(**kwargs)
 
 	def replace(self, widget, **kwargs):
-		"""Replace the top dialog with this widget.
+		"""Replace the top window with this widget.
 
 		So far, this seems to be needed by the credits dialog.
 		"""
-		print 'DialogManager replace', widget
 		self.close()
 		return self.show(widget, **kwargs)
 
 	def close(self):
-		"""Close the top dialog.
+		"""Close the top window.
 		
-		If there is another dialog left, show it.
+		If there is another window left, show it.
 		"""
-		widget = self._dialogs.pop()
-		print 'DialogManager close', widget
+		widget = self._windows.pop()
 		widget.close()
-		if self._dialogs:
-			self._dialogs[-1].show()
+		if self._windows:
+			self._windows[-1].show()
 
 	def hide(self):
-		"""Attempt to hide the current dialog.
+		"""Attempt to hide the current window.
 		
-		A dialog that does not permit other dialogs on top of it will be closed,
+		A window that does not permit other windows on top of it will be closed,
 		any other will be hidden.
 		"""
-		print 'DialogManager hide'
-		if not self._dialogs:
+		if not self._windows:
 			return
 
-		if not self._dialogs[-1].stackable:
-			print 'DialogManager close top'
+		if not self._windows[-1].stackable:
 			self.close()
 		else:
-			print 'DialogManager hide top'
-			self._dialogs[-1].hide()
+			self._windows[-1].hide()
 
 	def toggle(self, widget):
-		print 'DialogManager toggle', widget
 		if widget.stackable:
 			# This means that the widget might still be somewhere in our stack.
-			# We can only toggle dialogs that are closed immediately when losing
+			# We can only toggle windows that are closed immediately when losing
 			# focus.
 			raise Exception('This should not be possible')
 
-		if self._dialogs and self._dialogs[-1] == widget:
-			print 'DialogManager toggle abort non stackable'
-			self._dialogs[-1].abort()
+		if self._windows and self._windows[-1] == widget:
+			self._windows[-1].abort()
 		else:
-			print 'DialogManager toggle show'
 			self.show(widget)
 
 	# TODO we can probably move the popup building into a separate class next to Dialog
@@ -186,7 +302,6 @@ class DialogManager(object):
 
 	def _show_dialog(self, dlg, bind, event_map=None, modal=False):
 		# TODO ugly, see todo above about moving the popup code to dialog
-		from horizons.gui.mainmenu import Dialog
 		class TempDialog(Dialog):
 			return_events = bind
 			def prepare(self, *args, **kwargs):

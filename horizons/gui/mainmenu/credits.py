@@ -19,7 +19,7 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-from horizons.gui.mainmenu import Dialog
+from horizons.gui.window import Dialog
 from horizons.gui.widgets.imagebutton import OkButton
 from horizons.util.python.callback import Callback
 
@@ -40,4 +40,4 @@ class Credits(Dialog):
 		                          'packagers', 'special_thanks')]
 
 		for i in xrange(5): # add callbacks to each pickbelt
-			labels[i].capture(Callback(self.dialogs.replace, self, number=i), event_name="mouseClicked")
+			labels[i].capture(Callback(self.windows.replace, self, number=i), event_name="mouseClicked")

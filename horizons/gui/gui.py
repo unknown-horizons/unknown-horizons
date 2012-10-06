@@ -29,11 +29,11 @@ from horizons.gui.quotes import GAMEPLAY_TIPS, FUN_QUOTES
 import horizons.globals
 import horizons.main
 
-from horizons.gui.dialogmanager import DialogManager
 from horizons.gui.keylisteners import MainListener
 from horizons.messaging import GuiAction
 from horizons.component.ambientsoundcomponent import AmbientSoundComponent
 from horizons.gui.util import LazyWidgetsDict
+from horizons.gui.window import WindowManager
 
 from horizons.command.game import PauseCommand, UnPauseCommand
 
@@ -74,13 +74,13 @@ class Gui(object):
 		self.__pause_displayed = False
 		self._background_image = self._get_random_background()
 
-		self._dialogs = DialogManager(self.widgets)
+		self._windows = WindowManager(self.widgets)
 
 		from horizons.gui.mainmenu import CallForSupport, Credits, SaveLoad, Help, SingleplayerMenu, MultiplayerMenu
-		self._call_for_support = CallForSupport(self.widgets, manager=self._dialogs)
-		self._credits = Credits(self.widgets, manager=self._dialogs)
-		self._saveload = SaveLoad(self.widgets, gui=self, manager=self._dialogs)
-		self._help = Help(self.widgets, gui=self, manager=self._dialogs)
+		self._call_for_support = CallForSupport(self.widgets, manager=self._windows)
+		self._credits = Credits(self.widgets, manager=self._windows)
+		self._saveload = SaveLoad(self.widgets, gui=self, manager=self._windows)
+		self._help = Help(self.widgets, gui=self, manager=self._windows)
 		self._singleplayer = SingleplayerMenu(self.widgets, gui=self)
 		self._multiplayer = MultiplayerMenu(self.widgets, gui=self)
 
@@ -101,10 +101,10 @@ class Gui(object):
 			'help'             : self.on_help,
 			'closeButton'      : self.show_quit,
 			'quit'             : self.show_quit,
-			'dead_link'        : lambda: self._dialogs.show(self._call_for_support), # call for help; SoC information
-			'chimebell'        : lambda: self._dialogs.show(self._call_for_support),
-			'creditsLink'      : lambda: self._dialogs.show(self._credits),
-			'credits'          : lambda: self._dialogs.show(self._credits),
+			'dead_link'        : lambda: self._windows.show(self._call_for_support), # call for help; SoC information
+			'chimebell'        : lambda: self._windows.show(self._call_for_support),
+			'creditsLink'      : lambda: self._windows.show(self._credits),
+			'credits'          : lambda: self._windows.show(self._credits),
 			'loadgameButton'   : horizons.main.load_game,
 			'loadgame'         : horizons.main.load_game,
 			'changeBackground' : self.get_random_background_by_button
@@ -192,7 +192,7 @@ class Gui(object):
 		Toggles help screen via static variable *help_is_displayed*.
 		Can be called both from main menu and in-game interface.
 		"""
-		self._dialogs.toggle(self._help)
+		self._windows.toggle(self._help)
 
 	def show_quit(self):
 		"""Shows the quit dialog. Closes the game unless the dialog is cancelled."""
@@ -220,17 +220,17 @@ class Gui(object):
 			return False
 
 	def show_select_savegame(self, mode, sanity_checker=None, sanity_criteria=None):
-		return self._dialogs.show(self._saveload, mode=mode, sanity_checker=sanity_checker,
+		return self._windows.show(self._saveload, mode=mode, sanity_checker=sanity_checker,
 								  sanity_criteria=sanity_criteria)
 
 # display
 
 	# TODO remove both functions later
 	def show_popup(self, *args, **kwargs):
-		return self._dialogs.show_popup(*args, **kwargs)
+		return self._windows.show_popup(*args, **kwargs)
 
 	def show_error_popup(self, *args, **kwargs):
-		return self._dialogs.show_error_popup(*args, **kwargs)
+		return self._windows.show_error_popup(*args, **kwargs)
 
 	def on_escape(self):
 		pass

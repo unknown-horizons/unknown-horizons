@@ -23,7 +23,7 @@ from fife import fife
 
 from horizons.command.game import PauseCommand, UnPauseCommand
 from horizons.gui.keylisteners.ingamekeylistener import KeyConfig
-from horizons.gui.mainmenu import Dialog
+from horizons.gui.window import Dialog
 from horizons.gui.widgets.imagebutton import OkButton
 
 

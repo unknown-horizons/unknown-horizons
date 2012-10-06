@@ -20,7 +20,7 @@
 # ###################################################
 
 from horizons.component.ambientsoundcomponent import AmbientSoundComponent
-from horizons.gui.mainmenu import Dialog
+from horizons.gui.window import Dialog
 from horizons.gui.widgets.imagebutton import OkButton
 
 

@@ -143,7 +143,7 @@ class SingleplayerMenu(object):
 			text = u"We currently don't have any campaigns available for you. " + \
 				u"If you are interested in adding campaigns to Unknown Horizons, " + \
 				u"please contact us via our website (http://www.unknown-horizons.org)!"
-			self.dialogs.show_popup("No campaigns available yet", text)
+			self.windows.show_popup("No campaigns available yet", text)
 
 			self._files, maps_display = SavegameManager.get_campaigns()
 			self.active_right_side.distributeInitialData({ 'maplist' : maps_display, })
@@ -184,7 +184,7 @@ class SingleplayerMenu(object):
 		""" Starts a single player horizons. """
 		playername = self._playerdata.get_player_name()
 		if not playername:
-			self.dialogs.show_popup(_("Invalid player name"), _("You entered an invalid playername."))
+			self.windows.show_popup(_("Invalid player name"), _("You entered an invalid playername."))
 			return
 		playercolor = self._playerdata.get_player_color()
 		self._save_player_name()

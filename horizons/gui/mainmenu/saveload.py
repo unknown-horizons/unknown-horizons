@@ -23,7 +23,7 @@ import os
 import tempfile
 import time
 
-from horizons.gui.mainmenu import Dialog
+from horizons.gui.window import Dialog
 from horizons.gui.widgets.imagebutton import OkButton, CancelButton, DeleteButton
 from horizons.savegamemanager import SavegameManager
 from horizons.util.python.callback import Callback
@@ -68,9 +68,9 @@ class SaveLoad(Dialog):
 			else:
 				map_files, map_file_display = SavegameManager.get_multiplayersaves()
 			if not map_files:
-				# TODO find a way that does not require calling dialogs.close() here
-				self.dialogs.close()
-				self.dialogs.show_popup(_("No saved games"), _("There are no saved games to load."))
+				# TODO find a way that does not require calling windows.close() here
+				self.windows.close()
+				self.windows.show_popup(_("No saved games"), _("There are no saved games to load."))
 				return False
 		else: # don't show autosave and quicksave on save
 			if not mp:
@@ -161,27 +161,27 @@ class SaveLoad(Dialog):
 			if delete_retval:
 				self.current.distributeData({'savegamelist' : -1})
 				self._cb()
-			return self.dialogs.show(self, **self._args)
+			return self.windows.show(self, **self._args)
 
 		selected_savegame = None
 		if mode == 'save': # return from textfield
 			selected_savegame = self.current.collectData('savegamefile')
 			if selected_savegame == "":
-				self.dialogs.show_error_popup(windowtitle=_("No filename given"),
+				self.windows.show_error_popup(windowtitle=_("No filename given"),
 				                      description=_("Please enter a valid filename."))
-				return self.dialogs.show(self, **self._args) # reshow dialog
+				return self.windows.show(self, **self._args) # reshow dialog
 			elif selected_savegame in self._map_file_display: # savegamename already exists
 				#xgettext:python-format
 				message = _("A savegame with the name '{name}' already exists.").format(
 				             name=selected_savegame) + u"\n" + _('Overwrite it?')
 				# keep the pop-up non-modal because otherwise it is double-modal (#1876)
-				if not self.dialogs.show_popup(_("Confirmation for overwriting"), message, show_cancel_button=True, modal=False):
-					return self.dialogs.show(self, **self._args) # reshow dialog
+				if not self.windows.show_popup(_("Confirmation for overwriting"), message, show_cancel_button=True, modal=False):
+					return self.windows.show(self, **self._args) # reshow dialog
 			elif sanity_checker and sanity_criteria:
 				if not sanity_checker(selected_savegame):
-					self.dialogs.show_error_popup(windowtitle=_("Invalid filename given"),
+					self.windows.show_error_popup(windowtitle=_("Invalid filename given"),
 					                      description=sanity_criteria)
-					return self.dialogs.show(self, **self._args) # reshow dialog
+					return self.windows.show(self, **self._args) # reshow dialog
 		else: # return selected item from list
 			selected_savegame = self.current.collectData('savegamelist')
 			assert selected_savegame != -1, "No savegame selected in savegamelist"
@@ -278,18 +278,18 @@ class SaveLoad(Dialog):
 		"""
 		selected_item = self.current.collectData("savegamelist")
 		if selected_item == -1 or selected_item >= len(map_files):
-			self.dialogs.show_popup(_("No file selected"), _("You need to select a savegame to delete."))
+			self.windows.show_popup(_("No file selected"), _("You need to select a savegame to delete."))
 			return False
 		selected_file = map_files[selected_item]
 		#xgettext:python-format
 		message = _("Do you really want to delete the savegame '{name}'?").format(
 		             name=SavegameManager.get_savegamename_from_filename(selected_file))
-		if self.dialogs.show_popup(_("Confirm deletion"), message, show_cancel_button=True):
+		if self.windows.show_popup(_("Confirm deletion"), message, show_cancel_button=True):
 			try:
 				os.unlink(selected_file)
 				return True
 			except OSError as err:
-				self.dialogs.show_popup(_("Error!"), _("Failed to delete savefile!") + "\n%s" % err)
+				self.windows.show_popup(_("Error!"), _("Failed to delete savefile!") + "\n%s" % err)
 				return False
 		else: # player cancelled deletion
 			return False
