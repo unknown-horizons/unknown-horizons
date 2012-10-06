@@ -62,6 +62,7 @@ class Dialog(object):
 		if self._hidden:
 			print 'Dialog show unhide', self
 			self._widget.show()
+			self._widget.requestFocus()
 			self._hidden = False
 			return
 
@@ -79,25 +80,7 @@ class Dialog(object):
 		if self.modal:
 			self._show_modal_background()
 
-		def _on_keypress(event, dlg=self._widget): # rebind to make sure this dlg is used
-			print 'keypress', dlg
-			from horizons.engine import pychan_util
-			if event.getKey().getValue() == fife.Key.ESCAPE: # convention says use cancel action
-				btn = dlg.findChild(name=CancelButton.DEFAULT_NAME)
-				callback = pychan_util.get_button_event(btn) if btn else None
-				if callback:
-					pychan.tools.applyOnlySuitable(callback, event=event, widget=btn)
-				else:
-					# escape should hide the dialog default
-					horizons.globals.fife.pychanmanager.breakFromMainLoop(CLOSE_DIALOG)
-			elif event.getKey().getValue() == fife.Key.ENTER: # convention says use ok action
-				btn = dlg.findChild(name=OkButton.DEFAULT_NAME)
-				callback = pychan_util.get_button_event(btn) if btn else None
-				if callback:
-					pychan.tools.applyOnlySuitable(callback, event=event, widget=btn)
-				# can't guess a default action here
-
-		self._widget.capture(_on_keypress, event_name="keyPressed")
+		self._widget.capture(self._on_keypress, event_name="keyPressed")
 		self._widget.show()
 		print 'Dialog show execute start', self
 		ret = self._widget.execute(self.return_events)
@@ -150,3 +133,20 @@ class Dialog(object):
 			del self._modal_widget
 		except AttributeError:
 			pass
+
+	def _on_keypress(self, event):
+		from horizons.engine import pychan_util
+		if event.getKey().getValue() == fife.Key.ESCAPE: # convention says use cancel action
+			btn = self._widget.findChild(name=CancelButton.DEFAULT_NAME)
+			callback = pychan_util.get_button_event(btn) if btn else None
+			if callback:
+				pychan.tools.applyOnlySuitable(callback, event=event, widget=btn)
+			else:
+				# escape should hide the dialog default
+				horizons.globals.fife.pychanmanager.breakFromMainLoop(CLOSE_DIALOG)
+		elif event.getKey().getValue() == fife.Key.ENTER: # convention says use ok action
+			btn = self._widget.findChild(name=OkButton.DEFAULT_NAME)
+			callback = pychan_util.get_button_event(btn) if btn else None
+			if callback:
+				pychan.tools.applyOnlySuitable(callback, event=event, widget=btn)
+			# can't guess a default action here
