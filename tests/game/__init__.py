@@ -109,15 +109,17 @@ class SPTestSession(SPSession):
 			with _dbreader_convert_dummy_objects():
 				return super(SPTestSession, self).save(*args, **kwargs)
 
-	def load(self, savegame, players, is_ai_test):
+	def load(self, savegame, players, is_ai_test, is_map):
 		# keep a reference on the savegame, so we can cleanup in `end`
 		self.savegame = savegame
+		self.started_from_map = is_map
 		if is_ai_test:
 			# enable trader, pirate and natural resources in AI tests.
 			options = StartGameOptions.create_ai_test(savegame, players)
 		else:
 			# disable the above in usual game tests for simplicity.
 			options = StartGameOptions.create_game_test(savegame, players)
+			options.is_map = is_map
 		super(SPTestSession, self).load(options)
 
 	def end(self, keep_map=False, remove_savegame=True):
@@ -126,16 +128,10 @@ class SPTestSession(SPSession):
 		"""
 		super(SPTestSession, self).end()
 
-		# Find all islands in the map first
-		savegame_db = SavegameAccessor(self.savegame)
-		if not keep_map:
-			for (island_file, ) in savegame_db('SELECT file FROM island'):
-				if not island_file.startswith('random:'): # random islands don't exist as files
-					os.remove(island_file)
-
-		# Finally remove savegame
+		# remove the saved game
+		savegame_db = SavegameAccessor(self.savegame, self.started_from_map)
 		savegame_db.close()
-		if remove_savegame:
+		if remove_savegame and not self.started_from_map:
 			os.remove(self.savegame)
 
 	@classmethod
@@ -183,17 +179,17 @@ def new_session(mapgen=create_map, rng_seed=RANDOM_SEED, human_player=True, ai_p
 		id = i + human_player + 1
 		players.append({'id': id, 'name': ('AI' + str(i)), 'color': Color[id], 'local': id == 1, 'ai': True, 'difficulty': ai_difficulty})
 
-	session.load(mapgen(), players, ai_players > 0)
+	session.load(mapgen(), players, ai_players > 0, True)
 	return session, session.world.player
 
 
-def load_session(savegame, rng_seed=RANDOM_SEED):
+def load_session(savegame, rng_seed=RANDOM_SEED, is_map=False):
 	"""
 	Start a new session with the given savegame.
 	"""
 	session = SPTestSession(rng_seed=rng_seed)
 
-	session.load(savegame, [], False)
+	session.load(savegame, [], False, is_map)
 
 	return session
 

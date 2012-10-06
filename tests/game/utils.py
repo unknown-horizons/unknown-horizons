@@ -31,7 +31,6 @@ from horizons.command.unit import CreateUnit
 from horizons.constants import GROUND, BUILDINGS, UNITS, RES
 from horizons.util.dbreader import DbReader
 from horizons.util.shapes import Point, Rect
-from horizons.util.uhdbaccessor import read_savegame_template
 from horizons.component.storagecomponent import StorageComponent
 
 
@@ -41,14 +40,6 @@ def create_map():
 	to the database file.
 	"""
 
-	# Create island.
-	fd, islandfile = tempfile.mkstemp()
-	os.close(fd)
-
-	db = DbReader(islandfile)
-	db("CREATE TABLE ground(x INTEGER NOT NULL, y INTEGER NOT NULL, ground_id INTEGER NOT NULL, action_id TEXT NOT NULL, rotation INTEGER NOT NULL)")
-
-	db("BEGIN TRANSACTION")
 	tiles = []
 	for x, y in Rect.init_from_topleft_and_size(0, 0, 20, 20).tuple_iter():
 		if (0 < x < 20) and (0 < y < 20):
@@ -56,21 +47,20 @@ def create_map():
 		else:
 			# Add coastline at the borders.
 			ground = GROUND.SHALLOW_WATER
-		tiles.append([x, y] + list(ground))
-	db.execute_many("INSERT INTO ground VALUES(?, ?, ?, ?, ?)", tiles)
-	db("COMMIT")
+		tiles.append([0, 20 + x, 20 + y] + list(ground))
 
-	# Create savegame with the island above.
-	fd, savegame = tempfile.mkstemp()
+	fd, map_file = tempfile.mkstemp()
 	os.close(fd)
 
-	db = DbReader(savegame)
-	read_savegame_template(db)
-	db("BEGIN TRANSACTION")
-	db("INSERT INTO island (x, y, file) VALUES(?, ?, ?)", 20, 20, islandfile)
-	db("COMMIT")
+	db = DbReader(map_file)
+	with open('content/map-template.sql') as map_template:
+		db.execute_script(map_template.read())
 
-	return savegame
+	db('BEGIN')
+	db.execute_many("INSERT INTO ground VALUES(?, ?, ?, ?, ?, ?)", tiles)
+	db('COMMIT')
+	db.close()
+	return map_file
 
 
 def new_settlement(session, pos=Point(30, 20)):

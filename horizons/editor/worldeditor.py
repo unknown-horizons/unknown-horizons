@@ -31,7 +31,6 @@ from horizons.entities import Entities
 from horizons.scheduler import Scheduler
 from horizons.util.dbreader import DbReader
 from horizons.util.python.callback import Callback
-from horizons.util.uhdbaccessor import read_savegame_template
 
 class WorldEditor(object):
 	def __init__(self, world):
