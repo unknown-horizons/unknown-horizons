@@ -28,9 +28,6 @@ class Credits(Dialog):
 	return_events = {OkButton.DEFAULT_NAME: True}
 
 	def prepare(self, number=0, **kwargs):
-		if self._widget:
-			self._widget.hide()
-
 		self._widget = self._widget_loader['credits{number}'.format(number=number)]
 		for box in self._widget.findChildren(name='box'):
 			box.margins = (30, 0) # to get some indentation
@@ -43,4 +40,4 @@ class Credits(Dialog):
 		                          'packagers', 'special_thanks')]
 
 		for i in xrange(5): # add callbacks to each pickbelt
-			labels[i].capture(Callback(self.show, number=i), event_name="mouseClicked")
+			labels[i].capture(Callback(self.dialogs.replace, self, number=i), event_name="mouseClicked")

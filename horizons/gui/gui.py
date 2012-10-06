@@ -39,6 +39,33 @@ from horizons.gui.util import LazyWidgetsDict
 
 from horizons.command.game import PauseCommand, UnPauseCommand
 
+
+class DialogManager(object):
+	def __init__(self):
+		self._dialogs = []
+
+	def show(self, widget, **kwargs):
+		"""Show a new dialog on top."""
+		# TODO this should hide the current top dialog
+
+		self._dialogs.append(widget)
+		widget.show(**kwargs)
+
+	def replace(self, widget, **kwargs):
+		"""Replace the top dialog with this widget.
+
+		So far, this seems to be needed by the credits dialog.
+		"""
+		self.close()
+		self.show(widget, **kwargs)
+
+	def close(self):
+		"""Close the top dialog."""
+		# TODO this should show the widget below
+		widget = self._dialogs.pop()
+		widget.close()
+
+
 class Gui(object):
 	"""This class handles all the out of game menu, like the main and pause menu, etc.
 	"""
@@ -78,9 +105,11 @@ class Gui(object):
 		self.__pause_displayed = False
 		self._background_image = self._get_random_background()
 
+		self._dialogs = DialogManager()
+
 		from horizons.gui.mainmenu import CallForSupport, Credits, SaveLoad, Help, SingleplayerMenu, MultiplayerMenu
-		self._call_for_support = CallForSupport(self.widgets)
-		self._credits = Credits(self.widgets)
+		self._call_for_support = CallForSupport(self.widgets, manager=self._dialogs)
+		self._credits = Credits(self.widgets, manager=self._dialogs)
 		self._saveload = SaveLoad(self.widgets, gui=self)
 		self._help = Help(self.widgets, gui=self)
 		self._singleplayer = SingleplayerMenu(self.widgets, gui=self)
@@ -103,10 +132,10 @@ class Gui(object):
 			'help'             : self.on_help,
 			'closeButton'      : self.show_quit,
 			'quit'             : self.show_quit,
-			'dead_link'        : self._call_for_support.show, # call for help; SoC information
-			'chimebell'        : self._call_for_support.show,
-			'creditsLink'      : self._credits.show,
-			'credits'          : self._credits.show,
+			'dead_link'        : lambda: self._dialogs.show(self._call_for_support), # call for help; SoC information
+			'chimebell'        : lambda: self._dialogs.show(self._call_for_support),
+			'creditsLink'      : lambda: self._dialogs.show(self._credits),
+			'credits'          : lambda: self._dialogs.show(self._credits),
 			'loadgameButton'   : horizons.main.load_game,
 			'loadgame'         : horizons.main.load_game,
 			'changeBackground' : self.get_random_background_by_button

@@ -33,9 +33,10 @@ class Dialog(object):
 	modal = True
 	widget_name = None
 
-	def __init__(self, widget_loader, gui=None):
+	def __init__(self, widget_loader, gui=None, manager=None):
 		self._widget_loader = widget_loader
 		self._widget = None
+		self.dialogs = manager
 		# TODO this needs to go probably
 		self._gui = gui
 		self.active = False
@@ -48,7 +49,7 @@ class Dialog(object):
 		return return_value
 
 	def show(self, *args, **kwargs):
-		self.close()
+		assert not self.active
 
 		self.active = True
 		if self.widget_name:
@@ -70,8 +71,7 @@ class Dialog(object):
 					pychan.tools.applyOnlySuitable(callback, event=event, widget=btn)
 				else:
 					# escape should hide the dialog default
-					horizons.globals.fife.pychanmanager.breakFromMainLoop(returnValue=False)
-					dlg.hide()
+					horizons.globals.fife.pychanmanager.breakFromMainLoop(CLOSE_DIALOG)
 			elif event.getKey().getValue() == fife.Key.ENTER: # convention says use ok action
 				btn = dlg.findChild(name=OkButton.DEFAULT_NAME)
 				callback = pychan_util.get_button_event(btn) if btn else None
@@ -80,20 +80,22 @@ class Dialog(object):
 				# can't guess a default action here
 
 		self._widget.capture(_on_keypress, event_name="keyPressed")
+		self._widget.show()
 		ret = self._widget.execute(self.return_events)
-
 		if self.modal:
 			self._hide_modal_background()
 
-		self.active = False
-		if self._widget:
-			self._widget.hide()
-
+		self.dialogs.close()
 		return self.post(ret)
 
 	def close(self):
 		if self.active:
-			pychan.manager.breakFromMainLoop(CLOSE_DIALOG)
+			self.hide()
+			self.active = False
+
+	def hide(self):
+		if self._widget:
+			self._widget.hide()
 
 	def toggle(self, **kwargs):
 		if self.active:
