@@ -210,7 +210,7 @@ def start(_command_line_arguments):
 		startup_worked = _start_campaign(command_line_arguments.start_campaign, force_player_id=command_line_arguments.force_player_id)
 	elif command_line_arguments.load_map is not None:
 		startup_worked = _load_cmd_map(command_line_arguments.load_map, command_line_arguments.ai_players,
-			command_line_arguments.human_ai, command_line_arguments.force_player_id)
+			command_line_arguments.force_player_id)
 	elif command_line_arguments.load_quicksave is not None:
 		startup_worked = _load_last_quicksave()
 	elif command_line_arguments.edit_map is not None:
@@ -462,7 +462,7 @@ def _start_campaign(campaign_name, force_player_id=None):
 		campaign={'campaign_name': campaign_name, 'scenario_index': 0, 'scenario_name': scenarios[0]},
 		force_player_id=force_player_id)
 
-def _load_cmd_map(savegame, ai_players, human_ai, force_player_id=None):
+def _load_cmd_map(savegame, ai_players, force_player_id=None):
 	"""Load a map specified by user.
 	@param savegame: either the displayname of a savegame or a path to a savegame
 	@return: bool, whether loading succeded"""
@@ -473,7 +473,7 @@ def _load_cmd_map(savegame, ai_players, human_ai, force_player_id=None):
 		return False
 
 	_modules.gui.show_loading_screen()
-	options = StartGameOptions.create_load_game(map_file, human_ai, force_player_id)
+	options = StartGameOptions.create_load_game(map_file, force_player_id)
 	start_singleplayer(options)
 	return True
 
@@ -508,7 +508,7 @@ def _find_matching_map(name_or_path, savegames):
 			print u"Error: Cannot find savegame or map '{name}'.".format(name=name_or_path)
 			return
 
-def _load_last_quicksave(session=None, force_player_id=None, human_ai=False):
+def _load_last_quicksave(session=None, force_player_id=None):
 	"""Load last quicksave
 	@param session: value of session
 	@return: bool, whether loading succeded"""
@@ -527,7 +527,7 @@ def _load_last_quicksave(session=None, force_player_id=None, human_ai=False):
 
 	save = max(save_files)
 	_modules.gui.show_loading_screen()
-	options = StartGameOptions.create_load_game(save, human_ai, force_player_id)
+	options = StartGameOptions.create_load_game(save, force_player_id)
 	start_singleplayer(options)
 	return True
 
