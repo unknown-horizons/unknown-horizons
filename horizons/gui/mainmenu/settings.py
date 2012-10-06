@@ -19,10 +19,15 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-from .call_for_support import CallForSupport
-from .credits import Credits
-from .saveload import SaveLoad
-from .help import Help
-from .singleplayer import SingleplayerMenu
-from .multiplayer import MultiplayerMenu
-from .settings import Settings
+import horizons.globals
+from horizons.gui.window import Window
+
+
+class Settings(Window):
+	# TODO pressing escape in the settings window shows the main quit popup
+
+	def show(self):
+		horizons.globals.fife.show_settings()
+
+	def hide(self):
+		horizons.globals.fife._setting.OptionsDlg.hide()

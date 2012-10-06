@@ -32,6 +32,8 @@ import horizons.main
 from horizons.gui.keylisteners import MainListener
 from horizons.messaging import GuiAction
 from horizons.component.ambientsoundcomponent import AmbientSoundComponent
+from horizons.gui.mainmenu import (CallForSupport, Credits, SaveLoad, Help, SingleplayerMenu,
+								   MultiplayerMenu, Settings)
 from horizons.gui.util import LazyWidgetsDict
 from horizons.gui.window import WindowManager
 
@@ -76,13 +78,13 @@ class Gui(object):
 
 		self._windows = WindowManager(self.widgets)
 
-		from horizons.gui.mainmenu import CallForSupport, Credits, SaveLoad, Help, SingleplayerMenu, MultiplayerMenu
 		self._call_for_support = CallForSupport(self.widgets, manager=self._windows)
 		self._credits = Credits(self.widgets, manager=self._windows)
 		self._saveload = SaveLoad(self.widgets, gui=self, manager=self._windows)
 		self._help = Help(self.widgets, gui=self, manager=self._windows)
 		self._singleplayer = SingleplayerMenu(self.widgets, gui=self, manager=self._windows)
 		self._multiplayer = MultiplayerMenu(self.widgets, gui=self, manager=self._windows)
+		self._settings = Settings(None)
 
 		GuiAction.subscribe( self._on_gui_action )
 
@@ -95,8 +97,8 @@ class Gui(object):
 			'start'            : lambda: self._windows.show(self._singleplayer), # second is the label in menu
 			'startMulti'       : lambda: self._windows.show(self._multiplayer),
 			'start_multi'      : lambda: self._windows.show(self._multiplayer),
-			'settingsLink'     : self.show_settings,
-			'settings'         : self.show_settings,
+			'settingsLink'     : lambda: self._windows.show(self._settings),
+			'settings'         : lambda: self._windows.show(self._settings),
 			'helpLink'         : self.on_help,
 			'help'             : self.on_help,
 			'closeButton'      : self.show_quit,
@@ -145,7 +147,7 @@ class Gui(object):
 			events = { # needed twice, save only once here
 				'e_load' : do_load,
 				'e_save' : self.save_game,
-				'e_sett' : self.show_settings,
+				'e_sett' : lambda: self._windows.show(self._settings),
 				'e_help' : self.on_help,
 				'e_start': self.toggle_pause,
 				'e_quit' : do_quit,
@@ -182,10 +184,6 @@ class Gui(object):
 		if not success:
 			# There was a problem during the 'save game' procedure.
 			self._windows.show_popup(_('Error'), _('Failed to save.'))
-
-	def show_settings(self):
-		"""Displays settings gui derived from the FIFE settings module."""
-		horizons.globals.fife.show_settings()
 
 	def on_help(self):
 		"""Called on help action.
