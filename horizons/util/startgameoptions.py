@@ -126,4 +126,10 @@ class StartGameOptions(object):
 		options = StartGameOptions(map_name)
 		options.is_map = True
 		return options
-	
+
+	@classmethod
+	def create_load_game(cls, saved_game, human_ai, force_player_id):
+		options = StartGameOptions(saved_game)
+		options.human_ai = human_ai
+		options.force_player_id = force_player_id
+		return options

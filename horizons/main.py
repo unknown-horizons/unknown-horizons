@@ -395,21 +395,6 @@ def prepare_multiplayer(game, trader_enabled=True, pirate_enabled=True, natural_
 def start_multiplayer(game):
 	_modules.session.start()
 
-def load_game(ai_players=0, human_ai=False, savegame=None, is_scenario=False, campaign=None,
-              pirate_enabled=True, trader_enabled=True, force_player_id=None, is_map=False):
-	"""Shows select savegame menu if savegame is none, then loads the game"""
-	if savegame is None:
-		savegame = _modules.gui.show_select_savegame(mode='load')
-		if savegame is None:
-			return False # user aborted dialog
-	_modules.gui.show_loading_screen()
-
-	options = StartGameOptions.create_start_singleplayer(savegame, is_scenario=is_scenario,
-		campaign=campaign, ai_players=ai_players, human_ai=human_ai, pirate_enabled=pirate_enabled,
-		trader_enabled=trader_enabled, force_player_id=force_player_id, is_map=is_map)
-	start_singleplayer(options)
-	return True
-
 
 ## GAME START FUNCTIONS
 def _start_map(map_name, ai_players=0, human_ai=False, is_scenario=False, campaign=None,
@@ -424,9 +409,12 @@ def _start_map(map_name, ai_players=0, human_ai=False, is_scenario=False, campai
 	map_file = _find_matching_map(map_name, savegames)
 	if not map_file:
 		return False
-	load_game(ai_players, human_ai, map_file, is_scenario, campaign=campaign,
-	          trader_enabled=trader_enabled, pirate_enabled=pirate_enabled,
-	          force_player_id=force_player_id, is_map=is_map)
+
+	_modules.gui.show_loading_screen()
+	options = StartGameOptions.create_start_singleplayer(map_file, is_scenario=is_scenario,
+		campaign=campaign, ai_players=ai_players, human_ai=human_ai, pirate_enabled=pirate_enabled,
+		trader_enabled=trader_enabled, force_player_id=force_player_id, is_map=is_map)
+	start_singleplayer(options)
 	return True
 
 def _start_random_map(ai_players, human_ai, seed=None, force_player_id=None):
@@ -483,7 +471,10 @@ def _load_cmd_map(savegame, ai_players, human_ai, force_player_id=None):
 	map_file = _find_matching_map(savegame, savegames)
 	if not map_file:
 		return False
-	load_game(savegame=map_file, force_player_id=force_player_id)
+
+	_modules.gui.show_loading_screen()
+	options = StartGameOptions.create_load_game(map_file, human_ai, force_player_id)
+	start_singleplayer(options)
 	return True
 
 def _find_matching_map(name_or_path, savegames):
@@ -517,7 +508,7 @@ def _find_matching_map(name_or_path, savegames):
 			print u"Error: Cannot find savegame or map '{name}'.".format(name=name_or_path)
 			return
 
-def _load_last_quicksave(session=None, force_player_id=None):
+def _load_last_quicksave(session=None, force_player_id=None, human_ai=False):
 	"""Load last quicksave
 	@param session: value of session
 	@return: bool, whether loading succeded"""
@@ -533,8 +524,11 @@ def _load_last_quicksave(session=None, force_player_id=None):
 		if not save_files:
 			print "Error: No quicksave found."
 			return False
+
 	save = max(save_files)
-	load_game(savegame=save, force_player_id=force_player_id)
+	_modules.gui.show_loading_screen()
+	options = StartGameOptions.create_load_game(save, human_ai, force_player_id)
+	start_singleplayer(options)
 	return True
 
 def edit_map(map_name):
