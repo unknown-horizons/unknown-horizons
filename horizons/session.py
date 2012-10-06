@@ -288,33 +288,26 @@ class Session(LivingObject):
 	def save(self, savegame=None):
 		raise NotImplementedError
 
-	def load(self, savegame, players, trader_enabled, pirate_enabled,
-	         natural_resource_multiplier, is_scenario=False, campaign=None,
-	         force_player_id=None, disasters_enabled=True, is_multiplayer=False, is_map=False):
-		"""Loads a map. Key method for starting a game.
-		@param savegame: path to the savegame database.
-		@param players: iterable of dictionaries containing id, name, color, local, ai, and difficulty
-		@param is_scenario: Bool whether the loaded map is a scenario or not
-		@param force_player_id: the worldid of the selected human player or default if None (debug option)
-		"""
+	def load(self, options):
+		"""Loads a map. Key method for starting a game."""
 		"""
 		TUTORIAL: Here you see how the vital game elements (and some random things that are also required)
 		are initialised.
 		"""
-		if is_scenario:
+		if options.is_scenario:
 			# savegame is a yaml file, that contains reference to actual map file
-			self.scenario_eventhandler = ScenarioEventHandler(self, savegame)
+			self.scenario_eventhandler = ScenarioEventHandler(self, options.savegame)
 			# scenario maps can be normal maps or scenario maps:
 			map_filename = self.scenario_eventhandler.get_map_file()
-			savegame = os.path.join(SavegameManager.scenario_maps_dir, map_filename)
-			if not os.path.exists(savegame):
-				savegame = os.path.join(SavegameManager.maps_dir, map_filename)
-			is_map = True
-		self.campaign = {} if not campaign else campaign
+			options.savegame = os.path.join(SavegameManager.scenario_maps_dir, map_filename)
+			if not os.path.exists(options.savegame):
+				options.savegame = os.path.join(SavegameManager.maps_dir, map_filename)
+			options.is_map = True
+		self.campaign = {} if not options.campaign else options.campaign
 		
-		self.log.debug("Session: Loading from %s", savegame)
-		savegame_db = SavegameAccessor(savegame, is_map) # Initialize new dbreader
-		savegame_data = SavegameManager.get_metadata(savegame)
+		self.log.debug("Session: Loading from %s", options.savegame)
+		savegame_db = SavegameAccessor(options.savegame, options.is_map) # Initialize new dbreader
+		savegame_data = SavegameManager.get_metadata(options.savegame)
 
 		# load how often the game has been saved (used to know the difference between
 		# a loaded and a new game)
@@ -333,16 +326,10 @@ class Session(LivingObject):
 			self.random.setstate( rng_state_tuple )
 
 		self.world = World(self) # Load horizons.world module (check horizons/world/__init__.py)
-		self.world._init(savegame_db, force_player_id, disasters_enabled=disasters_enabled)
+		self.world._init(savegame_db, options.force_player_id, disasters_enabled=options.disasters_enabled)
 		self.view.load(savegame_db) # load view
 		if not self.is_game_loaded():
-			# NOTE: this must be sorted before iteration, cause there is no defined order for
-			#       iterating a dict, and it must happen in the same order for mp games.
-			for i in sorted(players, lambda p1, p2: cmp(p1['id'], p2['id'])):
-				self.world.setup_player(i['id'], i['name'], i['color'], i['clientid'] if is_multiplayer else None, i['local'], i['ai'], i['difficulty'])
-			self.world.set_forced_player(force_player_id)
-			center = self.world.init_new_world(trader_enabled, pirate_enabled, natural_resource_multiplier)
-			self.view.center(center[0], center[1])
+			options.init_new_world(self)
 		else:
 			# try to load scenario data
 			self.scenario_eventhandler.load(savegame_db)

@@ -52,6 +52,7 @@ from horizons.util.color import Color
 from horizons.util.difficultysettings import DifficultySettings
 from horizons.util.loaders.actionsetloader import ActionSetLoader
 from horizons.util.loaders.tilesetloader import TileSetLoader
+from horizons.util.startgameoptions import StartGameOptions
 from horizons.util.python import parse_port
 from horizons.util.python.callback import Callback
 from horizons.util.uhdbaccessor import UhDbAccessor
@@ -276,20 +277,13 @@ def quit():
 	"""Quits the game"""
 	horizons.globals.fife.quit()
 
-def start_singleplayer(map_file, playername="Player", playercolor=None, is_scenario=False,
-		campaign=None, ai_players=0, human_ai=False, trader_enabled=True, pirate_enabled=True,
-		natural_resource_multiplier=1, force_player_id=None, disasters_enabled=True, is_map=False):
-	"""Starts a singleplayer game
-	@param map_file: path to map file
-	@param ai_players: number of AI players to start (excludes possible human AI)
-	@param human_ai: whether to start the human player as an AI
-	@param force_player_id: the worldid of the selected human player or default if None (debug option)
-	"""
+def start_singleplayer(options):
+	"""Starts a singleplayer game."""
 	global preloading
 	preload_game_join(preloading)
 
-	if playercolor is None: # this can't be a default parameter because of circular imports
-		playercolor = Color[1]
+	if options.player_color is None: # this can't be a default parameter because of circular imports
+		options.player_color = Color[1]
 
 	# remove cursor while loading
 	horizons.globals.fife.cursor.set(fife_module.CURSOR_NONE)
@@ -310,15 +304,15 @@ def start_singleplayer(map_file, playername="Player", playercolor=None, is_scena
 	difficulty_level = {False: DifficultySettings.DEFAULT_LEVEL, True: DifficultySettings.EASY_LEVEL}
 	players = [{
 		'id': 1,
-		'name': playername,
-		'color': playercolor,
+		'name': options.player_name,
+		'color': options.player_color,
 		'local': True,
-		'ai': human_ai,
-		'difficulty': difficulty_level[bool(human_ai)],
+		'ai': options.human_ai,
+		'difficulty': difficulty_level[bool(options.human_ai)],
 	}]
 
 	# add AI players with a distinct color; if none can be found then use black
-	for num in xrange(ai_players):
+	for num in xrange(options.ai_players):
 		color = Color[COLORS.BLACK] # if none can be found then be black
 		for possible_color in Color:
 			if possible_color == Color[COLORS.BLACK]:
@@ -338,16 +332,15 @@ def start_singleplayer(map_file, playername="Player", playercolor=None, is_scena
 
 	from horizons.scenario import InvalidScenarioFileFormat # would create import loop at top
 	try:
-		_modules.session.load(map_file, players, trader_enabled, pirate_enabled,
-			natural_resource_multiplier, is_scenario=is_scenario, campaign=campaign,
-			force_player_id=force_player_id, disasters_enabled=disasters_enabled, is_map=is_map)
+		options.players = players
+		_modules.session.load(options)
 	except InvalidScenarioFileFormat:
 		raise
 	except Exception:
 		# don't catch errors when we should fail fast (used by tests)
 		if os.environ.get('FAIL_FAST', False):
 			raise
-		print "Failed to load", map_file
+		print "Failed to load", options.savegame
 		traceback.print_exc()
 		if _modules.session is not None and _modules.session.is_alive:
 			try:
@@ -361,7 +354,7 @@ def start_singleplayer(map_file, playername="Player", playercolor=None, is_scena
 		descr = _(u"The game you selected could not be started.") + u" " +\
 		        _("The savegame might be broken or has been saved with an earlier version.")
 		_modules.gui.show_error_popup(headline, descr)
-		load_game(ai_players, human_ai, force_player_id=force_player_id)
+		load_game(options.ai_players, options.human_ai, force_player_id=options.force_player_id)
 
 
 def prepare_multiplayer(game, trader_enabled=True, pirate_enabled=True, natural_resource_multiplier=1):
@@ -395,8 +388,9 @@ def prepare_multiplayer(game, trader_enabled=True, pirate_enabled=True, natural_
 	else:
 		map_file = SavegameManager.get_map( game.get_map_name() )
 
-	_modules.session.load(map_file,
-	                      game.get_player_list(), trader_enabled, pirate_enabled, natural_resource_multiplier, is_multiplayer=True)
+	options = StartGameOptions.create(map_file, game.get_player_list(), trader_enabled,
+		pirate_enabled, natural_resource_multiplier, is_multiplayer=True)
+	_modules.session.load(options)
 
 def start_multiplayer(game):
 	_modules.session.start()
@@ -409,10 +403,11 @@ def load_game(ai_players=0, human_ai=False, savegame=None, is_scenario=False, ca
 		if savegame is None:
 			return False # user aborted dialog
 	_modules.gui.show_loading_screen()
-#TODO
-	start_singleplayer(savegame, is_scenario=is_scenario, campaign=campaign,
-		ai_players=ai_players, human_ai=human_ai, pirate_enabled=pirate_enabled,
+
+	options = StartGameOptions.create_start_singleplayer(savegame, is_scenario=is_scenario,
+		campaign=campaign, ai_players=ai_players, human_ai=human_ai, pirate_enabled=pirate_enabled,
 		trader_enabled=trader_enabled, force_player_id=force_player_id, is_map=is_map)
+	start_singleplayer(options)
 	return True
 
 
@@ -444,10 +439,8 @@ def _start_map(map_name, ai_players=0, human_ai=False, is_scenario=False, campai
 	return True
 
 def _start_random_map(ai_players, human_ai, seed=None, force_player_id=None):
-	from horizons.util.random_map import generate_map_from_seed
-	start_singleplayer(generate_map_from_seed(seed),
-	                   ai_players=ai_players, human_ai=human_ai,
-	                   force_player_id=force_player_id, is_map=True)
+	options = StartGameOptions.create_start_random_map(ai_players, human_ai, seed, force_player_id)
+	start_singleplayer(options)
 	return True
 
 def _start_campaign(campaign_name, force_player_id=None):
@@ -564,9 +557,8 @@ def edit_map(map_name):
 	map_file = _find_matching_map(map_name, SavegameManager.get_maps())
 	if not map_file:
 		return False
-	start_singleplayer(map_file, playername="Editor", trader_enabled=False,
-		pirate_enabled=False, natural_resource_multiplier=0, disasters_enabled=False,
-		is_map=True)
+	options = StartGameOptions.create_editor_load(map_file)
+	start_singleplayer(options)
 
 	from horizons.editor.worldeditor import WorldEditor
 	_modules.session.world_editor = WorldEditor(_modules.session.world)
