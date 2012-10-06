@@ -92,7 +92,7 @@ class Gui(object):
 		"""Shows the main menu """
 		self._switch_current_widget('mainmenu', center=True, show=True, event_map={
 			'startSingle'      : lambda: self._windows.show(self._singleplayer), # first is the icon in menu
-			'start'            : lambda: self._windows.show(self._singleplayer), # second is the lable in menu
+			'start'            : lambda: self._windows.show(self._singleplayer), # second is the label in menu
 			'startMulti'       : lambda: self._windows.show(self._multiplayer),
 			'start_multi'      : lambda: self._windows.show(self._multiplayer),
 			'settingsLink'     : self.show_settings,
