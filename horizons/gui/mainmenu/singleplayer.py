@@ -26,8 +26,6 @@ import tempfile
 import os
 import locale
 
-from fife import fife
-
 import horizons.globals
 import horizons.main
 
@@ -90,17 +88,19 @@ class SingleplayerMenu(Window):
 	def close(self):
 		self._widget.hide()
 
+	def on_escape(self):
+		self._save_player_name()
+		self.windows.close()
+
 	def _select_single(self, show):
 		assert show in ('random', 'scenario', 'campaign', 'free_maps')
 
 		self._widget.hide()
 
-		close = Callback.ChainedCallbacks(self._save_player_name, self.windows.close)
-
 		event_map = {
 			# TODO get rid of the call to show main, someone else should be clever enough to figure out what
 			# the last menu/dialog was
-			'cancel'    : close,
+			'cancel'    : self.on_escape,
 			'okay'      : self.start_single,
 			'scenario'  : Callback(self._select_single, show='scenario'),
 			'campaign'  : Callback(self._select_single, show='campaign'),
@@ -108,11 +108,7 @@ class SingleplayerMenu(Window):
 			'free_maps' : Callback(self._select_single, show='free_maps')
 		}
 		self._widget.mapEvents(event_map)
-		def on_keypress(event):
-			if event.getKey().getValue() == fife.Key.ESCAPE:
-				close()
-
-		self._widget.capture(on_keypress, event_name="keyPressed")
+		self._capture_escape(self._widget)
 
 		# init gui for subcategory
 		right_side = self._widget_loader['sp_%s' % show]
@@ -186,8 +182,7 @@ class SingleplayerMenu(Window):
 			self._update_scenario_infos()
 
 		self._widget.show()
-		self._widget.is_focusable = True
-		self._widget.requestFocus()
+		self._focus(self._widget)
 
 	def start_single(self):
 		""" Starts a single player horizons. """

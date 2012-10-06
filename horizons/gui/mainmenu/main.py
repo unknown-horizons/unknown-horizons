@@ -19,8 +19,6 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-from fife import fife
-
 import horizons.main
 from horizons.gui.window import Window
 
@@ -51,14 +49,12 @@ class MainMenu(Window):
 
 		self.widget = self._widget_loader[self.widget_name]
 		self.widget.mapEvents(event_map)
-		self.widget.capture(self._on_keypress, event_name="keyPressed")
+		self._capture_escape(self.widget)
 		self.widget.show()
-		self.widget.is_focusable = True
-		self.widget.requestFocus()
+		self._focus(self.widget)
 
 	def hide(self):
 		self.widget.hide()
 
-	def _on_keypress(self, event):
-		if event.getKey().getValue() == fife.Key.ESCAPE:
-			self._gui.show_quit()
+	def on_escape(self):
+		self._gui.show_quit()

@@ -52,6 +52,32 @@ class Window(object):
 		# for now this is a special case for dialogs
 		pass
 
+	def _focus(self, widget):
+		"""Needed to capture key events to detect escape.
+		
+		Call this after your widget is visible.
+		"""
+		widget.is_focusable = True
+		widget.requestFocus()
+
+	def _capture_escape(self, widget):
+		"""Set up key capture for the widget.
+
+		Call this when setting up your widget.
+		"""
+		widget.capture(self._on_keypress, event_name="keyPressed")
+
+	def _on_keypress(self, event):
+		if event.getKey().getValue() == fife.Key.ESCAPE:
+			self.on_escape()
+
+	def on_escape(self):
+		"""By default the window will close when escape is pressed.
+
+		Override this in your subclass if you want to modify the behaviour.
+		"""
+		self.windows.close()
+
 
 class Dialog(Window):
 	modal = True

@@ -88,11 +88,7 @@ class MultiplayerMenu(Window):
 		self._widget_loader.reload('multiplayermenu')
 		self._widget = self._widget_loader['multiplayermenu']
 		self._widget.mapEvents(event_map)
-		def on_keypress(event):
-			if event.getKey().getValue() == fife.Key.ESCAPE:
-				self.windows.close()
-
-		self._widget.capture(on_keypress, event_name="keyPressed")
+		self._capture_escape(self._widget)
 
 		refresh_worked = self.__refresh()
 		if not refresh_worked:
@@ -103,8 +99,7 @@ class MultiplayerMenu(Window):
 		self._playerdata = PlayerDataSelection(self._widget, self._widget_loader)
 
 		self._widget.show()
-		self._widget.is_focusable = True
-		self._widget.requestFocus()
+		self._focus(self._widget)
 
 	# TODO hide and close do the same, we should only special case dialogs. make the manager
 	# always call close OR hide on windows

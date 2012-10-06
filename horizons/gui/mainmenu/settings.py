@@ -19,8 +19,6 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-from fife import fife
-
 import horizons.globals
 from horizons.gui.window import Window
 
@@ -41,16 +39,11 @@ class Settings(Window):
 			widget.mapEvents({
 				'cancelButton': widget.hide
 			})
-
-			def on_keypress(event):
-				if event.getKey().getValue() == fife.Key.ESCAPE:
-					self.windows.close()
-			widget.capture(on_keypress, event_name="keyPressed")
+			self._capture_escape(widget)
 
 			widget.__patched__ = True
 
-		widget.is_focusable = True
-		widget.requestFocus()
+		self._focus(widget)
 
 	def hide(self):
 		self._original_hide()
