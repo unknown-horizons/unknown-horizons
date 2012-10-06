@@ -55,7 +55,7 @@ class MultiplayerMenu(object):
 			descr = _(u'The multiplayer feature requires the library "pyenet", '
 			          u"which could not be found on your system.")
 			advice = _(u"Linux users: Try to install pyenet through your package manager.")
-			self._gui.show_error_popup(headline, descr, advice)
+			self.dialogs.show_error_popup(headline, descr, advice)
 			return
 
 		if NetworkInterface() is None:
@@ -65,7 +65,7 @@ class MultiplayerMenu(object):
 				headline = _(u"Failed to initialize networking.")
 				descr = _("Network features could not be initialized with the current configuration.")
 				advice = _("Check the settings you specified in the network section.")
-				self._gui.show_error_popup(headline, descr, advice, unicode(e))
+				self.dialogs.show_error_popup(headline, descr, advice, unicode(e))
 				return
 
 		if not NetworkInterface().isconnected():
@@ -141,7 +141,7 @@ class MultiplayerMenu(object):
 			descr = _(u"Could not connect to master server.")
 			advice = _(u"Please check your Internet connection. If it is fine, "
 			           u"it means our master server is temporarily down.")
-			self._gui.show_error_popup(headline, descr, advice, unicode(err))
+			self.dialogs.show_error_popup(headline, descr, advice, unicode(err))
 			return False
 		return True
 
@@ -159,9 +159,9 @@ class MultiplayerMenu(object):
 			return
 		"""
 		if not fatal:
-			self._gui.show_popup(_("Error"), unicode(exception))
+			self.dialogs.show_popup(_("Error"), unicode(exception))
 		else:
-			self._gui.show_popup(_("Fatal Network Error"),
+			self.dialogs.show_popup(_("Fatal Network Error"),
 		                 _("Something went wrong with the network:") + u'\n' +
 		                 unicode(exception) )
 			self._gui.quit_session(force=True)
@@ -175,13 +175,13 @@ class MultiplayerMenu(object):
 
 	def __player_kicked(self, game, player, myself):
 		if myself:
-			self._gui.show_popup(_("Kicked"), _("You have been kicked from the game by creator"))
+			self.dialogs.show_popup(_("Kicked"), _("You have been kicked from the game by creator"))
 			self.show()
 		else:
 			self.__print_event_message(_("{player} got kicked by creator").format(player=player.name))
 
 	def __game_terminated(self, game, errorstr):
-		self._gui.show_popup(_("Terminated"), errorstr)
+		self.dialogs.show_popup(_("Terminated"), errorstr)
 		self.show()
 
 	def _display_game_name(self, game):
@@ -259,7 +259,7 @@ class MultiplayerMenu(object):
 				btn_text += _(u"The file will be downloaded when the game starts.")
 				btn.btn_text = btn_text
 				def show():
-					self._gui.show_popup(_("Help"), btn_text, size=1)
+					self.dialogs.show_popup(_("Help"), btn_text, size=1)
 				btn.capture(show)
 
 			else:
@@ -306,11 +306,11 @@ class MultiplayerMenu(object):
 			AmbientSoundComponent.play_special('error')
 			return
 		if game.get_version() != NetworkInterface().get_clientversion():
-			self._gui.show_popup(_("Wrong version"),
+			self.dialogs.show_popup(_("Wrong version"),
 			                   #xgettext:python-format
-			                     _("The game's version differs from your version. Every player in a multiplayer game must use the same version. This can be fixed by every player updating to the latest version. Game version: {game_version} Your version: {own_version}").format(
-			                     game_version=game.get_version(),
-			                     own_version=NetworkInterface().get_clientversion()))
+			                        _("The game's version differs from your version. Every player in a multiplayer game must use the same version. This can be fixed by every player updating to the latest version. Game version: {game_version} Your version: {own_version}").format(
+			                        game_version=game.get_version(),
+			                        own_version=NetworkInterface().get_clientversion()))
 			return
 
 		# actual join
@@ -500,6 +500,7 @@ class MultiplayerMenu(object):
 
 	def __show_load_game(self):
 		# FIXME law of demeter, perhaps we should create our own instance here?
+		# FIXME this is broken
 		ret = self._gui._saveload.show(mode='mp_load')
 		if ret is None: # user aborted
 			return
