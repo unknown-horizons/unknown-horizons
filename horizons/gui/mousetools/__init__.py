@@ -28,5 +28,4 @@ from attackingtool import AttackingTool
 from pipettetool import PipetteTool
 
 # Editor tools
-from groundpipettetool import GroundPipetteTool
 from tilelayingtool import TileLayingTool

@@ -191,7 +191,7 @@ class IngameKeyListener(fife.IKeyListener, LivingObject):
 			self.session.ingame_gui.show_save_map_dialog()
 		elif action == _Actions.PIPETTE:
 			# copy mode: pipette tool
-			self.session.toggle_cursor('ground_pipette')
+			self.session.toggle_cursor('pipette')
 		elif action == _Actions.HEALTH_BAR:
 			# shows health bar of every instance with an health component
 			self.session.world.toggle_health_for_all_health_instances()
