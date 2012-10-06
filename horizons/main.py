@@ -205,7 +205,7 @@ def start(_command_line_arguments):
 	elif command_line_arguments.start_scenario is not None:
 		startup_worked = _start_map(command_line_arguments.start_scenario, 0, False, True, force_player_id=command_line_arguments.force_player_id)
 	elif command_line_arguments.start_campaign is not None:
-		startup_worked = _start_campaign(command_line_arguments.start_campaign, force_player_id=command_line_arguments.force_player_id)
+		startup_worked = _start_campaign(command_line_arguments.start_campaign, command_line_arguments.force_player_id)
 	elif command_line_arguments.load_map is not None:
 		startup_worked = _load_cmd_map(command_line_arguments.load_map, command_line_arguments.ai_players,
 			command_line_arguments.force_player_id)
@@ -386,9 +386,8 @@ def _start_random_map(ai_players, seed=None, force_player_id=None):
 	start_singleplayer(options)
 	return True
 
-def _start_campaign(campaign_name, force_player_id=None):
-	"""Finds the first scenario in this campaign and
-	loads it.
+def _start_campaign(campaign_name, force_player_id):
+	"""Finds the first scenario in this campaign and loads it.
 	@return: bool, whether loading succeded"""
 	if os.path.exists(campaign_name):
 		# a file was specified. In order to make sure everything works properly,
@@ -415,16 +414,27 @@ def _start_campaign(campaign_name, force_player_id=None):
 			shutil.copy(campaign_name, SavegameManager.campaigns_dir)
 		# use campaign file name below
 		campaign_name = os.path.splitext( campaign_basename )[0]
+
 	campaign = SavegameManager.get_campaign_info(name=campaign_name)
 	if not campaign:
 		print u"Error: Cannot find campaign '{name}'.".format(campaign_name)
 		return False
+
 	scenarios = [sc.get('level') for sc in campaign.get('scenarios',[])]
 	if not scenarios:
 		return False
-	return _start_map(scenarios[0], 0, False, is_scenario=True,
-		campaign={'campaign_name': campaign_name, 'scenario_index': 0, 'scenario_name': scenarios[0]},
-		force_player_id=force_player_id)
+
+	savegames = SavegameManager.get_available_scenarios(locales=True)
+	scenario_file = _find_matching_map(scenarios[0], savegames)
+	if not scenario_file:
+		return False
+
+	_modules.gui.show_loading_screen()
+	options = StartGameOptions.create_start_campaign(scenario_file,
+		{'campaign_name': campaign_name, 'scenario_index': 0, 'scenario_name': scenarios[0]},
+		force_player_id)
+	start_singleplayer(options)
+	return True
 
 def _load_cmd_map(savegame, ai_players, force_player_id=None):
 	"""Load a map specified by user.

@@ -154,6 +154,15 @@ class StartGameOptions(object):
 		return options
 
 	@classmethod
+	def create_start_campaign(cls, scenario_file, campaign, force_player_id):
+		options = StartGameOptions(scenario_file)
+		options.campaign = campaign
+		options.force_player_id = force_player_id
+		options.is_scenario = True
+		options.pirate_enabled = False
+		return options
+
+	@classmethod
 	def create_start_map(cls, map_name):
 		options = StartGameOptions(map_name)
 		options.is_map = True
