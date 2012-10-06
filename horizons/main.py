@@ -370,7 +370,6 @@ def _start_map(map_name, ai_players=0, is_scenario=False, campaign=None,
 		savegames = SavegameManager.get_available_scenarios(locales=True)
 	else:
 		savegames = SavegameManager.get_maps()
-	print map_name, is_scenario
 	map_file = _find_matching_map(map_name, savegames)
 	if not map_file:
 		return False
@@ -418,7 +417,7 @@ def _start_campaign(campaign_name, force_player_id):
 
 	campaign = SavegameManager.get_campaign_info(name=campaign_name)
 	if not campaign:
-		print u"Error: Cannot find campaign '{name}'.".format(campaign_name)
+		print u"Error: Cannot find campaign '{name}'.".format(name=campaign_name)
 		return False
 
 	scenarios = [sc.get('level') for sc in campaign.get('scenarios',[])]

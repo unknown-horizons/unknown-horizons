@@ -140,7 +140,7 @@ class SingleplayerMenu(object):
 			self._update_campaign_infos()
 
 		elif show == 'scenario':
-			self.current.files, maps_display = SavegameManager.get_available_scenarios()
+			self.current.files, maps_display = SavegameManager.get_available_scenarios(hide_test_scenarios=True)
 			# get the map files and their display names. display tutorials on top.
 			prefer_tutorial = lambda x : ('tutorial' not in x, x)
 			maps_display.sort(key=prefer_tutorial)
@@ -203,7 +203,6 @@ class SingleplayerMenu(object):
 				self._show_invalid_scenario_file_popup("Unknown Error")
 				self._select_single(show='campaign')
 			scenario = campaign_info.get('scenarios')[0].get('level')
-			map_file = campaign_info.get('scenario_files').get(scenario)
 			horizons.main._start_map(scenario, ai_players=0, is_scenario=True, campaign={
 				'campaign_name': campaign_info.get('codename'), 'scenario_index': 0, 'scenario_name': scenario
 			})

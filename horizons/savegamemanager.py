@@ -324,19 +324,23 @@ class SavegameManager(object):
 		return cls.__get_saves_from_dirs([cls.scenarios_dir], include_displaynames, cls.scenario_extension, False)
 
 	@classmethod
-	def get_available_scenarios(cls, include_displaynames=True, locales=False):
+	def get_available_scenarios(cls, include_displaynames=True, locales=False, hide_test_scenarios=False):
 		"""Returns available scenarios (depending on the campaign(s) status)"""
 		afiles = []
 		anames = []
 		sfiles, snames = cls.get_scenarios(include_displaynames = True)
 		for i, sname in enumerate(snames):
 			if cls.check_scenario_availability(sname):
+				if hide_test_scenarios and cls.get_scenario_info(name=sname).get('test_scenario'):
+					continue
+
 				#get file's locale
-				cur_locale = '_' + cls.get_scenario_info(name = sname).get('locale')
+				cur_locale = '_' + cls.get_scenario_info(name=sname).get('locale')
 				#if the locale is nodefault then don't add it
 				#we use this locale in test scenarios and they are not included to the list
 				if cur_locale == "_nodefault":
 					continue
+
 				#don't add language postfix
 				sname = sname.split(cur_locale)[0]
 				if not sname in anames:
@@ -400,6 +404,7 @@ class SavegameManager(object):
 		if not seen_in_campaigns:
 			# This scenario is not in any campaign, it is available for free play
 			return True
+		return False
 
 	@classmethod
 	def get_campaign_status(cls):
