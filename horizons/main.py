@@ -203,7 +203,7 @@ def start(_command_line_arguments):
 		startup_worked = _start_map(command_line_arguments.start_map, command_line_arguments.ai_players,
 			force_player_id=command_line_arguments.force_player_id, is_map=True)
 	elif command_line_arguments.start_scenario is not None:
-		startup_worked = _start_map(command_line_arguments.start_scenario, 0, False, True, force_player_id=command_line_arguments.force_player_id)
+		startup_worked = _start_map(command_line_arguments.start_scenario, 0, True, force_player_id=command_line_arguments.force_player_id)
 	elif command_line_arguments.start_campaign is not None:
 		startup_worked = _start_campaign(command_line_arguments.start_campaign, command_line_arguments.force_player_id)
 	elif command_line_arguments.load_map is not None:
@@ -370,6 +370,7 @@ def _start_map(map_name, ai_players=0, is_scenario=False, campaign=None,
 		savegames = SavegameManager.get_available_scenarios(locales=True)
 	else:
 		savegames = SavegameManager.get_maps()
+	print map_name, is_scenario
 	map_file = _find_matching_map(map_name, savegames)
 	if not map_file:
 		return False
