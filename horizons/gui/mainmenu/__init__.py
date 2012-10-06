@@ -26,4 +26,4 @@ from .help import Help
 from .singleplayer import SingleplayerMenu
 from .multiplayer import MultiplayerMenu
 from .settings import Settings
-from .main import MainMenu
+from .main import MainMenu, LoadingScreen

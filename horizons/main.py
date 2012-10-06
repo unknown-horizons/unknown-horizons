@@ -294,9 +294,6 @@ def start_singleplayer(map_file, playername="Player", playercolor=None, is_scena
 	horizons.globals.fife.engine.pump()
 	horizons.globals.fife.set_cursor_image('default')
 
-	# hide whatever is displayed before the game starts
-	_modules.gui.hide()
-
 	# destruct old session (right now, without waiting for gc)
 	if _modules.session is not None and _modules.session.is_alive:
 		_modules.session.end()
@@ -374,9 +371,6 @@ def prepare_multiplayer(game, trader_enabled=True, pirate_enabled=True, natural_
 	horizons.globals.fife.cursor.set(fife_module.CURSOR_NONE)
 	horizons.globals.fife.engine.pump()
 	horizons.globals.fife.set_cursor_image('default')
-
-	# hide whatever is displayed before the game starts
-	_modules.gui.hide()
 
 	# destruct old session (right now, without waiting for gc)
 	if _modules.session is not None and _modules.session.is_alive:

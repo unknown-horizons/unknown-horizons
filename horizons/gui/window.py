@@ -251,6 +251,10 @@ class WindowManager(object):
 		else:
 			self.show(widget)
 
+	def close_all(self):
+		while self._windows:
+			self.close()
+
 	# TODO we can probably move the popup building into a separate class next to Dialog
 
 	def show_popup(self, windowtitle, message, show_cancel_button=False, size=0, modal=True):

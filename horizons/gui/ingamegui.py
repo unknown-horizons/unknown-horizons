@@ -396,6 +396,9 @@ class IngameGui(LivingObject):
 		self.resource_overview.save(db)
 
 	def load(self, db):
+		# hide maingui (and therefore removing the loadingscreen)
+		self.main_gui.hide()
+
 		self.message_widget.load(db)
 		self.logbook.load(db)
 		self.resource_overview.load(db)
@@ -404,6 +407,7 @@ class IngameGui(LivingObject):
 		self._cityinfo_set( HoverSettlementChanged(self, cur_settlement) )
 
 		self.minimap.draw() # update minimap to new world
+
 
 	def show_change_name_dialog(self, instance):
 		"""Shows a dialog where the user can change the name of a NamedComponant.

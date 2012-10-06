@@ -19,8 +19,11 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
+import random
+
 import horizons.main
 from horizons.gui.window import Window
+from horizons.gui.quotes import GAMEPLAY_TIPS, FUN_QUOTES
 
 
 class MainMenu(Window):
@@ -56,5 +59,38 @@ class MainMenu(Window):
 	def hide(self):
 		self.widget.hide()
 
+	close = hide
+
 	def on_escape(self):
 		self._gui.show_quit()
+
+
+class LoadingScreen(Window):
+	widget_name = 'loadingscreen'
+
+	def show(self):
+		self.widget = self._widget_loader[self.widget_name]
+
+		# Add 'Quote of the Load' to loading screen:
+		qotl_type_label = self.widget.findChild(name='qotl_type_label')
+		qotl_label = self.widget.findChild(name='qotl_label')
+		quote_type = int(horizons.globals.fife.get_uh_setting("QuotesType"))
+		if quote_type == 2:
+			quote_type = random.randint(0, 1) # choose a random type
+
+		if quote_type == 0:
+			name = GAMEPLAY_TIPS["name"]
+			items = GAMEPLAY_TIPS["items"]
+		elif quote_type == 1:
+			name = FUN_QUOTES["name"]
+			items = FUN_QUOTES["items"]
+
+		qotl_type_label.text = unicode(name)
+		qotl_label.text = unicode(random.choice(items)) # choose a random quote / gameplay tip
+
+		self.widget.show()
+
+	def hide(self):
+		self.widget.hide()
+
+	close = hide

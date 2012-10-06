@@ -24,7 +24,6 @@ import random
 import logging
 from fife import fife
 from fife.extensions import pychan
-from horizons.gui.quotes import GAMEPLAY_TIPS, FUN_QUOTES
 
 import horizons.globals
 import horizons.main
@@ -33,7 +32,7 @@ from horizons.gui.keylisteners import MainListener
 from horizons.messaging import GuiAction
 from horizons.component.ambientsoundcomponent import AmbientSoundComponent
 from horizons.gui.mainmenu import (CallForSupport, Credits, SaveLoad, Help, SingleplayerMenu,
-								   MultiplayerMenu, Settings, MainMenu)
+								   MultiplayerMenu, Settings, MainMenu, LoadingScreen)
 from horizons.gui.util import LazyWidgetsDict
 from horizons.gui.window import WindowManager
 
@@ -86,6 +85,7 @@ class Gui(object):
 		self._multiplayer = MultiplayerMenu(self.widgets, gui=self, manager=self._windows)
 		self._settings = Settings(None, manager=self._windows)
 		self._mainmenu = MainMenu(self.widgets, gui=self, manager=self._windows)
+		self._loadingscreen = LoadingScreen(self.widgets, manager=self._windows)
 
 		GuiAction.subscribe( self._on_gui_action )
 
@@ -219,10 +219,7 @@ class Gui(object):
 			self.current.show()
 
 	def hide(self):
-		self.log.debug("Gui: hiding current: %s", self.current)
-		if self.current is not None:
-			self.current.hide()
-			self.hide_modal_background()
+		self._windows.close_all()
 
 	def is_visible(self):
 		return self.current is not None and self.current.isVisible()
@@ -248,23 +245,7 @@ class Gui(object):
 			pass # only used for some widgets, e.g. pause
 
 	def show_loading_screen(self):
-		self._switch_current_widget('loadingscreen', center=True, show=True)
-		# Add 'Quote of the Load' to loading screen:
-		qotl_type_label = self.current.findChild(name='qotl_type_label')
-		qotl_label = self.current.findChild(name='qotl_label')
-		quote_type = int(horizons.globals.fife.get_uh_setting("QuotesType"))
-		if quote_type == 2:
-			quote_type = random.randint(0, 1) # choose a random type
-
-		if quote_type == 0:
-			name = GAMEPLAY_TIPS["name"]
-			items = GAMEPLAY_TIPS["items"]
-		elif quote_type == 1:
-			name = FUN_QUOTES["name"]
-			items = FUN_QUOTES["items"]
-
-		qotl_type_label.text = unicode(name)
-		qotl_label.text = unicode(random.choice(items)) # choose a random quote / gameplay tip
+		self._windows.show(self._loadingscreen)
 
 # helper
 
