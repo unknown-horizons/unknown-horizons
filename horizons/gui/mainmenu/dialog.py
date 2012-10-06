@@ -42,6 +42,10 @@ class Dialog(object):
 		self.active = False
 
 	def prepare(self, *args, **kwargs):
+		"""Preparation of the widget before the dialog is shown.
+
+		Return False here if you don't want to abort showing the dialog.
+		"""
 		# pre needs to accept args and kwargs due to the way Callback works
 		pass
 
@@ -55,7 +59,10 @@ class Dialog(object):
 		if self.widget_name:
 			self._widget = self._widget_loader[self.widget_name]
 
-		self.prepare(**kwargs)
+		# need to check explicitly for False, because None might just be a normal
+		# return in prepare
+		if self.prepare(**kwargs) == False:
+			return
 
 		assert self._widget, 'Pre did not load a widget'
 
