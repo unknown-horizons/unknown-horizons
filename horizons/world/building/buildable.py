@@ -332,8 +332,20 @@ class BuildableRect(Buildable):
 		area.top -= (cls.size[1] - 1) / 2
 		area.bottom -= (cls.size[1] - 1) / 2
 
-		for x in xrange(area.left, area.right+1, cls.size[0]):
-			for y in xrange(area.top, area.bottom+1, cls.size[1]):
+		xstart, xend = area.left, area.right+1
+		xstep = cls.size[0]
+		if point1.x > point2.x:
+			xstart, xend = area.right, area.left-1
+			xstep *= -1
+
+		ystart, yend = area.top, area.bottom+1
+		ystep = cls.size[1]
+		if point1.y > point2.y:
+			ystart, yend = area.bottom, area.top-1
+			ystep *= -1
+
+		for x in xrange(xstart, xend, xstep):
+			for y in xrange(ystart, yend, ystep):
 				possible_builds.append(
 				  cls.check_build(session, Point(x, y), rotation=rotation, ship=ship)
 				)

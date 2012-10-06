@@ -34,14 +34,14 @@ def get_gui_files_map():
 	for all xml gui files in content/gui
 	"""
 	xml_files = {}
-	for root, dirs, files in os.walk('content/gui'):
-		files = filter(lambda s : s.endswith(".xml"), files)
-		if files:
-			for i in files:
-				if i not in xml_files:
-					xml_files[i] = os.path.join(root, i)
-				else:
-					print u'Another file by the name {name} already exists. Please use unique names!'.format(name=i)
+	for root, dirs, files in os.walk('content/gui/xml'):
+		for f in files:
+			if not f.endswith('.xml'):
+				continue
+			if f in xml_files:
+				raise Exception('Another file by the name {name} already exists. '
+				                'Please use unique names!'.format(name=f))
+			xml_files[f] = os.path.join(root, f)
 	return xml_files
 
 def get_happiness_icon_and_helptext(value, session):
