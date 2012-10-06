@@ -46,10 +46,8 @@ import horizons.globals
 from horizons.savegamemanager import SavegameManager
 from horizons.gui import Gui
 from horizons.extscheduler import ExtScheduler
-from horizons.constants import AI, COLORS, GAME, PATHS, NETWORK, SINGLEPLAYER, GAME_SPEED
+from horizons.constants import AI, GAME, PATHS, NETWORK, SINGLEPLAYER, GAME_SPEED
 from horizons.network.networkinterface import NetworkInterface
-from horizons.util.color import Color
-from horizons.util.difficultysettings import DifficultySettings
 from horizons.util.loaders.actionsetloader import ActionSetLoader
 from horizons.util.loaders.tilesetloader import TileSetLoader
 from horizons.util.startgameoptions import StartGameOptions
@@ -283,9 +281,6 @@ def start_singleplayer(options):
 	global preloading
 	preload_game_join(preloading)
 
-	if options.player_color is None: # this can't be a default parameter because of circular imports
-		options.player_color = Color[1]
-
 	# remove cursor while loading
 	horizons.globals.fife.cursor.set(fife_module.CURSOR_NONE)
 	horizons.globals.fife.engine.pump()
@@ -301,39 +296,8 @@ def start_singleplayer(options):
 	from spsession import SPSession
 	_modules.session = SPSession(_modules.gui, horizons.globals.db)
 
-	# for now just make it a bit easier for the AI
-	difficulty_level = {False: DifficultySettings.DEFAULT_LEVEL, True: DifficultySettings.EASY_LEVEL}
-	players = [{
-		'id': 1,
-		'name': options.player_name,
-		'color': options.player_color,
-		'local': True,
-		'ai': options.human_ai,
-		'difficulty': difficulty_level[bool(options.human_ai)],
-	}]
-
-	# add AI players with a distinct color; if none can be found then use black
-	for num in xrange(options.ai_players):
-		color = Color[COLORS.BLACK] # if none can be found then be black
-		for possible_color in Color:
-			if possible_color == Color[COLORS.BLACK]:
-				continue # black is used by the trader and the pirate
-			used = any(possible_color == player['color'] for player in players)
-			if not used:
-				color = possible_color
-				break
-		players.append({
-			'id' : num + 2,
-			'name' : 'AI' + str(num + 1),
-			'color' : color,
-			'local' : False,
-			'ai' : True,
-			'difficulty' : difficulty_level[True],
-		})
-
 	from horizons.scenario import InvalidScenarioFileFormat # would create import loop at top
 	try:
-		options.players = players
 		_modules.session.load(options)
 	except InvalidScenarioFileFormat:
 		raise

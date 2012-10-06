@@ -20,6 +20,8 @@
 # ###################################################
 
 from horizons.constants import AI
+from horizons.util.color import Color
+from horizons.util.difficultysettings import DifficultySettings
 
 class StartGameOptions(object):
 	def __init__(self, savegame):
@@ -32,7 +34,6 @@ class StartGameOptions(object):
 		self.is_multiplayer = False
 		self.is_scenario = False
 		self.campaign = None
-		self.players = None
 
 		self.savegame = savegame
 		self.player_name = 'Player'
@@ -43,7 +44,7 @@ class StartGameOptions(object):
 	def init_new_world(self, session):
 		# NOTE: this must be sorted before iteration, cause there is no defined order for
 		#       iterating a dict, and it must happen in the same order for mp games.
-		for i in sorted(self.players, lambda p1, p2: cmp(p1['id'], p2['id'])):
+		for i in sorted(self._get_player_list(), lambda p1, p2: cmp(p1['id'], p2['id'])):
 			session.world.setup_player(i['id'], i['name'], i['color'], i['clientid'] if self.is_multiplayer else None, i['local'], i['ai'], i['difficulty'])
 		session.world.set_forced_player(self.force_player_id)
 		center = session.world.init_new_world(self.trader_enabled, self.pirate_enabled, self.natural_resource_multiplier)
@@ -52,6 +53,41 @@ class StartGameOptions(object):
 	def set_human_data(self, player_name, player_color):
 		self.player_name = player_name
 		self.player_color = player_color
+
+	def _get_player_list(self):
+		# for now just make it a bit easier for the AI
+		difficulty_level = {False: DifficultySettings.DEFAULT_LEVEL, True: DifficultySettings.EASY_LEVEL}
+
+		players = []
+		players.append({
+			'id': 1,
+			'name': self.player_name,
+			'color': Color[1] if self.player_color is None else self.player_color,
+			'local': True,
+			'ai': self.human_ai,
+			'difficulty': difficulty_level[bool(self.human_ai)],
+		})
+
+		# add AI players with a distinct color; if none can be found then use black
+		for num in xrange(self.ai_players):
+			color = Color[COLORS.BLACK] # if none can be found then be black
+			for possible_color in Color:
+				if possible_color == Color[COLORS.BLACK]:
+					continue # black is used by the trader and the pirate
+				used = any(possible_color == player['color'] for player in players)
+				if not used:
+					color = possible_color
+					break
+
+			players.append({
+				'id' : num + 2,
+				'name' : 'AI' + str(num + 1),
+				'color' : color,
+				'local' : False,
+				'ai' : True,
+				'difficulty' : difficulty_level[True],
+			})
+		return players
 
 	@classmethod
 	def create(cls, savegame, players, trader_enabled, pirate_enabled,
@@ -112,10 +148,8 @@ class StartGameOptions(object):
 		return options
 
 	@classmethod
-	def create_start_scenario(cls, scenario_file, player_name, player_color):
+	def create_start_scenario(cls, scenario_file):
 		options = StartGameOptions(scenario_file)
-		options.player_name = player_name
-		options.player_color = player_color
 		options.is_scenario = True
 		return options
 
