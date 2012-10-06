@@ -195,7 +195,7 @@ def start(_command_line_arguments):
 	startup_worked = True
 	if command_line_arguments.start_dev_map:
 		startup_worked = _start_map('development', command_line_arguments.ai_players,
-			command_line_arguments.human_ai, force_player_id=command_line_arguments.force_player_id, is_map=True)
+			force_player_id=command_line_arguments.force_player_id, is_map=True)
 	elif command_line_arguments.start_random_map:
 		startup_worked = _start_random_map(command_line_arguments.ai_players, force_player_id=command_line_arguments.force_player_id)
 	elif command_line_arguments.start_specific_random_map is not None:
@@ -203,7 +203,7 @@ def start(_command_line_arguments):
 			seed=command_line_arguments.start_specific_random_map, force_player_id=command_line_arguments.force_player_id)
 	elif command_line_arguments.start_map is not None:
 		startup_worked = _start_map(command_line_arguments.start_map, command_line_arguments.ai_players,
-			command_line_arguments.human_ai, force_player_id=command_line_arguments.force_player_id, is_map=True)
+			force_player_id=command_line_arguments.force_player_id, is_map=True)
 	elif command_line_arguments.start_scenario is not None:
 		startup_worked = _start_map(command_line_arguments.start_scenario, 0, False, True, force_player_id=command_line_arguments.force_player_id)
 	elif command_line_arguments.start_campaign is not None:
@@ -219,7 +219,7 @@ def start(_command_line_arguments):
 		tiny = [ i for i in SavegameManager.get_maps()[0] if 'tiny' in i ]
 		if not tiny:
 			tiny = SavegameManager.get_map()[0]
-		startup_worked = _start_map(tiny[0], ai_players=0, human_ai=False, trader_enabled=False, pirate_enabled=False,
+		startup_worked = _start_map(tiny[0], ai_players=0, trader_enabled=False, pirate_enabled=False,
 			force_player_id=command_line_arguments.force_player_id, is_map=True)
 		from development.stringpreviewwidget import StringPreviewWidget
 		__string_previewer = StringPreviewWidget(_modules.session)
@@ -397,7 +397,7 @@ def start_multiplayer(game):
 
 
 ## GAME START FUNCTIONS
-def _start_map(map_name, ai_players=0, human_ai=False, is_scenario=False, campaign=None,
+def _start_map(map_name, ai_players=0, is_scenario=False, campaign=None,
                pirate_enabled=True, trader_enabled=True, force_player_id=None, is_map=False):
 	"""Start a map specified by user
 	@param map_name: name of map or path to map
@@ -412,7 +412,7 @@ def _start_map(map_name, ai_players=0, human_ai=False, is_scenario=False, campai
 
 	_modules.gui.show_loading_screen()
 	options = StartGameOptions.create_start_singleplayer(map_file, is_scenario=is_scenario,
-		campaign=campaign, ai_players=ai_players, human_ai=human_ai, pirate_enabled=pirate_enabled,
+		campaign=campaign, ai_players=ai_players, pirate_enabled=pirate_enabled,
 		trader_enabled=trader_enabled, force_player_id=force_player_id, is_map=is_map)
 	start_singleplayer(options)
 	return True
