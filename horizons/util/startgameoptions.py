@@ -41,6 +41,8 @@ class StartGameOptions(object):
 		self.ai_players = 0
 		self.human_ai = AI.HUMAN_AI
 
+		self.player_list = None
+
 	def init_new_world(self, session):
 		# NOTE: this must be sorted before iteration, cause there is no defined order for
 		#       iterating a dict, and it must happen in the same order for mp games.
@@ -55,6 +57,9 @@ class StartGameOptions(object):
 		self.player_color = player_color
 
 	def _get_player_list(self):
+		if self.player_list is not None:
+			return self.player_list
+
 		# for now just make it a bit easier for the AI
 		difficulty_level = {False: DifficultySettings.DEFAULT_LEVEL, True: DifficultySettings.EASY_LEVEL}
 
@@ -90,21 +95,11 @@ class StartGameOptions(object):
 		return players
 
 	@classmethod
-	def create(cls, savegame, players, trader_enabled, pirate_enabled,
-	           natural_resource_multiplier, is_scenario=False, campaign=None,
-	           force_player_id=None, disasters_enabled=True, is_multiplayer=False,
-	           is_map=False):
-		options = StartGameOptions(savegame)
-		options.players = players
-		options.trader_enabled = trader_enabled
-		options.pirate_enabled = pirate_enabled
-		options.natural_resource_multiplier = natural_resource_multiplier
-		options.is_scenario = is_scenario
-		options.campaign = campaign
-		options.force_player_id = force_player_id
-		options.disasters_enabled = disasters_enabled
-		options.is_multiplayer = is_multiplayer
+	def create_start_multiplayer(cls, game_file, player_list, is_map):
+		options = StartGameOptions(game_file)
+		options.player_list = player_list
 		options.is_map = is_map
+		options.is_multiplayer = True
 		return options
 
 	@classmethod
