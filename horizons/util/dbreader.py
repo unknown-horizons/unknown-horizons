@@ -28,6 +28,7 @@ class DbReader(object):
 	"""Class that handles connections to sqlite databases
 	@param file: str containing the database file."""
 	def __init__(self, dbfile):
+		self.db_path = dbfile
 		self.connection = sqlite3.connect(dbfile)
 		self.connection.isolation_level = None
 		def regexp(expr, item):

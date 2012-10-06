@@ -307,7 +307,7 @@ class Session(LivingObject):
 		
 		self.log.debug("Session: Loading from %s", options.game_identifier)
 		savegame_db = SavegameAccessor(options.game_identifier, options.is_map) # Initialize new dbreader
-		savegame_data = SavegameManager.get_metadata(options.game_identifier)
+		savegame_data = SavegameManager.get_metadata(savegame_db.db_path)
 
 		# load how often the game has been saved (used to know the difference between
 		# a loaded and a new game)
