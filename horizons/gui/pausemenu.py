@@ -37,8 +37,8 @@ class PauseMenu(Window):
 		event_map = {
 			'loadgame'       : horizons.main.load_game,
 			'loadgameButton' : horizons.main.load_game,
-			'savegame'       : self._gui.save_game,
-			'savegameButton' : self._gui.save_game,
+			'savegame'       : self.save_game,
+			'savegameButton' : self.save_game,
 			'settings'       : lambda: self.windows.show(self._gui._settings),
 			'settingsLink'   : lambda: self.windows.show(self._gui._settings),
 			'help'           : self._gui.on_help,
@@ -59,3 +59,10 @@ class PauseMenu(Window):
 		self.widget.hide()
 
 	close = hide
+
+	def save_game(self):
+		"""Wrapper for saving for separating gui messages from save logic"""
+		success = self._gui.session.save()
+		if not success:
+			# There was a problem during the 'save game' procedure.
+			self.windows.show_popup(_('Error'), _('Failed to save.'))

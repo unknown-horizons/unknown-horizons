@@ -103,14 +103,6 @@ class Gui(object):
 
 # what happens on button clicks
 
-	def save_game(self):
-		"""Wrapper for saving for separating gui messages from save logic
-		"""
-		success = self.session.save()
-		if not success:
-			# There was a problem during the 'save game' procedure.
-			self._windows.show_popup(_('Error'), _('Failed to save.'))
-
 	def on_help(self):
 		"""Called on help action.
 		Toggles help screen via static variable *help_is_displayed*.
