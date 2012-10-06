@@ -404,7 +404,7 @@ def load_game(ai_players=0, human_ai=False, savegame=None, is_scenario=False, ca
 	"""Shows select savegame menu if savegame is none, then loads the game"""
 	if savegame is None:
 		# TODO is this code ever reached? the argparser requires an argument
-		savegame = _modules.gui._saveload.show(mode='load')
+		savegame = _modules.gui.show_select_savegame(mode='load')
 		if savegame is None:
 			return False # user aborted dialog
 	_modules.gui.show_loading_screen()

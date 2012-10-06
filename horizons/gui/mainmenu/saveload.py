@@ -154,7 +154,7 @@ class SaveLoad(Dialog):
 			if delete_retval:
 				self.current.distributeData({'savegamelist' : -1})
 				self._cb()
-			return self.show(**self._args)
+			return self.dialogs.show(self, **self._args)
 
 		selected_savegame = None
 		if mode == 'save': # return from textfield
@@ -162,19 +162,19 @@ class SaveLoad(Dialog):
 			if selected_savegame == "":
 				self._gui.show_error_popup(windowtitle=_("No filename given"),
 				                      description=_("Please enter a valid filename."))
-				return self.show(**self._args) # reshow dialog
+				return self.dialogs.show(self, **self._args) # reshow dialog
 			elif selected_savegame in self._map_file_display: # savegamename already exists
 				#xgettext:python-format
 				message = _("A savegame with the name '{name}' already exists.").format(
 				             name=selected_savegame) + u"\n" + _('Overwrite it?')
 				# keep the pop-up non-modal because otherwise it is double-modal (#1876)
 				if not self._gui.show_popup(_("Confirmation for overwriting"), message, show_cancel_button=True, modal=False):
-					return self.show(**self._args) # reshow dialog
+					return self.dialogs.show(self, **self._args) # reshow dialog
 			elif sanity_checker and sanity_criteria:
 				if not sanity_checker(selected_savegame):
 					self._gui.show_error_popup(windowtitle=_("Invalid filename given"),
 					                      description=sanity_criteria)
-					return self.show(**self._args) # reshow dialog
+					return self.dialogs.show(self, **self._args) # reshow dialog
 		else: # return selected item from list
 			selected_savegame = self.current.collectData('savegamelist')
 			assert selected_savegame != -1, "No savegame selected in savegamelist"

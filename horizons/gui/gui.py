@@ -41,15 +41,15 @@ from horizons.command.game import PauseCommand, UnPauseCommand
 
 
 class DialogManager(object):
-	def __init__(self):
+	def __init__(self, widgets):
 		self._dialogs = []
+		self._widgets = widgets
 
 	def show(self, widget, **kwargs):
 		"""Show a new dialog on top."""
-		# TODO this should hide the current top dialog
-
+		self.hide()
 		self._dialogs.append(widget)
-		widget.show(**kwargs)
+		return widget.show(**kwargs)
 
 	def replace(self, widget, **kwargs):
 		"""Replace the top dialog with this widget.
@@ -57,13 +57,119 @@ class DialogManager(object):
 		So far, this seems to be needed by the credits dialog.
 		"""
 		self.close()
-		self.show(widget, **kwargs)
+		return self.show(widget, **kwargs)
 
 	def close(self):
 		"""Close the top dialog."""
 		# TODO this should show the widget below
 		widget = self._dialogs.pop()
 		widget.close()
+
+	def hide(self):
+		if self._dialogs:
+			self._dialogs[-1].hide()
+
+	# TODO we can probably move the popup building into a separate class next to Dialog
+
+	def show_popup(self, windowtitle, message, show_cancel_button=False, size=0, modal=True):
+		"""Displays a popup with the specified text
+		@param windowtitle: the title of the popup
+		@param message: the text displayed in the popup
+		@param show_cancel_button: boolean, show cancel button or not
+		@param size: 0, 1 or 2. Larger means bigger.
+		@param modal: Whether to block user interaction while displaying the popup
+		@return: True on ok, False on cancel (if no cancel button, always True)
+		"""
+		popup = self._build_popup(windowtitle, message, show_cancel_button, size=size)
+		# ok should be triggered on enter, therefore we need to focus the button
+		# pychan will only allow it after the widgets is shown
+		def focus_ok_button():
+			popup.findChild(name=OkButton.DEFAULT_NAME).requestFocus()
+		ExtScheduler().add_new_object(focus_ok_button, self, run_in=0)
+		if show_cancel_button:
+			return self._show_dialog(popup, {OkButton.DEFAULT_NAME : True,
+			                                CancelButton.DEFAULT_NAME : False},
+			                         modal=modal)
+		else:
+			return self._show_dialog(popup, {OkButton.DEFAULT_NAME : True},
+			                         modal=modal)
+
+	def show_error_popup(self, windowtitle, description, advice=None, details=None, _first=True):
+		"""Displays a popup containing an error message.
+		@param windowtitle: title of popup, will be auto-prefixed with "Error: "
+		@param description: string to tell the user what happened
+		@param advice: how the user might be able to fix the problem
+		@param details: technical details, relevant for debugging but not for the user
+		@param _first: Don't touch this.
+
+		Guide for writing good error messages:
+		http://www.useit.com/alertbox/20010624.html
+		"""
+		msg = u""
+		msg += description + u"\n"
+		if advice:
+			msg += advice + u"\n"
+		if details:
+			msg += _("Details: {error_details}").format(error_details=details)
+		try:
+			return self._show_popup( _("Error: {error_message}").format(error_message=windowtitle),
+			                        msg, show_cancel_button=False)
+		except SystemExit: # user really wants us to die
+			raise
+		except:
+			# could be another game error, try to be persistent in showing the error message
+			# else the game would be gone without the user being able to read the message.
+			if _first:
+				traceback.print_exc()
+				print 'Exception while showing error, retrying once more'
+				return self._show_error_popup(windowtitle, description, advice, details, _first=False)
+			else:
+				raise # it persists, we have to die.
+
+	def _build_popup(self, windowtitle, message, show_cancel_button=False, size=0):
+		""" Creates a pychan popup widget with the specified properties.
+		@param windowtitle: the title of the popup
+		@param message: the text displayed in the popup
+		@param show_cancel_button: boolean, include cancel button or not
+		@param size: 0, 1 or 2
+		@return: Container(name='popup_window') with buttons 'okButton' and optionally 'cancelButton'
+		"""
+		if size == 0:
+			wdg_name = "popup_230"
+		elif size == 1:
+			wdg_name = "popup_290"
+		elif size == 2:
+			wdg_name = "popup_350"
+		else:
+			assert False, "size should be 0 <= size <= 2, but is "+str(size)
+
+		# NOTE: reusing popup dialogs can sometimes lead to exit(0) being called.
+		#       it is yet unknown why this happens, so let's be safe for now and reload the widgets.
+		self._widgets.reload(wdg_name)
+		popup = self._widgets[wdg_name]
+
+		if not show_cancel_button:
+			cancel_button = popup.findChild(name=CancelButton.DEFAULT_NAME)
+			cancel_button.parent.removeChild(cancel_button)
+
+		headline = popup.findChild(name='headline')
+		headline.text = _(windowtitle)
+		popup.findChild(name='popup_message').text = _(message)
+		popup.adaptLayout() # recalculate widths
+		return popup
+
+	def _show_dialog(self, dlg, bind, event_map=None, modal=False):
+		# TODO ugly, see todo above about moving the popup code to dialog
+		from horizons.gui.mainmenu import Dialog
+		class TempDialog(Dialog):
+			return_events = bind
+			def prepare(self, *args, **kwargs):
+				self._widget = dlg
+				self.modal = modal
+				if event_map:
+					self._widget.mapEvents(event_map)
+
+		return self.show(TempDialog(self._widgets, manager=self))
 
 
 class Gui(object):
@@ -105,12 +211,12 @@ class Gui(object):
 		self.__pause_displayed = False
 		self._background_image = self._get_random_background()
 
-		self._dialogs = DialogManager()
+		self._dialogs = DialogManager(self.widgets)
 
 		from horizons.gui.mainmenu import CallForSupport, Credits, SaveLoad, Help, SingleplayerMenu, MultiplayerMenu
 		self._call_for_support = CallForSupport(self.widgets, manager=self._dialogs)
 		self._credits = Credits(self.widgets, manager=self._dialogs)
-		self._saveload = SaveLoad(self.widgets, gui=self)
+		self._saveload = SaveLoad(self.widgets, gui=self, manager=self._dialogs)
 		self._help = Help(self.widgets, gui=self)
 		self._singleplayer = SingleplayerMenu(self.widgets, gui=self)
 		self._multiplayer = MultiplayerMenu(self.widgets, gui=self)
@@ -251,10 +357,17 @@ class Gui(object):
 			return False
 
 	def show_select_savegame(self, mode, sanity_checker=None, sanity_criteria=None):
-		return self._saveload.show(mode=mode, sanity_checker=sanity_checker,
-								   sanity_criteria=sanity_criteria)
+		return self._dialogs.show(self._saveload, mode=mode, sanity_checker=sanity_checker,
+								  sanity_criteria=sanity_criteria)
 
 # display
+
+	# TODO remove both functions later
+	def show_popup(self, *args, **kwargs):
+		return self._dialogs.show_popup(*args, **kwargs)
+
+	def show_error_popup(self, *args, **kwargs):
+		return self._dialogs.show_error_popup(*args, **kwargs)
 
 	def on_escape(self):
 		pass
@@ -272,135 +385,6 @@ class Gui(object):
 
 	def is_visible(self):
 		return self.current is not None and self.current.isVisible()
-
-	def show_dialog(self, dlg, bind, event_map=None, modal=False):
-		"""Shows any pychan dialog.
-		@param dlg: dialog that is to be shown
-		@param bind: events that make the dialog return + return values{ 'ok': callback, 'cancel': callback }
-		@param event_map: dictionary with callbacks for buttons. See pychan docu: pychan.widget.mapEvents()
-		@param modal: Whether to block user interaction while displaying the dialog
-		"""
-		self.current_dialog = dlg
-		if event_map is not None:
-			dlg.mapEvents(event_map)
-		if modal:
-			self.show_modal_background()
-
-		# handle escape and enter keypresses
-		def _on_keypress(event, dlg=dlg): # rebind to make sure this dlg is used
-			from horizons.engine import pychan_util
-			if event.getKey().getValue() == fife.Key.ESCAPE: # convention says use cancel action
-				btn = dlg.findChild(name=CancelButton.DEFAULT_NAME)
-				callback = pychan_util.get_button_event(btn) if btn else None
-				if callback:
-					pychan.tools.applyOnlySuitable(callback, event=event, widget=btn)
-				else:
-					# escape should hide the dialog default
-					horizons.globals.fife.pychanmanager.breakFromMainLoop(returnValue=False)
-					dlg.hide()
-			elif event.getKey().getValue() == fife.Key.ENTER: # convention says use ok action
-				btn = dlg.findChild(name=OkButton.DEFAULT_NAME)
-				callback = pychan_util.get_button_event(btn) if btn else None
-				if callback:
-					pychan.tools.applyOnlySuitable(callback, event=event, widget=btn)
-				# can't guess a default action here
-
-		dlg.capture(_on_keypress, event_name="keyPressed")
-
-		# show that a dialog is being executed, this can sometimes require changes in program logic elsewhere
-		self.dialog_executed = True
-		ret = dlg.execute(bind)
-		self.dialog_executed = False
-		if modal:
-			self.hide_modal_background()
-		return ret
-
-	def show_popup(self, windowtitle, message, show_cancel_button=False, size=0, modal=True):
-		"""Displays a popup with the specified text
-		@param windowtitle: the title of the popup
-		@param message: the text displayed in the popup
-		@param show_cancel_button: boolean, show cancel button or not
-		@param size: 0, 1 or 2. Larger means bigger.
-		@param modal: Whether to block user interaction while displaying the popup
-		@return: True on ok, False on cancel (if no cancel button, always True)
-		"""
-		popup = self.build_popup(windowtitle, message, show_cancel_button, size=size)
-		# ok should be triggered on enter, therefore we need to focus the button
-		# pychan will only allow it after the widgets is shown
-		def focus_ok_button():
-			popup.findChild(name=OkButton.DEFAULT_NAME).requestFocus()
-		ExtScheduler().add_new_object(focus_ok_button, self, run_in=0)
-		if show_cancel_button:
-			return self.show_dialog(popup, {OkButton.DEFAULT_NAME : True,
-			                                CancelButton.DEFAULT_NAME : False},
-			                        modal=modal)
-		else:
-			return self.show_dialog(popup, {OkButton.DEFAULT_NAME : True},
-			                        modal=modal)
-
-	def show_error_popup(self, windowtitle, description, advice=None, details=None, _first=True):
-		"""Displays a popup containing an error message.
-		@param windowtitle: title of popup, will be auto-prefixed with "Error: "
-		@param description: string to tell the user what happened
-		@param advice: how the user might be able to fix the problem
-		@param details: technical details, relevant for debugging but not for the user
-		@param _first: Don't touch this.
-
-		Guide for writing good error messages:
-		http://www.useit.com/alertbox/20010624.html
-		"""
-		msg = u""
-		msg += description + u"\n"
-		if advice:
-			msg += advice + u"\n"
-		if details:
-			msg += _("Details: {error_details}").format(error_details=details)
-		try:
-			self.show_popup( _("Error: {error_message}").format(error_message=windowtitle),
-			                 msg, show_cancel_button=False)
-		except SystemExit: # user really wants us to die
-			raise
-		except:
-			# could be another game error, try to be persistent in showing the error message
-			# else the game would be gone without the user being able to read the message.
-			if _first:
-				traceback.print_exc()
-				print 'Exception while showing error, retrying once more'
-				return self.show_error_popup(windowtitle, description, advice, details, _first=False)
-			else:
-				raise # it persists, we have to die.
-
-	def build_popup(self, windowtitle, message, show_cancel_button=False, size=0):
-		""" Creates a pychan popup widget with the specified properties.
-		@param windowtitle: the title of the popup
-		@param message: the text displayed in the popup
-		@param show_cancel_button: boolean, include cancel button or not
-		@param size: 0, 1 or 2
-		@return: Container(name='popup_window') with buttons 'okButton' and optionally 'cancelButton'
-		"""
-		if size == 0:
-			wdg_name = "popup_230"
-		elif size == 1:
-			wdg_name = "popup_290"
-		elif size == 2:
-			wdg_name = "popup_350"
-		else:
-			assert False, "size should be 0 <= size <= 2, but is "+str(size)
-
-		# NOTE: reusing popup dialogs can sometimes lead to exit(0) being called.
-		#       it is yet unknown why this happens, so let's be safe for now and reload the widgets.
-		self.widgets.reload(wdg_name)
-		popup = self.widgets[wdg_name]
-
-		if not show_cancel_button:
-			cancel_button = popup.findChild(name=CancelButton.DEFAULT_NAME)
-			cancel_button.parent.removeChild(cancel_button)
-
-		headline = popup.findChild(name='headline')
-		headline.text = _(windowtitle)
-		popup.findChild(name='popup_message').text = _(message)
-		popup.adaptLayout() # recalculate widths
-		return popup
 
 	def show_modal_background(self):
 		""" Loads transparent background that de facto prohibits
