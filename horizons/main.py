@@ -194,7 +194,8 @@ def start(_command_line_arguments):
 	# start something according to commandline parameters
 	startup_worked = True
 	if command_line_arguments.start_dev_map:
-		startup_worked = _start_dev_map(command_line_arguments.ai_players, command_line_arguments.human_ai, command_line_arguments.force_player_id)
+		startup_worked = _start_map('development', command_line_arguments.ai_players,
+			command_line_arguments.human_ai, force_player_id=command_line_arguments.force_player_id, is_map=True)
 	elif command_line_arguments.start_random_map:
 		startup_worked = _start_random_map(command_line_arguments.ai_players, command_line_arguments.human_ai, force_player_id=command_line_arguments.force_player_id)
 	elif command_line_arguments.start_specific_random_map is not None:
@@ -412,15 +413,6 @@ def load_game(ai_players=0, human_ai=False, savegame=None, is_scenario=False, ca
 
 
 ## GAME START FUNCTIONS
-
-def _start_dev_map(ai_players, human_ai, force_player_id):
-	# start the development map
-	for m in SavegameManager.get_maps()[0]:
-		if 'development' in m:
-			break
-	load_game(ai_players, human_ai, m, force_player_id=force_player_id, is_map=True)
-	return True
-
 def _start_map(map_name, ai_players=0, human_ai=False, is_scenario=False, campaign=None,
                pirate_enabled=True, trader_enabled=True, force_player_id=None, is_map=False):
 	"""Start a map specified by user
