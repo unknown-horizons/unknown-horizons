@@ -32,6 +32,7 @@ CLOSE_DIALOG = object()
 class Dialog(object):
 	modal = True
 	widget_name = None
+	stackable = True
 
 	def __init__(self, widget_loader, gui=None, manager=None):
 		self._widget_loader = widget_loader
@@ -40,6 +41,7 @@ class Dialog(object):
 		# TODO this needs to go probably
 		self._gui = gui
 		self.active = False
+		self._hidden = False
 
 	def prepare(self, *args, **kwargs):
 		"""Preparation of the widget before the dialog is shown.
@@ -53,9 +55,17 @@ class Dialog(object):
 		return return_value
 
 	def show(self, *args, **kwargs):
+		print 'Dialog show', self, 'hidden' if self._hidden else ''
 		assert not self.active
-
 		self.active = True
+
+		if self._hidden:
+			print 'Dialog show unhide', self
+			self._widget.show()
+			self._hidden = False
+			return
+
+		print 'Dialog show new', self
 		if self.widget_name:
 			self._widget = self._widget_loader[self.widget_name]
 
@@ -70,6 +80,7 @@ class Dialog(object):
 			self._show_modal_background()
 
 		def _on_keypress(event, dlg=self._widget): # rebind to make sure this dlg is used
+			print 'keypress', dlg
 			from horizons.engine import pychan_util
 			if event.getKey().getValue() == fife.Key.ESCAPE: # convention says use cancel action
 				btn = dlg.findChild(name=CancelButton.DEFAULT_NAME)
@@ -88,27 +99,33 @@ class Dialog(object):
 
 		self._widget.capture(_on_keypress, event_name="keyPressed")
 		self._widget.show()
+		print 'Dialog show execute start', self
 		ret = self._widget.execute(self.return_events)
+		print 'Dialog show execute end', self
 		if self.modal:
 			self._hide_modal_background()
 
 		self.dialogs.close()
 		return self.post(ret)
 
+	def abort(self):
+		print 'Dialog abort', self
+		horizons.globals.fife.pychanmanager.breakFromMainLoop(CLOSE_DIALOG)
+
 	def close(self):
+		print 'Dialog close', self
 		if self.active:
-			self.hide()
 			self.active = False
+			self.hide()
 
 	def hide(self):
+		print 'Dialog hide', self
+		if self.active:
+			self.active = False
+			self._hidden = True
+
 		if self._widget:
 			self._widget.hide()
-
-	def toggle(self, **kwargs):
-		if self.active:
-			self.close()
-		else:
-			self.show(**kwargs)
 
 	def _show_modal_background(self):
 		"""Loads transparent background that de facto prohibits

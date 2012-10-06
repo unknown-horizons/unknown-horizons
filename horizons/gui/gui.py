@@ -41,12 +41,19 @@ from horizons.command.game import PauseCommand, UnPauseCommand
 
 
 class DialogManager(object):
+
 	def __init__(self, widgets):
 		self._dialogs = []
 		self._widgets = widgets
 
 	def show(self, widget, **kwargs):
-		"""Show a new dialog on top."""
+		"""Show a new dialog on top.
+		
+		Hide the current one and show the new one.
+		"""
+		# TODO for popups, we sometimes want the old widget to stay visible
+		print 'DialogManager show', widget
+
 		self.hide()
 		self._dialogs.append(widget)
 		return widget.show(**kwargs)
@@ -56,18 +63,52 @@ class DialogManager(object):
 
 		So far, this seems to be needed by the credits dialog.
 		"""
+		print 'DialogManager replace', widget
 		self.close()
 		return self.show(widget, **kwargs)
 
 	def close(self):
-		"""Close the top dialog."""
-		# TODO this should show the widget below
+		"""Close the top dialog.
+		
+		If there is another dialog left, show it.
+		"""
 		widget = self._dialogs.pop()
+		print 'DialogManager close', widget
 		widget.close()
+		if self._dialogs:
+			self._dialogs[-1].show()
 
 	def hide(self):
-		if self._dialogs:
+		"""Attempt to hide the current dialog.
+		
+		A dialog that does not permit other dialogs on top of it will be closed,
+		any other will be hidden.
+		"""
+		print 'DialogManager hide'
+		if not self._dialogs:
+			return
+
+		if not self._dialogs[-1].stackable:
+			print 'DialogManager close top'
+			self.close()
+		else:
+			print 'DialogManager hide top'
 			self._dialogs[-1].hide()
+
+	def toggle(self, widget):
+		print 'DialogManager toggle', widget
+		if widget.stackable:
+			# This means that the widget might still be somewhere in our stack.
+			# We can only toggle dialogs that are closed immediately when losing
+			# focus.
+			raise Exception('This should not be possible')
+
+		if self._dialogs and self._dialogs[-1] == widget:
+			print 'DialogManager toggle abort non stackable'
+			self._dialogs[-1].abort()
+		else:
+			print 'DialogManager toggle show'
+			self.show(widget)
 
 	# TODO we can probably move the popup building into a separate class next to Dialog
 
@@ -217,7 +258,7 @@ class Gui(object):
 		self._call_for_support = CallForSupport(self.widgets, manager=self._dialogs)
 		self._credits = Credits(self.widgets, manager=self._dialogs)
 		self._saveload = SaveLoad(self.widgets, gui=self, manager=self._dialogs)
-		self._help = Help(self.widgets, gui=self)
+		self._help = Help(self.widgets, gui=self, manager=self._dialogs)
 		self._singleplayer = SingleplayerMenu(self.widgets, gui=self)
 		self._multiplayer = MultiplayerMenu(self.widgets, gui=self)
 
@@ -329,7 +370,7 @@ class Gui(object):
 		Toggles help screen via static variable *help_is_displayed*.
 		Can be called both from main menu and in-game interface.
 		"""
-		self._help.toggle()
+		self._dialogs.toggle(self._help)
 
 	def show_quit(self):
 		"""Shows the quit dialog. Closes the game unless the dialog is cancelled."""

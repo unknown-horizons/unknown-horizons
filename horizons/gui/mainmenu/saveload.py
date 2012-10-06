@@ -48,10 +48,15 @@ class SaveLoad(Dialog):
 		# TODO remove this when rewriting this mess
 		self.current = self._widget
 
-		assert mode in ('save', 'load', 'mp_load', 'mp_save')
 		map_files, map_file_display = None, None
 
-		self._args = {'mode': mode, 'sanity_checker': sanity_checker, 'sanity_criteria': sanity_criteria} # for reshowing the dialog
+		# restore old settings if available
+		if not hasattr(self, '_args'):
+			self._args = {'mode': mode, 'sanity_checker': sanity_checker, 'sanity_criteria': sanity_criteria} # for reshowing the dialog
+		else:
+			mode, sanity_checker, sanity_criteria = self._args['mode'], self._args['sanity_checker'], self._args['sanity_criteria']
+
+		assert mode in ('save', 'load', 'mp_load', 'mp_save')
 
 		mp = mode.startswith('mp_')
 		if mp:

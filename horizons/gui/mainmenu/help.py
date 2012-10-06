@@ -30,6 +30,7 @@ from horizons.gui.widgets.imagebutton import OkButton
 class Help(Dialog):
 	widget_name = 'help'
 	return_events = {OkButton.DEFAULT_NAME: True}
+	stackable = False
 
 	def __init__(self, *args, **kwargs):
 		super(Help, self).__init__(*args, **kwargs)
