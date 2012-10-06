@@ -118,12 +118,6 @@ class Gui(object):
 		"""
 		self._windows.toggle(self._help)
 
-	def show_quit(self):
-		"""Shows the quit dialog. Closes the game unless the dialog is cancelled."""
-		message = _("Are you sure you want to quit Unknown Horizons?")
-		if self._windows.show_popup(_("Quit Game"), message, show_cancel_button=True):
-			horizons.main.quit()
-
 	def quit_session(self, force=False):
 		"""Quits the current session. Usually returns to main menu afterwards.
 		@param force: whether to ask for confirmation"""

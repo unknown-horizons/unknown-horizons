@@ -39,8 +39,8 @@ class MainMenu(Window):
 			'settings'         : lambda: self.windows.show(self._gui._settings),
 			'helpLink'         : self._gui.on_help,
 			'help'             : self._gui.on_help,
-			'closeButton'      : self._gui.show_quit,
-			'quit'             : self._gui.show_quit,
+			'closeButton'      : self.show_quit,
+			'quit'             : self.show_quit,
 			'dead_link'        : lambda: self.windows.show(self._gui._call_for_support), # call for help; SoC information
 			'chimebell'        : lambda: self.windows.show(self._gui._call_for_support),
 			'creditsLink'      : lambda: self.windows.show(self._gui._credits),
@@ -62,7 +62,13 @@ class MainMenu(Window):
 	close = hide
 
 	def on_escape(self):
-		self._gui.show_quit()
+		self.show_quit()
+
+	def show_quit(self):
+		"""Shows the quit dialog. Closes the game unless the dialog is cancelled."""
+		message = _("Are you sure you want to quit Unknown Horizons?")
+		if self.windows.show_popup(_("Quit Game"), message, show_cancel_button=True):
+			horizons.main.quit()
 
 
 class LoadingScreen(Window):
