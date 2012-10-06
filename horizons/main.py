@@ -209,7 +209,7 @@ def start(_command_line_arguments):
 	elif command_line_arguments.start_campaign is not None:
 		startup_worked = _start_campaign(command_line_arguments.start_campaign, force_player_id=command_line_arguments.force_player_id)
 	elif command_line_arguments.load_map is not None:
-		startup_worked = _load_map(command_line_arguments.load_map, command_line_arguments.ai_players,
+		startup_worked = _load_cmd_map(command_line_arguments.load_map, command_line_arguments.ai_players,
 			command_line_arguments.human_ai, command_line_arguments.force_player_id)
 	elif command_line_arguments.load_quicksave is not None:
 		startup_worked = _load_last_quicksave()
@@ -474,7 +474,7 @@ def _start_campaign(campaign_name, force_player_id=None):
 		campaign={'campaign_name': campaign_name, 'scenario_index': 0, 'scenario_name': scenarios[0]},
 		force_player_id=force_player_id)
 
-def _load_map(savegame, ai_players, human_ai, force_player_id=None):
+def _load_cmd_map(savegame, ai_players, human_ai, force_player_id=None):
 	"""Load a map specified by user.
 	@param savegame: either the displayname of a savegame or a path to a savegame
 	@return: bool, whether loading succeded"""
