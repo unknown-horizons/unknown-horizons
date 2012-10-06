@@ -24,7 +24,7 @@ from horizons.util.color import Color
 from horizons.util.difficultysettings import DifficultySettings
 
 class StartGameOptions(object):
-	def __init__(self, savegame):
+	def __init__(self, game_identifier):
 		self.trader_enabled = True
 		self.pirate_enabled = True
 		self.natural_resource_multiplier = 1
@@ -35,7 +35,7 @@ class StartGameOptions(object):
 		self.is_scenario = False
 		self.campaign = None
 
-		self.savegame = savegame
+		self.game_identifier = game_identifier
 		self.player_name = 'Player'
 		self.player_color = None
 		self.ai_players = 0

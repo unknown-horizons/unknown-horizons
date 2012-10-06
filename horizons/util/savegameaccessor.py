@@ -39,7 +39,7 @@ class SavegameAccessor(DbReader):
 	Frequent select queries are preloaded for faster access.
 	"""
 
-	def __init__(self, dbfile, is_map):
+	def __init__(self, game_identifier, is_map):
 		is_random_map = False
 		if is_map:
 			self.upgrader = None
@@ -49,16 +49,16 @@ class SavegameAccessor(DbReader):
 			with open('content/savegame_template.sql') as savegame_template:
 				self.execute_script(savegame_template.read())
 
-			if isinstance(dbfile, list):
+			if isinstance(game_identifier, list):
 				is_random_map = True
-				random_island_sequence = dbfile
+				random_island_sequence = game_identifier
 			else:
-				self._map_path = dbfile
+				self._map_path = game_identifier
 		else:
-			self.upgrader = SavegameUpgrader(dbfile)
+			self.upgrader = SavegameUpgrader(game_identifier)
 			self._temp_path = None
-			dbfile = self.upgrader.get_path()
-			super(SavegameAccessor, self).__init__(dbfile=dbfile)
+			game_identifier = self.upgrader.get_path()
+			super(SavegameAccessor, self).__init__(dbfile=game_identifier)
 
 			map_name_data = self('SELECT value FROM metadata WHERE name = ?', 'map_name')
 			if not map_name_data:

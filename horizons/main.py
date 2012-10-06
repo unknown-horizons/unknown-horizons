@@ -305,7 +305,7 @@ def start_singleplayer(options):
 		# don't catch errors when we should fail fast (used by tests)
 		if os.environ.get('FAIL_FAST', False):
 			raise
-		print "Failed to load", options.savegame
+		print "Failed to load", options.game_identifier
 		traceback.print_exc()
 		if _modules.session is not None and _modules.session.is_alive:
 			try:

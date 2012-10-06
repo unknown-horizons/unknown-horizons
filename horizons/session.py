@@ -295,19 +295,19 @@ class Session(LivingObject):
 		are initialised.
 		"""
 		if options.is_scenario:
-			# savegame is a yaml file, that contains reference to actual map file
-			self.scenario_eventhandler = ScenarioEventHandler(self, options.savegame)
+			# game_identifier is a yaml file, that contains reference to actual map file
+			self.scenario_eventhandler = ScenarioEventHandler(self, options.game_identifier)
 			# scenario maps can be normal maps or scenario maps:
 			map_filename = self.scenario_eventhandler.get_map_file()
-			options.savegame = os.path.join(SavegameManager.scenario_maps_dir, map_filename)
-			if not os.path.exists(options.savegame):
-				options.savegame = os.path.join(SavegameManager.maps_dir, map_filename)
+			options.game_identifier = os.path.join(SavegameManager.scenario_maps_dir, map_filename)
+			if not os.path.exists(options.game_identifier):
+				options.game_identifier = os.path.join(SavegameManager.maps_dir, map_filename)
 			options.is_map = True
 		self.campaign = {} if not options.campaign else options.campaign
 		
-		self.log.debug("Session: Loading from %s", options.savegame)
-		savegame_db = SavegameAccessor(options.savegame, options.is_map) # Initialize new dbreader
-		savegame_data = SavegameManager.get_metadata(options.savegame)
+		self.log.debug("Session: Loading from %s", options.game_identifier)
+		savegame_db = SavegameAccessor(options.game_identifier, options.is_map) # Initialize new dbreader
+		savegame_data = SavegameManager.get_metadata(options.game_identifier)
 
 		# load how often the game has been saved (used to know the difference between
 		# a loaded and a new game)
