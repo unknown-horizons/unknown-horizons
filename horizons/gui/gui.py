@@ -39,6 +39,7 @@ from horizons.gui.keylisteners import MainListener
 from horizons.gui.keylisteners.ingamekeylistener import KeyConfig
 from horizons.gui.widgets.imagebutton import OkButton, CancelButton, DeleteButton
 from horizons.util.python.callback import Callback
+from horizons.util.startgameoptions import StartGameOptions
 from horizons.extscheduler import ExtScheduler
 from horizons.messaging import GuiAction
 from horizons.component.ambientsoundcomponent import AmbientSoundComponent
@@ -109,13 +110,23 @@ class Gui(SingleplayerMenu, MultiplayerMenu):
 			'chimebell'        : self.on_chime,
 			'creditsLink'      : self.show_credits,
 			'credits'          : self.show_credits,
-			'loadgameButton'   : horizons.main.load_game,
-			'loadgame'         : horizons.main.load_game,
+			'loadgameButton'   : self.load_game,
+			'loadgame'         : self.load_game,
 			'changeBackground' : self.get_random_background_by_button,
 			'editor'           : self.editor_load_map,
 		})
 
 		self.on_escape = self.show_quit
+
+	def load_game(self):
+		saved_game = self.show_select_savegame(mode='load')
+		if saved_game is None:
+			return False # user aborted dialog
+
+		self.show_loading_screen()
+		options = StartGameOptions(saved_game)
+		horizons.main.start_singleplayer(options)
+		return True
 
 	def toggle_pause(self):
 		"""Shows in-game pause menu if the game is currently not paused.
@@ -140,7 +151,7 @@ class Gui(SingleplayerMenu, MultiplayerMenu):
 			# see http://trac.unknown-horizons.org/t/ticket/1047
 			self.widgets.reload('ingamemenu')
 			def do_load():
-				did_load = horizons.main.load_game()
+				did_load = self.load_game()
 				if did_load:
 					self.__pause_displayed = False
 			def do_quit():
