@@ -93,11 +93,10 @@ class StartGameOptions(object):
 		return options
 
 	@classmethod
-	def create_start_random_map(cls, ai_players, human_ai, seed, force_player_id):
+	def create_start_random_map(cls, ai_players, seed, force_player_id):
 		from horizons.util.random_map import generate_map_from_seed
 		options = StartGameOptions(generate_map_from_seed(seed))
 		options.ai_players = ai_players
-		options.human_ai = human_ai
 		options.force_player_id = force_player_id
 		options.is_map = True
 		return options

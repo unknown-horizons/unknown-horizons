@@ -197,9 +197,9 @@ def start(_command_line_arguments):
 		startup_worked = _start_map('development', command_line_arguments.ai_players,
 			command_line_arguments.human_ai, force_player_id=command_line_arguments.force_player_id, is_map=True)
 	elif command_line_arguments.start_random_map:
-		startup_worked = _start_random_map(command_line_arguments.ai_players, command_line_arguments.human_ai, force_player_id=command_line_arguments.force_player_id)
+		startup_worked = _start_random_map(command_line_arguments.ai_players, force_player_id=command_line_arguments.force_player_id)
 	elif command_line_arguments.start_specific_random_map is not None:
-		startup_worked = _start_random_map(command_line_arguments.ai_players, command_line_arguments.human_ai,
+		startup_worked = _start_random_map(command_line_arguments.ai_players,
 			seed=command_line_arguments.start_specific_random_map, force_player_id=command_line_arguments.force_player_id)
 	elif command_line_arguments.start_map is not None:
 		startup_worked = _start_map(command_line_arguments.start_map, command_line_arguments.ai_players,
@@ -417,8 +417,8 @@ def _start_map(map_name, ai_players=0, human_ai=False, is_scenario=False, campai
 	start_singleplayer(options)
 	return True
 
-def _start_random_map(ai_players, human_ai, seed=None, force_player_id=None):
-	options = StartGameOptions.create_start_random_map(ai_players, human_ai, seed, force_player_id)
+def _start_random_map(ai_players, seed=None, force_player_id=None):
+	options = StartGameOptions.create_start_random_map(ai_players, seed, force_player_id)
 	start_singleplayer(options)
 	return True
 
