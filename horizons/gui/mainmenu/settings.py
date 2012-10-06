@@ -19,15 +19,41 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
+from fife import fife
+
 import horizons.globals
 from horizons.gui.window import Window
 
 
 class Settings(Window):
-	# TODO pressing escape in the settings window shows the main quit popup
 
 	def show(self):
 		horizons.globals.fife.show_settings()
 
+		# Patch original dialog
+		widget = horizons.globals.fife._setting.OptionsDlg
+		if not hasattr(widget, '__patched__'):
+			# replace hide method so we take control over how the dialog
+			# is hided
+			self._original_hide = widget.hide
+			widget.hide = self.windows.close
+
+			widget.mapEvents({
+				'cancelButton': widget.hide
+			})
+
+			def on_keypress(event):
+				if event.getKey().getValue() == fife.Key.ESCAPE:
+					self.windows.close()
+			widget.capture(on_keypress, event_name="keyPressed")
+
+			widget.__patched__ = True
+
+		widget.is_focusable = True
+		widget.requestFocus()
+
 	def hide(self):
-		horizons.globals.fife._setting.OptionsDlg.hide()
+		self._original_hide()
+
+	def close(self):
+		self._original_hide()

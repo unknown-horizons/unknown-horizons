@@ -84,7 +84,7 @@ class Gui(object):
 		self._help = Help(self.widgets, gui=self, manager=self._windows)
 		self._singleplayer = SingleplayerMenu(self.widgets, gui=self, manager=self._windows)
 		self._multiplayer = MultiplayerMenu(self.widgets, gui=self, manager=self._windows)
-		self._settings = Settings(None)
+		self._settings = Settings(None, manager=self._windows)
 		self._mainmenu = MainMenu(self.widgets, gui=self, manager=self._windows)
 
 		GuiAction.subscribe( self._on_gui_action )
