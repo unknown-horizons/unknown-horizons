@@ -22,8 +22,6 @@
 import glob
 import random
 import logging
-from fife import fife
-from fife.extensions import pychan
 
 import horizons.globals
 import horizons.main
@@ -33,10 +31,9 @@ from horizons.messaging import GuiAction
 from horizons.component.ambientsoundcomponent import AmbientSoundComponent
 from horizons.gui.mainmenu import (CallForSupport, Credits, SaveLoad, Help, SingleplayerMenu,
 								   MultiplayerMenu, Settings, MainMenu, LoadingScreen)
+from horizons.gui.pausemenu import PauseMenu
 from horizons.gui.util import LazyWidgetsDict
 from horizons.gui.window import WindowManager
-
-from horizons.command.game import PauseCommand, UnPauseCommand
 
 
 class Gui(object):
@@ -72,7 +69,6 @@ class Gui(object):
 		self.widgets = LazyWidgetsDict(self.styles) # access widgets with their filenames without '.xml'
 		self.session = None
 
-		self.__pause_displayed = False
 		self._background_image = self._get_random_background()
 
 		self._windows = WindowManager(self.widgets)
@@ -87,6 +83,9 @@ class Gui(object):
 		self._mainmenu = MainMenu(self.widgets, gui=self, manager=self._windows)
 		self._loadingscreen = LoadingScreen(self.widgets, manager=self._windows)
 
+		self._ingame_windows = WindowManager(self.widgets)
+		self._pausemenu = PauseMenu(self.widgets, gui=self, manager=self._ingame_windows)
+
 		GuiAction.subscribe( self._on_gui_action )
 
 # basic menu widgets
@@ -100,60 +99,7 @@ class Gui(object):
 		if two widgets are opened which would both pause the game, we do not want to
 		unpause after only one of them is closed. Uses PauseCommand and UnPauseCommand.
 		"""
-		# TODO: logically, this now belongs to the ingame_gui (it used to be different)
-		#       this manifests itself by the need for the __pause_displayed hack below
-		#       in the long run, this should be moved, therefore eliminating the hack, and
-		#       ensuring correct setup/teardown.
-		if self.__pause_displayed:
-			self.__pause_displayed = False
-			self.hide()
-			self.current = None
-			UnPauseCommand(suggestion=True).execute(self.session)
-			self.on_escape = self.toggle_pause
-
-		else:
-			self.__pause_displayed = True
-			# reload the menu because caching creates spacing problems
-			# see http://trac.unknown-horizons.org/t/ticket/1047
-			self.widgets.reload('ingamemenu')
-			def do_load():
-				did_load = horizons.main.load_game()
-				if did_load:
-					self.__pause_displayed = False
-			def do_quit():
-				did_quit = self.quit_session()
-				if did_quit:
-					self.__pause_displayed = False
-			events = { # needed twice, save only once here
-				'e_load' : do_load,
-				'e_save' : self.save_game,
-				'e_sett' : lambda: self._windows.show(self._settings),
-				'e_help' : self.on_help,
-				'e_start': self.toggle_pause,
-				'e_quit' : do_quit,
-			}
-			self._switch_current_widget('ingamemenu', center=True, show=False, event_map={
-				  # icons
-				'loadgameButton' : events['e_load'],
-				'savegameButton' : events['e_save'],
-				'settingsLink'   : events['e_sett'],
-				'helpLink'       : events['e_help'],
-				'startGame'      : events['e_start'],
-				'closeButton'    : events['e_quit'],
-				# labels
-				'loadgame' : events['e_load'],
-				'savegame' : events['e_save'],
-				'settings' : events['e_sett'],
-				'help'     : events['e_help'],
-				'start'    : events['e_start'],
-				'quit'     : events['e_quit'],
-			})
-
-			self.show_modal_background()
-			self.current.show()
-
-			PauseCommand(suggestion=True).execute(self.session)
-			self.on_escape = self.toggle_pause
+		self._ingame_windows.toggle(self._pausemenu)
 
 # what happens on button clicks
 
@@ -224,57 +170,10 @@ class Gui(object):
 	def is_visible(self):
 		return self.current is not None and self.current.isVisible()
 
-	def show_modal_background(self):
-		""" Loads transparent background that de facto prohibits
-		access to other gui elements by eating all input events.
-		Used for modal popups and our in-game menu.
-		"""
-		height = horizons.globals.fife.engine_settings.getScreenHeight()
-		width = horizons.globals.fife.engine_settings.getScreenWidth()
-		image = horizons.globals.fife.imagemanager.loadBlank(width, height)
-		image = fife.GuiImage(image)
-		self.additional_widget = pychan.Icon(image=image)
-		self.additional_widget.position = (0, 0)
-		self.additional_widget.show()
-
-	def hide_modal_background(self):
-		try:
-			self.additional_widget.hide()
-			del self.additional_widget
-		except AttributeError:
-			pass # only used for some widgets, e.g. pause
-
 	def show_loading_screen(self):
 		self._windows.show(self._loadingscreen)
 
 # helper
-
-	def _switch_current_widget(self, new_widget, center=False, event_map=None, show=False, hide_old=False):
-		"""Switches self.current to a new widget.
-		@param new_widget: str, widget name
-		@param center: bool, whether to center the new widget
-		@param event_map: pychan event map to apply to new widget
-		@param show: bool, if True old window gets hidden and new one shown
-		@param hide_old: bool, if True old window gets hidden. Implied by show
-		@return: instance of old widget"""
-		old = self.current
-		if (show or hide_old) and old is not None:
-			self.log.debug("Gui: hiding %s", old)
-			self.hide()
-		self.log.debug("Gui: setting current to %s", new_widget)
-		self.current = self.widgets[new_widget]
-		bg = self.current.findChild(name='background')
-		if bg:
-			# Set background image
-			bg.image = self._background_image
-		if center:
-			self.current.position_technique = "automatic" # == "center:center"
-		if event_map:
-			self.current.mapEvents(event_map)
-		if show:
-			self.current.show()
-
-		return old
 
 	def get_random_background_by_button(self):
 		"""Randomly select a background image to use. This function is triggered by

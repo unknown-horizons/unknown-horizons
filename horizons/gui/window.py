@@ -240,11 +240,15 @@ class WindowManager(object):
 			self._windows[-1].hide()
 
 	def toggle(self, widget):
+		# FIXME we ignore this for now, because the pause menu ingame needs to be
+		# stackable... I think
+		"""
 		if widget.stackable:
 			# This means that the widget might still be somewhere in our stack.
 			# We can only toggle windows that are closed immediately when losing
 			# focus.
 			raise Exception('This should not be possible')
+		"""
 
 		if self._windows and self._windows[-1] == widget:
 			self._windows[-1].abort()
