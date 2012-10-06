@@ -355,8 +355,7 @@ def start_singleplayer(options):
 		descr = _(u"The game you selected could not be started.") + u" " +\
 		        _("The savegame might be broken or has been saved with an earlier version.")
 		_modules.gui.show_error_popup(headline, descr)
-		load_game(options.ai_players, options.human_ai, force_player_id=options.force_player_id)
-
+		_modules.gui.load_game()
 
 def prepare_multiplayer(game, trader_enabled=True, pirate_enabled=True, natural_resource_multiplier=1):
 	"""Starts a multiplayer game server
