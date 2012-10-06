@@ -54,8 +54,7 @@ def build_help_strings(widget):
 	The layout is defined through HELPSTRING_LAYOUT and translated.
 	"""
 	#i18n this defines how each line in our help looks like. Default: '[C] = Chat'
-	#xgettext:python-format
-	HELPSTRING_LAYOUT = _('[{key}] = {text}')
+	HELPSTRING_LAYOUT = _('[{key}] = {text}') #xgettext:python-format
 
 	#HACK Ugliness starts; load actions defined through keys and map them to FIFE key strings
 	actions = KeyConfig._Actions.__dict__
