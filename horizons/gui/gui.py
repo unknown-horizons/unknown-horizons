@@ -368,10 +368,8 @@ class Gui(object):
 			cancel_button.parent.removeChild(cancel_button)
 
 		headline = popup.findChild(name='headline')
-		# just to be safe, the gettext-function is used twice,
-		# once on the original, once on the unicode string.
-		headline.text = _(_(windowtitle))
-		popup.findChild(name='popup_message').text = _(_(message))
+		headline.text = _(windowtitle)
+		popup.findChild(name='popup_message').text = _(message)
 		popup.adaptLayout() # recalculate widths
 		return popup
 
