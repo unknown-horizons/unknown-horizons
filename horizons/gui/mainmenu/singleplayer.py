@@ -80,12 +80,7 @@ class SingleplayerMenu(Window):
 
 		self._select_single(show)
 
-	# TODO hide and close do the same, we should only special case dialogs. make the manager
-	# always call close OR hide on windows
 	def hide(self):
-		self._widget.hide()
-
-	def close(self):
 		self._widget.hide()
 
 	def on_escape(self):

@@ -47,6 +47,3 @@ class Settings(Window):
 
 	def hide(self):
 		self._original_hide()
-
-	def close(self):
-		self._original_hide()

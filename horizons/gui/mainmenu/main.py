@@ -59,8 +59,6 @@ class MainMenu(Window):
 	def hide(self):
 		self.widget.hide()
 
-	close = hide
-
 	def on_escape(self):
 		self.show_quit()
 
@@ -98,5 +96,3 @@ class LoadingScreen(Window):
 
 	def hide(self):
 		self.widget.hide()
-
-	close = hide

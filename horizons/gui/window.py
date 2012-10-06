@@ -46,7 +46,8 @@ class Window(object):
 
 	def close(self):
 		# for now this is a special case for dialogs
-		pass
+		# we make it an alias for hide for normal windows
+		self.hide()
 
 	def abort(self):
 		# for now this is a special case for dialogs

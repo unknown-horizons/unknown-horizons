@@ -58,8 +58,6 @@ class PauseMenu(Window):
 		UnPauseCommand(suggestion=True).execute(self._gui.session)
 		self.widget.hide()
 
-	close = hide
-
 	def save_game(self):
 		"""Wrapper for saving for separating gui messages from save logic"""
 		success = self._gui.session.save()

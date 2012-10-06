@@ -101,15 +101,11 @@ class MultiplayerMenu(Window):
 		self._widget.show()
 		self._focus(self._widget)
 
-	# TODO hide and close do the same, we should only special case dialogs. make the manager
-	# always call close OR hide on windows
 	def hide(self):
 		self.__cancel()
 		# it's possible for the window to be closed before the widget was setup
 		if self._widget:
 			self._widget.hide()
-
-	close = hide
 
 	def create_default_mp_game(self):
 		"""For debugging; creates a valid game. Call right after show_multi"""
