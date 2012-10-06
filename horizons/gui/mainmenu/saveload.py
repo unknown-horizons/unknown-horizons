@@ -281,8 +281,8 @@ class SaveLoad(Dialog):
 			try:
 				os.unlink(selected_file)
 				return True
-			except:
-				self._gui.show_popup(_("Error!"), _("Failed to delete savefile!"))
+			except OSError as err:
+				self._gui.show_popup(_("Error!"), _("Failed to delete savefile!") + "\n%s" % err)
 				return False
 		else: # player cancelled deletion
 			return False
