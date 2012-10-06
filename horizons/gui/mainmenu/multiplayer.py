@@ -487,9 +487,7 @@ class MultiplayerMenu(object):
 				'playerlimit' : 0
 			})
 			_update_infos()
-		self._widget.findChild(name="maplist").mapEvents({
-		  'maplist/action': _update_infos
-		})
+		self._widget.mapEvents({'maplist/action': _update_infos})
 		self._widget.findChild(name="password").text = u""
 		gamename_textfield = self._widget.findChild(name="gamename")
 		def clear_gamename_textfield():
