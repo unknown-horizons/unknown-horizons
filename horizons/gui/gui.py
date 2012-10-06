@@ -110,25 +110,6 @@ class Gui(object):
 		"""
 		self._windows.toggle(self._help)
 
-	def quit_session(self, force=False):
-		"""Quits the current session. Usually returns to main menu afterwards.
-		@param force: whether to ask for confirmation"""
-		message = _("Are you sure you want to abort the running session?")
-
-		if force or self._windows.show_popup(_("Quit Session"), message, show_cancel_button=True):
-			if self.current is not None:
-				# this can be None if not called from gui (e.g. scenario finished)
-				self.hide()
-				self.current = None
-			if self.session is not None:
-				self.session.end()
-				self.session = None
-
-			self.show_main()
-			return True
-		else:
-			return False
-
 	def show_select_savegame(self, mode, sanity_checker=None, sanity_criteria=None):
 		return self._windows.show(self._saveload, mode=mode, sanity_checker=sanity_checker,
 								  sanity_criteria=sanity_criteria)

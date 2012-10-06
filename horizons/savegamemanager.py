@@ -510,7 +510,7 @@ class SavegameManager(object):
 		next_index = campaign_data['scenario_index'] + 1
 		if next_index == len(scenarios):
 			# If no more scenario, do the same thing as in the "old" do_win action
-			horizons.main._modules.session.gui.quit_session(force = True)
+			horizons.main._modules.session.ingame_gui.quit_session(force=True)
 			return False
 		campaign_data['scenario_index'] = next_index
 		campaign_data['scenario_name'] = scenarios[next_index]

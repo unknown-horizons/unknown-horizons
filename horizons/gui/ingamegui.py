@@ -73,6 +73,7 @@ class IngameGui(LivingObject):
 		self.session = session
 		assert isinstance(self.session, horizons.session.Session)
 		self.main_gui = gui
+		self.windows = self.main_gui._ingame_windows
 		self.main_widget = None
 		self.tabwidgets = {}
 		self.settlement = None
@@ -551,3 +552,18 @@ class IngameGui(LivingObject):
 		self.widgets['chat'].findChild(name='msg').text = u''
 		self._hide_chat_dialog()
 
+	def quit_session(self, force=False):
+		"""Quits the current session. Usually returns to main menu afterwards.
+		@param force: whether to ask for confirmation"""
+		message = _("Are you sure you want to abort the running session?")
+
+		if force or self.windows.show_popup(_("Quit Session"), message, show_cancel_button=True):
+			if self.session is not None:
+				self.session.end()
+				self.session = None
+
+			self.windows.close_all()
+			self.main_gui.show_main()
+			return True
+		else:
+			return False
