@@ -81,8 +81,8 @@ class Gui(object):
 		self._credits = Credits(self.widgets, manager=self._windows)
 		self._saveload = SaveLoad(self.widgets, gui=self, manager=self._windows)
 		self._help = Help(self.widgets, gui=self, manager=self._windows)
-		self._singleplayer = SingleplayerMenu(self.widgets, gui=self)
-		self._multiplayer = MultiplayerMenu(self.widgets, gui=self)
+		self._singleplayer = SingleplayerMenu(self.widgets, gui=self, manager=self._windows)
+		self._multiplayer = MultiplayerMenu(self.widgets, gui=self, manager=self._windows)
 
 		GuiAction.subscribe( self._on_gui_action )
 

@@ -36,6 +36,7 @@ from horizons.gui.mainmenu.playerdataselection import PlayerDataSelection
 from horizons.constants import AI, LANGUAGENAMES
 from horizons.gui.widgets.imagebutton import OkButton
 from horizons.gui.widgets.minimap import Minimap
+from horizons.gui.window import Window
 from horizons.world import World
 from horizons.util.python.callback import Callback
 from horizons.util.random_map import generate_random_map, generate_random_seed
@@ -47,17 +48,10 @@ from horizons.i18n import find_available_languages
 from horizons.scenario import ScenarioEventHandler, InvalidScenarioFileFormat
 
 
-# TODO this does not inherit from Dialog, but we'll implement a similar API for now
-# perhaps we find a way to express both this and a real dialog in a common class
-
-class SingleplayerMenu(object):
+class SingleplayerMenu(Window):
 
 	# game options
 	resource_densities = [0.5, 0.7, 1, 1.4, 2]
-
-	def __init__(self, widget_loader, gui):
-		self._widget_loader = widget_loader
-		self._gui = gui
 
 	def show(self, show='scenario'): # show scenarios to highlight tutorials
 		"""

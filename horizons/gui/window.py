@@ -30,7 +30,26 @@ from horizons.gui.widgets.imagebutton import OkButton, CancelButton
 
 
 class Window(object):
-	pass
+
+	def __init__(self, widget_loader, gui=None, manager=None):
+		self._widget_loader = widget_loader
+		self._widget = None
+		self._gui = gui
+		self.windows = manager
+
+	def show(self, **kwargs):
+		raise NotImplementedError
+
+	def hide(self):
+		raise NotImplementedError
+
+	def close(self):
+		# for now this is a special case for dialogs
+		pass
+
+	def abort(self):
+		# for now this is a special case for dialogs
+		pass
 
 
 class Dialog(Window):
@@ -38,14 +57,11 @@ class Dialog(Window):
 	widget_name = None
 	stackable = True
 
-	def __init__(self, widget_loader, gui=None, manager=None):
-		self._widget_loader = widget_loader
-		self._widget = None
-		self.windows = manager
-		# TODO this needs to go probably
-		self._gui = gui
+	def __init__(self, *args, **kwargs):
+		super(Dialog, self).__init__(*args, **kwargs)
 		self.active = False
 		self._hidden = False
+		self._widget = None
 
 	def prepare(self, *args, **kwargs):
 		"""Preparation of the widget before the dialog is shown.
@@ -91,16 +107,14 @@ class Dialog(Window):
 		return self.post(ret)
 
 	def abort(self):
-		horizons.globals.fife.pychanmanager.breakFromMainLoop(return_value=False)
+		horizons.globals.fife.pychanmanager.breakFromMainLoop(False)
 
 	def close(self):
-		print 'Dialog close', self
 		if self.active:
 			self.active = False
 			self.hide()
 
 	def hide(self):
-		print 'Dialog hide', self
 		if self.active:
 			self.active = False
 			self._hidden = True
@@ -141,7 +155,7 @@ class Dialog(Window):
 				pychan.tools.applyOnlySuitable(callback, event=event, widget=btn)
 			else:
 				# escape should hide the dialog default
-				horizons.globals.fife.pychanmanager.breakFromMainLoop(return_value=False)
+				horizons.globals.fife.pychanmanager.breakFromMainLoop(False)
 		elif event.getKey().getValue() == fife.Key.ENTER: # convention says use ok action
 			btn = self._widget.findChild(name=OkButton.DEFAULT_NAME)
 			callback = pychan_util.get_button_event(btn) if btn else None
@@ -254,7 +268,7 @@ class WindowManager(object):
 		if details:
 			msg += _("Details: {error_details}").format(error_details=details)
 		try:
-			return self._show_popup( _("Error: {error_message}").format(error_message=windowtitle),
+			return self.show_popup( _("Error: {error_message}").format(error_message=windowtitle),
 			                        msg, show_cancel_button=False)
 		except SystemExit: # user really wants us to die
 			raise
@@ -264,7 +278,7 @@ class WindowManager(object):
 			if _first:
 				traceback.print_exc()
 				print 'Exception while showing error, retrying once more'
-				return self._show_error_popup(windowtitle, description, advice, details, _first=False)
+				return self.show_error_popup(windowtitle, description, advice, details, _first=False)
 			else:
 				raise # it persists, we have to die.
 

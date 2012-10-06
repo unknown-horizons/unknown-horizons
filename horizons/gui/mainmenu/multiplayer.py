@@ -27,6 +27,7 @@ from fife.extensions.pychan.widgets import HBox, Icon, Label
 
 from horizons.gui.mainmenu.playerdataselection import PlayerDataSelection
 from horizons.gui.widgets.imagebutton import OkButton, CancelButton
+from horizons.gui.window import Window
 from horizons.savegamemanager import SavegameManager
 from horizons.constants import MULTIPLAYER
 from horizons.network.networkinterface import NetworkInterface
@@ -38,15 +39,8 @@ from horizons.util.savegameaccessor import SavegameAccessor
 
 enet = find_enet_module()
 
-# TODO this does not inherit from Dialog, but we'll implement a similar API for now
-# perhaps we find a way to express both this and a real dialog in a common class
-#
-class MultiplayerMenu(object):
+class MultiplayerMenu(Window):
 	log = logging.getLogger("networkinterface")
-
-	def __init__(self, widget_loader, gui):
-		self._widget_loader = widget_loader
-		self._gui = gui
 
 	def show(self):
 		"""Shows main multiplayer menu"""
