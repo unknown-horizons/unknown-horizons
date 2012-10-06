@@ -91,10 +91,10 @@ class Gui(object):
 	def show_main(self):
 		"""Shows the main menu """
 		self._switch_current_widget('mainmenu', center=True, show=True, event_map={
-			'startSingle'      : self._singleplayer.show, # first is the icon in menu
-			'start'            : self._singleplayer.show, # second is the lable in menu
-			'startMulti'       : self._multiplayer.show,
-			'start_multi'      : self._multiplayer.show,
+			'startSingle'      : lambda: self._windows.show(self._singleplayer), # first is the icon in menu
+			'start'            : lambda: self._windows.show(self._singleplayer), # second is the lable in menu
+			'startMulti'       : lambda: self._windows.show(self._multiplayer),
+			'start_multi'      : lambda: self._windows.show(self._multiplayer),
 			'settingsLink'     : self.show_settings,
 			'settings'         : self.show_settings,
 			'helpLink'         : self.on_help,
@@ -181,7 +181,7 @@ class Gui(object):
 		success = self.session.save()
 		if not success:
 			# There was a problem during the 'save game' procedure.
-			self.show_popup(_('Error'), _('Failed to save.'))
+			self._windows.show_popup(_('Error'), _('Failed to save.'))
 
 	def show_settings(self):
 		"""Displays settings gui derived from the FIFE settings module."""
@@ -197,7 +197,7 @@ class Gui(object):
 	def show_quit(self):
 		"""Shows the quit dialog. Closes the game unless the dialog is cancelled."""
 		message = _("Are you sure you want to quit Unknown Horizons?")
-		if self.show_popup(_("Quit Game"), message, show_cancel_button=True):
+		if self._windows.show_popup(_("Quit Game"), message, show_cancel_button=True):
 			horizons.main.quit()
 
 	def quit_session(self, force=False):
@@ -205,7 +205,7 @@ class Gui(object):
 		@param force: whether to ask for confirmation"""
 		message = _("Are you sure you want to abort the running session?")
 
-		if force or self.show_popup(_("Quit Session"), message, show_cancel_button=True):
+		if force or self._windows.show_popup(_("Quit Session"), message, show_cancel_button=True):
 			if self.current is not None:
 				# this can be None if not called from gui (e.g. scenario finished)
 				self.hide()

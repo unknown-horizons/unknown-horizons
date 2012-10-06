@@ -49,6 +49,7 @@ class MultiplayerMenu(Window):
 			descr = _(u'The multiplayer feature requires the library "pyenet", '
 			          u"which could not be found on your system.")
 			advice = _(u"Linux users: Try to install pyenet through your package manager.")
+			self.windows.close()
 			self.windows.show_error_popup(headline, descr, advice)
 			return
 
@@ -59,6 +60,7 @@ class MultiplayerMenu(Window):
 				headline = _(u"Failed to initialize networking.")
 				descr = _("Network features could not be initialized with the current configuration.")
 				advice = _("Check the settings you specified in the network section.")
+				self.windows.close()
 				self.windows.show_error_popup(headline, descr, advice, unicode(e))
 				return
 
@@ -135,6 +137,7 @@ class MultiplayerMenu(Window):
 			descr = _(u"Could not connect to master server.")
 			advice = _(u"Please check your Internet connection. If it is fine, "
 			           u"it means our master server is temporarily down.")
+			self.windows.close()
 			self.windows.show_error_popup(headline, descr, advice, unicode(err))
 			return False
 		return True
@@ -155,6 +158,7 @@ class MultiplayerMenu(Window):
 		if not fatal:
 			self.windows.show_popup(_("Error"), unicode(exception))
 		else:
+			self.windows.close()
 			self.windows.show_popup(_("Fatal Network Error"),
 		                 _("Something went wrong with the network:") + u'\n' +
 		                 unicode(exception) )

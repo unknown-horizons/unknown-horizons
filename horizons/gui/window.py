@@ -30,6 +30,7 @@ from horizons.gui.widgets.imagebutton import OkButton, CancelButton
 
 
 class Window(object):
+	stackable = True
 
 	def __init__(self, widget_loader, gui=None, manager=None):
 		self._widget_loader = widget_loader
@@ -55,7 +56,6 @@ class Window(object):
 class Dialog(Window):
 	modal = True
 	widget_name = None
-	stackable = True
 
 	def __init__(self, *args, **kwargs):
 		super(Dialog, self).__init__(*args, **kwargs)
