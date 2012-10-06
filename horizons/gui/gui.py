@@ -33,7 +33,7 @@ from horizons.gui.keylisteners import MainListener
 from horizons.messaging import GuiAction
 from horizons.component.ambientsoundcomponent import AmbientSoundComponent
 from horizons.gui.mainmenu import (CallForSupport, Credits, SaveLoad, Help, SingleplayerMenu,
-								   MultiplayerMenu, Settings)
+								   MultiplayerMenu, Settings, MainMenu)
 from horizons.gui.util import LazyWidgetsDict
 from horizons.gui.window import WindowManager
 
@@ -85,34 +85,14 @@ class Gui(object):
 		self._singleplayer = SingleplayerMenu(self.widgets, gui=self, manager=self._windows)
 		self._multiplayer = MultiplayerMenu(self.widgets, gui=self, manager=self._windows)
 		self._settings = Settings(None)
+		self._mainmenu = MainMenu(self.widgets, gui=self, manager=self._windows)
 
 		GuiAction.subscribe( self._on_gui_action )
 
 # basic menu widgets
 
 	def show_main(self):
-		"""Shows the main menu """
-		self._switch_current_widget('mainmenu', center=True, show=True, event_map={
-			'startSingle'      : lambda: self._windows.show(self._singleplayer), # first is the icon in menu
-			'start'            : lambda: self._windows.show(self._singleplayer), # second is the label in menu
-			'startMulti'       : lambda: self._windows.show(self._multiplayer),
-			'start_multi'      : lambda: self._windows.show(self._multiplayer),
-			'settingsLink'     : lambda: self._windows.show(self._settings),
-			'settings'         : lambda: self._windows.show(self._settings),
-			'helpLink'         : self.on_help,
-			'help'             : self.on_help,
-			'closeButton'      : self.show_quit,
-			'quit'             : self.show_quit,
-			'dead_link'        : lambda: self._windows.show(self._call_for_support), # call for help; SoC information
-			'chimebell'        : lambda: self._windows.show(self._call_for_support),
-			'creditsLink'      : lambda: self._windows.show(self._credits),
-			'credits'          : lambda: self._windows.show(self._credits),
-			'loadgameButton'   : horizons.main.load_game,
-			'loadgame'         : horizons.main.load_game,
-			'changeBackground' : self.get_random_background_by_button
-		})
-
-		self.on_escape = self.show_quit
+		self._windows.show(self._mainmenu)
 
 	def toggle_pause(self):
 		"""Shows in-game pause menu if the game is currently not paused.

@@ -23,6 +23,7 @@ import hashlib
 import logging
 import textwrap
 
+from fife import fife
 from fife.extensions.pychan.widgets import HBox, Icon, Label
 
 from horizons.gui.mainmenu.playerdataselection import PlayerDataSelection
@@ -74,7 +75,7 @@ class MultiplayerMenu(Window):
 				return
 
 		event_map = {
-			'cancel'  : self.__cancel,
+			'cancel'  : self.windows.close,
 			'join'    : self.__join_game,
 			'create'  : self.__show_create_game,
 			'load'    : self.__show_load_game,
@@ -87,18 +88,33 @@ class MultiplayerMenu(Window):
 		self._widget_loader.reload('multiplayermenu')
 		self._widget = self._widget_loader['multiplayermenu']
 		self._widget.mapEvents(event_map)
+		def on_keypress(event):
+			if event.getKey().getValue() == fife.Key.ESCAPE:
+				self.windows.close()
+
+		self._widget.capture(on_keypress, event_name="keyPressed")
 
 		refresh_worked = self.__refresh()
 		if not refresh_worked:
-			self._gui.show_main()
+			self.windows.close()
 			return
 		self._widget.findChild(name='gamelist').capture(self.__update_game_details)
 		self._widget.findChild(name='showonlyownversion').capture(self.__show_only_own_version_toggle)
 		self._playerdata = PlayerDataSelection(self._widget, self._widget_loader)
 
 		self._widget.show()
+		self._widget.is_focusable = True
+		self._widget.requestFocus()
 
-		self._gui.on_escape = event_map['cancel']
+	# TODO hide and close do the same, we should only special case dialogs. make the manager
+	# always call close OR hide on windows
+	def hide(self):
+		self.__cancel()
+		self._widget.hide()
+
+	def close(self):
+		self.__cancel()
+		self._widget.hide()
 
 	def create_default_mp_game(self):
 		"""For debugging; creates a valid game. Call right after show_multi"""
@@ -169,7 +185,6 @@ class MultiplayerMenu(Window):
 			NetworkInterface().disconnect()
 		self.__apply_new_nickname()
 		self.__apply_new_color()
-		self._gui.show_main()
 
 	def __player_kicked(self, game, player, myself):
 		if myself:
