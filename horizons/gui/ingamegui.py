@@ -20,7 +20,6 @@
 # ###################################################
 
 import horizons.globals
-from fife import fife
 
 from horizons.entities import Entities
 from horizons.util.living import livingProperty, LivingObject
@@ -28,7 +27,6 @@ from horizons.util.pychanchildfinder import PychanChildFinder
 from horizons.util.python.callback import Callback
 from horizons.gui.mousetools import BuildingTool
 from horizons.gui.tabs import TabWidget, BuildTab, DiplomacyTab, SelectMultiTab
-from horizons.gui.widgets.imagebutton import OkButton, CancelButton
 from horizons.gui.widgets.messagewidget import MessageWidget
 from horizons.gui.widgets.minimap import Minimap
 from horizons.gui.widgets.logbook import LogBook
@@ -40,9 +38,8 @@ from horizons.gui.widgets.choose_next_scenario import ScenarioChooser
 from horizons.extscheduler import ExtScheduler
 from horizons.gui.util import LazyWidgetsDict
 from horizons.constants import BUILDINGS, GUI
-from horizons.command.misc import Chat
 from horizons.command.game import SpeedDownCommand, SpeedUpCommand
-from horizons.gui.ingame import ChangeNameDialog, SaveMapDialog
+from horizons.gui.ingame import ChangeNameDialog, SaveMapDialog, ChatDialog
 from horizons.gui.pausemenu import PauseMenu
 from horizons.gui.mainmenu import Help, Settings
 from horizons.gui.tabs.tabinterface import TabInterface
@@ -93,6 +90,7 @@ class IngameGui(LivingObject):
 		self._pausemenu = PauseMenu(self.widgets, gui=self, manager=self.windows)
 		self._change_name_dialog = ChangeNameDialog(self.widgets, gui=self, manager=self.windows)
 		self._save_map_dialog = SaveMapDialog(self.widgets, gui=self, manager=self.windows)
+		self._chat_dialog = ChatDialog(self.widgets, gui=self, manager=self.windows)
 
 		self.cityinfo = self.widgets['city_info']
 		self.cityinfo.child_finder = PychanChildFinder(self.cityinfo)
@@ -469,34 +467,7 @@ class IngameGui(LivingObject):
 
 	def show_chat_dialog(self):
 		"""Show a dialog where the user can enter a chat message"""
-		events = {
-			OkButton.DEFAULT_NAME: self._do_chat,
-			CancelButton.DEFAULT_NAME: self._hide_chat_dialog
-		}
-		self.main_gui.on_escape = self._hide_chat_dialog
-
-		self.widgets['chat'].mapEvents(events)
-		def forward_escape(event):
-			# the textfield will eat everything, even control events
-			if event.getKey().getValue() == fife.Key.ESCAPE:
-				self.main_gui.on_escape()
-
-		self.widgets['chat'].findChild(name='msg').capture( forward_escape, "keyPressed" )
-		self.widgets['chat'].findChild(name='msg').capture( self._do_chat )
-		self.widgets['chat'].show()
-		self.widgets['chat'].findChild(name="msg").requestFocus()
-
-	def _hide_chat_dialog(self):
-		"""Escapes the chat dialog"""
-		self.main_gui.on_escape = self.toggle_pause
-		self.widgets['chat'].hide()
-
-	def _do_chat(self):
-		"""Actually initiates chatting and hides the dialog"""
-		msg = self.widgets['chat'].findChild(name='msg').text
-		Chat(msg).execute(self.session)
-		self.widgets['chat'].findChild(name='msg').text = u''
-		self._hide_chat_dialog()
+		self.windows.show(self._chat_dialog)
 
 	def quit_session(self, force=False):
 		"""Quits the current session. Usually returns to main menu afterwards.

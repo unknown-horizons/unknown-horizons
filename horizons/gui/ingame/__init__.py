@@ -23,6 +23,7 @@ import re
 
 from fife import fife
 
+from horizons.command.misc import Chat
 from horizons.command.uioptions import RenameObject
 from horizons.component.namedcomponent import SettlementNameComponent, NamedComponent
 from horizons.gui.widgets.imagebutton import OkButton, CancelButton
@@ -116,3 +117,40 @@ class SaveMapDialog(Window):
 
 	def hide(self):
 		self.widget.hide()
+
+
+class ChatDialog(Window):
+	widget_name = 'chat'
+
+	def show(self):
+		self.widget = self._widget_loader[self.widget_name]
+
+		events = {
+			OkButton.DEFAULT_NAME: self._do_chat,
+			CancelButton.DEFAULT_NAME: self.windows.close
+		}
+
+		def forward_escape(event):
+			# the textfield will eat everything, even control events
+			if event.getKey().getValue() == fife.Key.ESCAPE:
+				self.windows.close()
+
+		message = self.widget.findChild(name='msg')
+		message.capture(forward_escape, "keyPressed")
+		message.capture(self._do_chat)
+
+		self.widget.mapEvents(events)
+		self.widget.show()
+
+		message.requestFocus()
+
+	def hide(self):
+		self.widget.hide()
+
+	def _do_chat(self):
+		"""Actually initiates chatting and hides the dialog"""
+		msg = self.widget.findChild(name='msg').text
+		Chat(msg).execute(self._gui.session)
+		self.widget.findChild(name='msg').text = u''
+
+		self.windows.close()
