@@ -302,8 +302,8 @@ class IngameGui(LivingObject):
 			return
 
 		if not DiplomacyTab.is_useable(self.session.world):
-			self.main_gui.show_popup(_("No diplomacy possible"),
-			                         _("Cannot do diplomacy as there are no other players."))
+			self.show_popup(_("No diplomacy possible"),
+			                _("Cannot do diplomacy as there are no other players."))
 			return
 
 		tab = DiplomacyTab(self, self.session.world)
@@ -491,7 +491,7 @@ class IngameGui(LivingObject):
 			message = _('Valid map names are in the following form: {expression}').format(expression='[a-zA-Z0-9_-]+')
 			#xgettext:python-format
 			advice = _('Try a name that only contains letters and numbers.')
-			self.session.gui.show_error_popup(_('Error'), message, advice)
+			self.show_error_popup(_('Error'), message, advice)
 
 	def on_escape(self):
 		if self.main_widget:
@@ -567,12 +567,14 @@ class IngameGui(LivingObject):
 		@param force: whether to ask for confirmation"""
 		message = _("Are you sure you want to abort the running session?")
 
-		if force or self.windows.show_popup(_("Quit Session"), message, show_cancel_button=True):
+		if force or self.show_popup(_("Quit Session"), message, show_cancel_button=True):
+			# Close all windows before ending the session
+			self.windows.close_all()
+
 			if self.session is not None:
 				self.session.end()
 				self.session = None
 
-			self.windows.close_all()
 			self.main_gui.show()
 			return True
 		else:
@@ -588,3 +590,9 @@ class IngameGui(LivingObject):
 
 	def toggle_help(self):
 		self.windows.toggle(self._help)
+
+	def show_popup(self, *args, **kwargs):
+		return self.windows.show_popup(*args, **kwargs)
+
+	def show_error_popup(self, *args, **kwargs):
+		return self.windows.show_error_popup(*args, **kwargs)

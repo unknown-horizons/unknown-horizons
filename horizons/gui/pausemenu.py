@@ -56,10 +56,7 @@ class PauseMenu(Window):
 		self._focus(self.widget)
 
 	def hide(self):
-		# the session is gone when we're ending the game from the pausemenu
-		# but the menu still needs to hide
-		if self._gui.session:
-			UnPauseCommand(suggestion=True).execute(self._gui.session)
+		UnPauseCommand(suggestion=True).execute(self._gui.session)
 		self.widget.hide()
 
 	def save_game(self):
