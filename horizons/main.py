@@ -375,9 +375,8 @@ def _start_map(map_name, ai_players=0, is_scenario=False, campaign=None,
 		return False
 
 	_modules.gui.show_loading_screen()
-	options = StartGameOptions.create_start_singleplayer(map_file, is_scenario=is_scenario,
-		campaign=campaign, ai_players=ai_players, pirate_enabled=pirate_enabled,
-		trader_enabled=trader_enabled, force_player_id=force_player_id, is_map=is_map)
+	options = StartGameOptions.create_start_singleplayer(map_file, is_scenario, campaign,
+		ai_players, trader_enabled, pirate_enabled, force_player_id, is_map)
 	start_singleplayer(options)
 	return True
 

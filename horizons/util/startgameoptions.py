@@ -104,22 +104,15 @@ class StartGameOptions(object):
 		return options
 
 	@classmethod
-	def create_start_singleplayer(cls, map_file, playername='Player', playercolor=None,
-	                              is_scenario=False, campaign=None, ai_players=0,
-	                              trader_enabled=True, pirate_enabled=True,
-	                              natural_resource_multiplier=1, force_player_id=None,
-	                              disasters_enabled=True, is_map=False):
-		options = StartGameOptions(map_file)
-		options.player_name = playername
-		options.player_color = playercolor
+	def create_start_singleplayer(cls, game_identifier, is_scenario, campaign, ai_players,
+		                          trader_enabled, pirate_enabled, force_player_id, is_map):
+		options = StartGameOptions(game_identifier)
 		options.is_scenario = is_scenario
 		options.campaign = campaign
 		options.ai_players = ai_players
 		options.trader_enabled = trader_enabled
 		options.pirate_enabled = pirate_enabled
-		options.natural_resource_multiplier = natural_resource_multiplier
 		options.force_player_id = force_player_id
-		options.disasters_enabled = disasters_enabled
 		options.is_map = is_map
 		return options
 
