@@ -25,6 +25,10 @@ from horizons.util.difficultysettings import DifficultySettings
 
 class StartGameOptions(object):
 	def __init__(self, game_identifier):
+		super(StartGameOptions, self).__init__()
+		self.game_identifier = game_identifier
+		self._player_list = None
+
 		self.trader_enabled = True
 		self.pirate_enabled = True
 		self.natural_resource_multiplier = 1
@@ -35,13 +39,10 @@ class StartGameOptions(object):
 		self.is_scenario = False
 		self.campaign = None
 
-		self.game_identifier = game_identifier
 		self.player_name = 'Player'
 		self.player_color = None
 		self.ai_players = 0
 		self.human_ai = AI.HUMAN_AI
-
-		self.player_list = None
 
 	def init_new_world(self, session):
 		# NOTE: this must be sorted before iteration, cause there is no defined order for
@@ -57,8 +58,8 @@ class StartGameOptions(object):
 		self.player_color = player_color
 
 	def _get_player_list(self):
-		if self.player_list is not None:
-			return self.player_list
+		if self._player_list is not None:
+			return self._player_list
 
 		# for now just make it a bit easier for the AI
 		difficulty_level = {False: DifficultySettings.DEFAULT_LEVEL, True: DifficultySettings.EASY_LEVEL}
@@ -97,7 +98,7 @@ class StartGameOptions(object):
 	@classmethod
 	def create_start_multiplayer(cls, game_file, player_list, is_map):
 		options = StartGameOptions(game_file)
-		options.player_list = player_list
+		options._player_list = player_list
 		options.is_map = is_map
 		options.is_multiplayer = True
 		return options
@@ -172,7 +173,7 @@ class StartGameOptions(object):
 	@classmethod
 	def create_game_test(cls, game_identifier, player_list):
 		options = StartGameOptions(game_identifier)
-		options.player_list = player_list
+		options._player_list = player_list
 		options.trader_enabled = False
 		options.pirate_enabled = False
 		options.natural_resource_multiplier = 0
@@ -181,6 +182,6 @@ class StartGameOptions(object):
 	@classmethod
 	def create_ai_test(cls, game_identifier, player_list):
 		options = StartGameOptions(game_identifier)
-		options.player_list = player_list
+		options._player_list = player_list
 		options.is_map = True
 		return options
