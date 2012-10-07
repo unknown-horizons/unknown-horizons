@@ -25,7 +25,7 @@ from horizons.gui.keylisteners import MainListener
 from horizons.messaging import GuiAction
 from horizons.component.ambientsoundcomponent import AmbientSoundComponent
 from horizons.gui.mainmenu import (CallForSupport, Credits, SaveLoad, Help, SingleplayerMenu,
-								   MultiplayerMenu, Settings, MainMenu, LoadingScreen, Background)
+                                   MultiplayerMenu, Settings, MainMenu, LoadingScreen, Background)
 from horizons.gui.util import LazyWidgetsDict
 from horizons.gui.window import WindowManager
 
@@ -86,7 +86,7 @@ class Gui(object):
 
 	def show_select_savegame(self, mode, sanity_checker=None, sanity_criteria=None):
 		return self._windows.show(self._saveload, mode=mode, sanity_checker=sanity_checker,
-								  sanity_criteria=sanity_criteria)
+		                          sanity_criteria=sanity_criteria)
 
 # display
 
