@@ -221,12 +221,12 @@ def start(_command_line_arguments):
 		__string_previewer = StringPreviewWidget(_modules.session)
 		__string_previewer.show()
 	elif command_line_arguments.create_mp_game:
-		_modules.gui.show_main()
-		_modules.gui.show_multi()
+		_modules.gui.show()
+		_modules.gui.show_multi()  # TODO
 		_modules.gui.create_default_mp_game()
 	elif command_line_arguments.join_mp_game:
-		_modules.gui.show_main()
-		_modules.gui.show_multi()
+		_modules.gui.show()
+		_modules.gui.show_multi()  # TODO
 		_modules.gui.join_mp_game()
 	else: # no commandline parameter, show main screen
 
@@ -246,7 +246,7 @@ def start(_command_line_arguments):
 
 			update_info_handler(update_info) # schedules checks by itself
 
-		_modules.gui.show_main()
+		_modules.gui.show()
 		if not command_line_arguments.nopreload:
 			preloading[0].start()
 
@@ -351,11 +351,11 @@ def start_singleplayer(map_file, playername="Player", playercolor=None, is_scena
 				print
 				traceback.print_exc()
 				print "Additionally to failing when loading, cleanup afterwards also failed"
-		_modules.gui.show_main()
+		_modules.gui.show()
 		headline = _(u"Failed to start/load the game")
 		descr = _(u"The game you selected could not be started.") + u" " +\
 		        _("The savegame might be broken or has been saved with an earlier version.")
-		_modules.gui.show_error_popup(headline, descr)
+		_modules.gui._windows.show_error_popup(headline, descr)
 		load_game(ai_players, human_ai, force_player_id=force_player_id)
 
 

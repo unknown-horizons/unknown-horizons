@@ -563,7 +563,7 @@ class IngameGui(LivingObject):
 				self.session = None
 
 			self.windows.close_all()
-			self.main_gui.show_main()
+			self.main_gui.show()
 			return True
 		else:
 			return False

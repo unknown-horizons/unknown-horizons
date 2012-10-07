@@ -90,9 +90,6 @@ class Gui(object):
 
 # basic menu widgets
 
-	def show_main(self):
-		self._windows.show(self._mainmenu)
-
 	def toggle_pause(self):
 		"""Shows in-game pause menu if the game is currently not paused.
 		Else unpauses and hides the menu. Multiple layers of the 'paused' concept exist;
@@ -127,15 +124,18 @@ class Gui(object):
 		pass
 
 	def show(self):
-		self.log.debug("Gui: showing current: %s", self.current)
-		if self.current is not None:
-			self.current.show()
+		"""Display the mainmenu.
+
+		This is called on startup or when we're coming back from a game.
+		"""
+		self._windows.show(self._mainmenu)
 
 	def hide(self):
-		self._windows.close_all()
+		"""Completely hide the mainmenu.
 
-	def is_visible(self):
-		return self.current is not None and self.current.isVisible()
+		Called once we're ingame and the ingame gui is ready.
+		"""
+		self._windows.close_all()
 
 	def show_loading_screen(self):
 		self._windows.show(self._loadingscreen)
