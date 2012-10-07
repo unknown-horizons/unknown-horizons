@@ -19,7 +19,10 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
+import glob
 import random
+
+from fife.extensions import pychan
 
 import horizons.main
 from horizons.gui.window import Window
@@ -47,7 +50,7 @@ class MainMenu(Window):
 			'credits'          : lambda: self.windows.show(self._gui._credits),
 			'loadgameButton'   : horizons.main.load_game,
 			'loadgame'         : horizons.main.load_game,
-			'changeBackground' : self._gui.get_random_background_by_button
+			'changeBackground' : self._gui._background.randomize
 		}
 
 		self.widget = self._widget_loader[self.widget_name]
@@ -96,3 +99,47 @@ class LoadingScreen(Window):
 
 	def hide(self):
 		self.widget.hide()
+
+
+class Background(Window):
+	"""The background image that is visible throughout the entire main menu and loadingscreen."""
+
+	def __init__(self, *args, **kwargs):
+		super(Background, self).__init__(*args, **kwargs)
+
+		self.image = self._get_random_background()
+
+		self.widget = pychan.Icon(image=self.image)
+		self.widget.size = (1024, 768)
+		self.widget.position_technique = "automatic"
+
+	def show(self):
+		self.widget.show()
+
+	def hide(self):
+		# the background should always be visible
+		pass
+
+	def close(self):
+		# when the window should close, hide the background (we are probably ingame now)
+		self.widget.hide()
+
+	def _get_random_background(self):
+		"""Randomly select a background image to use through out the game menu."""
+		available_images = glob.glob('content/gui/images/background/mainmenu/bg_*.png')
+
+		latest_background = horizons.globals.fife.get_uh_setting("LatestBackground")
+		# Don't include the latest background in the choices
+		if latest_background is not None:
+			available_images.remove(latest_background)
+
+		background_choice = random.choice(available_images)
+		horizons.globals.fife.set_uh_setting("LatestBackground", background_choice)
+		horizons.globals.fife.save_settings()
+
+		return background_choice
+
+	def randomize(self):
+		"""Update background with a new random image."""
+		self.image = self._get_random_background()
+		self.widget.image = self.image

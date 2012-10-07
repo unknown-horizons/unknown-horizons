@@ -19,18 +19,13 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-import glob
-import random
 import logging
-
-import horizons.globals
-import horizons.main
 
 from horizons.gui.keylisteners import MainListener
 from horizons.messaging import GuiAction
 from horizons.component.ambientsoundcomponent import AmbientSoundComponent
 from horizons.gui.mainmenu import (CallForSupport, Credits, SaveLoad, Help, SingleplayerMenu,
-								   MultiplayerMenu, Settings, MainMenu, LoadingScreen)
+								   MultiplayerMenu, Settings, MainMenu, LoadingScreen, Background)
 from horizons.gui.pausemenu import PauseMenu
 from horizons.gui.util import LazyWidgetsDict
 from horizons.gui.window import WindowManager
@@ -69,8 +64,6 @@ class Gui(object):
 		self.widgets = LazyWidgetsDict(self.styles) # access widgets with their filenames without '.xml'
 		self.session = None
 
-		self._background_image = self._get_random_background()
-
 		self._windows = WindowManager(self.widgets)
 
 		self._call_for_support = CallForSupport(self.widgets, manager=self._windows)
@@ -82,6 +75,7 @@ class Gui(object):
 		self._settings = Settings(None, manager=self._windows)
 		self._mainmenu = MainMenu(self.widgets, gui=self, manager=self._windows)
 		self._loadingscreen = LoadingScreen(self.widgets, manager=self._windows)
+		self._background = Background(self.widgets)
 
 		self._ingame_windows = WindowManager(self.widgets)
 		self._pausemenu = PauseMenu(self.widgets, gui=self, manager=self._ingame_windows)
@@ -128,6 +122,7 @@ class Gui(object):
 
 		This is called on startup or when we're coming back from a game.
 		"""
+		self._windows.show(self._background)
 		self._windows.show(self._mainmenu)
 
 	def hide(self):
@@ -141,28 +136,6 @@ class Gui(object):
 		self._windows.show(self._loadingscreen)
 
 # helper
-
-	def get_random_background_by_button(self):
-		"""Randomly select a background image to use. This function is triggered by
-		change background button from main menu."""
-		#we need to redraw screen to apply changes.
-		self.hide()
-		self._background_image = self._get_random_background()
-		self.show_main()
-
-	def _get_random_background(self):
-		"""Randomly select a background image to use through out the game menu."""
-		available_images = glob.glob('content/gui/images/background/mainmenu/bg_*.png')
-		#get latest background
-		latest_background = horizons.globals.fife.get_uh_setting("LatestBackground")
-		#if there is a latest background then remove it from available list
-		if latest_background is not None:
-			available_images.remove(latest_background)
-		background_choice = random.choice(available_images)
-		#save current background choice
-		horizons.globals.fife.set_uh_setting("LatestBackground", background_choice)
-		horizons.globals.fife.save_settings()
-		return background_choice
 
 	def _on_gui_action(self, msg):
 		AmbientSoundComponent.play_special('click')
