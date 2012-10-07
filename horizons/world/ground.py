@@ -157,3 +157,15 @@ class GroundClass(type):
 						str(rotation) + ':shift:center+0,bottom+8')
 					action.get2dGfxVisual().addAnimation(int(rotation), anim)
 					action.setDuration(anim.getDuration())
+
+
+class MapPreviewTile(object):
+	"""This class provides the minimal tile implementation for map preview."""
+
+	def __init__(self, x, y, id):
+		super(MapPreviewTile, self).__init__()
+		self.x = x
+		self.y = y
+		self.id = id
+		self.classes = ()
+		self.settlement = None

@@ -28,6 +28,7 @@ from horizons.command.unit import RemoveUnit
 from horizons.editor.gui import EditorGui
 from horizons.editor.intermediatemap import IntermediateMap
 from horizons.entities import Entities
+from horizons.gui.widgets.minimap import Minimap
 from horizons.scheduler import Scheduler
 from horizons.util.dbreader import DbReader
 from horizons.util.python.callback import Callback
@@ -127,6 +128,6 @@ class WorldEditor(object):
 			ground = Entities.grounds[ground_id](self.session, *coords)
 			ground.act(action_id, rotation)
 			self.world.full_map[coords] = ground
-			# TODO: update the minimap
 		else:
 			self.world.full_map[coords] = self.world.fake_tile_map[coords]
+		Minimap.update(coords)

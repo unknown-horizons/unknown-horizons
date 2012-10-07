@@ -35,6 +35,7 @@ from horizons.constants import BUILDINGS, RES, UNITS
 from horizons.scenario import CONDITIONS
 from horizons.world.buildingowner import BuildingOwner
 from horizons.gui.widgets.minimap import Minimap
+from horizons.world.ground import MapPreviewTile
 
 class Island(BuildingOwner, WorldObject):
 	"""The Island class represents an island. It contains a list of all things on the map
@@ -118,9 +119,7 @@ class Island(BuildingOwner, WorldObject):
 				ground = Entities.grounds[ground_id](self.session, rel_x, rel_y)
 				ground.act(action_id, rotation)
 			else:
-				ground = Point(rel_x, rel_y)
-				ground.classes = tuple()
-				ground.settlement = None
+				ground = MapPreviewTile(rel_x, rel_y, ground_id)
 			# These are important for pathfinding and building to check if the ground tile
 			# is blocked in any way.
 			self.ground_map[(ground.x, ground.y)] = ground
