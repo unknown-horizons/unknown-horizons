@@ -31,9 +31,6 @@ class PauseMenu(Window):
 	def show(self):
 		PauseCommand(suggestion=True).execute(self._gui.session)
 
-		# FIXME this is reaaaaaaaally ugly
-		ingame_gui = self._gui.session.ingame_gui
-
 		self._widget_loader.reload(self.widget_name)
 		self.widget = self._widget_loader[self.widget_name]
 
@@ -44,16 +41,17 @@ class PauseMenu(Window):
 			'savegameButton' : self.save_game,
 			'settings'       : lambda: self.windows.show(self._gui._settings),
 			'settingsLink'   : lambda: self.windows.show(self._gui._settings),
-			'help'           : self._gui.on_help,
-			'helpLink'       : self._gui.on_help,
+			'help'           : self._gui.toggle_help,
+			'helpLink'       : self._gui.toggle_help,
 			'start'          : self.windows.close,
 			'startGame'      : self.windows.close,
-			'quit'           : ingame_gui.quit_session,
-			'closeButton'    : ingame_gui.quit_session,
+			'quit'           : self._gui.quit_session,
+			'closeButton'    : self._gui.quit_session,
 		}
 
 		self.widget.mapEvents(event_map)
 		self._capture_escape(self.widget)
+		self.widget.position_technique = "automatic"
 		self.widget.show()
 		self._focus(self.widget)
 

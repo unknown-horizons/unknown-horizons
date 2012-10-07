@@ -44,8 +44,11 @@ from horizons.constants import BUILDINGS, GUI
 from horizons.command.uioptions import RenameObject
 from horizons.command.misc import Chat
 from horizons.command.game import SpeedDownCommand, SpeedUpCommand
+from horizons.gui.pausemenu import PauseMenu
+from horizons.gui.mainmenu import Help, Settings
 from horizons.gui.tabs.tabinterface import TabInterface
 from horizons.gui.tabs import MainSquareOverviewTab
+from horizons.gui.window import WindowManager
 from horizons.component.namedcomponent import SettlementNameComponent, NamedComponent
 from horizons.component.ambientsoundcomponent import AmbientSoundComponent
 from horizons.component.selectablecomponent import SelectableComponent
@@ -65,7 +68,10 @@ class IngameGui(LivingObject):
 		'city_info' : 'city_info',
 		'change_name' : 'book',
 		'save_map' : 'book',
+		'help': 'book',
 		'chat' : 'book',
+		'ingamemenu': 'headline',
+		'game_settings' : 'book',
 	}
 
 	def __init__(self, session, gui):
@@ -73,7 +79,6 @@ class IngameGui(LivingObject):
 		self.session = session
 		assert isinstance(self.session, horizons.session.Session)
 		self.main_gui = gui
-		self.windows = self.main_gui._ingame_windows
 		self.main_widget = None
 		self.tabwidgets = {}
 		self.settlement = None
@@ -82,6 +87,11 @@ class IngameGui(LivingObject):
 		self._old_menu = None
 
 		self.widgets = LazyWidgetsDict(self.styles, center_widgets=False)
+
+		self.windows = WindowManager(self.widgets)
+		self._settings = Settings(None, manager=self.windows)
+		self._help = Help(self.widgets, gui=self, manager=self.windows)
+		self._pausemenu = PauseMenu(self.widgets, gui=self, manager=self.windows)
 
 		self.cityinfo = self.widgets['city_info']
 		self.cityinfo.child_finder = PychanChildFinder(self.cityinfo)
@@ -121,7 +131,7 @@ class IngameGui(LivingObject):
 			'destroy_tool' : self.session.toggle_destroy_tool,
 			'build' : self.show_build_menu,
 			'diplomacyButton' : self.show_diplomacy_menu,
-			'gameMenuButton' : self.main_gui.toggle_pause,
+			'gameMenuButton' : self.toggle_pause,
 			'logbook' : self.logbook.toggle_visibility
 		})
 		minimap.show()
@@ -436,7 +446,7 @@ class IngameGui(LivingObject):
 
 	def _hide_change_name_dialog(self):
 		"""Escapes the change_name dialog"""
-		self.main_gui.on_escape = self.main_gui.toggle_pause
+		self.main_gui.on_escape = self.toggle_pause
 		self.widgets['change_name'].hide()
 
 	def change_name(self, instance):
@@ -467,7 +477,7 @@ class IngameGui(LivingObject):
 
 	def _hide_save_map_dialog(self):
 		"""Closes the map saving dialog."""
-		self.main_gui.on_escape = self.main_gui.toggle_pause
+		self.main_gui.on_escape = self.toggle_pause
 		self.widgets['save_map'].hide()
 
 	def save_map(self):
@@ -542,7 +552,7 @@ class IngameGui(LivingObject):
 
 	def _hide_chat_dialog(self):
 		"""Escapes the chat dialog"""
-		self.main_gui.on_escape = self.main_gui.toggle_pause
+		self.main_gui.on_escape = self.toggle_pause
 		self.widgets['chat'].hide()
 
 	def _do_chat(self):
@@ -567,3 +577,14 @@ class IngameGui(LivingObject):
 			return True
 		else:
 			return False
+
+	def toggle_pause(self):
+		"""Shows in-game pause menu if the game is currently not paused.
+		Else unpauses and hides the menu. Multiple layers of the 'paused' concept exist;
+		if two widgets are opened which would both pause the game, we do not want to
+		unpause after only one of them is closed. Uses PauseCommand and UnPauseCommand.
+		"""
+		self.windows.toggle(self._pausemenu)
+
+	def toggle_help(self):
+		self.windows.toggle(self._help)

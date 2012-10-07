@@ -69,11 +69,11 @@ class SpeedDownCommand(Command):
 Command.allow_network(SpeedDownCommand)
 
 class TogglePauseCommand(Command):
-	"""Used to change the game speed"""
+	"""Used to pause the game"""
 
 	def __call__(self, issuer):
 		session = issuer.session
-		session.gui.toggle_pause()
+		session.ingame_gui.toggle_pause()
 
 Command.allow_network(TogglePauseCommand)
 

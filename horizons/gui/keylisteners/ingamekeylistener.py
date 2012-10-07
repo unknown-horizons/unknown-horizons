@@ -73,6 +73,8 @@ class IngameKeyListener(fife.IKeyListener, LivingObject):
 			handled_by_ingame_gui = self.session.ingame_gui.on_escape()
 			if not handled_by_ingame_gui:
 				key_event_handled = False # let the MainListener handle this
+		elif action == _Actions.HELP:
+			self.session.ingame_gui.toggle_help()
 		elif action == _Actions.GRID:
 			gridrenderer = self.session.view.renderer['GridRenderer']
 			gridrenderer.setEnabled( not gridrenderer.isEnabled() )

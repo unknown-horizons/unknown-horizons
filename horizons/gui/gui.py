@@ -26,7 +26,6 @@ from horizons.messaging import GuiAction
 from horizons.component.ambientsoundcomponent import AmbientSoundComponent
 from horizons.gui.mainmenu import (CallForSupport, Credits, SaveLoad, Help, SingleplayerMenu,
 								   MultiplayerMenu, Settings, MainMenu, LoadingScreen, Background)
-from horizons.gui.pausemenu import PauseMenu
 from horizons.gui.util import LazyWidgetsDict
 from horizons.gui.window import WindowManager
 
@@ -40,7 +39,6 @@ class Gui(object):
 	styles = {
 	  'mainmenu': 'menu',
 	  'requirerestart': 'book',
-	  'ingamemenu': 'headline',
 	  'help': 'book',
 	  'singleplayermenu': 'book',
 	  'sp_random': 'book',
@@ -53,14 +51,12 @@ class Gui(object):
 	  'playerdataselection' : 'book',
 	  'aidataselection' : 'book',
 	  'select_savegame': 'book',
-	  'ingame_pause': 'book',
 	  'game_settings' : 'book',
 #	  'credits': 'book',
 	  }
 
 	def __init__(self):
 		self.mainlistener = MainListener(self)
-		self.current = None # currently active window
 		self.widgets = LazyWidgetsDict(self.styles) # access widgets with their filenames without '.xml'
 		self.session = None
 
@@ -77,20 +73,7 @@ class Gui(object):
 		self._loadingscreen = LoadingScreen(self.widgets, manager=self._windows)
 		self._background = Background(self.widgets)
 
-		self._ingame_windows = WindowManager(self.widgets)
-		self._pausemenu = PauseMenu(self.widgets, gui=self, manager=self._ingame_windows)
-
 		GuiAction.subscribe( self._on_gui_action )
-
-# basic menu widgets
-
-	def toggle_pause(self):
-		"""Shows in-game pause menu if the game is currently not paused.
-		Else unpauses and hides the menu. Multiple layers of the 'paused' concept exist;
-		if two widgets are opened which would both pause the game, we do not want to
-		unpause after only one of them is closed. Uses PauseCommand and UnPauseCommand.
-		"""
-		self._ingame_windows.toggle(self._pausemenu)
 
 # what happens on button clicks
 

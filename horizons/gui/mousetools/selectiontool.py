@@ -35,7 +35,7 @@ class SelectionTool(NavigationTool):
 	def __init__(self, session):
 		super(SelectionTool, self).__init__(session)
 		self.deselect_at_end = True # Set this to deselect selections while exiting SelectionTool
-		self.session.gui.on_escape = self.session.gui.toggle_pause
+		self.session.gui.on_escape = self.session.ingame_gui.toggle_pause
 
 	def remove(self):
 		# Deselect if needed while exiting
