@@ -137,3 +137,44 @@ class ChatDialog(Window):
 		self.widget.findChild(name='msg').text = u''
 
 		self.windows.close()
+
+
+class LogbookProxy(Window):
+	# FIXME Wrapper around the real logbook to adapt it to the window system
+	# REMOVE THIS ASAP
+
+	stackable = False
+	no_page = object()
+	
+	def __init__(self, *args, **kwargs):
+		super(LogbookProxy, self).__init__(*args, **kwargs)
+		self.active_page = self.no_page
+
+	def show(self, page=None):
+		# Hide the window when the page that should be shown is already visible
+		if self.active_page == page:
+			self.active_page = self.no_page
+			self.windows.close()
+			return
+
+		self.active_page = page
+
+		if self.active_page is None:
+			# Show captainslog
+			self._gui.logbook._hide_statswidgets()
+			self._gui.logbook.show()
+			self._gui.logbook.update_view(0)
+		else:
+			self._gui.logbook.show()
+			self._gui.logbook.show_statswidget(widget=page)
+
+	def hide(self):
+		pass
+
+	def abort(self, page=None):
+		if self.active_page == page:
+			self.active_page = self.no_page
+			self._gui.logbook.hide()
+			return
+
+		self.windows.show(self, page=page)

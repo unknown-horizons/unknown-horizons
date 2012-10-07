@@ -240,7 +240,7 @@ class WindowManager(object):
 		else:
 			self._windows[-1].hide()
 
-	def toggle(self, widget):
+	def toggle(self, widget, **kwargs):
 		# FIXME we ignore this for now, because the pause menu ingame needs to be
 		# stackable... I think
 		"""
@@ -251,10 +251,14 @@ class WindowManager(object):
 			raise Exception('This should not be possible')
 		"""
 
+		# FIXME passing around **kwargs is a temporary fix to get the logbook
+		# working. we need a way for windows to decide themselves if they are shown,
+		# depending on a certain state (and not only compare if the object is the same)
+
 		if self._windows and self._windows[-1] == widget:
-			self._windows[-1].abort()
+			self._windows[-1].abort(**kwargs)
 		else:
-			self.show(widget)
+			self.show(widget, **kwargs)
 
 	def close_all(self):
 		while self._windows:

@@ -39,7 +39,7 @@ from horizons.extscheduler import ExtScheduler
 from horizons.gui.util import LazyWidgetsDict
 from horizons.constants import BUILDINGS, GUI
 from horizons.command.game import SpeedDownCommand, SpeedUpCommand
-from horizons.gui.ingame import ChangeNameDialog, SaveMapDialog, ChatDialog
+from horizons.gui.ingame import ChangeNameDialog, SaveMapDialog, ChatDialog, LogbookProxy
 from horizons.gui.pausemenu import PauseMenu
 from horizons.gui.mainmenu import Help, Settings
 from horizons.gui.tabs.tabinterface import TabInterface
@@ -91,6 +91,7 @@ class IngameGui(LivingObject):
 		self._change_name_dialog = ChangeNameDialog(self.widgets, gui=self, manager=self.windows)
 		self._save_map_dialog = SaveMapDialog(self.widgets, gui=self, manager=self.windows)
 		self._chat_dialog = ChatDialog(self.widgets, gui=self, manager=self.windows)
+		self._logbook_proxy = LogbookProxy(self.widgets, gui=self, manager=self.windows)
 
 		self.cityinfo = self.widgets['city_info']
 		self.cityinfo.child_finder = PychanChildFinder(self.cityinfo)
@@ -497,6 +498,18 @@ class IngameGui(LivingObject):
 
 	def toggle_help(self):
 		self.windows.toggle(self._help)
+
+	def toggle_player_stats(self):
+		self.windows.toggle(self._logbook_proxy, page='players')
+
+	def toggle_settlement_stats(self):
+		self.windows.toggle(self._logbook_proxy, page='settlements')
+
+	def toggle_ship_stats(self):
+		self.windows.toggle(self._logbook_proxy, page='ships')
+
+	def toggle_logbook(self):
+		self.windows.toggle(self._logbook_proxy)
 
 	def show_popup(self, *args, **kwargs):
 		return self.windows.show_popup(*args, **kwargs)
