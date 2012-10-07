@@ -41,17 +41,17 @@ from horizons.gui.widgets.choose_next_scenario import ScenarioChooser
 from horizons.extscheduler import ExtScheduler
 from horizons.gui.util import LazyWidgetsDict
 from horizons.constants import BUILDINGS, GUI
-from horizons.command.uioptions import RenameObject
 from horizons.command.misc import Chat
 from horizons.command.game import SpeedDownCommand, SpeedUpCommand
+from horizons.gui.ingame import ChangeNameDialog
 from horizons.gui.pausemenu import PauseMenu
 from horizons.gui.mainmenu import Help, Settings
 from horizons.gui.tabs.tabinterface import TabInterface
 from horizons.gui.tabs import MainSquareOverviewTab
 from horizons.gui.window import WindowManager
-from horizons.component.namedcomponent import SettlementNameComponent, NamedComponent
 from horizons.component.ambientsoundcomponent import AmbientSoundComponent
 from horizons.component.selectablecomponent import SelectableComponent
+from horizons.component.namedcomponent import SettlementNameComponent
 from horizons.messaging import SettlerUpdate, SettlerInhabitantsChanged, ResourceBarResize, HoverSettlementChanged, TabWidgetChanged
 from horizons.util.lastactiveplayersettlementmanager import LastActivePlayerSettlementManager
 
@@ -92,6 +92,7 @@ class IngameGui(LivingObject):
 		self._settings = Settings(None, manager=self.windows)
 		self._help = Help(self.widgets, gui=self, manager=self.windows)
 		self._pausemenu = PauseMenu(self.widgets, gui=self, manager=self.windows)
+		self._change_name_dialog = ChangeNameDialog(self.widgets, gui=self, manager=self.windows)
 
 		self.cityinfo = self.widgets['city_info']
 		self.cityinfo.child_finder = PychanChildFinder(self.cityinfo)
@@ -423,42 +424,7 @@ class IngameGui(LivingObject):
 	def show_change_name_dialog(self, instance):
 		"""Shows a dialog where the user can change the name of a NamedComponant.
 		The game gets paused while the dialog is executed."""
-		events = {
-			OkButton.DEFAULT_NAME: Callback(self.change_name, instance),
-			CancelButton.DEFAULT_NAME: self._hide_change_name_dialog
-		}
-		self.main_gui.on_escape = self._hide_change_name_dialog
-		changename = self.widgets['change_name']
-		oldname = changename.findChild(name='old_name')
-		oldname.text = instance.get_component(SettlementNameComponent).name
-		newname = changename.findChild(name='new_name')
-		changename.mapEvents(events)
-		newname.capture(Callback(self.change_name, instance))
-
-		def forward_escape(event):
-			# the textfield will eat everything, even control events
-			if event.getKey().getValue() == fife.Key.ESCAPE:
-				self.main_gui.on_escape()
-		newname.capture( forward_escape, "keyPressed" )
-
-		changename.show()
-		newname.requestFocus()
-
-	def _hide_change_name_dialog(self):
-		"""Escapes the change_name dialog"""
-		self.main_gui.on_escape = self.toggle_pause
-		self.widgets['change_name'].hide()
-
-	def change_name(self, instance):
-		"""Applies the change_name dialogs input and hides it.
-		If the new name has length 0 or only contains blanks, the old name is kept.
-		"""
-		new_name = self.widgets['change_name'].collectData('new_name')
-		self.widgets['change_name'].findChild(name='new_name').text = u''
-		if not new_name or not new_name.isspace():
-			# different namedcomponent classes share the name
-			RenameObject(instance.get_component_by_name(NamedComponent.NAME), new_name).execute(self.session)
-		self._hide_change_name_dialog()
+		self.windows.show(self._change_name_dialog, instance=instance)
 
 	def show_save_map_dialog(self):
 		"""Shows a dialog where the user can set the name of the saved map."""
