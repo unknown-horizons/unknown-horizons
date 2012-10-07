@@ -19,6 +19,8 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
+import re
+
 from fife import fife
 
 from horizons.command.uioptions import RenameObject
@@ -71,3 +73,46 @@ class ChangeNameDialog(Window):
 			RenameObject(self.instance.get_component_by_name(NamedComponent.NAME), new_name).execute(self._gui.session)
 
 		self.windows.close()
+
+
+class SaveMapDialog(Window):
+	widget_name = 'save_map'
+
+	def show(self):
+		self.widget = self._widget_loader[self.widget_name]
+
+		events = {
+			OkButton.DEFAULT_NAME: self.save_map,
+			CancelButton.DEFAULT_NAME: self.windows.close
+		}
+
+		name = self.widget.findChild(name='map_name')
+		name.text = u''
+		name.capture(self.save_map)
+
+		def forward_escape(event):
+			# the textfield will eat everything, even control events
+			if event.getKey().getValue() == fife.Key.ESCAPE:
+				self.windows.close()
+
+		self.widget.mapEvents(events)
+		self.widget.show()
+
+		name.capture(forward_escape, "keyPressed")
+		name.requestFocus()
+
+	def save_map(self):
+		"""Saves the map and hides the dialog."""
+		name = self.widget.collectData('map_name')
+		if re.match('^[a-zA-Z0-9_-]+$', name):
+			self._gui.session.save_map(name)
+			self.windows.close()
+		else:
+			#xgettext:python-format
+			message = _('Valid map names are in the following form: {expression}').format(expression='[a-zA-Z0-9_-]+')
+			#xgettext:python-format
+			advice = _('Try a name that only contains letters and numbers.')
+			self.windows.show_error_popup(_('Error'), message, advice)
+
+	def hide(self):
+		self.widget.hide()

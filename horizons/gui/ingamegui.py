@@ -19,7 +19,6 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-import re
 import horizons.globals
 from fife import fife
 
@@ -43,7 +42,7 @@ from horizons.gui.util import LazyWidgetsDict
 from horizons.constants import BUILDINGS, GUI
 from horizons.command.misc import Chat
 from horizons.command.game import SpeedDownCommand, SpeedUpCommand
-from horizons.gui.ingame import ChangeNameDialog
+from horizons.gui.ingame import ChangeNameDialog, SaveMapDialog
 from horizons.gui.pausemenu import PauseMenu
 from horizons.gui.mainmenu import Help, Settings
 from horizons.gui.tabs.tabinterface import TabInterface
@@ -93,6 +92,7 @@ class IngameGui(LivingObject):
 		self._help = Help(self.widgets, gui=self, manager=self.windows)
 		self._pausemenu = PauseMenu(self.widgets, gui=self, manager=self.windows)
 		self._change_name_dialog = ChangeNameDialog(self.widgets, gui=self, manager=self.windows)
+		self._save_map_dialog = SaveMapDialog(self.widgets, gui=self, manager=self.windows)
 
 		self.cityinfo = self.widgets['city_info']
 		self.cityinfo.child_finder = PychanChildFinder(self.cityinfo)
@@ -420,7 +420,6 @@ class IngameGui(LivingObject):
 
 		self.minimap.draw() # update minimap to new world
 
-
 	def show_change_name_dialog(self, instance):
 		"""Shows a dialog where the user can change the name of a NamedComponant.
 		The game gets paused while the dialog is executed."""
@@ -428,36 +427,7 @@ class IngameGui(LivingObject):
 
 	def show_save_map_dialog(self):
 		"""Shows a dialog where the user can set the name of the saved map."""
-		events = {
-			OkButton.DEFAULT_NAME: self.save_map,
-			CancelButton.DEFAULT_NAME: self._hide_save_map_dialog
-		}
-		self.main_gui.on_escape = self._hide_save_map_dialog
-		dialog = self.widgets['save_map']
-		name = dialog.findChild(name='map_name')
-		name.text = u''
-		dialog.mapEvents(events)
-		name.capture(Callback(self.save_map))
-		dialog.show()
-		name.requestFocus()
-
-	def _hide_save_map_dialog(self):
-		"""Closes the map saving dialog."""
-		self.main_gui.on_escape = self.toggle_pause
-		self.widgets['save_map'].hide()
-
-	def save_map(self):
-		"""Saves the map and hides the dialog."""
-		name = self.widgets['save_map'].collectData('map_name')
-		if re.match('^[a-zA-Z0-9_-]+$', name):
-			self.session.save_map(name)
-			self._hide_save_map_dialog()
-		else:
-			#xgettext:python-format
-			message = _('Valid map names are in the following form: {expression}').format(expression='[a-zA-Z0-9_-]+')
-			#xgettext:python-format
-			advice = _('Try a name that only contains letters and numbers.')
-			self.show_error_popup(_('Error'), message, advice)
+		self.windows.show(self._save_map_dialog)
 
 	def on_escape(self):
 		if self.main_widget:
