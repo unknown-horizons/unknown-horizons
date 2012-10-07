@@ -21,8 +21,6 @@
 
 import re
 
-from fife import fife
-
 from horizons.command.misc import Chat
 from horizons.command.uioptions import RenameObject
 from horizons.component.namedcomponent import SettlementNameComponent, NamedComponent
@@ -49,13 +47,8 @@ class ChangeNameDialog(Window):
 		self.newname.capture(self._change_name)
 		self.widget.mapEvents(events)
 
-		def forward_escape(event):
-			# the textfield will eat everything, even control events
-			if event.getKey().getValue() == fife.Key.ESCAPE:
-				self.windows.close()
-
 		self.widget.show()
-		self.newname.capture(forward_escape, "keyPressed")
+		self._capture_escape(self.newname)
 		self.newname.requestFocus()
 
 	def hide(self):
@@ -91,15 +84,10 @@ class SaveMapDialog(Window):
 		name.text = u''
 		name.capture(self.save_map)
 
-		def forward_escape(event):
-			# the textfield will eat everything, even control events
-			if event.getKey().getValue() == fife.Key.ESCAPE:
-				self.windows.close()
-
 		self.widget.mapEvents(events)
 		self.widget.show()
 
-		name.capture(forward_escape, "keyPressed")
+		self._capture_escape(name)
 		name.requestFocus()
 
 	def save_map(self):
@@ -130,13 +118,8 @@ class ChatDialog(Window):
 			CancelButton.DEFAULT_NAME: self.windows.close
 		}
 
-		def forward_escape(event):
-			# the textfield will eat everything, even control events
-			if event.getKey().getValue() == fife.Key.ESCAPE:
-				self.windows.close()
-
 		message = self.widget.findChild(name='msg')
-		message.capture(forward_escape, "keyPressed")
+		self._capture_escape(message)  # textfield eats control events
 		message.capture(self._do_chat)
 
 		self.widget.mapEvents(events)
