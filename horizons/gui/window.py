@@ -271,6 +271,21 @@ class WindowManager(object):
 		"""
 		return obj in self._windows
 
+	@property
+	def visible(self):
+		"""Return if a window is visible.
+
+		For now we're assuming that we do not hide windows temporarily, only if
+		we show a new window instead. So it's enough to test if we manage any window
+		currently.
+		"""
+		return self._windows
+
+	@property
+	def top(self):
+		"""Return the window on the top."""
+		return self._windows[-1]
+
 	# TODO we can probably move the popup building into a separate class next to Dialog
 
 	def show_popup(self, windowtitle, message, show_cancel_button=False, size=0, modal=True):
