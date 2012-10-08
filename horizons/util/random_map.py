@@ -29,30 +29,24 @@ import copy
 
 from horizons.util.shapes import Circle, Point, Rect
 from horizons.util.dbreader import DbReader
-from horizons.util.uhdbaccessor import read_savegame_template
 from horizons.constants import GROUND
 
 # this is how a random island id looks like (used for creation)
-_random_island_id_template = "random:${creation_method}:${width}:${height}:${seed}"
+_random_island_id_template = "random:${creation_method}:${width}:${height}:${seed}:${island_x}:${island_y}"
 
 # you can check for a random island id with this:
-_random_island_id_regexp = r"^random:([0-9]+):([0-9]+):([0-9]+):([\-]?[0-9]+)$"
+_random_island_id_regexp = r"^random:([0-9]+):([0-9]+):([0-9]+):([\-]?[0-9]+):([\-]?[0-9]+):([\-]?[0-9]+)$"
 
 
-def is_random_island_id_string(id_string):
-	"""Returns whether id_string is an instance of a random island id string"""
-	return bool(re.match(_random_island_id_regexp, id_string))
-
-def create_random_island(id_string):
+def create_random_island(map_db, island_id, id_string):
 	"""Creates a random island as sqlite db.
 	It is rather primitive; it places shapes on the dict.
 	The coordinates of tiles will be 0 <= x < width and 0 <= y < height
 	@param id_string: random island id string
-	@return: sqlite db reader containing island
 	"""
 	match_obj = re.match(_random_island_id_regexp, id_string)
 	assert match_obj
-	creation_method, width, height, seed = [ long(i) for i in match_obj.groups() ]
+	creation_method, width, height, seed, island_x, island_y = [long(i) for i in match_obj.groups()]
 	assert creation_method == 2, 'The only supported island creation method is 2.'
 
 	rand = random.Random(seed)
@@ -98,14 +92,11 @@ def create_random_island(id_string):
 					map_set.discard(shape_coord)
 
 	# write values to db
-	map_db = DbReader(":memory:")
-	map_db("CREATE TABLE ground(x INTEGER NOT NULL, y INTEGER NOT NULL, ground_id INTEGER NOT NULL, action_id TEXT NOT NULL, rotation INTEGER NOT NULL)")
-	map_db("CREATE TABLE island_properties(name TEXT PRIMARY KEY NOT NULL, value TEXT NOT NULL)")
 	map_db("BEGIN TRANSACTION")
 
 	# add grass tiles
 	for x, y in map_set:
-		map_db("INSERT INTO ground VALUES(?, ?, ?, ?, ?)", x, y, *GROUND.DEFAULT_LAND)
+		map_db("INSERT INTO ground VALUES(?, ?, ?, ?, ?, ?)", island_id, island_x + x, island_y + y, *GROUND.DEFAULT_LAND)
 
 	def fill_tiny_spaces(tile):
 		"""Fills 1 tile gulfs and straits with the specified tile
@@ -193,7 +184,7 @@ def create_random_island(id_string):
 			if to_fill:
 				for x, y in to_fill:
 					map_set.add((x, y))
-					map_db("INSERT INTO ground VALUES(?, ?, ?, ?, ?)", x, y, *tile)
+					map_db("INSERT INTO ground VALUES(?, ?, ?, ?, ?, ?)", island_id, island_x + x, island_y + y, *tile)
 
 				old_size = len(edge_set)
 				edge_set = edge_set.difference(to_ignore).union(to_fill)
@@ -276,7 +267,7 @@ def create_random_island(id_string):
 				tile = GROUND.SAND_SOUTHEAST3
 
 		assert tile
-		map_db("INSERT INTO ground VALUES(?, ?, ?, ?, ?)", x, y, *tile)
+		map_db("INSERT INTO ground VALUES(?, ?, ?, ?, ?, ?)", island_id, island_x + x, island_y + y, *tile)
 	map_set = map_set.union(outline)
 
 	# add sand to shallow water tiles
@@ -330,7 +321,7 @@ def create_random_island(id_string):
 				tile = GROUND.COAST_SOUTHEAST3
 
 		assert tile
-		map_db("INSERT INTO ground VALUES(?, ?, ?, ?, ?)", x, y, *tile)
+		map_db("INSERT INTO ground VALUES(?, ?, ?, ?, ?, ?)", island_id, island_x + x, island_y + y, *tile)
 	map_set = map_set.union(outline)
 
 	# add shallow water to deep water tiles
@@ -384,10 +375,9 @@ def create_random_island(id_string):
 				tile = GROUND.DEEP_WATER_SOUTHEAST3
 
 		assert tile
-		map_db("INSERT INTO ground VALUES(?, ?, ?, ?, ?)", x, y, *tile)
+		map_db("INSERT INTO ground VALUES(?, ?, ?, ?, ?, ?)", island_id, island_x + x, island_y + y, *tile)
 
 	map_db("COMMIT")
-	return map_db
 
 def _simplify_seed(seed):
 	"""Return the simplified seed value. The goal of this is to make it easier for users to convey the seeds orally."""
@@ -443,11 +433,6 @@ def generate_random_map(seed, map_size, water_percent, max_island_size,
 				trial_number = 0
 				break
 
-	handle, filename = tempfile.mkstemp()
-	os.close(handle)
-	db = DbReader(filename)
-	read_savegame_template(db)
-
 	# move some of the islands to stretch the map to the right size
 	if len(islands) > 1:
 		min_top = min(rect.top for rect in islands)
@@ -468,13 +453,14 @@ def generate_random_map(seed, map_size, water_percent, max_island_size,
 		shift = map_size - max_right - 1
 		islands[islands.index(rect)] = Rect.init_from_borders(rect.left + shift, rect.top, rect.right + shift, rect.bottom)
 
+	island_strings = []
 	for rect in islands:
 		island_seed = rand.randint(-sys.maxint, sys.maxint)
-		island_params = {'creation_method': 2, 'seed': island_seed, 'width': rect.width, 'height': rect.height}
+		island_params = {'creation_method': 2, 'seed': island_seed, 'width': rect.width,
+						 'height': rect.height, 'island_x': rect.left, 'island_y': rect.top}
 		island_string = string.Template(_random_island_id_template).safe_substitute(island_params)
-		db("INSERT INTO island (x, y, file) VALUES(?, ?, ?)", rect.left, rect.top, island_string)
-
-	return filename
+		island_strings.append(island_string)
+	return island_strings
 
 def generate_random_seed(seed):
 	rand = random.Random(seed)

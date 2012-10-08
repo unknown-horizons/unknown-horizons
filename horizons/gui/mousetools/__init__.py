@@ -26,3 +26,6 @@ from selectiontool import SelectionTool
 from tearingtool import TearingTool
 from attackingtool import AttackingTool
 from pipettetool import PipetteTool
+
+# Editor tools
+from tilelayingtool import TileLayingTool

@@ -72,9 +72,14 @@ class SurfaceTile(object):
 		elif rotation == 315:
 			layer_coords[1] = y+3
 		facing_loc.setLayerCoordinates(fife.ModelCoordinate(*layer_coords))
+		self._action = action
 
 		self._instance.act(str('%s_%s' % (action, self._tile_set_id)), facing_loc, True)
 
+	@property
+	def rotation(self):
+		# workaround for FIFE's inconsistent rotation rounding
+		return int(round(self._instance.getRotation() / 45.0)) * 45
 
 class Ground(SurfaceTile):
 	"""Default land surface"""
@@ -152,3 +157,15 @@ class GroundClass(type):
 						str(rotation) + ':shift:center+0,bottom+8')
 					action.get2dGfxVisual().addAnimation(int(rotation), anim)
 					action.setDuration(anim.getDuration())
+
+
+class MapPreviewTile(object):
+	"""This class provides the minimal tile implementation for map preview."""
+
+	def __init__(self, x, y, id):
+		super(MapPreviewTile, self).__init__()
+		self.x = x
+		self.y = y
+		self.id = id
+		self.classes = ()
+		self.settlement = None

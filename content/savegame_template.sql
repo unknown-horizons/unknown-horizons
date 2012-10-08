@@ -10,12 +10,6 @@ CREATE TABLE "name" (
 	"name" TEXT NOT NULL
 );
 
-CREATE TABLE "island" (
-	"x" INT NOT NULL,
-	"y" INT NOT NULL,
-	"file" TEXT NOT NULL
-);
-
 CREATE TABLE "storage" (
 	"object" INT NOT NULL,
 	"resource" INT NOT NULL,

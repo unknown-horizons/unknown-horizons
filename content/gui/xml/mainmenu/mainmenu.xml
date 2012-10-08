@@ -81,4 +81,6 @@
 		down_image="content/gui/icons/mainmenu/load.png"
 		hover_image="content/gui/icons/mainmenu/load.png" />
 
+	<!-- Editor -->
+	<Label name="editor"  text="Editor"  position="30,30"  comment="Map-Editor" />
 </Container>

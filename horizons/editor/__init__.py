@@ -18,12 +18,3 @@
 # Free Software Foundation, Inc.,
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
-
-from .call_for_support import CallForSupport
-from .credits import Credits
-from .saveload import SaveLoad, EditorLoadMap
-from .help import Help
-from .singleplayer import SingleplayerMenu
-from .multiplayer import MultiplayerMenu
-from .settings import Settings
-from .main import MainMenu, LoadingScreen, Background

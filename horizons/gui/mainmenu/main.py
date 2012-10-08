@@ -48,9 +48,10 @@ class MainMenu(Window):
 			'chimebell'        : lambda: self.windows.show(self._gui._call_for_support),
 			'creditsLink'      : lambda: self.windows.show(self._gui._credits),
 			'credits'          : lambda: self.windows.show(self._gui._credits),
-			'loadgameButton'   : horizons.main.load_game,
-			'loadgame'         : horizons.main.load_game,
-			'changeBackground' : self._gui._background.randomize
+			'loadgameButton'   : self._gui.load_game,
+			'loadgame'         : self._gui.load_game,
+			'changeBackground' : self._gui._background.randomize,
+			'editor'           : lambda: self.windows.show(self._gui._editor_load_map),
 		}
 
 		self.widget = self._widget_loader[self.widget_name]

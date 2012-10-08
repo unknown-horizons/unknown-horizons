@@ -21,13 +21,16 @@
 
 import logging
 
+import horizons.main
 from horizons.gui.keylisteners import MainListener
 from horizons.messaging import GuiAction
 from horizons.component.ambientsoundcomponent import AmbientSoundComponent
 from horizons.gui.mainmenu import (CallForSupport, Credits, SaveLoad, Help, SingleplayerMenu,
-                                   MultiplayerMenu, Settings, MainMenu, LoadingScreen, Background)
+                                   MultiplayerMenu, Settings, MainMenu, LoadingScreen, Background,
+                                   EditorLoadMap)
 from horizons.gui.util import LazyWidgetsDict
 from horizons.gui.window import WindowManager
+from horizons.util.startgameoptions import StartGameOptions
 
 
 class Gui(object):
@@ -53,6 +56,7 @@ class Gui(object):
 	  'select_savegame': 'book',
 	  'game_settings' : 'book',
 #	  'credits': 'book',
+	  'editor_select_map': 'book',
 	  }
 
 	def __init__(self):
@@ -65,6 +69,7 @@ class Gui(object):
 		self._call_for_support = CallForSupport(self.widgets, manager=self._windows)
 		self._credits = Credits(self.widgets, manager=self._windows)
 		self._saveload = SaveLoad(self.widgets, gui=self, manager=self._windows)
+		self._editor_load_map = EditorLoadMap(self.widgets, gui=self, manager=self._windows)
 		self._help = Help(self.widgets, gui=self, manager=self._windows)
 		self._singleplayer = SingleplayerMenu(self.widgets, gui=self, manager=self._windows)
 		self._multiplayer = MultiplayerMenu(self.widgets, gui=self, manager=self._windows)
@@ -75,7 +80,15 @@ class Gui(object):
 
 		GuiAction.subscribe( self._on_gui_action )
 
-# what happens on button clicks
+	def load_game(self):
+		saved_game = self.show_select_savegame(mode='load')
+		if saved_game is None:
+			return False # user aborted dialog
+
+		self.show_loading_screen()
+		options = StartGameOptions(saved_game)
+		horizons.main.start_singleplayer(options)
+		return True
 
 	def on_help(self):
 		"""Called on help action.

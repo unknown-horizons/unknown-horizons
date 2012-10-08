@@ -23,6 +23,7 @@ import os
 import tempfile
 import time
 
+import horizons.main
 from horizons.gui.window import Dialog
 from horizons.gui.widgets.imagebutton import OkButton, CancelButton, DeleteButton
 from horizons.savegamemanager import SavegameManager
@@ -293,3 +294,25 @@ class SaveLoad(Dialog):
 				return False
 		else: # player cancelled deletion
 			return False
+
+
+class EditorLoadMap(Dialog):
+	widget_name = 'editor_select_map'
+	return_events = {
+		OkButton.DEFAULT_NAME     : True,
+		CancelButton.DEFAULT_NAME : False,
+	}
+
+	def prepare(self):
+		_, self._map_file_display = SavegameManager.get_maps()
+		self._widget.distributeInitialData({'maplist': self._map_file_display})
+
+	def post(self, return_value):
+		if not return_value:
+			return return_value
+
+		selected_map_index = self._widget.collectData('maplist')
+		assert selected_map_index != -1, "No map selected"
+
+		self._gui.show_loading_screen()
+		horizons.main.edit_map(self._map_file_display[selected_map_index])

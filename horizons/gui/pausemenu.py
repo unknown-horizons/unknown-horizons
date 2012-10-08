@@ -23,6 +23,7 @@ import horizons.main
 
 from horizons.command.game import PauseCommand, UnPauseCommand
 from horizons.gui.window import Window
+from horizons.util.startgameoptions import StartGameOptions
 
 
 class PauseMenu(Window):
@@ -35,8 +36,8 @@ class PauseMenu(Window):
 		self.widget = self._widget_loader[self.widget_name]
 
 		event_map = {
-			'loadgame'       : horizons.main.load_game,
-			'loadgameButton' : horizons.main.load_game,
+			'loadgame'       : self.load_game,
+			'loadgameButton' : self.load_game,
 			'savegame'       : self.save_game,
 			'savegameButton' : self.save_game,
 			'settings'       : lambda: self.windows.show(self._gui._settings),
@@ -65,3 +66,14 @@ class PauseMenu(Window):
 		if not success:
 			# There was a problem during the 'save game' procedure.
 			self.windows.show_popup(_('Error'), _('Failed to save.'))
+
+	def load_game(self):
+		saved_game = self.windows.show(self._gui._saveload, mode='load')
+		if saved_game is None:
+			return False # user aborted dialog
+
+		self._gui.main_gui.show_loading_screen()
+		options = StartGameOptions(saved_game)
+		horizons.main.start_singleplayer(options)
+		return True
+

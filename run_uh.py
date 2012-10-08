@@ -136,6 +136,8 @@ def get_option_parser():
 	             help="Loads a saved game. <save> is the savegamename.")
 	start_uh.add_option("--load-last-quicksave", dest="load_quicksave", action="store_true",
 	             help="Loads the last quicksave.")
+	start_uh.add_option("--edit-map", dest="edit_map", metavar="<map>",
+	             help="Edit map <map>.")
 	p.add_option_group(start_uh)
 
 	ai_group = optparse.OptionGroup(p, "AI options")
