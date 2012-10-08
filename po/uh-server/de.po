@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2012-09-26 03:59+0200\n"
-"PO-Revision-Date: 2012-09-30 07:00+0000\n"
+"PO-Revision-Date: 2012-10-08 14:31+0000\n"
 "Last-Translator: Chris Oelmueller <chris.oelmueller@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: de\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Generator: Pootle 2.2.0-alpha1a\n"
-"X-POOTLE-MTIME: 1348988438.0\n"
+"X-POOTLE-MTIME: 1349706703.0\n"
 
 #: horizons/network/server.py
 msgid "Old or unsupported multiplayer protocol. Please check your game version"
@@ -32,7 +32,7 @@ msgstr ""
 
 #: horizons/network/server.py
 msgid "Invalid/Unknown session"
-msgstr "Nicht zulässige/Unbekannte Session"
+msgstr "Nicht zulässige/Unbekannte Sitzung"
 
 #: horizons/network/server.py
 msgid "You can't join a game while in another game"
