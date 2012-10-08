@@ -264,6 +264,13 @@ class WindowManager(object):
 		while self._windows:
 			self.close()
 
+	def __contains__(self, obj):
+		"""Check if a given window is in the stack.
+
+		You should not need this function most of the time.
+		"""
+		return obj in self._windows
+
 	# TODO we can probably move the popup building into a separate class next to Dialog
 
 	def show_popup(self, windowtitle, message, show_cancel_button=False, size=0, modal=True):

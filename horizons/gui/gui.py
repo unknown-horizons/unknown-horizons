@@ -116,6 +116,13 @@ class Gui(object):
 		self._windows.close_all()
 
 	def show_loading_screen(self):
+		"""Show loading screen.
+
+		When a game is started from the command line, we need to add the background
+		window manually, because the main gui was never shown.
+		"""
+		if self._background not in self._windows:
+			self._windows.show(self._background)
 		self._windows.show(self._loadingscreen)
 
 # helper
