@@ -401,12 +401,15 @@ class SingleplayerMenu(Window):
 			self._show_invalid_scenario_file_popup(e)
 			return
 
-		self._widget.findChild(name="uni_map_difficulty").text = \
-			_("Difficulty: {difficulty}").format(difficulty=difficulty) #xgettext:python-format
-		self._widget.findChild(name="uni_map_author").text = \
-			_("Author: {author}").format(author=author) #xgettext:python-format
-		self._widget.findChild(name="uni_map_desc").text = \
-			_("Description: {desc}").format(desc=desc) #xgettext:python-format
+		#xgettext:python-format
+		difficulty_text = _("Difficulty: {difficulty}").format(difficulty=difficulty)
+		self._widget.findChild(name="uni_map_difficulty").text = difficulty_text
+		#xgettext:python-format
+		author_text = _("Author: {author}").format(author=author)
+		self._widget.findChild(name="uni_map_author").text = author_text
+		#xgettext:python-format
+		desc_text = _("Description: {desc}").format(desc=desc)
+		self._widget.findChild(name="uni_map_desc").text = desc_text
 
 	def _update_campaign_infos(self):
 		"""Fill in infos of selected campaign to label"""
@@ -414,12 +417,15 @@ class SingleplayerMenu(Window):
 		if not campaign_info:
 			self._show_invalid_scenario_file_popup("Unknown error")
 			return
-		self._widget.findChild(name="map_difficulty").text = \
-			_("Difficulty: {difficulty}").format(difficulty=campaign_info.get('difficulty', '')) #xgettext:python-format
-		self._widget.findChild(name="map_author").text = \
-			_("Author: {author}").format(author=campaign_info.get('author', '')) #xgettext:python-format
-		self._widget.findChild(name="map_desc").text = \
-			_("Description: {desc}").format(desc=campaign_info.get('description', '')) #xgettext:python-format
+		#xgettext:python-format
+		difficulty_text = _("Difficulty: {difficulty}").format(difficulty=campaign_info.get('difficulty', ''))
+		self._widget.findChild(name="map_difficulty").text = difficulty_text
+		#xgettext:python-format
+		author_text = _("Author: {author}").format(author=campaign_info.get('author', ''))
+		self._widget.findChild(name="map_author").text = author_text
+		#xgettext:python-format
+		desc_text = _("Description: {desc}").format(desc=campaign_info.get('description', ''))
+		self._widget.findChild(name="map_desc").text = desc_text
 
 	def _update_scenario_translation_infos(self, new_map_name):
 		"""Fill in translation infos of selected scenario to translation label.
