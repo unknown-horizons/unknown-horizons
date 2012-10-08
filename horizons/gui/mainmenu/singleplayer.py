@@ -520,7 +520,7 @@ class MapPreview(object):
 				if state is None: # not finished
 					ExtScheduler().add_new_object(check_calc_process, self, 0.1)
 				elif state != 0:
-					self._set_map_preview_status(u"An unknown error occured while generating the map preview")
+					self._set_map_preview_status(_("An unknown error occured while generating the map preview"))
 				else: # done
 
 					data = open(self.calc_proc.output_filename, "r").read()
@@ -566,7 +566,7 @@ class MapPreview(object):
 		self.calc_proc = subprocess.Popen(args=args,
 								                      stdout=open(outfilename, "w"))
 		self.calc_proc.output_filename = outfilename # attach extra info
-		self._set_map_preview_status(u"Generating preview...")
+		self._set_map_preview_status(_("Generating preview..."))
 
 
 	@classmethod
