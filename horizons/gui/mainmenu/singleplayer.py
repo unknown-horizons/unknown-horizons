@@ -413,7 +413,7 @@ class SingleplayerMenu(Window):
 
 	def _update_campaign_infos(self):
 		"""Fill in infos of selected campaign to label"""
-		campaign_info = SavegameManager.get_campaign_info(filename = self._get_selected_map())
+		campaign_info = SavegameManager.get_campaign_info(filename=self._get_selected_map())
 		if not campaign_info:
 			self._show_invalid_scenario_file_popup("Unknown error")
 			return
