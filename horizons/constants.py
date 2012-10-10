@@ -68,7 +68,7 @@ class VERSION:
 	#RELEASE_VERSION = u'2012.1'
 
 	## +=1 this if you changed the savegame "api"
-	SAVEGAMEREVISION = 65
+	SAVEGAMEREVISION = 66
 
 	@staticmethod
 	def string():

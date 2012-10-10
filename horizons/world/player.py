@@ -59,7 +59,7 @@ class Player(ComponentHolder, WorldObject):
 			assert isinstance(session, horizons.session.Session)
 		self.session = session
 		super(Player, self).__init__(worldid=worldid)
-		self.__init(name, color, clientid, difficulty_level)
+		self.__init(name, color, clientid, difficulty_level, 0)
 
 	def initialize(self, inventory):
 		super(Player, self).initialize()
@@ -67,7 +67,7 @@ class Player(ComponentHolder, WorldObject):
 			for res, value in inventory.iteritems():
 				self.get_component(StorageComponent).inventory.alter(res, value)
 
-	def __init(self, name, color, clientid, difficulty_level, settlerlevel=0):
+	def __init(self, name, color, clientid, difficulty_level, max_tier_notification, settlerlevel=0):
 		assert isinstance(color, Color)
 		assert isinstance(name, basestring) and name
 		try:
@@ -79,6 +79,7 @@ class Player(ComponentHolder, WorldObject):
 		self.color = color
 		self.clientid = clientid
 		self.difficulty = DifficultySettings.get_settings(difficulty_level)
+		self.max_tier_notification = max_tier_notification
 		self.settler_level = settlerlevel
 		self.stats = None
 		assert self.color.is_default_color, "Player color has to be a default color"
@@ -109,8 +110,9 @@ class Player(ComponentHolder, WorldObject):
 		client_id = None if self is not self.session.world.player and \
 		                    self.clientid is None else self.clientid
 
-		db("INSERT INTO player(rowid, name, color, client_id, settler_level, difficulty_level) VALUES(?, ?, ?, ?, ?, ?)",
-			 self.worldid, self.name, self.color.id, client_id, self.settler_level, self.difficulty.level if self.difficulty is not None else None)
+		db("INSERT INTO player(rowid, name, color, client_id, settler_level, difficulty_level, max_tier_notification) VALUES(?, ?, ?, ?, ?, ?, ?)",
+			 self.worldid, self.name, self.color.id, client_id, self.settler_level, self.difficulty.level if self.difficulty is not None else None,
+			 self.max_tier_notification)
 
 	@classmethod
 	def load(cls, session, db, worldid):
@@ -124,8 +126,9 @@ class Player(ComponentHolder, WorldObject):
 		Player instance, which is used e.g. in Trader.load"""
 		super(Player, self).load(db, worldid)
 
-		color, name, client_id, settlerlevel, difficulty_level = db("SELECT color, name, client_id, settler_level, difficulty_level FROM player WHERE rowid = ?", worldid)[0]
-		self.__init(name, Color[color], client_id, difficulty_level, settlerlevel = settlerlevel)
+		color, name, client_id, settlerlevel, difficulty_level, max_tier_notification = db(
+			"SELECT color, name, client_id, settler_level, difficulty_level, max_tier_notification FROM player WHERE rowid = ?", worldid)[0]
+		self.__init(name, Color[color], client_id, difficulty_level, max_tier_notification, settlerlevel = settlerlevel)
 
 	def notify_unit_path_blocked(self, unit):
 		"""Notify the user that a unit stopped moving

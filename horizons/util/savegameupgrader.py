@@ -244,6 +244,11 @@ class SavegameUpgrader(object):
 			island_strings.append(island_string + ':%d:%d' % (island_x, island_y))
 		db('INSERT INTO metadata VALUES (?, ?)', 'random_island_sequence', ' '.join(island_strings))
 
+	def _upgrade_to_rev66(self, db):
+		db("DELETE FROM metadata WHERE name='max_tier_notification'")
+		db("ALTER TABLE player ADD COLUMN max_tier_notification INTEGER")
+		db("UPDATE player SET max_tier_notification = 0")
+
 	def _upgrade(self):
 		# fix import loop
 		from horizons.savegamemanager import SavegameManager
@@ -295,6 +300,8 @@ class SavegameUpgrader(object):
 				self._upgrade_to_rev64(db)
 			if rev < 65:
 				self._upgrade_to_rev65(db)
+			if rev < 66:
+				self._upgrade_to_rev66(db)
 
 			db('COMMIT')
 			db.close()
