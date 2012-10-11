@@ -244,11 +244,11 @@ class BuildingTool(NavigationTool):
 				self._class.default_level_on_build
 			action_set = self._class.get_random_action_set(level=level)
 		action_sets = ActionSetLoader.get_sets()
-		if 'idle' in action_sets[action_set]:
-			action = 'idle'
-		elif 'idle_full' in action_sets[action_set]:
-			action = 'idle_full'
-		else: # If no idle animation found, use the first you find
+		for action_option in ['idle', 'idle_full', 'abcd']:
+			if action_option in action_sets[action_set]:
+				action = action_option
+				break
+		else: # If no idle, idle_full or abcd animation found, use the first you find
 			action = action_sets[action_set].keys()[0]
 		rotation = (self.rotation + int(self.session.view.cam.getRotation()) - 45) % 360
 		image = sorted(action_sets[action_set][action][rotation].keys())[0]
