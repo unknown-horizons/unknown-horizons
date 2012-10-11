@@ -44,13 +44,16 @@ actionsets:
     as_lumberjack0:
   TIER.PIONEERS:
     as_lumberjack_barrack0:
-    as_lumberjack_barrack1:
+    as_lumberjack_barrack1: 20
+    as_lumberjack_barrack2: 5
   TIER.SETTLERS:
-    as_ljsettlers0: as_preview_ljsettlers0
+    as_ljsettlers0:
 # If there are more entries for a level, one is chosen at random each time a building is built.
 # As with the names, the highest available tier is used to find graphics.
-# If you want to add a custom preview action set (the image displayed in the build preview tab),
-# add the set after the colon : as with as_ljsettlers0 above. This is usually not necessary.
+# If you want to add a custom weight (default is 10) for the random choice to pick from,
+# add the weight after the colon : as with barrack1 and 2 above.
+# A weight of 5 will make the set twice as rare as the default (and 20 makes it twice as common).
+# With the example above, you're likely to see four barrack1 sets for each barrack2 set that's picked.
 
 # Now, we define the heart of the buildings, its mechanics.
 # We do that by defining the components the building consists of.
