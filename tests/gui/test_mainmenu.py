@@ -92,7 +92,7 @@ def test_multiplayer(gui):
 	"""Test that the multiplayer page shows up."""
 
 	gui.trigger('menu', 'startMulti')
-	gui.trigger('menu', 'cancel')
+	gui.trigger('mpmenu', 'cancel')
 
 
 @gui_test(timeout=60)
@@ -100,7 +100,7 @@ def test_singleplayer(gui):
 	"""Test that the singleplayer page shows up."""
 
 	gui.trigger('menu', 'startSingle')
-	gui.trigger('menu', 'cancel')
+	gui.trigger('spmenu', 'cancel')
 
 
 @gui_test(timeout=60, cleanup_userdir=True)

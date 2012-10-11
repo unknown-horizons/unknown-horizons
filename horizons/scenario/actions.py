@@ -104,7 +104,7 @@ def do_win(session):
 			SavegameManager.mark_scenario_as_won(session.campaign)
 			session.ingame_gui.scenario_chooser.show()
 		else:
-			Scheduler().add_new_object(Callback(session.gui.quit_session, force=True), session, run_in=0)
+			Scheduler().add_new_object(Callback(session.ingame_gui.quit_session, force=True), session, run_in=0)
 	else:
 		UnPauseCommand().execute(session)
 

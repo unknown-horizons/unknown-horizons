@@ -103,7 +103,7 @@ def start(_command_line_arguments):
 			return False
 
 	if command_line_arguments.generate_minimap: # we've been called as subprocess to generate a map preview
-		from horizons.gui.modules.singleplayermenu import MapPreview
+		from horizons.gui.mainmenu.singleplayer import MapPreview
 		MapPreview.generate_minimap( * json.loads(
 		  command_line_arguments.generate_minimap
 		  ) )
@@ -223,12 +223,12 @@ def start(_command_line_arguments):
 		__string_previewer = StringPreviewWidget(_modules.session)
 		__string_previewer.show()
 	elif command_line_arguments.create_mp_game:
-		_modules.gui.show_main()
-		_modules.gui.show_multi()
+		_modules.gui.show()
+		_modules.gui.show_multi()  # TODO
 		_modules.gui.create_default_mp_game()
 	elif command_line_arguments.join_mp_game:
-		_modules.gui.show_main()
-		_modules.gui.show_multi()
+		_modules.gui.show()
+		_modules.gui.show_multi()  # TODO
 		_modules.gui.join_mp_game()
 	else: # no commandline parameter, show main screen
 
@@ -248,7 +248,7 @@ def start(_command_line_arguments):
 
 			update_info_handler(update_info) # schedules checks by itself
 
-		_modules.gui.show_main()
+		_modules.gui.show()
 		if not command_line_arguments.nopreload:
 			preloading[0].start()
 
@@ -286,9 +286,6 @@ def start_singleplayer(options):
 	horizons.globals.fife.engine.pump()
 	horizons.globals.fife.set_cursor_image('default')
 
-	# hide whatever is displayed before the game starts
-	_modules.gui.hide()
-
 	# destruct old session (right now, without waiting for gc)
 	if _modules.session is not None and _modules.session.is_alive:
 		_modules.session.end()
@@ -314,7 +311,7 @@ def start_singleplayer(options):
 				print
 				traceback.print_exc()
 				print "Additionally to failing when loading, cleanup afterwards also failed"
-		_modules.gui.show_main()
+		_modules.gui.show()
 		headline = _(u"Failed to start/load the game")
 		descr = _(u"The game you selected could not be started.") + u" " +\
 		        _("The savegame might be broken or has been saved with an earlier version.")
@@ -333,9 +330,6 @@ def prepare_multiplayer(game, trader_enabled=True, pirate_enabled=True, natural_
 	horizons.globals.fife.cursor.set(fife_module.CURSOR_NONE)
 	horizons.globals.fife.engine.pump()
 	horizons.globals.fife.set_cursor_image('default')
-
-	# hide whatever is displayed before the game starts
-	_modules.gui.hide()
 
 	# destruct old session (right now, without waiting for gc)
 	if _modules.session is not None and _modules.session.is_alive:
@@ -358,7 +352,6 @@ def prepare_multiplayer(game, trader_enabled=True, pirate_enabled=True, natural_
 
 def start_multiplayer(game):
 	_modules.session.start()
-
 
 ## GAME START FUNCTIONS
 def _start_map(map_name, ai_players=0, is_scenario=False, campaign=None,

@@ -19,9 +19,31 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-"""Modules for gui/ingamegui"""
+import horizons.globals
+from horizons.gui.window import Window
 
-from playerdataselection import PlayerDataSelection
-from aidataselection import AIDataSelection
-from singleplayermenu import SingleplayerMenu
-from multiplayermenu import MultiplayerMenu
+
+class Settings(Window):
+
+	def show(self):
+		horizons.globals.fife.show_settings()
+
+		# Patch original dialog
+		widget = horizons.globals.fife._setting.OptionsDlg
+		if not hasattr(widget, '__patched__'):
+			# replace hide method so we take control over how the dialog
+			# is hided
+			self._original_hide = widget.hide
+			widget.hide = self.windows.close
+
+			widget.mapEvents({
+				'cancelButton': widget.hide
+			})
+			self._capture_escape(widget)
+
+			widget.__patched__ = True
+
+		self._focus(widget)
+
+	def hide(self):
+		self._original_hide()

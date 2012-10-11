@@ -242,12 +242,13 @@ class SavegameManager(object):
 		width = horizons.globals.fife.engine_settings.getScreenWidth()
 		height = horizons.globals.fife.engine_settings.getScreenHeight()
 
+		ingame_gui = horizons.main._modules.gui.session.ingame_gui
 
 		# hide whatever dialog we have
 		dialog_hidden = False
-		if horizons.main._modules.gui.is_visible():
+		if ingame_gui.windows.visible:
 			dialog_hidden = True
-			horizons.main._modules.gui.hide()
+			ingame_gui.windows.top.hide()
 			horizons.globals.fife.engine.pump()
 
 		# scale to the correct with and adapt height with same factor
@@ -257,7 +258,7 @@ class SavegameManager(object):
 		                                                           int(float(height) * factor))
 
 		if dialog_hidden:
-			horizons.main._modules.gui.show()
+			ingame_gui.windows.top.show()
 			horizons.globals.fife.engine.pump()
 
 		screenshot_data = os.fdopen(screenshot_fd, "r").read()
@@ -516,7 +517,7 @@ class SavegameManager(object):
 		next_index = campaign_data['scenario_index'] + 1
 		if next_index == len(scenarios):
 			# If no more scenario, do the same thing as in the "old" do_win action
-			horizons.main._modules.session.gui.quit_session(force = True)
+			horizons.main._modules.session.ingame_gui.quit_session(force=True)
 			return False
 		campaign_data['scenario_index'] = next_index
 		campaign_data['scenario_name'] = scenarios[next_index]

@@ -73,6 +73,8 @@ class IngameKeyListener(fife.IKeyListener, LivingObject):
 			handled_by_ingame_gui = self.session.ingame_gui.on_escape()
 			if not handled_by_ingame_gui:
 				key_event_handled = False # let the MainListener handle this
+		elif action == _Actions.HELP:
+			self.session.ingame_gui.toggle_help()
 		elif action == _Actions.GRID:
 			gridrenderer = self.session.view.renderer['GridRenderer']
 			gridrenderer.setEnabled( not gridrenderer.isEnabled() )
@@ -91,13 +93,13 @@ class IngameKeyListener(fife.IKeyListener, LivingObject):
 		elif action == _Actions.PAUSE:
 			TogglePauseCommand().execute(self.session)
 		elif action == _Actions.PLAYERS_OVERVIEW:
-			self.session.ingame_gui.logbook.toggle_stats_visibility(widget='players')
+			self.session.ingame_gui.toggle_player_stats()
 		elif action == _Actions.SETTLEMENTS_OVERVIEW:
-			self.session.ingame_gui.logbook.toggle_stats_visibility(widget='settlements')
+			self.session.ingame_gui.toggle_settlement_stats()
 		elif action == _Actions.SHIPS_OVERVIEW:
-			self.session.ingame_gui.logbook.toggle_stats_visibility(widget='ships')
+			self.session.ingame_gui.toggle_ship_stats()
 		elif action == _Actions.LOGBOOK:
-			self.session.ingame_gui.logbook.toggle_visibility()
+			self.session.ingame_gui.toggle_logbook()
 		elif action == _Actions.DEBUG:
 			pass
 			#import pdb; pdb.set_trace()

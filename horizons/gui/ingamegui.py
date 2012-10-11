@@ -19,9 +19,7 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-import re
 import horizons.globals
-from fife import fife
 
 from horizons.entities import Entities
 from horizons.util.living import livingProperty, LivingObject
@@ -29,7 +27,6 @@ from horizons.util.pychanchildfinder import PychanChildFinder
 from horizons.util.python.callback import Callback
 from horizons.gui.mousetools import BuildingTool
 from horizons.gui.tabs import TabWidget, BuildTab, DiplomacyTab, SelectMultiTab
-from horizons.gui.widgets.imagebutton import OkButton, CancelButton
 from horizons.gui.widgets.messagewidget import MessageWidget
 from horizons.gui.widgets.minimap import Minimap
 from horizons.gui.widgets.logbook import LogBook
@@ -41,14 +38,16 @@ from horizons.gui.widgets.choose_next_scenario import ScenarioChooser
 from horizons.extscheduler import ExtScheduler
 from horizons.gui.util import LazyWidgetsDict
 from horizons.constants import BUILDINGS, GUI
-from horizons.command.uioptions import RenameObject
-from horizons.command.misc import Chat
 from horizons.command.game import SpeedDownCommand, SpeedUpCommand
+from horizons.gui.ingame import ChangeNameDialog, SaveMapDialog, ChatDialog, LogbookProxy
+from horizons.gui.pausemenu import PauseMenu
+from horizons.gui.mainmenu import Help, Settings, SaveLoad
 from horizons.gui.tabs.tabinterface import TabInterface
 from horizons.gui.tabs import MainSquareOverviewTab
-from horizons.component.namedcomponent import SettlementNameComponent, NamedComponent
+from horizons.gui.window import WindowManager
 from horizons.component.ambientsoundcomponent import AmbientSoundComponent
 from horizons.component.selectablecomponent import SelectableComponent
+from horizons.component.namedcomponent import SettlementNameComponent
 from horizons.messaging import SettlerUpdate, SettlerInhabitantsChanged, ResourceBarResize, HoverSettlementChanged, TabWidgetChanged
 from horizons.util.lastactiveplayersettlementmanager import LastActivePlayerSettlementManager
 
@@ -65,7 +64,11 @@ class IngameGui(LivingObject):
 		'city_info' : 'city_info',
 		'change_name' : 'book',
 		'save_map' : 'book',
+		'help': 'book',
 		'chat' : 'book',
+		'ingamemenu': 'headline',
+		'game_settings' : 'book',
+	  	'select_savegame': 'book',
 	}
 
 	def __init__(self, session, gui):
@@ -81,6 +84,16 @@ class IngameGui(LivingObject):
 		self._old_menu = None
 
 		self.widgets = LazyWidgetsDict(self.styles, center_widgets=False)
+
+		self.windows = WindowManager(self.widgets)
+		self._settings = Settings(None, manager=self.windows)
+		self._help = Help(self.widgets, gui=self, manager=self.windows)
+		self._pausemenu = PauseMenu(self.widgets, gui=self, manager=self.windows)
+		self._change_name_dialog = ChangeNameDialog(self.widgets, gui=self, manager=self.windows)
+		self._save_map_dialog = SaveMapDialog(self.widgets, gui=self, manager=self.windows)
+		self._chat_dialog = ChatDialog(self.widgets, gui=self, manager=self.windows)
+		self._logbook_proxy = LogbookProxy(self.widgets, gui=self, manager=self.windows)
+		self._saveload = SaveLoad(self.widgets, gui=self, manager=self.windows)
 
 		self.cityinfo = self.widgets['city_info']
 		self.cityinfo.child_finder = PychanChildFinder(self.cityinfo)
@@ -120,7 +133,7 @@ class IngameGui(LivingObject):
 			'destroy_tool' : self.session.toggle_destroy_tool,
 			'build' : self.show_build_menu,
 			'diplomacyButton' : self.show_diplomacy_menu,
-			'gameMenuButton' : self.main_gui.toggle_pause,
+			'gameMenuButton' : self.toggle_pause,
 			'logbook' : self.logbook.toggle_visibility
 		})
 		minimap.show()
@@ -291,8 +304,8 @@ class IngameGui(LivingObject):
 			return
 
 		if not DiplomacyTab.is_useable(self.session.world):
-			self.main_gui.show_popup(_("No diplomacy possible"),
-			                         _("Cannot do diplomacy as there are no other players."))
+			self.show_popup(_("No diplomacy possible"),
+			                _("Cannot do diplomacy as there are no other players."))
 			return
 
 		tab = DiplomacyTab(self, self.session.world)
@@ -396,6 +409,9 @@ class IngameGui(LivingObject):
 		self.resource_overview.save(db)
 
 	def load(self, db):
+		# hide maingui (and therefore removing the loadingscreen)
+		self.main_gui.hide()
+
 		self.message_widget.load(db)
 		self.logbook.load(db)
 		self.resource_overview.load(db)
@@ -408,75 +424,11 @@ class IngameGui(LivingObject):
 	def show_change_name_dialog(self, instance):
 		"""Shows a dialog where the user can change the name of a NamedComponant.
 		The game gets paused while the dialog is executed."""
-		events = {
-			OkButton.DEFAULT_NAME: Callback(self.change_name, instance),
-			CancelButton.DEFAULT_NAME: self._hide_change_name_dialog
-		}
-		self.main_gui.on_escape = self._hide_change_name_dialog
-		changename = self.widgets['change_name']
-		oldname = changename.findChild(name='old_name')
-		oldname.text = instance.get_component(SettlementNameComponent).name
-		newname = changename.findChild(name='new_name')
-		changename.mapEvents(events)
-		newname.capture(Callback(self.change_name, instance))
-
-		def forward_escape(event):
-			# the textfield will eat everything, even control events
-			if event.getKey().getValue() == fife.Key.ESCAPE:
-				self.main_gui.on_escape()
-		newname.capture( forward_escape, "keyPressed" )
-
-		changename.show()
-		newname.requestFocus()
-
-	def _hide_change_name_dialog(self):
-		"""Escapes the change_name dialog"""
-		self.main_gui.on_escape = self.main_gui.toggle_pause
-		self.widgets['change_name'].hide()
-
-	def change_name(self, instance):
-		"""Applies the change_name dialogs input and hides it.
-		If the new name has length 0 or only contains blanks, the old name is kept.
-		"""
-		new_name = self.widgets['change_name'].collectData('new_name')
-		self.widgets['change_name'].findChild(name='new_name').text = u''
-		if not new_name or not new_name.isspace():
-			# different namedcomponent classes share the name
-			RenameObject(instance.get_component_by_name(NamedComponent.NAME), new_name).execute(self.session)
-		self._hide_change_name_dialog()
+		self.windows.show(self._change_name_dialog, instance=instance)
 
 	def show_save_map_dialog(self):
 		"""Shows a dialog where the user can set the name of the saved map."""
-		events = {
-			OkButton.DEFAULT_NAME: self.save_map,
-			CancelButton.DEFAULT_NAME: self._hide_save_map_dialog
-		}
-		self.main_gui.on_escape = self._hide_save_map_dialog
-		dialog = self.widgets['save_map']
-		name = dialog.findChild(name='map_name')
-		name.text = u''
-		dialog.mapEvents(events)
-		name.capture(Callback(self.save_map))
-		dialog.show()
-		name.requestFocus()
-
-	def _hide_save_map_dialog(self):
-		"""Closes the map saving dialog."""
-		self.main_gui.on_escape = self.main_gui.toggle_pause
-		self.widgets['save_map'].hide()
-
-	def save_map(self):
-		"""Saves the map and hides the dialog."""
-		name = self.widgets['save_map'].collectData('map_name')
-		if re.match('^[a-zA-Z0-9_-]+$', name):
-			self.session.save_map(name)
-			self._hide_save_map_dialog()
-		else:
-			#xgettext:python-format
-			message = _('Valid map names are in the following form: {expression}').format(expression='[a-zA-Z0-9_-]+')
-			#xgettext:python-format
-			advice = _('Try a name that only contains letters and numbers.')
-			self.session.gui.show_error_popup(_('Error'), message, advice)
+		self.windows.show(self._save_map_dialog)
 
 	def on_escape(self):
 		if self.main_widget:
@@ -518,32 +470,51 @@ class IngameGui(LivingObject):
 
 	def show_chat_dialog(self):
 		"""Show a dialog where the user can enter a chat message"""
-		events = {
-			OkButton.DEFAULT_NAME: self._do_chat,
-			CancelButton.DEFAULT_NAME: self._hide_chat_dialog
-		}
-		self.main_gui.on_escape = self._hide_chat_dialog
+		self.windows.show(self._chat_dialog)
 
-		self.widgets['chat'].mapEvents(events)
-		def forward_escape(event):
-			# the textfield will eat everything, even control events
-			if event.getKey().getValue() == fife.Key.ESCAPE:
-				self.main_gui.on_escape()
+	def quit_session(self, force=False):
+		"""Quits the current session. Usually returns to main menu afterwards.
+		@param force: whether to ask for confirmation"""
+		message = _("Are you sure you want to abort the running session?")
 
-		self.widgets['chat'].findChild(name='msg').capture( forward_escape, "keyPressed" )
-		self.widgets['chat'].findChild(name='msg').capture( self._do_chat )
-		self.widgets['chat'].show()
-		self.widgets['chat'].findChild(name="msg").requestFocus()
+		if force or self.show_popup(_("Quit Session"), message, show_cancel_button=True):
+			# Close all windows before ending the session
+			self.windows.close_all()
 
-	def _hide_chat_dialog(self):
-		"""Escapes the chat dialog"""
-		self.main_gui.on_escape = self.main_gui.toggle_pause
-		self.widgets['chat'].hide()
+			if self.session is not None:
+				self.session.end()
+				self.session = None
 
-	def _do_chat(self):
-		"""Actually initiates chatting and hides the dialog"""
-		msg = self.widgets['chat'].findChild(name='msg').text
-		Chat(msg).execute(self.session)
-		self.widgets['chat'].findChild(name='msg').text = u''
-		self._hide_chat_dialog()
+			self.main_gui.show()
+			return True
+		else:
+			return False
 
+	def toggle_pause(self):
+		"""Shows in-game pause menu if the game is currently not paused.
+		Else unpauses and hides the menu. Multiple layers of the 'paused' concept exist;
+		if two widgets are opened which would both pause the game, we do not want to
+		unpause after only one of them is closed. Uses PauseCommand and UnPauseCommand.
+		"""
+		self.windows.toggle(self._pausemenu)
+
+	def toggle_help(self):
+		self.windows.toggle(self._help)
+
+	def toggle_player_stats(self):
+		self.windows.toggle(self._logbook_proxy, page='players')
+
+	def toggle_settlement_stats(self):
+		self.windows.toggle(self._logbook_proxy, page='settlements')
+
+	def toggle_ship_stats(self):
+		self.windows.toggle(self._logbook_proxy, page='ships')
+
+	def toggle_logbook(self):
+		self.windows.toggle(self._logbook_proxy)
+
+	def show_popup(self, *args, **kwargs):
+		return self.windows.show_popup(*args, **kwargs)
+
+	def show_error_popup(self, *args, **kwargs):
+		return self.windows.show_error_popup(*args, **kwargs)
