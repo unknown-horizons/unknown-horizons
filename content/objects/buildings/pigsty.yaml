@@ -24,4 +24,4 @@ components:
         slot_sizes: {RES.PIGS: 4, RES.ACORNS: 10}
 actionsets:
   TIER.SETTLERS:
-    as_pigsty0: as_preview_pigsty0
+    as_pigsty0:
