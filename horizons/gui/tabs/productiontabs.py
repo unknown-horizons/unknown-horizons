@@ -41,7 +41,11 @@ from horizons.world.production.producer import Producer
 class ProductionOverviewTab(OverviewTab):
 	ACTIVE_PRODUCTION_ANIM_DIR = "content/gui/images/animations/cogs/large"
 	BUTTON_BACKGROUND = "content/gui/images/buttons/msg_button.png"
-	PRODUCTION_LINE_IMAGE = "content/gui/icons/templates/production/production_line.png"
+	ARROW_TOP = "content/gui/icons/templates/production/production_arrow_top.png"
+	ARROW_MID = "content/gui/icons/templates/production/production_arrow_start.png"
+	ARROW_BOTTOM = "content/gui/icons/templates/production/production_arrow_bottom.png"
+	ARROW_CONNECT_UP = "content/gui/icons/templates/production/production_arrow_connect_up.png"
+	ARROW_CONNECT_DOWN = "content/gui/icons/templates/production/production_arrow_connect_down.png"
 
 	def  __init__(self, instance, widget='overview_productionbuilding.xml',
 		         production_line_gui_xml='overview_productionline.xml'):
@@ -125,29 +129,52 @@ class ProductionOverviewTab(OverviewTab):
 		super(ProductionOverviewTab, self).refresh()
 
 	def _connect_multiple_input_res_for_production(self, centered_container, container, production):
-		consumed_resources_count = len(production.get_consumed_resources()) - 1
-		if consumed_resources_count > 0:
-			# center the production line
-			y = (27 * consumed_resources_count)
-			centered_container.position = (0, y)
+		"""Draws incoming arrows for production line container."""
+		input_amount = len(production.get_consumed_resources())
+		if input_amount == 0:
+			# Do not draw input arrows if there is no input
+			return
 
-			# add vertical line to connect the multiple input res
-			# TODO: Find a better image here
-			res_icon_height = (ImageFillStatusButton.CELL_SIZE[1] + ImageFillStatusButton.PADDING)
-			size = (16, (res_icon_height * consumed_resources_count) + 18)
+		# center the production line
+		icon_height = ImageFillStatusButton.CELL_SIZE[1] + ImageFillStatusButton.PADDING
+		center_y = (icon_height // 2) * (input_amount - 1)
+		centered_container.position = (0, center_y)
 
-			image = Icon(image=self.PRODUCTION_LINE_IMAGE)
-			image.position=(97, 17)
-			image.min_size = image.size = image.max_size = size
-			container.insertChild(image, 0)
+		if input_amount % 2:
+			# Add center arrow for 1, 3, 5, ... but not 2, 4, ...
+			mid_arrow = Icon(image=self.__class__.ARROW_MID)
+			mid_arrow.position = (60, 16 + center_y)
+			container.insertChild(mid_arrow, 0)
 
-			for res in xrange(0, consumed_resources_count + 1):
-				arrow_y = (res_icon_height * res) + 17
-				if arrow_y != y:
-					image = Icon(image=self.PRODUCTION_LINE_IMAGE)
-					image.position=(59, arrow_y)
-					image.min_size = image.size = image.max_size = (38, 18)
-					container.insertChild(image, 0)
+		for res in xrange(input_amount // 2):
+			# --\                      <= placed for res = 1
+			# --\| <= place connector  <= placed for res = 0
+			# ---O-->                  <= placed above
+			# --/| <= place connector  <= placed for res = 0
+			# --/                      <= placed for res = 1
+			offset = -17 + (icon_height // 2) * (2 * res + (input_amount % 2) + 1)
+
+			top_arrow = Icon(image=self.__class__.ARROW_TOP)
+			top_arrow.position = (60, center_y - offset)
+			container.insertChild(top_arrow, 0)
+
+			bottom_arrow = Icon(image=self.__class__.ARROW_BOTTOM)
+			bottom_arrow.position = (60, center_y + offset)
+			container.insertChild(bottom_arrow, 0)
+
+			# Place a connector image (the | in above sketch) that vertically connects
+			# the input resource arrows. We need those if the production line has more
+			# than three input resources. Connectors are placed in the inner loop parts.
+			place_connectors = (1 + 2 * res) < (input_amount // 2)
+			if place_connectors:
+				# the connector downwards connects top_arrows
+				down_connector = Icon(image=self.__class__.ARROW_CONNECT_DOWN)
+				down_connector.position = (98, center_y - offset)
+				container.insertChild(down_connector, 0)
+				# the connector upwards connects up_arrows
+				up_connector = Icon(image=self.__class__.ARROW_CONNECT_UP)
+				up_connector.position = (98, center_y + offset)
+				container.insertChild(up_connector, 0)
 
 	def _set_resource_amounts(self, container, production):
 		for res, amount in production.get_consumed_resources().iteritems():

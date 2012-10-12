@@ -12,7 +12,7 @@
 	<VBox name="input_res" position="2,0"/>
 
 	<Container name="centered_production_icons" size="200,55" position="0,0">
-		<Icon image="content/gui/icons/templates/production/production_arrow.png" position="60,16"/>
+		<Icon image="content/gui/icons/templates/production/production_arrow_head.png" position="107,16"/>
 		<VBox name="output_box" position="134,16" />
 
 		<!-- one of those button gets removed at runtime -->
