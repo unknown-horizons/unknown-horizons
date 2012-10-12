@@ -49,10 +49,7 @@ class ProductionOverviewTab(OverviewTab):
 
 	def  __init__(self, instance, widget='overview_productionbuilding.xml',
 		         production_line_gui_xml='overview_productionline.xml'):
-		super(ProductionOverviewTab, self).__init__(
-			widget = widget,
-			instance = instance
-		)
+		super(ProductionOverviewTab, self).__init__(widget=widget, instance=instance)
 		self.helptext = _("Production overview")
 		self.production_line_gui_xml = production_line_gui_xml
 		self._animations = []
@@ -75,7 +72,7 @@ class ProductionOverviewTab(OverviewTab):
 			if hasattr(child, "anim"):
 				child.anim.stop()
 				del child.anim
-			parent_container.removeChild( child )
+			parent_container.removeChild(child)
 
 		# create a container for each production
 		# sort by production line id to have a consistent (basically arbitrary) order
@@ -238,9 +235,9 @@ class SmallProductionOverviewTab(ProductionOverviewTab):
 	BUTTON_BACKGROUND = "content/gui/images/buttons/msg_button_small.png"
 	def  __init__(self, instance):
 		super(SmallProductionOverviewTab, self).__init__(
-			instance = instance,
-			widget = 'overview_farm.xml',
-			production_line_gui_xml = "overview_farmproductionline.xml"
+			instance=instance,
+			widget='overview_farm.xml',
+			production_line_gui_xml="overview_farmproductionline.xml"
 		)
 		self.helptext = _("Production overview")
 
