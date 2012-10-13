@@ -84,8 +84,9 @@ class Player(ComponentHolder, WorldObject):
 		self._stats = None
 		assert self.color.is_default_color, "Player color has to be a default color"
 
-		SettlerUpdate.subscribe(self.notify_settler_reached_level)
-		NewDisaster.subscribe(self.notify_new_disaster, sender=self)
+		if self.regular_player:
+			SettlerUpdate.subscribe(self.notify_settler_reached_level)
+			NewDisaster.subscribe(self.notify_new_disaster, sender=self)
 
 	@property
 	def is_local_player(self):
@@ -164,6 +165,10 @@ class Player(ComponentHolder, WorldObject):
 	def end(self):
 		self._stats = None
 		self.session = None
+
+		if self.regular_player:
+			SettlerUpdate.unsubscribe(self.notify_settler_reached_level)
+			NewDisaster.unsubscribe(self.notify_new_disaster, sender=self)
 
 	@decorators.temporary_cachedmethod(timeout=STATS_UPDATE_INTERVAL)
 	def get_balance_estimation(self):
