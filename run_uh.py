@@ -282,7 +282,12 @@ def main():
 		if not os.path.exists(profiling_dir):
 			os.makedirs(profiling_dir)
 
-		outfilename = os.path.join(profiling_dir, time.strftime('%Y-%m-%d_%H-%M-%S') + '.prof')
+		pattern = os.path.join(profiling_dir, time.strftime('%Y-%m-%d') + '.%02d.prof')
+		num = 1
+		while os.path.exists(pattern % num):
+			num += 1
+
+		outfilename = pattern % num
 		print('Starting in profile mode. Writing output to: %s' % outfilename)
 		profile.runctx('horizons.main.start(options)', globals(), locals(), outfilename)
 		print('Program ended. Profiling output: %s' % outfilename)
