@@ -81,7 +81,7 @@ class Player(ComponentHolder, WorldObject):
 		self.difficulty = DifficultySettings.get_settings(difficulty_level)
 		self.max_tier_notification = max_tier_notification
 		self.settler_level = settlerlevel
-		self.stats = None
+		self._stats = None
 		assert self.color.is_default_color, "Player color has to be a default color"
 
 		SettlerUpdate.subscribe(self.notify_settler_reached_level)
@@ -91,13 +91,10 @@ class Player(ComponentHolder, WorldObject):
 	def is_local_player(self):
 		return self is self.session.world.player
 
-	def update_stats(self):
-		# will only be enabled on demand since it takes a while to calculate
-		Scheduler().add_new_object(Callback(self.update_stats), self, run_in=PLAYER.STATS_UPDATE_FREQUENCY)
-		self.stats = PlayerStats(self)
-
 	def get_latest_stats(self):
-		return self.stats
+		if self._stats is None or self._stats.collection_tick + PLAYER.STATS_UPDATE_FREQUENCY < Scheduler().cur_tick:
+			self._stats = PlayerStats(self)
+		return self._stats
 
 	@property
 	def settlements(self):
@@ -165,7 +162,7 @@ class Player(ComponentHolder, WorldObject):
 			self.session.ingame_gui.message_widget.add(point=pos, string_id=message.disaster_class.NOTIFICATION_TYPE)
 
 	def end(self):
-		self.stats = None
+		self._stats = None
 		self.session = None
 
 	@decorators.temporary_cachedmethod(timeout=STATS_UPDATE_INTERVAL)
