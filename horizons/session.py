@@ -246,7 +246,7 @@ class Session(LivingObject):
 		self._clear_caches()
 
 		# subscriptions shouldn't survive listeners (except the main Gui)
-		self.gui.end()
+		self.gui.unsubscribe()
 		MessageBus().reset()
 		self.gui.subscribe()
 
