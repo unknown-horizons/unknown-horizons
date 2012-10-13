@@ -88,11 +88,16 @@ class Gui(SingleplayerMenu, MultiplayerMenu):
 
 		self.__pause_displayed = False
 		self._background_image = self._get_random_background()
+		self.subscribe()
 
-		GuiAction.subscribe( self._on_gui_action )
+	def subscribe(self):
+		"""Subscribe to the necessary messages."""
+		GuiAction.subscribe(self._on_gui_action)
+
+	def unsubscribe(self):
+		GuiAction.unsubscribe(self._on_gui_action)
 
 # basic menu widgets
-
 	def show_main(self):
 		"""Shows the main menu """
 		self._switch_current_widget('mainmenu', center=True, show=True, event_map={

@@ -245,8 +245,10 @@ class Session(LivingObject):
 		horizons.main._modules.session = None
 		self._clear_caches()
 
-		# subscriptions shouldn't survive listeners
+		# subscriptions shouldn't survive listeners (except the main Gui)
+		self.gui.end()
 		MessageBus().reset()
+		self.gui.subscribe()
 
 	def toggle_cursor(self, which, *args, **kwargs):
 		"""Alternate between the cursor which and default.
