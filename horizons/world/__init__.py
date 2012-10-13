@@ -109,8 +109,15 @@ class World(BuildingOwner, WorldObject):
 		self.ship_map = None
 		self.fish_indexer = None
 		self.ground_units = None
-		self.trader = None
-		self.pirate = None
+
+		if self.pirate is not None:
+			self.pirate.end()
+			self.pirate = None
+
+		if self.trader is not None:
+			self.trader.end()
+			self.trader = None
+
 		self.islands = None
 		self.diplomacy = None
 		self.bullets = None
