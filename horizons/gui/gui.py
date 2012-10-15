@@ -814,7 +814,7 @@ class Gui(SingleplayerMenu, MultiplayerMenu):
 
 		headline = _('Change hotkey for {action}').format(action=action)
 		message = ''
-		if keyname in ('SHIFT', ):
+		if keyname in ('SHIFT', 'ESCAPE'):
 			message = _('This key can not be reassigned at the moment.')
 			self.show_popup(headline, message, {OkButton.DEFAULT_NAME: True})
 			return

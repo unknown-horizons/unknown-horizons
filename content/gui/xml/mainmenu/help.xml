@@ -14,8 +14,6 @@
 	<VBox>
 		<Label name="lbl_SPEED_UP" text="Increase game speed" />
 		<Label name="lbl_SPEED_DOWN" text="Decrease game speed" />
-	</VBox>
-	<VBox>
 		<Label name="lbl_ROTATE_LEFT" text="Rotate building or map counterclockwise"
 			wrap_text="1"  max_size="290,40"  min_size="290,20"/>
 		<Label name="lbl_ROTATE_RIGHT" text="Rotate building or map clockwise"
@@ -31,6 +29,7 @@
 		<Label name="lbl_QUICKSAVE" text="Quicksave" />
 		<Label name="lbl_QUICKLOAD" text="Quickload" />
 		<Label name="lbl_CONSOLE" text="Toggle console on/off" />
+		<Label name="lbl_SAVE_MAP" text="Save map (hold SHIFT)" />
 	</VBox>
 
 	<Spacer />
@@ -38,28 +37,32 @@
 
 <VBox position="447,82" max_size="340,445" min_size="340,445" padding="10">
 	<VBox>
-		<Label name="lbl_GRID" text="Toggle grid on/off" />
-		<Label name="lbl_COORD_TOOLTIP" text="Show coordinate values (Debug)" />
 		<Label name="lbl_TRANSLUCENCY" text="Toggle translucency of ambient buildings"
 			wrap_text="1"  max_size="290,40"  min_size="290,20"/>
 		<Label name="lbl_ROAD_TOOL" text="Enable road building mode" />
-		<Label name="lbl_TILE_OWNER_HIGHLIGHT" text="Highlight tile ownership" />
 		<Label name="lbl_DESTROY_TOOL" text="Enable destruct mode" />
-		<Label name="lbl_REMOVE_SELECTED" text="Remove selected units / buildings" />
-	</VBox>
-	<VBox>
-		<Label name="lbl_PLAYERS_OVERVIEW" text="Show player scores" />
-		<Label name="lbl_SETTLEMENTS_OVERVIEW" text="Show settlement list" />
-		<Label name="lbl_SHIPS_OVERVIEW" text="Show ship list" />
+		<Label name="lbl_PIPETTE" text="Enable pipette mode (clone buildings)"
+			wrap_text="1"  max_size="290,40"  min_size="290,20"/>
+		<Label name="lbl_HEALTH_BAR" text="Toggle health bars" />
 	</VBox>
 	<VBox>
 		<Label name="lbl_SCREENSHOT" text="Screenshot" />
 		<Label name="lbl_CHAT" text="Chat" />
 		<Label name="lbl_SHIFT" text="Hold to place multiple buildings"
-			wrap_text="1"  max_size="290,40"  min_size="290,40"/>
+			wrap_text="1"  max_size="290,40"  min_size="290,20"/>
+		<Label name="lbl_ESCAPE" text="Close dialogs" />
 	</VBox>
 	<VBox>
-
+		<Label name="lbl_PLAYERS_OVERVIEW" text="Show player scores" />
+		<Label name="lbl_SHIPS_OVERVIEW" text="Show ship list" />
+		<Label name="lbl_SETTLEMENTS_OVERVIEW" text="Show settlement list" />
+		<Label name="lbl_TILE_OWNER_HIGHLIGHT" text="Highlight tile ownership" />
+	</VBox>
+	<VBox>
+		<Label name="lbl_REMOVE_SELECTED" text="Remove selected units / buildings" />
+		<Label name="lbl_SHOW_SELECTED" text="Focus camera on selection" />
+		<Label name="lbl_GRID" text="Toggle grid on/off" />
+		<Label name="lbl_COORD_TOOLTIP" text="Show coordinate values (Debug)" />
 	</VBox>
 <Spacer />
 </VBox>
