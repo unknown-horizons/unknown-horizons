@@ -66,7 +66,7 @@ class Player(object):
 		# pickle doesn't use all of these attributes
 		# for more detail check __getstate__()
 		self.peer     = peer
-		assert(isinstance(self.peer, enet.Peer))
+		assert isinstance(self.peer, enet.Peer)
 		self.address  = Address(self.peer.address)
 		self.sid      = sid
 		# there's a difference between player.protocol and player.version:
@@ -121,8 +121,8 @@ class Player(object):
 
 	def join(self, game, packet):
 		""" assigns player data sent by create/join-command to the player """
-		assert(isinstance(packet, packets.client.cmd_creategame)
-				or isinstance(packet, packets.client.cmd_joingame))
+		assert (isinstance(packet, packets.client.cmd_creategame)
+		        or isinstance(packet, packets.client.cmd_joingame))
 		self.game     = game
 		self.version  = packet.clientversion
 		self.name     = packet.playername
@@ -156,7 +156,7 @@ class Game(object):
 	def __init__(self, packet, creator):
 		# pickle doesn't use all of these attributes
 		# for more detail check __getstate__()
-		assert(isinstance(packet, packets.client.cmd_creategame))
+		assert isinstance(packet, packets.client.cmd_creategame)
 		self.uuid          = uuid.uuid1().hex
 		self.mapname       = packet.mapname
 		self.maphash       = packet.maphash

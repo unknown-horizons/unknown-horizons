@@ -321,7 +321,7 @@ class Island(BuildingOwner, WorldObject):
 				del self.deposits[building.id][coords]
 		if building.settlement is not None:
 			building.settlement.remove_building(building)
-			assert(building not in building.settlement.buildings)
+			assert building not in building.settlement.buildings
 
 		super(Island, self).remove_building(building)
 		if building.id in self.building_indexers:
