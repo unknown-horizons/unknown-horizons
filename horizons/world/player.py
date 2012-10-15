@@ -128,13 +128,6 @@ class Player(ComponentHolder, WorldObject):
 			"SELECT color, name, client_id, settler_level, difficulty_level, max_tier_notification FROM player WHERE rowid = ?", worldid)[0]
 		self.__init(name, Color[color], client_id, difficulty_level, max_tier_notification, settlerlevel = settlerlevel)
 
-	def notify_unit_path_blocked(self, unit):
-		"""Notify the user that a unit stopped moving
-		NOTE: this is just a quick fix for a release
-		      a signaling concept for such events is planned.
-		"""
-		self.log.warning("ERROR: UNIT %s CANNOT MOVE ANY FURTHER!", unit)
-
 	def notify_settler_reached_level(self, message):
 		"""Settler calls this to notify the player
 		@param settler: instance of Settler

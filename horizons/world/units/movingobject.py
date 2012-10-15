@@ -188,17 +188,6 @@ class MovingObject(ComponentHolder, ConcreteObject):
 				if self.blocked_callbacks:
 					self.log.debug('PATH FOR UNIT %s is blocked. Calling blocked_callback', self)
 					self.blocked_callbacks.execute()
-					"""
-					# TODO: This is supposed to delegate control over the behaviour of the unit to the owner.
-					#       It is currently not used in a meaningful manner and possibly will be removed,
-					#       as blocked_callback solves this problem more elegantly.
-					#       Also, this sometimes triggers for collectors, who are supposed to use the
-					#       generic solution. Only uncomment this code if this problem is fixed, else
-					#       collectors will get stuck.
-				elif self.owner is not None and hasattr(self.owner, "notify_unit_path_blocked"):
-					self.log.debug('PATH FOR UNIT %s is blocked. Delegating to owner %s', self, self.owner)
-					self.owner.notify_unit_path_blocked(self)
-					"""
 				else:
 					# generic solution: retry in 2 secs
 					self.log.debug('PATH FOR UNIT %s is blocked. Retry in 2 secs', self)
