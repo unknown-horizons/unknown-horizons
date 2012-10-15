@@ -48,6 +48,7 @@ from horizons.world.units.weapon import Weapon
 from horizons.command.unit import CreateUnit
 from horizons.component.healthcomponent import HealthComponent
 from horizons.component.storagecomponent import StorageComponent
+from horizons.util.dbreader import DbReader
 from horizons.world.disaster.disastermanager import DisasterManager
 from horizons.world import worldutils
 
@@ -100,6 +101,7 @@ class World(BuildingOwner, WorldObject):
 		self.players = None
 		self.player = None
 		self.ground_map = None
+		self.fake_tile_map = None
 		self.full_map = None
 		self.island_map = None
 		self.water = None
@@ -107,8 +109,15 @@ class World(BuildingOwner, WorldObject):
 		self.ship_map = None
 		self.fish_indexer = None
 		self.ground_units = None
-		self.trader = None
-		self.pirate = None
+
+		if self.pirate is not None:
+			self.pirate.end()
+			self.pirate = None
+
+		if self.trader is not None:
+			self.trader.end()
+			self.trader = None
+
 		self.islands = None
 		self.diplomacy = None
 		self.bullets = None
@@ -254,9 +263,11 @@ class World(BuildingOwner, WorldObject):
 			self.disaster_manager.load(savegame_db)
 
 	def load_raw_map(self, savegame_db, preview=False):
+		self.map_name = savegame_db.map_name
+
 		# load islands
 		self.islands = []
-		for (islandid,) in savegame_db("SELECT rowid + 1000 FROM island"):
+		for (islandid,) in savegame_db("SELECT DISTINCT island_id + 1001 FROM ground"):
 			island = Island(savegame_db, islandid, self.session, preview=preview)
 			self.islands.append(island)
 
@@ -295,6 +306,7 @@ class World(BuildingOwner, WorldObject):
 						for y_offset in xrange(0, 10):
 							if y+y_offset < self.max_y and y+y_offset >= self.min_y:
 								self.ground_map[(x+x_offset, y+y_offset)] = fake_tile_class(self.session, x, y)
+		self.fake_tile_map = copy.copy(self.ground_map)
 
 		# remove parts that are occupied by islands, create the island map and the full map
 		self.island_map = {}
@@ -623,8 +635,11 @@ class World(BuildingOwner, WorldObject):
 		"""Saves the current game to the specified db.
 		@param db: DbReader object of the db the game is saved to."""
 		super(World, self).save(db)
-		for name, value in self.properties.iteritems():
-			db("INSERT INTO map_properties (name, value) VALUES (?, ?)", name, json.dumps(value))
+		if isinstance(self.map_name, list):
+			db("INSERT INTO metadata VALUES(?, ?)", 'random_island_sequence', ' '.join(self.map_name))
+		else:
+			db("INSERT INTO metadata VALUES(?, ?)", 'map_name', self.map_name)
+
 		for island in self.islands:
 			island.save(db)
 		for player in self.players:
@@ -641,9 +656,11 @@ class World(BuildingOwner, WorldObject):
 		Weapon.save_attacks(db)
 		self.disaster_manager.save(db)
 
-	def save_map(self, path, prefix):
-		"""Save the current map as map file + island files"""
-		worldutils.save_map(self, path, prefix)
+	def save_map(self, path, name):
+		"""Save the current map."""
+		if hasattr(self.session, 'world_editor'):
+			# save a map created in the editor
+			self.session.world_editor.save_map(path, name)
 
 	def get_checkup_hash(self):
 		"""Returns a collection of important game state values. Used to check if two mp games have diverged.

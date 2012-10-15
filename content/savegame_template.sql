@@ -10,12 +10,6 @@ CREATE TABLE "name" (
 	"name" TEXT NOT NULL
 );
 
-CREATE TABLE "island" (
-	"x" INT NOT NULL,
-	"y" INT NOT NULL,
-	"file" TEXT NOT NULL
-);
-
 CREATE TABLE "storage" (
 	"object" INT NOT NULL,
 	"resource" INT NOT NULL,
@@ -534,7 +528,8 @@ CREATE TABLE "player" (
 	"is_trader" BOOL NOT NULL DEFAULT (0),
 	"is_pirate" BOOL NOT NULL DEFAULT (0),
 	"settler_level" INT NOT NULL,
-	"difficulty_level" INT
+	"difficulty_level" INT,
+	"max_tier_notification" INT
 );
 
 CREATE TABLE "ai_mission_special_domestic_trade" (

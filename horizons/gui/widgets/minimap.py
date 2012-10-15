@@ -475,8 +475,8 @@ class Minimap(object):
 		real_map_point = Point(0, 0)
 		world_min_x = self.world.min_x
 		world_min_y = self.world.min_y
-		get_island_tuple = self.world.get_island_tuple
 		island_col = self.COLORS["island"]
+		water_col = self.COLORS["water"]
 		location_left = self.location.left
 		location_top = self.location.top
 		if dump_data:
@@ -487,13 +487,11 @@ class Minimap(object):
 		fife_point = fife.Point(0,0)
 
 		use_rotation = self._get_rotation_setting()
+		full_map = self.world.full_map
 
 		# loop through map coordinates, assuming (0, 0) is the origin of the minimap
 		# this faciliates calculating the real world coords
 		for x in xrange(where.left-self.location.left, where.left+where.width-self.location.left):
-			# Optimisation: remember last island
-			last_island = None
-			island = None
 			for y in xrange(where.top-self.location.top, where.top+where.height-self.location.top):
 
 				"""
@@ -513,22 +511,21 @@ class Minimap(object):
 				real_map_point_tuple = (real_map_point.x, real_map_point.y)
 
 				# check what's at the covered_area
-				if last_island is not None and real_map_point_tuple in last_island.ground_map:
-					island = last_island
-				else:
-					island = get_island_tuple(real_map_point_tuple)
-				if island is not None:
-					last_island = island
+				if real_map_point_tuple in full_map:
 					# this pixel is an island
-					settlement = island.get_settlement(real_map_point)
+					tile = full_map[real_map_point]
+					settlement = tile.settlement
 					if settlement is None:
 						# island without settlement
-						color = island_col
+						if tile.id <= 0:
+							color = water_col
+						else:
+							color = island_col
 					else:
 						# pixel belongs to a player
 						color = settlement.owner.color.to_tuple()
 				else:
-					continue
+					color = water_col
 
 				if use_rotation:
 					# inlined _get_rotated_coords

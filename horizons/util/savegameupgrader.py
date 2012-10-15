@@ -120,9 +120,13 @@ class SavegameUpgrader(object):
 
 	def _upgrade_to_rev59(self, db):
 		# action set id save/load
-		db("ALTER TABLE concrete_object ADD COLUMN action_set_id STRING DEFAULT NULL")
-		# None is not a valid value, but it's hard to determine valid ones here,
-		# so as an exception, we let the loading code handle it (in ConcreteObject.load)
+		try:
+			db("ALTER TABLE concrete_object ADD COLUMN action_set_id STRING DEFAULT NULL")
+			# None is not a valid value, but it's hard to determine valid ones here,
+			# so as an exception, we let the loading code handle it (in ConcreteObject.load)
+		except OperationalError:
+			# Some scenario maps had concrete_object updated with 8b3cb4bae1067e
+			pass
 
 	def _upgrade_to_rev60(self, db):
 		# some production line id changes
@@ -217,6 +221,34 @@ class SavegameUpgrader(object):
 	def _upgrade_to_rev64(self, db):
 		db("INSERT INTO metadata VALUES (?, ?)", "max_tier_notification", False)
 
+	def _upgrade_to_rev65(self, db):
+		island_path = db("SELECT file FROM island ORDER BY file LIMIT 1")[0][0]
+		map_names = {
+			'content/islands/bay_and_lake.sqlite': 'development',
+			'content/islands/fightForRes_island_0_169.sqlite': 'fight-for-res',
+			'content/islands/full_house_island_0_25.sqlite': 'full-house',
+			'content/islands/mp-dev_island_0_0.sqlite': 'mp-dev',
+			'content/islands/quattro_island_0_19.sqlite': 'quattro',
+			'content/islands/rouver_island_0_0.sqlite': 'rouver',
+			'content/islands/singularity40_island_0_0.sqlite': 'singularity40',
+			'content/islands/tiny.sqlite': 'test-map-tiny',
+			'content/islands/triple_island_0_74.sqlite': 'triple'
+		}
+		if island_path in map_names:
+			db('INSERT INTO metadata VALUES (?, ?)', 'map_name', map_names[island_path])
+			return
+
+		# random map
+		island_strings = []
+		for island_x, island_y, island_string in db('SELECT x, y, file FROM island ORDER BY rowid'):
+			island_strings.append(island_string + ':%d:%d' % (island_x, island_y))
+		db('INSERT INTO metadata VALUES (?, ?)', 'random_island_sequence', ' '.join(island_strings))
+
+	def _upgrade_to_rev66(self, db):
+		db("DELETE FROM metadata WHERE name='max_tier_notification'")
+		db("ALTER TABLE player ADD COLUMN max_tier_notification INTEGER")
+		db("UPDATE player SET max_tier_notification = 0")
+
 	def _upgrade(self):
 		# fix import loop
 		from horizons.savegamemanager import SavegameManager
@@ -266,6 +298,10 @@ class SavegameUpgrader(object):
 				self._upgrade_to_rev63(db)
 			if rev < 64:
 				self._upgrade_to_rev64(db)
+			if rev < 65:
+				self._upgrade_to_rev65(db)
+			if rev < 66:
+				self._upgrade_to_rev66(db)
 
 			db('COMMIT')
 			db.close()

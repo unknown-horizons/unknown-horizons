@@ -23,7 +23,7 @@ from string import ascii_uppercase
 
 from fife import fife
 
-import horizons.main
+import horizons.globals
 from horizons.util.python.singleton import Singleton
 
 class KeyConfig(object):
@@ -49,10 +49,10 @@ class KeyConfig(object):
 		self.action_keyname_mappings = dict() # map action name (str) to key name (str)
 		self.all_keys = self.get_keys_by_name()
 
-		custom_key_actions = horizons.main.fife.get_hotkey_settings()
+		custom_key_actions = horizons.globals.fife.get_hotkey_settings()
 		for action in custom_key_actions:
 			action_id = getattr(_Actions, action)
-			key = horizons.main.fife.get_key_for_action(action).upper()
+			key = horizons.globals.fife.get_key_for_action(action).upper()
 			key_id = self.get_key_by_name(key)
 			self.keyval_action_mappings[key_id] = action_id
 			self.action_keyname_mappings[action] = key
@@ -103,12 +103,12 @@ class KeyConfig(object):
 		return (key in self.all_keys, self.get_default_key_for_action(action))
 
 	def get_default_key_for_action(self, action):
-		return horizons.main.fife.get_default_key_for_action(action)
+		return horizons.globals.fife.get_default_key_for_action(action)
 
 	def save_new_key(self, action, newkey):
-		oldkey = horizons.main.fife.get_key_for_action(action)
-		horizons.main.fife.set_key_for_action(action, newkey)
-		horizons.main.fife.save_settings() #TODO remove this, save only when hitting OK
+		oldkey = horizons.globals.fife.get_key_for_action(action)
+		horizons.globals.fife.set_key_for_action(action, newkey)
+		horizons.globals.fife.save_settings() #TODO remove this, save only when hitting OK
 
 		# Now keep track of which keys are still in use and which are available again
 		self.action_keyname_mappings[action] = newkey

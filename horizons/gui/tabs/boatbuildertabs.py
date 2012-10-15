@@ -69,7 +69,7 @@ class BoatbuilderTab(_BoatbuilderOverviewTab):
 		cancel_container = main_container.findChild(name="BB_cancel_container")
 		needed_res_container = self.widget.findChild(name="BB_needed_resources_container")
 
-		# a boatbuilder is considered active here if it build sth, no matter if it's paused
+		# a boatbuilder is considered active here if it builds sth, no matter if it's paused
 		production_lines = self.producer.get_production_lines()
 
 		if production_lines:

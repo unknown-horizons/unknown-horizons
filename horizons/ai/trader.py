@@ -235,3 +235,7 @@ class Trader(GenericAI):
 		else:
 			self.log.debug("Trader %s ship %s: idle, moving to random location", self.worldid, ship.worldid)
 			Scheduler().add_new_object(Callback(self.send_ship_random, ship), self, run_in=0)
+
+	def end(self):
+		super(Trader, self).end()
+		NewSettlement.unsubscribe(self._on_new_settlement)

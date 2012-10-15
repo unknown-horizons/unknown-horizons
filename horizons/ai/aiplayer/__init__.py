@@ -386,9 +386,6 @@ class AIPlayer(GenericAI):
 	def count_buildings(self, building_id):
 		return sum(settlement_manager.settlement.count_buildings(building_id) for settlement_manager in self.settlement_managers)
 
-	def notify_unit_path_blocked(self, unit):
-		self.log.warning("%s ship blocked (%s)", self, unit)
-
 	def notify_mine_empty(self, mine):
 		"""The Mine calls this function to let the player know that the mine is empty."""
 		self._settlement_manager_by_settlement_id[mine.settlement.worldid].production_builder.handle_mine_empty(mine)

@@ -40,6 +40,7 @@ from horizons.util.python.callback import Callback
 from horizons.util.random_map import generate_random_map, generate_random_seed
 from horizons.util.savegameaccessor import SavegameAccessor
 from horizons.util.shapes import Rect
+from horizons.util.startgameoptions import StartGameOptions
 from horizons.util.worldobject import WorldObject
 from horizons.util.yamlcache import YamlCache
 from horizons.i18n import find_available_languages
@@ -139,7 +140,7 @@ class SingleplayerMenu(object):
 			self._update_campaign_infos()
 
 		elif show == 'scenario':
-			self.current.files, maps_display = SavegameManager.get_available_scenarios()
+			self.current.files, maps_display = SavegameManager.get_available_scenarios(hide_test_scenarios=True)
 			# get the map files and their display names. display tutorials on top.
 			prefer_tutorial = lambda x : ('tutorial' not in x, x)
 			maps_display.sort(key=prefer_tutorial)
@@ -190,7 +191,9 @@ class SingleplayerMenu(object):
 		self.show_loading_screen()
 		if is_scenario:
 			try:
-				horizons.main.start_singleplayer(map_file, playername, playercolor, is_scenario=is_scenario)
+				options = StartGameOptions.create_start_scenario(map_file)
+				options.set_human_data(playername, playercolor)
+				horizons.main.start_singleplayer(options)
 			except InvalidScenarioFileFormat as e:
 				self._show_invalid_scenario_file_popup(e)
 				self._select_single(show='scenario')
@@ -200,18 +203,18 @@ class SingleplayerMenu(object):
 				self._show_invalid_scenario_file_popup("Unknown Error")
 				self._select_single(show='campaign')
 			scenario = campaign_info.get('scenarios')[0].get('level')
-			map_file = campaign_info.get('scenario_files').get(scenario)
-			horizons.main._start_map(scenario, ai_players=0, human_ai=False, is_scenario=True, campaign={
+			horizons.main._start_map(scenario, ai_players=0, is_scenario=True, campaign={
 				'campaign_name': campaign_info.get('codename'), 'scenario_index': 0, 'scenario_name': scenario
 			})
 		else: # free play/random map
-			horizons.main.start_singleplayer(
-			  map_file, playername, playercolor, ai_players = ai_players, human_ai = AI.HUMAN_AI,
-			  trader_enabled = self.widgets['game_settings'].findChild(name='free_trader').marked,
-			  pirate_enabled = self.widgets['game_settings'].findChild(name='pirates').marked,
-			  disasters_enabled = self.widgets['game_settings'].findChild(name='disasters').marked,
-			  natural_resource_multiplier = self._get_natural_resource_multiplier()
-			)
+			options = StartGameOptions.create_start_map(map_file)
+			options.set_human_data(playername, playercolor)
+			options.ai_players = ai_players
+			options.trader_enabled = self.widgets['game_settings'].findChild(name='free_trader').marked
+			options.pirate_enabled = self.widgets['game_settings'].findChild(name='pirates').marked
+			options.disasters_enabled = self.widgets['game_settings'].findChild(name='disasters').marked
+			options.natural_resource_multiplier = self._get_natural_resource_multiplier()
+			horizons.main.start_singleplayer(options)
 
 		ExtScheduler().rem_all_classinst_calls(self)
 
@@ -582,7 +585,7 @@ class MapPreview(object):
 		WorldObject.reset()
 		world = World(session=None)
 		world.inited = True
-		world.load_raw_map( SavegameAccessor( map_file ), preview=True )
+		world.load_raw_map(SavegameAccessor(map_file, True), preview=True)
 		return world
 
 	def _get_map_preview_icon(self):

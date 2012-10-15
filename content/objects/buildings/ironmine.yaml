@@ -31,4 +31,4 @@ components:
         slot_sizes: {RES.RAW_IRON: 1000000, RES.IRON_ORE: 10}
 actionsets:
   TIER.SETTLERS:
-    as_mine5x5: as_preview_mine5x5
+    as_mine5x5:

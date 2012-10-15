@@ -68,7 +68,7 @@ class VERSION:
 	#RELEASE_VERSION = u'2012.1'
 
 	## +=1 this if you changed the savegame "api"
-	SAVEGAMEREVISION = 64
+	SAVEGAMEREVISION = 66
 
 	@staticmethod
 	def string():
@@ -300,6 +300,7 @@ class GROUND:
 
 class ACTION_SETS:
 	DEFAULT_ANIMATION_LENGTH = 500
+	DEFAULT_WEIGHT = 10
 
 class GAME_SPEED:
 	TICKS_PER_SECOND = 16

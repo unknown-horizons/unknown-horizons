@@ -136,6 +136,8 @@ def get_option_parser():
 	             help="Loads a saved game. <save> is the savegamename.")
 	start_uh.add_option("--load-last-quicksave", dest="load_quicksave", action="store_true",
 	             help="Loads the last quicksave.")
+	start_uh.add_option("--edit-map", dest="edit_map", metavar="<map>",
+	             help="Edit map <map>.")
 	p.add_option_group(start_uh)
 
 	ai_group = optparse.OptionGroup(p, "AI options")
@@ -280,7 +282,12 @@ def main():
 		if not os.path.exists(profiling_dir):
 			os.makedirs(profiling_dir)
 
-		outfilename = os.path.join(profiling_dir, time.strftime('%Y-%m-%d_%H-%M-%S') + '.prof')
+		pattern = os.path.join(profiling_dir, time.strftime('%Y-%m-%d') + '.%02d.prof')
+		num = 1
+		while os.path.exists(pattern % num):
+			num += 1
+
+		outfilename = pattern % num
 		print('Starting in profile mode. Writing output to: %s' % outfilename)
 		profile.runctx('horizons.main.start(options)', globals(), locals(), outfilename)
 		print('Program ended. Profiling output: %s' % outfilename)

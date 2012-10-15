@@ -201,7 +201,7 @@ class SavegameManager(object):
 	@classmethod
 	def get_recommended_number_of_players(cls, savegamefile):
 		dbdata = DbReader(savegamefile)\
-		        ("SELECT `value` FROM `metadata` WHERE `name` = ?", "recommended_number_of_players")
+		        ("SELECT value FROM properties WHERE name = ?", "players_recommended")
 		if dbdata:
 			return dbdata[0][0]
 		else:
@@ -209,10 +209,11 @@ class SavegameManager(object):
 
 	@classmethod
 	def get_metadata(cls, savegamefile):
-		"""Returns metainfo of a savegame as dict.
-		"""
-		db = DbReader(savegamefile)
+		"""Returns metainfo of a savegame as dict."""
 		metadata = cls.savegame_metadata.copy()
+		if isinstance(savegamefile, list):
+			return metadata
+		db = DbReader(savegamefile)
 
 		try:
 			for key in metadata.iterkeys():
@@ -323,19 +324,23 @@ class SavegameManager(object):
 		return cls.__get_saves_from_dirs([cls.scenarios_dir], include_displaynames, cls.scenario_extension, False)
 
 	@classmethod
-	def get_available_scenarios(cls, include_displaynames=True, locales=False):
+	def get_available_scenarios(cls, include_displaynames=True, locales=False, hide_test_scenarios=False):
 		"""Returns available scenarios (depending on the campaign(s) status)"""
 		afiles = []
 		anames = []
 		sfiles, snames = cls.get_scenarios(include_displaynames = True)
 		for i, sname in enumerate(snames):
 			if cls.check_scenario_availability(sname):
+				if hide_test_scenarios and cls.get_scenario_info(name=sname).get('test_scenario'):
+					continue
+
 				#get file's locale
-				cur_locale = '_' + cls.get_scenario_info(name = sname).get('locale')
+				cur_locale = '_' + cls.get_scenario_info(name=sname).get('locale')
 				#if the locale is nodefault then don't add it
 				#we use this locale in test scenarios and they are not included to the list
 				if cur_locale == "_nodefault":
 					continue
+
 				#don't add language postfix
 				sname = sname.split(cur_locale)[0]
 				if not sname in anames:
@@ -399,6 +404,7 @@ class SavegameManager(object):
 		if not seen_in_campaigns:
 			# This scenario is not in any campaign, it is available for free play
 			return True
+		return False
 
 	@classmethod
 	def get_campaign_status(cls):
@@ -523,3 +529,11 @@ class SavegameManager(object):
 		name = name.rsplit(".%s"%cls.savegame_extension, 1)[0]
 		cls.log.debug("Savegamemanager: savegamename: %s", name)
 		return name
+
+	@classmethod
+	def get_filename_from_map_name(cls, map_name):
+		for prefix in [cls.scenario_maps_dir, cls.maps_dir]:
+			path = prefix + os.sep + map_name + '.sqlite'
+			if os.path.exists(path):
+				return path
+		return None

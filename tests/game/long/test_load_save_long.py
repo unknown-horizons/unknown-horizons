@@ -43,7 +43,7 @@ def test_save_trivial(session, _):
 
 	assert session.save(savegamename=filename)
 
-	SavegameAccessor(filename)
+	SavegameAccessor(filename, False)
 
 	os.unlink(filename)
 

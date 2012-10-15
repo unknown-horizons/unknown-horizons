@@ -39,6 +39,7 @@ from horizons.gui.keylisteners import MainListener
 from horizons.gui.keylisteners.ingamekeylistener import KeyConfig
 from horizons.gui.widgets.imagebutton import OkButton, CancelButton, DeleteButton
 from horizons.util.python.callback import Callback
+from horizons.util.startgameoptions import StartGameOptions
 from horizons.extscheduler import ExtScheduler
 from horizons.messaging import GuiAction
 from horizons.component.ambientsoundcomponent import AmbientSoundComponent
@@ -72,6 +73,7 @@ class Gui(SingleplayerMenu, MultiplayerMenu):
 	  'ingame_pause': 'book',
 	  'game_settings' : 'book',
 #	  'credits': 'book',
+	  'editor_select_map': 'book',
 	  }
 
 	def __init__(self):
@@ -90,11 +92,16 @@ class Gui(SingleplayerMenu, MultiplayerMenu):
 
 		self.__pause_displayed = False
 		self._background_image = self._get_random_background()
+		self.subscribe()
 
-		GuiAction.subscribe( self._on_gui_action )
+	def subscribe(self):
+		"""Subscribe to the necessary messages."""
+		GuiAction.subscribe(self._on_gui_action)
+
+	def unsubscribe(self):
+		GuiAction.unsubscribe(self._on_gui_action)
 
 # basic menu widgets
-
 	def show_main(self):
 		"""Shows the main menu """
 		self._switch_current_widget('mainmenu', center=True, show=True, event_map={
@@ -112,12 +119,23 @@ class Gui(SingleplayerMenu, MultiplayerMenu):
 			'chimebell'        : self.on_chime,
 			'creditsLink'      : self.show_credits,
 			'credits'          : self.show_credits,
-			'loadgameButton'   : horizons.main.load_game,
-			'loadgame'         : horizons.main.load_game,
-			'changeBackground' : self.get_random_background_by_button
+			'loadgameButton'   : self.load_game,
+			'loadgame'         : self.load_game,
+			'changeBackground' : self.get_random_background_by_button,
+			'editor'           : self.editor_load_map,
 		})
 
 		self.on_escape = self.show_quit
+
+	def load_game(self):
+		saved_game = self.show_select_savegame(mode='load')
+		if saved_game is None:
+			return False # user aborted dialog
+
+		self.show_loading_screen()
+		options = StartGameOptions(saved_game)
+		horizons.main.start_singleplayer(options)
+		return True
 
 	def toggle_pause(self):
 		"""Shows in-game pause menu if the game is currently not paused.
@@ -142,7 +160,7 @@ class Gui(SingleplayerMenu, MultiplayerMenu):
 			# see http://trac.unknown-horizons.org/t/ticket/1047
 			self.widgets.reload('ingamemenu')
 			def do_load():
-				did_load = horizons.main.load_game()
+				did_load = self.load_game()
 				if did_load:
 					self.__pause_displayed = False
 			def do_quit():
@@ -833,3 +851,28 @@ class Gui(SingleplayerMenu, MultiplayerMenu):
 		listbox.capture(apply_new_key)
 		button_cbs = {OkButton.DEFAULT_NAME: True, CancelButton.DEFAULT_NAME: False}
 		self.show_dialog(popup, button_cbs, modal=True)
+
+	def editor_load_map(self):
+		"""Show a dialog for the user to select a map to edit."""
+		old_current = self._switch_current_widget('editor_select_map')
+		self.current.show()
+
+		map_files, map_file_display = SavegameManager.get_maps()
+		self.current.distributeInitialData({'maplist': map_file_display})
+
+		bind = {
+			OkButton.DEFAULT_NAME     : True,
+			CancelButton.DEFAULT_NAME : False,
+		}
+		retval = self.show_dialog(self.current, bind)
+		if not retval:
+			# Dialog cancelled
+			self.current = old_current
+			return
+
+		selected_map_index = self.current.collectData('maplist')
+		assert selected_map_index != -1, "No map selected"
+
+		self.current = old_current
+		self.show_loading_screen()
+		horizons.main.edit_map(map_file_display[selected_map_index])

@@ -151,10 +151,11 @@ def alter_inventory(session, resource, amount):
 					resource, amount)
 
 @register()
-def highlight_position(session, x, y, play_sound=False, color=(0,0,0)):
+def highlight_position(session, where, play_sound=False, color=(0,0,0)):
 	"""Highlights a position on the minimap.
+	where: (x, y) coordinate tuple
 	color is a optional parameter that defines the color of the highlight. """
-	session.ingame_gui.minimap.highlight((x,y), color=color)
+	session.ingame_gui.minimap.highlight(where, color=color)
 	if play_sound:
 		horizons.globals.fife.play_sound('effects', 'content/audio/sounds/ships_bell.ogg')
 
