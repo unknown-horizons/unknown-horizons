@@ -7,7 +7,7 @@ cost_inactive: 0
 size_x: 6
 size_y: 6
 inhabitants: 1
-tooltip_text: _ Supplies citizens with goods.
+tooltip_text: _ Supplies citizens with goods. Provides community.
 settler_level: TIER.SAILORS
 buildingcosts: {RES.GOLD: 1000, RES.BOARDS: 5}
 components:
