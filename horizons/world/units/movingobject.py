@@ -170,10 +170,6 @@ class MovingObject(ComponentHolder, ConcreteObject):
 			#self.log.debug("%s move tick from %s to %s", self, self.last_position, self._next_target)
 			self.last_position = self.position
 			self.position = self._next_target
-			self._exact_model_coords.set(self.position.x, self.position.y, 0)
-			self._fife_location.setExactLayerCoordinates(self._exact_model_coords)
-			# it's safe to use location here (thisown is 0, set by swig, and setLocation uses reference)
-			self._instance.setLocation(self._fife_location)
 			self._changed()
 
 		# try to get next step, handle a blocked path
