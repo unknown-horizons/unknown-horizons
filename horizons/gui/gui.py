@@ -793,9 +793,6 @@ class Gui(SingleplayerMenu, MultiplayerMenu):
 			lbl.text = self.HELPSTRING_LAYOUT.format(text=lbl.explanation, key=keyname)
 			lbl.capture(Callback(self.show_hotkey_change_popup, name, lbl, keyname))
 
-		author_label = widgets.findChild(name='fife_and_uh_team')
-		author_label.helptext = u"www.unknown-[br]horizons.org[br]www.fifengine.net"
-
 	def show_hotkey_change_popup(self, action, lbl, keyname):
 		def apply_new_key(newkey=None):
 			if not newkey:

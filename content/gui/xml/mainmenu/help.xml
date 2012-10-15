@@ -2,7 +2,7 @@
 <Container name="help_window" size="800,580" position="100,100">
 <Icon image="content/gui/images/background/book.png" />
 
-<VBox position="107,42" max_size="340,485" min_size="340,485" padding="15">
+<VBox position="107,42" max_size="340,485" min_size="340,485" padding="10">
 	<Label text="Key bindings" name="headline" />
 	<Icon image="content/gui/images/background/hr.png" />
 	<VBox>
@@ -36,7 +36,7 @@
 	<Spacer />
 </VBox>
 
-<VBox position="447,82" max_size="340,445" min_size="340,445" padding="15">
+<VBox position="447,82" max_size="340,445" min_size="340,445" padding="10">
 	<VBox>
 		<Label name="lbl_GRID" text="Toggle grid on/off" />
 		<Label name="lbl_COORD_TOOLTIP" text="Show coordinate values (Debug)" />
@@ -59,9 +59,7 @@
 			wrap_text="1"  max_size="290,40"  min_size="290,40"/>
 	</VBox>
 	<VBox>
-		<Label name="have_fun" text="Have fun." />
-		<Label name="fife_and_uh_team"  wrap_text="1"  max_size="290,40"
-			text="The FIFE and Unknown Horizons development teams" />
+
 	</VBox>
 <Spacer />
 </VBox>
