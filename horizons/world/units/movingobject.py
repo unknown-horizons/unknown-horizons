@@ -79,8 +79,10 @@ class MovingObject(ComponentHolder, ConcreteObject):
 
 		self.path = self.pather_class(self, session=self.session)
 
-		self._exact_model_coords = fife.ExactModelCoordinate() # save instance since construction is expensive (no other purpose)
-		self._fife_location = None
+		self._exact_model_coords1 = fife.ExactModelCoordinate() # save instance since construction is expensive (no other purpose)
+		self._exact_model_coords2 = fife.ExactModelCoordinate() # save instance since construction is expensive (no other purpose)
+		self._fife_location1 = None
+		self._fife_location2 = None
 
 	def check_move(self, destination):
 		"""Tries to find a path to destination
@@ -160,9 +162,10 @@ class MovingObject(ComponentHolder, ConcreteObject):
 		"""
 		assert self._next_target is not None
 
-		if self._fife_location is None:
+		if self._fife_location1 is None:
 			# this data structure is needed multiple times, only create once
-			self._fife_location = fife.Location(self._instance.getLocationRef().getLayer())
+			self._fife_location1 = fife.Location(self._instance.getLocationRef().getLayer())
+			self._fife_location2 = fife.Location(self._instance.getLocationRef().getLayer())
 
 		if resume:
 			self.__is_moving = True
@@ -206,22 +209,22 @@ class MovingObject(ComponentHolder, ConcreteObject):
 			self.__is_moving = True
 
 		#setup movement
-
-		# WORK IN PROGRESS
 		move_time = self.get_unit_velocity()
-
-		#location = fife.Location(self._instance.getLocation().getLayer())
-		self._exact_model_coords.set(self._next_target.x, self._next_target.y, 0)
-		self._fife_location.setExactLayerCoordinates(self._exact_model_coords)
-
 		UnitClass.ensure_action_loaded(self._action_set_id, self._move_action) # lazy load move action
 
-		# it's safe to use location here (thisown is 0, set by swig, and setLocation uses reference)
-		self._instance.move(self._move_action+"_"+str(self._action_set_id), self._fife_location,
-												float(self.session.timer.get_ticks(1)) / move_time[0])
-		# coords per sec
+		self._exact_model_coords1.set(self.position.x, self.position.y, 0)
+		self._fife_location1.setExactLayerCoordinates(self._exact_model_coords1)
+		self._exact_model_coords2.set(self._next_target.x, self._next_target.y, 0)
+		self._fife_location2.setExactLayerCoordinates(self._exact_model_coords2)
+		self._route = fife.Route(self._fife_location1, self._fife_location2)
+		self._route.setPath(fife.LocationList([self._fife_location2]))
+		self._route.setRouteStatus(3)  #fife.RouteStatus.ROUTE_SOLVED)
 
 		diagonal = self._next_target.x != self.position.x and self._next_target.y != self.position.y
+		action = self._move_action+"_"+str(self._action_set_id)
+		speed = float(self.session.timer.get_ticks(1)) / move_time[0]
+		self._instance.follow(action, self._route, speed)
+
 		#self.log.debug("%s registering move tick in %s ticks", self, move_time[int(diagonal)])
 		Scheduler().add_new_object(self._move_tick, self, move_time[int(diagonal)])
 
