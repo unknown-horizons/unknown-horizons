@@ -809,6 +809,7 @@ class Gui(SingleplayerMenu, MultiplayerMenu):
 			popup.message.text = (lbl.explanation +
 			                      u'\n' + _('Current key: [{key}]').format(key=keyname) +
 			                      u'\t' + _('Default key: [{key}]').format(key=default))
+			popup.message.helptext = _('Click to reset to default key')
 			reset_to_default = Callback(apply_new_key, default)
 			popup.message.capture(reset_to_default)
 
