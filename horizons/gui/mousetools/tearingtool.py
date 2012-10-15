@@ -53,7 +53,7 @@ class TearingTool(NavigationTool):
 		self._mark()
 		self.tear_tool_active = False
 		horizons.globals.fife.set_cursor_image("default")
-		WorldObjectDeleted.subscribe(self._on_object_deleted)
+		WorldObjectDeleted.unsubscribe(self._on_object_deleted)
 		super(TearingTool, self).remove()
 
 	def mouseDragged(self, evt):
