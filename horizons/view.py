@@ -50,13 +50,20 @@ class View(ChangeListener):
 		cellgrid.setYShift(0)
 
 		self.layers = []
-		for i in xrange(0, LAYERS.NUM):
-			self.layers.append(self.map.createLayer(str(i), cellgrid))
-			self.layers[i].setPathingStrategy(fife.CELL_EDGES_AND_DIAGONALS)
-			self.layers[i].setWalkable(True)
+		for i in xrange(LAYERS.NUM):
+			layer = self.map.createLayer(str(i), cellgrid)
+			layer.setPathingStrategy(fife.CELL_EDGES_AND_DIAGONALS)
+			layer.setWalkable(True)
+			self.layers.append(layer)
 
 		self.map.initializeCellCaches()
 		self.map.finalizeCellCaches()
+
+		# Make sure layer can't change size on layer.createInstance
+		# This is necessary because otherwise ship movement on the map edges would
+		# keep changing the units' layer size.
+		for layer in self.layers:
+			layer.getCellCache().setStaticSize(True)
 
 		self.cam = self.map.addCamera("main", self.layers[-1],
 		                               fife.Rect(0, 0,
