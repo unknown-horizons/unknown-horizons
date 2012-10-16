@@ -36,7 +36,7 @@ from horizons.util.color import Color
 from horizons.util.python import decorators
 from horizons.util.shapes import Circle, Point, Rect
 from horizons.util.worldobject import WorldObject
-from horizons.constants import UNITS, BUILDINGS, RES, GROUND, GAME
+from horizons.constants import UNITS, BUILDINGS, RES, GROUND, GAME, MAP
 from horizons.ai.trader import Trader
 from horizons.ai.pirate import Pirate
 from horizons.ai.aiplayer import AIPlayer
@@ -273,15 +273,15 @@ class World(BuildingOwner, WorldObject):
 
 		#calculate map dimensions
 		self.min_x, self.min_y, self.max_x, self.max_y = 0, 0, 0, 0
-		for i in self.islands:
-			self.min_x = min(i.rect.left, self.min_x)
-			self.min_y = min(i.rect.top, self.min_y)
-			self.max_x = max(i.rect.right, self.max_x)
-			self.max_y = max(i.rect.bottom, self.max_y)
-		self.min_x -= 10
-		self.min_y -= 10
-		self.max_x += 10
-		self.max_y += 10
+		for island in self.islands:
+			self.min_x = min(island.rect.left, self.min_x)
+			self.min_y = min(island.rect.top, self.min_y)
+			self.max_x = max(island.rect.right, self.max_x)
+			self.max_y = max(island.rect.bottom, self.max_y)
+		self.min_x -= MAP.PADDING
+		self.min_y -= MAP.PADDING
+		self.max_x += MAP.PADDING
+		self.max_y += MAP.PADDING
 
 		self.map_dimensions = Rect.init_from_borders(self.min_x, self.min_y, self.max_x, self.max_y)
 
@@ -293,19 +293,20 @@ class World(BuildingOwner, WorldObject):
 		if not preview:
 			default_grounds = Entities.grounds[int(self.properties.get('default_ground', GROUND.WATER[0]))]
 
-		# extra world size that is added so that the player can't see the "black void"
-		border = 30
 		fake_tile_class = Entities.grounds[-1]
-		for x in xrange(self.min_x-border, self.max_x+border, 10):
-			for y in xrange(self.min_y-border, self.max_y+border, 10):
+		fake_tile_size = 10
+		for x in xrange(self.min_x-MAP.BORDER, self.max_x+MAP.BORDER, fake_tile_size):
+			for y in xrange(self.min_y-MAP.BORDER, self.max_y+MAP.BORDER, fake_tile_size):
+				fake_tile_x = x - 1
+				fake_tile_y = y + fake_tile_size - 1
 				if not preview:
 					# we don't need no references, we don't need no mem control
-					default_grounds(self.session, x, y)
-				for x_offset in xrange(0, 10):
+					default_grounds(self.session, fake_tile_x, fake_tile_y)
+				for x_offset in xrange(fake_tile_size):
 					if x+x_offset < self.max_x and x+x_offset >= self.min_x:
-						for y_offset in xrange(0, 10):
+						for y_offset in xrange(fake_tile_size):
 							if y+y_offset < self.max_y and y+y_offset >= self.min_y:
-								self.ground_map[(x+x_offset, y+y_offset)] = fake_tile_class(self.session, x, y)
+								self.ground_map[(x+x_offset, y+y_offset)] = fake_tile_class(self.session, fake_tile_x, fake_tile_y)
 		self.fake_tile_map = copy.copy(self.ground_map)
 
 		# remove parts that are occupied by islands, create the island map and the full map

@@ -343,6 +343,11 @@ class GAME:
 	WORLD_WORLDID = 0 # worldid of World object
 	MAX_TICKS = None # exit after on tick MAX_TICKS (disabled by setting to None)
 
+# Map related constants
+class MAP:
+	PADDING = 10 # extra usable water around the map edges
+	BORDER = 30 # extra unusable water around the padding (to keep the black void at bay)
+
 class GUI:
 	CITYINFO_UPDATE_DELAY = 2 # seconds
 
