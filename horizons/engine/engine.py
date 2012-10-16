@@ -38,7 +38,7 @@ from horizons.engine.settingshandler import SettingsHandler, get_screen_resoluti
 from horizons.engine.sound import Sound
 from horizons.engine.settingsdialog import SettingsDialog
 from horizons.engine.pychan_util import init_pychan
-from horizons.engine import UH_MODULE
+from horizons.engine import UH_MODULE, KEY_MODULE
 
 
 class Fife(ApplicationBase):
@@ -78,17 +78,18 @@ class Fife(ApplicationBase):
 			self.set_fife_setting('WindowIcon', PATHS.MAC_WINDOW_ICON_PATH)
 
 	def _setup_settings(self, check_file_version=True):
+		# NOTE: SimpleXMLSerializer can't handle relative paths, it fails silently
+		# (although the doc states otherwise) - thus translate paths to absolute ones
+		_template_config_file = os.path.join( os.getcwd(), PATHS.CONFIG_TEMPLATE_FILE )
+		template_config_parser = SimpleXMLSerializer( _template_config_file )
+		template_settings_version = template_config_parser.get("meta", "SettingsVersion")
+		self._default_hotkeys = template_config_parser.getAllSettings(KEY_MODULE)
+
 		_user_config_file = os.path.join( os.getcwd(), PATHS.USER_CONFIG_FILE )
 		if check_file_version and os.path.exists(_user_config_file):
 			# check if user settings file is the current one
-
-			# NOTE: SimpleXMLSerializer can't handle relative paths, it fails silently
-			# (although the doc states otherwise) - thus translate paths to absolute ones
 			user_config_parser = SimpleXMLSerializer( _user_config_file )
 			user_settings_version = user_config_parser.get("meta", "SettingsVersion", -1)
-			_template_config_file = os.path.join( os.getcwd(), PATHS.CONFIG_TEMPLATE_FILE )
-			template_config_parser = SimpleXMLSerializer( _template_config_file )
-			template_settings_version = template_config_parser.get("meta", "SettingsVersion")
 
 			if template_settings_version > user_settings_version: # we have to update the file
 				print 'Discovered old settings file, auto-upgrading: %s -> %s' % \
@@ -211,6 +212,19 @@ class Fife(ApplicationBase):
 	def set_uh_setting(self, settingname, value):
 		"""Probably saves setting in memory. Call save_settings() later"""
 		self._setting.set(UH_MODULE, settingname, value)
+
+	def get_hotkey_settings(self):
+		return self._setting.getSettingsFromFile(KEY_MODULE)
+
+	def get_default_key_for_action(self, action):
+		return self._default_hotkeys.get(action)
+
+	def get_key_for_action(self, action):
+		return self._setting.get(KEY_MODULE, action)
+
+	def set_key_for_action(self, action, key):
+		"""Sets hotkey *key* for action *action*."""
+		self._setting.set(KEY_MODULE, action, key)
 
 	def save_settings(self):
 		self._setting.saveSettings()

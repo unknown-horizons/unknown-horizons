@@ -21,6 +21,6 @@
 # ###################################################
 
 UH_MODULE = "unknownhorizons"
-
+KEY_MODULE = "keys"
 
 from engine import Fife
