@@ -305,10 +305,11 @@ class Session(LivingObject):
 				options.game_identifier = os.path.join(SavegameManager.maps_dir, map_filename)
 			options.is_map = True
 		self.campaign = {} if not options.campaign else options.campaign
-		
+
 		self.log.debug("Session: Loading from %s", options.game_identifier)
 		savegame_db = SavegameAccessor(options.game_identifier, options.is_map) # Initialize new dbreader
 		savegame_data = SavegameManager.get_metadata(savegame_db.db_path)
+		self.view.resize_layers(savegame_db)
 
 		# load how often the game has been saved (used to know the difference between
 		# a loaded and a new game)

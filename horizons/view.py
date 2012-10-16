@@ -27,7 +27,7 @@ import horizons.globals
 
 from horizons.util.changelistener import ChangeListener
 from horizons.util.shapes import Rect
-from horizons.constants import LAYERS, VIEW, GAME_SPEED
+from horizons.constants import LAYERS, VIEW, GAME_SPEED, MAP
 
 class View(ChangeListener):
 	"""Class that takes care of all the camera and rendering stuff."""
@@ -53,12 +53,10 @@ class View(ChangeListener):
 		for i in xrange(0, LAYERS.NUM):
 			self.layers.append(self.map.createLayer(str(i), cellgrid))
 			self.layers[i].setPathingStrategy(fife.CELL_EDGES_AND_DIAGONALS)
-			if hasattr(self.layers[i], 'setWalkable'):
-				self.layers[i].setWalkable(True)
+			self.layers[i].setWalkable(True)
 
-		if hasattr(self.map, 'initializeCellCaches'):
-			self.map.initializeCellCaches()
-			self.map.finalizeCellCaches()
+		self.map.initializeCellCaches()
+		self.map.finalizeCellCaches()
 
 		self.cam = self.map.addCamera("main", self.layers[-1],
 		                               fife.Rect(0, 0,
@@ -249,3 +247,23 @@ class View(ChangeListener):
 		self.set_zoom(zoom)
 		self.set_rotation(rotation)
 		self.center(loc_x, loc_y)
+
+	def resize_layers(self, db):
+		"""Resize layers to the size required by the entire map."""
+		min_x, min_y, max_x, max_y = db("SELECT min(x), min(y), max(x), max(y) FROM ground")[0]
+		min_x -= MAP.PADDING
+		min_y -= MAP.PADDING
+		max_x += MAP.PADDING
+		max_y += MAP.PADDING
+		rect = fife.Rect(min_x, min_y, max_x - min_x + 1, max_y - min_y + 1)
+
+		for layer_id, layer in enumerate(self.layers):
+			if layer_id == LAYERS.WATER:
+				# the extra room is needed because of the weird placement of the large
+				# water tiles.
+				rect = fife.Rect(min_x - MAP.BORDER - 1, min_y - MAP.BORDER - 1,
+				                 max_x - min_x + 2 * MAP.BORDER + 12,
+				                 max_y - min_y + 2 * MAP.BORDER + 12)
+			else:
+				rect = fife.Rect(min_x, min_y, max_x - min_x + 1, max_y - min_y + 1)
+			layer.getCellCache().setSize(rect)
