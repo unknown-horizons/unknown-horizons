@@ -50,10 +50,11 @@ class View(ChangeListener):
 		cellgrid.setYShift(0)
 
 		self.layers = []
-		for i in xrange(LAYERS.NUM):
-			layer = self.map.createLayer(str(i), cellgrid)
-			layer.setPathingStrategy(fife.CELL_EDGES_AND_DIAGONALS)
-			layer.setWalkable(True)
+		for layer_id in xrange(LAYERS.NUM):
+			layer = self.map.createLayer(str(layer_id), cellgrid)
+			if layer_id == LAYERS.OBJECTS:
+				layer.setPathingStrategy(fife.CELL_EDGES_AND_DIAGONALS)
+				layer.setWalkable(True)
 			self.layers.append(layer)
 
 		self.map.initializeCellCaches()
@@ -63,7 +64,8 @@ class View(ChangeListener):
 		# This is necessary because otherwise ship movement on the map edges would
 		# keep changing the units' layer size.
 		for layer in self.layers:
-			layer.getCellCache().setStaticSize(True)
+			if layer.getCellCache():
+				layer.getCellCache().setStaticSize(True)
 
 		self.cam = self.map.addCamera("main", self.layers[-1],
 		                               fife.Rect(0, 0,
@@ -265,12 +267,9 @@ class View(ChangeListener):
 		rect = fife.Rect(min_x, min_y, max_x - min_x + 1, max_y - min_y + 1)
 
 		for layer_id, layer in enumerate(self.layers):
-			if layer_id == LAYERS.WATER:
-				# the extra room is needed because of the weird placement of the large
-				# water tiles.
-				rect = fife.Rect(min_x - MAP.BORDER - 1, min_y - MAP.BORDER - 1,
-				                 max_x - min_x + 2 * MAP.BORDER + 12,
-				                 max_y - min_y + 2 * MAP.BORDER + 12)
-			else:
-				rect = fife.Rect(min_x, min_y, max_x - min_x + 1, max_y - min_y + 1)
+			if not layer.getCellCache():
+				continue
+			assert layer_id != LAYERS.WATER, 'Water layer would need special treatment (see previous version)'
+
+			rect = fife.Rect(min_x, min_y, max_x - min_x + 1, max_y - min_y + 1)
 			layer.getCellCache().setSize(rect)
