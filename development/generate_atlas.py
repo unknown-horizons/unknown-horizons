@@ -21,8 +21,6 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-import array
-import glob
 import json
 import multiprocessing
 import os
@@ -95,7 +93,6 @@ class AtlasBook(object):
 		im = Image.new('RGBA', (self.max_size, self.max_size), (255, 0, 255, 255))
 
 		# place the sub-images in the right places
-		gdata = []
 		for path, entry in self.location.iteritems():
 			with open(path, 'rb') as png_file:
 				sub_image = Image.open(png_file)
