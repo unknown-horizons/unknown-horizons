@@ -264,7 +264,6 @@ class View(ChangeListener):
 		min_y -= MAP.PADDING
 		max_x += MAP.PADDING
 		max_y += MAP.PADDING
-		rect = fife.Rect(min_x, min_y, max_x - min_x + 1, max_y - min_y + 1)
 
 		for layer_id, layer in enumerate(self.layers):
 			if not layer.getCellCache():
