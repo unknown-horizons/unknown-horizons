@@ -12,8 +12,8 @@
 	<VBox name="input_res" position="2,0" />
 
 	<Container name="centered_production_icons" size="200,52" position="0,0">
-		<Icon image="content/gui/icons/templates/production/production_arrow.png" position="61,15"/>
-		<VBox name="output_box" position="134,15" />
+		<Icon image="content/gui/icons/templates/production/production_arrow_head.png" position="107,17"/>
+		<VBox name="output_box" position="136,17" />
 
 		<!-- one of those button gets removed at runtime -->
 		<ImageButton up_image="content/gui/icons/templates/production/toggle_active_n.png"
@@ -29,6 +29,6 @@
 		<VBox name="output_res" position="157,0"/>
 	</Container>
 
-	<VBox name="input_box" position="61,15" />
+	<VBox name="input_box" position="61,17" />
 
 </AutoResizeContainer>

@@ -140,7 +140,7 @@ class ProductionOverviewTab(OverviewTab):
 		if input_amount % 2:
 			# Add center arrow for 1, 3, 5, ... but not 2, 4, ...
 			mid_arrow = Icon(image=self.__class__.ARROW_MID)
-			mid_arrow.position = (60, 16 + center_y)
+			mid_arrow.position = (58, 17 + center_y)
 			container.insertChild(mid_arrow, 0)
 
 		for res in xrange(input_amount // 2):
@@ -152,11 +152,11 @@ class ProductionOverviewTab(OverviewTab):
 			offset = -17 + (icon_height // 2) * (2 * res + (input_amount % 2) + 1)
 
 			top_arrow = Icon(image=self.__class__.ARROW_TOP)
-			top_arrow.position = (60, center_y - offset)
+			top_arrow.position = (58, center_y - offset)
 			container.insertChild(top_arrow, 0)
 
 			bottom_arrow = Icon(image=self.__class__.ARROW_BOTTOM)
-			bottom_arrow.position = (60, center_y + offset)
+			bottom_arrow.position = (58, center_y + offset)
 			container.insertChild(bottom_arrow, 0)
 
 			# Place a connector image (the | in above sketch) that vertically connects
