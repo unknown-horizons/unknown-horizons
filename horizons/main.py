@@ -82,11 +82,6 @@ def start(_command_line_arguments):
 	# handle commandline globals
 	debug = command_line_arguments.debug
 
-	if command_line_arguments.enable_atlases:
-		# check if atlas files are outdated
-		if atlases_need_rebuild():
-			print "Atlases have to be rebuild."
-
 	if command_line_arguments.restore_settings:
 		# just delete the file, Settings ctor will create a new one
 		os.remove( PATHS.USER_CONFIG_FILE )
@@ -573,15 +568,3 @@ def preload_game_join(preloading):
 			preloading[1].release()
 		except thread.error:
 			pass # due to timing issues, the lock might be released already
-
-def atlases_need_rebuild():
-	# date of atlases
-	atlas_date = time.ctime(os.path.getmtime(PATHS.ACTION_SETS_DIRECTORY + "/atlas/animals.png"))
-
-	for folder in PATHS.ATLAS_SOURCE_DIRECTORIES:
-		for path, subdirs, files in os.walk(PATHS.ACTION_SETS_DIRECTORY + folder):
-			for name in files:
-				file_path = os.path.join(path, name)
-				if time.ctime(os.path.getmtime(file_path)) > atlas_date:
-					return True
-	return False
