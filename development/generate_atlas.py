@@ -30,9 +30,9 @@ import os.path
 import sys
 
 try:
-	import png
+	import Image
 except ImportError:
-	print 'The PyPNG package is needed to run this script.'
+	print 'The Python Imaging Library (PIL) package is needed to run this script.'
 	sys.exit(1)
 
 # make this script work both when started inside development and in the uh root dir
@@ -92,34 +92,18 @@ class AtlasBook(object):
 
 	def save(self):
 		"""Write the entire image to a file with the given path."""
-		# create a row of magenta pixels
-		initial_row = []
-		for _ in xrange(self.max_size):
-			initial_row.append(255)
-			initial_row.append(0)
-			initial_row.append(255)
-			initial_row.append(255)
-
-		# fill the entire image with magenta rows
-		rows = []
-		for _ in xrange(self.max_size):
-			rows.append(array.array('B', initial_row))
+		im = Image.new('RGBA', (self.max_size, self.max_size), (255, 0, 255, 255))
 
 		# place the sub-images in the right places
 		gdata = []
 		for path, entry in self.location.iteritems():
-			x = entry.x
-			y = entry.y
 			with open(path, 'rb') as png_file:
-				src = png.Reader(file=png_file)
-				for row_no, row in enumerate(src.asRGBA8()[2]):
-					for byte_no, byte in enumerate(row):
-						rows[y + row_no][4 * x + byte_no] = byte
+				sub_image = Image.open(png_file)
+				im.paste(sub_image, (entry.x, entry.y))
 
 		# write the entire image to the file
-		file = png.Writer(width=self.max_size, height=self.max_size, alpha=True)
 		with open(self.path, 'wb') as out_file:
-			file.write(out_file, rows)
+			im.save(out_file, 'png')
 
 def save_atlas_book(book):
 	book.save()
@@ -187,7 +171,7 @@ class AtlasGenerator(object):
 
 		for path in paths:
 			with open(path, 'rb') as png_file:
-				w, h = tuple(png.Reader(file=png_file).read()[:2])
+				w, h = Image.open(png_file).size
 				self.files.append((w * h, h, w, path))
 
 	def _save_books(self):
