@@ -468,6 +468,9 @@ class PATHS:
 	TILE_SETS_DIRECTORY = os.path.join("content", "gfx", "base")
 	SAVEGAME_TEMPLATE = os.path.join("content", "savegame_template.sql")
 	ISLAND_TEMPLATE = os.path.join("content", "island_template.sql")
+
+	ATLAS_FILES_DIR = os.path.join("content", "gfx", "atlas")
+	ATLAS_DB_PATH = os.path.join("content", "atlas.sql")
 	ACTION_SETS_JSON_FILE = os.path.join("content", "actionsets.json")
 	TILE_SETS_JSON_FILE = os.path.join("content", "tilesets.json")
 
@@ -485,7 +488,7 @@ class PATHS:
 	 								"/units"))
 
 	if GFX.USE_ATLASES:
-		DB_FILES = DB_FILES + (os.path.join("content", "atlas.sql"), )
+		DB_FILES = DB_FILES + (ATLAS_DB_PATH, )
 
 	#voice paths
 	VOICE_DIR = os.path.join("content", "audio", "voice")
