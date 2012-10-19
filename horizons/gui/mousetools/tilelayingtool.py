@@ -37,7 +37,7 @@ class TileLayingTool(NavigationTool):
 
 	def __init__(self, session, tile_details):
 		super(TileLayingTool, self).__init__(session)
-		self.session.gui.on_escape = self.on_escape
+		self.session.ingame_gui.on_escape = self.on_escape
 		self.renderer = session.view.renderer['InstanceRenderer']
 		self._tile_details = (None, None, None)
 		if tile_details[0] in [0, 2]:

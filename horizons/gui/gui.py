@@ -106,9 +106,6 @@ class Gui(object):
 	def show_error_popup(self, *args, **kwargs):
 		return self._windows.show_error_popup(*args, **kwargs)
 
-	def on_escape(self):
-		pass
-
 	def show(self):
 		"""Display the mainmenu.
 

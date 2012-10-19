@@ -38,7 +38,7 @@ class PipetteTool(NavigationTool):
 
 	def __init__(self, session):
 		super(PipetteTool, self).__init__(session)
-		self.session.gui.on_escape = self.on_escape
+		self.session.ingame_gui.on_escape = self.on_escape
 		self.renderer = session.view.renderer['InstanceRenderer']
 		horizons.globals.fife.set_cursor_image('pipette')
 

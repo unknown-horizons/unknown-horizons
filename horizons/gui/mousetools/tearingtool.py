@@ -42,7 +42,7 @@ class TearingTool(NavigationTool):
 		self.selected = WeakList()
 		self.oldedges = None
 		self.tear_tool_active = True
-		self.session.gui.on_escape = self.on_escape
+		self.session.ingame_gui.on_escape = self.on_escape
 		self.session.ingame_gui.hide_menu()
 		self.session.selected_instances.clear()
 		horizons.globals.fife.set_cursor_image("tearing")

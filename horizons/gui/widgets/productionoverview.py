@@ -49,12 +49,12 @@ class ProductionOverview(StatsWidget):
 
 	def _init_gui(self):
 		super(ProductionOverview, self)._init_gui()
-		self.session.gui.on_escape = self.hide
+		self.session.ingame_gui.on_escape = self.hide
 		self._gui.findChild(name=OkButton.DEFAULT_NAME).capture(self.hide)
 
 	def hide(self):
 		super(ProductionOverview, self).hide()
-		self.session.gui.on_escape = self.session.ingame_gui.toggle_pause
+		self.session.ingame_gui.on_escape = self.session.ingame_gui.toggle_pause
 
 	def refresh(self):
 		super(ProductionOverview, self).refresh()
