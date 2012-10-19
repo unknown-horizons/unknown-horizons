@@ -121,6 +121,36 @@ class Window(object):
 		"""
 		self.windows.close()
 
+	def _show_modal_background(self):
+		"""Loads transparent background that de facto prohibits access to other
+		gui elements by eating all input events.
+
+		To enable this in your own windows, call this method in `show`.
+		"""
+		# FIXME this is called multiple times without hide in between when
+		# showing the credits
+		if getattr(self, '_modal_widget', None):
+			return
+
+		height = horizons.globals.fife.engine_settings.getScreenHeight()
+		width = horizons.globals.fife.engine_settings.getScreenWidth()
+		image = horizons.globals.fife.imagemanager.loadBlank(width, height)
+		image = fife.GuiImage(image)
+		self._modal_widget = pychan.Icon(image=image)
+		self._modal_widget.position = (0, 0)
+		self._modal_widget.show()
+
+	def _hide_modal_background(self):
+		"""Hides the transparent background.
+
+		You need to call this method in `hide` when you enabled the background.
+		"""
+		try:
+			self._modal_widget.hide()
+			del self._modal_widget
+		except AttributeError:
+			pass
+
 
 class Dialog(Window):
 	"""A dialog is a window that uses pychan's dialog execution model.
@@ -128,16 +158,16 @@ class Dialog(Window):
 	You should only ever need to implement `prepare` and `post`.
 	"""
 
-	# when True, a transparent image will be shown behind the widget to prevent
-	# events reaching other widgets.
-	modal = True
-
 	# This is the key use to retrieve the widget from a LazyWidgetsDict.
 	widget_name = None
 
 	# Mapping of widget names to return values
 	# E.g. {OkButton.DEFAULT_NAME: True}
 	return_events = None
+
+	# when True, a transparent image will be shown behind the widget to prevent
+	# events reaching other widgets.
+	modal = True
 
 	def __init__(self, *args, **kwargs):
 		super(Dialog, self).__init__(*args, **kwargs)
@@ -228,30 +258,6 @@ class Dialog(Window):
 
 		if self._widget:
 			self._widget.hide()
-
-	def _show_modal_background(self):
-		"""Loads transparent background that de facto prohibits access to other
-		gui elements by eating all input events.
-		"""
-		# FIXME this is called multiple times without hide in between when
-		# showing the credits
-		if getattr(self, '_modal_widget', None):
-			return
-
-		height = horizons.globals.fife.engine_settings.getScreenHeight()
-		width = horizons.globals.fife.engine_settings.getScreenWidth()
-		image = horizons.globals.fife.imagemanager.loadBlank(width, height)
-		image = fife.GuiImage(image)
-		self._modal_widget = pychan.Icon(image=image)
-		self._modal_widget.position = (0, 0)
-		self._modal_widget.show()
-
-	def _hide_modal_background(self):
-		try:
-			self._modal_widget.hide()
-			del self._modal_widget
-		except AttributeError:
-			pass
 
 	def _on_keypress(self, event):
 		"""Intercept ESC and ENTER keys and execute the appropriate actions."""

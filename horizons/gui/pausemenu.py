@@ -31,6 +31,7 @@ class PauseMenu(Window):
 
 	def show(self):
 		PauseCommand(suggestion=True).execute(self._gui.session)
+		self._show_modal_background()
 
 		self._widget_loader.reload(self.widget_name)
 		self.widget = self._widget_loader[self.widget_name]
@@ -59,6 +60,7 @@ class PauseMenu(Window):
 	def hide(self):
 		UnPauseCommand(suggestion=True).execute(self._gui.session)
 		self.widget.hide()
+		self._hide_modal_background()
 
 	def save_game(self):
 		"""Wrapper for saving for separating gui messages from save logic"""
