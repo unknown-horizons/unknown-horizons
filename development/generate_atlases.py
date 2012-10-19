@@ -71,7 +71,7 @@ class AtlasEntry(object):
 		self.last_modified = last_modified
 
 class AtlasBook(object):
-	log = logging.getLogger("generate_atlas")
+	log = logging.getLogger("generate_atlases")
 
 	def __init__(self, id, max_size):
 		self.id = id
@@ -165,7 +165,7 @@ class ImageSetManager(object):
 			json.dump(self._data, json_file, indent=1)
 
 class AtlasGenerator(object):
-	log = logging.getLogger("generate_atlas")
+	log = logging.getLogger("generate_atlases")
 	# increment this when the structure of the atlases changes
 	current_version = 1
 
@@ -230,7 +230,7 @@ class AtlasGenerator(object):
 		return paths
 
 	def recreate(self):
-		print 'Recreating the entire atlas'
+		print 'Recreating all atlases'
 
 		self._init_sets()
 		paths = self._get_paths()
@@ -247,7 +247,7 @@ class AtlasGenerator(object):
 		self.save()
 
 	def _update_selected_books(self, update_books):
-		print 'Updating a part of the atlas:'
+		print 'Updating some of the atlases:'
 		for book in sorted(update_books, key=lambda book: int(book.id)):
 			print book.path
 		print
@@ -353,7 +353,7 @@ class AtlasGenerator(object):
 if __name__ == '__main__':
 	args = sys.argv[1:]
 	if len(args) != 1:
-		print 'Usage: python generate_atlas.py max_size'
+		print 'Usage: python generate_atlases.py max_size'
 		exit(1)
 
 	max_size = int(math.pow(2, int(math.log(int(args[0]), 2))))
