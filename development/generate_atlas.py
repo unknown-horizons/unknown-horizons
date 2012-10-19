@@ -24,6 +24,7 @@
 import glob
 import json
 import logging
+import math
 import multiprocessing
 import os
 import os.path
@@ -350,9 +351,16 @@ class AtlasGenerator(object):
 			os.unlink(path)
 
 if __name__ == '__main__':
+	args = sys.argv[1:]
+	if len(args) != 1:
+		print 'Usage: python generate_atlas.py max_size'
+		exit(1)
+
+	max_size = int(math.pow(2, int(math.log(int(args[0]), 2))))
+
 	updated = False
 	try:
-		generator = AtlasGenerator.load(2048)
+		generator = AtlasGenerator.load(max_size)
 		if generator is not None:
 			updated = generator.update()
 	except Exception as e:
@@ -360,5 +368,5 @@ if __name__ == '__main__':
 
 	if not updated:
 		AtlasGenerator.clear_everything()
-		generator = AtlasGenerator(2048)
+		generator = AtlasGenerator(max_size)
 		generator.recreate()
