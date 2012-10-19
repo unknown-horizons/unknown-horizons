@@ -156,11 +156,7 @@ class Fife(ApplicationBase):
 		self.sound = Sound(self)
 		self.imagemanager = self.engine.getImageManager()
 		self.targetrenderer = self.engine.getTargetRenderer()
-		self.use_atlases = GFX.USE_ATLASES
-		if self.use_atlases:
-			self.animationloader = SQLiteAtlasLoader()
-		else:
-			self.animationloader = SQLiteAnimationLoader()
+		self.set_atlas_usage(GFX.USE_ATLASES)
 
 		#Set game cursor
 		self.cursor = self.engine.getCursor()
@@ -186,6 +182,13 @@ class Fife(ApplicationBase):
 		self._setting_handler.apply_settings()
 
 		self._gotInited = True
+
+	def set_atlas_usage(self, enabled):
+		self.use_atlases = enabled
+		if self.use_atlases:
+			self.animationloader = SQLiteAtlasLoader()
+		else:
+			self.animationloader = SQLiteAnimationLoader()
 
 	def show_settings(self):
 		"""Show fife settings gui"""
