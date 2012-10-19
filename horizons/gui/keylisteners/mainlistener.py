@@ -82,9 +82,7 @@ class MainListener(fife.IKeyListener, fife.ConsoleExecuter, LivingObject):
 
 		key_event_handled = True
 
-		if action == _Actions.ESCAPE:
-			self.gui.on_escape()
-		elif action == _Actions.CONSOLE:
+		if action == _Actions.CONSOLE:
 			horizons.globals.fife.console.toggleShowHide()
 		elif action == _Actions.HELP:
 			self.gui.on_help()

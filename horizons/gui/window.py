@@ -25,28 +25,68 @@ from fife import fife
 from fife.extensions import pychan
 
 import horizons.globals
+from horizons.engine import pychan_util
 from horizons.extscheduler import ExtScheduler
 from horizons.gui.widgets.imagebutton import OkButton, CancelButton
 
 
 class Window(object):
+	"""Wrapper around a widget.
+
+	A window is a wrapper around a widget that provides an interface to the
+	window manager to handle visibility of widgets/windows.
+
+	Example:
+
+		class Foobar(Window):
+
+			def show(self):
+				self.widget = <load widget code>
+				button = self.widget.findChild(name='button')
+				button.capture(self.windows.close)
+
+				self.widget.show()
+
+			def hide(self):
+				self.widget.hide()
+	"""
+
+	# a window is stackable when it can be safely hidden when a new window is
+	# opened. if not, it will be closed and won't show up again when the top
+	# window is gone.
 	stackable = True
 
 	def __init__(self, widget_loader, gui=None, manager=None):
 		self._widget_loader = widget_loader
 		self._widget = None
 		self._gui = gui
+
+		# Reference to the window manager. Use it to show new windows or close
+		# this window.
 		self.windows = manager
 
 	def show(self, **kwargs):
+		"""Show the window.
+
+		After this call, the window should be visible. If you decide to not show
+		the window here (e.g. an error occured), you'll need to call
+		`self.windows.close()` to remove the window from the manager.
+		"""
 		raise NotImplementedError
 
 	def hide(self):
+		"""Hide the window.
+
+		After this call, the window should not be visible anymore.
+		"""
 		raise NotImplementedError
 
 	def close(self):
-		# for now this is a special case for dialogs
-		# we make it an alias for hide for normal windows
+		"""Closes the window.
+
+		For normal windows, this just hides the window. Dialogs override this to
+		break out of the dialog-specific mainloop.
+		"""
 		self.hide()
 
 	def abort(self):
@@ -54,9 +94,10 @@ class Window(object):
 		pass
 
 	def _focus(self, widget):
-		"""Needed to capture key events to detect escape.
-		
-		Call this after your widget is visible.
+		"""Request focus on the widget.
+
+		Needed to capture key events to detect escape. Call this after your
+		widget is visible.
 		"""
 		widget.is_focusable = True
 		widget.requestFocus()
@@ -64,7 +105,8 @@ class Window(object):
 	def _capture_escape(self, widget):
 		"""Set up key capture for the widget.
 
-		Call this when setting up your widget.
+		Needed to capture escape events to close the window. Call this when
+		setting up your widget.
 		"""
 		widget.capture(self._on_keypress, event_name="keyPressed")
 
@@ -81,8 +123,21 @@ class Window(object):
 
 
 class Dialog(Window):
+	"""A dialog is a window that uses pychan's dialog execution model.
+
+	You should only ever need to implement `prepare` and `post`.
+	"""
+
+	# when True, a transparent image will be shown behind the widget to prevent
+	# events reaching other widgets.
 	modal = True
+
+	# This is the key use to retrieve the widget from a LazyWidgetsDict.
 	widget_name = None
+
+	# Mapping of widget names to return values
+	# E.g. {OkButton.DEFAULT_NAME: True}
+	return_events = None
 
 	def __init__(self, *args, **kwargs):
 		super(Dialog, self).__init__(*args, **kwargs)
@@ -90,18 +145,35 @@ class Dialog(Window):
 		self._hidden = False
 		self._widget = None
 
-	def prepare(self, *args, **kwargs):
+	def prepare(self, **kwargs):
 		"""Preparation of the widget before the dialog is shown.
 
-		Return False here if you don't want to abort showing the dialog.
+		At this point the widget was loaded already and can be accessed with
+		`self._widget`, but only if you specified a `widget_name`.
+		Otherwise you need to load the widget yourself.
+
+		`kwargs` are all parameters that were used when showing this dialog.
+
+			self.windows.show(a_dialog, foo=1, bar=2)
+
+		Return `False` here if you want to abort showing the dialog.
 		"""
-		# pre needs to accept args and kwargs due to the way Callback works
 		pass
 
 	def post(self, return_value):
+		"""Called after the dialog was closed.
+
+		Use it to do post processing based on `return_value`. The return
+		value can be interpreted by however showed this window.
+
+		To reshow the dialog, call `self.windows.show(self)`. If your dialog
+		accepts parameters, you need to store them yourself in `prepare` and
+		pass them to `self.windows.show`.
+		"""
 		return return_value
 
 	def show(self, *args, **kwargs):
+		# show needs to accept args and kwargs due to the way Callback works
 		assert not self.active
 		self.active = True
 
@@ -126,7 +198,10 @@ class Dialog(Window):
 
 		self._widget.capture(self._on_keypress, event_name="keyPressed")
 		self._widget.show()
+
+		# this function returns once the dialog is closed
 		ret = self._widget.execute(self.return_events)
+
 		if self.modal:
 			self._hide_modal_background()
 
@@ -134,6 +209,11 @@ class Dialog(Window):
 		return self.post(ret)
 
 	def abort(self):
+		"""Break from the main loop.
+
+		Because of this, `self._widget.execute` in `show` will return and the
+		dialog will be closed.
+		"""
 		horizons.globals.fife.pychanmanager.breakFromMainLoop(False)
 
 	def close(self):
@@ -150,8 +230,8 @@ class Dialog(Window):
 			self._widget.hide()
 
 	def _show_modal_background(self):
-		"""Loads transparent background that de facto prohibits
-		access to other gui elements by eating all input events.
+		"""Loads transparent background that de facto prohibits access to other
+		gui elements by eating all input events.
 		"""
 		# FIXME this is called multiple times without hide in between when
 		# showing the credits
@@ -174,61 +254,74 @@ class Dialog(Window):
 			pass
 
 	def _on_keypress(self, event):
-		from horizons.engine import pychan_util
-		if event.getKey().getValue() == fife.Key.ESCAPE: # convention says use cancel action
+		"""Intercept ESC and ENTER keys and execute the appropriate actions."""
+
+		# Convention says use cancel action
+		if event.getKey().getValue() == fife.Key.ESCAPE:
 			btn = self._widget.findChild(name=CancelButton.DEFAULT_NAME)
 			callback = pychan_util.get_button_event(btn) if btn else None
 			if callback:
 				pychan.tools.applyOnlySuitable(callback, event=event, widget=btn)
 			else:
-				# escape should hide the dialog default
-				horizons.globals.fife.pychanmanager.breakFromMainLoop(False)
-		elif event.getKey().getValue() == fife.Key.ENTER: # convention says use ok action
+				self.abort()
+		# Convention says use ok action
+		elif event.getKey().getValue() == fife.Key.ENTER:
 			btn = self._widget.findChild(name=OkButton.DEFAULT_NAME)
 			callback = pychan_util.get_button_event(btn) if btn else None
 			if callback:
 				pychan.tools.applyOnlySuitable(callback, event=event, widget=btn)
-			# can't guess a default action here
+			else:
+				# can't guess a default action here
+				pass
 
 
 class WindowManager(object):
+	"""Responsible for showing/hiding windows.
+
+	Keeps track of all windows and knows what window was visible before a new
+	window was shown, and will revert back to that state when the window is closed.
+	
+	Only shows one window at a time for now.
+	"""
 
 	def __init__(self, widget_loader):
 		self._windows = []
 		self._widgets = widget_loader
 
-	def show(self, widget, **kwargs):
+	def show(self, window, **kwargs):
 		"""Show a new window on top.
-		
+
 		Hide the current one and show the new one.
+
+		Keyword arguments will be passed through to the window's `show` method.
 		"""
 		# TODO for popups, we sometimes want the old widget to stay visible
 
 		self.hide()
-		self._windows.append(widget)
-		return widget.show(**kwargs)
+		self._windows.append(window)
+		return window.show(**kwargs)
 
-	def replace(self, widget, **kwargs):
-		"""Replace the top window with this widget.
+	def replace(self, window, **kwargs):
+		"""Replace the top window with this window.
 
 		So far, this seems to be needed by the credits dialog.
 		"""
 		self.close()
-		return self.show(widget, **kwargs)
+		return self.show(window, **kwargs)
 
 	def close(self):
 		"""Close the top window.
-		
+
 		If there is another window left, show it.
 		"""
-		widget = self._windows.pop()
-		widget.close()
+		window = self._windows.pop()
+		window.close()
 		if self._windows:
 			self._windows[-1].show()
 
 	def hide(self):
 		"""Attempt to hide the current window.
-		
+
 		A window that does not permit other windows on top of it will be closed,
 		any other will be hidden.
 		"""

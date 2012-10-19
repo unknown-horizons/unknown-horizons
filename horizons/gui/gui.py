@@ -91,19 +91,15 @@ class Gui(object):
 		return True
 
 	def on_help(self):
-		"""Called on help action.
-		Toggles help screen via static variable *help_is_displayed*.
-		Can be called both from main menu and in-game interface.
-		"""
+		"""Toggles help screen."""
 		self._windows.toggle(self._help)
 
+	# TODO remove this
 	def show_select_savegame(self, mode, sanity_checker=None, sanity_criteria=None):
 		return self._windows.show(self._saveload, mode=mode, sanity_checker=sanity_checker,
 		                          sanity_criteria=sanity_criteria)
 
-# display
-
-	# TODO remove both functions later
+	# TODO perhaps remove both functions later
 	def show_popup(self, *args, **kwargs):
 		return self._windows.show_popup(*args, **kwargs)
 
@@ -137,8 +133,6 @@ class Gui(object):
 		if self._background not in self._windows:
 			self._windows.show(self._background)
 		self._windows.show(self._loadingscreen)
-
-# helper
 
 	def _on_gui_action(self, msg):
 		AmbientSoundComponent.play_special('click')
