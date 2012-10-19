@@ -452,6 +452,7 @@ class GFX:
 	SHIP_OUTLINE_THRESHOLD = 96
 	SHIP_OUTLINE_WIDTH = 2
 
+	# this is modified by the game starting process.
 	USE_ATLASES = False
 
 class PATHS:
@@ -487,9 +488,6 @@ class PATHS:
 	 								"/misc",
 	 								"/terrain",
 	 								"/units"))
-
-	if GFX.USE_ATLASES:
-		DB_FILES = DB_FILES + (ATLAS_DB_PATH, )
 
 	#voice paths
 	VOICE_DIR = os.path.join("content", "audio", "voice")

@@ -46,7 +46,7 @@ import horizons.globals
 from horizons.savegamemanager import SavegameManager
 from horizons.gui import Gui
 from horizons.extscheduler import ExtScheduler
-from horizons.constants import AI, GAME, PATHS, NETWORK, SINGLEPLAYER, GAME_SPEED
+from horizons.constants import AI, GAME, PATHS, NETWORK, SINGLEPLAYER, GAME_SPEED, GFX
 from horizons.network.networkinterface import NetworkInterface
 from horizons.util.loaders.actionsetloader import ActionSetLoader
 from horizons.util.loaders.tilesetloader import TileSetLoader
@@ -142,6 +142,10 @@ def start(_command_line_arguments):
 	# set MAX_TICKS
 	if command_line_arguments.max_ticks:
 		GAME.MAX_TICKS = command_line_arguments.max_ticks
+
+	if horizons.globals.fife.get_uh_setting('AtlasesEnabled'):
+		GFX.USE_ATLASES = True
+		PATHS.DB_FILES = PATHS.DB_FILES + (PATHS.ATLAS_DB_PATH, )
 
 	horizons.globals.db = _create_main_db()
 
