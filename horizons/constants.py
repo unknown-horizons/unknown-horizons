@@ -462,6 +462,7 @@ class PATHS:
 	SCREENSHOT_DIR = os.path.join(_user_dir, "screenshots")
 	DEFAULT_WINDOW_ICON_PATH = os.path.join("content/gui/images/logos", "uh_32.png")
 	MAC_WINDOW_ICON_PATH = os.path.join("content/gui/icons", "Icon.icns")
+	ATLAS_METADATA_PATH = os.path.join(_user_dir, "atlas-metadata.cache")
 
 	# paths relative to uh dir
 	ACTION_SETS_DIRECTORY = os.path.join("content", "gfx")

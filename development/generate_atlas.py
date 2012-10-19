@@ -21,17 +21,27 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
+import glob
 import json
+import logging
 import multiprocessing
 import os
 import os.path
 import sys
 
 try:
+	import cPickle as pickle
+except:
+	import pickle
+
+try:
 	import Image
 except ImportError:
 	print 'The Python Imaging Library (PIL) package is needed to run this script.'
 	sys.exit(1)
+
+# make sure os.path.getmtime returns ints
+os.stat_float_times(False)
 
 # make this script work both when started inside development and in the uh root dir
 if not os.path.exists('content'):
@@ -52,17 +62,23 @@ from horizons.util.loaders.actionsetloader import ActionSetLoader
 from horizons.util.loaders.tilesetloader import TileSetLoader
 
 class AtlasEntry(object):
-	def __init__(self, x, y, width, height):
+	def __init__(self, x, y, width, height, last_modified):
 		self.x = x
 		self.y = y
 		self.width = width
 		self.height = height
+		self.last_modified = last_modified
 
 class AtlasBook(object):
+	log = logging.getLogger("generate_atlas")
+
 	def __init__(self, id, max_size):
 		self.id = id
 		self.path = os.path.join(PATHS.ATLAS_FILES_DIR, '%03d.png' % id)
 		self.max_size = max_size
+		self._clear()
+
+	def _clear(self):
 		self.location = {}
 		self.cur_x = 0
 		self.cur_y = 0
@@ -72,7 +88,7 @@ class AtlasBook(object):
 		"""Return true if and only if the image was added."""
 		if self.cur_x + w <= self.max_size and self.cur_y + h <= self.max_size:
 			# add to the end of the current row
-			self.location[path] = AtlasEntry(self.cur_x, self.cur_y, w, h)
+			self.location[path] = AtlasEntry(self.cur_x, self.cur_y, w, h, os.path.getmtime(path))
 			self.cur_x += w
 			self.cur_h = max(self.cur_h, h)
 			return True
@@ -82,7 +98,7 @@ class AtlasBook(object):
 			self.cur_x = w
 			self.cur_y += self.cur_h
 			self.cur_h = h
-			self.location[path] = AtlasEntry(0, self.cur_y, w, h)
+			self.location[path] = AtlasEntry(0, self.cur_y, w, h, os.path.getmtime(path))
 			return True
 
 		# unable to fit in the given space with the current algorithm
@@ -148,33 +164,31 @@ class ImageSetManager(object):
 			json.dump(self._data, json_file, indent=1)
 
 class AtlasGenerator(object):
-	def __init__(self, root_dir, max_size):
-		self.root_dir = root_dir
+	log = logging.getLogger("generate_atlas")
+	# increment this when the structure of the atlases changes
+	current_version = 1
+
+	def __init__(self,  max_size):
+		self.version = self.current_version
 		self.max_size = max_size
-		self.files = []
 		self.books = []
 		self.num_books = 0
 		self.atlas_book_lookup = {}
 
+	def _init_sets(self):
 		self.sets = []
 		self.sets.append(ImageSetManager(TileSetLoader.get_sets(), PATHS.TILE_SETS_JSON_FILE))
 		self.sets.append(ImageSetManager(ActionSetLoader.get_sets(), PATHS.ACTION_SETS_JSON_FILE))
 
-	def _find_files(self):
-		paths = []
+	def _save_sets(self):
 		for set in self.sets:
-			for path in set.files:
-				paths.append(path)
+			set.save(self)
 
-		for path in paths:
-			with open(path, 'rb') as png_file:
-				w, h = Image.open(png_file).size
-				self.files.append((w * h, h, w, path))
-
-	def _save_books(self):
-		processes = max(1, min(len(self.books), multiprocessing.cpu_count() - 1))
+	@classmethod
+	def _save_books(cls, books):
+		processes = max(1, min(len(books), multiprocessing.cpu_count() - 1))
 		pool = multiprocessing.Pool(processes=processes)
-		for book in self.books:
+		for book in books:
 			pool.apply_async(save_atlas_book, [book])
 		pool.close()
 		pool.join()
@@ -185,10 +199,9 @@ class AtlasGenerator(object):
 			for book in self.books:
 				atlas_db_file.write("INSERT INTO atlas VALUES(%d, '%s');\n" % (book.id, book.path))
 
-		for set in self.sets:
-			set.save(self)
-
-		self._save_books()
+		self._save_sets()
+		self._save_books(self.books)
+		self._save_metadata()
 
 	def _add_atlas_book(self):
 		self.books.append(AtlasBook(len(self.books), self.max_size))
@@ -203,15 +216,149 @@ class AtlasGenerator(object):
 
 		self.atlas_book_lookup[path] = self.books[-1]
 
-	def generate(self):
-		self._find_files()
-		assert self.files, 'No files found.'
-		assert (self.files[0][1] <= self.max_size and self.files[0][2] <= self.max_size), 'Image too large: ' + str(self.files[0][1:])
+	@classmethod
+	def _get_dimensions(cls, path):
+		with open(path, 'rb') as png_file:
+			return Image.open(png_file).size
 
-		for _, h, w, path in self.files:
+	def _get_paths(self):
+		paths = []
+		for set in self.sets:
+			for path in set.files:
+				paths.append(path)
+		return paths
+
+	def recreate(self):
+		print 'Recreating the entire atlas'
+
+		self._init_sets()
+		paths = self._get_paths()
+		data = []
+		for path in paths:
+			w, h = self._get_dimensions(path)
+			data.append((w * h, h, w, path))
+
+		assert data, 'No files found.'
+		assert (data[0][1] <= self.max_size and data[0][2] <= self.max_size), 'Image too large: ' + str(data[0][1:])
+
+		for _, h, w, path in data:
 			self._add_image(w, h, path)
+		self.save()
+
+	def _update_selected_books(self, update_books):
+		print 'Updating a part of the atlas:'
+		for book in sorted(update_books, key=lambda book: int(book.id)):
+			print book.path
+		print
+
+		self._save_sets()
+		self._save_books(update_books)
+
+	def update(self):
+		self._init_sets()
+		paths = self._get_paths()
+
+		# if the sizes don't match then something has been deleted or added
+		recreate_all = False
+		if len(set(paths)) != len(self.atlas_book_lookup):
+			recreate_all = True
+			self.log.info('The old number of images (%d) doesn\'t match the new (%d)', len(self.atlas_book_lookup), len(set(paths)))
+
+		recreate_books = set()
+		if not recreate_all:
+			for path in paths:
+				if path not in self.atlas_book_lookup:
+					self.log.info('A new image has been added: %s', path)
+					recreate_all = True
+					break
+
+				last_modified = os.path.getmtime(path)
+				book = self.atlas_book_lookup[path]
+				entry = book.location[path]
+				if last_modified == entry.last_modified:
+					continue
+
+				self.log.info('An image has been modified: %s', path)
+				w, h = self._get_dimensions(path)
+				if w > entry.width or h > entry.height:
+					self.log.info('An image is larger than before: %s', path)
+					recreate_all = True
+					break
+
+				if book not in recreate_books:
+					self.log.info('Need to recreate %s', book.path)
+					recreate_books.add(book)
+
+				# update the entry
+				entry.width = w
+				entry.height = h
+				entry.last_modified = last_modified
+
+		if recreate_all:
+			self.log.info('Forced to recreate the entire atlas.')
+			return False
+
+		if recreate_books:
+			self.log.info('Updated selected books')
+			self._update_selected_books(recreate_books)
+			self._save_metadata()
+		return True
+
+	def _save_metadata(self):
+		self.log.info('Saving metadata')
+		self.sets = None
+		with open(PATHS.ATLAS_METADATA_PATH, 'wb') as file:
+			pickle.dump(self, file)
+		self.log.info('Finished saving metadata')
+
+	@classmethod
+	def load(cls, max_size):
+		if not os.path.exists(PATHS.ATLAS_METADATA_PATH):
+			cls.log.info('Old atlas metadata cache not found.')
+			return None
+
+		cls.log.info('Loading the metadata cache')
+		with open(PATHS.ATLAS_METADATA_PATH, 'rb') as file:
+			data = pickle.load(file)
+
+			if data.version != cls.current_version:
+				cls.log.info('Old metadata version %d (current %d)', data.version, cls.current_version)
+				return None
+
+			if data.max_size != max_size:
+				cls.log.info('The desired max_size has changed from %d to %d', data.max_size, max_size)
+				return None
+
+			cls.log.info('Successfully loaded the metadata cache')
+			return data
+
+	@classmethod
+	def clear_everything(cls):
+		"""Delete all known atlas-related files."""
+		paths = []
+		paths.append(PATHS.ATLAS_METADATA_PATH)
+		paths.append(PATHS.ATLAS_DB_PATH)
+		paths.append(PATHS.ACTION_SETS_JSON_FILE)
+		paths.append(PATHS.TILE_SETS_JSON_FILE)
+		paths.extend(glob.glob('content/gfx/atlas/*.png'))
+
+		# delete everything
+		for path in paths:
+			if not os.path.exists(path):
+				continue
+			cls.log.info('Deleting %s', path)
+			os.unlink(path)
 
 if __name__ == '__main__':
-	generator = AtlasGenerator('.', 2048)
-	generator.generate()
-	generator.save()
+	updated = False
+	try:
+		generator = AtlasGenerator.load(2048)
+		if generator is not None:
+			updated = generator.update()
+	except Exception as e:
+		print e
+
+	if not updated:
+		AtlasGenerator.clear_everything()
+		generator = AtlasGenerator(2048)
+		generator.recreate()
