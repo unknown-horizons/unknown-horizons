@@ -70,9 +70,9 @@ class IngameKeyListener(fife.IKeyListener, LivingObject):
 		key_event_handled = True
 
 		if action == _Actions.ESCAPE:
-			handled_by_ingame_gui = self.session.ingame_gui.on_escape()
-			if not handled_by_ingame_gui:
-				key_event_handled = False # let the MainListener handle this
+			# when windows are shown, let them handle escape
+			if not self.session.ingame_gui.windows.visible:
+				self.session.ingame_gui.on_escape()
 		elif action == _Actions.HELP:
 			self.session.ingame_gui.toggle_help()
 		elif action == _Actions.GRID:

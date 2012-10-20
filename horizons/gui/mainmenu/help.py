@@ -38,10 +38,8 @@ class Help(Dialog):
 
 	def prepare(self, *args, **kwargs):
 		# make game pause if there is a game and we're not in the main menu
-		# TODO check missing if we're in the main menu
 		if self._gui.session:
 			PauseCommand().execute(self._gui.session)
-			self._gui.session.ingame_gui.on_escape() # close dialogs that might be open
 
 	def post(self, retval):
 		if self._gui.session:
