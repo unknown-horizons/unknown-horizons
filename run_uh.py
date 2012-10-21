@@ -212,7 +212,7 @@ def excepthook_creator(outfilename):
 		print('')
 		print(_('Unknown Horizons has crashed.'))
 		print('')
-		print(_('We are very sorry for this and want to fix underlying error.'))
+		print(_('We are very sorry for this and want to fix the underlying error.'))
 		print(_('In order to do this, we need the information from the logfile:'))
 		print(outfilename)
 		print(_('Please give it to us via IRC or our forum, for both see http://unknown-horizons.org .'))
