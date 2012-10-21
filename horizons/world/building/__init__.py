@@ -97,7 +97,6 @@ class BuildingClass(IngameType):
 				for action_id in all_action_sets[action_set]: # idle, move, ...
 					cls._do_load(all_action_sets, action_set, action_id)
 
-	#NOTE: the code below is basically duplicated in UHObjectLoader._loadBuilding in the editor
 	def _do_load(cls, all_action_sets, action_set, action_id):
 		params = {'id': action_set, 'action': action_id}
 		action = cls._real_object.createAction('{action}_{id}'.format(**params))

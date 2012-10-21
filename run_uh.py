@@ -373,7 +373,8 @@ def setup_fife(args):
 			log_paths()
 			err_str = str(e)
 			if err_str == 'DLL load failed: %1 is not a valid Win32 application.':
-				show_error_message('Unsupported Python version', '32 bit FIFE requires 32 bit (x86) Python 2.')
+				show_error_message('Unsupported Python version',
+				                   '32 bit FIFE requires 32 bit (x86) Python 2.')
 			else:
 				show_error_message('Failed to load FIFE', err_str)
 		log().debug('Failed to load FIFE from default paths: %s', e)
@@ -416,7 +417,7 @@ def get_fife_path(fife_custom_path=None):
 	if fife_custom_path is not None:
 		_paths.append(fife_custom_path)
 		if not check_path_for_fife(fife_custom_path):
-			print('Specified invalid FIFE path: %s' %  fife_custom_path)
+			print('Specified invalid FIFE path: %s' % fife_custom_path)
 			exit(1)
 	else:
 		# no command line parameter, now check for config

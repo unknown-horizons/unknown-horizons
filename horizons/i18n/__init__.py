@@ -111,7 +111,7 @@ def change_language(language=None):
 			# selected we use NullTranslations to get English output.
 			fallback = (language == 'en')
 			trans = gettext.translation('unknown-horizons', find_available_languages()[language],
-										languages=[language], fallback=fallback)
+			                            languages=[language], fallback=fallback)
 			trans.install(unicode=True, names=['ngettext',])
 		except IOError:
 			#xgettext:python-format
@@ -121,7 +121,7 @@ def change_language(language=None):
 	else:
 		# default locale
 		if platform.system() == "Windows": # win doesn't set the language variable by default
-			os.environ[ 'LANGUAGE' ] = locale.getdefaultlocale()[0]
+			os.environ['LANGUAGE'] = locale.getdefaultlocale()[0]
 		gettext.install('unknown-horizons', 'content/lang', unicode=True, names=['ngettext',])
 
 	# expose the plural-aware translate function as builtin N_ (gettext does the same to _)
