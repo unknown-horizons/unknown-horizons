@@ -511,14 +511,14 @@ def log_paths():
 	"""Prints debug info about paths to log"""
 	log().debug("SYS.PATH: %s", sys.path)
 	log().debug('PATHSEP: "%s" SEP: "%s"', os.path.pathsep, os.path.sep)
-	log().debug("LD_LIBRARY_PATH: %s", os.environ['LD_LIBRARY_PATH'])
-	log().debug("PATH: %s", os.environ['PATH'])
+	log().debug("LD_LIBRARY_PATH: %s", os.environ.get('LD_LIBRARY_PATH', '<undefined>'))
+	log().debug("PATH: %s", os.environ.get('PATH', '<undefined>'))
 	log().debug("PYTHONPATH %s", os.environ.get('PYTHONPATH', '<undefined>'))
 
 def log_sys_info():
 	"""Prints debug info about the current system to log"""
 	log().debug("Python version: %s", sys.version_info)
-	log().debug("Plattform: %s", platform.platform())
+	log().debug("Platform: %s", platform.platform())
 
 if __name__ == '__main__':
 	main()
