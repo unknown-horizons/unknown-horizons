@@ -190,14 +190,6 @@ class SelectableBuildingComponent(SelectableComponent):
 		@param settlement: Settlement instance the building belongs to"""
 		renderer = session.view.renderer['InstanceRenderer']
 
-		"""
-		import cProfile as profile
-		import tempfile
-		outfilename = tempfile.mkstemp(text=True)[1]
-		print 'profile to ', outfilename
-		c = "cls._do_select(renderer, position, session.world, settlement)"
-		profile.runctx(c, globals(), locals(), outfilename)
-		"""
 		cls._do_select(renderer, position, session.world, settlement,
 		               radius, range_applies_only_on_island)
 
