@@ -55,16 +55,13 @@ class BuildingClass(IngameType):
 			self.tooltip_text = object_translations[yaml_data['yaml_file']]['tooltip_text']
 		except KeyError: # not found => use value defined in yaml unless it is null
 			tooltip_text = yaml_data['tooltip_text']
-			if tooltip_text is not None:
-				self.tooltip_text = tooltip_text
-			else:
-				self.tooltip_text = u''
+			self.tooltip_text = tooltip_text or u''
 		self.size = (int(yaml_data['size_x']), int(yaml_data['size_y']))
 		self.inhabitants = int(yaml_data['inhabitants'])
 		self.costs = yaml_data['buildingcosts']
 		self.running_costs = yaml_data['cost']
 		self.running_costs_inactive = yaml_data['cost_inactive']
-		self.has_running_costs = (self.running_costs != 0)
+		self.has_running_costs = bool(self.running_costs)
 		self.show_status_icons = yaml_data.get('show_status_icons', True)
 		self.translucent = yaml_data.get('translucent', False)
 		# for mines: on which deposit is it buildable
