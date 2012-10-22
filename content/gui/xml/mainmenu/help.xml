@@ -35,7 +35,7 @@
 	<Spacer />
 </VBox>
 
-<VBox position="447,82" max_size="340,445" min_size="340,445" padding="10">
+<VBox position="447,62" max_size="340,465" min_size="340,465" padding="10">
 	<VBox>
 		<Label name="lbl_TRANSLUCENCY" text="Toggle translucency of ambient buildings"
 			wrap_text="1"  max_size="290,40"  min_size="290,20"/>
@@ -59,7 +59,8 @@
 		<Label name="lbl_TILE_OWNER_HIGHLIGHT" text="Highlight tile ownership" />
 	</VBox>
 	<VBox>
-		<Label name="lbl_REMOVE_SELECTED" text="Remove selected units / buildings" />
+		<Label name="lbl_REMOVE_SELECTED" text="Remove selected units / buildings"
+			wrap_text="1"  max_size="290,40"  min_size="290,20"/>
 		<Label name="lbl_SHOW_SELECTED" text="Focus camera on selection" />
 		<Label name="lbl_GRID" text="Toggle grid on/off" />
 		<Label name="lbl_COORD_TOOLTIP" text="Show coordinate values (Debug)" />
