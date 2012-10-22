@@ -76,17 +76,18 @@ HEADER = '''# ###################################################
 #
 ###############################################################################
 
-from horizons.constants import VERSION
-
 object_translations = dict()
 
 def set_translations():
-\tglobal object_translations
-\tobject_translations = {
+	global object_translations
+	object_translations = {
 '''
 
-FOOTER = '''\n\t}\n'''
-ROWINDENT = '\n\t\t'
+FOOTER = '''
+	}
+'''
+ROWINDENT = '''
+		'''
 
 OBJECT_PATH = 'content/objects/'
 

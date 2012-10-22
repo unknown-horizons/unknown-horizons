@@ -129,7 +129,8 @@ def change_language(language=None):
 	__builtin__.__dict__['N_'] = __builtin__.__dict__['ngettext']
 
 	# update fonts
-	fontdef = get_fontdef_for_locale(language or horizons.globals.fife.get_locale())
+	new_locale = language or horizons.globals.fife.get_locale()
+	fontdef = get_fontdef_for_locale(new_locale)
 	horizons.globals.fife.pychan.loadFonts(fontdef)
 
 	# dynamically reset all translations of active widgets
