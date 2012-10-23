@@ -99,7 +99,6 @@ class UnitManager(object):
 		return fleet
 
 	def destroy_fleet(self, fleet):
-		print "Destroying fleet"
 		for ship in fleet.get_ships():
 			if ship in self.ships:
 				del self.ships[ship]
