@@ -25,7 +25,7 @@ from horizons.world.player import Player
 from horizons.scheduler import Scheduler
 from horizons.ext.enum import Enum
 from horizons.world.units.movingobject import MoveNotPossible
-from horizons.util import Callback
+from horizons.util.python.callback import Callback
 from horizons.constants import GAME_SPEED
 
 class GenericAI(Player):

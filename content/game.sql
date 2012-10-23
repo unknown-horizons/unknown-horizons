@@ -187,13 +187,6 @@ INSERT INTO "related_buildings" VALUES(20, 61, 1);
 INSERT INTO "related_buildings" VALUES(20, 62, 1);
 INSERT INTO "related_buildings" VALUES(45,  3, 0);
 
-CREATE TABLE "mine" (
-	"mine" INT NOT NULL,
-	"deposit" INT NOT NULL
-);
-INSERT INTO "mine" VALUES(25, 23);
-INSERT INTO "mine" VALUES(28, 34);
-
 CREATE TABLE "tile_set" (
 	"ground_id" INT NOT NULL,
 	"set_id" TEXT NOT NULL
@@ -216,9 +209,9 @@ CREATE TABLE "resource" (
 INSERT INTO "resource" VALUES( 1, 'coins', 0, 0, 0);
 INSERT INTO "resource" VALUES( 2, 'lamb wool', 2, 0, 1);
 INSERT INTO "resource" VALUES( 3, 'textile', 6.5, 1, 1);
-INSERT INTO "resource" VALUES( 4, 'boards', 1.25, 1, 1);
+INSERT INTO "resource" VALUES( 4, 'boards', 2, 1, 1);
 INSERT INTO "resource" VALUES( 5, 'food', 2, 1, 1);
-INSERT INTO "resource" VALUES( 6, 'tools', 18.5, 1, 1);
+INSERT INTO "resource" VALUES( 6, 'tools', 21, 1, 1);
 INSERT INTO "resource" VALUES( 7, 'bricks', 15, 1, 1);
 INSERT INTO "resource" VALUES( 8, 'trees', 1, 0, 1);
 INSERT INTO "resource" VALUES( 9, 'grass', 0, 0, 0);
@@ -236,10 +229,10 @@ INSERT INTO "resource" VALUES(19, 'community', NULL, 0, 0);
 INSERT INTO "resource" VALUES(20, 'clay deposit', 0, 0, 1);
 INSERT INTO "resource" VALUES(21, 'clay', 7.5, 1, 1);
 INSERT INTO "resource" VALUES(22, 'liquor', 6.5, 1, 1);
-INSERT INTO "resource" VALUES(23, 'charcoal', 6.5, 1, 1);
+INSERT INTO "resource" VALUES(23, 'charcoal', 8, 1, 1);
 INSERT INTO "resource" VALUES(24, 'iron deposit', 0, 0, 1);
 INSERT INTO "resource" VALUES(25, 'iron ore', 7.5, 1, 1);
-INSERT INTO "resource" VALUES(26, 'iron ingots', 24, 1, 1);
+INSERT INTO "resource" VALUES(26, 'iron ingots', 25, 1, 1);
 INSERT INTO "resource" VALUES(27, 'get-together', NULL, 0, 0);
 INSERT INTO "resource" VALUES(28, 'fish', 0, 0, 0);
 INSERT INTO "resource" VALUES(29, 'salt', 15, 1, 1);

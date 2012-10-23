@@ -18,12 +18,12 @@
 # Free Software Foundation, Inc.,
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
-from collections import defaultdict
 
 import logging
+
 from fife import fife
-from weakref import WeakKeyDictionary
-import horizons
+import horizons.globals
+
 from horizons.ai.aiplayer.behavior import BehaviorManager
 from horizons.ai.aiplayer.behavior.movecallbacks import BehaviorMoveCallback
 from horizons.ai.aiplayer.combat.unitmanager import UnitManager
@@ -32,7 +32,6 @@ from horizons.constants import LAYERS, AI
 from horizons.ext.enum import Enum
 from horizons.util.python.callback import Callback
 from horizons.util.python.defaultweakkeydictionary import DefaultWeakKeyDictionary
-from horizons.util.shapes.point import Point
 from horizons.util.worldobject import WorldObject
 
 
@@ -124,11 +123,11 @@ class CombatManager(object):
 		# use fixed SelectableBuildingComponent here, to make sure subclasses also read the same variable
 		if not hasattr(CombatManager, "_fake_range_tile_obj"):
 			# create object to create instances from
-			CombatManager._fake_range_tile_obj = horizons.main.fife.engine.getModel().createObject('_fake_range_tile_obj', 'ground')
+			CombatManager._fake_range_tile_obj = horizons.globals.fife.engine.getModel().createObject('_fake_range_tile_obj', 'ground')
 			fife.ObjectVisual.create(CombatManager._fake_range_tile_obj)
 
 			img_path = 'content/gfx/fake_water.png'
-			img = horizons.main.fife.imagemanager.load(img_path)
+			img = horizons.globals.fife.imagemanager.load(img_path)
 			for rotation in [45, 135, 225, 315]:
 				CombatManager._fake_range_tile_obj.get2dGfxVisual().addStaticImage(rotation, img.getHandle())
 		if not hasattr(self, '_selected_fake_tiles'):

@@ -30,7 +30,8 @@ Usage:
 4. Uncomment functions from parameter_sets you don't want to have displayed
 """
 
-from pylab import *
+import sys
+import pylab
 
 sys.path.append(".")
 sys.path.append("./horizons")
@@ -64,7 +65,7 @@ def diplomacy_graph():
 
 	# define functions here to plot them.
 	# Second parameter is color
-	upper_boundary = 5.0
+	upper_boundary = DiplomacySettings.upper_boundary
 
 	parameter_sets = (
 
@@ -83,10 +84,13 @@ def diplomacy_graph():
 	)
 
 
-	x = [-10, 10]
-	y = [upper_boundary]*2
-	plot (x,y,color='y', marker=None)
 	for parameter_name, parameters in parameter_sets:
+
+		# always print upper boundary
+		x = [-10, 10]
+		y = [upper_boundary]*2
+		pylab.plot (x,y,color='y', marker=None)
+
 		functions = []
 		if 'enemy' in parameters:
 			functions.append((get_enemy_function(**parameters['enemy']),'r'))
@@ -99,12 +103,12 @@ def diplomacy_graph():
 			gen = [(x/10.0, f(x/10.0)) for x in xrange(-100, 100) ]
 			x = [item[0] for item in gen]
 			y = [item[1] for item in gen]
-			plot(x,y, color=c,marker=None)
-			xlabel(x_label)
-			ylabel(y_label)
-			title(parameter_name)
-			grid(True)
-		show()
+			pylab.plot(x,y, color=c,marker=None)
+			pylab.xlabel(x_label)
+			pylab.ylabel(y_label)
+			pylab.title(parameter_name)
+			pylab.grid(True)
+		pylab.show()
 
 if(__name__=="__main__"):
 	diplomacy_graph()

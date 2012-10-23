@@ -19,23 +19,19 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-from tests.gui import TestFinished, gui_test
+from tests.gui import gui_test
 
 
 @gui_test(use_fixture='boatbuilder', timeout=60)
 def test_production_overview(gui):
-	yield
 
 	# select warehouse
 	gui.cursor_click(52, 12, 'left')
 
 	# open production overview
-	gui.trigger('tab_account', 'show_production_overview/mouseClicked/default')
+	gui.trigger('tab_account', 'show_production_overview')
 
 	# leave it open for a while to let a refresh happen
-	for _ in gui.run(seconds=2):
-		yield
+	gui.run(seconds=2)
 
-	gui.trigger('production_overview', 'okButton/action/default')
-
-	yield TestFinished
+	gui.trigger('production_overview', 'okButton')

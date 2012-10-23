@@ -23,11 +23,10 @@
 import logging
 
 from fife import fife
-
-import horizons.main
+import horizons.globals
 
 from horizons.constants import LAYERS, GROUND
-from horizons.util.loaders import TileSetLoader
+from horizons.util.loaders.tilesetloader import TileSetLoader
 
 class SurfaceTile(object):
 	is_water = False
@@ -46,13 +45,15 @@ class SurfaceTile(object):
 		self.object = None
 		self.session = session
 
-		self._instance = session.view.layers[self.layer].createInstance(self._object,
-				                                                        fife.ModelCoordinate(int(x), int(y), 0), "")
+		layer = session.view.layers[self.layer]
+		self._instance = layer.createInstance(self._object,
+		                                      fife.ModelCoordinate(int(x), int(y), 0),
+		                                      "")
 		fife.InstanceVisual.create(self._instance)
 
 	def __str__(self):
 		return "SurfaceTile(id=%s, x=%s, y=%s, water=%s, obj=%s)" % \
-			   (self.id, self.x, self.y, self.is_water, self.object)
+		       (self.id, self.x, self.y, self.is_water, self.object)
 
 	def act(self, action, rotation):
 		self._instance.setRotation(rotation)
@@ -132,10 +133,10 @@ class GroundClass(type):
 		"""
 		cls.log.debug('Loading ground %s', cls.id)
 		try:
-			cls._object = horizons.main.fife.engine.getModel().createObject(str(cls.id), 'ground')
+			cls._object = horizons.globals.fife.engine.getModel().createObject(str(cls.id), 'ground')
 		except RuntimeError:
 			cls.log.debug('Already loaded ground %s', cls.id)
-			cls._object = horizons.main.fife.engine.getModel().getObject(str(cls.id), 'ground')
+			cls._object = horizons.globals.fife.engine.getModel().getObject(str(cls.id), 'ground')
 			return
 
 		fife.ObjectVisual.create(cls._object)
@@ -146,7 +147,7 @@ class GroundClass(type):
 				action = cls._object.createAction(action_id+"_"+str(tile_set_id))
 				fife.ActionVisual.create(action)
 				for rotation in tile_sets[tile_set_id][action_id].iterkeys():
-					anim = horizons.main.fife.animationloader.loadResource(
+					anim = horizons.globals.fife.animationloader.loadResource(
 						str(tile_set_id)+"+"+str(action_id)+"+"+
 						str(rotation) + ':shift:center+0,bottom+8')
 					action.get2dGfxVisual().addAnimation(int(rotation), anim)

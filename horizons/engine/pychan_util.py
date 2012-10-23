@@ -26,9 +26,9 @@ from fife.extensions import pychan
 
 from horizons.gui.style import STYLES
 from horizons.messaging import GuiAction
-from horizons.util import Callback
+from horizons.util.python.callback import Callback
 
-import horizons.main
+import horizons.globals
 
 class RenameLabel(pychan.widgets.Label):
 	"""A regular label that signals that it will display a rename dialog when clicked upon (by changing the cursor)"""
@@ -163,9 +163,9 @@ def setup_cursor_change_on_hover():
 
 	# set cursor to rename on hover for certain widgets
 	def set_cursor():
-		horizons.main.fife.set_cursor_image("rename")
+		horizons.globals.fife.set_cursor_image("rename")
 	def unset_cursor():
-		horizons.main.fife.set_cursor_image("default")
+		horizons.globals.fife.set_cursor_image("default")
 
 	def make_cursor_change_on_hover_class(cls):
 		# this can't be a regular class since vanilla TextFields should have it by default

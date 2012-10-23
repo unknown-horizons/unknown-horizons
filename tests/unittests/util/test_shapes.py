@@ -21,11 +21,9 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-
-
 import unittest
 
-from horizons.util import Point, Rect, Circle
+from horizons.util.shapes import Circle, Point, Rect
 
 class TestPathfinding(unittest.TestCase):
 

@@ -51,7 +51,7 @@ def test_lumberjack(s, p):
 		assert tree
 		tree.get_component(Producer).finish_production_now()
 
-	s.run(seconds=20)
+	s.run(seconds=30)
 
 	assert jack.get_component(StorageComponent).inventory[RES.BOARDS]
 

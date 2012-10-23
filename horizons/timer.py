@@ -20,7 +20,7 @@
 # ###################################################
 
 import time
-import horizons.main
+import horizons.globals
 
 from horizons.util.living import LivingObject
 from horizons.constants import GAME_SPEED
@@ -53,11 +53,11 @@ class Timer(LivingObject):
 
 	def activate(self):
 		"""Actually starts the timer"""
-		horizons.main.fife.pump.append(self.check_tick)
+		horizons.globals.fife.pump.append(self.check_tick)
 
 	def end(self):
-		if self.check_tick in horizons.main.fife.pump:
-			horizons.main.fife.pump.remove(self.check_tick)
+		if self.check_tick in horizons.globals.fife.pump:
+			horizons.globals.fife.pump.remove(self.check_tick)
 		super(Timer, self).end()
 
 	def add_test(self, call):

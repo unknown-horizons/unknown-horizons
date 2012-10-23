@@ -21,7 +21,7 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-import horizons.main
+import horizons.globals
 
 from unittest import TestCase
 from mock import Mock, MagicMock, patch
@@ -45,7 +45,7 @@ class TestTimer(TestCase):
 		self.fife = Mock()
 		self.pump = MagicMock()
 		self.fife.pump = self.pump
-		self.fifePatcher = patch('horizons.main.fife', self.fife)
+		self.fifePatcher = patch('horizons.globals.fife', self.fife)
 		self.fifePatcher.start()
 		# Mock system time
 		self.timePatcher = patch('time.time')

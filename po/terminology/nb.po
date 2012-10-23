@@ -1,0 +1,584 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2012-03-31 21:42+0100\n"
+"PO-Revision-Date: 2012-05-05 11:13+0200\n"
+"Last-Translator: Anonymous Pootle User\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: nb\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Pootle 2.1.5\n"
+
+msgid "build"
+msgstr "bygg"
+
+msgid "game"
+msgstr "spill"
+
+msgid "building"
+msgstr "byggning"
+
+msgid "settlement"
+msgstr ""
+
+msgid "farm"
+msgstr "gård"
+
+msgid "ship"
+msgstr "båt"
+
+msgid "tent"
+msgstr "telt"
+
+msgid "warehouse"
+msgstr "varehus"
+
+msgid "resource"
+msgstr "ressurs"
+
+msgid "produce"
+msgstr "produsere"
+
+msgid "field"
+msgstr ""
+
+msgid "map"
+msgstr "kart"
+
+msgid "trade"
+msgstr ""
+
+msgid "inhabitants"
+msgstr "innbyggere"
+
+msgid "buy"
+msgstr "kjøpe"
+
+msgid "overview"
+msgstr "oversikt"
+
+msgid "click"
+msgstr "klikk"
+
+msgid "lumberjack"
+msgstr "tømmerhugger"
+
+msgid "resident"
+msgstr ""
+
+msgid "main square"
+msgstr ""
+
+msgid "sailors"
+msgstr "seilere"
+
+msgid "food"
+msgstr "mat"
+
+msgid "increment"
+msgstr "øke"
+
+msgid "production"
+msgstr "produksjon"
+
+msgid "select"
+msgstr "velg"
+
+msgid "sell"
+msgstr "selge"
+
+msgid "setting"
+msgstr "innstilling"
+
+msgid "storage"
+msgstr ""
+
+msgid "tab"
+msgstr ""
+
+msgid "upgrade"
+msgstr "oppgradere"
+
+msgid "your inhabitants"
+msgstr ""
+
+msgid "close"
+msgstr ""
+
+msgid "companies"
+msgstr ""
+
+msgid "island"
+msgstr ""
+
+msgid "time"
+msgstr ""
+
+msgid "unit"
+msgstr ""
+
+msgid "balance"
+msgstr ""
+
+msgid "coast"
+msgstr ""
+
+msgid "menu"
+msgstr ""
+
+msgid "slot"
+msgstr ""
+
+msgid "start"
+msgstr ""
+
+msgid "stock"
+msgstr ""
+
+msgid "trail"
+msgstr ""
+
+msgid "Unknown Horizons"
+msgstr ""
+
+msgid "wool"
+msgstr ""
+
+msgid "boards"
+msgstr ""
+
+msgid "collector"
+msgstr ""
+
+msgid "connection"
+msgstr ""
+
+msgid "fire"
+msgstr ""
+
+msgid "change"
+msgstr ""
+
+msgid "connect"
+msgstr ""
+
+msgid "cost"
+msgstr ""
+
+msgid "house"
+msgstr ""
+
+msgid "log"
+msgstr ""
+
+msgid "road"
+msgstr ""
+
+msgid "save"
+msgstr ""
+
+msgid "built"
+msgstr ""
+
+msgid "pasture"
+msgstr ""
+
+msgid "reach"
+msgstr ""
+
+msgid "tree"
+msgstr ""
+
+msgid "your"
+msgstr ""
+
+msgid "your settlement"
+msgstr ""
+
+msgid "add"
+msgstr ""
+
+msgid "check"
+msgstr ""
+
+msgid "choose"
+msgstr ""
+
+msgid "confectionery"
+msgstr ""
+
+msgid "fisher"
+msgstr ""
+
+msgid "free trader"
+msgstr ""
+
+msgid "happiness"
+msgstr ""
+
+msgid "in stock"
+msgstr ""
+
+msgid "money"
+msgstr ""
+
+msgid "pavilion"
+msgstr ""
+
+msgid "running costs"
+msgstr ""
+
+msgid "sugar"
+msgstr ""
+
+msgid "taxes"
+msgstr ""
+
+msgid "tax"
+msgstr ""
+
+msgid "tools"
+msgstr ""
+
+msgid "button"
+msgstr ""
+
+msgid "continue"
+msgstr ""
+
+msgid "faith"
+msgstr ""
+
+msgid "help"
+msgstr ""
+
+msgid "left"
+msgstr ""
+
+msgid "level"
+msgstr ""
+
+msgid "mode"
+msgstr ""
+
+msgid "move"
+msgstr ""
+
+msgid "pioneers"
+msgstr ""
+
+msgid "citizens"
+msgstr ""
+
+msgid "merchants"
+msgstr ""
+
+msgid "aristocrats"
+msgstr ""
+
+msgid "potato"
+msgstr ""
+
+msgid "settler"
+msgstr ""
+
+msgid "speed"
+msgstr ""
+
+msgid "stop"
+msgstr ""
+
+msgid "storage tent"
+msgstr ""
+
+msgid "wait"
+msgstr ""
+
+msgid "access"
+msgstr ""
+
+msgid "account"
+msgstr ""
+
+msgid "amount"
+msgstr ""
+
+msgid "build menu"
+msgstr ""
+
+msgid "cloth"
+msgstr ""
+
+msgid "construction"
+msgstr ""
+
+msgid "decrease"
+msgstr ""
+
+msgid "description"
+msgstr ""
+
+msgid "fish"
+msgstr ""
+
+msgid "increase"
+msgstr ""
+
+msgid "lamb"
+msgstr ""
+
+msgid "leave"
+msgstr ""
+
+msgid "liquor"
+msgstr ""
+
+msgid "location"
+msgstr ""
+
+msgid "offer"
+msgstr ""
+
+msgid "potatoes"
+msgstr ""
+
+msgid "range"
+msgstr ""
+
+msgid "reached"
+msgstr ""
+
+msgid "run"
+msgstr ""
+
+msgid "slider"
+msgstr ""
+
+msgid "solution"
+msgstr ""
+
+msgid "space"
+msgstr ""
+
+msgid "target"
+msgstr ""
+
+msgid "team"
+msgstr ""
+
+msgid "total"
+msgstr ""
+
+msgid "unable"
+msgstr ""
+
+msgid "active"
+msgstr ""
+
+msgid "afford"
+msgstr ""
+
+msgid "animals"
+msgstr ""
+
+msgid "Captain's log"
+msgstr ""
+
+msgid "construct"
+msgstr ""
+
+msgid "consume"
+msgstr ""
+
+msgid "enabled"
+msgstr ""
+
+msgid "entries"
+msgstr ""
+
+msgid "feature"
+msgstr ""
+
+msgid "forest"
+msgstr ""
+
+msgid "grows"
+msgstr ""
+
+msgid "hold"
+msgstr ""
+
+msgid "idle"
+msgstr ""
+
+msgid "income"
+msgstr ""
+
+msgid "information"
+msgstr ""
+
+msgid "key"
+msgstr ""
+
+msgid "lamb wool"
+msgstr ""
+
+msgid "overview tab"
+msgstr ""
+
+msgid "minimap"
+msgstr ""
+
+msgid "issues"
+msgstr ""
+
+msgid "plant"
+msgstr ""
+
+msgid "play"
+msgstr ""
+
+msgid "playing"
+msgstr ""
+
+msgid "price"
+msgstr ""
+
+msgid "read"
+msgstr ""
+
+msgid "return"
+msgstr ""
+
+msgid "sale"
+msgstr ""
+
+msgid "screen"
+msgstr ""
+
+msgid "sound"
+msgstr ""
+
+msgid "special"
+msgstr ""
+
+msgid "store"
+msgstr ""
+
+msgid "tear"
+msgstr ""
+
+msgid "from time to time"
+msgstr ""
+
+msgid "trading"
+msgstr ""
+
+msgid "village"
+msgstr ""
+
+msgid "visit"
+msgstr ""
+
+msgid "world"
+msgstr ""
+
+msgid "yield"
+msgstr ""
+
+msgid "your ship"
+msgstr ""
+
+msgid "back"
+msgstr ""
+
+msgid "build settlement"
+msgstr ""
+
+msgid "load"
+msgstr ""
+
+msgid "unload"
+msgstr ""
+
+msgid "command"
+msgstr ""
+
+msgid "completed"
+msgstr ""
+
+msgid "condition"
+msgstr ""
+
+msgid "contact"
+msgstr ""
+
+msgid "empty"
+msgstr ""
+
+msgid "ensure"
+msgstr ""
+
+msgid "fulfill"
+msgstr ""
+
+msgid "graphics"
+msgstr ""
+
+msgid "harvest"
+msgstr ""
+
+msgid "hunts"
+msgstr ""
+
+msgid "multiple"
+msgstr ""
+
+msgid "potato field"
+msgstr ""
+
+msgid "school"
+msgstr ""
+
+msgid "seed"
+msgstr ""
+
+msgid "service"
+msgstr ""
+
+msgid "sheep"
+msgstr ""
+
+msgid "signal fire"
+msgstr ""
+
+msgid "statistics"
+msgstr ""
+
+msgid "clay"
+msgstr ""
+
+msgid "iron"
+msgstr ""
+
+msgid "ore"
+msgstr ""
+
+msgid "tobacco"
+msgstr ""
+
+msgid "charcoal"
+msgstr ""
+
+msgid "sugar field"
+msgstr ""
+
+msgid "temporarily"
+msgstr ""
+
+msgid "values"
+msgstr ""

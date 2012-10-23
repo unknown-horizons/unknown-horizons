@@ -21,7 +21,7 @@
 
 import random
 
-import horizons.main
+import horizons.globals
 
 from horizons.component import Component
 from horizons.extscheduler import ExtScheduler
@@ -47,10 +47,10 @@ class AmbientSoundComponent(Component):
 		self.__emitter = None # only create it when really needed
 
 	def __create_emitter(self):
-		if horizons.main.fife.get_fife_setting("PlaySounds"):
-			self.__emitter = horizons.main.fife.sound.soundmanager.createEmitter()
-			self.__emitter.setGain(horizons.main.fife.get_uh_setting("VolumeEffects")*10)
-			horizons.main.fife.sound.emitter['ambient'].append(self.__emitter)
+		if horizons.globals.fife.get_fife_setting("PlaySounds"):
+			self.__emitter = horizons.globals.fife.sound.soundmanager.createEmitter()
+			self.__emitter.setGain(horizons.globals.fife.get_uh_setting("VolumeEffects")*10)
+			horizons.globals.fife.sound.emitter['ambient'].append(self.__emitter)
 
 	def _init_playing(self):
 		if hasattr(self.instance, "is_local_player") and self.instance.owner.is_local_player:
@@ -60,7 +60,7 @@ class AmbientSoundComponent(Component):
 			for soundfile in self.soundfiles:
 				#TODO remove str() -- http://fife.trac.cvsdude.com/engine/ticket/701
 				self.play_ambient(str(soundfile), loop_interval=play_every,
-				                  position=self.instance.position.center())
+				                  position=self.instance.position.center)
 
 	def load(self, db, worldid):
 		super(AmbientSoundComponent, self).load(db, worldid)
@@ -84,7 +84,7 @@ class AmbientSoundComponent(Component):
 		@param loop_interval: delay between two plays, None means no looping, 0 is no pause between looping
 		@param position: Point
 		"""
-		if horizons.main.fife.get_fife_setting("PlaySounds"):
+		if horizons.globals.fife.get_fife_setting("PlaySounds"):
 			if self.__emitter is None:
 				self.__create_emitter()
 
@@ -96,7 +96,7 @@ class AmbientSoundComponent(Component):
 				self.__emitter.setRolloff(0) # reset to default
 
 			#TODO remove str() -- http://fife.trac.cvsdude.com/engine/ticket/701
-			self.__emitter.setSoundClip(horizons.main.fife.sound.soundclipmanager.load(str(soundfile)))
+			self.__emitter.setSoundClip(horizons.globals.fife.sound.soundclipmanager.load(str(soundfile)))
 
 			if loop_interval == 0:
 				self.__emitter.setLooping(True)
@@ -119,9 +119,9 @@ class AmbientSoundComponent(Component):
 		@param sound: string, key in table sounds_special
 		@param position: optional, source of sound on map
 		"""
-		if horizons.main.fife.get_fife_setting("PlaySounds"):
+		if horizons.globals.fife.get_fife_setting("PlaySounds"):
 			a = AmbientSoundComponent()
 			#TODO remove str() -- http://fife.trac.cvsdude.com/engine/ticket/701
-			soundfile = horizons.main.db.get_sound_file(str(sound))
+			soundfile = horizons.globals.db.get_sound_file(str(sound))
 			a.play_ambient(soundfile, position=position)
-			horizons.main.fife.sound.emitter['ambient'].remove(a.__emitter)
+			horizons.globals.fife.sound.emitter['ambient'].remove(a.__emitter)

@@ -26,7 +26,7 @@ from horizons.ai.aiplayer.constants import BUILD_RESULT, BUILDING_PURPOSE
 from horizons.entities import Entities
 from horizons.constants import BUILDINGS
 from horizons.util.python import decorators
-from horizons.util import Point, Rect
+from horizons.util.shapes import Point, Rect
 
 class AbstractLumberjack(AbstractBuilding):
 	@property

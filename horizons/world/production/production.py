@@ -138,7 +138,7 @@ class Production(ChangeListener):
 		elif self._state == PRODUCTION.STATES.producing:
 			Scheduler().add_new_object(self._get_producing_callback(), self, db_data[3])
 		elif self._state == PRODUCTION.STATES.waiting_for_res or \
-				 self._state == PRODUCTION.STATES.inventory_full:
+		     self._state == PRODUCTION.STATES.inventory_full:
 			# no need to call now, this just restores the state before
 			# saving , where it hasn't triggered yet, therefore it won't now
 			self._add_listeners()
@@ -204,14 +204,14 @@ class Production(ChangeListener):
 
 			# apply state
 			if self._state in (PRODUCTION.STATES.waiting_for_res,
-												 PRODUCTION.STATES.inventory_full):
+			                   PRODUCTION.STATES.inventory_full):
 				# just restore watching
 				self._add_listeners(check_now=True)
 
 			elif self._state == PRODUCTION.STATES.producing:
 				# restore scheduler call
 				Scheduler().add_new_object(self._get_producing_callback(), self,
-																   self._pause_remaining_ticks)
+				                           self._pause_remaining_ticks)
 			else:
 				assert False, 'Unhandled production state: %s' % self._pause_old_state
 		else: # do pause
@@ -220,7 +220,7 @@ class Production(ChangeListener):
 			self._state = PRODUCTION.STATES.paused
 
 			if self._pause_old_state in (PRODUCTION.STATES.waiting_for_res,
-												           PRODUCTION.STATES.inventory_full):
+			                             PRODUCTION.STATES.inventory_full):
 				self._remove_listeners()
 			elif self._pause_old_state == PRODUCTION.STATES.producing:
 				# save when production finishes and remove that call
@@ -228,7 +228,7 @@ class Production(ChangeListener):
 						Scheduler().get_remaining_ticks(self, self._get_producing_callback())
 				Scheduler().rem_call(self, self._get_producing_callback())
 			else:
-				assert False, 'Unhandled production state: %s' % self._state
+				assert False, 'Unhandled production state: %s' % self._pause_old_state
 
 		self._changed()
 
@@ -470,95 +470,9 @@ class SingleUseProduction(Production):
 	# TODO: it seems that these kinds of productions are never removed (for settlers and unit productions)
 
 	def __init__(self, inventory, owner_inventory, prod_id, prod_data, **kwargs):
-		super(SingleUseProduction, self).__init__(inventory=inventory, owner_inventory=owner_inventory, prod_id=prod_id, prod_data = prod_data, **kwargs)
+		super(SingleUseProduction, self).__init__(inventory=inventory, owner_inventory=owner_inventory,
+		                                          prod_id=prod_id, prod_data=prod_data, **kwargs)
 
 	def _finished_producing(self, **kwargs):
 		super(SingleUseProduction, self)._finished_producing(continue_producing=False, **kwargs)
 		self._state = PRODUCTION.STATES.done
-
-
-"""
-
-This might have been used for the unit production once, its current purpose is unknown.
-
-
-class ProgressProduction(Production):
-	""Same as Production, but starts as soon as any needed res is available (doesn't wait until all of them are ready)
-
-	Implementation:
-	When res are available, they are removed from the production line. The prod line is
-	reloaded on a new production.""
-	keep_original_prod_line = True
-
-	## INIT/DESTRUCT
-	def __init__(self, **kwargs):
-		super(ProgressProduction, self).__init__(**kwargs)
-		self.__init()
-
-	def __init(self, progress=0):
-		self.progress = progress # float indicating current production progress
-
-	def save(self, db, owner_id):
-		# TODO
-		pass
-
-	def load(self, db, worldid):
-		super(ProgressProduction, self).load(db, worldid)
-		self.__init()
-		# TODO
-
-	## PROTECTED METHODS
-	def _check_available_res(self):
-		for res in self._prod_line.consumed_res.iterkeys():
-			if self.inventory[res] > 0:
-				return True
-		return False
-
-	def _remove_res_to_expend(self):
-		""Takes as many res as there are and returns sum of amount of res taken.""
-		taken = 0
-		for res, amount in self._prod_line.consumed_res.iteritems():
-			remnant = self.inventory.alter(res, amount) # try to get all
-			self._prod_line.change_amount(res, remnant) # set how much we still need to get
-			taken += abs(remnant) + amount
-		return taken
-
-	def _produce(self):
-		# check if we're done
-		still_needed_res = sum(self._prod_line.consumed_res.itervalues())
-		if still_needed_res == 0:
-			self._finished_producing()
-			return
-
-		removed_res = self._remove_res_to_expend()
-		# check if there were res
-		if removed_res == 0:
-			# watch inventory for new res
-			self._add_listeners()
-			self._state = PRODUCTION.STATES.waiting_for_res
-			self._changed()
-			return
-
-		# calculate how much of the whole production process we can produce now
-		# and set the scheduler waiting time accordingly (e.g. half of res => wait half of prod time)
-		all_needed_res = sum(self.original_prod_line.consumed_res.itervalues())
-		part_of_whole_production = float(removed_res) / all_needed_res
-		prod_time = Scheduler().get_ticks( part_of_whole_production * self._prod_line.time )
-		prod_time = min(prod_time, 1) # wait at least 1 tick
-		# do part of production and call this again when done
-		Scheduler().add_new_object(self._produce, self, prod_time)
-
-		# set new progress
-		self.progress += part_of_whole_production
-
-	def _finished_producing(self, **kwargs):
-		super(ProgressProduction, self)._finished_producing(**kwargs)
-		self.progress = 0
-		# reset prodline
-		self._prod_line = copy.copy(self.original_prod_line)
-
-class SingleUseProgressProduction(ProgressProduction, SingleUseProduction):
-	""A production that needs to have a progress and also is only used one time.""
-	pass
-
-"""

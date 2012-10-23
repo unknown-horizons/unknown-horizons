@@ -19,11 +19,13 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
+from fife.extensions.pychan.widgets import Label
+
 from horizons.gui.widgets.productionoverview import ProductionOverview
 from horizons.gui.tabs import OverviewTab
 from horizons.gui.tabs.residentialtabs import setup_tax_slider
 
-from horizons.util import Callback
+from horizons.util.python.callback import Callback
 from horizons.messaging import UpgradePermissionsChanged
 from horizons.command.uioptions import SetSettlementUpgradePermissions
 from horizons.constants import BUILDINGS, TIER
@@ -99,16 +101,19 @@ class MainSquareOverviewTab(AccountTab):
 
 class MainSquareSettlerLevelTab(MainSquareTab):
 	LEVEL = None # overwrite in subclass
-	def __init__(self, instance, widget):
+	def __init__(self, instance):
+		widget = "mainsquare_inhabitants.xml"
 		icon_path = 'content/gui/icons/tabwidget/mainsquare/inhabitants{incr}_%s.png'.format(incr=self.__class__.LEVEL)
 		super(MainSquareSettlerLevelTab, self).__init__(widget=widget, instance=instance, icon_path=icon_path)
 		self.max_inhabitants = instance.session.db.get_settler_inhabitants_max(self.__class__.LEVEL)
+		self.min_inhabitants = instance.session.db.get_settler_inhabitants_min(self.__class__.LEVEL)
 		self.helptext = instance.session.db.get_settler_name(self.__class__.LEVEL)
 
 		slider = self.widget.child_finder('tax_slider')
 		val_label = self.widget.child_finder('tax_val_label')
 		setup_tax_slider(slider, val_label, self.settlement, self.__class__.LEVEL)
 		self.widget.child_finder('tax_val_label').text = unicode(self.settlement.tax_settings[self.__class__.LEVEL])
+		self.widget.child_finder('headline').text = _(instance.session.db.get_settler_name(self.__class__.LEVEL))
 
 	@classmethod
 	def shown_for(cls, instance):
@@ -162,11 +167,31 @@ class MainSquareSettlerLevelTab(MainSquareTab):
 		resident_counts = self._get_resident_counts()
 		houses = 0
 		residents = 0
-		for number in xrange(1, self.max_inhabitants + 1):
+		container = self.widget.child_finder('residents_per_house_table')
+		space_per_label = container.size[0] / 6
+		for number in xrange(self.min_inhabitants, self.max_inhabitants + 1):
+			column = number - (self.min_inhabitants - 1 if self.min_inhabitants > 0 else 0)
 			house_count = resident_counts.get(number, 0)
-			self.widget.child_finder('resident_count_%d' % number).text = unicode(house_count)
 			houses += house_count
 			residents += house_count * number
+			position_x = (space_per_label * (column - 1)) + 10
+			if not container.findChild(name="resident_"+str(column)):
+				label = Label(name="resident_"+str(column), position=(position_x, 0), text=unicode(number))
+				container.addChild(label)
+				count_label = Label(name="resident_count_"+str(column), position=(position_x - 1,20), text=unicode(house_count))
+				container.addChild(count_label)
+			else:
+				container.findChild(name="resident_"+str(column)).text = unicode(number)
+				container.findChild(name="resident_count_"+str(column)).text = unicode(house_count)
+
+		sad = self.instance.session.db.get_settler_happiness_decrease_limit()
+		happy = self.instance.session.db.get_settler_happiness_increase_requirement()
+		self.widget.child_finder('sad_amount').text = unicode(
+			self.settlement.get_residentials_of_lvl_for_happiness(self.__class__.LEVEL, max_happiness=sad))
+		self.widget.child_finder('avg_amount').text = unicode(
+			self.settlement.get_residentials_of_lvl_for_happiness(self.__class__.LEVEL, sad, happy))
+		self.widget.child_finder('happy_amount').text = unicode(
+			self.settlement.get_residentials_of_lvl_for_happiness(self.__class__.LEVEL, happy))
 
 		# refresh the summary
 		self.widget.child_finder('house_count').text = unicode(houses)
@@ -180,20 +205,12 @@ class MainSquareSettlerLevelTab(MainSquareTab):
 
 class MainSquareSailorsTab(MainSquareSettlerLevelTab):
 	LEVEL = TIER.SAILORS
-	def __init__(self, instance):
-		super(MainSquareSailorsTab, self).__init__(instance, 'mainsquare_sailors.xml')
 
 class MainSquarePioneersTab(MainSquareSettlerLevelTab):
 	LEVEL = TIER.PIONEERS
-	def __init__(self, instance):
-		super(MainSquarePioneersTab, self).__init__(instance, 'mainsquare_pioneers.xml')
 
 class MainSquareSettlersTab(MainSquareSettlerLevelTab):
 	LEVEL = TIER.SETTLERS
-	def __init__(self, instance):
-		super(MainSquareSettlersTab, self).__init__(instance, 'mainsquare_settlers.xml')
 
 class MainSquareCitizensTab(MainSquareSettlerLevelTab):
 	LEVEL = TIER.CITIZENS
-	def __init__(self, instance):
-		super(MainSquareCitizensTab, self).__init__(instance, 'mainsquare_citizens.xml')

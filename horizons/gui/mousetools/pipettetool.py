@@ -21,7 +21,7 @@
 
 from fife import fife
 
-import horizons.main
+import horizons.globals
 
 from horizons.entities import Entities
 from horizons.constants import LAYERS
@@ -40,11 +40,11 @@ class PipetteTool(NavigationTool):
 		super(PipetteTool, self).__init__(session)
 		self.session.gui.on_escape = self.on_escape
 		self.renderer = session.view.renderer['InstanceRenderer']
-		horizons.main.fife.set_cursor_image('pipette')
+		horizons.globals.fife.set_cursor_image('pipette')
 
 	def remove(self):
 		self._remove_coloring()
-		horizons.main.fife.set_cursor_image('default')
+		horizons.globals.fife.set_cursor_image('default')
 		super(PipetteTool, self).remove()
 
 	def on_escape(self):

@@ -21,20 +21,20 @@
 
 import logging
 from horizons.ai.aiplayer.behavior import BehaviorManager
-from horizons.ai.aiplayer.behavior.behaviorcomponents import BehaviorMoveCallback
 from horizons.ai.aiplayer.behavior.profile import BehaviorProfileManager
 from horizons.ai.aiplayer.combat.combatmanager import  PirateCombatManager
 from horizons.ai.aiplayer.combat.unitmanager import UnitManager
 from horizons.ai.aiplayer.strategy.strategymanager import PirateStrategyManager
 from horizons.scheduler import Scheduler
-from horizons.util import Point, Callback, WorldObject
+from horizons.util.python.callback import Callback
+from horizons.util.shapes import Point
+from horizons.util.worldobject import WorldObject
 from horizons.constants import UNITS
 from horizons.ext.enum import Enum
 from horizons.ai.generic import GenericAI
 from horizons.command.unit import CreateUnit
 from horizons.world.units.ship import TradeShip
 from horizons.world.units.pirateship import PirateShip
-from horizons.component.namedcomponent import NamedComponent
 from horizons.component.selectablecomponent import SelectableComponent
 
 
@@ -85,7 +85,7 @@ class Pirate(GenericAI):
 		for ship in base_ship.find_nearby_ships():
 			if isinstance(ship, (PirateShip, TradeShip)) or not ship.has_component(SelectableComponent):
 				continue  # don't attack these ships
-			distance = base_ship.position.distance_to_point(ship.position)
+			distance = base_ship.position.distance(ship.position)
 			if lowest_distance is None or distance < lowest_distance:
 				lowest_distance = distance
 				nearest_ship = ship

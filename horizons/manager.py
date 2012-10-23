@@ -25,7 +25,7 @@ import itertools
 
 from horizons.timer import Timer
 from horizons.scheduler import Scheduler
-from horizons.util import WorldObject
+from horizons.util.worldobject import WorldObject
 from horizons.util.living import LivingObject
 from horizons.command.building import Build
 from horizons.network import CommandError, packets
@@ -234,7 +234,7 @@ class MPManager(LivingObject):
 ################################################
 
 class MPPacketmanager(object):
-	log =  logging.getLogger("mpmanager")
+	log = logging.getLogger("mpmanager")
 	def __init__(self, mpmanager):
 		self.mpmanager = mpmanager
 		self.command_packet_list = []

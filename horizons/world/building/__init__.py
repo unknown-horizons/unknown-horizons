@@ -24,12 +24,13 @@ __all__ = ['building', 'housing', 'nature', 'path', 'production', 'storages', 's
 
 import logging
 
-import horizons.main
+import horizons.globals
 from fife import fife
 
-from horizons.util import ActionSetLoader
+from horizons.util.loaders.actionsetloader import ActionSetLoader
 from horizons.i18n.objecttranslations import object_translations
 from horizons.world.ingametype import IngameType
+from horizons.world.production.producer import Producer
 
 class BuildingClass(IngameType):
 	log = logging.getLogger('world.building')
@@ -67,10 +68,13 @@ class BuildingClass(IngameType):
 		self.show_status_icons = yaml_data.get('show_status_icons', True)
 		self.translucent = yaml_data.get('translucent', False)
 		# for mines: on which deposit is it buildable
-		buildable_on_deposit_type = db("SELECT deposit FROM mine WHERE mine = ?", self.id)
-		if buildable_on_deposit_type:
-			self.buildable_on_deposit_type = buildable_on_deposit_type[0][0]
-
+		self.buildable_on_deposit_type = None
+		try:
+			component_template = self.get_component_template(Producer)
+			self.buildable_on_deposit_type = component_template.get('is_mine_for')
+		except KeyError:
+			pass
+			
 	def __str__(self):
 		return "Building[{id}]({name})".format(id=self.id, name=self.name)
 
@@ -80,10 +84,10 @@ class BuildingClass(IngameType):
 		"""
 		cls.log.debug("Loading building %s", cls.id)
 		try:
-			cls._real_object = horizons.main.fife.engine.getModel().createObject(str(cls.id), 'building')
+			cls._real_object = horizons.globals.fife.engine.getModel().createObject(str(cls.id), 'building')
 		except RuntimeError:
 			cls.log.debug("Already loaded building %s", cls.id)
-			cls._real_object = horizons.main.fife.engine.getModel().getObject(str(cls.id), 'building')
+			cls._real_object = horizons.globals.fife.engine.getModel().getObject(str(cls.id), 'building')
 			return
 		all_action_sets = ActionSetLoader.get_sets()
 
@@ -115,6 +119,6 @@ class BuildingClass(IngameType):
 			else:
 				assert False, "Bad rotation for action_set {id}: {rot} for action: {action}".format(**params)
 			path = '{id}+{action}+{rot}:shift:left-{left},bottom+{botm}'.format(**params)
-			anim = horizons.main.fife.animationloader.loadResource(path)
+			anim = horizons.globals.fife.animationloader.loadResource(path)
 			action.get2dGfxVisual().addAnimation(int(rotation), anim)
 			action.setDuration(anim.getDuration())

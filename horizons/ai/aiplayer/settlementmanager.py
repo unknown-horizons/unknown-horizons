@@ -45,7 +45,7 @@ from horizons.ai.aiplayer.goal.tent import TentGoal
 from horizons.ai.aiplayer.goal.tradingship import TradingShipGoal
 
 from horizons.scheduler import Scheduler
-from horizons.util import WorldObject
+from horizons.util.worldobject import WorldObject
 from horizons.util.python import decorators
 from horizons.command.building import Tear
 from horizons.command.uioptions import SetTaxSetting, SetSettlementUpgradePermissions

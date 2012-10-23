@@ -5,10 +5,12 @@
 
 <Container size="170,580">
 	<ImageButton position="35,150"  up_image="content/gui/images/background/pickbelt_l.png" />
+	<ImageButton position="40,200"  up_image="content/gui/images/background/pickbelt_l.png" />
 </Container>
 
 <Container position="1, 4"  size="170,580">
 	<Label position="50,160"  name="team_lbl"  text="UH-Team"  font="small_tooltip" />
+	<Label position="55,210"  name="patchers_lbl"  text="Patchers" font="small_tooltip" />
 </Container>
 
 <!-- this is the second container ( patchers ).                                        !!!
@@ -88,7 +90,7 @@
 <Container position="800,3"  size="170,500"  name="pickbelt">
 	<Label name="translators_lbl"  position="60,260"  text="Translators"  font="small_tooltip" />
 	<Label name="packagers_lbl"  position="65,310"  text="Packagers" font="small_tooltip" />
-	<Label name="special_thanks_lbl"  position="70,360"  text="Special Thanks" font="small_tooltip" />
+	<Label name="special_thanks_lbl"  position="70,360"  text="Thanks" font="small_tooltip" />
 </Container>
 
 </Container>

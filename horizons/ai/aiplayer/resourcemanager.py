@@ -24,7 +24,7 @@ import math
 from collections import defaultdict
 
 from horizons.ai.aiplayer.building import AbstractBuilding
-from horizons.util import WorldObject
+from horizons.util.worldobject import WorldObject
 from horizons.util.python import decorators
 from horizons.constants import BUILDINGS, RES, TRADER
 from horizons.command.uioptions import AddToBuyList, RemoveFromBuyList, AddToSellList, RemoveFromSellList

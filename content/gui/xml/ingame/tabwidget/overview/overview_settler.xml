@@ -14,7 +14,7 @@
 		<Container size="260,550" position="22,20">
 
 			<!-- Building image -->
-			<Icon name="building_image" position="30,0"/>
+			<Icon name="building_image" position="30,14"/>
 
 			<!-- happiness and residents -->
 			<Label name='name' position="0,140" text="" />

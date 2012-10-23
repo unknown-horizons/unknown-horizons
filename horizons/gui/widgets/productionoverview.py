@@ -28,9 +28,9 @@ from horizons.gui.widgets.statswidget import StatsWidget
 from horizons.scheduler import Scheduler
 from horizons.util.python import decorators
 from horizons.gui.util import create_resource_icon
-from horizons.util import Callback
+from horizons.util.python.callback import Callback
 from horizons.component.namedcomponent import NamedComponent
-from horizons.gui.widgets import OkButton
+from horizons.gui.widgets.imagebutton import OkButton
 
 class ProductionOverview(StatsWidget):
 	"""
@@ -58,8 +58,8 @@ class ProductionOverview(StatsWidget):
 
 	def refresh(self):
 		super(ProductionOverview, self).refresh()
-		#xgettext:python-format
 		name = self.settlement.get_component(NamedComponent).name
+		#xgettext:python-format
 		text = _('Production overview of {settlement}').format(settlement=name)
 		self._gui.findChild(name='headline').text = text
 
@@ -68,7 +68,7 @@ class ProductionOverview(StatsWidget):
 			self._add_line_to_gui(resource_id, amount)
 		self._content_vbox.adaptLayout()
 
-	def _add_line_to_gui(self, resource_id, amount, show_all=False):
+	def _add_line_to_gui(self, resource_id, amount):
 		displayed = self.db.get_res_inventory_display(resource_id)
 		if not displayed:
 			return

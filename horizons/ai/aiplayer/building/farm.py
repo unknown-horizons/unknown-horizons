@@ -27,7 +27,7 @@ from horizons.ai.aiplayer.constants import BUILD_RESULT, BUILDING_PURPOSE
 from horizons.ai.aiplayer.buildingevaluator import BuildingEvaluator
 from horizons.constants import RES, BUILDINGS
 from horizons.util.python import decorators
-from horizons.util import Point
+from horizons.util.shapes import Point
 
 class AbstractFarm(AbstractBuilding):
 	@property

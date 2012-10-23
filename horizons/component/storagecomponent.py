@@ -39,7 +39,7 @@ class StorageComponent(Component):
 	storage_mapping = {
 	    'PositiveStorage': PositiveStorage,
 	    'PositiveSizedSlotStorage': PositiveSizedSlotStorage,
-	    'PositiveTotalNumSlotStorage': PositiveTotalNumSlotsStorage,
+	    'PositiveTotalNumSlotsStorage': PositiveTotalNumSlotsStorage,
 	    'SlotsStorage': PositiveSizedSpecializedStorage,
 	    'SettlementStorage': SettlementStorage # pseudo storage meaning to share settlement storage
 	    }

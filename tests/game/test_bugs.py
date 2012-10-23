@@ -28,7 +28,7 @@ from horizons.component.collectingcomponent import CollectingComponent
 from horizons.world.production.producer import Producer, QueueProducer
 from horizons.constants import BUILDINGS, RES, PRODUCTIONLINES, GAME
 from horizons.util.worldobject import WorldObject
-from horizons.util.shapes.point import Point
+from horizons.util.shapes import Point
 from horizons.world.production.utilisation import FieldUtilisation
 from horizons.world.building.settler import SettlerRuin
 
@@ -169,7 +169,7 @@ def test_ticket_1427():
 	bb_storage = boat_builder.get_component(StorageComponent)
 
 	# Add production to use resources
-	bb_producer =  boat_builder.get_component(Producer)
+	bb_producer = boat_builder.get_component(Producer)
 	bb_producer.add_production_by_id(PRODUCTIONLINES.HUKER)
 	production = bb_producer._productions[PRODUCTIONLINES.HUKER]
 
@@ -302,3 +302,17 @@ def test_ticket_1693(s, p):
 	# Build another one on top of the ruin
 	residence2 = Build(BUILDINGS.RESIDENTIAL, 30, 30, island, settlement=settlement)(p)
 	assert residence2
+
+
+@game_test
+def test_ticket_1847(s, p):
+	"""Tearing down MineProducer (clay pit, mine) crashes game"""
+	settlement, island = settle(s)
+
+	assert Build(BUILDINGS.CLAY_DEPOSIT, 30, 30, island, ownerless=True)(None)
+	claypit = Build(BUILDINGS.CLAY_PIT, 30, 30, island, settlement=settlement)(p)
+	assert claypit
+
+	Tear(claypit)(p)
+
+	s.run(seconds=5)

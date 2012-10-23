@@ -18,15 +18,14 @@
 # Free Software Foundation, Inc.,
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
-from fife.fife import Rect
+
 from tests.unittests import TestCase
 
 from horizons.constants import RES, BUILDINGS
 from horizons.world.building.production import ProductionBuilding
 from horizons.world.island import Island
 from horizons.world.units.collectors.collector import Job, JobList
-from horizons.util.shapes.point import Point
-
+from horizons.util.shapes import Point, Rect
 
 class TestJobList(TestCase):
 
@@ -103,7 +102,6 @@ class TestCollector(object):
 	def __init__(self, x, y):
 		self.position = Point(x, y)
 
-
 	def get_home_inventory(self):
 		"""Return a dummy inventory"""
 		return {1: 3,
@@ -111,6 +109,7 @@ class TestCollector(object):
 		        3: 2,
 		        4: 8,
 		        5: 4}
+
 
 class TestObject(ProductionBuilding):
 	"""Dummy object that acts as building as far as we need it to"""
@@ -124,6 +123,7 @@ class TestObject(ProductionBuilding):
 	def get_produced_resources(self):
 		return (RES.RAW_CLAY,)
 
+
 class ClayPit(ProductionBuilding):
 	"""Dummy object that acts as building as far as we need it to"""
 
@@ -135,6 +135,7 @@ class ClayPit(ProductionBuilding):
 
 	def get_needed_resources(self):
 		return (RES.RAW_CLAY,)
+
 
 class TestIsland(Island):
 	def __init__(self):

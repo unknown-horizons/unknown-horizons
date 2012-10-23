@@ -25,26 +25,28 @@ import shutil
 import sys
 import tempfile
 
-from tests.gui import TestFinished, gui_test
+from tests.gui import gui_test
 
 
 USER_DIR = None
 
 def setup():
 	global USER_DIR
-	USER_DIR = tempfile.mkdtemp(suffix=u'H߀ｒìｚｏԉｓ').encode(sys.getfilesystemencoding())
+	USER_DIR = tempfile.mkdtemp(suffix=u'H߀ｒìｚｏԉｓ')
 
 
 def teardown():
 	global USER_DIR
-	shutil.rmtree(USER_DIR)
+	try:
+		shutil.rmtree(USER_DIR)
+	except:
+		pass
 	USER_DIR = None
 
 
 def dummy(gui):
 	"""This test will end the game immediately."""
-	yield
-	yield TestFinished
+	pass
 dummy.__original__ = dummy
 
 

@@ -21,9 +21,9 @@
 
 from fife import fife
 
-import horizons.main
+import horizons.globals
 from horizons.command.unit import Act
-from horizons.util import WorldObject
+from horizons.util.worldobject import WorldObject
 from horizons.util.worldobject import WorldObjectNotFound
 from horizons.gui.mousetools.navigationtool import NavigationTool
 from horizons.component.selectablecomponent import SelectableComponent
@@ -155,7 +155,7 @@ class SelectionTool(NavigationTool):
 		from horizons.gui.mousetools.attackingtool import AttackingTool
 		attacking_unit_found = False
 		for i in selected:
-			if hasattr(i, 'attack') and i.owner == self.session.world.player:
+			if hasattr(i, 'attack') and i.owner.is_local_player:
 				attacking_unit_found = True
 				self.deselect_at_end = False # Handover to AttackingTool without deselecting
 				break
@@ -164,7 +164,7 @@ class SelectionTool(NavigationTool):
 			self.session.set_cursor('attacking')
 		if not attacking_unit_found and isinstance(self.session.cursor, AttackingTool):
 			self.session.set_cursor()
-			horizons.main.fife.set_cursor_image('default')
+			horizons.globals.fife.set_cursor_image('default')
 
 	def mousePressed(self, evt):
 		if evt.isConsumedByWidgets():

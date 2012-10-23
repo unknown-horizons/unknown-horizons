@@ -43,7 +43,7 @@ import sys
 import copy
 from collections import defaultdict
 
-from horizons.util import ChangeListener
+from horizons.util.changelistener import ChangeListener
 
 class GenericStorage(ChangeListener):
 	"""The GenericStorage represents a storage for buildings/units/players/etc. for storing
@@ -225,7 +225,7 @@ class TotalStorage(GlobalLimitStorage):
 		super(TotalStorage, self).__init__(limit)
 
 	def alter(self, res, amount):
-		check =  max(0, amount + self.get_sum_of_stored_resources() - self.limit)
+		check = max(0, amount + self.get_sum_of_stored_resources() - self.limit)
 		return check + super(TotalStorage, self).alter(res, amount - check)
 
 	def get_free_space_for(self, res):

@@ -27,10 +27,10 @@ from collections import deque
 
 from horizons.constants import UNITS, BUILDINGS, RES, WILD_ANIMAL
 from horizons.command.building import Build
-from horizons.util.uhdbaccessor import read_savegame_template
 from horizons.entities import Entities
 from horizons.util.dbreader import DbReader
-from horizons.util import Point
+from horizons.util.shapes import Point
+from horizons.util.uhdbaccessor import read_savegame_template
 from horizons.component.selectablecomponent import SelectableComponent
 from horizons.component.storagecomponent import StorageComponent
 from horizons.command.unit import CreateUnit
@@ -156,7 +156,9 @@ def add_resource_deposits(world, resource_multiplier):
 				pos = bisect.bisect_left(total_sum, object_sum, 0, len(total_sum) - 2)
 				x, y = locations[pos][1]
 				if object_class.check_build(world.session, Point(x, y), check_settlement=False):
-					Build(object_class, x, y, locations[pos][2], 45 + world.session.random.randint(0, 3) * 90, ownerless = True)(issuer = None)
+					Build(object_class, x, y, locations[pos][2],
+					      45 + world.session.random.randint(0, 3) * 90,
+					      ownerless=True)(issuer=None)
 					break
 
 	for island in world.islands:
@@ -240,9 +242,10 @@ def add_nature_objects(world, natural_resource_multiplier):
 			# add tree to every nth tile and an animal to one in every M trees
 			if world.session.random.randint(0, 2) == 0 and \
 			   Tree.check_build(world.session, tile, check_settlement=False):
-				building = Build(Tree, x, y, island, 45 + world.session.random.randint(0, 3) * 90, ownerless = True)(issuer = None)
+				building = Build(Tree, x, y, island, 45 + world.session.random.randint(0, 3) * 90,
+				                 ownerless=True)(issuer=None)
 				if world.session.random.randint(0, WILD_ANIMAL.POPUlATION_INIT_RATIO) == 0: # add animal to every nth tree
-					CreateUnit(island.worldid, UNITS.WILD_ANIMAL, x, y)(issuer = None)
+					CreateUnit(island.worldid, UNITS.WILD_ANIMAL, x, y)(issuer=None)
 				if world.session.random.random() > WILD_ANIMAL.FOOD_AVAILABLE_ON_START:
 					building.get_component(StorageComponent).inventory.alter(RES.WILDANIMALFOOD, -1)
 
@@ -254,7 +257,9 @@ def add_nature_objects(world, natural_resource_multiplier):
 					fish_y = y + y_dir * world.session.random.randint(3, 9)
 					# now we have the location, check if we can build here
 					if (fish_x, fish_y) in world.ground_map:
-						Build(FishDeposit, fish_x, fish_y, world, 45 + world.session.random.randint(0, 3) * 90, ownerless = True)(issuer = None)
+						Build(FishDeposit, fish_x, fish_y, world,
+						      45 + world.session.random.randint(0, 3) * 90,
+						      ownerless=True)(issuer=None)
 
 	# TODO HACK BAD THING revert hack so trees don't start finished
 	Tree.component_templates[1]['ProducerComponent']['start_finished'] = False

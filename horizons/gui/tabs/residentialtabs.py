@@ -20,11 +20,12 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-from horizons.util import Callback, ActionSetLoader
+from horizons.util.python.callback import Callback
+from horizons.util.loaders.actionsetloader import ActionSetLoader
 from horizons.constants import SETTLER
 from horizons.command.uioptions import SetTaxSetting
 from horizons.gui.tabs import OverviewTab
-from horizons.gui.util import create_resource_icon
+from horizons.gui.util import create_resource_icon, get_happiness_icon_and_helptext
 from horizons.component.namedcomponent import NamedComponent
 from horizons.messaging import SettlerUpdate
 
@@ -70,21 +71,9 @@ class SettlerOverviewTab(OverviewTab):
 		super(SettlerOverviewTab, self).hide()
 
 	def refresh(self):
-		happiness_icon_path = "content/gui/icons/templates/happiness/"
-		happiness_helptext = _("satisfied")
-		sad = self.instance.session.db.get_settler_happiness_decrease_limit()
-		happy = self.instance.session.db.get_settler_happiness_increase_requirement()
-		if self.instance.happiness <= sad:
-			happiness_icon_path += "sad.png"
-			happiness_helptext = _("sad")
-		elif sad < self.instance.happiness < happy:
-			happiness_icon_path += "average.png"
-		elif self.instance.happiness >= happy:
-			happiness_icon_path += "happy.png"
-			happiness_helptext = _("happy")
-
-		self.widget.child_finder('happiness_label').image = happiness_icon_path
-		self.widget.child_finder('happiness_label').helptext = happiness_helptext
+		image, helptext = get_happiness_icon_and_helptext(self.instance.happiness, self.instance.session)
+		self.widget.child_finder('happiness_label').image = image
+		self.widget.child_finder('happiness_label').helptext = helptext
 		self.widget.child_finder('happiness').progress = self.instance.happiness
 		self.widget.child_finder('inhabitants').text = u"%s/%s" % (
 		                                               self.instance.inhabitants,

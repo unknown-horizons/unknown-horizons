@@ -24,10 +24,13 @@ import logging
 import random
 import weakref
 
-import horizons.main
+import horizons.globals
 
 from horizons.entities import Entities
-from horizons.util import ActionSetLoader, Point, decorators, WorldObject
+from horizons.util.loaders.actionsetloader import ActionSetLoader
+from horizons.util.python import decorators
+from horizons.util.shapes import Point
+from horizons.util.worldobject import WorldObject
 from horizons.command.building import Build
 from horizons.component.selectablecomponent import SelectableBuildingComponent, SelectableComponent
 from horizons.gui.mousetools.navigationtool import NavigationTool
@@ -131,7 +134,7 @@ class BuildingTool(NavigationTool):
 	def __init_selectable_component(self):
 		self.selectable_comp = SelectableBuildingComponent
 		try:
-			template = self._class.get_component_template(SelectableComponent.NAME)
+			template = self._class.get_component_template(SelectableComponent)
 			self.selectable_comp = SelectableComponent.get_instance(template)
 		except KeyError:
 			pass
@@ -218,19 +221,18 @@ class BuildingTool(NavigationTool):
 		if self.__class__.gui is None:
 			self.__class__.gui = load_uh_widget("place_building.xml")
 			top_bar = self.__class__.gui.findChild(name='top_bar')
-			top_bar.position = (self.__class__.gui.size[0]/2 - top_bar.size[0]/2 -16, 50)
+			top_bar.position = ((self.__class__.gui.size[0] // 2) - (top_bar.size[0] // 2) - 16, 50)
 			self.__class__.gui.position_technique = "right-1:top+157"
 		self.__class__.gui.mapEvents( { "rotate_left" : self.rotate_left,
-				              "rotate_right": self.rotate_right } )
+		                                "rotate_right": self.rotate_right } )
 		# set translated building name in gui
 		self.__class__.gui.findChild(name='headline').text = _('Build {building}').format(building=_(self._class.name))
 		self.__class__.gui.findChild(name='running_costs').text = unicode(self._class.running_costs)
 		head_box = self.__class__.gui.findChild(name='head_box')
 		head_box.adaptLayout() # recalculates size of new content
-		head_box.position = ( # calculate and set new center (we cause pychan to not support it)
-				              max( self.__class__.gui.size[0]/2 - head_box.size[0]/2, 25),
-				              head_box.position[1]
-				              )
+		# calculate and set new center
+		new_x = max(25, (self.__class__.gui.size[0] // 2) - (head_box.size[0] // 2))
+		head_box.position = (new_x, head_box.position[1])
 		head_box.adaptLayout()
 		self.draw_gui()
 		self.session.view.add_change_listener(self.draw_gui)
@@ -251,15 +253,18 @@ class BuildingTool(NavigationTool):
 			action = 'idle_full'
 		else: # If no idle animation found, use the first you find
 			action = action_sets[action_set].keys()[0]
-		rotation = (self.rotation+int(self.session.view.cam.getRotation())-45)%360
+		rotation = (self.rotation + int(self.session.view.cam.getRotation()) - 45) % 360
 		image = sorted(action_sets[action_set][action][rotation].keys())[0]
 		if GFX.USE_ATLASES:
 			# Make sure the preview is loaded
-			horizons.main.fife.animationloader.load_image(image, action_set, action, rotation)
+			horizons.globals.fife.animationloader.load_image(image, action_set, action, rotation)
 		building_icon = self.gui.findChild(name='building')
 		building_icon.image = image
 		# TODO: Remove hardcoded 70
-		building_icon.position = (self.__class__.gui.size[0]/2 - building_icon.size[0]/2, self.__class__.gui.size[1]/2 - building_icon.size[1]/2 - 70)
+		gui_x, gui_y = self.__class__.gui.size
+		icon_x, icon_y = building_icon.size
+		building_icon.position = (gui_x // 2 - icon_x // 2,
+		                          gui_y // 2 - icon_y // 2 - 70)
 		self.__class__.gui.adaptLayout()
 
 	def preview_build(self, point1, point2, force=False):
@@ -267,7 +272,7 @@ class BuildingTool(NavigationTool):
 		#self.session.view.renderer['InstanceRenderer'].removeAllColored()
 		self.log.debug("BuildingTool: preview build at %s, %s", point1, point2)
 		new_buildings = self._class.check_build_line(self.session, point1, point2,
-				                                     rotation = self.rotation, ship=self.ship)
+		                                             rotation=self.rotation, ship=self.ship)
 		# optimisation: If only one building is in the preview and the position hasn't changed
 		# => don't preview. Otherwise the preview is redrawn on every mouse move
 		if not force and len(new_buildings) == len(self.buildings) == 1 and \
@@ -371,9 +376,10 @@ class BuildingTool(NavigationTool):
 		"""Color the range as if the building was selected"""
 		radius_only_on_island = True
 		if hasattr(self.selectable_comp, 'range_applies_only_on_island'):
-			radius_only_on_island =  self.selectable_comp.range_applies_only_on_island
+			radius_only_on_island = self.selectable_comp.range_applies_only_on_island
 
-		self.selectable_comp.select_building(self.session, building.position, settlement, self._class.radius, radius_only_on_island)
+		self.selectable_comp.select_building(self.session, building.position, settlement,
+		                                     self._class.radius, radius_only_on_island)
 
 	def _highlight_related_buildings_in_range(self, building, settlement):
 		"""Highlight directly related buildings (tree for lumberjacks) that are in range of the build preview"""
@@ -424,7 +430,7 @@ class BuildingTool(NavigationTool):
 			if tile.object is not None and tile.object.id in ids:
 				related_building = tile.object
 				# check if it was actually this one's radius
-				if building.position.distance_to_tuple( (tile.x, tile.y) ) <= \
+				if building.position.distance( (tile.x, tile.y) ) <= \
 				   Entities.buildings[related_building.id].radius:
 					# found one
 					if related_building in self._highlighted_buildings:
@@ -497,7 +503,7 @@ class BuildingTool(NavigationTool):
 		self.log.debug("BuildingTool mouseReleased")
 		if evt.isConsumedByWidgets():
 			super(BuildingTool, self).mouseReleased(evt)
-		elif fife.MouseEvent.LEFT == evt.getButton():
+		elif evt.getButton() == fife.MouseEvent.LEFT:
 			point = self.get_world_location(evt)
 
 			# check if position has changed with this event and update everything
@@ -524,7 +530,7 @@ class BuildingTool(NavigationTool):
 					BuildingTool._last_road_built = BuildingTool._last_road_built[-3:]
 
 			# check how to continue: either build again or escape
-			if ((evt.isShiftPressed() or horizons.main.fife.get_uh_setting('UninterruptedBuilding')) \
+			if ((evt.isShiftPressed() or horizons.globals.fife.get_uh_setting('UninterruptedBuilding')) \
 			    and not self._class.id == BUILDINGS.WAREHOUSE) \
 			    or not found_buildable \
 			    or self._class.class_package == 'path':
@@ -537,7 +543,7 @@ class BuildingTool(NavigationTool):
 			else:
 				self.on_escape()
 			evt.consume()
-		elif fife.MouseEvent.RIGHT != evt.getButton():
+		elif evt.getButton() != fife.MouseEvent.RIGHT:
 			# TODO: figure out why there is a != in the comparison above. why not just use else?
 			super(BuildingTool, self).mouseReleased(evt)
 
@@ -547,9 +553,7 @@ class BuildingTool(NavigationTool):
 		changed_tiles = set()
 
 		# actually do the build and build preparations
-		i = -1
-		for building in self.buildings:
-			i += 1
+		for i, building in enumerate(self.buildings):
 			# remove fife instance, the building will create a new one.
 			# Check if there is a matching fife instance, could be missing
 			# in case of trees, which are hidden if not buildable
@@ -657,7 +661,7 @@ class BuildingTool(NavigationTool):
 		"""Deletes fife instances of buildings"""
 
 		try:
-			self._class.get_component_template(SelectableComponent.NAME)
+			self._class.get_component_template(SelectableComponent)
 		except KeyError:
 			pass
 		else:
@@ -790,7 +794,7 @@ class SettlementBuildingToolLogic(object):
 
 	def _on_update(self, message):
 		if self.building_tool():
-			if self.building_tool().session.world.player == message.sender.owner:
+			if message.sender.owner.is_local_player:
 				# this is generally caused by adding new buildings, therefore new_buildings=True
 				self.building_tool().highlight_buildable(message.changed_tiles, new_buildings=True)
 

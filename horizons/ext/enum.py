@@ -210,7 +210,7 @@ class Enum(object):
 		@throws KeyError on key not found"""
 		try:
 			try:
-				index =  self._keys.index(key)
+				index = self._keys.index(key)
 			except AttributeError:
 				# WORKAROUND: python 2.5 doesn't have tuple.index
 				index = 0

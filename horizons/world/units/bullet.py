@@ -19,12 +19,12 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-import horizons.main
+import horizons.globals
 
 from fife import fife
 from horizons.constants import LAYERS
 from horizons.scheduler import Scheduler
-from horizons.util import WorldObject
+from horizons.util.worldobject import WorldObject
 from horizons.component.componentholder import ComponentHolder
 
 class Bullet(ComponentHolder, WorldObject):
@@ -73,11 +73,11 @@ class Bullet(ComponentHolder, WorldObject):
 		self.y_ratio = float(dest.y - source.y)/self.needed_ticks
 
 		if not Bullet._object:
-			Bullet._object = horizons.main.fife.engine.getModel().createObject('cb', 'cannonball')
+			Bullet._object = horizons.globals.fife.engine.getModel().createObject('cb', 'cannonball')
 			fife.ObjectVisual.create(Bullet._object)
 
 			visual = self._object.get2dGfxVisual()
-			img = horizons.main.fife.imagemanager.load(str(image))
+			img = horizons.globals.fife.imagemanager.load(str(image))
 			for rotation in [45, 135, 225, 315]:
 				visual.addStaticImage(rotation, img.getHandle())
 
