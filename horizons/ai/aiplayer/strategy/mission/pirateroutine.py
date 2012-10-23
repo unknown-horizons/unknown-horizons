@@ -43,11 +43,9 @@ class PirateRoutine(FleetMission):
 
 	def __init__(self, success_callback, failure_callback, ships):
 		super(PirateRoutine, self).__init__(success_callback, failure_callback, ships)
-		self.__init()
-
-	def __init(self):
 		self.target_point = self.owner.session.world.get_random_possible_ship_position()
 
+	def _setup_state_callbacks(self):
 		self.combatIntermissions = {
 			self.missionStates.sailing_to_target: (self.sail_to_target, self.flee_home),
 			self.missionStates.chasing_ship: (self.chase_ship, self.flee_home),
@@ -72,8 +70,6 @@ class PirateRoutine(FleetMission):
 		db_result = db("SELECT target_point_x, target_point_y FROM ai_mission_pirate_routine WHERE rowid = ?", worldid)[0]
 
 		self.target_point = Point(*db_result)
-
-		self.__init()
 
 	def start(self):
 		self.sail_to_target()
