@@ -32,6 +32,12 @@ class TRADE_ERROR_TYPE(object):
 	"""
 	NO_ERROR, TEMPORARY, PERMANENT = range(3)
 
+class TradeSlotInfo(object):
+	def __init__(self, resource_id, selling, limit):
+		self.resource_id = resource_id
+		self.selling = selling
+		self.limit = limit
+
 class TradePostComponent(ChangeListener, Component):
 	"""This Class has to be inherited by every class that wishes to use BuySellTab and trade with
 	the free trader.
@@ -43,44 +49,53 @@ class TradePostComponent(ChangeListener, Component):
 		super(TradePostComponent, self).__init__()
 
 	def initialize(self):
-		self.buy_list = {} # dict of resources that are to be bought. { res_id: limit, .. }
-		self.sell_list = {} # dict of resources that are to be sold.  { res_id: limit, .. }
+		self.slots = [None, None, None] # [TradeSlotInfo, ...]
+		self.buy_list = {} # dict of resources that are to be bought. {resource_id: slot_id, ...}
+		self.sell_list = {} # dict of resources that are to be sold.  {resource_id: slot_id, ...}
 		self.trade_history = [] # [(tick, player_id, resource_id, amount, gold), ...] ordered by tick, player_id
-		self.buy_history = {} # { tick_id: (res, amount, price) }
-		self.sell_history = {} # { tick_id: (res, amount, price) }
+		self.buy_history = {} # {tick_id: (res, amount, price), ...}
+		self.sell_history = {} # {tick_id: (res, amount, price), ...}
 		self.total_income = 0
 		self.total_expenses = 0
 
-	def add_to_buy_list(self, res_id, limit):
-		self.buy_list[res_id] = limit
+	def set_slot(self, slot_id, resource_id, selling, limit):
+		self.clear_slot(slot_id, False)
+		self.slots[slot_id] = TradeSlotInfo(resource_id, selling, limit)
+		if selling:
+			self.sell_list[resource_id] = slot_id
+		else:
+			self.buy_list[resource_id] = slot_id
 		self._changed()
 
-	def remove_from_buy_list(self, res_id):
-		if res_id in self.buy_list:
-			del self.buy_list[res_id]
+	def clear_slot(self, slot_id, trigger_changed):
+		if self.slots[slot_id] is not None:
+			old_resource_id = self.slots[slot_id].resource_id
+			if self.slots[slot_id].selling:
+				del self.sell_list[old_resource_id]
+			else:
+				del self.buy_list[old_resource_id]
+
+		self.slots[slot_id] = None
+		if trigger_changed:
 			self._changed()
 
-	def add_to_sell_list(self, res_id, limit):
-		self.sell_list[res_id] = limit
-		self._changed()
-
-	def remove_from_sell_list(self, res_id):
-		if res_id in self.sell_list:
-			del self.sell_list[res_id]
-			self._changed()
+	def get_free_slot(self, resource_id):
+		if resource_id in self.buy_list:
+			return self.buy_list[resource_id]
+		if resource_id in self.sell_list:
+			return self.sell_list[resource_id]
+		for i in xrange(len(self.slots)):
+			if self.slots[i] is None:
+				return i
+		return None
 
 	def save(self, db):
 		super(TradePostComponent, self).save(db)
 
-		for resource, limit in self.buy_list.iteritems():
-			assert limit is not None, "limit must not be none"
-			db("INSERT INTO trade_buy(object, resource, trade_limit) VALUES(?, ?, ?)",
-				 self.instance.worldid, resource, limit)
-
-		for resource, limit in self.sell_list.iteritems():
-			assert limit is not None, "limit must not be none"
-			db("INSERT INTO trade_sell(object, resource, trade_limit) VALUES(?, ?, ?)",
-				 self.instance.worldid, resource, limit)
+		for slot_id in xrange(len(self.slots)):
+			if self.slots[slot_id] is not None:
+				db("INSERT INTO trade_slots(trade_post, slot_id, resource_id, selling, trade_limit) VALUES(?, ?, ?, ?, ?)",
+				   self.instance.worldid, slot_id, self.slots[slot_id].resource_id, self.slots[slot_id].selling, self.slots[slot_id].limit)
 
 		db("INSERT INTO trade_values(object, total_income, total_expenses) VALUES (?, ?, ?)",
 		   self.instance.worldid, self.total_income, self.total_expenses)
@@ -92,14 +107,10 @@ class TradePostComponent(ChangeListener, Component):
 
 	def load(self, db, worldid):
 		super(TradePostComponent, self).load(db, worldid)
-
 		self.initialize()
 
-		for (res, limit) in db("SELECT resource, trade_limit FROM trade_buy WHERE object = ?", worldid):
-			self.buy_list[res] = limit
-
-		for (res, limit) in db("SELECT resource, trade_limit FROM trade_sell WHERE object = ?", worldid):
-			self.sell_list[res] = limit
+		for (slot_id, resource_id, selling, limit) in db("SELECT slot_id, resource_id, selling, trade_limit FROM trade_slots WHERE trade_post = ?", worldid):
+			self.set_slot(slot_id, resource_id, selling, limit)
 
 		self.total_income, self.total_expenses = db("SELECT total_income, total_expenses FROM trade_values WHERE object = ?", worldid)[0]
 
@@ -121,9 +132,9 @@ class TradePostComponent(ChangeListener, Component):
 		@return bool, whether we did buy it"""
 		assert price >= 0 and amount >= 0
 		if not res in self.buy_list or \
-		   self.get_owner_inventory()[RES.GOLD] < price or \
-		   self.get_inventory().get_free_space_for(res) < amount or \
-		   amount + self.get_inventory()[res] > self.buy_list[res]:
+				self.get_owner_inventory()[RES.GOLD] < price or \
+				self.get_inventory().get_free_space_for(res) < amount or \
+				amount + self.get_inventory()[res] > self.slots[self.buy_list[res]].limit:
 			self._changed()
 			return False
 
@@ -148,8 +159,8 @@ class TradePostComponent(ChangeListener, Component):
 		@return bool, whether we did sell it"""
 		assert price >= 0 and amount >= 0
 		if not res in self.sell_list or \
-			 self.get_inventory()[res] < amount or \
-			 self.get_inventory()[res] - amount < self.sell_list[res]:
+				self.get_inventory()[res] < amount or \
+				self.get_inventory()[res] - amount < self.slots[self.sell_list[res]].limit:
 			self._changed()
 			return False
 
@@ -192,7 +203,7 @@ class TradePostComponent(ChangeListener, Component):
 		# can't sell more than what we have
 		amount = min(amount, self.get_inventory()[resource_id])
 		# can't sell more than we are trying to sell according to the settings
-		amount = min(amount, self.get_inventory()[resource_id] - self.sell_list[resource_id])
+		amount = min(amount, self.get_inventory()[resource_id] - self.slots[self.sell_list[resource_id]].limit)
 		if amount <= 0:
 			return err(_("The trade partner does not sell more of this."), TRADE_ERROR_TYPE.TEMPORARY)
 
@@ -237,7 +248,7 @@ class TradePostComponent(ChangeListener, Component):
 			return err(_("The trade partner can not afford to buy this."), TRADE_ERROR_TYPE.TEMPORARY)
 
 		# can't buy more than we are trying to buy according to the settings
-		amount = min(amount, self.buy_list[resource_id] - self.get_inventory()[resource_id])
+		amount = min(amount, self.slots[self.buy_list[resource_id]].limit - self.get_inventory()[resource_id])
 		if amount <= 0:
 			return err(_("The trade partner does not buy more of this."), TRADE_ERROR_TYPE.TEMPORARY)
 

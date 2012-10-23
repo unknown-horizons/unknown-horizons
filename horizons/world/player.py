@@ -177,12 +177,12 @@ class Player(ComponentHolder, WorldObject):
 		# with the other values here
 
 		get_sum = lambda l, attr : sum ( getattr(obj, attr) for obj in l )
-		tradeposts = [ s.get_component(TradePostComponent) for s in self.settlements ]
+		trade_posts = [ s.get_component(TradePostComponent) for s in self.settlements ]
 		return Data(
 		  running_costs = get_sum(self.settlements, 'cumulative_running_costs'),
 		  taxes = get_sum(self.settlements, 'cumulative_taxes'),
-		  sell_income = get_sum(tradeposts, 'sell_income'),
-		  buy_expenses = get_sum(tradeposts, 'buy_expenses'),
+		  sell_income = get_sum(trade_posts, 'sell_income'),
+		  buy_expenses = get_sum(trade_posts, 'buy_expenses'),
 		  balance = get_sum(self.settlements, 'balance'),
 		)
 
