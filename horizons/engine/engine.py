@@ -33,7 +33,7 @@ from fife.extensions.fife_settings import FIFE_MODULE
 
 from horizons.util.loaders.sqliteanimationloader import SQLiteAnimationLoader
 from horizons.util.loaders.sqliteatlasloader import SQLiteAtlasLoader
-from horizons.constants import LANGUAGENAMES, PATHS, GFX
+from horizons.constants import LANGUAGENAMES, PATHS
 from horizons.engine.settingshandler import SettingsHandler, get_screen_resolutions
 from horizons.engine.sound import Sound
 from horizons.engine.settingsdialog import SettingsDialog
@@ -156,7 +156,7 @@ class Fife(ApplicationBase):
 		self.sound = Sound(self)
 		self.imagemanager = self.engine.getImageManager()
 		self.targetrenderer = self.engine.getTargetRenderer()
-		self.set_atlas_usage(GFX.USE_ATLASES)
+		self.animationloader = None
 
 		#Set game cursor
 		self.cursor = self.engine.getCursor()
@@ -183,8 +183,9 @@ class Fife(ApplicationBase):
 
 		self._gotInited = True
 
-	def set_atlas_usage(self, enabled):
-		self.use_atlases = enabled
+	def init_animation_loader(self, use_atlases):
+		# this method should not be called from init to catch any bugs caused by the loader changing after it.
+		self.use_atlases = use_atlases
 		if self.use_atlases:
 			self.animationloader = SQLiteAtlasLoader()
 		else:

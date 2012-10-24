@@ -144,10 +144,6 @@ def start(_command_line_arguments):
 	if command_line_arguments.max_ticks:
 		GAME.MAX_TICKS = command_line_arguments.max_ticks
 
-	if horizons.globals.fife.get_uh_setting('AtlasesEnabled'):
-		GFX.USE_ATLASES = True
-		PATHS.DB_FILES = PATHS.DB_FILES + (PATHS.ATLAS_DB_PATH, )
-
 	atlas_generator = None
 	if VERSION.IS_DEV_VERSION and horizons.globals.fife.get_uh_setting('AtlasesEnabled') \
 	                          and horizons.globals.fife.get_uh_setting('AtlasGenerationEnabled') \
@@ -156,8 +152,6 @@ def start(_command_line_arguments):
 		args = [sys.executable, os.path.join('development', 'generate_atlases.py'),
 		        str(horizons.globals.fife.get_uh_setting('MaxAtlasSize'))]
 		atlas_generator = subprocess.Popen(args, stdout=None, stderr=subprocess.STDOUT)
-
-	horizons.globals.db = _create_main_db()
 
 	# init game parts
 
@@ -186,12 +180,16 @@ def start(_command_line_arguments):
 
 	if atlas_generator is not None:
 		atlas_generator.wait()
+		assert atlas_generator.returncode is not None
 		if atlas_generator.returncode != 0:
 			print 'Atlas generation failed'
 			GFX.USE_ATLASES = False
-			horizons.globals.fife.set_atlas_usage(False)
-		assert atlas_generator.returncode is not None
+		else:
+			GFX.USE_ATLASES = True
+			PATHS.DB_FILES = PATHS.DB_FILES + (PATHS.ATLAS_DB_PATH, )
 
+	horizons.globals.db = _create_main_db()
+	horizons.globals.fife.init_animation_loader(GFX.USE_ATLASES)
 	_modules.gui = Gui()
 	SavegameManager.init()
 
