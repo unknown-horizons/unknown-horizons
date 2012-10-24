@@ -164,7 +164,7 @@ def get_option_parser():
 	dev_group.add_option("--logfile", dest="logfile", metavar="<filename>",
 	             help="Writes log to <filename> instead of to the uh-userdir")
 	dev_group.add_option("--fife-in-library-path", dest="fife_in_library_path", action="store_true",
-	             default=False, help="For internal use only.")
+	             default=False, help=optparse.SUPPRESS_HELP)
 	dev_group.add_option("--profile", dest="profile", action="store_true",
 	             default=False, help="Enable profiling (for developing only).")
 	dev_group.add_option("--max-ticks", dest="max_ticks", metavar="<max_ticks>", type="int",
@@ -176,13 +176,13 @@ def get_option_parser():
 	dev_group.add_option("--game-speed", dest="gamespeed", metavar="<game_speed>", type="float",
 	             help="Run the game in the given speed (Values: 0.5, 1, 2, 3, 4, 6, 8, 11, 20)")
 	dev_group.add_option("--gui-test", dest="gui_test", metavar="<test>",
-	             default=False, help="INTERNAL. Use run_tests.py instead.")
+	             default=False, help=optparse.SUPPRESS_HELP)
 	dev_group.add_option("--gui-log", dest="log_gui", action="store_true",
 	             default=False, help="Log gui interactions")
 	dev_group.add_option("--sp-seed", dest="sp_seed", metavar="<seed>", type="int",
 	             help="Use this seed for singleplayer sessions.")
 	dev_group.add_option("--generate-minimap", dest="generate_minimap",
-	             metavar="<parameters>", help="Generate a minimap for a map")
+	             metavar="<parameters>", help=optparse.SUPPRESS_HELP)
 	dev_group.add_option("--create-mp-game", action="store_true", dest="create_mp_game",
 	             help="Create an multiplayer game with default settings.")
 	dev_group.add_option("--join-mp-game", action="store_true", dest="join_mp_game",
