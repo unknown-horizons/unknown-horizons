@@ -53,6 +53,9 @@
 		<Setting name="DebugLog" type="bool">False</Setting>
 		<Setting name="QuotesType" type="int">0</Setting>
 		<Setting name="ShowResourceIcons" type="bool">True</Setting>
+		<Setting name="MapSettingsPirateEnabled" type="bool">True</Setting>
+		<Setting name="MapSettingsDisastersEnabled" type="bool">True</Setting>
+		<Setting name="MapSettingsFreeTraderEnabled" type="bool">True</Setting>
 	</Module>
 	<Module name="keys">
 		<Setting name="GRID" type="str"> G </Setting>
@@ -90,6 +93,6 @@
 		<Setting name="SAVE_MAP" type="str"> F12 </Setting>
 	</Module>
 	<Module name="meta">
-		<Setting name="SettingsVersion" type="int"> 25 </Setting>
+		<Setting name="SettingsVersion" type="int"> 26 </Setting>
 	</Module>
 </Settings>
