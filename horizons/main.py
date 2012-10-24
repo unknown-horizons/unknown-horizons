@@ -182,7 +182,7 @@ def start(_command_line_arguments):
 		atlas_generator.wait()
 		assert atlas_generator.returncode is not None
 		if atlas_generator.returncode != 0:
-			print 'Atlas generation failed'
+			print 'Atlas generation failed. Continuing without atlas support.'
 			GFX.USE_ATLASES = False
 		else:
 			GFX.USE_ATLASES = True
