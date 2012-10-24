@@ -31,7 +31,7 @@ from horizons.component.namedcomponent import NamedComponent
 
 
 class TradeTab(TabInterface):
-	"""Ship to tradepost trade tab. International as well as national trade."""
+	"""Ship to trade post's trade tab. International as well as national trade."""
 	log = logging.getLogger("gui.tabs.tradetab")
 
 	scheduled_update_delay = 0.3

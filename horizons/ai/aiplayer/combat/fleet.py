@@ -107,14 +107,13 @@ class Fleet(WorldObject):
 		if ratio:
 			self.ratio = ratio
 
-		self.state = self.fleetStates[state_id]
-
 		ships_states = [(WorldObject.get_object_by_id(ship_id), self.shipStates[ship_state_id])
 		                for ship_id, ship_state_id
 		                in db("SELECT ship_id, state_id FROM fleet_ship WHERE fleet_id = ?", worldid)]
 		ships = [item[0] for item in ships_states]
 
 		self.__init(ships, destroy_callback)
+		self.state = self.fleetStates[state_id]
 
 		for ship, state in ships_states:
 			self._ships[ship] = state

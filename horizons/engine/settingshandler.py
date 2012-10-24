@@ -302,7 +302,7 @@ class SettingsHandler(object):
 
 # misc utility
 
-def get_screen_resolutions():
+def get_screen_resolutions(selected_default):
 	"""Create an instance of fife.DeviceCaps and compile a list of possible resolutions.
 
 			NOTE:
@@ -324,6 +324,9 @@ def get_screen_resolutions():
 		res = str(x) + 'x' + str(y)
 		if res not in possible_resolutions:
 			possible_resolutions.append(res)
+			
+	if selected_default not in possible_resolutions:
+		possible_resolutions.append(selected_default)
 
 	possible_resolutions.sort(key=lambda res: int(res.split('x')[0]))
 

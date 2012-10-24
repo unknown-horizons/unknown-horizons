@@ -69,15 +69,11 @@ CREATE TABLE "storage_properties" (
 	"value" TEXT
 );
 
-CREATE TABLE "trade_buy" (
-	"object" INT NOT NULL,
-	"resource" INT NOT NULL,
-	"trade_limit" INT NOT NULL
-);
-
-CREATE TABLE "trade_sell" (
-	"object" INT NOT NULL,
-	"resource" INT NOT NULL,
+CREATE TABLE "trade_slots" (
+	"trade_post" INT NOT NULL,
+	"slot_id" INT NOT NULL,
+	"resource_id" INT NOT NULL,
+	"selling" BOOL NOT NULL,
 	"trade_limit" INT NOT NULL
 );
 

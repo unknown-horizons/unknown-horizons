@@ -258,9 +258,10 @@ class Fife(ApplicationBase):
 		"""
 		assert self._gotInited
 
-		# there probably is a reason why this is here
-		self._setting.entries[FIFE_MODULE]['ScreenResolution'].initialdata = get_screen_resolutions()
-
+		# Screen Resolutions can only be queried after the engine has been inited
+		available_resolutions = get_screen_resolutions(self.get_fife_setting('ScreenResolution'))
+		self._setting.entries[FIFE_MODULE]['ScreenResolution'].initialdata = available_resolutions
+			
 		self.engine.initializePumping()
 		self.loop()
 		self.engine.finalizePumping()

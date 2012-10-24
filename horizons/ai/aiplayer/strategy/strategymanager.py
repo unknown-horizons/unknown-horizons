@@ -266,7 +266,7 @@ class StrategyManager(object):
 
 	def get_ships_for_mission(self):
 		filters = self.unit_manager.filtering_rules
-		rules = (filters.ship_state(self.owner.ships, (self.owner.shipStates.idle,)), filters.fighting(), filters.not_in_fleet())
+		rules = (filters.ship_state(self.owner.ships, (self.owner.shipStates.idle,)), filters.fighting(), filters.not_in_fleet)
 		idle_ships = self.unit_manager.get_ships(rules)
 
 		return idle_ships
@@ -344,9 +344,8 @@ class PirateStrategyManager(StrategyManager):
 
 	def get_ships_for_mission(self):
 		filters = self.unit_manager.filtering_rules
-		rules = (filters.ship_state(self.owner.ships, (self.owner.shipStates.idle,)), filters.pirate(), filters.not_in_fleet())
+		rules = (filters.ship_state(self.owner.ships, (self.owner.shipStates.idle,)), filters.pirate, filters.not_in_fleet)
 		idle_ships = self.unit_manager.get_ships(rules)
-
 		return idle_ships
 
 	@classmethod

@@ -249,6 +249,15 @@ class SavegameUpgrader(object):
 		db("ALTER TABLE player ADD COLUMN max_tier_notification INTEGER")
 		db("UPDATE player SET max_tier_notification = 0")
 
+	def _upgrade_to_rev67(self, db):
+		db('CREATE TABLE "trade_slots" ("trade_post" INT NOT NULL, "slot_id" INT NOT NULL, "resource_id" INT NOT NULL, "selling" BOOL NOT NULL, "trade_limit" INT NOT NULL)')
+		for trade_post, in db("SELECT DISTINCT object FROM (SELECT object FROM trade_sell UNION SELECT object FROM trade_buy) ORDER BY object"):
+			slot_id = 0
+			for table in ['trade_buy', 'trade_sell']:
+				for resource_id, limit in db("SELECT resource, trade_limit FROM " + table + " WHERE object = ? ORDER BY object, resource", trade_post):
+					db("INSERT INTO trade_slots VALUES(?, ?, ?, ?, ?)", trade_post, slot_id, resource_id, table == 'trade_sell', limit)
+					slot_id += 1
+
 	def _upgrade(self):
 		# fix import loop
 		from horizons.savegamemanager import SavegameManager
@@ -302,6 +311,8 @@ class SavegameUpgrader(object):
 				self._upgrade_to_rev65(db)
 			if rev < 66:
 				self._upgrade_to_rev66(db)
+			if rev < 67:
+				self._upgrade_to_rev67(db)
 
 			db('COMMIT')
 			db.close()

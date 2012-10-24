@@ -32,7 +32,7 @@ import horizons.main
 from horizons.extscheduler import ExtScheduler
 from horizons.savegamemanager import SavegameManager
 from horizons.gui.modules import AIDataSelection, PlayerDataSelection
-from horizons.constants import AI, LANGUAGENAMES
+from horizons.constants import LANGUAGENAMES
 from horizons.gui.widgets.imagebutton import OkButton
 from horizons.gui.widgets.minimap import Minimap
 from horizons.world import World
@@ -302,11 +302,19 @@ class SingleplayerMenu(object):
 		settings_box.addChild(widget)
 
 		# make click on labels change the respective checkboxes
-		for setting in u'free_trader', u'pirates', u'disasters':
-			def toggle(setting):
+		for (setting, setting_save_name) in (u'free_trader', 'MapSettingsFreeTraderEnabled'), (u'pirates','MapSettingsPirateEnabled'), (u'disasters','MapSettingsDisastersEnabled'):
+			def on_box_toggle(setting, setting_save_name):
+				"""Called whenever the checkbox is toggled"""
+				box = self.current.findChild(name=setting)
+				horizons.globals.fife.set_uh_setting(setting_save_name, box.marked)
+				horizons.globals.fife.save_settings()
+			def toggle(setting, setting_save_name):
+				"""Called by the label to toggle the checkbox"""
 				box = self.current.findChild(name=setting)
 				box.marked = not box.marked
-			self.current.findChild(name=u'lbl_'+setting).capture(Callback(toggle, setting))
+			self.current.findChild(name=setting).capture(Callback(on_box_toggle, setting, setting_save_name))
+			self.current.findChild(name=setting).marked = horizons.globals.fife.get_uh_setting(setting_save_name)
+			self.current.findChild(name=u'lbl_'+setting).capture(Callback(toggle, setting, setting_save_name))
 
 		resource_density_slider = widget.findChild(name='resource_density_slider')
 		def on_resource_density_slider_change():

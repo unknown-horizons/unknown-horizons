@@ -27,7 +27,7 @@ from horizons.ai.aiplayer.building import AbstractBuilding
 from horizons.util.worldobject import WorldObject
 from horizons.util.python import decorators
 from horizons.constants import BUILDINGS, RES, TRADER
-from horizons.command.uioptions import AddToBuyList, RemoveFromBuyList, AddToSellList, RemoveFromSellList
+from horizons.command.uioptions import SetTradeSlot, ClearTradeSlot
 from horizons.component.storagecomponent import StorageComponent
 from horizons.component.tradepostcomponent import TradePostComponent
 from horizons.component.namedcomponent import NamedComponent
@@ -296,29 +296,38 @@ class ResourceManager(WorldObject):
 		if not buy_sell_list:
 			return # nothing to buy nor sell
 
-		# discard the less important ones
-		buy_sell_list = sorted(buy_sell_list)[:3]
+		trade_post = settlement.get_component(TradePostComponent)
+		trade_slots = trade_post.slots
+		num_slots = len(trade_slots)
+		sell_list = trade_post.sell_list
+		buy_list = trade_post.buy_list
+
+		# discard the less important buy/sell wishes
+		buy_sell_list = sorted(buy_sell_list)[:num_slots]
 		bought_sold_resources = zip(*buy_sell_list)[1]
-		# make sure the right resources are sold and bought with the right limits
-		tradepost = settlement.get_component(TradePostComponent)
-		sell_list = tradepost.sell_list
-		buy_list = tradepost.buy_list
+
+		# clear all slots we will no longer be needing
+		for resource_id in managed_resources:
+			if resource_id in bought_sold_resources:
+				sell = buy_sell_list[bought_sold_resources.index(resource_id)][3]
+				if sell and resource_id in buy_list:
+					ClearTradeSlot(trade_post, buy_list[resource_id]).execute(session)
+				elif not sell and resource_id in sell_list:
+					ClearTradeSlot(trade_post, sell_list[resource_id]).execute(session)
+			else:
+				if resource_id in buy_list:
+					ClearTradeSlot(trade_post, buy_list[resource_id]).execute(session)
+				elif resource_id in sell_list:
+					ClearTradeSlot(trade_post, sell_list[resource_id]).execute(session)
+
+		# add any new offers
 		for resource_id in managed_resources:
 			if resource_id in bought_sold_resources:
 				limit, sell = buy_sell_list[bought_sold_resources.index(resource_id)][2:]
-				if sell and resource_id in buy_list:
-					RemoveFromBuyList(tradepost, resource_id).execute(session)
-				elif not sell and resource_id in sell_list:
-					RemoveFromSellList(tradepost, resource_id).execute(session)
-				if sell and (resource_id not in sell_list or sell_list[resource_id] != limit):
-					AddToSellList(tradepost, resource_id, limit).execute(session)
-				elif not sell and (resource_id not in buy_list or buy_list[resource_id] != limit):
-					AddToBuyList(tradepost, resource_id, limit).execute(session)
-			else:
-				if resource_id in buy_list:
-					RemoveFromBuyList(tradepost, resource_id).execute(session)
-				elif resource_id in sell_list:
-					RemoveFromSellList(tradepost, resource_id).execute(session)
+				if sell and (resource_id not in sell_list or trade_slots[sell_list[resource_id]].limit != limit):
+					SetTradeSlot(trade_post, trade_post.get_free_slot(resource_id), resource_id, True, limit).execute(session)
+				elif not sell and (resource_id not in buy_list or trade_slots[buy_list[resource_id]].limit != limit):
+					SetTradeSlot(trade_post, trade_post.get_free_slot(resource_id), resource_id, False, limit).execute(session)
 
 	def finish_tick(self):
 		"""Clear data used during a single tick."""

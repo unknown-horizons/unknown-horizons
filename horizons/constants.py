@@ -68,7 +68,7 @@ class VERSION:
 	#RELEASE_VERSION = u'2012.1'
 
 	## +=1 this if you changed the savegame "api"
-	SAVEGAMEREVISION = 66
+	SAVEGAMEREVISION = 67
 
 	@staticmethod
 	def string():
@@ -180,10 +180,16 @@ class BUILDINGS:
 		# think: animation contains key, if there is a path at offset value
 		# you need to sort this before iterating via sorted, since order is important here
 		action_offset_dict = {
-		  'a' : (0, -1),
-		  'b' : (1, 0),
-		  'c' : (0, 1),
-		  'd' : (-1, 0)
+		# Direct connections
+		  'a' : ( 0, -1),
+		  'b' : (+1,  0),
+		  'c' : ( 0, +1),
+		  'd' : (-1,  0),
+		# Remote connections
+		  'e' : (+1, -1),
+		  'f' : (+1, +1),
+		  'g' : (-1, +1),
+		  'h' : (-1, -1),
 		}
 
 	class BUILD:
@@ -536,13 +542,16 @@ LANGUAGENAMES = _LanguageNameDict({
 	"el"    : u'Ελληνικά',
 	"fi"    : u'Suomi',
 	"fr"    : u'Français',
+	"ga"    : u'Gaeilge',
 	"gl"    : u'Galego',
 	"hi"    : u'मानक हिन्दी',
 	"hr"    : u'Hrvatski',
 	"hu"    : u'Magyar',
+	"id"    : u'Bahasa Indonesia',
 	"it"    : u'Italiano',
 	"ja"    : u'日本語',
 	"lt"    : u'Lietuvių',
+	"lv"    : u'Latviešu',
 	"ko"    : u'한국말/조선말',
 	"nb"    : u'Norw. Bokmål',
 	"nl"    : u'Nederlands',
@@ -552,10 +561,13 @@ LANGUAGENAMES = _LanguageNameDict({
 	"ro"    : u'Română',
 	"ru"    : u'Русский',
 	"sl"    : u'Slovenski',
+	"sr"    : u'Cрпски',
 	"sv"    : u'Svenska',
+	"th"    : u'ภาษาไทย',
 	"tr"    : u'Türkçe',
 	"vi"    : u'Tiếng Việt',
 	"zh_CN" : u'普通話',
+	"zu"    : u'IsiZulu',
 })
 
 FONTDEFS = {
@@ -572,13 +584,16 @@ FONTDEFS = {
 	"el"    : 'libertine',
 	"fi"    : 'libertine',
 	"fr"    : 'libertine',
+	"ga"    : 'libertine',
 	"gl"    : 'libertine',
 	# "hi"
 	"hr"    : 'libertine',
 	"hu"    : 'libertine',
+	"id"    : 'libertine',
 	"it"    : 'libertine',
 	# "ja"
 	"lt"    : 'libertine',
+	"lv"    : 'libertine',
 	# "ko"
 	"nb"    : 'libertine',
 	"nl"    : 'libertine',
@@ -588,10 +603,13 @@ FONTDEFS = {
 	"ro"    : 'libertine',
 	"ru"    : 'libertine',
 	"sl"    : 'libertine',
+	"sr"    : 'libertine',
 	"sv"    : 'libertine',
+	# "th"
 	"tr"    : 'libertine',
 	# "vi"
 	# "zh_CN"
+	"zu"    : 'libertine',
 }
 
 AUTO_CONTINUE_CAMPAIGN=True

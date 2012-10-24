@@ -19,7 +19,7 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-from horizons.command.uioptions import AddToBuyList
+from horizons.command.uioptions import SetTradeSlot
 from horizons.component.tradepostcomponent import TradePostComponent
 from horizons.constants import RES, TIER
 
@@ -118,7 +118,7 @@ def test_tutorial(gui):
 	# TODO do this with the gui (needs named buttons and a way to control the slider)
 	player = gui.session.world.player
 	tradepost = player.settlements[0].get_component(TradePostComponent)
-	AddToBuyList(tradepost, RES.TOOLS, 30)(player)
+	SetTradeSlot(tradepost, 0, RES.TOOLS, False, 30)(player)
 
 	# Goal: Pavilion
 	assert_progress(40)

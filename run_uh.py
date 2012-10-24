@@ -214,7 +214,7 @@ def excepthook_creator(outfilename):
 		print('')
 		print(_('Unknown Horizons has crashed.'))
 		print('')
-		print(_('We are very sorry for this and want to fix underlying error.'))
+		print(_('We are very sorry for this and want to fix the underlying error.'))
 		print(_('In order to do this, we need the information from the logfile:'))
 		print(outfilename)
 		print(_('Please give it to us via IRC or our forum, for both see http://unknown-horizons.org .'))
@@ -375,7 +375,8 @@ def setup_fife(args):
 			log_paths()
 			err_str = str(e)
 			if err_str == 'DLL load failed: %1 is not a valid Win32 application.':
-				show_error_message('Unsupported Python version', '32 bit FIFE requires 32 bit (x86) Python 2.')
+				show_error_message('Unsupported Python version',
+				                   '32 bit FIFE requires 32 bit (x86) Python 2.')
 			else:
 				show_error_message('Failed to load FIFE', err_str)
 		log().debug('Failed to load FIFE from default paths: %s', e)
@@ -418,7 +419,7 @@ def get_fife_path(fife_custom_path=None):
 	if fife_custom_path is not None:
 		_paths.append(fife_custom_path)
 		if not check_path_for_fife(fife_custom_path):
-			print('Specified invalid FIFE path: %s' %  fife_custom_path)
+			print('Specified invalid FIFE path: %s' % fife_custom_path)
 			exit(1)
 	else:
 		# no command line parameter, now check for config
@@ -513,14 +514,14 @@ def log_paths():
 	"""Prints debug info about paths to log"""
 	log().debug("SYS.PATH: %s", sys.path)
 	log().debug('PATHSEP: "%s" SEP: "%s"', os.path.pathsep, os.path.sep)
-	log().debug("LD_LIBRARY_PATH: %s", os.environ['LD_LIBRARY_PATH'])
-	log().debug("PATH: %s", os.environ['PATH'])
+	log().debug("LD_LIBRARY_PATH: %s", os.environ.get('LD_LIBRARY_PATH', '<undefined>'))
+	log().debug("PATH: %s", os.environ.get('PATH', '<undefined>'))
 	log().debug("PYTHONPATH %s", os.environ.get('PYTHONPATH', '<undefined>'))
 
 def log_sys_info():
 	"""Prints debug info about the current system to log"""
 	log().debug("Python version: %s", sys.version_info)
-	log().debug("Plattform: %s", platform.platform())
+	log().debug("Platform: %s", platform.platform())
 
 if __name__ == '__main__':
 	main()
