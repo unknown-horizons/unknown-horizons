@@ -29,6 +29,7 @@ import multiprocessing
 import os
 import os.path
 import sys
+import traceback
 
 try:
 	import cPickle as pickle
@@ -303,11 +304,18 @@ class AtlasGenerator(object):
 			self.log.info('Updated selected books')
 			self._update_selected_books(recreate_books)
 			self._save_metadata()
+		else:
+			# the sets have to always be saved because the tm_N files are not otherwise taken into account
+			self._save_sets()
 		return True
+
+	def __getstate__(self):
+		# avoid saving self.sets
+		return {'version': self.version, 'max_size': self.max_size, 'books': self.books,
+		        'num_books': self.num_books, 'atlas_book_lookup': self.atlas_book_lookup}
 
 	def _save_metadata(self):
 		self.log.info('Saving metadata')
-		self.sets = None
 		with open(PATHS.ATLAS_METADATA_PATH, 'wb') as file:
 			pickle.dump(self, file)
 		self.log.info('Finished saving metadata')
@@ -363,8 +371,8 @@ if __name__ == '__main__':
 		generator = AtlasGenerator.load(max_size)
 		if generator is not None:
 			updated = generator.update()
-	except Exception as e:
-		print e
+	except:
+		traceback.print_exc()
 
 	if not updated:
 		AtlasGenerator.clear_everything()
