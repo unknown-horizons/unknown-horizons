@@ -92,4 +92,21 @@ class SQLiteAnimationLoader(object):
 		ani.setActionFrame(0)
 		return ani
 
+	def _get_loader(self, actionset):
+			if actionset.startswith("ts_"):
+				loader = TileSetLoader
+			elif actionset.startswith("as_"):
+				loader = ActionSetLoader
+			else:
+				assert False, "Invalid set being loaded: " + actionset
+			return loader
 
+	def load_image(self, file, actionset, action, rotation):
+		loader = self._get_loader(actionset)
+		entry = loader.get_sets()[actionset][action][int(rotation)][file]
+
+		if horizons.globals.fife.imagemanager.exists(file):
+			img = horizons.globals.fife.imagemanager.get(file)
+		else:
+			img = horizons.globals.fife.imagemanager.create(file)
+		return img
