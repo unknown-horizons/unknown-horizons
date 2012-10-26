@@ -23,6 +23,7 @@ import logging
 import fnmatch
 import os
 
+from horizons.util.loaders.tilesetloader import TileSetLoader
 from horizons.util.python.callback import Callback
 from horizons.util.yamlcache import YamlCache
 
@@ -67,13 +68,18 @@ class Entities(object):
 		if hasattr(cls, "grounds"):
 			cls.log.debug("Entities: grounds already loaded")
 			return
+
 		from world.ground import GroundClass
+		tile_sets = TileSetLoader.get_sets()
 		cls.grounds = _EntitiesLazyDict()
 		for (ground_id,) in db("SELECT ground_id FROM tile_set"):
-			cls.grounds.create_on_access(ground_id, Callback(GroundClass, db, ground_id))
-			if load_now:
-				cls.grounds[ground_id]
-		cls.grounds[-1] = GroundClass(db, -1)
+			tile_set_id = db("SELECT set_id FROM tile_set WHERE ground_id=?", ground_id)[0][0]
+			for shape in tile_sets[tile_set_id].iterkeys():
+				cls_name = '%d-%s' % (ground_id, shape)
+				cls.grounds.create_on_access(cls_name, Callback(GroundClass, db, ground_id, shape))
+				if load_now:
+					cls.grounds[cls_name]
+		cls.grounds['-1-special'] = GroundClass(db, -1, 'special')
 
 	@classmethod
 	def load_buildings(cls, db, load_now=False):

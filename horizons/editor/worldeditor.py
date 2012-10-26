@@ -101,7 +101,7 @@ class WorldEditor(object):
 		for island_id, coords_list in self._iter_islands():
 			for x, y in coords_list:
 				tile = self.world.full_map[(x, y)]
-				db('INSERT INTO ground VALUES(?, ?, ?, ?, ?, ?)', island_id, x, y, tile.id, tile._action, tile.rotation + 45)
+				db('INSERT INTO ground VALUES(?, ?, ?, ?, ?, ?)', island_id, x, y, tile.id, tile.shape, tile.rotation + 45)
 		db('COMMIT')
 		db.close()
 
@@ -118,15 +118,15 @@ class WorldEditor(object):
 
 		old_tile = self.world.full_map[coords]
 		if old_tile and old_tile.id != -1 and old_tile._instance and old_tile not in self._tile_delete_set:
-			if (old_tile.id, old_tile._action, old_tile.rotation + 45) == tile_details:
+			if (old_tile.id, old_tile.shape, old_tile.rotation + 45) == tile_details:
 				return
 			self._tile_delete_set.add(old_tile)
 			Scheduler().add_new_object(Callback(self._delete_tile_instance, old_tile), self, run_in=0)
 
-		(ground_id, action_id, rotation) = tile_details
+		(ground_id, shape, rotation) = tile_details
 		if ground_id != 0:
-			ground = Entities.grounds[ground_id](self.session, *coords)
-			ground.act(action_id, rotation)
+			ground = Entities.grounds['%d-%s' % (ground_id, shape)](self.session, *coords)
+			ground.act(rotation)
 			self.world.full_map[coords] = ground
 		else:
 			self.world.full_map[coords] = self.world.fake_tile_map[coords]

@@ -44,9 +44,9 @@ class IntermediateMap(object):
 		else:
 			offset = 0 if tile.id == 2 else (1 if tile.id == 5 else 2)
 			rot = tile.rotation // 90
-			if tile._action == 'straight':
+			if tile.shape == 'straight':
 				return offset + (1, 0, 0, 1)[rot] # 2 low, 2 high
-			elif tile._action == 'curve_in':
+			elif tile.shape == 'curve_in':
 				return offset + (1, 1, 0, 1)[rot] # 1 low, 3 high
 			else:
 				return offset + (1, 0, 0, 0)[rot] # 3 low, 1 high
