@@ -28,12 +28,15 @@ from horizons.constants import BUILDINGS, TIER
 from horizons.entities import Entities
 from horizons.util.worldobject import WorldObject
 from horizons.util.shapes import Rect
-from horizons.messaging import UpgradePermissionsChanged
+from horizons.messaging import UpgradePermissionsChanged, SettlementInventoryUpdated
 from horizons.util.changelistener import ChangeListener
+from horizons.util.inventorychecker import InventoryChecker
 from horizons.component.componentholder import ComponentHolder
 from horizons.component.tradepostcomponent import TradePostComponent
+from horizons.component.storagecomponent import StorageComponent
 from horizons.world.production.producer import Producer, UnitProducer
 from horizons.world.resourcehandler import ResourceHandler
+from horizons.scheduler import Scheduler
 
 class Settlement(ComponentHolder, WorldObject, ChangeListener, ResourceHandler):
 	"""The Settlement class describes a settlement and stores all the necessary information
@@ -68,7 +71,8 @@ class Settlement(ComponentHolder, WorldObject, ChangeListener, ResourceHandler):
 		self.warehouse = None # this is set later in the same tick by the warehouse itself or load() here
 		self.upgrade_permissions = upgrade_permissions
 		self.tax_settings = tax_settings
-
+		Scheduler().add_new_object(self.__init_inventory_checker, self)
+		
 	@classmethod
 	def make_default_upgrade_permissions(cls):
 		upgrade_permissions = {}
@@ -248,6 +252,11 @@ class Settlement(ComponentHolder, WorldObject, ChangeListener, ResourceHandler):
 		"""Callback function for registering the production of resources."""
 		for res, amount in produced_res.iteritems():
 			self.produced_res[res] += amount
+			
+			
+	def __init_inventory_checker(self):
+		# Check for changed inventories every 4 ticks
+		self.__inventory_checker = InventoryChecker(SettlementInventoryUpdated, self.get_component(StorageComponent), 4)
 
 	def end(self):
 		self.session = None
@@ -257,3 +266,5 @@ class Settlement(ComponentHolder, WorldObject, ChangeListener, ResourceHandler):
 		self.produced_res = None
 		self.buildings_by_id = None
 		self.warehouse = None
+		if hasattr(self, '__inventory_checker'):
+			self.__inventory_checker.remove()

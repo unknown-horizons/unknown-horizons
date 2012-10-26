@@ -27,14 +27,14 @@ from horizons.constants import PLAYER
 from horizons.world.playerstats import PlayerStats
 from horizons.util.color import Color
 from horizons.util.difficultysettings import DifficultySettings
+from horizons.util.inventorychecker import InventoryChecker
 from horizons.util.python import decorators
-from horizons.util.python.callback import Callback
 from horizons.util.worldobject import WorldObject
 from horizons.scenario import CONDITIONS
 from horizons.scheduler import Scheduler
 from horizons.component.componentholder import ComponentHolder
 from horizons.component.storagecomponent import StorageComponent
-from horizons.messaging import SettlerUpdate, NewDisaster
+from horizons.messaging import SettlerUpdate, NewDisaster, PlayerInventoryUpdated
 from horizons.component.tradepostcomponent import TradePostComponent
 
 class Player(ComponentHolder, WorldObject):
@@ -154,7 +154,7 @@ class Player(ComponentHolder, WorldObject):
 		if self.is_local_player:
 			pos = message.building.position.center
 			self.session.ingame_gui.message_widget.add(point=pos, string_id=message.disaster_class.NOTIFICATION_TYPE)
-
+				
 	def end(self):
 		self._stats = None
 		self.session = None
@@ -188,6 +188,11 @@ class Player(ComponentHolder, WorldObject):
 
 
 class HumanPlayer(Player):
+	
+	def __init(self, *args, **kwargs):
+		super(HumanPlayer, self).__init(*args, **kwargs)
+		self.__inventory_checker = InventoryChecker(PlayerInventoryUpdated, self.get_component(StorageComponent), 4)
+	
 	"""Class for players that physically sit in front of the machine where the game is run"""
 	def notify_settler_reached_level(self, message):
 		level_up = super(HumanPlayer, self).notify_settler_reached_level(message)
@@ -200,3 +205,9 @@ class HumanPlayer(Player):
 
 	def notify_mine_empty(self, mine):
 		self.session.ingame_gui.message_widget.add(point=mine.position.center, string_id='MINE_EMPTY')
+
+	def end(self):
+		if hasattr(self, '__inventory_checker'):
+			self.__inventory_checker.remove()
+		super(HumanPlayer, self).end()
+		

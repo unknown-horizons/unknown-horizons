@@ -38,7 +38,7 @@ from horizons.command.sounds import PlaySound
 from horizons.gui.util import load_uh_widget
 from horizons.constants import BUILDINGS, GFX
 from horizons.extscheduler import ExtScheduler
-from horizons.messaging import SettlementRangeChanged, WorldObjectDeleted
+from horizons.messaging import SettlementRangeChanged, WorldObjectDeleted, SettlementInventoryUpdated, PlayerInventoryUpdated
 
 class BuildingTool(NavigationTool):
 	"""Represents a dangling tool after a building was selected from the list.
@@ -130,6 +130,10 @@ class BuildingTool(NavigationTool):
 
 		self.highlight_buildable()
 		WorldObjectDeleted.subscribe(self._on_worldobject_deleted)
+		
+		SettlementInventoryUpdated.subscribe(self.update_preview)
+		PlayerInventoryUpdated.subscribe(self.update_preview)
+		
 
 	def __init_selectable_component(self):
 		self.selectable_comp = SelectableBuildingComponent
@@ -205,6 +209,8 @@ class BuildingTool(NavigationTool):
 			self.session.view.remove_change_listener(self.draw_gui)
 			self.__class__.gui.hide()
 		ExtScheduler().rem_all_classinst_calls(self)
+		SettlementInventoryUpdated.discard(self.update_preview)
+		PlayerInventoryUpdated.discard(self.update_preview)
 		super(BuildingTool, self).remove()
 
 	def _on_worldobject_deleted(self, message):
