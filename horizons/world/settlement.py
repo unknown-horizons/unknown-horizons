@@ -72,7 +72,7 @@ class Settlement(ComponentHolder, WorldObject, ChangeListener, ResourceHandler):
 		self.upgrade_permissions = upgrade_permissions
 		self.tax_settings = tax_settings
 		Scheduler().add_new_object(self.__init_inventory_checker, self)
-		
+
 	@classmethod
 	def make_default_upgrade_permissions(cls):
 		upgrade_permissions = {}
@@ -252,8 +252,7 @@ class Settlement(ComponentHolder, WorldObject, ChangeListener, ResourceHandler):
 		"""Callback function for registering the production of resources."""
 		for res, amount in produced_res.iteritems():
 			self.produced_res[res] += amount
-			
-			
+
 	def __init_inventory_checker(self):
 		# Check for changed inventories every 4 ticks
 		self.__inventory_checker = InventoryChecker(SettlementInventoryUpdated, self.get_component(StorageComponent), 4)

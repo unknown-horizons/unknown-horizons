@@ -154,7 +154,7 @@ class Player(ComponentHolder, WorldObject):
 		if self.is_local_player:
 			pos = message.building.position.center
 			self.session.ingame_gui.message_widget.add(point=pos, string_id=message.disaster_class.NOTIFICATION_TYPE)
-				
+
 	def end(self):
 		self._stats = None
 		self.session = None
@@ -188,11 +188,11 @@ class Player(ComponentHolder, WorldObject):
 
 
 class HumanPlayer(Player):
-	
+
 	def __init(self, *args, **kwargs):
 		super(HumanPlayer, self).__init(*args, **kwargs)
 		self.__inventory_checker = InventoryChecker(PlayerInventoryUpdated, self.get_component(StorageComponent), 4)
-	
+
 	"""Class for players that physically sit in front of the machine where the game is run"""
 	def notify_settler_reached_level(self, message):
 		level_up = super(HumanPlayer, self).notify_settler_reached_level(message)

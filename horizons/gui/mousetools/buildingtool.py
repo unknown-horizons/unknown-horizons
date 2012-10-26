@@ -130,10 +130,10 @@ class BuildingTool(NavigationTool):
 
 		self.highlight_buildable()
 		WorldObjectDeleted.subscribe(self._on_worldobject_deleted)
-		
+
 		SettlementInventoryUpdated.subscribe(self.update_preview)
 		PlayerInventoryUpdated.subscribe(self.update_preview)
-		
+
 
 	def __init_selectable_component(self):
 		self.selectable_comp = SelectableBuildingComponent

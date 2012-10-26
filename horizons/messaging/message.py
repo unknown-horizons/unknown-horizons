@@ -190,10 +190,10 @@ class GuiAction(Message):
 class ResourceProduced(Message):
 	"""Sent when a production building finished the production of a resource """
 	arguments = ('caller', 'produced_resources', )
-	
+
 class SettlementInventoryUpdated(Message):
 	"""Message sent whenever a settlement's inventory is updated"""
-	pass 
+	pass
 
 class PlayerInventoryUpdated(Message):
 	"""Message sent whenever a player's inventory is updated"""
