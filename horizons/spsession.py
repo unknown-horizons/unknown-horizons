@@ -39,7 +39,7 @@ class SPSession(Session):
 		return random.Random(seed if seed is not None else SINGLEPLAYER.SEED)
 
 	def create_timer(self):
-		return Timer(freeze_protection=True)
+		return Timer(freeze_protection=SINGLEPLAYER.FREEZE_PROTECTION)
 
 	def load(self, *args, **kwargs):
 		super(SPSession, self).load(*args, **kwargs)

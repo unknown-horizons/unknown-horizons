@@ -205,6 +205,7 @@ def start(_command_line_arguments):
 	# Singleplayer seed needs to be changed before startup.
 	if command_line_arguments.sp_seed:
 		SINGLEPLAYER.SEED = command_line_arguments.sp_seed
+	SINGLEPLAYER.FREEZE_PROTECTION = command_line_arguments.freeze_protection
 
 	# start something according to commandline parameters
 	startup_worked = True
