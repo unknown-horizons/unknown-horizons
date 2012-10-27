@@ -309,9 +309,7 @@ class BuildingTool(NavigationTool):
 			# get gfx for the building
 			# workaround for buildings like settler, that don't use the current level of
 			# the player, but always start at a certain lvl
-			level = self.session.world.player.settler_level if \
-				not hasattr(self._class, "default_level_on_build") else \
-				self._class.default_level_on_build
+			level = self._class.get_initial_level(self.session.world.player)
 
 			if self._class.id == BUILDINGS.TREE and not building.buildable:
 				continue # Tree/ironmine that is not buildable, don't preview

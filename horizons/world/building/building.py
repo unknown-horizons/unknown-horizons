@@ -207,6 +207,12 @@ class BasicBuilding(ComponentHolder, ConcreteObject):
 		self.update_action_set_level(lvl)
 
 	@classmethod
+	def get_initial_level(cls, player):
+		if hasattr(cls, 'default_level_on_build'):
+			return cls.default_level_on_build
+		return player.settler_level
+
+	@classmethod
 	def getInstance(cls, session, x, y, action='idle', level=0, rotation=45, action_set_id=None):
 		"""Get a Fife instance
 		@param x, y: The coordinates
