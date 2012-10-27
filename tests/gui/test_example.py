@@ -28,7 +28,7 @@ from tests.gui import gui_test
 # It accepts either one of these arguments:
 #
 # 	use_dev_map=True		- Game launches with --start-dev-map (no main menu)
-# 	use_fixture='name'		- Game launches with --load-map=tests/gui/ingame/fixtures/name.sqlite
+# 	use_fixture='name'		- Game launches with --load-game=tests/gui/ingame/fixtures/name.sqlite
 # 	ai_players=1			- Game launches with --ai-players=1
 # 	timeout=3				- Game will be killed after 3 seconds
 #

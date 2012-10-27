@@ -94,7 +94,7 @@ man(1), man(7), http://www.tldp.org/HOWTO/Man-Page/
     <cmdsynopsis>
       <command>&dhpackage;</command>
       <!-- These are several examples, how syntaxes could look -->
-      <arg choice="opt"><option>--load-map <parameter>savegame</parameter></option></arg>
+      <arg choice="opt"><option>--load-game <parameter>savegame</parameter></option></arg>
       <arg choice="opt"><option>--start-map <parameter>mapname</parameter></option></arg>
 	  <arg choice="plain">
         <group choice="req">
@@ -140,7 +140,7 @@ man(1), man(7), http://www.tldp.org/HOWTO/Man-Page/
            variablelist.term.break.after parameters to
            control the term elements. -->
 	  <varlistentry>
-		<term><option>--load-map <parameter>savegame</parameter></option></term>
+		<term><option>--load-game <parameter>savegame</parameter></option></term>
 		<listitem>
 			<para>Loads a saved game. The savegame name matches the
 				displayed string in the ingame menu</para>

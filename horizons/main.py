@@ -223,8 +223,8 @@ def start(_command_line_arguments):
 		startup_worked = _start_map(command_line_arguments.start_scenario, 0, True, force_player_id=command_line_arguments.force_player_id)
 	elif command_line_arguments.start_campaign is not None:
 		startup_worked = _start_campaign(command_line_arguments.start_campaign, command_line_arguments.force_player_id)
-	elif command_line_arguments.load_map is not None:
-		startup_worked = _load_cmd_map(command_line_arguments.load_map, command_line_arguments.ai_players,
+	elif command_line_arguments.load_game is not None:
+		startup_worked = _load_cmd_map(command_line_arguments.load_game, command_line_arguments.ai_players,
 			command_line_arguments.force_player_id)
 	elif command_line_arguments.load_quicksave is not None:
 		startup_worked = _load_last_quicksave()

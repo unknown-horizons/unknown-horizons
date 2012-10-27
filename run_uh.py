@@ -132,8 +132,8 @@ def get_option_parser():
 	             help="Starts <campaign>. <campaign> is the campaign name.")
 	start_uh.add_option("--start-dev-map", dest="start_dev_map", action="store_true",
 	             default=False, help="Starts the development map without displaying the main menu.")
-	start_uh.add_option("--load-map", dest="load_map", metavar="<save>",
-	             help="Loads a saved game. <save> is the savegamename.")
+	start_uh.add_option("--load-game", dest="load_game", metavar="<game>",
+	             help="Loads a saved game. <game> is the saved game's name.")
 	start_uh.add_option("--load-last-quicksave", dest="load_quicksave", action="store_true",
 	             help="Loads the last quicksave.")
 	start_uh.add_option("--edit-map", dest="edit_map", metavar="<map>",
