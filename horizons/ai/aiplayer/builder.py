@@ -104,9 +104,13 @@ class Builder(WorldObject):
 
 	def execute(self):
 		"""Build the building."""
+		building_class = Entities.buildings[self.building_id]
+		building_level = building_class.get_initial_level(self.land_manager.owner)
+		action_set_id = building_class.get_random_action_set(level = building_level)
+
 		cmd = Build(self.building_id, self.point.x, self.point.y, self.land_manager.island,
 			self._get_rotation(), settlement = self.land_manager.settlement,
-			ship = self.ship, tearset = self.build_position.tearset)
+			ship = self.ship, tearset = self.build_position.tearset, action_set_id = action_set_id)
 		result = cmd(self.land_manager.owner)
 		#self.log.debug('%s.execute(): %s', self.__class__.__name__, result)
 		return result
