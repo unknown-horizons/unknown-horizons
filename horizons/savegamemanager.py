@@ -248,6 +248,8 @@ class SavegameManager(object):
 		if horizons.main._modules.gui.is_visible():
 			dialog_hidden = True
 			horizons.main._modules.gui.hide()
+			# pump twice to make it work on some machines
+			horizons.globals.fife.engine.pump()
 			horizons.globals.fife.engine.pump()
 
 		# scale to the correct with and adapt height with same factor
