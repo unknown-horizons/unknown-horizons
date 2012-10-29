@@ -359,6 +359,17 @@ def setup_debugging(options):
 
 		log_sys_info()
 
+def check_fife_revision(fife):
+	revision = fife.getRevision() if hasattr(fife, 'getRevision') else 0
+	version = fife.getVersion() if hasattr(fife, 'getVersion') else 'unknown'
+
+	from horizons.constants import VERSION
+	if VERSION.MIN_FIFE_REVISION > revision:
+		log().warning('Unsupported fife revision %d (version %s); at least %d required',
+		              revision, version, VERSION.MIN_FIFE_REVISION)
+	else:
+		log().debug('Using fife revision %d (version %s); at least %d required', revision,
+		            version, VERSION.MIN_FIFE_REVISION)
 
 """
 Functions controlling the program environment.
@@ -385,6 +396,7 @@ def setup_fife(args):
 		assert False
 
 	log().debug('Using fife: %s', fife)
+	check_fife_revision(fife)
 
 	for arg in ['--fife-in-library-path', '--fife-path']:
 		if arg in args:
