@@ -656,7 +656,10 @@ class Gui(SingleplayerMenu, MultiplayerMenu):
 			map_file = None
 			map_file_index = gui.collectData(savegamelist)
 			if map_file_index == -1:
+				gui.findChild(name="savegame_details").hide()
 				return
+			else:
+				gui.findChild(name="savegame_details").show()
 			try:
 				map_file = map_files[map_file_index]
 			except IndexError:
