@@ -117,7 +117,6 @@ class Session(LivingObject):
 		self.view = View(self)
 		Entities.load(self.db)
 		self.scenario_eventhandler = ScenarioEventHandler(self) # dummy handler with no events
-		self.campaign = {}
 
 		#GUI
 		self.gui.session = self
@@ -304,7 +303,6 @@ class Session(LivingObject):
 			if not os.path.exists(options.game_identifier):
 				options.game_identifier = os.path.join(SavegameManager.maps_dir, map_filename)
 			options.is_map = True
-		self.campaign = {} if not options.campaign else options.campaign
 
 		self.log.debug("Session: Loading from %s", options.game_identifier)
 		savegame_db = SavegameAccessor(options.game_identifier, options.is_map) # Initialize new dbreader

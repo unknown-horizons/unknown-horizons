@@ -612,5 +612,3 @@ FONTDEFS = {
 	# "zh_CN"
 	"zu"    : 'libertine',
 }
-
-AUTO_CONTINUE_CAMPAIGN=True

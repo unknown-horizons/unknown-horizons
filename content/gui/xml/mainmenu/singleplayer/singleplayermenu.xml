@@ -8,9 +8,8 @@
 		<Icon image="content/gui/images/background/hr.png"  position="52,30" />
 
 		<RadioButton position="22,50"  size="32,32"  name="scenario"  group="gametype" text="Scenario"   />
-		<RadioButton position="22,80"  size="32,32"  name="campaign"  group="gametype" text="Campaign"   />
-		<RadioButton position="22,110" size="32,32"  name="random"    group="gametype" text="Random map" />
-		<RadioButton position="22,140" size="32,32"  name="free_maps" group="gametype" text="Free play"  />
+		<RadioButton position="22,80" size="32,32"  name="random"    group="gametype" text="Random map" />
+		<RadioButton position="22,110" size="32,32"  name="free_maps" group="gametype" text="Free play"  />
 
 		<Icon image="content/gui/images/background/hr.png"  position="52,170" />
 

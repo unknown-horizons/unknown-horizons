@@ -128,8 +128,6 @@ def get_option_parser():
 	             metavar="<seed>", help="Starts a random map with seed <seed>.")
 	start_uh.add_option("--start-scenario", dest="start_scenario", metavar="<scenario>",
 	             help="Starts <scenario>. <scenario> is the scenarioname.")
-	start_uh.add_option("--start-campaign", dest="start_campaign", metavar="<campaign>",
-	             help="Starts <campaign>. <campaign> is the campaign name.")
 	start_uh.add_option("--start-dev-map", dest="start_dev_map", action="store_true",
 	             default=False, help="Starts the development map without displaying the main menu.")
 	start_uh.add_option("--load-game", dest="load_game", metavar="<game>",

@@ -37,7 +37,6 @@ class StartGameOptions(object):
 		self.is_map = False
 		self.is_multiplayer = False
 		self.is_scenario = False
-		self.campaign = None
 
 		self.player_name = 'Player'
 		self.player_color = None
@@ -104,11 +103,10 @@ class StartGameOptions(object):
 		return options
 
 	@classmethod
-	def create_start_singleplayer(cls, game_identifier, is_scenario, campaign, ai_players,
+	def create_start_singleplayer(cls, game_identifier, is_scenario, ai_players,
 		                          trader_enabled, pirate_enabled, force_player_id, is_map):
 		options = StartGameOptions(game_identifier)
 		options.is_scenario = is_scenario
-		options.campaign = campaign
 		options.ai_players = ai_players
 		options.trader_enabled = trader_enabled
 		options.pirate_enabled = pirate_enabled
@@ -140,15 +138,6 @@ class StartGameOptions(object):
 	def create_start_scenario(cls, scenario_file):
 		options = StartGameOptions(scenario_file)
 		options.is_scenario = True
-		return options
-
-	@classmethod
-	def create_start_campaign(cls, scenario_file, campaign, force_player_id):
-		options = StartGameOptions(scenario_file)
-		options.campaign = campaign
-		options.force_player_id = force_player_id
-		options.is_scenario = True
-		options.pirate_enabled = False
 		return options
 
 	@classmethod

@@ -62,7 +62,6 @@ class Gui(SingleplayerMenu, MultiplayerMenu):
 	  'singleplayermenu': 'book',
 	  'sp_random': 'book',
 	  'sp_scenario': 'book',
-	  'sp_campaign': 'book',
 	  'sp_free_maps': 'book',
 	  'multiplayermenu' : 'book',
 	  'multiplayer_creategame' : 'book',

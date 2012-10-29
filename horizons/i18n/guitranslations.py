@@ -725,7 +725,7 @@ def set_translations():
 		("quit"                        , "text"    ): _("Quit"),
 		# (text of widget: settings) Main / in-game menu entry
 		("settings"                    , "text"    ): _("Settings"),
-		# (text of widget: start) Opens widget to create singleplayer games (campaigns, scenarios, random maps, free play)
+		# (text of widget: start) Opens widget to create singleplayer games (scenarios, random maps, free play)
 		("start"                       , "text"    ): _("Singleplayer"),
 		# (text of widget: start_multi) Opens widget to join or create multiplayer games
 		("start_multi"                 , "text"    ): _("Multiplayer"),
@@ -946,8 +946,6 @@ def set_translations():
 		("main_menu_label"             , "text"    ): _("Main menu:"),
 		# (text of widget: start_game_label)
 		("start_game_label"            , "text"    ): _("Start game:"),
-		# (text of widget: campaign)
-		("campaign"                    , "text"    ): _("Campaign"),
 		# (text of widget: free_maps)
 		("free_maps"                   , "text"    ): _("Free play"),
 		# (text of widget: random)
@@ -958,11 +956,6 @@ def set_translations():
 		("cancel"                      , "helptext"): _("Exit to main menu"),
 		# (helptext of widget: okay)
 		("okay"                        , "helptext"): _("Start game"),
-		},
-
-	"sp_campaign.xml" : {
-		# (text of widget: choose_map_lbl)
-		("choose_map_lbl"              , "text"    ): _("Choose a map to play:"),
 		},
 
 	"sp_free_maps.xml" : {

@@ -222,8 +222,6 @@ def start(_command_line_arguments):
 			force_player_id=command_line_arguments.force_player_id, is_map=True)
 	elif command_line_arguments.start_scenario is not None:
 		startup_worked = _start_map(command_line_arguments.start_scenario, 0, True, force_player_id=command_line_arguments.force_player_id)
-	elif command_line_arguments.start_campaign is not None:
-		startup_worked = _start_campaign(command_line_arguments.start_campaign, command_line_arguments.force_player_id)
 	elif command_line_arguments.load_game is not None:
 		startup_worked = _load_cmd_map(command_line_arguments.load_game, command_line_arguments.ai_players,
 			command_line_arguments.force_player_id)
@@ -379,7 +377,7 @@ def start_multiplayer(game):
 
 
 ## GAME START FUNCTIONS
-def _start_map(map_name, ai_players=0, is_scenario=False, campaign=None,
+def _start_map(map_name, ai_players=0, is_scenario=False,
                pirate_enabled=True, trader_enabled=True, force_player_id=None, is_map=False):
 	"""Start a map specified by user
 	@param map_name: name of map or path to map
@@ -393,63 +391,13 @@ def _start_map(map_name, ai_players=0, is_scenario=False, campaign=None,
 		return False
 
 	_modules.gui.show_loading_screen()
-	options = StartGameOptions.create_start_singleplayer(map_file, is_scenario, campaign,
+	options = StartGameOptions.create_start_singleplayer(map_file, is_scenario,
 		ai_players, trader_enabled, pirate_enabled, force_player_id, is_map)
 	start_singleplayer(options)
 	return True
 
 def _start_random_map(ai_players, seed=None, force_player_id=None):
 	options = StartGameOptions.create_start_random_map(ai_players, seed, force_player_id)
-	start_singleplayer(options)
-	return True
-
-def _start_campaign(campaign_name, force_player_id):
-	"""Finds the first scenario in this campaign and loads it.
-	@return: bool, whether loading succeded"""
-	if os.path.exists(campaign_name):
-		# a file was specified. In order to make sure everything works properly,
-		# we need to copy the file over to the UH campaign directory.
-		# This is not very clean, but it's safe.
-
-		if not campaign_name.endswith(".yaml"):
-			print 'Error: campaign filenames have to end in ".yaml".'
-			return False
-
-		# check if the user specified a file in the UH campaign dir
-		campaign_basename = os.path.basename( campaign_name )
-		path_in_campaign_dir = os.path.join(SavegameManager.campaigns_dir, campaign_basename)
-		if not (os.path.exists(path_in_campaign_dir) and
-		        os.path.samefile(campaign_name, path_in_campaign_dir)):
-			#xgettext:python-format
-			string = _("Due to technical reasons, the campaign file will be copied to the UH campaign directory ({path}).").format(path=SavegameManager.campaigns_dir)
-			string += "\n"
-			string += _("This means that changes in the file you specified will not apply to the game directly.")
-			#xgettext:python-format
-			string += _("To see the changes, either always start UH with the current arguments or edit the file {filename}.").format(filename=path_in_campaign_dir)
-			print string
-
-			shutil.copy(campaign_name, SavegameManager.campaigns_dir)
-		# use campaign file name below
-		campaign_name = os.path.splitext( campaign_basename )[0]
-
-	campaign = SavegameManager.get_campaign_info(name=campaign_name)
-	if not campaign:
-		print u"Error: Cannot find campaign '{name}'.".format(name=campaign_name)
-		return False
-
-	scenarios = [sc.get('level') for sc in campaign.get('scenarios',[])]
-	if not scenarios:
-		return False
-
-	savegames = SavegameManager.get_available_scenarios(locales=True)
-	scenario_file = _find_matching_map(scenarios[0], savegames)
-	if not scenario_file:
-		return False
-
-	_modules.gui.show_loading_screen()
-	options = StartGameOptions.create_start_campaign(scenario_file,
-		{'campaign_name': campaign_name, 'scenario_index': 0, 'scenario_name': scenarios[0]},
-		force_player_id)
 	start_singleplayer(options)
 	return True
 
