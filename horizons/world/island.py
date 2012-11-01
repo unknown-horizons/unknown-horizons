@@ -253,10 +253,8 @@ class Island(BuildingOwner, WorldObject):
 		@param player: int id of the player that owns the settlement
 		@param load: boolean, whether it has been called during loading"""
 		building = super(Island, self).add_building(building, player, load=load)
-		if not load:
-			for building.settlement in self.get_settlements(building.position, player):
-				self.assign_settlement(building.position, building.radius, building.settlement)
-				break
+		if not load and building.settlement is not None:
+			self.assign_settlement(building.position, building.radius, building.settlement)
 
 		if building.settlement is not None:
 			building.settlement.add_building(building)
