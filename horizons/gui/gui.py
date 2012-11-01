@@ -805,6 +805,7 @@ class Gui(SingleplayerMenu, MultiplayerMenu):
 			update_hotkey_info(action, newkey)
 			lbl.text = self.HELPSTRING_LAYOUT.format(text=lbl.explanation, key=newkey)
 			lbl.capture(Callback(self.show_hotkey_change_popup, action, lbl, newkey))
+			lbl.adaptLayout()
 
 		def update_hotkey_info(action, keyname):
 			default = self.keyconf.get_default_key_for_action(action)
