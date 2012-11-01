@@ -166,34 +166,15 @@ class Settlement(ComponentHolder, WorldObject, ChangeListener, ResourceHandler):
 			tax_settings[level] = tax
 		self.__init(session, WorldObject.get_object_by_id(owner), upgrade_permissions, tax_settings)
 
-		try:
-			# normal tile loading for new savegames
-			tile_data = db("SELECT data FROM settlement_tiles WHERE rowid = ?", worldid)[0][0]
-			tile_data = json.loads(tile_data)
-			for (x, y) in tile_data: # NOTE: json saves tuples as list
-				tup = (x, y)
-				tile = island.ground_map[tup]
-				self.ground_map[tup] = tile
-				tile.settlement = self
-		except sqlite3.OperationalError:
-			print "Updating data of outdated savegame.."
-			# old savegame, create settlement tiles provisionally (not correct, but useable)
-			# TODO: remove when there aren't any savegames from before december 2011 any more
-			for b_type, x, y in db("SELECT type, x, y FROM building WHERE location = ?", worldid):
-				cls = Entities.buildings[b_type]
-				position = Rect.init_from_topleft_and_size(x, y, cls.size[0], cls.size[1])
-				for coord in position.get_radius_coordinates(cls.radius, include_self=True):
-					tile = island.get_tile_tuple(coord)
-					if tile is not None:
-						if tile.settlement is None:
-							self.ground_map[coord] = island.ground_map[coord]
-							tile.settlement = self
+		tile_data = db("SELECT data FROM settlement_tiles WHERE rowid = ?", worldid)[0][0]
+		tile_data = json.loads(tile_data)
+		for (x, y) in tile_data: # NOTE: json saves tuples as list
+			coords = (x, y)
+			tile = island.ground_map[coords]
+			self.ground_map[coords] = tile
+			tile.settlement = self
 
-		# load super here cause basic stuff is just set up now
-
-		# load all buildings from this settlement
-		# the buildings will expand the area of the settlement by adding everything,
-		# that is in the radius of the building, to the settlement.
+		# load all buildings in this settlement
 		from horizons.world import load_building
 		for building_id, building_type in \
 			  db("SELECT rowid, type FROM building WHERE location = ?", worldid):
