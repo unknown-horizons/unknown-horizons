@@ -40,7 +40,7 @@ class SaveCommand(Command):
 
 		self.log.debug("SaveCommand: save to %s", path)
 
-		success = session._do_save( path )
+		success = session._do_save(path)
 		if success:
 			session.ingame_gui.message_widget.add(point=None, string_id='SAVED_GAME') # TODO: distinguish auto/quick/normal
 		else:
