@@ -308,7 +308,8 @@ class Settler(BuildableRect, BuildingResourceHandler, BasicBuilding):
 			SettlerUpdate.broadcast(self, self.level, 1)
 
 			# reset happiness value for new level
-			self.get_component(StorageComponent).inventory.alter(RES.HAPPINESS, self.__get_data("happiness_init_value") - self.happiness)
+			new_happiness = self.__get_data("happiness_init_value") - self.happiness
+			self.get_component(StorageComponent).inventory.alter(RES.HAPPINESS, new_happiness)
 			self._changed()
 
 		Scheduler().add_new_object(_do_level_up, self, run_in=0)
@@ -325,7 +326,8 @@ class Settler(BuildableRect, BuildingResourceHandler, BasicBuilding):
 			self.level -= 1
 			self._update_level_data()
 			# reset happiness value for new level
-			self.get_component(StorageComponent).inventory.alter(RES.HAPPINESS, self.__get_data("happiness_init_value") - self.happiness)
+			new_happiness = self.__get_data("happiness_init_value") - self.happiness
+			self.get_component(StorageComponent).inventory.alter(RES.HAPPINESS, new_happiness)
 			self.log.debug("%s: Level down to %s", self, self.level)
 			self._changed()
 
