@@ -490,9 +490,9 @@ class BuildingTool(NavigationTool):
 		if evt.isConsumedByWidgets():
 			super(BuildingTool, self).mousePressed(evt)
 			return
-		if fife.MouseEvent.RIGHT == evt.getButton():
+		if evt.getButton() == fife.MouseEvent.RIGHT:
 			self.on_escape()
-		elif fife.MouseEvent.LEFT == evt.getButton():
+		elif evt.getButton() == fife.MouseEvent.LEFT:
 			pass
 		else:
 			super(BuildingTool, self).mousePressed(evt)
