@@ -77,7 +77,7 @@ class SettingsHandler(object):
 		self._setting.createAndAddEntry(UH_MODULE, "ShowResourceIcons", "show_resource_icons")
 
 		self._setting.createAndAddEntry(FIFE_MODULE, "BitsPerPixel", "screen_bpp",
-				                        initialdata=[0, 16, 32], requiresrestart=True)
+				                        initialdata={0: _("Default"), 16: _("16 bit"), 32: _("32 bit")}, requiresrestart=True)
 
 		languages = find_available_languages().keys()
 
