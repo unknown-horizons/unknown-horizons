@@ -553,7 +553,6 @@ class BuildingTool(NavigationTool):
 				self.on_escape()
 			evt.consume()
 		elif evt.getButton() != fife.MouseEvent.RIGHT:
-			# TODO: figure out why there is a != in the comparison above. why not just use else?
 			super(BuildingTool, self).mouseReleased(evt)
 
 	def do_build(self):
