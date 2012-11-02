@@ -416,13 +416,13 @@ class BuildingTool(NavigationTool):
 			tile = get_tile(p)
 			if tile.object is not None and tile.object.buildable_upon:
 				inst = tile.object.fife_instance
-				inst.get2dGfxVisual().setTransparency( BUILDINGS.TRANSPARENCY_VALUE )
-				self._transparencified_instances.add( weakref.ref(inst) )
+				inst.get2dGfxVisual().setTransparency(BUILDINGS.TRANSPARENCY_VALUE)
+				self._transparencified_instances.add(weakref.ref(inst))
 
 		for to_tear_worldid in building.tearset:
 			inst = WorldObject.get_object_by_id(to_tear_worldid).fife_instance
-			inst.get2dGfxVisual().setTransparency( 255 ) # full transparency = hidden
-			self._transparencified_instances.add( weakref.ref(inst) )
+			inst.get2dGfxVisual().setTransparency(255) # full transparency = hidden
+			self._transparencified_instances.add(weakref.ref(inst))
 
 	def _highlight_inversely_related_buildings(self, building, settlement):
 		"""Point out buildings that are inversly relevant (e.g. lumberjacks when building trees)
