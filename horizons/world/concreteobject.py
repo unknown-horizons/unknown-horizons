@@ -124,7 +124,7 @@ class ConcreteObject(WorldObject):
 		# usually we do not need any magic because there only is one set:
 		if len(weighted_dict) == 1:
 			return weighted_dict.keys()[0]
-		weights = sum(w or ACTION_SETS.DEFAULT_WEIGHT
+		weights = sum(ACTION_SETS.DEFAULT_WEIGHT if w is None else w
 		              for i, w in weighted_dict.iteritems())
 		rnd = random.random() * weights
 		for action_set, weight in weighted_dict.iteritems():
