@@ -25,7 +25,6 @@ from horizons.entities import Entities
 from horizons.scheduler import Scheduler
 
 from horizons.util.buildingindexer import BuildingIndexer
-from horizons.util.dbreader import DbReader
 from horizons.util.pathfinding.pathnodes import IslandPathNodes
 from horizons.util.shapes import Circle, Point, Rect
 from horizons.util.worldobject import WorldObject

@@ -30,7 +30,6 @@ from horizons.util.shapes import Point, Circle
 from horizons.util.worldobject import WorldObject
 from horizons.command.unit import CreateUnit
 from horizons.scenario import CONDITIONS
-from horizons.savegamemanager import SavegameManager
 from horizons.constants import MESSAGES
 from horizons.command.game import PauseCommand, UnPauseCommand
 from horizons.messaging import SettlerUpdate

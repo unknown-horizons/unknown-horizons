@@ -21,8 +21,6 @@
 
 import random
 
-import horizons.main
-
 from horizons.session import Session
 from horizons.manager import SPManager
 from horizons.constants import SINGLEPLAYER
