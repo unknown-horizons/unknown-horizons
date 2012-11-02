@@ -128,7 +128,7 @@ class ConcreteObject(WorldObject):
 		              for i, w in weighted_dict.iteritems())
 		rnd = random.random() * weights
 		for action_set, weight in weighted_dict.iteritems():
-			rnd -= weight or ACTION_SETS.DEFAULT_WEIGHT
+			rnd -= ACTION_SETS.DEFAULT_WEIGHT if weight is None else weight
 			if rnd < 0:
 				return action_set
 
