@@ -568,24 +568,29 @@ class UnitProducer(QueueProducer):
 			assert isinstance(production, UnitProduction)
 			self.on_production_finished(production.get_produced_units())
 			for unit, amount in production.get_produced_units().iteritems():
-				for i in xrange(0, amount):
-					radius = 1
-					found_tile = False
-					# search for free water tile, and increase search radius if none is found
-					while not found_tile:
-						for coord in Circle(self.instance.position.center, radius).tuple_iter():
-							point = Point(coord[0], coord[1])
-							if self.instance.island.get_tile(point) is None:
-								tile = self.session.world.get_tile(point)
-								if tile is not None and tile.is_water and coord not in self.session.world.ship_map:
-									# execute bypassing the manager, it's simulated on every machine
-									u = CreateUnit(self.instance.owner.worldid, unit, point.x, point.y)(issuer=self.instance.owner)
-									# Fire a message indicating that the ship has been created
-									name = u.get_component(NamedComponent).name
-									self.session.ingame_gui.message_widget.add(string_id='NEW_UNIT', point=point, message_dict={'name' : name})
-									found_tile = True
-									break
-						radius += 1
+				for i in xrange(amount):
+					self.__place_unit(unit)
+
+	def __place_unit(self, unit):
+		radius = 1
+		found_tile = False
+		# search for free water tile, and increase search radius if none is found
+		while not found_tile:
+			for coord in Circle(self.instance.position.center, radius).tuple_iter():
+				point = Point(coord[0], coord[1])
+				if self.instance.island.get_tile(point) is not None:
+					continue
+				tile = self.session.world.get_tile(point)
+				if tile is not None and tile.is_water and coord not in self.session.world.ship_map:
+					# execute bypassing the manager, it's simulated on every machine
+					u = CreateUnit(self.instance.owner.worldid, unit, point.x, point.y)(issuer=self.instance.owner)
+					# Fire a message indicating that the ship has been created
+					name = u.get_component(NamedComponent).name
+					self.session.ingame_gui.message_widget.add_notification(string_id='NEW_UNIT', point=point,
+					                                                        message_dict={'name' : name})
+					found_tile = True
+					break
+			radius += 1
 
 
 decorators.bind_all(Producer)
