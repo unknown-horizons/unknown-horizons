@@ -649,8 +649,8 @@ class BuildingTool(NavigationTool):
 	def update_preview(self, force=False):
 		"""Used as callback method"""
 		if self.start_point is not None:
-			self.preview_build(self.start_point,
-			                   self.start_point if self.end_point is None else self.end_point, force=force)
+			end_point = self.end_point or self.start_point
+			self.preview_build(self.start_point, end_point, force=force)
 
 	def _rotate(self, degrees):
 		self.rotation = (self.rotation + degrees) % 360
