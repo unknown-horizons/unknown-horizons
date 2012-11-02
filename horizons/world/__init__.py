@@ -48,7 +48,6 @@ from horizons.world.units.weapon import Weapon
 from horizons.command.unit import CreateUnit
 from horizons.component.healthcomponent import HealthComponent
 from horizons.component.storagecomponent import StorageComponent
-from horizons.util.dbreader import DbReader
 from horizons.world.disaster.disastermanager import DisasterManager
 from horizons.world import worldutils
 
