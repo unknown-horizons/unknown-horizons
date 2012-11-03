@@ -278,7 +278,7 @@ class LandManager(WorldObject):
 					self.village[coords] = self.island.ground_map[coords]
 
 		for coords, tile in self.island.ground_map.iteritems():
-			if coords not in self.village and self.coords_usable(coords, True):
+			if coords not in self.village and self.coords_usable(coords, use_coast=True):
 				self.production[coords] = tile
 
 	def _prepare_feeder_island(self):
@@ -286,7 +286,7 @@ class LandManager(WorldObject):
 		self.production = {}
 		self.village = {}
 		for coords, tile in self.island.ground_map.iteritems():
-			if self.coords_usable(coords, True):
+			if self.coords_usable(coords, use_coast=True):
 				self.production[coords] = tile
 
 	def add_to_production(self, coords):
