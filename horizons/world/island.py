@@ -353,7 +353,7 @@ class Island(BuildingOwner, WorldObject):
 					if not all_on_island:
 						break
 				if all_on_island:
-					d[ (x, y) ] = self.last_change_id
+					d[(x, y)] = self.last_change_id
 			return d
 
 		class LazyDict(dict):

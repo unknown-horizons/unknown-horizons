@@ -314,16 +314,16 @@ class Session(LivingObject):
 		self.savecounter = savegame_data.get('savecounter', 0)
 
 		if savegame_data.get('rng_state', None):
-			rng_state_list = json.loads( savegame_data['rng_state'] )
+			rng_state_list = json.loads(savegame_data['rng_state'])
 			# json treats tuples as lists, but we need tuples here, so convert back
 			def rec_list_to_tuple(x):
 				if isinstance(x, list):
-					return tuple( rec_list_to_tuple(i) for i in x )
+					return tuple(rec_list_to_tuple(i) for i in x)
 				else:
 					return x
 			rng_state_tuple = rec_list_to_tuple(rng_state_list)
 			# changing the rng is safe for mp, as all players have to have the same map
-			self.random.setstate( rng_state_tuple )
+			self.random.setstate(rng_state_tuple)
 
 		self.world = World(self) # Load horizons.world module (check horizons/world/__init__.py)
 		self.world._init(savegame_db, options.force_player_id, disasters_enabled=options.disasters_enabled)
@@ -547,7 +547,7 @@ class Session(LivingObject):
 				for instance in self.selection_groups[group]:
 					db("INSERT INTO selected(`group`, id) VALUES(?, ?)", group, instance.worldid)
 
-			rng_state = json.dumps( self.random.getstate() )
+			rng_state = json.dumps(self.random.getstate())
 			SavegameManager.write_metadata(db, self.savecounter, rng_state)
 			# make sure everything gets written now
 			db("COMMIT")
