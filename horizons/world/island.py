@@ -33,7 +33,7 @@ from horizons.world.settlement import Settlement
 from horizons.constants import BUILDINGS, RES, UNITS
 from horizons.scenario import CONDITIONS
 from horizons.world.buildingowner import BuildingOwner
-from horizons.world.buildability.terrain import TerrainBuildabilityCache
+from horizons.world.buildability.terraincache import TerrainBuildabilityCache
 from horizons.gui.widgets.minimap import Minimap
 from horizons.world.ground import MapPreviewTile
 
