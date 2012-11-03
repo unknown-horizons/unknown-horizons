@@ -31,13 +31,10 @@ Continue to horizons.session for further ingame digging.
 import os
 import sys
 import os.path
-import random
 import json
-import time
 import traceback
 import threading
 import thread # for thread.error raised by threading.Lock.release
-import shutil
 import subprocess
 
 from fife import fife as fife_module

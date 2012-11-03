@@ -27,7 +27,6 @@ import os.path
 import glob
 import time
 import re
-import yaml
 import itertools
 
 from horizons.constants import PATHS, VERSION
