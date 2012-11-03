@@ -76,7 +76,7 @@ class AreaBuilder(WorldObject):
 			if tile is None:
 				continue
 			coords = (tile.x, tile.y)
-			if coords in blocked_coords_set or coords not in self.settlement.ground_map:
+			if coords in blocked_coords_set or coords in self.land_manager.coastline or coords not in self.settlement.ground_map:
 				continue
 			if coords in self.land_manager.roads or (coords in self.plan and self.plan[coords][0] == BUILDING_PURPOSE.NONE):
 				yield coords
@@ -169,7 +169,7 @@ class AreaBuilder(WorldObject):
 			for coords in self.iter_possible_road_coords(building.position, building.position):
 				collector_coords.add(coords)
 
-		blocked_coords = set([coords for coords in builder.position.tuple_iter()])
+		blocked_coords = set([coords for coords in builder.position.tuple_iter()]).union(self.land_manager.coastline)
 		destination_coords = set(self.iter_possible_road_coords(loading_area, builder.position))
 		beacon = Rect.init_from_borders(loading_area.left - 1, loading_area.top - 1,
 		                                loading_area.right + 1, loading_area.bottom + 1)
@@ -322,5 +322,9 @@ class AreaBuilder(WorldObject):
 			self.plan[(x, y)] = (purpose, data)
 			if purpose == BUILDING_PURPOSE.ROAD:
 				self.land_manager.roads.add((x, y))
+
+	def register_change_list(self, coords_list, purpose, data):
+		for (x, y) in coords_list:
+			self.register_change(x, y, purpose, data)
 
 decorators.bind_all(AreaBuilder)

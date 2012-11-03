@@ -158,6 +158,8 @@ class World(BuildingOwner, WorldObject):
 		self.water = dict((tile, 1.0) for tile in self.ground_map)
 		self._init_water_bodies()
 		self.sea_number = self.water_body[(self.min_x, self.min_y)]
+		for island in self.islands:
+			island.terrain_cache.create_sea_cache()
 
 		# assemble list of water and coastline for ship, that can drive through shallow water
 		# NOTE: this is rather a temporary fix to make the fisher be able to move

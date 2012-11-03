@@ -38,6 +38,7 @@ from horizons.util.python.callback import Callback
 from horizons.util.shapes import Point, Rect
 from horizons.entities import Entities
 from horizons.world.production.producer import Producer
+from horizons.world.buildability.binarycache import BinaryBuildabilityCache
 from horizons.component.namedcomponent import NamedComponent
 
 class ProductionBuilder(AreaBuilder):
@@ -61,8 +62,9 @@ class ProductionBuilder(AreaBuilder):
 		super(ProductionBuilder, self).__init__(settlement_manager)
 		self.plan = dict.fromkeys(self.land_manager.production, (BUILDING_PURPOSE.NONE, None))
 		self.__init(settlement_manager, Scheduler().cur_tick, Scheduler().cur_tick)
-		for x, y in settlement_manager.settlement.warehouse.position.tuple_iter():
-			self.register_change(x, y, BUILDING_PURPOSE.WAREHOUSE, None)
+		self._init_buildability_cache()
+		self.register_change_list(list(settlement_manager.settlement.warehouse.position.tuple_iter()),
+		                              BUILDING_PURPOSE.WAREHOUSE, None)
 		self._refresh_unused_fields()
 
 	def __init(self, settlement_manager, last_collector_improvement_storage, last_collector_improvement_road):
@@ -73,6 +75,16 @@ class ProductionBuilder(AreaBuilder):
 		self.last_collector_improvement_storage = last_collector_improvement_storage
 		self.last_collector_improvement_road = last_collector_improvement_road
 		self.__builder_cache = {}
+
+	def _init_buildability_cache(self):
+		self._buildability_cache = BinaryBuildabilityCache(self.island.terrain_cache)
+		free_coords_set = set()
+		for coords, (purpose, _) in self.plan.iteritems():
+			if purpose == BUILDING_PURPOSE.NONE:
+				free_coords_set.add(coords)
+		for coords in self.land_manager.coastline:
+			free_coords_set.add(coords)
+		self._buildability_cache.add_area(free_coords_set)
 
 	def save(self, db):
 		super(ProductionBuilder, self).save(db)
@@ -95,6 +107,7 @@ class ProductionBuilder(AreaBuilder):
 			self.plan[(x, y)] = (purpose, None)
 			if purpose == BUILDING_PURPOSE.ROAD:
 				self.land_manager.roads.add((x, y))
+		self._init_buildability_cache()
 		self._refresh_unused_fields()
 
 	def have_deposit(self, resource_id):
@@ -121,9 +134,8 @@ class ProductionBuilder(AreaBuilder):
 		builder = max(options)[1]
 		if not builder.execute():
 			return BUILD_RESULT.UNKNOWN_ERROR
-		for x, y in builder.position.tuple_iter():
-			self.register_change(x, y, BUILDING_PURPOSE.RESERVED, None)
-		self.register_change(builder.position.origin.x, builder.position.origin.y, purpose, None)
+		self.register_change_list(list(builder.position.tuple_iter()), BUILDING_PURPOSE.RESERVED, None)
+		self.register_change_list([builder.position.origin.to_tuple()], purpose, None)
 		return BUILD_RESULT.OK
 
 	def get_collector_area(self):
@@ -209,9 +221,13 @@ class ProductionBuilder(AreaBuilder):
 			for dx in xrange(3):
 				for dy in xrange(3):
 					coords2 = (coords[0] + dx, coords[1] + dy)
-					object = self.island.ground_map[coords2].object
-					if object is not None and not object.buildable_upon:
+					if coords2 not in self.island.ground_map:
 						usable = False
+					else:
+						object = self.island.ground_map[coords2].object
+						if object is not None and not object.buildable_upon:
+							usable = False
+							break
 			if usable and purpose in self.unused_fields:
 				self.unused_fields[purpose].append(coords)
 
@@ -358,6 +374,23 @@ class ProductionBuilder(AreaBuilder):
 			return
 		self.last_change_id += 1
 
+	def register_change_list(self, coords_list, purpose, data):
+		add_list = []
+		remove_list = []
+		for coords in coords_list:
+			if coords in self.land_manager.village or coords not in self.plan:
+				continue
+			if purpose == BUILDING_PURPOSE.NONE and self.plan[coords][0] != BUILDING_PURPOSE.NONE:
+				add_list.append(coords)
+			elif purpose != BUILDING_PURPOSE.NONE and self.plan[coords][0] == BUILDING_PURPOSE.NONE:
+				remove_list.append(coords)
+		if add_list:
+			self._buildability_cache.add_area(add_list)
+		if remove_list:
+			self._buildability_cache.remove_area(remove_list)
+
+		super(ProductionBuilder, self).register_change_list(coords_list, purpose, data)
+
 	def handle_lost_area(self, coords_list):
 		"""Handle losing the potential land in the given coordinates list."""
 		# remove planned fields that are now impossible
@@ -408,9 +441,11 @@ class ProductionBuilder(AreaBuilder):
 			for coords in lumberjack_building.position.get_radius_coordinates(lumberjack_building.radius):
 				used_trees.add(coords)
 
+		coords_list = []
 		for coords in building.position.get_radius_coordinates(building.radius):
 			if coords not in used_trees and coords in self.plan and self.plan[coords][0] == BUILDING_PURPOSE.TREE:
-				self.register_change(coords[0], coords[1], BUILDING_PURPOSE.NONE, None)
+				coords_list.append(coords)
+		self.register_change_list(coords_list, BUILDING_PURPOSE.NONE, None)
 
 	def _handle_farm_removal(self, building):
 		"""Handle farm removal by removing planned fields and tearing existing ones that can't be serviced by another farm."""
@@ -433,8 +468,7 @@ class ProductionBuilder(AreaBuilder):
 
 		# tear the finished but no longer used fields down
 		for unused_field in unused_fields:
-			for x, y in unused_field.position.tuple_iter():
-				self.register_change(x, y, BUILDING_PURPOSE.NONE, None)
+			self.register_change_list(list(unused_field.position.tuple_iter()), BUILDING_PURPOSE.NONE, None)
 			Tear(unused_field).execute(self.session)
 
 		# remove the planned but never built fields from the plan
@@ -451,8 +485,7 @@ class ProductionBuilder(AreaBuilder):
 						used_by_another_farm = True
 						break
 				if not used_by_another_farm:
-					for x, y in position.tuple_iter():
-						self.register_change(x, y, BUILDING_PURPOSE.NONE, None)
+					self.register_change_list(list(position.tuple_iter()), BUILDING_PURPOSE.NONE, None)
 		self._refresh_unused_fields()
 
 	def remove_building(self, building):
@@ -464,8 +497,7 @@ class ProductionBuilder(AreaBuilder):
 		elif building.buildable_upon or building.id == BUILDINGS.TRAIL:
 			pass # don't react to road, trees and ruined tents being destroyed
 		else:
-			for x, y in building.position.tuple_iter():
-				self.register_change(x, y, BUILDING_PURPOSE.NONE, None)
+			self.register_change_list(list(building.position.tuple_iter()), BUILDING_PURPOSE.NONE, None)
 
 			if building.id in self.collector_building_classes:
 				self.collector_buildings.remove(building)

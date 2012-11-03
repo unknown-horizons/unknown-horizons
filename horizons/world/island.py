@@ -33,6 +33,7 @@ from horizons.world.settlement import Settlement
 from horizons.constants import BUILDINGS, RES, UNITS
 from horizons.scenario import CONDITIONS
 from horizons.world.buildingowner import BuildingOwner
+from horizons.world.buildability.terrain import TerrainBuildabilityCache
 from horizons.gui.widgets.minimap import Minimap
 from horizons.world.ground import MapPreviewTile
 
@@ -100,6 +101,12 @@ class Island(BuildingOwner, WorldObject):
 			for (building_worldid, building_typeid) in \
 				  db("SELECT rowid, type FROM building WHERE location = ?", island_id):
 				load_building(self.session, db, building_typeid, building_worldid)
+
+		self.terrain_cache = None
+		if not preview:
+			self.terrain_cache = TerrainBuildabilityCache(self)
+			for settlement in self.settlements:
+				settlement.init_buildability_cache(self.terrain_cache)
 
 	def __init(self, db, island_id, preview):
 		"""
@@ -184,6 +191,7 @@ class Island(BuildingOwner, WorldObject):
 		@param player: int id of the player that owns the settlement"""
 		settlement = Settlement(self.session, player)
 		settlement.initialize()
+		settlement.init_buildability_cache(self.terrain_cache)
 		self.add_existing_settlement(position, radius, settlement, load)
 		# TODO: Move this to command, this message should not appear while loading
 		self.session.ingame_gui.message_widget.add(string_id='NEW_SETTLEMENT',
@@ -215,23 +223,25 @@ class Island(BuildingOwner, WorldObject):
 		@param radius:
 		@param settlement:
 		"""
+		settlement_coords_changed = []
 		settlement_tiles_changed = []
-		for coord in position.get_radius_coordinates(radius, include_self=True):
-			tile = self.get_tile_tuple(coord)
+		for coords in position.get_radius_coordinates(radius, include_self=True):
+			tile = self.get_tile_tuple(coords)
 			if tile is not None:
 				if tile.settlement == settlement:
 					continue
 				if tile.settlement is None:
 					tile.settlement = settlement
-					settlement.ground_map[coord] = tile
-					Minimap.update(coord)
-					self._register_change(coord[0], coord[1])
+					settlement.ground_map[coords] = tile
+					Minimap.update(coords)
+					self._register_change(*coords)
 					settlement_tiles_changed.append(tile)
+					settlement_coords_changed.append(coords)
 
 					# notify all AI players when land ownership changes
 					for player in self.session.world.players:
 						if hasattr(player, 'on_settlement_expansion'):
-							player.on_settlement_expansion(settlement, coord)
+							player.on_settlement_expansion(settlement, coords)
 
 				building = tile.object
 				# found a new building, that is now in settlement radius
@@ -243,8 +253,9 @@ class Island(BuildingOwner, WorldObject):
 					settlement.add_building(building)
 
 		if settlement_tiles_changed:
+			if self.terrain_cache:
+				settlement.buildability_cache.modify_area(settlement_coords_changed)
 			SettlementRangeChanged.broadcast(settlement, settlement_tiles_changed)
-
 
 	def add_building(self, building, player, load=False):
 		"""Adds a building to the island at the position x, y with player as the owner.
@@ -256,7 +267,7 @@ class Island(BuildingOwner, WorldObject):
 			self.assign_settlement(building.position, building.radius, building.settlement)
 
 		if building.settlement is not None:
-			building.settlement.add_building(building)
+			building.settlement.add_building(building, load)
 		if building.id in self.building_indexers:
 			self.building_indexers[building.id].add(building)
 
@@ -283,9 +294,9 @@ class Island(BuildingOwner, WorldObject):
 			self.building_indexers[building.id].remove(building)
 
 		# Reset the tiles this building was covering (after building has been completely removed)
-		for point in building.position:
-			self.path_nodes.reset_tile_walkability(point.to_tuple())
-			self._register_change(point.x, point.y)
+		for coords in building.position.tuple_iter():
+			self.path_nodes.reset_tile_walkability(coords)
+			self._register_change(*coords)
 
 		# keep track of the number of trees for animal population control
 		if building.id == BUILDINGS.TREE:
@@ -382,6 +393,8 @@ class Island(BuildingOwner, WorldObject):
 		# keep searching for new trees every time a tree is torn down.
 		for wild_animal in (wild_animal for wild_animal in self.wild_animals):
 			wild_animal.remove()
+		for settlement in self.settlements:
+			settlement.buildability_cache = None
 		super(Island, self).end()
 		for settlement in self.settlements:
 			settlement.end()

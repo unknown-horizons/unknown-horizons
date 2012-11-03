@@ -34,6 +34,7 @@ from horizons.util.inventorychecker import InventoryChecker
 from horizons.component.componentholder import ComponentHolder
 from horizons.component.tradepostcomponent import TradePostComponent
 from horizons.component.storagecomponent import StorageComponent
+from horizons.world.buildability.settlementcache import SettlementBuildabilityCache
 from horizons.world.production.producer import Producer, UnitProducer
 from horizons.world.resourcehandler import ResourceHandler
 from horizons.scheduler import Scheduler
@@ -72,6 +73,10 @@ class Settlement(ComponentHolder, WorldObject, ChangeListener, ResourceHandler):
 		self.upgrade_permissions = upgrade_permissions
 		self.tax_settings = tax_settings
 		Scheduler().add_new_object(self.__init_inventory_checker, self)
+
+	def init_buildability_cache(self, terrain_cache):
+		self.buildability_cache = SettlementBuildabilityCache(terrain_cache, self.ground_map)
+		self.buildability_cache.modify_area(self.ground_map.keys())
 
 	@classmethod
 	def make_default_upgrade_permissions(cls):
@@ -166,10 +171,10 @@ class Settlement(ComponentHolder, WorldObject, ChangeListener, ResourceHandler):
 			tax_settings[level] = tax
 		self.__init(session, WorldObject.get_object_by_id(owner), upgrade_permissions, tax_settings)
 
+		# load the settlement tile map
 		tile_data = db("SELECT data FROM settlement_tiles WHERE rowid = ?", worldid)[0][0]
-		tile_data = json.loads(tile_data)
-		for (x, y) in tile_data: # NOTE: json saves tuples as list
-			coords = (x, y)
+		coords_list = [tuple(coords) for coords in json.loads(tile_data)]
+		for coords in coords_list: # NOTE: json saves tuples as list
 			tile = island.ground_map[coords]
 			self.ground_map[coords] = tile
 			tile.settlement = self
@@ -199,7 +204,7 @@ class Settlement(ComponentHolder, WorldObject, ChangeListener, ResourceHandler):
 			except KeyError:
 				pass
 
-	def add_building(self, building):
+	def add_building(self, building, load=False):
 		"""Adds a building to the settlement.
 		This does not set building.settlement, it must be set beforehand.
 		@see Island.add_building
@@ -211,6 +216,8 @@ class Settlement(ComponentHolder, WorldObject, ChangeListener, ResourceHandler):
 			self.buildings_by_id[building.id] = [building]
 		if building.has_component(Producer) and not building.has_component(UnitProducer):
 			building.get_component(Producer).add_production_finished_listener(self.settlement_building_production_finished)
+		if not load and not building.buildable_upon and self.buildability_cache:
+			self.buildability_cache.modify_area([coords for coords in building.position.tuple_iter()])
 		if hasattr(self.owner, 'add_building'):
 			# notify interested players of added building
 			self.owner.add_building(building)
@@ -221,6 +228,8 @@ class Settlement(ComponentHolder, WorldObject, ChangeListener, ResourceHandler):
 		self.buildings_by_id[building.id].remove(building)
 		if building.has_component(Producer) and not building.has_component(UnitProducer):
 			building.get_component(Producer).remove_production_finished_listener(self.settlement_building_production_finished)
+		if not building.buildable_upon and self.buildability_cache:
+			self.buildability_cache.add_area([coords for coords in building.position.tuple_iter()])
 		if hasattr(self.owner, 'remove_building'):
 			# notify interested players of removed building
 			self.owner.remove_building(building)
@@ -239,6 +248,7 @@ class Settlement(ComponentHolder, WorldObject, ChangeListener, ResourceHandler):
 		self.__inventory_checker = InventoryChecker(SettlementInventoryUpdated, self.get_component(StorageComponent), 4)
 
 	def end(self):
+		assert self.buildability_cache is None
 		self.session = None
 		self.owner = None
 		self.buildings = None

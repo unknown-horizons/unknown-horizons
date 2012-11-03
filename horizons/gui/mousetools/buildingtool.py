@@ -383,6 +383,7 @@ class BuildingTool(NavigationTool):
 
 	def _draw_preview_building_range(self, building, settlement):
 		"""Color the range as if the building was selected"""
+		return
 		radius_only_on_island = True
 		if hasattr(self.selectable_comp, 'range_applies_only_on_island'):
 			radius_only_on_island = self.selectable_comp.range_applies_only_on_island
@@ -725,7 +726,7 @@ class ShipBuildingToolLogic(object):
 		player = session.world.player
 		buildable_tiles_add = building_tool._buildable_tiles.add
 
-		if tiles_to_check is not None: # only check these tiles
+		if tiles_to_check is not None: # only check these tiles (build from ship
 			for tile in tiles_to_check:
 				if is_tile_buildable(session, tile, self.ship):
 					building_tool._color_buildable_tile(tile)
@@ -785,17 +786,29 @@ class SettlementBuildingToolLogic(object):
 			self.subscribed = True
 			SettlementRangeChanged.subscribe(self._on_update)
 
+		size = building_tool._class.size
+		if (building_tool.rotation - 45) / 90 % 2 == 1:
+			size = (size[1], size[0])
+		terrain_type = building_tool._class.terrain_type
+		if terrain_type is None:
+			terrain_type = 1
+
 		if tiles_to_check is not None: # only check these tiles
-			for tile in tiles_to_check:
-				if is_tile_buildable(session, tile, None):
-					building_tool._color_buildable_tile(tile)
+			if tiles_to_check:
+				settlement = sorted(tiles_to_check)[0].settlement
+				
+				for tile in tiles_to_check:
+					coords = (tile.x, tile.y)
+					if coords in settlement.buildability_cache.terrain_cache.cache[terrain_type][size] and coords in settlement.buildability_cache.cache[size]:
+						building_tool._color_buildable_tile(tile)
 
 		else: #default build on island
 			for settlement in session.world.settlements:
 				if settlement.owner == player:
 					island = session.world.get_island(Point(*settlement.ground_map.iterkeys().next()))
 					for tile in settlement.ground_map.itervalues():
-						if is_tile_buildable(session, tile, None, island, check_settlement=False):
+						coords = (tile.x, tile.y)
+						if coords in settlement.buildability_cache.terrain_cache.cache[terrain_type][size] and coords in settlement.buildability_cache.cache[size]:
 							building_tool._color_buildable_tile(tile)
 
 	def _on_update(self, message):
