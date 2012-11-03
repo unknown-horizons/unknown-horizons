@@ -162,7 +162,7 @@ class ProductionBuilder(AreaBuilder):
 				for dx, dy in moves:
 					coords = (x + dx, y + dy)
 					if coords not in reachable and coords in coverage_area:
-						if coords in self.land_manager.roads or (coords in self.plan and self.plan[coords][0] == BUILDING_PURPOSE.NONE):
+						if coords in self.land_manager.roads or (coords in self.plan and coords not in self.land_manager.coastline and self.plan[coords][0] == BUILDING_PURPOSE.NONE):
 							queue.append(coords)
 							reachable.add(coords)
 							if coords in self.plan and self.plan[coords][0] == BUILDING_PURPOSE.NONE:

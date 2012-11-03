@@ -30,6 +30,18 @@ from horizons.entities import Entities
 
 class EnlargeCollectorAreaGoal(SettlementGoal):
 	"""Enlarge the area of the island covered by collectors."""
+	_radius_offsets = None
+	
+	@classmethod
+	def _init_radius_offsets(cls):
+		building_class = Entities.buildings[BUILDINGS.STORAGE]
+		size = building_class.size
+		assert size[0] == size[1]
+		rect = Rect.init_from_topleft_and_size(0, 0, size[0], size[1])
+
+		cls._radius_offsets = []
+		for coords in rect.get_radius_coordinates(building_class.radius):
+			cls._radius_offsets.append(coords)
 
 	def get_personality_name(self):
 		return 'EnlargeCollectorAreaGoal'
@@ -49,14 +61,17 @@ class EnlargeCollectorAreaGoal(SettlementGoal):
 
 		moves = [(-1, 0), (0, -1), (0, 1), (1, 0)] # valid moves for collectors
 		collector_area = self.production_builder.get_collector_area()
+		coastline = self.land_manager.coastline
 
 		# area_label contains free tiles in the production area and all road tiles
 		area_label = dict.fromkeys(self.land_manager.roads) # {(x, y): area_number, ...}
 		for coords, (purpose, _) in self.production_builder.plan.iteritems():
-			if purpose == BUILDING_PURPOSE.NONE:
+			if coords not in coastline and purpose == BUILDING_PURPOSE.NONE:
 				area_label[coords] = None
+
 		areas = 0
 		for coords in collector_area:
+			assert coords not in coastline
 			if coords in area_label and area_label[coords] is not None:
 				continue
 
@@ -77,13 +92,18 @@ class EnlargeCollectorAreaGoal(SettlementGoal):
 				coords_set_by_area[area_number].add(coords)
 
 		options = []
+		radius_offsets = self._radius_offsets
 		for (x, y), area_number in area_label.iteritems():
 			builder = self.production_builder.make_builder(BUILDINGS.STORAGE, x, y, False)
 			if not builder:
 				continue
 
-			coords_set = set(builder.position.get_radius_coordinates(Entities.buildings[BUILDINGS.STORAGE].radius))
-			useful_area = len(coords_set_by_area[area_number].intersection(coords_set))
+			area_coords_set = coords_set_by_area[area_number]
+			useful_area = 0
+			for dx, dy in radius_offsets:
+				coords = (x + dx, y + dy)
+				if coords in area_coords_set:
+					useful_area += 1
 			if not useful_area:
 				continue
 
@@ -119,6 +139,9 @@ class EnlargeCollectorAreaGoal(SettlementGoal):
 		return BUILD_RESULT.IMPOSSIBLE
 
 	def execute(self):
+		if self._radius_offsets is None:
+			self._init_radius_offsets()
+
 		result = self._enlarge_collector_area()
 		self._log_generic_build_result(result, 'storage coverage building')
 		return self._translate_build_result(result)
