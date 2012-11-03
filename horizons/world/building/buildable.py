@@ -25,7 +25,7 @@ from horizons.util.pathfinding.roadpathfinder import RoadPathFinder
 from horizons.util.python import decorators
 from horizons.util.shapes import Circle, Point, Rect
 from horizons.util.worldobject import WorldObject
-from horizons.world.buildability.terrain import TerrainRequirement
+from horizons.world.buildability.terraincache import TerrainRequirement
 from horizons.constants import BUILDINGS
 from horizons.entities import Entities
 
