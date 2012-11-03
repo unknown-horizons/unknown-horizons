@@ -77,14 +77,14 @@ class ProductionBuilder(AreaBuilder):
 		self.__builder_cache = {}
 
 	def _init_buildability_cache(self):
-		self._buildability_cache = BinaryBuildabilityCache(self.island.terrain_cache)
+		self.buildability_cache = BinaryBuildabilityCache(self.island.terrain_cache)
 		free_coords_set = set()
 		for coords, (purpose, _) in self.plan.iteritems():
 			if purpose == BUILDING_PURPOSE.NONE:
 				free_coords_set.add(coords)
 		for coords in self.land_manager.coastline:
 			free_coords_set.add(coords)
-		self._buildability_cache.add_area(free_coords_set)
+		self.buildability_cache.add_area(free_coords_set)
 
 	def save(self, db):
 		super(ProductionBuilder, self).save(db)
@@ -385,9 +385,9 @@ class ProductionBuilder(AreaBuilder):
 			elif purpose != BUILDING_PURPOSE.NONE and self.plan[coords][0] == BUILDING_PURPOSE.NONE:
 				remove_list.append(coords)
 		if add_list:
-			self._buildability_cache.add_area(add_list)
+			self.buildability_cache.add_area(add_list)
 		if remove_list:
-			self._buildability_cache.remove_area(remove_list)
+			self.buildability_cache.remove_area(remove_list)
 
 		super(ProductionBuilder, self).register_change_list(coords_list, purpose, data)
 

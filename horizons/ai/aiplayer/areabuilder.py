@@ -109,7 +109,7 @@ class AreaBuilder(WorldObject):
 		distance_to_road = {}
 		distance_to_boundary = {}
 		for coords in self.plan:
-			if coords not in self.settlement.ground_map:
+			if coords not in self.settlement.ground_map or coords in self.land_manager.coastline:
 				continue
 			if self.plan[coords][0] == BUILDING_PURPOSE.NONE:
 				nodes[coords] = 1

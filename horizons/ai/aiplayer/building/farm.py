@@ -28,6 +28,7 @@ from horizons.ai.aiplayer.buildingevaluator import BuildingEvaluator
 from horizons.constants import RES, BUILDINGS
 from horizons.util.python import decorators
 from horizons.util.shapes import Point
+from horizons.world.buildability.terraincache import TerrainRequirement
 
 class AbstractFarm(AbstractBuilding):
 	@property
@@ -51,17 +52,27 @@ class AbstractFarm(AbstractBuilding):
 			return BUILDING_PURPOSE.TOBACCO_FIELD
 		return None
 
+	@classmethod
+	def _get_buildability_intersection(cls, settlement_manager, size, terrain_type):
+		plan_coords_set = settlement_manager.production_builder.buildability_cache.cache[size]
+		settlement_coords_set = settlement_manager.settlement.buildability_cache.cache[size]
+		island_coords_set = settlement_manager.island.terrain_cache.cache[terrain_type][size]
+		return plan_coords_set.intersection(settlement_coords_set, island_coords_set)
+
 	def get_evaluators(self, settlement_manager, resource_id):
 		field_purpose = self.get_purpose(resource_id)
 		road_side = [(-1, 0), (0, -1), (0, 3), (3, 0)]
 		options = []
 
+		field_spots_set = self._get_buildability_intersection(settlement_manager, (3, 3), TerrainRequirement.LAND)
+		road_spots_set = self._get_buildability_intersection(settlement_manager, (1, 1), TerrainRequirement.LAND).union(settlement_manager.land_manager.roads)
+
 		# create evaluators for completely new farms
 		most_fields = 1
-		for x, y, orientation in self.iter_potential_locations(settlement_manager):
+		for x, y in field_spots_set:
 			# try the 4 road configurations (road through the farm area on any of the farm's sides)
 			for road_dx, road_dy in road_side:
-				evaluator = FarmEvaluator.create(settlement_manager.production_builder, x, y, road_dx, road_dy, most_fields, field_purpose)
+				evaluator = FarmEvaluator.create(settlement_manager.production_builder, x, y, road_dx, road_dy, most_fields, field_purpose, field_spots_set, road_spots_set)
 				if evaluator is not None:
 					options.append(evaluator)
 					most_fields = max(most_fields, evaluator.fields)
@@ -79,6 +90,7 @@ class AbstractFarm(AbstractBuilding):
 		cls._available_buildings[BUILDINGS.FARM] = cls
 
 class FarmEvaluator(BuildingEvaluator):
+	__field_pos_offsets = [(0, 0), (0, 1), (0, 2), (1, 0), (1, 1), (1, 2), (2, 0), (2, 1), (2, 2)]
 	__moves = [(-1, 0), (0, -1), (0, 1), (1, 0)]
 	__field_offsets = None
 
@@ -99,11 +111,11 @@ class FarmEvaluator(BuildingEvaluator):
 		cls.__field_offsets = first_class + second_class + third_class
 
 	@classmethod
-	def _suitable_for_road(self, area_builder, coords):
-		return coords in area_builder.land_manager.roads or (coords in area_builder.plan and area_builder.plan[coords][0] == BUILDING_PURPOSE.NONE)
+	def _suitable_for_road(self, production_builder, coords):
+		return coords in production_builder.land_manager.roads or (coords in production_builder.plan and production_builder.plan[coords][0] == BUILDING_PURPOSE.NONE)
 
 	@classmethod
-	def _create(cls, area_builder, farm_x, farm_y, road_dx, road_dy, min_fields, field_purpose):
+	def _create(cls, area_builder, farm_x, farm_y, road_dx, road_dy, min_fields, field_purpose, field_spots_set, road_spots_set):
 		builder = area_builder.make_builder(BUILDINGS.FARM, farm_x, farm_y, True)
 		if not builder:
 			return None
@@ -118,20 +130,14 @@ class FarmEvaluator(BuildingEvaluator):
 				coords = (farm_x + other_offset, farm_y + road_dy)
 			else:
 				coords = (farm_x + road_dx, farm_y + other_offset)
-			if not cls._suitable_for_road(area_builder, coords):
+			if coords not in road_spots_set:
 				return None
 
-			if coords in area_builder.plan and area_builder.plan[coords][0] == BUILDING_PURPOSE.NONE:
-				road = Builder.create(BUILDINGS.TRAIL, area_builder.land_manager, Point(coords[0], coords[1]))
-				if road:
-					farm_plan[coords] = (BUILDING_PURPOSE.ROAD, road)
-				else:
-					farm_plan = None
-					break
-			else:
+			if coords in area_builder.land_manager.roads:
+				farm_plan[coords] = (BUILDING_PURPOSE.RESERVED, None)
 				existing_roads += 1
-		if farm_plan is None:
-			return None # impossible to build some part of the road
+			else:
+				farm_plan[coords] = (BUILDING_PURPOSE.ROAD, None)
 
 		# place the fields
 		fields = 0
@@ -139,17 +145,21 @@ class FarmEvaluator(BuildingEvaluator):
 			if fields >= 8:
 				break # unable to place more anyway
 			coords = (farm_x + dx, farm_y + dy)
-			field = area_builder.make_builder(BUILDINGS.POTATO_FIELD, coords[0], coords[1], False)
-			if not field:
+			if coords not in field_spots_set:
 				continue
-			for coords2 in field.position.tuple_iter():
+
+			field_fits = True
+			for (fdx, fdy) in cls.__field_pos_offsets:
+				coords2 = (coords[0] + fdx, coords[1] + fdy)
 				if coords2 in farm_plan:
-					field = None
+					field_fits = False
 					break
-			if field is None:
+			if not field_fits:
 				continue # some part of the area is reserved for something else
+
 			fields += 1
-			for coords2 in field.position.tuple_iter():
+			for (fdx, fdy) in cls.__field_pos_offsets:
+				coords2 = (coords[0] + fdx, coords[1] + fdy)
 				farm_plan[coords2] = (BUILDING_PURPOSE.RESERVED, None)
 			farm_plan[coords] = (field_purpose, None)
 		if fields < min_fields:
@@ -200,14 +210,14 @@ class FarmEvaluator(BuildingEvaluator):
 	__cache_changes = (-1, -1)
 
 	@classmethod
-	def create(cls, area_builder, farm_x, farm_y, road_dx, road_dy, min_fields, field_purpose):
+	def create(cls, area_builder, farm_x, farm_y, road_dx, road_dy, min_fields, field_purpose, field_spots_set, road_spots_set):
 		new_cache_changes = (area_builder.island.last_change_id, area_builder.last_change_id)
 		if new_cache_changes != cls.__cache_changes:
 			cls.__cache_changes = new_cache_changes
 			cls.__cache.clear()
 		key = (area_builder.owner, farm_x, farm_y, road_dx, road_dy)
 		if key not in cls.__cache:
-			cls.__cache[key] = cls._create(area_builder, farm_x, farm_y, road_dx, road_dy, min_fields, field_purpose)
+			cls.__cache[key] = cls._create(area_builder, farm_x, farm_y, road_dx, road_dy, min_fields, field_purpose, field_spots_set, road_spots_set)
 		if cls.__cache[key] is None:
 			return None
 		if cls.__cache[key].field_purpose != field_purpose:
