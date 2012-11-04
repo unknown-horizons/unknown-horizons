@@ -64,7 +64,7 @@ class ProductionBuilder(AreaBuilder):
 		self.__init(settlement_manager, Scheduler().cur_tick, Scheduler().cur_tick)
 		self._init_buildability_cache()
 		self.register_change_list(list(settlement_manager.settlement.warehouse.position.tuple_iter()),
-		                              BUILDING_PURPOSE.WAREHOUSE, None)
+		                          BUILDING_PURPOSE.WAREHOUSE, None)
 		self._refresh_unused_fields()
 
 	def __init(self, settlement_manager, last_collector_improvement_storage, last_collector_improvement_road):

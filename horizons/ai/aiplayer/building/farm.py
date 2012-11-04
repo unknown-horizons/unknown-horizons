@@ -52,13 +52,6 @@ class AbstractFarm(AbstractBuilding):
 			return BUILDING_PURPOSE.TOBACCO_FIELD
 		return None
 
-	@classmethod
-	def _get_buildability_intersection(cls, settlement_manager, size, terrain_type):
-		plan_coords_set = settlement_manager.production_builder.buildability_cache.cache[size]
-		settlement_coords_set = settlement_manager.settlement.buildability_cache.cache[size]
-		island_coords_set = settlement_manager.island.terrain_cache.cache[terrain_type][size]
-		return plan_coords_set.intersection(settlement_coords_set, island_coords_set)
-
 	def get_evaluators(self, settlement_manager, resource_id):
 		field_purpose = self.get_purpose(resource_id)
 		road_side = [(-1, 0), (0, -1), (0, 3), (3, 0)]

@@ -48,6 +48,7 @@ class AbstractBuilding(object):
 		self.height = Entities.buildings[building_id].size[1]
 		self.size = (self.width, self.height)
 		self.radius = Entities.buildings[building_id].radius
+		self.terrain_type = Entities.buildings[building_id].terrain_type
 		self.lines = {} # output_resource_id: ProductionLine
 		if self.producer_building:
 			self.__init_production_lines()
@@ -122,30 +123,20 @@ class AbstractBuilding(object):
 		"""Return a boolean showing whether the given settlement has enough resources to build a building of this type."""
 		return Entities.buildings[self.id].have_resources([settlement_manager.land_manager.settlement], settlement_manager.owner)
 
+	@classmethod
+	def _get_buildability_intersection(cls, settlement_manager, size, terrain_type):
+		plan_coords_set = settlement_manager.production_builder.buildability_cache.cache[size]
+		settlement_coords_set = settlement_manager.settlement.buildability_cache.cache[size]
+		island_coords_set = settlement_manager.island.terrain_cache.cache[terrain_type][size]
+		return plan_coords_set.intersection(settlement_coords_set, island_coords_set)
+
 	def iter_potential_locations(self, settlement_manager):
 		"""Iterate over possible locations of the building in the given settlement in the form of (x, y, orientation)."""
-		island_last_changed = settlement_manager.island.last_changed[self.size]
-		island_last_changed_turned = settlement_manager.island.last_changed[(self.size[1], self.size[0])]
-		if self.width == self.height:
-			for x, y in settlement_manager.production_builder.plan:
-				if (x, y) in island_last_changed:
-					yield (x, y, 0)
-			if self.id in settlement_manager.production_builder.coastal_building_classes:
-				for x, y in settlement_manager.land_manager.coastline:
-					if (x, y) in island_last_changed:
-						yield (x, y, 0)
-		else:
-			for x, y in settlement_manager.production_builder.plan:
-				if (x, y) in island_last_changed:
-					yield (x, y, 0)
-				if (x, y) in island_last_changed_turned:
-					yield (x, y, 1)
-			if self.id in settlement_manager.production_builder.coastal_building_classes:
-				for x, y in settlement_manager.land_manager.coastline:
-					if (x, y) in island_last_changed:
-						yield (x, y, 0)
-					if (x, y) in island_last_changed_turned:
-						yield (x, y, 1)
+		for (x, y) in sorted(self._get_buildability_intersection(settlement_manager, self.size, self.terrain_type)):
+			yield (x, y, 0)
+		if self.width != self.height:
+			for (x, y) in sorted(self._get_buildability_intersection(settlement_manager, (self.height, self.width), self.terrain_type)):
+				yield (x, y, 1)
 
 	@property
 	def evaluator_class(self):
