@@ -51,7 +51,8 @@ def check_for_updates(info):
 	try:
 		u = urllib2.urlopen( url + "?" + data, timeout=TIMEOUT )
 	except urllib2.URLError as e:
-		print 'Failed to check for updates: ', e
+		# Silently ignore the failed update, printing stuff might crash the game
+		# if no console is available
 		info.status = UpdateInfo.INVALID
 		return
 
