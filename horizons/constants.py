@@ -312,7 +312,8 @@ class ACTION_SETS:
 
 class GAME_SPEED:
 	TICKS_PER_SECOND = 16
-	TICK_RATES = [ int(i * TICKS_PER_SECOND) for i in (0.5, 1, 2, 3, 4, 6, 8, 11, 20) ]
+	TICK_RATES = [int(i * TICKS_PER_SECOND)
+	              for i in (0.5, 1, 2, 3, 4, 6, 8, 11, 20)]
 
 class COLORS:
 	BLACK = 9
@@ -489,13 +490,15 @@ class PATHS:
 	DB_FILES = tuple(os.path.join("content", i) for i in
 	                 ("game.sql", "balance.sql", "names.sql"))
 
-	ATLAS_SOURCE_DIRECTORIES = tuple(os.path.join("content/gfx", i) for i in
-									("/base",
-	 								"/buildings",
-	 								"/buildings_preview",
-	 								"/misc",
-	 								"/terrain",
-	 								"/units"))
+	ATLAS_SOURCE_DIRECTORIES = tuple(os.path.join("content/gfx", d)
+	                                 for d in (
+	                                 "/base",
+	                                 "/buildings",
+	                                 "/buildings_preview",
+	                                 "/misc",
+	                                 "/terrain",
+	                                 "/units",
+	                                ))
 
 	#voice paths
 	VOICE_DIR = os.path.join("content", "audio", "voice")
