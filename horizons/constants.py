@@ -465,12 +465,12 @@ class GFX:
 class PATHS:
 	# paths in user dir
 	USER_DIR = _user_dir
-	LOG_DIR = os.path.join(_user_dir, "log")
-	USER_CONFIG_FILE = os.path.join(_user_dir, "settings.xml")
-	SCREENSHOT_DIR = os.path.join(_user_dir, "screenshots")
-	DEFAULT_WINDOW_ICON_PATH = os.path.join("content/gui/images/logos", "uh_32.png")
-	MAC_WINDOW_ICON_PATH = os.path.join("content/gui/icons", "Icon.icns")
-	ATLAS_METADATA_PATH = os.path.join(_user_dir, "atlas-metadata.cache")
+	LOG_DIR = os.path.join(USER_DIR, "log")
+	USER_CONFIG_FILE = os.path.join(USER_DIR, "settings.xml")
+	SCREENSHOT_DIR = os.path.join(USER_DIR, "screenshots")
+	DEFAULT_WINDOW_ICON_PATH = os.path.join("content", "gui", "images", "logos", "uh_32.png")
+	MAC_WINDOW_ICON_PATH = os.path.join("content", "gui", "icons", "Icon.icns")
+	ATLAS_METADATA_PATH = os.path.join(USER_DIR, "atlas-metadata.cache")
 
 	# paths relative to uh dir
 	ACTION_SETS_DIRECTORY = os.path.join("content", "gfx")
