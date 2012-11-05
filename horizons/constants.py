@@ -23,8 +23,6 @@
 import ctypes
 import platform
 import os
-import locale
-import sys
 
 from horizons.ext.enum import Enum
 
