@@ -26,8 +26,9 @@ class LazyBinaryBuildabilityCacheElement(object):
 		super(LazyBinaryBuildabilityCacheElement, self).__init__()
 		self._buildability_cache = buildability_cache
 		self._width = width
+		self._cache = None
 
-	def _get_size_cache(self):
+	def _init_size_cache(self):
 		r3x3 = self._buildability_cache.cache[(3, 3)]
 		offset = self._width - 3
 
@@ -36,12 +37,20 @@ class LazyBinaryBuildabilityCacheElement(object):
 			x, y = coords
 			if (x + offset, y) in r3x3 and (x, y + offset) in r3x3 and (x + offset, y + offset) in r3x3:
 				usable.add(coords)
-		return usable
+
+		self._cache = usable
+		size = (self._width, self._width)
+		self._buildability_cache.cache[size] = usable
+
+	def __getattr__(self, name):
+		if self._cache is None:
+			self._init_size_cache()
+		return getattr(self._cache, name)
 
 	def __contains__(self, key):
-		size = (self._width, self._width)
-		self._buildability_cache.cache[size] = self._get_size_cache()
-		return key in self._buildability_cache.cache[size]
+		if self._cache is None:
+			self._init_size_cache()
+		return key in self._cache
 
 class BinaryBuildabilityCache(object):
 	def __init__(self, terrain_cache):
