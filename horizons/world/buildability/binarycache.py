@@ -29,6 +29,9 @@ class LazyBinaryBuildabilityCacheElement(object):
 		self._cache = None
 
 	def _init_size_cache(self):
+		if self._cache is not None:
+			return
+
 		r3x3 = self._buildability_cache.cache[(3, 3)]
 		offset = self._width - 3
 
@@ -43,14 +46,19 @@ class LazyBinaryBuildabilityCacheElement(object):
 		self._buildability_cache.cache[size] = usable
 
 	def __getattr__(self, name):
-		if self._cache is None:
-			self._init_size_cache()
+		# required to make set methods such as set.intersect work
+		self._init_size_cache()
 		return getattr(self._cache, name)
 
 	def __contains__(self, key):
-		if self._cache is None:
-			self._init_size_cache()
+		# required to make the syntax "coords in cache" work efficiently
+		self._init_size_cache()
 		return key in self._cache
+
+	def __iter__(self):
+		# required to make iteration work
+		self._init_size_cache()
+		return iter(self._cache)
 
 class BinaryBuildabilityCache(object):
 	def __init__(self, terrain_cache):
