@@ -20,6 +20,7 @@
 # ###################################################
 
 import copy
+from collections import defaultdict
 
 from horizons.ai.aiplayer.builder import Builder
 from horizons.ai.aiplayer.building import AbstractBuilding
@@ -27,7 +28,7 @@ from horizons.ai.aiplayer.constants import BUILD_RESULT, BUILDING_PURPOSE
 from horizons.ai.aiplayer.buildingevaluator import BuildingEvaluator
 from horizons.constants import RES, BUILDINGS
 from horizons.util.python import decorators
-from horizons.util.shapes import Point
+from horizons.util.shapes import Point, Rect
 from horizons.world.buildability.terraincache import TerrainRequirement
 
 class AbstractFarm(AbstractBuilding):
@@ -53,6 +54,7 @@ class AbstractFarm(AbstractBuilding):
 		return None
 
 	def get_evaluators(self, settlement_manager, resource_id):
+		production_builder = settlement_manager.production_builder
 		field_purpose = self.get_purpose(resource_id)
 		road_side = [(-1, 0), (0, -1), (0, 3), (3, 0)]
 		options = []
@@ -62,18 +64,18 @@ class AbstractFarm(AbstractBuilding):
 
 		# create evaluators for completely new farms
 		most_fields = 1
-		for x, y in field_spots_set:
+		for x, y, _ in self.iter_potential_locations(settlement_manager):
 			# try the 4 road configurations (road through the farm area on any of the farm's sides)
 			for road_dx, road_dy in road_side:
-				evaluator = FarmEvaluator.create(settlement_manager.production_builder, x, y, road_dx, road_dy, most_fields, field_purpose, field_spots_set, road_spots_set)
+				evaluator = FarmEvaluator.create(production_builder, x, y, road_dx, road_dy, most_fields, field_purpose, field_spots_set, road_spots_set)
 				if evaluator is not None:
 					options.append(evaluator)
 					most_fields = max(most_fields, evaluator.fields)
 
 		# create evaluators for modified farms (change unused field type)
-		for coords_list in settlement_manager.production_builder.unused_fields.itervalues():
+		for coords_list in production_builder.unused_fields.itervalues():
 			for x, y in coords_list:
-				evaluator = ModifiedFieldEvaluator.create(settlement_manager.production_builder, x, y, field_purpose)
+				evaluator = ModifiedFieldEvaluator.create(production_builder, x, y, field_purpose)
 				if evaluator is not None:
 					options.append(evaluator)
 		return options
@@ -227,30 +229,41 @@ class FarmEvaluator(BuildingEvaluator):
 		evaluator.field_purpose = new_field_purpose
 		return evaluator
 
+	def _register_changes(self, changes):
+		for (purpose, data), coords_list in changes.iteritems():
+			self.area_builder.register_change_list(coords_list, purpose, data)
+
 	def execute(self):
 		# cheap resource check first, then pre-reserve the tiles and check again
 		if not self.builder.have_resources():
 			return (BUILD_RESULT.NEED_RESOURCES, None)
 
-		backup = copy.copy(self.area_builder.plan)
-		for (x, y), (purpose, builder) in self.farm_plan.iteritems():
-			self.area_builder.register_change(x, y, purpose, None)
+		changes = defaultdict(lambda: [])
+		reverse_changes = defaultdict(lambda: [])
+		for coords, (purpose, data) in self.farm_plan.iteritems():
+			changes[(purpose, None)].append(coords)
+			reverse_changes[self.area_builder.plan[coords]].append(coords)
+		self._register_changes(changes)
 
 		resource_check = self.have_resources()
 		if resource_check is None:
-			self.area_builder.plan = backup
+			self._register_changes(reverse_changes)
 			self.log.debug('%s, unable to reach by road', self)
 			return (BUILD_RESULT.IMPOSSIBLE, None)
 		elif not resource_check:
-			self.area_builder.plan = backup
+			self._register_changes(reverse_changes)
 			return (BUILD_RESULT.NEED_RESOURCES, None)
 		assert self.area_builder.build_road_connection(self.builder)
 
 		building = self.builder.execute()
 		if not building:
+			# TODO: make sure the plan and the reality stay in a reasonable state
+			# the current code makes the plan look as if everything was built but in reality
+			# a farm may be missing if there was not enough money after building the road.
 			self.log.debug('%s, unknown error', self)
 			return (BUILD_RESULT.UNKNOWN_ERROR, None)
-		for coords, (purpose, builder) in self.farm_plan.iteritems():
+
+		for coords, (purpose, _) in self.farm_plan.iteritems():
 			if purpose == self.field_purpose:
 				self.area_builder.unused_fields[self.field_purpose].append(coords)
 		return (BUILD_RESULT.OK, building)
