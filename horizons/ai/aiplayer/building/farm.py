@@ -241,6 +241,10 @@ class FarmEvaluator(BuildingEvaluator):
 		changes = defaultdict(lambda: [])
 		reverse_changes = defaultdict(lambda: [])
 		for coords, (purpose, data) in self.farm_plan.iteritems():
+			if coords in self.area_builder.land_manager.roads:
+				# skip roads because they can be ignored and because we may be reusing village roads
+				continue
+
 			changes[(purpose, None)].append(coords)
 			reverse_changes[self.area_builder.plan[coords]].append(coords)
 		self._register_changes(changes)
