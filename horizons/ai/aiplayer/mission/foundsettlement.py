@@ -27,6 +27,7 @@ from horizons.util.python.callback import Callback
 from horizons.util.shapes import Circle, Point
 from horizons.util.worldobject import WorldObject
 from horizons.ext.enum import Enum
+from horizons.entities import Entities
 
 class FoundSettlement(ShipMission):
 	"""
@@ -101,49 +102,46 @@ class FoundSettlement(ShipMission):
 	def find_warehouse_location(cls, ship, land_manager):
 		"""
 		Finds a location for the warehouse on the given island
-		@param LandManager: the LandManager of the island
-		@return _BuildPosition: a possible build location
+		@return Builder: a possible build location
 		"""
-		moves = [(-1, 0), (0, -1), (0, 1), (1, 0)]
+		warehouse_class = Entities.buildings[BUILDINGS.WAREHOUSE]
+		pos_offsets = []
+		for dx in xrange(warehouse_class.width):
+			for dy in xrange(warehouse_class.height):
+				pos_offsets.append((dx, dy))
+
 		island = land_manager.island
-		world = island.session.world
 		personality = land_manager.owner.personality_manager.get('FoundSettlement')
+		too_close_penalty_threshold_sq = personality.too_close_penalty_threshold * personality.too_close_penalty_threshold
 		options = []
 
-		for (x, y), tile in sorted(island.ground_map.iteritems()):
-			ok = False
-			for x_offset, y_offset in moves:
-				for d in xrange(2, 6):
-					coords = (x + d * x_offset, y + d * y_offset)
-					if coords in world.water_body and world.water_body[coords] == world.water_body[ship.position.to_tuple()]:
-						# the planned warehouse should be reachable from the ship's water body
-						ok = True
-			if not ok:
-				continue
-
-			build_info = None
-			point = Point(x, y)
-			warehouse = Builder(BUILDINGS.WAREHOUSE, land_manager, point, ship = ship)
-			if not warehouse:
+		for (x, y) in island.terrain_cache.cache[warehouse_class.terrain_type][warehouse_class.size]:
+			current_settlement = False
+			for (dx, dy) in pos_offsets:
+				if island.ground_map[(x + dx, y + dy)].settlement is not None:
+					current_settlement = True
+					break
+			if current_settlement:
 				continue
 
 			cost = 0
-			for coords in land_manager.village:
-				distance = point.distance(coords)
+			for (x2, y2) in land_manager.village:
+				dx = x2 - x
+				dy = y2 - y
+				distance = (dx * dx + dy * dy) ** 0.5
 				if distance < personality.too_close_penalty_threshold:
 					cost += personality.too_close_constant_penalty + personality.too_close_linear_penalty / (distance + 1.0)
 				else:
 					cost += distance
 
 			for settlement_manager in land_manager.owner.settlement_managers:
-				cost += warehouse.position.distance(settlement_manager.settlement.warehouse.position) * personality.linear_warehouse_penalty
+				cost += settlement_manager.settlement.warehouse.position.distance((x, y)) * personality.linear_warehouse_penalty
 
-			options.append((cost, warehouse))
+			options.append((cost, x, y))
 
-		for _, build_info in sorted(options):
-			(x, y) = build_info.position.get_coordinates()[4]
-			if ship.check_move(Circle(Point(x, y), BUILDINGS.BUILD.MAX_BUILDING_SHIP_DISTANCE)):
-				return build_info
+		for _, x, y in sorted(options):
+			if ship.check_move(Circle(Point(x + warehouse_class.width // 2, y + warehouse_class.height // 2), BUILDINGS.BUILD.MAX_BUILDING_SHIP_DISTANCE)):
+				return Builder(BUILDINGS.WAREHOUSE, land_manager, Point(x, y), ship=ship)
 		return None
 
 	@classmethod
