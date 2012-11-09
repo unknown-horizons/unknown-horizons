@@ -199,3 +199,9 @@ class TerrainBuildabilityCache(object):
 
 		self.cache[TerrainRequirement.LAND_AND_COAST_NEAR_SEA] = {}
 		self.cache[TerrainRequirement.LAND_AND_COAST_NEAR_SEA][(3, 3)] = near_sea
+
+	def get_buildability_intersection(self, terrain_type, size, *other_cache_layers):
+		result = self.cache[terrain_type][size]
+		for cache_layer in other_cache_layers:
+			result = result.intersection(cache_layer.cache[size])
+		return result

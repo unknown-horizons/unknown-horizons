@@ -125,10 +125,8 @@ class AbstractBuilding(object):
 
 	@classmethod
 	def _get_buildability_intersection(cls, settlement_manager, size, terrain_type):
-		plan_coords_set = settlement_manager.production_builder.buildability_cache.cache[size]
-		settlement_coords_set = settlement_manager.settlement.buildability_cache.cache[size]
-		island_coords_set = settlement_manager.island.terrain_cache.cache[terrain_type][size]
-		return plan_coords_set.intersection(settlement_coords_set, island_coords_set)
+		return settlement_manager.island.terrain_cache.get_buildability_intersection(terrain_type, size,
+		    settlement_manager.production_builder.buildability_cache, settlement_manager.settlement.buildability_cache)
 
 	def iter_potential_locations(self, settlement_manager):
 		"""Iterate over possible locations of the building in the given settlement in the form of (x, y, orientation)."""
