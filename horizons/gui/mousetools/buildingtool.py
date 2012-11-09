@@ -304,7 +304,7 @@ class BuildingTool(NavigationTool):
 
 		settlement = None # init here so we can access it below loop
 		neededResources = {}
-		# check if the buildings are buildable and color them appropriatly
+		# check if the buildings are buildable and color them appropriately
 		for i, building in enumerate(self.buildings):
 			# get gfx for the building
 			# workaround for buildings like settler, that don't use the current level of
