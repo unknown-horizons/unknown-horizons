@@ -341,7 +341,7 @@ class BuildingTool(NavigationTool):
 			if building.buildable and not enough_res:
 					# make building red
 					self.renderer.addColored(self.buildings_fife_instances[building],
-										     *self.not_buildable_color)
+					                         *self.not_buildable_color)
 					building.buildable = False
 					# set missing info for gui
 					self.buildings_missing_resources[building] = missing_res
