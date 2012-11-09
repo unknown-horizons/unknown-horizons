@@ -27,6 +27,7 @@ from horizons.util.python import decorators
 from horizons.constants import BUILDINGS
 from horizons.util.shapes import Rect
 from horizons.entities import Entities
+from horizons.world.buildability.terraincache import TerrainRequirement
 
 class EnlargeCollectorAreaGoal(SettlementGoal):
 	"""Enlarge the area of the island covered by collectors."""
@@ -91,12 +92,15 @@ class EnlargeCollectorAreaGoal(SettlementGoal):
 			if coords in self.production_builder.plan and self.production_builder.plan[coords][0] == BUILDING_PURPOSE.NONE and coords not in collector_area:
 				coords_set_by_area[area_number].add(coords)
 
+		storage_spots = self.island.terrain_cache.get_buildability_intersection(TerrainRequirement.LAND, (2, 2),
+		    self.settlement.buildability_cache, self.production_builder.buildability_cache)
+
 		options = []
 		radius_offsets = self._radius_offsets
-		for (x, y), area_number in area_label.iteritems():
-			builder = self.production_builder.make_builder(BUILDINGS.STORAGE, x, y, False)
-			if not builder:
+		for coords in sorted(storage_spots):
+			if coords not in area_label:
 				continue
+			x, y = coords
 
 			area_coords_set = coords_set_by_area[area_number]
 			useful_area = 0
@@ -108,6 +112,7 @@ class EnlargeCollectorAreaGoal(SettlementGoal):
 				continue
 
 			alignment = 1
+			builder = self.production_builder.make_builder(BUILDINGS.STORAGE, x, y, False)
 			for tile in self.production_builder.iter_neighbour_tiles(builder.position):
 				coords = (tile.x, tile.y)
 				if coords not in self.production_builder.plan or self.production_builder.plan[coords][0] != BUILDING_PURPOSE.NONE:
