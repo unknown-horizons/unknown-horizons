@@ -195,7 +195,8 @@ class Scheduler(LivingObject):
 
 		# filter additional callbacks as well
 		self.additional_cur_tick_schedule = \
-		    [ cb for cb in self.additional_cur_tick_schedule if cb.class_instance is not class_instance ]
+		    [cb for cb in self.additional_cur_tick_schedule
+		        if cb.class_instance is not class_instance]
 
 	def rem_call(self, instance, callback):
 		"""Removes all callbacks of 'instance' that are 'callback'
@@ -208,8 +209,9 @@ class Scheduler(LivingObject):
 		for key in self.schedule:
 			callback_objects = self.schedule[key]
 			for i in xrange(len(callback_objects) - 1, -1, -1):
-				if callback_objects[i].class_instance is instance and callback_objects[i].callback == callback and \
-				   not hasattr(callback_objects[i], "invalid"):
+				if (callback_objects[i].class_instance is instance
+				    and callback_objects[i].callback == callback
+				    and not hasattr(callback_objects[i], "invalid")):
 					del callback_objects[i]
 					removed_calls += 1
 

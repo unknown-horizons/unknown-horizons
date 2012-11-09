@@ -186,7 +186,8 @@ class Ship(Unit):
 		"""Returns warehouses this ship can trade with w.r.t. position, which defaults to the ships ones."""
 		if position is None:
 			position = self.position
-		return self.session.world.get_warehouses(position, self.radius, self.owner, include_tradeable=True)
+		return self.session.world.get_warehouses(position, self.radius, self.owner,
+		                                         include_tradeable=True)
 
 	def get_location_based_status(self, position):
 		warehouses = self.get_tradeable_warehouses(position)
@@ -227,7 +228,7 @@ class TradeShip(Ship):
 		super(TradeShip, self).__init__(x, y, **kwargs)
 
 	def _possible_names(self):
-		return [ _(u'Trader') ]
+		return [_(u'Trader')]
 
 class FisherShip(FisherShipCollector, Ship):
 	"""Represents a fisher ship."""

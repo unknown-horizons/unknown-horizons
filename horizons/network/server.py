@@ -40,7 +40,7 @@ logging.basicConfig(format = '[%(asctime)-15s] [%(levelname)s] %(message)s',
 
 class Server(object):
 	def __init__(self, hostname, port, statistic_file=None):
-		packets.SafeUnpickler.set_mode(client = False)
+		packets.SafeUnpickler.set_mode(client=False)
 		self.host     = None
 		self.hostname = hostname
 		self.port     = port
@@ -110,6 +110,7 @@ class Server(object):
 	# __(...)             ... noop for extracting the strings
 	def gettext(self, player, message):
 		return player.gettext.ugettext(message)
+
 	def ngettext(self, player, msgid1, msgid2, n):
 		return player.gettext.ungettext(msgid1, msgid2, n)
 
