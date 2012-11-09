@@ -98,11 +98,22 @@ class LumberjackEvaluator(BuildingEvaluator):
 		if result != BUILD_RESULT.OK:
 			return (result, None)
 
+		island_ground_map = self.area_builder.island.ground_map
+		forest_coords_list = []
 		for coords in building.position.get_radius_coordinates(Entities.buildings[BUILDINGS.LUMBERJACK].radius):
 			if coords in self.area_builder.plan and self.area_builder.plan[coords][0] == BUILDING_PURPOSE.NONE:
-				self.area_builder.register_change(coords[0], coords[1], BUILDING_PURPOSE.TREE, None)
-				# TODO: don't ignore the return value
-				Builder.create(BUILDINGS.TREE, self.area_builder.land_manager, Point(coords[0], coords[1])).execute()
+				ok = False
+				if island_ground_map[coords].object is not None and island_ground_map[coords].object.id == BUILDINGS.TREE:
+					ok = True
+				else:
+					builder = Builder.create(BUILDINGS.TREE, self.area_builder.land_manager, Point(coords[0], coords[1]))
+					if builder:
+						assert builder.execute()
+						ok = True
+				if ok:
+					forest_coords_list.append(coords)
+
+		self.area_builder.register_change_list(forest_coords_list, BUILDING_PURPOSE.TREE, None)
 		return (BUILD_RESULT.OK, building)
 
 AbstractLumberjack.register_buildings()
