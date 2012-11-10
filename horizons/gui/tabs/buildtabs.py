@@ -47,21 +47,21 @@ class BuildTab(TabInterface):
 	lazy_loading = True
 
 	build_menus = [
-	  "content/objects/gui_buildmenu/build_menu_per_increment.yaml",
+	  "content/objects/gui_buildmenu/build_menu_per_tier.yaml",
 	  "content/objects/gui_buildmenu/build_menu_per_type.yaml"
 	  ]
 
-	build_menu_config_per_increment = build_menus[0]
+	build_menu_config_per_tier = build_menus[0]
 	build_menu_config_per_type = build_menus[1]
 
-	default_build_menu_config = build_menu_config_per_increment
+	default_build_menu_config = build_menu_config_per_tier
 
 	cur_build_menu_config = default_build_menu_config
 
 	# NOTE: check for occurences of this when adding one, you might want to
 	#       add respective code there as well
-	unlocking_strategies = Enum("tab_per_increment", # 1 tab per increment
-	                            "single_per_increment" # each single building unlocked if increment is unlocked
+	unlocking_strategies = Enum("tab_per_tier", # 1 tab per tier
+	                            "single_per_tier" # each single building unlocked if tier is unlocked
 	                            )
 
 	last_active_build_tab = None
@@ -106,7 +106,7 @@ class BuildTab(TabInterface):
 		self.tabindex = tabindex
 		self.build_callback = build_callback
 		self.unlocking_strategy = unlocking_strategy
-		if self.unlocking_strategy != self.__class__.unlocking_strategies.tab_per_increment:
+		if self.unlocking_strategy != self.__class__.unlocking_strategies.tab_per_tier:
 			if not helptext and not headline:
 				raise InvalidBuildMenuFileFormat("helptext definition is missing.")
 		self.row_definitions = rows
@@ -123,7 +123,7 @@ class BuildTab(TabInterface):
 		headline_lbl = self.widget.child_finder('headline')
 		if self.headline: # prefer specific headline
 			headline_lbl.text = self.headline
-		elif self.unlocking_strategy == self.__class__.unlocking_strategies.tab_per_increment:
+		elif self.unlocking_strategy == self.__class__.unlocking_strategies.tab_per_tier:
 			headline_lbl.text = _(self.session.db.get_settler_name(self.tabindex))
 
 
@@ -132,8 +132,8 @@ class BuildTab(TabInterface):
 		settlement = LastActivePlayerSettlementManager().get()
 		def _set_entry(button, icon, building_id):
 			"""Configure a single build menu button"""
-			if self.unlocking_strategy == self.__class__.unlocking_strategies.single_per_increment and \
-			   self.get_building_increments()[building_id] > self.session.world.player.settler_level:
+			if self.unlocking_strategy == self.__class__.unlocking_strategies.single_per_tier and \
+			   self.get_building_tiers()[building_id] > self.session.world.player.settler_level:
 				return
 
 			building = Entities.buildings[building_id]
@@ -272,7 +272,7 @@ class BuildTab(TabInterface):
 			if tab == "meta":
 				continue # not a tab
 
-			if unlocking_strategy == cls.unlocking_strategies.tab_per_increment and len(tabs) > session.world.player.settler_level:
+			if unlocking_strategy == cls.unlocking_strategies.tab_per_tier and len(tabs) > session.world.player.settler_level:
 				break
 
 			try:
@@ -288,23 +288,23 @@ class BuildTab(TabInterface):
 
 	@classmethod
 	@decorators.cachedfunction
-	def get_building_increments(cls):
-		"""Returns a dictionary mapping building type ids to their increments
+	def get_building_tiers(cls):
+		"""Returns a dictionary mapping building type ids to their tiers
 		@return cached dictionary (don't modifiy)"""
-		building_increments = {}
-		data = YamlCache.get_file( cls.build_menu_config_per_increment, game_data=True )
-		increment = -1
+		building_tiers = {}
+		data = YamlCache.get_file( cls.build_menu_config_per_tier, game_data=True )
+		tier = -1
 		for tab, tabdata in sorted(data.iteritems()):
 			if tab == "meta":
 				continue # not a tab
 
-			increment += 1
+			tier += 1
 
 			for row in tabdata:
 				if isinstance(row, list): # actual content
 					for entry in row:
 						if isinstance(entry, int): # actual building button
-							building_increments[entry] = increment
-		return building_increments
+							building_tiers[entry] = tier
+		return building_tiers
 
 

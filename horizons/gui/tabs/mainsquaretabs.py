@@ -103,7 +103,7 @@ class MainSquareSettlerLevelTab(MainSquareTab):
 	LEVEL = None # overwrite in subclass
 	def __init__(self, instance):
 		widget = "mainsquare_inhabitants.xml"
-		icon_path = 'content/gui/icons/tabwidget/mainsquare/inhabitants{incr}_%s.png'.format(incr=self.__class__.LEVEL)
+		icon_path = 'content/gui/icons/tabwidget/mainsquare/inhabitants{tier}_%s.png'.format(tier=self.__class__.LEVEL)
 		super(MainSquareSettlerLevelTab, self).__init__(widget=widget, instance=instance, icon_path=icon_path)
 		self.max_inhabitants = instance.session.db.get_settler_inhabitants_max(self.__class__.LEVEL)
 		self.min_inhabitants = instance.session.db.get_settler_inhabitants_min(self.__class__.LEVEL)
@@ -155,7 +155,7 @@ class MainSquareSettlerLevelTab(MainSquareTab):
 
 		# refresh upgrade permissions
 		upgrades_button = self.widget.child_finder('allow_upgrades')
-		if self.__class__.LEVEL < TIER.CURRENT_MAX: #max incr => cannot allow upgrades
+		if self.__class__.LEVEL < TIER.CURRENT_MAX: #max tier => cannot allow upgrades
 			if self.settlement.upgrade_permissions[self.__class__.LEVEL]:
 				upgrades_button.set_active()
 				upgrades_button.helptext = _("Don't allow upgrades")

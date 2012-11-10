@@ -124,7 +124,7 @@ def collect_all():
 		collector.add_to_collection(resource.name, 'the name of a resource')
 
 	for settler_level in db_session.query(SettlerLevel):
-		collector.add_to_collection(settler_level.name, 'the name of an inhabitant increment (tier / level)')
+		collector.add_to_collection(settler_level.name, 'the name of an inhabitant tier (level)')
 
 	return collector
 

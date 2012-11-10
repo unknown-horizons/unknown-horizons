@@ -53,7 +53,7 @@ class BasicBuilding(ComponentHolder, ConcreteObject):
 	@param x, y: int position of the building.
 	@param rotation: value passed to getInstance
 	@param owner: Player that owns the building.
-	@param level: start in this increment
+	@param level: start in this tier
 	@param action_set_id: use this action set id. None means choose one at random
 	"""
 	def __init__(self, x, y, rotation, owner, island, level=None, **kwargs):
@@ -200,7 +200,7 @@ class BasicBuilding(ComponentHolder, ConcreteObject):
 			self.act(self._action, repeating=True)
 
 	def level_upgrade(self, lvl):
-		"""Upgrades building to another increment"""
+		"""Upgrades building to another tier"""
 		self.level = lvl
 		self.update_action_set_level(lvl)
 

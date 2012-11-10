@@ -200,7 +200,7 @@ class UhDbAccessor(DbReader):
 		return self.cached_query(sql, level)[0][0]
 
 	def get_settler_house_name(self, level):
-		"""Returns name of the residential building for a specific increment
+		"""Returns name of the residential building for a specific tier
 		@param level: int settler's level
 		@return: string settler's housing name"""
 		sql = "SELECT residential_name FROM settler_level WHERE level = ?"

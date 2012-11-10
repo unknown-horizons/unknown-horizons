@@ -57,7 +57,7 @@
 				comment="Displays all notifications and game messages" />
 			<!--
 			<Button name="wb2" text="Own settlements" is_focusable="0"
-				comment="Only filter messages important for your own settlements (disasters, new increment, ...)" />
+				comment="Only filter messages important for your own settlements (disasters, new tier, ...)" />
 			<Button name="wb3" text="Whatever_fits" comment="noi18n" is_focusable="0" />
 			-->
 		</HBox>

@@ -70,7 +70,7 @@ def settlements_num_greater(session, limit):
 
 @register()
 def settler_level_greater(session, limit):
-	"""Returns whether the highest increment reached in any player settlement is greater than *limit*."""
+	"""Returns whether the highest tier reached in any player settlement is greater than *limit*."""
 	return (session.world.player.settler_level > limit)
 
 @register(periodically=True)

@@ -90,7 +90,7 @@ INSERT INTO "message" VALUES('DIPLOMACY_STATUS_NEUTRAL_ALLY',  1, 10.0, NULL);
 INSERT INTO "message" VALUES('DIPLOMACY_STATUS_NEUTRAL_ENEMY', 1, 10.0, NULL);
 INSERT INTO "message" VALUES('DRAG_ROADS_HINT',  1, 20.0, NULL);
 INSERT INTO "message" VALUES('FIELD_NEEDS_FARM', 1, 30.0, NULL);
-INSERT INTO "message" VALUES('MAX_INCR_REACHED', 1, 45.0, NULL);
+INSERT INTO "message" VALUES('MAX_TIER_REACHED', 1, 45.0, NULL);
 INSERT INTO "message" VALUES('MINE_EMPTY',       1, 30.0, NULL);
 INSERT INTO "message" VALUES('MOVE_INVALID_LOCATION', 1, 20.0, NULL);
 INSERT INTO "message" VALUES('MOVE_OUTSIDE_OF_WORLD', 1, 20.0, NULL);
@@ -125,7 +125,7 @@ INSERT INTO "message_text" VALUES('DIPLOMACY_STATUS_NEUTRAL_ENEMY', '{player1} a
 INSERT INTO "message_text" VALUES('DRAG_ROADS_HINT',  'You can also drag roads.');
 INSERT INTO "message_text" VALUES('FIELD_NEEDS_FARM', 'One of your fields requires a farm to harvest its crops.');
 INSERT INTO "message_text" VALUES('MINE_EMPTY',       'Your mine has run out of resources.');
-INSERT INTO "message_text" VALUES('MAX_INCR_REACHED', 'You have reached the current maximum increment. Your inhabitants will not upgrade further.');
+INSERT INTO "message_text" VALUES('MAX_TIER_REACHED', 'You have reached the current maximum tier. Your inhabitants will not upgrade further.');
 INSERT INTO "message_text" VALUES('MOVE_INVALID_LOCATION', 'Cannot go here.');
 INSERT INTO "message_text" VALUES('MOVE_OUTSIDE_OF_WORLD', 'Your crew refuses to leave this map.');
 INSERT INTO "message_text" VALUES('NEED_MORE_RES',    'You need more {resource} to build this building.');

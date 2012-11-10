@@ -59,7 +59,7 @@ class BuildRelatedTab(OverviewTab):
 		for building_id, level in sorted_ids:
 			if level <= self.instance.owner.settler_level: # available in build menu?
 				button = self._create_build_buttons(building_id, container)
-				# check whether to start new line (for new increment row)
+				# check whether to start new line (for new tier row)
 				if level > self.current_row:
 					self.current_row = level
 					parent_container.addChild(container)
