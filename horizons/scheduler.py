@@ -243,15 +243,6 @@ class Scheduler(LivingObject):
 		@return: dict, entries: { CallbackObject: remaining_ticks_to_executing }
 		"""
 		calls = {}
-		"""
-		for key in self.schedule:
-			for callback_obj in self.schedule[key]:
-				if callback_obj.class_instance is instance:
-					if callback is None:
-						calls[callback_obj] = key - self.cur_tick
-					elif callback_obj.callback == callback:
-						calls[callback_obj] = key - self.cur_tick
-		"""
 		if instance in self.calls_by_instance:
 			for callback_obj in self.calls_by_instance[instance]:
 				if  callback is None or callback_obj.callback == callback:
