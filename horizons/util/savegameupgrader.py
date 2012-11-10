@@ -76,8 +76,8 @@ class SavegameUpgrader(object):
 		db("INSERT INTO logbook(widgets) VALUES(?)", json.dumps(widgets))
 
 	def _upgrade_to_rev54(self, db):
-		for (settlement,) in db("SELECT DISTINCT settlement FROM settlement_level_properties WHERE level = ?", 0):
-			db("INSERT INTO settlement_level_properties VALUES(?, 3, 0, 1)", settlement)
+		for (settlement,) in db("SELECT DISTINCT settlement FROM settlement_tier_properties WHERE tier= ?", 0):
+			db("INSERT INTO settlement_tier_properties VALUES(?, 3, 0, 1)", settlement)
 
 	def _upgrade_to_rev55(self, db):
 		# The upgrade system has been mishandled, this upgrade tries to fix

@@ -510,9 +510,9 @@ CREATE TABLE "settlement" (
 	"owner" INT NOT NULL 
 );
 
-CREATE TABLE "settlement_level_properties" (
+CREATE TABLE "settlement_tier_properties" (
 	"settlement" INT NOT NULL,
-	"level" INT NOT NULL,
+	"tier" INT NOT NULL,
 	"upgrading_allowed" BOOL NOT NULL,
 	"tax_setting" REAL NOT NULL
 );

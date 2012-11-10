@@ -73,24 +73,24 @@ class Settlement(ComponentHolder, WorldObject, ChangeListener, ResourceHandler):
 	@classmethod
 	def make_default_upgrade_permissions(cls):
 		upgrade_permissions = {}
-		for level in xrange(TIER.CURRENT_MAX):
-			upgrade_permissions[level] = True
+		for tier in xrange(TIER.CURRENT_MAX):
+			upgrade_permissions[tier] = True
 		upgrade_permissions[TIER.CURRENT_MAX] = False
 		return upgrade_permissions
 
 	@classmethod
 	def make_default_tax_settings(cls):
 		tax_settings = {}
-		for level in xrange(TIER.CURRENT_MAX + 1):
-			tax_settings[level] = 1.0
+		for tier in xrange(TIER.CURRENT_MAX + 1):
+			tax_settings[tier] = 1.0
 		return tax_settings
 
-	def set_tax_setting(self, level, tax):
-		self.tax_settings[level] = tax
+	def set_tax_setting(self, tier, tax):
+		self.tax_settings[tier] = tax
 
-	def set_upgrade_permissions(self, level, allowed):
-		if self.upgrade_permissions[level] != allowed:
-			self.upgrade_permissions[level] = allowed
+	def set_upgrade_permissions(self, tier, allowed):
+		if self.upgrade_permissions[tier] != allowed:
+			self.upgrade_permissions[tier] = allowed
 
 			UpgradePermissionsChanged.broadcast(self)
 
@@ -141,9 +141,10 @@ class Settlement(ComponentHolder, WorldObject, ChangeListener, ResourceHandler):
 		for res, amount in self.produced_res.iteritems():
 			db("INSERT INTO settlement_produced_res (settlement, res, amount) VALUES(?, ?, ?)",
 			   self.worldid, res, amount)
-		for level in xrange(TIER.CURRENT_MAX + 1):
-			db("INSERT INTO settlement_level_properties (settlement, level, upgrading_allowed, tax_setting) VALUES(?, ?, ?, ?)",
-				self.worldid, level, self.upgrade_permissions[level], self.tax_settings[level])
+		for tier in xrange(TIER.CURRENT_MAX + 1):
+			db("INSERT INTO settlement_tier_properties (settlement, tier, upgrading_allowed, tax_setting) "
+			   "VALUES(?, ?, ?, ?)",
+			   self.worldid, tier, self.upgrade_permissions[tier], self.tax_settings[tier])
 
 		# dump ground data via json, it's orders of magnitude faster than sqlite
 		data = json.dumps(self.ground_map.keys())
@@ -158,9 +159,10 @@ class Settlement(ComponentHolder, WorldObject, ChangeListener, ResourceHandler):
 		owner = db("SELECT owner FROM settlement WHERE rowid = ?", worldid)[0][0]
 		upgrade_permissions = {}
 		tax_settings = {}
-		for level, allowed, tax in db("SELECT level, upgrading_allowed, tax_setting FROM settlement_level_properties WHERE settlement = ?", worldid):
-			upgrade_permissions[level] = allowed
-			tax_settings[level] = tax
+		for tier, allowed, tax in db("SELECT tier, upgrading_allowed, tax_setting "
+		                              "FROM settlement_tier_properties WHERE settlement = ?", worldid):
+			upgrade_permissions[tier] = allowed
+			tax_settings[tier] = tax
 		self.__init(session, WorldObject.get_object_by_id(owner), upgrade_permissions, tax_settings)
 
 		tile_data = db("SELECT data FROM settlement_tiles WHERE rowid = ?", worldid)[0][0]
