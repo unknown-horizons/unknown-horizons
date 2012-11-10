@@ -137,7 +137,7 @@ INSERT INTO "message_text" VALUES('QUICKSAVE',        'Your game has been quicks
 INSERT INTO "message_text" VALUES('ROUTE_DISABLED',   'The route is now configured. Start it via the "start route" button in the "configure route" menu.');
 INSERT INTO "message_text" VALUES('SAVED_GAME',       'Your game has been saved.');
 INSERT INTO "message_text" VALUES('SCREENSHOT',       'Screenshot has been saved to {file}.');
-INSERT INTO "message_text" VALUES('NEW_TIER', 'Your inhabitants reached level {level}.');
+INSERT INTO "message_text" VALUES('NEW_TIER',         'Your inhabitants reached tier {tier}.');
 INSERT INTO "message_text" VALUES('SETTLERS_MOVED_OUT', 'Some of your inhabitants just moved out.');
 INSERT INTO "message_text" VALUES('WAREHOUSE_NOT_TEARABLE', 'You cannot tear the warehouse, your settlements needs it.');
 INSERT INTO "message_text" VALUES('YOU_HAVE_WON',     'You won!');

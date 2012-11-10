@@ -200,7 +200,7 @@ class HumanPlayer(Player):
 			# add message and update ingame gui
 			self.session.ingame_gui.message_widget.add(point=message.sender.position.center,
 			                                           string_id='NEW_TIER',
-			                                           message_dict={'level': message.level+1})
+			                                           message_dict={'tier': message.level+1})
 		return level_up
 
 	def notify_mine_empty(self, mine):
