@@ -23,7 +23,6 @@ from horizons.world.buildability.terraincache import TerrainBuildabilityCache
 
 class LazyBinaryBuildabilityCacheElement(object):
 	def __init__(self, buildability_cache, width):
-		super(LazyBinaryBuildabilityCacheElement, self).__init__()
 		self._buildability_cache = buildability_cache
 		self._width = width
 		self._cache = None
@@ -62,7 +61,6 @@ class LazyBinaryBuildabilityCacheElement(object):
 
 class BinaryBuildabilityCache(object):
 	def __init__(self, terrain_cache):
-		super(BinaryBuildabilityCache, self).__init__()
 		self.terrain_cache = terrain_cache
 		self.coords_set = set()
 		self._row2 = set()
@@ -112,8 +110,7 @@ class BinaryBuildabilityCache(object):
 		new_r3x2 = self._extend_set(self.cache[(3, 2)], self.cache[(2, 2)], new_r2x2, 1, 0)
 		new_r4x2 = self._extend_set(self.cache[(4, 2)], self.cache[(3, 2)], new_r3x2, 1, 0)
 
-		new_r3x3 = self._extend_set(self.cache[(3, 3)], self.cache[(3, 2)], new_r3x2, 0, 1)
-
+		self._extend_set(self.cache[(3, 3)], self.cache[(3, 2)], new_r3x2, 0, 1)
 		self._reset_lazy_sets()
 
 	@classmethod
@@ -136,9 +133,7 @@ class BinaryBuildabilityCache(object):
 			assert coords in self.coords_set
 			assert coords in self.terrain_cache.land_or_coast
 			self.coords_set.discard(coords)
-
 		removed_coords_set = set(removed_coords_list)
-		coords_set = self.coords_set
 
 		removed_row2 = self._reduce_set(self._row2, removed_coords_set, 1, 0)
 		removed_r2x2 = self._reduce_set(self.cache[(2, 2)], removed_row2, 0, 1)
@@ -149,6 +144,5 @@ class BinaryBuildabilityCache(object):
 		removed_r3x2 = self._reduce_set(self.cache[(3, 2)], removed_r2x2, 1, 0)
 		removed_r4x2 = self._reduce_set(self.cache[(4, 2)], removed_r3x2, 1, 0)
 
-		removed_r3x3 = self._reduce_set(self.cache[(3, 3)], removed_r3x2, 0, 1)
-
+		self._reduce_set(self.cache[(3, 3)], removed_r3x2, 0, 1)
 		self._reset_lazy_sets()
