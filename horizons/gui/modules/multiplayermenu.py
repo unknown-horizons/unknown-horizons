@@ -28,7 +28,6 @@ from fife.extensions.pychan.widgets import HBox, Icon, Label
 from horizons.gui.modules import PlayerDataSelection
 from horizons.gui.widgets.imagebutton import OkButton, CancelButton
 from horizons.savegamemanager import SavegameManager
-from horizons.network.networkinterface import MPGame
 from horizons.constants import MULTIPLAYER
 from horizons.network.networkinterface import NetworkInterface
 from horizons.network import find_enet_module
