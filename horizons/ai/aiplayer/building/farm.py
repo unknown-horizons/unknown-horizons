@@ -229,9 +229,10 @@ class FarmEvaluator(BuildingEvaluator):
 		evaluator.field_purpose = new_field_purpose
 		return evaluator
 
-	def _register_changes(self, changes):
+	def _register_changes(self, changes, just_roads):
 		for (purpose, data), coords_list in changes.iteritems():
-			self.area_builder.register_change_list(coords_list, purpose, data)
+			if just_roads == (purpose == BUILDING_PURPOSE.ROAD):
+				self.area_builder.register_change_list(coords_list, purpose, data)
 
 	def execute(self):
 		# cheap resource check first, then pre-reserve the tiles and check again
@@ -241,21 +242,22 @@ class FarmEvaluator(BuildingEvaluator):
 		changes = defaultdict(lambda: [])
 		reverse_changes = defaultdict(lambda: [])
 		for coords, (purpose, data) in self.farm_plan.iteritems():
-			if coords in self.area_builder.land_manager.roads:
-				# skip roads because they can be ignored and because we may be reusing village roads
+			# completely ignore the road in the plan for now
+			if purpose == BUILDING_PURPOSE.ROAD:
 				continue
+			assert coords not in self.area_builder.land_manager.roads
 
 			changes[(purpose, None)].append(coords)
 			reverse_changes[self.area_builder.plan[coords]].append(coords)
-		self._register_changes(changes)
+		self._register_changes(changes, False)
 
 		resource_check = self.have_resources()
 		if resource_check is None:
-			self._register_changes(reverse_changes)
+			self._register_changes(reverse_changes, False)
 			self.log.debug('%s, unable to reach by road', self)
 			return (BUILD_RESULT.IMPOSSIBLE, None)
 		elif not resource_check:
-			self._register_changes(reverse_changes)
+			self._register_changes(reverse_changes, False)
 			return (BUILD_RESULT.NEED_RESOURCES, None)
 		assert self.area_builder.build_road_connection(self.builder)
 
@@ -269,7 +271,14 @@ class FarmEvaluator(BuildingEvaluator):
 
 		for coords, (purpose, _) in self.farm_plan.iteritems():
 			if purpose == self.field_purpose:
+				for dx in xrange(3):
+					for dy in xrange(3):
+						if dx == 0 and dy == 0:
+							continue
+						coords2 = (coords[0] + dx, coords[1] + dy)
+						assert self.farm_plan[coords2][0] == BUILDING_PURPOSE.RESERVED
 				self.area_builder.unused_fields[self.field_purpose].append(coords)
+		self._register_changes(changes, True)
 		return (BUILD_RESULT.OK, building)
 
 	@classmethod
