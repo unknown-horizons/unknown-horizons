@@ -245,7 +245,7 @@ class BuildingTool(NavigationTool):
 
 	def draw_gui(self):
 		if not hasattr(self, "action_set"):
-			level = self.session.world.player.settler_level if \
+			level = self.session.world.player.tier if \
 				not hasattr(self._class, "default_level_on_build") else \
 				self._class.default_level_on_build
 			action_set = self._class.get_random_action_set(level=level)

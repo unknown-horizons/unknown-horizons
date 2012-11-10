@@ -105,8 +105,8 @@ def get_prod_line(id):
 
 result = OrderedDict()
 
-for id, name, c_type, c_package, x, y, radius, cost, cost_inactive, inhabitants_start, inhabitants_max, button_name, tooltip_text, health, settler_level in \
-    db('SELECT id, name, class_type, class_package, size_x, size_y, radius, cost_active, cost_inactive, inhabitants_start, inhabitants_max, button_name, tooltip_text, health, settler_level FROM \
+for id, name, c_type, c_package, x, y, radius, cost, cost_inactive, inhabitants_start, inhabitants_max, button_name, tooltip_text, health, tier in \
+    db('SELECT id, name, class_type, class_package, size_x, size_y, radius, cost_active, cost_inactive, inhabitants_start, inhabitants_max, button_name, tooltip_text, health, tier FROM \
 		building LEFT OUTER JOIN building_running_costs ON building_running_costs.building = building.id\
 		ORDER BY id'):
 
@@ -122,7 +122,7 @@ for id, name, c_type, c_package, x, y, radius, cost, cost_inactive, inhabitants_
 	result['inhabitants_max'] = inhabitants_max
 	result['button_name'] = button_name
 	result['tooltip_text'] = tooltip_text
-	result['settler_level'] = settler_level
+	result['tier'] = tier
 
 	costs = {}
 	for (name, value) in db("SELECT resource, amount FROM building_costs WHERE building = ?", id):

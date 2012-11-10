@@ -81,8 +81,8 @@ class Resource(Base):
 
 	name = sqlalchemy.Column(sqlalchemy.String, primary_key=True)
 
-class SettlerLevel(Base):
-	__tablename__ = 'settler_level'
+class Tier(Base):
+	__tablename__ = 'tier'
 
 	name = sqlalchemy.Column(sqlalchemy.String, primary_key=True)
 
@@ -123,8 +123,8 @@ def collect_all():
 	for resource in db_session.query(Resource):
 		collector.add_to_collection(resource.name, 'the name of a resource')
 
-	for settler_level in db_session.query(SettlerLevel):
-		collector.add_to_collection(settler_level.name, 'the name of an inhabitant tier (level)')
+	for tier in db_session.query(Tier):
+		collector.add_to_collection(tier.name, 'the name of an inhabitant tier (level)')
 
 	return collector
 

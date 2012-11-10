@@ -219,7 +219,7 @@ def test_ticket_1427():
 
 
 @game_test
-def test_settler_level(s, p):
+def test_tier(s, p):
 	"""
 	Verify that settler level up works.
 	"""

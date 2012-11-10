@@ -51,7 +51,7 @@ class SettlerOverviewTab(OverviewTab):
 		image = action_gfx[45].keys()[0]
 		self.widget.findChild(name="building_image").image = image
 
-	def on_settler_level_change(self, message):
+	def on_tier_change(self, message):
 		assert isinstance(message, SettlerUpdate)
 		setup_tax_slider(self.widget.child_finder('tax_slider'),
 		                 self.widget.child_finder('tax_val_label'),
@@ -64,10 +64,10 @@ class SettlerOverviewTab(OverviewTab):
 
 	def show(self):
 		super(SettlerOverviewTab, self).show()
-		SettlerUpdate.subscribe(self.on_settler_level_change, sender=self.instance)
+		SettlerUpdate.subscribe(self.on_tier_change, sender=self.instance)
 
 	def hide(self):
-		SettlerUpdate.unsubscribe(self.on_settler_level_change, sender=self.instance)
+		SettlerUpdate.unsubscribe(self.on_tier_change, sender=self.instance)
 		super(SettlerOverviewTab, self).hide()
 
 	def refresh(self):

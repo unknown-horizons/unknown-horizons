@@ -141,7 +141,7 @@ class SavegameUpgrader(object):
 	def _upgrade_to_rev61(self, db):
 		from horizons.world.building.settler import SettlerUpgradeData
 
-		# settler upgrade lines used to be the same for several levels
+		# settler upgrade lines used to be the same for several tiers
 		for (settler, level) in db("SELECT rowid, level FROM building WHERE type = 3"):
 			#if settler == 100268:import pdb ; pdb.set_trace()
 			# the id used to always be 35

@@ -240,7 +240,7 @@ def test_savegame_upgrade():
 
 
 @game_test
-def test_settler_level_save_load(s, p):
+def test_tier_save_load(s, p):
 	"""
 	Verify that settler level up with save/load works
 	"""

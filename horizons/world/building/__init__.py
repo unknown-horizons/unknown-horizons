@@ -49,7 +49,7 @@ class BuildingClass(IngameType):
 		"""
 		super(BuildingClass, self).__init__(id, yaml_data)
 
-		self.settler_level = yaml_data['settler_level']
+		self.tier = yaml_data['tier']
 		try:
 			# NOTE: tooltip texts are always untranslated here, use db.get_building_tooltip()
 			self.tooltip_text = object_translations[yaml_data['yaml_file']]['tooltip_text']

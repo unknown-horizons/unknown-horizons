@@ -130,7 +130,7 @@ class IngameGui(LivingObject):
 		ResourceBarResize.subscribe(self._on_resourcebar_resize)
 
 		# Register for messages
-		SettlerUpdate.subscribe(self._on_settler_level_change)
+		SettlerUpdate.subscribe(self._on_tier_change)
 		SettlerInhabitantsChanged.subscribe(self._on_settler_inhabitant_change)
 		HoverSettlementChanged.subscribe(self._cityinfo_set)
 
@@ -159,7 +159,7 @@ class IngameGui(LivingObject):
 		self.resource_overview.end()
 		self.resource_overview = None
 		self.hide_menu()
-		SettlerUpdate.unsubscribe(self._on_settler_level_change)
+		SettlerUpdate.unsubscribe(self._on_tier_change)
 		ResourceBarResize.unsubscribe(self._on_resourcebar_resize)
 		HoverSettlementChanged.unsubscribe(self._cityinfo_set)
 		SettlerInhabitantsChanged.unsubscribe(self._on_settler_inhabitant_change)
@@ -500,7 +500,7 @@ class IngameGui(LivingObject):
 		wdg.resizeToContent()
 		self.widgets['minimap'].show()
 
-	def _on_settler_level_change(self, message):
+	def _on_tier_change(self, message):
 		"""Gets called when the player changes"""
 		if message.sender.owner.is_local_player:
 			menu = self.get_cur_menu()

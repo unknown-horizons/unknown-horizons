@@ -257,11 +257,11 @@ class SettlementManager(WorldObject):
 		if resource_id not in self.__resident_resource_usage_cache or self.__resident_resource_usage_cache[resource_id][0] != Scheduler().cur_tick:
 			total = 0
 			if resource_id == RES.BRICKS:
-				total = self.personality.dummy_bricks_requirement if self.owner.settler_level > 0 else 0 # dummy value to cause bricks production to be built
+				total = self.personality.dummy_bricks_requirement if self.owner.tier > 0 else 0 # dummy value to cause bricks production to be built
 			elif resource_id == RES.BOARDS:
 				total = self.personality.dummy_boards_requirement # dummy value to cause boards production to be built
 			elif resource_id == RES.TOOLS:
-				total = self.personality.dummy_tools_requirement if self.owner.settler_level > 1 else 0 # dummy value to cause tools production to be built
+				total = self.personality.dummy_tools_requirement if self.owner.tier > 1 else 0 # dummy value to cause tools production to be built
 			elif resource_id == RES.LIQUOR:
 				total = self.production_chain[RES.GET_TOGETHER].get_ratio(RES.LIQUOR) * self.get_resource_production_requirement(RES.GET_TOGETHER)
 			else:
@@ -279,7 +279,7 @@ class SettlementManager(WorldObject):
 		"""
 		Manually allow settlers to upgrade. If more then the set limit are already upgrading then don't stop them.
 
-		@param level: the initial settler level from which to upgrade
+		@param level: the initial tier from which to upgrade
 		@param limit: the maximum number of residences of the specified level upgrading at the same time
 		@return: boolean showing whether we gave any new residences the right to upgrade
 		"""
@@ -358,7 +358,7 @@ class SettlementManager(WorldObject):
 
 	def refresh_taxes_and_upgrade_permissions(self):
 		# TODO: use a better system for managing settler upgrades and taxes
-		if self.land_manager.owner.settler_level == 0:
+		if self.land_manager.owner.tier == 0:
 			# if we are on level 0 and there is a house that can be upgraded then do it.
 			if self._manual_upgrade(0, 1):
 				self._set_taxes_and_permissions_prefix('early')

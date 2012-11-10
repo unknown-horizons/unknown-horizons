@@ -39,11 +39,11 @@ class AbstractBuilding(object):
 
 	log = logging.getLogger("ai.aiplayer.building")
 
-	def __init__(self, building_id, name, settler_level):
+	def __init__(self, building_id, name, tier):
 		super(AbstractBuilding, self).__init__()
 		self.id = building_id
 		self.name = name
-		self.settler_level = settler_level
+		self.tier = tier
 		self.width = Entities.buildings[building_id].size[0]
 		self.height = Entities.buildings[building_id].size[1]
 		self.size = (self.width, self.height)
@@ -81,14 +81,14 @@ class AbstractBuilding(object):
 		return Entities.buildings[building_id].name
 
 	@classmethod
-	def _load_settler_level(cls, building_id):
-		return Entities.buildings[building_id].settler_level
+	def _load_tier(cls, building_id):
+		return Entities.buildings[building_id].tier
 
 	@classmethod
 	def load(cls, db, building_id):
 		name = cls._load_name(db, building_id)
-		settler_level = cls._load_settler_level(building_id)
-		return cls(building_id, name, settler_level)
+		tier = cls._load_tier(building_id)
+		return cls(building_id, name, tier)
 
 	monthly_gold_cost = 50
 	resource_cost = {RES.GOLD: 1, RES.BOARDS: 20, RES.BRICKS: 45, RES.TOOLS: 50}

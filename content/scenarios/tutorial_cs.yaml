@@ -516,7 +516,7 @@ events:
     type: set_var
   conditions:
   - arguments: [0]
-    type: settler_level_greater
+    type: tier_greater
   - arguments: [tutStepDone, 42]
     type: var_gt
   - arguments: [tutStepDone, 46]
@@ -712,7 +712,7 @@ events:
   - arguments: [3, 3]
     type: building_num_of_type_greater
   - arguments: [0]
-    type: settler_level_greater
+    type: tier_greater
   - arguments: [0]
     type: player_balance_greater
   - arguments: [tutStepDone, 57]

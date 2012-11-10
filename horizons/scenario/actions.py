@@ -154,7 +154,7 @@ def change_tier(session, tier):
 	""" Changes the tier of the settlements. """
 	for settlement in session.world.settlements:
 		if settlement.owner == session.world.player:
-			# Settler levels are zero-based!
+			# Tiers are zero-based!
 			SettlerUpdate.broadcast(settlement.warehouse, tier - 1, tier - 1)
 
 @register()

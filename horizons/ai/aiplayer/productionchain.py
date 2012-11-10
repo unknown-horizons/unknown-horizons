@@ -242,7 +242,7 @@ class ProductionChainSubtree(object):
 	@property
 	def available(self):
 		"""Return a boolean showing whether this subtree is currently available."""
-		return self.settlement_manager.owner.settler_level >= self.abstract_building.settler_level
+		return self.settlement_manager.owner.tier >= self.abstract_building.tier
 
 	def __str__(self, level=0):
 		result = '%sProduce %d (ratio %.2f) in %s (%.5f, %.5f)\n' % ('  ' * level, self.resource_id,

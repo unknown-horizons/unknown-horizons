@@ -39,7 +39,7 @@ def test_fire_destroy(s):
 	settlement = s.world.player.settlements[0]
 
 	# need this so that fires can break out
-	s.world.player.settler_level = 1
+	s.world.player.tier = 1
 
 	assert settlement.buildings_by_id[ BUILDINGS.RESIDENTIAL ]
 	old_num = len(settlement.buildings_by_id[ BUILDINGS.RESIDENTIAL ])
@@ -63,7 +63,7 @@ def test_fire_station(s):
 	dis_man = s.world.disaster_manager
 	settlement = s.world.player.settlements[0]
 	# need this so that fires can break out
-	s.world.player.settler_level = 1
+	s.world.player.tier = 1
 
 	inv = settlement.get_component(StorageComponent).inventory
 	# res for fire station

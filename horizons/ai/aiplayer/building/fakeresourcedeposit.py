@@ -26,8 +26,8 @@ from horizons.entities import Entities
 from horizons.world.production.producer import Producer
 
 class AbstractFakeResourceDeposit(AbstractBuilding):
-	def __init__(self, building_id, name, settler_level):
-		super(AbstractFakeResourceDeposit, self).__init__(building_id, name, settler_level)
+	def __init__(self, building_id, name, tier):
+		super(AbstractFakeResourceDeposit, self).__init__(building_id, name, tier)
 		self.lines = {} # output_resource_id: ProductionLine
 		self.__init_production_lines()
 
@@ -56,8 +56,8 @@ class AbstractFakeResourceDeposit(AbstractBuilding):
 	def load(cls, db, building_id):
 		# load the higher level building data because resource deposits don't actually produce anything
 		name = cls._load_name(db, building_id)
-		settler_level = cls._load_settler_level(building_id)
-		return cls(building_id, name, settler_level)
+		tier = cls._load_tier(building_id)
+		return cls(building_id, name, tier)
 
 	def get_expected_cost(self, resource_id, production_needed, settlement_manager):
 		""" you don't actually build resource deposits """

@@ -79,7 +79,7 @@ class BasicBuilding(ComponentHolder, ConcreteObject):
 		This is necessary since some attributes are used by these other parts."""
 		self.owner = owner
 		if level is None:
-			level = 0 if self.owner is None else self.owner.settler_level
+			level = 0 if self.owner is None else self.owner.tier
 		self.level = level
 		self.rotation = rotation
 		if self.rotation in (135, 315): # Rotate the rect correctly
@@ -208,7 +208,7 @@ class BasicBuilding(ComponentHolder, ConcreteObject):
 	def get_initial_level(cls, player):
 		if hasattr(cls, 'default_level_on_build'):
 			return cls.default_level_on_build
-		return player.settler_level
+		return player.tier
 
 	@classmethod
 	def getInstance(cls, session, x, y, action='idle', level=0, rotation=45, action_set_id=None, world_id=""):

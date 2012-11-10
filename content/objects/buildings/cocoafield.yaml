@@ -8,7 +8,7 @@ size_x: 3
 size_y: 3
 inhabitants: 0
 tooltip_text: _ Produces cocoa beans used for confectionery. Needs a farm.
-settler_level: TIER.CITIZENS
+tier: TIER.CITIZENS
 buildingcosts: {RES.GOLD: 150}
 show_status_icons: false
 components:

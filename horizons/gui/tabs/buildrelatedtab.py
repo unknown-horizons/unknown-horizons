@@ -53,11 +53,11 @@ class BuildRelatedTab(OverviewTab):
 
 		# load all related buildings from DB
 		building_ids = self.instance.session.db.get_related_building_ids_for_menu(self.instance.id)
-		sorted_ids = sorted([(b, Entities.buildings[b].settler_level) for b in building_ids], key=lambda x : x[1])
+		sorted_ids = sorted([(b, Entities.buildings[b].tier) for b in building_ids], key=lambda x : x[1])
 		container = self.__get_new_container()
 		self.current_row = min(building[1] for building in sorted_ids)
 		for building_id, level in sorted_ids:
-			if level <= self.instance.owner.settler_level: # available in build menu?
+			if level <= self.instance.owner.tier: # available in build menu?
 				button = self._create_build_buttons(building_id, container)
 				# check whether to start new line (for new tier row)
 				if level > self.current_row:

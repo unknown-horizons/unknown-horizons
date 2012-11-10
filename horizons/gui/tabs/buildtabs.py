@@ -133,7 +133,7 @@ class BuildTab(TabInterface):
 		def _set_entry(button, icon, building_id):
 			"""Configure a single build menu button"""
 			if self.unlocking_strategy == self.__class__.unlocking_strategies.single_per_tier and \
-			   self.get_building_tiers()[building_id] > self.session.world.player.settler_level:
+			   self.get_building_tiers()[building_id] > self.session.world.player.tier:
 				return
 
 			building = Entities.buildings[building_id]
@@ -272,7 +272,7 @@ class BuildTab(TabInterface):
 			if tab == "meta":
 				continue # not a tab
 
-			if unlocking_strategy == cls.unlocking_strategies.tab_per_tier and len(tabs) > session.world.player.settler_level:
+			if unlocking_strategy == cls.unlocking_strategies.tab_per_tier and len(tabs) > session.world.player.tier:
 				break
 
 			try:

@@ -67,7 +67,7 @@ class Player(ComponentHolder, WorldObject):
 			for res, value in inventory.iteritems():
 				self.get_component(StorageComponent).inventory.alter(res, value)
 
-	def __init(self, name, color, clientid, difficulty_level, max_tier_notification, settlerlevel=0):
+	def __init(self, name, color, clientid, difficulty_level, max_tier_notification, tier=0):
 		assert isinstance(color, Color)
 		assert isinstance(name, basestring) and name
 		try:
@@ -80,12 +80,12 @@ class Player(ComponentHolder, WorldObject):
 		self.clientid = clientid
 		self.difficulty = DifficultySettings.get_settings(difficulty_level)
 		self.max_tier_notification = max_tier_notification
-		self.settler_level = settlerlevel
+		self.tier = tier
 		self._stats = None
 		assert self.color.is_default_color, "Player color has to be a default color"
 
 		if self.regular_player:
-			SettlerUpdate.subscribe(self.notify_settler_reached_level)
+			SettlerUpdate.subscribe(self.notify_settler_reached_tier)
 			NewDisaster.subscribe(self.notify_new_disaster, sender=self)
 
 	@property
@@ -108,8 +108,8 @@ class Player(ComponentHolder, WorldObject):
 		client_id = None if self is not self.session.world.player and \
 		                    self.clientid is None else self.clientid
 
-		db("INSERT INTO player(rowid, name, color, client_id, settler_level, difficulty_level, max_tier_notification) VALUES(?, ?, ?, ?, ?, ?, ?)",
-			 self.worldid, self.name, self.color.id, client_id, self.settler_level, self.difficulty.level if self.difficulty is not None else None,
+		db("INSERT INTO player(rowid, name, color, client_id, tier, difficulty_level, max_tier_notification) VALUES(?, ?, ?, ?, ?, ?, ?)",
+			 self.worldid, self.name, self.color.id, client_id, self.tier, self.difficulty.level if self.difficulty is not None else None,
 			 self.max_tier_notification)
 
 	@classmethod
@@ -124,22 +124,22 @@ class Player(ComponentHolder, WorldObject):
 		Player instance, which is used e.g. in Trader.load"""
 		super(Player, self).load(db, worldid)
 
-		color, name, client_id, settlerlevel, difficulty_level, max_tier_notification = db(
-			"SELECT color, name, client_id, settler_level, difficulty_level, max_tier_notification FROM player WHERE rowid = ?", worldid)[0]
-		self.__init(name, Color[color], client_id, difficulty_level, max_tier_notification, settlerlevel = settlerlevel)
+		color, name, client_id, tier, difficulty_level, max_tier_notification = db(
+			"SELECT color, name, client_id, tier, difficulty_level, max_tier_notification FROM player WHERE rowid = ?", worldid)[0]
+		self.__init(name, Color[color], client_id, difficulty_level, max_tier_notification, tier = tier)
 
-	def notify_settler_reached_level(self, message):
+	def notify_settler_reached_tier(self, message):
 		"""Settler calls this to notify the player
 		@param settler: instance of Settler
 		@return: bool, True if actually incremented the level"""
 		assert isinstance(message, SettlerUpdate)
 		if message.sender.owner is not self:
 			return False # was settler of another player
-		if message.level > self.settler_level:
-			self.settler_level = message.level
-			self.session.scenario_eventhandler.check_events(CONDITIONS.settler_level_greater)
+		if message.level > self.tier:
+			self.tier = message.level
+			self.session.scenario_eventhandler.check_events(CONDITIONS.tier_greater)
 			for settlement in self.settlements:
-				settlement.level_upgrade(self.settler_level)
+				settlement.level_upgrade(self.tier)
 			self._changed()
 			return True
 		else:
@@ -160,7 +160,7 @@ class Player(ComponentHolder, WorldObject):
 		self.session = None
 
 		if self.regular_player:
-			SettlerUpdate.unsubscribe(self.notify_settler_reached_level)
+			SettlerUpdate.unsubscribe(self.notify_settler_reached_tier)
 			NewDisaster.unsubscribe(self.notify_new_disaster, sender=self)
 
 	@decorators.temporary_cachedmethod(timeout=STATS_UPDATE_INTERVAL)
@@ -194,12 +194,12 @@ class HumanPlayer(Player):
 		self.__inventory_checker = InventoryChecker(PlayerInventoryUpdated, self.get_component(StorageComponent), 4)
 
 	"""Class for players that physically sit in front of the machine where the game is run"""
-	def notify_settler_reached_level(self, message):
-		level_up = super(HumanPlayer, self).notify_settler_reached_level(message)
+	def notify_settler_reached_tier(self, message):
+		level_up = super(HumanPlayer, self).notify_settler_reached_tier(message)
 		if level_up:
 			# add message and update ingame gui
 			self.session.ingame_gui.message_widget.add(point=message.sender.position.center,
-			                                           string_id='SETTLER_LEVEL_UP',
+			                                           string_id='NEW_TIER',
 			                                           message_dict={'level': message.level+1})
 		return level_up
 

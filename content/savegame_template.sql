@@ -523,7 +523,7 @@ CREATE TABLE "player" (
 	"client_id" TEXT,
 	"is_trader" BOOL NOT NULL DEFAULT (0),
 	"is_pirate" BOOL NOT NULL DEFAULT (0),
-	"settler_level" INT NOT NULL,
+	"tier" INT NOT NULL,
 	"difficulty_level" INT,
 	"max_tier_notification" INT
 );

@@ -82,7 +82,7 @@ class FireDisaster(Disaster):
 
 	@classmethod
 	def can_breakout(cls, settlement):
-		return settlement.owner.settler_level >= TIER.PIONEERS and \
+		return settlement.owner.tier >= TIER.PIONEERS and \
 		       settlement.count_buildings(BUILDINGS.RESIDENTIAL) > cls.MIN_SETTLERS_FOR_BREAKOUT
 
 	def expand(self):

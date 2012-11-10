@@ -99,12 +99,12 @@ class MainSquareOverviewTab(AccountTab):
 		self.widget.mapEvents(events)
 		super(MainSquareOverviewTab, self).refresh()
 
-class MainSquareSettlerLevelTab(MainSquareTab):
+class MainSquareTierTab(MainSquareTab):
 	LEVEL = None # overwrite in subclass
 	def __init__(self, instance):
 		widget = "mainsquare_inhabitants.xml"
 		icon_path = 'content/gui/icons/tabwidget/mainsquare/inhabitants{tier}_%s.png'.format(tier=self.__class__.LEVEL)
-		super(MainSquareSettlerLevelTab, self).__init__(widget=widget, instance=instance, icon_path=icon_path)
+		super(MainSquareTierTab, self).__init__(widget=widget, instance=instance, icon_path=icon_path)
 		self.max_inhabitants = instance.session.db.get_settler_inhabitants_max(self.__class__.LEVEL)
 		self.min_inhabitants = instance.session.db.get_settler_inhabitants_min(self.__class__.LEVEL)
 		self.helptext = instance.session.db.get_settler_name(self.__class__.LEVEL)
@@ -117,14 +117,14 @@ class MainSquareSettlerLevelTab(MainSquareTab):
 
 	@classmethod
 	def shown_for(cls, instance):
-		return instance.owner.settler_level >= cls.LEVEL
+		return instance.owner.tier >= cls.LEVEL
 
 	def show(self):
-		super(MainSquareSettlerLevelTab, self).show()
+		super(MainSquareTierTab, self).show()
 		UpgradePermissionsChanged.subscribe(self.refresh_via_message, sender=self.settlement)
 
 	def hide(self):
-		super(MainSquareSettlerLevelTab, self).hide()
+		super(MainSquareTierTab, self).hide()
 		UpgradePermissionsChanged.unsubscribe(self.refresh_via_message, sender=self.settlement)
 
 	def _get_last_tax_paid(self):
@@ -198,19 +198,19 @@ class MainSquareSettlerLevelTab(MainSquareTab):
 		self.widget.child_finder('resident_count').text = unicode(residents)
 
 		self.widget.adaptLayout()
-		super(MainSquareSettlerLevelTab, self).refresh()
+		super(MainSquareTierTab, self).refresh()
 
 	def toggle_upgrades(self):
 		SetSettlementUpgradePermissions(self.settlement, self.__class__.LEVEL, not self.settlement.upgrade_permissions[self.__class__.LEVEL]).execute(self.settlement.session)
 
-class MainSquareSailorsTab(MainSquareSettlerLevelTab):
+class MainSquareSailorsTab(MainSquareTierTab):
 	LEVEL = TIER.SAILORS
 
-class MainSquarePioneersTab(MainSquareSettlerLevelTab):
+class MainSquarePioneersTab(MainSquareTierTab):
 	LEVEL = TIER.PIONEERS
 
-class MainSquareSettlersTab(MainSquareSettlerLevelTab):
+class MainSquareSettlersTab(MainSquareTierTab):
 	LEVEL = TIER.SETTLERS
 
-class MainSquareCitizensTab(MainSquareSettlerLevelTab):
+class MainSquareCitizensTab(MainSquareTierTab):
 	LEVEL = TIER.CITIZENS

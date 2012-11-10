@@ -71,7 +71,7 @@ class IngameType(type):
 		# self._level_specific_names is optional and contains a dict like this: { level_id : name }
 		# (with entries for all tiers in which it is active)
 		name_data = yaml_data['name']
-		start_tier = yaml_data.get('settler_level', TIER.NATURE) # first tier where object is available
+		start_tier = yaml_data.get('tier', TIER.NATURE) # first tier where object is available
 		if isinstance(name_data, dict): # { level_id : name }
 			# fill up dict (fall down to highest tier which has a name specified
 			self._level_specific_names = {}

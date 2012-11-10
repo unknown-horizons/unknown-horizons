@@ -215,7 +215,7 @@ class ResourceManager(WorldObject):
 			and self.settlement_manager.settlement.owner.need_more_combat_ships:
 			return self.personality.default_cannon_requirement
 		elif self.settlement_manager.feeder_island and resource_id == RES.BRICKS:
-			return self.personality.default_feeder_island_brick_requirement if self.settlement_manager.owner.settler_level > 0 else 0
+			return self.personality.default_feeder_island_brick_requirement if self.settlement_manager.owner.tier > 0 else 0
 		elif not self.settlement_manager.feeder_island and resource_id == RES.FOOD:
 			return self.personality.default_food_requirement
 		return 0

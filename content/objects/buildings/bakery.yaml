@@ -8,7 +8,7 @@ size_x: 2
 size_y: 2
 inhabitants: 2
 tooltip_text: _ Consumes flour. Produces food.
-settler_level: TIER.CITIZENS
+tier: TIER.CITIZENS
 buildingcosts: {RES.GOLD: 1}
 components:
 - SelectableComponent:

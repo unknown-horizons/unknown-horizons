@@ -103,7 +103,7 @@ INSERT INTO "message" VALUES('QUICKSAVE',        3, 15.0, NULL);
 INSERT INTO "message" VALUES('ROUTE_DISABLED',   1, 45.0, NULL);
 INSERT INTO "message" VALUES('SAVED_GAME',       3, 15.0, NULL);
 INSERT INTO "message" VALUES('SCREENSHOT',       2, 20.0, NULL);
-INSERT INTO "message" VALUES('SETTLER_LEVEL_UP', 1, 30.0, 3);
+INSERT INTO "message" VALUES('NEW_TIER',         1, 30.0, 3);
 INSERT INTO "message" VALUES('SETTLERS_MOVED_OUT', 1, 40.0, NULL);
 INSERT INTO "message" VALUES('WAREHOUSE_NOT_TEARABLE', 1, 30.0, NULL);
 INSERT INTO "message" VALUES('YOU_HAVE_WON',     1, 60.0, NULL);
@@ -137,7 +137,7 @@ INSERT INTO "message_text" VALUES('QUICKSAVE',        'Your game has been quicks
 INSERT INTO "message_text" VALUES('ROUTE_DISABLED',   'The route is now configured. Start it via the "start route" button in the "configure route" menu.');
 INSERT INTO "message_text" VALUES('SAVED_GAME',       'Your game has been saved.');
 INSERT INTO "message_text" VALUES('SCREENSHOT',       'Screenshot has been saved to {file}.');
-INSERT INTO "message_text" VALUES('SETTLER_LEVEL_UP', 'Your inhabitants reached level {level}.');
+INSERT INTO "message_text" VALUES('NEW_TIER', 'Your inhabitants reached level {level}.');
 INSERT INTO "message_text" VALUES('SETTLERS_MOVED_OUT', 'Some of your inhabitants just moved out.');
 INSERT INTO "message_text" VALUES('WAREHOUSE_NOT_TEARABLE', 'You cannot tear the warehouse, your settlements needs it.');
 INSERT INTO "message_text" VALUES('YOU_HAVE_WON',     'You won!');
@@ -284,16 +284,16 @@ CREATE TABLE "weapon" (
 INSERT INTO "weapon" VALUES(40, 'ranged', 7, 5, 15, 3, 4, 2, 1, 'content/gfx/misc/cannonballs/cannonball.png');
 INSERT INTO "weapon" VALUES(41, 'melee',  3, 1,  1, 3, 2, 1, 0, '');
 
-CREATE TABLE "settler_level" (
+CREATE TABLE "tier" (
 	"level" INT NOT NULL,
 	"name" TEXT NOT NULL,
 	"tax_income" INT NOT NULL,
 	"inhabitants_max" INT NOT NULL
 );
--------------------------------   tier    name    taxes  max_inhabitants
-INSERT INTO "settler_level" VALUES(0, 'Sailors',      3,  2);
-INSERT INTO "settler_level" VALUES(1, 'Pioneers',     6,  3);
-INSERT INTO "settler_level" VALUES(2, 'Settlers',    10,  5);
-INSERT INTO "settler_level" VALUES(3, 'Citizens',    15,  8);
-INSERT INTO "settler_level" VALUES(4, 'Merchants',   21, 13);
-INSERT INTO "settler_level" VALUES(5, 'Aristocrats', 28, 21);
+----------------------   tier    name    taxes  max_inhabitants
+INSERT INTO "tier" VALUES(0, 'Sailors',      3,  2);
+INSERT INTO "tier" VALUES(1, 'Pioneers',     6,  3);
+INSERT INTO "tier" VALUES(2, 'Settlers',    10,  5);
+INSERT INTO "tier" VALUES(3, 'Citizens',    15,  8);
+INSERT INTO "tier" VALUES(4, 'Merchants',   21, 13);
+INSERT INTO "tier" VALUES(5, 'Aristocrats', 28, 21);

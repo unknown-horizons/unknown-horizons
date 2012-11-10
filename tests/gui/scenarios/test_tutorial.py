@@ -26,7 +26,7 @@ from horizons.constants import RES, TIER
 from tests.gui import gui_test
 from tests.gui.helper import get_player_ship, move_ship
 from tests.gui.scenarios.helper import (assert_win, var_eq, wait_and_close_logbook,
-										settlement_res_stored_greater, settler_level_greater)
+                                        settlement_res_stored_greater, tier_greater)
 
 
 @gui_test(use_scenario='content/scenarios/tutorial_en', timeout=360)
@@ -136,7 +136,7 @@ def test_tutorial(gui):
 	# TODO adjust settler taxes
 
 	# wait until settlers upgraded
-	while not settler_level_greater(gui.session, TIER.SAILORS):
+	while not tier_greater(gui.session, TIER.SAILORS):
 		gui.run()
 
 	# Goal: Farm

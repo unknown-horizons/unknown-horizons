@@ -385,7 +385,7 @@ class ResourceOverviewBar(object):
 	def _get_current_resources(self):
 		"""Return list of resources to display now"""
 		if self.construction_mode:
-			lvl = self.session.world.player.settler_level
+			lvl = self.session.world.player.tier
 			res_list = self.__class__.CONSTRUCTION_RESOURCES[lvl]
 			# also add additional res that might be needed
 			res_list += [ res for res in self._last_build_costs if

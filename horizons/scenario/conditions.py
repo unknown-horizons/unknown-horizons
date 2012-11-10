@@ -69,9 +69,9 @@ def settlements_num_greater(session, limit):
 	return len(_get_player_settlements(session)) > limit
 
 @register()
-def settler_level_greater(session, limit):
+def tier_greater(session, limit):
 	"""Returns whether the highest tier reached in any player settlement is greater than *limit*."""
-	return (session.world.player.settler_level > limit)
+	return (session.world.player.tier > limit)
 
 @register(periodically=True)
 def player_gold_greater(session, limit):
