@@ -238,9 +238,9 @@ class BuildTab(TabInterface):
 
 	def _switch_build_menu_config(self):
 		"""Sets next build menu config and recreates the gui"""
-		cur_index = self.__class__.build_menus.index( self.cur_build_menu_config )
+		cur_index = self.__class__.build_menus.index(self.cur_build_menu_config)
 		new_index = (cur_index + 1) % len(self.__class__.build_menus)
-		self.__class__.cur_build_menu_config = self.__class__.build_menus[ new_index ]
+		self.__class__.cur_build_menu_config = self.__class__.build_menus[new_index]
 
 		# after switch set active tab to first
 		self.__class__.last_active_build_tab = 0
@@ -255,14 +255,14 @@ class BuildTab(TabInterface):
 		source = cls.cur_build_menu_config
 
 		# parse
-		data = YamlCache.get_file( source, game_data=True )
+		data = YamlCache.get_file(source, game_data=True)
 		if 'meta' not in data:
 			raise InvalidBuildMenuFileFormat('File does not contain "meta" section')
 		metadata = data['meta']
 		if 'unlocking_strategy' not in metadata:
 			raise InvalidBuildMenuFileFormat('"meta" section does not contain "unlocking_strategy"')
 		try:
-			unlocking_strategy = cls.unlocking_strategies.get_item_for_string( metadata['unlocking_strategy'] )
+			unlocking_strategy = cls.unlocking_strategies.get_item_for_string(metadata['unlocking_strategy'])
 		except KeyError:
 			raise InvalidBuildMenuFileFormat('Invalid entry for "unlocking_strategy"')
 
@@ -272,16 +272,17 @@ class BuildTab(TabInterface):
 			if tab == "meta":
 				continue # not a tab
 
-			if unlocking_strategy == cls.unlocking_strategies.tab_per_tier and len(tabs) > session.world.player.tier:
+			if (unlocking_strategy == cls.unlocking_strategies.tab_per_tier
+			    and len(tabs) > session.world.player.tier):
 				break
 
 			try:
 				tab = BuildTab(session, len(tabs), tabdata, build_callback, unlocking_strategy, source)
-				tabs.append( tab )
+				tabs.append(tab)
 			except Exception as e:
 				to_add = "\nThis error happened in %s of %s ." % (tab, source)
-				e.args = ( e.args[0] + to_add, ) + e.args[1:]
-				e.message = ( e.message + to_add )
+				e.args = (e.args[0] + to_add,) + e.args[1:]
+				e.message = (e.message + to_add)
 				raise
 
 		return tabs
@@ -292,7 +293,7 @@ class BuildTab(TabInterface):
 		"""Returns a dictionary mapping building type ids to their tiers
 		@return cached dictionary (don't modifiy)"""
 		building_tiers = {}
-		data = YamlCache.get_file( cls.build_menu_config_per_tier, game_data=True )
+		data = YamlCache.get_file(cls.build_menu_config_per_tier, game_data=True)
 		tier = -1
 		for tab, tabdata in sorted(data.iteritems()):
 			if tab == "meta":
