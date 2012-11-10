@@ -287,7 +287,7 @@ class _CallbackObject(object):
 		assert (loops > 0) or (loops == -1), \
 			"Loop count must be a positive number or -1 for infinite repeat"
 		assert callable(callback)
-		assert loop_interval == None or loop_interval > 0
+		assert loop_interval is None or loop_interval > 0
 
 		self.callback = callback
 		self.finish_callback = finish_callback

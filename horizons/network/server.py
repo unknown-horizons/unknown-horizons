@@ -149,7 +149,7 @@ class Server(object):
 		ret = True
 		for callback in self.callbacks[type]:
 			tmp = callback(*args)
-			if tmp == None:
+			if tmp is None:
 				tmp = True
 			ret &= tmp
 		return ret

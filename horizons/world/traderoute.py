@@ -208,7 +208,7 @@ class TradeRoute(ChangeListener):
 
 	def move_to_next_route_warehouse(self, advance_waypoint=True):
 		next_destination = self.get_next_destination(advance_waypoint)
-		if next_destination == None:
+		if next_destination is None:
 			return
 
 		warehouse = next_destination['warehouse']

@@ -160,7 +160,7 @@ class Ship(Unit):
 		if remove_only:
 			return
 
-		if move_target != None:
+		if move_target is not None:
 			# set remove buoy callback
 			self.add_move_callback(tmp)
 
